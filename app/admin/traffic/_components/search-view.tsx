@@ -5,10 +5,10 @@ import Link from 'next/link';
 import { ArrowLeft, ListChecks, MousePointerClick, Search, Smartphone } from 'lucide-react';
 import {
   BROWSE_ITEM_LABEL,
-  PAGE_TYPE_LABEL,
+  pageTypeLabel,
   RESULT_KIND_LABEL,
   SEARCH_SURFACES,
-  SURFACE_LABEL,
+  surfaceLabel,
   VIEWPORT_LABEL,
   VIEWPORTS,
   browseItemMatrix,
@@ -27,7 +27,6 @@ import {
   withoutEmptyColumns,
 } from '@/lib/admin/site-analytics';
 import type { SearchOverview } from '@/lib/api/admin-site-analytics';
-import type { SearchSurface, SitePageType } from '@/lib/analytics/site-analytics';
 import {
   BarList,
   CATEGORICAL,
@@ -52,9 +51,19 @@ import { TrafficFilterBar } from './filter-bar';
 import { eventHref } from './events-table';
 
 /** Each search field keeps one colour in every chart of the page, in the palette's fixed order. */
-const SURFACE_COLOR = Object.fromEntries(
+const KNOWN_SURFACE_COLOR = Object.fromEntries(
   SEARCH_SURFACES.map((surface, index) => [surface, CATEGORICAL[index]])
-) as Record<SearchSurface, string>;
+);
+
+/** Greys for a search field the site starts sending later, which has no colour of its own yet. */
+const OTHER_SURFACE_COLORS = ['#94a3b8', '#64748b', '#cbd5e1', '#475569'] as const;
+
+/** The colour of a search field: its own while the build knows it, else a grey fixed by its name. */
+function surfaceColor(surface: string): string {
+  if (KNOWN_SURFACE_COLOR[surface]) return KNOWN_SURFACE_COLOR[surface];
+  const hash = [...surface].reduce((total, char) => total + char.charCodeAt(0), 0);
+  return OTHER_SURFACE_COLORS[hash % OTHER_SURFACE_COLORS.length];
+}
 
 /** Not the first two colours, which belong to the hero and the header, whose cards the bars sit in. */
 const VIEWPORT_COLOR = { mobile: CATEGORICAL[2], tablet: CATEGORICAL[3], desktop: CATEGORICAL[6] };
@@ -70,15 +79,15 @@ const SEARCH_EVENT_LINKS = [
 ] as const;
 
 /** A field's name with its colour, for a column or a row head. */
-function SurfaceName({ surface }: { surface: SearchSurface }) {
+function SurfaceName({ surface }: { surface: string }) {
   return (
     <span className="inline-flex items-center gap-1.5 whitespace-nowrap">
       <span
         aria-hidden="true"
         className="h-2 w-2 shrink-0 rounded-full"
-        style={{ background: SURFACE_COLOR[surface] }}
+        style={{ background: surfaceColor(surface) }}
       />
-      {SURFACE_LABEL[surface]}
+      {surfaceLabel(surface)}
     </span>
   );
 }
@@ -86,7 +95,7 @@ function SurfaceName({ surface }: { surface: SearchSurface }) {
 /** The answer to the question the page exists for: hero or header, and on which devices. */
 function HeroHeaderPanel({ search }: { search: SearchOverview }) {
   const verdict = heroOrHeader(search);
-  const viewportParts = (surface: SearchSurface): SharePart[] =>
+  const viewportParts = (surface: string): SharePart[] =>
     VIEWPORTS.map((viewport) => ({
       key: viewport,
       label: viewport === 'mobile' ? 'Telefon' : viewport === 'tablet' ? 'Tablet' : 'Computer',
@@ -184,7 +193,7 @@ function SurfaceTable({ search }: { search: SearchOverview }) {
                           className="block h-full rounded-full"
                           style={{
                             width: `${Math.max(row.opened > 0 ? 2 : 0, (row.opened / max) * 100)}%`,
-                            background: SURFACE_COLOR[row.surface],
+                            background: surfaceColor(row.surface),
                           }}
                         />
                       </span>
@@ -247,7 +256,7 @@ function PageMatrixPanel({ search }: { search: SearchOverview }) {
           }))}
           rows={matrix.rows.map((row) => ({
             key: row.key,
-            label: PAGE_TYPE_LABEL[row.key as SitePageType],
+            label: pageTypeLabel(row.key),
             cells: row.cells,
             total: row.total,
           }))}
@@ -272,13 +281,13 @@ function ViewportPanel({ search }: { search: SearchOverview }) {
           rowHeader="Feld"
           max={matrix.max}
           columnTotals={matrix.columnTotals}
-          columns={VIEWPORTS.map((viewport) => ({
+          columns={matrix.columns.map((viewport) => ({
             key: viewport,
-            label: VIEWPORT_LABEL[viewport],
+            label: VIEWPORT_LABEL[viewport] ?? viewport,
           }))}
           rows={matrix.rows.map((row) => ({
             key: row.key,
-            label: <SurfaceName surface={row.key as SearchSurface} />,
+            label: <SurfaceName surface={row.key} />,
             cells: row.cells,
             total: row.total,
           }))}
@@ -318,7 +327,7 @@ function ClicksPanels({ search }: { search: SearchOverview }) {
               }))}
               rows={results.rows.map((row) => ({
                 key: row.key,
-                label: RESULT_KIND_LABEL[row.key as keyof typeof RESULT_KIND_LABEL],
+                label: RESULT_KIND_LABEL[row.key] ?? row.key,
                 cells: row.cells,
                 total: row.total,
               }))}
@@ -374,7 +383,7 @@ function ClicksPanels({ search }: { search: SearchOverview }) {
                 }))}
                 rows={browse.rows.map((row) => ({
                   key: row.key,
-                  label: BROWSE_ITEM_LABEL[row.key as keyof typeof BROWSE_ITEM_LABEL],
+                  label: BROWSE_ITEM_LABEL[row.key] ?? row.key,
                   cells: row.cells,
                   total: row.total,
                 }))}
@@ -408,11 +417,11 @@ function SeriesPanel({ search }: { search: SearchOverview }) {
             label="Geöffnete Suchfelder pro Tag"
             days={days}
             toggleable
-            series={SEARCH_SURFACES.map((surface) => ({
+            series={Object.entries(series).map(([surface, values]) => ({
               key: surface,
-              label: SURFACE_LABEL[surface],
-              color: SURFACE_COLOR[surface],
-              values: series[surface],
+              label: surfaceLabel(surface),
+              color: surfaceColor(surface),
+              values,
             }))}
           />
         )}
@@ -464,7 +473,7 @@ export function SearchView() {
         }
       />
       <div className="border-border/50 flex flex-wrap items-center justify-between gap-3 border-b px-4 py-3">
-        <TrafficFilterBar filters={filters} />
+        <TrafficFilterBar filters={filters} hint={false} />
         <p className="text-muted-foreground text-xs">
           {data ? `${data.from} bis ${data.to} (UTC)` : ''}
         </p>

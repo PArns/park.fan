@@ -145,50 +145,74 @@ The path guard for `/api/admin/[...path]`, pure so it can be tested without Next
 
 - `parseTrafficDays` _function_: The window a `days` query value names; anything else falls back to 30 days.
 - `parseTrafficLocale` _function_: The language a `locale` query value names, `null` for all of them or for junk.
-- `trafficQuery` _function_: The query string both ends read, `days=30&locale=de`; `extra` is appended as given.
+- `isFilterDimension` _function_: Whether a string names a dimension a filter may use.
+- `parseTrafficFilter` _function_: The filter a `dimension:value` string names, split at the first colon; `null` for junk.
+- `parseTrafficFilters` _function_: The filters of an address, from its repeated `filter` parameters, one per dimension at most.
+- `serializeTrafficFilters` _function_: The `dimension:value` strings of a list of filters, the way the address and the API take them.
+- `toggleTrafficFilter` _function_: The filters with one more: a dimension is held to one value, so a second value of the same dimension replaces the first (two values of one dimension would match nothing), and the same value again takes it off, which makes a row in a panel …
+- `withoutTrafficFilter` _function_: The filters without the one on `dim`.
+- `trafficQuery` _function_: The query string both ends read: `days=30&locale=de&filter=channel:search`. `extra` is appended as given, one parameter per key.
 - `deltaOf` _function_: The change from `previous` to `current`: flat under half a percent, `new` out of nothing.
 - `hasTraffic` _function_: Whether a window holds any traffic at all, so an empty one can say so instead of drawing zeros.
 - `formatCount` _function_: A count with the German thousands separator.
 - `formatDecimal` _function_: A float with one decimal, `2,4`.
 - `formatShare` _function_: A 0..1 share as a percentage: `42 %`, `4,2 %` under ten, `< 0,1 %` for a trace, `–` for none.
-- `formatAxisDay` _function_: A day (`2026-10-28`) as `28.10.`, for an axis.
-- `formatLongDay` _function_: A day as `Mi 28.10.2026`, for a tooltip.
+- `isHourlyPoint` _function_: Whether a series point is an hour (an ISO timestamp) and not a day.
+- `formatAxisDay` _function_: A point of a series for an axis: a day as `28.10.`, an hour as `14:00`.
+- `formatLongDay` _function_: A point of a series for a tooltip: `Mi 28.10.2026`, or for an hour `28.10. 14:00 UTC`.
+- `sum` _function_: The sum of a list of numbers.
+- `pageTypeLabel` _function_: A page type as it reads in a list; one this build has no word for stays as sent.
+- `surfaceLabel` _function_: A search field as it reads in a list; one the site sends later stays as sent.
 - `countryName` _function_: A country code as its German name; `zz`, the API's "not found", reads `Unbekannt`.
 - `breakdownValueLabel` _function_: How a value of a breakdown dimension reads in a list; a value this build has no word for stays as is.
-- `eventLabel` _function_: The label of an event, or its bare name for one an older build does not know.
+- `eventInfo` _function_: The info of an event this build knows, `undefined` for any other.
+- `eventLabel` _function_: The label of an event, or its bare name for one this build does not know.
 - `isSearchEvent` _function_: Whether an event belongs to the search dashboard.
 - `propLabel` _function_: The name of an event property in German; an unknown one stays as sent.
 - `propValueLabel` _function_: How a property's value reads: search fields, result kinds and suggestions get their words.
-- `sortPropValues` _function_: The values of one property in the order they read best: positions first to last, everything else as the API sent them, which is biggest first.
+- `sortPropValues` _function_: The values of one property in the order they read best: positions first to last and depths shallow to deep, everything else as the API sent them, which is biggest first.
 - `entityPublicHref` _function_: Where to read about an entity on the public site, in German, which is the admin's language.
-- `entityEditorHref` _function_: Where an entity is edited: a park and a ride by id, a show through its public address, which `/admin/go` resolves to the park that holds it.
+- `entityEditorHref` _function_: Where an entity is edited: a park and a ride by id, a show or a restaurant through its public address, which `/admin/go` resolves to the park that holds it.
 - `pathEditorHref` _function_: The editor a public path belongs to, for a path that is a park or a ride; `null` for the rest.
-- `surfaceRows` _function_: The surfaces ranked by openings, ties in the order of `SEARCH_SURFACES`.
-- `heroOrHeader` _function_: Compares the two fields the owner asked about.
+- `crosstabLabel` _function_: The title of a crosstab dimension: a fixed one by its word, `prop:<key>` by the property's.
+- `crosstabDimensions` _function_: The dimensions an event can be crossed by: each property key it was sent with, then the fixed ones.
+- `defaultCrosstab` _function_: The pair the crosstab opens on: the first property against the page type, the page type against the window width for an event without properties.
+- `crosstabValueLabel` _function_: How a value of a crosstab dimension reads; `other` is the cap's remainder.
 - `countMatrix` _function_: Pivots `{row, column, value}` cells into a matrix over the given rows and columns, rows without any count dropped so a page type nobody searched from does not take a line.
+- `crosstabMatrix` _function_: The crosstab answer as a matrix in the order the API sent its rows and columns.
 - `withoutEmptyColumns` _function_: The matrix without the columns nobody counted in, for a table with little room.
-- `surfacePageTypeMatrix` _function_: Surface by page type, from the API's flat list.
-- `resultTypeMatrix` _function_: Result kind by surface: where which kind of result is opened.
-- `browseItemMatrix` _function_: Suggestion kind by surface: what is picked from the list shown before anything is typed.
-- `surfaceViewportMatrix` _function_: Surface by viewport class: how many openings came from a phone, a tablet and a computer.
+- `orderKeys` _function_: The keys of a list: the known ones that turned up first in their own order (all of them with `keepAllKnown`, for a short fixed list such as the window widths), then any other that turned up, biggest first, so a value the site sends …
+- `surfaceRows` _function_: The surfaces ranked by openings, ties in the order of `SEARCH_SURFACES`.
+- `surfaceOrder` _function_: The search fields of an answer in the order every chart and matrix keeps.
+- `heroOrHeader` _function_: Compares the two fields the owner asked about.
+- `surfacePageTypeMatrix` _function_: Page type by search field: where each field is opened. Rows are the page types found.
+- `resultTypeMatrix` _function_: Result kind by search field: where which kind of result is opened.
+- `browseItemMatrix` _function_: Suggestion kind by search field: what is picked from the list shown before anything is typed.
+- `surfaceViewportMatrix` _function_: Search field by viewport class: how many openings came from a phone, a tablet and a computer.
 - `positionRows` _function_: Click positions in order, a bucket nobody clicked kept at 0 so the shape of the list shows.
-- `surfaceSeries` _function_: The daily openings of each surface as one value list per surface, over the days given.
+- `surfaceSeries` _function_: The daily openings of each field as one value list per field, over the days given.
 - `seriesDays` _function_: The distinct days of a series, in order.
-- `sum` _function_: The sum of a list of numbers.
+- `formatChange` _function_: The change in visits as a signed figure: `+12`, `−8`, `±0`.
 - `TRAFFIC_RANGES` _const_: A window the dashboards offer, in UTC days with today included.
 - `DEFAULT_TRAFFIC_DAYS` _const_: The window shown when the URL names none.
 - `TRAFFIC_LOCALES` _const_: German first, then the rest: most of the traffic, and the admin's own language.
-- `PAGE_TYPE_LABEL` _const_: The German name of a page type.
-- `PAGE_TYPES` _const_: Every page type in the order the matrix lists them: the pages people search from first.
+- `FILTER_DIMENSIONS` _const_: The dimensions a traffic filter can name, the API's `filter=<dimension>:<value>`.
+- `DIMENSION_LABEL` _const_: What a dimension is called in a filter chip.
+- `PAGE_TYPE_LABEL` _const_: The German name of a page type this build knows; see `pageTypeLabel` for any other.
+- `PAGE_TYPES` _const_: The page types this build knows, in the order a matrix lists them.
 - `VIEWPORTS` _const_: The window width classes, narrowest first.
 - `VIEWPORT_LABEL` _const_: The German name of a window width class, with the pixel limit.
-- `SURFACE_LABEL` _const_: The German name of a search field.
-- `SEARCH_SURFACES` _const_: The search fields in the order they are compared: the two the question is about first.
+- `SURFACE_LABEL` _const_: The German name of a search field the site sends today.
+- `SEARCH_SURFACES` _const_: The search fields this build knows, the two the question is about first.
 - `RESULT_KIND_LABEL` _const_: What a result opened from a search was.
-- `RESULT_KINDS` _const_: The result kinds in the order a column list shows them.
+- `RESULT_KINDS` _const_: The result kinds this build knows, in the order a list shows them.
 - `BROWSE_ITEM_LABEL` _const_: What was picked from the list a search field shows before anything is typed.
-- `BROWSE_ITEMS` _const_: The suggestion kinds in the order a list shows them.
+- `BROWSE_ITEMS` _const_: The suggestion kinds this build knows, in the order a list shows them.
 - `SEARCH_POSITIONS` _const_: The result positions, first to last.
+- `CHANNEL_LABEL` _const_: How visits reached the site, by the API's channel names.
 - `BREAKDOWN_PANELS` _const_: The title and the one-line question of each breakdown panel.
-- `EVENT_INFO` _const_: Every event of the API's schema in German, with the moment it fires. The type makes a new event in the facade fail the build here until it has a line, so the table never shows a bare name without saying what it counts.
-- Types: `TrafficDays`, `TrafficDelta`, `EventInfo`, `SurfaceRow`, `HeroOrHeader`, `CountMatrix`
+- `VISIT_DIMENSIONS` _const_: The dimensions whose rows are visits that started, and so have a bounce rate.
+- `EVENT_INFO` _const_: The events this site sends, in German, with the moment each fires. The type makes a new event in `SiteEventMap` fail the build here until it has a line; an event outside the map reads as its name with no sentence, since the API takes any.
+- `CROSSTAB_FIXED` _const_: The dimensions every event can be crossed by, besides its own properties.
+- `SEO_CHANNELS` _const_: The channels the SEO page asks for.
+- Types: `TrafficDays`, `FilterDimension`, `TrafficFilter`, `TrafficQueryState`, `TrafficDelta`, `EventInfo`, `CountMatrix`, `SurfaceRow`, `HeroOrHeader`, `SeoChannel`

@@ -46,6 +46,14 @@ const DELTA_VIEW: Record<TrafficDelta['direction'], { tone: ChipTone; icon: type
   new: { tone: 'primary', icon: ArrowUpRight },
 };
 
+const SWAPPED_TONE: Record<ChipTone, ChipTone> = {
+  success: 'danger',
+  danger: 'success',
+  primary: 'primary',
+  warning: 'warning',
+  muted: 'muted',
+};
+
 /**
  * A small pill with the arrow and percentage of a change; `title` names what it is measured
  * against. `neutral` keeps the arrow and drops the green and red, for a figure where more is not
@@ -55,13 +63,17 @@ export function DeltaChip({
   delta,
   title,
   neutral = false,
+  lowerIsBetter = false,
 }: {
   delta: TrafficDelta;
   title?: string;
   neutral?: boolean;
+  /** For a figure where a fall is the good news, such as a bounce rate: green and red swap. */
+  lowerIsBetter?: boolean;
 }) {
   const { tone: judged, icon: Icon } = DELTA_VIEW[delta.direction];
-  const tone = neutral ? 'muted' : judged;
+  const swapped = lowerIsBetter ? SWAPPED_TONE[judged] : judged;
+  const tone = neutral ? 'muted' : swapped;
   const text =
     delta.direction === 'new'
       ? 'neu'
@@ -465,6 +477,8 @@ export interface BarRow {
   externalHref?: string;
   /** Cuts a label that is too long at its start, so the end of a path stays readable. */
   startTruncate?: boolean;
+  /** The row is the filter that is set: its label reads in the brand colour and bold. */
+  active?: boolean;
   /** Makes the label a button, for a row that filters the page. */
   onSelect?: () => void;
   /** Small links beside the value: the editor, the public page. */
@@ -523,7 +537,12 @@ export function BarList({
             <button
               type="button"
               onClick={row.onSelect}
-              className="hover:text-primary truncate text-left transition-colors"
+              aria-pressed={row.active}
+              title="Nach diesem Wert filtern"
+              className={cn(
+                'hover:text-primary truncate text-left transition-colors',
+                row.active && 'text-primary font-semibold'
+              )}
             >
               {text}
             </button>
@@ -554,7 +573,7 @@ export function BarList({
               )}
               <div className="bg-muted-foreground/10 mt-1 h-1 overflow-hidden rounded-full">
                 <div
-                  className="bg-primary/70 h-full rounded-full"
+                  className={cn('h-full rounded-full', row.active ? 'bg-primary' : 'bg-primary/70')}
                   style={{
                     width: `${Math.max(row.value > 0 ? 1.5 : 0, (row.value / max) * 100)}%`,
                   }}

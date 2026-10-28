@@ -1,17 +1,25 @@
 'use client';
 
 import { Radio } from 'lucide-react';
-import { deltaOf, formatCount, formatDecimal, type TrafficDays } from '@/lib/admin/site-analytics';
+import {
+  deltaOf,
+  formatCount,
+  formatDecimal,
+  formatShare,
+  type TrafficDays,
+} from '@/lib/admin/site-analytics';
 import type { AnalyticsTotals, TrafficOverview } from '@/lib/api/admin-site-analytics';
 import { CATEGORICAL, DeltaChip, Sparkline } from '../../_ui/charts';
 import { Tile } from '../../_ui/primitives';
 
-/** The five figures, in the order a visit happens, with how to read each. */
+/** The six figures, in the order a visit happens, with how to read each. */
 const KPIS: {
   key: keyof AnalyticsTotals;
   label: string;
   hint: string;
   format: (value: number) => string;
+  /** A fall is the good news. */
+  lowerIsBetter?: boolean;
 }[] = [
   {
     key: 'visitors',
@@ -36,6 +44,13 @@ const KPIS: {
     label: 'Aufrufe je Besuch',
     hint: 'Aufrufe geteilt durch Besuche',
     format: formatDecimal,
+  },
+  {
+    key: 'bounceRate',
+    label: 'Absprungrate',
+    hint: 'Besuche, die nur eine Seite gesehen haben, geteilt durch alle Besuche',
+    format: formatShare,
+    lowerIsBetter: true,
   },
   {
     key: 'events',
@@ -65,7 +80,7 @@ export function KpiTiles({
   days: TrafficDays;
 }) {
   return (
-    <div className="grid grid-cols-2 gap-3 md:grid-cols-3 xl:grid-cols-6">
+    <div className="grid grid-cols-2 gap-3 md:grid-cols-4 xl:grid-cols-7">
       {KPIS.map((kpi) => (
         <Tile key={kpi.key} className="space-y-1.5">
           <p
@@ -78,6 +93,7 @@ export function KpiTiles({
             {kpi.format(overview.totals[kpi.key])}
           </span>
           <DeltaChip
+            lowerIsBetter={kpi.lowerIsBetter}
             delta={deltaOf(overview.totals[kpi.key], overview.previous[kpi.key])}
             title={`${previousLabel(days)}: ${kpi.format(overview.previous[kpi.key])}`}
           />

@@ -16,26 +16,42 @@ import {
   breakdownValueLabel,
   browseItemMatrix,
   countMatrix,
+  crosstabDimensions,
+  crosstabLabel,
+  crosstabMatrix,
+  crosstabValueLabel,
+  defaultCrosstab,
   deltaOf,
   entityEditorHref,
   entityPublicHref,
   eventLabel,
+  formatAxisDay,
+  formatChange,
+  formatLongDay,
   formatShare,
   hasTraffic,
   heroOrHeader,
+  isHourlyPoint,
   isSearchEvent,
+  orderKeys,
   parseTrafficDays,
+  parseTrafficFilter,
+  parseTrafficFilters,
   parseTrafficLocale,
   pathEditorHref,
   positionRows,
   propValueLabel,
+  serializeTrafficFilters,
   sortPropValues,
+  surfaceOrder,
   surfacePageTypeMatrix,
   surfaceRows,
   surfaceSeries,
   surfaceViewportMatrix,
+  toggleTrafficFilter,
   trafficQuery,
   withoutEmptyColumns,
+  withoutTrafficFilter,
 } from '../lib/admin/site-analytics.ts';
 
 let passed = 0;
@@ -104,9 +120,48 @@ test('a language is one of the six or none', () => {
   assert.equal(parseTrafficLocale(null), null);
 });
 
-test('the query carries the window, the language only when set, and the extras', () => {
+test('the query carries the window, the language only when set, the filters and the extras', () => {
   assert.equal(trafficQuery({ days: 30, locale: null }), 'days=30');
   assert.equal(trafficQuery({ days: 7, locale: 'de' }, { limit: 50 }), 'days=7&locale=de&limit=50');
+  assert.equal(
+    trafficQuery({
+      days: 30,
+      locale: null,
+      filters: [
+        { dim: 'channel', value: 'search' },
+        { dim: 'country', value: 'de' },
+      ],
+    }),
+    'days=30&filter=channel%3Asearch&filter=country%3Ade'
+  );
+});
+
+test('a filter is a dimension and a value, split at the first colon', () => {
+  assert.deepEqual(parseTrafficFilter('channel:search'), { dim: 'channel', value: 'search' });
+  assert.deepEqual(parseTrafficFilter('path:/de/a:b'), { dim: 'path', value: '/de/a:b' });
+  for (const junk of ['', 'channel', ':x', 'channel:', 'planet:mars']) {
+    assert.equal(parseTrafficFilter(junk), null, junk);
+  }
+});
+
+test('an address holds one value per dimension, the last one named', () => {
+  assert.deepEqual(parseTrafficFilters(['channel:search', 'country:de', 'channel:ai', 'bogus:1']), [
+    { dim: 'channel', value: 'ai' },
+    { dim: 'country', value: 'de' },
+  ]);
+  assert.deepEqual(serializeTrafficFilters([{ dim: 'os', value: 'ios' }]), ['os:ios']);
+});
+
+test('pressing a row sets its filter, replaces its dimension and the same row takes it off', () => {
+  const held = [{ dim: 'channel', value: 'search' }];
+  assert.deepEqual(toggleTrafficFilter([], 'country', 'de'), [{ dim: 'country', value: 'de' }]);
+  assert.deepEqual(toggleTrafficFilter(held, 'channel', 'ai'), [{ dim: 'channel', value: 'ai' }]);
+  assert.deepEqual(toggleTrafficFilter(held, 'channel', 'search'), []);
+  assert.deepEqual(toggleTrafficFilter(held, 'os', 'ios'), [
+    { dim: 'channel', value: 'search' },
+    { dim: 'os', value: 'ios' },
+  ]);
+  assert.deepEqual(withoutTrafficFilter(held, 'channel'), []);
 });
 
 test('a change is flat under half a percent, new out of nothing, and rounded otherwise', () => {
@@ -156,6 +211,9 @@ test('every closed list has a word for each value', () => {
   assert.equal(Object.keys(SURFACE_LABEL).length, 7);
   assert.equal(Object.keys(RESULT_KIND_LABEL).length, 8);
   assert.equal(Object.keys(BROWSE_ITEM_LABEL).length, 5);
+  assert.equal(breakdownValueLabel('channel', 'ai'), 'KI-Assistenten');
+  assert.equal(breakdownValueLabel('channel', 'new_channel'), 'new_channel');
+  assert.equal(breakdownValueLabel('campaign', 'summer-26'), 'summer-26');
   assert.equal(breakdownValueLabel('os', 'macos'), 'macOS');
   assert.equal(breakdownValueLabel('browser', 'samsung'), 'Samsung Internet');
   assert.equal(breakdownValueLabel('country', 'DE'), 'Deutschland');
@@ -292,6 +350,103 @@ test('a daily series is laid on the days given, a missing day at zero', () => {
   assert.deepEqual(series.hero, [3, 4, 0]);
   assert.deepEqual(series.header, [9, 0, 7]);
   assert.deepEqual(series.keyboard, [0, 0, 0]);
+});
+
+test('hours of a one-day window read as hours, days as days', () => {
+  assert.equal(isHourlyPoint('2026-10-28T07:00:00Z'), true);
+  assert.equal(isHourlyPoint('2026-10-28'), false);
+  assert.equal(formatAxisDay('2026-10-28T07:00:00Z'), '07:00');
+  assert.equal(formatAxisDay('2026-10-28'), '28.10.');
+  assert.equal(formatLongDay('2026-10-28T07:00:00Z'), '28.10. 07:00 UTC');
+  assert.match(formatLongDay('2026-10-28'), /28\.10\.2026/);
+});
+
+test('a change in visits is signed', () => {
+  assert.equal(formatChange(12), '+12');
+  assert.equal(formatChange(-1234), '−1.234');
+  assert.equal(formatChange(0), '±0');
+});
+
+test('keys are listed known first, then whatever else turned up, biggest first', () => {
+  assert.deepEqual(
+    orderKeys(
+      ['a', 'b', 'c'],
+      [
+        { key: 'x', count: 1 },
+        { key: 'c', count: 5 },
+        { key: 'y', count: 9 },
+        { key: 'a', count: 2 },
+      ]
+    ),
+    ['a', 'c', 'y', 'x']
+  );
+});
+
+test('a search field the build does not know is a row and a column of its own', () => {
+  const withNew = {
+    ...search,
+    surfaces: [...search.surfaces, { ...search.surfaces[0], surface: 'footer_search', opened: 50 }],
+    bySurfaceAndPageType: [
+      ...search.bySurfaceAndPageType,
+      { surface: 'footer_search', pageType: 'brand_new_type', opened: 50 },
+    ],
+    series: [...search.series, { day: '2026-10-27', surface: 'footer_search', opened: 7 }],
+  };
+  assert.deepEqual(surfaceOrder(withNew).slice(-1), ['footer_search']);
+  const matrix = surfacePageTypeMatrix(withNew);
+  assert.equal(matrix.columns.at(-1), 'footer_search');
+  assert.equal(matrix.rows.at(-1).key, 'brand_new_type');
+  assert.deepEqual(surfaceSeries(withNew, ['2026-10-26', '2026-10-27']).footer_search, [0, 7]);
+});
+
+const detail = {
+  props: [
+    { prop: 'surface', values: [] },
+    { prop: 'result', values: [] },
+  ],
+};
+
+test('an event is crossed by its own properties and the fixed dimensions', () => {
+  assert.deepEqual(crosstabDimensions(detail), [
+    'prop:surface',
+    'prop:result',
+    'page_type',
+    'viewport',
+    'locale',
+    'day',
+  ]);
+  assert.deepEqual(defaultCrosstab(detail), { row: 'prop:surface', col: 'page_type' });
+  assert.deepEqual(defaultCrosstab({ props: [] }), { row: 'page_type', col: 'viewport' });
+  assert.equal(crosstabLabel('prop:surface'), 'Suchfeld');
+  assert.equal(crosstabLabel('prop:my_prop'), 'my_prop');
+  assert.equal(crosstabLabel('page_type'), 'Seitenart');
+});
+
+test('a crosstab value reads in German where it can, and `other` is the remainder', () => {
+  assert.equal(crosstabValueLabel('prop:surface', 'hero'), 'Hero (Startseite)');
+  assert.equal(crosstabValueLabel('page_type', 'park'), 'Park');
+  assert.equal(crosstabValueLabel('viewport', 'mobile'), 'Telefon (unter 768 px)');
+  assert.equal(crosstabValueLabel('prop:surface', 'other'), 'Übrige');
+  assert.equal(crosstabValueLabel('prop:thing', 'raw'), 'raw');
+});
+
+test('a crosstab answer becomes a matrix in the order the API sent it', () => {
+  const matrix = crosstabMatrix({
+    rows: ['hero', 'header'],
+    cols: ['home', 'park'],
+    cells: [
+      { row: 'hero', col: 'home', count: 10 },
+      { row: 'header', col: 'home', count: 3 },
+      { row: 'header', col: 'park', count: 20 },
+    ],
+  });
+  assert.deepEqual(matrix.columns, ['home', 'park']);
+  assert.deepEqual(matrix.rows, [
+    { key: 'hero', cells: [10, 0], total: 10 },
+    { key: 'header', cells: [3, 20], total: 23 },
+  ]);
+  assert.equal(matrix.max, 20);
+  assert.deepEqual(matrix.columnTotals, [13, 20]);
 });
 
 console.log(`\n${passed} cases passed.`);

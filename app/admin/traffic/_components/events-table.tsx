@@ -5,16 +5,18 @@ import Link from 'next/link';
 import { ChevronRight } from 'lucide-react';
 import {
   deltaOf,
-  EVENT_INFO,
+  eventInfo,
   eventLabel,
   formatCount,
   trafficQuery,
 } from '@/lib/admin/site-analytics';
 import type { EventsResponse } from '@/lib/api/admin-site-analytics';
 import { DeltaChip, Sparkline } from '../../_ui/charts';
+import { Chip } from '../../_ui/primitives';
 import type { TrafficFilters } from '../_lib/use-traffic';
+import { BlockEventButton } from './block-event-button';
 
-/** The address of an event's detail page, carrying the window and language of this one. */
+/** The address of an event's detail page, carrying the window, language and filters of this one. */
 export function eventHref(name: string, filters: TrafficFilters): string {
   return `/admin/traffic/events/${name}?${trafficQuery(filters)}`;
 }
@@ -24,11 +26,11 @@ const ROW_GRID =
   'grid grid-cols-[minmax(0,1fr)_auto] gap-x-4 sm:grid-cols-[minmax(0,1fr)_5rem_6.5rem_6.5rem_1rem]';
 
 /**
- * Every event that fired in the window, biggest first, with its change against the window before
- * and a line of its days. A row is a link to the event's detail page; on a phone the count and the
- * change sit on the right and the line is left out. Events that did not fire sit behind one
- * button, because the API lists all of the schema and thirty rows of zeros bury the ten that did
- * something.
+ * Every event name seen in the window, biggest first, with its change against the window before
+ * and a line of its days. A row is a link to the event's detail page; a button beside it blocks the
+ * name (releases it, for a blocked one), for editors and above. Blocked names stay in the list,
+ * flagged. Names with nothing in this window and the one before sit behind one button, so a list
+ * that grows with the site does not bury the events that did something.
  */
 export function EventsTable({
   items,
@@ -38,8 +40,8 @@ export function EventsTable({
   filters: TrafficFilters;
 }) {
   const [showQuiet, setShowQuiet] = useState(false);
-  const active = items.filter((item) => item.count > 0 || item.previous > 0);
-  const quiet = items.filter((item) => item.count === 0 && item.previous === 0);
+  const active = items.filter((item) => item.count > 0 || item.previous > 0 || item.blocked);
+  const quiet = items.filter((item) => item.count === 0 && item.previous === 0 && !item.blocked);
   const rows = showQuiet ? [...active, ...quiet] : active;
 
   return (
@@ -54,23 +56,31 @@ export function EventsTable({
         <span>Verlauf</span>
         <span />
       </div>
+      {rows.length === 0 && (
+        <p className="text-muted-foreground px-4 py-8 text-center text-sm">
+          In diesem Zeitraum wurde noch kein Ereignis gezählt.
+        </p>
+      )}
       <ul className="divide-border/40 divide-y">
         {rows.map((item) => (
-          <li key={item.name}>
+          <li key={item.name} className="flex items-stretch">
             <Link
               href={eventHref(item.name, filters)}
-              className={`${ROW_GRID} hover:bg-muted/20 group items-center px-4 py-2.5 text-sm tabular-nums transition-colors max-sm:min-h-14`}
+              className={`${ROW_GRID} hover:bg-muted/20 group min-w-0 flex-1 items-center px-4 py-2.5 text-sm tabular-nums transition-colors max-sm:min-h-14`}
             >
               <span className="min-w-0">
-                <span className="group-hover:text-primary block font-medium transition-colors">
+                <span className="group-hover:text-primary flex flex-wrap items-center gap-2 font-medium transition-colors">
                   {eventLabel(item.name)}
+                  {item.blocked && <Chip tone="warning">gesperrt</Chip>}
                 </span>
                 <span className="text-muted-foreground block font-mono text-[11px] break-all">
                   {item.name}
                 </span>
-                <span className="text-muted-foreground block max-w-md text-xs">
-                  {EVENT_INFO[item.name]?.when}
-                </span>
+                {eventInfo(item.name) && (
+                  <span className="text-muted-foreground block max-w-md text-xs">
+                    {eventInfo(item.name)?.when}
+                  </span>
+                )}
               </span>
               <span className="flex flex-col items-end gap-1 sm:contents">
                 <span className="text-right font-semibold">{formatCount(item.count)}</span>
@@ -90,6 +100,9 @@ export function EventsTable({
                 className="text-muted-foreground group-hover:text-primary hidden h-4 w-4 sm:block"
               />
             </Link>
+            <div className="flex shrink-0 items-center pr-3">
+              <BlockEventButton name={item.name} blocked={item.blocked} />
+            </div>
           </li>
         ))}
       </ul>

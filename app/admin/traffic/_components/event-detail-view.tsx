@@ -1,14 +1,22 @@
 'use client';
 
+import { useCallback } from 'react';
 import Link from 'next/link';
-import { ArrowLeft, ExternalLink, ListChecks, MapPin, Search } from 'lucide-react';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import { ArrowLeft, ExternalLink, Grid3x3, ListChecks, MapPin, Search } from 'lucide-react';
 import {
-  EVENT_INFO,
   breakdownValueLabel,
+  crosstabDimensions,
+  crosstabLabel,
+  crosstabMatrix,
+  crosstabValueLabel,
+  defaultCrosstab,
   entityEditorHref,
   entityPublicHref,
+  eventInfo,
   eventLabel,
   formatCount,
+  formatShare,
   isSearchEvent,
   propLabel,
   propValueLabel,
@@ -16,8 +24,13 @@ import {
   trafficQuery,
   TRAFFIC_RANGES,
 } from '@/lib/admin/site-analytics';
-import type { EventDetailResponse } from '@/lib/api/admin-site-analytics';
-import { BarList, CATEGORICAL, SeriesChart } from '../../_ui/charts';
+import type {
+  CrosstabResponse,
+  EventDetailResponse,
+  EventEntity,
+} from '@/lib/api/admin-site-analytics';
+import { BarList, CATEGORICAL, HeatMatrix, SeriesChart } from '../../_ui/charts';
+import { Select } from '../../_ui/controls';
 import {
   AdminPage,
   Chip,
@@ -27,17 +40,132 @@ import {
   Panel,
   PanelBody,
   PanelHeader,
+  SkeletonRows,
   StatTile,
 } from '../../_ui/primitives';
-import { useTrafficData, useTrafficFilters } from '../_lib/use-traffic';
+import { useTrafficData, useTrafficFilters, type TrafficFilters } from '../_lib/use-traffic';
+import { BlockEventButton } from './block-event-button';
 import { TrafficFilterBar } from './filter-bar';
 
-const KIND_LABEL = { park: 'Park', attraction: 'Fahrgeschäft', show: 'Show' } as const;
+const KIND_LABEL: Record<EventEntity['kind'], string> = {
+  park: 'Park',
+  attraction: 'Fahrgeschäft',
+  show: 'Show',
+  restaurant: 'Restaurant',
+};
 
 /**
- * One event of the counter taken apart: how often it fired and when, the values of each
- * property, the page types and device sizes it fired on, and the parks, rides and shows it was
- * about, each a way into its editor or its public page.
+ * Two dimensions of one event against each other, in the address (`?row=&col=`) so a view can be
+ * sent on. The dimensions are the page type, the window width, the language, the day and every
+ * property the event was sent with, so "which search field, from which page" is the same question
+ * as "which tab, on which device" for any event.
+ */
+function CrosstabPanel({
+  detail,
+  filters,
+}: {
+  detail: EventDetailResponse;
+  filters: TrafficFilters;
+}) {
+  const params = useSearchParams();
+  const pathname = usePathname();
+  const router = useRouter();
+  const dimensions = crosstabDimensions(detail);
+  const fallback = defaultCrosstab(detail);
+  const pick = (value: string | null, other: string) =>
+    value && dimensions.includes(value) && value !== other ? value : null;
+  const row = pick(params.get('row'), '') ?? fallback.row;
+  const col = pick(params.get('col'), row) ?? (row === fallback.col ? fallback.row : fallback.col);
+
+  const write = useCallback(
+    (next: { row?: string; col?: string }) => {
+      const query = new URLSearchParams(params.toString());
+      for (const [key, value] of Object.entries(next)) query.set(key, value);
+      router.replace(`${pathname}?${query.toString()}`, { scroll: false });
+    },
+    [params, pathname, router]
+  );
+
+  const { data, error, refetch } = useTrafficData<CrosstabResponse>(
+    `events/${encodeURIComponent(detail.name)}/crosstab`,
+    filters,
+    { row, col }
+  );
+  const options = dimensions.map((dim) => ({ value: dim, label: crosstabLabel(dim) }));
+  const matrix = data ? crosstabMatrix(data) : null;
+
+  return (
+    <Panel>
+      <PanelHeader
+        icon={Grid3x3}
+        title="Kreuztabelle"
+        hint="Zwei Merkmale des Ereignisses gegeneinander. Die größten 30 je Achse, der Rest steht unter „Übrige“."
+        action={
+          <div className="flex flex-wrap items-center gap-2 text-xs">
+            <label className="text-muted-foreground flex items-center gap-1.5">
+              Zeilen
+              <Select
+                value={row}
+                allowEmpty={false}
+                options={options}
+                onValueChange={(value) =>
+                  value && write({ row: value, ...(value === col ? { col: row } : {}) })
+                }
+                className="w-40"
+              />
+            </label>
+            <label className="text-muted-foreground flex items-center gap-1.5">
+              Spalten
+              <Select
+                value={col}
+                allowEmpty={false}
+                options={options}
+                onValueChange={(value) =>
+                  value && write({ col: value, ...(value === row ? { row: col } : {}) })
+                }
+                className="w-40"
+              />
+            </label>
+          </div>
+        }
+      />
+      <PanelBody>
+        {!data && error ? (
+          <ErrorState message={`Kreuztabelle: ${error.message}`} onRetry={() => void refetch()} />
+        ) : !matrix ? (
+          <SkeletonRows rows={4} />
+        ) : matrix.rows.length === 0 ? (
+          <p className="text-muted-foreground py-6 text-center text-sm">
+            Keine Daten für diese Auswahl
+          </p>
+        ) : (
+          <HeatMatrix
+            rowHeader={crosstabLabel(row)}
+            max={matrix.max}
+            columnTotals={matrix.columnTotals}
+            columns={matrix.columns.map((key) => ({
+              key,
+              label: crosstabValueLabel(col, key),
+            }))}
+            rows={matrix.rows.map((entry) => ({
+              key: entry.key,
+              label: crosstabValueLabel(row, entry.key),
+              cells: entry.cells,
+              total: entry.total,
+            }))}
+          />
+        )}
+      </PanelBody>
+    </Panel>
+  );
+}
+
+/**
+ * One event of the counter taken apart: how often it fired and when, every property it was sent
+ * with and the values of each, the combinations of values that came together, a crosstab of any
+ * two of them, the page types and device sizes it fired on, and the parks, rides, shows and
+ * restaurants behind it, each a way into its editor or its public page. Nothing here is a fixed
+ * list: whatever the site sent shows up.
  */
 export function EventDetailView({ name }: { name: string }) {
   const filters = useTrafficFilters();
@@ -46,7 +174,7 @@ export function EventDetailView({ name }: { name: string }) {
     filters
   );
   const back = `/admin/traffic?${trafficQuery(filters)}`;
-  const info = EVENT_INFO[name as keyof typeof EVENT_INFO];
+  const info = eventInfo(name);
   const windowLabel = TRAFFIC_RANGES.find((range) => range.days === filters.days)?.label;
 
   const header = (
@@ -60,16 +188,22 @@ export function EventDetailView({ name }: { name: string }) {
         </>
       }
       action={
-        <Link href={back} className="text-primary flex items-center gap-1 text-xs hover:underline">
-          <ArrowLeft className="h-3.5 w-3.5" /> Traffic
-        </Link>
+        <div className="flex flex-wrap items-center justify-end gap-3">
+          {data && <BlockEventButton name={name} blocked={data.blocked ?? false} />}
+          <Link
+            href={back}
+            className="text-primary flex items-center gap-1 text-xs hover:underline"
+          >
+            <ArrowLeft className="h-3.5 w-3.5" /> Traffic
+          </Link>
+        </div>
       }
     />
   );
 
   const filterRow = (
-    <div className="border-border/50 flex flex-wrap items-center justify-between gap-3 border-b px-4 py-3">
-      <TrafficFilterBar filters={filters} />
+    <div className="border-border/50 flex flex-wrap items-start justify-between gap-3 border-b px-4 py-3">
+      <TrafficFilterBar filters={filters} hint={false} />
       <p className="text-muted-foreground text-xs">
         {data ? `${data.from} bis ${data.to} (UTC)` : windowLabel}
       </p>
@@ -86,7 +220,7 @@ export function EventDetailView({ name }: { name: string }) {
             <ErrorState
               message={
                 error.status === 404
-                  ? `Kein Ereignis namens „${name}“. Die Liste steht unter Traffic.`
+                  ? `Kein Ereignis namens „${name}“ in den Daten. Die Liste steht unter Traffic.`
                   : `Ereignis: ${error.message}`
               }
               onRetry={() => void refetch()}
@@ -100,6 +234,7 @@ export function EventDetailView({ name }: { name: string }) {
   }
 
   const empty = data.total === 0;
+  const share = (count: number) => (data.total > 0 ? count / data.total : 0);
 
   return (
     <AdminPage width="wide">
@@ -108,6 +243,14 @@ export function EventDetailView({ name }: { name: string }) {
         {filterRow}
         <PanelBody className="grid grid-cols-2 gap-3 sm:grid-cols-4">
           <StatTile label="Anzahl" value={formatCount(data.total)} sub={windowLabel} />
+          {data.blocked && (
+            <div className="border-border/60 bg-muted/20 flex items-center gap-2 rounded-lg border p-3 text-sm sm:col-span-2">
+              <Chip tone="warning">gesperrt</Chip>
+              <span className="text-muted-foreground text-xs">
+                Der Name wird nicht mehr gezählt. Was oben steht, ist von vorher.
+              </span>
+            </div>
+          )}
           {isSearchEvent(name) && (
             <Link
               href={`/admin/traffic/search?${trafficQuery(filters)}`}
@@ -115,7 +258,7 @@ export function EventDetailView({ name }: { name: string }) {
             >
               <Search className="text-primary h-4 w-4 shrink-0" aria-hidden="true" />
               <span>
-                Alle sieben Suchfelder im Vergleich
+                Alle Suchfelder im Vergleich
                 <span className="text-muted-foreground block text-xs">
                   Hero oder Header, von welcher Seite, auf welchem Gerät
                 </span>
@@ -130,21 +273,29 @@ export function EventDetailView({ name }: { name: string }) {
           <EmptyState
             icon={ListChecks}
             title="Im Zeitraum nicht aufgetreten"
-            description="Ein längerer Zeitraum oder alle Sprachen zeigen mehr, falls das Ereignis überhaupt schon ausgelöst wird."
+            description="Ein längerer Zeitraum, alle Sprachen oder weniger Filter zeigen mehr, falls das Ereignis überhaupt schon ausgelöst wird."
           />
         </Panel>
       ) : (
         <>
           <Panel>
-            <PanelHeader icon={ListChecks} title="Verlauf" hint="Ein Punkt je Tag, UTC" />
+            <PanelHeader
+              icon={ListChecks}
+              title="Verlauf"
+              hint={
+                data.series[0]?.day.includes('T')
+                  ? 'Ein Punkt je Stunde, UTC'
+                  : 'Ein Punkt je Tag, UTC'
+              }
+            />
             <PanelBody>
               {data.series.length < 2 ? (
                 <p className="text-muted-foreground py-6 text-center text-sm">
-                  Für einen einzelnen Tag gibt es keine Kurve.
+                  Für einen einzelnen Punkt gibt es keine Kurve.
                 </p>
               ) : (
                 <SeriesChart
-                  label={`${eventLabel(name)} pro Tag`}
+                  label={`${eventLabel(name)} im Verlauf`}
                   days={data.series.map((point) => point.day)}
                   height={180}
                   series={[
@@ -160,6 +311,8 @@ export function EventDetailView({ name }: { name: string }) {
             </PanelBody>
           </Panel>
 
+          <CrosstabPanel detail={data} filters={filters} />
+
           {/* Columns rather than a grid: the number of panels depends on the event, and a grid
               leaves a hole beside the odd one. */}
           <div className="columns-1 gap-5 lg:columns-2 [&>*]:mb-5 [&>*]:break-inside-avoid">
@@ -169,12 +322,24 @@ export function EventDetailView({ name }: { name: string }) {
                 <PanelBody>
                   <BarList
                     unit="Ereignisse"
-                    rows={sortPropValues(prop.prop, prop.values).map((entry) => ({
-                      key: entry.value,
-                      label: propValueLabel(prop.prop, entry.value),
-                      value: entry.count,
-                      share: data.total > 0 ? entry.count / data.total : 0,
-                    }))}
+                    rows={[
+                      ...sortPropValues(prop.prop, prop.values).map((entry) => ({
+                        key: entry.value,
+                        label: propValueLabel(prop.prop, entry.value),
+                        value: entry.count,
+                        share: share(entry.count),
+                      })),
+                      ...(prop.otherCount
+                        ? [
+                            {
+                              key: '\u0000other',
+                              label: 'Weitere Werte',
+                              value: prop.otherCount,
+                              share: share(prop.otherCount),
+                            },
+                          ]
+                        : []),
+                    ]}
                   />
                 </PanelBody>
               </Panel>
@@ -188,7 +353,7 @@ export function EventDetailView({ name }: { name: string }) {
                     key: entry.value,
                     label: breakdownValueLabel('page_type', entry.value),
                     value: entry.count,
-                    share: data.total > 0 ? entry.count / data.total : 0,
+                    share: share(entry.count),
                   }))}
                 />
               </PanelBody>
@@ -202,12 +367,45 @@ export function EventDetailView({ name }: { name: string }) {
                     key: entry.value,
                     label: breakdownValueLabel('viewport', entry.value),
                     value: entry.count,
-                    share: data.total > 0 ? entry.count / data.total : 0,
+                    share: share(entry.count),
                   }))}
                 />
               </PanelBody>
             </Panel>
           </div>
+
+          {data.combinations.length > 0 && (
+            <Panel>
+              <PanelHeader
+                title="Kombinationen"
+                hint={`Welche Werte zusammen gesendet wurden, die ${data.combinations.length} häufigsten`}
+              />
+              <PanelBody className="p-0">
+                <ul className="divide-border/40 divide-y">
+                  {data.combinations.map((combination, index) => (
+                    <li key={index} className="flex items-center gap-3 px-4 py-2 text-sm">
+                      <span className="flex min-w-0 flex-1 flex-wrap gap-x-3 gap-y-1">
+                        {Object.entries(combination.props).map(([prop, value]) => (
+                          <span key={prop} className="whitespace-nowrap">
+                            <span className="text-muted-foreground text-xs">
+                              {propLabel(prop)}{' '}
+                            </span>
+                            {propValueLabel(prop, value)}
+                          </span>
+                        ))}
+                      </span>
+                      <span className="text-muted-foreground w-11 shrink-0 text-right text-xs tabular-nums">
+                        {formatShare(share(combination.count))}
+                      </span>
+                      <span className="w-14 shrink-0 text-right font-semibold tabular-nums">
+                        {formatCount(combination.count)}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </PanelBody>
+            </Panel>
+          )}
 
           {data.entities.length > 0 && (
             <Panel>
@@ -221,7 +419,7 @@ export function EventDetailView({ name }: { name: string }) {
                   {data.entities.map((entity) => (
                     <li key={entity.id} className="flex items-center gap-3 px-4 py-2.5 text-sm">
                       <span className="w-28 shrink-0">
-                        <Chip tone="muted">{KIND_LABEL[entity.kind]}</Chip>
+                        <Chip tone="muted">{KIND_LABEL[entity.kind] ?? entity.kind}</Chip>
                       </span>
                       <Link
                         href={entityEditorHref(entity)}

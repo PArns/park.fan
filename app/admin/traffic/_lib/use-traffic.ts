@@ -1,65 +1,110 @@
 'use client';
 
-import { useCallback } from 'react';
+import { useCallback, useMemo } from 'react';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { keepPreviousData } from '@tanstack/react-query';
 import type { Locale } from '@/i18n/config';
 import {
   parseTrafficDays,
+  parseTrafficFilters,
   parseTrafficLocale,
+  serializeTrafficFilters,
+  toggleTrafficFilter,
   trafficQuery,
+  withoutTrafficFilter,
+  type FilterDimension,
   type TrafficDays,
+  type TrafficFilter,
 } from '@/lib/admin/site-analytics';
 import type { TrafficOverview } from '@/lib/api/admin-site-analytics';
 import { adminKeys, useAdminQuery } from '../../_lib/api';
 
-/** The window and language every traffic page shows, as the URL holds them. */
+/** The window, language and filters every traffic page shows, as the URL holds them. */
 export interface TrafficFilters {
   days: TrafficDays;
   locale: Locale | null;
+  filters: TrafficFilter[];
+}
+
+/** What the filter bar and the panels change. */
+export interface TrafficFilterActions {
+  setDays: (days: TrafficDays) => void;
+  setLocale: (locale: Locale | null) => void;
+  /** Sets the filter of a dimension, replaces it, or takes it off when it is already that value. */
+  toggleFilter: (dim: FilterDimension, value: string) => void;
+  removeFilter: (dim: FilterDimension) => void;
+  clearFilters: () => void;
 }
 
 /**
- * The window and language of the page, read from `?days=` and `?locale=` and written back with
- * `replace`, so a view is a link and the back button is not a stack of filter presses. Other
- * parameters of the address stay. Needs a `<Suspense>` above it.
+ * The window, language and filters of the page, read from `?days=`, `?locale=` and the repeated
+ * `?filter=<dimension>:<value>` and written back with `replace`, so a view is a link and the back
+ * button is not a stack of filter presses. Other parameters of the address stay. Needs a
+ * `Suspense` boundary above it.
  */
-export function useTrafficFilters(): TrafficFilters & {
-  setDays: (days: TrafficDays) => void;
-  setLocale: (locale: Locale | null) => void;
-} {
+export function useTrafficFilters(): TrafficFilters & TrafficFilterActions {
   const params = useSearchParams();
   const pathname = usePathname();
   const router = useRouter();
 
   const days = parseTrafficDays(params.get('days'));
   const locale = parseTrafficLocale(params.get('locale'));
+  const filterParams = params.getAll('filter');
+  // The strings, not the array, key the memo: `getAll` is a new array on every render.
+  const filterKey = filterParams.join('\u0000');
+  // eslint-disable-next-line react-hooks/exhaustive-deps -- `filterKey` is `filterParams` joined
+  const filters = useMemo(() => parseTrafficFilters(filterParams), [filterKey]);
 
   const write = useCallback(
-    (key: 'days' | 'locale', value: string | null) => {
+    (change: (next: URLSearchParams) => void) => {
       const next = new URLSearchParams(params.toString());
-      if (value === null) next.delete(key);
-      else next.set(key, value);
+      change(next);
       router.replace(`${pathname}?${next.toString()}`, { scroll: false });
     },
     [params, pathname, router]
   );
 
+  const writeFilters = useCallback(
+    (list: readonly TrafficFilter[]) =>
+      write((next) => {
+        next.delete('filter');
+        for (const value of serializeTrafficFilters(list)) next.append('filter', value);
+      }),
+    [write]
+  );
+
   return {
     days,
     locale,
-    setDays: useCallback((value) => write('days', String(value)), [write]),
-    setLocale: useCallback((value) => write('locale', value), [write]),
+    filters,
+    setDays: useCallback((value) => write((next) => next.set('days', String(value))), [write]),
+    setLocale: useCallback(
+      (value) =>
+        write((next) => {
+          if (value === null) next.delete('locale');
+          else next.set('locale', value);
+        }),
+      [write]
+    ),
+    toggleFilter: useCallback(
+      (dim, value) => writeFilters(toggleTrafficFilter(filters, dim, value)),
+      [filters, writeFilters]
+    ),
+    removeFilter: useCallback(
+      (dim) => writeFilters(withoutTrafficFilter(filters, dim)),
+      [filters, writeFilters]
+    ),
+    clearFilters: useCallback(() => writeFilters([]), [writeFilters]),
   };
 }
 
-/** The address of an analytics endpoint under the admin proxy, with the window and extras. */
+/** The address of an analytics endpoint under the admin proxy, with the window, filters and extras. */
 export function analyticsPath(
   endpoint: string,
-  filters: TrafficFilters,
+  state: Pick<TrafficFilters, 'days' | 'locale'> & { filters?: readonly TrafficFilter[] },
   extra?: Record<string, string | number>
 ): string {
-  return `/api/admin/analytics/${endpoint}?${trafficQuery(filters, extra)}`;
+  return `/api/admin/analytics/${endpoint}?${trafficQuery(state, extra)}`;
 }
 
 /**
@@ -84,8 +129,8 @@ const REALTIME_POLL_MS = 30_000;
 
 /**
  * Today's overview on its own clock, for the realtime tile and the home page: it ignores the
- * window and the language, asks every 30 seconds while the tab is in front, and shares its answer
- * with the "Heute" view of the overview.
+ * window, the language and the filters, asks every 30 seconds while the tab is in front, and shares
+ * its answer with the "Heute" view of the overview.
  */
 export function useRealtimeOverview() {
   const path = analyticsPath('overview', { days: 1, locale: null });

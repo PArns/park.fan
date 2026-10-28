@@ -730,22 +730,31 @@ Route `/admin/system` (page).
 
 - `default (SystemPage)` _component_
 
+### [`traffic/_components/block-event-button.tsx`](../../app/admin/traffic/_components/block-event-button.tsx)
+
+- `BlockEventButton` _component_: Blocks an event name, or releases one that is blocked: a blocked name is not recorded any more and stays in the list, flagged, so it can be released again. The API wants an editor or above, so the button is not there for anybody else.
+
 ### [`traffic/_components/breakdown-panel.tsx`](../../app/admin/traffic/_components/breakdown-panel.tsx)
 
-- `BreakdownPanel` _component_: One breakdown of the window: a list of the biggest values of a dimension with bar, count and share.
+- `BreakdownPanel` _component_: One breakdown of the window: the biggest values of a dimension with bar, count and share, and for the dimensions that start a visit (entry page, referrer, channel, campaign) the bounce rate. Every row is a filter switch for the page.
+- `breakdownRow` _function_: A row of a breakdown: pressing it filters the whole page by that value (a language sets the language switch), and a page, an entry page or a referrer carries a way out to the site as well, the park or ride behind a path also to its editor.
+
+### [`traffic/_components/countries-panel.tsx`](../../app/admin/traffic/_components/countries-panel.tsx)
+
+- `CountriesPanel` _component_: Where the visits come from, as a list and as a map of the same numbers. The country is derived from the visitor's address and dropped; `zz` is a visit the lookup could not place. Pressing a row or a country on the map filters the page.
 
 ### [`traffic/_components/event-detail-view.tsx`](../../app/admin/traffic/_components/event-detail-view.tsx)
 
-- `EventDetailView` _component_: One event of the counter taken apart: how often it fired and when, the values of each property, the page types and device sizes it fired on, and the parks, rides and shows it was about, each a way into its editor or its public page.
+- `EventDetailView` _component_: One event of the counter taken apart: how often it fired and when, every property it was sent with and the values of each, the combinations of values that came together, a crosstab of any two of them, the page types and device sizes it …
 
 ### [`traffic/_components/events-table.tsx`](../../app/admin/traffic/_components/events-table.tsx)
 
-- `EventsTable` _component_: Every event that fired in the window, biggest first, with its change against the window before and a line of its days.
-- `eventHref` _function_: The address of an event's detail page, carrying the window and language of this one.
+- `EventsTable` _component_: Every event name seen in the window, biggest first, with its change against the window before and a line of its days.
+- `eventHref` _function_: The address of an event's detail page, carrying the window, language and filters of this one.
 
 ### [`traffic/_components/filter-bar.tsx`](../../app/admin/traffic/_components/filter-bar.tsx)
 
-- `TrafficFilterBar` _component_: The two switches of every traffic page, the window and the language. The language is a filter on the counter's own figures: a visit in German counts for `de`, whatever the browser says.
+- `TrafficFilterBar` _component_: The switches of every traffic page: the window, the language, and the filters set by pressing a row in a panel, each a chip that takes itself off.
 
 ### [`traffic/_components/kpi-tiles.tsx`](../../app/admin/traffic/_components/kpi-tiles.tsx)
 
@@ -755,21 +764,29 @@ Route `/admin/system` (page).
 
 - `SearchView` _component_: `/admin/traffic/search`: which search field is used, from which page and on which device. The seven fields are compared on openings, typing, clicks and misses; the matrices show where each is used, and every figure leads back to its event.
 
+### [`traffic/_components/seo-view.tsx`](../../app/admin/traffic/_components/seo-view.tsx)
+
+- `SeoView` _component_: `/admin/traffic/seo`: what search engines and AI assistants send, from the site's own counter. Which pages they land on and how that changed, which pages rise and fall, which addresses are dead, and which parks and rides nobody finds.
+
 ### [`traffic/_components/today-tile.tsx`](../../app/admin/traffic/_components/today-tile.tsx)
 
 - `TrafficTodayTile` _component_: The admin home's window onto the traffic page: visitors today, how many are on the site right now and a line of the last half hour. The whole panel is the link.
 
 ### [`traffic/_components/traffic-view.tsx`](../../app/admin/traffic/_components/traffic-view.tsx)
 
-- `TrafficView` _component_: `/admin/traffic`: who visited, what they read, where they came from and what they pressed, from the site's own cookieless counter. The window and language are in the URL.
+- `TrafficView` _component_: `/admin/traffic`: who visited, what they read, where they came from and what they pressed, from the site's own cookieless counter, worked like Umami's: pressing a value in any panel filters the whole page by it, and the filters are chips …
+
+### [`traffic/_components/world-map.tsx`](../../app/admin/traffic/_components/world-map.tsx)
+
+- `WorldMap` _component_: A world map shaded by how many views each country has, one hue from nothing to the biggest. Pressing a country sets it as the page's filter, pressing the set one takes it off.
 
 ### [`traffic/_lib/use-traffic.ts`](../../app/admin/traffic/_lib/use-traffic.ts)
 
-- `useTrafficFilters` _hook_: The window and language of the page, read from `?days=` and `?locale=` and written back with `replace`, so a view is a link and the back button is not a stack of filter presses. Other parameters of the address stay.
+- `useTrafficFilters` _hook_: The window, language and filters of the page, read from `?days=`, `?locale=` and the repeated `?filter=<dimension>:<value>` and written back with `replace`, so a view is a link and the back button is not a stack of filter presses.
 - `useTrafficData` _hook_: One analytics answer for the filters. The previous answer stays on screen while a switch loads, so the page does not blank on every press; a refresh from the topbar refetches it like any admin query.
-- `useRealtimeOverview` _hook_: Today's overview on its own clock, for the realtime tile and the home page: it ignores the window and the language, asks every 30 seconds while the tab is in front, and shares its answer with the "Heute" view of the overview.
-- `analyticsPath` _function_: The address of an analytics endpoint under the admin proxy, with the window and extras.
-- Types: `TrafficFilters`
+- `useRealtimeOverview` _hook_: Today's overview on its own clock, for the realtime tile and the home page: it ignores the window, the language and the filters, asks every 30 seconds while the tab is in front, and shares its answer with the "Heute" view of the overview.
+- `analyticsPath` _function_: The address of an analytics endpoint under the admin proxy, with the window, filters and extras.
+- Types: `TrafficFilters`, `TrafficFilterActions`
 
 ### [`traffic/events/[name]/page.tsx`](../../app/admin/traffic/events/%5Bname%5D/page.tsx)
 
@@ -789,6 +806,13 @@ Route `/admin/traffic` (page).
 Route `/admin/traffic/search` (page).
 
 - `default (SearchTrafficPage)` _component_: The admin's search dashboard: which search field is used, from which page and on which device. The view reads the window and language from the address, under a `Suspense` boundary.
+- `metadata` _const_
+
+### [`traffic/seo/page.tsx`](../../app/admin/traffic/seo/page.tsx)
+
+Route `/admin/traffic/seo` (page).
+
+- `default (SeoPage)` _component_: What search engines and AI assistants send: the pages visits begin on, the ones gaining and losing, the addresses that 404 and the parks and rides no search visit reached.
 - `metadata` _const_
 
 ### [`users/page.tsx`](../../app/admin/users/page.tsx)
