@@ -42,9 +42,9 @@ A Capodanno [Universal Studios Japan](ref:universal-studios-japan), a Osaka, res
 
 ## Cosa comprende il Party Pass
 
-Con il Party Pass entri ed esci quante volte vuoi durante le 26 ore. Chi le fa tutte arriva alla sera del 1° gennaio stanco come dopo un volo intercontinentale, senza aver visto un aeroporto. Il Party Pass si compra sul sito di USJ, su Lawson Ticket e negli hotel partner, che però lo vendono solo ai propri ospiti. La prevendita per i titolari dell'abbonamento annuale Grand Royal è chiusa. Quella online di Lawson Ticket resta aperta fino alle 23:59 del 3 novembre, e vince chi arriva prima.
+Con il Party Pass entri ed esci quante volte vuoi durante le 26 ore. Chi resiste fino alla fine arriva alla sera del 1° gennaio distrutto come dopo un volo intercontinentale, ma almeno si è goduto i fuochi d'artificio. Il Party Pass si compra sul sito di USJ, su Lawson Ticket e negli hotel partner, che però lo vendono solo ai propri ospiti. La prevendita per i titolari dell'abbonamento annuale Grand Royal è chiusa. Quella online di Lawson Ticket resta aperta fino alle 23:59 del 3 novembre, e vince chi arriva prima. Con il maltempo USJ può ridurre o annullare il programma della notte, anche se hai già il Party Pass.
 
-Insieme al Party Pass il parco vende posti in aree riservate davanti agli spettacoli, a sedere o in piedi, l'Universal Express Pass e pacchetti con la cena in un ristorante del parco. Il pacchetto più caro costa 1.500.000 yen e ne esiste uno solo, per un gruppo fino a quattro persone. Comprende la camera al Park Front Hotel, il transfer dall'aeroporto del Kansai o da quello di Itami o da una grande stazione di Osaka e un posto riservato per i fuochi d'artificio. Come funziona l'Express Pass e quando conviene lo spieghiamo nella nostra [guida ai tempi di attesa e all'Express Pass di Universal Studios Japan](/blog/universal-studios-japan-tempi-di-attesa-consigli).
+Insieme al Party Pass il parco vende posti in aree riservate davanti agli spettacoli, a sedere o in piedi, l'Universal Express Pass e pacchetti con la cena in un ristorante del parco. Il pacchetto più caro costa 1.500.000 yen e ne esiste uno solo, per un gruppo fino a quattro persone. Comprende la camera al Park Front Hotel, il transfer dall'aeroporto del Kansai o da quello di Itami o da una grande stazione di Osaka e un posto riservato per i fuochi d'artificio. Come funziona l'Express Pass e quando conviene lo spiego nella [guida ai tempi di attesa e all'Express Pass di Universal Studios Japan](/blog/universal-studios-japan-tempi-di-attesa-consigli).
 
 ## Con il biglietto normale il 31 dicembre e il 1° gennaio
 
@@ -56,11 +56,11 @@ Al Gramercy Park, nella New York Area, dalle 19:05 del 31 dicembre fino alle 0:2
 
 Dalle 23:50 alle 0:05 c'è il Countdown Moment, con circa 5.000 fuochi d'artificio sopra la laguna, sul Gramercy Park e in tutto il parco, insieme a luci e musica. Dopo il conto alla rovescia i personaggi del parco salutano l'anno nuovo in abiti tradizionali giapponesi.
 
-La novità è lo «USJ Grand Music Revival», una specie di gara di canto di Capodanno allo [Universal Monsters Live Rock and Roll Show](ref:universal-studios-japan/universal-monsters-live-rock-and-roll-show). Dalle 23:45 alle 0:30 Reika Ayanokoji, Deacon, Beetlejuice e Woody Woodpecker cantano vecchie canzoni dei 25 anni del parco. Per lo show serve un biglietto aggiuntivo, e va in scena proprio durante il Countdown Moment. Con il maltempo il parco può ridurre o annullare tutto il Countdown.
+La novità è lo «USJ Grand Music Revival», una specie di gara di canto di Capodanno allo [Universal Monsters Live Rock and Roll Show](ref:universal-studios-japan/universal-monsters-live-rock-and-roll-show). Dalle 23:45 alle 0:30 Reika Ayanokoji, Deacon, Beetlejuice e Woody Woodpecker cantano vecchie canzoni dei 25 anni del parco. Per lo show serve un biglietto aggiuntivo, e va in scena proprio durante il Countdown Moment.
 
 ## Cosa resta chiuso di notte
 
-Durante il Countdown la Super Nintendo World chiude a tratti per manutenzione. L'Area Timed Entry e lo Standby Entry per quest'area si ottengono solo dall'app ufficiale, e nelle ore del Countdown ognuno può averne uno solo. Anche altre zone del parco possono chiudere a tratti per manutenzione.
+Durante il Countdown la Super Nintendo World e, secondo USJ, anche altre zone del parco chiudono a tratti per manutenzione. L'Area Timed Entry e lo Standby Entry per quest'area si ottengono solo dall'app ufficiale, e nelle ore del Countdown ognuno può averne uno solo.
 
 ## Universal Holiday Wonders dal 13 novembre al 17 gennaio
 
@@ -81,11 +81,11 @@ I Minions arrivano con i vestiti invernali al Minion Jingle Bello Meet & Greet, 
 
 ## Bambini gratis solo per chi vive in Giappone
 
-Dal 13 novembre al 30 dicembre, con l'Holiday Kids Free Pass, un bambino dai 4 agli 11 anni entra gratis per ogni adulto pagante, e lo stesso vale per un dodicenne che va ancora alle elementari. La coppia costa da 8.400 yen invece che da 13.900 yen, l'Express Pass si paga a parte. Il pass lo può comprare solo chi risiede in Giappone e al momento dell'acquisto carica un documento ufficiale che attesti l'età. È la prima volta che il parco invita gratis i bambini di tutto il Paese.
+Per la prima volta USJ fa entrare gratis i bambini di tutto il Giappone. Dal 13 novembre al 30 dicembre, con l'Holiday Kids Free Pass, un bambino dai 4 agli 11 anni entra gratis per ogni adulto pagante, e lo stesso vale per un dodicenne che va ancora alle elementari. La coppia costa da 8.400 yen invece che da 13.900 yen, l'Express Pass si paga a parte. Il pass lo può comprare solo chi risiede in Giappone e al momento dell'acquisto carica un documento ufficiale che attesti l'età.
 
 ## I 25 anni di Universal Studios Japan
 
-Universal Studios Japan ha aperto il 31 marzo 2001. È stato il primo parco Universal fuori dagli Stati Uniti e oggi è uno dei sei parchi Universal Studios. Il 2 dicembre 2026 parte Universal Cool Japan 2027 con Sailor Moon, e in primavera si aggiungono Fullmetal Alchemist e Yomi no Tsugai. Il resto di Universal Cool Japan è nel nostro articolo sul [Detective Conan World 2027](/news/detective-conan-world-universal-studios-japan).
+Universal Studios Japan ha aperto il 31 marzo 2001. È stato il primo parco Universal fuori dagli Stati Uniti e oggi è uno dei sei parchi Universal Studios. Il 2 dicembre 2026 parte Universal Cool Japan 2027 con Sailor Moon, e in primavera si aggiungono Fullmetal Alchemist e Yomi no Tsugai. Della stessa serie fa parte il [Detective Conan World 2027](/news/detective-conan-world-universal-studios-japan).
 
 Fonti:
 [annuncio di USJ sul Countdown 2027](https://www.usj.co.jp/company/news/2026/0928/),
