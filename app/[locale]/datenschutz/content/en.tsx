@@ -345,8 +345,9 @@ export function DatenschutzEN() {
             and events per minute): 35 minutes. The live counters hold no ID of a visitor.
           </li>
           <li>
-            <strong>The counting of visitors:</strong> per day at most 25 hours, per hour until the
-            end of the day. The day counters also exist per country, device, browser, operating
+            <strong>The counting of visitors:</strong> the counters per day, per hour and per
+            feature until the end of the following day, at most about 49 hours. They used to end one
+            hour after the day. The day counters also exist per country, device, browser, operating
             system and channel, with the same ID of the day and the same lifetime. A list of that
             day's counters sits beside them and holds no ID.
           </li>
@@ -357,8 +358,8 @@ export function DatenschutzEN() {
             inventions, until the end of the following day. They hold no ID of a visitor.
           </li>
           <li>
-            <strong>Counts not yet written:</strong> those of the current five-minute window, for
-            about six minutes.
+            <strong>Counts not yet written:</strong> they are normally written within about six
+            minutes. If writing fails, they are set aside for up to seven days.
           </li>
           <li>
             <strong>Counters with no reader in them:</strong> how many requests arrived in a

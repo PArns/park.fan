@@ -365,10 +365,11 @@ export function DatenschutzDE() {
             Besuchers.
           </li>
           <li>
-            <strong>Die Zählung der Besucher:</strong> je Tag höchstens 25 Stunden, je Stunde bis
-            zum Ende des Tages. Die Tageszähler gibt es auch je Land, Gerät, Browser, Betriebssystem
-            und Kanal, mit derselben Kennung des Tages und derselben Lebensdauer. Eine Liste dieser
-            Zähler eines Tages liegt daneben und enthält keine Kennung.
+            <strong>Die Zählung der Besucher:</strong> die Zähler je Tag, je Stunde und je Funktion
+            bis zum Ende des folgenden Tages, höchstens etwa 49 Stunden. Früher endeten sie eine
+            Stunde nach dem Tag. Die Tageszähler gibt es auch je Land, Gerät, Browser,
+            Betriebssystem und Kanal, mit derselben Kennung des Tages und derselben Lebensdauer.
+            Eine Liste dieser Zähler eines Tages liegt daneben und enthält keine Kennung.
           </li>
           <li>
             <strong>Obergrenzen:</strong> wie oft eine Adresse oder ein Besucher an einem Tag etwas
@@ -378,8 +379,9 @@ export function DatenschutzDE() {
             Besuchers.
           </li>
           <li>
-            <strong>Zähler, die noch nicht geschrieben sind:</strong> die des laufenden
-            Fünf-Minuten-Fensters, etwa sechs Minuten lang.
+            <strong>Zähler, die noch nicht geschrieben sind:</strong> sie werden normalerweise
+            innerhalb von etwa sechs Minuten geschrieben. Scheitert das Schreiben, werden sie bis zu
+            sieben Tage lang beiseitegelegt.
           </li>
           <li>
             <strong>Zähler ohne Bezug zu einem Besucher:</strong> wie viele Anfragen in einem
