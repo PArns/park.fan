@@ -19,9 +19,10 @@ import { Segmented } from './controls';
  */
 
 /**
- * The eight categorical colours in their fixed order, stepped for the admin's dark surface. The
- * order is what keeps neighbours apart for readers with a colour-vision deficiency, so a chart
- * never re-sorts or cycles them.
+ * The categorical colours in their fixed order, stepped for the admin's dark surface. The order is
+ * what keeps neighbours apart for readers with a colour-vision deficiency, so a chart never
+ * re-sorts or cycles them. Eleven, so each search field has a colour of its own; a slot is added
+ * only after the dataviz validator passes the extended list on the dark surface.
  */
 export const CATEGORICAL = [
   '#3987e5',
@@ -32,6 +33,9 @@ export const CATEGORICAL = [
   '#008300',
   '#9085e9',
   '#e66767',
+  '#00a3c4',
+  '#a8692e',
+  '#b35fd0',
 ] as const;
 
 const COMPACT = new Intl.NumberFormat('de-DE', { notation: 'compact', maximumFractionDigits: 1 });
