@@ -112,7 +112,13 @@ export async function ParkBestDaysSummary({
               closesBand && 'rounded-r-md'
             )}
           >
-            <span aria-hidden="true">{weekdayName(d, locale, 'short')}</span>
+            {/* Drawn, not written: as text the short name runs into the sr-only one ("Mo" +
+                "Montag" reads "MoMontag") in every text extraction and in the Markdown agents get. */}
+            <span
+              aria-hidden="true"
+              className="before:content-[attr(data-label)]"
+              data-label={weekdayName(d, locale, 'short')}
+            />
             <span className="sr-only">
               {weekdayName(d, locale)}: {tier ? tierLabel[tier] : t('thin')}
             </span>

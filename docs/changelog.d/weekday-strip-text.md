@@ -1,0 +1,3 @@
+### Wochentage auf der Parkseite: nicht mehr „MoMontag“
+
+Die Wochentags-Leiste der Parkseite schrieb den kurzen Namen sichtbar und den langen für Screenreader direkt nebeneinander. Jede Textfassung der Seite klebte beide zusammen, auch das Markdown, das KI-Agenten von Cloudflare bekommen: „mamaandag: te weinig dagen gemeten“, „MoMontag: ruhig“. Ausgerechnet die Zeile, die eine Antwort auf „wann ist es leer“ zitieren würde, war unlesbar, in allen sechs Sprachen. Der kurze Name wird jetzt per CSS gezeichnet und steht nicht mehr im Text; zu lesen ist nur noch „maandag: gemiddeld“. Sichtbar ändert sich nichts.
