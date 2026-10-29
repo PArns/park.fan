@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button';
 import { FilterToggle } from '@/components/parks/filter-toggle';
 import { LiveParkGrid, type StaticPark } from '@/components/parks/live-park-grid';
 import { useViewerPosition } from '@/lib/hooks/use-distance-to';
-import { useRegionParks } from '@/lib/hooks/use-live-parks-by-region';
+import { useLiveParksByRegion } from '@/lib/hooks/use-live-parks-by-region';
 import { orderCountryParks, type CountryParkSort } from '@/lib/utils/country-park-order';
 
 /** Fewest parks a country needs before the "open only" switch is worth its row. */
@@ -15,22 +15,22 @@ export const OPEN_ONLY_MIN_PARKS = 6;
 
 interface CountryParkGroup {
   key: string;
-  /** Server-rendered city heading. */
+  /** Server-rendered group heading: a city on a country page, a country on a brand page. */
   heading: ReactNode;
   parks: StaticPark[];
 }
 
 interface CountryParkGroupsProps {
-  continent: string;
-  country: string;
+  /** The `"<continent>/<country>"` pairs the parks lie in, for the one live request. */
+  regions: string[];
   groups: CountryParkGroup[];
   gridClassName?: string;
   className?: string;
 }
 
 /**
- * A country page's city groups, with an "open only" switch above them once the country has
- * {@link OPEN_ONLY_MIN_PARKS} parks or more.
+ * A country page's city groups (or a brand page's country groups), with an "open only" switch
+ * above them once they hold {@link OPEN_ONLY_MIN_PARKS} parks or more.
  *
  * The switch reads the status already layered on by {@link LiveParkGrid}'s request, so the ISR
  * shell fetches nothing extra. Until that status has arrived every card stays visible. The grids
@@ -41,14 +41,13 @@ interface CountryParkGroupsProps {
  * is offered only for a granted (precise) {@link useViewerPosition}; this page never asks.
  */
 export function CountryParkGroups({
-  continent,
-  country,
+  regions,
   groups,
   gridClassName,
   className,
 }: CountryParkGroupsProps) {
   const t = useTranslations('geo');
-  const { liveByParkId } = useRegionParks(continent, country);
+  const { liveByParkId } = useLiveParksByRegion(regions);
   const [openOnly, setOpenOnly] = useState(false);
   const deferredOpenOnly = useDeferredValue(openOnly);
   const position = useViewerPosition();
@@ -143,12 +142,7 @@ export function CountryParkGroups({
       {visibleGroups.map((group) => (
         <div key={group.key}>
           {group.heading}
-          <LiveParkGrid
-            continent={continent}
-            country={country}
-            parks={group.parks}
-            className={gridClassName}
-          />
+          <LiveParkGrid regions={regions} parks={group.parks} className={gridClassName} />
         </div>
       ))}
     </div>

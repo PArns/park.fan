@@ -102,6 +102,14 @@ Which two days of a park's calendar are being compared, across a change of month
 - `parkMapsLinks` _function_: Both map URLs for a coordinate pair, or `null` when the pair is missing, non-finite, out of range, or `0,0` (Null Island is what an ungeocoded row looks like).
 - Types: `ParkMapsLinks`
 
+### [`park-brands.ts`](../../lib/parks/park-brands.ts)
+
+- `isBrandPark` _function_: Whether a park's name puts it under the brand: „Six Flags Great Adventure", not „Flags Park".
+- `parkBrandOf` _function_: The brand a park belongs to by its name, or null.
+- `brandParksByCountry` _function_: A brand's parks from the geo tree, grouped by country: the country with the most parks first, parks by the name the page shows within it. Read from the same day-cached `/v1/discovery/geo` the geo pages use.
+- `SIX_FLAGS` _const_: Six Flags, the one brand with a page so far.
+- Types: `ParkBrand`, `BrandCountry`
+
 ### [`park-simulation.ts`](../../lib/parks/park-simulation.ts)
 
 - `parseParkSimulation` _function_: Parse `?state=` into the scenarios to apply. Empty when simulation is off, the param is absent or nothing in it is known, so callers apply the result unconditionally and a typo degrades to the real park.

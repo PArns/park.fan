@@ -1727,6 +1727,17 @@
     "sortNearest": "Più vicini prima",
     "exploreByRegion": "Esplora per regione"
   },
+  "sixFlags": {
+    "metaTitle": "Six Flags Tempi di attesa LIVE: tutti i {count} parchi",
+    "metaTitleShort": "Six Flags Tempi di attesa LIVE: tutti i parchi",
+    "metaDescription": "Tempi di attesa in diretta di tutti i parchi Six Flags: quale parco è aperto oggi, quanta affluenza c’è e quanto si aspetta a ogni attrazione.",
+    "title": "Six Flags: tempi di attesa di tutti i parchi in diretta",
+    "intro": "Contano solo i parchi con «Six Flags» nel nome. La Ronde a Montréal e gli ex parchi Cedar Fair come Cedar Point fanno parte anch’essi del gruppo, ma hanno un nome proprio e compaiono nella pagina del loro paese.",
+    "summary": "{parks, plural, =1 {# parco} other {# parchi}} in {countries, plural, =1 {# paese} other {# paesi}}",
+    "listName": "Parchi Six Flags",
+    "breadcrumb": "Six Flags",
+    "parkLink": "Tutti i parchi Six Flags"
+  },
   "stats": {
     "globalStats": "Statistiche globali",
     "globalStatsIntro": "Dati in tempo reale da parchi a tema e attrazioni in tutto il mondo.",

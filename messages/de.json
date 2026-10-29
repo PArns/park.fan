@@ -1727,6 +1727,17 @@
     "sortNearest": "Nächste zuerst",
     "exploreByRegion": "Nach Region entdecken"
   },
+  "sixFlags": {
+    "metaTitle": "Six Flags Wartezeiten LIVE: alle {count} Parks",
+    "metaTitleShort": "Six Flags Wartezeiten LIVE: alle Parks",
+    "metaDescription": "Live-Wartezeiten aller Six-Flags-Parks: welcher Park heute geöffnet hat, wie voll er ist und wie lange du an jeder Bahn anstehst.",
+    "title": "Six Flags Wartezeiten: alle Parks live",
+    "intro": "Gezählt sind die Parks mit „Six Flags“ im Namen. La Ronde in Montréal und frühere Cedar-Fair-Parks wie Cedar Point gehören zwar zum Konzern, tragen aber einen eigenen Namen und stehen auf der Seite ihres Landes.",
+    "summary": "{parks, plural, =1 {# Park} other {# Parks}} in {countries, plural, =1 {# Land} other {# Ländern}}",
+    "listName": "Six-Flags-Parks",
+    "breadcrumb": "Six Flags",
+    "parkLink": "Alle Six-Flags-Parks"
+  },
   "stats": {
     "globalStats": "Globale Statistiken",
     "globalStatsIntro": "Live-Daten von Freizeitparks und Attraktionen weltweit.",

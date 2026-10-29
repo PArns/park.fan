@@ -174,8 +174,7 @@ export default async function CountryPage({ params }: CountryPageProps) {
         {/* Status-free shell; live status is overlaid client-side, and all cities on the page
             share one /api/parks/live call (React Query dedupe). */}
         <CountryParkGroups
-          continent={continent}
-          country={country}
+          regions={[`${continent}/${country}`]}
           className="space-y-8"
           gridClassName="grid [grid-auto-rows:auto_1fr_auto] gap-4 max-sm:auto-rows-auto sm:grid-cols-2 lg:grid-cols-3"
           groups={cities.map((city) => ({

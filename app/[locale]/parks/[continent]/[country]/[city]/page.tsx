@@ -199,8 +199,7 @@ export default async function CityPage({ params }: CityPageProps) {
         <section aria-label={tExplore('parks')}>
           <h2 className="sr-only">{tExplore('parks')}</h2>
           <LiveParkGrid
-            continent={continent}
-            country={country}
+            regions={[`${continent}/${country}`]}
             parks={staticParks}
             className="grid [grid-auto-rows:auto_1fr_auto] gap-4 max-sm:auto-rows-auto md:grid-cols-2"
           />

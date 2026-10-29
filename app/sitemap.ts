@@ -16,6 +16,7 @@ import { PARK_KIDS_SEGMENTS } from '@/lib/parks/kids-segments';
 import { parksWithKidsPage } from '@/lib/api/kids-page';
 import { parkGeoKey, parksWithStatsPage, type ParkGeoPath } from '@/lib/api/stats';
 import { categoryPath, NEWS_INDEX_PATH, postPath } from '@/lib/blog/paths';
+import { SIX_FLAGS } from '@/lib/parks/park-brands';
 import type { GlossaryTerm } from '@/lib/glossary/types';
 
 const BASE_URL = SITE_URL;
@@ -59,6 +60,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // and noindex URLs in a sitemap trigger Search Console errors.
   const homepageAlternates = buildAlternates(() => '');
   const parksAlternates = buildAlternates(() => '/parks');
+  const sixFlagsPath = `/parks/${SIX_FLAGS.slug}`;
+  const sixFlagsAlternates = buildAlternates(() => sixFlagsPath);
   const fancastAlternates = buildAlternates(() => '/fancast');
   const contributeAlternates = buildAlternates(() => '/contribute');
 
@@ -72,6 +75,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         url: `${BASE_URL}/${locale}/parks`,
         lastModified: lastModified('/parks'),
         alternates: parksAlternates,
+      },
+      {
+        url: `${BASE_URL}/${locale}${sixFlagsPath}`,
+        lastModified: lastModified(sixFlagsPath),
+        alternates: sixFlagsAlternates,
       },
       {
         url: `${BASE_URL}/${locale}/fancast`,
