@@ -146,6 +146,11 @@ function saveFavoritesToCookies(favorites: FavoritesData): void {
       path: '/',
       sameSite: 'lax',
     });
+    // The attribute the layout's inline script sets before paint, kept in step with the cookie.
+    document.documentElement.toggleAttribute(
+      'data-has-favorites',
+      countFavorites(favorites).total > 0
+    );
   } catch (error) {
     console.error('[Favorites] Error saving favorites to cookies:', error);
   }

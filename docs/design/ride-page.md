@@ -145,3 +145,7 @@ rows, or six for two of the seven start weekdays, times one tile plus the gap, p
 date for six hours after midnight in Berlin) would reserve different rows on the two sides of
 hydration. `pnpm test:attraction-history-geometry` pins all seven weekdays, a year boundary, a
 leap day and a DST Sunday.
+
+On a phone (a page under 768 px) the list shows the newest eight days and puts the other
+twenty-three behind `MobileMore`: all thirty-one are sixteen rows there, eight screens of tiles.
+The reservation has a third height for it (`phone`: four rows, a gap and the 44 px button).

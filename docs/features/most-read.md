@@ -164,6 +164,11 @@ on the homepage and inside `PageBottomSections` at the foot of blog, news and gl
 the site they are the main internal links into park pages: a most-read park is one click from the
 homepage instead of four (home → continent → country → city → park).
 
+On the homepage a phone (a page under 768 px) does not draw the chapter: the nearby chapter just
+above lists parks already, and the empty favorites band between them goes too for a visitor without
+favorites (`html[data-has-favorites]`, set before paint by an inline script in the layout). Both are
+hidden by CSS, so the links stay in the HTML.
+
 - **Server-rendered structure:** the slot reads `getGeoStructure()` at its default window
   (`CACHE_TTL.geo`) and bakes only day-stable fields (name, link, city, photo, translated country).
   A shorter geo window here would pin every host page to it

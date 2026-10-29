@@ -274,13 +274,15 @@ export async function ParkPageShell({
           <ParkSeasonsCard seasons={seasons ?? []} locale={locale} className="mt-8" />
 
           {/* Address, phone and the hard facts — hand-curated in the admin, because none of the
-            three upstream feeds carries any of it. The links that used to close this section are
-            <ParkQuickLinks> in the header now, so this renders nothing at all for a park that had
-            only those, and the two map links went up there with them. */}
+            three upstream feeds carries any of it. On a phone the park's links close it; from `sm`
+            up they are in the header. */}
           <ParkInfoCard
             info={park.info}
             city={cityName}
             country={translateGeoSlug(tGeo, 'countries', country, countryName)}
+            parkId={park.id}
+            latitude={park.latitude}
+            longitude={park.longitude}
             className="mt-8"
           />
 

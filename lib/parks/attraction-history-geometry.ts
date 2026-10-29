@@ -12,6 +12,15 @@ export const HISTORY_WINDOW_DAYS = 30;
 const LG_COLUMNS = 7;
 
 /**
+ * Days a phone (a page under 768 px) shows before its „show more" button: four rows of two. All
+ * thirty-one are sixteen rows there, eight screens of tiles.
+ */
+export const PHONE_HISTORY_DAYS = 8;
+
+/** The button under the phone's eight days: `size="sm"`, 44 px below `sm`, over a `gap-2`. */
+const PHONE_MORE_PX = 44;
+
+/**
  * Rows the grid needs at a given column count. Constant per breakpoint, because the history is
  * laid out today-first with no leading blanks, so the weekday the window starts on cannot change
  * the reservation.
@@ -58,19 +67,22 @@ function stackHeight({ tile, base }: { tile: number; base: number }, rows: numbe
 
 /** The placeholder heights for the history grid, per breakpoint. */
 export interface HistoryGridReservation {
-  /** Placeholder height below a page width of 1024 px, in px. */
+  /** Placeholder height below a page width of 768 px, in px: eight days and the button. */
+  phone: number;
+  /** Placeholder height from 768 to 1024 px of page, in px. */
   base: number;
   /** Placeholder height at 1024 px of PAGE and up, in px. */
   lg: number;
 }
 
 /**
- * The two heights the placeholder reserves, the same on every day of the year. Numbers rather than
- * a class string, because Tailwind cannot see a computed class name; the panel writes them into
- * CSS custom properties.
+ * The three heights the placeholder reserves, the same on every day of the year. Numbers rather
+ * than a class string, because Tailwind cannot see a computed class name; the panel writes them
+ * into CSS custom properties.
  */
 export function historyGridReservation(): HistoryGridReservation {
   return {
+    phone: stackHeight(MODEL.list, Math.ceil(PHONE_HISTORY_DAYS / 2)) + ROW_GAP + PHONE_MORE_PX,
     base: stackHeight(MODEL.list, historyListRows()),
     lg: stackHeight(MODEL.lg, historyGridRows()),
   };

@@ -5,7 +5,8 @@ import { useTranslations } from 'next-intl';
 import { eachDayOfInterval } from 'date-fns';
 import type { AttractionHistoryDay, ScheduleItem } from '@/lib/api/types';
 import { AttractionHistoryDay as HistoryDay, type DayDataProps } from './attraction-history-day';
-import { HISTORY_WINDOW_DAYS } from '@/lib/parks/attraction-history-geometry';
+import { MobileMore } from '@/components/common/mobile-more';
+import { HISTORY_WINDOW_DAYS, PHONE_HISTORY_DAYS } from '@/lib/parks/attraction-history-geometry';
 
 interface AttractionHistoryGridProps {
   history?: AttractionHistoryDay[];
@@ -30,6 +31,7 @@ interface AttractionHistoryGridProps {
  */
 export function AttractionHistoryGrid({ history, schedule, todayIso }: AttractionHistoryGridProps) {
   const t = useTranslations('attractions');
+  const tCommon = useTranslations('common');
   const { days, yMax } = useMemo(() => {
     // Built in UTC off the park's own date string. A local `new Date(y, m, d)` in a zone whose
     // DST jump lands at midnight resolves to the previous day, which would silently drop a day.
@@ -87,9 +89,15 @@ export function AttractionHistoryGrid({ history, schedule, todayIso }: Attractio
 
   return (
     <div className="grid grid-cols-2 gap-2 @min-[1024px]/page:grid-cols-7">
-      {days.map((day) => (
+      {days.slice(0, PHONE_HISTORY_DAYS).map((day) => (
         <HistoryDay key={day.dateStr} day={day} yMax={yMax} />
       ))}
+      {/* The rest of the month waits for a tap on a phone; the newest week is what most read. */}
+      <MobileMore label={tCommon('showMore')} contents buttonClassName="col-span-full mt-0">
+        {days.slice(PHONE_HISTORY_DAYS).map((day) => (
+          <HistoryDay key={day.dateStr} day={day} yMax={yMax} />
+        ))}
+      </MobileMore>
     </div>
   );
 }

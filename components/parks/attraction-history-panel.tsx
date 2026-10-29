@@ -75,6 +75,7 @@ export function AttractionHistoryPanel({
         )}
         style={
           {
+            '--ride-cal-h-phone': `${reservation.phone}px`,
             '--ride-cal-h': `${reservation.base}px`,
             '--ride-cal-h-lg': `${reservation.lg}px`,
           } as React.CSSProperties
@@ -93,7 +94,7 @@ export function AttractionHistoryPanel({
           fetch landed, pulling the whole page tail up with it. Nothing in the shell predicts it
           (`statistics` is null on every attraction of the park payload), so the reservation
           cannot be conditional; what it can do is not be given back. */}
-        <div className="min-h-[var(--ride-cal-h)] @min-[1024px]/page:min-h-[var(--ride-cal-h-lg)]">
+        <div className="min-h-[var(--ride-cal-h-phone)] @min-[768px]/page:min-h-[var(--ride-cal-h)] @min-[1024px]/page:min-h-[var(--ride-cal-h-lg)]">
           {loading ? (
             <AttractionHistoryGridPlaceholder />
           ) : (

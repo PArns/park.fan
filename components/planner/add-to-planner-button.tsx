@@ -233,8 +233,10 @@ export function AddToPlannerButton({
       aria-label={
         planned ? `${t('plannedTimes', { count: plannedCount })} — ${t('addAgain')}` : t('addRide')
       }
+      // Icon only on a phone: beside the star, a label leaves the h1 too narrow for the ride's
+      // name. The aria-label names the button there.
       className={cn(
-        'inline-flex items-center gap-1.5 rounded-md px-2 py-1 text-xs font-medium transition-colors',
+        'inline-flex items-center gap-1.5 rounded-md px-2 py-1 text-xs font-medium transition-colors max-sm:size-9 max-sm:justify-center max-sm:p-0',
         planned
           ? 'bg-crowd-low/20 text-crowd-low hover:bg-crowd-low/30'
           : 'bg-accent/60 text-foreground hover:bg-accent',
@@ -242,7 +244,7 @@ export function AddToPlannerButton({
       )}
     >
       {planned ? <Repeat className="size-3.5" /> : <Plus className="size-3.5" />}
-      <span>{planned ? t('addAgain') : t('addRide')}</span>
+      <span className="max-sm:hidden">{planned ? t('addAgain') : t('addRide')}</span>
     </button>
   );
 

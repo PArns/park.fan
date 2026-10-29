@@ -54,6 +54,11 @@ test('one column is the whole window', () => historyRows(1), 31);
 test('below lg: 16 tiles of 119 with 15 gaps', () => historyGridReservation().base, 2024);
 test('from lg: 5 tiles of 164 with 4 gaps', () => historyGridReservation().lg, 852);
 test(
+  'phone: 4 tiles of 119 with 3 gaps, a gap and the 44 px button',
+  () => historyGridReservation().phone,
+  552
+);
+test(
   'the reservation is the same on every day of the year',
   () => {
     const a = historyGridReservation();

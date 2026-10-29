@@ -142,6 +142,7 @@ export const LandSection = memo(function LandSection({
                 attraction={attraction}
                 parkPath={parkPath}
                 parkStatus={parkStatus}
+                underParkStatus
                 timezone={timezone}
                 todayIso={todayIso}
                 parkName={parkName}
