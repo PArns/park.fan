@@ -1,5 +1,6 @@
 import { useTranslations } from 'next-intl';
 import { Badge } from '@/components/ui/badge';
+import { CAPS_CENTRED_CLASS } from '@/lib/utils/text-box';
 import { cn } from '@/lib/utils';
 import type { CrowdLevel } from '@/lib/api/types';
 import { CROWD_BADGE_CLASS, isColoredCrowdLevel } from '@/lib/utils/crowd-level-styles';
@@ -24,6 +25,8 @@ interface CrowdLevelBadgeProps {
   // renders it as a distinct "closed" chip (used e.g. in the header forecast panel).
   level: CrowdLevel | 'closed' | null | undefined;
   showLabel?: boolean;
+  /** Centre the label in the pill, as `ParkStatusBadge`'s `centreCaps` does. */
+  centreCaps?: boolean;
   className?: string;
   /**
    * Wrap the badge in the crowd-scale tooltip (hover on a pointer, tap on a phone).
@@ -42,6 +45,7 @@ interface CrowdLevelBadgeProps {
 export function CrowdLevelBadge({
   level,
   showLabel = true,
+  centreCaps,
   className,
   withScale = false,
 }: CrowdLevelBadgeProps) {
@@ -54,7 +58,9 @@ export function CrowdLevelBadge({
   const badge = (
     <Badge className={cn(config.colorClass, className)}>
       {config.Icon && <config.Icon className="h-3 w-3 text-white" />}
-      {showLabel ? t(level) : null}
+      {showLabel ? (
+        <span className={centreCaps ? CAPS_CENTRED_CLASS : undefined}>{t(level)}</span>
+      ) : null}
     </Badge>
   );
 

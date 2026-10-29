@@ -88,7 +88,9 @@ function PhoneRow({
             <ParkStatusBadge
               status={item.status}
               label={item.statusLabel}
-              className={PHONE_PILL_CLASS}
+              centreCaps
+              // The icon as far from the left edge as from the top.
+              className={cn(PHONE_PILL_CLASS, 'pl-0.75')}
             />
             {wait != null && (
               <WaitBadge minutes={wait} className={PHONE_PILL_CLASS}>

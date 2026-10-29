@@ -264,7 +264,6 @@ How wide the desktop panel is, as an external store rather than component state:
 - `parkMinuteNow` _function_: Park-local minutes since midnight, through the cached formatter since the now line ticks. `hourCycle: 'h23'`, not `hour12: false`, which yields `24` for midnight in some runtimes.
 - `formatGridTime` _function_: Minutes since park-local midnight as `10:30`. Takes minutes, never a `Date`, so the reader's zone cannot enter. Past midnight folds back: 25:00 labels as `01:00`.
 - `longDate` _function_: `Donnerstag, 17. September`: the day a plan is filed under, in the reader's language. Formatted from noon UTC, which no offset can push across a date boundary. Shared, so the wizard and the fit assistant cannot name different days.
-- `daysBetween` _function_: Whole calendar days from `from` to `to`, negative where `to` is earlier: a count of nights, from noon UTC on both sides (see `longDate`), so the difference is whole by construction.
 - `dayClock` _function_: The clock for one planned date, read in the park's zone. `now` is a parameter so a test can set the time.
 - `nextPlannedDay` _function_: Which planned day comes next, across every park in the plan. Each park's days are measured against that park's own today, and the nights between are compared, since two parks can be on different dates at once.
 - `pastActiveDay` _function_: The day the panel would open on, if that day is already over, so the two ways in that name no day (the edge tab and the header button) can ask instead of opening yesterday's plan.
