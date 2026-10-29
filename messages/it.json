@@ -1199,8 +1199,9 @@
     "statsPage": {
       "breadcrumb": "Tempi di attesa medi",
       "h1Suffix": "Tempi di attesa medi",
-      "metaTitle": "{park}: tempi di attesa medi",
-      "metaTitleShort": "{park}: attesa media",
+      "metaTitle": "{park}: mesi, giorni e ore più affollati",
+      "metaTitleShort": "{park}: giorni e mesi più affollati",
+      "liveLink": "{park}: tempi di attesa in diretta →",
       "metaDescription": "Quanto si aspetta davvero {inPark} a {city}? Attesa tipica e di picco per mese, giorno e ora, misurata su {days} giorni di apertura.",
       "metaDescriptionNoCity": "Quanto si aspetta davvero {inPark}? Attesa tipica e di picco per mese, giorno e ora, misurata su {days} giorni di apertura.",
       "leadBusiest": "{count, plural, =1 {Il mese più affollato {inPark} è {months}, con {minutes} minuti nella norma.} other {I mesi più affollati {inPark} sono {months}, con {minutes} minuti nella norma.}}",

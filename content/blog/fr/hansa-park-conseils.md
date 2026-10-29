@@ -26,11 +26,10 @@ parkLinks:
 rideLinks:
   - hansa-park/*
 seo:
-  title: 'Hansa-Park 2026 : conseils, tarifs et le Kärnan à la mer'
+  title: 'Hansa-Park 2026 : horaires, tarifs et coasters'
   description: >-
-    Le Hansa-Park n’a aucun jour de fermeture dans sa saison 2026. Herbstzauber
-    en octobre, tarifs, parking, les huit coasters et la Buddenbrook-Turm de
-    2027.
+    Hansa-Park 2026 : ouvert du 26 mars au 25 octobre, sans un jour de
+    fermeture. Saison 2027 dès le 25 mars. Tarifs, parking et les huit coasters.
   keywords:
     - Hansa-Park
     - Hansa-Park conseils
@@ -186,7 +185,7 @@ versunkene Stadt », d’environ 15 minutes, et la scène en plein air de l’A
 Une fois le spectacle commencé, le parc ne laisse plus entrer personne, et photos et vidéos sont
 interdites pendant la représentation.
 
-## Un calendrier sans jour de fermeture
+## Horaires 2026 : pas un seul jour de fermeture
 
 La saison 2026 court du **26 mars au 25 octobre**. Entre ces deux dates, le calendrier du parc n’a **pas un
 seul jour de fermeture**. Cela fait 214 jours d’ouverture.

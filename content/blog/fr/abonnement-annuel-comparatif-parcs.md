@@ -29,7 +29,7 @@ coverImage:
   caption: 'Symbolica à l’Efteling. L’abonnement Classic y est bloqué 68 jours en 2027.'
   credit: 'park.fan'
 seo:
-  title: 'Abonnement annuel parc d’attractions : tarifs et rentabilité'
+  title: 'Pass annuels 2026 : Toverland 160 €, aucun au Phantasialand'
   description: >-
     À l’Efteling, à Europa-Park et à Toverland, l’abonnement annuel le moins
     cher est amorti en quatre à six visites. Phantasialand n’en a plus depuis

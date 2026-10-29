@@ -1199,8 +1199,9 @@
     "statsPage": {
       "breadcrumb": "Durchschnittliche Wartezeiten",
       "h1Suffix": "Durchschnittliche Wartezeiten",
-      "metaTitle": "{park}: durchschnittliche Wartezeiten",
-      "metaTitleShort": "{park}: Wartezeiten im Schnitt",
+      "metaTitle": "{park}: die vollsten Monate, Tage und Uhrzeiten",
+      "metaTitleShort": "{park}: die vollsten Tage und Monate",
+      "liveLink": "{park}: Wartezeiten live →",
       "metaDescription": "Wie lange wartet man {inPark} in {city} wirklich? Typische und Spitzenwerte nach Monat, Wochentag und Uhrzeit, gemessen an {days} Öffnungstagen.",
       "metaDescriptionNoCity": "Wie lange wartet man {inPark} wirklich? Typische und Spitzenwerte nach Monat, Wochentag und Uhrzeit, gemessen an {days} Öffnungstagen.",
       "leadBusiest": "Am vollsten ist es {inPark} im {months}, mit typisch {minutes} Minuten.",

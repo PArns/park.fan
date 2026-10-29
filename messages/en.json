@@ -1199,8 +1199,9 @@
     "statsPage": {
       "breadcrumb": "Average Wait Times",
       "h1Suffix": "Average Wait Times",
-      "metaTitle": "{park}: Average Wait Times",
-      "metaTitleShort": "{park}: Average Waits",
+      "metaTitle": "{park}: Busiest Months, Days and Hours",
+      "metaTitleShort": "{park}: Busiest Days and Months",
+      "liveLink": "{park}: live wait times →",
       "metaDescription": "How long do you really queue {inPark} in {city}? Typical and peak waits by month, weekday and hour, measured across {days} operating days.",
       "metaDescriptionNoCity": "How long do you really queue {inPark}? Typical and peak waits by month, weekday and hour, measured across {days} operating days.",
       "leadBusiest": "It is busiest {inPark} in {months}, at a typical {minutes} minutes.",

@@ -1,0 +1,3 @@
+### Durchschnittliche Wartezeiten: eigener Titel, Link auf die Live-Seite
+
+Google zeigte für „europapark wartezeiten“ und seine Varianten im Oktober rund 1.700-mal die Seite mit den durchschnittlichen Wartezeiten, die Live-Seite des Europa-Park nur 184-mal; für „rulantica wartezeiten“ war es dasselbe. Der Titel „{Park}: durchschnittliche Wartezeiten“ konkurrierte mit der Parkseite um ihre wichtigste Anfrage. Er heißt jetzt „{Park}: die vollsten Monate, Tage und Uhrzeiten“, in allen sechs Sprachen nach demselben Muster. Unter der Einleitung steht ein Link „{Park}: Wartezeiten live →“ auf die Parkseite.

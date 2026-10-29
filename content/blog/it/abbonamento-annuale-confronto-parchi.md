@@ -28,7 +28,7 @@ coverImage:
   caption: 'Symbolica all’Efteling. L’abbonamento Classic lì è bloccato in 68 giorni nel 2027.'
   credit: 'park.fan'
 seo:
-  title: 'Abbonamento annuale parchi: prezzi, giorni bloccati, pareggio'
+  title: 'Abbonamenti 2026: Toverland 160 €, Phantasialand nessuno'
   description: >-
     All’Efteling, a Europa-Park e a Toverland l’abbonamento annuale più
     economico si ripaga con quattro-sei visite. Phantasialand non lo vende più

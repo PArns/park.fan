@@ -1199,8 +1199,9 @@
     "statsPage": {
       "breadcrumb": "Tiempos de espera medios",
       "h1Suffix": "Tiempos de espera medios",
-      "metaTitle": "{park}: tiempos de espera medios",
-      "metaTitleShort": "{park}: espera media",
+      "metaTitle": "{park}: meses, días y horas con más gente",
+      "metaTitleShort": "{park}: días y meses con más gente",
+      "liveLink": "{park}: tiempos de espera en vivo →",
       "metaDescription": "¿Cuánto se espera realmente {inPark} en {city}? Espera típica y punta por mes, día y hora, medida en {days} días de apertura.",
       "metaDescriptionNoCity": "¿Cuánto se espera realmente {inPark}? Espera típica y punta por mes, día y hora, medida en {days} días de apertura.",
       "leadBusiest": "{count, plural, =1 {El mes con más gente {inPark} es {months}, con {minutes} minutos habituales.} other {Los meses con más gente {inPark} son {months}, con {minutes} minutos habituales.}}",
