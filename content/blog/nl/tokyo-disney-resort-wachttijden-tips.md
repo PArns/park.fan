@@ -2,6 +2,7 @@
 title: 'Tokyo Disney Resort: wachttijden en tips voor Disneyland en DisneySea'
 translationKey: tokyo-disney-resort-guide
 date: '2026-10-26'
+updatedAt: '2026-10-29'
 author: patrick
 mode: published
 featured: false
@@ -330,7 +331,7 @@ Bij station Resort Gateway ligt ook Ikspiari, een winkelcentrum van de OLC met e
 
 ## Wat er in 2027 nieuw komt
 
-Naast “Space Mountain Earthrise” moet in het voorjaar van 2027 in Tokyo Disneyland “Sugar Rush: Sweet Rescue” opengaan, een attractie rond de film “Wreck-It Ralph”. Oorspronkelijk stond die gepland voor 2026.
+Naast “Space Mountain Earthrise” gaat op **15 april 2027** in Tokyo Disneyland “Sugar Rush: Sweet Rescue” open, volgens Disney de eerste attractie ter wereld rond de film “Wreck-It Ralph”. Oorspronkelijk stond die gepland voor 2026. In de wagens zitten scanners waarmee je de Sugar Bugs van King Candy terugverandert in snoep; je score staat aan het eind op het scherm in de wagen en een tijdje ook in de app van het resort. Op dezelfde dag opent ernaast de winkel Pixel Prism. De popcornkraam Popping Station aan de Tomorrowland Plaza is er al vanaf 17 maart 2027, met de nieuwe smaak Sugar-Lime die je alleen in Tokyo Disneyland krijgt. Wie niet tot april wil wachten: vanaf 12 januari 2027 is er een spel voor de smartphone bij de attractie, met in het park een eigen versie die het decor eromheen gebruikt.
 
 ## De geschiedenis van het resort
 
@@ -432,6 +433,7 @@ Het feest voor de 25e verjaardag, “Sparkling Jubilee”, loopt van 15 april 20
 - Rijtijden, capaciteit en minimumlengtes van de attracties (officieel):
   [Tokyo Disneyland](https://www.tokyodisneyresort.jp/en/tdl/attraction/)
   · [Tokyo DisneySea](https://www.tokyodisneyresort.jp/en/tds/attraction/)
+- [Sugar Rush: Sweet Rescue, openingsdatum en details (Disney Parks Blog)](https://disneyparksblog.com/tdr/wreck-it-ralph-ride-at-tokyo-disney/)
 - Wachttijden, meetdagen, dagverlopen, minimumlengtes en rope drop: de widgets in dit
   bericht en de parkpagina's van [Tokyo Disneyland](ref:tokyo-disneyland) en
   [Tokyo DisneySea](ref:tokyo-disneysea), uit eigen metingen

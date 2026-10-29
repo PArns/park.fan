@@ -2,6 +2,7 @@
 title: 'Tokyo Disney Resort : temps d’attente et conseils pour Disneyland et DisneySea'
 translationKey: tokyo-disney-resort-guide
 date: '2026-10-26'
+updatedAt: '2026-10-29'
 author: patrick
 mode: published
 featured: false
@@ -331,7 +332,7 @@ Le **Tokyo Disneyland Hotel** est à la station Tokyo Disneyland, le **Disney Am
 
 ## Ce qui arrive en 2027
 
-En plus de « Space Mountain Earthrise », Tokyo Disneyland doit ouvrir au printemps 2027 « Sugar Rush: Sweet Rescue », une attraction tirée du film « Les Mondes de Ralph ». Elle était d’abord prévue pour 2026.
+En plus de « Space Mountain Earthrise », Tokyo Disneyland ouvre le **15 avril 2027** « Sugar Rush: Sweet Rescue », selon Disney la première attraction au monde tirée du film « Les Mondes de Ralph ». Elle était d’abord prévue pour 2026. Les véhicules portent des scanners avec lesquels tu rends leur forme de bonbon aux Sugar Bugs du roi Candy ; le score s’affiche à la fin sur l’écran du véhicule et, pendant quelque temps, dans l’application du resort. La boutique Pixel Prism ouvre à côté le même jour. Le stand de pop-corn Popping Station, sur la Tomorrowland Plaza, arrive plus tôt, le 17 mars 2027, avec un nouveau parfum Sugar-Lime vendu seulement à Tokyo Disneyland. Pour patienter jusqu’en avril, un jeu sur smartphone lié à l’attraction démarre le 12 janvier 2027, avec une version spéciale dans le parc qui intègre le décor autour de toi.
 
 ## L’histoire du resort
 
@@ -433,6 +434,7 @@ La fête des 25 ans, « Sparkling Jubilee », dure du 15 avril 2026 au 31 mars
 - Durées, capacité et tailles minimales des attractions (officiel) :
   [Tokyo Disneyland](https://www.tokyodisneyresort.jp/en/tdl/attraction/)
   · [Tokyo DisneySea](https://www.tokyodisneyresort.jp/en/tds/attraction/)
+- [Sugar Rush: Sweet Rescue, date d’ouverture et détails (Disney Parks Blog)](https://disneyparksblog.com/tdr/wreck-it-ralph-ride-at-tokyo-disney/)
 - Temps d’attente, jours de mesure, courbes de la journée, tailles minimales et rope drop : les widgets de cet
   article et les pages des parcs [Tokyo Disneyland](ref:tokyo-disneyland) et
   [Tokyo DisneySea](ref:tokyo-disneysea), issus de nos propres mesures

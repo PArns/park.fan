@@ -2,6 +2,7 @@
 title: 'Tokyo Disney Resort: Wait Times and Tips for Disneyland and DisneySea'
 translationKey: tokyo-disney-resort-guide
 date: '2026-10-26'
+updatedAt: '2026-10-29'
 author: patrick
 mode: published
 featured: false
@@ -331,7 +332,7 @@ Resort Gateway station is also where you'll find Ikspiari, an OLC shopping centr
 
 ## What's new in 2027
 
-Besides "Space Mountain Earthrise", Tokyo Disneyland is due to open "Sugar Rush: Sweet Rescue" in spring 2027, a ride based on "Wreck-It Ralph". It was originally planned for 2026.
+Besides "Space Mountain Earthrise", Tokyo Disneyland opens "Sugar Rush: Sweet Rescue" on **15 April 2027**, which Disney calls the first attraction in the world based on "Wreck-It Ralph". It was originally planned for 2026. The ride vehicles carry scanners you use to turn King Candy's Sugar Bugs back into sweets; your score appears on the screen in the vehicle at the end and, for a while afterwards, in the resort app. The Pixel Prism shop opens next door on the same day. The Popping Station popcorn stand on Tomorrowland Plaza arrives earlier, on 17 March 2027, with a new Sugar-Lime flavour sold only at Tokyo Disneyland. For the months before April, a smartphone game tied to the ride starts on 12 January 2027, with a special version inside the park that works the scenery into the game.
 
 ## The resort's history
 
@@ -433,6 +434,7 @@ The 25th birthday celebration, "Sparkling Jubilee", runs from 15 April 2026 to 3
 - Ride times, capacity and height requirements (official):
   [Tokyo Disneyland](https://www.tokyodisneyresort.jp/en/tdl/attraction/)
   · [Tokyo DisneySea](https://www.tokyodisneyresort.jp/en/tds/attraction/)
+- [Sugar Rush: Sweet Rescue, opening date and details (Disney Parks Blog)](https://disneyparksblog.com/tdr/wreck-it-ralph-ride-at-tokyo-disney/)
 - Wait times, measured days, daily profiles, height requirements and rope drop: the widgets in
   this post and the park pages for [Tokyo Disneyland](ref:tokyo-disneyland) and
   [Tokyo DisneySea](ref:tokyo-disneysea), from our own measurements

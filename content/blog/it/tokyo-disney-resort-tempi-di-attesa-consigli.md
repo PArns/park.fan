@@ -2,6 +2,7 @@
 title: 'Tokyo Disney Resort: tempi di attesa e consigli per Disneyland e DisneySea'
 translationKey: tokyo-disney-resort-guide
 date: '2026-10-26'
+updatedAt: '2026-10-29'
 author: patrick
 mode: published
 featured: false
@@ -330,7 +331,7 @@ Sempre alla stazione Resort Gateway c’è Ikspiari, un centro commerciale della
 
 ## Le novità del 2027
 
-Oltre a «Space Mountain Earthrise», nella primavera 2027 a Tokyo Disneyland dovrebbe aprire «Sugar Rush: Sweet Rescue», un’attrazione dedicata al film «Ralph Spaccatutto». In origine era prevista per il 2026.
+Oltre a «Space Mountain Earthrise», il **15 aprile 2027** a Tokyo Disneyland apre «Sugar Rush: Sweet Rescue», secondo Disney la prima attrazione al mondo dedicata al film «Ralph Spaccatutto». In origine era prevista per il 2026. Sui veicoli ci sono scanner con cui riporti a forma di dolcetto i Sugar Bugs di Re Candy; il punteggio compare alla fine sullo schermo del veicolo e, per un po’, anche nell’app del resort. Lo stesso giorno apre accanto il negozio Pixel Prism. Il chiosco di popcorn Popping Station, sulla Tomorrowland Plaza, arriva prima, il 17 marzo 2027, con il nuovo gusto Sugar-Lime che si trova solo a Tokyo Disneyland. Per chi non vuole aspettare aprile, dal 12 gennaio 2027 c’è un gioco per smartphone legato all’attrazione, con una versione speciale nel parco che usa lo scenario intorno.
 
 ## La storia del resort
 
@@ -432,6 +433,7 @@ La festa per i 25 anni, «Sparkling Jubilee», va dal 15 aprile 2026 al 31 marzo
 - Durata, capienza e altezze minime delle attrazioni (ufficiale):
   [Tokyo Disneyland](https://www.tokyodisneyresort.jp/en/tdl/attraction/)
   · [Tokyo DisneySea](https://www.tokyodisneyresort.jp/en/tds/attraction/)
+- [Sugar Rush: Sweet Rescue, data di apertura e dettagli (Disney Parks Blog)](https://disneyparksblog.com/tdr/wreck-it-ralph-ride-at-tokyo-disney/)
 - Tempi di attesa, giorni misurati, andamento orario, altezze minime e rope drop: i widget in questo
   articolo e le pagine del parco di [Tokyo Disneyland](ref:tokyo-disneyland) e
   [Tokyo DisneySea](ref:tokyo-disneysea), da misurazioni nostre
