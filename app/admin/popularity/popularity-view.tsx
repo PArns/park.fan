@@ -19,6 +19,7 @@ import { locales, type Locale } from '@/i18n/config';
 import type { PageViewKind as Kind } from '@/lib/analytics/page-views';
 import { cn } from '@/lib/utils';
 import { Segmented } from '../_ui/controls';
+import { CATEGORICAL, SeriesChart } from '../_ui/charts';
 
 /** German first: most of the traffic, and the admin's own language. */
 const LOCALES: readonly Locale[] = ['de', ...locales.filter((locale) => locale !== 'de')];
@@ -32,6 +33,9 @@ const KIND_LABEL: Record<Kind, string> = {
   park: 'Parks',
   attraction: 'Fahrgeschäfte',
 };
+
+/** The kinds in the order the chart draws them, each keeping its colour. */
+const KINDS = Object.keys(KIND_LABEL) as Kind[];
 
 /** The answer of `GET /v1/admin/page-views`, see the backend's docs/frontend/page-views.md. */
 interface PageViewsOverview {
@@ -59,6 +63,11 @@ interface PageViewsOverview {
 export type PostTitles = Record<string, { title: string; path: string }>;
 
 const number = new Intl.NumberFormat('de-DE');
+
+/** One day's views over every kind. */
+function dayTotal(day: PageViewsOverview['daily'][number]): number {
+  return Object.values(day.byKind).reduce((sum, views) => sum + (views ?? 0), 0);
+}
 
 /** The language with the most views, as „DE · 72 %". */
 function leadingLocale(byLocale: ByLocale, total: number): string | undefined {
@@ -125,10 +134,7 @@ export function PopularityView({ postTitles }: { postTitles: PostTitles }) {
   }
 
   const total = data.kinds.reduce((sum, kind) => sum + kind.total, 0);
-  const dailyMax = Math.max(
-    1,
-    ...data.daily.map((day) => Object.values(day.byKind).reduce((a, b) => a + (b ?? 0), 0))
-  );
+  const today = new Date().toISOString().slice(0, 10);
 
   return (
     <AdminPage width="wide">
@@ -196,25 +202,32 @@ export function PopularityView({ postTitles }: { postTitles: PostTitles }) {
           </Panel>
 
           <Panel>
-            <PanelHeader icon={CalendarDays} title="Pro Tag" hint="Alle Arten zusammen, UTC" />
+            <PanelHeader
+              icon={CalendarDays}
+              title="Pro Tag"
+              hint="Aufrufe zusammen und je Art, UTC. Ein Klick auf die Legende blendet eine Linie aus; der heutige Tag läuft noch."
+            />
             <PanelBody>
-              <div className="flex h-28 items-end gap-1" aria-label="Aufrufe pro Tag">
-                {data.daily.map((day) => {
-                  const views = Object.values(day.byKind).reduce((a, b) => a + (b ?? 0), 0);
-                  return (
-                    <div
-                      key={day.day}
-                      title={`${day.day}: ${number.format(views)} Aufrufe`}
-                      className="bg-primary/70 hover:bg-primary min-w-1 flex-1 rounded-t transition-colors"
-                      style={{ height: `${Math.max(4, (views / dailyMax) * 100)}%` }}
-                    />
-                  );
-                })}
-              </div>
-              <div className="text-muted-foreground mt-1.5 flex justify-between text-[11px] tabular-nums">
-                <span>{data.daily[0]?.day}</span>
-                <span>{data.daily.at(-1)?.day}</span>
-              </div>
+              <SeriesChart
+                label="Aufrufe pro Tag"
+                days={data.daily.map((day) => day.day)}
+                partial={data.daily.map((day) => day.day === today)}
+                toggleable
+                series={[
+                  {
+                    key: 'all',
+                    label: 'Zusammen',
+                    color: CATEGORICAL[0],
+                    values: data.daily.map(dayTotal),
+                  },
+                  ...KINDS.map((kind, index) => ({
+                    key: kind,
+                    label: KIND_LABEL[kind],
+                    color: CATEGORICAL[index + 1],
+                    values: data.daily.map((day) => day.byKind[kind] ?? 0),
+                  })),
+                ]}
+              />
             </PanelBody>
           </Panel>
 
