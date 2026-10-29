@@ -1741,6 +1741,17 @@
     "breadcrumb": "Six Flags",
     "parkLink": "Alle Six-Flags-Parks"
   },
+  "universal": {
+    "metaTitle": "Universal Wartezeiten LIVE: alle {count} Parks",
+    "metaTitleShort": "Universal Wartezeiten LIVE: alle Parks",
+    "metaDescription": "Live-Wartezeiten aller Universal-Parks von Hollywood und Orlando bis Osaka, Singapur und Peking: welcher Park heute offen ist und wie lange du wartest.",
+    "title": "Universal Wartezeiten: alle Parks live",
+    "intro": "Gezählt sind die Parks mit „Universal“ im Namen: Universal Studios Hollywood, die vier Parks in Orlando mit Epic Universe und dem Wasserpark Volcano Bay sowie die Universal-Studios-Parks in Osaka, Singapur und Peking. Bei jedem steht, ob er heute offen ist und wie voll er ist.",
+    "summary": "{parks, plural, =1 {# Park} other {# Parks}} in {countries, plural, =1 {# Land} other {# Ländern}}",
+    "listName": "Universal-Parks",
+    "breadcrumb": "Universal",
+    "parkLink": "Alle Universal-Parks"
+  },
   "stats": {
     "globalStats": "Globale Statistiken",
     "globalStatsIntro": "Live-Daten von Freizeitparks und Attraktionen weltweit.",
@@ -1857,6 +1868,8 @@
       "titleTemplate": "{park} Wartezeiten LIVE – {city}",
       "titleTemplateNoCity": "{park} – Wartezeiten LIVE & beste Tage",
       "metaDescriptionTemplateNoCity": "Live-Wartezeiten & Crowd-Kalender {forPark}. Prognose für heute, beste Besuchstage & Öffnungszeiten auf einen Blick.",
+      "metaDescriptionFacts": "Live-Wartezeiten {forPark}, alle 5 Minuten neu. Ruhigste Tage: {quietDays}. Dazu Crowd-Kalender, Prognose & Öffnungszeiten.",
+      "metaDescriptionFactsShort": "Live-Wartezeiten {forPark}, alle 5 Minuten neu. Ruhigste Tage: {quietDays}. Dazu der Crowd-Kalender.",
       "keywordWaitTimes": "Wartezeiten",
       "keywordCrowdCalendar": "Crowd-Kalender",
       "keywordBestTime": "beste Besuchszeit",

@@ -30,6 +30,7 @@ import { ScrollLockGutter } from '@/components/layout/scroll-lock-gutter';
 import { ScrollToTop } from '@/components/common/scroll-to-top';
 import { CardPointerFx } from '@/components/parks/card-pointer-fx';
 import { PushTimezoneSync } from '@/components/push/push-timezone-sync';
+import { SearchConsoleGate } from '@/components/admin/search-console-gate';
 import { WebMcpTools } from '@/components/agents/webmcp-tools';
 import { NavigationProgress } from '@/components/layout/navigation-progress';
 import { NewPostsWatcher } from '@/components/blog/new-posts-watcher';
@@ -258,6 +259,9 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
                     everywhere, and is mounted here rather than in the root layout so /admin —
                     which has its own — never carries it. */}
                 <WebMcpTools locale={locale} />
+                {/* Google's figures for the page on screen, for a browser signed in to the admin;
+                    for everyone else a cookie check and nothing more. */}
+                <SearchConsoleGate />
                 <LanguageBanner currentLocale={locale as Locale} />
                 {/* "New on the blog since your last visit". Renders nothing on a first visit
                     and nothing until the page is idle; the posts and the toast's strings are

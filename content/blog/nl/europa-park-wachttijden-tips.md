@@ -1,5 +1,5 @@
 ---
-title: 'Europa-Park: Duitslands grootste park'
+title: 'Europa-Park: op welke dagen het het rustigst is'
 translationKey: europa-park-guide
 date: '2026-08-21'
 updatedAt: '2026-10-04'
@@ -35,7 +35,7 @@ coverImage:
   caption: 'Voltron Nevera in het Kroatische themagebied. Zeven overkopelementen, en de steilste lancering ter wereld.'
   credit: 'park.fan'
 seo:
-  title: 'Wachttijden: wanneer is het Europa-Park het leegst?'
+  title: 'Europa-Park: wanneer is het rustigst? Beste dagen en tips'
   description: >-
     Het leegst is het Europa-Park op zondag en donderdag in mei en juni, buiten
     de schoolvakanties in Baden-Württemberg, Zwitserland en de Elzas.

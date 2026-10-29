@@ -1,5 +1,5 @@
 ---
-title: 'Phantasialand: tempi di attesa e consigli di un habitué'
+title: 'A Phantasialand il Quick Pass conviene solo nei giorni pieni'
 translationKey: phantasialand-tips-2026
 date: '2026-07-24'
 updatedAt: '2026-10-14'
@@ -28,7 +28,7 @@ coverImage:
   caption: 'Taron nel villaggio di basalto Klugheim, per me l’angolo più bello del parco.'
   credit: 'park.fan'
 seo:
-  title: 'Phantasialand: attese e consigli di un recidivo'
+  title: 'Phantasialand: Quick Pass, giorni tranquilli e attese'
   description: >-
     Meno attesa al Phantasialand: il giorno giusto, il Quick Pass, Rutmor’s
     Taverne e il Wintertraum, da chi ci va da oltre trent’anni.

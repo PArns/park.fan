@@ -1,5 +1,5 @@
 ---
-title: 'Europa-Park: Deutschlands größter Park'
+title: 'Europa-Park: An welchen Tagen am wenigsten los ist'
 translationKey: europa-park-guide
 date: '2026-08-21'
 updatedAt: '2026-10-04'
@@ -36,7 +36,7 @@ coverImage:
   caption: 'Voltron Nevera im kroatischen Themenbereich. Sieben Überkopfelemente, und der steilste Katapultstart der Welt.'
   credit: 'park.fan'
 seo:
-  title: 'Wartezeiten: Wann ist der Europa-Park am leersten?'
+  title: 'Europa-Park: Wann ist am wenigsten los? Beste Tage & Tipps'
   description: >-
     Am leersten ist der Europa-Park sonntags und donnerstags im Mai und Juni,
     außerhalb der Ferien in Baden-Württemberg, der Schweiz und im Elsass.

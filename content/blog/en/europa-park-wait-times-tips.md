@@ -1,5 +1,5 @@
 ---
-title: 'Europa-Park: Germany’s biggest park'
+title: 'Europa-Park: the days when it’s least busy'
 translationKey: europa-park-guide
 date: '2026-08-21'
 updatedAt: '2026-10-04'
@@ -35,7 +35,7 @@ coverImage:
   caption: 'Voltron Nevera in the Croatian themed area. Seven inversions, and the steepest launch in the world.'
   credit: 'park.fan'
 seo:
-  title: 'Wait times: when is Europa-Park least busy?'
+  title: 'Europa-Park: when is it least busy? Best days and tips'
   description: >-
     Europa-Park is quietest on Sundays and Thursdays in May and June, outside
     the school holidays in Baden-Württemberg, Switzerland and Alsace.

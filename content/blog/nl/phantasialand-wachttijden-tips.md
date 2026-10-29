@@ -1,5 +1,5 @@
 ---
-title: 'Phantasialand: wachttijden en tips van een vaste bezoeker'
+title: 'In Phantasialand loont de Quick Pass alleen op drukke dagen'
 translationKey: phantasialand-tips-2026
 date: '2026-07-24'
 updatedAt: '2026-10-14'
@@ -28,7 +28,7 @@ coverImage:
   caption: 'Taron in het basaltdorp Klugheim, voor mij de mooiste plek van het park.'
   credit: 'park.fan'
 seo:
-  title: 'Phantasialand wachttijden & tips van een herhalingsdader'
+  title: 'Phantasialand tips: Quick Pass, rustige dagen, wachttijden'
   description: >-
     Phantasialand-wachttijden klein houden: de juiste dag, de Quick Pass,
     Rutmor’s Taverne en Wintertraum, van iemand die er al ruim dertig jaar komt.

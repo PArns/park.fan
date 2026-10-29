@@ -1,8 +1,8 @@
 ---
-title: 'Eigen eten meenemen naar een pretpark: wat mag waar'
+title: 'Eigen eten meenemen naar Walibi, Efteling, Phantasialand en twaalf andere parken'
 translationKey: bring-own-food-theme-parks
 date: '2026-10-09'
-updatedAt: '2026-10-14'
+updatedAt: '2026-10-29'
 author: patrick
 mode: published
 featured: false
@@ -29,10 +29,9 @@ coverImage:
   caption: 'Picknicktafel boven het strand bij de Santa Cruz Beach Boardwalk in Californië, met de Giant Dipper erachter.'
   credit: 'Polina Lavor / Unsplash'
 seo:
-  title: 'Pretpark: eigen eten en drinken meenemen toegestaan?'
+  title: 'Eigen eten meenemen naar Walibi, Efteling of Phantasialand?'
   description: >-
-    Eigen eten in het pretpark: wat 15 parken in DE, NL, BE en FR toestaan, waar
-    je picknickt en waar glas, koelboxen en barbecues buiten blijven.
+    Ja bij Walibi Holland, de Efteling en Phantasialand; alcohol blijft bij Walibi en Phantasialand buiten. Wat 15 pretparken in DE, NL, BE en FR toestaan.
   keywords:
     - eigen eten meenemen pretpark
     - eten meenemen Efteling
@@ -99,7 +98,7 @@ Stand van 9 oktober 2026:
 
 ### Europa-Park
 
-In de parkregels van [Europa-Park](ref:europa-park) staat niets over meegebracht eten. Verboden zijn barbecueën en
+Ja, eten en drinken mag je meenemen naar [Europa-Park](ref:europa-park): de parkregels verbieden het niet. Verboden zijn barbecueën en
 kookapparatuur, en ook grote hoeveelheden alcohol en sterke drank. Grote koffers horen in de kluisjes bij de hoofdingang.
 
 Op zijn pagina met tips voor je bezoek wijst het park picknickplaatsen aan: in het historische Schlosspark Balthasar in
@@ -111,7 +110,9 @@ In de Europa-Park & Rulantica-app bestel je eten en drinken vooraf, betaal je me
 
 ### Phantasialand
 
-[Phantasialand](ref:phantasialand) controleert tassen bij de ingang, met detectoren en steekproefsgewijs. Op de lijst van
+Ja, eten en frisdrank mag je meenemen naar [Phantasialand](ref:phantasialand). Alcohol blijft buiten, in elke verpakking.
+
+Het park controleert tassen bij de ingang, met detectoren en steekproefsgewijs. Op de lijst van
 verboden voorwerpen staan messen en scharen, pepperspray, vuurwerk, wapens, skateboards, skeelers, fietsen en Segways.
 Daar komt alcohol in elke verpakking bij, dus ook een ongeopend flesje bier.
 
@@ -152,7 +153,7 @@ Om te eten is er een picknickweide met banken, nummer 45 op de parkplattegrond. 
 
 ### Movie Park Germany
 
-Het parkreglement van [Movie Park Germany](ref:movie-park-germany) verbiedt om alcohol mee te nemen en om op het hele
+Ja, eten en frisdrank mag je meenemen naar [Movie Park Germany](ref:movie-park-germany). Het parkreglement verbiedt om alcohol mee te nemen en om op het hele
 terrein te barbecueën. Over meegebracht eten staat er niets in. Grote koffers en andere omvangrijke spullen blijven buiten.
 
 Tijdens het Halloween Horror Festival gelden eigen regels. Volgens de FAQ van het festival zijn alcohol en alle dranken in
@@ -307,6 +308,22 @@ In de meeste parken wel. Heide Park, de Efteling, Toverland, Walibi Holland, Fut
 uitdrukkelijk toe, Disneyland Paris zonder koelbox en tafel. In Bobbejaanland, Walibi Belgium, Parc Astérix en
 Plopsaland Deutschland mag je picknicken op de plekken die daarvoor zijn aangewezen. In de regels van Europa-Park,
 Phantasialand, Hansa-Park, Legoland Deutschland en Movie Park staat er niets over.
+
+### Mag je eten en drinken meenemen naar Europa-Park?
+
+Ja. De parkregels verbieden alleen barbecues en kookapparatuur, grote hoeveelheden alcohol en sterke drank.
+Picknickplekken liggen in het Historische Schlosspark Balthasar in themagebied Duitsland, naast Wodan Timburcoaster. In
+waterwereld Rulantica is meegebracht eten verboden.
+
+### Mag je eten en drinken meenemen naar Phantasialand?
+
+Ja, alleen geen alcohol, ook niet het dichte flesje bier dat zo onschuldig in je rugzak zit. Bij de ingang worden tassen
+gecontroleerd, met detectoren en steekproefsgewijs.
+
+### Mag je eten en drinken meenemen naar Movie Park Germany?
+
+Ja, behalve alcohol. Tijdens het Halloween Horror Festival blijven ook alle drankjes in glazen flessen buiten, en voor de
+ingang worden tassen gecontroleerd.
 
 ### Mag je glazen flessen meenemen naar een pretpark?
 

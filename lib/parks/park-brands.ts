@@ -7,8 +7,10 @@ import type { City, GeoStructure, ParkReference } from '@/lib/api/types';
  * on the page, which is what a hand-kept list would get wrong the day a park is sold.
  */
 export interface ParkBrand {
-  /** The page's path segment under `/parks`. */
-  slug: string;
+  /** The page's path segment under `/parks`; each has its own page folder there. */
+  slug: 'six-flags' | 'universal';
+  /** The message namespace of its page: German compounds differ per brand ("Six-Flags-Parks"). */
+  namespace: 'sixFlags' | 'universal';
   /** How the brand is written. */
   name: string;
   /**
@@ -19,12 +21,24 @@ export interface ParkBrand {
   names: readonly string[];
 }
 
-/** Six Flags, the one brand with a page so far. */
+/** Six Flags, with its Hurricane Harbor water parks. */
 export const SIX_FLAGS: ParkBrand = {
   slug: 'six-flags',
+  namespace: 'sixFlags',
   name: 'Six Flags',
   names: ['Six Flags', 'Hurricane Harbor'],
 };
+
+/** Universal: Hollywood, the four Orlando parks (Volcano Bay included) and the three in Asia. */
+export const UNIVERSAL: ParkBrand = {
+  slug: 'universal',
+  namespace: 'universal',
+  name: 'Universal',
+  names: ['Universal'],
+};
+
+/** Every brand with a page, for the sitemap, the content-change crawl and the park page's link. */
+export const PARK_BRANDS: readonly ParkBrand[] = [SIX_FLAGS, UNIVERSAL];
 
 /** Which of `brand.names` a park's name starts with, as its index, or -1. */
 function brandNameIndex(brand: ParkBrand, parkName: string): number {
@@ -42,7 +56,7 @@ export function isBrandPark(brand: ParkBrand, parkName: string): boolean {
 
 /** The brand a park belongs to by its name, or null. */
 export function parkBrandOf(parkName: string): ParkBrand | null {
-  return isBrandPark(SIX_FLAGS, parkName) ? SIX_FLAGS : null;
+  return PARK_BRANDS.find((brand) => isBrandPark(brand, parkName)) ?? null;
 }
 
 /** One country's parks of a brand, with the slugs a park URL and a live request need. */

@@ -16,7 +16,7 @@ import { PARK_KIDS_SEGMENTS } from '@/lib/parks/kids-segments';
 import { parksWithKidsPage } from '@/lib/api/kids-page';
 import { parkGeoKey, parksWithStatsPage, type ParkGeoPath } from '@/lib/api/stats';
 import { categoryPath, NEWS_INDEX_PATH, postPath } from '@/lib/blog/paths';
-import { brandParksByCountry, SIX_FLAGS } from '@/lib/parks/park-brands';
+import { brandParksByCountry, PARK_BRANDS } from '@/lib/parks/park-brands';
 import type { GlossaryTerm } from '@/lib/glossary/types';
 
 const BASE_URL = SITE_URL;
@@ -60,10 +60,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // and noindex URLs in a sitemap trigger Search Console errors.
   const homepageAlternates = buildAlternates(() => '');
   const parksAlternates = buildAlternates(() => '/parks');
-  const sixFlagsPath = `/parks/${SIX_FLAGS.slug}`;
-  const sixFlagsAlternates = buildAlternates(() => sixFlagsPath);
   // Without a park of the brand the page is a 404, and a sitemap entry never is.
-  const listsSixFlags = brandParksByCountry(geo, SIX_FLAGS).length > 0;
+  const brandPages = PARK_BRANDS.filter((brand) => brandParksByCountry(geo, brand).length > 0).map(
+    (brand) => {
+      const path = `/parks/${brand.slug}`;
+      return { path, alternates: buildAlternates(() => path) };
+    }
+  );
   const fancastAlternates = buildAlternates(() => '/fancast');
   const contributeAlternates = buildAlternates(() => '/contribute');
 
@@ -78,15 +81,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         lastModified: lastModified('/parks'),
         alternates: parksAlternates,
       },
-      ...(listsSixFlags
-        ? [
-            {
-              url: `${BASE_URL}/${locale}${sixFlagsPath}`,
-              lastModified: lastModified(sixFlagsPath),
-              alternates: sixFlagsAlternates,
-            },
-          ]
-        : []),
+      ...brandPages.map(({ path, alternates }) => ({
+        url: `${BASE_URL}/${locale}${path}`,
+        lastModified: lastModified(path),
+        alternates,
+      })),
       {
         url: `${BASE_URL}/${locale}/fancast`,
         alternates: fancastAlternates,

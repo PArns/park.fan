@@ -162,6 +162,7 @@ export const ROUTE_MESSAGE_NAMESPACES = {
     'share',
   ],
   '/parks/six-flags': ['nearby', 'parkCard'],
+  '/parks/universal': ['nearby', 'parkCard'],
   '/search': [],
   '/trip-planner': ['parks.weather', 'planner'],
   '/trip-planner/shared': ['planner'],

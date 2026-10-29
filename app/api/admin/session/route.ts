@@ -8,11 +8,14 @@ import { getClientIp } from '@/lib/utils/request-ip';
 import {
   ADMIN_SESSION_COOKIE,
   forgetSession,
+  markerCookieOptions,
   readSessionToken,
   resolveAdminIdentity,
+  SESSION_ABSOLUTE_TTL_SECONDS,
   sessionCookieOptions,
 } from '@/lib/admin/session';
 import { NO_STORE } from '@/lib/api/cdn-cache-headers';
+import { ADMIN_MARKER_COOKIE } from '@/lib/admin/cookie';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -60,9 +63,13 @@ export async function GET(request: Request) {
       { status: 503, headers: NO_STORE }
     );
   }
+  // The shell reads this on every admin visit, so a session from before the marker existed gets one.
+  const store = await cookies();
   if (!identity) {
+    store.delete(ADMIN_MARKER_COOKIE);
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
+  store.set(ADMIN_MARKER_COOKIE, '1', markerCookieOptions(SESSION_ABSOLUTE_TTL_SECONDS));
   return NextResponse.json(identity, {
     headers: NO_STORE,
   });
@@ -147,6 +154,7 @@ export async function POST(request: Request) {
 
   const store = await cookies();
   store.set(ADMIN_SESSION_COOKIE, result.token, sessionCookieOptions(expiresIn));
+  store.set(ADMIN_MARKER_COOKIE, '1', markerCookieOptions(expiresIn));
 
   return NextResponse.json(
     { status: 'ok', user: result.user, expiresAt: result.expiresAt },
@@ -172,6 +180,7 @@ export async function DELETE(request: Request) {
 
   const store = await cookies();
   store.delete(ADMIN_SESSION_COOKIE);
+  store.delete(ADMIN_MARKER_COOKIE);
 
   return new NextResponse(null, { status: 204 });
 }

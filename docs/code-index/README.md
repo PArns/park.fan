@@ -16,6 +16,7 @@ Why it works this way: [the rule](../rules/the-code-index-is-generated-from-the-
 ## Pages
 
 - [`components/`](components.md)
+- [`components/admin/`](components-admin.md)
 - [`components/agents/`](components-agents.md)
 - [`components/analytics/`](components-analytics.md)
 - [`components/blog/`](components-blog.md)

@@ -1741,6 +1741,17 @@
     "breadcrumb": "Six Flags",
     "parkLink": "All Six Flags parks"
   },
+  "universal": {
+    "metaTitle": "Universal Wait Times LIVE: All {count} Parks",
+    "metaTitleShort": "Universal Wait Times LIVE: All Parks",
+    "metaDescription": "Live wait times for every Universal park, from Hollywood and Orlando to Osaka, Singapore and Beijing: which park is open today and how long each line is.",
+    "title": "Universal Wait Times: Every Park Live",
+    "intro": "The list counts the parks with “Universal” in their name: Universal Studios Hollywood, the four parks in Orlando with Epic Universe and the Volcano Bay water park, and the Universal Studios parks in Osaka, Singapore and Beijing. Each one shows whether it is open today and how busy it is.",
+    "summary": "{parks, plural, =1 {# park} other {# parks}} in {countries, plural, =1 {# country} other {# countries}}",
+    "listName": "Universal parks",
+    "breadcrumb": "Universal",
+    "parkLink": "All Universal parks"
+  },
   "stats": {
     "globalStats": "Global Statistics",
     "globalStatsIntro": "Live data from theme parks and attractions worldwide.",
@@ -1857,6 +1868,8 @@
       "titleTemplate": "{park} Wait Times LIVE – {city}",
       "titleTemplateNoCity": "{park} – Wait Times LIVE & Best Days",
       "metaDescriptionTemplateNoCity": "Live wait times & crowd calendar for {park}. Check today’s forecast, best days to visit, and opening hours.",
+      "metaDescriptionFacts": "Live wait times for {park}, refreshed every 5 minutes. Quietest days: {quietDays}. Plus crowd calendar, forecast and opening hours.",
+      "metaDescriptionFactsShort": "Live wait times for {park}, refreshed every 5 minutes. Quietest days: {quietDays}. Plus a crowd calendar.",
       "keywordWaitTimes": "wait times",
       "keywordCrowdCalendar": "crowd calendar",
       "keywordBestTime": "best time to visit",

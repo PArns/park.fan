@@ -1,5 +1,5 @@
 ---
-title: 'Phantasialand: Wartezeiten und Tipps von einem Stammgast'
+title: 'Im Phantasialand lohnt der Quick Pass nur an vollen Tagen'
 translationKey: phantasialand-tips-2026
 date: '2026-07-24'
 updatedAt: '2026-10-14'
@@ -27,7 +27,7 @@ coverImage:
   caption: 'Taron im Basaltdorf Klugheim, für mich der schönste Fleck im Park.'
   credit: 'park.fan'
 seo:
-  title: 'Phantasialand Wartezeiten & Tipps vom Wiederholungstäter'
+  title: 'Phantasialand Tipps: Quick Pass, leere Tage, Wartezeiten'
   description: >-
     Phantasialand-Wartezeiten kleinhalten: der richtige Tag, der Quick Pass,
     Rutmor’s Taverne und der Wintertraum, vom Stammgast seit über dreißig Jahren.

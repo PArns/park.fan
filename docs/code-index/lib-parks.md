@@ -107,7 +107,9 @@ Which two days of a park's calendar are being compared, across a change of month
 - `isBrandPark` _function_: Whether a park's name puts it under the brand: "Six Flags Great Adventure", not "Flags Park".
 - `parkBrandOf` _function_: The brand a park belongs to by its name, or null.
 - `brandParksByCountry` _function_: A brand's parks from the geo tree, grouped by country: the country with the most parks first, within it the parks in the order of `brand.names` (theme parks before water parks), then by the name the page shows.
-- `SIX_FLAGS` _const_: Six Flags, the one brand with a page so far.
+- `SIX_FLAGS` _const_: Six Flags, with its Hurricane Harbor water parks.
+- `UNIVERSAL` _const_: Universal: Hollywood, the four Orlando parks (Volcano Bay included) and the three in Asia.
+- `PARK_BRANDS` _const_: Every brand with a page, for the sitemap, the content-change crawl and the park page's link.
 - Types: `ParkBrand`, `BrandCountry`
 
 ### [`park-simulation.ts`](../../lib/parks/park-simulation.ts)

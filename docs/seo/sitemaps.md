@@ -57,7 +57,7 @@ is an accepted cost ([crawl budget](crawl-budget.md)). The span decides the file
 | `/{locale}` home, `/fancast`, `/contribute`, the guide, the planner, best time to visit | none (code, not content) |
 | `/en/changelog` (English only, no alternates)                                           | newest entry's date      |
 | `/{locale}/parks`, continent, country and **multi-park** city hubs                      | observed                 |
-| `/{locale}/parks/six-flags`, the brand page ([brand pages](brand-pages.md))             | observed                 |
+| `/{locale}/parks/six-flags` and `/universal`, the [brand pages](brand-pages.md)         | observed                 |
 | `/{locale}/parks/…/{park}` (with the park's photos as image entries)                    | observed                 |
 | `/{locale}/parks/…/{park}/{calendar-segment}` (the calendar hub)                        | none                     |
 | `/{locale}/parks/…/{park}/{stats-segment}`, **displayable parks only**                  | none                     |

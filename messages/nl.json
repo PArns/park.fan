@@ -1741,6 +1741,17 @@
     "breadcrumb": "Six Flags",
     "parkLink": "Alle Six Flags-parken"
   },
+  "universal": {
+    "metaTitle": "Universal Wachttijden LIVE: alle {count} parken",
+    "metaTitleShort": "Universal Wachttijden LIVE: alle parken",
+    "metaDescription": "Live wachttijden van alle Universal-parken, van Hollywood en Orlando tot Osaka, Singapore en Peking: welk park vandaag open is en hoe lang je wacht.",
+    "title": "Universal wachttijden: alle parken live",
+    "intro": "Alleen parken met “Universal” in de naam tellen mee: Universal Studios Hollywood, de vier parken in Orlando met Epic Universe en waterpark Volcano Bay, en de Universal Studios-parken in Osaka, Singapore en Peking. Bij elk park zie je of het vandaag open is en hoe druk het is.",
+    "summary": "{parks, plural, =1 {# park} other {# parken}} in {countries, plural, =1 {# land} other {# landen}}",
+    "listName": "Universal-parken",
+    "breadcrumb": "Universal",
+    "parkLink": "Alle Universal-parken"
+  },
   "stats": {
     "globalStats": "Wereldwijde statistieken",
     "globalStatsIntro": "Live gegevens van pretparken en attracties wereldwijd.",
@@ -1857,6 +1868,8 @@
       "titleTemplate": "{park} Wachttijden LIVE – {city}",
       "titleTemplateNoCity": "{park} – Wachttijden LIVE & Beste Dagen",
       "metaDescriptionTemplateNoCity": "Live wachttijden & druktekalender voor {park}. Bekijk de druktevoorspelling, beste bezoekdagen en openingstijden.",
+      "metaDescriptionFacts": "Live wachttijden voor {park}, elke 5 minuten bijgewerkt. Rustigste dagen: {quietDays}. Plus druktekalender, voorspelling en openingstijden.",
+      "metaDescriptionFactsShort": "Live wachttijden voor {park}, elke 5 minuten bijgewerkt. Rustigste dagen: {quietDays}. Plus een druktekalender.",
       "keywordWaitTimes": "wachttijden",
       "keywordCrowdCalendar": "druktekalender",
       "keywordBestTime": "beste tijd om te bezoeken",

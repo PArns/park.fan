@@ -21,7 +21,8 @@ import {
 import { ClosedParkPage } from '@/components/parks/closed-park-page';
 import type { ParkBase } from '@/lib/api/types';
 import { getParkStatsForPage, hasParkStatsPage } from '@/lib/api/stats';
-import { parkStatsShape } from '@/lib/parks/park-stats-derive';
+import { deriveParkBestDays, parkStatsShape } from '@/lib/parks/park-stats-derive';
+import { formatWeekdayList } from '@/lib/utils/day-runs';
 import { getBestDaysCalendarSeed } from '@/lib/api/integrated-calendar';
 import { catchNonFatal } from '@/lib/api/client';
 import { ParkStructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
@@ -166,10 +167,32 @@ export async function generateMetadata({ params }: ParkPageProps): Promise<Metad
     nameWithAbbreviations(parkName, park.abbreviations),
     park.nameArticleDe
   );
+  // The weekdays the header names as quiet, so the snippet says something the other results do
+  // not. The same cached stats read the header makes; a park without them keeps the plain copy, and
+  // so does one that publishes no live waits, which "refreshed every 5 minutes" would misdescribe.
+  const bestDays =
+    closedCopy || noLiveWaitTimesReason(park)
+      ? null
+      : deriveParkBestDays(
+          await catchNonFatal(getParkStatsForPage(continent, country, city, park.slug))
+        );
+  const tBestDays = await getTranslations({ locale, namespace: 'parkBestDays' });
+  const quietDays = bestDays?.quietDays.length
+    ? formatWeekdayList(bestDays.quietDays, locale, {
+        weekdays: tBestDays('weekdays'),
+        weekend: tBestDays('weekend'),
+      })
+    : null;
   const description =
     closedCopy?.description ??
     fitWithin(
       MAX_DESCRIPTION_LENGTH,
+      ...(quietDays
+        ? [
+            t('metaDescriptionFacts', { ...describedPark, quietDays }),
+            t('metaDescriptionFactsShort', { ...describedPark, quietDays }),
+          ]
+        : []),
       cityInParkName
         ? t(descriptionKey, describedPark)
         : t(descriptionKey, { ...describedPark, city: cityName }),

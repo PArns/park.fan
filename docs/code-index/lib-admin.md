@@ -20,6 +20,7 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`cookie.ts`](../../lib/admin/cookie.ts)
 
 - `readCookie` _function_: Reads one cookie out of a `Cookie` header. Kept free of `next/headers` so the code that parses attacker-controlled input can be tested; split rather than matched, so the name comparison is exact and no regex runs over hostile input.
+- `ADMIN_MARKER_COOKIE` _const_: Set beside the session cookie and readable by scripts: it holds no credential, it only tells a public page that this browser has signed in to the admin, so the page asks the admin proxy for its Search Console figures instead of every …
 
 ### [`github.ts`](../../lib/admin/github.ts)
 
@@ -211,6 +212,7 @@ The path guard and the query of `/api/admin/[...path]`, pure so they can be test
 - `forgetAllSessions` _function_: Drops every cached identity, for revocations that do not name a token this process can see (a password change, sign out everywhere, a deactivated account).
 - `requireAdmin` _function_: Guard for this app's own admin route handlers: a ready-to-return response on failure, the identity on success. `minRole` defaults to `author` because every route behind it writes.
 - `sessionCookieOptions` _function_: The `Set-Cookie` attributes a session cookie is written with.
+- `markerCookieOptions` _function_: The attributes of `ADMIN_MARKER_COOKIE`: the session's, but readable by scripts.
 - `denyUnlessAdmin` _function_: The one-line form of `requireAdmin`, for handlers that need no identity.
 - `ADMIN_SESSION_COOKIE` _const_: The admin session cookie: httpOnly, so no script on the admin origin can read the token, and `SameSite=Strict`.
 - `SESSION_ABSOLUTE_TTL_SECONDS` _const_: The backend's absolute session ceiling (`ABSOLUTE_TTL_SECONDS`), for the one case where a cookie has to be written without an `expiresAt` to derive it from.
