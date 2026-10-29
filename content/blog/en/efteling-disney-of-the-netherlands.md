@@ -2,7 +2,7 @@
 title: 'Efteling: the Disney of the Netherlands, three years older than the original'
 translationKey: efteling-guide-2026
 date: '2026-08-07'
-updatedAt: '2026-10-22'
+updatedAt: '2026-10-29'
 author: patrick
 mode: published
 featured: false
@@ -38,6 +38,8 @@ seo:
     - Efteling tips
     - Efteling best time to visit
     - Efteling least busy day
+    - Efteling quiet days
+    - best day to go to Efteling
     - Efteling tickets prices 2026
     - Efteling annual pass
     - Efteling getting there Kaatsheuvel
@@ -67,6 +69,24 @@ Gijs. When the first one went in, the park didn’t have a single roller coaster
 Netherlands, and I use the phrase myself. The
 Fairytale Forest opened on **31 May 1952** with ten fairy tale scenes. Disneyland
 in Anaheim opened three years later, in July 1955.
+
+## When is Efteling quiet?
+
+![A full boat of De Vliegende Hollander on the water, the ride’s tower behind it | Sunday 20 September 2026, no school holiday, and every boat still left full. On our scale it was a busy day. | right](/media/efteling/de-vliegende-hollander-4x3.jpg)
+
+Efteling is quietest on weekdays in January and February, outside the school
+holidays. Those are the only two months our measurements rate as quiet, and the
+five quietest days so far were all a Tuesday, Wednesday or Thursday in January or
+February 2026. Of the days of the week, **Thursday** is the quietest, with Tuesday,
+Wednesday and Friday close behind. **Saturday** is the busiest day, then Sunday.
+Across the year **December** is the heaviest month, with Winter Efteling and the
+Christmas holidays, followed by **August**.
+
+School holidays matter more than the weekday. In the week before the Dutch spring
+half-term of 2026, the big coasters and dark rides averaged ten to fifteen minutes
+on weekdays; during the half-term itself it was 25 to 40. The figures come from
+just over 300 measured operating days since late December 2025. For a particular
+date there’s the [best days to visit calendar](ref:efteling?calendar).
 
 ## The foundation behind the park
 
@@ -302,7 +322,7 @@ take the forest in two portions on two days without getting lost.
 
 ## How long you will queue here, and why so little
 
-We have measured wait times at Efteling since 26 December 2025. The analysis runs to the end of September 2026 and covers **close to 190
+We have measured wait times at Efteling since 26 December 2025. The analysis runs to the end of October 2026 and covers **just over 300
 operating days**.
 Across all days of the
 week the typical park-wide wait sits **under half an hour** (median); at the peaks
@@ -311,6 +331,8 @@ it’s about half as long again.
 ```ride-waits-widget park=efteling top=10 columns=land,peak,days highlight=joris-en-de-draak
 
 ```
+
+![Marerijk station of the steam railway, a round sign with a locomotive on it and trailing plants along the roof | Marerijk station, one of two. The sign promises steam; the oldest locomotive has run on electricity since May 2025. | left](/media/efteling/stoomtrein-marerijk-4x3.jpg)
 
 The steam railway keeps turning up in this list, a train from 1969 that does a
 lap of the park, in among the dark rides and coasters. That’s down to two trains
@@ -425,40 +447,44 @@ spring 2026 for its 25th birthday.
 
 Efteling is open 365 days a year.
 
-**By month**, counting every operating day we have measured, April and September are the most relaxed of the well-measured months. May, June and July sit close together, August picks up noticeably, and the
-most crowded is **December**, the Winter Efteling season.
+**By month**, January and February are the quietest. From March to July the
+crowds build slowly, August picks up noticeably, September and October drop back to
+spring levels, and the most crowded is **December**, the Winter Efteling season.
 
-April through August each have a full month of measured days behind them,
-September a good three weeks, December, January and March only a handful (for
-December that means the Christmas holidays from the 26th), and for February,
-October and November the analysis has no usable days at all.
-So the ranking of the months is only rough.
+Every month has close to a full month of measured days behind it except December,
+which has eight, all at the end of the month during the Christmas holidays, and
+November isn’t in the analysis yet at all. So December at the top really describes
+the days around New Year. How busy an ordinary Tuesday in early December is, we’ll
+know once we’ve measured one.
 
 ```stats-widget slug=efteling show=months
 
 ```
 
-**By day of the week** there is hardly any difference.
+**By day of the week**, Thursday is the quietest.
 
 ```stats-widget slug=efteling show=weekdays
 
 ```
 
-A single step separates the best and the worst day of the week, and only Saturday
-lands a step above the rest. Close behind it, though, comes **Monday**, ahead of
-Sunday. My explanation is the Dutch midweek: holiday
-parks rent out Monday to Friday as a block of its own, and whoever books one is in
-the park on Monday. At close to thirty days measured per weekday I still wouldn’t
-sell differences that small as a recommendation.
+Tuesday, Wednesday and Friday are close to it, the weekend comes out
+clearly higher, and Saturday sits above Sunday. The odd one out is **Monday**, which
+is noticeably busier than the other weekdays. My explanation is the Dutch midweek:
+holiday parks rent out Monday to Friday as a block of its own, and whoever books one
+is in the park on Monday.
 
 What counts more than the day of the week is whether Dutch schools are on holiday,
-and after that whether German ones are.
+and after that whether German and Flemish ones are. In the week after Easter 2026,
+schools in North Rhine-Westphalia and Flanders were closed while Dutch ones were
+open, and the park still came out busy from Tuesday to Thursday.
 
 ```best-days-widget slug=efteling
 
 ```
 
 ## Fast pass, single rider and virtual queue
+
+![Frogs holding sheet music and a clown with a pinwheel on his hat in Carnaval Festival, next to a sign reading Harmony de Kwakers | Carnaval Festival dates from 1984. At the end of 2022 you could only get in with a reservation in the app. | right](/media/efteling/carnaval-festival-4x3.jpg)
 
 There’s nothing to buy here that gets you past the queue, not even a single
 ride at a fixed price like Phantasialand’s Quick Pass. Free of charge there’s baby switch for
@@ -496,6 +522,8 @@ the entrance, on which every member of the group places one hand, whereupon a
 colour lights up according to the number of hands and assigns you a queue. The park announced nothing about it officially. Looopings wrote that it now resembled an art project more than capacity optimisation. Two days later the park explained that the trials were part of a TU Delft student’s graduation research. The research is finished, and Python is back to a perfectly ordinary queue.
 
 ## A day at Efteling
+
+![The dragon’s head of Joris en de Draak above the water, mist drifting across it and the wooden track behind | Ruigrijk is at the back of the park, which is exactly why hardly anyone is here first thing. | left](/media/efteling/joris-en-de-draak-4x3.jpg)
 
 Head into **Ruigrijk** at opening, to the far corner. The walk there is long, and it’s empty in the morning because most people stop on the way.
 Ride [Joris en de Draak](ref:efteling/joris-en-de-draak) first. It has the longest
@@ -535,6 +563,8 @@ in there, at his easel.
 The **[Volk van Laaf](ref:efteling/volk-van-laaf)** has been an entire invented
 people by Ton van de Ven since 15 June 1990, with its own village, the Lavenlaar,
 where the Laven brew beer, bake bread and keep school.
+
+![A white boat numbered 28 under an old stone bridge with blue-lit arches, trees in the mist behind it | New Year’s Eve 2024. Twenty minutes of blue light and nothing else, exactly as advertised. | right](/media/efteling/gondoletta-4x3.jpg)
 
 The **[Gondoletta](ref:efteling/gondoletta)** has been running since 13 April 1981,
 forty boats across 1,081 metres of water, and one lap takes **twenty minutes**, in
@@ -671,10 +701,10 @@ close behind. Current numbers are on the
 
 ### When is Efteling least busy?
 
-By month, **April** and **September** are the most relaxed and **December** the
-busiest, although we have only measured December over the Christmas holidays so
-far. The day of the week barely matters: the best and the worst are one step
-apart. What decides it is the Dutch school holidays. For a specific date, use the [best days to visit calendar](ref:efteling?calendar).
+On weekdays in **January** and **February** outside the holidays, and on
+Thursdays more than any other day. It’s busiest over the Christmas holidays, in
+August and on Saturdays. A school holiday in the Netherlands, North
+Rhine-Westphalia or Flanders weighs more than the choice of weekday. For a specific date, use the [best days to visit calendar](ref:efteling?calendar).
 
 ### Is there a fast pass at Efteling?
 

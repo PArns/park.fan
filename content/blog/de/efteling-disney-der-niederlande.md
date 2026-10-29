@@ -2,7 +2,7 @@
 title: 'Efteling: das Disney der Niederlande, drei Jahre älter als das Original'
 translationKey: efteling-guide-2026
 date: '2026-08-07'
-updatedAt: '2026-10-22'
+updatedAt: '2026-10-29'
 author: patrick
 mode: published
 featured: false
@@ -38,6 +38,8 @@ seo:
     - Efteling Tipps
     - Efteling beste Reisezeit
     - Efteling wann am wenigsten los
+    - Efteling ruhige Tage
+    - bester Tag für das Efteling
     - Efteling Tickets Preise 2026
     - Efteling Jahreskarte
     - Efteling Anreise Kaatsheuvel
@@ -66,6 +68,26 @@ in Gijs-Gestalt.
 Das [Efteling](ref:efteling?long) in Kaatsheuvel wird gern das Disney der
 Niederlande genannt, und ich benutze den Satz selbst. Der Märchenwald öffnete am **31. Mai 1952** mit zehn
 Märchenszenen. Disneyland in Anaheim machte drei Jahre später auf, im Juli 1955.
+
+## Wann ist es im Efteling ruhig?
+
+![Ein volles Boot von De Vliegende Hollander auf dem Wasser, dahinter der Turm der Bahn | Sonntag, 20. September 2026, keine Ferien, und trotzdem fuhr jedes Boot voll los. Auf unserer Skala war es ein voller Tag. | right](/media/efteling/de-vliegende-hollander-4x3.jpg)
+
+Am ruhigsten ist das Efteling unter der Woche im Januar und Februar, außerhalb der
+Schulferien. Nur diese beiden Monate stufen unsere Messungen als ruhig ein, und die
+fünf ruhigsten Tage bisher waren alle ein Dienstag, Mittwoch oder Donnerstag im
+Januar oder Februar 2026. Unter den Wochentagen ist der **Donnerstag** der
+ruhigste, Dienstag, Mittwoch und Freitag liegen knapp dahinter. Der **Samstag** ist
+der vollste Tag, danach kommt der Sonntag. Übers Jahr ist der **Dezember** am
+anstrengendsten, mit Winter Efteling und den Weihnachtsferien, danach der
+**August**.
+
+Mehr als der Wochentag machen die Schulferien aus. In der Woche vor den
+niederländischen Krokusferien 2026 standen die großen Achterbahnen und Darkrides
+unter der Woche im Schnitt bei zehn bis fünfzehn Minuten, in den Ferien selbst bei
+25 bis 40. Die Zahlen stammen aus gut 300 gemessenen Öffnungstagen seit Ende
+Dezember 2025. Für einen bestimmten Termin gibt es den
+[Kalender der besten Besuchstage](ref:efteling?calendar).
 
 ## Die Stiftung hinter dem Park
 
@@ -299,13 +321,15 @@ verschwinden. Danach kannst du den Wald in zwei Portionen an zwei Tagen sehen, o
 
 ## Wie lange du hier anstehst, und warum so kurz
 
-Wir messen die Wartezeiten im Efteling seit dem 26. Dezember 2025. Die Auswertung reicht bis Ende September 2026 und umfasst **knapp 190 Öffnungstage**. Über alle
+Wir messen die Wartezeiten im Efteling seit dem 26. Dezember 2025. Die Auswertung reicht bis Ende Oktober 2026 und umfasst **gut 300 Öffnungstage**. Über alle
 Wochentage gerechnet liegt die typische Wartezeit im Parkschnitt **unter einer
 halben Stunde**. Zu den Spitzenzeiten ist es etwa das Anderthalbfache.
 
 ```ride-waits-widget park=efteling top=10 columns=land,peak,days highlight=joris-en-de-draak
 
 ```
+
+![Der Bahnhof Marerijk der Dampfeisenbahn, ein rundes Schild mit einer Lokomotive und Hängepflanzen an der Dachkante | Bahnhof Marerijk, einer von zweien. Das Schild verspricht Dampf, die älteste Lok fährt seit Mai 2025 elektrisch. | left](/media/efteling/stoomtrein-marerijk-4x3.jpg)
 
 In dieser Liste taucht regelmäßig die Dampfeisenbahn auf, ein Zug von 1969, der
 zwischen lauter Dark Rides und Achterbahnen eine Runde durch den Park fährt. Das
@@ -426,42 +450,45 @@ Geburtstag im Frühjahr 2026 wieder auf der Bühne stand.
 
 Das Efteling hat an 365 Tagen im Jahr geöffnet.
 
-**Nach Monat**, gerechnet über alle gemessenen Öffnungstage, sind April und September die entspanntesten der gut gemessenen Monate. Mai, Juni und Juli liegen eng beieinander, der August zieht
-spürbar an, und am anstrengendsten ist der **Dezember**, also die
+**Nach Monat** sind Januar und Februar die ruhigsten. Von März bis Juli wird es
+langsam voller, der August zieht spürbar an, September und Oktober fallen auf das
+Niveau des Frühjahrs zurück, und am anstrengendsten ist der **Dezember**, also die
 Winter-Efteling-Saison.
 
-Hinter
-April bis August steht jeweils ein voller Monat an Messtagen, hinter dem September
-gut drei Wochen, hinter Dezember, Januar und März nur eine Handvoll (beim Dezember
-sind es die Weihnachtsferien ab dem 26.), und für
-Februar, Oktober und November enthält die Auswertung keinen einzigen auswertbaren Tag. Die Rangfolge der Monate ist deshalb nur grob.
+Hinter jedem Monat steht fast ein voller Monat an Messtagen, nur hinter dem
+Dezember nicht: Dort sind es acht, alle Ende Dezember in den Weihnachtsferien, und
+der November fehlt in der Auswertung noch ganz. Dass der Dezember oben steht, gilt
+also vor allem für die Tage um Silvester. Wie voll ein gewöhnlicher Dienstag Anfang
+Dezember ist, wissen wir erst, wenn wir einen gemessen haben.
 
 ```stats-widget slug=efteling show=months
 
 ```
 
-**Nach Wochentag** unterscheiden sich die Tage kaum.
+**Nach Wochentag** ist der Donnerstag der ruhigste.
 
 ```stats-widget slug=efteling show=weekdays
 
 ```
 
-Zwischen dem besten und dem schlechtesten Wochentag liegt eine einzige Stufe, und
-nur der Samstag landet eine Stufe höher als der Rest. Knapp dahinter liegt aber
-schon der **Montag**, noch vor dem Sonntag. Meine
+Dienstag, Mittwoch und Freitag liegen nah dran, das Wochenende kommt deutlich
+höher heraus, der Samstag noch über dem Sonntag. Aus der Reihe fällt der
+**Montag**, der spürbar voller ist als die übrigen Tage von Montag bis Freitag. Meine
 Erklärung dafür ist die niederländische Midweek: Ferienparks vermieten Montag bis
-Freitag als eigenen Block, und wer so bucht, steht am Montag im Park. Bei knapp
-dreißig Messtagen pro Wochentag würde ich so kleine Unterschiede trotzdem nicht als
-Empfehlung verkaufen.
+Freitag als eigenen Block, und wer so bucht, steht am Montag im Park.
 
-Mehr als der Wochentag zählt, ob in den Niederlanden Schulferien sind, danach,
-ob in Deutschland Ferien sind.
+Mehr als der Wochentag zählt, ob in den Niederlanden Schulferien sind, danach, ob
+in Deutschland und Flandern Ferien sind. In der Woche nach Ostern 2026 hatten
+Nordrhein-Westfalen und Flandern Ferien, die Niederlande nicht, und trotzdem kam der
+Park von Dienstag bis Donnerstag auf voll.
 
 ```best-days-widget slug=efteling
 
 ```
 
 ## Fast Pass, Single Rider und virtuelle Warteschlange
+
+![Frösche mit Notenblättern und ein Clown mit einem Windrad auf dem Hut in Carnaval Festival, daneben ein Schild mit der Aufschrift Harmony de Kwakers | Carnaval Festival ist von 1984. Ende 2022 kam man hier nur noch mit einer Reservierung in der App hinein. | right](/media/efteling/carnaval-festival-4x3.jpg)
 
 Es gibt hier nichts zu kaufen, was dich an der Warteschlange vorbeibringt, auch
 keine Einzelfahrt zum festen Preis wie den Quick Pass im Phantasialand. Kostenlos gibt es
@@ -505,6 +532,8 @@ Looopings schrieb, das erinnere mittlerweile mehr an ein Kunstprojekt als an Kap
 
 ## Ein Tag im Efteling
 
+![Der Drachenkopf von Joris en de Draak über dem Wasser, Nebel auf dem Wasser und dahinter die Holzschiene | Das Ruigrijk liegt ganz hinten, und genau deshalb steht hier morgens noch kaum jemand. | left](/media/efteling/joris-en-de-draak-4x3.jpg)
+
 Geh bei Öffnung ins **Ruigrijk**, in die hintere Ecke. Der Weg dorthin ist lang, und morgens ist es dort leer, weil die meisten unterwegs stehen bleiben.
 [Joris en de Draak](ref:efteling/joris-en-de-draak) fährst du zuerst. Sie hat die
 längste Warteschlange im Park, und die ist schon am späten Vormittag lang. Direkt daneben stehen [Baron 1898](ref:efteling/baron-1898),
@@ -543,6 +572,8 @@ Restaurierung 2007 haben sie Pieck selbst hineingestellt, an der Staffelei.
 Das **[Volk van Laaf](ref:efteling/volk-van-laaf)** ist seit dem 15. Juni 1990
 ein komplett erfundenes Völkchen von Ton van de Ven, mit eigener Siedlung, dem
 Lavenlaar, in der die Laven Bier brauen, Brot backen und Schule halten.
+
+![Ein weißes Boot mit der Nummer 28 unter einer alten Steinbrücke mit blau angestrahlten Bögen, dahinter Bäume im Nebel | Silvester 2024. Zwanzig Minuten blaues Licht und sonst nichts, genau wie versprochen. | right](/media/efteling/gondoletta-4x3.jpg)
 
 Die **[Gondoletta](ref:efteling/gondoletta)** fährt seit dem 13. April 1981 mit
 vierzig Booten über 1.081 Meter Wasser, und eine Runde dauert **zwanzig
@@ -681,10 +712,10 @@ Aktuelle Zahlen stehen auf der [Efteling-Parkseite](ref:efteling).
 
 ### Wann ist im Efteling am wenigsten los?
 
-Nach Monat sind **April** und **September** am entspanntesten, am vollsten ist der
-**Dezember**, wobei wir den bisher nur in den Weihnachtsferien gemessen haben. Der Wochentag spielt kaum eine Rolle: Zwischen dem besten und dem
-schlechtesten liegt eine einzige Stufe.
-Entscheidend sind die niederländischen Schulferien. Für einen konkreten Termin gibt es den [Kalender der besten Besuchstage](ref:efteling?calendar).
+Unter der Woche im **Januar** und **Februar**, außerhalb der Ferien, und unter den
+Wochentagen am Donnerstag. Am vollsten ist es in den Weihnachtsferien, im August
+und samstags. Schulferien in den Niederlanden, in Nordrhein-Westfalen oder in
+Flandern wiegen schwerer als die Wahl des Wochentags. Für einen konkreten Termin gibt es den [Kalender der besten Besuchstage](ref:efteling?calendar).
 
 ### Gibt es im Efteling einen Fast Pass?
 

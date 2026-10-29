@@ -2,7 +2,7 @@
 title: 'Efteling: de Disney van Nederland, drie jaar ouder dan het origineel'
 translationKey: efteling-guide-2026
 date: '2026-08-07'
-updatedAt: '2026-10-22'
+updatedAt: '2026-10-29'
 author: patrick
 mode: published
 featured: false
@@ -37,6 +37,8 @@ seo:
     - Efteling tips
     - Efteling beste tijd om te gaan
     - Efteling wanneer het rustig is
+    - Efteling rustige dagen
+    - beste dag om naar de Efteling te gaan
     - Efteling tickets prijzen 2026
     - Efteling jaarkaart
     - Efteling bereikbaarheid Kaatsheuvel
@@ -64,6 +66,24 @@ Toen de eerste in gebruik ging, stond hier nog geen enkele achtbaan.
 De [Efteling](ref:efteling?long) in Kaatsheuvel wordt graag de Disney van
 Nederland genoemd, en ik gebruik die zin zelf ook. Het Sprookjesbos opende op **31 mei 1952** met tien sprookjes. Disneyland in
 Anaheim ging drie jaar later open, in juli 1955.
+
+## Wanneer is het rustig in de Efteling?
+
+![Een volle boot van De Vliegende Hollander op het water, met de toren van de attractie erachter | Zondag 20 september 2026, geen vakantie, en toch ging elke boot vol weg. Op onze schaal was het die dag druk. | right](/media/efteling/de-vliegende-hollander-4x3.jpg)
+
+Het rustigst is de Efteling doordeweeks in januari en februari, buiten de
+schoolvakanties. Alleen die twee maanden komen in onze metingen uit op rustig, en
+de vijf rustigste dagen tot nu toe waren allemaal een dinsdag, woensdag of
+donderdag in januari of februari 2026. Van de weekdagen is de **donderdag** het
+rustigst, met dinsdag, woensdag en vrijdag vlak daarachter. De **zaterdag** is de
+drukste dag, daarna de zondag. Over het jaar is **december** het zwaarst, met
+Winter Efteling en de kerstvakantie, en daarna **augustus**.
+
+Meer dan de weekdag scheelt de schoolvakantie. In de week voor de krokusvakantie
+van 2026 stonden de grote achtbanen en darkrides doordeweeks gemiddeld op tien tot
+vijftien minuten, in de vakantie zelf op 25 tot 40. De cijfers komen uit ruim 300
+gemeten openingsdagen sinds eind december 2025. Voor een bepaalde datum is er de
+[kalender met de beste bezoekdagen](ref:efteling?calendar).
 
 ## De stichting achter het park
 
@@ -298,13 +318,15 @@ kun je het bos in twee porties op twee dagen zien zonder te verdwalen.
 
 ## Hoe lang je hier in de rij staat, en waarom zo kort
 
-We meten de wachttijden in de Efteling sinds 26 december 2025. De analyse loopt tot eind september 2026 en beslaat **bijna 190 openingsdagen**. Over alle
+We meten de wachttijden in de Efteling sinds 26 december 2025. De analyse loopt tot eind oktober 2026 en beslaat **ruim 300 openingsdagen**. Over alle
 weekdagen gerekend ligt de typische wachttijd parkbreed **onder het half uur**
 (mediaan); op de piekmomenten is het zo’n anderhalf keer zo veel.
 
 ```ride-waits-widget park=efteling top=10 columns=land,peak,days highlight=joris-en-de-draak
 
 ```
+
+![Station Marerijk van de stoomtrein, met een rond uithangbord met een locomotief en hangplanten langs de dakrand | Station Marerijk, een van de twee. Het bord belooft stoom, de oudste locomotief rijdt sinds mei 2025 elektrisch. | left](/media/efteling/stoomtrein-marerijk-4x3.jpg)
 
 In deze lijst duikt geregeld de stoomtrein op, een trein uit 1969 die een rondje
 door het park rijdt, tussen allemaal darkrides en achtbanen. Dat komt door twee
@@ -420,42 +442,45 @@ voor het 25-jarig bestaan, weer op het podium stond.
 
 De Efteling is 365 dagen per jaar open.
 
-**Per maand**, gerekend over alle gemeten openingsdagen, zijn april en september de rustigste van de goed gemeten maanden.
-Mei, juni en juli liggen dicht bij elkaar, augustus trekt merkbaar aan, en het
-zwaarst is **december**, oftewel het Winter Efteling-seizoen.
+**Per maand** zijn januari en februari de rustigste. Van maart tot en met juli
+loopt de drukte langzaam op, augustus trekt merkbaar aan, september en oktober
+zakken terug naar het niveau van het voorjaar, en het zwaarst is **december**,
+oftewel het Winter Efteling-seizoen.
 
-Achter
-april tot en met augustus staat elk een volle maand aan meetdagen, achter september
-ruim drie weken, achter december, januari en maart maar een handvol (bij december
-is dat de kerstvakantie vanaf de 26e), en voor
-februari, oktober en november bevat de analyse helemaal geen bruikbare dagen.
-De rangorde van de maanden is daarom maar grof.
+Achter elke maand staat bijna een volle maand aan meetdagen, behalve achter
+december: daar zijn het er acht, allemaal eind december in de kerstvakantie, en
+november zit nog helemaal niet in de analyse. Dat december bovenaan staat, geldt
+dus vooral voor de dagen rond Oud en Nieuw. Hoe druk een gewone dinsdag begin
+december is, weten we pas als we er een hebben gemeten.
 
 ```stats-widget slug=efteling show=months
 
 ```
 
-**Per weekdag** verschillen de dagen nauwelijks.
+**Per weekdag** is de donderdag het rustigst.
 
 ```stats-widget slug=efteling show=weekdays
 
 ```
 
-Tussen de beste en de slechtste weekdag zit één enkele stap, en alleen de zaterdag
-komt een stap hoger uit dan de rest. Vlak daarachter zit wel al de **maandag**, nog
-voor de zondag. Mijn verklaring is de midweek:
-vakantieparken verhuren maandag tot vrijdag als eigen blok, en wie zo boekt, staat op
-maandag in het park. Bij bijna dertig meetdagen per weekdag zou ik zulke kleine
-verschillen toch niet als advies verkopen.
+Dinsdag, woensdag en vrijdag liggen er dicht bij, het weekend
+komt duidelijk hoger uit, de zaterdag nog boven de zondag. Opvallend is de
+**maandag**, die een stuk drukker is dan de andere werkdagen. Mijn verklaring is de
+midweek: vakantieparken verhuren maandag tot vrijdag als eigen blok, en wie zo
+boekt, staat op maandag in het park.
 
 Meer dan de weekdag telt of de Nederlandse scholen vakantie hebben, en daarna of de
-Duitse dat hebben.
+Duitse en Vlaamse dat hebben. In de week na Pasen 2026 waren de scholen in
+Noordrijn-Westfalen en Vlaanderen dicht en de Nederlandse open, en toch kwam het
+park van dinsdag tot en met donderdag op druk uit.
 
 ```best-days-widget slug=efteling
 
 ```
 
 ## Fast pass, single rider en virtuele wachtrij
+
+![Kikkers met bladmuziek en een clown met een molentje op zijn hoed in Carnaval Festival, naast een bordje met Harmony de Kwakers | Carnaval Festival uit 1984. Eind 2022 kwam je hier alleen nog binnen met een reservering in de app. | right](/media/efteling/carnaval-festival-4x3.jpg)
 
 Er valt hier niets te kopen waarmee je de rij voorbijkomt, ook geen losse
 rit voor een vaste prijs zoals de Quick Pass van Phantasialand. Gratis is er baby switch voor ouders met
@@ -493,6 +518,8 @@ groot wit ei op een houten sokkel, waar elk groepslid een hand op legt, waarna e
 afhankelijk van het aantal handen een kleur oplicht die de rij toewijst. Officieel maakte het park er niets over bekend. Looopings schreef dat het inmiddels meer aan een kunstproject deed denken dan aan capaciteitsoptimalisatie. Twee dagen later legde het park uit dat de proeven bij het afstudeeronderzoek van een student van de TU Delft hoorden. Dat onderzoek is afgerond, en Python heeft weer een doodgewone rij.
 
 ## Een dag in de Efteling
+
+![De kop van de draak van Joris en de Draak boven het water, met nevel op het water en de houten baan erachter | Het Ruigrijk ligt achterin, en daarom staat hier ’s ochtends nog bijna niemand. | left](/media/efteling/joris-en-de-draak-4x3.jpg)
 
 Ga bij opening het **Ruigrijk** in, naar de achterste hoek. De weg daarheen is lang, en ’s ochtends is het daar leeg, omdat de meeste mensen onderweg blijven staan.
 [Joris en de Draak](ref:efteling/joris-en-de-draak) doe je als eerste. Ze heeft de
@@ -533,6 +560,8 @@ ze Pieck er zelf in gezet, achter de schildersezel.
 Het **[Volk van Laaf](ref:efteling/volk-van-laaf)** is sinds 15 juni 1990 een
 compleet verzonnen volkje van Ton van de Ven, met een eigen dorp, het Lavenlaar,
 waar de Laven bier brouwen, brood bakken en les geven.
+
+![Een witte boot met nummer 28 onder een oude stenen brug met blauw verlichte bogen, erachter bomen in de mist | Oudejaarsavond 2024. Twintig minuten blauw licht en verder niets, precies zoals beloofd. | right](/media/efteling/gondoletta-4x3.jpg)
 
 De **[Gondoletta](ref:efteling/gondoletta)** vaart sinds 13 april 1981 met veertig
 boten over 1.081 meter water, en één rondje duurt **twintig minuten**, waarin niets
@@ -668,10 +697,10 @@ vlak daarachter. Actuele cijfers staan op de
 
 ### Wanneer is het het rustigst in de Efteling?
 
-Per maand zijn **april** en **september** het rustigst, het drukst is **december**,
-al hebben we die maand tot nu toe alleen in de kerstvakantie gemeten.
-De weekdag speelt nauwelijks een rol: tussen de beste en de slechtste zit één
-stap. Doorslaggevend zijn de Nederlandse schoolvakanties. Voor een concrete datum is er de [kalender met de beste bezoekdagen](ref:efteling?calendar).
+Doordeweeks in **januari** en **februari**, buiten de vakanties, en van de
+weekdagen op donderdag. Het drukst is het in de kerstvakantie, in augustus en op
+zaterdag. Een schoolvakantie in Nederland, Noordrijn-Westfalen of Vlaanderen weegt
+zwaarder dan de keuze van de weekdag. Voor een concrete datum is er de [kalender met de beste bezoekdagen](ref:efteling?calendar).
 
 ### Is er een fast pass in de Efteling?
 
