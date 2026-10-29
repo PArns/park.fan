@@ -101,13 +101,13 @@ Aus demselben Sommer stammt die [Saw Mill Log Flume](ref:six-flags-great-adventu
 
 ### Movietown und Metropolis
 
-Seit dem 1. Mai 1993 hängen die Fahrgäste von [BATMAN The Ride](ref:six-flags-great-adventure/batman-the-ride?bare) unter der Schiene, denn B&M hat die Bahn als Inverted Coaster gebaut. Auf 821 Metern Strecke geht es aus 32 Metern Höhe fünfmal über Kopf, mit bis zu 80 km/h und 4 G, und das alles in anderthalb Minuten.
+B&M hat [BATMAN The Ride](ref:six-flags-great-adventure/batman-the-ride?bare) als Inverted Coaster gebaut, die Füße der Fahrgäste baumeln also unter der Schiene, und das seit dem 1. Mai 1993. Auf 821 Metern Strecke geht es aus 32 Metern Höhe fünfmal über Kopf, mit bis zu 80 km/h und 4 G. Nach anderthalb Minuten ist die Fahrt vorbei.
 
-Seit dem 29. März 2025 schießt [THE FLASH: Vertical Velocity](ref:six-flags-great-adventure/the-flash-vertical-velocity?bare), ein Super Boomerang von Vekoma, vorwärts und dann rückwärts durch dieselben zwei Inversionen. Auf den 436 Metern kommt der Zug auf bis zu 95 km/h. Allein darfst du ab 142 Zentimetern mit, in Begleitung ab 122.
+[THE FLASH: Vertical Velocity](ref:six-flags-great-adventure/the-flash-vertical-velocity?bare) ist ein Super Boomerang von Vekoma und schießt erst vorwärts, dann rückwärts durch dieselben zwei Inversionen. Eröffnet hat er am 29. März 2025. Auf den 436 Metern kommt der Zug auf bis zu 95 km/h. Allein darfst du ab 142 Zentimetern mit, in Begleitung ab 122.
 
-In einer Halle versteckt sich [THE DARK KNIGHT Coaster](ref:six-flags-great-adventure/the-dark-knight-coaster?bare), eine Wilde Maus von Mack Rides, die am 15. Mai 2008 eröffnet hat. Der Wagen fährt aus 14 Metern Höhe sechs 180-Grad-Kurven, auf 370 Metern Strecke in zwei Minuten.
+[THE DARK KNIGHT Coaster](ref:six-flags-great-adventure/the-dark-knight-coaster?bare) ist eine Wilde Maus von Mack Rides und fährt seit dem 15. Mai 2008 in einer Halle. Der Wagen fährt aus 14 Metern Höhe sechs 180-Grad-Kurven, auf 370 Metern Strecke in zwei Minuten.
 
-[WONDER WOMAN Lasso of Truth](ref:six-flags-great-adventure/wonder-woman-lasso-of-truth?bare) in Movietown hat Zamperla gebaut, sie kam 2019. In Metropolis steht seit 2017 [JUSTICE LEAGUE: Battle for Metropolis](ref:six-flags-great-adventure/justice-league-battle-for-metropolis?bare) von Sally Corp.
+Zamperla hat 2019 [WONDER WOMAN Lasso of Truth](ref:six-flags-great-adventure/wonder-woman-lasso-of-truth?bare) in Movietown gebaut, für Fahrgäste ab 132 Zentimetern. In Metropolis läuft seit 2017 [JUSTICE LEAGUE: Battle for Metropolis](ref:six-flags-great-adventure/justice-league-battle-for-metropolis?bare) von Sally Corp.
 
 ```glossary-widget slug=inverted-coaster
 
@@ -121,19 +121,19 @@ Die Familienachterbahn [HARLEY QUINN Crazy Train](ref:six-flags-great-adventure/
 
 ### Adventure Alley
 
-Seit dem 3. Juni 1996 fährt die Familienachterbahn [Skull Mountain](ref:six-flags-great-adventure/skull-mountain?bare) von Intamin im Dunkeln durch eine Halle. Der Zug fällt aus 12 Metern Höhe 11 Meter tief und erreicht auf seinen 420 Metern 53 km/h. Wie beim Joker ist bei 196 Zentimetern Schluss.
+Die Familienachterbahn [Skull Mountain](ref:six-flags-great-adventure/skull-mountain?bare) fährt im Dunkeln durch eine Halle. Intamin hat sie gebaut, eröffnet hat sie am 3. Juni 1996. Der Zug fällt aus 12 Metern Höhe 11 Meter tief und erreicht auf seinen 420 Metern 53 km/h. Wie beim Joker ist bei 196 Zentimetern Schluss.
 
 Über der Adventure Alley dreht der 74 Meter hohe [SkyScreamer](ref:six-flags-great-adventure/skyscreamer?bare) seine Kreise, mit bis zu 64 km/h. Gemütlicher geht es nebenan im Riesenrad [Giant Wheel](ref:six-flags-great-adventure/giant-wheel?bare) zu, und selbst dort gilt Fast Lane.
 
 ### Boardwalk und Shoreline Pier
 
-Auf [SUPERMAN: Ultimate Flight](ref:six-flags-great-adventure/superman-ultimate-flight?bare) liegst du waagerecht unter der Schiene, das Gesicht zum Boden. B&M hat den Flying Coaster gebaut, der am 17. April 2003 eröffnet hat. Die Bahn ist 32 Meter hoch und fällt 30 Meter. Mit bis zu 82 km/h fliegt der Zug durch zwei Inversionen und braucht für 841 Meter Strecke 2:06 Minuten.
+Auf [SUPERMAN: Ultimate Flight](ref:six-flags-great-adventure/superman-ultimate-flight?bare) liegst du waagerecht unter der Schiene, das Gesicht zum Boden. B&M hat den Flying Coaster gebaut, der am 17. April 2003 eröffnet hat. Die Bahn ist 32 Meter hoch und fällt 30 Meter. Für die 841 Meter mit zwei Inversionen braucht der Zug 2:06 Minuten, am schnellsten ist er dabei mit 82 km/h.
 
 ```glossary-widget slug=flying-coaster
 
 ```
 
-Am Boardwalk wartet auch der [Slingshot](ref:six-flags-great-adventure/slingshot?bare), der extra kostet.
+Der [Slingshot](ref:six-flags-great-adventure/slingshot?bare) am Boardwalk kostet extra.
 
 Den umgebauten Shoreline Pier hat Six Flags am 26. März 2026 angekündigt. Nach einer Vorab-Öffnung im Juni war am 1. Juli 2026 die offizielle Eröffnung. Fünf Fahrgeschäfte sind neu: Wave Swinger, Super Round Up, Flying Scooters, Hypno Twister und [Barrels O’ Fun](ref:six-flags-great-adventure/barrels-o-fun?bare). Vier davon kommen aus Six Flags America, dessen Schließung nach der Saison 2025 Six Flags im Mai 2025 angekündigt hatte.
 
@@ -213,7 +213,7 @@ Neu im Programm sind 2026 die Mazes „JASON: Blood Reign“ und „Final Destin
 
 Nach Fright Fest öffnet der Park ohne Programm am 5. bis 8. und am 14. und 15. November, jeweils von 11 bis 19 Uhr. [Holiday in the Park](/news/six-flags-great-adventure-holiday-in-the-park-2026) beginnt am 20. November mit einer Preview Night für Passinhaber von 16 bis 20 Uhr. Für alle läuft es an ausgewählten Tagen vom 21. November bis zum 3. Januar 2027, von 13 bis 20 Uhr. Thanksgiving am 26. November und die beiden Weihnachtstage am 24. und 25. Dezember bleiben zu. Silvester ist offen, bis 20 Uhr, also rechtzeitig, um zu Hause auf Mitternacht zu warten.
 
-Jersey Devil Coaster, El Toro, Runaway Train, Tango und der Bugs Bunny National Park fahren während des Events nicht. Ob die übrigen fahren, entscheiden an jedem Holiday-Abend Wetter und Temperatur.
+Jersey Devil Coaster, El Toro, Runaway Train, Tango und der Bugs Bunny National Park fahren während des Events nicht. Ob die übrigen Bahnen fahren, entscheidet Six Flags an jedem Holiday-Abend je nach Wetter und Temperatur.
 
 ```best-days-widget slug=six-flags-great-adventure
 
@@ -252,13 +252,13 @@ Angenommen, du stehst an einem Sommertag zur Öffnung am Eingang, Nitro fährt w
 - Am Nachmittag Lakefront mit THE JOKER und HARLEY QUINN, dazu Skull Mountain in Adventure Alley, die in einer Halle fährt.
 - Zum Schluss der Shoreline Pier, an Sommerabenden mit den Boardwalk Nights.
 
-Bei El Toro, THE JOKER, dem Jersey Devil Coaster und THE FLASH dürfen keine losen Gegenstände mit in die Warteschlange, also weder Taschen noch Rucksäcke. Fast Lane und die Tickets laufen über das Handy. Vor der Saison 2026 hat der Park mehr als 600 neue WLAN-Zugangspunkte installiert. Bezahlt wird nur bargeldlos mit Karte, Apple Pay oder Google Pay. Wer Bargeld dabeihat, tauscht es an Kiosken in eine Karte um. Fragen beantwortet Guest Relations per Live-Chat täglich von 8 bis 2 Uhr nachts, Ostküstenzeit.
+Bei El Toro, THE JOKER, dem Jersey Devil Coaster und THE FLASH dürfen keine losen Gegenstände mit in die Warteschlange, also weder Taschen noch Rucksäcke. Fast Lane und die Tickets laufen über das Handy, und damit das auch in der Warteschlange klappt, hat der Park vor der Saison 2026 mehr als 600 neue WLAN-Zugangspunkte installiert. Bezahlt wird nur bargeldlos mit Karte, Apple Pay oder Google Pay. Wer Bargeld dabeihat, tauscht es an Kiosken in eine Karte um. Fragen beantwortet Guest Relations per Live-Chat täglich von 8 bis 2 Uhr nachts, Ostküstenzeit.
 
 ## Tickets
 
 Das Tagesticket kostet online ab 45 $, sonst 90 $. Tagestickets verkauft der Park auch am Eingang. Auf jeden Kauf schlägt Six Flags bis zu 9,99 $ Gebühr plus Steuer auf. Kinder bis zwei Jahre kommen umsonst in den Park und nach Hurricane Harbor. Six Flags erstattet keine Tickets und gibt bei Regen keine Gutscheine für einen anderen Tag aus.
 
-Das 2-Park Combo kostet 79 $ statt 170 $. Es gilt einmal im Dorney Park bis zum 7. November und einmal in Great Adventure bis zum 29. November, dort aber nicht samstags.
+Das 2-Park Combo für 79 $ gilt einmal im Dorney Park bis zum 7. November und einmal in Great Adventure bis zum 29. November, dort aber nicht samstags.
 
 Der **Gold Pass 2027** kostet 99 $ statt 115 $, als Verlängerung 89 $. Er gilt für den Rest von 2026 und das ganze Jahr 2027 und wird am 2. November teurer. Enthalten sind:
 
@@ -269,7 +269,7 @@ Der **Gold Pass 2027** kostet 99 $ statt 115 $, als Verlängerung 89 $. Er gilt 
 
 Als **Gold Membership** zahlst du 20 $ Aufnahmegebühr und 8 $ im Monat. Nach zwölf Monaten verlängert sie sich von selbst.
 
-Der **Prestige Pass** kostet 249 $ statt 275 $, verlängert 239 $. Als Membership zahlst du 20 $ Aufnahmegebühr und 20 $ im Monat. Der Prestige Pass bringt:
+Der **Prestige Pass** kostet derzeit 249 $, als Verlängerung 239 $. Als Membership zahlst du 20 $ Aufnahmegebühr und 20 $ im Monat. Der Prestige Pass bringt:
 
 - den Eintritt in alle Six-Flags-Parks
 - Getränke aus dem Zapfhahn bei jedem Besuch
@@ -294,7 +294,7 @@ Ohne Auto fährt das Busunternehmen OurBus einmal am Tag um 9:30 Uhr von der Geo
 
 ## Essen
 
-Im Park gibt es 55 Restaurants und Imbisse. 2026 hat Six Flags das Best of the West zum „Best of the West: Smokehouse“ umgebaut und den Main Street Pub erneuert. Für die Küche ist Executive Chef Jeremy Hacker zuständig.
+Im Park gibt es 55 Restaurants und Imbisse. 2026 hat Six Flags das Best of the West zum „Best of the West: Smokehouse“ umgebaut und den Main Street Pub erneuert.
 
 Für einen Tag verkauft der Park diese Essenspläne:
 
@@ -366,21 +366,21 @@ Im Oktober 2026 waren neun der zehn Wagen in Montage, für einen grünen und ein
 
 Kingda Ka, ein Accelerator Coaster von Intamin, eröffnete am 21. Mai 2005. Der Turm war 139 Meter hoch, und der Zug beschleunigte in 3,5 Sekunden auf 206 km/h. Bei der Eröffnung war Kingda Ka zugleich die schnellste Achterbahn der Welt, bis Formula Rossa ihr im November 2010 diesen Rekord abnahm.
 
-Kingda Ka fuhr am 10. November 2024 zum letzten Mal, vier Tage später bestätigte Six Flags das Ende. Gesprengt wurde der Turm am 28. Februar 2025. Mit ihm verschwand Zumanjaro: Drop of Doom, der Fallturm von Intamin, der seit dem 4. Juli 2014 an Kingda Kas Turm hing.
+Kingda Ka fuhr am 10. November 2024 zum letzten Mal, gesprengt wurde der Turm am 28. Februar 2025. Mit ihm verschwand Zumanjaro: Drop of Doom, der Fallturm von Intamin, der seit dem 4. Juli 2014 an Kingda Kas Turm hing.
 
-Green Lantern fuhr am selben 10. November 2024 zum letzten Mal. Der Stand-up Coaster von B&M stand vorher als Chang in Kentucky Kingdom und kam 2011 nach Jackson. Im November und Dezember 2024 wurde er abgerissen. Ebenfalls 2024 schlossen der Skycoaster Dare Devil Dive, der seit 1997 lief, und der Top Spin Twister von Huss aus dem Jahr 1999.
+Auch Green Lantern hatte am 10. November 2024 ihren letzten Betriebstag. Der Stand-up Coaster von B&M stand vorher als Chang in Kentucky Kingdom und kam 2011 nach Jackson. Im November und Dezember 2024 wurde er abgerissen. Ebenfalls 2024 schlossen der Skycoaster Dare Devil Dive, der seit 1997 lief, und der Top Spin Twister von Huss aus dem Jahr 1999.
 
-Auf der Liste der geplanten Schließungen stehen derzeit Nitro, der Runaway Train und das Big Wheel.
+Als geschlossen oder in Überarbeitung führt Six Flags derzeit Nitro, den Runaway Train und das Big Wheel. Plan deinen Tag also nicht um eine dieser drei herum.
 
 ## Geschichte
 
 Das Konzept für Great Adventure entwickelte Warner LeRoy 1972. Für 4.500 geladene Gäste öffnete der Park am 30. Juni 1974, für alle am 1. Juli. Gebaut hatte LeRoy für etwa 10 Millionen Dollar, und der Park hieß damals einfach Great Adventure.
 
-Im Herbst 1977 kaufte Six Flags den Park. Sieben Jahre später, am 11. Mai 1984, brannte das Haunted Castle, ein Geisterhaus im Park, und acht Jugendliche starben.
+Im Herbst 1977 kaufte Six Flags den Park. Am 11. Mai 1984 brannte das Haunted Castle, ein Geisterhaus im Park, und acht Jugendliche starben.
 
-Von 1990 bis 1997 war Time Warner Großaktionär von Six Flags. 1993 verkaufte LeRoy seinen Anteil an Time Warner. 1998 kaufte Premier Parks Six Flags. Den Konzern führten später ab 2006 Mark Shapiro und ab 2010 Jim Reid-Anderson, heute führt ihn John Reilly, derselbe, der nach dem Goliath-Unfall die Sitzgurte angekündigt hat.
+Von 1990 bis 1997 war Time Warner Großaktionär von Six Flags. 1993 verkaufte LeRoy seinen Anteil an Time Warner. 1998 kaufte Premier Parks Six Flags. Heute führt John Reilly den Konzern.
 
-Von den älteren Bahnen fuhr Viper 2004 zum letzten Mal und wurde 2005 abgebaut. Batman & Robin: The Chiller schloss am 28. Juni 2007, die Great American Scream Machine am 18. Juli 2010. Rolling Thunder war seit 1979 gefahren und schloss 2013.
+Rolling Thunder war 1979 gekommen und ging 2013 als letzte dieser älteren Achterbahnen. Vor ihr hatten Viper (2004 zuletzt gefahren, 2005 abgebaut), Batman & Robin: The Chiller (2007) und die Great American Scream Machine (2010) geschlossen.
 
 2012 wurde die Wild Safari mit dem Park zu einem Gelände verbunden. Cedar Fair und Six Flags schlossen ihre Fusion am 1. Juli 2024 ab. Parkpräsident von Great Adventure ist Mike Fehnel.
 
@@ -390,7 +390,7 @@ Six Flags veröffentlicht keine Besucherzahlen. Im Theme Index von TEA und AECOM
 
 ### Wo sehe ich die Wartezeiten von Six Flags Great Adventure live?
 
-Auf der [Parkseite von Six Flags Great Adventure](ref:six-flags-great-adventure) bei park.fan stehen die aktuellen Wartezeiten (Queue Times) für 65 Attraktionen, von Superman bis zu den Kinderbahnen, und für jede Bahn, ob sie gerade fährt.
+Auf der [Parkseite von Six Flags Great Adventure](ref:six-flags-great-adventure) bei park.fan stehen die aktuellen Wartezeiten (Queue Times) für 65 Attraktionen, die Kinderbahnen eingeschlossen, und für jede Bahn, ob sie gerade fährt.
 
 ### Welche Bahnen fahren heute in Six Flags Great Adventure?
 
@@ -398,7 +398,7 @@ Den Status jeder Bahn findest du live auf der [Parkseite](ref:six-flags-great-ad
 
 ### Wie voll ist Six Flags Great Adventure heute?
 
-Für jeden Öffnungstag berechnet park.fan aus der Wartezeit-Historie, Wetter und Öffnungszeiten eine Andrangsstufe von sehr niedrig bis extrem. Die von heute steht auf der [Parkseite](ref:six-flags-great-adventure). Fright Fest endet am 1. November, danach hat der Park bis Holiday in the Park nur noch an sechs Tagen geöffnet.
+Nach dem Ende von Fright Fest am 1. November hat der Park bis Holiday in the Park nur noch an sechs Tagen geöffnet. Die Andrangsstufe für heute, von sehr niedrig bis extrem, steht auf der [Parkseite](ref:six-flags-great-adventure).
 
 ### Gibt es einen Crowd Calendar für Six Flags Great Adventure?
 
