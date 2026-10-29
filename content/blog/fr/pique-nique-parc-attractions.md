@@ -1,8 +1,8 @@
 ---
-title: 'Apporter son repas au parc d’attractions : ce qui est permis'
+title: 'Apporter son repas au Parc Astérix, à Disneyland Paris et dans 13 autres parcs'
 translationKey: bring-own-food-theme-parks
 date: '2026-10-09'
-updatedAt: '2026-10-14'
+updatedAt: '2026-10-29'
 author: patrick
 mode: published
 featured: false
@@ -29,11 +29,9 @@ coverImage:
   caption: 'Une table de pique-nique au-dessus de la plage du Santa Cruz Beach Boardwalk, en Californie, avec le Giant Dipper au fond.'
   credit: 'Polina Lavor / Unsplash'
 seo:
-  title: 'Parc d’attractions : apporter à manger, c’est permis ?'
+  title: 'Pique-nique au Parc Astérix ou à Disneyland Paris : permis ?'
   description: >-
-    Heide Park, l’Efteling, Toverland, Walibi Holland, le Futuroscope et
-    Disneyland Paris autorisent la nourriture apportée. Les parcs aquatiques la
-    refusent.
+    Au Parc Astérix, aux aires de pique-nique ; à Disneyland Paris, oui, sans glacière ni table ; à Rulantica, non. Ce que permettent 15 parcs.
   keywords:
     - pique-nique parc d’attractions
     - apporter à manger parc d’attractions
@@ -100,7 +98,7 @@ Situation au 9 octobre 2026 :
 
 ### Europa-Park
 
-Dans le règlement d’[Europa-Park](ref:europa-park), il n’y a rien sur la nourriture apportée. Les grillades et le
+Oui, on peut apporter à manger et à boire à [Europa-Park](ref:europa-park) : le règlement ne l’interdit pas. Les grillades et le
 matériel de cuisson sont interdits, tout comme les grandes quantités d’alcool et les alcools forts. Les grandes valises
 vont dans les casiers de l’entrée principale.
 
@@ -113,7 +111,9 @@ Dans l’application Europa-Park & Rulantica, on commande repas et boissons à l
 
 ### Phantasialand
 
-[Phantasialand](ref:phantasialand) contrôle les sacs à l’entrée, avec des détecteurs et par sondage. Sa liste d’objets
+Repas et boissons sans alcool passent aussi l’entrée de [Phantasialand](ref:phantasialand). L’alcool reste dehors, sous tout emballage.
+
+Le parc contrôle les sacs à l’entrée, avec des détecteurs et par sondage. Sa liste d’objets
 interdits comprend couteaux et ciseaux, gaz lacrymogène, pyrotechnie, armes, skateboards, rollers, vélos et Segways.
 S’y ajoute l’alcool sous tout emballage, donc aussi une bière encore fermée.
 
@@ -156,7 +156,7 @@ Pour manger, il y a une pelouse de pique-nique avec des bancs, numéro 45 sur le
 
 ### Movie Park Germany
 
-Le règlement de [Movie Park Germany](ref:movie-park-germany) interdit d’apporter de l’alcool et de faire des grillades
+[Movie Park Germany](ref:movie-park-germany) laisse entrer, lui aussi, le repas et les boissons sans alcool. Le règlement interdit d’apporter de l’alcool et de faire des grillades
 sur tout le site. Sur la nourriture apportée, il n’y a rien. Les grandes valises et les autres objets encombrants restent dehors.
 
 Le Halloween Horror Festival a ses propres règles. Selon la FAQ du festival, l’alcool et toutes les boissons en bouteille
@@ -315,6 +315,22 @@ Dans la plupart des parcs, oui. Heide Park, l’Efteling, Toverland, Walibi Holl
 l’autorisent expressément, Disneyland Paris sans glacière ni table. À Bobbejaanland, à Walibi Belgium, au Parc Astérix et
 à Plopsaland Deutschland, le pique-nique est permis aux endroits prévus. Dans les règlements d’Europa-Park, de
 Phantasialand, de Hansa-Park, de Legoland Deutschland et de Movie Park, il n’y a rien à ce sujet.
+
+### Peut-on apporter à manger et à boire à Europa-Park ?
+
+Oui. Le règlement n’interdit que le barbecue et le matériel de cuisson, les grandes quantités d’alcool et les alcools
+forts. Des aires de pique-nique se trouvent dans le parc historique du château Balthasar, dans le quartier allemand, à
+côté de Wodan Timburcoaster. Le casse-croûte ne va pas plus loin que le parc à thème : Rulantica le refuse.
+
+### Peut-on apporter à manger et à boire à Phantasialand ?
+
+Oui, mais pas d’alcool, pas même la bière fermée qui attend si innocemment au fond du sac. Les sacs sont contrôlés à
+l’entrée, avec des détecteurs et par sondage.
+
+### Peut-on apporter à manger et à boire à Movie Park Germany ?
+
+Oui, sauf de l’alcool. Pendant le Halloween Horror Festival, toutes les boissons en bouteille de verre restent aussi
+dehors, et les sacs sont contrôlés avant l’entrée.
 
 ### Peut-on apporter des bouteilles en verre dans un parc d’attractions ?
 

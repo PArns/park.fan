@@ -1,8 +1,8 @@
 ---
-title: 'Portare il cibo al parco divertimenti: cosa è permesso'
+title: 'Portare il cibo a Disneyland Paris, Europa-Park e in altri 13 parchi'
 translationKey: bring-own-food-theme-parks
 date: '2026-10-09'
-updatedAt: '2026-10-14'
+updatedAt: '2026-10-29'
 author: patrick
 mode: published
 featured: false
@@ -29,10 +29,9 @@ coverImage:
   caption: 'Un tavolo da picnic sopra la spiaggia del Santa Cruz Beach Boardwalk, in California, con il Giant Dipper sullo sfondo.'
   credit: 'Polina Lavor / Unsplash'
 seo:
-  title: 'Parco divertimenti: si può portare il cibo da casa?'
+  title: 'Cibo da casa a Disneyland Paris ed Europa-Park: si può?'
   description: >-
-    Cibo da casa al parco divertimenti: che cosa permettono 15 parchi in DE, NL,
-    BE e FR, dove fare picnic e dove vetro, borse frigo e griglie restano fuori.
+    Sì a Disneyland Paris, senza borsa frigo né tavolo, e a Europa-Park; nei parchi acquatici no. Che cosa permettono 15 parchi in DE, NL, BE e FR.
   keywords:
     - portare cibo parco divertimenti
     - picnic parco divertimenti
@@ -98,7 +97,7 @@ Situazione al 9 ottobre 2026:
 
 ### Europa-Park
 
-Nel regolamento di [Europa-Park](ref:europa-park) non c’è nulla sul cibo portato da casa. Sono vietati il barbecue e
+Sì, a [Europa-Park](ref:europa-park) puoi portare cibo e bevande: il regolamento non lo vieta. Sono vietati il barbecue e
 l’attrezzatura da cucina, e poi le grandi quantità di alcol e i superalcolici. Le valigie grandi vanno negli armadietti
 all’ingresso principale.
 
@@ -111,7 +110,9 @@ Nell’app Europa-Park & Rulantica ordini cibo e bevande in anticipo, paghi nell
 
 ### Phantasialand
 
-All’ingresso [Phantasialand](ref:phantasialand) controlla le borse, con metal detector e a campione. Nella sua lista
+Cibo e bevande analcoliche entrano anche a [Phantasialand](ref:phantasialand). L’alcol resta fuori, in qualsiasi confezione.
+
+All’ingresso il parco controlla le borse, con metal detector e a campione. Nella sua lista
 degli oggetti vietati ci sono coltelli e forbici, spray al peperoncino, materiale pirotecnico, armi, skateboard, pattini
 in linea, biciclette e Segway. A questi si aggiunge l’alcol in qualsiasi confezione, quindi anche una birra ancora chiusa.
 
@@ -152,7 +153,7 @@ Per mangiare c’è un prato picnic con panchine, numero 45 sulla mappa del parc
 
 ### Movie Park Germany
 
-La Parkordnung di [Movie Park Germany](ref:movie-park-germany) vieta di portare alcol e di grigliare in tutta l’area.
+Nemmeno [Movie Park Germany](ref:movie-park-germany) ferma il cibo e le bevande analcoliche. La Parkordnung vieta di portare alcol e di grigliare in tutta l’area.
 Sul cibo portato da casa non c’è nulla. Valigie grandi e altri oggetti ingombranti restano fuori.
 
 Durante l’Halloween Horror Festival valgono regole proprie. Secondo la FAQ del festival sono vietati l’alcol e tutte le
@@ -307,6 +308,22 @@ Nella maggior parte dei parchi sì. È permesso espressamente a Heide Park, all�
 Futuroscope e a Disneyland Paris, che però esclude borsa frigo e tavolo. A Bobbejaanland, a Walibi Belgium, al Parc
 Astérix e a Plopsaland Deutschland il picnic è permesso nelle aree indicate. Nei regolamenti di Europa-Park,
 Phantasialand, Hansa-Park, Legoland Deutschland e Movie Park non c’è nulla al riguardo.
+
+### Si può portare cibo e bevande a Europa-Park?
+
+Sì. Il regolamento vieta solo barbecue e attrezzatura da cucina, grandi quantità di alcol e superalcolici. Le aree picnic
+sono nel parco storico del castello Balthasar, nell’area tematica Germania, accanto a Wodan Timburcoaster. Il panino però si ferma al parco a tema:
+Rulantica non lo fa entrare.
+
+### Si può portare cibo e bevande a Phantasialand?
+
+Sì, ma niente alcol, nemmeno la birra chiusa che se ne sta così innocente nello zaino. All’ingresso le borse vengono
+controllate, con metal detector e a campione.
+
+### Si può portare cibo e bevande a Movie Park Germany?
+
+Sì, tranne l’alcol. Durante l’Halloween Horror Festival restano fuori anche tutte le bevande in bottiglie di vetro, e
+prima dell’ingresso le borse vengono controllate.
 
 ### Si possono portare bottiglie di vetro in un parco divertimenti?
 

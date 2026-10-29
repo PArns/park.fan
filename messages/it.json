@@ -1741,6 +1741,17 @@
     "breadcrumb": "Six Flags",
     "parkLink": "Tutti i parchi Six Flags"
   },
+  "universal": {
+    "metaTitle": "Universal Tempi di attesa LIVE: tutti i {count} parchi",
+    "metaTitleShort": "Universal Tempi di attesa LIVE: tutti i parchi",
+    "metaDescription": "Tempi di attesa in diretta dei parchi Universal, da Hollywood e Orlando a Osaka, Singapore e Pechino: quale parco è aperto oggi e quanto si aspetta in coda.",
+    "title": "Universal: tempi di attesa di tutti i parchi in diretta",
+    "intro": "Contano solo i parchi con «Universal» nel nome: Universal Studios Hollywood, i quattro parchi di Orlando con Epic Universe e il parco acquatico Volcano Bay, e i parchi Universal Studios di Osaka, Singapore e Pechino. Per ognuno vedi se è aperto oggi e quanta gente c’è.",
+    "summary": "{parks, plural, =1 {# parco} other {# parchi}} in {countries, plural, =1 {# paese} other {# paesi}}",
+    "listName": "Parchi Universal",
+    "breadcrumb": "Universal",
+    "parkLink": "Tutti i parchi Universal"
+  },
   "stats": {
     "globalStats": "Statistiche globali",
     "globalStatsIntro": "Dati in tempo reale da parchi a tema e attrazioni in tutto il mondo.",
@@ -1857,6 +1868,8 @@
       "titleTemplate": "{park} Tempi di attesa LIVE – {city}",
       "titleTemplateNoCity": "{park} – Tempi di attesa LIVE & Giorni Migliori",
       "metaDescriptionTemplateNoCity": "Tempi di attesa in diretta e calendario per {park}. Controlla le previsioni di oggi, giorni migliori e orari di apertura.",
+      "metaDescriptionFacts": "Tempi di attesa in diretta per {park}, aggiornati ogni 5 minuti. Giorni più tranquilli: {quietDays}. Calendario, previsioni e orari.",
+      "metaDescriptionFactsShort": "Tempi di attesa in diretta per {park}, aggiornati ogni 5 minuti. Giorni più tranquilli: {quietDays}. E il calendario.",
       "keywordWaitTimes": "tempi di attesa",
       "keywordCrowdCalendar": "calendario affluenze",
       "keywordBestTime": "quando visitare",

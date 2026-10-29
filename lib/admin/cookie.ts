@@ -1,4 +1,11 @@
 /**
+ * Set beside the session cookie and readable by scripts: it holds no credential, it only tells a
+ * public page that this browser has signed in to the admin, so the page asks the admin proxy for
+ * its Search Console figures instead of every visitor's browser asking. A stale one costs a 401.
+ */
+export const ADMIN_MARKER_COOKIE = 'parkfan_admin';
+
+/**
  * Reads one cookie out of a `Cookie` header. Kept free of `next/headers` so the code that parses
  * attacker-controlled input can be tested; split rather than matched, so the name comparison is
  * exact and no regex runs over hostile input.

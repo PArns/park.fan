@@ -1,0 +1,9 @@
+### Search Console: Suchfeld in beiden Listen, Google-Zahlen auf jeder Seite
+
+Die Listen „Suchanfragen“ und „Seiten in der Google-Suche“ auf `/admin/traffic/seo` haben ein Suchfeld. Es fragt die API mit `search=` (neu im Backend, Teilstring, Groß- und Kleinschreibung egal), die alle Zeilen des Zeitraums durchsucht, nicht nur die 50 geladenen; Treffer kommen bis 200 auf einmal. Die Summen oben bleiben die des ganzen Berichts.
+
+Wer im Admin angemeldet ist, sieht auf jeder öffentlichen Seite unten links eine Zeile mit Klicks, CTR und Position der letzten 28 Tage. Aufgeklappt zeigt sie Impressionen, die Veränderung gegen die 28 Tage davor, die Besuche aus der Suche laut eigenem Zähler, die fünf stärksten Suchanfragen und einen Link in den Admin, auf diese Seite gefiltert. Ob das Overlay geladen wird, entscheidet ein lesbares Cookie `parkfan_admin` ohne Geheimnis, das die Session-Route beim Login und bei jedem Admin-Besuch setzt und beim Abmelden löscht. Alle anderen Besucher laden nur diese Prüfung, keine Anfrage geht raus, und die gecachte Seite bleibt für alle gleich. Eine abgelaufene Session antwortet 401, dann löscht das Overlay das Cookie und verschwindet. Auf einer Park- oder Bahnseite führen zwei Links direkt in den Editor des Parks und der Bahn.
+
+Die Meta-Beschreibung einer Parkseite nennt jetzt die ruhigsten Wochentage aus derselben Statistik, die der Seitenkopf zeigt („Ruhigste Tage: Dienstag und Mittwoch“). Ein Park ohne diese Statistik, ohne öffentliche Live-Wartezeiten oder ein geschlossener Park behält die bisherige Beschreibung. Phantasialand (21.248 Impressionen, 0,5 % CTR) und Heide Park (13.464, 0,5 %) standen im Oktober auf Position 7 bis 9 mit einer Beschreibung, die wörtlich auch bei jedem anderen Park steht.
+
+`check:prose` warnt bei `seo.title` nicht mehr vor einer Frage mit Antwort (§2.12): Der Title-Tag trifft so die Suchanfrage wörtlich, etwa „wann ist der Europa-Park am leersten“. Für den H1 gilt die Regel weiter.

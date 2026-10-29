@@ -87,7 +87,7 @@ export async function ParkTitleHeader({
   const tParks = await getTranslations('parks');
   const tInfo = await getTranslations('parks.info');
   const brand = parkBrandOf(park.name);
-  const tBrand = brand ? await getTranslations('sixFlags') : null;
+  const tBrand = brand ? await getTranslations(brand.namespace) : null;
   const countryLabel = translateGeoSlug(tGeo, 'countries', country, countryName);
   const cityHref = trail.find((c) => c.url === `/parks/${continent}/${country}/${city}`)?.url;
   const countryHref = trail.find((c) => c.url === `/parks/${continent}/${country}`)?.url;

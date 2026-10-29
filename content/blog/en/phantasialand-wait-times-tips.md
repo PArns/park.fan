@@ -1,5 +1,5 @@
 ---
-title: 'Phantasialand: wait times and tips from a regular'
+title: 'At Phantasialand, the Quick Pass only pays off on busy days'
 translationKey: phantasialand-tips-2026
 date: '2026-07-24'
 updatedAt: '2026-10-14'
@@ -27,7 +27,7 @@ coverImage:
   caption: 'Taron in the basalt village of Klugheim, for me the most beautiful spot in the park.'
   credit: 'park.fan'
 seo:
-  title: 'Phantasialand Wait Times & Tips from a Repeat Offender'
+  title: 'Phantasialand tips: Quick Pass, quiet days, wait times'
   description: >-
     Keep Phantasialand wait times down: the right day, the Quick Pass, Rutmor’s
     Taverne and Wintertraum, from a regular of more than thirty years.

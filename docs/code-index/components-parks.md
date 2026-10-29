@@ -71,6 +71,12 @@ by hand: change the comment in the code and re-run the script. -->
 - `ParkBlogPostsSection` _component_: Park page chapter of blog articles and news that mention the park, preceded by the park's first-visit guide when it has one. Renders nothing in a locale without a published blog.
 - `AttractionBlogPostsSection` _component_: Ride page chapter of blog articles and news that mention the ride. Renders nothing when there are none or the locale has no published blog.
 
+### [`brand-page.tsx`](../../components/parks/brand-page.tsx)
+
+- `BrandPage` _component_: Every park named for a brand on one page, grouped by country, with the live status the geo pages show: the page "&lt;brand&gt; wait times" is meant to find. Membership is the name, see `lib/parks/park-brands.ts` and docs/seo/brand-pages.md.
+- `brandPageMetadata` _function_: A brand page's metadata: the title names the park count and falls back to a count-less one when the geo tree cannot be read; canonical and hreflang for six locales plus `x-default`.
+- Types: `BrandPageProps`
+
 ### [`calendar-hash-redirect.tsx`](../../components/parks/calendar-hash-redirect.tsx)
 
 - `CalendarHashRedirect` _component_: Forwards an old `#calendar` / `#calendar-YYYY-MM` deep link to the calendar PAGE before the park page hydrates.

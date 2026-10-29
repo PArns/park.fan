@@ -166,7 +166,10 @@ blunt for German, where `Wann` and `Wie` open plenty of honest sentences; we ban
 question only where the reader would ask it, and three rhetorical questions in a row are a triad
 (§2.2). `check:prose` flags `Das Ergebnis?`, `Der Grund?`, `Die Antwort?`, `Der Haken?` and their
 English twins, and warns on a heading that asks and answers in one line
-(`Sind 70 Minuten viel? Kommt drauf an, ob Dienstag ist`).
+(`Sind 70 Minuten viel? Kommt drauf an, ob Dienstag ist`). Not on `seo.title`: the title tag is
+written for the result page, where the searcher's own question followed by what the page gives
+(`Europa-Park: Wann ist am wenigsten los? Beste Tage & Tipps`) matches the query word for word.
+The H1 (`title`) keeps the rule.
 
 The set-up also comes folded into one sentence: `Offen bleibt, welche Bahnen an so einem Tag noch
 lohnen, und das sind zuerst die im Gebäude.` Nothing was open. Write the answer:

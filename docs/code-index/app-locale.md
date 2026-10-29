@@ -513,8 +513,15 @@ Route `/[locale]/parks` (page).
 
 Route `/[locale]/parks/six-flags` (page).
 
-- `default (SixFlagsPage)` _component_: Every park named for Six Flags on one page, grouped by country, with the live status the geo pages show: the page "six flags wait times" is meant to find. Membership is the name, see `lib/parks/park-brands.ts`.
-- `generateMetadata` _function_
+- `default (SixFlagsPage)` _component_: Every Six Flags and Hurricane Harbor park, for "six flags wait times".
+- `generateMetadata` _function_: The Six Flags page's metadata, see `brandPageMetadata`.
+
+### [`parks/universal/page.tsx`](../../app/%5Blocale%5D/parks/universal/page.tsx)
+
+Route `/[locale]/parks/universal` (page).
+
+- `default (UniversalPage)` _component_: Every Universal park, for "universal wait times" and "universal studios wait times".
+- `generateMetadata` _function_: The Universal page's metadata, see `brandPageMetadata`.
 
 ### [`search/page.tsx`](../../app/%5Blocale%5D/search/page.tsx)
 

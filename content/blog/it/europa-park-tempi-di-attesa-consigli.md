@@ -1,5 +1,5 @@
 ---
-title: 'Europa-Park: il parco più grande della Germania'
+title: 'Europa-Park: i giorni in cui c’è meno gente'
 translationKey: europa-park-guide
 date: '2026-08-21'
 updatedAt: '2026-10-04'
@@ -35,7 +35,7 @@ coverImage:
   caption: 'Voltron Nevera nell’area tematica dedicata alla Croazia. Sette inversioni, e la partenza catapultata più ripida del mondo.'
   credit: 'park.fan'
 seo:
-  title: 'Tempi di attesa: quando l’Europa-Park è più vuoto?'
+  title: 'Europa-Park: quando è meno affollato? Giorni e consigli'
   description: >-
     L’Europa-Park è più vuoto di domenica e giovedì a maggio e giugno, fuori
     dalle vacanze scolastiche in Baden-Württemberg, Svizzera e Alsazia.

@@ -1,0 +1,5 @@
+### Universal: eine Seite mit allen Parks und ihrem Live-Status
+
+„universal wait times“ und „universal studios wait times“ kamen in 28 Tagen auf über 1.100 Impressionen ohne einen Klick, und Google zeigte dafür die Seite von Universal Studios Hollywood auf Position 9 bis 11. `/{locale}/parks/universal` listet jetzt alle acht Parks mit „Universal“ im Namen nach Land: Hollywood, die vier Parks in Orlando mit Epic Universe und Volcano Bay sowie Osaka, Singapur und Peking. Wie auf der Six-Flags-Seite zeigt jede Karte, ob der Park heute offen ist und wie voll er ist; dazu kommen BreadcrumbList, ItemList, hreflang in sechs Sprachen und ein Sitemap-Eintrag. Jede Universal-Parkseite verlinkt die Übersicht in ihrer Adresszeile.
+
+Beide Markenseiten teilen sich jetzt `components/parks/brand-page.tsx`; die Seitenordner geben nur noch ihre Marke weiter. Sitemap, Content-Change-Crawl und der Link auf der Parkseite lesen `PARK_BRANDS`, eine dritte Marke braucht also nur ihre Konstante, ihren Ordner und ihre Texte.

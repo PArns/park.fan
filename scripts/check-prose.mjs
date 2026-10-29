@@ -1212,13 +1212,18 @@ function sloganTell(heading) {
   return mirrored ? `two halves mirrored on "${mirrored}"` : null;
 }
 
-const headingCheck = (file, where, heading) => {
+/*
+ * `searchTitle` is `seo.title`: the title tag, written for the search result. There a question
+ * with its answer after it is the searcher's own question ("wann ist der Europa-Park am leersten")
+ * and what the page promises, so §2.12 does not apply; the H1 keeps it.
+ */
+const headingCheck = (file, where, heading, searchTitle = false) => {
   const slogan = sloganTell(heading);
   if (slogan) warn(file, `${where}: a slogan, not a heading (§4.3), ${slogan} — "${heading}"`);
   const tell = headingTell(heading);
   if (tell === 'order')
     fail(file, `${where}: a question followed by an order (§5.6) — "${heading}"`);
-  else if (tell === 'answer')
+  else if (tell === 'answer' && !searchTitle)
     warn(file, `${where}: a question the heading answers itself (§2.12) — "${heading}"`);
 };
 const READER_VOICE =
@@ -1365,7 +1370,8 @@ function plainTextFields(raw) {
       )
         value += ` ${lines[++i].trim()}`;
     }
-    out.push([m[2], value.trim().replace(/^(['"])(.*)\1$/, '$2')]);
+    // The third entry says the field is nested, as `seo.title` is under `seo:`.
+    out.push([m[2], value.trim().replace(/^(['"])(.*)\1$/, '$2'), m[1].length > 0]);
   }
   return out;
 }
@@ -1752,13 +1758,13 @@ for (const locale of runs('blog') ? LOCALES : []) {
         `${pivots} colon pivots in ${proseSentences} sentences (§2.7, budget ${MAX_COLON_PIVOTS_PER_100}/100)`
       );
 
-    for (const heading of [
+    for (const [heading, searchTitle] of [
       ...plainTextFields(raw)
         .filter(([f]) => f === 'title')
-        .map(([, v]) => v),
-      ...[...raw.matchAll(/^#{2,3} (.+)$/gm)].map((m) => m[1]),
+        .map(([, v, nested]) => [v, nested]),
+      ...[...raw.matchAll(/^#{2,3} (.+)$/gm)].map((m) => [m[1], false]),
     ]) {
-      headingCheck(file, 'heading', heading);
+      headingCheck(file, 'heading', heading, searchTitle);
       if (locale === 'de' && MODAL_WITHOUT_VERB.test(heading.replace(/^[^:]{2,40}:\s*/, '')))
         warn(
           file,
@@ -2202,13 +2208,13 @@ for (const name of runs('changelog') ? changelogFiles : []) {
       fail(file, `${field}: Markdown in a plain-text field (§4.5) — "${value.slice(0, 60)}"`);
   }
 
-  for (const heading of [
+  for (const [heading, searchTitle] of [
     ...plainTextFields(raw)
       .filter(([f]) => f === 'title')
-      .map(([, v]) => v),
-    ...[...raw.matchAll(/^#{2,3} (.+)$/gm)].map((m) => m[1]),
+      .map(([, v, nested]) => [v, nested]),
+    ...[...raw.matchAll(/^#{2,3} (.+)$/gm)].map((m) => [m[1], false]),
   ])
-    headingCheck(file, 'heading', heading);
+    headingCheck(file, 'heading', heading, searchTitle);
 
   explainerHabits(file, body, 'en');
 

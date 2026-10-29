@@ -1741,6 +1741,17 @@
     "breadcrumb": "Six Flags",
     "parkLink": "Tous les parcs Six Flags"
   },
+  "universal": {
+    "metaTitle": "Universal Temps d’Attente LIVE : les {count} parcs",
+    "metaTitleShort": "Universal Temps d’Attente LIVE",
+    "metaDescription": "Temps d’attente en direct des parcs Universal, d’Hollywood et Orlando à Osaka, Singapour et Pékin : quel parc est ouvert et l’attente à chaque attraction.",
+    "title": "Universal : temps d’attente de tous les parcs en direct",
+    "intro": "Seuls les parcs dont le nom contient « Universal » sont comptés : Universal Studios Hollywood, les quatre parcs d’Orlando avec Epic Universe et le parc aquatique Volcano Bay, et les parcs Universal Studios d’Osaka, Singapour et Pékin. Chacun indique s’il est ouvert aujourd’hui et son affluence.",
+    "summary": "{parks, plural, =1 {# parc} other {# parcs}} dans {countries, plural, =1 {# pays} other {# pays}}",
+    "listName": "Parcs Universal",
+    "breadcrumb": "Universal",
+    "parkLink": "Tous les parcs Universal"
+  },
   "stats": {
     "globalStats": "Statistiques mondiales",
     "globalStatsIntro": "Données en direct des parcs d’attractions et attractions dans le monde.",
@@ -1857,6 +1868,8 @@
       "titleTemplate": "{park} Temps d’Attente LIVE – {city}",
       "titleTemplateNoCity": "{park} – Temps d’Attente LIVE & Affluence",
       "metaDescriptionTemplateNoCity": "Temps d’attente en direct et calendrier pour {park}. Prévisions du jour, meilleurs jours et horaires d’ouverture.",
+      "metaDescriptionFacts": "Temps d’attente en direct pour {park}, mis à jour toutes les 5 minutes. Jours les plus calmes : {quietDays}. Calendrier, prévisions et horaires.",
+      "metaDescriptionFactsShort": "Temps d’attente en direct pour {park}, mis à jour toutes les 5 minutes. Jours les plus calmes : {quietDays}. Et le calendrier.",
       "keywordWaitTimes": "temps d’attente",
       "keywordCrowdCalendar": "calendrier d’affluence",
       "keywordBestTime": "meilleure période pour visiter",

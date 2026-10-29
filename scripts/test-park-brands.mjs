@@ -1,5 +1,5 @@
 /**
- * Unit tests for `lib/parks/park-brands.ts`: which parks the Six Flags page lists and in what order.
+ * Unit tests for `lib/parks/park-brands.ts`: which parks a brand page lists and in what order.
  * Membership is the park's name, so La Ronde (owned by Six Flags, not named for it) stays off and
  * the Hurricane Harbor water parks are on.
  *
@@ -11,6 +11,7 @@ import {
   isBrandPark,
   parkBrandOf,
   SIX_FLAGS,
+  UNIVERSAL,
 } from '../lib/parks/park-brands.ts';
 
 let passed = 0;
@@ -103,6 +104,15 @@ test('countries with the most parks first, theme parks before water parks, then 
       ['saudi-arabia', ['six-flags-qiddiya-city']],
     ]
   );
+});
+
+test('each brand claims its own parks and not another word that starts the same', () => {
+  assert.equal(parkBrandOf('Universal Studios Japan'), UNIVERSAL);
+  assert.equal(parkBrandOf('Universal Volcano Bay'), UNIVERSAL);
+  assert.equal(parkBrandOf('Universal Epic Universe'), UNIVERSAL);
+  assert.equal(isBrandPark(UNIVERSAL, 'Universe of Energy'), false);
+  assert.equal(isBrandPark(UNIVERSAL, 'Six Flags Magic Mountain'), false);
+  assert.equal(parkBrandOf('Six Flags Magic Mountain'), SIX_FLAGS);
 });
 
 test('a country without a brand park is left out', () => {

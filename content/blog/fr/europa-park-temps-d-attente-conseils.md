@@ -1,5 +1,5 @@
 ---
-title: 'Europa-Park : le plus grand parc d’Allemagne'
+title: 'Europa-Park : les jours où il y a le moins de monde'
 translationKey: europa-park-guide
 date: '2026-08-21'
 updatedAt: '2026-10-04'
@@ -35,7 +35,7 @@ coverImage:
   caption: 'Voltron Nevera dans la zone croate. Sept inversions, et le lancement le plus pentu du monde.'
   credit: 'park.fan'
 seo:
-  title: 'Temps d’attente : quand l’Europa-Park est-il le plus vide ?'
+  title: 'Europa-Park : quand y a-t-il le moins de monde ? Conseils'
   description: >-
     L’Europa-Park est au plus vide le dimanche et le jeudi en mai et juin, hors
     vacances scolaires en Bade-Wurtemberg, en Suisse et en Alsace.

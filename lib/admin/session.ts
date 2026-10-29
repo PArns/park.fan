@@ -168,6 +168,11 @@ export function sessionCookieOptions(maxAgeSeconds: number) {
   };
 }
 
+/** The attributes of {@link ADMIN_MARKER_COOKIE}: the session's, but readable by scripts. */
+export function markerCookieOptions(maxAgeSeconds: number) {
+  return { ...sessionCookieOptions(maxAgeSeconds), httpOnly: false };
+}
+
 /** The one-line form of {@link requireAdmin}, for handlers that need no identity. */
 export async function denyUnlessAdmin(
   request: Request,

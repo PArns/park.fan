@@ -1,6 +1,6 @@
 'use client';
 
-import type { ReactNode } from 'react';
+import { useEffect, useState, type ReactNode } from 'react';
 import { ExternalLink, FileText, Search } from 'lucide-react';
 import {
   NO_COMPARISON,
@@ -26,6 +26,7 @@ import {
   SkeletonRows,
   StartTruncated,
 } from '../../_ui/primitives';
+import { TextInput } from '../../_ui/controls';
 import { useSearchConsoleData, useSearchConsoleDrill } from '../_lib/use-search-console';
 import type { TrafficFilterActions, TrafficFilters } from '../_lib/use-traffic';
 import { FilterChip } from './filter-bar';
@@ -144,6 +145,52 @@ function DrillButton({
 
 const HEAD = 'px-3 py-2 text-right font-medium';
 
+/** How long typing has to pause before the list is asked for again. */
+const SEARCH_PAUSE_MS = 300;
+
+/**
+ * The search field above a list: the API looks through every row of the window, not only the ones
+ * on screen. Reports the text once typing pauses.
+ */
+function RowSearch({
+  label,
+  placeholder,
+  onSearch,
+}: {
+  label: string;
+  placeholder: string;
+  onSearch: (text: string) => void;
+}) {
+  const [text, setText] = useState('');
+  useEffect(() => {
+    const timer = setTimeout(() => onSearch(text.trim()), SEARCH_PAUSE_MS);
+    return () => clearTimeout(timer);
+  }, [text, onSearch]);
+  return (
+    <div className="border-border/50 border-b px-4 py-2.5">
+      <div className="relative sm:max-w-sm">
+        <Search className="text-muted-foreground pointer-events-none absolute top-1/2 left-3 h-3.5 w-3.5 -translate-y-1/2" />
+        <TextInput
+          type="search"
+          value={text}
+          onChange={(event) => setText(event.target.value)}
+          placeholder={placeholder}
+          aria-label={label}
+          className="h-8 pl-8 text-xs"
+        />
+      </div>
+    </div>
+  );
+}
+
+/** Rows asked for while searching: the most the API gives, since a search is a look for one row. */
+const ROWS_SEARCHED = 200;
+
+/** The `extra` of a list read: the drill-down filter, and the search text when there is one. */
+function listExtra(filter: Record<string, string>, search: string) {
+  return search ? { ...filter, search, limit: ROWS_SEARCHED } : { ...filter, limit: ROWS_ASKED };
+}
+
 /**
  * The biggest search queries by clicks. A query narrows the page list to the pages Google shows for
  * it; a chosen page narrows this list to the queries that lead to that page.
@@ -156,11 +203,12 @@ export function SearchConsoleQueriesPanel({
   version: string | null;
 }) {
   const drill = useSearchConsoleDrill();
+  const [search, setSearch] = useState('');
   const { data, error, refetch, isPlaceholderData } =
     useSearchConsoleData<SearchConsoleQueriesResponse>(
       'queries',
       filters,
-      { limit: ROWS_ASKED, ...(drill.page ? { page: drill.page } : {}) },
+      listExtra(drill.page ? { page: drill.page } : {}, search),
       version
     );
   const rows = data?.items ?? [];
@@ -173,6 +221,11 @@ export function SearchConsoleQueriesPanel({
         icon={Search}
         title="Suchanfragen"
         hint="Wonach gesucht wurde, bevor jemand auf park.fan geklickt hat. Google nennt seltene Anfragen nicht, die Liste ergibt deshalb weniger Klicks als die Summe oben. Ein Klick auf eine Anfrage zeigt darunter die Seiten dazu."
+      />
+      <RowSearch
+        label="Suchanfragen durchsuchen"
+        placeholder="Suchanfrage enthält…"
+        onSearch={setSearch}
       />
       {drill.page && (
         <DrillStrip>
@@ -196,9 +249,11 @@ export function SearchConsoleQueriesPanel({
           icon={Search}
           title="Keine Suchanfragen"
           description={
-            drill.page
-              ? 'Google hat im Zeitraum keine Anfrage gemeldet, die zu dieser Seite führte. Mit einem längeren Zeitraum oder ohne den Seitenfilter zeigt sich mehr.'
-              : 'Google hat im Zeitraum keine Anfragen gemeldet. Mit einem längeren Zeitraum oder einer anderen Sprache zeigt sich mehr.'
+            search
+              ? `Keine Anfrage im Zeitraum enthält „${search}“.`
+              : drill.page
+                ? 'Google hat im Zeitraum keine Anfrage gemeldet, die zu dieser Seite führte. Mit einem längeren Zeitraum oder ohne den Seitenfilter zeigt sich mehr.'
+                : 'Google hat im Zeitraum keine Anfragen gemeldet. Mit einem längeren Zeitraum oder einer anderen Sprache zeigt sich mehr.'
           }
         />
       ) : (
@@ -317,11 +372,12 @@ export function SearchConsolePagesPanel({
   version: string | null;
 }) {
   const drill = useSearchConsoleDrill();
+  const [search, setSearch] = useState('');
   const { data, error, refetch, isPlaceholderData } =
     useSearchConsoleData<SearchConsolePagesResponse>(
       'pages',
       filters,
-      { limit: ROWS_ASKED, ...(drill.query ? { query: drill.query } : {}) },
+      listExtra(drill.query ? { query: drill.query } : {}, search),
       version
     );
   const rows = data?.items ?? [];
@@ -335,6 +391,7 @@ export function SearchConsolePagesPanel({
         title="Seiten in der Google-Suche"
         hint="Welche Seiten Google zeigt, daneben die Besuche aus der Suche, die unser eigener Zähler gesehen hat. Er lässt Do Not Track, Global Privacy Control und Opt-out aus, die Zahlen weichen deshalb ab. Ein Klick auf eine Seite zeigt ihre Suchanfragen."
       />
+      <RowSearch label="Seiten durchsuchen" placeholder="Pfad enthält…" onSearch={setSearch} />
       {drill.query && (
         <DrillStrip>
           <FilterChip
@@ -368,9 +425,11 @@ export function SearchConsolePagesPanel({
           icon={FileText}
           title="Keine Seiten"
           description={
-            drill.query
-              ? 'Google zeigt im Zeitraum keine Seite für diese Anfrage. Mit einem längeren Zeitraum oder ohne den Anfragefilter zeigt sich mehr.'
-              : 'Google hat im Zeitraum keine Seiten gemeldet. Mit einem längeren Zeitraum oder einer anderen Sprache zeigt sich mehr.'
+            search
+              ? `Kein Pfad im Zeitraum enthält „${search}“.`
+              : drill.query
+                ? 'Google zeigt im Zeitraum keine Seite für diese Anfrage. Mit einem längeren Zeitraum oder ohne den Anfragefilter zeigt sich mehr.'
+                : 'Google hat im Zeitraum keine Seiten gemeldet. Mit einem längeren Zeitraum oder einer anderen Sprache zeigt sich mehr.'
           }
         />
       ) : (
