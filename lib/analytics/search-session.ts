@@ -5,6 +5,7 @@ import {
   type SearchSurface,
   type SiteEventMap,
 } from '@/lib/analytics/site-analytics';
+import { isUuid } from '@/lib/utils';
 
 /**
  * How long a query has to hold still to count as settled: the palette's debounce, and the wait a
@@ -24,10 +25,14 @@ export type SearchEventName =
 /** A search event's properties. */
 export type SearchEventProps<N extends SearchEventName> = SiteEventMap[N];
 
-/** Where a session's events go: `trackSiteEvent` on the page, a recorder in the tests. */
+/**
+ * Where a session's events go: `trackSiteEvent` on the page, a recorder in the tests. `entity` is
+ * the UUID of the park, ride, show or restaurant a click opened.
+ */
 export type SearchEventSender = <N extends SearchEventName>(
   name: N,
-  props: SearchEventProps<N>
+  props: SearchEventProps<N>,
+  entity?: string
 ) => void;
 
 /**
@@ -52,12 +57,21 @@ export interface SearchSession {
   typed(): void;
   /** A settled query found nothing on this surface. Once per opening. */
   noResults(): void;
-  /** A result was opened; `index` is its 0-based place in its own group. */
-  resultClicked(result: SearchResultKind, index: number): void;
-  /** A row of the list shown before anything is typed was opened. */
-  browseClicked(item: SearchBrowseItem, index: number): void;
+  /**
+   * A result was opened; `index` is its 0-based place in its own group, `id` the result's own id,
+   * which goes along as the entity when it is a UUID (a place's `city:slug` and a post's path are
+   * not).
+   */
+  resultClicked(result: SearchResultKind, index: number, id?: string): void;
+  /** A row of the list shown before anything is typed was opened; `id` as for a result. */
+  browseClicked(item: SearchBrowseItem, index: number, id?: string): void;
   /** "All results" was pressed, on the way to `/search`. */
   viewAll(): void;
+}
+
+/** The id a click sends as its entity: a UUID, lower case, and nothing else. */
+function entityOf(id: string | undefined): string | undefined {
+  return id && isUuid(id) ? id.toLowerCase() : undefined;
 }
 
 /**
@@ -103,21 +117,21 @@ export function createSearchSession(
       noResults = true;
       send('search_no_results', { surface: current });
     },
-    resultClicked(result, index) {
+    resultClicked(result, index, id) {
       ensureOpen();
-      send('search_result_clicked', {
-        surface: current,
-        result,
-        position: searchPosition(index + 1),
-      });
+      send(
+        'search_result_clicked',
+        { surface: current, result, position: searchPosition(index + 1) },
+        entityOf(id)
+      );
     },
-    browseClicked(item, index) {
+    browseClicked(item, index, id) {
       ensureOpen();
-      send('search_browse_clicked', {
-        surface: current,
-        item,
-        position: searchPosition(index + 1),
-      });
+      send(
+        'search_browse_clicked',
+        { surface: current, item, position: searchPosition(index + 1) },
+        entityOf(id)
+      );
     },
     viewAll() {
       ensureOpen();
@@ -130,38 +144,50 @@ export function createSearchSession(
 const RESULT_KIND_ATTR = 'data-search-result';
 const RESULT_INDEX_ATTR = 'data-search-index';
 const RESULT_PATH_ATTR = 'data-search-path';
+const RESULT_ID_ATTR = 'data-search-id';
 
 /**
  * The attributes that mark a link as a search result for {@link trackResultClick}, for lists a
  * Server Component draws (`/search`) or that take no callback (`PostSearchResultList`). `path` is
  * the result's own locale-relative path, for a row that holds other links as well (a post's
- * category label): only a click on the link to it counts.
+ * category label): only a click on the link to it counts. `id` is the result's id, sent as the
+ * click's entity when it is a UUID.
  */
-export function searchResultData(result: SearchResultKind, index: number, path?: string) {
+export function searchResultData(
+  result: SearchResultKind,
+  index: number,
+  path?: string,
+  id?: string
+) {
   return {
     [RESULT_KIND_ATTR]: result,
     [RESULT_INDEX_ATTR]: String(index),
     ...(path ? { [RESULT_PATH_ATTR]: path } : {}),
+    ...(id ? { [RESULT_ID_ATTR]: id } : {}),
   };
 }
 
 /**
  * Sends `search_result_clicked` for a click inside a list marked with {@link searchResultData}:
  * one capture listener on the list instead of a handler per row. Only a click that opens the
- * result counts, one on its link: not one beside every link, and not one on another link inside
- * the row.
+ * result counts, one on its link: not one beside every link, not one on another link inside the
+ * row, and not one on a button inside the link.
  */
 export function trackResultClick(session: SearchSession, target: EventTarget | null): void {
   if (!(target instanceof Element)) return;
   const link = target.closest('a[href]');
   const row = link?.closest(`[${RESULT_KIND_ATTR}]`);
   if (!link || !row) return;
+  // A button inside the link (a ride card's alert bell, its planner button) opens nothing.
+  const button = target.closest('button');
+  if (button && link.contains(button)) return;
   const path = row.getAttribute(RESULT_PATH_ATTR);
   // The anchor's pathname carries the locale prefix and percent-encodes what the path spells out.
   if (path && !decodeURI((link as HTMLAnchorElement).pathname).endsWith(path)) return;
   const index = Number(row.getAttribute(RESULT_INDEX_ATTR));
   session.resultClicked(
     row.getAttribute(RESULT_KIND_ATTR) as SearchResultKind,
-    Number.isFinite(index) ? index : 0
+    Number.isFinite(index) ? index : 0,
+    row.getAttribute(RESULT_ID_ATTR) ?? undefined
   );
 }

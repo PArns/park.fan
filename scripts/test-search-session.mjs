@@ -3,12 +3,12 @@
  * counting every search surface sends through: one `search_opened` per opening, at most one
  * `search_typed` and one `search_no_results` in it, a click before any opening opening one, and
  * a click after a close counting for the opening it closed, so the admin's click and no-result
- * rates stay between 0 and 1.
+ * rates stay between 0 and 1; a click naming the UUID it opened, and only a UUID.
  *
  * Run: `pnpm test:search-session`
  */
 import assert from 'node:assert/strict';
-import { createSearchSession } from '../lib/analytics/search-session.ts';
+import { createSearchSession, trackResultClick } from '../lib/analytics/search-session.ts';
 
 let passed = 0;
 function test(name, fn) {
@@ -17,10 +17,12 @@ function test(name, fn) {
   console.log(`  ✓ ${name}`);
 }
 
-/** A session on `surface` and the events it sent, as `[name, props]` pairs. */
+/** A session on `surface` and the events it sent, as `[name, props]` pairs, the entity third. */
 function recorded(surface) {
   const sent = [];
-  const session = createSearchSession(surface, (name, props) => sent.push([name, props]));
+  const session = createSearchSession(surface, (name, props, entity) =>
+    sent.push(entity === undefined ? [name, props] : [name, props, entity])
+  );
   return { session, sent };
 }
 
@@ -111,6 +113,78 @@ test('the step card counts as its own surface', () => {
   assert.deepEqual(sent, [
     ['search_opened', { surface: 'home_steps' }],
     ['search_typed', { surface: 'home_steps' }],
+  ]);
+});
+
+const PARK = '0B6F0D1C-6A49-4C38-9A2E-3F1D2B7C8E01';
+
+test('a click names the park, ride or show it opened by UUID, and nothing else', () => {
+  const { session, sent } = recorded('compare');
+  session.resultClicked('park', 0, PARK);
+  session.browseClicked('nearby_park', 1, PARK);
+  session.resultClicked('location', 2, 'city:bruehl');
+  session.resultClicked('guide', 0);
+  assert.deepEqual(sent.slice(1), [
+    [
+      'search_result_clicked',
+      { surface: 'compare', result: 'park', position: '1' },
+      PARK.toLowerCase(),
+    ],
+    [
+      'search_browse_clicked',
+      { surface: 'compare', item: 'nearby_park', position: '2' },
+      PARK.toLowerCase(),
+    ],
+    ['search_result_clicked', { surface: 'compare', result: 'location', position: '3' }],
+    ['search_result_clicked', { surface: 'compare', result: 'guide', position: '1' }],
+  ]);
+});
+
+/** A minimal element tree for `trackResultClick`: `closest`, `contains` and attributes. */
+function element(tag, attrs = {}, parent = null) {
+  const node = {
+    tag,
+    attrs,
+    parent,
+    pathname: attrs.href,
+    getAttribute: (name) => attrs[name] ?? null,
+    contains(other) {
+      for (let at = other; at; at = at.parent) if (at === node) return true;
+      return false;
+    },
+    closest(selector) {
+      for (let at = node; at; at = at.parent) {
+        if (selector === 'a[href]' && at.tag === 'a' && at.attrs.href) return at;
+        if (selector === 'button' && at.tag === 'button') return at;
+        const attr = /^\[([\w-]+)\]$/.exec(selector)?.[1];
+        if (attr && attr in at.attrs) return at;
+      }
+      return null;
+    },
+  };
+  return node;
+}
+
+test('a ride card opened from the hits is a click with its UUID; its alert bell is none', () => {
+  // `trackResultClick` checks `instanceof Element`; in Node the stand-ins pass as objects.
+  globalThis.Element = Object;
+  const { session, sent } = recorded('park_rides');
+  const row = element('li', {
+    'data-search-result': 'attraction',
+    'data-search-index': '2',
+    'data-search-id': PARK,
+  });
+  const card = element('a', { href: '/de/parks/x/y' }, row);
+  const name = element('span', {}, card);
+  const bell = element('svg', {}, element('button', {}, card));
+  trackResultClick(session, bell);
+  trackResultClick(session, name);
+  assert.deepEqual(sent.slice(1), [
+    [
+      'search_result_clicked',
+      { surface: 'park_rides', result: 'attraction', position: '3' },
+      PARK.toLowerCase(),
+    ],
   ]);
 });
 

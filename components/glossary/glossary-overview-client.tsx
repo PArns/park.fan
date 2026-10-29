@@ -18,6 +18,12 @@ import type { Locale } from '@/i18n/config';
 import { cn } from '@/lib/utils';
 import { nothingFocused } from '@/lib/utils/page-focus';
 import { trackSiteEvent } from '@/lib/analytics/site-analytics';
+import { trackResultClick } from '@/lib/analytics/search-session';
+import {
+  searchFieldFocusProps,
+  useSearchSession,
+  useSettledQueryEvents,
+} from '@/lib/hooks/use-search-session';
 
 interface CategoryGroup {
   category: GlossaryCategory;
@@ -49,16 +55,7 @@ export function GlossaryOverviewClient({
   const [activeCategory, setActiveCategory] = useState<GlossaryCategory | null>(null);
   const [playerOnly, setPlayerOnly] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
-
-  // Counts a search once it holds three characters and has settled; the query itself is never sent.
-  useEffect(() => {
-    const trimmed = query.trim();
-    if (trimmed.length < 3) return;
-    const timer = setTimeout(() => {
-      trackSiteEvent('glossary_searched', {});
-    }, 600);
-    return () => clearTimeout(timer);
-  }, [query]);
+  const search = useSearchSession('glossary');
 
   // Only with nothing focused, and never Space: a letter on a focused pill or link belongs to it,
   // and an Escape that closes a dialog must not clear the search behind it. The field handles its
@@ -112,6 +109,10 @@ export function GlossaryOverviewClient({
 
   const filteredCount = filtered.reduce((acc, g) => acc + g.terms.length, 0);
   const hasFilter = listQuery.trim() || listCategory || listPlayerOnly;
+  // The field is a search surface: an opening per focus, a settled query of three characters, a
+  // dead end when the list it filters is empty, and a term opened from it. Nothing typed is sent.
+  const searching = listQuery.trim().length > 0;
+  useSettledQueryEvents(search, query, listQuery === query ? filteredCount > 0 : null);
   const listCategoryLabel = groupedTerms.find((g) => g.category === listCategory)?.categoryLabel;
 
   // Once per page, not once per card per render.
@@ -143,6 +144,7 @@ export function GlossaryOverviewClient({
             aria-label={t('searchPlaceholder')}
             autoComplete="off"
             enterKeyHint="search"
+            {...searchFieldFocusProps(search)}
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             onKeyDown={(e) => {
@@ -211,7 +213,11 @@ export function GlossaryOverviewClient({
         ))}
       </div>
 
-      <div aria-live="polite" aria-atomic="false">
+      <div
+        aria-live="polite"
+        aria-atomic="false"
+        onClickCapture={(event) => trackResultClick(search, event.target)}
+      >
         {filtered.length === 0 ? (
           <div className="border-border flex flex-col items-center gap-3 rounded-2xl border border-dashed px-6 py-14 text-center">
             <BookOpen className="text-muted-foreground size-10 opacity-40" aria-hidden="true" />
@@ -235,9 +241,10 @@ export function GlossaryOverviewClient({
                 />
                 {/* A definition list: each card is a term and its definition (`GlossaryTermCard`). */}
                 <dl className="grid gap-3 sm:grid-cols-2 @min-[1024px]/page:grid-cols-3">
-                  {terms.map((term) => (
+                  {terms.map((term, index) => (
                     <GlossaryTermCard
                       key={term.id}
+                      searchIndex={searching ? index : undefined}
                       term={term}
                       locale={locale}
                       segment={segment}

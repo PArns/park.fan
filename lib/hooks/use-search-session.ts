@@ -17,10 +17,11 @@ import {
  */
 const trackSearchEvent = trackSiteEvent as (
   name: SearchEventName,
-  props: SearchEventProps<SearchEventName>
+  props: SearchEventProps<SearchEventName>,
+  entity?: string
 ) => void;
 
-const send: SearchEventSender = (name, props) => trackSearchEvent(name, props);
+const send: SearchEventSender = (name, props, entity) => trackSearchEvent(name, props, entity);
 
 /** The {@link SearchSession} of one mounted search surface, the same object on every render. */
 export function useSearchSession(surface: SearchSurface): SearchSession {

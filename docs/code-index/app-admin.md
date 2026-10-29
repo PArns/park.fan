@@ -825,6 +825,10 @@ Route `/admin/system` (page).
 
 - `RangePicker` _component_: The window of every traffic page: a button that names it and opens the presets (today, yesterday, the last 7, 28 or 90 days, this and last week, this and last month, 12 months) and a custom first and last day.
 
+### [`traffic/_components/ranked-entities.tsx`](../../app/admin/traffic/_components/ranked-entities.tsx)
+
+- `RankedEntitiesPanel` _component_: A report's ranking of parks or rides as a panel: each name leads into its editor and the symbol beside it to its page, an id no table knows any more reads „Nicht mehr vorhanden".
+
 ### [`traffic/_components/search-console-section.tsx`](../../app/admin/traffic/_components/search-console-section.tsx)
 
 - `SearchConsoleSection` _component_: The Search Console section of the SEO page: the status of the import with a button for an editor to run it now, the window's figures, their course, and the queries and pages behind them.
@@ -836,7 +840,7 @@ Route `/admin/system` (page).
 
 ### [`traffic/_components/search-view.tsx`](../../app/admin/traffic/_components/search-view.tsx)
 
-- `SearchView` _component_: `/admin/traffic/search`: which search field is used, from which page and on which device. The seven fields are compared on openings, typing, clicks and misses; the matrices show where each is used, and every figure leads back to its event.
+- `SearchView` _component_: `/admin/traffic/search`: which search field is used, from which page and on which device.
 
 ### [`traffic/_components/seo-view.tsx`](../../app/admin/traffic/_components/seo-view.tsx)
 

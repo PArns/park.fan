@@ -2,7 +2,15 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { ArrowLeft, ListChecks, MousePointerClick, Search, Smartphone } from 'lucide-react';
+import {
+  ArrowLeft,
+  FerrisWheel,
+  ListChecks,
+  MapPin,
+  MousePointerClick,
+  Search,
+  Smartphone,
+} from 'lucide-react';
 import {
   browseItemLabel,
   pageTypeLabel,
@@ -54,6 +62,7 @@ import { useTrafficData, useTrafficFilters, type TrafficFilters } from '../_lib/
 import { HourlyNotice } from './hourly-notice';
 import { TrafficFilterBar } from './filter-bar';
 import { eventHref } from './events-table';
+import { RankedEntitiesPanel } from './ranked-entities';
 
 /** Each search field keeps one colour in every chart of the page, in the palette's fixed order. */
 const KNOWN_SURFACE_COLOR = Object.fromEntries(
@@ -155,7 +164,7 @@ function HeroHeaderPanel({ search }: { search: SearchOverview }) {
   );
 }
 
-/** All seven fields side by side: how often they are opened, typed into and followed. */
+/** Every field side by side: how often it is opened, typed into and followed. */
 function SurfaceTable({ search }: { search: SearchOverview }) {
   const rows = surfaceRows(search);
   const max = Math.max(1, ...rows.map((row) => row.opened));
@@ -456,8 +465,9 @@ function EventLinks({ filters }: { filters: TrafficFilters }) {
 
 /**
  * `/admin/traffic/search`: which search field is used, from which page and on which device. The
- * seven fields are compared on openings, typing, clicks and misses; the matrices show where each
- * is used, and every figure leads back to its event.
+ * fields are compared on openings, typing, clicks and misses; the matrices show where each is
+ * used, the parks and rides opened from a search are ranked, and every figure leads back to its
+ * event.
  */
 export function SearchView() {
   const filters = useTrafficFilters();
@@ -542,6 +552,26 @@ export function SearchView() {
           <PageMatrixPanel search={data} />
           <DevicePanel search={data} />
           <ClicksPanels search={data} />
+          <div className="grid gap-5 lg:grid-cols-2 [&>*]:min-w-0">
+            <RankedEntitiesPanel
+              icon={MapPin}
+              title="Meistgesuchte Parks"
+              hint="Parks, die aus einer Suche geöffnet wurden, als Treffer oder Vorschlag. Was getippt wurde, zählt nie. Der Name führt in den Editor."
+              entities={data.topParks ?? []}
+              kind="park"
+              unit="Mal geöffnet"
+              empty="Noch kein Park aus einer Suche geöffnet"
+            />
+            <RankedEntitiesPanel
+              icon={FerrisWheel}
+              title="Meistgesuchte Fahrgeschäfte"
+              hint="Fahrgeschäfte, die aus einer Suche geöffnet wurden, auch aus der Suche auf einer Parkseite. Der Name führt in den Editor."
+              entities={data.topRides ?? []}
+              kind="attraction"
+              unit="Mal geöffnet"
+              empty="Noch kein Fahrgeschäft aus einer Suche geöffnet"
+            />
+          </div>
           <SeriesPanel search={data} />
         </>
       )}

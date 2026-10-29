@@ -56,7 +56,8 @@ type SitePageType =
 /**
  * Which search field a search event came from. The phone and desktop hero are both `hero`;
  * `home_steps` is the copy of the hero field in the homepage's „So funktioniert's" step card, counted
- * apart so it does not inflate the hero.
+ * apart so it does not inflate the hero. `park_rides` is the ride search on a park's attractions
+ * tab, `compare` the park picker of the comparison, `glossary` the glossary overview's field.
  */
 export type SearchSurface =
   | 'hero'
@@ -66,7 +67,10 @@ export type SearchSurface =
   | 'listing_guides'
   | 'listing_news'
   | 'guides_panel'
-  | 'home_steps';
+  | 'home_steps'
+  | 'park_rides'
+  | 'compare'
+  | 'glossary';
 
 /** What kind of result was opened from a search. */
 export type SearchResultKind =
@@ -156,7 +160,6 @@ export interface SiteEventMap {
   blog_toast_opened: NoProps;
   glossary_term_viewed: { term: string };
   glossary_category_filtered: { category: string };
-  glossary_searched: NoProps;
   preferred_source_clicked: NoProps;
   ride_alert_set: { source: 'card' | 'central' };
   ride_alert_removed: NoProps;

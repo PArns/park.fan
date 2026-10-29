@@ -91,7 +91,7 @@ const search = {
   locale: null,
   surfaces: SEARCH_SURFACES.map((surface, index) => ({
     surface,
-    opened: [120, 300, 40, 10, 0, 0, 5, 0][index],
+    opened: [120, 300, 40, 10, 0, 0, 5, 0][index] ?? 0,
     typed: 0,
     resultClicks: 0,
     browseClicks: 0,
@@ -249,7 +249,7 @@ test('search events are the ones that start with search_', () => {
 
 test('every closed list has a word for each value', () => {
   assert.equal(Object.keys(PAGE_TYPE_LABEL).length, 17);
-  assert.equal(Object.keys(SURFACE_LABEL).length, 8);
+  assert.equal(Object.keys(SURFACE_LABEL).length, 11);
   assert.equal(Object.keys(RESULT_KIND_LABEL).length, 8);
   assert.equal(Object.keys(BROWSE_ITEM_LABEL).length, 5);
   assert.equal(breakdownValueLabel('channel', 'ai'), 'KI-Assistenten');
@@ -316,6 +316,9 @@ test('the surfaces are ranked by openings with their share of all of them', () =
       'listing_guides',
       'listing_news',
       'home_steps',
+      'park_rides',
+      'compare',
+      'glossary',
     ]
   );
   assert.equal(rows[0].openedShare, 300 / 475);

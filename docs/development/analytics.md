@@ -122,7 +122,6 @@ the rule is on the call site, and `trackSiteEvent` says it too.
 | `blog_toast_opened`          | the new-posts toast followed to its post                                                           | none                                                        |                  |
 | `glossary_term_viewed`       | once per glossary term page view                                                                   | `term` (English id)                                         |                  |
 | `glossary_category_filtered` | a category filter on the glossary overview                                                         | `category` (`none` when cleared)                            |                  |
-| `glossary_searched`          | 600 ms after the glossary search holds three or more characters; the query is not sent             | none                                                        |                  |
 | `preferred_source_clicked`   | the footer's "preferred source on Google" link                                                     | none                                                        |                  |
 | `ride_alert_set`             | a wait-time alert saved (opening the dialog is not counted)                                        | `source` (card, central)                                    | the ride         |
 | `ride_alert_removed`         | an alert removed, once the server confirmed it                                                     | none                                                        | the ride         |

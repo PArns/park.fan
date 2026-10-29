@@ -402,6 +402,9 @@ export const SURFACE_LABEL: Record<SearchSurface, string> = {
   listing_news: 'News-Liste',
   guides_panel: 'Guides-Menü',
   home_steps: 'Startseite, Schritte',
+  park_rides: 'Fahrgeschäfte im Park',
+  compare: 'Park-Vergleich',
+  glossary: 'Glossar',
 };
 
 /** A search field as it reads in a list; one the site sends later stays as sent. */
@@ -642,10 +645,6 @@ export const EVENT_INFO: Record<SiteEventName, EventInfo> = {
   glossary_category_filtered: {
     label: 'Glossar gefiltert',
     when: 'Eine Kategorie auf der Glossar-Übersicht; „none“, wenn der Filter fällt.',
-  },
-  glossary_searched: {
-    label: 'Glossar durchsucht',
-    when: 'Die Glossarsuche hält drei Zeichen und ist zur Ruhe gekommen.',
   },
   preferred_source_clicked: {
     label: 'Bevorzugte Quelle',

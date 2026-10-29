@@ -17,8 +17,6 @@ import {
 import {
   DEVICE_LABEL,
   PLANNER_STAGE_LABEL,
-  entityEditorHref,
-  entityPublicHref,
   formatCount,
   formatDecimal,
   formatShare,
@@ -32,7 +30,7 @@ import {
   withoutEmptyColumns,
 } from '@/lib/admin/site-analytics';
 import { INTERVAL_SENTENCE } from '@/lib/admin/traffic-range';
-import type { PlannerEntity, PlannerOverview } from '@/lib/api/admin-site-analytics';
+import type { PlannerOverview } from '@/lib/api/admin-site-analytics';
 import { BarList, CATEGORICAL, HeatMatrix, SeriesChart, type BarRow } from '../../_ui/charts';
 import {
   AdminPage,
@@ -48,7 +46,7 @@ import { useTrafficData, useTrafficFilters, type TrafficFilters } from '../_lib/
 import { eventHref } from './events-table';
 import { TrafficFilterBar } from './filter-bar';
 import { HourlyNotice } from './hourly-notice';
-import { PublicLink } from './list-parts';
+import { RankedEntitiesPanel } from './ranked-entities';
 import { UnsupportedNote } from './unsupported-note';
 
 /** The raw events behind the page, each a way into its own detail. */
@@ -395,68 +393,28 @@ function SharingPanel({ planner }: { planner: PlannerOverview }) {
   );
 }
 
-/** One ranked entity as a bar row: the editor behind its name, the public page beside it. */
-function entityRow(entity: PlannerEntity, kind: 'park' | 'attraction'): BarRow {
-  if (entity.name === null || entity.url === null) {
-    return {
-      key: entity.id,
-      label: <span className="text-muted-foreground">Nicht mehr vorhanden</span>,
-      detail: <span className="font-mono text-[11px] break-all">{entity.id}</span>,
-      value: entity.count,
-    };
-  }
-  const resolved = { id: entity.id, kind, url: entity.url };
-  return {
-    key: entity.id,
-    label: entity.name,
-    value: entity.count,
-    href: entityEditorHref(resolved),
-    actions: (
-      <PublicLink href={entityPublicHref(resolved)} label={`${entity.name} auf park.fan öffnen`} />
-    ),
-  };
-}
-
 /** The parks most days are planned for, and the rides most often put into a plan. */
 function TopPanels({ planner }: { planner: PlannerOverview }) {
   return (
     <div className="grid gap-5 lg:grid-cols-2 [&>*]:min-w-0">
-      <Panel>
-        <PanelHeader
-          icon={MapPin}
-          title="Meistgeplante Parks"
-          hint="Begonnene Tage je Park, wo die Seite den Park kannte. Der Name führt in den Editor."
-        />
-        <PanelBody>
-          {planner.topParks.length === 0 ? (
-            <p className="text-muted-foreground py-4 text-center text-sm">Noch kein Park gezählt</p>
-          ) : (
-            <BarList
-              unit="Tage"
-              rows={planner.topParks.map((entity) => entityRow(entity, 'park'))}
-            />
-          )}
-        </PanelBody>
-      </Panel>
-      <Panel>
-        <PanelHeader
-          icon={FerrisWheel}
-          title="Meisteingeplante Fahrgeschäfte"
-          hint="Wie oft ein Fahrgeschäft in einen Plan kam, wo die Seite es kannte. Der Name führt in den Editor."
-        />
-        <PanelBody>
-          {planner.topRides.length === 0 ? (
-            <p className="text-muted-foreground py-4 text-center text-sm">
-              Noch kein Fahrgeschäft gezählt
-            </p>
-          ) : (
-            <BarList
-              unit="Mal"
-              rows={planner.topRides.map((entity) => entityRow(entity, 'attraction'))}
-            />
-          )}
-        </PanelBody>
-      </Panel>
+      <RankedEntitiesPanel
+        icon={MapPin}
+        title="Meistgeplante Parks"
+        hint="Begonnene Tage je Park, wo die Seite den Park kannte. Der Name führt in den Editor."
+        entities={planner.topParks}
+        kind="park"
+        unit="Tage"
+        empty="Noch kein Park gezählt"
+      />
+      <RankedEntitiesPanel
+        icon={FerrisWheel}
+        title="Meisteingeplante Fahrgeschäfte"
+        hint="Wie oft ein Fahrgeschäft in einen Plan kam, wo die Seite es kannte. Der Name führt in den Editor."
+        entities={planner.topRides}
+        kind="attraction"
+        unit="Mal"
+        empty="Noch kein Fahrgeschäft gezählt"
+      />
     </div>
   );
 }

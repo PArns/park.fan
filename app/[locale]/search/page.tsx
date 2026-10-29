@@ -222,7 +222,7 @@ function SearchResultCard({
       href={href as '/europe'}
       prefetch={false}
       className="group block h-full"
-      {...searchResultData(result.type, index)}
+      {...searchResultData(result.type, index, undefined, result.id)}
     >
       {card}
     </Link>

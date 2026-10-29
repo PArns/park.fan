@@ -35,6 +35,7 @@ import { formatRiderHeight } from '@/lib/utils/temperature';
 import { cn } from '@/lib/utils';
 import { PHONE_HIT_AREA } from '@/lib/utils/touch-target';
 import { trackSiteEvent, type AttractionFilterName } from '@/lib/analytics/site-analytics';
+import type { searchFieldFocusProps } from '@/lib/hooks/use-search-session';
 
 interface AttractionFilterPanelProps {
   /** The park's UUID, the entity of the `attraction_filter_used` events. */
@@ -42,6 +43,8 @@ interface AttractionFilterPanelProps {
   inputRef: React.RefObject<HTMLInputElement | null>;
   searchQuery: string;
   onSearchChange: (value: string) => void;
+  /** The search session's focus handlers (`searchFieldFocusProps`), stable across renders. */
+  searchFocus: ReturnType<typeof searchFieldFocusProps>;
   /** Search reaches past the pills, so they govern nothing while it runs. */
   isSearching: boolean;
   offSeasonCount: number;
@@ -115,6 +118,7 @@ export function AttractionFilterPanel({
   inputRef,
   searchQuery,
   onSearchChange,
+  searchFocus,
   isSearching,
   offSeasonCount,
   showOffSeason,
@@ -352,8 +356,14 @@ export function AttractionFilterPanel({
               )}
               value={searchQuery}
               onChange={(e) => onSearchChange(e.target.value)}
-              onFocus={() => setIsFocused(true)}
-              onBlur={() => setIsFocused(false)}
+              onFocus={() => {
+                setIsFocused(true);
+                searchFocus.onFocus();
+              }}
+              onBlur={(event) => {
+                setIsFocused(false);
+                searchFocus.onBlur(event);
+              }}
             />
             {isFocused && searchQuery && (
               <div className="animate-in fade-in zoom-in pointer-events-none absolute top-1/2 right-3 -translate-y-[0.85rem] duration-200">

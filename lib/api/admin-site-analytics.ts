@@ -260,6 +260,10 @@ export interface SearchOverview extends AnalyticsWindow {
   positions: { position: string; clicks: number }[];
   browseItems: { surface: string; item: string; clicks: number }[];
   series: { day: string; surface: string; opened: number; partial?: boolean }[];
+  /** Parks by results and suggestions opened, at most 20; absent from an older API. */
+  topParks?: RankedEntity[];
+  /** Rides by results and suggestions opened, at most 20; absent from an older API. */
+  topRides?: RankedEntity[];
 }
 
 /** A planner count by one property's value; `none` for an event sent without it. */
@@ -268,8 +272,11 @@ interface PlannerCount {
   count: number;
 }
 
-/** A park or ride the planner named as its entity; `name` and `url` are `null` once it is gone. */
-export interface PlannerEntity {
+/**
+ * A park or ride a report ranks by the events that named it; `name` and `url` are `null` once it
+ * is gone. A merged one counts for the one it was merged into.
+ */
+export interface RankedEntity {
   id: string;
   name: string | null;
   /** Frontend path without a locale. */
@@ -323,9 +330,9 @@ export interface PlannerOverview extends AnalyticsWindow {
   byPageTypeAndDevice: { pageType: string; device: string; opened: number }[];
   series: { day: string; partial?: boolean; opened: number; started: number; optimized: number }[];
   /** Parks by days started, at most 20. */
-  topParks: PlannerEntity[];
+  topParks: RankedEntity[];
   /** Rides by times added, at most 20. */
-  topRides: PlannerEntity[];
+  topRides: RankedEntity[];
 }
 
 /** A page of the SEO views: where it is, what kind it is, and how it did against the window before. */

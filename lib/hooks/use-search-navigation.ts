@@ -56,11 +56,11 @@ export function useSearchNavigation(session: SearchSession, onNavigate?: () => v
   };
 
   const handleSelect = (result: SearchResultItem, index = 0) =>
-    open(result, () => session.resultClicked(result.type, index));
+    open(result, () => session.resultClicked(result.type, index, result.id));
 
   /** A row of the list shown before anything is typed (nearby, in-park or popular). */
   const handleBrowseSelect = (item: NearbySearchItem, index: number) =>
-    open(item, () => session.browseClicked(item.browseItem, index));
+    open(item, () => session.browseClicked(item.browseItem, index, item.id));
 
   const handleGlossarySelect = (item: GlossarySearchItem, index = 0) => {
     session.resultClicked('glossary', index);
