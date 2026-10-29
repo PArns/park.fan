@@ -811,6 +811,11 @@ export interface ParkBase {
    * `parkArgs()` and use `{inPark}` / `{forPark}` rather than writing the preposition.
    */
   nameArticleDe?: string | null;
+  /**
+   * Abbreviations the park is searched by (`["EP"]`), curated; absent when there are none. Shown
+   * through `nameWithAbbreviations` and as the park's `alternateName`.
+   */
+  abbreviations?: string[];
   slug: string;
   url: string | null;
   country: string | null;
@@ -985,6 +990,11 @@ export interface AttractionResponse {
   id: string;
   name: string;
   slug: string;
+  /**
+   * The ride's API path (`/v1/parks/…/attractions/<slug>`). Differs from the path asked for when the
+   * API redirected an old slug; `findMovedRideRedirect` reads it.
+   */
+  url?: string | null;
   status?: AttractionStatus;
   land: Land | null;
   queues?: QueueDataItem[];

@@ -66,7 +66,7 @@ export function TrafficView() {
     <PanelHeader
       icon={TrendingUp}
       title="Traffic"
-      hint="Der eigene Zähler auf api.park.fan: ohne Cookie, ohne gespeicherte Adresse, ohne Bots, Do Not Track und Opt-out ausgenommen. Umami zählt nur noch Seitenaufrufe und Web Vitals."
+      hint="Der eigene Zähler auf api.park.fan: ohne Cookie, ohne gespeicherte Adresse, ohne Bots, Do Not Track, Global Privacy Control und Opt-out ausgenommen."
       action={
         <div className="flex items-center gap-3 text-xs">
           <LivePill active={realtime.data?.realtime.activeVisitors} />

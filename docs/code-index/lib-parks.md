@@ -55,6 +55,7 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`closed-ride.ts`](../../lib/parks/closed-ride.ts)
 
 - `getClosedRide` _function_: A ride that closed for good keeps its page. The park payload leaves retired rides out, but the attraction detail endpoint still answers for them; this asks it (only after the park payload missed) and decides whether the answer is a page.
+- `findMovedRideRedirect` _function_: The current path of a ride whose old slug the API answers with a 301 (a merge, a slug corrected by hand, a move to a sister park: `attraction_slug_aliases`), or null.
 - `isClosedRide` _function_: Whether an attraction detail response is a ride closed for good.
 - `isClosedPark` _function_: Whether a park closed for good. Its page stays and reads like a closed ride's: the notice, the reason, and nothing that describes a running park. Absent on payloads from before the field.
 - `formatClosedOn` _function_: The day a ride closed, written out in the reader's locale. `retiredAt` is an editor's date stored as midnight UTC, so it is formatted in UTC; the park's zone would move it to the day before.
@@ -101,6 +102,14 @@ Which two days of a park's calendar are being compared, across a change of month
 - `parkMapsLinks` _function_: Both map URLs for a coordinate pair, or `null` when the pair is missing, non-finite, out of range, or `0,0` (Null Island is what an ungeocoded row looks like).
 - Types: `ParkMapsLinks`
 
+### [`park-brands.ts`](../../lib/parks/park-brands.ts)
+
+- `isBrandPark` _function_: Whether a park's name puts it under the brand: "Six Flags Great Adventure", not "Flags Park".
+- `parkBrandOf` _function_: The brand a park belongs to by its name, or null.
+- `brandParksByCountry` _function_: A brand's parks from the geo tree, grouped by country: the country with the most parks first, within it the parks in the order of `brand.names` (theme parks before water parks), then by the name the page shows.
+- `SIX_FLAGS` _const_: Six Flags, the one brand with a page so far.
+- Types: `ParkBrand`, `BrandCountry`
+
 ### [`park-simulation.ts`](../../lib/parks/park-simulation.ts)
 
 - `parseParkSimulation` _function_: Parse `?state=` into the scenarios to apply. Empty when simulation is off, the param is absent or nothing in it is known, so callers apply the result unconditionally and a typo degrades to the real park.
@@ -141,6 +150,12 @@ Which two days of a park's calendar are being compared, across a change of month
 - `rideSummaryRenders` _function_: Whether the data card renders: three sentences, or two beside a column of figures. Fewer is a card holding one line about a ride whose badges already say it. Exported so the page's gate and the card ask the same question.
 - `MIN_METRICS` _const_: Below this many large figures the column is dropped and the text takes the card's width, since one figure beside a paragraph is a cell filled with one line.
 - Types: `RideSummarySentence`, `RideSummaryStat`, `RideSummaryMetric`, `RideSummaryFigures`, `RideSummary`, `RideSummaryType`
+
+### [`static-park.ts`](../../lib/parks/static-park.ts)
+
+- `toStaticPark` _function_: A park's card fields for `<LiveParkGrid>`, only those that never change during the day: live status, crowd level and waits are layered on in the browser, so a hub's prerender stays valid for a day.
+- `parkListItem` _function_: A park card as an entry of a hub's `ItemList`: its shown name, its URL in `locale`, its image.
+- Types: `ParkPlace`
 
 ### [`stats-segments.ts`](../../lib/parks/stats-segments.ts)
 

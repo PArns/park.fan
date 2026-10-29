@@ -62,12 +62,15 @@ function block(userAgents: string[], lines: string[]): string {
  * `/api/og/` serves the Open Graph images every page's metadata points at, so it stays
  * crawlable — longest match wins over the `/api/` rule. `/_next/` is deliberately not
  * disallowed: Google renders pages in a headless browser and needs the JS, CSS and optimized
- * images.
+ * images. `?height=` is the kids page's link into the park page's rider-height filter, one per
+ * height step: the same page under its own canonical, so crawling it is budget the park page
+ * then lacks.
  */
 const CRAWLABLE_RULES = [
   'Allow: /',
   'Allow: /api/og/',
   'Disallow: /api/',
+  'Disallow: /*?height=',
   ...PRIVATE_PATHS.map((path) => `Disallow: ${path}`),
 ];
 

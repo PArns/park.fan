@@ -13,8 +13,9 @@ import { RiddenCounter } from '@/components/parks/ridden-counter';
 import { catchNonFatal } from '@/lib/api/client';
 import { getParkStatsForPage } from '@/lib/api/stats';
 import { parkMapsLinks } from '@/lib/parks/maps-links';
+import { parkBrandOf } from '@/lib/parks/park-brands';
 import { deriveParkBestDays } from '@/lib/parks/park-stats-derive';
-import { isUuid } from '@/lib/utils';
+import { isUuid, nameWithAbbreviations } from '@/lib/utils';
 import type { Locale } from '@/i18n/config';
 import type { Breadcrumb, ParkWithAttractions } from '@/lib/api/types';
 
@@ -85,6 +86,8 @@ export async function ParkTitleHeader({
   // Client Component now (it opens the panel instead of navigating), and `parks` is 15.1 KB.
   const tParks = await getTranslations('parks');
   const tInfo = await getTranslations('parks.info');
+  const brand = parkBrandOf(park.name);
+  const tBrand = brand ? await getTranslations('sixFlags') : null;
   const countryLabel = translateGeoSlug(tGeo, 'countries', country, countryName);
   const cityHref = trail.find((c) => c.url === `/parks/${continent}/${country}/${city}`)?.url;
   const countryHref = trail.find((c) => c.url === `/parks/${continent}/${country}`)?.url;
@@ -104,7 +107,8 @@ export async function ParkTitleHeader({
             where anything sits, and this heading wraps to as many lines as its column needs at
             either size. Nothing measures it. */}
           <h1 className="mb-2 text-3xl font-bold md:text-4xl">
-            {parkName} <span className="font-normal">– {suffix}</span>
+            {nameWithAbbreviations(parkName, park.abbreviations)}{' '}
+            <span className="font-normal">– {suffix}</span>
           </h1>
           {/* 56px = 24 (the address at text-base) + 12 (gap-3) + 20 (the distance line) — two
             lines is what this row settles on below `sm` once the city and country are long
@@ -134,6 +138,13 @@ export async function ParkTitleHeader({
                 )}
               </span>
             </address>
+            {/* A park of a brand with its own page links it, so the brand's overview is reached from
+              every park it lists. */}
+            {brand && tBrand && (
+              <Link href={`/parks/${brand.slug}`} prefetch={false} className={ADDRESS_LINK}>
+                {tBrand('parkLink')}
+              </Link>
+            )}
             {/* How far the visitor is from this park — client-only (needs their position), so it
               just appears next to the address once known. */}
             <ParkDistance latitude={park.latitude} longitude={park.longitude} size="md" keepGap />

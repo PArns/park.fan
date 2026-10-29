@@ -161,21 +161,32 @@ export const findRelocatedParkRedirect = cache(
 );
 
 /**
+ * The frontend path an API `url` names, when it is a park or ride path other than `requestedPath`,
+ * or null. The API answers an old path with a 301 that `fetch` follows silently, so the answer's own
+ * `url` is the only sign that the requested path has moved.
+ */
+export function movedPath(apiUrl: string | null | undefined, requestedPath: string): string | null {
+  if (!apiUrl) return null;
+
+  const canonical = convertApiUrlToFrontendUrl(apiUrl);
+  // `'#'` means the URL could not be parsed; never redirect on that.
+  if (!canonical.startsWith('/parks/')) return null;
+
+  return canonical === requestedPath ? null : canonical;
+}
+
+/**
  * Canonical park path for a park the API DID return, when it differs from the requested path, or
- * null. The API answers a renamed park's old path with a 301 that `fetch` follows silently, so
- * without this the park would render under the stale URL too. Compares the park's own `url`, so it
- * covers slug renames, which {@link findRelocatedParkRedirect} cannot see, and geo re-slugs.
+ * null. Without it a renamed park would render under the stale URL too. Compares the park's own
+ * `url`, so it covers slug renames, which {@link findRelocatedParkRedirect} cannot see, and geo
+ * re-slugs.
  */
 export function findRenamedParkRedirect(
   park: { url?: string | null },
   requested: { continent: string; country: string; city: string; parkSlug: string }
 ): string | null {
-  if (!park.url) return null;
-
-  const canonical = convertApiUrlToFrontendUrl(park.url);
-  // `'#'` means the URL could not be parsed; never redirect on that.
-  if (!canonical.startsWith('/parks/')) return null;
-
-  const requestedPath = `/parks/${requested.continent}/${requested.country}/${requested.city}/${requested.parkSlug}`;
-  return canonical === requestedPath ? null : canonical;
+  return movedPath(
+    park.url,
+    `/parks/${requested.continent}/${requested.country}/${requested.city}/${requested.parkSlug}`
+  );
 }

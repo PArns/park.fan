@@ -60,7 +60,7 @@ and when, and the admin pages. Open it before touching `lib/analytics/site-analy
   phone has reported. A page view reports half an hour at most and nothing under a second; a page
   opened in a background tab earns nothing until it is looked at. The API sums the seconds per
   page and per visit start, which gives the admin its "Ø Zeit auf der Seite" and "Ø Besuchsdauer".
-  Page speed stays with Umami's two Web Vitals events: no load times, no scroll positions.
+  No load times and no scroll positions; page speed was Umami's two Web Vitals events, off with it.
 - **A page load's first flush waits for its pageview**, three seconds at most. A page's own events
   are queued while it mounts, before the layout's beacon has run, and the API attaches an event to
   a visit only once the visit's first pageview has opened it. The pageview also goes ahead of those

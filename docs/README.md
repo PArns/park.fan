@@ -100,6 +100,7 @@ The frontend side of each API surface; the contract itself is linked from each p
 - [crawl-budget](seo/crawl-budget.md) — What Googlebot spends requests on: 2026-09-24 Search Console baseline, wasted fetches and their fixes
 - [semantic-html](seo/semantic-html.md) — Landmarks, headings, articles and dates per page type: the 2026-10-27 audit and a checklist
 - [park-sub-pages](seo/park-sub-pages.md) — Average-wait-times and with-kids park pages: the new-URL rule, gates and census, segments, rendering, cost
+- [brand-pages](seo/brand-pages.md) — The Six Flags page: membership by name, grouping, live status, links from the park pages, sitemap and lastmod
 - [blog-feeds](seo/blog-feeds.md) — The six RSS feeds: autodiscovery per route, what an item carries, why excerpts, WebSub ping
 - [favicon](seo/favicon.md) — The generated icon set: sources, files, where declared, regenerating, caching and stable URLs
 - [agent-readiness](seo/agent-readiness.md) — Robots AI policy, RSL licence, llms.txt, API catalog, skills, MCP and WebMCP: how each is built and checked

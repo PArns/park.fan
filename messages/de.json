@@ -206,7 +206,7 @@
       "body": "95 Minuten sind an einem Dienstag im September viel und an einem Samstag im Oktober ein normaler Vormittag. Deshalb steht auf jeder Attraktionsseite, was an diesem Wochentag typisch ist und wie lang die Warteschlange an vollen Tagen wird.",
       "ridesTitle": "Jede Attraktion hat ihre eigene Seite",
       "ridesText": "Auf der Seite einer Bahn stehen ihre Warteschlangen-Arten, der Tagesverlauf aus Messung und Prognose, typische Wartezeiten nach Wochentag, die Mindestgröße und ein Rope-Drop-Tipp.",
-      "ridesLink": "Beispiel ansehen",
+      "ridesLink": "{park}: alle Wartezeiten live",
       "typicalTitle": "Attraktionsseiten",
       "ropeDropTitle": "Rope-Drop-Tipp",
       "ropeDropText": "Direkt zur Öffnung hierhin. Bei den beliebten Bahnen ist die erste Stunde meist die ruhigste des Tages.",
@@ -254,7 +254,7 @@
       },
       "feedback": "Am Tag darauf wird jede Prognose gegen die tatsächlich gemessene Wartezeit gelegt. Die Differenz geht in das nächste Training ein, und deshalb ändert sich die Kalenderfarbe für denselben Tag, je näher er rückt.",
       "body": "Die Farbe vergleicht den Tag mit einem üblichen Tag im selben Park. Grün heißt so voll wie sonst oder ruhiger, Orange und Rot heißen längere Warteschlangen als üblich. Ein roter Tag in einem kleinen Park kann deshalb immer noch kürzere Wartezeiten haben als ein grüner im Europa-Park.",
-      "cta": "Crowd-Kalender eines Parks ansehen",
+      "cta": "{park}: Andrangskalender für jeden Tag",
       "bestTimeLink": "Beste Reisezeit: die ruhigsten Wochentage und Monate"
     },
     "ai": {
@@ -1148,14 +1148,14 @@
     "calendarPage": {
       "breadcrumb": "Wartezeiten-Kalender",
       "h1Suffix": "Wartezeiten im {month}",
-      "metaTitle": "{park}: Öffnungszeiten & Wartezeiten {month}",
-      "metaTitleShort": "{park} Wartezeiten im {month}",
+      "metaTitle": "{park}: Andrang & Öffnungszeiten im {month}",
+      "metaTitleShort": "{park}: Andrang im {month}",
       "metaTitleBare": "{park}: {month}",
-      "metaDescription": "Wann ist es {inPark} in {city} leer? Andrang pro Tag, Öffnungszeiten, Ferien und Wetter für die nächsten Monate – mit KI-Prognose je Tag.",
-      "metaDescriptionNoCity": "Wann ist es {inPark} leer? Andrang pro Tag, Öffnungszeiten, Ferien und Wetter für die nächsten Monate – mit KI-Prognose.",
+      "metaDescription": "Wann ist es {inPark} in {city} leer? Andrangskalender mit KI-Prognose der Auslastung pro Tag, dazu Öffnungszeiten, Ferien und Wetter.",
+      "metaDescriptionNoCity": "Wann ist es {inPark} leer? Andrangskalender mit KI-Prognose der Auslastung pro Tag, dazu Öffnungszeiten, Ferien und Wetter.",
       "intro": "Für jeden Tag der nächsten Monate: erwarteter Andrang, Öffnungszeiten, Ferien und Feiertage, die {inPark} zählen. Tippe auf einen Tag für die Details.",
-      "monthMetaDescription": "Wie voll wird es {inPark} in {city} im {month}? Erwarteter Andrang Tag für Tag, Öffnungszeiten, Schulferien und Wetter – mit KI-Prognose.",
-      "monthMetaDescriptionNoCity": "Wie voll wird es {inPark} im {month}? Erwarteter Andrang Tag für Tag, Öffnungszeiten, Schulferien und Wetter.",
+      "monthMetaDescription": "Wie voll wird es {inPark} in {city} im {month}? Erwartete Auslastung Tag für Tag, Öffnungszeiten, Schulferien und Wetter, mit KI-Prognose.",
+      "monthMetaDescriptionNoCity": "Wie voll wird es {inPark} im {month}? Erwartete Auslastung Tag für Tag, Öffnungszeiten, Schulferien und Wetter.",
       "monthIntro": "Tag für Tag durch den {month}: erwarteter Andrang {inPark}, Öffnungszeiten, Ferien und Wetter. Tippe auf einen Tag für die Details.",
       "gridTitle": "Den ruhigsten Tag finden",
       "gridSubline": "Jeder Tag im {month} mit erwartetem Andrang, Öffnungszeiten, Ferien und Wetter {inPark}.",
@@ -1730,6 +1730,17 @@
     "sortNearest": "Nächste zuerst",
     "exploreByRegion": "Nach Region entdecken"
   },
+  "sixFlags": {
+    "metaTitle": "Six Flags Wartezeiten LIVE: alle {count} Parks",
+    "metaTitleShort": "Six Flags Wartezeiten LIVE: alle Parks",
+    "metaDescription": "Live-Wartezeiten aller Six-Flags-Parks und Hurricane-Harbor-Wasserparks: welcher Park heute offen ist, wie voll er ist und wie lange du an jeder Bahn wartest.",
+    "title": "Six Flags Wartezeiten: alle Parks live",
+    "intro": "Gezählt sind die Parks mit „Six Flags“ im Namen, dazu die Hurricane-Harbor-Wasserparks, die mit vollem Namen Six Flags Hurricane Harbor heißen. La Ronde in Montréal und frühere Cedar-Fair-Parks wie Cedar Point gehören zwar zum Konzern, tragen aber einen eigenen Namen und stehen auf der Seite ihres Landes.",
+    "summary": "{parks, plural, =1 {# Park} other {# Parks}} in {countries, plural, =1 {# Land} other {# Ländern}}",
+    "listName": "Six-Flags-Parks",
+    "breadcrumb": "Six Flags",
+    "parkLink": "Alle Six-Flags-Parks"
+  },
   "stats": {
     "globalStats": "Globale Statistiken",
     "globalStatsIntro": "Live-Daten von Freizeitparks und Attraktionen weltweit.",
@@ -2208,7 +2219,7 @@
       "statusExcluded": "Ihre Besuche werden derzeit nicht in unseren Statistiken erfasst.",
       "statusIncluded": "Ihre Besuche werden derzeit in unseren Statistiken erfasst.",
       "statusDnt": "Ihr Browser sendet „Do Not Track“. Ihre Besuche werden deshalb schon jetzt nicht erfasst.",
-      "statusGpc": "Ihr Browser sendet „Global Privacy Control“. Unser eigener Aufrufzähler erfasst Ihre Besuche deshalb nicht, Umami schon.",
+      "statusGpc": "Ihr Browser sendet „Global Privacy Control“. Ihre Besuche werden deshalb schon jetzt nicht erfasst.",
       "loading": "…"
     }
   },

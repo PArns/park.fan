@@ -312,6 +312,7 @@ export function ParkStructuredData({
     // thing this page is about, instead of describing it a second time and disagreeing.
     '@id': url,
     name: parkName,
+    ...(park.abbreviations?.length ? { alternateName: park.abbreviations } : {}),
     url: url,
     ...(locale && { inLanguage: locale }),
     description: description || `Real-time wait times and crowd levels for ${parkName}.`,

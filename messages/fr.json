@@ -206,7 +206,7 @@
       "body": "95 minutes, c’est beaucoup un mardi de septembre et une matinée ordinaire un samedi d’octobre. Chaque page d’attraction indique donc ce qui est habituel ce jour de la semaine, et jusqu’où monte la file les jours de forte affluence.",
       "ridesTitle": "Chaque attraction a sa page",
       "ridesText": "La page d’une attraction donne ses types de file, le déroulé de la journée entre mesures et prévision, les temps d’attente habituels par jour de la semaine, la taille minimale et un conseil de rope drop.",
-      "ridesLink": "Voir un exemple",
+      "ridesLink": "{park} : tous les temps d’attente en direct",
       "typicalTitle": "Pages d’attraction",
       "ropeDropTitle": "Conseil rope drop",
       "ropeDropText": "À faire dès l’ouverture. Sur les attractions populaires, la première heure est en général la plus calme de la journée.",
@@ -254,7 +254,7 @@
       },
       "feedback": "Le lendemain, chaque prévision est confrontée au temps d’attente réellement mesuré. L’écart alimente l’entraînement suivant, et c’est pourquoi la couleur d’un même jour change à mesure qu’il approche.",
       "body": "La couleur vient d’une comparaison avec un jour habituel dans le même parc. Vert veut dire autant de monde que d’ordinaire ou moins, orange et rouge des files plus longues que d’habitude. Un jour rouge dans un petit parc peut donc avoir des attentes plus courtes qu’un jour vert à Europa-Park.",
-      "cta": "Voir le calendrier d’affluence d’un parc",
+      "cta": "{park} : le calendrier d’affluence",
       "bestTimeLink": "Meilleure période : les jours et les mois les plus calmes"
     },
     "ai": {
@@ -1148,7 +1148,7 @@
     "calendarPage": {
       "breadcrumb": "Calendrier des temps d’attente",
       "h1Suffix": "Temps d’attente en {month}",
-      "metaTitle": "{park} : affluence et temps d’attente en {month}",
+      "metaTitle": "{park} : calendrier d’affluence en {month}",
       "metaTitleShort": "{park} : affluence en {month}",
       "metaTitleBare": "{park} : {month}",
       "metaDescription": "Quand {park} à {city} est-il calme ? Affluence jour par jour, horaires, vacances scolaires et météo pour les mois à venir, avec prévision IA.",
@@ -1730,6 +1730,17 @@
     "sortNearest": "Les plus proches d'abord",
     "exploreByRegion": "Explorer par Région"
   },
+  "sixFlags": {
+    "metaTitle": "Six Flags Temps d’Attente LIVE : les {count} parcs",
+    "metaTitleShort": "Six Flags Temps d’Attente LIVE",
+    "metaDescription": "Temps d’attente en direct des parcs Six Flags et des parcs aquatiques Hurricane Harbor : quel parc est ouvert, son affluence et l’attente à chaque attraction.",
+    "title": "Six Flags : temps d’attente de tous les parcs en direct",
+    "intro": "Seuls les parcs dont le nom commence par « Six Flags » sont comptés, ainsi que les parcs aquatiques Hurricane Harbor, dont le nom complet est Six Flags Hurricane Harbor. La Ronde à Montréal et les anciens parcs Cedar Fair comme Cedar Point appartiennent aussi au groupe, mais gardent leur propre nom et figurent sur la page de leur pays.",
+    "summary": "{parks, plural, =1 {# parc} other {# parcs}} dans {countries, plural, =1 {# pays} other {# pays}}",
+    "listName": "Parcs Six Flags",
+    "breadcrumb": "Six Flags",
+    "parkLink": "Tous les parcs Six Flags"
+  },
   "stats": {
     "globalStats": "Statistiques mondiales",
     "globalStatsIntro": "Données en direct des parcs d’attractions et attractions dans le monde.",
@@ -2208,7 +2219,7 @@
       "statusExcluded": "Vos visites sont actuellement exclues de nos statistiques.",
       "statusIncluded": "Vos visites sont actuellement incluses dans nos statistiques.",
       "statusDnt": "Votre navigateur envoie « Do Not Track ». Vos visites ne sont donc déjà pas comptées.",
-      "statusGpc": "Votre navigateur envoie « Global Privacy Control ». Notre propre compteur de pages ne compte donc pas vos visites, Umami si.",
+      "statusGpc": "Votre navigateur envoie « Global Privacy Control ». Vos visites ne sont donc déjà pas comptées.",
       "loading": "…"
     }
   },

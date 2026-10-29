@@ -75,8 +75,8 @@ and this table only names it.
 
 | Variable                         | Default                                            | Kind   | Read by                                                                                                                        |
 | -------------------------------- | -------------------------------------------------- | ------ | ------------------------------------------------------------------------------------------------------------------------------ |
-| `NEXT_PUBLIC_UMAMI_URL`          | unset: no tracker                                  | public | `app/[locale]/layout.tsx`; the tracker loads only with both Umami variables ([analytics](analytics.md))                        |
-| `NEXT_PUBLIC_UMAMI_WEBSITE_ID`   | unset: no tracker                                  | public | same                                                                                                                           |
+| `NEXT_PUBLIC_UMAMI_URL`          | not read                                           | public | Umami is switched off; nothing reads it ([analytics](analytics.md))                                                            |
+| `NEXT_PUBLIC_UMAMI_WEBSITE_ID`   | not read                                           | public | same                                                                                                                           |
 | `NEXT_PUBLIC_CARTO_MAP_KEY`      | CARTO's anonymous endpoint                         | public | `lib/utils/carto-tile-url.ts` ([park map](../features/park-map.md))                                                            |
 | `NEXT_PUBLIC_TURNSTILE_SITE_KEY` | Cloudflare's always-passing test key               | public | `components/common/turnstile-widget.tsx`                                                                                       |
 | `TURNSTILE_SECRET_KEY`           | unset: check skipped in dev, refused in production | secret | `lib/security/turnstile.ts`, for `/contribute` and the admin login ([admin](../features/admin.md#bot-protection-on-the-login)) |

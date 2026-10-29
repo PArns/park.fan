@@ -47,7 +47,7 @@ export function useLiveParksByRegion(regions: string[]) {
 }
 
 /**
- * Single-region convenience wrapper for the hub grids and the blog's park references.
+ * Single-region convenience wrapper for the blog's park references.
  *
  * `enabled` lets a caller keep the hook call unconditional while it has no region yet — the
  * blog's park references call it for entries the geo lookup failed to resolve.

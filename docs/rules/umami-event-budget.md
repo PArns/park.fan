@@ -1,5 +1,9 @@
 # Umami event budget (REQUIREMENT)
 
+**Umami is switched off.** The locale layout embeds no tracker and mounts no Web Vitals reporter,
+so nothing reaches Umami; `trackEvent` stays and no-ops. The rule below holds again the day it is
+embedded again ([analytics](../development/analytics.md)).
+
 Umami Cloud bills **every event property as another event**, so a five-property event costs six
 pageviews, and the plan (100k a month) is spent by properties, not traffic. That is why **a custom
 event goes to our own counter** (`trackSiteEvent`, `lib/analytics/site-analytics.ts`), where a

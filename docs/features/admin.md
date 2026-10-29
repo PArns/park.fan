@@ -154,7 +154,14 @@ What the page shows, in the order it is read:
    the person started it. An API that sends no `createdAt` gets no age line and no notice. The age
    is counted from the later of the shared minute clock and the moment the request arrived, so a
    clock read before the fetch cannot make it younger than it is.
-5. **Password (and code), Approve and Deny**, with nothing focused on arrival, so a stray Enter
+5. **Where it was started**, when that differs from where the reader is: the API parks the GeoIP
+   country and the browser family of the browser that opened `/v1/oauth/authorize` (`startedFrom`)
+   and answers the reader's own (`viewer`: country from the address, browser from the User-Agent
+   the session signed in with). `describeOriginMismatch` names only the facts that differ
+   („Gestartet: Vereinigte Staaten, Firefox“, „Du: Deutschland, Chrome“) in an amber notice above
+   the buttons, and compares nothing either side lacks, so an API that sends neither shows nothing.
+   Like the age, it asks; it blocks nothing.
+6. **Password (and code), Approve and Deny**, with nothing focused on arrival, so a stray Enter
    answers nothing. The fields come from the token dialog (`passwordProofBody`,
    `describeTokenCreateError`, `OtpInput`) and are emptied after every request. Deny needs neither.
 

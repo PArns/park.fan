@@ -42,7 +42,7 @@ interface PreferredSourceButtonProps {
 
 /**
  * Outlined pill linking to Google's Preferred Sources page pre-filled with park.fan, opened in a
- * new tab; the click is tracked in Umami.
+ * new tab; the click is counted by our own statistic.
  */
 export function PreferredSourceButton({ className }: PreferredSourceButtonProps) {
   const t = useTranslations('footer');

@@ -11,7 +11,7 @@ everything else returns `null` and falls through to the route unchanged.
   again when the host matches, so the header on the wire is the same.
 - **A rule that needs a lookup stays in the render.** `findParkPageRedirect`,
   `findRelocatedParkRedirect` and `findRenamedParkRedirect` on the park, ride, city and calendar
-  routes, the glossary's localized-segment 308 and the blog's canonical-slug redirect all need data;
+  routes, `findMovedRideRedirect` on the ride route, the glossary's localized-segment 308 and the blog's canonical-slug redirect all need data;
   running them in the proxy would put a lookup on every request to save a body that only fires on a
   redirect.
 

@@ -206,7 +206,7 @@
       "body": "95 minutos son muchos un martes de septiembre y una mañana normal un sábado de octubre. Por eso en cada página de atracción está lo típico para ese día de la semana y cuánto se alarga la cola en los días con más gente.",
       "ridesTitle": "Cada atracción tiene su propia página",
       "ridesText": "La página de una atracción muestra sus tipos de cola, el curso del día con medición y previsión, las esperas típicas por día de la semana, la altura mínima y un consejo de rope drop.",
-      "ridesLink": "Ver un ejemplo",
+      "ridesLink": "{park}: todos los tiempos de espera en directo",
       "typicalTitle": "Páginas de atracción",
       "ropeDropTitle": "Consejo de rope drop",
       "ropeDropText": "Ve aquí nada más abrir. En las atracciones más populares, la primera hora suele ser la más tranquila del día.",
@@ -254,7 +254,7 @@
       },
       "feedback": "Al día siguiente cada previsión se contrasta con la espera realmente medida. La diferencia entra en el siguiente entrenamiento, y por eso el color de un mismo día cambia a medida que se acerca.",
       "body": "El color compara el día con un día habitual en ese mismo parque. Verde significa tanta gente como de costumbre o menos; naranja y rojo, colas más largas de lo normal. Por eso un día rojo en un parque pequeño puede seguir teniendo esperas más cortas que un día verde en Europa-Park.",
-      "cta": "Ver el calendario de un parque",
+      "cta": "{park}: el calendario de afluencia",
       "bestTimeLink": "Mejor época: los días y los meses más tranquilos"
     },
     "ai": {
@@ -1148,7 +1148,7 @@
     "calendarPage": {
       "breadcrumb": "Calendario de tiempos de espera",
       "h1Suffix": "Tiempos de espera en {month}",
-      "metaTitle": "{park}: afluencia y tiempos de espera en {month}",
+      "metaTitle": "{park}: calendario de afluencia en {month}",
       "metaTitleShort": "{park}: afluencia en {month}",
       "metaTitleBare": "{park}: {month}",
       "metaDescription": "¿Cuándo está tranquilo {park} en {city}? Afluencia día a día, horarios, vacaciones escolares y tiempo para los próximos meses, con previsión de IA diaria.",
@@ -1730,6 +1730,17 @@
     "sortNearest": "Más cercanos primero",
     "exploreByRegion": "Explorar por Región"
   },
+  "sixFlags": {
+    "metaTitle": "Six Flags Tiempos de Espera LIVE: los {count} parques",
+    "metaTitleShort": "Six Flags Tiempos de Espera LIVE",
+    "metaDescription": "Tiempos de espera en directo de todos los parques Six Flags y Hurricane Harbor: qué parque abre hoy, cuánta gente hay y cuánto se espera en cada atracción.",
+    "title": "Six Flags: tiempos de espera de todos los parques en directo",
+    "intro": "Solo cuentan los parques con «Six Flags» en el nombre, además de los parques acuáticos Hurricane Harbor, cuyo nombre completo es Six Flags Hurricane Harbor. La Ronde en Montreal y los antiguos parques de Cedar Fair como Cedar Point también pertenecen al grupo, pero llevan su propio nombre y aparecen en la página de su país.",
+    "summary": "{parks, plural, =1 {# parque} other {# parques}} en {countries, plural, =1 {# país} other {# países}}",
+    "listName": "Parques Six Flags",
+    "breadcrumb": "Six Flags",
+    "parkLink": "Todos los parques Six Flags"
+  },
   "stats": {
     "globalStats": "Estadísticas globales",
     "globalStatsIntro": "Datos en vivo de parques temáticos y atracciones en todo el mundo.",
@@ -1842,10 +1853,10 @@
     "parks": {
       "title": "Parques temáticos del mundo: espera y mapa",
       "description": "Compara tiempos de espera, estado y afluencia de parques como Disney World, Disneyland, Universal Studios y Europa-Park.",
-      "metaDescriptionTemplate": "Tiempos de espera en vivo y calendario para {park} en {city}. Pronóstico de hoy, mejores días y horarios de apertura.",
+      "metaDescriptionTemplate": "Tiempos de espera en vivo y calendario para {park} en {city}. Pronóstico de hoy, clima, mejores días y horarios de apertura.",
       "titleTemplate": "{park} Tiempos de Espera LIVE – {city}",
       "titleTemplateNoCity": "{park} – Tiempos de Espera LIVE & Afluencia",
-      "metaDescriptionTemplateNoCity": "Tiempos de espera en vivo y calendario para {park}. Pronóstico de hoy, mejores días y horarios de apertura.",
+      "metaDescriptionTemplateNoCity": "Tiempos de espera en vivo y calendario para {park}. Pronóstico de hoy, clima, mejores días y horarios de apertura.",
       "keywordWaitTimes": "tiempos de espera",
       "keywordCrowdCalendar": "calendario de afluencia",
       "keywordBestTime": "mejor época para visitar",
@@ -2208,7 +2219,7 @@
       "statusExcluded": "Sus visitas están actualmente excluidas de nuestras estadísticas.",
       "statusIncluded": "Sus visitas están actualmente incluidas en nuestras estadísticas.",
       "statusDnt": "Su navegador envía «Do Not Track». Por eso sus visitas ya no se cuentan.",
-      "statusGpc": "Su navegador envía «Global Privacy Control». Por eso nuestro propio contador de visitas no cuenta sus visitas; Umami, sí.",
+      "statusGpc": "Su navegador envía «Global Privacy Control». Por eso sus visitas ya no se cuentan.",
       "loading": "…"
     }
   },

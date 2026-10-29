@@ -2,6 +2,7 @@ import 'server-only';
 import { cache } from 'react';
 import { getAttractionByGeoPath } from '@/lib/api/parks';
 import { getListItemByLocaleSlug, hasPublishedPosts } from '@/lib/blog/listing';
+import { movedPath } from '@/lib/utils/redirect-utils';
 import { postPath } from '@/lib/blog/paths';
 import { getDateTimeFormat } from '@/lib/utils/intl-format';
 import { stripNewPrefix } from '@/lib/utils';
@@ -9,12 +10,27 @@ import type { AttractionResponse, ClosedAttraction, ParkBase } from '@/lib/api/t
 import type { ClosedRideSearchItem } from '@/components/parks/closed-ride-matches';
 import type { Locale } from '@/i18n/config';
 
+/** The detail answer for a slug the park payload missed; one fetch for both questions asked of it. */
+const getMissedRide = cache(getAttractionByGeoPath);
+
+function ridePath(
+  continent: string,
+  country: string,
+  city: string,
+  parkSlug: string,
+  attractionSlug: string
+): string {
+  return `/parks/${continent}/${country}/${city}/${parkSlug}/${attractionSlug}`;
+}
+
 /**
  * A ride that closed for good keeps its page. The park payload leaves retired rides out, but the
  * attraction detail endpoint still answers for them; this asks it (only after the park payload
  * missed) and decides whether the answer is a page. Only `retiredKind === 'closed'` is: a
- * `reclassified` row or a dropped duplicate closed nothing and stays a 404. `cache()` makes the
- * metadata and page reads one. See docs/rules/a-closed-ride-keeps-its-page.md.
+ * `reclassified` row or a dropped duplicate closed nothing and stays a 404. A closed ride the API
+ * answered under another path (an old slug) is not a page here but a redirect there, see
+ * {@link findMovedRideRedirect}. `cache()` makes the metadata and page reads one. See
+ * docs/rules/a-closed-ride-keeps-its-page.md.
  */
 export const getClosedRide = cache(
   async (
@@ -24,10 +40,33 @@ export const getClosedRide = cache(
     parkSlug: string,
     attractionSlug: string
   ): Promise<ClosedRide | null> => {
-    const detail = await getAttractionByGeoPath(continent, country, city, parkSlug, attractionSlug);
-    return isClosedRide(detail) ? detail : null;
+    const detail = await getMissedRide(continent, country, city, parkSlug, attractionSlug);
+    const moved = movedPath(
+      detail?.url,
+      ridePath(continent, country, city, parkSlug, attractionSlug)
+    );
+    return isClosedRide(detail) && !moved ? detail : null;
   }
 );
+
+/**
+ * The current path of a ride whose old slug the API answers with a 301 (a merge, a slug corrected
+ * by hand, a move to a sister park: `attraction_slug_aliases`), or null. `fetch` follows the 301,
+ * so the detail comes back as the ride under its new `url`, live or closed for good, and the page
+ * sends the visitor on. A ride retired without closing has no page there, so it stays a 404 here.
+ * Asked, like {@link getClosedRide}, only after the park payload missed.
+ */
+export async function findMovedRideRedirect(
+  continent: string,
+  country: string,
+  city: string,
+  parkSlug: string,
+  attractionSlug: string
+): Promise<string | null> {
+  const detail = await getMissedRide(continent, country, city, parkSlug, attractionSlug);
+  if (!detail || (typeof detail.retiredAt === 'string' && !isClosedRide(detail))) return null;
+  return movedPath(detail.url, ridePath(continent, country, city, parkSlug, attractionSlug));
+}
 
 /** An attraction response that is a ride closed for good, with the date it closed. */
 export type ClosedRide = AttractionResponse & { retiredAt: string; retiredKind: 'closed' };

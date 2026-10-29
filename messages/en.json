@@ -206,7 +206,7 @@
       "body": "95 minutes is a lot on a Tuesday in September and an ordinary morning on a Saturday in October. That’s why every ride page lists the typical wait for that weekday and how long the queue gets on busy days.",
       "ridesTitle": "Every ride has its own page",
       "ridesText": "A ride’s page lists its queue types, its day as measured and as forecast, typical wait times by weekday, the height limit and a rope-drop tip.",
-      "ridesLink": "See an example",
+      "ridesLink": "All live wait times at {park}",
       "typicalTitle": "Ride pages",
       "ropeDropTitle": "Rope drop tip",
       "ropeDropText": "Head here as soon as the park opens. On the popular rides the first hour is usually the quietest of the day.",
@@ -254,7 +254,7 @@
       },
       "feedback": "The next day every forecast is laid against the wait time actually measured. The difference goes into the next round of training, and that is why the calendar colour for one and the same day changes as the day gets closer.",
       "body": "The colour compares the day with a typical day at the same park. Green means as busy as usual or quieter, orange and red mean longer queues than usual. So a red day at a small park can still mean shorter waits than a green day at Europa-Park.",
-      "cta": "See a park’s crowd calendar",
+      "cta": "The {park} crowd calendar",
       "bestTimeLink": "Best time to visit: the quietest weekdays and months"
     },
     "ai": {
@@ -1730,6 +1730,17 @@
     "sortNearest": "Nearest first",
     "exploreByRegion": "Explore by Region"
   },
+  "sixFlags": {
+    "metaTitle": "Six Flags Wait Times LIVE: All {count} Parks",
+    "metaTitleShort": "Six Flags Wait Times LIVE: All Parks",
+    "metaDescription": "Live wait times for every Six Flags park and Hurricane Harbor water park: which park is open today, how busy it is and how long the line is at each ride.",
+    "title": "Six Flags Wait Times: Every Park Live",
+    "intro": "The list counts parks named “Six Flags”, plus the Hurricane Harbor water parks, whose full name is Six Flags Hurricane Harbor. La Ronde in Montreal and former Cedar Fair parks such as Cedar Point belong to the company as well, but go by their own names and appear on their country’s page.",
+    "summary": "{parks, plural, =1 {# park} other {# parks}} in {countries, plural, =1 {# country} other {# countries}}",
+    "listName": "Six Flags parks",
+    "breadcrumb": "Six Flags",
+    "parkLink": "All Six Flags parks"
+  },
   "stats": {
     "globalStats": "Global Statistics",
     "globalStatsIntro": "Live data from theme parks and attractions worldwide.",
@@ -2208,7 +2219,7 @@
       "statusExcluded": "Your visits are currently excluded from our statistics.",
       "statusIncluded": "Your visits are currently included in our statistics.",
       "statusDnt": "Your browser sends “Do Not Track”, so your visits are already not counted.",
-      "statusGpc": "Your browser sends “Global Privacy Control”, so our own view counter does not count your visits. Umami still does.",
+      "statusGpc": "Your browser sends “Global Privacy Control”, so your visits are already not counted.",
       "loading": "…"
     }
   },

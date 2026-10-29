@@ -29,10 +29,10 @@ const unknownOnServer = () => null;
 const subscribeToNothing = () => () => {};
 
 /**
- * Privacy-page box that shows whether this browser is counted, by Umami and by our own page-view
- * counter, and toggles the `umami.disabled` localStorage flag both read to opt out or back in. A
- * browser sending Do Not Track or Global Privacy Control is told so, since it is not counted (or,
- * under GPC, not by our counter) whatever the switch says.
+ * Privacy-page box that shows whether this browser is counted by our own page-view counter, and
+ * toggles the `umami.disabled` localStorage flag it reads to opt out or back in. A browser sending
+ * Do Not Track or Global Privacy Control is told so, since it is not counted whatever the switch
+ * says.
  */
 export function AnalyticsOptOut() {
   const t = useTranslations('datenschutz.analyticsOptOut');

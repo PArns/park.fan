@@ -13,10 +13,10 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`opt-out.ts`](../../lib/analytics/opt-out.ts)
 
 - `isAnalyticsHost` _function_: Whether a page on `hostname` may be counted at all.
-- `privacySignal` _function_: The do-not-count signal this browser sends, if any: Do Not Track in each spelling Umami's tracker reads (`data-do-not-track`), which stops both counters, or Global Privacy Control, which only our own page-view counter reads (the API …
+- `privacySignal` _function_: The do-not-count signal this browser sends, if any: Do Not Track in both spellings browsers use, or Global Privacy Control (the API refuses `Sec-GPC` as well).
 - `analyticsOptedOut` _function_: Whether this browser asked not to be counted by our page-view counter: a `privacySignal` or the opt-out on the privacy page. Storage that cannot be read counts as no flag.
-- `ANALYTICS_OPT_OUT_KEY` _const_: The localStorage flag Umami's tracker reads; `'1'` keeps this browser out of the statistics.
-- `ANALYTICS_HOSTS` _const_: The hosts that count: production only, never a preview or a local build. Umami's `data-domains` and the page-view beacon read the same list.
+- `ANALYTICS_OPT_OUT_KEY` _const_: The localStorage flag that keeps this browser out of the statistics when `'1'`. Named for Umami's tracker, which read it, so an opt-out set while Umami ran still holds.
+- `ANALYTICS_HOSTS` _const_: The hosts that count: production only, never a preview or a local build.
 
 ### [`outbound-link.ts`](../../lib/analytics/outbound-link.ts)
 
@@ -62,7 +62,7 @@ Where an outbound link goes, the closed list of the event's `target`.
 
 ### [`umami.ts`](../../lib/analytics/umami.ts)
 
-The one way an event reaches Umami. Umami keeps its pageviews and the two Web Vitals events (`components/analytics/web-vitals-reporter.tsx`); every other custom event is counted by our own statistic (`lib/analytics/site-analytics.ts`), …
+The one way an event reaches Umami, a no-op while Umami is switched off (the layout embeds no tracker, see docs/development/analytics.md).
 
 - `trackEvent` _function_: Sends one event to Umami, or nothing when the script is not loaded. Every property is billed as an extra event; see the budget at the top of this file before adding one.
 - `UMAMI_BEFORE_SEND` _const_: The global function the tracker's `data-before-send` names; the layout defines it first.

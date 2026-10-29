@@ -1,9 +1,11 @@
-/** The localStorage flag Umami's tracker reads; `'1'` keeps this browser out of the statistics. */
+/**
+ * The localStorage flag that keeps this browser out of the statistics when `'1'`. Named for
+ * Umami's tracker, which read it, so an opt-out set while Umami ran still holds.
+ */
 export const ANALYTICS_OPT_OUT_KEY = 'umami.disabled';
 
 /**
- * The hosts that count: production only, never a preview or a local build. Umami's
- * `data-domains` and the page-view beacon read the same list.
+ * The hosts that count: production only, never a preview or a local build.
  */
 export const ANALYTICS_HOSTS = ['park.fan', 'www.park.fan'] as const;
 
@@ -13,9 +15,8 @@ export function isAnalyticsHost(hostname: string): boolean {
 }
 
 /**
- * The do-not-count signal this browser sends, if any: Do Not Track in each spelling Umami's tracker
- * reads (`data-do-not-track`), which stops both counters, or Global Privacy Control, which only our
- * own page-view counter reads (the API refuses `Sec-GPC` as well).
+ * The do-not-count signal this browser sends, if any: Do Not Track in both spellings browsers use,
+ * or Global Privacy Control (the API refuses `Sec-GPC` as well).
  */
 export function privacySignal(): 'dnt' | 'gpc' | null {
   const dnt = (window as { doNotTrack?: string }).doNotTrack ?? navigator.doNotTrack ?? undefined;

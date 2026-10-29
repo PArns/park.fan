@@ -206,7 +206,7 @@
       "body": "95 minuti sono tanti un martedì di settembre e una mattina normale un sabato di ottobre. Per questo su ogni pagina di attrazione trovi cosa è tipico per quel giorno della settimana e quanto si allunga la coda nelle giornate piene.",
       "ridesTitle": "Ogni attrazione ha la sua pagina",
       "ridesText": "La pagina di un’attrazione riporta i tipi di coda, l’andamento della giornata tra misure e previsione, i tempi di attesa tipici per giorno della settimana, l’altezza minima e un consiglio per il rope drop.",
-      "ridesLink": "Guarda un esempio",
+      "ridesLink": "{park}: tutti i tempi d’attesa in tempo reale",
       "typicalTitle": "Pagine delle attrazioni",
       "ropeDropTitle": "Consiglio rope drop",
       "ropeDropText": "Qui subito all’apertura. Sulle attrazioni più gettonate la prima ora è di solito la più tranquilla della giornata.",
@@ -254,7 +254,7 @@
       },
       "feedback": "Il giorno dopo ogni previsione viene messa a confronto con l’attesa davvero misurata. La differenza entra nel training successivo, ed è per questo che il colore di uno stesso giorno cambia man mano che si avvicina.",
       "body": "Il colore mette a confronto il giorno con una giornata tipica dello stesso parco. Verde vuol dire affluenza normale o più bassa, arancione e rosso code più lunghe del solito. Per questo una giornata rossa in un parco piccolo può avere ancora attese più brevi di una verde a Europa-Park.",
-      "cta": "Guarda il calendario di un parco",
+      "cta": "{park}: il calendario delle affluenze",
       "bestTimeLink": "Periodo migliore: i giorni e i mesi più tranquilli"
     },
     "ai": {
@@ -1148,7 +1148,7 @@
     "calendarPage": {
       "breadcrumb": "Calendario tempi di attesa",
       "h1Suffix": "Tempi di attesa in {month}",
-      "metaTitle": "{park}: affluenza e tempi di attesa a {month}",
+      "metaTitle": "{park}: calendario delle affluenze a {month}",
       "metaTitleShort": "{park}: affluenza a {month}",
       "metaTitleBare": "{park}: {month}",
       "metaDescription": "Quando è tranquillo {park} a {city}? Affluenza giorno per giorno, orari, vacanze scolastiche e meteo per i prossimi mesi, con previsione IA quotidiana.",
@@ -1730,6 +1730,17 @@
     "sortNearest": "Più vicini prima",
     "exploreByRegion": "Esplora per regione"
   },
+  "sixFlags": {
+    "metaTitle": "Six Flags Tempi di attesa LIVE: tutti i {count} parchi",
+    "metaTitleShort": "Six Flags Tempi di attesa LIVE: tutti i parchi",
+    "metaDescription": "Tempi di attesa in diretta di tutti i parchi Six Flags e Hurricane Harbor: quale parco è aperto oggi, quanta gente c’è e quanto si aspetta a ogni attrazione.",
+    "title": "Six Flags: tempi di attesa di tutti i parchi in diretta",
+    "intro": "Contano solo i parchi con «Six Flags» nel nome, più i parchi acquatici Hurricane Harbor, che per esteso si chiamano Six Flags Hurricane Harbor. La Ronde a Montréal e gli ex parchi Cedar Fair come Cedar Point fanno parte anch’essi del gruppo, ma hanno un nome proprio e compaiono nella pagina del loro paese.",
+    "summary": "{parks, plural, =1 {# parco} other {# parchi}} in {countries, plural, =1 {# paese} other {# paesi}}",
+    "listName": "Parchi Six Flags",
+    "breadcrumb": "Six Flags",
+    "parkLink": "Tutti i parchi Six Flags"
+  },
   "stats": {
     "globalStats": "Statistiche globali",
     "globalStatsIntro": "Dati in tempo reale da parchi a tema e attrazioni in tutto il mondo.",
@@ -2208,7 +2219,7 @@
       "statusExcluded": "Le tue visite sono attualmente escluse dalle nostre statistiche.",
       "statusIncluded": "Le tue visite sono attualmente incluse nelle nostre statistiche.",
       "statusDnt": "Il tuo browser invia «Do Not Track». Per questo le tue visite già non vengono conteggiate.",
-      "statusGpc": "Il tuo browser invia «Global Privacy Control». Per questo il nostro contatore di visite non conta le tue visite, Umami sì.",
+      "statusGpc": "Il tuo browser invia «Global Privacy Control». Per questo le tue visite già non vengono conteggiate.",
       "loading": "…"
     }
   },

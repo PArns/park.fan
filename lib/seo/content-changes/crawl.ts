@@ -9,6 +9,7 @@ import type { MediaImage } from '@/lib/media/types';
 import type { Locale } from '@/i18n/config';
 import { fingerprintAttraction, fingerprintGeoHub, fingerprintPark } from './fingerprint';
 import type { EntityContext } from './fingerprint';
+import { brandParksByCountry, SIX_FLAGS } from '@/lib/parks/park-brands';
 
 /**
  * One daily pass over the catalog (`/api/cron/content-changes`), producing the fingerprint of
@@ -101,6 +102,14 @@ export async function crawlContentFingerprints(): Promise<CrawlResult> {
     fingerprints.set(`/parks/${continent.slug}`, fingerprintGeoHub(continentParks));
   }
   fingerprints.set('/parks', fingerprintGeoHub(allParks));
+  fingerprints.set(
+    `/parks/${SIX_FLAGS.slug}`,
+    fingerprintGeoHub(
+      brandParksByCountry(geo, SIX_FLAGS).flatMap((country) =>
+        country.parks.map(({ park }) => ({ slug: park.slug, name: park.name }))
+      )
+    )
+  );
 
   const targets = geo.continents.flatMap((continent) =>
     continent.countries.flatMap((country) =>

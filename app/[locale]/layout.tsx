@@ -24,12 +24,8 @@ import { getNewsMenu } from '@/lib/navigation/news-menu';
 import { getMoreMenu } from '@/lib/navigation/more-menu';
 import { getFeaturedParksMenu } from '@/lib/navigation/featured-parks-menu';
 import { LanguageBanner } from '@/components/layout/language-banner';
-import Script from 'next/script';
-import { WebVitalsReporter } from '@/components/analytics/web-vitals-reporter';
 import { SitePageviewBeacon } from '@/components/analytics/site-pageview-beacon';
 import { OutboundLinkTracker } from '@/components/analytics/outbound-link-tracker';
-import { ANALYTICS_HOSTS } from '@/lib/analytics/opt-out';
-import { UMAMI_BEFORE_SEND, UMAMI_BEFORE_SEND_SCRIPT } from '@/lib/analytics/umami';
 import { ScrollLockGutter } from '@/components/layout/scroll-lock-gutter';
 import { ScrollToTop } from '@/components/common/scroll-to-top';
 import { CardPointerFx } from '@/components/parks/card-pointer-fx';
@@ -196,24 +192,14 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
   // The temperature-unit cookie is not read on the server: cookies() here would make every route
   // dynamic. The markup carries both units and the inline script below picks one before paint.
 
-  // Umami (analytics script + beacons, loaded afterInteractive) and, with NEXT_PUBLIC_API_DIRECT,
-  // the API are the only other origins the browser talks to, both after load. A dns-prefetch warms
-  // the DNS lookup without a full preconnect that would compete with critical same-origin assets
-  // (HTML/CSS/fonts/JS/images are all same-origin).
-  let umamiOrigin: string | null = null;
-  try {
-    if (process.env.NEXT_PUBLIC_UMAMI_URL) {
-      umamiOrigin = new URL(process.env.NEXT_PUBLIC_UMAMI_URL).origin;
-    }
-  } catch {
-    umamiOrigin = null;
-  }
+  // With NEXT_PUBLIC_API_DIRECT the API is the only other origin the browser talks to, after load.
+  // A dns-prefetch warms the DNS lookup without a full preconnect that would compete with critical
+  // same-origin assets (HTML/CSS/fonts/JS/images are all same-origin).
 
   // Render html/body here to have access to locale for lang attribute
   return (
     <html lang={locale} suppressHydrationWarning>
       <body className={`${geistSans.variable} font-sans antialiased`} suppressHydrationWarning>
-        {umamiOrigin && <link rel="dns-prefetch" href={umamiOrigin} />}
         {DIRECT_API_ORIGIN && <link rel="dns-prefetch" href={DIRECT_API_ORIGIN} />}
         {/* Sets the temperature unit on <html> before paint, from the temp_unit cookie or the
             browser locale's region (mirrors detectDefaultUnit), so values rendered in both units
@@ -227,28 +213,6 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
               "(function(){try{var m=document.cookie.match(/(?:^|; )temp_unit=([CF])/);var u=m&&m[1];if(!u){var r;try{r=new Intl.Locale(navigator.language).region}catch(e){r=(navigator.language||'').split('-')[1]}u=['US','MM','LR','BS','KY','PW'].indexOf((r||'').toUpperCase())>-1?'F':'C'}document.documentElement.setAttribute('data-temp-unit',u)}catch(e){document.documentElement.setAttribute('data-temp-unit','C')}})();",
           }}
         />
-        {process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID && process.env.NEXT_PUBLIC_UMAMI_URL && (
-          /* `data-exclude-hash`: Umami sends a pageview whenever pushState or replaceState changes
-             the URL, hash included, and tab switches and the calendar's month stepper write a
-             hash. `data-exclude-search` and `data-before-send` keep a search term away from
-             Umami, in the URL, the next page's referrer and the title. `data-domains` gates the
-             tracker by hostname, so www has to be listed too. `data-do-not-track` is a choice,
-             not a requirement: DNT visitors send nothing, so the visitor count reads low. See
-             docs/development/analytics.md. */
-          <>
-            <script dangerouslySetInnerHTML={{ __html: UMAMI_BEFORE_SEND_SCRIPT }} />
-            <Script
-              src={process.env.NEXT_PUBLIC_UMAMI_URL}
-              data-website-id={process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID}
-              data-domains={ANALYTICS_HOSTS.join(',')}
-              data-do-not-track="true"
-              data-exclude-hash="true"
-              data-exclude-search="true"
-              data-before-send={UMAMI_BEFORE_SEND}
-              strategy="afterInteractive"
-            />
-          </>
-        )}
         <OrganizationStructuredData
           description={tSeo('description')}
           image={getOgImageUrl([locale])}
@@ -279,7 +243,6 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
                 {/* Pointer depth on every card, on every page — one delegated listener, and it
                     costs nothing on pages that have no cards. */}
                 <CardPointerFx />
-                <WebVitalsReporter />
                 {/* Our own statistic: a view per path, and a click on a link marked as leaving
                     the site. See docs/development/analytics.md. */}
                 <SitePageviewBeacon />

@@ -1,7 +1,7 @@
 'use client';
 
 import { ParkCard } from '@/components/parks/park-card';
-import { useRegionParks } from '@/lib/hooks/use-live-parks-by-region';
+import { useLiveParksByRegion } from '@/lib/hooks/use-live-parks-by-region';
 import { useViewerPosition } from '@/lib/hooks/use-distance-to';
 import { useMounted } from '@/lib/hooks/use-mounted';
 import { calculateDistance } from '@/lib/utils/distance-utils';
@@ -26,8 +26,8 @@ export interface StaticPark {
 }
 
 interface LiveParkGridProps {
-  continent: string;
-  country: string;
+  /** The `"<continent>/<country>"` pairs the parks lie in: one on a geo page, several on a brand page. */
+  regions: string[];
   parks: StaticPark[];
   className?: string;
 }
@@ -35,11 +35,11 @@ interface LiveParkGridProps {
 /**
  * Renders a grid of park cards whose STRUCTURE (name, link, city, photo) is prerendered and
  * edge-cached, while the live status / crowd / wait time / schedule is layered on the client via
- * {@link useRegionParks}. The hub page's ISR shell stays status-free and long-cached without ever
- * showing a stale open/closed badge. Grids on one country page share one request.
+ * {@link useLiveParksByRegion}. The hub page's ISR shell stays status-free and long-cached without
+ * ever showing a stale open/closed badge. Grids on one page with the same regions share one request.
  */
-export function LiveParkGrid({ continent, country, parks, className }: LiveParkGridProps) {
-  const { liveByParkId } = useRegionParks(continent, country);
+export function LiveParkGrid({ regions, parks, className }: LiveParkGridProps) {
+  const { liveByParkId } = useLiveParksByRegion(regions);
   // One position read for the whole grid (not one per card). Only after mount, like everywhere
   // this query is read: `useViewerPosition` resolves from the position `useNearbyParks` seeds out
   // of `localStorage`, so a returning visitor HAS it in the first client render while the

@@ -39,6 +39,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `cn` _function_: Joins class names and resolves conflicting Tailwind classes, the later one winning.
 - `stripNewPrefix` _function_: Strip "NEW:", "Neu:", "Nouveau:", etc. from display names, titles, descriptions.
+- `nameWithAbbreviations` _function_: A park name with the abbreviations it is searched by, `Europa-Park (EP)`; the bare name when the API sends none. For the park page's H1 and its meta description, where „ep wartezeiten" should find the words it searched for.
 - `isUuid` _function_: Whether a string is shaped like a UUID — used to refuse an id before it reaches an endpoint that validates one with `@IsUUID()`.
 - `getGermanArticle` _function_: The German article a park name takes, curated first and guessed second. The curated `nameArticleDe` is set for every park, including those that take none; pass it whenever a park object is at hand.
 

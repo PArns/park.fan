@@ -110,7 +110,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`country-park-groups.tsx`](../../components/parks/country-park-groups.tsx)
 
-- `CountryParkGroups` _component_: A country page's city groups, with an "open only" switch above them once the country has `OPEN_ONLY_MIN_PARKS` parks or more.
+- `CountryParkGroups` _component_: A country page's city groups (or a brand page's country groups), with an "open only" switch above them once they hold `OPEN_ONLY_MIN_PARKS` parks or more.
 - `OPEN_ONLY_MIN_PARKS` _const_: Fewest parks a country needs before the "open only" switch is worth its row.
 
 ### [`country-summary-section.tsx`](../../components/parks/country-summary-section.tsx)
@@ -245,7 +245,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`live-park-grid.tsx`](../../components/parks/live-park-grid.tsx)
 
-- `LiveParkGrid` _component_: Renders a grid of park cards whose STRUCTURE (name, link, city, photo) is prerendered and edge-cached, while the live status / crowd / wait time / schedule is layered on the client via `useRegionParks`.
+- `LiveParkGrid` _component_: Renders a grid of park cards whose STRUCTURE (name, link, city, photo) is prerendered and edge-cached, while the live status / crowd / wait time / schedule is layered on the client via `useLiveParksByRegion`.
 - Types: `StaticPark`
 
 ### [`live-wait-pill.tsx`](../../components/parks/live-wait-pill.tsx)

@@ -13,8 +13,9 @@ locale segment) ships the permanent redirect (308) from the old URL in the same 
   - an unprefixed path whose target does not depend on the visitor: `proxy.ts`
     (`lib/i18n/unprefixed-redirect.ts`);
   - a slug that only data can resolve: the lookups in `lib/utils/redirect-utils.ts`
-    (`findRelocatedParkRedirect`, `findRenamedParkRedirect`, `findParkPageRedirect`) and
-    `findTermByAnySlug` (`lib/glossary/translations.ts`), called from the page.
+    (`findRelocatedParkRedirect`, `findRenamedParkRedirect`, `findParkPageRedirect`),
+    `findMovedRideRedirect` (`lib/parks/closed-ride.ts`) and `findTermByAnySlug`
+    (`lib/glossary/translations.ts`), called from the page.
 - **Never hard-code a locale in a destination** (`/en/parks/…`). Keep the locale as `:locale`, or
   leave the bare path to `proxy.ts` and next-intl, which pick the reader's language.
 - **Check the API before adding a park rule**: `curl -sI https://api.park.fan/v1/parks/<geo>/<slug>`.

@@ -1,6 +1,7 @@
 import { getGeoStructure } from '@/lib/api/discovery';
 import { catchNonFatal } from '@/lib/api/client';
 import { extractFeaturedParks } from '@/components/home/featured-parks-section';
+import { stripNewPrefix } from '@/lib/utils';
 
 /** The four slugs every park-scoped widget needs, plus what a sentence can name it. */
 export interface LeadPark {
@@ -43,7 +44,7 @@ async function getLeadParks(locale: string): Promise<LeadPark[]> {
         country: park.countrySlug,
         city,
         parkSlug: park.slug,
-        name: park.name,
+        name: stripNewPrefix(park.name),
         href: park.href,
         countryCode: park.countryCode,
       };

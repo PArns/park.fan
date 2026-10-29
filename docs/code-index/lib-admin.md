@@ -62,12 +62,13 @@ by hand: change the comment in the code and re-run the script. -->
 - `describeRedirectHost` _function_: What a redirect host tells the person reading it: whether it is the computer they are sitting at (Claude Code listens on a loopback port) and whether a label is written in Punycode (`xn--`), the form in which look-alike domains are …
 - `safeRedirectTarget` _function_: The address the browser may be sent to after a decision, or null.
 - `describeRequestAge` _function_: The age of a consent request for the page: `gerade eben gestartet`, `vor 2 Minuten gestartet`, and `stale` above five minutes, since a person who has just pressed "connect" in the app arrives within seconds.
+- `describeOriginMismatch` _function_: What differs between the browser that started a consent request and the admin reading it: `{ started: 'Vereinigte Staaten, Firefox', you: 'Deutschland, Chrome' }`, naming only the facts that differ.
 - `hasPassed` _function_: Whether an ISO time has passed at `nowMs`; a missing time never expires.
 - `MCP_URL` _const_: The address an MCP client connects to.
 - `MCP_SERVER_NAME` _const_: The name Claude Code registers the server under, so `/mcp` lists it by a name that says whose it is.
 - `CLAUDE_CODE_ADD_COMMAND` _const_: The one line that adds the server to Claude Code; the sign-in runs through `/mcp` afterwards.
 - `TOKEN_EXPIRY_OPTIONS` _const_: The lifetimes the create dialog offers; `null` is a token that never expires.
-- Types: `OAuthConsentRequest`, `OAuthDecision`, `AdminApiToken`, `CreatedAdminApiToken`
+- Types: `OAuthConsentRequest`, `RequestOrigin`, `OAuthDecision`, `AdminApiToken`, `CreatedAdminApiToken`
 
 ### [`media-references.ts`](../../lib/admin/media-references.ts)
 

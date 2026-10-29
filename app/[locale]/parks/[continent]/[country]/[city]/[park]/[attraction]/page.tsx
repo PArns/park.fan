@@ -10,7 +10,12 @@ import {
   buildClosedRideDescription,
   buildClosedRideTitle,
 } from '@/lib/seo/attraction-meta';
-import { formatClosedOn, getClosedRide, type ClosedRide } from '@/lib/parks/closed-ride';
+import {
+  findMovedRideRedirect,
+  formatClosedOn,
+  getClosedRide,
+  type ClosedRide,
+} from '@/lib/parks/closed-ride';
 import { ClosedRidePage } from '@/components/parks/closed-ride-page';
 import { translateCountry, translateContinent } from '@/lib/i18n/helpers';
 import { notFound, permanentRedirect } from 'next/navigation';
@@ -145,6 +150,17 @@ export async function generateMetadata({ params }: AttractionPageProps): Promise
         return {
           title: tNotFound('attraction'),
           alternates: { canonical: `${SITE_URL}/${locale}${relocatedUrl}/${attractionSlug}` },
+        };
+      }
+    } else {
+      // An old ride slug the API redirects: canonical at the current path, the body sends the 308.
+      const movedUrl = await catchNonFatal(
+        findMovedRideRedirect(continent, country, city, parkSlug, attractionSlug)
+      );
+      if (movedUrl) {
+        return {
+          title: tNotFound('attraction'),
+          alternates: { canonical: `${SITE_URL}/${locale}${movedUrl}` },
         };
       }
     }
@@ -405,6 +421,14 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
     ? null
     : await getClosedRide(continent, country, city, parkSlug, attractionSlug);
   if (!attraction && !closedRide) {
+    const movedUrl = await findMovedRideRedirect(
+      continent,
+      country,
+      city,
+      parkSlug,
+      attractionSlug
+    );
+    if (movedUrl) permanentRedirect(`/${locale}${movedUrl}`);
     notFound();
   }
 
