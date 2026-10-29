@@ -34,7 +34,7 @@ import {
   findRelocatedParkRedirect,
   findRenamedParkRedirect,
 } from '@/lib/utils/redirect-utils';
-import { stripNewPrefix } from '@/lib/utils';
+import { nameWithAbbreviations, stripNewPrefix } from '@/lib/utils';
 import { LiveParkData } from '@/components/parks/live-park-data';
 import { CalendarHashRedirect } from '@/components/parks/calendar-hash-redirect';
 import { ParkBlogPostsSection } from '@/components/parks/blog-posts-sections';
@@ -161,17 +161,19 @@ export async function generateMetadata({ params }: ParkPageProps): Promise<Metad
   const descriptionKey = cityInParkName
     ? 'metaDescriptionTemplateNoCity'
     : 'metaDescriptionTemplate';
+  const describedPark = parkArgs(
+    locale as Locale,
+    nameWithAbbreviations(parkName, park.abbreviations),
+    park.nameArticleDe
+  );
   const description =
     closedCopy?.description ??
     fitWithin(
       MAX_DESCRIPTION_LENGTH,
       cityInParkName
-        ? t(descriptionKey, parkArgs(locale as Locale, parkName, park.nameArticleDe))
-        : t(descriptionKey, {
-            ...parkArgs(locale as Locale, parkName, park.nameArticleDe),
-            city: cityName,
-          }),
-      t('metaDescriptionTemplateNoCity', parkArgs(locale as Locale, parkName, park.nameArticleDe))
+        ? t(descriptionKey, describedPark)
+        : t(descriptionKey, { ...describedPark, city: cityName }),
+      t('metaDescriptionTemplateNoCity', describedPark)
     );
 
   const keywords = [

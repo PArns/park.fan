@@ -14,7 +14,7 @@ import { catchNonFatal } from '@/lib/api/client';
 import { getParkStatsForPage } from '@/lib/api/stats';
 import { parkMapsLinks } from '@/lib/parks/maps-links';
 import { deriveParkBestDays } from '@/lib/parks/park-stats-derive';
-import { isUuid } from '@/lib/utils';
+import { isUuid, nameWithAbbreviations } from '@/lib/utils';
 import type { Locale } from '@/i18n/config';
 import type { Breadcrumb, ParkWithAttractions } from '@/lib/api/types';
 
@@ -104,7 +104,8 @@ export async function ParkTitleHeader({
             where anything sits, and this heading wraps to as many lines as its column needs at
             either size. Nothing measures it. */}
           <h1 className="mb-2 text-3xl font-bold md:text-4xl">
-            {parkName} <span className="font-normal">– {suffix}</span>
+            {nameWithAbbreviations(parkName, park.abbreviations)}{' '}
+            <span className="font-normal">– {suffix}</span>
           </h1>
           {/* 56px = 24 (the address at text-base) + 12 (gap-3) + 20 (the distance line) — two
             lines is what this row settles on below `sm` once the city and country are long

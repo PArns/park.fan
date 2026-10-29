@@ -12,6 +12,15 @@ export function stripNewPrefix(text: string): string {
 }
 
 /**
+ * A park name with the abbreviations it is searched by, `Europa-Park (EP)`; the bare name when the
+ * API sends none. For the park page's H1 and its meta description, where „ep wartezeiten" should
+ * find the words it searched for.
+ */
+export function nameWithAbbreviations(name: string, abbreviations?: string[] | null): string {
+  return abbreviations && abbreviations.length > 0 ? `${name} (${abbreviations.join(', ')})` : name;
+}
+
+/**
  * Whether a string is shaped like a UUID — used to refuse an id before it
  * reaches an endpoint that validates one with `@IsUUID()`.
  *

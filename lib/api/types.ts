@@ -811,6 +811,11 @@ export interface ParkBase {
    * `parkArgs()` and use `{inPark}` / `{forPark}` rather than writing the preposition.
    */
   nameArticleDe?: string | null;
+  /**
+   * Abbreviations the park is searched by (`["EP"]`), curated; absent when there are none. Shown
+   * through `nameWithAbbreviations` and as the park's `alternateName`.
+   */
+  abbreviations?: string[];
   slug: string;
   url: string | null;
   country: string | null;
