@@ -1,8 +1,15 @@
 # Analytics
 
-What park.fan counts, in which system, and what it costs. Two systems share the work. **Umami
-Cloud** is billed per stored event and keeps the pageviews and the two Web Vitals events. **Our own
-counter** on api.park.fan is cookieless, counts per day and costs nothing per event, so it carries
+What park.fan counts, in which system, and what it costs.
+
+**Umami is switched off.** `app/[locale]/layout.tsx` embeds no Umami tracker and mounts no
+`WebVitalsReporter`, so the browser sends nothing to Umami and the two Web Vitals events are not
+measured. `lib/analytics/umami.ts`, the reporter and `pnpm test:umami-events` stay, so switching it
+back on is putting the two back into the layout; whether to delete them instead is PAR-1158. The
+sections on Umami below describe it as it ran.
+
+Two systems shared the work. **Umami Cloud** is billed per stored event and kept the pageviews and
+the two Web Vitals events. **Our own counter** on api.park.fan is cookieless, counts per day and costs nothing per event, so it carries
 every other custom event, a view of every page and the reads behind the most-read lists. This page is the event inventory for both; open
 it before adding, changing or removing an event. How the own counter works, from the facade to the
 admin dashboards, is [site analytics](../features/site-analytics.md). The budget rule is
@@ -17,7 +24,7 @@ admin dashboards, is [site analytics](../features/site-analytics.md). The budget
 | Every other custom event           | Our own counter (`trackSiteEvent`)        | A property is free there and billed as an event in Umami                   |
 | Reads of a post, a park and a ride | Our own counter, as the event `page_read` | Dwell based, feeds the rankings ([most read](../features/most-read.md))    |
 
-The Umami tracker is the `<Script>` in `app/[locale]/layout.tsx`; the two Web Vitals events go
+The Umami tracker was a `<Script>` in `app/[locale]/layout.tsx`; the two Web Vitals events go
 through `components/analytics/web-vitals-reporter.tsx` and `trackEvent` in
 `lib/analytics/umami.ts`, which no-ops when the script is blocked (ad blocker, Do Not Track), so a
 call site never needs a guard. Our own counter's calls go through `trackSiteEvent`

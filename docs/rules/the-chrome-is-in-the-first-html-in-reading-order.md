@@ -9,8 +9,8 @@ breadcrumbs, a page's chapter list, the footer's link groups.
   make the data synchronous or cached (the geo menu is a cached discovery read, the blog menu reads
   the generated manifest); never wrap the component.
 - What may stay in a boundary is what renders nothing a crawler needs: `NavigationProgress` (it
-  reads `useSearchParams`, which needs one on a static route), `WebVitalsReporter`, `LanguageBanner`
-  and the rest of the first boundary in the locale layout.
+  reads `useSearchParams`, which needs one on a static route), `LanguageBanner` and the rest of the
+  first boundary in the locale layout.
 - The trade: an error in a component without a boundary fails the page instead of falling back to
   client rendering. The header and footer are static markup with no fetch of their own.
 
