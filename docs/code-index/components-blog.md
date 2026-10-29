@@ -159,7 +159,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`blog-references.tsx`](../../components/blog/blog-references.tsx)
 
-- `BlogReferences` _component_: Bottom-of-post section that collects every park and attraction the article mentions — both the inline `[label](park:slug)` / `[label](attraction:..)` references in the body and the explicit `relatedParks` / `relatedAttractions` frontmatter …
+- `BlogReferences` _component_: The parks and rides of a post, right under its text: every park and attraction the article mentions — both the inline `[label](park:slug)` / `[label](attraction:..)` references in the body and the explicit `relatedParks` / …
 - Types: `BlogAttractionRef`
 
 ### [`blog-related-posts.tsx`](../../components/blog/blog-related-posts.tsx)

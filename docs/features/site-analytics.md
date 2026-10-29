@@ -103,16 +103,20 @@ seconds.
 
 The UUID is optional and only sent where the call site holds one: the favorite star, the ride and
 show dialogs, the park page's tabs and filters, the calendar, the reads of a park
-or ride, and the outbound links on the park page. The planner events carry none, because the plan is
-stored by the park's slug. `outbound_link_clicked` works without a client island per link:
-server-rendered links carry `data-outbound` and `data-outbound-entity` (`outboundLinkAttributes`)
-and one delegated listener (`OutboundLinkTracker`) counts the click. An entity is never derived
-from the visitor's location: `nearby_parks_loaded` and the compass events carry none.
+or ride, the outbound links on the park page, and the park and ride cards under a post. The planner
+events carry none, because the plan is stored by the park's slug. `outbound_link_clicked`,
+`internal_link_clicked` and `faq_opened` work without a client island per element: server-rendered
+markup carries data attributes (`outboundLinkAttributes`, `linkBlockAttributes`,
+`linkEntityAttributes`, `faqPositionAttributes`) and one set of delegated listeners
+(`MarkupEventTracker`, in the locale layout) counts them
+([internal links, places and FAQ](../development/analytics.md#internal-links-places-and-faq)). An
+entity is never derived from the visitor's location: `nearby_parks_loaded` and the compass events
+carry none.
 
 ## The admin
 
-The pages are German like the rest of the admin. Traffic, Live, SEO, Suche and Tagesplaner are in
-the sidebar and in ⌘K, the first four also on `g` `t`, `g` `l`, `g` `o` and `g` `u`. The admin home carries a tile with the visitors of today and how many are on the site,
+The pages are German like the rest of the admin. Traffic, Live, SEO, Suche, Wege and Tagesplaner are
+in the sidebar and in ⌘K, the first four also on `g` `t`, `g` `l`, `g` `o` and `g` `u`. The admin home carries a tile with the visitors of today and how many are on the site,
 the second figure a link to the live view.
 Every call goes through the admin proxy as `/api/admin/analytics/…`, which maps to
 `/v1/admin/analytics/…` ([the admin holds no credential](../rules/the-admin-holds-no-credential.md)).
@@ -123,6 +127,7 @@ Every call goes through the admin proxy as `/api/admin/analytics/…`, which map
 | Event (`events/<name>`)         | one event's properties and values, the combinations sent together, a crosstab of any two dimensions, page types, devices, the parks, rides, shows and restaurants behind it, its days                                                                                                                                                                                                           |
 | SEO (`traffic/seo`)             | what Google reports (queries and pages from the Search Console), the pages visits begin on from search engines and from AI assistants, the pages gaining and losing, 404 addresses with their referrers, parks and rides no search visit reached                                                                                                                                                |
 | Suche                           | hero against header, every search field side by side, a field by page type and by device, result kinds, positions, the resting list, the parks and rides opened most from a search, the days                                                                                                                                                                                                    |
+| Wege (`traffic/paths`)          | how far down the park pages are read (each marked place against the page type's views), the links followed from each block by the page type they lead to and their place, the header's menus by device, the FAQ questions opened by place and page type                                                                                                                                         |
 | Tagesplaner (`traffic/planner`) | the planner from opening to sharing: the funnel, the ways in and which of them lead to a plan, page type by device, the wizard's steps, blocks in and out, the tools, sharing and push, the parks and rides planned most, the days ([what the planner counts](trip-planner/analytics.md#in-the-admin))                                                                                          |
 | Live (`traffic/live`)           | who is on the site now, a map of the last five minutes, the last 30 minutes by the minute, pages, events, channels, referrers, countries and devices, every five seconds                                                                                                                                                                                                                        |
 

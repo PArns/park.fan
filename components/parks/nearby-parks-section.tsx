@@ -5,6 +5,7 @@ import { getParksNearLocation } from '@/lib/api/discovery';
 import { getCardObjectPosition, getParkBackgroundImage } from '@/lib/utils/park-assets';
 import { stripNewPrefix } from '@/lib/utils';
 import { LiveNearbyParks, type StaticNearbyPark } from '@/components/parks/live-nearby-parks';
+import { linkBlockAttributes } from '@/lib/analytics/internal-link';
 
 interface NearbyParksSectionProps {
   parkId: string;
@@ -39,7 +40,7 @@ export async function NearbyParksSection({ parkId, lat, lng, className }: Nearby
   }));
 
   return (
-    <section className={className}>
+    <section className={className} {...linkBlockAttributes('nearby')}>
       <ChapterHeading
         icon={MapPin}
         title={t('nearbyParks')}

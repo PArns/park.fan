@@ -12,6 +12,7 @@ import { cn } from '@/lib/utils';
 import { ParkFirstVisitGuide } from '@/components/parks/park-first-visit-guide';
 import type { BlogListItem } from '@/lib/blog/types';
 import type { Locale } from '@/i18n/config';
+import { linkBlockAttributes } from '@/lib/analytics/internal-link';
 
 /**
  * "This park / this ride in our blog": the articles that mention this page's subject (see
@@ -92,7 +93,7 @@ export async function ParkBlogPostsSection({
   const t = await getTranslations('parks.blogPosts');
 
   const section = (
-    <section className={className}>
+    <section className={className} {...linkBlockAttributes('posts')}>
       <ChapterHeading
         icon={Newspaper}
         title={t('title', { park: parkName })}
@@ -152,8 +153,10 @@ export async function AttractionBlogPostsSection({
       frosted
       className={className}
     >
-      <BlogPostsGrid posts={articles} />
-      <NewsRow locale={locale} posts={news} boxed className={articles.length > 0 ? 'mt-4' : ''} />
+      <div {...linkBlockAttributes('posts')}>
+        <BlogPostsGrid posts={articles} />
+        <NewsRow locale={locale} posts={news} boxed className={articles.length > 0 ? 'mt-4' : ''} />
+      </div>
     </PageSection>
   );
 }

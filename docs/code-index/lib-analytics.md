@@ -5,10 +5,26 @@ by hand: change the comment in the code and re-run the script. -->
 
 [All pages](README.md).
 
+### [`faq-open.ts`](../../lib/analytics/faq-open.ts)
+
+- `faqPositionAttributes` _function_: The attribute to spread onto the `<details>` of the question at 0-based `index`.
+- `faqOpenedPositionOf` _function_: The position a `toggle` on `target` reports: the question's place when an FAQ row opened, `null` for a row that closed and for any other `<details>`.
+- `FAQ_POSITION_ATTRIBUTE` _const_: The attribute carrying a question's 1-based place in its list.
+
 ### [`foreground-timer.ts`](../../lib/analytics/foreground-timer.ts)
 
 - `ForegroundTimer` _class_: The time one page view spent in the foreground: it runs while the page is visible and stands still while the tab is hidden, so a page left open in the background earns nothing.
 - `MAX_ENGAGEMENT_SECONDS` _const_: The most foreground seconds one page view reports; a tab left open all day counts no more.
+
+### [`internal-link.ts`](../../lib/analytics/internal-link.ts)
+
+- `isLinkBlock` _function_: Whether a string read off the DOM is a block the event knows.
+- `linkBlockAttributes` _function_: The attribute to spread onto the element that holds a block's links.
+- `linkEntityAttributes` _function_: The attribute to spread onto a card's wrapper inside a block, so a click on the card names the park or ride it opens. Nothing for an id that is not a UUID.
+- `internalLinkClickOf` _function_: The `internal_link_clicked` a click on `target` makes, or `null`: a click on a link of this site inside a marked block.
+- `LINK_BLOCK_ATTRIBUTE` _const_: The attribute that marks an element as a block of links and names it.
+- `LINK_ENTITY_ATTRIBUTE` _const_: The attribute carrying the UUID of the park or ride a card inside a block links to.
+- Types: `LinkBlock`, `InternalLinkClick`
 
 ### [`opt-out.ts`](../../lib/analytics/opt-out.ts)
 
@@ -62,6 +78,14 @@ Where an outbound link goes, the closed list of the event's `target`.
 - `SEARCH_SETTLE_MS` _const_: How long a query has to hold still to count as settled: the palette's debounce, and the wait a field without one gives its query before `search_typed` and `search_no_results`.
 - Types: `SearchEventName`, `SearchEventProps`, `SearchEventSender`, `SearchSession`
 
+### [`section-seen.ts`](../../lib/analytics/section-seen.ts)
+
+The places a park page marks, top to bottom, the closed list of the event's `section`.
+
+- `isSeenSection` _function_: Whether a string read off the DOM is a place the event knows.
+- `SECTION_SEEN_ATTRIBUTE` _const_: The attribute that makes an element a mark and names its place.
+- Types: `SeenSection`
+
 ### [`site-analytics.ts`](../../lib/analytics/site-analytics.ts)
 
 - `sitePageTypeOf` _function_: The page type of a locale-prefixed path such as `/de/parks/europe/germany/bruehl/phantasialand`.
@@ -71,7 +95,7 @@ Where an outbound link goes, the closed list of the event's `target`.
 - `trackSitePageview` _function_: Counts a view of the page now in the address bar. Call once per navigation. The view before it ends here, so the foreground time it has not reported yet is queued ahead of the new pageview, under the path and page type it was opened with.
 - `markPageNotFound` _function_: Declares the page in the address bar a "not found" page, which only that page knows: its pageview becomes `not_found`, whether it was queued already or comes after.
 - `trackSiteEvent` _function_: Counts one event on the current page. A name in `SiteEventMap` is checked against its properties; any other name (lower case, digits and underscores, two to 48 characters) goes through with any properties of `SiteEventProps`.
-- Types: `SearchSurface`, `SearchResultKind`, `SearchBrowseItem`, `PlannerWizardStep`, `PlanItemKind`, `PlanItemAddSource`, `PlanItemRemoveSource`, `PlanOptimizeMode`, `PlannerFitSource`, `PlannerFitLever`, `PlannerUndoSource`, `SharedPlanResult`, `SiteEventMap`, `SiteEventName`, `AttractionFilterName`
+- Types: `SitePageType`, `SearchSurface`, `SearchResultKind`, `SearchPosition`, `NavMenuId`, `SearchBrowseItem`, `PlannerWizardStep`, `PlanItemKind`, `PlanItemAddSource`, `PlanItemRemoveSource`, `PlanOptimizeMode`, `PlannerFitSource`, `PlannerFitLever`, `PlannerUndoSource`, `SharedPlanResult`, `SiteEventMap`, `SiteEventName`, `AttractionFilterName`
 
 ### [`umami.ts`](../../lib/analytics/umami.ts)
 

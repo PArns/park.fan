@@ -7,6 +7,7 @@ import { useMostRead } from '@/lib/hooks/use-most-read';
 import { mostReadLeader, mostReadShown, type MostReadKind } from '@/lib/blog/most-read-config';
 import type { MostRead } from '@/lib/blog/most-read';
 import { cn } from '@/lib/utils';
+import { linkBlockAttributes } from '@/lib/analytics/internal-link';
 
 /**
  * The most read guides (30 days) and news (7 days) of the reader's language, as two short numbered
@@ -42,7 +43,10 @@ export function MostReadStream({
   const lists = useMostRead(useAfterLoad()).data ?? seed;
 
   return (
-    <div className={cn('grid gap-x-10 gap-y-8', kinds.length > 1 && 'lg:grid-cols-2', className)}>
+    <div
+      className={cn('grid gap-x-10 gap-y-8', kinds.length > 1 && 'lg:grid-cols-2', className)}
+      {...linkBlockAttributes('most_read')}
+    >
       {kinds.map((kind) => (
         <section key={kind}>
           <MostReadList

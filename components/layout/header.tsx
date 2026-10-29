@@ -47,6 +47,8 @@ import type { FeaturedParkCard } from '@/lib/navigation/featured-parks-menu';
 import type { BlogMenu } from '@/lib/navigation/blog-menu';
 import type { NewsMenu } from '@/lib/navigation/news-menu';
 import type { MoreMenu } from '@/lib/navigation/more-menu';
+import { linkBlockAttributes } from '@/lib/analytics/internal-link';
+import { trackSiteEvent } from '@/lib/analytics/site-analytics';
 
 /** Stable fallback, so a missing list does not defeat `ParksMenuPanel`'s memo. */
 const NO_FEATURED_PARKS: FeaturedParkCard[] = [];
@@ -57,6 +59,19 @@ const NO_FEATURED_PARKS: FeaturedParkCard[] = [];
  */
 const SOLID_ON_Y = 56;
 const SOLID_OFF_Y = 44;
+
+/** Where the header's search is the field: a 360–1023 px bar and from 1280. */
+const SEARCH_FIELD_CLASS =
+  'hidden @min-[360px]:mr-2 @min-[360px]:ml-4 @min-[360px]:block @min-[360px]:max-w-80 @min-[360px]:min-w-0 @min-[360px]:flex-1 @min-[1024px]:hidden @min-[1280px]:mr-0 @min-[1280px]:ml-0 @min-[1280px]:block @min-[1280px]:w-64 @min-[1280px]:flex-none';
+
+/** The icon in the gaps of {@link SEARCH_FIELD_CLASS}: below 360 and from 1024 to 1279. */
+const SEARCH_ICON_CLASS = '@min-[360px]:hidden @min-[1024px]:block @min-[1280px]:hidden';
+
+/** The homepage's field, only from 1280: below that its hero is the search. */
+const SEARCH_FIELD_WIDE_ONLY_CLASS = 'hidden @min-[1280px]:block @min-[1280px]:w-64';
+
+/** The homepage's icon, up to 1279. */
+const SEARCH_ICON_NARROW_CLASS = '@min-[1280px]:hidden';
 
 interface HeaderProps {
   /** Whether the blog has at least one published post — every blog link
@@ -239,7 +254,10 @@ export function Header({
    */
   const [menuOpenedOn, setMenuOpenedOn] = useState<string | null>(null);
   const mobileMenuOpen = menuOpenedOn === pathname;
-  const setMobileMenuOpen = (next: boolean) => setMenuOpenedOn(next ? pathname : null);
+  const setMobileMenuOpen = (next: boolean) => {
+    if (next && !mobileMenuOpen) trackSiteEvent('nav_menu_opened', { menu: 'sheet' });
+    setMenuOpenedOn(next ? pathname : null);
+  };
   const sheetRef = useSheetReveal(mobileMenuOpen);
   const latestNews = latestNewsFrom(newsMenu, { excerpt: true });
 
@@ -348,6 +366,7 @@ export function Header({
          the row, because `container-type` makes the corner logo (`absolute left-6`) resolve
          against it. `inline-size` does not imply `contain: paint`, so this is no backdrop root.
          See docs/rules/the-header-is-48-px.md. */
+      {...linkBlockAttributes('header')}
       className={`@container relative sticky top-0 z-50 h-12 border-b transition-[border-color] duration-500 ${
         isTransparent ? 'border-transparent' : 'border-border/50'
       }`}
@@ -452,7 +471,13 @@ export function Header({
             {showBlog && (
               <li>
                 {blogMenu && blogMenu.recent.length > 0 ? (
-                  <NavMenu href="/blog" label={t('blog')} icon={Newspaper} floating={isTransparent}>
+                  <NavMenu
+                    href="/blog"
+                    label={t('blog')}
+                    menu="guides"
+                    icon={Newspaper}
+                    floating={isTransparent}
+                  >
                     <BlogMenuPanel {...blogMenu} />
                   </NavMenu>
                 ) : (
@@ -470,6 +495,7 @@ export function Header({
                 <NavMenu
                   href={newsMenu.path}
                   label={newsMenu.label}
+                  menu="news"
                   icon={Megaphone}
                   floating={isTransparent}
                 >
@@ -482,6 +508,7 @@ export function Header({
                 <NavMenu
                   href="/parks"
                   label={t('explore')}
+                  menu="parks"
                   icon={RollerCoaster}
                   floating={isTransparent}
                 >
@@ -501,7 +528,7 @@ export function Header({
               than unmounting it, so the links stay in every page's HTML. No `href`: „Mehr" has no
               page of its own (NavMenu rule 2). */}
             <li>
-              <NavMenu label={t('more')} icon={Ellipsis} floating={isTransparent}>
+              <NavMenu label={t('more')} menu="more" icon={Ellipsis} floating={isTransparent}>
                 <MoreMenuPanel
                   bestTimeHref={bestTimePath}
                   glossaryHref={glossaryPath}
@@ -525,9 +552,13 @@ export function Header({
           </ul>
         </nav>
 
-        {/* The full input from `xl`. Below that the row has no width to spare —
-            see the icon trigger further down, which covers 1024–1279 px. */}
-        <div className="hidden @min-[1280px]:block @min-[1280px]:w-64">
+        {/* The field from a 360 px bar to a 1023 px one, where it takes the width between the
+            logo and the actions, and again from `xl`. Below 360 and between 1024 and 1279 the row
+            has none to spare, so the icon trigger further down stands in, and so it does on the
+            homepage below `xl`, whose hero is the search field. `ml-4` clears the corner logo of a
+            hero page, which sits at `left-6` rather than in the row's `px-4`. The widths are in
+            docs/design/header.md#the-search-field-takes-the-slack. */}
+        <div className={isHomePage ? SEARCH_FIELD_WIDE_ONLY_CLASS : SEARCH_FIELD_CLASS}>
           <SearchCommand
             trigger="input"
             size="sm"
@@ -539,10 +570,10 @@ export function Header({
         {/* `max-sm:gap-1` is width, not taste: at 320 px the row only fits inside the
             container's padding with these gaps halved. */}
         <div className="flex items-center gap-2 max-sm:gap-1">
-          {/* The icon trigger up to `xl`: the nav row cannot give width back, and a 36 px icon
-              that opens the same palette costs nobody a search, while a horizontal scrollbar
-              costs everybody. */}
-          <div className="@min-[1280px]:hidden">
+          {/* The icon trigger where the field has no room: below a 360 px bar, and from 1024 to
+              1279 px, where the nav row cannot give width back. A horizontal scrollbar would cost
+              everybody. */}
+          <div className={isHomePage ? SEARCH_ICON_NARROW_CLASS : SEARCH_ICON_CLASS}>
             <SearchCommand trigger="button" size="sm" />
           </div>
 
@@ -596,6 +627,7 @@ export function Header({
                   className="flex min-h-0 flex-1 flex-col"
                   aria-label={t('mobileNavigation')}
                   onClick={closeOnSamePageTap}
+                  {...linkBlockAttributes('menu_sheet')}
                 >
                   <div
                     // `min-h-0`, or the flex item will not shrink below its content and the list

@@ -1,7 +1,7 @@
 import { getTranslations } from 'next-intl/server';
 import { MapPin, Activity } from 'lucide-react';
-import { ParkCard } from '@/components/parks/park-card';
-import { AttractionCard } from '@/components/parks/attraction-card';
+import { BlogParkCardLive } from '@/components/blog/blog-park-card-live';
+import { BlogAttractionCardLive } from '@/components/blog/blog-attraction-card-live';
 import {
   extractInlineRefs,
   resolveAttraction,
@@ -14,24 +14,29 @@ import {
   getCardObjectPosition,
   getParkBackgroundImage,
 } from '@/lib/utils/park-assets';
-import { translateGeoSlug } from '@/lib/utils/geo-translate';
-import { buildAttractionPayload } from '@/lib/blog/attraction-payload';
+import { linkBlockAttributes, linkEntityAttributes } from '@/lib/analytics/internal-link';
+import { cn } from '@/lib/utils';
 import type { BlogAttractionRef, BlogPost } from '@/lib/blog/types';
 
 interface BlogReferencesProps {
   post: BlogPost;
+  className?: string;
 }
 
+/** The row template on each card's own wrapper, see docs/rules/blog-spotlight-cards.md. */
+const CARD_ROWS_CLASS =
+  'grid [grid-template-rows:auto_0px_auto] sm:[grid-template-rows:auto_minmax(220px,1fr)_auto]';
+
 /**
- * Bottom-of-post section that collects every park and attraction the article
- * mentions — both the inline `[label](park:slug)` / `[label](attraction:..)`
- * references in the body and the explicit `relatedParks` / `relatedAttractions`
- * frontmatter entries — deduplicates them, and renders them as the same
- * ParkCard / AttractionCard tiles used on the favorites grid.
+ * The parks and rides of a post, right under its text: every park and attraction the article
+ * mentions — both the inline `[label](park:slug)` / `[label](attraction:..)` references in the body
+ * and the explicit `relatedParks` / `relatedAttractions` frontmatter entries — deduplicated, as the
+ * live park and ride cards the post's own links open. A reader who got to the end is shown what
+ * the park is doing now, the one thing a post cannot say. The cards share their live requests with
+ * the inline links, so a park the text links costs nothing more here.
  */
-export async function BlogReferences({ post }: BlogReferencesProps) {
+export async function BlogReferences({ post, className }: BlogReferencesProps) {
   const t = await getTranslations('blog');
-  const tGeo = await getTranslations('geo');
 
   const {
     parkSlugs: inlineParkSlugs,
@@ -92,9 +97,9 @@ export async function BlogReferences({ post }: BlogReferencesProps) {
   );
 
   return (
-    <section className="my-12 space-y-10">
+    <section className={cn('space-y-10', className)}>
       {parks.length > 0 && (
-        <div>
+        <div {...linkBlockAttributes('parks')}>
           <div className="mb-5 flex items-center gap-2">
             <MapPin className="text-primary h-5 w-5" aria-hidden="true" />
             <h2 className="text-foreground text-xl font-bold">
@@ -103,28 +108,12 @@ export async function BlogReferences({ post }: BlogReferencesProps) {
           </div>
           <div className="grid gap-5 sm:grid-cols-2 @min-[1024px]/page:grid-cols-3">
             {parks.map((park) => (
-              <div
-                key={park.slug}
-                className="grid [grid-template-rows:auto_0px_auto] sm:[grid-template-rows:auto_minmax(220px,1fr)_auto]"
-              >
-                <ParkCard
-                  name={park.name}
-                  slug={park.slug}
-                  parkId={park.id}
-                  city={park.city}
-                  country={translateGeoSlug(tGeo, 'countries', park.countrySlug, park.country)}
-                  href={park.href as '/'}
-                  status={park.status}
-                  crowdLevel={park.crowdLevel}
-                  averageWaitTime={park.avgWaitTime}
-                  operatingAttractions={park.operatingAttractions}
-                  totalAttractions={park.totalAttractions}
-                  timezone={park.timezone}
-                  todaySchedule={park.todaySchedule}
-                  nextSchedule={park.nextSchedule}
-                  hasOperatingSchedule={park.hasOperatingSchedule}
+              <div key={park.slug} className="grid" {...linkEntityAttributes(park.id)}>
+                <BlogParkCardLive
+                  park={park}
                   backgroundImage={getParkBackgroundImage(park.slug)}
                   objectPosition={getCardObjectPosition(park.slug)}
+                  className={CARD_ROWS_CLASS}
                 />
               </div>
             ))}
@@ -133,7 +122,7 @@ export async function BlogReferences({ post }: BlogReferencesProps) {
       )}
 
       {attractions.length > 0 && (
-        <div>
+        <div {...linkBlockAttributes('rides')}>
           <div className="mb-5 flex items-center gap-2">
             <Activity className="text-primary h-5 w-5" aria-hidden="true" />
             <h2 className="text-foreground text-xl font-bold">
@@ -144,20 +133,20 @@ export async function BlogReferences({ post }: BlogReferencesProps) {
             {attractions.map(({ park, attraction }) => (
               <div
                 key={`${park.slug}/${attraction.attractionSlug}`}
-                className="grid [grid-template-rows:auto_0px_auto] sm:[grid-template-rows:auto_minmax(220px,1fr)_auto]"
+                className="grid"
+                {...linkEntityAttributes(attraction.detail?.id)}
               >
-                <AttractionCard
-                  attraction={buildAttractionPayload(park, attraction)}
-                  parkPath={park.href}
-                  parkStatus={park.status}
-                  backgroundImage={
-                    getAttractionBackgroundImage(park.slug, attraction.attractionSlug) ?? undefined
-                  }
+                <BlogAttractionCardLive
+                  park={park}
+                  attraction={attraction}
                   // No park fallback: a ride without its own photo shows none, rather
                   // than the park's picture captioned with the ride's name.
+                  attractionBackgroundImage={getAttractionBackgroundImage(
+                    park.slug,
+                    attraction.attractionSlug
+                  )}
                   objectPosition={getCardObjectPosition(park.slug, attraction.attractionSlug)}
-                  showParkName
-                  timezone={park.timezone}
+                  className={CARD_ROWS_CLASS}
                 />
               </div>
             ))}

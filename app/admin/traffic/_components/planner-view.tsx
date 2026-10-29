@@ -42,14 +42,14 @@ import {
   PanelHeader,
   StatTile,
 } from '../../_ui/primitives';
-import { useTrafficData, useTrafficFilters, type TrafficFilters } from '../_lib/use-traffic';
-import { eventHref } from './events-table';
+import { useTrafficData, useTrafficFilters } from '../_lib/use-traffic';
+import { EventLinks } from './event-links';
 import { TrafficFilterBar } from './filter-bar';
 import { HourlyNotice } from './hourly-notice';
 import { RankedEntitiesPanel } from './ranked-entities';
 import { UnsupportedNote } from './unsupported-note';
 
-/** The raw events behind the page, each a way into its own detail. */
+/** The raw events behind the page, so every number on it can be taken apart. */
 const PLANNER_EVENT_LINKS = [
   'planner_opened',
   'plan_day_started',
@@ -455,24 +455,6 @@ function SeriesPanel({ planner }: { planner: PlannerOverview }) {
   );
 }
 
-/** Links to the raw events, so every number on the page can be taken apart. */
-function EventLinks({ filters }: { filters: TrafficFilters }) {
-  return (
-    <ul className="flex flex-wrap gap-2 px-4 pb-3">
-      {PLANNER_EVENT_LINKS.map((name) => (
-        <li key={name}>
-          <Link
-            href={eventHref(name, filters)}
-            className="border-border/60 hover:border-primary/50 hover:text-primary text-muted-foreground rounded-full border px-2.5 py-1 font-mono text-[11px] transition-colors max-sm:py-2"
-          >
-            {name}
-          </Link>
-        </li>
-      ))}
-    </ul>
-  );
-}
-
 /**
  * `/admin/traffic/planner`: the trip planner from opening to sharing. The funnel and its ways in,
  * where it is opened, how far the wizard is followed, what goes into a plan, the tools, sharing
@@ -505,7 +487,7 @@ export function PlannerView() {
         <TrafficFilterBar filters={filters} hint={false} />
       </div>
       <p className="text-muted-foreground px-4 pt-3 pb-2 text-xs">Rohdaten:</p>
-      <EventLinks filters={filters} />
+      <EventLinks names={PLANNER_EVENT_LINKS} filters={filters} />
     </>
   );
 

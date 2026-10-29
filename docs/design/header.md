@@ -24,8 +24,8 @@ on desktop and ~50 on a phone because it costs that much of every viewport for t
 | Element                     | Height | Of the bar |
 | --------------------------- | -----: | ---------: |
 | logo lockup (`BrandLockup`) |  26 px |       55 % |
-| search field, `lg` and up   |  32 px |       67 % |
-| search button, below `lg`   |  36 px |       75 % |
+| search field                |  32 px |       67 % |
+| search icon button          |  36 px |       75 % |
 | locale switcher             |  32 px |       67 % |
 | burger, below a 1024 px bar |  36 px |       75 % |
 | planner button, phone       |  36 px |       75 % |
@@ -95,9 +95,38 @@ In their place the bar carries the planner's way in, `PlannerHeaderButton` (a 36
 beside the burger), because the planner's edge tab is not drawn on `planner-phone`
 ([trip planner](../features/trip-planner/panel.md#ways-in)). Measured on
 `/parks/europe/germany` in de and fr: lockup 107, search 36, planner 36, burger 36, 0.0 px over the
-content box at 320, 360 and 390 px, where it had been 12.8 px over at 320. The phone row has ~100 px
-of slack now; the question for the next control is whether it is navigation (the bar) or a
-preference (the sheet).
+content box at 320, 360 and 390 px, where it had been 12.8 px over at 320. The phone row had ~100 px
+of slack then; the search field below takes it. The question for the next control is whether it is
+navigation (the bar) or a preference (the sheet).
+
+## The search field takes the slack
+
+The search is the header's field (`SearchCommand trigger="input"`, 32 px, the look of the
+desktop's) from a **360 px bar to a 1023 px one** and again from 1280, and the 36 px icon only where
+the row has no width for it: below 360 and between 1024 and 1279, where the nav row is drawn. The
+homepage keeps the icon up to 1279, since its hero is the search field. The field's wrapper is
+`flex-1 min-w-0` with a cap of `max-w-80` (`SEARCH_FIELD_CLASS` in `header.tsx`), so it takes what
+the lockup and the actions leave and can never push the row over; from 1280 it is the fixed `w-64`.
+Its left margin is `ml-4`, not the `mr-2` of its right, because on a hero page the corner logo sits
+at `left-6`, 8 px further in than the row's `px-4`. Its placeholder is the short word
+(`searchPlaceholderShort`); the padding for the ⌘K hint and the wider icon inset apply from `md`,
+where the hint is drawn.
+
+Why: in the first day and a half of the site statistic (28 and 29 October 2026, 912 page views)
+the header search was opened 8 times, all on phones, against 22 openings of the homepage hero's
+field on 58 homepage views, and park pages are 46 % of the views, 73 % of them on a phone. The icon
+was what a phone reader had on every page but the homepage.
+
+Measured on `/<locale>/parks/europe/germany`, 29 October 2026, the field's width in px:
+
+| Bar width | 320  | 360 | 390 | 412 | 640     | 768–1023 | 1024–1279 | 1280 |
+| --------- | ---- | --: | --: | --: | ------- | -------: | --------- | ---: |
+| all six   | icon | 121 | 151 | 173 | 293–299 |      320 | icon      |  256 |
+
+The placeholder is cut in none of them („Rechercher" is the longest), and the document is as wide
+as the viewport at every width. A labelled button (icon plus „Suchen") was the first try: at 360 it
+left 16 px of the row in French, 42–53 in the other five, and it is narrower than the field at
+every width.
 
 ## Two states, one navigation
 

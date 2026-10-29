@@ -5,6 +5,7 @@ import { parseCategoryPath } from '@/lib/blog/categories';
 import { isNewsCategory } from '@/lib/blog/paths';
 import type { Locale } from '@/i18n/config';
 import type { BlogListItem } from '@/lib/blog/types';
+import { linkBlockAttributes } from '@/lib/analytics/internal-link';
 
 interface BlogRelatedPostsProps {
   locale: Locale;
@@ -69,7 +70,7 @@ export async function BlogRelatedPosts({
   if (ranked.length === 0) return null;
 
   return (
-    <section className="my-12">
+    <section className="my-12" {...linkBlockAttributes('related')}>
       <h2 className="text-foreground mb-5 text-xl font-bold">
         {title ?? (isNews ? t('related.news') : t('related.title'))}
       </h2>

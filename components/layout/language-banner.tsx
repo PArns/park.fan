@@ -8,6 +8,8 @@ import { LANGUAGE_BANNER_MESSAGES } from '@/lib/i18n/language-banner-messages';
 import { rememberLocale } from '@/lib/i18n/remember-locale';
 import { useBrowserLocale } from '@/lib/hooks/use-browser-locale';
 import { FlagDE, FlagUS, FlagNL, FlagFR, FlagES, FlagIT } from '@/components/common/icons/flags';
+import { HEAVY_GLASS } from '@/components/common/glass-card';
+import { cn } from '@/lib/utils';
 
 interface LanguageBannerProps {
   currentLocale: Locale;
@@ -120,51 +122,57 @@ export function LanguageBanner({ currentLocale }: LanguageBannerProps) {
       // Read by the new-posts toast, which sits below this from `sm` instead of under it.
       data-language-banner
     >
-      <div className="mx-auto max-w-7xl px-4 py-3 sm:px-6 lg:px-8">
-        <div className="border-border/50 bg-background/95 supports-[backdrop-filter]:bg-background/80 relative overflow-hidden rounded-lg border p-3 shadow-lg backdrop-blur sm:p-4">
+      {/* Below `sm` one quiet row: the flags, the switch as a link in the brand colour and the ×,
+          without the sentence the switch repeats. From `sm` the sentence and a filled button. It
+          floats over the page, so it takes the hero's glass and a border in the brand colour,
+          which also sets it apart from a cookie notice. */}
+      <div className="mx-auto max-w-7xl px-4 py-2 sm:px-6 sm:py-3 lg:px-8">
+        <div
+          className={cn(
+            HEAVY_GLASS,
+            'border-primary/50 relative overflow-hidden rounded-lg border py-0.5 pr-0.5 pl-3 shadow-md sm:p-4 sm:shadow-lg'
+          )}
+        >
           <div className="from-primary/5 to-primary/5 absolute inset-0 bg-gradient-to-r via-transparent" />
 
-          <div className="relative flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
-            <div className="flex items-center gap-2 sm:gap-3">
-              <div className="flex shrink-0 items-center gap-1.5 sm:gap-2">
-                {(() => {
-                  const CurrentFlag = FlagComponents[currentLocale];
-                  return (
-                    <CurrentFlag className="border-border/50 h-4 w-6 rounded-sm border sm:h-5 sm:w-8" />
-                  );
-                })()}
-                <span className="text-muted-foreground text-sm sm:text-base">→</span>
-                {(() => {
-                  const BrowserFlag = FlagComponents[browserLocale];
-                  return (
-                    <BrowserFlag className="border-border/50 h-4 w-6 rounded-sm border sm:h-5 sm:w-8" />
-                  );
-                })()}
-              </div>
-
-              <p className="text-foreground text-xs font-medium sm:text-sm">
-                {translations.message}
-              </p>
+          <div className="relative flex items-center gap-2 sm:gap-4">
+            <div className="flex shrink-0 items-center gap-1.5 sm:gap-2">
+              {(() => {
+                const CurrentFlag = FlagComponents[currentLocale];
+                return (
+                  <CurrentFlag className="border-border/50 h-3.5 w-5 rounded-sm border sm:h-5 sm:w-8" />
+                );
+              })()}
+              <span className="text-muted-foreground text-xs sm:text-base">→</span>
+              {(() => {
+                const BrowserFlag = FlagComponents[browserLocale];
+                return (
+                  <BrowserFlag className="border-border/50 h-3.5 w-5 rounded-sm border sm:h-5 sm:w-8" />
+                );
+              })()}
             </div>
 
-            <div className="flex items-center gap-2 self-end sm:self-auto">
-              <button
-                onClick={handleSwitch}
-                className="bg-primary text-primary-foreground hover:bg-primary/90 inline-flex min-h-11 items-center justify-center rounded-md px-3 py-1.5 text-xs font-semibold shadow-sm transition-all hover:shadow-md active:scale-95 sm:min-h-0 sm:px-4 sm:py-2 sm:text-sm"
-              >
-                {translations.switchButton}
-              </button>
+            <p className="text-foreground min-w-0 flex-1 text-sm font-medium max-sm:hidden">
+              {translations.message}
+            </p>
 
-              {/* `min-h-11 min-w-11` below `sm`: the banner's only exit needs a thumb-sized
-                  target. */}
-              <button
-                onClick={handleDismiss}
-                className="text-muted-foreground hover:bg-muted hover:text-foreground inline-flex min-h-11 min-w-11 items-center justify-center rounded-md p-1.5 transition-colors sm:min-h-0 sm:min-w-0 sm:p-2"
-                aria-label={translations.dismiss}
-              >
-                <X className="h-4 w-4" />
-              </button>
-            </div>
+            {/* `min-h-11` below `sm`: a thumb-sized target, as tall as the row it is in. */}
+            <button
+              onClick={handleSwitch}
+              className="text-primary hover:bg-primary/10 sm:bg-primary sm:text-primary-foreground sm:hover:bg-primary/90 inline-flex min-h-11 min-w-0 flex-1 items-center justify-start rounded-md px-2 text-sm font-semibold transition-all active:scale-95 sm:min-h-0 sm:flex-none sm:justify-center sm:px-4 sm:py-2 sm:shadow-sm sm:hover:shadow-md"
+            >
+              <span className="truncate">{translations.switchButton}</span>
+            </button>
+
+            {/* `min-h-11 min-w-11` below `sm`: the banner's only exit needs a thumb-sized
+                target. */}
+            <button
+              onClick={handleDismiss}
+              className="text-muted-foreground hover:bg-muted hover:text-foreground inline-flex min-h-11 min-w-11 shrink-0 items-center justify-center rounded-md p-1.5 transition-colors sm:min-h-0 sm:min-w-0 sm:p-2"
+              aria-label={translations.dismiss}
+            >
+              <X className="h-4 w-4" />
+            </button>
           </div>
         </div>
       </div>

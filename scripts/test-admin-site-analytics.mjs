@@ -9,6 +9,10 @@ import assert from 'node:assert/strict';
 import {
   BROWSE_ITEM_LABEL,
   EVENT_INFO,
+  LINK_BLOCK_LABEL,
+  NAV_MENU_LABEL,
+  SECTION_LABEL,
+  sectionReach,
   PAGE_TYPE_LABEL,
   isPlannerEvent,
   plannerItemMatrix,
@@ -249,7 +253,7 @@ test('search events are the ones that start with search_', () => {
 
 test('every closed list has a word for each value', () => {
   assert.equal(Object.keys(PAGE_TYPE_LABEL).length, 17);
-  assert.equal(Object.keys(SURFACE_LABEL).length, 11);
+  assert.equal(Object.keys(SURFACE_LABEL).length, 12);
   assert.equal(Object.keys(RESULT_KIND_LABEL).length, 8);
   assert.equal(Object.keys(BROWSE_ITEM_LABEL).length, 5);
   assert.equal(breakdownValueLabel('channel', 'ai'), 'KI-Assistenten');
@@ -319,6 +323,7 @@ test('the surfaces are ranked by openings with their share of all of them', () =
       'park_rides',
       'compare',
       'glossary',
+      'post_end',
     ]
   );
   assert.equal(rows[0].openedShare, 300 / 475);
@@ -815,6 +820,73 @@ test('a way into the planner reads in German, and so does a day begun with it sh
   assert.equal(isPlannerEvent('plan_item_added'), true);
   assert.equal(isPlannerEvent('planner_opened'), true);
   assert.equal(isPlannerEvent('share_clicked'), false);
+});
+
+test('the ways through the site read in German, a value this build does not know as sent', () => {
+  assert.equal(Object.keys(LINK_BLOCK_LABEL).length, 15);
+  assert.equal(Object.keys(SECTION_LABEL).length, 7);
+  assert.equal(Object.keys(NAV_MENU_LABEL).length, 6);
+  assert.equal(propValueLabel('block', 'parks'), 'Parks im Beitrag');
+  assert.equal(propValueLabel('block', 'sidebar'), 'sidebar');
+  assert.equal(propValueLabel('dest', 'park_calendar'), 'Park, Kalender');
+  assert.equal(propValueLabel('section', 'faq'), 'FAQ');
+  assert.equal(propValueLabel('menu', 'sheet'), 'Handy-Menü');
+  assert.equal(propValueLabel('position', '3'), 'Platz 3');
+});
+
+test('a park page lists its places top to bottom, and FAQ positions by number', () => {
+  const places = ['faq', 'nearby', 'end', 'main_end'].map((value) => ({ value }));
+  assert.deepEqual(
+    sortPropValues('section', places).map((entry) => entry.value),
+    ['main_end', 'nearby', 'faq', 'end']
+  );
+  const questions = ['10', '2', '4', '1'].map((value) => ({ value }));
+  assert.deepEqual(
+    sortPropValues('position', questions).map((entry) => entry.value),
+    ['1', '2', '4', '10']
+  );
+});
+
+test('reach divides each place by its page type views, every place listed, at most all of them', () => {
+  const reach = sectionReach(
+    {
+      rows: ['main_end', 'faq', '__rest__'],
+      cols: ['park', 'park_calendar'],
+      cells: [
+        { row: 'main_end', col: 'park', count: 60 },
+        { row: 'main_end', col: 'park_calendar', count: 30 },
+        { row: 'faq', col: 'park', count: 10 },
+        // More reports than views, as when the views of a window are hidden: capped at 1.
+        { row: 'faq', col: 'park_calendar', count: 50 },
+      ],
+    },
+    {
+      items: [
+        { value: 'park', views: 200, visits: 90, share: 0.5 },
+        { value: 'park_calendar', views: 40, visits: 30, share: 0.1 },
+        { value: 'park_chapter', views: 0, visits: 0, share: 0 },
+        { value: 'guide', views: 70, visits: 60, share: 0.2 },
+      ],
+    }
+  );
+  assert.deepEqual(reach.pageTypes, ['park', 'park_calendar']);
+  assert.deepEqual(reach.views, [200, 40]);
+  assert.deepEqual(
+    reach.rows.map((row) => row.section),
+    ['main_end', 'nearby', 'blog', 'stats', 'outlook', 'faq', 'end']
+  );
+  assert.deepEqual(reach.rows[0].cells, [
+    { reached: 60, share: 0.3 },
+    { reached: 30, share: 0.75 },
+  ]);
+  assert.deepEqual(reach.rows[1].cells, [
+    { reached: 0, share: 0 },
+    { reached: 0, share: 0 },
+  ]);
+  assert.deepEqual(reach.rows[5].cells, [
+    { reached: 10, share: 0.05 },
+    { reached: 50, share: 1 },
+  ]);
 });
 
 console.log(`\n${passed} cases passed.`);

@@ -156,7 +156,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`use-menu-trigger.ts`](../../lib/hooks/use-menu-trigger.ts)
 
-- `useMenuTrigger` _hook_: Open state and trigger handlers for one header mega-menu entry: hover opens after 90 ms and closes after 180 ms, click toggles, and navigating closes the panel.
+- `useMenuTrigger` _hook_: Open state and trigger handlers for one header mega-menu entry: hover opens after 90 ms and closes after 180 ms, click toggles, and navigating closes the panel. Each opening sends `nav_menu_opened` with `menu`.
 
 ### [`use-minute-now.ts`](../../lib/hooks/use-minute-now.ts)
 
