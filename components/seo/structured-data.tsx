@@ -156,16 +156,6 @@ function buildStructuredImage(
   return absolute.length === 1 ? absolute[0] : absolute;
 }
 
-/** Normalizes raw API cuisineType values to proper display names. */
-function normalizeCuisineType(cuisineType: string | null): string | undefined {
-  if (!cuisineType) return undefined;
-  const map: Record<string, string> = {
-    cafe: 'Café',
-    fondu: 'Fondue',
-  };
-  return map[cuisineType.toLowerCase()] ?? cuisineType;
-}
-
 /**
  * `Organization` JSON-LD for park.fan: name, logo, description, contact point and an optional
  * image.
@@ -344,8 +334,9 @@ export function ParkStructuredData({
     openingHoursSpecification: park.retiredAt
       ? undefined
       : buildOpeningHoursSpecification(park.schedule, park.timezone),
-    containsPlace: [
-      ...('attractions' in park && park.attractions
+    // Rides only: restaurants answer no question this page is found for and only weigh down the HTML.
+    containsPlace:
+      'attractions' in park && park.attractions
         ? park.attractions.map((attraction) => {
             const attrImg = getAttractionBackgroundImage(park.slug, attraction.slug);
             return {
@@ -358,15 +349,7 @@ export function ParkStructuredData({
               image: attrImg ? `${SITE_URL}${attrImg}` : undefined,
             };
           })
-        : []),
-      ...('restaurants' in park && park.restaurants
-        ? park.restaurants.map((restaurant) => ({
-            '@type': 'FoodEstablishment' as const,
-            name: stripNewPrefix(restaurant.name),
-            servesCuisine: normalizeCuisineType(restaurant.cuisineType),
-          }))
-        : []),
-    ],
+        : undefined,
   };
 
   // Current standby waits as `Observation` nodes in their own block: a park has no property for
