@@ -2,12 +2,16 @@ import 'server-only';
 import { cache } from 'react';
 import { getAttractionByGeoPath } from '@/lib/api/parks';
 import { getListItemByLocaleSlug, hasPublishedPosts } from '@/lib/blog/listing';
+import { movedPath } from '@/lib/utils/redirect-utils';
 import { postPath } from '@/lib/blog/paths';
 import { getDateTimeFormat } from '@/lib/utils/intl-format';
 import { stripNewPrefix } from '@/lib/utils';
 import type { AttractionResponse, ClosedAttraction, ParkBase } from '@/lib/api/types';
 import type { ClosedRideSearchItem } from '@/components/parks/closed-ride-matches';
 import type { Locale } from '@/i18n/config';
+
+/** The detail answer for a slug the park payload missed; one fetch for both questions asked of it. */
+const getMissedRide = cache(getAttractionByGeoPath);
 
 /**
  * A ride that closed for good keeps its page. The park payload leaves retired rides out, but the
@@ -24,10 +28,32 @@ export const getClosedRide = cache(
     parkSlug: string,
     attractionSlug: string
   ): Promise<ClosedRide | null> => {
-    const detail = await getAttractionByGeoPath(continent, country, city, parkSlug, attractionSlug);
+    const detail = await getMissedRide(continent, country, city, parkSlug, attractionSlug);
     return isClosedRide(detail) ? detail : null;
   }
 );
+
+/**
+ * The current path of a ride whose old slug the API answers with a 301 (a merge, a slug corrected
+ * by hand, a move to a sister park: `attraction_slug_aliases`), or null. `fetch` follows the 301,
+ * so the detail comes back as the live ride under its new `url`: not a closed ride, and a 404 unless
+ * the page sends the visitor on. Asked, like {@link getClosedRide}, only after the park payload
+ * missed.
+ */
+export async function findMovedRideRedirect(
+  continent: string,
+  country: string,
+  city: string,
+  parkSlug: string,
+  attractionSlug: string
+): Promise<string | null> {
+  const detail = await getMissedRide(continent, country, city, parkSlug, attractionSlug);
+  if (!detail || isClosedRide(detail)) return null;
+  return movedPath(
+    detail.url,
+    `/parks/${continent}/${country}/${city}/${parkSlug}/${attractionSlug}`
+  );
+}
 
 /** An attraction response that is a ride closed for good, with the date it closed. */
 export type ClosedRide = AttractionResponse & { retiredAt: string; retiredKind: 'closed' };

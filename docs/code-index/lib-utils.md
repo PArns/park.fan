@@ -348,7 +348,8 @@ Redirects for malformed or stale park URLs: a missing city segment (a park slug 
 - `findCityPageRedirect` _function_: The real URL for a city-page URL whose city segment is a park slug (`/parks/{continent}/{country}/{parkSlug}`), or null.
 - `findParkPageRedirect` _function_: Redirect for a park-page URL whose city segment holds a park slug: the same lookup as `findCityPageRedirect`. The park segment is not read: the discovery data lists no attractions to check it against.
 - `findRelocatedParkRedirect` _function_: The canonical URL for a park whose geo segments went stale (a re-slugged or moved city), keyed by the stable park slug, or null.
-- `findRenamedParkRedirect` _function_: Canonical park path for a park the API DID return, when it differs from the requested path, or null.
+- `movedPath` _function_: The frontend path an API `url` names, when it is a park or ride path other than `requestedPath`, or null.
+- `findRenamedParkRedirect` _function_: Canonical park path for a park the API DID return, when it differs from the requested path, or null. Without it a renamed park would render under the stale URL too.
 - Types: `ParkLookupResult`
 
 ### [`region-names.ts`](../../lib/utils/region-names.ts)

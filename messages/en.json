@@ -206,7 +206,7 @@
       "body": "95 minutes is a lot on a Tuesday in September and an ordinary morning on a Saturday in October. That’s why every ride page lists the typical wait for that weekday and how long the queue gets on busy days.",
       "ridesTitle": "Every ride has its own page",
       "ridesText": "A ride’s page lists its queue types, its day as measured and as forecast, typical wait times by weekday, the height limit and a rope-drop tip.",
-      "ridesLink": "See an example",
+      "ridesLink": "All live wait times at {park}",
       "typicalTitle": "Ride pages",
       "ropeDropTitle": "Rope drop tip",
       "ropeDropText": "Head here as soon as the park opens. On the popular rides the first hour is usually the quietest of the day.",
@@ -254,7 +254,7 @@
       },
       "feedback": "The next day every forecast is laid against the wait time actually measured. The difference goes into the next round of training, and that is why the calendar colour for one and the same day changes as the day gets closer.",
       "body": "The colour compares the day with a typical day at the same park. Green means as busy as usual or quieter, orange and red mean longer queues than usual. So a red day at a small park can still mean shorter waits than a green day at Europa-Park.",
-      "cta": "See a park’s crowd calendar",
+      "cta": "The {park} crowd calendar",
       "bestTimeLink": "Best time to visit: the quietest weekdays and months"
     },
     "ai": {

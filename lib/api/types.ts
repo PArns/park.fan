@@ -985,6 +985,11 @@ export interface AttractionResponse {
   id: string;
   name: string;
   slug: string;
+  /**
+   * The ride's API path (`/v1/parks/…/attractions/<slug>`). Differs from the path asked for when the
+   * API redirected an old slug; `findMovedRideRedirect` reads it.
+   */
+  url?: string | null;
   status?: AttractionStatus;
   land: Land | null;
   queues?: QueueDataItem[];

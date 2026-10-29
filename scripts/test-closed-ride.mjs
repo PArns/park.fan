@@ -28,6 +28,7 @@ import {
   isClosedRide,
 } from '../lib/parks/closed-ride.ts';
 import { buildClosedRideDescription, buildClosedRideTitle } from '../lib/seo/attraction-meta.ts';
+import { findRenamedParkRedirect, movedPath } from '../lib/utils/redirect-utils.ts';
 
 let failures = 0;
 let checks = 0;
@@ -233,6 +234,52 @@ test('with nothing else known it is the one sentence', () => {
       phrase
     ),
     'Dino-Sue in Animal Kingdom ist seit dem 1. Februar 2026 dauerhaft geschlossen.'
+  );
+});
+
+// A ride slug the API 301s (a merge, a hand-corrected slug, a move to a sister park) comes back
+// from the followed fetch under its current `url`; the page sends the visitor there instead of a 404.
+const OLD_RIDE = '/parks/north-america/united-states/muskegon/michigans-adventure/lazy-river';
+
+test('a ride the API answered under another park is moved there', () => {
+  assert.equal(
+    movedPath(
+      '/v1/parks/north-america/united-states/muskegon/wildwater-adventure/attractions/lazy-river',
+      OLD_RIDE
+    ),
+    '/parks/north-america/united-states/muskegon/wildwater-adventure/lazy-river'
+  );
+});
+
+test('a ride answered under the path asked for has not moved', () => {
+  assert.equal(
+    movedPath(
+      '/v1/parks/north-america/united-states/muskegon/michigans-adventure/attractions/lazy-river',
+      OLD_RIDE
+    ),
+    null
+  );
+});
+
+test('no url, or one that is not a park path, never redirects', () => {
+  assert.equal(movedPath(null, OLD_RIDE), null);
+  assert.equal(movedPath('https://example.com/elsewhere', OLD_RIDE), null);
+});
+
+test('a renamed park still redirects through the same comparison', () => {
+  const requested = {
+    continent: 'europe',
+    country: 'germany',
+    city: 'bruhl',
+    parkSlug: 'phantasialand',
+  };
+  assert.equal(
+    findRenamedParkRedirect({ url: '/v1/parks/europe/germany/bruehl/phantasialand' }, requested),
+    '/parks/europe/germany/bruehl/phantasialand'
+  );
+  assert.equal(
+    findRenamedParkRedirect({ url: '/v1/parks/europe/germany/bruhl/phantasialand' }, requested),
+    null
   );
 });
 

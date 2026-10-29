@@ -9,6 +9,7 @@ import { CompactNumberWithTooltip } from '@/components/common/compact-number-wit
 import { getGlobalStats } from '@/lib/api/analytics';
 import { catchNonFatal } from '@/lib/api/client';
 import { BEST_TIME_SEGMENTS } from '@/lib/best-time/segments';
+import { parkCalendarPath } from '@/lib/parks/calendar-segments';
 import type { Locale } from '@/i18n/config';
 import { getLeadPark } from './lead-park';
 import { STORY_SECTION_TINTED } from './section-chrome';
@@ -129,11 +130,19 @@ export async function ChapterCalendar({ locale }: { locale: string }) {
             <div className="mt-4 flex flex-col gap-2">
               {park && (
                 <Link
-                  href={park.href as '/'}
+                  href={
+                    parkCalendarPath(
+                      locale,
+                      park.continent,
+                      park.country,
+                      park.city,
+                      park.parkSlug
+                    ) as '/'
+                  }
                   prefetch={false}
                   className="text-primary inline-flex items-center gap-1.5 font-semibold hover:underline"
                 >
-                  {t('cta')}
+                  {t('cta', { park: park.name })}
                   <ArrowRight className="h-4 w-4" aria-hidden="true" />
                 </Link>
               )}

@@ -89,7 +89,7 @@ export async function ChapterLiveWaits({ locale }: { locale: string }) {
                     prefetch={false}
                     className="text-primary mt-3 inline-flex items-center gap-1.5 text-sm font-semibold hover:underline"
                   >
-                    {t('ridesLink')}
+                    {t('ridesLink', { park: park.name })}
                     <ArrowRight className="h-4 w-4" aria-hidden="true" />
                   </Link>
                 )}

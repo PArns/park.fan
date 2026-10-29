@@ -206,7 +206,7 @@
       "body": "95 minuten is veel op een dinsdag in september en op een zaterdag in oktober een gewone ochtend. Daarom staat op elke attractiepagina wat op die weekdag gebruikelijk is en hoe lang de rij op drukke dagen wordt.",
       "ridesTitle": "Elke attractie heeft een eigen pagina",
       "ridesText": "Op de pagina van een baan staan de rijtypes, het dagverloop uit meting en voorspelling, typische wachttijden per weekdag, de minimumlengte en een rope-drop-tip.",
-      "ridesLink": "Bekijk een voorbeeld",
+      "ridesLink": "{park}: alle wachttijden live",
       "typicalTitle": "Attractiepagina’s",
       "ropeDropTitle": "Rope-drop-tip",
       "ropeDropText": "Meteen bij opening hierheen. Bij de populaire banen is het eerste uur meestal het rustigste van de dag.",
@@ -254,7 +254,7 @@
       },
       "feedback": "De dag erna wordt elke voorspelling naast de werkelijk gemeten wachttijd gelegd. Het verschil gaat mee in de volgende training, en daarom verandert de kalenderkleur voor dezelfde dag naarmate die dichterbij komt.",
       "body": "Voor de kleur wordt de dag vergeleken met een gewone dag in hetzelfde park. Groen betekent even druk als anders of rustiger, oranje en rood betekenen langere rijen dan gebruikelijk. Een rode dag in een klein park kan daardoor nog steeds kortere wachttijden hebben dan een groene dag in Europa-Park.",
-      "cta": "Bekijk de druktekalender van een park",
+      "cta": "{park}: de druktekalender",
       "bestTimeLink": "Beste reistijd: de rustigste weekdagen en maanden"
     },
     "ai": {
@@ -1145,7 +1145,7 @@
     "calendarPage": {
       "breadcrumb": "Wachttijden-kalender",
       "h1Suffix": "Wachttijden in {month}",
-      "metaTitle": "{park}: drukte en wachttijden in {month}",
+      "metaTitle": "{park}: druktekalender voor {month}",
       "metaTitleShort": "{park}: drukte in {month}",
       "metaTitleBare": "{park}: {month}",
       "metaDescription": "Wanneer is het rustig in {park} in {city}? Drukte per dag, openingstijden, schoolvakanties en weer voor de komende maanden, met AI-voorspelling per dag.",
