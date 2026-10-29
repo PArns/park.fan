@@ -1,7 +1,12 @@
 import { fitWithin, MAX_TITLE_LENGTH, MAX_DESCRIPTION_LENGTH } from '@/lib/utils/metadata';
 import { parkArgs } from '@/lib/i18n/park-phrase';
 import type { Locale } from '@/i18n/config';
-import { formatRiderHeight } from '@/lib/utils/temperature';
+import {
+  formatDuration,
+  formatRiderHeight,
+  formatSpeed,
+  formatTrackLength,
+} from '@/lib/utils/temperature';
 import { roundWaitTo5 } from '@/lib/utils/wait-time';
 import type { ParkAttraction } from '@/lib/api/types';
 
@@ -29,6 +34,15 @@ export function buildAttractionFacts(
   const profile = attraction.rideProfile;
 
   if (typeName) facts.push(typeName);
+  // Speed, height and ride time right after the type: they are what a ride is searched with
+  // ("red force vitesse", "durata oblivion gardaland"). Metric, like the rider height below.
+  const stats = profile?.stats;
+  if (stats?.topSpeedKmh != null)
+    facts.push(t('factSpeed', { speed: formatSpeed(stats.topSpeedKmh, 'C') }));
+  if (stats?.heightM != null)
+    facts.push(t('factHeight', { height: formatTrackLength(stats.heightM, 'C') }));
+  if (stats?.durationSeconds != null)
+    facts.push(t('factDuration', { duration: formatDuration(stats.durationSeconds) }));
   // `!= null`: the API strips null-valued keys, so an unknown value arrives as
   // a missing one and `!== null` would let `undefined` through.
   if (profile?.manufacturer) facts.push(t('factBy', { manufacturer: profile.manufacturer }));

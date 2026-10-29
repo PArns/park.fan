@@ -1148,7 +1148,7 @@
     "calendarPage": {
       "breadcrumb": "Wait-Time Calendar",
       "h1Suffix": "Wait times in {month}",
-      "metaTitle": "{park} Crowd Calendar & Wait Times, {month}",
+      "metaTitle": "{park} Crowd Calendar & Opening Hours, {month}",
       "metaTitleShort": "{park} Crowd Calendar, {month}",
       "metaTitleBare": "{park}: {month}",
       "metaDescription": "When is {park} in {city} quiet? Day-by-day crowds, opening hours, school holidays and weather for the months ahead, with an AI forecast per day.",
@@ -1885,6 +1885,9 @@
       "titleTemplateBare": "{attraction} – Live Wait Times",
       "metaDescriptionTemplateFacts": "Live wait times and predictions for {attraction} at {park}. {facts}.",
       "factBy": "built by {manufacturer}",
+      "factSpeed": "top speed {speed}",
+      "factHeight": "{height} tall",
+      "factDuration": "ride time {duration} min",
       "factOpened": "opened {year}",
       "factMinHeight": "min. height {height}",
       "factLand": "{land} area",

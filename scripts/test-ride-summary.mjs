@@ -412,6 +412,17 @@ test('the ride’s own facts lead, and the description fits', () => {
   assert.match(de, /^Voletarium im Europa-Park: Flying Theater/);
 });
 
+test('speed, height and ride time follow the type, where a ride is searched with them', () => {
+  const en = describe(BLUE_FIRE, 'en', 'Launch Coaster');
+  const it = describe(BLUE_FIRE, 'it', 'Launch Coaster');
+  console.log(`    EN: ${en}\n    IT: ${it}`);
+  assert.match(
+    en,
+    /^Blue Fire Megacoaster at Europa-Park: Launch Coaster, top speed 100 km\/h, 38 m tall/i
+  );
+  assert.match(it, /velocità max 100 km\/h, altezza 38 m/);
+});
+
 if (failed) {
   console.log(`\n${failed} failed`);
   process.exit(1);
