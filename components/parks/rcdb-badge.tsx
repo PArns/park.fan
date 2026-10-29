@@ -25,7 +25,8 @@ export function RcdbBadge({ rcdbId, attractionName }: RcdbBadgeProps) {
         rel="noopener noreferrer"
         title={t('rcdbTitle')}
       >
-        {t('rcdbLabel', { attraction: attractionName })}
+        {/* A span, as `Badge` would wrap the text: `asChild` hands it the link as it is. */}
+        <span>{t('rcdbLabel', { attraction: attractionName })}</span>
         <ExternalLink className="h-3 w-3 shrink-0" aria-hidden="true" />
       </a>
     </Badge>

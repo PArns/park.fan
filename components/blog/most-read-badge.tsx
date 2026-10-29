@@ -38,8 +38,9 @@ export function MostReadBadge({
       title={variant === 'icon' ? label : undefined}
       className={cn(
         'text-[10px] leading-none font-bold tracking-[0.06em] uppercase shadow-sm transition-opacity duration-300 starting:opacity-0',
-        variant === 'icon' && 'p-1',
-        variant === 'auto' && 'p-1 sm:px-2 sm:py-0.5',
+        // An icon alone stays in the middle of its circle.
+        variant === 'icon' && 'badge-icon:ml-0 p-1',
+        variant === 'auto' && 'badge-icon:ml-0 sm:badge-icon:-ml-1 p-1 sm:px-2 sm:py-0.5',
         className
       )}
     >

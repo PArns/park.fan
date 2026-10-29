@@ -40,8 +40,12 @@ import type { SearchSession } from '@/lib/analytics/search-session';
 import type { HeroReading } from '@/lib/home/hero-search';
 import type { Locale } from '@/i18n/config';
 
-/** The status and wait pills on a phone: the badges' look at 18 px instead of 22. */
-const PHONE_PILL_CLASS = 'h-[18px] gap-1 px-1.5 py-0 text-[10px] [&>svg]:size-2.5';
+/**
+ * The status and wait pills on a phone: the badges' look at 18 px instead of 22, with a 10 px icon
+ * that sits as far from the left edge as from the top.
+ */
+const PHONE_PILL_CLASS =
+  'h-[18px] gap-1 px-1.5 py-0 text-[10px] [&>svg]:size-2.5 badge-icon:-ml-0.75';
 
 const ROW_LINK_CLASS =
   'hover:bg-primary/10 active:bg-primary/15 flex items-center gap-2.5 rounded-lg px-3 transition-colors';
@@ -88,9 +92,7 @@ function PhoneRow({
             <ParkStatusBadge
               status={item.status}
               label={item.statusLabel}
-              centreCaps
-              // The icon as far from the left edge as from the top.
-              className={cn(PHONE_PILL_CLASS, 'pl-0.75')}
+              className={PHONE_PILL_CLASS}
             />
             {wait != null && (
               <WaitBadge minutes={wait} className={PHONE_PILL_CLASS}>

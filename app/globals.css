@@ -7,6 +7,13 @@
 @variant dark (&:where(.dark, .dark *));
 
 /*
+ * A badge's leading icon, where something follows it. `Badge` pulls it left by the amount that
+ * puts it as far from the left edge as from the top, in the middle of the pill's round end; a
+ * caller that resizes the pill or its icon sets its own margin with this variant.
+ */
+@variant badge-icon (& > svg:first-child:not(:only-child));
+
+/*
  * The phone sheet's detents, as CSS so the resting heights need no script. `large` is where the
  * sheet opens (everything under the 48 px header, or 92 % of the screen where that is more);
  * `medium` is half the screen. The drag measures these values with a probe
@@ -93,6 +100,21 @@
  * full-bleed. The container tiers come second and win wherever they match. With the panel shut
  * both halves answer the same number.
  */
+/*
+ * Text trimmed to cap height and baseline, then padded back out to its line height: the box keeps
+ * its height, and capitals and figures sit in its middle instead of high in Geist's line box.
+ * Every badge's text carries it (the `[data-slot='badge']` rule below). Browsers without
+ * `text-box` keep the plain line box.
+ */
+@utility caps-centred {
+  @supports (text-box: trim-both cap alphabetic) {
+    text-box: trim-both cap alphabetic;
+    padding-block: calc((1lh - 1cap) / 2);
+    /* The two halves round down to the layout grid; the box keeps the whole line. */
+    min-height: 1lh;
+  }
+}
+
 @utility container {
   width: 100%;
 
@@ -318,6 +340,11 @@
   body {
     @apply bg-background text-foreground;
     overflow-x: clip;
+  }
+  /* A badge's text, centred on its capitals. `Badge` wraps bare text in a span so it is an
+     element here; the icon is left out. In `base`, so a child's own padding utility still wins. */
+  [data-slot='badge'] > :not(svg) {
+    @apply caps-centred;
   }
   /* No background scroll while a Radix popup is open. react-remove-scroll also pads <body> for
      the scrollbar it removes, which the gutter above already reserves, so that offset goes. */
