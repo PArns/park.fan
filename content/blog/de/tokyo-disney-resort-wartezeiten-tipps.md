@@ -2,6 +2,7 @@
 title: 'Tokyo Disney Resort: Wartezeiten und Tipps für Disneyland und DisneySea'
 translationKey: tokyo-disney-resort-guide
 date: '2026-10-26'
+updatedAt: '2026-10-29'
 author: patrick
 mode: published
 featured: false
@@ -330,7 +331,7 @@ An der Station Resort Gateway liegt außerdem Ikspiari, ein Einkaufszentrum der 
 
 ## Was 2027 neu kommt
 
-Neben „Space Mountain Earthrise“ soll im Frühjahr 2027 in Tokyo Disneyland „Sugar Rush: Sweet Rescue“ eröffnen, eine Bahn zum Film „Ralph reichts“. Geplant war sie ursprünglich für 2026.
+Neben „Space Mountain Earthrise“ eröffnet am **15. April 2027** in Tokyo Disneyland „Sugar Rush: Sweet Rescue“, die erste Bahn der Welt zum Film „Ralph reichts“. Angekündigt war sie zuerst für 2026. In die Wagen sind Scanner eingebaut, mit denen du die Sugar Bugs von King Candy zurück in Süßigkeiten verwandelst. Am Ende zeigt der Bildschirm im Wagen die Punkte, für begrenzte Zeit auch die App des Resorts. Der Popcornstand Popping Station mit Blick auf die Tomorrowland Plaza verkauft schon ab dem 17. März 2027 die Sorte Sugar-Lime, die es nur in Tokyo Disneyland gibt, und wer im März kommt, isst das Popcorn zur Bahn, bevor er sie fahren kann. Der Laden Pixel Prism neben der Bahn macht am selben Tag auf wie sie. Üben kannst du ab dem 12. Januar 2027 mit einem Handyspiel zur Bahn, und in einigen Bereichen des Parks läuft eine eigene Fassung, die die Kulissen ringsum ins Spiel einbaut.
 
 ## Die Geschichte des Resorts
 
@@ -432,6 +433,7 @@ Die Feier zum 25. Geburtstag, „Sparkling Jubilee“, läuft vom 15. April 2026
 - Fahrzeiten, Kapazität und Mindestgrößen der Bahnen (offiziell):
   [Tokyo Disneyland](https://www.tokyodisneyresort.jp/en/tdl/attraction/)
   · [Tokyo DisneySea](https://www.tokyodisneyresort.jp/en/tds/attraction/)
+- [Sugar Rush: Sweet Rescue, Eröffnung und Neuheiten (Disney Parks Blog)](https://disneyparksblog.com/tdr/wreck-it-ralph-ride-at-tokyo-disney/)
 - Wartezeiten, Messtage, Tagesverläufe, Mindestgrößen und Rope Drop: die Widgets in diesem
   Beitrag und die Parkseiten von [Tokyo Disneyland](ref:tokyo-disneyland) und
   [Tokyo DisneySea](ref:tokyo-disneysea), aus eigenen Messungen

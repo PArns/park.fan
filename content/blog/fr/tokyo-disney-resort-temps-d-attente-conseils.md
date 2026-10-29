@@ -2,6 +2,7 @@
 title: 'Tokyo Disney Resort : temps d’attente et conseils pour Disneyland et DisneySea'
 translationKey: tokyo-disney-resort-guide
 date: '2026-10-26'
+updatedAt: '2026-10-29'
 author: patrick
 mode: published
 featured: false
@@ -331,7 +332,7 @@ Le **Tokyo Disneyland Hotel** est à la station Tokyo Disneyland, le **Disney Am
 
 ## Ce qui arrive en 2027
 
-En plus de « Space Mountain Earthrise », Tokyo Disneyland doit ouvrir au printemps 2027 « Sugar Rush: Sweet Rescue », une attraction tirée du film « Les Mondes de Ralph ». Elle était d’abord prévue pour 2026.
+En plus de « Space Mountain Earthrise », Tokyo Disneyland ouvre le **15 avril 2027** « Sugar Rush: Sweet Rescue », la première attraction au monde tirée du film « Les Mondes de Ralph ». Elle était d’abord annoncée pour 2026. Les véhicules ont des scanners intégrés avec lesquels tu rends leur forme de bonbon aux Sugar Bugs du roi Candy. À la fin, l’écran du véhicule affiche le score, et pendant une durée limitée l’application du resort aussi. Le stand de pop-corn Popping Station, qui donne sur la Tomorrowland Plaza, vend déjà dès le 17 mars 2027 le parfum Sugar-Lime, qu’on ne trouve qu’à Tokyo Disneyland, et qui vient en mars goûte le pop-corn de l’attraction avant de pouvoir monter. La boutique Pixel Prism, à côté de l’attraction, ouvre le même jour qu’elle. Tu peux t’entraîner dès le 12 janvier 2027 avec un jeu sur smartphone tiré de l’attraction, et dans certaines zones du parc une version à part intègre les décors alentour au jeu.
 
 ## L’histoire du resort
 
@@ -433,6 +434,7 @@ La fête des 25 ans, « Sparkling Jubilee », dure du 15 avril 2026 au 31 mars
 - Durées, capacité et tailles minimales des attractions (officiel) :
   [Tokyo Disneyland](https://www.tokyodisneyresort.jp/en/tdl/attraction/)
   · [Tokyo DisneySea](https://www.tokyodisneyresort.jp/en/tds/attraction/)
+- [Sugar Rush: Sweet Rescue, date d’ouverture et détails (Disney Parks Blog)](https://disneyparksblog.com/tdr/wreck-it-ralph-ride-at-tokyo-disney/)
 - Temps d’attente, jours de mesure, courbes de la journée, tailles minimales et rope drop : les widgets de cet
   article et les pages des parcs [Tokyo Disneyland](ref:tokyo-disneyland) et
   [Tokyo DisneySea](ref:tokyo-disneysea), issus de nos propres mesures
