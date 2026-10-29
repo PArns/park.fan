@@ -69,15 +69,15 @@ seo:
     - Savannah Sunset Resort
 ---
 
-[Six Flags Great Adventure](ref:six-flags-great-adventure) is in Jackson Township, New Jersey, on Interstate 195, between New York City and Philadelphia. Six Flags counts 14 roller coasters there. The Hurricane Harbor water park and the Wild Safari share the same grounds. The whole complex covers 510 acres, a little over 200 hectares, of which the theme park takes 160. The Wild Safari gets the biggest share, 350 acres, so the giraffes, rhinos and lions have more room than any coaster.
+[Six Flags Great Adventure](ref:six-flags-great-adventure) is in Jackson Township, New Jersey, on Interstate 195, between New York City and Philadelphia. Six Flags counts 14 roller coasters there. The Hurricane Harbor water park and the Wild Safari share the same grounds. The theme park itself takes up 160 acres, about 65 hectares, and the Wild Safari 350, just over 140 hectares, so the giraffes, rhinos and lions have more room than any coaster.
 
-Kingda Ka ran here from 2005 until November 2024, and for its entire life it was the tallest roller coaster in the world. Since it was torn down, [Nitro](ref:six-flags-great-adventure/nitro?bare) has been the tallest in the park, and that's exactly the one that has stood still since the accident on Goliath in Georgia. Bakunawa is due in 2027, and at 116 metres it'll be the tallest ride in the park again.
+Kingda Ka ran here from 2005 until November 2024, and for its entire life it was the tallest roller coaster in the world. Since it was torn down, [Nitro](ref:six-flags-great-adventure/nitro?bare) has been the tallest coaster in the park, and in October Six Flags closed it after the fatal accident on Goliath in Georgia. Bakunawa is due in 2027, and at 116 metres it'll take over from Nitro.
 
 ## The rides by area
 
 ### The Pine Barrens
 
-Bolliger & Mabillard (B&M) built Nitro as a hyper coaster, and the first train went out on 7 April 2001. It climbs 70 metres and drops 66, reaching 129 km/h at the bottom. Its 1,644 metres of track don't hold a single inversion, and a ride takes 2:20 minutes. The park says you can see Philadelphia from the first hill, assuming your eyes are open at that moment.
+Nitro is a hyper coaster by Bolliger & Mabillard (B&M), and the first train went out on 7 April 2001. It climbs 70 metres and drops 66, reaching 129 km/h at the bottom. The track is 1,644 metres long without a single inversion, and a ride takes 2:20 minutes. The park says you can see Philadelphia from the first hill, assuming your eyes are open at that moment.
 
 ```glossary-widget slug=hyper-coaster
 
@@ -85,7 +85,7 @@ Bolliger & Mabillard (B&M) built Nitro as a hyper coaster, and the first train w
 
 After the [fatal accident on Goliath](/news/goliath-six-flags-over-georgia-fatal-incident) at Six Flags Over Georgia, Six Flags closed nine coasters at six parks in October, Nitro among them. Six Flags lists them as temporarily closed. On 23 October chief executive John Reilly announced [seat belts](/news/six-flags-seat-belts-goliath) for Goliath and for rides with a similar lap bar. There's no reopening date for Nitro yet.
 
-A few steps away, the [Jersey Devil Coaster](ref:six-flags-great-adventure/jersey-devil-coaster?bare) twists along a single rail. Rocky Mountain Construction (RMC) built it with its Raptor track, and it has been running since 13 June 2021. Over 914 metres it drops once at 87 degrees, turns riders upside down three times and comes off a 40-metre height at 93 km/h.
+The [Jersey Devil Coaster](ref:six-flags-great-adventure/jersey-devil-coaster?bare) twists through the Pine Barrens on a single rail, Rocky Mountain Construction's (RMC) Raptor track, and went into service on 13 June 2021. Its 914 metres of track hold one drop at 87 degrees and three inversions, and from a height of 40 metres it reaches 93 km/h.
 
 ```glossary-widget slug=single-rail-coaster
 
@@ -95,7 +95,7 @@ If you want to get wet in the Pine Barrens, there's [Roaring Rapids](ref:six-fla
 
 ### Plaza Del Carnaval
 
-[El Toro](ref:six-flags-great-adventure/el-toro?bare) opened on 12 June 2006. The wooden coaster runs on Intamin's prefabricated wooden track. Cordes Holzbau built it, and the engineering firm Stengel did the design. From 55 metres up, the train plunges 54 metres at an angle of 76 degrees, and Six Flags says no wooden coaster in the US drops more steeply. The bull charges over 1,341 metres of track at 113 km/h and is back in its pen after 1:42 minutes. In USA Today's 10 Best Awards, El Toro came first in 2022. Before the 2026 season the park relaid long stretches of the track.
+From 55 metres up, the train on [El Toro](ref:six-flags-great-adventure/el-toro?bare) plunges 54 metres at an angle of 76 degrees, and Six Flags says no wooden coaster in the US drops more steeply. It has run since 12 June 2006 on Intamin's prefabricated wooden track, built by Cordes Holzbau to a design by the engineering firm Stengel. The bull charges over 1,341 metres of track at 113 km/h and is back in its pen after 1:42 minutes. In USA Today's 10 Best Awards, El Toro came first in 2022. Before the 2026 season the park relaid long stretches of the track.
 
 ```glossary-widget slug=wooden-coaster
 
@@ -105,19 +105,19 @@ If you want to get wet in the Pine Barrens, there's [Roaring Rapids](ref:six-fla
 
 [Medusa](ref:six-flags-great-adventure/medusa?bare) opened on 2 April 1999 as B&M's first floorless coaster. From 2009 to 2021 it went by Bizarro, then it got its old name back. The train climbs 43 metres, drops 40 and goes upside down seven times. At up to 98 km/h it covers 1,215 metres in 2:20 minutes.
 
-The [Runaway Train](ref:six-flags-great-adventure/runaway-mine-train?bare) opened on 4 July 1974, three days after the park, which makes the Arrow Dynamics mine train the oldest coaster in Jackson. Its highest point is 18 metres, its longest drop 12, and it reaches 61 km/h over 740 metres of track.
+The [Runaway Train](ref:six-flags-great-adventure/runaway-mine-train?bare) opened on 4 July 1974, three days after the park, which makes the Arrow Dynamics mine train the oldest coaster in Jackson. Its highest point is 18 metres, its longest drop 12 and its track 740 metres, and along the way it gets up to 61 km/h.
 
 The [Saw Mill Log Flume](ref:six-flags-great-adventure/saw-mill-log-flume?bare) by Arrow Development dates from the same summer, and you ride it downhill in a hollowed-out log. Frontier Adventures is also where the [Safari Off-Road Adventure](ref:six-flags-great-adventure/safari-off-road-adventure?bare) starts, the guided tour through the Wild Safari. You board it near Runaway Mine Train and Medusa.
 
 ### Movietown and Metropolis
 
-B&M built [BATMAN The Ride](ref:six-flags-great-adventure/batman-the-ride?bare) as an inverted coaster, so riders' feet dangle below the track, and it has done so since 1 May 1993. Over 821 metres of track it goes upside down five times from a height of 32 metres, at up to 80 km/h and 4 G. It's all over after a minute and a half.
+[BATMAN The Ride](ref:six-flags-great-adventure/batman-the-ride?bare) has run since 1 May 1993, a B&M inverted coaster that leaves the riders' feet dangling below the track. From a height of 32 metres it goes upside down five times, at up to 80 km/h and 4 G, and after 821 metres and a minute and a half it's all over.
 
-[THE FLASH: Vertical Velocity](ref:six-flags-great-adventure/the-flash-vertical-velocity?bare) is a Vekoma Super Boomerang that fires forwards and then backwards through the same two inversions. It opened on 29 March 2025. On its 436 metres the train hits up to 95 km/h. You can ride alone from 142 cm, or with a companion from 122.
+[THE FLASH: Vertical Velocity](ref:six-flags-great-adventure/the-flash-vertical-velocity?bare) is a Vekoma Super Boomerang that fires forwards and then backwards through the same two inversions. It opened on 29 March 2025. The track is 436 metres long, and the train hits up to 95 km/h. You can ride alone from 142 cm, or with a companion from 122.
 
-[THE DARK KNIGHT Coaster](ref:six-flags-great-adventure/the-dark-knight-coaster?bare) is a Mack Rides wild mouse that has run indoors since 15 May 2008. The car takes six 180-degree turns from a height of 14 metres, over 370 metres of track in two minutes.
+[THE DARK KNIGHT Coaster](ref:six-flags-great-adventure/the-dark-knight-coaster?bare) is a Mack Rides wild mouse that has run indoors since 15 May 2008. In two minutes the car covers 370 metres and six 180-degree turns, with its highest point at 14 metres.
 
-Zamperla built [WONDER WOMAN Lasso of Truth](ref:six-flags-great-adventure/wonder-woman-lasso-of-truth?bare) in Movietown in 2019, for riders from 132 cm. Over in Metropolis, Sally Corp's [JUSTICE LEAGUE: Battle for Metropolis](ref:six-flags-great-adventure/justice-league-battle-for-metropolis?bare) has been running since 2017.
+[WONDER WOMAN Lasso of Truth](ref:six-flags-great-adventure/wonder-woman-lasso-of-truth?bare) in Movietown takes riders from 132 cm. Zamperla put it up in 2019. Over in Metropolis, Sally Corp's [JUSTICE LEAGUE: Battle for Metropolis](ref:six-flags-great-adventure/justice-league-battle-for-metropolis?bare) has been running since 2017.
 
 ```glossary-widget slug=inverted-coaster
 
@@ -125,19 +125,19 @@ Zamperla built [WONDER WOMAN Lasso of Truth](ref:six-flags-great-adventure/wonde
 
 ### Lakefront
 
-[THE JOKER](ref:six-flags-great-adventure/the-joker?bare), an S&S Worldwide 4D Free Spin, came to Lakefront on 28 May 2016. The car shoots up twelve storeys, which is 37 metres, and reaches 61 km/h on its 311 metres of track. You can't be taller than 196 cm here, for once a limit that catches the tall people rather than the kids.
+[THE JOKER](ref:six-flags-great-adventure/the-joker?bare), an S&S Worldwide 4D Free Spin, came to Lakefront on 28 May 2016. On a track only 311 metres long, the car shoots up twelve storeys, which is 37 metres, and reaches 61 km/h. You can't be taller than 196 cm here, for once a limit that catches the tall people rather than the kids.
 
 The family coaster [HARLEY QUINN Crazy Train](ref:six-flags-great-adventure/harley-quinn-crazy-train?bare), Blackbeard's Lost Treasure Train until 2015, is a Zierer Tivoli from 1999. At 8 metres high and 36 km/h over 360 metres, it's the coaster kids can ride from 104 cm with an adult.
 
 ### Adventure Alley
 
-The family coaster [Skull Mountain](ref:six-flags-great-adventure/skull-mountain?bare) runs in the dark inside a building. Intamin built it, and it opened on 3 June 1996. The train drops 11 metres from a height of 12 and reaches 53 km/h on its 420 metres. As on the Joker, the cut-off is 196 cm.
+The family coaster [Skull Mountain](ref:six-flags-great-adventure/skull-mountain?bare), an Intamin from 3 June 1996, runs in the dark inside a building. The track is 420 metres long, and from its highest point at 12 metres the train drops 11 and reaches 53 km/h. As on the Joker, the cut-off is 196 cm.
 
-Above Adventure Alley, the 74-metre [SkyScreamer](ref:six-flags-great-adventure/skyscreamer?bare) spins riders round at up to 64 km/h. Next door the [Giant Wheel](ref:six-flags-great-adventure/giant-wheel?bare) takes things slower, and even there Fast Lane applies.
+The 74-metre [SkyScreamer](ref:six-flags-great-adventure/skyscreamer?bare) spins riders round at up to 64 km/h. The [Giant Wheel](ref:six-flags-great-adventure/giant-wheel?bare) is in Adventure Alley as well, and here even the Ferris wheel is on the Fast Lane list.
 
 ### Boardwalk and Shoreline Pier
 
-On [SUPERMAN: Ultimate Flight](ref:six-flags-great-adventure/superman-ultimate-flight?bare) you lie flat under the track, face to the ground. B&M built the flying coaster, which opened on 17 April 2003. It's 32 metres tall and drops 30. The train needs 2:06 minutes for its 841 metres with two inversions, and its top speed along the way is 82 km/h.
+On [SUPERMAN: Ultimate Flight](ref:six-flags-great-adventure/superman-ultimate-flight?bare) you lie flat under the track, face to the ground. That's been the view since 17 April 2003, when the B&M flying coaster opened. It's 32 metres tall and drops 30. The train needs 2:06 minutes for its 841 metres with two inversions, and its top speed along the way is 82 km/h.
 
 ```glossary-widget slug=flying-coaster
 
@@ -147,13 +147,13 @@ The [Slingshot](ref:six-flags-great-adventure/slingshot?bare) on the Boardwalk c
 
 Six Flags announced the rebuilt Shoreline Pier on 26 March 2026. After a preview opening in June, it officially opened on 1 July 2026. It has five new rides: Wave Swinger, Super Round Up, Flying Scooters, Hypno Twister and [Barrels O' Fun](ref:six-flags-great-adventure/barrels-o-fun?bare). Four of them come from Six Flags America, which Six Flags said in May 2025 would close after the 2025 season.
 
-Barrels O' Fun was the last of the five and has been running since 8 July 2026. It's a Reverchon spinning coaster with cars for four. It used to stand at Six Flags Great America and then at Six Flags America, both times as Ragin' Cajun. It's only 13 metres tall and tops out at 47 km/h on its 420 metres, yet at 150 cm it asks for the highest minimum height of any coaster in the park.
+Barrels O' Fun was the last of the five and has been running since 8 July 2026. It's a Reverchon spinning coaster with cars for four. It used to stand at Six Flags Great America and then at Six Flags America, both times as Ragin' Cajun. It's only 13 metres tall, tops out at 47 km/h and has exactly as much track as Skull Mountain, 420 metres, yet at 150 cm it asks for the highest minimum height of any coaster in the park.
 
 ### Dream Street and the kids' areas
 
 Dream Street has the Patrina Williams Carousel, which Frederick Savage built in 1881, so it's almost a hundred years older than the park. The Enchanted Teacups are here too, and so is Houdini's Great Escape, where Six Flags asks for 122 cm, the same as for El Toro.
 
-In the first of the two kids' areas, the Zamperla family coaster [Lil' Devil Coaster](ref:six-flags-great-adventure/lil-devil-coaster?bare), formerly Road Runner Railway, climbs only 4 metres on its 80 metres of track and moves along at 24 km/h. Barnstormer, Sky Zooma, Storm Chaser and the Tree Top Hopper run there as well. The second one, Bugs Bunny National Park, has five kids' rides, two of them from 91 cm.
+In the first of the two kids' areas, the Zamperla family coaster [Lil' Devil Coaster](ref:six-flags-great-adventure/lil-devil-coaster?bare), formerly Road Runner Railway, is 80 metres long, climbs only 4 metres and ambles along at 24 km/h. Barnstormer, Sky Zooma, Storm Chaser and the Tree Top Hopper run there as well. The second one, Bugs Bunny National Park, has five kids' rides, two of them from 91 cm.
 
 ## Height requirements
 
@@ -178,7 +178,7 @@ With Rider Swap, two adults can ride one after the other while one stays with th
 
 ```
 
-If you're there at opening, walk straight to SUPERMAN: Ultimate Flight, where an early start pays off most, then on to THE FLASH, El Toro and WONDER WOMAN. You'll save a bit less in the morning on these, but still enough to notice:
+If you're there at opening, walk straight to SUPERMAN: Ultimate Flight, where an early start pays off most, then on to THE FLASH, El Toro and WONDER WOMAN. These are quieter in the first hour as well, though by less than SUPERMAN:
 
 - Safari Off-Road Adventure
 - THE JOKER
@@ -223,7 +223,7 @@ New this year are the mazes "JASON: Blood Reign" and "Final Destination: Death's
 
 After Fright Fest the park opens without an event on 5 to 8 and 14 and 15 November, from 11 a.m. to 7 p.m. each day. [Holiday in the Park](/news/six-flags-great-adventure-holiday-in-the-park-2026) starts on 20 November with a Preview Night for pass holders from 4 to 8 p.m. For everyone else it runs on selected days from 21 November to 3 January 2027, from 1 to 8 p.m. Thanksgiving on 26 November and Christmas Eve and Christmas Day stay closed. New Year's Eve is open until 8 p.m., early enough to wait for midnight at home.
 
-Jersey Devil Coaster, El Toro, Runaway Train, Tango and Bugs Bunny National Park don't run during the event. Whether the other rides run is something Six Flags decides on each holiday evening, depending on weather and temperature.
+Jersey Devil Coaster, El Toro, Runaway Train, Tango and Bugs Bunny National Park don't run during the event. Six Flags decides each holiday evening, by weather and temperature, which of the other rides run.
 
 ```best-days-widget slug=six-flags-great-adventure
 
@@ -256,7 +256,7 @@ Say you're at the gate for opening on a summer day, Nitro is running again, and 
 
 - At opening, SUPERMAN: Ultimate Flight on the Boardwalk.
 - Then El Toro on the Plaza Del Carnaval.
-- In Movietown, THE FLASH and WONDER WOMAN, then BATMAN and THE DARK KNIGHT next door.
+- In Movietown, THE FLASH and WONDER WOMAN, then BATMAN and THE DARK KNIGHT.
 - In the Pine Barrens, the Jersey Devil Coaster and Nitro.
 - Around midday, over to Frontier Adventures for Medusa, the Saw Mill Log Flume and the Safari Off-Road Adventure. Half an hour sitting down among lions and rhinos isn't a bad break in the midday heat.
 - In the afternoon, Lakefront with THE JOKER and HARLEY QUINN, plus Skull Mountain in Adventure Alley, which runs indoors.
@@ -266,7 +266,7 @@ On El Toro, THE JOKER, the Jersey Devil Coaster and THE FLASH, no loose items ar
 
 ## Tickets
 
-A day ticket costs from $45 online, $90 otherwise. The park also sells day tickets at the gate. Six Flags adds a fee of up to $9.99 plus tax to every purchase. Children aged two and under get into the park and Hurricane Harbor free. Six Flags doesn't refund tickets and doesn't hand out rain checks for another day.
+A day ticket costs from $45 online, and the park also sells day tickets at the gate. Six Flags adds a fee of up to $9.99 plus tax to every purchase. Children aged two and under get into the park and Hurricane Harbor free. Six Flags doesn't refund tickets and doesn't hand out rain checks for another day.
 
 The 2-Park Combo for $79 covers one visit to Dorney Park until 7 November and one to Great Adventure until 29 November, though not on a Saturday there.
 
@@ -333,7 +333,7 @@ Off site there's the Courtyard Hamilton, about 24 kilometres from the park, and 
 
 ## Wild Safari
 
-Almost 1,200 animals from six continents live on the Wild Safari's 350 acres.
+Around 1,200 animals from six continents live on the Wild Safari's 350 acres.
 
 One way in is the [Safari Off-Road Adventure](ref:six-flags-great-adventure/safari-off-road-adventure?bare) from inside the park, which is back in 2026 and included in park admission. A guide drives you in an open off-road truck past elephants, rhinos, giraffes, lions and tigers, and you can also see JJ, the brown bear cub. The tour takes about 30 minutes.
 
@@ -380,7 +380,7 @@ Kingda Ka ran for the last time on 10 November 2024, and the tower was blown up 
 
 Green Lantern also had its last day of operation on 10 November 2024. The B&M stand-up coaster had stood at Kentucky Kingdom as Chang and came to Jackson in 2011. It was torn down in November and December 2024. Also in 2024, the Dare Devil Dive Skycoaster, which had run since 1997, closed, and so did Twister, a Huss Top Spin from 1999.
 
-Six Flags currently lists Nitro, the Runaway Train and the Big Wheel as closed or under refurbishment. So don't plan your day around any of the three.
+Besides Nitro, Six Flags currently lists the Runaway Train and the Big Wheel as closed or under refurbishment.
 
 ## History
 
@@ -388,9 +388,9 @@ Warner LeRoy came up with the concept for Great Adventure in 1972. The park open
 
 Six Flags bought the park in autumn 1977. On 11 May 1984 the Haunted Castle, a haunted house in the park, burned down, and eight teenagers died.
 
-From 1990 to 1997 Time Warner was a major shareholder in Six Flags. In 1993 LeRoy sold his stake to Time Warner. Premier Parks bought Six Flags in 1998. Today John Reilly runs the company.
+From 1990 to 1997 Time Warner was a major shareholder in Six Flags. In 1993 LeRoy sold his stake to Time Warner. Premier Parks bought Six Flags in 1998.
 
-Rolling Thunder had arrived in 1979 and in 2013 was the last of these older coasters to go. Before it, Viper (last ridden in 2004, taken down in 2005), Batman & Robin: The Chiller (2007) and the Great American Scream Machine (2010) had closed.
+Of the older coasters, Viper went first (last ridden in 2004, taken down in 2005), then Batman & Robin: The Chiller in 2007 and the Great American Scream Machine in 2010. Rolling Thunder, which had run since 1979, was the last to close, in 2013.
 
 In 2012 the Wild Safari and the park were joined into one site. Cedar Fair and Six Flags completed their merger on 1 July 2024. The park president of Great Adventure is Mike Fehnel.
 

@@ -59,15 +59,15 @@ seo:
     - Savannah Sunset Resort
 ---
 
-[Six Flags Great Adventure](ref:six-flags-great-adventure) ligt in Jackson Township in New Jersey, aan de Interstate 195, tussen New York City en Philadelphia. Six Flags telt er 14 achtbanen. Op hetzelfde terrein liggen ook het waterpark Hurricane Harbor en de Wild Safari. Het hele complex beslaat 510 acres, ruim 200 hectare, en daarvan neemt het pretpark 160 acres in. Het grootste stuk, 350 acres, is van de Wild Safari, waar giraffen, neushoorns en leeuwen meer ruimte hebben dan welke achtbaan ook.
+[Six Flags Great Adventure](ref:six-flags-great-adventure) ligt in Jackson Township in New Jersey, aan de Interstate 195, tussen New York City en Philadelphia. Six Flags telt er 14 achtbanen. Op hetzelfde terrein liggen ook het waterpark Hurricane Harbor en de Wild Safari. Het pretpark zelf beslaat 160 acres, bijna 65 hectare, de Wild Safari 350 acres, ruim 140 hectare, en daar hebben giraffen, neushoorns en leeuwen meer ruimte dan welke achtbaan ook.
 
-Van 2005 tot november 2024 reed hier Kingda Ka, die haar hele bestaan lang de hoogste achtbaan ter wereld was. Sinds de sloop is [Nitro](ref:six-flags-great-adventure/nitro?bare) de hoogste van het park, en juist die staat stil sinds het ongeluk op Goliath in Georgia. In 2027 moet Bakunawa opengaan, met 116 meter dan weer de hoogste baan in het park.
+Van 2005 tot november 2024 reed hier Kingda Ka, die haar hele bestaan lang de hoogste achtbaan ter wereld was. Sinds de sloop is [Nitro](ref:six-flags-great-adventure/nitro?bare) de hoogste achtbaan van het park, en in oktober heeft Six Flags hem na het dodelijke ongeluk op Goliath in Georgia gesloten. In 2027 moet Bakunawa hem met 116 meter aflossen.
 
 ## De attracties per themagebied
 
 ### The Pine Barrens
 
-Bolliger & Mabillard (B&M) bouwde Nitro als hyper coaster, en op 7 april 2001 reed de eerste trein. Hij klimt 70 meter omhoog, valt 66 meter diep en haalt beneden 129 km/u. Op 1.644 meter baan zit geen enkele inversie, en een rit duurt 2:20 minuten. Volgens het park zie je vanaf de eerste heuvel Philadelphia liggen, als je op dat moment je ogen open hebt.
+Nitro is een hyper coaster van Bolliger & Mabillard (B&M), en op 7 april 2001 ging de eerste trein de baan op. Hij klimt 70 meter omhoog, valt 66 meter diep en haalt beneden 129 km/u. De baan is 1.644 meter lang en heeft geen enkele inversie, en een rit duurt 2:20 minuten. Volgens het park zie je vanaf de eerste heuvel Philadelphia liggen, als je op dat moment je ogen open hebt.
 
 ```glossary-widget slug=hyper-coaster
 
@@ -75,7 +75,7 @@ Bolliger & Mabillard (B&M) bouwde Nitro als hyper coaster, en op 7 april 2001 re
 
 Na het [dodelijke ongeluk op Goliath](/news/goliath-six-flags-over-georgia-dodelijk-ongeval) in Six Flags Over Georgia sloot Six Flags in oktober negen achtbanen in zes parken, Nitro ook. Six Flags noemt ze tijdelijk gesloten. Topman John Reilly kondigde op 23 oktober [veiligheidsgordels](/news/six-flags-veiligheidsgordels-goliath) aan voor Goliath en voor banen met een vergelijkbare beugel. Wanneer Nitro weer opengaat, is nog niet bekend.
 
-Een paar stappen verder kronkelt de [Jersey Devil Coaster](ref:six-flags-great-adventure/jersey-devil-coaster?bare) over één enkele rail. Rocky Mountain Construction (RMC) bouwde hem met de Raptor Track, en sinds 13 juni 2021 rijdt hij. Over 914 meter valt hij één keer onder 87 graden, gaat hij drie keer over de kop en komt hij vanaf 40 meter hoogte op 93 km/u.
+De [Jersey Devil Coaster](ref:six-flags-great-adventure/jersey-devil-coaster?bare) kronkelt door de Pine Barrens over één enkele rail, de Raptor Track van Rocky Mountain Construction (RMC), en ging op 13 juni 2021 in gebruik. In de 914 meter baan zitten één afdaling onder 87 graden en drie inversies, en vanaf 40 meter hoogte komt de trein op 93 km/u.
 
 ```glossary-widget slug=single-rail-coaster
 
@@ -85,7 +85,7 @@ Nat word je in de Pine Barrens in [Roaring Rapids](ref:six-flags-great-adventure
 
 ### Plaza Del Carnaval
 
-[El Toro](ref:six-flags-great-adventure/el-toro?bare) ging op 12 juni 2006 open. Deze houten achtbaan rijdt op voorgefabriceerde houten rails van Intamin. Cordes Holzbau bouwde hem, het ontwerp kwam van ingenieursbureau Stengel. Vanaf 55 meter hoogte stort de trein zich 54 meter omlaag, onder een hoek van 76 graden. Volgens Six Flags valt geen houten achtbaan in de VS steiler. De stier rent met 113 km/u over 1.341 meter baan en staat na 1:42 minuten weer op stal. Bij de 10 Best Awards van USA Today eindigde El Toro in 2022 als eerste. Voor het seizoen 2026 heeft het park langere stukken van de baan opnieuw gelegd.
+Vanaf 55 meter hoogte stort de trein van [El Toro](ref:six-flags-great-adventure/el-toro?bare) zich 54 meter omlaag, onder een hoek van 76 graden. Volgens Six Flags valt geen houten achtbaan in de VS steiler. Sinds 12 juni 2006 rijdt deze houten achtbaan op voorgefabriceerde houten rails van Intamin, gebouwd door Cordes Holzbau naar een ontwerp van ingenieursbureau Stengel. De stier rent met 113 km/u over 1.341 meter baan en staat na 1:42 minuten weer op stal. Bij de 10 Best Awards van USA Today eindigde El Toro in 2022 als eerste. Voor het seizoen 2026 heeft het park langere stukken van de baan opnieuw gelegd.
 
 ```glossary-widget slug=wooden-coaster
 
@@ -95,19 +95,19 @@ Nat word je in de Pine Barrens in [Roaring Rapids](ref:six-flags-great-adventure
 
 [Medusa](ref:six-flags-great-adventure/medusa?bare) ging op 2 april 1999 open als eerste floorless coaster van B&M. Van 2009 tot 2021 heette ze Bizarro, daarna kreeg ze haar oude naam terug. De trein gaat 43 meter omhoog, valt 40 meter en draait zeven keer over de kop. Met maximaal 98 km/u legt hij 1.215 meter af in 2:20 minuten.
 
-Op 4 juli 1974, drie dagen na het park, ging de [Runaway Train](ref:six-flags-great-adventure/runaway-mine-train?bare) open. Die mijntrein van Arrow Dynamics is daarmee de oudste achtbaan van Jackson. Het hoogste punt ligt op 18 meter, de langste afdaling meet 12 meter, en over 740 meter baan haalt hij 61 km/u.
+Op 4 juli 1974, drie dagen na het park, ging de [Runaway Train](ref:six-flags-great-adventure/runaway-mine-train?bare) open. Die mijntrein van Arrow Dynamics is daarmee de oudste achtbaan van Jackson. Het hoogste punt ligt op 18 meter, de langste afdaling meet 12 meter en de baan 740 meter. Onderweg haalt hij 61 km/u.
 
 Uit dezelfde zomer stamt de [Saw Mill Log Flume](ref:six-flags-great-adventure/saw-mill-log-flume?bare) van Arrow Development, waar je in een boomstam naar beneden vaart. In Frontier Adventures begint ook de [Safari Off-Road Adventure](ref:six-flags-great-adventure/safari-off-road-adventure?bare), de tocht met gids door de Wild Safari. De ingang ligt bij Runaway Mine Train en Medusa.
 
 ### Movietown en Metropolis
 
-B&M bouwde [BATMAN The Ride](ref:six-flags-great-adventure/batman-the-ride?bare) als inverted coaster, dus de voeten van de passagiers bungelen onder de rail, en dat al sinds 1 mei 1993. Over 821 meter baan gaat het vanaf 32 meter hoogte vijf keer over de kop, met maximaal 80 km/u en 4 G. Na anderhalve minuut is het voorbij.
+[BATMAN The Ride](ref:six-flags-great-adventure/batman-the-ride?bare) rijdt sinds 1 mei 1993, een inverted coaster van B&M waarbij de voeten van de passagiers onder de rail bungelen. Vanaf 32 meter hoogte gaat het vijf keer over de kop, met maximaal 80 km/u en 4 G, en na 821 meter en anderhalve minuut is het voorbij.
 
-[THE FLASH: Vertical Velocity](ref:six-flags-great-adventure/the-flash-vertical-velocity?bare) is een Super Boomerang van Vekoma die eerst vooruit en daarna achteruit door dezelfde twee inversies schiet. Hij ging open op 29 maart 2025. Op de 436 meter haalt de trein tot 95 km/u. Alleen mag je mee vanaf 142 centimeter, onder begeleiding vanaf 122.
+[THE FLASH: Vertical Velocity](ref:six-flags-great-adventure/the-flash-vertical-velocity?bare) is een Super Boomerang van Vekoma die eerst vooruit en daarna achteruit door dezelfde twee inversies schiet. Hij ging open op 29 maart 2025. De baan is 436 meter lang, en de trein haalt tot 95 km/u. Alleen mag je mee vanaf 142 centimeter, onder begeleiding vanaf 122.
 
-[THE DARK KNIGHT Coaster](ref:six-flags-great-adventure/the-dark-knight-coaster?bare) is een wilde muis van Mack Rides en rijdt sinds 15 mei 2008 binnen in een hal. De wagen neemt vanaf 14 meter hoogte zes bochten van 180 graden, over 370 meter baan in twee minuten.
+[THE DARK KNIGHT Coaster](ref:six-flags-great-adventure/the-dark-knight-coaster?bare) is een wilde muis van Mack Rides en rijdt sinds 15 mei 2008 binnen in een hal. In twee minuten legt de wagen 370 meter en zes bochten van 180 graden af, met het hoogste punt op 14 meter.
 
-Zamperla bouwde in 2019 [WONDER WOMAN Lasso of Truth](ref:six-flags-great-adventure/wonder-woman-lasso-of-truth?bare) in Movietown, voor passagiers vanaf 132 centimeter. In Metropolis draait sinds 2017 [JUSTICE LEAGUE: Battle for Metropolis](ref:six-flags-great-adventure/justice-league-battle-for-metropolis?bare) van Sally Corp.
+Voor [WONDER WOMAN Lasso of Truth](ref:six-flags-great-adventure/wonder-woman-lasso-of-truth?bare) in Movietown moet je 132 centimeter lang zijn. Zamperla zette de baan er in 2019 neer. In Metropolis draait sinds 2017 [JUSTICE LEAGUE: Battle for Metropolis](ref:six-flags-great-adventure/justice-league-battle-for-metropolis?bare) van Sally Corp.
 
 ```glossary-widget slug=inverted-coaster
 
@@ -115,19 +115,19 @@ Zamperla bouwde in 2019 [WONDER WOMAN Lasso of Truth](ref:six-flags-great-advent
 
 ### Lakefront
 
-Op 28 mei 2016 kwam [THE JOKER](ref:six-flags-great-adventure/the-joker?bare) naar Lakefront, een 4D Free Spin van S&S Worldwide. De wagen schiet twaalf verdiepingen omhoog, 37 meter, en haalt over 311 meter baan 61 km/u. Langer dan 196 centimeter mag je hier niet zijn, en voor één keer treft de grens de lange mensen in plaats van de kinderen.
+[THE JOKER](ref:six-flags-great-adventure/the-joker?bare), een 4D Free Spin van S&S Worldwide, kwam op 28 mei 2016 naar Lakefront. Op een baan van maar 311 meter schiet de wagen twaalf verdiepingen omhoog, 37 meter, en haalt hij 61 km/u. Langer dan 196 centimeter mag je hier niet zijn, en voor één keer treft de grens de lange mensen in plaats van de kinderen.
 
 De familieachtbaan [HARLEY QUINN Crazy Train](ref:six-flags-great-adventure/harley-quinn-crazy-train?bare), tot 2015 Blackbeard’s Lost Treasure Train, is een Tivoli van Zierer uit 1999. Met 8 meter hoogte en 36 km/u over 360 meter is dit de achtbaan waar kinderen onder begeleiding al vanaf 104 cm in mogen.
 
 ### Adventure Alley
 
-De familieachtbaan [Skull Mountain](ref:six-flags-great-adventure/skull-mountain?bare) rijdt in het donker door een hal. Intamin bouwde hem, en op 3 juni 1996 ging hij open. De trein valt vanaf 12 meter hoogte 11 meter diep en haalt over zijn 420 meter 53 km/u. Net als bij de Joker houdt het op bij 196 centimeter.
+De familieachtbaan [Skull Mountain](ref:six-flags-great-adventure/skull-mountain?bare), een Intamin van 3 juni 1996, rijdt in het donker door een hal. De baan is 420 meter lang, en vanaf het hoogste punt op 12 meter valt de trein 11 meter en haalt hij 53 km/u. Net als bij de Joker houdt het op bij 196 centimeter.
 
-Boven Adventure Alley draait de 74 meter hoge [SkyScreamer](ref:six-flags-great-adventure/skyscreamer?bare) zijn rondjes, met maximaal 64 km/u. Rustiger gaat het ernaast in het reuzenrad [Giant Wheel](ref:six-flags-great-adventure/giant-wheel?bare), en zelfs daar geldt Fast Lane.
+De 74 meter hoge [SkyScreamer](ref:six-flags-great-adventure/skyscreamer?bare) draait zijn rondjes met maximaal 64 km/u. Ook in Adventure Alley staat het [Giant Wheel](ref:six-flags-great-adventure/giant-wheel?bare), en zelfs het reuzenrad staat op de Fast Lane-lijst.
 
 ### Boardwalk en Shoreline Pier
 
-In [SUPERMAN: Ultimate Flight](ref:six-flags-great-adventure/superman-ultimate-flight?bare) lig je horizontaal onder de rail, met je gezicht naar de grond. B&M bouwde deze flying coaster, die op 17 april 2003 openging. De baan is 32 meter hoog en valt 30 meter. Over de 841 meter met twee inversies doet de trein 2:06 minuten, en op zijn snelst gaat hij 82 km/u.
+In [SUPERMAN: Ultimate Flight](ref:six-flags-great-adventure/superman-ultimate-flight?bare) lig je horizontaal onder de rail, met je gezicht naar de grond. Dat uitzicht biedt de flying coaster van B&M sinds 17 april 2003. De baan is 32 meter hoog en valt 30 meter. Over de 841 meter met twee inversies doet de trein 2:06 minuten, en op zijn snelst gaat hij 82 km/u.
 
 ```glossary-widget slug=flying-coaster
 
@@ -137,13 +137,13 @@ Voor de [Slingshot](ref:six-flags-great-adventure/slingshot?bare) op de Boardwal
 
 Six Flags kondigde de verbouwde Shoreline Pier aan op 26 maart 2026. Na een voorlopige opening in juni volgde op 1 juli 2026 de officiële. Vijf attracties zijn nieuw: Wave Swinger, Super Round Up, Flying Scooters, Hypno Twister en [Barrels O’ Fun](ref:six-flags-great-adventure/barrels-o-fun?bare). Vier daarvan komen uit Six Flags America, waarvan Six Flags in mei 2025 had aangekondigd dat het na het seizoen 2025 dichtging.
 
-Barrels O’ Fun kwam als laatste van de vijf en rijdt sinds 8 juli 2026. Het is een spinning coaster van Reverchon met wagens voor vier personen. Eerder stond hij in Six Flags Great America en daarna in Six Flags America, allebei de keren als Ragin’ Cajun. Hij is maar 13 meter hoog en haalt over zijn 420 meter hooguit 47 km/u, en toch vraagt hij met 150 centimeter de hoogste minimumlengte van alle achtbanen in het park.
+Barrels O’ Fun kwam als laatste van de vijf en rijdt sinds 8 juli 2026. Het is een spinning coaster van Reverchon met wagens voor vier personen. Eerder stond hij in Six Flags Great America en daarna in Six Flags America, allebei de keren als Ragin’ Cajun. Hij is maar 13 meter hoog, haalt hooguit 47 km/u en heeft met 420 meter precies evenveel baan als Skull Mountain, en toch vraagt hij met 150 centimeter de hoogste minimumlengte van alle achtbanen in het park.
 
 ### Dream Street en de kindergebieden
 
 In Dream Street draait de Patrina Williams Carousel, die Frederick Savage in 1881 bouwde. Daarmee is de draaimolen bijna honderd jaar ouder dan het park. Verder staan hier de Enchanted Teacups en Houdini’s Great Escape, waarvoor Six Flags 122 cm vraagt, net zoveel als voor El Toro.
 
-In het eerste van de twee kindergebieden rijdt de familieachtbaan [Lil’ Devil Coaster](ref:six-flags-great-adventure/lil-devil-coaster?bare) van Zamperla, vroeger Road Runner Railway. Over 80 meter gaat het maar 4 meter omhoog, met 24 km/u. Ook Barnstormer, Sky Zooma, Storm Chaser en de Tree Top Hopper draaien daar. In het tweede, het Bugs Bunny National Park, staan vijf kinderattracties, waarvan twee al vanaf 91 cm.
+In het eerste van de twee kindergebieden rijdt de familieachtbaan [Lil’ Devil Coaster](ref:six-flags-great-adventure/lil-devil-coaster?bare) van Zamperla, vroeger Road Runner Railway. De baan is 80 meter lang, gaat maar 4 meter omhoog en de trein tuft er met 24 km/u over. Ook Barnstormer, Sky Zooma, Storm Chaser en de Tree Top Hopper draaien daar. In het tweede, het Bugs Bunny National Park, staan vijf kinderattracties, waarvan twee al vanaf 91 cm.
 
 ## Minimumlengtes
 
@@ -168,7 +168,7 @@ Met Rider Swap rijden twee volwassenen na elkaar terwijl de ander bij het kind b
 
 ```
 
-Wie bij de opening komt, loopt eerst naar SUPERMAN: Ultimate Flight, waar een vroege start het meeste oplevert, en daarna naar THE FLASH, El Toro en WONDER WOMAN. Iets minder, maar nog steeds merkbaar, win je ’s ochtends bij deze attracties:
+Wie bij de opening komt, loopt eerst naar SUPERMAN: Ultimate Flight, waar een vroege start het meeste oplevert, en daarna naar THE FLASH, El Toro en WONDER WOMAN. Ook deze attracties zijn in het eerste uur rustiger, alleen minder duidelijk dan SUPERMAN:
 
 - Safari Off-Road Adventure
 - THE JOKER
@@ -213,7 +213,7 @@ Nieuw in 2026 zijn de mazes “JASON: Blood Reign” en “Final Destination: De
 
 Na Fright Fest gaat het park zonder programma open van 5 tot en met 8 november en op 14 en 15 november, telkens van 11.00 tot 19.00 uur. [Holiday in the Park](/news/six-flags-great-adventure-holiday-in-the-park-2026) begint op 20 november met een Preview Night voor pashouders, van 16.00 tot 20.00 uur. Voor iedereen loopt het op bepaalde dagen van 21 november tot en met 3 januari 2027, van 13.00 tot 20.00 uur. Op Thanksgiving, 26 november, en op 24 en 25 december blijft het park dicht. Oudejaarsavond is het open tot 20.00 uur, dus ruim op tijd om thuis op middernacht te wachten.
 
-Jersey Devil Coaster, El Toro, Runaway Train, Tango en het Bugs Bunny National Park draaien tijdens het evenement niet. Of de andere attracties rijden, beslist Six Flags op elke Holiday-avond opnieuw, afhankelijk van het weer en de temperatuur.
+Jersey Devil Coaster, El Toro, Runaway Train, Tango en het Bugs Bunny National Park draaien tijdens het evenement niet. Welke van de andere attracties rijden, beslist Six Flags op elke Holiday-avond op basis van weer en temperatuur.
 
 ```best-days-widget slug=six-flags-great-adventure
 
@@ -246,7 +246,7 @@ Stel dat je op een zomerdag bij de opening aan de ingang staat, Nitro weer rijdt
 
 - Bij de opening SUPERMAN: Ultimate Flight op de Boardwalk.
 - Daarna El Toro op de Plaza Del Carnaval.
-- In Movietown THE FLASH en WONDER WOMAN, dan BATMAN en THE DARK KNIGHT ernaast.
+- In Movietown THE FLASH en WONDER WOMAN, dan BATMAN en THE DARK KNIGHT.
 - In de Pine Barrens de Jersey Devil Coaster en Nitro.
 - Rond het middaguur naar Frontier Adventures voor Medusa, de Saw Mill Log Flume en de Safari Off-Road Adventure. Een halfuur zitten tussen leeuwen en neushoorns is in de middaghitte geen slechte pauze.
 - In de middag Lakefront met THE JOKER en HARLEY QUINN, plus Skull Mountain in Adventure Alley, die binnen in een hal rijdt.
@@ -256,7 +256,7 @@ Bij El Toro, THE JOKER, de Jersey Devil Coaster en THE FLASH mag je geen losse s
 
 ## Tickets
 
-Een dagticket kost online vanaf 45 dollar, anders 90 dollar. Dagtickets verkoopt het park ook aan de ingang. Op elke aankoop rekent Six Flags tot 9,99 dollar kosten plus belasting. Kinderen tot twee jaar mogen gratis het park en Hurricane Harbor in. Six Flags betaalt geen tickets terug en geeft bij regen geen bon voor een andere dag.
+Online kost een dagticket vanaf 45 dollar, maar dagtickets verkoopt het park ook aan de ingang. Op elke aankoop rekent Six Flags tot 9,99 dollar kosten plus belasting. Kinderen tot twee jaar mogen gratis het park en Hurricane Harbor in. Six Flags betaalt geen tickets terug en geeft bij regen geen bon voor een andere dag.
 
 De 2-Park Combo voor 79 dollar geldt één keer in Dorney Park tot 7 november en één keer in Great Adventure tot 29 november, maar daar niet op zaterdag.
 
@@ -323,7 +323,7 @@ Buiten het terrein liggen het Courtyard Hamilton, zo’n 24 kilometer van het pa
 
 ## Wild Safari
 
-In de Wild Safari leven op 350 acres bijna 1.200 dieren van zes continenten.
+In de Wild Safari leven op 350 acres zo’n 1.200 dieren van zes continenten.
 
 De ene weg naar binnen is de [Safari Off-Road Adventure](ref:six-flags-great-adventure/safari-off-road-adventure?bare) vanuit het park, die in 2026 terug is en bij de parktoegang hoort. Een gids rijdt je in een open terreinwagen langs olifanten, neushoorns, giraffen, leeuwen en tijgers, en ook het jonge bruine beertje JJ krijg je te zien. De tocht duurt zo’n 30 minuten.
 
@@ -370,7 +370,7 @@ Kingda Ka reed op 10 november 2024 voor het laatst, en op 28 februari 2025 werd 
 
 Ook voor Green Lantern was 10 november 2024 de laatste dag. Deze stand-up coaster van B&M stond eerst als Chang in Kentucky Kingdom en kwam in 2011 naar Jackson. In november en december 2024 werd hij gesloopt. In 2024 sloten ook de skycoaster Dare Devil Dive, die sinds 1997 draaide, en de Top Spin Twister van Huss uit 1999.
 
-Als gesloten of in onderhoud staan bij Six Flags op dit moment Nitro, de Runaway Train en het Big Wheel. Plan je dag dus niet rond een van deze drie.
+Naast Nitro staan bij Six Flags op dit moment de Runaway Train en het Big Wheel als gesloten of in onderhoud.
 
 ## Geschiedenis
 
@@ -378,9 +378,9 @@ Warner LeRoy bedacht het concept voor Great Adventure in 1972. Voor 4.500 genodi
 
 In het najaar van 1977 kocht Six Flags het park. Op 11 mei 1984 brandde het Haunted Castle, een spookhuis in het park, en kwamen acht jongeren om het leven.
 
-Van 1990 tot 1997 was Time Warner grootaandeelhouder van Six Flags. In 1993 verkocht LeRoy zijn aandeel aan Time Warner. In 1998 kocht Premier Parks Six Flags. Nu leidt John Reilly het concern.
+Van 1990 tot 1997 was Time Warner grootaandeelhouder van Six Flags. In 1993 verkocht LeRoy zijn aandeel aan Time Warner. In 1998 kocht Premier Parks Six Flags.
 
-Rolling Thunder was in 1979 gekomen en verdween in 2013 als laatste van die oudere achtbanen. Voor hem waren Viper (in 2004 voor het laatst gereden, in 2005 afgebroken), Batman & Robin: The Chiller (2007) en de Great American Scream Machine (2010) al dicht.
+Van de oudere achtbanen verdween eerst Viper (in 2004 voor het laatst gereden, in 2005 afgebroken), daarna in 2007 Batman & Robin: The Chiller en in 2010 de Great American Scream Machine. Als laatste sloot in 2013 Rolling Thunder, die sinds 1979 had gereden.
 
 In 2012 werden de Wild Safari en het park één terrein. Cedar Fair en Six Flags rondden hun fusie af op 1 juli 2024. Parkdirecteur van Great Adventure is Mike Fehnel.
 

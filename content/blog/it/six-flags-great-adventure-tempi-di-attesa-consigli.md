@@ -59,15 +59,15 @@ seo:
     - Savannah Sunset Resort
 ---
 
-[Six Flags Great Adventure](ref:six-flags-great-adventure) si trova a Jackson Township, nel New Jersey, lungo la Interstate 195, a metà strada tra New York City e Filadelfia. Six Flags vi conta 14 montagne russe. Sullo stesso terreno ci sono anche il parco acquatico Hurricane Harbor e il Wild Safari. Il complesso misura in tutto 510 acri, poco più di 200 ettari, e il parco divertimenti ne occupa 160. La parte più grande, 350 acri, spetta al Wild Safari, dove giraffe, rinoceronti e leoni hanno più spazio di qualsiasi montagna russa.
+[Six Flags Great Adventure](ref:six-flags-great-adventure) si trova a Jackson Township, nel New Jersey, lungo la Interstate 195, a metà strada tra New York City e Filadelfia. Six Flags vi conta 14 montagne russe. Sullo stesso terreno ci sono anche il parco acquatico Hurricane Harbor e il Wild Safari. Il parco divertimenti vero e proprio occupa 160 acri, quasi 65 ettari, il Wild Safari 350 acri, poco più di 140 ettari, e lì giraffe, rinoceronti e leoni hanno più spazio di qualsiasi montagna russa.
 
-Dal 2005 al novembre 2024 qui ha funzionato Kingda Ka, per tutta la sua vita la montagna russa più alta del mondo. Dopo la demolizione il primato nel parco è passato a [Nitro](ref:six-flags-great-adventure/nitro?bare), che però è ferma proprio dall’incidente sul Goliath in Georgia. Nel 2027 dovrebbe aprire Bakunawa, che con i suoi 116 metri tornerà a essere la più alta del parco.
+Dal 2005 al novembre 2024 qui ha funzionato Kingda Ka, per tutta la sua vita la montagna russa più alta del mondo. Dopo la demolizione la montagna russa più alta del parco è [Nitro](ref:six-flags-great-adventure/nitro?bare), e a ottobre Six Flags l’ha chiusa dopo l’incidente mortale sul Goliath in Georgia. Nel 2027 dovrebbe aprire Bakunawa, che con i suoi 116 metri le toglierà il primato.
 
 ## Le attrazioni zona per zona
 
 ### The Pine Barrens
 
-Nitro è un hyper coaster costruito da Bolliger & Mabillard (B&M), e il primo treno è partito il 7 aprile 2001. Sale a 70 metri, scende per 66 e in fondo alla discesa tocca i 129 km/h. Sui 1.644 metri di percorso non c’è nemmeno un giro della morte, e il viaggio dura 2 minuti e 20 secondi. Secondo il parco, dalla prima collina si vede fino a Filadelfia, ammesso che in quel momento tu tenga gli occhi aperti.
+Nitro è un hyper coaster costruito da Bolliger & Mabillard (B&M), e il primo treno è partito il 7 aprile 2001. Sale a 70 metri, scende per 66 e in fondo alla discesa tocca i 129 km/h. Il percorso è lungo 1.644 metri senza nemmeno un giro della morte, e il viaggio dura 2 minuti e 20 secondi. Secondo il parco, dalla prima collina si vede fino a Filadelfia, ammesso che in quel momento tu tenga gli occhi aperti.
 
 ```glossary-widget slug=hyper-coaster
 
@@ -75,7 +75,7 @@ Nitro è un hyper coaster costruito da Bolliger & Mabillard (B&M), e il primo tr
 
 Dopo l’[incidente mortale sul Goliath](/news/goliath-six-flags-over-georgia-incidente-mortale) di Six Flags Over Georgia, a ottobre Six Flags ha chiuso nove montagne russe in sei parchi, Nitro compresa. Il gruppo le indica come chiuse temporaneamente. Il 23 ottobre l’amministratore delegato John Reilly ha annunciato [cinture di sicurezza](/news/six-flags-cinture-goliath) per il Goliath e per le attrazioni con una barra di sicurezza simile. Una data di riapertura per Nitro non c’è ancora.
 
-Pochi passi più in là il [Jersey Devil Coaster](ref:six-flags-great-adventure/jersey-devil-coaster?bare) si snoda su un’unica rotaia. Lo ha costruito Rocky Mountain Construction (RMC) con il suo Raptor Track, ed è in funzione dal 13 giugno 2021. Sui suoi 914 metri c’è una discesa a 87 gradi, il treno si capovolge tre volte e, partendo da 40 metri d’altezza, arriva a 93 km/h.
+Il [Jersey Devil Coaster](ref:six-flags-great-adventure/jersey-devil-coaster?bare) si snoda nei Pine Barrens su un’unica rotaia, il Raptor Track di Rocky Mountain Construction (RMC), ed è entrato in funzione il 13 giugno 2021. Nei 914 metri di binario ci sono una discesa a 87 gradi e tre inversioni, e partendo da 40 metri d’altezza il treno arriva a 93 km/h.
 
 ```glossary-widget slug=single-rail-coaster
 
@@ -85,7 +85,7 @@ Per bagnarsi, nei Pine Barrens c’è [Roaring Rapids](ref:six-flags-great-adven
 
 ### Plaza Del Carnaval
 
-[El Toro](ref:six-flags-great-adventure/el-toro?bare) ha aperto il 12 giugno 2006. Questa montagna russa in legno corre su binari prefabbricati di Intamin; l’ha costruita Cordes Holzbau su progetto dello studio di ingegneria Stengel. Da 55 metri d’altezza il treno si lancia giù per 54 metri con una pendenza di 76 gradi, e secondo Six Flags nessuna montagna russa in legno negli Stati Uniti scende più ripida. Il toro corre a 113 km/h per 1.341 metri e dopo 1 minuto e 42 secondi è già di nuovo nella stalla. Nel 2022 El Toro ha vinto il primo posto ai 10 Best Awards di USA Today. Prima della stagione 2026 il parco ha rifatto lunghi tratti del binario.
+Da 55 metri d’altezza il treno di [El Toro](ref:six-flags-great-adventure/el-toro?bare) si lancia giù per 54 metri con una pendenza di 76 gradi, e secondo Six Flags nessuna montagna russa in legno negli Stati Uniti scende più ripida. Dal 12 giugno 2006 questa montagna russa in legno corre su binari prefabbricati di Intamin, costruita da Cordes Holzbau su progetto dello studio di ingegneria Stengel. Il toro corre a 113 km/h per 1.341 metri e dopo 1 minuto e 42 secondi è già di nuovo nella stalla. Nel 2022 El Toro ha vinto il primo posto ai 10 Best Awards di USA Today. Prima della stagione 2026 il parco ha rifatto lunghi tratti del binario.
 
 ```glossary-widget slug=wooden-coaster
 
@@ -95,19 +95,19 @@ Per bagnarsi, nei Pine Barrens c’è [Roaring Rapids](ref:six-flags-great-adven
 
 [Medusa](ref:six-flags-great-adventure/medusa?bare) ha aperto il 2 aprile 1999 ed è stata il primo floorless coaster di B&M. Dal 2009 al 2021 si è chiamata Bizarro, poi ha ripreso il nome originale. Il treno sale a 43 metri, scende per 40 e si capovolge sette volte. A un massimo di 98 km/h copre 1.215 metri in 2 minuti e 20 secondi.
 
-Il [Runaway Train](ref:six-flags-great-adventure/runaway-mine-train?bare) ha aperto il 4 luglio 1974, tre giorni dopo il parco, e questo trenino della miniera di Arrow Dynamics è quindi la montagna russa più vecchia di Jackson. Il punto più alto è a 18 metri, la discesa più lunga misura 12 metri, e sui 740 metri di percorso arriva a 61 km/h.
+Il [Runaway Train](ref:six-flags-great-adventure/runaway-mine-train?bare) ha aperto il 4 luglio 1974, tre giorni dopo il parco, e questo trenino della miniera di Arrow Dynamics è quindi la montagna russa più vecchia di Jackson. Il punto più alto è a 18 metri, la discesa più lunga misura 12 metri e il percorso 740. Strada facendo arriva a 61 km/h.
 
 Della stessa estate è il [Saw Mill Log Flume](ref:six-flags-great-adventure/saw-mill-log-flume?bare) di Arrow Development, dove si scende a valle dentro un tronco. In Frontier Adventures parte anche la [Safari Off-Road Adventure](ref:six-flags-great-adventure/safari-off-road-adventure?bare), il giro guidato nel Wild Safari, con l’ingresso vicino al Runaway Mine Train e a Medusa.
 
 ### Movietown e Metropolis
 
-[BATMAN The Ride](ref:six-flags-great-adventure/batman-the-ride?bare) è un inverted coaster di B&M, quindi i piedi dei passeggeri penzolano sotto il binario, e lo fanno dal 1° maggio 1993. Sugli 821 metri di percorso si parte da 32 metri d’altezza e ci si capovolge cinque volte, fino a 80 km/h e 4 G. Dopo un minuto e mezzo è tutto finito.
+[BATMAN The Ride](ref:six-flags-great-adventure/batman-the-ride?bare) è in funzione dal 1° maggio 1993, un inverted coaster di B&M con i piedi dei passeggeri che penzolano sotto il binario. Si parte da 32 metri d’altezza e ci si capovolge cinque volte, fino a 80 km/h e 4 G, e dopo 821 metri e un minuto e mezzo è tutto finito.
 
-[THE FLASH: Vertical Velocity](ref:six-flags-great-adventure/the-flash-vertical-velocity?bare) è un Super Boomerang di Vekoma: spara il treno prima in avanti e poi all’indietro attraverso le stesse due inversioni. Ha aperto il 29 marzo 2025. Sui 436 metri il treno raggiunge i 95 km/h. Da soli si sale da 142 centimetri, accompagnati da 122.
+[THE FLASH: Vertical Velocity](ref:six-flags-great-adventure/the-flash-vertical-velocity?bare) è un Super Boomerang di Vekoma: spara il treno prima in avanti e poi all’indietro attraverso le stesse due inversioni. Ha aperto il 29 marzo 2025. Il percorso è lungo 436 metri, e il treno raggiunge i 95 km/h. Da soli si sale da 142 centimetri, accompagnati da 122.
 
-[THE DARK KNIGHT Coaster](ref:six-flags-great-adventure/the-dark-knight-coaster?bare) è un topolino di Mack Rides che dal 15 maggio 2008 corre al chiuso, dentro un capannone. La vettura parte da 14 metri d’altezza e affronta sei curve a 180 gradi, su 370 metri di percorso e in due minuti.
+[THE DARK KNIGHT Coaster](ref:six-flags-great-adventure/the-dark-knight-coaster?bare) è un topolino di Mack Rides che dal 15 maggio 2008 corre al chiuso, dentro un capannone. In due minuti la vettura percorre 370 metri e affronta sei curve a 180 gradi, con il punto più alto a 14 metri.
 
-Nel 2019 Zamperla ha costruito in Movietown [WONDER WOMAN Lasso of Truth](ref:six-flags-great-adventure/wonder-woman-lasso-of-truth?bare), per chi è alto almeno 132 centimetri. A Metropolis, dal 2017, c’è [JUSTICE LEAGUE: Battle for Metropolis](ref:six-flags-great-adventure/justice-league-battle-for-metropolis?bare) di Sally Corp.
+Per [WONDER WOMAN Lasso of Truth](ref:six-flags-great-adventure/wonder-woman-lasso-of-truth?bare), in Movietown, bisogna essere alti almeno 132 centimetri. Zamperla l’ha installata nel 2019. A Metropolis, dal 2017, c’è [JUSTICE LEAGUE: Battle for Metropolis](ref:six-flags-great-adventure/justice-league-battle-for-metropolis?bare) di Sally Corp.
 
 ```glossary-widget slug=inverted-coaster
 
@@ -115,19 +115,19 @@ Nel 2019 Zamperla ha costruito in Movietown [WONDER WOMAN Lasso of Truth](ref:si
 
 ### Lakefront
 
-Il 28 maggio 2016 è arrivato in Lakefront [THE JOKER](ref:six-flags-great-adventure/the-joker?bare), un 4D Free Spin di S&S Worldwide. La vettura sale di dodici piani, cioè 37 metri, e sui 311 metri di percorso tocca i 61 km/h. Chi supera i 196 centimetri qui non sale: per una volta il limite tocca agli spilungoni e non ai bambini.
+[THE JOKER](ref:six-flags-great-adventure/the-joker?bare), un 4D Free Spin di S&S Worldwide, è arrivato in Lakefront il 28 maggio 2016. Su un percorso di appena 311 metri la vettura sale di dodici piani, cioè 37 metri, e tocca i 61 km/h. Chi supera i 196 centimetri qui non sale: per una volta il limite tocca agli spilungoni e non ai bambini.
 
 La montagna russa per famiglie [HARLEY QUINN Crazy Train](ref:six-flags-great-adventure/harley-quinn-crazy-train?bare), fino al 2015 Blackbeard’s Lost Treasure Train, è un Tivoli di Zierer del 1999. È alta 8 metri, va a 36 km/h su 360 metri, ed è la montagna russa su cui i bambini accompagnati possono salire già da 104 cm.
 
 ### Adventure Alley
 
-La montagna russa per famiglie [Skull Mountain](ref:six-flags-great-adventure/skull-mountain?bare) viaggia al buio dentro un capannone. L’ha costruita Intamin e ha aperto il 3 giugno 1996. Il treno scende per 11 metri da un’altezza di 12 e sui suoi 420 metri arriva a 53 km/h. Come per il Joker, il limite massimo è 196 centimetri.
+La montagna russa per famiglie [Skull Mountain](ref:six-flags-great-adventure/skull-mountain?bare), una Intamin del 3 giugno 1996, viaggia al buio dentro un capannone. Il percorso è lungo 420 metri, e dal punto più alto, a 12 metri, il treno scende per 11 e arriva a 53 km/h. Come per il Joker, il limite massimo è 196 centimetri.
 
-Sopra Adventure Alley gira lo [SkyScreamer](ref:six-flags-great-adventure/skyscreamer?bare), alto 74 metri, a una velocità che arriva a 64 km/h. Più tranquilla è la ruota panoramica [Giant Wheel](ref:six-flags-great-adventure/giant-wheel?bare) lì accanto, e persino lì vale la Fast Lane.
+Lo [SkyScreamer](ref:six-flags-great-adventure/skyscreamer?bare), alto 74 metri, gira a una velocità che arriva a 64 km/h. Sempre in Adventure Alley c’è la [Giant Wheel](ref:six-flags-great-adventure/giant-wheel?bare), e persino la ruota panoramica è nella lista della Fast Lane.
 
 ### Boardwalk e Shoreline Pier
 
-Su [SUPERMAN: Ultimate Flight](ref:six-flags-great-adventure/superman-ultimate-flight?bare) si viaggia sdraiati sotto il binario, a pancia in giù e con la faccia verso terra. Questo flying coaster di B&M ha aperto il 17 aprile 2003. È alto 32 metri e scende per 30. Per gli 841 metri con due inversioni il treno impiega 2 minuti e 6 secondi, e il punto più veloce è a 82 km/h.
+Su [SUPERMAN: Ultimate Flight](ref:six-flags-great-adventure/superman-ultimate-flight?bare) si viaggia sdraiati sotto il binario, a pancia in giù e con la faccia verso terra. È la vista che questo flying coaster di B&M offre dal 17 aprile 2003. È alto 32 metri e scende per 30. Per gli 841 metri con due inversioni il treno impiega 2 minuti e 6 secondi, e il punto più veloce è a 82 km/h.
 
 ```glossary-widget slug=flying-coaster
 
@@ -137,13 +137,13 @@ Lo [Slingshot](ref:six-flags-great-adventure/slingshot?bare) sul Boardwalk si pa
 
 Six Flags ha annunciato il rifacimento dello Shoreline Pier il 26 marzo 2026. Dopo un’apertura anticipata a giugno, l’inaugurazione ufficiale è stata il 1° luglio 2026. Le attrazioni nuove sono cinque: Wave Swinger, Super Round Up, Flying Scooters, Hypno Twister e [Barrels O’ Fun](ref:six-flags-great-adventure/barrels-o-fun?bare). Quattro arrivano da Six Flags America, di cui Six Flags aveva annunciato a maggio 2025 la chiusura a fine stagione 2025.
 
-Barrels O’ Fun è stata l’ultima delle cinque e funziona dall’8 luglio 2026. È uno spinning coaster di Reverchon con vetture da quattro persone. Prima stava a Six Flags Great America e poi a Six Flags America, tutte e due le volte con il nome Ragin’ Cajun. È alta appena 13 metri e sui suoi 420 metri non supera i 47 km/h, eppure con 150 centimetri chiede l’altezza minima più alta fra tutte le montagne russe del parco.
+Barrels O’ Fun è stata l’ultima delle cinque e funziona dall’8 luglio 2026. È uno spinning coaster di Reverchon con vetture da quattro persone. Prima stava a Six Flags Great America e poi a Six Flags America, tutte e due le volte con il nome Ragin’ Cajun. È alta appena 13 metri, non supera i 47 km/h e ha esattamente tanto binario quanto Skull Mountain, 420 metri, eppure con 150 centimetri chiede l’altezza minima più alta fra tutte le montagne russe del parco.
 
 ### Dream Street e le aree per bambini
 
 In Dream Street gira il Patrina Williams Carousel, costruito da Frederick Savage nel 1881 e quindi quasi cent’anni più vecchio del parco. Qui ci sono anche le Enchanted Teacups e Houdini’s Great Escape, per cui Six Flags chiede 122 cm, gli stessi di El Toro.
 
-Nella prima delle due aree per bambini corre la montagna russa per famiglie [Lil’ Devil Coaster](ref:six-flags-great-adventure/lil-devil-coaster?bare) di Zamperla, un tempo Road Runner Railway. Sui suoi 80 metri sale ad appena 4 metri e va a 24 km/h. Nella stessa area ci sono Barnstormer, Sky Zooma, Storm Chaser e il Tree Top Hopper. Nella seconda, il Bugs Bunny National Park, ci sono cinque attrazioni per bambini, due delle quali già da 91 cm.
+Nella prima delle due aree per bambini corre la montagna russa per famiglie [Lil’ Devil Coaster](ref:six-flags-great-adventure/lil-devil-coaster?bare) di Zamperla, un tempo Road Runner Railway. È lunga 80 metri, sale ad appena 4 e procede con calma a 24 km/h. Nella stessa area ci sono Barnstormer, Sky Zooma, Storm Chaser e il Tree Top Hopper. Nella seconda, il Bugs Bunny National Park, ci sono cinque attrazioni per bambini, due delle quali già da 91 cm.
 
 ## Altezze minime
 
@@ -168,7 +168,7 @@ Con il Rider Swap due adulti salgono a turno mentre uno dei due resta con il bam
 
 ```
 
-Se arrivi all’apertura, vai subito a SUPERMAN: Ultimate Flight, dove partire presto fa guadagnare di più, e poi a THE FLASH, El Toro e WONDER WOMAN. Un po’ meno, ma comunque in modo evidente, la mattina si risparmia anche su queste attrazioni:
+Se arrivi all’apertura, vai subito a SUPERMAN: Ultimate Flight, dove partire presto fa guadagnare di più, e poi a THE FLASH, El Toro e WONDER WOMAN. Anche queste attrazioni sono più tranquille nella prima ora, solo meno di SUPERMAN:
 
 - Safari Off-Road Adventure
 - THE JOKER
@@ -213,7 +213,7 @@ Le novità del 2026 sono i maze «JASON: Blood Reign» e «Final Destination: De
 
 Finito Fright Fest, il parco apre senza programma speciale dal 5 all’8 novembre e il 14 e 15 novembre, sempre dalle 11 alle 19. [Holiday in the Park](/news/six-flags-great-adventure-holiday-in-the-park-2026) comincia il 20 novembre con una Preview Night per chi ha l’abbonamento, dalle 16 alle 20. Per tutti gli altri si tiene in giorni scelti dal 21 novembre al 3 gennaio 2027, dalle 13 alle 20. Il giorno del Ringraziamento, il 26 novembre, e il 24 e 25 dicembre il parco resta chiuso. L’ultimo dell’anno invece apre, fino alle 20, giusto in tempo per aspettare la mezzanotte a casa.
 
-Durante l’evento Jersey Devil Coaster, El Toro, Runaway Train, Tango e il Bugs Bunny National Park restano fermi. Per le altre attrazioni Six Flags decide sera per sera, in base al tempo e alla temperatura.
+Durante l’evento Jersey Devil Coaster, El Toro, Runaway Train, Tango e il Bugs Bunny National Park restano fermi. Quali delle altre attrazioni funzionano lo decide Six Flags sera per sera, in base al tempo e alla temperatura.
 
 ```best-days-widget slug=six-flags-great-adventure
 
@@ -246,7 +246,7 @@ Mettiamo che in un giorno d’estate tu sia all’ingresso all’apertura, che N
 
 - All’apertura SUPERMAN: Ultimate Flight, sul Boardwalk.
 - Poi El Toro, sulla Plaza Del Carnaval.
-- In Movietown THE FLASH e WONDER WOMAN, poi BATMAN e THE DARK KNIGHT, lì vicino.
+- In Movietown THE FLASH e WONDER WOMAN, poi BATMAN e THE DARK KNIGHT.
 - Nei Pine Barrens il Jersey Devil Coaster e Nitro.
 - Verso mezzogiorno Frontier Adventures, con Medusa, il Saw Mill Log Flume e la Safari Off-Road Adventure. Mezz’ora seduti tra leoni e rinoceronti, nel caldo di mezzogiorno, non è una cattiva pausa.
 - Nel pomeriggio Lakefront con THE JOKER e HARLEY QUINN, più Skull Mountain in Adventure Alley, che corre al coperto.
@@ -256,7 +256,7 @@ Su El Toro, THE JOKER, il Jersey Devil Coaster e THE FLASH in coda non si posson
 
 ## Biglietti
 
-Il biglietto giornaliero costa online da 45 $, altrimenti 90 $. Il parco vende biglietti giornalieri anche all’ingresso. Su ogni acquisto Six Flags aggiunge fino a 9,99 $ di commissione più le tasse. I bambini fino a due anni entrano gratis nel parco e a Hurricane Harbor. Six Flags non rimborsa i biglietti e in caso di pioggia non dà buoni per un altro giorno.
+Il biglietto giornaliero costa online da 45 $, e il parco vende biglietti giornalieri anche all’ingresso. Su ogni acquisto Six Flags aggiunge fino a 9,99 $ di commissione più le tasse. I bambini fino a due anni entrano gratis nel parco e a Hurricane Harbor. Six Flags non rimborsa i biglietti e in caso di pioggia non dà buoni per un altro giorno.
 
 Il 2-Park Combo a 79 $ vale una volta al Dorney Park fino al 7 novembre e una volta a Great Adventure fino al 29 novembre, qui però non di sabato.
 
@@ -323,7 +323,7 @@ Fuori dal complesso ci sono il Courtyard Hamilton, a circa 24 chilometri dal par
 
 ## Wild Safari
 
-Nel Wild Safari vivono su 350 acri quasi 1.200 animali di sei continenti.
+Nel Wild Safari vivono su 350 acri circa 1.200 animali di sei continenti.
 
 Una strada per entrarci è la [Safari Off-Road Adventure](ref:six-flags-great-adventure/safari-off-road-adventure?bare), che parte dal parco, è tornata nel 2026 ed è compresa nel biglietto del parco. Una guida ti porta su un fuoristrada aperto davanti a elefanti, rinoceronti, giraffe, leoni e tigri, e si vede anche JJ, il cucciolo di orso bruno. Il giro dura circa 30 minuti.
 
@@ -370,7 +370,7 @@ Kingda Ka ha funzionato per l’ultima volta il 10 novembre 2024, e la torre è 
 
 Anche Green Lantern ha avuto il suo ultimo giorno di apertura il 10 novembre 2024. Questo stand-up coaster di B&M stava prima a Kentucky Kingdom con il nome Chang ed era arrivato a Jackson nel 2011. È stato smontato a novembre e dicembre 2024. Sempre nel 2024 hanno chiuso lo Skycoaster Dare Devil Dive, in funzione dal 1997, e il Top Spin Twister di Huss del 1999.
 
-Al momento Six Flags indica come chiusi o in manutenzione Nitro, il Runaway Train e il Big Wheel. Meglio quindi non organizzare la giornata attorno a una di queste tre.
+Oltre a Nitro, al momento Six Flags indica come chiusi o in manutenzione il Runaway Train e il Big Wheel.
 
 ## Storia
 
@@ -378,9 +378,9 @@ L’idea di Great Adventure l’ha sviluppata Warner LeRoy nel 1972. Il parco ha
 
 Nell’autunno del 1977 Six Flags ha comprato il parco. L’11 maggio 1984 è andata a fuoco la Haunted Castle, una casa stregata del parco, e sono morti otto ragazzi.
 
-Dal 1990 al 1997 Time Warner è stato il principale azionista di Six Flags. Nel 1993 LeRoy ha venduto la sua quota a Time Warner. Nel 1998 Premier Parks ha comprato Six Flags. Oggi il gruppo è guidato da John Reilly.
+Dal 1990 al 1997 Time Warner è stato il principale azionista di Six Flags. Nel 1993 LeRoy ha venduto la sua quota a Time Warner. Nel 1998 Premier Parks ha comprato Six Flags.
 
-Rolling Thunder era arrivata nel 1979 e nel 2013 se n’è andata, ultima di quelle montagne russe più vecchie. Prima di lei avevano chiuso Viper (ultima corsa nel 2004, smontata nel 2005), Batman & Robin: The Chiller (2007) e la Great American Scream Machine (2010).
+Delle montagne russe più vecchie se n’è andata per prima Viper (ultima corsa nel 2004, smontata nel 2005), poi nel 2007 Batman & Robin: The Chiller e nel 2010 la Great American Scream Machine. L’ultima a chiudere è stata Rolling Thunder, nel 2013, in funzione dal 1979.
 
 Nel 2012 il Wild Safari è stato unito al parco in un unico complesso. Cedar Fair e Six Flags hanno chiuso la loro fusione il 1° luglio 2024. Il presidente del parco di Great Adventure è Mike Fehnel.
 
