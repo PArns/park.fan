@@ -17,3 +17,13 @@ export function addDays(isoDate: string, days: number): string {
   d.setUTCDate(d.getUTCDate() + days);
   return d.toISOString().slice(0, 10);
 }
+
+/**
+ * Whole calendar days from `from` to `to`, negative where `to` is earlier: a count of nights, from
+ * noon UTC on both sides, so the difference is whole by construction.
+ */
+export function daysBetween(from: string, to: string): number {
+  const start = Date.parse(`${from}T12:00:00Z`);
+  const end = Date.parse(`${to}T12:00:00Z`);
+  return Math.round((end - start) / 86_400_000);
+}

@@ -324,6 +324,7 @@ When the nowcast says it is time to go under a roof: the trigger for the covered
 
 - `parkDayOf` _function_: The calendar day an instant falls on in the park's zone, as `YYYY-MM-DD` (what `ScheduleItem.date` and `CalendarDay.date` carry, and what compares correctly as a string).
 - `addDays` _function_: `YYYY-MM-DD` plus `days`, calendar-safe: noon UTC on a plain date, so no zone or DST moves it.
+- `daysBetween` _function_: Whole calendar days from `from` to `to`, negative where `to` is earlier: a count of nights, from noon UTC on both sides, so the difference is whole by construction.
 
 ### [`park-utils.ts`](../../lib/utils/park-utils.ts)
 
@@ -431,8 +432,9 @@ Route guards for the `/[locale]/...` tree.
 - `isTodayAhead` _function_: Whether today can still be visited at `nowMs`: today's hours have not closed yet.
 - `nextParkOpening` _function_: The next opening a shut park has ahead of `nowMs`: today's, while it is still to come, else the next operating day's.
 - `formatParkOpening` _function_: `nextParkOpening` in words: „Öffnet um 09:00 Uhr" today, „Öffnet am 15. März" on a later day. `opensAt` is `parks.opensAt` with the clock time filled in, `opensOn` the `parks.opensOn` string.
+- `formatParkOpeningCountdown` _function_: How far off `nextParkOpening` is: „in 1:30 Stunden" for an opening today, „in 45 Minuten" inside the last hour, „in 2 Tagen" for a later day.
 - `getScheduleMessage` _function_: The schedule line for a park card (opening soon, closing at, off season), drawn by `ParkCardScheduleFooter`.
-- Types: `ScheduleSummary`, `ParkOpening`
+- Types: `ScheduleSummary`, `ParkOpening`, `ParkOpeningCountdownStrings`
 
 ### [`scroll-when-settled.ts`](../../lib/utils/scroll-when-settled.ts)
 
@@ -486,6 +488,10 @@ The earliest showtime of `show` that is still ahead of `nowMs`, in epoch ms, or 
 - `formatRiderHeight` _function_: Rider height from a centimetres value: "140 cm" / "55 in".
 - `formatDuration` _function_: Ride duration from seconds: „2:20", the same in every unit system.
 - Types: `TemperatureUnit`
+
+### [`text-box.ts`](../../lib/utils/text-box.ts)
+
+- `CAPS_CENTRED_CLASS` _const_: A line of text trimmed to cap height and baseline (`text-box`), then padded back out to its line height: the box keeps its height, and capitals and figures sit in its middle instead of high in Geist's line box.
 
 ### [`text-fold.ts`](../../lib/utils/text-fold.ts)
 
