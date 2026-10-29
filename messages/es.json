@@ -1145,7 +1145,7 @@
     "calendarPage": {
       "breadcrumb": "Calendario de tiempos de espera",
       "h1Suffix": "Tiempos de espera en {month}",
-      "metaTitle": "{park}: afluencia y tiempos de espera en {month}",
+      "metaTitle": "{park}: calendario de afluencia en {month}",
       "metaTitleShort": "{park}: afluencia en {month}",
       "metaTitleBare": "{park}: {month}",
       "metaDescription": "¿Cuándo está tranquilo {park} en {city}? Afluencia día a día, horarios, vacaciones escolares y tiempo para los próximos meses, con previsión de IA diaria.",
@@ -1850,10 +1850,10 @@
     "parks": {
       "title": "Parques temáticos del mundo: espera y mapa",
       "description": "Compara tiempos de espera, estado y afluencia de parques como Disney World, Disneyland, Universal Studios y Europa-Park.",
-      "metaDescriptionTemplate": "Tiempos de espera en vivo y calendario para {park} en {city}. Pronóstico de hoy, mejores días y horarios de apertura.",
+      "metaDescriptionTemplate": "Tiempos de espera en vivo y calendario para {park} en {city}. Pronóstico de hoy, clima, mejores días y horarios de apertura.",
       "titleTemplate": "{park} Tiempos de Espera LIVE – {city}",
       "titleTemplateNoCity": "{park} – Tiempos de Espera LIVE & Afluencia",
-      "metaDescriptionTemplateNoCity": "Tiempos de espera en vivo y calendario para {park}. Pronóstico de hoy, mejores días y horarios de apertura.",
+      "metaDescriptionTemplateNoCity": "Tiempos de espera en vivo y calendario para {park}. Pronóstico de hoy, clima, mejores días y horarios de apertura.",
       "keywordWaitTimes": "tiempos de espera",
       "keywordCrowdCalendar": "calendario de afluencia",
       "keywordBestTime": "mejor época para visitar",

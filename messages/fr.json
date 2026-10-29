@@ -1145,7 +1145,7 @@
     "calendarPage": {
       "breadcrumb": "Calendrier des temps d’attente",
       "h1Suffix": "Temps d’attente en {month}",
-      "metaTitle": "{park} : affluence et temps d’attente en {month}",
+      "metaTitle": "{park} : calendrier d’affluence en {month}",
       "metaTitleShort": "{park} : affluence en {month}",
       "metaTitleBare": "{park} : {month}",
       "metaDescription": "Quand {park} à {city} est-il calme ? Affluence jour par jour, horaires, vacances scolaires et météo pour les mois à venir, avec prévision IA.",
