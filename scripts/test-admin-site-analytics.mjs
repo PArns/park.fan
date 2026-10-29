@@ -1,7 +1,7 @@
 /**
  * Unit tests for the pure half of the traffic dashboards (`lib/admin/site-analytics.ts`): the
  * window and language a URL may ask for, the change against the window before, the words for the
- * API's closed lists, and the matrices the search page is drawn from.
+ * API's closed lists, and the matrices the search and the planner pages are drawn from.
  *
  * Run: pnpm test:admin-site-analytics
  */
@@ -10,6 +10,10 @@ import {
   BROWSE_ITEM_LABEL,
   EVENT_INFO,
   PAGE_TYPE_LABEL,
+  isPlannerEvent,
+  plannerItemMatrix,
+  plannerPageTypeMatrix,
+  plannerWizardRows,
   RESULT_KIND_LABEL,
   SEARCH_SURFACES,
   SURFACE_LABEL,
@@ -745,6 +749,69 @@ test('a window the API could not read in full says from which day the hourly row
   ]) {
     assert.doesNotMatch(hourlyNotice(hourlyFrom, from), /\b(Sie|Ihr|Ihre)\b/);
   }
+});
+
+const planner = {
+  wizardSteps: [
+    { value: 'setup', count: 30 },
+    { value: 'date', count: 50 },
+  ],
+  wizardFinished: 20,
+  items: [
+    { action: 'added', kind: 'ride', source: 'search', count: 40 },
+    { action: 'added', kind: 'show', source: 'show_picker', count: 9 },
+    { action: 'added', kind: 'ride', source: 'add_button', count: 60 },
+    { action: 'removed', kind: 'block', source: 'keyboard', count: 3 },
+  ],
+  byPageTypeAndDevice: [
+    { pageType: 'park', device: 'desktop', opened: 12 },
+    { pageType: 'home', device: 'mobile', opened: 30 },
+  ],
+};
+
+test('the wizard keeps its order, a step nobody reached at 0, and measures reach by the busiest', () => {
+  assert.deepEqual(plannerWizardRows(planner), [
+    { key: 'park', count: 0, reach: 0 },
+    { key: 'date', count: 50, reach: 1 },
+    { key: 'setup', count: 30, reach: 0.6 },
+    { key: 'headliners', count: 0, reach: 0 },
+    { key: 'finished', count: 20, reach: 0.4 },
+  ]);
+});
+
+test('the block matrix is one action, controls by count and every kind of block', () => {
+  const added = plannerItemMatrix(planner, 'added');
+  assert.deepEqual(added.columns, ['ride', 'show', 'block']);
+  assert.deepEqual(
+    added.rows.map((row) => [row.key, row.cells]),
+    [
+      ['add_button', [60, 0, 0]],
+      ['search', [40, 0, 0]],
+      ['show_picker', [0, 9, 0]],
+    ]
+  );
+  assert.deepEqual(
+    plannerItemMatrix(planner, 'removed').rows.map((row) => row.key),
+    ['keyboard']
+  );
+});
+
+test('the planner page types keep the site order and every device class', () => {
+  const matrix = plannerPageTypeMatrix(planner);
+  assert.deepEqual(matrix.columns, ['mobile', 'tablet', 'desktop']);
+  assert.deepEqual(
+    matrix.rows.map((row) => row.key),
+    ['home', 'park']
+  );
+});
+
+test('a way into the planner reads in German, and so does a day begun with it shut', () => {
+  assert.equal(propValueLabel('source', 'park-header'), '„Tag planen“ im Park-Kopf');
+  assert.equal(propValueLabel('source', 'none'), 'Planer zu');
+  assert.equal(propValueLabel('source', 'search'), 'Suche im Planer');
+  assert.equal(isPlannerEvent('plan_item_added'), true);
+  assert.equal(isPlannerEvent('planner_opened'), true);
+  assert.equal(isPlannerEvent('share_clicked'), false);
 });
 
 console.log(`\n${passed} cases passed.`);

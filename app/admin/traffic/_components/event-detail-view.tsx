@@ -3,7 +3,7 @@
 import { useCallback } from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
-import { ArrowLeft, ListChecks, MapPin, Search } from 'lucide-react';
+import { ArrowLeft, CalendarDays, ListChecks, MapPin, Search } from 'lucide-react';
 import {
   breakdownValueLabel,
   crosstabDimensions,
@@ -17,6 +17,7 @@ import {
   eventLabel,
   formatCount,
   formatShare,
+  isPlannerEvent,
   isSearchEvent,
   propLabel,
   propValueLabel,
@@ -208,6 +209,20 @@ export function EventDetailView({ name }: { name: string }) {
                 Alle Suchfelder im Vergleich
                 <span className="text-muted-foreground block text-xs">
                   Hero oder Header, von welcher Seite, auf welchem Gerät
+                </span>
+              </span>
+            </Link>
+          )}
+          {isPlannerEvent(name) && (
+            <Link
+              href={`/admin/traffic/planner?${trafficQuery(filters)}`}
+              className="border-border/60 bg-muted/20 hover:border-primary/40 flex items-center gap-2 rounded-lg border p-3 text-sm transition-colors sm:col-span-2"
+            >
+              <CalendarDays className="text-primary h-4 w-4 shrink-0" aria-hidden="true" />
+              <span>
+                Der Tagesplaner im Ganzen
+                <span className="text-muted-foreground block text-xs">
+                  Wege hinein, Assistent, eingeplante Fahrgeschäfte, Teilen
                 </span>
               </span>
             </Link>

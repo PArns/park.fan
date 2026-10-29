@@ -19,7 +19,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`admin-site-analytics.ts`](../../lib/api/admin-site-analytics.ts)
 
-- Types: `AnalyticsWindow`, `AnalyticsTotals`, `SeriesInterval`, `SeriesPoint`, `TrafficOverview`, `BreakdownDimension`, `BreakdownMeasure`, `BreakdownResponse`, `BreakdownItem`, `EventsResponse`, `EventEntity`, `EventDetailResponse`, `CrosstabResponse`, `SearchOverview`, `SeoLandingPage`, `SeoLandingPagesResponse`, `SeoTrendPage`, `SeoTrendsResponse`, `SeoNotFoundResponse`, `SeoUncoveredResponse`, `LiveMinute`, `LiveTraffic`
+- Types: `AnalyticsWindow`, `AnalyticsTotals`, `SeriesInterval`, `SeriesPoint`, `TrafficOverview`, `BreakdownDimension`, `BreakdownMeasure`, `BreakdownResponse`, `BreakdownItem`, `EventsResponse`, `EventEntity`, `EventDetailResponse`, `CrosstabResponse`, `SearchOverview`, `PlannerEntity`, `PlannerOverview`, `SeoLandingPage`, `SeoLandingPagesResponse`, `SeoTrendPage`, `SeoTrendsResponse`, `SeoNotFoundResponse`, `SeoUncoveredResponse`, `LiveMinute`, `LiveTraffic`
 
 ### [`admin-stats.ts`](../../lib/api/admin-stats.ts)
 

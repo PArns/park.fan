@@ -40,8 +40,9 @@ export type PlannerEventSender = <N extends keyof SiteEventMap>(
 const sendToSite: PlannerEventSender = (name, props, entity) =>
   (trackSiteEvent as (name: string, props: object, entity?: string) => void)(name, props, entity);
 
-/** Whether the panel is up, and whether a day gained its first block since it came up. */
+/** Whether the panel is up, the way it came up, and whether a day gained its first block since. */
 let openingActive = false;
+let openingSource: PlannerOpenedSource = 'tab';
 let openingStartedADay = false;
 
 /**
@@ -51,6 +52,7 @@ let openingStartedADay = false;
  */
 export function trackPlannerOpened(source: PlannerOpenedSource): void {
   openingActive = true;
+  openingSource = source;
   openingStartedADay = false;
   trackSiteEvent('planner_opened', { source });
 }
@@ -68,13 +70,18 @@ export function trackPlannerClosed(): void {
 
 /**
  * Counts `plan_day_started` when a park and date gain their first block, not on finishing the
- * wizard and not per added ride, and marks the running opening as having started a day. A day
- * started while the panel is closed belongs to no opening. The park's UUID goes with it where a
- * page named one, which is what ranks the most planned parks.
+ * wizard and not per added ride, and marks the running opening as having started a day. Its
+ * `source` is that opening's way in, which tells the admin which way in leads to a plan; a day
+ * started while the panel is closed belongs to no opening and says `none`. The park's UUID goes
+ * with it where a page named one, which is what ranks the most planned parks.
  */
 export function trackPlanDayStarted(parkSlug?: string): void {
   if (openingActive) openingStartedADay = true;
-  sendToSite('plan_day_started', {}, parkIdOf(parkSlug));
+  sendToSite(
+    'plan_day_started',
+    { source: openingActive ? openingSource : 'none' },
+    parkIdOf(parkSlug)
+  );
 }
 
 /** What a stored block is, and the slug its entity is looked up by. */

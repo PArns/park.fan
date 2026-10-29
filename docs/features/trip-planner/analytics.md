@@ -70,7 +70,31 @@ or the show and never the park, so the ranking of planned rides holds rides only
 comes from the park events (`plan_day_started` above all). Nothing here is about the visitor:
 counts per day, like every other event.
 
+## In the admin
+
+`/admin/traffic/planner` („Tagesplaner", in the sidebar and in ⌘K) reads
+`GET /v1/admin/analytics/planner` (`PlannerOverview` in `lib/api/admin-site-analytics.ts`) under the
+same window, language, filters and data-centre switch as the other traffic pages:
+
+- the funnel from opening to a begun, optimised and shared plan. The start rate counts only the
+  days begun in an opening; optimising and sharing can happen any number of times, so they read as
+  counts per begun plan and not as shares. Beside them the openings closed empty and the days begun
+  with the panel shut;
+- the ways in, each with the days begun in such an opening. That is what `plan_day_started`'s
+  `source` is for: `trackPlanDayStarted` sends the running opening's way in, `none` with the panel
+  shut, which a ride page's „Zum Plan" can do;
+- where the planner is opened from, page type by device;
+- the wizard's steps, measured against the busiest step, since a seeded wizard skips the first;
+- the blocks put in and taken out, control by kind; the tools; sharing and push;
+- the parks most days are begun for and the rides most often added, each name into its editor;
+- the series of openings, begun plans and optimisations.
+
+The words for the values are `PLANNER_VALUE_LABEL` in `lib/admin/site-analytics.ts`, the ways in
+typed by `PlannerOpenedSource`, so a new way in fails the build until it has its German. The MCP
+tool `planner_report` answers the same report for an assistant.
+
 ## Checks
 
-`pnpm test:planner-events` pins the wizard's once-per-opening counting, the entity rules and the
-lever names; `pnpm test:umami-events` keeps the open/close funnel.
+`pnpm test:planner-events` pins the wizard's once-per-opening counting, the entity rules, the lever
+names and the way in on `plan_day_started`; `pnpm test:admin-site-analytics` pins the page's
+matrices and words; `pnpm test:umami-events` keeps the open/close funnel.

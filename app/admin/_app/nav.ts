@@ -3,6 +3,7 @@ import {
   Archive,
   Brain,
   Camera,
+  CalendarDays,
   CalendarRange,
   Copy,
   Flame,
@@ -219,6 +220,13 @@ const NAV_GROUPS: NavGroup[] = [
         icon: Search,
         description: 'Hero oder Header, von welcher Seite, auf welchem Gerät',
         keywords: ['hero', 'header', 'suchfeld', 'suchen', 'treffer', 'tastenkürzel'],
+      },
+      {
+        href: '/admin/traffic/planner',
+        label: 'Tagesplaner',
+        icon: CalendarDays,
+        description: 'Wege in den Planer, Assistent, eingeplante Fahrgeschäfte, Teilen',
+        keywords: ['planer', 'tagesplaner', 'plan', 'assistent', 'optimieren', 'teilen', 'funnel'],
       },
       {
         href: '/admin/popularity',

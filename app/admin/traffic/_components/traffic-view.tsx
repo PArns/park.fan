@@ -1,7 +1,15 @@
 'use client';
 
 import Link from 'next/link';
-import { BarChart3, Flame, ListChecks, Search, TrendingUp, Radar } from 'lucide-react';
+import {
+  BarChart3,
+  CalendarDays,
+  Flame,
+  ListChecks,
+  Search,
+  TrendingUp,
+  Radar,
+} from 'lucide-react';
 import { hasTraffic, hasVisitFilter, unsupportedReason } from '@/lib/admin/site-analytics';
 import type {
   BreakdownDimension,
@@ -81,6 +89,12 @@ export function TrafficView() {
             className="text-primary flex items-center gap-1 hover:underline max-sm:hidden"
           >
             <Search className="h-3.5 w-3.5" /> Suche
+          </Link>
+          <Link
+            href="/admin/traffic/planner"
+            className="text-primary flex items-center gap-1 hover:underline max-sm:hidden"
+          >
+            <CalendarDays className="h-3.5 w-3.5" /> Planer
           </Link>
           <Link
             href="/admin/popularity"

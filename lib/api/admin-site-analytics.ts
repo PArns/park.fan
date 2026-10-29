@@ -262,6 +262,72 @@ export interface SearchOverview extends AnalyticsWindow {
   series: { day: string; surface: string; opened: number; partial?: boolean }[];
 }
 
+/** A planner count by one property's value; `none` for an event sent without it. */
+interface PlannerCount {
+  value: string;
+  count: number;
+}
+
+/** A park or ride the planner named as its entity; `name` and `url` are `null` once it is gone. */
+export interface PlannerEntity {
+  id: string;
+  name: string | null;
+  /** Frontend path without a locale. */
+  url: string | null;
+  count: number;
+}
+
+/**
+ * `GET /v1/admin/analytics/planner`: the trip planner's funnel and steps over its events. A merged
+ * park or ride is counted for the one it was merged into.
+ */
+export interface PlannerOverview extends AnalyticsWindow {
+  funnel: {
+    opened: number;
+    /** Every day that got its first block, however it began. */
+    started: number;
+    optimized: number;
+    /** `share_clicked` with target `trip_plan`. */
+    shared: number;
+    closedEmpty: number;
+    /** Days begun in an opening of the panel. */
+    startedInOpening: number;
+    /**
+     * Days begun with the panel shut, from a ride page's button. A day sent before the site named
+     * the way in is in neither this nor `startedInOpening`.
+     */
+    startedPanelShut: number;
+    /** startedInOpening / opened, at most 1. */
+    startRate: number;
+    /** optimized / started: optimisations per started day, not a share, so it can exceed 1. */
+    optimizedPerStarted: number;
+    /** shared / started: shares per started day, not a share, so it can exceed 1. */
+    sharedPerStarted: number;
+  };
+  /** Every way in seen, the most opened first; `started` counts the days begun in such an opening. */
+  sources: { source: string; opened: number; started: number; startRate: number }[];
+  /** Openings that reached each wizard step. */
+  wizardSteps: PlannerCount[];
+  wizardFinished: number;
+  wizardWithHeadliners: number;
+  items: { action: 'added' | 'removed'; kind: string; source: string; count: number }[];
+  /** `plan_optimized` by mode. */
+  optimized: PlannerCount[];
+  fitOpened: PlannerCount[];
+  fitLevers: PlannerCount[];
+  undo: PlannerCount[];
+  dayCleared: number;
+  sharedOpened: PlannerCount[];
+  sharedAdopted: number;
+  pushOn: number;
+  byPageTypeAndDevice: { pageType: string; device: string; opened: number }[];
+  series: { day: string; partial?: boolean; opened: number; started: number; optimized: number }[];
+  /** Parks by days started, at most 20. */
+  topParks: PlannerEntity[];
+  /** Rides by times added, at most 20. */
+  topRides: PlannerEntity[];
+}
+
 /** A page of the SEO views: where it is, what kind it is, and how it did against the window before. */
 export interface SeoLandingPage {
   path: string;

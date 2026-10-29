@@ -1,4 +1,5 @@
 import { API_ORIGIN } from '@/lib/api/client';
+import type { PlannerOpenedSource } from '@/lib/planner/ui-store';
 import { ForegroundTimer } from '@/lib/analytics/foreground-timer';
 import { analyticsOptedOut, isAnalyticsHost } from '@/lib/analytics/opt-out';
 import { locales, type Locale } from '@/i18n/config';
@@ -161,20 +162,12 @@ export interface SiteEventMap {
   ride_alert_removed: NoProps;
   show_follow_add: { source: 'card' | 'panel' };
   show_follow_remove: NoProps;
-  planner_opened: {
-    source:
-      | 'tab'
-      | 'header'
-      | 'park-header'
-      | 'calendar-day'
-      | 'wizard'
-      | 'plan-list'
-      | 'shared-link'
-      | 'home-hero'
-      | 'kids-page';
-  };
-  /** A park and date got their first block; the park's UUID as entity where a page named it. */
-  plan_day_started: NoProps;
+  planner_opened: { source: PlannerOpenedSource };
+  /**
+   * A park and date got their first block; `source` is the way into the opening it happened in,
+   * `none` with the panel shut. The park's UUID as entity where a page named it.
+   */
+  plan_day_started: { source: PlannerOpenedSource | 'none' };
   plan_optimized: { mode: PlanOptimizeMode };
   planner_closed_empty: NoProps;
   /** A wizard step on screen, the first time in an opening; the park as entity once picked. */

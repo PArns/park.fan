@@ -17,7 +17,9 @@ import {
   trackPlanItemAdded,
   trackPlanItemRemoved,
   trackPlanOptimized,
+  trackPlannerClosed,
   trackPlannerFitLever,
+  trackPlannerOpened,
   trackSharedPlanOpened,
 } from '../lib/analytics/planner-funnel.ts';
 import {
@@ -164,6 +166,25 @@ await test('plan_day_started reaches the collector with the park as its entity',
   assert.equal(named.name, 'plan_day_started');
   assert.equal(named.entity, PARK);
   assert.equal('entity' in unnamed, false);
+});
+
+await test('plan_day_started names the way into its opening, and none with the panel shut', async () => {
+  flushSiteAnalytics();
+  browser();
+  trackPlannerClosed();
+  trackPlanDayStarted('efteling');
+  trackPlannerOpened('park-header');
+  trackPlanDayStarted('efteling');
+  trackPlannerClosed();
+  flushSiteAnalytics();
+  assert.deepEqual(
+    (await hits()).map((hit) => [hit.name, hit.props]),
+    [
+      ['plan_day_started', { source: 'none' }],
+      ['planner_opened', { source: 'park-header' }],
+      ['plan_day_started', { source: 'park-header' }],
+    ]
+  );
 });
 
 console.log(`\n${passed} assertions passed.`);

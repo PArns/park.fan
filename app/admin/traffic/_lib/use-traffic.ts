@@ -5,12 +5,14 @@ import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { keepPreviousData } from '@tanstack/react-query';
 import type { Locale } from '@/i18n/config';
 import {
+  parseDatacenterScope,
   parseTrafficFilters,
   parseTrafficLocale,
   serializeTrafficFilters,
   toggleTrafficFilter,
   trafficQuery,
   withoutTrafficFilter,
+  type DatacenterScope,
   type FilterDimension,
   type TrafficFilter,
 } from '@/lib/admin/site-analytics';
@@ -40,6 +42,8 @@ export interface TrafficFilters {
   activeInterval: SeriesInterval;
   locale: Locale | null;
   filters: TrafficFilter[];
+  /** Which rows count by network; `exclude`, the API's default, unless the address says. */
+  datacenter: DatacenterScope;
 }
 
 /** What the filter bar and the panels change. */
@@ -48,6 +52,7 @@ export interface TrafficFilterActions {
   /** `null` goes back to the default step of the window. */
   setInterval: (interval: SeriesInterval | null) => void;
   setLocale: (locale: Locale | null) => void;
+  setDatacenter: (datacenter: DatacenterScope) => void;
   /** Sets the filter of a dimension, replaces it, or takes it off when it is already that value. */
   toggleFilter: (dim: FilterDimension, value: string) => void;
   removeFilter: (dim: FilterDimension) => void;
@@ -94,6 +99,7 @@ export function useTrafficFilters(): TrafficFilters & TrafficFilterActions {
   const interval =
     isInterval(askedInterval) && askedInterval === activeInterval ? askedInterval : null;
   const locale = parseTrafficLocale(params.get('locale'));
+  const datacenter = parseDatacenterScope(params.get('datacenter'));
   const filterParams = params.getAll('filter');
   // The strings, not the array, key the memo: `getAll` is a new array on every render.
   const filterKey = filterParams.join('\u0000');
@@ -117,6 +123,7 @@ export function useTrafficFilters(): TrafficFilters & TrafficFilterActions {
     activeInterval,
     locale,
     filters,
+    datacenter,
     setRange: useCallback(
       (value) =>
         write((next) => {
@@ -146,6 +153,14 @@ export function useTrafficFilters(): TrafficFilters & TrafficFilterActions {
         }),
       [write]
     ),
+    setDatacenter: useCallback(
+      (value) =>
+        write((next) => {
+          if (value === 'exclude') next.delete('datacenter');
+          else next.set('datacenter', value);
+        }),
+      [write]
+    ),
     toggleFilter: useCallback(
       (dim, value) => writeFilters(toggleTrafficFilter(filters, dim, value)),
       [filters, writeFilters]
@@ -164,6 +179,7 @@ function hasSeries(endpoint: string): boolean {
     endpoint === 'overview' ||
     endpoint === 'events' ||
     endpoint === 'search' ||
+    endpoint === 'planner' ||
     /^events\/[^/]+$/.test(endpoint)
   );
 }
@@ -177,6 +193,7 @@ function analyticsPath(
   state: Pick<TrafficFilters, 'range' | 'locale'> & {
     interval?: SeriesInterval | null;
     filters?: readonly TrafficFilter[];
+    datacenter?: DatacenterScope;
   },
   extra?: Record<string, string | number>
 ): string {

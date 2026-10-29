@@ -817,6 +817,10 @@ Route `/admin/system` (page).
 - `useShowMore` _hook_: The first `LIST_SHOWN` rows of a list, or all of them once opened, with the props for its `MoreButton` and a way to fold it again when the list changes underneath.
 - `LIST_SHOWN` _const_: Rows shown before the rest of a list waits behind a button.
 
+### [`traffic/_components/planner-view.tsx`](../../app/admin/traffic/_components/planner-view.tsx)
+
+- `PlannerView` _component_: `/admin/traffic/planner`: the trip planner from opening to sharing.
+
 ### [`traffic/_components/range-picker.tsx`](../../app/admin/traffic/_components/range-picker.tsx)
 
 - `RangePicker` _component_: The window of every traffic page: a button that names it and opens the presets (today, yesterday, the last 7, 28 or 90 days, this and last week, this and last month, 12 months) and a custom first and last day.
@@ -917,7 +921,7 @@ Route `/admin/traffic/events/[name]` (page).
 
 ### [`traffic/live/_lib/use-live-traffic.ts`](../../app/admin/traffic/live/_lib/use-live-traffic.ts)
 
-- `useLiveTraffic` _hook_: The live counters for one language or all, asked every five seconds while the tab is in front and not at all while it is hidden, which is how React Query's interval behaves by default.
+- `useLiveTraffic` _hook_: The live counters for one language or all, without the data centres' readers unless `datacenter` says otherwise, asked every five seconds while the tab is in front and not at all while it is hidden, which is how React Query's interval …
 
 ### [`traffic/live/page.tsx`](../../app/admin/traffic/live/page.tsx)
 
@@ -931,6 +935,13 @@ Route `/admin/traffic/live` (page).
 Route `/admin/traffic` (page).
 
 - `default (TrafficPage)` _component_: The admin's traffic overview. The view reads the window and language from the address, which needs a `Suspense` boundary above it.
+- `metadata` _const_
+
+### [`traffic/planner/page.tsx`](../../app/admin/traffic/planner/page.tsx)
+
+Route `/admin/traffic/planner` (page).
+
+- `default (PlannerTrafficPage)` _component_: The admin's planner dashboard: how the trip planner is opened, how far it leads and what goes into the plans. The view reads the window and language from the address, under a `Suspense` boundary.
 - `metadata` _const_
 
 ### [`traffic/search/page.tsx`](../../app/admin/traffic/search/page.tsx)

@@ -243,12 +243,17 @@ export function DatenschutzEN() {
           class (phone, tablet or computer), for example Safari, iOS and phone. The device class
           comes from the user agent alone, not from the size of your window or screen. From the IP
           address it works out the country, and from the first language in the header of the request
-          the browser language as a two-letter code (for example <code>de</code>). From the user
-          agent it also tells whether a bot is asking, and from the IP address and the user agent it
-          forms an ID that is valid for one day only (see below). We do not store the IP address or
-          the user agent themselves, neither in the database nor in working memory nor in the logs
-          of the statistics. The server uses them only for this one request. On the way to it,
-          Cloudflare processes the IP address (see section 2).
+          the browser language as a two-letter code (for example <code>de</code>). From the IP
+          address it also looks up, in a database on our server (GeoLite2-ASN by MaxMind), which
+          network the address belongs to, and records only whether that is the network of a data
+          centre, such as a cloud or a hosting provider. Such requests mostly come from programs
+          rather than people. We keep counting them but show them separately in our reports. Which
+          network it was is not stored. From the user agent it also tells whether a bot is asking,
+          and from the IP address and the user agent it forms an ID that is valid for one day only
+          (see below). We do not store the IP address or the user agent themselves, neither in the
+          database nor in working memory nor in the logs of the statistics. The server uses them
+          only for this one request. On the way to it, Cloudflare processes the IP address (see
+          section 2).
         </p>
         <p>
           The database holds only rows of counters, each for one full hour (UTC) and never for a
@@ -261,11 +266,13 @@ export function DatenschutzEN() {
           selection. The server deletes these as whole weekly parts of the table too, after 400
           days, so they stay for up to 407 days. After 400 days it also deletes the visitor counts
           (one number per day and per hour, in total and per language) and those per country,
-          device, browser, operating system and channel (one number per day, language and value). We
-          keep the daily counts that long because we compare seasons from one year to the next, such
-          as holidays and openings. For a page that few people visit, a row can stand for a single
-          view. It holds no ID and no moment, but the hour and the details named below about page,
-          device, country and browser language. There are four kinds of row:
+          device, browser, operating system and channel (one number per day, language and value).
+          Visitors from data centres are counted separately. We keep the daily counts that long
+          because we compare seasons from one year to the next, such as holidays and openings. For a
+          page that few people visit, a row can stand for a single view. It holds no ID and no
+          moment, but the hour and the details named below about page, device, country and browser
+          language. Every row also records whether the request came from a data centre. There are
+          four kinds of row:
         </p>
         <LegalList>
           <li>

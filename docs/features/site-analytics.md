@@ -111,19 +111,20 @@ from the visitor's location: `nearby_parks_loaded` and the compass events carry 
 
 ## The admin
 
-Four pages, German like the rest of the admin, in the sidebar, in ⌘K and on `g` `t`, `g` `l`, `g` `o`
-and `g` `u`. The admin home carries a tile with the visitors of today and how many are on the site,
+The pages are German like the rest of the admin. Traffic, Live, SEO, Suche and Tagesplaner are in
+the sidebar and in ⌘K, the first four also on `g` `t`, `g` `l`, `g` `o` and `g` `u`. The admin home carries a tile with the visitors of today and how many are on the site,
 the second figure a link to the live view.
 Every call goes through the admin proxy as `/api/admin/analytics/…`, which maps to
 `/v1/admin/analytics/…` ([the admin holds no credential](../rules/the-admin-holds-no-credential.md)).
 
-| Page                    | Shows                                                                                                                                                                                                                                                                                                                                                                                           |
-| ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Traffic                 | eight figures against the window before (visitors, visits, views, bounce rate, visit duration, time on the page and more), who is on now, a series of any of them as a chart or a table, channels, referrers, pages with exits, entry and exit pages, countries as a list and a map, languages, browser languages, devices, browsers, systems, a crosstab of any two dimensions and every event |
-| Event (`events/<name>`) | one event's properties and values, the combinations sent together, a crosstab of any two dimensions, page types, devices, the parks, rides, shows and restaurants behind it, its days                                                                                                                                                                                                           |
-| SEO (`traffic/seo`)     | what Google reports (queries and pages from the Search Console), the pages visits begin on from search engines and from AI assistants, the pages gaining and losing, 404 addresses with their referrers, parks and rides no search visit reached                                                                                                                                                |
-| Suche                   | hero against header, every search field side by side, a field by page type and by device, result kinds, positions, the resting list, the days                                                                                                                                                                                                                                                   |
-| Live (`traffic/live`)   | who is on the site now, a map of the last five minutes, the last 30 minutes by the minute, pages, events, channels, referrers, countries and devices, every five seconds                                                                                                                                                                                                                        |
+| Page                            | Shows                                                                                                                                                                                                                                                                                                                                                                                           |
+| ------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Traffic                         | eight figures against the window before (visitors, visits, views, bounce rate, visit duration, time on the page and more), who is on now, a series of any of them as a chart or a table, channels, referrers, pages with exits, entry and exit pages, countries as a list and a map, languages, browser languages, devices, browsers, systems, a crosstab of any two dimensions and every event |
+| Event (`events/<name>`)         | one event's properties and values, the combinations sent together, a crosstab of any two dimensions, page types, devices, the parks, rides, shows and restaurants behind it, its days                                                                                                                                                                                                           |
+| SEO (`traffic/seo`)             | what Google reports (queries and pages from the Search Console), the pages visits begin on from search engines and from AI assistants, the pages gaining and losing, 404 addresses with their referrers, parks and rides no search visit reached                                                                                                                                                |
+| Suche                           | hero against header, every search field side by side, a field by page type and by device, result kinds, positions, the resting list, the days                                                                                                                                                                                                                                                   |
+| Tagesplaner (`traffic/planner`) | the planner from opening to sharing: the funnel, the ways in and which of them lead to a plan, page type by device, the wizard's steps, blocks in and out, the tools, sharing and push, the parks and rides planned most, the days ([what the planner counts](trip-planner/analytics.md#in-the-admin))                                                                                          |
+| Live (`traffic/live`)           | who is on the site now, a map of the last five minutes, the last 30 minutes by the minute, pages, events, channels, referrers, countries and devices, every five seconds                                                                                                                                                                                                                        |
 
 - **Filters work like Umami's.** A press on a value in any panel filters the whole page by it: a
   channel, a referrer, a page, an entry page, a country, a language, a device, a browser,
@@ -131,6 +132,12 @@ Every call goes through the admin proxy as `/api/admin/analytics/…`, which map
   chip that takes itself off, and the event, SEO and search pages carry them too. A language is the
   language switch, not a filter. Filters combine with AND, and a second press on the same
   dimension replaces the first.
+- **Data centres are left out unless asked for.** The API marks a hit from a cloud or hosting
+  network (by the address's ASN, never stored) and leaves those hits out of every report by
+  default, since they are programs far more often than people. The switch „Rechenzentren" in the
+  filter bar and on the live page (`?datacenter=include|only`, absent for `exclude`) counts them in
+  or shows them alone; `DATACENTER_SCOPES` and `DATACENTER_LABEL` in `lib/admin/site-analytics.ts`
+  hold its values and words. The most read lists never count them.
 - **The window, the step and the language are in the address.** The window is `?days=1|7|28|90|365` (an older `days=30` still opens, but the default is 28 days)
   or `?from=2026-10-01&to=2026-10-27` (UTC days, at most 366, not after today), the step is
   `?interval=hour|day|week|month`, the language `?locale=de`, so a view is a link, and `replace`

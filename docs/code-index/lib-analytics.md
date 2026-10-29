@@ -39,7 +39,7 @@ Where an outbound link goes, the closed list of the event's `target`.
 
 - `trackPlannerOpened` _function_: Counts `planner_opened` with its `source` on the closed to open edge of the planner panel, the top of the funnel, and starts an opening. `source` is the one property, because which way in earns its place is the decision it answers.
 - `trackPlannerClosed` _function_: Counts `planner_closed_empty` when the panel closes and no day gained its first block in that opening, at most once per opening. No property: `planner_opened` already carries the way in.
-- `trackPlanDayStarted` _function_: Counts `plan_day_started` when a park and date gain their first block, not on finishing the wizard and not per added ride, and marks the running opening as having started a day. A day started while the panel is closed belongs to no opening.
+- `trackPlanDayStarted` _function_: Counts `plan_day_started` when a park and date gain their first block, not on finishing the wizard and not per added ride, and marks the running opening as having started a day.
 - `planItemOf` _function_: What a stored block is, and the slug its entity is looked up by.
 - `trackPlanItemAdded` _function_: Counts `plan_item_added`: one block into a plan, from `source`.
 - `trackPlanItemRemoved` _function_: Counts `plan_item_removed`: one block out of a plan, through `source`.
