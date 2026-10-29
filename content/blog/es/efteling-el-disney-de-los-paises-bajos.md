@@ -2,7 +2,7 @@
 title: 'Efteling: el Disney de los Países Bajos, tres años mayor que el original'
 translationKey: efteling-guide-2026
 date: '2026-08-07'
-updatedAt: '2026-10-22'
+updatedAt: '2026-10-29'
 author: patrick
 mode: published
 featured: false
@@ -37,6 +37,8 @@ seo:
     - Efteling consejos
     - Efteling mejor época para ir
     - Efteling cuándo hay menos gente
+    - Efteling días tranquilos
+    - mejor día para ir a Efteling
     - Efteling entradas precios 2026
     - Efteling pase anual
     - Efteling cómo llegar Kaatsheuvel
@@ -66,6 +68,25 @@ A [Efteling](ref:efteling?long), en Kaatsheuvel, se le llama con gusto el Disney
 de los Países Bajos, y yo mismo uso la frase. El
 bosque de los cuentos abrió el **31 de mayo de 1952** con diez escenas.
 Disneyland, en Anaheim, abrió tres años después, en julio de 1955.
+
+## ¿Cuándo está tranquilo Efteling?
+
+![Una barca llena de De Vliegende Hollander en el agua, con la torre de la atracción detrás | Domingo 20 de septiembre de 2026, sin vacaciones, y aun así todas las barcas salían llenas. En nuestra escala fue un día de mucha gente. | right](/media/efteling/de-vliegende-hollander-4x3.jpg)
+
+Efteling está más tranquilo entre semana en enero y febrero, fuera de las
+vacaciones escolares. Son los dos únicos meses que nuestras mediciones califican
+de tranquilos, y los cinco días con menos gente hasta ahora fueron todos un
+martes, miércoles o jueves de enero o febrero de 2026. El **jueves** es el día más
+tranquilo, con el martes, el miércoles y el viernes cerca. El **sábado** es el
+que más gente reúne, seguido del domingo. En el año, **diciembre** es el mes más
+duro, con Winter Efteling y las vacaciones de Navidad, y después **agosto**.
+
+Las vacaciones pesan más que el día de la semana. En la semana anterior
+a las vacaciones de carnaval neerlandesas de 2026, en las grandes montañas rusas y
+los dark rides se esperaba entre semana de diez a quince minutos de media, durante
+las vacaciones de 25 a 40. Las cifras salen de más de 300 días medidos
+desde finales de diciembre de 2025. Para una fecha concreta está el
+[calendario de los mejores días](ref:efteling?calendar).
 
 ## La fundación detrás del parque
 
@@ -308,7 +329,7 @@ desaparecen. Después podrás ver el bosque en dos porciones en dos días sin pe
 
 ## Cuánto vas a hacer cola aquí, y por qué tan poco
 
-Medimos las esperas en Efteling desde el 26 de diciembre de 2025. El análisis llega hasta finales de septiembre de 2026 y abarca **casi 190
+Medimos las esperas en Efteling desde el 26 de diciembre de 2025. El análisis llega hasta finales de octubre de 2026 y abarca **algo más de 300
 días de apertura**. Sumando todos los días de la semana, la espera típica en el
 conjunto del parque queda **por debajo de la media hora** (mediana); en los
 momentos punta es más o menos vez y media eso.
@@ -316,6 +337,8 @@ momentos punta es más o menos vez y media eso.
 ```ride-waits-widget park=efteling top=10 columns=land,peak,days highlight=joris-en-de-draak
 
 ```
+
+![La estación Marerijk del tren de vapor, con un letrero redondo con una locomotora y plantas colgantes en el borde del tejado | La estación Marerijk, una de las dos. El letrero promete vapor, pero la locomotora más antigua va con electricidad desde mayo de 2025. | left](/media/efteling/stoomtrein-marerijk-4x3.jpg)
 
 El tren de vapor aparece a menudo en esta lista. Es un tren de 1969 que da una
 vuelta al parque, entre dark rides y montañas rusas. Se debe a que
@@ -435,43 +458,46 @@ la primavera de 2026 volvió a subirse allí al escenario por su 25 aniversario.
 
 Efteling abre 365 días al año.
 
-**Por meses**, con todos los días de apertura medidos, abril y septiembre son los más tranquilos de los meses bien medidos. Mayo, junio y julio están muy juntos, agosto sube de forma
-perceptible, y el más duro es **diciembre**, es decir, la temporada Winter
-Efteling.
+**Por meses**, enero y febrero son los más tranquilos. De marzo a julio la
+afluencia sube despacio, agosto sube de forma perceptible, septiembre y octubre
+vuelven al nivel de la primavera, y el más duro es **diciembre**, es decir, la
+temporada Winter Efteling.
 
-Detrás de abril a
-agosto hay un mes entero de días medidos en cada caso, detrás de septiembre algo
-más de tres semanas, detrás de diciembre, enero y marzo solo un puñado (en
-diciembre, las vacaciones de Navidad a partir del 26), y para febrero, octubre y
-noviembre el análisis no contiene ningún día aprovechable.
-El orden de los meses es por tanto
-aproximado.
+Detrás de cada mes hay casi un mes entero de días medidos, salvo en diciembre, que
+tiene ocho, todos a final de mes en las vacaciones de Navidad, y noviembre todavía
+no aparece en el análisis. Que diciembre vaya en cabeza vale sobre todo para los
+días alrededor de Nochevieja. Cuánta gente hay un martes cualquiera de principios
+de diciembre lo sabremos cuando hayamos medido uno.
 
 ```stats-widget slug=efteling show=months
 
 ```
 
-**Por día de la semana**, las diferencias son mínimas.
+**Por día de la semana**, el jueves es el más tranquilo.
 
 ```stats-widget slug=efteling show=weekdays
 
 ```
 
-Entre el mejor y el peor día de la semana hay un solo escalón, y solo el sábado
-queda un escalón por encima del resto. Justo detrás, eso sí, viene ya el
-**lunes**, por delante del domingo. Mi
+El martes, el miércoles y el viernes quedan cerca, el fin de semana sale
+claramente más alto y el sábado aún por encima del domingo. El que se sale de la
+fila es el **lunes**, bastante más lleno que el resto de días entre semana. Mi
 explicación es el «midweek» neerlandés: los parques vacacionales alquilan de lunes
 a viernes como un bloque propio, y quien reserva así está el lunes en el parque.
-Con casi treinta días medidos por día de la semana, tampoco vendería diferencias tan pequeñas como recomendación.
 
 Más que el día de la semana cuenta si los colegios neerlandeses están de
-vacaciones, y después si lo están los alemanes.
+vacaciones, y después si lo están los alemanes y los flamencos. En la semana
+después de Semana Santa de 2026, los colegios de Renania del Norte-Westfalia y de
+Flandes estaban cerrados y los neerlandeses abiertos, y aun así el parque salió con
+mucha gente de martes a jueves.
 
 ```best-days-widget slug=efteling
 
 ```
 
 ## Fast pass, single rider y cola virtual
+
+![Ranas con partituras y un payaso con un molinillo en el sombrero en Carnaval Festival, junto a un cartel de Harmony de Kwakers | Carnaval Festival es de 1984. A finales de 2022 solo se entraba con una reserva en la app. | right](/media/efteling/carnaval-festival-4x3.jpg)
 
 Aquí no hay nada que comprar que te salte la cola, tampoco un viaje suelto a
 precio fijo como el Quick Pass de Phantasialand. Gratis hay baby switch para padres con niños pequeños,
@@ -514,6 +540,8 @@ de manos y te asigna la cola. Oficialmente, el parque no anunció nada. Loooping
 
 ## Un día en Efteling
 
+![La cabeza del dragón de Joris en de Draak sobre el agua, con niebla sobre el agua y la estructura de madera detrás | El Ruigrijk queda al fondo del parque, y por eso mismo a primera hora aquí casi no hay nadie. | left](/media/efteling/joris-en-de-draak-4x3.jpg)
+
 Al abrir, métete en el **Ruigrijk**, hasta el rincón del fondo. El camino hasta allí es largo, y por la mañana está vacío porque casi todo el mundo se para por el camino.
 Empieza por [Joris en de Draak](ref:efteling/joris-en-de-draak). Tiene la cola más
 larga del parque, y a media mañana ya es larga. Justo al lado
@@ -553,6 +581,8 @@ de 2007 metieron ahí al propio Pieck, ante su caballete.
 El **[Volk van Laaf](ref:efteling/volk-van-laaf)** es desde el 15 de junio de 1990
 un pueblo entero inventado por Ton van de Ven, con su propia aldea, el Lavenlaar,
 donde los Laven elaboran cerveza, hornean pan y dan clase.
+
+![Un barco blanco con el número 28 bajo un viejo puente de piedra con los arcos iluminados en azul, detrás árboles entre la niebla | Nochevieja de 2024. Veinte minutos de luz azul y nada más, tal como se anuncia. | right](/media/efteling/gondoletta-4x3.jpg)
 
 La **[Gondoletta](ref:efteling/gondoletta)** navega desde el 13 de abril de 1981
 con cuarenta barcas sobre 1.081 metros de agua, y una vuelta dura **veinte
@@ -692,9 +722,10 @@ Las cifras actuales están en la [página del parque Efteling](ref:efteling).
 
 ### ¿Cuándo hay menos gente en Efteling?
 
-Por meses, **abril** y **septiembre** son los más tranquilos, y el más lleno es
-**diciembre**, aunque de momento solo lo hemos medido en las vacaciones de Navidad. El día de la semana apenas influye: entre el mejor y el peor hay
-un solo escalón. Lo decisivo son las vacaciones escolares neerlandesas. Para una fecha concreta, consulta el [calendario de los mejores días](ref:efteling?calendar).
+Entre semana en **enero** y **febrero**, fuera de vacaciones, y entre los días de
+la semana el jueves. Hay más gente en las vacaciones de Navidad, en agosto y los
+sábados. Unas vacaciones escolares en los Países Bajos, en Renania del
+Norte-Westfalia o en Flandes pesan más que la elección del día. Para una fecha concreta, consulta el [calendario de los mejores días](ref:efteling?calendar).
 
 ### ¿Hay fast pass en Efteling?
 
