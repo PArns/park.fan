@@ -226,10 +226,11 @@ clicked:
   (0.21–0.30). In the park the hero moves nothing either; what remains is the compass going in under
   the hero, 0.031 at 360 and 0.15 at 390, a cost [the compass](park-compass.md) takes on purpose.
   From `md` the block stays above the field and still moves it: 0.03–0.05 at 1440 × 900.
-- **The location banner waits on a phone** until the hero is scrolled past (`LocationBanner`,
-  `HOME_HERO_ID`): the fixed toast covered parks four and five and both posts at 360 × 740 and
-  390 × 844. It is `fixed`, so its later arrival moves nothing; from `md` it sits in the corner as
-  before.
+- **The location banner shows on a phone only beside the nearby chapter** (`LocationBanner`,
+  `HOME_HERO_ID`, `NEARBY_CHAPTER_ID`): over the hero the fixed toast covered parks four and five
+  and both posts at 360 × 740 and 390 × 844, and fixed below it, it covered a fifth of every screen
+  of the rest of the page. It is `fixed`, so coming and going moves nothing; from `md` it sits in
+  the corner as before.
 - **Fewer rows than reserved**: a nearby answer shorter than five parks is filled with popular parks
   it does not list (`useHeroBrowseParks`); anything shorter still keeps the box through the rows'
   `min-height`. Without a position the API answers by GeoIP; without that, popular parks.

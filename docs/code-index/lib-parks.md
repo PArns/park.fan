@@ -10,8 +10,9 @@ by hand: change the comment in the code and re-run the script. -->
 - `historyRows` _function_: Rows the grid needs at a given column count. Constant per breakpoint, because the history is laid out today-first with no leading blanks, so the weekday the window starts on cannot change the reservation.
 - `historyListRows` _function_: Rows the two-column list below that needs.
 - `historyGridRows` _function_: Rows the seven-column grid needs above it.
-- `historyGridReservation` _function_: The two heights the placeholder reserves, the same on every day of the year. Numbers rather than a class string, because Tailwind cannot see a computed class name; the panel writes them into CSS custom properties.
+- `historyGridReservation` _function_: The three heights the placeholder reserves, the same on every day of the year. Numbers rather than a class string, because Tailwind cannot see a computed class name; the panel writes them into CSS custom properties.
 - `HISTORY_WINDOW_DAYS` _const_: Today plus the thirty days behind it: the window `AttractionHistoryGrid` builds.
+- `PHONE_HISTORY_DAYS` _const_: Days a phone (a page under 768 px) shows before its „show more" button: four rows of two. All thirty-one are sixteen rows there, eight screens of tiles.
 - Types: `HistoryGridReservation`
 
 ### [`calendar-grid-geometry.ts`](../../lib/parks/calendar-grid-geometry.ts)

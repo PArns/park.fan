@@ -1244,6 +1244,15 @@ html[data-temp-unit='F'] .u-imperial {
   display: inline;
 }
 
+/* The homepage's favorites band is an empty state for a visitor with none, and on a phone that is a
+   screen of nothing between the nearby parks and the rest. The inline favorites script in
+   app/[locale]/layout.tsx sets `data-has-favorites` before paint. */
+@container page (width < 768px) {
+  html:not([data-has-favorites]) .home-favorites {
+    display: none;
+  }
+}
+
 /* The header's °C/°F button renders both labels with the same two classes, so it agrees with
    every temperature around it from the first frame, JS or no JS. */
 

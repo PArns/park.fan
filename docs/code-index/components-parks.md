@@ -530,6 +530,7 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`park-quick-links.tsx`](../../components/parks/park-quick-links.tsx)
 
 - `ParkQuickLinks` _component_: The park's own website and ticket shop as one band, its Wikipedia entry and socials as a second, in the page header's row of links. Rendered as a fragment, so each band is an item of that row and wraps on its own.
+- `ParkOutboundLinks` _component_: Every outbound link of a park as bands of one flex row: its own links (`ParkQuickLinks`), then the way to the gate in Google and Apple Maps as a single band.
 
 ### [`park-seasons-card.tsx`](../../components/parks/park-seasons-card.tsx)
 

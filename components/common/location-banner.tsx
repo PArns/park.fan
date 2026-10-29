@@ -12,7 +12,7 @@ import {
 } from '@/lib/contexts/geolocation-context';
 import { useMounted } from '@/lib/hooks/use-mounted';
 import { useMediaQuery } from '@/lib/hooks/use-media-query';
-import { HOME_HERO_ID } from '@/lib/home/hero-search';
+import { HOME_HERO_ID, NEARBY_CHAPTER_ID } from '@/lib/home/hero-search';
 import { trackSiteEvent } from '@/lib/analytics/site-analytics';
 import { locationBannerIsQuiet } from '@/lib/utils/geolocation-permission';
 
@@ -21,20 +21,30 @@ interface LocationBannerProps {
 }
 
 /**
- * True below `md` while the homepage hero is on screen, where the toast would lie over its search
- * list. No hero element at all holds the toast too: the hero is what it waits for.
+ * True below `md` unless the nearby chapter is on screen and the hero is not. A fixed toast covers
+ * a fifth of a phone screen, so it shows only beside the parks it would sort, and never over the
+ * hero's search list. A page without either element holds it.
  */
-function useHeroHolds(): boolean {
+function usePhoneHolds(): boolean {
   const phone = useMediaQuery('(max-width: 767px)');
   const [heroOnScreen, setHeroOnScreen] = useState(true);
+  const [chapterOnScreen, setChapterOnScreen] = useState(false);
   useEffect(() => {
-    const hero = phone ? document.getElementById(HOME_HERO_ID) : null;
-    if (!hero) return;
-    const observer = new IntersectionObserver(([entry]) => setHeroOnScreen(entry.isIntersecting));
+    if (!phone) return;
+    const hero = document.getElementById(HOME_HERO_ID);
+    const chapter = document.getElementById(NEARBY_CHAPTER_ID)?.closest('section');
+    if (!hero || !chapter) return;
+    const observer = new IntersectionObserver((entries) => {
+      for (const entry of entries) {
+        if (entry.target === hero) setHeroOnScreen(entry.isIntersecting);
+        else setChapterOnScreen(entry.isIntersecting);
+      }
+    });
     observer.observe(hero);
+    observer.observe(chapter);
     return () => observer.disconnect();
   }, [phone]);
-  return phone && heroOnScreen;
+  return phone && (heroOnScreen || !chapterOnScreen);
 }
 
 /**
@@ -44,7 +54,7 @@ function useHeroHolds(): boolean {
  * Not shown once the browser has denied it: the button would do nothing, and the browser alone
  * can lift a denial. A no keeps it closed for `LOCATION_BANNER_QUIET_MS` (30 days): closing it,
  * or answering the browser's prompt with no from any page (`rememberLocationDeclined`). Below `md`
- * it waits until the hero is scrolled past, so it never covers the hero's search list.
+ * it shows only while the nearby chapter is on screen (`usePhoneHolds`).
  */
 export function LocationBanner({ ariaLabel }: LocationBannerProps) {
   const t = useTranslations('nearby');
@@ -62,7 +72,7 @@ export function LocationBanner({ ariaLabel }: LocationBannerProps) {
   // False on the server and in the hydration pass → the banner renders null there,
   // matching what the server produced. After hydration the real geolocation state takes over.
   const mounted = useMounted();
-  const heroHolds = useHeroHolds();
+  const phoneHolds = usePhoneHolds();
 
   // Dismissible: hidden for 30 days once closed (client-only, so reading localStorage in the
   // initializer is safe). One session was too short for a visitor who had said no.
@@ -83,7 +93,7 @@ export function LocationBanner({ ariaLabel }: LocationBannerProps) {
     // The browser is about to ask this visitor directly; the banner would be a second ask.
     earlierYes ||
     dismissed ||
-    heroHolds
+    phoneHolds
   ) {
     return null;
   }

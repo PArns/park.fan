@@ -214,6 +214,15 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
               "(function(){try{var m=document.cookie.match(/(?:^|; )temp_unit=([CF])/);var u=m&&m[1];if(!u){var r;try{r=new Intl.Locale(navigator.language).region}catch(e){r=(navigator.language||'').split('-')[1]}u=['US','MM','LR','BS','KY','PW'].indexOf((r||'').toUpperCase())>-1?'F':'C'}document.documentElement.setAttribute('data-temp-unit',u)}catch(e){document.documentElement.setAttribute('data-temp-unit','C')}})();",
           }}
         />
+        {/* Marks <html> before paint when the favorites cookie holds at least one id (an array
+            opening on a quote, `[` `"` URI-encoded), so the homepage can drop its empty favorites
+            band on a phone with no shift. `saveFavoritesToCookies` keeps it current. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "/(?:^|; )favorites=[^;]*%5B%22/.test(document.cookie)&&document.documentElement.setAttribute('data-has-favorites','')",
+          }}
+        />
         <OrganizationStructuredData
           description={tSeo('description')}
           image={getOgImageUrl([locale])}

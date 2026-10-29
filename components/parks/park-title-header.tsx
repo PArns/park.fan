@@ -1,18 +1,16 @@
-import { MapPin, Navigation } from 'lucide-react';
+import { MapPin } from 'lucide-react';
 import { getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
 import { translateGeoSlug } from '@/lib/utils/geo-translate';
-import { LinkBand, LinkBandLink } from '@/components/common/link-band';
 import { ParkDistance } from '@/components/common/park-distance';
 import { ParkBestDaysSummary } from '@/components/parks/park-best-days-summary';
 import { ParkFavoriteButton } from '@/components/parks/park-favorite-button';
 import { ParkLocationLine } from '@/components/parks/park-location-line';
 import { ParkPlannerLink } from '@/components/parks/park-planner-link';
-import { ParkQuickLinks } from '@/components/parks/park-quick-links';
+import { ParkOutboundLinks } from '@/components/parks/park-quick-links';
 import { RiddenCounter } from '@/components/parks/ridden-counter';
 import { catchNonFatal } from '@/lib/api/client';
 import { getParkStatsForPage } from '@/lib/api/stats';
-import { parkMapsLinks } from '@/lib/parks/maps-links';
 import { parkBrandOf } from '@/lib/parks/park-brands';
 import { deriveParkBestDays } from '@/lib/parks/park-stats-derive';
 import { isUuid, nameWithAbbreviations } from '@/lib/utils';
@@ -85,13 +83,11 @@ export async function ParkTitleHeader({
   // The planner button's sentence, resolved HERE rather than inside the button: that one is a
   // Client Component now (it opens the panel instead of navigating), and `parks` is 15.1 KB.
   const tParks = await getTranslations('parks');
-  const tInfo = await getTranslations('parks.info');
   const brand = parkBrandOf(park.name);
   const tBrand = brand ? await getTranslations(brand.namespace) : null;
   const countryLabel = translateGeoSlug(tGeo, 'countries', country, countryName);
   const cityHref = trail.find((c) => c.url === `/parks/${continent}/${country}/${city}`)?.url;
   const countryHref = trail.find((c) => c.url === `/parks/${continent}/${country}`)?.url;
-  const maps = parkMapsLinks(park.latitude, park.longitude);
   // Every park page already reads this for `hasParkStatsPage`; React `cache` and the Data Cache
   // make it the same request, so the quietest days cost no upstream call on any of them.
   const bestDays = deriveParkBestDays(
@@ -200,31 +196,21 @@ export async function ParkTitleHeader({
         render nothing at all for a park nobody has curated, and then the planner button is simply
         the row.
 
-        `flex-wrap` with NO shrink override on any child is what makes this safe on a phone: flex
+        `flex-wrap` with NO shrink override on any child is what makes this safe on a narrow page: flex
         breaks the line before it shrinks anything, so a band that no longer fits moves whole onto
         the next line, and the button onto one of its own. `ml-auto` rather than `justify-between`, because
         `justify-between` puts a lone item on that second line at the START. */}
       <div className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-3">
-        <ParkQuickLinks info={park.info} parkId={park.id} />
-        {maps && (
-          // One band holding both apps, so the way to the gate is a single item in this row and
-          // the row stays one line wherever it was one line before.
-          <LinkBand label={tInfo('directions')}>
-            <span className="text-muted-foreground flex items-center px-2.5">
-              <Navigation className="h-4 w-4 opacity-80" aria-hidden="true" />
-            </span>
-            <LinkBandLink
-              href={maps.google}
-              label="Google Maps"
-              outbound={{ target: 'maps', entity: park.id }}
-            />
-            <LinkBandLink
-              href={maps.apple}
-              label="Apple Maps"
-              outbound={{ target: 'maps', entity: park.id }}
-            />
-          </LinkBand>
-        )}
+        {/* `contents`, so the bands stay items of this row; on a phone they stand in
+          `ParkInfoCard` instead, and the planner button is the row. */}
+        <div className="contents max-sm:hidden">
+          <ParkOutboundLinks
+            info={park.info}
+            parkId={park.id}
+            latitude={park.latitude}
+            longitude={park.longitude}
+          />
+        </div>
         <ParkPlannerLink
           label={tParks('planDayCta', { park: parkName })}
           locale={locale}

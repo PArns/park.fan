@@ -48,6 +48,12 @@ interface AttractionCardProps {
   parkPath?: string;
   parkStatus?: ParkStatus;
   /**
+   * The card stands in its park's own ride list, under the status card that says once whether the
+   * park is open. While the park is closed the card then drops its status badge: the same red
+   * badge on each of a hundred cards says nothing that card has not said.
+   */
+  underParkStatus?: boolean;
+  /**
    * The ride closed for good. Its badge reads „Dauerhaft geschlossen" instead of the live status,
    * and nothing that describes a running ride (wait, crowd level, best time) is drawn. Only the
    * blog's ride references set it: every other card is built from the park payload, which carries
@@ -132,6 +138,7 @@ export function AttractionCard({
   attraction,
   parkPath,
   parkStatus,
+  underParkStatus = false,
   closedPermanently = false,
   backgroundImage: propBackgroundImage,
   objectPosition: propObjectPosition,
@@ -148,6 +155,11 @@ export function AttractionCard({
 
   const status = closedPermanently ? 'RETIRED' : getLiveAttractionStatus(attraction, parkStatus);
   const isOperatingOrUnknown = status === 'OPERATING' || status === 'UNKNOWN';
+  const parkClosed =
+    underParkStatus &&
+    parkStatus !== undefined &&
+    parkStatus !== 'OPERATING' &&
+    parkStatus !== 'UNKNOWN';
   const waitTime = isOperatingOrUnknown ? getStandbyWait(attraction) : null;
   const effectiveTimezone =
     timezone ??
@@ -440,10 +452,12 @@ export function AttractionCard({
                 'max-sm:mt-[6px] max-sm:min-h-[22px] max-sm:flex-nowrap max-sm:overflow-hidden max-sm:[mask-image:linear-gradient(to_right,black_85%,transparent)] max-sm:*:flex max-sm:*:shrink-0'
             )}
           >
-            <ParkStatusBadge
-              status={status}
-              className={phoneRow && hasBottomPanel ? 'max-sm:hidden!' : undefined}
-            />
+            {!parkClosed && (
+              <ParkStatusBadge
+                status={status}
+                className={phoneRow && hasBottomPanel ? 'max-sm:hidden!' : undefined}
+              />
+            )}
             {isOperatingOrUnknown && crowdLevel && (
               // The scale is this ride's own, in minutes, and only where the API sent the
               // baseline it rated against — without one the badge stands alone.

@@ -22,7 +22,7 @@ const FavoritesSection = nextDynamic(
   () =>
     import('@/components/parks/favorites-section').then((m) => ({ default: m.FavoritesSection })),
   {
-    loading: () => <FavoritesEmptyState textHidden heading="tile" className={STORY_SECTION_Y} />,
+    loading: () => <FavoritesEmptyState textHidden heading="tile" className={FAVORITES_BAND} />,
     ssr: true,
   }
 );
@@ -116,6 +116,13 @@ const HERO_TTL_MS = 5 * 60_000;
 // reader and a crawler still read the story where it stands. The tinted band alternation follows
 // the source order and is broken on a phone.
 const PHONE_LATER = '@max-[768px]/page:order-1';
+
+// The favorites band, hidden on a phone for a visitor without favorites (`.home-favorites` in
+// globals.css), and the popular parks, hidden on a phone outright: the nearby chapter above lists
+// parks already, and both bands empty or repeated cost a phone a screen each. Hidden by CSS, so
+// the popular parks' links stay in the HTML.
+const FAVORITES_BAND = `${STORY_SECTION_Y} home-favorites`;
+const FEATURED_BAND = `${STORY_SECTION_Y} @max-[768px]/page:hidden`;
 
 interface HomePageProps {
   params: Promise<{ locale: string }>;
@@ -284,7 +291,7 @@ export default async function HomePage({ params }: HomePageProps) {
         <NearbyChapter>
           <NearbyParksCard nested />
         </NearbyChapter>
-        <FavoritesSection heading="tile" className={STORY_SECTION_Y} />
+        <FavoritesSection heading="tile" className={FAVORITES_BAND} />
 
         {/* From here to the FAQ, everything is drawn after the parks on a phone — see
           PHONE_LATER. The wrappers are plain boxes in this flex column; the sections inside
@@ -323,11 +330,11 @@ export default async function HomePage({ params }: HomePageProps) {
             <FeaturedParksSkeleton
               labels={featuredParksLabels}
               heading="tile"
-              className={STORY_SECTION_Y}
+              className={FEATURED_BAND}
             />
           }
         >
-          <FeaturedParksSlot locale={locale} heading="tile" className={STORY_SECTION_Y} />
+          <FeaturedParksSlot locale={locale} heading="tile" className={FEATURED_BAND} />
         </Suspense>
 
         {/* No pk-reveal: its cards are GlassCards, and the reveal's transform would flatten
