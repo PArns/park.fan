@@ -97,7 +97,7 @@ Aus 55 Metern Höhe stürzt sich der Zug von [El Toro](ref:six-flags-great-adven
 
 Am 4. Juli 1974, drei Tage nach dem Park, hat der [Runaway Train](ref:six-flags-great-adventure/runaway-mine-train?bare) eröffnet. Die Minenbahn von Arrow Dynamics ist damit die älteste Achterbahn in Jackson. Ihr höchster Punkt liegt bei 18 Metern, die längste Abfahrt misst 12 Meter und die Strecke 740 Meter. Unterwegs wird sie bis zu 61 km/h schnell.
 
-Aus demselben Sommer stammt die [Saw Mill Log Flume](ref:six-flags-great-adventure/saw-mill-log-flume?bare) von Arrow Development, in der du in einem Baumstamm talwärts fährst. In Frontier Adventures beginnt außerdem die [Safari Off-Road Adventure](ref:six-flags-great-adventure/safari-off-road-adventure?bare), die geführte Tour durch die Wild Safari. Ihr Einstieg liegt bei Runaway Mine Train und Medusa.
+Die [Saw Mill Log Flume](ref:six-flags-great-adventure/saw-mill-log-flume?bare) von Arrow Development stammt aus demselben Sommer, die Baumstämme rutschen hier also seit mehr als fünfzig Jahren bergab. In Frontier Adventures beginnt außerdem die [Safari Off-Road Adventure](ref:six-flags-great-adventure/safari-off-road-adventure?bare), die geführte Tour durch die Wild Safari. Ihr Einstieg liegt bei Runaway Mine Train und Medusa.
 
 ### Movietown und Metropolis
 
@@ -137,11 +137,11 @@ Der [Slingshot](ref:six-flags-great-adventure/slingshot?bare) am Boardwalk koste
 
 Den umgebauten Shoreline Pier hat Six Flags am 26. März 2026 angekündigt. Nach einer Vorab-Öffnung im Juni war am 1. Juli 2026 die offizielle Eröffnung. Fünf Fahrgeschäfte sind neu: Wave Swinger, Super Round Up, Flying Scooters, Hypno Twister und [Barrels O’ Fun](ref:six-flags-great-adventure/barrels-o-fun?bare). Vier davon kommen aus Six Flags America, dessen Schließung nach der Saison 2025 Six Flags im Mai 2025 angekündigt hatte.
 
-Barrels O’ Fun kam als letztes der fünf und fährt seit dem 8. Juli 2026. Es ist eine Spinning-Achterbahn von Reverchon mit Wagen für vier Personen. Zuvor stand sie in Six Flags Great America und danach in Six Flags America, beide Male unter dem Namen Ragin’ Cajun. Sie ist nur 13 Meter hoch, fährt höchstens 47 km/h und hat mit 420 Metern genau so viel Strecke wie Skull Mountain, und doch verlangt sie mit 150 Zentimetern die höchste Mindestgröße aller Achterbahnen im Park.
+Barrels O’ Fun kam als letztes der fünf und fährt seit dem 8. Juli 2026. Es ist eine Spinning-Achterbahn von Reverchon mit Wagen für vier Personen. Zuvor stand sie in Six Flags Great America und danach in Six Flags America, beide Male unter dem Namen Ragin’ Cajun. Sie ist nur 13 Meter hoch und fährt auf 420 Metern Strecke höchstens 47 km/h, und doch verlangt sie mit 150 Zentimetern mehr Körpergröße als Nitro oder El Toro.
 
 ### Dream Street und die Kinderbereiche
 
-In Dream Street dreht sich das Patrina Williams Carousel, das Frederick Savage 1881 gebaut hat. Es ist damit fast hundert Jahre älter als der Park. Außerdem stehen hier die Enchanted Teacups und Houdini’s Great Escape, für das Six Flags 122 cm verlangt, so viel wie für El Toro.
+In Dream Street dreht sich das Patrina Williams Carousel, das Frederick Savage 1881 gebaut hat. Es ist damit fast hundert Jahre älter als der Park. Außerdem stehen hier die Enchanted Teacups und Houdini’s Great Escape.
 
 Im ersten der beiden Kinderbereiche fährt die Familienachterbahn [Lil’ Devil Coaster](ref:six-flags-great-adventure/lil-devil-coaster?bare) von Zamperla, früher Road Runner Railway. Sie ist 80 Meter lang, steigt nur 4 Meter hoch und fährt gemächliche 24 km/h. Barnstormer, Sky Zooma, Storm Chaser und der Tree Top Hopper fahren dort auch. Im zweiten, dem Bugs Bunny National Park, stehen fünf Kinderfahrgeschäfte, zwei davon schon ab 91 cm.
 
@@ -207,7 +207,7 @@ Fright Fest läuft an ausgewählten Abenden vom 18. September bis zum 1. Novembe
 
 Halloween selbst, der 31. Oktober, beginnt um 10:30 Uhr mit Oktoberfest und Boo Fest für Familien, das bis 17 Uhr dauert. Ab 18 Uhr ist bis Mitternacht Fright Fest. Am 1. November hat der Park von 10:30 bis 22 Uhr offen, Fright Fest beginnt wieder um 18 Uhr. Abends, wenn Fright Fest läuft, haben Hurricane Harbor und die Wild Safari geschlossen.
 
-Neu im Programm sind 2026 die Mazes „JASON: Blood Reign“ und „Final Destination: Death’s Playground“. Außerdem laufen The Conjuring Universe, Army of the Dead, Asylum, Twisted Holidays, Deadwood Cabin, Big Top Terror und The Witch’s Reflection. Zu den Mazes kommen zwei Shows, „Dr. Fright’s Party“ in Adventure Alley und die „Freak Show“ in Dream Street. Das Fright Fest Bundle mit Eintritt und Mazes kostet ab 80 $, der All Season Haunted Attractions Pass ab 75 $.
+Neu im Programm sind 2026 die Mazes „JASON: Blood Reign“ und „Final Destination: Death’s Playground“. Sieben Mazes aus früheren Jahren sind ebenfalls wieder da, darunter The Conjuring Universe und Army of the Dead. Zu den Mazes kommen zwei Shows, „Dr. Fright’s Party“ in Adventure Alley und die „Freak Show“ in Dream Street. Das Fright Fest Bundle mit Eintritt und Mazes kostet ab 80 $, der All Season Haunted Attractions Pass ab 75 $.
 
 ### November und Holiday in the Park
 
@@ -278,7 +278,7 @@ Der **Prestige Pass** kostet derzeit 249 $, als Verlängerung 239 $. Als Members
 - einen VIP-Eingang
 - eine Single-Use Fast Lane pro Besuch
 
-Wer bis zum 1. November verlängert oder eine Membership abschließt, bekommt ein Bring-A-Friend-Ticket dazu. Mit Auto ist der Gold Pass ab dem zweiten Besuch günstiger als Tagesticket plus Parken. Für einen einzigen Tag im Jahr nehme ich das Online-Ticket.
+Wer bis zum 1. November verlängert oder eine Membership abschließt, bekommt ein Bring-A-Friend-Ticket dazu. Mit Auto ist der Gold Pass ab dem zweiten Besuch günstiger als Tagesticket plus Parken, für einen einzigen Tag im Jahr kommst du mit dem Online-Ticket ab 45 $ billiger hinein.
 
 Rollstühle verleiht der Park für 25 $, elektrische Mobile (ECV) für 55 $, an Erwachsene ab 18 Jahren.
 
@@ -370,7 +370,7 @@ Kingda Ka fuhr am 10. November 2024 zum letzten Mal, gesprengt wurde der Turm am
 
 Auch Green Lantern hatte am 10. November 2024 ihren letzten Betriebstag. Der Stand-up Coaster von B&M stand vorher als Chang in Kentucky Kingdom und kam 2011 nach Jackson. Im November und Dezember 2024 wurde er abgerissen. Ebenfalls 2024 schlossen der Skycoaster Dare Devil Dive, der seit 1997 lief, und der Top Spin Twister von Huss aus dem Jahr 1999.
 
-Neben Nitro führt Six Flags derzeit den Runaway Train und das Big Wheel als geschlossen oder in Überarbeitung.
+Außerdem führt Six Flags derzeit den Runaway Train und das Big Wheel als geschlossen oder in Überarbeitung.
 
 ## Geschichte
 

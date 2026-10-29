@@ -107,7 +107,7 @@ From 55 metres up, the train on [El Toro](ref:six-flags-great-adventure/el-toro?
 
 The [Runaway Train](ref:six-flags-great-adventure/runaway-mine-train?bare) opened on 4 July 1974, three days after the park, which makes the Arrow Dynamics mine train the oldest coaster in Jackson. Its highest point is 18 metres, its longest drop 12 and its track 740 metres, and along the way it gets up to 61 km/h.
 
-The [Saw Mill Log Flume](ref:six-flags-great-adventure/saw-mill-log-flume?bare) by Arrow Development dates from the same summer, and you ride it downhill in a hollowed-out log. Frontier Adventures is also where the [Safari Off-Road Adventure](ref:six-flags-great-adventure/safari-off-road-adventure?bare) starts, the guided tour through the Wild Safari. You board it near Runaway Mine Train and Medusa.
+The [Saw Mill Log Flume](ref:six-flags-great-adventure/saw-mill-log-flume?bare) by Arrow Development dates from the same summer, so the logs have been going downhill here for more than fifty years. Frontier Adventures is also where the [Safari Off-Road Adventure](ref:six-flags-great-adventure/safari-off-road-adventure?bare) starts, the guided tour through the Wild Safari. You board it near Runaway Mine Train and Medusa.
 
 ### Movietown and Metropolis
 
@@ -147,11 +147,11 @@ The [Slingshot](ref:six-flags-great-adventure/slingshot?bare) on the Boardwalk c
 
 Six Flags announced the rebuilt Shoreline Pier on 26 March 2026. After a preview opening in June, it officially opened on 1 July 2026. It has five new rides: Wave Swinger, Super Round Up, Flying Scooters, Hypno Twister and [Barrels O' Fun](ref:six-flags-great-adventure/barrels-o-fun?bare). Four of them come from Six Flags America, which Six Flags said in May 2025 would close after the 2025 season.
 
-Barrels O' Fun was the last of the five and has been running since 8 July 2026. It's a Reverchon spinning coaster with cars for four. It used to stand at Six Flags Great America and then at Six Flags America, both times as Ragin' Cajun. It's only 13 metres tall, tops out at 47 km/h and has exactly as much track as Skull Mountain, 420 metres, yet at 150 cm it asks for the highest minimum height of any coaster in the park.
+Barrels O' Fun was the last of the five and has been running since 8 July 2026. It's a Reverchon spinning coaster with cars for four. It used to stand at Six Flags Great America and then at Six Flags America, both times as Ragin' Cajun. It's only 13 metres tall and tops out at 47 km/h on 420 metres of track, yet at 150 cm it asks more of its riders than Nitro or El Toro do.
 
 ### Dream Street and the kids' areas
 
-Dream Street has the Patrina Williams Carousel, which Frederick Savage built in 1881, so it's almost a hundred years older than the park. The Enchanted Teacups are here too, and so is Houdini's Great Escape, where Six Flags asks for 122 cm, the same as for El Toro.
+Dream Street has the Patrina Williams Carousel, which Frederick Savage built in 1881, so it's almost a hundred years older than the park. The Enchanted Teacups are here too, and so is Houdini's Great Escape.
 
 In the first of the two kids' areas, the Zamperla family coaster [Lil' Devil Coaster](ref:six-flags-great-adventure/lil-devil-coaster?bare), formerly Road Runner Railway, is 80 metres long, climbs only 4 metres and ambles along at 24 km/h. Barnstormer, Sky Zooma, Storm Chaser and the Tree Top Hopper run there as well. The second one, Bugs Bunny National Park, has five kids' rides, two of them from 91 cm.
 
@@ -217,7 +217,7 @@ Fright Fest runs on selected evenings from 18 September to 1 November. Six Flags
 
 Halloween itself, 31 October, starts at 10:30 a.m. with Oktoberfest and the family Boo Fest, which lasts until 5 p.m. From 6 p.m. until midnight it's Fright Fest. On 1 November the park is open from 10:30 a.m. to 10 p.m., and Fright Fest starts again at 6 p.m. On Fright Fest evenings Hurricane Harbor and the Wild Safari are closed.
 
-New this year are the mazes "JASON: Blood Reign" and "Final Destination: Death's Playground". The Conjuring Universe, Army of the Dead, Asylum, Twisted Holidays, Deadwood Cabin, Big Top Terror and The Witch's Reflection are running too. On top of the mazes there are two shows, "Dr. Fright's Party" in Adventure Alley and the "Freak Show" on Dream Street. The Fright Fest Bundle with admission and mazes starts at $80, the All Season Haunted Attractions Pass at $75.
+New this year are the mazes "JASON: Blood Reign" and "Final Destination: Death's Playground". Seven mazes from earlier years are back as well, The Conjuring Universe and Army of the Dead among them. On top of the mazes there are two shows, "Dr. Fright's Party" in Adventure Alley and the "Freak Show" on Dream Street. The Fright Fest Bundle with admission and mazes starts at $80, the All Season Haunted Attractions Pass at $75.
 
 ### November and Holiday in the Park
 
@@ -288,7 +288,7 @@ The **Prestige Pass** currently costs $249, or $239 as a renewal. As a membershi
 - a VIP entrance
 - one Single-Use Fast Lane per visit
 
-Renew or sign up for a membership by 1 November and you get a Bring-A-Friend ticket on top. If you drive, the Gold Pass beats a day ticket plus parking from the second visit. For a single day a year, I take the online ticket.
+Renew or sign up for a membership by 1 November and you get a Bring-A-Friend ticket on top. If you drive, the Gold Pass beats a day ticket plus parking from the second visit, and for one day a year the online ticket from $45 is the cheaper way in.
 
 The park rents out wheelchairs for $25 and electric scooters (ECVs) for $55, to adults aged 18 and over.
 
@@ -380,7 +380,7 @@ Kingda Ka ran for the last time on 10 November 2024, and the tower was blown up 
 
 Green Lantern also had its last day of operation on 10 November 2024. The B&M stand-up coaster had stood at Kentucky Kingdom as Chang and came to Jackson in 2011. It was torn down in November and December 2024. Also in 2024, the Dare Devil Dive Skycoaster, which had run since 1997, closed, and so did Twister, a Huss Top Spin from 1999.
 
-Besides Nitro, Six Flags currently lists the Runaway Train and the Big Wheel as closed or under refurbishment.
+Six Flags currently lists the Runaway Train and the Big Wheel as closed or under refurbishment as well.
 
 ## History
 

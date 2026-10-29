@@ -97,7 +97,7 @@ Vanaf 55 meter hoogte stort de trein van [El Toro](ref:six-flags-great-adventure
 
 Op 4 juli 1974, drie dagen na het park, ging de [Runaway Train](ref:six-flags-great-adventure/runaway-mine-train?bare) open. Die mijntrein van Arrow Dynamics is daarmee de oudste achtbaan van Jackson. Het hoogste punt ligt op 18 meter, de langste afdaling meet 12 meter en de baan 740 meter. Onderweg haalt hij 61 km/u.
 
-Uit dezelfde zomer stamt de [Saw Mill Log Flume](ref:six-flags-great-adventure/saw-mill-log-flume?bare) van Arrow Development, waar je in een boomstam naar beneden vaart. In Frontier Adventures begint ook de [Safari Off-Road Adventure](ref:six-flags-great-adventure/safari-off-road-adventure?bare), de tocht met gids door de Wild Safari. De ingang ligt bij Runaway Mine Train en Medusa.
+De [Saw Mill Log Flume](ref:six-flags-great-adventure/saw-mill-log-flume?bare) van Arrow Development stamt uit dezelfde zomer, dus de boomstammen gaan hier al meer dan vijftig jaar naar beneden. In Frontier Adventures begint ook de [Safari Off-Road Adventure](ref:six-flags-great-adventure/safari-off-road-adventure?bare), de tocht met gids door de Wild Safari. De ingang ligt bij Runaway Mine Train en Medusa.
 
 ### Movietown en Metropolis
 
@@ -137,11 +137,11 @@ Voor de [Slingshot](ref:six-flags-great-adventure/slingshot?bare) op de Boardwal
 
 Six Flags kondigde de verbouwde Shoreline Pier aan op 26 maart 2026. Na een voorlopige opening in juni volgde op 1 juli 2026 de officiële. Vijf attracties zijn nieuw: Wave Swinger, Super Round Up, Flying Scooters, Hypno Twister en [Barrels O’ Fun](ref:six-flags-great-adventure/barrels-o-fun?bare). Vier daarvan komen uit Six Flags America, waarvan Six Flags in mei 2025 had aangekondigd dat het na het seizoen 2025 dichtging.
 
-Barrels O’ Fun kwam als laatste van de vijf en rijdt sinds 8 juli 2026. Het is een spinning coaster van Reverchon met wagens voor vier personen. Eerder stond hij in Six Flags Great America en daarna in Six Flags America, allebei de keren als Ragin’ Cajun. Hij is maar 13 meter hoog, haalt hooguit 47 km/u en heeft met 420 meter precies evenveel baan als Skull Mountain, en toch vraagt hij met 150 centimeter de hoogste minimumlengte van alle achtbanen in het park.
+Barrels O’ Fun kwam als laatste van de vijf en rijdt sinds 8 juli 2026. Het is een spinning coaster van Reverchon met wagens voor vier personen. Eerder stond hij in Six Flags Great America en daarna in Six Flags America, allebei de keren als Ragin’ Cajun. Hij is maar 13 meter hoog en haalt op 420 meter baan hooguit 47 km/u, en toch vraagt hij met 150 centimeter meer lengte dan Nitro of El Toro.
 
 ### Dream Street en de kindergebieden
 
-In Dream Street draait de Patrina Williams Carousel, die Frederick Savage in 1881 bouwde. Daarmee is de draaimolen bijna honderd jaar ouder dan het park. Verder staan hier de Enchanted Teacups en Houdini’s Great Escape, waarvoor Six Flags 122 cm vraagt, net zoveel als voor El Toro.
+In Dream Street draait de Patrina Williams Carousel, die Frederick Savage in 1881 bouwde. Daarmee is de draaimolen bijna honderd jaar ouder dan het park. Verder staan hier de Enchanted Teacups en Houdini’s Great Escape.
 
 In het eerste van de twee kindergebieden rijdt de familieachtbaan [Lil’ Devil Coaster](ref:six-flags-great-adventure/lil-devil-coaster?bare) van Zamperla, vroeger Road Runner Railway. De baan is 80 meter lang, gaat maar 4 meter omhoog en de trein tuft er met 24 km/u over. Ook Barnstormer, Sky Zooma, Storm Chaser en de Tree Top Hopper draaien daar. In het tweede, het Bugs Bunny National Park, staan vijf kinderattracties, waarvan twee al vanaf 91 cm.
 
@@ -207,7 +207,7 @@ Fright Fest loopt op bepaalde avonden van 18 september tot en met 1 november. Si
 
 Halloween zelf, 31 oktober, begint om 10.30 uur met Oktoberfest en met Boo Fest voor gezinnen, dat tot 17.00 uur duurt. Vanaf 18.00 uur is het tot middernacht Fright Fest. Op 1 november is het park open van 10.30 tot 22.00 uur, en Fright Fest begint weer om 18.00 uur. Op de avonden met Fright Fest zijn Hurricane Harbor en de Wild Safari dicht.
 
-Nieuw in 2026 zijn de mazes “JASON: Blood Reign” en “Final Destination: Death’s Playground”. Verder draaien The Conjuring Universe, Army of the Dead, Asylum, Twisted Holidays, Deadwood Cabin, Big Top Terror en The Witch’s Reflection. Naast de mazes zijn er twee shows, “Dr. Fright’s Party” in Adventure Alley en de “Freak Show” in Dream Street. De Fright Fest Bundle met toegang en mazes kost vanaf 80 dollar, de All Season Haunted Attractions Pass vanaf 75 dollar.
+Nieuw in 2026 zijn de mazes “JASON: Blood Reign” en “Final Destination: Death’s Playground”. Ook zeven mazes uit eerdere jaren zijn terug, waaronder The Conjuring Universe en Army of the Dead. Naast de mazes zijn er twee shows, “Dr. Fright’s Party” in Adventure Alley en de “Freak Show” in Dream Street. De Fright Fest Bundle met toegang en mazes kost vanaf 80 dollar, de All Season Haunted Attractions Pass vanaf 75 dollar.
 
 ### November en Holiday in the Park
 
@@ -278,7 +278,7 @@ De **Prestige Pass** kost op dit moment 249 dollar, als verlenging 239 dollar. A
 - een VIP-ingang
 - één Single-Use Fast Lane per bezoek
 
-Wie tot en met 1 november verlengt of een membership afsluit, krijgt er een Bring-A-Friend-ticket bij. Kom je met de auto, dan is de Gold Pass vanaf het tweede bezoek goedkoper dan een dagticket plus parkeren. Voor één dag per jaar neem ik het onlineticket.
+Wie tot en met 1 november verlengt of een membership afsluit, krijgt er een Bring-A-Friend-ticket bij. Kom je met de auto, dan is de Gold Pass vanaf het tweede bezoek goedkoper dan een dagticket plus parkeren, en voor één dag per jaar kom je met het onlineticket vanaf 45 dollar voordeliger binnen.
 
 Rolstoelen huur je in het park voor 25 dollar, elektrische scootmobielen (ECV) voor 55 dollar, als je 18 jaar of ouder bent.
 
@@ -370,7 +370,7 @@ Kingda Ka reed op 10 november 2024 voor het laatst, en op 28 februari 2025 werd 
 
 Ook voor Green Lantern was 10 november 2024 de laatste dag. Deze stand-up coaster van B&M stond eerst als Chang in Kentucky Kingdom en kwam in 2011 naar Jackson. In november en december 2024 werd hij gesloopt. In 2024 sloten ook de skycoaster Dare Devil Dive, die sinds 1997 draaide, en de Top Spin Twister van Huss uit 1999.
 
-Naast Nitro staan bij Six Flags op dit moment de Runaway Train en het Big Wheel als gesloten of in onderhoud.
+Daarnaast staan bij Six Flags op dit moment de Runaway Train en het Big Wheel als gesloten of in onderhoud.
 
 ## Geschiedenis
 
