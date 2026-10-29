@@ -121,7 +121,7 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`use-live-parks-by-region.ts`](../../lib/hooks/use-live-parks-by-region.ts)
 
 - `useLiveParksByRegion` _hook_: Live park status for a set of regions, keyed by park id: one request per distinct region set, answered with the `LiveParkFields` projection.
-- `useRegionParks` _hook_: Single-region convenience wrapper for the hub grids and the blog's park references.
+- `useRegionParks` _hook_: Single-region convenience wrapper for the blog's park references.
 - Types: `LiveParkFields`
 
 ### [`use-live-position.ts`](../../lib/hooks/use-live-position.ts)

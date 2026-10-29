@@ -8,17 +8,36 @@ import type { City, GeoStructure, ParkReference } from '@/lib/api/types';
  */
 export interface ParkBrand {
   /** The page's path segment under `/parks`. */
-  slug: 'six-flags';
-  /** How the brand is written, also where it starts each park's name. */
+  slug: string;
+  /** How the brand is written. */
   name: string;
+  /**
+   * The words a park's name starts with when it is the brand's, in the order the page lists them.
+   * Six Flags' water parks are "Six Flags Hurricane Harbor" in full and in the catalog only
+   * "Hurricane Harbor".
+   */
+  names: readonly string[];
 }
 
 /** Six Flags, the one brand with a page so far. */
-export const SIX_FLAGS: ParkBrand = { slug: 'six-flags', name: 'Six Flags' };
+export const SIX_FLAGS: ParkBrand = {
+  slug: 'six-flags',
+  name: 'Six Flags',
+  names: ['Six Flags', 'Hurricane Harbor'],
+};
 
-/** Whether a park's name puts it under the brand: „Six Flags Great Adventure", not „Flags Park". */
+/** Which of `brand.names` a park's name starts with, as its index, or -1. */
+function brandNameIndex(brand: ParkBrand, parkName: string): number {
+  const name = stripNewPrefix(parkName).toLowerCase();
+  return brand.names.findIndex((brandName) => {
+    const prefix = brandName.toLowerCase();
+    return name === prefix || name.startsWith(`${prefix} `);
+  });
+}
+
+/** Whether a park's name puts it under the brand: "Six Flags Great Adventure", not "Flags Park". */
 export function isBrandPark(brand: ParkBrand, parkName: string): boolean {
-  return stripNewPrefix(parkName).toLowerCase().startsWith(`${brand.name.toLowerCase()} `);
+  return brandNameIndex(brand, parkName) >= 0;
 }
 
 /** The brand a park belongs to by its name, or null. */
@@ -37,22 +56,26 @@ export interface BrandCountry {
 
 /**
  * A brand's parks from the geo tree, grouped by country: the country with the most parks first,
- * parks by the name the page shows within it. Read from the same day-cached `/v1/discovery/geo` the geo pages use.
+ * within it the parks in the order of `brand.names` (theme parks before water parks), then by the
+ * name the page shows. Read from the same day-cached `/v1/discovery/geo` the geo pages use.
  */
 export function brandParksByCountry(geo: GeoStructure, brand: ParkBrand): BrandCountry[] {
   const countries: BrandCountry[] = [];
   for (const continent of geo.continents) {
     for (const country of continent.countries) {
-      const parks = country.cities.flatMap((city) =>
-        city.parks.filter((park) => isBrandPark(brand, park.name)).map((park) => ({ park, city }))
+      const ranked = country.cities.flatMap((city) =>
+        city.parks.flatMap((park) => {
+          const rank = brandNameIndex(brand, park.name);
+          return rank < 0 ? [] : [{ park, city, rank, shown: stripNewPrefix(park.name) }];
+        })
       );
-      if (parks.length === 0) continue;
-      parks.sort((a, b) => stripNewPrefix(a.park.name).localeCompare(stripNewPrefix(b.park.name)));
+      if (ranked.length === 0) continue;
+      ranked.sort((a, b) => a.rank - b.rank || a.shown.localeCompare(b.shown));
       countries.push({
         continentSlug: continent.slug,
         countrySlug: country.slug,
         countryName: country.name,
-        parks,
+        parks: ranked.map(({ park, city }) => ({ park, city })),
       });
     }
   }

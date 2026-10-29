@@ -1730,9 +1730,9 @@
   "sixFlags": {
     "metaTitle": "Six Flags Wachttijden LIVE: alle {count} parken",
     "metaTitleShort": "Six Flags Wachttijden LIVE: alle parken",
-    "metaDescription": "Live wachttijden van alle Six Flags-parken: welk park vandaag open is, hoe druk het is en hoe lang je bij elke attractie wacht.",
+    "metaDescription": "Live wachttijden van alle Six Flags-parken en Hurricane Harbor-waterparken: welk park vandaag open is, hoe druk het is en hoe lang je bij elke attractie wacht.",
     "title": "Six Flags wachttijden: alle parken live",
-    "intro": "Alleen parken met “Six Flags” in de naam tellen mee. La Ronde in Montreal en voormalige Cedar Fair-parken zoals Cedar Point horen ook bij het concern, maar hebben een eigen naam en staan op de pagina van hun land.",
+    "intro": "Alleen parken met “Six Flags” in de naam tellen mee, plus de Hurricane Harbor-waterparken, die voluit Six Flags Hurricane Harbor heten. La Ronde in Montreal en voormalige Cedar Fair-parken zoals Cedar Point horen ook bij het concern, maar hebben een eigen naam en staan op de pagina van hun land.",
     "summary": "{parks, plural, =1 {# park} other {# parken}} in {countries, plural, =1 {# land} other {# landen}}",
     "listName": "Six Flags-parken",
     "breadcrumb": "Six Flags",

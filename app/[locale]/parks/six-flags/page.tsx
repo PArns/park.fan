@@ -10,13 +10,8 @@ import { translateCountry } from '@/lib/i18n/helpers';
 import { getGeoStructure } from '@/lib/api/discovery';
 import { catchNonFatal } from '@/lib/api/client';
 import { brandParksByCountry, SIX_FLAGS, type BrandCountry } from '@/lib/parks/park-brands';
-import {
-  getCardObjectPosition,
-  getParkBackgroundImage,
-  getParkImageSet,
-} from '@/lib/utils/park-assets';
+import { parkListItem, toStaticPark } from '@/lib/parks/static-park';
 import { getOgImageUrl } from '@/lib/utils/og-image';
-import { stripNewPrefix } from '@/lib/utils';
 import { PageContainer } from '@/components/common/page-container';
 import { PageHeader } from '@/components/common/page-header';
 import { SectionHeading } from '@/components/common/section-heading';
@@ -30,10 +25,9 @@ interface SixFlagsPageProps {
 
 const PATH = `/parks/${SIX_FLAGS.slug}`;
 
-/** The brand's parks, or none when the geo tree could not be read. */
+/** The brand's parks from the geo tree; throws when the tree cannot be read. */
 async function readCountries(): Promise<BrandCountry[]> {
-  const geo = await catchNonFatal(getGeoStructure());
-  return geo ? brandParksByCountry(geo, SIX_FLAGS) : [];
+  return brandParksByCountry(await getGeoStructure(), SIX_FLAGS);
 }
 
 function parkCount(countries: BrandCountry[]): number {
@@ -45,7 +39,8 @@ export async function generateMetadata({ params }: SixFlagsPageProps): Promise<M
   if (!isServableRoute(locale)) return {};
   const t = await getTranslations({ locale, namespace: 'sixFlags' });
 
-  const count = parkCount(await readCountries());
+  const countries = await catchNonFatal(readCountries());
+  const count = countries ? parkCount(countries) : 0;
   const title = count
     ? fitWithin(MAX_TITLE_LENGTH, t('metaTitle', { count }), t('metaTitleShort'))
     : t('metaTitleShort');
@@ -72,9 +67,9 @@ export async function generateMetadata({ params }: SixFlagsPageProps): Promise<M
 }
 
 /**
- * Every park with „Six Flags" in its name on one page, grouped by country, with the live status
- * the geo pages show: the page „six flags wait times" is meant to find. Membership is the name,
- * see `lib/parks/park-brands.ts`.
+ * Every park named for Six Flags on one page, grouped by country, with the live status the geo
+ * pages show: the page "six flags wait times" is meant to find. Membership is the name, see
+ * `lib/parks/park-brands.ts`.
  */
 export default async function SixFlagsPage({ params }: SixFlagsPageProps) {
   const { locale } = await params;
@@ -86,6 +81,8 @@ export default async function SixFlagsPage({ params }: SixFlagsPageProps) {
     getTranslations('geo'),
     getTranslations('common'),
     getTranslations('navigation'),
+    // Not `catchNonFatal`: an API error must not become `notFound()`, which this prerendered
+    // page would keep for its whole `revalidate`. Only a tree without the brand's parks is a 404.
     readCountries(),
   ]);
   if (countries.length === 0) notFound();
@@ -100,18 +97,15 @@ export default async function SixFlagsPage({ params }: SixFlagsPageProps) {
       key: country.countrySlug,
       countryName,
       region: `${country.continentSlug}/${country.countrySlug}`,
-      parks: country.parks.map(({ park, city }) => ({
-        id: park.id,
-        name: stripNewPrefix(park.name),
-        slug: park.slug,
-        city: city.name,
-        countryName,
-        href: `/parks/${country.continentSlug}/${country.countrySlug}/${city.slug}/${park.slug}`,
-        backgroundImage: getParkBackgroundImage(park.slug),
-        backgroundPosition: getCardObjectPosition(park.slug),
-        latitude: park.latitude,
-        longitude: park.longitude,
-      })),
+      parks: country.parks.map(({ park, city }) =>
+        toStaticPark(park, {
+          continent: country.continentSlug,
+          country: country.countrySlug,
+          citySlug: city.slug,
+          cityName: city.name,
+          countryName,
+        })
+      ),
     };
   });
 
@@ -124,13 +118,7 @@ export default async function SixFlagsPage({ params }: SixFlagsPageProps) {
           locale={locale}
         />
         <ItemListStructuredData
-          items={groups.flatMap((group) =>
-            group.parks.map((park) => ({
-              name: park.name,
-              url: `/${locale}${park.href}`,
-              image: getParkImageSet(park.slug)[0],
-            }))
-          )}
+          items={groups.flatMap((group) => group.parks.map((park) => parkListItem(locale, park)))}
           listName={t('listName')}
           pageUrl={`/${locale}${PATH}`}
         />
@@ -146,8 +134,6 @@ export default async function SixFlagsPage({ params }: SixFlagsPageProps) {
             /api/parks/live call. */}
         <CountryParkGroups
           regions={groups.map((group) => group.region)}
-          className="space-y-8"
-          gridClassName="grid [grid-auto-rows:auto_1fr_auto] gap-4 max-sm:auto-rows-auto sm:grid-cols-2 lg:grid-cols-3"
           groups={groups.map((group) => ({
             key: group.key,
             heading: (

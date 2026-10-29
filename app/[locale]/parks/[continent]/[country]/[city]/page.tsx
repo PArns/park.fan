@@ -4,12 +4,8 @@ import { buildOpenGraphMetadata, fitWithin, MAX_TITLE_LENGTH } from '@/lib/utils
 import { translateCountry, translateContinent } from '@/lib/i18n/helpers';
 import { notFound, permanentRedirect } from 'next/navigation';
 import { assertServableRoute, isServableRoute } from '@/lib/utils/route-guards';
-import { LiveParkGrid, type StaticPark } from '@/components/parks/live-park-grid';
-import {
-  getCardObjectPosition,
-  getParkBackgroundImage,
-  getParkImageSet,
-} from '@/lib/utils/park-assets';
+import { LiveParkGrid } from '@/components/parks/live-park-grid';
+import { parkListItem, toStaticPark } from '@/lib/parks/static-park';
 import { getCitiesWithParks, getGeoStructure } from '@/lib/api/discovery';
 import { catchNonFatal, nullOnNotFound } from '@/lib/api/client';
 import { PageContainer } from '@/components/common/page-container';
@@ -18,7 +14,6 @@ import { BreadcrumbStructuredData, ItemListStructuredData } from '@/components/s
 import { getOgImageUrl } from '@/lib/utils/og-image';
 import { generateCityBreadcrumbs } from '@/lib/utils/breadcrumb-utils';
 import { findCityPageRedirect } from '@/lib/utils/redirect-utils';
-import { stripNewPrefix } from '@/lib/utils';
 import type { Metadata } from 'next';
 import { RouteMessages } from '@/i18n/route-messages';
 import { CitySummarySection } from '@/components/parks/city-summary-section';
@@ -135,22 +130,9 @@ export default async function CityPage({ params }: CityPageProps) {
   const continentName = translateContinent(t, continent, locale);
   const countryName = translateCountry(t, country, locale);
 
-  // Status-free seed for the cards: only fields that never change during the day. Live status,
-  // crowd level, wait time and schedule are layered on the client by <LiveParkGrid>, so this
-  // (per-locale) prerender carries no volatile data and stays valid for a day.
-  const staticParks: StaticPark[] = parks.map((park) => ({
-    id: park.id,
-    name: stripNewPrefix(park.name),
-    slug: park.slug,
-    city: city.name,
-    countryName,
-    href: `/parks/${continent}/${country}/${citySlug}/${park.slug}`,
-    backgroundImage: getParkBackgroundImage(park.slug),
-    backgroundPosition: getCardObjectPosition(park.slug),
-    // Static too — the distance to the visitor is computed client-side from these.
-    latitude: park.latitude,
-    longitude: park.longitude,
-  }));
+  const staticParks = parks.map((park) =>
+    toStaticPark(park, { continent, country, citySlug, cityName: city.name, countryName })
+  );
 
   const tNav = await getTranslations('navigation');
   const { breadcrumbs, currentPage: cityCurrentPage } = generateCityBreadcrumbs({
@@ -163,11 +145,7 @@ export default async function CityPage({ params }: CityPageProps) {
     continentsLabel: tNav('continents'),
   });
 
-  const itemListItems = parks.map((park) => ({
-    name: stripNewPrefix(park.name),
-    url: `/${locale}/parks/${continent}/${country}/${citySlug}/${park.slug}`,
-    image: getParkImageSet(park.slug)[0],
-  }));
+  const itemListItems = staticParks.map((park) => parkListItem(locale, park));
 
   return (
     <RouteMessages route="/parks/[continent]/[country]/[city]">
@@ -191,7 +169,7 @@ export default async function CityPage({ params }: CityPageProps) {
 
         <CitySummarySection
           cityName={city.name}
-          parkNames={parks.map((park) => stripNewPrefix(park.name))}
+          parkNames={staticParks.map((park) => park.name)}
           locale={locale}
         />
 

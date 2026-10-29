@@ -65,6 +65,7 @@ const PAGES = [
   '/de/parks',
   '/de/parks/europe',
   '/de/parks/europe/germany',
+  '/de/parks/six-flags',
   EP,
   `${EP}/silver-star`,
   `${EP}/wartezeiten-kalender`,

@@ -5,8 +5,8 @@ What park.fan counts, in which system, and what it costs.
 **Umami is switched off.** `app/[locale]/layout.tsx` embeds no Umami tracker and mounts no
 `WebVitalsReporter`, so the browser sends nothing to Umami and the two Web Vitals events are not
 measured. `lib/analytics/umami.ts`, the reporter and `pnpm test:umami-events` stay, so switching it
-back on is putting the two back into the layout; whether to delete them instead is PAR-1158. The
-sections on Umami below describe it as it ran.
+back on is putting the two back into the layout. The sections on Umami below describe it as it
+ran.
 
 Two systems shared the work. **Umami Cloud** is billed per stored event and kept the pageviews and
 the two Web Vitals events. **Our own counter** on api.park.fan is cookieless, counts per day and costs nothing per event, so it carries

@@ -1729,10 +1729,10 @@
   },
   "sixFlags": {
     "metaTitle": "Six Flags Temps d’Attente LIVE : les {count} parcs",
-    "metaTitleShort": "Six Flags Temps d’Attente LIVE : tous les parcs",
-    "metaDescription": "Temps d’attente en direct de tous les parcs Six Flags : quel parc est ouvert aujourd’hui, son affluence et l’attente à chaque attraction.",
+    "metaTitleShort": "Six Flags Temps d’Attente LIVE",
+    "metaDescription": "Temps d’attente en direct des parcs Six Flags et des parcs aquatiques Hurricane Harbor : quel parc est ouvert, son affluence et l’attente à chaque attraction.",
     "title": "Six Flags : temps d’attente de tous les parcs en direct",
-    "intro": "Seuls les parcs dont le nom commence par « Six Flags » sont comptés. La Ronde à Montréal et les anciens parcs Cedar Fair comme Cedar Point appartiennent aussi au groupe, mais gardent leur propre nom et figurent sur la page de leur pays.",
+    "intro": "Seuls les parcs dont le nom commence par « Six Flags » sont comptés, ainsi que les parcs aquatiques Hurricane Harbor, dont le nom complet est Six Flags Hurricane Harbor. La Ronde à Montréal et les anciens parcs Cedar Fair comme Cedar Point appartiennent aussi au groupe, mais gardent leur propre nom et figurent sur la page de leur pays.",
     "summary": "{parks, plural, =1 {# parc} other {# parcs}} dans {countries, plural, =1 {# pays} other {# pays}}",
     "listName": "Parcs Six Flags",
     "breadcrumb": "Six Flags",

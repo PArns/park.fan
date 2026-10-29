@@ -13,6 +13,9 @@ import { orderCountryParks, type CountryParkSort } from '@/lib/utils/country-par
 /** Fewest parks a country needs before the "open only" switch is worth its row. */
 export const OPEN_ONLY_MIN_PARKS = 6;
 
+const GROUP_GRID_CLASS =
+  'grid [grid-auto-rows:auto_1fr_auto] gap-4 max-sm:auto-rows-auto sm:grid-cols-2 lg:grid-cols-3';
+
 interface CountryParkGroup {
   key: string;
   /** Server-rendered group heading: a city on a country page, a country on a brand page. */
@@ -24,8 +27,6 @@ interface CountryParkGroupsProps {
   /** The `"<continent>/<country>"` pairs the parks lie in, for the one live request. */
   regions: string[];
   groups: CountryParkGroup[];
-  gridClassName?: string;
-  className?: string;
 }
 
 /**
@@ -40,12 +41,7 @@ interface CountryParkGroupsProps {
  * are one flat list whose ids are fixed at the press, so a live poll never moves a card. Nearest
  * is offered only for a granted (precise) {@link useViewerPosition}; this page never asks.
  */
-export function CountryParkGroups({
-  regions,
-  groups,
-  gridClassName,
-  className,
-}: CountryParkGroupsProps) {
+export function CountryParkGroups({ regions, groups }: CountryParkGroupsProps) {
   const t = useTranslations('geo');
   const { liveByParkId } = useLiveParksByRegion(regions);
   const [openOnly, setOpenOnly] = useState(false);
@@ -109,7 +105,7 @@ export function CountryParkGroups({
       : groups;
 
   return (
-    <div className={className}>
+    <div className="space-y-8">
       {totalParks >= OPEN_ONLY_MIN_PARKS && (
         <div className="flex flex-wrap gap-2">
           <FilterToggle
@@ -142,7 +138,7 @@ export function CountryParkGroups({
       {visibleGroups.map((group) => (
         <div key={group.key}>
           {group.heading}
-          <LiveParkGrid regions={regions} parks={group.parks} className={gridClassName} />
+          <LiveParkGrid regions={regions} parks={group.parks} className={GROUP_GRID_CLASS} />
         </div>
       ))}
     </div>

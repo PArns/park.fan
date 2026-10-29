@@ -216,7 +216,7 @@ These dots carry `will-change` because they animate forever inside cards with `b
 
 ### [`preferred-source-button.tsx`](../../components/common/preferred-source-button.tsx)
 
-- `PreferredSourceButton` _component_: Outlined pill linking to Google's Preferred Sources page pre-filled with park.fan, opened in a new tab; the click is tracked in Umami.
+- `PreferredSourceButton` _component_: Outlined pill linking to Google's Preferred Sources page pre-filled with park.fan, opened in a new tab; the click is counted by our own statistic.
 
 ### [`preferred-source-prompt.tsx`](../../components/common/preferred-source-prompt.tsx)
 

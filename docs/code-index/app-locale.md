@@ -513,7 +513,7 @@ Route `/[locale]/parks` (page).
 
 Route `/[locale]/parks/six-flags` (page).
 
-- `default (SixFlagsPage)` _component_: Every park with „Six Flags" in its name on one page, grouped by country, with the live status the geo pages show: the page „six flags wait times" is meant to find. Membership is the name, see `lib/parks/park-brands.ts`.
+- `default (SixFlagsPage)` _component_: Every park named for Six Flags on one page, grouped by country, with the live status the geo pages show: the page "six flags wait times" is meant to find. Membership is the name, see `lib/parks/park-brands.ts`.
 - `generateMetadata` _function_
 
 ### [`search/page.tsx`](../../app/%5Blocale%5D/search/page.tsx)

@@ -16,7 +16,7 @@ import { PARK_KIDS_SEGMENTS } from '@/lib/parks/kids-segments';
 import { parksWithKidsPage } from '@/lib/api/kids-page';
 import { parkGeoKey, parksWithStatsPage, type ParkGeoPath } from '@/lib/api/stats';
 import { categoryPath, NEWS_INDEX_PATH, postPath } from '@/lib/blog/paths';
-import { SIX_FLAGS } from '@/lib/parks/park-brands';
+import { brandParksByCountry, SIX_FLAGS } from '@/lib/parks/park-brands';
 import type { GlossaryTerm } from '@/lib/glossary/types';
 
 const BASE_URL = SITE_URL;
@@ -62,6 +62,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const parksAlternates = buildAlternates(() => '/parks');
   const sixFlagsPath = `/parks/${SIX_FLAGS.slug}`;
   const sixFlagsAlternates = buildAlternates(() => sixFlagsPath);
+  // Without a park of the brand the page is a 404, and a sitemap entry never is.
+  const listsSixFlags = brandParksByCountry(geo, SIX_FLAGS).length > 0;
   const fancastAlternates = buildAlternates(() => '/fancast');
   const contributeAlternates = buildAlternates(() => '/contribute');
 
@@ -76,11 +78,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         lastModified: lastModified('/parks'),
         alternates: parksAlternates,
       },
-      {
-        url: `${BASE_URL}/${locale}${sixFlagsPath}`,
-        lastModified: lastModified(sixFlagsPath),
-        alternates: sixFlagsAlternates,
-      },
+      ...(listsSixFlags
+        ? [
+            {
+              url: `${BASE_URL}/${locale}${sixFlagsPath}`,
+              lastModified: lastModified(sixFlagsPath),
+              alternates: sixFlagsAlternates,
+            },
+          ]
+        : []),
       {
         url: `${BASE_URL}/${locale}/fancast`,
         alternates: fancastAlternates,

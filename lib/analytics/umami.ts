@@ -1,5 +1,6 @@
 /**
- * The one way an event reaches Umami. Umami keeps its pageviews and the two Web Vitals events
+ * The one way an event reaches Umami, a no-op while Umami is switched off (the layout embeds no
+ * tracker, see docs/development/analytics.md). Umami kept its pageviews and the two Web Vitals events
  * (`components/analytics/web-vitals-reporter.tsx`); every other custom event is counted by our own
  * statistic (`lib/analytics/site-analytics.ts`), where a property costs nothing. Every property sent
  * here is billed as another event, so never send what Umami already has (URL, referrer, screen,

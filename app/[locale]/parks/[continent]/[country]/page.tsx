@@ -6,11 +6,7 @@ import { notFound } from 'next/navigation';
 import { assertServableRoute, isServableRoute } from '@/lib/utils/route-guards';
 import { MapPin } from 'lucide-react';
 import { CountryParkGroups } from '@/components/parks/country-park-groups';
-import {
-  getCardObjectPosition,
-  getParkBackgroundImage,
-  getParkImageSet,
-} from '@/lib/utils/park-assets';
+import { parkListItem, toStaticPark } from '@/lib/parks/static-park';
 import { getCitiesWithParks, getGeoStructure, getCountrySummary } from '@/lib/api/discovery';
 import { catchNonFatal, nullOnNotFound } from '@/lib/api/client';
 import { PageContainer } from '@/components/common/page-container';
@@ -20,7 +16,6 @@ import { Badge } from '@/components/ui/badge';
 import { BreadcrumbStructuredData, ItemListStructuredData } from '@/components/seo/structured-data';
 import { getOgImageUrl } from '@/lib/utils/og-image';
 import { generateCountryBreadcrumbs } from '@/lib/utils/breadcrumb-utils';
-import { stripNewPrefix } from '@/lib/utils';
 import { CountrySummarySection } from '@/components/parks/country-summary-section';
 import { BlogPostCard } from '@/components/blog/blog-post-card';
 import { getGuideForCountry } from '@/lib/blog/country-guide';
@@ -127,12 +122,20 @@ export default async function CountryPage({ params }: CountryPageProps) {
     continentsLabel: tNav('continents'),
   });
 
-  const itemListItems = cities.flatMap((city) =>
-    city.parks.map((park) => ({
-      name: stripNewPrefix(park.name),
-      url: `/${locale}/parks/${continent}/${country}/${city.slug}/${park.slug}`,
-      image: getParkImageSet(park.slug)[0],
-    }))
+  const cityParks = cities.map((city) => ({
+    city,
+    parks: city.parks.map((park) =>
+      toStaticPark(park, {
+        continent,
+        country,
+        citySlug: city.slug,
+        cityName: city.name,
+        countryName,
+      })
+    ),
+  }));
+  const itemListItems = cityParks.flatMap(({ parks }) =>
+    parks.map((park) => parkListItem(locale, park))
   );
 
   return (
@@ -175,9 +178,7 @@ export default async function CountryPage({ params }: CountryPageProps) {
             share one /api/parks/live call (React Query dedupe). */}
         <CountryParkGroups
           regions={[`${continent}/${country}`]}
-          className="space-y-8"
-          gridClassName="grid [grid-auto-rows:auto_1fr_auto] gap-4 max-sm:auto-rows-auto sm:grid-cols-2 lg:grid-cols-3"
-          groups={cities.map((city) => ({
+          groups={cityParks.map(({ city, parks }) => ({
             key: city.slug,
             heading: (
               <SectionHeading
@@ -189,19 +190,7 @@ export default async function CountryPage({ params }: CountryPageProps) {
                 }
               />
             ),
-            parks: city.parks.map((park) => ({
-              id: park.id,
-              name: stripNewPrefix(park.name),
-              slug: park.slug,
-              city: city.name,
-              countryName,
-              href: `/parks/${continent}/${country}/${city.slug}/${park.slug}`,
-              backgroundImage: getParkBackgroundImage(park.slug),
-              backgroundPosition: getCardObjectPosition(park.slug),
-              // Static too — the distance to the visitor is computed client-side from these.
-              latitude: park.latitude,
-              longitude: park.longitude,
-            })),
+            parks,
           }))}
         />
       </PageContainer>

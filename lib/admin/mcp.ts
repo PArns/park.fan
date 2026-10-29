@@ -362,13 +362,9 @@ export function describeOriginMismatch(
 ): OriginWords | null {
   if (!startedFrom || !viewer) return null;
   const country =
-    startedFrom.country !== null &&
-    viewer.country !== null &&
-    startedFrom.country !== viewer.country;
+    startedFrom.country != null && viewer.country != null && startedFrom.country !== viewer.country;
   const browser =
-    startedFrom.browser !== null &&
-    viewer.browser !== null &&
-    startedFrom.browser !== viewer.browser;
+    startedFrom.browser != null && viewer.browser != null && startedFrom.browser !== viewer.browser;
   if (!country && !browser) return null;
   const words = (origin: RequestOrigin) =>
     [

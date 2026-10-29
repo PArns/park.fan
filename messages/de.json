@@ -254,7 +254,7 @@
       },
       "feedback": "Am Tag darauf wird jede Prognose gegen die tatsächlich gemessene Wartezeit gelegt. Die Differenz geht in das nächste Training ein, und deshalb ändert sich die Kalenderfarbe für denselben Tag, je näher er rückt.",
       "body": "Die Farbe vergleicht den Tag mit einem üblichen Tag im selben Park. Grün heißt so voll wie sonst oder ruhiger, Orange und Rot heißen längere Warteschlangen als üblich. Ein roter Tag in einem kleinen Park kann deshalb immer noch kürzere Wartezeiten haben als ein grüner im Europa-Park.",
-      "cta": "{park}: Crowd-Kalender für jeden Tag",
+      "cta": "{park}: Andrangskalender für jeden Tag",
       "bestTimeLink": "Beste Reisezeit: die ruhigsten Wochentage und Monate"
     },
     "ai": {
@@ -1730,9 +1730,9 @@
   "sixFlags": {
     "metaTitle": "Six Flags Wartezeiten LIVE: alle {count} Parks",
     "metaTitleShort": "Six Flags Wartezeiten LIVE: alle Parks",
-    "metaDescription": "Live-Wartezeiten aller Six-Flags-Parks: welcher Park heute geöffnet hat, wie voll er ist und wie lange du an jeder Bahn anstehst.",
+    "metaDescription": "Live-Wartezeiten aller Six-Flags-Parks und Hurricane-Harbor-Wasserparks: welcher Park heute offen ist, wie voll er ist und wie lange du an jeder Bahn wartest.",
     "title": "Six Flags Wartezeiten: alle Parks live",
-    "intro": "Gezählt sind die Parks mit „Six Flags“ im Namen. La Ronde in Montréal und frühere Cedar-Fair-Parks wie Cedar Point gehören zwar zum Konzern, tragen aber einen eigenen Namen und stehen auf der Seite ihres Landes.",
+    "intro": "Gezählt sind die Parks mit „Six Flags“ im Namen, dazu die Hurricane-Harbor-Wasserparks, die mit vollem Namen Six Flags Hurricane Harbor heißen. La Ronde in Montréal und frühere Cedar-Fair-Parks wie Cedar Point gehören zwar zum Konzern, tragen aber einen eigenen Namen und stehen auf der Seite ihres Landes.",
     "summary": "{parks, plural, =1 {# Park} other {# Parks}} in {countries, plural, =1 {# Land} other {# Ländern}}",
     "listName": "Six-Flags-Parks",
     "breadcrumb": "Six Flags",

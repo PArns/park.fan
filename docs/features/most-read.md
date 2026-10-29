@@ -31,10 +31,10 @@ included), the admin view. Open it before touching any of them.
   `sendBeacon` when the page is hidden. The API caps a reader at three reads of a page a day by a
   hash of address and User-Agent, so the facade sends from the browser straight to api.park.fan
   (`API_ORIGIN`), never through a relay here.
-- **only on production hosts** (`ANALYTICS_HOSTS`, `lib/analytics/opt-out.ts`, the list Umami's
-  `data-domains` reads), so previews and local builds never write into the live ranking.
-- **not at all** under Do Not Track (each spelling Umami reads), Global Privacy Control, the privacy
-  page's analytics opt-out (`analyticsOptedOut`, Umami's `umami.disabled` flag), automation
+- **only on production hosts** (`ANALYTICS_HOSTS`, `lib/analytics/opt-out.ts`), so previews and
+  local builds never write into the live ranking.
+- **not at all** under Do Not Track (both spellings), Global Privacy Control, the privacy page's
+  analytics opt-out (`analyticsOptedOut`, the `umami.disabled` flag), automation
   (`navigator.webdriver`) or a simulated visit; `shouldCountPageView` asks the facade's `canCountSite`.
 - **once per tab**, in memory. Nothing goes into browser storage; the API's cap already absorbs a
   reader who reloads.

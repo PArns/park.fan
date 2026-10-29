@@ -104,9 +104,9 @@ Which two days of a park's calendar are being compared, across a change of month
 
 ### [`park-brands.ts`](../../lib/parks/park-brands.ts)
 
-- `isBrandPark` _function_: Whether a park's name puts it under the brand: „Six Flags Great Adventure", not „Flags Park".
+- `isBrandPark` _function_: Whether a park's name puts it under the brand: "Six Flags Great Adventure", not "Flags Park".
 - `parkBrandOf` _function_: The brand a park belongs to by its name, or null.
-- `brandParksByCountry` _function_: A brand's parks from the geo tree, grouped by country: the country with the most parks first, parks by the name the page shows within it. Read from the same day-cached `/v1/discovery/geo` the geo pages use.
+- `brandParksByCountry` _function_: A brand's parks from the geo tree, grouped by country: the country with the most parks first, within it the parks in the order of `brand.names` (theme parks before water parks), then by the name the page shows.
 - `SIX_FLAGS` _const_: Six Flags, the one brand with a page so far.
 - Types: `ParkBrand`, `BrandCountry`
 
@@ -150,6 +150,12 @@ Which two days of a park's calendar are being compared, across a change of month
 - `rideSummaryRenders` _function_: Whether the data card renders: three sentences, or two beside a column of figures. Fewer is a card holding one line about a ride whose badges already say it. Exported so the page's gate and the card ask the same question.
 - `MIN_METRICS` _const_: Below this many large figures the column is dropped and the text takes the card's width, since one figure beside a paragraph is a cell filled with one line.
 - Types: `RideSummarySentence`, `RideSummaryStat`, `RideSummaryMetric`, `RideSummaryFigures`, `RideSummary`, `RideSummaryType`
+
+### [`static-park.ts`](../../lib/parks/static-park.ts)
+
+- `toStaticPark` _function_: A park's card fields for `<LiveParkGrid>`, only those that never change during the day: live status, crowd level and waits are layered on in the browser, so a hub's prerender stays valid for a day.
+- `parkListItem` _function_: A park card as an entry of a hub's `ItemList`: its shown name, its URL in `locale`, its image.
+- Types: `ParkPlace`
 
 ### [`stats-segments.ts`](../../lib/parks/stats-segments.ts)
 
