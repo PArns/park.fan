@@ -44,7 +44,7 @@ interface LinkBandLinkProps {
   hideLabel?: 'phone' | 'always';
   /**
    * Where the link goes and, for a park's link, the park's UUID. Marks the anchor for the
-   * delegated click count (`OutboundLinkTracker`) without turning this Server Component into a
+   * delegated click count (`MarkupEventTracker`) without turning this Server Component into a
    * client one.
    */
   outbound?: { target: OutboundTarget; entity?: string | null };

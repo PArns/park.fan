@@ -25,6 +25,8 @@ import { ParkStatsSection } from '@/components/parks/park-stats-section';
 import { ParkSeasonsCard } from '@/components/parks/park-seasons-card';
 import { ParkInfoCard } from '@/components/parks/park-info-card';
 import { CHAPTER_GAP_COMPACT } from '@/components/common/chapter-spacing';
+import { SectionMark } from '@/components/analytics/section-mark';
+import { SectionSeenTracker } from '@/components/analytics/section-seen-tracker';
 
 interface ParkPageShellProps {
   park: ParkWithAttractions;
@@ -184,6 +186,12 @@ export async function ParkPageShell({
       skeletonShape={statsShape}
     />
   );
+  const statsSlot = (
+    <>
+      <SectionMark section="stats" />
+      {stats}
+    </>
+  );
 
   return (
     <>
@@ -222,12 +230,18 @@ export async function ParkPageShell({
 
           {children}
 
+          {/* The marks say how far down the page was read (`section_seen`). Each stands where its
+            chapter begins whether or not this park has it, so the counts compare across parks. */}
+          <SectionMark section="main_end" />
+
           {/* On the crowd calendar the historical numbers belong directly under the grid: the
             month-by-month and weekday tables answer the same question the calendar does, one
             level of detail down, and pushing „Parks in der Nähe" and the blog between them makes
             a reader scroll past two unrelated chapters to compare them. Everywhere else the
             statistics keep their place further down. */}
-          {statsAfterChildren ? stats : null}
+          {statsAfterChildren ? statsSlot : null}
+
+          <SectionMark section="nearby" />
 
           {/* Nearby Parks — rendered inline, NOT inside <Suspense>. Whether the section exists at
             all is the whole layout question: 48 % of parks have fewer than two neighbours and get
@@ -246,10 +260,12 @@ export async function ParkPageShell({
             />
           )}
 
+          <SectionMark section="blog" />
           {blogSection}
 
-          {statsAfterChildren ? null : stats}
+          {statsAfterChildren ? null : statsSlot}
 
+          <SectionMark section="outlook" />
           {outlookSection}
 
           {/* What is on at this park. Hand-researched, day-stable, and its own request rather than
@@ -268,6 +284,7 @@ export async function ParkPageShell({
             className="mt-8"
           />
 
+          <SectionMark section="faq" />
           {faqSection}
 
           <Separator className="my-8" />
@@ -293,6 +310,8 @@ export async function ParkPageShell({
 
           {/* Secondary, lighter "make park.fan a preferred Google source" prompt */}
           <PreferredSourcePrompt compact className="mt-8" />
+          <SectionMark section="end" />
+          <SectionSeenTracker />
         </article>
       </PageContainer>
     </>

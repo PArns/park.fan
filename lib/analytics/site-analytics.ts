@@ -1,5 +1,7 @@
 import { API_ORIGIN } from '@/lib/api/client';
 import type { PlannerOpenedSource } from '@/lib/planner/ui-store';
+import type { LinkBlock } from '@/lib/analytics/internal-link';
+import type { SeenSection } from '@/lib/analytics/section-seen';
 import { ForegroundTimer } from '@/lib/analytics/foreground-timer';
 import { analyticsOptedOut, isAnalyticsHost } from '@/lib/analytics/opt-out';
 import { locales, type Locale } from '@/i18n/config';
@@ -34,7 +36,7 @@ import { PARK_KIDS_SEGMENTS } from '@/lib/parks/kids-segments';
  */
 
 /** What kind of page a hit was sent from, derived from the path by {@link sitePageTypeOf}. */
-type SitePageType =
+export type SitePageType =
   | 'home'
   | 'park'
   | 'park_calendar'
@@ -57,7 +59,8 @@ type SitePageType =
  * Which search field a search event came from. The phone and desktop hero are both `hero`;
  * `home_steps` is the copy of the hero field in the homepage's „So funktioniert's" step card, counted
  * apart so it does not inflate the hero. `park_rides` is the ride search on a park's attractions
- * tab, `compare` the park picker of the comparison, `glossary` the glossary overview's field.
+ * tab, `compare` the park picker of the comparison, `glossary` the glossary overview's field,
+ * `post_end` the field under a post's parks.
  */
 export type SearchSurface =
   | 'hero'
@@ -70,14 +73,21 @@ export type SearchSurface =
   | 'home_steps'
   | 'park_rides'
   | 'compare'
-  | 'glossary';
+  | 'glossary'
+  | 'post_end';
 
 /** What kind of result was opened from a search. */
 export type SearchResultKind =
   'park' | 'attraction' | 'show' | 'restaurant' | 'location' | 'glossary' | 'guide' | 'news';
 
 /** A 1-based result position, bucketed so a long list does not spread over fifty values. */
-type SearchPosition = '1' | '2' | '3' | '4-5' | '6-10' | '11+';
+export type SearchPosition = '1' | '2' | '3' | '4-5' | '6-10' | '11+';
+
+/**
+ * A menu of the header: the guides, news, parks, „Mehr" and favourites bands of the bar, and the
+ * phone's sheet behind the burger.
+ */
+export type NavMenuId = 'guides' | 'news' | 'parks' | 'more' | 'favorites' | 'sheet';
 
 /** What was picked from a search surface's list before anything was typed. */
 export type SearchBrowseItem = 'nearby_park' | 'in_park_ride' | 'popular_park' | 'news' | 'guide';
@@ -224,6 +234,18 @@ export interface SiteEventMap {
   error_shown: { boundary: 'page' | 'maintenance' | 'global' };
   /** A share button pressed: the planner's link, or a network or the copy button of a share row. */
   share_clicked: { target: 'trip_plan' | 'whatsapp' | 'facebook' | 'x' | 'link' };
+  /**
+   * A link to another page of the site opened from a marked block (`lib/analytics/internal-link.ts`):
+   * the block, the kind of page it leads to and its place among the block's destinations. The
+   * park's or ride's UUID as entity where a card names it.
+   */
+  internal_link_clicked: { block: LinkBlock; dest: SitePageType; position: SearchPosition };
+  /** A marked place on a park page came on screen, once per page view and place. */
+  section_seen: { section: SeenSection };
+  /** A header menu band or the phone menu opened, hover included; once per opening. */
+  nav_menu_opened: { menu: NavMenuId };
+  /** A question of an FAQ opened; `position` is its 1-based place in the list. */
+  faq_opened: { position: number };
 }
 
 /** The name of an event the API accepts. */

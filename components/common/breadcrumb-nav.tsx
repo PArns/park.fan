@@ -6,6 +6,7 @@ import { cn } from '@/lib/utils';
 import { Link } from '@/i18n/navigation';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import type { Breadcrumb } from '@/lib/api/types';
+import { linkBlockAttributes } from '@/lib/analytics/internal-link';
 
 const LINK = 'hover:text-foreground';
 
@@ -228,6 +229,7 @@ export function BreadcrumbNav({
     <nav
       aria-label={t('breadcrumb')}
       className={cn('mb-4', !phoneBack && 'max-sm:hidden', className)}
+      {...linkBlockAttributes('breadcrumbs')}
     >
       {phoneBack}
       <ol

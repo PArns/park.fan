@@ -9,6 +9,7 @@ import {
   Search,
   TrendingUp,
   Radar,
+  Route,
 } from 'lucide-react';
 import { hasTraffic, hasVisitFilter, unsupportedReason } from '@/lib/admin/site-analytics';
 import type {
@@ -89,6 +90,12 @@ export function TrafficView() {
             className="text-primary flex items-center gap-1 hover:underline max-sm:hidden"
           >
             <Search className="h-3.5 w-3.5" /> Suche
+          </Link>
+          <Link
+            href="/admin/traffic/paths"
+            className="text-primary flex items-center gap-1 hover:underline max-sm:hidden"
+          >
+            <Route className="h-3.5 w-3.5" /> Wege
           </Link>
           <Link
             href="/admin/traffic/planner"

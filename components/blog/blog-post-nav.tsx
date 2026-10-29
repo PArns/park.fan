@@ -5,6 +5,7 @@ import { isNewsPost, listArticles, listNewsByDate, listPosts } from '@/lib/blog/
 import { postPath } from '@/lib/blog/paths';
 import { cn } from '@/lib/utils';
 import type { Locale } from '@/i18n/config';
+import { linkBlockAttributes } from '@/lib/analytics/internal-link';
 
 interface BlogPostNavProps {
   locale: Locale;
@@ -34,7 +35,7 @@ export async function BlogPostNav({ locale, currentTranslationKey }: BlogPostNav
   const both = Boolean(prev && next);
 
   return (
-    <nav aria-label={t('postNav.label')} className="mt-8">
+    <nav aria-label={t('postNav.label')} className="mt-8" {...linkBlockAttributes('nav')}>
       <ul className={cn('grid gap-3', both && 'sm:grid-cols-2')}>
         {prev && (
           <li className="flex flex-col">

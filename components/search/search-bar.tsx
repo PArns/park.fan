@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useEffectEvent } from 'react';
+import { useState, useEffect, useEffectEvent, useRef } from 'react';
 import type { ReactNode } from 'react';
 import { useTranslations } from 'next-intl';
 import dynamic from 'next/dynamic';
@@ -27,9 +27,10 @@ const SearchDialog = dynamic(() => import('@/components/search/search-dialog'), 
 interface SearchCommandProps {
   /**
    * `button` and `input` are the header's; `hero` is the hero field on a phone, drawn without
-   * glass of its own because it sits on the frame it shares with its list.
+   * glass of its own because it sits on the frame it shares with its list; `field` is a field in a
+   * page's own content, as tall as the button scale's `lg` and its phone tier.
    */
-  trigger?: 'button' | 'input' | 'hero';
+  trigger?: 'button' | 'input' | 'hero' | 'field';
   placeholder?: ReactNode;
   /** The accessible name of the `hero` trigger, whose placeholder is a list of examples. */
   label?: string;
@@ -48,8 +49,10 @@ interface SearchCommandProps {
    * before Radix can focus the input — that async gap lands the focus() outside the user-gesture
    * window mobile browsers (iOS Safari especially) require to raise the on-screen keyboard, so the
    * keyboard stays down on the first tap. Opt-in (hero) to keep cmdk off the idle path elsewhere.
+   * `near` waits until the trigger is about a screen away, for a field far down a page that most
+   * readers never reach.
    */
-  prewarm?: boolean;
+  prewarm?: boolean | 'near';
   /**
    * The session to count in, where the trigger shares its surface with other parts (the hero's
    * phone list); without it the trigger keeps one of its own.
@@ -92,6 +95,7 @@ export function SearchCommand({
   // keystroke) and closing can clear it — no prop→state sync needed inside the dialog.
   const [query, setQuery] = useState(openOnMount ?? '');
   const isMac = useIsApplePlatform();
+  const fieldRef = useRef<HTMLButtonElement>(null);
   const ownSession = useSearchSession(searchOpenSource);
   const session = sharedSession ?? ownSession;
 
@@ -158,6 +162,21 @@ export function SearchCommand({
     if (!prewarm || hasOpened) return;
     if (!window.matchMedia?.('(pointer: coarse)').matches) return;
 
+    if (prewarm === 'near') {
+      const field = fieldRef.current;
+      if (!field) return;
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (!entry?.isIntersecting) return;
+          observer.disconnect();
+          setHasOpened(true);
+        },
+        { rootMargin: '100% 0px' }
+      );
+      observer.observe(field);
+      return () => observer.disconnect();
+    }
+
     let idleId: number | undefined;
     let timeoutId: ReturnType<typeof setTimeout> | undefined;
 
@@ -190,11 +209,10 @@ export function SearchCommand({
       {trigger === 'button' && (
         <Button
           variant="outline"
-          /* `sm` is the header bar, where this stands in for the search field below `lg`: icon-only
-             and no taller than the burger, since a wider trigger at 768–1023 px pushed the row over
-             the container. The `max-sm:` pair cancels the button scale's 44 px phone tier, see
-             docs/rules/the-header-is-48-px.md. `lg` keeps
-             the wide trigger. */
+          /* `sm` is the header bar's icon, where the field does not fit: below a 360 px bar and
+             between 1024 and 1279, where the nav row takes the width. No taller than the burger;
+             `max-sm:h-9 max-sm:w-9` cancels the button scale's 44 px phone tier, see
+             docs/rules/the-header-is-48-px.md. `lg` keeps the wide trigger. */
           className={`relative p-0 ${
             size === 'sm'
               ? 'h-9 w-9 max-sm:h-9 max-sm:w-9'
@@ -218,18 +236,22 @@ export function SearchCommand({
       )}
 
       {trigger === 'input' && (
-        <div
-          className="group relative w-full cursor-pointer"
+        // A button, so a keyboard and a screen reader reach it too; it looks like the text box it
+        // opens, and the header shows it on a phone as well as on a wide bar.
+        <button
+          type="button"
+          aria-haspopup="dialog"
+          className="group focus-visible:ring-ring/50 relative block w-full cursor-pointer rounded-lg text-left outline-none focus-visible:ring-[3px]"
           onClick={() => openSearch(searchOpenSource)}
         >
           <Search className="text-muted-foreground group-hover:text-primary absolute top-1/2 left-2.5 z-10 h-4 w-4 -translate-y-1/2 transition-colors" />
-          <div
-            className={`border-primary/20 hover:border-primary/40 text-muted-foreground bg-background/60 hover:bg-background/75 flex h-8 w-full items-center justify-between rounded-lg border px-3 py-1 pr-11 pl-9 text-sm shadow-md backdrop-blur-lg transition-all hover:shadow-lg dark:bg-[oklch(0.12_0.025_241_/_0.55)] dark:hover:bg-[oklch(0.14_0.030_241_/_0.65)] ${className}`}
+          <span
+            className={`border-primary/20 hover:border-primary/40 text-muted-foreground bg-background/60 hover:bg-background/75 flex h-8 w-full items-center justify-between rounded-lg border py-1 pr-3 pl-8 text-sm shadow-md backdrop-blur-lg transition-all hover:shadow-lg md:pr-11 md:pl-9 dark:bg-[oklch(0.12_0.025_241_/_0.55)] dark:hover:bg-[oklch(0.14_0.030_241_/_0.65)] ${className}`}
           >
             <span className="text-foreground/40 dark:text-muted-foreground/50 w-full truncate text-left">
               {placeholder || t('searchPlaceholderLong')}
             </span>
-          </div>
+          </span>
           <kbd className="bg-primary/20 text-primary border-primary/20 pointer-events-none absolute top-1/2 right-1.5 hidden h-5 -translate-y-1/2 items-center gap-0.5 rounded border px-1.5 font-mono text-[11px] font-medium shadow-sm md:flex">
             {isMac ? (
               <>
@@ -240,7 +262,7 @@ export function SearchCommand({
               <>Ctrl K</>
             )}
           </kbd>
-        </div>
+        </button>
       )}
 
       {trigger === 'hero' && (
@@ -265,6 +287,32 @@ export function SearchCommand({
           >
             <span className="truncate">{placeholder || t('searchPlaceholderLong')}</span>
           </span>
+        </button>
+      )}
+
+      {trigger === 'field' && (
+        // A button that looks like the text box it opens, like the hero's on a phone: the palette
+        // brings its own field, so this one never takes a keystroke.
+        <button
+          ref={fieldRef}
+          type="button"
+          aria-haspopup="dialog"
+          onClick={() => openSearch(searchOpenSource)}
+          className={cn(
+            'group border-input bg-card/60 hover:border-primary/40 hover:bg-card focus-visible:border-ring focus-visible:ring-ring/50 relative flex h-10 w-full cursor-pointer items-center gap-3 rounded-xl border px-4 text-left shadow-xs transition-colors outline-none focus-visible:ring-[3px] max-sm:h-11',
+            className
+          )}
+        >
+          <Search
+            className="text-muted-foreground group-hover:text-primary h-4 w-4 shrink-0 transition-colors"
+            aria-hidden="true"
+          />
+          <span className="text-muted-foreground min-w-0 flex-1 truncate text-base md:text-sm">
+            {placeholder || t('searchPlaceholderLong')}
+          </span>
+          <kbd className="bg-primary/20 text-primary border-primary/20 pointer-events-none hidden h-5 shrink-0 items-center gap-0.5 rounded border px-1.5 font-mono text-[11px] font-medium shadow-sm md:flex">
+            {isMac ? '⌘' : 'Ctrl'} K
+          </kbd>
         </button>
       )}
 

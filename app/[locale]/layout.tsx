@@ -25,7 +25,7 @@ import { getMoreMenu } from '@/lib/navigation/more-menu';
 import { getFeaturedParksMenu } from '@/lib/navigation/featured-parks-menu';
 import { LanguageBanner } from '@/components/layout/language-banner';
 import { SitePageviewBeacon } from '@/components/analytics/site-pageview-beacon';
-import { OutboundLinkTracker } from '@/components/analytics/outbound-link-tracker';
+import { MarkupEventTracker } from '@/components/analytics/markup-event-tracker';
 import { ScrollLockGutter } from '@/components/layout/scroll-lock-gutter';
 import { ScrollToTop } from '@/components/common/scroll-to-top';
 import { CardPointerFx } from '@/components/parks/card-pointer-fx';
@@ -243,10 +243,11 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
                 {/* Pointer depth on every card, on every page — one delegated listener, and it
                     costs nothing on pages that have no cards. */}
                 <CardPointerFx />
-                {/* Our own statistic: a view per path, and a click on a link marked as leaving
-                    the site. See docs/development/analytics.md. */}
+                {/* Our own statistic: a view per path, and what marked markup reports (a link
+                    leaving the site, a link inside a marked block, an FAQ answer opened). See
+                    docs/development/analytics.md. */}
                 <SitePageviewBeacon />
-                <OutboundLinkTracker />
+                <MarkupEventTracker />
                 {/* The scrollbar gutter while a popup locks the page, without a `:has()` rule. */}
                 <ScrollLockGutter />
                 {/* Keeps the stored push zone pointed at where the phone is, so an alert's

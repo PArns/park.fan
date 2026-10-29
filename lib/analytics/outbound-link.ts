@@ -1,7 +1,7 @@
 /**
  * How a server-rendered link says it leaves the site. The park page's links are Server Components
  * (a client island per link would hydrate on every park page), so a link carries two data
- * attributes and one delegated listener (`OutboundLinkTracker`) counts the click as
+ * attributes and one delegated listener (`MarkupEventTracker`) counts the click as
  * `outbound_link_clicked`, with the park's UUID as the entity.
  */
 

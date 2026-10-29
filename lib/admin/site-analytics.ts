@@ -1,15 +1,19 @@
 import { locales, localeNames, type Locale } from '@/i18n/config';
 import type {
+  NavMenuId,
   SearchBrowseItem,
   SearchResultKind,
   SearchSurface,
   SiteEventName,
 } from '@/lib/analytics/site-analytics';
+import type { LinkBlock } from '@/lib/analytics/internal-link';
+import type { SeenSection } from '@/lib/analytics/section-seen';
 import type { PlannerOpenedSource } from '@/lib/planner/ui-store';
 import type {
   AnalyticsTotals,
   BreakdownDimension,
   BreakdownItem,
+  BreakdownResponse,
   CrosstabResponse,
   EventDetailResponse,
   EventEntity,
@@ -405,6 +409,7 @@ export const SURFACE_LABEL: Record<SearchSurface, string> = {
   park_rides: 'Fahrgeschäfte im Park',
   compare: 'Park-Vergleich',
   glossary: 'Glossar',
+  post_end: 'Ende eines Beitrags',
 };
 
 /** A search field as it reads in a list; one the site sends later stays as sent. */
@@ -778,6 +783,22 @@ export const EVENT_INFO: Record<SiteEventName, EventInfo> = {
     label: 'Teilen gedrückt',
     when: 'Ein Teilen-Knopf unter einem Beitrag, Park oder Fahrgeschäft oder der Link des Plans; mit dem Weg, nicht dem Inhalt.',
   },
+  internal_link_clicked: {
+    label: 'Weiter auf park.fan',
+    when: 'Ein Link auf eine andere Seite von park.fan aus einem markierten Block (Text, Parks im Beitrag, Weiterlesen, Header, Footer …); mit Block, Ziel-Seitenart und Platz.',
+  },
+  section_seen: {
+    label: 'Stelle der Parkseite erreicht',
+    when: 'Eine markierte Stelle einer Parkseite kommt ins Bild, einmal je Seitenaufruf; zählt auch, wo der Park das Kapitel nicht hat.',
+  },
+  nav_menu_opened: {
+    label: 'Menü geöffnet',
+    when: 'Ein Menü des Headers klappt auf, auch beim Darüberfahren mit der Maus, oder das Handy-Menü öffnet sich; einmal je Öffnung.',
+  },
+  faq_opened: {
+    label: 'FAQ-Frage geöffnet',
+    when: 'Eine Frage eines FAQ wird aufgeklappt; mit ihrem Platz in der Liste, nie mit ihrem Text.',
+  },
 };
 
 /** The info of an event this build knows, `undefined` for any other. */
@@ -826,7 +847,62 @@ const PROP_LABEL: Record<string, string> = {
   mode: 'Weg',
   lever: 'Hebel',
   outcome: 'Ergebnis',
+  block: 'Block',
+  dest: 'Führt zu',
+  section: 'Stelle',
+  menu: 'Menü',
 };
+
+/**
+ * The blocks an internal link can sit in, in German. Typed by the module's union, so a block added
+ * there fails the build here until it has its word.
+ */
+export const LINK_BLOCK_LABEL: Record<LinkBlock, string> = {
+  body: 'Text des Beitrags',
+  tags: 'Tags des Beitrags',
+  parks: 'Parks im Beitrag',
+  rides: 'Fahrgeschäfte im Beitrag',
+  posts: 'Beiträge zum Park oder Fahrgeschäft',
+  nav: 'Vorheriger, nächster Beitrag',
+  related: 'Weiterlesen',
+  most_read: 'Meistgelesen',
+  nearby: 'Parks in der Nähe',
+  favorites: 'Favoriten',
+  featured: 'Beliebte Parks',
+  header: 'Header',
+  menu_sheet: 'Handy-Menü',
+  footer: 'Footer',
+  breadcrumbs: 'Brotkrumen',
+};
+
+/** The marked places of a park page, top to bottom, in German. */
+export const SECTION_LABEL: Record<SeenSection, string> = {
+  main_end: 'Ende der Fahrgeschäfte bzw. des Kalenders',
+  nearby: 'Parks in der Nähe',
+  blog: 'Beiträge',
+  stats: 'Statistik',
+  outlook: 'Jahresausblick',
+  faq: 'FAQ',
+  end: 'Seitenende',
+};
+
+/** The places in the order the page has them. */
+export const SEEN_SECTION_ORDER = Object.keys(SECTION_LABEL) as SeenSection[];
+
+/** The header's menus in German. */
+export const NAV_MENU_LABEL: Record<NavMenuId, string> = {
+  guides: 'Guides',
+  news: 'News',
+  parks: 'Parks entdecken',
+  more: 'Mehr',
+  favorites: 'Favoriten',
+  sheet: 'Handy-Menü',
+};
+
+/** A value's word from one of the three tables above, or the value as sent when it has none. */
+function labelFrom(table: Record<string, string>, value: string): string {
+  return table[value] ?? value;
+}
 
 /**
  * The ways into the planner in German, and `none` for a day begun with the panel shut. Typed by the
@@ -887,22 +963,37 @@ export function propValueLabel(prop: string, value: string): string {
   if (prop === 'item') return browseItemLabel(value);
   if (prop === 'from' || prop === 'to') return localeNames[value as Locale] ?? value;
   if (prop === 'depth') return `${value} %`;
+  if (prop === 'block') return labelFrom(LINK_BLOCK_LABEL, value);
+  if (prop === 'dest') return pageTypeLabel(value);
+  if (prop === 'section') return labelFrom(SECTION_LABEL, value);
+  if (prop === 'menu') return labelFrom(NAV_MENU_LABEL, value);
   return PLANNER_VALUE_LABEL[prop]?.[value] ?? value;
 }
 
 /**
- * The values of one property in the order they read best: positions first to last and depths
- * shallow to deep, everything else as the API sent them, which is biggest first.
+ * The values of one property in the order they read best: positions first to last, depths shallow
+ * to deep and a park page's places top to bottom, everything else as the API sent them, which is
+ * biggest first.
  */
 export function sortPropValues<Value extends { value: string }>(
   prop: string,
   values: readonly Value[]
 ): Value[] {
   if (prop === 'depth') return [...values].sort((a, b) => Number(a.value) - Number(b.value));
+  if (prop === 'section') {
+    const place = (value: string) => {
+      const index = (SEEN_SECTION_ORDER as readonly string[]).indexOf(value);
+      return index === -1 ? SEEN_SECTION_ORDER.length : index;
+    };
+    return [...values].sort((a, b) => place(a.value) - place(b.value));
+  }
   if (prop !== 'position') return [...values];
+  // A bucket of a list position, or the plain number an FAQ question sends.
   const rank = (value: string) => {
     const index = (SEARCH_POSITIONS as readonly string[]).indexOf(value);
-    return index === -1 ? SEARCH_POSITIONS.length : index;
+    if (index !== -1) return index;
+    const number = Number(value);
+    return Number.isFinite(number) ? number : Number.MAX_SAFE_INTEGER;
   };
   return [...values].sort((a, b) => rank(a.value) - rank(b.value));
 }
@@ -964,7 +1055,7 @@ export function pathEditorHref(path: string): string | null {
 // Event detail and crosstab
 
 /** The dimensions every event can be crossed by, besides its own properties. */
-const CROSSTAB_FIXED = [
+export const CROSSTAB_FIXED = [
   'page_type',
   'device',
   'locale',
@@ -1187,6 +1278,62 @@ export function orderKeys(
     .filter((key) => !known.includes(key))
     .sort((a, b) => (totals.get(b) ?? 0) - (totals.get(a) ?? 0));
   return [...known.filter((key) => keepAllKnown || totals.has(key)), ...unknown];
+}
+
+// ---------------------------------------------------------------------------------------------
+// Ways through the site
+
+/** The page types whose pages carry the marks of `section_seen`, in the order a table lists them. */
+const MARKED_PAGE_TYPES = ['park', 'park_calendar', 'park_chapter'];
+
+/** A place of a park page and, per page type, the views that reached it and their share. */
+export interface SectionReachRow {
+  section: string;
+  /** One per column of {@link SectionReach.pageTypes}; `share` is null without a view to divide by. */
+  cells: { reached: number; share: number | null }[];
+}
+
+/** How far down each kind of park page was read. */
+export interface SectionReach {
+  pageTypes: string[];
+  /** The page views of each page type, in the order of `pageTypes`. */
+  views: number[];
+  rows: SectionReachRow[];
+}
+
+/**
+ * How far down the park pages were read: `section_seen` by place and page type (a crosstab of
+ * `prop:section` against `page_type`) over each page type's views (a breakdown by page type),
+ * every known place top to bottom, so a place nobody reached reads 0. A page type is a column
+ * once it has a view or a place reached. A share is at most 1, since a view reports a place once.
+ */
+export function sectionReach(
+  crosstab: Pick<CrosstabResponse, 'rows' | 'cols' | 'cells'>,
+  breakdown: Pick<BreakdownResponse, 'items'>
+): SectionReach {
+  const lookup = cellLookup(crosstab.cells);
+  const viewsOf = (type: string) => breakdown.items.find((item) => item.value === type)?.views ?? 0;
+  const pageTypes = MARKED_PAGE_TYPES.filter(
+    (type) => viewsOf(type) > 0 || crosstab.cols.includes(type)
+  );
+  const views = pageTypes.map(viewsOf);
+  const seen = crosstab.rows
+    .filter((row) => row !== CROSSTAB_REST && row !== CROSSTAB_NONE)
+    .map((key) => ({
+      key,
+      count: crosstab.cols.reduce((total, col) => total + lookup(key, col), 0),
+    }));
+  return {
+    pageTypes,
+    views,
+    rows: orderKeys(SEEN_SECTION_ORDER, seen, true).map((section) => ({
+      section,
+      cells: pageTypes.map((type, index) => {
+        const reached = lookup(section, type);
+        return { reached, share: views[index] > 0 ? Math.min(1, reached / views[index]) : null };
+      }),
+    })),
+  };
 }
 
 // ---------------------------------------------------------------------------------------------

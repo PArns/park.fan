@@ -5,17 +5,25 @@ by hand: change the comment in the code and re-run the script. -->
 
 [All pages](README.md).
 
+### [`markup-event-tracker.tsx`](../../components/analytics/markup-event-tracker.tsx)
+
+- `MarkupEventTracker` _component_: Counts what server-rendered markup says about itself, with listeners on the document instead of a client island per element: a click on a link marked with `outboundLinkAttributes` as `outbound_link_clicked`, one on a link of this site …
+
 ### [`not-found-marker.tsx`](../../components/analytics/not-found-marker.tsx)
 
 - `NotFoundMarker` _component_: Tells the site statistic that the page it sits on is a 404, so its pageview is counted as `not_found` and the dead ends can be listed with the pages that sent people to them.
 
-### [`outbound-link-tracker.tsx`](../../components/analytics/outbound-link-tracker.tsx)
-
-- `OutboundLinkTracker` _component_: Counts a click on any link marked with `outboundLinkAttributes` (the park's website, ticket shop and map links) as `outbound_link_clicked`. One listener on the document instead of a handler per link, since those links are server-rendered.
-
 ### [`page-view-beacon.tsx`](../../components/analytics/page-view-beacon.tsx)
 
 - `PageViewBeacon` _component_: Counts this page as read (the `page_read` event of the site statistic) once it has been visible for `PAGE_VIEW_DWELL_MS`: a tab opened in the background and closed unseen counts nothing, and a reader who switches away and comes back starts …
+
+### [`section-mark.tsx`](../../components/analytics/section-mark.tsx)
+
+- `SectionMark` _component_: A zero-height mark where a chapter of a park page begins, for `SectionSeenTracker`. It has no box of its own, so the margins of the chapters on either side collapse through it as before.
+
+### [`section-seen-tracker.tsx`](../../components/analytics/section-seen-tracker.tsx)
+
+- `SectionSeenTracker` _component_: Sends `section_seen` the first time each `SectionMark` of the page comes on screen. One observer for all marks, each dropped once it has reported, so a page view counts a place at most once.
 
 ### [`site-pageview-beacon.tsx`](../../components/analytics/site-pageview-beacon.tsx)
 

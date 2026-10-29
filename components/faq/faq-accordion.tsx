@@ -2,6 +2,7 @@ import type { ReactNode } from 'react';
 import type { LucideIcon } from 'lucide-react';
 import { ChevronDown } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { faqPositionAttributes } from '@/lib/analytics/faq-open';
 
 export interface FaqRow {
   question: string;
@@ -16,7 +17,8 @@ export interface FaqRow {
  * FAQ arrays carry none. Every answer stays in the served HTML (a collapsed `<details>` is in the
  * DOM), and the caller emits the `FAQPage` JSON-LD from the same array. `panel` padding fills a
  * {@link ChapterPanel} edge to edge; `flush` drops it for a prose column. The width asks
- * `@container/page`, since the trip planner insets the page.
+ * `@container/page`, since the trip planner insets the page. Each row carries its place, which
+ * `faq_opened` reports.
  */
 export function FaqAccordion({
   items,
@@ -33,7 +35,7 @@ export function FaqAccordion({
       {items.map((item, index) => {
         const Icon = item.icon;
         return (
-          <details key={index} className="group">
+          <details key={index} className="group" {...faqPositionAttributes(index)}>
             <summary
               className={cn(
                 'hover:bg-muted/40 flex cursor-pointer list-none items-center justify-between gap-3 py-4 transition-colors',

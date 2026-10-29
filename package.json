@@ -101,6 +101,7 @@
     "test:park-name": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-park-name.mjs",
     "test:park-brands": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-park-brands.mjs",
     "test:search-session": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-search-session.mjs",
+    "test:markup-events": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-markup-events.mjs",
     "test:planner-events": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-planner-events.mjs",
     "test:threshold-minutes": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-threshold-minutes.mjs",
     "test:show-follows-store": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-show-follows-store.mjs",

@@ -8,6 +8,7 @@ import { Link } from '@/i18n/navigation';
 import { cn } from '@/lib/utils';
 import { extractFeaturedParks, type FeaturedPark } from './featured-parks-section';
 import { FeaturedParkCardsLive } from './featured-park-cards-live';
+import { linkBlockAttributes } from '@/lib/analytics/internal-link';
 
 /**
  * Featured parks: day-stable structure server-rendered from `getGeoStructure()` (`CACHE_TTL.geo`)
@@ -61,7 +62,7 @@ export async function FeaturedParksSlot({
   if (parks.length === 0) return null;
 
   return (
-    <section className={cn('px-4 py-12', className)}>
+    <section className={cn('px-4 py-12', className)} {...linkBlockAttributes('featured')}>
       <div className="container mx-auto">
         {/* The same heading node `FeaturedParksSkeleton` mounts, so the fallback is as tall as
             the section whichever way the title and the intro wrap. */}

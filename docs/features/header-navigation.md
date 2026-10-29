@@ -27,8 +27,10 @@ and a 1280 px bar, French the tightest at 47 px of slack at 1024.
 - **`NavMenu`** is a real `<a>` (works without the panel) plus a chevron button. „Mehr" has no page,
   so `href` is optional and its label and chevron are one button. The bands are `hidden`, never
   unmounted, so their links stay in every page's HTML (`pnpm check:header-links`).
-- **One breakpoint**: the nav, like the search input, starts at a 1024 px bar
-  (`@min-[1024px]:flex`); below it everything lives in the burger.
+- **One breakpoint**: the nav starts at a 1024 px bar (`@min-[1024px]:flex`); below it everything
+  lives in the burger. The search is a field on a 360–1023 px bar and from 1280, and an icon below
+  360 and from 1024 to 1279
+  ([the search field takes the slack](../design/header.md#the-search-field-takes-the-slack)).
 - **The nearby-park chip** (`HeaderNearbyPark`, within `NEAR_PARK_HEADER_RADIUS_M` = 5 km of a park)
   is a 28 px `MapPin` circle below a 1280 px bar, the name in its `aria-label` and `title`; from
   1280 the name shows at `max-w-24`, from 1536 at 140 px. With the name it overflowed the 1024 px

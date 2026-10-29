@@ -6,6 +6,7 @@ import { Link } from '@/i18n/navigation';
 import { cn } from '@/lib/utils';
 import { MenuBand } from '@/components/layout/menu-band';
 import { useMenuTrigger } from '@/lib/hooks/use-menu-trigger';
+import type { NavMenuId } from '@/lib/analytics/site-analytics';
 
 /**
  * The ink of every entry in the header's nav row, in the bar's two states, in one definition so the
@@ -35,6 +36,8 @@ interface NavMenuProps {
   /** Where the trigger itself navigates. Omitted where the entry has no page — see rule 2. */
   href?: string;
   label: string;
+  /** Which menu this is, for `nav_menu_opened`. */
+  menu: NavMenuId;
   /** Panel body. Rendered on the server, present in the HTML, hidden until opened. */
   children: React.ReactNode;
   /**
@@ -82,9 +85,9 @@ export function NavEntryLabel({
  * Header nav entry that is both a link and the trigger of a dropdown panel. The panel is always in
  * the HTML and hidden until opened, so crawlers see its links.
  */
-export function NavMenu({ href, label, children, floating, icon }: NavMenuProps) {
+export function NavMenu({ href, label, menu, children, floating, icon }: NavMenuProps) {
   const panelId = useId();
-  const { open, triggerProps, toggle, closeOnSamePageClick } = useMenuTrigger();
+  const { open, triggerProps, toggle, closeOnSamePageClick } = useMenuTrigger(menu);
   const ink = headerNavInk(floating);
 
   const chevron = (

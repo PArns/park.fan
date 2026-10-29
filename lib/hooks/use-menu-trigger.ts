@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { usePathname } from '@/i18n/navigation';
 import { escapeRefocusesTrigger, focusLeftMenu, holdsTextEntry } from '@/lib/utils/menu-focus';
+import { trackSiteEvent, type NavMenuId } from '@/lib/analytics/site-analytics';
 
 /**
  * The open/close behaviour every entry in the header's mega-menu bar shares, so no entry opens
@@ -21,9 +22,10 @@ const CLOSE_DELAY_MS = 180;
 
 /**
  * Open state and trigger handlers for one header mega-menu entry: hover opens after 90 ms and
- * closes after 180 ms, click toggles, and navigating closes the panel.
+ * closes after 180 ms, click toggles, and navigating closes the panel. Each opening sends
+ * `nav_menu_opened` with `menu`.
  */
-export function useMenuTrigger() {
+export function useMenuTrigger(menu: NavMenuId) {
   const pathname = usePathname();
   const [openedOn, setOpenedOn] = useState<string | null>(null);
   const rootRef = useRef<HTMLDivElement>(null);
@@ -53,6 +55,10 @@ export function useMenuTrigger() {
   };
 
   useEffect(() => clearTimer, []);
+
+  useEffect(() => {
+    if (open) trackSiteEvent('nav_menu_opened', { menu });
+  }, [open, menu]);
 
   useEffect(() => {
     if (!open) return;

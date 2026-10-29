@@ -19,6 +19,7 @@ import { CHANGELOG_PATH } from '@/lib/changelog/paths';
 import { rankedFirst } from '@/lib/parks/viewed-parks';
 import { viewedParksSeed } from '@/lib/parks/viewed-parks-seed';
 import type { Locale } from '@/i18n/config';
+import { linkBlockAttributes } from '@/lib/analytics/internal-link';
 
 /** The wait-time sources the footer credits, in the order the imprint lists them. */
 const DATA_SOURCES: { href: string; label: string; prefix?: string }[] = [
@@ -236,7 +237,7 @@ export async function Footer({ locale, showBlog = true, newsLabel }: FooterProps
   ];
 
   return (
-    <footer className="bg-card border-t" role="contentinfo">
+    <footer className="bg-card border-t" role="contentinfo" {...linkBlockAttributes('footer')}>
       <div className="container mx-auto px-4 pt-8 pb-6 sm:py-12">
         <div className="grid gap-8 md:grid-cols-6">
           <div className="@container space-y-3 sm:space-y-4 md:col-span-2">

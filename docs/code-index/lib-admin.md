@@ -253,7 +253,7 @@ The path guard and the query of `/api/admin/[...path]`, pure so they can be test
 - `isPlannerEvent` _function_: Whether an event belongs to the planner dashboard.
 - `propLabel` _function_: The name of an event property in German; an unknown one stays as sent.
 - `propValueLabel` _function_: How a property's value reads: search fields, result kinds and suggestions get their words.
-- `sortPropValues` _function_: The values of one property in the order they read best: positions first to last and depths shallow to deep, everything else as the API sent them, which is biggest first.
+- `sortPropValues` _function_: The values of one property in the order they read best: positions first to last, depths shallow to deep and a park page's places top to bottom, everything else as the API sent them, which is biggest first.
 - `isResolvedEntity` _function_: Whether an entity still resolves; a retired or deleted one is only an id and a count.
 - `entityPublicHref` _function_: Where to read about an entity on the public site, in German, which is the admin's language.
 - `entityEditorHref` _function_: Where an entity is edited: a park and a ride by id, a show or a restaurant through its park's address, which `/admin/go` resolves to the park that holds it.
@@ -269,6 +269,7 @@ The path guard and the query of `/api/admin/[...path]`, pure so they can be test
 - `crosstabMatrix` _function_: The crosstab answer as a matrix in the order the API sent its rows and columns.
 - `withoutEmptyColumns` _function_: The matrix without the columns nobody counted in, for a table with little room.
 - `orderKeys` _function_: The keys of a list: the known ones that turned up first in their own order (all of them with `keepAllKnown`, for a short fixed list such as the device classes), then any other that turned up, biggest first, so a value the site sends …
+- `sectionReach` _function_: How far down the park pages were read: `section_seen` by place and page type (a crosstab of `prop:section` against `page_type`) over each page type's views (a breakdown by page type), every known place top to bottom, so a place nobody …
 - `surfaceRows` _function_: The surfaces ranked by openings, ties in the order of `SEARCH_SURFACES`.
 - `surfaceOrder` _function_: The search fields of an answer in the order every chart and matrix keeps.
 - `heroOrHeader` _function_: Compares the two fields the owner asked about.
@@ -299,9 +300,14 @@ The path guard and the query of `/api/admin/[...path]`, pure so they can be test
 - `BREAKDOWN_PANELS` _const_: The title and the one-line question of each breakdown panel.
 - `VISIT_DIMENSIONS` _const_: The dimensions whose rows are visits that started, and so have a bounce rate and an average visit duration. The exit page is a visit too, but one that ended, so it has neither.
 - `EVENT_INFO` _const_: The events this site sends, in German, with the moment each fires. The type makes a new event in `SiteEventMap` fail the build here until it has a line; an event outside the map reads as its name with no sentence, since the API takes any.
+- `LINK_BLOCK_LABEL` _const_: The blocks an internal link can sit in, in German. Typed by the module's union, so a block added there fails the build here until it has its word.
+- `SECTION_LABEL` _const_: The marked places of a park page, top to bottom, in German.
+- `SEEN_SECTION_ORDER` _const_: The places in the order the page has them.
+- `NAV_MENU_LABEL` _const_: The header's menus in German.
+- `CROSSTAB_FIXED` _const_: The dimensions every event can be crossed by, besides its own properties.
 - `TRAFFIC_CROSSTAB_PRESETS` _const_: The pairs the traffic crosstab offers as shortcuts, each with the metric that has its dimensions.
 - `PLANNER_STAGE_LABEL` _const_: The planner funnel's stages in German, for its tiles and its series alike.
-- Types: `FilterDimension`, `TrafficFilter`, `DatacenterScope`, `TrafficQueryState`, `TrafficDelta`, `CrosstabMetric`
+- Types: `FilterDimension`, `TrafficFilter`, `DatacenterScope`, `TrafficQueryState`, `TrafficDelta`, `CrosstabMetric`, `SectionReachRow`, `SectionReach`
 
 ### [`totp.ts`](../../lib/admin/totp.ts)
 

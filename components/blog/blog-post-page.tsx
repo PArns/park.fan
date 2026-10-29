@@ -43,6 +43,8 @@ import { BlogPostingStructuredData } from '@/components/seo/blog-structured-data
 import { BreadcrumbNav } from '@/components/common/breadcrumb-nav';
 import { PageContainer } from '@/components/common/page-container';
 import { PreferredSourcePrompt } from '@/components/common/preferred-source-prompt';
+import { SearchCommand } from '@/components/search/search-bar';
+import { linkBlockAttributes } from '@/lib/analytics/internal-link';
 import { categoryPathBreadcrumbs, resolveCategoryLabel } from '@/lib/blog/categories';
 import type { Breadcrumb } from '@/lib/api/types';
 import { blogFeedAlternates } from '@/lib/blog/feed';
@@ -293,9 +295,10 @@ export async function BlogPostPageBody({
       <PageViewBeacon kind={isNews ? 'news' : 'article'} pageKey={post.translationKey} />
 
       {/* The `<article>` is the post and nothing else: its own `<header>` (the banner with the
-          `<h1>`, the byline and the dates), the body and its tags. Sharing, the way to the next
-          post and the reading lists come after it, so they are not read as chapters of the post.
-          The second container repeats the grid, so they keep the body's column. */}
+          `<h1>`, the byline and the dates), the body and its tags. Sharing, the post's parks and
+          rides, the search, the way to the next post and the reading lists come after it, so they
+          are not read as chapters of the post. The second container repeats the grid, so they
+          keep the body's column. */}
       <article>
         {/* No manual `<link rel="preload">` for the cover: `<Image priority>` in the banner emits
             the preload for the rendition it actually fetches. */}
@@ -337,7 +340,7 @@ export async function BlogPostPageBody({
               </aside>
             )}
 
-            <div className="min-w-0 lg:col-start-1 lg:row-start-1">
+            <div className="min-w-0 lg:col-start-1 lg:row-start-1" {...linkBlockAttributes('body')}>
               <BlogContent markdown={post.content} locale={locale as Locale} />
 
               {(() => {
@@ -346,7 +349,10 @@ export async function BlogPostPageBody({
               })()}
 
               {tags.length > 0 && (
-                <footer className="border-border/60 mt-12 border-t pt-6">
+                <footer
+                  className="border-border/60 mt-12 border-t pt-6"
+                  {...linkBlockAttributes('tags')}
+                >
                   <BlogTags tags={tags} />
                 </footer>
               )}
@@ -366,6 +372,19 @@ export async function BlogPostPageBody({
                bar fills to 100% here, before the references/related sections. */}
             <div id="blog-progress-end" aria-hidden="true" />
 
+            {/* What the post's parks and rides are doing now, first after the text, where the
+               readers who finished it still are. The order and the reading figures behind it:
+               docs/features/post-page-end.md. */}
+            <BlogReferences post={post} className="mt-10" />
+
+            {/* The way on to another park. The palette opens on the hero's list. */}
+            <SearchCommand
+              trigger="field"
+              searchOpenSource="post_end"
+              prewarm="near"
+              className="mt-10"
+            />
+
             {/* Reader just finished the article — the most receptive moment for a
                soft "make park.fan your preferred Google source" ask. */}
             <PreferredSourcePrompt className="mt-8" />
@@ -381,11 +400,6 @@ export async function BlogPostPageBody({
                 category={post.frontmatter.category}
                 tags={post.frontmatter.tags ?? []}
               />
-
-              {/* Auto-collected, deduplicated parks & rides mentioned anywhere in
-                 the post — inline link references, embedded widgets, plus the
-                 explicit relatedParks / relatedAttractions frontmatter. */}
-              <BlogReferences post={post} />
             </div>
 
             {/* The five most read of the post's own section, without the post itself. */}

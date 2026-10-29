@@ -44,6 +44,7 @@ import type {
   ParkShow,
   RopeDropHeadliner,
 } from '@/lib/api/types';
+import { linkBlockAttributes } from '@/lib/analytics/internal-link';
 
 /** The enter animation of the attractions panel, named because both branches must carry the
  *  same one — see the pre-mount branch below. */
@@ -526,6 +527,7 @@ export const TabsWithHash = memo(function TabsWithHash({
   const attractionsPanel = (
     <div
       className="relative space-y-8 max-sm:space-y-2"
+      {...linkBlockAttributes('rides')}
       onClickCapture={
         isSearching ? (event) => trackResultClick(rideSearch, event.target) : undefined
       }

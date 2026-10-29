@@ -29,6 +29,7 @@ import { parkChapterUrl } from '@/lib/utils/url-utils';
 import { useLazyMessages } from '@/i18n/use-lazy-messages';
 import { RouteMessagesProvider } from '@/i18n/route-messages-provider';
 import { LAZY_CHUNK_NAMESPACES } from '@/i18n/route-namespaces.generated';
+import { linkBlockAttributes } from '@/lib/analytics/internal-link';
 
 /** A park row on `/favorites`: the card's 200 px, the 16 px grid gap and the line's 28 px. */
 const PARK_ROW_WITH_LINE_PX = 244;
@@ -220,7 +221,10 @@ export function FavoritesSection({
   }
 
   const content = (
-    <section className={cn('bg-muted/30 px-4 py-8', className)}>
+    <section
+      className={cn('bg-muted/30 px-4 py-8', className)}
+      {...linkBlockAttributes('favorites')}
+    >
       <div className="container mx-auto">
         {standalone ? (
           // On `/favorites` the page's own `<h1>` says it, so this one is only here to keep the

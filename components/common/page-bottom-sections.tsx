@@ -5,6 +5,7 @@ import { FeaturedParksSkeleton } from '@/components/home/home-skeletons';
 import { getFeaturedParksLabels } from '@/components/home/section-headings';
 import { FavoritesEmptyState } from '@/components/parks/favorites-empty-state';
 import { NearbyParksCardSkeleton } from '@/components/parks/nearby-parks-card-skeleton';
+import { linkBlockAttributes } from '@/lib/analytics/internal-link';
 
 const NearbyParksCard = nextDynamic(
   () =>
@@ -48,7 +49,7 @@ export async function PageBottomSections({ locale }: PageBottomSectionsProps) {
       {/* Separated from the page content by a rule and a tint, not by whitespace, and continuing
           into FavoritesSection's band below. `mt-0` drops the card's own `mt-8`, which clears the
           homepage hero and has nothing to clear here. */}
-      <section className="bg-muted/30 border-y px-4 py-6">
+      <section className="bg-muted/30 border-y px-4 py-6" {...linkBlockAttributes('nearby')}>
         <div className="container mx-auto">
           <NearbyParksCard className="mt-0" />
         </div>

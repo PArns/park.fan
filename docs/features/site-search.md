@@ -129,6 +129,15 @@ URL, so a listing page keeps its one canonical
 ([a listing page is a path with its own canonical](../rules/a-listing-page-is-a-path-with-its-own-canonical.md)).
 Its strings are in `navigation`, which the chrome ships anyway.
 
+## Under a post
+
+A post ends on its parks and rides, then a field that opens the palette (`SearchCommand
+trigger="field"`, surface `post_end`), for the reader who came for one park and is done with the
+post ([after the post](post-page-end.md)). The field is a button drawn like a text box, 40 px and
+44 on a phone, and opens the palette on the list the hero shows before anything is typed. It
+mounts the palette on a touch device once it is a screen away (`prewarm="near"`), so the first tap
+raises the keyboard without putting cmdk on the idle path of every post view.
+
 ## What is counted
 
 Every search surface reports through our own statistic (`trackSiteEvent`,
@@ -141,6 +150,7 @@ the viewport come with every hit, the surface with every search event.
 | `hero`           | the homepage hero, desktop panel and phone  | a focus of the field that follows a blur; on a phone, the palette opened from the field or a tap on a row |
 | `home_steps`     | the copy of the hero field in the step card | the same as `hero`                                                                                        |
 | `header`         | the header's field and its icon             | the palette opened                                                                                        |
+| `post_end`       | the field under a post's parks and rides    | the palette opened                                                                                        |
 | `keyboard`       | ⌘K / Ctrl K                                 | the palette opened                                                                                        |
 | `search_page`    | `/search`                                   | a load of the page (the form reloads it)                                                                  |
 | `listing_guides` | `ListingSearch` on `/blog`                  | a focus that follows a blur                                                                               |

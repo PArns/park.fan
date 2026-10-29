@@ -787,6 +787,10 @@ Route `/admin/system` (page).
 
 - `EventDetailView` _component_: One event of the counter taken apart: how often it fired and when, every property it was sent with and the values of each, the combinations of values that came together, a crosstab of any two of them, the page types and device sizes it …
 
+### [`traffic/_components/event-links.tsx`](../../app/admin/traffic/_components/event-links.tsx)
+
+- `EventLinks` _component_: The raw events behind a dashboard, each a way into its own detail under the same filters.
+
 ### [`traffic/_components/events-table.tsx`](../../app/admin/traffic/_components/events-table.tsx)
 
 - `EventsTable` _component_: Every event name seen in the window, biggest first, with its change against the window before and a line of its days.
@@ -816,6 +820,10 @@ Route `/admin/system` (page).
 - `MoreButton` _component_: A show-more switch for a list that is longer than `LIST_SHOWN`.
 - `useShowMore` _hook_: The first `LIST_SHOWN` rows of a list, or all of them once opened, with the props for its `MoreButton` and a way to fold it again when the list changes underneath.
 - `LIST_SHOWN` _const_: Rows shown before the rest of a list waits behind a button.
+
+### [`traffic/_components/paths-view.tsx`](../../app/admin/traffic/_components/paths-view.tsx)
+
+- `PathsView` _component_: `/admin/traffic/paths`: where readers go on from a page. How far down the park pages are read, which block's links are followed and to what kind of page, how the header's menus are opened, and which FAQ questions are.
 
 ### [`traffic/_components/planner-view.tsx`](../../app/admin/traffic/_components/planner-view.tsx)
 
@@ -939,6 +947,13 @@ Route `/admin/traffic/live` (page).
 Route `/admin/traffic` (page).
 
 - `default (TrafficPage)` _component_: The admin's traffic overview. The view reads the window and language from the address, which needs a `Suspense` boundary above it.
+- `metadata` _const_
+
+### [`traffic/paths/page.tsx`](../../app/admin/traffic/paths/page.tsx)
+
+Route `/admin/traffic/paths` (page).
+
+- `default (PathsTrafficPage)` _component_: The admin's dashboard of the ways through the site: how far down park pages are read, which links are followed from which block, the header's menus and the FAQ.
 - `metadata` _const_
 
 ### [`traffic/planner/page.tsx`](../../app/admin/traffic/planner/page.tsx)
