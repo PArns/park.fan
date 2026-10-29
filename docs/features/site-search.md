@@ -146,6 +146,9 @@ the viewport come with every hit, the surface with every search event.
 | `listing_guides` | `ListingSearch` on `/blog`                  | a focus that follows a blur                                                                               |
 | `listing_news`   | `ListingSearch` on `/news`                  | a focus that follows a blur                                                                               |
 | `guides_panel`   | the field in the header's guides panel      | a focus that follows a blur                                                                               |
+| `park_rides`     | the ride search on a park's attractions tab | a focus that follows a blur                                                                               |
+| `compare`        | the park picker of the comparison           | a focus that follows a blur                                                                               |
+| `glossary`       | the glossary overview's field               | a focus that follows a blur, also the one typing on an unfocused page gives it                            |
 
 | Event                   | Sent                                                                | Properties                                 |
 | ----------------------- | ------------------------------------------------------------------- | ------------------------------------------ |
@@ -169,6 +172,17 @@ the viewport come with every hit, the surface with every search event.
 - **Settled** is the palette's debounced query (`SEARCH_SETTLE_MS`, 300 ms); the fields that search
   on every keystroke wait the same 300 ms (`useSettledQueryEvents`). `/search` counts the query it
   was loaded with.
+- **A click names what it opened.** `search_result_clicked` and `search_browse_clicked` carry the
+  park's, ride's, show's or restaurant's UUID as their entity (`resultClicked` and `browseClicked`
+  take the result's `id` and send it only when it is a UUID; a place's `city:slug` and a post go
+  without). That is what ranks the parks and rides opened most from a search in the admin, without
+  a query ever being sent. On `/search`, `searchResultData` carries the id as `data-search-id`.
+- **The fields that filter a list count like the others.** The ride search on a park page counts a
+  dead end when no ride, open or closed, matches; a ride card opened from the hits is a click, with
+  its place in its land, while a button inside the card (the alert bell, the planner) is none. The
+  glossary counts a dead end when its list is empty, and a term card opened from it. The comparison
+  counts the park picked, by click or by Enter. All three use `searchFieldFocusProps` and
+  `useSettledQueryEvents`; `glossary_searched` is gone, the glossary's typing is `search_typed`.
 - **`position`** is the row's place in its own group (the first park, the second guide), bucketed by
   `searchPosition`: 1, 2, 3, 4-5, 6-10, 11+. **`item`** says which list the row came from:
   `nearby_park`, `in_park_ride`, `popular_park`, `news`, `guide`.

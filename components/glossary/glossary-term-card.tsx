@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { Rotate3d, RollerCoaster } from 'lucide-react';
 import { CARD_WIDE_LINK_CLASS, LISTING_CARD_CLASS } from '@/components/blog/post-stream';
 import { cn } from '@/lib/utils';
+import { searchResultData } from '@/lib/analytics/search-session';
 import type { GlossaryTermListItem } from '@/lib/glossary/types';
 import type { Locale } from '@/i18n/config';
 
@@ -16,6 +17,11 @@ interface GlossaryTermCardProps {
   rideCount?: number;
   /** Localised, pluralised label for `rideCount` (e.g. "151 Bahnen"). */
   rideCountLabel?: string;
+  /**
+   * The card's place among a search's hits in its category, set only while the overview's search
+   * runs: it marks the card as a search result for the opening's click (`searchResultData`).
+   */
+  searchIndex?: number;
 }
 
 /**
@@ -32,11 +38,16 @@ export const GlossaryTermCard = memo(function GlossaryTermCard({
   playerLabel,
   rideCount,
   rideCountLabel,
+  searchIndex,
 }: GlossaryTermCardProps) {
   const hasRides = Boolean(rideCount && rideCount > 0);
 
   return (
-    <div className={cn(LISTING_CARD_CLASS, 'relative isolate flex h-full flex-col')}>
+    <div
+      className={cn(LISTING_CARD_CLASS, 'relative isolate flex h-full flex-col')}
+      {...(searchIndex !== undefined &&
+        searchResultData('glossary', searchIndex, `/${segment}/${term.slug}`))}
+    >
       <dt className="flex items-start justify-between gap-3 text-base leading-snug font-bold text-pretty">
         <Link
           href={`/${locale}/${segment}/${term.slug}`}

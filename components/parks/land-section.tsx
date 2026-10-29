@@ -5,6 +5,7 @@ import { AttractionCard } from './attraction-card';
 import { HAIRLINE_FILL, TILE_GLASS } from '@/components/common/glass-card';
 import { cn } from '@/lib/utils';
 import { getAttractionDisplayStatus } from '@/lib/utils/park-utils';
+import { searchResultData } from '@/lib/analytics/search-session';
 import type { ParkAttraction, ParkStatus } from '@/lib/api/types';
 
 // Per-card memo boundary: once the live poll touches one ride the land's `attractions` array is
@@ -38,6 +39,11 @@ interface LandSectionProps {
   action?: ReactNode;
   /** Only the cards, no heading: a slice of the flat „shortest wait" list, which has no lands. */
   bare?: boolean;
+  /**
+   * The cards are the ride search's hits: each row is marked as a search result
+   * (`searchResultData`) with its place in the land and the ride's UUID, for the opening's click.
+   */
+  searchable?: boolean;
 }
 
 /**
@@ -59,6 +65,7 @@ export const LandSection = memo(function LandSection({
   headliner = false,
   action,
   bare = false,
+  searchable = false,
 }: LandSectionProps) {
   const t = useTranslations('parks');
   const operatingCount = attractions.filter(
@@ -121,7 +128,7 @@ export const LandSection = memo(function LandSection({
           `max-sm:auto-rows-auto` because in an auto-height grid every `1fr` track takes the
           tallest row's size. */}
       <ul className="grid [grid-auto-rows:auto_1fr_auto] grid-cols-1 gap-2 max-sm:auto-rows-auto sm:grid-cols-2 sm:gap-4 @min-[1024px]/page:grid-cols-3">
-        {attractions.map((attraction) => {
+        {attractions.map((attraction, index) => {
           // The photo and its focal point ride along on the attraction
           // (`enrichAttractionsWithImages`): a lookup here would put the media manifest into a
           // Client Component's bundle.
@@ -129,6 +136,7 @@ export const LandSection = memo(function LandSection({
             <li
               key={attraction.id}
               className="row-span-3 grid [grid-template-rows:subgrid] max-sm:block"
+              {...(searchable && searchResultData('attraction', index, undefined, attraction.id))}
             >
               <MemoAttractionCard
                 attraction={attraction}

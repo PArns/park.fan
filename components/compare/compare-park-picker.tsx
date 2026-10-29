@@ -7,6 +7,11 @@ import { Input } from '@/components/ui/input';
 import { cn } from '@/lib/utils';
 import { getCountryName } from '@/lib/utils/region-names';
 import { parkHits, type SearchParkHit } from '@/lib/utils/search-park-hits';
+import {
+  searchFieldFocusProps,
+  useSearchSession,
+  useSettledQueryEvents,
+} from '@/lib/hooks/use-search-session';
 
 /** `/api/search` answers an empty set below this, so asking earlier would be a lie. */
 const MIN_QUERY_LENGTH = 3;
@@ -33,6 +38,7 @@ export function CompareParkPicker({ chosen, disabled, onPick }: CompareParkPicke
   const [query, setQuery] = useState('');
   const [found, setFound] = useState<{ q: string; hits: SearchParkHit[] }>({ q: '', hits: [] });
   const [busy, setBusy] = useState(false);
+  const search = useSearchSession('compare');
 
   const needle = query.trim();
   const short = needle.length < MIN_QUERY_LENGTH;
@@ -70,8 +76,13 @@ export function CompareParkPicker({ chosen, disabled, onPick }: CompareParkPicke
   const results = short || found.q !== needle ? [] : found.hits.slice(0, 6);
   const keyOf = (p: SearchParkHit) => `${p.geo.continent}/${p.geo.country}/${p.geo.city}/${p.slug}`;
 
-  const pick = (park: SearchParkHit) => {
+  // A search surface like the site's own: an opening per focus, a settled query, a dead end, and
+  // the park picked, by its place and its UUID. Nothing typed is sent.
+  useSettledQueryEvents(search, query, found.q === needle && !busy ? found.hits.length > 0 : null);
+
+  const pick = (park: SearchParkHit, index: number) => {
     if (disabled || chosen.has(keyOf(park))) return;
+    search.resultClicked('park', index, park.id);
     onPick(park);
     setQuery('');
     setFound({ q: '', hits: [] });
@@ -88,12 +99,13 @@ export function CompareParkPicker({ chosen, disabled, onPick }: CompareParkPicke
           type="search"
           value={query}
           disabled={disabled}
+          {...searchFieldFocusProps(search)}
           onChange={(event) => setQuery(event.target.value)}
           onKeyDown={(event) => {
             if (event.key !== 'Enter') return;
             event.preventDefault();
-            const first = results.find((p) => !chosen.has(keyOf(p)));
-            if (first) pick(first);
+            const first = results.findIndex((p) => !chosen.has(keyOf(p)));
+            if (first >= 0) pick(results[first], first);
           }}
           placeholder={t('placeholder')}
           aria-label={t('placeholder')}
@@ -109,7 +121,7 @@ export function CompareParkPicker({ chosen, disabled, onPick }: CompareParkPicke
               {busy ? t('searching') : t('noResults')}
             </li>
           ) : (
-            results.map((park) => {
+            results.map((park, index) => {
               const picked = chosen.has(keyOf(park));
               const place = [
                 park.city,
@@ -122,7 +134,7 @@ export function CompareParkPicker({ chosen, disabled, onPick }: CompareParkPicke
                   <button
                     type="button"
                     disabled={picked}
-                    onClick={() => pick(park)}
+                    onClick={() => pick(park, index)}
                     className={cn(
                       'hover:bg-accent flex w-full items-center gap-3 rounded-xl px-2 py-1.5 text-left transition-colors disabled:opacity-60 disabled:hover:bg-transparent'
                     )}

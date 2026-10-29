@@ -190,7 +190,9 @@ language-market search relevance).
 
 `/admin/popularity` („Beliebtheit", `app/admin/popularity/`) reads `GET /v1/admin/page-views` through
 the admin proxy: per kind the total and the leading language, a kind × language table, views per day
-(empty days included), and the 25 most viewed pages of each kind with a column per language. „Alle"
+(empty days included) as the admin's line chart, all kinds together and each on its own line, with a
+readout on hover and a table view, and the 25 most viewed pages of each kind with a column per
+language. „Alle"
 ranks over all languages; a language button ranks by that language's views. 7, 30 or 90 days. Parks
 and rides come with name and link from the API; posts are named from the German manifest.
 

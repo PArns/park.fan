@@ -15,6 +15,12 @@ import { ParkTabsList } from '@/components/parks/park-tabs-list';
 import { OffSeasonToggle } from '@/components/parks/off-season-toggle';
 import { AttractionFilterPanel } from '@/components/parks/attraction-filter-panel';
 import { useTabHashRouting } from '@/lib/hooks/use-tab-hash-routing';
+import {
+  searchFieldFocusProps,
+  useSearchSession,
+  useSettledQueryEvents,
+} from '@/lib/hooks/use-search-session';
+import { trackResultClick } from '@/lib/analytics/search-session';
 import { nextWetMode, useAttractionFilter } from '@/lib/hooks/use-attraction-filter';
 import { stripNewPrefix } from '@/lib/utils';
 import { ParkHeaderCard } from '@/components/parks/park-header-card';
@@ -429,12 +435,19 @@ export const TabsWithHash = memo(function TabsWithHash({
     [setShowOffSeasonShows]
   );
 
+  // The ride search is a search surface of its own: an opening per focus, a settled query, a
+  // dead end when no ride matches, and a ride opened from the hits. Nothing typed is sent.
+  const rideSearch = useSearchSession('park_rides');
+  const rideSearchFocus = useMemo(() => searchFieldFocusProps(rideSearch), [rideSearch]);
+  useSettledQueryEvents(rideSearch, searchQuery, hasSearchResults || closedRideMatches.length > 0);
+
   const filterPanel = (
     <MemoAttractionFilterPanel
       parkId={park.id}
       inputRef={inputRef}
       searchQuery={searchQuery}
       onSearchChange={setSearchQuery}
+      searchFocus={rideSearchFocus}
       isSearching={isSearching}
       offSeasonCount={offSeasonAttractionCount}
       showOffSeason={showOffSeasonAttractions}
@@ -511,7 +524,12 @@ export const TabsWithHash = memo(function TabsWithHash({
   // so any constant is wrong on one of the two. Rendering the same tree twice needs no
   // constant — the geometry is equal because the markup is the same markup.
   const attractionsPanel = (
-    <div className="relative space-y-8 max-sm:space-y-2">
+    <div
+      className="relative space-y-8 max-sm:space-y-2"
+      onClickCapture={
+        isSearching ? (event) => trackResultClick(rideSearch, event.target) : undefined
+      }
+    >
       {/* Stays mounted when another tab is chosen — the mounted branch hides its panel instead
           (`forceMount` + `hidden`), so leaving the ride list and coming back rebuilds nothing. */}
       {ropeDropStrip('max-sm:hidden')}
@@ -592,6 +610,7 @@ export const TabsWithHash = memo(function TabsWithHash({
               <LandSection
                 landName={landName}
                 attractions={attractions}
+                searchable={isSearching}
                 parkPath={parkPath}
                 parkSlug={parkSlug}
                 parkStatus={park.status}

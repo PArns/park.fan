@@ -216,7 +216,7 @@ export function HeroPhoneList({
                     <PhoneRow
                       item={item}
                       href={href}
-                      onClick={() => session.browseClicked(item.browseItem, index)}
+                      onClick={() => session.browseClicked(item.browseItem, index, item.id)}
                     />
                   </li>
                 );
