@@ -15,6 +15,7 @@ import { Ban, Eye, Loader2, ShieldCheck, TimerOff, TriangleAlert } from 'lucide-
 import { Button } from '@/components/ui/button';
 import {
   consentRequestPath,
+  describeOriginMismatch,
   describeRedirectHost,
   describeRequestAge,
   describeScopes,
@@ -214,6 +215,7 @@ function Consent() {
   // The clock ticks once a minute and may have been read before the request arrived.
   const age =
     now === null ? null : describeRequestAge(request.createdAt, Math.max(now, query.dataUpdatedAt));
+  const origin = describeOriginMismatch(request.startedFrom, request.viewer);
   const busy = phase !== 'idle';
   const askForCode = identity.totpEnabled || needsCode;
   const complete = password.length > 0 && (!askForCode || code.length === TOTP_CODE_LENGTH);
@@ -367,6 +369,21 @@ function Consent() {
         <Notice>
           Diese Anfrage wurde {age.text}. Wer eine Verbindung gerade in der App startet, landet nach
           wenigen Sekunden hier. Hast du sie nicht eben selbst gestartet, lehne ab.
+        </Notice>
+      )}
+
+      {origin && (
+        <Notice>
+          <p>Gestartet wurde diese Anfrage nicht dort, wo du gerade bist.</p>
+          <dl className="mt-1.5 grid grid-cols-[auto_1fr] gap-x-3 gap-y-0.5">
+            <dt className="font-semibold">Gestartet</dt>
+            <dd>{origin.started}</dd>
+            <dt className="font-semibold">Du</dt>
+            <dd>{origin.you}</dd>
+          </dl>
+          <p className="mt-1.5">
+            Hast du die Verbindung nicht eben selbst in der App gestartet, lehne ab.
+          </p>
         </Notice>
       )}
 

@@ -15,6 +15,7 @@ import {
   consentRequestPath,
   createTokenBody,
   describeRedirectHost,
+  describeOriginMismatch,
   describeRequestAge,
   describeScopes,
   describeTokenCreateError,
@@ -443,6 +444,58 @@ const testCases = [
     name: 'a start in the future (clock skew) counts as just now',
     actual: () => describeRequestAge('2026-10-28T10:00:20Z', Date.parse('2026-10-28T10:00:00Z')),
     expected: { text: 'gerade eben gestartet', stale: false },
+  },
+
+  // describeOriginMismatch
+  {
+    name: 'the same country and browser say nothing',
+    actual: () =>
+      describeOriginMismatch(
+        { country: 'de', browser: 'chrome' },
+        { country: 'de', browser: 'chrome' }
+      ),
+    expected: null,
+  },
+  {
+    name: 'another country and browser name both, on both sides',
+    actual: () =>
+      describeOriginMismatch(
+        { country: 'us', browser: 'firefox' },
+        { country: 'de', browser: 'chrome' }
+      ),
+    expected: { started: 'Vereinigte Staaten, Firefox', you: 'Deutschland, Chrome' },
+  },
+  {
+    name: 'only what differs is named',
+    actual: () =>
+      describeOriginMismatch(
+        { country: 'de', browser: 'safari' },
+        { country: 'de', browser: 'chrome' }
+      ),
+    expected: { started: 'Safari', you: 'Chrome' },
+  },
+  {
+    name: 'an unknown family reads as another browser',
+    actual: () =>
+      describeOriginMismatch(
+        { country: 'de', browser: 'other' },
+        { country: 'de', browser: 'edge' }
+      ),
+    expected: { started: 'anderer Browser', you: 'Edge' },
+  },
+  {
+    name: 'a fact one side lacks is not compared',
+    actual: () =>
+      describeOriginMismatch(
+        { country: null, browser: 'chrome' },
+        { country: 'de', browser: 'chrome' }
+      ),
+    expected: null,
+  },
+  {
+    name: 'a request from an API that sends no origin says nothing',
+    actual: () => describeOriginMismatch(undefined, { country: 'de', browser: 'chrome' }),
+    expected: null,
   },
 ];
 

@@ -1,4 +1,5 @@
 import { API_ORIGIN } from '@/lib/api/client';
+import { breakdownValueLabel, countryName } from './site-analytics';
 import { TOTP_CODE_LENGTH } from './totp';
 
 /**
@@ -35,6 +36,18 @@ export interface OAuthConsentRequest {
   expiresAt: string;
   /** When the app started the request, ISO. Absent from an API that does not send it yet. */
   createdAt?: string;
+  /** The browser that started the request; absent from an API that does not send it yet. */
+  startedFrom?: RequestOrigin | null;
+  /** The admin reading the page, from their address and the browser their session signed in with. */
+  viewer?: RequestOrigin | null;
+}
+
+/** Where a request came from, as the API tells it: a country and a browser family, never an address. */
+export interface RequestOrigin {
+  /** ISO 3166-1 alpha-2, lowercase; null when the API could not place the address. */
+  country: string | null;
+  /** The browser family (`chrome`, `firefox` …); null without a User-Agent. */
+  browser: string | null;
 }
 
 /** What approving or denying answers with: where to send the browser next. */
@@ -324,6 +337,47 @@ export function describeRequestAge(
         ? 'vor einer Minute gestartet'
         : `vor ${minutes} Minuten gestartet`;
   return { text, stale: ageMs > STALE_REQUEST_MINUTES * 60_000 };
+}
+
+/** One side of {@link describeOriginMismatch}: only the facts that differ, in words. */
+interface OriginWords {
+  started: string;
+  you: string;
+}
+
+function browserWords(family: string): string {
+  return family === 'other' ? 'anderer Browser' : breakdownValueLabel('browser', family);
+}
+
+/**
+ * What differs between the browser that started a consent request and the admin reading it:
+ * `{ started: 'Vereinigte Staaten, Firefox', you: 'Deutschland, Chrome' }`, naming only the facts
+ * that differ. A connection somebody started elsewhere and sent over as a link looks like this; one
+ * started in this browser does not. A fact either side lacks is not compared, so an unknown never
+ * warns; `null` when nothing known differs.
+ */
+export function describeOriginMismatch(
+  startedFrom: RequestOrigin | null | undefined,
+  viewer: RequestOrigin | null | undefined
+): OriginWords | null {
+  if (!startedFrom || !viewer) return null;
+  const country =
+    startedFrom.country !== null &&
+    viewer.country !== null &&
+    startedFrom.country !== viewer.country;
+  const browser =
+    startedFrom.browser !== null &&
+    viewer.browser !== null &&
+    startedFrom.browser !== viewer.browser;
+  if (!country && !browser) return null;
+  const words = (origin: RequestOrigin) =>
+    [
+      country && origin.country ? countryName(origin.country) : null,
+      browser && origin.browser ? browserWords(origin.browser) : null,
+    ]
+      .filter(Boolean)
+      .join(', ');
+  return { started: words(startedFrom), you: words(viewer) };
 }
 
 /** Whether an ISO time has passed at `nowMs`; a missing time never expires. */
