@@ -4,6 +4,7 @@ import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import { TreePalm, Cog, Utensils, Music, MapPin, Clock, BookOpen, Leaf } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
+import { CAPS_CENTRED_CLASS } from '@/lib/utils/text-box';
 import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
 import { ParkStatusBadge } from '@/components/parks/park-status-badge';
 import { stripNewPrefix, cn } from '@/lib/utils';
@@ -13,6 +14,13 @@ import { CROWD_OUTLINE_CLASS, waitTimeCrowdTier } from '@/lib/utils/crowd-level-
 import { SEARCH_SECONDARY_TEXT_CLASS } from '@/components/search/hero-search-classes';
 import type { SearchResultItem } from '@/lib/api/types';
 import type { NearbySearchExtras } from '@/lib/hooks/use-hero-browse-parks';
+
+/**
+ * A row's pills that lead with an icon, the icon as far from the left edge as from the top. The
+ * command list draws every icon in a row at 16 px, which leaves less room around it than the
+ * badge's own 12.
+ */
+const ROW_ICON_PILL_CLASS = 'pl-0.5 text-[11px]';
 
 const typeIcons = {
   park: TreePalm,
@@ -25,7 +33,8 @@ const typeIcons = {
 
 /**
  * A wait as an outline pill in its crowd tier's colour (`waitTimeCrowdTier`), the scale every wait
- * on the site uses. The text is the caller's: „Ø 15 Min." for a park, „25 Min" for a ride.
+ * on the site uses. The text is the caller's: „Ø 15 Min." for a park, „25 Min" for a ride, centred
+ * on its figures like the status pill beside it (`centreCaps`).
  */
 export function WaitBadge({
   minutes,
@@ -45,7 +54,7 @@ export function WaitBadge({
         className
       )}
     >
-      {children}
+      <span className={CAPS_CENTRED_CLASS}>{children}</span>
     </Badge>
   );
 }
@@ -124,7 +133,7 @@ export function SearchResultRowBody({ result }: { result: SearchResultItem & Nea
     <>
       <SearchResultThumb result={result} />
 
-      <div className="flex min-w-0 flex-1 flex-col gap-1 sm:gap-1.5">
+      <div className="@container flex min-w-0 flex-1 flex-col gap-1 sm:gap-1.5">
         <div className="flex items-center justify-between gap-3">
           <span className="truncate text-sm leading-none font-semibold sm:text-[15px]">
             {stripNewPrefix(result.name)}
@@ -132,8 +141,18 @@ export function SearchResultRowBody({ result }: { result: SearchResultItem & Nea
           {result.status && (
             <ParkStatusBadge
               status={result.status}
-              label={result.statusLabel}
-              className="text-[11px]"
+              label={
+                result.statusCountdown ? (
+                  <>
+                    {result.statusLabel}
+                    <span className="hidden @min-[30rem]:inline"> ({result.statusCountdown})</span>
+                  </>
+                ) : (
+                  result.statusLabel
+                )
+              }
+              centreCaps
+              className={ROW_ICON_PILL_CLASS}
             />
           )}
         </div>
@@ -185,12 +204,19 @@ export function SearchResultRowBody({ result }: { result: SearchResultItem & Nea
             ) : (
               result.type === 'park' &&
               result.load &&
-              !isClosed && <CrowdLevelBadge level={result.load} className="text-[11px]" />
+              !isClosed && (
+                <CrowdLevelBadge level={result.load} centreCaps className={ROW_ICON_PILL_CLASS} />
+              )
             )}
 
             {result.distanceM != null && (
+              // Centred like the pill beside it, so the two share a line.
               <span
-                className={cn(SEARCH_SECONDARY_TEXT_CLASS, 'text-[11px] font-medium tabular-nums')}
+                className={cn(
+                  SEARCH_SECONDARY_TEXT_CLASS,
+                  CAPS_CENTRED_CLASS,
+                  'text-[11px] font-medium tabular-nums'
+                )}
               >
                 {formatDistance(result.distanceM)}
               </span>

@@ -44,6 +44,8 @@ export interface NearbySearchExtras {
   timezone?: string;
   /** The status pill's text where it is not the status's word (`useHeroStatusLabels`). */
   statusLabel?: string;
+  /** How far off the opening in `statusLabel` is, „in 2 Tagen", for a pill with room for it. */
+  statusCountdown?: string;
 }
 
 /** A row of the pre-query list: a search result with its live extras and what kind of row it is. */

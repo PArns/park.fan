@@ -1,7 +1,8 @@
 /**
  * Unit tests for the next-opening decision in `lib/utils/schedule-utils.ts`: `nextParkOpening`,
  * which the hero's status pills and its park block read, `isTodayAhead`, the block's „can today
- * still be planned", and `formatParkOpening`, which words the answer.
+ * still be planned", `formatParkOpening`, which words the answer, and
+ * `formatParkOpeningCountdown`, which says how far off it is.
  *
  * What must hold: before today's opening a shut park opens today, at a time, not on tomorrow's
  * date; an opening that has passed is never announced, even where the API's `nextSchedule` is
@@ -10,7 +11,12 @@
  * Run: pnpm test:park-opening
  */
 import assert from 'node:assert/strict';
-import { formatParkOpening, isTodayAhead, nextParkOpening } from '../lib/utils/schedule-utils.ts';
+import {
+  formatParkOpening,
+  formatParkOpeningCountdown,
+  isTodayAhead,
+  nextParkOpening,
+} from '../lib/utils/schedule-utils.ts';
 
 let passed = 0;
 function test(name, fn) {
@@ -121,6 +127,50 @@ test('formatParkOpening: a time today, a date later, both in the park’s zone',
       'en'
     ),
     'Opens at 8 AM'
+  );
+});
+
+const countdownStrings = {
+  inDays: (days) => `${days} d`,
+  inHours: (time) => `${time} h`,
+  inMinutes: (minutes) => `${minutes} min`,
+};
+
+test('formatParkOpeningCountdown: hours and minutes today, minutes in the last hour', () => {
+  const opening = { at: disneylandToday.openingTime, today: true };
+  assert.equal(
+    formatParkOpeningCountdown(opening, at('2026-10-28T05:55:00-07:00'), countdownStrings, LA),
+    '2:05 h'
+  );
+  assert.equal(
+    formatParkOpeningCountdown(opening, at('2026-10-28T07:00:00-07:00'), countdownStrings, LA),
+    '1:00 h'
+  );
+  assert.equal(
+    formatParkOpeningCountdown(opening, at('2026-10-28T07:15:00-07:00'), countdownStrings, LA),
+    '45 min'
+  );
+  assert.equal(
+    formatParkOpeningCountdown(opening, at('2026-10-28T07:59:30-07:00'), countdownStrings, LA),
+    '1 min'
+  );
+});
+
+test('formatParkOpeningCountdown: a later day counts the park’s calendar days', () => {
+  const opening = { at: disneylandNext.openingTime, today: false };
+  // 23:30 the evening before is one day off, though only eight and a half hours.
+  assert.equal(
+    formatParkOpeningCountdown(opening, at('2026-10-28T23:30:00-07:00'), countdownStrings, LA),
+    '1 d'
+  );
+  assert.equal(
+    formatParkOpeningCountdown(opening, at('2026-10-27T09:00:00-07:00'), countdownStrings, LA),
+    '2 d'
+  );
+  // 2026-10-28 07:30 in Berlin is still 2026-10-27 in Los Angeles: two park days, not one.
+  assert.equal(
+    formatParkOpeningCountdown(opening, at('2026-10-28T07:30:00+01:00'), countdownStrings, LA),
+    '2 d'
   );
 });
 

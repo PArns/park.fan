@@ -1,5 +1,7 @@
+import type { ReactNode } from 'react';
 import { useTranslations } from 'next-intl';
 import { Badge } from '@/components/ui/badge';
+import { CAPS_CENTRED_CLASS } from '@/lib/utils/text-box';
 import { cn } from '@/lib/utils';
 import { Clock, AlertTriangle, XCircle, Wrench, Ban } from 'lucide-react';
 import type { ParkStatus, AttractionStatus } from '@/lib/api/types';
@@ -14,7 +16,13 @@ export type ClosedPermanentlyStatus = 'RETIRED';
 interface ParkStatusBadgeProps {
   status: ParkStatus | AttractionStatus | ClosedPermanentlyStatus;
   /** Text in place of the status's word, in the status's look: „Öffnet am 31. Oktober". */
-  label?: string;
+  label?: ReactNode;
+  /**
+   * Centre the capitals in the pill (`CAPS_CENTRED_CLASS`), which otherwise sit high in
+   * Geist's line box. Off by default: a pill shares its baseline with the badges beside it, and a
+   * centred one would stand lower than a neighbour that is not.
+   */
+  centreCaps?: boolean;
   className?: string;
 }
 
@@ -22,7 +30,7 @@ interface ParkStatusBadgeProps {
  * Status badge for a park or a ride: operating, down, closed, refurbishment, unknown, or `RETIRED`
  * for a ride that closed for good. An unrecognised status falls back to the closed style.
  */
-export function ParkStatusBadge({ status, label, className }: ParkStatusBadgeProps) {
+export function ParkStatusBadge({ status, label, centreCaps, className }: ParkStatusBadgeProps) {
   const t = useTranslations('parks.status');
 
   const statusConfig = {
@@ -42,7 +50,7 @@ export function ParkStatusBadge({ status, label, className }: ParkStatusBadgePro
   return (
     <Badge className={cn(config.color, className)}>
       <Icon className="h-3 w-3 text-white" />
-      {label ?? t(status)}
+      <span className={centreCaps ? CAPS_CENTRED_CLASS : undefined}>{label ?? t(status)}</span>
     </Badge>
   );
 }

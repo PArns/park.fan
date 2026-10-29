@@ -2,6 +2,7 @@
 title: 'Tokyo Disney Resort: tempi di attesa e consigli per Disneyland e DisneySea'
 translationKey: tokyo-disney-resort-guide
 date: '2026-10-26'
+updatedAt: '2026-10-29'
 author: patrick
 mode: published
 featured: false
@@ -330,7 +331,7 @@ Sempre alla stazione Resort Gateway c’è Ikspiari, un centro commerciale della
 
 ## Le novità del 2027
 
-Oltre a «Space Mountain Earthrise», nella primavera 2027 a Tokyo Disneyland dovrebbe aprire «Sugar Rush: Sweet Rescue», un’attrazione dedicata al film «Ralph Spaccatutto». In origine era prevista per il 2026.
+Oltre a «Space Mountain Earthrise», il **15 aprile 2027** a Tokyo Disneyland apre «Sugar Rush: Sweet Rescue», la prima attrazione al mondo dedicata al film «Ralph Spaccatutto». All’inizio era annunciata per il 2026. Nei veicoli sono montati scanner con cui riporti a forma di dolcetto i Sugar Bugs di Re Candito. Alla fine lo schermo del veicolo mostra il punteggio, e per un periodo limitato anche l’app del resort. Il chiosco di popcorn Popping Station, affacciato sulla Tomorrowland Plaza, vende già dal 17 marzo 2027 il gusto Sugar-Lime, che si trova solo a Tokyo Disneyland, e chi ci va a marzo assaggia il popcorn dell’attrazione prima di poterci salire. Il negozio Pixel Prism, accanto all’attrazione, apre lo stesso giorno. Puoi allenarti dal 12 gennaio 2027 con un gioco per smartphone sull’attrazione, e in alcune zone del parco una versione a parte inserisce nel gioco le scenografie intorno.
 
 ## La storia del resort
 
@@ -432,6 +433,7 @@ La festa per i 25 anni, «Sparkling Jubilee», va dal 15 aprile 2026 al 31 marzo
 - Durata, capienza e altezze minime delle attrazioni (ufficiale):
   [Tokyo Disneyland](https://www.tokyodisneyresort.jp/en/tdl/attraction/)
   · [Tokyo DisneySea](https://www.tokyodisneyresort.jp/en/tds/attraction/)
+- [Sugar Rush: Sweet Rescue, data di apertura e dettagli (Disney Parks Blog)](https://disneyparksblog.com/tdr/wreck-it-ralph-ride-at-tokyo-disney/)
 - Tempi di attesa, giorni misurati, andamento orario, altezze minime e rope drop: i widget in questo
   articolo e le pagine del parco di [Tokyo Disneyland](ref:tokyo-disneyland) e
   [Tokyo DisneySea](ref:tokyo-disneysea), da misurazioni nostre

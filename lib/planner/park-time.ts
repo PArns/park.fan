@@ -1,5 +1,5 @@
 import { getDateTimeFormat } from '@/lib/utils/intl-format';
-import { parkDayOf } from '@/lib/utils/park-day';
+import { daysBetween, parkDayOf } from '@/lib/utils/park-day';
 import { isPlannedDay, type PlannerState } from './types';
 
 /**
@@ -74,17 +74,7 @@ export function longDate(date: string, locale: string): string {
   }).format(new Date(`${date}T12:00:00Z`));
 }
 
-export { addDays } from '@/lib/utils/park-day';
-
-/**
- * Whole calendar days from `from` to `to`, negative where `to` is earlier: a count of nights, from
- * noon UTC on both sides (see {@link longDate}), so the difference is whole by construction.
- */
-export function daysBetween(from: string, to: string): number {
-  const start = Date.parse(`${from}T12:00:00Z`);
-  const end = Date.parse(`${to}T12:00:00Z`);
-  return Math.round((end - start) / 86_400_000);
-}
+export { addDays, daysBetween } from '@/lib/utils/park-day';
 
 /**
  * Where a planned day sits against the park's own clock. One value rather than a date plus a

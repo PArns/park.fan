@@ -2,6 +2,7 @@
 title: 'Tokyo Disney Resort: wachttijden en tips voor Disneyland en DisneySea'
 translationKey: tokyo-disney-resort-guide
 date: '2026-10-26'
+updatedAt: '2026-10-29'
 author: patrick
 mode: published
 featured: false
@@ -330,7 +331,7 @@ Bij station Resort Gateway ligt ook Ikspiari, een winkelcentrum van de OLC met e
 
 ## Wat er in 2027 nieuw komt
 
-Naast “Space Mountain Earthrise” moet in het voorjaar van 2027 in Tokyo Disneyland “Sugar Rush: Sweet Rescue” opengaan, een attractie rond de film “Wreck-It Ralph”. Oorspronkelijk stond die gepland voor 2026.
+Naast “Space Mountain Earthrise” gaat op **15 april 2027** in Tokyo Disneyland “Sugar Rush: Sweet Rescue” open, de eerste attractie ter wereld rond de film “Wreck-It Ralph”. Eerst was die aangekondigd voor 2026. In de wagens zitten ingebouwde scanners waarmee je de Sugar Bugs van King Candy terugverandert in snoep. Aan het eind toont het scherm in de wagen je score, een beperkte tijd ook de app van het resort. De popcornkraam Popping Station, met uitzicht op de Tomorrowland Plaza, verkoopt al vanaf 17 maart 2027 de smaak Sugar-Lime, die je alleen in Tokyo Disneyland krijgt, en wie in maart komt, proeft de popcorn van de attractie voordat hij erin kan. De winkel Pixel Prism naast de attractie opent op dezelfde dag. Oefenen kan vanaf 12 januari 2027 met een spel voor de smartphone bij de attractie, en in sommige delen van het park draait een eigen versie die de decors eromheen in het spel verwerkt.
 
 ## De geschiedenis van het resort
 
@@ -432,6 +433,7 @@ Het feest voor de 25e verjaardag, “Sparkling Jubilee”, loopt van 15 april 20
 - Rijtijden, capaciteit en minimumlengtes van de attracties (officieel):
   [Tokyo Disneyland](https://www.tokyodisneyresort.jp/en/tdl/attraction/)
   · [Tokyo DisneySea](https://www.tokyodisneyresort.jp/en/tds/attraction/)
+- [Sugar Rush: Sweet Rescue, openingsdatum en details (Disney Parks Blog)](https://disneyparksblog.com/tdr/wreck-it-ralph-ride-at-tokyo-disney/)
 - Wachttijden, meetdagen, dagverlopen, minimumlengtes en rope drop: de widgets in dit
   bericht en de parkpagina's van [Tokyo Disneyland](ref:tokyo-disneyland) en
   [Tokyo DisneySea](ref:tokyo-disneysea), uit eigen metingen

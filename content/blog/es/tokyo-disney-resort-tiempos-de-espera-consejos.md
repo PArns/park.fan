@@ -2,6 +2,7 @@
 title: 'Tokyo Disney Resort: tiempos de espera y consejos para Disneyland y DisneySea'
 translationKey: tokyo-disney-resort-guide
 date: '2026-10-26'
+updatedAt: '2026-10-29'
 author: patrick
 mode: published
 featured: false
@@ -330,7 +331,7 @@ Junto a la estación Resort Gateway está también Ikspiari, un centro comercial
 
 ## Qué llega en 2027
 
-Además de «Space Mountain Earthrise», en la primavera de 2027 debe abrir en Tokyo Disneyland «Sugar Rush: Sweet Rescue», una atracción de la película «¡Rompe Ralph!». En un principio estaba prevista para 2026.
+Además de «Space Mountain Earthrise», el **15 de abril de 2027** abre en Tokyo Disneyland «Sugar Rush: Sweet Rescue», la primera atracción del mundo dedicada a la película «¡Rompe Ralph!». Al principio estaba anunciada para 2026. Los vehículos llevan escáneres con los que devuelves a su forma de golosina a los Sugar Bugs del rey Candy. Al final la pantalla del vehículo muestra la puntuación, y durante un tiempo limitado también la app del resort. El puesto de palomitas Popping Station, con vistas a la Tomorrowland Plaza, vende ya desde el 17 de marzo de 2027 el sabor Sugar-Lime, que solo hay en Tokyo Disneyland, así que quien vaya en marzo prueba las palomitas de la atracción antes de poder subir. La tienda Pixel Prism, junto a la atracción, abre el mismo día que ella. Puedes entrenar desde el 12 de enero de 2027 con un juego para el móvil basado en la atracción, y en algunas zonas del parque hay una versión propia que mete en el juego los decorados de alrededor.
 
 ## La historia del resort
 
@@ -432,6 +433,7 @@ La celebración del 25 aniversario, «Sparkling Jubilee», va del 15 de abril de
 - Duración, capacidad y alturas mínimas de las atracciones (oficial):
   [Tokyo Disneyland](https://www.tokyodisneyresort.jp/en/tdl/attraction/)
   · [Tokyo DisneySea](https://www.tokyodisneyresort.jp/en/tds/attraction/)
+- [Sugar Rush: Sweet Rescue, fecha de apertura y detalles (Disney Parks Blog)](https://disneyparksblog.com/tdr/wreck-it-ralph-ride-at-tokyo-disney/)
 - Tiempos de espera, días medidos, perfiles horarios, alturas mínimas y rope drop: los widgets de
   este artículo y las páginas de [Tokyo Disneyland](ref:tokyo-disneyland) y
   [Tokyo DisneySea](ref:tokyo-disneysea), a partir de mediciones propias

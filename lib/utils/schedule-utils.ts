@@ -2,7 +2,7 @@ import { formatDurationShort } from '@/lib/i18n/time';
 import type { useTranslations } from 'next-intl';
 import type { ScheduleSummary } from '@/lib/api/types';
 import { formatClockTime, formatTime, getDateTimeFormat } from '@/lib/utils/intl-format';
-import { parkDayOf } from '@/lib/utils/park-day';
+import { daysBetween, parkDayOf } from '@/lib/utils/park-day';
 
 export type { ScheduleSummary };
 
@@ -92,6 +92,36 @@ export function formatParkOpening(
   return opening.today
     ? strings.opensAt(formatClockTime(opening.at, locale, timeZone))
     : formatOpensOn(strings.opensOn, opening.at, timeZone, locale);
+}
+
+/** The `parks.opensIn*` strings {@link formatParkOpeningCountdown} words its answer in. */
+export interface ParkOpeningCountdownStrings {
+  inDays: (days: number) => string;
+  /** `time` is hours and minutes, „1:05". */
+  inHours: (time: string) => string;
+  inMinutes: (minutes: number) => string;
+}
+
+/**
+ * How far off {@link nextParkOpening} is: „in 1:30 Stunden" for an opening today, „in 45 Minuten"
+ * inside the last hour, „in 2 Tagen" for a later day. Days are the park's calendar days, so the
+ * count agrees with the date {@link formatParkOpening} prints beside it. Minutes round up, so the
+ * last minute before the opening reads „in 1 Minute", never „in 0".
+ */
+export function formatParkOpeningCountdown(
+  opening: ParkOpening,
+  nowMs: number,
+  strings: ParkOpeningCountdownStrings,
+  timeZone: string
+): string {
+  if (!opening.today) {
+    return strings.inDays(
+      daysBetween(parkDayOf(nowMs, timeZone), parkDayOf(new Date(opening.at), timeZone))
+    );
+  }
+  const minutes = Math.ceil((new Date(opening.at).getTime() - nowMs) / 60_000);
+  if (minutes < 60) return strings.inMinutes(minutes);
+  return strings.inHours(`${Math.floor(minutes / 60)}:${String(minutes % 60).padStart(2, '0')}`);
 }
 
 /**
