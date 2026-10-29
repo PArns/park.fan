@@ -9,11 +9,15 @@ import { useMediaQuery } from '@/lib/hooks/use-media-query';
 import {
   breakdownValueLabel,
   countryName,
+  DATACENTER_LABEL,
+  DATACENTER_SCOPES,
   eventLabel,
   pageTypeLabel,
+  parseDatacenterScope,
   parseTrafficLocale,
   pathEditorHref,
   referrerHref,
+  type DatacenterScope,
 } from '@/lib/admin/site-analytics';
 import {
   formatLiveClock,
@@ -38,6 +42,7 @@ import {
 } from '../../../_ui/primitives';
 import { RowLink } from '../../_components/breakdown-panel';
 import { LanguageSwitch } from '../../_components/language-switch';
+import { Segmented } from '../../../_ui/controls';
 import { useLiveTraffic } from '../_lib/use-live-traffic';
 import { CountUp } from './count-up';
 import { LiveList } from './live-list';
@@ -68,12 +73,13 @@ export function LiveView() {
   const pathname = usePathname();
   const router = useRouter();
   const locale = parseTrafficLocale(params.get('locale'));
+  const datacenter = parseDatacenterScope(params.get('datacenter'));
 
-  const setLocale = useCallback(
-    (value: Locale | null) => {
+  const setParam = useCallback(
+    (key: string, value: string | null) => {
       const next = new URLSearchParams(params.toString());
-      if (value === null) next.delete('locale');
-      else next.set('locale', value);
+      if (value === null) next.delete(key);
+      else next.set(key, value);
       const query = next.toString();
       router.replace(query ? `${pathname}?${query}` : pathname, { scroll: false });
     },
@@ -82,7 +88,13 @@ export function LiveView() {
 
   return (
     <AdminPage width="wide">
-      <LiveBoard key={locale ?? 'all'} locale={locale} onLocale={setLocale} />
+      <LiveBoard
+        key={`${locale ?? 'all'}|${datacenter}`}
+        locale={locale}
+        onLocale={(value) => setParam('locale', value)}
+        datacenter={datacenter}
+        onDatacenter={(value) => setParam('datacenter', value === 'exclude' ? null : value)}
+      />
     </AdminPage>
   );
 }
@@ -90,16 +102,30 @@ export function LiveView() {
 function LiveBoard({
   locale,
   onLocale,
+  datacenter,
+  onDatacenter,
 }: {
   locale: Locale | null;
   onLocale: (locale: Locale | null) => void;
+  datacenter: DatacenterScope;
+  onDatacenter: (datacenter: DatacenterScope) => void;
 }) {
-  const live = useLiveTraffic(locale);
+  const live = useLiveTraffic(locale, datacenter);
   const animate = !useMediaQuery('(prefers-reduced-motion: reduce)');
   const data = live.data;
   const minutes = useMemo(() => (data ? minuteSeries(data) : []), [data]);
 
-  const languages = <LanguageSwitch value={locale} onChange={onLocale} />;
+  const languages = (
+    <div className="flex flex-wrap gap-2">
+      <LanguageSwitch value={locale} onChange={onLocale} />
+      <Segmented
+        label="Rechenzentren"
+        value={datacenter}
+        onChange={onDatacenter}
+        options={DATACENTER_SCOPES.map((scope) => ({ value: scope, ...DATACENTER_LABEL[scope] }))}
+      />
+    </div>
+  );
 
   const header = (
     <PanelHeader

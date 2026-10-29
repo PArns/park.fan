@@ -269,18 +269,21 @@ export function PlannerRideSearch({
               <button
                 type="button"
                 onClick={() =>
-                  addRide({
-                    parkSlug,
-                    parkName,
-                    geo,
-                    date,
-                    timezone,
-                    attractionSlug: ride.attractionSlug,
-                    attractionName: ride.attractionName,
-                    // The first free slot, not the opening hour, so rides added in a row do not
-                    // pile up on one minute.
-                    startMinute: startFor(ride),
-                  })
+                  addRide(
+                    {
+                      parkSlug,
+                      parkName,
+                      geo,
+                      date,
+                      timezone,
+                      attractionSlug: ride.attractionSlug,
+                      attractionName: ride.attractionName,
+                      // The first free slot, not the opening hour, so rides added in a row do not
+                      // pile up on one minute.
+                      startMinute: startFor(ride),
+                    },
+                    'search'
+                  )
                 }
                 /* Draggable, so a ride can be put at a chosen hour from here as from any card. The
                    click stays the whole path on a phone, which has no HTML5 drag. */

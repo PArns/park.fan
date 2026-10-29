@@ -4,13 +4,15 @@ import { useTranslations } from 'next-intl';
 import { Check, Lightbulb } from 'lucide-react';
 import { PLANNER_BLOCK_ICON_COMPONENTS } from './planner-block-icons';
 import { leverKey, type FitLever } from '@/lib/planner/fit';
+import { trackPlannerFitLever } from '@/lib/analytics/planner-funnel';
 import { cn } from '@/lib/utils';
 
 /**
  * What the visitor could change so the day holds everything, as things to press. Every row is a
  * measured difference between two plans (`fitLevers`): „Ohne Mittagspause passt der Plan" only
  * where that is true, „passen 9 von 10" where it only helps, and no row for a lever that buys
- * nothing. A lever is a toggle on the assistant's choice; pressing it again undoes it.
+ * nothing. A lever is a toggle on the assistant's choice; pressing it again undoes it. Switching
+ * one on counts as `planner_fit_lever`, here, so the wizard and the dialog count alike.
  */
 export function PlannerFitLevers({
   levers,
@@ -35,7 +37,10 @@ export function PlannerFitLevers({
           <li key={key}>
             <button
               type="button"
-              onClick={() => onToggle(lever)}
+              onClick={() => {
+                if (!on) trackPlannerFitLever(lever.kind);
+                onToggle(lever);
+              }}
               aria-pressed={on}
               data-planner-fit-lever={key}
               className={cn(

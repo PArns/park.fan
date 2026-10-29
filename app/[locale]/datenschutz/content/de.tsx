@@ -256,12 +256,17 @@ export function DatenschutzDE() {
           oder Computer) ab, zum Beispiel Safari, iOS und Telefon. Die Geräteart ergibt sich allein
           aus dem User-Agent, nicht aus der Größe Ihres Fensters oder Bildschirms. Aus der
           IP-Adresse leitet er das Land ab und aus der ersten Sprache im Kopf der Anfrage die
-          Browsersprache als zweistelligen Code (zum Beispiel <code>de</code>). Am User-Agent
-          erkennt er außerdem, ob ein Bot anfragt, und aus IP-Adresse und User-Agent bildet er eine
-          Kennung, die nur einen Tag gilt (siehe unten). IP-Adresse und User-Agent selbst speichern
-          wir nicht, weder in der Datenbank noch im Arbeitsspeicher noch in Protokollen der
-          Statistik. Der Server verwendet sie nur für diese eine Anfrage. Auf dem Weg zu ihm
-          verarbeitet Cloudflare die IP-Adresse (siehe Abschnitt 2).
+          Browsersprache als zweistelligen Code (zum Beispiel <code>de</code>). Ebenfalls aus der
+          IP-Adresse liest er in einer Datenbank auf unserem Server (GeoLite2-ASN von MaxMind) ab,
+          zu welchem Netz die Adresse gehört, und hält nur fest, ob es das Netz eines Rechenzentrums
+          ist, etwa einer Cloud oder eines Hosters. Solche Aufrufe kommen meist von Programmen und
+          nicht von Menschen. Wir zählen sie weiter, zeigen sie in unserer Auswertung aber getrennt.
+          Welches Netz es war, speichern wir nicht. Am User-Agent erkennt er außerdem, ob ein Bot
+          anfragt, und aus IP-Adresse und User-Agent bildet er eine Kennung, die nur einen Tag gilt
+          (siehe unten). IP-Adresse und User-Agent selbst speichern wir nicht, weder in der
+          Datenbank noch im Arbeitsspeicher noch in Protokollen der Statistik. Der Server verwendet
+          sie nur für diese eine Anfrage. Auf dem Weg zu ihm verarbeitet Cloudflare die IP-Adresse
+          (siehe Abschnitt 2).
         </p>
         <p>
           In der Datenbank stehen nur Zeilen mit Zählern, jede für eine volle Stunde (UTC) und nie
@@ -274,12 +279,13 @@ export function DatenschutzDE() {
           Zähler und nur die Angaben dieser Auswahl. Auch sie löscht er als ganze Wochenteile der
           Tabelle, nach 400 Tagen, sodass sie bis zu 407 Tage bleibt. Nach 400 Tagen löscht er auch
           die Besucherzahlen (eine Zahl je Tag und je Stunde, insgesamt und je Sprache) und die je
-          Land, Gerät, Browser, Betriebssystem und Kanal (eine Zahl je Tag, Sprache und Wert). Wir
-          behalten die Tageszahlen so lange, weil wir Saisons von Jahr zu Jahr vergleichen, etwa
-          Ferien und Eröffnungen. Bei wenig besuchten Seiten kann eine Zeile für einen einzigen
-          Aufruf stehen. Sie enthält keine Kennung und keinen Zeitpunkt, aber die Stunde und die
-          unten genannten Angaben zu Seite, Gerät, Land und Browsersprache. Es gibt vier Arten von
-          Zeilen:
+          Land, Gerät, Browser, Betriebssystem und Kanal (eine Zahl je Tag, Sprache und Wert).
+          Besucher aus Rechenzentren zählt er dabei getrennt. Wir behalten die Tageszahlen so lange,
+          weil wir Saisons von Jahr zu Jahr vergleichen, etwa Ferien und Eröffnungen. Bei wenig
+          besuchten Seiten kann eine Zeile für einen einzigen Aufruf stehen. Sie enthält keine
+          Kennung und keinen Zeitpunkt, aber die Stunde und die unten genannten Angaben zu Seite,
+          Gerät, Land und Browsersprache. Jede Zeile hält außerdem fest, ob die Anfrage aus einem
+          Rechenzentrum kam. Es gibt vier Arten von Zeilen:
         </p>
         <LegalList>
           <li>

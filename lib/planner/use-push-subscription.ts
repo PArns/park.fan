@@ -17,6 +17,7 @@ import { hasAnyPushFollowsLocal } from '../push/push-follows-store';
 import { rememberSentPushTimezone } from '../push/push-timezone';
 import { askPushPermission } from '../push/push-permission';
 import { urlBase64ToUint8Array } from '../push/vapid-key';
+import { trackPlannerPushOn } from '../analytics/planner-funnel';
 
 /**
  * Turning notifications on, and everything that has to be true for that to mean anything: browser
@@ -189,6 +190,7 @@ export function usePushSubscription() {
       // The zone the API just took, so `refreshPushTimezone` sends nothing until it changes.
       if (timezone) rememberSentPushTimezone(subscription.endpoint, timezone);
       setState('on');
+      trackPlannerPushOn();
     } catch {
       // Anywhere after the create, the plan goes too. A refused DELETE keeps the id (`forgetTrip`),
       // so the next attempt resumes that trip.

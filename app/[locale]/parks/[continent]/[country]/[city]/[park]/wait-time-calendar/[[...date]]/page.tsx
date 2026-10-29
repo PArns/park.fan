@@ -344,6 +344,7 @@ export default async function ParkCalendarPage({ params }: ParkCalendarPageProps
           another's. */}
       <PlannerPageParkBeacon
         slug={park.slug}
+        id={park.id}
         name={parkName}
         geo={{ continent, country, city }}
         timezone={park.timezone}

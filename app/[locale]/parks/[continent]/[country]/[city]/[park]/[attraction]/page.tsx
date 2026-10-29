@@ -561,6 +561,7 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
           panel lives in the layout and cannot otherwise tell one park's page from another's. */}
         <PlannerPageParkBeacon
           slug={park.slug}
+          id={park.id}
           name={stripNewPrefix(park.name)}
           geo={{ continent, country, city }}
           timezone={park.timezone}
@@ -672,6 +673,8 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
                         geo={{ continent, country, city }}
                         attractionSlug={attractionSlug}
                         attractionName={attraction.name}
+                        parkId={park.id}
+                        attractionId={attraction.id}
                         timezone={park.timezone}
                       />
                       <FavoriteStar type="attraction" id={attraction.id} size="lg" />

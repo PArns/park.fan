@@ -142,16 +142,19 @@ export function PlannerDayShowPicker({
       planned={planned}
       className={className}
       onPick={(line) =>
-        addShow({
-          parkSlug,
-          parkName,
-          geo,
-          timezone,
-          date,
-          showSlug: line.slug,
-          showName: line.name,
-          startMinute: line.minute,
-        })
+        addShow(
+          {
+            parkSlug,
+            parkName,
+            geo,
+            timezone,
+            date,
+            showSlug: line.slug,
+            showName: line.name,
+            startMinute: line.minute,
+          },
+          'show_picker'
+        )
       }
     />
   );

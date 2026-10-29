@@ -31,7 +31,14 @@ import {
   type PlannerEntry,
   type PlannerGeo,
 } from './types';
-import { trackPlanDayStarted } from '@/lib/analytics/planner-funnel';
+import {
+  planItemOf,
+  trackPlanDayStarted,
+  trackPlanItemAdded,
+  trackPlanItemRemoved,
+  trackPlannerDayCleared,
+} from '@/lib/analytics/planner-funnel';
+import type { PlanItemAddSource, PlanItemRemoveSource } from '@/lib/analytics/site-analytics';
 
 /**
  * Count a day the first time something lands in it: the event fires only across empty to not empty,
@@ -40,7 +47,7 @@ import { trackPlanDayStarted } from '@/lib/analytics/planner-funnel';
  */
 function countFirstBlock(parkSlug: string, date: string): void {
   const before = plannerStore.getSnapshot().parks[parkSlug]?.days[date]?.entries.length ?? 0;
-  if (before === 0) trackPlanDayStarted();
+  if (before === 0) trackPlanDayStarted(parkSlug);
 }
 
 interface AddRideParams {
@@ -83,22 +90,28 @@ export function usePlanner() {
   );
 
   /**
+   * Every add names the control it came from, which `plan_item_added` counts; the writes below are
+   * the one place that event is sent.
+   *
    * @param now The instant this add reckons from, for a caller that derives `params.date` from the
    *   clock too: both must come from one read or they can disagree across park-local midnight.
    */
-  const addRide = useCallback((params: AddRideParams, now?: number) => {
+  const addRide = useCallback((params: AddRideParams, source: PlanItemAddSource, now?: number) => {
     countFirstBlock(params.parkSlug, params.date);
     plannerStore.update((s) => addEntry(s, params, now ?? Date.now()));
+    trackPlanItemAdded('ride', source, params.parkSlug, params.attractionSlug);
   }, []);
 
-  const addCustom = useCallback((params: AddCustomRideParams) => {
+  const addCustom = useCallback((params: AddCustomRideParams, source: PlanItemAddSource) => {
     countFirstBlock(params.parkSlug, params.date);
     plannerStore.update((s) => addCustomEntry(s, params));
+    trackPlanItemAdded('block', source, params.parkSlug);
   }, []);
 
-  const addShow = useCallback((params: AddShowParams) => {
+  const addShow = useCallback((params: AddShowParams, source: PlanItemAddSource) => {
     countFirstBlock(params.parkSlug, params.date);
     plannerStore.update((s) => addShowEntry(s, params));
+    trackPlanItemAdded('show', source, params.parkSlug, params.showSlug);
   }, []);
 
   const editCustom = useCallback(
@@ -108,9 +121,19 @@ export function usePlanner() {
     []
   );
 
-  const removeRide = useCallback((parkSlug: string, date: string, entryId: string) => {
-    plannerStore.update((s) => removeEntry(s, parkSlug, date, entryId));
-  }, []);
+  /** Takes one block out, counted with the control that did it. */
+  const removeRide = useCallback(
+    (parkSlug: string, date: string, entryId: string, source: PlanItemRemoveSource) => {
+      const entry = plannerStore
+        .getSnapshot()
+        .parks[parkSlug]?.days[date]?.entries.find((e) => e.id === entryId);
+      plannerStore.update((s) => removeEntry(s, parkSlug, date, entryId));
+      if (!entry) return;
+      const item = planItemOf(entry);
+      trackPlanItemRemoved(item.kind, source, parkSlug, item.slug);
+    },
+    []
+  );
 
   const moveRide = useCallback(
     (parkSlug: string, date: string, entryId: string, startMinute: number) => {
@@ -172,23 +195,33 @@ export function usePlanner() {
 
   const clearDay = useCallback((parkSlug: string, date: string) => {
     plannerStore.update((s) => clearDayAction(s, parkSlug, date));
+    trackPlannerDayCleared(parkSlug);
   }, []);
 
   /**
    * A whole re-plan in one write, what the optimiser commits. It counts the day like an add does,
-   * since empty to eight headliners in one press is a day being started.
+   * since empty to eight headliners in one press is a day being started, and each ride it adds as
+   * one `plan_item_added` from `source`.
    */
   const applyPlan = useCallback(
-    (params: {
-      parkSlug: string;
-      parkName: string;
-      geo: PlannerGeo;
-      timezone?: string;
-      date: string;
-      stops: readonly ApplyPlanStop[];
-    }) => {
+    (
+      params: {
+        parkSlug: string;
+        parkName: string;
+        geo: PlannerGeo;
+        timezone?: string;
+        date: string;
+        stops: readonly ApplyPlanStop[];
+      },
+      source: PlanItemAddSource
+    ) => {
       countFirstBlock(params.parkSlug, params.date);
       plannerStore.update((s) => applyPlanAction(s, params));
+      for (const stop of params.stops) {
+        if (stop.entryId === null) {
+          trackPlanItemAdded('ride', source, params.parkSlug, stop.attractionSlug);
+        }
+      }
     },
     []
   );

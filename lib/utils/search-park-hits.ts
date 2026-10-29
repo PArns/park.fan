@@ -1,8 +1,11 @@
 import { isSlug } from '@/lib/utils/servable-route';
+import { isUuid } from '@/lib/utils';
 
 /** A park read off a `/api/search` payload: who it is, where it lives, how to show it. */
 export interface SearchParkHit {
   slug: string;
+  /** The park's UUID, where the hit carries one. */
+  id?: string;
   name: string;
   geo: { continent: string; country: string; city: string };
   city?: string;
@@ -44,6 +47,7 @@ export function parkHits(data: unknown): SearchParkHit[] {
 
     out.push({
       slug: hit.slug,
+      id: typeof hit.id === 'string' && isUuid(hit.id) ? hit.id : undefined,
       name: hit.name,
       geo: { continent: geoParts[0], country: geoParts[1], city: geoParts[2] },
       city: typeof hit.city === 'string' ? hit.city : undefined,

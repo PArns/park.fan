@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import type { PlanDay } from '@/lib/api/types';
+import { rememberPlanDayIds } from '@/lib/planner/entity-ids';
 
 interface UsePlanDayParams {
   continent: string;
@@ -57,7 +58,9 @@ export function planDayQuery({
       );
       if (res.status === 404) return null;
       if (!res.ok) throw new Error(`plan day ${parkSlug}: ${res.statusText}`);
-      return (await res.json()) as PlanDay;
+      const plan = (await res.json()) as PlanDay;
+      rememberPlanDayIds(plan);
+      return plan;
     },
     staleTime: 15 * 60_000,
   };

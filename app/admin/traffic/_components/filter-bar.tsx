@@ -1,7 +1,12 @@
 'use client';
 
 import { X } from 'lucide-react';
-import { breakdownValueLabel, DIMENSION_LABEL } from '@/lib/admin/site-analytics';
+import {
+  breakdownValueLabel,
+  DATACENTER_LABEL,
+  DATACENTER_SCOPES,
+  DIMENSION_LABEL,
+} from '@/lib/admin/site-analytics';
 import {
   INTERVAL_LABEL,
   defaultInterval,
@@ -44,7 +49,7 @@ export function FilterChip({
  * filters set by pressing a row in a panel, each a chip that takes itself off. The language is a
  * filter on the counter's own figures: a visit in German counts for `de`, whatever the browser
  * says. The step is offered only where the page draws a series, and only the steps that suit the
- * window.
+ * window. Data centres' hits are left out unless the switch says otherwise.
  */
 export function TrafficFilterBar({
   filters,
@@ -63,6 +68,12 @@ export function TrafficFilterBar({
       <div className="flex flex-wrap gap-2">
         <LanguageSwitch value={filters.locale} onChange={filters.setLocale} />
         <RangePicker range={filters.range} today={filters.today} onChange={filters.setRange} />
+        <Segmented
+          label="Rechenzentren"
+          value={filters.datacenter}
+          onChange={filters.setDatacenter}
+          options={DATACENTER_SCOPES.map((scope) => ({ value: scope, ...DATACENTER_LABEL[scope] }))}
+        />
         {interval && steps.length > 1 && (
           <Segmented
             label="Schritt der Kurve"

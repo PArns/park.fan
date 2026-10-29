@@ -225,6 +225,7 @@ The path guard and the query of `/api/admin/[...path]`, pure so they can be test
 - `serializeTrafficFilters` _function_: The `dimension:value` strings of a list of filters, the way the address and the API take them.
 - `toggleTrafficFilter` _function_: The filters with one more: a dimension is held to one value, so a second value of the same dimension replaces the first (two values of one dimension would match nothing), and the same value again takes it off, which makes a row in a panel …
 - `withoutTrafficFilter` _function_: The filters without the one on `dim`.
+- `parseDatacenterScope` _function_: The scope an address asks for; the API's default, `exclude`, for anything else.
 - `trafficQuery` _function_: The query string both ends read: `days=30&locale=de&filter=channel:search`. `extra` is appended as given, one parameter per key.
 - `deltaOf` _function_: The change from `previous` to `current`: flat under half a percent, `new` out of nothing.
 - `figureDelta` _function_: The change of a figure that may be missing: `null` when either side is, as visitors are under a filter, so a percentage is never worked out from nothing.
@@ -249,6 +250,7 @@ The path guard and the query of `/api/admin/[...path]`, pure so they can be test
 - `eventInfo` _function_: The info of an event this build knows, `undefined` for any other.
 - `eventLabel` _function_: The label of an event, or its bare name for one this build does not know.
 - `isSearchEvent` _function_: Whether an event belongs to the search dashboard.
+- `isPlannerEvent` _function_: Whether an event belongs to the planner dashboard.
 - `propLabel` _function_: The name of an event property in German; an unknown one stays as sent.
 - `propValueLabel` _function_: How a property's value reads: search fields, result kinds and suggestions get their words.
 - `sortPropValues` _function_: The values of one property in the order they read best: positions first to last and depths shallow to deep, everything else as the API sent them, which is biggest first.
@@ -278,9 +280,14 @@ The path guard and the query of `/api/admin/[...path]`, pure so they can be test
 - `surfaceSeries` _function_: The daily openings of each field as one value list per field, over the days given.
 - `seriesPartial` _function_: Which of the given periods the window cut off, by the `partial` flag of the series points.
 - `seriesDays` _function_: The periods of the search series, oldest first.
+- `plannerWizardRows` _function_: The wizard's steps in its order, a step nobody reached kept at 0, then its finish. The reach is measured against the busiest step rather than the first, because a wizard started on a park page skips the park step.
+- `plannerItemMatrix` _function_: The blocks put into or taken out of a plan: the control by the kind of block.
+- `plannerPageTypeMatrix` _function_: Page type by device class: where the planner is opened from, and on what.
 - `formatChange` _function_: The change in visits as a signed figure: `+12`, `−8`, `±0`.
 - `TRAFFIC_LOCALES` _const_: German first, then the rest: most of the traffic, and the admin's own language.
 - `DIMENSION_LABEL` _const_: What a dimension is called in a filter chip.
+- `DATACENTER_SCOPES` _const_: Which rows a report counts by network (`?datacenter=`): the API leaves the data centres' out unless asked (clouds and hosters by the address's ASN; docs/features/site-analytics.md).
+- `DATACENTER_LABEL` _const_: The switch's words for each `DatacenterScope`, and what each does when hovered.
 - `VISITOR_FILTER_HINT` _const_: Why a visitor figure can be missing: the API counts visitors without a filter and under one filter on country, device, browser, operating system or channel, and under any other filter, several included, sends `null`.
 - `PAGE_TYPE_LABEL` _const_: The German name of a page type this build knows; see `pageTypeLabel` for any other.
 - `DEVICES` _const_: The device classes the API derives from the User-Agent, in the order a list shows them.
@@ -293,7 +300,8 @@ The path guard and the query of `/api/admin/[...path]`, pure so they can be test
 - `VISIT_DIMENSIONS` _const_: The dimensions whose rows are visits that started, and so have a bounce rate and an average visit duration. The exit page is a visit too, but one that ended, so it has neither.
 - `EVENT_INFO` _const_: The events this site sends, in German, with the moment each fires. The type makes a new event in `SiteEventMap` fail the build here until it has a line; an event outside the map reads as its name with no sentence, since the API takes any.
 - `TRAFFIC_CROSSTAB_PRESETS` _const_: The pairs the traffic crosstab offers as shortcuts, each with the metric that has its dimensions.
-- Types: `FilterDimension`, `TrafficFilter`, `TrafficQueryState`, `TrafficDelta`, `CrosstabMetric`
+- `PLANNER_STAGE_LABEL` _const_: The planner funnel's stages in German, for its tiles and its series alike.
+- Types: `FilterDimension`, `TrafficFilter`, `DatacenterScope`, `TrafficQueryState`, `TrafficDelta`, `CrosstabMetric`
 
 ### [`totp.ts`](../../lib/admin/totp.ts)
 

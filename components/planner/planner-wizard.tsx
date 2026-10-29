@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 import { useRouter } from '@/i18n/navigation';
 import {
@@ -29,6 +29,8 @@ import { usePlanner } from '@/lib/planner/use-planner';
 import { usePlannerDayFacts } from '@/lib/planner/use-day-facts';
 import { usePlanDay } from '@/lib/hooks/use-plan-day';
 import { plannerUi } from '@/lib/planner/ui-store';
+import { rememberParkId } from '@/lib/planner/entity-ids';
+import { createPlannerWizardSession } from '@/lib/analytics/planner-funnel';
 import { loadMessageChunk } from '@/lib/i18n/message-chunk-loader';
 import type { Locale } from '@/i18n/config';
 import { formatGridTime, longDate, todayInZone } from '@/lib/planner/park-time';
@@ -138,6 +140,11 @@ export function PlannerWizard({
 
   const [park, setPark] = useState<WizardPark | null>(initialPark);
   const [step, setStep] = useState<Step>(seededDate ? 'setup' : initialPark ? 'date' : 'park');
+  // The dialog mounts per opening, so one event session per mount is one per opening.
+  const [wizardEvents] = useState(createPlannerWizardSession);
+  useEffect(() => {
+    if (open) wizardEvents.step(step, park?.slug);
+  }, [open, step, park?.slug, wizardEvents]);
   // Which way the last move went, which is all the step transition needs (see `STEP_MOTION`).
   const [forward, setForward] = useState(true);
   const [date, setDate] = useState<string | null>(seededDate);
@@ -327,6 +334,16 @@ export function PlannerWizard({
     fitChoice.priority.length > 0 ||
     fitChoice.droppedBlocks.size > 0 ||
     fitChoice.shortBlocks.size > 0;
+  /** The last step shows the fit assistant inline: the condition its block renders under. */
+  const fitShown =
+    step === 'headliners' &&
+    planHeadliners &&
+    Boolean(fitLevers) &&
+    (headlinerConflict || fitChoiceTouched);
+  const shownParkSlug = park?.slug;
+  useEffect(() => {
+    if (open && fitShown && shownParkSlug) wizardEvents.fitShown(shownParkSlug);
+  }, [open, fitShown, shownParkSlug, wizardEvents]);
 
   const plannedSlugs = new Set(Object.keys(state.parks));
 
@@ -369,34 +386,41 @@ export function PlannerWizard({
       ? (plannedFit.entries.find((entry) => entry.id === LUNCH_ENTRY_ID) ?? null)
       : (lunchEntries[0] ?? null);
     if (lunchBlock?.custom) {
-      addCustom({
-        parkSlug: park.slug,
-        parkName: park.name,
-        geo: park.geo,
-        timezone: withZone.timezone,
-        date,
-        label: lunchBlock.custom.label,
-        icon: 'food',
-        startMinute: lunchBlock.startMinute,
-        durationMinutes: lunchBlock.custom.durationMinutes,
-      });
+      addCustom(
+        {
+          parkSlug: park.slug,
+          parkName: park.name,
+          geo: park.geo,
+          timezone: withZone.timezone,
+          date,
+          label: lunchBlock.custom.label,
+          icon: 'food',
+          startMinute: lunchBlock.startMinute,
+          durationMinutes: lunchBlock.custom.durationMinutes,
+        },
+        'wizard'
+      );
     }
     /**
      * The big rides, from the same `FitChoice` the last step was drawn from, so what was marked
      * „fällt weg" is what is missing from the axis and pinned rides are the ones that survive.
      */
     if (plannedFit) {
-      applyPlan({
-        parkSlug: park.slug,
-        parkName: park.name,
-        geo: park.geo,
-        timezone: withZone.timezone,
-        date,
-        // Only what is being added: the lunch block is already in the store, and filing it again
-        // would put a second one on the axis.
-        stops: plannedFit.stops.filter((stop) => stop.entryId === null),
-      });
+      applyPlan(
+        {
+          parkSlug: park.slug,
+          parkName: park.name,
+          geo: park.geo,
+          timezone: withZone.timezone,
+          date,
+          // Only what is being added: the lunch block is already in the store, and filing it again
+          // would put a second one on the axis.
+          stops: plannedFit.stops.filter((stop) => stop.entryId === null),
+        },
+        'wizard'
+      );
     }
+    wizardEvents.finished(plannedFit !== null, park.slug);
     /**
      * The panel this lands in reads `planner`, and on this route the launcher has to fetch it,
      * which it would only start from an effect after the navigation. Not awaited; the loader
@@ -488,6 +512,7 @@ export function PlannerWizard({
               <PlannerParkSearch
                 plannedSlugs={plannedSlugs}
                 onPick={(picked) => {
+                  rememberParkId(picked.slug, picked.id);
                   setPark(picked);
                   setForward(true);
                   setStep('date');

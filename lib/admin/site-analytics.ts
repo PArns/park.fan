@@ -5,6 +5,7 @@ import type {
   SearchSurface,
   SiteEventName,
 } from '@/lib/analytics/site-analytics';
+import type { PlannerOpenedSource } from '@/lib/planner/ui-store';
 import type {
   AnalyticsTotals,
   BreakdownDimension,
@@ -12,6 +13,7 @@ import type {
   CrosstabResponse,
   EventDetailResponse,
   EventEntity,
+  PlannerOverview,
   SearchOverview,
   SeriesInterval,
   TrafficOverview,
@@ -133,6 +135,32 @@ export function withoutTrafficFilter(
   return filters.filter((filter) => filter.dim !== dim);
 }
 
+/**
+ * Which rows a report counts by network (`?datacenter=`): the API leaves the data centres' out
+ * unless asked (clouds and hosters by the address's ASN; docs/features/site-analytics.md).
+ */
+export const DATACENTER_SCOPES = ['exclude', 'include', 'only'] as const;
+
+/** One of {@link DATACENTER_SCOPES}. */
+export type DatacenterScope = (typeof DATACENTER_SCOPES)[number];
+
+/** The switch's words for each {@link DatacenterScope}, and what each does when hovered. */
+export const DATACENTER_LABEL: Record<DatacenterScope, { label: string; title: string }> = {
+  exclude: {
+    label: 'ohne RZ',
+    title: 'Aufrufe aus Rechenzentren (Clouds und Hoster, nach dem Netz der Adresse) ausblenden',
+  },
+  include: { label: 'mit RZ', title: 'Aufrufe aus Rechenzentren mitzählen' },
+  only: { label: 'nur RZ', title: 'Nur Aufrufe aus Rechenzentren zeigen' },
+};
+
+/** The scope an address asks for; the API's default, `exclude`, for anything else. */
+export function parseDatacenterScope(raw: string | null | undefined): DatacenterScope {
+  return (DATACENTER_SCOPES as readonly string[]).includes(raw ?? '')
+    ? (raw as DatacenterScope)
+    : 'exclude';
+}
+
 /** What the page asks the API with, and what its address holds. */
 export interface TrafficQueryState {
   range: TrafficRange;
@@ -140,6 +168,8 @@ export interface TrafficQueryState {
   interval?: SeriesInterval | null;
   locale: Locale | null;
   filters?: readonly TrafficFilter[];
+  /** Absent or `exclude` sends nothing: the API's default. */
+  datacenter?: DatacenterScope;
 }
 
 /**
@@ -155,6 +185,9 @@ export function trafficQuery(
   if (state.locale) params.set('locale', state.locale);
   for (const filter of serializeTrafficFilters(state.filters ?? []))
     params.append('filter', filter);
+  if (state.datacenter && state.datacenter !== 'exclude') {
+    params.set('datacenter', state.datacenter);
+  }
   for (const [key, value] of Object.entries(extra)) params.set(key, String(value));
   return params.toString();
 }
@@ -637,15 +670,59 @@ export const EVENT_INFO: Record<SiteEventName, EventInfo> = {
   },
   plan_day_started: {
     label: 'Plan begonnen',
-    when: 'Ein Park und Tag bekommen den ersten Block, egal wie.',
+    when: 'Ein Park und Tag bekommen den ersten Block, egal wie; mit dem Weg in die Öffnung („none“ bei zugeklapptem Planer) und dem Park, wo eine Seite ihn kennt.',
   },
   plan_optimized: {
     label: 'Plan optimiert',
-    when: 'Der Planer sortiert den Tag und der Plan hat sich geändert.',
+    when: 'Der Planer sortiert den Tag und der Plan hat sich geändert; mit „Tag optimieren“, „Alle Headliner“ oder einer Antwort des Assistenten.',
   },
   planner_closed_empty: {
     label: 'Planer leer geschlossen',
     when: 'Der Bereich schließt, ohne dass ein Tag einen ersten Block bekam.',
+  },
+  planner_wizard_step: {
+    label: 'Assistent: Schritt',
+    when: 'Ein Schritt des Assistenten ist zum ersten Mal in dieser Öffnung zu sehen.',
+  },
+  planner_wizard_finished: {
+    label: 'Assistent fertig',
+    when: 'Der letzte Knopf des Assistenten; mit der Angabe, ob er die Headliner einplant.',
+  },
+  plan_item_added: {
+    label: 'Block eingeplant',
+    when: 'Ein Fahrgeschäft, eine Show oder ein eigener Block kommt in den Plan; mit dem Knopf, der es tat.',
+  },
+  plan_item_removed: {
+    label: 'Block entfernt',
+    when: 'Ein Block wird einzeln aus dem Plan genommen; mit dem Weg, auf dem es geschah.',
+  },
+  planner_fit_opened: {
+    label: 'Passt-Assistent geöffnet',
+    when: 'Der Tag hält nicht alles und der Assistent fragt; im Planer, am Knopf der Fahrgeschäft-Seite oder im letzten Schritt des Assistenten.',
+  },
+  planner_fit_lever: {
+    label: 'Hebel angewandt',
+    when: 'Ein Vorschlag des Passt-Assistenten wird eingeschaltet; Ausschalten zählt nicht.',
+  },
+  planner_undo: {
+    label: 'Rückgängig',
+    when: 'Ein Tag wird auf den Stand vor dem letzten Optimieren oder der letzten Antwort zurückgesetzt.',
+  },
+  planner_day_cleared: {
+    label: 'Tag geleert',
+    when: 'Ein ganzer Tag wird aus dem Plan gelöscht.',
+  },
+  planner_shared_opened: {
+    label: 'Geteilter Plan geöffnet',
+    when: 'Ein geteilter Link wird geöffnet und seine Antwort ist da; mit dem, was er enthielt.',
+  },
+  planner_shared_adopted: {
+    label: 'Geteilten Plan übernommen',
+    when: 'Ein geteilter Plan wird in diesen Browser übernommen.',
+  },
+  planner_push_on: {
+    label: 'Push für den Plan an',
+    when: 'Die Benachrichtigungen für den Plan sind eingeschaltet und von der API angenommen.',
   },
   attraction_filter_used: {
     label: 'Filter benutzt',
@@ -719,6 +796,11 @@ export function isSearchEvent(name: string): boolean {
   return name.startsWith('search_');
 }
 
+/** Whether an event belongs to the planner dashboard. */
+export function isPlannerEvent(name: string): boolean {
+  return name.startsWith('planner_') || name.startsWith('plan_');
+}
+
 /** The names of an event's properties in German. */
 const PROP_LABEL: Record<string, string> = {
   surface: 'Suchfeld',
@@ -740,6 +822,57 @@ const PROP_LABEL: Record<string, string> = {
   depth: 'Tiefe in Prozent',
   direction: 'Richtung',
   boundary: 'Fehlerseite',
+  step: 'Schritt',
+  headliners: 'Mit Headlinern',
+  mode: 'Weg',
+  lever: 'Hebel',
+  outcome: 'Ergebnis',
+};
+
+/**
+ * The ways into the planner in German, and `none` for a day begun with the panel shut. Typed by the
+ * store's union, so a way in added there fails the build here until it has its word.
+ */
+const PLANNER_OPENED_SOURCE_LABEL: Record<PlannerOpenedSource | 'none', string> = {
+  tab: 'Reiter am Fensterrand',
+  header: 'Kalender-Knopf im Header',
+  'park-header': '„Tag planen“ im Park-Kopf',
+  'calendar-day': 'Tag im Wartezeit-Kalender',
+  wizard: 'Assistent',
+  'plan-list': 'Tagesliste der Planerseite',
+  'shared-link': 'Geteilter Plan',
+  'home-hero': '„Heute planen“ auf der Startseite',
+  'kids-page': 'Seite „Mit Kindern“',
+  none: 'Planer zu',
+};
+
+/** The planner's property values in German, keyed by property, then value. */
+const PLANNER_VALUE_LABEL: Record<string, Record<string, string>> = {
+  step: { park: 'Park', date: 'Tag', setup: 'Wer kommt mit', headliners: 'Headliner' },
+  kind: { ride: 'Fahrgeschäft', show: 'Show', block: 'Eigener Block' },
+  source: {
+    ...PLANNER_OPENED_SOURCE_LABEL,
+    search: 'Suche im Planer',
+    add_button: '„Zum Plan“ auf der Fahrgeschäft-Seite',
+    drag: 'Ziehen und Ablegen',
+    missing_headliners: 'Fehlende Headliner',
+    show_picker: 'Show-Auswahl',
+    block_menu: 'Eigener Block',
+    headliners: '„Alle Headliner“',
+    block: 'Kreuz am Block',
+    action_bar: 'Aktionsleiste',
+    keyboard: 'Entf-Taste',
+    timeline: 'Liste ohne Zeitachse',
+    optimize: 'Optimieren im Planer',
+  },
+  mode: { day: '„Tag optimieren“', headliners: '„Alle Headliner“', fit: 'Antwort des Assistenten' },
+  lever: {
+    drop_block: 'Block weglassen',
+    shorten_block: 'Block kürzen',
+    drop_all_blocks: 'Alle Blöcke weglassen',
+  },
+  outcome: { ready: 'Plan', empty: 'Leer', missing: 'Nicht gefunden', failed: 'Fehler' },
+  headliners: { true: 'Ja', false: 'Nein' },
 };
 
 /** The name of an event property in German; an unknown one stays as sent. */
@@ -755,7 +888,7 @@ export function propValueLabel(prop: string, value: string): string {
   if (prop === 'item') return browseItemLabel(value);
   if (prop === 'from' || prop === 'to') return localeNames[value as Locale] ?? value;
   if (prop === 'depth') return `${value} %`;
-  return value;
+  return PLANNER_VALUE_LABEL[prop]?.[value] ?? value;
 }
 
 /**
@@ -1223,6 +1356,90 @@ export function seriesPartial(search: SearchOverview, days: readonly string[]): 
 /** The periods of the search series, oldest first. */
 export function seriesDays(search: SearchOverview): string[] {
   return [...new Set(search.series.map((point) => point.day))].sort();
+}
+
+// ---------------------------------------------------------------------------------------------
+// Planner
+
+/** The planner funnel's stages in German, for its tiles and its series alike. */
+export const PLANNER_STAGE_LABEL = {
+  opened: 'Geöffnet',
+  started: 'Plan begonnen',
+  optimized: 'Optimiert',
+  shared: 'Geteilt',
+} as const;
+
+/** The wizard's steps in the order it shows them. */
+const PLANNER_WIZARD_STEPS = Object.keys(PLANNER_VALUE_LABEL.step);
+
+/** What a planner block can be, in the order a matrix shows them. */
+const PLANNER_ITEM_KINDS = Object.keys(PLANNER_VALUE_LABEL.kind);
+
+/** A row of the wizard's steps: a step, or `finished` for its last press. */
+interface PlannerWizardRow {
+  key: string;
+  count: number;
+  /** Against the step most openings reached, 0..1. */
+  reach: number;
+}
+
+/**
+ * The wizard's steps in its order, a step nobody reached kept at 0, then its finish. The reach is
+ * measured against the busiest step rather than the first, because a wizard started on a park page
+ * skips the park step.
+ */
+export function plannerWizardRows(planner: PlannerOverview): PlannerWizardRow[] {
+  const steps = orderKeys(
+    PLANNER_WIZARD_STEPS,
+    planner.wizardSteps.map((row) => ({ key: row.value, count: row.count })),
+    true
+  );
+  const rows = [
+    ...steps.map((key) => ({
+      key,
+      count: planner.wizardSteps.find((row) => row.value === key)?.count ?? 0,
+    })),
+    { key: 'finished', count: planner.wizardFinished },
+  ];
+  const base = Math.max(0, ...rows.map((row) => row.count));
+  return rows.map((row) => ({ ...row, reach: base > 0 ? row.count / base : 0 }));
+}
+
+/** The blocks put into or taken out of a plan: the control by the kind of block. */
+export function plannerItemMatrix(
+  planner: PlannerOverview,
+  action: PlannerOverview['items'][number]['action']
+): CountMatrix {
+  const cells = planner.items.filter((item) => item.action === action);
+  return countMatrix(
+    cells.map((item) => ({ row: item.source, column: item.kind, value: item.count })),
+    orderKeys(
+      [],
+      cells.map((item) => ({ key: item.source, count: item.count }))
+    ),
+    orderKeys(
+      PLANNER_ITEM_KINDS,
+      cells.map((item) => ({ key: item.kind, count: item.count })),
+      true
+    )
+  );
+}
+
+/** Page type by device class: where the planner is opened from, and on what. */
+export function plannerPageTypeMatrix(planner: PlannerOverview): CountMatrix {
+  const cells = planner.byPageTypeAndDevice;
+  return countMatrix(
+    cells.map((cell) => ({ row: cell.pageType, column: cell.device, value: cell.opened })),
+    orderKeys(
+      PAGE_TYPES,
+      cells.map((cell) => ({ key: cell.pageType, count: cell.opened }))
+    ),
+    orderKeys(
+      DEVICES,
+      cells.map((cell) => ({ key: cell.device, count: cell.opened })),
+      true
+    )
+  );
 }
 
 // ---------------------------------------------------------------------------------------------
