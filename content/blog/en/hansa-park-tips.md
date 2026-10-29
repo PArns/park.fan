@@ -25,10 +25,10 @@ parkLinks:
 rideLinks:
   - hansa-park/*
 seo:
-  title: 'Hansa-Park 2026: Tips, Prices and Kärnan by the Sea'
+  title: 'Hansa-Park 2026: Opening Hours, Prices and Coasters'
   description: >-
-    Hansa-Park Sierksdorf 2026: not one closed day, Herbstzauber in October,
-    tickets and parking, eight coasters and the Buddenbrook-Turm due in 2027.
+    Hansa-Park 2026: open 26 March to 25 October without one closed day. The
+    2027 season starts 25 March. Plus prices, parking and all eight coasters.
   keywords:
     - Hansa-Park
     - Hansa-Park tips
@@ -174,7 +174,7 @@ Jahrmarkt has "Schaubudenzauber" with Duo Kolobov.
 Once a show has started the park lets nobody in, and photos and filming are not allowed during the
 performance.
 
-## A calendar with no closing day
+## Opening hours 2026: not one closed day
 
 The 2026 season runs from **26 March to 25 October**. Between those two dates the park's calendar has **not one closed day**. That
 makes 214 opening days.

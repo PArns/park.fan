@@ -28,7 +28,7 @@ coverImage:
   caption: 'Symbolica im Efteling. Die Classic-Karte ist dort 2027 an 68 Tagen gesperrt.'
   credit: 'park.fan'
 seo:
-  title: 'Jahreskarte Freizeitpark: Preise, Sperrtage, Break-even'
+  title: 'Jahreskarten 2026: Toverland 160 €, Phantasialand keine mehr'
   description: >-
     Die günstigste Jahreskarte lohnt sich im Efteling, im Europa-Park und im
     Toverland ab vier bis sechs Besuchen. Das Phantasialand hat seit 2022 keine mehr.

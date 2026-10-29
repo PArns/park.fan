@@ -24,11 +24,11 @@ parkLinks:
 rideLinks:
   - hansa-park/*
 seo:
-  title: 'Hansa-Park 2026: Tipps, Preise und der Kärnan am Meer'
+  title: 'Hansa-Park 2026: Öffnungszeiten, Preise, Achterbahnen'
   description: >-
-    Hansa-Park Sierksdorf 2026: kein einziger Schließtag, Herbstzauber im
-    Oktober, Preise und Parken, alle acht Achterbahnen und der Buddenbrook-Turm
-    für 2027.
+    Hansa-Park 2026: offen vom 26. März bis 25. Oktober, kein einziger
+    Schließtag. Saison 2027 ab 25. März. Dazu Preise, Parken und alle acht
+    Achterbahnen.
   keywords:
     - Hansa-Park
     - Hansa-Park Tipps
@@ -182,7 +182,7 @@ Freilichtbühne am Alten Jahrmarkt der „Schaubudenzauber“ mit dem Duo Kolobo
 Nach Beginn einer Vorstellung lässt der Park niemanden mehr hinein, und während der Show sind Fotos
 und Videos verboten.
 
-## Ein Kalender ohne Schließtag
+## Öffnungszeiten 2026: kein einziger Schließtag
 
 Die Saison 2026 läuft vom **26. März bis zum 25. Oktober**. Zwischen diesen beiden Daten steht im Kalender des
 Parks **kein einziger Schließtag**. Das sind 214 Öffnungstage.

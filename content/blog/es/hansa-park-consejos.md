@@ -25,11 +25,11 @@ parkLinks:
 rideLinks:
   - hansa-park/*
 seo:
-  title: 'Hansa-Park 2026: consejos, precios y el Kärnan junto al mar'
+  title: 'Hansa-Park 2026: horarios, precios y montañas rusas'
   description: >-
-    Hansa-Park Sierksdorf no cierra ni un día en 2026. Precios, aparcamiento,
-    sus ocho montañas rusas, Herbstzauber en octubre y la Buddenbrook-Turm de
-    2027.
+    Hansa-Park 2026: abierto del 26 de marzo al 25 de octubre, sin un día de
+    cierre. Temporada 2027 desde el 25 de marzo. Precios, parking y montañas
+    rusas.
   keywords:
     - Hansa-Park
     - Hansa-Park consejos
@@ -183,7 +183,7 @@ el «Schaubudenzauber» con el Duo Kolobov.
 Una vez empezada la función, el parque no deja entrar a nadie, y durante el espectáculo no se puede
 hacer fotos ni grabar vídeo.
 
-## Un calendario sin día de cierre
+## Horarios 2026: ni un solo día de cierre
 
 La temporada 2026 va del **26 de marzo al 25 de octubre**. Entre esas dos fechas, el calendario del parque no tiene **ni un
 solo día de cierre**. Son 214 días de apertura.

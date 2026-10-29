@@ -25,11 +25,11 @@ parkLinks:
 rideLinks:
   - hansa-park/*
 seo:
-  title: 'Hansa-Park 2026: tips, prijzen en de Kärnan aan zee'
+  title: 'Hansa-Park 2026: openingstijden, prijzen en achtbanen'
   description: >-
-    Hansa-Park Sierksdorf 2026: geen enkele sluitingsdag, Herbstzauber in
-    oktober, prijzen en parkeren, alle acht achtbanen en de Buddenbrook-Turm
-    voor 2027.
+    Hansa-Park 2026: open van 26 maart tot en met 25 oktober, zonder
+    sluitingsdag. Seizoen 2027 vanaf 25 maart. Plus prijzen, parkeren en acht
+    achtbanen.
   keywords:
     - Hansa-Park
     - Hansa-Park tips
@@ -177,7 +177,7 @@ openluchtpodium op de Alter Jahrmarkt de “Schaubudenzauber” met Duo Kolobov.
 Na het begin van een voorstelling laat het park niemand meer binnen, en tijdens de show zijn foto's
 en filmen verboden.
 
-## Een kalender zonder sluitingsdag
+## Openingstijden 2026: geen enkele sluitingsdag
 
 Het seizoen 2026 loopt van **26 maart tot en met 25 oktober**. Tussen die twee data staat in de kalender van het
 park **geen enkele sluitingsdag**. Dat zijn 214 openingsdagen.

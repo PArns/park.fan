@@ -28,7 +28,7 @@ coverImage:
   caption: 'Symbolica at Efteling. The Classic pass is blocked on 68 days there in 2027.'
   credit: 'park.fan'
 seo:
-  title: 'Theme park annual pass: prices, blocked days, break-even'
+  title: 'Annual passes 2026: Toverland €160, none at Phantasialand'
   description: >-
     At Efteling, Europa-Park and Toverland the cheapest annual pass pays for
     itself after four to six visits. Phantasialand hasn't had one since 2022.
