@@ -490,10 +490,6 @@ The earliest showtime of `show` that is still ahead of `nowMs`, in epoch ms, or 
 - `formatDuration` _function_: Ride duration from seconds: „2:20", the same in every unit system.
 - Types: `TemperatureUnit`
 
-### [`text-box.ts`](../../lib/utils/text-box.ts)
-
-- `CAPS_CENTRED_CLASS` _const_: A line of text trimmed to cap height and baseline (`text-box`), then padded back out to its line height: the box keeps its height, and capitals and figures sit in its middle instead of high in Geist's line box.
-
 ### [`text-fold.ts`](../../lib/utils/text-fold.ts)
 
 - `foldText` _function_: Text reduced for matching: lower case, accents off, "ß" as "ss", so "farup" finds "Fårup" and "strasse" finds "Straße". "ß" has no Unicode decomposition, hence the explicit replace.

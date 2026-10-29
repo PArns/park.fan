@@ -192,7 +192,8 @@ export function PlannerContextBand({ day, state, trailing }: PlannerContextBandP
         {context.neighborHolidays && context.neighborHolidays.length > 0 && (
           <Badge
             variant="outline"
-            className="planner-phone:px-1.5 text-[11px]"
+            // On a phone the icon is all it shows, so it stays in the middle.
+            className="planner-phone:badge-icon:ml-0 planner-phone:px-1.5 text-[11px]"
             title={t('context.neighborHolidays')}
             data-planner-neighbor-holidays=""
           >

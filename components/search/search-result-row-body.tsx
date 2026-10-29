@@ -4,7 +4,6 @@ import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import { TreePalm, Cog, Utensils, Music, MapPin, Clock, BookOpen, Leaf } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
-import { CAPS_CENTRED_CLASS } from '@/lib/utils/text-box';
 import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
 import { ParkStatusBadge } from '@/components/parks/park-status-badge';
 import { stripNewPrefix, cn } from '@/lib/utils';
@@ -16,11 +15,10 @@ import type { SearchResultItem } from '@/lib/api/types';
 import type { NearbySearchExtras } from '@/lib/hooks/use-hero-browse-parks';
 
 /**
- * A row's pills that lead with an icon, the icon as far from the left edge as from the top. The
- * command list draws every icon in a row at 16 px, which leaves less room around it than the
- * badge's own 12.
+ * A row's pills that lead with an icon. The command list draws every icon in a row at 16 or 20 px;
+ * a badge's icon keeps its own 12, the size it has everywhere else.
  */
-const ROW_ICON_PILL_CLASS = 'pl-0.5 text-[11px]';
+const ROW_ICON_PILL_CLASS = '[&>svg]:size-3! text-[11px]';
 
 const typeIcons = {
   park: TreePalm,
@@ -33,8 +31,7 @@ const typeIcons = {
 
 /**
  * A wait as an outline pill in its crowd tier's colour (`waitTimeCrowdTier`), the scale every wait
- * on the site uses. The text is the caller's: „Ø 15 Min." for a park, „25 Min" for a ride, centred
- * on its figures like the status pill beside it (`centreCaps`).
+ * on the site uses. The text is the caller's: „Ø 15 Min." for a park, „25 Min" for a ride.
  */
 export function WaitBadge({
   minutes,
@@ -54,7 +51,7 @@ export function WaitBadge({
         className
       )}
     >
-      <span className={CAPS_CENTRED_CLASS}>{children}</span>
+      {children}
     </Badge>
   );
 }
@@ -151,7 +148,6 @@ export function SearchResultRowBody({ result }: { result: SearchResultItem & Nea
                   result.statusLabel
                 )
               }
-              centreCaps
               className={ROW_ICON_PILL_CLASS}
             />
           )}
@@ -204,9 +200,7 @@ export function SearchResultRowBody({ result }: { result: SearchResultItem & Nea
             ) : (
               result.type === 'park' &&
               result.load &&
-              !isClosed && (
-                <CrowdLevelBadge level={result.load} centreCaps className={ROW_ICON_PILL_CLASS} />
-              )
+              !isClosed && <CrowdLevelBadge level={result.load} className={ROW_ICON_PILL_CLASS} />
             )}
 
             {result.distanceM != null && (
@@ -214,8 +208,7 @@ export function SearchResultRowBody({ result }: { result: SearchResultItem & Nea
               <span
                 className={cn(
                   SEARCH_SECONDARY_TEXT_CLASS,
-                  CAPS_CENTRED_CLASS,
-                  'text-[11px] font-medium tabular-nums'
+                  'caps-centred text-[11px] font-medium tabular-nums'
                 )}
               >
                 {formatDistance(result.distanceM)}

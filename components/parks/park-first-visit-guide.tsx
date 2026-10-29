@@ -73,7 +73,7 @@ export async function ParkFirstVisitGuide({
                     prefetch={false}
                     {...badgeLinkProps({ variant: 'outline', className: 'text-sm' })}
                   >
-                    {term.name}
+                    <span>{term.name}</span>
                   </Link>
                   <p className="text-muted-foreground mt-1 text-sm">{term.shortDefinition}</p>
                 </li>

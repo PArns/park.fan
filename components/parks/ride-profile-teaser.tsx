@@ -75,7 +75,7 @@ export async function RideProfileTeaser({ profile, locale, children }: RideProfi
           {...badgeLinkProps({ variant: 'outline', className: 'gap-1' })}
         >
           <RollerCoaster className="h-3 w-3 shrink-0" aria-hidden="true" />
-          {primaryType.name}
+          <span>{primaryType.name}</span>
         </Link>
       )}
       {profile.manufacturer && (

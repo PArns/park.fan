@@ -84,7 +84,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`search-result-row-body.tsx`](../../components/search/search-result-row-body.tsx)
 
-- `WaitBadge` _component_: A wait as an outline pill in its crowd tier's colour (`waitTimeCrowdTier`), the scale every wait on the site uses.
+- `WaitBadge` _component_: A wait as an outline pill in its crowd tier's colour (`waitTimeCrowdTier`), the scale every wait on the site uses. The text is the caller's: „Ø 15 Min." for a park, „25 Min" for a ride.
 - `SearchResultThumb` _component_: A result's square thumbnail: the media database's photo where the row has one, else the icon of its kind. 36 px, 44 px from `sm`; `className` overrides the size (the hero's phone rows keep 36).
 - `SearchResultRowBody` _component_: The inside of a park, ride, show, restaurant or place row: thumbnail, name and status, then place, live counts, wait and distance.
 - `searchResultPlace` _function_: A result's place as a row prints it, „Brühl, Deutschland": the city and the country translated from its slug (`tGeo` is `useTranslations('geo')`).

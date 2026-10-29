@@ -12,6 +12,9 @@ import { cn } from '@/lib/utils';
 import { hasReadableWaitTimes } from '@/lib/utils/live-wait-times';
 import type { ParkWithAttractions, ParkResponse, CrowdLevel } from '@/lib/api/types';
 
+/** The hero's large pills, the icon as far from the left edge as from the top. */
+const HERO_PILL_CLASS = 'px-4 py-1 text-base badge-icon:-ml-1.5';
+
 type ParkData = ParkWithAttractions | ParkResponse;
 
 interface ParkStatusProps {
@@ -89,18 +92,18 @@ export function ParkStatus({ park, variant, className, todayCrowdLevel }: ParkSt
   if (variant === 'hero') {
     return (
       <div className={cn('flex flex-wrap items-center gap-4', className)}>
-        {status && <ParkStatusBadge status={status} className="px-4 py-1 text-base" />}
+        {status && <ParkStatusBadge status={status} className={HERO_PILL_CLASS} />}
         {currentLoad && (status === 'OPERATING' || status === 'UNKNOWN') && (
-          <CrowdLevelBadge level={currentLoad.crowdLevel} className="px-4 py-1 text-base" />
+          <CrowdLevelBadge level={currentLoad.crowdLevel} className={HERO_PILL_CLASS} />
         )}
         {waitStats && (
-          <Badge variant="outline" className="px-4 py-1 text-base backdrop-blur-md">
+          <Badge variant="outline" className={cn(HERO_PILL_CLASS, 'backdrop-blur-md')}>
             <Clock className="mr-2 h-4 w-4" />
             {waitStats.avgWaitTime} {tCommon('minutes')} {tCommon('avgWait')}
           </Badge>
         )}
         {waitStats?.peakWaitToday != null && (
-          <Badge variant="outline" className="px-4 py-1 text-base backdrop-blur-md">
+          <Badge variant="outline" className={cn(HERO_PILL_CLASS, 'backdrop-blur-md')}>
             <TrendingUp className="mr-2 h-4 w-4" />
             {t('peak')}: {waitStats.peakWaitToday} min
           </Badge>
