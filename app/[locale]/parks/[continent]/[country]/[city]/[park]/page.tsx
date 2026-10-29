@@ -453,6 +453,7 @@ export default async function ParkPage({ params, searchParams }: ParkPageProps) 
           header came to name a park the reader was not looking at. */}
       <PlannerPageParkBeacon
         slug={park.slug}
+        id={park.id}
         name={stripNewPrefix(park.name)}
         geo={{ continent, country, city }}
         timezone={park.timezone}

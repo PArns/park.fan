@@ -2,6 +2,7 @@
 
 import { useEffect } from 'react';
 import { plannerPagePark } from '@/lib/planner/page-park';
+import { rememberParkId } from '@/lib/planner/entity-ids';
 import type { PlannerGeo } from '@/lib/planner/types';
 
 /**
@@ -12,6 +13,7 @@ import type { PlannerGeo } from '@/lib/planner/types';
  */
 export function PlannerPageParkBeacon({
   slug,
+  id,
   name,
   geo,
   timezone,
@@ -19,6 +21,8 @@ export function PlannerPageParkBeacon({
   backgroundPosition,
 }: {
   slug: string;
+  /** The park's UUID, which the planner's events name it by (`lib/planner/entity-ids.ts`). */
+  id?: string;
   name: string;
   geo: PlannerGeo;
   timezone?: string;
@@ -27,9 +31,10 @@ export function PlannerPageParkBeacon({
   backgroundPosition?: string;
 }) {
   useEffect(() => {
+    rememberParkId(slug, id);
     plannerPagePark.set({ slug, name, geo, timezone, backgroundImage, backgroundPosition });
     return () => plannerPagePark.clear(slug);
-  }, [slug, name, geo, timezone, backgroundImage, backgroundPosition]);
+  }, [slug, id, name, geo, timezone, backgroundImage, backgroundPosition]);
 
   return null;
 }

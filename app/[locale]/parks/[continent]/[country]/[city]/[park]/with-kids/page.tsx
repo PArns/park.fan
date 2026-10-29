@@ -207,6 +207,7 @@ export default async function ParkKidsPage({ params }: ParkKidsPageProps) {
     <RouteMessages route="/parks/[continent]/[country]/[city]/[park]/with-kids">
       <PlannerPageParkBeacon
         slug={park.slug}
+        id={park.id}
         name={parkName}
         geo={{ continent, country, city }}
         timezone={park.timezone}

@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button';
 import { browserApiUrl } from '@/lib/api/client';
 import { parsePlannerPayload, plannerStore } from '@/lib/planner/store';
 import { adoptSharedPlan, tripIdFromHash } from '@/lib/planner/trip-share';
+import { trackSharedPlanAdopted, trackSharedPlanOpened } from '@/lib/analytics/planner-funnel';
 import { hasAnyPlan, plannedParks, type PlannerState } from '@/lib/planner/types';
 import { plannerUi } from '@/lib/planner/ui-store';
 import { getDateTimeFormat } from '@/lib/utils/intl-format';
@@ -62,7 +63,7 @@ export function PlannerSharedPlan() {
     if (!tripId) return;
     let cancelled = false;
     (async () => {
-      let load: Load;
+      let load: Exclude<Load, { kind: 'loading' }>;
       try {
         const response = await fetch(browserApiUrl(`/v1/trips/${tripId}`), { cache: 'no-store' });
         if (response.status === 404) {
@@ -81,7 +82,10 @@ export function PlannerSharedPlan() {
       } catch {
         load = { kind: 'failed' };
       }
-      if (!cancelled) setLoaded({ id: tripId, attempt, load });
+      if (cancelled) return;
+      // Once per answer: a retry is a new attempt, and so a new answer.
+      trackSharedPlanOpened(load.kind);
+      setLoaded({ id: tripId, attempt, load });
     })();
     return () => {
       cancelled = true;
@@ -109,6 +113,7 @@ export function PlannerSharedPlan() {
 
   const adopt = (id: string, plan: PlannerState) => {
     void adoptSharedPlan(plan);
+    trackSharedPlanAdopted();
     setAdoptedId(id);
   };
 

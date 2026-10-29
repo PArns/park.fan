@@ -11,7 +11,12 @@ import { dayClock, longDate, resolveTimeZone, todayInZone } from '@/lib/planner/
 import { planDayQuery } from '@/lib/hooks/use-plan-day';
 import type { FitChoice, FitInput } from '@/lib/planner/fit';
 import type { PlannerEntry, PlannerGeo } from '@/lib/planner/types';
-import { trackSiteEvent } from '@/lib/analytics/site-analytics';
+import {
+  trackPlanOptimized,
+  trackPlannerFitOpened,
+  trackPlannerUndo,
+} from '@/lib/analytics/planner-funnel';
+import { rememberParkId, rememberRideId } from '@/lib/planner/entity-ids';
 
 type FitAssistant = typeof import('./planner-fit-assistant').PlannerFitAssistant;
 
@@ -21,6 +26,9 @@ interface AddToPlannerButtonProps {
   geo: PlannerGeo;
   attractionSlug: string;
   attractionName: string;
+  /** The park's and the ride's UUIDs, for the planner's events only; see `entity-ids.ts`. */
+  parkId?: string;
+  attractionId?: string;
   /**
    * The park's IANA zone. Optional only because the payloads declare it so; pass it wherever it is
    * known, since it is both the date this files under and the zone the plan reckons in.
@@ -47,6 +55,8 @@ export function AddToPlannerButton({
   geo,
   attractionSlug,
   attractionName,
+  parkId,
+  attractionId,
   timezone,
   date,
   className,
@@ -99,6 +109,7 @@ export function AddToPlannerButton({
         attractionSlug,
         attractionName,
       },
+      'add_button',
       now
     );
     // Adding also decides what the flyout shows: the day just planned on.
@@ -145,6 +156,9 @@ export function AddToPlannerButton({
   const handleAdd = async () => {
     if (pending.current) return;
     pending.current = true;
+    // Before any write, so the events this press sends can name the park and the ride.
+    rememberParkId(parkSlug, parkId);
+    rememberRideId(parkSlug, attractionSlug, attractionId);
     // One clock read decides both the filing date and the earliest minute in it: `targetDate` is
     // computed at render, and a page left open across park-local midnight would file under
     // yesterday.
@@ -160,6 +174,7 @@ export function AddToPlannerButton({
           nonce: (current?.nonce ?? 0) + 1,
           ...conflict,
         }));
+        trackPlannerFitOpened('add_button', parkSlug);
         return;
       }
       file(filingDate, now);
@@ -189,21 +204,25 @@ export function AddToPlannerButton({
       alert: left > 0,
     });
     restoreDay(parkSlug, filingDate, outcome.entries);
-    applyPlan({
-      parkSlug,
-      parkName,
-      geo,
-      timezone,
-      date: filingDate,
-      stops: outcome.stops,
-    });
-    trackSiteEvent('plan_optimized', {});
+    applyPlan(
+      {
+        parkSlug,
+        parkName,
+        geo,
+        timezone,
+        date: filingDate,
+        stops: outcome.stops,
+      },
+      'add_button'
+    );
+    trackPlanOptimized('fit', parkSlug);
     setActive(parkSlug, filingDate);
   };
 
   const undo = () => {
     if (!result) return;
     restoreDay(parkSlug, result.date, result.before);
+    trackPlannerUndo('add_button', parkSlug);
     setResult(null);
   };
 

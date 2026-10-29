@@ -21,6 +21,7 @@ model and how the frontend reads `/plan/day`; each subject has its own page belo
 | [Phone](phone.md)                           | The phone scale, 44 px targets, gestures, landscape row, the bottom sheet         |
 | [Push notifications](push-notifications.md) | The push switch, topics, the armed record, trip sync                              |
 | [The planner page](planner-page.md)         | `/trip-planner`: the article and demos, „Parks auf Tage verteilen", shared plans  |
+| [What it counts](analytics.md)              | The planner's events: wizard steps, items in and out, tools, sharing, push, ids   |
 | [Checks](checks.md)                         | Unit tests and what `pnpm check:planner` covers                                   |
 
 Standing rules that govern it: [the planner's day ends when the park closes](../../rules/the-planners-day-ends-when-the-park-closes-and-a-headliner-is.md)

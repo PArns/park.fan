@@ -24,7 +24,11 @@ import {
   type FitInput,
 } from '@/lib/planner/fit';
 import { PlannerFitAssistant } from './planner-fit-assistant';
-import { trackSiteEvent } from '@/lib/analytics/site-analytics';
+import {
+  trackPlanOptimized,
+  trackPlannerFitOpened,
+  trackPlannerUndo,
+} from '@/lib/analytics/planner-funnel';
 import { dayClock, longDate, parkToday, resolveTimeZone } from '@/lib/planner/park-time';
 import {
   getMinuteTick,
@@ -229,6 +233,7 @@ export function PlannerOptimizeActions({
     // The snapshot's own key rather than the props, so the day restored is the day it was copied
     // from.
     restoreDay(shownUndo.parkSlug, shownUndo.date, shownUndo.entries);
+    trackPlannerUndo('optimize', shownUndo.parkSlug);
     setUndoTo(null);
     setResult(null);
   };
@@ -252,6 +257,7 @@ export function PlannerOptimizeActions({
     const input = fitInputFor(add);
     if (input.wishes.length > 0 && needsFitHelp(input, fitChoiceAll())) {
       setFit({ parkSlug, date, nonce: (fit?.nonce ?? 0) + 1, input });
+      trackPlannerFitOpened('optimize', parkSlug);
       return;
     }
     run(add);
@@ -273,15 +279,19 @@ export function PlannerOptimizeActions({
 
     setUndoTo({ parkSlug, date, entries: entries.map((entry) => ({ ...entry })) });
 
-    applyPlan({
-      parkSlug,
-      parkName,
-      geo,
-      timezone,
-      date,
-      stops: plan.stops,
-    });
-    trackSiteEvent('plan_optimized', {});
+    // Only „Alle Headliner" passes rides to add, so every stop without an entry is one of those.
+    applyPlan(
+      {
+        parkSlug,
+        parkName,
+        geo,
+        timezone,
+        date,
+        stops: plan.stops,
+      },
+      'headliners'
+    );
+    trackPlanOptimized(add.length > 0 ? 'headliners' : 'day', parkSlug);
 
     // What the plan actually holds, never what was asked for: `MAX_STOPS` can cut the list short.
     const added = plan.stops.filter((stop) => stop.entryId === null).length;
@@ -329,15 +339,18 @@ export function PlannerOptimizeActions({
       setUndoTo({ parkSlug, date, entries: entries.map((entry) => ({ ...entry })) });
     }
     restoreDay(parkSlug, date, outcome.entries);
-    applyPlan({
-      parkSlug,
-      parkName,
-      geo,
-      timezone,
-      date,
-      stops: outcome.stops,
-    });
-    trackSiteEvent('plan_optimized', {});
+    applyPlan(
+      {
+        parkSlug,
+        parkName,
+        geo,
+        timezone,
+        date,
+        stops: outcome.stops,
+      },
+      'headliners'
+    );
+    trackPlanOptimized('fit', parkSlug);
 
     const left = outcome.missed.length + choice.dropped.size;
     const parts = [t('fit.applied', { count: outcome.fitted.length })];
@@ -486,6 +499,7 @@ export function PlannerOptimizeActions({
                     input: asked.input,
                     choice: asked.choice,
                   });
+                  trackPlannerFitOpened('optimize', parkSlug);
                 } else {
                   attempt([]);
                 }

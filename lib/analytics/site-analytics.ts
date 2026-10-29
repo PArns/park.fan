@@ -77,6 +77,48 @@ type SearchPosition = '1' | '2' | '3' | '4-5' | '6-10' | '11+';
 /** What was picked from a search surface's list before anything was typed. */
 export type SearchBrowseItem = 'nearby_park' | 'in_park_ride' | 'popular_park' | 'news' | 'guide';
 
+/** A step of the planner's wizard, in the order it asks them. */
+export type PlannerWizardStep = 'park' | 'date' | 'setup' | 'headliners';
+
+/** What a planner block is: a ride, a show performance or a block the visitor wrote. */
+export type PlanItemKind = 'ride' | 'show' | 'block';
+
+/**
+ * The control that put a block into a plan. `headliners` is the optimise row's „Alle Headliner",
+ * `add_button` the ride page's „Zum Plan" (through the fit assistant too), `block_menu` the free
+ * block a column or the panel adds.
+ */
+export type PlanItemAddSource =
+  | 'search'
+  | 'add_button'
+  | 'drag'
+  | 'missing_headliners'
+  | 'show_picker'
+  | 'block_menu'
+  | 'wizard'
+  | 'headliners';
+
+/** The control that took a block out: its own ✕, the action bar, the Delete key, the flat list. */
+export type PlanItemRemoveSource = 'block' | 'action_bar' | 'keyboard' | 'timeline';
+
+/**
+ * What re-planned the day: „Tag optimieren", „Alle Headliner", or an answer from the fit
+ * assistant. Rows from before the property have none.
+ */
+export type PlanOptimizeMode = 'day' | 'headliners' | 'fit';
+
+/** Where the fit assistant opened: the optimise row, the ride page's button, the wizard's last step. */
+export type PlannerFitSource = 'optimize' | 'add_button' | 'wizard';
+
+/** A lever of the fit assistant (`FitLeverKind` in `lib/planner/fit.ts`, with underscores). */
+export type PlannerFitLever = 'drop_block' | 'shorten_block' | 'drop_all_blocks';
+
+/** Which undo put a day back: the optimise row's or the ride page button's. */
+export type PlannerUndoSource = 'optimize' | 'add_button';
+
+/** What a shared plan's link turned out to hold. */
+export type SharedPlanResult = 'ready' | 'empty' | 'missing' | 'failed';
+
 type NoProps = Record<string, never>;
 
 /** Properties of an event the facade does not know: any key, a string, a number or a flag. */
@@ -131,9 +173,32 @@ export interface SiteEventMap {
       | 'home-hero'
       | 'kids-page';
   };
+  /** A park and date got their first block; the park's UUID as entity where a page named it. */
   plan_day_started: NoProps;
-  plan_optimized: NoProps;
+  plan_optimized: { mode: PlanOptimizeMode };
   planner_closed_empty: NoProps;
+  /** A wizard step on screen, the first time in an opening; the park as entity once picked. */
+  planner_wizard_step: { step: PlannerWizardStep };
+  /** The wizard's last press, with whether it planned the headliners; the park as entity. */
+  planner_wizard_finished: { headliners: boolean };
+  /** A block went into a plan; a ride's or show's UUID as entity where a page named it. */
+  plan_item_added: { kind: PlanItemKind; source: PlanItemAddSource };
+  /** A block came out of a plan, one at a time; the same entity as when it went in. */
+  plan_item_removed: { kind: PlanItemKind; source: PlanItemRemoveSource };
+  /** The fit assistant opened for a day that does not hold everything; the park as entity. */
+  planner_fit_opened: { source: PlannerFitSource };
+  /** A lever of the fit assistant switched on (switching it off again is not counted). */
+  planner_fit_lever: { lever: PlannerFitLever };
+  /** A day put back as it was before the last optimisation or assistant answer; the park as entity. */
+  planner_undo: { source: PlannerUndoSource };
+  /** A whole day dropped from the plan; the park as entity. */
+  planner_day_cleared: NoProps;
+  /** A shared plan's link opened and its answer arrived. */
+  planner_shared_opened: { outcome: SharedPlanResult };
+  /** A shared plan taken over into this browser. */
+  planner_shared_adopted: NoProps;
+  /** Push for the plan switched on and accepted by the API. */
+  planner_push_on: NoProps;
   attraction_filter_used: {
     filter:
       | 'open'

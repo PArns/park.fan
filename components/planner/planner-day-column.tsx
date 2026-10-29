@@ -300,7 +300,7 @@ export function PlannerDayColumn({
       )
         return;
       event.preventDefault();
-      removeRide(parkSlug, date, selectedId);
+      removeRide(parkSlug, date, selectedId, 'keyboard');
       setSelectedId(null);
     };
     document.addEventListener('keydown', onKey);
@@ -326,17 +326,22 @@ export function PlannerDayColumn({
    */
   const addFreeBlock = () => {
     if (!park || !date) return;
-    addCustom({
-      parkSlug: park.slug,
-      parkName: park.name,
-      geo: park.geo,
-      timezone: day?.timezone ?? park.timezone,
-      date,
-      label: t('custom.defaultLabel'),
-      icon: 'break',
-      // Never before now; `nowFloor` is `openMin` on every other date.
-      startMinute: grid ? nextFreeStart(spans, grid, undefined, nowFloor(grid, clock)) : undefined,
-    });
+    addCustom(
+      {
+        parkSlug: park.slug,
+        parkName: park.name,
+        geo: park.geo,
+        timezone: day?.timezone ?? park.timezone,
+        date,
+        label: t('custom.defaultLabel'),
+        icon: 'break',
+        // Never before now; `nowFloor` is `openMin` on every other date.
+        startMinute: grid
+          ? nextFreeStart(spans, grid, undefined, nowFloor(grid, clock))
+          : undefined,
+      },
+      'block_menu'
+    );
   };
 
   return (
@@ -453,15 +458,18 @@ export function PlannerDayColumn({
               if (grid || !park || !date) return;
               const dragged = parseRideDrag(event.dataTransfer.getData(PLANNER_RIDE_MIME));
               if (!dragged || dragged.parkSlug !== park.slug) return;
-              addRide({
-                parkSlug: park.slug,
-                parkName: park.name,
-                geo: park.geo,
-                timezone: day?.timezone ?? park.timezone,
-                date,
-                attractionSlug: dragged.attractionSlug,
-                attractionName: dragged.attractionName,
-              });
+              addRide(
+                {
+                  parkSlug: park.slug,
+                  parkName: park.name,
+                  geo: park.geo,
+                  timezone: day?.timezone ?? park.timezone,
+                  date,
+                  attractionSlug: dragged.attractionSlug,
+                  attractionName: dragged.attractionName,
+                },
+                'drag'
+              );
             }}
           >
             {grid && (
@@ -489,16 +497,19 @@ export function PlannerDayColumn({
                 parkSlug={park?.slug}
                 onDropRide={(attractionSlug, attractionName, startMinute) => {
                   if (!park || !date) return;
-                  addRide({
-                    parkSlug: park.slug,
-                    parkName: park.name,
-                    geo: park.geo,
-                    timezone: day?.timezone ?? park.timezone,
-                    date,
-                    attractionSlug,
-                    attractionName,
-                    startMinute,
-                  });
+                  addRide(
+                    {
+                      parkSlug: park.slug,
+                      parkName: park.name,
+                      geo: park.geo,
+                      timezone: day?.timezone ?? park.timezone,
+                      date,
+                      attractionSlug,
+                      attractionName,
+                      startMinute,
+                    },
+                    'drag'
+                  );
                 }}
                 onResize={(entryId, durationMinutes) => {
                   if (parkSlug && date) editCustom(parkSlug, date, entryId, { durationMinutes });
@@ -520,7 +531,7 @@ export function PlannerDayColumn({
                 /* The block's own ✕: take the entry out and drop a selection that now points at
                    nothing, as the action bar does. */
                 onRemove={(entryId) => {
-                  if (parkSlug && date) removeRide(parkSlug, date, entryId);
+                  if (parkSlug && date) removeRide(parkSlug, date, entryId, 'block');
                   setSelectedId(null);
                 }}
                 onMove={(entryId, startMinute) =>
@@ -572,7 +583,9 @@ export function PlannerDayColumn({
                 day={day ?? null}
                 prefs={prefs}
                 onToggleDone={toggleDone}
-                onRemove={(entryId) => parkSlug && date && removeRide(parkSlug, date, entryId)}
+                onRemove={(entryId) =>
+                  parkSlug && date && removeRide(parkSlug, date, entryId, 'timeline')
+                }
               />
             )}
           </div>
@@ -585,7 +598,7 @@ export function PlannerDayColumn({
               standBack={dragging}
               onToggleDone={toggleDone}
               onRemove={(entryId) => {
-                if (parkSlug && date) removeRide(parkSlug, date, entryId);
+                if (parkSlug && date) removeRide(parkSlug, date, entryId, 'action_bar');
                 setSelectedId(null);
               }}
               onClose={() => setSelectedId(null)}

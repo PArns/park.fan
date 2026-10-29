@@ -637,15 +637,59 @@ export const EVENT_INFO: Record<SiteEventName, EventInfo> = {
   },
   plan_day_started: {
     label: 'Plan begonnen',
-    when: 'Ein Park und Tag bekommen den ersten Block, egal wie.',
+    when: 'Ein Park und Tag bekommen den ersten Block, egal wie; mit dem Park, wo eine Seite ihn kennt.',
   },
   plan_optimized: {
     label: 'Plan optimiert',
-    when: 'Der Planer sortiert den Tag und der Plan hat sich geändert.',
+    when: 'Der Planer sortiert den Tag und der Plan hat sich geändert; mit „Tag optimieren“, „Alle Headliner“ oder einer Antwort des Assistenten.',
   },
   planner_closed_empty: {
     label: 'Planer leer geschlossen',
     when: 'Der Bereich schließt, ohne dass ein Tag einen ersten Block bekam.',
+  },
+  planner_wizard_step: {
+    label: 'Assistent: Schritt',
+    when: 'Ein Schritt des Assistenten ist zum ersten Mal in dieser Öffnung zu sehen.',
+  },
+  planner_wizard_finished: {
+    label: 'Assistent fertig',
+    when: 'Der letzte Knopf des Assistenten; mit der Angabe, ob er die Headliner einplant.',
+  },
+  plan_item_added: {
+    label: 'Block eingeplant',
+    when: 'Ein Fahrgeschäft, eine Show oder ein eigener Block kommt in den Plan; mit dem Knopf, der es tat.',
+  },
+  plan_item_removed: {
+    label: 'Block entfernt',
+    when: 'Ein Block wird einzeln aus dem Plan genommen; mit dem Weg, auf dem es geschah.',
+  },
+  planner_fit_opened: {
+    label: 'Passt-Assistent geöffnet',
+    when: 'Der Tag hält nicht alles und der Assistent fragt; im Planer, am Knopf der Fahrgeschäft-Seite oder im letzten Schritt des Assistenten.',
+  },
+  planner_fit_lever: {
+    label: 'Hebel angewandt',
+    when: 'Ein Vorschlag des Passt-Assistenten wird eingeschaltet; Ausschalten zählt nicht.',
+  },
+  planner_undo: {
+    label: 'Rückgängig',
+    when: 'Ein Tag wird auf den Stand vor dem letzten Optimieren oder der letzten Antwort zurückgesetzt.',
+  },
+  planner_day_cleared: {
+    label: 'Tag geleert',
+    when: 'Ein ganzer Tag wird aus dem Plan gelöscht.',
+  },
+  planner_shared_opened: {
+    label: 'Geteilter Plan geöffnet',
+    when: 'Ein geteilter Link wird geöffnet und seine Antwort ist da; mit dem, was er enthielt.',
+  },
+  planner_shared_adopted: {
+    label: 'Geteilten Plan übernommen',
+    when: 'Ein geteilter Plan wird in diesen Browser übernommen.',
+  },
+  planner_push_on: {
+    label: 'Push für den Plan an',
+    when: 'Die Benachrichtigungen für den Plan sind eingeschaltet und von der API angenommen.',
   },
   attraction_filter_used: {
     label: 'Filter benutzt',
@@ -740,6 +784,40 @@ const PROP_LABEL: Record<string, string> = {
   depth: 'Tiefe in Prozent',
   direction: 'Richtung',
   boundary: 'Fehlerseite',
+  step: 'Schritt',
+  headliners: 'Mit Headlinern',
+  mode: 'Weg',
+  lever: 'Hebel',
+  outcome: 'Ergebnis',
+};
+
+/** The planner's property values in German, keyed by property, then value. */
+const PLANNER_VALUE_LABEL: Record<string, Record<string, string>> = {
+  step: { park: 'Park', date: 'Tag', setup: 'Wer kommt mit', headliners: 'Headliner' },
+  kind: { ride: 'Fahrgeschäft', show: 'Show', block: 'Eigener Block' },
+  source: {
+    search: 'Suche im Planer',
+    add_button: '„Zum Plan“ auf der Fahrgeschäft-Seite',
+    drag: 'Ziehen und Ablegen',
+    missing_headliners: 'Fehlende Headliner',
+    show_picker: 'Show-Auswahl',
+    block_menu: 'Eigener Block',
+    wizard: 'Assistent',
+    headliners: '„Alle Headliner“',
+    block: 'Kreuz am Block',
+    action_bar: 'Aktionsleiste',
+    keyboard: 'Entf-Taste',
+    timeline: 'Liste ohne Zeitachse',
+    optimize: 'Optimieren im Planer',
+  },
+  mode: { day: '„Tag optimieren“', headliners: '„Alle Headliner“', fit: 'Antwort des Assistenten' },
+  lever: {
+    drop_block: 'Block weglassen',
+    shorten_block: 'Block kürzen',
+    drop_all_blocks: 'Alle Blöcke weglassen',
+  },
+  outcome: { ready: 'Plan', empty: 'Leer', missing: 'Nicht gefunden', failed: 'Fehler' },
+  headliners: { true: 'Ja', false: 'Nein' },
 };
 
 /** The name of an event property in German; an unknown one stays as sent. */
@@ -755,7 +833,7 @@ export function propValueLabel(prop: string, value: string): string {
   if (prop === 'item') return browseItemLabel(value);
   if (prop === 'from' || prop === 'to') return localeNames[value as Locale] ?? value;
   if (prop === 'depth') return `${value} %`;
-  return value;
+  return PLANNER_VALUE_LABEL[prop]?.[value] ?? value;
 }
 
 /**

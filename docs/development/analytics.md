@@ -129,9 +129,20 @@ the rule is on the call site, and `trackSiteEvent` says it too.
 | `show_follow_add`            | a show-start reminder turned on                                                                    | `source` (card, panel)                                     | the show         |
 | `show_follow_remove`         | a show reminder turned off, once the server confirmed it                                           | none                                                       | the show         |
 | `planner_opened`             | the planner panel's closed → open edge                                                             | `source`                                                   |                  |
-| `plan_day_started`           | a park and date gain their first block                                                             | none                                                       |                  |
-| `plan_optimized`             | "Tag optimieren" / "alle Headliner", only where the plan changed                                   | none                                                       |                  |
+| `plan_day_started`           | a park and date gain their first block                                                             | none                                                       | the park         |
+| `plan_optimized`             | "Tag optimieren", "Alle Headliner" or a fit-assistant answer, only where the plan changed          | `mode` (day, headliners, fit)                              | the park         |
 | `planner_closed_empty`       | the panel closes and no day gained its first block in that opening                                 | none                                                       |                  |
+| `planner_wizard_step`        | a wizard step on screen for the first time in an opening                                           | `step` (park, date, setup, headliners)                     | the park         |
+| `planner_wizard_finished`    | the wizard's last press                                                                            | `headliners` (flag)                                        | the park         |
+| `plan_item_added`            | a ride, show or block of one's own goes into a plan                                                | `kind`, `source`                                           | the ride or show |
+| `plan_item_removed`          | a block taken out, one at a time                                                                   | `kind`, `source`                                           | the ride or show |
+| `planner_fit_opened`         | the fit assistant asks, in the panel, on a ride page's button or in the wizard                     | `source` (optimize, add_button, wizard)                    | the park         |
+| `planner_fit_lever`          | a fit-assistant lever switched on                                                                  | `lever` (drop_block, shorten_block, drop_all_blocks)       |                  |
+| `planner_undo`               | a day put back after an optimisation or an assistant answer                                        | `source` (optimize, add_button)                            | the park         |
+| `planner_day_cleared`        | a whole day dropped from the plan                                                                  | none                                                       | the park         |
+| `planner_shared_opened`      | a shared plan's link opened and its answer arrived                                                 | `outcome` (ready, empty, missing, failed)                  |                  |
+| `planner_shared_adopted`     | a shared plan taken over into this browser                                                         | none                                                       |                  |
+| `planner_push_on`            | push for the plan switched on and accepted by the API                                              | none                                                       |                  |
 | `attraction_filter_used`     | a park page filter switched **on**; the height slider on its first value                           | `filter`                                                   | the park         |
 | `covered_ride_opened`        | a ride opened from „Überdacht in der Nähe" in the rain banner                                      | none                                                       |                  |
 | `compass_viewed`             | once per page view, the first time the compass is on screen                                        | none                                                       |                  |
@@ -173,9 +184,10 @@ element selectors the closed patterns of this counter refuse.
 
 ### The planner funnel
 
-Three events, read together: was the panel opened, did a day get a first block, did anybody let it
+The top of it, read together: was the panel opened, did a day get a first block, did anybody let it
 sort itself. 579 openings gave 197 first blocks in the September export, counted in Umami before the
-move.
+move. The wizard's steps, what goes in and out of a plan, the fit assistant, sharing and push are in
+[the planner's events](../features/trip-planner/analytics.md).
 
 - **`planner_opened` fires on the edge, not the request.** `plannerUi.requestOpen` also fires on a
   second calendar day pressed while the panel is up and when the wizard finishes inside it; the
@@ -186,14 +198,16 @@ move.
 - **`plan_day_started` fires on the empty → not-empty transition** of a park and date, however the
   block got there, so a plan being filled in counts once, not once per ride. Not on finishing the
   wizard (an intention, not a plan), and no `date`.
-- **`plan_optimized`** sends nothing about the minutes saved or which button it was.
+- **`plan_optimized`** names what re-planned the day (`mode`) and nothing about the minutes saved.
+  Rows from before the property have none.
 - **`planner_closed_empty` is at most one per opening**: `trackPlannerOpened` starts an opening,
   `trackPlanDayStarted` marks it, `trackPlannerClosed` fires and ends it
   (`lib/analytics/planner-funnel.ts`, the one module that keeps the state, because the ends sit in
   different files). A day started while the panel is closed belongs to no opening.
-- **No park on any of the three.** The planner keeps its plan by the park's slug and stores no UUID,
-  and the entity is a UUID, so the three events cannot say which park. Storing the id in
-  `PlannerPark` would, at the price of a store migration.
+- **The park where a page named it.** The planner keeps its plan by the park's slug and stores no
+  UUID; `lib/planner/entity-ids.ts` learns the ids from the pages that hold them, so
+  `plan_day_started` and `plan_optimized` carry the park's when one was named, and none otherwise.
+  `planner_opened` and `planner_closed_empty` stay without.
 
 ### Filters and the rain plan
 

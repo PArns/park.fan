@@ -145,16 +145,19 @@ export function PlannerMissingHeadliners({
               key={ride.attractionSlug}
               type="button"
               onClick={() =>
-                addRide({
-                  parkSlug,
-                  parkName,
-                  geo,
-                  timezone,
-                  date,
-                  attractionSlug: ride.attractionSlug,
-                  attractionName: ride.attractionName,
-                  startMinute: startFor(ride),
-                })
+                addRide(
+                  {
+                    parkSlug,
+                    parkName,
+                    geo,
+                    timezone,
+                    date,
+                    attractionSlug: ride.attractionSlug,
+                    attractionName: ride.attractionName,
+                    startMinute: startFor(ride),
+                  },
+                  'missing_headliners'
+                )
               }
               draggable
               onDragStart={(event) =>

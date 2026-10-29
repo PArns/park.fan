@@ -40,6 +40,19 @@ Where an outbound link goes, the closed list of the event's `target`.
 - `trackPlannerOpened` _function_: Counts `planner_opened` with its `source` on the closed to open edge of the planner panel, the top of the funnel, and starts an opening. `source` is the one property, because which way in earns its place is the decision it answers.
 - `trackPlannerClosed` _function_: Counts `planner_closed_empty` when the panel closes and no day gained its first block in that opening, at most once per opening. No property: `planner_opened` already carries the way in.
 - `trackPlanDayStarted` _function_: Counts `plan_day_started` when a park and date gain their first block, not on finishing the wizard and not per added ride, and marks the running opening as having started a day. A day started while the panel is closed belongs to no opening.
+- `planItemOf` _function_: What a stored block is, and the slug its entity is looked up by.
+- `trackPlanItemAdded` _function_: Counts `plan_item_added`: one block into a plan, from `source`.
+- `trackPlanItemRemoved` _function_: Counts `plan_item_removed`: one block out of a plan, through `source`.
+- `trackPlanOptimized` _function_: Counts `plan_optimized` for a re-plan that changed the day, with what did it.
+- `trackPlannerFitOpened` _function_: Counts `planner_fit_opened`: the fit assistant asked its question.
+- `trackPlannerFitLever` _function_: Counts `planner_fit_lever` when a lever is switched on; switching it off counts nothing.
+- `trackPlannerUndo` _function_: Counts `planner_undo`: a day put back from `source`'s snapshot.
+- `trackPlannerDayCleared` _function_: Counts `planner_day_cleared`: a whole day dropped.
+- `trackSharedPlanOpened` _function_: Counts `planner_shared_opened` once the shared plan's answer is in.
+- `trackSharedPlanAdopted` _function_: Counts `planner_shared_adopted`: the shared plan taken over.
+- `trackPlannerPushOn` _function_: Counts `planner_push_on`: push for the plan on, with the API's acceptance.
+- `createPlannerWizardSession` _function_: A `PlannerWizardSession` sending through `send`. Plain state: nothing renders from it.
+- Types: `PlannerEventSender`, `PlannerWizardSession`
 
 ### [`search-session.ts`](../../lib/analytics/search-session.ts)
 
@@ -58,7 +71,7 @@ Where an outbound link goes, the closed list of the event's `target`.
 - `trackSitePageview` _function_: Counts a view of the page now in the address bar. Call once per navigation. The view before it ends here, so the foreground time it has not reported yet is queued ahead of the new pageview, under the path and page type it was opened with.
 - `markPageNotFound` _function_: Declares the page in the address bar a "not found" page, which only that page knows: its pageview becomes `not_found`, whether it was queued already or comes after.
 - `trackSiteEvent` _function_: Counts one event on the current page. A name in `SiteEventMap` is checked against its properties; any other name (lower case, digits and underscores, two to 48 characters) goes through with any properties of `SiteEventProps`.
-- Types: `SearchSurface`, `SearchResultKind`, `SearchBrowseItem`, `SiteEventMap`, `SiteEventName`, `AttractionFilterName`
+- Types: `SearchSurface`, `SearchResultKind`, `SearchBrowseItem`, `PlannerWizardStep`, `PlanItemKind`, `PlanItemAddSource`, `PlanItemRemoveSource`, `PlanOptimizeMode`, `PlannerFitSource`, `PlannerFitLever`, `PlannerUndoSource`, `SharedPlanResult`, `SiteEventMap`, `SiteEventName`, `AttractionFilterName`
 
 ### [`umami.ts`](../../lib/analytics/umami.ts)
 

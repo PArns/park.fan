@@ -262,6 +262,7 @@ export default async function ParkStatsPage({ params }: ParkStatsPageProps) {
           panel lives in the layout and otherwise cannot tell one park's record from another's. */}
       <PlannerPageParkBeacon
         slug={park.slug}
+        id={park.id}
         name={parkName}
         geo={{ continent, country, city }}
         timezone={park.timezone}

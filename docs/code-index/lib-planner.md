@@ -119,6 +119,17 @@ Whether the drag gesture has been explained once: a store over `localStorage`, l
 
 - `plannerDragCoach` _const_: Whether the drag coach was dismissed, as an external store.
 
+### [`entity-ids.ts`](../../lib/planner/entity-ids.ts)
+
+- `rememberParkId` _function_: Note a park's UUID; anything that is not one is ignored.
+- `rememberRideId` _function_: Note a ride's UUID under its park.
+- `rememberShowId` _function_: Note a show's UUID under its park.
+- `rememberPlanDayIds` _function_: Note every id a `/plan/day` answer carries.
+- `parkIdOf` _function_: A park's UUID, where a page has named it.
+- `rideIdOf` _function_: A ride's UUID, where a page has named it.
+- `showIdOf` _function_: A show's UUID, where a page has named it.
+- Types: `PlanDayIds`
+
 ### [`estimate.ts`](../../lib/planner/estimate.ts)
 
 - `isAssumedWait` _function_: Whether the figure is an assumption rather than a forecast — `assumed` or `early-entry`. Every surface that withholds a crowd tint or prints a `~` asks this, so a new assumed state cannot be tinted by one of them and not another.

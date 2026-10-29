@@ -2177,6 +2177,11 @@ export type PlanDayComposer = 'h5' | 'h5_tft' | 'peak_scaled';
 export interface PlanDayRide {
   attractionSlug: string;
   attractionName: string;
+  /**
+   * The ride's UUID, which the planner's events name it by (`lib/planner/entity-ids.ts`). Absent
+   * from an API that does not send it; the event then goes without an entity.
+   */
+  attractionId?: string | null;
   land?: string | null;
   /** One entry per open hour. */
   hours: PlanDayHour[];
@@ -2336,6 +2341,8 @@ export interface PlanDayUnavailable {
 /** The trip planner's day for one park (`/plan/day`). See docs/features/trip-planner/README.md. */
 export interface PlanDay {
   parkSlug: string;
+  /** The park's UUID, for the planner's events, like {@link PlanDayRide.attractionId}. */
+  parkId?: string | null;
   timezone: string;
   context: PlanDayContext;
   tier: PlanDayTier;
@@ -2394,6 +2401,8 @@ export type PlanDayShowSource = 'scheduled' | 'projected';
 export interface PlanDayShow {
   showSlug: string;
   showName: string;
+  /** The show's UUID, for the planner's events, like {@link PlanDayRide.attractionId}. */
+  showId?: string | null;
   /**
    * Where the show is: present on nearly every show; absent is the normal case for one nobody has
    * located, not an error.

@@ -557,17 +557,22 @@ export function PlannerFlyout({
   const addFreeBlock = () => {
     if (!park || !activeDate) return;
     const clock = dayClock(activeDate, resolveTimeZone(day?.timezone ?? park.timezone));
-    addCustom({
-      parkSlug: park.slug,
-      parkName: park.name,
-      geo: park.geo,
-      timezone: day?.timezone ?? park.timezone,
-      date: activeDate,
-      label: t('custom.defaultLabel'),
-      icon: 'break',
-      // Never before now; `nowFloor` is `openMin` on every other date.
-      startMinute: grid ? nextFreeStart(spans, grid, undefined, nowFloor(grid, clock)) : undefined,
-    });
+    addCustom(
+      {
+        parkSlug: park.slug,
+        parkName: park.name,
+        geo: park.geo,
+        timezone: day?.timezone ?? park.timezone,
+        date: activeDate,
+        label: t('custom.defaultLabel'),
+        icon: 'break',
+        // Never before now; `nowFloor` is `openMin` on every other date.
+        startMinute: grid
+          ? nextFreeStart(spans, grid, undefined, nowFloor(grid, clock))
+          : undefined,
+      },
+      'block_menu'
+    );
   };
 
   // The park's three-month forecast, here for the zone written back below, under the same query key

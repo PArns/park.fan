@@ -25,6 +25,8 @@ const MIN_QUERY_LENGTH = 3;
  */
 export interface PlannerParkPick {
   slug: string;
+  /** The park's UUID, for the planner's events (`lib/planner/entity-ids.ts`). */
+  id?: string;
   name: string;
   geo: PlannerGeo;
   city?: string;
