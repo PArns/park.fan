@@ -2205,7 +2205,7 @@
       "statusExcluded": "Vos visites sont actuellement exclues de nos statistiques.",
       "statusIncluded": "Vos visites sont actuellement incluses dans nos statistiques.",
       "statusDnt": "Votre navigateur envoie « Do Not Track ». Vos visites ne sont donc déjà pas comptées.",
-      "statusGpc": "Votre navigateur envoie « Global Privacy Control ». Notre propre compteur de pages ne compte donc pas vos visites, Umami si.",
+      "statusGpc": "Votre navigateur envoie « Global Privacy Control ». Vos visites ne sont donc déjà pas comptées.",
       "loading": "…"
     }
   },

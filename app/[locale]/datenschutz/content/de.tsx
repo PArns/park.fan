@@ -8,7 +8,7 @@ export function DatenschutzDE() {
   return (
     <>
       <h1 className="mb-2 text-4xl font-bold">Datenschutzerklärung</h1>
-      <p className="text-muted-foreground mb-8 text-sm">Stand: 28. Oktober 2026</p>
+      <p className="text-muted-foreground mb-8 text-sm">Stand: 29. Oktober 2026</p>
 
       <div className="space-y-4 text-base leading-7">
         <LegalH2>1. Verantwortlicher</LegalH2>
@@ -55,8 +55,7 @@ export function DatenschutzDE() {
           der Cloudflare Inc., 101 Townsend St., San Francisco, CA 94107, USA. Cloudflare
           beantwortet DNS-Anfragen, hält Kopien unserer Seiten vor und filtert Angriffe heraus.
           Dafür verarbeitet Cloudflare Ihre IP-Adresse und die technischen Daten Ihrer Anfrage und
-          kann ein Cookie zur Abwehr von Bots setzen. Außerdem kann Ihr Browser Meldungen zu
-          Netzwerkfehlern an Cloudflare senden (Network Error Logging).
+          kann ein Cookie zur Abwehr von Bots setzen.
         </p>
         <p>
           Rechtsgrundlage ist unser berechtigtes Interesse an einer sicheren und fehlerfreien
@@ -211,54 +210,24 @@ export function DatenschutzDE() {
 
         <LegalH2>4. Statistik</LegalH2>
         <p>
-          <strong>In Kürze:</strong> Seitenaufrufe zählen zwei Dienste, Umami und unser eigener
-          Server. Die Nutzung einzelner Funktionen zählt nur unser Server. Er erkennt Sie nicht über
-          einen Tag hinaus wieder, und in seiner Datenbank stehen nur Zähler, keine IP-Adressen.
-          Umami fasst die Aufrufe eines Browsers bis zu einem Monat zusammen. Sie können jederzeit
-          widersprechen.
-        </p>
-
-        <LegalH3>Umami</LegalH3>
-        <p>
-          Um zu sehen, welche Seiten gelesen und welche Funktionen genutzt werden, verwenden wir
-          Umami Cloud der Umami Software, Inc., USA. Umami setzt keine Cookies und legt nichts in
-          Ihrem Browser ab. Bei jedem Seitenaufruf liest das Skript aus Ihrem Browser die Adresse
-          der Seite, den Seitentitel, den Referrer, die Bildschirmgröße und die Spracheinstellung
-          und sendet sie an Umami. Von der Adresse fallen der Anker und die Suchparameter weg, und
-          auf einer Seite mit Suchparametern, etwa der Suchseite, auch der Seitentitel. Ein
-          Suchbegriff erreicht Umami so nicht. Aus diesen Angaben und dem User-Agent bestimmt Umami
-          Browser, Betriebssystem und Gerätetyp. Wird eine Interaktion oder eine Layoutverschiebung
-          auffällig langsam, kommt ein Leistungsmaß mit dem betroffenen Seitenelement dazu. Klicks
-          und Funktionen meldet Umami nicht, die zählen wir selbst (siehe unten). Aus der IP-Adresse
-          wird das Land bestimmt. Zusammen mit den Browserangaben und einem Wert, der jeden Monat
-          wechselt, wird daraus außerdem eine Kennung gebildet, die die Aufrufe desselben Browsers
-          innerhalb eines Monats zusammenfasst. Die IP-Adresse selbst wird nicht gespeichert. Ein
-          Profil über mehrere Websites entsteht nicht.
-        </p>
-        <p>
-          Umami verarbeitet die Daten in unserem Auftrag. Umami und einige seiner Dienstleister
-          sitzen in den USA, eine Übermittlung dorthin ist daher möglich. Sie stützt sich auf die
-          Standardvertragsklauseln der EU-Kommission, die Teil des Auftragsverarbeitungsvertrags mit
-          Umami sind. Rechtsgrundlage ist unser berechtigtes Interesse, das Angebot anhand von
-          Nutzungsstatistiken zu verbessern (Art. 6 Abs. 1 lit. f DSGVO). Hat Ihr Browser „Do Not
-          Track“ eingeschaltet, wird nichts gesendet. Unten können Sie Ihre Besuche außerdem von der
-          Statistik ausschließen. Weitere Informationen:{' '}
-          <LegalLink href="https://umami.is/privacy" />.
+          <strong>In Kürze:</strong> Seitenaufrufe und die Nutzung einzelner Funktionen zählt unser
+          eigener Server. Er erkennt Sie nicht über einen Tag hinaus wieder, und in seiner Datenbank
+          stehen nur Zähler, keine IP-Adressen. Sie können jederzeit widersprechen.
         </p>
 
         <LegalH3>Eigene Statistik</LegalH3>
         <p>
-          Daneben zählt unser Server selbst, welche Seiten aufgerufen und welche Funktionen genutzt
-          werden. Aus derselben Zählung entstehen die Listen der meistgelesenen Beiträge. Das
-          geschieht ohne Kennung in Ihrem Browser. Ein Skript auf unserer Seite liest bei jedem
-          Seitenaufruf, auch beim Wechsel zwischen zwei Seiten der Website, Werte aus Ihrem Browser
-          aus und schickt sie an api.park.fan: den Pfad der Seite ohne Suchbegriffe und Anker und
-          daraus abgeleitet die Art der Seite (zum Beispiel Park, Attraktion oder Beitrag) und die
-          Sprache. Die Größe Ihres Fensters liest es nicht aus. Beim ersten Aufruf nach dem Öffnen
-          der Website liest es zusätzlich die Herkunft aus: den Domainnamen der Website, von der Sie
-          kommen. Die Art der Herkunft (zum Beispiel Suchmaschine oder soziales Netzwerk) leitet der
-          Server daraus ab. Auch der Pfad einer Adresse, die es nicht gibt, wird gezählt, damit wir
-          kaputte Links finden.
+          Unser Server zählt selbst, welche Seiten aufgerufen und welche Funktionen genutzt werden.
+          Aus derselben Zählung entstehen die Listen der meistgelesenen Beiträge. Das geschieht ohne
+          Kennung in Ihrem Browser. Ein Skript auf unserer Seite liest bei jedem Seitenaufruf, auch
+          beim Wechsel zwischen zwei Seiten der Website, Werte aus Ihrem Browser aus und schickt sie
+          an api.park.fan: den Pfad der Seite ohne Suchbegriffe und Anker und daraus abgeleitet die
+          Art der Seite (zum Beispiel Park, Attraktion oder Beitrag) und die Sprache. Die Größe
+          Ihres Fensters liest es nicht aus. Beim ersten Aufruf nach dem Öffnen der Website liest es
+          zusätzlich die Herkunft aus: den Domainnamen der Website, von der Sie kommen. Die Art der
+          Herkunft (zum Beispiel Suchmaschine oder soziales Netzwerk) leitet der Server daraus ab.
+          Auch der Pfad einer Adresse, die es nicht gibt, wird gezählt, damit wir kaputte Links
+          finden.
         </p>
         <p>
           Bei bestimmten Handlungen sendet Ihr Browser außerdem ein Ereignis. Name und Werte legen
@@ -407,14 +376,13 @@ export function DatenschutzDE() {
           Sie können der Zählung jederzeit ohne Angabe von Gründen widersprechen. Da wir Ihnen keine
           Kennung zuteilen, setzen wir den Widerspruch an Ihrem Gerät um: Der Schalter unten
           speichert in Ihrem Browser ein Merkmal ohne Kennung. Solange es dort steht, sendet Ihr
-          Browser nichts an unseren Zähler und nichts an Umami. „Do Not Track“ in Ihrem Browser
-          behandeln wir ebenso als Widerspruch, bei beiden Zählern. „Global Privacy Control“ gilt
-          nur für unseren eigenen Zähler, Umami liest es nicht. Der Widerspruch gilt nur für den
-          Browser, in dem Sie ihn einlegen. Löschen Sie die Browserdaten, müssen Sie ihn
-          wiederholen. Auch Safari kann Einträge im lokalen Speicher einer Website löschen, wenn Sie
-          die Website sieben Tage lang nicht genutzt haben. Dann zählt die Statistik Ihre Besuche
-          wieder, bis Sie den Schalter erneut setzen. Eine E-Mail an uns hilft hier nicht, weil wir
-          keine Zählung einer Person zuordnen können.
+          Browser nichts an unseren Zähler. „Do Not Track“ und „Global Privacy Control“ in Ihrem
+          Browser behandeln wir ebenso als Widerspruch. Der Widerspruch gilt nur für den Browser, in
+          dem Sie ihn einlegen. Löschen Sie die Browserdaten, müssen Sie ihn wiederholen. Auch
+          Safari kann Einträge im lokalen Speicher einer Website löschen, wenn Sie die Website
+          sieben Tage lang nicht genutzt haben. Dann zählt die Statistik Ihre Besuche wieder, bis
+          Sie den Schalter erneut setzen. Eine E-Mail an uns hilft hier nicht, weil wir keine
+          Zählung einer Person zuordnen können.
         </p>
         <AnalyticsOptOut />
 

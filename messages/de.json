@@ -2205,7 +2205,7 @@
       "statusExcluded": "Ihre Besuche werden derzeit nicht in unseren Statistiken erfasst.",
       "statusIncluded": "Ihre Besuche werden derzeit in unseren Statistiken erfasst.",
       "statusDnt": "Ihr Browser sendet „Do Not Track“. Ihre Besuche werden deshalb schon jetzt nicht erfasst.",
-      "statusGpc": "Ihr Browser sendet „Global Privacy Control“. Unser eigener Aufrufzähler erfasst Ihre Besuche deshalb nicht, Umami schon.",
+      "statusGpc": "Ihr Browser sendet „Global Privacy Control“. Ihre Besuche werden deshalb schon jetzt nicht erfasst.",
       "loading": "…"
     }
   },

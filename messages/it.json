@@ -2205,7 +2205,7 @@
       "statusExcluded": "Le tue visite sono attualmente escluse dalle nostre statistiche.",
       "statusIncluded": "Le tue visite sono attualmente incluse nelle nostre statistiche.",
       "statusDnt": "Il tuo browser invia «Do Not Track». Per questo le tue visite già non vengono conteggiate.",
-      "statusGpc": "Il tuo browser invia «Global Privacy Control». Per questo il nostro contatore di visite non conta le tue visite, Umami sì.",
+      "statusGpc": "Il tuo browser invia «Global Privacy Control». Per questo le tue visite già non vengono conteggiate.",
       "loading": "…"
     }
   },

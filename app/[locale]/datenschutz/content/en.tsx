@@ -9,7 +9,7 @@ export function DatenschutzEN() {
   return (
     <>
       <h1 className="mb-2 text-4xl font-bold">Privacy Policy</h1>
-      <p className="text-muted-foreground mb-8 text-sm">Last updated: 28 October 2026</p>
+      <p className="text-muted-foreground mb-8 text-sm">Last updated: 29 October 2026</p>
 
       <div className="space-y-4 text-base leading-7">
         <LegalH2>1. Controller</LegalH2>
@@ -54,8 +54,7 @@ export function DatenschutzEN() {
           Cloudflare Inc., 101 Townsend St., San Francisco, CA 94107, USA. Cloudflare answers DNS
           requests, keeps copies of our pages and filters out attacks. To do this, Cloudflare
           processes your IP address and the technical data of your request, and may set a cookie to
-          fend off bots. Your browser may also send reports about network errors to Cloudflare
-          (Network Error Logging).
+          fend off bots.
         </p>
         <p>
           The legal basis is our legitimate interest in providing the website securely and without
@@ -202,48 +201,21 @@ export function DatenschutzEN() {
 
         <LegalH2>4. Statistics</LegalH2>
         <p>
-          <strong>In short:</strong> Two services count page views, Umami and our own server. Only
-          our server counts the use of individual features. It does not recognize you beyond one
-          day, and its database holds only counters, no IP addresses. Umami groups the views of one
-          browser for up to one month. You can object at any time.
-        </p>
-
-        <LegalH3>Umami</LegalH3>
-        <p>
-          To see which pages are read and which features are used, we use Umami Cloud by Umami
-          Software, Inc., USA. Umami sets no cookies and stores nothing in your browser. On every
-          page view the script reads the page address, the page title, the referrer, the screen size
-          and the language setting from your browser and sends them to Umami. The anchor and the
-          query are dropped from the address, and on a page with a query, such as the search page,
-          the page title too, so no search term reaches Umami. From these details and the user
-          agent, Umami works out the browser, the operating system and the device type. If an
-          interaction or a layout shift is noticeably slow, a performance measure with the affected
-          page element is added. Umami does not report clicks or features; we count those ourselves
-          (see below). The country is worked out from the IP address. The IP address is also
-          combined with the browser details and a value that changes every month to form an ID. This
-          ID groups the visits of the same browser within one month. The IP address itself is not
-          stored. No profile across several websites is created.
-        </p>
-        <p>
-          Umami processes the data on our behalf. Umami and some of its service providers are based
-          in the USA, so a transfer there is possible. It rests on the EU Commission's Standard
-          Contractual Clauses, which are part of the data processing agreement with Umami. The legal
-          basis is our legitimate interest in improving the service with usage statistics (Art.
-          6(1)(f) GDPR). If your browser has "Do Not Track" switched on, nothing is sent. Below, you
-          can also exclude your visits from the statistics. More information:{' '}
-          <LegalLink href="https://umami.is/privacy" />.
+          <strong>In short:</strong> Our own server counts page views and the use of individual
+          features. It does not recognize you beyond one day, and its database holds only counters,
+          no IP addresses. You can object at any time.
         </p>
 
         <LegalH3>Our own statistics</LegalH3>
         <p>
-          Alongside it, our server itself counts which pages are opened and which features are used.
-          The lists of most-read posts come from the same count. This happens without an ID in your
-          browser. On every page view, including a move between two pages of the website, a script
-          on our site reads values from your browser and sends them to api.park.fan: the path of the
-          page without search terms and anchor and, derived from it, the kind of page (for example
-          park, attraction or post) and the language. It does not read the size of your window. On
-          the first page view after the website is opened, it also reads the origin: the domain name
-          of the website you came from. The server works out the kind of origin (for example search
+          Our server itself counts which pages are opened and which features are used. The lists of
+          most-read posts come from the same count. This happens without an ID in your browser. On
+          every page view, including a move between two pages of the website, a script on our site
+          reads values from your browser and sends them to api.park.fan: the path of the page
+          without search terms and anchor and, derived from it, the kind of page (for example park,
+          attraction or post) and the language. It does not read the size of your window. On the
+          first page view after the website is opened, it also reads the origin: the domain name of
+          the website you came from. The server works out the kind of origin (for example search
           engine or social network) from that. The path of an address that does not exist is counted
           too, so that we can find broken links.
         </p>
@@ -385,10 +357,9 @@ export function DatenschutzEN() {
           You can object to the count at any time without giving reasons. Because we assign you no
           ID, we put the objection into effect on your device: the switch below stores a marker
           without an ID in your browser. As long as it is there, your browser sends nothing to our
-          counter and nothing to Umami. We treat "Do Not Track" in your browser as an objection too,
-          for both counters. "Global Privacy Control" applies only to our own counter; Umami does
-          not read it. The objection applies only to the browser in which you make it. If you delete
-          your browser data, you have to make it again. Safari can also delete entries in a
+          counter. We treat "Do Not Track" and "Global Privacy Control" in your browser as an
+          objection too. The objection applies only to the browser in which you make it. If you
+          delete your browser data, you have to make it again. Safari can also delete entries in a
           website's local storage if you have not used the website for seven days. The statistics
           then count your visits again until you set the switch anew. An email to us does not help
           here, because we cannot tie any count to a person.
