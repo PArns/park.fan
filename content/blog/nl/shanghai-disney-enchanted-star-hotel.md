@@ -2,7 +2,7 @@
 title: 'Derde hotel van Shanghai Disney Resort opent in december'
 translationKey: shanghai-disney-enchanted-star-hotel
 date: '2026-10-30'
-time: '07:19'
+time: '07:58'
 author: patrick
 mode: published
 featured: false

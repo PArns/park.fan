@@ -2,7 +2,7 @@
 title: 'Shanghai Disney Resort apre il terzo hotel a dicembre'
 translationKey: shanghai-disney-enchanted-star-hotel
 date: '2026-10-30'
-time: '07:19'
+time: '07:58'
 author: patrick
 mode: published
 featured: false
