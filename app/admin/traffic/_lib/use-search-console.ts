@@ -9,6 +9,7 @@ import {
   SEARCH_CONSOLE_QUERY_PARAM,
   SEARCH_CONSOLE_STATUS_PATH,
   importFinished,
+  importInProgress,
   parseSearchConsolePage,
   parseSearchConsoleQuery,
   searchConsolePath,
@@ -29,9 +30,9 @@ export interface ImportWait {
 }
 
 /**
- * Whether the import is set up and what it has stored. Read once and on a refresh; after an import
- * was requested (`wait`) it is asked again every few seconds until the status changes or the wait
- * runs out.
+ * Whether the import is set up and what it has stored. Read once and on a refresh; asked again every
+ * few seconds while the API reports a run in progress, and after an import was requested (`wait`)
+ * until the status changes or the wait runs out.
  */
 export function useSearchConsoleStatus(wait: ImportWait | null) {
   return useAdminQuery<SearchConsoleStatus>(
@@ -39,12 +40,15 @@ export function useSearchConsoleStatus(wait: ImportWait | null) {
     SEARCH_CONSOLE_STATUS_PATH,
     {
       staleTime: 30_000,
-      refetchInterval: (query) =>
-        wait !== null &&
-        Date.now() < wait.until &&
-        !(query.state.data && importFinished(wait.mark, query.state.data))
+      refetchInterval: (query) => {
+        const data = query.state.data;
+        if (data && importInProgress(data)) return IMPORT_POLL_MS;
+        return wait !== null &&
+          Date.now() < wait.until &&
+          !(data && importFinished(wait.mark, data))
           ? IMPORT_POLL_MS
-          : false,
+          : false;
+      },
     }
   );
 }

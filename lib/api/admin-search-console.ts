@@ -18,6 +18,11 @@ export interface SearchConsoleStatus {
   lastImportAt: string | null;
   /** The error of the last import, or `null` when it succeeded. */
   lastError: string | null;
+  /**
+   * When the import running now started, ISO in UTC; `null` when none runs. A request to import
+   * while it is set does nothing, so the button waits for it.
+   */
+  runningSince: string | null;
   /** The first and the last day the stored rows cover, `null` before the first import. */
   coverage: { from: string; to: string } | null;
   /** How many rows are stored. */

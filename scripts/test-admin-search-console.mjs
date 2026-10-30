@@ -14,6 +14,7 @@ import {
   formatSearchConsoleRow,
   googleSearchHref,
   importFinished,
+  importInProgress,
   parseSearchConsolePage,
   partialPeriods,
   seriesPartial,
@@ -490,6 +491,15 @@ const testCases = [
       ];
     },
     expected: [false, true, true],
+  },
+  {
+    name: 'an import is in progress while the API names its start, and not for an older API',
+    actual: () => [
+      importInProgress({ runningSince: '2026-10-30T09:20:00Z' }),
+      importInProgress({ runningSince: null }),
+      importInProgress({}),
+    ],
+    expected: [true, false, false],
   },
 ];
 

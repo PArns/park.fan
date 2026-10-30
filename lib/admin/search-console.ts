@@ -412,10 +412,19 @@ export type ImportMark = Pick<SearchConsoleStatus, 'lastImportAt' | 'lastError'>
 
 /**
  * Whether the import requested at `mark` has run since: it has finished (a new `lastImportAt`) or
- * failed (a new `lastError`). The API sends no "running" flag, so the change is the signal.
+ * failed (a new `lastError`). `runningSince` cannot say that: between the request and the start of
+ * the run it is still empty.
  */
 export function importFinished(mark: ImportMark, current: ImportMark): boolean {
   return mark.lastImportAt !== current.lastImportAt || mark.lastError !== current.lastError;
+}
+
+/**
+ * Whether the API reports an import in progress, whoever started it: the nightly run, or a request
+ * from another tab. An API that does not send `runningSince` yet reads as none.
+ */
+export function importInProgress(status: Pick<SearchConsoleStatus, 'runningSince'>): boolean {
+  return status.runningSince != null;
 }
 
 /** How long a requested import is waited for, in milliseconds, before the page stops asking. */

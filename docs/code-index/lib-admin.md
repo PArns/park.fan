@@ -192,7 +192,8 @@ The path guard and the query of `/api/admin/[...path]`, pure so they can be test
 - `googleSearchHref` _function_: The address of the Google results for a query, to see what a searcher sees.
 - `searchConsoleState` _function_: Where the import stands: `off` without credentials, `waiting` while nothing is stored yet (the first import backfills 16 months and takes its time), `ready` once rows exist.
 - `googleWindowNote` _function_: The window Google's figures cover, in a sentence, from the dates the API echoed.
-- `importFinished` _function_: Whether the import requested at `mark` has run since: it has finished (a new `lastImportAt`) or failed (a new `lastError`). The API sends no "running" flag, so the change is the signal.
+- `importFinished` _function_: Whether the import requested at `mark` has run since: it has finished (a new `lastImportAt`) or failed (a new `lastError`). `runningSince` cannot say that: between the request and the start of the run it is still empty.
+- `importInProgress` _function_: Whether the API reports an import in progress, whoever started it: the nightly run, or a request from another tab. An API that does not send `runningSince` yet reads as none.
 - `SEARCH_CONSOLE_METRICS` _const_: The four figures in the order the tiles, the charts and the table columns list them.
 - `NO_COMPARISON` _const_: Why a window has no window before to compare with.
 - `SEARCH_CONSOLE_STATUS_PATH` _const_: The proxy path of the status read.

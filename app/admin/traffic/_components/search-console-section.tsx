@@ -13,6 +13,7 @@ import {
   defaultSearchConsoleInterval,
   formatSearchConsole,
   importFinished,
+  importInProgress,
   plotSearchConsole,
   searchConsoleChip,
   searchConsoleFigure,
@@ -111,6 +112,11 @@ function StatusLine({ status }: { status: SearchConsoleStatus }) {
             ? `Letzter Import ${formatAgo(status.lastImportAt)}`
             : 'Noch kein Import'}
         </span>
+        {status.runningSince && (
+          <span title={status.runningSince}>
+            Import läuft, gestartet {formatAgo(status.runningSince)}
+          </span>
+        )}
         {status.coverage && (
           <span className="tabular-nums">
             Daten vom {formatRangeSpan(status.coverage)} · {formatCount(status.rows)} Zeilen
@@ -413,9 +419,11 @@ export function SearchConsoleSection({
   const current = status.data;
   if (searchConsoleState(current) === 'off') return <SetupHint lastError={current.lastError} />;
 
-  // Until the status changes: the API reports no "running" flag, a new last import or error is the end.
+  // A run the API reports, or the one asked for here until the status changes: the request is
+  // queued before the run starts, so for a moment the API reports nothing yet.
   const running =
-    wait !== null && now !== null && now < wait.until && !importFinished(wait.mark, current);
+    importInProgress(current) ||
+    (wait !== null && now !== null && now < wait.until && !importFinished(wait.mark, current));
 
   async function requestImport() {
     setStarting(true);
