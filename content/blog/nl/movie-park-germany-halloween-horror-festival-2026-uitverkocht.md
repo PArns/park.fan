@@ -7,7 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Voor 30 en 31 oktober is het Halloween Horror Festival in Movie Park Germany uitverkocht. Er zijn nog tickets voor zondag 1 november en voor het laatste weekend, van 6 tot en met 8 november. Nieuw dit jaar zijn het horrorhuis Jason Universe en de liveshow PHOBIA.
+  Voor 30 en 31 oktober is het Halloween Horror Festival in Movie Park Germany uitverkocht. Er zijn nog tickets voor zondag 1 november en voor het laatste weekend, van 6 tot en met 8 november. Het festival loopt tot 8 november; nieuw zijn het horrorhuis Jason Universe en de show PHOBIA.
 tags:
   - nieuws
   - movie-park
@@ -22,7 +22,7 @@ rideLinks: false
 seo:
   title: 'Movie Park uitverkocht? Halloweentickets tot 8 november'
   description: >-
-    Halloween Horror Festival in Movie Park: 30 en 31/10 uitverkocht, nog tickets voor 1/11 en 6 t/m 8/11. Nieuw zijn Jason Universe en PHOBIA.
+    Halloween Horror Festival in Movie Park: 30 en 31/10 uitverkocht, nog tickets voor 1/11 en 6 t/m 8/11. Jason Universe en PHOBIA zijn dit jaar nieuw.
   keywords:
     - Halloween Horror Festival Movie Park
     - Movie Park uitverkocht
@@ -34,9 +34,9 @@ seo:
     - Movie Park Halloween leeftijd
 ---
 
-Vrijdag 30 en zaterdag 31 oktober zijn uitverkocht op het Halloween Horror Festival in [Movie Park Germany](ref:movie-park-germany). Het park stuurt bezoekers door naar zondag 1 november en naar het laatste festivalweekend, van 6 tot en met 8 november. Ook de donderdag ervoor was al uitverkocht.
+Vrijdag 30 en zaterdag 31 oktober zijn uitverkocht op het Halloween Horror Festival in [Movie Park Germany](ref:movie-park-germany). Het park stuurt bezoekers door naar zondag 1 november en naar het laatste festivalweekend, van 6 tot en met 8 november. De donderdag ervoor was al uitverkocht.
 
-Jason Voorhees kwam in vijf films telkens terug. Een week langer wachten maakt hem niet uit.
+Jason Voorhees heeft dit jaar voor het eerst een eigen horrorhuis in Bottrop. Wie dit weekend misgrijpt, krijgt het vervolg dus later te zien: zondag of vanaf 6 november.
 
 ## De laatste vier festivaldagen
 
@@ -45,31 +45,27 @@ Jason Voorhees kwam in vijf films telkens terug. Een week langer wachten maakt h
 - Zaterdag 7 november: 10.00 tot 22.00 uur
 - Zondag 8 november: 10.00 tot 21.00 uur
 
-Van maandag 2 tot en met donderdag 5 november is het park dicht. Op 8 november eindigen het festival en het seizoen. Daarna gaat het park pas op 27 november weer open, voor Movie Park's Hollywood Christmas.
+Van maandag 2 tot en met donderdag 5 november is het park dicht. Op 8 november eindigt het festival. Pas op 27 november gaat het park weer open, dan voor Movie Park's Hollywood Christmas.
 
-Ook voor de overige dagen heeft het park nog maar weinig tickets. Een dagticket met vaste datum kost vanaf € 41,90. Met een abonnement of een dagticket zonder vaste datum kom je alleen binnen als je je vooraf op de website van het park hebt aangemeld en een bevestiging hebt gekregen.
+Ook voor de overige dagen heeft het park nog maar weinig tickets. Met een abonnement of een dagticket zonder vaste datum kom je alleen binnen met een bevestigde aanmelding op de website van het park.
 
-## Wat er in het dagticket zit
+## Horrorhuizen en passen
 
-Met het dagticket ben je de hele dag binnen tot het park sluit, met de vier scare zones en de monsterparade, die op elke eventdag loopt. De negen horrorhuizen en de show in Studio 7 betaal je apart. Voor elk huis boek je online een tijdslot, en het park raadt af om op één avond meer dan vier huizen te doen. Er gaan gemiddeld acht tot tien mensen tegelijk een huis in.
+Het dagticket geldt tot het park sluit. Wat het dekt en wat je apart betaalt, staat in ons [bericht over de start van het festival](/news/movie-park-germany-halloween-horror-festival-2026). Er gaan gemiddeld acht tot tien mensen tegelijk een horrorhuis in, alleen gillen doe je er dus zelden. Meer dan vier horrorhuizen op één avond raadt het park af.
 
-Sneller naar binnen gaat met de Speedy Pass Horror, die geldt voor vijf mazes en PHOBIA. De S.I.K. VIP Pass dekt alle mazes, ook Jason Universe, met daarbij een gereserveerde plek bij PHOBIA en een parkeerplek naast de kassa's. Wat die pass kost, staat in ons [bericht over de start van het festival](/news/movie-park-germany-halloween-horror-festival-2026).
+Sneller naar binnen ga je met de Speedy Pass Horror, die geldt voor vijf horrorhuizen en PHOBIA. Wat de S.I.K. VIP Pass inhoudt en kost, staat in hetzelfde bericht.
 
-Het park raadt het festival aan vanaf 12 jaar. De horrorhuizen zijn vanaf 16 jaar, het Ahoj-Brause Horror Lab al vanaf 14. Bij de ingangen wordt de leeftijd gecontroleerd, dus neem een identiteitsbewijs mee. Eigen kostuums, maskers en horrormake-up mogen alleen kinderen tot 1,40 meter dragen. Deodorantspray, alcohol en glazen flessen blijven buiten.
+Het park raadt het festival aan vanaf 12 jaar. De overige horrorhuizen zijn vanaf 16 jaar, het Ahoj-Brause Horror Lab vanaf 14. Bij de ingangen wordt de leeftijd gecontroleerd, dus neem een identiteitsbewijs mee. Deodorantspray en glazen flessen blijven buiten, en wat er voor eigen kostuums geldt, lees je ook in dat bericht.
 
 Voor kinderen is er op elke eventdag van 12.00 tot 17.00 uur Halloween for Kids in Nickelodeon LAND, met pompoenen uitsnijden en een griezeldoolhof op kindermaat. Monsters komen Nickelodeon LAND niet in.
 
 ## Jason Universe en PHOBIA
 
-Jason Universe staat op de plek waar sinds 2020 Secrets of St. Elmo – Last Hunt draaide. In 14 scènes en een preshow loop je door deel twee tot en met zes van de filmreeks rond Jason Voorhees, langs de schuur, het kamp en het bos. De scènes zijn ontworpen door de Leisure Expert Group en gebouwd door Props & Zo. Op dezelfde plek richtten die twee bedrijven eerder al The Walking Dead Breakout in.
+Jason Universe vervangt Secrets of St. Elmo – Last Hunt (sinds 2020) en neemt je in 14 scènes en een preshow mee door deel twee tot en met zes van de filmreeks. Meer daarover in ons [bericht over de start van het festival](/news/movie-park-germany-halloween-horror-festival-2026). De route gaat langs de schuur, het kamp en het bos. De scènes zijn ontworpen door de Leisure Expert Group en gebouwd door Props & Zo. Op deze plek richtten die twee bedrijven eerder al The Walking Dead Breakout in.
 
-In PHOBIA – The Live Horror Game Show in Studio 7 is Rudy von Hell de showmaster, en Dave van der Wal staat als host op het podium. Mensen uit het publiek spelen mee. De artiesten komen uit Hongarije, Italië, Nederland en Groot-Brittannië, en de show is geproduceerd door Farla Showproductions. PHOBIA is barrièrevrij, en van de horrorhuizen zijn dat The Slaughterhouse en Circus of Freaks.
+PHOBIA – The Live Horror Game Show speelt in Studio 7. Als showmaster noemt het park Rudy von Hell en als show host Dave van der Wal. De show is geproduceerd door Farla Showproductions. PHOBIA is toegankelijk voor mensen met een beperking, net als de horrorhuizen The Slaughterhouse en Circus of Freaks.
 
-Het Ahoj-Brause Horror Lab heeft een nieuw verhaal over een testlab gekregen, en het Murder Museum een pathologieruimte.
-
-## Zondag of zaterdag
-
-Waarom het in Movie Park op zondag meestal rustiger is dan op zaterdag, lees je in onze [gids over het park](/blog/movie-park-germany-wachttijden-tips).
+Op zondag is het in Movie Park meestal rustiger dan op zaterdag. Meer daarover staat in onze [gids over het park](/blog/movie-park-germany-wachttijden-tips).
 
 ```best-days-widget slug=movie-park-germany
 
@@ -78,9 +74,9 @@ Waarom het in Movie Park op zondag meestal rustiger is dan op zaterdag, lees je 
 [Movie Park Germany](ref:movie-park-germany?full)
 
 Bronnen:
-[Halloween Horror Festival (Movie Park Germany)](https://www.movieparkgermany.de/events/halloween-horror-festival),
-[Persbericht van 27 augustus 2026 (Movie Park Germany)](https://www.movieparkgermany.de/presse/pm-27-08-2026-legenden-der-finsternis),
-[Persruimte met de melding over de uitverkochte dagen (Movie Park Germany)](https://www.movieparkgermany.de/presse),
+[Eventpagina met de melding over 30 en 31 oktober (Movie Park Germany)](https://www.movieparkgermany.de/events/halloween-horror-festival),
+[Persruimte met de melding over 29 oktober (Movie Park Germany)](https://www.movieparkgermany.de/presse),
+[Persbericht “Legenden der Finsternis” (Movie Park Germany)](https://www.movieparkgermany.de/presse/pm-27-08-2026-legenden-der-finsternis),
 [Vragen over het Halloween Horror Festival (Movie Park Germany)](https://www.movieparkgermany.de/halloween/faq),
 [Horrorhuizen (Movie Park Germany)](https://www.movieparkgermany.de/halloween/horrorhauser),
 [Openingstijden (Movie Park Germany)](https://www.movieparkgermany.de/oeffnungszeiten-und-preise/oeffnungszeiten).

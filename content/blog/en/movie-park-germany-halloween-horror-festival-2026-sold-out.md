@@ -7,7 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  The Halloween Horror Festival at Movie Park Germany is sold out on 30 and 31 October. Tickets are still on sale for Sunday, 1 November, and for the final weekend from 6 to 8 November. New this year are the Jason Universe maze and the live show PHOBIA.
+  The Halloween Horror Festival at Movie Park Germany is sold out on 30 and 31 October. Tickets are still on sale for Sunday, 1 November, and for the final weekend from 6 to 8 November. The festival runs until 8 November; new this year are the Jason Universe maze and the show PHOBIA.
 tags:
   - news
   - movie-park
@@ -22,7 +22,7 @@ rideLinks: false
 seo:
   title: 'Movie Park sold out? Halloween tickets until 8 November'
   description: >-
-    Halloween Horror Festival at Movie Park: sold out on 30 and 31 October, tickets left for 1 November and 6 to 8 November. New: Jason Universe and PHOBIA.
+    Halloween Horror Festival at Movie Park: sold out on 30 and 31 October, tickets left for 1 November and 6 to 8 November. Jason Universe and PHOBIA are new this year.
   keywords:
     - Halloween Horror Festival Movie Park
     - Movie Park sold out
@@ -34,9 +34,9 @@ seo:
     - Movie Park Halloween age limit
 ---
 
-There are no tickets left for the Halloween Horror Festival at [Movie Park Germany](ref:movie-park-germany) on Friday, 30 October, or Saturday, 31 October. The park is pointing visitors to Sunday, 1 November, and to the festival's last weekend, 6 to 8 November. The Thursday before had already sold out too.
+There are no tickets left for the Halloween Horror Festival at [Movie Park Germany](ref:movie-park-germany) on Friday, 30 October, or Saturday, 31 October. The park is pointing visitors to Sunday, 1 November, and to the festival's last weekend, 6 to 8 November. The Thursday before had already sold out.
 
-Jason Voorhees came back in five films. He can wait another week.
+This is the first year Jason Voorhees has a maze of his own in Bottrop. If you missed this weekend, treat it like a sequel: to be continued, on Sunday or from 6 November.
 
 ## The last four festival days
 
@@ -45,31 +45,27 @@ Jason Voorhees came back in five films. He can wait another week.
 - Saturday, 7 November: 10 a.m. to 10 p.m.
 - Sunday, 8 November: 10 a.m. to 9 p.m.
 
-The park is closed from Monday, 2 November, to Thursday, 5 November. The festival and the season both end on 8 November, and the park doesn't open again until 27 November, for Movie Park's Hollywood Christmas.
+The park is closed from Monday, 2 November, to Thursday, 5 November. The festival ends on 8 November. The park doesn't open again until 27 November, for Movie Park's Hollywood Christmas.
 
-Tickets for the remaining days are running low too. A dated day ticket costs from €41.90. If you have a season pass or an undated day ticket, you'll only get in with a confirmed registration on the park's website.
+Tickets for the remaining days are running low too. With a season pass or an undated day ticket, you only get in with a confirmed registration on the park's website.
 
-## What the day ticket covers
+## Mazes and passes
 
-The day ticket is valid all day until the park closes. It includes the four scare zones and the monster parade, which runs on every event day. The nine mazes and the show in Studio 7 cost extra. For each maze you book an entry time slot online, and the park advises against doing more than four in one evening. On average, eight to ten people go into a maze together.
+The day ticket is valid until the park closes. Our [post on the start of the festival](/news/movie-park-germany-halloween-horror-festival-2026) covers what it includes and what costs extra. On average, eight to ten people go into a maze together, so you'll rarely scream alone. The park advises against doing more than four mazes in one evening.
 
-The Speedy Pass Horror gets you in faster at five mazes and PHOBIA. The S.I.K. VIP Pass covers every maze, Jason Universe included, and adds a reserved seat at PHOBIA and a parking space next to the ticket booths. Its price is in our [post on the start of the festival](/news/movie-park-germany-halloween-horror-festival-2026).
+The Speedy Pass Horror gets you in faster at five mazes and PHOBIA. The same post lists what the S.I.K. VIP Pass includes and what it costs.
 
-The park recommends the festival for ages 12 and up. The mazes are 16 and up, the Ahoj-Brause Horror Lab 14 and up, and ages are checked at the entrances, so bring ID. Your own costumes, masks and horror make-up are only allowed for children up to 1.40 metres tall. Spray deodorant, alcohol and glass bottles stay outside.
+The park recommends the festival for ages 12 and up. The other mazes are 16 and up, the Ahoj-Brause Horror Lab 14 and up. Ages are checked at the entrances, so bring ID. Spray deodorant and glass bottles stay outside, and the costume rules are in that post too.
 
 For children, Halloween for Kids runs in Nickelodeon LAND from noon to 5 p.m. on every event day, with pumpkin carving and a child-sized spooky maze. Monsters aren't allowed into Nickelodeon LAND.
 
 ## Jason Universe and PHOBIA
 
-Jason Universe has taken the spot where Secrets of St. Elmo – Last Hunt ran from 2020. Over 14 scenes and a preshow, you walk through films two to six of the Jason Voorhees series, past the barn, the camp and the woods. Leisure Expert Group designed the scenes and Props & Zo. built them. The two companies had already fitted out The Walking Dead Breakout in the same building.
+Jason Universe replaces Secrets of St. Elmo – Last Hunt (open since 2020) and takes you through films two to six of the series in 14 scenes and a preshow; there's more in our [post on the start of the festival](/news/movie-park-germany-halloween-horror-festival-2026). The route leads past the barn, the camp and the woods. Leisure Expert Group designed the scenes and Props & Zo. built them. The two companies had already fitted out The Walking Dead Breakout in the same spot.
 
-PHOBIA – The Live Horror Game Show in Studio 7 is led by the showmaster Rudy von Hell, with Dave van der Wal on stage as show host. Members of the audience take part. The performers come from Hungary, Italy, the Netherlands and the UK, and Farla Showproductions produced the show. PHOBIA is accessible, and so are two of the mazes, The Slaughterhouse and Circus of Freaks.
+PHOBIA – The Live Horror Game Show runs in Studio 7. The park names Rudy von Hell as showmaster and Dave van der Wal as show host. Farla Showproductions produced the show. PHOBIA is accessible, and so are the mazes The Slaughterhouse and Circus of Freaks.
 
-Two mazes have been reworked: the Ahoj-Brause Horror Lab now has a story about a testing lab, and the Murder Museum has a pathology room.
-
-## Sunday or Saturday
-
-Our [Movie Park guide](/blog/movie-park-germany-wait-times-tips) explains why Sunday is usually quieter than Saturday there.
+Sundays at Movie Park are usually quieter than Saturdays; our [Movie Park guide](/blog/movie-park-germany-wait-times-tips) has the details.
 
 ```best-days-widget slug=movie-park-germany
 
@@ -78,9 +74,9 @@ Our [Movie Park guide](/blog/movie-park-germany-wait-times-tips) explains why Su
 [Movie Park Germany](ref:movie-park-germany?full)
 
 Sources:
-[Halloween Horror Festival (Movie Park Germany)](https://www.movieparkgermany.de/events/halloween-horror-festival),
-[Press release of 27 August 2026 (Movie Park Germany)](https://www.movieparkgermany.de/presse/pm-27-08-2026-legenden-der-finsternis),
-[Press area with the sold-out notice (Movie Park Germany)](https://www.movieparkgermany.de/presse),
+[Event page with the sold-out notice for 30 and 31 October (Movie Park Germany)](https://www.movieparkgermany.de/events/halloween-horror-festival),
+[Press area with the sold-out notice for 29 October (Movie Park Germany)](https://www.movieparkgermany.de/presse),
+[Press release "Legenden der Finsternis" (Movie Park Germany)](https://www.movieparkgermany.de/presse/pm-27-08-2026-legenden-der-finsternis),
 [Halloween Horror Festival FAQ (Movie Park Germany)](https://www.movieparkgermany.de/halloween/faq),
 [Mazes (Movie Park Germany)](https://www.movieparkgermany.de/halloween/horrorhauser),
 [Opening hours (Movie Park Germany)](https://www.movieparkgermany.de/oeffnungszeiten-und-preise/oeffnungszeiten).
