@@ -48,11 +48,11 @@ L’edificio ha nove piani e 400 camere. All’apertura delle vendite ci sono, f
 
 Le altre tipologie entreranno in vendita a ridosso dell’inaugurazione. Il prezzo di una notte il resort non l’ha ancora reso noto.
 
-L’hotel prende il nome dalla Wishing Star, la stella che per Disney simboleggia sogni, desideri e possibilità. La ritrovi dalla facciata fino alle camere, dove alle pareti ci sono quadri di desideri e di stelle a cui affidarli, con qualche discreto richiamo a Disney.
+Come il lago e il parco accanto, l’hotel prende il nome dalla Wishing Star, la stella dei desideri di Disney. La stella la trovi sulla facciata e nelle camere, dove alle pareti ci sono quadri di desideri e di stelle a cui affidarli, con qualche discreto richiamo a Disney.
 
 ## Sulla riva del Wishing Star Lake
 
-L’hotel sorge sulla sponda del lago, accanto allo Shanghai Disneyland Hotel. Un corridoio dedicato collega i due edifici. Dall’albergo vedi [Shanghai Disneyland](ref:shanghai-disneyland) e il Wishing Star Park. L’area verde sul lago è il giardino comune dei due hotel. È costruito in stile liberty, sul modello dell’architettura di Shanghai dei primi del Novecento.
+L’hotel sorge sulla sponda del lago, accanto allo Shanghai Disneyland Hotel. Un corridoio dedicato collega i due edifici. Palestre, piscine e aree gioco sono aperte agli ospiti di entrambi gli alberghi, e così anche ristoranti e negozi. Dall’albergo vedi [Shanghai Disneyland](ref:shanghai-disneyland) e il Wishing Star Park. L’area verde sul lago è il giardino comune dei due hotel. È costruito in stile liberty, sul modello dell’architettura di Shanghai dei primi del Novecento.
 
 Dal 9 ottobre, sulla riva vicino al nuovo hotel, ci sono tre sculture di gru siberiane, collocate alla vigilia della Giornata mondiale degli uccelli migratori. Ricordano il lago Poyang, un habitat importante per questi uccelli a rischio di estinzione. Lungo la rotta migratoria orientale il numero delle gru siberiane è quasi raddoppiato, anche grazie al Disney Conservation Fund e all’International Crane Foundation. Il Wishing Star Park stesso è un luogo di svernamento per gli uccelli migratori.
 
@@ -60,15 +60,13 @@ Dal 9 ottobre, sulla riva vicino al nuovo hotel, ci sono tre sculture di gru sib
 
 All’interno ci sono piscine e diverse aree gioco a tema, ispirate ai film Disney. Fuori c’è la prima piscina all’aperto che un hotel del resort abbia mai avuto. Apre solo in alcuni periodi dell’anno, e quali mesi siano il resort non l’ha ancora comunicato. Per un soggiorno a dicembre io conterei sulla piscina coperta.
 
-Uno dei ristoranti si chiama Enchanted Seasons: la cucina è cinese e internazionale, il tema lo danno le stagioni. In hotel si incontrano anche i personaggi Disney, e ci sono spettacoli pensati per l’albergo. Per i souvenir ci sono negozi interni.
-
-Palestre, piscine e aree gioco sono in comune con lo Shanghai Disneyland Hotel, e mangiare e fare acquisti si può in entrambi gli alberghi.
+Uno dei ristoranti si chiama Enchanted Seasons: la cucina è cinese e internazionale, il tema lo danno le stagioni. In hotel si esibiscono i personaggi Disney, e l’albergo ha spettacoli propri e negozi di souvenir interni.
 
 ## Gli altri cantieri del resort
 
 Il resort ha annunciato il nome dell’hotel a giugno 2026, per il suo decimo compleanno. Oltre allo Shanghai Disneyland Hotel, finora c’è soltanto il Toy Story Hotel. Un quarto albergo è già in costruzione, a pochi passi dall’ingresso principale di Shanghai Disneyland.
 
-Dentro Shanghai Disneyland sono in corso i lavori per ampliare Soaring Over the Horizon, una delle attrazioni più famose del parco. Intanto sta nascendo anche la nona area tematica, dedicata a Spider-Man e al laboratorio di inventori W.E.B. A giugno i binari dell’attrazione erano già tutti posati. Il 16 agosto il resort ha annunciato che i primi veicoli sarebbero arrivati a breve sul tracciato per avviare le prove. La data di apertura dell’area non è ancora fissata.
+Dentro Shanghai Disneyland si sta ampliando Soaring Over the Horizon. Intanto sta nascendo anche la nona area tematica, dedicata a Spider-Man e al laboratorio di inventori W.E.B. A giugno i binari dell’attrazione della nuova area erano già tutti posati. Il 16 agosto il resort ha annunciato che i primi veicoli sarebbero arrivati a breve sul tracciato per avviare le prove. La data di apertura dell’area non è ancora fissata.
 
 [Shanghai Disneyland](ref:shanghai-disneyland?full)
 

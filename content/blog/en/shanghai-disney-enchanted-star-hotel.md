@@ -48,11 +48,11 @@ The hotel has 400 rooms over nine floors. When bookings open, the room types on 
 
 More types will be released closer to the opening. The resort hasn't yet announced what a night will cost.
 
-The hotel is named after the Wishing Star, Disney's symbol of dreams, wishes and possibilities, and you'll meet it everywhere from the facade to the rooms. On the walls there are pictures of wishes and wishing stars, plus a few understated nods to Disney.
+Like the lake and the park next door, the hotel is named after Disney's Wishing Star. You'll find the star on the facade and in the rooms, which have pictures of wishes and wishing stars and a few understated nods to Disney.
 
 ## On the shore of Wishing Star Lake
 
-The hotel stands on the lakeshore, right next to the Shanghai Disneyland Hotel. A dedicated corridor connects the two. From the hotel you look out over [Shanghai Disneyland](ref:shanghai-disneyland) and Wishing Star Park. That lakeside green space is the shared garden of both hotels. The building is Art Nouveau, modelled on Shanghai's architecture of the early 20th century.
+The hotel stands on the lakeshore, right next to the Shanghai Disneyland Hotel. A dedicated corridor connects the two. Gyms, pools and play areas are open to guests of both hotels, and so are the restaurants and shops. From the hotel you look out over [Shanghai Disneyland](ref:shanghai-disneyland) and Wishing Star Park. That lakeside green space is the shared garden of both hotels. The building is Art Nouveau, modelled on Shanghai's architecture of the early 20th century.
 
 Since 9 October, three Siberian crane sculptures have stood on the shore near the new hotel. They went up on the eve of World Migratory Bird Day and point to Poyang Lake, an important habitat for these critically endangered birds. On the eastern flyway, the number of Siberian cranes has almost doubled, with help from the Disney Conservation Fund and the International Crane Foundation. Wishing Star Park is itself a wintering ground for migratory birds.
 
@@ -60,15 +60,13 @@ Since 9 October, three Siberian crane sculptures have stood on the shore near th
 
 Inside there are pools and several play areas themed on Disney films. Outside is the first outdoor pool at any of the resort's hotels. It only opens in some seasons, and the resort hasn't yet announced which months those are. For a stay in December, I'd plan around the indoor pool.
 
-One of the restaurants is called Enchanted Seasons. The food is Chinese and international, and the seasons set the theme. Disney characters and the hotel's own entertainment are there too. For souvenirs, there are shops in the building.
-
-Guests of both hotels share the gyms, pools and play areas, and can eat and shop in either.
+One of the restaurants is called Enchanted Seasons. The food is Chinese and international, and the seasons set the theme. Disney characters appear in the hotel, which has its own entertainment and its own souvenir shops.
 
 ## What else the resort is building
 
 The resort announced the hotel's name in June 2026, for the resort's tenth birthday. Apart from the Shanghai Disneyland Hotel, the only hotel so far is the Toy Story Hotel. A fourth hotel is under construction a few steps from the main entrance of Shanghai Disneyland.
 
-Inside Shanghai Disneyland, work is under way to expand Soaring Over the Horizon, one of the park's best-known attractions. The park is also getting its ninth themed land, built around Spider-Man and the W.E.B. inventors' workshop. All of the ride's track was in place by June. On 16 August the resort announced that the first vehicles would go onto the track imminently to start test runs. The land has no opening date yet.
+Inside Shanghai Disneyland, Soaring Over the Horizon is being expanded. The park is also getting its ninth themed land, built around Spider-Man and the W.E.B. inventors' workshop. All of the track for the new land's ride was in place by June. On 16 August the resort announced that the first vehicles would go onto the track imminently to start test runs. The land has no opening date yet.
 
 [Shanghai Disneyland](ref:shanghai-disneyland?full)
 

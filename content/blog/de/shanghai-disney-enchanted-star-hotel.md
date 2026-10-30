@@ -48,11 +48,11 @@ Das Haus hat neun Stockwerke und 400 Zimmer. Zum Buchungsstart gibt es unter and
 
 Weitere Typen kommen näher an der Eröffnung in den Verkauf. Was eine Nacht kostet, hat das Resort bisher nicht bekannt gegeben.
 
-Benannt ist das Hotel nach dem Wishing Star, der bei Disney für Träume, Wünsche und Möglichkeiten steht. Dieser Stern begegnet dir von der Fassade bis in die Zimmer. Dort hängen Bilder von Wünschen und Wunschsternen, dazu kommen dezente Anspielungen auf Disney.
+Das Hotel heißt wie der See und der Park nebenan nach dem Wishing Star, Disneys Wunschstern. Den Stern findest du an der Fassade und in den Zimmern; dort hängen Bilder von Wünschen und Wunschsternen, dazu ein paar dezente Disney-Anspielungen.
 
 ## Am Ufer des Wishing Star Lake
 
-Das Hotel steht am Ufer des Sees, direkt neben dem Shanghai Disneyland Hotel, mit dem es ein eigener Gang verbindet. Gebaut ist es im Jugendstil, nach dem Vorbild der Shanghaier Architektur des frühen 20. Jahrhunderts. Vom Hotel aus siehst du auf [Shanghai Disneyland](ref:shanghai-disneyland) und auf den Wishing Star Park. Die Grünanlage am See ist der gemeinsame Garten beider Hotels.
+Das Hotel steht am Ufer des Sees, direkt neben dem Shanghai Disneyland Hotel, mit dem es ein eigener Gang verbindet. Fitnessräume, Pools und Spielbereiche stehen den Gästen beider Häuser offen, Restaurants und Läden ebenso. Gebaut ist es im Jugendstil, nach dem Vorbild der Shanghaier Architektur des frühen 20. Jahrhunderts. Vom Hotel aus siehst du auf [Shanghai Disneyland](ref:shanghai-disneyland) und auf den Wishing Star Park. Die Grünanlage am See ist der gemeinsame Garten beider Hotels.
 
 Am Ufer nahe dem neuen Hotel stehen seit dem 9. Oktober drei Skulpturen von Nonnenkranichen, aufgestellt am Vorabend des Weltzugvogeltags. Sie verweisen auf den Poyang-See, einen wichtigen Lebensraum der vom Aussterben bedrohten Vögel. Auf der östlichen Zugroute hat sich der Bestand der Nonnenkraniche fast verdoppelt. Dazu beigetragen haben der Disney Conservation Fund und die International Crane Foundation. Der Wishing Star Park selbst ist ein Überwinterungsplatz für Zugvögel.
 
@@ -60,15 +60,13 @@ Am Ufer nahe dem neuen Hotel stehen seit dem 9. Oktober drei Skulpturen von Nonn
 
 Drinnen gibt es Pools und mehrere Spielbereiche, deren Themen aus Disney-Filmen kommen. Draußen liegt der erste Außenpool, den ein Hotel des Resorts je hatte. Geöffnet hat er nur in einigen Jahreszeiten, und welche Monate das sind, hat das Resort noch nicht bekannt gegeben. Für einen Aufenthalt im Dezember würde ich mit dem Innenpool planen.
 
-Eines der Restaurants heißt Enchanted Seasons. Die Küche ist chinesisch und international, das Thema geben die Jahreszeiten vor. Disney-Figuren und eigenes Unterhaltungsprogramm gibt es auch im Hotel. Für Mitbringsel hat das Haus eigene Läden.
-
-Fitnessräume, Pools und Spielbereiche teilen sich die Gäste beider Hotels, essen und einkaufen kannst du in beiden.
+Eines der Restaurants heißt Enchanted Seasons. Die Küche ist chinesisch und international, das Thema geben die Jahreszeiten vor. Im Hotel treten Disney-Figuren auf, es hat ein eigenes Unterhaltungsprogramm und eigene Läden für Mitbringsel.
 
 ## Was im Resort sonst gebaut wird
 
 Das Resort hat den Namen des Hotels im Juni 2026 bekannt gegeben, zum zehnten Geburtstag des Resorts. Außer dem Shanghai Disneyland Hotel gibt es bisher nur das Toy Story Hotel. Ein viertes Hotel ist schon im Bau, wenige Schritte vom Haupteingang von Shanghai Disneyland entfernt.
 
-In Shanghai Disneyland selbst laufen die Arbeiten an der Erweiterung von Soaring Over the Horizon, einer der bekanntesten Attraktionen des Parks. Daneben entsteht der neunte Themenbereich, rund um Spider-Man und die Erfinderwerkstatt W.E.B. Die Schienen der Bahn lagen im Juni komplett. Am 16. August kündigte das Resort an, dass die ersten Fahrzeuge für die Testfahrten unmittelbar auf die Strecke kommen. Wann der Bereich öffnet, steht noch nicht fest.
+In Shanghai Disneyland selbst wird gerade Soaring Over the Horizon erweitert. Daneben entsteht der neunte Themenbereich, rund um Spider-Man und die Erfinderwerkstatt W.E.B. Die Schienen für die Bahn des neuen Bereichs lagen im Juni komplett. Am 16. August kündigte das Resort an, dass die ersten Fahrzeuge für die Testfahrten unmittelbar auf die Strecke kommen. Wann der Bereich öffnet, steht noch nicht fest.
 
 [Shanghai Disneyland](ref:shanghai-disneyland?full)
 
