@@ -7,7 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Op 16 december 2026 opent aan het Wishing Star Lake het Shanghai Disney Enchanted Star Hotel, het derde hotel van Shanghai Disney Resort. Boeken kan vanaf 6 november om middernacht. Een gang verbindt het met het Shanghai Disneyland Hotel, en gasten van beide hotels delen de zwembaden en speelruimtes.
+  Op 16 december 2026 opent het derde hotel van Shanghai Disney Resort, het Shanghai Disney Enchanted Star Hotel aan het Wishing Star Lake. Boeken kan vanaf 6 november om 0.00 uur. Een gang verbindt het met het Shanghai Disneyland Hotel, en gasten van beide hotels delen de zwembaden en speelruimtes.
 tags:
   - nieuws
   - shanghai-disneyland
@@ -23,7 +23,7 @@ rideLinks: []
 seo:
   title: 'Enchanted Star Hotel in Shanghai opent op 16 december 2026'
   description: >-
-    Shanghai Disney Enchanted Star Hotel: 400 kamers aan het Wishing Star Lake, open vanaf 16-12-2026, te boeken vanaf 6 november om middernacht.
+    Shanghai Disney Enchanted Star Hotel: 400 kamers aan het Wishing Star Lake, open vanaf 16-12-2026, te boeken vanaf 6 november om 0.00 uur.
   keywords:
     - Shanghai Disney Enchanted Star Hotel
     - Enchanted Star Hotel Shanghai
@@ -35,11 +35,11 @@ seo:
     - Disney-hotel China
 ---
 
-Shanghai Disney Resort krijgt een derde hotel: op 16 december 2026 opent het Shanghai Disney Enchanted Star Hotel aan het Wishing Star Lake. Vanaf 6 november om middernacht kun je een kamer boeken, bij het reserveringscentrum van het resort, via de officiële kanalen en bij erkende reispartners.
+Op 16 december 2026 opent Shanghai Disney Resort zijn derde hotel, het Shanghai Disney Enchanted Star Hotel aan het Wishing Star Lake. Vanaf 6 november om 0.00 uur boek je een kamer bij het reserveringscentrum van het resort of bij een erkende reispartner.
 
-## Kamers en prijzen
+## De kamers
 
-Het hotel telt negen verdiepingen en 400 kamers. Bij de start van de verkoop zijn er vier soorten kamers te boeken:
+Het hotel telt negen verdiepingen en 400 kamers. Bij de start van de verkoop zijn onder meer deze kamertypes te boeken:
 
 - Enchanted Star Deluxe Room
 - Enchanted Star Deluxe Room (Park View)
@@ -48,27 +48,27 @@ Het hotel telt negen verdiepingen en 400 kamers. Bij de start van de verkoop zij
 
 Dichter bij de opening komen er nog andere kamertypes bij. Wat een nacht kost, heeft het resort nog niet bekendgemaakt.
 
-Aan de muren van de kamers hangen afbeeldingen over wensen en wenssterren, met hier en daar een klein Disney-detail. De naam komt van de Wishing Star, de wensster uit de Disneyfilms, en dat motief loopt van de gevel door tot binnen.
+De naam komt van de Wishing Star, de wensster van Disney. Het motief begint al bij de gevel. Aan de muren van de kamers hangen afbeeldingen over wensen en wenssterren, met hier en daar een klein Disney-detail.
 
-## Ligging en stijl
+## Aan de oever van het Wishing Star Lake
 
-Het hotel staat aan de oever van het meer, vlak naast het Shanghai Disneyland Hotel. Je kijkt uit op [Shanghai Disneyland](ref:shanghai-disneyland) en op het Wishing Star Park, het groen langs het meer dat de twee hotels samen als tuin gebruiken. Het gebouw is in jugendstil ontworpen, naar het voorbeeld van de architectuur van Shanghai uit het begin van de twintigste eeuw.
+Het hotel staat aan de oever van het meer, vlak naast het Shanghai Disneyland Hotel. Via een eigen gang loop je van het ene hotel naar het andere. Vanuit het hotel kijk je uit op [Shanghai Disneyland](ref:shanghai-disneyland) en op het Wishing Star Park. Dat groen langs het meer is de gezamenlijke tuin van de twee hotels. Het gebouw is in jugendstil opgetrokken, naar het voorbeeld van de Shanghaise architectuur uit het begin van de twintigste eeuw.
 
-Sinds 9 oktober, de avond voor Wereldtrekvogeldag, staan aan de oever bij het nieuwe hotel drie beelden van Siberische witte kraanvogels. Ze verwijzen naar het Poyangmeer, een belangrijk leefgebied van deze met uitsterven bedreigde vogels. Met hulp van het Disney Conservation Fund en de International Crane Foundation is hun aantal op de oostelijke trekroute bijna verdubbeld. Het Wishing Star Park is zelf een plek waar trekvogels overwinteren, en de drie kraanvogels aan de oever blijven er ook in de zomer staan.
+Sinds 9 oktober, de avond voor Wereldtrekvogeldag, staan aan de oever bij het nieuwe hotel drie beelden van Siberische witte kraanvogels. Ze verwijzen naar het Poyangmeer, een belangrijk leefgebied van deze met uitsterven bedreigde vogels. Op de oostelijke trekroute is het aantal Siberische witte kraanvogels bijna verdubbeld, mede dankzij het Disney Conservation Fund en de International Crane Foundation. Het Wishing Star Park is zelf een plek waar trekvogels overwinteren.
 
-## Zwembaden, speelruimtes en restaurants
+## Wat er in het hotel is
 
-Binnen zijn er zwembaden en een paar speelruimtes, met thema's uit Disneyfilms. Buiten ligt het eerste buitenzwembad van een hotel in het resort. Dat is alleen in bepaalde seizoenen open, en dan nog alleen als het weer en de bedrijfsvoering het toelaten. In welke maanden dat is, heeft het resort nog niet bekendgemaakt. Wie in december gaat, kan beter op het binnenbad rekenen.
+Binnen zijn er zwembaden en meerdere speelruimtes, met thema's uit Disneyfilms. Buiten ligt het eerste buitenzwembad van een hotel in het resort. Dat is alleen in bepaalde seizoenen open, en dan nog alleen als het weer en de bedrijfsvoering het toelaten. De maanden noemt het resort nog niet. Voor een verblijf in december zou ik op het binnenzwembad rekenen.
 
-Een van de restaurants heet Enchanted Seasons. Het draait om de seizoenen en serveert Chinese en internationale gerechten. Verder kom je in het hotel Disneyfiguren tegen, is er entertainment en zijn er winkels.
+Een van de restaurants heet Enchanted Seasons. Het draait om de seizoenen en serveert Chinese en internationale gerechten. Verder zijn er in het hotel Disneyfiguren, entertainment en winkels.
 
-Via een eigen gang loop je naar het Shanghai Disneyland Hotel. Gasten van beide hotels gebruiken de fitnessruimtes, de zwembaden en de speelruimtes binnen en buiten samen, en kunnen ook in het andere hotel winkelen en eten.
+De fitnessruimtes, zwembaden en speelruimtes delen de gasten van beide hotels, en eten en winkelen kan in allebei.
 
 ## Wat er verder in het resort wordt gebouwd
 
-De naam van het hotel maakte het resort in juni 2026 bekend, bij zijn tiende verjaardag. Tot nu toe zijn er twee hotels: het Shanghai Disneyland Hotel en het Toy Story Hotel. Een vierde staat op de planning, op een paar passen van de hoofdingang van Shanghai Disneyland.
+Het resort maakte de naam van het hotel in juni 2026 bekend, toen het resort tien jaar bestond. Naast het Shanghai Disneyland Hotel is er tot nu toe alleen het Toy Story Hotel. Een vierde hotel is in aanbouw, op een paar passen van de hoofdingang van Shanghai Disneyland.
 
-In het park komt een negende themagebied, rond Spider-Man en de uitvinderswerkplaats W.E.B. In juni lagen alle rails van de attractie er, en in augustus zouden de eerste voertuigen voor de testritten volgen. Wanneer het gebied opengaat, staat nog niet vast. Daarnaast wordt Soaring Over the Horizon uitgebreid.
+In het park komt een negende themagebied, rond Spider-Man en de uitvinderswerkplaats W.E.B. In juni lagen alle rails van de attractie er. Op 16 augustus kondigde het resort aan dat de eerste voertuigen meteen op de baan zouden komen, om de testritten te beginnen. Wanneer het gebied opengaat, staat nog niet vast. Daarnaast wordt Soaring Over the Horizon uitgebreid.
 
 [Shanghai Disneyland](ref:shanghai-disneyland?full)
 

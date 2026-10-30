@@ -7,7 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Das Shanghai Disney Enchanted Star Hotel, das dritte Hotel des Shanghai Disney Resort, öffnet am 16. Dezember 2026 am Wishing Star Lake. Buchen kannst du ab dem 6. November um 0 Uhr. Ein Verbindungsgang führt zum Shanghai Disneyland Hotel, dessen Pools und Spielbereiche die Gäste beider Häuser mitbenutzen.
+  Am 16. Dezember 2026 öffnet das Shanghai Disney Resort sein drittes Hotel, das Shanghai Disney Enchanted Star Hotel am Wishing Star Lake. Buchen kannst du ab 6. November, 0 Uhr. Ein Gang verbindet es mit dem Shanghai Disneyland Hotel, und die Gäste beider Häuser teilen sich Pools und Spielbereiche.
 tags:
   - news
   - shanghai-disneyland
@@ -23,7 +23,7 @@ rideLinks: []
 seo:
   title: 'Enchanted Star Hotel in Shanghai öffnet am 16. Dezember 2026'
   description: >-
-    Shanghai Disney Enchanted Star Hotel: 400 Zimmer am Wishing Star Lake, Eröffnung am 16.12.2026, buchbar ab 6. November um 0 Uhr.
+    Shanghai Disney Enchanted Star Hotel: 400 Zimmer am Wishing Star Lake, Eröffnung am 16.12.2026, buchbar ab 6. November, 0 Uhr.
   keywords:
     - Shanghai Disney Enchanted Star Hotel
     - Enchanted Star Hotel Shanghai
@@ -35,11 +35,11 @@ seo:
     - Disney Hotel China
 ---
 
-Das Shanghai Disney Resort eröffnet am 16. Dezember 2026 sein drittes Hotel, das Shanghai Disney Enchanted Star Hotel am Wishing Star Lake. Buchen kannst du ab dem 6. November um 0 Uhr, beim Reservation Center des Resorts, über dessen offizielle Kanäle und bei autorisierten Reisepartnern.
+Das Shanghai Disney Resort eröffnet am 16. Dezember 2026 sein drittes Hotel, das Shanghai Disney Enchanted Star Hotel am Wishing Star Lake. Gebucht wird ab 6. November, 0 Uhr, beim Reservation Center des Resorts oder bei einem autorisierten Reisepartner.
 
-## Zimmer und Preise
+## Die Zimmer
 
-Das Haus hat neun Stockwerke und 400 Zimmer. Zum Buchungsstart gibt es vier Zimmertypen:
+Das Haus hat neun Stockwerke und 400 Zimmer. Zum Buchungsstart gibt es unter anderem diese Zimmertypen:
 
 - Enchanted Star Deluxe Room
 - Enchanted Star Deluxe Room (Park View)
@@ -48,27 +48,27 @@ Das Haus hat neun Stockwerke und 400 Zimmer. Zum Buchungsstart gibt es vier Zimm
 
 Weitere Typen kommen näher an der Eröffnung in den Verkauf. Was eine Nacht kostet, hat das Resort bisher nicht bekannt gegeben.
 
-In den Zimmern hängen Bilder zum Thema Wünsche und Wunschsterne, dazu kleine Disney-Details. Namensgeber ist der Wishing Star, Disneys Wunschstern, und das Motiv zieht sich von der Fassade bis in die Innenräume.
+Namensgeber ist der Wishing Star, Disneys Wunschstern. Das Motiv beginnt schon an der Fassade. In den Zimmern hängen Bilder zum Thema Wünsche und Wunschsterne, dazu kleine Disney-Details.
 
-## Lage und Stil
+## Am Ufer des Wishing Star Lake
 
-Das Hotel steht direkt neben dem Shanghai Disneyland Hotel am Ufer des Sees. Vom Hotel aus siehst du auf [Shanghai Disneyland](ref:shanghai-disneyland) und auf den Wishing Star Park, die Grünanlage am See, die beide Hotels als gemeinsamen Garten nutzen. Vorbild ist die Architektur Shanghais aus dem frühen 20. Jahrhundert, der Stil ist Jugendstil.
+Das Hotel steht am Ufer des Sees, direkt neben dem Shanghai Disneyland Hotel, mit dem es ein eigener Gang verbindet. Gebaut ist es im Jugendstil, nach dem Vorbild der Shanghaier Architektur des frühen 20. Jahrhunderts. Vom Hotel aus siehst du auf [Shanghai Disneyland](ref:shanghai-disneyland) und auf den Wishing Star Park. Die Grünanlage am See ist der gemeinsame Garten beider Hotels.
 
-Am Ufer nahe dem neuen Hotel stehen seit dem 9. Oktober drei Skulpturen von Nonnenkranichen, aufgestellt am Vorabend des Weltzugvogeltags. Sie verweisen auf den Poyang-See, einen wichtigen Lebensraum der vom Aussterben bedrohten Vögel. Der Disney Conservation Fund und die International Crane Foundation haben dazu beigetragen, dass sich ihr Bestand auf der östlichen Zugroute fast verdoppelt hat. Der Wishing Star Park selbst ist ein Überwinterungsplatz für Zugvögel, und die drei Kraniche am Ufer bleiben dort auch im Sommer.
+Am Ufer nahe dem neuen Hotel stehen seit dem 9. Oktober drei Skulpturen von Nonnenkranichen, aufgestellt am Vorabend des Weltzugvogeltags. Sie verweisen auf den Poyang-See, einen wichtigen Lebensraum der vom Aussterben bedrohten Vögel. Auf der östlichen Zugroute hat sich der Bestand der Nonnenkraniche fast verdoppelt. Dazu beigetragen haben der Disney Conservation Fund und die International Crane Foundation. Der Wishing Star Park selbst ist ein Überwinterungsplatz für Zugvögel.
 
-## Pools, Spielbereiche und Restaurants
+## Was es im Hotel gibt
 
-Drinnen gibt es Schwimmbecken und mehrere Spielbereiche, deren Themen aus Disney-Filmen kommen. Draußen liegt der erste Außenpool, den ein Hotel des Resorts hat. Er ist nur in einigen Jahreszeiten geöffnet und auch dann nur, wenn Wetter und Betrieb es zulassen. Welche Monate das sind, hat das Resort bisher nicht bekannt gegeben. Für einen Aufenthalt im Dezember würde ich mit dem Hallenbad planen.
+Drinnen gibt es Pools und mehrere Spielbereiche, deren Themen aus Disney-Filmen kommen. Draußen liegt der erste Außenpool, den ein Hotel des Resorts je hatte. Er ist nur in einigen Jahreszeiten geöffnet und auch dann nur, wenn Wetter und Betrieb es zulassen. Die Monate nennt das Resort noch nicht. Für einen Aufenthalt im Dezember würde ich mit dem Innenpool planen.
 
-Eines von mehreren Restaurants heißt Enchanted Seasons. Es nimmt die Jahreszeiten zum Thema und kocht chinesisch und international. Im Hotel triffst du außerdem Disney-Figuren, es gibt Unterhaltungsprogramm und Läden.
+Eines von mehreren Restaurants heißt Enchanted Seasons. Es nimmt die Jahreszeiten zum Thema und kocht chinesisch und international. Im Hotel triffst du außerdem Disney-Figuren, dazu gibt es Unterhaltungsprogramm und Läden.
 
-Ein eigener Gang verbindet das Haus mit dem Shanghai Disneyland Hotel. Die Gäste beider Hotels nutzen die Fitnessräume, Schwimmbäder und Spielbereiche drinnen wie draußen gemeinsam und können auch im jeweils anderen Haus einkaufen und essen.
+Fitnessräume, Pools und Spielbereiche teilen sich die Gäste beider Hotels, essen und einkaufen kannst du in beiden.
 
 ## Was im Resort sonst gebaut wird
 
-Den Namen des Hotels hat das Resort im Juni 2026 bekannt gegeben, zu seinem zehnten Geburtstag. Bis jetzt hat es zwei Hotels, das Shanghai Disneyland Hotel und das Toy Story Hotel. Ein viertes ist geplant, wenige Schritte vom Haupteingang von Shanghai Disneyland entfernt.
+Das Resort hat den Namen des Hotels im Juni 2026 bekannt gegeben, zum zehnten Geburtstag des Resorts. Außer dem Shanghai Disneyland Hotel gibt es bisher nur das Toy Story Hotel. Ein viertes Hotel ist schon im Bau, wenige Schritte vom Haupteingang von Shanghai Disneyland entfernt.
 
-Im Park entsteht der neunte Themenbereich, rund um Spider-Man und die Erfinderwerkstatt W.E.B. Die Schienen der Bahn lagen im Juni komplett, im August sollten die ersten Fahrzeuge für die Testfahrten folgen. Wann er öffnet, steht noch nicht fest. Außerdem wird Soaring Over the Horizon erweitert.
+Im Park entsteht der neunte Themenbereich, rund um Spider-Man und die Erfinderwerkstatt W.E.B. Die Schienen der Bahn lagen im Juni komplett. Am 16. August kündigte das Resort an, dass die ersten Fahrzeuge für die Testfahrten unmittelbar auf die Strecke kommen. Wann der Bereich öffnet, steht noch nicht fest. Außerdem wird Soaring Over the Horizon erweitert.
 
 [Shanghai Disneyland](ref:shanghai-disneyland?full)
 
