@@ -48,7 +48,7 @@ Het hotel telt negen verdiepingen en 400 kamers. Bij de start van de verkoop zij
 
 Dichter bij de opening komen er nog andere kamertypes bij. Wat een nacht kost, heeft het resort nog niet bekendgemaakt.
 
-De naam komt van de Wishing Star, de wensster van Disney. Het motief begint al bij de gevel. Aan de muren van de kamers hangen afbeeldingen over wensen en wenssterren, met hier en daar een klein Disney-detail.
+Het hotel is genoemd naar de Wishing Star, bij Disney het symbool voor dromen, wensen en mogelijkheden. Die ster kom je overal tegen, van de gevel tot in de kamers. Daar hangen afbeeldingen van wensen en wenssterren aan de muur, met hier en daar een subtiele verwijzing naar Disney.
 
 ## Aan de oever van het Wishing Star Lake
 
@@ -58,9 +58,9 @@ Sinds 9 oktober, de avond voor Wereldtrekvogeldag, staan aan de oever bij het ni
 
 ## Wat er in het hotel is
 
-Binnen zijn er zwembaden en meerdere speelruimtes, met thema's uit Disneyfilms. Buiten ligt het eerste buitenzwembad van een hotel in het resort. Dat is alleen in bepaalde seizoenen open, en dan nog alleen als het weer en de bedrijfsvoering het toelaten. De maanden noemt het resort nog niet. Voor een verblijf in december zou ik op het binnenzwembad rekenen.
+Binnen zijn er zwembaden en meerdere speelruimtes, met thema's uit Disneyfilms. Buiten ligt het eerste buitenzwembad van een hotel in het resort. Dat is alleen in bepaalde seizoenen open, en welke maanden dat zijn, heeft het resort nog niet bekendgemaakt. Voor een verblijf in december zou ik op het binnenzwembad rekenen.
 
-Een van de restaurants heet Enchanted Seasons. Het draait om de seizoenen en serveert Chinese en internationale gerechten. Verder zijn er in het hotel Disneyfiguren, entertainment en winkels.
+Een van de restaurants heet Enchanted Seasons. De keuken is Chinees en internationaal, het thema komt van de seizoenen. Ook in het hotel zelf kom je Disneyfiguren tegen, en er is eigen entertainment. Voor souvenirs heeft het gebouw eigen winkels.
 
 De fitnessruimtes, zwembaden en speelruimtes delen de gasten van beide hotels, en eten en winkelen kan in allebei.
 
@@ -68,7 +68,7 @@ De fitnessruimtes, zwembaden en speelruimtes delen de gasten van beide hotels, e
 
 Het resort maakte de naam van het hotel in juni 2026 bekend, toen het resort tien jaar bestond. Naast het Shanghai Disneyland Hotel is er tot nu toe alleen het Toy Story Hotel. Een vierde hotel is in aanbouw, op een paar passen van de hoofdingang van Shanghai Disneyland.
 
-In het park komt een negende themagebied, rond Spider-Man en de uitvinderswerkplaats W.E.B. In juni lagen alle rails van de attractie er. Op 16 augustus kondigde het resort aan dat de eerste voertuigen meteen op de baan zouden komen, om de testritten te beginnen. Wanneer het gebied opengaat, staat nog niet vast. Daarnaast wordt Soaring Over the Horizon uitgebreid.
+In Shanghai Disneyland zelf wordt gewerkt aan de uitbreiding van Soaring Over the Horizon, een van de bekendste attracties van het park. Daarnaast komt er een negende themagebied, rond Spider-Man en de uitvinderswerkplaats W.E.B. In juni lagen alle rails van de attractie er. Op 16 augustus kondigde het resort aan dat de eerste voertuigen meteen op de baan zouden komen, om de testritten te beginnen. Wanneer het gebied opengaat, staat nog niet vast.
 
 [Shanghai Disneyland](ref:shanghai-disneyland?full)
 

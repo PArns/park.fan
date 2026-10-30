@@ -48,7 +48,7 @@ El edificio tiene nueve plantas y 400 habitaciones. Al abrir las reservas ya est
 
 Otros tipos saldrán a la venta más cerca de la apertura. El resort todavía no ha publicado cuánto cuesta una noche.
 
-El nombre viene de la Wishing Star, la estrella de los deseos de Disney. El motivo empieza ya en la fachada y sigue hasta los interiores. En las habitaciones hay cuadros sobre los deseos y la estrella que los concede, además de pequeños detalles Disney.
+El hotel lleva el nombre de la Wishing Star, la estrella que en Disney simboliza los sueños, los deseos y las posibilidades. Te la encuentras desde la fachada hasta las habitaciones, donde cuelgan cuadros de deseos y estrellas de los deseos, con algún guiño discreto a Disney.
 
 ## A orillas del Wishing Star Lake
 
@@ -58,9 +58,9 @@ Desde el 9 de octubre, en la víspera del Día Mundial de las Aves Migratorias, 
 
 ## Qué hay en el hotel
 
-Dentro hay piscinas y varias zonas de juego con temas de películas de Disney. Fuera está la primera piscina exterior que tiene un hotel del resort. Solo abre en algunas estaciones del año, y aun entonces únicamente si el tiempo y el funcionamiento del hotel lo permiten. Los meses todavía no los ha concretado el resort. Para una estancia en diciembre, yo contaría con la piscina cubierta.
+Dentro hay piscinas y varias zonas de juego con temas de películas de Disney. Fuera está la primera piscina exterior que tiene un hotel del resort. Solo abre en algunas estaciones del año, y el resort todavía no ha anunciado en qué meses. Para una estancia en diciembre, yo contaría con la piscina cubierta.
 
-Uno de los restaurantes se llama Enchanted Seasons. Gira en torno a las estaciones del año y sirve cocina china e internacional. En el hotel también hay encuentros con personajes Disney, espectáculos y tiendas.
+Uno de los restaurantes se llama Enchanted Seasons. La cocina es china e internacional, y las estaciones del año marcan la temática. En el hotel también hay encuentros con personajes Disney y espectáculos propios. Para llevarse un recuerdo hay tiendas en el mismo edificio.
 
 Los gimnasios, las piscinas y las zonas de juego interiores y exteriores los comparten los huéspedes de los dos hoteles, y se puede comer y comprar en ambos.
 
@@ -68,7 +68,7 @@ Los gimnasios, las piscinas y las zonas de juego interiores y exteriores los com
 
 El Shanghai Disney Resort anunció el nombre del hotel en junio de 2026, cuando el propio resort cumplió diez años. Aparte del Shanghai Disneyland Hotel, hasta ahora solo existe el Toy Story Hotel. Un cuarto hotel ya está en construcción, a pocos pasos de la entrada principal de Shanghai Disneyland.
 
-En el parque se levanta la novena área temática, dedicada a Spider-Man y al taller de inventores W.E.B. Las vías de la atracción quedaron terminadas en junio. El 16 de agosto, el resort anunció que los primeros vehículos iban a llegar de inmediato a la vía para empezar las pruebas. La fecha de apertura del área aún no está fijada. Además, Soaring Over the Horizon se va a ampliar.
+Dentro de Shanghai Disneyland ya hay obras para ampliar Soaring Over the Horizon, una de las atracciones más conocidas del parque. Allí se levanta también la novena área temática, dedicada a Spider-Man y al taller de inventores W.E.B. Las vías de la atracción quedaron terminadas en junio. El 16 de agosto, el resort anunció que los primeros vehículos iban a llegar de inmediato a la vía para empezar las pruebas. La fecha de apertura del área aún no está fijada.
 
 [Shanghai Disneyland](ref:shanghai-disneyland?full)
 
