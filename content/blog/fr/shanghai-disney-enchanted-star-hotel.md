@@ -19,7 +19,7 @@ tags:
 category: news
 parkLinks:
   - shanghai-disneyland
-rideLinks: []
+rideLinks: false
 seo:
   title: 'L’Enchanted Star Hotel ouvre le 16 décembre 2026 à Shanghai'
   description: >-
