@@ -2,7 +2,7 @@
 title: 'Il Movie Park è esaurito il 30 e il 31 ottobre'
 translationKey: movie-park-germany-halloween-horror-festival-2026-ausverkauft
 date: '2026-10-30'
-time: '13:45'
+time: '14:26'
 author: patrick
 mode: published
 featured: false
@@ -22,7 +22,7 @@ rideLinks: false
 seo:
   title: 'Movie Park esaurito? Biglietti Halloween fino all’8 novembre'
   description: >-
-    Halloween Horror Festival al Movie Park: esaurito il 30 e 31/10, biglietti ancora per l’1/11 e dal 6 all’8/11. Jason Universe e PHOBIA sono nuovi quest’anno.
+    Halloween Horror Festival al Movie Park: esaurito il 30 e 31/10, biglietti ancora per l’1/11 e dal 6 all’8/11. Jason Universe e PHOBIA sono le novità.
   keywords:
     - Halloween Horror Festival Movie Park
     - Movie Park esaurito
@@ -36,7 +36,7 @@ seo:
 
 Venerdì 30 e sabato 31 ottobre l’Halloween Horror Festival del [Movie Park Germany](ref:movie-park-germany) è esaurito. Il parco rimanda a domenica 1° novembre e all’ultimo fine settimana del festival, dal 6 all’8 novembre. Già il giovedì precedente i biglietti erano finiti.
 
-Quest’anno Jason Voorhees ha per la prima volta una casa dell’orrore tutta sua a Bottrop. Chi è rimasto senza biglietto per questo fine settimana può ancora andarci domenica o dal 6 novembre.
+Quest’anno Jason Voorhees ha per la prima volta una casa dell’orrore tutta sua a Bottrop. Jason è abituato ai sequel, e anche il fine settimana esaurito ne avrà uno, con altri quattro giorni di festival fino all’8 novembre.
 
 ## Gli ultimi quattro giorni del festival
 
@@ -51,7 +51,7 @@ Anche per gli altri giorni i biglietti rimasti sono pochi. Chi ha l’abbonament
 
 ## Case dell’orrore e pass
 
-Il biglietto giornaliero vale fino alla chiusura del parco. Cosa comprende e cosa si paga a parte, cosa offre l’S.I.K. VIP Pass e quali costumi sono ammessi l’abbiamo raccolto nel nostro [articolo sull’apertura del festival](/news/movie-park-germany-halloween-horror-festival-2026). In una casa dell’orrore si entra in media in gruppi da otto a dieci persone, quindi difficilmente urlerai da solo. Il parco suggerisce al massimo quattro case dell’orrore in una sera.
+Il biglietto giornaliero vale fino alla chiusura del parco. Il nostro [articolo sull’apertura del festival](/news/movie-park-germany-halloween-horror-festival-2026) spiega cosa comprende il biglietto giornaliero, cosa si paga a parte, cosa offre l’S.I.K. VIP Pass e quali costumi sono ammessi. In una casa dell’orrore si entra in media in gruppi da otto a dieci persone, quindi difficilmente urlerai da solo. Il parco suggerisce al massimo quattro case dell’orrore in una sera.
 
 Per saltare parte della fila c’è lo Speedy Pass Horror, valido per cinque case dell’orrore e per PHOBIA.
 
@@ -63,9 +63,9 @@ I più piccoli hanno Halloween for Kids nel Nickelodeon LAND, ogni giorno dell�
 
 Jason Universe sostituisce Secrets of St. Elmo – Last Hunt (in funzione dal 2020) e in 14 scene più un preshow attraversa i film dal secondo al sesto della saga. Il percorso passa per il fienile, il campeggio e il bosco. Le scene sono firmate dalla Leisure Expert Group e da Props & Zo., che in quello spazio avevano già allestito The Walking Dead Breakout.
 
-PHOBIA – The Live Horror Game Show va in scena nello Studio 7. PHOBIA ha come showmaster Rudy von Hell e come show host Dave van der Wal; la produzione è di Farla Showproductions. PHOBIA è accessibile alle persone con disabilità, come le case dell’orrore The Slaughterhouse e Circus of Freaks.
+PHOBIA – The Live Horror Game Show va in scena nello Studio 7. Lo showmaster Rudy von Hell e lo show host Dave van der Wal conducono lo spettacolo, prodotto da Farla Showproductions. The Slaughterhouse e Circus of Freaks sono le case dell’orrore accessibili alle persone con disabilità, e lo è anche lo spettacolo dello Studio 7.
 
-Chi al posto del sabato esaurito sceglie domenica 1° novembre, al Movie Park di solito trova il più tranquillo dei due giorni del fine settimana; i numeri sono nella [guida al parco](/blog/movie-park-germany-tempi-di-attesa-consigli).
+Secondo i nostri numeri nella [guida al parco](/blog/movie-park-germany-tempi-di-attesa-consigli), al Movie Park domenica 1° novembre di solito è il più tranquillo dei due giorni del fine settimana, quindi conviene sceglierla al posto del sabato esaurito.
 
 ```best-days-widget slug=movie-park-germany
 

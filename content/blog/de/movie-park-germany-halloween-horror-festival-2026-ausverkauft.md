@@ -2,7 +2,7 @@
 title: 'Movie Park ist am 30. und 31. Oktober ausverkauft'
 translationKey: movie-park-germany-halloween-horror-festival-2026-ausverkauft
 date: '2026-10-30'
-time: '13:45'
+time: '14:26'
 author: patrick
 mode: published
 featured: false
@@ -36,7 +36,7 @@ seo:
 
 Das Halloween Horror Festival im [Movie Park Germany](ref:movie-park-germany) ist für Freitag, 30. Oktober, und Samstag, 31. Oktober, ausverkauft. Der Park verweist auf Sonntag, 1. November, und das letzte Festivalwochenende vom 6. bis 8. November. Der Donnerstag davor war bereits ausverkauft.
 
-Jason Voorhees hat in Bottrop in diesem Jahr zum ersten Mal ein eigenes Horrorhaus. Wer für dieses Wochenende keine Karte mehr bekommen hat, sieht die Fortsetzung am Sonntag oder ab dem 6. November.
+Jason Voorhees hat in Bottrop in diesem Jahr zum ersten Mal ein eigenes Horrorhaus. Fortsetzungen ist Jason gewohnt, und auch das ausverkaufte Wochenende bekommt eine, mit vier weiteren Festivaltagen bis zum 8. November.
 
 ## Die letzten vier Festivaltage
 
@@ -51,7 +51,7 @@ Auch für die übrigen Tage hat der Park nur noch wenige Tickets. Mit Saisonpass
 
 ## Horrorhäuser und Pässe
 
-Die Tageskarte gilt bis Parkschluss. Was sie abdeckt und was extra kostet, was im S.I.K. VIP Pass steckt und welche Kostüme erlaubt sind, haben wir im [Beitrag zum Start des Festivals](/news/movie-park-germany-halloween-horror-festival-2026) gesammelt. In ein Horrorhaus gehen im Schnitt acht bis zehn Leute auf einmal, allein schreist du dort also selten. Der Park rät zu höchstens vier Horrorhäusern an einem Abend.
+Die Tageskarte gilt bis Parkschluss. Im [Beitrag zum Start des Festivals](/news/movie-park-germany-halloween-horror-festival-2026) stehen die Zusatzkosten neben der Tageskarte, der Inhalt des S.I.K. VIP Pass und die Kostümregeln. In ein Horrorhaus gehen im Schnitt acht bis zehn Leute auf einmal, allein schreist du dort also selten. Der Park rät zu höchstens vier Horrorhäusern an einem Abend.
 
 Schneller hinein kommst du mit dem Speedy Pass Horror, der für fünf Horrorhäuser und PHOBIA gilt.
 
@@ -63,9 +63,9 @@ Für Kinder läuft an jedem Eventtag von 12 bis 17 Uhr Halloween for Kids im Nic
 
 Jason Universe ersetzt Secrets of St. Elmo – Last Hunt (seit 2020) und führt in 14 Szenen und einer Preshow durch die Filme zwei bis sechs der Reihe. Der Weg führt an der Scheune, dem Camp und dem Wald vorbei. Die Szenen stammen von der Leisure Expert Group und Props & Zo., die an dieser Stelle schon The Walking Dead Breakout eingerichtet hatten.
 
-PHOBIA – The Live Horror Game Show läuft im Studio 7. PHOBIA hat den Showmaster Rudy von Hell und den Show-Host Dave van der Wal; produziert hat die Show Farla Showproductions. Barrierefrei sind PHOBIA und die Horrorhäuser The Slaughterhouse und Circus of Freaks.
+PHOBIA – The Live Horror Game Show läuft im Studio 7. Durch die Show führen Showmaster Rudy von Hell und Show-Host Dave van der Wal, produziert hat sie Farla Showproductions. Barrierefrei sind PHOBIA und die Horrorhäuser The Slaughterhouse und Circus of Freaks.
 
-Wer statt des ausverkauften Samstags den Sonntag, 1. November, nimmt, erwischt im Movie Park meist den ruhigeren der beiden Wochenendtage; die Zahlen dazu stehen im [Guide zum Park](/blog/movie-park-germany-wartezeiten-tipps).
+Wer statt des ausverkauften Samstags den Sonntag, 1. November, nimmt, erwischt im Movie Park nach unseren Zahlen aus dem [Guide zum Park](/blog/movie-park-germany-wartezeiten-tipps) meist den ruhigeren der beiden Wochenendtage.
 
 ```best-days-widget slug=movie-park-germany
 

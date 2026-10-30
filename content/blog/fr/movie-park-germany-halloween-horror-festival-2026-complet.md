@@ -2,7 +2,7 @@
 title: 'Le Movie Park affiche complet les 30 et 31 octobre'
 translationKey: movie-park-germany-halloween-horror-festival-2026-ausverkauft
 date: '2026-10-30'
-time: '13:45'
+time: '14:26'
 author: patrick
 mode: published
 featured: false
@@ -22,7 +22,7 @@ rideLinks: false
 seo:
   title: 'Movie Park complet ? Encore des billets jusqu’au 8 novembre'
   description: >-
-    Halloween Horror Festival au Movie Park : complet les 30 et 31/10, billets encore en vente le 1/11 et du 6 au 8/11. Jason Universe et PHOBIA sont nouveaux cette année.
+    Halloween Horror Festival au Movie Park : complet les 30 et 31/10, il reste des billets le 1/11 et du 6 au 8/11. Jason Universe et PHOBIA sont nouveaux.
   keywords:
     - Halloween Horror Festival Movie Park
     - Movie Park complet
@@ -36,7 +36,7 @@ seo:
 
 Le Halloween Horror Festival du [Movie Park Germany](ref:movie-park-germany) affiche complet pour le vendredi 30 et le samedi 31 octobre. Le parc renvoie vers le dimanche 1er novembre et vers le dernier week-end du festival, du 6 au 8 novembre. Le jeudi précédent affichait déjà complet.
 
-Cette année, Jason Voorhees a pour la première fois son propre maze à Bottrop. Ceux qui n’ont pas eu de place ce week-end verront la suite au prochain épisode, dimanche ou à partir du 6 novembre.
+Cette année, Jason Voorhees a pour la première fois son propre maze à Bottrop. Jason a l’habitude des suites, et le week-end complet aura aussi la sienne, avec quatre autres jours de festival jusqu’au 8 novembre.
 
 ## Les quatre derniers jours du festival
 
@@ -51,7 +51,7 @@ Pour les autres jours du festival aussi, il ne reste que peu de billets. Avec un
 
 ## Mazes et pass
 
-Le billet journée vaut jusqu’à la fermeture du parc. Ce qu’il comprend et ce qui est payant en plus, ce que contient le S.I.K. VIP Pass et quels déguisements sont autorisés, nous l’avons rassemblé dans notre [article sur le lancement du festival](/news/movie-park-germany-halloween-horror-festival-2026). On entre dans un maze par groupes de huit à dix personnes en moyenne, on crie donc rarement seul. Le parc conseille de ne pas dépasser quatre mazes dans la soirée.
+Le billet journée vaut jusqu’à la fermeture du parc. Notre [article sur le lancement du festival](/news/movie-park-germany-halloween-horror-festival-2026) détaille ce que comprend le billet journée, ce qui est payant en plus, le S.I.K. VIP Pass et les règles sur les déguisements. On entre dans un maze par groupes de huit à dix personnes en moyenne, on crie donc rarement seul. Le parc conseille de ne pas dépasser quatre mazes dans la soirée.
 
 Pour passer plus vite, il y a le Speedy Pass Horror, valable pour cinq mazes et PHOBIA.
 
@@ -63,9 +63,9 @@ Pour les enfants, Halloween for Kids a lieu chaque jour d’événement de 12 h 
 
 Jason Universe remplace Secrets of St. Elmo – Last Hunt (en place depuis 2020). En 14 scènes et un pré-show, il fait traverser les films deux à six de la saga. Le parcours passe par la grange, le camp et la forêt. Les scènes sont l’œuvre de la Leisure Expert Group et de Props & Zo., qui avaient déjà aménagé The Walking Dead Breakout à cet endroit.
 
-PHOBIA – The Live Horror Game Show se joue au Studio 7. PHOBIA a pour showmaster Rudy von Hell et pour show host Dave van der Wal ; le spectacle est produit par Farla Showproductions. PHOBIA est accessible aux personnes handicapées, tout comme les mazes The Slaughterhouse et Circus of Freaks.
+PHOBIA – The Live Horror Game Show se joue au Studio 7. Le showmaster Rudy von Hell et le show host Dave van der Wal animent le spectacle, produit par Farla Showproductions. The Slaughterhouse et Circus of Freaks sont les mazes accessibles aux personnes handicapées, et le spectacle du Studio 7 l’est aussi.
 
-Qui choisit le dimanche 1er novembre plutôt que le samedi complet tombe en général sur le plus calme des deux jours du week-end au Movie Park ; les chiffres sont dans notre [guide du parc](/blog/movie-park-germany-temps-d-attente-conseils).
+D’après nos chiffres dans le [guide du parc](/blog/movie-park-germany-temps-d-attente-conseils), le dimanche 1er novembre est en général le plus calme des deux jours du week-end au Movie Park, c’est donc lui qu’il faut prendre à la place du samedi complet.
 
 ```best-days-widget slug=movie-park-germany
 

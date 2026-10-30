@@ -2,7 +2,7 @@
 title: 'Movie Park agota las entradas del 30 y 31 de octubre'
 translationKey: movie-park-germany-halloween-horror-festival-2026-ausverkauft
 date: '2026-10-30'
-time: '13:45'
+time: '14:26'
 author: patrick
 mode: published
 featured: false
@@ -36,7 +36,7 @@ seo:
 
 Ya no quedan entradas para el Halloween Horror Festival del [Movie Park Germany](ref:movie-park-germany) el viernes 30 y el sábado 31 de octubre. El parque remite al domingo 1 de noviembre y al último fin de semana del festival, del 6 al 8 de noviembre. El jueves anterior ya se había agotado.
 
-Este año Jason Voorhees tiene por primera vez un pasaje propio en Bottrop. Quien se haya quedado sin entrada para este fin de semana aún puede ir el domingo o a partir del 6 de noviembre.
+Este año Jason Voorhees tiene por primera vez un pasaje propio en Bottrop. Jason está acostumbrado a las secuelas, y el fin de semana agotado también tiene la suya, con cuatro días más de festival hasta el 8 de noviembre.
 
 ## Los cuatro últimos días del festival
 
@@ -51,7 +51,7 @@ Para el resto de los días también quedan pocas entradas. Con el pase de tempor
 
 ## Pasajes del terror y pases
 
-La entrada de día vale hasta el cierre del parque. Qué incluye y qué se paga aparte, qué trae el S.I.K. VIP Pass y qué disfraces se permiten lo hemos reunido en nuestra [noticia sobre el arranque del festival](/news/movie-park-germany-halloween-horror-festival-2026). En cada pasaje entran de media entre ocho y diez personas a la vez, así que rara vez gritarás solo. El parque aconseja no pasar de cuatro pasajes en una misma noche.
+La entrada de día vale hasta el cierre del parque. Nuestra [noticia sobre el arranque del festival](/news/movie-park-germany-halloween-horror-festival-2026) explica qué incluye la entrada de día, qué se paga aparte, el S.I.K. VIP Pass y las normas sobre disfraces. En cada pasaje entran de media entre ocho y diez personas a la vez, así que rara vez gritarás solo. El parque aconseja no pasar de cuatro pasajes en una misma noche.
 
 Para entrar antes está el Speedy Pass Horror, válido en cinco pasajes del terror y en PHOBIA.
 
@@ -63,9 +63,9 @@ Para los niños, todos los días del evento hay Halloween for Kids en Nickelodeo
 
 Jason Universe sustituye a Secrets of St. Elmo – Last Hunt (abierto desde 2020) y recorre en 14 escenas y un preshow las películas dos a seis de la saga. El recorrido pasa por el granero, el campamento y el bosque. Las escenas son obra de Leisure Expert Group y Props & Zo., que ya habían montado en ese mismo lugar The Walking Dead Breakout.
 
-PHOBIA – The Live Horror Game Show se representa en el Studio 7. PHOBIA tiene como showmaster a Rudy von Hell y como show host a Dave van der Wal; la producción es de Farla Showproductions. PHOBIA es accesible, igual que los pasajes del terror The Slaughterhouse y Circus of Freaks.
+PHOBIA – The Live Horror Game Show se representa en el Studio 7. El showmaster Rudy von Hell y el show host Dave van der Wal conducen el espectáculo, producido por Farla Showproductions. The Slaughterhouse y Circus of Freaks son los pasajes del terror accesibles, y el espectáculo del Studio 7 también lo es.
 
-Quien cambie el sábado agotado por el domingo 1 de noviembre suele dar en el Movie Park con el más tranquilo de los dos días del fin de semana; las cifras están en la [guía del parque](/blog/movie-park-germany-tiempos-de-espera-consejos).
+Según nuestras cifras de la [guía del parque](/blog/movie-park-germany-tiempos-de-espera-consejos), el domingo 1 de noviembre suele ser el más tranquilo de los dos días del fin de semana en el Movie Park, así que conviene elegirlo en lugar del sábado agotado.
 
 ```best-days-widget slug=movie-park-germany
 
