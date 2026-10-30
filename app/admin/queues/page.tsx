@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { ChevronDown, ChevronRight, ListChecks, Loader2 } from 'lucide-react';
 import { useAdminFetch } from '../_lib/admin-context';
 import { adminFetch } from '../_lib/api';
+import { formatAgo } from '../_lib/format';
 import type { QueueEntry, QueueStatusResponse } from '@/lib/api/admin';
 import {
   AdminPage,
@@ -27,14 +28,19 @@ interface QueueFailure {
   attemptsMade: number;
   failedReason: string;
   stack: string[];
+  /** When the job failed, ISO. */
+  failedAt?: string | null;
+  /** When a later run of the same job succeeded, ISO; `null` while none has. */
+  succeededSince?: string | null;
 }
 
-type QueueState = 'active' | 'pending' | 'failed' | 'delayed';
+type QueueState = 'active' | 'pending' | 'failed' | 'resolved' | 'delayed';
 
 const QUEUE_TONES: Record<QueueState, ChipTone> = {
   active: 'primary',
   pending: 'muted',
   failed: 'danger',
+  resolved: 'muted',
   delayed: 'warning',
 };
 
@@ -49,6 +55,8 @@ function QueueBadge({ count, variant }: { count: number; variant: QueueState }) 
 
 function QueueRow({ q }: { q: QueueEntry }) {
   const hasActivity = q.active + q.pending + q.failed + q.delayed > 0;
+  // A failure a later run of the same job has made up for stays listed, but not in red.
+  const openFailed = q.failedOpen ?? q.failed;
   const [open, setOpen] = useState(false);
   const [failures, setFailures] = useState<QueueFailure[] | null>(null);
   const [loading, setLoading] = useState(false);
@@ -88,7 +96,8 @@ function QueueRow({ q }: { q: QueueEntry }) {
             <>
               <QueueBadge count={q.active} variant="active" />
               <QueueBadge count={q.pending} variant="pending" />
-              <QueueBadge count={q.failed} variant="failed" />
+              <QueueBadge count={openFailed} variant="failed" />
+              <QueueBadge count={q.failed - openFailed} variant="resolved" />
               <QueueBadge count={q.delayed} variant="delayed" />
             </>
           ) : (
@@ -129,8 +138,21 @@ function QueueRow({ q }: { q: QueueEntry }) {
               <p className="text-xs font-medium">
                 {failure.name}
                 <span className="text-muted-foreground"> · {failure.attemptsMade} Versuche</span>
+                {failure.failedAt && (
+                  <span className="text-muted-foreground" title={failure.failedAt}>
+                    {' '}
+                    · {formatAgo(failure.failedAt)}
+                  </span>
+                )}
               </p>
-              <p className="text-destructive font-mono text-xs break-words">
+              {failure.succeededSince && (
+                <p className="text-muted-foreground text-xs" title={failure.succeededSince}>
+                  Seitdem erfolgreich, zuletzt {formatAgo(failure.succeededSince)}
+                </p>
+              )}
+              <p
+                className={`font-mono text-xs break-words ${failure.succeededSince ? 'text-muted-foreground' : 'text-destructive'}`}
+              >
                 {failure.failedReason}
               </p>
               {failure.stack.length > 0 && (
