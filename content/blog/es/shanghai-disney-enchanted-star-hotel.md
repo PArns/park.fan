@@ -46,7 +46,7 @@ El edificio tiene nueve plantas y 400 habitaciones. Al abrir las reservas hay cu
 - Enchanted Star Dream Room
 - Enchanted Star Club Room
 
-Los demás tipos saldrán a la venta más cerca de la apertura. Cuánto cuesta una noche, el resort todavía no lo ha dicho.
+Los demás tipos saldrán a la venta más cerca de la apertura. Cuánto cuesta una noche, el resort todavía no lo ha anunciado.
 
 Las habitaciones tienen cuadros sobre los deseos y las estrellas de los deseos, además de pequeños detalles Disney. El nombre viene de la Wishing Star, la estrella de los deseos de Disney, y el motivo aparece desde la fachada hasta los interiores.
 
