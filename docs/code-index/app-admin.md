@@ -884,7 +884,7 @@ Route `/admin/system` (page).
 
 ### [`traffic/_lib/use-search-console.ts`](../../app/admin/traffic/_lib/use-search-console.ts)
 
-- `useSearchConsoleStatus` _hook_: Whether the import is set up and what it has stored. Read once and on a refresh; after an import was requested (`wait`) it is asked again every few seconds until the status changes or the wait runs out.
+- `useSearchConsoleStatus` _hook_: Whether the import is set up and what it has stored.
 - `useSearchConsoleData` _hook_: One Search Console answer for the window and language of the page. The previous answer stays on screen while a switch loads, as with the analytics reads.
 - `useSearchConsoleDrill` _hook_: The drill-down of the section, `?gscQuery=` and `?gscPage=`: a query narrows the page list to the pages that Google shows for it, a page narrows the query list to the queries that lead to it. Written with `replace`, so the view is a link.
 - Types: `ImportWait`
