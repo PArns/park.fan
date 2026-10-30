@@ -22,7 +22,7 @@ rideLinks: false
 seo:
   title: 'Movie Park complet ? Encore des billets jusqu’au 8 novembre'
   description: >-
-    Halloween Horror Festival au Movie Park : complet les 30 et 31/10, billets encore en vente pour le 1/11 et du 6 au 8/11. Nouveautés : Jason Universe et PHOBIA.
+    Halloween Horror Festival au Movie Park : complet les 30 et 31/10, billets encore en vente le 1/11 et du 6 au 8/11. Nouveautés : Jason Universe et PHOBIA.
   keywords:
     - Halloween Horror Festival Movie Park
     - Movie Park complet
