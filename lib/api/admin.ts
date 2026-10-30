@@ -221,7 +221,13 @@ export interface QueueEntry {
   name: string;
   active: number;
   pending: number;
+  /** Every failure the queue still keeps, however old. */
   failed: number;
+  /**
+   * The failures no later run of the same job has succeeded since. An API that does not send it
+   * yet leaves every failure open.
+   */
+  failedOpen?: number;
   delayed: number;
   completed: number;
 }
