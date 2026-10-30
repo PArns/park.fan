@@ -48,7 +48,7 @@ L’hôtel compte neuf étages et 400 chambres. À l’ouverture des réservatio
 
 D’autres catégories suivront à l’approche de l’ouverture. Ce que coûte une nuit, le resort ne l’a pas encore annoncé.
 
-L’hôtel doit son nom au Wishing Star, l’étoile à laquelle on fait un vœu chez Disney. Le motif commence dès la façade et se retrouve de la façade jusqu’aux intérieurs. Aux murs des chambres sont accrochées des images sur les vœux et la bonne étoile, avec de petits détails Disney ici et là.
+L’hôtel doit son nom au Wishing Star, l’étoile à laquelle on fait un vœu chez Disney. Le motif se retrouve de la façade jusqu’aux intérieurs. Aux murs des chambres sont accrochées des images sur les vœux et la bonne étoile, avec de petits détails Disney ici et là.
 
 ## Au bord du Wishing Star Lake
 
