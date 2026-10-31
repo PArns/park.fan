@@ -7,7 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Am 7. November beginnt in Silver Dollar City in Branson „An Old Time Christmas“, das bis zum 2. Januar 2027 läuft. Neu ist eine Parade, die doppelt so lang ist wie die alte. Sie fährt ohne Aufpreis an jedem Betriebstag um 18 und um 20 Uhr.
+  „An Old Time Christmas“ läuft in Silver Dollar City in Branson vom 7. November bis zum 2. Januar 2027. Neu ist eine Parade, die doppelt so lang ist wie die alte. Sie fährt ohne Aufpreis an jedem Betriebstag um 18 und um 20 Uhr.
 tags:
   - news
   - silver-dollar-city
@@ -38,17 +38,17 @@ seo:
     - Silver Dollar City Thunderation letzte Saison
 ---
 
-Am 7. November beginnt in [Silver Dollar City](ref:silver-dollar-city) in Branson, Missouri, „An Old Time Christmas“, und zur Premiere fährt eine neue Parade durch den Park: die Stars, Lights & Christmas Nights Parade, doppelt so lang wie die alte. Das Weihnachtsevent läuft bis zum 2. Januar 2027, die Parade ist im normalen Eintritt enthalten.
+Am 7. November beginnt in [Silver Dollar City](ref:silver-dollar-city) in Branson, Missouri, „An Old Time Christmas“. Zum ersten Mal fährt dann die Stars, Lights & Christmas Nights Parade durch den Park, doppelt so lang wie die alte. Das Weihnachtsevent läuft bis zum 2. Januar 2027, die Parade ist im normalen Eintritt enthalten.
 
 ## Die neue Parade
 
-Vorneweg fährt ein Oldtimer mit dem Grand Marshal, dahinter kommen Rudolph und seine Freunde, neu dabei sind Yukon Cornelius und die Misfit Toys. In der Szene „Home for the Holidays“ zieht ein Pferdeschlitten mit Sängern vorbei, Kinder laufen als Christbaumkugeln verkleidet mit. Am Nordpol sammeln Elfen Wunschzettel ein, wer seinen dabeihat, gibt ihn am Straßenrand gleich ab, und Mrs. Claus streut aus einem Zuckerstreuer. Santa schwebt mit seinem Rentiergespann über den Zuschauern. Den Schluss bilden Trompeter, ein Chor und ein beleuchteter Wagen mit der Krippe.
+Vorneweg fährt ein Oldtimer mit dem Grand Marshal, dahinter kommen Rudolph und seine Freunde. Neu dabei sind Yukon Cornelius und die Misfit Toys. In der Szene „Home for the Holidays“ zieht ein Pferdeschlitten mit Sängern vorbei, Kinder laufen als Christbaumkugeln verkleidet mit. Am Nordpol sammeln Elfen Wunschzettel ein, wer seinen dabeihat, gibt ihn gleich am Straßenrand ab. Mrs. Claus streut dazu aus einem Zuckerstreuer. Santa schwebt mit seinem Rentiergespann über den Zuschauern. Den Schluss bilden Trompeter, ein Chor und ein beleuchteter Wagen mit der Krippe.
 
-Ob „doppelt so lang“ die Dauer meint oder die Länge des Zugs, lässt die Mitteilung offen. Eine Route hat der Park nicht veröffentlicht. Bekannt sind die beiden VIP-Bereiche am Grand Exposition Garden Pavilion („North Pole“) und am Red Gold Courtyard („South Pole“).
+Ob „doppelt so lang“ die Dauer meint oder die Länge des Zugs, lässt die Mitteilung offen. Eine Route hat der Park nicht veröffentlicht, wohl aber die beiden VIP-Bereiche: „North Pole“ am Grand Exposition Garden Pavilion und „South Pole“ am Red Gold Courtyard.
 
 Die Wagen hat River City Scenic in einer Halle bei Cincinnati gebaut. Die Musik schrieb Mike Avila, der an rund 20 großen Paraden mitgearbeitet hat, darunter für Disney, die Macy's Thanksgiving Day Parade und die Rose Bowl Parade.
 
-Die Parade startet an jedem Betriebstag zweimal, um 18 und um 20 Uhr Ortszeit. Bis 2025 fuhr an ihrer Stelle Rudolph's Holly Jolly Christmas Light Parade, und das Event lief damals vom 1. November bis zum 4. Januar.
+Die Parade startet an jedem Betriebstag zweimal, um 18 und um 20 Uhr Ortszeit. Bis 2025 fuhr an ihrer Stelle Rudolph's Holly Jolly Christmas Light Parade. Das Event lief damals vom 1. November bis zum 4. Januar.
 
 ## Betriebstage und Öffnungszeiten
 
@@ -68,11 +68,11 @@ Die Samstage im November und Dezember sind nach Angaben des Parks oft sehr voll,
 
 ## Was im Ticket ist und was extra kostet
 
-Ein Tagesticket kostet 95 Dollar plus Steuer und gilt an jedem Betriebstag bis zum 2. Januar. Wer online und mindestens 24 Stunden vorher bucht, zahlt an ausgewählten Tagen ab 79 Dollar, ein zweiter Tag innerhalb von fünf Betriebstagen kostet 20 Dollar mehr. Kinder bis drei Jahre kommen frei hinein, die Preise für Kinder von vier bis elf und für Gäste ab 65 sieht man erst im Bestellvorgang. An den vier Merry Mondays, dem 9., 16., 23. und 30. November, kostet das Ticket online 79 Dollar.
+Ein Tagesticket kostet 95 Dollar plus Steuer und gilt an jedem Betriebstag bis zum 2. Januar. Wer online und mindestens 24 Stunden vorher bucht, zahlt an ausgewählten Tagen ab 79 Dollar. Ein zweiter Tag innerhalb von fünf Betriebstagen kostet 20 Dollar mehr. Kinder bis drei Jahre kommen frei hinein, die Preise für Kinder von vier bis elf und für Gäste ab 65 sieht man erst im Bestellvorgang. An den vier Merry Mondays, dem 9., 16., 23. und 30. November, kostet das Ticket online 79 Dollar.
 
-Bis zum 2. November verkauft der Park den Silver Season Passport 2027 für 119,99 statt 174,99 Dollar. Er gilt ab dem Saisonstart am 12. März 2027, und wer ihn neu kauft, bekommt für die Weihnachtssaison 2026 ein Tagesticket für 47,50 Dollar, außer an den Samstagen und am 22. November.
+Bis zum 2. November verkauft der Park den Silver Season Passport 2027 für 119,99 statt 174,99 Dollar. Er gilt ab dem Saisonstart am 12. März 2027. Wer ihn neu kauft, bekommt für die Weihnachtssaison 2026 ein Tagesticket für 47,50 Dollar, außer an den Samstagen und am 22. November.
 
-Im Eintritt sind alle Fahrgeschäfte und Shows, ebenso die Führungen durch die Marvel Cave außer den Lantern Light Tours. Extra kosten, jeweils zuzüglich Steuer und Parkeintritt:
+Im Eintritt enthalten sind alle Fahrgeschäfte und Shows und die Führungen durch die Marvel Cave, nicht aber die Lantern Light Tours. Extra kosten, jeweils zuzüglich Steuer und Parkeintritt:
 
 - VIP Parade Experience: 45 Dollar, mit Treffen und Foto mit Rudolph, reserviertem Platz, heißer Schokolade und einer Tüte Kettle Corn, gültig für die gebuchte Vorstellung; Kinder unter drei Jahren auf dem Platz eines Elternteils frei
 - reservierte Plätze bei Shows: Frontier Fa-La-La Follies 15 Dollar, A Dickens' Christmas Carol und Heart of Christmas je 30 Dollar, plus 1 Dollar Gebühr pro Platz
@@ -87,13 +87,13 @@ Mehr als 6,5 Millionen Lichter hängen im Park, 1,5 Millionen davon allein in Ch
 
 A Dickens' Christmas Carol spielt zum 25. Mal, 60 Minuten mit Liveband im Opera House, meist um 13:30, 15:30 und 17:30 Uhr. Für blinde und sehbehinderte Gäste gibt es eine Audiodeskription. In der Red Gold Heritage Hall wechseln bei Heart of Christmas die Gäste: Lindley Creek bis 27. November und am 3. Dezember, Jeff & Sheri Easter vom 28. bis 30. November, das Triumphant Quartet vom 4. bis 7. Dezember, The Isaacs vom 10. bis 14. Dezember und Rhonda Vincent vom 17. Dezember bis zum Schluss. Die Living Nativity im Dockside Theater dauert 15 Minuten und läuft fünfmal am Tag, an Thanksgiving viermal.
 
-Santa sitzt in Santa's Cottage in der Carousel Barn, laut Eventbeschreibung bis zum 23. Dezember, danach hat er bekanntlich einen anderen Termin. Den Frisco Sing-Along Steam Train nennt die Pressemitteilung als Weihnachtstradition, im Weihnachtskalender des Parks steht der Zug aber nicht, und auf seiner Seite endet die Saison am 31. Oktober.
+Santa sitzt in Santa's Cottage in der Carousel Barn, laut Eventbeschreibung bis zum 23. Dezember, danach hat er bekanntlich einen anderen Termin. Der Frisco Sing-Along Steam Train fehlt im Weihnachtskalender des Parks, seine Saison endet nach seiner eigenen Seite am 31. Oktober. Die Pressemitteilung führt ihn trotzdem als Weihnachtstradition.
 
 ## Welche Bahnen im Winter fahren
 
-[Thunderation](ref:silver-dollar-city/thunderation), die Achterbahn von Arrow Dynamics aus dem Jahr 1993, fährt 2026 ihre letzte Saison, zum letzten Mal am 2. Januar 2027. Die Holzachterbahn [Outlaw Run](ref:silver-dollar-city/outlaw-run), der Spinning Coaster [Time Traveler](ref:silver-dollar-city/time-traveler), WildFire, PowderKeg und die [Marvel Cave](ref:silver-dollar-city/marvel-cave) sind bis zum 2. Januar in Betrieb.
+[Thunderation](ref:silver-dollar-city/thunderation), die Achterbahn von Arrow Dynamics aus dem Jahr 1993, fährt 2026 ihre letzte Saison, ihr letzter Fahrtag ist der 2. Januar 2027. Die Holzachterbahn [Outlaw Run](ref:silver-dollar-city/outlaw-run), der Spinning Coaster [Time Traveler](ref:silver-dollar-city/time-traveler), WildFire, PowderKeg und die [Marvel Cave](ref:silver-dollar-city/marvel-cave) sind bis zum 2. Januar in Betrieb.
 
-Für jede Achterbahn im Freien gilt eine eigene Temperaturgrenze. Thunderation hält bis 32 Grad Fahrenheit (0 °C) durch. Outlaw Run schließt schon bei 34 °F (1 °C) und startet erst ab 37 °F (knapp 3 °C) wieder, Time Traveler schließt bei 41 °F (5 °C). Die alte Bahn ist also die abgehärtetste. [Fire In The Hole](ref:silver-dollar-city/new-fire-in-the-hole) fährt in einem Gebäude und steht auf der Temperaturliste nicht. Muss ein Besuch wegen des Wetters kürzer ausfallen, gibt es am Ticketschalter ein kostenloses Ticket für einen weiteren Betriebstag der laufenden Saison.
+Für jede Achterbahn im Freien gilt eine eigene Temperaturgrenze. Ausgerechnet Thunderation, die älteste, hält bis 32 Grad Fahrenheit (0 °C) durch. Outlaw Run schließt schon bei 34 °F (1 °C) und startet erst ab 37 °F (knapp 3 °C) wieder, Time Traveler schließt bei 41 °F (5 °C). [Fire In The Hole](ref:silver-dollar-city/new-fire-in-the-hole) fährt in einem Gebäude und steht auf der Temperaturliste nicht. Muss ein Besuch wegen des Wetters kürzer ausfallen, gibt es am Ticketschalter ein kostenloses Ticket für einen weiteren Betriebstag der laufenden Saison.
 
 ```ride-waits-widget park=silver-dollar-city top=8 columns=peak,days
 
@@ -105,7 +105,7 @@ Der Park liegt am 399 Silver Dollar City Parkway in Branson, die Zufahrt geht ü
 
 ## Seit 1960 um eine Höhle herum
 
-Die Marvel Cave ist seit 1894 eine Touristenattraktion und heute der größte Höhlensaal Missouris. 1950 pachtete Hugo Herschend sie mit seiner Frau Mary und den Söhnen Jack und Peter, am 1. Mai 1960 eröffnete die Familie um den Höhleneingang ein Ozark-Dorf im Stil der 1880er Jahre. Daraus ist ein Park mit mehr als 40 Fahrgeschäften und Attraktionen auf 61 Acres geworden.
+Die Marvel Cave ist seit 1894 eine Touristenattraktion und heute der größte Höhlensaal Missouris. 1950 pachtete Hugo Herschend sie mit seiner Frau Mary und den Söhnen Jack und Peter. Am 1. Mai 1960 eröffnete die Familie um den Höhleneingang ein Ozark-Dorf im Stil der 1880er Jahre. Daraus ist ein Park mit mehr als 40 Fahrgeschäften und Attraktionen auf 61 Acres geworden.
 
 Im Frühjahr 2027 eröffnet dort die Familienachterbahn Miner's Mountain Express von Mack Rides, mehr dazu bei den [Freizeitpark-Neuheiten 2027](/blog/freizeitpark-neuheiten-2027). Für Weihnachten 2027 kündigt der Park 7 Millionen Lichter an und eine neue Produktion namens Christmas In The Ozarks.
 
