@@ -109,6 +109,22 @@ export function AssistantPanel({ open, onClose }: { open: boolean; onClose: () =
       trackSiteEvent('assistant_closed', { questions: askedNow.current - askedAtOpen.current });
   }, [open]);
 
+  /**
+   * On a phone the open window takes the screen, so the page behind it must not move: its scroll
+   * is locked while the window is open, and the chat keeps its own scroll to itself.
+   */
+  useEffect(() => {
+    if (!open || !window.matchMedia('(max-width: 639px)').matches) return;
+    const { body, documentElement: html } = document;
+    const before = { overflow: body.style.overflow, overscroll: html.style.overscrollBehavior };
+    body.style.overflow = 'hidden';
+    html.style.overscrollBehavior = 'none';
+    return () => {
+      body.style.overflow = before.overflow;
+      html.style.overscrollBehavior = before.overscroll;
+    };
+  }, [open]);
+
   useEffect(() => {
     if (!open) return;
     input.current?.focus({ preventScroll: true });
@@ -158,10 +174,10 @@ export function AssistantPanel({ open, onClose }: { open: boolean; onClose: () =
           : 'pointer-events-none translate-y-3 scale-95 opacity-0'
       )}
     >
-      <header className="border-border/60 from-primary/15 to-status-operating/10 relative flex items-center gap-3 rounded-t-2xl border-b bg-gradient-to-r px-4 py-3 sm:pl-24">
+      <header className="border-border/60 from-primary/15 to-status-operating/10 relative flex touch-none items-center gap-3 rounded-t-2xl border-b bg-gradient-to-r py-2 pr-3 pl-[4.75rem] sm:py-3 sm:pr-4 sm:pl-24">
         {/* On a desktop Parky floats large over the window's top edge, where it is seen. */}
         <ParkyLogo
-          className="size-9 shrink-0 sm:absolute sm:-top-11 sm:left-1 sm:size-20 sm:drop-shadow-[0_8px_16px_rgb(0_0_0/0.35)]"
+          className="absolute -top-7 left-1 size-16 drop-shadow-[0_8px_16px_rgb(0_0_0/0.35)] sm:-top-11 sm:size-20"
           mood={
             chat.phase === 'writing'
               ? 'talking'
@@ -199,7 +215,7 @@ export function AssistantPanel({ open, onClose }: { open: boolean; onClose: () =
 
       <div
         role="tablist"
-        className="border-border/60 flex gap-1 border-b px-3 py-1.5 text-xs font-medium"
+        className="border-border/60 flex touch-none gap-1 border-b px-3 py-1.5 text-xs font-medium"
       >
         {(['chat', 'feedback'] as const).map((name) => (
           <button
@@ -237,7 +253,8 @@ export function AssistantPanel({ open, onClose }: { open: boolean; onClose: () =
         <>
           <div
             ref={scroller}
-            className="flex-1 space-y-3 overflow-y-auto px-4 py-3 text-sm"
+            // `overscroll-contain`: reaching the end does not scroll the page behind.
+            className="flex-1 space-y-3 overflow-y-auto overscroll-contain px-4 py-3 text-sm"
             aria-live="polite"
           >
             <div className="bg-muted/60 w-fit max-w-[92%] rounded-2xl rounded-tl-sm px-3 py-2">
