@@ -77,7 +77,7 @@ export function AssistantFeedbackForm({
   return (
     <form
       onSubmit={submit}
-      className="flex flex-1 flex-col gap-3 overflow-y-auto px-4 py-3 text-sm"
+      className="flex flex-1 flex-col gap-3 overflow-y-auto overscroll-contain px-4 py-3 text-sm"
     >
       <p className="text-muted-foreground">{t('feedbackIntro')}</p>
       <label className="flex flex-col gap-1.5">
