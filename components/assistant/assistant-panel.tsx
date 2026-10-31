@@ -161,8 +161,15 @@ export function AssistantPanel({ open, onClose }: { open: boolean; onClose: () =
         {/* On a desktop Parky floats large over the window's top edge, where it is seen. */}
         <ParkyLogo
           className="size-9 shrink-0 sm:absolute sm:-top-11 sm:left-1 sm:size-20 sm:drop-shadow-[0_8px_16px_rgb(0_0_0/0.35)]"
-          thinking={chat.phase === 'waiting'}
-          talking={chat.phase === 'writing'}
+          mood={
+            chat.phase === 'writing'
+              ? 'talking'
+              : chat.phase === 'waiting'
+                ? chat.lookup
+                  ? 'looking'
+                  : 'thinking'
+                : null
+          }
         />
         <div className="min-w-0 flex-1">
           <h2 className="text-sm leading-tight font-semibold">{t('title')}</h2>
