@@ -55,10 +55,11 @@ const green = 'oklch(0.752 0.181 146.391)';
 const pink = 'oklch(0.8 0.13 355)';
 
 /**
- * The hat, a Ferris wheel: its hub above Parky's head, its A-frame standing on it. Cabins are
- * circles, so they need no turning back to hang straight while the wheel spins.
+ * The hat, a Ferris wheel set into Parky's head: the lowest cabin goes behind it, and the A-frame's
+ * right leg runs down the slope of the head, so the wheel stands in it rather than on top. Cabins
+ * are circles, so they need no turning back to hang straight while the wheel spins.
  */
-const HUB = { x: 32.5, y: -1 };
+const HUB = { x: 33, y: 0.5 };
 const RIM = 6.5;
 const CABINS = Array.from({ length: 8 }, (_, i) => ({
   x: +(HUB.x + RIM * Math.sin((i * Math.PI) / 4)).toFixed(2),
@@ -69,7 +70,7 @@ const SPOKES = CABINS.slice(0, 4)
   .map(({ x, y }) => `M${x} ${y}L${+(2 * HUB.x - x).toFixed(2)} ${+(2 * HUB.y - y).toFixed(2)}`)
   .join('');
 // The legs end inside the head, which is drawn over them.
-const A_FRAME = `M${HUB.x} ${HUB.y}L27.5 10.5M${HUB.x} ${HUB.y}L37 13.5`;
+const A_FRAME = `M${HUB.x} ${HUB.y}L25.5 13M${HUB.x} ${HUB.y}L41.5 20`;
 const frame = 'oklch(0.48 0.1 245)';
 
 /**
@@ -285,7 +286,7 @@ export function ParkyLogo({
               'parky-wheel--turning'
           )}
         >
-          {/* A light edge under the rim and the frame keeps the hat legible on any page. */}
+          {/* A light edge under the rim keeps the wheel legible on any page. */}
           <circle
             cx={HUB.x}
             cy={HUB.y}
@@ -309,13 +310,6 @@ export function ParkyLogo({
             />
           ))}
         </g>
-        <path
-          d={A_FRAME}
-          stroke="white"
-          strokeOpacity=".8"
-          strokeWidth="2.7"
-          strokeLinecap="round"
-        />
         <path d={A_FRAME} stroke={frame} strokeWidth="1.5" strokeLinecap="round" />
         <circle cx={HUB.x} cy={HUB.y} r="1.3" fill="white" stroke={frame} strokeWidth=".8" />
         {/* The body: a round bubble with its tail at the lower left. */}
