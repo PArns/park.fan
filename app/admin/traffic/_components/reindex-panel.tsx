@@ -4,20 +4,15 @@ import { useState } from 'react';
 import { useQueryClient } from '@tanstack/react-query';
 import { ExternalLink, History, Loader2, RefreshCw, SearchCheck } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import {
-  SEARCH_CONSOLE_REINDEX_PATH,
-  formatSearchConsole,
-  searchConsolePropertyUrl,
-} from '@/lib/admin/search-console';
+import { SEARCH_CONSOLE_REINDEX_PATH, formatSearchConsole } from '@/lib/admin/search-console';
 import { formatCount } from '@/lib/admin/site-analytics';
 import type {
   SearchConsoleReindexItem,
   SearchConsoleReindexQueue,
-  SearchConsoleReindexRecord,
 } from '@/lib/api/admin-search-console';
 import { useCan } from '../../_app/session';
 import { adminFetch, useAdminQuery } from '../../_lib/api';
-import { formatAgo, formatDay } from '../../_lib/format';
+import { formatAgo } from '../../_lib/format';
 import {
   Chip,
   EmptyState,
@@ -30,34 +25,10 @@ import {
   StartTruncated,
 } from '../../_ui/primitives';
 import { useToast } from '../../_ui/toast';
+import { REINDEX_STATE_CHIP, reindexReason, requestReindex } from '../_lib/reindex';
 import { PublicLink } from './list-parts';
 
 const reindexKey = ['admin', 'search-console', 'reindex'] as const;
-
-const UNKNOWN_TO_GOOGLE = 'URL is unknown to Google';
-
-/** Why a page is in the queue, in one line. */
-function reason(item: SearchConsoleReindexItem): string {
-  const changed = `geändert am ${formatDay(item.changedOn)}`;
-  if (item.state === 'unknown') {
-    return item.coverageState === UNKNOWN_TO_GOOGLE
-      ? `Google kennt die Seite nicht (${changed})`
-      : `Von Google noch nie gecrawlt (${changed})`;
-  }
-  const crawled = `zuletzt gecrawlt am ${formatDay(item.lastCrawlAt)}`;
-  return item.state === 'stale'
-    ? `Google hat die alte Fassung: ${changed}, ${crawled}`
-    : `Vielleicht schon gesehen: ${changed}, ${crawled}, kurz vor oder nach der Änderung`;
-}
-
-const STATE_CHIP: Record<
-  SearchConsoleReindexItem['state'],
-  { label: string; tone: 'danger' | 'warning' | 'muted' }
-> = {
-  unknown: { label: 'unbekannt', tone: 'danger' },
-  stale: { label: 'veraltet', tone: 'warning' },
-  uncertain: { label: 'unsicher', tone: 'muted' },
-};
 
 /** Clicks, impressions, CTR and position over 28 days, as one line. */
 function Figures({ item }: { item: SearchConsoleReindexItem }) {
@@ -88,47 +59,10 @@ export function ReindexPanel({ siteUrl }: { siteUrl: string }) {
   const [scanning, setScanning] = useState(false);
 
   async function request(item: SearchConsoleReindexItem) {
-    // Both inside the click, before any await, or the browser refuses them.
-    const copied = navigator.clipboard?.writeText(item.url).then(
-      () => true,
-      () => false
-    );
-    window.open(searchConsolePropertyUrl(siteUrl), '_blank', 'noopener');
     setBusy(item.path);
-    try {
-      const result = await adminFetch<SearchConsoleReindexRecord>(
-        `${SEARCH_CONSOLE_REINDEX_PATH}/requests`,
-        { method: 'POST', body: { path: item.path } }
-      );
-      if (!result.recorded) {
-        toast.push({
-          title: 'Schon beantragt',
-          description: `${item.path} wurde ${formatAgo(result.requestedAt)} beantragt. Nicht noch einmal klicken.`,
-          tone: 'info',
-        });
-      } else if (result.requestsLast24h > result.dailyLimit) {
-        toast.push({
-          title: `${result.requestsLast24h} Anträge in 24 Stunden`,
-          description: `Mehr als ${result.dailyLimit}: Google lehnt weitere meist ab. Gemerkt ist der Antrag trotzdem.`,
-          tone: 'error',
-        });
-      } else {
-        toast.push({
-          title: (await copied) ? 'URL kopiert und gemerkt' : 'Gemerkt',
-          description: `In der Search Console oben bei „URL prüfen“ einfügen, dann „Indexierung beantragen“. ${result.requestsLast24h} von ${result.dailyLimit} Anträgen in 24 Stunden.`,
-          tone: 'success',
-        });
-      }
-      await queryClient.invalidateQueries({ queryKey: reindexKey });
-    } catch (err) {
-      toast.push({
-        title: 'Antrag nicht gemerkt',
-        description: err instanceof Error ? err.message : undefined,
-        tone: 'error',
-      });
-    } finally {
-      setBusy(null);
-    }
+    toast.push(await requestReindex(siteUrl, item));
+    await queryClient.invalidateQueries({ queryKey: reindexKey });
+    setBusy(null);
   }
 
   async function scan() {
@@ -215,15 +149,15 @@ export function ReindexPanel({ siteUrl }: { siteUrl: string }) {
                   <li key={item.path} className="flex items-start gap-3 py-2">
                     <div className="min-w-0 flex-1 space-y-0.5">
                       <div className="flex items-center gap-2">
-                        <Chip tone={STATE_CHIP[item.state].tone}>
-                          {STATE_CHIP[item.state].label}
+                        <Chip tone={REINDEX_STATE_CHIP[item.state].tone}>
+                          {REINDEX_STATE_CHIP[item.state].label}
                         </Chip>
                         <span className="min-w-0 text-sm">
                           <StartTruncated>{item.url}</StartTruncated>
                         </span>
                         <PublicLink href={item.url} />
                       </div>
-                      <p className="text-xs">{reason(item)}</p>
+                      <p className="text-xs">{reindexReason(item)}</p>
                       <Figures item={item} />
                     </div>
                     {canRequest && (
@@ -263,7 +197,7 @@ export function ReindexPanel({ siteUrl }: { siteUrl: string }) {
                       </div>
                       <p className="text-muted-foreground text-xs">
                         Beantragt {formatAgo(item.requestedAt!)}
-                        {item.requestedBy ? ` von ${item.requestedBy}` : ''}. {reason(item)}
+                        {item.requestedBy ? ` von ${item.requestedBy}` : ''}. {reindexReason(item)}
                       </p>
                       <Figures item={item} />
                     </li>

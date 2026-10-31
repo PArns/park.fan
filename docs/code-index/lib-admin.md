@@ -191,6 +191,8 @@ The path guard and the query of `/api/admin/[...path]`, pure so they can be test
 - `parseSearchConsoleQuery` _function_: The query an address names: trimmed text of a sane length, otherwise `null`.
 - `parseSearchConsolePage` _function_: The page an address names: one of our paths, so it starts with a slash and has no query or hash.
 - `googleSearchHref` _function_: The address of the Google results for a query, to see what a searcher sees.
+- `missingTitleWords` _function_: The words of a query that the title does not contain, accents and case ignored. Words under four letters are left out: they are mostly articles and prepositions a title need not repeat.
+- `weakSnippet` _function_: Whether a page or a query is on Google's first page but hardly clicked: position 10 or better and a click rate under 1 %, which points at the title or the description.
 - `searchConsoleState` _function_: Where the import stands: `off` without credentials, `waiting` while nothing is stored yet (the first import backfills 16 months and takes its time), `ready` once rows exist.
 - `googleWindowNote` _function_: The window Google's figures cover, in a sentence, from the dates the API echoed.
 - `importFinished` _function_: Whether the import requested at `mark` has run since: it has finished (a new `lastImportAt`) or failed (a new `lastError`). `runningSince` cannot say that: between the request and the start of the run it is still empty.
@@ -202,6 +204,7 @@ The path guard and the query of `/api/admin/[...path]`, pure so they can be test
 - `SEARCH_CONSOLE_REINDEX_PATH` _const_: The proxy path of the reindex queue; `/requests` records one, `/scan` queues the check.
 - `SEARCH_CONSOLE_QUERY_PARAM` _const_: The address parameter that holds the query a page list is narrowed to.
 - `SEARCH_CONSOLE_PAGE_PARAM` _const_: The address parameter that holds the page a query list is narrowed to.
+- `SNIPPET_LIMITS` _const_: Where Google's result cuts a title and a description: about 60 characters or 580 pixels of 20px Arial for the title, about 155 characters for the description.
 - `IMPORT_WAIT_MS` _const_: How long a requested import is waited for, in milliseconds, before the page stops asking.
 - `IMPORT_POLL_MS` _const_: Milliseconds between two asks for the status while an import is awaited.
 - `SEARCH_CONSOLE_SETUP_DOC` _const_: The owner's setup steps in the API's docs: the service account, the property, the variables.
@@ -266,6 +269,8 @@ The path guard and the query of `/api/admin/[...path]`, pure so they can be test
 - `referrerHref` _function_: The address a referrer row links to. A referrer is the external host of the first page, or the name of a site the API knows (`google`, `chatgpt`), which is a label and not a host: only a value that looks like a host gets a link.
 - `pathEditorHref` _function_: The editor a public path belongs to, for a path that is a park or a ride; `null` for the rest.
 - `crosstabLabel` _function_: The title of a crosstab dimension: a fixed one by its word, `prop:<key>` by the property's.
+- `propValues` _function_: How often each value of one property of an event came up; nothing for a property never sent.
+- `propCount` _function_: The count of one value of an event's property, 0 when it is not among the values listed.
 - `crosstabDimensions` _function_: The dimensions an event can be crossed by: each property key it was sent with, then the fixed ones.
 - `defaultCrosstab` _function_: The pair the crosstab opens on: the first property against the page type, the page type against the device for an event without properties.
 - `crosstabValueLabel` _function_: How a value of a crosstab dimension reads: the remainder is `Übrige`, an empty value `Keine Angabe`, a day or a period by the step of the answer.

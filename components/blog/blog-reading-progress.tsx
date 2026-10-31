@@ -2,14 +2,12 @@
 
 import { useEffect, useRef } from 'react';
 import { PAGE_VIEW_DWELL_MS } from '@/lib/analytics/page-views';
+import { ARTICLE_READ_DEPTHS, articleReadSpan } from '@/lib/analytics/article-read';
 import { trackSiteEvent } from '@/lib/analytics/site-analytics';
-
-/** The depths of `article_read`, in percent of the way to the end of the post. */
-const DEPTHS = [25, 50, 75, 100] as const;
 
 /**
  * Thin fixed bar at the top of the viewport tracking how far the reader has scrolled through the
- * article body, reaching 100% at the `#blog-progress-end` marker rather than the end of the page.
+ * article body, reaching 100% at the end of the post's body (`articleReadSpan`) rather than the end of the page.
  * The scroll handler only reads `scrollY` and writes a `scaleX` transform to a ref; the marker is
  * measured again only when the document changes size.
  *
@@ -28,25 +26,12 @@ export function BlogReadingProgress() {
     // the per-scroll work stays layout-read-free.
     let max = 0;
 
-    const measureMax = () => {
-      const scrollTop = window.scrollY || document.documentElement.scrollTop;
-      const end = document.getElementById('blog-progress-end');
-      if (end) {
-        // Document Y of the marker minus one viewport: the scroll position at
-        // which the end of the article reaches the bottom of the screen.
-        max = end.getBoundingClientRect().top + scrollTop - window.innerHeight;
-      } else {
-        const doc = document.documentElement;
-        max = doc.scrollHeight - doc.clientHeight;
-      }
-    };
-
     const openedAt = performance.now();
     const reported = new Set<number>();
     const reportDepth = (progress: number) => {
       if (performance.now() - openedAt < PAGE_VIEW_DWELL_MS) return;
       if (document.visibilityState !== 'visible') return;
-      for (const depth of DEPTHS) {
+      for (const depth of ARTICLE_READ_DEPTHS) {
         if (progress * 100 >= depth && !reported.has(depth)) {
           reported.add(depth);
           trackSiteEvent('article_read', { depth });
@@ -82,12 +67,12 @@ export function BlogReadingProgress() {
       if (measureFrame !== null) return;
       measureFrame = requestAnimationFrame(() => {
         measureFrame = null;
-        measureMax();
+        max = articleReadSpan();
         apply();
       });
     };
 
-    measureMax();
+    max = articleReadSpan();
     apply();
 
     const resizeObserver = new ResizeObserver(scheduleMeasure);

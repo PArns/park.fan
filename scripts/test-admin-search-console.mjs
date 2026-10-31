@@ -27,12 +27,44 @@ import {
   searchConsolePath,
   searchConsoleRowChange,
   searchConsoleState,
+  missingTitleWords,
+  weakSnippet,
 } from '../lib/admin/search-console.ts';
 
 const totals = (clicks, impressions, ctr, position) => ({ clicks, impressions, ctr, position });
 const days30 = { kind: 'days', days: 30 };
 
 const testCases = [
+  // snippet
+  {
+    name: 'a query word missing from the title is named, accents, case and short words ignored',
+    actual: () =>
+      missingTitleWords(
+        'phantasialand brühl wartezeiten heute in',
+        'Phantasialand Bruhl: Wartezeit'
+      ),
+    expected: ['wartezeiten', 'heute'],
+  },
+  {
+    name: 'a word inside a longer word of the title counts as present',
+    actual: () => missingTitleWords('wartezeit', 'Wartezeiten heute'),
+    expected: [],
+  },
+  {
+    name: 'first page and under 1 % click rate is a weak snippet',
+    actual: () => weakSnippet(totals(2, 400, 0.005, 6.2)),
+    expected: true,
+  },
+  {
+    name: 'past position 10 or over 1 % click rate is no weak snippet',
+    actual: () => [weakSnippet(totals(2, 400, 0.005, 11)), weakSnippet(totals(8, 400, 0.02, 3))],
+    expected: [false, false],
+  },
+  {
+    name: 'no impressions is no weak snippet',
+    actual: () => weakSnippet(totals(0, 0, 0, 0)),
+    expected: false,
+  },
   // figures
   {
     name: 'a click rate over no impressions is not a figure',

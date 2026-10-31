@@ -24,6 +24,7 @@ import { resolveAuthor } from '@/lib/blog/authors';
 import { ShareButtons } from '@/components/common/share-buttons';
 import { BlogPostNav } from '@/components/blog/blog-post-nav';
 import { BlogReadingProgress } from '@/components/blog/blog-reading-progress';
+import { ARTICLE_END_ID } from '@/lib/analytics/article-read';
 import { PageViewBeacon } from '@/components/analytics/page-view-beacon';
 import { MostReadStream } from '@/components/blog/most-read-stream';
 import { getMostReadSeed } from '@/lib/blog/most-read';
@@ -370,7 +371,7 @@ export async function BlogPostPageBody({
 
             {/* Marks the end of the readable article body — the reading-progress
                bar fills to 100% here, before the references/related sections. */}
-            <div id="blog-progress-end" aria-hidden="true" />
+            <div id={ARTICLE_END_ID} aria-hidden="true" />
 
             {/* What the post's parks and rides are doing now, first after the text, where the
                readers who finished it still are. The order and the reading figures behind it:
