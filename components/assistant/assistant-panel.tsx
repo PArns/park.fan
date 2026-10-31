@@ -145,9 +145,10 @@ export function AssistantPanel({ open, onClose }: { open: boolean; onClose: () =
       inert={!open}
       className={cn(
         // Not `overflow-hidden`: Parky's face sits half outside the window's top edge.
-        'bg-background/90 border-border/60 fixed z-[45] flex flex-col rounded-2xl border shadow-2xl backdrop-blur-xl',
+        // A frame in the theme's blue, so the window reads as Parky's over any page.
+        'bg-background/90 border-primary/60 ring-primary/15 fixed z-[45] flex flex-col rounded-2xl border-2 shadow-2xl ring-4 backdrop-blur-xl',
         // The launcher hides while the window is open, so the window takes its corner.
-        'inset-x-2 bottom-[max(0.5rem,env(safe-area-inset-bottom))] h-[min(80dvh,580px)]',
+        'inset-x-2 bottom-[max(0.5rem,env(safe-area-inset-bottom))] h-[calc(100dvh-4.5rem)] sm:h-[min(80dvh,600px)]',
         // Clear of the planner's edge tab, which sits on the right edge at mid height.
         'sm:inset-x-auto sm:right-12 sm:bottom-4 sm:w-[380px]',
         'planner-wide:right-[calc(var(--planner-inset,0px)+3rem)]',

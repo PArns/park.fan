@@ -9,22 +9,23 @@ import {
   Compass,
   ExternalLink,
   Eye,
-  ListOrdered,
   Link2,
+  ListOrdered,
   LogIn,
   LogOut,
   MonitorSmartphone,
   MousePointerClick,
   Pencil,
   Percent,
+  Route,
   ScanSearch,
   Search,
   SearchCheck,
   Text,
-  Wrench,
-  Route,
   Timer,
   Undo2,
+  Wrench,
+  X,
   type LucideIcon,
 } from 'lucide-react';
 import { analyticsPath } from '@/app/admin/traffic/_lib/use-traffic';
@@ -408,7 +409,14 @@ function SiteFigures({ site }: { site: SiteState }) {
  * clicks per link block onto the page. A 401 clears the marker cookie and unmounts it; any other refusal of Google's reads
  * shows nothing.
  */
-export function SearchConsoleOverlay({ onSignedOut }: { onSignedOut: () => void }) {
+export function SearchConsoleOverlay({
+  onSignedOut,
+  onClose,
+}: {
+  onSignedOut: () => void;
+  /** Puts the overlay away for this browser session; the gate leaves a small button to bring it back. */
+  onClose: () => void;
+}) {
   const path = searchConsolePathOf(usePathname());
   const [open, setOpen] = useState(false);
   const [state, setState] = useState<OverlayState>({ status: 'loading' });
@@ -533,19 +541,30 @@ export function SearchConsoleOverlay({ onSignedOut }: { onSignedOut: () => void 
           TILE_GLASS
         )}
       >
-        <button
-          type="button"
-          aria-expanded={open}
-          onClick={() => setOpen((value) => !value)}
-          className="flex w-full items-center gap-2 px-3 py-2 text-left tabular-nums"
-        >
-          <Search className="text-primary h-3.5 w-3.5 shrink-0" aria-hidden="true" />
-          <span className="min-w-0 flex-1 truncate font-medium">{summary}</span>
-          <ChevronDown
-            aria-hidden="true"
-            className={cn('h-3.5 w-3.5 shrink-0 transition-transform', !open && 'rotate-180')}
-          />
-        </button>
+        <div className="flex items-center">
+          <button
+            type="button"
+            aria-expanded={open}
+            onClick={() => setOpen((value) => !value)}
+            className="flex min-w-0 flex-1 items-center gap-2 py-2 pl-3 text-left tabular-nums"
+          >
+            <Search className="text-primary h-3.5 w-3.5 shrink-0" aria-hidden="true" />
+            <span className="min-w-0 flex-1 truncate font-medium">{summary}</span>
+            <ChevronDown
+              aria-hidden="true"
+              className={cn('h-3.5 w-3.5 shrink-0 transition-transform', !open && 'rotate-180')}
+            />
+          </button>
+          <button
+            type="button"
+            onClick={onClose}
+            aria-label="Zahlen ausblenden"
+            title="Für diese Sitzung ausblenden"
+            className="text-muted-foreground hover:text-foreground mx-1.5 shrink-0 rounded p-1"
+          >
+            <X className="h-3.5 w-3.5" aria-hidden="true" />
+          </button>
+        </div>
         {open && state.status === 'ready' && (
           <div className="max-h-[min(36rem,calc(100dvh-6rem))] space-y-4 overflow-y-auto border-t px-3 py-3 tabular-nums">
             <p className="text-muted-foreground">
