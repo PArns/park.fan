@@ -20,8 +20,6 @@ tags:
   - germania
   - stagione-2026
 category: guides
-parkLinks:
-  - phantasialand
 rideLinks:
   - phantasialand/taron
   - phantasialand/fly
