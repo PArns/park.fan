@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button';
 import {
   SEARCH_CONSOLE_REINDEX_PATH,
   formatSearchConsole,
-  searchConsoleInspectUrl,
+  searchConsolePropertyUrl,
 } from '@/lib/admin/search-console';
 import { formatCount } from '@/lib/admin/site-analytics';
 import type {
@@ -88,8 +88,12 @@ export function ReindexPanel({ siteUrl }: { siteUrl: string }) {
   const [scanning, setScanning] = useState(false);
 
   async function request(item: SearchConsoleReindexItem) {
-    // Opened before the await, inside the click, or the browser blocks the tab.
-    window.open(searchConsoleInspectUrl(siteUrl, item.url), '_blank', 'noopener');
+    // Both inside the click, before any await, or the browser refuses them.
+    const copied = navigator.clipboard?.writeText(item.url).then(
+      () => true,
+      () => false
+    );
+    window.open(searchConsolePropertyUrl(siteUrl), '_blank', 'noopener');
     setBusy(item.path);
     try {
       const result = await adminFetch<SearchConsoleReindexRecord>(
@@ -110,8 +114,8 @@ export function ReindexPanel({ siteUrl }: { siteUrl: string }) {
         });
       } else {
         toast.push({
-          title: 'Gemerkt',
-          description: `${result.requestsLast24h} von ${result.dailyLimit} Anträgen in 24 Stunden.`,
+          title: (await copied) ? 'URL kopiert und gemerkt' : 'Gemerkt',
+          description: `In der Search Console oben bei „URL prüfen“ einfügen, dann „Indexierung beantragen“. ${result.requestsLast24h} von ${result.dailyLimit} Anträgen in 24 Stunden.`,
           tone: 'success',
         });
       }
@@ -228,7 +232,7 @@ export function ReindexPanel({ siteUrl }: { siteUrl: string }) {
                         variant={atLimit ? 'outline' : 'default'}
                         onClick={() => void request(item)}
                         disabled={busy !== null}
-                        title="Öffnet die URL-Prüfung in der Search Console und merkt sich den Antrag"
+                        title="Kopiert die URL, öffnet die Search Console und merkt sich den Antrag"
                       >
                         {busy === item.path ? (
                           <Loader2 className="h-3.5 w-3.5 animate-spin" />
