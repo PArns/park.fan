@@ -138,6 +138,18 @@ export function AssistantCardView({ card }: { card: AssistantCard }) {
                 <div className="min-w-0 flex-1">
                   <p className="truncate text-sm font-semibold">{park.name}</p>
                   {park.place && <p className="text-muted-foreground truncate">{park.place}</p>}
+                  {(park.status || park.crowdLevel || park.avgWaitMinutes != null) && (
+                    <div className="mt-1 flex flex-wrap items-center gap-1">
+                      {park.status && <ParkStatusBadge status={park.status as ParkStatus} />}
+                      {park.crowdLevel && <CrowdLevelBadge level={park.crowdLevel as CrowdLevel} />}
+                      {park.avgWaitMinutes != null && park.status === 'OPERATING' && (
+                        <LiveWaitPill
+                          minutes={park.avgWaitMinutes}
+                          className="px-1.5 py-0 text-[10px]"
+                        />
+                      )}
+                    </div>
+                  )}
                 </div>
                 {park.url && (
                   <ChevronRight className="text-muted-foreground group-hover:text-primary size-4 shrink-0" />
@@ -184,7 +196,7 @@ export function AssistantCardView({ card }: { card: AssistantCard }) {
             src={photo[0]}
             alt=""
             fill
-            sizes="380px"
+            sizes="480px"
             className="object-cover transition-transform duration-500 group-hover:scale-105"
             style={{ objectPosition: photo[1] }}
           />

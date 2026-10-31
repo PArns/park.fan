@@ -164,9 +164,9 @@ export function AssistantPanel({ open, onClose }: { open: boolean; onClose: () =
         // A frame in the theme's blue, so the window reads as Parky's over any page.
         'bg-background/90 border-primary/60 ring-primary/15 fixed z-[45] flex flex-col rounded-2xl border-2 shadow-2xl ring-4 backdrop-blur-xl',
         // The launcher hides while the window is open, so the window takes its corner.
-        'inset-x-2 bottom-[max(0.5rem,env(safe-area-inset-bottom))] h-[calc(100dvh-4.5rem)] sm:h-[min(80dvh,600px)]',
+        'inset-x-2 bottom-[max(0.5rem,env(safe-area-inset-bottom))] h-[calc(100dvh-4.5rem)] sm:h-[min(clamp(560px,72dvh,720px),calc(100dvh-6rem))]',
         // Clear of the planner's edge tab, which sits on the right edge at mid height.
-        'sm:inset-x-auto sm:right-12 sm:bottom-4 sm:w-[380px]',
+        'sm:inset-x-auto sm:right-12 sm:bottom-4 sm:w-[clamp(380px,32vw,480px)]',
         'planner-wide:right-[calc(var(--planner-inset,0px)+3rem)]',
         'origin-bottom-right transition-[opacity,transform] duration-200 ease-out motion-reduce:transition-none',
         open
