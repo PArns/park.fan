@@ -5,6 +5,7 @@ import { cn } from '@/lib/utils';
 import { pickRandom } from '@/lib/utils/pick-random';
 import { parkyBoredom } from '@/lib/assistant/parky-boredom';
 import { useParkyBoredom } from '@/lib/assistant/use-parky-boredom';
+import { useSearchOpen } from '@/lib/analytics/search-presence';
 import {
   REST,
   RIDE_MOTION,
@@ -126,6 +127,24 @@ const A_FRAME = `M${HUB.x} ${HUB.y}L25.5 13M${HUB.x} ${HUB.y}L41.5 20`;
 const LOOP = { x: 24, y: 16, r: 33 };
 const rail = 'oklch(0.6 0.19 25)';
 
+/**
+ * The magnifying glass Parky holds to its right eye while a search is open: the lens round the eye,
+ * the handle running off down to the right. It swings in from the handle's end.
+ */
+const LENS = { x: EYES[1], y: 22.5, r: 7.6 };
+const onHandle = (distance: number) => ({
+  x: +(LENS.x + distance * Math.SQRT1_2).toFixed(2),
+  y: +(LENS.y + distance * Math.SQRT1_2).toFixed(2),
+});
+const handlePart = (from: number, to: number) =>
+  `M${onHandle(from).x} ${onHandle(from).y}L${onHandle(to).x} ${onHandle(to).y}`;
+const HANDLE_LENGTH = 10.5;
+const FERRULE = handlePart(LENS.r, LENS.r + 2.8);
+const HANDLE = handlePart(LENS.r + 2.8, LENS.r + HANDLE_LENGTH);
+const HANDLE_END = onHandle(LENS.r + HANDLE_LENGTH);
+/** How long the glass takes to go once the search has closed; the stylesheet reads `--parky-act`. */
+const LENS_OUT_MS = 400;
+
 /** A four-pointed star at the centre of the orbit dizzy stars run round, above the left eye. */
 const STAR = 'M17 .2l.8 2 2 .8-2 .8-.8 2-.8-2-2-.8 2-.8Z';
 const frame = 'oklch(0.48 0.1 245)';
@@ -217,6 +236,26 @@ function useIdleAct(enabled: boolean, cue: ParkyCue | null) {
 }
 
 /**
+ * Parky searching along while a search is open on the page ({@link useSearchOpen}): `searching`
+ * while one is, `done` for the moment the glass takes to go after it closed, `null` otherwise.
+ */
+function useSearchAlong(enabled: boolean): 'searching' | 'done' | null {
+  const open = useSearchOpen() && enabled;
+  const [wasOpen, setWasOpen] = useState(open);
+  const [leaving, setLeaving] = useState(false);
+  if (wasOpen !== open) {
+    setWasOpen(open);
+    setLeaving(!open);
+  }
+  useEffect(() => {
+    if (!leaving) return;
+    const timer = setTimeout(() => setLeaving(false), LENS_OUT_MS);
+    return () => clearTimeout(timer);
+  }, [leaving]);
+  return open ? 'searching' : leaving ? 'done' : null;
+}
+
+/**
  * What Parky is busy with, each with its own look: `thinking` (waiting for the first word) gazes
  * up beside thought bubbles, `looking` (a lookup is running) reads in a little book, its eyes
  * following the lines and a page turning now and then, `talking` (the answer is written) moves its
@@ -230,13 +269,17 @@ const READING_GAZE = { x: 0, y: 2.8 };
 /** Where the pupils rest while Parky ponders: up and to the side. */
 const PONDER_GAZE = { x: 1.8, y: -2.4 };
 
+/** Where the pupils rest while Parky searches: a little down, at the page, scanning across it. */
+const SEARCH_GAZE = { x: 0, y: 0.8 };
+
 /**
  * Parky's face: a speech bubble in the brand's blue to green with big eyes that follow the mouse,
  * rosy cheeks and a smile, and for a hat a Ferris wheel with coloured cabins on an A-frame. It
  * blinks, shows its {@link ParkyMood}, and while `idle` fidgets, twirls, dances and reads, gets
  * bored when nobody moves (it yawns, whistles, blows gum, rolls its eyes, naps) and falls asleep
- * after a long quiet spell. The motion lives in `app/globals.css` (`.parky-*`) and only runs
- * without `prefers-reduced-motion`.
+ * after a long quiet spell. While a search is open on the page it searches along, a magnifying
+ * glass to its eye, leaning in at each keystroke. The motion lives in `app/globals.css`
+ * (`.parky-*`) and only runs without `prefers-reduced-motion`.
  */
 export function ParkyLogo({
   className,
@@ -259,14 +302,19 @@ export function ParkyLogo({
   const ground = useId();
   const svg = useRef<SVGSVGElement>(null);
   const mouseGaze = useGaze(svg);
-  // A mood has its own motion; the idle life is for a face with nothing to do.
-  const { act, asleep } = useIdleAct(idle && !state, cue);
+  // A mood has its own motion; the idle life is for a face with nothing to do, and a search open
+  // on the page is something to do.
+  const search = useSearchAlong(idle && !state);
+  const { act, asleep } = useIdleAct(idle && !state && !search, cue);
+  const searching = search === 'searching';
   const gaze =
     state === 'thinking'
       ? PONDER_GAZE
       : state === 'looking' || act === 'read'
         ? READING_GAZE
-        : mouseGaze;
+        : searching
+          ? SEARCH_GAZE
+          : mouseGaze;
   const sleeping = asleep || act === 'nap';
   const ride =
     act !== null && (RIDES as readonly string[]).includes(act) ? (act as ParkyRide) : null;
@@ -288,12 +336,31 @@ export function ParkyLogo({
     }
     return () => runs.forEach((run) => run.cancel());
   }, [motion, ride]);
+  // Each keystroke in the search, Parky leans the glass in for a closer look.
+  const lens = useRef<SVGGElement>(null);
+  useEffect(() => {
+    if (!searching || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    let run: Animation | undefined;
+    const onInput = () => {
+      run?.cancel();
+      run = lens.current?.animate(
+        [{ transform: 'scale(1)' }, { transform: 'scale(1.14)' }, { transform: 'scale(1)' }],
+        { duration: 280, easing: 'ease-out' }
+      );
+    };
+    document.addEventListener('input', onInput, true);
+    return () => {
+      document.removeEventListener('input', onInput, true);
+      run?.cancel();
+    };
+  }, [searching]);
+  const length = act ? ACT_MS[act] : search === 'done' ? LENS_OUT_MS : null;
   return (
     <svg
       ref={svg}
       viewBox="0 0 48 48"
       className={cn('size-8 overflow-visible', className)}
-      style={act ? ({ '--parky-act': `${ACT_MS[act]}ms` } as React.CSSProperties) : undefined}
+      style={length ? ({ '--parky-act': `${length}ms` } as React.CSSProperties) : undefined}
       aria-hidden="true"
     >
       <defs>
@@ -388,13 +455,14 @@ export function ParkyLogo({
         </g>
       )}
       <g
-        key={act ?? state ?? (asleep ? 'asleep' : 'still')}
+        key={act ?? state ?? (search ? 'search' : asleep ? 'asleep' : 'still')}
         ref={body}
         className={cn(
           'parky-body',
           act && `parky-act-${act}`,
           state && `parky-mood-${state}`,
-          asleep && 'parky-asleep'
+          asleep && 'parky-asleep',
+          searching && 'parky-searching'
         )}
       >
         {/* The hat: a Ferris wheel standing on Parky's head. */}
@@ -407,7 +475,8 @@ export function ParkyLogo({
                 act === 'spin' ||
                 act === 'twirl' ||
                 ride ||
-                act === 'dance') &&
+                act === 'dance' ||
+                searching) &&
                 'parky-wheel--turning'
             )}
           >
@@ -478,6 +547,18 @@ export function ParkyLogo({
         <ellipse cx="37.2" cy="31" rx="2.4" ry="1.4" fill="oklch(0.78 0.12 15)" opacity=".7" />
         {state === 'talking' ? (
           <ellipse className="parky-mouth" cx="24" cy="33.5" rx="3" ry="2.2" fill={ink} />
+        ) : searching ? (
+          // Concentrating: the mouth pulled to one side, the tip of the tongue out.
+          <g className="parky-focus">
+            <ellipse cx="25.9" cy="34.5" rx="1.4" ry="1.1" fill="oklch(0.7 0.15 15)" />
+            <path
+              d="M21.2 33.2q2.6 1.5 5.6.2"
+              fill="none"
+              stroke={ink}
+              strokeWidth="1.8"
+              strokeLinecap="round"
+            />
+          </g>
         ) : (
           <path
             className="parky-smile"
@@ -549,6 +630,56 @@ export function ParkyLogo({
               <circle cx="34" cy={REST.y - 2} r="2" fill={ink} />
             </g>
           </>
+        )}
+        {search && (
+          // The glass over the right eye, which the stylesheet makes big behind it.
+          <g
+            className={cn('parky-lens', !searching && 'parky-lens--out')}
+            style={{
+              transformBox: 'view-box',
+              transformOrigin: `${HANDLE_END.x}px ${HANDLE_END.y}px`,
+            }}
+          >
+            <g
+              ref={lens}
+              style={{ transformBox: 'view-box', transformOrigin: `${LENS.x}px ${LENS.y}px` }}
+            >
+              <path
+                d={HANDLE}
+                stroke="oklch(0.56 0.12 55)"
+                strokeWidth="3.2"
+                strokeLinecap="round"
+              />
+              <path d={FERRULE} stroke={ink} strokeWidth="3.8" />
+              <circle
+                cx={LENS.x}
+                cy={LENS.y}
+                r={LENS.r}
+                fill="oklch(0.92 0.04 230)"
+                fillOpacity=".22"
+                stroke={ink}
+                strokeWidth="1.7"
+              />
+              <circle
+                cx={LENS.x}
+                cy={LENS.y}
+                r={LENS.r - 1}
+                fill="none"
+                stroke="white"
+                strokeOpacity=".5"
+                strokeWidth=".5"
+              />
+              {/* The glint, top left in the glass. */}
+              <path
+                d={`M${LENS.x - 4.8} ${LENS.y - 2.9}a5.4 5.4 0 0 1 3.2-3`}
+                fill="none"
+                stroke="white"
+                strokeOpacity=".85"
+                strokeWidth="1.1"
+                strokeLinecap="round"
+              />
+            </g>
+          </g>
         )}
         {(state === 'looking' || act === 'read') && (
           // An open book held below the eyes, where the mouth was; a page turns now and then.

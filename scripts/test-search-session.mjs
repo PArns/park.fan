@@ -3,12 +3,14 @@
  * counting every search surface sends through: one `search_opened` per opening, at most one
  * `search_typed` and one `search_no_results` in it, a click before any opening opening one, and
  * a click after a close counting for the opening it closed, so the admin's click and no-result
- * rates stay between 0 and 1; a click naming the UUID it opened, and only a UUID.
+ * rates stay between 0 and 1; a click naming the UUID it opened, and only a UUID. And whether a
+ * search is open on the page (`lib/analytics/search-presence.ts`), which Parky searches along with.
  *
  * Run: `pnpm test:search-session`
  */
 import assert from 'node:assert/strict';
 import { createSearchSession, trackResultClick } from '../lib/analytics/search-session.ts';
+import { createSearchPresence } from '../lib/analytics/search-presence.ts';
 
 let passed = 0;
 function test(name, fn) {
@@ -186,6 +188,58 @@ test('a ride card opened from the hits is a click with its UUID; its alert bell 
       PARK.toLowerCase(),
     ],
   ]);
+});
+
+test('a session reports each opening and each close once', () => {
+  const changes = [];
+  const session = createSearchSession(
+    'hero',
+    () => {},
+    (open) => changes.push(open)
+  );
+  session.close();
+  session.open();
+  session.open();
+  session.close();
+  session.close();
+  session.resultClicked('park', 0);
+  assert.deepEqual(changes, [true, false]);
+});
+
+test('a search counts as open while an open session is on the page', () => {
+  const presence = createSearchPresence();
+  let heard = 0;
+  presence.subscribe(() => heard++);
+  const palette = {};
+  const hero = {};
+  presence.mount(palette);
+  presence.mount(hero);
+  assert.equal(presence.getSnapshot(), false);
+  presence.setOpen(hero, true);
+  presence.setOpen(palette, true);
+  assert.equal(presence.getSnapshot(), true);
+  presence.setOpen(hero, false);
+  assert.equal(presence.getSnapshot(), true, 'the palette is still open');
+  presence.setOpen(palette, false);
+  assert.equal(presence.getSnapshot(), false);
+  assert.equal(heard, 2, 'only a change from closed to open and back is news');
+  assert.equal(presence.getServerSnapshot(), false);
+});
+
+test('a field that leaves the page open leaves no search behind; a remount brings it back', () => {
+  const presence = createSearchPresence();
+  const field = {};
+  presence.mount(field);
+  presence.setOpen(field, true);
+  // Strict mode, or a navigation: unmounted while open.
+  presence.unmount(field);
+  assert.equal(presence.getSnapshot(), false);
+  presence.mount(field);
+  assert.equal(presence.getSnapshot(), true, 'the same session, still open, is back');
+  presence.unmount(field);
+  presence.setOpen(field, false);
+  presence.mount(field);
+  assert.equal(presence.getSnapshot(), false);
 });
 
 console.log(`\n${passed} assertions passed.`);

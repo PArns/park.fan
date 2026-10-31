@@ -20,6 +20,7 @@ import {
 } from '@/lib/assistant/teaser-store';
 import { parkyBoredom } from '@/lib/assistant/parky-boredom';
 import { useParkyBoredom } from '@/lib/assistant/use-parky-boredom';
+import { useSearchOpen } from '@/lib/analytics/search-presence';
 import type { ParkyEntrance } from '@/lib/assistant/entrance';
 import {
   holidayOn,
@@ -56,7 +57,10 @@ const REACTION_KEYS = {
 } as const;
 /** The bored line waits for the first yawn to end, the woken line for the start. */
 const REACTION_DELAY_MS = { bored: 4_500, woke: 1_000 } as const;
-/** A line that falls due over another line or a sleeping Parky tries again this much later. */
+/**
+ * A line that falls due over another line, a sleeping Parky or an open search tries again this
+ * much later.
+ */
 const RETRY_MS = 5_000;
 /** What Parky says after each entrance. */
 const ENTRANCE_KEYS = {
@@ -92,8 +96,10 @@ interface Line {
  * Parky. After its entrance Parky's first line fits how it arrived, and it also speaks up when it
  * gets bored or is woken from sleep, a few times a session. Easter eggs: on a holiday the first
  * invitation is the day's; now and then on a park's page Parky names a ride there and rides a
- * coaster, and so it does after the Konami code. Every line counts as `assistant_line_shown` with
- * its kind. Loaded only when the button is drawn, so its strings stay out of the page's chrome.
+ * coaster, and so it does after the Konami code. While a search is open Parky searches along and
+ * keeps quiet: a line on screen goes, and the next waits. Every line counts as
+ * `assistant_line_shown` with its kind. Loaded only when the button is drawn, so its strings stay
+ * out of the page's chrome.
  */
 export function AssistantTeaser({
   onOpen,
@@ -114,11 +120,21 @@ export function AssistantTeaser({
   const queryClient = useQueryClient();
   const [line, setLine] = useState<Line | null>(null);
   const boredom = useParkyBoredom(true);
+  const searching = useSearchOpen();
+  const [wasSearching, setWasSearching] = useState(searching);
+  if (wasSearching !== searching) {
+    setWasSearching(searching);
+    // The bubble would sit over the palette's list and the field's results.
+    if (searching) setLine(null);
+  }
   // What the timers need to know without being re-armed by it.
-  const latest = useRef({ line, boredom, onRide });
+  const latest = useRef({ line, boredom, searching, onRide });
   useEffect(() => {
-    latest.current = { line, boredom, onRide };
+    latest.current = { line, boredom, searching, onRide };
   });
+  /** Whether a line would interrupt: another is showing, Parky sleeps, or a search is open. */
+  const busy = () =>
+    latest.current.line !== null || latest.current.boredom === 'asleep' || latest.current.searching;
 
   // Every line goes after a while, whoever said it; a new one starts the wait again.
   useEffect(() => {
@@ -136,10 +152,8 @@ export function AssistantTeaser({
     const next = (wait: number, keys: readonly string[], kind: AssistantLineKind) => {
       if (shown >= TEASER_SCHEDULE_MS.length) return;
       timer = setTimeout(() => {
-        // Never over another line and never from a sleeping Parky.
-        if (latest.current.line || latest.current.boredom === 'asleep') {
-          return next(RETRY_MS, keys, kind);
-        }
+        // Never over another line, from a sleeping Parky or into a search.
+        if (busy()) return next(RETRY_MS, keys, kind);
         if (teasersShown() >= TEASER_SCHEDULE_MS.length) return;
         shown += 1;
         setTeasersShown(shown);
@@ -161,7 +175,7 @@ export function AssistantTeaser({
       boredom === 'bored' ? 'bored' : boredom === 'awake' && parkyBoredom.wokeUp() ? 'woke' : null;
     if (!kind) return;
     const timer = setTimeout(() => {
-      if (latest.current.line || reactionsShown() >= REACTIONS_PER_SESSION) return;
+      if (busy() || reactionsShown() >= REACTIONS_PER_SESSION) return;
       countReaction();
       setLine({ text: t(pickRandom(REACTION_KEYS[kind])), kind });
     }, REACTION_DELAY_MS[kind]);
@@ -191,7 +205,7 @@ export function AssistantTeaser({
     };
     const say = (wait: number) => {
       timer = setTimeout(async () => {
-        if (latest.current.line || latest.current.boredom === 'asleep') return say(RETRY_MS);
+        if (busy()) return say(RETRY_MS);
         const egg = await eggFor();
         if (!live || !egg || linesMuted()) return;
         setLine({

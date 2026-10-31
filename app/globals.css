@@ -389,6 +389,7 @@
  * acts last `--parky-act`, which the component sets from its own table, so a length lives there
  * only. With company Parky also twirls, dances and reads; bored, it yawns, whistles, blows gum,
  * rolls its eyes and naps; asleep it breathes slowly under rising Zs, and the hat stands still.
+ * While a search is open it holds a magnifying glass to its eye and looks around the page.
  */
 @keyframes parky-blink {
   0%,
@@ -1160,6 +1161,41 @@
     transform: translateY(-2px) scale(0.9);
   }
 }
+@keyframes parky-lens-in {
+  0% {
+    opacity: 0;
+    transform: rotate(-35deg) scale(0.3);
+  }
+  65% {
+    opacity: 1;
+    transform: rotate(6deg) scale(1.06);
+  }
+  100% {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+  }
+}
+@keyframes parky-lens-out {
+  to {
+    opacity: 0;
+    transform: rotate(-35deg) scale(0.3);
+  }
+}
+/* Looking round the page through the glass: over to one side, a moment's peer, over to the other. */
+@keyframes parky-hunt {
+  0%,
+  100% {
+    transform: translateX(0) rotate(0deg);
+  }
+  25%,
+  40% {
+    transform: translateX(-1.2px) rotate(-6deg);
+  }
+  70%,
+  85% {
+    transform: translateX(1.2px) rotate(5deg);
+  }
+}
 .parky-thoughts circle,
 .parky-thoughts .parky-cloud {
   transform-box: fill-box;
@@ -1206,6 +1242,10 @@
 .parky-woozy {
   transform-box: fill-box;
   transform-origin: center;
+}
+/* The eye behind the glass, magnified; a size, not a motion, so it holds under reduced motion. */
+.parky-searching .parky-eye:last-child {
+  transform: scale(1.2);
 }
 @media (prefers-reduced-motion: no-preference) {
   .parky-eyes {
@@ -1419,6 +1459,21 @@
   }
   .parky-mood-thinking {
     animation: parky-ponder 2.4s ease-in-out infinite;
+  }
+  .parky-eye {
+    transition: transform 0.3s ease-out;
+  }
+  .parky-lens {
+    animation: parky-lens-in 0.5s ease-out both;
+  }
+  .parky-lens--out {
+    animation: parky-lens-out var(--parky-act) ease-in both;
+  }
+  .parky-searching {
+    animation: parky-hunt 4.2s ease-in-out 0.5s infinite;
+  }
+  .parky-searching .parky-pupils {
+    animation: parky-scan 1.6s ease-in-out infinite;
   }
   .parky-mood-looking .parky-pupils,
   .parky-act-read .parky-pupils {

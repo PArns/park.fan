@@ -20,7 +20,7 @@ export function SearchPageTracking({
   found: boolean;
   children: ReactNode;
 }) {
-  const session = useSearchSession('search_page');
+  const session = useSearchSession('search_page', { presence: false });
 
   useEffect(() => {
     session.open();
