@@ -14,8 +14,9 @@ when testing in-park features from a desk.
 Parky, whose real switch and rollout share live in the admin and are read in the browser after the
 first paint, so no server markup depends on them. `?assistant=on` shows Parky for the session
 ([assistant](../features/assistant.md#rollout)). `?parky=` tries Parky's easter eggs out on one
-page view: `egg` on a park's page says its line and rides the coaster whatever the chance, and an
-entrance's name (`scurry`, `drop`, `roll`, `peek`, `pop`) makes the button arrive that way
+page view: `egg` on a park's page says its line and takes a ride whatever the chance, an
+entrance's name (`scurry`, `drop`, `roll`, `peek`, `pop`) makes the button arrive that way, and a
+ride's name (`coaster`, `launch`, `hills`, `tower`) has Parky take it once it has arrived
 ([assistant](../features/assistant.md#how-parky-arrives)).
 
 A flag is a `NEXT_PUBLIC_*` env var, default off, read into a constant so the unused branch

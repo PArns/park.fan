@@ -62,6 +62,15 @@ by hand: change the comment in the code and re-run the script. -->
 - `parkyBoredom` _const_: One boredom for the whole page, for `useSyncExternalStore`: the first subscriber starts the listeners, the last one stops them. Without motion (`prefers-reduced-motion`) Parky has no idle life and the snapshot is `null`, as on the server.
 - Types: `ParkyBoredom`
 
+### [`parky-rides.ts`](../../lib/assistant/parky-rides.ts)
+
+- `isRide` _function_: Whether a name is one of Parky's rides.
+- `rideKeyframe` _function_: A stop as a keyframe for the car, turned about the wheels' resting point.
+- `REST` _const_: Where the wheels touch the rail while Parky sits at rest.
+- `RIDES` _const_: The rides Parky can take; `coaster` is the loop, drawn and turned by the stylesheet.
+- `RIDE_MOTION` _const_: The rides played from these stops; the loop is the stylesheet's.
+- Types: `ParkyRide`, `RideStop`, `RideMotion`
+
 ### [`post-text.ts`](../../lib/assistant/post-text.ts)
 
 - `postPlainText` _function_: A post's Markdown as plain text for the chat assistant: code, images, embeds, HTML and table rules removed, links reduced to their text, cut at a paragraph near `POST_TEXT_LIMIT`.

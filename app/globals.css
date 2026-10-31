@@ -1254,6 +1254,9 @@
   .parky-act-whistle .parky-smile,
   .parky-act-gum .parky-smile,
   .parky-act-coaster .parky-smile,
+  .parky-act-launch .parky-smile,
+  .parky-act-hills .parky-smile,
+  .parky-act-tower .parky-smile,
   .parky-act-dizzy .parky-smile {
     animation: parky-smile-away var(--parky-act) ease-in-out;
   }
@@ -1360,7 +1363,18 @@
     transform-origin: 24px 16px;
     animation: parky-coaster var(--parky-act) linear;
   }
-  .parky-act-coaster .parky-eyes {
+  /* The other rides are played from their geometry (`lib/assistant/parky-rides.ts`), turned
+     about the wheels' resting point. */
+  .parky-act-launch,
+  .parky-act-hills,
+  .parky-act-tower {
+    transform-box: view-box;
+    transform-origin: 24px 49px;
+  }
+  .parky-act-coaster .parky-eyes,
+  .parky-act-launch .parky-eyes,
+  .parky-act-hills .parky-eyes,
+  .parky-act-tower .parky-eyes {
     animation: parky-wide var(--parky-act) ease-out;
   }
   .parky-grin {

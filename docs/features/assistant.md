@@ -117,11 +117,25 @@ navigation bar's `z-[9999]`. So that Parky and his hat, which rise over the wind
 clear of the 48 px header rather than cover it, the window starts 88 px from the top on a phone and
 caps its height at the screen minus 10rem on a desktop.
 
-An easter egg can ask for an act from outside: `ParkyLogo`'s `cue` plays it at once. The coaster
-ride is one: Parky sits in a red car and turns about the centre of a loop (`LOOP`), so the car's
-wheels run round the rails drawn around it, upside down at the top, eyes wide and mouth open.
-Off the coaster it is always dizzy (`FOLLOW_UP`): the pupils swirl round their eyes, one each
-way, the body reels, the mouth goes wavy and three stars circle its head.
+An easter egg can ask for a ride from outside: `ParkyLogo`'s `cue` plays it at once, a named one
+or `ride` for any of four, and now and then Parky takes one by itself as one act among the rest.
+Parky sits in a red car for each:
+
+- **Loop** (`coaster`): it turns about the centre of a loop (`LOOP`), so the car's wheels run
+  round the rails drawn around it, upside down at the top. The stylesheet turns it.
+- **Launch**: shot to the left, up a spike until the speed runs out, a hang at the top, back down
+  backwards through the station and a few swings to rest.
+- **Hills**: over two camel-backs to the left and out of sight, back in from the right as if the
+  circuit ran on behind the page, braking into the station.
+- **Tower**: pulled up a mast, a shiver at the top, the drop, the brakes; the hat lifts off the
+  head as it falls and lands again.
+
+The last three are worked out in `lib/assistant/parky-rides.ts`: one geometry gives both the rails
+drawn and the stops the car passes, played with the Web Animations API and turned about the wheels'
+resting point, so the two cannot drift apart. On the hills the car is slower near the top and
+faster low down. Eyes go wide and the mouth opens on every ride, and off every ride Parky is
+dizzy (`FOLLOW_UP`): the pupils swirl round their eyes, one each way, the body reels, the mouth
+goes wavy and three stars circle its head.
 
 The store keeps one timer for the next stage, so a moving pointer costs a timestamp. Each act's
 length is written once, in `ACT_MS`; the stylesheet reads it as `--parky-act`. Under reduced
@@ -165,7 +179,7 @@ its corner offset. These lines go in it, from the `assistant` namespace:
   the first invitation is the day's own line (`holidayHalloween`, `holidayChristmas`,
   `holidayNewYear`, by the browser's calendar). On a park's own page, on `PARK_EGG_CHANCE` (40 %)
   of the visits or always with `?parky=egg`, Parky names a ride there 5 s after the page settles
-  (`parkLine1`–`4`, with `{park}` and `{ride}`) and then rides a coaster. The ride is the park's
+  (`parkLine1`–`4`, with `{park}` and `{ride}`) and then takes one of its rides. The ride is the park's
   favourite in `PARK_FAVOURITES` (16 parks, keyed by geo path), else from its own data: the name
   from the page's `AmusementPark` structured data, the ride the coaster with the longest waits in
   the `/stats` the page loads anyway (through its React Query cache, so no request of its own),
