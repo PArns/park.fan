@@ -7,7 +7,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`assistant-card.tsx`](../../components/assistant/assistant-card.tsx)
 
-- `AssistantCardView` _component_: A park or ride as a card in Parky's chat: the site's own status and crowd badges on live data, and the whole card a link to its page. The API builds the data; nothing here is model text.
+- `AssistantCardView` _component_: A park, a ride or a park's rides as a card in Parky's chat: the site's own status, crowd and wait chips on live data, the whole card a link to its page. The API builds the data; nothing here is model text.
 
 ### [`assistant-challenge.tsx`](../../components/assistant/assistant-challenge.tsx)
 
@@ -35,7 +35,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`parky-logo.tsx`](../../components/assistant/parky-logo.tsx)
 
-- `ParkyLogo` _component_: Parky's mark: a Ferris wheel whose gondolas are a speech bubble's dots, on the brand's blue to green. With `talking`, the wheel turns slowly while Parky writes; still for reduced motion.
+- `ParkyLogo` _component_: Parky's face: a speech bubble in the brand's blue to green with big eyes, rosy cheeks and a smile, and a small Ferris wheel for a hat. It blinks now and then; with `talking` the wheel turns and the mouth opens.
 
 ### [`use-assistant-actions.ts`](../../components/assistant/use-assistant-actions.ts)
 

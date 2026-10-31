@@ -32,6 +32,13 @@ export type AssistantCard =
       crowdLevel: string | null;
       waitMinutes: number | null;
       url: string | null;
+    }
+  | {
+      kind: 'rides';
+      park: string;
+      order: 'longest' | 'shortest';
+      rides: Array<{ name: string; waitMinutes: number }>;
+      url: string | null;
     };
 
 /** What Parky may ask the widget to do; mirrors the API's `ClientAction`. */
@@ -89,24 +96,25 @@ const CROWD = new Set(['very_low', 'low', 'moderate', 'high', 'very_high', 'extr
 const short = (value: unknown, max = 120) => typeof value === 'string' && value.length <= max;
 const orNull = (value: unknown, test: (v: unknown) => boolean) => value === null || test(value);
 
+const isRideList = (rides: unknown) =>
+  Array.isArray(rides) &&
+  rides.length <= 10 &&
+  rides.every((r) => short(r?.name) && typeof r?.waitMinutes === 'number');
+
 function isCard(card: AssistantCard | undefined): card is AssistantCard {
-  if (!card || !short(card.name)) return false;
-  // A status or level this widget has no badge for is left out rather than refusing the card.
-  if (card.status !== null && !STATUSES.has(card.status)) card.status = null;
-  if (card.crowdLevel !== null && !CROWD.has(card.crowdLevel)) card.crowdLevel = null;
+  if (!card) return false;
   if (!orNull(card.url, (v) => typeof v === 'string' && safeAssistantHref(v) !== null)) {
     return false;
   }
+  if (card.kind === 'rides') return short(card.park) && isRideList(card.rides);
+  if (!short(card.name)) return false;
+  // A status or level this widget has no badge for is left out rather than refusing the card.
+  if (card.status !== null && !STATUSES.has(card.status)) card.status = null;
+  if (card.crowdLevel !== null && !CROWD.has(card.crowdLevel)) card.crowdLevel = null;
   if (card.kind === 'ride') {
     return orNull(card.park, short) && orNull(card.waitMinutes, (v) => typeof v === 'number');
   }
-  return (
-    card.kind === 'park' &&
-    orNull(card.place, short) &&
-    Array.isArray(card.waits) &&
-    card.waits.length <= 5 &&
-    card.waits.every((w) => short(w.name) && typeof w.waitMinutes === 'number')
-  );
+  return card.kind === 'park' && orNull(card.place, short) && isRideList(card.waits);
 }
 
 /**

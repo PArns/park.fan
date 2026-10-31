@@ -36,6 +36,7 @@ const LOOKUP_KEY: Record<AssistantLookup, string> = {
   planner: 'lookupPlanner',
   location: 'lookupLocation',
   weather: 'lookupWeather',
+  glossary: 'lookupGlossary',
   rides: 'lookupRides',
   forecast: 'lookupForecast',
   posts: 'lookupPosts',
@@ -224,7 +225,9 @@ export function AssistantPanel({ open, onClose }: { open: boolean; onClose: () =
             className="flex-1 space-y-3 overflow-y-auto px-4 py-3 text-sm"
             aria-live="polite"
           >
-            <div className="bg-muted/60 rounded-2xl rounded-tl-sm px-3 py-2">{t('greeting')}</div>
+            <div className="bg-muted/60 w-fit max-w-[92%] rounded-2xl rounded-tl-sm px-3 py-2">
+              {t('greeting')}
+            </div>
             {chat.messages.length === 0 && (
               <div className="flex flex-wrap gap-2 pt-1">
                 {suggestions.map((suggestion) => (
@@ -248,7 +251,8 @@ export function AssistantPanel({ open, onClose }: { open: boolean; onClose: () =
                 </div>
               ) : (
                 <div key={message.id} className="max-w-[92%]">
-                  <div className="bg-muted/60 rounded-2xl rounded-tl-sm px-3 py-2">
+                  {/* As wide as its text, not the window: the dots alone are a small bubble. */}
+                  <div className="bg-muted/60 w-fit rounded-2xl rounded-tl-sm px-3 py-2">
                     {message.error ? (
                       <p className="text-muted-foreground">{t(ERROR_KEY[message.error])}</p>
                     ) : message.text ? (
@@ -261,7 +265,7 @@ export function AssistantPanel({ open, onClose }: { open: boolean; onClose: () =
                     )}
                   </div>
                   {message.cards?.map((card, index) => (
-                    <AssistantCardView key={`${card.name}-${index}`} card={card} />
+                    <AssistantCardView key={`${card.kind}-${index}`} card={card} />
                   ))}
                   {message.chips && message.chips.length > 0 && (
                     <div className="mt-1.5 flex flex-wrap gap-1.5 pl-1">

@@ -10,6 +10,7 @@ import { directionsHref, safeAssistantHref } from '@/lib/assistant/links.ts';
 import { assistantVisible } from '@/lib/assistant/config.ts';
 import { postPlainText, POST_TEXT_LIMIT } from '@/lib/assistant/post-text.ts';
 import { localizedPath, readAssistantAction } from '@/lib/assistant/actions.ts';
+import { splitWaits } from '@/lib/assistant/wait-chips.ts';
 
 let passed = 0;
 function check(actual, expected, label) {
@@ -167,4 +168,17 @@ check(
 check(localizedPath('/parks/europe', 'de'), '/de/parks/europe', 'adds the locale');
 check(localizedPath('/en/blog/x', 'de'), '/en/blog/x', 'keeps a locale already there');
 
+check(
+  splitWaits('Taron: 30 Min. und F.L.Y. 40 min'),
+  [{ text: 'Taron: ' }, { minutes: 30 }, { text: ' und F.L.Y. ' }, { minutes: 40 }],
+  'waits become chips'
+);
+check(
+  splitWaits('wait 25 minutes now'),
+  [{ text: 'wait ' }, { minutes: 25 }, { text: ' now' }],
+  'english'
+);
+check(splitWaits('20 minuti'), [{ minutes: 20 }], 'italian');
+check(splitWaits('Minimum 120 cm'), [{ text: 'Minimum 120 cm' }], 'other numbers stay text');
+check(splitWaits('10 Minutenkarten'), [{ text: '10 Minutenkarten' }], 'only whole words');
 console.log(`assistant: ${passed} checks passed`);

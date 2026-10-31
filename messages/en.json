@@ -534,7 +534,9 @@
     "readingTime": "{minutes} min",
     "updatedOn": "Updated {date}",
     "nearby": "Near you",
-    "preferences": "Settings"
+    "preferences": "Settings",
+    "assistantOpen": "Ask Parky",
+    "assistantClose": "Close Parky"
   },
   "theme": {
     "light": "Light",
@@ -3069,13 +3071,12 @@
     "forecastCaption": "Forecast"
   },
   "assistant": {
-    "open": "Ask Parky",
     "close": "Close Parky",
     "title": "Parky",
-    "subtitle": "Your theme park assistant",
+    "subtitle": "Your park buddy",
     "tabChat": "Ask",
     "tabFeedback": "Feedback",
-    "greeting": "Hi, I am Parky 🎡 Ask me about wait times, opening hours, the quietest days or our news. I cannot ride coasters, sadly, but I know where the queue is short right now.",
+    "greeting": "Hi, I am Parky 🎡 Your theme park buddy with a slight coaster habit. Ask me about wait times, the quietest days, opening hours or what “airtime” really is. I can plan your day while we are at it.",
     "suggestWaits": "Where are the waits short right now?",
     "suggestBestDay": "When is Europa-Park quietest?",
     "suggestNews": "What’s new?",
@@ -3098,7 +3099,7 @@
     "rateUp": "Helpful",
     "rateDown": "Not helpful",
     "rated": "Thanks.",
-    "disclaimer": "Parky is an AI and can get things wrong. The numbers come live from park.fan.",
+    "disclaimer": "Parky is an AI assistant and sometimes gets it wrong.",
     "feedbackIntro": "Something missing, broken or that you really like? Tell us, we read everything.",
     "feedbackLabel": "Your feedback",
     "feedbackPlaceholder": "What should we know?",
@@ -3128,6 +3129,7 @@
     "locationDeclined": "No problem, without location then.",
     "locationDenied": "Your browser does not share your location. You can change that in its settings.",
     "locationShared": "Here is my location.",
-    "cardWait": "{minutes} min"
+    "cardWait": "{minutes} min",
+    "lookupGlossary": "Parky is checking the glossary …"
   }
 }

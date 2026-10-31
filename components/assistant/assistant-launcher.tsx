@@ -17,16 +17,18 @@ const ASSISTANT_NAMESPACES = ['assistant', 'parks.status', 'parks.crowdLevels'] 
 const loadPanel = () => import('./assistant-panel').then((mod) => mod.AssistantPanel);
 type PanelComponent = Awaited<ReturnType<typeof loadPanel>>;
 
-/** The round button, which reads the `assistant` namespace and so must sit inside its provider. */
+/** The round button; its label comes from the layout's `navigation` namespace. */
 function LauncherButton({ open, onToggle }: { open: boolean; onToggle: () => void }) {
-  const t = useTranslations('assistant');
+  // `navigation`, which the layout ships anyway: a key of `assistant` read in this file would put
+  // the whole namespace into every page's chrome (docs/rules/translations-are-routed-not-bundled.md).
+  const t = useTranslations('navigation');
   return (
     <button
       type="button"
       onClick={onToggle}
       aria-expanded={open}
-      aria-label={open ? t('close') : t('open')}
-      title={open ? undefined : t('open')}
+      aria-label={open ? t('assistantClose') : t('assistantOpen')}
+      title={open ? undefined : t('assistantOpen')}
       className={cn(
         'group fixed right-4 bottom-[max(1rem,env(safe-area-inset-bottom))] z-[45] grid size-14 place-items-center rounded-full',
         'planner-wide:right-[calc(var(--planner-inset,0px)+1rem)]',
@@ -44,7 +46,7 @@ function LauncherButton({ open, onToggle }: { open: boolean; onToggle: () => voi
             aria-hidden="true"
             className="from-primary/40 to-status-operating/40 absolute inset-1 rounded-full bg-gradient-to-br opacity-70 blur-lg transition-opacity group-hover:opacity-100"
           />
-          <ParkyLogo className="relative size-14 drop-shadow-[0_6px_14px_rgb(0_0_0/0.35)]" />
+          <ParkyLogo className="parky-bob relative size-14 drop-shadow-[0_6px_14px_rgb(0_0_0/0.35)]" />
         </>
       )}
     </button>

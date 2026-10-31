@@ -534,7 +534,9 @@
     "readingTime": "{minutes} min.",
     "updatedOn": "Bijgewerkt {date}",
     "nearby": "Bij jou in de buurt",
-    "preferences": "Instellingen"
+    "preferences": "Instellingen",
+    "assistantOpen": "Vraag het Parky",
+    "assistantClose": "Parky sluiten"
   },
   "theme": {
     "light": "Licht",
@@ -3069,13 +3071,12 @@
     "forecastCaption": "Verwachting"
   },
   "assistant": {
-    "open": "Vraag het Parky",
     "close": "Parky sluiten",
     "title": "Parky",
-    "subtitle": "Jouw pretparkassistent",
+    "subtitle": "Je pretparkmaatje",
     "tabChat": "Vragen",
     "tabFeedback": "Feedback",
-    "greeting": "Hoi, ik ben Parky 🎡 Vraag me naar wachttijden, openingstijden, de rustigste dagen of ons nieuws. Achtbaan rijden kan ik helaas niet, maar ik weet wel waar de rij nu kort is.",
+    "greeting": "Hoi, ik ben Parky 🎡 Je pretparkmaatje met een lichte achtbaanverslaving. Vraag me naar wachttijden, de rustigste dagen, openingstijden of wat „airtime“ eigenlijk is. Ik plan meteen je dag erbij.",
     "suggestWaits": "Waar zijn de wachttijden nu kort?",
     "suggestBestDay": "Wanneer is het het rustigst in de Efteling?",
     "suggestNews": "Wat is er nieuw?",
@@ -3098,7 +3099,7 @@
     "rateUp": "Nuttig",
     "rateDown": "Niet nuttig",
     "rated": "Bedankt.",
-    "disclaimer": "Parky is een AI en kan zich vergissen. De cijfers komen live van park.fan.",
+    "disclaimer": "Parky is een AI-assistent en rekent zich soms een keer mis.",
     "feedbackIntro": "Mis je iets, werkt iets niet of vind je iets echt goed? Laat het ons weten, we lezen alles.",
     "feedbackLabel": "Jouw feedback",
     "feedbackPlaceholder": "Wat moeten we weten?",
@@ -3128,6 +3129,7 @@
     "locationDeclined": "Prima, dan zonder locatie.",
     "locationDenied": "Je browser deelt je locatie niet. Dat kun je in de instellingen aanpassen.",
     "locationShared": "Hier is mijn locatie.",
-    "cardWait": "{minutes} min"
+    "cardWait": "{minutes} min",
+    "lookupGlossary": "Parky zoekt het op in de woordenlijst …"
   }
 }

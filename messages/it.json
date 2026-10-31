@@ -534,7 +534,9 @@
     "readingTime": "{minutes} min",
     "updatedOn": "Aggiornato il {date}",
     "nearby": "Vicino a te",
-    "preferences": "Impostazioni"
+    "preferences": "Impostazioni",
+    "assistantOpen": "Chiedi a Parky",
+    "assistantClose": "Chiudi Parky"
   },
   "theme": {
     "light": "Chiaro",
@@ -3069,13 +3071,12 @@
     "forecastCaption": "Previsione"
   },
   "assistant": {
-    "open": "Chiedi a Parky",
     "close": "Chiudi Parky",
     "title": "Parky",
-    "subtitle": "Il tuo assistente per i parchi divertimento",
+    "subtitle": "Il tuo amico dei parchi",
     "tabChat": "Domande",
     "tabFeedback": "Feedback",
-    "greeting": "Ciao, sono Parky 🎡 Chiedimi dei tempi di attesa, degli orari, dei giorni più tranquilli o delle nostre news. Purtroppo non posso salire sulle montagne russe, ma so dove la coda è corta in questo momento.",
+    "greeting": "Ciao, sono Parky 🎡 Il tuo amico dei parchi con una leggera dipendenza dalle montagne russe. Chiedimi dei tempi di attesa, dei giorni più tranquilli, degli orari o cos’è davvero l’«airtime». Ti pianifico anche la giornata.",
     "suggestWaits": "Dove si aspetta poco in questo momento?",
     "suggestBestDay": "Quando c’è meno gente a Gardaland?",
     "suggestNews": "Che novità ci sono?",
@@ -3098,7 +3099,7 @@
     "rateUp": "Utile",
     "rateDown": "Non utile",
     "rated": "Grazie.",
-    "disclaimer": "Parky è un’IA e può sbagliare. I numeri arrivano in diretta da park.fan.",
+    "disclaimer": "Parky è un assistente IA e a volte sbaglia.",
     "feedbackIntro": "Manca qualcosa, qualcosa non va o c’è qualcosa che ti piace tanto? Scrivicelo, leggiamo tutto.",
     "feedbackLabel": "Il tuo feedback",
     "feedbackPlaceholder": "Cosa dovremmo sapere?",
@@ -3128,6 +3129,7 @@
     "locationDeclined": "Va bene, allora senza posizione.",
     "locationDenied": "Il tuo browser non condivide la posizione. Puoi cambiarlo nelle impostazioni.",
     "locationShared": "Ecco la mia posizione.",
-    "cardWait": "{minutes} min"
+    "cardWait": "{minutes} min",
+    "lookupGlossary": "Parky cerca nel glossario …"
   }
 }
