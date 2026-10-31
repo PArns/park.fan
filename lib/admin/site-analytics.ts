@@ -668,6 +668,34 @@ export const EVENT_INFO: Record<SiteEventName, EventInfo> = {
     label: 'Show-Erinnerung entfernt',
     when: 'Eine Erinnerung wurde ausgeschaltet.',
   },
+  assistant_opened: {
+    label: 'Parky geöffnet',
+    when: 'Das Chatfenster von Parky geht von zu auf offen.',
+  },
+  assistant_closed: {
+    label: 'Parky geschlossen',
+    when: 'Das Chatfenster schließt; mit der Zahl der Fragen, solange es offen war.',
+  },
+  assistant_question: {
+    label: 'Frage an Parky',
+    when: 'Eine Frage wird abgeschickt; ob Vorschlag oder getippt, nie ihr Text.',
+  },
+  assistant_answer: {
+    label: 'Antwort von Parky',
+    when: 'Eine Antwort ist fertig oder gescheitert; mit Ergebnis und Zahl der Datenabfragen.',
+  },
+  assistant_rated: {
+    label: 'Parky bewertet',
+    when: 'Daumen hoch oder runter unter einer Antwort.',
+  },
+  assistant_feedback_sent: {
+    label: 'Feedback gesendet',
+    when: 'Feedback aus dem Parky-Fenster ist angekommen; ob mit E-Mail, nie die E-Mail.',
+  },
+  assistant_challenge_failed: {
+    label: 'Parky-Check gescheitert',
+    when: 'Der Turnstile-Check vor Parky ist in diesem Browser fehlgeschlagen.',
+  },
   planner_opened: {
     label: 'Planer geöffnet',
     when: 'Der Planer-Bereich geht von zu auf offen; mit dem Weg hinein.',
@@ -918,6 +946,7 @@ const PLANNER_OPENED_SOURCE_LABEL: Record<PlannerOpenedSource | 'none', string> 
   'shared-link': 'Geteilter Plan',
   'home-hero': '„Heute planen“ auf der Startseite',
   'kids-page': 'Seite „Mit Kindern“',
+  assistant: 'Parky, der Chat-Assistent',
   none: 'Planer zu',
 };
 

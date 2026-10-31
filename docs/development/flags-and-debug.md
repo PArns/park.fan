@@ -10,6 +10,11 @@ when testing in-park features from a desk.
 | -------------------------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `NEXT_PUBLIC_API_DIRECT=1` | off     | The browser sends nearby, favorites, trips and push straight to api.park.fan instead of the `/api/*` relays. The API must allow the origin first ([the rule](../rules/a-request-no-cache-can-share-goes-to-the-api-directly.md)). |
 
+`NEXT_PUBLIC_ASSISTANT=off` is the exception to "default off": it is an emergency switch for
+Parky, whose real switch and rollout share live in the admin and are read in the browser after the
+first paint, so no server markup depends on them. `?assistant=on` shows Parky for the session
+([assistant](../features/assistant.md#rollout)).
+
 A flag is a `NEXT_PUBLIC_*` env var, default off, read into a constant so the unused branch
 tree-shakes out and Server and Client Components read the same value. To add one: create
 `lib/config/features.ts` for the constant, list the variable in `.env.example`, and gate on the

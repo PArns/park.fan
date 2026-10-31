@@ -180,6 +180,25 @@ Route `/api/analytics/[...path]` (route).
 
 - `GET` _function_
 
+### [`assistant-config/route.ts`](../../app/api/assistant-config/route.ts)
+
+Route `/api/assistant-config` (route).
+
+- `GET` _function_: The config, or "off" when the API cannot be asked: a widget that cannot answer stays hidden.
+- `dynamic` _const_: Whether Parky is on and for what share of visitors, as set in the admin.
+
+### [`assistant-post/route.ts`](../../app/api/assistant-post/route.ts)
+
+Route `/api/assistant-post` (route).
+
+- `GET` _function_: Answers `?locale=&slug=` with the post's title, URL and text, or 404.
+
+### [`assistant-posts/route.ts`](../../app/api/assistant-posts/route.ts)
+
+Route `/api/assistant-posts` (route).
+
+- `GET` _function_: Answers `?locale=&q=&kind=news|article|any` with up to six matches, best first.
+
 ### [`blog-latest/[locale]/route.ts`](../../app/api/blog-latest/%5Blocale%5D/route.ts)
 
 Route `/api/blog-latest/[locale]` (route).

@@ -430,7 +430,7 @@ The link that hands a stored plan to somebody else, and how it is read back.
 "Open the planner", as a signal rather than as state. Whether the panel is on screen is neither persisted nor owned by one component, and something outside the launcher (a calendar day) has to ask for it.
 
 - `plannerUi` _const_: The planner's open signal: request counters to subscribe to, and who asked last.
-- Types: `PlannerOpenedSource`, `PlannerOpenIntent`
+- Types: `PlannerOpenedSource`, `PlannerOpenIntent`, `PlannerOptimizeRequest`
 
 ### [`unavailable.ts`](../../lib/planner/unavailable.ts)
 

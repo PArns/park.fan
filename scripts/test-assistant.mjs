@@ -1,0 +1,170 @@
+/**
+ * Parky, the chat assistant: the stream reader (`lib/assistant/sse.ts`), the link check on its
+ * answers (`lib/assistant/links.ts`), the rollout gate (`lib/assistant/config.ts`) and the post
+ * text it reads (`lib/assistant/post-text.ts`).
+ */
+
+import assert from 'node:assert/strict';
+import { readSse } from '@/lib/assistant/sse.ts';
+import { directionsHref, safeAssistantHref } from '@/lib/assistant/links.ts';
+import { assistantVisible } from '@/lib/assistant/config.ts';
+import { postPlainText, POST_TEXT_LIMIT } from '@/lib/assistant/post-text.ts';
+import { localizedPath, readAssistantAction } from '@/lib/assistant/actions.ts';
+
+let passed = 0;
+function check(actual, expected, label) {
+  assert.deepEqual(actual, expected, label);
+  passed++;
+}
+
+// A stream that splits events, and even a UTF-8 character, across chunks.
+const text =
+  'event: start\ndata: {"a":1}\n\nevent: delta\ndata: {"t":"Grüße"}\n\nevent: done\ndata: {}\n\n';
+const bytes = new TextEncoder().encode(text);
+const cut = bytes.indexOf(0xc3) + 1;
+const stream = new ReadableStream({
+  start(controller) {
+    controller.enqueue(bytes.slice(0, 5));
+    controller.enqueue(bytes.slice(5, cut));
+    controller.enqueue(bytes.slice(cut));
+    controller.close();
+  },
+});
+const events = [];
+for await (const event of readSse(stream)) events.push(event);
+check(
+  events,
+  [
+    { event: 'start', data: '{"a":1}' },
+    { event: 'delta', data: '{"t":"Grüße"}' },
+    { event: 'done', data: '{}' },
+  ],
+  'reads events split across chunks'
+);
+
+check(safeAssistantHref('/de/parks/europe'), '/de/parks/europe', 'keeps a site path');
+check(
+  safeAssistantHref('https://park.fan/de/blog/x?y=1#z'),
+  '/de/blog/x?y=1#z',
+  'turns a park.fan URL into a path'
+);
+check(safeAssistantHref('https://www.park.fan/en'), '/en', 'accepts www');
+check(safeAssistantHref('javascript:alert(1)'), null, 'refuses javascript:');
+check(safeAssistantHref('//evil.example/x'), null, 'refuses protocol-relative');
+check(
+  safeAssistantHref('/\\evil.example/x'),
+  null,
+  'refuses a backslash path that leaves the site'
+);
+check(safeAssistantHref('https://park.fan.evil.example/'), null, 'refuses a look-alike host');
+check(safeAssistantHref('http://park.fan/'), null, 'refuses plain http');
+check(safeAssistantHref(undefined), null, 'no href, no link');
+check(
+  directionsHref('https://www.google.com/maps/dir/?api=1&destination=50.8,6.88'),
+  'https://www.google.com/maps/dir/?api=1&destination=50.8,6.88',
+  'directions to coordinates'
+);
+check(
+  directionsHref('https://www.google.com/maps/dir/?api=1&destination=evil'),
+  null,
+  'directions only to coordinates'
+);
+check(
+  directionsHref('https://evil.example/maps/dir/?api=1&destination=1,2'),
+  null,
+  'directions only on google.com'
+);
+
+const on = { enabled: true, rolloutPercent: 25 };
+check(assistantVisible({ config: on, bucket: 24, forced: false }), true, 'inside the share');
+check(assistantVisible({ config: on, bucket: 25, forced: false }), false, 'outside the share');
+check(
+  assistantVisible({ config: { enabled: false, rolloutPercent: 100 }, bucket: 0, forced: false }),
+  false,
+  'off beats the share'
+);
+check(
+  assistantVisible({ config: { enabled: false, rolloutPercent: 0 }, bucket: 99, forced: true }),
+  true,
+  '?assistant=on forces it'
+);
+
+const plain = postPlainText(
+  '## Heading\n\nSee [the park](/de/parks/x) and ![a photo](/a.jpg).\n\n```js\ncode()\n```\n\n<div>html</div>**bold**'
+);
+check(
+  plain,
+  { text: 'Heading\n\nSee the park and .\n\nhtmlbold', shortened: false },
+  'strips Markdown'
+);
+const long = postPlainText(`${'a'.repeat(6000)}\n\n${'b'.repeat(6000)}`);
+check(long.shortened, true, 'marks a cut text');
+check(long.text.length <= POST_TEXT_LIMIT, true, 'cuts at the limit');
+
+const park = {
+  slug: 'phantasialand',
+  name: 'Phantasialand',
+  geo: { continent: 'europe', country: 'germany', city: 'bruehl' },
+  timezone: 'Europe/Berlin',
+};
+check(
+  readAssistantAction({ type: 'navigate', path: '/de/blog/x' })?.type,
+  'navigate',
+  'navigates on site'
+);
+check(
+  readAssistantAction({ type: 'navigate', path: 'https://evil.example/' }),
+  null,
+  'never off site'
+);
+check(readAssistantAction({ type: 'drop_database' }), null, 'unknown actions are dropped');
+check(
+  readAssistantAction({
+    type: 'planner_add_rides',
+    park,
+    date: '2026-11-02',
+    rides: [{ slug: 'taron', name: 'Taron' }],
+  })?.type,
+  'planner_add_rides',
+  'adds rides to a plan'
+);
+check(
+  readAssistantAction({
+    type: 'planner_add_rides',
+    park: { ...park, slug: '../x' },
+    date: '2026-11-02',
+    rides: [],
+  }),
+  null,
+  'refuses a park slug that is no slug'
+);
+check(
+  readAssistantAction({
+    type: 'planner_add_block',
+    park,
+    date: '2026-11-02',
+    block: { label: 'Essen', icon: 'rocket', durationMinutes: 60 },
+  }),
+  null,
+  'refuses a block icon the planner does not have'
+);
+check(
+  readAssistantAction({
+    type: 'card',
+    card: {
+      kind: 'ride',
+      name: 'Taron',
+      park: null,
+      status: 'WEIRD',
+      crowdLevel: null,
+      waitMinutes: 45,
+      url: 'https://evil.example',
+    },
+  }),
+  null,
+  'refuses a card linking off site'
+);
+check(localizedPath('/parks/europe', 'de'), '/de/parks/europe', 'adds the locale');
+check(localizedPath('/en/blog/x', 'de'), '/en/blog/x', 'keeps a locale already there');
+
+console.log(`assistant: ${passed} checks passed`);

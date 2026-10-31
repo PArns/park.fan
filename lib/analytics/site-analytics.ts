@@ -111,7 +111,8 @@ export type PlanItemAddSource =
   | 'show_picker'
   | 'block_menu'
   | 'wizard'
-  | 'headliners';
+  | 'headliners'
+  | 'assistant';
 
 /** The control that took a block out: its own ✕, the action bar, the Delete key, the flat list. */
 export type PlanItemRemoveSource = 'block' | 'action_bar' | 'keyboard' | 'timeline';
@@ -135,6 +136,13 @@ export type PlannerUndoSource = 'optimize' | 'add_button';
 export type SharedPlanResult = 'ready' | 'empty' | 'missing' | 'failed';
 
 type NoProps = Record<string, never>;
+
+/** How a question reached Parky: a suggestion chip or typed. */
+export type AssistantQuestionKind = 'suggestion' | 'typed';
+
+/** How one of Parky's answers ended. */
+export type AssistantAnswerResult =
+  'answered' | 'limit' | 'off' | 'upstream' | 'network' | 'session' | 'expired';
 
 /** Properties of an event the facade does not know: any key, a string, a number or a flag. */
 type SiteEventProps = Record<string, string | number | boolean>;
@@ -176,6 +184,20 @@ export interface SiteEventMap {
   show_follow_add: { source: 'card' | 'panel' };
   show_follow_remove: NoProps;
   planner_opened: { source: PlannerOpenedSource };
+  /** Parky's window went from closed to open. */
+  assistant_opened: NoProps;
+  /** Parky's window closed again, with how many questions were asked while it was open. */
+  assistant_closed: { questions: number };
+  /** A question to Parky: a suggested one or typed; never its text. */
+  assistant_question: { kind: AssistantQuestionKind };
+  /** How Parky's answer ended; `lookups` is the number of data lookups it made. */
+  assistant_answer: { result: AssistantAnswerResult; lookups: number };
+  /** Thumbs up or down for one answer. */
+  assistant_rated: { rating: 'up' | 'down' };
+  /** Feedback sent from Parky's window; whether an e-mail came along, never the e-mail. */
+  assistant_feedback_sent: { email: boolean };
+  /** The challenge in front of Parky failed in this browser. */
+  assistant_challenge_failed: NoProps;
   /**
    * A park and date got their first block; `source` is the way into the opening it happened in,
    * `none` with the panel shut. The park's UUID as entity where a page named it.

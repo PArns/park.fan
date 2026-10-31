@@ -1,0 +1,351 @@
+'use client';
+
+import { useEffect, useRef, useState, type FormEvent } from 'react';
+import { useLocale, useTranslations } from 'next-intl';
+import { usePathname } from 'next/navigation';
+import {
+  CalendarCheck,
+  ExternalLink,
+  RotateCcw,
+  SendHorizontal,
+  Sparkles,
+  ThumbsDown,
+  ThumbsUp,
+  X,
+} from 'lucide-react';
+import { cn } from '@/lib/utils';
+import {
+  useAssistantChat,
+  type AssistantChatMessage,
+  type AssistantLookup,
+} from '@/lib/assistant/use-assistant-chat';
+import { useAssistantSession } from '@/lib/assistant/use-assistant-session';
+import { trackSiteEvent } from '@/lib/analytics/site-analytics';
+import { ParkyLogo } from './parky-logo';
+import { AssistantMessageText } from './assistant-message-text';
+import { AssistantFeedbackForm } from './assistant-feedback-form';
+import { AssistantChallenge } from './assistant-challenge';
+import { AssistantLocationAsk } from './assistant-location-ask';
+import { AssistantCardView } from './assistant-card';
+import { useAssistantActions } from './use-assistant-actions';
+import type { AssistantActionChip } from '@/lib/assistant/actions';
+
+const LOOKUP_KEY: Record<AssistantLookup, string> = {
+  parks: 'lookupParks',
+  'wait-times': 'lookupWaitTimes',
+  planner: 'lookupPlanner',
+  location: 'lookupLocation',
+  weather: 'lookupWeather',
+  rides: 'lookupRides',
+  forecast: 'lookupForecast',
+  posts: 'lookupPosts',
+};
+
+const ERROR_KEY: Record<NonNullable<AssistantChatMessage['error']>, string> = {
+  limit: 'errorLimit',
+  off: 'errorOff',
+  upstream: 'errorUpstream',
+  network: 'errorNetwork',
+  session: 'errorSession',
+  expired: 'errorExpired',
+};
+
+const CHIP: Record<AssistantActionChip, { key: string; icon: typeof ExternalLink }> = {
+  navigated: { key: 'chipNavigated', icon: ExternalLink },
+  planned: { key: 'chipPlanned', icon: CalendarCheck },
+  optimized: { key: 'chipOptimized', icon: Sparkles },
+};
+
+/** A park's or ride's page, where the suggested questions are about "here". */
+const PARK_PAGE = /\/parks\/[^/]+\/[^/]+\/[^/]+\/[^/]+/;
+
+/** Three bouncing dots: Parky is thinking or looking something up. */
+function TypingDots({ label }: { label: string }) {
+  return (
+    <span className="inline-flex items-center gap-1" role="status" aria-label={label}>
+      {[0, 150, 300].map((delay) => (
+        <span
+          key={delay}
+          className="bg-muted-foreground/70 size-1.5 animate-bounce rounded-full motion-reduce:animate-pulse"
+          style={{ animationDelay: `${delay}ms` }}
+        />
+      ))}
+    </span>
+  );
+}
+
+/**
+ * The window Parky opens in: the chat and, on its second tab, the feedback form. Mounted once
+ * the launcher was first pressed and kept, so a closed and reopened chat is where it was.
+ */
+export function AssistantPanel({ open, onClose }: { open: boolean; onClose: () => void }) {
+  const t = useTranslations('assistant');
+  const locale = useLocale();
+  const session = useAssistantSession();
+  const act = useAssistantActions(onClose);
+  const chat = useAssistantChat(locale, session, act);
+  const [tab, setTab] = useState<'chat' | 'feedback'>('chat');
+  const [draft, setDraft] = useState('');
+  const input = useRef<HTMLTextAreaElement>(null);
+  const scroller = useRef<HTMLDivElement>(null);
+  const parkPage = PARK_PAGE.test(usePathname());
+
+  /**
+   * One `assistant_opened` per closed to open edge and one `assistant_closed` with the questions
+   * asked in between, so the report can tell a look from a conversation.
+   */
+  const askedAtOpen = useRef(0);
+  const asked = chat.messages.filter((m) => m.role === 'user').length;
+  const askedNow = useRef(asked);
+  useEffect(() => {
+    askedNow.current = asked;
+  }, [asked]);
+  useEffect(() => {
+    if (!open) return;
+    askedAtOpen.current = askedNow.current;
+    trackSiteEvent('assistant_opened', {});
+    return () =>
+      trackSiteEvent('assistant_closed', { questions: askedNow.current - askedAtOpen.current });
+  }, [open]);
+
+  useEffect(() => {
+    if (!open) return;
+    input.current?.focus({ preventScroll: true });
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') onClose();
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [open, onClose]);
+
+  const last = chat.messages[chat.messages.length - 1];
+  useEffect(() => {
+    scroller.current?.scrollTo({ top: scroller.current.scrollHeight, behavior: 'smooth' });
+  }, [chat.messages.length, last?.text, last?.messageId, chat.lookup]);
+
+  const submit = (event?: FormEvent) => {
+    event?.preventDefault();
+    // While Parky answers, Enter keeps the draft rather than dropping it.
+    if (!draft.trim() || chat.phase !== 'idle') return;
+    void chat.send(draft);
+    setDraft('');
+  };
+
+  const suggestions = parkPage
+    ? [t('suggestWaitsHere'), t('suggestBestDayHere'), t('suggestDownHere')]
+    : [t('suggestWaits'), t('suggestBestDay'), t('suggestNews')];
+
+  return (
+    <section
+      role="dialog"
+      aria-modal="false"
+      aria-label={t('title')}
+      aria-hidden={!open}
+      inert={!open}
+      className={cn(
+        'bg-background/90 border-border/60 fixed z-[45] flex flex-col overflow-hidden rounded-2xl border shadow-2xl backdrop-blur-xl',
+        'inset-x-2 bottom-[calc(4.5rem+env(safe-area-inset-bottom))] h-[min(75dvh,560px)]',
+        // Clear of the planner's edge tab, which sits on the right edge at mid height.
+        'sm:inset-x-auto sm:right-12 sm:bottom-20 sm:w-[380px]',
+        'planner-wide:right-[calc(var(--planner-inset,0px)+3rem)]',
+        'origin-bottom-right transition-[opacity,transform] duration-200 ease-out motion-reduce:transition-none',
+        open
+          ? 'translate-y-0 scale-100 opacity-100'
+          : 'pointer-events-none translate-y-3 scale-95 opacity-0'
+      )}
+    >
+      <header className="border-border/60 from-primary/15 to-status-operating/10 flex items-center gap-3 border-b bg-gradient-to-r px-4 py-3">
+        <ParkyLogo className="size-9 shrink-0" talking={chat.phase !== 'idle'} />
+        <div className="min-w-0 flex-1">
+          <h2 className="text-sm leading-tight font-semibold">{t('title')}</h2>
+          <p className="text-muted-foreground truncate text-xs">{t('subtitle')}</p>
+        </div>
+        {tab === 'chat' && chat.messages.length > 0 && (
+          <button
+            type="button"
+            onClick={chat.reset}
+            className="text-muted-foreground hover:text-foreground hover:bg-muted rounded-full p-1.5"
+            aria-label={t('newChat')}
+            title={t('newChat')}
+          >
+            <RotateCcw className="size-4" />
+          </button>
+        )}
+        <button
+          type="button"
+          onClick={onClose}
+          className="text-muted-foreground hover:text-foreground hover:bg-muted rounded-full p-1.5"
+          aria-label={t('close')}
+        >
+          <X className="size-4" />
+        </button>
+      </header>
+
+      <div
+        role="tablist"
+        className="border-border/60 flex gap-1 border-b px-3 py-1.5 text-xs font-medium"
+      >
+        {(['chat', 'feedback'] as const).map((name) => (
+          <button
+            key={name}
+            type="button"
+            role="tab"
+            aria-selected={tab === name}
+            onClick={() => setTab(name)}
+            className={cn(
+              'rounded-full px-3 py-1 transition-colors',
+              tab === name
+                ? 'bg-primary/15 text-primary'
+                : 'text-muted-foreground hover:text-foreground'
+            )}
+          >
+            {t(name === 'chat' ? 'tabChat' : 'tabFeedback')}
+          </button>
+        ))}
+      </div>
+
+      {session.state !== 'ready' ? (
+        <AssistantChallenge
+          state={session.state}
+          onSolved={(token) => void session.solve(token)}
+          onFailed={session.fail}
+          onRetry={session.retry}
+        />
+      ) : tab === 'feedback' ? (
+        <AssistantFeedbackForm
+          conversationId={chat.conversationId}
+          sessionToken={session.token}
+          onSessionRejected={session.drop}
+        />
+      ) : (
+        <>
+          <div
+            ref={scroller}
+            className="flex-1 space-y-3 overflow-y-auto px-4 py-3 text-sm"
+            aria-live="polite"
+          >
+            <div className="bg-muted/60 rounded-2xl rounded-tl-sm px-3 py-2">{t('greeting')}</div>
+            {chat.messages.length === 0 && (
+              <div className="flex flex-wrap gap-2 pt-1">
+                {suggestions.map((suggestion) => (
+                  <button
+                    key={suggestion}
+                    type="button"
+                    onClick={() => void chat.send(suggestion, 'suggestion')}
+                    className="border-primary/30 text-primary hover:bg-primary/10 rounded-full border px-3 py-1 text-xs"
+                  >
+                    {suggestion}
+                  </button>
+                ))}
+              </div>
+            )}
+            {chat.messages.map((message) =>
+              message.role === 'user' ? (
+                <div key={message.id} className="flex justify-end">
+                  <p className="bg-primary text-primary-foreground max-w-[85%] rounded-2xl rounded-tr-sm px-3 py-2 whitespace-pre-wrap">
+                    {message.text}
+                  </p>
+                </div>
+              ) : (
+                <div key={message.id} className="max-w-[92%]">
+                  <div className="bg-muted/60 rounded-2xl rounded-tl-sm px-3 py-2">
+                    {message.error ? (
+                      <p className="text-muted-foreground">{t(ERROR_KEY[message.error])}</p>
+                    ) : message.text ? (
+                      <AssistantMessageText text={message.text} />
+                    ) : (
+                      <span className="text-muted-foreground flex items-center gap-2 text-xs">
+                        <TypingDots label={t('typing')} />
+                        {chat.lookup && t(LOOKUP_KEY[chat.lookup])}
+                      </span>
+                    )}
+                  </div>
+                  {message.cards?.map((card, index) => (
+                    <AssistantCardView key={`${card.name}-${index}`} card={card} />
+                  ))}
+                  {message.chips && message.chips.length > 0 && (
+                    <div className="mt-1.5 flex flex-wrap gap-1.5 pl-1">
+                      {message.chips.map((chip, index) => {
+                        const { key, icon: Icon } = CHIP[chip];
+                        return (
+                          <span
+                            key={`${chip}-${index}`}
+                            className="bg-status-operating/15 text-status-operating inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[11px] font-medium"
+                          >
+                            <Icon className="size-3" />
+                            {t(key)}
+                          </span>
+                        );
+                      })}
+                    </div>
+                  )}
+                  {message.asksLocation && (
+                    <AssistantLocationAsk
+                      onShare={(position) =>
+                        chat.shareLocation(message.id, t('locationShared'), position)
+                      }
+                    />
+                  )}
+                  {message.messageId && (
+                    <div className="text-muted-foreground mt-1 flex items-center gap-1 pl-1 text-xs">
+                      {message.rating ? (
+                        <span>{t('rated')}</span>
+                      ) : (
+                        <>
+                          <button
+                            type="button"
+                            onClick={() => chat.rate(message, 1)}
+                            className="hover:text-foreground rounded p-1"
+                            aria-label={t('rateUp')}
+                          >
+                            <ThumbsUp className="size-3.5" />
+                          </button>
+                          <button
+                            type="button"
+                            onClick={() => chat.rate(message, -1)}
+                            className="hover:text-foreground rounded p-1"
+                            aria-label={t('rateDown')}
+                          >
+                            <ThumbsDown className="size-3.5" />
+                          </button>
+                        </>
+                      )}
+                    </div>
+                  )}
+                </div>
+              )
+            )}
+          </div>
+          <form onSubmit={submit} className="border-border/60 border-t px-3 pt-2 pb-2">
+            <div className="bg-muted/50 focus-within:ring-primary/40 flex items-end gap-2 rounded-2xl px-3 py-1.5 focus-within:ring-2">
+              <textarea
+                ref={input}
+                value={draft}
+                onChange={(event) => setDraft(event.target.value)}
+                onKeyDown={(event) => {
+                  if (event.key === 'Enter' && !event.shiftKey) submit(event);
+                }}
+                rows={1}
+                maxLength={1000}
+                placeholder={t('placeholder')}
+                aria-label={t('placeholder')}
+                className="max-h-28 min-h-8 flex-1 resize-none bg-transparent py-1.5 text-base outline-none sm:text-sm"
+              />
+              <button
+                type="submit"
+                disabled={!draft.trim() || chat.phase !== 'idle'}
+                className="bg-primary text-primary-foreground mb-0.5 rounded-full p-2 transition-opacity disabled:opacity-40"
+                aria-label={t('send')}
+              >
+                <SendHorizontal className="size-4" />
+              </button>
+            </div>
+            <p className="text-muted-foreground mt-1.5 text-center text-[11px]">
+              {t('disclaimer')}
+            </p>
+          </form>
+        </>
+      )}
+    </section>
+  );
+}

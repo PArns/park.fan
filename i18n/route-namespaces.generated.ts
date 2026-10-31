@@ -7,6 +7,7 @@
  * Every route pays these, so they stay in the root `NextIntlClientProvider`.
  */
 export const LAYOUT_MESSAGE_NAMESPACES = [
+  'assistant',
   'common',
   'favorites',
   'footer',
@@ -186,10 +187,13 @@ export const ROUTE_MESSAGE_NAMESPACES = {
  * `lib/i18n/route-namespaces.mjs`).
  */
 export const LAZY_CHUNK_NAMESPACES = [
+  'assistant',
   'attractions',
   'nearby',
   'parkCard',
   'parks',
+  'parks.crowdLevels',
+  'parks.status',
   'parks.weather',
   'planner',
   'pushAlerts.pushErrors',

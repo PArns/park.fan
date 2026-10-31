@@ -103,7 +103,7 @@ export function LocationBanner({ ariaLabel }: LocationBannerProps) {
     // geolocation check, and in flow it pushed the homepage down on mount. Pointer events are
     // scoped to the card so the rest of the strip stays click-through.
     <section
-      className="pointer-events-none fixed inset-x-0 bottom-0 z-40 p-3 max-sm:p-2 sm:inset-x-auto sm:right-4 sm:bottom-4"
+      className="pointer-events-none fixed inset-x-0 bottom-[var(--assistant-inset,0px)] z-40 p-3 max-sm:p-2 sm:inset-x-auto sm:right-4 sm:bottom-[calc(1rem+var(--assistant-inset,0px))]"
       aria-label={ariaLabel ?? tCommon('locationBannerLabel')}
       data-nosnippet
       data-noindex
