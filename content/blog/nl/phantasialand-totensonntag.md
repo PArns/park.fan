@@ -7,7 +7,7 @@ mode: published
 featured: false
 excerpt: >-
   Op Totensonntag, zondag 22 november 2026, is Phantasialand open van 11 tot 20 uur, en een
-  dagticket voor volwassenen kost 34 €. De shows en de muziek in de themagebieden beginnen pas om
+  dagticket voor volwassenen kost 34 €. De shows en het buitengeluid beginnen pas om
   18 uur. Leeg wordt het toch niet, want de Wintertraum zit dan in zijn tweede weekend.
 tags:
   - phantasialand
@@ -31,7 +31,7 @@ rideLinks:
 seo:
   title: 'Phantasialand op Totensonntag 2026: shows pas vanaf 18 uur'
   description: >-
-    Phantasialand op 22 november 2026: open van 11 tot 20 uur, shows en buitenmuziek pas om 18
+    Phantasialand op 22 november 2026: open van 11 tot 20 uur, shows en buitengeluid pas om 18
     uur, ticket 34 €. Totensonntag is een stille feestdag in NRW.
   keywords:
     - phantasialand totensonntag
@@ -44,7 +44,7 @@ seo:
     - hoe druk is phantasialand
 ---
 
-Totensonntag is de Duitse herdenkingsdag voor de doden, in de protestantse kerk ook Ewigkeitssonntag of eeuwigheidszondag genoemd, en in Noordrijn-Westfalen een “stille feestdag”. In 2026 valt hij op 22 november, en dan is [Phantasialand](ref:phantasialand) in Brühl open van 11 tot 20 uur. De shows beginnen die zondag pas om 18 uur. Zeven uur lang rijd je dus zonder muziek uit de luidsprekers buiten, daarna volgen twee uur wintershows en vlak voor achten Magic Symphony op de Kaiserplatz.
+Totensonntag is de Duitse herdenkingsdag voor de doden, in de protestantse kerk ook Ewigkeitssonntag of eeuwigheidszondag genoemd, en in Noordrijn-Westfalen een “stille feestdag”. In 2026 valt hij op 22 november, en dan is [Phantasialand](ref:phantasialand) in Brühl open van 11 tot 20 uur. De shows beginnen die zondag pas om 18 uur. Zeven uur lang rijd je dus zonder buitengeluid, de muziek uit de luidsprekers van het park, daarna volgen twee uur wintershows en vlak voor achten Magic Symphony op de Kaiserplatz.
 
 Voor de avond is het een goede dag als je om 18 uur een theatershow inplant en daarvoor de attracties doet, al vind ik het park zonder muziek tot dat moment een beetje bedrukkend. Een dagticket voor volwassenen kost in de webshop van het park 34 €. Brühl ligt in Noordrijn-Westfalen (NRW), en de feestdagenwet van die deelstaat staat een parkbezoek op Totensonntag toe, maar verbiedt van 5 tot 18 uur onder meer voorstellingen en evenementen die tot vermaak dienen.
 
@@ -65,26 +65,26 @@ De andere drie punten van de lijst gaan over markten en commerciële tentoonstel
 
 Een pretpark noemt de wet nergens. Wat er wel staat, is de “Freizeitanlage”, de recreatievoorziening, in nummer 2, met de toevoeging “soweit dort tänzerische oder artistische Darbietungen angeboten werden” (voor zover daar dans- of acrobatische voorstellingen worden aangeboden). Dat achtbanen niet mogen rijden, staat er niet met zoveel woorden, en of nummer 5 met “alle anderen der Unterhaltung dienenden öffentlichen Veranstaltungen” (alle andere openbare evenementen die tot vermaak dienen) ook de attracties bedoelt, laat de tekst open. Het park laat ze vanaf 11 uur rijden. § 4 regelt welk werk op zon- en feestdagen mag, en daar staan “Arbeiten, die der Erholung im Rahmen der Freizeitgestaltung dienen” (werk dat dient voor ontspanning in de vrije tijd), met als voorbeeld sauna’s, zonnestudio’s en fitnessstudio’s, in de wet nog gespeld als “Fitneßstudios”. De zonnebank heeft het dus tot in de wettekst geschopt, de achtbaan niet.
 
-Volgens § 5 zijn openbare evenementen voor vermaak op elke zon- en feestdag van 6 tot 11 uur verboden, de “Hauptzeit des Gottesdienstes” (de belangrijkste tijd van de kerkdienst), tenzij er een “höheres Interesse der Kunst, Wissenschaft oder Volksbildung” (hoger belang van kunst, wetenschap of volksontwikkeling) is. § 6 lid 4 vraagt zelfs van radio en televisie om van 5 tot 18 uur “auf den ernsten Charakter der stillen Feiertage Rücksicht zu nehmen” (rekening te houden met het ernstige karakter van de stille feestdagen). Een organisator die zich daar niet aan houdt, riskeert volgens § 11 een boete. Een uitzondering bij “dringendem Bedürfnis” (dringende noodzaak) kan volgens § 10 alleen de Regierungspräsident toestaan, voor Brühl die van het regeringsdistrict Keulen.
+Volgens § 5 zijn openbare evenementen voor vermaak op elke zon- en feestdag van 6 tot 11 uur verboden, de “Hauptzeit des Gottesdienstes” (de belangrijkste tijd van de kerkdienst), tenzij er een “höheres Interesse der Kunst, Wissenschaft oder Volksbildung” (hoger belang van kunst, wetenschap of volksontwikkeling) is. Een organisator die zich daar niet aan houdt, riskeert volgens § 11 een boete. Een uitzondering zou volgens § 10 alleen de Regierungspräsident kunnen toestaan, voor Brühl die van het regeringsdistrict Keulen, en ook dan alleen bij dringende noodzaak.
 
-Voor Allerheiligen, zondag 1 november 2026, heeft Phantasialand aangekondigd dat er de hele dag geen shows en geen buitenmuziek zijn. Het park draait dan nog in de zomerdienst en is open van 9 tot minstens 18 uur.
+Voor Allerheiligen, zondag 1 november 2026, heeft Phantasialand aangekondigd dat er de hele dag geen shows en geen buitengeluid zijn. Het park draait dan nog in de zomerdienst en is open van 9 tot minstens 18 uur.
 
 ## Wat er op 22 november in Phantasialand te doen is
 
-### Attracties en buitenmuziek op Totensonntag
+### Attracties en buitengeluid op Totensonntag
 
-Een winterprogramma heeft Phantasialand sinds 2002. Deze winter loopt de Wintertraum van 14 november 2026 tot 24 januari 2027, elke dag van 11 tot 20 uur. Dicht is het park in die periode op kerstavond, eerste kerstdag, nieuwjaarsdag en op 12 en 13 januari, en op oudejaarsdag sluit het om 18 uur.
+Een winterprogramma heeft Phantasialand sinds 2002. Deze winter begint de Wintertraum op 14 november 2026 en is hij elke dag open van 11 tot 20 uur. Komt 22 november je niet uit, dan loopt de Wintertraum nog tot 24 januari 2027. Dicht is hij op kerstavond, eerste kerstdag, nieuwjaarsdag en op 12 en 13 januari, en op oudejaarsdag eindigt hij om 18 uur.
 
-Op de pagina met informatie over het bezoek schrijft Phantasialand in het Duits: “Am Sonntag 22. November 2026 finden aufgrund des stillen Feiertages (Totensonntag) alle Shows ab 18:00 Uhr statt.” (Op zondag 22 november 2026 vinden vanwege de stille feestdag alle shows vanaf 18 uur plaats.) Dat ook de muziek uit de luidsprekers in de themagebieden tot 18 uur uit blijft, staat alleen op de Engelse pagina’s van het park, bijvoorbeeld in het overzicht van de attracties en bij de show Nobis:
+Op de pagina met informatie over het bezoek schrijft Phantasialand in het Duits: “Am Sonntag 22. November 2026 finden aufgrund des stillen Feiertages (Totensonntag) alle Shows ab 18:00 Uhr statt.” (Op zondag 22 november 2026 vinden vanwege de stille feestdag alle shows vanaf 18 uur plaats.) Dat ook het buitengeluid tot 18 uur uit blijft, staat alleen op de Engelse pagina’s van het park, bijvoorbeeld in het overzicht van de attracties en bij de show Nobis:
 
 > [!QUOTE]
-> Op zondag 22 november 2026 vinden de shows en de buitenmuziek vanwege de stille feestdag (Totensonntag) vanaf 18 uur plaats.
+> Op zondag 22 november 2026 vinden de shows en het buitengeluid vanwege de stille feestdag (Totensonntag) vanaf 18 uur plaats.
 >
 > [en] On Sunday, 22 November 2026 shows as well as outside sound will take place from 6 p.m. due to the silent public holiday (Totensonntag).
 >
 > Phantasialand in het [Engelstalige overzicht van de attracties](https://www.phantasialand.de/en/theme-park/one-of-a-kind-attractions/attractions-overview-summer/), vertaald uit het Engels
 
-Ik was op beide vorige Totensonntagen in Phantasialand, in 2024 op 24 november en in 2025 op 23 november, en allebei de keren was het voor mij geen gewone parkdag. Tot 18 uur komt er geen muziek uit de luidsprekers, en pas dan valt me op hoeveel de muziek van IMAscore in Phantasialand draagt. Die studio uit Paderborn, opgericht in 2009, componeert voor pretparken en schreef hier onder meer de soundtracks van Klugheim met Taron en Raik en van Rookburgh met F.L.Y. Of er in de hallen en in de attracties zelf muziek speelt, heeft het park niet aangekondigd. Wat de mensen voor je in de wachtrij van [Taron](ref:phantasialand/taron) elkaar te vertellen hebben, valt trouwens buiten de wet.
+Ik was op beide vorige Totensonntagen in Phantasialand, in 2024 op 24 november en in 2025 op 23 november, en allebei de keren was het voor mij geen gewone parkdag, want tot 18 uur was het alsof iemand het geluid van het park had uitgezet. Pas toen de muziek terugkwam, viel me op hoeveel er in Phantasialand aan de soundtracks van IMAscore hangt. IMAscore, een studio uit Paderborn, schreef hier onder meer de soundtracks van Klugheim met Taron en Raik en van Rookburgh met F.L.Y. Of er in de hallen en in de attracties zelf muziek speelt, heeft het park niet aangekondigd, dus tot 18 uur is de soundtrack in de wachtrij van [Taron](ref:phantasialand/taron) misschien gewoon wat de mensen voor je elkaar vertellen.
 
 Tijdens de Wintertraum zijn onder meer [Taron](ref:phantasialand/taron), [F.L.Y.](ref:phantasialand/fly), [Black Mamba](ref:phantasialand/black-mamba), [Chiapas](ref:phantasialand/chiapas-die-wasserbahn) en [Maus au Chocolat](ref:phantasialand/maus-au-chocolat) open. Drie waterattracties ontbreken: [River Quest](ref:phantasialand/river-quest) is al vanaf 2 november dicht, Wakobato en Wözl’s Wassertreter vanaf 14 november. Met de feestdag heeft dat niets te maken, want alle drie blijven gesloten tot het einde van de Wintertraum op 24 januari 2027.
 
@@ -97,13 +97,13 @@ Op de showpagina belooft het park voor de avond uitdrukkelijk “alle unsere Win
 - **Der goldene Faden** in de Wintergarten
 - **Kaiserplatz Illumination**, **Tiempo de Fuego**, **Pulse of Rookburgh** en **Magic Symphony** in de buitenlucht
 
-Elke theatershow heeft één vaste rustdag per week: Spectaculum Phantastère op maandag, Der goldene Faden op dinsdag en Arctaris op woensdag. De laatste show voor sluitingstijd is Magic Symphony op de Kaiserplatz in het themagebied Berlin. Bij slecht weer kan die uitvallen, en dan komt er volgens het park in plaats daarvan “Good Night Wish”, met muziek en licht.
+Alle drie de theatershows spelen op zondag, hun rustdagen liggen tussen maandag en woensdag. De laatste show voor sluitingstijd is Magic Symphony op de Kaiserplatz in het themagebied Berlin. Bij slecht weer kan die uitvallen, en dan komt er volgens het park in plaats daarvan “Good Night Wish”, met muziek en licht.
 
-Alle zeven shows en dan nog een rit passen niet tussen 18 en 20 uur. Ik zou één theatershow kiezen die ik hoe dan ook wil zien, en de rest van de avond laten afhangen van het tijdstip waarop die begint.
+Alle zeven shows en dan nog een rit passen niet tussen 18 en 20 uur.
 
 ## Hoe druk het op Totensonntag in Phantasialand wordt
 
-Ik reken op een vol park. Totensonntag valt in het tweede weekend van de Wintertraum, en op zondag spelen alle drie de theatershows. Met 34 € is het bovendien de goedkoopste weekenddag van de Wintertraum in november.
+Ik reken op een vol park. Totensonntag valt in het tweede weekend van de Wintertraum, op zondag is het showprogramma compleet, en met 34 € is het de goedkoopste weekenddag van de Wintertraum in november.
 
 In ons stuk [Rustige dagen in Phantasialand](/blog/phantasialand-wachttijden-rustige-dagen) vergelijken we de weekenden in Brühl met de doordeweekse dagen. De wachttijden van vandaag vind je in de [kalender op de parkpagina](ref:phantasialand?calendar).
 
@@ -144,15 +144,15 @@ Parkeren doe je op de parkeerplaatsen Mystery (P1) en China (P2). Een auto kost 
 
 ## Volkstrauertag, een week eerder
 
-Sinds 1952 valt Volkstrauertag op de tweede zondag voor de eerste advent. Markten, speelhallen en recreatievoorzieningen met dans- of acrobatische voorstellingen zijn op die dag maar tot 13 uur verboden. Muziek in de horeca en alle andere openbare evenementen voor vermaak zijn net als op Totensonntag tot 18 uur verboden.
+Op deze zondag valt Volkstrauertag sinds 1952. Voor een pretpark zit het verschil in nummer 2: een recreatievoorziening met dans- of acrobatische voorstellingen is op Volkstrauertag maar tot 13 uur verboden, alle andere openbare evenementen voor vermaak uit nummer 5 blijven net als op Totensonntag tot 18 uur verboden.
 
-Voor 15 november heeft Phantasialand geen wijziging bij de shows of de buitenmuziek aangekondigd. In de kalender staat die dag met 11 tot 20 uur, en een ticket kost 35 €.
+Voor 15 november heeft Phantasialand geen wijziging bij de shows of het buitengeluid aangekondigd. In de kalender staat die dag met 11 tot 20 uur, en een ticket kost 35 €.
 
 ## Veelgestelde vragen over Phantasialand op Totensonntag
 
 ### Is Phantasialand op Totensonntag open?
 
-Ja. Op 22 november 2026 is Phantasialand open van 11 tot 20 uur. De attracties rijden vanaf 11 uur, de shows en volgens de Engelse pagina’s van het park ook de buitenmuziek beginnen pas om 18 uur.
+Ja. Op 22 november 2026 is Phantasialand open van 11 tot 20 uur. De attracties rijden de hele dag, de shows en het buitengeluid beginnen om 18 uur.
 
 ### Zijn er op Totensonntag shows in Phantasialand?
 
@@ -160,11 +160,11 @@ Ja, vanaf 18 uur spelen alle zeven wintershows, als laatste rond 19.50 uur Magic
 
 ### Is er op Totensonntag muziek in Phantasialand?
 
-Volgens de Engelse pagina’s van het park is er op 22 november 2026 pas vanaf 18 uur muziek uit de luidsprekers in de themagebieden. Over de gebouwen en de attracties zegt het park niets, en op de Duitse pagina’s staat alleen dat de shows om 18 uur beginnen.
+Volgens de Engelse pagina’s van het park begint het buitengeluid op 22 november 2026 pas om 18 uur. Over de gebouwen en de attracties zegt het park niets, en op de Duitse pagina’s staat alleen dat de shows om 18 uur beginnen.
 
 ### Hoe druk is Phantasialand op Totensonntag?
 
-Ik reken op 22 november 2026 op een vol park, omdat de Wintertraum pas een week eerder is begonnen, op zondag alle drie de theatershows spelen en de dag met 34 € de goedkoopste weekenddag in november is.
+Ik reken op een vol park. De Wintertraum is pas acht dagen eerder begonnen, en geen andere weekenddag van de Wintertraum in november kost minder dan de 34 € voor 22 november.
 
 ### Wat kost Phantasialand op Totensonntag?
 
@@ -184,7 +184,7 @@ River Quest is vanaf 2 november 2026 dicht, Wakobato en Wözl’s Wassertreter v
 
 - Feestdagenwet van NRW (§§ 2, 4, 5, 6, 10 en 11): [Gesetz über die Sonn- und Feiertage, volledige tekst (recht.nrw.de, Duits)](https://recht.nrw.de/lrgv/gesetz/01012000-bekanntmachung-der-neufassung-des-gesetzes-ueber-die-sonn-und-feiertage/)
 - Data in 2026: [Feiertage 2026 (schulferien.org, Duits)](https://www.schulferien.org/Feiertage/2026/feiertage_2026.html) · [Totensonntag op Wikipedia (Duits)](https://de.wikipedia.org/wiki/Totensonntag) · [Volkstrauertag op Wikipedia (Duits)](https://de.wikipedia.org/wiki/Volkstrauertag) · [Brühl op Wikipedia (Duits)](<https://de.wikipedia.org/wiki/Br%C3%BChl_(Rheinland)>)
-- Shows en buitenmuziek op Totensonntag en Allerheiligen: [Faszinierende Shows (officieel, Duits)](https://www.phantasialand.de/de/themenpark/faszinierende-shows/) · [Informationen zum Besuch (officieel, Duits)](https://www.phantasialand.de/de/themenpark/informationen-und-anreise/) · [Attractions overview (officieel, Engels)](https://www.phantasialand.de/en/theme-park/one-of-a-kind-attractions/attractions-overview-summer/) · [Nobis (officieel, Engels)](https://www.phantasialand.de/en/theme-park/fascinating-shows/nobis/)
+- Shows en buitengeluid op Totensonntag en Allerheiligen: [Faszinierende Shows (officieel, Duits)](https://www.phantasialand.de/de/themenpark/faszinierende-shows/) · [Informationen zum Besuch (officieel, Duits)](https://www.phantasialand.de/de/themenpark/informationen-und-anreise/) · [Attractions overview (officieel, Engels)](https://www.phantasialand.de/en/theme-park/one-of-a-kind-attractions/attractions-overview-summer/) · [Nobis (officieel, Engels)](https://www.phantasialand.de/en/theme-park/fascinating-shows/nobis/)
 - Muziek in het park: [IMAscore op Wikipedia (Duits)](https://de.wikipedia.org/wiki/IMAscore) · [IMAscore (officieel, Engels)](https://www.imascore.com/)
 - Wintertraum, wintershows, Magic Symphony en gesloten attracties: [Wintertraum (officieel)](https://www.phantasialand.de/de/themenpark/wintertraum/) · [Wintershows (officieel)](https://www.phantasialand.de/de/themenpark/wintertraum/wintershows/) · [Attracties in de winter (officieel)](https://www.phantasialand.de/de/themenpark/attraktionen/uebersicht-winter/) · [Phantasialand op Wikipedia (Duits)](https://de.wikipedia.org/wiki/Phantasialand)
 - Openingstijden: [Öffnungszeiten (officieel)](https://www.phantasialand.de/de/themenpark/oeffnungszeiten/)

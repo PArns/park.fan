@@ -44,13 +44,13 @@ seo:
     - how busy is phantasialand
 ---
 
-[Phantasialand](ref:phantasialand) in Brühl is open from 11 a.m. to 8 p.m. on Totensonntag, 22 November 2026. Totensonntag, the Sunday of the Dead or Eternity Sunday, is a German day of remembrance and one of the country's "silent public holidays", and at Phantasialand it means the shows don't start until 6 p.m. You get seven hours of riding without the outside sound, the music from the loudspeakers in the themed areas, then two hours of winter shows and, just before eight, Magic Symphony on Kaiserplatz.
+[Phantasialand](ref:phantasialand) in Brühl is open from 11 a.m. to 8 p.m. on Totensonntag, 22 November 2026. Totensonntag, the Sunday of the Dead or Eternity Sunday, is a German day of remembrance and a "silent public holiday" in North Rhine-Westphalia, and at Phantasialand it means the shows don't start until 6 p.m. You get seven hours of riding without the outside sound, the music from the park's loudspeakers, then two hours of winter shows and, just before eight, Magic Symphony on Kaiserplatz.
 
 The day pays off in the evening if you book yourself into a theatre show at 6 p.m. and ride before that, even though the park without its music feels a little gloomy to me until then. An adult day ticket costs €34 in the park's shop. Brühl is in North Rhine-Westphalia, and the state's public holidays act lets you visit the park on Totensonntag but bans performances and entertainment events, among other things, from 5 a.m. to 6 p.m.
 
 ## What North Rhine-Westphalia's holiday law bans on Totensonntag
 
-Section 2 of the Act on Sundays and Public Holidays (Gesetz über die Sonn- und Feiertage) counts two November Sundays among the "Gedenk- und Trauertage", the days of remembrance and mourning. Volkstrauertag, the national day of mourning, is the second Sunday before the first Sunday of Advent, and Totensonntag is the last Sunday before it. First Advent falls on 29 November in 2026, which puts Volkstrauertag on 15 November and Totensonntag on 22 November. Protestant churches also call the day Ewigkeitssonntag, and it can only land between 20 and 26 November.
+Section 2 of the Act on Sundays and Public Holidays (Gesetz über die Sonn- und Feiertage) counts two November Sundays among the "Gedenk- und Trauertage", the days of remembrance and mourning. Volkstrauertag, the national day of mourning, is the second Sunday before the first Sunday of Advent, and Totensonntag is the last Sunday before it. First Advent falls on 29 November in 2026, which puts Volkstrauertag on 15 November and Totensonntag on 22 November. Totensonntag can only land between 20 and 26 November.
 
 Section 6 deals with the silent holidays. For Totensonntag it points back to the list it first draws up for Volkstrauertag and stretches it over a longer day. Paragraph 2 reads "Am Allerheiligentag und am Totensonntag sind zusätzlich verboten: alle in Absatz 1 genannten Veranstaltungen von 5 Uhr bis 18 Uhr", meaning that on All Saints' Day and on Totensonntag every event named in paragraph 1 is also banned from 5 a.m. to 6 p.m. Two items on that list can apply to a theme park:
 
@@ -65,7 +65,7 @@ The other three items cover markets and trade fairs, amusement arcades and betti
 
 The act never uses the word Freizeitpark. What it has is the Freizeitanlage, the leisure facility, in number 2, and only "soweit dort tänzerische oder artistische Darbietungen angeboten werden", insofar as dance or acrobatic performances are offered there. Nothing in the text explicitly bans running roller coasters, and it leaves open whether number 5, "alle anderen der Unterhaltung dienenden öffentlichen Veranstaltungen" (all other public events serving entertainment), covers the rides as well. Phantasialand runs them from 11 a.m. Section 4, on which kinds of work are allowed on Sundays and public holidays, lists "Arbeiten, die der Erholung im Rahmen der Freizeitgestaltung dienen", work that serves people's recreation in their free time, and its examples are saunas, tanning salons and gyms, spelled "Fitneßstudios" with the old ß. So the tanning salon made it into the statute book, and the roller coaster didn't.
 
-Under section 5, public entertainment events are banned on every Sunday and public holiday from 6 to 11 a.m., the "Hauptzeit des Gottesdienstes" or main time of church services, unless there's a "höheres Interesse der Kunst, Wissenschaft oder Volksbildung", a higher interest of art, science or public education. Section 6 (4) even tells radio and TV to "auf den ernsten Charakter der stillen Feiertage Rücksicht zu nehmen", to respect the serious character of the silent holidays, from 5 a.m. to 6 p.m. An organiser who ignores all this risks a fine under section 11. Under section 10 only the Regierungspräsident, head of the regional government, can allow an exception in case of "dringendem Bedürfnis" (urgent need), and for Brühl that's the one in charge of the Cologne district.
+Under section 5, public entertainment events are banned on every Sunday and public holiday from 6 to 11 a.m., the "Hauptzeit des Gottesdienstes" or main time of church services, unless there's a "höheres Interesse der Kunst, Wissenschaft oder Volksbildung", a higher interest of art, science or public education. An organiser who ignores all this risks a fine under section 11. Under section 10, only the Regierungspräsident, head of the regional government, could allow an exception, for Brühl the one in charge of the Cologne district, and only in case of urgent need.
 
 For All Saints' Day, Sunday 1 November 2026, Phantasialand has announced that there'll be no shows and no outside sound all day. The park is still on summer hours then, open from 9 a.m. until at least 6 p.m.
 
@@ -73,16 +73,16 @@ For All Saints' Day, Sunday 1 November 2026, Phantasialand has announced that th
 
 ### Rides and outside sound on Totensonntag
 
-Phantasialand has had a winter programme since 2002. This winter, Wintertraum runs from 14 November 2026 to 24 January 2027, from 11 a.m. to 8 p.m. each day. During Wintertraum the park is closed on Christmas Eve, Christmas Day, New Year's Day and on 12 and 13 January, and it shuts at 6 p.m. on New Year's Eve.
+Phantasialand has had a winter programme since 2002. This winter, Wintertraum starts on 14 November 2026 and is open from 11 a.m. to 8 p.m. every day. If 22 November doesn't suit you, Wintertraum runs until 24 January 2027. It's closed on Christmas Eve, Christmas Day, New Year's Day and on 12 and 13 January, and it ends at 6 p.m. on New Year's Eve.
 
-On its visitor information page, Phantasialand writes "Am Sonntag 22. November 2026 finden aufgrund des stillen Feiertages (Totensonntag) alle Shows ab 18:00 Uhr statt", which says that on Sunday 22 November 2026 all shows take place from 6 p.m. because of the silent holiday. That the outside sound in the themed areas stays off until 6 p.m. too is only on the park's English pages, in the attractions overview and on the page for the show Nobis, for instance:
+On its visitor information page, Phantasialand writes "Am Sonntag 22. November 2026 finden aufgrund des stillen Feiertages (Totensonntag) alle Shows ab 18:00 Uhr statt", which says that on Sunday 22 November 2026 all shows take place from 6 p.m. because of the silent holiday. That the outside sound stays off until 6 p.m. too is only on the park's English pages, in the attractions overview and on the page for the show Nobis, for instance:
 
 > [!QUOTE]
 > On Sunday, 22 November 2026 shows as well as outside sound will take place from 6 p.m. due to the silent public holiday (Totensonntag).
 >
 > Phantasialand in its [English attractions overview](https://www.phantasialand.de/en/theme-park/one-of-a-kind-attractions/attractions-overview-summer/)
 
-I was at Phantasialand on both of the last two, on 24 November 2024 and 23 November 2025. Neither felt like a normal park day to me. Until 6 p.m. the loudspeakers stay silent, and only when the music comes back do I notice how much of Phantasialand rests on IMAscore's soundtracks. The studio from Paderborn, founded in 2009, writes music for theme parks, and here it composed the scores for Klugheim with Taron and Raik and for Rookburgh with F.L.Y., among others. The park hasn't announced whether music plays inside the halls and on the rides. What the people ahead of you in the [Taron](ref:phantasialand/taron) queue talk about isn't covered by the act, by the way.
+I was at Phantasialand on both of the last two, on 24 November 2024 and 23 November 2025. Neither felt like a normal park day to me, because until 6 p.m. the park seemed to be on mute. Only when the music came back did I notice how much of Phantasialand rests on IMAscore's soundtracks. IMAscore, a studio from Paderborn, wrote the scores for Klugheim with Taron and Raik and for Rookburgh with F.L.Y., among others. The park hasn't announced whether music plays inside the halls and on the rides, so until 6 p.m. the soundtrack in the [Taron](ref:phantasialand/taron) queue may well be whatever the people ahead of you are talking about.
 
 During Wintertraum, Phantasialand keeps [Taron](ref:phantasialand/taron), [F.L.Y.](ref:phantasialand/fly), [Black Mamba](ref:phantasialand/black-mamba), [Chiapas](ref:phantasialand/chiapas-die-wasserbahn) and [Maus au Chocolat](ref:phantasialand/maus-au-chocolat) open, among others. Three water rides are missing: [River Quest](ref:phantasialand/river-quest) closes as early as 2 November, Wakobato and Wözl’s Wassertreter from 14 November. That's got nothing to do with the holiday, since all three stay shut until Wintertraum ends on 24 January 2027.
 
@@ -95,13 +95,13 @@ On its shows page the park promises "alle unsere Wintershows", all of its winter
 - **Der goldene Faden** in the Wintergarten
 - **Kaiserplatz Illumination**, **Tiempo de Fuego**, **Pulse of Rookburgh** and **Magic Symphony** outdoors
 
-Each theatre show takes one day off a week: Spectaculum Phantastère on Mondays, Der goldene Faden on Tuesdays and Arctaris on Wednesdays. The last show before closing is Magic Symphony on Kaiserplatz in the Berlin area. Bad weather can cancel it, and the park says it then puts on "Good Night Wish", a mix of music and light, instead.
+All three theatre shows play on Sundays; their days off fall between Monday and Wednesday. The last show before closing is Magic Symphony on Kaiserplatz in the Berlin area. Bad weather can cancel it, and the park says it then puts on "Good Night Wish", a mix of music and light, instead.
 
-You won't fit all seven shows and another ride in between 6 and 8 p.m. I'd pick the one theatre show I really want to see and build the rest of the evening around its start time.
+You won't fit all seven shows and another ride in between 6 and 8 p.m.
 
 ## How busy Phantasialand gets on Totensonntag
 
-I expect a full park. Totensonntag falls on the second weekend of Wintertraum, all three theatre shows play on Sundays, and at €34 it's the cheapest Wintertraum weekend day in November.
+I expect a full park. Totensonntag falls on the second weekend of Wintertraum, the Sunday show schedule is complete, and at €34 it's the cheapest Wintertraum weekend day in November.
 
 Our post on [Phantasialand's quiet days](/blog/phantasialand-wait-times-quiet-days) compares weekends in Brühl with weekdays. Today's wait times are in the [calendar on the park page](ref:phantasialand?calendar).
 
@@ -142,7 +142,7 @@ You park at the Mystery (P1) and China (P2) car parks. A car costs €8, cash or
 
 ## Volkstrauertag a week earlier
 
-Volkstrauertag has been held on the second Sunday before First Advent since 1952. On that day markets, arcades and the operation of leisure facilities insofar as dance or acrobatic performances are offered there are only banned until 1 p.m., while music in pubs and all other public entertainment events stay banned until 6 p.m., as on Totensonntag.
+Volkstrauertag has fallen on this Sunday since 1952. For a theme park the difference lies in number 2: on Volkstrauertag, running a leisure facility with dance or acrobatic performances is only banned until 1 p.m., while all other public entertainment events under number 5 stay banned until 6 p.m., as on Totensonntag.
 
 Phantasialand hasn't announced any change to the shows or the outside sound for 15 November. The calendar lists the day as 11 a.m. to 8 p.m., and the ticket costs €35.
 
@@ -150,7 +150,7 @@ Phantasialand hasn't announced any change to the shows or the outside sound for 
 
 ### Is Phantasialand open on Totensonntag?
 
-Yes. On 22 November 2026 Phantasialand is open from 11 a.m. to 8 p.m. The rides run from 11 a.m., and the shows, plus the outside sound according to the park's English pages, start at 6 p.m.
+Yes. On 22 November 2026 Phantasialand is open from 11 a.m. to 8 p.m. The rides run all day, and the shows and the outside sound start at 6 p.m.
 
 ### Are there shows at Phantasialand on Totensonntag?
 
@@ -158,11 +158,11 @@ Yes, all seven winter shows run from 6 p.m., finishing with Magic Symphony on Ka
 
 ### Is there music at Phantasialand on Totensonntag?
 
-According to the park's English pages, the outside sound in the themed areas doesn't start until 6 p.m. on 22 November 2026. The park gives no details for buildings and rides, and its German pages only say that the shows begin at 6 p.m.
+According to the park's English pages, the outside sound doesn't start until 6 p.m. on 22 November 2026. The park gives no details for buildings and rides, and its German pages only say that the shows begin at 6 p.m.
 
 ### How busy is Phantasialand on Totensonntag?
 
-I expect a full park on 22 November 2026, because Wintertraum only opened a week earlier, all three theatre shows play on Sundays and, at €34, it's the cheapest weekend day in November.
+I expect a full park. Wintertraum only opened eight days earlier, and no other Wintertraum weekend day in November costs less than the €34 for 22 November.
 
 ### How much does Phantasialand cost on Totensonntag?
 
