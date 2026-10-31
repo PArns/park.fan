@@ -165,6 +165,31 @@ check(
   null,
   'refuses a card linking off site'
 );
+check(
+  readAssistantAction({
+    type: 'card',
+    card: {
+      kind: 'parks',
+      parks: [
+        {
+          name: 'Efteling',
+          place: 'Kaatsheuvel',
+          url: '/parks/europe/netherlands/kaatsheuvel/efteling',
+        },
+      ],
+    },
+  })?.type,
+  'card',
+  'takes a list of parks'
+);
+check(
+  readAssistantAction({
+    type: 'card',
+    card: { kind: 'parks', parks: [{ name: 'X', place: null, url: 'https://evil.example' }] },
+  }),
+  null,
+  'refuses a park row linking off site'
+);
 check(localizedPath('/parks/europe', 'de'), '/de/parks/europe', 'adds the locale');
 check(localizedPath('/en/blog/x', 'de'), '/en/blog/x', 'keeps a locale already there');
 

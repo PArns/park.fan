@@ -37,8 +37,12 @@ export type AssistantCard =
       kind: 'rides';
       park: string;
       order: 'longest' | 'shortest';
-      rides: Array<{ name: string; waitMinutes: number }>;
+      rides: Array<{ name: string; waitMinutes: number; url?: string | null }>;
       url: string | null;
+    }
+  | {
+      kind: 'parks';
+      parks: Array<{ name: string; place: string | null; url: string | null }>;
     };
 
 /** What Parky may ask the widget to do; mirrors the API's `ClientAction`. */
@@ -96,13 +100,22 @@ const CROWD = new Set(['very_low', 'low', 'moderate', 'high', 'very_high', 'extr
 const short = (value: unknown, max = 120) => typeof value === 'string' && value.length <= max;
 const orNull = (value: unknown, test: (v: unknown) => boolean) => value === null || test(value);
 
+const isSiteUrl = (v: unknown) => typeof v === 'string' && safeAssistantHref(v) !== null;
 const isRideList = (rides: unknown) =>
   Array.isArray(rides) &&
   rides.length <= 10 &&
-  rides.every((r) => short(r?.name) && typeof r?.waitMinutes === 'number');
+  rides.every(
+    (r) =>
+      short(r?.name) && typeof r?.waitMinutes === 'number' && (r.url == null || isSiteUrl(r.url))
+  );
+const isParkList = (parks: unknown) =>
+  Array.isArray(parks) &&
+  parks.length <= 8 &&
+  parks.every((p) => short(p?.name) && orNull(p?.place, short) && orNull(p?.url, isSiteUrl));
 
 function isCard(card: AssistantCard | undefined): card is AssistantCard {
   if (!card) return false;
+  if (card.kind === 'parks') return isParkList(card.parks);
   if (!orNull(card.url, (v) => typeof v === 'string' && safeAssistantHref(v) !== null)) {
     return false;
   }
