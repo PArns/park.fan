@@ -185,6 +185,12 @@ export interface DiffOptions {
    * genuinely gone.
    */
   retainUncovered?: (path: string) => boolean;
+  /**
+   * The date for a key seen for the first time, in place of `today`, where the content carries
+   * an honest one: a blog post's `updatedAt ?? date`, or every post would read as changed on the
+   * day the crawl first covered the blog.
+   */
+  firstSeen?: (path: string) => string | undefined;
 }
 
 /**
@@ -199,7 +205,7 @@ export interface DiffOptions {
 export function diffSnapshot(
   previous: ContentChangeSnapshot | null,
   current: FingerprintMap,
-  { today, retainUncovered = () => false }: DiffOptions
+  { today, retainUncovered = () => false, firstSeen = () => undefined }: DiffOptions
 ): DiffResult {
   const incomparable = previous != null && previous.version !== FINGERPRINT_VERSION;
   const before = previous?.entries ?? {};
@@ -212,7 +218,7 @@ export function diffSnapshot(
   for (const [path, fingerprint] of current) {
     const prior = before[path];
     if (!prior) {
-      entries[path] = { hash: fingerprint, changedAt: today };
+      entries[path] = { hash: fingerprint, changedAt: firstSeen(path) ?? today };
       added.push(path);
     } else if (incomparable) {
       // Adopt the new hash, keep the date we already believe.

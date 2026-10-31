@@ -213,6 +213,9 @@ const NAV_GROUPS: NavGroup[] = [
           '404',
           'landingpage',
           'einstiegsseiten',
+          'nachindizieren',
+          'indexierung',
+          'reindex',
         ],
       },
       {

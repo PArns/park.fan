@@ -52,6 +52,7 @@ import {
   type ImportWait,
 } from '../_lib/use-search-console';
 import type { TrafficFilterActions, TrafficFilters } from '../_lib/use-traffic';
+import { ReindexPanel } from './reindex-panel';
 import { SearchConsolePagesPanel, SearchConsoleQueriesPanel } from './search-console-tables';
 
 const TITLE = 'Google Search Console';
@@ -471,6 +472,7 @@ export function SearchConsoleSection({
         <>
           <SearchConsoleQueriesPanel filters={filters} version={current.lastImportAt} />
           <SearchConsolePagesPanel filters={filters} version={current.lastImportAt} />
+          {current.siteUrl && <ReindexPanel siteUrl={current.siteUrl} />}
         </>
       )}
     </>

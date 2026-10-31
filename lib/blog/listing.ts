@@ -76,6 +76,8 @@ export interface MetaEntry {
   fm: BlogFrontmatter;
   readingTimeMinutes: number;
   updatedOn?: string;
+  /** Frontmatter and body hashed at build time; the content-change crawl compares it. */
+  contentHash: string;
 }
 
 let META_INDEX: Map<string, Map<Locale, MetaEntry>> | null = null;
@@ -97,6 +99,7 @@ export function getMetaIndex(): Map<string, Map<Locale, MetaEntry>> {
       fm: entry.frontmatter,
       readingTimeMinutes: entry.readingTimeMinutes,
       updatedOn: entry.updatedOn,
+      contentHash: entry.contentHash,
     });
     index.set(key, inner);
   }

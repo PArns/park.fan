@@ -224,6 +224,18 @@ test('stamps today on a new key and leaves an unchanged one alone', () => {
   assert.equal(result.snapshot.entries['/parks/a/b/c/d/new-ride'].changedAt, TODAY);
 });
 
+test("a post seen for the first time keeps its own date, and a changed one gets today's", () => {
+  const post = '/de/blog/europa-park-wartezeiten-tipps';
+  const firstSeen = (p) => (p === post ? '2026-10-04' : undefined);
+  const first = diffSnapshot(null, new Map([[post, 'a']]), { today: TODAY, firstSeen });
+  assert.equal(first.snapshot.entries[post].changedAt, '2026-10-04');
+  const second = diffSnapshot(first.snapshot, new Map([[post, 'b']]), {
+    today: '2026-10-30',
+    firstSeen,
+  });
+  assert.equal(second.snapshot.entries[post].changedAt, '2026-10-30');
+});
+
 test('moves the date only for the keys whose fingerprint differs', () => {
   const previous = snapshotOf({
     '/parks/a/b/c/d': { hash: 'h1', changedAt: '2026-01-05' },

@@ -24,6 +24,7 @@
  *                                  file system (lib/blog/news-redirects-rule.ts).
  */
 
+import { createHash } from 'crypto';
 import { readFileSync, writeFileSync, readdirSync, existsSync } from 'fs';
 import { resolve, dirname, relative } from 'path';
 import { fileURLToPath } from 'url';
@@ -220,6 +221,10 @@ const meta = posts.map((post) => {
     frontmatter: post.frontmatter,
     readingTimeMinutes: calcReadingTimeMinutes(post.content, post.frontmatter.readingTime),
     ...(updatedOn && { updatedOn }),
+    contentHash: createHash('sha256')
+      .update(JSON.stringify([post.frontmatter, post.content]))
+      .digest('hex')
+      .slice(0, 16),
     parkRefs: extractParkRefs(post.content),
     rideRefs: extractRideRefs(post.content),
     glossaryRefs: extractGlossaryRefs(post.content),
@@ -253,6 +258,8 @@ export interface ManifestPostMeta {
   readingTimeMinutes: number;
   /** The newest \`[!UPDATE]\` date in the body, \`YYYY-MM-DD\`; absent when it has none. */
   updatedOn?: string;
+  /** Frontmatter and body hashed, for the content-change crawl's \`<lastmod>\`. */
+  contentHash: string;
   parkRefs: ManifestParkRef[];
   rideRefs: ManifestRideRef[];
   /** Glossary term IDs the body embeds a glossary-widget for — see derive.mjs. */

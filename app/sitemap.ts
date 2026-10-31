@@ -47,7 +47,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const catalogue: ParkGeoPath[] = [];
 
   /**
-   * `<lastmod>` for a catalog URL, as the daily content-change crawl observed it, or `undefined`
+   * `<lastmod>` for a catalog URL or a blog post (`/de/blog/…`), as the daily content-change crawl observed it, or `undefined`
    * for a path the crawl has not seen. Never today's date: a value identical on every URL gets a
    * sitemap's `lastmod` discounted wholesale. See `lib/seo/content-changes/fingerprint.ts`.
    */
@@ -406,10 +406,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       const posts = listPosts(locale as import('@/i18n/config').Locale);
       const post = posts.find((p) => p.translationKey === translationKey);
       if (!post) continue;
-      const lastMod = post.frontmatter.updatedAt ?? post.frontmatter.date;
+      // The observed change wins over the frontmatter: a new title moves no `updatedAt`.
+      const stamped = new Date(post.frontmatter.updatedAt ?? post.frontmatter.date);
+      const observed = lastModified(`/${locale}${postPath(post)}`);
       routes.push({
         url: alternates[locale] ?? `${BASE_URL}/${locale}${postPath(post)}`,
-        lastModified: new Date(lastMod),
+        lastModified: observed && observed > stamped ? observed : stamped,
         alternates: { languages: alternates },
       });
     }

@@ -47,6 +47,7 @@ export async function GET(request: Request) {
   const failed = new Set(crawl.failedParkPaths);
   const result = diffSnapshot(previous, crawl.fingerprints, {
     today: new Date().toISOString().slice(0, 10),
+    firstSeen: (path) => crawl.firstSeen.get(path),
     // A key under a park that did not answer keeps the date it already has. The
     // park path itself and its attraction paths both start with it, and no other
     // key can: the segment count differs at every level above.

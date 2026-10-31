@@ -123,3 +123,45 @@ export interface SearchConsoleSeriesResponse extends SearchConsoleWindow {
   interval: Exclude<SeriesInterval, 'hour'>;
   series: SearchConsoleSeriesPoint[];
 }
+
+/** One page of the reindex queue: what changed when, what Google last saw, and its figures. */
+export interface SearchConsoleReindexItem {
+  path: string;
+  url: string;
+  /** `YYYY-MM-DD`, the sitemap `<lastmod>`: when park.fan saw the content change. */
+  changedOn: string;
+  /** Google's figures over the last 28 days with data. */
+  clicks: number;
+  impressions: number;
+  ctr: number | null;
+  position: number | null;
+  /** `unknown`: no crawl at all; `stale`: crawled before the change; `uncertain`: crawled that day. */
+  state: 'unknown' | 'stale' | 'uncertain';
+  lastCrawlAt: string | null;
+  coverageState: string | null;
+  inspectedAt: string;
+  requestedAt: string | null;
+  requestedBy: string | null;
+}
+
+/** `GET /v1/admin/search-console/reindex`: the pages Google has not crawled since their change. */
+export interface SearchConsoleReindexQueue {
+  /** Not requested since the change. */
+  open: SearchConsoleReindexItem[];
+  /** Requested since the change and waiting for Google's crawl; not to be requested again. */
+  requested: SearchConsoleReindexItem[];
+  requestsLast24h: number;
+  dailyLimit: number;
+  history: Array<{ path: string; requestedAt: string; actor: string }>;
+  candidates: number;
+  inspected: number;
+  lastInspectedAt: string | null;
+}
+
+/** `POST /v1/admin/search-console/reindex/requests`; `recorded` is false for a page already requested. */
+export interface SearchConsoleReindexRecord {
+  recorded: boolean;
+  requestedAt: string;
+  requestsLast24h: number;
+  dailyLimit: number;
+}
