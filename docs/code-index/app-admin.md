@@ -250,6 +250,45 @@ Route `/admin/analytics` (page).
 
 - `default (AnalyticsPage)` _component_
 
+### [`assistant/_lib/assistant.ts`](../../app/admin/assistant/_lib/assistant.ts)
+
+- `formatUsd` _function_: A cost in US dollars, to a hundredth of a cent: one answer costs fractions of a cent.
+- `formatDateTime` _function_: A timestamp in the admin's own clock.
+- `formatCount` _function_: A count with thousands separators.
+- `ASSISTANT_API` _const_: The admin proxy prefix of every Parky endpoint.
+- `SITE_ORIGIN` _const_: The public site, for links to the page a chat or feedback came from.
+- Types: `AssistantSettings`, `ConversationRow`, `ToolCall`, `ConversationMessage`, `FeedbackEntry`, `FeedbackStatus`, `Page`, `ConversationDetail`, `AssistantStats`
+
+### [`assistant/conversations/[id]/page.tsx`](../../app/admin/assistant/conversations/%5Bid%5D/page.tsx)
+
+Route `/admin/assistant/conversations/[id]` (page).
+
+- `default (AssistantConversationPage)` _component_: One chat as it happened. Every text is rendered as plain text: what a visitor typed and what the model wrote are never parsed as Markdown or HTML here.
+
+### [`assistant/conversations/page.tsx`](../../app/admin/assistant/conversations/page.tsx)
+
+Route `/admin/assistant/conversations` (page).
+
+- `default (AssistantConversationsPage)` _component_: Every stored chat, newest first, with the 👎 ones a click away.
+
+### [`assistant/feedback/page.tsx`](../../app/admin/assistant/feedback/page.tsx)
+
+Route `/admin/assistant/feedback` (page).
+
+- `default (AssistantFeedbackPage)` _component_: What visitors sent through the widget's feedback tab, to read and close.
+
+### [`assistant/page.tsx`](../../app/admin/assistant/page.tsx)
+
+Route `/admin/assistant` (page).
+
+- `default (AssistantOverviewPage)` _component_: Parky at a glance: is he on, what did 30 days cost, how are the answers rated.
+
+### [`assistant/settings/page.tsx`](../../app/admin/assistant/settings/page.tsx)
+
+Route `/admin/assistant/settings` (page).
+
+- `default (AssistantSettingsPage)` _component_: Parky's switches and the Claude key. The key is write-only: the API hands back a masked form and nothing else, so the field below always starts empty.
+
 ### [`attractions/[id]/page.tsx`](../../app/admin/attractions/%5Bid%5D/page.tsx)
 
 Route `/admin/attractions/[id]` (page).

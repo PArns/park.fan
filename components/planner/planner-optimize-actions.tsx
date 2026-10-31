@@ -1,6 +1,15 @@
 'use client';
 
-import { useDeferredValue, useMemo, useState, useSyncExternalStore, type ReactNode } from 'react';
+import {
+  useDeferredValue,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  useSyncExternalStore,
+  type ReactNode,
+} from 'react';
+import { plannerUi } from '@/lib/planner/ui-store';
 import { useLocale, useTranslations } from 'next-intl';
 import { AlertTriangle, Crown, SlidersHorizontal, Undo2, Wand2 } from 'lucide-react';
 import { usePlanner } from '@/lib/planner/use-planner';
@@ -168,6 +177,12 @@ export function PlannerOptimizeActions({
     getZero
   );
   const clock = dayClock(date, zone);
+  // A press asked for from outside the panel (Parky); see `plannerUi.requestOptimize`.
+  const optimizeId = useSyncExternalStore(
+    plannerUi.subscribe,
+    plannerUi.getOptimizeSnapshot,
+    getZero
+  );
 
   /**
    * What pressing „Tag optimieren" would gain, worked out before anybody presses it: the same
@@ -364,12 +379,23 @@ export function PlannerOptimizeActions({
     });
   };
 
+  const requested = optimizeId ? plannerUi.optimizeRequestFor(parkSlug, date) : null;
+
   return (
     <OptimizeRow
       marked
       trailing={trailing}
       buttons={
         <>
+          {requested && (
+            <RunOnce
+              key={requested.id}
+              run={() => {
+                plannerUi.clearOptimize(requested.id);
+                attempt(requested.mode === 'headliners' ? missing : []);
+              }}
+            />
+          )}
           {missing.length > 0 && (
             <button
               type="button"
@@ -584,4 +610,15 @@ function OptimizeRow({
       {children}
     </div>
   );
+}
+
+/** Runs `run` once after it mounts: a press asked for from outside, carried out like a click. */
+function RunOnce({ run }: { run: () => void }) {
+  const done = useRef(false);
+  useEffect(() => {
+    if (done.current) return;
+    done.current = true;
+    run();
+  });
+  return null;
 }

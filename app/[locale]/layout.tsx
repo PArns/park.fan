@@ -17,6 +17,7 @@ import { DIRECT_API_ORIGIN } from '@/lib/api/client';
 import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import { PlannerLauncher } from '@/components/planner/planner-launcher';
+import { AssistantLauncher } from '@/components/assistant/assistant-launcher';
 import { hasPublishedPosts } from '@/lib/blog/listing';
 import { getGeoMenu } from '@/lib/navigation/geo-menu';
 import { getBlogMenu } from '@/lib/navigation/blog-menu';
@@ -328,6 +329,9 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
                   through `useSyncExternalStore`, whose server snapshot is empty, so the first HTML
                   is the same for every visitor and this layout stays cacheable. */}
               <PlannerLauncher />
+              {/* Parky, the chat assistant: drawn only for browsers in its rollout, decided on
+                  the client after the first paint, so every visitor gets the same HTML. */}
+              <AssistantLauncher />
             </NextIntlClientProvider>
           </Providers>
         </ThemeProvider>

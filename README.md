@@ -36,7 +36,7 @@ English · Deutsch · Nederlands · Français · Español · Italiano
 
 ## Development
 
-Needs **Node.js 24** (`nvm use`) and **pnpm 11** (`corepack enable`). No secrets are needed: by
+Needs **Node.js 26** (`nvm use`) and **pnpm 11** (`corepack enable`). No secrets are needed: by
 default the app reads the live API at `https://api.park.fan` (`NEXT_PUBLIC_API_URL` overrides it).
 
 ```bash

@@ -24,6 +24,9 @@ interface TurnstileApi {
       'error-callback'?: () => void;
       theme?: 'light' | 'dark' | 'auto';
       action?: string;
+      appearance?: 'always' | 'execute' | 'interaction-only';
+      'before-interactive-callback'?: () => void;
+      'after-interactive-callback'?: () => void;
     }
   ) => string;
   remove: (id: string) => void;
@@ -77,6 +80,12 @@ interface TurnstileWidgetProps {
   action?: string;
   /** Overrides the app theme. Required wherever no next-themes provider is mounted. */
   theme?: 'light' | 'dark';
+  /**
+   * `interaction-only` keeps the widget invisible unless Cloudflare needs a click; `onInteractive`
+   * then says when it appears and goes again, so the host can frame it.
+   */
+  appearance?: 'always' | 'interaction-only';
+  onInteractive?: (visible: boolean) => void;
   className?: string;
   ref?: Ref<TurnstileHandle>;
 }
@@ -92,6 +101,8 @@ export function TurnstileWidget({
   onError,
   action,
   theme,
+  appearance,
+  onInteractive,
   className,
   ref,
 }: TurnstileWidgetProps) {
@@ -105,10 +116,12 @@ export function TurnstileWidget({
   const onVerifyRef = useRef(onVerify);
   const onExpireRef = useRef(onExpire);
   const onErrorRef = useRef(onError);
+  const onInteractiveRef = useRef(onInteractive);
   useEffect(() => {
     onVerifyRef.current = onVerify;
     onExpireRef.current = onExpire;
     onErrorRef.current = onError;
+    onInteractiveRef.current = onInteractive;
   });
 
   useImperativeHandle(ref, () => ({
@@ -133,6 +146,9 @@ export function TurnstileWidget({
           sitekey,
           theme: appliedTheme,
           ...(action ? { action } : {}),
+          ...(appearance ? { appearance } : {}),
+          'before-interactive-callback': () => onInteractiveRef.current?.(true),
+          'after-interactive-callback': () => onInteractiveRef.current?.(false),
           callback: (token) => onVerifyRef.current(token),
           'expired-callback': () => onExpireRef.current?.(),
           'error-callback': () => {
@@ -158,7 +174,7 @@ export function TurnstileWidget({
       }
     };
     // Re-render the widget when the theme flips so it matches light/dark.
-  }, [appliedTheme, action]);
+  }, [appliedTheme, action, appearance]);
 
   return <div ref={containerRef} className={className} />;
 }

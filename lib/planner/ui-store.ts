@@ -37,7 +37,8 @@ export type PlannerOpenedSource =
   | 'plan-list'
   | 'shared-link'
   | 'home-hero'
-  | 'kids-page';
+  | 'kids-page'
+  | 'assistant';
 
 /**
  * What a request asks the panel to do once it is on screen. `page-park-wizard` also starts the
@@ -48,6 +49,16 @@ export type PlannerOpenIntent = 'panel' | 'page-park-wizard';
 
 let requests = 0;
 let wizardRequests = 0;
+
+/** A request to sort one day, from outside the panel (Parky); consumed by the day's optimise row. */
+export interface PlannerOptimizeRequest {
+  id: number;
+  parkSlug: string;
+  date: string;
+  mode: 'order' | 'headliners';
+}
+let optimizeRequest: PlannerOptimizeRequest | null = null;
+let optimizeIds = 0;
 /**
  * Who asked last, for the one `planner_opened` property. Read once by the launcher in the commit
  * where the panel opens, and not part of any snapshot, which must stay a primitive. Initially the
@@ -92,6 +103,29 @@ export const plannerUi = {
     requests += 1;
     if (next === 'page-park-wizard') wizardRequests += 1;
     for (const listener of listeners) listener();
+  },
+  /**
+   * Ask the day's optimise row to press its own button: „Tag optimieren" (`order`) or „Alle
+   * Headliner" (`headliners`), with the same fit check and undo. Held until that row is on screen
+   * with its data, so a request made while the panel opens is not lost.
+   */
+  requestOptimize(parkSlug: string, date: string, mode: PlannerOptimizeRequest['mode']): void {
+    optimizeRequest = { id: ++optimizeIds, parkSlug, date, mode };
+    for (const listener of listeners) listener();
+  },
+  /** The pending request's id, 0 for none; a primitive for `useSyncExternalStore`. */
+  getOptimizeSnapshot(): number {
+    return optimizeRequest?.id ?? 0;
+  },
+  /** The pending request when it is for this park and day. */
+  optimizeRequestFor(parkSlug: string, date: string): PlannerOptimizeRequest | null {
+    return optimizeRequest?.parkSlug === parkSlug && optimizeRequest.date === date
+      ? optimizeRequest
+      : null;
+  },
+  /** Marks a request done, unless a newer one replaced it meanwhile. */
+  clearOptimize(id: number): void {
+    if (optimizeRequest?.id === id) optimizeRequest = null;
   },
   /**
    * Say who is opening the panel without going through the counter: the edge tab sets the
