@@ -253,12 +253,11 @@ export const SEARCH_CONSOLE_IMPORT_PATH = '/api/admin/search-console/import';
 export const SEARCH_CONSOLE_REINDEX_PATH = '/api/admin/search-console/reindex';
 
 /**
- * Search Console's URL Inspection for one page, where "Indexierung beantragen" is: Google offers no
- * API for the request itself.
+ * The property in Search Console, whose top bar inspects a URL. Google gives no link that fills
+ * that field: the `id` of an inspection page is a token Google issues, not the URL.
  */
-export function searchConsoleInspectUrl(siteUrl: string, pageUrl: string): string {
-  const params = new URLSearchParams({ resource_id: siteUrl, id: pageUrl });
-  return `https://search.google.com/search-console/inspect?${params}`;
+export function searchConsolePropertyUrl(siteUrl: string): string {
+  return `https://search.google.com/search-console?${new URLSearchParams({ resource_id: siteUrl, hl: 'de' })}`;
 }
 
 /** The reads that take the window. */

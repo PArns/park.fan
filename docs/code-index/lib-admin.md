@@ -181,7 +181,7 @@ The path guard and the query of `/api/admin/[...path]`, pure so they can be test
 - `formatPositionChange` _function_: A signed number of places: `+1,2` fell down the results, `−0,4` climbed, `±0` stayed.
 - `searchConsoleChip` _function_: The change of a headline figure against the window before.
 - `searchConsoleRowChange` _function_: A row's change in words and tones; `null` without a change (no window before). A position that either side has no impressions for has no change, which is not a change of zero.
-- `searchConsoleInspectUrl` _function_: Search Console's URL Inspection for one page, where "Indexierung beantragen" is: Google offers no API for the request itself.
+- `searchConsolePropertyUrl` _function_: The property in Search Console, whose top bar inspects a URL. Google gives no link that fills that field: the `id` of an inspection page is a token Google issues, not the URL.
 - `searchConsolePath` _function_: The proxy path of a read with the window, the language and extras (`page`, `query`, `limit`). The step goes to the series only; the filters of the traffic pages are not sent, since the API knows nothing of them.
 - `searchConsoleInterval` _function_: The step a series is asked for when the address names `active`: an hour becomes a day.
 - `searchConsoleIntervals` _function_: The steps that make a chart of a window of `days`, without the hour.

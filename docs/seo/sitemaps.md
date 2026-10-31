@@ -161,8 +161,9 @@ cannot silence the route. `?dry=1` builds the list without submitting it.
 Google takes no ping and no API request for an ordinary page, so the observed dates also drive the
 admin's reindex queue (`/admin/traffic/seo`, "Nachindizieren"): the API reads these sitemaps every
 day, asks URL Inspection when Google last crawled each recently changed page, and lists the ones
-crawled before their change, with clicks, impressions, CTR and position. "Beantragen" opens Search
-Console's inspection for the page, where "Indexierung beantragen" is, and the API records the
-click. A page requested since its change waits under "Beantragt, wartet auf Google" and cannot be
+crawled before their change, with clicks, impressions, CTR and position. "Beantragen" copies the
+page's URL and opens the property in Search Console, whose top bar inspects it ("Indexierung
+beantragen" is there), and the API records the click. Google has no link that fills that field: an
+inspection page's `id` is a token Google issues, so a URL in it ends on Google's 404. A page requested since its change waits under "Beantragt, wartet auf Google" and cannot be
 recorded twice; the panel warns past ten requests in 24 hours. Contract and rules:
 `PArns/v4.api.park.fan` `docs/frontend/search-console.md#reindex-queue`.
