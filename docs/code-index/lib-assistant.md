@@ -22,16 +22,21 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`easter-eggs.ts`](../../lib/assistant/easter-eggs.ts)
 
 - `parkPathOf` _function_: The geo path of the park a page belongs to (a park's page or one of its rides), or `null`.
+- `parkPageOf` _function_: The four segments of a park's own page, the only page its line is said on; `null` elsewhere.
+- `topCoaster` _function_: The ride a park's line names: its coaster with the longest waits, Parky being about to ride one, else its top attraction; `null` for a park without a ranking. The list comes ranked from `/stats`.
+- `parkNameIn` _function_: The park's name as the page's own structured data gives it (`AmusementPark`, a root node or one in `@graph`), so the line needs no request of its own; `null` where the page has none.
+- `parkySwitch` _function_: What `?parky=` asks for on this page, for trying the easter eggs out: `egg` for a park's line whatever the chance, or an entrance's name. Browser only.
 - `holidayOn` _function_: The holiday a date falls on: 31 October, 24 to 26 December, 31 December and 1 January.
 - `konamiProgress` _function_: How far into the Konami code a key leaves somebody who had typed `progress` keys of it; the full length means it is done. A wrong key starts over, or counts as the first one if it is.
-- `PARK_EGGS` _const_: Parks Parky has a soft spot for, keyed by the geo path of their page (two parks are called `disneyland-park`), with the ride it wants another go on. Each ride is one park.fan lists.
+- `PARK_FAVOURITES` _const_: Parks whose ride Parky names whatever the numbers say, keyed by the geo path of their page (two parks are called `disneyland-park`). Every other park gets its line from its own data (`topCoaster`). Each ride is one park.fan lists.
+- `PARK_EGG_CHANCE` _const_: How often a park's page gets its line and the coaster ride: sometimes, not every visit.
 - `KONAMI_LENGTH` _const_: How many keys the Konami code has.
-- Types: `ParkyHoliday`
+- Types: `ParkEgg`, `ParkyHoliday`
 
 ### [`entrance.ts`](../../lib/assistant/entrance.ts)
 
-- `sessionEntrance` _function_: This page's entrance: a random one the first time Parky shows in a session, none after that, none without motion and none where storage is blocked (it could not tell a second visit).
-- `ENTRANCE_MS` _const_: How Parky arrives in its corner, once a session, and how long each takes. Each entrance has a line of its own; the stylesheet (`.parky-enter-*`) reads the length as `--parky-enter`, so it is written here only.
+- `pageEntrance` _function_: This page load's entrance: a random one each time the page loads, `?parky=<entrance>` to see a given one, none without motion.
+- `ENTRANCE_MS` _const_: How Parky arrives in its corner each time a page loads, and how long each takes. Each entrance has a line of its own; the stylesheet (`.parky-enter-*`) reads the length as `--parky-enter`, so it is written here only.
 - Types: `ParkyEntrance`
 
 ### [`links.ts`](../../lib/assistant/links.ts)
@@ -76,9 +81,6 @@ by hand: change the comment in the code and re-run the script. -->
 - `stopTeasers` _function_: No more invitations or reactions this session: Parky was opened, or a line was closed.
 - `muteLines` _function_: A line closed by hand: Parky stops talking for the session, its easter eggs included, which opening Parky leaves alone.
 - `linesMuted` _function_: Whether a line was closed by hand this session; `true` where storage is blocked.
-- `parkLineDue` _function_: Whether Parky may still say a park's own line: not muted, not this park yet, not too often.
-- `markParkLine` _function_: Records that Parky said a park's own line.
-- `PARK_LINES_PER_SESSION` _const_: A park's own line comes once per park and at most this often a session.
 - `TEASER_SCHEDULE_MS` _const_: Two lines a session at most: one after a short look around, one a good while later.
 - `REACTIONS_PER_SESSION` _const_: Lines Parky says when it gets bored or is woken up, at most this many a session.
 

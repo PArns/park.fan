@@ -1,8 +1,15 @@
+/** What Parky says a park's line about: the park's name and the ride it wants another go on. */
+export interface ParkEgg {
+  park: string;
+  ride: string;
+}
+
 /**
- * Parks Parky has a soft spot for, keyed by the geo path of their page (two parks are called
- * `disneyland-park`), with the ride it wants another go on. Each ride is one park.fan lists.
+ * Parks whose ride Parky names whatever the numbers say, keyed by the geo path of their page (two
+ * parks are called `disneyland-park`). Every other park gets its line from its own data
+ * ({@link topCoaster}). Each ride is one park.fan lists.
  */
-export const PARK_EGGS: Record<string, { park: string; ride: string }> = {
+export const PARK_FAVOURITES: Record<string, ParkEgg> = {
   'europe/germany/bruehl/phantasialand': { park: 'Phantasialand', ride: 'Taron' },
   'europe/germany/rust/europa-park': { park: 'Europa-Park', ride: 'Silver Star' },
   'europe/netherlands/kaatsheuvel/efteling': { park: 'Efteling', ride: 'Baron 1898' },
@@ -32,6 +39,72 @@ const PARK_PATH = /\/parks\/([^/]+\/[^/]+\/[^/]+\/[^/?#]+)/;
 /** The geo path of the park a page belongs to (a park's page or one of its rides), or `null`. */
 export function parkPathOf(pathname: string): string | null {
   return PARK_PATH.exec(pathname)?.[1] ?? null;
+}
+
+const PARK_PAGE = /^\/[a-z]{2}\/parks\/([^/]+)\/([^/]+)\/([^/]+)\/([^/]+)$/;
+
+/** The four segments of a park's own page, the only page its line is said on; `null` elsewhere. */
+export function parkPageOf(
+  pathname: string
+): { continent: string; country: string; city: string; parkSlug: string } | null {
+  const match = PARK_PAGE.exec(pathname);
+  if (!match) return null;
+  const [, continent, country, city, parkSlug] = match;
+  return { continent, country, city, parkSlug };
+}
+
+/** How often a park's page gets its line and the coaster ride: sometimes, not every visit. */
+export const PARK_EGG_CHANCE = 0.4;
+
+const COASTER = /coaster|achterbahn/i;
+
+/**
+ * The ride a park's line names: its coaster with the longest waits, Parky being about to ride one,
+ * else its top attraction; `null` for a park without a ranking. The list comes ranked from `/stats`.
+ */
+export function topCoaster(
+  ranking: readonly { attractionName: string; attractionType?: string | null }[]
+): string | null {
+  const coaster = ranking.find((ride) => COASTER.test(ride.attractionType ?? ''));
+  return (coaster ?? ranking[0])?.attractionName ?? null;
+}
+
+/**
+ * The park's name as the page's own structured data gives it (`AmusementPark`, a root node or one
+ * in `@graph`), so the line needs no request of its own; `null` where the page has none.
+ */
+export function parkNameIn(scripts: Iterable<{ textContent: string | null }>): string | null {
+  for (const script of scripts) {
+    let data: unknown;
+    try {
+      data = JSON.parse(script.textContent ?? '');
+    } catch {
+      continue;
+    }
+    const nodes = Array.isArray(data) ? data : [data];
+    for (const node of nodes) {
+      const graph = (node as { '@graph'?: unknown[] })?.['@graph'];
+      for (const item of Array.isArray(graph) ? [node, ...graph] : [node]) {
+        const thing = item as { '@type'?: unknown; name?: unknown };
+        if (thing?.['@type'] === 'AmusementPark' && typeof thing.name === 'string') {
+          return thing.name;
+        }
+      }
+    }
+  }
+  return null;
+}
+
+/**
+ * What `?parky=` asks for on this page, for trying the easter eggs out: `egg` for a park's line
+ * whatever the chance, or an entrance's name. Browser only.
+ */
+export function parkySwitch(): string | null {
+  try {
+    return new URLSearchParams(window.location.search).get('parky');
+  } catch {
+    return null;
+  }
 }
 
 /** Days Parky has a line of its own for, in the browser's calendar. */

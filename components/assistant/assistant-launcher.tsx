@@ -13,7 +13,7 @@ import { ParkyLogo, type ParkyCue } from './parky-logo';
 import { PARKY_LAYER } from './parky-layer';
 import { trackSiteEvent, type AssistantOpenSource } from '@/lib/analytics/site-analytics';
 import { stopTeasers } from '@/lib/assistant/teaser-store';
-import { ENTRANCE_MS, sessionEntrance, type ParkyEntrance } from '@/lib/assistant/entrance';
+import { ENTRANCE_MS, pageEntrance, type ParkyEntrance } from '@/lib/assistant/entrance';
 
 // Must stay in step with this file's entry in `LAZY_MESSAGE_BOUNDARIES`
 // (`lib/i18n/route-namespaces.mjs`).
@@ -194,7 +194,7 @@ export function AssistantLauncher() {
   }, [shown]);
 
   // Only in the browser once the button shows: `shown` is false on the server and while hydrating.
-  const entrance = shown ? sessionEntrance() : null;
+  const entrance = shown ? pageEntrance() : null;
   const entering = entrance !== null && !arrived;
   // Landed once the entrance has run its length. A timer, because `animationend` never reached
   // React's handler on the home page.
