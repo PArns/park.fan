@@ -2,7 +2,7 @@
 title: 'Silver Dollar City verdoppelt seine Weihnachtsparade'
 translationKey: silver-dollar-city-old-time-christmas-2026
 date: '2026-10-31'
-time: '12:00'
+time: '08:30'
 author: patrick
 mode: published
 featured: false
