@@ -7,7 +7,7 @@ mode: published
 featured: false
 excerpt: >-
   El 22 de noviembre de 2026, Totensonntag, el Phantasialand abre de 11:00 a 20:00 y la entrada de
-  adulto cuesta 34 €. Los espectáculos y la música exterior no arrancan hasta las 18:00. Vacío no
+  adulto cuesta 34 €. Los espectáculos y el sonido exterior no arrancan hasta las 18:00. Vacío no
   estará, porque es el segundo fin de semana del Wintertraum.
 tags:
   - phantasialand
@@ -31,7 +31,7 @@ rideLinks:
 seo:
   title: 'Phantasialand en el Totensonntag 2026: espectáculos desde las 18:00'
   description: >-
-    Phantasialand el 22 de noviembre de 2026: abre de 11:00 a 20:00, espectáculos y música exterior
+    Phantasialand el 22 de noviembre de 2026: abre de 11:00 a 20:00, espectáculos y sonido exterior
     desde las 18:00, entrada 34 €. Qué prohíbe la ley de NRW.
   keywords:
     - phantasialand totensonntag
@@ -44,13 +44,13 @@ seo:
     - phantasialand afluencia
 ---
 
-El domingo 22 de noviembre de 2026 es Totensonntag, el domingo de difuntos de las iglesias protestantes alemanas, también llamado domingo de la Eternidad, y en Alemania es un festivo «silencioso». Ese día el [Phantasialand](ref:phantasialand) de Brühl abre de 11:00 a 20:00, pero sus espectáculos no empiezan hasta las 18:00. Durante siete horas montas sin música por los altavoces de fuera; luego vienen dos horas de espectáculos de invierno y, poco antes de las ocho, Magic Symphony en la Kaiserplatz.
+El domingo 22 de noviembre de 2026 es Totensonntag, el domingo de difuntos de las iglesias protestantes alemanas, también llamado domingo de la Eternidad, y en Renania del Norte-Westfalia es un festivo «silencioso». Ese día el [Phantasialand](ref:phantasialand) de Brühl abre de 11:00 a 20:00, pero sus espectáculos no empiezan hasta las 18:00. Durante siete horas montas sin sonido exterior; luego vienen dos horas de espectáculos de invierno y, poco antes de las ocho, Magic Symphony en la Kaiserplatz.
 
 El día merece la pena por la tarde-noche, si reservas un espectáculo de teatro para las 18:00 y antes te dedicas a las atracciones. Eso sí, a mí el parque sin música hasta esa hora me resulta un poco opresivo. La entrada de día para adultos cuesta 34 € en la tienda online del parque. Brühl está en Renania del Norte-Westfalia (NRW), cuya ley de festivos permite visitar el parque en el Totensonntag, pero prohíbe de 5:00 a 18:00, entre otras cosas, las actuaciones y los actos de entretenimiento.
 
 ## Qué prohíbe la ley de festivos de NRW en el Totensonntag
 
-La ley de domingos y festivos de NRW, el Feiertagsgesetz, cuenta en su § 2 dos domingos de noviembre entre los «Gedenk- und Trauertage» (días de conmemoración y de luto): el Volkstrauertag, el segundo domingo antes del primer domingo de Adviento, y el Totensonntag, el último domingo antes de Adviento. En 2026 el primer domingo de Adviento cae el 29 de noviembre, así que el Volkstrauertag es el 15 y el Totensonntag el 22 de noviembre. Las iglesias evangélicas lo llaman también Ewigkeitssonntag, de ahí lo de domingo de la Eternidad, y solo puede caer entre el 20 y el 26 de noviembre.
+La ley de domingos y festivos de NRW, el Feiertagsgesetz, cuenta en su § 2 dos domingos de noviembre entre los «Gedenk- und Trauertage» (días de conmemoración y de luto): el Volkstrauertag, el segundo domingo antes del primer domingo de Adviento, y el Totensonntag, el último domingo antes de Adviento. En 2026 el primer domingo de Adviento cae el 29 de noviembre, así que el Volkstrauertag es el 15 y el Totensonntag el 22 de noviembre. El Totensonntag solo puede caer entre el 20 y el 26 de noviembre.
 
 Los festivos silenciosos tienen su propio artículo, el § 6. Para el Totensonntag remite a la lista que primero redacta para el Volkstrauertag y la alarga. El apartado 2 dice: «Am Allerheiligentag und am Totensonntag sind zusätzlich verboten: alle in Absatz 1 genannten Veranstaltungen von 5 Uhr bis 18 Uhr», es decir, el día de Todos los Santos y el Totensonntag quedan prohibidos además todos los actos del apartado 1 de 5:00 a 18:00. De esa lista, dos puntos pueden afectar a un parque de atracciones:
 
@@ -65,17 +65,17 @@ Los otros tres puntos de la lista tratan de mercados y ferias comerciales, salas
 
 La palabra «parque de atracciones» no aparece en la ley. Lo que figura en el número 2 es la instalación de ocio, con el añadido «soweit dort tänzerische oder artistische Darbietungen angeboten werden» (en la medida en que en ellas se ofrezcan actuaciones de baile o acrobacia). El texto no prohíbe expresamente que funcionen las montañas rusas, y tampoco aclara si el número 5, con sus «alle anderen der Unterhaltung dienenden öffentlichen Veranstaltungen» (todos los demás actos públicos destinados al entretenimiento), abarca también el funcionamiento de las atracciones. El parque las pone en marcha a las 11:00. El § 4, que regula qué trabajos se permiten en domingos y festivos, incluye los «Arbeiten, die der Erholung im Rahmen der Freizeitgestaltung dienen» (trabajos que sirven al descanso en el tiempo libre) y pone como ejemplo saunas, solariums y gimnasios, escritos «Bräunungs- und Fitneßstudios», así, con ß. O sea, el solárium tiene su sitio en la ley y la montaña rusa se quedó fuera.
 
-Según el § 5, todos los domingos y festivos de 6:00 a 11:00, la «Hauptzeit des Gottesdienstes» (hora principal del oficio religioso), están prohibidos los actos públicos de entretenimiento, salvo que haya un «höheres Interesse der Kunst, Wissenschaft oder Volksbildung» (interés superior del arte, la ciencia o la educación popular). El § 6, apartado 4, exige incluso a la radio y la televisión, de 5:00 a 18:00, «auf den ernsten Charakter der stillen Feiertage Rücksicht zu nehmen», respetar el carácter serio de los festivos silenciosos. Al organizador que no lo cumpla le espera una multa según el § 11, y una excepción por «dringendem Bedürfnis» (necesidad urgente) solo la puede autorizar, según el § 10, el Regierungspräsident, el presidente del distrito administrativo, que para Brühl es el de Colonia.
+Según el § 5, todos los domingos y festivos de 6:00 a 11:00, la «Hauptzeit des Gottesdienstes» (hora principal del oficio religioso), están prohibidos los actos públicos de entretenimiento, salvo que haya un «höheres Interesse der Kunst, Wissenschaft oder Volksbildung» (interés superior del arte, la ciencia o la educación popular). Al organizador que no lo cumpla le espera una multa según el § 11. Una excepción solo podría autorizarla, según el § 10, el Regierungspräsident, el presidente del distrito administrativo, que para Brühl es el de Colonia, y solo en caso de necesidad urgente.
 
-Para Todos los Santos, el domingo 1 de noviembre de 2026, el Phantasialand ha anunciado que no habrá ni espectáculos ni música exterior en todo el día. Ese día el parque sigue con el horario de verano, de 9:00 a 18:00 como mínimo.
+Para Todos los Santos, el domingo 1 de noviembre de 2026, el Phantasialand ha anunciado que no habrá ni espectáculos ni sonido exterior en todo el día. Ese día el parque sigue con el horario de verano, de 9:00 a 18:00 como mínimo.
 
 ## Qué hay en el Phantasialand el 22 de noviembre
 
-### Atracciones y música exterior en el Totensonntag
+### Atracciones y sonido exterior en el Totensonntag
 
-El parque tiene programa de invierno desde 2002. Este invierno, el Wintertraum va del 14 de noviembre de 2026 al 24 de enero de 2027, cada día de 11:00 a 20:00. Durante el Wintertraum el parque cierra en Nochebuena, el día de Navidad, el día de Año Nuevo y el 12 y el 13 de enero; en Nochevieja cierra a las 18:00.
+El parque tiene programa de invierno desde 2002. Este invierno, el Wintertraum empieza el 14 de noviembre de 2026 y abre cada día de 11:00 a 20:00. Si el 22 de noviembre no te viene bien, sigue hasta el 24 de enero de 2027. Cierra en Nochebuena, el día de Navidad, el día de Año Nuevo y el 12 y el 13 de enero, y en Nochevieja termina a las 18:00.
 
-En su página de información para la visita, el Phantasialand escribe: «Am Sonntag 22. November 2026 finden aufgrund des stillen Feiertages (Totensonntag) alle Shows ab 18:00 Uhr statt», o sea, que por el festivo silencioso todos los espectáculos de ese domingo empiezan a las 18:00. Que la música exterior de las zonas temáticas también calle hasta las 18:00 solo lo dicen las páginas en inglés del parque, por ejemplo el resumen de atracciones y la ficha del espectáculo Nobis:
+En su página de información para la visita, el Phantasialand escribe: «Am Sonntag 22. November 2026 finden aufgrund des stillen Feiertages (Totensonntag) alle Shows ab 18:00 Uhr statt», o sea, que por el festivo silencioso todos los espectáculos de ese domingo empiezan a las 18:00. Que el sonido exterior también calle hasta las 18:00 solo lo dicen las páginas en inglés del parque, por ejemplo el resumen de atracciones y la ficha del espectáculo Nobis:
 
 > [!QUOTE]
 > El domingo 22 de noviembre de 2026, los espectáculos y el sonido exterior empezarán a las 18:00 por el festivo silencioso (Totensonntag).
@@ -84,7 +84,7 @@ En su página de información para la visita, el Phantasialand escribe: «Am Son
 >
 > Phantasialand en su [resumen de atracciones en inglés](https://www.phantasialand.de/en/theme-park/one-of-a-kind-attractions/attractions-overview-summer/), traducido del inglés
 
-Estuve en el Phantasialand el 24 de noviembre de 2024 y el 23 de noviembre de 2025, es decir, en los dos últimos Totensonntag. Las dos veces no me pareció un día de parque normal. Hasta las 18:00 los altavoces no ponen nada, y justo entonces me doy cuenta de cuánto sostiene la música de IMAscore al Phantasialand. Es un estudio de Paderborn fundado en 2009 que compone para parques de atracciones; aquí ha escrito, entre otras, las bandas sonoras de Klugheim, con Taron y Raik, y de Rookburgh, con F.L.Y. Si suena música dentro de los edificios y en las atracciones, el parque no lo ha anunciado. Lo que te cuente la gente que tienes delante en la cola de [Taron](ref:phantasialand/taron), eso la ley no lo regula.
+Estuve en el Phantasialand el 24 de noviembre de 2024 y el 23 de noviembre de 2025, es decir, en los dos últimos Totensonntag. Las dos veces no me pareció un día de parque normal, porque hasta las 18:00 el parque parecía tener el volumen a cero. Solo cuando volvió la música me di cuenta de cuánto depende el Phantasialand de las bandas sonoras de IMAscore. IMAscore, un estudio de Paderborn, ha escrito aquí, entre otras, las de Klugheim, con Taron y Raik, y de Rookburgh, con F.L.Y. Si suena música dentro de los edificios y en las atracciones, el parque no lo ha anunciado, así que hasta las 18:00 la banda sonora de la cola de [Taron](ref:phantasialand/taron) puede que sea lo que cuenta la gente que tienes delante.
 
 Durante el Wintertraum, el Phantasialand tiene abiertas, entre otras, [Taron](ref:phantasialand/taron), [F.L.Y.](ref:phantasialand/fly), [Black Mamba](ref:phantasialand/black-mamba), [Chiapas](ref:phantasialand/chiapas-die-wasserbahn) y [Maus au Chocolat](ref:phantasialand/maus-au-chocolat). Faltan tres atracciones de agua: [River Quest](ref:phantasialand/river-quest) cierra ya el 2 de noviembre, y Wakobato y Wözl’s Wassertreter el 14 de noviembre. No tiene nada que ver con el festivo: las tres siguen cerradas hasta el final del Wintertraum, el 24 de enero de 2027.
 
@@ -97,13 +97,13 @@ En su página de espectáculos, el parque promete para esa tarde «alle unsere W
 - **Der goldene Faden** en el Wintergarten
 - **Kaiserplatz Illumination**, **Tiempo de Fuego**, **Pulse of Rookburgh** y **Magic Symphony** al aire libre
 
-Cada espectáculo de teatro descansa un día a la semana: Spectaculum Phantastère los lunes, Der goldene Faden los martes y Arctaris los miércoles. El último antes del cierre es Magic Symphony, en la Kaiserplatz de la zona Berlin. Con mal tiempo se puede suspender, y entonces, según el parque, hay en su lugar «Good Night Wish», de música y luz.
+Los tres espectáculos de teatro tienen función los domingos; sus días de descanso caen entre el lunes y el miércoles. El último antes del cierre es Magic Symphony, en la Kaiserplatz de la zona Berlin. Con mal tiempo se puede suspender, y entonces, según el parque, hay en su lugar «Good Night Wish», de música y luz.
 
-Los siete espectáculos y además una vuelta en alguna atracción no caben entre las 18:00 y las 20:00. Yo elegiría un espectáculo de teatro que quiera ver sí o sí y organizaría el resto de la tarde según la hora a la que empiece.
+Los siete espectáculos y además una vuelta en alguna atracción no caben entre las 18:00 y las 20:00.
 
 ## Cuánta gente hay en el Phantasialand en el Totensonntag
 
-Cuento con un parque lleno. El Totensonntag cae en el segundo fin de semana del Wintertraum, y los domingos hay función en los tres teatros. Además, con 34 €, es el día de fin de semana más barato del Wintertraum en noviembre.
+Cuento con un parque lleno. El Totensonntag cae en el segundo fin de semana del Wintertraum, los domingos el programa de espectáculos está completo y, con 34 €, es el día de fin de semana más barato del Wintertraum en noviembre.
 
 Nuestro artículo sobre los [días vacíos en el Phantasialand](/blog/phantasialand-tiempos-de-espera-dias-tranquilos) compara los fines de semana en Brühl con los días laborables. Los tiempos de espera de hoy están en el [calendario de la página del parque](ref:phantasialand?calendar).
 
@@ -144,15 +144,15 @@ Se aparca en los aparcamientos Mystery (P1) y China (P2). Un coche paga 8 €, e
 
 ## El Volkstrauertag, una semana antes
 
-El Volkstrauertag, el día de duelo nacional, cae desde 1952 en el segundo domingo antes de Adviento. Ese día, los mercados, las salas de juego y la explotación de instalaciones de ocio con actuaciones de baile o acrobacia solo están prohibidos hasta las 13:00; la música en bares y restaurantes y todos los demás actos públicos de entretenimiento, como en el Totensonntag, hasta las 18:00.
+El Volkstrauertag, el día de duelo nacional, cae en este domingo desde 1952. Para un parque de atracciones, la diferencia está en el número 2: ese día, la explotación de instalaciones de ocio con actuaciones de baile o acrobacia solo está prohibida hasta las 13:00, mientras que todos los demás actos públicos de entretenimiento del número 5 siguen prohibidos hasta las 18:00, como en el Totensonntag.
 
-Para el 15 de noviembre, el Phantasialand no ha anunciado cambios en los espectáculos ni en la música exterior. En el calendario figura de 11:00 a 20:00, y la entrada cuesta 35 €.
+Para el 15 de noviembre, el Phantasialand no ha anunciado cambios en los espectáculos ni en el sonido exterior. En el calendario figura de 11:00 a 20:00, y la entrada cuesta 35 €.
 
 ## Preguntas frecuentes sobre el Phantasialand en el Totensonntag
 
 ### ¿Abre el Phantasialand en el Totensonntag?
 
-Sí. El 22 de noviembre de 2026 el Phantasialand abre de 11:00 a 20:00. Las atracciones funcionan desde las 11:00; los espectáculos y, según las páginas en inglés del parque, también la música exterior, solo desde las 18:00.
+Sí. El 22 de noviembre de 2026 el Phantasialand abre de 11:00 a 20:00. Las atracciones funcionan todo el día, y los espectáculos y el sonido exterior empiezan a las 18:00.
 
 ### ¿Hay espectáculos en el Phantasialand en el Totensonntag?
 
@@ -160,11 +160,11 @@ Sí, desde las 18:00 hay los siete espectáculos de invierno, y el último, haci
 
 ### ¿Suena música en el Phantasialand en el Totensonntag?
 
-Según las páginas en inglés del parque, la música exterior de las zonas temáticas no empieza hasta las 18:00 el 22 de noviembre de 2026. Para los edificios y las atracciones el parque no dice nada, y en sus páginas en alemán solo pone que los espectáculos empiezan a las 18:00.
+Según las páginas en inglés del parque, el sonido exterior no empieza hasta las 18:00 el 22 de noviembre de 2026. Para los edificios y las atracciones el parque no dice nada, y en sus páginas en alemán solo pone que los espectáculos empiezan a las 18:00.
 
 ### ¿Cuánta gente hay en el Phantasialand en el Totensonntag?
 
-Para el 22 de noviembre de 2026 cuento con un parque lleno: el Wintertraum empezó solo una semana antes, los domingos hay función en los tres teatros y, con 34 €, es el día de fin de semana más barato de noviembre.
+Cuento con un parque lleno. El Wintertraum empezó solo ocho días antes, y ningún otro día de fin de semana del Wintertraum en noviembre cuesta menos que los 34 € del 22 de noviembre.
 
 ### ¿Cuánto cuesta el Phantasialand en el Totensonntag?
 
@@ -184,7 +184,7 @@ River Quest cierra desde el 2 de noviembre de 2026, Wakobato y Wözl’s Wassert
 
 - Ley de festivos de NRW (§§ 2, 4, 5, 6, 10 y 11): [Gesetz über die Sonn- und Feiertage, texto completo (recht.nrw.de, en alemán)](https://recht.nrw.de/lrgv/gesetz/01012000-bekanntmachung-der-neufassung-des-gesetzes-ueber-die-sonn-und-feiertage/)
 - Fechas de 2026: [Festivos de 2026 (schulferien.org, en alemán)](https://www.schulferien.org/Feiertage/2026/feiertage_2026.html) · [Totensonntag en Wikipedia (en alemán)](https://de.wikipedia.org/wiki/Totensonntag) · [Volkstrauertag en Wikipedia (en alemán)](https://de.wikipedia.org/wiki/Volkstrauertag) · [Brühl en Wikipedia (en alemán)](<https://de.wikipedia.org/wiki/Br%C3%BChl_(Rheinland)>)
-- Espectáculos y música exterior en el Totensonntag y en Todos los Santos: [Faszinierende Shows (oficial, en alemán)](https://www.phantasialand.de/de/themenpark/faszinierende-shows/) · [Informationen zum Besuch (oficial, en alemán)](https://www.phantasialand.de/de/themenpark/informationen-und-anreise/) · [Attractions overview (oficial, en inglés)](https://www.phantasialand.de/en/theme-park/one-of-a-kind-attractions/attractions-overview-summer/) · [Nobis (oficial, en inglés)](https://www.phantasialand.de/en/theme-park/fascinating-shows/nobis/)
+- Espectáculos y sonido exterior en el Totensonntag y en Todos los Santos: [Faszinierende Shows (oficial, en alemán)](https://www.phantasialand.de/de/themenpark/faszinierende-shows/) · [Informationen zum Besuch (oficial, en alemán)](https://www.phantasialand.de/de/themenpark/informationen-und-anreise/) · [Attractions overview (oficial, en inglés)](https://www.phantasialand.de/en/theme-park/one-of-a-kind-attractions/attractions-overview-summer/) · [Nobis (oficial, en inglés)](https://www.phantasialand.de/en/theme-park/fascinating-shows/nobis/)
 - La música del parque: [IMAscore en Wikipedia (en alemán)](https://de.wikipedia.org/wiki/IMAscore) · [IMAscore (oficial, en inglés)](https://www.imascore.com/)
 - Wintertraum, espectáculos de invierno, Magic Symphony y atracciones cerradas: [Wintertraum (oficial, en alemán)](https://www.phantasialand.de/de/themenpark/wintertraum/) · [Wintershows (oficial, en alemán)](https://www.phantasialand.de/de/themenpark/wintertraum/wintershows/) · [Attraktionen im Winter (oficial, en alemán)](https://www.phantasialand.de/de/themenpark/attraktionen/uebersicht-winter/) · [Phantasialand en Wikipedia (en alemán)](https://de.wikipedia.org/wiki/Phantasialand)
 - Horarios: [Öffnungszeiten (oficial, en alemán)](https://www.phantasialand.de/de/themenpark/oeffnungszeiten/)
