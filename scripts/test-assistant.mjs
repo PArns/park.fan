@@ -3,7 +3,8 @@
  * answers (`lib/assistant/links.ts`), the rollout gate (`lib/assistant/config.ts`), the post
  * text it reads (`lib/assistant/post-text.ts`), how bored its face gets
  * (`lib/assistant/parky-boredom.ts`), how a chat opens (`lib/assistant/opener.ts`) and Parky's easter
- * eggs (`lib/assistant/easter-eggs.ts`, muting in `teaser-store.ts`).
+ * eggs (`lib/assistant/easter-eggs.ts`, muting in `teaser-store.ts`) and its rides
+ * (`lib/assistant/parky-rides.ts`).
  */
 
 import assert from 'node:assert/strict';
@@ -39,6 +40,7 @@ import {
   topCoaster,
 } from '@/lib/assistant/easter-eggs.ts';
 import { linesMuted, muteLines } from '@/lib/assistant/teaser-store.ts';
+import { isRide, REST, RIDE_MOTION, rideKeyframe } from '@/lib/assistant/parky-rides.ts';
 
 let passed = 0;
 function check(actual, expected, label) {
@@ -399,4 +401,34 @@ check(holidayOn(new Date(2026, 9, 30)), null, 'an ordinary day');
   check(linesMuted(), true, 'a line closed by hand mutes the rest');
   delete globalThis.window;
 }
+for (const [name, motion] of Object.entries(RIDE_MOTION)) {
+  const { stops } = motion;
+  const at = stops.map((stop) => stop.at);
+  check(
+    at.every((value, i) => i === 0 || value >= at[i - 1]),
+    true,
+    `${name}: its moments run forward`
+  );
+  check([at[0], at[at.length - 1]], [0, 1], `${name}: from start to end`);
+  const rest = (stop) => [stop.x, stop.y, stop.angle];
+  check(rest(stops[0]), [REST.x, REST.y, 0], `${name}: starts at rest`);
+  check(rest(stops[stops.length - 1]), [REST.x, REST.y, 0], `${name}: ends at rest`);
+  check(motion.track.startsWith('M'), true, `${name}: has rails`);
+}
+check(
+  Math.max(...RIDE_MOTION.launch.stops.map((stop) => stop.angle)),
+  90,
+  'the launch stands upright in its spike'
+);
+check(
+  RIDE_MOTION.hills.stops.some((stop) => stop.opacity === 0),
+  true,
+  'the hills ride leaves the picture and comes back'
+);
+check(
+  rideKeyframe({ x: 20, y: 40, angle: 45, at: 0.5 }).transform,
+  'translate(-4px, -9px) rotate(45deg) scale(1, 1)',
+  'a stop as a keyframe, turned about the wheels'
+);
+check([isRide('tower'), isRide('egg'), isRide(null)], [true, false, false], 'a ride by name');
 console.log(`assistant: ${passed} checks passed`);

@@ -14,6 +14,8 @@ import { PARKY_LAYER } from './parky-layer';
 import { trackSiteEvent, type AssistantOpenSource } from '@/lib/analytics/site-analytics';
 import { stopTeasers } from '@/lib/assistant/teaser-store';
 import { ENTRANCE_MS, pageEntrance, type ParkyEntrance } from '@/lib/assistant/entrance';
+import { parkySwitch } from '@/lib/assistant/easter-eggs';
+import { isRide } from '@/lib/assistant/parky-rides';
 
 // Must stay in step with this file's entry in `LAZY_MESSAGE_BOUNDARIES`
 // (`lib/i18n/route-namespaces.mjs`).
@@ -25,6 +27,9 @@ const AssistantTeaser = dynamic(
   () => import('./assistant-teaser').then((mod) => mod.AssistantTeaser),
   { ssr: false }
 );
+
+/** A ride asked for by `?parky=` waits for the longest entrance to end. */
+const ASKED_RIDE_AFTER_MS = 2_600;
 
 const loadPanel = () => import('./assistant-panel').then((mod) => mod.AssistantPanel);
 type PanelComponent = Awaited<ReturnType<typeof loadPanel>>;
@@ -214,10 +219,14 @@ export function AssistantLauncher() {
   }, []);
   const openFromButton = useCallback(() => openFrom('button'), [openFrom]);
   const openFromLine = useCallback(() => openFrom('line'), [openFrom]);
-  const ride = useCallback(
-    () => setCue((last) => ({ act: 'coaster', id: (last?.id ?? 0) + 1 })),
-    []
-  );
+  const ride = useCallback(() => setCue((last) => ({ act: 'ride', id: (last?.id ?? 0) + 1 })), []);
+  // `?parky=<ride>` plays that ride once Parky has arrived, for trying each out.
+  useEffect(() => {
+    const asked = shown ? parkySwitch() : null;
+    if (!isRide(asked)) return;
+    const timer = setTimeout(() => setCue({ act: asked, id: 1 }), ASKED_RIDE_AFTER_MS);
+    return () => clearTimeout(timer);
+  }, [shown]);
   if (!visible || !messages.ready) return null;
 
   const content = (

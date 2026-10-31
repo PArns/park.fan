@@ -5,6 +5,13 @@ import { cn } from '@/lib/utils';
 import { pickRandom } from '@/lib/utils/pick-random';
 import { parkyBoredom } from '@/lib/assistant/parky-boredom';
 import { useParkyBoredom } from '@/lib/assistant/use-parky-boredom';
+import {
+  REST,
+  RIDE_MOTION,
+  RIDES,
+  rideKeyframe,
+  type ParkyRide,
+} from '@/lib/assistant/parky-rides';
 
 /**
  * Parky's little acts and how long each runs. The stylesheet reads the length as `--parky-act`,
@@ -28,25 +35,51 @@ const ACT_MS = {
   doze: 2000,
   startle: 900,
   coaster: 3600,
+  launch: 4400,
+  hills: 4800,
+  tower: 4200,
   dizzy: 2700,
-} as const;
+} as const satisfies Record<string, number> & Record<ParkyRide, number>;
 type ParkyAct = keyof typeof ACT_MS;
 
-/** An act that always comes straight after another: off the coaster, Parky is dizzy. */
-const FOLLOW_UP: Partial<Record<ParkyAct, ParkyAct>> = { coaster: 'dizzy' };
+/** An act that always comes straight after another: off any ride, Parky is dizzy. */
+const FOLLOW_UP: Partial<Record<ParkyAct, ParkyAct>> = {
+  coaster: 'dizzy',
+  launch: 'dizzy',
+  hills: 'dizzy',
+  tower: 'dizzy',
+};
 
 /**
- * An act asked for from outside, to play at once: the coaster ride an easter egg ends with. A new
- * `id` plays it again.
+ * A ride asked for from outside, to play at once: the one an easter egg ends with, or `ride` for
+ * any of them. A new `id` plays it again.
  */
 export interface ParkyCue {
-  act: 'coaster';
+  act: ParkyRide | 'ride';
   id: number;
 }
 
+/** A ride by name, or a random one for `ride`. */
+function rideFor(act: ParkyRide | 'ride'): ParkyRide {
+  return act === 'ride' ? pickRandom(RIDES) : act;
+}
+
 /** With company Parky fidgets and shows off; once nobody moves it yawns, reads and naps. */
-const ACTS: Record<'awake' | 'bored', readonly ParkyAct[]> = {
-  awake: ['hop', 'tilt', 'look', 'spin', 'wink', 'wiggle', 'roll', 'twirl', 'dance', 'read'],
+const ACTS: Record<'awake' | 'bored', readonly (ParkyAct | 'ride')[]> = {
+  // Now and then a ride, any of the four, as one act among the rest.
+  awake: [
+    'hop',
+    'tilt',
+    'look',
+    'spin',
+    'wink',
+    'wiggle',
+    'roll',
+    'twirl',
+    'dance',
+    'read',
+    'ride',
+  ],
   bored: ['yawn', 'whistle', 'gum', 'roll', 'look', 'read', 'nap'],
 };
 /** The rest between two acts, as the shortest wait and a random spread on top. */
@@ -165,11 +198,12 @@ function useIdleAct(enabled: boolean, cue: ParkyCue | null) {
       // Asleep, the doze is the last act: the sleeping face takes over until somebody moves.
       if (boredom === 'asleep') return;
       const [shortest, spread] = PAUSE_MS[boredom];
-      play(shortest + Math.random() * spread, pickRandom(ACTS[boredom], previous));
+      const next = pickRandom(ACTS[boredom], previous);
+      play(shortest + Math.random() * spread, next === 'ride' ? rideFor(next) : next);
     };
     if (cue && cue.id !== played.current) {
       played.current = cue.id;
-      play(0, cue.act);
+      play(0, rideFor(cue.act));
     } else if (boredom === 'asleep') play(SETTLE_MS, 'doze');
     else if (boredom === 'bored') play(SETTLE_MS, 'yawn');
     else if (woke) play(0, 'startle');
@@ -234,6 +268,26 @@ export function ParkyLogo({
         ? READING_GAZE
         : mouseGaze;
   const sleeping = asleep || act === 'nap';
+  const ride =
+    act !== null && (RIDES as readonly string[]).includes(act) ? (act as ParkyRide) : null;
+  const motion = ride && ride !== 'coaster' ? RIDE_MOTION[ride] : null;
+  // The rides beyond the loop move the whole face along their track, played from the same
+  // geometry the rails are drawn from; the hat lifts off its head in the free fall.
+  const body = useRef<SVGGElement>(null);
+  const hat = useRef<SVGGElement>(null);
+  useEffect(() => {
+    if (!motion || !ride || !body.current) return;
+    const timing = { duration: ACT_MS[ride], fill: 'both' as const };
+    const runs = [body.current.animate(motion.stops.map(rideKeyframe), timing)];
+    if (motion.hat && hat.current) {
+      const lifts = motion.hat.map(({ at, lift }) => ({
+        offset: at,
+        transform: `translateY(${-lift}px)`,
+      }));
+      runs.push(hat.current.animate(lifts, timing));
+    }
+    return () => runs.forEach((run) => run.cancel());
+  }, [motion, ride]);
   return (
     <svg
       ref={svg}
@@ -308,6 +362,25 @@ export function ParkyLogo({
           />
         </g>
       )}
+      {motion && ride === 'tower' && (
+        // The tower: a mast behind Parky with rungs, up which the seat is pulled.
+        <g className="parky-track" fill="none" stroke={rail}>
+          <path d={motion.track} strokeWidth="3.2" strokeOpacity=".85" />
+          <path d={motion.track} stroke="white" strokeOpacity=".5" strokeDasharray=".6 4" />
+        </g>
+      )}
+      {motion && ride !== 'tower' && (
+        <g className="parky-track" fill="none" stroke={rail} strokeLinejoin="round">
+          <path d={motion.track} strokeWidth="2.6" />
+          <path
+            d={motion.track}
+            stroke="white"
+            strokeOpacity=".55"
+            strokeWidth=".7"
+            strokeDasharray=".5 2.2"
+          />
+        </g>
+      )}
       {act === 'startle' && (
         <g className="parky-alarm" fill={blue}>
           <path d="M7.5 0v5.2" stroke={blue} strokeWidth="2" strokeLinecap="round" />
@@ -316,6 +389,7 @@ export function ParkyLogo({
       )}
       <g
         key={act ?? state ?? (asleep ? 'asleep' : 'still')}
+        ref={body}
         className={cn(
           'parky-body',
           act && `parky-act-${act}`,
@@ -324,44 +398,46 @@ export function ParkyLogo({
         )}
       >
         {/* The hat: a Ferris wheel standing on Parky's head. */}
-        <g
-          className={cn(
-            'parky-wheel',
-            (state === 'talking' ||
-              state === 'looking' ||
-              act === 'spin' ||
-              act === 'twirl' ||
-              act === 'coaster' ||
-              act === 'dance') &&
-              'parky-wheel--turning'
-          )}
-        >
-          {/* A light edge under the rim keeps the wheel legible on any page. */}
-          <circle
-            cx={HUB.x}
-            cy={HUB.y}
-            r={RIM}
-            fill="none"
-            stroke="white"
-            strokeOpacity=".8"
-            strokeWidth="2.6"
-          />
-          <circle cx={HUB.x} cy={HUB.y} r={RIM} fill="none" stroke={blue} strokeWidth="1.3" />
-          <path d={SPOKES} stroke={blue} strokeOpacity=".75" strokeWidth=".55" />
-          {CABINS.map((cabin, i) => (
+        <g ref={hat}>
+          <g
+            className={cn(
+              'parky-wheel',
+              (state === 'talking' ||
+                state === 'looking' ||
+                act === 'spin' ||
+                act === 'twirl' ||
+                ride ||
+                act === 'dance') &&
+                'parky-wheel--turning'
+            )}
+          >
+            {/* A light edge under the rim keeps the wheel legible on any page. */}
             <circle
-              key={`${cabin.x} ${cabin.y}`}
-              cx={cabin.x}
-              cy={cabin.y}
-              r="1.45"
-              fill={CABIN_COLOURS[i % CABIN_COLOURS.length]}
+              cx={HUB.x}
+              cy={HUB.y}
+              r={RIM}
+              fill="none"
               stroke="white"
-              strokeWidth=".5"
+              strokeOpacity=".8"
+              strokeWidth="2.6"
             />
-          ))}
+            <circle cx={HUB.x} cy={HUB.y} r={RIM} fill="none" stroke={blue} strokeWidth="1.3" />
+            <path d={SPOKES} stroke={blue} strokeOpacity=".75" strokeWidth=".55" />
+            {CABINS.map((cabin, i) => (
+              <circle
+                key={`${cabin.x} ${cabin.y}`}
+                cx={cabin.x}
+                cy={cabin.y}
+                r="1.45"
+                fill={CABIN_COLOURS[i % CABIN_COLOURS.length]}
+                stroke="white"
+                strokeWidth=".5"
+              />
+            ))}
+          </g>
+          <path d={A_FRAME} stroke={frame} strokeWidth="1.5" strokeLinecap="round" />
+          <circle cx={HUB.x} cy={HUB.y} r="1.3" fill="white" stroke={frame} strokeWidth=".8" />
         </g>
-        <path d={A_FRAME} stroke={frame} strokeWidth="1.5" strokeLinecap="round" />
-        <circle cx={HUB.x} cy={HUB.y} r="1.3" fill="white" stroke={frame} strokeWidth=".8" />
         {/* The body: a round bubble with its tail at the lower left. */}
         <path
           d="M24 7c11 0 20 8.1 20 18.2S35 43.4 24 43.4c-2.5 0-4.9-.4-7.1-1.1L7.5 46l2.3-8C6.1 34.7 4 30.2 4 25.2 4 15.1 13 7 24 7Z"
@@ -462,15 +538,15 @@ export function ParkyLogo({
             </g>
           </>
         )}
-        {act === 'coaster' && (
+        {ride && (
           <>
             <path className="parky-grin" d="M20 31.5h8q0 5.5-4 5.5t-4-5.5Z" fill={ink} />
-            {/* The car Parky rides in, its wheels on the loop's inner rail. */}
+            {/* The car Parky rides in, its wheels on the rail at the resting point. */}
             <g className="parky-car">
               <path d="M7 38h34l-2.5 7.5h-29Z" fill={rail} />
               <path d="M7 38h34" stroke="white" strokeOpacity=".6" strokeWidth=".8" />
-              <circle cx="14" cy={LOOP.y + LOOP.r - 2} r="2" fill={ink} />
-              <circle cx="34" cy={LOOP.y + LOOP.r - 2} r="2" fill={ink} />
+              <circle cx="14" cy={REST.y - 2} r="2" fill={ink} />
+              <circle cx="34" cy={REST.y - 2} r="2" fill={ink} />
             </g>
           </>
         )}
