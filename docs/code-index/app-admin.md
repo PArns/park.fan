@@ -837,6 +837,10 @@ Route `/admin/system` (page).
 
 - `RankedEntitiesPanel` _component_: A report's ranking of parks or rides as a panel: each name leads into its editor and the symbol beside it to its page, an id no table knows any more reads „Nicht mehr vorhanden".
 
+### [`traffic/_components/reindex-panel.tsx`](../../app/admin/traffic/_components/reindex-panel.tsx)
+
+- `ReindexPanel` _component_: The pages Google has not crawled since they changed, to request indexing for in Search Console, and the record of every request, so a page is requested once per change even while Search Console still shows the old crawl.
+
 ### [`traffic/_components/search-console-section.tsx`](../../app/admin/traffic/_components/search-console-section.tsx)
 
 - `SearchConsoleSection` _component_: The Search Console section of the SEO page: the status of the import with a button for an editor to run it now, the window's figures, their course, and the queries and pages behind them.

@@ -52,19 +52,19 @@ is an accepted cost ([crawl budget](crawl-budget.md)). The span decides the file
 
 ## What `/sitemap.xml` holds
 
-| URLs                                                                                    | `lastModified`           |
-| --------------------------------------------------------------------------------------- | ------------------------ |
-| `/{locale}` home, `/fancast`, `/contribute`, the guide, the planner, best time to visit | none (code, not content) |
-| `/en/changelog` (English only, no alternates)                                           | newest entry's date      |
-| `/{locale}/parks`, continent, country and **multi-park** city hubs                      | observed                 |
-| `/{locale}/parks/six-flags` and `/universal`, the [brand pages](brand-pages.md)         | observed                 |
-| `/{locale}/parks/…/{park}` (with the park's photos as image entries)                    | observed                 |
-| `/{locale}/parks/…/{park}/{calendar-segment}` (the calendar hub)                        | none                     |
-| `/{locale}/parks/…/{park}/{stats-segment}`, **displayable parks only**                  | none                     |
-| `/{locale}/parks/…/{park}/{kids-segment}`, **gated parks only**                         | none                     |
-| glossary index and terms                                                                | `GLOSSARY_CONTENT_DATE`  |
-| `/{locale}/blog`, `/{locale}/news`, categories, authors, indexable tags (page 1)        | newest post in the list  |
-| blog and news posts, **real translations only**                                         | `updatedAt ?? date`      |
+| URLs                                                                                    | `lastModified`                         |
+| --------------------------------------------------------------------------------------- | -------------------------------------- |
+| `/{locale}` home, `/fancast`, `/contribute`, the guide, the planner, best time to visit | none (code, not content)               |
+| `/en/changelog` (English only, no alternates)                                           | newest entry's date                    |
+| `/{locale}/parks`, continent, country and **multi-park** city hubs                      | observed                               |
+| `/{locale}/parks/six-flags` and `/universal`, the [brand pages](brand-pages.md)         | observed                               |
+| `/{locale}/parks/…/{park}` (with the park's photos as image entries)                    | observed                               |
+| `/{locale}/parks/…/{park}/{calendar-segment}` (the calendar hub)                        | none                                   |
+| `/{locale}/parks/…/{park}/{stats-segment}`, **displayable parks only**                  | none                                   |
+| `/{locale}/parks/…/{park}/{kids-segment}`, **gated parks only**                         | none                                   |
+| glossary index and terms                                                                | `GLOSSARY_CONTENT_DATE`                |
+| `/{locale}/blog`, `/{locale}/news`, categories, authors, indexable tags (page 1)        | newest post in the list                |
+| blog and news posts, **real translations only**                                         | observed, at least `updatedAt ?? date` |
 
 - **The two gated classes** are listed only for parks that have the page, decided by the same
   probe the route 404s on (`parksWithStatsPage()`, `parksWithKidsPage()`); a park whose probe
@@ -129,6 +129,12 @@ The API has **no per-entity content timestamp** (`/v1/sitemap/attractions` answe
 4. `/sitemap.xml` and the ride children read it. A path the crawl has not seen gets **no** tag.
    At build time the snapshot may be unreadable (no Blob token); the sitemaps then prerender
    without dates and pick them up on their next revalidation.
+5. **Blog posts** are fingerprinted too, by `contentHash` (frontmatter and body hashed by
+   `generate:blog-manifest`), keyed by their locale URL (`/de/blog/…`), since each translation is
+   its own text. `updatedAt` moves only for new content, so without this a new title or description
+   never reached the sitemap. A post's first sighting takes `updatedAt ?? date` (`firstSeen`), not
+   today, and the sitemap prints the later of that and the observed date. IndexNow skips these keys
+   in its catalogue list; it submits every post anyway.
 
 On the first full run (September 2026, shipped in 2.12.0) 7,100 of 7,126 ride URLs per locale got a date and `/sitemap.xml` went from
 1,662 of 3,480 dated entries to 3,444. Two failure modes are handled explicitly and pinned by
@@ -149,3 +155,14 @@ either: one pass is about 14 MB and takes 1.4 s warm, 5.4 s cold.
 `RECENT_DAYS` (2), plus the static high-value set and the blog surfaces. An unreadable or empty
 snapshot submits everything, and Mondays are a full sweep, so a detector that stopped detecting
 cannot silence the route. `?dry=1` builds the list without submitting it.
+
+### The reindex queue reads the dates back
+
+Google takes no ping and no API request for an ordinary page, so the observed dates also drive the
+admin's reindex queue (`/admin/traffic/seo`, "Nachindizieren"): the API reads these sitemaps every
+day, asks URL Inspection when Google last crawled each recently changed page, and lists the ones
+crawled before their change, with clicks, impressions, CTR and position. "Beantragen" opens Search
+Console's inspection for the page, where "Indexierung beantragen" is, and the API records the
+click. A page requested since its change waits under "Beantragt, wartet auf Google" and cannot be
+recorded twice; the panel warns past ten requests in 24 hours. Contract and rules:
+`PArns/v4.api.park.fan` `docs/frontend/search-console.md#reindex-queue`.

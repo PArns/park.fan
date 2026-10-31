@@ -181,6 +181,7 @@ The path guard and the query of `/api/admin/[...path]`, pure so they can be test
 - `formatPositionChange` _function_: A signed number of places: `+1,2` fell down the results, `−0,4` climbed, `±0` stayed.
 - `searchConsoleChip` _function_: The change of a headline figure against the window before.
 - `searchConsoleRowChange` _function_: A row's change in words and tones; `null` without a change (no window before). A position that either side has no impressions for has no change, which is not a change of zero.
+- `searchConsoleInspectUrl` _function_: Search Console's URL Inspection for one page, where "Indexierung beantragen" is: Google offers no API for the request itself.
 - `searchConsolePath` _function_: The proxy path of a read with the window, the language and extras (`page`, `query`, `limit`). The step goes to the series only; the filters of the traffic pages are not sent, since the API knows nothing of them.
 - `searchConsoleInterval` _function_: The step a series is asked for when the address names `active`: an hour becomes a day.
 - `searchConsoleIntervals` _function_: The steps that make a chart of a window of `days`, without the hour.
@@ -198,6 +199,7 @@ The path guard and the query of `/api/admin/[...path]`, pure so they can be test
 - `NO_COMPARISON` _const_: Why a window has no window before to compare with.
 - `SEARCH_CONSOLE_STATUS_PATH` _const_: The proxy path of the status read.
 - `SEARCH_CONSOLE_IMPORT_PATH` _const_: The proxy path that queues an import now.
+- `SEARCH_CONSOLE_REINDEX_PATH` _const_: The proxy path of the reindex queue; `/requests` records one, `/scan` queues the check.
 - `SEARCH_CONSOLE_QUERY_PARAM` _const_: The address parameter that holds the query a page list is narrowed to.
 - `SEARCH_CONSOLE_PAGE_PARAM` _const_: The address parameter that holds the page a query list is narrowed to.
 - `IMPORT_WAIT_MS` _const_: How long a requested import is waited for, in milliseconds, before the page stops asking.

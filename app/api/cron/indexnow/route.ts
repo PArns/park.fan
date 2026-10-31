@@ -65,7 +65,8 @@ export async function GET(request: Request) {
     }
   } else {
     catalogPaths = [...lastmod]
-      .filter(([, changedAt]) => changedAt >= since)
+      // Blog keys carry their locale and are submitted below with the rest of the blog.
+      .filter(([contentPath, changedAt]) => contentPath.startsWith('/parks') && changedAt >= since)
       .map(([contentPath]) => contentPath);
   }
   urls.push(...localizedUrls(catalogPaths, BASE_URL));

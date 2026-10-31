@@ -249,6 +249,18 @@ export const SEARCH_CONSOLE_STATUS_PATH = '/api/admin/search-console/status';
 /** The proxy path that queues an import now. */
 export const SEARCH_CONSOLE_IMPORT_PATH = '/api/admin/search-console/import';
 
+/** The proxy path of the reindex queue; `/requests` records one, `/scan` queues the check. */
+export const SEARCH_CONSOLE_REINDEX_PATH = '/api/admin/search-console/reindex';
+
+/**
+ * Search Console's URL Inspection for one page, where "Indexierung beantragen" is: Google offers no
+ * API for the request itself.
+ */
+export function searchConsoleInspectUrl(siteUrl: string, pageUrl: string): string {
+  const params = new URLSearchParams({ resource_id: siteUrl, id: pageUrl });
+  return `https://search.google.com/search-console/inspect?${params}`;
+}
+
 /** The reads that take the window. */
 export type SearchConsoleReport = 'queries' | 'pages' | 'series';
 

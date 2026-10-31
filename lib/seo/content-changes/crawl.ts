@@ -5,6 +5,8 @@ import { getParkByGeoPathFresh } from '@/lib/api/parks';
 import { getAttractionPaths } from '@/lib/content-urls';
 import { getParkImages, getRideImages } from '@/lib/media';
 import { getPostsForPark, getPostsForRide } from '@/lib/blog/backlinks';
+import { getMetaIndex } from '@/lib/blog/listing';
+import { postPath } from '@/lib/blog/paths';
 import type { MediaImage } from '@/lib/media/types';
 import type { Locale } from '@/i18n/config';
 import { fingerprintAttraction, fingerprintGeoHub, fingerprintPark } from './fingerprint';
@@ -34,6 +36,8 @@ export interface CrawlResult {
    * answer, and the reader must not shorten anything on it.
    */
   scheduleCoverage: Map<string, string | null>;
+  /** A blog key's date for its first sighting, see `DiffOptions.firstSeen`. */
+  firstSeen: Map<string, string>;
   /** `/parks/<continent>/<country>/<city>/<park>` for every park the API did not answer for. */
   failedParkPaths: string[];
   parksCovered: number;
@@ -168,5 +172,22 @@ export async function crawlContentFingerprints(): Promise<CrawlResult> {
 
   await Promise.all(Array.from({ length: CONCURRENCY }, () => worker()));
 
-  return { fingerprints, scheduleCoverage, failedParkPaths, parksCovered, attractionsCovered };
+  // Posts are keyed by their locale URL, unlike the catalog: each translation is its own text.
+  const firstSeen = new Map<string, string>();
+  for (const localeMap of getMetaIndex().values()) {
+    for (const [locale, entry] of localeMap) {
+      const key = `/${locale}${postPath({ slug: entry.slug, frontmatter: entry.fm })}`;
+      fingerprints.set(key, entry.contentHash);
+      firstSeen.set(key, entry.fm.updatedAt ?? entry.fm.date);
+    }
+  }
+
+  return {
+    fingerprints,
+    scheduleCoverage,
+    firstSeen,
+    failedParkPaths,
+    parksCovered,
+    attractionsCovered,
+  };
 }

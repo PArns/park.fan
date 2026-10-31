@@ -5,7 +5,8 @@
  * speaks in (`/parks/europe/germany/bruehl/phantasialand`,
  * `/parks/europe/germany/bruehl/phantasialand/taron`), so one entry serves all
  * six locale URLs of a page. The six locales of a park page differ in prose, not
- * in when the park changed.
+ * in when the park changed. Blog posts are the exception, keyed by their locale URL
+ * (`/de/blog/europa-park-wartezeiten-tipps`): each translation is its own text.
  */
 export interface ContentChangeEntry {
   /** Fingerprint of the page's *stable* content — see `lib/seo/content-changes/fingerprint.ts`. */
