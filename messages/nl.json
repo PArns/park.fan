@@ -3158,6 +3158,11 @@
     "teaserBored4": "Je volgende parkbezoek al gepland? Ik help je erbij.",
     "teaserWoke1": "Oei! Ik sliep helemaal niet!",
     "teaserWoke2": "O, je bent er weer! Ik liet mijn ogen even rusten.",
-    "teaserWoke3": "Heb ik iets gemist? Ik ben weer klaarwakker!"
+    "teaserWoke3": "Heb ik iets gemist? Ik ben weer klaarwakker!",
+    "entranceScurry": "Zoef, daar ben ik! Ik ben Parky – vraag me iets.",
+    "entranceDrop": "Au! Niks aan de hand, ik ben geland. Vraag me iets!",
+    "entranceRoll": "Pff, ik ben helemaal duizelig … Hoi, ik ben Parky!",
+    "entrancePeek": "Psst … mag ik binnenkomen? Ik ben Parky.",
+    "entrancePop": "Plop! Hier ben ik. Waar gaan we vandaag heen?"
   }
 }

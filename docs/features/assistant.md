@@ -105,10 +105,11 @@ move or press, a key, the mouse wheel or a touch.
 | `bored`  | 25 s      | yawns, then every 5–9 s whistles, blows a gum bubble that pops, rolls its eyes, looks around, reads or naps    |
 | `asleep` | 75 s      | eyes fall shut, it breathes slowly under rising Zs, the hat stops; activity wakes it with a "!"                |
 
-Parky's hat is a Ferris wheel on an A-frame that stands on its head, with eight coloured cabins.
-The cabins are circles, so they need no counter-turn to hang straight while the wheel spins, and a
-light edge under the rim and the frame keeps the hat legible over any page. It rises about 9 of the
-drawing's 48 units above the face, and the open window keeps room for it: the header (`z-50`) lies
+Parky's hat is a Ferris wheel with eight coloured cabins, set into its head: the lowest cabin goes
+behind the head, and the A-frame's right leg runs down the head's slope, so the wheel stands in it
+rather than on top. The cabins are circles, so they need no counter-turn to hang straight while the
+wheel spins, and a light edge under the rim keeps the wheel legible over any page. It rises about
+7.5 of the drawing's 48 units above the face, and the open window keeps room for it: the header (`z-50`) lies
 above the window (`z-[45]`), with a scrim 32 px below the bar on a hero page, so the window starts
 112 px from the top on a phone and caps its height at the screen minus 10rem on a desktop. Parky
 then rises over the window's edge without anything laid over its hat.
@@ -116,6 +117,17 @@ then rises over the window's edge without anything laid over its hat.
 The store keeps one timer for the next stage, so a moving pointer costs a timestamp. Each act's
 length is written once, in `ACT_MS`; the stylesheet reads it as `--parky-act`. Under reduced
 motion the store answers `null` and Parky only shows its moods.
+
+## How Parky arrives
+
+The first time the button shows in a session, it makes an entrance (`sessionEntrance`,
+`lib/assistant/entrance.ts`), drawn from five: it scurries in from the right with speed lines and
+spins in the air, drops from above and lands in a puff of dust, rolls in and wobbles dizzily,
+peeks in from the edge at a tilt before hopping in, or pops up out of nothing in a burst of
+sparkles. After a reload, a closed window or under reduced motion the button only fades in.
+`ENTRANCE_MS` holds each length, which the stylesheet reads as `--parky-enter`; the launcher waits
+that long before Parky has landed and speaks, by a timer, because `animationend` never reached
+React's handler on the home page.
 
 ## What Parky says
 
@@ -131,7 +143,9 @@ bubble's right edge and bottom are reckoned from the button's size (56 px, 64 px
 its corner offset. Two kinds of line go in it, from the `assistant` namespace:
 
 - **Invitations** (`teaser1`–`teaser9`): 8 s after the button shows and again 90 s after that, at
-  most two a session (`TEASER_SCHEDULE_MS`). One that falls due over another line or while Parky
+  most two a session (`TEASER_SCHEDULE_MS`). After an entrance the first is the entrance's own
+  line (`entranceScurry`, `entranceDrop`, `entranceRoll`, `entrancePeek`, `entrancePop`), said a
+  beat after landing. One that falls due over another line or while Parky
   sleeps tries again 5 s later.
 - **Reactions**, read from the same `parkyBoredom`: a bored line (`teaserBored1`–`4`) after the
   first yawn, a woken line (`teaserWoke1`–`3`) once somebody wakes Parky. At most

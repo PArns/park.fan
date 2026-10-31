@@ -16,6 +16,7 @@ import {
 } from '@/lib/assistant/teaser-store';
 import { parkyBoredom } from '@/lib/assistant/parky-boredom';
 import { useParkyBoredom } from '@/lib/assistant/use-parky-boredom';
+import type { ParkyEntrance } from '@/lib/assistant/entrance';
 
 const VISIBLE_MS = 7_000;
 const TEASER_KEYS = [
@@ -38,14 +39,35 @@ const REACTION_KEYS = {
 const REACTION_DELAY_MS = { bored: 4_500, woke: 1_000 } as const;
 /** An invitation that falls due over another line or a sleeping Parky tries again this much later. */
 const RETRY_MS = 5_000;
+/** What Parky says after each entrance. */
+const ENTRANCE_KEYS = {
+  scurry: 'entranceScurry',
+  drop: 'entranceDrop',
+  roll: 'entranceRoll',
+  peek: 'entrancePeek',
+  pop: 'entrancePop',
+} as const satisfies Record<ParkyEntrance, string>;
+/** A beat between landing and speaking. */
+const LANDED_PAUSE_MS = 300;
 
 /**
  * A short line beside the closed Parky button ("Hey, ich bin Parky – klick mich an!"), at most
  * twice a session and never once Parky was opened or a line was closed. A press on the line opens
- * Parky. Parky also speaks up when it gets bored or is woken from sleep, a few times a session.
+ * Parky. After its entrance Parky's first line fits how it arrived, and it also speaks up when it
+ * gets bored or is woken from sleep, a few times a session.
  * Loaded only when the button is drawn, so its strings stay out of the page's chrome.
  */
-export function AssistantTeaser({ onOpen }: { onOpen: () => void }) {
+export function AssistantTeaser({
+  onOpen,
+  entering = false,
+  arrival = null,
+}: {
+  onOpen: () => void;
+  /** An entrance is under way: no line until Parky has landed. */
+  entering?: boolean;
+  /** The entrance Parky has just made, whose line is then the session's first. */
+  arrival?: ParkyEntrance | null;
+}) {
   const t = useTranslations('assistant');
   const [line, setLine] = useState<string | null>(null);
   const boredom = useParkyBoredom(true);
@@ -63,23 +85,28 @@ export function AssistantTeaser({ onOpen }: { onOpen: () => void }) {
   }, [line]);
 
   useEffect(() => {
+    if (entering) return;
     let shown = teasersShown();
     let timer: ReturnType<typeof setTimeout>;
-    const next = (wait: number) => {
+    const next = (wait: number, keys: readonly string[]) => {
       if (shown >= TEASER_SCHEDULE_MS.length) return;
       timer = setTimeout(() => {
         // Never over another line and never from a sleeping Parky.
-        if (latest.current.line || latest.current.boredom === 'asleep') return next(RETRY_MS);
+        if (latest.current.line || latest.current.boredom === 'asleep') {
+          return next(RETRY_MS, keys);
+        }
         if (teasersShown() >= TEASER_SCHEDULE_MS.length) return;
         shown += 1;
         setTeasersShown(shown);
-        setLine(t(pickRandom(TEASER_KEYS)));
-        next(VISIBLE_MS + (TEASER_SCHEDULE_MS[shown] ?? 0));
+        setLine(t(pickRandom(keys)));
+        next(VISIBLE_MS + (TEASER_SCHEDULE_MS[shown] ?? 0), TEASER_KEYS);
       }, wait);
     };
-    next(TEASER_SCHEDULE_MS[shown] ?? 0);
+    // After an entrance the first line is its own, in place of the first invitation.
+    if (arrival && shown === 0) next(LANDED_PAUSE_MS, [ENTRANCE_KEYS[arrival]]);
+    else next(TEASER_SCHEDULE_MS[shown] ?? 0, TEASER_KEYS);
     return () => clearTimeout(timer);
-  }, [t]);
+  }, [t, entering, arrival]);
 
   useEffect(() => {
     const kind =
