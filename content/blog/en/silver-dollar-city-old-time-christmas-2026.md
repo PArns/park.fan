@@ -88,15 +88,15 @@ Most show seats stay free, first come, first seated.
 
 More than 6.5 million lights hang in the park, 1.5 million of them in Christmas in Midtown alone. A crew of nine starts putting them up every year on July 1, which in the Ozarks is not a day anyone spends thinking about string lights by choice. On The Plaza stands the Grand Fir, a living Shasta fir from Oregon, 54 feet tall. It's lit at 5:15, 6:30 and 7:30 pm in a ceremony that takes 20 minutes. At Joy On Town Square, an eight-story tree runs a light and music show every 15 minutes.
 
-A Dickens' Christmas Carol plays for the 25th time, 60 minutes with a live band in the Opera House, usually at 1:30, 3:30 and 5:30 pm. Audio description is available for blind and low-vision guests. Heart of Christmas in Red Gold Heritage Hall changes its guest act through the season: Lindley Creek until November 27 and on December 3, Jeff & Sheri Easter from November 28 to 30, the Triumphant Quartet from December 4 to 7, The Isaacs from December 10 to 14, and Rhonda Vincent from December 17 to the end. The Living Nativity in the Dockside Theater lasts 15 minutes and plays five times a day.
+A Dickens' Christmas Carol plays for the 25th time, 60 minutes with a live band in the Opera House, usually at 1:30, 3:30 and 5:30 pm. Audio description is available for blind and low-vision guests. Heart of Christmas in Red Gold Heritage Hall changes its guest act through the season: Lindley Creek until November 27 and on December 3, Jeff & Sheri Easter from November 28 to 30, the Triumphant Quartet from December 4 to 7, The Isaacs from December 10 to 14, and Rhonda Vincent from December 17 to the end. The Living Nativity in the Dockside Theater lasts 15 minutes and plays five times a day, four times on Thanksgiving.
 
-Santa receives visitors in Santa's Cottage in the Carousel Barn, but only until December 23; after that, as everyone knows, he's booked elsewhere. The press release lists the Frisco Sing-Along Steam Train as a Christmas tradition, yet the train isn't on the park's Christmas calendar, and its own page has the season ending on October 31.
+Santa receives visitors in Santa's Cottage in the Carousel Barn, through December 23 according to the event listing; after that, as everyone knows, he's booked elsewhere. The press release lists the Frisco Sing-Along Steam Train as a Christmas tradition, yet the train isn't on the park's Christmas calendar, and its own page has the season ending on October 31.
 
 ## Which rides run in winter
 
-[Thunderation](ref:silver-dollar-city/thunderation), the 1993 Arrow Dynamics coaster, is in its final season in 2026. The park hasn't announced its last day yet. The wooden coaster [Outlaw Run](ref:silver-dollar-city/outlaw-run), the spinning coaster [Time Traveler](ref:silver-dollar-city/time-traveler), WildFire, PowderKeg and [Marvel Cave](ref:silver-dollar-city/marvel-cave) all operate through January 2.
+[Thunderation](ref:silver-dollar-city/thunderation), the 1993 Arrow Dynamics coaster, is in its final season in 2026 and runs for the last time on January 2, 2027. The wooden coaster [Outlaw Run](ref:silver-dollar-city/outlaw-run), the spinning coaster [Time Traveler](ref:silver-dollar-city/time-traveler), WildFire, PowderKeg and [Marvel Cave](ref:silver-dollar-city/marvel-cave) all operate through January 2.
 
-Every outdoor coaster has its own temperature limit. Thunderation still runs at 32°F (0°C), Outlaw Run needs 37°F (just under 3°C) and Time Traveler 41°F (5°C), which makes the oldest ride the toughest of the three. [Fire In The Hole](ref:silver-dollar-city/new-fire-in-the-hole) is indoors and isn't on the temperature list. If the weather cuts your visit short, the ticket window hands out a free ticket for another operating day in the current season.
+Every outdoor coaster has its own temperature limit. Thunderation keeps running down to 32°F (0°C). Outlaw Run closes at 34°F (1°C) and doesn't start again until 37°F (just under 3°C), and Time Traveler closes at 41°F (5°C). That makes the oldest ride the toughest of the three. [Fire In The Hole](ref:silver-dollar-city/new-fire-in-the-hole) is indoors and isn't on the temperature list. If the weather cuts your visit short, the ticket window hands out a free ticket for another operating day in the current season.
 
 ```ride-waits-widget park=silver-dollar-city top=8 columns=peak,days
 
@@ -135,6 +135,7 @@ Sources:
 [ticket add-ons](https://www.silverdollarcity.com/tickets/ticket-add-ons/),
 [FAQ](https://www.silverdollarcity.com/theme-park/faq/),
 [Thunderation](https://www.silverdollarcity.com/theme-park/attractions/rides/thunderation/),
+[Ozarkly on Thunderation's retirement](https://www.ozarkly.com/stories/tnt-retirement/),
 [Outlaw Run](https://www.silverdollarcity.com/theme-park/attractions/rides/outlaw-run/),
 [Fire In The Hole](https://www.silverdollarcity.com/theme-park/attractions/rides/fire-in-the-hole/),
 [ride temperature guidelines](https://www.silverdollarcity.com/theme-park/attractions/rides/ride-temperature-guidelines/),

@@ -85,15 +85,15 @@ De meeste plaatsen in de shows blijven gratis; wie het eerst komt, zit.
 
 In het park hangen meer dan 6,5 miljoen lichtjes, waarvan 1,5 miljoen alleen al in Christmas in Midtown. Een team van negen mensen begint er elk jaar op 1 juli mee, een dag waarop in Branson niemand uit vrije wil aan kerstverlichting denkt. Op The Plaza staat de Grand Fir, een levende Shasta-zilverspar uit Oregon van 54 voet hoog (zo'n 16 meter). Hij gaat om 17.15, 18.30 en 19.30 uur aan, in een ceremonie van 20 minuten. Bij Joy On Town Square speelt elk kwartier een licht- en muziekshow rond een boom van acht verdiepingen hoog.
 
-A Dickens' Christmas Carol staat voor de 25e keer op het programma: 60 minuten met liveband in het Opera House, meestal om 13.30, 15.30 en 17.30 uur. Voor blinde en slechtziende bezoekers is er audiodescriptie. In de Red Gold Heritage Hall wisselen bij Heart of Christmas de gasten: Lindley Creek tot 27 november en op 3 december, Jeff & Sheri Easter van 28 tot 30 november, het Triumphant Quartet van 4 tot 7 december, The Isaacs van 10 tot 14 december en Rhonda Vincent van 17 december tot het einde. De Living Nativity in het Dockside Theater duurt 15 minuten en speelt vijf keer per dag.
+A Dickens' Christmas Carol staat voor de 25e keer op het programma: 60 minuten met liveband in het Opera House, meestal om 13.30, 15.30 en 17.30 uur. Voor blinde en slechtziende bezoekers is er audiodescriptie. In de Red Gold Heritage Hall wisselen bij Heart of Christmas de gasten: Lindley Creek tot 27 november en op 3 december, Jeff & Sheri Easter van 28 tot 30 november, het Triumphant Quartet van 4 tot 7 december, The Isaacs van 10 tot 14 december en Rhonda Vincent van 17 december tot het einde. De Living Nativity in het Dockside Theater duurt 15 minuten en speelt vijf keer per dag, op Thanksgiving vier keer.
 
-Santa zit in Santa's Cottage in de Carousel Barn, maar alleen tot 23 december; daarna heeft hij, zoals bekend, elders een afspraak. Het persbericht noemt de Frisco Sing-Along Steam Train een kersttraditie, maar in de kerstkalender van het park staat de trein niet, en op zijn eigen pagina eindigt het seizoen op 31 oktober.
+Santa zit in Santa's Cottage in de Carousel Barn, volgens de evenementbeschrijving tot 23 december; daarna heeft hij, zoals bekend, elders een afspraak. Het persbericht noemt de Frisco Sing-Along Steam Train een kersttraditie, maar in de kerstkalender van het park staat de trein niet, en op zijn eigen pagina eindigt het seizoen op 31 oktober.
 
 ## Welke attracties in de winter rijden
 
-[Thunderation](ref:silver-dollar-city/thunderation), de achtbaan van Arrow Dynamics uit 1993, rijdt in 2026 zijn laatste seizoen. Tot welke dag precies, heeft het park niet bekendgemaakt. De houten achtbaan [Outlaw Run](ref:silver-dollar-city/outlaw-run), de spinning coaster [Time Traveler](ref:silver-dollar-city/time-traveler), WildFire, PowderKeg en de [Marvel Cave](ref:silver-dollar-city/marvel-cave) zijn tot 2 januari open.
+[Thunderation](ref:silver-dollar-city/thunderation), de achtbaan van Arrow Dynamics uit 1993, rijdt in 2026 zijn laatste seizoen, voor het laatst op 2 januari 2027. De houten achtbaan [Outlaw Run](ref:silver-dollar-city/outlaw-run), de spinning coaster [Time Traveler](ref:silver-dollar-city/time-traveler), WildFire, PowderKeg en de [Marvel Cave](ref:silver-dollar-city/marvel-cave) zijn tot 2 januari open.
 
-Elke buitenachtbaan heeft zijn eigen temperatuurgrens. Thunderation rijdt nog bij 32 graden Fahrenheit (0 °C), Outlaw Run pas vanaf 37 °F (bijna 3 °C) en Time Traveler heeft 41 °F (5 °C) nodig. De oudste baan is dus het best tegen de kou bestand. [Fire In The Hole](ref:silver-dollar-city/new-fire-in-the-hole) rijdt binnen en staat niet op de temperatuurlijst. Moet je je bezoek door het weer inkorten, dan krijg je bij de kassa een gratis ticket voor een andere openingsdag in het lopende seizoen.
+Elke buitenachtbaan heeft zijn eigen temperatuurgrens. Thunderation houdt het vol tot 32 graden Fahrenheit (0 °C). Outlaw Run sluit al bij 34 °F (1 °C) en start pas weer vanaf 37 °F (bijna 3 °C), Time Traveler sluit bij 41 °F (5 °C). De oudste baan is dus het best tegen de kou bestand. [Fire In The Hole](ref:silver-dollar-city/new-fire-in-the-hole) rijdt binnen en staat niet op de temperatuurlijst. Moet je je bezoek door het weer inkorten, dan krijg je bij de kassa een gratis ticket voor een andere openingsdag in het lopende seizoen.
 
 ```ride-waits-widget park=silver-dollar-city top=8 columns=peak,days
 
@@ -132,6 +132,7 @@ Bronnen:
 [Extra's bij het ticket](https://www.silverdollarcity.com/tickets/ticket-add-ons/),
 [FAQ](https://www.silverdollarcity.com/theme-park/faq/),
 [Thunderation](https://www.silverdollarcity.com/theme-park/attractions/rides/thunderation/),
+[Ozarkly over het afscheid van Thunderation](https://www.ozarkly.com/stories/tnt-retirement/),
 [Outlaw Run](https://www.silverdollarcity.com/theme-park/attractions/rides/outlaw-run/),
 [Fire In The Hole](https://www.silverdollarcity.com/theme-park/attractions/rides/fire-in-the-hole/),
 [Temperatuurgrenzen van de attracties](https://www.silverdollarcity.com/theme-park/attractions/rides/ride-temperature-guidelines/),

@@ -85,15 +85,15 @@ Negli spettacoli la maggior parte dei posti resta gratuita: chi arriva prima si 
 
 Nel parco sono appese più di 6,5 milioni di luci, 1,5 milioni solo in Christmas in Midtown. Una squadra di nove persone comincia a montarle ogni anno il 1° luglio, quando a Branson l'ultima cosa a cui si pensa sono le lucine. Su The Plaza c'è il Grand Fir, un abete di Shasta vivo arrivato dall'Oregon, alto 54 piedi (circa 16 metri). Si accende alle 17:15, alle 18:30 e alle 19:30 con una cerimonia di 20 minuti. Al Joy On Town Square, su un albero alto otto piani, ogni 15 minuti parte uno spettacolo di luci e musica.
 
-A Dickens' Christmas Carol va in scena per la venticinquesima volta: 60 minuti con band dal vivo nell'Opera House, di solito alle 13:30, alle 15:30 e alle 17:30. Per gli ospiti ciechi e ipovedenti c'è l'audiodescrizione. Nella Red Gold Heritage Hall, a Heart of Christmas, gli ospiti cambiano: Lindley Creek fino al 27 novembre e il 3 dicembre, Jeff & Sheri Easter dal 28 al 30 novembre, il Triumphant Quartet dal 4 al 7 dicembre, The Isaacs dal 10 al 14 dicembre e Rhonda Vincent dal 17 dicembre fino alla fine. La Living Nativity al Dockside Theater dura 15 minuti e va in scena cinque volte al giorno.
+A Dickens' Christmas Carol va in scena per la venticinquesima volta: 60 minuti con band dal vivo nell'Opera House, di solito alle 13:30, alle 15:30 e alle 17:30. Per gli ospiti ciechi e ipovedenti c'è l'audiodescrizione. Nella Red Gold Heritage Hall, a Heart of Christmas, gli ospiti cambiano: Lindley Creek fino al 27 novembre e il 3 dicembre, Jeff & Sheri Easter dal 28 al 30 novembre, il Triumphant Quartet dal 4 al 7 dicembre, The Isaacs dal 10 al 14 dicembre e Rhonda Vincent dal 17 dicembre fino alla fine. La Living Nativity al Dockside Theater dura 15 minuti e va in scena cinque volte al giorno, quattro nel giorno del Ringraziamento.
 
-Babbo Natale riceve nella Santa's Cottage, dentro la Carousel Barn, ma solo fino al 23 dicembre: poi, come si sa, ha un altro giro da fare. Il comunicato cita il Frisco Sing-Along Steam Train tra le tradizioni di Natale, però il treno non compare nel calendario natalizio del parco, e sulla sua pagina la stagione finisce il 31 ottobre.
+Babbo Natale riceve nella Santa's Cottage, dentro la Carousel Barn, fino al 23 dicembre secondo la descrizione dell'evento: poi, come si sa, ha un altro giro da fare. Il comunicato cita il Frisco Sing-Along Steam Train tra le tradizioni di Natale, però il treno non compare nel calendario natalizio del parco, e sulla sua pagina la stagione finisce il 31 ottobre.
 
 ## Quali attrazioni funzionano d'inverno
 
-[Thunderation](ref:silver-dollar-city/thunderation), le montagne russe di Arrow Dynamics del 1993, nel 2026 fa la sua ultima stagione. Fino a che giorno, il parco non l'ha comunicato. Le montagne russe in legno [Outlaw Run](ref:silver-dollar-city/outlaw-run), lo spinning coaster [Time Traveler](ref:silver-dollar-city/time-traveler), WildFire, PowderKeg e la [Marvel Cave](ref:silver-dollar-city/marvel-cave) restano aperti fino al 2 gennaio.
+[Thunderation](ref:silver-dollar-city/thunderation), le montagne russe di Arrow Dynamics del 1993, nel 2026 fa la sua ultima stagione e corre per l'ultima volta il 2 gennaio 2027. Le montagne russe in legno [Outlaw Run](ref:silver-dollar-city/outlaw-run), lo spinning coaster [Time Traveler](ref:silver-dollar-city/time-traveler), WildFire, PowderKeg e la [Marvel Cave](ref:silver-dollar-city/marvel-cave) restano aperti fino al 2 gennaio.
 
-Ogni montagna russa all'aperto ha un suo limite di temperatura. Thunderation parte ancora a 32 °F (0 °C), Outlaw Run solo da 37 °F (quasi 3 °C), Time Traveler ha bisogno di 41 °F (5 °C): la più vecchia è anche quella che soffre meno il freddo. [Fire In The Hole](ref:silver-dollar-city/new-fire-in-the-hole) è al coperto e nell'elenco delle temperature non c'è. Se per colpa del meteo la visita si accorcia, alla biglietteria si riceve gratis un biglietto per un altro giorno di apertura della stagione in corso.
+Ogni montagna russa all'aperto ha un suo limite di temperatura. Thunderation resiste fino a 32 °F (0 °C). Outlaw Run chiude già a 34 °F (1 °C) e riparte solo da 37 °F (quasi 3 °C), Time Traveler chiude a 41 °F (5 °C): la più vecchia è anche quella che soffre meno il freddo. [Fire In The Hole](ref:silver-dollar-city/new-fire-in-the-hole) è al coperto e nell'elenco delle temperature non c'è. Se per colpa del meteo la visita si accorcia, alla biglietteria si riceve gratis un biglietto per un altro giorno di apertura della stagione in corso.
 
 ```ride-waits-widget park=silver-dollar-city top=8 columns=peak,days
 
@@ -132,6 +132,7 @@ Fonti:
 [Extra del biglietto](https://www.silverdollarcity.com/tickets/ticket-add-ons/),
 [FAQ](https://www.silverdollarcity.com/theme-park/faq/),
 [Thunderation](https://www.silverdollarcity.com/theme-park/attractions/rides/thunderation/),
+[Ozarkly sull'addio a Thunderation](https://www.ozarkly.com/stories/tnt-retirement/),
 [Outlaw Run](https://www.silverdollarcity.com/theme-park/attractions/rides/outlaw-run/),
 [Fire In The Hole](https://www.silverdollarcity.com/theme-park/attractions/rides/fire-in-the-hole/),
 [Limiti di temperatura delle attrazioni](https://www.silverdollarcity.com/theme-park/attractions/rides/ride-temperature-guidelines/),
