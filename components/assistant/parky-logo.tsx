@@ -88,10 +88,14 @@ function useAct(thinking: boolean, idle: boolean) {
 
 /**
  * What Parky is busy with, each with its own look: `thinking` (waiting for the first word) gazes
- * up beside thought bubbles, `looking` (a lookup is running) scans left and right while its hat
- * spins, `talking` (the answer is written) moves its mouth and nods.
+ * up beside thought bubbles, `looking` (a lookup is running) reads in a little book, its eyes
+ * following the lines and a page turning now and then, `talking` (the answer is written) moves its
+ * mouth and nods.
  */
 export type ParkyMood = 'thinking' | 'looking' | 'talking';
+
+/** Where the pupils rest while Parky reads: down, into the book. */
+const READING_GAZE = { x: 0, y: 2.2 };
 
 /** Where the pupils rest while Parky ponders: up and to the side. */
 const PONDER_GAZE = { x: 1.8, y: -2.4 };
@@ -120,8 +124,7 @@ export function ParkyLogo({
   const ground = useId();
   const svg = useRef<SVGSVGElement>(null);
   const mouseGaze = useGaze(svg);
-  const gaze =
-    state === 'thinking' ? PONDER_GAZE : state === 'looking' ? { x: 0, y: 0 } : mouseGaze;
+  const gaze = state === 'thinking' ? PONDER_GAZE : state === 'looking' ? READING_GAZE : mouseGaze;
   // A mood has its own motion; the random acts are for an idle face only.
   const act = useAct(false, idle && !state);
   const ink = 'oklch(0.25 0.03 240)';
@@ -149,6 +152,13 @@ export function ParkyLogo({
           <circle cx="7" cy="9" r="1.5" />
           <circle cx="3.5" cy="4.5" r="2" />
           <circle cx="-1" cy="-1" r="2.7" />
+          {/* The big cloud the small ones lead to, with dots that bob while Parky thinks. */}
+          <ellipse className="parky-cloud" cx="-10" cy="-10" rx="10" ry="6.8" />
+          <g className="parky-cloud-dots" fill="oklch(0.628 0.137 241.275)" stroke="none">
+            <circle cx="-14.5" cy="-10" r="1.3" />
+            <circle cx="-10" cy="-10" r="1.3" />
+            <circle cx="-5.5" cy="-10" r="1.3" />
+          </g>
         </g>
       )}
       <g
@@ -201,6 +211,28 @@ export function ParkyLogo({
             strokeWidth="1.8"
             strokeLinecap="round"
           />
+        )}
+        {state === 'looking' && (
+          // An open book held below the eyes, where the mouth was; a page turns now and then.
+          <g className="parky-book">
+            <path d="M24 31.5 13.5 29v12l10.5 2.5Z" fill="white" stroke={blue} strokeWidth="1" />
+            <path d="M24 31.5 34.5 29v12L24 43.5Z" fill="white" stroke={blue} strokeWidth="1" />
+            <path
+              d="M16 32.2l5.6 1.3M16 34.7l5.6 1.3M16 37.2l5.6 1.3M26.4 33.5l5.6-1.3M26.4 36l5.6-1.3M26.4 38.5l5.6-1.3"
+              stroke={blue}
+              strokeOpacity=".45"
+              strokeWidth=".7"
+              strokeLinecap="round"
+            />
+            <path
+              className="parky-page"
+              d="M24 31.5 34.5 29v12L24 43.5Z"
+              fill="oklch(0.97 0.01 240)"
+              stroke={blue}
+              strokeWidth=".8"
+            />
+            <path d="M24 31.5v12" stroke={blue} strokeWidth="1.1" />
+          </g>
         )}
       </g>
     </svg>
