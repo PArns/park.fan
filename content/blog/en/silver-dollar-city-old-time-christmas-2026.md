@@ -51,7 +51,7 @@ The announcement leaves open whether "twice as long" means running time or the l
 
 River City Scenic built the floats in a warehouse near Cincinnati. The music is by Mike Avila, who has worked on about 20 major parades, among them shows for Disney, the Macy's Thanksgiving Day Parade and the Rose Parade.
 
-The parade steps off twice on every operating day, at 6 pm and 8 pm local time. Up to 2025 its slot belonged to Rudolph's Holly Jolly Christmas Light Parade, and back then the event ran from November 1 to January 4.
+The parade steps off twice on every operating day, at 6 pm and 8 pm local time. Up to 2025 its slot belonged to Rudolph's Holly Jolly Christmas Light Parade. The event started earlier back then, running from November 1 to January 4, eight days longer than this year.
 
 ## Operating days and hours
 
@@ -61,7 +61,7 @@ The park is open on 44 days during the event. Until mid-December it stays shut o
 - December 1, 2, 8, 9, 15 and 16
 - December 24 and 25
 
-On Saturdays and on the Friday after Thanksgiving, November 27, hours are 11 am to 10 pm. On the other days the gates usually open at 1 pm and close at 9 pm, with a 10 pm close on the Fridays of December 4, 11 and 18 and on New Year's Day. Thanksgiving itself, November 26, runs from 4 pm to 10 pm. Breakfast from 8:30 am is only served from March to October.
+On Saturdays and on the Friday after Thanksgiving, November 27, hours are 11 am to 10 pm. On the other days the gates usually open at 1 pm and close at 9 pm, with a 10 pm close on the Fridays of December 4, 11 and 18 and on New Year's Day. Thanksgiving itself, November 26, runs from 4 pm to 10 pm.
 
 The park itself says Saturdays in November and December are often very busy, especially when the weather is mild.
 
@@ -71,7 +71,7 @@ The park itself says Saturdays in November and December are often very busy, esp
 
 ## What the ticket covers and what costs extra
 
-A one-day ticket costs $95 plus tax and is good on any operating day through January 2. Booked online at least 24 hours ahead, a ticket starts at $79 on selected days. A second day within five operating days adds $20. Children aged three and under get in free, and the prices for ages 4 to 11 and for guests 65 and over only show up at checkout. On the four Merry Mondays, November 9, 16, 23 and 30, the online ticket is $79.
+A one-day ticket costs $95 plus tax and is good on any operating day through January 2. Book online at least 24 hours ahead and it gets cheaper on some days, cheapest on the four Merry Mondays (November 9, 16, 23 and 30) at $79. A second day within five operating days adds $20. Children aged three and under get in free, and the prices for ages 4 to 11 and for guests 65 and over only show up at checkout.
 
 Until November 2 the park is selling the 2027 Silver Season Passport for $119.99 instead of $174.99. It's valid from opening day on March 12, 2027, and new buyers get a $47.50 day ticket for the 2026 Christmas season, except on Saturdays and November 22.
 
@@ -88,7 +88,15 @@ Most show seats stay free, first come, first seated.
 
 More than 6.5 million lights hang in the park, 1.5 million of them in Christmas in Midtown alone. A crew of nine starts putting them up every year on July 1, which in the Ozarks is not a day anyone spends thinking about string lights by choice. On The Plaza stands the Grand Fir, a living Shasta fir from Oregon, 54 feet tall. It's lit at 5:15, 6:30 and 7:30 pm in a ceremony that takes 20 minutes. At Joy On Town Square, an eight-story tree runs a light and music show every 15 minutes.
 
-A Dickens' Christmas Carol plays for the 25th time, 60 minutes with a live band in the Opera House, usually at 1:30, 3:30 and 5:30 pm. Audio description is available for blind and low-vision guests. Heart of Christmas in Red Gold Heritage Hall changes its guest act through the season: Lindley Creek until November 27 and on December 3, Jeff & Sheri Easter from November 28 to 30, the Triumphant Quartet from December 4 to 7, The Isaacs from December 10 to 14, and Rhonda Vincent from December 17 to the end. The Living Nativity in the Dockside Theater lasts 15 minutes and plays five times a day, four times on Thanksgiving.
+A Dickens' Christmas Carol plays for the 25th time, 60 minutes with a live band in the Opera House, usually at 1:30, 3:30 and 5:30 pm. Audio description is available for blind and low-vision guests. The Living Nativity in the Dockside Theater lasts 15 minutes and plays five times a day, four times on Thanksgiving.
+
+Heart of Christmas in Red Gold Heritage Hall changes its guest act through the season, so if you're coming for one of them, pick your date:
+
+- Lindley Creek: until November 27 and on December 3
+- Jeff & Sheri Easter: November 28 to 30
+- Triumphant Quartet: December 4 to 7
+- The Isaacs: December 10 to 14
+- Rhonda Vincent: from December 17
 
 Santa receives visitors in Santa's Cottage in the Carousel Barn, through December 23 according to the event listing; after that, as everyone knows, he's booked elsewhere. The Frisco Sing-Along Steam Train isn't on the park's Christmas calendar, and its own page has the season ending on October 31. The press release still lists it as a Christmas tradition.
 
@@ -96,7 +104,7 @@ Santa receives visitors in Santa's Cottage in the Carousel Barn, through Decembe
 
 [Thunderation](ref:silver-dollar-city/thunderation), the 1993 Arrow Dynamics coaster, is in its final season in 2026 and runs for the last time on January 2, 2027. The wooden coaster [Outlaw Run](ref:silver-dollar-city/outlaw-run), the spinning coaster [Time Traveler](ref:silver-dollar-city/time-traveler), WildFire, PowderKeg and [Marvel Cave](ref:silver-dollar-city/marvel-cave) all operate through January 2.
 
-Every outdoor coaster has its own temperature limit. Of the three, it is Thunderation, the oldest, that keeps running down to 32°F (0°C). Outlaw Run closes at 34°F (1°C) and doesn't start again until 37°F (just under 3°C), and Time Traveler closes at 41°F (5°C). [Fire In The Hole](ref:silver-dollar-city/new-fire-in-the-hole) is indoors and isn't on the temperature list. If the weather cuts your visit short, the ticket window hands out a free ticket for another operating day in the current season.
+In the cold, the oldest of Thunderation, Outlaw Run and Time Traveler holds out longest. Thunderation keeps running down to 32°F (0°C). Outlaw Run closes at 34°F (1°C) and doesn't start again until 37°F (just under 3°C), and Time Traveler closes at 41°F (5°C). [Fire In The Hole](ref:silver-dollar-city/new-fire-in-the-hole) is indoors and isn't on the temperature list. If the weather cuts your visit short, the ticket window hands out a free ticket for another operating day in the current season.
 
 ```ride-waits-widget park=silver-dollar-city top=8 columns=peak,days
 

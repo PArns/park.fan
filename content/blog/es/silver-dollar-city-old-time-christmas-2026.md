@@ -26,7 +26,7 @@ rideLinks:
 seo:
   title: 'Navidad en Silver Dollar City 2026: desfile, horarios y precios'
   description: >-
-    Silver Dollar City celebra la Navidad del 7/11/2026 al 2/1/2027. El nuevo desfile sale a las 18:00 y a las 20:00; la entrada cuesta 95 dólares más impuestos.
+    Silver Dollar City celebra la Navidad del 7/11/2026 al 2/1/2027. El nuevo desfile sale a las 18:00 y a las 20:00; la entrada, 95 dólares más impuestos.
   keywords:
     - Silver Dollar City Navidad
     - Silver Dollar City An Old Time Christmas 2026
