@@ -534,7 +534,9 @@
     "readingTime": "{minutes} min",
     "updatedOn": "Actualizado el {date}",
     "nearby": "Cerca de ti",
-    "preferences": "Ajustes"
+    "preferences": "Ajustes",
+    "assistantOpen": "Preguntar a Parky",
+    "assistantClose": "Cerrar Parky"
   },
   "theme": {
     "light": "Claro",
@@ -3069,13 +3071,12 @@
     "forecastCaption": "Previsión"
   },
   "assistant": {
-    "open": "Preguntar a Parky",
     "close": "Cerrar Parky",
     "title": "Parky",
-    "subtitle": "Tu asistente de parques temáticos",
+    "subtitle": "Tu colega de parques",
     "tabChat": "Preguntas",
     "tabFeedback": "Opinión",
-    "greeting": "Hola, soy Parky 🎡 Pregúntame por los tiempos de espera, los horarios, los días más tranquilos o nuestras noticias. No puedo subir a montañas rusas, por desgracia, pero sé dónde la cola es corta ahora mismo.",
+    "greeting": "Hola, soy Parky 🎡 Tu colega de parques con una ligera adicción a las montañas rusas. Pregúntame por los tiempos de espera, los días más tranquilos, los horarios o qué es de verdad el «airtime». También te planifico el día.",
     "suggestWaits": "¿Dónde hay poca espera ahora mismo?",
     "suggestBestDay": "¿Cuándo está más tranquilo PortAventura Park?",
     "suggestNews": "¿Qué hay de nuevo?",
@@ -3098,7 +3099,7 @@
     "rateUp": "Útil",
     "rateDown": "No es útil",
     "rated": "Gracias.",
-    "disclaimer": "Parky es una IA y puede equivocarse. Las cifras llegan en directo de park.fan.",
+    "disclaimer": "Parky es un asistente de IA y a veces se equivoca.",
     "feedbackIntro": "¿Falta algo, falla algo o hay algo que te encanta? Cuéntanoslo, lo leemos todo.",
     "feedbackLabel": "Tu opinión",
     "feedbackPlaceholder": "¿Qué deberíamos saber?",
@@ -3128,6 +3129,7 @@
     "locationDeclined": "Vale, entonces sin ubicación.",
     "locationDenied": "Tu navegador no comparte tu ubicación. Puedes cambiarlo en sus ajustes.",
     "locationShared": "Aquí está mi ubicación.",
-    "cardWait": "{minutes} min"
+    "cardWait": "{minutes} min",
+    "lookupGlossary": "Parky consulta el glosario …"
   }
 }

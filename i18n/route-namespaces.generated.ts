@@ -7,7 +7,6 @@
  * Every route pays these, so they stay in the root `NextIntlClientProvider`.
  */
 export const LAYOUT_MESSAGE_NAMESPACES = [
-  'assistant',
   'common',
   'favorites',
   'footer',

@@ -1,15 +1,37 @@
 'use client';
 
-import { useMemo } from 'react';
+import { Children, useMemo, type ReactNode } from 'react';
 import NextLink from 'next/link';
 import { useLocale } from 'next-intl';
 import ReactMarkdown, { type Components } from 'react-markdown';
 import { MapPin } from 'lucide-react';
 import { directionsHref, safeAssistantHref } from '@/lib/assistant/links';
 import { localizedPath } from '@/lib/assistant/actions';
+import { splitWaits } from '@/lib/assistant/wait-chips';
+import { LiveWaitPill } from '@/components/parks/live-wait-pill';
 
 const ALLOWED = ['p', 'strong', 'em', 'ul', 'ol', 'li', 'a', 'br'];
 const LINK = 'text-primary font-medium underline underline-offset-2';
+
+/** Every wait named in the text drawn as the site's wait chip, the rest left as it was. */
+function withChips(children: ReactNode): ReactNode {
+  return Children.map(children, (child) => {
+    if (typeof child !== 'string') return child;
+    const parts = splitWaits(child);
+    if (parts.length === 1 && 'text' in parts[0]) return child;
+    return parts.map((part, index) =>
+      'text' in part ? (
+        part.text
+      ) : (
+        <LiveWaitPill
+          key={index}
+          minutes={part.minutes}
+          className="mx-0.5 px-1.5 py-0 align-baseline text-[11px]"
+        />
+      )
+    );
+  });
+}
 
 /**
  * One answer of Parky as text. The answer is model output: raw HTML is dropped, only a handful of
@@ -45,7 +67,9 @@ export function AssistantMessageText({ text }: { text: string }) {
         }
         return <span>{children}</span>;
       },
-      p: ({ children }) => <p className="[&:not(:first-child)]:mt-2">{children}</p>,
+      p: ({ children }) => <p className="[&:not(:first-child)]:mt-2">{withChips(children)}</p>,
+      li: ({ children }) => <li>{withChips(children)}</li>,
+      strong: ({ children }) => <strong>{withChips(children)}</strong>,
       ul: ({ children }) => <ul className="mt-2 list-disc space-y-1 pl-5">{children}</ul>,
       ol: ({ children }) => <ol className="mt-2 list-decimal space-y-1 pl-5">{children}</ol>,
     }),

@@ -45,3 +45,10 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `useAssistantSession` _hook_: Parky's challenge-response from the browser's side: a solved Turnstile token is traded at the API for a session token, which every chat, rating and feedback carries.
 - Types: `AssistantSessionState`
+
+### [`wait-chips.ts`](../../lib/assistant/wait-chips.ts)
+
+A wait written in an answer, in any of the six languages: "30 Min.", "30 min", "30 minutes", "30 Minuten", "30 minuti", "30 minutos". Captures the minutes.
+
+- `splitWaits` _function_: Splits text at the waits it names, so the widget can draw each one in the site's wait chip. Text without a wait comes back as one piece.
+- Types: `WaitChipPart`

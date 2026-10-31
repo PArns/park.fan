@@ -13,7 +13,15 @@ import { trackSiteEvent, type AssistantQuestionKind } from '@/lib/analytics/site
 
 /** A lookup Parky names while it runs, as the API's `status` event sends it. */
 export type AssistantLookup =
-  'parks' | 'wait-times' | 'rides' | 'forecast' | 'posts' | 'planner' | 'location' | 'weather';
+  | 'parks'
+  | 'wait-times'
+  | 'rides'
+  | 'forecast'
+  | 'posts'
+  | 'planner'
+  | 'location'
+  | 'weather'
+  | 'glossary';
 
 /** One line of the chat as the widget draws it. */
 export interface AssistantChatMessage {
@@ -68,6 +76,15 @@ function save(stored: Stored): void {
     window.sessionStorage.setItem(STORE_KEY, JSON.stringify(stored));
   } catch {
     // The chat then lasts as long as the page.
+  }
+}
+
+/** The browser's IANA zone, e.g. Europe/Berlin; undefined where the runtime does not say. */
+function browserTimeZone(): string | undefined {
+  try {
+    return Intl.DateTimeFormat().resolvedOptions().timeZone || undefined;
+  } catch {
+    return undefined;
   }
 }
 
@@ -147,6 +164,8 @@ export function useAssistantChat(
             message: question,
             sessionToken,
             ...(location && { location }),
+            // Parky gives every time in the reader's own clock; the API converts, not the model.
+            timeZone: browserTimeZone(),
           }),
         });
         if (response.status === 401) {

@@ -534,7 +534,9 @@
     "readingTime": "{minutes} Min.",
     "updatedOn": "Aktualisiert {date}",
     "nearby": "In deiner Nähe",
-    "preferences": "Einstellungen"
+    "preferences": "Einstellungen",
+    "assistantOpen": "Parky fragen",
+    "assistantClose": "Parky schließen"
   },
   "theme": {
     "light": "Hell",
@@ -3069,13 +3071,12 @@
     "forecastCaption": "Prognose"
   },
   "assistant": {
-    "open": "Parky fragen",
     "close": "Parky schließen",
     "title": "Parky",
-    "subtitle": "Dein Freizeitpark-Assistent",
+    "subtitle": "Dein Park-Kumpel",
     "tabChat": "Fragen",
     "tabFeedback": "Feedback",
-    "greeting": "Hi, ich bin Parky 🎡 Frag mich nach Wartezeiten, Öffnungszeiten, den leersten Tagen oder unseren News. Achterbahnfahren kann ich leider nicht, aber ich weiß, wo die Warteschlange gerade kurz ist.",
+    "greeting": "Hi, ich bin Parky 🎡 Dein Freizeitpark-Kumpel mit leichtem Achterbahn-Tick. Frag mich nach Wartezeiten, den leersten Tagen, Öffnungszeiten oder was „Airtime“ eigentlich ist. Ich plane dir auch gleich den Tag.",
     "suggestWaits": "Wo sind die Wartezeiten gerade kurz?",
     "suggestBestDay": "Wann ist es im Europa-Park am leersten?",
     "suggestNews": "Was gibt es Neues?",
@@ -3098,7 +3099,7 @@
     "rateUp": "Hilfreich",
     "rateDown": "Nicht hilfreich",
     "rated": "Danke dir.",
-    "disclaimer": "Parky ist eine KI und kann sich irren. Die Zahlen kommen live von park.fan.",
+    "disclaimer": "Parky ist ein KI-Assistent und verrechnet sich manchmal.",
     "feedbackIntro": "Etwas fehlt, hakt oder gefällt dir besonders? Schreib es uns, wir lesen alles.",
     "feedbackLabel": "Dein Feedback",
     "feedbackPlaceholder": "Was sollen wir wissen?",
@@ -3128,6 +3129,7 @@
     "locationDeclined": "Alles klar, dann ohne Standort.",
     "locationDenied": "Dein Browser gibt den Standort nicht frei. Du kannst das in den Einstellungen ändern.",
     "locationShared": "Hier ist mein Standort.",
-    "cardWait": "{minutes} Min."
+    "cardWait": "{minutes} Min.",
+    "lookupGlossary": "Parky schlägt im Glossar nach …"
   }
 }

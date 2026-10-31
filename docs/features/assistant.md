@@ -83,6 +83,13 @@ The position is never read without a press: the share card calls the site's own 
 (`useGeolocation().refresh()`), so the same yes also brings the in-park markers and the compass on
 the park's page. It goes to the API once, with the next question, and Parky keeps it nowhere.
 
+## Chips and times
+
+Every wait an answer names ("30 Min.", "30 minutes" …) is drawn as the site's `LiveWaitPill`
+(`splitWaits`, `lib/assistant/wait-chips.ts`), and the cards use it for their waits. The chat
+sends the browser's time zone, so every time the API hands the model is already in the reader's
+clock; the cards format their instants with the browser's own clock too.
+
 ## Tracking
 
 Our own statistic (`trackSiteEvent`, labels in `lib/admin/site-analytics.ts`): `assistant_opened`,

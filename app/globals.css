@@ -391,6 +391,65 @@
  * `backwards`, not `both`: `both` would retain the final keyframe's identity transform and
  * `filter`, and either isolates the subtree's backdrop for good.
  */
+/* Parky's face (`components/assistant/parky-logo.tsx`): a blink every few seconds, the Ferris-wheel
+   hat turning while it writes, the mouth talking, and the closed button bobbing gently. */
+@keyframes parky-blink {
+  0%,
+  92%,
+  100% {
+    transform: scaleY(1);
+  }
+  95% {
+    transform: scaleY(0.1);
+  }
+}
+@keyframes parky-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes parky-talk {
+  0%,
+  100% {
+    transform: scaleY(1);
+  }
+  50% {
+    transform: scaleY(0.45);
+  }
+}
+@keyframes parky-bob {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-3px) rotate(-3deg);
+  }
+}
+.parky-eyes,
+.parky-mouth,
+.parky-wheel {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .parky-eyes {
+    animation: parky-blink 4.5s ease-in-out infinite;
+  }
+  .parky-wheel {
+    animation: parky-spin 14s linear infinite;
+  }
+  .parky-wheel--turning {
+    animation-duration: 3s;
+  }
+  .parky-mouth {
+    animation: parky-talk 0.45s ease-in-out infinite;
+  }
+  .parky-bob {
+    animation: parky-bob 3.2s ease-in-out infinite;
+  }
+}
+
 @keyframes hero-item-in {
   from {
     opacity: 0;

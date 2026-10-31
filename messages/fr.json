@@ -534,7 +534,9 @@
     "readingTime": "{minutes} min",
     "updatedOn": "Mis à jour le {date}",
     "nearby": "Près de chez vous",
-    "preferences": "Préférences"
+    "preferences": "Préférences",
+    "assistantOpen": "Demander à Parky",
+    "assistantClose": "Fermer Parky"
   },
   "theme": {
     "light": "Clair",
@@ -3069,13 +3071,12 @@
     "forecastCaption": "Prévision"
   },
   "assistant": {
-    "open": "Demander à Parky",
     "close": "Fermer Parky",
     "title": "Parky",
-    "subtitle": "Ton assistant parcs d’attractions",
+    "subtitle": "Ton pote des parcs",
     "tabChat": "Questions",
     "tabFeedback": "Avis",
-    "greeting": "Salut, moi c’est Parky 🎡 Demande-moi les temps d’attente, les horaires, les jours les plus calmes ou nos actus. Je ne peux pas faire de montagnes russes, hélas, mais je sais où la file est courte en ce moment.",
+    "greeting": "Salut, moi c’est Parky 🎡 Ton pote des parcs, un peu accro aux montagnes russes. Demande-moi les temps d’attente, les jours les plus calmes, les horaires ou ce qu’est vraiment l’« airtime ». Je peux aussi planifier ta journée.",
     "suggestWaits": "Où l’attente est-elle courte en ce moment ?",
     "suggestBestDay": "Quand Disneyland Paris est-il le plus calme ?",
     "suggestNews": "Quoi de neuf ?",
@@ -3098,7 +3099,7 @@
     "rateUp": "Utile",
     "rateDown": "Pas utile",
     "rated": "Merci.",
-    "disclaimer": "Parky est une IA et peut se tromper. Les chiffres viennent en direct de park.fan.",
+    "disclaimer": "Parky est un assistant IA et se trompe parfois.",
     "feedbackIntro": "Il manque quelque chose, un truc coince ou tu adores un détail ? Écris-nous, on lit tout.",
     "feedbackLabel": "Ton avis",
     "feedbackPlaceholder": "Qu’est-ce qu’on doit savoir ?",
@@ -3128,6 +3129,7 @@
     "locationDeclined": "D’accord, sans position alors.",
     "locationDenied": "Ton navigateur ne partage pas ta position. Tu peux changer ça dans ses réglages.",
     "locationShared": "Voici ma position.",
-    "cardWait": "{minutes} min"
+    "cardWait": "{minutes} min",
+    "lookupGlossary": "Parky cherche dans le glossaire …"
   }
 }
