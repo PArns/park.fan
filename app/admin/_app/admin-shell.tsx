@@ -4,6 +4,7 @@ import { useCallback, useEffect, useRef, useState, type ReactNode } from 'react'
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import {
+  ChevronDown,
   ChevronsLeft,
   ChevronsRight,
   Command as CommandIcon,
@@ -23,7 +24,7 @@ import { formatDisplayName } from '../_lib/format';
 import { useAdmin } from '../_lib/admin-context';
 import { useToast } from '../_ui/toast';
 import { useLocalPreference } from '../_lib/use-local-preference';
-import { activeNavItem, visibleGroups, type NavItem } from './nav';
+import { activeNavItem, flatNavItems, navParent, visibleGroups, type NavItem } from './nav';
 import { useSession } from './session';
 import { CommandPalette } from './command-palette';
 import { InspectorPanel, useInspector } from './inspector';
@@ -77,8 +78,10 @@ export function AdminShell({ children }: { children: ReactNode }) {
   const active = activeNavItem(pathname);
   // The title alone ("Duplikate") does not say whether you are in curation or in operations.
   const activeGroup = active
-    ? groups.find((group) => group.items.some((item) => item.href === active.href))?.label
+    ? groups.find((group) => flatNavItems(group.items).some((item) => item.href === active.href))
+        ?.label
     : undefined;
+  const activeParent = active ? navParent(groups, active.href) : null;
 
   useEffect(() => {
     function onKeyDown(event: KeyboardEvent) {
@@ -170,6 +173,15 @@ export function AdminShell({ children }: { children: ReactNode }) {
                   {activeGroup}
                   <span className="mx-1.5 opacity-40">/</span>
                 </span>
+              )}
+              {activeParent && (
+                <Link
+                  href={activeParent.href}
+                  className="text-muted-foreground hover:text-foreground hidden text-[11px] tracking-wide uppercase sm:inline"
+                >
+                  {activeParent.label}
+                  <span className="mx-1.5 opacity-40">/</span>
+                </Link>
               )}
               <h1 className="truncate text-sm font-semibold">{active?.label ?? 'Admin'}</h1>
             </div>
@@ -305,15 +317,25 @@ function Sidebar({
                 </p>
               )}
               <div className="space-y-0.5">
-                {group.items.map((item) => (
-                  <SidebarLink
-                    key={item.href}
-                    item={item}
-                    active={item.href === activeHref}
-                    collapsed={collapsed && !mobileOpen}
-                    onNavigate={onCloseMobile}
-                  />
-                ))}
+                {group.items.map((item) =>
+                  item.children?.length ? (
+                    <SidebarBranch
+                      key={item.href}
+                      item={item}
+                      activeHref={activeHref}
+                      collapsed={collapsed && !mobileOpen}
+                      onNavigate={onCloseMobile}
+                    />
+                  ) : (
+                    <SidebarLink
+                      key={item.href}
+                      item={item}
+                      active={item.href === activeHref}
+                      collapsed={collapsed && !mobileOpen}
+                      onNavigate={onCloseMobile}
+                    />
+                  )
+                )}
               </div>
             </div>
           ))}
@@ -347,33 +369,106 @@ function Sidebar({
   );
 }
 
+/**
+ * An entry with sub-entries: the entry links to their overview, the chevron folds them. They stand
+ * open while one of them is the current page; the collapsed rail shows the entry alone, lit for
+ * the whole branch.
+ */
+function SidebarBranch({
+  item,
+  activeHref,
+  collapsed,
+  onNavigate,
+}: {
+  item: NavItem;
+  activeHref: string | undefined;
+  collapsed: boolean;
+  onNavigate: () => void;
+}) {
+  const children = item.children ?? [];
+  const inBranch = item.href === activeHref || children.some((child) => child.href === activeHref);
+  const [toggled, setToggled] = useState<boolean | null>(null);
+  const open = toggled ?? inBranch;
+
+  if (collapsed) {
+    return <SidebarLink item={item} active={inBranch} collapsed onNavigate={onNavigate} />;
+  }
+  return (
+    <div>
+      <div className="relative">
+        <SidebarLink
+          item={item}
+          active={item.href === activeHref}
+          collapsed={false}
+          onNavigate={onNavigate}
+          trailingSpace
+        />
+        <button
+          type="button"
+          onClick={() => setToggled(!open)}
+          aria-expanded={open}
+          aria-label={`${item.label} ${open ? 'zuklappen' : 'aufklappen'}`}
+          className="text-muted-foreground hover:bg-accent hover:text-foreground absolute top-1/2 right-1 -translate-y-1/2 rounded-md p-1"
+        >
+          <ChevronDown className={cn('h-3.5 w-3.5 transition-transform', !open && '-rotate-90')} />
+        </button>
+      </div>
+      {open && (
+        <div className="border-sidebar-border mt-0.5 ml-[18px] space-y-0.5 border-l pl-2">
+          {children.map((child) => (
+            <SidebarLink
+              key={child.href}
+              item={child}
+              active={child.href === activeHref}
+              collapsed={false}
+              onNavigate={onNavigate}
+              dense
+            />
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
 function SidebarLink({
   item,
   active,
   collapsed,
   onNavigate,
+  dense = false,
+  trailingSpace = false,
 }: {
   item: NavItem;
   active: boolean;
   collapsed: boolean;
   onNavigate: () => void;
+  /** A sub-entry: smaller, under its parent's guide line. */
+  dense?: boolean;
+  /** Room on the right for the parent's fold button. */
+  trailingSpace?: boolean;
 }) {
   return (
     <Link
       href={item.href}
       onClick={onNavigate}
       title={collapsed ? item.label : undefined}
+      aria-current={active ? 'page' : undefined}
       className={cn(
         // The rail makes "where am I" readable at a glance: a tinted row alone reads as hover, and
         // the collapsed sidebar has no label to tell them apart.
-        'relative flex items-center gap-2.5 rounded-lg py-1.5 pr-2.5 pl-3 text-sm transition-colors',
+        'relative flex items-center gap-2.5 rounded-lg pr-2.5 pl-3 transition-colors',
+        dense ? 'py-1 text-[13px]' : 'py-1.5 text-sm',
+        trailingSpace && 'pr-8',
         'before:absolute before:top-1.5 before:bottom-1.5 before:left-0 before:w-0.5 before:rounded-full before:transition-colors',
         active
           ? 'bg-sidebar-accent text-sidebar-accent-foreground before:bg-primary font-medium before:shadow-[0_0_10px_var(--color-primary)]'
           : 'text-muted-foreground hover:bg-accent hover:text-foreground before:bg-transparent'
       )}
     >
-      <item.icon className={cn('h-4 w-4 shrink-0', active && 'text-primary')} />
+      <item.icon
+        className={cn('shrink-0', dense ? 'h-3.5 w-3.5' : 'h-4 w-4', active && 'text-primary')}
+      />
       {!collapsed && <span className="truncate">{item.label}</span>}
     </Link>
   );

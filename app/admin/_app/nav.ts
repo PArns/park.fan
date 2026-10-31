@@ -47,6 +47,8 @@ export interface NavItem {
    * so the breadcrumb and the sidebar still place them.
    */
   covers?: string[];
+  /** The sub-entries the sidebar folds under this one; the entry itself is their overview. */
+  children?: NavItem[];
 }
 
 export interface NavGroup {
@@ -56,7 +58,7 @@ export interface NavGroup {
 
 const NAV_GROUPS: NavGroup[] = [
   {
-    label: 'Kuratieren',
+    label: 'Start',
     items: [
       {
         href: '/admin',
@@ -65,6 +67,11 @@ const NAV_GROUPS: NavGroup[] = [
         description: 'Was zuletzt passiert ist und was ansteht',
         keywords: ['dashboard', 'start', 'home'],
       },
+    ],
+  },
+  {
+    label: 'Katalog',
+    items: [
       {
         href: '/admin/parks',
         label: 'Parks',
@@ -82,20 +89,20 @@ const NAV_GROUPS: NavGroup[] = [
         keywords: ['halloween', 'weihnachten', 'events', 'termine'],
       },
       {
-        href: '/admin/retirement',
-        label: 'Stilllegungen',
-        icon: Archive,
-        description: 'Verstummte Bahnen beurteilen, stilllegen, zurückholen',
-        minRole: 'editor',
-        keywords: ['retire', 'abriss', 'kandidaten', 'verstummt', 'umbau'],
-      },
-      {
         href: '/admin/duplicates',
         label: 'Duplikate',
         icon: Copy,
         description: 'Doppelte Bahnen und Parks zusammenführen',
         minRole: 'editor',
         keywords: ['merge', 'doppelt', 'zusammenführen', 'dubletten'],
+      },
+      {
+        href: '/admin/retirement',
+        label: 'Stilllegungen',
+        icon: Archive,
+        description: 'Verstummte Bahnen beurteilen, stilllegen, zurückholen',
+        minRole: 'editor',
+        keywords: ['retire', 'abriss', 'kandidaten', 'verstummt', 'umbau'],
       },
       {
         href: '/admin/history',
@@ -110,11 +117,11 @@ const NAV_GROUPS: NavGroup[] = [
     label: 'Inhalte',
     items: [
       {
-        href: '/admin/capture',
-        label: 'Vor Ort',
-        icon: Camera,
-        description: 'Im Park fotografieren: was fehlt, und direkt hochladen',
-        keywords: ['foto', 'kamera', 'knipsen', 'handy', 'mobil', 'park', 'shooting'],
+        href: '/admin/blog-editor',
+        label: 'Blog',
+        icon: PenLine,
+        description: 'Beiträge in sechs Sprachen',
+        keywords: ['artikel', 'post', 'schreiben'],
       },
       {
         href: '/admin/media',
@@ -124,11 +131,11 @@ const NAV_GROUPS: NavGroup[] = [
         keywords: ['bilder', 'fotos', 'sidecar', 'focus'],
       },
       {
-        href: '/admin/blog-editor',
-        label: 'Blog',
-        icon: PenLine,
-        description: 'Beiträge in sechs Sprachen',
-        keywords: ['artikel', 'post', 'schreiben'],
+        href: '/admin/capture',
+        label: 'Vor Ort',
+        icon: Camera,
+        description: 'Im Park fotografieren: was fehlt, und direkt hochladen',
+        keywords: ['foto', 'kamera', 'knipsen', 'handy', 'mobil', 'park', 'shooting'],
       },
       {
         href: '/admin/contributions',
@@ -136,6 +143,137 @@ const NAV_GROUPS: NavGroup[] = [
         icon: ImageIcon,
         description: 'Von Besuchern eingeschickte Fotos moderieren',
         keywords: ['upload', 'moderation', 'community'],
+      },
+    ],
+  },
+  {
+    label: 'Publikum',
+    items: [
+      {
+        href: '/admin/traffic',
+        label: 'Traffic',
+        icon: TrendingUp,
+        description: 'Besucher, Seiten, Herkunft und Ereignisse aus dem eigenen Zähler',
+        keywords: [
+          'besucher',
+          'aufrufe',
+          'visits',
+          'pageviews',
+          'umami',
+          'ereignisse',
+          'events',
+          'herkunft',
+          'referrer',
+          'realtime',
+        ],
+        children: [
+          {
+            href: '/admin/traffic/live',
+            label: 'Live',
+            icon: Radio,
+            description: 'Wer gerade auf park.fan ist: Seiten, Länder, Herkunft, Minute für Minute',
+            keywords: ['live', 'echtzeit', 'jetzt', 'aktiv', 'realtime', 'karte', 'besucher'],
+          },
+          {
+            href: '/admin/traffic/seo',
+            label: 'SEO',
+            icon: Radar,
+            description:
+              'Google Search Console, Besuche aus Suche und KI-Assistenten, 404, Seiten ohne Besuch',
+            keywords: [
+              'seo',
+              'google',
+              'bing',
+              'suchmaschine',
+              'organisch',
+              'chatgpt',
+              'ki',
+              'ai',
+              '404',
+              'landingpage',
+              'einstiegsseiten',
+              'nachindizieren',
+              'indexierung',
+              'reindex',
+            ],
+          },
+          {
+            href: '/admin/traffic/search',
+            label: 'Suche',
+            icon: Search,
+            description: 'Hero oder Header, von welcher Seite, auf welchem Gerät',
+            keywords: ['hero', 'header', 'suchfeld', 'suchen', 'treffer', 'tastenkürzel'],
+          },
+          {
+            href: '/admin/traffic/paths',
+            label: 'Wege',
+            icon: Route,
+            description: 'Lesetiefe der Parkseiten, Klicks je Block, Menüs und FAQ',
+            keywords: [
+              'wege',
+              'klicks',
+              'links',
+              'weiter',
+              'lesetiefe',
+              'scrolltiefe',
+              'menü',
+              'navigation',
+              'faq',
+              'verweildauer',
+              'funnel',
+            ],
+          },
+          {
+            href: '/admin/traffic/planner',
+            label: 'Tagesplaner',
+            icon: CalendarDays,
+            description: 'Wege in den Planer, Assistent, eingeplante Fahrgeschäfte, Teilen',
+            keywords: [
+              'planer',
+              'tagesplaner',
+              'plan',
+              'assistent',
+              'optimieren',
+              'teilen',
+              'funnel',
+            ],
+          },
+          {
+            href: '/admin/popularity',
+            label: 'Beliebtheit',
+            icon: Flame,
+            description: 'Was gelesen wird, und in welcher Sprache',
+            keywords: ['meistgelesen', 'aufrufe', 'page views', 'top', 'sprache', 'beliebt'],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    label: 'Parkdaten',
+    items: [
+      {
+        href: '/admin/analytics',
+        label: 'Parks live',
+        icon: Activity,
+        description: 'Live-Zahlen aus den Parks: offene Bahnen, Ticker, Regionen',
+        keywords: ['analytics', 'realtime', 'ticker', 'geo'],
+      },
+      {
+        href: '/admin/ml',
+        label: 'ML-Zentrale',
+        icon: Brain,
+        description: 'Was ansteht, welches Modell besser ist, ob alles läuft',
+        keywords: ['ml', 'catboost', 'tft', 'pcn', 'chronos', 'prognose', 'entscheidung', 'drift'],
+        children: [
+          {
+            href: '/admin/ml/vergleich',
+            label: 'Modellvergleich',
+            icon: GitCompare,
+            description: 'Welches Modell wo besser trifft als das, was die App zeigt',
+            keywords: ['modelle', 'vergleich', 'matrix', 'chronos', 'tft', 'pcn', 'prognose'],
+          },
+        ],
       },
     ],
   },
@@ -162,115 +300,6 @@ const NAV_GROUPS: NavGroup[] = [
         icon: HeartPulse,
         description: 'Verstummte Feeds, gescheiterte Jobs, kaputte Verweise',
         keywords: ['monitoring', 'silenced', 'fehler', 'audit', 'glossar'],
-      },
-      {
-        href: '/admin/analytics',
-        label: 'Analytics',
-        icon: Activity,
-        description: 'Live-Zahlen aus den Parks: offene Bahnen, Ticker, Regionen',
-        keywords: ['realtime', 'ticker', 'geo'],
-      },
-      {
-        href: '/admin/traffic',
-        label: 'Traffic',
-        icon: TrendingUp,
-        description: 'Besucher, Seiten, Herkunft und Ereignisse aus dem eigenen Zähler',
-        keywords: [
-          'besucher',
-          'aufrufe',
-          'visits',
-          'pageviews',
-          'umami',
-          'ereignisse',
-          'events',
-          'herkunft',
-          'referrer',
-          'realtime',
-        ],
-      },
-      {
-        href: '/admin/traffic/live',
-        label: 'Live',
-        icon: Radio,
-        description: 'Wer gerade auf park.fan ist: Seiten, Länder, Herkunft, Minute für Minute',
-        keywords: ['live', 'echtzeit', 'jetzt', 'aktiv', 'realtime', 'karte', 'besucher'],
-      },
-      {
-        href: '/admin/traffic/seo',
-        label: 'SEO',
-        icon: Radar,
-        description:
-          'Google Search Console, Besuche aus Suche und KI-Assistenten, 404, Seiten ohne Besuch',
-        keywords: [
-          'seo',
-          'google',
-          'bing',
-          'suchmaschine',
-          'organisch',
-          'chatgpt',
-          'ki',
-          'ai',
-          '404',
-          'landingpage',
-          'einstiegsseiten',
-          'nachindizieren',
-          'indexierung',
-          'reindex',
-        ],
-      },
-      {
-        href: '/admin/traffic/search',
-        label: 'Suche',
-        icon: Search,
-        description: 'Hero oder Header, von welcher Seite, auf welchem Gerät',
-        keywords: ['hero', 'header', 'suchfeld', 'suchen', 'treffer', 'tastenkürzel'],
-      },
-      {
-        href: '/admin/traffic/paths',
-        label: 'Wege',
-        icon: Route,
-        description: 'Lesetiefe der Parkseiten, Klicks je Block, Menüs und FAQ',
-        keywords: [
-          'wege',
-          'klicks',
-          'links',
-          'weiter',
-          'lesetiefe',
-          'scrolltiefe',
-          'menü',
-          'navigation',
-          'faq',
-          'verweildauer',
-          'funnel',
-        ],
-      },
-      {
-        href: '/admin/traffic/planner',
-        label: 'Tagesplaner',
-        icon: CalendarDays,
-        description: 'Wege in den Planer, Assistent, eingeplante Fahrgeschäfte, Teilen',
-        keywords: ['planer', 'tagesplaner', 'plan', 'assistent', 'optimieren', 'teilen', 'funnel'],
-      },
-      {
-        href: '/admin/popularity',
-        label: 'Beliebtheit',
-        icon: Flame,
-        description: 'Was gelesen wird, und in welcher Sprache',
-        keywords: ['meistgelesen', 'aufrufe', 'page views', 'top', 'sprache', 'beliebt'],
-      },
-      {
-        href: '/admin/ml',
-        label: 'ML-Zentrale',
-        icon: Brain,
-        description: 'Was ansteht, welches Modell besser ist, ob alles läuft',
-        keywords: ['ml', 'catboost', 'tft', 'pcn', 'chronos', 'prognose', 'entscheidung', 'drift'],
-      },
-      {
-        href: '/admin/ml/vergleich',
-        label: 'Modellvergleich',
-        icon: GitCompare,
-        description: 'Welches Modell wo besser trifft als das, was die App zeigt',
-        keywords: ['modelle', 'vergleich', 'matrix', 'chronos', 'tft', 'pcn', 'prognose'],
       },
       {
         href: '/admin/actions',
@@ -304,7 +333,21 @@ const NAV_GROUPS: NavGroup[] = [
   },
 ];
 
-const NAV_ITEMS: NavItem[] = NAV_GROUPS.flatMap((group) => group.items);
+/** Every entry of a list, each parent followed by its sub-entries. */
+export function flatNavItems(items: readonly NavItem[]): NavItem[] {
+  return items.flatMap((item) => [item, ...(item.children ?? [])]);
+}
+
+const NAV_ITEMS: NavItem[] = flatNavItems(NAV_GROUPS.flatMap((group) => group.items));
+
+/** The entry whose sub-entries include `href`, or null for a top-level one. */
+export function navParent(groups: readonly NavGroup[], href: string): NavItem | null {
+  for (const group of groups) {
+    const parent = group.items.find((item) => item.children?.some((child) => child.href === href));
+    if (parent) return parent;
+  }
+  return null;
+}
 
 /**
  * The nav entry a path belongs to.
@@ -328,8 +371,11 @@ export function activeNavItem(pathname: string): NavItem | null {
  * groups dropped. A display filter only: the API enforces roles.
  */
 export function visibleGroups(role: AdminRole): NavGroup[] {
+  const allowed = (item: NavItem) => !item.minRole || roleAtLeast(role, item.minRole);
   return NAV_GROUPS.map((group) => ({
     ...group,
-    items: group.items.filter((item) => !item.minRole || roleAtLeast(role, item.minRole)),
+    items: group.items
+      .filter(allowed)
+      .map((item) => (item.children ? { ...item, children: item.children.filter(allowed) } : item)),
   })).filter((group) => group.items.length > 0);
 }

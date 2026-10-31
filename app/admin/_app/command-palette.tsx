@@ -33,7 +33,7 @@ interface RideHit {
   slug: string;
   park: { id: string; name: string } | null;
 }
-import { visibleGroups } from './nav';
+import { flatNavItems, visibleGroups } from './nav';
 import { useSession } from './session';
 
 /**
@@ -307,7 +307,7 @@ function matchingNav(
   return groups
     .map((group) => ({
       ...group,
-      items: group.items.filter((item) =>
+      items: flatNavItems(group.items).filter((item) =>
         matches(query, `${item.label} ${item.description ?? ''} ${(item.keywords ?? []).join(' ')}`)
       ),
     }))

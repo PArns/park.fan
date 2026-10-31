@@ -11,4 +11,4 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`search-console-overlay.tsx`](../../components/admin/search-console-overlay.tsx)
 
-- `SearchConsoleOverlay` _component_: Google's figures for the page on screen, for a signed-in admin: clicks, impressions, CTR and position over the last four weeks against the four before, the visits our own counter saw begin here from a search engine, the queries that bring …
+- `SearchConsoleOverlay` _component_: Figures for the page on screen, for a signed-in admin. Collapsed it is one line with Google's clicks, CTR and position over the last four weeks.
