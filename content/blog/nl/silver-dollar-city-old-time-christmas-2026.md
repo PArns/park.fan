@@ -48,7 +48,7 @@ Of “twee keer zo lang” over de duur gaat of over de lengte van de stoet, laa
 
 River City Scenic bouwde de wagens in een hal bij Cincinnati. De muziek is van Mike Avila, die aan zo'n 20 grote parades heeft meegewerkt, onder meer voor Disney, de Macy's Thanksgiving Day Parade en de Rose Bowl Parade.
 
-Op elke openingsdag vertrekt de parade twee keer, om 18.00 en om 20.00 uur plaatselijke tijd. Tot en met 2025 was dat Rudolph's Holly Jolly Christmas Light Parade, en toen liep het evenement van 1 november tot 4 januari.
+Op elke openingsdag vertrekt de parade twee keer, om 18.00 en om 20.00 uur plaatselijke tijd. Tot en met 2025 was dat Rudolph's Holly Jolly Christmas Light Parade. Toen begon het evenement al op 1 november en liep het tot 4 januari, dit jaar is het acht dagen korter.
 
 ## Openingsdagen en openingstijden
 
@@ -58,7 +58,7 @@ In de periode van het evenement is het park 44 dagen open. Tot half december is 
 - 1, 2, 8, 9, 15 en 16 december
 - 24 en 25 december
 
-Op zaterdag en op de vrijdag na Thanksgiving, 27 november, is het park open van 11.00 tot 22.00 uur. Op de andere dagen gaat het park meestal om 13.00 uur open en om 21.00 uur dicht, op de vrijdagen 4, 11 en 18 december en op nieuwjaarsdag pas om 22.00 uur. Op Thanksgiving zelf, 26 november, is het open van 16.00 tot 22.00 uur. Het ontbijt vanaf 8.30 uur is er alleen van maart tot oktober.
+Op zaterdag en op de vrijdag na Thanksgiving, 27 november, is het park open van 11.00 tot 22.00 uur. Op de andere dagen gaat het park meestal om 13.00 uur open en om 21.00 uur dicht, op de vrijdagen 4, 11 en 18 december en op nieuwjaarsdag pas om 22.00 uur. Op Thanksgiving zelf, 26 november, is het open van 16.00 tot 22.00 uur.
 
 Volgens het park zijn de zaterdagen in november en december vaak erg druk, vooral als het zacht weer is.
 
@@ -68,7 +68,7 @@ Volgens het park zijn de zaterdagen in november en december vaak erg druk, voora
 
 ## Wat in het ticket zit en wat extra kost
 
-Een dagticket kost 95 dollar plus belasting en geldt op elke openingsdag tot 2 januari. Boek je online en minstens 24 uur van tevoren, dan betaal je op bepaalde dagen vanaf 79 dollar, en een tweede dag binnen vijf openingsdagen kost 20 dollar extra. Kinderen tot en met drie jaar mogen gratis naar binnen. De prijzen voor kinderen van vier tot en met elf en voor 65-plussers zie je pas tijdens het bestellen. Op de vier Merry Mondays, 9, 16, 23 en 30 november, kost een ticket online 79 dollar.
+Een dagticket kost 95 dollar plus belasting en geldt op elke openingsdag tot 2 januari. Boek je online en minstens 24 uur van tevoren, dan wordt het op sommige dagen goedkoper, het goedkoopst op de vier Merry Mondays (9, 16, 23 en 30 november) met 79 dollar. Een tweede dag binnen vijf openingsdagen kost 20 dollar extra. Kinderen tot en met drie jaar mogen gratis naar binnen. De prijzen voor kinderen van vier tot en met elf en voor 65-plussers zie je pas tijdens het bestellen.
 
 Tot 2 november verkoopt het park de Silver Season Passport 2027 voor 119,99 in plaats van 174,99 dollar. Die geldt vanaf de seizoensstart op 12 maart 2027. Wie hem nieuw koopt, krijgt voor het kerstseizoen 2026 een dagticket voor 47,50 dollar, behalve op de zaterdagen en op 22 november.
 
@@ -85,7 +85,15 @@ De meeste plaatsen in de shows blijven gratis; wie het eerst komt, zit.
 
 In het park hangen meer dan 6,5 miljoen lichtjes, waarvan 1,5 miljoen alleen al in Christmas in Midtown. Een team van negen mensen begint er elk jaar op 1 juli mee, een dag waarop in Branson niemand uit vrije wil aan kerstverlichting denkt. Op The Plaza staat de Grand Fir, een levende Shasta-zilverspar uit Oregon van 54 voet hoog (zo'n 16 meter). Hij gaat om 17.15, 18.30 en 19.30 uur aan, in een ceremonie van 20 minuten. Bij Joy On Town Square speelt elk kwartier een licht- en muziekshow rond een boom van acht verdiepingen hoog.
 
-A Dickens' Christmas Carol staat voor de 25e keer op het programma: 60 minuten met liveband in het Opera House, meestal om 13.30, 15.30 en 17.30 uur. Voor blinde en slechtziende bezoekers is er audiodescriptie. In de Red Gold Heritage Hall wisselen bij Heart of Christmas de gasten: Lindley Creek tot 27 november en op 3 december, Jeff & Sheri Easter van 28 tot 30 november, het Triumphant Quartet van 4 tot 7 december, The Isaacs van 10 tot 14 december en Rhonda Vincent van 17 december tot het einde. De Living Nativity in het Dockside Theater duurt 15 minuten en speelt vijf keer per dag, op Thanksgiving vier keer.
+A Dickens' Christmas Carol staat voor de 25e keer op het programma: 60 minuten met liveband in het Opera House, meestal om 13.30, 15.30 en 17.30 uur. Voor blinde en slechtziende bezoekers is er audiodescriptie. De Living Nativity in het Dockside Theater duurt 15 minuten en speelt vijf keer per dag, op Thanksgiving vier keer.
+
+In de Red Gold Heritage Hall wisselt bij Heart of Christmas de gastact. Wil je een bepaalde groep zien, plan je bezoek dan hierop:
+
+- Lindley Creek: tot 27 november en op 3 december
+- Jeff & Sheri Easter: 28 tot 30 november
+- Triumphant Quartet: 4 tot 7 december
+- The Isaacs: 10 tot 14 december
+- Rhonda Vincent: vanaf 17 december
 
 Santa zit in Santa's Cottage in de Carousel Barn, volgens de evenementbeschrijving tot 23 december; daarna heeft hij, zoals bekend, elders een afspraak. De Frisco Sing-Along Steam Train staat niet in de kerstkalender van het park, en op zijn eigen pagina eindigt het seizoen op 31 oktober. Het persbericht noemt de trein toch een kersttraditie.
 
@@ -93,7 +101,7 @@ Santa zit in Santa's Cottage in de Carousel Barn, volgens de evenementbeschrijvi
 
 [Thunderation](ref:silver-dollar-city/thunderation), de achtbaan van Arrow Dynamics uit 1993, rijdt in 2026 zijn laatste seizoen, voor het laatst op 2 januari 2027. De houten achtbaan [Outlaw Run](ref:silver-dollar-city/outlaw-run), de spinning coaster [Time Traveler](ref:silver-dollar-city/time-traveler), WildFire, PowderKeg en de [Marvel Cave](ref:silver-dollar-city/marvel-cave) zijn tot 2 januari open.
 
-Elke buitenachtbaan heeft zijn eigen temperatuurgrens. Uitgerekend Thunderation, de oudste van de drie, houdt het vol tot 32 graden Fahrenheit (0 °C). Outlaw Run sluit al bij 34 °F (1 °C) en start pas weer vanaf 37 °F (bijna 3 °C), Time Traveler sluit bij 41 °F (5 °C). [Fire In The Hole](ref:silver-dollar-city/new-fire-in-the-hole) rijdt binnen en staat niet op de temperatuurlijst. Moet je je bezoek door het weer inkorten, dan krijg je bij de kassa een gratis ticket voor een andere openingsdag in het lopende seizoen.
+Bij kou houdt uitgerekend de oudste van Thunderation, Outlaw Run en Time Traveler het langst vol. Thunderation rijdt tot 32 graden Fahrenheit (0 °C). Outlaw Run sluit al bij 34 °F (1 °C) en start pas weer vanaf 37 °F (bijna 3 °C), Time Traveler sluit bij 41 °F (5 °C). [Fire In The Hole](ref:silver-dollar-city/new-fire-in-the-hole) rijdt binnen en staat niet op de temperatuurlijst. Moet je je bezoek door het weer inkorten, dan krijg je bij de kassa een gratis ticket voor een andere openingsdag in het lopende seizoen.
 
 ```ride-waits-widget park=silver-dollar-city top=8 columns=peak,days
 

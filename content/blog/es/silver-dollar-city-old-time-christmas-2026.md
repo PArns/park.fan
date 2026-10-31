@@ -48,7 +48,7 @@ El comunicado no aclara si «el doble de largo» se refiere a la duración o a l
 
 Las carrozas las construyó River City Scenic en una nave cerca de Cincinnati. La música es de Mike Avila, que ha trabajado en una veintena de grandes desfiles, entre ellos para Disney, el Macy's Thanksgiving Day Parade y el Rose Bowl Parade.
 
-El desfile sale dos veces cada día de apertura, a las 18:00 y a las 20:00, hora local. Hasta 2025 ocupaba su lugar la Rudolph's Holly Jolly Christmas Light Parade, y entonces la temporada iba del 1 de noviembre al 4 de enero.
+El desfile sale dos veces cada día de apertura, a las 18:00 y a las 20:00, hora local. Hasta 2025 ocupaba su lugar la Rudolph's Holly Jolly Christmas Light Parade. Entonces la temporada empezaba ya el 1 de noviembre y duraba hasta el 4 de enero; este año es ocho días más corta.
 
 ## Días y horarios de apertura
 
@@ -58,7 +58,7 @@ Durante el evento el parque abre 44 días. Hasta mediados de diciembre cierra ca
 - 1, 2, 8, 9, 15 y 16 de diciembre
 - 24 y 25 de diciembre
 
-Los sábados y el viernes siguiente a Acción de Gracias, el 27 de noviembre, abre de 11:00 a 22:00. El resto de días suele abrir a las 13:00 y cerrar a las 21:00, salvo los viernes 4, 11 y 18 de diciembre y el día de Año Nuevo, cuando cierra a las 22:00. El propio día de Acción de Gracias, el 26 de noviembre, el horario es de 16:00 a 22:00. El desayuno desde las 8:30 solo se ofrece de marzo a octubre.
+Los sábados y el viernes siguiente a Acción de Gracias, el 27 de noviembre, abre de 11:00 a 22:00. El resto de días suele abrir a las 13:00 y cerrar a las 21:00, salvo los viernes 4, 11 y 18 de diciembre y el día de Año Nuevo, cuando cierra a las 22:00. El propio día de Acción de Gracias, el 26 de noviembre, el horario es de 16:00 a 22:00.
 
 Según el parque, los sábados de noviembre y diciembre suelen estar muy llenos, sobre todo si el tiempo acompaña.
 
@@ -68,7 +68,7 @@ Según el parque, los sábados de noviembre y diciembre suelen estar muy llenos,
 
 ## Qué incluye la entrada y qué se paga aparte
 
-La entrada de un día cuesta 95 dólares más impuestos y vale para cualquier día de apertura hasta el 2 de enero. Comprando en línea con al menos 24 horas de antelación, algunos días sale desde 79 dólares, y un segundo día dentro de los cinco días de apertura siguientes cuesta 20 dólares más. Los niños de hasta tres años entran gratis; los precios para niños de cuatro a once años y para mayores de 65 solo aparecen durante la compra. Los cuatro Merry Mondays, el 9, 16, 23 y 30 de noviembre, la entrada en línea cuesta 79 dólares.
+La entrada de un día cuesta 95 dólares más impuestos y vale para cualquier día de apertura hasta el 2 de enero. Comprando en línea con al menos 24 horas de antelación, algunos días sale más barata, y el precio más bajo, 79 dólares, es el de los cuatro Merry Mondays (9, 16, 23 y 30 de noviembre). Un segundo día dentro de los cinco días de apertura siguientes cuesta 20 dólares más. Los niños de hasta tres años entran gratis; los precios para niños de cuatro a once años y para mayores de 65 solo aparecen durante la compra.
 
 Hasta el 2 de noviembre el parque vende el Silver Season Passport 2027 por 119,99 dólares en lugar de 174,99. Vale desde el inicio de temporada, el 12 de marzo de 2027, y quien lo compra por primera vez consigue para la Navidad de 2026 una entrada de un día por 47,50 dólares, excepto los sábados y el 22 de noviembre.
 
@@ -85,7 +85,15 @@ La mayoría de los asientos de los espectáculos siguen sin coste: se sienta qui
 
 En el parque cuelgan más de 6,5 millones de luces, 1,5 millones solo en Christmas in Midtown. Un equipo de nueve personas empieza a colocarlas cada año el 1 de julio, una fecha en la que en Branson nadie piensa en guirnaldas por gusto. En The Plaza se alza el Grand Fir, un abeto de Shasta vivo traído de Oregón, de 54 pies de alto (unos 16 metros). Se enciende a las 17:15, a las 18:30 y a las 19:30, en una ceremonia de 20 minutos. En Joy On Town Square, un árbol de ocho pisos de altura ofrece un espectáculo de luz y música cada 15 minutos.
 
-A Dickens' Christmas Carol cumple su 25.ª temporada: 60 minutos con banda en directo en el Opera House, normalmente a las 13:30, a las 15:30 y a las 17:30. Hay audiodescripción para personas ciegas o con baja visión. En el Red Gold Heritage Hall, Heart of Christmas cambia de invitados: Lindley Creek hasta el 27 de noviembre y el 3 de diciembre, Jeff & Sheri Easter del 28 al 30 de noviembre, el Triumphant Quartet del 4 al 7 de diciembre, The Isaacs del 10 al 14 de diciembre y Rhonda Vincent del 17 de diciembre hasta el final. La Living Nativity del Dockside Theater dura 15 minutos y se representa cinco veces al día, cuatro el Día de Acción de Gracias.
+A Dickens' Christmas Carol cumple su 25.ª temporada: 60 minutos con banda en directo en el Opera House, normalmente a las 13:30, a las 15:30 y a las 17:30. Hay audiodescripción para personas ciegas o con baja visión. La Living Nativity del Dockside Theater dura 15 minutos y se representa cinco veces al día, cuatro el Día de Acción de Gracias.
+
+En el Red Gold Heritage Hall, Heart of Christmas cambia de invitado. Quien quiera ver a un grupo concreto, que elija la fecha según esto:
+
+- Lindley Creek: hasta el 27 de noviembre y el 3 de diciembre
+- Jeff & Sheri Easter: del 28 al 30 de noviembre
+- Triumphant Quartet: del 4 al 7 de diciembre
+- The Isaacs: del 10 al 14 de diciembre
+- Rhonda Vincent: desde el 17 de diciembre
 
 Santa recibe en Santa's Cottage, dentro del Carousel Barn, hasta el 23 de diciembre según la descripción del evento; a partir de ahí, como todo el mundo sabe, tiene otro compromiso. El Frisco Sing-Along Steam Train no aparece en el calendario navideño del parque, y su propia página da la temporada por terminada el 31 de octubre. Aun así, el comunicado lo presenta como tradición navideña.
 
@@ -93,7 +101,7 @@ Santa recibe en Santa's Cottage, dentro del Carousel Barn, hasta el 23 de diciem
 
 [Thunderation](ref:silver-dollar-city/thunderation), la montaña rusa de Arrow Dynamics de 1993, vive en 2026 su última temporada y funcionará por última vez el 2 de enero de 2027. La montaña rusa de madera [Outlaw Run](ref:silver-dollar-city/outlaw-run), la giratoria [Time Traveler](ref:silver-dollar-city/time-traveler), WildFire, PowderKeg y la [Marvel Cave](ref:silver-dollar-city/marvel-cave) siguen abiertas hasta el 2 de enero.
 
-Cada montaña rusa al aire libre tiene su propio límite de temperatura. Precisamente Thunderation, la más antigua de las tres, resiste hasta los 32 °F (0 °C). Outlaw Run cierra ya a 34 °F (1 °C) y no vuelve a arrancar hasta los 37 °F (casi 3 °C), y Time Traveler cierra a 41 °F (5 °C). [Fire In The Hole](ref:silver-dollar-city/new-fire-in-the-hole) va bajo techo y no figura en la lista de temperaturas. Si el tiempo te obliga a acortar la visita, en taquilla te dan gratis una entrada para otro día de apertura de la temporada en curso.
+Con frío, precisamente la más antigua de Thunderation, Outlaw Run y Time Traveler es la que más aguanta. Thunderation funciona hasta los 32 °F (0 °C). Outlaw Run cierra ya a 34 °F (1 °C) y no vuelve a arrancar hasta los 37 °F (casi 3 °C), y Time Traveler cierra a 41 °F (5 °C). [Fire In The Hole](ref:silver-dollar-city/new-fire-in-the-hole) va bajo techo y no figura en la lista de temperaturas. Si el tiempo te obliga a acortar la visita, en taquilla te dan gratis una entrada para otro día de apertura de la temporada en curso.
 
 ```ride-waits-widget park=silver-dollar-city top=8 columns=peak,days
 

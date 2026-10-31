@@ -48,7 +48,7 @@ Ob „doppelt so lang“ die Dauer meint oder die Länge des Zugs, lässt die Mi
 
 Die Wagen hat River City Scenic in einer Halle bei Cincinnati gebaut. Die Musik schrieb Mike Avila, der an rund 20 großen Paraden mitgearbeitet hat, darunter für Disney, die Macy's Thanksgiving Day Parade und die Rose Bowl Parade.
 
-Die Parade startet an jedem Betriebstag zweimal, um 18 und um 20 Uhr Ortszeit. Bis 2025 fuhr an ihrer Stelle Rudolph's Holly Jolly Christmas Light Parade. Damals begann das Event schon am 1. November und lief bis zum 4. Januar, in diesem Jahr ist es acht Tage kürzer.
+Die Parade startet an jedem Betriebstag zweimal, um 18 und um 20 Uhr Ortszeit. Bis 2025 fuhr an ihrer Stelle Rudolph's Holly Jolly Christmas Light Parade. Damals ging es schon am 1. November los und lief bis zum 4. Januar. In diesem Jahr bleibt der Park vom 1. bis zum 6. November zu.
 
 ## Betriebstage und Öffnungszeiten
 
@@ -95,13 +95,13 @@ In der Red Gold Heritage Hall wechselt bei Heart of Christmas der Gast. Wer eine
 - The Isaacs: 10. bis 14. Dezember
 - Rhonda Vincent: ab 17. Dezember
 
-Santa sitzt in Santa's Cottage in der Carousel Barn, laut Eventbeschreibung bis zum 23. Dezember, danach hat er bekanntlich einen anderen Termin. Der Frisco Sing-Along Steam Train fehlt im Weihnachtskalender des Parks, seine Saison endet nach seiner eigenen Seite am 31. Oktober. Die Pressemitteilung führt ihn trotzdem als Weihnachtstradition.
+Santa sitzt in Santa's Cottage in der Carousel Barn, laut Eventbeschreibung bis zum 23. Dezember, danach hat er bekanntlich einen anderen Termin. Der Frisco Sing-Along Steam Train fehlt im Weihnachtskalender des Parks, seine Saison endet nach seiner eigenen Seite am 31. Oktober. Die Pressemitteilung führt ihn trotzdem als Weihnachtstradition. Ich würde erst mit ihm rechnen, wenn er im Kalender steht.
 
 ## Welche Bahnen im Winter fahren
 
-[Thunderation](ref:silver-dollar-city/thunderation), die Achterbahn von Arrow Dynamics aus dem Jahr 1993, fährt 2026 ihre letzte Saison, ihr letzter Fahrtag ist der 2. Januar 2027. Die Holzachterbahn [Outlaw Run](ref:silver-dollar-city/outlaw-run), der Spinning Coaster [Time Traveler](ref:silver-dollar-city/time-traveler), WildFire, PowderKeg und die [Marvel Cave](ref:silver-dollar-city/marvel-cave) sind bis zum 2. Januar in Betrieb.
+[Thunderation](ref:silver-dollar-city/thunderation), die Achterbahn von Arrow Dynamics aus dem Jahr 1993, fährt 2026 ihre letzte Saison, ihr letzter Fahrtag ist der 2. Januar 2027. Die Holzachterbahn [Outlaw Run](ref:silver-dollar-city/outlaw-run), der Spinning Coaster [Time Traveler](ref:silver-dollar-city/time-traveler), WildFire, PowderKeg und die [Marvel Cave](ref:silver-dollar-city/marvel-cave) fahren bis zum letzten Eventtag.
 
-Bei Kälte hält von Thunderation, Outlaw Run und Time Traveler ausgerechnet die älteste am längsten durch. Thunderation fährt bis 32 Grad Fahrenheit (0 °C). Outlaw Run schließt schon bei 34 °F (1 °C) und startet erst ab 37 °F (knapp 3 °C) wieder, Time Traveler schließt bei 41 °F (5 °C). [Fire In The Hole](ref:silver-dollar-city/new-fire-in-the-hole) fährt in einem Gebäude und steht auf der Temperaturliste nicht. Muss ein Besuch wegen des Wetters kürzer ausfallen, gibt es am Ticketschalter ein kostenloses Ticket für einen weiteren Betriebstag der laufenden Saison.
+Bei Kälte hält ausgerechnet Thunderation am längsten durch, sie fährt bis 32 Grad Fahrenheit (0 °C). Outlaw Run schließt schon bei 34 °F (1 °C) und startet erst ab 37 °F (knapp 3 °C) wieder, Time Traveler schließt bei 41 °F (5 °C). [Fire In The Hole](ref:silver-dollar-city/new-fire-in-the-hole) fährt in einem Gebäude und steht auf der Temperaturliste nicht. Muss ein Besuch wegen des Wetters kürzer ausfallen, gibt es am Ticketschalter ein kostenloses Ticket für einen weiteren Betriebstag der laufenden Saison.
 
 ```ride-waits-widget park=silver-dollar-city top=8 columns=peak,days
 

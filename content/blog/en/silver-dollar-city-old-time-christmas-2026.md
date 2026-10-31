@@ -45,13 +45,13 @@ An Old Time Christmas starts at [Silver Dollar City](ref:silver-dollar-city) in 
 
 ## The new parade
 
-A vintage car carrying the Grand Marshal leads the way. Rudolph and his friends follow, and Yukon Cornelius and the Misfit Toys are new this year. In the "Home for the Holidays" scene a horse-drawn sleigh rolls past with carolers on board, while children dressed as Christmas ornaments walk alongside. At the North Pole, elves collect letters to Santa, so if you've brought yours you can hand it over from the curb, and Mrs. Claus shakes sprinkles out of a shaker. Santa and his reindeer fly above the crowd. Trumpeters, a choir and an illuminated nativity float close it out.
+A vintage car carrying the Grand Marshal leads the way. Rudolph and his friends follow, and Yukon Cornelius and the Misfit Toys are new this year. In the "Home for the Holidays" scene a horse-drawn sleigh rolls past with carolers on board, while children dressed as Christmas ornaments walk alongside. At the North Pole, elves collect letters to Santa, so if you've brought yours you can hand it over from the curb. Mrs. Claus rides along with a sugar shaker. Santa and his reindeer fly above the crowd. Trumpeters, a choir and an illuminated nativity float close it out.
 
 The announcement leaves open whether "twice as long" means running time or the length of the procession. The park hasn't published a route, only the two VIP areas: "North Pole" at the Grand Exposition Garden Pavilion and "South Pole" at the Red Gold Courtyard.
 
 River City Scenic built the floats in a warehouse near Cincinnati. The music is by Mike Avila, who has worked on about 20 major parades, among them shows for Disney, the Macy's Thanksgiving Day Parade and the Rose Parade.
 
-The parade steps off twice on every operating day, at 6 pm and 8 pm local time. Up to 2025 its slot belonged to Rudolph's Holly Jolly Christmas Light Parade. The event started earlier back then, running from November 1 to January 4, eight days longer than this year.
+The parade steps off twice on every operating day, at 6 pm and 8 pm local time. Up to 2025 its slot belonged to Rudolph's Holly Jolly Christmas Light Parade. Back then it started on November 1 and ran until January 4. This year the park stays closed from November 1 to 6.
 
 ## Operating days and hours
 
@@ -98,13 +98,13 @@ Heart of Christmas in Red Gold Heritage Hall changes its guest act through the s
 - The Isaacs: December 10 to 14
 - Rhonda Vincent: from December 17
 
-Santa receives visitors in Santa's Cottage in the Carousel Barn, through December 23 according to the event listing; after that, as everyone knows, he's booked elsewhere. The Frisco Sing-Along Steam Train isn't on the park's Christmas calendar, and its own page has the season ending on October 31. The press release still lists it as a Christmas tradition.
+Santa receives visitors in Santa's Cottage in the Carousel Barn, through December 23 according to the event listing; after that, as everyone knows, he's booked elsewhere. The Frisco Sing-Along Steam Train isn't on the park's Christmas calendar, and its own page has the season ending on October 31. The press release still lists it as a Christmas tradition. I wouldn't count on it until it shows up on the calendar.
 
 ## Which rides run in winter
 
-[Thunderation](ref:silver-dollar-city/thunderation), the 1993 Arrow Dynamics coaster, is in its final season in 2026 and runs for the last time on January 2, 2027. The wooden coaster [Outlaw Run](ref:silver-dollar-city/outlaw-run), the spinning coaster [Time Traveler](ref:silver-dollar-city/time-traveler), WildFire, PowderKeg and [Marvel Cave](ref:silver-dollar-city/marvel-cave) all operate through January 2.
+[Thunderation](ref:silver-dollar-city/thunderation), the 1993 Arrow Dynamics coaster, is in its final season in 2026 and runs for the last time on January 2, 2027. The wooden coaster [Outlaw Run](ref:silver-dollar-city/outlaw-run), the spinning coaster [Time Traveler](ref:silver-dollar-city/time-traveler), WildFire, PowderKeg and [Marvel Cave](ref:silver-dollar-city/marvel-cave) all run until the last day of the event.
 
-In the cold, the oldest of Thunderation, Outlaw Run and Time Traveler holds out longest. Thunderation keeps running down to 32°F (0°C). Outlaw Run closes at 34°F (1°C) and doesn't start again until 37°F (just under 3°C), and Time Traveler closes at 41°F (5°C). [Fire In The Hole](ref:silver-dollar-city/new-fire-in-the-hole) is indoors and isn't on the temperature list. If the weather cuts your visit short, the ticket window hands out a free ticket for another operating day in the current season.
+In the cold, Thunderation of all rides holds out longest and keeps running down to 32°F (0°C). Outlaw Run closes at 34°F (1°C) and doesn't start again until 37°F (just under 3°C), and Time Traveler closes at 41°F (5°C). [Fire In The Hole](ref:silver-dollar-city/new-fire-in-the-hole) is indoors and isn't on the temperature list. If the weather cuts your visit short, the ticket window hands out a free ticket for another operating day in the current season.
 
 ```ride-waits-widget park=silver-dollar-city top=8 columns=peak,days
 

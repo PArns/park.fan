@@ -48,7 +48,7 @@ Il comunicato non chiarisce se «lunga il doppio» si riferisca alla durata o al
 
 I carri li ha costruiti River City Scenic in un capannone vicino a Cincinnati. La musica è di Mike Avila, che ha lavorato a una ventina di grandi parate, tra cui quelle per Disney, la Macy's Thanksgiving Day Parade e la Rose Bowl Parade.
 
-Ogni giorno di apertura la parata parte due volte, alle 18 e alle 20 ora locale. Fino al 2025 al suo posto c'era la Rudolph's Holly Jolly Christmas Light Parade, e l'evento allora durava dal 1° novembre al 4 gennaio.
+Ogni giorno di apertura la parata parte due volte, alle 18 e alle 20 ora locale. Fino al 2025 al suo posto c'era la Rudolph's Holly Jolly Christmas Light Parade. Allora l'evento cominciava già il 1° novembre e durava fino al 4 gennaio; quest'anno dura otto giorni in meno.
 
 ## Giorni e orari di apertura
 
@@ -58,7 +58,7 @@ Durante l'evento il parco è aperto 44 giorni. Fino a metà dicembre resta chius
 - 1, 2, 8, 9, 15 e 16 dicembre
 - 24 e 25 dicembre
 
-Il sabato e il venerdì dopo il Ringraziamento, il 27 novembre, si entra dalle 11 alle 22. Negli altri giorni il parco di solito apre alle 13 e chiude alle 21; i venerdì 4, 11 e 18 dicembre e a Capodanno chiude invece alle 22. Il giorno del Ringraziamento, il 26 novembre, l'orario è dalle 16 alle 22. La colazione dalle 8:30 c'è solo da marzo a ottobre.
+Il sabato e il venerdì dopo il Ringraziamento, il 27 novembre, si entra dalle 11 alle 22. Negli altri giorni il parco di solito apre alle 13 e chiude alle 21; i venerdì 4, 11 e 18 dicembre e a Capodanno chiude invece alle 22. Il giorno del Ringraziamento, il 26 novembre, l'orario è dalle 16 alle 22.
 
 Secondo il parco, i sabati di novembre e dicembre sono spesso molto affollati, soprattutto quando il clima è mite.
 
@@ -68,7 +68,7 @@ Secondo il parco, i sabati di novembre e dicembre sono spesso molto affollati, s
 
 ## Cosa comprende il biglietto e cosa si paga a parte
 
-Il biglietto giornaliero costa 95 dollari più tasse e vale in qualsiasi giorno di apertura fino al 2 gennaio. Chi compra online con almeno 24 ore di anticipo, in alcuni giorni, paga a partire da 79 dollari, e un secondo giorno entro cinque giorni di apertura costa 20 dollari in più. I bambini fino a tre anni entrano gratis; i prezzi per i bambini dai quattro agli undici anni e per chi ha più di 65 anni compaiono solo durante l'acquisto. Nei quattro Merry Mondays, il 9, 16, 23 e 30 novembre, il biglietto online costa 79 dollari.
+Il biglietto giornaliero costa 95 dollari più tasse e vale in qualsiasi giorno di apertura fino al 2 gennaio. Chi compra online con almeno 24 ore di anticipo in alcuni giorni paga meno, e il prezzo più basso, 79 dollari, è quello dei quattro Merry Mondays (9, 16, 23 e 30 novembre). Un secondo giorno entro cinque giorni di apertura costa 20 dollari in più. I bambini fino a tre anni entrano gratis; i prezzi per i bambini dai quattro agli undici anni e per chi ha più di 65 anni compaiono solo durante l'acquisto.
 
 Fino al 2 novembre il parco vende il Silver Season Passport 2027 a 119,99 dollari invece di 174,99. Vale dall'inizio della stagione, il 12 marzo 2027, e chi lo compra per la prima volta ha diritto a un biglietto giornaliero per la stagione di Natale 2026 a 47,50 dollari, esclusi i sabati e il 22 novembre.
 
@@ -85,7 +85,15 @@ Negli spettacoli la maggior parte dei posti resta gratuita: chi arriva prima si 
 
 Nel parco sono appese più di 6,5 milioni di luci, 1,5 milioni solo in Christmas in Midtown. Una squadra di nove persone comincia a montarle ogni anno il 1° luglio, quando a Branson l'ultima cosa a cui si pensa sono le lucine. Su The Plaza c'è il Grand Fir, un abete di Shasta vivo arrivato dall'Oregon, alto 54 piedi (circa 16 metri). Si accende alle 17:15, alle 18:30 e alle 19:30 con una cerimonia di 20 minuti. Al Joy On Town Square, su un albero alto otto piani, ogni 15 minuti parte uno spettacolo di luci e musica.
 
-A Dickens' Christmas Carol va in scena per la venticinquesima volta: 60 minuti con band dal vivo nell'Opera House, di solito alle 13:30, alle 15:30 e alle 17:30. Per gli ospiti ciechi e ipovedenti c'è l'audiodescrizione. Nella Red Gold Heritage Hall, a Heart of Christmas, gli ospiti cambiano: Lindley Creek fino al 27 novembre e il 3 dicembre, Jeff & Sheri Easter dal 28 al 30 novembre, il Triumphant Quartet dal 4 al 7 dicembre, The Isaacs dal 10 al 14 dicembre e Rhonda Vincent dal 17 dicembre fino alla fine. La Living Nativity al Dockside Theater dura 15 minuti e va in scena cinque volte al giorno, quattro nel giorno del Ringraziamento.
+A Dickens' Christmas Carol va in scena per la venticinquesima volta: 60 minuti con band dal vivo nell'Opera House, di solito alle 13:30, alle 15:30 e alle 17:30. Per gli ospiti ciechi e ipovedenti c'è l'audiodescrizione. La Living Nativity al Dockside Theater dura 15 minuti e va in scena cinque volte al giorno, quattro nel giorno del Ringraziamento.
+
+Nella Red Gold Heritage Hall, a Heart of Christmas l'ospite cambia. Chi vuole vedere un gruppo in particolare sceglie la data in base a questo:
+
+- Lindley Creek: fino al 27 novembre e il 3 dicembre
+- Jeff & Sheri Easter: dal 28 al 30 novembre
+- Triumphant Quartet: dal 4 al 7 dicembre
+- The Isaacs: dal 10 al 14 dicembre
+- Rhonda Vincent: dal 17 dicembre
 
 Babbo Natale riceve nella Santa's Cottage, dentro la Carousel Barn, fino al 23 dicembre secondo la descrizione dell'evento: poi, come si sa, ha un altro giro da fare. Il Frisco Sing-Along Steam Train non compare nel calendario natalizio del parco, e sulla sua pagina la stagione finisce il 31 ottobre. Il comunicato lo cita comunque tra le tradizioni di Natale.
 
@@ -93,7 +101,7 @@ Babbo Natale riceve nella Santa's Cottage, dentro la Carousel Barn, fino al 23 d
 
 [Thunderation](ref:silver-dollar-city/thunderation), le montagne russe di Arrow Dynamics del 1993, nel 2026 fa la sua ultima stagione e corre per l'ultima volta il 2 gennaio 2027. Le montagne russe in legno [Outlaw Run](ref:silver-dollar-city/outlaw-run), lo spinning coaster [Time Traveler](ref:silver-dollar-city/time-traveler), WildFire, PowderKeg e la [Marvel Cave](ref:silver-dollar-city/marvel-cave) restano aperti fino al 2 gennaio.
 
-Ogni montagna russa all'aperto ha un suo limite di temperatura. Proprio Thunderation, la più vecchia delle tre, resiste fino a 32 °F (0 °C). Outlaw Run chiude già a 34 °F (1 °C) e riparte solo da 37 °F (quasi 3 °C), Time Traveler chiude a 41 °F (5 °C). [Fire In The Hole](ref:silver-dollar-city/new-fire-in-the-hole) è al coperto e nell'elenco delle temperature non c'è. Se per colpa del meteo la visita si accorcia, alla biglietteria si riceve gratis un biglietto per un altro giorno di apertura della stagione in corso.
+Con il freddo, tra Thunderation, Outlaw Run e Time Traveler è proprio la più vecchia a resistere più a lungo. Thunderation funziona fino a 32 °F (0 °C). Outlaw Run chiude già a 34 °F (1 °C) e riparte solo da 37 °F (quasi 3 °C), Time Traveler chiude a 41 °F (5 °C). [Fire In The Hole](ref:silver-dollar-city/new-fire-in-the-hole) è al coperto e nell'elenco delle temperature non c'è. Se per colpa del meteo la visita si accorcia, alla biglietteria si riceve gratis un biglietto per un altro giorno di apertura della stagione in corso.
 
 ```ride-waits-widget park=silver-dollar-city top=8 columns=peak,days
 
