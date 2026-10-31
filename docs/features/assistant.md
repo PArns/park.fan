@@ -99,15 +99,31 @@ do (the closed button, the open window between answers) it has a life of its own
 store for the whole page, `parkyBoredom` (`lib/assistant/parky-boredom.ts`). Activity is a pointer
 move or press, a key, the mouse wheel or a touch.
 
-| Stage    | Quiet for | What Parky does                                                                                 |
-| -------- | --------- | ----------------------------------------------------------------------------------------------- |
-| `awake`  | < 25 s    | every 15–25 s: hops, tilts, looks around, spins its hat, winks or wiggles                       |
-| `bored`  | 25 s      | yawns, then every 6–10 s whistles, blows a gum bubble that pops, rolls its eyes or looks around |
-| `asleep` | 75 s      | eyes fall shut, it breathes slowly under rising Zs, the hat stops; activity wakes it with a "!" |
+| Stage    | Quiet for | What Parky does                                                                                                |
+| -------- | --------- | -------------------------------------------------------------------------------------------------------------- |
+| `awake`  | < 25 s    | every 12–20 s: hops, tilts, looks around, spins its hat, winks, wiggles, rolls its eyes, twirls, dances, reads |
+| `bored`  | 25 s      | yawns, then every 5–9 s whistles, blows a gum bubble that pops, rolls its eyes, looks around, reads or naps    |
+| `asleep` | 75 s      | eyes fall shut, it breathes slowly under rising Zs, the hat stops; activity wakes it with a "!"                |
 
 The store keeps one timer for the next stage, so a moving pointer costs a timestamp. Each act's
 length is written once, in `ACT_MS`; the stylesheet reads it as `--parky-act`. Under reduced
 motion the store answers `null` and Parky only shows its moods.
+
+## What Parky says
+
+`AssistantTeaser` draws a speech bubble beside the closed button, its tail on Parky's mouth: the
+bubble's right edge and bottom are reckoned from the button's size (56 px, 64 px from `sm`) and
+its corner offset. Two kinds of line go in it, from the `assistant` namespace:
+
+- **Invitations** (`teaser1`–`teaser9`): 8 s after the button shows and again 90 s after that, at
+  most two a session (`TEASER_SCHEDULE_MS`). One that falls due over another line or while Parky
+  sleeps tries again 5 s later.
+- **Reactions**, read from the same `parkyBoredom`: a bored line (`teaserBored1`–`4`) after the
+  first yawn, a woken line (`teaserWoke1`–`3`) once somebody wakes Parky. At most
+  `REACTIONS_PER_SESSION` (3).
+
+Every line stays 7 s. Closing one by hand, or opening Parky, ends both kinds for the session
+(`stopTeasers`, `lib/assistant/teaser-store.ts`).
 
 ## Tracking
 

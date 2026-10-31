@@ -387,8 +387,8 @@
  * Parky's face (`components/assistant/parky-logo.tsx`): a blink every few seconds, the Ferris-wheel
  * hat turning while it writes, the mouth talking, and the closed button bobbing gently. The idle
  * acts last `--parky-act`, which the component sets from its own table, so a length lives there
- * only. Bored, Parky yawns, whistles, blows gum and rolls its eyes; asleep it breathes slowly under
- * rising Zs, and the hat stands still.
+ * only. With company Parky also twirls, dances and reads; bored, it yawns, whistles, blows gum,
+ * rolls its eyes and naps; asleep it breathes slowly under rising Zs, and the hat stands still.
  */
 @keyframes parky-blink {
   0%,
@@ -842,6 +842,122 @@
     transform: scale(1);
   }
 }
+/* The pirouette: a crouch, a jump with a full turn, a landing. One list of functions in every frame,
+   so the turn is interpolated as a turn. */
+@keyframes parky-twirl {
+  0% {
+    transform: translateY(0) rotate(0deg) scale(1, 1);
+  }
+  15% {
+    transform: translateY(1.5px) rotate(0deg) scale(1.06, 0.94);
+  }
+  30% {
+    transform: translateY(-7px) rotate(0deg) scale(0.96, 1.04);
+  }
+  65% {
+    transform: translateY(-6px) rotate(360deg) scale(1, 1);
+  }
+  82% {
+    transform: translateY(0) rotate(360deg) scale(1.05, 0.95);
+  }
+  100% {
+    transform: translateY(0) rotate(360deg) scale(1, 1);
+  }
+}
+@keyframes parky-dance {
+  0%,
+  25%,
+  50%,
+  75%,
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  12.5%,
+  62.5% {
+    transform: translate(-2px, -3px) rotate(-8deg);
+  }
+  37.5%,
+  87.5% {
+    transform: translate(2px, -3px) rotate(8deg);
+  }
+}
+/* Reading for fun: the book rises in front of the mouth and sinks away again. */
+@keyframes parky-book-in {
+  0% {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  12%,
+  88% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+}
+/* A nap: the eyes close and cross-fade with the shut ones, a few breaths, then a jolt awake. */
+@keyframes parky-nap {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg) scale(1, 1);
+  }
+  15%,
+  50%,
+  80% {
+    transform: translateY(1px) rotate(-5deg) scale(1, 1);
+  }
+  32%,
+  65% {
+    transform: translateY(0.4px) rotate(-5deg) scale(1.035, 1.02);
+  }
+  88% {
+    transform: translateY(-3px) rotate(3deg) scale(1, 1);
+  }
+  94% {
+    transform: translateY(0) rotate(-2deg) scale(1, 1);
+  }
+}
+@keyframes parky-nap-eyes {
+  0% {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+  14% {
+    opacity: 1;
+    transform: scaleY(0.1);
+  }
+  18%,
+  82% {
+    opacity: 0;
+    transform: scaleY(0.1);
+  }
+  86% {
+    opacity: 1;
+    transform: scaleY(0.1);
+  }
+  93% {
+    opacity: 1;
+    transform: scaleY(1.15);
+  }
+  100% {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+}
+@keyframes parky-nap-shut {
+  0%,
+  14%,
+  86%,
+  100% {
+    opacity: 0;
+  }
+  18%,
+  82% {
+    opacity: 1;
+  }
+}
 @keyframes parky-ponder {
   0%,
   100% {
@@ -950,6 +1066,10 @@
   transform-box: fill-box;
   transform-origin: center;
   opacity: 0;
+}
+.parky-book {
+  transform-box: fill-box;
+  transform-origin: center;
 }
 @media (prefers-reduced-motion: no-preference) {
   .parky-eyes {
@@ -1063,6 +1183,40 @@
   .parky-zzz path:nth-child(3) {
     animation-delay: 2s;
   }
+  /* In a nap each Z rises once and is gone before Parky jolts awake. */
+  .parky-zzz--nap path {
+    animation: parky-z calc(var(--parky-act) * 0.4) ease-out calc(var(--parky-act) * 0.2) both;
+  }
+  .parky-zzz--nap path:nth-child(2) {
+    animation-delay: calc(var(--parky-act) * 0.33);
+  }
+  .parky-zzz--nap path:nth-child(3) {
+    animation-delay: calc(var(--parky-act) * 0.46);
+  }
+  .parky-gaze {
+    transition: transform 0.15s ease-out;
+  }
+  .parky-act-twirl {
+    animation: parky-twirl var(--parky-act) ease-in-out;
+  }
+  .parky-act-dance {
+    animation: parky-dance var(--parky-act) ease-in-out;
+  }
+  .parky-act-read .parky-book {
+    animation: parky-book-in var(--parky-act) ease-out both;
+  }
+  .parky-act-nap {
+    animation: parky-nap var(--parky-act) ease-in-out;
+  }
+  .parky-act-nap .parky-eyes {
+    animation: parky-nap-eyes var(--parky-act) ease-in-out both;
+  }
+  .parky-act-nap .parky-shut {
+    animation: parky-nap-shut var(--parky-act) ease-in-out both;
+  }
+  .parky-act-nap .parky-wheel {
+    animation-play-state: paused;
+  }
   .parky-act-startle {
     animation: parky-startle var(--parky-act) ease-out;
   }
@@ -1075,7 +1229,8 @@
   .parky-mood-thinking {
     animation: parky-ponder 2.4s ease-in-out infinite;
   }
-  .parky-mood-looking .parky-pupils {
+  .parky-mood-looking .parky-pupils,
+  .parky-act-read .parky-pupils {
     animation: parky-scan 1.4s ease-in-out infinite;
   }
   .parky-page {

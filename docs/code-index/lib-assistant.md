@@ -47,8 +47,11 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `teasersShown` _function_: How many teaser lines this session has shown; "all of them" where storage is blocked.
 - `setTeasersShown` _function_: Records the lines shown; `stopTeasers` ends them for the session (opened, or closed by hand).
-- `stopTeasers` _function_: No more lines this session: Parky was opened, or a line was closed.
+- `reactionsShown` _function_: How many bored or woken lines this session has shown; "all of them" where storage is blocked.
+- `countReaction` _function_: Records one more bored or woken line.
+- `stopTeasers` _function_: No more lines this session, invitations and reactions alike: Parky was opened, or a line was closed.
 - `TEASER_SCHEDULE_MS` _const_: Two lines a session at most: one after a short look around, one a good while later.
+- `REACTIONS_PER_SESSION` _const_: Lines Parky says when it gets bored or is woken up, at most this many a session.
 
 ### [`use-assistant-chat.ts`](../../lib/assistant/use-assistant-chat.ts)
 
@@ -61,6 +64,10 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `useAssistantSession` _hook_: Parky's challenge-response from the browser's side: a solved Turnstile token is traded at the API for a session token, which every chat, rating and feedback carries.
 - Types: `AssistantSessionState`
+
+### [`use-parky-boredom.ts`](../../lib/assistant/use-parky-boredom.ts)
+
+- `useParkyBoredom` _hook_: How bored Parky is, from the page-wide `parkyBoredom`; `null` while `enabled` is false, on the server and under reduced motion, so a disabled reader takes no subscription.
 
 ### [`use-smooth-text.ts`](../../lib/assistant/use-smooth-text.ts)
 

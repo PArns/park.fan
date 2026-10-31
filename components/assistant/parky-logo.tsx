@@ -1,8 +1,9 @@
 'use client';
 
-import { useEffect, useId, useRef, useState, useSyncExternalStore } from 'react';
+import { useEffect, useId, useRef, useState } from 'react';
 import { cn } from '@/lib/utils';
-import { parkyBoredom, type ParkyBoredom } from '@/lib/assistant/parky-boredom';
+import { parkyBoredom } from '@/lib/assistant/parky-boredom';
+import { useParkyBoredom } from '@/lib/assistant/use-parky-boredom';
 
 /**
  * Parky's little acts and how long each runs. The stylesheet reads the length as `--parky-act`,
@@ -19,20 +20,24 @@ const ACT_MS = {
   whistle: 3200,
   gum: 3400,
   roll: 1600,
+  twirl: 1400,
+  dance: 2400,
+  read: 4200,
+  nap: 5000,
   doze: 2000,
   startle: 900,
 } as const;
 type ParkyAct = keyof typeof ACT_MS;
 
-/** With company Parky only fidgets; once nobody moves it yawns, whistles and blows gum. */
+/** With company Parky fidgets and shows off; once nobody moves it yawns, reads and naps. */
 const ACTS: Record<'awake' | 'bored', readonly ParkyAct[]> = {
-  awake: ['hop', 'tilt', 'look', 'spin', 'wink', 'wiggle'],
-  bored: ['yawn', 'whistle', 'gum', 'roll', 'look'],
+  awake: ['hop', 'tilt', 'look', 'spin', 'wink', 'wiggle', 'roll', 'twirl', 'dance', 'read'],
+  bored: ['yawn', 'whistle', 'gum', 'roll', 'look', 'read', 'nap'],
 };
 /** The rest between two acts, as the shortest wait and a random spread on top. */
 const PAUSE_MS: Record<'awake' | 'bored', readonly [number, number]> = {
-  awake: [15_000, 10_000],
-  bored: [6_000, 4_000],
+  awake: [12_000, 8_000],
+  bored: [5_000, 4_000],
 };
 /** The first yawn and the eyes falling shut wait a moment after the boredom sets in. */
 const SETTLE_MS = 1_500;
@@ -78,9 +83,6 @@ function useGaze(svg: React.RefObject<SVGSVGElement | null>) {
   return gaze;
 }
 
-const noSubscription = () => () => {};
-const noBoredom = (): ParkyBoredom | null => null;
-
 /** A random act from `list`, never the one just played. */
 function pickAct(list: readonly ParkyAct[], previous: ParkyAct | null): ParkyAct {
   const choices = list.filter((act) => act !== previous);
@@ -94,17 +96,11 @@ function pickAct(list: readonly ParkyAct[], previous: ParkyAct | null): ParkyAct
  * between them.
  */
 function useIdleAct(enabled: boolean) {
-  const boredom = useSyncExternalStore(
-    enabled ? parkyBoredom.subscribe : noSubscription,
-    enabled ? parkyBoredom.getSnapshot : noBoredom,
-    parkyBoredom.getServerSnapshot
-  );
+  const boredom = useParkyBoredom(enabled);
   const [act, setAct] = useState<ParkyAct | null>(null);
-  const before = useRef(boredom);
   useEffect(() => {
-    const woke = before.current === 'asleep' && boredom === 'awake';
-    before.current = boredom;
     if (!boredom) return;
+    const woke = parkyBoredom.wokeUp();
     // One timer at a time, re-armed from its own callback, so cleanup always reaches it.
     let timer: ReturnType<typeof setTimeout>;
     let previous: ParkyAct | null = null;
@@ -153,9 +149,10 @@ const PONDER_GAZE = { x: 1.8, y: -2.4 };
 /**
  * Parky's face: a speech bubble in the brand's blue to green with big eyes that follow the mouse,
  * rosy cheeks and a smile, and a small Ferris wheel for a hat. It blinks, shows its
- * {@link ParkyMood}, and while `idle` fidgets, gets bored when nobody moves (it yawns, whistles,
- * blows gum, rolls its eyes) and falls asleep after a long quiet spell. The motion lives in
- * `app/globals.css` (`.parky-*`) and only runs without `prefers-reduced-motion`.
+ * {@link ParkyMood}, and while `idle` fidgets, twirls, dances and reads, gets bored when nobody
+ * moves (it yawns, whistles, blows gum, rolls its eyes, naps) and falls asleep after a long quiet
+ * spell. The motion lives in `app/globals.css` (`.parky-*`) and only runs without
+ * `prefers-reduced-motion`.
  */
 export function ParkyLogo({
   className,
@@ -175,9 +172,15 @@ export function ParkyLogo({
   const ground = useId();
   const svg = useRef<SVGSVGElement>(null);
   const mouseGaze = useGaze(svg);
-  const gaze = state === 'thinking' ? PONDER_GAZE : state === 'looking' ? READING_GAZE : mouseGaze;
   // A mood has its own motion; the idle life is for a face with nothing to do.
   const { act, asleep } = useIdleAct(idle && !state);
+  const gaze =
+    state === 'thinking'
+      ? PONDER_GAZE
+      : state === 'looking' || act === 'read'
+        ? READING_GAZE
+        : mouseGaze;
+  const sleeping = asleep || act === 'nap';
   const ink = 'oklch(0.25 0.03 240)';
   const blue = 'oklch(0.628 0.137 241.275)';
   const green = 'oklch(0.752 0.181 146.391)';
@@ -210,10 +213,10 @@ export function ParkyLogo({
           </g>
         </g>
       )}
-      {asleep && (
-        // Three Zs rising over the bubble's top left, away from the hat.
+      {sleeping && (
+        // Three Zs rising over the bubble's top left, away from the hat; once each in a nap.
         <g
-          className="parky-zzz"
+          className={cn('parky-zzz', act === 'nap' && 'parky-zzz--nap')}
           fill="none"
           stroke={blue}
           strokeWidth="1.3"
@@ -225,7 +228,7 @@ export function ParkyLogo({
           <path d="M6.5 6.5h3.4l-3.4 3.8h3.4" />
         </g>
       )}
-      {act === 'whistle' && (
+      {(act === 'whistle' || act === 'dance') && (
         // Two notes drifting up beside the right cheek; outside the body, so they do not sway.
         <g className="parky-notes" strokeWidth=".9" strokeLinecap="round">
           {[
@@ -260,7 +263,12 @@ export function ParkyLogo({
         <g
           className={cn(
             'parky-wheel',
-            (state === 'talking' || state === 'looking' || act === 'spin') && 'parky-wheel--turning'
+            (state === 'talking' ||
+              state === 'looking' ||
+              act === 'spin' ||
+              act === 'twirl' ||
+              act === 'dance') &&
+              'parky-wheel--turning'
           )}
         >
           <circle cx="36" cy="9" r="7" fill="white" stroke={blue} strokeWidth="1.6" />
@@ -277,21 +285,17 @@ export function ParkyLogo({
           d="M24 7c11 0 20 8.1 20 18.2S35 43.4 24 43.4c-2.5 0-4.9-.4-7.1-1.1L7.5 46l2.3-8C6.1 34.7 4 30.2 4 25.2 4 15.1 13 7 24 7Z"
           fill={`url(#${ground})`}
         />
-        {asleep ? (
-          <path
-            d="M12.4 23.2q4.6 3.4 9.2 0M26.4 23.2q4.6 3.4 9.2 0"
-            fill="none"
-            stroke={ink}
-            strokeWidth="1.8"
-            strokeLinecap="round"
-          />
-        ) : (
+        {!asleep && (
           // One group per eye, so a wink closes one and the gum makes them cross.
           <g className="parky-eyes">
             {EYES.map((x) => (
               <g key={x} className="parky-eye">
                 <ellipse cx={x} cy="22.5" rx="5.4" ry="6.2" fill="white" />
-                <g transform={`translate(${gaze.x.toFixed(2)} ${gaze.y.toFixed(2)})`}>
+                {/* A style, not the attribute, so the pupils ease to a new place. */}
+                <g
+                  className="parky-gaze"
+                  style={{ transform: `translate(${gaze.x.toFixed(2)}px, ${gaze.y.toFixed(2)}px)` }}
+                >
                   <g className="parky-pupils">
                     <circle cx={x} cy="23" r="3" fill={ink} />
                     <circle cx={x + 1.1} cy="21.7" r="1.05" fill="white" />
@@ -300,6 +304,17 @@ export function ParkyLogo({
               </g>
             ))}
           </g>
+        )}
+        {sleeping && (
+          // In a nap the shut eyes cross-fade with the open ones; asleep they are all there is.
+          <path
+            className="parky-shut"
+            d="M12.4 23.2q4.6 3.4 9.2 0M26.4 23.2q4.6 3.4 9.2 0"
+            fill="none"
+            stroke={ink}
+            strokeWidth="1.8"
+            strokeLinecap="round"
+          />
         )}
         <ellipse cx="10.8" cy="31" rx="2.4" ry="1.4" fill="oklch(0.78 0.12 15)" opacity=".7" />
         <ellipse cx="37.2" cy="31" rx="2.4" ry="1.4" fill="oklch(0.78 0.12 15)" opacity=".7" />
@@ -347,7 +362,7 @@ export function ParkyLogo({
             />
           </>
         )}
-        {state === 'looking' && (
+        {(state === 'looking' || act === 'read') && (
           // An open book held below the eyes, where the mouth was; a page turns now and then.
           <g className="parky-book">
             <path d="M24 30 5 26v18.5l19 4Z" fill="white" stroke={blue} strokeWidth="1.1" />

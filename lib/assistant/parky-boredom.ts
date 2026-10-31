@@ -29,6 +29,7 @@ const ACTIVITY = ['pointermove', 'pointerdown', 'keydown', 'wheel', 'touchstart'
 const LISTEN = { capture: true, passive: true } as const;
 
 let stage: ParkyBoredom = 'awake';
+let before: ParkyBoredom = 'awake';
 let lastActive = 0;
 let timer: ReturnType<typeof setTimeout> | undefined;
 let still: boolean | undefined;
@@ -36,6 +37,7 @@ const listeners = new Set<() => void>();
 
 function settle(next: ParkyBoredom): void {
   if (next === stage) return;
+  before = stage;
   stage = next;
   listeners.forEach((listener) => listener());
 }
@@ -72,6 +74,7 @@ export const parkyBoredom = {
     if (listeners.size === 1 && !reducedMotion()) {
       lastActive = performance.now();
       stage = 'awake';
+      before = 'awake';
       for (const type of ACTIVITY) window.addEventListener(type, onActivity, LISTEN);
       tick();
     }
@@ -84,5 +87,7 @@ export const parkyBoredom = {
     };
   },
   getSnapshot: (): ParkyBoredom | null => (reducedMotion() ? null : stage),
+  /** Whether the last change woke Parky from sleep; read in an effect after the change. */
+  wokeUp: (): boolean => before === 'asleep' && stage === 'awake',
   getServerSnapshot: (): ParkyBoredom | null => null,
 };

@@ -257,8 +257,10 @@ check(nextBoredomInMs(ASLEEP_AFTER_MS), null, 'only activity ends sleep');
   check(parkyBoredom.getSnapshot(), 'asleep', 'then asleep');
   const armed = timers.filter((timer) => timer.fn).length;
   check(armed, 0, 'no timer while asleep');
+  check(parkyBoredom.wokeUp(), false, 'falling asleep is no waking');
   window.dispatchEvent(new Event('keydown'));
   check(parkyBoredom.getSnapshot(), 'awake', 'a key wakes it');
+  check(parkyBoredom.wokeUp(), true, 'and says so');
   check(notified, 3, 'one notice per change');
   unsubscribe();
   check(
