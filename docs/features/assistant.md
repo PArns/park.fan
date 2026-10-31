@@ -90,6 +90,25 @@ Every wait an answer names ("30 Min.", "30 minutes" …) is drawn as the site's 
 sends the browser's time zone, so every time the API hands the model is already in the reader's
 clock; the cards format their instants with the browser's own clock too.
 
+## Parky's face
+
+`ParkyLogo` (`components/assistant/parky-logo.tsx`) draws Parky as an SVG; all its motion is CSS in
+`app/globals.css` (`.parky-*`) and runs only without `prefers-reduced-motion`. While the chat works
+it shows a mood: `thinking` with thought bubbles, `looking` into a book, `talking`. With nothing to
+do (the closed button, the open window between answers) it has a life of its own, paced by one
+store for the whole page, `parkyBoredom` (`lib/assistant/parky-boredom.ts`). Activity is a pointer
+move or press, a key, the mouse wheel or a touch.
+
+| Stage    | Quiet for | What Parky does                                                                                 |
+| -------- | --------- | ----------------------------------------------------------------------------------------------- |
+| `awake`  | < 25 s    | every 15–25 s: hops, tilts, looks around, spins its hat, winks or wiggles                       |
+| `bored`  | 25 s      | yawns, then every 6–10 s whistles, blows a gum bubble that pops, rolls its eyes or looks around |
+| `asleep` | 75 s      | eyes fall shut, it breathes slowly under rising Zs, the hat stops; activity wakes it with a "!" |
+
+The store keeps one timer for the next stage, so a moving pointer costs a timestamp. Each act's
+length is written once, in `ACT_MS`; the stylesheet reads it as `--parky-act`. Under reduced
+motion the store answers `null` and Parky only shows its moods.
+
 ## Tracking
 
 Our own statistic (`trackSiteEvent`, labels in `lib/admin/site-analytics.ts`): `assistant_opened`,
@@ -102,4 +121,4 @@ the planner opening as `planner_opened` with source `assistant`.
 ## Checks
 
 `pnpm test:assistant` covers the stream reader, the link checks, the rollout decision, the post
-text and the action checks.
+text, the action checks and the boredom stages on a fake clock.

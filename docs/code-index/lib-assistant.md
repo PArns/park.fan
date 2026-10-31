@@ -24,6 +24,15 @@ by hand: change the comment in the code and re-run the script. -->
 - `directionsHref` _function_: The one link off the site an answer may carry: Google Maps directions to coordinates, exactly in the form the API's `get_directions` writes it. Opened in a new tab; never used for navigation.
 - `safeAssistantHref` _function_
 
+### [`parky-boredom.ts`](../../lib/assistant/parky-boredom.ts)
+
+- `boredomAfter` _function_: How bored Parky is after `quietMs` without a pointer, key, wheel or touch on the page.
+- `nextBoredomInMs` _function_: How long until the next stage after `quietMs` of quiet; `null` once asleep, which only activity ends.
+- `BORED_AFTER_MS` _const_: Quiet time on the page before Parky gets bored.
+- `ASLEEP_AFTER_MS` _const_: Quiet time on the page before Parky nods off.
+- `parkyBoredom` _const_: One boredom for the whole page, for `useSyncExternalStore`: the first subscriber starts the listeners, the last one stops them. Without motion (`prefers-reduced-motion`) Parky has no idle life and the snapshot is `null`, as on the server.
+- Types: `ParkyBoredom`
+
 ### [`post-text.ts`](../../lib/assistant/post-text.ts)
 
 - `postPlainText` _function_: A post's Markdown as plain text for the chat assistant: code, images, embeds, HTML and table rules removed, links reduced to their text, cut at a paragraph near `POST_TEXT_LIMIT`.

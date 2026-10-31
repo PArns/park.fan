@@ -178,6 +178,8 @@ export function AssistantPanel({ open, onClose }: { open: boolean; onClose: () =
         {/* On a desktop Parky floats large over the window's top edge, where it is seen. */}
         <ParkyLogo
           className="absolute -top-7 left-1 size-16 drop-shadow-[0_8px_16px_rgb(0_0_0/0.35)] sm:-top-11 sm:size-20"
+          // The closed window stays mounted; only an open one keeps Parky's idle life going.
+          idle={open}
           mood={
             chat.phase === 'writing'
               ? 'talking'

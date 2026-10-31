@@ -1,16 +1,47 @@
 'use client';
 
-import { useEffect, useId, useRef, useState } from 'react';
+import { useEffect, useId, useRef, useState, useSyncExternalStore } from 'react';
 import { cn } from '@/lib/utils';
+import { parkyBoredom, type ParkyBoredom } from '@/lib/assistant/parky-boredom';
 
-/** What Parky does while it thinks, one picked at random every couple of seconds. */
-const THINKING = ['parky-act-hop', 'parky-act-tilt', 'parky-act-look', 'parky-act-spin'] as const;
-const THINKING_MS = 2200;
+/**
+ * Parky's little acts and how long each runs. The stylesheet reads the length as `--parky-act`,
+ * so a duration is written here only.
+ */
+const ACT_MS = {
+  hop: 1400,
+  tilt: 1600,
+  look: 1800,
+  spin: 2200,
+  wink: 900,
+  wiggle: 1100,
+  yawn: 2600,
+  whistle: 3200,
+  gum: 3400,
+  roll: 1600,
+  doze: 2000,
+  startle: 900,
+} as const;
+type ParkyAct = keyof typeof ACT_MS;
+
+/** With company Parky only fidgets; once nobody moves it yawns, whistles and blows gum. */
+const ACTS: Record<'awake' | 'bored', readonly ParkyAct[]> = {
+  awake: ['hop', 'tilt', 'look', 'spin', 'wink', 'wiggle'],
+  bored: ['yawn', 'whistle', 'gum', 'roll', 'look'],
+};
+/** The rest between two acts, as the shortest wait and a random spread on top. */
+const PAUSE_MS: Record<'awake' | 'bored', readonly [number, number]> = {
+  awake: [15_000, 10_000],
+  bored: [6_000, 4_000],
+};
+/** The first yawn and the eyes falling shut wait a moment after the boredom sets in. */
+const SETTLE_MS = 1_500;
+
 /** How far a pupil may wander inside its eye, in the 48-unit drawing. */
 const PUPIL_REACH = 2.2;
-/** Now and then, while idle, a little act anyway: every 15 to 25 seconds. */
-const IDLE_MIN_MS = 15_000;
-const IDLE_SPREAD_MS = 10_000;
+
+/** The eyes' centres on the x axis, left and right. */
+const EYES = [17, 31] as const;
 
 /**
  * The pupils' offset towards the pointer, so Parky looks at the mouse. Only for a fine pointer and
@@ -47,43 +78,62 @@ function useGaze(svg: React.RefObject<SVGSVGElement | null>) {
   return gaze;
 }
 
+const noSubscription = () => () => {};
+const noBoredom = (): ParkyBoredom | null => null;
+
+/** A random act from `list`, never the one just played. */
+function pickAct(list: readonly ParkyAct[], previous: ParkyAct | null): ParkyAct {
+  const choices = list.filter((act) => act !== previous);
+  return choices[Math.floor(Math.random() * choices.length)];
+}
+
 /**
- * A random little act: every couple of seconds while `thinking`, now and then while `idle`, none
- * otherwise. An idle act runs once and clears, so the face rests between them.
+ * Parky's life while nothing happens, from the page-wide {@link parkyBoredom}: a little act now and
+ * then with company, more and sleepier ones once bored, then eyes falling shut and sleep until
+ * somebody moves, which wakes it with a start. Each act runs once and clears, so the face rests
+ * between them.
  */
-function useAct(thinking: boolean, idle: boolean) {
-  const [act, setAct] = useState<(typeof THINKING)[number] | null>(null);
+function useIdleAct(enabled: boolean) {
+  const boredom = useSyncExternalStore(
+    enabled ? parkyBoredom.subscribe : noSubscription,
+    enabled ? parkyBoredom.getSnapshot : noBoredom,
+    parkyBoredom.getServerSnapshot
+  );
+  const [act, setAct] = useState<ParkyAct | null>(null);
+  const before = useRef(boredom);
   useEffect(() => {
-    if (!thinking && !idle) return;
-    const pick = () => setAct(THINKING[Math.floor(Math.random() * THINKING.length)]);
+    const woke = before.current === 'asleep' && boredom === 'awake';
+    before.current = boredom;
+    if (!boredom) return;
     // One timer at a time, re-armed from its own callback, so cleanup always reaches it.
     let timer: ReturnType<typeof setTimeout>;
-    if (thinking) {
-      const loop = (wait: number) => {
+    let previous: ParkyAct | null = null;
+    const play = (wait: number, next: ParkyAct) => {
+      timer = setTimeout(() => {
+        previous = next;
+        setAct(next);
         timer = setTimeout(() => {
-          pick();
-          loop(THINKING_MS);
-        }, wait);
-      };
-      loop(0);
-    } else {
-      const loop = () => {
-        timer = setTimeout(
-          () => {
-            pick();
-            timer = setTimeout(() => {
-              setAct(null);
-              loop();
-            }, THINKING_MS);
-          },
-          IDLE_MIN_MS + Math.random() * IDLE_SPREAD_MS
-        );
-      };
-      loop();
-    }
-    return () => clearTimeout(timer);
-  }, [thinking, idle]);
-  return thinking || idle ? act : null;
+          setAct(null);
+          loop();
+        }, ACT_MS[next]);
+      }, wait);
+    };
+    const loop = () => {
+      // Asleep, the doze is the last act: the sleeping face takes over until somebody moves.
+      if (boredom === 'asleep') return;
+      const [shortest, spread] = PAUSE_MS[boredom];
+      play(shortest + Math.random() * spread, pickAct(ACTS[boredom], previous));
+    };
+    if (boredom === 'asleep') play(SETTLE_MS, 'doze');
+    else if (boredom === 'bored') play(SETTLE_MS, 'yawn');
+    else if (woke) play(0, 'startle');
+    else loop();
+    return () => {
+      clearTimeout(timer);
+      setAct(null);
+    };
+  }, [boredom]);
+  return { act, asleep: boredom === 'asleep' && act === null };
 }
 
 /**
@@ -102,9 +152,10 @@ const PONDER_GAZE = { x: 1.8, y: -2.4 };
 
 /**
  * Parky's face: a speech bubble in the brand's blue to green with big eyes that follow the mouse,
- * rosy cheeks and a smile, and a small Ferris wheel for a hat. It blinks now and then, acts at
- * random while `idle`, and shows its {@link ParkyMood}. The motion lives in `app/globals.css`
- * (`.parky-*`) and only runs without `prefers-reduced-motion`.
+ * rosy cheeks and a smile, and a small Ferris wheel for a hat. It blinks, shows its
+ * {@link ParkyMood}, and while `idle` fidgets, gets bored when nobody moves (it yawns, whistles,
+ * blows gum, rolls its eyes) and falls asleep after a long quiet spell. The motion lives in
+ * `app/globals.css` (`.parky-*`) and only runs without `prefers-reduced-motion`.
  */
 export function ParkyLogo({
   className,
@@ -116,7 +167,7 @@ export function ParkyLogo({
   mood?: ParkyMood | null;
   /** Shorthand for `mood="talking"`. */
   talking?: boolean;
-  /** Now and then a little act while nothing happens, for the closed button. */
+  /** A life of its own while nothing happens: acts, boredom and sleep. */
   idle?: boolean;
 }) {
   const state: ParkyMood | null = mood ?? (talking ? 'talking' : null);
@@ -125,52 +176,91 @@ export function ParkyLogo({
   const svg = useRef<SVGSVGElement>(null);
   const mouseGaze = useGaze(svg);
   const gaze = state === 'thinking' ? PONDER_GAZE : state === 'looking' ? READING_GAZE : mouseGaze;
-  // A mood has its own motion; the random acts are for an idle face only.
-  const act = useAct(false, idle && !state);
+  // A mood has its own motion; the idle life is for a face with nothing to do.
+  const { act, asleep } = useIdleAct(idle && !state);
   const ink = 'oklch(0.25 0.03 240)';
   const blue = 'oklch(0.628 0.137 241.275)';
+  const green = 'oklch(0.752 0.181 146.391)';
+  const pink = 'oklch(0.8 0.13 355)';
   return (
     <svg
       ref={svg}
       viewBox="0 0 48 48"
       className={cn('size-8 overflow-visible', className)}
+      style={act ? ({ '--parky-act': `${ACT_MS[act]}ms` } as React.CSSProperties) : undefined}
       aria-hidden="true"
     >
       <defs>
         <linearGradient id={ground} x1="0" y1="0" x2="1" y2="1">
           <stop offset="0" stopColor={blue} />
-          <stop offset="1" stopColor="oklch(0.752 0.181 146.391)" />
+          <stop offset="1" stopColor={green} />
         </linearGradient>
       </defs>
       {state === 'thinking' && (
-        <g
-          className="parky-thoughts"
-          fill="white"
-          stroke="oklch(0.628 0.137 241.275)"
-          strokeWidth=".8"
-        >
+        <g className="parky-thoughts" fill="white" stroke={blue} strokeWidth=".8">
           <circle cx="7" cy="9" r="1.5" />
           <circle cx="3.5" cy="4.5" r="2" />
           <circle cx="-1" cy="-1" r="2.7" />
           {/* The big cloud the small ones lead to, with dots that bob while Parky thinks. */}
           <ellipse className="parky-cloud" cx="-10" cy="-10" rx="10" ry="6.8" />
-          <g className="parky-cloud-dots" fill="oklch(0.628 0.137 241.275)" stroke="none">
+          <g className="parky-cloud-dots" fill={blue} stroke="none">
             <circle cx="-14.5" cy="-10" r="1.3" />
             <circle cx="-10" cy="-10" r="1.3" />
             <circle cx="-5.5" cy="-10" r="1.3" />
           </g>
         </g>
       )}
+      {asleep && (
+        // Three Zs rising over the bubble's top left, away from the hat.
+        <g
+          className="parky-zzz"
+          fill="none"
+          stroke={blue}
+          strokeWidth="1.3"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <path d="M6.5 6.5h3.4l-3.4 3.8h3.4" />
+          <path d="M6.5 6.5h3.4l-3.4 3.8h3.4" />
+          <path d="M6.5 6.5h3.4l-3.4 3.8h3.4" />
+        </g>
+      )}
+      {act === 'whistle' && (
+        // Two notes drifting up beside the right cheek; outside the body, so they do not sway.
+        <g className="parky-notes" strokeWidth=".9" strokeLinecap="round">
+          {[
+            { x: 42, y: 31, colour: blue },
+            { x: 45, y: 26, colour: green },
+          ].map((note) => (
+            <g key={note.x} transform={`translate(${note.x} ${note.y})`}>
+              <g className="parky-note" fill={note.colour} stroke={note.colour}>
+                <ellipse rx="1.6" ry="1.15" transform="rotate(-20)" stroke="none" />
+                <path d="M1.45-.4V-6.8q2.4.9 2.6 3.2" fill="none" />
+              </g>
+            </g>
+          ))}
+        </g>
+      )}
+      {act === 'startle' && (
+        <g className="parky-alarm" fill={blue}>
+          <path d="M7.5 0v5.2" stroke={blue} strokeWidth="2" strokeLinecap="round" />
+          <circle cx="7.5" cy="8.4" r="1.15" />
+        </g>
+      )}
       <g
-        key={act ?? state ?? 'still'}
-        className={cn('parky-body', act, state && `parky-mood-${state}`)}
+        key={act ?? state ?? (asleep ? 'asleep' : 'still')}
+        className={cn(
+          'parky-body',
+          act && `parky-act-${act}`,
+          state && `parky-mood-${state}`,
+          asleep && 'parky-asleep'
+        )}
       >
         {/* The hat: a small Ferris wheel on the bubble's top right. */}
         <g
           className={cn(
             'parky-wheel',
-            (state === 'talking' || state === 'looking' || act === 'parky-act-spin') &&
-              'parky-wheel--turning'
+            (state === 'talking' || state === 'looking' || act === 'spin') && 'parky-wheel--turning'
           )}
         >
           <circle cx="36" cy="9" r="7" fill="white" stroke={blue} strokeWidth="1.6" />
@@ -180,37 +270,82 @@ export function ParkyLogo({
             strokeWidth="1.1"
             strokeLinecap="round"
           />
-          <circle cx="36" cy="9" r="1.6" fill="oklch(0.752 0.181 146.391)" />
+          <circle cx="36" cy="9" r="1.6" fill={green} />
         </g>
         {/* The body: a round bubble with its tail at the lower left. */}
         <path
           d="M24 7c11 0 20 8.1 20 18.2S35 43.4 24 43.4c-2.5 0-4.9-.4-7.1-1.1L7.5 46l2.3-8C6.1 34.7 4 30.2 4 25.2 4 15.1 13 7 24 7Z"
           fill={`url(#${ground})`}
         />
-        <g className="parky-eyes">
-          <ellipse cx="17" cy="22.5" rx="5.4" ry="6.2" fill="white" />
-          <ellipse cx="31" cy="22.5" rx="5.4" ry="6.2" fill="white" />
-          <g transform={`translate(${gaze.x.toFixed(2)} ${gaze.y.toFixed(2)})`}>
-            <g className="parky-pupils">
-              <circle cx="17" cy="23" r="3" fill={ink} />
-              <circle cx="31" cy="23" r="3" fill={ink} />
-              <circle cx="18.1" cy="21.7" r="1.05" fill="white" />
-              <circle cx="32.1" cy="21.7" r="1.05" fill="white" />
-            </g>
+        {asleep ? (
+          <path
+            d="M12.4 23.2q4.6 3.4 9.2 0M26.4 23.2q4.6 3.4 9.2 0"
+            fill="none"
+            stroke={ink}
+            strokeWidth="1.8"
+            strokeLinecap="round"
+          />
+        ) : (
+          // One group per eye, so a wink closes one and the gum makes them cross.
+          <g className="parky-eyes">
+            {EYES.map((x) => (
+              <g key={x} className="parky-eye">
+                <ellipse cx={x} cy="22.5" rx="5.4" ry="6.2" fill="white" />
+                <g transform={`translate(${gaze.x.toFixed(2)} ${gaze.y.toFixed(2)})`}>
+                  <g className="parky-pupils">
+                    <circle cx={x} cy="23" r="3" fill={ink} />
+                    <circle cx={x + 1.1} cy="21.7" r="1.05" fill="white" />
+                  </g>
+                </g>
+              </g>
+            ))}
           </g>
-        </g>
+        )}
         <ellipse cx="10.8" cy="31" rx="2.4" ry="1.4" fill="oklch(0.78 0.12 15)" opacity=".7" />
         <ellipse cx="37.2" cy="31" rx="2.4" ry="1.4" fill="oklch(0.78 0.12 15)" opacity=".7" />
         {state === 'talking' ? (
           <ellipse className="parky-mouth" cx="24" cy="33.5" rx="3" ry="2.2" fill={ink} />
         ) : (
           <path
+            className="parky-smile"
             d="M20.5 32.5q3.5 3.2 7 0"
             fill="none"
             stroke={ink}
             strokeWidth="1.8"
             strokeLinecap="round"
           />
+        )}
+        {act === 'yawn' && (
+          <g className="parky-yawn">
+            <ellipse cx="24" cy="34" rx="3" ry="3.4" fill={ink} />
+            <ellipse cx="24" cy="36.2" rx="1.8" ry="1" fill="oklch(0.7 0.15 15)" />
+          </g>
+        )}
+        {(act === 'whistle' || act === 'gum') && (
+          <circle className="parky-purse" cx="24.5" cy="33.3" r="1.4" fill={ink} />
+        )}
+        {act === 'gum' && (
+          <>
+            <g className="parky-gum">
+              <circle
+                cx="24.5"
+                cy="39"
+                r="7.5"
+                fill={pink}
+                stroke="oklch(0.68 0.16 355)"
+                strokeWidth=".6"
+              />
+              <ellipse cx="21.6" cy="35.8" rx="2" ry="1.1" fill="white" opacity=".75" />
+            </g>
+            {/* The pop: short strokes around where the bubble was. */}
+            <path
+              className="parky-pop"
+              d="M24.5 29.5v-2.2M32 32.2l1.6-1.5M17 32.2l-1.6-1.5M34.2 39h2.2M14.8 39h-2.2"
+              stroke="white"
+              strokeWidth="1.3"
+              strokeLinecap="round"
+            />
+          </>
         )}
         {state === 'looking' && (
           // An open book held below the eyes, where the mouth was; a page turns now and then.
