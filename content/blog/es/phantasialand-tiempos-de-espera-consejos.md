@@ -475,6 +475,8 @@ y el 13 de enero de 2027; en Nochevieja abre solo hasta las 18 h. Las entradas
 funcionan como en verano, con entradas de día online con fecha; según el parque,
 hubo entradas de preventa desde 30 € hasta el 12 de octubre.
 
+Una excepción es el 22 de noviembre, el [Totensonntag en el Phantasialand](/blog/phantasialand-totensonntag), el domingo de difuntos alemán. El parque abre igualmente de 11 a 20 h, pero al ser un festivo de silencio, los shows y la música exterior no empiezan hasta las 18 h.
+
 - **No funciona todo.** Taron, F.L.Y., Black Mamba y los Winja’s siguen
   funcionando, y [Chiapas](ref:phantasialand/chiapas-die-wasserbahn) también
   funciona en el Wintertraum según el parque, hasta cinco grados bajo cero (Taron

@@ -166,7 +166,7 @@ the lights come on in Klugheim while Taron is still running.
 
 The Halloween nights at the neighbouring parks end between 1 November at Walibi Holland and 15
 November at Bobbejaanland. Phantasialand ends its summer season on 13 November and reopens on 14
-November as Wintertraum, mostly from 11 a.m. to 8 p.m., until 24 January 2027. For the Wintertraum
+November as Wintertraum, mostly from 11 a.m. to 8 p.m., until 24 January 2027. On 22 November, Totensonntag (Germany’s Sunday of the Dead), shows and outdoor music only start at 6 p.m. because it’s a quiet public holiday, as our guide to [Phantasialand on Totensonntag](/blog/phantasialand-totensonntag) explains. For the Wintertraum
 Saturdays on 21 and 28 November, we already expect high crowds.
 
 This autumn I'd go to Brühl on a weekday up to 13 November. If Saturday is your only day, come

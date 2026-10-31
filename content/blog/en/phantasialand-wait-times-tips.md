@@ -457,6 +457,8 @@ from **11 a.m. to 8 p.m.** The park is closed on 24 and 25 December 2026 and on
 summer, tickets run through dated online day tickets, and, according to the
 park, advance tickets from €30 were on sale until 12 October.
 
+One exception is 22 November, [Totensonntag at Phantasialand](/blog/phantasialand-totensonntag), Germany’s Sunday of the Dead. The park still opens from 11 a.m. to 8 p.m., but because it’s a quiet public holiday, shows and outdoor music only start at 6 p.m.
+
 - **Not everything runs.** Taron, F.L.Y., Black Mamba and the Winja’s keep
   running, and [Chiapas](ref:phantasialand/chiapas-die-wasserbahn) runs during
   Wintertraum too, the park says, down to minus five degrees (Taron down to minus

@@ -469,6 +469,8 @@ dalle **11 alle 20**. Chiuso il 24 e 25 dicembre 2026 e il 1°, 12 e 13 gennaio
 passano da biglietti giornalieri online con data; secondo il parco, i biglietti
 in prevendita da 30 € erano in vendita fino al 12 ottobre.
 
+Fa eccezione il 22 novembre, il [Totensonntag al Phantasialand](/blog/phantasialand-totensonntag), la domenica dei morti tedesca. Il parco apre comunque dalle 11 alle 20, ma trattandosi di una festività silenziosa, spettacoli e musica all’aperto iniziano solo alle 18.
+
 - **Non funziona tutto.** Taron, F.L.Y., Black Mamba e i Winja’s continuano a
   girare, e secondo il parco anche
   [Chiapas](ref:phantasialand/chiapas-die-wasserbahn) funziona durante il

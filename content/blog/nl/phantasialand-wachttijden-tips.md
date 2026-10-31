@@ -464,6 +464,8 @@ en 13 januari 2027; op oudjaarsdag alleen tot 18 uur. De tickets lopen net als i
 de zomer via gedateerde online dagtickets; volgens het park waren
 voorverkooptickets vanaf 30 € tot 12 oktober te koop.
 
+Een uitzondering is 22 november, [Totensonntag in Phantasialand](/blog/phantasialand-totensonntag), de Duitse dodenzondag. Het park is dan gewoon van 11 tot 20 uur open, maar omdat het een stille feestdag is, beginnen shows en de muziek buiten pas om 18 uur.
+
 - **Niet alles rijdt.** Taron, F.L.Y., Black Mamba en de Winja’s blijven rijden,
   en ook [Chiapas](ref:phantasialand/chiapas-die-wasserbahn) rijdt volgens het
   park tijdens de Wintertraum, tot min vijf graden (Taron tot min tien).
