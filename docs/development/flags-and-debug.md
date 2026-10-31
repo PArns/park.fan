@@ -13,7 +13,10 @@ when testing in-park features from a desk.
 `NEXT_PUBLIC_ASSISTANT=off` is the exception to "default off": it is an emergency switch for
 Parky, whose real switch and rollout share live in the admin and are read in the browser after the
 first paint, so no server markup depends on them. `?assistant=on` shows Parky for the session
-([assistant](../features/assistant.md#rollout)).
+([assistant](../features/assistant.md#rollout)). `?parky=` tries Parky's easter eggs out on one
+page view: `egg` on a park's page says its line and rides the coaster whatever the chance, and an
+entrance's name (`scurry`, `drop`, `roll`, `peek`, `pop`) makes the button arrive that way
+([assistant](../features/assistant.md#how-parky-arrives)).
 
 A flag is a `NEXT_PUBLIC_*` env var, default off, read into a constant so the unused branch
 tree-shakes out and Server and Client Components read the same value. To add one: create

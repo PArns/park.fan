@@ -28,8 +28,12 @@ const ACT_MS = {
   doze: 2000,
   startle: 900,
   coaster: 3600,
+  dizzy: 2700,
 } as const;
 type ParkyAct = keyof typeof ACT_MS;
+
+/** An act that always comes straight after another: off the coaster, Parky is dizzy. */
+const FOLLOW_UP: Partial<Record<ParkyAct, ParkyAct>> = { coaster: 'dizzy' };
 
 /**
  * An act asked for from outside, to play at once: the coaster ride an easter egg ends with. A new
@@ -88,6 +92,9 @@ const A_FRAME = `M${HUB.x} ${HUB.y}L25.5 13M${HUB.x} ${HUB.y}L41.5 20`;
  */
 const LOOP = { x: 24, y: 16, r: 33 };
 const rail = 'oklch(0.6 0.19 25)';
+
+/** A four-pointed star at the centre of the orbit dizzy stars run round, above the left eye. */
+const STAR = 'M17 .2l.8 2 2 .8-2 .8-.8 2-.8-2-2-.8 2-.8Z';
 const frame = 'oklch(0.48 0.1 245)';
 
 /**
@@ -148,7 +155,9 @@ function useIdleAct(enabled: boolean, cue: ParkyCue | null) {
         setAct(next);
         timer = setTimeout(() => {
           setAct(null);
-          loop();
+          const after = FOLLOW_UP[next];
+          if (after) play(0, after);
+          else loop();
         }, ACT_MS[next]);
       }, wait);
     };
@@ -433,6 +442,24 @@ export function ParkyLogo({
               strokeWidth="1.3"
               strokeLinecap="round"
             />
+          </>
+        )}
+        {act === 'dizzy' && (
+          <>
+            <path
+              className="parky-woozy"
+              d="M19.5 33.5q1.25-1.6 2.5 0t2.5 0 2.5 0"
+              fill="none"
+              stroke={ink}
+              strokeWidth="1.6"
+              strokeLinecap="round"
+            />
+            {/* Three stars round the head, each a third of the way behind the one before. */}
+            <g className="parky-stars" fill="oklch(0.86 0.15 90)">
+              <path d={STAR} />
+              <path d={STAR} />
+              <path d={STAR} />
+            </g>
           </>
         )}
         {act === 'coaster' && (

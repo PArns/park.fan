@@ -994,6 +994,101 @@
     opacity: 1;
   }
 }
+/* Off the coaster: the pupils swirl round their eyes, one each way, the body reels, stars circle. */
+@keyframes parky-swirl-cw {
+  0%,
+  100% {
+    transform: translate(0, -1.8px);
+  }
+  12.5% {
+    transform: translate(1.27px, -1.27px);
+  }
+  25% {
+    transform: translate(1.8px, 0);
+  }
+  37.5% {
+    transform: translate(1.27px, 1.27px);
+  }
+  50% {
+    transform: translate(0, 1.8px);
+  }
+  62.5% {
+    transform: translate(-1.27px, 1.27px);
+  }
+  75% {
+    transform: translate(-1.8px, 0);
+  }
+  87.5% {
+    transform: translate(-1.27px, -1.27px);
+  }
+}
+@keyframes parky-swirl-ccw {
+  0%,
+  100% {
+    transform: translate(0, -1.8px);
+  }
+  12.5% {
+    transform: translate(-1.27px, -1.27px);
+  }
+  25% {
+    transform: translate(-1.8px, 0);
+  }
+  37.5% {
+    transform: translate(-1.27px, 1.27px);
+  }
+  50% {
+    transform: translate(0, 1.8px);
+  }
+  62.5% {
+    transform: translate(1.27px, 1.27px);
+  }
+  75% {
+    transform: translate(1.8px, 0);
+  }
+  87.5% {
+    transform: translate(1.27px, -1.27px);
+  }
+}
+@keyframes parky-reel {
+  0%,
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  12% {
+    transform: translate(-1.5px, 0) rotate(-9deg);
+  }
+  26% {
+    transform: translate(1.5px, 0.5px) rotate(8deg);
+  }
+  40% {
+    transform: translate(-1px, 0) rotate(-6deg);
+  }
+  55% {
+    transform: translate(1px, 0.5px) rotate(5deg);
+  }
+  70% {
+    transform: translate(-0.5px, 0) rotate(-3deg);
+  }
+  85% {
+    transform: translate(0.5px, 0) rotate(2deg);
+  }
+}
+/* A flat ellipse round the star's own place, so the three read as circling the head. */
+@keyframes parky-orbit {
+  0%,
+  100% {
+    transform: translate(9px, 0) scale(1);
+  }
+  25% {
+    transform: translate(0, 3px) scale(1.15);
+  }
+  50% {
+    transform: translate(-9px, 0) scale(1);
+  }
+  75% {
+    transform: translate(0, -3px) scale(0.8);
+  }
+}
 @keyframes parky-ponder {
   0%,
   100% {
@@ -1107,7 +1202,8 @@
   transform-box: fill-box;
   transform-origin: center;
 }
-.parky-grin {
+.parky-grin,
+.parky-woozy {
   transform-box: fill-box;
   transform-origin: center;
 }
@@ -1157,7 +1253,8 @@
   .parky-act-yawn .parky-smile,
   .parky-act-whistle .parky-smile,
   .parky-act-gum .parky-smile,
-  .parky-act-coaster .parky-smile {
+  .parky-act-coaster .parky-smile,
+  .parky-act-dizzy .parky-smile {
     animation: parky-smile-away var(--parky-act) ease-in-out;
   }
   .parky-purse {
@@ -1272,6 +1369,30 @@
   .parky-track,
   .parky-car {
     animation: parky-track var(--parky-act) ease-out both;
+  }
+  .parky-act-dizzy {
+    animation: parky-reel var(--parky-act) ease-in-out;
+  }
+  .parky-act-dizzy .parky-eye:first-child .parky-pupils {
+    animation: parky-swirl-cw calc(var(--parky-act) / 3) linear 3;
+  }
+  .parky-act-dizzy .parky-eye:last-child .parky-pupils {
+    animation: parky-swirl-ccw calc(var(--parky-act) / 3) linear 3;
+  }
+  .parky-woozy {
+    animation: parky-mouth-in var(--parky-act) ease-in-out both;
+  }
+  .parky-stars {
+    animation: parky-track var(--parky-act) ease-out both;
+  }
+  .parky-stars path {
+    animation: parky-orbit 0.9s linear infinite;
+  }
+  .parky-stars path:nth-child(2) {
+    animation-delay: -0.3s;
+  }
+  .parky-stars path:nth-child(3) {
+    animation-delay: -0.6s;
   }
   .parky-act-startle {
     animation: parky-startle var(--parky-act) ease-out;

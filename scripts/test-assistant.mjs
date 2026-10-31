@@ -3,7 +3,7 @@
  * answers (`lib/assistant/links.ts`), the rollout gate (`lib/assistant/config.ts`), the post
  * text it reads (`lib/assistant/post-text.ts`), how bored its face gets
  * (`lib/assistant/parky-boredom.ts`), how a chat opens (`lib/assistant/opener.ts`) and Parky's easter
- * eggs (`lib/assistant/easter-eggs.ts`, the park lines' limits in `teaser-store.ts`).
+ * eggs (`lib/assistant/easter-eggs.ts`, muting in `teaser-store.ts`).
  */
 
 import assert from 'node:assert/strict';
@@ -32,16 +32,13 @@ import {
   holidayOn,
   KONAMI_LENGTH,
   konamiProgress,
-  PARK_EGGS,
+  PARK_FAVOURITES,
+  parkNameIn,
+  parkPageOf,
   parkPathOf,
+  topCoaster,
 } from '@/lib/assistant/easter-eggs.ts';
-import {
-  linesMuted,
-  markParkLine,
-  muteLines,
-  parkLineDue,
-  PARK_LINES_PER_SESSION,
-} from '@/lib/assistant/teaser-store.ts';
+import { linesMuted, muteLines } from '@/lib/assistant/teaser-store.ts';
 
 let passed = 0;
 function check(actual, expected, label) {
@@ -343,7 +340,39 @@ check(
   "a ride's page belongs to its park"
 );
 check(parkPathOf('/de/parks/europe/germany'), null, 'a country is no park');
-check(PARK_EGGS['europe/germany/bruehl/phantasialand'].ride, 'Taron', 'Parky wants to ride Taron');
+check(
+  PARK_FAVOURITES['europe/germany/bruehl/phantasialand'].ride,
+  'Taron',
+  'Parky wants to ride Taron'
+);
+check(
+  parkPageOf('/de/parks/europe/germany/soltau/heide-park'),
+  { continent: 'europe', country: 'germany', city: 'soltau', parkSlug: 'heide-park' },
+  "a park's own page"
+);
+check(parkPageOf('/de/parks/europe/germany/soltau/heide-park/colossos'), null, 'not a ride page');
+check(
+  topCoaster([
+    { attractionName: 'Meet Mickey', attractionType: 'Meet & Greet' },
+    { attractionName: 'Big Thunder Mountain', attractionType: 'Roller Coaster' },
+  ]),
+  'Big Thunder Mountain',
+  'the coaster with the longest waits, not the top attraction'
+);
+check(topCoaster([{ attractionName: 'Piraten', attractionType: null }]), 'Piraten', 'else the top');
+check(topCoaster([]), null, 'no ranking, no ride');
+check(
+  parkNameIn([
+    { textContent: 'not json' },
+    {
+      textContent: JSON.stringify({
+        '@graph': [{ '@type': 'WebPage' }, { '@type': 'AmusementPark', name: 'Heide Park' }],
+      }),
+    },
+  ]),
+  'Heide Park',
+  "the park's name from the page's structured data"
+);
 check(holidayOn(new Date(2026, 9, 31)), 'halloween', 'Halloween');
 check(holidayOn(new Date(2026, 11, 25)), 'christmas', 'Christmas');
 check(holidayOn(new Date(2027, 0, 1)), 'newyear', 'New Year');
@@ -356,7 +385,7 @@ check(holidayOn(new Date(2026, 9, 30)), null, 'an ordinary day');
   check(konamiProgress(5, 'x'), 0, 'a wrong key starts over');
 }
 
-// The park lines on a stand-in sessionStorage: once per park, a few a session, none once muted.
+// Muting on a stand-in sessionStorage: a line closed by hand silences the rest of the session.
 {
   const store = new Map();
   globalThis.window = {
@@ -365,15 +394,9 @@ check(holidayOn(new Date(2026, 9, 30)), null, 'an ordinary day');
       setItem: (key, value) => store.set(key, value),
     },
   };
-  check(parkLineDue('a'), true, 'a park line is due');
-  markParkLine('a');
-  check(parkLineDue('a'), false, 'once per park');
-  for (let i = 1; i < PARK_LINES_PER_SESSION; i++) markParkLine(`p${i}`);
-  check(parkLineDue('z'), false, 'and a few a session');
-  store.clear();
   check(linesMuted(), false, 'not muted at first');
   muteLines();
-  check([linesMuted(), parkLineDue('b')], [true, false], 'a line closed by hand mutes the rest');
+  check(linesMuted(), true, 'a line closed by hand mutes the rest');
   delete globalThis.window;
 }
 console.log(`assistant: ${passed} checks passed`);
