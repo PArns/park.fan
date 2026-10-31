@@ -3130,6 +3130,12 @@
     "locationDenied": "Dein Browser gibt den Standort nicht frei. Du kannst das in den Einstellungen ändern.",
     "locationShared": "Hier ist mein Standort.",
     "cardWait": "{minutes} Min.",
-    "lookupGlossary": "Parky schlägt im Glossar nach …"
+    "lookupGlossary": "Parky schlägt im Glossar nach …",
+    "teaser1": "Hey, ich bin Parky – klick mich an!",
+    "teaser2": "Klick mich, und ich helf dir!",
+    "teaser3": "Wo ist die Warteschlange gerade kurz? Frag mich!",
+    "teaser4": "Psst … ich kenne die leersten Tage.",
+    "teaser5": "Lust auf Airtime? Ich plan dir den Tag.",
+    "teaser6": "Wartezeiten, Wetter, Öffnungszeiten: Frag einfach mich!"
   }
 }

@@ -3130,6 +3130,12 @@
     "locationDenied": "Je browser deelt je locatie niet. Dat kun je in de instellingen aanpassen.",
     "locationShared": "Hier is mijn locatie.",
     "cardWait": "{minutes} min",
-    "lookupGlossary": "Parky zoekt het op in de woordenlijst …"
+    "lookupGlossary": "Parky zoekt het op in de woordenlijst …",
+    "teaser1": "Hoi, ik ben Parky – klik op mij!",
+    "teaser2": "Klik op mij en ik help je!",
+    "teaser3": "Waar is de rij nu kort? Vraag het mij!",
+    "teaser4": "Psst … ik ken de rustigste dagen.",
+    "teaser5": "Zin in airtime? Ik plan je dag.",
+    "teaser6": "Wachttijden, weer, openingstijden: vraag het mij!"
   }
 }

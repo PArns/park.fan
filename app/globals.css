@@ -426,9 +426,47 @@
     transform: translateY(-3px) rotate(-3deg);
   }
 }
+@keyframes parky-hop {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  30% {
+    transform: translateY(-5px) scale(1.04, 0.96);
+  }
+  55% {
+    transform: translateY(0) scale(0.97, 1.03);
+  }
+}
+@keyframes parky-tilt {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  35%,
+  65% {
+    transform: rotate(-12deg);
+  }
+}
+@keyframes parky-look {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25%,
+  40% {
+    transform: translateX(-1.4px);
+  }
+  60%,
+  80% {
+    transform: translateX(1.4px);
+  }
+}
 .parky-eyes,
 .parky-mouth,
-.parky-wheel {
+.parky-wheel,
+.parky-body,
+.parky-pupils {
   transform-box: fill-box;
   transform-origin: center;
 }
@@ -447,6 +485,15 @@
   }
   .parky-bob {
     animation: parky-bob 3.2s ease-in-out infinite;
+  }
+  .parky-act-hop {
+    animation: parky-hop 0.7s ease-out 2;
+  }
+  .parky-act-tilt {
+    animation: parky-tilt 1.6s ease-in-out;
+  }
+  .parky-act-look .parky-pupils {
+    animation: parky-look 1.8s ease-in-out;
   }
 }
 

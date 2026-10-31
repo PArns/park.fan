@@ -3130,6 +3130,12 @@
     "locationDenied": "Your browser does not share your location. You can change that in its settings.",
     "locationShared": "Here is my location.",
     "cardWait": "{minutes} min",
-    "lookupGlossary": "Parky is checking the glossary …"
+    "lookupGlossary": "Parky is checking the glossary …",
+    "teaser1": "Hey, I am Parky – click me!",
+    "teaser2": "Click me and I will help!",
+    "teaser3": "Where is the queue short right now? Ask me!",
+    "teaser4": "Psst … I know the quietest days.",
+    "teaser5": "Fancy some airtime? I will plan your day.",
+    "teaser6": "Waits, weather, opening hours: just ask me!"
   }
 }

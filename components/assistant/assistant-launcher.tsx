@@ -7,12 +7,20 @@ import { cn } from '@/lib/utils';
 import { assistantGate } from '@/lib/assistant/config';
 import { useLazyMessages } from '@/i18n/use-lazy-messages';
 import { RouteMessagesProvider } from '@/i18n/route-messages-provider';
+import dynamic from 'next/dynamic';
 import { ParkyLogo } from './parky-logo';
+import { stopTeasers } from '@/lib/assistant/teaser-store';
 
 // Must stay in step with this file's entry in `LAZY_MESSAGE_BOUNDARIES`
 // (`lib/i18n/route-namespaces.mjs`).
 // `parks.status` and `parks.crowdLevels` are the badges on the cards Parky shows.
 const ASSISTANT_NAMESPACES = ['assistant', 'parks.status', 'parks.crowdLevels'] as const;
+
+// Loaded apart, like the window: its lines would otherwise put `assistant` into every page's chrome.
+const AssistantTeaser = dynamic(
+  () => import('./assistant-teaser').then((mod) => mod.AssistantTeaser),
+  { ssr: false }
+);
 
 const loadPanel = () => import('./assistant-panel').then((mod) => mod.AssistantPanel);
 type PanelComponent = Awaited<ReturnType<typeof loadPanel>>;
@@ -30,7 +38,7 @@ function LauncherButton({ open, onToggle }: { open: boolean; onToggle: () => voi
       aria-label={open ? t('assistantClose') : t('assistantOpen')}
       title={open ? undefined : t('assistantOpen')}
       className={cn(
-        'group fixed right-4 bottom-[max(1rem,env(safe-area-inset-bottom))] z-[45] grid size-14 place-items-center rounded-full',
+        'group fixed right-4 bottom-[max(1rem,env(safe-area-inset-bottom))] z-[45] grid size-14 place-items-center rounded-full sm:size-16',
         'planner-wide:right-[calc(var(--planner-inset,0px)+1rem)]',
         'animate-in fade-in zoom-in-90 transition-transform duration-200 hover:-translate-y-0.5 active:scale-95 motion-reduce:transition-none',
         'focus-visible:ring-primary focus-visible:ring-offset-background focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none',
@@ -46,7 +54,10 @@ function LauncherButton({ open, onToggle }: { open: boolean; onToggle: () => voi
             aria-hidden="true"
             className="from-primary/40 to-status-operating/40 absolute inset-1 rounded-full bg-gradient-to-br opacity-70 blur-lg transition-opacity group-hover:opacity-100"
           />
-          <ParkyLogo className="parky-bob relative size-14 drop-shadow-[0_6px_14px_rgb(0_0_0/0.35)]" />
+          <ParkyLogo
+            idle
+            className="parky-bob relative size-14 drop-shadow-[0_6px_14px_rgb(0_0_0/0.35)] sm:size-16"
+          />
         </>
       )}
     </button>
@@ -100,12 +111,19 @@ export function AssistantLauncher() {
   }, [shown]);
 
   const close = useCallback(() => setOpen(false), []);
+  /** Opening Parky once ends the teaser lines for the session. */
+  const openParky = useCallback(() => {
+    stopTeasers();
+    setOpen(true);
+  }, []);
   if (!visible || !messages.ready) return null;
 
   const content = (
     <>
       {Panel && <Panel open={open} onClose={close} />}
-      <LauncherButton open={open} onToggle={() => setOpen((value) => !value)} />
+      {/* Hidden while the window is open: the window's own ✕ and Escape close it. */}
+      {!open && <LauncherButton open={false} onToggle={openParky} />}
+      {!open && <AssistantTeaser onOpen={openParky} />}
     </>
   );
   return messages.messages ? (

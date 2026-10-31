@@ -3130,6 +3130,12 @@
     "locationDenied": "Tu navegador no comparte tu ubicación. Puedes cambiarlo en sus ajustes.",
     "locationShared": "Aquí está mi ubicación.",
     "cardWait": "{minutes} min",
-    "lookupGlossary": "Parky consulta el glosario …"
+    "lookupGlossary": "Parky consulta el glosario …",
+    "teaser1": "Hola, soy Parky – ¡haz clic en mí!",
+    "teaser2": "¡Haz clic en mí y te ayudo!",
+    "teaser3": "¿Dónde hay poca cola ahora? ¡Pregúntame!",
+    "teaser4": "Psst … conozco los días más tranquilos.",
+    "teaser5": "¿Te apetece airtime? Te planifico el día.",
+    "teaser6": "Esperas, tiempo, horarios: ¡pregúntame!"
   }
 }

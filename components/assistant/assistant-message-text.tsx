@@ -8,6 +8,7 @@ import { MapPin } from 'lucide-react';
 import { directionsHref, safeAssistantHref } from '@/lib/assistant/links';
 import { localizedPath } from '@/lib/assistant/actions';
 import { splitWaits } from '@/lib/assistant/wait-chips';
+import { useSmoothText } from '@/lib/assistant/use-smooth-text';
 import { LiveWaitPill } from '@/components/parks/live-wait-pill';
 
 const ALLOWED = ['p', 'strong', 'em', 'ul', 'ol', 'li', 'a', 'br'];
@@ -40,6 +41,8 @@ function withChips(children: ReactNode): ReactNode {
  */
 export function AssistantMessageText({ text }: { text: string }) {
   const locale = useLocale();
+  // Written out smoothly rather than in the stream's bursts.
+  const visible = useSmoothText(text);
   const components = useMemo<Components>(
     () => ({
       a: ({ href, children }) => {
@@ -77,7 +80,7 @@ export function AssistantMessageText({ text }: { text: string }) {
   );
   return (
     <ReactMarkdown skipHtml allowedElements={ALLOWED} unwrapDisallowed components={components}>
-      {text}
+      {visible}
     </ReactMarkdown>
   );
 }
