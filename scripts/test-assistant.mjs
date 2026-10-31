@@ -1,8 +1,8 @@
 /**
  * Parky, the chat assistant: the stream reader (`lib/assistant/sse.ts`), the link check on its
  * answers (`lib/assistant/links.ts`), the rollout gate (`lib/assistant/config.ts`), the post
- * text it reads (`lib/assistant/post-text.ts`) and how bored its face gets
- * (`lib/assistant/parky-boredom.ts`).
+ * text it reads (`lib/assistant/post-text.ts`), how bored its face gets
+ * (`lib/assistant/parky-boredom.ts`) and how a chat opens (`lib/assistant/opener.ts`).
  */
 
 import assert from 'node:assert/strict';
@@ -19,6 +19,14 @@ import {
   nextBoredomInMs,
   parkyBoredom,
 } from '@/lib/assistant/parky-boredom.ts';
+import {
+  drawOpener,
+  GREETING_KEYS,
+  sessionOpener,
+  SUGGESTION_KEYS,
+  SUGGESTIONS_SHOWN,
+} from '@/lib/assistant/opener.ts';
+import { pickRandom, pickSome } from '@/lib/utils/pick-random.ts';
 
 let passed = 0;
 function check(actual, expected, label) {
@@ -271,6 +279,42 @@ check(nextBoredomInMs(ASLEEP_AFTER_MS), null, 'only activity ends sleep');
   globalThis.setTimeout = realTimeout;
   globalThis.clearTimeout = realClear;
   performance.now = realNow;
+  delete globalThis.window;
+}
+for (let i = 0; i < 50; i++) {
+  if (pickRandom(['a', 'b'], 'a') !== 'b') throw new Error('pickRandom returned the excluded item');
+}
+check(pickRandom(['a'], 'a'), 'a', 'a list of one has nothing else to give');
+check(pickSome([1, 2, 3, 4], 4).sort(), [1, 2, 3, 4], 'picks each item once');
+check(pickSome([1, 2], 5).length, 2, 'never more than there are');
+
+// The opener on a stand-in sessionStorage: kept across a reload, a new chat draws again.
+{
+  const store = new Map();
+  globalThis.window = {
+    sessionStorage: {
+      getItem: (key) => store.get(key) ?? null,
+      setItem: (key, value) => store.set(key, value),
+    },
+  };
+  const first = sessionOpener();
+  check(GREETING_KEYS.includes(first.greeting), true, 'draws one of the greetings');
+  check(first.site.length, SUGGESTIONS_SHOWN, 'offers a few questions');
+  check(new Set(first.park).size, SUGGESTIONS_SHOWN, 'never the same question twice');
+  check(
+    first.park.every((key) => SUGGESTION_KEYS.park.includes(key)),
+    true,
+    'a park page asks about that park'
+  );
+  check(sessionOpener(), first, 'a reload keeps the opener');
+  const next = drawOpener(first);
+  check(next.greeting !== first.greeting, true, 'a new chat greets differently');
+  check(sessionOpener(), next, 'and keeps that');
+  store.set(
+    'parkfan:assistant-opener',
+    JSON.stringify({ greeting: 'greeting', site: [], park: [] })
+  );
+  check(GREETING_KEYS.includes(sessionOpener().greeting), true, 'a stale opener draws afresh');
   delete globalThis.window;
 }
 console.log(`assistant: ${passed} checks passed`);

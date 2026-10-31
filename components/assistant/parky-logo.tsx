@@ -2,6 +2,7 @@
 
 import { useEffect, useId, useRef, useState } from 'react';
 import { cn } from '@/lib/utils';
+import { pickRandom } from '@/lib/utils/pick-random';
 import { parkyBoredom } from '@/lib/assistant/parky-boredom';
 import { useParkyBoredom } from '@/lib/assistant/use-parky-boredom';
 
@@ -83,12 +84,6 @@ function useGaze(svg: React.RefObject<SVGSVGElement | null>) {
   return gaze;
 }
 
-/** A random act from `list`, never the one just played. */
-function pickAct(list: readonly ParkyAct[], previous: ParkyAct | null): ParkyAct {
-  const choices = list.filter((act) => act !== previous);
-  return choices[Math.floor(Math.random() * choices.length)];
-}
-
 /**
  * Parky's life while nothing happens, from the page-wide {@link parkyBoredom}: a little act now and
  * then with company, more and sleepier ones once bored, then eyes falling shut and sleep until
@@ -118,7 +113,7 @@ function useIdleAct(enabled: boolean) {
       // Asleep, the doze is the last act: the sleeping face takes over until somebody moves.
       if (boredom === 'asleep') return;
       const [shortest, spread] = PAUSE_MS[boredom];
-      play(shortest + Math.random() * spread, pickAct(ACTS[boredom], previous));
+      play(shortest + Math.random() * spread, pickRandom(ACTS[boredom], previous));
     };
     if (boredom === 'asleep') play(SETTLE_MS, 'doze');
     else if (boredom === 'bored') play(SETTLE_MS, 'yawn');
