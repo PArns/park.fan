@@ -1,6 +1,7 @@
 'use client';
 
 import { use } from 'react';
+import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { ExternalLink, MessageSquareHeart, MessagesSquare, Wrench } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -24,6 +25,7 @@ import {
   type ConversationDetail,
   type ConversationMessage,
 } from '../../_lib/assistant';
+import { DeleteChatButton } from '../../_lib/delete-chat';
 
 /**
  * One chat as it happened. Every text is rendered as plain text: what a visitor typed and what
@@ -33,6 +35,7 @@ export default function AssistantConversationPage({ params }: { params: Promise<
   const { id } = use(params);
   const path = `${ASSISTANT_API}/conversations/${id}`;
   const { data, error, refetch } = useAdminQuery<ConversationDetail>(adminKeys.raw(path), path);
+  const router = useRouter();
 
   if (error) return <ErrorState message={error.message} onRetry={refetch} />;
   if (!data) return <LoadingState label="Lädt Chat…" />;
@@ -44,14 +47,21 @@ export default function AssistantConversationPage({ params }: { params: Promise<
           icon={MessagesSquare}
           title={`Chat vom ${formatDateTime(data.createdAt)}`}
           action={
-            <a
-              href={`${SITE_ORIGIN}${data.startPath}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-primary inline-flex items-center gap-1 text-xs hover:underline"
-            >
-              Startseite <ExternalLink className="h-3 w-3" />
-            </a>
+            <div className="flex items-center gap-2">
+              <a
+                href={`${SITE_ORIGIN}${data.startPath}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-primary inline-flex items-center gap-1 text-xs hover:underline"
+              >
+                Startseite <ExternalLink className="h-3 w-3" />
+              </a>
+              <DeleteChatButton
+                id={data.id}
+                label={`Chat vom ${formatDateTime(data.createdAt)}`}
+                onDeleted={() => router.push('/admin/assistant/conversations')}
+              />
+            </div>
           }
         />
         <PanelBody className="grid grid-cols-2 gap-3 sm:grid-cols-5">

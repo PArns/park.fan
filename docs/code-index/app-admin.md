@@ -259,6 +259,10 @@ Route `/admin/analytics` (page).
 - `SITE_ORIGIN` _const_: The public site, for links to the page a chat or feedback came from.
 - Types: `AssistantSettings`, `ConversationRow`, `ToolCall`, `ConversationMessage`, `FeedbackEntry`, `FeedbackStatus`, `Page`, `ConversationDetail`, `AssistantStats`
 
+### [`assistant/_lib/delete-chat.tsx`](../../app/admin/assistant/_lib/delete-chat.tsx)
+
+- `DeleteChatButton` _component_: Deletes one chat with its messages after asking, from the list or the chat's own page. Feedback sent from the chat stays and only loses its link. `onDeleted` runs after the API said yes, e.g. to leave a page that no longer exists.
+
 ### [`assistant/conversations/[id]/page.tsx`](../../app/admin/assistant/conversations/%5Bid%5D/page.tsx)
 
 Route `/admin/assistant/conversations/[id]` (page).
