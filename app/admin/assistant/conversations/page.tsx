@@ -24,6 +24,7 @@ import {
   type ConversationRow,
   type Page,
 } from '../_lib/assistant';
+import { DeleteChatButton } from '../_lib/delete-chat';
 
 type RatingFilter = 'all' | 'down' | 'up';
 
@@ -85,10 +86,10 @@ export default function AssistantConversationsPage() {
         ) : (
           <ul className="divide-border/40 divide-y">
             {data.items.map((chat) => (
-              <li key={chat.id}>
+              <li key={chat.id} className="hover:bg-muted/30 flex items-center gap-2 pr-2">
                 <Link
                   href={`/admin/assistant/conversations/${chat.id}`}
-                  className="hover:bg-muted/30 flex flex-wrap items-center gap-x-4 gap-y-1 px-4 py-2.5 text-sm"
+                  className="flex min-w-0 flex-1 flex-wrap items-center gap-x-4 gap-y-1 px-4 py-2.5 text-sm"
                 >
                   <span className="text-muted-foreground w-28 shrink-0 tabular-nums">
                     {formatDateTime(chat.createdAt)}
@@ -108,6 +109,11 @@ export default function AssistantConversationsPage() {
                     {chat.rating < 0 ? '👎' : chat.rating > 0 ? '👍' : ''}
                   </span>
                 </Link>
+                <DeleteChatButton
+                  id={chat.id}
+                  label={chat.firstQuestion ?? formatDateTime(chat.createdAt)}
+                  compact
+                />
               </li>
             ))}
           </ul>
