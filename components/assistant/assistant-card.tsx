@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, type ReactNode } from 'react';
 import Image from 'next/image';
 import NextLink from 'next/link';
 import { useLocale } from 'next-intl';
@@ -21,8 +21,8 @@ function slugsOf(url: string | null): { park: string; ride?: string } | null {
   return park ? { park, ride: parts[at + 5] } : null;
 }
 
-/** The card's photo from the site's card-image map, the one park and ride cards use. */
-function useCardPhoto(url: string | null): [string, string] | null {
+/** The site's card-image map, the one park and ride cards use; null until it has loaded. */
+function useCardImageMap(): CardImageMap | null {
   const [map, setMap] = useState<CardImageMap | null>(null);
   useEffect(() => {
     let live = true;
@@ -33,6 +33,11 @@ function useCardPhoto(url: string | null): [string, string] | null {
       live = false;
     };
   }, []);
+  return map;
+}
+
+/** `[src, objectPosition]` of the photo for a park or ride page, or null. */
+function photoFor(map: CardImageMap | null, url: string | null): [string, string] | null {
   const slugs = slugsOf(url);
   if (!map || !slugs) return null;
   const table = slugs.ride ? map.rides : map.parks;
@@ -49,30 +54,130 @@ function clock(iso: string | null, locale: string): string | null {
     : at.toLocaleTimeString(locale, { hour: '2-digit', minute: '2-digit' });
 }
 
-/** One ride with its wait, in the chips the site's in-park lists use. */
-function RideRow({ name, waitMinutes }: { name: string; waitMinutes: number }) {
+/** A link to a park.fan page in the reader's language, or its children unlinked. */
+function MaybeLink({
+  url,
+  className,
+  children,
+}: {
+  url: string | null | undefined;
+  className?: string;
+  children: ReactNode;
+}) {
+  const locale = useLocale();
+  return url ? (
+    <NextLink href={localizedPath(url, locale)} className={className}>
+      {children}
+    </NextLink>
+  ) : (
+    <div className={className}>{children}</div>
+  );
+}
+
+/** One ride with its wait, in the chips the site's in-park lists use; a link to it when it has one. */
+function RideRow({
+  name,
+  waitMinutes,
+  url,
+}: {
+  name: string;
+  waitMinutes: number;
+  url?: string | null;
+}) {
   return (
-    <li className="flex items-center justify-between gap-2">
-      <span className="truncate">{name}</span>
-      <LiveWaitPill minutes={waitMinutes} className="shrink-0 px-2 py-0.5 text-[11px]" />
+    <li>
+      <MaybeLink
+        url={url}
+        className={cn(
+          '-mx-1.5 flex items-center justify-between gap-2 rounded-md px-1.5 py-0.5',
+          url && 'hover:bg-muted/60'
+        )}
+      >
+        <span className="truncate">{name}</span>
+        <LiveWaitPill minutes={waitMinutes} className="shrink-0 px-2 py-0.5 text-[11px]" />
+      </MaybeLink>
     </li>
   );
 }
 
+const FRAME =
+  'border-border/60 bg-background/70 mt-2 overflow-hidden rounded-xl border text-xs transition-colors';
+
 /**
- * A park, a ride or a park's rides as a card in Parky's chat: the site's own status, crowd and
- * wait chips on live data, the whole card a link to its page. The API builds the data; nothing
- * here is model text.
+ * A park, a ride, a park's rides or a few parks as a card in Parky's chat: the site's own status,
+ * crowd and wait chips and photos on live data. A single park or ride is one link; in a list every
+ * row links its own page. The API builds the data; nothing here is model text.
  */
 export function AssistantCardView({ card }: { card: AssistantCard }) {
   const locale = useLocale();
+  const map = useCardImageMap();
+
+  if (card.kind === 'parks') {
+    return (
+      <ul className={cn(FRAME, 'divide-border/50 divide-y')}>
+        {card.parks.map((park) => {
+          const photo = photoFor(map, park.url);
+          return (
+            <li key={park.name}>
+              <MaybeLink
+                url={park.url}
+                className="group hover:bg-muted/50 flex items-center gap-3 p-2"
+              >
+                <div className="bg-muted relative h-10 w-16 shrink-0 overflow-hidden rounded-lg">
+                  {photo && (
+                    <Image
+                      src={photo[0]}
+                      alt=""
+                      fill
+                      sizes="64px"
+                      className="object-cover"
+                      style={{ objectPosition: photo[1] }}
+                    />
+                  )}
+                </div>
+                <div className="min-w-0 flex-1">
+                  <p className="truncate text-sm font-semibold">{park.name}</p>
+                  {park.place && <p className="text-muted-foreground truncate">{park.place}</p>}
+                </div>
+                {park.url && (
+                  <ChevronRight className="text-muted-foreground group-hover:text-primary size-4 shrink-0" />
+                )}
+              </MaybeLink>
+            </li>
+          );
+        })}
+      </ul>
+    );
+  }
+
+  if (card.kind === 'rides') {
+    return (
+      <div className={cn(FRAME, 'p-3')}>
+        <MaybeLink
+          url={card.url}
+          className="group flex items-center justify-between gap-2 text-sm font-semibold"
+        >
+          <span className="truncate">{card.park}</span>
+          {card.url && (
+            <ChevronRight className="text-muted-foreground group-hover:text-primary size-4 shrink-0" />
+          )}
+        </MaybeLink>
+        <ul className="mt-2 space-y-1">
+          {card.rides.map((ride) => (
+            <RideRow key={ride.name} {...ride} />
+          ))}
+        </ul>
+      </div>
+    );
+  }
+
   const opens = card.kind === 'park' ? clock(card.opens, locale) : null;
   const closes = card.kind === 'park' ? clock(card.closes, locale) : null;
   const subtitle = card.kind === 'park' ? card.place : card.park;
-  const photo = useCardPhoto(card.url);
+  const photo = photoFor(map, card.url);
 
-  const body = (
-    <div className="border-border/60 bg-background/70 hover:border-primary/40 group mt-2 overflow-hidden rounded-xl border text-xs transition-colors">
+  return (
+    <MaybeLink url={card.url} className={cn(FRAME, 'group hover:border-primary/40 block')}>
       {photo && (
         <div className="relative h-24 w-full">
           <Image
@@ -89,55 +194,34 @@ export function AssistantCardView({ card }: { card: AssistantCard }) {
       <div className={cn('p-3', photo && 'relative -mt-6')}>
         <div className="flex items-start justify-between gap-2">
           <div className="min-w-0">
-            <p className="truncate text-sm font-semibold">
-              {card.kind === 'rides' ? card.park : card.name}
-            </p>
-            {card.kind !== 'rides' && subtitle && (
-              <p className="text-muted-foreground truncate">{subtitle}</p>
-            )}
+            <p className="truncate text-sm font-semibold">{card.name}</p>
+            {subtitle && <p className="text-muted-foreground truncate">{subtitle}</p>}
           </div>
           {card.url && (
             <ChevronRight className="text-muted-foreground group-hover:text-primary mt-0.5 size-4 shrink-0" />
           )}
         </div>
-        {card.kind !== 'rides' && (
-          <div className="mt-2 flex flex-wrap items-center gap-1.5">
-            {card.status && <ParkStatusBadge status={card.status as ParkStatus} />}
-            {card.crowdLevel && <CrowdLevelBadge level={card.crowdLevel as CrowdLevel} />}
-            {card.kind === 'ride' && card.waitMinutes != null && (
-              <LiveWaitPill minutes={card.waitMinutes} className="px-2 py-0.5 text-[11px]" />
-            )}
-            {opens && closes && (
-              <span className="text-muted-foreground inline-flex items-center gap-1">
-                <Clock className="size-3" />
-                {opens}–{closes}
-              </span>
-            )}
-          </div>
-        )}
+        <div className="mt-2 flex flex-wrap items-center gap-1.5">
+          {card.status && <ParkStatusBadge status={card.status as ParkStatus} />}
+          {card.crowdLevel && <CrowdLevelBadge level={card.crowdLevel as CrowdLevel} />}
+          {card.kind === 'ride' && card.waitMinutes != null && (
+            <LiveWaitPill minutes={card.waitMinutes} className="px-2 py-0.5 text-[11px]" />
+          )}
+          {opens && closes && (
+            <span className="text-muted-foreground inline-flex items-center gap-1">
+              <Clock className="size-3" />
+              {opens}–{closes}
+            </span>
+          )}
+        </div>
         {card.kind === 'park' && card.waits.length > 0 && (
-          <ul className="border-border/60 mt-2 space-y-1.5 border-t pt-2">
+          <ul className="border-border/60 mt-2 space-y-1 border-t pt-2">
             {card.waits.map((ride) => (
-              <RideRow key={ride.name} {...ride} />
-            ))}
-          </ul>
-        )}
-        {card.kind === 'rides' && (
-          <ul className="mt-2 space-y-1.5">
-            {card.rides.map((ride) => (
-              <RideRow key={ride.name} {...ride} />
+              <RideRow key={ride.name} name={ride.name} waitMinutes={ride.waitMinutes} />
             ))}
           </ul>
         )}
       </div>
-    </div>
-  );
-
-  return card.url ? (
-    <NextLink href={localizedPath(card.url, locale)} className="block">
-      {body}
-    </NextLink>
-  ) : (
-    body
+    </MaybeLink>
   );
 }
