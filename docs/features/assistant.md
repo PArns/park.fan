@@ -105,6 +105,14 @@ move or press, a key, the mouse wheel or a touch.
 | `bored`  | 25 s      | yawns, then every 5–9 s whistles, blows a gum bubble that pops, rolls its eyes, looks around, reads or naps    |
 | `asleep` | 75 s      | eyes fall shut, it breathes slowly under rising Zs, the hat stops; activity wakes it with a "!"                |
 
+Parky's hat is a Ferris wheel on an A-frame that stands on its head, with eight coloured cabins.
+The cabins are circles, so they need no counter-turn to hang straight while the wheel spins, and a
+light edge under the rim and the frame keeps the hat legible over any page. It rises about 9 of the
+drawing's 48 units above the face, and the open window keeps room for it: the header (`z-50`) lies
+above the window (`z-[45]`), with a scrim 32 px below the bar on a hero page, so the window starts
+112 px from the top on a phone and caps its height at the screen minus 10rem on a desktop. Parky
+then rises over the window's edge without anything laid over its hat.
+
 The store keeps one timer for the next stage, so a moving pointer costs a timestamp. Each act's
 length is written once, in `ACT_MS`; the stylesheet reads it as `--parky-act`. Under reduced
 motion the store answers `null` and Parky only shows its moods.

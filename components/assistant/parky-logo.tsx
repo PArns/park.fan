@@ -49,6 +49,29 @@ const PUPIL_REACH = 2.2;
 /** The eyes' centres on the x axis, left and right. */
 const EYES = [17, 31] as const;
 
+const ink = 'oklch(0.25 0.03 240)';
+const blue = 'oklch(0.628 0.137 241.275)';
+const green = 'oklch(0.752 0.181 146.391)';
+const pink = 'oklch(0.8 0.13 355)';
+
+/**
+ * The hat, a Ferris wheel: its hub above Parky's head, its A-frame standing on it. Cabins are
+ * circles, so they need no turning back to hang straight while the wheel spins.
+ */
+const HUB = { x: 32.5, y: -1 };
+const RIM = 6.5;
+const CABINS = Array.from({ length: 8 }, (_, i) => ({
+  x: +(HUB.x + RIM * Math.sin((i * Math.PI) / 4)).toFixed(2),
+  y: +(HUB.y - RIM * Math.cos((i * Math.PI) / 4)).toFixed(2),
+}));
+const CABIN_COLOURS = ['oklch(0.72 0.17 355)', 'oklch(0.86 0.15 90)', green, 'oklch(0.76 0.16 55)'];
+const SPOKES = CABINS.slice(0, 4)
+  .map(({ x, y }) => `M${x} ${y}L${+(2 * HUB.x - x).toFixed(2)} ${+(2 * HUB.y - y).toFixed(2)}`)
+  .join('');
+// The legs end inside the head, which is drawn over them.
+const A_FRAME = `M${HUB.x} ${HUB.y}L27.5 10.5M${HUB.x} ${HUB.y}L37 13.5`;
+const frame = 'oklch(0.48 0.1 245)';
+
 /**
  * The pupils' offset towards the pointer, so Parky looks at the mouse. Only for a fine pointer and
  * without reduced motion; one frame at most per pointer move.
@@ -143,11 +166,11 @@ const PONDER_GAZE = { x: 1.8, y: -2.4 };
 
 /**
  * Parky's face: a speech bubble in the brand's blue to green with big eyes that follow the mouse,
- * rosy cheeks and a smile, and a small Ferris wheel for a hat. It blinks, shows its
- * {@link ParkyMood}, and while `idle` fidgets, twirls, dances and reads, gets bored when nobody
- * moves (it yawns, whistles, blows gum, rolls its eyes, naps) and falls asleep after a long quiet
- * spell. The motion lives in `app/globals.css` (`.parky-*`) and only runs without
- * `prefers-reduced-motion`.
+ * rosy cheeks and a smile, and for a hat a Ferris wheel with coloured cabins on an A-frame. It
+ * blinks, shows its {@link ParkyMood}, and while `idle` fidgets, twirls, dances and reads, gets
+ * bored when nobody moves (it yawns, whistles, blows gum, rolls its eyes, naps) and falls asleep
+ * after a long quiet spell. The motion lives in `app/globals.css` (`.parky-*`) and only runs
+ * without `prefers-reduced-motion`.
  */
 export function ParkyLogo({
   className,
@@ -176,10 +199,6 @@ export function ParkyLogo({
         ? READING_GAZE
         : mouseGaze;
   const sleeping = asleep || act === 'nap';
-  const ink = 'oklch(0.25 0.03 240)';
-  const blue = 'oklch(0.628 0.137 241.275)';
-  const green = 'oklch(0.752 0.181 146.391)';
-  const pink = 'oklch(0.8 0.13 355)';
   return (
     <svg
       ref={svg}
@@ -254,7 +273,7 @@ export function ParkyLogo({
           asleep && 'parky-asleep'
         )}
       >
-        {/* The hat: a small Ferris wheel on the bubble's top right. */}
+        {/* The hat: a Ferris wheel standing on Parky's head. */}
         <g
           className={cn(
             'parky-wheel',
@@ -266,15 +285,39 @@ export function ParkyLogo({
               'parky-wheel--turning'
           )}
         >
-          <circle cx="36" cy="9" r="7" fill="white" stroke={blue} strokeWidth="1.6" />
-          <path
-            d="M36 2.5v13M29.5 9h13M31.4 4.4l9.2 9.2M40.6 4.4l-9.2 9.2"
-            stroke={blue}
-            strokeWidth="1.1"
-            strokeLinecap="round"
+          {/* A light edge under the rim and the frame keeps the hat legible on any page. */}
+          <circle
+            cx={HUB.x}
+            cy={HUB.y}
+            r={RIM}
+            fill="none"
+            stroke="white"
+            strokeOpacity=".8"
+            strokeWidth="2.6"
           />
-          <circle cx="36" cy="9" r="1.6" fill={green} />
+          <circle cx={HUB.x} cy={HUB.y} r={RIM} fill="none" stroke={blue} strokeWidth="1.3" />
+          <path d={SPOKES} stroke={blue} strokeOpacity=".75" strokeWidth=".55" />
+          {CABINS.map((cabin, i) => (
+            <circle
+              key={`${cabin.x} ${cabin.y}`}
+              cx={cabin.x}
+              cy={cabin.y}
+              r="1.45"
+              fill={CABIN_COLOURS[i % CABIN_COLOURS.length]}
+              stroke="white"
+              strokeWidth=".5"
+            />
+          ))}
         </g>
+        <path
+          d={A_FRAME}
+          stroke="white"
+          strokeOpacity=".8"
+          strokeWidth="2.7"
+          strokeLinecap="round"
+        />
+        <path d={A_FRAME} stroke={frame} strokeWidth="1.5" strokeLinecap="round" />
+        <circle cx={HUB.x} cy={HUB.y} r="1.3" fill="white" stroke={frame} strokeWidth=".8" />
         {/* The body: a round bubble with its tail at the lower left. */}
         <path
           d="M24 7c11 0 20 8.1 20 18.2S35 43.4 24 43.4c-2.5 0-4.9-.4-7.1-1.1L7.5 46l2.3-8C6.1 34.7 4 30.2 4 25.2 4 15.1 13 7 24 7Z"
