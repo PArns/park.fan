@@ -72,9 +72,9 @@ Für Allerheiligen, Sonntag, den 1. November 2026, hat das Phantasialand angekü
 
 ## Was im Phantasialand am 22. November läuft
 
-### Welche Bahnen am Totensonntag fahren und welche zu sind
+### Bahnen und Außenbeschallung am Totensonntag
 
-Ein Winterprogramm gibt es seit 2002, in diesem Winter läuft der Wintertraum vom 14. November 2026 bis zum 24. Januar 2027, jeweils von 11 bis 20 Uhr. Wenn du im Winter ein zweites Mal kommen willst: Zu ist an Heiligabend, am ersten Weihnachtstag, an Neujahr und am 12. und 13. Januar, an Silvester schließt der Park schon um 18 Uhr.
+Ein Winterprogramm gibt es seit 2002, in diesem Winter läuft der Wintertraum vom 14. November 2026 bis zum 24. Januar 2027, jeweils von 11 bis 20 Uhr. Zu ist der Park im Wintertraum an Heiligabend, am ersten Weihnachtstag, an Neujahr und am 12. und 13. Januar, an Silvester schließt er um 18 Uhr.
 
 Auf der Seite mit den Informationen zum Besuch schreibt das Phantasialand: „Am Sonntag 22. November 2026 finden aufgrund des stillen Feiertages (Totensonntag) alle Shows ab 18:00 Uhr statt.“ Dass auch die Außenbeschallung in den Themenwelten bis 18 Uhr ausbleibt, steht nur auf den englischen Seiten des Parks, etwa in der Übersicht der Attraktionen und bei der Show Nobis:
 
@@ -85,7 +85,7 @@ Auf der Seite mit den Informationen zum Besuch schreibt das Phantasialand: „Am
 >
 > Phantasialand auf der [englischen Übersicht der Attraktionen](https://www.phantasialand.de/en/theme-park/one-of-a-kind-attractions/attractions-overview-summer/), aus dem Englischen übersetzt
 
-Ich war 2024 am 24. und 2025 am 23. November, also an beiden Totensonntagen, im Phantasialand. Es ist kein normaler Tag, ohne Musik aus den Lautsprechern fühlt sich der Park bis 18 Uhr anders an, so still, wie es zum Gedenktag passt. Erst an diesem Tag merkt man, wie viel die Musik von IMAscore ausmacht. Das Studio aus Paderborn, 2009 gegründet, komponiert Musik für Freizeitparks und hat im Phantasialand unter anderem die Soundtracks der Themenbereiche Klugheim mit Taron und Raik und Rookburgh mit F.L.Y. geschrieben, die bis 18 Uhr ohne ihre Musik auskommen müssen. Zur Musik in Gebäuden und Bahnen sagt der Park nichts. Was die Leute vor dir in der Warteschlange von [Taron](ref:phantasialand/taron) bis 18 Uhr erzählen, regelt das Gesetz nicht.
+Ich war 2024 am 24. und 2025 am 23. November, also an beiden Totensonntagen, im Phantasialand. Für mich war das beide Male kein normaler Parktag. Bis 18 Uhr fehlt die Musik aus den Lautsprechern, und erst dann fällt mir auf, wie viel die Musik von IMAscore im Phantasialand trägt. Das Studio aus Paderborn, 2009 gegründet, komponiert für Freizeitparks und hat hier unter anderem die Soundtracks von Klugheim mit Taron und Raik und von Rookburgh mit F.L.Y. geschrieben. Ob in den Hallen und auf den Bahnen Musik läuft, hat der Park nicht angekündigt. Was die Leute vor dir in der Warteschlange von [Taron](ref:phantasialand/taron) erzählen, regelt das Gesetz übrigens nicht.
 
 Im Wintertraum hat das Phantasialand unter anderem [Taron](ref:phantasialand/taron), [F.L.Y.](ref:phantasialand/fly), [Black Mamba](ref:phantasialand/black-mamba), [Chiapas](ref:phantasialand/chiapas-die-wasserbahn) und [Maus au Chocolat](ref:phantasialand/maus-au-chocolat) geöffnet. Drei Wasserattraktionen fehlen: [River Quest](ref:phantasialand/river-quest) ist schon ab dem 2. November zu, Wakobato und Wözl’s Wassertreter ab dem 14. November. Mit dem Feiertag hat das nichts zu tun, alle drei bleiben bis zum Ende des Wintertraums am 24. Januar 2027 geschlossen.
 
@@ -100,13 +100,13 @@ Auf der Showseite verspricht der Park für den Abend ausdrücklich „alle unser
 
 Jede Theatershow hat einen Ruhetag in der Woche, Spectaculum Phantastère montags, Der goldene Faden dienstags und Arctaris mittwochs. Die letzte Show vor Parkschluss ist Magic Symphony auf dem Kaiserplatz in der Themenwelt Berlin. Bei schlechtem Wetter kann sie ausfallen, dann gibt es laut Park stattdessen „Good Night Wish“ aus Musik und Licht.
 
-Zwei Stunden für drei Theatershows, vier Shows im Freien und die Bahnen sind knapp. Ich würde mir eine Theatershow aussuchen, die ich auf jeden Fall sehen will, und den Rest des Abends davon abhängig machen, wann sie anfängt.
+Alle sieben Shows und noch eine Fahrt passen nicht zwischen 18 und 20 Uhr. Ich würde mir eine Theatershow aussuchen, die ich auf jeden Fall sehen will, und den Rest des Abends davon abhängig machen, wann sie anfängt.
 
 ## Wie voll es am Totensonntag wird
 
 Ich rechne mit einem vollen Park. Der Totensonntag liegt am zweiten Wochenende des Wintertraums, und sonntags spielen alle drei Theatershows. Und mit 34 € ist er der günstigste Wochenendtag des Wintertraums im November.
 
-Um Wochenenden und Tage unter der Woche in Brühl geht es in [Leere Tage im Phantasialand](/blog/phantasialand-wartezeiten-leere-tage), um den Winter in anderen Parks in [Freizeitparks im Winter 2026/27](/blog/winter-freizeitparks-2026). Im [Kalender auf der Parkseite](ref:phantasialand?calendar) stehen die Wartezeiten von heute.
+Unser Beitrag [Leere Tage im Phantasialand](/blog/phantasialand-wartezeiten-leere-tage) vergleicht die Wochenenden in Brühl mit den Tagen unter der Woche. Die Wartezeiten von heute stehen im [Kalender auf der Parkseite](ref:phantasialand?calendar).
 
 ```ride-waits-widget rides=phantasialand/taron|Taron;phantasialand/fly|F.L.Y.;phantasialand/black-mamba|Black Mamba;phantasialand/chiapas-die-wasserbahn|Chiapas;phantasialand/maus-au-chocolat|Maus au Chocolat columns=land,peak,days highlight=phantasialand/taron
 
@@ -126,7 +126,7 @@ Um 18 Uhr gehst du zu deiner Theatershow. Danach bleibt Zeit für eine der Shows
 
 ## Tickets und Parken am 22. November
 
-Das Phantasialand verkauft seine Tickets nur online und nur für einen festen Tag. Am Besuchstag kannst du bis 14 Uhr noch eins kaufen, Kinder bis drei Jahre sind frei. Die Preise für Kinder zeigt der Shop erst, wenn du ein Datum ausgewählt hast.
+Das Phantasialand verkauft seine Tickets nur online und nur für einen festen Tag. Am Besuchstag kannst du bis 14 Uhr noch eins kaufen, Kinder bis drei Jahre sind frei. Den Kinderpreis siehst du im Shop erst nach der Wahl des Datums.
 
 Preise für Erwachsene ab 12 Jahren an den Wochenenden des Wintertraums im November, Stand 31. Oktober 2026:
 
@@ -139,7 +139,7 @@ Preise für Erwachsene ab 12 Jahren an den Wochenenden des Wintertraums im Novem
 | Samstag, 28. November | 69 €                   |
 | Sonntag, 29. November | 35 €                   |
 
-Der günstigste Novembertag kostet 31 €, und im Shop steht dazu, dass die Preise jederzeit steigen können. Für 34 € fährst du am Totensonntag dieselben neun Stunden wie am Samstag darauf für 69 €, nur mit Shows erst ab 18 Uhr.
+Der günstigste Novembertag kostet 31 €, und im Shop steht dazu, dass die Preise jederzeit steigen können.
 
 Geparkt wird auf den Parkplätzen Mystery (P1) und China (P2). Ein Auto kostet 8 €, bar oder mit Karte, und reservieren kann man nicht. Die Adresse fürs Navi ist Berggeiststraße 31-41 in 50321 Brühl.
 
@@ -165,7 +165,7 @@ Laut den englischen Seiten des Parks läuft die Außenbeschallung in den Themenw
 
 ### Wie voll ist das Phantasialand am Totensonntag?
 
-Ich rechne am 22. November 2026 mit einem vollen Park: Der Wintertraum hat erst eine Woche vorher begonnen, sonntags spielen alle drei Theatershows, und der Park hat bis 20 Uhr offen.
+Ich rechne am 22. November 2026 mit einem vollen Park, weil der Wintertraum erst eine Woche vorher begonnen hat, sonntags alle drei Theatershows spielen und der Tag mit 34 € der günstigste Wochenendtag im November ist.
 
 ### Was kostet das Phantasialand am Totensonntag?
 
@@ -192,4 +192,4 @@ River Quest ist ab dem 2. November 2026 zu, Wakobato und Wözl’s Wassertreter 
 - Tickets und Preise: [Preise und Tickets (offiziell)](https://www.phantasialand.de/de/themenpark/preise-und-tickets/) · [Ticketshop, November 2026 (offiziell)](https://shop.phantasialand.de/de/produkte/themenpark-tickets/2026-11)
 - Parken und Anreise: [Anfahrt und Shuttlebus (offiziell)](https://www.phantasialand.de/de/themenpark/informationen-und-anreise/anfahrt-und-shuttlebus/)
 - Wartezeiten: Wartezeiten nach Uhrzeit aus dem Wintertraum vom 26. Dezember 2025 bis zum 24. Januar 2026, [Phantasialand auf park.fan](ref:phantasialand)
-- Weitere Beiträge: [Phantasialand-Guide](/blog/phantasialand-tipps) · [Leere Tage im Phantasialand](/blog/phantasialand-wartezeiten-leere-tage) · [Freizeitparks im Winter 2026/27](/blog/winter-freizeitparks-2026)
+- Weitere Beiträge: [Phantasialand-Guide](/blog/phantasialand-tipps) · [Leere Tage im Phantasialand](/blog/phantasialand-wartezeiten-leere-tage) · [Freizeitparks im Winter 2026/27](/blog/winter-freizeitparks-2026) · [Freizeitparks im Winter 2026/27](/blog/winter-freizeitparks-2026)
