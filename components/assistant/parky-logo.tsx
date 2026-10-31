@@ -87,29 +87,43 @@ function useAct(thinking: boolean, idle: boolean) {
 }
 
 /**
+ * What Parky is busy with, each with its own look: `thinking` (waiting for the first word) gazes
+ * up beside thought bubbles, `looking` (a lookup is running) scans left and right while its hat
+ * spins, `talking` (the answer is written) moves its mouth and nods.
+ */
+export type ParkyMood = 'thinking' | 'looking' | 'talking';
+
+/** Where the pupils rest while Parky ponders: up and to the side. */
+const PONDER_GAZE = { x: 1.8, y: -2.4 };
+
+/**
  * Parky's face: a speech bubble in the brand's blue to green with big eyes that follow the mouse,
- * rosy cheeks and a smile, and a small Ferris wheel for a hat. It blinks now and then; with
- * `talking` the wheel turns and the mouth opens, and with `thinking` it hops, tilts, looks around
- * or spins its hat at random. The motion lives in `app/globals.css` (`.parky-*`) and only runs
- * without `prefers-reduced-motion`.
+ * rosy cheeks and a smile, and a small Ferris wheel for a hat. It blinks now and then, acts at
+ * random while `idle`, and shows its {@link ParkyMood}. The motion lives in `app/globals.css`
+ * (`.parky-*`) and only runs without `prefers-reduced-motion`.
  */
 export function ParkyLogo({
   className,
+  mood,
   talking = false,
-  thinking = false,
   idle = false,
 }: {
   className?: string;
+  mood?: ParkyMood | null;
+  /** Shorthand for `mood="talking"`. */
   talking?: boolean;
-  thinking?: boolean;
   /** Now and then a little act while nothing happens, for the closed button. */
   idle?: boolean;
 }) {
+  const state: ParkyMood | null = mood ?? (talking ? 'talking' : null);
   // Two marks are on screen at once (button and window header); each needs its own gradient id.
   const ground = useId();
   const svg = useRef<SVGSVGElement>(null);
-  const gaze = useGaze(svg);
-  const act = useAct(thinking, idle);
+  const mouseGaze = useGaze(svg);
+  const gaze =
+    state === 'thinking' ? PONDER_GAZE : state === 'looking' ? { x: 0, y: 0 } : mouseGaze;
+  // A mood has its own motion; the random acts are for an idle face only.
+  const act = useAct(false, idle && !state);
   const ink = 'oklch(0.25 0.03 240)';
   const blue = 'oklch(0.628 0.137 241.275)';
   return (
@@ -125,12 +139,28 @@ export function ParkyLogo({
           <stop offset="1" stopColor="oklch(0.752 0.181 146.391)" />
         </linearGradient>
       </defs>
-      <g key={act ?? 'still'} className={cn('parky-body', act)}>
+      {state === 'thinking' && (
+        <g
+          className="parky-thoughts"
+          fill="white"
+          stroke="oklch(0.628 0.137 241.275)"
+          strokeWidth=".8"
+        >
+          <circle cx="7" cy="9" r="1.5" />
+          <circle cx="3.5" cy="4.5" r="2" />
+          <circle cx="-1" cy="-1" r="2.7" />
+        </g>
+      )}
+      <g
+        key={act ?? state ?? 'still'}
+        className={cn('parky-body', act, state && `parky-mood-${state}`)}
+      >
         {/* The hat: a small Ferris wheel on the bubble's top right. */}
         <g
           className={cn(
             'parky-wheel',
-            (talking || act === 'parky-act-spin') && 'parky-wheel--turning'
+            (state === 'talking' || state === 'looking' || act === 'parky-act-spin') &&
+              'parky-wheel--turning'
           )}
         >
           <circle cx="36" cy="9" r="7" fill="white" stroke={blue} strokeWidth="1.6" />
@@ -161,7 +191,7 @@ export function ParkyLogo({
         </g>
         <ellipse cx="10.8" cy="31" rx="2.4" ry="1.4" fill="oklch(0.78 0.12 15)" opacity=".7" />
         <ellipse cx="37.2" cy="31" rx="2.4" ry="1.4" fill="oklch(0.78 0.12 15)" opacity=".7" />
-        {talking ? (
+        {state === 'talking' ? (
           <ellipse className="parky-mouth" cx="24" cy="33.5" rx="3" ry="2.2" fill={ink} />
         ) : (
           <path
