@@ -6,9 +6,9 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Am Totensonntag, dem 22. November 2026, hat das Phantasialand von 11 bis 20 Uhr geöffnet, die
-  Shows und die Musik beginnen erst um 18 Uhr. Leer wird es trotzdem nicht, denn der Wintertraum ist
-  dann in seinem zweiten Wochenende. Das Tagesticket für Erwachsene kostet an diesem Sonntag 34 €.
+  Am Totensonntag, dem 22. November 2026, hat das Phantasialand von 11 bis 20 Uhr geöffnet, und das
+  Tagesticket für Erwachsene kostet 34 €. Shows und Außenbeschallung beginnen erst um 18 Uhr. Leer
+  wird es trotzdem nicht, denn der Wintertraum hat dann sein zweites Wochenende.
 tags:
   - phantasialand
   - wintertraum
@@ -27,14 +27,12 @@ rideLinks:
   - phantasialand/black-mamba
   - phantasialand/chiapas-die-wasserbahn
   - phantasialand/maus-au-chocolat
-  - phantasialand/winjas-fear
-  - phantasialand/winjas-force
   - phantasialand/river-quest
 seo:
-  title: 'Phantasialand am Totensonntag 2026: Shows und Musik erst ab 18 Uhr'
+  title: 'Phantasialand am Totensonntag 2026: Shows erst ab 18 Uhr'
   description: >-
-    Phantasialand am 22. November 2026: geöffnet von 11 bis 20 Uhr, Shows und Musik erst ab 18 Uhr,
-    Ticket 34 €. Was das Feiertagsgesetz in NRW verbietet.
+    Phantasialand am 22. November 2026: offen von 11 bis 20 Uhr, Shows und Außenbeschallung erst ab
+    18 Uhr, Ticket 34 €. Was das Feiertagsgesetz NRW verbietet.
   keywords:
     - phantasialand totensonntag
     - phantasialand totensonntag shows
@@ -46,19 +44,18 @@ seo:
     - phantasialand wartezeiten
     - phantasialand auslastung
     - wie voll ist das phantasialand
-    - phantasialand wann am wenigsten los
     - phantasialand volkstrauertag
 ---
 
-Am Totensonntag, dem 22. November 2026, hat das [Phantasialand](ref:phantasialand) in Brühl von 11 bis 20 Uhr geöffnet. Die Shows beginnen an diesem Sonntag erst um 18 Uhr, und auf seinen englischen Seiten schreibt der Park dazu, dass bis dahin auch die Außenbeschallung aus bleibt. Für die Bahnen bleiben sieben Stunden ohne Musik aus den Lautsprechern, danach kommen zwei Stunden mit den Wintershows und um kurz vor acht Magic Symphony auf dem Kaiserplatz.
+Am Totensonntag, dem 22. November 2026, hat das [Phantasialand](ref:phantasialand) in Brühl von 11 bis 20 Uhr geöffnet. Die Shows beginnen an diesem Sonntag erst um 18 Uhr. Sieben Stunden fährst du ohne Außenbeschallung, dann folgen zwei Stunden Wintershows und kurz vor acht Magic Symphony auf dem Kaiserplatz.
 
-Lohnt sich das? Für den Abend auf jeden Fall, wenn du den Tag darauf ausrichtest. Ab 18 Uhr laufen alle Wintershows, und das Tagesticket für Erwachsene kostet im Shop des Parks 34 €, weniger als an jedem anderen Wochenendtag des Wintertraums im November. Einen leeren Park bekommst du an diesem Sonntag aber nicht. Der Wintertraum beginnt am 14. November, der Totensonntag ist also sein zweites Wochenende, und ich rechne mit einem vollen Park. Das Feiertagsgesetz verbietet bis 18 Uhr Shows und Musik, die Besucher verbietet es nicht.
+Lohnt sich das? Für den Abend auf jeden Fall, wenn du den Tag darauf ausrichtest. Ab 18 Uhr laufen alle Wintershows, und das Tagesticket für Erwachsene kostet im Shop des Parks 34 €, weniger als an jedem anderen Wochenendtag des Wintertraums im November. Das Feiertagsgesetz verbietet bis 18 Uhr bestimmte Veranstaltungen, den Besuch des Parks verbietet es nicht.
 
-Der Grund für die stillen Stunden steht im Feiertagsgesetz von Nordrhein-Westfalen. Brühl liegt im Rhein-Erft-Kreis, und für Totensonntag und Allerheiligen verbietet das Land bestimmte Veranstaltungen von 5 bis 18 Uhr.
+Brühl liegt in Nordrhein-Westfalen, und dessen Feiertagsgesetz macht aus dem Totensonntag einen stillen Feiertag mit Verboten von 5 bis 18 Uhr.
 
 ## Was das Feiertagsgesetz in NRW am Totensonntag verbietet
 
-Das Gesetz über die Sonn- und Feiertage zählt in § 2 zwei Sonntage im November zu den „Gedenk- und Trauertagen“: den Volkstrauertag, zweiter Sonntag vor dem 1. Advent, und den Totensonntag, letzter Sonntag vor dem 1. Advent. Der 1. Advent fällt 2026 auf den 29. November, also ist der Volkstrauertag am 15. und der Totensonntag am 22. November. In den evangelischen Kirchen heißt der Tag auch Ewigkeitssonntag, und laut Wikipedia kann er nur zwischen dem 20. und dem 26. November liegen. Das Gesetz kennt nur das Wort Totensonntag.
+Das Gesetz über die Sonn- und Feiertage zählt in § 2 zwei Sonntage im November zu den „Gedenk- und Trauertagen“: den Volkstrauertag, zweiter Sonntag vor dem 1. Advent, und den Totensonntag, letzter Sonntag vor dem 1. Advent. Der 1. Advent fällt 2026 auf den 29. November, also ist der Volkstrauertag am 15. und der Totensonntag am 22. November. In den evangelischen Kirchen heißt der Tag auch Ewigkeitssonntag, und er kann nur zwischen dem 20. und dem 26. November liegen.
 
 Den stillen Feiertagen ist § 6 gewidmet. Für den Totensonntag verweist er auf die Liste, die er zuerst für den Volkstrauertag aufstellt, und verlängert sie: „Am Allerheiligentag und am Totensonntag sind zusätzlich verboten: alle in Absatz 1 genannten Veranstaltungen von 5 Uhr bis 18 Uhr“, heißt es in Absatz 2. Die beiden Punkte aus Absatz 1, die einen Freizeitpark betreffen können:
 
@@ -67,23 +64,21 @@ Den stillen Feiertagen ist § 6 gewidmet. Für den Totensonntag verweist er auf 
 >
 > § 6 Abs. 1 Nr. 2 und Nr. 5 des Gesetzes über die Sonn- und Feiertage (Feiertagsgesetz NW), [Volltext bei recht.nrw.de](https://recht.nrw.de/lrgv/gesetz/01012000-bekanntmachung-der-neufassung-des-gesetzes-ueber-die-sonn-und-feiertage/)
 
-Die anderen drei Punkte der Liste betreffen Märkte und gewerbliche Ausstellungen, Spielhallen und Wetten sowie Musik und unterhaltende Darbietungen in Gaststätten. Am Totensonntag gilt jeder der fünf bis 18 Uhr, auch die, die am Volkstrauertag schon um 13 Uhr enden.
+Die anderen drei Punkte der Liste betreffen Märkte und gewerbliche Ausstellungen, Spielhallen und Wetten sowie Musik und unterhaltende Darbietungen in Gaststätten.
 
-Das Wort Freizeitpark kommt im Gesetz nicht vor. Die Freizeitanlage steht in Nummer 2, und zwar mit dem Zusatz „soweit dort tänzerische oder artistische Darbietungen angeboten werden“. Ein Verbot, Achterbahnen fahren zu lassen, steht nicht im Text. Das ist der Wortlaut des Gesetzes, keine Rechtsauskunft. Ausdrücklich erlaubt sind nach § 4 an Sonn- und Feiertagen „Arbeiten, die der Erholung im Rahmen der Freizeitgestaltung dienen“, und als Beispiel nennt das Gesetz Saunas, Bräunungs- und Fitneßstudios, mit ß. Das Sonnenstudio hat es also in den Gesetzestext geschafft, die Achterbahn nicht.
+Das Wort Freizeitpark kommt im Gesetz nicht vor. Die Freizeitanlage steht in Nummer 2, und zwar mit dem Zusatz „soweit dort tänzerische oder artistische Darbietungen angeboten werden“. Ein ausdrückliches Verbot, Achterbahnen fahren zu lassen, steht nicht im Text, und ob Nummer 5 mit „alle anderen der Unterhaltung dienenden öffentlichen Veranstaltungen“ auch den Fahrbetrieb erfasst, lässt er offen. Der Park lässt die Bahnen ab 11 Uhr fahren. In § 4, der regelt, welche Arbeiten an Sonn- und Feiertagen erlaubt sind, stehen „Arbeiten, die der Erholung im Rahmen der Freizeitgestaltung dienen“, und als Beispiel nennt er Saunas, Bräunungs- und Fitneßstudios, mit ß. Das Sonnenstudio hat es also in den Gesetzestext geschafft, die Achterbahn nicht.
 
-Zwei weitere Regeln gelten an diesem Tag mit. Nach § 5 sind an jedem Sonn- und Feiertag von 6 bis 11 Uhr, der „Hauptzeit des Gottesdienstes“, öffentliche Unterhaltungsveranstaltungen verboten, und der Wintertraum öffnet an jedem seiner Tage um 11 Uhr. Und § 6 Abs. 4 verlangt sogar von Rundfunksendungen, von 5 bis 18 Uhr „auf den ernsten Charakter der stillen Feiertage Rücksicht zu nehmen“. Ein Verstoß ist nach § 11 eine Ordnungswidrigkeit, für die es eine Geldbuße geben kann. Ausnahmen von den Verboten des § 6 kann bei einem „dringenden Bedürfnis“ nach § 10 der Regierungspräsident zulassen, für Brühl also die Bezirksregierung in Köln.
+Nach § 5 sind an jedem Sonn- und Feiertag von 6 bis 11 Uhr, der „Hauptzeit des Gottesdienstes“, öffentliche Unterhaltungsveranstaltungen verboten, es sei denn, es liegt ein „höheres Interesse der Kunst, Wissenschaft oder Volksbildung“ vor. § 6 Abs. 4 verlangt sogar von Rundfunksendungen, von 5 bis 18 Uhr „auf den ernsten Charakter der stillen Feiertage Rücksicht zu nehmen“. Ein Verstoß ist nach § 11 eine Ordnungswidrigkeit, für die es eine Geldbuße geben kann. Ausnahmen von den Verboten des § 6 kann nach § 10 bei einem „dringenden Bedürfnis“ der Regierungspräsident zulassen; Brühl gehört zum Regierungsbezirk Köln.
 
-Allerheiligen steht im selben Absatz wie der Totensonntag, mit denselben Verboten bis 18 Uhr. Am Sonntag, dem 1. November 2026, ist das Phantasialand noch im Sommerbetrieb von 9 bis mindestens 18 Uhr geöffnet, und für diesen Tag kündigt es weder Shows noch Außenbeschallung an, den ganzen Tag lang.
+Für Allerheiligen, Sonntag, den 1. November 2026, hat das Phantasialand angekündigt, dass es den ganzen Tag weder Shows noch Außenbeschallung gibt. Der Park ist dann noch im Sommerbetrieb von 9 bis mindestens 18 Uhr geöffnet.
 
 ## Was im Phantasialand am 22. November läuft
 
-### Bahnen von 11 bis 18 Uhr
+### Bis 18 Uhr: Bahnen ohne Shows
 
-Den Wintertraum gibt es laut Wikipedia seit 2002. In diesem Winter läuft er vom 14. November 2026 bis zum 24. Januar 2027, jeweils von 11 bis 20 Uhr. Geschlossen ist am 24. und 25. Dezember, am 1. Januar und am 12. und 13. Januar, an Silvester ist nur bis 18 Uhr offen.
+Ein Winterprogramm gibt es seit 2002. In diesem Winter läuft der Wintertraum vom 14. November 2026 bis zum 24. Januar 2027, jeweils von 11 bis 20 Uhr. Geschlossen ist am 24. und 25. Dezember, am 1. Januar und am 12. und 13. Januar, an Silvester ist nur bis 18 Uhr offen.
 
-Im Öffnungskalender des Parks steht der 22. November wie jeder Novembertag ab dem 14. mit „Wintertraum: 11:00 – 20:00 Uhr“. Auf der Seite mit den Informationen zum Besuch schreibt das Phantasialand: „Am Sonntag 22. November 2026 finden aufgrund des stillen Feiertages (Totensonntag) alle Shows ab 18:00 Uhr statt.“ Von den Bahnen ist in diesem Satz keine Rede, und auch sonst nennt der Park für den Tag keine Einschränkung beim Fahrbetrieb.
-
-Die Musik erwähnen nur die englischen Seiten des Parks, etwa die Übersicht der Attraktionen und die Seite der Show Nobis:
+Auf der Seite mit den Informationen zum Besuch schreibt das Phantasialand: „Am Sonntag 22. November 2026 finden aufgrund des stillen Feiertages (Totensonntag) alle Shows ab 18:00 Uhr statt.“ Die Bahnen fahren den ganzen Tag, von 11 bis 20 Uhr. Auf den englischen Seiten, etwa in der Übersicht der Attraktionen und auf der Seite der Show Nobis, steht dazu auch der Ton:
 
 > [!QUOTE]
 > Am Sonntag, 22. November 2026, finden die Shows und die Außenbeschallung wegen des stillen Feiertags (Totensonntag) ab 18 Uhr statt.
@@ -92,11 +87,9 @@ Die Musik erwähnen nur die englischen Seiten des Parks, etwa die Übersicht der
 >
 > Phantasialand auf der [englischen Übersicht der Attraktionen](https://www.phantasialand.de/en/theme-park/one-of-a-kind-attractions/attractions-overview-summer/), aus dem Englischen übersetzt
 
-Bis 18 Uhr bleiben die Lautsprecher in den Themenwelten also aus. Was die Leute vor dir in der Warteschlange von [Taron](ref:phantasialand/taron) erzählen, regelt das Gesetz nicht.
+Zur Musik in Gebäuden und Bahnen sagt der Park nichts. Was die Leute vor dir in der Warteschlange von [Taron](ref:phantasialand/taron) bis 18 Uhr erzählen, regelt das Gesetz nicht.
 
-Im Wintertraum hat das Phantasialand unter anderem [Taron](ref:phantasialand/taron), [F.L.Y.](ref:phantasialand/fly), [Black Mamba](ref:phantasialand/black-mamba), [Chiapas](ref:phantasialand/chiapas-die-wasserbahn) und [Maus au Chocolat](ref:phantasialand/maus-au-chocolat) geöffnet. Drei Wasserbahnen fehlen: [River Quest](ref:phantasialand/river-quest) ist schon ab dem 2. November zu, Wakobato und Wözl’s Wassertreter ab dem 14. November, alle drei bis zum Ende des Wintertraums am 24. Januar 2027. Mit dem Totensonntag hat das nichts zu tun, an den Tagen davor und danach fahren sie genauso wenig.
-
-Beim Eislaufen in der Themenwelt Berlin gibt es keine Größenbeschränkung. Für den 22. November nennt der Park dafür keine eigene Regel.
+Im Wintertraum hat das Phantasialand unter anderem [Taron](ref:phantasialand/taron), [F.L.Y.](ref:phantasialand/fly), [Black Mamba](ref:phantasialand/black-mamba), [Chiapas](ref:phantasialand/chiapas-die-wasserbahn) und [Maus au Chocolat](ref:phantasialand/maus-au-chocolat) geöffnet. Drei Wasserattraktionen fehlen: [River Quest](ref:phantasialand/river-quest) ist schon ab dem 2. November zu, Wakobato und Wözl’s Wassertreter ab dem 14. November, alle drei bis zum Ende des Wintertraums am 24. Januar 2027. Mit dem Totensonntag hat das nichts zu tun, an den Tagen davor und danach fahren sie genauso wenig. Beim Eislaufen in der Themenwelt Berlin gibt es keine Größenbeschränkung.
 
 ### Ab 18 Uhr: sieben Wintershows
 
@@ -107,7 +100,7 @@ Beim Eislaufen in der Themenwelt Berlin gibt es keine Größenbeschränkung. Fü
 - **Der goldene Faden** im Wintergarten
 - **Kaiserplatz Illumination**, **Tiempo de Fuego**, **Pulse of Rookburgh** und **Magic Symphony** im Freien
 
-Jede Theatershow hat einen Ruhetag in der Woche, Spectaculum Phantastère montags, Der goldene Faden dienstags und Arctaris mittwochs. An einem Sonntag fällt keine davon aus. Wie viele Vorstellungen der Park zwischen 18 und 20 Uhr spielt, hat er für den 22. November nicht bekannt gegeben.
+Jede Theatershow hat einen Ruhetag in der Woche, Spectaculum Phantastère montags, Der goldene Faden dienstags und Arctaris mittwochs. An einem Sonntag fällt keine davon aus.
 
 Magic Symphony läuft regulär gegen 19:50 Uhr auf dem Kaiserplatz in der Themenwelt Berlin und ist damit das Letzte vor Parkschluss um 20 Uhr. Bei schlechtem Wetter kann sie ausfallen, dann gibt es laut Park stattdessen „Good Night Wish“ aus Musik und Licht.
 
@@ -115,99 +108,89 @@ Zwei Stunden für drei Theatershows, vier Shows im Freien und die Bahnen sind kn
 
 ## Wie voll es am Totensonntag wird
 
-Leer wird es nicht. Ich rechne mit einem vollen Park, denn der Wintertraum ist am 22. November gerade eine Woche alt, und es ist ein Sonntag, an dem alle drei Theatershows spielen, weil ihre Ruhetage von Montag bis Mittwoch liegen. Dazu kommen die vier Shows im Freien ab 18 Uhr und eine Öffnung bis 20 Uhr.
+Ich rechne mit einem vollen Park. Der Totensonntag ist das zweite Wochenende des Wintertraums, und es ist ein Sonntag, an dem alle drei Theatershows spielen, weil ihre Ruhetage von Montag bis Mittwoch liegen. Dazu kommen die vier Shows im Freien ab 18 Uhr und eine Öffnung bis 20 Uhr.
 
-Wer von Montag bis Freitag frei hat, findet im November die besseren Tage. Welche Wochentage im Winter wegen der Theatershows am besten passen, steht im Beitrag über die [Freizeitparks im Winter 2026/27](/blog/winter-freizeitparks-2026), und wie es in Brühl an Wochenenden und unter der Woche aussieht, in [Leere Tage im Phantasialand](/blog/phantasialand-wartezeiten-leere-tage). Den Kalender und die Wartezeiten von heute findest du auf der [Parkseite des Phantasialands](ref:phantasialand?calendar).
-
-Taron, F.L.Y., Black Mamba, Chiapas und Maus au Chocolat sind die fünf Bahnen, die der Park für den Wintertraum als Erste nennt.
+Die Wintertage unter der Woche vergleicht unser Beitrag über die [Freizeitparks im Winter 2026/27](/blog/winter-freizeitparks-2026), Wochenenden und Tage unter der Woche in Brühl der Beitrag [Leere Tage im Phantasialand](/blog/phantasialand-wartezeiten-leere-tage). Den Kalender und die Wartezeiten von heute findest du auf der [Parkseite des Phantasialands](ref:phantasialand?calendar).
 
 ```ride-waits-widget rides=phantasialand/taron|Taron;phantasialand/fly|F.L.Y.;phantasialand/black-mamba|Black Mamba;phantasialand/chiapas-die-wasserbahn|Chiapas;phantasialand/maus-au-chocolat|Maus au Chocolat columns=land,peak,days highlight=phantasialand/taron
 
 ```
 
-Wann am Tag die Warteschlangen im Wintertraum am längsten sind, haben wir im letzten Winter an 27 Tagen zwischen dem 26. Dezember 2025 und dem 24. Januar 2026 gemessen. Am Totensonntag kommen die Shows erst ab 18 Uhr dazu, die Stunden davor sind an diesem Tag reine Fahrzeit für alle im Park.
+Im letzten Wintertraum, an 27 Tagen zwischen dem 26. Dezember 2025 und dem 24. Januar 2026, waren die Warteschlangen zu diesen Uhrzeiten am längsten:
 
-```hourly-profile-widget slug=phantasialand top=8 from=2025-12-01 to=2026-01-24
+```hourly-profile-widget slug=phantasialand top=8 from=2025-12-26 to=2026-01-24
 
 ```
 
 ## Ein Tagesplan für den Totensonntag
 
-Angenommen, du willst am 22. November an einem vollen Sonntag so viel fahren wie möglich und am Abend Magic Symphony sehen. So würde ich den Tag aufteilen.
+Angenommen, du willst am 22. November so viel fahren wie möglich und am Abend Magic Symphony sehen. Mit dem Online-Ticket in der Tasche parkst du auf P1 oder P2 und bist bis zur Öffnung um 11 Uhr am Eingang. Dann gehst du direkt an die großen Bahnen: zuerst [Taron](ref:phantasialand/taron), dann [F.L.Y.](ref:phantasialand/fly), danach Black Mamba und Chiapas. Mit Kindern lohnt sich am Nachmittag das Eislaufen in Berlin. Einen [Quick Pass](/blog/phantasialand-tipps) würde ich an diesem Tag für Taron in Betracht ziehen, wenn du erst am Nachmittag kommst. Er kostet am Gästeservice einzeln 12 € für Taron und 10 € für Black Mamba oder Chiapas, als Quick Pass Ultimate 80 €.
 
-Mit dem Online-Ticket in der Tasche parkst du auf P1 oder P2 und bist bis zur Öffnung um 11 Uhr am Eingang.
-
-Ab 11 Uhr gehst du direkt an die großen Bahnen, bevor sich die Warteschlangen füllen: zuerst [Taron](ref:phantasialand/taron), dann [F.L.Y.](ref:phantasialand/fly), danach Black Mamba, Chiapas und die beiden Winja’s, [Winja’s Fear](ref:phantasialand/winjas-fear) und [Winja’s Force](ref:phantasialand/winjas-force). Mit Kindern lohnt sich am Nachmittag das Eislaufen in Berlin, es hat keine Größenbeschränkung. Einen [Quick Pass](/blog/phantasialand-tipps) würde ich an diesem Tag für Taron in Betracht ziehen, wenn du erst am Nachmittag kommst. Er kostet am Gästeservice einzeln 12 € für Taron und 10 € für Black Mamba oder Chiapas, als Quick Pass Ultimate 80 €.
-
-Um 18 Uhr gehst du zu der Theatershow, die du ausgesucht hast: Spectaculum Phantastère im Silverado Theatre, Arctaris in der Arena de Fiesta oder Der goldene Faden im Wintergarten. Danach bleibt Zeit für eine der Shows im Freien oder für eine letzte Fahrt.
-
-Gegen 19:50 Uhr beginnt Magic Symphony auf dem Kaiserplatz, um 20 Uhr schließt der Park.
-
-Wer die Shows auslässt, hat bis 20 Uhr neun Stunden zum Fahren. Dann würde ich Taron ein zweites Mal ans Ende legen, kurz vor 20 Uhr, wenn auf dem Kaiserplatz Magic Symphony läuft.
+Um 18 Uhr gehst du zu deiner Theatershow. Danach bleibt Zeit für eine der Shows im Freien oder für eine letzte Fahrt. Zum Schluss Magic Symphony, um 20 Uhr schließt der Park. Wer die Shows auslässt, hat neun Stunden zum Fahren und kann Taron bis 20 Uhr ein zweites Mal ans Ende legen.
 
 ## Tickets und Parken am 22. November
 
 Das Phantasialand verkauft seine Tickets nur online und nur für einen festen Tag. Am Besuchstag kannst du bis 14 Uhr noch eins kaufen, Kinder bis drei Jahre sind frei. Die Preise für Kinder zeigt der Shop erst, wenn du ein Datum ausgewählt hast.
 
-Tagesticket für Erwachsene ab 12 Jahren an den Wochenenden des Wintertraums im November, Stand 31. Oktober 2026:
+Preise für Erwachsene ab 12 Jahren an den Wochenenden des Wintertraums im November, Stand 31. Oktober 2026:
 
-| Tag                   | Preis |
-| --------------------- | ----- |
-| Samstag, 14. November | 38 €  |
-| Sonntag, 15. November | 35 €  |
-| Samstag, 21. November | 38 €  |
-| Sonntag, 22. November | 34 €  |
-| Samstag, 28. November | 69 €  |
-| Sonntag, 29. November | 35 €  |
+| Tag                   | Tagesticket Erwachsene |
+| --------------------- | ---------------------- |
+| Samstag, 14. November | 38 €                   |
+| Sonntag, 15. November | 35 €                   |
+| Samstag, 21. November | 38 €                   |
+| Sonntag, 22. November | 34 €                   |
+| Samstag, 28. November | 69 €                   |
+| Sonntag, 29. November | 35 €                   |
 
-Über den ganzen November liegen die Preise zwischen 31 und 69 €, und im Shop steht dazu, dass sie jederzeit steigen können. Der Samstag vor dem 1. Advent kostet gut doppelt so viel wie der Sonntag davor, an dem du dieselben Bahnen von 11 bis 20 Uhr fährst.
+Über den ganzen November liegen die Preise zwischen 31 und 69 €, und im Shop steht dazu, dass sie jederzeit steigen können. Der Samstag vor dem 1. Advent kostet doppelt so viel wie der Sonntag davor, an dem du dieselben Bahnen von 11 bis 20 Uhr fährst.
 
 Geparkt wird auf den Parkplätzen Mystery (P1) und China (P2). Ein Auto kostet 8 €, bar oder mit Karte, und reservieren kann man nicht. Die Adresse fürs Navi ist Berggeiststraße 31-41 in 50321 Brühl.
 
 ## Volkstrauertag eine Woche vorher
 
-Der Volkstrauertag, nach Wikipedia seit 1952 zwei Sonntage vor dem ersten Advent, ist 2026 am 15. November. Auch er ist in NRW ein stiller Feiertag, aber das Gesetz zieht die Grenze dort an zwei Stellen. Märkte, Spielhallen und der Betrieb von Freizeitanlagen, soweit dort tänzerische oder artistische Darbietungen angeboten werden, sind nur bis 13 Uhr verboten. Musik in Gaststätten und alle anderen öffentlichen Unterhaltungsveranstaltungen bleiben bis 18 Uhr verboten, wie am Totensonntag.
+Der Volkstrauertag, seit 1952 zwei Sonntage vor dem ersten Advent, ist 2026 am 15. November. Auch er ist in NRW ein stiller Feiertag. Märkte, Spielhallen und der Betrieb von Freizeitanlagen, soweit dort tänzerische oder artistische Darbietungen angeboten werden, sind dann nur bis 13 Uhr verboten, Musik in Gaststätten und alle anderen öffentlichen Unterhaltungsveranstaltungen wie am Totensonntag bis 18 Uhr.
 
-Für den 15. November hat das Phantasialand keine Änderung bei den Shows oder der Musik angekündigt. Im Kalender steht der Tag mit 11 bis 20 Uhr, und das Ticket kostet 35 €.
+Für den 15. November hat das Phantasialand keine Änderung bei den Shows oder der Außenbeschallung angekündigt. Im Kalender steht der Tag mit 11 bis 20 Uhr, und das Ticket kostet 35 €.
 
 ## Häufige Fragen zum Phantasialand am Totensonntag
 
 ### Hat das Phantasialand am Totensonntag geöffnet?
 
-Ja. Am Totensonntag, dem 22. November 2026, hat das Phantasialand im Wintertraum von 11 bis 20 Uhr geöffnet. Eingeschränkt sind laut Park nur die Shows, die erst um 18 Uhr beginnen.
+Ja. Am 22. November 2026 hat das Phantasialand von 11 bis 20 Uhr geöffnet, die Bahnen fahren ab 11 Uhr, die Shows und laut den englischen Seiten des Parks auch die Außenbeschallung erst ab 18 Uhr.
 
 ### Gibt es am Totensonntag Shows im Phantasialand?
 
-Ja, aber erst ab 18 Uhr. Dann laufen alle sieben Wintershows, darunter die drei Theatershows, und gegen 19:50 Uhr Magic Symphony auf dem Kaiserplatz. Um 20 Uhr schließt der Park.
+Ja, ab 18 Uhr laufen alle sieben Wintershows, zum Schluss gegen 19:50 Uhr Magic Symphony auf dem Kaiserplatz. Um 20 Uhr schließt der Park.
 
 ### Läuft im Phantasialand am Totensonntag Musik?
 
-Bis 18 Uhr nicht. Auf seinen englischen Seiten schreibt der Park, dass die Außenbeschallung am 22. November 2026 wie die Shows erst um 18 Uhr beginnt. Die deutschen Seiten nennen nur die Shows.
+Die Außenbeschallung in den Themenwelten bleibt am 22. November 2026 bis 18 Uhr aus, so steht es auf den englischen Seiten des Parks. Zur Musik in Gebäuden und Bahnen sagt er nichts.
 
 ### Wie voll ist das Phantasialand am Totensonntag?
 
-Leer wird es am 22. November 2026 nicht. Der Totensonntag ist das zweite Wochenende des Wintertraums, der am 14. November beginnt, und ab 18 Uhr laufen alle Wintershows bis zum Parkschluss um 20 Uhr. Ich rechne mit einem vollen Park und würde zur Öffnung um 11 Uhr an Taron stehen.
+Ich rechne am 22. November 2026 mit einem vollen Park: Der Wintertraum hat erst eine Woche vorher begonnen, sonntags spielen alle drei Theatershows, und der Park hat bis 20 Uhr offen.
 
 ### Was kostet das Ticket am 22. November?
 
-Im Shop des Phantasialands kostet das Tagesticket für Erwachsene ab 12 Jahren am 22. November 2026 34 €, Stand Ende Oktober. Der Park verkauft nur online und tagesgebunden, Kinder bis drei Jahre sind frei, Parken kostet 8 €.
+Das Tagesticket für Erwachsene ab 12 Jahren kostet am 22. November 2026 im Shop des Phantasialands 34 €, Stand Ende Oktober. Parken kostet 8 €.
 
 ### Was ist im Phantasialand am Volkstrauertag?
 
-Am Volkstrauertag, dem 15. November 2026, hat das Phantasialand von 11 bis 20 Uhr geöffnet. Zu Shows oder Musik an diesem Tag hat der Park nichts angekündigt. Das Feiertagsgesetz in NRW verbietet den Betrieb von Freizeitanlagen mit tänzerischen oder artistischen Darbietungen am Volkstrauertag bis 13 Uhr, andere Unterhaltungsveranstaltungen bis 18 Uhr.
+Am 15. November 2026 hat das Phantasialand von 11 bis 20 Uhr geöffnet, eine Änderung bei Shows oder Außenbeschallung hat der Park nicht angekündigt.
 
-### Welche Bahnen sind im Wintertraum zu?
+### Welche Attraktionen sind im Wintertraum zu?
 
-River Quest, Wakobato und Wözl’s Wassertreter. River Quest schließt am 2. November 2026, die beiden anderen am 14. November, und alle drei bleiben bis zum 24. Januar 2027 zu. Taron, F.L.Y., Black Mamba, Chiapas und Maus au Chocolat fahren.
+River Quest ist ab dem 2. November 2026 zu, Wakobato und Wözl’s Wassertreter ab dem 14. November, alle drei bis zum 24. Januar 2027. Taron, F.L.Y., Black Mamba, Chiapas und Maus au Chocolat fahren.
 
 — Patrick
 
 ## Quellen & Weiterlesen
 
-- Feiertagsgesetz NRW (§§ 2, 4, 5, 6 und 11): [Gesetz über die Sonn- und Feiertage, Volltext (recht.nrw.de)](https://recht.nrw.de/lrgv/gesetz/01012000-bekanntmachung-der-neufassung-des-gesetzes-ueber-die-sonn-und-feiertage/)
+- Feiertagsgesetz NRW (§§ 2, 4, 5, 6, 10 und 11): [Gesetz über die Sonn- und Feiertage, Volltext (recht.nrw.de)](https://recht.nrw.de/lrgv/gesetz/01012000-bekanntmachung-der-neufassung-des-gesetzes-ueber-die-sonn-und-feiertage/)
 - Termine 2026: [Feiertage 2026 (schulferien.org)](https://www.schulferien.org/Feiertage/2026/feiertage_2026.html) · [Totensonntag auf Wikipedia](https://de.wikipedia.org/wiki/Totensonntag) · [Volkstrauertag auf Wikipedia](https://de.wikipedia.org/wiki/Volkstrauertag) · [Brühl auf Wikipedia](<https://de.wikipedia.org/wiki/Br%C3%BChl_(Rheinland)>)
-- Shows am Totensonntag und an Allerheiligen: [Faszinierende Shows (offiziell)](https://www.phantasialand.de/de/themenpark/faszinierende-shows/) · [Informationen zum Besuch (offiziell)](https://www.phantasialand.de/de/themenpark/informationen-und-anreise/) · [Attractions overview (offiziell, englisch)](https://www.phantasialand.de/en/theme-park/one-of-a-kind-attractions/attractions-overview-summer/) · [Nobis (offiziell, englisch)](https://www.phantasialand.de/en/theme-park/fascinating-shows/nobis/)
-- Wintertraum, Wintershows, Magic Symphony und geschlossene Bahnen: [Wintertraum (offiziell)](https://www.phantasialand.de/de/themenpark/wintertraum/) · [Wintershows (offiziell)](https://www.phantasialand.de/de/themenpark/wintertraum/wintershows/) · [Attraktionen im Winter (offiziell)](https://www.phantasialand.de/de/themenpark/attraktionen/uebersicht-winter/)
+- Shows und Außenbeschallung am Totensonntag und an Allerheiligen: [Faszinierende Shows (offiziell)](https://www.phantasialand.de/de/themenpark/faszinierende-shows/) · [Informationen zum Besuch (offiziell)](https://www.phantasialand.de/de/themenpark/informationen-und-anreise/) · [Attractions overview (offiziell, englisch)](https://www.phantasialand.de/en/theme-park/one-of-a-kind-attractions/attractions-overview-summer/) · [Nobis (offiziell, englisch)](https://www.phantasialand.de/en/theme-park/fascinating-shows/nobis/)
+- Wintertraum, Wintershows, Magic Symphony und geschlossene Attraktionen: [Wintertraum (offiziell)](https://www.phantasialand.de/de/themenpark/wintertraum/) · [Wintershows (offiziell)](https://www.phantasialand.de/de/themenpark/wintertraum/wintershows/) · [Attraktionen im Winter (offiziell)](https://www.phantasialand.de/de/themenpark/attraktionen/uebersicht-winter/) · [Phantasialand auf Wikipedia](https://de.wikipedia.org/wiki/Phantasialand)
 - Öffnungszeiten: [Öffnungszeiten (offiziell)](https://www.phantasialand.de/de/themenpark/oeffnungszeiten/)
 - Tickets und Preise: [Preise und Tickets (offiziell)](https://www.phantasialand.de/de/themenpark/preise-und-tickets/) · [Ticketshop, November 2026 (offiziell)](https://shop.phantasialand.de/de/produkte/themenpark-tickets/2026-11)
 - Parken und Anreise: [Anfahrt und Shuttlebus (offiziell)](https://www.phantasialand.de/de/themenpark/informationen-und-anreise/anfahrt-und-shuttlebus/)
