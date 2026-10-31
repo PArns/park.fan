@@ -927,6 +927,13 @@ Route `/admin/system` (page).
 
 - `useCountryPaths` _hook_: The country paths of the admin's world maps, read once per tab and shared by every map.
 
+### [`traffic/_lib/reindex.ts`](../../app/admin/traffic/_lib/reindex.ts)
+
+- `reindexReason` _function_: Why a page is in the reindex queue, in one line: when it changed and when Google last crawled it.
+- `requestReindex` _function_: Requests indexing of one page, from a click: copies its URL and opens the property in Search Console, where it goes into the top bar, then records the request.
+- `REINDEX_STATE_CHIP` _const_: The chip of each state of a page in the reindex queue.
+- Types: `ReindexOutcome`
+
 ### [`traffic/_lib/use-search-console.ts`](../../app/admin/traffic/_lib/use-search-console.ts)
 
 - `useSearchConsoleStatus` _hook_: Whether the import is set up and what it has stored.

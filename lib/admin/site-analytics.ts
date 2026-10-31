@@ -1114,6 +1114,23 @@ export function crosstabLabel(dim: string): string {
   }
 }
 
+/** How often each value of one property of an event came up; nothing for a property never sent. */
+export function propValues(
+  detail: Pick<EventDetailResponse, 'props'>,
+  prop: string
+): { value: string; count: number }[] {
+  return detail.props.find((entry) => entry.prop === prop)?.values ?? [];
+}
+
+/** The count of one value of an event's property, 0 when it is not among the values listed. */
+export function propCount(
+  detail: Pick<EventDetailResponse, 'props'>,
+  prop: string,
+  value: string
+): number {
+  return propValues(detail, prop).find((entry) => entry.value === value)?.count ?? 0;
+}
+
 /** The dimensions an event can be crossed by: each property key it was sent with, then the fixed ones. */
 export function crosstabDimensions(detail: Pick<EventDetailResponse, 'props'>): string[] {
   return [...detail.props.map((entry) => `prop:${entry.prop}`), ...CROSSTAB_FIXED];
