@@ -95,7 +95,7 @@ function useAct(thinking: boolean, idle: boolean) {
 export type ParkyMood = 'thinking' | 'looking' | 'talking';
 
 /** Where the pupils rest while Parky reads: down, into the book. */
-const READING_GAZE = { x: 0, y: 2.2 };
+const READING_GAZE = { x: 0, y: 2.8 };
 
 /** Where the pupils rest while Parky ponders: up and to the side. */
 const PONDER_GAZE = { x: 1.8, y: -2.4 };
@@ -215,23 +215,23 @@ export function ParkyLogo({
         {state === 'looking' && (
           // An open book held below the eyes, where the mouth was; a page turns now and then.
           <g className="parky-book">
-            <path d="M24 31.5 13.5 29v12l10.5 2.5Z" fill="white" stroke={blue} strokeWidth="1" />
-            <path d="M24 31.5 34.5 29v12L24 43.5Z" fill="white" stroke={blue} strokeWidth="1" />
+            <path d="M24 30 5 26v18.5l19 4Z" fill="white" stroke={blue} strokeWidth="1.1" />
+            <path d="M24 30 43 26v18.5l-19 4Z" fill="white" stroke={blue} strokeWidth="1.1" />
             <path
-              d="M16 32.2l5.6 1.3M16 34.7l5.6 1.3M16 37.2l5.6 1.3M26.4 33.5l5.6-1.3M26.4 36l5.6-1.3M26.4 38.5l5.6-1.3"
+              d="M8.5 30.4l12 2.5M8.5 33.6l12 2.5M8.5 36.8l12 2.5M8.5 40l9 1.9M27.5 32.9l12-2.5M27.5 36.1l12-2.5M27.5 39.3l12-2.5M27.5 42.5l9-1.9"
               stroke={blue}
               strokeOpacity=".45"
-              strokeWidth=".7"
+              strokeWidth=".8"
               strokeLinecap="round"
             />
             <path
               className="parky-page"
-              d="M24 31.5 34.5 29v12L24 43.5Z"
+              d="M24 30 43 26v18.5l-19 4Z"
               fill="oklch(0.97 0.01 240)"
               stroke={blue}
-              strokeWidth=".8"
+              strokeWidth=".9"
             />
-            <path d="M24 31.5v12" stroke={blue} strokeWidth="1.1" />
+            <path d="M24 30v18.5" stroke={blue} strokeWidth="1.3" />
           </g>
         )}
       </g>

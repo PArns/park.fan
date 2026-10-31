@@ -174,7 +174,7 @@ export function AssistantPanel({ open, onClose }: { open: boolean; onClose: () =
           : 'pointer-events-none translate-y-3 scale-95 opacity-0'
       )}
     >
-      <header className="border-border/60 from-primary/15 to-status-operating/10 relative flex touch-none items-center gap-3 rounded-t-2xl border-b bg-gradient-to-r py-2 pr-3 pl-[4.75rem] sm:py-3 sm:pr-4 sm:pl-24">
+      <header className="border-border/60 from-primary/15 to-status-operating/10 relative flex touch-none items-center gap-3 rounded-t-2xl border-b bg-gradient-to-r py-1 pr-2 pl-[4.75rem] sm:py-2 sm:pr-3 sm:pl-24">
         {/* On a desktop Parky floats large over the window's top edge, where it is seen. */}
         <ParkyLogo
           className="absolute -top-7 left-1 size-16 drop-shadow-[0_8px_16px_rgb(0_0_0/0.35)] sm:-top-11 sm:size-20"
@@ -190,7 +190,6 @@ export function AssistantPanel({ open, onClose }: { open: boolean; onClose: () =
         />
         <div className="min-w-0 flex-1">
           <h2 className="text-sm leading-tight font-semibold">{t('title')}</h2>
-          <p className="text-muted-foreground truncate text-xs">{t('subtitle')}</p>
         </div>
         {tab === 'chat' && chat.messages.length > 0 && (
           <button
