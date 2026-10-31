@@ -1,14 +1,14 @@
 ---
-title: 'Am Totensonntag lohnt sich das Phantasialand auch ohne Shows bis 18 Uhr'
+title: 'Am Totensonntag spielt das Phantasialand seine Shows erst ab 18 Uhr'
 translationKey: phantasialand-totensonntag
 date: '2026-10-31'
 author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Am Totensonntag, dem 22. November 2026, fahren im Phantasialand die Bahnen von 11 Uhr an, die
-  Shows beginnen erst um 18 Uhr. Für den Tag sagen wir wenig Andrang voraus, weniger als für die
-  Samstage davor und danach. Das Tagesticket für Erwachsene kostet an diesem Sonntag 34 €.
+  Am Totensonntag, dem 22. November 2026, hat das Phantasialand von 11 bis 20 Uhr geöffnet, die
+  Shows und die Musik beginnen erst um 18 Uhr. Leer wird es trotzdem nicht, denn der Wintertraum ist
+  dann in seinem zweiten Wochenende. Das Tagesticket für Erwachsene kostet an diesem Sonntag 34 €.
 tags:
   - phantasialand
   - wintertraum
@@ -33,8 +33,8 @@ rideLinks:
 seo:
   title: 'Phantasialand am Totensonntag 2026: Shows und Musik erst ab 18 Uhr'
   description: >-
-    Phantasialand am 22. November 2026: Bahnen ab 11 Uhr, Shows und Musik erst ab 18 Uhr, wenig
-    Andrang laut Prognose. Was das Feiertagsgesetz in NRW verbietet.
+    Phantasialand am 22. November 2026: geöffnet von 11 bis 20 Uhr, Shows und Musik erst ab 18 Uhr,
+    Ticket 34 €. Was das Feiertagsgesetz in NRW verbietet.
   keywords:
     - phantasialand totensonntag
     - phantasialand totensonntag shows
@@ -52,7 +52,7 @@ seo:
 
 Am Totensonntag, dem 22. November 2026, hat das [Phantasialand](ref:phantasialand) in Brühl von 11 bis 20 Uhr geöffnet. Die Shows beginnen an diesem Sonntag erst um 18 Uhr, und auf seinen englischen Seiten schreibt der Park dazu, dass bis dahin auch die Außenbeschallung aus bleibt. Für die Bahnen bleiben sieben Stunden ohne Musik aus den Lautsprechern, danach kommen zwei Stunden mit den Wintershows und um kurz vor acht Magic Symphony auf dem Kaiserplatz.
 
-Ich würde an diesem Sonntag fahren, wenn dir die Bahnen wichtiger sind als die Shows. Für den 22. November sagen wir wenig Andrang voraus, weniger als für die Samstage davor und danach, und das Tagesticket für Erwachsene kostet im Shop des Parks 34 €, weniger als an jedem anderen Wochenendtag des Wintertraums im November. Wer vor allem wegen der Shows nach Brühl kommt, hat für alle sieben an diesem Tag nur die zwei Stunden bis Parkschluss und sucht sich besser einen anderen Tag aus.
+Lohnt sich das? Für den Abend auf jeden Fall, wenn du den Tag darauf ausrichtest. Ab 18 Uhr laufen alle Wintershows, und das Tagesticket für Erwachsene kostet im Shop des Parks 34 €, weniger als an jedem anderen Wochenendtag des Wintertraums im November. Einen leeren Park bekommst du an diesem Sonntag aber nicht. Der Wintertraum beginnt am 14. November, der Totensonntag ist also sein zweites Wochenende, und ich rechne mit einem vollen Park. Das Feiertagsgesetz verbietet bis 18 Uhr Shows und Musik, die Besucher verbietet es nicht.
 
 Der Grund für die stillen Stunden steht im Feiertagsgesetz von Nordrhein-Westfalen. Brühl liegt im Rhein-Erft-Kreis, und für Totensonntag und Allerheiligen verbietet das Land bestimmte Veranstaltungen von 5 bis 18 Uhr.
 
@@ -115,13 +115,9 @@ Zwei Stunden für drei Theatershows, vier Shows im Freien und die Bahnen sind kn
 
 ## Wie voll es am Totensonntag wird
 
-Für den 22. November steht in unserem Kalender die Prognose Niedrig. Dieselbe Stufe sagen wir für die beiden anderen Wintertraum-Sonntage im November voraus, den 15. und den 29. Die Samstage am 14., 21. und 28. November stehen auf Normal, die Tage von Montag bis Freitag, vom 16. bis zum 20. und vom 23. bis zum 27. November, auf Sehr niedrig.
+Leer wird es nicht. Ich rechne mit einem vollen Park, denn der Wintertraum ist am 22. November gerade eine Woche alt, und es ist ein Sonntag, an dem alle drei Theatershows spielen, weil ihre Ruhetage von Montag bis Mittwoch liegen. Dazu kommen die vier Shows im Freien ab 18 Uhr und eine Öffnung bis 20 Uhr.
 
-Der Totensonntag ist in der Prognose also ein Sonntag wie die anderen beiden, und er ist leerer als die Samstage. Wer von Montag bis Freitag frei hat, findet im November noch leerere Tage. Welche Wochentage im Winter wegen der Theatershows am besten passen, steht im Beitrag über die [Freizeitparks im Winter 2026/27](/blog/winter-freizeitparks-2026).
-
-```best-days-widget slug=phantasialand
-
-```
+Wer von Montag bis Freitag frei hat, findet im November die besseren Tage. Welche Wochentage im Winter wegen der Theatershows am besten passen, steht im Beitrag über die [Freizeitparks im Winter 2026/27](/blog/winter-freizeitparks-2026), und wie es in Brühl an Wochenenden und unter der Woche aussieht, in [Leere Tage im Phantasialand](/blog/phantasialand-wartezeiten-leere-tage). Den Kalender und die Wartezeiten von heute findest du auf der [Parkseite des Phantasialands](ref:phantasialand?calendar).
 
 Taron, F.L.Y., Black Mamba, Chiapas und Maus au Chocolat sind die fünf Bahnen, die der Park für den Wintertraum als Erste nennt.
 
@@ -129,27 +125,25 @@ Taron, F.L.Y., Black Mamba, Chiapas und Maus au Chocolat sind die fünf Bahnen, 
 
 ```
 
-Wann am Tag die Warteschlangen im Wintertraum am längsten sind, haben wir im letzten Winter an 27 Tagen zwischen dem 26. Dezember 2025 und dem 24. Januar 2026 gemessen. Am Totensonntag kommen die Shows erst ab 18 Uhr dazu, die Stunden davor sind an diesem Tag reine Fahrzeit.
+Wann am Tag die Warteschlangen im Wintertraum am längsten sind, haben wir im letzten Winter an 27 Tagen zwischen dem 26. Dezember 2025 und dem 24. Januar 2026 gemessen. Am Totensonntag kommen die Shows erst ab 18 Uhr dazu, die Stunden davor sind an diesem Tag reine Fahrzeit für alle im Park.
 
 ```hourly-profile-widget slug=phantasialand top=8 from=2025-12-01 to=2026-01-24
 
 ```
 
-In der Prognose für den 22. November haben Taron und die beiden Winja’s, [Winja’s Fear](ref:phantasialand/winjas-fear) und [Winja’s Force](ref:phantasialand/winjas-force), die längsten Warteschlangen des Tages. Mehr zu den leeren und vollen Tagen in Brühl steht in [Leere Tage im Phantasialand](/blog/phantasialand-wartezeiten-leere-tage).
-
 ## Ein Tagesplan für den Totensonntag
 
-Angenommen, du willst am 22. November so viel fahren wie möglich und am Abend Magic Symphony sehen. So würde ich den Tag aufteilen.
+Angenommen, du willst am 22. November an einem vollen Sonntag so viel fahren wie möglich und am Abend Magic Symphony sehen. So würde ich den Tag aufteilen.
 
 Mit dem Online-Ticket in der Tasche parkst du auf P1 oder P2 und bist bis zur Öffnung um 11 Uhr am Eingang.
 
-Ab 11 Uhr fährst du zuerst Taron, dann die beiden Winja’s, weil dort für den Tag die längsten Warteschlangen vorausgesagt sind. Danach F.L.Y., Black Mamba und Chiapas, in der Reihenfolge, die dir am besten passt. Mit Kindern lohnt sich am Nachmittag das Eislaufen in Berlin, es hat keine Größenbeschränkung. Einen [Quick Pass](/blog/phantasialand-tipps) würde ich an einem Tag mit der Prognose Niedrig nicht kaufen. Er kostet am Gästeservice einzeln 12 € für Taron und 10 € für Black Mamba oder Chiapas, als Quick Pass Ultimate 80 €.
+Ab 11 Uhr gehst du direkt an die großen Bahnen, bevor sich die Warteschlangen füllen: zuerst [Taron](ref:phantasialand/taron), dann [F.L.Y.](ref:phantasialand/fly), danach Black Mamba, Chiapas und die beiden Winja’s, [Winja’s Fear](ref:phantasialand/winjas-fear) und [Winja’s Force](ref:phantasialand/winjas-force). Mit Kindern lohnt sich am Nachmittag das Eislaufen in Berlin, es hat keine Größenbeschränkung. Einen [Quick Pass](/blog/phantasialand-tipps) würde ich an diesem Tag für Taron in Betracht ziehen, wenn du erst am Nachmittag kommst. Er kostet am Gästeservice einzeln 12 € für Taron und 10 € für Black Mamba oder Chiapas, als Quick Pass Ultimate 80 €.
 
 Um 18 Uhr gehst du zu der Theatershow, die du ausgesucht hast: Spectaculum Phantastère im Silverado Theatre, Arctaris in der Arena de Fiesta oder Der goldene Faden im Wintergarten. Danach bleibt Zeit für eine der Shows im Freien oder für eine letzte Fahrt.
 
 Gegen 19:50 Uhr beginnt Magic Symphony auf dem Kaiserplatz, um 20 Uhr schließt der Park.
 
-Wer die Shows ganz auslässt, hat bis 20 Uhr neun Stunden zum Fahren und kann den Abend für die Bahnen nutzen, während die anderen vor den Bühnen stehen.
+Wer die Shows auslässt, hat bis 20 Uhr neun Stunden zum Fahren. Dann würde ich Taron ein zweites Mal ans Ende legen, kurz vor 20 Uhr, wenn auf dem Kaiserplatz Magic Symphony läuft.
 
 ## Tickets und Parken am 22. November
 
@@ -172,9 +166,9 @@ Geparkt wird auf den Parkplätzen Mystery (P1) und China (P2). Ein Auto kostet 8
 
 ## Volkstrauertag eine Woche vorher
 
-Der Volkstrauertag, nach Wikipedia seit 1952 zwei Sonntage vor dem ersten Advent, ist 2026 am 15. November, am zweiten Tag des Wintertraums. Auch er ist in NRW ein stiller Feiertag, aber das Gesetz zieht die Grenze dort an zwei Stellen. Märkte, Spielhallen und der Betrieb von Freizeitanlagen, soweit dort tänzerische oder artistische Darbietungen angeboten werden, sind nur bis 13 Uhr verboten. Musik in Gaststätten und alle anderen öffentlichen Unterhaltungsveranstaltungen bleiben bis 18 Uhr verboten, wie am Totensonntag.
+Der Volkstrauertag, nach Wikipedia seit 1952 zwei Sonntage vor dem ersten Advent, ist 2026 am 15. November. Auch er ist in NRW ein stiller Feiertag, aber das Gesetz zieht die Grenze dort an zwei Stellen. Märkte, Spielhallen und der Betrieb von Freizeitanlagen, soweit dort tänzerische oder artistische Darbietungen angeboten werden, sind nur bis 13 Uhr verboten. Musik in Gaststätten und alle anderen öffentlichen Unterhaltungsveranstaltungen bleiben bis 18 Uhr verboten, wie am Totensonntag.
 
-Für den 15. November hat das Phantasialand keine Änderung bei den Shows oder der Musik angekündigt. Im Kalender steht der Tag mit 11 bis 20 Uhr, das Ticket kostet 35 €, und unsere Prognose steht wie am 22. November auf Niedrig.
+Für den 15. November hat das Phantasialand keine Änderung bei den Shows oder der Musik angekündigt. Im Kalender steht der Tag mit 11 bis 20 Uhr, und das Ticket kostet 35 €.
 
 ## Häufige Fragen zum Phantasialand am Totensonntag
 
@@ -192,7 +186,7 @@ Bis 18 Uhr nicht. Auf seinen englischen Seiten schreibt der Park, dass die Auße
 
 ### Wie voll ist das Phantasialand am Totensonntag?
 
-Für den 22. November 2026 sagt park.fan wenig Andrang voraus, die Stufe Niedrig. Die Samstage im Wintertraum stehen auf Normal, die Tage von Montag bis Freitag im November auf Sehr niedrig.
+Leer wird es am 22. November 2026 nicht. Der Totensonntag ist das zweite Wochenende des Wintertraums, der am 14. November beginnt, und ab 18 Uhr laufen alle Wintershows bis zum Parkschluss um 20 Uhr. Ich rechne mit einem vollen Park und würde zur Öffnung um 11 Uhr an Taron stehen.
 
 ### Was kostet das Ticket am 22. November?
 
@@ -217,5 +211,5 @@ River Quest, Wakobato und Wözl’s Wassertreter. River Quest schließt am 2. No
 - Öffnungszeiten: [Öffnungszeiten (offiziell)](https://www.phantasialand.de/de/themenpark/oeffnungszeiten/)
 - Tickets und Preise: [Preise und Tickets (offiziell)](https://www.phantasialand.de/de/themenpark/preise-und-tickets/) · [Ticketshop, November 2026 (offiziell)](https://shop.phantasialand.de/de/produkte/themenpark-tickets/2026-11)
 - Parken und Anreise: [Anfahrt und Shuttlebus (offiziell)](https://www.phantasialand.de/de/themenpark/informationen-und-anreise/anfahrt-und-shuttlebus/)
-- Andrang: Prognose im park.fan-Kalender für November 2026, Wartezeiten nach Uhrzeit aus dem Wintertraum vom 26. Dezember 2025 bis zum 24. Januar 2026, [Phantasialand auf park.fan](ref:phantasialand)
+- Wartezeiten: Wartezeiten nach Uhrzeit aus dem Wintertraum vom 26. Dezember 2025 bis zum 24. Januar 2026, [Phantasialand auf park.fan](ref:phantasialand)
 - Weitere Beiträge: [Phantasialand-Guide](/blog/phantasialand-tipps) · [Leere Tage im Phantasialand](/blog/phantasialand-wartezeiten-leere-tage) · [Freizeitparks im Winter 2026/27](/blog/winter-freizeitparks-2026)
