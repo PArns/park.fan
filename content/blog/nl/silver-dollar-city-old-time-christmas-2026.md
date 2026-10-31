@@ -48,7 +48,7 @@ Of “twee keer zo lang” over de duur gaat of over de lengte van de stoet, laa
 
 River City Scenic bouwde de wagens in een hal bij Cincinnati. De muziek is van Mike Avila, die aan zo'n 20 grote parades heeft meegewerkt, onder meer voor Disney, de Macy's Thanksgiving Day Parade en de Rose Bowl Parade.
 
-Op elke openingsdag vertrekt de parade twee keer, om 18.00 en om 20.00 uur plaatselijke tijd. Tot en met 2025 was dat Rudolph's Holly Jolly Christmas Light Parade. Toen begon het evenement al op 1 november en liep het tot 4 januari, dit jaar is het acht dagen korter.
+Op elke openingsdag vertrekt de parade twee keer, om 18.00 en om 20.00 uur plaatselijke tijd. Tot en met 2025 was dat Rudolph's Holly Jolly Christmas Light Parade. Toen begon het al op 1 november en liep het tot 4 januari. Dit jaar blijft het park van 1 tot en met 6 november dicht.
 
 ## Openingsdagen en openingstijden
 
@@ -95,13 +95,13 @@ In de Red Gold Heritage Hall wisselt bij Heart of Christmas de gastact. Wil je e
 - The Isaacs: 10 tot 14 december
 - Rhonda Vincent: vanaf 17 december
 
-Santa zit in Santa's Cottage in de Carousel Barn, volgens de evenementbeschrijving tot 23 december; daarna heeft hij, zoals bekend, elders een afspraak. De Frisco Sing-Along Steam Train staat niet in de kerstkalender van het park, en op zijn eigen pagina eindigt het seizoen op 31 oktober. Het persbericht noemt de trein toch een kersttraditie.
+Santa zit in Santa's Cottage in de Carousel Barn, volgens de evenementbeschrijving tot 23 december; daarna heeft hij, zoals bekend, elders een afspraak. De Frisco Sing-Along Steam Train staat niet in de kerstkalender van het park, en op zijn eigen pagina eindigt het seizoen op 31 oktober. Het persbericht noemt de trein toch een kersttraditie. Ik zou er pas op rekenen als hij in de kalender staat.
 
 ## Welke attracties in de winter rijden
 
-[Thunderation](ref:silver-dollar-city/thunderation), de achtbaan van Arrow Dynamics uit 1993, rijdt in 2026 zijn laatste seizoen, voor het laatst op 2 januari 2027. De houten achtbaan [Outlaw Run](ref:silver-dollar-city/outlaw-run), de spinning coaster [Time Traveler](ref:silver-dollar-city/time-traveler), WildFire, PowderKeg en de [Marvel Cave](ref:silver-dollar-city/marvel-cave) zijn tot 2 januari open.
+[Thunderation](ref:silver-dollar-city/thunderation), de achtbaan van Arrow Dynamics uit 1993, rijdt in 2026 zijn laatste seizoen, voor het laatst op 2 januari 2027. De houten achtbaan [Outlaw Run](ref:silver-dollar-city/outlaw-run), de spinning coaster [Time Traveler](ref:silver-dollar-city/time-traveler), WildFire, PowderKeg en de [Marvel Cave](ref:silver-dollar-city/marvel-cave) rijden tot de laatste dag van het evenement.
 
-Bij kou houdt uitgerekend de oudste van Thunderation, Outlaw Run en Time Traveler het langst vol. Thunderation rijdt tot 32 graden Fahrenheit (0 °C). Outlaw Run sluit al bij 34 °F (1 °C) en start pas weer vanaf 37 °F (bijna 3 °C), Time Traveler sluit bij 41 °F (5 °C). [Fire In The Hole](ref:silver-dollar-city/new-fire-in-the-hole) rijdt binnen en staat niet op de temperatuurlijst. Moet je je bezoek door het weer inkorten, dan krijg je bij de kassa een gratis ticket voor een andere openingsdag in het lopende seizoen.
+Bij kou houdt uitgerekend Thunderation het langst vol en rijdt tot 32 graden Fahrenheit (0 °C). Outlaw Run sluit al bij 34 °F (1 °C) en start pas weer vanaf 37 °F (bijna 3 °C), Time Traveler sluit bij 41 °F (5 °C). [Fire In The Hole](ref:silver-dollar-city/new-fire-in-the-hole) rijdt binnen en staat niet op de temperatuurlijst. Moet je je bezoek door het weer inkorten, dan krijg je bij de kassa een gratis ticket voor een andere openingsdag in het lopende seizoen.
 
 ```ride-waits-widget park=silver-dollar-city top=8 columns=peak,days
 

@@ -42,13 +42,13 @@ Il 7 novembre a [Silver Dollar City](ref:silver-dollar-city), a Branson nel Miss
 
 ## La nuova parata
 
-In testa c'è un'auto d'epoca con il Grand Marshal, poi arrivano Rudolph e i suoi amici; le new entry sono Yukon Cornelius e i Misfit Toys. Nella scena «Home for the Holidays» sfila una slitta trainata da cavalli con a bordo dei cantanti, mentre alcuni bambini camminano travestiti da palline dell'albero. Al Polo Nord gli elfi raccolgono le letterine, e chi ha portato la sua può consegnarla lì, a bordo strada; Mrs. Claus intanto sparge zucchero da una zuccheriera. Babbo Natale passa sopra il pubblico con la sua slitta e le renne. Chiudono il corteo i trombettieri, un coro e un carro illuminato con il presepe.
+In testa c'è un'auto d'epoca con il Grand Marshal, poi arrivano Rudolph e i suoi amici; le new entry sono Yukon Cornelius e i Misfit Toys. Nella scena «Home for the Holidays» sfila una slitta trainata da cavalli con a bordo dei cantanti, mentre alcuni bambini camminano travestiti da palline dell'albero. Al Polo Nord gli elfi raccolgono le letterine, e chi ha portato la sua può consegnarla lì, a bordo strada. Mrs. Claus sfila con uno spargizucchero in mano. Babbo Natale passa sopra il pubblico con la sua slitta e le renne. Chiudono il corteo i trombettieri, un coro e un carro illuminato con il presepe.
 
 Il comunicato non chiarisce se «lunga il doppio» si riferisca alla durata o alla lunghezza del corteo. Il parco non ha pubblicato un percorso, solo le due aree VIP: «North Pole» al Grand Exposition Garden Pavilion e «South Pole» al Red Gold Courtyard.
 
 I carri li ha costruiti River City Scenic in un capannone vicino a Cincinnati. La musica è di Mike Avila, che ha lavorato a una ventina di grandi parate, tra cui quelle per Disney, la Macy's Thanksgiving Day Parade e la Rose Bowl Parade.
 
-Ogni giorno di apertura la parata parte due volte, alle 18 e alle 20 ora locale. Fino al 2025 al suo posto c'era la Rudolph's Holly Jolly Christmas Light Parade. Allora l'evento cominciava già il 1° novembre e durava fino al 4 gennaio; quest'anno dura otto giorni in meno.
+Ogni giorno di apertura la parata parte due volte, alle 18 e alle 20 ora locale. Fino al 2025 al suo posto c'era la Rudolph's Holly Jolly Christmas Light Parade. Allora si partiva già il 1° novembre e si andava avanti fino al 4 gennaio. Quest'anno il parco resta chiuso dal 1° al 6 novembre.
 
 ## Giorni e orari di apertura
 
@@ -95,13 +95,13 @@ Nella Red Gold Heritage Hall, a Heart of Christmas l'ospite cambia. Chi vuole ve
 - The Isaacs: dal 10 al 14 dicembre
 - Rhonda Vincent: dal 17 dicembre
 
-Babbo Natale riceve nella Santa's Cottage, dentro la Carousel Barn, fino al 23 dicembre secondo la descrizione dell'evento: poi, come si sa, ha un altro giro da fare. Il Frisco Sing-Along Steam Train non compare nel calendario natalizio del parco, e sulla sua pagina la stagione finisce il 31 ottobre. Il comunicato lo cita comunque tra le tradizioni di Natale.
+Babbo Natale riceve nella Santa's Cottage, dentro la Carousel Barn, fino al 23 dicembre secondo la descrizione dell'evento: poi, come si sa, ha un altro giro da fare. Il Frisco Sing-Along Steam Train non compare nel calendario natalizio del parco, e sulla sua pagina la stagione finisce il 31 ottobre. Il comunicato lo cita comunque tra le tradizioni di Natale. Io non ci conterei finché non compare nel calendario.
 
 ## Quali attrazioni funzionano d'inverno
 
-[Thunderation](ref:silver-dollar-city/thunderation), le montagne russe di Arrow Dynamics del 1993, nel 2026 fa la sua ultima stagione e corre per l'ultima volta il 2 gennaio 2027. Le montagne russe in legno [Outlaw Run](ref:silver-dollar-city/outlaw-run), lo spinning coaster [Time Traveler](ref:silver-dollar-city/time-traveler), WildFire, PowderKeg e la [Marvel Cave](ref:silver-dollar-city/marvel-cave) restano aperti fino al 2 gennaio.
+[Thunderation](ref:silver-dollar-city/thunderation), le montagne russe di Arrow Dynamics del 1993, nel 2026 fa la sua ultima stagione e corre per l'ultima volta il 2 gennaio 2027. Le montagne russe in legno [Outlaw Run](ref:silver-dollar-city/outlaw-run), lo spinning coaster [Time Traveler](ref:silver-dollar-city/time-traveler), WildFire, PowderKeg e la [Marvel Cave](ref:silver-dollar-city/marvel-cave) restano aperti fino all'ultimo giorno dell'evento.
 
-Con il freddo, tra Thunderation, Outlaw Run e Time Traveler è proprio la più vecchia a resistere più a lungo. Thunderation funziona fino a 32 °F (0 °C). Outlaw Run chiude già a 34 °F (1 °C) e riparte solo da 37 °F (quasi 3 °C), Time Traveler chiude a 41 °F (5 °C). [Fire In The Hole](ref:silver-dollar-city/new-fire-in-the-hole) è al coperto e nell'elenco delle temperature non c'è. Se per colpa del meteo la visita si accorcia, alla biglietteria si riceve gratis un biglietto per un altro giorno di apertura della stagione in corso.
+Con il freddo è proprio Thunderation a resistere più a lungo: funziona fino a 32 °F (0 °C). Outlaw Run chiude già a 34 °F (1 °C) e riparte solo da 37 °F (quasi 3 °C), Time Traveler chiude a 41 °F (5 °C). [Fire In The Hole](ref:silver-dollar-city/new-fire-in-the-hole) è al coperto e nell'elenco delle temperature non c'è. Se per colpa del meteo la visita si accorcia, alla biglietteria si riceve gratis un biglietto per un altro giorno di apertura della stagione in corso.
 
 ```ride-waits-widget park=silver-dollar-city top=8 columns=peak,days
 

@@ -48,7 +48,7 @@ Le communiqué ne précise pas si « deux fois plus longue » vaut pour la dur
 
 Les chars sortent d’un atelier de River City Scenic près de Cincinnati. La musique est signée Mike Avila, qui a travaillé sur une vingtaine de grandes parades, entre autres pour Disney, la Macy’s Thanksgiving Day Parade et la Rose Bowl Parade.
 
-Chaque jour d’ouverture, la parade part deux fois, à 18 h et à 20 h, heure locale. Jusqu’en 2025, c’était la Rudolph’s Holly Jolly Christmas Light Parade qui occupait ce créneau. La saison commençait alors dès le 1er novembre et durait jusqu’au 4 janvier, soit huit jours de plus que cette année.
+Chaque jour d’ouverture, la parade part deux fois, à 18 h et à 20 h, heure locale. Jusqu’en 2025, c’était la Rudolph’s Holly Jolly Christmas Light Parade qui occupait ce créneau. À l’époque, tout commençait dès le 1er novembre et durait jusqu’au 4 janvier. Cette année, le parc reste fermé du 1er au 6 novembre.
 
 ## Jours et horaires d’ouverture
 
@@ -95,13 +95,13 @@ A Dickens’ Christmas Carol en est à sa 25e saison : 60 minutes avec orchestr
 - The Isaacs : du 10 au 14 décembre
 - Rhonda Vincent : à partir du 17 décembre
 
-Santa reçoit dans Santa’s Cottage, à la Carousel Barn, jusqu’au 23 décembre selon le descriptif de l’événement : ensuite, il a un autre rendez-vous, comme chacun sait. Le Frisco Sing-Along Steam Train ne figure pas au calendrier de Noël du parc, et sa propre page indique une fin de saison le 31 octobre. Le communiqué le cite pourtant parmi les traditions de Noël.
+Santa reçoit dans Santa’s Cottage, à la Carousel Barn, jusqu’au 23 décembre selon le descriptif de l’événement : ensuite, il a un autre rendez-vous, comme chacun sait. Le Frisco Sing-Along Steam Train ne figure pas au calendrier de Noël du parc, et sa propre page indique une fin de saison le 31 octobre. Le communiqué le cite pourtant parmi les traditions de Noël. Je n’y compterais pas tant qu’il n’apparaît pas au calendrier.
 
 ## Les attractions qui tournent en hiver
 
-[Thunderation](ref:silver-dollar-city/thunderation), les montagnes russes d’Arrow Dynamics ouvertes en 1993, vit sa dernière saison en 2026 et roule pour la dernière fois le 2 janvier 2027. Le coaster en bois [Outlaw Run](ref:silver-dollar-city/outlaw-run), le spinning coaster [Time Traveler](ref:silver-dollar-city/time-traveler), WildFire, PowderKeg et la [Marvel Cave](ref:silver-dollar-city/marvel-cave) fonctionnent jusqu’au 2 janvier.
+[Thunderation](ref:silver-dollar-city/thunderation), les montagnes russes d’Arrow Dynamics ouvertes en 1993, vit sa dernière saison en 2026 et roule pour la dernière fois le 2 janvier 2027. Le coaster en bois [Outlaw Run](ref:silver-dollar-city/outlaw-run), le spinning coaster [Time Traveler](ref:silver-dollar-city/time-traveler), WildFire, PowderKeg et la [Marvel Cave](ref:silver-dollar-city/marvel-cave) fonctionnent jusqu’au dernier jour de l’événement.
 
-Par temps froid, c’est justement la plus ancienne de Thunderation, Outlaw Run et Time Traveler qui tient le plus longtemps. Thunderation roule jusqu’à 32 °F (0 °C). Outlaw Run ferme dès 34 °F (1 °C) et ne redémarre qu’à partir de 37 °F (un peu moins de 3 °C), Time Traveler ferme à 41 °F (5 °C). [Fire In The Hole](ref:silver-dollar-city/new-fire-in-the-hole) roule à l’intérieur d’un bâtiment et ne figure pas sur la liste des températures. Si la météo écourte votre visite, la billetterie vous remet un billet gratuit pour un autre jour d’ouverture de la saison en cours.
+Par temps froid, c’est justement Thunderation qui tient le plus longtemps et roule jusqu’à 32 °F (0 °C). Outlaw Run ferme dès 34 °F (1 °C) et ne redémarre qu’à partir de 37 °F (un peu moins de 3 °C), Time Traveler ferme à 41 °F (5 °C). [Fire In The Hole](ref:silver-dollar-city/new-fire-in-the-hole) roule à l’intérieur d’un bâtiment et ne figure pas sur la liste des températures. Si la météo écourte votre visite, la billetterie vous remet un billet gratuit pour un autre jour d’ouverture de la saison en cours.
 
 ```ride-waits-widget park=silver-dollar-city top=8 columns=peak,days
 
