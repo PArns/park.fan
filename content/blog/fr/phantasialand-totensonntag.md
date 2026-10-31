@@ -45,13 +45,13 @@ seo:
 
 Le Totensonntag, que l’on pourrait traduire par « dimanche des morts » et que les Églises protestantes appellent aussi dimanche de l’Éternité, est en Allemagne un jour de commémoration, et en Rhénanie-du-Nord-Westphalie un jour férié dit « silencieux ». En 2026, il tombe le dimanche 22 novembre, et le [Phantasialand](ref:phantasialand) de Brühl ouvre ce jour-là de 11 h à 20 h. Les spectacles, eux, attendent 18 h. Tu as donc sept heures de manèges sans sonorisation extérieure, puis deux heures de spectacles d’hiver, et peu avant 20 h Magic Symphony sur la Kaiserplatz.
 
-La journée vaut le déplacement pour sa soirée, à condition de réserver 18 h pour un spectacle en salle et de faire les attractions avant. Jusque-là, le parc sans musique me paraît un peu oppressant. Le billet journée adulte coûte 34 € dans la boutique en ligne du parc. Brühl se trouve en Rhénanie-du-Nord-Westphalie (NRW), et la loi de ce Land sur les jours fériés autorise la visite du parc le Totensonntag, mais elle y interdit de 5 h à 18 h, entre autres, les représentations et les manifestations de divertissement.
+La journée vaut le déplacement pour sa soirée, à condition de réserver 18 h pour un spectacle en salle et de faire les attractions avant. Jusque-là, le parc sans musique me paraît un peu oppressant. Le billet journée adulte coûte 34 € dans la boutique en ligne du parc. La loi de Rhénanie-du-Nord-Westphalie (NRW) sur les jours fériés te laisse entrer dans le parc le Totensonntag, mais elle interdit de 5 h à 18 h, entre autres, les représentations et les manifestations de divertissement.
 
 ## Ce que la loi sur les jours fériés de NRW interdit le Totensonntag
 
 La loi sur les dimanches et jours fériés (Gesetz über die Sonn- und Feiertage) range au § 2 deux dimanches de novembre parmi les « Gedenk- und Trauertage », les jours de commémoration et de deuil. Le premier est le Volkstrauertag, journée de deuil national pour les victimes des guerres, fixé au deuxième dimanche avant le premier dimanche de l’Avent. Le second est le Totensonntag, le dernier dimanche avant l’Avent. En 2026, l’Avent commence le 29 novembre, ce qui place le Volkstrauertag au 15 et le Totensonntag au 22 novembre. Le Totensonntag ne peut tomber qu’entre le 20 et le 26 novembre.
 
-Le § 6 traite des jours fériés silencieux. Il dresse d’abord une liste d’interdictions pour le Volkstrauertag, puis la reprend pour le Totensonntag en l’allongeant. L’alinéa 2 dit : « Am Allerheiligentag und am Totensonntag sind zusätzlich verboten: alle in Absatz 1 genannten Veranstaltungen von 5 Uhr bis 18 Uhr » (sont en outre interdites à la Toussaint et le Totensonntag toutes les manifestations citées à l’alinéa 1, de 5 h à 18 h). Dans cette liste de l’alinéa 1, deux points peuvent concerner un parc d’attractions :
+Le § 6 dresse la liste pour le Volkstrauertag, et l’alinéa 2 l’étend au Totensonntag, de 5 h à 18 h :
 
 > [!QUOTE]
 > Sont en outre interdits le Volkstrauertag : […] 2. les manifestations sportives et similaires, y compris les courses et concours hippiques, ainsi que les spectacles de cirque, les fêtes populaires et l’exploitation d’installations de loisirs, dans la mesure où des représentations de danse ou d’acrobatie y sont proposées, de 5 h à 13 h, […] 5. toutes les autres manifestations publiques de divertissement, y compris la danse, de 5 h à 18 h.
@@ -64,7 +64,7 @@ Les trois autres points visent les marchés et les expositions commerciales, les
 
 Le mot « Freizeitpark » (parc d’attractions) n’apparaît nulle part dans la loi. On y trouve l’« installation de loisirs » au point 2, assortie d’une condition : « soweit dort tänzerische oder artistische Darbietungen angeboten werden » (dans la mesure où des représentations de danse ou d’acrobatie y sont proposées). Aucune phrase n’interdit expressément de faire tourner des montagnes russes, et le texte ne précise pas si le point 5, avec ses « alle anderen der Unterhaltung dienenden öffentlichen Veranstaltungen » (toutes les autres manifestations publiques de divertissement), couvre aussi l’exploitation des manèges. Le parc, lui, les fait tourner dès 11 h. Au § 4, qui fixe les travaux permis le dimanche et les jours fériés, figurent les « Arbeiten, die der Erholung im Rahmen der Freizeitgestaltung dienen » (travaux servant à la détente dans le cadre des loisirs), avec comme exemples les saunas et les « Bräunungs- und Fitneßstudios », instituts de bronzage et salles de sport, écrit avec un ß à l’ancienne. Le solarium a donc trouvé sa place dans le texte de loi, la montagne russe attend toujours.
 
-Le § 5 interdit chaque dimanche et jour férié, de 6 h à 11 h, pendant la « Hauptzeit des Gottesdienstes » (heure principale du culte), les manifestations publiques de divertissement, sauf « höheres Interesse der Kunst, Wissenschaft oder Volksbildung » (intérêt supérieur de l’art, de la science ou de l’éducation populaire). L’organisateur qui passe outre s’expose à une amende selon le § 11. D’après le § 10, seul le président du district (Regierungspräsident) pourrait accorder une dérogation, pour Brühl celui du district de Cologne, et seulement en cas de besoin urgent.
+Chaque dimanche et jour férié, de 6 h à 11 h, pendant la « Hauptzeit des Gottesdienstes » (heure principale du culte), les manifestations publiques de divertissement sont de toute façon interdites selon le § 5, sauf « höheres Interesse der Kunst, Wissenschaft oder Volksbildung » (intérêt supérieur de l’art, de la science ou de l’éducation populaire). Qui passe outre s’expose à une amende selon le § 11, et d’après le § 10, seul le président du district (Regierungspräsident) pourrait accorder une dérogation, pour Brühl celui du district de Cologne, et seulement en cas de besoin urgent.
 
 Pour la Toussaint, le dimanche 1er novembre 2026, le Phantasialand a annoncé qu’il n’y aurait ni spectacles ni sonorisation extérieure de toute la journée. Le parc est alors encore en saison d’été, ouvert de 9 h à 18 h au moins.
 
@@ -97,8 +97,6 @@ Sur sa page des spectacles, le parc promet pour la soirée « alle unsere Winte
 - **Kaiserplatz Illumination**, **Tiempo de Fuego**, **Pulse of Rookburgh** et **Magic Symphony** en plein air
 
 Les trois spectacles en salle jouent le dimanche, leurs jours de relâche tombent entre le lundi et le mercredi. Le dernier spectacle avant la fermeture est Magic Symphony, sur la Kaiserplatz de la zone Berlin. Par mauvais temps, il peut être annulé, et le parc prévoit alors à la place « Good Night Wish », fait de musique et de lumière.
-
-Entre 18 h et 20 h, impossible de voir les sept spectacles et de faire encore un tour de manège.
 
 ## Quelle affluence au Phantasialand le Totensonntag
 
@@ -143,7 +141,7 @@ On se gare sur les parkings Mystery (P1) et China (P2). Une voiture paie 8 €, 
 
 ## Le Volkstrauertag, une semaine plus tôt
 
-Le Volkstrauertag tombe sur ce dimanche depuis 1952. Pour un parc d’attractions, la différence tient au point 2 : le jour du Volkstrauertag, l’exploitation d’installations de loisirs proposant des représentations de danse ou d’acrobatie n’est interdite que jusqu’à 13 h, alors que toutes les autres manifestations publiques de divertissement du point 5 restent interdites jusqu’à 18 h, comme le Totensonntag.
+La règle qui place le Volkstrauertag au deuxième dimanche avant le premier dimanche de l’Avent s’applique depuis 1952. Le jour du Volkstrauertag, l’exploitation d’installations de loisirs proposant des représentations de danse ou d’acrobatie n’est interdite selon le point 2 que jusqu’à 13 h, alors que toutes les autres manifestations publiques de divertissement du point 5 restent interdites jusqu’à 18 h, comme le Totensonntag.
 
 Pour le 15 novembre, le Phantasialand n’a annoncé aucun changement pour les spectacles ni pour la sonorisation extérieure. Le calendrier indique 11 h à 20 h, et le billet coûte 35 €.
 
@@ -171,7 +169,7 @@ Le billet journée adulte (à partir de 12 ans) coûte 34 € le 22 novembre 202
 
 ### Y a-t-il des spectacles au Phantasialand le Volkstrauertag ?
 
-Le parc n’a annoncé aucune restriction pour le 15 novembre 2026. Le calendrier indique 11 h à 20 h, comme chaque jour de novembre pendant le Wintertraum.
+Le parc n’a annoncé aucun changement du programme des spectacles pour le 15 novembre 2026, contrairement au Totensonntag. Le calendrier indique 11 h à 20 h pour ce jour-là.
 
 ### Quelles attractions du Phantasialand sont fermées en hiver ?
 

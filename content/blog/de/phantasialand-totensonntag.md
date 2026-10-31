@@ -49,13 +49,13 @@ seo:
 
 Am Totensonntag, dem 22. November 2026, hat das [Phantasialand](ref:phantasialand) in Brühl von 11 bis 20 Uhr geöffnet. Die Shows beginnen an diesem Sonntag erst um 18 Uhr. Sieben Stunden fährst du ohne Außenbeschallung, dann folgen zwei Stunden Wintershows und kurz vor acht Magic Symphony auf dem Kaiserplatz.
 
-Für den Abend lohnt sich der Tag, wenn du um 18 Uhr eine Theatershow einplanst und vorher fährst, auch wenn mir der Park ohne Musik bis dahin ein wenig bedrückend vorkommt. Das Tagesticket für Erwachsene kostet im Shop des Parks 34 €. Brühl liegt in Nordrhein-Westfalen, und dessen Feiertagsgesetz lässt am Totensonntag den Parkbesuch zu, verbietet von 5 bis 18 Uhr aber unter anderem Darbietungen und unterhaltende Veranstaltungen.
+Für den Abend lohnt sich der Tag, wenn du um 18 Uhr eine Theatershow einplanst und vorher fährst, auch wenn mir der Park ohne Musik bis dahin ein wenig bedrückend vorkommt. Das Tagesticket für Erwachsene kostet im Shop des Parks 34 €. Das Feiertagsgesetz von Nordrhein-Westfalen lässt dich am Totensonntag in den Park, verbietet aber von 5 bis 18 Uhr unter anderem Darbietungen und unterhaltende Veranstaltungen.
 
 ## Was das Feiertagsgesetz in NRW am Totensonntag verbietet
 
 Das Gesetz über die Sonn- und Feiertage zählt in § 2 zwei Sonntage im November zu den „Gedenk- und Trauertagen“: den Volkstrauertag, zweiter Sonntag vor dem 1. Advent, und den Totensonntag, letzter Sonntag vor dem 1. Advent. Der 1. Advent fällt 2026 auf den 29. November, also ist der Volkstrauertag am 15. und der Totensonntag am 22. November. In den evangelischen Kirchen heißt der Tag auch Ewigkeitssonntag, und er kann nur zwischen dem 20. und dem 26. November liegen.
 
-Den stillen Feiertagen ist § 6 gewidmet. Für den Totensonntag verweist er auf die Liste, die er zuerst für den Volkstrauertag aufstellt, und verlängert sie: „Am Allerheiligentag und am Totensonntag sind zusätzlich verboten: alle in Absatz 1 genannten Veranstaltungen von 5 Uhr bis 18 Uhr“, heißt es in Absatz 2. Die beiden Punkte aus Absatz 1, die einen Freizeitpark betreffen können:
+§ 6 stellt die Liste für den Volkstrauertag auf, Absatz 2 dehnt sie auf den Totensonntag aus, von 5 bis 18 Uhr:
 
 > [!QUOTE]
 > Am Volkstrauertag sind zusätzlich verboten: […] 2. sportliche und ähnliche Veranstaltungen einschließlich Pferderennen und -leistungsschauen sowie Zirkusveranstaltungen, Volksfeste und der Betrieb von Freizeitanlagen, soweit dort tänzerische oder artistische Darbietungen angeboten werden, von 5 Uhr bis 13 Uhr, […] 5. alle anderen der Unterhaltung dienenden öffentlichen Veranstaltungen einschließlich Tanz von 5 Uhr bis 18 Uhr.
@@ -66,7 +66,7 @@ Die anderen drei Punkte der Liste betreffen Märkte und gewerbliche Ausstellunge
 
 Das Wort Freizeitpark kommt im Gesetz nicht vor. Die Freizeitanlage steht in Nummer 2, und zwar mit dem Zusatz „soweit dort tänzerische oder artistische Darbietungen angeboten werden“. Ein ausdrückliches Verbot, Achterbahnen fahren zu lassen, steht nicht im Text, und ob Nummer 5 mit „alle anderen der Unterhaltung dienenden öffentlichen Veranstaltungen“ auch den Fahrbetrieb erfasst, lässt er offen. Der Park lässt die Bahnen ab 11 Uhr fahren. In § 4, der regelt, welche Arbeiten an Sonn- und Feiertagen erlaubt sind, stehen „Arbeiten, die der Erholung im Rahmen der Freizeitgestaltung dienen“, und als Beispiel nennt er Saunas, Bräunungs- und Fitneßstudios, mit ß. Das Sonnenstudio hat es also in den Gesetzestext geschafft, die Achterbahn nicht.
 
-Nach § 5 sind an jedem Sonn- und Feiertag von 6 bis 11 Uhr, der „Hauptzeit des Gottesdienstes“, öffentliche Unterhaltungsveranstaltungen verboten, es sei denn, es liegt ein „höheres Interesse der Kunst, Wissenschaft oder Volksbildung“ vor. Hält sich ein Veranstalter nicht daran, droht nach § 11 eine Geldbuße. Eine Ausnahme könnte nach § 10 nur der Regierungspräsident erlauben, für Brühl der des Regierungsbezirks Köln, und auch das nur bei dringendem Bedarf.
+An Sonn- und Feiertagen von 6 bis 11 Uhr, in der „Hauptzeit des Gottesdienstes“, sind öffentliche Unterhaltungsveranstaltungen nach § 5 ohnehin verboten, außer es liegt ein „höheres Interesse der Kunst, Wissenschaft oder Volksbildung“ vor. Wer sich nicht daran hält, riskiert nach § 11 ein Bußgeld, und eine Ausnahme könnte nach § 10 nur der Regierungspräsident erlauben, für Brühl der des Regierungsbezirks Köln, und das nur bei dringendem Bedarf.
 
 Für Allerheiligen, Sonntag, den 1. November 2026, hat das Phantasialand angekündigt, dass es den ganzen Tag weder Shows noch Außenbeschallung gibt. Der Park ist dann noch im Sommerbetrieb von 9 bis mindestens 18 Uhr geöffnet.
 
@@ -99,8 +99,6 @@ Auf der Showseite verspricht der Park für den Abend ausdrücklich „alle unser
 - **Kaiserplatz Illumination**, **Tiempo de Fuego**, **Pulse of Rookburgh** und **Magic Symphony** im Freien
 
 Alle drei Theatershows spielen sonntags, ihre Ruhetage liegen zwischen Montag und Mittwoch. Die letzte Show vor Parkschluss ist Magic Symphony auf dem Kaiserplatz in der Themenwelt Berlin. Bei schlechtem Wetter kann sie ausfallen, dann gibt es laut Park stattdessen „Good Night Wish“ aus Musik und Licht.
-
-Alle sieben Shows und noch eine Fahrt passen nicht zwischen 18 und 20 Uhr.
 
 ## Wie voll es am Totensonntag wird
 
@@ -145,7 +143,7 @@ Geparkt wird auf den Parkplätzen Mystery (P1) und China (P2). Ein Auto kostet 8
 
 ## Volkstrauertag eine Woche vorher
 
-Auf diesen Sonntag fällt der Volkstrauertag seit 1952. Für einen Freizeitpark liegt der Unterschied bei Nummer 2: Der Betrieb von Freizeitanlagen mit tänzerischen oder artistischen Darbietungen ist am Volkstrauertag nur bis 13 Uhr verboten, alle anderen Unterhaltungsveranstaltungen nach Nummer 5 bleiben es wie am Totensonntag bis 18 Uhr.
+Die Regel, die den Volkstrauertag auf den zweiten Sonntag vor dem 1. Advent legt, gilt seit 1952. Am Volkstrauertag ist der Betrieb von Freizeitanlagen mit tänzerischen oder artistischen Darbietungen nach Nummer 2 nur bis 13 Uhr verboten, alle anderen Unterhaltungsveranstaltungen nach Nummer 5 bleiben es wie am Totensonntag bis 18 Uhr.
 
 Für den 15. November hat das Phantasialand keine Änderung bei den Shows oder der Außenbeschallung angekündigt. Im Kalender steht der Tag mit 11 bis 20 Uhr, und das Ticket kostet 35 €.
 
@@ -173,7 +171,7 @@ Das Tagesticket für Erwachsene ab 12 Jahren kostet am 22. November 2026 im Shop
 
 ### Gibt es im Phantasialand am Volkstrauertag Shows?
 
-Der Park hat für den 15. November 2026 keine Einschränkung angekündigt, im Kalender stehen 11 bis 20 Uhr wie an jedem Novembertag des Wintertraums.
+Eine Änderung am Showprogramm hat der Park für den 15. November 2026 nicht angekündigt, anders als für den Totensonntag. Im Kalender steht der Tag mit 11 bis 20 Uhr.
 
 ### Welche Attraktionen sind im Phantasialand im Winter geschlossen?
 

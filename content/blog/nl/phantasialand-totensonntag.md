@@ -46,13 +46,13 @@ seo:
 
 Totensonntag is de Duitse herdenkingsdag voor de doden, in de protestantse kerk ook Ewigkeitssonntag of eeuwigheidszondag genoemd, en in Noordrijn-Westfalen een “stille feestdag”. In 2026 valt hij op 22 november, en dan is [Phantasialand](ref:phantasialand) in Brühl open van 11 tot 20 uur. De shows beginnen die zondag pas om 18 uur. Zeven uur lang rijd je dus zonder buitengeluid, de muziek uit de luidsprekers van het park, daarna volgen twee uur wintershows en vlak voor achten Magic Symphony op de Kaiserplatz.
 
-Voor de avond is het een goede dag als je om 18 uur een theatershow inplant en daarvoor de attracties doet, al vind ik het park zonder muziek tot dat moment een beetje bedrukkend. Een dagticket voor volwassenen kost in de webshop van het park 34 €. Brühl ligt in Noordrijn-Westfalen (NRW), en de feestdagenwet van die deelstaat staat een parkbezoek op Totensonntag toe, maar verbiedt van 5 tot 18 uur onder meer voorstellingen en evenementen die tot vermaak dienen.
+Voor de avond is het een goede dag als je om 18 uur een theatershow inplant en daarvoor de attracties doet, al vind ik het park zonder muziek tot dat moment een beetje bedrukkend. Een dagticket voor volwassenen kost in de webshop van het park 34 €. De feestdagenwet van Noordrijn-Westfalen (NRW) laat je op Totensonntag het park in, maar verbiedt van 5 tot 18 uur onder meer voorstellingen en evenementen die tot vermaak dienen.
 
 ## Wat de feestdagenwet van NRW op Totensonntag verbiedt
 
 Het Gesetz über die Sonn- und Feiertage, de wet op zon- en feestdagen, rekent in § 2 twee zondagen in november tot de “Gedenk- und Trauertage”, de herdenkings- en rouwdagen. Dat zijn Volkstrauertag (letterlijk: volksrouwdag), de tweede zondag voor de eerste advent, en Totensonntag, de laatste zondag voor de eerste advent. In 2026 is de eerste advent op 29 november, dus Volkstrauertag valt op de 15e en Totensonntag op 22 november. Vroeger dan 20 of later dan 26 november kan Totensonntag niet vallen.
 
-De stille feestdagen staan in § 6. Voor Totensonntag verwijst dat artikel naar de lijst die het eerst voor Volkstrauertag opstelt, en het verlengt die. In lid 2 staat: “Am Allerheiligentag und am Totensonntag sind zusätzlich verboten: alle in Absatz 1 genannten Veranstaltungen von 5 Uhr bis 18 Uhr” (op Allerheiligen en op Totensonntag zijn daarnaast verboden: alle in lid 1 genoemde evenementen van 5 tot 18 uur). Twee punten uit lid 1 kunnen een pretpark raken:
+§ 6 stelt de lijst voor Volkstrauertag op, lid 2 breidt die uit naar Totensonntag, van 5 tot 18 uur:
 
 > [!QUOTE]
 > Op Volkstrauertag zijn daarnaast verboden: […] 2. sportieve en soortgelijke evenementen, met inbegrip van paardenrennen en paardenshows, alsook circusvoorstellingen, volksfeesten en de exploitatie van recreatievoorzieningen, voor zover daar dans- of acrobatische voorstellingen worden aangeboden, van 5 uur tot 13 uur, […] 5. alle andere openbare evenementen die tot vermaak dienen, met inbegrip van dans, van 5 uur tot 18 uur.
@@ -65,7 +65,7 @@ De andere drie punten van de lijst gaan over markten en commerciële tentoonstel
 
 Een pretpark noemt de wet nergens. Wat er wel staat, is de “Freizeitanlage”, de recreatievoorziening, in nummer 2, met de toevoeging “soweit dort tänzerische oder artistische Darbietungen angeboten werden” (voor zover daar dans- of acrobatische voorstellingen worden aangeboden). Dat achtbanen niet mogen rijden, staat er niet met zoveel woorden, en of nummer 5 met “alle anderen der Unterhaltung dienenden öffentlichen Veranstaltungen” (alle andere openbare evenementen die tot vermaak dienen) ook de attracties bedoelt, laat de tekst open. Het park laat ze vanaf 11 uur rijden. § 4 regelt welk werk op zon- en feestdagen mag, en daar staan “Arbeiten, die der Erholung im Rahmen der Freizeitgestaltung dienen” (werk dat dient voor ontspanning in de vrije tijd), met als voorbeeld sauna’s, zonnestudio’s en fitnessstudio’s, in de wet nog gespeld als “Fitneßstudios”. De zonnebank heeft het dus tot in de wettekst geschopt, de achtbaan niet.
 
-Volgens § 5 zijn openbare evenementen voor vermaak op elke zon- en feestdag van 6 tot 11 uur verboden, de “Hauptzeit des Gottesdienstes” (de belangrijkste tijd van de kerkdienst), tenzij er een “höheres Interesse der Kunst, Wissenschaft oder Volksbildung” (hoger belang van kunst, wetenschap of volksontwikkeling) is. Een organisator die zich daar niet aan houdt, riskeert volgens § 11 een boete. Een uitzondering zou volgens § 10 alleen de Regierungspräsident kunnen toestaan, voor Brühl die van het regeringsdistrict Keulen, en ook dan alleen bij dringende noodzaak.
+Op elke zon- en feestdag van 6 tot 11 uur, de “Hauptzeit des Gottesdienstes” (de belangrijkste tijd van de kerkdienst), zijn openbare evenementen voor vermaak volgens § 5 sowieso verboden, tenzij er een “höheres Interesse der Kunst, Wissenschaft oder Volksbildung” (hoger belang van kunst, wetenschap of volksontwikkeling) is. Wie zich daar niet aan houdt, riskeert volgens § 11 een boete, en een uitzondering zou volgens § 10 alleen de Regierungspräsident kunnen toestaan, voor Brühl die van het regeringsdistrict Keulen, en dan alleen bij dringende noodzaak.
 
 Voor Allerheiligen, zondag 1 november 2026, heeft Phantasialand aangekondigd dat er de hele dag geen shows en geen buitengeluid zijn. Het park draait dan nog in de zomerdienst en is open van 9 tot minstens 18 uur.
 
@@ -98,8 +98,6 @@ Op de showpagina belooft het park voor de avond uitdrukkelijk “alle unsere Win
 - **Kaiserplatz Illumination**, **Tiempo de Fuego**, **Pulse of Rookburgh** en **Magic Symphony** in de buitenlucht
 
 Alle drie de theatershows spelen op zondag, hun rustdagen liggen tussen maandag en woensdag. De laatste show voor sluitingstijd is Magic Symphony op de Kaiserplatz in het themagebied Berlin. Bij slecht weer kan die uitvallen, en dan komt er volgens het park in plaats daarvan “Good Night Wish”, met muziek en licht.
-
-Alle zeven shows en dan nog een rit passen niet tussen 18 en 20 uur.
 
 ## Hoe druk het op Totensonntag in Phantasialand wordt
 
@@ -144,7 +142,7 @@ Parkeren doe je op de parkeerplaatsen Mystery (P1) en China (P2). Een auto kost 
 
 ## Volkstrauertag, een week eerder
 
-Op deze zondag valt Volkstrauertag sinds 1952. Voor een pretpark zit het verschil in nummer 2: een recreatievoorziening met dans- of acrobatische voorstellingen is op Volkstrauertag maar tot 13 uur verboden, alle andere openbare evenementen voor vermaak uit nummer 5 blijven net als op Totensonntag tot 18 uur verboden.
+De regel die Volkstrauertag op de tweede zondag voor de eerste advent legt, geldt sinds 1952. Op Volkstrauertag is een recreatievoorziening met dans- of acrobatische voorstellingen volgens nummer 2 maar tot 13 uur verboden, alle andere openbare evenementen voor vermaak uit nummer 5 blijven net als op Totensonntag tot 18 uur verboden.
 
 Voor 15 november heeft Phantasialand geen wijziging bij de shows of het buitengeluid aangekondigd. In de kalender staat die dag met 11 tot 20 uur, en een ticket kost 35 €.
 
@@ -172,7 +170,7 @@ Een dagticket voor volwassenen vanaf 12 jaar kost op 22 november 2026 in de webs
 
 ### Zijn er op Volkstrauertag shows in Phantasialand?
 
-Het park heeft voor 15 november 2026 geen beperking aangekondigd. In de kalender staat 11 tot 20 uur, net als op elke novemberdag van de Wintertraum.
+Een wijziging in het showprogramma heeft het park voor 15 november 2026 niet aangekondigd, anders dan voor Totensonntag. In de kalender staat die dag met 11 tot 20 uur.
 
 ### Welke attracties zijn in de winter in Phantasialand gesloten?
 

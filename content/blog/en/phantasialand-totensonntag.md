@@ -46,13 +46,13 @@ seo:
 
 [Phantasialand](ref:phantasialand) in Brühl is open from 11 a.m. to 8 p.m. on Totensonntag, 22 November 2026. Totensonntag, the Sunday of the Dead or Eternity Sunday, is a German day of remembrance and a "silent public holiday" in North Rhine-Westphalia, and at Phantasialand it means the shows don't start until 6 p.m. You get seven hours of riding without the outside sound, the music from the park's loudspeakers, then two hours of winter shows and, just before eight, Magic Symphony on Kaiserplatz.
 
-The day pays off in the evening if you book yourself into a theatre show at 6 p.m. and ride before that, even though the park without its music feels a little gloomy to me until then. An adult day ticket costs €34 in the park's shop. Brühl is in North Rhine-Westphalia, and the state's public holidays act lets you visit the park on Totensonntag but bans performances and entertainment events, among other things, from 5 a.m. to 6 p.m.
+The day pays off in the evening if you book yourself into a theatre show at 6 p.m. and ride before that, even though the park without its music feels a little gloomy to me until then. An adult day ticket costs €34 in the park's shop. North Rhine-Westphalia's public holidays act lets you into the park on Totensonntag but bans performances and entertainment events, among other things, from 5 a.m. to 6 p.m.
 
 ## What North Rhine-Westphalia's holiday law bans on Totensonntag
 
 Section 2 of the Act on Sundays and Public Holidays (Gesetz über die Sonn- und Feiertage) counts two November Sundays among the "Gedenk- und Trauertage", the days of remembrance and mourning. Volkstrauertag, the national day of mourning, is the second Sunday before the first Sunday of Advent, and Totensonntag is the last Sunday before it. First Advent falls on 29 November in 2026, which puts Volkstrauertag on 15 November and Totensonntag on 22 November. Totensonntag can only land between 20 and 26 November.
 
-Section 6 deals with the silent holidays. For Totensonntag it points back to the list it first draws up for Volkstrauertag and stretches it over a longer day. Paragraph 2 reads "Am Allerheiligentag und am Totensonntag sind zusätzlich verboten: alle in Absatz 1 genannten Veranstaltungen von 5 Uhr bis 18 Uhr", meaning that on All Saints' Day and on Totensonntag every event named in paragraph 1 is also banned from 5 a.m. to 6 p.m. Two items on that list can apply to a theme park:
+Section 6 sets out the list for Volkstrauertag, and paragraph 2 extends it to Totensonntag, from 5 a.m. to 6 p.m.:
 
 > [!QUOTE]
 > On Volkstrauertag the following are additionally banned: […] 2. sporting and similar events, including horse races and horse shows, as well as circus performances, funfairs and the operation of leisure facilities insofar as dance or acrobatic performances are offered there, from 5 a.m. to 1 p.m., […] 5. all other public events serving entertainment, including dancing, from 5 a.m. to 6 p.m.
@@ -65,7 +65,7 @@ The other three items cover markets and trade fairs, amusement arcades and betti
 
 The act never uses the word Freizeitpark. What it has is the Freizeitanlage, the leisure facility, in number 2, and only "soweit dort tänzerische oder artistische Darbietungen angeboten werden", insofar as dance or acrobatic performances are offered there. Nothing in the text explicitly bans running roller coasters, and it leaves open whether number 5, "alle anderen der Unterhaltung dienenden öffentlichen Veranstaltungen" (all other public events serving entertainment), covers the rides as well. Phantasialand runs them from 11 a.m. Section 4, on which kinds of work are allowed on Sundays and public holidays, lists "Arbeiten, die der Erholung im Rahmen der Freizeitgestaltung dienen", work that serves people's recreation in their free time, and its examples are saunas, tanning salons and gyms, spelled "Fitneßstudios" with the old ß. So the tanning salon made it into the statute book, and the roller coaster didn't.
 
-Under section 5, public entertainment events are banned on every Sunday and public holiday from 6 to 11 a.m., the "Hauptzeit des Gottesdienstes" or main time of church services, unless there's a "höheres Interesse der Kunst, Wissenschaft oder Volksbildung", a higher interest of art, science or public education. An organiser who ignores all this risks a fine under section 11. Under section 10, only the Regierungspräsident, head of the regional government, could allow an exception, for Brühl the one in charge of the Cologne district, and only in case of urgent need.
+From 6 to 11 a.m. on every Sunday and public holiday, the "Hauptzeit des Gottesdienstes" or main time of church services, public entertainment events are banned anyway under section 5, unless there's a "höheres Interesse der Kunst, Wissenschaft oder Volksbildung", a higher interest of art, science or public education. Anyone who ignores this risks a fine under section 11, and under section 10 only the Regierungspräsident, head of the regional government, could allow an exception, for Brühl the one in charge of the Cologne district, and only in case of urgent need.
 
 For All Saints' Day, Sunday 1 November 2026, Phantasialand has announced that there'll be no shows and no outside sound all day. The park is still on summer hours then, open from 9 a.m. until at least 6 p.m.
 
@@ -96,8 +96,6 @@ On its shows page the park promises "alle unsere Wintershows", all of its winter
 - **Kaiserplatz Illumination**, **Tiempo de Fuego**, **Pulse of Rookburgh** and **Magic Symphony** outdoors
 
 All three theatre shows play on Sundays; their days off fall between Monday and Wednesday. The last show before closing is Magic Symphony on Kaiserplatz in the Berlin area. Bad weather can cancel it, and the park says it then puts on "Good Night Wish", a mix of music and light, instead.
-
-You won't fit all seven shows and another ride in between 6 and 8 p.m.
 
 ## How busy Phantasialand gets on Totensonntag
 
@@ -142,7 +140,7 @@ You park at the Mystery (P1) and China (P2) car parks. A car costs €8, cash or
 
 ## Volkstrauertag a week earlier
 
-Volkstrauertag has fallen on this Sunday since 1952. For a theme park the difference lies in number 2: on Volkstrauertag, running a leisure facility with dance or acrobatic performances is only banned until 1 p.m., while all other public entertainment events under number 5 stay banned until 6 p.m., as on Totensonntag.
+The rule that puts Volkstrauertag on the second Sunday before First Advent has applied since 1952. On Volkstrauertag, running a leisure facility with dance or acrobatic performances is only banned until 1 p.m. under number 2, while all other public entertainment events under number 5 stay banned until 6 p.m., as on Totensonntag.
 
 Phantasialand hasn't announced any change to the shows or the outside sound for 15 November. The calendar lists the day as 11 a.m. to 8 p.m., and the ticket costs €35.
 
@@ -170,7 +168,7 @@ An adult day ticket (age 12 and up) for 22 November 2026 costs €34 in Phantasi
 
 ### Are there shows at Phantasialand on Volkstrauertag?
 
-The park hasn't announced any restrictions for 15 November 2026, and the calendar lists 11 a.m. to 8 p.m., like every November day of Wintertraum.
+The park hasn't announced any change to the show schedule for 15 November 2026, unlike for Totensonntag. The calendar lists the day as 11 a.m. to 8 p.m.
 
 ### Which rides are closed at Phantasialand in winter?
 
