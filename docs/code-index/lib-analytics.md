@@ -5,6 +5,12 @@ by hand: change the comment in the code and re-run the script. -->
 
 [All pages](README.md).
 
+### [`article-read.ts`](../../lib/analytics/article-read.ts)
+
+- `articleReadSpan` _function_: The scroll position at which a post counts as read to the end: the end of its body at the bottom of the screen, or the bottom of the page on a page without one. A depth is reached at that share of it.
+- `ARTICLE_READ_DEPTHS` _const_: The depths of `article_read`, in percent of the way to the end of the post.
+- `ARTICLE_END_ID` _const_: The id of the empty element that ends a post's body.
+
 ### [`faq-open.ts`](../../lib/analytics/faq-open.ts)
 
 - `faqPositionAttributes` _function_: The attribute to spread onto the `<details>` of the question at 0-based `index`.

@@ -379,6 +379,42 @@ export function googleSearchHref(query: string): string {
 }
 
 // ---------------------------------------------------------------------------------------------
+// Snippet
+
+/**
+ * Where Google's result cuts a title and a description: about 60 characters or 580 pixels of
+ * 20px Arial for the title, about 155 characters for the description.
+ */
+export const SNIPPET_LIMITS = { titleChars: 60, titlePixels: 580, descriptionChars: 155 } as const;
+
+/** Lower case without accents, so „Brühl“ in a query finds „bruhl“ in a title and back. */
+function folded(text: string): string {
+  return text.normalize('NFD').replace(/\p{M}/gu, '').toLowerCase();
+}
+
+/**
+ * The words of a query that the title does not contain, accents and case ignored. Words under
+ * four letters are left out: they are mostly articles and prepositions a title need not repeat.
+ * A word counts as present inside a longer one, so „wartezeit“ is in „Wartezeiten“.
+ */
+export function missingTitleWords(query: string, title: string): string[] {
+  const haystack = folded(title);
+  return [...new Set(folded(query).split(/[^\p{L}\p{N}]+/u))].filter(
+    (word) => word.length >= 4 && !haystack.includes(word)
+  );
+}
+
+/**
+ * Whether a page or a query is on Google's first page but hardly clicked: position 10 or better
+ * and a click rate under 1 %, which points at the title or the description.
+ */
+export function weakSnippet(row: SearchConsoleTotals): boolean {
+  const position = searchConsoleFigure(row, 'position');
+  const ctr = searchConsoleFigure(row, 'ctr');
+  return position !== null && ctr !== null && position <= 10 && ctr < 0.01;
+}
+
+// ---------------------------------------------------------------------------------------------
 // Status
 
 /**

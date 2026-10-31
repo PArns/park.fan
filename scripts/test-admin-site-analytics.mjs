@@ -56,7 +56,9 @@ import {
   parseTrafficLocale,
   pathEditorHref,
   positionRows,
+  propCount,
   propValueLabel,
+  propValues,
   serializeTrafficFilters,
   sortPropValues,
   surfaceOrder,
@@ -887,6 +889,16 @@ test('reach divides each place by its page type views, every place listed, at mo
     { reached: 10, share: 0.05 },
     { reached: 50, share: 1 },
   ]);
+});
+
+test('an event property reads its values, and 0 or nothing where it was not sent', () => {
+  const detail = {
+    props: [{ prop: 'block', values: [{ value: 'related', count: 7 }] }],
+  };
+  assert.deepEqual(propValues(detail, 'block'), [{ value: 'related', count: 7 }]);
+  assert.deepEqual(propValues(detail, 'dest'), []);
+  assert.equal(propCount(detail, 'block', 'related'), 7);
+  assert.equal(propCount(detail, 'block', 'footer'), 0);
 });
 
 console.log(`\n${passed} cases passed.`);

@@ -5,6 +5,20 @@ by hand: change the comment in the code and re-run the script. -->
 
 [All pages](README.md).
 
+### [`page-checks.tsx`](../../components/admin/page-checks.tsx)
+
+- `SectionHeading` _component_: A section's heading line: an icon, a name and what the figures are measured against.
+- `SnippetCheck` _component_: The page's title and description as Google takes them, with where Google cuts them.
+- `TechnicalCheck` _component_: Canonical, robots, hreflang, structured data and alt texts, all read from the page itself.
+- `IndexStatus` _component_: Whether Google has crawled the page since it last changed, from the reindex queue, and the same „Beantragen“ as the queue's panel for a page that waits for it. Read when mounted, so only with the overlay open.
+- `readPageDocument` _function_: The page's own head and markup, as a crawler gets them once the page has rendered.
+- Types: `PageDocument`
+
+### [`page-reading-marks.tsx`](../../components/admin/page-reading-marks.tsx)
+
+- `PageReadingMarks` _component_: Draws how the page was read onto the page itself, for the admin's overlay: where readers got to and how often each block's links were followed.
+- Types: `PageReading`
+
 ### [`search-console-gate.tsx`](../../components/admin/search-console-gate.tsx)
 
 - `SearchConsoleGate` _component_: Mounts the Search Console overlay for a browser that signed in to the admin, and nothing for anyone else: the marker cookie is read in the browser only, so the cached page is the same for everybody and a visitor's bundle carries only this …

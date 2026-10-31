@@ -155,7 +155,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`blog-reading-progress.tsx`](../../components/blog/blog-reading-progress.tsx)
 
-- `BlogReadingProgress` _component_: Thin fixed bar at the top of the viewport tracking how far the reader has scrolled through the article body, reaching 100% at the `#blog-progress-end` marker rather than the end of the page.
+- `BlogReadingProgress` _component_: Thin fixed bar at the top of the viewport tracking how far the reader has scrolled through the article body, reaching 100% at the end of the post's body (`articleReadSpan`) rather than the end of the page.
 
 ### [`blog-references.tsx`](../../components/blog/blog-references.tsx)
 
