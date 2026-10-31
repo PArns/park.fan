@@ -484,6 +484,8 @@ janvier 2027; à la Saint-Sylvestre, ouvert seulement jusqu’à 18 h. Les bille
 fonctionnent comme en été, via des billets journaliers datés en ligne; selon le
 parc, des billets en prévente dès 30 € étaient en vente jusqu’au 12 octobre.
 
+Le 22 novembre fait exception, c’est le [Totensonntag au Phantasialand](/blog/phantasialand-totensonntag), le dimanche des morts allemand. Le parc ouvre bien de 11 h à 20 h, mais comme c’est un jour férié silencieux, les spectacles et la musique extérieure ne commencent qu’à 18 h.
+
 - **Tout ne tourne pas.** Taron, F.L.Y., Black Mamba et les Winja’s continuent
   de tourner, et [Chiapas](ref:phantasialand/chiapas-die-wasserbahn) fonctionne
   aussi pendant le Wintertraum selon le parc, jusqu’à moins cinq degrés (Taron

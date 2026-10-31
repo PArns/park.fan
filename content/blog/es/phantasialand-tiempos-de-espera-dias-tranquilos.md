@@ -172,7 +172,7 @@ funcionando.
 Las noches de Halloween de los parques vecinos terminan entre el 1 de noviembre, en Walibi
 Holland, y el 15 de noviembre, en el Bobbejaanland. El Phantasialand cierra su temporada de verano
 el 13 de noviembre y abre el 14 como Wintertraum, hasta el 24 de enero de 2027, casi siempre de
-11:00 a 20:00. Para los sábados del Wintertraum del 21 y el 28 de noviembre ya prevemos afluencia
+11:00 a 20:00. El 22 de noviembre, Totensonntag (el domingo de difuntos alemán), los shows y la música exterior no empiezan hasta las 18:00 por ser un festivo de silencio, como explica nuestra guía del [Phantasialand en Totensonntag](/blog/phantasialand-totensonntag). Para los sábados del Wintertraum del 21 y el 28 de noviembre ya prevemos afluencia
 Alta.
 
 Este otoño yo iría a Brühl un día entre semana hasta el 13 de noviembre. Si solo puedes ir en sábado,

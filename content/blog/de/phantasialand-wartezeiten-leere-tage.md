@@ -166,7 +166,7 @@ halben Stunde vor Parkschluss gehen in Klugheim die Lichter an, während Taron n
 ## Wie lange die leeren Tage noch dauern
 
 Die Halloween-Abende in den Nachbarparks enden zwischen dem 1. November bei Walibi Holland und dem 15. November im Bobbejaanland. Das Phantasialand beendet seine Sommersaison am 13. November und
-öffnet am 14. November als Wintertraum, bis zum 24. Januar 2027 meistens von 11 bis 20 Uhr. Für
+öffnet am 14. November als Wintertraum, bis zum 24. Januar 2027 meistens von 11 bis 20 Uhr. Wegen des stillen Feiertags beginnen Shows und Außenbeschallung am 22. November erst um 18 Uhr, wie unser Guide zum [Phantasialand am Totensonntag](/blog/phantasialand-totensonntag) zeigt. Für
 die Wintertraum-Samstage am 21. und 28. November erwarten wir schon jetzt hohen Andrang.
 
 Ich würde in diesem Herbst an einem Werktag bis zum 13. November nach Brühl fahren. Wer nur samstags kann,

@@ -173,7 +173,7 @@ Taron roule encore.
 
 Les soirées d’Halloween des parcs voisins se terminent entre le 1er novembre chez Walibi Holland et
 le 15 novembre à Bobbejaanland. Le Phantasialand termine sa saison d’été le 13 novembre et rouvre
-le 14 avec le Wintertraum, jusqu’au 24 janvier 2027, le plus souvent de 11 h à 20 h. Pour les
+le 14 avec le Wintertraum, jusqu’au 24 janvier 2027, le plus souvent de 11 h à 20 h. Le 22 novembre, jour du Totensonntag (le dimanche des morts allemand), les spectacles et la musique extérieure ne commencent qu’à 18 h, car c’est un jour férié silencieux, comme l’explique notre guide sur le [Phantasialand le jour du Totensonntag](/blog/phantasialand-totensonntag). Pour les
 samedis du Wintertraum, les 21 et 28 novembre, nous prévoyons déjà une forte affluence.
 
 Cet automne, j’irais à Brühl un jour de semaine avant le 13 novembre. Si tu ne peux venir que le

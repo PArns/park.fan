@@ -167,7 +167,7 @@ sluitingstijd gaan in Klugheim de lichten aan, terwijl Taron nog rijdt.
 
 De halloweenavonden in de buurparken stoppen tussen 1 november bij Walibi Holland en 15 november in
 Bobbejaanland. Phantasialand sluit zijn zomerseizoen af op 13 november en gaat op 14 november open
-als Wintertraum, tot 24 januari 2027 en meestal van 11 tot 20 uur. Voor de Wintertraum-zaterdagen
+als Wintertraum, tot 24 januari 2027 en meestal van 11 tot 20 uur. Op 22 november, Totensonntag (de Duitse dodenzondag), beginnen shows en de muziek buiten wegens de stille feestdag pas om 18 uur, zoals onze gids over [Phantasialand op Totensonntag](/blog/phantasialand-totensonntag) laat zien. Voor de Wintertraum-zaterdagen
 van 21 en 28 november verwachten we nu al hoge drukte.
 
 Ik zou deze herfst op een doordeweekse dag tot en met 13 november naar Brühl gaan. Kun je alleen op

@@ -471,6 +471,8 @@ von **11 bis 20 Uhr**. Geschlossen ist am 24. und 25. Dezember 2026 sowie am 1.,
 laufen wie im Sommer über datierte Online-Tagestickets; Vorverkaufstickets ab
 30 € gab es laut Park bis zum 12. Oktober.
 
+Eine Ausnahme ist der 22. November, der [Totensonntag im Phantasialand](/blog/phantasialand-totensonntag). Geöffnet ist zwar von 11 bis 20 Uhr, wegen des stillen Feiertags beginnen Shows und Außenbeschallung aber erst um 18 Uhr.
+
 - **Nicht alles fährt.** Taron, F.L.Y., Black Mamba und die Winja’s fahren
   weiter, und auch [Chiapas](ref:phantasialand/chiapas-die-wasserbahn) fährt
   laut Park im Wintertraum, bis minus fünf Grad (Taron bis minus zehn).
