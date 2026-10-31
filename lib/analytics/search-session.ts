@@ -76,11 +76,13 @@ function entityOf(id: string | undefined): string | undefined {
 
 /**
  * A {@link SearchSession} for `surface`, sending through `send`. Plain state rather than React
- * state: nothing renders from it, and the events must not wait for a commit.
+ * state: nothing renders from it, and the events must not wait for a commit. `onOpenChange` hears
+ * each opening and each close of one, for whoever shows that a search is open.
  */
 export function createSearchSession(
   surface: SearchSurface,
-  send: SearchEventSender
+  send: SearchEventSender,
+  onOpenChange?: (open: boolean) => void
 ): SearchSession {
   let current = surface;
   let open = false;
@@ -101,9 +103,12 @@ export function createSearchSession(
       typed = false;
       noResults = false;
       send('search_opened', { surface: current });
+      onOpenChange?.(true);
     },
     close() {
+      if (!open) return;
       open = false;
+      onOpenChange?.(false);
     },
     typed() {
       ensureOpen();

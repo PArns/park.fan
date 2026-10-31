@@ -179,6 +179,10 @@ the viewport come with every hit, the surface with every search event.
 - **A blur is only a blur when focus went elsewhere.** Switching to another tab or window blurs the
   field but leaves it the page's focused element; coming back is the same opening
   (`searchFieldFocusProps`).
+- **An opening is also what Parky sees.** Every session reports its openings and closings to
+  `searchPresence` (`lib/analytics/search-presence.ts`), and Parky searches along with a magnifying
+  glass while one on the page is open ([assistant](assistant.md)). `/search` stays out of it, since
+  its opening never closes.
 - **Settled** is the palette's debounced query (`SEARCH_SETTLE_MS`, 300 ms); the fields that search
   on every keystroke wait the same 300 ms (`useSettledQueryEvents`). `/search` counts the query it
   was loaded with.

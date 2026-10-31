@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState, type FocusEvent } from 'react';
+import { searchPresence } from '@/lib/analytics/search-presence';
 import { trackSiteEvent, type SearchSurface } from '@/lib/analytics/site-analytics';
 import {
   SEARCH_SETTLE_MS,
@@ -23,9 +24,28 @@ const trackSearchEvent = trackSiteEvent as (
 
 const send: SearchEventSender = (name, props, entity) => trackSearchEvent(name, props, entity);
 
-/** The {@link SearchSession} of one mounted search surface, the same object on every render. */
-export function useSearchSession(surface: SearchSurface): SearchSession {
-  const [session] = useState(() => createSearchSession(surface, send));
+/**
+ * The {@link SearchSession} of one mounted search surface, the same object on every render. While
+ * it is open and on the page, {@link searchPresence} counts a search as open, unless `presence` is
+ * `false`: `/search` opens one with every load and never closes it, and is a page of results rather
+ * than a field somebody is typing into.
+ */
+export function useSearchSession(
+  surface: SearchSurface,
+  { presence = true }: { presence?: boolean } = {}
+): SearchSession {
+  const [session] = useState(() => {
+    const created: SearchSession = createSearchSession(
+      surface,
+      send,
+      presence ? (open) => searchPresence.setOpen(created, open) : undefined
+    );
+    return created;
+  });
+  useEffect(() => {
+    searchPresence.mount(session);
+    return () => searchPresence.unmount(session);
+  }, [session]);
   return session;
 }
 

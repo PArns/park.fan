@@ -137,6 +137,17 @@ faster low down. Eyes go wide and the mouth opens on every ride, and off every r
 dizzy (`FOLLOW_UP`): the pupils swirl round their eyes, one each way, the body reels, the mouth
 goes wavy and three stars circle its head.
 
+While a search is open anywhere on the page (the palette from the header or ⌘K, the hero's field,
+the homepage's step card, a listing's, the glossary's, the compare picker), Parky searches along: a
+magnifying glass swings up to its right eye, the eye looks big behind it, the pupils scan the
+page while the body peers to one side and the other, the mouth is pulled to one side with the
+tip of the tongue out, and at each keystroke it leans the glass in. Idle acts pause meanwhile; when
+the search closes the glass swings away. The signal is `searchPresence`
+(`lib/analytics/search-presence.ts`): every `useSearchSession` reports its openings and closings
+there, and only a session still on the page counts, so a field that leaves the page open leaves
+no search behind. `/search` stays out (`presence: false`): each load there is an opening that
+never closes. The glass's size holds under reduced motion; its motion does not.
+
 The store keeps one timer for the next stage, so a moving pointer costs a timestamp. Each act's
 length is written once, in `ACT_MS`; the stylesheet reads it as `--parky-act`. Under reduced
 motion the store answers `null` and Parky only shows its moods.
@@ -170,8 +181,8 @@ its corner offset. These lines go in it, from the `assistant` namespace:
 - **Invitations** (`teaser1`–`teaser9`): 8 s after the button shows and again 90 s after that, at
   most two a session (`TEASER_SCHEDULE_MS`). After an entrance the first is the entrance's own
   line (`entranceScurry`, `entranceDrop`, `entranceRoll`, `entrancePeek`, `entrancePop`), said a
-  beat after landing. One that falls due over another line or while Parky
-  sleeps tries again 5 s later.
+  beat after landing. One that falls due over another line, while Parky sleeps or while a search
+  is open tries again 5 s later.
 - **Reactions**, read from the same `parkyBoredom`: a bored line (`teaserBored1`–`4`) after the
   first yawn, a woken line (`teaserWoke1`–`3`) once somebody wakes Parky. At most
   `REACTIONS_PER_SESSION` (3).
@@ -186,7 +197,8 @@ its corner offset. These lines go in it, from the `assistant` namespace:
   else its top attraction (`topCoaster`). The Konami code typed anywhere buys a free ride with its
   own line (`secretKonami`).
 
-Every line stays 7 s. Opening Parky ends the invitations and reactions for the session
+Every line stays 7 s, or until a search opens: the bubble would cover the palette's list and the
+field's results, and Parky is busy searching along. Opening Parky ends the invitations and reactions for the session
 (`stopTeasers`, `lib/assistant/teaser-store.ts`); closing a line by its ✕ ends every line,
 easter eggs included (`muteLines`).
 

@@ -76,6 +76,13 @@ Where an outbound link goes, the closed list of the event's `target`.
 - `createPlannerWizardSession` _function_: A `PlannerWizardSession` sending through `send`. Plain state: nothing renders from it.
 - Types: `PlannerEventSender`, `PlannerWizardSession`
 
+### [`search-presence.ts`](../../lib/analytics/search-presence.ts)
+
+- `useSearchOpen` _hook_: Whether a search is open anywhere on the page (`searchPresence`); `false` on the server.
+- `createSearchPresence` _function_: A `SearchPresence` of its own, for the tests; the page shares `searchPresence`.
+- `searchPresence` _const_: The page's searches, which every `useSearchSession` reports to.
+- Types: `SearchPresence`
+
 ### [`search-session.ts`](../../lib/analytics/search-session.ts)
 
 - `createSearchSession` _function_: A `SearchSession` for `surface`, sending through `send`. Plain state rather than React state: nothing renders from it, and the events must not wait for a commit.
