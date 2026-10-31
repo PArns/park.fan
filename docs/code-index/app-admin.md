@@ -30,6 +30,8 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`_app/nav.ts`](../../app/admin/_app/nav.ts)
 
+- `flatNavItems` _function_: Every entry of a list, each parent followed by its sub-entries.
+- `navParent` _function_: The entry whose sub-entries include `href`, or null for a top-level one.
 - `activeNavItem` _function_: The nav entry a path belongs to.
 - `visibleGroups` _function_: Returns the navigation groups with the entries below the given role's rank removed, and empty groups dropped. A display filter only: the API enforces roles.
 - Types: `NavItem`, `NavGroup`
