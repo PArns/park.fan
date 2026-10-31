@@ -42,7 +42,14 @@ export type AssistantCard =
     }
   | {
       kind: 'parks';
-      parks: Array<{ name: string; place: string | null; url: string | null }>;
+      parks: Array<{
+        name: string;
+        place: string | null;
+        url: string | null;
+        status?: string | null;
+        crowdLevel?: string | null;
+        avgWaitMinutes?: number | null;
+      }>;
     };
 
 /** What Parky may ask the widget to do; mirrors the API's `ClientAction`. */
@@ -115,7 +122,18 @@ const isParkList = (parks: unknown) =>
 
 function isCard(card: AssistantCard | undefined): card is AssistantCard {
   if (!card) return false;
-  if (card.kind === 'parks') return isParkList(card.parks);
+  if (card.kind === 'parks') {
+    if (!isParkList(card.parks)) return false;
+    // A status or level without a badge here is dropped, not the card.
+    for (const park of card.parks) {
+      if (park.status != null && !STATUSES.has(park.status)) park.status = null;
+      if (park.crowdLevel != null && !CROWD.has(park.crowdLevel)) park.crowdLevel = null;
+      if (park.avgWaitMinutes != null && typeof park.avgWaitMinutes !== 'number') {
+        park.avgWaitMinutes = null;
+      }
+    }
+    return true;
+  }
   if (!orNull(card.url, (v) => typeof v === 'string' && safeAssistantHref(v) !== null)) {
     return false;
   }
