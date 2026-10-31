@@ -1,4 +1,5 @@
 {
+  "title": "03-atrium",
   "park": "universal-islands-of-adventure",
   "parkPath": "north-america/united-states/orlando/universal-islands-of-adventure",
   "ride": "jurassic-world-velocicoaster",
@@ -23,5 +24,9 @@
   "credit": {
     "author": "Patrick Arns",
     "license": "all-rights-reserved"
+  },
+  "focus": {
+    "x": 0.4856,
+    "y": 0.737
   }
 }
