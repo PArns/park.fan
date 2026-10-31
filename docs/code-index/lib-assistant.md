@@ -19,6 +19,21 @@ by hand: change the comment in the code and re-run the script. -->
 - `assistantGate` _const_: The gate as a store for `useSyncExternalStore`: hidden on the server and until the decision is made, which takes one cached request per session, so no page's HTML depends on it.
 - Types: `AssistantConfig`
 
+### [`easter-eggs.ts`](../../lib/assistant/easter-eggs.ts)
+
+- `parkPathOf` _function_: The geo path of the park a page belongs to (a park's page or one of its rides), or `null`.
+- `holidayOn` _function_: The holiday a date falls on: 31 October, 24 to 26 December, 31 December and 1 January.
+- `konamiProgress` _function_: How far into the Konami code a key leaves somebody who had typed `progress` keys of it; the full length means it is done. A wrong key starts over, or counts as the first one if it is.
+- `PARK_EGGS` _const_: Parks Parky has a soft spot for, keyed by the geo path of their page (two parks are called `disneyland-park`), with the ride it wants another go on. Each ride is one park.fan lists.
+- `KONAMI_LENGTH` _const_: How many keys the Konami code has.
+- Types: `ParkyHoliday`
+
+### [`entrance.ts`](../../lib/assistant/entrance.ts)
+
+- `sessionEntrance` _function_: This page's entrance: a random one the first time Parky shows in a session, none after that, none without motion and none where storage is blocked (it could not tell a second visit).
+- `ENTRANCE_MS` _const_: How Parky arrives in its corner, once a session, and how long each takes. Each entrance has a line of its own; the stylesheet (`.parky-enter-*`) reads the length as `--parky-enter`, so it is written here only.
+- Types: `ParkyEntrance`
+
 ### [`links.ts`](../../lib/assistant/links.ts)
 
 - `directionsHref` _function_: The one link off the site an answer may carry: Google Maps directions to coordinates, exactly in the form the API's `get_directions` writes it. Opened in a new tab; never used for navigation.
@@ -58,7 +73,12 @@ by hand: change the comment in the code and re-run the script. -->
 - `setTeasersShown` _function_: Records the lines shown; `stopTeasers` ends them for the session (opened, or closed by hand).
 - `reactionsShown` _function_: How many bored or woken lines this session has shown; "all of them" where storage is blocked.
 - `countReaction` _function_: Records one more bored or woken line.
-- `stopTeasers` _function_: No more lines this session, invitations and reactions alike: Parky was opened, or a line was closed.
+- `stopTeasers` _function_: No more invitations or reactions this session: Parky was opened, or a line was closed.
+- `muteLines` _function_: A line closed by hand: Parky stops talking for the session, its easter eggs included, which opening Parky leaves alone.
+- `linesMuted` _function_: Whether a line was closed by hand this session; `true` where storage is blocked.
+- `parkLineDue` _function_: Whether Parky may still say a park's own line: not muted, not this park yet, not too often.
+- `markParkLine` _function_: Records that Parky said a park's own line.
+- `PARK_LINES_PER_SESSION` _const_: A park's own line comes once per park and at most this often a session.
 - `TEASER_SCHEDULE_MS` _const_: Two lines a session at most: one after a short look around, one a good while later.
 - `REACTIONS_PER_SESSION` _const_: Lines Parky says when it gets bored or is woken up, at most this many a session.
 

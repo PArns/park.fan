@@ -3158,6 +3158,19 @@
     "teaserBored4": "Hai già pianificato la prossima visita al parco? Ti aiuto io.",
     "teaserWoke1": "Oh! Non stavo affatto dormendo!",
     "teaserWoke2": "Oh, eccoti di nuovo! Stavo solo riposando gli occhi.",
-    "teaserWoke3": "Mi sono perso qualcosa? Sono di nuovo sveglissimo!"
+    "teaserWoke3": "Mi sono perso qualcosa? Sono di nuovo sveglissimo!",
+    "entranceScurry": "Zac, eccomi! Sono Parky – chiedimi qualcosa.",
+    "entranceDrop": "Ahi! Tutto bene, sono atterrato. Chiedimi qualcosa!",
+    "entranceRoll": "Uff, mi gira la testa … Ciao, sono Parky!",
+    "entrancePeek": "Psst … posso entrare? Sono Parky.",
+    "entrancePop": "Plop! Eccomi qui. Dove andiamo oggi?",
+    "holidayHalloween": "Bu! Ti ho fatto paura? Buon Halloween!",
+    "holidayChristmas": "Buon Natale! Ti auguro giri senza coda.",
+    "holidayNewYear": "Buon anno! A un anno pieno di attese brevi.",
+    "parkLine1": "Ah sì, {park}! Devo assolutamente rifare {ride}.",
+    "parkLine2": "{park}! Qui comincio sempre da {ride}. Vieni anche tu?",
+    "parkLine3": "Aspetta, ancora un giro su {ride} …",
+    "parkLine4": "Ah, {ride}! Già solo per questo vale il viaggio.",
+    "secretKonami": "Trucco attivato: giri gratis all’infinito!"
   }
 }

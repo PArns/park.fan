@@ -1,5 +1,10 @@
 const SHOWN_KEY = 'parkfan:assistant-teasers';
 const REACTIONS_KEY = 'parkfan:assistant-reactions';
+const MUTED_KEY = 'parkfan:assistant-muted';
+const PARKS_KEY = 'parkfan:assistant-parks';
+
+/** A park's own line comes once per park and at most this often a session. */
+export const PARK_LINES_PER_SESSION = 3;
 
 /** Two lines a session at most: one after a short look around, one a good while later. */
 export const TEASER_SCHEDULE_MS = [8_000, 90_000] as const;
@@ -43,8 +48,47 @@ export function countReaction(): void {
   writeCount(REACTIONS_KEY, reactionsShown() + 1);
 }
 
-/** No more lines this session, invitations and reactions alike: Parky was opened, or a line was closed. */
+/** No more invitations or reactions this session: Parky was opened, or a line was closed. */
 export function stopTeasers(): void {
   setTeasersShown(TEASER_SCHEDULE_MS.length);
   writeCount(REACTIONS_KEY, REACTIONS_PER_SESSION);
+}
+
+/**
+ * A line closed by hand: Parky stops talking for the session, its easter eggs included, which
+ * opening Parky leaves alone.
+ */
+export function muteLines(): void {
+  stopTeasers();
+  writeCount(MUTED_KEY, 1);
+}
+
+/** Whether a line was closed by hand this session; `true` where storage is blocked. */
+export function linesMuted(): boolean {
+  return readCount(MUTED_KEY, 1) > 0;
+}
+
+function parksGreeted(): string[] {
+  try {
+    const parks: unknown = JSON.parse(window.sessionStorage.getItem(PARKS_KEY) ?? '[]');
+    return Array.isArray(parks) ? parks.filter((park) => typeof park === 'string') : [];
+  } catch {
+    return [];
+  }
+}
+
+/** Whether Parky may still say a park's own line: not muted, not this park yet, not too often. */
+export function parkLineDue(path: string): boolean {
+  if (linesMuted()) return false;
+  const greeted = parksGreeted();
+  return !greeted.includes(path) && greeted.length < PARK_LINES_PER_SESSION;
+}
+
+/** Records that Parky said a park's own line. */
+export function markParkLine(path: string): void {
+  try {
+    window.sessionStorage.setItem(PARKS_KEY, JSON.stringify([...parksGreeted(), path]));
+  } catch {
+    // Without storage the line may come again on the next load.
+  }
 }

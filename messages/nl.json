@@ -3158,6 +3158,19 @@
     "teaserBored4": "Je volgende parkbezoek al gepland? Ik help je erbij.",
     "teaserWoke1": "Oei! Ik sliep helemaal niet!",
     "teaserWoke2": "O, je bent er weer! Ik liet mijn ogen even rusten.",
-    "teaserWoke3": "Heb ik iets gemist? Ik ben weer klaarwakker!"
+    "teaserWoke3": "Heb ik iets gemist? Ik ben weer klaarwakker!",
+    "entranceScurry": "Zoef, daar ben ik! Ik ben Parky – vraag me iets.",
+    "entranceDrop": "Au! Niks aan de hand, ik ben geland. Vraag me iets!",
+    "entranceRoll": "Pff, ik ben helemaal duizelig … Hoi, ik ben Parky!",
+    "entrancePeek": "Psst … mag ik binnenkomen? Ik ben Parky.",
+    "entrancePop": "Plop! Hier ben ik. Waar gaan we vandaag heen?",
+    "holidayHalloween": "Boe! Heb ik je laten schrikken? Fijne Halloween!",
+    "holidayChristmas": "Fijne kerst! Ik wens je ritjes zonder rij.",
+    "holidayNewYear": "Gelukkig nieuwjaar! Op een jaar vol korte wachttijden.",
+    "parkLine1": "O ja, {park}! Ik moet echt nog eens in {ride}.",
+    "parkLine2": "{park}! Hier ga ik altijd eerst in {ride}. Ga je mee?",
+    "parkLine3": "Wacht even, nog snel een rondje {ride} …",
+    "parkLine4": "Ah, {ride}! Alleen daarvoor is het uitje al de moeite waard.",
+    "secretKonami": "Cheat geactiveerd: oneindig veel gratis ritjes!"
   }
 }

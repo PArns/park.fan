@@ -10,6 +10,7 @@ import { PLANNER_SEGMENTS } from '@/lib/planner/segments';
 import { PARK_CALENDAR_SEGMENTS } from '@/lib/parks/calendar-segments';
 import { PARK_STATS_SEGMENTS } from '@/lib/parks/stats-segments';
 import { PARK_KIDS_SEGMENTS } from '@/lib/parks/kids-segments';
+import type { ParkyEntrance } from '@/lib/assistant/entrance';
 
 /**
  * Our own cookieless statistic on api.park.fan (`POST /v1/analytics/collect`): page views and
@@ -140,6 +141,16 @@ type NoProps = Record<string, never>;
 /** How a question reached Parky: a suggestion chip or typed. */
 export type AssistantQuestionKind = 'suggestion' | 'typed';
 
+/** What made Parky's window open: the round button or a line in its speech bubble. */
+export type AssistantOpenSource = 'button' | 'line';
+
+/**
+ * A line in Parky's speech bubble: an invitation, after an entrance, bored, woken, a holiday's, a
+ * park's own, or the Konami code's.
+ */
+export type AssistantLineKind =
+  'invitation' | 'entrance' | 'bored' | 'woke' | 'holiday' | 'park' | 'secret';
+
 /** How one of Parky's answers ended. */
 export type AssistantAnswerResult =
   'answered' | 'limit' | 'off' | 'upstream' | 'network' | 'session' | 'expired';
@@ -184,8 +195,16 @@ export interface SiteEventMap {
   show_follow_add: { source: 'card' | 'panel' };
   show_follow_remove: NoProps;
   planner_opened: { source: PlannerOpenedSource };
-  /** Parky's window went from closed to open. */
-  assistant_opened: NoProps;
+  /** Parky's button is on screen, once per page view; with the entrance it made, `none` without. */
+  assistant_shown: { entrance: ParkyEntrance | 'none' };
+  /** Parky's window went from closed to open, from the button or a line in the bubble. */
+  assistant_opened: { source: AssistantOpenSource };
+  /** A line appeared in Parky's speech bubble. */
+  assistant_line_shown: { line: AssistantLineKind };
+  /** A line in the bubble was pressed, which opens Parky. */
+  assistant_line_clicked: { line: AssistantLineKind };
+  /** A line was closed with its ✕, which ends the lines for the session. */
+  assistant_line_closed: { line: AssistantLineKind };
   /** Parky's window closed again, with how many questions were asked while it was open. */
   assistant_closed: { questions: number };
   /** A question to Parky: a suggested one or typed; never its text. */

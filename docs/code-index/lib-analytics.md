@@ -101,7 +101,7 @@ The places a park page marks, top to bottom, the closed list of the event's `sec
 - `trackSitePageview` _function_: Counts a view of the page now in the address bar. Call once per navigation. The view before it ends here, so the foreground time it has not reported yet is queued ahead of the new pageview, under the path and page type it was opened with.
 - `markPageNotFound` _function_: Declares the page in the address bar a "not found" page, which only that page knows: its pageview becomes `not_found`, whether it was queued already or comes after.
 - `trackSiteEvent` _function_: Counts one event on the current page. A name in `SiteEventMap` is checked against its properties; any other name (lower case, digits and underscores, two to 48 characters) goes through with any properties of `SiteEventProps`.
-- Types: `SitePageType`, `SearchSurface`, `SearchResultKind`, `SearchPosition`, `NavMenuId`, `SearchBrowseItem`, `PlannerWizardStep`, `PlanItemKind`, `PlanItemAddSource`, `PlanItemRemoveSource`, `PlanOptimizeMode`, `PlannerFitSource`, `PlannerFitLever`, `PlannerUndoSource`, `SharedPlanResult`, `AssistantQuestionKind`, `AssistantAnswerResult`, `SiteEventMap`, `SiteEventName`, `AttractionFilterName`
+- Types: `SitePageType`, `SearchSurface`, `SearchResultKind`, `SearchPosition`, `NavMenuId`, `SearchBrowseItem`, `PlannerWizardStep`, `PlanItemKind`, `PlanItemAddSource`, `PlanItemRemoveSource`, `PlanOptimizeMode`, `PlannerFitSource`, `PlannerFitLever`, `PlannerUndoSource`, `SharedPlanResult`, `AssistantQuestionKind`, `AssistantOpenSource`, `AssistantLineKind`, `AssistantAnswerResult`, `SiteEventMap`, `SiteEventName`, `AttractionFilterName`
 
 ### [`umami.ts`](../../lib/analytics/umami.ts)
 
