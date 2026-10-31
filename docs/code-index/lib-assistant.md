@@ -34,6 +34,13 @@ by hand: change the comment in the code and re-run the script. -->
 - `readSse` _function_: Reads a `text/event-stream` body event by event. A hand-written reader rather than `EventSource`, which can only GET and so cannot send the question as a body.
 - Types: `SseEvent`
 
+### [`teaser-store.ts`](../../lib/assistant/teaser-store.ts)
+
+- `teasersShown` _function_: How many teaser lines this session has shown; "all of them" where storage is blocked.
+- `setTeasersShown` _function_: Records the lines shown; `stopTeasers` ends them for the session (opened, or closed by hand).
+- `stopTeasers` _function_: No more lines this session: Parky was opened, or a line was closed.
+- `TEASER_SCHEDULE_MS` _const_: Two lines a session at most: one after a short look around, one a good while later.
+
 ### [`use-assistant-chat.ts`](../../lib/assistant/use-assistant-chat.ts)
 
 - `useAssistantChat` _hook_: The chat with Parky: sends a question, reads the answer as it streams, and keeps the chat for the session so it survives a navigation. The history lives on the API; only its id is sent along.
@@ -45,6 +52,10 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `useAssistantSession` _hook_: Parky's challenge-response from the browser's side: a solved Turnstile token is traded at the API for a session token, which every chat, rating and feedback carries.
 - Types: `AssistantSessionState`
+
+### [`use-smooth-text.ts`](../../lib/assistant/use-smooth-text.ts)
+
+- `useSmoothText` _hook_: `text` written out smoothly, a few characters a frame, instead of in the bursts the stream delivers.
 
 ### [`wait-chips.ts`](../../lib/assistant/wait-chips.ts)
 

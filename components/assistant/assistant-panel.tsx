@@ -122,7 +122,7 @@ export function AssistantPanel({ open, onClose }: { open: boolean; onClose: () =
   const last = chat.messages[chat.messages.length - 1];
   useEffect(() => {
     scroller.current?.scrollTo({ top: scroller.current.scrollHeight, behavior: 'smooth' });
-  }, [chat.messages.length, last?.text, last?.messageId, chat.lookup]);
+  }, [chat.messages.length, last?.text, last?.messageId, last?.cards?.length, chat.lookup]);
 
   const submit = (event?: FormEvent) => {
     event?.preventDefault();
@@ -144,10 +144,12 @@ export function AssistantPanel({ open, onClose }: { open: boolean; onClose: () =
       aria-hidden={!open}
       inert={!open}
       className={cn(
-        'bg-background/90 border-border/60 fixed z-[45] flex flex-col overflow-hidden rounded-2xl border shadow-2xl backdrop-blur-xl',
-        'inset-x-2 bottom-[calc(4.5rem+env(safe-area-inset-bottom))] h-[min(75dvh,560px)]',
+        // Not `overflow-hidden`: Parky's face sits half outside the window's top edge.
+        'bg-background/90 border-border/60 fixed z-[45] flex flex-col rounded-2xl border shadow-2xl backdrop-blur-xl',
+        // The launcher hides while the window is open, so the window takes its corner.
+        'inset-x-2 bottom-[max(0.5rem,env(safe-area-inset-bottom))] h-[min(80dvh,580px)]',
         // Clear of the planner's edge tab, which sits on the right edge at mid height.
-        'sm:inset-x-auto sm:right-12 sm:bottom-20 sm:w-[380px]',
+        'sm:inset-x-auto sm:right-12 sm:bottom-4 sm:w-[380px]',
         'planner-wide:right-[calc(var(--planner-inset,0px)+3rem)]',
         'origin-bottom-right transition-[opacity,transform] duration-200 ease-out motion-reduce:transition-none',
         open
@@ -155,8 +157,13 @@ export function AssistantPanel({ open, onClose }: { open: boolean; onClose: () =
           : 'pointer-events-none translate-y-3 scale-95 opacity-0'
       )}
     >
-      <header className="border-border/60 from-primary/15 to-status-operating/10 flex items-center gap-3 border-b bg-gradient-to-r px-4 py-3">
-        <ParkyLogo className="size-9 shrink-0" talking={chat.phase !== 'idle'} />
+      <header className="border-border/60 from-primary/15 to-status-operating/10 relative flex items-center gap-3 rounded-t-2xl border-b bg-gradient-to-r px-4 py-3 sm:pl-24">
+        {/* On a desktop Parky floats large over the window's top edge, where it is seen. */}
+        <ParkyLogo
+          className="size-9 shrink-0 sm:absolute sm:-top-11 sm:left-1 sm:size-20 sm:drop-shadow-[0_8px_16px_rgb(0_0_0/0.35)]"
+          thinking={chat.phase === 'waiting'}
+          talking={chat.phase === 'writing'}
+        />
         <div className="min-w-0 flex-1">
           <h2 className="text-sm leading-tight font-semibold">{t('title')}</h2>
           <p className="text-muted-foreground truncate text-xs">{t('subtitle')}</p>

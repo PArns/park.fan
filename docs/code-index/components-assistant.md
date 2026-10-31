@@ -33,9 +33,13 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `AssistantPanel` _component_: The window Parky opens in: the chat and, on its second tab, the feedback form. Mounted once the launcher was first pressed and kept, so a closed and reopened chat is where it was.
 
+### [`assistant-teaser.tsx`](../../components/assistant/assistant-teaser.tsx)
+
+- `AssistantTeaser` _component_: A short line beside the closed Parky button ("Hey, ich bin Parky – klick mich an!"), at most twice a session and never once Parky was opened or a line was closed. A press on the line opens Parky.
+
 ### [`parky-logo.tsx`](../../components/assistant/parky-logo.tsx)
 
-- `ParkyLogo` _component_: Parky's face: a speech bubble in the brand's blue to green with big eyes, rosy cheeks and a smile, and a small Ferris wheel for a hat. It blinks now and then; with `talking` the wheel turns and the mouth opens.
+- `ParkyLogo` _component_: Parky's face: a speech bubble in the brand's blue to green with big eyes that follow the mouse, rosy cheeks and a smile, and a small Ferris wheel for a hat.
 
 ### [`use-assistant-actions.ts`](../../components/assistant/use-assistant-actions.ts)
 
