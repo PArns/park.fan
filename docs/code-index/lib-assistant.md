@@ -19,17 +19,19 @@ by hand: change the comment in the code and re-run the script. -->
 - `assistantGate` _const_: The gate as a store for `useSyncExternalStore`: hidden on the server and until the decision is made, which takes one cached request per session, so no page's HTML depends on it.
 - Types: `AssistantConfig`
 
-### [`greeting.ts`](../../lib/assistant/greeting.ts)
-
-- `drawGreeting` _function_: Draws an opener for a new chat, never `except`, and keeps it for the session.
-- `sessionGreeting` _function_: This session's opener: the one already shown, so a reload keeps the chat as it was.
-- `GREETING_KEYS` _const_: The openers a chat with Parky starts with, as keys of the `assistant` namespace.
-- Types: `GreetingKey`
-
 ### [`links.ts`](../../lib/assistant/links.ts)
 
 - `directionsHref` _function_: The one link off the site an answer may carry: Google Maps directions to coordinates, exactly in the form the API's `get_directions` writes it. Opened in a new tab; never used for navigation.
 - `safeAssistantHref` _function_
+
+### [`opener.ts`](../../lib/assistant/opener.ts)
+
+- `drawOpener` _function_: Draws the opener of a new chat, never the greeting of `previous`, and keeps it for the session.
+- `sessionOpener` _function_: This session's opener: the one already shown, so a reload keeps the chat as it was.
+- `GREETING_KEYS` _const_: The greetings a chat with Parky starts with, as keys of the `assistant` namespace.
+- `SUGGESTION_KEYS` _const_: The questions offered under the greeting, as keys of the `assistant` namespace: `site` anywhere, `park` on a park's page, where "here" is that park. Each is one Parky can look up.
+- `SUGGESTIONS_SHOWN` _const_: How many suggestions a new chat offers.
+- Types: `AssistantOpener`
 
 ### [`parky-boredom.ts`](../../lib/assistant/parky-boredom.ts)
 

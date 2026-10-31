@@ -20,7 +20,7 @@ import {
   type AssistantLookup,
 } from '@/lib/assistant/use-assistant-chat';
 import { useAssistantSession } from '@/lib/assistant/use-assistant-session';
-import { drawGreeting, sessionGreeting } from '@/lib/assistant/greeting';
+import { drawOpener, sessionOpener } from '@/lib/assistant/opener';
 import { trackSiteEvent } from '@/lib/analytics/site-analytics';
 import { ParkyLogo } from './parky-logo';
 import { AssistantMessageText } from './assistant-message-text';
@@ -88,8 +88,8 @@ export function AssistantPanel({ open, onClose }: { open: boolean; onClose: () =
   const chat = useAssistantChat(locale, session, act);
   const [tab, setTab] = useState<'chat' | 'feedback'>('chat');
   const [draft, setDraft] = useState('');
-  // One opener per chat, kept for the session; a new chat draws another.
-  const [greeting, setGreeting] = useState(sessionGreeting);
+  // One greeting and set of suggestions per chat, kept for the session; a new chat draws again.
+  const [opener, setOpener] = useState(sessionOpener);
   const input = useRef<HTMLTextAreaElement>(null);
   const scroller = useRef<HTMLDivElement>(null);
   const parkPage = PARK_PAGE.test(usePathname());
@@ -151,9 +151,7 @@ export function AssistantPanel({ open, onClose }: { open: boolean; onClose: () =
     setDraft('');
   };
 
-  const suggestions = parkPage
-    ? [t('suggestWaitsHere'), t('suggestBestDayHere'), t('suggestDownHere')]
-    : [t('suggestWaits'), t('suggestBestDay'), t('suggestNews')];
+  const suggestions = (parkPage ? opener.park : opener.site).map((key) => t(key));
 
   return (
     <section
@@ -201,7 +199,7 @@ export function AssistantPanel({ open, onClose }: { open: boolean; onClose: () =
             type="button"
             onClick={() => {
               chat.reset();
-              setGreeting(drawGreeting(greeting));
+              setOpener(drawOpener(opener));
             }}
             className="text-muted-foreground hover:text-foreground hover:bg-muted rounded-full p-1.5"
             aria-label={t('newChat')}
@@ -265,7 +263,7 @@ export function AssistantPanel({ open, onClose }: { open: boolean; onClose: () =
             aria-live="polite"
           >
             <div className="bg-muted/60 w-fit max-w-[92%] rounded-2xl rounded-tl-sm px-3 py-2">
-              {t(greeting)}
+              {t(opener.greeting)}
             </div>
             {chat.messages.length === 0 && (
               <div className="flex flex-wrap gap-2 pt-1">

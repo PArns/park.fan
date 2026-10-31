@@ -339,6 +339,7 @@ When the nowcast says it is time to go under a roof: the trigger for the covered
 ### [`pick-random.ts`](../../lib/utils/pick-random.ts)
 
 - `pickRandom` _function_: A random item of `list`, never `except` while there is another to take.
+- `pickSome` _function_: `count` different items of `list` in random order; all of them when it has fewer.
 
 ### [`quietest-day.ts`](../../lib/utils/quietest-day.ts)
 
