@@ -196,7 +196,7 @@ export function AssistantCardView({ card }: { card: AssistantCard }) {
             src={photo[0]}
             alt=""
             fill
-            sizes="380px"
+            sizes="480px"
             className="object-cover transition-transform duration-500 group-hover:scale-105"
             style={{ objectPosition: photo[1] }}
           />
