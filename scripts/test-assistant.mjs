@@ -1,7 +1,8 @@
 /**
  * Parky, the chat assistant: the stream reader (`lib/assistant/sse.ts`), the link check on its
- * answers (`lib/assistant/links.ts`), the rollout gate (`lib/assistant/config.ts`) and the post
- * text it reads (`lib/assistant/post-text.ts`).
+ * answers (`lib/assistant/links.ts`), the rollout gate (`lib/assistant/config.ts`), the post
+ * text it reads (`lib/assistant/post-text.ts`) and how bored its face gets
+ * (`lib/assistant/parky-boredom.ts`).
  */
 
 import assert from 'node:assert/strict';
@@ -11,6 +12,13 @@ import { assistantVisible } from '@/lib/assistant/config.ts';
 import { postPlainText, POST_TEXT_LIMIT } from '@/lib/assistant/post-text.ts';
 import { localizedPath, readAssistantAction } from '@/lib/assistant/actions.ts';
 import { splitWaits } from '@/lib/assistant/wait-chips.ts';
+import {
+  ASLEEP_AFTER_MS,
+  BORED_AFTER_MS,
+  boredomAfter,
+  nextBoredomInMs,
+  parkyBoredom,
+} from '@/lib/assistant/parky-boredom.ts';
 
 let passed = 0;
 function check(actual, expected, label) {
@@ -206,4 +214,63 @@ check(
 check(splitWaits('20 minuti'), [{ minutes: 20 }], 'italian');
 check(splitWaits('Minimum 120 cm'), [{ text: 'Minimum 120 cm' }], 'other numbers stay text');
 check(splitWaits('10 Minutenkarten'), [{ text: '10 Minutenkarten' }], 'only whole words');
+check(boredomAfter(0), 'awake', 'awake with company');
+check(boredomAfter(BORED_AFTER_MS), 'bored', 'bored after a quiet spell');
+check(boredomAfter(ASLEEP_AFTER_MS), 'asleep', 'asleep after a long one');
+check(nextBoredomInMs(1_000), BORED_AFTER_MS - 1_000, 'counts down to boredom');
+check(nextBoredomInMs(BORED_AFTER_MS), ASLEEP_AFTER_MS - BORED_AFTER_MS, 'then to sleep');
+check(nextBoredomInMs(ASLEEP_AFTER_MS), null, 'only activity ends sleep');
+
+// The store on a fake clock: one timer for the next stage, activity resets the quiet time.
+{
+  const realTimeout = globalThis.setTimeout;
+  const realClear = globalThis.clearTimeout;
+  const realNow = performance.now;
+  let now = 0;
+  const timers = [];
+  globalThis.setTimeout = (fn, ms) => timers.push({ at: now + ms, fn });
+  globalThis.clearTimeout = (id) => {
+    if (id) timers[id - 1].fn = null;
+  };
+  performance.now = () => now;
+  globalThis.window = Object.assign(new EventTarget(), { matchMedia: () => ({ matches: false }) });
+  const advance = (ms) => {
+    now += ms;
+    for (const timer of timers) {
+      if (timer.fn && timer.at <= now) {
+        const fn = timer.fn;
+        timer.fn = null;
+        fn();
+      }
+    }
+  };
+  let notified = 0;
+  const unsubscribe = parkyBoredom.subscribe(() => notified++);
+  check(parkyBoredom.getSnapshot(), 'awake', 'starts awake');
+  advance(BORED_AFTER_MS - 1_000);
+  window.dispatchEvent(new Event('pointermove'));
+  advance(1_000);
+  check(parkyBoredom.getSnapshot(), 'awake', 'a move pushes boredom back');
+  advance(BORED_AFTER_MS);
+  check(parkyBoredom.getSnapshot(), 'bored', 'bored once quiet long enough');
+  advance(ASLEEP_AFTER_MS - BORED_AFTER_MS);
+  check(parkyBoredom.getSnapshot(), 'asleep', 'then asleep');
+  const armed = timers.filter((timer) => timer.fn).length;
+  check(armed, 0, 'no timer while asleep');
+  check(parkyBoredom.wokeUp(), false, 'falling asleep is no waking');
+  window.dispatchEvent(new Event('keydown'));
+  check(parkyBoredom.getSnapshot(), 'awake', 'a key wakes it');
+  check(parkyBoredom.wokeUp(), true, 'and says so');
+  check(notified, 3, 'one notice per change');
+  unsubscribe();
+  check(
+    timers.filter((timer) => timer.fn).length,
+    0,
+    'the last subscriber leaving stops the timer'
+  );
+  globalThis.setTimeout = realTimeout;
+  globalThis.clearTimeout = realClear;
+  performance.now = realNow;
+  delete globalThis.window;
+}
 console.log(`assistant: ${passed} checks passed`);

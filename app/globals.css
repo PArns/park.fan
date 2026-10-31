@@ -384,15 +384,12 @@
 }
 
 /*
- * Hero entrance: the panels never animate (see the stagger rules below), their content does, one
- * line at a time from the outside edge (`--hero-in-x`, opposite signs per column) out of a blur.
- * The search block's glass dropdown loses its blur for the length of its item's animation.
- *
- * `backwards`, not `both`: `both` would retain the final keyframe's identity transform and
- * `filter`, and either isolates the subtree's backdrop for good.
+ * Parky's face (`components/assistant/parky-logo.tsx`): a blink every few seconds, the Ferris-wheel
+ * hat turning while it writes, the mouth talking, and the closed button bobbing gently. The idle
+ * acts last `--parky-act`, which the component sets from its own table, so a length lives there
+ * only. With company Parky also twirls, dances and reads; bored, it yawns, whistles, blows gum,
+ * rolls its eyes and naps; asleep it breathes slowly under rising Zs, and the hat stands still.
  */
-/* Parky's face (`components/assistant/parky-logo.tsx`): a blink every few seconds, the Ferris-wheel
-   hat turning while it writes, the mouth talking, and the closed button bobbing gently. */
 @keyframes parky-blink {
   0%,
   92%,
@@ -460,6 +457,505 @@
   60%,
   80% {
     transform: translateX(1.4px);
+  }
+}
+@keyframes parky-wink {
+  0%,
+  100% {
+    transform: scaleY(1);
+  }
+  20%,
+  60% {
+    transform: scaleY(0.1);
+  }
+}
+@keyframes parky-lean {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  25%,
+  60% {
+    transform: rotate(5deg);
+  }
+}
+@keyframes parky-wiggle {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  15% {
+    transform: rotate(-8deg);
+  }
+  30% {
+    transform: rotate(7deg);
+  }
+  45% {
+    transform: rotate(-5deg);
+  }
+  60% {
+    transform: rotate(3deg);
+  }
+  75% {
+    transform: rotate(-1deg);
+  }
+}
+/* The yawn: the body stretches, the eyes squeeze shut and the mouth opens wide in place of the smile. */
+@keyframes parky-stretch {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+  30%,
+  60% {
+    transform: translateY(-1.5px) scale(0.97, 1.05);
+  }
+  80% {
+    transform: translateY(0) scale(1.02, 0.98);
+  }
+}
+@keyframes parky-squint {
+  0%,
+  100% {
+    transform: scaleY(1);
+  }
+  25%,
+  65% {
+    transform: scaleY(0.2);
+  }
+  85% {
+    transform: scaleY(0.85);
+  }
+}
+@keyframes parky-yawn {
+  0%,
+  100% {
+    transform: scale(0.4, 0);
+  }
+  30% {
+    transform: scale(0.9);
+  }
+  45%,
+  65% {
+    transform: scale(1, 1.15);
+  }
+  88% {
+    transform: scale(0.5, 0.15);
+  }
+}
+/* A mouth that stands in for the smile (yawn, whistle, gum) while the smile fades out. */
+@keyframes parky-smile-away {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  12%,
+  88% {
+    opacity: 0;
+  }
+}
+@keyframes parky-mouth-in {
+  0%,
+  100% {
+    transform: scale(0);
+  }
+  12%,
+  88% {
+    transform: scale(1);
+  }
+}
+/* The whistle: a sway, an innocent look up and to the side, notes drifting off. */
+@keyframes parky-sway {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  20% {
+    transform: rotate(-4deg);
+  }
+  45% {
+    transform: rotate(4deg);
+  }
+  70% {
+    transform: rotate(-4deg);
+  }
+  90% {
+    transform: rotate(2deg);
+  }
+}
+@keyframes parky-innocent {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  15%,
+  85% {
+    transform: translate(1.4px, -1.8px);
+  }
+}
+@keyframes parky-note {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0) scale(0.6) rotate(0deg);
+  }
+  20% {
+    opacity: 1;
+    transform: translate(1px, -3px) scale(1) rotate(-8deg);
+  }
+  60% {
+    opacity: 1;
+    transform: translate(3px, -9px) scale(1) rotate(8deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(4px, -14px) scale(0.9) rotate(-4deg);
+  }
+}
+/* The gum: the bubble grows, the eyes cross on it, it pops, Parky flinches and blinks. */
+@keyframes parky-gum {
+  0%,
+  15% {
+    opacity: 1;
+    transform: scale(0);
+  }
+  35% {
+    transform: scale(0.55);
+  }
+  45% {
+    transform: scale(0.48);
+  }
+  70% {
+    transform: scale(1);
+  }
+  74% {
+    opacity: 1;
+    transform: scale(1.12);
+  }
+  78%,
+  100% {
+    opacity: 0;
+    transform: scale(1.35);
+  }
+}
+@keyframes parky-pop {
+  0%,
+  74% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  78% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  90%,
+  100% {
+    opacity: 0;
+    transform: scale(1.2);
+  }
+}
+@keyframes parky-flinch {
+  0%,
+  74%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+  78% {
+    transform: translateY(-2px) scale(1.04, 0.96);
+  }
+  86% {
+    transform: translateY(0) scale(0.98, 1.02);
+  }
+}
+@keyframes parky-pop-blink {
+  0%,
+  74%,
+  88%,
+  100% {
+    transform: scaleY(1);
+  }
+  79% {
+    transform: scaleY(0.1);
+  }
+}
+@keyframes parky-cross-left {
+  0%,
+  80%,
+  100% {
+    transform: translate(0, 0);
+  }
+  20%,
+  72% {
+    transform: translate(1.3px, 2px);
+  }
+}
+@keyframes parky-cross-right {
+  0%,
+  80%,
+  100% {
+    transform: translate(0, 0);
+  }
+  20%,
+  72% {
+    transform: translate(-1.3px, 2px);
+  }
+}
+/* The eye roll: the pupils circle over the top, then the eyes half close and the head drops. */
+@keyframes parky-roll {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  15% {
+    transform: translate(-2.2px, 0.4px);
+  }
+  32% {
+    transform: translate(-1.6px, -2.1px);
+  }
+  48% {
+    transform: translate(0, -2.8px);
+  }
+  64% {
+    transform: translate(1.6px, -2.1px);
+  }
+  78% {
+    transform: translate(2.2px, 0.4px);
+  }
+}
+@keyframes parky-meh {
+  0%,
+  70%,
+  100% {
+    transform: scaleY(1);
+  }
+  84% {
+    transform: scaleY(0.55);
+  }
+}
+@keyframes parky-slump {
+  0%,
+  60%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  80% {
+    transform: translateY(0.6px) rotate(4deg);
+  }
+}
+/* Falling asleep: the eyes droop, open once more and shut; the head sinks into the sleeping pose. */
+@keyframes parky-droop {
+  0% {
+    transform: scaleY(1);
+  }
+  25% {
+    transform: scaleY(0.45);
+  }
+  40% {
+    transform: scaleY(0.9);
+  }
+  70% {
+    transform: scaleY(0.35);
+  }
+  100% {
+    transform: scaleY(0.1);
+  }
+}
+@keyframes parky-nod-off {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  40% {
+    transform: translateY(0.5px) rotate(-2deg);
+  }
+  50% {
+    transform: translateY(0) rotate(0deg);
+  }
+  100% {
+    transform: translateY(1px) rotate(-5deg);
+  }
+}
+/* Starts where the nod-off ends, so the sleeping face takes over without a jump. */
+@keyframes parky-breathe {
+  0%,
+  100% {
+    transform: translateY(1px) rotate(-5deg) scale(1);
+  }
+  50% {
+    transform: translateY(0.4px) rotate(-5deg) scale(1.035, 1.02);
+  }
+}
+@keyframes parky-z {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0) scale(0.5);
+  }
+  20%,
+  70% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-6px, -14px) scale(1.2) rotate(-12deg);
+  }
+}
+/* Woken up: a jump, wide eyes and an exclamation mark. */
+@keyframes parky-startle {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+  20% {
+    transform: translateY(-6px) scale(0.94, 1.08);
+  }
+  45% {
+    transform: translateY(0) scale(1.05, 0.95);
+  }
+  65% {
+    transform: translateY(0) scale(0.98, 1.02);
+  }
+}
+@keyframes parky-wide {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  15%,
+  55% {
+    transform: scale(1.15);
+  }
+}
+@keyframes parky-alarm {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  20% {
+    opacity: 1;
+    transform: scale(1.25);
+  }
+  35%,
+  75% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1);
+  }
+}
+/* The pirouette: a crouch, a jump with a full turn, a landing. One list of functions in every frame,
+   so the turn is interpolated as a turn. */
+@keyframes parky-twirl {
+  0% {
+    transform: translateY(0) rotate(0deg) scale(1, 1);
+  }
+  15% {
+    transform: translateY(1.5px) rotate(0deg) scale(1.06, 0.94);
+  }
+  30% {
+    transform: translateY(-7px) rotate(0deg) scale(0.96, 1.04);
+  }
+  65% {
+    transform: translateY(-6px) rotate(360deg) scale(1, 1);
+  }
+  82% {
+    transform: translateY(0) rotate(360deg) scale(1.05, 0.95);
+  }
+  100% {
+    transform: translateY(0) rotate(360deg) scale(1, 1);
+  }
+}
+@keyframes parky-dance {
+  0%,
+  25%,
+  50%,
+  75%,
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  12.5%,
+  62.5% {
+    transform: translate(-2px, -3px) rotate(-8deg);
+  }
+  37.5%,
+  87.5% {
+    transform: translate(2px, -3px) rotate(8deg);
+  }
+}
+/* Reading for fun: the book rises in front of the mouth and sinks away again. */
+@keyframes parky-book-in {
+  0% {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  12%,
+  88% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+}
+/* A nap: the eyes close and cross-fade with the shut ones, a few breaths, then a jolt awake. */
+@keyframes parky-nap {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg) scale(1, 1);
+  }
+  15%,
+  50%,
+  80% {
+    transform: translateY(1px) rotate(-5deg) scale(1, 1);
+  }
+  32%,
+  65% {
+    transform: translateY(0.4px) rotate(-5deg) scale(1.035, 1.02);
+  }
+  88% {
+    transform: translateY(-3px) rotate(3deg) scale(1, 1);
+  }
+  94% {
+    transform: translateY(0) rotate(-2deg) scale(1, 1);
+  }
+}
+@keyframes parky-nap-eyes {
+  0% {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+  14% {
+    opacity: 1;
+    transform: scaleY(0.1);
+  }
+  18%,
+  82% {
+    opacity: 0;
+    transform: scaleY(0.1);
+  }
+  86% {
+    opacity: 1;
+    transform: scaleY(0.1);
+  }
+  93% {
+    opacity: 1;
+    transform: scaleY(1.15);
+  }
+  100% {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+}
+@keyframes parky-nap-shut {
+  0%,
+  14%,
+  86%,
+  100% {
+    opacity: 0;
+  }
+  18%,
+  82% {
+    opacity: 1;
   }
 }
 @keyframes parky-ponder {
@@ -545,10 +1041,33 @@
   opacity: 0;
 }
 .parky-eyes,
+.parky-eye,
 .parky-mouth,
+.parky-purse,
 .parky-wheel,
 .parky-body,
-.parky-pupils {
+.parky-pupils,
+.parky-note,
+.parky-zzz path {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+/* The open mouth and the bubble grow out of the lips, the exclamation mark out of its foot. */
+.parky-yawn,
+.parky-gum {
+  transform-box: fill-box;
+  transform-origin: 50% 15%;
+}
+.parky-alarm {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+}
+.parky-pop {
+  transform-box: fill-box;
+  transform-origin: center;
+  opacity: 0;
+}
+.parky-book {
   transform-box: fill-box;
   transform-origin: center;
 }
@@ -569,18 +1088,149 @@
     animation: parky-bob 3.2s ease-in-out infinite;
   }
   .parky-act-hop {
-    animation: parky-hop 0.7s ease-out 2;
+    animation: parky-hop calc(var(--parky-act) / 2) ease-out 2;
   }
   .parky-act-tilt {
-    animation: parky-tilt 1.6s ease-in-out;
+    animation: parky-tilt var(--parky-act) ease-in-out;
   }
   .parky-act-look .parky-pupils {
-    animation: parky-look 1.8s ease-in-out;
+    animation: parky-look var(--parky-act) ease-in-out;
+  }
+  .parky-act-wink {
+    animation: parky-lean var(--parky-act) ease-in-out;
+  }
+  .parky-act-wink .parky-eye:last-child {
+    animation: parky-wink var(--parky-act) ease-in-out;
+  }
+  .parky-act-wiggle {
+    animation: parky-wiggle var(--parky-act) ease-in-out;
+  }
+  .parky-act-yawn {
+    animation: parky-stretch var(--parky-act) ease-in-out;
+  }
+  .parky-act-yawn .parky-eyes {
+    animation: parky-squint var(--parky-act) ease-in-out;
+  }
+  .parky-yawn {
+    animation: parky-yawn var(--parky-act) ease-in-out both;
+  }
+  .parky-act-yawn .parky-smile,
+  .parky-act-whistle .parky-smile,
+  .parky-act-gum .parky-smile {
+    animation: parky-smile-away var(--parky-act) ease-in-out;
+  }
+  .parky-purse {
+    animation: parky-mouth-in var(--parky-act) ease-in-out both;
+  }
+  .parky-act-whistle {
+    animation: parky-sway var(--parky-act) ease-in-out;
+  }
+  .parky-act-whistle .parky-pupils {
+    animation: parky-innocent var(--parky-act) ease-in-out;
+  }
+  .parky-note {
+    animation: parky-note calc(var(--parky-act) * 0.55) ease-out calc(var(--parky-act) * 0.1) both;
+  }
+  .parky-notes > :nth-child(2) .parky-note {
+    animation-delay: calc(var(--parky-act) * 0.4);
+  }
+  .parky-act-gum {
+    animation: parky-flinch var(--parky-act) ease-out;
+  }
+  .parky-act-gum .parky-eyes {
+    animation: parky-pop-blink var(--parky-act) ease-in-out;
+  }
+  .parky-act-gum .parky-eye:first-child .parky-pupils {
+    animation: parky-cross-left var(--parky-act) ease-in-out;
+  }
+  .parky-act-gum .parky-eye:last-child .parky-pupils {
+    animation: parky-cross-right var(--parky-act) ease-in-out;
+  }
+  .parky-gum {
+    animation: parky-gum var(--parky-act) ease-in-out both;
+  }
+  .parky-pop {
+    animation: parky-pop var(--parky-act) ease-out both;
+  }
+  .parky-act-roll {
+    animation: parky-slump var(--parky-act) ease-in-out;
+  }
+  .parky-act-roll .parky-eyes {
+    animation: parky-meh var(--parky-act) ease-in-out;
+  }
+  .parky-act-roll .parky-pupils {
+    animation: parky-roll var(--parky-act) ease-in-out;
+  }
+  /* `forwards`: the eyes stay shut until the sleeping face replaces them. */
+  .parky-act-doze {
+    animation: parky-nod-off var(--parky-act) ease-in-out forwards;
+  }
+  .parky-act-doze .parky-eyes {
+    animation: parky-droop var(--parky-act) ease-in forwards;
+  }
+  .parky-asleep {
+    animation: parky-breathe 3.6s ease-in-out infinite;
+  }
+  .parky-asleep .parky-wheel {
+    animation-play-state: paused;
+  }
+  .parky-zzz path {
+    animation: parky-z 3s ease-out infinite both;
+  }
+  .parky-zzz path:nth-child(2) {
+    animation-delay: 1s;
+  }
+  .parky-zzz path:nth-child(3) {
+    animation-delay: 2s;
+  }
+  /* In a nap each Z rises once and is gone before Parky jolts awake. */
+  .parky-zzz--nap path {
+    animation: parky-z calc(var(--parky-act) * 0.4) ease-out calc(var(--parky-act) * 0.2) both;
+  }
+  .parky-zzz--nap path:nth-child(2) {
+    animation-delay: calc(var(--parky-act) * 0.33);
+  }
+  .parky-zzz--nap path:nth-child(3) {
+    animation-delay: calc(var(--parky-act) * 0.46);
+  }
+  .parky-gaze {
+    transition: transform 0.15s ease-out;
+  }
+  .parky-act-twirl {
+    animation: parky-twirl var(--parky-act) ease-in-out;
+  }
+  .parky-act-dance {
+    animation: parky-dance var(--parky-act) ease-in-out;
+  }
+  .parky-act-read .parky-book {
+    animation: parky-book-in var(--parky-act) ease-out both;
+  }
+  .parky-act-nap {
+    animation: parky-nap var(--parky-act) ease-in-out;
+  }
+  .parky-act-nap .parky-eyes {
+    animation: parky-nap-eyes var(--parky-act) ease-in-out both;
+  }
+  .parky-act-nap .parky-shut {
+    animation: parky-nap-shut var(--parky-act) ease-in-out both;
+  }
+  .parky-act-nap .parky-wheel {
+    animation-play-state: paused;
+  }
+  .parky-act-startle {
+    animation: parky-startle var(--parky-act) ease-out;
+  }
+  .parky-act-startle .parky-eyes {
+    animation: parky-wide var(--parky-act) ease-out;
+  }
+  .parky-alarm {
+    animation: parky-alarm var(--parky-act) ease-out both;
   }
   .parky-mood-thinking {
     animation: parky-ponder 2.4s ease-in-out infinite;
   }
-  .parky-mood-looking .parky-pupils {
+  .parky-mood-looking .parky-pupils,
+  .parky-act-read .parky-pupils {
     animation: parky-scan 1.4s ease-in-out infinite;
   }
   .parky-page {
@@ -610,6 +1260,14 @@
   }
 }
 
+/*
+ * Hero entrance: the panels never animate (see the stagger rules below), their content does, one
+ * line at a time from the outside edge (`--hero-in-x`, opposite signs per column) out of a blur.
+ * The search block's glass dropdown loses its blur for the length of its item's animation.
+ *
+ * `backwards`, not `both`: `both` would retain the final keyframe's identity transform and
+ * `filter`, and either isolates the subtree's backdrop for good.
+ */
 @keyframes hero-item-in {
   from {
     opacity: 0;
