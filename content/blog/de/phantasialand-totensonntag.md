@@ -192,4 +192,4 @@ River Quest ist ab dem 2. November 2026 zu, Wakobato und Wözl’s Wassertreter 
 - Tickets und Preise: [Preise und Tickets (offiziell)](https://www.phantasialand.de/de/themenpark/preise-und-tickets/) · [Ticketshop, November 2026 (offiziell)](https://shop.phantasialand.de/de/produkte/themenpark-tickets/2026-11)
 - Parken und Anreise: [Anfahrt und Shuttlebus (offiziell)](https://www.phantasialand.de/de/themenpark/informationen-und-anreise/anfahrt-und-shuttlebus/)
 - Wartezeiten: Wartezeiten nach Uhrzeit aus dem Wintertraum vom 26. Dezember 2025 bis zum 24. Januar 2026, [Phantasialand auf park.fan](ref:phantasialand)
-- Weitere Beiträge: [Phantasialand-Guide](/blog/phantasialand-tipps) · [Leere Tage im Phantasialand](/blog/phantasialand-wartezeiten-leere-tage) · [Freizeitparks im Winter 2026/27](/blog/winter-freizeitparks-2026) · [Freizeitparks im Winter 2026/27](/blog/winter-freizeitparks-2026)
+- Weitere Beiträge: [Phantasialand-Guide](/blog/phantasialand-tipps) · [Leere Tage im Phantasialand](/blog/phantasialand-wartezeiten-leere-tage) · [Freizeitparks im Winter 2026/27](/blog/winter-freizeitparks-2026)
