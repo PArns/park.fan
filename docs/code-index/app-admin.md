@@ -901,6 +901,7 @@ Route `/admin/system` (page).
 - `useTrafficFilters` _hook_: The window, step, language and filters of the page, read from `?days=` or `?from=&to=`, `?interval=`, `?locale=` and the repeated `?filter=<dimension>:<value>`, and written back with `replace`, so a view is a link and the back button is …
 - `useTrafficData` _hook_: One analytics answer for the filters. The previous answer stays on screen while a switch loads, so the page does not blank on every press; a refresh from the topbar refetches it like any admin query.
 - `useRealtimeOverview` _hook_: Today's overview on its own clock, for the realtime tile and the home page: it ignores the window, the language and the filters, asks every 30 seconds while the tab is in front, and shares its answer with the "Heute" view of the overview.
+- `analyticsPath` _function_: The address of an analytics endpoint under the admin proxy, with the window, filters and extras. The step goes only to the reports that have a series.
 - Types: `TrafficFilters`, `TrafficFilterActions`
 
 ### [`traffic/events/[name]/page.tsx`](../../app/admin/traffic/events/%5Bname%5D/page.tsx)
