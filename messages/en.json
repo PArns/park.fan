@@ -3163,6 +3163,14 @@
     "entranceDrop": "Ouch! All good, I have landed. Ask me something!",
     "entranceRoll": "Phew, I am all dizzy … Hi, I am Parky!",
     "entrancePeek": "Psst … may I come in? I am Parky.",
-    "entrancePop": "Pop! Here I am. Where are we off to today?"
+    "entrancePop": "Pop! Here I am. Where are we off to today?",
+    "holidayHalloween": "Boo! Did I scare you? Happy Halloween!",
+    "holidayChristmas": "Merry Christmas! May all your rides be queue-free.",
+    "holidayNewYear": "Happy New Year! Here is to a year of short waits.",
+    "parkLine1": "Oh yes, {park}! I really need to ride {ride} again.",
+    "parkLine2": "{park}! I always ride {ride} first. Coming along?",
+    "parkLine3": "Hold on, just one more lap on {ride} …",
+    "parkLine4": "Ah, {ride}! Worth the trip on its own.",
+    "secretKonami": "Cheat activated: unlimited free rides!"
   }
 }

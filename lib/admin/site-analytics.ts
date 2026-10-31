@@ -668,9 +668,25 @@ export const EVENT_INFO: Record<SiteEventName, EventInfo> = {
     label: 'Show-Erinnerung entfernt',
     when: 'Eine Erinnerung wurde ausgeschaltet.',
   },
+  assistant_shown: {
+    label: 'Parky angezeigt',
+    when: 'Parkys Knopf ist auf einer Seite zu sehen, einmal je Seitenaufruf; mit seinem Auftritt („none“ ohne).',
+  },
   assistant_opened: {
     label: 'Parky geöffnet',
-    when: 'Das Chatfenster von Parky geht von zu auf offen.',
+    when: 'Das Chatfenster von Parky geht von zu auf offen; über den Knopf oder einen Spruch.',
+  },
+  assistant_line_shown: {
+    label: 'Parky-Spruch angezeigt',
+    when: 'Ein Spruch erscheint in Parkys Sprechblase; mit seiner Art.',
+  },
+  assistant_line_clicked: {
+    label: 'Parky-Spruch geklickt',
+    when: 'Ein Klick auf den Spruch öffnet Parky; mit seiner Art.',
+  },
+  assistant_line_closed: {
+    label: 'Parky-Spruch geschlossen',
+    when: 'Der Spruch wird mit dem Kreuz geschlossen, danach schweigt Parky für die Sitzung; mit seiner Art.',
   },
   assistant_closed: {
     label: 'Parky geschlossen',
@@ -879,6 +895,8 @@ const PROP_LABEL: Record<string, string> = {
   dest: 'Führt zu',
   section: 'Stelle',
   menu: 'Menü',
+  entrance: 'Auftritt',
+  line: 'Spruch',
 };
 
 /**
@@ -954,6 +972,23 @@ const PLANNER_OPENED_SOURCE_LABEL: Record<PlannerOpenedSource | 'none', string> 
 const PLANNER_VALUE_LABEL: Record<string, Record<string, string>> = {
   step: { park: 'Park', date: 'Tag', setup: 'Wer kommt mit', headliners: 'Headliner' },
   kind: { ride: 'Fahrgeschäft', show: 'Show', block: 'Eigener Block' },
+  line: {
+    invitation: 'Einladung',
+    entrance: 'Nach dem Auftritt',
+    bored: 'Langeweile',
+    woke: 'Aufgewacht',
+    holiday: 'Feiertag',
+    park: 'Park-Spruch',
+    secret: 'Geheimcode',
+  },
+  entrance: {
+    scurry: 'Huschen',
+    drop: 'Fallen',
+    roll: 'Rollen',
+    peek: 'Lugen',
+    pop: 'Ploppen',
+    none: 'Ohne',
+  },
   source: {
     ...PLANNER_OPENED_SOURCE_LABEL,
     search: 'Suche im Planer',
@@ -968,6 +1003,8 @@ const PLANNER_VALUE_LABEL: Record<string, Record<string, string>> = {
     keyboard: 'Entf-Taste',
     timeline: 'Liste ohne Zeitachse',
     optimize: 'Optimieren im Planer',
+    button: 'Parky-Knopf',
+    line: 'Parky-Spruch',
   },
   mode: { day: '„Tag optimieren“', headliners: '„Alle Headliner“', fit: 'Antwort des Assistenten' },
   lever: {

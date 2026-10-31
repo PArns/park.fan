@@ -109,10 +109,17 @@ Parky's hat is a Ferris wheel with eight coloured cabins, set into its head: the
 behind the head, and the A-frame's right leg runs down the head's slope, so the wheel stands in it
 rather than on top. The cabins are circles, so they need no counter-turn to hang straight while the
 wheel spins, and a light edge under the rim keeps the wheel legible over any page. It rises about
-7.5 of the drawing's 48 units above the face, and the open window keeps room for it: the header (`z-50`) lies
-above the window (`z-[45]`), with a scrim 32 px below the bar on a hero page, so the window starts
-112 px from the top on a phone and caps its height at the screen minus 10rem on a desktop. Parky
-then rises over the window's edge without anything laid over its hat.
+7.5 of the drawing's 48 units above the face.
+
+Button, bubble and window share one layer above everything else on the page, `PARKY_LAYER`
+(`z-[10000]`, `components/assistant/parky-layer.ts`), over the header, the planner and the
+navigation bar's `z-[9999]`. So that Parky and his hat, which rise over the window's top edge, keep
+clear of the 48 px header rather than cover it, the window starts 88 px from the top on a phone and
+caps its height at the screen minus 10rem on a desktop.
+
+An easter egg can ask for an act from outside: `ParkyLogo`'s `cue` plays it at once. The coaster
+ride is one: Parky sits in a red car and turns about the centre of a loop (`LOOP`), so the car's
+wheels run round the rails drawn around it, upside down at the top, eyes wide and mouth open.
 
 The store keeps one timer for the next stage, so a moving pointer costs a timestamp. Each act's
 length is written once, in `ACT_MS`; the stylesheet reads it as `--parky-act`. Under reduced
@@ -140,7 +147,7 @@ row.
 
 `AssistantTeaser` draws a speech bubble beside the closed button, its tail on Parky's mouth: the
 bubble's right edge and bottom are reckoned from the button's size (56 px, 64 px from `sm`) and
-its corner offset. Two kinds of line go in it, from the `assistant` namespace:
+its corner offset. These lines go in it, from the `assistant` namespace:
 
 - **Invitations** (`teaser1`–`teaser9`): 8 s after the button shows and again 90 s after that, at
   most two a session (`TEASER_SCHEDULE_MS`). After an entrance the first is the entrance's own
@@ -150,14 +157,25 @@ its corner offset. Two kinds of line go in it, from the `assistant` namespace:
 - **Reactions**, read from the same `parkyBoredom`: a bored line (`teaserBored1`–`4`) after the
   first yawn, a woken line (`teaserWoke1`–`3`) once somebody wakes Parky. At most
   `REACTIONS_PER_SESSION` (3).
+- **Easter eggs** (`lib/assistant/easter-eggs.ts`): on Halloween, at Christmas and at New Year
+  the first invitation is the day's own line (`holidayHalloween`, `holidayChristmas`,
+  `holidayNewYear`, by the browser's calendar). On the page of a park in `PARK_EGGS` (16 parks,
+  keyed by geo path, each with a ride park.fan lists) Parky names its favourite ride there 5 s
+  after the page settles (`parkLine1`–`4`, with `{park}` and `{ride}`) and then rides a coaster;
+  once per park and at most `PARK_LINES_PER_SESSION` (3) a session. The Konami code typed
+  anywhere buys a free ride with its own line (`secretKonami`).
 
-Every line stays 7 s. Closing one by hand, or opening Parky, ends both kinds for the session
-(`stopTeasers`, `lib/assistant/teaser-store.ts`).
+Every line stays 7 s. Opening Parky ends the invitations and reactions for the session
+(`stopTeasers`, `lib/assistant/teaser-store.ts`); closing a line by its ✕ ends every line,
+easter eggs included (`muteLines`).
 
 ## Tracking
 
-Our own statistic (`trackSiteEvent`, labels in `lib/admin/site-analytics.ts`): `assistant_opened`,
-`assistant_closed` (questions while open), `assistant_question` (suggestion or typed, never the
+Our own statistic (`trackSiteEvent`, labels in `lib/admin/site-analytics.ts`): `assistant_shown`
+(the button on screen, once per page view, with the entrance it made or `none`),
+`assistant_opened` (with `source`: the button or a line), `assistant_line_shown`,
+`assistant_line_clicked` and `assistant_line_closed` (each with the line's kind as `line`: invitation,
+entrance, bored, woke, holiday, park or secret), `assistant_closed` (questions while open), `assistant_question` (suggestion or typed, never the
 text), `assistant_answer` (result and number of lookups), `assistant_rated`,
 `assistant_feedback_sent` (whether with an e-mail, never the e-mail) and
 `assistant_challenge_failed`. Planner writes count as `plan_item_added` with source `assistant`,
@@ -166,4 +184,5 @@ the planner opening as `planner_opened` with source `assistant`.
 ## Checks
 
 `pnpm test:assistant` covers the stream reader, the link checks, the rollout decision, the post
-text, the action checks and the boredom stages on a fake clock.
+text, the action checks, the boredom stages on a fake clock, the opener's draw, and the easter
+eggs: a page's park path, the holidays, the Konami code and the park lines' limits.

@@ -958,6 +958,42 @@
     opacity: 1;
   }
 }
+/* The coaster: Parky turns about the loop's centre (`LOOP` in the component), so its car runs
+   round the rails; a roll back, the run, a little rock as it comes to rest. */
+@keyframes parky-coaster {
+  0% {
+    transform: rotate(0deg);
+  }
+  12% {
+    transform: rotate(-12deg);
+  }
+  22% {
+    transform: rotate(0deg);
+    animation-timing-function: cubic-bezier(0.35, 0, 0.65, 1);
+  }
+  72% {
+    transform: rotate(360deg);
+  }
+  82% {
+    transform: rotate(366deg);
+  }
+  91% {
+    transform: rotate(358deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes parky-track {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  10%,
+  88% {
+    opacity: 1;
+  }
+}
 @keyframes parky-ponder {
   0%,
   100% {
@@ -1071,6 +1107,10 @@
   transform-box: fill-box;
   transform-origin: center;
 }
+.parky-grin {
+  transform-box: fill-box;
+  transform-origin: center;
+}
 @media (prefers-reduced-motion: no-preference) {
   .parky-eyes {
     animation: parky-blink 4.5s ease-in-out infinite;
@@ -1116,7 +1156,8 @@
   }
   .parky-act-yawn .parky-smile,
   .parky-act-whistle .parky-smile,
-  .parky-act-gum .parky-smile {
+  .parky-act-gum .parky-smile,
+  .parky-act-coaster .parky-smile {
     animation: parky-smile-away var(--parky-act) ease-in-out;
   }
   .parky-purse {
@@ -1216,6 +1257,21 @@
   }
   .parky-act-nap .parky-wheel {
     animation-play-state: paused;
+  }
+  .parky-act-coaster {
+    transform-box: view-box;
+    transform-origin: 24px 16px;
+    animation: parky-coaster var(--parky-act) linear;
+  }
+  .parky-act-coaster .parky-eyes {
+    animation: parky-wide var(--parky-act) ease-out;
+  }
+  .parky-grin {
+    animation: parky-mouth-in var(--parky-act) ease-in-out both;
+  }
+  .parky-track,
+  .parky-car {
+    animation: parky-track var(--parky-act) ease-out both;
   }
   .parky-act-startle {
     animation: parky-startle var(--parky-act) ease-out;

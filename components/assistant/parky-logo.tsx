@@ -27,8 +27,18 @@ const ACT_MS = {
   nap: 5000,
   doze: 2000,
   startle: 900,
+  coaster: 3600,
 } as const;
 type ParkyAct = keyof typeof ACT_MS;
+
+/**
+ * An act asked for from outside, to play at once: the coaster ride an easter egg ends with. A new
+ * `id` plays it again.
+ */
+export interface ParkyCue {
+  act: 'coaster';
+  id: number;
+}
 
 /** With company Parky fidgets and shows off; once nobody moves it yawns, reads and naps. */
 const ACTS: Record<'awake' | 'bored', readonly ParkyAct[]> = {
@@ -71,6 +81,13 @@ const SPOKES = CABINS.slice(0, 4)
   .join('');
 // The legs end inside the head, which is drawn over them.
 const A_FRAME = `M${HUB.x} ${HUB.y}L25.5 13M${HUB.x} ${HUB.y}L41.5 20`;
+
+/**
+ * The coaster's loop: Parky turns about its centre, so the car's wheels, 33 units below it, run
+ * round the inner rail. The stylesheet's `.parky-act-coaster` turns about the same point.
+ */
+const LOOP = { x: 24, y: 16, r: 33 };
+const rail = 'oklch(0.6 0.19 25)';
 const frame = 'oklch(0.48 0.1 245)';
 
 /**
@@ -114,9 +131,11 @@ function useGaze(svg: React.RefObject<SVGSVGElement | null>) {
  * somebody moves, which wakes it with a start. Each act runs once and clears, so the face rests
  * between them.
  */
-function useIdleAct(enabled: boolean) {
+function useIdleAct(enabled: boolean, cue: ParkyCue | null) {
   const boredom = useParkyBoredom(enabled);
   const [act, setAct] = useState<ParkyAct | null>(null);
+  // A cue already there when the face mounts (the button back after the window closed) is old.
+  const played = useRef(cue?.id);
   useEffect(() => {
     if (!boredom) return;
     const woke = parkyBoredom.wokeUp();
@@ -139,7 +158,10 @@ function useIdleAct(enabled: boolean) {
       const [shortest, spread] = PAUSE_MS[boredom];
       play(shortest + Math.random() * spread, pickRandom(ACTS[boredom], previous));
     };
-    if (boredom === 'asleep') play(SETTLE_MS, 'doze');
+    if (cue && cue.id !== played.current) {
+      played.current = cue.id;
+      play(0, cue.act);
+    } else if (boredom === 'asleep') play(SETTLE_MS, 'doze');
     else if (boredom === 'bored') play(SETTLE_MS, 'yawn');
     else if (woke) play(0, 'startle');
     else loop();
@@ -147,7 +169,7 @@ function useIdleAct(enabled: boolean) {
       clearTimeout(timer);
       setAct(null);
     };
-  }, [boredom]);
+  }, [boredom, cue]);
   return { act, asleep: boredom === 'asleep' && act === null };
 }
 
@@ -178,6 +200,7 @@ export function ParkyLogo({
   mood,
   talking = false,
   idle = false,
+  cue = null,
 }: {
   className?: string;
   mood?: ParkyMood | null;
@@ -185,6 +208,8 @@ export function ParkyLogo({
   talking?: boolean;
   /** A life of its own while nothing happens: acts, boredom and sleep. */
   idle?: boolean;
+  /** An act to play at once, with `idle`. */
+  cue?: ParkyCue | null;
 }) {
   const state: ParkyMood | null = mood ?? (talking ? 'talking' : null);
   // Two marks are on screen at once (button and window header); each needs its own gradient id.
@@ -192,7 +217,7 @@ export function ParkyLogo({
   const svg = useRef<SVGSVGElement>(null);
   const mouseGaze = useGaze(svg);
   // A mood has its own motion; the idle life is for a face with nothing to do.
-  const { act, asleep } = useIdleAct(idle && !state);
+  const { act, asleep } = useIdleAct(idle && !state, cue);
   const gaze =
     state === 'thinking'
       ? PONDER_GAZE
@@ -259,6 +284,21 @@ export function ParkyLogo({
           ))}
         </g>
       )}
+      {act === 'coaster' && (
+        // Two rails with ties between them, outside the body, so they stand while Parky turns.
+        <g className="parky-track" fill="none" stroke={rail}>
+          <circle cx={LOOP.x} cy={LOOP.y} r={LOOP.r} strokeWidth="1" />
+          <circle cx={LOOP.x} cy={LOOP.y} r={LOOP.r + 2.4} strokeWidth="1" />
+          <circle
+            cx={LOOP.x}
+            cy={LOOP.y}
+            r={LOOP.r + 1.2}
+            strokeWidth="2.2"
+            strokeDasharray=".6 2.4"
+            strokeOpacity=".7"
+          />
+        </g>
+      )}
       {act === 'startle' && (
         <g className="parky-alarm" fill={blue}>
           <path d="M7.5 0v5.2" stroke={blue} strokeWidth="2" strokeLinecap="round" />
@@ -282,6 +322,7 @@ export function ParkyLogo({
               state === 'looking' ||
               act === 'spin' ||
               act === 'twirl' ||
+              act === 'coaster' ||
               act === 'dance') &&
               'parky-wheel--turning'
           )}
@@ -392,6 +433,18 @@ export function ParkyLogo({
               strokeWidth="1.3"
               strokeLinecap="round"
             />
+          </>
+        )}
+        {act === 'coaster' && (
+          <>
+            <path className="parky-grin" d="M20 31.5h8q0 5.5-4 5.5t-4-5.5Z" fill={ink} />
+            {/* The car Parky rides in, its wheels on the loop's inner rail. */}
+            <g className="parky-car">
+              <path d="M7 38h34l-2.5 7.5h-29Z" fill={rail} />
+              <path d="M7 38h34" stroke="white" strokeOpacity=".6" strokeWidth=".8" />
+              <circle cx="14" cy={LOOP.y + LOOP.r - 2} r="2" fill={ink} />
+              <circle cx="34" cy={LOOP.y + LOOP.r - 2} r="2" fill={ink} />
+            </g>
           </>
         )}
         {(state === 'looking' || act === 'read') && (

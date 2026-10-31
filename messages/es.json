@@ -3163,6 +3163,14 @@
     "entranceDrop": "¡Ay! Todo bien, ya he aterrizado. ¡Pregúntame algo!",
     "entranceRoll": "Uf, estoy mareado … ¡Hola, soy Parky!",
     "entrancePeek": "Psst … ¿puedo pasar? Soy Parky.",
-    "entrancePop": "¡Plop! Aquí estoy. ¿Adónde vamos hoy?"
+    "entrancePop": "¡Plop! Aquí estoy. ¿Adónde vamos hoy?",
+    "holidayHalloween": "¡Buu! ¿Te he asustado? ¡Feliz Halloween!",
+    "holidayChristmas": "¡Feliz Navidad! Que todas tus atracciones sean sin cola.",
+    "holidayNewYear": "¡Feliz Año Nuevo! Por un año lleno de esperas cortas.",
+    "parkLine1": "¡Ah, sí, {park}! Tengo que volver a subir a {ride}.",
+    "parkLine2": "¡{park}! Aquí siempre empiezo por {ride}. ¿Vienes?",
+    "parkLine3": "Espera, una vuelta más en {ride} …",
+    "parkLine4": "¡Ah, {ride}! Solo por eso ya merece la pena el viaje.",
+    "secretKonami": "Truco activado: ¡viajes gratis infinitos!"
   }
 }

@@ -3163,6 +3163,14 @@
     "entranceDrop": "Autsch! Alles gut, ich bin gelandet. Frag mich was!",
     "entranceRoll": "Uff, mir ist ganz schwindelig … Hallo, ich bin Parky!",
     "entrancePeek": "Psst … darf ich reinkommen? Ich bin Parky.",
-    "entrancePop": "Plopp! Hier bin ich. Wo soll's heute hingehen?"
+    "entrancePop": "Plopp! Hier bin ich. Wo soll's heute hingehen?",
+    "holidayHalloween": "Buuuh! Hab ich dich erschreckt? Fröhliches Halloween!",
+    "holidayChristmas": "Frohe Weihnachten! Ich wünsch dir Fahrten ohne Warteschlange.",
+    "holidayNewYear": "Guten Rutsch und frohes neues Jahr! Auf viele kurze Wartezeiten.",
+    "parkLine1": "Ach ja, {park}! Ich muss auch noch mal {ride} fahren.",
+    "parkLine2": "{park}! Hier fahr ich immer zuerst {ride}. Kommst du mit?",
+    "parkLine3": "Moment, ich dreh schnell noch eine Runde {ride} …",
+    "parkLine4": "Hach, {ride}! Allein dafür lohnt sich der Ausflug.",
+    "secretKonami": "Cheat aktiviert: unendlich Freifahrten!"
   }
 }

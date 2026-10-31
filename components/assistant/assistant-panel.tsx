@@ -21,8 +21,10 @@ import {
 } from '@/lib/assistant/use-assistant-chat';
 import { useAssistantSession } from '@/lib/assistant/use-assistant-session';
 import { drawOpener, sessionOpener } from '@/lib/assistant/opener';
-import { trackSiteEvent } from '@/lib/analytics/site-analytics';
+import { parkPathOf } from '@/lib/assistant/easter-eggs';
+import { trackSiteEvent, type AssistantOpenSource } from '@/lib/analytics/site-analytics';
 import { ParkyLogo } from './parky-logo';
+import { PARKY_LAYER } from './parky-layer';
 import { AssistantMessageText } from './assistant-message-text';
 import { AssistantFeedbackForm } from './assistant-feedback-form';
 import { AssistantChallenge } from './assistant-challenge';
@@ -58,9 +60,6 @@ const CHIP: Record<AssistantActionChip, { key: string; icon: typeof ExternalLink
   optimized: { key: 'chipOptimized', icon: Sparkles },
 };
 
-/** A park's or ride's page, where the suggested questions are about "here". */
-const PARK_PAGE = /\/parks\/[^/]+\/[^/]+\/[^/]+\/[^/]+/;
-
 /** Three bouncing dots: Parky is thinking or looking something up. */
 function TypingDots({ label }: { label: string }) {
   return (
@@ -80,7 +79,16 @@ function TypingDots({ label }: { label: string }) {
  * The window Parky opens in: the chat and, on its second tab, the feedback form. Mounted once
  * the launcher was first pressed and kept, so a closed and reopened chat is where it was.
  */
-export function AssistantPanel({ open, onClose }: { open: boolean; onClose: () => void }) {
+export function AssistantPanel({
+  open,
+  onClose,
+  openedBy,
+}: {
+  open: boolean;
+  onClose: () => void;
+  /** What opened the window, for `assistant_opened`. */
+  openedBy: AssistantOpenSource;
+}) {
   const t = useTranslations('assistant');
   const locale = useLocale();
   const session = useAssistantSession();
@@ -92,7 +100,7 @@ export function AssistantPanel({ open, onClose }: { open: boolean; onClose: () =
   const [opener, setOpener] = useState(sessionOpener);
   const input = useRef<HTMLTextAreaElement>(null);
   const scroller = useRef<HTMLDivElement>(null);
-  const parkPage = PARK_PAGE.test(usePathname());
+  const parkPage = parkPathOf(usePathname()) !== null;
 
   /**
    * One `assistant_opened` per closed to open edge and one `assistant_closed` with the questions
@@ -107,10 +115,10 @@ export function AssistantPanel({ open, onClose }: { open: boolean; onClose: () =
   useEffect(() => {
     if (!open) return;
     askedAtOpen.current = askedNow.current;
-    trackSiteEvent('assistant_opened', {});
+    trackSiteEvent('assistant_opened', { source: openedBy });
     return () =>
       trackSiteEvent('assistant_closed', { questions: askedNow.current - askedAtOpen.current });
-  }, [open]);
+  }, [open, openedBy]);
 
   /**
    * On a phone the open window takes the screen, so the page behind it must not move: its scroll
@@ -163,12 +171,13 @@ export function AssistantPanel({ open, onClose }: { open: boolean; onClose: () =
       className={cn(
         // Not `overflow-hidden`: Parky's face sits half outside the window's top edge.
         // A frame in the theme's blue, so the window reads as Parky's over any page.
-        'bg-background/90 border-primary/60 ring-primary/15 fixed z-[45] flex flex-col rounded-2xl border-2 shadow-2xl ring-4 backdrop-blur-xl',
+        'bg-background/90 border-primary/60 ring-primary/15 fixed flex flex-col rounded-2xl border-2 shadow-2xl ring-4 backdrop-blur-xl',
+        PARKY_LAYER,
         // The launcher hides while the window is open, so the window takes its corner. Parky and
-        // his hat rise over its top edge, and the header (`z-50`) would cover them: the window
-        // keeps them below the bar and the 32 px scrim it lays over a hero, 80 px in all. On a
-        // phone it is anchored to the top, on a desktop its height is capped.
-        'inset-x-2 top-28 bottom-[max(0.5rem,env(safe-area-inset-bottom))] sm:top-auto sm:h-[min(clamp(560px,72dvh,720px),calc(100dvh-10rem))]',
+        // his hat rise over its top edge; the window keeps them clear of the 48 px header, which
+        // they would otherwise cover. On a phone it is anchored to the top, on a desktop its
+        // height is capped.
+        'inset-x-2 top-[5.5rem] bottom-[max(0.5rem,env(safe-area-inset-bottom))] sm:top-auto sm:h-[min(clamp(560px,72dvh,720px),calc(100dvh-10rem))]',
         // Clear of the planner's edge tab, which sits on the right edge at mid height.
         'sm:inset-x-auto sm:right-12 sm:bottom-4 sm:w-[clamp(380px,32vw,480px)]',
         'planner-wide:right-[calc(var(--planner-inset,0px)+3rem)]',
@@ -181,7 +190,7 @@ export function AssistantPanel({ open, onClose }: { open: boolean; onClose: () =
       <header className="border-border/60 from-primary/15 to-status-operating/10 relative flex touch-none items-center gap-3 rounded-t-2xl border-b bg-gradient-to-r py-1 pr-2 pl-[4.75rem] sm:py-2 sm:pr-3 sm:pl-24">
         {/* On a desktop Parky floats large over the window's top edge, where it is seen. */}
         <ParkyLogo
-          className="absolute -top-5 left-1 size-14 drop-shadow-[0_8px_16px_rgb(0_0_0/0.35)] sm:-top-11 sm:size-20"
+          className="absolute -top-7 left-1 size-16 drop-shadow-[0_8px_16px_rgb(0_0_0/0.35)] sm:-top-11 sm:size-20"
           // The closed window stays mounted; only an open one keeps Parky's idle life going.
           idle={open}
           mood={

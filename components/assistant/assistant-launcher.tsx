@@ -2,13 +2,16 @@
 
 import { useCallback, useEffect, useState, useSyncExternalStore } from 'react';
 import { useTranslations } from 'next-intl';
+import { usePathname } from 'next/navigation';
 import { X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { assistantGate } from '@/lib/assistant/config';
 import { useLazyMessages } from '@/i18n/use-lazy-messages';
 import { RouteMessagesProvider } from '@/i18n/route-messages-provider';
 import dynamic from 'next/dynamic';
-import { ParkyLogo } from './parky-logo';
+import { ParkyLogo, type ParkyCue } from './parky-logo';
+import { PARKY_LAYER } from './parky-layer';
+import { trackSiteEvent, type AssistantOpenSource } from '@/lib/analytics/site-analytics';
 import { stopTeasers } from '@/lib/assistant/teaser-store';
 import { ENTRANCE_MS, sessionEntrance, type ParkyEntrance } from '@/lib/assistant/entrance';
 
@@ -60,18 +63,38 @@ function EntranceEffects({ entrance }: { entrance: ParkyEntrance }) {
   return null;
 }
 
+/** The last path `assistant_shown` counted, so a closed and reopened window counts no second view. */
+let countedPath: string | null = null;
+
+/**
+ * Counts the button as seen, once per page view; the first carries the entrance it made. A leaf of
+ * its own, so following the path re-renders nothing else.
+ */
+function ShownCounter({ entrance }: { entrance: ParkyEntrance | null }) {
+  const pathname = usePathname();
+  useEffect(() => {
+    if (countedPath === pathname) return;
+    const first = countedPath === null;
+    countedPath = pathname;
+    trackSiteEvent('assistant_shown', { entrance: first ? (entrance ?? 'none') : 'none' });
+  }, [pathname, entrance]);
+  return null;
+}
+
 /**
  * The round button; its label comes from the layout's `navigation` namespace. With an `entrance`
- * it arrives that way (`app/globals.css`, `.parky-enter-*`).
+ * it arrives that way (`app/globals.css`, `.parky-enter-*`); a `cue` makes Parky act at once.
  */
 function LauncherButton({
   open,
   onToggle,
   entrance,
+  cue,
 }: {
   open: boolean;
   onToggle: () => void;
   entrance: ParkyEntrance | null;
+  cue: ParkyCue | null;
 }) {
   // `navigation`, which the layout ships anyway: a key of `assistant` read in this file would put
   // the whole namespace into every page's chrome (docs/rules/translations-are-routed-not-bundled.md).
@@ -91,7 +114,8 @@ function LauncherButton({
       aria-label={open ? t('assistantClose') : t('assistantOpen')}
       title={open ? undefined : t('assistantOpen')}
       className={cn(
-        'group fixed right-4 bottom-[max(1rem,env(safe-area-inset-bottom))] z-[45] grid size-14 place-items-center rounded-full sm:size-16',
+        'group fixed right-4 bottom-[max(1rem,env(safe-area-inset-bottom))] grid size-14 place-items-center rounded-full sm:size-16',
+        PARKY_LAYER,
         'planner-wide:right-[calc(var(--planner-inset,0px)+1rem)]',
         entrance ? `parky-enter-${entrance}` : !entered && 'animate-in fade-in zoom-in-90',
         'transition-transform duration-200 hover:-translate-y-0.5 active:scale-95 motion-reduce:transition-none',
@@ -111,6 +135,7 @@ function LauncherButton({
           {entrance && <EntranceEffects entrance={entrance} />}
           <ParkyLogo
             idle
+            cue={cue}
             className="parky-bob relative size-14 drop-shadow-[0_6px_14px_rgb(0_0_0/0.35)] sm:size-16"
           />
         </>
@@ -134,6 +159,8 @@ export function AssistantLauncher() {
   const messages = useLazyMessages(ASSISTANT_NAMESPACES, visible);
   const [Panel, setPanel] = useState<PanelComponent | null>(null);
   const [arrived, setArrived] = useState(false);
+  const [openedBy, setOpenedBy] = useState<AssistantOpenSource>('button');
+  const [cue, setCue] = useState<ParkyCue | null>(null);
 
   useEffect(() => {
     if (!open || Panel) return;
@@ -179,23 +206,37 @@ export function AssistantLauncher() {
 
   const close = useCallback(() => setOpen(false), []);
   /** Opening Parky once ends the teaser lines for the session, and any entrance under way. */
-  const openParky = useCallback(() => {
+  const openFrom = useCallback((source: AssistantOpenSource) => {
     stopTeasers();
     setArrived(true);
+    setOpenedBy(source);
     setOpen(true);
   }, []);
+  const openFromButton = useCallback(() => openFrom('button'), [openFrom]);
+  const openFromLine = useCallback(() => openFrom('line'), [openFrom]);
+  const ride = useCallback(
+    () => setCue((last) => ({ act: 'coaster', id: (last?.id ?? 0) + 1 })),
+    []
+  );
   if (!visible || !messages.ready) return null;
 
   const content = (
     <>
-      {Panel && <Panel open={open} onClose={close} />}
+      {Panel && <Panel open={open} onClose={close} openedBy={openedBy} />}
       {/* Hidden while the window is open: the window's own ✕ and Escape close it. */}
       {!open && (
-        <LauncherButton open={false} onToggle={openParky} entrance={entering ? entrance : null} />
+        <LauncherButton
+          open={false}
+          onToggle={openFromButton}
+          entrance={entering ? entrance : null}
+          cue={cue}
+        />
       )}
+      {!open && <ShownCounter entrance={entrance} />}
       {!open && (
         <AssistantTeaser
-          onOpen={openParky}
+          onOpen={openFromLine}
+          onRide={ride}
           entering={entering}
           arrival={arrived ? entrance : null}
         />

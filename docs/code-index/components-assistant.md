@@ -37,10 +37,14 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `AssistantTeaser` _component_: A short line beside the closed Parky button ("Hey, ich bin Parky – klick mich an!"), at most twice a session and never once Parky was opened or a line was closed. A press on the line opens Parky.
 
+### [`parky-layer.ts`](../../components/assistant/parky-layer.ts)
+
+- `PARKY_LAYER` _const_: Parky's layer: button, speech bubble and window lie above everything else on the page, the header, the planner and the navigation bar's `z-[9999]` included. One class for all three.
+
 ### [`parky-logo.tsx`](../../components/assistant/parky-logo.tsx)
 
 - `ParkyLogo` _component_: Parky's face: a speech bubble in the brand's blue to green with big eyes that follow the mouse, rosy cheeks and a smile, and for a hat a Ferris wheel with coloured cabins on an A-frame.
-- Types: `ParkyMood`
+- Types: `ParkyCue`, `ParkyMood`
 
 ### [`use-assistant-actions.ts`](../../components/assistant/use-assistant-actions.ts)
 

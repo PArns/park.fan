@@ -2,7 +2,8 @@
  * Parky, the chat assistant: the stream reader (`lib/assistant/sse.ts`), the link check on its
  * answers (`lib/assistant/links.ts`), the rollout gate (`lib/assistant/config.ts`), the post
  * text it reads (`lib/assistant/post-text.ts`), how bored its face gets
- * (`lib/assistant/parky-boredom.ts`) and how a chat opens (`lib/assistant/opener.ts`).
+ * (`lib/assistant/parky-boredom.ts`), how a chat opens (`lib/assistant/opener.ts`) and Parky's easter
+ * eggs (`lib/assistant/easter-eggs.ts`, the park lines' limits in `teaser-store.ts`).
  */
 
 import assert from 'node:assert/strict';
@@ -27,6 +28,20 @@ import {
   SUGGESTIONS_SHOWN,
 } from '@/lib/assistant/opener.ts';
 import { pickRandom, pickSome } from '@/lib/utils/pick-random.ts';
+import {
+  holidayOn,
+  KONAMI_LENGTH,
+  konamiProgress,
+  PARK_EGGS,
+  parkPathOf,
+} from '@/lib/assistant/easter-eggs.ts';
+import {
+  linesMuted,
+  markParkLine,
+  muteLines,
+  parkLineDue,
+  PARK_LINES_PER_SESSION,
+} from '@/lib/assistant/teaser-store.ts';
 
 let passed = 0;
 function check(actual, expected, label) {
@@ -315,6 +330,50 @@ check(pickSome([1, 2], 5).length, 2, 'never more than there are');
     JSON.stringify({ greeting: 'greeting', site: [], park: [] })
   );
   check(GREETING_KEYS.includes(sessionOpener().greeting), true, 'a stale opener draws afresh');
+  delete globalThis.window;
+}
+check(
+  parkPathOf('/de/parks/europe/germany/bruehl/phantasialand'),
+  'europe/germany/bruehl/phantasialand',
+  "a park's page has its geo path"
+);
+check(
+  parkPathOf('/en/parks/europe/germany/bruehl/phantasialand/taron'),
+  'europe/germany/bruehl/phantasialand',
+  "a ride's page belongs to its park"
+);
+check(parkPathOf('/de/parks/europe/germany'), null, 'a country is no park');
+check(PARK_EGGS['europe/germany/bruehl/phantasialand'].ride, 'Taron', 'Parky wants to ride Taron');
+check(holidayOn(new Date(2026, 9, 31)), 'halloween', 'Halloween');
+check(holidayOn(new Date(2026, 11, 25)), 'christmas', 'Christmas');
+check(holidayOn(new Date(2027, 0, 1)), 'newyear', 'New Year');
+check(holidayOn(new Date(2026, 9, 30)), null, 'an ordinary day');
+{
+  const keys = ['ArrowUp', 'ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown'];
+  keys.push('ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'B', 'a');
+  const reached = keys.reduce((progress, key) => konamiProgress(progress, key), 0);
+  check(reached, KONAMI_LENGTH, 'the Konami code, with a third ↑ and a capital B');
+  check(konamiProgress(5, 'x'), 0, 'a wrong key starts over');
+}
+
+// The park lines on a stand-in sessionStorage: once per park, a few a session, none once muted.
+{
+  const store = new Map();
+  globalThis.window = {
+    sessionStorage: {
+      getItem: (key) => store.get(key) ?? null,
+      setItem: (key, value) => store.set(key, value),
+    },
+  };
+  check(parkLineDue('a'), true, 'a park line is due');
+  markParkLine('a');
+  check(parkLineDue('a'), false, 'once per park');
+  for (let i = 1; i < PARK_LINES_PER_SESSION; i++) markParkLine(`p${i}`);
+  check(parkLineDue('z'), false, 'and a few a session');
+  store.clear();
+  check(linesMuted(), false, 'not muted at first');
+  muteLines();
+  check([linesMuted(), parkLineDue('b')], [true, false], 'a line closed by hand mutes the rest');
   delete globalThis.window;
 }
 console.log(`assistant: ${passed} checks passed`);
