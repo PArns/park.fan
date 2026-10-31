@@ -38,17 +38,17 @@ seo:
     - Silver Dollar City Thunderation laatste seizoen
 ---
 
-In [Silver Dollar City](ref:silver-dollar-city) in Branson, Missouri, begint op 7 november “An Old Time Christmas”, en dit jaar trekt er een nieuwe parade door het park: de Stars, Lights & Christmas Nights Parade, twee keer zo lang als de vorige. Het kerstevenement duurt tot 2 januari 2027 en de parade zit gewoon in de entree.
+In [Silver Dollar City](ref:silver-dollar-city) in Branson, Missouri, begint op 7 november “An Old Time Christmas”. Nieuw dit jaar is de Stars, Lights & Christmas Nights Parade, twee keer zo lang als de vorige. Het kerstevenement duurt tot 2 januari 2027 en de parade zit in de gewone entree.
 
 ## De nieuwe parade
 
 Voorop rijdt een oldtimer met de grand marshal. Daarachter volgen Rudolph en zijn vrienden, dit jaar voor het eerst aangevuld met Yukon Cornelius en de Misfit Toys. In de scène “Home for the Holidays” komt een paardenslee met zangers voorbij, en kinderen lopen mee, verkleed als kerstballen. Op de Noordpool halen elfen verlanglijstjes op: heb je er een bij je, dan geef je hem langs de route meteen af. Mrs. Claus strooit uit een strooibus, en Santa zweeft met zijn rendieren boven de toeschouwers. Trompettisten, een koor en een verlichte wagen met de kerststal sluiten de stoet af.
 
-Of “twee keer zo lang” over de duur gaat of over de lengte van de stoet, laat het persbericht in het midden. Een route heeft het park niet gepubliceerd. Wel bekend zijn de twee vip-zones, bij het Grand Exposition Garden Pavilion (“North Pole”) en op de Red Gold Courtyard (“South Pole”).
+Of “twee keer zo lang” over de duur gaat of over de lengte van de stoet, laat het persbericht in het midden. Een route heeft het park niet gepubliceerd, wel de twee vip-zones: “North Pole” bij het Grand Exposition Garden Pavilion en “South Pole” op de Red Gold Courtyard.
 
 River City Scenic bouwde de wagens in een hal bij Cincinnati. De muziek is van Mike Avila, die aan zo'n 20 grote parades heeft meegewerkt, onder meer voor Disney, de Macy's Thanksgiving Day Parade en de Rose Bowl Parade.
 
-Op elke openingsdag vertrekt de parade twee keer, om 18.00 en om 20.00 uur plaatselijke tijd. Tot en met 2025 reed op die plek Rudolph's Holly Jolly Christmas Light Parade, en toen liep het evenement van 1 november tot 4 januari.
+Op elke openingsdag vertrekt de parade twee keer, om 18.00 en om 20.00 uur plaatselijke tijd. Tot en met 2025 was dat Rudolph's Holly Jolly Christmas Light Parade, en toen liep het evenement van 1 november tot 4 januari.
 
 ## Openingsdagen en openingstijden
 
@@ -58,7 +58,7 @@ In de periode van het evenement is het park 44 dagen open. Tot half december is 
 - 1, 2, 8, 9, 15 en 16 december
 - 24 en 25 december
 
-Op zaterdag en op de vrijdag na Thanksgiving, 27 november, ben je welkom van 11.00 tot 22.00 uur. Op de andere dagen gaat het park meestal om 13.00 uur open en om 21.00 uur dicht, op de vrijdagen 4, 11 en 18 december en op nieuwjaarsdag pas om 22.00 uur. Op Thanksgiving zelf, 26 november, is het open van 16.00 tot 22.00 uur. Het ontbijt vanaf 8.30 uur is er alleen van maart tot oktober.
+Op zaterdag en op de vrijdag na Thanksgiving, 27 november, is het park open van 11.00 tot 22.00 uur. Op de andere dagen gaat het park meestal om 13.00 uur open en om 21.00 uur dicht, op de vrijdagen 4, 11 en 18 december en op nieuwjaarsdag pas om 22.00 uur. Op Thanksgiving zelf, 26 november, is het open van 16.00 tot 22.00 uur. Het ontbijt vanaf 8.30 uur is er alleen van maart tot oktober.
 
 Volgens het park zijn de zaterdagen in november en december vaak erg druk, vooral als het zacht weer is.
 
@@ -87,13 +87,13 @@ In het park hangen meer dan 6,5 miljoen lichtjes, waarvan 1,5 miljoen alleen al 
 
 A Dickens' Christmas Carol staat voor de 25e keer op het programma: 60 minuten met liveband in het Opera House, meestal om 13.30, 15.30 en 17.30 uur. Voor blinde en slechtziende bezoekers is er audiodescriptie. In de Red Gold Heritage Hall wisselen bij Heart of Christmas de gasten: Lindley Creek tot 27 november en op 3 december, Jeff & Sheri Easter van 28 tot 30 november, het Triumphant Quartet van 4 tot 7 december, The Isaacs van 10 tot 14 december en Rhonda Vincent van 17 december tot het einde. De Living Nativity in het Dockside Theater duurt 15 minuten en speelt vijf keer per dag, op Thanksgiving vier keer.
 
-Santa zit in Santa's Cottage in de Carousel Barn, volgens de evenementbeschrijving tot 23 december; daarna heeft hij, zoals bekend, elders een afspraak. Het persbericht noemt de Frisco Sing-Along Steam Train een kersttraditie, maar in de kerstkalender van het park staat de trein niet, en op zijn eigen pagina eindigt het seizoen op 31 oktober.
+Santa zit in Santa's Cottage in de Carousel Barn, volgens de evenementbeschrijving tot 23 december; daarna heeft hij, zoals bekend, elders een afspraak. De Frisco Sing-Along Steam Train staat niet in de kerstkalender van het park, en op zijn eigen pagina eindigt het seizoen op 31 oktober. Het persbericht noemt de trein toch een kersttraditie.
 
 ## Welke attracties in de winter rijden
 
 [Thunderation](ref:silver-dollar-city/thunderation), de achtbaan van Arrow Dynamics uit 1993, rijdt in 2026 zijn laatste seizoen, voor het laatst op 2 januari 2027. De houten achtbaan [Outlaw Run](ref:silver-dollar-city/outlaw-run), de spinning coaster [Time Traveler](ref:silver-dollar-city/time-traveler), WildFire, PowderKeg en de [Marvel Cave](ref:silver-dollar-city/marvel-cave) zijn tot 2 januari open.
 
-Elke buitenachtbaan heeft zijn eigen temperatuurgrens. Thunderation houdt het vol tot 32 graden Fahrenheit (0 °C). Outlaw Run sluit al bij 34 °F (1 °C) en start pas weer vanaf 37 °F (bijna 3 °C), Time Traveler sluit bij 41 °F (5 °C). De oudste baan is dus het best tegen de kou bestand. [Fire In The Hole](ref:silver-dollar-city/new-fire-in-the-hole) rijdt binnen en staat niet op de temperatuurlijst. Moet je je bezoek door het weer inkorten, dan krijg je bij de kassa een gratis ticket voor een andere openingsdag in het lopende seizoen.
+Elke buitenachtbaan heeft zijn eigen temperatuurgrens. Uitgerekend Thunderation, de oudste van de drie, houdt het vol tot 32 graden Fahrenheit (0 °C). Outlaw Run sluit al bij 34 °F (1 °C) en start pas weer vanaf 37 °F (bijna 3 °C), Time Traveler sluit bij 41 °F (5 °C). [Fire In The Hole](ref:silver-dollar-city/new-fire-in-the-hole) rijdt binnen en staat niet op de temperatuurlijst. Moet je je bezoek door het weer inkorten, dan krijg je bij de kassa een gratis ticket voor een andere openingsdag in het lopende seizoen.
 
 ```ride-waits-widget park=silver-dollar-city top=8 columns=peak,days
 

@@ -7,7 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Il 7 novembre a Silver Dollar City, a Branson, comincia «An Old Time Christmas», che dura fino al 2 gennaio 2027. La novità è una parata lunga il doppio di quella vecchia: passa senza sovrapprezzo ogni giorno di apertura, alle 18 e alle 20.
+  Il 7 novembre a Silver Dollar City, a Branson, comincia «An Old Time Christmas», che dura fino al 2 gennaio 2027. La novità è una parata lunga il doppio di quella vecchia. Passa senza sovrapprezzo ogni giorno di apertura, alle 18 e alle 20.
 tags:
   - notizie
   - silver-dollar-city
@@ -38,13 +38,13 @@ seo:
     - Silver Dollar City Thunderation ultima stagione
 ---
 
-Il 7 novembre a [Silver Dollar City](ref:silver-dollar-city), a Branson nel Missouri, comincia «An Old Time Christmas», e per l'occasione debutta una parata nuova: la Stars, Lights & Christmas Nights Parade, lunga il doppio di quella di prima. L'evento natalizio va avanti fino al 2 gennaio 2027 e la parata è compresa nel normale biglietto d'ingresso.
+Il 7 novembre a [Silver Dollar City](ref:silver-dollar-city), a Branson nel Missouri, comincia «An Old Time Christmas». Per l'occasione debutta la Stars, Lights & Christmas Nights Parade, lunga il doppio di quella di prima. L'evento natalizio va avanti fino al 2 gennaio 2027 e la parata è compresa nel normale biglietto d'ingresso.
 
 ## La nuova parata
 
 In testa c'è un'auto d'epoca con il Grand Marshal, poi arrivano Rudolph e i suoi amici; le new entry sono Yukon Cornelius e i Misfit Toys. Nella scena «Home for the Holidays» sfila una slitta trainata da cavalli con a bordo dei cantanti, mentre alcuni bambini camminano travestiti da palline dell'albero. Al Polo Nord gli elfi raccolgono le letterine, e chi ha portato la sua può consegnarla lì, a bordo strada; Mrs. Claus intanto sparge zucchero da una zuccheriera. Babbo Natale passa sopra il pubblico con la sua slitta e le renne. Chiudono il corteo i trombettieri, un coro e un carro illuminato con il presepe.
 
-Il comunicato non chiarisce se «lunga il doppio» si riferisca alla durata o alla lunghezza del corteo, e il percorso il parco non l'ha pubblicato. Si conoscono soltanto le due aree VIP: una al Grand Exposition Garden Pavilion («North Pole») e una al Red Gold Courtyard («South Pole»).
+Il comunicato non chiarisce se «lunga il doppio» si riferisca alla durata o alla lunghezza del corteo. Il parco non ha pubblicato un percorso, solo le due aree VIP: «North Pole» al Grand Exposition Garden Pavilion e «South Pole» al Red Gold Courtyard.
 
 I carri li ha costruiti River City Scenic in un capannone vicino a Cincinnati. La musica è di Mike Avila, che ha lavorato a una ventina di grandi parate, tra cui quelle per Disney, la Macy's Thanksgiving Day Parade e la Rose Bowl Parade.
 
@@ -72,7 +72,7 @@ Il biglietto giornaliero costa 95 dollari più tasse e vale in qualsiasi giorno 
 
 Fino al 2 novembre il parco vende il Silver Season Passport 2027 a 119,99 dollari invece di 174,99. Vale dall'inizio della stagione, il 12 marzo 2027, e chi lo compra per la prima volta ha diritto a un biglietto giornaliero per la stagione di Natale 2026 a 47,50 dollari, esclusi i sabati e il 22 novembre.
 
-L'ingresso comprende tutte le attrazioni e gli spettacoli, e anche le visite guidate alla Marvel Cave, tranne i Lantern Light Tours. Si pagano a parte, sempre più tasse e biglietto del parco:
+L'ingresso comprende tutte le attrazioni e gli spettacoli, e anche le visite guidate alla Marvel Cave, tranne i Lantern Light Tours. Si pagano a parte, con tasse e biglietto del parco in più:
 
 - VIP Parade Experience: 45 dollari, con incontro e foto con Rudolph, posto riservato, cioccolata calda e un sacchetto di kettle corn, valida per lo spettacolo prenotato; i bambini sotto i tre anni in braccio a un genitore non pagano
 - posti riservati agli spettacoli: 15 dollari per le Frontier Fa-La-La Follies, 30 dollari ciascuno per A Dickens' Christmas Carol e Heart of Christmas, più 1 dollaro di commissione a posto
@@ -87,13 +87,13 @@ Nel parco sono appese più di 6,5 milioni di luci, 1,5 milioni solo in Christmas
 
 A Dickens' Christmas Carol va in scena per la venticinquesima volta: 60 minuti con band dal vivo nell'Opera House, di solito alle 13:30, alle 15:30 e alle 17:30. Per gli ospiti ciechi e ipovedenti c'è l'audiodescrizione. Nella Red Gold Heritage Hall, a Heart of Christmas, gli ospiti cambiano: Lindley Creek fino al 27 novembre e il 3 dicembre, Jeff & Sheri Easter dal 28 al 30 novembre, il Triumphant Quartet dal 4 al 7 dicembre, The Isaacs dal 10 al 14 dicembre e Rhonda Vincent dal 17 dicembre fino alla fine. La Living Nativity al Dockside Theater dura 15 minuti e va in scena cinque volte al giorno, quattro nel giorno del Ringraziamento.
 
-Babbo Natale riceve nella Santa's Cottage, dentro la Carousel Barn, fino al 23 dicembre secondo la descrizione dell'evento: poi, come si sa, ha un altro giro da fare. Il comunicato cita il Frisco Sing-Along Steam Train tra le tradizioni di Natale, però il treno non compare nel calendario natalizio del parco, e sulla sua pagina la stagione finisce il 31 ottobre.
+Babbo Natale riceve nella Santa's Cottage, dentro la Carousel Barn, fino al 23 dicembre secondo la descrizione dell'evento: poi, come si sa, ha un altro giro da fare. Il Frisco Sing-Along Steam Train non compare nel calendario natalizio del parco, e sulla sua pagina la stagione finisce il 31 ottobre. Il comunicato lo cita comunque tra le tradizioni di Natale.
 
 ## Quali attrazioni funzionano d'inverno
 
 [Thunderation](ref:silver-dollar-city/thunderation), le montagne russe di Arrow Dynamics del 1993, nel 2026 fa la sua ultima stagione e corre per l'ultima volta il 2 gennaio 2027. Le montagne russe in legno [Outlaw Run](ref:silver-dollar-city/outlaw-run), lo spinning coaster [Time Traveler](ref:silver-dollar-city/time-traveler), WildFire, PowderKeg e la [Marvel Cave](ref:silver-dollar-city/marvel-cave) restano aperti fino al 2 gennaio.
 
-Ogni montagna russa all'aperto ha un suo limite di temperatura. Thunderation resiste fino a 32 °F (0 °C). Outlaw Run chiude già a 34 °F (1 °C) e riparte solo da 37 °F (quasi 3 °C), Time Traveler chiude a 41 °F (5 °C): la più vecchia è anche quella che soffre meno il freddo. [Fire In The Hole](ref:silver-dollar-city/new-fire-in-the-hole) è al coperto e nell'elenco delle temperature non c'è. Se per colpa del meteo la visita si accorcia, alla biglietteria si riceve gratis un biglietto per un altro giorno di apertura della stagione in corso.
+Ogni montagna russa all'aperto ha un suo limite di temperatura. Proprio Thunderation, la più vecchia delle tre, resiste fino a 32 °F (0 °C). Outlaw Run chiude già a 34 °F (1 °C) e riparte solo da 37 °F (quasi 3 °C), Time Traveler chiude a 41 °F (5 °C). [Fire In The Hole](ref:silver-dollar-city/new-fire-in-the-hole) è al coperto e nell'elenco delle temperature non c'è. Se per colpa del meteo la visita si accorcia, alla biglietteria si riceve gratis un biglietto per un altro giorno di apertura della stagione in corso.
 
 ```ride-waits-widget park=silver-dollar-city top=8 columns=peak,days
 

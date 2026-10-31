@@ -7,7 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  An Old Time Christmas opens at Silver Dollar City in Branson on November 7 and runs until January 2, 2027. The new parade is twice as long as the old one and rolls at 6 pm and 8 pm on every operating day, at no extra charge.
+  An Old Time Christmas opens at Silver Dollar City in Branson on November 7 and runs until January 2, 2027. The new parade is twice as long as the old one. It rolls at 6 pm and 8 pm on every operating day, at no extra charge.
 tags:
   - news
   - silver-dollar-city
@@ -24,9 +24,9 @@ rideLinks:
   - silver-dollar-city/new-fire-in-the-hole
   - silver-dollar-city/marvel-cave
 seo:
-  title: 'Silver Dollar City Christmas 2026: parade, hours, prices'
+  title: 'Silver Dollar City Christmas 2026: parade times and prices'
   description: >-
-    Silver Dollar City's Christmas runs Nov 7, 2026 to Jan 2, 2027. The new parade rolls at 6 and 8 pm; a day ticket costs $95 plus tax. Closed days listed.
+    Silver Dollar City's Christmas runs Nov 7, 2026 to Jan 2, 2027. The new parade rolls at 6 and 8 pm; a day ticket costs $95 plus tax.
   keywords:
     - Silver Dollar City Christmas
     - Silver Dollar City An Old Time Christmas 2026
@@ -41,13 +41,13 @@ seo:
     - Silver Dollar City Thunderation last season
 ---
 
-An Old Time Christmas starts at [Silver Dollar City](ref:silver-dollar-city) in Branson, Missouri, on November 7, and it opens with a new parade: the Stars, Lights & Christmas Nights Parade, twice as long as the one it replaces. The event runs until January 2, 2027, and the parade comes with regular admission.
+An Old Time Christmas starts at [Silver Dollar City](ref:silver-dollar-city) in Branson, Missouri, on November 7. It opens with a new parade, the Stars, Lights & Christmas Nights Parade, twice as long as the one it replaces. The event runs until January 2, 2027, and the parade comes with regular admission.
 
 ## The new parade
 
-A vintage car carrying the Grand Marshal leads the way. Rudolph and his friends follow, and Yukon Cornelius and the Misfit Toys are new this year. In the "Home for the Holidays" scene a horse-drawn sleigh rolls past with carolers on board, while children dressed as Christmas ornaments walk alongside. At the North Pole, elves collect letters to Santa, so if you've brought yours you can hand it over from the curb, and Mrs. Claus shakes sprinkles out of a giant shaker. Santa and his reindeer fly above the crowd. Trumpeters, a choir and an illuminated nativity float close it out.
+A vintage car carrying the Grand Marshal leads the way. Rudolph and his friends follow, and Yukon Cornelius and the Misfit Toys are new this year. In the "Home for the Holidays" scene a horse-drawn sleigh rolls past with carolers on board, while children dressed as Christmas ornaments walk alongside. At the North Pole, elves collect letters to Santa, so if you've brought yours you can hand it over from the curb, and Mrs. Claus shakes sprinkles out of a shaker. Santa and his reindeer fly above the crowd. Trumpeters, a choir and an illuminated nativity float close it out.
 
-Whether "twice as long" means running time or the length of the procession, the announcement doesn't say. The park hasn't published a route either. What it has named are the two VIP areas, "North Pole" at the Grand Exposition Garden Pavilion and "South Pole" at the Red Gold Courtyard.
+The announcement leaves open whether "twice as long" means running time or the length of the procession. The park hasn't published a route, only the two VIP areas: "North Pole" at the Grand Exposition Garden Pavilion and "South Pole" at the Red Gold Courtyard.
 
 River City Scenic built the floats in a warehouse near Cincinnati. The music is by Mike Avila, who has worked on about 20 major parades, among them shows for Disney, the Macy's Thanksgiving Day Parade and the Rose Parade.
 
@@ -71,11 +71,11 @@ The park itself says Saturdays in November and December are often very busy, esp
 
 ## What the ticket covers and what costs extra
 
-A one-day ticket costs $95 plus tax and is good on any operating day through January 2. Book online at least 24 hours ahead and selected days start at $79; a second day within five operating days adds $20. Children aged three and under get in free, and the prices for ages 4 to 11 and for guests 65 and over only show up at checkout. On the four Merry Mondays, November 9, 16, 23 and 30, the online ticket is $79.
+A one-day ticket costs $95 plus tax and is good on any operating day through January 2. Booked online at least 24 hours ahead, a ticket starts at $79 on selected days. A second day within five operating days adds $20. Children aged three and under get in free, and the prices for ages 4 to 11 and for guests 65 and over only show up at checkout. On the four Merry Mondays, November 9, 16, 23 and 30, the online ticket is $79.
 
 Until November 2 the park is selling the 2027 Silver Season Passport for $119.99 instead of $174.99. It's valid from opening day on March 12, 2027, and new buyers get a $47.50 day ticket for the 2026 Christmas season, except on Saturdays and November 22.
 
-Admission includes every ride and show, along with the Marvel Cave tours apart from the Lantern Light Tours. These cost extra, each plus tax and on top of park admission:
+Admission includes every ride and show, along with the Marvel Cave tours apart from the Lantern Light Tours. Extras, each plus tax and on top of park admission:
 
 - VIP Parade Experience: $45, with a meet and photo with Rudolph, a reserved spot, hot chocolate and a bag of kettle corn, good for the performance you booked; children under three sit on a parent's lap for free
 - reserved show seating: Frontier Fa-La-La Follies $15, A Dickens' Christmas Carol and Heart of Christmas $30 each, plus a $1 fee per seat
@@ -90,13 +90,13 @@ More than 6.5 million lights hang in the park, 1.5 million of them in Christmas 
 
 A Dickens' Christmas Carol plays for the 25th time, 60 minutes with a live band in the Opera House, usually at 1:30, 3:30 and 5:30 pm. Audio description is available for blind and low-vision guests. Heart of Christmas in Red Gold Heritage Hall changes its guest act through the season: Lindley Creek until November 27 and on December 3, Jeff & Sheri Easter from November 28 to 30, the Triumphant Quartet from December 4 to 7, The Isaacs from December 10 to 14, and Rhonda Vincent from December 17 to the end. The Living Nativity in the Dockside Theater lasts 15 minutes and plays five times a day, four times on Thanksgiving.
 
-Santa receives visitors in Santa's Cottage in the Carousel Barn, through December 23 according to the event listing; after that, as everyone knows, he's booked elsewhere. The press release lists the Frisco Sing-Along Steam Train as a Christmas tradition, yet the train isn't on the park's Christmas calendar, and its own page has the season ending on October 31.
+Santa receives visitors in Santa's Cottage in the Carousel Barn, through December 23 according to the event listing; after that, as everyone knows, he's booked elsewhere. The Frisco Sing-Along Steam Train isn't on the park's Christmas calendar, and its own page has the season ending on October 31. The press release still lists it as a Christmas tradition.
 
 ## Which rides run in winter
 
 [Thunderation](ref:silver-dollar-city/thunderation), the 1993 Arrow Dynamics coaster, is in its final season in 2026 and runs for the last time on January 2, 2027. The wooden coaster [Outlaw Run](ref:silver-dollar-city/outlaw-run), the spinning coaster [Time Traveler](ref:silver-dollar-city/time-traveler), WildFire, PowderKeg and [Marvel Cave](ref:silver-dollar-city/marvel-cave) all operate through January 2.
 
-Every outdoor coaster has its own temperature limit. Thunderation keeps running down to 32°F (0°C). Outlaw Run closes at 34°F (1°C) and doesn't start again until 37°F (just under 3°C), and Time Traveler closes at 41°F (5°C). That makes the oldest ride the toughest of the three. [Fire In The Hole](ref:silver-dollar-city/new-fire-in-the-hole) is indoors and isn't on the temperature list. If the weather cuts your visit short, the ticket window hands out a free ticket for another operating day in the current season.
+Every outdoor coaster has its own temperature limit. Of the three, it is Thunderation, the oldest, that keeps running down to 32°F (0°C). Outlaw Run closes at 34°F (1°C) and doesn't start again until 37°F (just under 3°C), and Time Traveler closes at 41°F (5°C). [Fire In The Hole](ref:silver-dollar-city/new-fire-in-the-hole) is indoors and isn't on the temperature list. If the weather cuts your visit short, the ticket window hands out a free ticket for another operating day in the current season.
 
 ```ride-waits-widget park=silver-dollar-city top=8 columns=peak,days
 

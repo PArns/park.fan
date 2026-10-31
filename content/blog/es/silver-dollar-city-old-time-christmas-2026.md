@@ -7,7 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  El 7 de noviembre empieza en Silver Dollar City, en Branson, «An Old Time Christmas», que dura hasta el 2 de enero de 2027. La novedad es un desfile el doble de largo que el anterior, sin coste extra, a las 18:00 y a las 20:00 cada día que abre el parque.
+  El 7 de noviembre empieza en Silver Dollar City, en Branson, «An Old Time Christmas», que dura hasta el 2 de enero de 2027. La novedad es un desfile el doble de largo que el anterior. Sale sin coste extra cada día de apertura, a las 18:00 y a las 20:00.
 tags:
   - news
   - silver-dollar-city
@@ -38,17 +38,17 @@ seo:
     - Silver Dollar City Thunderation última temporada
 ---
 
-El 7 de noviembre arranca «An Old Time Christmas» en [Silver Dollar City](ref:silver-dollar-city), en Branson (Misuri), y se estrena con un desfile nuevo que dobla en longitud al anterior: la Stars, Lights & Christmas Nights Parade. La temporada navideña sigue hasta el 2 de enero de 2027 y el desfile entra en la entrada normal.
+El 7 de noviembre arranca «An Old Time Christmas» en [Silver Dollar City](ref:silver-dollar-city), en Branson (Misuri), con un desfile nuevo, la Stars, Lights & Christmas Nights Parade, el doble de largo que el anterior. La temporada navideña sigue hasta el 2 de enero de 2027 y el desfile está incluido en la entrada normal.
 
 ## El nuevo desfile
 
 Abre la marcha un coche antiguo con el Grand Marshal. Detrás vienen Rudolph y sus amigos, y este año se suman Yukon Cornelius y los Misfit Toys. En la escena «Home for the Holidays» pasa un trineo tirado por caballos con cantantes, y a su lado desfilan niños disfrazados de bolas de Navidad. En el Polo Norte, unos elfos recogen cartas a Santa: si llevas la tuya, se la puedes dar allí mismo, en la acera, mientras Mrs. Claus espolvorea desde un salero de azúcar gigante. Santa pasa por encima del público con su trineo de renos. Cierran el desfile trompetistas, un coro y una carroza iluminada con el belén.
 
-El comunicado no aclara si «el doble de largo» se refiere a la duración o a la longitud de la comitiva. El parque tampoco ha publicado el recorrido. Lo que sí se sabe es dónde están las dos zonas VIP: en el Grand Exposition Garden Pavilion («North Pole») y en el Red Gold Courtyard («South Pole»).
+El comunicado no aclara si «el doble de largo» se refiere a la duración o a la longitud de la comitiva. El parque tampoco ha publicado el recorrido, solo las dos zonas VIP: «North Pole» en el Grand Exposition Garden Pavilion y «South Pole» en el Red Gold Courtyard.
 
 Las carrozas las construyó River City Scenic en una nave cerca de Cincinnati. La música es de Mike Avila, que ha trabajado en una veintena de grandes desfiles, entre ellos para Disney, el Macy's Thanksgiving Day Parade y el Rose Bowl Parade.
 
-Sale dos veces cada día de apertura, a las 18:00 y a las 20:00, hora local. Hasta 2025 ocupaba su lugar la Rudolph's Holly Jolly Christmas Light Parade, y entonces la temporada iba del 1 de noviembre al 4 de enero.
+El desfile sale dos veces cada día de apertura, a las 18:00 y a las 20:00, hora local. Hasta 2025 ocupaba su lugar la Rudolph's Holly Jolly Christmas Light Parade, y entonces la temporada iba del 1 de noviembre al 4 de enero.
 
 ## Días y horarios de apertura
 
@@ -72,7 +72,7 @@ La entrada de un día cuesta 95 dólares más impuestos y vale para cualquier d�
 
 Hasta el 2 de noviembre el parque vende el Silver Season Passport 2027 por 119,99 dólares en lugar de 174,99. Vale desde el inicio de temporada, el 12 de marzo de 2027, y quien lo compra por primera vez consigue para la Navidad de 2026 una entrada de un día por 47,50 dólares, excepto los sábados y el 22 de noviembre.
 
-La entrada cubre todas las atracciones y espectáculos, y también las visitas a la Marvel Cave, salvo los Lantern Light Tours. Se pagan aparte, siempre con impuestos y entrada al parque por encima:
+La entrada cubre todas las atracciones y espectáculos, y también las visitas a la Marvel Cave, salvo los Lantern Light Tours. Se pagan aparte, más impuestos y la entrada al parque:
 
 - VIP Parade Experience: 45 dólares, con encuentro y foto con Rudolph, sitio reservado, chocolate caliente y una bolsa de kettle corn, válida para el pase reservado; los menores de tres años van gratis en el sitio de uno de sus padres
 - asientos reservados en espectáculos: 15 dólares en Frontier Fa-La-La Follies y 30 en A Dickens' Christmas Carol y en Heart of Christmas, más 1 dólar de gastos por asiento
@@ -87,13 +87,13 @@ En el parque cuelgan más de 6,5 millones de luces, 1,5 millones solo en Christm
 
 A Dickens' Christmas Carol cumple su 25.ª temporada: 60 minutos con banda en directo en el Opera House, normalmente a las 13:30, a las 15:30 y a las 17:30. Hay audiodescripción para personas ciegas o con baja visión. En el Red Gold Heritage Hall, Heart of Christmas cambia de invitados: Lindley Creek hasta el 27 de noviembre y el 3 de diciembre, Jeff & Sheri Easter del 28 al 30 de noviembre, el Triumphant Quartet del 4 al 7 de diciembre, The Isaacs del 10 al 14 de diciembre y Rhonda Vincent del 17 de diciembre hasta el final. La Living Nativity del Dockside Theater dura 15 minutos y se representa cinco veces al día, cuatro el Día de Acción de Gracias.
 
-Santa recibe en Santa's Cottage, dentro del Carousel Barn, hasta el 23 de diciembre según la descripción del evento; a partir de ahí, como todo el mundo sabe, tiene otro compromiso. El comunicado presenta el Frisco Sing-Along Steam Train como tradición navideña, pero el tren no aparece en el calendario navideño del parque, y su propia página da la temporada por terminada el 31 de octubre.
+Santa recibe en Santa's Cottage, dentro del Carousel Barn, hasta el 23 de diciembre según la descripción del evento; a partir de ahí, como todo el mundo sabe, tiene otro compromiso. El Frisco Sing-Along Steam Train no aparece en el calendario navideño del parque, y su propia página da la temporada por terminada el 31 de octubre. Aun así, el comunicado lo presenta como tradición navideña.
 
 ## Qué atracciones funcionan en invierno
 
 [Thunderation](ref:silver-dollar-city/thunderation), la montaña rusa de Arrow Dynamics de 1993, vive en 2026 su última temporada y funcionará por última vez el 2 de enero de 2027. La montaña rusa de madera [Outlaw Run](ref:silver-dollar-city/outlaw-run), la giratoria [Time Traveler](ref:silver-dollar-city/time-traveler), WildFire, PowderKeg y la [Marvel Cave](ref:silver-dollar-city/marvel-cave) siguen abiertas hasta el 2 de enero.
 
-Cada montaña rusa al aire libre tiene su propio límite de temperatura. Thunderation resiste hasta los 32 °F (0 °C). Outlaw Run cierra ya a 34 °F (1 °C) y no vuelve a arrancar hasta los 37 °F (casi 3 °C), y Time Traveler cierra a 41 °F (5 °C): la veterana es la que mejor aguanta el frío. [Fire In The Hole](ref:silver-dollar-city/new-fire-in-the-hole) va bajo techo y no figura en la lista de temperaturas. Si el tiempo te obliga a acortar la visita, en taquilla te dan gratis una entrada para otro día de apertura de la temporada en curso.
+Cada montaña rusa al aire libre tiene su propio límite de temperatura. Precisamente Thunderation, la más antigua de las tres, resiste hasta los 32 °F (0 °C). Outlaw Run cierra ya a 34 °F (1 °C) y no vuelve a arrancar hasta los 37 °F (casi 3 °C), y Time Traveler cierra a 41 °F (5 °C). [Fire In The Hole](ref:silver-dollar-city/new-fire-in-the-hole) va bajo techo y no figura en la lista de temperaturas. Si el tiempo te obliga a acortar la visita, en taquilla te dan gratis una entrada para otro día de apertura de la temporada en curso.
 
 ```ride-waits-widget park=silver-dollar-city top=8 columns=peak,days
 
