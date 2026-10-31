@@ -19,6 +19,12 @@ by hand: change the comment in the code and re-run the script. -->
 - `assistantGate` _const_: The gate as a store for `useSyncExternalStore`: hidden on the server and until the decision is made, which takes one cached request per session, so no page's HTML depends on it.
 - Types: `AssistantConfig`
 
+### [`entrance.ts`](../../lib/assistant/entrance.ts)
+
+- `sessionEntrance` _function_: This page's entrance: a random one the first time Parky shows in a session, none after that, none without motion and none where storage is blocked (it could not tell a second visit).
+- `ENTRANCE_MS` _const_: How Parky arrives in its corner, once a session, and how long each takes. Each entrance has a line of its own; the stylesheet (`.parky-enter-*`) reads the length as `--parky-enter`, so it is written here only.
+- Types: `ParkyEntrance`
+
 ### [`links.ts`](../../lib/assistant/links.ts)
 
 - `directionsHref` _function_: The one link off the site an answer may carry: Google Maps directions to coordinates, exactly in the form the API's `get_directions` writes it. Opened in a new tab; never used for navigation.

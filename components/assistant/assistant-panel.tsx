@@ -164,8 +164,11 @@ export function AssistantPanel({ open, onClose }: { open: boolean; onClose: () =
         // Not `overflow-hidden`: Parky's face sits half outside the window's top edge.
         // A frame in the theme's blue, so the window reads as Parky's over any page.
         'bg-background/90 border-primary/60 ring-primary/15 fixed z-[45] flex flex-col rounded-2xl border-2 shadow-2xl ring-4 backdrop-blur-xl',
-        // The launcher hides while the window is open, so the window takes its corner.
-        'inset-x-2 bottom-[max(0.5rem,env(safe-area-inset-bottom))] h-[calc(100dvh-4.5rem)] sm:h-[min(clamp(560px,72dvh,720px),calc(100dvh-6rem))]',
+        // The launcher hides while the window is open, so the window takes its corner. Parky and
+        // his hat rise over its top edge, and the header (`z-50`) would cover them: the window
+        // keeps them below the bar and the 32 px scrim it lays over a hero, 80 px in all. On a
+        // phone it is anchored to the top, on a desktop its height is capped.
+        'inset-x-2 top-28 bottom-[max(0.5rem,env(safe-area-inset-bottom))] sm:top-auto sm:h-[min(clamp(560px,72dvh,720px),calc(100dvh-10rem))]',
         // Clear of the planner's edge tab, which sits on the right edge at mid height.
         'sm:inset-x-auto sm:right-12 sm:bottom-4 sm:w-[clamp(380px,32vw,480px)]',
         'planner-wide:right-[calc(var(--planner-inset,0px)+3rem)]',
@@ -178,7 +181,7 @@ export function AssistantPanel({ open, onClose }: { open: boolean; onClose: () =
       <header className="border-border/60 from-primary/15 to-status-operating/10 relative flex touch-none items-center gap-3 rounded-t-2xl border-b bg-gradient-to-r py-1 pr-2 pl-[4.75rem] sm:py-2 sm:pr-3 sm:pl-24">
         {/* On a desktop Parky floats large over the window's top edge, where it is seen. */}
         <ParkyLogo
-          className="absolute -top-7 left-1 size-16 drop-shadow-[0_8px_16px_rgb(0_0_0/0.35)] sm:-top-11 sm:size-20"
+          className="absolute -top-5 left-1 size-14 drop-shadow-[0_8px_16px_rgb(0_0_0/0.35)] sm:-top-11 sm:size-20"
           // The closed window stays mounted; only an open one keeps Parky's idle life going.
           idle={open}
           mood={

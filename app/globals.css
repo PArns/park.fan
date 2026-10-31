@@ -1261,6 +1261,292 @@
 }
 
 /*
+ * Parky's entrances (`components/assistant/assistant-launcher.tsx`): the first time the button
+ * shows in a session it arrives one of five ways, and Parky speaks once it has landed. The length
+ * comes from `ENTRANCE_MS` as `--parky-enter`, for the button and what it strews about. Frames list
+ * the same functions in the same order, so a turn interpolates as a turn.
+ */
+@keyframes parky-enter-scurry {
+  0% {
+    transform: translate(calc(100% + 2rem), 0) rotate(0deg) scale(1, 1);
+  }
+  28% {
+    transform: translate(-12px, 0) rotate(-12deg) scale(1, 1);
+  }
+  38% {
+    transform: translate(4px, 0) rotate(5deg) scale(1, 1);
+  }
+  46% {
+    transform: translate(0, 0) rotate(0deg) scale(1.06, 0.94);
+  }
+  56% {
+    transform: translate(0, -12px) rotate(0deg) scale(0.95, 1.05);
+  }
+  80% {
+    transform: translate(0, -12px) rotate(360deg) scale(1, 1);
+  }
+  90% {
+    transform: translate(0, 0) rotate(360deg) scale(1.06, 0.94);
+  }
+  100% {
+    transform: translate(0, 0) rotate(360deg) scale(1, 1);
+  }
+}
+@keyframes parky-enter-drop {
+  0% {
+    transform: translate(0, -100vh) scale(1, 1);
+    animation-timing-function: cubic-bezier(0.5, 0, 1, 0.6);
+  }
+  42% {
+    transform: translate(0, 0) scale(1.22, 0.72);
+    animation-timing-function: ease-out;
+  }
+  58% {
+    transform: translate(0, -18px) scale(0.92, 1.08);
+    animation-timing-function: ease-in;
+  }
+  72% {
+    transform: translate(0, 0) scale(1.1, 0.9);
+    animation-timing-function: ease-out;
+  }
+  84% {
+    transform: translate(0, -5px) scale(0.98, 1.02);
+  }
+  100% {
+    transform: translate(0, 0) scale(1, 1);
+  }
+}
+/* Rolling left turns it backwards, two full turns, then a dizzy wobble. */
+@keyframes parky-enter-roll {
+  0% {
+    transform: translate(calc(100% + 2rem), 0) rotate(720deg);
+    animation-timing-function: cubic-bezier(0.2, 0.6, 0.4, 1);
+  }
+  62% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  72% {
+    transform: translate(0, 0) rotate(-14deg);
+  }
+  82% {
+    transform: translate(0, 0) rotate(10deg);
+  }
+  91% {
+    transform: translate(0, 0) rotate(-5deg);
+  }
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+}
+/* Half in from the edge at a tilt, a look, a duck back, then a hop into place. */
+@keyframes parky-enter-peek {
+  0% {
+    transform: translate(calc(100% + 2rem), 0) rotate(0deg) scale(1, 1);
+  }
+  18%,
+  40% {
+    transform: translate(calc(50% + 1rem), 0) rotate(-24deg) scale(1, 1);
+  }
+  48% {
+    transform: translate(calc(70% + 1rem), 0) rotate(-14deg) scale(1, 1);
+  }
+  64% {
+    transform: translate(20%, -16px) rotate(0deg) scale(0.95, 1.05);
+  }
+  76% {
+    transform: translate(0, 0) rotate(0deg) scale(1.08, 0.92);
+  }
+  88% {
+    transform: translate(0, -4px) rotate(0deg) scale(0.98, 1.02);
+  }
+  100% {
+    transform: translate(0, 0) rotate(0deg) scale(1, 1);
+  }
+}
+@keyframes parky-enter-pop {
+  0% {
+    transform: rotate(-30deg) scale(0);
+  }
+  45% {
+    transform: rotate(8deg) scale(1.2);
+  }
+  65% {
+    transform: rotate(-4deg) scale(0.92);
+  }
+  82% {
+    transform: rotate(0deg) scale(1.04);
+  }
+  100% {
+    transform: rotate(0deg) scale(1);
+  }
+}
+@keyframes parky-trail {
+  0%,
+  22% {
+    opacity: 0.9;
+    transform: scaleX(1);
+  }
+  34%,
+  100% {
+    opacity: 0;
+    transform: scaleX(0.3);
+  }
+}
+/* The dust rises where the drop lands, at 42 % of it. */
+@keyframes parky-dust {
+  0%,
+  40% {
+    opacity: 0;
+    transform: translate(0, 0) scale(0.4);
+  }
+  46% {
+    opacity: 0.9;
+    transform: translate(calc(var(--side) * 4px), 0) scale(1);
+  }
+  80%,
+  100% {
+    opacity: 0;
+    transform: translate(calc(var(--side) * 14px), -4px) scale(1.5);
+  }
+}
+@keyframes parky-sparkle {
+  0%,
+  30% {
+    opacity: 0;
+    transform: translate(0, 0) rotate(45deg) scale(0);
+  }
+  45% {
+    opacity: 1;
+    transform: translate(calc(var(--dx) * 0.6), calc(var(--dy) * 0.6)) rotate(45deg) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--dx), var(--dy)) rotate(45deg) scale(0.4);
+  }
+}
+/* The drop squashes on landing, so it scales from its foot. */
+.parky-enter-drop {
+  transform-origin: 50% 100%;
+}
+/* Nothing an entrance strews about shows without its animation. */
+.parky-trail,
+.parky-dust,
+.parky-sparkles {
+  position: absolute;
+  pointer-events: none;
+  opacity: 0;
+}
+.parky-trail {
+  left: 82%;
+  top: 32%;
+  display: grid;
+  gap: 5px;
+  transform-origin: left center;
+}
+.parky-trail > span {
+  display: block;
+  height: 3px;
+  border-radius: 9999px;
+  background: linear-gradient(to right, var(--color-primary), transparent);
+}
+.parky-trail > span:nth-child(1) {
+  width: 22px;
+}
+.parky-trail > span:nth-child(2) {
+  width: 30px;
+  margin-left: 6px;
+}
+.parky-trail > span:nth-child(3) {
+  width: 18px;
+  margin-left: 2px;
+}
+.parky-dust {
+  bottom: 0;
+  width: 16px;
+  height: 9px;
+  border-radius: 9999px;
+  background: color-mix(in oklab, var(--color-muted-foreground) 45%, transparent);
+}
+.parky-dust-left {
+  --side: -1;
+  left: -2px;
+}
+.parky-dust-right {
+  --side: 1;
+  right: -2px;
+}
+.parky-sparkles {
+  inset: 0;
+  opacity: 1;
+}
+.parky-sparkles > span {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 7px;
+  height: 7px;
+  margin: -3.5px;
+  border-radius: 1px;
+  opacity: 0;
+}
+.parky-sparkles > span:nth-child(1) {
+  --dx: 0px;
+  --dy: -40px;
+  background: oklch(0.72 0.17 355);
+}
+.parky-sparkles > span:nth-child(2) {
+  --dx: 35px;
+  --dy: -20px;
+  background: oklch(0.86 0.15 90);
+}
+.parky-sparkles > span:nth-child(3) {
+  --dx: 35px;
+  --dy: 20px;
+  background: var(--color-status-operating);
+}
+.parky-sparkles > span:nth-child(4) {
+  --dx: 0px;
+  --dy: 40px;
+  background: oklch(0.76 0.16 55);
+}
+.parky-sparkles > span:nth-child(5) {
+  --dx: -35px;
+  --dy: 20px;
+  background: oklch(0.72 0.17 355);
+}
+.parky-sparkles > span:nth-child(6) {
+  --dx: -35px;
+  --dy: -20px;
+  background: var(--color-primary);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .parky-enter-scurry {
+    animation: parky-enter-scurry var(--parky-enter) ease-in-out both;
+  }
+  .parky-enter-drop {
+    animation: parky-enter-drop var(--parky-enter) both;
+  }
+  .parky-enter-roll {
+    animation: parky-enter-roll var(--parky-enter) both;
+  }
+  .parky-enter-peek {
+    animation: parky-enter-peek var(--parky-enter) ease-in-out both;
+  }
+  .parky-enter-pop {
+    animation: parky-enter-pop var(--parky-enter) ease-out both;
+  }
+  .parky-trail {
+    animation: parky-trail var(--parky-enter) ease-out both;
+  }
+  .parky-dust {
+    animation: parky-dust var(--parky-enter) ease-out both;
+  }
+  .parky-sparkles > span {
+    animation: parky-sparkle var(--parky-enter) ease-out both;
+  }
+}
+
+/*
  * Hero entrance: the panels never animate (see the stagger rules below), their content does, one
  * line at a time from the outside edge (`--hero-in-x`, opposite signs per column) out of a blur.
  * The search block's glass dropdown loses its blur for the length of its item's animation.

@@ -3158,6 +3158,11 @@
     "teaserBored4": "Ta prochaine visite au parc est déjà prévue ? Je peux t’aider.",
     "teaserWoke1": "Oh ! Je ne dormais pas du tout !",
     "teaserWoke2": "Ah, te revoilà ! Je reposais juste mes yeux.",
-    "teaserWoke3": "J’ai raté quelque chose ? Je suis bien réveillé !"
+    "teaserWoke3": "J’ai raté quelque chose ? Je suis bien réveillé !",
+    "entranceScurry": "Zou, me voilà ! Moi c’est Parky – demande-moi.",
+    "entranceDrop": "Aïe ! Tout va bien, j’ai atterri. Demande-moi !",
+    "entranceRoll": "Ouf, j’ai la tête qui tourne … Salut, moi c’est Parky !",
+    "entrancePeek": "Psst … je peux entrer ? Moi c’est Parky.",
+    "entrancePop": "Pop ! Me voilà. On va où aujourd’hui ?"
   }
 }

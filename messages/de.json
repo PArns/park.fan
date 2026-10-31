@@ -3158,6 +3158,11 @@
     "teaserBored4": "Schon den nächsten Parkbesuch geplant? Ich helf dir dabei.",
     "teaserWoke1": "Huch! Ich hab gar nicht geschlafen!",
     "teaserWoke2": "Oh, du bist wieder da! Ich hab nur kurz die Augen ausgeruht.",
-    "teaserWoke3": "Hab ich was verpasst? Ich bin wieder hellwach!"
+    "teaserWoke3": "Hab ich was verpasst? Ich bin wieder hellwach!",
+    "entranceScurry": "Zack, da bin ich! Ich bin Parky – frag mich was.",
+    "entranceDrop": "Autsch! Alles gut, ich bin gelandet. Frag mich was!",
+    "entranceRoll": "Uff, mir ist ganz schwindelig … Hallo, ich bin Parky!",
+    "entrancePeek": "Psst … darf ich reinkommen? Ich bin Parky.",
+    "entrancePop": "Plopp! Hier bin ich. Wo soll's heute hingehen?"
   }
 }

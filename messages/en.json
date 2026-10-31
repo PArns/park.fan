@@ -3158,6 +3158,11 @@
     "teaserBored4": "Planned your next park visit yet? I can help.",
     "teaserWoke1": "Whoa! I was not asleep, not at all!",
     "teaserWoke2": "Oh, you are back! I was only resting my eyes.",
-    "teaserWoke3": "Did I miss anything? I am wide awake again!"
+    "teaserWoke3": "Did I miss anything? I am wide awake again!",
+    "entranceScurry": "Zoom, here I am! I am Parky – ask me something.",
+    "entranceDrop": "Ouch! All good, I have landed. Ask me something!",
+    "entranceRoll": "Phew, I am all dizzy … Hi, I am Parky!",
+    "entrancePeek": "Psst … may I come in? I am Parky.",
+    "entrancePop": "Pop! Here I am. Where are we off to today?"
   }
 }
