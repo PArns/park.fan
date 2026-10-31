@@ -58,7 +58,7 @@ jobs:
 
       - uses: actions/setup-node@v7
         with:
-          node-version: 24
+          node-version: 26
 
       # corepack rather than pnpm/action-setup: `packageManager` in package.json
       # already pins the version, and this is the same pair of commands the setup
@@ -127,7 +127,7 @@ jobs:
 
       - uses: actions/setup-node@v7
         with:
-          node-version: 24
+          node-version: 26
 
       - run: corepack enable
 
@@ -150,7 +150,7 @@ jobs:
 
       - uses: actions/setup-node@v7
         with:
-          node-version: 24
+          node-version: 26
 
       - run: corepack enable
 
@@ -185,7 +185,7 @@ jobs:
 
       - uses: actions/setup-node@v7
         with:
-          node-version: 24
+          node-version: 26
 
       - run: corepack enable
 
@@ -207,7 +207,7 @@ jobs:
 
       - uses: actions/setup-node@v7
         with:
-          node-version: 24
+          node-version: 26
 
       - run: corepack enable
 

@@ -5,7 +5,7 @@ other command is in [scripts](scripts.md).
 
 ## Prerequisites
 
-- **Node.js 24** or newer, pinned in `.nvmrc` and `package.json` `engines` (the version Vercel
+- **Node.js 26**, pinned in `.nvmrc` and `package.json` `engines` (the version Vercel
   runs). `nvm use` switches to it.
 - **pnpm**, the version in `package.json` `packageManager` (`corepack enable` provides it).
 

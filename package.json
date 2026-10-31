@@ -7,7 +7,7 @@
   "license": "GPL-3.0-only",
   "author": "Patrick Arns",
   "engines": {
-    "node": ">=24"
+    "node": "26.x"
   },
   "scripts": {
     "dev": "next dev --turbopack",
