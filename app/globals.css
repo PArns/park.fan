@@ -474,10 +474,10 @@
 @keyframes parky-scan {
   0%,
   100% {
-    transform: translateX(-1.8px);
+    transform: translateX(-2.4px);
   }
   50% {
-    transform: translateX(1.8px);
+    transform: translateX(2.4px);
   }
 }
 @keyframes parky-nod {
