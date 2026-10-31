@@ -111,6 +111,10 @@ motion the store answers `null` and Parky only shows its moods.
 
 ## What Parky says
 
+Every chat opens with one of five greetings (`greeting1`–`greeting5`, `lib/assistant/greeting.ts`).
+The one drawn is kept in `sessionStorage`, so a reload or a closed and reopened window shows the
+chat as it was; "new chat" draws another, never the same one twice in a row.
+
 `AssistantTeaser` draws a speech bubble beside the closed button, its tail on Parky's mouth: the
 bubble's right edge and bottom are reckoned from the button's size (56 px, 64 px from `sm`) and
 its corner offset. Two kinds of line go in it, from the `assistant` namespace:

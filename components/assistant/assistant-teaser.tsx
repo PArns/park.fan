@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { X } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { pickRandom } from '@/lib/utils/pick-random';
 import {
   countReaction,
   reactionsShown,
@@ -37,10 +38,6 @@ const REACTION_KEYS = {
 const REACTION_DELAY_MS = { bored: 4_500, woke: 1_000 } as const;
 /** An invitation that falls due over another line or a sleeping Parky tries again this much later. */
 const RETRY_MS = 5_000;
-
-function pick<T>(list: readonly T[]): T {
-  return list[Math.floor(Math.random() * list.length)];
-}
 
 /**
  * A short line beside the closed Parky button ("Hey, ich bin Parky – klick mich an!"), at most
@@ -76,7 +73,7 @@ export function AssistantTeaser({ onOpen }: { onOpen: () => void }) {
         if (teasersShown() >= TEASER_SCHEDULE_MS.length) return;
         shown += 1;
         setTeasersShown(shown);
-        setLine(t(pick(TEASER_KEYS)));
+        setLine(t(pickRandom(TEASER_KEYS)));
         next(VISIBLE_MS + (TEASER_SCHEDULE_MS[shown] ?? 0));
       }, wait);
     };
@@ -91,7 +88,7 @@ export function AssistantTeaser({ onOpen }: { onOpen: () => void }) {
     const timer = setTimeout(() => {
       if (latest.current.line || reactionsShown() >= REACTIONS_PER_SESSION) return;
       countReaction();
-      setLine(t(pick(REACTION_KEYS[kind])));
+      setLine(t(pickRandom(REACTION_KEYS[kind])));
     }, REACTION_DELAY_MS[kind]);
     // Somebody came back before the line was due: Parky is not bored any more.
     return () => clearTimeout(timer);

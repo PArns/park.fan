@@ -336,6 +336,10 @@ When the nowcast says it is time to go under a roof: the trigger for the covered
 - `chunk` _function_: The list cut into consecutive slices of `size` (the last may be shorter).
 - `sortLandNames` _function_: Land names in display order: alphabetical, then the Halloween-maze group, then the land-less one.
 
+### [`pick-random.ts`](../../lib/utils/pick-random.ts)
+
+- `pickRandom` _function_: A random item of `list`, never `except` while there is another to take.
+
 ### [`quietest-day.ts`](../../lib/utils/quietest-day.ts)
 
 - `quietestOpenDay` _function_: The open day with the lowest forecast crowd level in the window `today … today + 13`, or `null`. `today` is the park's own date, like `CalendarDay.date`.

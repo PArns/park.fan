@@ -1,8 +1,8 @@
 /**
  * Parky, the chat assistant: the stream reader (`lib/assistant/sse.ts`), the link check on its
  * answers (`lib/assistant/links.ts`), the rollout gate (`lib/assistant/config.ts`), the post
- * text it reads (`lib/assistant/post-text.ts`) and how bored its face gets
- * (`lib/assistant/parky-boredom.ts`).
+ * text it reads (`lib/assistant/post-text.ts`), how bored its face gets
+ * (`lib/assistant/parky-boredom.ts`) and the opener a chat starts with (`lib/assistant/greeting.ts`).
  */
 
 import assert from 'node:assert/strict';
@@ -19,6 +19,8 @@ import {
   nextBoredomInMs,
   parkyBoredom,
 } from '@/lib/assistant/parky-boredom.ts';
+import { drawGreeting, GREETING_KEYS, sessionGreeting } from '@/lib/assistant/greeting.ts';
+import { pickRandom } from '@/lib/utils/pick-random.ts';
 
 let passed = 0;
 function check(actual, expected, label) {
@@ -271,6 +273,30 @@ check(nextBoredomInMs(ASLEEP_AFTER_MS), null, 'only activity ends sleep');
   globalThis.setTimeout = realTimeout;
   globalThis.clearTimeout = realClear;
   performance.now = realNow;
+  delete globalThis.window;
+}
+for (let i = 0; i < 50; i++) {
+  if (pickRandom(['a', 'b'], 'a') !== 'b') throw new Error('pickRandom returned the excluded item');
+}
+check(pickRandom(['a'], 'a'), 'a', 'a list of one has nothing else to give');
+
+// The opener on a stand-in sessionStorage: kept across a reload, a new chat draws another.
+{
+  const store = new Map();
+  globalThis.window = {
+    sessionStorage: {
+      getItem: (key) => store.get(key) ?? null,
+      setItem: (key, value) => store.set(key, value),
+    },
+  };
+  const first = sessionGreeting();
+  check(GREETING_KEYS.includes(first), true, 'draws one of the openers');
+  check(sessionGreeting(), first, 'a reload keeps the opener');
+  const next = drawGreeting(first);
+  check(next !== first, true, 'a new chat draws another');
+  check(sessionGreeting(), next, 'and keeps that one');
+  store.set('parkfan:assistant-greeting', 'greeting');
+  check(GREETING_KEYS.includes(sessionGreeting()), true, 'a stale key draws afresh');
   delete globalThis.window;
 }
 console.log(`assistant: ${passed} checks passed`);

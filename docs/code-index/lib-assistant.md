@@ -19,6 +19,13 @@ by hand: change the comment in the code and re-run the script. -->
 - `assistantGate` _const_: The gate as a store for `useSyncExternalStore`: hidden on the server and until the decision is made, which takes one cached request per session, so no page's HTML depends on it.
 - Types: `AssistantConfig`
 
+### [`greeting.ts`](../../lib/assistant/greeting.ts)
+
+- `drawGreeting` _function_: Draws an opener for a new chat, never `except`, and keeps it for the session.
+- `sessionGreeting` _function_: This session's opener: the one already shown, so a reload keeps the chat as it was.
+- `GREETING_KEYS` _const_: The openers a chat with Parky starts with, as keys of the `assistant` namespace.
+- Types: `GreetingKey`
+
 ### [`links.ts`](../../lib/assistant/links.ts)
 
 - `directionsHref` _function_: The one link off the site an answer may carry: Google Maps directions to coordinates, exactly in the form the API's `get_directions` writes it. Opened in a new tab; never used for navigation.
