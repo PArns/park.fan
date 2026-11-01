@@ -16,7 +16,8 @@ first paint, so no server markup depends on them. `?assistant=on` shows Parky fo
 ([assistant](../features/assistant.md#rollout)). `?parky=` tries Parky's easter eggs out on one
 page view: `egg` on a park's page says its line and takes a ride whatever the chance, an
 entrance's name (`scurry`, `drop`, `roll`, `peek`, `pop`) makes the button arrive that way, and a
-ride's name (`coaster`, `launch`, `hills`, `tower`) has Parky take it once it has arrived
+ride's name (`coaster`, `launch`, `hills`, `tower`) has Parky take it once it has arrived, as does
+an answer's act (`plan`, `cheer`, `love`, `bell`, `shades`, `lights`)
 ([assistant](../features/assistant.md#how-parky-arrives)).
 
 A flag is a `NEXT_PUBLIC_*` env var, default off, read into a constant so the unused branch
