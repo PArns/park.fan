@@ -105,6 +105,11 @@ move or press, a key, the mouse wheel or a touch.
 | `bored`  | 25 s      | yawns, then every 5–9 s whistles, blows a gum bubble that pops, rolls its eyes, looks around, reads or naps    |
 | `asleep` | 75 s      | eyes fall shut, it breathes slowly under rising Zs, the hat stops; activity wakes it with a "!"                |
 
+The hat, the rides and the dizzy stars reach beyond the drawing's 48-unit box, which only works
+while the `<svg>` element itself is not animated: Safari clips an animated SVG that has a filter,
+or sits under one, to its own box. So the button's bob moves a wrapper around the drawing, and the
+drop shadow stays on the `<svg>`.
+
 Parky's hat is a Ferris wheel with eight coloured cabins, set into its head: the lowest cabin goes
 behind the head, and the A-frame's right leg runs down the head's slope, so the wheel stands in it
 rather than on top. The cabins are circles, so they need no counter-turn to hang straight while the
