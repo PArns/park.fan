@@ -138,11 +138,15 @@ function LauncherButton({
             className="from-primary/40 to-status-operating/40 absolute inset-1 rounded-full bg-gradient-to-br opacity-70 blur-lg transition-opacity group-hover:opacity-100"
           />
           {entrance && <EntranceEffects entrance={entrance} />}
-          <ParkyLogo
-            idle
-            cue={cue}
-            className="parky-bob relative size-14 drop-shadow-[0_6px_14px_rgb(0_0_0/0.35)] sm:size-16"
-          />
+          {/* The bob moves this wrapper, not the drawing: Safari clips an SVG that is animated and
+              has a filter to its own box, and the hat and the rides reach beyond it. */}
+          <span className="parky-bob relative grid size-14 sm:size-16">
+            <ParkyLogo
+              idle
+              cue={cue}
+              className="size-full drop-shadow-[0_6px_14px_rgb(0_0_0/0.35)]"
+            />
+          </span>
         </>
       )}
     </button>
