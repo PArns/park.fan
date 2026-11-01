@@ -107,8 +107,9 @@ The places a park page marks, top to bottom, the closed list of the event's `sec
 - `flushSiteAnalytics` _function_: Sends what is queued now instead of in a second. The page does it on its own when it is hidden; this is for a caller that cannot wait for that, such as a test.
 - `trackSitePageview` _function_: Counts a view of the page now in the address bar. Call once per navigation. The view before it ends here, so the foreground time it has not reported yet is queued ahead of the new pageview, under the path and page type it was opened with.
 - `markPageNotFound` _function_: Declares the page in the address bar a "not found" page, which only that page knows: its pageview becomes `not_found`, whether it was queued already or comes after.
+- `onSiteEvent` _function_: Hears every event the page reports, counted or not (a visitor who opted out, a bot), for what answers what a visitor does: Parky reacts to a few of them.
 - `trackSiteEvent` _function_: Counts one event on the current page. A name in `SiteEventMap` is checked against its properties; any other name (lower case, digits and underscores, two to 48 characters) goes through with any properties of `SiteEventProps`.
-- Types: `SitePageType`, `SearchSurface`, `SearchResultKind`, `SearchPosition`, `NavMenuId`, `SearchBrowseItem`, `PlannerWizardStep`, `PlanItemKind`, `PlanItemAddSource`, `PlanItemRemoveSource`, `PlanOptimizeMode`, `PlannerFitSource`, `PlannerFitLever`, `PlannerUndoSource`, `SharedPlanResult`, `AssistantQuestionKind`, `AssistantOpenSource`, `AssistantLineKind`, `AssistantAnswerResult`, `SiteEventMap`, `SiteEventName`, `AttractionFilterName`
+- Types: `SitePageType`, `SearchSurface`, `SearchResultKind`, `SearchPosition`, `NavMenuId`, `SearchBrowseItem`, `PlannerWizardStep`, `PlanItemKind`, `PlanItemAddSource`, `PlanItemRemoveSource`, `PlanOptimizeMode`, `PlannerFitSource`, `PlannerFitLever`, `PlannerUndoSource`, `SharedPlanResult`, `AssistantQuestionKind`, `AssistantOpenSource`, `AssistantLineKind`, `AssistantAnswerResult`, `SiteEventMap`, `SiteEventName`, `AttractionFilterName`, `SiteEventListener`
 
 ### [`umami.ts`](../../lib/analytics/umami.ts)
 
