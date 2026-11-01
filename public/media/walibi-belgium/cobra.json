@@ -1,0 +1,18 @@
+{
+  "park": "walibi-belgium",
+  "ride": "cobra",
+  "area": "Thrills",
+  "tags": ["day", "photo", "ride"],
+  "credit": {
+    "author": "Patrick",
+    "license": "all-rights-reserved",
+    "source": "own",
+    "year": 2026
+  },
+  "shotAt": "2026-11-01",
+  "gps": {
+    "lat": 50.700344,
+    "lon": 4.593806
+  },
+  "review": true
+}
