@@ -234,9 +234,14 @@ const CIRCLE_WINDOW_MS = 1_500;
 /** Circles wider than this, in px from its centre, are the visitor's business, not Parky's. */
 const CIRCLE_RADIUS = 160;
 
+/** Where the pointer was last seen, shared by every Parky on the page, so a new one looks at once. */
+let lastPointer: { x: number; y: number } | null = null;
+
 /**
  * The pupils' offset towards the pointer, so Parky looks at the mouse. Only for a fine pointer and
- * without reduced motion; one frame at most per pointer move. Two easter eggs ride along: the
+ * without reduced motion; one frame at most per pointer move. A Parky that appears looks where the
+ * pointer was last seen, and `pointerover`, which the browser sends when the page moves under a
+ * still pointer, aims him without waiting for the mouse to move. Two easter eggs ride along: the
  * pointer on Parky's nose makes it squint at it (`cross`), and the pointer circling it fast, two
  * turns inside 1.5 s, calls `onDizzy`.
  */
@@ -253,30 +258,53 @@ function useGaze(svg: React.RefObject<SVGSVGElement | null>, onDizzy?: () => voi
     // The turning so far: the last angle, and each step's signed change with its time.
     let angle: number | null = null;
     let steps: { at: number; turn: number }[] = [];
-    const onMove = (event: PointerEvent) => {
+    /** Turns the pupils towards a point; its distance from Parky's middle, or null unmeasured. */
+    const aim = (pointX: number, pointY: number): { dx: number; dy: number } | null => {
+      const box = svg.current?.getBoundingClientRect();
+      if (!box || box.width === 0) return null;
+      const dx = pointX - (box.left + box.width / 2);
+      const dy = pointY - (box.top + box.height / 2);
+      const distance = Math.hypot(dx, dy) || 1;
+      const unit = box.width / 48;
+      const nose = Math.hypot(
+        pointX - (box.left + NOSE.x * unit),
+        pointY - (box.top + NOSE.y * unit)
+      );
+      if (nose <= NOSE.reach * unit) {
+        setGaze({ ...CROSS_GAZE, cross: true });
+      } else {
+        const pull = Math.min(1, distance / 240);
+        setGaze({
+          x: (dx / distance) * PUPIL_REACH * pull,
+          y: (dy / distance) * PUPIL_REACH * pull,
+          cross: false,
+        });
+      }
+      return { dx, dy };
+    };
+    const seen = lastPointer;
+    if (seen)
+      frame = requestAnimationFrame(() => {
+        frame = 0;
+        aim(seen.x, seen.y);
+      });
+    const onOver = (event: PointerEvent) => {
+      lastPointer = { x: event.clientX, y: event.clientY };
       if (frame) return;
       frame = requestAnimationFrame(() => {
         frame = 0;
-        const box = svg.current?.getBoundingClientRect();
-        if (!box || box.width === 0) return;
-        const dx = event.clientX - (box.left + box.width / 2);
-        const dy = event.clientY - (box.top + box.height / 2);
+        aim(event.clientX, event.clientY);
+      });
+    };
+    const onMove = (event: PointerEvent) => {
+      lastPointer = { x: event.clientX, y: event.clientY };
+      if (frame) return;
+      frame = requestAnimationFrame(() => {
+        frame = 0;
+        const aimed = aim(event.clientX, event.clientY);
+        if (!aimed) return;
+        const { dx, dy } = aimed;
         const distance = Math.hypot(dx, dy) || 1;
-        const unit = box.width / 48;
-        const nose = Math.hypot(
-          event.clientX - (box.left + NOSE.x * unit),
-          event.clientY - (box.top + NOSE.y * unit)
-        );
-        if (nose <= NOSE.reach * unit) {
-          setGaze({ ...CROSS_GAZE, cross: true });
-        } else {
-          const pull = Math.min(1, distance / 240);
-          setGaze({
-            x: (dx / distance) * PUPIL_REACH * pull,
-            y: (dy / distance) * PUPIL_REACH * pull,
-            cross: false,
-          });
-        }
 
         if (!dizzy.current || distance > CIRCLE_RADIUS) {
           angle = null;
@@ -302,8 +330,10 @@ function useGaze(svg: React.RefObject<SVGSVGElement | null>, onDizzy?: () => voi
       });
     };
     window.addEventListener('pointermove', onMove, { passive: true });
+    window.addEventListener('pointerover', onOver, { passive: true });
     return () => {
       window.removeEventListener('pointermove', onMove);
+      window.removeEventListener('pointerover', onOver);
       cancelAnimationFrame(frame);
     };
   }, [svg]);
@@ -435,12 +465,17 @@ function useSearchAlong(enabled: boolean) {
  * What Parky is busy with, each with its own look: `thinking` (waiting for the first word) gazes
  * up beside thought bubbles, `looking` (a lookup is running) reads in a little book, its eyes
  * following the lines and a page turning now and then, `talking` (the answer is written) moves its
- * mouth and nods.
+ * mouth and nods, `scared` (flung up the screen by a fast scroll) stares down at the drop with
+ * its mouth open, trembling, `squashed` (pressed flat by a fast scroll up) screws its eyes shut
+ * and grits its teeth, with a puff of impact at each side.
  */
-export type ParkyMood = 'thinking' | 'looking' | 'talking';
+export type ParkyMood = 'thinking' | 'looking' | 'talking' | 'scared' | 'squashed';
 
 /** Where the pupils rest while Parky reads: down, into the book. */
 const READING_GAZE = { x: 0, y: 2.8 };
+
+/** Where the pupils go while Parky hangs high up: straight down, at the drop. */
+const SCARED_GAZE = { x: 0, y: 2.6 };
 
 /** Where the pupils rest while Parky ponders: up and to the side. */
 const PONDER_GAZE = { x: 1.8, y: -2.4 };
@@ -508,14 +543,16 @@ export function ParkyLogo({
       ? PONDER_GAZE
       : state === 'looking' || act === 'read' || act === 'plan'
         ? READING_GAZE
-        : act === 'bell'
-          ? BELL_GAZE
-          : searching
-            ? SEARCH_GAZE
-            : mouseGaze;
+        : state === 'scared'
+          ? SCARED_GAZE
+          : act === 'bell'
+            ? BELL_GAZE
+            : searching
+              ? SEARCH_GAZE
+              : mouseGaze;
   const squint = cross && gaze === mouseGaze;
   // Heart eyes and the cheer's happy squint take the place of the open eyes.
-  const eyesOpen = !asleep && act !== 'love' && act !== 'cheer';
+  const eyesOpen = !asleep && act !== 'love' && act !== 'cheer' && state !== 'squashed';
   const sleeping = asleep || act === 'nap';
   const ride =
     act !== null && (RIDES as readonly string[]).includes(act) ? (act as ParkyRide) : null;
@@ -804,13 +841,17 @@ export function ParkyLogo({
             {EYES.map((x) => (
               <g key={x} className="parky-eye">
                 <ellipse cx={x} cy="22.5" rx="5.4" ry="6.2" fill="white" />
-                {/* A style, not the attribute, so the pupils ease to a new place. */}
+                {/* Properties, not the attribute, so the pupils ease to a new place and an act
+                    that moves them itself can draw the gaze back to the middle. */}
                 <g
                   className="parky-gaze"
-                  style={{
-                    // Squinting at its nose, each pupil turns in towards the middle.
-                    transform: `translate(${(squint ? (x < 24 ? gaze.x : -gaze.x) : gaze.x).toFixed(2)}px, ${gaze.y.toFixed(2)}px)`,
-                  }}
+                  style={
+                    {
+                      // Squinting at its nose, each pupil turns in towards the middle.
+                      '--gaze-x': `${(squint ? (x < 24 ? gaze.x : -gaze.x) : gaze.x).toFixed(2)}px`,
+                      '--gaze-y': `${gaze.y.toFixed(2)}px`,
+                    } as React.CSSProperties
+                  }
                 >
                   <g className="parky-pupils">
                     <circle cx={x} cy="23" r="3" fill={ink} />
@@ -842,6 +883,22 @@ export function ParkyLogo({
             ))}
           </g>
         )}
+        {state === 'squashed' && (
+          // Pressed flat: the eyes screwed shut into > <, a puff of impact out at each side.
+          <g
+            fill="none"
+            stroke={ink}
+            strokeWidth="1.9"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <path d="M13.6 20.2 19.6 23l-6 2.8M34.4 20.2 28.4 23l6 2.8" />
+            <path
+              d="M4.2 37.5 1 35.8M3.4 41.6H0M43.8 37.5l3.2-1.7M44.6 41.6H48"
+              strokeOpacity=".5"
+            />
+          </g>
+        )}
         {act === 'cheer' && (
           // A happy squint, the eyes turned up into arcs.
           <path
@@ -869,7 +926,22 @@ export function ParkyLogo({
         )}
         <ellipse cx="10.8" cy="31" rx="2.4" ry="1.4" fill="oklch(0.78 0.12 15)" opacity=".7" />
         <ellipse cx="37.2" cy="31" rx="2.4" ry="1.4" fill="oklch(0.78 0.12 15)" opacity=".7" />
-        {state === 'talking' ? (
+        {state === 'squashed' ? (
+          // Teeth gritted: a wavy line across a wide mouth.
+          <path
+            d="M18.6 33.6q1.35-1.6 2.7 0t2.7 0 2.7 0 2.7 0"
+            fill="none"
+            stroke={ink}
+            strokeWidth="1.7"
+            strokeLinecap="round"
+          />
+        ) : state === 'scared' ? (
+          // Agape: a round open mouth, the tongue showing at its bottom.
+          <g>
+            <ellipse cx="24" cy="34" rx="2.4" ry="3" fill={ink} />
+            <ellipse cx="24" cy="35.9" rx="1.5" ry=".8" fill="oklch(0.7 0.15 15)" />
+          </g>
+        ) : state === 'talking' ? (
           <ellipse className="parky-mouth" cx="24" cy="33.5" rx="3" ry="2.2" fill={ink} />
         ) : searching ? (
           // Concentrating: the mouth pulled to one side, the tip of the tongue out.

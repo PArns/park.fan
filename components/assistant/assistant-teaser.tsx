@@ -46,6 +46,7 @@ import { reactionTo, type ParkyReaction } from '@/lib/assistant/reactions';
 import { usePageLocked } from '@/lib/hooks/use-page-locked';
 import type { ParkyCue } from './parky-logo';
 import { PARKY_LAYER } from './parky-layer';
+import { PARKY_FALL_MS, type ParkyFling } from '@/lib/assistant/use-scroll-fling';
 
 const VISIBLE_MS = 7_000;
 const TEASER_KEYS = [
@@ -93,6 +94,18 @@ const PARK_KEYS = ['parkLine1', 'parkLine2', 'parkLine3', 'parkLine4'] as const;
 const PARK_LINE_DELAY_MS = 5_000;
 /** The coaster ride follows the line once it has been read. */
 const RIDE_AFTER_MS = 1_200;
+/** What Parky says while a fast scroll holds him up at the top: a drop tower's big moment. */
+const HANG_KEYS = ['flingHang1', 'flingHang2', 'flingHang3', 'flingHang4'] as const;
+/** What he says once he has been flung about too often. */
+const ROUGH_KEYS = ['flingRough1', 'flingRough2', 'flingRough3', 'flingRough4'] as const;
+/** That many flings inside the window are too many. */
+const ROUGH_FLINGS = 3;
+const ROUGH_WINDOW_MS = 30_000;
+/** Most hangs get a line, at most one fling line in this long, never the same one twice running. */
+const HANG_CHANCE = 0.75;
+const FLING_LINE_GAP_MS = 20_000;
+/** A beat after he is pressed flat; carried up, only once he has hung at the top a while. */
+const FLING_LINE_AFTER_MS = { up: 150, down: 500 } as const;
 /**
  * Parky answers what the visitor did with its act at once and its line a beat later, once a dialog
  * the action opened (the planner's wizard) has locked the page.
@@ -125,6 +138,7 @@ export function AssistantTeaser({
   onAct,
   entering = false,
   arrival = null,
+  fling = null,
 }: {
   onOpen: () => void;
   /** Parky should play this act now: a ride, or its answer to something the visitor did. */
@@ -133,6 +147,8 @@ export function AssistantTeaser({
   entering?: boolean;
   /** The entrance Parky has just made, whose line is then the session's first. */
   arrival?: ParkyEntrance | null;
+  /** A fast scroll moving Parky (`useScrollFling`): the bubble goes up and down with him. */
+  fling?: ParkyFling | null;
 }) {
   const t = useTranslations('assistant');
   const pathname = usePathname();
@@ -291,6 +307,35 @@ export function AssistantTeaser({
       clearTimeout(timer);
     };
   }, [answer]);
+  // Flung about, Parky says so: the third fling within half a minute is too rough, and up at the
+  // top he mostly quotes a drop tower. Never over a search or a dialog, nor once lines were closed.
+  const flings = useRef<number[]>([]);
+  const flingLine = useRef<{ key: string; at: number } | null>(null);
+  useEffect(() => {
+    if (!fling) return;
+    // Counted at once: a fling too short for its line still makes the next one rough.
+    const at = Date.now();
+    flings.current = [...flings.current.filter((then) => at - then < ROUGH_WINDOW_MS), at];
+    // Cleared when he lets go first, so a line never starts on his way up or down.
+    const timer = setTimeout(() => {
+      const now = Date.now();
+      const last = flingLine.current;
+      if (linesMuted() || latest.current.covered) return;
+      if (last && now - last.at < FLING_LINE_GAP_MS) return;
+      const kind =
+        flings.current.length >= ROUGH_FLINGS
+          ? 'rough'
+          : fling === 'down' && Math.random() < HANG_CHANCE
+            ? 'hang'
+            : null;
+      if (!kind) return;
+      if (kind === 'rough') flings.current = [];
+      const key = pickRandom<string>(kind === 'rough' ? ROUGH_KEYS : HANG_KEYS, last?.key);
+      flingLine.current = { key, at: now };
+      setLine({ text: t(key), kind });
+    }, FLING_LINE_AFTER_MS[fling]);
+    return () => clearTimeout(timer);
+  }, [fling, t]);
   // A held answer is said once nothing is in its way, unless it has gone stale meanwhile.
   const blocked = covered || entering;
   useEffect(() => {
@@ -308,9 +353,9 @@ export function AssistantTeaser({
       // Hidden while it fades out: its buttons are no longer there to press or tab to.
       inert={!line}
       className={cn(
-        // The bubble stands up beside Parky's head and its tail points at his mouth: a 56 px button
-        // on a phone, 64 px from `sm`, both 1rem from the corner.
-        'fixed right-[4.75rem] bottom-[calc(max(1rem,env(safe-area-inset-bottom))+2.25rem)] max-w-[min(15rem,calc(100vw-6rem))] sm:right-[5.25rem] sm:bottom-[calc(max(1rem,env(safe-area-inset-bottom))+2.75rem)]',
+        // The tail, 1rem above the bubble's foot, sits at Parky's mouth (y 33.5 of 48): 17 px up a
+        // 56 px button on a phone, 19 px up a 64 px one from `sm`, both 1rem from the corner.
+        'fixed right-[4.75rem] bottom-[max(1rem,env(safe-area-inset-bottom))] max-w-[min(15rem,calc(100vw-6rem))] sm:right-[5.25rem] sm:bottom-[calc(max(1rem,env(safe-area-inset-bottom))+0.25rem)]',
         PARKY_LAYER,
         'planner-wide:right-[calc(var(--planner-inset,0px)+5.25rem)]',
         'origin-[100%_75%] transition-[opacity,transform] duration-300 ease-out motion-reduce:transition-none',
@@ -321,7 +366,12 @@ export function AssistantTeaser({
     >
       {/* White with black text in either theme, as a comic's speech bubble; the ✕ before the line. */}
       {said && (
-        <div className="relative flex items-start gap-1 rounded-2xl border border-black/10 bg-white py-2 pr-3 pl-1.5 text-sm text-neutral-900 shadow-xl">
+        <div
+          // Up with Parky when a fast scroll carries him, and back down with him.
+          data-fling={fling === 'down' ? fling : undefined}
+          style={{ '--parky-fall': `${PARKY_FALL_MS}ms` } as React.CSSProperties}
+          className="parky-hang relative flex items-start gap-1 rounded-2xl border border-black/10 bg-white py-2 pr-3 pl-1.5 text-sm text-neutral-900 shadow-xl"
+        >
           <button
             type="button"
             onClick={() => {

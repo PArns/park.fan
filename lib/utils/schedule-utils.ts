@@ -104,20 +104,22 @@ export interface ParkOpeningCountdownStrings {
 
 /**
  * How far off {@link nextParkOpening} is: „in 1:30 Stunden" for an opening today, „in 45 Minuten"
- * inside the last hour, „in 2 Tagen" for a later day. Days are the park's calendar days, so the
- * count agrees with the date {@link formatParkOpening} prints beside it. Minutes round up, so the
- * last minute before the opening reads „in 1 Minute", never „in 0".
+ * inside the last hour, „morgen" (`inDays(1)`), the weekday („Samstag") within the coming week and
+ * „in 9 Tagen" beyond it. Days are the park's calendar days, so the count agrees with the date
+ * {@link formatParkOpening} prints beside it. Minutes round up, so the last minute before the
+ * opening reads „in 1 Minute", never „in 0".
  */
 export function formatParkOpeningCountdown(
   opening: ParkOpening,
   nowMs: number,
   strings: ParkOpeningCountdownStrings,
-  timeZone: string
+  timeZone: string,
+  locale: string
 ): string {
   if (!opening.today) {
-    return strings.inDays(
-      daysBetween(parkDayOf(nowMs, timeZone), parkDayOf(new Date(opening.at), timeZone))
-    );
+    const days = daysBetween(parkDayOf(nowMs, timeZone), parkDayOf(new Date(opening.at), timeZone));
+    if (days < 2 || days > 6) return strings.inDays(days);
+    return getDateTimeFormat(locale, { weekday: 'long', timeZone }).format(new Date(opening.at));
   }
   const minutes = Math.ceil((new Date(opening.at).getTime() - nowMs) / 60_000);
   if (minutes < 60) return strings.inMinutes(minutes);

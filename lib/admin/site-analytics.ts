@@ -991,6 +991,8 @@ const PLANNER_VALUE_LABEL: Record<string, Record<string, string>> = {
     theme: 'Hell oder dunkel',
     install: 'App installiert',
     hello: 'Das bin ich (Startseite)',
+    hang: 'Oben hängen (schnell gescrollt)',
+    rough: 'Zu oft herumgeworfen',
   },
   entrance: {
     scurry: 'Huschen',

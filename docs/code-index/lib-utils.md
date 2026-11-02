@@ -416,7 +416,7 @@ Route guards for the `/[locale]/...` tree.
 - `isTodayAhead` _function_: Whether today can still be visited at `nowMs`: today's hours have not closed yet.
 - `nextParkOpening` _function_: The next opening a shut park has ahead of `nowMs`: today's, while it is still to come, else the next operating day's.
 - `formatParkOpening` _function_: `nextParkOpening` in words: „Öffnet um 09:00 Uhr" today, „Öffnet am 15. März" on a later day. `opensAt` is `parks.opensAt` with the clock time filled in, `opensOn` the `parks.opensOn` string.
-- `formatParkOpeningCountdown` _function_: How far off `nextParkOpening` is: „in 1:30 Stunden" for an opening today, „in 45 Minuten" inside the last hour, „in 2 Tagen" for a later day.
+- `formatParkOpeningCountdown` _function_: How far off `nextParkOpening` is: „in 1:30 Stunden" for an opening today, „in 45 Minuten" inside the last hour, „morgen" (`inDays(1)`), the weekday („Samstag") within the coming week and „in 9 Tagen" beyond it.
 - `getScheduleMessage` _function_: The schedule line for a park card (opening soon, closing at, off season), drawn by `ParkCardScheduleFooter`.
 - Types: `ScheduleSummary`, `ParkOpening`, `ParkOpeningCountdownStrings`
 
