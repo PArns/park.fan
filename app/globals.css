@@ -1365,13 +1365,13 @@
   transform-origin: left center;
   opacity: 0;
 }
-.parky-eyes,
-.parky-eye,
-.parky-mouth,
 /* Where the pupils look (`useGaze`, a mood or an act), set by `parky-logo.tsx`. */
 .parky-gaze {
   transform: translate(var(--gaze-x, 0), var(--gaze-y, 0));
 }
+.parky-eyes,
+.parky-eye,
+.parky-mouth,
 .parky-purse,
 .parky-wheel,
 .parky-body,

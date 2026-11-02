@@ -58,7 +58,7 @@ openingstijden en het weer. Wil hij je een attractie of een park laten zien,
 dan zet hij die als kaart in de chat, met status, drukte en wachttijd. Met één
 tik op de kaart kom je op de pagina van de attractie of het park.
 
-![Parky in de chat op een telefoon. Op de vraag naar de wachtrij bij Taron noemt hij de wachttijd en zet eronder een kaart van Taron, open en met normale drukte. | Eerst Taron, en de volgende vraag gaat al over wat er verder snel gaat.](/parky/nl/chat.webp?align=right)
+![Parky in de chat op een telefoon. Op de vraag naar de wachtrij bij Taron noemt hij de wachttijd en zet eronder een kaart van Taron, open en met normale drukte. | Eerst Taron, en de volgende vraag gaat al over wat er verder snel gaat. | right](/parky/nl/chat.webp)
 
 Een paar vragen om mee te beginnen:
 
@@ -96,7 +96,7 @@ sorteert hij je dag. Onder zijn antwoord staat dan wat hij gedaan heeft,
 bijvoorbeeld “In je dagplanner” of “Dag wordt gesorteerd”. Daarna verschuif en
 deel je het plan zoals elk ander.
 
-![Parky in de chat op een telefoon. Gevraagd naar een zaterdag in Europa-Park met de grote achtbanen, antwoordt hij dat Silver Star, Blue Fire, Voltron Nevera en Wodan in de dagplanning staan en dat de dag met Voltron moet beginnen. Daaronder een kaart van Europa-Park met openingstijden en de wachttijden van de attracties. | Vier grote achtbanen op één zaterdag. Of je benen na Wodan nog meewerken, plant Parky niet in.](/parky/nl/plan.webp?align=right)
+![Parky in de chat op een telefoon. Gevraagd naar een zaterdag in Europa-Park met de grote achtbanen, antwoordt hij dat Silver Star, Blue Fire, Voltron Nevera en Wodan in de dagplanning staan en dat de dag met Voltron moet beginnen. Daaronder een kaart van Europa-Park met openingstijden en de wachttijden van de attracties. | Vier grote achtbanen op één zaterdag. Of je benen na Wodan nog meewerken, plant Parky niet in. | right](/parky/nl/plan.webp)
 
 Zo begin je een plan:
 
@@ -115,7 +115,7 @@ niet.
 In de zoekfunctie houdt Parky rechtsonder een vergrootglas voor zijn oog. De
 resultaten komen zoals altijd, hij kijkt alleen heel geconcentreerd mee.
 
-![De zoekopdracht naar Taron op park.fan, met de attractie, drie gidsen en één nieuwsbericht als resultaat. Rechtsonder kijkt Parky door een vergrootglas. | Taron in de zoekfunctie, rechtsonder Parky met zijn vergrootglas.](/parky/nl/search.webp?align=right)
+![De zoekopdracht naar Taron op park.fan, met de attractie, drie gidsen en één nieuwsbericht als resultaat. Rechtsonder kijkt Parky door een vergrootglas. | Taron in de zoekfunctie, rechtsonder Parky met zijn vergrootglas. | right](/parky/nl/search.webp)
 
 ## Parky tussen twee vragen
 

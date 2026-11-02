@@ -58,7 +58,7 @@ die Wartezeiten von jetzt, die Prognose für die nächsten Stunden und Tage, die
 legt er sie als Karte in den Chat, mit Status, Andrang und Wartezeit. Mit einem
 Tipp auf die Karte kommst du auf die Seite der Bahn oder des Parks.
 
-![Parky im Chat auf dem Handy. Auf die Frage nach der Warteschlange an Taron nennt er die Wartezeit und legt darunter eine Karte von Taron mit „Geöffnet“ und Andrang „Normal“. | Auf Taron folgt gleich die Frage, was sonst noch schnell geht.](/parky/de/chat.webp?align=right)
+![Parky im Chat auf dem Handy. Auf die Frage nach der Warteschlange an Taron nennt er die Wartezeit und legt darunter eine Karte von Taron mit „Geöffnet“ und Andrang „Normal“. | Auf Taron folgt gleich die Frage, was sonst noch schnell geht. | right](/parky/de/chat.webp)
 
 Ein paar Fragen, mit denen du anfangen kannst:
 
@@ -97,7 +97,7 @@ als eigene Blöcke dazwischen und sortiert dir den Tag. Unter seiner Antwort
 steht dann, was er getan hat, etwa „Im Tagesplaner“ oder „Tag wird sortiert“.
 Danach verschiebst und teilst du den Plan wie jeden anderen.
 
-![Parky im Chat auf dem Handy. Auf „Plan mir Samstag im Europa-Park mit den großen Achterbahnen“ antwortet er, dass Silver Star, Blue Fire, Voltron Nevera und Wodan im Tagesplan stehen und der Tag mit Voltron beginnen soll. Darunter eine Karte des Europa-Parks mit Öffnungszeit und drei Achterbahnen. | Vier große Achterbahnen an einem Samstag. Ob deine Beine nach Wodan noch mitmachen, plant Parky nicht ein.](/parky/de/plan.webp?align=right)
+![Parky im Chat auf dem Handy. Auf „Plan mir Samstag im Europa-Park mit den großen Achterbahnen“ antwortet er, dass Silver Star, Blue Fire, Voltron Nevera und Wodan im Tagesplan stehen und der Tag mit Voltron beginnen soll. Darunter eine Karte des Europa-Parks mit Öffnungszeit und drei Achterbahnen. | Vier große Achterbahnen an einem Samstag. Ob deine Beine nach Wodan noch mitmachen, plant Parky nicht ein. | right](/parky/de/plan.webp)
 
 So fängst du einen Plan an:
 
@@ -116,7 +116,7 @@ kennt Parky nicht.
 In der Suche hält Parky unten rechts eine Lupe vors Auge. Die Treffer kommen
 wie bisher, er schaut dabei nur sehr konzentriert zu.
 
-![Die Suche nach Taron auf park.fan, mit der Bahn, drei Guides und einer News als Ergebnis. Unten rechts schaut Parky durch eine Lupe. | Taron in der Suche, unten rechts Parky mit Lupe.](/parky/de/search.webp?align=right)
+![Die Suche nach Taron auf park.fan, mit der Bahn, drei Guides und einer News als Ergebnis. Unten rechts schaut Parky durch eine Lupe. | Taron in der Suche, unten rechts Parky mit Lupe. | right](/parky/de/search.webp)
 
 ## Parky zwischen zwei Fragen
 

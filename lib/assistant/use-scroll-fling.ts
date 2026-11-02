@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 
 /** Pixels per millisecond to throw Parky: a fling or a held key, not a turn of the wheel. */
-const FLING_SPEED = 5;
+const FLING_SPEED = 6;
 /** Once thrown he holds on while the page still moves this fast, slower scrolling included. */
 const HOLD_SPEED = 0.5;
 /** Slower than that for this long and he lets go. */
