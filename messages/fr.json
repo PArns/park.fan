@@ -430,6 +430,7 @@
     "howto": "Comprendre les temps d’attente",
     "planner": "Planificateur",
     "fancast": "Fancast",
+    "parky": "Parky",
     "bestTime": "Meilleure période",
     "glossaryLink": "Dictionnaire",
     "changelog": "Journal des versions (anglais)",
@@ -3032,6 +3033,10 @@
     },
     "blog": {
       "kicker": "park.fan · Blog"
+    },
+    "parky": {
+      "kicker": "park.fan · Assistant de chat",
+      "action": "Demander à Parky"
     }
   },
   "compare": {
@@ -3194,5 +3199,103 @@
     "themeLight3": "La lumière du jour ! Parfait pour le parc.",
     "install1": "Maintenant, j’habite sur ton écran d’accueil !",
     "install2": "Installé ! Désormais, je suis à portée de doigt."
+  },
+  "parkyPage": {
+    "metaTitle": "Parky, l’assistant de chat de park.fan",
+    "metaDescription": "Demande à Parky les temps d’attente, les prévisions et le jour le plus calme pour ta visite. Il cherche dans les données en direct de park.fan et ajoute les attractions directement à ton planning.",
+    "title": "Parky, ton compagnon pour une journée au parc",
+    "lead": "Demande-lui les temps d’attente, les prévisions et le jour le plus calme. Parky cherche dans les données en direct de park.fan et prépare ta journée avec toi.",
+    "intro": "Parky habite en bas à droite de park.fan, dans la bulle ronde avec une grande roue sur la tête. Touche-la et écris-lui comme à un ami qui connaît les parcs d’attractions par cœur.",
+    "ask": "Demander à Parky maintenant",
+    "off": "Parky fait une pause en ce moment. Repasse plus tard.",
+    "shotLabel": "Capture d’écran",
+    "examplesLabel": "Par exemple",
+    "chapters": {
+      "ask": {
+        "kicker": "Demande, tout simplement",
+        "title": "Temps d’attente, prévisions, horaires",
+        "body": "Pour chaque réponse, Parky regarde dans les mêmes données que tu vois sur park.fan : les temps d’attente du moment, la prévision pour les prochaines heures et les prochains jours, les horaires et la météo. Il te montre l’attraction ou le parc sous forme de carte, d’où tu continues d’un clic.",
+        "alt": "Parky dans le chat sur un téléphone : il donne le temps d’attente de Taron et les files les plus courtes de Phantasialand.",
+        "examples": [
+          "Y aura-t-il du monde samedi à Phantasialand ?",
+          "Quelle attraction d’Europa-Park a l’attente la plus courte en ce moment ?",
+          "Va-t-il pleuvoir cet après-midi au Movie Park ?"
+        ]
+      },
+      "plan": {
+        "kicker": "Il met la main à la pâte",
+        "title": "Parky prépare ta journée avec toi",
+        "body": "Dis à Parky quel parc tu veux visiter, quand, et ce qui compte pour toi. Il ajoute les attractions à ton planning et te dit par où commencer. Ensuite, tu déplaces et partages le planning comme d’habitude.",
+        "alt": "Parky a ajouté Silver Star, Blue Fire, Voltron Nevera et Wodan au planning d’Europa-Park.",
+        "examples": [
+          "Planifie-moi une journée à Europa-Park avec des enfants.",
+          "Quand y a-t-il le moins de monde à Efteling en décembre ?"
+        ]
+      },
+      "search": {
+        "kicker": "Il cherche avec toi",
+        "title": "La loupe à la main",
+        "body": "Quand tu ouvres la recherche, Parky sort sa loupe et cherche avec toi. À chaque touche, il se penche un peu, et si la recherche ne trouve rien, un point d’interrogation apparaît au-dessus de lui.",
+        "alt": "La recherche de Taron sur park.fan, avec Parky qui regarde à travers sa loupe en bas à droite."
+      },
+      "character": {
+        "kicker": "Plein de caractère",
+        "title": "Plus qu’une fenêtre de chat",
+        "body": "Parky fait des montagnes russes, bâille quand il ne se passe rien et a encore plein d’autres tours dans son sac. Il t’en montre quelques-uns ici, le reste, tu le découvriras en te baladant sur le site."
+      },
+      "data": {
+        "kicker": "Tes données",
+        "title": "Ce que deviennent tes questions",
+        "body": "Parky répond avec le modèle de langage Claude d’Anthropic. Nous enregistrons tes questions sans adresse IP et les supprimons après 90 jours. Parky ne voit ta position que si tu la partages dans le chat.",
+        "link": "Tout le reste se trouve dans la politique de confidentialité."
+      }
+    },
+    "gallery": {
+      "coaster": "Looping",
+      "love": "Nouveau favori",
+      "shades": "Lumière allumée",
+      "nap": "Petite sieste",
+      "gum": "Chewing-gum",
+      "more": "Et bien plus …"
+    },
+    "faq": {
+      "kicker": "En bref",
+      "title": "Questions fréquentes sur Parky",
+      "items": [
+        {
+          "question": "Parky est-il payant ?",
+          "answer": "Non. Parky est gratuit et ne demande aucun compte, comme le reste de park.fan."
+        },
+        {
+          "question": "D’où viennent les réponses de Parky ?",
+          "answer": "Des données en direct de park.fan : temps d’attente, horaires, prévisions, météo et nos articles. Pour chaque question, il cherche à nouveau au lieu de retenir les choses."
+        },
+        {
+          "question": "Parky peut-il se tromper ?",
+          "answer": "Oui. Un modèle de langage formule les réponses, et il se trompe parfois. Les chiffres sur les cartes du chat viennent directement de park.fan. Si une réponse te semble bizarre, mets-lui un pouce vers le bas et nous y jetterons un œil."
+        },
+        {
+          "question": "Pourquoi je ne vois pas Parky partout ?",
+          "answer": "Parky n’est pas encore activé pour tous les visiteurs. Le bouton de cette page le fait venir pour ta visite."
+        },
+        {
+          "question": "Quelles langues Parky parle-t-il ?",
+          "answer": "Toutes les langues de park.fan : allemand, anglais, néerlandais, français, espagnol et italien. Il répond dans la langue de la page sur laquelle tu te trouves."
+        },
+        {
+          "question": "Puis-je rendre Parky plus discret ?",
+          "answer": "Oui. Touche le ✕ dans l’une de ses bulles et il se tait jusqu’à la fin de ta visite. Si « réduire les animations » est activé dans ton système, ses animations restent désactivées."
+        }
+      ]
+    },
+    "next": {
+      "title": "Et maintenant ?",
+      "ask": "Demander à Parky",
+      "askDescription": "En bas à droite, ici même sur cette page.",
+      "planner": "Vers le planificateur",
+      "plannerDescription": "Prépare toi-même ta journée au parc, attraction par attraction.",
+      "parks": "Tous les parcs",
+      "parksDescription": "Temps d’attente et prévisions pour chaque parc."
+    }
   }
 }

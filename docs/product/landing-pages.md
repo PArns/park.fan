@@ -22,7 +22,7 @@ product meets the need and no page addresses it) and
 ## 1. Three kinds of landing page
 
 **Hub** (a topic or audience across all parks: best time to visit, trip planner, how park.fan
-works, Fancast, blog index), **tool page** (the page is a tool, a list or a form: contribute, news
+works, Fancast, Parky, blog index), **tool page** (the page is a tool, a list or a form: contribute, news
 index, compare, glossary index, changelog) and **park audience page** (one audience × one park,
 under the park's URL: with kids, average wait times). The table of pages and heads is in the
 [rule](../rules/a-landing-page-has-one-anatomy.md); the head components are

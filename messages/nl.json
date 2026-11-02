@@ -430,6 +430,7 @@
     "howto": "Wachttijden begrijpen",
     "planner": "Dagplanner",
     "fancast": "Fancast",
+    "parky": "Parky",
     "bestTime": "Beste bezoektijd",
     "glossaryLink": "Woordenboek",
     "changelog": "Changelog (Engels)",
@@ -3032,6 +3033,10 @@
     },
     "blog": {
       "kicker": "park.fan · Blog"
+    },
+    "parky": {
+      "kicker": "park.fan · Chatassistent",
+      "action": "Vraag het Parky"
     }
   },
   "compare": {
@@ -3194,5 +3199,103 @@
     "themeLight3": "Daglicht! Perfect parkweer.",
     "install1": "Nu woon ik op je beginscherm!",
     "install2": "Geïnstalleerd! Vanaf nu ben ik maar één tik verwijderd."
+  },
+  "parkyPage": {
+    "metaTitle": "Parky, de chatassistent van park.fan",
+    "metaDescription": "Vraag Parky naar wachttijden, voorspellingen en de rustigste bezoekdag. Hij zoekt het op in de live data van park.fan en zet attracties meteen in je dagplanning.",
+    "title": "Parky, je maatje voor een dag in het park",
+    "lead": "Vraag hem naar wachttijden, voorspellingen en de rustigste dag. Parky zoekt het op in de live data van park.fan en plant je dag mee.",
+    "intro": "Parky woont rechtsonder op park.fan, in de ronde tekstballon met een reuzenrad op zijn hoofd. Tik hem aan en schrijf hem zoals je een vriend schrijft die alles van pretparken weet.",
+    "ask": "Vraag het Parky nu",
+    "off": "Parky houdt even pauze. Kom later nog eens terug.",
+    "shotLabel": "Screenshot",
+    "examplesLabel": "Bijvoorbeeld",
+    "chapters": {
+      "ask": {
+        "kicker": "Vraag het gewoon",
+        "title": "Wachttijden, voorspellingen, openingstijden",
+        "body": "Voor elk antwoord kijkt Parky in dezelfde data die je op park.fan ziet: de wachttijden van nu, de voorspelling voor de komende uren en dagen, openingstijden en het weer. Hij laat je de attractie of het park zien als kaart, waarop je meteen doorklikt.",
+        "alt": "Parky in de chat op een telefoon: hij noemt de wachttijd van Taron en de kortste wachtrijen in Phantasialand.",
+        "examples": [
+          "Hoe druk wordt het zaterdag in Phantasialand?",
+          "Welke attractie in Europa-Park heeft nu de kortste wachttijd?",
+          "Gaat het vanmiddag regenen in Movie Park?"
+        ]
+      },
+      "plan": {
+        "kicker": "Helpt een handje",
+        "title": "Parky plant je dag mee",
+        "body": "Vertel Parky wanneer je naar welk park wilt en wat je belangrijk vindt. Hij zet de attracties in je dagplanning en zegt waar je het best begint. Daarna verschuif en deel je de planning zoals altijd.",
+        "alt": "Parky heeft Silver Star, Blue Fire, Voltron Nevera en Wodan in de dagplanning voor Europa-Park gezet.",
+        "examples": [
+          "Plan een dag in Europa-Park met kinderen voor me.",
+          "Wanneer is het in december het rustigst in de Efteling?"
+        ]
+      },
+      "search": {
+        "kicker": "Zoekt mee",
+        "title": "Met het vergrootglas erbij",
+        "body": "Open je de zoekfunctie, dan pakt Parky zijn vergrootglas en zoekt mee. Bij elke toets buigt hij een stukje voorover, en vindt de zoekfunctie niets, dan verschijnt er een vraagteken boven hem.",
+        "alt": "De zoekopdracht naar Taron op park.fan, rechtsonder kijkt Parky door zijn vergrootglas."
+      },
+      "character": {
+        "kicker": "Met karakter",
+        "title": "Meer dan een chatvenster",
+        "body": "Parky gaat in de achtbaan, gaapt als er niets gebeurt en heeft nog veel meer in petto. Een paar van zijn kunstjes laat hij je hier zien, de rest ontdek je zelf tijdens het rondkijken."
+      },
+      "data": {
+        "kicker": "Je gegevens",
+        "title": "Wat er met je vragen gebeurt",
+        "body": "Parky antwoordt met het taalmodel Claude van Anthropic. Je vragen bewaren we zonder IP-adres en we verwijderen ze na 90 dagen. Je locatie ziet Parky alleen als je die in de chat deelt.",
+        "link": "De rest staat in de privacyverklaring."
+      }
+    },
+    "gallery": {
+      "coaster": "Looping",
+      "love": "Nieuwe favoriet",
+      "shades": "Licht aan",
+      "nap": "Dutje",
+      "gum": "Kauwgom",
+      "more": "En nog meer …"
+    },
+    "faq": {
+      "kicker": "Even gevraagd",
+      "title": "Veelgestelde vragen over Parky",
+      "items": [
+        {
+          "question": "Kost Parky iets?",
+          "answer": "Nee. Parky is gratis en heeft geen account nodig, net als de rest van park.fan."
+        },
+        {
+          "question": "Waar haalt Parky zijn antwoorden vandaan?",
+          "answer": "Uit de live data van park.fan: wachttijden, openingstijden, voorspellingen, weer en onze artikelen. Voor elke vraag zoekt hij het opnieuw op in plaats van iets te onthouden."
+        },
+        {
+          "question": "Kan Parky zich vergissen?",
+          "answer": "Ja. Een taalmodel formuleert de antwoorden, en dat vergist zich soms. De getallen op de kaarten in de chat komen rechtstreeks van park.fan. Vind je een antwoord vreemd, geef het dan een duim omlaag, dan kijken wij ernaar."
+        },
+        {
+          "question": "Waarom zie ik Parky niet overal?",
+          "answer": "Parky staat nog niet voor alle bezoekers aan. Met de knop op deze pagina haal je hem erbij voor je bezoek."
+        },
+        {
+          "question": "Welke talen spreekt Parky?",
+          "answer": "Alle talen van park.fan: Duits, Engels, Nederlands, Frans, Spaans en Italiaans. Hij antwoordt in de taal van de pagina waarop je bent."
+        },
+        {
+          "question": "Kan ik Parky stiller zetten?",
+          "answer": "Ja. Tik in een van zijn tekstballonnen op het ✕, dan zwijgt hij tot het einde van je bezoek. Staat „beweging beperken” aan in je systeem, dan blijven zijn animaties uit."
+        }
+      ]
+    },
+    "next": {
+      "title": "En nu?",
+      "ask": "Vraag het Parky",
+      "askDescription": "Rechtsonder, gewoon op deze pagina.",
+      "planner": "Naar de dagplanner",
+      "plannerDescription": "Plan je parkdag zelf, attractie voor attractie.",
+      "parks": "Alle parken",
+      "parksDescription": "Wachttijden en voorspellingen voor elk park."
+    }
   }
 }

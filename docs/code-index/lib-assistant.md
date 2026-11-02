@@ -13,11 +13,11 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`config.ts`](../../lib/assistant/config.ts)
 
-- `assistantVisible` _function_: Whether this browser sees Parky: `?assistant=on` forces it for the session (`off` ends that), otherwise a stable bucket 0–99 against the rollout share. Pure, so the decision is testable.
+- `assistantVisible` _function_: Whether this browser sees Parky: `?assistant=on` forces it for the session (`off` ends that), otherwise a stable bucket 0–99 against the rollout share.
 - `ASSISTANT_OFF` _const_: The answer when the config cannot be read: hidden.
 - `ASSISTANT_KILLED` _const_: Build-time kill switch: `NEXT_PUBLIC_ASSISTANT=off` hides Parky without asking the API.
 - `assistantGate` _const_: The gate as a store for `useSyncExternalStore`: hidden on the server and until the decision is made, which takes one cached request per session, so no page's HTML depends on it.
-- Types: `AssistantConfig`
+- Types: `AssistantConfig`, `AssistantGateStatus`
 
 ### [`easter-eggs.ts`](../../lib/assistant/easter-eggs.ts)
 
@@ -43,6 +43,11 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `directionsHref` _function_: The one link off the site an answer may carry: Google Maps directions to coordinates, exactly in the form the API's `get_directions` writes it. Opened in a new tab; never used for navigation.
 - `safeAssistantHref` _function_
+
+### [`open.ts`](../../lib/assistant/open.ts)
+
+- `openParky` _function_: Opens Parky's chat window from elsewhere on the page, as the button on Parky's own page does. The launcher hears it once its button shows; until then the request waits there.
+- `onParkyOpen` _function_: Hears `openParky`; returns the unsubscribe.
 
 ### [`opener.ts`](../../lib/assistant/opener.ts)
 

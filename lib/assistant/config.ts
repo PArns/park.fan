@@ -16,18 +16,22 @@ export const ASSISTANT_KILLED = process.env.NEXT_PUBLIC_ASSISTANT === 'off';
 const BUCKET_KEY = 'parkfan:assistant-bucket';
 const FORCE_KEY = 'parkfan:assistant-force';
 const CONFIG_KEY = 'parkfan:assistant-config';
+const INVITED_KEY = 'parkfan:assistant-invited';
 
 /**
  * Whether this browser sees Parky: `?assistant=on` forces it for the session (`off` ends that),
- * otherwise a stable bucket 0–99 against the rollout share. Pure, so the decision is testable.
+ * otherwise a stable bucket 0–99 against the rollout share. A visitor of Parky's own page is
+ * `invited`: inside the share whatever the bucket, as long as Parky is switched on. Pure, so the
+ * decision is testable.
  */
 export function assistantVisible(params: {
   config: AssistantConfig;
   bucket: number;
   forced: boolean;
+  invited?: boolean;
 }): boolean {
   if (params.forced) return true;
-  return params.config.enabled && params.bucket < params.config.rolloutPercent;
+  return params.config.enabled && (params.invited || params.bucket < params.config.rolloutPercent);
 }
 
 function storage(kind: 'local' | 'session'): Storage | null {
@@ -96,8 +100,24 @@ async function config(): Promise<AssistantConfig> {
 }
 
 let visible = false;
+let decided = false;
 let started = false;
 const listeners = new Set<() => void>();
+
+async function decide(isForced: boolean): Promise<void> {
+  const loaded = isForced ? ASSISTANT_OFF : await config();
+  visible = assistantVisible({
+    config: loaded,
+    bucket: bucket(),
+    forced: isForced,
+    invited: read('session', INVITED_KEY) === '1',
+  });
+  decided = true;
+  listeners.forEach((l) => l());
+}
+
+/** Where the gate stands, for a page that offers Parky: undecided, then shown or not. */
+export type AssistantGateStatus = 'pending' | 'on' | 'off';
 
 /**
  * The gate as a store for `useSyncExternalStore`: hidden on the server and until the decision is
@@ -109,13 +129,23 @@ export const assistantGate = {
     if (!started && !ASSISTANT_KILLED) {
       started = true;
       const isForced = forced();
-      void (isForced ? Promise.resolve(ASSISTANT_OFF) : config()).then((loaded) => {
-        visible = assistantVisible({ config: loaded, bucket: bucket(), forced: isForced });
-        if (visible) listeners.forEach((l) => l());
-      });
+      void decide(isForced);
     }
     return () => listeners.delete(listener);
   },
+  /**
+   * The visitor came to Parky's own page: Parky shows for the rest of the session if it is
+   * switched on, whatever the rollout share says.
+   */
+  invite(): void {
+    if (ASSISTANT_KILLED || read('session', INVITED_KEY) === '1') return;
+    write('session', INVITED_KEY, '1');
+    if (started && !visible) void decide(false);
+  },
   getSnapshot: (): boolean => visible,
   getServerSnapshot: (): boolean => false,
+  /** {@link AssistantGateStatus} as a snapshot of the same store. */
+  getStatus: (): AssistantGateStatus =>
+    ASSISTANT_KILLED ? 'off' : !decided ? 'pending' : visible ? 'on' : 'off',
+  getServerStatus: (): AssistantGateStatus => 'pending',
 };

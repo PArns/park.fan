@@ -51,7 +51,8 @@ const ACT_MS = {
 } as const satisfies Record<string, number> &
   Record<ParkyRide, number> &
   Record<ParkyReactionAct, number>;
-type ParkyAct = keyof typeof ACT_MS;
+/** One of Parky's acts by name, as {@link ParkyCue} asks for one. */
+export type ParkyAct = keyof typeof ACT_MS;
 
 /** An act that always comes straight after another: off any ride, Parky is dizzy. */
 const FOLLOW_UP: Partial<Record<ParkyAct, ParkyAct>> = {
@@ -61,12 +62,19 @@ const FOLLOW_UP: Partial<Record<ParkyAct, ParkyAct>> = {
   tower: 'dizzy',
 };
 
+/** How long an act runs with the one that follows it, for a page that plays acts in turn. */
+export function actLength(act: ParkyAct): number {
+  const after = FOLLOW_UP[act];
+  return ACT_MS[act] + (after ? ACT_MS[after] : 0);
+}
+
 /**
  * An act asked for from outside, to play at once: the ride an easter egg ends with (`ride` for any
- * of them), or Parky's answer to something the visitor did. A new `id` plays it again.
+ * of them), Parky's answer to something the visitor did, or any act on Parky's own page. A new
+ * `id` plays it again.
  */
 export interface ParkyCue {
-  act: ParkyRide | ParkyReactionAct | 'ride';
+  act: ParkyAct | 'ride';
   id: number;
 }
 
