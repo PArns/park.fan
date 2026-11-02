@@ -545,7 +545,7 @@
     "openingHours": "Openingstijden",
     "opensOn": "Opent op",
     "opensAt": "Opent om {time}",
-    "opensInDays": "over {count, plural, one {# dag} other {# dagen}}",
+    "opensInDays": "{count, plural, =1 {morgen} other {over # dagen}}",
     "opensInHours": "over {time} uur",
     "opensInMinutes": "over {count, plural, one {# minuut} other {# minuten}}",
     "offseason": "Buiten seizoen",
@@ -3016,7 +3016,15 @@
     "themeLight3": "Daglicht! Perfect parkweer.",
     "install1": "Nu woon ik op je beginscherm!",
     "install2": "Geïnstalleerd! Vanaf nu ben ik maar één tik verwijderd.",
-    "thatsMe": "Hé, gaaf! Dat ben ik!"
+    "thatsMe": "Hé, gaaf! Dat ben ik!",
+    "flingHang1": "“Seid stark, schwächt das Böse, wenn ihr ihm begegnet dort oben!”",
+    "flingHang2": "“… beyond the fifth dimension …” Ik wil niet weten wat daar ligt!",
+    "flingHang3": "Niet naar beneden kijken. Niet naar beneden kijken. Oeps, toch gekeken.",
+    "flingHang4": "Van hierboven zie je zelfs het volgende park!",
+    "flingRough1": "Het gaat hier wel flink tekeer!",
+    "flingRough2": "Dit is net Mystery Castle!",
+    "flingRough3": "“Never the same fear twice”, zeiden ze. Dit was drie keer dezelfde!",
+    "flingRough4": "Blijf zitten tijdens de rit!"
   },
   "parkyPage": {
     "metaTitle": "Parky, de chatassistent van park.fan",

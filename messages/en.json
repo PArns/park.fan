@@ -545,7 +545,7 @@
     "openingHours": "Opening Hours",
     "opensOn": "Opens on",
     "opensAt": "Opens at {time}",
-    "opensInDays": "in {count, plural, one {# day} other {# days}}",
+    "opensInDays": "{count, plural, =1 {tomorrow} other {in # days}}",
     "opensInHours": "in {time} hours",
     "opensInMinutes": "in {count, plural, one {# minute} other {# minutes}}",
     "offseason": "OffSeason",
@@ -3016,7 +3016,15 @@
     "themeLight3": "Daylight! Perfect park weather.",
     "install1": "Now I live on your home screen!",
     "install2": "Installed! From now on I’m just a tap away.",
-    "thatsMe": "Hey, cool! That's me!"
+    "thatsMe": "Hey, cool! That's me!",
+    "flingHang1": "“Seid stark, schwächt das Böse, wenn ihr ihm begegnet dort oben!”",
+    "flingHang2": "“… beyond the fifth dimension …” I’d rather not find out!",
+    "flingHang3": "Don’t look down. Don’t look down. Oops, looked down.",
+    "flingHang4": "You can see all the way to the next park from up here!",
+    "flingRough1": "Things are getting pretty wild in here!",
+    "flingRough2": "This is just like Mystery Castle!",
+    "flingRough3": "“Never the same fear twice,” they said. That was the same one three times!",
+    "flingRough4": "Please remain seated while the ride is in motion!"
   },
   "parkyPage": {
     "metaTitle": "Parky, the park.fan chat assistant",

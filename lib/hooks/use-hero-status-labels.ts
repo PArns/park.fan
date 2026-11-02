@@ -27,7 +27,7 @@ export function useParkOpeningLabel(): (opening: ParkOpening, timeZone: string) 
 
 /**
  * The hero's rows with the status pill of a shut park reading its next opening (`nextParkOpening`
- * on the minute clock) in place of „Geschlossen", and how far off it is („in 2 Tagen") for a row
+ * on the minute clock) in place of „Geschlossen", and how far off it is („morgen", „Samstag") for a row
  * wide enough to show it. A park with no opening ahead keeps „Geschlossen".
  * The hero's own hook, not the browse hook's: `parks` ships with the homepage, and the palette,
  * which every page carries, would pull the whole namespace into the chrome.
@@ -36,6 +36,7 @@ export function useHeroStatusLabels(): (items: NearbySearchItem[]) => NearbySear
   const tParks = useTranslations('parks');
   const openingLabel = useParkOpeningLabel();
   const nowMs = useMinuteNow();
+  const locale = useLocale();
   const countdownStrings: ParkOpeningCountdownStrings = {
     inDays: (count) => tParks('opensInDays', { count }),
     inHours: (time) => tParks('opensInHours', { time }),
@@ -58,7 +59,8 @@ export function useHeroStatusLabels(): (items: NearbySearchItem[]) => NearbySear
               opening,
               nowMs,
               countdownStrings,
-              item.timezone
+              item.timezone,
+              locale
             ),
           }
         : item;

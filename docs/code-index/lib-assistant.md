@@ -67,6 +67,13 @@ by hand: change the comment in the code and re-run the script. -->
 - `parkyBoredom` _const_: One boredom for the whole page, for `useSyncExternalStore`: the first subscriber starts the listeners, the last one stops them. Without motion (`prefers-reduced-motion`) Parky has no idle life and the snapshot is `null`, as on the server.
 - Types: `ParkyBoredom`
 
+### [`parky-jump.ts`](../../lib/assistant/parky-jump.ts)
+
+- `parkyJumpMs` _function_: The hop's length for this browser: none with reduced motion.
+- `parkyJump` _function_: Parky's face in the chat window hops in from the corner button (`open`) or back to it: down into a crouch, off in a parabola with his body stretched, onto the other end in a squash that springs back.
+- `PARKY_JUMP_MS` _const_: How long Parky's hop between his corner and the chat window's top edge takes.
+- `PARKY_CORNER_ATTR` _const_: Marks the drawing in the corner button, where the hop starts and lands.
+
 ### [`parky-rides.ts`](../../lib/assistant/parky-rides.ts)
 
 - `isRide` _function_: Whether a name is one of Parky's rides.
@@ -127,6 +134,12 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`use-parky-boredom.ts`](../../lib/assistant/use-parky-boredom.ts)
 
 - `useParkyBoredom` _hook_: How bored Parky is, from the page-wide `parkyBoredom`; `null` while `enabled` is false, on the server and under reduced motion, so a disabled reader takes no subscription.
+
+### [`use-scroll-fling.ts`](../../lib/assistant/use-scroll-fling.ts)
+
+- `useScrollFling` _hook_: The direction the page is being flung in, fast enough to move Parky (`.parky-hang`): `down` carries him up with the page, `up` presses him flat into his corner.
+- `PARKY_FALL_MS` _const_: How long the drop back into the corner takes (`.parky-hang`'s `--parky-fall`).
+- Types: `ParkyFling`
 
 ### [`use-smooth-text.ts`](../../lib/assistant/use-smooth-text.ts)
 

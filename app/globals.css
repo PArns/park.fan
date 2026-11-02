@@ -708,6 +708,17 @@
   }
 }
 /* The eye roll: the pupils circle over the top, then the eyes half close and the head drops. */
+/* The pupils' own act runs from 10 % to 90 % of it (`.parky-act-*`), the glides before and after. */
+@keyframes parky-gaze-aside {
+  0%,
+  100% {
+    transform: translate(var(--gaze-x, 0), var(--gaze-y, 0));
+  }
+  10%,
+  90% {
+    transform: translate(0, 0);
+  }
+}
 @keyframes parky-roll {
   0%,
   100% {
@@ -1002,59 +1013,78 @@
     opacity: 1;
   }
 }
+/* How far out the pupils swirl: grows from the middle and shrinks back to it, so they glide in and
+   out of the swirl rather than jump. Registered, so it can be animated. */
+@property --parky-swirl {
+  syntax: '<number>';
+  inherits: false;
+  initial-value: 0;
+}
+@keyframes parky-swirl-radius {
+  0% {
+    --parky-swirl: 0;
+  }
+  12%,
+  85% {
+    --parky-swirl: 1;
+  }
+  100% {
+    --parky-swirl: 0;
+  }
+}
 /* Off the coaster: the pupils swirl round their eyes, one each way, the body reels, stars circle. */
 @keyframes parky-swirl-cw {
   0%,
   100% {
-    transform: translate(0, -1.8px);
+    transform: translate(0, calc(-1.8px * var(--parky-swirl)));
   }
   12.5% {
-    transform: translate(1.27px, -1.27px);
+    transform: translate(calc(1.27px * var(--parky-swirl)), calc(-1.27px * var(--parky-swirl)));
   }
   25% {
-    transform: translate(1.8px, 0);
+    transform: translate(calc(1.8px * var(--parky-swirl)), 0);
   }
   37.5% {
-    transform: translate(1.27px, 1.27px);
+    transform: translate(calc(1.27px * var(--parky-swirl)), calc(1.27px * var(--parky-swirl)));
   }
   50% {
-    transform: translate(0, 1.8px);
+    transform: translate(0, calc(1.8px * var(--parky-swirl)));
   }
   62.5% {
-    transform: translate(-1.27px, 1.27px);
+    transform: translate(calc(-1.27px * var(--parky-swirl)), calc(1.27px * var(--parky-swirl)));
   }
   75% {
-    transform: translate(-1.8px, 0);
+    transform: translate(calc(-1.8px * var(--parky-swirl)), 0);
   }
   87.5% {
-    transform: translate(-1.27px, -1.27px);
+    transform: translate(calc(-1.27px * var(--parky-swirl)), calc(-1.27px * var(--parky-swirl)));
   }
 }
 @keyframes parky-swirl-ccw {
   0%,
   100% {
-    transform: translate(0, -1.8px);
+    transform: translate(0, calc(-1.8px * var(--parky-swirl)));
   }
   12.5% {
-    transform: translate(-1.27px, -1.27px);
+    transform: translate(calc(-1.27px * var(--parky-swirl)), calc(-1.27px * var(--parky-swirl)));
   }
   25% {
-    transform: translate(-1.8px, 0);
+    transform: translate(calc(-1.8px * var(--parky-swirl)), 0);
   }
   37.5% {
-    transform: translate(-1.27px, 1.27px);
+    transform: translate(calc(-1.27px * var(--parky-swirl)), calc(1.27px * var(--parky-swirl)));
   }
   50% {
-    transform: translate(0, 1.8px);
+    transform: translate(0, calc(1.8px * var(--parky-swirl)));
   }
   62.5% {
-    transform: translate(1.27px, 1.27px);
+    transform: translate(calc(1.27px * var(--parky-swirl)), calc(1.27px * var(--parky-swirl)));
   }
   75% {
-    transform: translate(1.8px, 0);
+    transform: translate(calc(1.8px * var(--parky-swirl)), 0);
   }
   87.5% {
-    transform: translate(1.27px, -1.27px);
+    transform: translate(calc(1.27px * var(--parky-swirl)), calc(-1.27px * var(--parky-swirl)));
   }
 }
 @keyframes parky-reel {
@@ -1338,6 +1368,10 @@
 .parky-eyes,
 .parky-eye,
 .parky-mouth,
+/* Where the pupils look (`useGaze`, a mood or an act), set by `parky-logo.tsx`. */
+.parky-gaze {
+  transform: translate(var(--gaze-x, 0), var(--gaze-y, 0));
+}
 .parky-purse,
 .parky-wheel,
 .parky-body,
@@ -1392,17 +1426,56 @@
   .parky-eyes {
     animation: parky-blink 24s ease-in-out infinite;
   }
+  /* An SVG transform is painted, not composited: every frame of a smooth spin lays out and paints
+     Parky again. 8 steps a second move a cabin half a pixel, too little to see as a jump. */
   .parky-wheel {
-    animation: parky-spin 14s linear infinite;
+    animation: parky-spin 14s steps(112) infinite;
   }
   .parky-wheel--turning {
     animation-duration: 3s;
+    animation-timing-function: linear;
   }
   .parky-mouth {
     animation: parky-talk 0.45s ease-in-out infinite;
   }
   .parky-bob {
     animation: parky-bob 3.2s ease-in-out infinite;
+  }
+  /* Back down with a bounce (ease-out-bounce as linear() stops); up quick, as if snatched. Out of
+     a squash he springs up past his height and settles. Both from his feet. */
+  .parky-hang {
+    transform-origin: 50% 100%;
+    transition:
+      scale 0.55s linear(0, 0.35, 1.25 35%, 0.92 55%, 1.04 75%, 1),
+      translate var(--parky-fall)
+        linear(
+          0,
+          0.063,
+          0.25,
+          0.563,
+          1 36.4%,
+          0.812,
+          0.75,
+          0.813,
+          1 72.7%,
+          0.953,
+          0.938,
+          0.953,
+          1 90.9%,
+          0.984,
+          1
+        );
+  }
+  /* Up to the top of the screen, over the header: 5.5rem is the corner's 1rem and the button's
+     height; 20px more keep the hat and his speech bubble inside the window. */
+  .parky-hang[data-fling='down'] {
+    translate: 0 calc(-100dvh + 5.5rem + 20px + env(safe-area-inset-top));
+    transition: translate 0.25s ease-out;
+  }
+  /* Scrolled up fast, the page's speed presses him flat into his corner. */
+  .parky-hang[data-fling='up'] {
+    scale: 1.25 0.6;
+    transition: scale 0.15s ease-out;
   }
   .parky-act-hop {
     animation: parky-hop calc(var(--parky-act) / 2) ease-out 2;
@@ -1411,7 +1484,7 @@
     animation: parky-tilt var(--parky-act) ease-in-out;
   }
   .parky-act-look .parky-pupils {
-    animation: parky-look var(--parky-act) ease-in-out;
+    animation: parky-look calc(var(--parky-act) * 0.8) ease-in-out calc(var(--parky-act) * 0.1);
   }
   .parky-act-wink {
     animation: parky-lean var(--parky-act) ease-in-out;
@@ -1449,7 +1522,7 @@
     animation: parky-sway var(--parky-act) ease-in-out;
   }
   .parky-act-whistle .parky-pupils {
-    animation: parky-innocent var(--parky-act) ease-in-out;
+    animation: parky-innocent calc(var(--parky-act) * 0.8) ease-in-out calc(var(--parky-act) * 0.1);
   }
   .parky-note {
     animation: parky-note calc(var(--parky-act) * 0.55) ease-out calc(var(--parky-act) * 0.1) both;
@@ -1464,10 +1537,12 @@
     animation: parky-pop-blink var(--parky-act) ease-in-out;
   }
   .parky-act-gum .parky-eye:first-child .parky-pupils {
-    animation: parky-cross-left var(--parky-act) ease-in-out;
+    animation: parky-cross-left calc(var(--parky-act) * 0.8) ease-in-out
+      calc(var(--parky-act) * 0.1);
   }
   .parky-act-gum .parky-eye:last-child .parky-pupils {
-    animation: parky-cross-right var(--parky-act) ease-in-out;
+    animation: parky-cross-right calc(var(--parky-act) * 0.8) ease-in-out
+      calc(var(--parky-act) * 0.1);
   }
   .parky-gum {
     animation: parky-gum var(--parky-act) ease-in-out both;
@@ -1482,7 +1557,7 @@
     animation: parky-meh var(--parky-act) ease-in-out;
   }
   .parky-act-roll .parky-pupils {
-    animation: parky-roll var(--parky-act) ease-in-out;
+    animation: parky-roll calc(var(--parky-act) * 0.8) ease-in-out calc(var(--parky-act) * 0.1);
   }
   /* `forwards`: the eyes stay shut until the sleeping face replaces them. */
   .parky-act-doze {
@@ -1518,6 +1593,16 @@
   }
   .parky-gaze {
     transition: transform 0.15s ease-out;
+  }
+  /* The acts that move the pupils themselves would add their path to the look at the mouse and
+     carry the pupils off the white: the look glides to the middle first, the act's own motion runs
+     from 10 % to 90 % of it, and the look glides back once that has ended. */
+  .parky-act-look .parky-gaze,
+  .parky-act-whistle .parky-gaze,
+  .parky-act-gum .parky-gaze,
+  .parky-act-roll .parky-gaze,
+  .parky-act-dizzy .parky-gaze {
+    animation: parky-gaze-aside var(--parky-act) ease-in-out;
   }
   .parky-act-twirl {
     animation: parky-twirl var(--parky-act) ease-in-out;
@@ -1570,10 +1655,14 @@
     animation: parky-reel var(--parky-act) ease-in-out;
   }
   .parky-act-dizzy .parky-eye:first-child .parky-pupils {
-    animation: parky-swirl-cw calc(var(--parky-act) / 3) linear 3;
+    animation:
+      parky-swirl-cw calc(var(--parky-act) * 0.8 / 3) linear calc(var(--parky-act) * 0.1) 3,
+      parky-swirl-radius calc(var(--parky-act) * 0.8) ease-in-out calc(var(--parky-act) * 0.1);
   }
   .parky-act-dizzy .parky-eye:last-child .parky-pupils {
-    animation: parky-swirl-ccw calc(var(--parky-act) / 3) linear 3;
+    animation:
+      parky-swirl-ccw calc(var(--parky-act) * 0.8 / 3) linear calc(var(--parky-act) * 0.1) 3,
+      parky-swirl-radius calc(var(--parky-act) * 0.8) ease-in-out calc(var(--parky-act) * 0.1);
   }
   .parky-woozy {
     animation: parky-mouth-in var(--parky-act) ease-in-out both;
@@ -1682,6 +1771,22 @@
   }
   .parky-mood-talking {
     animation: parky-nod 0.9s ease-in-out infinite;
+  }
+  .parky-mood-scared {
+    animation: parky-tremble 0.14s linear infinite;
+  }
+  .parky-hang[data-fling='down'] .parky-drop {
+    opacity: 1;
+    transition-duration: 0.15s;
+  }
+  .parky-drop > span {
+    animation: parky-drop 0.5s linear infinite;
+  }
+  .parky-drop > span:nth-child(2) {
+    animation-delay: -0.17s;
+  }
+  .parky-drop > span:nth-child(3) {
+    animation-delay: -0.33s;
   }
   .parky-thoughts > circle {
     animation: parky-thought 1.8s ease-in-out infinite both;
@@ -1836,6 +1941,33 @@
     transform: scaleX(0.3);
   }
 }
+/* A shiver on the spot, a fraction of a unit each way. */
+@keyframes parky-tremble {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-0.4px);
+  }
+  75% {
+    transform: translateX(0.4px);
+  }
+}
+/* The lines under a hanging Parky stream down, away from him, to show how far it is to fall. */
+@keyframes parky-drop {
+  0% {
+    opacity: 0;
+    transform: translateY(-4px) scaleY(0.6);
+  }
+  30% {
+    opacity: 0.9;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(14px) scaleY(1);
+  }
+}
 /* The dust rises where the drop lands, at 42 % of it. */
 @keyframes parky-dust {
   0%,
@@ -1873,6 +2005,28 @@
   transform-origin: 50% 100%;
 }
 /* Nothing an entrance strews about shows without its animation. */
+/* Fall lines under Parky while a fast scroll holds him up; they fade as he drops back. */
+.parky-drop {
+  position: absolute;
+  top: 92%;
+  left: 50%;
+  display: flex;
+  gap: 7px;
+  translate: -50% 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s ease-out;
+}
+.parky-drop > span {
+  display: block;
+  width: 2.5px;
+  height: 14px;
+  border-radius: 9999px;
+  background: linear-gradient(to bottom, var(--color-primary), transparent);
+}
+.parky-drop > span:nth-child(2) {
+  height: 20px;
+}
 .parky-trail,
 .parky-dust,
 .parky-sparkles {

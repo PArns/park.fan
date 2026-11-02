@@ -658,7 +658,7 @@
     "openingHours": "Öffnungszeiten",
     "opensOn": "Öffnet am",
     "opensAt": "Öffnet um {time} Uhr",
-    "opensInDays": "in {count, plural, one {# Tag} other {# Tagen}}",
+    "opensInDays": "{count, plural, =1 {morgen} other {in # Tagen}}",
     "opensInHours": "in {time} Stunden",
     "opensInMinutes": "in {count, plural, one {# Minute} other {# Minuten}}",
     "offseason": "OffSeason",
@@ -3016,7 +3016,15 @@
     "themeLight3": "Tageslicht! Perfektes Parkwetter.",
     "install1": "Jetzt wohne ich auf deinem Homescreen!",
     "install2": "Installiert! Ab jetzt bin ich nur einen Tipp entfernt.",
-    "thatsMe": "Hey, cool! Das bin ja ich!"
+    "thatsMe": "Hey, cool! Das bin ja ich!",
+    "flingHang1": "Seid stark, schwächt das Böse, wenn ihr ihm begegnet dort oben!",
+    "flingHang2": "„… beyond the fifth dimension …“ Ich will gar nicht wissen, was da liegt!",
+    "flingHang3": "Nicht runterschauen. Nicht runterschauen. Mist, runtergeschaut.",
+    "flingHang4": "Von hier oben sieht man ja bis zum nächsten Park!",
+    "flingRough1": "Das geht aber ganz schön rund hier!",
+    "flingRough2": "Das ist ja wie im Mystery Castle!",
+    "flingRough3": "„Never the same fear twice“, hieß es. Das war jetzt dreimal dieselbe!",
+    "flingRough4": "Bitte während der Fahrt sitzen bleiben!"
   },
   "parkyPage": {
     "metaTitle": "Parky, der Chat-Assistent von park.fan",

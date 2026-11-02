@@ -545,7 +545,7 @@
     "openingHours": "Heures d’ouverture",
     "opensOn": "Ouvre le",
     "opensAt": "Ouvre à {time}",
-    "opensInDays": "dans {count, plural, one {# jour} other {# jours}}",
+    "opensInDays": "{count, plural, =1 {demain} other {dans # jours}}",
     "opensInHours": "dans {time} h",
     "opensInMinutes": "dans {count, plural, one {# minute} other {# minutes}}",
     "offseason": "Hors saison",
@@ -3016,7 +3016,15 @@
     "themeLight3": "La lumière du jour ! Parfait pour le parc.",
     "install1": "Maintenant, j’habite sur ton écran d’accueil !",
     "install2": "Installé ! Désormais, je suis à portée de doigt.",
-    "thatsMe": "Hé, trop bien ! Mais c’est moi !"
+    "thatsMe": "Hé, trop bien ! Mais c’est moi !",
+    "flingHang1": "« Seid stark, schwächt das Böse, wenn ihr ihm begegnet dort oben! »",
+    "flingHang2": "« … beyond the fifth dimension… » Je préfère ne pas savoir ce qu’il y a là-bas !",
+    "flingHang3": "Ne regarde pas en bas. Ne regarde pas en bas. Zut, j’ai regardé.",
+    "flingHang4": "D’ici, on voit jusqu’au parc d’à côté !",
+    "flingRough1": "Ça secoue sacrément ici !",
+    "flingRough2": "On se croirait dans Mystery Castle !",
+    "flingRough3": "« Never the same fear twice », qu’ils disaient. Là, c’était trois fois la même !",
+    "flingRough4": "Restez assis pendant toute la durée du trajet !"
   },
   "parkyPage": {
     "metaTitle": "Parky, l’assistant de chat de park.fan",

@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useEffect, useState, useSyncExternalStore } from 'react';
+import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from 'react';
 import { useTranslations } from 'next-intl';
 import { usePathname } from 'next/navigation';
 import { X } from 'lucide-react';
@@ -20,6 +20,8 @@ import { isReactionAct } from '@/lib/assistant/reactions';
 import { onParkyOpen } from '@/lib/assistant/open';
 import { usePageLocked } from '@/lib/hooks/use-page-locked';
 import { useSearchOpen } from '@/lib/analytics/search-presence';
+import { PARKY_FALL_MS, useScrollFling, type ParkyFling } from '@/lib/assistant/use-scroll-fling';
+import { PARKY_CORNER_ATTR, parkyJumpMs } from '@/lib/assistant/parky-jump';
 
 // Must stay in step with this file's entry in `LAZY_MESSAGE_BOUNDARIES`
 // (`lib/i18n/route-namespaces.mjs`).
@@ -99,11 +101,20 @@ function LauncherButton({
   onToggle,
   entrance,
   cue,
+  away,
+  fling,
+  onLanded,
 }: {
   open: boolean;
   onToggle: () => void;
+  /** Parky is up in the chat window or on his way back: the button keeps its place, unseen. */
+  away: boolean;
   entrance: ParkyEntrance | null;
   cue: ParkyCue | null;
+  /** A fast scroll moving Parky: carried up or pressed flat. */
+  fling: ParkyFling | null;
+  /** Parky has dropped back from a fast scroll and hit the corner. */
+  onLanded: () => void;
 }) {
   // `navigation`, which the layout ships anyway: a key of `assistant` read in this file would put
   // the whole namespace into every page's chrome (docs/rules/translations-are-routed-not-bundled.md).
@@ -116,6 +127,18 @@ function LauncherButton({
   const locked = usePageLocked();
   const searching = useSearchOpen();
   const dodging = locked && !searching;
+  const hanging = fling === 'down';
+  const hung = useRef(false);
+  useEffect(() => {
+    if (hanging) {
+      hung.current = true;
+      return;
+    }
+    if (!hung.current) return;
+    hung.current = false;
+    const timer = setTimeout(onLanded, PARKY_FALL_MS);
+    return () => clearTimeout(timer);
+  }, [hanging, onLanded]);
   return (
     <button
       type="button"
@@ -126,7 +149,7 @@ function LauncherButton({
           : undefined
       }
       aria-expanded={open}
-      inert={dodging}
+      inert={dodging || away}
       aria-label={open ? t('assistantClose') : t('assistantOpen')}
       title={open ? undefined : t('assistantOpen')}
       className={cn(
@@ -136,6 +159,7 @@ function LauncherButton({
         entrance ? `parky-enter-${entrance}` : !entered && 'animate-in fade-in zoom-in-90',
         'transition-transform duration-300 hover:-translate-y-0.5 active:scale-95 motion-reduce:transition-none',
         dodging && 'pointer-events-none translate-y-[calc(100%+2.5rem)]',
+        away && 'invisible',
         'focus-visible:ring-primary focus-visible:ring-offset-background focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none',
         open && 'from-primary to-status-operating bg-gradient-to-br text-white shadow-xl'
       )}
@@ -143,23 +167,37 @@ function LauncherButton({
       {open ? (
         <X className="size-6" />
       ) : (
-        <>
+        // Carried up by a fast scroll, dropped back once it stops: the glow and the trail go along.
+        <span
+          data-fling={fling ?? undefined}
+          style={{ '--parky-fall': `${PARKY_FALL_MS}ms` } as React.CSSProperties}
+          className="parky-hang absolute inset-0 grid place-items-center"
+        >
           {/* A soft glow of the brand colours behind the bubble, stronger on hover. */}
           <span
             aria-hidden="true"
             className="from-primary/40 to-status-operating/40 absolute inset-1 rounded-full bg-gradient-to-br opacity-70 blur-lg transition-opacity group-hover:opacity-100"
           />
           {entrance && <EntranceEffects entrance={entrance} />}
+          <span aria-hidden="true" className="parky-drop">
+            <span />
+            <span />
+            <span />
+          </span>
           {/* The bob moves this wrapper, not the drawing: Safari clips an SVG that is animated and
               has a filter to its own box, and the hat and the rides reach beyond it. */}
-          <span className="parky-bob relative grid size-14 sm:size-16">
+          <span
+            {...{ [PARKY_CORNER_ATTR]: '' }}
+            className="parky-bob relative grid size-14 sm:size-16"
+          >
             <ParkyLogo
               idle
+              mood={fling === 'down' ? 'scared' : fling === 'up' ? 'squashed' : null}
               cue={cue}
               className="size-full drop-shadow-[0_6px_14px_rgb(0_0_0/0.35)]"
             />
           </span>
-        </>
+        </span>
       )}
     </button>
   );
@@ -225,7 +263,22 @@ export function AssistantLauncher() {
     return () => clearTimeout(timer);
   }, [entering, entrance]);
 
-  const close = useCallback(() => setOpen(false), []);
+  // Back from the window, Parky lands in his corner before the button shows again.
+  const [landing, setLanding] = useState(false);
+  const close = useCallback(() => {
+    setOpen(false);
+    setLanding(true);
+  }, []);
+  useEffect(() => {
+    if (!landing) return;
+    const timer = setTimeout(() => setLanding(false), parkyJumpMs());
+    return () => clearTimeout(timer);
+  }, [landing]);
+  const away = open || landing;
+  // Not while a dialog has Parky ducked below the edge (the search palette aside), nor while away.
+  const locked = usePageLocked();
+  const searching = useSearchOpen();
+  const fling = useScrollFling(!away && !(locked && !searching));
   /** Opening Parky once ends the teaser lines for the session, and any entrance under way. */
   const openFrom = useCallback((source: AssistantOpenSource) => {
     stopTeasers();
@@ -242,6 +295,8 @@ export function AssistantLauncher() {
     (act: ParkyCue['act']) => setCue((last) => ({ act, id: (last?.id ?? 0) + 1 })),
     []
   );
+  // A hard landing from a fast scroll leaves him seeing stars.
+  const landedDizzy = useCallback(() => play('dizzy'), [play]);
   // `?parky=<ride>` or `?parky=<reaction>` plays that act once Parky has arrived, for trying each.
   useEffect(() => {
     const asked = shown ? parkySwitch() : null;
@@ -254,22 +309,25 @@ export function AssistantLauncher() {
   const content = (
     <>
       {Panel && <Panel open={open} onClose={close} openedBy={openedBy} />}
-      {/* Hidden while the window is open: the window's own ✕ and Escape close it. */}
-      {!open && (
-        <LauncherButton
-          open={false}
-          onToggle={openFromButton}
-          entrance={entering ? entrance : null}
-          cue={cue}
-        />
-      )}
+      {/* Unseen while the window is open: the window's own ✕ and Escape close it. Kept mounted, so
+          Parky's jump has its corner to start from and land on. */}
+      <LauncherButton
+        open={false}
+        onToggle={openFromButton}
+        entrance={entering ? entrance : null}
+        cue={cue}
+        away={away}
+        fling={fling}
+        onLanded={landedDizzy}
+      />
       {!open && <ShownCounter entrance={entrance} />}
-      {!open && (
+      {!away && (
         <AssistantTeaser
           onOpen={openFromLine}
           onAct={play}
           entering={entering}
           arrival={arrived ? entrance : null}
+          fling={fling}
         />
       )}
     </>

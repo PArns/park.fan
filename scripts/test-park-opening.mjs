@@ -139,38 +139,100 @@ const countdownStrings = {
 test('formatParkOpeningCountdown: hours and minutes today, minutes in the last hour', () => {
   const opening = { at: disneylandToday.openingTime, today: true };
   assert.equal(
-    formatParkOpeningCountdown(opening, at('2026-10-28T05:55:00-07:00'), countdownStrings, LA),
+    formatParkOpeningCountdown(
+      opening,
+      at('2026-10-28T05:55:00-07:00'),
+      countdownStrings,
+      LA,
+      'en'
+    ),
     '2:05 h'
   );
   assert.equal(
-    formatParkOpeningCountdown(opening, at('2026-10-28T07:00:00-07:00'), countdownStrings, LA),
+    formatParkOpeningCountdown(
+      opening,
+      at('2026-10-28T07:00:00-07:00'),
+      countdownStrings,
+      LA,
+      'en'
+    ),
     '1:00 h'
   );
   assert.equal(
-    formatParkOpeningCountdown(opening, at('2026-10-28T07:15:00-07:00'), countdownStrings, LA),
+    formatParkOpeningCountdown(
+      opening,
+      at('2026-10-28T07:15:00-07:00'),
+      countdownStrings,
+      LA,
+      'en'
+    ),
     '45 min'
   );
   assert.equal(
-    formatParkOpeningCountdown(opening, at('2026-10-28T07:59:30-07:00'), countdownStrings, LA),
+    formatParkOpeningCountdown(
+      opening,
+      at('2026-10-28T07:59:30-07:00'),
+      countdownStrings,
+      LA,
+      'en'
+    ),
     '1 min'
   );
 });
 
-test('formatParkOpeningCountdown: a later day counts the park’s calendar days', () => {
+test('formatParkOpeningCountdown: tomorrow, the weekday within a week, days beyond', () => {
   const opening = { at: disneylandNext.openingTime, today: false };
   // 23:30 the evening before is one day off, though only eight and a half hours.
   assert.equal(
-    formatParkOpeningCountdown(opening, at('2026-10-28T23:30:00-07:00'), countdownStrings, LA),
+    formatParkOpeningCountdown(
+      opening,
+      at('2026-10-28T23:30:00-07:00'),
+      countdownStrings,
+      LA,
+      'en'
+    ),
     '1 d'
   );
   assert.equal(
-    formatParkOpeningCountdown(opening, at('2026-10-27T09:00:00-07:00'), countdownStrings, LA),
-    '2 d'
+    formatParkOpeningCountdown(
+      opening,
+      at('2026-10-27T09:00:00-07:00'),
+      countdownStrings,
+      LA,
+      'en'
+    ),
+    'Thursday'
   );
-  // 2026-10-28 07:30 in Berlin is still 2026-10-27 in Los Angeles: two park days, not one.
   assert.equal(
-    formatParkOpeningCountdown(opening, at('2026-10-28T07:30:00+01:00'), countdownStrings, LA),
-    '2 d'
+    formatParkOpeningCountdown(
+      opening,
+      at('2026-10-23T09:00:00-07:00'),
+      countdownStrings,
+      LA,
+      'de'
+    ),
+    'Donnerstag'
+  );
+  assert.equal(
+    formatParkOpeningCountdown(
+      opening,
+      at('2026-10-22T09:00:00-07:00'),
+      countdownStrings,
+      LA,
+      'en'
+    ),
+    '7 d'
+  );
+  // 2026-10-28 07:30 in Berlin is still 2026-10-27 in Los Angeles: two park days, not tomorrow.
+  assert.equal(
+    formatParkOpeningCountdown(
+      opening,
+      at('2026-10-28T07:30:00+01:00'),
+      countdownStrings,
+      LA,
+      'en'
+    ),
+    'Thursday'
   );
 });
 

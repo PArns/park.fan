@@ -164,7 +164,9 @@ export type AssistantLineKind =
   | 'alert'
   | 'theme'
   | 'install'
-  | 'hello';
+  | 'hello'
+  | 'hang'
+  | 'rough';
 
 /** How one of Parky's answers ended. */
 export type AssistantAnswerResult =
