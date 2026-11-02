@@ -8,6 +8,7 @@ import { plannerPath } from '@/lib/planner/segments';
 import { linkBlockAttributes } from '@/lib/analytics/internal-link';
 import type { Locale } from '@/i18n/config';
 import { ShotStop, StopLink } from './home-stop';
+import { versionedPath } from '@/lib/media/focus';
 
 /** One stop of the tour: its messages under `homeStory.tour.<key>`, its icon, link and screenshot. */
 interface Stop {
@@ -40,7 +41,7 @@ export async function HomeTour({ locale }: { locale: Locale }) {
           key={key}
           divider={index === 0}
           reverse={index % 2 === 1}
-          src={`/home/${locale}/${shots[key]}.webp`}
+          src={versionedPath(`/media/home/${locale}/${shots[key]}.webp`)}
           alt={t(`${key}.alt`)}
           heading={
             <ChapterHeading

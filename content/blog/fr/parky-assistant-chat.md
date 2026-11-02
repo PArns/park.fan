@@ -60,7 +60,7 @@ venir, les horaires et la météo. Quand il veut te montrer une attraction ou un
 parc, il la pose dans le chat sous forme de carte, avec son statut,
 l’affluence et l’attente. Un appui sur la carte t’emmène sur la page de
 l’attraction ou du parc.
- ![Parky dans le chat sur un téléphone. À la question sur la file de Taron, il donne le temps d’attente et ajoute en dessous une carte de Taron, ouverte, avec une affluence normale. | D’abord Taron, et la question suivante porte déjà sur ce qui va vite ailleurs. | right](/parky/fr/chat.webp)
+ ![Parky dans le chat sur un téléphone. À la question sur la file de Taron, il donne le temps d’attente et ajoute en dessous une carte de Taron, ouverte, avec une affluence normale. | D’abord Taron, et la question suivante porte déjà sur ce qui va vite ailleurs. | right](/media/parky/fr/chat.webp)
 
 Quelques questions pour commencer :
 
@@ -98,7 +98,7 @@ lui demandes, il glisse des pauses, un repas ou un spectacle comme blocs à part
 et trie ta journée. Sous sa réponse, il est alors indiqué ce qu’il a fait, par
 exemple « Dans ton planning » ou « Journée en cours de tri ». Ensuite, tu
 déplaces et partages le plan comme n’importe quel autre.
- ![Parky dans le chat sur un téléphone. À la demande d’un samedi à Europa-Park avec les grosses montagnes russes, il répond que Silver Star, Blue Fire, Voltron Nevera et Wodan sont dans le planning et qu’il faut commencer par Voltron. En dessous, une carte d’Europa-Park avec ses horaires et l’attente des attractions. | Quatre grosses montagnes russes en un samedi. Si tes jambes suivent encore après Wodan, Parky ne le prévoit pas. | right](/parky/fr/plan.webp)
+ ![Parky dans le chat sur un téléphone. À la demande d’un samedi à Europa-Park avec les grosses montagnes russes, il répond que Silver Star, Blue Fire, Voltron Nevera et Wodan sont dans le planning et qu’il faut commencer par Voltron. En dessous, une carte d’Europa-Park avec ses horaires et l’attente des attractions. | Quatre grosses montagnes russes en un samedi. Si tes jambes suivent encore après Wodan, Parky ne le prévoit pas. | right](/media/parky/fr/plan.webp)
 
 Pour lancer un plan :
 
@@ -117,7 +117,7 @@ Parky ne connaît pas ton estomac.
 Dans la recherche, Parky tient une loupe devant son œil, en bas à droite. Les
 résultats arrivent comme avant, il les regarde juste avec une grande
 concentration.
- ![La recherche de Taron sur park.fan, avec l’attraction, trois guides et une actu comme résultats. En bas à droite, Parky regarde à travers une loupe. | Taron dans la recherche, Parky et sa loupe dans le coin. | right](/parky/fr/search.webp)
+ ![La recherche de Taron sur park.fan, avec l’attraction, trois guides et une actu comme résultats. En bas à droite, Parky regarde à travers une loupe. | Taron dans la recherche, Parky et sa loupe dans le coin. | right](/media/parky/fr/search.webp)
 
 ## Parky entre deux questions
 

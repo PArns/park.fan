@@ -5,10 +5,11 @@ import type { Locale } from '@/i18n/config';
 import { ShotStop } from './home-stop';
 import { ParkyAskLink } from './parky-ask-link';
 import { ParkyHello } from './parky-hello';
+import { versionedPath } from '@/lib/media/focus';
 
 /**
  * The tour's last stop on the homepage: whoever has not found what they came for, or does not quite know what
- * that is, can ask Parky. Its chat on a phone (`public/parky/<locale>/chat.webp`, from
+ * that is, can ask Parky. Its chat on a phone (`public/media/parky/<locale>/chat.webp`, from
  * `capture-parky-shots.mjs`) beside the heading, and a link that opens the chat where Parky shows
  * for the visitor ({@link ParkyAskLink}).
  */
@@ -23,7 +24,7 @@ export async function ParkyStop({ locale }: { locale: Locale }) {
       <ShotStop
         divider
         reverse
-        src={`/parky/${locale}/chat.webp`}
+        src={versionedPath(`/media/parky/${locale}/chat.webp`)}
         alt={tParky('chapters.ask.alt')}
         heading={
           <ChapterHeading

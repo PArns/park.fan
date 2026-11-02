@@ -48,6 +48,8 @@ function isPreCutCrop(src: string): boolean {
  * unchanged URL when a focal point moves. Returns the path untouched when it is
  * not a database image, so it is safe to run over arbitrary strings.
  */
+export function versionedPath(src: string): string;
+export function versionedPath(src: string | null | undefined): string | null;
 export function versionedPath(src: string | null | undefined): string | null {
   if (!src) return null;
   const [path, query] = src.split('?');

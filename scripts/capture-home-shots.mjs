@@ -5,7 +5,7 @@
  *
  * Needs a running site: `pnpm build && pnpm start -p 3100`, then
  * `node scripts/capture-home-shots.mjs --base=http://localhost:3100` (`--locale=de` for one).
- * Writes `public/home/<locale>/{park,calendar,ride}.webp`.
+ * Writes `public/media/home/<locale>/{park,calendar,ride}.webp`.
  */
 import { existsSync, mkdirSync } from 'node:fs';
 import { chromium } from 'playwright';
@@ -89,7 +89,7 @@ async function capture(browser, locale, shot) {
   }, top);
   await page.waitForTimeout(1_500);
   const png = await page.screenshot();
-  await sharp(png).webp({ quality: 82 }).toFile(`public/home/${locale}/${shot.name}.webp`);
+  await sharp(png).webp({ quality: 82 }).toFile(`public/media/home/${locale}/${shot.name}.webp`);
   console.log(`  ✓ ${locale}/${shot.name}.webp`);
   await context.close();
 }
@@ -100,7 +100,7 @@ const browser = await chromium.launch(
 );
 for (const locale of Object.keys(CALENDAR)) {
   if (only && locale !== only) continue;
-  mkdirSync(`public/home/${locale}`, { recursive: true });
+  mkdirSync(`public/media/home/${locale}`, { recursive: true });
   for (const shot of SHOTS) await capture(browser, locale, shot);
 }
 await browser.close();

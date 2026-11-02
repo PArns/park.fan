@@ -58,7 +58,7 @@ horarios y el tiempo. Cuando quiere enseñarte una atracción o un parque, la
 deja en el chat como tarjeta, con su estado, la afluencia y la espera. Con un
 toque en la tarjeta llegas a la página de la atracción o del parque.
 
-![Parky en el chat de un móvil. Ante la pregunta por la cola de Taron, da el tiempo de espera y añade debajo una tarjeta de Taron, abierta y con afluencia normal. | Primero Taron, y la siguiente pregunta ya va sobre qué más va rápido. | right](/parky/es/chat.webp)
+![Parky en el chat de un móvil. Ante la pregunta por la cola de Taron, da el tiempo de espera y añade debajo una tarjeta de Taron, abierta y con afluencia normal. | Primero Taron, y la siguiente pregunta ya va sobre qué más va rápido. | right](/media/parky/es/chat.webp)
 
 Unas cuantas preguntas para empezar:
 
@@ -96,7 +96,7 @@ de su respuesta aparece entonces lo que ha hecho, por ejemplo «En tu
 planificador» u «Ordenando tu día». Después mueves y compartes el plan como
 cualquier otro.
 
-![Parky en el chat de un móvil. Ante la petición de un sábado en Europa-Park con las montañas rusas grandes, responde que Silver Star, Blue Fire, Voltron Nevera y Wodan están en el plan del día y que conviene empezar por Voltron. Debajo, una tarjeta de Europa-Park con su horario y las esperas de las atracciones. | Cuatro montañas rusas grandes en un solo sábado. Si tus piernas aguantan después de Wodan, eso Parky no lo planifica. | right](/parky/es/plan.webp)
+![Parky en el chat de un móvil. Ante la petición de un sábado en Europa-Park con las montañas rusas grandes, responde que Silver Star, Blue Fire, Voltron Nevera y Wodan están en el plan del día y que conviene empezar por Voltron. Debajo, una tarjeta de Europa-Park con su horario y las esperas de las atracciones. | Cuatro montañas rusas grandes en un solo sábado. Si tus piernas aguantan después de Wodan, eso Parky no lo planifica. | right](/media/parky/es/plan.webp)
 
 Así empiezas un plan:
 
@@ -115,7 +115,7 @@ conoce tu estómago.
 En la búsqueda, Parky se pone una lupa delante del ojo, abajo a la derecha. Los
 resultados llegan como siempre, él solo los mira muy concentrado.
 
-![La búsqueda de Taron en park.fan, con la atracción, tres guías y una noticia como resultados. Abajo a la derecha, Parky mira a través de una lupa. | Taron en la búsqueda, Parky con su lupa en la esquina. | right](/parky/es/search.webp)
+![La búsqueda de Taron en park.fan, con la atracción, tres guías y una noticia como resultados. Abajo a la derecha, Parky mira a través de una lupa. | Taron en la búsqueda, Parky con su lupa en la esquina. | right](/media/parky/es/search.webp)
 
 ## Parky entre dos preguntas
 

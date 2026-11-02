@@ -58,7 +58,7 @@ weather. When he wants to show you a ride or a park, he drops it into the chat
 as a card with its status, crowd level and wait. Tap the card and you're on the
 ride's or the park's page.
 
-![Parky in the chat on a phone. Asked about the queue at Taron, he gives the wait time and adds a card for Taron below, marked open with a normal crowd level. | Taron first, and the next question is already about what else is quick. | right](/parky/en/chat.webp)
+![Parky in the chat on a phone. Asked about the queue at Taron, he gives the wait time and adds a card for Taron below, marked open with a normal crowd level. | Taron first, and the next question is already about what else is quick. | right](/media/parky/en/chat.webp)
 
 A few questions to start with:
 
@@ -94,7 +94,7 @@ he slots in breaks, food or a show as blocks of their own and sorts the day for
 you. Under his answer it then says what he did, like "In your day planner" or
 "Sorting your day". After that you move and share the plan like any other.
 
-![Parky in the chat on a phone. Asked for a Saturday at Europa-Park with the big coasters, he replies that Silver Star, Blue Fire, Voltron Nevera and Wodan are in the day plan and that the day should start with Voltron. Below it, a card for Europa-Park with its opening hours and the rides' waits. | Four big coasters on one Saturday. Whether your legs are still up for it after Wodan isn't something Parky plans for. | right](/parky/en/plan.webp)
+![Parky in the chat on a phone. Asked for a Saturday at Europa-Park with the big coasters, he replies that Silver Star, Blue Fire, Voltron Nevera and Wodan are in the day plan and that the day should start with Voltron. Below it, a card for Europa-Park with its opening hours and the rides' waits. | Four big coasters on one Saturday. Whether your legs are still up for it after Wodan isn't something Parky plans for. | right](/media/parky/en/plan.webp)
 
 How to start a plan:
 
@@ -113,7 +113,7 @@ stomach.
 In the search, Parky holds a magnifying glass up to his eye in the bottom right
 corner. The results arrive as before, he just watches them very closely.
 
-![The search for Taron on park.fan, with the ride, three guides and one news item as results. In the bottom right corner, Parky looks through a magnifying glass. | Taron in the search, Parky with his magnifying glass in the corner. | right](/parky/en/search.webp)
+![The search for Taron on park.fan, with the ride, three guides and one news item as results. In the bottom right corner, Parky looks through a magnifying glass. | Taron in the search, Parky with his magnifying glass in the corner. | right](/media/parky/en/search.webp)
 
 ## Parky between two questions
 

@@ -5,6 +5,7 @@ import { cache } from 'react';
 import matter from 'gray-matter';
 import { defaultLocale, locales, type Locale } from '@/i18n/config';
 import type { BlogAuthor } from './types';
+import { versionedPath } from '@/lib/media/focus';
 
 const AUTHORS_DIR = path.resolve(process.cwd(), 'content', 'blog', 'authors');
 
@@ -77,7 +78,7 @@ function clean(author: Partial<BlogAuthor>): Partial<BlogAuthor> {
     ...(author.shortName ? { shortName: author.shortName } : {}),
     ...(author.url ? { url: author.url } : {}),
     ...(author.bio ? { bio: author.bio } : {}),
-    ...(author.avatar ? { avatar: author.avatar } : {}),
+    ...(author.avatar ? { avatar: versionedPath(author.avatar) } : {}),
     ...(author.role ? { role: author.role } : {}),
     ...(author.location ? { location: author.location } : {}),
     ...(author.links ? { links: author.links } : {}),

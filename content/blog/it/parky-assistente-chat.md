@@ -58,7 +58,7 @@ il meteo. Quando vuole mostrarti un’attrazione o un parco, la mette nella chat
 come scheda, con stato, affollamento e attesa. Con un tocco sulla scheda arrivi
 alla pagina dell’attrazione o del parco.
 
-![Parky nella chat su uno smartphone. Alla domanda sulla coda di Taron indica il tempo di attesa e aggiunge sotto una scheda di Taron, aperta e con affollamento normale. | Prima Taron, e la domanda successiva riguarda già cos’altro va veloce. | right](/parky/it/chat.webp)
+![Parky nella chat su uno smartphone. Alla domanda sulla coda di Taron indica il tempo di attesa e aggiunge sotto una scheda di Taron, aperta e con affollamento normale. | Prima Taron, e la domanda successiva riguarda già cos’altro va veloce. | right](/media/parky/it/chat.webp)
 
 Qualche domanda per cominciare:
 
@@ -96,7 +96,7 @@ giornata. Sotto la sua risposta compare poi cosa ha fatto, per esempio «Nel tuo
 planner» o «Giornata in ordinamento». Dopo sposti e condividi il piano come
 qualsiasi altro.
 
-![Parky nella chat su uno smartphone. Alla richiesta di un sabato a Europa-Park con le montagne russe grandi risponde che Silver Star, Blue Fire, Voltron Nevera e Wodan sono nel piano della giornata e che conviene iniziare da Voltron. Sotto, una scheda di Europa-Park con gli orari e le attese delle attrazioni. | Quattro montagne russe grandi in un solo sabato. Se le tue gambe reggono ancora dopo Wodan, Parky non lo mette in conto. | right](/parky/it/plan.webp)
+![Parky nella chat su uno smartphone. Alla richiesta di un sabato a Europa-Park con le montagne russe grandi risponde che Silver Star, Blue Fire, Voltron Nevera e Wodan sono nel piano della giornata e che conviene iniziare da Voltron. Sotto, una scheda di Europa-Park con gli orari e le attese delle attrazioni. | Quattro montagne russe grandi in un solo sabato. Se le tue gambe reggono ancora dopo Wodan, Parky non lo mette in conto. | right](/media/parky/it/plan.webp)
 
 Per iniziare un piano:
 
@@ -115,7 +115,7 @@ stomaco non lo conosce.
 Nella ricerca Parky si mette una lente davanti all’occhio, in basso a destra. I
 risultati arrivano come prima, lui li guarda solo con grande concentrazione.
 
-![La ricerca di Taron su park.fan, con l’attrazione, tre guide e una news come risultati. In basso a destra Parky guarda attraverso una lente. | Taron nella ricerca, Parky con la sua lente nell’angolo. | right](/parky/it/search.webp)
+![La ricerca di Taron su park.fan, con l’attrazione, tre guide e una news come risultati. In basso a destra Parky guarda attraverso una lente. | Taron nella ricerca, Parky con la sua lente nell’angolo. | right](/media/parky/it/search.webp)
 
 ## Parky tra una domanda e l’altra
 
