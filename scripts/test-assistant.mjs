@@ -49,7 +49,14 @@ import {
 import { isReactionAct, REACTION_ACTS, reactionTo } from '@/lib/assistant/reactions.ts';
 import { onSiteEvent, trackSiteEvent } from '@/lib/analytics/site-analytics.ts';
 import { readFileSync } from 'node:fs';
-import { isRide, REST, RIDE_MOTION, rideKeyframe } from '@/lib/assistant/parky-rides.ts';
+import {
+  isRide,
+  REST,
+  RIDE_MOTION,
+  RIDES,
+  rideFits,
+  rideKeyframe,
+} from '@/lib/assistant/parky-rides.ts';
 
 let passed = 0;
 function check(actual, expected, label) {
@@ -455,6 +462,36 @@ check(
   'a stop as a keyframe, turned about the wheels'
 );
 check([isRide('tower'), isRide('egg'), isRide(null)], [true, false, false], 'a ride by name');
+{
+  const fitting = (box) => RIDES.filter((ride) => rideFits(ride, box));
+  check(
+    fitting({ left: 318, top: 772, width: 56 }),
+    [...RIDES],
+    'the button in a phone corner has room for every ride'
+  );
+  check(
+    fitting({ left: 18, top: 62, width: 64 }),
+    ['coaster'],
+    "in the phone's open window only the loop fits"
+  );
+  check(
+    fitting({ left: 828, top: 102, width: 80 }),
+    ['coaster', 'hills'],
+    'in the window on a short laptop screen the launch and the free fall would leave the top'
+  );
+  check(fitting({ left: 828, top: 290, width: 80 }), [...RIDES], 'a tall screen fits them all');
+  check(
+    RIDE_MOTION.tower.reach.top < RIDE_MOTION.launch.reach.top &&
+      RIDE_MOTION.hills.reach.left < RIDE_MOTION.launch.reach.left,
+    true,
+    'the free fall reaches highest, the hills furthest left'
+  );
+  check(
+    rideFits('tower', { left: 0, top: 0, width: 0 }),
+    true,
+    'a drawing not laid out yet has room'
+  );
+}
 // Answers to what the visitor does.
 {
   const act = (name, props) => reactionTo(name, props)?.act ?? null;

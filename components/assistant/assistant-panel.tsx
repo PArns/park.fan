@@ -188,9 +188,10 @@ export function AssistantPanel({
       )}
     >
       <header className="border-border/60 from-primary/15 to-status-operating/10 relative flex touch-none items-center gap-3 rounded-t-2xl border-b bg-gradient-to-r py-1 pr-2 pl-[4.75rem] sm:py-2 sm:pr-3 sm:pl-24">
-        {/* On a desktop Parky floats large over the window's top edge, where it is seen. */}
+        {/* On a desktop Parky floats large over the window's top edge, where it is seen. On a
+            phone it keeps clear enough of the screen's edge for the loop to fit beside it. */}
         <ParkyLogo
-          className="absolute -top-7 left-1 size-16 drop-shadow-[0_8px_16px_rgb(0_0_0/0.35)] sm:-top-11 sm:size-20"
+          className="absolute -top-7 left-2 size-16 drop-shadow-[0_8px_16px_rgb(0_0_0/0.35)] sm:-top-11 sm:left-1 sm:size-20"
           // The closed window stays mounted; only an open one keeps Parky's idle life going.
           idle={open}
           mood={

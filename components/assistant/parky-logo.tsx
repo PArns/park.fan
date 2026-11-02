@@ -9,9 +9,14 @@ import { useSearchOpen } from '@/lib/analytics/search-presence';
 import { onSiteEvent } from '@/lib/analytics/site-analytics';
 import type { ParkyReactionAct } from '@/lib/assistant/reactions';
 import {
+  HUB,
+  LOOP,
   REST,
   RIDE_MOTION,
   RIDES,
+  RIM,
+  VIEW,
+  rideFits,
   rideKeyframe,
   type ParkyRide,
 } from '@/lib/assistant/parky-rides';
@@ -78,9 +83,15 @@ export interface ParkyCue {
   id: number;
 }
 
-/** An act by name, or a random ride for `ride`. */
-function actFor(act: ParkyAct | 'ride'): ParkyAct {
-  return act === 'ride' ? pickRandom(RIDES) : act;
+/**
+ * An act by name, or for `ride` a random one of the rides that fit on screen round the drawing;
+ * `null` when none does. A ride asked for by name plays wherever Parky is, as on its page's stage.
+ */
+function actFor(act: ParkyAct | 'ride', svg: SVGSVGElement | null): ParkyAct | null {
+  if (act !== 'ride') return act;
+  const box = svg?.getBoundingClientRect();
+  const room = box ? RIDES.filter((ride) => rideFits(ride, box)) : RIDES;
+  return room.length > 0 ? pickRandom(room) : null;
 }
 
 /** With company Parky fidgets and shows off; once nobody moves it yawns, reads and naps. */
@@ -125,8 +136,6 @@ const pink = 'oklch(0.8 0.13 355)';
  * right leg runs down the slope of the head, so the wheel stands in it rather than on top. Cabins
  * are circles, so they need no turning back to hang straight while the wheel spins.
  */
-const HUB = { x: 33, y: 0.5 };
-const RIM = 6.5;
 const CABINS = Array.from({ length: 8 }, (_, i) => ({
   x: +(HUB.x + RIM * Math.sin((i * Math.PI) / 4)).toFixed(2),
   y: +(HUB.y - RIM * Math.cos((i * Math.PI) / 4)).toFixed(2),
@@ -138,11 +147,6 @@ const SPOKES = CABINS.slice(0, 4)
 // The legs end inside the head, which is drawn over them.
 const A_FRAME = `M${HUB.x} ${HUB.y}L25.5 13M${HUB.x} ${HUB.y}L41.5 20`;
 
-/**
- * The coaster's loop: Parky turns about its centre, so the car's wheels, 33 units below it, run
- * round the inner rail. The stylesheet's `.parky-act-coaster` turns about the same point.
- */
-const LOOP = { x: 24, y: 16, r: 33 };
 const rail = 'oklch(0.6 0.19 25)';
 
 /**
@@ -245,7 +249,11 @@ function useGaze(svg: React.RefObject<SVGSVGElement | null>) {
  * somebody moves, which wakes it with a start. Each act runs once and clears, so the face rests
  * between them.
  */
-function useIdleAct(enabled: boolean, cue: ParkyCue | null) {
+function useIdleAct(
+  enabled: boolean,
+  cue: ParkyCue | null,
+  svg: React.RefObject<SVGSVGElement | null>
+) {
   const boredom = useParkyBoredom(enabled);
   const [act, setAct] = useState<ParkyAct | null>(null);
   // A cue already there when the face mounts (the button back after the window closed) is old.
@@ -256,8 +264,11 @@ function useIdleAct(enabled: boolean, cue: ParkyCue | null) {
     // One timer at a time, re-armed from its own callback, so cleanup always reaches it.
     let timer: ReturnType<typeof setTimeout>;
     let previous: ParkyAct | null = null;
-    const play = (wait: number, next: ParkyAct) => {
+    const play = (wait: number, asked: ParkyAct | 'ride') => {
       timer = setTimeout(() => {
+        // A ride is chosen when it is due, from where Parky is then; with no room the turn passes.
+        const next = actFor(asked, svg.current);
+        if (!next) return loop();
         previous = next;
         setAct(next);
         timer = setTimeout(() => {
@@ -272,12 +283,11 @@ function useIdleAct(enabled: boolean, cue: ParkyCue | null) {
       // Asleep, the doze is the last act: the sleeping face takes over until somebody moves.
       if (boredom === 'asleep') return;
       const [shortest, spread] = PAUSE_MS[boredom];
-      const next = pickRandom(ACTS[boredom], previous);
-      play(shortest + Math.random() * spread, actFor(next));
+      play(shortest + Math.random() * spread, pickRandom(ACTS[boredom], previous));
     };
     if (cue && cue.id !== played.current) {
       played.current = cue.id;
-      play(0, actFor(cue.act));
+      play(0, cue.act);
     } else if (boredom === 'asleep') play(SETTLE_MS, 'doze');
     else if (boredom === 'bored') play(SETTLE_MS, 'yawn');
     else if (woke) play(0, 'startle');
@@ -286,7 +296,7 @@ function useIdleAct(enabled: boolean, cue: ParkyCue | null) {
       clearTimeout(timer);
       setAct(null);
     };
-  }, [boredom, cue]);
+  }, [boredom, cue, svg]);
   return { act, asleep: boredom === 'asleep' && act === null };
 }
 
@@ -382,7 +392,7 @@ export function ParkyLogo({
   // A mood has its own motion; the idle life is for a face with nothing to do, and a search open
   // on the page is something to do.
   const { search, puzzled } = useSearchAlong(idle && !state);
-  const { act, asleep } = useIdleAct(idle && !state && !search, cue);
+  const { act, asleep } = useIdleAct(idle && !state && !search, cue, svg);
   const searching = search === 'searching';
   const gaze =
     state === 'thinking' || act === 'lights'
@@ -439,7 +449,7 @@ export function ParkyLogo({
   return (
     <svg
       ref={svg}
-      viewBox="0 0 48 48"
+      viewBox={`0 0 ${VIEW} ${VIEW}`}
       className={cn('size-8 overflow-visible', className)}
       style={length ? ({ '--parky-act': `${length}ms` } as React.CSSProperties) : undefined}
       aria-hidden="true"
@@ -569,11 +579,11 @@ export function ParkyLogo({
         // Two rails with ties between them, outside the body, so they stand while Parky turns.
         <g className="parky-track" fill="none" stroke={rail}>
           <circle cx={LOOP.x} cy={LOOP.y} r={LOOP.r} strokeWidth="1" />
-          <circle cx={LOOP.x} cy={LOOP.y} r={LOOP.r + 2.4} strokeWidth="1" />
+          <circle cx={LOOP.x} cy={LOOP.y} r={LOOP.r + LOOP.gauge} strokeWidth="1" />
           <circle
             cx={LOOP.x}
             cy={LOOP.y}
-            r={LOOP.r + 1.2}
+            r={LOOP.r + LOOP.gauge / 2}
             strokeWidth="2.2"
             strokeDasharray=".6 2.4"
             strokeOpacity=".7"

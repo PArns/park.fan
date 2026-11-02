@@ -146,6 +146,17 @@ faster low down. Eyes go wide and the mouth opens on every ride, and off every r
 dizzy (`FOLLOW_UP`): the pupils swirl round their eyes, one each way, the body reels, the mouth
 goes wavy and three stars circle its head.
 
+A random ride (`ride`, by itself or from a cue) is only one that fits on screen where Parky is at
+that moment (`rideFits`). Every ride heads up or to the left, away from the button's corner, but in
+the open window Parky sits in the top left corner, where the launch climbs about 72 units and the
+free fall about 112 units above the drawing, 120 and 187 px at the window's size. The same module
+works out each ride's reach from its geometry: Parky in the car as points round its outline, placed
+at every stop, and the rails. Only the left and top edges count; to the right the loop reaches a
+little past the drawing, and the hills come back from off the page on purpose. With no ride that
+fits, the turn passes. On a phone Parky keeps 8 px from the window's edge so the loop still fits; a
+laptop window needs about 740 px of height for the launch and about 870 px for the free fall. A ride
+asked for by name, as on Parky's page, plays anywhere.
+
 While a search is open anywhere on the page (the palette from the header or ⌘K, the hero's field,
 the homepage's step card, a listing's, the glossary's, the compare picker), Parky searches along: a
 magnifying glass swings up to its right eye, the eye looks big behind it, the pupils scan the
