@@ -116,7 +116,7 @@ export function SearchResultThumb({
 
 /**
  * The inside of a park, ride, show, restaurant or place row: thumbnail, name and status, then
- * place, live counts, wait and distance. The palette and the desktop dropdown put it in a
+ * place and distance on one line, the wait on the right. The palette and the desktop dropdown put it in a
  * `CommandItem` (`SearchResultRow`); its module is free of cmdk, so the hero's phone list can take
  * the thumbnail and the place from it. The row's container sets `flex items-center gap-2.5 sm:gap-4`.
  */
@@ -164,14 +164,8 @@ export function SearchResultRowBody({ result }: { result: SearchResultItem & Nea
               </span>
             )}
 
-            {result.attractionCounts && !isClosed && (
-              <span className="hidden shrink-0 truncate sm:inline">
-                ·{' '}
-                {tSearch('attractionsOpen', {
-                  open: result.attractionCounts.open,
-                  total: result.attractionCounts.total,
-                })}
-              </span>
+            {result.distanceM != null && (
+              <span className="shrink-0 tabular-nums">· {formatDistance(result.distanceM)}</span>
             )}
 
             {result.parentPark && (
@@ -201,18 +195,6 @@ export function SearchResultRowBody({ result }: { result: SearchResultItem & Nea
               result.type === 'park' &&
               result.load &&
               !isClosed && <CrowdLevelBadge level={result.load} className={ROW_ICON_PILL_CLASS} />
-            )}
-
-            {result.distanceM != null && (
-              // Centred like the pill beside it, so the two share a line.
-              <span
-                className={cn(
-                  SEARCH_SECONDARY_TEXT_CLASS,
-                  'caps-centred text-[11px] font-medium tabular-nums'
-                )}
-              >
-                {formatDistance(result.distanceM)}
-              </span>
             )}
           </div>
         </div>

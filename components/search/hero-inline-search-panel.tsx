@@ -56,7 +56,7 @@ interface HeroInlineSearchPanelProps {
    * hero it takes `tile`, more fill and more blur.
    */
   onHero?: boolean;
-  /** The field's session (`hero` or `home_steps`), which outlives this chunk's mount. */
+  /** The field's session (`hero`), which outlives this chunk's mount. */
   session: SearchSession;
 }
 

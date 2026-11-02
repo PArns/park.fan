@@ -10,8 +10,9 @@
  * Writes `public/parky/<locale>/{chat,plan,search}.webp`.
  */
 import { existsSync, mkdirSync } from 'node:fs';
-import { chromium, devices } from 'playwright';
+import { chromium } from 'playwright';
 import sharp from 'sharp';
+import { PHONE } from './lib/phone-device.mjs';
 
 const base =
   process.argv.find((arg) => arg.startsWith('--base='))?.slice(7) ?? 'http://localhost:3000';
@@ -167,7 +168,7 @@ function stored(locale, which) {
 /** A phone in the dark theme, Parky forced on, its lines muted and its challenge passed. */
 async function phone(browser, locale, chat) {
   const context = await browser.newContext({
-    ...devices['iPhone 13'],
+    ...PHONE,
     locale,
     timezoneId: 'Europe/Berlin',
     colorScheme: 'dark',

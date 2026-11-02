@@ -117,8 +117,6 @@
       "searchExamples": "Efteling, Taron, Europa-Park …"
     },
     "sections": {
-      "liveNow": "Parken open wereldwijd",
-      "liveNowIntro": "Hoeveel parken er op elk continent nu open zijn.",
       "featuredParks": "Populaire parken",
       "featuredParksIntro": "Zes grote parken om mee te beginnen. Elke kaart brengt je naar de parkpagina met alle wachttijden."
     },
@@ -142,7 +140,6 @@
       "dailyScheduleLocal": "Dagelijks · 06:00 UTC · {time} lokaal",
       "howTitle": "Hoe voorspellingen tot stand komen",
       "howText": "In elke voorspelling tellen drie dingen mee: de gemeten wachttijdhistorie van het park, de weersverwachting, schoolvakanties en feestdagen, en wat er die dag in het park gebeurt, zoals speciale evenementen of de start van het seizoen. Daaruit rekent het model de verwachte wachttijd per attractie en per uur uit en vat die samen tot het drukteniveau van de dag, voor zover het park zijn openingstijden al gepubliceerd heeft.",
-      "fancastLink": "Zo werkt Fancast, ons voorspelmodel",
       "improvingTitle": "Elke voorspelling wordt de dag erna nagerekend",
       "improvingText": "De dag na elke voorspelling legt het systeem die naast de werkelijk gemeten wachttijd en neemt het verschil mee in de volgende trainingsronde. De cijfers hierboven komen uit die vergelijking.",
       "badge": {
@@ -164,245 +161,69 @@
     }
   },
   "homeStory": {
-    "steps": {
-      "kicker": "Zo werkt het",
-      "title": "Een parkdag plannen",
-      "lead": "Een park uitkiezen, de dag checken, de attracties op volgorde zetten. Voor elk van die drie stappen vind je hier metingen uit ruim 200 parken.",
-      "one": {
-        "title": "Park kiezen",
-        "text": "Typ het park of de attractie, of neem de suggestie bij jou in de buurt. Elk park heeft een eigen pagina met live wachttijden, openingstijden en kalender.",
-        "tip": "De zoekfunctie vindt ook attracties, shows en restaurants. Typ je “Taron”, dan krijg je de baan met het park erbij.",
-        "placeholder": "Park of attractie",
-        "label": "Zoek een park of attractie"
-      },
-      "two": {
-        "title": "Dag checken",
-        "text": "De druktekalender geeft elke dag een kleur, voor zover het park zijn openingstijden al gepubliceerd heeft. Groen betekent normaal of rustiger, rood duidelijk drukker dan op een gewone dag in dat park.",
-        "tip": "Dagen die naast elkaar liggen, hebben vaak een andere kleur. Kun je de datum nog kiezen, kijk dan voor je boekt ook naar de week ervoor en erna.",
-        "legendLow": "rustig",
-        "caption": "Een maand in de kalender: elke tegel een dag, de kleur is de verwachte drukte."
-      },
-      "three": {
-        "title": "Route plannen",
-        "text": "Elke attractie heeft een dagcurve uit haar gemeten dagen. Daarop zie je op welk tijdstip de rij meestal het kortst is.",
-        "tip": "De curve is een mediaan over veel dagen. Staat een baan ’s ochtends stil, dan verloopt de rest van de dag anders dan de curve.",
-        "caption": "Het typische dagverloop van een achtbaan, van opening tot avond.",
-        "best": "De rustigste momenten liggen vroeg en in het laatste uur."
-      }
-    },
-    "blogTeaser": {
-      "label": "Uit de blog"
-    },
     "nearby": {
       "kicker": "Jouw locatie",
       "title": "Pretparken bij jou in de buurt",
       "lead": "Met je locatie toont park.fan de dichtstbijzijnde parken, de parken die open zijn eerst, en hoe druk het er nu is.",
       "allParks": "Alle parken ontdekken"
     },
-    "live": {
-      "kicker": "Live wachttijden",
-      "title": "Wachttijden voor elke baan, elke vijf minuten opnieuw",
-      "lead": "Voor elke attractie en elk rijtype, plus openingstijden en storingen.",
-      "body": "95 minuten is veel op een dinsdag in september en op een zaterdag in oktober een gewone ochtend. Daarom staat op elke attractiepagina wat op die weekdag gebruikelijk is en hoe lang de rij op drukke dagen wordt.",
-      "ridesTitle": "Elke attractie heeft een eigen pagina",
-      "ridesText": "Op de pagina van een baan staan de rijtypes, het dagverloop uit meting en voorspelling, typische wachttijden per weekdag, de minimumlengte en een rope-drop-tip.",
-      "ridesLink": "{park}: alle wachttijden live",
-      "typicalTitle": "Attractiepagina’s",
-      "ropeDropTitle": "Rope-drop-tip",
-      "ropeDropText": "Meteen bij opening hierheen. Bij de populaire banen is het eerste uur meestal het rustigste van de dag.",
-      "howtoLink": "Handleiding: wachttijden lezen en duiden"
+    "favorites": {
+      "kicker": "Favorieten",
+      "title": "Jouw parken en attracties",
+      "lead": "Alles wat je met de ster hebt gemarkeerd, met status en actuele wachttijd."
     },
-    "shows": {
-      "kicker": "Shows & restaurants",
-      "title": "Wanneer de show begint en waar je kunt eten",
-      "lead": "Per park zet park.fan de shows met hun speeltijden op een rij, en de restaurants met keuken, openingstijden en of je moet reserveren.",
-      "showsTitle": "Speeltijden",
-      "showsHint": "Elke voorstelling van de dag met haar tijd, de eerstvolgende bovenaan, en of de show nu in het seizoen loopt.",
-      "restaurantsTitle": "Restaurants in het park",
-      "restaurantsHint": "Keuken, openingstijden en of je een tafel moet reserveren.",
-      "body": "Tijdens een grote voorstelling staat het publiek bij geen enkele baan in de rij. Is de show afgelopen, dan komt iedereen tegelijk terug. Met de speeltijden kun je een baan inplannen terwijl de show loopt.",
-      "statAttractions": "Attracties",
-      "statShows": "Shows",
-      "statRestaurants": "Restaurants",
-      "statCalendar": "dagen kalender"
-    },
-    "calendar": {
-      "kicker": "Druktekalender",
-      "title": "Groene dag of rode dag?",
-      "lead": "In de kalender krijgt elke dag een kleur zodra het park er openingstijden voor heeft gepubliceerd. Kijk erin voordat je een hotel boekt.",
-      "pipelineTitle": "Hoe een dag zijn kleur krijgt",
-      "pipelineLead": "Vier stappen die elke nacht opnieuw draaien.",
-      "p1": {
-        "title": "Meten",
-        "text": "Elke vijf minuten bevraagt park.fan de wachtrijsystemen van de parken: standby, single rider, Lightning Lane, virtuele rijen, plus de openingsstatus van elke attractie.",
-        "label": "Meetinterval"
-      },
-      "p2": {
-        "title": "Verzamelen",
-        "text": "Elke meting wordt opgeslagen met tijdstempel, attractie en park. Daaruit blijkt per baan hoe de wachttijd verandert over de dag, de week en het seizoen.",
-        "label": "Datapunten"
-      },
-      "p3": {
-        "title": "Verrijken",
-        "text": "Daar komen signalen van buiten bij: weersverwachting, schoolvakanties en feestdagen uit de landen waar de parken staan, brugdagen, en bijzondere evenementen zoals Halloween of de seizoensstart.",
-        "label": "Vakanties, weer"
-      },
-      "p4": {
-        "title": "Voorspellen",
-        "text": "Fancast rekent daaruit de verwachte wachttijd per attractie en per uur, en verdicht die tot het drukteniveau van de dag: de kleur die je in de kalender ziet.",
-        "label": "Dagen vooruit"
-      },
-      "feedback": "De dag erna wordt elke voorspelling naast de werkelijk gemeten wachttijd gelegd. Het verschil gaat mee in de volgende training, en daarom verandert de kalenderkleur voor dezelfde dag naarmate die dichterbij komt.",
-      "body": "Voor de kleur wordt de dag vergeleken met een gewone dag in hetzelfde park. Groen betekent even druk als anders of rustiger, oranje en rood betekenen langere rijen dan gebruikelijk. Een rode dag in een klein park kan daardoor nog steeds kortere wachttijden hebben dan een groene dag in Europa-Park.",
-      "cta": "{park}: de druktekalender",
-      "bestTimeLink": "Beste reistijd: de rustigste weekdagen en maanden"
-    },
-    "ai": {
-      "kicker": "Onze AI",
-      "title": "Een eigen voorspelling, met de afwijking ernaast",
-      "lead": "De voorspellingen komen van Fancast, een model dat park.fan zelf traint, elke dag om 06:00 UTC met de wachttijden van de dag ervoor.",
-      "compareTitle": "Hoe andere wachttijdsites voorspellen",
-      "compareLead": "Drie aanpakken zijn gangbaar. Geen van de drie vermeldt hoe ver de voorspellingen ernaast zaten.",
-      "c1": {
-        "kicker": "Aanpak 1",
-        "title": "Helemaal geen voorspelling",
-        "text": "Een van de bekendste Duitse wachttijdsites ziet bewust af van voorspellingen: te veel factoren, en een verkeerde voorspelling zou parken én bezoekers kunnen schaden. Getoond wordt alleen hoe druk het wás.",
-        "limit": "Welke dag volgende maand druk wordt, zie je niet aan een terugblik."
-      },
-      "c2": {
-        "kicker": "Aanpak 2",
-        "title": "Het gemiddelde van vergelijkbare dagen",
-        "text": "Een statistisch model zoekt vergelijkbare dagen in het verleden – dezelfde weekdag, dezelfde vakantiesituatie – en middelt die. Meestal 90 dagen vooruit en vaak voor maar één park.",
-        "limit": "Zonder drie vergelijkbare dagen blijft de dag leeg."
-      },
-      "c3": {
-        "kicker": "Aanpak 3",
-        "title": "Statistiek plus een beetje AI",
-        "text": "Ensembles mengen statistische analyse met een AI-aandeel en rekenen vakanties, feestdagen en weer mee, aangeduid als bèta, voor één park, in stappen van “uitstekend” tot “zeer lang”.",
-        "limit": "Hoe vaak die stap klopt, staat er niet bij."
-      },
-      "answerTitle": "Fancast rekent per uur en per attractie, en maakt zijn fout openbaar.",
-      "answerText": "Naast het drukteniveau van de dag krijg je voor elke attractie de verwachte wachttijd per uur. Elke voorspelling wordt later vergeleken met de gemeten wachttijd, en uit die vergelijking komen de nauwkeurigheidscijfers verderop."
-    },
-    "bestTime": {
-      "kicker": "Beste bezoektijd",
-      "title": "Veel banen hebben twee rustige periodes, ’s ochtends en tegen de avond",
-      "lead": "Rope drop helpt niet bij elke baan. Sommige zijn de hele dag even druk, andere pas vanaf het middaguur. De curve is die van één attractie, als mediaan over de dagen waarop ze gemeten is.",
-      "chartSubtitle": "Mediaan uit {days} gemeten dagen, elke 5 minuten bemonsterd",
-      "legendToday": "vandaag gemeten",
-      "legendMedian": "mediaan van eerdere dagen",
-      "legendBand": "gebruikelijk bereik (P25–P90)",
-      "legendBandUpper": "mediaan tot piek",
-      "heatTitle": "Hittewaarschuwing",
-      "heatText": "Op hete dagen staan er meer mensen in de rij bij de waterattracties. Daarom telt de weersverwachting mee in de kalender.",
-      "historyTitle": "Historie",
-      "historyText": "Het model rekent voor elke attractie apart, met haar eigen dagverloop en seizoen. Wat vandaag gemeten wordt, gaat morgenochtend mee in de training.",
-      "hubLink": "Beste reistijd voor ruim 200 parken",
-      "peakAt": "Het drukst rond",
-      "windowOpening": "Na de opening",
-      "windowClosing": "Tegen het eind van de dag",
-      "windowWait": "rond {minutes} min wachten",
-      "legendForecast": "voorspelling voor vandaag",
-      "legendForecastBand": "voorspelling ±{minutes} min",
-      "legendPredicted": "vooraf voorspeld",
-      "localTime": "lokale tijd",
-      "stateLive": "meet nu",
-      "stateQuiet": "nu geen meting",
-      "stateClosed": "buiten openingstijden",
-      "axisLabel": "Wachttijd in minuten",
-      "nowMarker": "nu",
-      "vsMedian": "t.o.v. mediaan"
-    },
-    "inPark": {
-      "kicker": "Favorieten & kaart",
-      "title": "Favorieten en plattegrond voor je dag in het park",
-      "lead": "Vóór je bezoek helpen de kalender en de voorspelling. In het park kijk je eerder naar de attracties die je bewaard hebt en naar de plattegrond met de wachttijden.",
-      "favTitle": "Favorieten",
-      "favHint": "Parken, attracties, shows, restaurants",
-      "favText": "Tik op de ster en het park of de attractie verschijnt op je homepage, met live wachttijd en openingsstatus. Alles wordt in je browser opgeslagen, een account heb je niet nodig.",
-      "mapTitle": "Kaart & in-park-modus",
-      "mapText": "Op de plattegrond staan attracties, shows en restaurants als gekleurde markers. Tik je erop, dan zie je status en wachttijd. Ben je in het park, dan toont de kaart je locatie en staan de dichtstbijzijnde attracties bovenaan."
-    },
-    "dictionary": {
-      "kicker": "Woordenboek · nerdkennis",
-      "title": "Baanelementen zoals zero-G roll en Immelmann in de 3D-player",
-      "lead": "Het woordenboek legt begrippen uit zoals airtime, rope drop en single rider. Baanelementen kun je in de 3D-player afspelen en op elk punt van de rit stilzetten.",
-      "pickerTitle": "Baanelementen",
-      "cta": "Alle begrippen in het woordenboek",
-      "stage": "Figuur afspelen"
-    },
-    "why": {
-      "kicker": "Waarom park.fan",
-      "title": "Wat hier anders gaat",
-      "r1": {
-        "title": "Eigen model, dagelijks getraind",
-        "text": "Fancast is door park.fan zelf gebouwd, van het voorbereiden van de data tot de training, en wordt elke ochtend opnieuw getraind met de wachttijden van de dag ervoor."
-      },
-      "r2": {
-        "title": "De nauwkeurigheid staat er openbaar",
-        "text": "De gemiddelde fout en de R²-waarde staan op deze pagina en worden na elke training opnieuw berekend, ook als ze slechter uitvallen."
-      },
-      "r3": {
-        "title": "Elke vijf minuten nieuwe wachttijden",
-        "text": "park.fan leest drie openbare bronnen uit en vergelijkt ze met elkaar. Valt een baan uit, dan zie je dat bij de volgende update op de pagina van die baan."
-      },
-      "r4": {
-        "title": "Gratis en zonder account",
-        "text": "Er is geen betaalmuur en geen abonnement met extra data. Alles wat park.fan over een park heeft, staat voor iedereen zichtbaar op de parkpagina."
-      },
-      "r5": {
-        "title": "Ruim 200 parken, 23 landen, 6 talen",
-        "text": "Onder meer Tokyo DisneySea, de Efteling en Phantasialand. Publiceert een park zijn wachttijden, dan staan ze hier; doet het dat niet, dan staat dat op de parkpagina."
-      },
-      "r6": {
-        "title": "Artikelen met meetwaarden",
-        "text": "Op de blog vind je parkgidsen en analyses, bijvoorbeeld waarom een park in oktober vol is en in november bijna leeg. De wachttijden daarin zijn live widgets met de actuele cijfers."
-      },
-      "howtoLink": "Zo werkt park.fan",
-      "fancastLink": "Fancast, ons voorspelmodel"
-    },
-    "founder": {
-      "kicker": "De mens erachter",
-      "title": "Een ontwikkelaar die te vaak in de rij heeft gestaan",
-      "name": "Patrick Arns",
-      "role": "Oprichter van park.fan",
-      "p1": "Achter park.fan zit één persoon: Patrick, die sinds zijn kindertijd naar pretparken gaat en al ruim 25 jaar software ontwikkelt. Het begon met 90 minuten in de rij voor één baan en het gevoel dat een beetje planning dat had kunnen voorkomen.",
-      "p2": "Daaruit groeide eerst een tracker voor wachttijden, toen een database en uiteindelijk het voorspelmodel dat elke dag opnieuw getraind wordt. De data-import, het model en deze website heeft hij zelf gebouwd.",
-      "b1": "25+ jaar softwareontwikkeling",
-      "b2": "Parknerd sinds zijn jeugd",
-      "b3": "Geen concern, geen investeerder",
-      "b4": "Geen betaalmuur, geen abonnementen",
-      "b5": "ML-model volledig zelf gebouwd",
-      "b6": "Nauwkeurigheid openbaar vermeld",
-      "authorLink": "Meer over Patrick op de blog",
-      "portraitAlt": "Patrick Arns, oprichter van park.fan"
-    },
-    "blog": {
-      "kicker": "Blog & gidsen",
-      "title": "Artikelen over afzonderlijke parken en attracties",
-      "lead": "Parkgidsen, wachttijdanalyses en seizoenstips, geschreven door iemand die zelf in de rij staat. Is er over een park een artikel, dan staat de link op de parkpagina.",
-      "bestTimeTitle": "Beste reistijd voor pretparken",
-      "bestTimeText": "Wanneer parken het leegst zijn: de rustigste weekdagen en maanden, uit de gemeten wachttijden van ruim 200 parken.",
-      "glossaryCta": "Woordenboek: single rider, rope drop, Lightning Lane",
-      "glossaryText": "Vaktermen kort uitgelegd, baanelementen in de 3D-player."
+    "popular": {
+      "kicker": "Populaire parken",
+      "title": "Wachttijden en drukte in de populairste parken",
+      "lead": "Phantasialand, Europa-Park en de andere grote parken, met hun status en drukte van nu. Bij de rest leidt de naam naar de wachttijden en het kalendericoon naar de drukte-kalender."
     },
     "faq": {
       "kicker": "Veelgestelde vragen",
       "title": "Wachttijden in pretparken, kort uitgelegd",
+      "lead": "Waar de wachttijden vandaan komen, welke parken erbij zijn en wat het kost: niets.",
+      "link": "Zo werkt park.fan",
       "note": "Alle gegevens zonder garantie."
     },
-    "liveNow": {
-      "kicker": "Wereldwijd"
+    "parky": {
+      "kicker": "Parky",
+      "title": "Niet gevonden wat je zoekt? Vraag het Parky",
+      "lead": "Parky is een pretparknerd. Hij weet hoe lang je nu bij Taron in de rij staat, op welke zaterdag in juni Europa-Park het leegst is en wat airtime eigenlijk is. De cijfers haalt hij uit dezelfde live data als deze pagina.",
+      "link": "Vraag het Parky"
     },
-    "platform": {
-      "kicker": "Cijfers",
-      "statsKicker": "Live uit het platform"
+    "reading": {
+      "kicker": "Nieuw op park.fan",
+      "title": "Pretparknieuws en gidsen",
+      "lead": "Wat er nu in de parken verandert, en gidsen per park met de beste bezoekdagen en de gemeten wachttijden van de attracties.",
+      "popularGuides": "Meest gelezen gidsen"
     },
-    "families": {
-      "kicker": "Met kinderen",
-      "title": "Minimumlengtes in één overzicht",
-      "lead": "Het park geeft per attractie een lengte op. Voor je bezoek zie je welke jullie samen kunnen doen en waarvoor je kind nog te klein is.",
-      "cardBody": "Alle attracties op minimumlengte."
+    "tour": {
+      "live": {
+        "kicker": "Live wachttijden",
+        "title": "Wachttijden live, voor elke attractie",
+        "text": "Taron, Blue Fire, Wodan: op elke parkpagina staat hoe lang je nu bij elke attractie in de rij staat, plus de drukte van zeer rustig tot extreem. De cijfers worden elke vijf minuten ververst.",
+        "link": "Zo werkt park.fan",
+        "alt": "De parkpagina van Europa-Park op een telefoon: de topattracties met hun live wachttijden en de drukte."
+      },
+      "calendar": {
+        "kicker": "Drukte-kalender",
+        "title": "De drukte-kalender: hoe druk het wordt, dag voor dag",
+        "text": "Elke openingsdag krijgt een kleur van groen tot rood en een verwachte wachttijd. Daarbij komen openingstijden, schoolvakanties en het weer, want een dinsdag in de herfstvakantie is geen gewone dinsdag.",
+        "link": "Beste reistijd",
+        "alt": "De drukte-kalender van Europa-Park voor november op een telefoon, elke dag met kleur en verwachte wachttijd."
+      },
+      "ride": {
+        "kicker": "Voorspelling",
+        "title": "Voorspelling: het beste uur voor elke attractie",
+        "text": "Silver Star om 10 uur is een andere attractie dan Silver Star om 14 uur. Op de pagina van elke attractie staat de wachttijd als dagcurve, gemeten en voorspeld, en de dagplanner zet je attracties in de uren waarin de rij het kortst is.",
+        "link": "Dag plannen",
+        "alt": "De pagina van Silver Star op een telefoon: gemeten en voorspelde wachttijden van de dag en de beste tijden."
+      }
+    },
+    "parkLinks": {
+      "title": "Direct naar wachttijden en drukte-kalenders",
+      "label": "Wachttijden en drukte-kalenders van populaire parken",
+      "waits": "Wachttijden",
+      "calendar": "Drukte-kalender"
     }
   },
   "footer": {
@@ -1675,6 +1496,11 @@
       "demoEnd": "Demo stoppen",
       "demoNoLocation": "Zonder locatie sta je vast op één plek in het park.",
       "dialGroup": "Kompas, noorden boven"
+    },
+    "shortWaits": {
+      "title": "Nu kort in de rij",
+      "hint": "Attracties in de buurt waar de rij nu veel korter is dan normaal.",
+      "usually": "anders {minutes} {unit}"
     }
   },
   "location": {
@@ -1757,21 +1583,8 @@
     "parkLink": "Alle Universal-parken"
   },
   "stats": {
-    "globalStats": "Wereldwijde statistieken",
-    "globalStatsIntro": "Live gegevens van pretparken en attracties wereldwijd.",
-    "openParks": "Open parken",
     "totalAttractions": "Totaal attracties",
-    "mostCrowded": "Drukste",
-    "leastCrowded": "Rustigste",
-    "longestWait": "Langste wachtrij",
-    "shortestWait": "Kortste wachtrij",
-    "platformStats": "Platform statistieken",
-    "platformStatsDescription": "Wat park.fan op dit moment meet, over alle parken samen.",
-    "totalWaitTime": "Totale wachttijd",
-    "dataPoints": "Datapunten",
-    "dataPointsTooltipSuffix": "punten momenteel",
-    "queueDataRecords": "wachtrij records",
-    "alsoTracking": "Ook tracking"
+    "dataPointsTooltipSuffix": "punten momenteel"
   },
   "homepage": {
     "hero": {
@@ -1835,7 +1648,6 @@
     },
     "avgWait": "gem. {minutes} min",
     "avgWaitShort": "Ø {minutes} min",
-    "attractionsOpen": "{open}/{total} attracties open",
     "heroHint": "Begin te typen, we zoeken parken, attracties, shows en restaurants",
     "newestGuide": "Nieuwste gids"
   },
@@ -1972,16 +1784,12 @@
       "faq": {
         "whatIsQ": "Wat is park.fan?",
         "whatIsA": "park.fan verzamelt live wachttijden uit meer dan 200 pretparken in 23 landen. Op elke parkpagina staan de actuele wachttijden van alle attracties, de speeltijden van de shows, de openingstijden en een druktekalender voor de komende maanden.",
-        "whichParksQ": "Welke pretparken worden ondersteund door park.fan?",
+        "whichParksQ": "Welke pretparken staan op park.fan?",
         "whichParksA": "park.fan dekt meer dan 200 pretparken wereldwijd, waaronder Phantasialand, Europa-Park, Disneyland Paris, Efteling, Walibi Belgium, Toverland en Bobbejaanland. De volledige lijst met live wachttijden staat op de overzichtspagina met parken.",
         "liveDataQ": "Zijn de wachttijden op park.fan live en in realtime?",
         "liveDataA": "Ja. Waar een park zijn wachttijden publiceert, vragen we ze elke vijf minuten op, uit drie openbare bronnen tegelijk: ThemeParks.wiki, Wartezeiten.app en Queue-Times.com. Wijken de bronnen van elkaar af, dan beslist de meerderheid, daarna de mediaan, daarna het gemiddelde. Het resultaat wordt op vijf minuten afgerond, omdat de parken ze zo aangeven.",
         "freeQ": "Is het gebruik van park.fan gratis?",
         "freeA": "Ja. Live wachttijden, openingstijden, shows, restaurants en de druktekalender zijn te zien zonder account en zonder betaalmuur. Er is geen abonnement waarachter meer gegevens liggen.",
-        "favoritesQ": "Kan ik mijn favoriete parken en attracties opslaan op park.fan?",
-        "favoritesA": "Ja. Tik op de ster bij een park, een attractie, een show of een restaurant. Je favorieten verschijnen dan op de startpagina, met live wachttijd en openingsstatus. Ze worden in je browser opgeslagen, een account heb je niet nodig.",
-        "featuresQ": "Welke informatie biedt park.fan naast live wachttijden?",
-        "featuresA": "Op elke parkpagina staan ook de openingstijden, de speeltijden van de shows, de restaurants met keuken en reserveringsplicht, de weersverwachting voor die dag, de gemeten wachttijdhistorie en de druktekalender. Op de pagina van elke attractie komt het typische dagverloop van die attractie erbij.",
         "mobileQ": "Werkt park.fan ook op smartphones?",
         "mobileA": "Ja. park.fan werkt in de browser op telefoon, tablet en computer, een app hoef je niet te installeren. In het park kun je erop nakijken waar de rij op dat moment kort is. Merkt de site dat je in het park bent, dan schuiven de dichtstbijzijnde attracties naar boven."
       }
@@ -2277,8 +2085,6 @@
       "postsCount": "{count, plural, =1 {# artikel} other {# artikelen}}"
     },
     "home": {
-      "heading": "Uit het blog",
-      "intro": "Reisverslagen, data-analyses en pretparknieuws – de nieuwste artikelen staan bovenaan.",
       "viewAll": "Alle artikelen lezen"
     },
     "gallery": {
@@ -3199,7 +3005,8 @@
     "themeLight2": "Licht aan, zonnebril op!",
     "themeLight3": "Daglicht! Perfect parkweer.",
     "install1": "Nu woon ik op je beginscherm!",
-    "install2": "Geïnstalleerd! Vanaf nu ben ik maar één tik verwijderd."
+    "install2": "Geïnstalleerd! Vanaf nu ben ik maar één tik verwijderd.",
+    "thatsMe": "Hé, gaaf! Dat ben ik!"
   },
   "parkyPage": {
     "metaTitle": "Parky, de chatassistent van park.fan",
@@ -3209,7 +3016,6 @@
     "intro": "Parky woont rechtsonder op park.fan, in de ronde tekstballon met een reuzenrad op zijn hoofd. Tik hem aan en schrijf hem zoals je een vriend schrijft die alles van pretparken weet.",
     "ask": "Vraag het Parky nu",
     "off": "Parky houdt even pauze. Kom later nog eens terug.",
-    "shotLabel": "Screenshot",
     "examplesLabel": "Bijvoorbeeld",
     "chapters": {
       "ask": {

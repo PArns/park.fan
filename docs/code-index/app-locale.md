@@ -434,7 +434,7 @@ Route `/[locale]` (not-found).
 
 Route `/[locale]` (page).
 
-- `default (HomePage)` _component_
+- `default (HomePage)` _component_: The homepage, written for somebody who has never been here: what this is and whether their park is in it (the hero), then one stop after another, each a heading worded as people search beside its content (`HomeStop`): what is new (the news …
 - `generateMetadata` _function_
 - `revalidate` _const_: A static shell per locale, served from the CDN.
 
@@ -528,10 +528,6 @@ Route `/[locale]/parks/universal` (page).
 - `AskParkyButton` _component_: The page's one real way into the chat: opens Parky's window, or says Parky is resting when it is switched off. Until the gate has decided it waits, disabled.
 - `ParkyFigure` _component_: Parky in the page itself, at any size, with its life of its own.
 - `ParkyStage` _component_: A few of Parky's acts side by side, each on its own loop and a little apart so they do not move as one, and a last tile that keeps the rest a secret.
-
-### [`parky/_phone-shot.tsx`](../../app/%5Blocale%5D/parky/_phone-shot.tsx)
-
-- `PhoneShot` _component_: One of the screenshots in a phone, with a soft glow of the brand colours behind it, tilted a little from `md` up. `tilt` leans it the other way, for a row that runs the other way.
 
 ### [`parky/page.tsx`](../../app/%5Blocale%5D/parky/page.tsx)
 

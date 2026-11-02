@@ -799,6 +799,10 @@ export const EVENT_INFO: Record<SiteEventName, EventInfo> = {
     when: 'Website, Ticketshop, Karte oder Social-Link eines Parks.',
   },
   pwa_installed: { label: 'App installiert', when: 'Der Browser meldet die Installation.' },
+  home_parky_seen: {
+    label: 'Parky-Stop gesehen',
+    when: 'Der Parky-Abschnitt der Startseite erreicht die Bildschirmmitte, einmal pro Aufruf.',
+  },
   page_read: {
     label: 'Gelesen',
     when: 'Ein Beitrag, Park oder eine Bahn war fünf Sekunden im Vordergrund; speist die Meistgelesen-Listen.',
@@ -986,6 +990,7 @@ const PLANNER_VALUE_LABEL: Record<string, Record<string, string>> = {
     alert: 'Alarm gestellt',
     theme: 'Hell oder dunkel',
     install: 'App installiert',
+    hello: 'Das bin ich (Startseite)',
   },
   entrance: {
     scurry: 'Huschen',

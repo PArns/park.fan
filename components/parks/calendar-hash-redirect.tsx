@@ -1,4 +1,5 @@
 import type { Locale } from '@/i18n/config';
+import { FirstLoadScript } from '@/components/common/first-load-script';
 import {
   currentParkCalendarMonth,
   parkCalendarMonthsBack,
@@ -44,7 +45,8 @@ interface CalendarHashRedirectProps {
  * The month window is computed in the script, because this page is prerendered and a baked "now"
  * would be a month off across a month boundary; only the relative bounds travel from the server.
  * `coverageTo` is not passed, as in the hook. A month outside the window falls back to the hub, as
- * the hook does. The hook stays for client-side navigations, `hashchange` and a blocked script.
+ * the hook does. The hook stays for client-side navigations, `hashchange` and a blocked script;
+ * a client navigation renders no script at all ({@link FirstLoadScript}).
  */
 export function CalendarHashRedirect({
   locale,
@@ -63,18 +65,17 @@ export function CalendarHashRedirect({
   const zone = timezone || 'UTC';
 
   return (
-    <script
-      dangerouslySetInnerHTML={{
-        __html:
-          `(function(){var h=location.hash.slice(1),m=/^calendar-(\\d{4})-(\\d{2})$/.exec(h);` +
-          `if(h!=="calendar"&&!m)return;var b=${scriptLiteral(hub)},t=b;` +
-          `if(m){var y=+m[1],o=+m[2];if(o>=1&&o<=12){try{` +
-          `var p=new Intl.DateTimeFormat("en-CA",{timeZone:${scriptLiteral(zone)},year:"numeric",month:"2-digit"}).formatToParts(new Date()),` +
-          `g=function(k){var e=p.find(function(x){return x.type===k});return e?+e.value:0},` +
-          `d=y*12+o-1-(g("year")*12+g("month")-1);` +
-          `if(d>=${minDelta}&&d<=${maxDelta})t=b+"/"+y+"/"+o}catch(e){}}}` +
-          `location.replace(t)})()`,
-      }}
+    <FirstLoadScript
+      html={
+        `(function(){var h=location.hash.slice(1),m=/^calendar-(\\d{4})-(\\d{2})$/.exec(h);` +
+        `if(h!=="calendar"&&!m)return;var b=${scriptLiteral(hub)},t=b;` +
+        `if(m){var y=+m[1],o=+m[2];if(o>=1&&o<=12){try{` +
+        `var p=new Intl.DateTimeFormat("en-CA",{timeZone:${scriptLiteral(zone)},year:"numeric",month:"2-digit"}).formatToParts(new Date()),` +
+        `g=function(k){var e=p.find(function(x){return x.type===k});return e?+e.value:0},` +
+        `d=y*12+o-1-(g("year")*12+g("month")-1);` +
+        `if(d>=${minDelta}&&d<=${maxDelta})t=b+"/"+y+"/"+o}catch(e){}}}` +
+        `location.replace(t)})()`
+      }
     />
   );
 }

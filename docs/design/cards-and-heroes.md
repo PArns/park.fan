@@ -92,9 +92,8 @@ lives.
   shadows).
 - **The phone segment of `sizes`**: `96px` in `FEATURE_SIZES` / `CARD_SIZES`, `64px` in
   `CARD_PHOTO_SIZES`. Matching the row also makes both markups pick one srcset candidate.
-- **The `gap-2` grids**: `BlogRelatedPosts`, the park, ride and glossary sections, and both halves
-  of `LatestBlogSection`'s `lead`, whose gaps must agree or the lead detaches from its list. Card
-  gaps (`gap-4`–`gap-6`) read as a stack of blocks.
+- **The `gap-2` grids**: `BlogRelatedPosts`, the park, ride and glossary sections, and the
+  homepage's `HomeReading`. Card gaps (`gap-4`–`gap-6`) read as a stack of blocks.
 - **A row grid drops the card track.** Park grids keep `[grid-auto-rows:auto_1fr_auto]` from `sm`
   up and switch to `max-sm:auto-rows-auto` below (as the ride list in `LandSection` does): in one
   column a `1fr` track sizes every row to the tallest, so one park with a third badge gave every

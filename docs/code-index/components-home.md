@@ -9,6 +9,10 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `AnnounceSection` _component_: Homepage announcement band from `content/home/announce.<locale>.md`: background photo, title, flip-clock countdown to `countdownTo` and the markdown body. Renders nothing outside the `startAt`/`endAt` window or without a countdown.
 
+### [`faq-section.tsx`](../../components/home/faq-section.tsx)
+
+- `FaqSection` _component_: The homepage FAQ, visible, and the page's only `FAQPage` markup: `FaqList` emits it from the same array it renders, so the markup cannot drift from the page.
+
 ### [`featured-park-cards-live.tsx`](../../components/home/featured-park-cards-live.tsx)
 
 - `FeaturedParkCardsLive` _component_: Featured-parks card grid with a live overlay: the shell bakes only day-stable structure (name, link, city, photo), so the pages embedding it keep long ISR windows, and status, crowd, wait and schedule land on the client on a 5-minute poll.
@@ -28,15 +32,6 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`flip-clock-lazy.tsx`](../../components/home/flip-clock-lazy.tsx)
 
 - `FlipClockLazy` _component_: The countdown, code-split from a client module.
-
-### [`global-stats-live-counts.tsx`](../../components/home/global-stats-live-counts.tsx)
-
-- `GlobalStatsLiveCounts` _component_: The two headline count cards ("open parks", "attractions operating") of the global-stats section, overlaid with live values on the client.
-- Types: `GlobalStatsCountLabels`
-
-### [`global-stats-section.tsx`](../../components/home/global-stats-section.tsx)
-
-- `GlobalStatsSection` _component_: Global real-time stats and platform statistics, server-rendered into the homepage shell.
 
 ### [`hero-entrance-gate.tsx`](../../components/home/hero-entrance-gate.tsx)
 
@@ -83,28 +78,24 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `HomeLocationRow` _component_: The homepage's standing control for location, under the nearby chapter's lead.
 
+### [`home-reading.tsx`](../../components/home/home-reading.tsx)
+
+- `HomeReading` _component_: „Neu auf park.fan", the homepage's first stop under the hero: the six newest news posts and the three most read articles of the last 30 days, as the build's seed ranks them (`getMostReadSeed`, which falls back to the newest), on one board …
+
 ### [`home-skeletons.tsx`](../../components/home/home-skeletons.tsx)
 
-- `GlobalStatsSkeleton` _component_: Suspense fallback for the homepage's global and platform stats sections: the real headings over stat, park and ride card skeletons sized like the cards they stand in for.
 - `FeaturedParksSkeleton` _component_: `className` is the one `FeaturedParksSlot` gets, so the band's padding is the same box.
-- `LiveActivitySkeleton` _component_: Suspense fallback for the homepage's live activity section: the real heading over five continent card skeletons.
 
-### [`latest-blog-section.tsx`](../../components/home/latest-blog-section.tsx)
+### [`home-stop.tsx`](../../components/home/home-stop.tsx)
 
-- `LatestBlogSection` _component_: The newest blog articles, as a tinted section, a bare grid or a lead layout (see `variant`). The default `limit` of 6 fills two rows of the 3-column grid and three of the 2-column one.
+- `HomeStop` _component_: One stop of the homepage under the hero: its opening (`ChapterHeading variant="stop"`, the chapter's link as its `action`) beside its content, the way the tour's stops stand beside their phones, or over it (`stacked`) where the content …
+- `ShotStop` _component_: A stop whose content is a screenshot on a phone (`ShotRow`), as the tour's and Parky's are: the heading beside the phone, which glides as the page scrolls past.
+- `StopLink` _component_: A stop's link, under its lead (`ChapterHeading`'s `action`): the page that tells the rest. `onClick` lets a client caller do more than follow it (`ParkyAskLink`).
+- `STOP_DIVIDER_CLASS` _const_: A hairline that fades out at both ends, where a new group of stops begins: enough to tell two chapters apart without a band or a frame around either.
 
-### [`live-activity-grid.tsx`](../../components/home/live-activity-grid.tsx)
+### [`home-tour.tsx`](../../components/home/home-tour.tsx)
 
-- `LiveActivityGrid` _component_: Homepage "parks open now" grid. The continent structure is server-rendered into the shell; only the open-park counter and progress bar are a client component (`LiveContinentOpenCount`) that overlays the seed, with one shared polled batch …
-- Types: `ContinentCard`
-
-### [`live-activity-section.tsx`](../../components/home/live-activity-section.tsx)
-
-- `LiveActivitySection` _component_: "Parks open now": per-continent open-park counts, server-rendered into the homepage shell.
-
-### [`live-continent-open-count.tsx`](../../components/home/live-continent-open-count.tsx)
-
-- `LiveContinentOpenCount` _component_: Live open-park counter and progress bar for one continent card in the homepage "parks open now" grid: the shell bakes a seed and the shared `useGeoLiveStats` batch call (one request for all continents) overlays it after mount, without …
+- `HomeTour` _component_: What park.fan does, shown rather than told: three stops, each a few lines beside a screenshot of the real page on a phone (`ShotStop`), as on Parky's page.
 
 ### [`ml-sparkline-loader.tsx`](../../components/home/ml-sparkline-loader.tsx)
 
@@ -121,6 +112,14 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`ml-training-countdown.tsx`](../../components/home/ml-training-countdown.tsx)
 
 - `MLTrainingCountdown` _component_: Card with the model's age and a live countdown to the next daily retraining at 06:00 UTC, shown in the visitor's local time. Ticks only while the card is on screen.
+
+### [`nearby-chapter.tsx`](../../components/home/nearby-chapter.tsx)
+
+- `NearbyChapter` _component_: The stop around the nearby-parks card, which comes in as a slot (a Client Component the caller already dynamic-imports). The stop holds the `<h2>`: the card opens with a band label, not a chapter header.
+
+### [`news-board.tsx`](../../components/home/news-board.tsx)
+
+- `NewsBoard` _component_: „Neu auf park.fan" as one board: the newest news by day, each day's age and date in a column on the left as `/news` draws it (`NewsAge stacked`), and the most read articles with their date and reading time, under the news on a narrow page …
 
 ### [`open-parks-badge.tsx`](../../components/home/open-parks-badge.tsx)
 
@@ -140,102 +139,27 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `ParkCompass` _component_: The headliners around somebody standing in a park, inside a compass bezel: which way each one is, how far, and what its queue costs right now (`ParkCompassDial`).
 
+### [`parky-ask-link.tsx`](../../components/home/parky-ask-link.tsx)
+
+- `ParkyAskLink` _component_: The Parky stop's link: where Parky shows for this visitor it opens the chat right here, and otherwise it leads to Parky's page, where everybody may ask. It never invites a visitor the rollout left out; that stays Parky's page's call.
+
+### [`parky-hello.tsx`](../../components/home/parky-hello.tsx)
+
+- `ParkyHello` _component_: Holds the homepage's Parky stop and reports `home_parky_seen` once it reaches the middle of the screen, which the live Parky answers with a hop and "That's me!" (`reactions.ts`).
+
+### [`parky-stop.tsx`](../../components/home/parky-stop.tsx)
+
+- `ParkyStop` _component_: The tour's last stop on the homepage: whoever has not found what they came for, or does not quite know what that is, can ask Parky.
+
+### [`popular-park-links.tsx`](../../components/home/popular-park-links.tsx)
+
+- `PopularParkLinks` _component_: The parks this locale's readers open most, each with a link to its live waits and one to its crowd calendar, because that is how people search: „&lt;Park&gt; Wartezeiten" and „&lt;Park&gt; Andrang Kalender" are most of what finds park.fan.
+
 ### [`section-headings.tsx`](../../components/home/section-headings.tsx)
 
-- `GlobalStatsHeading` _component_: Chapter heading of the homepage's global stats section (anchor `#zahlen`). Synchronous, so a Suspense fallback can render it.
-- `PlatformStatsHeading` _component_: Chapter heading of the homepage's platform stats section. Synchronous, so a Suspense fallback can render it.
-- `LiveActivityHeading` _component_: Chapter heading of the homepage's live activity section (anchor `#parks-weltweit`). Synchronous, so a Suspense fallback can render it.
-- `FeaturedParksHeading` _component_: „Beliebte Parks", in the slot and in its fallback alike.
-- `getSectionHeadingLabels` _function_: Resolves the kicker, title and hint of the homepage's global stats, platform stats and live activity headings, once, for both the Suspense fallback and the section.
+- `FeaturedParksHeading` _component_: „Beliebte Parks", in the slot and in its fallback alike, under blog, news and glossary pages, whose own chapters carry the watermark glyph on the plain page background. No kicker.
 - `getFeaturedParksLabels` _function_: Resolves the title and intro of the featured parks heading for `FeaturedParksHeading`.
-- Types: `SectionHeadingLabels`, `FeaturedParksLabels`
-
-### [`story/best-time-grid.tsx`](../../components/home/story/best-time-grid.tsx)
-
-- `BestTimeGrid` _component_: The chapter's two columns, with the wide one removed when there is nothing to put in it: `RideDayCurveCard` can end with no candidate (every featured park closed, or `/stats/day` unavailable), and only it knows, after mounting, so the grid …
-
-### [`story/blog-chapter.tsx`](../../components/home/story/blog-chapter.tsx)
-
-- `BlogChapter` _component_: The editorial chapter: the blog, plus the two evergreen hubs a reader who got this far most likely wants next. The post grid is `LatestBlogSection`, wrapped rather than rebuilt.
-
-### [`story/blog-teaser-band.tsx`](../../components/home/story/blog-teaser-band.tsx)
-
-- `BlogTeaserBand` _component_: The three newest articles, in a card directly under the hero, the one place that reaches a reader who has not decided to scroll. From `lg` up only; the blog chapter further down carries the same posts, and news has its own row (`NewsRow`).
-
-### [`story/chapter-ai.tsx`](../../components/home/story/chapter-ai.tsx)
-
-- `ChapterAI` _component_: Chapter: the forecast, and what the rest of the market does instead.
-
-### [`story/chapter-best-time.tsx`](../../components/home/story/chapter-best-time.tsx)
-
-- `ChapterBestTime` _component_: Chapter: when a ride is actually quiet. The exhibit is the day curve of the busiest ride in the locale's lead park, with its spread and the two quiet windows marked, because the claim ("a coaster has two good windows") is a shape, not a …
-
-### [`story/chapter-calendar.tsx`](../../components/home/story/chapter-calendar.tsx)
-
-- `ChapterCalendar` _component_: Chapter: where a calendar day's colour comes from.
-
-### [`story/chapter-dictionary.tsx`](../../components/home/story/chapter-dictionary.tsx)
-
-- `ChapterDictionary` _component_: Chapter: the dictionary, and the track figures you can fly. The six figures are derived, not listed: any glossary term whose `player` element the registry knows, in dictionary order, so a renamed term cannot leave a stale second list.
-
-### [`story/chapter-families.tsx`](../../components/home/story/chapter-families.tsx)
-
-- `ChapterFamilies` _component_: Chapter: a family's question, "which of these rides can my child ride", answered by each park's "with kids" page (P1 in `docs/product/personas-and-scenarios.md` §5).
-
-### [`story/chapter-in-park.tsx`](../../components/home/story/chapter-in-park.tsx)
-
-- `ChapterInPark` _component_: Chapter: the two things that matter once you are through the gate.
-
-### [`story/chapter-live-waits.tsx`](../../components/home/story/chapter-live-waits.tsx)
-
-- `ChapterLiveWaits` _component_: Chapter: live wait times. The exhibit is the real ranking for the locale's lead park, the same `ParkStatsSection` a park page renders, in the `flat` material, because a claim of "running right now" cannot be made with frozen numbers.
-
-### [`story/chapter-shows-restaurants.tsx`](../../components/home/story/chapter-shows-restaurants.tsx)
-
-- `ChapterShowsRestaurants` _component_: Chapter: a park day is not only roller coasters.
-
-### [`story/chapter-split.tsx`](../../components/home/story/chapter-split.tsx)
-
-- `ChapterSplit` _component_: A chapter's body as an argument beside its exhibit, the sides alternating down the page: the prose in a narrow column, the live component wide beside it and running off the container edge.
-
-### [`story/coaster-figure-picker.tsx`](../../components/home/story/coaster-figure-picker.tsx)
-
-- `CoasterFigurePicker` _component_: Figure list plus the glossary's real 3-D player, so a figure retuned in `lib/three/coaster/elements.ts` moves in both places.
-- Types: `PickableFigure`
-
-### [`story/faq-section.tsx`](../../components/home/story/faq-section.tsx)
-
-- `FaqSection` _component_: The homepage FAQ, visible, and the page's only `FAQPage` markup: `FaqList` emits it from the same array it renders, so the markup cannot drift from the page. The questions come from `seo.homepage.faq`, translated in all six locales.
-
-### [`story/founder-section.tsx`](../../components/home/story/founder-section.tsx)
-
-- `FounderSection` _component_: Who is behind this. The text restates no fact the blog does not already carry and links out rather than keeping a second biography.
-
-### [`story/lead-park.ts`](../../components/home/story/lead-park.ts)
-
-- `getLeadPark` _function_: The park the story's live exhibits are drawn from: the first entry of the locale's featured list, the per-locale ranking this site already trusts, so a reader in Madrid does not get Phantasialand.
-- `getCurveCandidates` _function_: Resolve `CURVE_PARK_SLUGS` against the geo structure, keeping this list's order rather than the catalogue's.
-- `getKidsEntryParks` _function_: `KIDS_ENTRY_SLUGS` resolved against the 24 h-cached geo structure, in this list's order.
-- Types: `LeadPark`
-
-### [`story/nearby-chapter.tsx`](../../components/home/story/nearby-chapter.tsx)
-
-- `NearbyChapter` _component_: The chapter frame around the nearby-parks card, which comes in as a slot (a Client Component the caller already dynamic-imports).
-
-### [`story/section-chrome.ts`](../../components/home/story/section-chrome.ts)
-
-- `STORY_SECTION_Y` _const_: The vertical padding of every band on the homepage, alone, for the bands the homepage borrows: `FavoritesSection` and `FeaturedParksSlot` keep a tighter padding on blog and glossary pages, so the homepage hands them this one.
-- `STORY_SECTION` _const_: Untinted chapter band.
-- `STORY_SECTION_RULED` _const_: Untinted chapter band, with the rule that separates it from the one above.
-- `STORY_SECTION_TINTED` _const_: Tinted chapter band, with the rule that separates it from the one above.
-
-### [`story/three-steps.tsx`](../../components/home/story/three-steps.tsx)
-
-- `ThreeSteps` _component_: Homepage chapter that walks through a park day in three cards: pick a park (with a live park search), check the day on a crowd-colour month, plan the route on a ride's day curve.
-
-### [`story/why-park-fan.tsx`](../../components/home/story/why-park-fan.tsx)
-
-- `WhyParkFan` _component_: The six differentiators, and the two pages that back them up.
+- Types: `FeaturedParksLabels`
 
 ### [`use-load-park-compass.ts`](../../components/home/use-load-park-compass.ts)
 

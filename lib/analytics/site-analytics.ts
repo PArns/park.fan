@@ -58,8 +58,8 @@ export type SitePageType =
 
 /**
  * Which search field a search event came from. The phone and desktop hero are both `hero`;
- * `home_steps` is the copy of the hero field in the homepage's „So funktioniert's" step card, counted
- * apart so it does not inflate the hero. `park_rides` is the ride search on a park's attractions
+ * `home_steps` was the copy of the hero field in the homepage's step card, no longer sent but kept
+ * so the admin can still label the events it counted. `park_rides` is the ride search on a park's attractions
  * tab, `compare` the park picker of the comparison, `glossary` the glossary overview's field,
  * `post_end` the field under a post's parks.
  */
@@ -147,7 +147,8 @@ export type AssistantOpenSource = 'button' | 'line' | 'page';
 /**
  * A line in Parky's speech bubble: an invitation, after an entrance, bored, woken, a holiday's, a
  * park's own, the Konami code's, or an answer to something the visitor did (the trip planner
- * opened, a plan finished, a favourite, an alert, the theme switched, the app installed).
+ * opened, a plan finished, a favourite, an alert, the theme switched, the app installed, its own
+ * stop on the homepage scrolled into view).
  */
 export type AssistantLineKind =
   | 'invitation'
@@ -162,7 +163,8 @@ export type AssistantLineKind =
   | 'favourite'
   | 'alert'
   | 'theme'
-  | 'install';
+  | 'install'
+  | 'hello';
 
 /** How one of Parky's answers ended. */
 export type AssistantAnswerResult =
@@ -278,6 +280,8 @@ export interface SiteEventMap {
   compass_pill_clicked: NoProps;
   outbound_link_clicked: { target: 'park_website' | 'tickets' | 'maps' | 'other' };
   pwa_installed: NoProps;
+  /** The homepage's Parky stop scrolled into the middle of the screen, once a page view. */
+  home_parky_seen: NoProps;
   /** A post, park or ride that was read: five seconds in front. A post is named by its key. */
   page_read: { kind: 'article' | 'news'; key: string } | { kind: 'park' | 'attraction' };
   /** How far down a guide or news post the reader got, once per depth. */

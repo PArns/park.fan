@@ -21,10 +21,7 @@ import {
   HERO_SEARCH_LIST_BOX_CLASS,
 } from '@/components/search/hero-search-classes';
 
-/**
- * How many rows each surface's resting list holds. The step card's field has no list on a phone,
- * where it opens the palette, and no posts.
- */
+/** How many rows the hero's resting list holds on each viewport, and whether the posts follow. */
 export interface HeroSearchRest {
   phoneRows: number;
   desktopRows: number;
@@ -35,7 +32,7 @@ export interface HeroSearchRest {
 }
 
 type HeroSearchFrameProps = Omit<React.ComponentProps<typeof GlassCard>, 'children'> & {
-  /** The list under the field; none where the field has no list (the step card on a phone). */
+  /** The list under the field. */
   children?: React.ReactNode;
   /** `false` off the hero, where the frame takes `tile` glass (see `HeroInlineSearchPanel`). */
   onHero?: boolean;

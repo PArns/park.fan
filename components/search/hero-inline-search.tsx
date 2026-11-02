@@ -2,11 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState, type ComponentType } from 'react';
 import { SearchCommand } from '@/components/search/search-bar';
-import {
-  HeroSearchFrame,
-  HeroSearchShell,
-  type HeroSearchRest,
-} from '@/components/search/hero-search-field';
+import { HeroSearchShell, type HeroSearchRest } from '@/components/search/hero-search-field';
 import { HeroPhoneList } from '@/components/search/hero-phone-list';
 import { useMediaQuery } from '@/lib/hooks/use-media-query';
 import { useMounted } from '@/lib/hooks/use-mounted';
@@ -16,7 +12,6 @@ import type { SearchSession } from '@/lib/analytics/search-session';
 import {
   HERO_REST_ROWS_DESKTOP,
   HERO_REST_ROWS_PHONE,
-  STEP_REST_ROWS_DESKTOP,
   type HeroReading,
 } from '@/lib/home/hero-search';
 import { cn } from '@/lib/utils';
@@ -29,28 +24,12 @@ const HERO_REST: HeroSearchRest = {
   spacerClass: 'h-[var(--hero-search-rest-h)]',
 };
 
-/** The step card's: no list on a phone, where the field only opens the palette. */
-const STEP_REST: HeroSearchRest = {
-  phoneRows: 0,
-  desktopRows: STEP_REST_ROWS_DESKTOP,
-  reading: false,
-  spacerClass: 'hidden h-[var(--step-search-rest-h)] md:block',
-};
-
 interface HeroInlineSearchProps {
   /** Example park/ride names shown in the empty field. */
   placeholder: string;
   /** What the field is for — the accessible name, since the placeholder is only examples. */
   label: string;
   className?: string;
-  /**
-   * `false` for a second instance of this field on the same page (the step card). The type-anywhere
-   * shortcut (a `document` listener) must exist once per page, and the ⌘K handler is the header's.
-   * It also picks the list (see `STEP_REST`), the glass (the hero's 62 % lands on the photo,
-   * anywhere else on page text that reads through it) and the search surface its events count as,
-   * `hero` or `home_steps`.
-   */
-  primary?: boolean;
   /** The two posts under the hero's resting list, resolved on the server (`getHeroReading`). */
   reading?: HeroReading | null;
 }
@@ -80,10 +59,9 @@ export function HeroInlineSearch({
   placeholder,
   label,
   className,
-  primary = true,
   reading,
 }: HeroInlineSearchProps) {
-  const rest = primary ? HERO_REST : STEP_REST;
+  const rest = HERO_REST;
   const isDesktop = useMediaQuery('(min-width: 768px)');
   const mounted = useMounted();
   const afterLoad = useAfterLoad();
@@ -93,7 +71,7 @@ export function HeroInlineSearch({
   /** Whether the panel still owes them the focus the shell had. Cleared once it has acted. */
   const [pendingFocus, setPendingFocus] = useState(false);
 
-  const session = useSearchSession(primary ? 'hero' : 'home_steps');
+  const session = useSearchSession('hero');
 
   // Every keystroke updates the text (last write wins) — an "only the first call counts" latch
   // would freeze it at the empty string, because `focus` always fires before the first `input`.
@@ -111,8 +89,8 @@ export function HeroInlineSearch({
 
   /**
    * Whether this field is on screen. Mounting the panel scrolls the page: cmdk calls
-   * `scrollIntoView({ block: 'nearest' })` on its first item, which drags the document to a panel
-   * mounted far down (the homepage's step card). So the panel waits for its field to be in view,
+   * `scrollIntoView({ block: 'nearest' })` on its first item, which drags the document back up to
+   * the field for a visitor who has scrolled past it. So the panel waits for its field to be in view,
    * with a 15 % inset so a field grazing the edge does not shift the page either.
    */
   const hostRef = useRef<HTMLDivElement>(null);
@@ -159,7 +137,6 @@ export function HeroInlineSearch({
           placeholder={placeholder}
           label={label}
           rest={rest}
-          onHero={primary}
           onActivate={activate}
         />
       ) : isDesktop && Panel ? (
@@ -172,7 +149,6 @@ export function HeroInlineSearch({
           autoFocus={pendingFocus}
           onFocusHandled={() => setPendingFocus(false)}
           onTextTaken={clearTyped}
-          onHero={primary}
           session={session}
         />
       ) : (
@@ -181,23 +157,15 @@ export function HeroInlineSearch({
             trigger="hero"
             placeholder={placeholder}
             label={label}
-            autoFocusOnType={primary}
-            searchOpenSource={primary ? 'hero' : 'home_steps'}
-            prewarm={primary}
+            autoFocusOnType
+            searchOpenSource="hero"
+            prewarm
             session={session}
             openOnMount={typed ?? undefined}
             onOpenedOnMount={handedOver}
           />
           <div aria-hidden="true" className={rest.spacerClass} />
-          {rest.phoneRows > 0 ? (
-            <HeroPhoneList
-              rows={rest.phoneRows}
-              reading={rest.reading ? reading : null}
-              session={session}
-            />
-          ) : (
-            <HeroSearchFrame onHero={primary} state="settled" />
-          )}
+          <HeroPhoneList rows={rest.phoneRows} reading={reading} session={session} />
         </div>
       )}
     </div>

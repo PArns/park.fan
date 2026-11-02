@@ -117,8 +117,6 @@
       "searchExamples": "Europa-Park, Taron, Efteling …"
     },
     "sections": {
-      "liveNow": "Parks weltweit im Überblick",
-      "liveNowIntro": "Wie viele Parks auf jedem Kontinent gerade geöffnet haben.",
       "featuredParks": "Beliebte Parks",
       "featuredParksIntro": "Sechs große Parks als Einstieg. Jede Karte führt zur Parkseite mit allen Wartezeiten."
     },
@@ -142,7 +140,6 @@
       "dailyScheduleLocal": "Täglich · 06:00 UTC · {time} lokal",
       "howTitle": "Wie Vorhersagen entstehen",
       "howText": "In jede Vorhersage gehen drei Dinge ein: die gemessene Wartezeit-Historie des Parks, Wetterprognose, Schulferien und Feiertage, und was an dem Tag im Park stattfindet, etwa Sonderveranstaltungen oder der Saisonstart. Daraus rechnet das Modell die erwartete Wartezeit je Attraktion und Stunde und fasst sie zum Crowd-Level des Tages zusammen, so weit der Park seinen Zeitplan veröffentlicht hat.",
-      "fancastLink": "So funktioniert Fancast, unser Prognosemodell",
       "improvingTitle": "Jede Prognose wird am Tag darauf nachgerechnet",
       "improvingText": "Am Tag nach jeder Prognose legt das System sie neben die tatsächlich gemessene Wartezeit und schreibt die Differenz in den nächsten Trainingslauf. Die Werte oben stammen aus diesem Abgleich.",
       "badge": {
@@ -164,245 +161,69 @@
     }
   },
   "homeStory": {
-    "steps": {
-      "kicker": "So funktioniert’s",
-      "title": "Einen Parktag planen",
-      "lead": "Park aussuchen, Tag prüfen, die Bahnen in eine Reihenfolge bringen. Für jeden der drei Schritte gibt es hier Messwerte aus über 200 Parks.",
-      "one": {
-        "title": "Park wählen",
-        "text": "Tippe den Park oder die Attraktion ein, oder nimm den Vorschlag in deiner Nähe. Jeder Park hat seine eigene Seite mit Live-Wartezeiten, Öffnungszeiten und Kalender.",
-        "tip": "Die Suche findet auch Attraktionen, Shows und Restaurants. Wer „Taron“ eintippt, bekommt die Bahn samt Park.",
-        "placeholder": "Park oder Attraktion",
-        "label": "Park oder Attraktion suchen"
-      },
-      "two": {
-        "title": "Tag prüfen",
-        "text": "Der Crowd-Kalender gibt jedem Tag eine Farbe, so weit der Park seinen Zeitplan veröffentlicht hat. Grün heißt normal oder ruhiger, Rot deutlich voller als an einem üblichen Tag in diesem Park.",
-        "tip": "Tage direkt nebeneinander haben oft verschiedene Farben. Wer beim Termin flexibel ist, schaut vor dem Buchen auch auf die Woche davor und danach.",
-        "legendLow": "wenig Betrieb",
-        "caption": "Ein Monat im Kalender: jede Kachel ein Tag, die Farbe der erwartete Andrang."
-      },
-      "three": {
-        "title": "Route planen",
-        "text": "Jede Attraktion hat eine Tageskurve aus ihren gemessenen Tagen. Daran siehst du, zu welcher Uhrzeit die Warteschlange meist am kürzesten ist.",
-        "tip": "Die Kurve ist ein Median über viele Tage. Steht eine Bahn am Vormittag still, sieht der Tag danach anders aus als die Kurve.",
-        "caption": "Typischer Tagesverlauf einer Achterbahn, von der Öffnung bis zum Abend.",
-        "best": "Die ruhigsten Fenster liegen früh und in der letzten Stunde."
-      }
-    },
-    "blogTeaser": {
-      "label": "Aus dem Blog"
-    },
     "nearby": {
       "kicker": "Dein Standort",
       "title": "Freizeitparks in deiner Nähe",
       "lead": "Mit deinem Standort zeigt park.fan die nächstgelegenen Parks, die geöffneten zuerst, und wie voll es dort gerade ist.",
       "allParks": "Alle Parks entdecken"
     },
-    "live": {
-      "kicker": "Live-Wartezeiten",
-      "title": "Wartezeiten für jede Bahn, alle fünf Minuten neu",
-      "lead": "Für jede Attraktion und jede Warteschlangen-Art, dazu Öffnungszeiten und Störungen.",
-      "body": "95 Minuten sind an einem Dienstag im September viel und an einem Samstag im Oktober ein normaler Vormittag. Deshalb steht auf jeder Attraktionsseite, was an diesem Wochentag typisch ist und wie lang die Warteschlange an vollen Tagen wird.",
-      "ridesTitle": "Jede Attraktion hat ihre eigene Seite",
-      "ridesText": "Auf der Seite einer Bahn stehen ihre Warteschlangen-Arten, der Tagesverlauf aus Messung und Prognose, typische Wartezeiten nach Wochentag, die Mindestgröße und ein Rope-Drop-Tipp.",
-      "ridesLink": "{park}: alle Wartezeiten live",
-      "typicalTitle": "Attraktionsseiten",
-      "ropeDropTitle": "Rope-Drop-Tipp",
-      "ropeDropText": "Direkt zur Öffnung hierhin. Bei den beliebten Bahnen ist die erste Stunde meist die ruhigste des Tages.",
-      "howtoLink": "Anleitung: Wartezeiten lesen und einordnen"
+    "favorites": {
+      "kicker": "Favoriten",
+      "title": "Deine Parks und Bahnen",
+      "lead": "Alles, was du mit dem Stern markiert hast, mit Status und aktueller Wartezeit."
     },
-    "shows": {
-      "kicker": "Shows & Restaurants",
-      "title": "Wann die Show beginnt und wo es etwas zu essen gibt",
-      "lead": "Zu jedem Park listet park.fan die Shows mit ihren Spielzeiten und die Restaurants mit Küche, Öffnungszeiten und Reservierungspflicht.",
-      "showsTitle": "Spielzeiten",
-      "showsHint": "Jede Vorstellung des Tages mit ihrer Uhrzeit, die nächste zuerst, dazu ob die Show gerade Saison hat.",
-      "restaurantsTitle": "Restaurants im Park",
-      "restaurantsHint": "Küche, Öffnungszeiten und ob du einen Tisch reservieren musst.",
-      "body": "Während einer großen Vorstellung stehen ihre Zuschauer an keiner Bahn an. Wenn sie vorbei ist, kommen alle auf einmal zurück. Mit den Spielzeiten kannst du eine Bahn in die Zeit der Show legen.",
-      "statAttractions": "Attraktionen",
-      "statShows": "Shows",
-      "statRestaurants": "Restaurants",
-      "statCalendar": "Tage Kalender"
-    },
-    "calendar": {
-      "kicker": "Crowd-Kalender",
-      "title": "Grüner Tag oder roter Tag?",
-      "lead": "Der Kalender bewertet jeden Tag, für den der Park schon Öffnungszeiten veröffentlicht hat. Schau hinein, bevor du ein Hotel buchst.",
-      "pipelineTitle": "Wie die Farbe eines Tages entsteht",
-      "pipelineLead": "Vier Schritte, die jede Nacht neu laufen.",
-      "p1": {
-        "title": "Messen",
-        "text": "Alle fünf Minuten fragt park.fan die Warteschlangen-Systeme der Parks ab: Standby, Single Rider, Lightning Lane, virtuelle Queues, dazu den Öffnungsstatus jeder Attraktion.",
-        "label": "Takt der Messung"
-      },
-      "p2": {
-        "title": "Sammeln",
-        "text": "Jede Messung wird mit Zeitstempel, Attraktion und Park gespeichert. Daraus ergibt sich für jede Bahn, wie sich ihre Wartezeit über den Tag, die Woche und die Saison verändert.",
-        "label": "Datensätze"
-      },
-      "p3": {
-        "title": "Anreichern",
-        "text": "Dazu kommen Signale von außen: Wetterprognose, Schulferien und Feiertage aus den Ländern, in denen die Parks stehen, Brückentage, dazu Sonderveranstaltungen wie Halloween oder Saisonstart.",
-        "label": "Ferien, Feiertage, Wetter"
-      },
-      "p4": {
-        "title": "Vorhersagen",
-        "text": "Fancast rechnet daraus die erwartete Wartezeit je Attraktion und Stunde und verdichtet sie zum Crowd-Level des Tages, also zu der Farbe, die du im Kalender siehst.",
-        "label": "Tage voraus"
-      },
-      "feedback": "Am Tag darauf wird jede Prognose gegen die tatsächlich gemessene Wartezeit gelegt. Die Differenz geht in das nächste Training ein, und deshalb ändert sich die Kalenderfarbe für denselben Tag, je näher er rückt.",
-      "body": "Die Farbe vergleicht den Tag mit einem üblichen Tag im selben Park. Grün heißt so voll wie sonst oder ruhiger, Orange und Rot heißen längere Warteschlangen als üblich. Ein roter Tag in einem kleinen Park kann deshalb immer noch kürzere Wartezeiten haben als ein grüner im Europa-Park.",
-      "cta": "{park}: Andrangskalender für jeden Tag",
-      "bestTimeLink": "Beste Reisezeit: die ruhigsten Wochentage und Monate"
-    },
-    "ai": {
-      "kicker": "Unsere KI",
-      "title": "Eine eigene Prognose, und die Abweichung steht dabei",
-      "lead": "Die Prognosen kommen von Fancast, einem Modell, das park.fan selbst trainiert, jeden Tag um 06:00 UTC mit den Wartezeiten vom Vortag.",
-      "compareTitle": "Wie andere Wartezeit-Seiten vorhersagen",
-      "compareLead": "Drei Ansätze sind verbreitet. Bei keinem steht dabei, wie weit seine Vorhersagen danebenlagen.",
-      "c1": {
-        "kicker": "Ansatz 1",
-        "title": "Gar keine Prognose",
-        "text": "Eine der bekanntesten deutschen Wartezeiten-Seiten verzichtet bewusst auf Vorhersagen: zu viele Einflussfaktoren, und eine falsche Prognose könnte Parks wie Gästen schaden. Gezeigt wird nur, wie voll es war.",
-        "limit": "Aus einem Rückblick lässt sich nicht ablesen, welcher Tag im nächsten Monat voll wird."
-      },
-      "c2": {
-        "kicker": "Ansatz 2",
-        "title": "Mittelwert ähnlicher Tage",
-        "text": "Ein statistisches Modell sucht historisch vergleichbare Tage, gleicher Wochentag, gleiche Ferienlage, und bildet daraus den Durchschnitt. Meist 90 Tage voraus und oft nur für einen einzigen Park.",
-        "limit": "Ohne drei Vergleichstage bleibt der Tag leer."
-      },
-      "c3": {
-        "kicker": "Ansatz 3",
-        "title": "Statistik plus etwas KI",
-        "text": "Ensembles mischen statistische Auswertung mit einem KI-Anteil und rechnen Ferien, Feiertage und Wetter mit, ausgewiesen als Beta, für einen Park, in Stufen von „exzellent“ bis „sehr lang“.",
-        "limit": "Wie oft die Stufe stimmt, wird nicht angegeben."
-      },
-      "answerTitle": "Fancast rechnet stündlich, für jede Attraktion einzeln, und legt seinen Fehler offen.",
-      "answerText": "Neben dem Crowd-Level des Tages gibt es für jede Attraktion die erwartete Wartezeit je Stunde. Jede Prognose wird später mit dem gemessenen Wert verglichen, und aus diesem Vergleich stammen die Genauigkeitswerte weiter unten."
-    },
-    "bestTime": {
-      "kicker": "Beste Besuchszeit",
-      "title": "Viele Bahnen haben zwei ruhige Fenster, morgens und gegen Abend",
-      "lead": "Rope Drop hilft nicht bei jeder Bahn. Manche sind den ganzen Tag gleich voll, andere erst ab dem Mittag. Die Kurve ist der Median einer einzelnen Attraktion über ihre Messtage.",
-      "chartSubtitle": "Median aus {days} Messtagen, gemessen alle 5 Minuten",
-      "legendToday": "heute gemessen",
-      "legendMedian": "Median vergangener Tage",
-      "legendBand": "üblicher Bereich (P25–P90)",
-      "legendBandUpper": "Median bis Stoßzeit",
-      "heatTitle": "Hitzewarnung",
-      "heatText": "An heißen Tagen stehen mehr Leute an den Wasserbahnen an. Die Wetterprognose geht deshalb in den Kalender ein.",
-      "historyTitle": "Historie",
-      "historyText": "Das Modell rechnet für jede Attraktion getrennt, mit ihrem eigenen Tagesverlauf und ihrer Saison. Was heute gemessen wird, geht morgen früh ins Training ein.",
-      "hubLink": "Beste Reisezeit für über 200 Parks",
-      "peakAt": "Am vollsten gegen",
-      "windowOpening": "Nach der Öffnung",
-      "windowClosing": "Gegen Tagesende",
-      "windowWait": "rund {minutes} Min. Wartezeit",
-      "legendForecast": "Prognose für heute",
-      "legendForecastBand": "Prognose ±{minutes} Min.",
-      "legendPredicted": "vorher gesagt",
-      "localTime": "Ortszeit",
-      "stateLive": "misst gerade",
-      "stateQuiet": "gerade keine Messung",
-      "stateClosed": "außerhalb der Öffnungszeiten",
-      "axisLabel": "Wartezeit in Minuten",
-      "nowMarker": "jetzt",
-      "vsMedian": "gegenüber Median"
-    },
-    "inPark": {
-      "kicker": "Favoriten & Karte",
-      "title": "Favoriten und Parkplan für den Tag im Park",
-      "lead": "Vor dem Besuch helfen Kalender und Prognose. Im Park schaust du eher auf die Attraktionen, die du dir gemerkt hast, und auf den Parkplan mit den Wartezeiten.",
-      "favTitle": "Favoriten",
-      "favHint": "Parks, Attraktionen, Shows, Restaurants",
-      "favText": "Tipp auf den Stern, und der Park oder die Bahn erscheint auf deiner Startseite, mit Live-Wartezeit und Öffnungsstatus. Gespeichert wird im Browser, ein Konto brauchst du nicht.",
-      "mapTitle": "Karte & In-Park-Modus",
-      "mapText": "Auf dem Parkplan stehen Attraktionen, Shows und Restaurants als farbige Marker. Ein Tipp darauf zeigt Status und Wartezeit. Bist du im Park, ist dein Standort auf der Karte markiert, und die nächstgelegenen Attraktionen stehen oben."
-    },
-    "dictionary": {
-      "kicker": "Wörterbuch · Nerdwissen",
-      "title": "Streckenfiguren wie Zero-G-Roll und Immelmann im 3-D-Player",
-      "lead": "Das Wörterbuch erklärt Begriffe wie Airtime, Rope Drop oder Single Rider. Streckenfiguren kannst du im 3-D-Player abspielen und an jeder Stelle der Fahrt anhalten.",
-      "pickerTitle": "Streckenfiguren",
-      "cta": "Alle Begriffe im Wörterbuch",
-      "stage": "Figur abspielen"
-    },
-    "why": {
-      "kicker": "Warum park.fan",
-      "title": "Was hier anders läuft",
-      "r1": {
-        "title": "Eigenes Modell, täglich trainiert",
-        "text": "Fancast ist bei park.fan selbst gebaut, von der Datenaufbereitung bis zum Training, und wird jeden Morgen mit den Wartezeiten des Vortags neu trainiert."
-      },
-      "r2": {
-        "title": "Genauigkeit steht öffentlich da",
-        "text": "Der mittlere Fehler und der R²-Wert stehen auf dieser Seite und werden nach jedem Training neu berechnet, auch wenn sie schlechter werden."
-      },
-      "r3": {
-        "title": "Neue Wartezeiten alle fünf Minuten",
-        "text": "park.fan liest drei öffentliche Quellen und gleicht sie ab. Fällt eine Bahn aus, steht das beim nächsten Abruf auf ihrer Seite."
-      },
-      "r4": {
-        "title": "Kostenlos und ohne Konto",
-        "text": "Es gibt keine Bezahlschranke und keine Abo-Stufe mit mehr Daten. Alles, was park.fan zu einem Park hat, steht offen auf seiner Seite."
-      },
-      "r5": {
-        "title": "Über 200 Parks, 23 Länder, 6 Sprachen",
-        "text": "Darunter Tokyo DisneySea, das Efteling und das Phantasialand. Wo ein Park seine Wartezeiten veröffentlicht, stehen sie hier. Wo nicht, steht das auf der Parkseite."
-      },
-      "r6": {
-        "title": "Artikel mit Messwerten",
-        "text": "Im Blog stehen Park-Guides und Auswertungen, zum Beispiel warum ein Park im Oktober voll ist und im November fast leer. Die Wartezeiten darin sind Live-Widgets mit den aktuellen Werten."
-      },
-      "howtoLink": "So funktioniert park.fan",
-      "fancastLink": "Fancast, unser Prognosemodell"
-    },
-    "founder": {
-      "kicker": "Der Mensch dahinter",
-      "title": "Ein Entwickler, der zu oft angestanden hat",
-      "name": "Patrick Arns",
-      "role": "Gründer von park.fan",
-      "p1": "Hinter park.fan steht eine einzelne Person: Patrick, seit Kindertagen in Freizeitparks unterwegs und seit über 25 Jahren Softwareentwickler. Angefangen hat es mit 90 Minuten in der Warteschlange einer einzigen Bahn und dem Gefühl, dass sich das mit etwas Planung hätte vermeiden lassen.",
-      "p2": "Daraus wurde ein Tracker für Wartezeiten, dann eine Datenbank und schließlich das Prognosemodell, das jeden Tag neu trainiert wird. Datenimport, Modell und diese Website hat er selbst gebaut.",
-      "b1": "25+ Jahre Software-Entwicklung",
-      "b2": "Park-Nerd seit der Kindheit",
-      "b3": "Kein Konzern, kein Investor",
-      "b4": "Keine Paywall, keine Abos",
-      "b5": "ML-Modell komplett selbst gebaut",
-      "b6": "Genauigkeit öffentlich ausgewiesen",
-      "authorLink": "Mehr über Patrick im Blog",
-      "portraitAlt": "Patrick Arns, Gründer von park.fan"
-    },
-    "blog": {
-      "kicker": "Blog & Guides",
-      "title": "Artikel zu einzelnen Parks und Bahnen",
-      "lead": "Park-Guides, Wartezeit-Analysen und Saison-Tipps, geschrieben von jemandem, der selbst ansteht. Gibt es zu einem Park einen Artikel, ist er auf der Parkseite verlinkt.",
-      "bestTimeTitle": "Beste Reisezeit für Freizeitparks",
-      "bestTimeText": "Wann Parks am leersten sind: die ruhigsten Wochentage und Monate, aus den gemessenen Wartezeiten von über 200 Parks.",
-      "glossaryCta": "Wörterbuch: Single Rider, Rope Drop, Lightning Lane",
-      "glossaryText": "Fachbegriffe kurz erklärt, Streckenfiguren mit 3-D-Player."
+    "popular": {
+      "kicker": "Beliebte Parks",
+      "title": "Wartezeiten und Andrang in den beliebtesten Parks",
+      "lead": "Phantasialand, Europa-Park und die anderen großen Parks mit Status und Andrang von jetzt. Bei allen weiteren führt der Name zu den Wartezeiten und das Kalender-Symbol zum Andrang-Kalender."
     },
     "faq": {
       "kicker": "Häufige Fragen",
       "title": "Freizeitpark-Wartezeiten, kurz erklärt",
+      "lead": "Woher die Wartezeiten kommen, welche Parks dabei sind und was das kostet, nämlich nichts.",
+      "link": "So funktioniert park.fan",
       "note": "Alle Angaben ohne Gewähr."
     },
-    "liveNow": {
-      "kicker": "Weltweit"
+    "parky": {
+      "kicker": "Parky",
+      "title": "Nicht gefunden, was du suchst? Frag Parky",
+      "lead": "Parky ist ein Freizeitpark-Nerd. Er weiß, wie lang du gerade an Taron anstehst, an welchem Samstag im Juni der Europa-Park am leersten ist und was Airtime eigentlich ist. Die Zahlen holt er aus denselben Live-Daten wie diese Seite.",
+      "link": "Parky fragen"
     },
-    "platform": {
-      "kicker": "Zahlen",
-      "statsKicker": "Live aus der Plattform"
+    "reading": {
+      "kicker": "Neu auf park.fan",
+      "title": "Freizeitpark-News und Guides",
+      "lead": "Was sich in den Parks gerade ändert, und Guides zu einzelnen Parks mit den besten Besuchstagen und den gemessenen Wartezeiten der Bahnen.",
+      "popularGuides": "Beliebteste Guides"
     },
-    "families": {
-      "kicker": "Mit Kindern",
-      "title": "Mindestgrößen auf einen Blick",
-      "lead": "Der Park gibt für jede Bahn eine Größe vor. Vor dem Besuch siehst du, welche ihr zusammen fahren könnt und für welche es noch nicht reicht.",
-      "cardBody": "Alle Bahnen nach Mindestgröße."
+    "tour": {
+      "live": {
+        "kicker": "Live-Wartezeiten",
+        "title": "Wartezeiten live, für jede Bahn",
+        "text": "Taron, Blue Fire, Wodan: Auf jeder Parkseite steht, wie lang du gerade an jeder Bahn anstehst, dazu der Andrang von sehr niedrig bis extrem. Die Zahlen kommen alle fünf Minuten neu.",
+        "link": "So funktioniert park.fan",
+        "alt": "Die Parkseite des Europa-Park auf dem Handy: die Headliner mit ihren Live-Wartezeiten und dem Andrang."
+      },
+      "calendar": {
+        "kicker": "Andrang-Kalender",
+        "title": "Der Andrang-Kalender: wie voll es wird, Tag für Tag",
+        "text": "Jeder Öffnungstag bekommt eine Farbe von Grün bis Rot und eine erwartete Wartezeit. Dazu kommen Öffnungszeiten, Schulferien und Wetter, denn ein Dienstag in den Herbstferien ist kein normaler Dienstag.",
+        "link": "Beste Reisezeit",
+        "alt": "Der Andrang-Kalender des Europa-Park für November auf dem Handy, jeder Tag mit Farbe und erwarteter Wartezeit."
+      },
+      "ride": {
+        "kicker": "Prognose",
+        "title": "Prognose: die beste Stunde für jede Bahn",
+        "text": "Silver Star um 10 Uhr ist eine andere Bahn als Silver Star um 14 Uhr. Auf der Seite jeder Bahn steht ihre Wartezeit als Tageskurve, gemessen und vorhergesagt, und der Tagesplaner legt deine Bahnen in die Stunden, in denen am wenigsten los ist.",
+        "link": "Tag planen",
+        "alt": "Die Seite von Silver Star auf dem Handy: gemessene und vorhergesagte Wartezeiten des Tages und die besten Zeiten."
+      }
+    },
+    "parkLinks": {
+      "title": "Direkt zu Wartezeiten und Andrang-Kalender",
+      "label": "Wartezeiten und Andrang-Kalender beliebter Parks",
+      "waits": "Wartezeiten",
+      "calendar": "Andrang-Kalender"
     }
   },
   "footer": {
@@ -1675,6 +1496,11 @@
       "demoEnd": "Demo beenden",
       "demoNoLocation": "Ohne Standort stehst du fest an einem Punkt im Park.",
       "dialGroup": "Kompass, Norden oben"
+    },
+    "shortWaits": {
+      "title": "Jetzt kurz anstehen",
+      "hint": "Bahnen in deiner Nähe, an denen die Warteschlange gerade deutlich kürzer ist als sonst.",
+      "usually": "sonst {minutes} {unit}"
     }
   },
   "location": {
@@ -1757,21 +1583,8 @@
     "parkLink": "Alle Universal-Parks"
   },
   "stats": {
-    "globalStats": "Globale Statistiken",
-    "globalStatsIntro": "Live-Daten von Freizeitparks und Attraktionen weltweit.",
-    "openParks": "Offene Parks",
     "totalAttractions": "Attraktionen gesamt",
-    "mostCrowded": "Am vollsten",
-    "leastCrowded": "Am leersten",
-    "longestWait": "Längste Wartezeit",
-    "shortestWait": "Kürzeste Wartezeit",
-    "platformStats": "Plattform-Statistiken",
-    "platformStatsDescription": "Was park.fan gerade misst, über alle Parks zusammen.",
-    "totalWaitTime": "Gesamte Wartezeit",
-    "dataPoints": "Messwerte",
-    "dataPointsTooltipSuffix": "Punkte aktuell",
-    "queueDataRecords": "Warteschlangen-Datensätze",
-    "alsoTracking": "Außerdem erfasst"
+    "dataPointsTooltipSuffix": "Punkte aktuell"
   },
   "homepage": {
     "hero": {
@@ -1835,7 +1648,6 @@
     },
     "avgWait": "Ø {minutes} Min.",
     "avgWaitShort": "Ø {minutes} Min.",
-    "attractionsOpen": "{open}/{total} Attraktionen offen",
     "heroHint": "Tippe los, wir suchen Parks, Attraktionen, Shows und Restaurants",
     "newestGuide": "Neuester Guide"
   },
@@ -1971,17 +1783,13 @@
     "homepage": {
       "faq": {
         "whatIsQ": "Was ist park.fan?",
-        "whatIsA": "park.fan sammelt Live-Wartezeiten aus über 200 Freizeitparks in 23 Ländern. Auf jeder Parkseite stehen die aktuellen Wartezeiten aller Fahrgeschäfte, die Spielzeiten der Shows, die Öffnungszeiten und ein Kalender, der den Andrang der kommenden Monate bewertet.",
-        "whichParksQ": "Welche Freizeitparks werden von park.fan unterstützt?",
+        "whatIsA": "park.fan sammelt Live-Wartezeiten aus über 200 Freizeitparks in 23 Ländern. Auf jeder Parkseite stehen die aktuellen Wartezeiten der Attraktionen, die Spielzeiten der Shows, die Öffnungszeiten und der Andrang-Kalender für die kommenden Monate.",
+        "whichParksQ": "Welche Freizeitparks sind bei park.fan dabei?",
         "whichParksA": "park.fan deckt über 200 Freizeitparks weltweit ab, darunter Phantasialand, Europa-Park, Disneyland Paris, Efteling, Walibi Belgium, Toverland und Bobbejaanland. Die vollständige Liste mit Live-Wartezeiten steht auf der Parks-Übersichtsseite.",
         "liveDataQ": "Sind die Wartezeiten bei park.fan live und in Echtzeit?",
         "liveDataA": "Ja. Wo ein Park seine Wartezeiten veröffentlicht, fragen wir sie alle fünf Minuten ab, aus drei öffentlichen Quellen gleichzeitig: ThemeParks.wiki, Wartezeiten.app und Queue-Times.com. Widersprechen sich die Quellen, entscheidet die Mehrheit, danach der Median, danach der Mittelwert. Das Ergebnis wird auf fünf Minuten gerundet, weil die Parks selbst in Fünf-Minuten-Schritten anschreiben.",
         "freeQ": "Ist die Nutzung von park.fan kostenlos?",
-        "freeA": "Ja. Live-Wartezeiten, Öffnungszeiten, Shows, Restaurants und der Crowd-Kalender sind ohne Konto und ohne Bezahlschranke zu sehen. Es gibt keine Abo-Stufe, hinter der mehr Daten liegen.",
-        "favoritesQ": "Kann ich meine Lieblingsparks und Attraktionen bei park.fan speichern?",
-        "favoritesA": "Ja. Tipp auf den Stern an einem Park, einer Attraktion, einer Show oder einem Restaurant. Die Favoriten erscheinen dann auf der Startseite, mit Live-Wartezeit und Öffnungsstatus. Gespeichert wird im Browser, ein Konto brauchst du nicht.",
-        "featuresQ": "Welche Informationen bietet park.fan neben Live-Wartezeiten?",
-        "featuresA": "Auf jeder Parkseite stehen außerdem die Öffnungszeiten, die Spielzeiten der Shows, die Restaurants mit Küche und Reservierungspflicht, die Wettervorhersage für den Tag, die gemessene Wartezeit-Historie und der Crowd-Kalender. Auf der Seite jeder Attraktion kommt ihr typischer Tagesverlauf dazu.",
+        "freeA": "Ja. Live-Wartezeiten, Öffnungszeiten, Shows, Restaurants und der Andrang-Kalender sind ohne Konto und ohne Bezahlschranke zu sehen. Es gibt keine Abo-Stufe, hinter der mehr Daten liegen.",
         "mobileQ": "Funktioniert park.fan auch auf dem Smartphone?",
         "mobileA": "Ja. park.fan läuft im Browser, auf Handy, Tablet und Rechner, eine App musst du nicht installieren. Im Park kannst du damit nachsehen, wo die Warteschlange gerade kurz ist. Erkennt die Seite, dass du im Park stehst, rücken die nächstgelegenen Attraktionen nach oben."
       }
@@ -2277,8 +2085,6 @@
       "postsCount": "{count, plural, =1 {# Beitrag} other {# Beiträge}}"
     },
     "home": {
-      "heading": "Aus dem Blog",
-      "intro": "Reiseberichte, Daten-Analysen und Park-News – die neuesten Beiträge stehen oben.",
       "viewAll": "Alle Beiträge lesen"
     },
     "gallery": {
@@ -3199,7 +3005,8 @@
     "themeLight2": "Licht an, Sonnenbrille auf!",
     "themeLight3": "Tageslicht! Perfektes Parkwetter.",
     "install1": "Jetzt wohne ich auf deinem Homescreen!",
-    "install2": "Installiert! Ab jetzt bin ich nur einen Tipp entfernt."
+    "install2": "Installiert! Ab jetzt bin ich nur einen Tipp entfernt.",
+    "thatsMe": "Hey, cool! Das bin ja ich!"
   },
   "parkyPage": {
     "metaTitle": "Parky, der Chat-Assistent von park.fan",
@@ -3209,7 +3016,6 @@
     "intro": "Parky wohnt unten rechts auf park.fan, in der runden Sprechblase mit dem Riesenrad auf dem Kopf. Tipp ihn an, und du schreibst ihm wie einem Freund, der sich in Freizeitparks auskennt.",
     "ask": "Parky jetzt fragen",
     "off": "Parky macht gerade Pause. Schau später noch mal vorbei.",
-    "shotLabel": "Screenshot",
     "examplesLabel": "Zum Beispiel",
     "chapters": {
       "ask": {

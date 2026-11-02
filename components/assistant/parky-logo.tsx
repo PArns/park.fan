@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useId, useRef, useState } from 'react';
+import { useCallback, useEffect, useId, useRef, useState } from 'react';
 import { cn } from '@/lib/utils';
 import { pickRandom } from '@/lib/utils/pick-random';
 import { parkyBoredom } from '@/lib/assistant/parky-boredom';
@@ -224,16 +224,35 @@ const CHECKLIST_ROWS = [35, 39, 43];
 const STAR = 'M17 .2l.8 2 2 .8-2 .8-.8 2-.8-2-2-.8 2-.8Z';
 const frame = 'oklch(0.48 0.1 245)';
 
+/** The point between the eyes Parky squints at when the pointer rests on it, and how near counts. */
+const NOSE = { x: 24, y: 26, reach: 4 };
+/** Where each pupil goes in that squint: both in towards the nose. */
+const CROSS_GAZE = { x: 2, y: 1.4 };
+/** Two whole turns of the pointer round Parky within this long make it dizzy. */
+const CIRCLE_TURNS = 2;
+const CIRCLE_WINDOW_MS = 1_500;
+/** Circles wider than this, in px from its centre, are the visitor's business, not Parky's. */
+const CIRCLE_RADIUS = 160;
+
 /**
  * The pupils' offset towards the pointer, so Parky looks at the mouse. Only for a fine pointer and
- * without reduced motion; one frame at most per pointer move.
+ * without reduced motion; one frame at most per pointer move. Two easter eggs ride along: the
+ * pointer on Parky's nose makes it squint at it (`cross`), and the pointer circling it fast, two
+ * turns inside 1.5 s, calls `onDizzy`.
  */
-function useGaze(svg: React.RefObject<SVGSVGElement | null>) {
-  const [gaze, setGaze] = useState({ x: 0, y: 0 });
+function useGaze(svg: React.RefObject<SVGSVGElement | null>, onDizzy?: () => void) {
+  const [gaze, setGaze] = useState({ x: 0, y: 0, cross: false });
+  const dizzy = useRef(onDizzy);
+  useEffect(() => {
+    dizzy.current = onDizzy;
+  }, [onDizzy]);
   useEffect(() => {
     const media = window.matchMedia('(pointer: fine) and (prefers-reduced-motion: no-preference)');
     if (!media.matches) return;
     let frame = 0;
+    // The turning so far: the last angle, and each step's signed change with its time.
+    let angle: number | null = null;
+    let steps: { at: number; turn: number }[] = [];
     const onMove = (event: PointerEvent) => {
       if (frame) return;
       frame = requestAnimationFrame(() => {
@@ -243,11 +262,43 @@ function useGaze(svg: React.RefObject<SVGSVGElement | null>) {
         const dx = event.clientX - (box.left + box.width / 2);
         const dy = event.clientY - (box.top + box.height / 2);
         const distance = Math.hypot(dx, dy) || 1;
-        const pull = Math.min(1, distance / 240);
-        setGaze({
-          x: (dx / distance) * PUPIL_REACH * pull,
-          y: (dy / distance) * PUPIL_REACH * pull,
-        });
+        const unit = box.width / 48;
+        const nose = Math.hypot(
+          event.clientX - (box.left + NOSE.x * unit),
+          event.clientY - (box.top + NOSE.y * unit)
+        );
+        if (nose <= NOSE.reach * unit) {
+          setGaze({ ...CROSS_GAZE, cross: true });
+        } else {
+          const pull = Math.min(1, distance / 240);
+          setGaze({
+            x: (dx / distance) * PUPIL_REACH * pull,
+            y: (dy / distance) * PUPIL_REACH * pull,
+            cross: false,
+          });
+        }
+
+        if (!dizzy.current || distance > CIRCLE_RADIUS) {
+          angle = null;
+          steps = [];
+          return;
+        }
+        const now = Date.now();
+        const next = Math.atan2(dy, dx);
+        if (angle !== null) {
+          // The shorter way round, so crossing ±π is a small step and not a whole turn back.
+          let turn = next - angle;
+          if (turn > Math.PI) turn -= 2 * Math.PI;
+          if (turn < -Math.PI) turn += 2 * Math.PI;
+          steps.push({ at: now, turn });
+        }
+        angle = next;
+        steps = steps.filter((step) => now - step.at <= CIRCLE_WINDOW_MS);
+        const turned = Math.abs(steps.reduce((sum, step) => sum + step.turn, 0));
+        if (turned >= CIRCLE_TURNS * 2 * Math.PI) {
+          steps = [];
+          dizzy.current();
+        }
       });
     };
     window.addEventListener('pointermove', onMove, { passive: true });
@@ -432,11 +483,25 @@ export function ParkyLogo({
   // Two marks are on screen at once (button and window header); each needs its own gradient id.
   const ground = useId();
   const svg = useRef<SVGSVGElement>(null);
-  const mouseGaze = useGaze(svg);
+  // The circling easter egg plays its act through the same cue as one asked for from outside; its
+  // ids count down from -1, so they never meet the launcher's.
+  const [ownCue, setOwnCue] = useState<ParkyCue | null>(null);
+  const [outerCue, setOuterCue] = useState(cue);
+  const [latestCue, setLatestCue] = useState(cue);
+  if (cue !== outerCue) {
+    setOuterCue(cue);
+    setLatestCue(cue);
+  }
+  const getDizzy = useCallback(() => {
+    const next = { act: 'dizzy' as const, id: (ownCue?.id ?? 0) - 1 };
+    setOwnCue(next);
+    setLatestCue(next);
+  }, [ownCue]);
+  const { cross, ...mouseGaze } = useGaze(svg, idle ? getDizzy : undefined);
   // A mood has its own motion; the idle life is for a face with nothing to do, and a search open
   // on the page is something to do.
   const { search, puzzled } = useSearchAlong(idle && !state);
-  const { act, asleep } = useIdleAct(idle && !state && !search, cue, svg, calm);
+  const { act, asleep } = useIdleAct(idle && !state && !search, latestCue, svg, calm);
   const searching = search === 'searching';
   const gaze =
     state === 'thinking' || act === 'lights'
@@ -448,6 +513,7 @@ export function ParkyLogo({
           : searching
             ? SEARCH_GAZE
             : mouseGaze;
+  const squint = cross && gaze === mouseGaze;
   // Heart eyes and the cheer's happy squint take the place of the open eyes.
   const eyesOpen = !asleep && act !== 'love' && act !== 'cheer';
   const sleeping = asleep || act === 'nap';
@@ -741,7 +807,10 @@ export function ParkyLogo({
                 {/* A style, not the attribute, so the pupils ease to a new place. */}
                 <g
                   className="parky-gaze"
-                  style={{ transform: `translate(${gaze.x.toFixed(2)}px, ${gaze.y.toFixed(2)}px)` }}
+                  style={{
+                    // Squinting at its nose, each pupil turns in towards the middle.
+                    transform: `translate(${(squint ? (x < 24 ? gaze.x : -gaze.x) : gaze.x).toFixed(2)}px, ${gaze.y.toFixed(2)}px)`,
+                  }}
                 >
                   <g className="parky-pupils">
                     <circle cx={x} cy="23" r="3" fill={ink} />

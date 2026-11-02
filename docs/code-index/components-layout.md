@@ -57,7 +57,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`hero-image-info-panel.tsx`](../../components/layout/hero-image-info-panel.tsx)
 
-- `HeroImageInfoPanel` _component_: Hero photo attribution panel (bottom-right, desktop only), pure markup shared by the server caption and the client in-park caption. Bottom-right because the hero's left column runs the full height of the section.
+- `HeroImageInfoPanel` _component_: Hero photo attribution panel (bottom-left, desktop only), pure markup shared by the server caption and the client in-park caption.
 
 ### [`hero-image-info-switch.tsx`](../../components/layout/hero-image-info-switch.tsx)
 

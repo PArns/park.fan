@@ -41,8 +41,9 @@ async function FeaturedParkCards({ parks }: { parks: FeaturedPark[] }) {
  * Full featured-parks section (heading + intro + grid + "view all" CTA) — used on the homepage, the
  * blog context module and the bottom of glossary term pages.
  *
- * `className` goes onto the `<section>` and is for its padding: the homepage hands it the story's
- * rhythm (`STORY_SECTION_Y`), and must hand the same to `FeaturedParksSkeleton` in its fallback.
+ * `className` goes onto the `<section>` and is for its padding: the homepage, whose stop holds the
+ * heading (`heading="none"`), drops it, and must hand the same to `FeaturedParksSkeleton` in its
+ * fallback.
  */
 export async function FeaturedParksSlot({
   locale,
@@ -51,8 +52,8 @@ export async function FeaturedParksSlot({
 }: {
   locale: string;
   className?: string;
-  /** `tile` on the homepage, `watermark` under editorial pages — see {@link FeaturedParksHeading}. */
-  heading?: 'watermark' | 'tile';
+  /** `none` on the homepage, whose stop around the section carries the heading. */
+  heading?: 'watermark' | 'none';
 }) {
   const [tHome, geoData] = await Promise.all([
     getTranslations('home'),
@@ -63,29 +64,35 @@ export async function FeaturedParksSlot({
 
   return (
     <section className={cn('px-4 py-12', className)} {...linkBlockAttributes('featured')}>
-      <div className="container mx-auto">
+      {/* Inside a homepage stop the column is the page container, where `container` would centre
+        the grid in a narrower box than the column. */}
+      <div className={cn(heading !== 'none' && 'container mx-auto')}>
         {/* The same heading node `FeaturedParksSkeleton` mounts, so the fallback is as tall as
             the section whichever way the title and the intro wrap. */}
-        <FeaturedParksHeading
-          variant={heading}
-          labels={{
-            title: tHome('sections.featuredParks'),
-            hint: tHome('sections.featuredParksIntro'),
-          }}
-        />
+        {heading !== 'none' && (
+          <FeaturedParksHeading
+            labels={{
+              title: tHome('sections.featuredParks'),
+              hint: tHome('sections.featuredParksIntro'),
+            }}
+          />
+        )}
 
         <FeaturedParkCards parks={parks} />
 
-        <div className="mt-6 flex justify-center">
-          <Link
-            href="/parks"
-            prefetch={false}
-            className="text-muted-foreground hover:text-foreground flex items-center gap-1 text-sm transition-colors"
-          >
-            {tHome('hero.cta')}
-            <ChevronRight className="h-4 w-4" />
-          </Link>
-        </div>
+        {/* On the homepage the stop's heading carries the link (`StopLink`). */}
+        {heading !== 'none' && (
+          <div className="mt-6 flex justify-center">
+            <Link
+              href="/parks"
+              prefetch={false}
+              className="text-muted-foreground hover:text-foreground flex items-center gap-1 text-sm transition-colors"
+            >
+              {tHome('hero.cta')}
+              <ChevronRight className="h-4 w-4" />
+            </Link>
+          </div>
+        )}
       </div>
     </section>
   );

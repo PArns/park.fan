@@ -36,7 +36,7 @@ import {
 } from '@/components/marketing/editorial-ui';
 import type { ParkyAct } from '@/components/assistant/parky-logo';
 import { AskParkyButton, ParkyFigure, ParkyStage } from './_parky-ui';
-import { PhoneShot } from './_phone-shot';
+import { ShotRow } from '@/components/marketing/shot-row';
 
 /** The photo behind the hero: the only park background wide enough for a full-bleed head. */
 const HERO_PARK_SLUG = 'disneyland-park';
@@ -98,16 +98,15 @@ function shot(locale: string, name: 'chat' | 'plan' | 'search'): string {
 }
 
 /**
- * A chapter's text beside its screenshot, the two swapping sides from row to row, with questions
- * somebody could ask set as Parky's own suggestion chips.
+ * A chapter's text with questions somebody could ask, set as Parky's own suggestion chips, beside
+ * its screenshot ({@link ShotRow}).
  */
-function ShotRow({
+function ParkyShotRow({
   body,
   examples,
   examplesLabel,
   shotSrc,
   shotAlt,
-  shotLabel,
   reverse = false,
 }: {
   body: string;
@@ -115,33 +114,29 @@ function ShotRow({
   examplesLabel: string;
   shotSrc: string;
   shotAlt: string;
-  shotLabel: string;
   reverse?: boolean;
 }) {
   return (
-    <div className="grid items-center gap-14 md:grid-cols-2 md:gap-12">
-      <div className={cn('space-y-6', reverse && 'md:order-2')}>
-        <p className="text-foreground/85 text-lg leading-relaxed sm:text-xl">{body}</p>
-        {examples && (
-          <div className="space-y-3">
-            <p className="text-muted-foreground text-xs font-semibold tracking-widest uppercase">
-              {examplesLabel}
-            </p>
-            <ul className="flex flex-wrap gap-2">
-              {examples.map((example) => (
-                <li
-                  key={example}
-                  className="border-primary/30 bg-primary/10 text-foreground rounded-2xl rounded-bl-sm border px-3.5 py-2 text-sm"
-                >
-                  {example}
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
-      </div>
-      <PhoneShot src={shotSrc} alt={shotAlt} label={shotLabel} tilt={reverse ? 'left' : 'right'} />
-    </div>
+    <ShotRow src={shotSrc} alt={shotAlt} reverse={reverse}>
+      <p className="text-foreground/85 text-lg leading-relaxed sm:text-xl">{body}</p>
+      {examples && (
+        <div className="space-y-3">
+          <p className="text-muted-foreground text-xs font-semibold tracking-widest uppercase">
+            {examplesLabel}
+          </p>
+          <ul className="flex flex-wrap gap-2">
+            {examples.map((example) => (
+              <li
+                key={example}
+                className="border-primary/30 bg-primary/10 text-foreground rounded-2xl rounded-bl-sm border px-3.5 py-2 text-sm"
+              >
+                {example}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </ShotRow>
   );
 }
 
@@ -236,13 +231,12 @@ export default async function ParkyPage({ params }: ParkyPageProps) {
           title={t('chapters.ask.title')}
           icon={MessageCircle}
         >
-          <ShotRow
+          <ParkyShotRow
             body={t('chapters.ask.body')}
             examples={t.raw('chapters.ask.examples') as string[]}
             examplesLabel={t('examplesLabel')}
             shotSrc={shot(locale, 'chat')}
             shotAlt={t('chapters.ask.alt')}
-            shotLabel={t('shotLabel')}
           />
         </SectionShell>
 
@@ -253,13 +247,12 @@ export default async function ParkyPage({ params }: ParkyPageProps) {
           title={t('chapters.plan.title')}
           icon={CalendarHeart}
         >
-          <ShotRow
+          <ParkyShotRow
             body={t('chapters.plan.body')}
             examples={t.raw('chapters.plan.examples') as string[]}
             examplesLabel={t('examplesLabel')}
             shotSrc={shot(locale, 'plan')}
             shotAlt={t('chapters.plan.alt')}
-            shotLabel={t('shotLabel')}
             reverse
           />
         </SectionShell>
@@ -271,12 +264,11 @@ export default async function ParkyPage({ params }: ParkyPageProps) {
           title={t('chapters.search.title')}
           icon={Search}
         >
-          <ShotRow
+          <ParkyShotRow
             body={t('chapters.search.body')}
             examplesLabel={t('examplesLabel')}
             shotSrc={shot(locale, 'search')}
             shotAlt={t('chapters.search.alt')}
-            shotLabel={t('shotLabel')}
           />
         </SectionShell>
 

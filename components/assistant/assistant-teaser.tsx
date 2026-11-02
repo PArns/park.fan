@@ -138,6 +138,9 @@ export function AssistantTeaser({
   const pathname = usePathname();
   const queryClient = useQueryClient();
   const [line, setLine] = useState<Line | null>(null);
+  // The bubble keeps its last line while it fades out, so it goes as softly as it came.
+  const [said, setSaid] = useState<Line | null>(null);
+  if (line && line !== said) setSaid(line);
   const boredom = useParkyBoredom(true);
   const searching = useSearchOpen();
   const locked = usePageLocked();
@@ -302,10 +305,12 @@ export function AssistantTeaser({
   return (
     <div
       aria-live="polite"
+      // Hidden while it fades out: its buttons are no longer there to press or tab to.
+      inert={!line}
       className={cn(
-        // The bubble's tail ends at Parky's body beside his mouth: a 56 px button on a phone,
-        // 64 px from `sm`, both 1rem from the corner.
-        'fixed right-[4.75rem] bottom-[max(1rem,env(safe-area-inset-bottom))] max-w-[min(15rem,calc(100vw-6rem))] sm:right-[5.25rem]',
+        // The bubble stands up beside Parky's head and its tail points at his mouth: a 56 px button
+        // on a phone, 64 px from `sm`, both 1rem from the corner.
+        'fixed right-[4.75rem] bottom-[calc(max(1rem,env(safe-area-inset-bottom))+2.25rem)] max-w-[min(15rem,calc(100vw-6rem))] sm:right-[5.25rem] sm:bottom-[calc(max(1rem,env(safe-area-inset-bottom))+2.75rem)]',
         PARKY_LAYER,
         'planner-wide:right-[calc(var(--planner-inset,0px)+5.25rem)]',
         'origin-[100%_75%] transition-[opacity,transform] duration-300 ease-out motion-reduce:transition-none',
@@ -314,35 +319,36 @@ export function AssistantTeaser({
           : 'pointer-events-none translate-x-2 scale-95 opacity-0'
       )}
     >
-      {line && (
-        <div className="bg-background border-border/60 relative flex items-start gap-1 rounded-2xl border py-2 pr-1.5 pl-3 text-sm shadow-xl">
+      {/* White with black text in either theme, as a comic's speech bubble; the ✕ before the line. */}
+      {said && (
+        <div className="relative flex items-start gap-1 rounded-2xl border border-black/10 bg-white py-2 pr-3 pl-1.5 text-sm text-neutral-900 shadow-xl">
           <button
             type="button"
             onClick={() => {
-              trackSiteEvent('assistant_line_clicked', { line: line.kind });
+              trackSiteEvent('assistant_line_closed', { line: said.kind });
+              muteLines();
+              setLine(null);
+            }}
+            aria-label={t('close')}
+            className="-mt-0.5 shrink-0 rounded-full p-0.5 text-neutral-500 hover:text-neutral-900"
+          >
+            <X className="size-3.5" />
+          </button>
+          <button
+            type="button"
+            onClick={() => {
+              trackSiteEvent('assistant_line_clicked', { line: said.kind });
               setLine(null);
               onOpen();
             }}
             className="text-left font-medium"
           >
-            {line.text}
-          </button>
-          <button
-            type="button"
-            onClick={() => {
-              trackSiteEvent('assistant_line_closed', { line: line.kind });
-              muteLines();
-              setLine(null);
-            }}
-            aria-label={t('close')}
-            className="text-muted-foreground hover:text-foreground -mt-0.5 shrink-0 rounded-full p-0.5"
-          >
-            <X className="size-3.5" />
+            {said.text}
           </button>
           {/* The tail: a square on its corner, half under the bubble, pointing at Parky. */}
           <span
             aria-hidden="true"
-            className="bg-background border-border/60 pointer-events-none absolute -right-1.5 bottom-2.5 size-3 rotate-45 border-t border-r"
+            className="pointer-events-none absolute -right-1.5 bottom-2.5 size-3 rotate-45 border-t border-r border-black/10 bg-white"
           />
         </div>
       )}

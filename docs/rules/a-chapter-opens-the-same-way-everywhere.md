@@ -2,7 +2,8 @@
 
 One component draws every chapter header on the site: `ChapterHeading`
 (`components/common/chapter-heading.tsx`), an oversized translucent glyph, an optional kicker, the
-title and the rule that closes it (`variant="tile"` is the homepage story's form of the same thing).
+title and the rule that closes it (`variant="stop"` is the homepage's form of the same thing, the
+glyph above and no rule, beside its content).
 
 Each surface reaches it through its own wrapper (`SectionShell`, the blog's h2 renderer,
 `PageSection`, `ChapterPanel`, the `PageBottomSections` headings); the table, and what belongs
