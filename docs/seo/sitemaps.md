@@ -165,5 +165,11 @@ crawled before their change, with clicks, impressions, CTR and position. "Beantr
 page's URL and opens the property in Search Console, whose top bar inspects it ("Indexierung
 beantragen" is there), and the API records the click. Google has no link that fills that field: an
 inspection page's `id` is a token Google issues, so a URL in it ends on Google's 404. A page requested since its change waits under "Beantragt, wartet auf Google" and cannot be
-recorded twice; the panel warns past ten requests in 24 hours. Contract and rules:
+recorded twice; the panel warns past ten requests in 24 hours.
+
+The API lists the open pages by what a request gains: impressions over 28 days times the days
+Google had not crawled the page when inspected, capped at 30, halved for `uncertain`. Google's own
+gap is the best guess at how long it takes without a request, so a park page it crawled two days
+before the inspection goes below a glossary entry it last crawled two months ago, even with nine times
+the impressions. The panel's hint states the rule. Contract and rules:
 `PArns/v4.api.park.fan` `docs/frontend/search-console.md#reindex-queue`.
