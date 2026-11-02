@@ -120,7 +120,11 @@ Button, bubble and window share one layer above everything else on the page, `PA
 (`z-[10000]`, `components/assistant/parky-layer.ts`), over the header, the planner and the
 navigation bar's `z-[9999]`. So that Parky and his hat, which rise over the window's top edge, keep
 clear of the 48 px header rather than cover it, the window starts 88 px from the top on a phone and
-caps its height at the screen minus 10rem on a desktop.
+caps its height at the screen minus 10rem on a desktop. While a modal dialog has the page
+(`usePageLocked`: the planner's wizard, the whole planner on a phone, an alert), the button ducks
+below the screen's edge and is `inert`, so it never sits on the dialog's buttons, and comes back up
+once the dialog closes. It moves by `translate`, which an entrance's `transform` fill leaves alone.
+The search palette is the exception: there Parky stays and searches along.
 
 An easter egg can ask for a ride from outside: `ParkyLogo`'s `cue` plays it at once, a named one
 or `ride` for any of four, and now and then Parky takes one by itself as one act among the rest.
