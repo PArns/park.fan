@@ -1,6 +1,6 @@
 /**
- * The outer chrome every chapter of the homepage story wears, in one place so a Suspense fallback
- * in `home-skeletons.tsx` reserves the same padding as the section it stands in for.
+ * The outer chrome every chapter of the homepage wears, in one place so a Suspense fallback in
+ * `home-skeletons.tsx` reserves the same padding as the section it stands in for.
  */
 
 /**

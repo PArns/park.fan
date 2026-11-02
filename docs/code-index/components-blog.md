@@ -217,8 +217,8 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`latest-news-chip.tsx`](../../components/blog/latest-news-chip.tsx)
 
-- `LatestNewsChip` _component_: The newest news post, in one of two shapes.
-- `latestNewsFrom` _function_: The chip's data out of the news menu, which already holds the newest item and the label.
+- `LatestNewsChip` _component_: The newest news post as a card in the phone menu: label and date, then two lines of headline and a few of teaser, so a 300 px column says what the news is about.
+- `latestNewsFrom` _function_: The card's data out of the news menu, which already holds the newest item and the label, so the card and the menu cannot disagree about which post is the newest or what the section is called.
 - Types: `LatestNews`
 
 ### [`listing-pagination.tsx`](../../components/blog/listing-pagination.tsx)

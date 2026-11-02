@@ -22,21 +22,17 @@ and must never filter with `isNewsPost`.
 
 ## Teasers keep the two apart
 
-| Surface                       | Articles                                                    | News                                            |
-| ----------------------------- | ----------------------------------------------------------- | ----------------------------------------------- |
-| Homepage, hero                | —                                                           | `LatestNewsChip` in the badge row               |
-| Homepage, band under the hero | `BlogTeaserBand`, three cards, `listArticlesByRecency`      | `NewsRow` under the cards                       |
-| Homepage, blog chapter        | `LatestBlogSection variant="lead"`, `listArticlesByRecency` | `NewsRow` under the lead block                  |
-| Header menu                   | „Guides": opener + rows, `recent` in `getBlogMenu()`        | its own entry: `NewsMenuPanel`, `getNewsMenu()` |
-| Phone menu (burger sheet)     | the „Guides" link                                           | the News link and a `LatestNewsChip` card       |
-| Park and ride pages           | the card grid in `blog-posts-sections.tsx`                  | `NewsRow boxed` under the grid                  |
+| Surface                      | Articles                                             | News                                            |
+| ---------------------------- | ---------------------------------------------------- | ----------------------------------------------- |
+| Homepage, „Neu auf park.fan" | `HomeReading`, three cards, `listArticlesByRecency`  | `NewsRow` (six) under the cards                 |
+| Header menu                  | „Guides": opener + rows, `recent` in `getBlogMenu()` | its own entry: `NewsMenuPanel`, `getNewsMenu()` |
+| Phone menu (burger sheet)    | the „Guides" link                                    | the News link and a `LatestNewsChip` card       |
+| Park and ride pages          | the card grid in `blog-posts-sections.tsx`           | `NewsRow boxed` under the grid                  |
 
-- **The hero chip is the only news above the fold**, on any screen. It is one line by construction
-  (`components/blog/latest-news-chip.tsx`): on the badge's line from a 34 rem row, under it below
-  that, decided by the row's own width (`@container/badges`). In the phone menu it is a small card
-  (`variant="card"`). Both chips show the date in UTC rather than `NewsAge`, whose relative half
-  grows after hydration and would slide a truncated headline sideways, and both take their post from
-  `getNewsMenu()` through `latestNewsFrom()`, so they agree on which post is newest.
+- **The phone menu's news card** (`components/blog/latest-news-chip.tsx`) shows the date in UTC
+  rather than `NewsAge`, whose relative half grows after hydration and would slide a truncated
+  headline sideways, and takes its post from `getNewsMenu()` through `latestNewsFrom()`, so it
+  agrees with the header's News panel on which post is newest.
 - **On the teaser surfaces news is drawn a step below the articles** (a 112 px cover, a semibold
   title, no teaser, its own accent label) through one component: `NewsList`
   (`components/blog/news-list.tsx`), wrapped by `NewsRow` on server-rendered pages.

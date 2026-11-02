@@ -656,7 +656,7 @@ export function Header({
                       menu's own data. */}
                     {latestNews && (
                       <div data-sheet-stagger>
-                        <LatestNewsChip news={latestNews} variant="card" />
+                        <LatestNewsChip news={latestNews} />
                       </div>
                     )}
                     {/* Favourites before the destinations: on a phone this sheet is the navigation,

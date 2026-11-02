@@ -24,14 +24,16 @@ const TOP_SPACING = CHAPTER_GAP_COMPACT;
 /**
  * `nested` is the homepage's: there `NearbyChapter` opens the chapter and the card's own heading
  * is a pill under it. Without it (`PageBottomSections`) the card opens as a chapter of its own —
- * see `NearbyHeading`.
+ * see `NearbyHeading`. `showShortWaits` adds the rides with a short wait under the parks.
  */
 export function NearbyParksCard({
   className,
   nested = false,
+  showShortWaits = false,
 }: {
   className?: string;
   nested?: boolean;
+  showShortWaits?: boolean;
 }) {
   const t = useTranslations('nearby');
   const tCommon = useTranslations('common');
@@ -158,6 +160,7 @@ export function NearbyParksCard({
         data={nearbyData.data as NearbyParksData}
         className={className}
         nested={nested}
+        showShortWaits={showShortWaits}
         isExpanded={isExpanded}
         setIsExpanded={setIsExpanded}
       />

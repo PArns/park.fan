@@ -34,6 +34,14 @@ export function assistantVisible(params: {
   return params.config.enabled && (params.invited || params.bucket < params.config.rolloutPercent);
 }
 
+/**
+ * Whether Parky is switched on for everybody: a page may then offer it as part of its own design,
+ * since no visitor would see an offer the widget then refuses. Pure, so the decision is testable.
+ */
+export function assistantForEveryone(config: AssistantConfig): boolean {
+  return config.enabled && config.rolloutPercent >= 100;
+}
+
 function storage(kind: 'local' | 'session'): Storage | null {
   try {
     return kind === 'local' ? window.localStorage : window.sessionStorage;
@@ -100,12 +108,14 @@ async function config(): Promise<AssistantConfig> {
 }
 
 let visible = false;
+let forEveryone = false;
 let decided = false;
 let started = false;
 const listeners = new Set<() => void>();
 
 async function decide(isForced: boolean): Promise<void> {
-  const loaded = isForced ? ASSISTANT_OFF : await config();
+  const loaded = await config();
+  forEveryone = assistantForEveryone(loaded);
   visible = assistantVisible({
     config: loaded,
     bucket: bucket(),
@@ -144,6 +154,8 @@ export const assistantGate = {
   },
   getSnapshot: (): boolean => visible,
   getServerSnapshot: (): boolean => false,
+  /** Shown to this visitor and switched on for everybody ({@link assistantForEveryone}). */
+  getForEveryone: (): boolean => visible && forEveryone,
   /** {@link AssistantGateStatus} as a snapshot of the same store. */
   getStatus: (): AssistantGateStatus =>
     ASSISTANT_KILLED ? 'off' : !decided ? 'pending' : visible ? 'on' : 'off',

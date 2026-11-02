@@ -1,13 +1,12 @@
-import { HERO_REST_ROWS_DESKTOP, HERO_REST_ROWS_PHONE } from '@/lib/home/hero-search';
 import type { PopularPark, ScheduleSummary } from '@/lib/api/types';
 import type { ParkWithDistance } from '@/types/nearby';
 import type { NearbySearchExtras } from '@/lib/hooks/use-hero-browse-parks';
 
 /**
- * Nearby parks the hero's resting lists need before popular parks fill them up: their rows have a
- * reserved height, and the nearby answer can come back shorter than that.
+ * Parks the list before anything is typed shows at least: a nearby answer shorter than that is
+ * filled up with popular parks, so a visitor far from every park still has five to pick from.
  */
-export const BROWSE_MIN_PARKS = Math.max(HERO_REST_ROWS_DESKTOP, HERO_REST_ROWS_PHONE);
+export const BROWSE_MIN_PARKS = 5;
 
 /**
  * The park's own API URL out of one of its rides' (`…/parks/<continent>/<country>/<city>/<park>/…`):

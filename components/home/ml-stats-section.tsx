@@ -1,6 +1,5 @@
 import { getLocale, getTranslations } from 'next-intl/server';
-import { Brain, Database, RefreshCw, ArrowRight } from 'lucide-react';
-import { Link } from '@/i18n/navigation';
+import { Brain, Database, RefreshCw } from 'lucide-react';
 import { GlossaryInject } from '@/components/glossary/glossary-inject';
 import { Card, CardContent } from '@/components/ui/card';
 import { getMLDashboard, getMLMetricsHistory } from '@/lib/api/ml';
@@ -18,26 +17,12 @@ function getR2Color(r2: number | null | undefined) {
   return 'text-destructive';
 }
 
-interface MLStatsSectionProps {
-  linkToFancast?: boolean;
-  /**
-   * `section` (default) is the band `/fancast` renders in its chapter 01, with its own `<section>`,
-   * H3 and intro. `bare` returns the metric grid alone for a caller that already opened the
-   * chapter (the homepage story's AI chapter), where a second heading would repeat the sentence
-   * above it.
-   */
-  variant?: 'section' | 'bare';
-}
-
 /**
  * The prediction model's live scorecard: mean error with a sparkline, RMSE, MAPE, R², prediction
  * count, coverage and the retraining countdown. Server Component; renders nothing when the ML
  * dashboard API fails.
  */
-export async function MLStatsSection({
-  linkToFancast = false,
-  variant = 'section',
-}: MLStatsSectionProps = {}) {
+export async function MLStatsSection() {
   const [t, tCommon, locale] = await Promise.all([
     getTranslations('home'),
     getTranslations('common'),
@@ -66,19 +51,15 @@ export async function MLStatsSection({
 
   const body = (
     <>
-      {variant === 'section' && (
-        <>
-          <div className="mb-3 flex items-center gap-2">
-            <Brain className="text-primary h-5 w-5" />
-            <h3 className="text-xl font-bold">
-              <GlossaryInject noUnderline>{t('ai.title')}</GlossaryInject>
-            </h3>
-          </div>
-          <p className="text-muted-foreground mb-10 text-sm leading-relaxed">
-            <GlossaryInject>{t('ai.subtitle')}</GlossaryInject>
-          </p>
-        </>
-      )}
+      <div className="mb-3 flex items-center gap-2">
+        <Brain className="text-primary h-5 w-5" />
+        <h3 className="text-xl font-bold">
+          <GlossaryInject noUnderline>{t('ai.title')}</GlossaryInject>
+        </h3>
+      </div>
+      <p className="text-muted-foreground mb-10 text-sm leading-relaxed">
+        <GlossaryInject>{t('ai.subtitle')}</GlossaryInject>
+      </p>
 
       <div className="mb-10 grid gap-4 lg:grid-cols-2">
         <Card
@@ -221,22 +202,8 @@ export async function MLStatsSection({
           </p>
         </div>
       </div>
-
-      {linkToFancast && (
-        <div className="mt-8 flex justify-center border-t pt-8">
-          <Link
-            href="/fancast"
-            className="text-primary inline-flex items-center gap-1.5 text-sm font-semibold hover:underline"
-          >
-            {t('ai.fancastLink')}
-            <ArrowRight className="h-4 w-4" />
-          </Link>
-        </div>
-      )}
     </>
   );
-
-  if (variant === 'bare') return body;
 
   return (
     <section className="bg-muted/30 px-4 py-14">

@@ -64,7 +64,7 @@ interface ChapterHeadingProps {
   frosted?: boolean;
   /**
    * How the chapter marks itself on the left. `watermark` (default) is the oversized translucent
-   * glyph; `tile` is the homepage story's, the icon in a 68 px gradient plate with a pill kicker,
+   * glyph; `tile` is the homepage's, the icon in a 68 px gradient plate with a pill kicker,
    * because a `/25` watermark icon disappears when it alone carries the chapter's identity.
    * Everything below the mark is shared.
    */

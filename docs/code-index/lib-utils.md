@@ -388,28 +388,6 @@ Redirects for malformed or stale park URLs: a missing city segment (a park slug 
 - `rideCrowdMinuteRanges` _function_: Which waits put THIS ride in which tier, for the badge tooltip.
 - Types: `RideCrowdMinuteRange`
 
-### [`ride-day-curve-geometry.ts`](../../lib/utils/ride-day-curve-geometry.ts)
-
-- `niceMax` _function_: Round a max up to a friendly gridline so the axis labels are readable numbers.
-- `gridValues` _function_: Horizontal guide values for the plot, top first. The divisor is the first of 5, 4, 3, 2 whose step is a multiple of five, because 12.5 / 25 / 37.5 reads worse than no guides; `niceMax`'s values always allow one.
-- `makeScales` _function_: The plot's scales. `yMax` is clamped to at least 1 so a ride that is a walk-on all day does not divide by zero and write `NaN` into every path.
-- `axisHours` _function_: Which hours get a tick: the two ends, plus every third hour between them. The ends are excluded from the middle pass so the last hour cannot tick twice (a duplicate React key).
-- `smoothSegment` _function_: One contiguous run of points as a smooth cubic path segment. A queue does not turn corners on the hour, and the monotone interpolation never invents a value outside the measured range.
-- `runsOf` _function_: Split a positional series into the contiguous runs that actually have values.
-- `linePath` _function_: A positional series as an SVG path, broken at every gap. `null` means the ride reported nothing that hour; a line across the hole would be an invented measurement.
-- `bandPath` _function_: The filled spread band, one closed subpath per contiguous run, so the polygon never closes across a gap. A run under two points has no area and is dropped.
-- `quietWindows` _function_: The quiet run the day opens with and the one it ends with, derived from the median curve rather than the API's `ropeDrop` so a window cannot contradict the line it sits on. Either can be absent; the two never overlap.
-- `peakOf` _function_: The ride's busiest measured hour, for the chart's screen-reader summary.
-- `VIEW_W` _const_: viewBox width of the plot.
-- `VIEW_H` _const_: viewBox height. The y axis starts at zero, so a ride running 28–46 minutes uses only the top half of the plot; a taller box left a large empty rectangle in the card.
-- `PAD_L` _const_: Left inner padding of the plot, in viewBox units.
-- `PAD_R` _const_: Right inner padding.
-- `PAD_T` _const_: Top inner padding.
-- `PAD_B` _const_: Bottom inner padding.
-- `QUIET_BAND` _const_: A quiet hour sits at or under `min + QUIET_BAND × (max − min)` of the ride's OWN day.
-- `MIN_RANGE_SHARE` _const_: How much a day has to move, as a share of its peak, before „quiet" means anything. A ride at 30 minutes all day has a flat day, not a quiet window.
-- Types: `QuietWindow`
-
 ### [`rider-height.ts`](../../lib/utils/rider-height.ts)
 
 - `canRideAtHeight` _function_: Whether a rider of `cm` may ride. An attraction with no height data passes, like `import('./season').isInSeason`'s `!== false`: a missing limit means nobody wrote one down, and hiding the ride would quietly shorten the park.

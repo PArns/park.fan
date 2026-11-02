@@ -434,9 +434,9 @@ Route `/[locale]` (not-found).
 
 Route `/[locale]` (page).
 
-- `default (HomePage)` _component_
+- `default (HomePage)` _component_: The homepage, written for somebody who has never been here: what this is (the hero's headline and one sentence), whether their park is in it (the search, four popular parks, the parks near them), what is new (guides and news), what else it …
 - `generateMetadata` _function_
-- `revalidate` _const_: A static shell per locale, served from the CDN.
+- `revalidate` _const_: A static shell per locale, served from the CDN. The live parts (nearby parks, favourites, the popular parks' status) are client queries that overlay the shell on mount, so its age is invisible to a reader with JavaScript.
 
 ### [`parks/[continent]/[country]/[city]/[park]/[attraction]/page.tsx`](../../app/%5Blocale%5D/parks/%5Bcontinent%5D/%5Bcountry%5D/%5Bcity%5D/%5Bpark%5D/%5Battraction%5D/page.tsx)
 

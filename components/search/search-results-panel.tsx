@@ -62,13 +62,6 @@ interface SearchResultsPanelProps {
   browseStyle?: CSSProperties;
   /** The browse rows' own class, the hero's fixed height. */
   browseRowClassName?: string;
-  /** Rows listed after the pre-query list (the hero's two posts). */
-  browseExtra?: ReactNode;
-  /**
-   * What stands in for `browseExtra` while the list is pending. The two arrive together, so cmdk
-   * highlights the first park on mount and not the first post.
-   */
-  browseExtraPending?: ReactNode;
   /**
    * Height behaviour of the scrolling list. The palette keeps `CommandList`'s own cap; the hero
    * passes `min-h-0 flex-1` because its card is already capped to the room left below the field.
@@ -110,8 +103,6 @@ export function SearchResultsPanel({
   browseHeader,
   browseStyle,
   browseRowClassName,
-  browseExtra,
-  browseExtraPending,
   listClassName,
   skeletonRowClassName,
   restingFooter,
@@ -237,7 +228,6 @@ export function SearchResultsPanel({
         ) : (
           emptyBrowse
         ))}
-      {browsing && (isPending ? browseExtraPending : browseExtra)}
     </CommandList>
   );
 

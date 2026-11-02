@@ -5,7 +5,6 @@ import { useRouter } from '@/i18n/navigation';
 import { searchResultHref } from '@/lib/utils/url-utils';
 import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
 import type { SearchSession } from '@/lib/analytics/search-session';
-import type { SearchBrowseItem } from '@/lib/analytics/site-analytics';
 import type { SearchResultItem } from '@/lib/api/types';
 import type { GlossarySearchItem } from '@/lib/hooks/use-search-results';
 import type { NearbySearchItem } from '@/lib/hooks/use-hero-browse-parks';
@@ -75,22 +74,10 @@ export function useSearchNavigation(session: SearchSession, onNavigate?: () => v
     router.push(post.path as '/parks/europe');
   };
 
-  /** One of the posts the hero lists before anything is typed. */
-  const handleBrowsePostSelect = (
-    post: { path: string },
-    item: Extract<SearchBrowseItem, 'news' | 'guide'>,
-    index: number
-  ) => {
-    session.browseClicked(item, index);
-    onNavigate?.();
-    router.push(post.path as '/parks/europe');
-  };
-
   return {
     handleSelect,
     handleBrowseSelect,
     handleGlossarySelect,
     handlePostSelect,
-    handleBrowsePostSelect,
   };
 }

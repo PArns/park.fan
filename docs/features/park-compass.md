@@ -54,9 +54,8 @@ heading out of view, which costs, reader at y = 0 (`?sim=in_park`, 2026-10-28):
 | 1280 × 800 | 1142 / 982 px       | 0.0229 | 0.0105 |
 
 Up to 0.23 is paid once, only on page views from inside a park; the alternative was a compass that
-never appeared on the phones most people carry. The hero itself moves nothing for a visitor in a
-park: on a phone its park block sits in the search list ([homepage hero](homepage-hero.md)). A
-scrolled reader is still never moved by the compass. (A scrolled reader in a park _is_ moved by
+never appeared on the phones most people carry. The hero itself is the same for a visitor in a park
+([homepage](homepage-hero.md)). A scrolled reader is still never moved by the compass. (A scrolled reader in a park _is_ moved by
 „Parks in deiner Nähe", which grows from 661 to 2,057 px when its card switches to the in-park view;
 its skeleton is sized for the park list.)
 

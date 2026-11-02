@@ -23,9 +23,9 @@ const PAUSED_CLASS = 'hero-motion-paused';
 
 /**
  * When the ken-burns pan may start: after load, idle and the entrance window. The pan transforms
- * the backdrop both glass panels blur, which then has to be re-filtered every frame, so it waits
- * until nothing else in the hero is still arriving. Its first keyframe is the identity transform,
- * so a late start is invisible. See docs/features/homepage-hero.md.
+ * the backdrop the search field's glass blurs, which then has to be re-filtered every frame, so
+ * it waits until nothing else in the hero is still arriving. Its first keyframe is the identity
+ * transform, so a late start is invisible. See docs/features/homepage-hero.md.
  */
 function useHeroPanAllowed(): boolean {
   const afterLoad = useAfterLoad();
@@ -248,9 +248,9 @@ interface HeroBackgroundProps {
  */
 export function HeroBackground({ imageSrc, blurDataURL, alt }: HeroBackgroundProps) {
   // Park the pan while the hero is scrolled away or the tab is in the background. It is a
-  // 22 s infinite animation over a backdrop two glass panels are filtering, so left to itself it
-  // keeps a full-viewport composited layer alive — and keeps the header's own blur invalidating —
-  // for a photo nobody can see.
+  // 22 s infinite animation over a backdrop the search field's glass is filtering, so left to
+  // itself it keeps a full-viewport composited layer alive — and keeps the header's own blur
+  // invalidating — for a photo nobody can see.
   const { ref, active } = useActiveOnScreen('0px');
 
   return (
@@ -262,7 +262,7 @@ export function HeroBackground({ imageSrc, blurDataURL, alt }: HeroBackgroundPro
       )}
     >
       <RandomHeroImage imageSrc={imageSrc} blurDataURL={blurDataURL} alt={alt} />
-      {/* Light mode only tints the top for the header, since the panels carry their own glass.
+      {/* Light mode only tints the top for the header; the page lays its own tint over the photo.
           Dark mode keeps its heavier gradient, which makes the night photos read as night. */}
       <div className="from-background/25 to-muted/20 dark:from-background dark:via-background/20 dark:to-muted/70 absolute inset-0 bg-gradient-to-br via-transparent" />
       <div className="from-park-primary/10 absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] via-transparent to-transparent" />

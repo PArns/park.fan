@@ -77,24 +77,12 @@ by hand: change the comment in the code and re-run the script. -->
 - `useGeoLiveStats` _hook_: Live open-park counts per continent and country, one request shared by every consumer on a page. Client-only, so the counts are not baked into the ISR shell.
 - `findOpenParkCount` _function_: The live open-park count for a continent or a country within it.
 
-### [`use-global-stats.ts`](../../lib/hooks/use-global-stats.ts)
-
-- `useGlobalStats` _hook_: Client-side refresh of the global "right now" statistics (open parks / operating attractions).
-
 ### [`use-hero-browse-parks.ts`](../../lib/hooks/use-hero-browse-parks.ts)
 
 - `useBrowseHeading` _hook_: Heading above the pre-query list — "You're at X" / "Nearby parks" / "Popular parks". Shared so the palette and the hero's in-place list label the same data the same way.
 - `useHeroBrowseParks` _hook_: What the search shows before anything is typed: the visitor's nearby parks, or — when the nearby lookup yields nothing (location denied AND the GeoIP fallback came up empty) — the most popular parks, so the list is never blank.
 - `heroBrowseRows` _function_: The rows the hero lists: in a park only its rides, since the hero's park actions above already lead to the park itself. The palette lists the park too.
 - Types: `NearbySearchExtras`, `NearbySearchItem`, `HeroBrowseParks`
-
-### [`use-hero-park.ts`](../../lib/hooks/use-hero-park.ts)
-
-- `useHeroPark` _hook_: The hero's park, after mount only: `useHomeNearbyParks` reads the last known position from localStorage and can answer in the first client render, which would not match the server's general hero.
-
-### [`use-hero-reading.ts`](../../lib/hooks/use-hero-reading.ts)
-
-- `useHeroReadingRows` _hook_: The hero's two posts: the news post this language read most in the last seven days (`useMostRead`, over the build's pick until it arrives), skipping the one the badge row's chip already shows, and the newest guide.
 
 ### [`use-hero-status-labels.ts`](../../lib/hooks/use-hero-status-labels.ts)
 

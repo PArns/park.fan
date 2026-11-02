@@ -31,7 +31,6 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`analytics.ts`](../../lib/api/analytics.ts)
 
-- `getGlobalStats` _function_: Get global real-time statistics, cached a week. Only an SSR seed: the homepage counts refresh client-side via `useGlobalStats`, and a shorter window here would pin the homepage's whole ISR window to it (the shortest fetch wins).
 - `getTickerData` _function_: Get live ticker data: top wait times across open parks. Cached ten minutes so the polls through the `/api/analytics/ticker` proxy collapse onto one backend call.
 - `getGeoLiveStats` _function_: Get live statistics for geographic regions, cached a week. Only an SSR seed: open-park counts refresh client-side via `useGeoLiveStats`, and this window pins every static route that bakes it (homepage, /parks).
 
