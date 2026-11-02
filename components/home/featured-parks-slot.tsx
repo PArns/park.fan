@@ -64,7 +64,9 @@ export async function FeaturedParksSlot({
 
   return (
     <section className={cn('px-4 py-12', className)} {...linkBlockAttributes('featured')}>
-      <div className="container mx-auto">
+      {/* Inside a homepage stop the column is the page container, where `container` would centre
+        the grid in a narrower box than the column. */}
+      <div className={cn(heading !== 'none' && 'container mx-auto')}>
         {/* The same heading node `FeaturedParksSkeleton` mounts, so the fallback is as tall as
             the section whichever way the title and the intro wrap. */}
         {heading !== 'none' && (
@@ -78,16 +80,19 @@ export async function FeaturedParksSlot({
 
         <FeaturedParkCards parks={parks} />
 
-        <div className="mt-6 flex justify-center">
-          <Link
-            href="/parks"
-            prefetch={false}
-            className="text-muted-foreground hover:text-foreground flex items-center gap-1 text-sm transition-colors"
-          >
-            {tHome('hero.cta')}
-            <ChevronRight className="h-4 w-4" />
-          </Link>
-        </div>
+        {/* On the homepage the stop's heading carries the link (`StopLink`). */}
+        {heading !== 'none' && (
+          <div className="mt-6 flex justify-center">
+            <Link
+              href="/parks"
+              prefetch={false}
+              className="text-muted-foreground hover:text-foreground flex items-center gap-1 text-sm transition-colors"
+            >
+              {tHome('hero.cta')}
+              <ChevronRight className="h-4 w-4" />
+            </Link>
+          </div>
+        )}
       </div>
     </section>
   );

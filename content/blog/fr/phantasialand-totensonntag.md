@@ -26,6 +26,11 @@ rideLinks:
   - phantasialand/chiapas-die-wasserbahn
   - phantasialand/maus-au-chocolat
   - phantasialand/river-quest
+coverImage:
+  src: /media/phantasialand/background.jpg
+  alt: 'Un carrousel volant illuminé tourne, un arbre de lumière à gauche.'
+  caption: 'Le Totensonntag tombe le deuxième week-end du Wintertraum.'
+  credit: 'Patrick Arns'
 seo:
   title: 'Phantasialand le Totensonntag 2026 : spectacles dès 18 h'
   description: >-

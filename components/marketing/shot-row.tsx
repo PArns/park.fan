@@ -11,7 +11,6 @@ export function ShotRow({
   children,
   src,
   alt,
-  label,
   reverse = false,
   drift = false,
 }: {
@@ -19,8 +18,6 @@ export function ShotRow({
   children: ReactNode;
   src: string;
   alt: string;
-  /** What the picture is, for the small badge on the frame. */
-  label: string;
   reverse?: boolean;
   /** The phone glides a little against the page while it scrolls past (`.pk-shot-drift`). */
   drift?: boolean;
@@ -29,7 +26,7 @@ export function ShotRow({
     <div className="grid items-center gap-14 md:grid-cols-2 md:gap-12">
       <div className={cn('space-y-6', reverse && 'md:order-2')}>{children}</div>
       <div className={cn(drift && 'pk-shot-drift')}>
-        <PhoneShot src={src} alt={alt} label={label} tilt={reverse ? 'left' : 'right'} />
+        <PhoneShot src={src} alt={alt} tilt={reverse ? 'left' : 'right'} />
       </div>
     </div>
   );

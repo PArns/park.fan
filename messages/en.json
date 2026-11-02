@@ -175,45 +175,46 @@
     "popular": {
       "kicker": "Popular parks",
       "title": "Wait times and crowds at the most popular parks",
-      "lead": "Six big parks with their live status and crowds, plus twelve with a direct link to their wait times and crowd calendar."
+      "lead": "Phantasialand, Europa-Park and the other big parks, with their status and crowds right now. For the rest, the name leads to the wait times and the calendar icon to the crowd calendar."
     },
     "faq": {
       "kicker": "Common questions",
       "title": "Theme park wait times, briefly explained",
-      "lead": "The questions a first visit brings.",
+      "lead": "Where the wait times come from, which parks are in, and what it costs, which is nothing.",
       "link": "How park.fan works",
       "note": "All figures without guarantee."
     },
     "parky": {
       "kicker": "Parky",
       "title": "Can’t find what you’re looking for? Ask Parky",
-      "lead": "Or you don’t quite know yet what you’re looking for. Parky answers questions about wait times, forecasts and opening hours, looking them up in the same live data.",
+      "lead": "Parky is a theme park nerd. He knows how long the line for Taron is right now, which Saturday in June Europa-Park is emptiest and what airtime actually is. He takes the numbers from the same live data as this page.",
       "link": "Ask Parky"
     },
     "reading": {
       "kicker": "New on park.fan",
       "title": "Theme park news and guides",
-      "lead": "What is changing in the parks right now, and in-depth guides to single parks."
+      "lead": "What’s changing in the parks right now, and guides to single parks with the best days to go and the measured wait times of their rides.",
+      "popularGuides": "Most read guides"
     },
     "tour": {
       "live": {
         "kicker": "Live wait times",
         "title": "Live wait times for every ride",
-        "text": "Open any park and you see each ride’s queue as it stands now, and how busy the park is. New figures every five minutes.",
+        "text": "Taron, Blue Fire, Wodan: every park page shows how long you’ll queue for each ride right now, plus the crowd level from very low to extreme. The numbers refresh every five minutes.",
         "link": "How park.fan works",
         "alt": "The Europa-Park page on a phone: the headliners with their live wait times and how busy they are."
       },
       "calendar": {
         "kicker": "Crowd calendar",
         "title": "The crowd calendar: how busy it gets, day by day",
-        "text": "For every opening day you see the expected crowds as a colour and the wait, with opening hours, school holidays and weather.",
+        "text": "Every opening day gets a colour from green to red and an expected wait. Opening hours, school holidays and the weather come with it, because a Tuesday in the autumn break is no ordinary Tuesday.",
         "link": "Best time to visit",
         "alt": "Europa-Park’s crowd calendar for November on a phone, each day with its colour and expected wait."
       },
       "ride": {
         "kicker": "Forecast",
         "title": "Forecast: the best hour for every ride",
-        "text": "For every ride you see how its wait develops over the day. The trip planner puts your rides into the quiet hours.",
+        "text": "Silver Star at 10 am is a different ride from Silver Star at 2 pm. Every ride’s page has its wait as a curve through the day, measured and forecast, and the trip planner puts your rides into the hours when the lines are shortest.",
         "link": "Plan a day",
         "alt": "The Silver Star page on a phone: the day’s measured and forecast wait times and the best times."
       }
@@ -1647,7 +1648,6 @@
     },
     "avgWait": "{minutes} min avg",
     "avgWaitShort": "Ø {minutes} min",
-    "attractionsOpen": "{open}/{total} attractions open",
     "heroHint": "Start typing to search parks, attractions, shows and restaurants",
     "newestGuide": "Latest guide"
   },
@@ -1783,8 +1783,8 @@
     "homepage": {
       "faq": {
         "whatIsQ": "What is park.fan?",
-        "whatIsA": "park.fan collects live wait times from more than 200 theme parks in 23 countries. Every park page carries the current wait time for every ride, the show times, the opening hours and a calendar that rates the crowds for the months ahead.",
-        "whichParksQ": "Which theme parks are supported by park.fan?",
+        "whatIsA": "park.fan collects live wait times from more than 200 theme parks in 23 countries. Every park page carries the current wait times of its rides, the show times, the opening hours and the crowd calendar for the months ahead.",
+        "whichParksQ": "Which theme parks are on park.fan?",
         "whichParksA": "park.fan covers over 200 theme parks worldwide, among them Phantasialand, Europa-Park, Disneyland Paris, Efteling, Walibi Belgium, Toverland and Bobbejaanland. The full list with live wait times is on the parks overview page.",
         "liveDataQ": "Are the wait times on park.fan live and in real-time?",
         "liveDataA": "Yes. Wherever a park publishes its wait times, we poll them every five minutes from three public sources at once: ThemeParks.wiki, Wartezeiten.app and Queue-Times.com. Where the sources disagree, the majority decides, then the median, then the mean. The result is rounded to five minutes, because that is how the parks post them.",
@@ -3004,7 +3004,8 @@
     "themeLight2": "Lights on, sunglasses on!",
     "themeLight3": "Daylight! Perfect park weather.",
     "install1": "Now I live on your home screen!",
-    "install2": "Installed! From now on I’m just a tap away."
+    "install2": "Installed! From now on I’m just a tap away.",
+    "thatsMe": "Hey, cool! That's me!"
   },
   "parkyPage": {
     "metaTitle": "Parky, the park.fan chat assistant",
@@ -3014,7 +3015,6 @@
     "intro": "Parky lives at the bottom right of park.fan, in the round speech bubble with a Ferris wheel on its head. Tap it and write to it like you would to a friend who knows their theme parks.",
     "ask": "Ask Parky now",
     "off": "Parky is taking a break right now. Check back later.",
-    "shotLabel": "Screenshot",
     "examplesLabel": "For example",
     "chapters": {
       "ask": {

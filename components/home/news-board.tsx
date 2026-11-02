@@ -4,31 +4,31 @@ import { getTranslations } from 'next-intl/server';
 import { ArrowRight, BookOpen, Megaphone, type LucideIcon } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import { NewsAge } from '@/components/blog/news-age';
+import { BlogCoverFallback } from '@/components/blog/blog-cover-fallback';
 import { NewsUpdateBadge } from '@/components/blog/news-update-badge';
 import { MostReadBadge } from '@/components/blog/most-read-badge';
 import { toNewsListItem } from '@/components/blog/news-row';
 import { resolveCategoryLabel } from '@/lib/blog/categories';
-import { GUIDES_CATEGORY, NEWS_CATEGORY, NEWS_INDEX_PATH, postPath } from '@/lib/blog/paths';
+import { NEWS_CATEGORY, NEWS_INDEX_PATH, postPath } from '@/lib/blog/paths';
 import { getDateTimeFormat } from '@/lib/utils/intl-format';
 import { cn } from '@/lib/utils';
 import type { BlogListItem } from '@/lib/blog/types';
 import type { Locale } from '@/i18n/config';
 
-/** The date column and the posts beside it, as on `/news`; stacked on a phone. */
+/** The news: the date column and the posts beside it, as on `/news`; stacked on a phone. */
 const ROW_CLASS =
-  'grid grid-cols-1 gap-x-6 gap-y-1 px-3 py-3 sm:grid-cols-[9.5rem_minmax(0,1fr)] sm:py-3.5';
+  'grid grid-cols-1 gap-x-4 gap-y-1 px-3 py-3 sm:grid-cols-[6.5rem_minmax(0,1fr)] sm:py-3.5';
 
 /** A post's link: the whole line, lit on hover, its cover (if it has one) on the right. */
 const LINK_CLASS =
   'group hover:bg-muted/60 -mx-2 flex items-center gap-4 rounded-xl px-2 py-1.5 transition-colors';
 
 /**
- * A post's cover, small, where the post has one; a post without one gets nothing, since a column
- * of the same brand fallback says nothing.
+ * A post's cover, small; a post without one gets the brand fallback, its hue from the slug, so two
+ * posts of one day still read as two.
  */
 function Cover({ post, className }: { post: BlogListItem; className: string }) {
   const { image, imagePosition } = toNewsListItem(post);
-  if (!image) return null;
   return (
     <span
       className={cn(
@@ -36,14 +36,18 @@ function Cover({ post, className }: { post: BlogListItem; className: string }) {
         className
       )}
     >
-      <Image
-        src={image}
-        alt=""
-        fill
-        sizes="144px"
-        style={imagePosition ? { objectPosition: imagePosition } : undefined}
-        className="object-cover transition-transform duration-500 group-hover:scale-105 motion-reduce:transition-none"
-      />
+      {image ? (
+        <Image
+          src={image}
+          alt=""
+          fill
+          sizes="144px"
+          style={imagePosition ? { objectPosition: imagePosition } : undefined}
+          className="object-cover transition-transform duration-500 group-hover:scale-105 motion-reduce:transition-none"
+        />
+      ) : (
+        <BlogCoverFallback slug={post.slug} />
+      )}
     </span>
   );
 }
@@ -107,10 +111,9 @@ function byDay(posts: readonly BlogListItem[]): { date: string; posts: BlogListI
 
 /**
  * „Neu auf park.fan" as one board: the newest news by day, each day's age and date in a column on
- * the left as `/news` draws it (`NewsAge stacked`), and the newest articles with their date and
- * reading time, under the news on a narrow page and beside it from 1024 px. A post's cover stands small on the right where it has one ({@link Cover}). The
- * board is dark in both themes; the `dark` class sets the dark tokens for its subtree, so nothing
- * inside needs a colour of its own.
+ * the left as `/news` draws it (`NewsAge stacked`), and the most read articles with their date and
+ * reading time, under the news on a narrow page and beside it from 1024 px. Every post has a small cover on the right, the brand fallback where it has no photo ({@link Cover}). The
+ * board follows the theme like every card, so nothing inside needs a colour of its own.
  *
  * News stays a step below the articles (docs/rules/news-is-set-apart-from-the-articles.md): a
  * semibold title and no teaser against a bold, larger title with one.
@@ -124,7 +127,11 @@ export async function NewsBoard({
   news: readonly BlogListItem[];
   articles: readonly BlogListItem[];
 }) {
-  const [tNav, tBlog] = await Promise.all([getTranslations('navigation'), getTranslations('blog')]);
+  const [tNav, tBlog, tReading] = await Promise.all([
+    getTranslations('navigation'),
+    getTranslations('blog'),
+    getTranslations('homeStory.reading'),
+  ]);
   const date = getDateTimeFormat(locale, {
     day: 'numeric',
     month: 'short',
@@ -133,7 +140,7 @@ export async function NewsBoard({
   });
 
   return (
-    <div className="dark bg-card text-foreground border-border grid grid-cols-1 gap-2 rounded-3xl border p-2 shadow-[0_40px_120px_-40px_color-mix(in_oklab,var(--color-primary)_55%,transparent)] sm:p-3 @min-[1024px]/page:grid-cols-2 @min-[1024px]/page:gap-4">
+    <div className="bg-card text-foreground border-border grid grid-cols-1 gap-2 rounded-3xl border p-2 shadow-[0_40px_120px_-40px_color-mix(in_oklab,var(--color-primary)_55%,transparent)] sm:p-3 @min-[1024px]/page:grid-cols-2 @min-[1024px]/page:gap-4">
       {news.length > 0 && (
         <BoardGroup
           icon={Megaphone}
@@ -145,9 +152,9 @@ export async function NewsBoard({
           {byDay(news).map((day) => (
             <li key={day.date} className={ROW_CLASS}>
               <NewsAge date={day.date} stacked className="text-sm sm:pt-1.5" />
-              <ul>
+              <ul className="divide-border/40 divide-y">
                 {day.posts.map((post) => (
-                  <li key={post.translationKey}>
+                  <li key={post.translationKey} className="py-1 first:pt-0 last:pb-0">
                     <Link href={postPath(post) as '/'} prefetch={false} className={LINK_CLASS}>
                       <span className="text-foreground group-hover:text-primary min-w-0 flex-1 text-sm leading-snug font-semibold text-pretty transition-colors sm:text-base">
                         <MostReadBadge
@@ -179,21 +186,20 @@ export async function NewsBoard({
               'border-border border-t pt-2 @min-[1024px]/page:border-t-0 @min-[1024px]/page:border-l @min-[1024px]/page:pt-0 @min-[1024px]/page:pl-4'
           )}
           icon={BookOpen}
-          label={resolveCategoryLabel(GUIDES_CATEGORY, locale, 'Guides')}
+          label={tReading('popularGuides')}
           href="/blog"
           linkLabel={tBlog('home.viewAll')}
         >
           {articles.map((post) => (
-            <li key={post.translationKey} className={ROW_CLASS}>
-              <time
-                dateTime={post.frontmatter.date}
-                className="text-muted-foreground/80 text-sm tabular-nums sm:pt-1.5"
-              >
-                {date.format(new Date(post.frontmatter.date))}
-              </time>
+            <li key={post.translationKey} className="px-3 py-3 sm:py-3.5">
               <Link href={postPath(post) as '/'} prefetch={false} className={LINK_CLASS}>
                 <span className="min-w-0 flex-1">
+                  {/* Ranked by reads, so the date is a detail beside the reading time, not a column. */}
                   <span className="text-muted-foreground block text-[11px] font-semibold">
+                    <time dateTime={post.frontmatter.date} className="tabular-nums">
+                      {date.format(new Date(post.frontmatter.date))}
+                    </time>
+                    {' · '}
                     {tBlog('readingTime', { minutes: post.readingTimeMinutes })}
                   </span>
                   <span className="text-foreground group-hover:text-primary mt-0.5 block text-base leading-snug font-bold text-pretty transition-colors sm:text-lg">

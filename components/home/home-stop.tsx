@@ -114,14 +114,13 @@ export function HomeStop({
 
 /**
  * A stop whose content is a screenshot on a phone (`ShotRow`), as the tour's and Parky's are: the
- * heading beside the phone, which glides as the page scrolls past. `overflow-hidden` keeps the
- * phone's glow from widening a phone's page.
+ * heading beside the phone, which glides as the page scrolls past. `overflow-x-clip` keeps the
+ * phone's glow from widening a phone's page without cutting it off above and below.
  */
 export function ShotStop({
   heading,
   src,
   alt,
-  label,
   reverse = false,
   divider = false,
 }: {
@@ -129,17 +128,15 @@ export function ShotStop({
   heading: ReactNode;
   src: string;
   alt: string;
-  /** What the picture is, for the small badge on the frame. */
-  label: string;
   reverse?: boolean;
   divider?: boolean;
 }) {
   return (
-    <section className="overflow-hidden px-4">
+    <section className="overflow-x-clip px-4">
       {divider && <div aria-hidden="true" className={STOP_DIVIDER_CLASS} />}
       <div className="container mx-auto py-16 sm:py-24">
         <Reveal>
-          <ShotRow src={src} alt={alt} label={label} reverse={reverse} drift>
+          <ShotRow src={src} alt={alt} reverse={reverse} drift>
             {heading}
           </ShotRow>
         </Reveal>

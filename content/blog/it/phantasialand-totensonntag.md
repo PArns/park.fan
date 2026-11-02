@@ -27,6 +27,11 @@ rideLinks:
   - phantasialand/chiapas-die-wasserbahn
   - phantasialand/maus-au-chocolat
   - phantasialand/river-quest
+coverImage:
+  src: /media/phantasialand/background.jpg
+  alt: 'Una giostra a catenelle illuminata gira, a sinistra un albero di luci.'
+  caption: 'Il Totensonntag cade nel secondo fine settimana del Wintertraum.'
+  credit: 'Patrick Arns'
 seo:
   title: 'Phantasialand al Totensonntag 2026: spettacoli solo dalle 18'
   description: >-

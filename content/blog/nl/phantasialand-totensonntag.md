@@ -26,6 +26,11 @@ rideLinks:
   - phantasialand/chiapas-die-wasserbahn
   - phantasialand/maus-au-chocolat
   - phantasialand/river-quest
+coverImage:
+  src: /media/phantasialand/background.jpg
+  alt: 'Een verlichte zweefmolen draait, links een lichtboom.'
+  caption: 'Op Totensonntag is het het tweede weekend van Wintertraum.'
+  credit: 'Patrick Arns'
 seo:
   title: 'Phantasialand op Totensonntag 2026: shows pas vanaf 18 uur'
   description: >-

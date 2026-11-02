@@ -8,8 +8,9 @@
  * Writes `public/home/<locale>/{park,calendar,ride}.webp`.
  */
 import { existsSync, mkdirSync } from 'node:fs';
-import { chromium, devices } from 'playwright';
+import { chromium } from 'playwright';
 import sharp from 'sharp';
+import { PHONE } from './lib/phone-device.mjs';
 
 const base =
   process.argv.find((arg) => arg.startsWith('--base='))?.slice(7) ?? 'http://localhost:3000';
@@ -69,7 +70,7 @@ const HIDE = `
 
 async function capture(browser, locale, shot) {
   const context = await browser.newContext({
-    ...devices['iPhone 13'],
+    ...PHONE,
     locale: BROWSER_LOCALE[locale],
     timezoneId: 'Europe/Berlin',
     colorScheme: 'dark',

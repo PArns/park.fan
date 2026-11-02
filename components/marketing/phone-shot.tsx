@@ -1,8 +1,8 @@
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
 
-/** The screenshots' size: an iPhone 13 viewport at 3× (`scripts/capture-parky-shots.mjs`). */
-const SHOT = { width: 1170, height: 1992 };
+/** The screenshots' size: an iPhone 17's screen under its status bar at 3× (`scripts/lib/phone-device.mjs`). */
+const SHOT = { width: 1206, height: 2436 };
 
 /**
  * One of the screenshots in a phone, with a soft glow of the brand colours behind it, tilted a
@@ -11,14 +11,11 @@ const SHOT = { width: 1170, height: 1992 };
 export function PhoneShot({
   src,
   alt,
-  label,
   tilt = 'left',
   priority = false,
 }: {
   src: string;
   alt: string;
-  /** What the picture is, for the small badge on the frame. */
-  label: string;
   tilt?: 'left' | 'right';
   priority?: boolean;
 }) {
@@ -34,11 +31,14 @@ export function PhoneShot({
         className="from-primary/35 to-status-operating/35 absolute -inset-8 rounded-[3.5rem] bg-gradient-to-br blur-3xl"
       />
       <div className="relative overflow-hidden rounded-[2.6rem] border-[7px] border-neutral-900 bg-neutral-900 shadow-2xl ring-1 ring-white/15">
-        {/* The island at the top of the screen, as on the phone the screenshots come from. */}
-        <span
+        {/* The status bar with its island, 62 of the screen's 402 px, which the screenshots leave
+          out (`STATUS_BAR`), so the page's header starts below it as on the phone. */}
+        <div
           aria-hidden="true"
-          className="absolute top-2 left-1/2 z-10 h-5 w-20 -translate-x-1/2 rounded-full bg-neutral-900"
-        />
+          className="flex aspect-[402/62] items-center justify-center bg-black"
+        >
+          <span className="h-[58%] w-[31%] rounded-full bg-neutral-900" />
+        </div>
         <Image
           src={src}
           alt={alt}
@@ -49,9 +49,6 @@ export function PhoneShot({
           className="block h-auto w-full"
         />
       </div>
-      <figcaption className="bg-background/90 border-border/60 text-muted-foreground absolute -bottom-3 left-1/2 -translate-x-1/2 rounded-full border px-3 py-1 text-[11px] font-semibold tracking-wide uppercase shadow-sm backdrop-blur">
-        {label}
-      </figcaption>
     </figure>
   );
 }

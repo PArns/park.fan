@@ -107,7 +107,6 @@ function ParkyShotRow({
   examplesLabel,
   shotSrc,
   shotAlt,
-  shotLabel,
   reverse = false,
 }: {
   body: string;
@@ -115,11 +114,10 @@ function ParkyShotRow({
   examplesLabel: string;
   shotSrc: string;
   shotAlt: string;
-  shotLabel: string;
   reverse?: boolean;
 }) {
   return (
-    <ShotRow src={shotSrc} alt={shotAlt} label={shotLabel} reverse={reverse}>
+    <ShotRow src={shotSrc} alt={shotAlt} reverse={reverse}>
       <p className="text-foreground/85 text-lg leading-relaxed sm:text-xl">{body}</p>
       {examples && (
         <div className="space-y-3">
@@ -239,7 +237,6 @@ export default async function ParkyPage({ params }: ParkyPageProps) {
             examplesLabel={t('examplesLabel')}
             shotSrc={shot(locale, 'chat')}
             shotAlt={t('chapters.ask.alt')}
-            shotLabel={t('shotLabel')}
           />
         </SectionShell>
 
@@ -256,7 +253,6 @@ export default async function ParkyPage({ params }: ParkyPageProps) {
             examplesLabel={t('examplesLabel')}
             shotSrc={shot(locale, 'plan')}
             shotAlt={t('chapters.plan.alt')}
-            shotLabel={t('shotLabel')}
             reverse
           />
         </SectionShell>
@@ -273,7 +269,6 @@ export default async function ParkyPage({ params }: ParkyPageProps) {
             examplesLabel={t('examplesLabel')}
             shotSrc={shot(locale, 'search')}
             shotAlt={t('chapters.search.alt')}
-            shotLabel={t('shotLabel')}
           />
         </SectionShell>
 

@@ -40,7 +40,7 @@ import { FeaturedParksSkeleton } from '@/components/home/home-skeletons';
 import { getFeaturedParksLabels } from '@/components/home/section-headings';
 import { FaqSection } from '@/components/home/faq-section';
 import { ParkyStop } from '@/components/home/parky-stop';
-import { HomeStop } from '@/components/home/home-stop';
+import { HomeStop, StopLink } from '@/components/home/home-stop';
 import { ChapterHeading } from '@/components/common/chapter-heading';
 import { NearbyParksCardSkeleton } from '@/components/parks/nearby-parks-card-skeleton';
 import { FavoritesEmptyState } from '@/components/parks/favorites-empty-state';
@@ -249,6 +249,9 @@ export default async function HomePage({ params }: HomePageProps) {
 
         <HomeTour locale={locale as Locale} />
 
+        {/* The tour's last stop: what park.fan does not show on a page, Parky answers. */}
+        <ParkyStop locale={locale as Locale} />
+
         {/* The visitor's own parks: the nearest ones with the rides where a wait is short right
           now, and their favourites, for a visitor who has some only, and then first: the inline
           favourites script in app/[locale]/layout.tsx sets `data-has-favorites` before paint, and
@@ -289,6 +292,7 @@ export default async function HomePage({ params }: HomePageProps) {
               kicker={tStory('popular.kicker')}
               title={tStory('popular.title')}
               hint={tStory('popular.lead')}
+              action={<StopLink href="/parks">{tHome('hero.cta')}</StopLink>}
             />
           }
           aside={<PopularParkLinks locale={locale as Locale} />}
@@ -309,9 +313,6 @@ export default async function HomePage({ params }: HomePageProps) {
         {/* The page's only FAQPage markup — FaqSection renders the questions and the JSON-LD from
           one array. */}
         <FaqSection locale={locale as Locale} />
-
-        {/* Whoever has not found it yet: ask Parky. */}
-        <ParkyStop locale={locale as Locale} />
       </div>
     </RouteMessages>
   );

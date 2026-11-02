@@ -28,13 +28,11 @@ import type {
   ParkWithDistance,
 } from '@/types/nearby';
 
-/** Extra fields the nearby feed carries beyond a plain search result (distance, live counts). */
+/** Extra fields the nearby feed carries beyond a plain search result (distance, live wait). */
 export interface NearbySearchExtras {
   distanceM?: number;
   /** Live park-wide average wait in minutes. */
   avgWaitTime?: number;
-  /** Live "open of total" attraction counts. */
-  attractionCounts?: { open: number; total: number };
   /**
    * A shut park's schedule entries, today's and the next operating day's, which its pill reads the
    * next opening from (`nextParkOpening`).
@@ -215,10 +213,6 @@ export function useHeroBrowseParks(): HeroBrowseParks {
             distanceM: park.distance,
             imageUrl: park.backgroundImage ?? undefined,
             avgWaitTime: park.analytics?.avgWaitTime,
-            attractionCounts:
-              park.totalAttractions > 0
-                ? { open: park.operatingAttractions, total: park.totalAttractions }
-                : undefined,
             ...shutParkSchedules(park),
             browseItem: 'nearby_park' as const,
           })),

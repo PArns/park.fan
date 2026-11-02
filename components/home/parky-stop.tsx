@@ -1,13 +1,13 @@
 import { getTranslations } from 'next-intl/server';
 import { MessageCircle } from 'lucide-react';
 import { ChapterHeading } from '@/components/common/chapter-heading';
-import { linkBlockAttributes } from '@/lib/analytics/internal-link';
 import type { Locale } from '@/i18n/config';
 import { ShotStop } from './home-stop';
 import { ParkyAskLink } from './parky-ask-link';
+import { ParkyHello } from './parky-hello';
 
 /**
- * The homepage's last stop: whoever has not found what they came for, or does not quite know what
+ * The tour's last stop on the homepage: whoever has not found what they came for, or does not quite know what
  * that is, can ask Parky. Its chat on a phone (`public/parky/<locale>/chat.webp`, from
  * `capture-parky-shots.mjs`) beside the heading, and a link that opens the chat where Parky shows
  * for the visitor ({@link ParkyAskLink}).
@@ -19,13 +19,12 @@ export async function ParkyStop({ locale }: { locale: Locale }) {
   ]);
 
   return (
-    <div {...linkBlockAttributes('nav')}>
+    <ParkyHello>
       <ShotStop
         divider
         reverse
         src={`/parky/${locale}/chat.webp`}
         alt={tParky('chapters.ask.alt')}
-        label={tParky('shotLabel')}
         heading={
           <ChapterHeading
             variant="stop"
@@ -37,6 +36,6 @@ export async function ParkyStop({ locale }: { locale: Locale }) {
           />
         }
       />
-    </div>
+    </ParkyHello>
   );
 }

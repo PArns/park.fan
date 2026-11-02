@@ -498,6 +498,7 @@ check([isRide('tower'), isRide('egg'), isRide(null)], [true, false, false], 'a r
     ['theme_toggled', { theme: 'dark' }],
     ['theme_toggled', { theme: 'light' }],
     ['pwa_installed', {}],
+    ['home_parky_seen', {}],
   ];
   const keys = names.flatMap(([name, props]) => reactionTo(name, props).keys);
   const acts = new Set(names.map(([name, props]) => reactionTo(name, props).act));

@@ -175,45 +175,46 @@
     "popular": {
       "kicker": "Populaire parken",
       "title": "Wachttijden en drukte in de populairste parken",
-      "lead": "Zes grote parken met live status en drukte, plus twaalf met een directe link naar wachttijden en drukte-kalender."
+      "lead": "Phantasialand, Europa-Park en de andere grote parken, met hun status en drukte van nu. Bij de rest leidt de naam naar de wachttijden en het kalendericoon naar de drukte-kalender."
     },
     "faq": {
       "kicker": "Veelgestelde vragen",
       "title": "Wachttijden in pretparken, kort uitgelegd",
-      "lead": "De vragen die bij een eerste bezoek opkomen.",
+      "lead": "Waar de wachttijden vandaan komen, welke parken erbij zijn en wat het kost: niets.",
       "link": "Zo werkt park.fan",
       "note": "Alle gegevens zonder garantie."
     },
     "parky": {
       "kicker": "Parky",
       "title": "Niet gevonden wat je zoekt? Vraag het Parky",
-      "lead": "Of je weet nog niet precies wat je zoekt. Parky beantwoordt vragen over wachttijden, voorspellingen en openingstijden en kijkt daarvoor in dezelfde live data.",
+      "lead": "Parky is een pretparknerd. Hij weet hoe lang je nu bij Taron in de rij staat, op welke zaterdag in juni Europa-Park het leegst is en wat airtime eigenlijk is. De cijfers haalt hij uit dezelfde live data als deze pagina.",
       "link": "Vraag het Parky"
     },
     "reading": {
       "kicker": "Nieuw op park.fan",
       "title": "Pretparknieuws en gidsen",
-      "lead": "Wat er nu in de parken verandert, en uitgebreide gidsen over afzonderlijke parken."
+      "lead": "Wat er nu in de parken verandert, en gidsen per park met de beste bezoekdagen en de gemeten wachttijden van de attracties.",
+      "popularGuides": "Meest gelezen gidsen"
     },
     "tour": {
       "live": {
         "kicker": "Live wachttijden",
         "title": "Wachttijden live, voor elke attractie",
-        "text": "Op elke parkpagina staan de actuele wachttijden van elke attractie en hoe druk het park nu is. Elke vijf minuten ververst.",
+        "text": "Taron, Blue Fire, Wodan: op elke parkpagina staat hoe lang je nu bij elke attractie in de rij staat, plus de drukte van zeer rustig tot extreem. De cijfers worden elke vijf minuten ververst.",
         "link": "Zo werkt park.fan",
         "alt": "De parkpagina van Europa-Park op een telefoon: de topattracties met hun live wachttijden en de drukte."
       },
       "calendar": {
         "kicker": "Drukte-kalender",
         "title": "De drukte-kalender: hoe druk het wordt, dag voor dag",
-        "text": "Voor elke openingsdag zie je de verwachte drukte als kleur en de wachttijd, met openingstijden, schoolvakanties en weer.",
+        "text": "Elke openingsdag krijgt een kleur van groen tot rood en een verwachte wachttijd. Daarbij komen openingstijden, schoolvakanties en het weer, want een dinsdag in de herfstvakantie is geen gewone dinsdag.",
         "link": "Beste reistijd",
         "alt": "De drukte-kalender van Europa-Park voor november op een telefoon, elke dag met kleur en verwachte wachttijd."
       },
       "ride": {
         "kicker": "Voorspelling",
         "title": "Voorspelling: het beste uur voor elke attractie",
-        "text": "Voor elke attractie zie je hoe de wachttijd zich over de dag ontwikkelt. De dagplanner legt je attracties in de rustige uren.",
+        "text": "Silver Star om 10 uur is een andere attractie dan Silver Star om 14 uur. Op de pagina van elke attractie staat de wachttijd als dagcurve, gemeten en voorspeld, en de dagplanner zet je attracties in de uren waarin de rij het kortst is.",
         "link": "Dag plannen",
         "alt": "De pagina van Silver Star op een telefoon: gemeten en voorspelde wachttijden van de dag en de beste tijden."
       }
@@ -1647,7 +1648,6 @@
     },
     "avgWait": "gem. {minutes} min",
     "avgWaitShort": "Ø {minutes} min",
-    "attractionsOpen": "{open}/{total} attracties open",
     "heroHint": "Begin te typen, we zoeken parken, attracties, shows en restaurants",
     "newestGuide": "Nieuwste gids"
   },
@@ -1784,7 +1784,7 @@
       "faq": {
         "whatIsQ": "Wat is park.fan?",
         "whatIsA": "park.fan verzamelt live wachttijden uit meer dan 200 pretparken in 23 landen. Op elke parkpagina staan de actuele wachttijden van alle attracties, de speeltijden van de shows, de openingstijden en een druktekalender voor de komende maanden.",
-        "whichParksQ": "Welke pretparken worden ondersteund door park.fan?",
+        "whichParksQ": "Welke pretparken staan op park.fan?",
         "whichParksA": "park.fan dekt meer dan 200 pretparken wereldwijd, waaronder Phantasialand, Europa-Park, Disneyland Paris, Efteling, Walibi Belgium, Toverland en Bobbejaanland. De volledige lijst met live wachttijden staat op de overzichtspagina met parken.",
         "liveDataQ": "Zijn de wachttijden op park.fan live en in realtime?",
         "liveDataA": "Ja. Waar een park zijn wachttijden publiceert, vragen we ze elke vijf minuten op, uit drie openbare bronnen tegelijk: ThemeParks.wiki, Wartezeiten.app en Queue-Times.com. Wijken de bronnen van elkaar af, dan beslist de meerderheid, daarna de mediaan, daarna het gemiddelde. Het resultaat wordt op vijf minuten afgerond, omdat de parken ze zo aangeven.",
@@ -3004,7 +3004,8 @@
     "themeLight2": "Licht aan, zonnebril op!",
     "themeLight3": "Daglicht! Perfect parkweer.",
     "install1": "Nu woon ik op je beginscherm!",
-    "install2": "Geïnstalleerd! Vanaf nu ben ik maar één tik verwijderd."
+    "install2": "Geïnstalleerd! Vanaf nu ben ik maar één tik verwijderd.",
+    "thatsMe": "Hé, gaaf! Dat ben ik!"
   },
   "parkyPage": {
     "metaTitle": "Parky, de chatassistent van park.fan",
@@ -3014,7 +3015,6 @@
     "intro": "Parky woont rechtsonder op park.fan, in de ronde tekstballon met een reuzenrad op zijn hoofd. Tik hem aan en schrijf hem zoals je een vriend schrijft die alles van pretparken weet.",
     "ask": "Vraag het Parky nu",
     "off": "Parky houdt even pauze. Kom later nog eens terug.",
-    "shotLabel": "Screenshot",
     "examplesLabel": "Bijvoorbeeld",
     "chapters": {
       "ask": {

@@ -80,7 +80,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`home-reading.tsx`](../../components/home/home-reading.tsx)
 
-- `HomeReading` _component_: „Neu auf park.fan", the homepage's first stop under the hero: the six newest news posts and the three newest articles on one board (`NewsBoard`).
+- `HomeReading` _component_: „Neu auf park.fan", the homepage's first stop under the hero: the six newest news posts and the three most read articles of the last 30 days, as the build's seed ranks them (`getMostReadSeed`, which falls back to the newest), on one board …
 
 ### [`home-skeletons.tsx`](../../components/home/home-skeletons.tsx)
 
@@ -89,7 +89,7 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`home-stop.tsx`](../../components/home/home-stop.tsx)
 
 - `HomeStop` _component_: One stop of the homepage under the hero: its opening (`ChapterHeading variant="stop"`, the chapter's link as its `action`) beside its content, the way the tour's stops stand beside their phones, or over it (`stacked`) where the content …
-- `ShotStop` _component_: A stop whose content is a screenshot on a phone (`ShotRow`), as the tour's and Parky's are: the heading beside the phone, which glides as the page scrolls past. `overflow-hidden` keeps the phone's glow from widening a phone's page.
+- `ShotStop` _component_: A stop whose content is a screenshot on a phone (`ShotRow`), as the tour's and Parky's are: the heading beside the phone, which glides as the page scrolls past.
 - `StopLink` _component_: A stop's link, under its lead (`ChapterHeading`'s `action`): the page that tells the rest. `onClick` lets a client caller do more than follow it (`ParkyAskLink`).
 - `STOP_DIVIDER_CLASS` _const_: A hairline that fades out at both ends, where a new group of stops begins: enough to tell two chapters apart without a band or a frame around either.
 
@@ -119,7 +119,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`news-board.tsx`](../../components/home/news-board.tsx)
 
-- `NewsBoard` _component_: „Neu auf park.fan" as one board: the newest news by day, each day's age and date in a column on the left as `/news` draws it (`NewsAge stacked`), and the newest articles with their date and reading time, under the news on a narrow page and …
+- `NewsBoard` _component_: „Neu auf park.fan" as one board: the newest news by day, each day's age and date in a column on the left as `/news` draws it (`NewsAge stacked`), and the most read articles with their date and reading time, under the news on a narrow page …
 
 ### [`open-parks-badge.tsx`](../../components/home/open-parks-badge.tsx)
 
@@ -143,9 +143,13 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `ParkyAskLink` _component_: The Parky stop's link: where Parky shows for this visitor it opens the chat right here, and otherwise it leads to Parky's page, where everybody may ask. It never invites a visitor the rollout left out; that stays Parky's page's call.
 
+### [`parky-hello.tsx`](../../components/home/parky-hello.tsx)
+
+- `ParkyHello` _component_: Holds the homepage's Parky stop and reports `home_parky_seen` once it reaches the middle of the screen, which the live Parky answers with a hop and "That's me!" (`reactions.ts`).
+
 ### [`parky-stop.tsx`](../../components/home/parky-stop.tsx)
 
-- `ParkyStop` _component_: The homepage's last stop: whoever has not found what they came for, or does not quite know what that is, can ask Parky.
+- `ParkyStop` _component_: The tour's last stop on the homepage: whoever has not found what they came for, or does not quite know what that is, can ask Parky.
 
 ### [`popular-park-links.tsx`](../../components/home/popular-park-links.tsx)
 

@@ -25,10 +25,7 @@ interface Stop {
  * variant="stop"`, an `<h2>` worded as people search).
  */
 export async function HomeTour({ locale }: { locale: Locale }) {
-  const [t, tParky] = await Promise.all([
-    getTranslations('homeStory.tour'),
-    getTranslations('parkyPage'),
-  ]);
+  const t = await getTranslations('homeStory.tour');
   const stops: Stop[] = [
     { key: 'live', icon: Timer, href: howtoPath(locale) },
     { key: 'calendar', icon: CalendarRange, href: `/${BEST_TIME_SEGMENTS[locale]}` },
@@ -45,11 +42,9 @@ export async function HomeTour({ locale }: { locale: Locale }) {
           reverse={index % 2 === 1}
           src={`/home/${locale}/${shots[key]}.webp`}
           alt={t(`${key}.alt`)}
-          label={tParky('shotLabel')}
           heading={
             <ChapterHeading
               variant="stop"
-              index={String(index + 1).padStart(2, '0')}
               icon={icon}
               kicker={t(`${key}.kicker`)}
               title={t(`${key}.title`)}

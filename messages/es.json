@@ -175,45 +175,46 @@
     "popular": {
       "kicker": "Parques populares",
       "title": "Tiempos de espera y afluencia en los parques más populares",
-      "lead": "Seis parques grandes con su estado y su afluencia en directo, y doce con enlace directo a sus tiempos de espera y su calendario de afluencia."
+      "lead": "Phantasialand, Europa-Park y los demás grandes parques, con su estado y su afluencia de ahora mismo. En el resto, el nombre lleva a los tiempos de espera y el icono del calendario al calendario de afluencia."
     },
     "faq": {
       "kicker": "Preguntas frecuentes",
       "title": "Los tiempos de espera en parques, en breve",
-      "lead": "Las preguntas que surgen en la primera visita.",
+      "lead": "De dónde salen los tiempos de espera, qué parques están y cuánto cuesta: nada.",
       "link": "Cómo funciona park.fan",
       "note": "Todos los datos sin garantía."
     },
     "parky": {
       "kicker": "Parky",
       "title": "¿No encuentras lo que buscas? Pregúntale a Parky",
-      "lead": "O todavía no sabes muy bien qué buscas. Parky responde preguntas sobre tiempos de espera, previsiones y horarios, y lo consulta en los mismos datos en directo.",
+      "lead": "Parky es un friki de los parques temáticos. Sabe cuánto esperas ahora mismo en Taron, qué sábado de junio está más vacío Europa-Park y qué es eso del airtime. Saca las cifras de los mismos datos en directo que esta página.",
       "link": "Preguntar a Parky"
     },
     "reading": {
       "kicker": "Novedades en park.fan",
       "title": "Noticias y guías de parques temáticos",
-      "lead": "Lo que está cambiando ahora en los parques, y guías detalladas de cada parque."
+      "lead": "Lo que está cambiando ahora en los parques, y guías de cada parque con los mejores días para ir y los tiempos de espera medidos de sus atracciones.",
+      "popularGuides": "Guías más leídas"
     },
     "tour": {
       "live": {
         "kicker": "Tiempos de espera en directo",
         "title": "Tiempos de espera en directo, para cada atracción",
-        "text": "Cada página de parque muestra el tiempo de espera actual de cada atracción y cuánta gente hay ahora. Se actualiza cada cinco minutos.",
+        "text": "Taron, Blue Fire, Wodan: cada página de parque muestra cuánto esperas ahora mismo en cada atracción, junto con la afluencia de muy baja a extrema. Las cifras se actualizan cada cinco minutos.",
         "link": "Cómo funciona park.fan",
         "alt": "La página de Europa-Park en un móvil: las atracciones estrella con sus tiempos de espera en directo y la afluencia."
       },
       "calendar": {
         "kicker": "Calendario de afluencia",
         "title": "El calendario de afluencia: cuánta gente habrá, día a día",
-        "text": "Para cada día de apertura ves la afluencia prevista con un color y la espera, con horarios, vacaciones escolares y el tiempo.",
+        "text": "Cada día de apertura recibe un color, del verde al rojo, y una espera prevista. Se suman el horario, las vacaciones escolares y el tiempo, porque un martes de vacaciones no es un martes cualquiera.",
         "link": "Mejor época",
         "alt": "El calendario de afluencia de Europa-Park para noviembre en un móvil, cada día con su color y su espera prevista."
       },
       "ride": {
         "kicker": "Previsión",
         "title": "Previsión: la mejor hora para cada atracción",
-        "text": "Para cada atracción ves cómo evoluciona la espera a lo largo del día. El planificador coloca tus atracciones en las horas tranquilas.",
+        "text": "Silver Star a las 10 es otra atracción que Silver Star a las 14. En la página de cada atracción está su espera como curva del día, medida y prevista, y el planificador coloca tus atracciones en las horas con menos cola.",
         "link": "Planificar un día",
         "alt": "La página de Silver Star en un móvil: los tiempos de espera medidos y previstos del día y las mejores horas."
       }
@@ -1647,7 +1648,6 @@
     },
     "avgWait": "{minutes} min de media",
     "avgWaitShort": "Ø {minutes} min",
-    "attractionsOpen": "{open}/{total} atracciones abiertas",
     "heroHint": "Empieza a escribir: parques, atracciones, espectáculos y restaurantes",
     "newestGuide": "Guía más reciente"
   },
@@ -1783,8 +1783,8 @@
     "homepage": {
       "faq": {
         "whatIsQ": "¿Qué es park.fan?",
-        "whatIsA": "park.fan reúne los tiempos de espera en vivo de más de 200 parques temáticos de 23 países. En la página de cada parque están los tiempos de espera actuales de todas las atracciones, los horarios de los espectáculos, el horario de apertura y un calendario que valora la afluencia de los próximos meses.",
-        "whichParksQ": "¿Qué parques temáticos son compatibles con park.fan?",
+        "whatIsA": "park.fan reúne los tiempos de espera en vivo de más de 200 parques temáticos de 23 países. En la página de cada parque están los tiempos de espera actuales de sus atracciones, los horarios de los espectáculos, el horario de apertura y el calendario de afluencia de los próximos meses.",
+        "whichParksQ": "¿Qué parques temáticos hay en park.fan?",
         "whichParksA": "Más de 200 en todo el mundo, entre ellos Phantasialand, Europa-Park, Disneyland Paris, Efteling, Walibi Belgium, Toverland y Bobbejaanland. La lista completa con tiempos de espera en vivo está en la página general de parques.",
         "liveDataQ": "¿Los tiempos de espera en park.fan son en vivo y en tiempo real?",
         "liveDataA": "Sí. Donde un parque publica sus tiempos de espera, los consultamos cada cinco minutos desde tres fuentes públicas a la vez: ThemeParks.wiki, Wartezeiten.app y Queue-Times.com. Si las fuentes discrepan, decide la mayoría, después la mediana y después la media. El resultado se redondea a cinco minutos, porque así los publican los propios parques.",
@@ -3004,7 +3004,8 @@
     "themeLight2": "¡Luz encendida, gafas de sol puestas!",
     "themeLight3": "¡Luz del día! Tiempo perfecto para el parque.",
     "install1": "¡Ahora vivo en tu pantalla de inicio!",
-    "install2": "¡Instalado! A partir de ahora estoy a un toque."
+    "install2": "¡Instalado! A partir de ahora estoy a un toque.",
+    "thatsMe": "¡Eh, qué guay! ¡Ese soy yo!"
   },
   "parkyPage": {
     "metaTitle": "Parky, el asistente de chat de park.fan",
@@ -3014,7 +3015,6 @@
     "intro": "Parky vive abajo a la derecha en park.fan, en el bocadillo redondo con una noria en la cabeza. Tócalo y escríbele como a un amigo que se conoce los parques de atracciones de memoria.",
     "ask": "Preguntar a Parky ahora",
     "off": "Parky está descansando ahora mismo. Vuelve a pasar más tarde.",
-    "shotLabel": "Captura de pantalla",
     "examplesLabel": "Por ejemplo",
     "chapters": {
       "ask": {
