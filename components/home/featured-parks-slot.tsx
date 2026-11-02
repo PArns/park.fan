@@ -48,11 +48,14 @@ export async function FeaturedParksSlot({
   locale,
   className,
   heading = 'watermark',
+  children,
 }: {
   locale: string;
   className?: string;
   /** `tile` on the homepage, `watermark` under editorial pages — see {@link FeaturedParksHeading}. */
   heading?: 'watermark' | 'tile';
+  /** Drawn under the cards and the link to every park, inside the section (the homepage's links). */
+  children?: React.ReactNode;
 }) {
   const [tHome, geoData] = await Promise.all([
     getTranslations('home'),
@@ -86,6 +89,7 @@ export async function FeaturedParksSlot({
             <ChevronRight className="h-4 w-4" />
           </Link>
         </div>
+        {children}
       </div>
     </section>
   );

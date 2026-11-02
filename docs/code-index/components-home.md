@@ -39,13 +39,40 @@ by hand: change the comment in the code and re-run the script. -->
 - `HERO_ENTRANCE_MS` _const_: How long the entrance window stays open, from the moment the hero's markup is parsed. Exported for the ken-burns pan, which waits until it is over because every frame of the pan re-blurs both glass panels (see `hero-background.tsx`).
 - `HERO_ITEM_IN_MS` _const_: Duration of `hero-item-in` in globals.css. Kept here so the two cannot drift apart.
 
-### [`hero-parky.tsx`](../../components/home/hero-parky.tsx)
+### [`hero-park-actions.tsx`](../../components/home/hero-park-actions.tsx)
 
-- `HeroParky` _component_: Parky beside the hero's headline, with a question it can answer as a speech bubble that opens the chat.
+- `HeroParkActions` _component_: The part of the homepage hero for somebody standing in a park, or right next to one: two things to press and two to read.
+- Types: `HeroPark`
 
-### [`hero-popular-parks.tsx`](../../components/home/hero-popular-parks.tsx)
+### [`hero-skeletons.tsx`](../../components/home/hero-skeletons.tsx)
 
-- `HeroPopularParks` _component_: The parks this locale's readers open most, as shortcuts under the hero's search, so a first visitor whose park is one of them is one tap from it without typing.
+- `HeroWorldPanelSkeleton` _component_: Stand-in for the world-map panel, through `GlassCard` rather than a copy of its classes, so the surface cannot drift from the real panel's.
+
+### [`hero-stats.tsx`](../../components/home/hero-stats.tsx)
+
+- `HeroStats` _component_: Server seed for the hero's live numbers (open-parks badge and intro counts), cached as long as `getGlobalStats` says, so it never pins the homepage's ISR window; the client overlays the live values via `useGlobalStats` after mount.
+
+### [`hero-text-panel.tsx`](../../components/home/hero-text-panel.tsx)
+
+- `HeroTextPanel` _component_: The plate the hero's left column sits on, so the hero is one composition of two panels. The same glass as the map panel (`GlassCard variant="heavy"`), so the two cannot drift apart.
+
+### [`hero-with-nearby.tsx`](../../components/home/hero-with-nearby.tsx)
+
+- `HeroWithNearby` _component_: The hero's left column: live open-count badge, headline and the intro with live park/ attraction counts (SSR seed + 5-min client overlay).
+- Types: `HeroInitialCounts`
+
+### [`hero-world-panel-client.tsx`](../../components/home/hero-world-panel-client.tsx)
+
+- `HeroWorldPanelClient` _component_: The hero's right-hand panel: a clickable world map with live open-park counts, headed by the worldwide open-parks badge.
+
+### [`hero-world-panel-gate.tsx`](../../components/home/hero-world-panel-gate.tsx)
+
+- `HeroWorldPanelGate` _component_: Mounts the world-map panel only on viewports 1280 px and wider and after load and idle, so the map never competes with the hero photo for LCP.
+
+### [`hero-world-panel.tsx`](../../components/home/hero-world-panel.tsx)
+
+- `HeroWorldPanel` _component_: Server seed for the hero's world-map panel: the static geo structure, the geo-live open counts and the worldwide open count for the badge in its header, each at its fetch helper's cache window (a seed only; the client polls live values).
+- Types: `WorldPanelCountry`, `WorldPanelContinent`
 
 ### [`home-location-row.tsx`](../../components/home/home-location-row.tsx)
 
@@ -53,15 +80,15 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`home-reading.tsx`](../../components/home/home-reading.tsx)
 
-- `HomeReading` _component_: „Neu auf park.fan": the three newest articles and the six newest news posts, the homepage's one reading chapter. News sits a size below the articles, as everywhere (`NewsRow`).
+- `HomeReading` _component_: „Neu auf park.fan": the six newest news posts, then the three newest articles, the homepage's one reading chapter, right under the hero: what happened in the parks is the first thing a visitor reads.
 
 ### [`home-skeletons.tsx`](../../components/home/home-skeletons.tsx)
 
 - `FeaturedParksSkeleton` _component_: `className` is the one `FeaturedParksSlot` gets, so the band's padding is the same box.
 
-### [`home-tools.tsx`](../../components/home/home-tools.tsx)
+### [`home-tour.tsx`](../../components/home/home-tour.tsx)
 
-- `HomeTools` _component_: What park.fan does, in four cards of one sentence each, for a first visitor: the live waits, the crowd calendar, the planner and Parky.
+- `HomeTour` _component_: What park.fan does, shown rather than told: four stops, each a few lines beside a screenshot of the real page on a phone, as on Parky's page.
 
 ### [`ml-sparkline-loader.tsx`](../../components/home/ml-sparkline-loader.tsx)
 
@@ -83,6 +110,10 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `NearbyChapter` _component_: The chapter frame around the nearby-parks card, which comes in as a slot (a Client Component the caller already dynamic-imports). The frame exists for the plain `<h2>`: the card opens with a band label, not a chapter header.
 
+### [`open-parks-badge.tsx`](../../components/home/open-parks-badge.tsx)
+
+- `OpenParksBadge` _component_: Glass pill with a live dot: "N parks open right now". `label` is the finished sentence, `null` while the count is pending.
+
 ### [`park-compass-dial.tsx`](../../components/home/park-compass-dial.tsx)
 
 - `ParkCompassDial` _component_: The compass itself: a bezel with ticks and letters, a face cut from the park's photo, a faint rose, the rides as markers with their names, and the reader in the middle. Blue means only the reader and the way to the ride in focus.
@@ -96,6 +127,10 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`park-compass.tsx`](../../components/home/park-compass.tsx)
 
 - `ParkCompass` _component_: The headliners around somebody standing in a park, inside a compass bezel: which way each one is, how far, and what its queue costs right now (`ParkCompassDial`).
+
+### [`popular-park-links.tsx`](../../components/home/popular-park-links.tsx)
+
+- `PopularParkLinks` _component_: The parks this locale's readers open most, each with a link to its live waits and one to its crowd calendar, because that is how people search: „&lt;Park&gt; Wartezeiten" and „&lt;Park&gt; Andrang Kalender" are most of what finds park.fan.
 
 ### [`section-chrome.ts`](../../components/home/section-chrome.ts)
 

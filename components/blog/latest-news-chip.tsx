@@ -19,9 +19,13 @@ export interface LatestNews {
 }
 
 /**
- * The card's data out of the news menu, which already holds the newest item and the label, so the
- * card and the menu cannot disagree about which post is the newest or what the section is called.
- * The teaser only on request: the header already ships it for the news panel's lead.
+ * The chip's data out of the news menu, which already holds the newest item and the label. One
+ * derivation for both hosts (the homepage hero and the phone menu), so the two cannot disagree
+ * about which post is the newest or what the section is called.
+ *
+ * The teaser only on request: the phone menu's card draws it, and the header already ships it for
+ * the news panel's lead; the hero's one-line chip does not, and would only carry 220 characters of
+ * text it never renders into the homepage's payload.
  */
 export function latestNewsFrom(
   menu: Pick<NewsMenu, 'items' | 'label'> | undefined,
@@ -39,13 +43,26 @@ export function latestNewsFrom(
 }
 
 /**
- * The newest news post as a card in the phone menu: label and date, then two lines of headline and
- * a few of teaser, so a 300 px column says what the news is about.
+ * The newest news post, in one of two shapes.
+ *
+ * - **`chip`** (the homepage hero): one line of label, date, headline and arrow, as tall as the
+ *   open-parks badge. Given a width, the headline takes the slack and the arrow sits at the end.
+ *   The hero is the only news above the fold on any screen.
+ * - **`card`** (the phone menu): label and date, then two lines of headline and a few of teaser,
+ *   so a 300 px column says what the news is about.
  *
  * The age is the date, not `NewsAge`, whose relative half arrives after hydration and would slide
- * a truncated headline sideways. No `'use client'`: its host is a client component already.
+ * a truncated headline sideways. No `'use client'`: both hosts are client components already.
  */
-export function LatestNewsChip({ news, className }: { news: LatestNews; className?: string }) {
+export function LatestNewsChip({
+  news,
+  variant = 'chip',
+  className,
+}: {
+  news: LatestNews;
+  variant?: 'chip' | 'card';
+  className?: string;
+}) {
   const format = useFormatter();
   // `new Date('2026-09-25')` is UTC midnight by spec, so formatting in UTC prints that day on the
   // server and in any browser. Anything that does not parse drops the date rather than throwing
@@ -76,28 +93,53 @@ export function LatestNewsChip({ news, className }: { news: LatestNews; classNam
     />
   );
 
+  if (variant === 'card') {
+    return (
+      <Link
+        href={newsPostPath(news.slug) as '/'}
+        prefetch={false}
+        className={cn(
+          'group border-primary/30 bg-primary/5 hover:bg-primary/10 block rounded-xl border p-3 transition-colors',
+          className
+        )}
+      >
+        <span className="flex items-center gap-2 text-[11px]">
+          {label}
+          {time}
+          <span className="ml-auto">{arrow}</span>
+        </span>
+        <span className="text-foreground group-hover:text-primary mt-2 line-clamp-2 text-[13px] leading-snug font-semibold text-pretty transition-colors">
+          {news.title}
+        </span>
+        {news.excerpt && (
+          <span className="text-muted-foreground mt-1 line-clamp-3 text-xs leading-relaxed">
+            {news.excerpt}
+          </span>
+        )}
+      </Link>
+    );
+  }
+
   return (
     <Link
       href={newsPostPath(news.slug) as '/'}
       prefetch={false}
       className={cn(
-        'group border-primary/30 bg-primary/5 hover:bg-primary/10 block rounded-xl border p-3 transition-colors',
+        'group border-primary/40 bg-primary/10 text-foreground hover:bg-primary/15 inline-flex h-[30px] max-w-full min-w-0 items-center gap-2 rounded-full border pr-3 pl-1 text-xs shadow-sm transition-colors',
         className
       )}
     >
-      <span className="flex items-center gap-2 text-[11px]">
-        {label}
-        {time}
-        <span className="ml-auto">{arrow}</span>
+      {label}
+      <span className="min-w-0 flex-1 truncate">
+        {time && (
+          <>
+            {time}
+            <span className="text-muted-foreground/60"> · </span>
+          </>
+        )}
+        <span className="font-medium">{news.title}</span>
       </span>
-      <span className="text-foreground group-hover:text-primary mt-2 line-clamp-2 text-[13px] leading-snug font-semibold text-pretty transition-colors">
-        {news.title}
-      </span>
-      {news.excerpt && (
-        <span className="text-muted-foreground mt-1 line-clamp-3 text-xs leading-relaxed">
-          {news.excerpt}
-        </span>
-      )}
+      {arrow}
     </Link>
   );
 }

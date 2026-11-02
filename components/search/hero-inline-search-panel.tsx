@@ -12,6 +12,7 @@ import { useHeroStatusLabels } from '@/lib/hooks/use-hero-status-labels';
 import { ANIMATED_HEIGHT_CLASS, useAnimatedHeight } from '@/lib/hooks/use-animated-height';
 import { SearchResultsPanel } from '@/components/search/search-results-panel';
 import { HeroBrowseHeader } from '@/components/search/hero-browse-header';
+import { HeroReadingGroup } from '@/components/search/hero-reading-group';
 import {
   HERO_SEARCH_INPUT_ROW_CLASS,
   HERO_SEARCH_ICON_CLASS,
@@ -19,8 +20,13 @@ import {
   HERO_SEARCH_LIST_BOX_CLASS,
 } from '@/components/search/hero-search-classes';
 import { HeroSearchFrame, type HeroSearchRest } from '@/components/search/hero-search-field';
-import { HERO_ROW_CLASS, HERO_SKELETON_ROW_CLASS } from '@/components/search/search-skeleton-list';
+import {
+  HERO_ROW_CLASS,
+  HERO_SKELETON_ROW_CLASS,
+  HeroReadingSkeleton,
+} from '@/components/search/search-skeleton-list';
 import { nothingFocused } from '@/lib/utils/page-focus';
+import type { HeroReading } from '@/lib/home/hero-search';
 import type { SearchSession } from '@/lib/analytics/search-session';
 
 /** Space kept between the dropdown's lower edge and the bottom of the viewport. */
@@ -32,8 +38,10 @@ interface HeroInlineSearchPanelProps {
   placeholder: string;
   /** Accessible name — the placeholder is a list of example parks, not a description. */
   label: string;
-  /** How many rows the resting list holds. */
+  /** How many rows the resting list holds, and whether the posts follow them. */
   rest: HeroSearchRest;
+  /** The two posts, where `rest.reading` asks for them. */
+  reading?: HeroReading | null;
   /** Text already typed into the static shell before this chunk finished loading. */
   initialQuery?: string;
   /** Focus the input on mount — set when the visitor's own interaction pulled this chunk in. */
@@ -48,7 +56,7 @@ interface HeroInlineSearchPanelProps {
    * hero it takes `tile`, more fill and more blur.
    */
   onHero?: boolean;
-  /** The field's session, which outlives this chunk's mount. */
+  /** The field's session (`hero`), which outlives this chunk's mount. */
   session: SearchSession;
 }
 
@@ -58,14 +66,15 @@ interface HeroInlineSearchPanelProps {
  * when the list opens, grows or shrinks, which is what an in-flow list could not offer: the hero
  * is vertically centred, so every change in result count shifted the headline.
  *
- * At rest the list shows `rest.desktopRows` rows of the browse list, or nothing at all with none;
- * focus opens the whole browse list; three characters swap in the results. The browse list is the same the palette shows, from the
- * same hook.
+ * At rest the list shows the first rows of the browse list and, on the hero, two posts; focus
+ * opens the whole browse list; three characters swap in the results. The browse list is the same
+ * the palette shows, from the same hook.
  */
 export default function HeroInlineSearchPanel({
   placeholder,
   label,
   rest,
+  reading,
   initialQuery = '',
   autoFocus = false,
   onFocusHandled,
@@ -90,8 +99,13 @@ export default function HeroInlineSearchPanel({
   const withStatusLabels = useHeroStatusLabels();
   const fieldFocus = searchFieldFocusProps(session);
   const search = useSearchResults(query);
-  const { handleSelect, handleBrowseSelect, handleGlossarySelect, handlePostSelect } =
-    useSearchNavigation(session);
+  const {
+    handleSelect,
+    handleBrowseSelect,
+    handleGlossarySelect,
+    handlePostSelect,
+    handleBrowsePostSelect,
+  } = useSearchNavigation(session);
 
   useEffect(() => onTextTaken?.(), [onTextTaken]);
 
@@ -111,14 +125,12 @@ export default function HeroInlineSearchPanel({
 
   useAnimatedHeight(boxRef, contentRef);
 
-  // Reserve exactly the resting list's height in the flow, measured rather than assumed, so what
-  // stands below never drifts as a locale's strings change. Only at rest, and only off the real
+  // Reserve exactly the resting list's height in the flow, measured rather than assumed, so the
+  // plate below never drifts as a locale's strings change. Only at rest, and only off the real
   // list: a grown list is meant to expand over the page, and a height taken off the skeleton
-  // would move it twice.
+  // would move the plate twice.
   const resting = query.trim().length < 3 && !expanded;
   const atRest = resting && !search.browse.isPending;
-  /** A field with no rows at rest shows no list until it is used (`FIELD_REST`). */
-  const collapsed = resting && rest.desktopRows === 0;
   useEffect(() => {
     const frame = frameRef.current;
     const box = boxRef.current;
@@ -126,7 +138,7 @@ export default function HeroInlineSearchPanel({
     if (!frame || !box || !content || !atRest) return;
     // Off the content, which the box eases towards, plus the hairline above it and the frame's
     // lower border: the box is mid-ease when the list collapses back to rest, and the spacer and
-    // what stands below would follow it down and up again.
+    // the plate would follow it down and up again.
     const borders =
       box.offsetHeight - box.clientHeight + parseFloat(getComputedStyle(frame).borderBottomWidth);
     const measure = () => {
@@ -196,8 +208,8 @@ export default function HeroInlineSearchPanel({
       measure();
       schedule();
     };
-    // The field also moves when the hero above it changes size (a heading wrapping, a late font);
-    // a ResizeObserver catches that without a scroll.
+    // The field also moves when the plate above it changes size (a heading wrapping, the rest of
+    // the hero streaming in); a ResizeObserver catches that without a scroll.
     const observer = new ResizeObserver(onResize);
     if (inputRef.current?.parentElement) observer.observe(inputRef.current.parentElement);
 
@@ -295,10 +307,7 @@ export default function HeroInlineSearchPanel({
         state={search.browse.isPending ? 'pending' : 'settled'}
         onMouseDown={(e) => e.preventDefault()}
       >
-        <div
-          ref={boxRef}
-          className={cn(HERO_SEARCH_LIST_BOX_CLASS, ANIMATED_HEIGHT_CLASS, collapsed && 'hidden')}
-        >
+        <div ref={boxRef} className={cn(HERO_SEARCH_LIST_BOX_CLASS, ANIMATED_HEIGHT_CLASS)}>
           {/* Capped to the room below the field once it is opened, never below its resting
               height: at rest it is reserved in the flow and the page scrolls to it. The content
               carries the cap, not the box: the box's height eases, and the list only scrolls
@@ -324,6 +333,12 @@ export default function HeroInlineSearchPanel({
               browseHeader={<HeroBrowseHeader browse={search.browse} />}
               browseStyle={rowsStyle}
               browseRowClassName={HERO_ROW_CLASS}
+              browseExtra={
+                rest.reading && reading ? (
+                  <HeroReadingGroup reading={reading} onSelect={handleBrowsePostSelect} />
+                ) : null
+              }
+              browseExtraPending={rest.reading && reading ? <HeroReadingSkeleton /> : null}
               emptyBrowse={<div aria-hidden="true" style={rowsStyle} />}
               listClassName="min-h-0 flex-1"
               skeletonRowClassName={HERO_SKELETON_ROW_CLASS}

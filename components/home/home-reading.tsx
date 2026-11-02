@@ -18,8 +18,9 @@ const GUIDES = 3;
 const NEWS = 6;
 
 /**
- * „Neu auf park.fan": the three newest articles and the six newest news posts, the homepage's one
- * reading chapter. News sits a size below the articles, as everywhere ({@link NewsRow}). The
+ * „Neu auf park.fan": the six newest news posts, then the three newest articles, the homepage's one
+ * reading chapter, right under the hero: what happened in the parks is the first thing a visitor
+ * reads. News is drawn a size below the articles, as everywhere ({@link NewsRow}). The
  * manifest is read synchronously, so the chapter is in the first HTML without a `<Suspense>`,
  * and it changes with every deploy that brings a post, which is the homepage's freshest content.
  * Renders nothing where the locale publishes no posts.
@@ -48,8 +49,12 @@ export async function HomeReading({ locale }: { locale: Locale }) {
           />
         </Reveal>
 
+        <Reveal>
+          <NewsRow locale={locale} posts={news} markMostRead />
+        </Reveal>
+
         {posts.length > 0 && (
-          <div>
+          <Reveal className="mt-12">
             <div className="mb-3 flex flex-wrap items-center justify-between gap-x-6 gap-y-1">
               <span className={ROW_LABEL_CLASS}>
                 <BookOpen className="h-4 w-4" aria-hidden="true" />
@@ -69,10 +74,8 @@ export async function HomeReading({ locale }: { locale: Locale }) {
                 <BlogPostCard key={post.translationKey} post={post} markMostRead />
               ))}
             </div>
-          </div>
+          </Reveal>
         )}
-
-        <NewsRow locale={locale} posts={news} markMostRead className="mt-8" />
       </div>
     </section>
   );

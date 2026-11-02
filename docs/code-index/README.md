@@ -51,6 +51,7 @@ Why it works this way: [the rule](../rules/the-code-index-is-generated-from-the-
 - [`lib/contexts/`](lib-contexts.md)
 - [`lib/contribute/`](lib-contribute.md)
 - [`lib/faq/`](lib-faq.md)
+- [`lib/geo/`](lib-geo.md)
 - [`lib/glossary/`](lib-glossary.md)
 - [`lib/home/`](lib-home.md)
 - [`lib/hooks/`](lib-hooks.md)

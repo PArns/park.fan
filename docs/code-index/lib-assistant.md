@@ -14,7 +14,6 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`config.ts`](../../lib/assistant/config.ts)
 
 - `assistantVisible` _function_: Whether this browser sees Parky: `?assistant=on` forces it for the session (`off` ends that), otherwise a stable bucket 0–99 against the rollout share.
-- `assistantForEveryone` _function_: Whether Parky is switched on for everybody: a page may then offer it as part of its own design, since no visitor would see an offer the widget then refuses. Pure, so the decision is testable.
 - `ASSISTANT_OFF` _const_: The answer when the config cannot be read: hidden.
 - `ASSISTANT_KILLED` _const_: Build-time kill switch: `NEXT_PUBLIC_ASSISTANT=off` hides Parky without asking the API.
 - `assistantGate` _const_: The gate as a store for `useSyncExternalStore`: hidden on the server and until the decision is made, which takes one cached request per session, so no page's HTML depends on it.

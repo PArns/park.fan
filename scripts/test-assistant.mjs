@@ -11,7 +11,7 @@
 import assert from 'node:assert/strict';
 import { readSse } from '@/lib/assistant/sse.ts';
 import { directionsHref, safeAssistantHref } from '@/lib/assistant/links.ts';
-import { assistantForEveryone, assistantVisible } from '@/lib/assistant/config.ts';
+import { assistantVisible } from '@/lib/assistant/config.ts';
 import { postPlainText, POST_TEXT_LIMIT } from '@/lib/assistant/post-text.ts';
 import { localizedPath, readAssistantAction } from '@/lib/assistant/actions.ts';
 import { splitWaits } from '@/lib/assistant/wait-chips.ts';
@@ -137,21 +137,6 @@ check(
   assistantVisible({ config: { enabled: false, rolloutPercent: 100 }, bucket: 0, forced: false }),
   false,
   'off beats the share'
-);
-check(
-  assistantForEveryone({ enabled: true, rolloutPercent: 100 }),
-  true,
-  'on for everybody at 100 %'
-);
-check(
-  assistantForEveryone({ enabled: true, rolloutPercent: 99 }),
-  false,
-  'a share below 100 % is not everybody'
-);
-check(
-  assistantForEveryone({ enabled: false, rolloutPercent: 100 }),
-  false,
-  'switched off is nobody, whatever the share'
 );
 check(
   assistantVisible({ config: { enabled: false, rolloutPercent: 0 }, bucket: 99, forced: true }),

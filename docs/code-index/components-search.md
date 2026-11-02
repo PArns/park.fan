@@ -16,7 +16,15 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`hero-inline-search.tsx`](../../components/search/hero-inline-search.tsx)
 
-- `HeroInlineSearch` _component_: The hero search: a field that opens its list on focus, one glass object on every viewport.
+- `HeroInlineSearch` _component_: The hero search: a field with its resting list attached, one glass object on every viewport.
+
+### [`hero-phone-list.tsx`](../../components/search/hero-phone-list.tsx)
+
+- `HeroPhoneList` _component_: The hero's resting list on a phone, attached under the field like the desktop one: the first rows of the browse list as compact links, so a tap opens the park at once, then the hero's two posts.
+
+### [`hero-reading-group.tsx`](../../components/search/hero-reading-group.tsx)
+
+- `HeroReadingGroup` _component_: The two posts under the hero's resting list from `md` up, side by side, as cmdk items (`useHeroReadingRows`). The phone draws the same rows as links (`HeroPhoneList`).
 
 ### [`hero-search-classes.ts`](../../components/search/hero-search-classes.ts)
 
@@ -26,7 +34,12 @@ by hand: change the comment in the code and re-run the script. -->
 - `HERO_SEARCH_FIELD_ROW_CLASS` _const_: The field's row, painted over the frame (`z-40`), which starts at the field's top edge. Put on the element the frame is a later sibling of.
 - `HERO_SEARCH_INPUT_ROW_CLASS` _const_: `HERO_SEARCH_FIELD_ROW_CLASS` around a text box: the ring while the box has focus.
 - `HERO_SEARCH_LIST_BOX_CLASS` _const_: The hairline between the field and its list, on the box that holds the list.
-- `HERO_GROUP_HEADING_HIDDEN_CLASS` _const_: The hero list's group headings, read out but not drawn: the heading row above the listbox names the parks. Each group still has its own name for a screen reader.
+- `HERO_PHONE_ROW_CLASS` _const_: A row of the hero's phone list: a fixed 48 px, the 36 px thumbnail and two lines (the name, then the status and wait pills and the distance), so the reserved height holds at every phone width.
+- `HERO_PHONE_LIST_CLASS` _const_: The phone list's rows box: inset sideways like cmdk's groups, under the heading row. No padding above or below: the heading row's 44 px tap target took it.
+- `HERO_PHONE_READING_CLASS` _const_: The box of the phone's two posts: a hairline above, the rows inset like the parks.
+- `HERO_PHONE_PARK_CLASS` _const_: The box of the phone's park block (`HeroParkActions`) in place of rows and posts.
+- `HERO_PHONE_READING_ROW_CLASS` _const_: A post row on the phone: the kicker over a one-line title, a fixed 44 px.
+- `HERO_GROUP_HEADING_HIDDEN_CLASS` _const_: The hero list's group headings, read out but not drawn: the heading row above the listbox names the parks, and the posts carry their kickers. Each group still has its own name, so the posts do not read as part of „Beliebte Parks".
 - `SEARCH_SECONDARY_TEXT_CLASS` _const_: The small grey text of the search lists: a heading, a place, a distance, a teaser. 70 % of the foreground clears 4.5 : 1 on the hero's glass over every hero photo, in both themes (docs/features/homepage-hero.md); the 35–60 % it replaced …
 - `HERO_SEARCH_FOOTER_CLASS` _const_: The bar closing the search list: the hint at rest, „Alle Ergebnisse" once a query ran. A darker pane than the list's glass, so it reads as the list's foot and not as one more row.
 - `HERO_SEARCH_HINT_CLASS` _const_: The hint under the hero's desktop list („Tippe los, …"), in the shell and in the panel alike.
@@ -82,6 +95,10 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`search-skeleton-list.tsx`](../../components/search/search-skeleton-list.tsx)
 
+- `HeroReadingSkeleton` _component_: The two posts as the shell draws them, in the box `HERO_READING_GROUP_CLASS` gives them.
+- `HeroPhoneSkeleton` _component_: The hero's phone list while it waits, in the boxes of `HeroPhoneList`: rows of a thumbnail, a name and two small pills, then the two posts' rows of a kicker and a title.
 - `SearchSkeletonList` _component_: Heading and rows, everything inside a pending dropdown above its footer. The heading's bar is inline-block inside a `text-[10px]` line box, so the line keeps the height the real heading's text gives it.
 - `HERO_SKELETON_ROW_CLASS` _const_: The hero's resting rows from `md` up: a fixed 60 px, because a row's content is 44 px for a shut park and 50 px for an open one with its wait badge, and the hero reserves the list's height; the open row's extra 6 px stay inside its padding.
 - `HERO_ROW_CLASS` _const_: The real rows' half of `HERO_SKELETON_ROW_CLASS`; the padding is the panel root's.
+- `HERO_READING_GROUP_CLASS` _const_: The hero's two posts under its resting list: a hairline above, two columns, cmdk's group padding. Here rather than beside the posts, so the shell's skeleton of them pulls in no image or cmdk.
+- `HERO_READING_ROW_CLASS` _const_: A post row's box. Fixed, like `MOST_READ_ROW_HEIGHT`, so the skeleton and the posts that replace it take the same room, whatever the ranking picks: a 16 px kicker, two 18 px title lines and two 16 px teaser lines inside the hero's row …

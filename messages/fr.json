@@ -110,13 +110,11 @@
     "hero": {
       "cta": "Explorer les parcs",
       "searchPlaceholder": "Rechercher parcs, attractions, spectacles & restaurants...",
-      "title": "Temps d’attente des parcs, en direct",
-      "searchExamples": "Disneyland Paris, Taron, Efteling …",
-      "kicker": "park.fan · Temps d’attente en direct",
-      "lead": "Plus de 200 parcs, mis à jour toutes les cinq minutes, et un calendrier qui montre les jours calmes.",
-      "popular": "Populaires :",
-      "popularLabel": "Directement vers un parc populaire",
-      "parkyPrompt": "Demande-moi quel jour Disneyland Paris est calme."
+      "title": "Où l’attente en vaut-elle la peine aujourd’hui ?",
+      "intro": "park.fan affiche les temps d’attente de <strong>{parks} parcs d’attractions</strong> et <strong>{attractions} attractions</strong>, relevés toutes les cinq minutes. Pour les prochains jours, le site indique aussi l’affluence attendue.",
+      "introShort": "Temps d’attente en direct de <strong>{parks} parcs</strong>.",
+      "openNow": "{count, plural, one {# parc ouvert en ce moment} other {# parcs ouverts en ce moment}}",
+      "searchExamples": "Disneyland Paris, Taron, Efteling …"
     },
     "sections": {
       "featuredParks": "Parcs populaires",
@@ -151,6 +149,15 @@
         "poor": "En dessous de l’objectif",
         "insufficient_data": "Collecte de données"
       }
+    },
+    "worldPanel": {
+      "title": "Parcs en {continent}",
+      "openWorldwide": "{count, plural, one {# parc ouvert dans le monde} other {# parcs ouverts dans le monde}}",
+      "subtitle": "{count, plural, one {# pays} other {# pays}} · changer de continent",
+      "openWord": "ouverts",
+      "countryOpen": "{count, plural, one {# ouvert} other {# ouverts}}",
+      "viewAll": "Voir tous les parcs en {continent}",
+      "countryClosed": "{count, plural, one {# fermé} other {# fermés}}"
     }
   },
   "homeStory": {
@@ -170,30 +177,43 @@
       "title": "Nouveau sur park.fan",
       "lead": "Des guides sur chaque parc, et ce qui change dans les parcs en ce moment."
     },
-    "tools": {
+    "tour": {
       "kicker": "Comment ça marche",
-      "title": "Quatre outils, sans compte",
-      "lead": "Tout sur park.fan est gratuit et sans inscription.",
+      "title": "park.fan sur ton téléphone",
+      "lead": "Tout est gratuit et sans compte, sur ton téléphone comme sur ton ordinateur.",
       "live": {
-        "title": "Temps d’attente en direct",
-        "text": "Chaque attraction avec son attente actuelle, relevée toutes les cinq minutes.",
-        "link": "Comment fonctionne park.fan"
+        "kicker": "Temps d’attente en direct",
+        "title": "Temps d’attente en direct, pour chaque attraction",
+        "text": "Chaque page de parc affiche le temps d’attente actuel de chaque attraction et l’affluence du moment. Mis à jour toutes les cinq minutes.",
+        "link": "Comment fonctionne park.fan",
+        "alt": "La page d’Europa-Park sur un téléphone : les attractions phares avec leur attente en direct et l’affluence."
       },
       "calendar": {
-        "title": "Calendrier d’affluence",
-        "text": "Une couleur pour chaque jour d’ouverture. Vert veut dire calme.",
-        "link": "Meilleure période"
+        "kicker": "Calendrier d’affluence",
+        "title": "Le calendrier d’affluence : le monde attendu, jour après jour",
+        "text": "Pour chaque jour d’ouverture, tu vois l’affluence prévue en couleur et l’attente, avec les horaires, les vacances scolaires et la météo.",
+        "link": "Meilleure période",
+        "alt": "Le calendrier d’affluence d’Europa-Park pour novembre sur un téléphone, chaque jour avec sa couleur et son attente prévue."
       },
-      "planner": {
-        "title": "Planificateur",
-        "text": "Choisis tes attractions et obtiens un ordre pour la journée.",
-        "link": "Planifier une journée"
+      "ride": {
+        "kicker": "Prévision",
+        "title": "Prévision : la meilleure heure pour chaque attraction",
+        "text": "Pour chaque attraction, tu vois comment l’attente évolue dans la journée. Le planificateur place tes attractions aux heures calmes.",
+        "link": "Planifier une journée",
+        "alt": "La page de Silver Star sur un téléphone : les temps d’attente mesurés et prévus de la journée et les meilleurs créneaux."
       },
       "parky": {
-        "title": "Parky",
-        "text": "Pose ta question avec tes mots, Parky regarde dans les données en direct.",
+        "kicker": "Parky",
+        "title": "Demande, tout simplement",
+        "text": "Parky répond aux questions sur les temps d’attente, les prévisions et les horaires, et cherche pour cela dans les mêmes données en direct.",
         "link": "Découvrir Parky"
       }
+    },
+    "parkLinks": {
+      "title": "Directement aux temps d’attente et à l’affluence",
+      "label": "Temps d’attente et calendriers d’affluence des parcs populaires",
+      "waits": "Temps d’attente",
+      "calendar": "Calendrier d’affluence"
     }
   },
   "footer": {
@@ -1760,7 +1780,9 @@
         "liveDataQ": "Les temps d’attente sur park.fan sont-ils en direct et en temps réel ?",
         "liveDataA": "Oui. Là où un parc publie ses temps d’attente, nous les interrogeons toutes les cinq minutes, à partir de trois sources publiques en parallèle : ThemeParks.wiki, Wartezeiten.app et Queue-Times.com. Si les sources divergent, la majorité tranche, puis la médiane, puis la moyenne. Le résultat est arrondi à cinq minutes, car c’est ainsi que les parcs les affichent.",
         "freeQ": "L’utilisation de park.fan est-elle gratuite ?",
-        "freeA": "Oui. Les temps d’attente en direct, les horaires d’ouverture, les spectacles, les restaurants et le calendrier d’affluence sont accessibles sans compte et sans péage. Il n’y a pas de formule payante derrière laquelle se cacheraient plus de données."
+        "freeA": "Oui. Les temps d’attente en direct, les horaires d’ouverture, les spectacles, les restaurants et le calendrier d’affluence sont accessibles sans compte et sans péage. Il n’y a pas de formule payante derrière laquelle se cacheraient plus de données.",
+        "mobileQ": "Est-ce que park.fan fonctionne sur les smartphones ?",
+        "mobileA": "Oui. park.fan s’ouvre dans le navigateur, sur téléphone, tablette ou ordinateur, sans application à installer. Dans le parc, vous y voyez où la file est courte en ce moment. Si la page détecte que vous êtes sur place, les attractions les plus proches remontent en haut."
       }
     }
   },

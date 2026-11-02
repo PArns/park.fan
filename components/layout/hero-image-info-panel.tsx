@@ -3,10 +3,12 @@ import { PhotoCredit } from '@/components/media/photo-credit';
 import type { HeroImageMeta } from '@/lib/media/hero';
 
 /**
- * Hero photo attribution panel (bottom-right, desktop only), pure markup shared by the server
- * caption and the client in-park caption. Bottom-right because the hero's left column runs the
- * full height of the section. A photo that is not ours gets its credit under the panel, and in the
- * same corner on the widths that have no panel.
+ * Hero photo attribution panel (bottom-left, desktop only), pure markup shared by the server
+ * caption and the client in-park caption. Bottom-left because Parky's button is fixed to the
+ * bottom-right corner, where it would cover the caption on a hero as tall as the window; the hero
+ * leaves room under its left column for it (`lg:pb-24` in `app/[locale]/page.tsx`). A photo that
+ * is not ours gets its credit under the panel, and in the same corner on the widths that have no
+ * panel.
  */
 export function HeroImageInfoPanel({
   meta,
@@ -36,15 +38,15 @@ export function HeroImageInfoPanel({
     </div>
   );
 
-  // `right-4` lines it up with the panel, whose `bottom-6` leaves the badge room beneath it. A
+  // `left-4` lines it up with the panel, whose `bottom-6` leaves the badge room beneath it. A
   // sibling of the panel's link, not inside it, so it may link to the photo's source.
-  const credit = <PhotoCredit src={src} linked className="right-4" />;
+  const credit = <PhotoCredit src={src} linked className="right-auto left-4" />;
 
   if (meta.parkUrl) {
     return (
       <>
         {credit}
-        <div className="absolute right-4 bottom-6 hidden lg:block">
+        <div className="absolute bottom-6 left-4 hidden lg:block">
           <Link
             href={meta.parkUrl}
             prefetch={false}
@@ -60,7 +62,7 @@ export function HeroImageInfoPanel({
   return (
     <>
       {credit}
-      <div className="pointer-events-none absolute right-4 bottom-6 hidden select-none lg:block">
+      <div className="pointer-events-none absolute bottom-6 left-4 hidden select-none lg:block">
         {panel}
       </div>
     </>

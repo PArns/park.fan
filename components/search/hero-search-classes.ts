@@ -38,8 +38,31 @@ export const HERO_SEARCH_INPUT_ROW_CLASS = `${HERO_SEARCH_FIELD_ROW_CLASS} focus
 export const HERO_SEARCH_LIST_BOX_CLASS = 'border-foreground/10 border-t';
 
 /**
+ * A row of the hero's phone list: a fixed 48 px, the 36 px thumbnail and two lines (the name, then
+ * the status and wait pills and the distance), so the reserved height holds at every phone width.
+ */
+export const HERO_PHONE_ROW_CLASS = 'h-12';
+
+/**
+ * The phone list's rows box: inset sideways like cmdk's groups, under the heading row. No padding
+ * above or below: the heading row's 44 px tap target took it.
+ */
+export const HERO_PHONE_LIST_CLASS = 'px-1.5';
+
+/** The box of the phone's two posts: a hairline above, the rows inset like the parks. */
+export const HERO_PHONE_READING_CLASS = 'border-foreground/10 border-t px-1.5';
+
+/** The box of the phone's park block (`HeroParkActions`) in place of rows and posts. */
+export const HERO_PHONE_PARK_CLASS =
+  'border-foreground/10 flex flex-col justify-center border-t p-3';
+
+/** A post row on the phone: the kicker over a one-line title, a fixed 44 px. */
+export const HERO_PHONE_READING_ROW_CLASS = 'h-11';
+
+/**
  * The hero list's group headings, read out but not drawn: the heading row above the listbox names
- * the parks. Each group still has its own name for a screen reader.
+ * the parks, and the posts carry their kickers. Each group still has its own name, so the posts do
+ * not read as part of „Beliebte Parks".
  */
 export const HERO_GROUP_HEADING_HIDDEN_CLASS = '[&_[cmdk-group-heading]]:sr-only';
 

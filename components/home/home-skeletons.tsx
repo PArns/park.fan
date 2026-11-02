@@ -14,10 +14,13 @@ export function FeaturedParksSkeleton({
   className,
   labels,
   heading = 'watermark',
+  children,
 }: {
   className?: string;
   labels: FeaturedParksLabels;
   heading?: 'watermark' | 'tile';
+  /** What `FeaturedParksSlot` gets as `children`, drawn here too, so the section keeps its height. */
+  children?: React.ReactNode;
 }) {
   return (
     <section className={cn('px-4 py-12', className)}>
@@ -34,6 +37,7 @@ export function FeaturedParksSkeleton({
           {/* The live CTA is a `text-sm` link: a 20 px line, not 16. */}
           <Skeleton className="h-5 w-32" />
         </div>
+        {children}
       </div>
     </section>
   );

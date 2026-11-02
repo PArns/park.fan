@@ -1,5 +1,17 @@
 import { api } from './client';
-import type { GeoLiveStatsDto, TickerResponse } from './types';
+import type { GlobalStats, GeoLiveStatsDto, TickerResponse } from './types';
+
+/**
+ * Get global real-time statistics, cached a week. Only an SSR seed: the homepage counts refresh
+ * client-side via `useGlobalStats`, and a shorter window here would pin the homepage's whole ISR
+ * window to it (the shortest fetch wins).
+ * See docs/rules/a-revalidate-at-a-call-site-is-somebody-elses-page.md.
+ */
+export function getGlobalStats(): Promise<GlobalStats> {
+  return api.get<GlobalStats>('/v1/analytics/realtime', {
+    next: { revalidate: 604800, tags: ['analytics'] },
+  });
+}
 
 /**
  * Get live ticker data: top wait times across open parks. Cached ten minutes so the polls through

@@ -7,6 +7,8 @@ import { cn } from '@/lib/utils';
 import { GlassCard } from '@/components/common/glass-card';
 import {
   HERO_SKELETON_ROW_CLASS,
+  HeroPhoneSkeleton,
+  HeroReadingSkeleton,
   SearchSkeletonList,
 } from '@/components/search/search-skeleton-list';
 import { HeroBrowseHeaderSkeleton } from '@/components/search/hero-browse-header';
@@ -19,18 +21,18 @@ import {
   HERO_SEARCH_LIST_BOX_CLASS,
 } from '@/components/search/hero-search-classes';
 
-/**
- * How many rows the field's list holds at rest, from `md` up; a phone's field opens the palette and
- * holds none. With none the field stands alone until it is used.
- */
+/** How many rows the hero's resting list holds on each viewport, and whether the posts follow. */
 export interface HeroSearchRest {
+  phoneRows: number;
   desktopRows: number;
+  /** The two posts under the parks. */
+  reading: boolean;
   /** The flow's reservation under the field, as a class: a custom property per surface. */
   spacerClass: string;
 }
 
 type HeroSearchFrameProps = Omit<React.ComponentProps<typeof GlassCard>, 'children'> & {
-  /** The list under the field; none where the field has no list (a phone's field). */
+  /** The list under the field. */
   children?: React.ReactNode;
   /** `false` off the hero, where the frame takes `tile` glass (see `HeroInlineSearchPanel`). */
   onHero?: boolean;
@@ -84,23 +86,30 @@ interface HeroSearchShellProps {
 }
 
 /**
- * The resting list as a skeleton, in exactly the box the real one will occupy from `md` up (a
- * phone's field holds no list). Its parts are the ones the real list renders while it waits, so
- * mounting it changes nothing on screen. Nothing at all for a field without rows at rest.
+ * The resting list as a skeleton, in exactly the box the real one will occupy, for both viewports
+ * at once: CSS picks one, so the server renders the right thing for either. Its parts are the
+ * ones the real lists render while they wait, so mounting them changes nothing on screen.
  */
 function HeroSearchRestingSkeleton({ rest }: { rest: HeroSearchRest }) {
   const tSearch = useTranslations('search');
-  if (rest.desktopRows === 0) return null;
 
   return (
-    <div className={cn(HERO_SEARCH_LIST_BOX_CLASS, 'max-md:hidden')}>
+    <div className={cn(HERO_SEARCH_LIST_BOX_CLASS, rest.phoneRows === 0 && 'max-md:hidden')}>
       <HeroBrowseHeaderSkeleton />
-      <SearchSkeletonList
-        rows={rest.desktopRows}
-        headingClassName={null}
-        rowClassName={HERO_SKELETON_ROW_CLASS}
-      />
-      <div className={HERO_SEARCH_HINT_CLASS}>{tSearch('heroHint')}</div>
+      {rest.phoneRows > 0 && (
+        <div className="md:hidden">
+          <HeroPhoneSkeleton rows={rest.phoneRows} reading={rest.reading} />
+        </div>
+      )}
+      <div className="hidden md:block">
+        <SearchSkeletonList
+          rows={rest.desktopRows}
+          headingClassName={null}
+          rowClassName={HERO_SKELETON_ROW_CLASS}
+        />
+        {rest.reading && <HeroReadingSkeleton />}
+        <div className={HERO_SEARCH_HINT_CLASS}>{tSearch('heroHint')}</div>
+      </div>
     </div>
   );
 }
@@ -108,7 +117,7 @@ function HeroSearchRestingSkeleton({ rest }: { rest: HeroSearchRest }) {
 /**
  * The hero search field before the search chunk exists: a real input, so focus and keystrokes are
  * captured and handed to the panel, with the text already typed, the instant it mounts. Below `md`
- * it hands over to the palette trigger, which takes the same box.
+ * it hands over to the palette trigger and the phone's list, which take the same boxes.
  */
 export function HeroSearchShell({
   placeholder,

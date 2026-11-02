@@ -110,13 +110,11 @@
     "hero": {
       "cta": "Ontdek parken",
       "searchPlaceholder": "Zoek parken, attracties, shows & restaurants...",
-      "title": "Wachttijden in pretparken, live",
-      "searchExamples": "Efteling, Taron, Europa-Park …",
-      "kicker": "park.fan · Live wachttijden",
-      "lead": "Uit meer dan 200 parken, elke vijf minuten bijgewerkt. Een kalender laat zien op welke dag het rustig is.",
-      "popular": "Populair:",
-      "popularLabel": "Direct naar een populair park",
-      "parkyPrompt": "Vraag me op welke dag het rustig is in de Efteling."
+      "title": "Waar is de rij vandaag de moeite waard?",
+      "intro": "park.fan toont de wachttijden van <strong>{parks} pretparken</strong> en <strong>{attractions} attracties</strong>, elke vijf minuten opnieuw opgehaald. Voor de komende dagen staat erbij hoe druk het waarschijnlijk wordt.",
+      "introShort": "Live wachttijden van <strong>{parks} parken</strong>.",
+      "openNow": "{count, plural, =1 {1 park nu open} other {# parken nu open}}",
+      "searchExamples": "Efteling, Taron, Europa-Park …"
     },
     "sections": {
       "featuredParks": "Populaire parken",
@@ -151,6 +149,15 @@
         "poor": "Onder doelwaarde",
         "insufficient_data": "Gegevens verzamelen"
       }
+    },
+    "worldPanel": {
+      "title": "Parken in {continent}",
+      "openWorldwide": "{count, plural, =1 {1 park wereldwijd open} other {# parken wereldwijd open}}",
+      "subtitle": "{count, plural, =1 {1 land} other {# landen}} · wissel van continent",
+      "openWord": "open",
+      "countryOpen": "{count} open",
+      "viewAll": "Alle parken in {continent} bekijken",
+      "countryClosed": "{count} gesloten"
     }
   },
   "homeStory": {
@@ -170,30 +177,43 @@
       "title": "Nieuw op park.fan",
       "lead": "Gidsen over afzonderlijke parken, en wat er nu in de parken verandert."
     },
-    "tools": {
+    "tour": {
       "kicker": "Zo werkt het",
-      "title": "Vier hulpmiddelen, geen account",
-      "lead": "Alles op park.fan is gratis en zonder aanmelding.",
+      "title": "Zo ziet park.fan eruit op je telefoon",
+      "lead": "Alles gratis en zonder account, op je telefoon net als op je computer.",
       "live": {
-        "title": "Live wachttijden",
-        "text": "Elke attractie met haar actuele wachttijd, elke vijf minuten opgehaald.",
-        "link": "Zo werkt park.fan"
+        "kicker": "Live wachttijden",
+        "title": "Wachttijden live, voor elke attractie",
+        "text": "Op elke parkpagina staan de actuele wachttijden van elke attractie en hoe druk het park nu is. Elke vijf minuten ververst.",
+        "link": "Zo werkt park.fan",
+        "alt": "De parkpagina van Europa-Park op een telefoon: de topattracties met hun live wachttijden en de drukte."
       },
       "calendar": {
-        "title": "Drukte-kalender",
-        "text": "Een kleur voor elke openingsdag. Groen betekent rustig.",
-        "link": "Beste reistijd"
+        "kicker": "Drukte-kalender",
+        "title": "De drukte-kalender: hoe druk het wordt, dag voor dag",
+        "text": "Voor elke openingsdag zie je de verwachte drukte als kleur en de wachttijd, met openingstijden, schoolvakanties en weer.",
+        "link": "Beste reistijd",
+        "alt": "De drukte-kalender van Europa-Park voor november op een telefoon, elke dag met kleur en verwachte wachttijd."
       },
-      "planner": {
-        "title": "Dagplanner",
-        "text": "Kies je attracties en krijg een volgorde voor de dag.",
-        "link": "Dag plannen"
+      "ride": {
+        "kicker": "Voorspelling",
+        "title": "Voorspelling: het beste uur voor elke attractie",
+        "text": "Voor elke attractie zie je hoe de wachttijd zich over de dag ontwikkelt. De dagplanner legt je attracties in de rustige uren.",
+        "link": "Dag plannen",
+        "alt": "De pagina van Silver Star op een telefoon: gemeten en voorspelde wachttijden van de dag en de beste tijden."
       },
       "parky": {
-        "title": "Parky",
-        "text": "Vraag het in je eigen woorden, Parky kijkt in de live data.",
+        "kicker": "Parky",
+        "title": "Gewoon vragen",
+        "text": "Parky beantwoordt vragen over wachttijden, voorspellingen en openingstijden en kijkt daarvoor in dezelfde live data.",
         "link": "Maak kennis met Parky"
       }
+    },
+    "parkLinks": {
+      "title": "Direct naar wachttijden en drukte-kalenders",
+      "label": "Wachttijden en drukte-kalenders van populaire parken",
+      "waits": "Wachttijden",
+      "calendar": "Drukte-kalender"
     }
   },
   "footer": {
@@ -1760,7 +1780,9 @@
         "liveDataQ": "Zijn de wachttijden op park.fan live en in realtime?",
         "liveDataA": "Ja. Waar een park zijn wachttijden publiceert, vragen we ze elke vijf minuten op, uit drie openbare bronnen tegelijk: ThemeParks.wiki, Wartezeiten.app en Queue-Times.com. Wijken de bronnen van elkaar af, dan beslist de meerderheid, daarna de mediaan, daarna het gemiddelde. Het resultaat wordt op vijf minuten afgerond, omdat de parken ze zo aangeven.",
         "freeQ": "Is het gebruik van park.fan gratis?",
-        "freeA": "Ja. Live wachttijden, openingstijden, shows, restaurants en de druktekalender zijn te zien zonder account en zonder betaalmuur. Er is geen abonnement waarachter meer gegevens liggen."
+        "freeA": "Ja. Live wachttijden, openingstijden, shows, restaurants en de druktekalender zijn te zien zonder account en zonder betaalmuur. Er is geen abonnement waarachter meer gegevens liggen.",
+        "mobileQ": "Werkt park.fan ook op smartphones?",
+        "mobileA": "Ja. park.fan werkt in de browser op telefoon, tablet en computer, een app hoef je niet te installeren. In het park kun je erop nakijken waar de rij op dat moment kort is. Merkt de site dat je in het park bent, dan schuiven de dichtstbijzijnde attracties naar boven."
       }
     }
   },

@@ -110,13 +110,11 @@
     "hero": {
       "cta": "Explore Parks",
       "searchPlaceholder": "Search parks, attractions, shows & restaurants...",
-      "title": "Theme park wait times, live",
-      "searchExamples": "Europa-Park, Taron, Efteling …",
-      "kicker": "park.fan · Live wait times",
-      "lead": "From more than 200 parks, refreshed every five minutes, plus a calendar that shows which days are quiet.",
-      "popular": "Popular:",
-      "popularLabel": "Straight to a popular park",
-      "parkyPrompt": "Ask me which day Magic Kingdom is quiet."
+      "title": "Where is the wait worth it today?",
+      "intro": "park.fan shows the wait times at <strong>{parks} theme parks</strong> and <strong>{attractions} attractions</strong>, updated every five minutes. For the coming days there is also a forecast of how busy each park will be.",
+      "introShort": "Live wait times at <strong>{parks} theme parks</strong>.",
+      "openNow": "{count, plural, =1 {1 park open right now} other {# parks open right now}}",
+      "searchExamples": "Europa-Park, Taron, Efteling …"
     },
     "sections": {
       "featuredParks": "Popular Parks",
@@ -151,6 +149,15 @@
         "poor": "Below Target",
         "insufficient_data": "Collecting Data"
       }
+    },
+    "worldPanel": {
+      "title": "Parks in {continent}",
+      "openWorldwide": "{count, plural, =1 {1 park open worldwide} other {# parks open worldwide}}",
+      "subtitle": "{count, plural, =1 {1 country} other {# countries}} · switch continent",
+      "openWord": "open",
+      "countryOpen": "{count} open",
+      "viewAll": "See all parks in {continent}",
+      "countryClosed": "{count} closed"
     }
   },
   "homeStory": {
@@ -170,30 +177,43 @@
       "title": "New on park.fan",
       "lead": "Guides to single parks, and what is changing in the parks right now."
     },
-    "tools": {
+    "tour": {
       "kicker": "How it works",
-      "title": "Four tools, no account",
-      "lead": "Everything on park.fan is free and needs no sign-up.",
+      "title": "What park.fan looks like on your phone",
+      "lead": "All free and without an account, on your phone as on your computer.",
       "live": {
-        "title": "Live wait times",
-        "text": "Every ride with its current wait, checked every five minutes.",
-        "link": "How park.fan works"
+        "kicker": "Live wait times",
+        "title": "Live wait times for every ride",
+        "text": "Open any park and you see each ride’s queue as it stands now, and how busy the park is. New figures every five minutes.",
+        "link": "How park.fan works",
+        "alt": "The Europa-Park page on a phone: the headliners with their live wait times and how busy they are."
       },
       "calendar": {
-        "title": "Crowd calendar",
-        "text": "A colour for every opening day. Green means quiet.",
-        "link": "Best time to visit"
+        "kicker": "Crowd calendar",
+        "title": "The crowd calendar: how busy it gets, day by day",
+        "text": "For every opening day you see the expected crowds as a colour and the wait, with opening hours, school holidays and weather.",
+        "link": "Best time to visit",
+        "alt": "Europa-Park’s crowd calendar for November on a phone, each day with its colour and expected wait."
       },
-      "planner": {
-        "title": "Trip planner",
-        "text": "Pick your rides and get an order for the day.",
-        "link": "Plan a day"
+      "ride": {
+        "kicker": "Forecast",
+        "title": "Forecast: the best hour for every ride",
+        "text": "For every ride you see how its wait develops over the day. The trip planner puts your rides into the quiet hours.",
+        "link": "Plan a day",
+        "alt": "The Silver Star page on a phone: the day’s measured and forecast wait times and the best times."
       },
       "parky": {
-        "title": "Parky",
-        "text": "Ask in your own words, and Parky looks it up in the live data.",
+        "kicker": "Parky",
+        "title": "Just ask",
+        "text": "Parky answers questions about wait times, forecasts and opening hours, looking them up in the same live data.",
         "link": "Meet Parky"
       }
+    },
+    "parkLinks": {
+      "title": "Straight to wait times and crowd calendars",
+      "label": "Wait times and crowd calendars of popular parks",
+      "waits": "Wait times",
+      "calendar": "Crowd calendar"
     }
   },
   "footer": {
@@ -1760,7 +1780,9 @@
         "liveDataQ": "Are the wait times on park.fan live and in real-time?",
         "liveDataA": "Yes. Wherever a park publishes its wait times, we poll them every five minutes from three public sources at once: ThemeParks.wiki, Wartezeiten.app and Queue-Times.com. Where the sources disagree, the majority decides, then the median, then the mean. The result is rounded to five minutes, because that is how the parks post them.",
         "freeQ": "Is using park.fan free?",
-        "freeA": "Yes. Live wait times, opening hours, shows, restaurants and the crowd calendar are all there without an account and without a paywall. There is no subscription tier with more data behind it."
+        "freeA": "Yes. Live wait times, opening hours, shows, restaurants and the crowd calendar are all there without an account and without a paywall. There is no subscription tier with more data behind it.",
+        "mobileQ": "Does park.fan work on smartphones?",
+        "mobileA": "Yes. park.fan runs in the browser on a phone, a tablet or a computer, so there is no app to install. In the park you can use it to see where the queue is short right now. When the site can tell you are inside a park, the nearest rides move to the top."
       }
     }
   },

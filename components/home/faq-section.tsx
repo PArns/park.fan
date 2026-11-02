@@ -7,9 +7,9 @@ import { STORY_SECTION_TINTED } from './section-chrome';
 
 /**
  * The homepage FAQ, visible, and the page's only `FAQPage` markup: {@link FaqList} emits it from
- * the same array it renders, so the markup cannot drift from the page. The four questions a first
- * visitor asks before anything else, from `seo.homepage.faq` in all six locales; everything a
- * returning visitor asks is on the guide page (`howtoPath`).
+ * the same array it renders, so the markup cannot drift from the page. The questions a first
+ * visitor asks before anything else, the app one among them because „Wartezeiten App" is searched
+ * for, from `seo.homepage.faq` in all six locales; the rest is on the guide page (`howtoPath`).
  */
 export async function FaqSection() {
   const [t, tFaq] = await Promise.all([
@@ -22,6 +22,7 @@ export async function FaqSection() {
     { question: tFaq('liveDataQ'), answer: tFaq('liveDataA') },
     { question: tFaq('whichParksQ'), answer: tFaq('whichParksA') },
     { question: tFaq('freeQ'), answer: tFaq('freeA') },
+    { question: tFaq('mobileQ'), answer: tFaq('mobileA') },
   ];
 
   return (

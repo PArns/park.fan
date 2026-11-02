@@ -110,13 +110,11 @@
     "hero": {
       "cta": "Esplora i parchi",
       "searchPlaceholder": "Cerca parchi, attrazioni, spettacoli e ristoranti...",
-      "title": "Tempi di attesa nei parchi, in tempo reale",
-      "searchExamples": "Gardaland, Taron, Efteling …",
-      "kicker": "park.fan · Tempi di attesa in diretta",
-      "lead": "Da oltre 200 parchi, aggiornati ogni cinque minuti, e un calendario che mostra i giorni tranquilli.",
-      "popular": "Popolari:",
-      "popularLabel": "Direttamente a un parco popolare",
-      "parkyPrompt": "Chiedimi in quale giorno Gardaland è tranquillo."
+      "title": "Dove conviene mettersi in fila oggi?",
+      "intro": "park.fan mostra i tempi di attesa di <strong>{parks} parchi divertimento</strong> e <strong>{attractions} attrazioni</strong>, aggiornati ogni cinque minuti. Per i prossimi giorni c’è anche l’affluenza prevista.",
+      "introShort": "Le attese in tempo reale di <strong>{parks} parchi</strong>.",
+      "openNow": "{count, plural, =1 {1 parco aperto ora} other {# parchi aperti ora}}",
+      "searchExamples": "Gardaland, Taron, Efteling …"
     },
     "sections": {
       "featuredParks": "Parchi popolari",
@@ -151,6 +149,15 @@
         "poor": "Al di sotto dell’obiettivo",
         "insufficient_data": "Raccolta dati in corso"
       }
+    },
+    "worldPanel": {
+      "title": "Parchi in {continent}",
+      "openWorldwide": "{count, plural, =1 {1 parco aperto nel mondo} other {# parchi aperti nel mondo}}",
+      "subtitle": "{count, plural, =1 {1 paese} other {# paesi}} · cambia continente",
+      "openWord": "aperti",
+      "countryOpen": "{count, plural, one {# aperto} other {# aperti}}",
+      "viewAll": "Vedi tutti i parchi in {continent}",
+      "countryClosed": "{count, plural, one {# chiuso} other {# chiusi}}"
     }
   },
   "homeStory": {
@@ -170,30 +177,43 @@
       "title": "Novità su park.fan",
       "lead": "Guide ai singoli parchi, e cosa sta cambiando adesso nei parchi."
     },
-    "tools": {
+    "tour": {
       "kicker": "Come funziona",
-      "title": "Quattro strumenti, nessun account",
-      "lead": "Tutto su park.fan è gratuito e senza registrazione.",
+      "title": "park.fan sullo smartphone",
+      "lead": "Tutto gratis e senza account, sullo smartphone come sul computer.",
       "live": {
-        "title": "Tempi di attesa in diretta",
-        "text": "Ogni attrazione con la sua attesa attuale, aggiornata ogni cinque minuti.",
-        "link": "Come funziona park.fan"
+        "kicker": "Tempi di attesa in diretta",
+        "title": "Tempi di attesa in diretta, per ogni attrazione",
+        "text": "Ogni pagina del parco mostra il tempo di attesa attuale di ogni attrazione e quanta gente c’è in questo momento. Aggiornato ogni cinque minuti.",
+        "link": "Come funziona park.fan",
+        "alt": "La pagina di Europa-Park su uno smartphone: le attrazioni di punta con i tempi di attesa in diretta e l’affluenza."
       },
       "calendar": {
-        "title": "Calendario dell’affluenza",
-        "text": "Un colore per ogni giorno di apertura. Verde significa tranquillo.",
-        "link": "Periodo migliore"
+        "kicker": "Calendario dell’affluenza",
+        "title": "Il calendario dell’affluenza: quanta gente ci sarà, giorno per giorno",
+        "text": "Per ogni giorno di apertura vedi l’affluenza prevista con un colore e l’attesa, con orari, vacanze scolastiche e meteo.",
+        "link": "Periodo migliore",
+        "alt": "Il calendario dell’affluenza di Europa-Park per novembre su uno smartphone, ogni giorno con il suo colore e l’attesa prevista."
       },
-      "planner": {
-        "title": "Pianificatore",
-        "text": "Scegli le attrazioni e ottieni un ordine per la giornata.",
-        "link": "Pianifica una giornata"
+      "ride": {
+        "kicker": "Previsione",
+        "title": "Previsione: l’ora migliore per ogni attrazione",
+        "text": "Per ogni attrazione vedi come cambia l’attesa durante la giornata. Il pianificatore mette le tue attrazioni nelle ore tranquille.",
+        "link": "Pianifica una giornata",
+        "alt": "La pagina di Silver Star su uno smartphone: i tempi di attesa misurati e previsti della giornata e gli orari migliori."
       },
       "parky": {
-        "title": "Parky",
-        "text": "Chiedi con parole tue, Parky guarda nei dati in diretta.",
+        "kicker": "Parky",
+        "title": "Chiedi e basta",
+        "text": "Parky risponde a domande su tempi di attesa, previsioni e orari, e guarda negli stessi dati in diretta.",
         "link": "Scopri Parky"
       }
+    },
+    "parkLinks": {
+      "title": "Dritto ai tempi di attesa e all’affluenza",
+      "label": "Tempi di attesa e calendari dell’affluenza dei parchi popolari",
+      "waits": "Tempi di attesa",
+      "calendar": "Calendario dell’affluenza"
     }
   },
   "footer": {
@@ -1760,7 +1780,9 @@
         "liveDataQ": "I tempi di attesa su park.fan sono in tempo reale?",
         "liveDataA": "Sì. Dove un parco pubblica i propri tempi di attesa, li interroghiamo ogni cinque minuti da tre fonti pubbliche contemporaneamente: ThemeParks.wiki, Wartezeiten.app e Queue-Times.com. Se le fonti non concordano, decide la maggioranza, poi la mediana, poi la media. Il risultato è arrotondato a cinque minuti, perché è così che i parchi li espongono.",
         "freeQ": "L’utilizzo di park.fan è gratuito?",
-        "freeA": "Sì. Tempi di attesa in diretta, orari di apertura, spettacoli, ristoranti e calendario dell’affluenza si vedono senza account e senza barriere a pagamento. Non esiste un abbonamento che sblocchi altri dati."
+        "freeA": "Sì. Tempi di attesa in diretta, orari di apertura, spettacoli, ristoranti e calendario dell’affluenza si vedono senza account e senza barriere a pagamento. Non esiste un abbonamento che sblocchi altri dati.",
+        "mobileQ": "park.fan funziona sugli smartphone?",
+        "mobileA": "Sì. park.fan funziona nel browser di telefono, tablet e computer, senza installare un’app. Nel parco puoi vedere dove la coda è corta in quel momento. Se il sito riconosce che sei nel parco, le attrazioni più vicine salgono in cima."
       }
     }
   },

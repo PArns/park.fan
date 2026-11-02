@@ -25,7 +25,15 @@ by hand: change the comment in the code and re-run the script. -->
 - `HERO_CREDIT_POSITION` _const_: Where an on-image `<PhotoCredit>` sits in a `flowInto` hero: the 2 px above the pulled-up section on a phone (11rem = the `-mt-44` of `HERO_FLOW_INTO_PULL`), the usual corner from `sm` up.
 - Types: `LandingAction`, `LandingDestination`, `CrowdLevel`
 
+### [`phone-shot.tsx`](../../components/marketing/phone-shot.tsx)
+
+- `PhoneShot` _component_: One of the screenshots in a phone, with a soft glow of the brand colours behind it, tilted a little from `md` up. `tilt` leans it the other way, for a row that runs the other way.
+
 ### [`scroll-reveal.tsx`](../../components/marketing/scroll-reveal.tsx)
 
 - `Reveal` _component_: Lightweight scroll-reveal: fades + rises its children in the first time they enter the viewport, then stays put (one-shot observer).
 - `ScrollCue` _component_: Animated scroll-down chevron for a full-bleed hero. Links to the page's `#start` anchor. Purely decorative.
+
+### [`shot-row.tsx`](../../components/marketing/shot-row.tsx)
+
+- `ShotRow` _component_: A chapter's text beside a screenshot in a phone, the two swapping sides from row to row (`reverse`), so a page of them reads as a zigzag rather than a column. Parky's page and the homepage's tour draw their rows with it.

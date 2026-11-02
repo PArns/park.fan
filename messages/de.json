@@ -110,13 +110,11 @@
     "hero": {
       "cta": "Parks entdecken",
       "searchPlaceholder": "Parks, Attraktionen, Shows & Restaurants suchen…",
-      "title": "Freizeitpark-Wartezeiten live",
-      "searchExamples": "Europa-Park, Taron, Efteling …",
-      "kicker": "park.fan · Live-Wartezeiten",
-      "lead": "Aus über 200 Parks, alle fünf Minuten neu. Dazu zeigt dir ein Kalender, an welchem Tag wenig los ist.",
-      "popular": "Beliebt:",
-      "popularLabel": "Direkt zu einem beliebten Park",
-      "parkyPrompt": "Frag mich, an welchem Tag im Phantasialand wenig los ist."
+      "title": "Wo lohnt sich heute das Anstehen?",
+      "intro": "park.fan zeigt die Wartezeiten von <strong>{parks} Freizeitparks</strong> und <strong>{attractions} Attraktionen</strong>, alle fünf Minuten neu abgefragt. Für die kommenden Tage steht dabei, wie voll es voraussichtlich wird.",
+      "introShort": "Live-Wartezeiten aus <strong>{parks} Parks</strong>.",
+      "openNow": "{count, plural, =1 {1 Park gerade offen} other {# Parks gerade offen}}",
+      "searchExamples": "Europa-Park, Taron, Efteling …"
     },
     "sections": {
       "featuredParks": "Beliebte Parks",
@@ -151,6 +149,15 @@
         "poor": "Unter Zielwert",
         "insufficient_data": "Daten werden gesammelt"
       }
+    },
+    "worldPanel": {
+      "title": "Parks in {continent}",
+      "openWorldwide": "{count, plural, =1 {1 Park weltweit offen} other {# Parks weltweit offen}}",
+      "subtitle": "{count, plural, =1 {1 Land} other {# Länder}} · Kontinent wechseln",
+      "openWord": "offen",
+      "countryOpen": "{count} offen",
+      "viewAll": "Alle Parks in {continent} ansehen",
+      "countryClosed": "{count} geschlossen"
     }
   },
   "homeStory": {
@@ -170,30 +177,43 @@
       "title": "Neu auf park.fan",
       "lead": "Guides zu einzelnen Parks, und was sich in den Parks gerade ändert."
     },
-    "tools": {
+    "tour": {
       "kicker": "So funktioniert’s",
-      "title": "Vier Werkzeuge, kein Konto",
-      "lead": "Alles auf park.fan ist kostenlos und ohne Anmeldung.",
+      "title": "So sieht park.fan auf dem Handy aus",
+      "lead": "Alles kostenlos und ohne Anmeldung, auf dem Handy wie am Rechner.",
       "live": {
-        "title": "Live-Wartezeiten",
-        "text": "Jede Bahn mit ihrer aktuellen Wartezeit, alle fünf Minuten neu abgefragt.",
-        "link": "So funktioniert park.fan"
+        "kicker": "Live-Wartezeiten",
+        "title": "Wartezeiten live, für jede Bahn",
+        "text": "Auf jeder Parkseite stehen die aktuellen Wartezeiten jeder Bahn, dazu die Auslastung: wie voll es gerade ist. Alle fünf Minuten neu.",
+        "link": "So funktioniert park.fan",
+        "alt": "Die Parkseite des Europa-Park auf dem Handy: die Headliner mit ihren Live-Wartezeiten und dem Andrang."
       },
       "calendar": {
-        "title": "Crowd-Kalender",
-        "text": "Für jeden Öffnungstag eine Farbe. Grün heißt: wenig los.",
-        "link": "Beste Reisezeit"
+        "kicker": "Crowd-Kalender",
+        "title": "Der Andrang-Kalender: wie voll es wird, Tag für Tag",
+        "text": "Für jeden Öffnungstag siehst du die erwartete Auslastung als Farbe und die Wartezeit, dazu Öffnungszeiten, Ferien und Wetter.",
+        "link": "Beste Reisezeit",
+        "alt": "Der Crowd-Kalender des Europa-Park für November auf dem Handy, jeder Tag mit Farbe und erwarteter Wartezeit."
       },
-      "planner": {
-        "title": "Tagesplaner",
-        "text": "Bahnen aussuchen und eine Reihenfolge für den Tag bekommen.",
-        "link": "Tag planen"
+      "ride": {
+        "kicker": "Prognose",
+        "title": "Prognose: die beste Stunde für jede Bahn",
+        "text": "Für jede Bahn siehst du, wie sich die Wartezeit über den Tag entwickelt. Der Tagesplaner legt deine Bahnen in die ruhigen Stunden.",
+        "link": "Tag planen",
+        "alt": "Die Seite von Silver Star auf dem Handy: gemessene und vorhergesagte Wartezeiten des Tages und die besten Zeiten."
       },
       "parky": {
-        "title": "Parky",
-        "text": "Frag in deinen Worten, Parky schaut in den Live-Daten nach.",
+        "kicker": "Parky",
+        "title": "Einfach fragen",
+        "text": "Parky beantwortet Fragen zu Wartezeiten, Prognosen und Öffnungszeiten und schaut dafür in dieselben Live-Daten.",
         "link": "Parky kennenlernen"
       }
+    },
+    "parkLinks": {
+      "title": "Direkt zu Wartezeiten und Andrang-Kalender",
+      "label": "Wartezeiten und Andrang-Kalender beliebter Parks",
+      "waits": "Wartezeiten",
+      "calendar": "Andrang-Kalender"
     }
   },
   "footer": {
@@ -1760,7 +1780,9 @@
         "liveDataQ": "Sind die Wartezeiten bei park.fan live und in Echtzeit?",
         "liveDataA": "Ja. Wo ein Park seine Wartezeiten veröffentlicht, fragen wir sie alle fünf Minuten ab, aus drei öffentlichen Quellen gleichzeitig: ThemeParks.wiki, Wartezeiten.app und Queue-Times.com. Widersprechen sich die Quellen, entscheidet die Mehrheit, danach der Median, danach der Mittelwert. Das Ergebnis wird auf fünf Minuten gerundet, weil die Parks selbst in Fünf-Minuten-Schritten anschreiben.",
         "freeQ": "Ist die Nutzung von park.fan kostenlos?",
-        "freeA": "Ja. Live-Wartezeiten, Öffnungszeiten, Shows, Restaurants und der Crowd-Kalender sind ohne Konto und ohne Bezahlschranke zu sehen. Es gibt keine Abo-Stufe, hinter der mehr Daten liegen."
+        "freeA": "Ja. Live-Wartezeiten, Öffnungszeiten, Shows, Restaurants und der Crowd-Kalender sind ohne Konto und ohne Bezahlschranke zu sehen. Es gibt keine Abo-Stufe, hinter der mehr Daten liegen.",
+        "mobileQ": "Funktioniert park.fan auch auf dem Smartphone?",
+        "mobileA": "Ja. park.fan läuft im Browser, auf Handy, Tablet und Rechner, eine App musst du nicht installieren. Im Park kannst du damit nachsehen, wo die Warteschlange gerade kurz ist. Erkennt die Seite, dass du im Park stehst, rücken die nächstgelegenen Attraktionen nach oben."
       }
     }
   },

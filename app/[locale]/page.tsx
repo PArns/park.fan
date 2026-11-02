@@ -13,22 +13,28 @@ import { pickHeroImage } from '@/lib/media/hero';
 import { heroBlurDataUrl } from '@/lib/media/hero-lqip';
 import { getMediaAltBySrc } from '@/lib/media/text';
 import { HOME_HERO_ID } from '@/lib/home/hero-search';
+import { getHeroReading } from '@/lib/home/hero-reading';
+import { getNewsMenu } from '@/lib/navigation/news-menu';
+import { latestNewsFrom } from '@/components/blog/latest-news-chip';
 
 import { HeroBackground } from '@/components/layout/hero-background';
 import { HeroImageInfoSwitch } from '@/components/layout/hero-image-info-switch';
 import { HeroImageInfo } from '@/components/layout/hero-image-info';
 import { HeroRotationProvider } from '@/components/layout/hero-rotation-context';
-import { HeadKicker } from '@/components/common/head-kicker';
 import { HeroInlineSearch } from '@/components/search/hero-inline-search';
 import { HeroEntranceGate } from '@/components/home/hero-entrance-gate';
-import { HeroPopularParks } from '@/components/home/hero-popular-parks';
-import { HeroParky } from '@/components/home/hero-parky';
+import { HeroWithNearby } from '@/components/home/hero-with-nearby';
+import { HeroStats } from '@/components/home/hero-stats';
+import { HeroTextPanel } from '@/components/home/hero-text-panel';
+import { HeroWorldPanel } from '@/components/home/hero-world-panel';
+import { HeroWorldPanelSkeleton } from '@/components/home/hero-skeletons';
 import { ParkCompassSlot } from '@/components/home/park-compass-slot';
 import { AnnounceSection } from '@/components/home/announce-section';
 import { NearbyChapter } from '@/components/home/nearby-chapter';
 import { HomeReading } from '@/components/home/home-reading';
-import { HomeTools } from '@/components/home/home-tools';
+import { HomeTour } from '@/components/home/home-tour';
 import { FeaturedParksSlot } from '@/components/home/featured-parks-slot';
+import { PopularParkLinks } from '@/components/home/popular-park-links';
 import { FeaturedParksSkeleton } from '@/components/home/home-skeletons';
 import { getFeaturedParksLabels } from '@/components/home/section-headings';
 import { FaqSection } from '@/components/home/faq-section';
@@ -61,11 +67,12 @@ const NearbyParksCard = nextDynamic(
   }
 );
 
-// A static shell per locale, served from the CDN. The live parts (nearby parks, favourites, the
-// popular parks' status) are client queries that overlay the shell on mount, so its age is
-// invisible to a reader with JavaScript. The route's window is the lowest fetch revalidate in its
-// render, `getGeoStructure` under `FeaturedParksSlot` (`CACHE_TTL.geo`, a week); read
-// `initialRevalidateSeconds` in `.next/prerender-manifest.json` after touching a fetch here. See
+// A static shell per locale, served from the CDN. Every live figure on the page is a seed that a
+// client query overlays on mount (the hero's counts and map, nearby parks, favourites, the popular
+// parks' status), so the shell's age is invisible to a reader with JavaScript. The route's window
+// is the lowest fetch revalidate in its render; every fetch left (`getGlobalStats`,
+// `getGeoLiveStats`, `getGeoStructure`) is cached a week. Read `initialRevalidateSeconds` in
+// `.next/prerender-manifest.json` after touching a fetch here. See
 // docs/rules/a-revalidate-at-a-call-site-is-somebody-elses-page.md.
 export const revalidate = 604800;
 
@@ -124,27 +131,39 @@ export default async function HomePage({ params }: HomePageProps) {
   assertServableRoute(locale);
   setRequestLocale(locale);
 
-  const [tHome, tLanding, featuredParksLabels] = await Promise.all([
+  // Only the static, above-the-fold shell needs translations up front. Every data-dependent
+  // section fetches its own data (and translations) inside a Suspense boundary below, so the hero
+  // renders and streams without waiting on the API.
+  const [tHome, featuredParksLabels] = await Promise.all([
     getTranslations('home'),
-    getTranslations('landing'),
     getFeaturedParksLabels(),
   ]);
   const heroImage = pickHeroImage(HERO_TTL_MS);
   const randomHeroImage = heroImage?.src;
   const heroMeta = heroImage?.meta ?? null;
+  // The newest news post for the chip in the hero's badge row, out of the same news menu the
+  // header draws its chip from. The manifest, read synchronously, so the chip is in the static
+  // shell and in the fallback alike.
+  const latestNews = latestNewsFrom(getNewsMenu(locale as Locale));
 
   return (
     <RouteMessages route="/">
       <div className="flex flex-col">
         {/* z-10, not `isolate`, which stacked the section below later siblings: the search
           dropdown floats out of this section over the content beneath it. The sticky header is
-          z-50, so it still wins. `suppressHydrationWarning` covers `className`: HeroEntranceGate's
-          inline script removes `hero-entering`, so on a slow load React hydrates against a class
-          list the script already edited. */}
+          z-50, so it still wins. */}
+        {/* Below `md` the plate sits 12 px under the header and 12 px from the screen's edges: the
+          room goes to the search list (docs/features/homepage-hero.md). */}
+        {/* `lg:pb-24` keeps the photo's caption, bottom-left (`HeroImageInfoPanel`), clear of the
+          plate. */}
+        {/* `suppressHydrationWarning` covers `className`: HeroEntranceGate's inline script
+          removes `hero-entering`, so on a slow load React hydrates against a class list the
+          script already edited. React reads the flag one level deep, so a mismatch inside the
+          hero still reports. */}
         <section
           id={HOME_HERO_ID}
           suppressHydrationWarning
-          className="hero-entering relative z-10 -mt-12 overflow-visible px-4 pt-28 pb-14 md:px-6 md:pt-32 md:pb-20 lg:flex lg:min-h-[78dvh] lg:flex-col lg:justify-center"
+          className="hero-entering relative z-10 -mt-12 overflow-visible px-3 pt-15 pb-8 md:px-6 md:pt-24 md:pb-10 lg:flex lg:min-h-dvh lg:flex-col lg:justify-center lg:pt-20 lg:pb-24"
         >
           <HeroRotationProvider>
             <HeroBackground
@@ -152,47 +171,47 @@ export default async function HomePage({ params }: HomePageProps) {
               blurDataURL={heroBlurDataUrl(randomHeroImage)}
               alt={getMediaAltBySrc(randomHeroImage, locale) ?? undefined}
             />
-            {/* The text stands on the photo, as on the landing pages' heads: a theme-aware tint
-              that fades into the page carries the contrast, instead of a glass plate that would
-              re-filter the moving photo every frame (docs/features/homepage-hero.md). */}
-            <div
-              aria-hidden="true"
-              className="from-background via-background/70 to-background/20 pointer-events-none absolute inset-0 -z-10 bg-gradient-to-t"
-            />
-            <div
-              aria-hidden="true"
-              className="from-background/60 pointer-events-none absolute inset-0 -z-10 bg-gradient-to-r to-transparent"
-            />
             {/* Closes the entrance window, so content that streams in later does not replay it
-              (see HeroEntranceGate). Outside the stagger on purpose: a child there would shift its
-              nth-child by one. */}
+              (see HeroEntranceGate). Outside the plate on purpose: a child there would shift the
+              content stagger's nth-child by one. */}
             <HeroEntranceGate />
+            {/* No legibility scrim: a scrim would give the two panels different backdrops to
+              blur, and the plate's own blur does the legibility work. */}
             {/* Tailwind's `container` tiers, asked of `@container/page` instead of the window,
-              which an open planner makes wider than the page. `z-10` lifts the open search list
-              over the image attribution drawn on the photo below it. */}
+              which an open planner makes wider than the page. Same five tiers, so nothing moves
+              with the panel shut. `z-10` lifts the open search list over the image attribution
+              drawn on the photo below it. */}
             <div className="relative z-10 mx-auto w-full @min-[640px]/page:max-w-[640px] @min-[768px]/page:max-w-[768px] @min-[1024px]/page:max-w-[1024px] @min-[1280px]/page:max-w-[1280px] @min-[1536px]/page:max-w-[1536px]">
               {/* grid-cols-1, not a bare `grid`: an implicit column is sized to its content's
-                max-content width, and a truncated chip inside is as wide as its whole text. The
-                second column is reserved for Parky from 1024 px, so its late arrival moves
-                nothing. */}
-              <div className="grid grid-cols-1 items-center gap-10 @min-[1024px]/page:grid-cols-[minmax(0,1fr)_17rem] @min-[1280px]/page:grid-cols-[minmax(0,1fr)_20rem]">
-                <div className="hero-in-stagger max-w-2xl min-w-0">
-                  <HeadKicker>{tHome('hero.kicker')}</HeadKicker>
-                  <h1 className="text-4xl font-black tracking-tight text-balance sm:text-6xl">
-                    {tHome('hero.title')}
-                  </h1>
-                  <p className="text-foreground/85 mt-5 max-w-xl text-lg leading-relaxed sm:text-xl">
-                    {tHome('hero.lead')}
-                  </p>
+                max-content width, and a truncated row or chip inside is as wide as its whole
+                text. Tailwind's grid-cols-1 is `minmax(0, 1fr)`, which caps it at the container
+                instead — without it the whole hero overflowed the viewport. */}
+              {/* The two-column split asks the page, not the window, so an open planner does not
+                leave the map its full column and the text a sliver. */}
+              <div className="grid grid-cols-1 items-start gap-10 @min-[1280px]/page:grid-cols-[minmax(0,1fr)_minmax(0,34rem)] @min-[1536px]/page:grid-cols-[minmax(0,1fr)_minmax(0,40rem)] @min-[1536px]/page:gap-14">
+                <HeroTextPanel className="hero-in-stagger">
+                  <Suspense
+                    fallback={
+                      <HeroWithNearby initialCounts={null} latestNews={latestNews} isFallback />
+                    }
+                  >
+                    <HeroStats latestNews={latestNews} />
+                  </Suspense>
                   <HeroInlineSearch
                     placeholder={tHome('hero.searchExamples')}
                     label={tHome('hero.searchPlaceholder')}
-                    className="mt-7 max-w-xl"
+                    reading={getHeroReading(locale as Locale, latestNews)}
+                    className="mt-5"
                   />
-                  <HeroPopularParks locale={locale} className="mt-4" />
-                </div>
-                <div className="hidden @min-[1024px]/page:block">
-                  <HeroParky prompt={tHome('hero.parkyPrompt')} action={tLanding('parky.action')} />
+                </HeroTextPanel>
+
+                {/* The world-map panel, only where the page's box has room. Pushed down while the
+                  text column is pulled up, so the search dropdown, open at rest in the left
+                  column, has room. */}
+                <div className="hero-in-late hidden @min-[1280px]/page:mt-24 @min-[1280px]/page:block @min-[1536px]/page:mt-28">
+                  <Suspense fallback={<HeroWorldPanelSkeleton />}>
+                    <HeroWorldPanel />
+                  </Suspense>
                 </div>
               </div>
             </div>
@@ -216,6 +235,12 @@ export default async function HomePage({ params }: HomePageProps) {
 
         <LocationBanner />
 
+        {/* What is new comes first: the hero already lists the parks near the visitor, and the
+          news is what changes from one visit to the next. */}
+        <HomeReading locale={locale as Locale} />
+
+        <HomeTour locale={locale as Locale} />
+
         {/* The visitor's own parks: the nearest ones with the rides where a wait is short right
           now, and their favourites, which stand first for a visitor who has some (`order` from
           `.home-favorites`). Client Components that decide late (geolocation, a cookie), hence the
@@ -227,26 +252,26 @@ export default async function HomePage({ params }: HomePageProps) {
           <FavoritesSection heading="tile" className={FAVORITES_BAND} />
         </div>
 
-        <HomeReading locale={locale as Locale} />
-
-        <HomeTools locale={locale as Locale} />
-
-        {/* Popular parks per locale: direct park links in the first HTML (SSR seed + client live
-          data). */}
+        {/* Popular parks per locale: the cards (SSR seed + client live data), then a link to each
+          one's waits and calendar, which the fallback draws as well, since it needs no API. */}
         <Suspense
           fallback={
             <FeaturedParksSkeleton
               labels={featuredParksLabels}
               heading="tile"
               className={`border-border border-t ${STORY_SECTION_Y}`}
-            />
+            >
+              <PopularParkLinks locale={locale as Locale} />
+            </FeaturedParksSkeleton>
           }
         >
           <FeaturedParksSlot
             locale={locale}
             heading="tile"
             className={`border-border border-t ${STORY_SECTION_Y}`}
-          />
+          >
+            <PopularParkLinks locale={locale as Locale} />
+          </FeaturedParksSlot>
         </Suspense>
 
         {/* The page's only FAQPage markup — FaqSection renders the questions and the JSON-LD from

@@ -2,23 +2,27 @@
 
 import { useCallback, useEffect, useRef, useState, type ComponentType } from 'react';
 import { SearchCommand } from '@/components/search/search-bar';
-import {
-  HeroSearchFrame,
-  HeroSearchShell,
-  type HeroSearchRest,
-} from '@/components/search/hero-search-field';
+import { HeroSearchShell, type HeroSearchRest } from '@/components/search/hero-search-field';
+import { HeroPhoneList } from '@/components/search/hero-phone-list';
 import { useMediaQuery } from '@/lib/hooks/use-media-query';
 import { useMounted } from '@/lib/hooks/use-mounted';
 import { useAfterLoad } from '@/lib/hooks/use-after-load';
 import { useSearchSession } from '@/lib/hooks/use-search-session';
 import type { SearchSession } from '@/lib/analytics/search-session';
+import {
+  HERO_REST_ROWS_DESKTOP,
+  HERO_REST_ROWS_PHONE,
+  type HeroReading,
+} from '@/lib/home/hero-search';
 import { cn } from '@/lib/utils';
 
-/**
- * The field alone at rest, on both viewports: the parks near the visitor have a chapter of their
- * own right under the hero, so the field holds no list until it is focused.
- */
-const FIELD_REST: HeroSearchRest = { desktopRows: 0, spacerClass: '' };
+/** The hero's resting list: parks, then the two posts, on both viewports. */
+const HERO_REST: HeroSearchRest = {
+  phoneRows: HERO_REST_ROWS_PHONE,
+  desktopRows: HERO_REST_ROWS_DESKTOP,
+  reading: true,
+  spacerClass: 'h-[var(--hero-search-rest-h)]',
+};
 
 interface HeroInlineSearchProps {
   /** Example park/ride names shown in the empty field. */
@@ -26,29 +30,38 @@ interface HeroInlineSearchProps {
   /** What the field is for — the accessible name, since the placeholder is only examples. */
   label: string;
   className?: string;
+  /** The two posts under the hero's resting list, resolved on the server (`getHeroReading`). */
+  reading?: HeroReading | null;
 }
 
 type PanelComponent = ComponentType<{
   placeholder: string;
   label: string;
   rest: HeroSearchRest;
+  reading?: HeroReading | null;
   initialQuery?: string;
   autoFocus?: boolean;
   onFocusHandled?: () => void;
   onTextTaken?: () => void;
+  onHero?: boolean;
   session: SearchSession;
 }>;
 
 /**
- * The hero search: a field that opens its list on focus, one glass object on every viewport. From
- * `md` up the field searches in place (`HeroInlineSearchPanel`, fetched only after load and idle);
- * on a phone it opens the `SearchCommand` palette. Until the panel exists {@link HeroSearchShell}
- * is a working input that hands its focus and typed text to the panel on mount; on a phone the
- * palette opens with that text instead. One search session per field, whichever part the visitor
- * uses.
+ * The hero search: a field with its resting list attached, one glass object on every viewport.
+ * From `md` up the field searches in place (`HeroInlineSearchPanel`, fetched only after load and
+ * idle); on a phone it opens the `SearchCommand` palette, and the list's rows are links. Until the
+ * panel exists {@link HeroSearchShell} is a working input that hands its focus and typed text to
+ * the panel on mount; on a phone the palette opens with that text instead. One search session
+ * per field, whichever part the visitor uses.
  */
-export function HeroInlineSearch({ placeholder, label, className }: HeroInlineSearchProps) {
-  const rest = FIELD_REST;
+export function HeroInlineSearch({
+  placeholder,
+  label,
+  className,
+  reading,
+}: HeroInlineSearchProps) {
+  const rest = HERO_REST;
   const isDesktop = useMediaQuery('(min-width: 768px)');
   const mounted = useMounted();
   const afterLoad = useAfterLoad();
@@ -77,8 +90,8 @@ export function HeroInlineSearch({ placeholder, label, className }: HeroInlineSe
   /**
    * Whether this field is on screen. Mounting the panel scrolls the page: cmdk calls
    * `scrollIntoView({ block: 'nearest' })` on its first item, which drags the document back up to
-   * the field for a visitor who has scrolled past it. So the panel waits for its field to be in
-   * view, with a 15 % inset so a field grazing the edge does not shift the page either.
+   * the field for a visitor who has scrolled past it. So the panel waits for its field to be in view,
+   * with a 15 % inset so a field grazing the edge does not shift the page either.
    */
   const hostRef = useRef<HTMLDivElement>(null);
   const [inView, setInView] = useState(false);
@@ -131,6 +144,7 @@ export function HeroInlineSearch({ placeholder, label, className }: HeroInlineSe
           placeholder={placeholder}
           label={label}
           rest={rest}
+          reading={reading}
           initialQuery={typed ?? undefined}
           autoFocus={pendingFocus}
           onFocusHandled={() => setPendingFocus(false)}
@@ -150,7 +164,8 @@ export function HeroInlineSearch({ placeholder, label, className }: HeroInlineSe
             openOnMount={typed ?? undefined}
             onOpenedOnMount={handedOver}
           />
-          <HeroSearchFrame state="settled" />
+          <div aria-hidden="true" className={rest.spacerClass} />
+          <HeroPhoneList rows={rest.phoneRows} reading={reading} session={session} />
         </div>
       )}
     </div>

@@ -22,7 +22,7 @@ type Listener = () => void;
  * - `wizard`: the wizard's last step on the planner's own page; inside the panel it opens nothing.
  * - `plan-list`: a day picked from the list on the planner's own page.
  * - `shared-link`: "Planer öffnen" on the shared-plan page, after taking a plan over.
- * - `home-hero`: no longer sent; kept so the admin can still label the events it counted.
+ * - `home-hero`: "Heute planen" in the homepage hero (`HeroParkActions`).
  * - `kids-page`: a step of the height ladder on a park's "with kids" page (`KidsPlannerButton`).
  *
  * Not ways in: `AddToPlannerButton` files an entry without opening the panel, and

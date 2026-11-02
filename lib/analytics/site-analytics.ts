@@ -58,8 +58,8 @@ export type SitePageType =
 
 /**
  * Which search field a search event came from. The phone and desktop hero are both `hero`;
- * `home_steps` is the copy of the hero field in the homepage's „So funktioniert's" step card, counted
- * apart so it does not inflate the hero. `park_rides` is the ride search on a park's attractions
+ * `home_steps` was the copy of the hero field in the homepage's step card, no longer sent but kept
+ * so the admin can still label the events it counted. `park_rides` is the ride search on a park's attractions
  * tab, `compare` the park picker of the comparison, `glossary` the glossary overview's field,
  * `post_end` the field under a post's parks.
  */

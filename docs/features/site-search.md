@@ -105,14 +105,18 @@ ride's land, which is what matched.
 ## The list's height eases
 
 The palette and the hero's list change height on every query (browse list → skeleton → results,
-and the hero's list opening under the field on focus). Both ease over 300 ms:
+and the hero's resting rows opening to the whole list on focus). Both ease over 300 ms:
 `useAnimatedHeight` (`lib/hooks/use-animated-height.ts`) watches the content and writes its height
 onto the box around it, which carries the transition (`ANIMATED_HEIGHT_CLASS`), since CSS cannot
 transition to `height: auto`. The palette wraps its panel in `AnimatedHeight`
 (`components/common/animated-height.tsx`); in the hero the box under the field is the one that eases,
 and the content inside carries the cap (`--hero-search-max-h`, once the list is opened), so the list
-scrolls inside a box whose height is already final. At rest the hero's field holds no list
-([homepage](homepage-hero.md#search-the-field-alone-at-rest)).
+scrolls inside a box whose height is already final.
+
+The hero's resting reservation is measured off the content plus the hairline and the frame's lower
+border, not off the box, which is mid-ease when the list collapses back to rest.
+`pnpm check:hero-search-rest` reads 485 / 485 / 485 px for the frame on a desktop and 424 / 424 /
+424 on a phone, in all six locales ([homepage hero](homepage-hero.md#what-the-list-holds-at-rest)).
 
 ## On `/blog` and `/news`
 
