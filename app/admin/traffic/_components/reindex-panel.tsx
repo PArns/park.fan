@@ -30,6 +30,9 @@ import { PublicLink } from './list-parts';
 
 const reindexKey = ['admin', 'search-console', 'reindex'] as const;
 
+const ABOUT =
+  'Seiten, die sich in den letzten 30 Tagen geändert haben und die Google seitdem nicht gecrawlt hat, sortiert nach Impressionen mal Tagen ohne Crawl (höchstens 30). Was Google alle paar Tage holt, rückt nach unten.';
+
 /** Clicks, impressions, CTR and position over 28 days, as one line. */
 function Figures({ item }: { item: SearchConsoleReindexItem }) {
   if (item.impressions === 0) {
@@ -95,8 +98,8 @@ export function ReindexPanel({ siteUrl }: { siteUrl: string }) {
         title="Nachindizieren"
         hint={
           data?.lastInspectedAt
-            ? `Seiten, die sich in den letzten 30 Tagen geändert haben und die Google seitdem nicht gecrawlt hat. Geprüft ${formatAgo(data.lastInspectedAt)}, ${formatCount(data.inspected)} von ${formatCount(data.candidates)} geänderten Seiten.`
-            : 'Seiten, die sich in den letzten 30 Tagen geändert haben und die Google seitdem nicht gecrawlt hat.'
+            ? `${ABOUT} Geprüft ${formatAgo(data.lastInspectedAt)}, ${formatCount(data.inspected)} von ${formatCount(data.candidates)} geänderten Seiten.`
+            : ABOUT
         }
         action={
           <div className="flex items-center gap-2">

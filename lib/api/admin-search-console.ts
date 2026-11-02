@@ -146,7 +146,7 @@ export interface SearchConsoleReindexItem {
 
 /** `GET /v1/admin/search-console/reindex`: the pages Google has not crawled since their change. */
 export interface SearchConsoleReindexQueue {
-  /** Not requested since the change. */
+  /** Not requested since the change, the page a request gains most on first. */
   open: SearchConsoleReindexItem[];
   /** Requested since the change and waiting for Google's crawl; not to be requested again. */
   requested: SearchConsoleReindexItem[];
