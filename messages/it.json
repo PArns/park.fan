@@ -673,7 +673,17 @@
         "recoveryOnly": "Dei fermi che duravano già da così tanto, circa il {percent} % è finito entro un'ora."
       },
       "sinceClosed": "Ferma da {when}",
-      "startUnknownClosed": "Ferma, inizio sconosciuto"
+      "startUnknownClosed": "Ferma, inizio sconosciuto",
+      "sinceMaintenance": "In manutenzione da {when}",
+      "startUnknownMaintenance": "In manutenzione, inizio sconosciuto",
+      "estimateMaintenance": {
+        "range": "Una manutenzione come questa durava di solito ancora da {from} a {to}.",
+        "rangeOpen": "Una manutenzione come questa durava di solito ancora più di {from}.",
+        "clockRange": "Una manutenzione come questa finiva di solito tra le {from} e le {to}.",
+        "clockRangeOpen": "Una manutenzione come questa di solito non finiva prima delle {from}.",
+        "recovery": "Circa il {percent}% è finito entro un'ora.",
+        "recoveryOnly": "Delle manutenzioni che duravano già così a lungo, circa il {percent}% è finito entro un'ora."
+      }
     },
     "notRunToday": {
       "title": "Oggi non ancora in funzione",

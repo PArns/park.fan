@@ -428,7 +428,17 @@
         "recoveryOnly": "Von Stillständen, die schon so lange dauern, waren rund {percent} % binnen einer Stunde vorbei."
       },
       "sinceClosed": "Steht seit {when} still",
-      "startUnknownClosed": "Steht still, Beginn unbekannt"
+      "startUnknownClosed": "Steht still, Beginn unbekannt",
+      "sinceMaintenance": "In Wartung seit {when}",
+      "startUnknownMaintenance": "In Wartung, Beginn unbekannt",
+      "estimateMaintenance": {
+        "range": "Wartungen wie diese dauerten meist noch {from} bis {to}",
+        "rangeOpen": "Wartungen wie diese dauerten meist noch über {from}",
+        "clockRange": "Wartungen wie diese waren meist zwischen {from} und {to} Uhr vorbei",
+        "clockRangeOpen": "Wartungen wie diese waren meist nicht vor {from} Uhr vorbei",
+        "recovery": "Rund {percent} % waren binnen einer Stunde vorbei.",
+        "recoveryOnly": "Von Wartungen, die schon so lange dauern, waren rund {percent} % binnen einer Stunde vorbei."
+      }
     },
     "notRunToday": {
       "title": "Heute noch nicht in Betrieb",

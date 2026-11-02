@@ -673,7 +673,17 @@
         "recoveryOnly": "Of standstills that had already lasted this long, about {percent}% were over within an hour."
       },
       "sinceClosed": "Not running since {when}",
-      "startUnknownClosed": "Not running, start unknown"
+      "startUnknownClosed": "Not running, start unknown",
+      "sinceMaintenance": "Under maintenance since {when}",
+      "startUnknownMaintenance": "Under maintenance, start unknown",
+      "estimateMaintenance": {
+        "range": "Maintenance like this usually took another {from} to {to}.",
+        "rangeOpen": "Maintenance like this usually took more than another {from}.",
+        "clockRange": "Maintenance like this was usually over between {from} and {to}.",
+        "clockRangeOpen": "Maintenance like this was usually not over before {from}.",
+        "recovery": "About {percent}% was over within an hour.",
+        "recoveryOnly": "Of maintenance stops that had already lasted this long, about {percent}% were over within an hour."
+      }
     },
     "notRunToday": {
       "title": "Not running yet today",

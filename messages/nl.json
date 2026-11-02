@@ -673,7 +673,17 @@
         "recoveryOnly": "Van stilstanden die al zo lang duurden, was ongeveer {percent}% binnen een uur voorbij."
       },
       "sinceClosed": "Staat stil sinds {when}",
-      "startUnknownClosed": "Staat stil, begin onbekend"
+      "startUnknownClosed": "Staat stil, begin onbekend",
+      "sinceMaintenance": "In onderhoud sinds {when}",
+      "startUnknownMaintenance": "In onderhoud, begin onbekend",
+      "estimateMaintenance": {
+        "range": "Onderhoud als dit duurde meestal nog {from} tot {to}.",
+        "rangeOpen": "Onderhoud als dit duurde meestal nog meer dan {from}.",
+        "clockRange": "Onderhoud als dit was meestal tussen {from} en {to} voorbij.",
+        "clockRangeOpen": "Onderhoud als dit was meestal niet voor {from} voorbij.",
+        "recovery": "Ongeveer {percent}% was binnen een uur voorbij.",
+        "recoveryOnly": "Van onderhoud dat al zo lang duurde, was ongeveer {percent}% binnen een uur voorbij."
+      }
     },
     "notRunToday": {
       "title": "Vandaag nog niet in bedrijf",
