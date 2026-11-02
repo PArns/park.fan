@@ -111,6 +111,16 @@ move or press, a key, the mouse wheel or a touch.
 | `bored`  | 25 s      | yawns, then every 5–9 s whistles, blows a gum bubble that pops, rolls its eyes, looks around, reads or naps    |
 | `asleep` | 75 s      | eyes fall shut, it breathes slowly under rising Zs, the hat stops; activity wakes it with a "!"                |
 
+That is the button in the corner. In the open window Parky sits beside the conversation and is
+`calm`: awake it only looks around, winks or tilts its head, every 20–35 s; bored it yawns, looks
+around or naps, every 9–15 s; asleep it is the same. Its eyes follow the pointer either way. It
+blinks twice in a 24 s cycle, about 9 and 14 s apart, so 5 to 10 times in a minute and a half.
+
+A change of stage never cuts an act short: an act still on stage when Parky gets bored, falls
+asleep or wakes up plays to its end, with the dizziness after a ride, and only then does the new
+stage begin. A cue (an easter egg, Parky's answer to something the visitor did) still plays at
+once, and without a life of its own (a mood, a search, the window closed) Parky stops at once.
+
 The hat, the rides and the dizzy stars reach beyond the drawing's 48-unit box, which only works
 while the `<svg>` element itself is not animated: Safari clips an animated SVG that has a filter,
 or sits under one, to its own box. So the button's bob moves a wrapper around the drawing, and the

@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState, type FormEvent } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState, type FormEvent } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 import { usePathname } from 'next/navigation';
 import {
@@ -147,6 +147,15 @@ export function AssistantPanel({
     return () => window.removeEventListener('keydown', onKey);
   }, [open, onClose]);
 
+  // The field grows with each line typed, up to its max-height, and scrolls only past that: at one
+  // row a second line pushed the first out of sight.
+  useLayoutEffect(() => {
+    const field = input.current;
+    if (!field) return;
+    field.style.height = 'auto';
+    field.style.height = `${field.scrollHeight}px`;
+  }, [draft, tab, session.state]);
+
   const last = chat.messages[chat.messages.length - 1];
   useEffect(() => {
     scroller.current?.scrollTo({ top: scroller.current.scrollHeight, behavior: 'smooth' });
@@ -193,8 +202,10 @@ export function AssistantPanel({
             phone it keeps clear enough of the screen's edge for the loop to fit beside it. */}
         <ParkyLogo
           className="absolute -top-7 left-2 size-16 drop-shadow-[0_8px_16px_rgb(0_0_0/0.35)] sm:-top-11 sm:left-1 sm:size-20"
-          // The closed window stays mounted; only an open one keeps Parky's idle life going.
+          // The closed window stays mounted; only an open one keeps Parky's idle life going, and a
+          // calm one, so it does not pull the eye from the conversation.
           idle={open}
+          calm
           mood={
             chat.phase === 'writing'
               ? 'talking'

@@ -117,6 +117,22 @@ const PAUSE_MS: Record<'awake' | 'bored', readonly [number, number]> = {
   awake: [12_000, 8_000],
   bored: [5_000, 4_000],
 };
+
+/**
+ * Beside a conversation Parky keeps still: a look around, a wink, a tilt of the head, and once
+ * bored a yawn and a nap, with longer rests between. Its eyes still follow the pointer and it still
+ * falls asleep; the full repertoire is for the button in the corner.
+ */
+const CALM = {
+  acts: {
+    awake: ['look', 'wink', 'tilt'],
+    bored: ['yawn', 'look', 'nap'],
+  } satisfies Record<'awake' | 'bored', readonly ParkyAct[]>,
+  pause: {
+    awake: [20_000, 15_000],
+    bored: [9_000, 6_000],
+  } satisfies Record<'awake' | 'bored', readonly [number, number]>,
+};
 /** The first yawn and the eyes falling shut wait a moment after the boredom sets in. */
 const SETTLE_MS = 1_500;
 
@@ -252,52 +268,77 @@ function useGaze(svg: React.RefObject<SVGSVGElement | null>) {
 function useIdleAct(
   enabled: boolean,
   cue: ParkyCue | null,
-  svg: React.RefObject<SVGSVGElement | null>
+  svg: React.RefObject<SVGSVGElement | null>,
+  calm: boolean
 ) {
   const boredom = useParkyBoredom(enabled);
   const [act, setAct] = useState<ParkyAct | null>(null);
   // A cue already there when the face mounts (the button back after the window closed) is old.
   const played = useRef(cue?.id);
+  /**
+   * The act on stage and when it ends. A change of stage (bored, asleep, awake again) lets it play
+   * out: cut short, a ride stopped in mid-air and the next stage's yawn came on its heels.
+   */
+  const running = useRef<{ act: ParkyAct; endsAt: number } | null>(null);
   useEffect(() => {
-    if (!boredom) return;
-    const woke = parkyBoredom.wokeUp();
     // One timer at a time, re-armed from its own callback, so cleanup always reaches it.
-    let timer: ReturnType<typeof setTimeout>;
-    let previous: ParkyAct | null = null;
+    let timer: ReturnType<typeof setTimeout> | undefined;
+    if (!boredom) {
+      // No life of its own now (a mood, a search, a closed window): what played is over.
+      running.current = null;
+      timer = setTimeout(() => setAct(null), 0);
+      return () => clearTimeout(timer);
+    }
+    const woke = parkyBoredom.wokeUp();
+    let previous: ParkyAct | null = running.current?.act ?? null;
+    const end = (done: ParkyAct, then: () => void) => {
+      running.current = null;
+      setAct(null);
+      const after = FOLLOW_UP[done];
+      if (after) play(0, after);
+      else then();
+    };
     const play = (wait: number, asked: ParkyAct | 'ride') => {
       timer = setTimeout(() => {
         // A ride is chosen when it is due, from where Parky is then; with no room the turn passes.
         const next = actFor(asked, svg.current);
-        if (!next) return loop();
-        previous = next;
-        setAct(next);
-        timer = setTimeout(() => {
-          setAct(null);
-          const after = FOLLOW_UP[next];
-          if (after) play(0, after);
+        if (!next) {
+          if (running.current) end(running.current.act, loop);
           else loop();
-        }, ACT_MS[next]);
+          return;
+        }
+        previous = next;
+        running.current = { act: next, endsAt: Date.now() + ACT_MS[next] };
+        setAct(next);
+        timer = setTimeout(() => end(next, loop), ACT_MS[next]);
       }, wait);
     };
     const loop = () => {
       // Asleep, the doze is the last act: the sleeping face takes over until somebody moves.
       if (boredom === 'asleep') return;
-      const [shortest, spread] = PAUSE_MS[boredom];
-      play(shortest + Math.random() * spread, pickRandom(ACTS[boredom], previous));
+      const [shortest, spread] = (calm ? CALM.pause : PAUSE_MS)[boredom];
+      const acts: readonly (ParkyAct | 'ride')[] = (calm ? CALM.acts : ACTS)[boredom];
+      play(shortest + Math.random() * spread, pickRandom(acts, previous));
     };
+    const enter = () => {
+      if (boredom === 'asleep') play(SETTLE_MS, 'doze');
+      else if (boredom === 'bored') play(SETTLE_MS, 'yawn');
+      else if (woke) play(0, 'startle');
+      else loop();
+    };
+    const onStage = running.current;
     if (cue && cue.id !== played.current) {
+      // A cue answers the visitor, so it plays at once, over whatever is on stage.
       played.current = cue.id;
       play(0, cue.act);
-    } else if (boredom === 'asleep') play(SETTLE_MS, 'doze');
-    else if (boredom === 'bored') play(SETTLE_MS, 'yawn');
-    else if (woke) play(0, 'startle');
-    else loop();
-    return () => {
-      clearTimeout(timer);
-      setAct(null);
-    };
-  }, [boredom, cue, svg]);
-  return { act, asleep: boredom === 'asleep' && act === null };
+    } else if (onStage) {
+      timer = setTimeout(() => end(onStage.act, enter), Math.max(0, onStage.endsAt - Date.now()));
+    } else enter();
+    return () => clearTimeout(timer);
+  }, [boredom, cue, svg, calm]);
+  // Shown only while Parky has a life of its own, so a mood or a search never meets an act.
+  const shown = boredom ? act : null;
+  return { act: shown, asleep: boredom === 'asleep' && shown === null };
 }
 
 /**
@@ -373,6 +414,7 @@ export function ParkyLogo({
   mood,
   talking = false,
   idle = false,
+  calm = false,
   cue = null,
 }: {
   className?: string;
@@ -381,6 +423,8 @@ export function ParkyLogo({
   talking?: boolean;
   /** A life of its own while nothing happens: acts, boredom and sleep. */
   idle?: boolean;
+  /** With `idle`, only a few quiet acts and longer rests, for Parky beside a conversation. */
+  calm?: boolean;
   /** An act to play at once, with `idle`. */
   cue?: ParkyCue | null;
 }) {
@@ -392,7 +436,7 @@ export function ParkyLogo({
   // A mood has its own motion; the idle life is for a face with nothing to do, and a search open
   // on the page is something to do.
   const { search, puzzled } = useSearchAlong(idle && !state);
-  const { act, asleep } = useIdleAct(idle && !state && !search, cue, svg);
+  const { act, asleep } = useIdleAct(idle && !state && !search, cue, svg, calm);
   const searching = search === 'searching';
   const gaze =
     state === 'thinking' || act === 'lights'
