@@ -980,6 +980,12 @@ const PLANNER_VALUE_LABEL: Record<string, Record<string, string>> = {
     holiday: 'Feiertag',
     park: 'Park-Spruch',
     secret: 'Geheimcode',
+    planner: 'Tagesplaner geöffnet',
+    plan: 'Plan fertig',
+    favourite: 'Favorit gemerkt',
+    alert: 'Alarm gestellt',
+    theme: 'Hell oder dunkel',
+    install: 'App installiert',
   },
   entrance: {
     scurry: 'Huschen',

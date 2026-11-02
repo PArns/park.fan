@@ -187,6 +187,10 @@ by hand: change the comment in the code and re-run the script. -->
 - `HOME_NEARBY_LIMIT` _const_
 - Types: `UseNearbyParksOptions`
 
+### [`use-page-locked.ts`](../../lib/hooks/use-page-locked.ts)
+
+- `usePageLocked` _hook_: Whether a modal popup covers the page (a dialog, the planner's wizard, the whole planner on a phone): Radix locks the page's scroll with react-remove-scroll, which marks `<body>` with `data-scroll-locked` for as long as it does.
+
 ### [`use-park-best-days-calendar.ts`](../../lib/hooks/use-park-best-days-calendar.ts)
 
 - `useParkBestDaysCalendar` _hook_: The precomputed best-days snapshot (today plus 90 days) behind the best-days widget, the crowd FAQ entry and the header's forecast for today, from the CDN-cached `/api/parks/.../best-days` route.

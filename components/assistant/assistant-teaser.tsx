@@ -1,14 +1,20 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { usePathname } from 'next/navigation';
 import { useQueryClient } from '@tanstack/react-query';
 import { X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { pickRandom } from '@/lib/utils/pick-random';
-import { trackSiteEvent, type AssistantLineKind } from '@/lib/analytics/site-analytics';
 import {
+  onSiteEvent,
+  trackSiteEvent,
+  type AssistantLineKind,
+} from '@/lib/analytics/site-analytics';
+import {
+  answeredWithLine,
+  countAnswer,
   countReaction,
   linesMuted,
   muteLines,
@@ -36,6 +42,9 @@ import {
   type ParkyHoliday,
 } from '@/lib/assistant/easter-eggs';
 import { parkStatsQuery } from '@/lib/hooks/use-park-stats-queries';
+import { reactionTo, type ParkyReaction } from '@/lib/assistant/reactions';
+import { usePageLocked } from '@/lib/hooks/use-page-locked';
+import type { ParkyCue } from './parky-logo';
 import { PARKY_LAYER } from './parky-layer';
 
 const VISIBLE_MS = 7_000;
@@ -84,6 +93,13 @@ const PARK_KEYS = ['parkLine1', 'parkLine2', 'parkLine3', 'parkLine4'] as const;
 const PARK_LINE_DELAY_MS = 5_000;
 /** The coaster ride follows the line once it has been read. */
 const RIDE_AFTER_MS = 1_200;
+/**
+ * Parky answers what the visitor did with its act at once and its line a beat later, once a dialog
+ * the action opened (the planner's wizard) has locked the page.
+ */
+const ANSWER_AFTER_MS = 600;
+/** An answer held back by a dialog or a search is dropped if they stay open longer than this. */
+const ANSWER_HELD_MS = 15_000;
 
 interface Line {
   text: string;
@@ -96,20 +112,23 @@ interface Line {
  * Parky. After its entrance Parky's first line fits how it arrived, and it also speaks up when it
  * gets bored or is woken from sleep, a few times a session. Easter eggs: on a holiday the first
  * invitation is the day's; now and then on a park's page Parky names a ride there and rides a
- * coaster, and so it does after the Konami code. While a search is open Parky searches along and
- * keeps quiet: a line on screen goes, and the next waits. Every line counts as
+ * coaster, and so it does after the Konami code. It answers what the visitor does (the trip planner
+ * opened, a plan finished, a favourite, an alert, the theme switched, the app installed) with an act
+ * every time and a line once a session per kind. While a search or a modal dialog is open Parky keeps
+ * quiet, since the bubble would cover the results or the dialog's buttons: a line on screen goes,
+ * the next waits, and an answer is said once they close, if it is still fresh. Every line counts as
  * `assistant_line_shown` with its kind. Loaded only when the button is drawn, so its strings stay
  * out of the page's chrome.
  */
 export function AssistantTeaser({
   onOpen,
-  onRide,
+  onAct,
   entering = false,
   arrival = null,
 }: {
   onOpen: () => void;
-  /** Parky should ride a coaster now. */
-  onRide: () => void;
+  /** Parky should play this act now: a ride, or its answer to something the visitor did. */
+  onAct: (act: ParkyCue['act']) => void;
   /** An entrance is under way: no line until Parky has landed. */
   entering?: boolean;
   /** The entrance Parky has just made, whose line is then the session's first. */
@@ -121,20 +140,22 @@ export function AssistantTeaser({
   const [line, setLine] = useState<Line | null>(null);
   const boredom = useParkyBoredom(true);
   const searching = useSearchOpen();
-  const [wasSearching, setWasSearching] = useState(searching);
-  if (wasSearching !== searching) {
-    setWasSearching(searching);
-    // The bubble would sit over the palette's list and the field's results.
-    if (searching) setLine(null);
+  const locked = usePageLocked();
+  const covered = searching || locked;
+  const [wasCovered, setWasCovered] = useState(covered);
+  if (wasCovered !== covered) {
+    setWasCovered(covered);
+    // The bubble would sit over the palette's list, the field's results or a dialog's buttons.
+    if (covered) setLine(null);
   }
   // What the timers need to know without being re-armed by it.
-  const latest = useRef({ line, boredom, searching, onRide });
+  const latest = useRef({ line, boredom, covered, entering, onAct });
   useEffect(() => {
-    latest.current = { line, boredom, searching, onRide };
+    latest.current = { line, boredom, covered, entering, onAct };
   });
-  /** Whether a line would interrupt: another is showing, Parky sleeps, or a search is open. */
+  /** Whether a line would interrupt: another shows, Parky sleeps, a search or dialog is open. */
   const busy = () =>
-    latest.current.line !== null || latest.current.boredom === 'asleep' || latest.current.searching;
+    latest.current.line !== null || latest.current.boredom === 'asleep' || latest.current.covered;
 
   // Every line goes after a while, whoever said it; a new one starts the wait again.
   useEffect(() => {
@@ -212,7 +233,7 @@ export function AssistantTeaser({
           text: t(pickRandom(PARK_KEYS), { park: egg.park, ride: egg.ride }),
           kind: 'park',
         });
-        timer = setTimeout(() => latest.current.onRide(), RIDE_AFTER_MS);
+        timer = setTimeout(() => latest.current.onAct('ride'), RIDE_AFTER_MS);
       }, wait);
     };
     say(PARK_LINE_DELAY_MS);
@@ -230,11 +251,53 @@ export function AssistantTeaser({
       if (progress < KONAMI_LENGTH) return;
       progress = 0;
       setLine({ text: t('secretKonami'), kind: 'secret' });
-      latest.current.onRide();
+      latest.current.onAct('ride');
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
   }, [t]);
+
+  // What the visitor does, as the page reports it: an act each time, a line once a session per
+  // kind. It may take the place of a line on screen, since it answers what just happened. Into an
+  // entrance, a search or a dialog it waits; not at all once the lines were closed by hand.
+  const held = useRef<{ reaction: ParkyReaction; at: number } | null>(null);
+  const answer = useCallback(
+    (reaction: ParkyReaction) => {
+      if (linesMuted() || answeredWithLine(reaction.line)) return;
+      countAnswer(reaction.line);
+      setLine({ text: t(pickRandom(reaction.keys)), kind: reaction.line });
+    },
+    [t]
+  );
+  useEffect(() => {
+    let timer: ReturnType<typeof setTimeout>;
+    const stop = onSiteEvent((name, props) => {
+      const reaction = reactionTo(name, props);
+      if (!reaction) return;
+      latest.current.onAct(reaction.act);
+      if (linesMuted() || answeredWithLine(reaction.line)) return;
+      clearTimeout(timer);
+      timer = setTimeout(() => {
+        if (latest.current.covered || latest.current.entering) {
+          held.current = { reaction, at: Date.now() };
+        } else answer(reaction);
+      }, ANSWER_AFTER_MS);
+    });
+    return () => {
+      stop();
+      clearTimeout(timer);
+    };
+  }, [answer]);
+  // A held answer is said once nothing is in its way, unless it has gone stale meanwhile.
+  const blocked = covered || entering;
+  useEffect(() => {
+    if (blocked || !held.current) return;
+    const { reaction, at } = held.current;
+    held.current = null;
+    if (Date.now() - at > ANSWER_HELD_MS) return;
+    const timer = setTimeout(() => answer(reaction), LANDED_PAUSE_MS);
+    return () => clearTimeout(timer);
+  }, [blocked, answer]);
 
   return (
     <div

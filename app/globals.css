@@ -389,7 +389,9 @@
  * acts last `--parky-act`, which the component sets from its own table, so a length lives there
  * only. With company Parky also twirls, dances and reads; bored, it yawns, whistles, blows gum,
  * rolls its eyes and naps; asleep it breathes slowly under rising Zs, and the hat stands still.
- * While a search is open it holds a magnifying glass to its eye and looks around the page.
+ * While a search is open it holds a magnifying glass to its eye and looks around the page. It answers
+ * what the visitor does: a checklist for the trip planner, confetti for a finished plan, heart eyes
+ * for a favourite, a bell for an alert, sunglasses and a lit wheel when the theme turns.
  */
 @keyframes parky-blink {
   0%,
@@ -1196,6 +1198,127 @@
     transform: translateX(1.2px) rotate(5deg);
   }
 }
+/* Answers to the visitor. The confetti flies along each piece's own `--dx`, `--dy` and `--spin`. */
+@keyframes parky-confetti {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0) rotate(0deg);
+  }
+  10% {
+    opacity: 1;
+  }
+  45%,
+  60% {
+    opacity: 1;
+    transform: translate(var(--dx), var(--dy)) rotate(var(--spin));
+  }
+  100% {
+    opacity: 0;
+    transform: translate(calc(var(--dx) * 1.25), calc(var(--dy) + 26px))
+      rotate(calc(var(--spin) * 2));
+  }
+}
+@keyframes parky-tick {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes parky-heart {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  15% {
+    opacity: 1;
+    transform: scale(1.25);
+  }
+  25%,
+  45%,
+  65%,
+  85% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  35%,
+  55% {
+    opacity: 1;
+    transform: scale(1.18);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+}
+@keyframes parky-bell-swing {
+  0%,
+  80%,
+  100% {
+    transform: rotate(0deg);
+  }
+  10%,
+  30%,
+  50%,
+  70% {
+    transform: rotate(18deg);
+  }
+  20%,
+  40%,
+  60% {
+    transform: rotate(-18deg);
+  }
+}
+@keyframes parky-ring {
+  0% {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+  40% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.25);
+  }
+}
+@keyframes parky-shades {
+  0% {
+    opacity: 0;
+    transform: translateY(-14px);
+  }
+  22% {
+    opacity: 1;
+    transform: translateY(1px);
+  }
+  30%,
+  82% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-14px);
+  }
+}
+@keyframes parky-glow {
+  0%,
+  100% {
+    opacity: 0.15;
+  }
+  50% {
+    opacity: 0.85;
+  }
+}
+@keyframes parky-twinkle {
+  0%,
+  100% {
+    opacity: 0.5;
+    transform: scale(0.6);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+}
 .parky-thoughts circle,
 .parky-thoughts .parky-cloud {
   transform-box: fill-box;
@@ -1239,9 +1362,22 @@
   transform-origin: center;
 }
 .parky-grin,
-.parky-woozy {
+.parky-woozy,
+.parky-heart,
+.parky-ring,
+.parky-twinkle,
+.parky-confetti > * {
   transform-box: fill-box;
   transform-origin: center;
+}
+/* The bell swings from its top; a tick is drawn from its start, so it is hidden until then. */
+.parky-bell-swing {
+  transform-box: fill-box;
+  transform-origin: 50% 0;
+}
+.parky-tick {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
 }
 /* The eye behind the glass, magnified; a size, not a motion, so it holds under reduced motion. */
 .parky-searching .parky-eye:last-child {
@@ -1297,7 +1433,8 @@
   .parky-act-launch .parky-smile,
   .parky-act-hills .parky-smile,
   .parky-act-tower .parky-smile,
-  .parky-act-dizzy .parky-smile {
+  .parky-act-dizzy .parky-smile,
+  .parky-act-cheer .parky-smile {
     animation: parky-smile-away var(--parky-act) ease-in-out;
   }
   .parky-purse {
@@ -1474,6 +1611,62 @@
   }
   .parky-searching .parky-pupils {
     animation: parky-scan 1.6s ease-in-out infinite;
+  }
+  .parky-act-plan .parky-book {
+    animation: parky-book-in var(--parky-act) ease-out both;
+  }
+  .parky-tick {
+    animation: parky-tick calc(var(--parky-act) * 0.08) ease-out calc(var(--parky-act) * 0.25)
+      forwards;
+  }
+  .parky-clipboard > g:nth-of-type(2) .parky-tick {
+    animation-delay: calc(var(--parky-act) * 0.42);
+  }
+  .parky-clipboard > g:nth-of-type(3) .parky-tick {
+    animation-delay: calc(var(--parky-act) * 0.59);
+  }
+  .parky-act-cheer {
+    animation: parky-hop calc(var(--parky-act) / 2) ease-out 2;
+  }
+  .parky-confetti > * {
+    animation: parky-confetti calc(var(--parky-act) * 0.95) ease-out both;
+  }
+  .parky-confetti > :nth-child(even) {
+    animation-delay: calc(var(--parky-act) * 0.06);
+  }
+  .parky-act-love {
+    animation: parky-sway var(--parky-act) ease-in-out;
+  }
+  .parky-heart {
+    animation: parky-heart var(--parky-act) ease-in-out both;
+  }
+  .parky-act-bell {
+    animation: parky-tilt var(--parky-act) ease-in-out;
+  }
+  .parky-bell-swing {
+    animation: parky-bell-swing calc(var(--parky-act) * 0.6) ease-in-out
+      calc(var(--parky-act) * 0.15) both;
+  }
+  .parky-ring {
+    animation: parky-ring calc(var(--parky-act) / 4) ease-out calc(var(--parky-act) * 0.15) 3 both;
+  }
+  .parky-act-shades {
+    animation: parky-lean var(--parky-act) ease-in-out;
+  }
+  .parky-shades {
+    animation: parky-shades var(--parky-act) ease-in-out both;
+  }
+  .parky-night {
+    animation: parky-track var(--parky-act) ease-out both;
+  }
+  .parky-glow {
+    animation: parky-glow 0.9s ease-in-out infinite;
+  }
+  .parky-twinkle {
+    animation: parky-twinkle 1.1s ease-in-out infinite;
+  }
+  .parky-night > g > g:nth-child(2) .parky-twinkle {
+    animation-delay: -0.5s;
   }
   .parky-mood-looking .parky-pupils,
   .parky-act-read .parky-pupils {

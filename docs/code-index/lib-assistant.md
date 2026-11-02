@@ -76,6 +76,13 @@ by hand: change the comment in the code and re-run the script. -->
 - `postPlainText` _function_: A post's Markdown as plain text for the chat assistant: code, images, embeds, HTML and table rules removed, links reduced to their text, cut at a paragraph near `POST_TEXT_LIMIT`.
 - `POST_TEXT_LIMIT` _const_: About 2,500 tokens: enough to answer from a post, cheap enough per question.
 
+### [`reactions.ts`](../../lib/assistant/reactions.ts)
+
+- `isReactionAct` _function_: Whether a name is one of Parky's reaction acts.
+- `reactionTo` _function_: Parky's answer to a site event, or `null` for one it lets pass.
+- `REACTION_ACTS` _const_: The acts Parky plays in answer to something the visitor did; `parky-logo.tsx` draws each.
+- Types: `ParkyReactionAct`, `ParkyReaction`
+
 ### [`sse.ts`](../../lib/assistant/sse.ts)
 
 - `readSse` _function_: Reads a `text/event-stream` body event by event. A hand-written reader rather than `EventSource`, which can only GET and so cannot send the question as a body.
@@ -90,6 +97,8 @@ by hand: change the comment in the code and re-run the script. -->
 - `stopTeasers` _function_: No more invitations or reactions this session: Parky was opened, or a line was closed.
 - `muteLines` _function_: A line closed by hand: Parky stops talking for the session, its easter eggs included, which opening Parky leaves alone.
 - `linesMuted` _function_: Whether a line was closed by hand this session; `true` where storage is blocked.
+- `answeredWithLine` _function_: Whether Parky already answered this kind of action with a line this session (the planner opened, a favourite, …); `true` where storage is blocked. Its act plays every time regardless.
+- `countAnswer` _function_: Records the line Parky said in answer to a kind of action.
 - `TEASER_SCHEDULE_MS` _const_: Two lines a session at most: one after a short look around, one a good while later.
 - `REACTIONS_PER_SESSION` _const_: Lines Parky says when it gets bored or is woken up, at most this many a session.
 

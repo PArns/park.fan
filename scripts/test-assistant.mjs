@@ -3,8 +3,9 @@
  * answers (`lib/assistant/links.ts`), the rollout gate (`lib/assistant/config.ts`), the post
  * text it reads (`lib/assistant/post-text.ts`), how bored its face gets
  * (`lib/assistant/parky-boredom.ts`), how a chat opens (`lib/assistant/opener.ts`) and Parky's easter
- * eggs (`lib/assistant/easter-eggs.ts`, muting in `teaser-store.ts`) and its rides
- * (`lib/assistant/parky-rides.ts`).
+ * eggs (`lib/assistant/easter-eggs.ts`, muting in `teaser-store.ts`), its rides
+ * (`lib/assistant/parky-rides.ts`) and how it answers what the visitor does
+ * (`lib/assistant/reactions.ts`, heard through `onSiteEvent`).
  */
 
 import assert from 'node:assert/strict';
@@ -39,7 +40,15 @@ import {
   parkPathOf,
   topCoaster,
 } from '@/lib/assistant/easter-eggs.ts';
-import { linesMuted, muteLines } from '@/lib/assistant/teaser-store.ts';
+import {
+  answeredWithLine,
+  countAnswer,
+  linesMuted,
+  muteLines,
+} from '@/lib/assistant/teaser-store.ts';
+import { isReactionAct, REACTION_ACTS, reactionTo } from '@/lib/assistant/reactions.ts';
+import { onSiteEvent, trackSiteEvent } from '@/lib/analytics/site-analytics.ts';
+import { readFileSync } from 'node:fs';
 import { isRide, REST, RIDE_MOTION, rideKeyframe } from '@/lib/assistant/parky-rides.ts';
 
 let passed = 0;
@@ -431,4 +440,102 @@ check(
   'a stop as a keyframe, turned about the wheels'
 );
 check([isRide('tower'), isRide('egg'), isRide(null)], [true, false, false], 'a ride by name');
+// Answers to what the visitor does.
+{
+  const act = (name, props) => reactionTo(name, props)?.act ?? null;
+  check(
+    [
+      act('planner_opened', { source: 'tab' }),
+      act('planner_wizard_finished', { headliners: true }),
+    ],
+    ['plan', 'cheer'],
+    'the planner opened gets the checklist, a finished plan the confetti'
+  );
+  check(
+    [
+      act('theme_toggled', { theme: 'dark' }),
+      act('theme_toggled', { theme: 'light' }),
+      act('theme_toggled', { theme: 'system' }),
+    ],
+    ['lights', 'shades', null],
+    'the dark lights the wheel up, the light brings out the sunglasses'
+  );
+  check(
+    [act('favorite_add', { type: 'park' }), act('favorite_remove', { type: 'park' })],
+    ['love', null],
+    'a favourite added, not one removed'
+  );
+  check(
+    [act('ride_alert_set', { source: 'card' }), act('show_follow_add', { source: 'panel' })],
+    ['bell', 'bell'],
+    'an alert and a followed show ring the bell'
+  );
+  check([act('search_typed', { surface: 'hero' }), act('nonsense')], [null, null], 'others pass');
+  check([isReactionAct('love'), isReactionAct('coaster')], [true, false], 'a reaction by name');
+
+  // Every line a reaction can say is there in all six languages.
+  const names = [
+    ['planner_opened', {}],
+    ['planner_wizard_finished', {}],
+    ['plan_optimized', {}],
+    ['favorite_add', {}],
+    ['ride_alert_set', {}],
+    ['theme_toggled', { theme: 'dark' }],
+    ['theme_toggled', { theme: 'light' }],
+    ['pwa_installed', {}],
+  ];
+  const keys = names.flatMap(([name, props]) => reactionTo(name, props).keys);
+  const acts = new Set(names.map(([name, props]) => reactionTo(name, props).act));
+  check([...acts].sort(), [...REACTION_ACTS].sort(), 'every reaction act answers something');
+  for (const locale of ['de', 'en', 'nl', 'fr', 'es', 'it']) {
+    const lines = JSON.parse(readFileSync(`messages/${locale}.json`, 'utf8')).assistant;
+    check(
+      keys.filter((key) => typeof lines[key] !== 'string'),
+      [],
+      `${locale}: every reaction line exists`
+    );
+  }
+}
+
+// One line per kind of answer a session, on a stand-in sessionStorage; none without storage.
+{
+  const store = new Map();
+  globalThis.window = {
+    sessionStorage: {
+      getItem: (key) => store.get(key) ?? null,
+      setItem: (key, value) => store.set(key, value),
+    },
+  };
+  check(answeredWithLine('favourite'), false, 'no favourite line yet');
+  countAnswer('favourite');
+  countAnswer('favourite');
+  check(
+    [answeredWithLine('favourite'), answeredWithLine('theme')],
+    [true, false],
+    'the favourite line is said, the theme line is still to come'
+  );
+  globalThis.window = {
+    sessionStorage: {
+      getItem: () => {
+        throw new Error('blocked');
+      },
+    },
+  };
+  check(answeredWithLine('theme'), true, 'without storage no answer gets a line');
+  delete globalThis.window;
+}
+
+// The page's events reach a listener even where nothing is counted; one that throws breaks nothing.
+{
+  const heard = [];
+  const stopThrowing = onSiteEvent(() => {
+    throw new Error('listener');
+  });
+  const stop = onSiteEvent((name, props) => heard.push([name, props]));
+  trackSiteEvent('favorite_add', { type: 'park' });
+  stop();
+  stopThrowing();
+  trackSiteEvent('favorite_add', { type: 'show' });
+  check(heard, [['favorite_add', { type: 'park' }]], 'heard once, then not after unsubscribing');
+}
 console.log(`assistant: ${passed} checks passed`);

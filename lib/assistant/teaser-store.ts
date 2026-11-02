@@ -1,6 +1,7 @@
 const SHOWN_KEY = 'parkfan:assistant-teasers';
 const REACTIONS_KEY = 'parkfan:assistant-reactions';
 const MUTED_KEY = 'parkfan:assistant-muted';
+const ANSWERED_KEY = 'parkfan:assistant-answered';
 
 /** Two lines a session at most: one after a short look around, one a good while later. */
 export const TEASER_SCHEDULE_MS = [8_000, 90_000] as const;
@@ -62,4 +63,31 @@ export function muteLines(): void {
 /** Whether a line was closed by hand this session; `true` where storage is blocked. */
 export function linesMuted(): boolean {
   return readCount(MUTED_KEY, 1) > 0;
+}
+
+function answeredKinds(): string[] | null {
+  try {
+    return (window.sessionStorage.getItem(ANSWERED_KEY) ?? '').split(',').filter(Boolean);
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * Whether Parky already answered this kind of action with a line this session (the planner
+ * opened, a favourite, …); `true` where storage is blocked. Its act plays every time regardless.
+ */
+export function answeredWithLine(kind: string): boolean {
+  return answeredKinds()?.includes(kind) ?? true;
+}
+
+/** Records the line Parky said in answer to a kind of action. */
+export function countAnswer(kind: string): void {
+  const kinds = answeredKinds();
+  if (!kinds || kinds.includes(kind)) return;
+  try {
+    window.sessionStorage.setItem(ANSWERED_KEY, [...kinds, kind].join(','));
+  } catch {
+    // Without storage no answer gets a line, which is the quieter mistake.
+  }
 }

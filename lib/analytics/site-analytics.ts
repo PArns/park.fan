@@ -146,10 +146,23 @@ export type AssistantOpenSource = 'button' | 'line';
 
 /**
  * A line in Parky's speech bubble: an invitation, after an entrance, bored, woken, a holiday's, a
- * park's own, or the Konami code's.
+ * park's own, the Konami code's, or an answer to something the visitor did (the trip planner
+ * opened, a plan finished, a favourite, an alert, the theme switched, the app installed).
  */
 export type AssistantLineKind =
-  'invitation' | 'entrance' | 'bored' | 'woke' | 'holiday' | 'park' | 'secret';
+  | 'invitation'
+  | 'entrance'
+  | 'bored'
+  | 'woke'
+  | 'holiday'
+  | 'park'
+  | 'secret'
+  | 'planner'
+  | 'plan'
+  | 'favourite'
+  | 'alert'
+  | 'theme'
+  | 'install';
 
 /** How one of Parky's answers ended. */
 export type AssistantAnswerResult =
@@ -603,6 +616,23 @@ type TrackArguments<Name extends string> = Name extends SiteEventName
     : [props: SiteEventMap[Name], entity?: string | null]
   : [props?: SiteEventProps, entity?: string | null];
 
+/** Hears an event the page reports, with its name and properties as they were passed. */
+export type SiteEventListener = (name: string, props: SiteEventProps | undefined) => void;
+
+const siteEventListeners = new Set<SiteEventListener>();
+
+/**
+ * Hears every event the page reports, counted or not (a visitor who opted out, a bot), for what
+ * answers what a visitor does: Parky reacts to a few of them. The events already mark those
+ * moments in every component, so nothing has to be wired twice. Returns the unsubscribe.
+ */
+export function onSiteEvent(listener: SiteEventListener): () => void {
+  siteEventListeners.add(listener);
+  return () => {
+    siteEventListeners.delete(listener);
+  };
+}
+
 /**
  * Counts one event on the current page. A name in {@link SiteEventMap} is checked against its
  * properties; any other name (lower case, digits and underscores, two to 48 characters) goes
@@ -615,6 +645,13 @@ export function trackSiteEvent<Name extends string>(
   name: Name,
   ...[props, entity]: TrackArguments<Name>
 ): void {
+  for (const listener of siteEventListeners) {
+    try {
+      listener(name, props as SiteEventProps | undefined);
+    } catch {
+      // Whoever listens never breaks the page or the count.
+    }
+  }
   try {
     if (!canCountSite() || !EVENT_NAME_PATTERN.test(name)) return;
     const base = currentBase();

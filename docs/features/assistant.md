@@ -201,9 +201,28 @@ its corner offset. These lines go in it, from the `assistant` namespace:
   the `/stats` the page loads anyway (through its React Query cache, so no request of its own),
   else its top attraction (`topCoaster`). The Konami code typed anywhere buys a free ride with its
   own line (`secretKonami`).
+- **Answers** (`lib/assistant/reactions.ts`): Parky answers what the visitor does, heard through
+  `onSiteEvent`, which every `trackSiteEvent` call reaches whether or not the page counts, so no
+  component is wired twice. Each answer is an act every time and a line once a session per kind
+  (`answeredWithLine`, `countAnswer`):
 
-Every line stays 7 s, or until a search opens: the bubble would cover the palette's list and the
-field's results, and Parky is busy searching along. Opening Parky ends the invitations and reactions for the session
+  | The visitor                               | Act                                                | Lines              |
+  | ----------------------------------------- | -------------------------------------------------- | ------------------ |
+  | opens the trip planner (`planner_opened`) | `plan`: ticks off a checklist on a clipboard       | `plannerOpen1`–`4` |
+  | finishes the wizard, or re-plans the day  | `cheer`: happy squint, a grin, confetti, two hops  | `planReady1`–`3`   |
+  | adds a favourite                          | `love`: heart eyes, hearts floating up             | `favourite1`–`4`   |
+  | sets a wait time alert, or follows a show | `bell`: a bell rings over its head                 | `alert1`–`3`       |
+  | switches to dark                          | `lights`: the wheel lights up under moon and stars | `themeDark1`–`3`   |
+  | switches to light                         | `shades`: sunglasses slide down from the hat       | `themeLight1`–`3`  |
+  | installs the app (`pwa_installed`)        | `cheer`                                            | `install1`–`2`     |
+
+  The act plays at once, the line 600 ms later, by when a dialog the action opened has locked the
+  page. A search found nothing gets no line, only a question mark over the searching Parky.
+
+Every line stays 7 s, or until a search or a modal dialog opens (`usePageLocked`, Radix's
+`data-scroll-locked` on `<body>`): the bubble would cover the palette's list, the field's results
+or the dialog's buttons (on a phone, the planner wizard's Back and Next). An answer that falls due then
+waits and is said once they close, unless that takes longer than 15 s. Opening Parky ends the invitations and reactions for the session
 (`stopTeasers`, `lib/assistant/teaser-store.ts`); closing a line by its ✕ ends every line,
 easter eggs included (`muteLines`).
 
@@ -213,7 +232,8 @@ Our own statistic (`trackSiteEvent`, labels in `lib/admin/site-analytics.ts`): `
 (the button on screen, once per page view, with the entrance it made or `none`),
 `assistant_opened` (with `source`: the button or a line), `assistant_line_shown`,
 `assistant_line_clicked` and `assistant_line_closed` (each with the line's kind as `line`: invitation,
-entrance, bored, woke, holiday, park or secret), `assistant_closed` (questions while open), `assistant_question` (suggestion or typed, never the
+entrance, bored, woke, holiday, park, secret, or the answer's planner, plan, favourite, alert, theme
+or install), `assistant_closed` (questions while open), `assistant_question` (suggestion or typed, never the
 text), `assistant_answer` (result and number of lookups), `assistant_rated`,
 `assistant_feedback_sent` (whether with an e-mail, never the e-mail) and
 `assistant_challenge_failed`. Planner writes count as `plan_item_added` with source `assistant`,
