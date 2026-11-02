@@ -7,7 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  SeaWorld Orlando startet am 6. November seine Christmas Celebration und zeigt dabei zum ersten Mal seit 2019 wieder die nächtliche Orca-Show Miracles. Das Weihnachtsevent läuft an ausgewählten Tagen bis zum 4. Januar 2027 und ist im normalen Eintritt enthalten.
+  SeaWorld Orlando zeigt zur Christmas Celebration ab dem 6. November zum ersten Mal seit 2019 wieder die Orca-Show Miracles. Das Weihnachtsevent läuft an ausgewählten Tagen bis zum 4. Januar 2027 und ist im normalen Eintritt enthalten.
 tags:
   - news
   - seaworld-orlando
@@ -31,13 +31,13 @@ seo:
     - Orlando Weihnachten 2026
 ---
 
-[SeaWorld Orlando](ref:seaworld-orlando) startet am 6. November seine Christmas Celebration, und zum ersten Mal seit 2019 zeigt der Park dabei wieder Miracles, eine nächtliche Orca-Präsentation mit weihnachtlicher Musik. Das Event läuft an ausgewählten Tagen bis zum 4. Januar 2027. Es ist im normalen Parkeintritt enthalten, auch mit Jahreskarte, und reservieren musst du nichts.
+[SeaWorld Orlando](ref:seaworld-orlando) startet am 6. November seine Christmas Celebration. Zum ersten Mal seit 2019 zeigt der Park dabei wieder Miracles, eine nächtliche Orca-Show mit Weihnachtsmusik. Das Event läuft an ausgewählten Tagen bis zum 4. Januar 2027. Es ist im normalen Parkeintritt enthalten, auch mit Jahreskarte, und reservieren musst du nichts.
 
-Die Pass Members, also die Jahreskarteninhaber, bekommen eine eigene Vorstellung von Miracles und gehören damit zu den Ersten, die die Show sehen. Ort und Uhrzeit von Miracles hat SeaWorld noch nicht veröffentlicht, die Showzeiten des Events stehen in der kostenlosen App des Parks.
+Die Pass Members, also die Jahreskarteninhaber, bekommen eine eigene Vorstellung von Miracles und gehören damit zu den Ersten, die die Show sehen. Ort und Uhrzeit von Miracles hat SeaWorld noch nicht veröffentlicht. Die Showzeiten des Events stehen in der kostenlosen App des Parks.
 
 ## Eventtage und Öffnungszeiten im November
 
-Im November ist an 16 Tagen Christmas Celebration, an diesen Tagen bleibt der Park bis 21 oder 22 Uhr offen:
+Im November ist an 16 Tagen Christmas Celebration:
 
 - Freitag, 6., 13. und 20. November: 10 bis 21 Uhr
 - Samstag, 7., und Sonntag, 8. November: 9 bis 21 Uhr
@@ -47,7 +47,7 @@ Im November ist an 16 Tagen Christmas Celebration, an diesen Tagen bleibt der Pa
 - Freitag, 27., und Samstag, 28. November: 9 bis 22 Uhr
 - Sonntag, 29. November: 9 bis 21 Uhr
 
-An den Tagen dazwischen, etwa vom 9. bis 12. und vom 16. bis 19. November und am 30. November, öffnet der Park nur von 10 bis 18 Uhr. An einem Dienstag wie dem 10. November ist um sechs Feierabend, Weihnachtsprogramm gibt es an solchen Tagen nicht.
+An den übrigen Tagen, vom 9. bis 12. und vom 16. bis 19. November und am 30. November, öffnet der Park nur von 10 bis 18 Uhr, und Weihnachtsprogramm gibt es dann keins.
 
 Jeder Eventabend bis zum 1. Januar endet zum Parkschluss mit dem Feuerwerk Holiday Reflections: Fireworks Finale rund um die Lagune. Viele Programmpunkte finden drinnen statt und laufen auch bei Regen.
 
@@ -57,21 +57,21 @@ Jeder Eventabend bis zum 1. Januar endet zum Parkschluss mit dem Feuerwerk Holid
 
 ## Was im Eintritt steckt
 
-Für Familien mit kleinen Kindern ist das meiste auf Sesame Street zugeschnitten. Elmo und seine Freunde ziehen bei der Sesame Street Christmas Parade durch Sesame Street Land, im Seaport Theater läuft die Elmo's Christmas Wish Show. O Wondrous Night bringt mehr als 30 Weihnachtslieder mit lebensgroßen Puppen und lebenden Tieren auf die Bühne. Die Eiskunstlauf-Show Winter Wonderland on Ice spielt an ausgewählten Tagen vom 7. November bis zum 5. Januar, also einen Tag länger als das Event selbst. Dazu kommt Clyde & Seamore's Countdown to Christmas.
+Elmo und seine Freunde ziehen bei der Sesame Street Christmas Parade durch Sesame Street Land, im Seaport Theater läuft die Elmo's Christmas Wish Show. O Wondrous Night bringt mehr als 30 Weihnachtslieder mit lebensgroßen Puppen und lebenden Tieren auf die Bühne. Die Eiskunstlauf-Show Winter Wonderland on Ice spielt an ausgewählten Tagen vom 7. November bis zum 5. Januar, und damit über den 4. Januar hinaus. Auf der Bühne läuft außerdem Clyde & Seamore's Countdown to Christmas.
 
-Über der Lagune leuchten beim Sea of Trees Bäume im Takt zu Weihnachtsmusik, der Baum in der Mitte ist 70 Fuß hoch, rund 21 Meter. An der Waterfront fallen Schneeflocken, was man in Orlando im November sonst eher nicht erlebt. Beim Dolphin Nursery steht eine Miniatur-Weihnachtszuganlage.
+An der Lagune leuchten beim Sea of Trees Bäume im Takt zu Weihnachtsmusik, der Baum in der Mitte ist 70 Fuß hoch, rund 21 Meter. An der Waterfront fallen Schneeflocken, was man in Orlando im November sonst eher nicht erlebt. Beim Dolphin Nursery steht eine Miniatur-Weihnachtszuganlage.
 
-Den Weihnachtsmann triffst du im Waterway Grill, Fotografen sind dabei. Rudolph und Bumble stehen in Rudolph's Christmastown am Pipeline Pathway. Im SeaFire Grill laufen Weihnachtsfilme, und dafür musst du nicht einmal etwas bestellen.
+Den Weihnachtsmann triffst du im Waterway Grill, Fotografen sind dabei. Rudolph und Bumble stehen in Rudolph's Christmastown am Pipeline Pathway. Im SeaFire Grill laufen Weihnachtsfilme, auch für Gäste ohne Bestellung.
 
-## Was extra kostet
+## Aufpreise, Essen und Tickets
 
-Gegen Aufpreis gibt es eine Eislaufbahn im Bayside Stadium direkt an der Lagune. Einen Aufpreis verlangt der Park auch für das Dinner with Santa in den Sea Harbor Pavilions, an ausgewählten Tagen außer am Eröffnungswochenende, und das Sesame Street Christmas Breakfast im SeaFire Grill.
+Gegen Aufpreis gibt es eine Eislaufbahn im Bayside Stadium direkt an der Lagune. Extra kosten auch das Dinner with Santa in den Sea Harbor Pavilions und das Sesame Street Christmas Breakfast im SeaFire Grill. Das Dinner gibt es an ausgewählten Tagen, nicht am Eröffnungswochenende.
 
 Neu sind in diesem Jahr Feuerstellen, an denen du Marshmallows röstest und dir S'mores mit Schokolade und Graham Crackern baust. Unter den neuen Gerichten sind Ropa Vieja Festiva mit Tostones, Ravioli mit drei Käsesorten in Chardonnay-Sahne und Beignets mit Lotus-Biscoff-Keksaufstrich. Essen und Getränke bezahlst du extra. Eigenes Essen und Kühlboxen bleiben draußen, eine Wasserflasche darfst du mitbringen.
 
-Ebenfalls neu ist ein Christmas Market zum Einkaufen, zusätzlich zu den Shoppes at Waterfront und dem SeaWorld Store.
+Ebenfalls neu ist ein Christmas Market, zusätzlich zu den Shoppes at Waterfront und dem SeaWorld Store.
 
-Ein Tagesticket kostet online im Black-Friday-Vorverkauf ab 59,99 Dollar und gilt ab drei Jahren, als regulären Preis zeigt SeaWorld daneben 151,99 Dollar an. Wer 2027 öfter kommen will, bekommt die Fun Card 2027 mit unbegrenzten Besuchen im kommenden Jahr, aber mit Sperrterminen, im selben Vorverkauf ab 104,99 Dollar. Kostenlose Militärtickets gelten auch während des Events.
+Ein Tagesticket kostet online im Black-Friday-Vorverkauf ab 59,99 Dollar und gilt ab drei Jahren, regulär kostet es 151,99 Dollar. Wer 2027 öfter kommen will, bekommt im selben Vorverkauf ab 104,99 Dollar die Fun Card, mit unbegrenzten Besuchen im ganzen Jahr, Sperrtermine ausgenommen. Kostenlose Militärtickets gelten auch während des Events.
 
 ## Feiertage im Dezember und Januar
 
@@ -80,7 +80,7 @@ Ein Tagesticket kostet online im Black-Friday-Vorverkauf ab 59,99 Dollar und gil
 - Silvester, 31. Dezember: Feuerwerk zum Jahreswechsel
 - Three Kings Celebration, 3. bis 6. Januar: Essen und Vorstellungen im Nautilus Theater zum Dreikönigsfest
 
-SeaWorld Orlando gehört zu United Parks & Resorts und liegt am 7007 Sea World Drive. Was Walt Disney World und Universal Orlando zur selben Zeit zeigen, steht in unserem Guide zu [Weihnachten und Silvester in Orlando und Paris](/blog/weihnachten-silvester-orlando-paris-2026).
+SeaWorld Orlando gehört zu United Parks & Resorts und liegt am 7007 Sea World Drive. Die Weihnachtsprogramme von Walt Disney World und Universal Orlando stehen in unserem Guide zu [Weihnachten und Silvester in Orlando und Paris](/blog/weihnachten-silvester-orlando-paris-2026).
 
 [SeaWorld Orlando](ref:seaworld-orlando?full)
 
