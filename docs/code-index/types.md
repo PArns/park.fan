@@ -10,4 +10,4 @@ by hand: change the comment in the code and re-run the script. -->
 TypeScript types for /v1/discovery/nearby API endpoint. Distance in responses (e.g. park.distance) is in meters. Request params (radius) use km.
 
 - `IN_PARK_FALLBACK_DISTANCE_M` _const_: API returns distance in meters. Treat the user as "in park" when the nearest park is within this radius.
-- Types: `UserLocation`, `AttractionWithDistance`, `NearbyParkInfo`, `NearbyAttractionsData`, `ParkWithDistance`, `NearbyParksData`, `NearbyResponse`
+- Types: `UserLocation`, `AttractionWithDistance`, `NearbyParkInfo`, `NearbyAttractionsData`, `ParkWithDistance`, `NearbyShortWait`, `NearbyParksData`, `NearbyResponse`

@@ -21,12 +21,6 @@ export const HERO_PARK_ROWS_PHONE = 2;
 export const HERO_REST_ROWS_DESKTOP = 4;
 
 /**
- * Rows of the step card's copy of the field, from `md` up; it shows no posts and no list on a
- * phone, where its field opens the palette.
- */
-export const STEP_REST_ROWS_DESKTOP = 3;
-
-/**
  * The anchor of the homepage's nearby chapter, which lists more of the visitor's nearby parks; the
  * hero's list links to it.
  */

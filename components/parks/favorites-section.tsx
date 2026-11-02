@@ -110,7 +110,7 @@ export function FavoritesSection({
   const renderSkeleton = (parkCount: number, attractionCount: number) => (
     <section className={cn('bg-muted/30 px-4 py-8', className)}>
       <div className="container mx-auto">
-        {!standalone && <FavoritesHeading variant={heading} />}
+        {!standalone && heading !== 'none' && <FavoritesHeading />}
         {!position && (
           <p className="text-muted-foreground mt-1 mb-6 text-xs">{t('locationHint')}</p>
         )}
@@ -233,10 +233,10 @@ export function FavoritesSection({
           <h2 className="sr-only">
             {t('title')} ({totalFavorites})
           </h2>
-        ) : (
+        ) : heading === 'none' ? null : (
           // The same heading as the skeleton and the empty state, so the grids under it land
           // where the skeleton's stood. Only the count is new, and it does not wrap the line.
-          <FavoritesHeading variant={heading} count={totalFavorites} />
+          <FavoritesHeading count={totalFavorites} />
         )}
         {!position && (
           <p className="text-muted-foreground mt-1 mb-6 text-xs">{t('locationHint')}</p>

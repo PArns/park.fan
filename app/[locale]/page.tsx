@@ -1,15 +1,49 @@
 import { Suspense } from 'react';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import { generateAlternateLanguages, SITE_URL } from '@/i18n/config';
-import { buildOpenGraphMetadata } from '@/lib/utils/metadata';
-import type { Locale } from '@/i18n/config';
-
 import nextDynamic from 'next/dynamic';
+import { generateAlternateLanguages, SITE_URL } from '@/i18n/config';
+import type { Locale } from '@/i18n/config';
+import type { Metadata } from 'next';
+import { buildOpenGraphMetadata } from '@/lib/utils/metadata';
+import { getOgImageUrl } from '@/lib/utils/og-image';
+import { assertServableRoute, isServableRoute } from '@/lib/utils/route-guards';
+import { blogFeedAlternates } from '@/lib/blog/feed';
+import { RouteMessages } from '@/i18n/route-messages';
+import { pickHeroImage } from '@/lib/media/hero';
+import { heroBlurDataUrl } from '@/lib/media/hero-lqip';
+import { getMediaAltBySrc } from '@/lib/media/text';
+import { HOME_HERO_ID } from '@/lib/home/hero-search';
+import { getHeroReading } from '@/lib/home/hero-reading';
+import { getNewsMenu } from '@/lib/navigation/news-menu';
+import { latestNewsFrom } from '@/components/blog/latest-news-chip';
+
+import { Flame, Star } from 'lucide-react';
 import { HeroBackground } from '@/components/layout/hero-background';
-import { PreferredSourcePrompt } from '@/components/common/preferred-source-prompt';
+import { HeroImageInfoSwitch } from '@/components/layout/hero-image-info-switch';
+import { HeroImageInfo } from '@/components/layout/hero-image-info';
+import { HeroRotationProvider } from '@/components/layout/hero-rotation-context';
+import { HeroInlineSearch } from '@/components/search/hero-inline-search';
+import { HeroEntranceGate } from '@/components/home/hero-entrance-gate';
+import { HeroWithNearby } from '@/components/home/hero-with-nearby';
+import { HeroStats } from '@/components/home/hero-stats';
+import { HeroTextPanel } from '@/components/home/hero-text-panel';
+import { HeroWorldPanel } from '@/components/home/hero-world-panel';
+import { HeroWorldPanelSkeleton } from '@/components/home/hero-skeletons';
+import { ParkCompassSlot } from '@/components/home/park-compass-slot';
+import { AnnounceSection } from '@/components/home/announce-section';
+import { NearbyChapter } from '@/components/home/nearby-chapter';
+import { HomeReading } from '@/components/home/home-reading';
+import { HomeTour } from '@/components/home/home-tour';
+import { FeaturedParksSlot } from '@/components/home/featured-parks-slot';
+import { PopularParkLinks } from '@/components/home/popular-park-links';
+import { FeaturedParksSkeleton } from '@/components/home/home-skeletons';
+import { getFeaturedParksLabels } from '@/components/home/section-headings';
+import { FaqSection } from '@/components/home/faq-section';
+import { ParkyStop } from '@/components/home/parky-stop';
+import { HomeStop, StopLink } from '@/components/home/home-stop';
+import { ChapterHeading } from '@/components/common/chapter-heading';
 import { NearbyParksCardSkeleton } from '@/components/parks/nearby-parks-card-skeleton';
 import { FavoritesEmptyState } from '@/components/parks/favorites-empty-state';
-import { STORY_SECTION_Y } from '@/components/home/story/section-chrome';
 
 const LocationBanner = nextDynamic(
   () => import('@/components/common/location-banner').then((m) => ({ default: m.LocationBanner })),
@@ -22,7 +56,7 @@ const FavoritesSection = nextDynamic(
   () =>
     import('@/components/parks/favorites-section').then((m) => ({ default: m.FavoritesSection })),
   {
-    loading: () => <FavoritesEmptyState textHidden heading="tile" className={FAVORITES_BAND} />,
+    loading: () => <FavoritesEmptyState textHidden heading="none" className={BORROWED_BAND} />,
     ssr: true,
   }
 );
@@ -31,78 +65,17 @@ const NearbyParksCard = nextDynamic(
   () =>
     import('@/components/parks/nearby-parks-card').then((m) => ({ default: m.NearbyParksCard })),
   {
-    loading: () => <NearbyParksCardSkeleton nested />,
+    loading: () => <NearbyParksCardSkeleton nested className={FLUSH_TOP} />,
     ssr: true,
   }
 );
-import { AnnounceSection } from '@/components/home/announce-section';
-import { HeroImageInfoSwitch } from '@/components/layout/hero-image-info-switch';
-import { HeroImageInfo } from '@/components/layout/hero-image-info';
-import { HeroRotationProvider } from '@/components/layout/hero-rotation-context';
-import { HeroWithNearby } from '@/components/home/hero-with-nearby';
-import { ParkCompassSlot } from '@/components/home/park-compass-slot';
-import { HeroStats } from '@/components/home/hero-stats';
-import { HeroInlineSearch } from '@/components/search/hero-inline-search';
-import { getHeroReading } from '@/lib/home/hero-reading';
-import { HOME_HERO_ID } from '@/lib/home/hero-search';
-import { HeroWorldPanel } from '@/components/home/hero-world-panel';
-import { HeroWorldPanelSkeleton } from '@/components/home/hero-skeletons';
-import { HeroTextPanel } from '@/components/home/hero-text-panel';
-import { HeroEntranceGate } from '@/components/home/hero-entrance-gate';
-import { FeaturedParksSlot } from '@/components/home/featured-parks-slot';
-import { GlobalStatsSection } from '@/components/home/global-stats-section';
-import { LiveActivitySection } from '@/components/home/live-activity-section';
-import {
-  GlobalStatsSkeleton,
-  FeaturedParksSkeleton,
-  LiveActivitySkeleton,
-} from '@/components/home/home-skeletons';
-import {
-  getFeaturedParksLabels,
-  getSectionHeadingLabels,
-} from '@/components/home/section-headings';
-
-// The homepage story, chapter by chapter. Every one is a Server Component whose copy is read
-// server-side, so it never reaches the client bundle. See
-// docs/rules/translations-are-routed-not-bundled.md.
-import { BlogTeaserBand } from '@/components/home/story/blog-teaser-band';
-import { ThreeSteps } from '@/components/home/story/three-steps';
-import { NearbyChapter } from '@/components/home/story/nearby-chapter';
-import { ChapterLiveWaits } from '@/components/home/story/chapter-live-waits';
-import { ChapterAI } from '@/components/home/story/chapter-ai';
-import { ChapterCalendar } from '@/components/home/story/chapter-calendar';
-import { ChapterBestTime } from '@/components/home/story/chapter-best-time';
-import { ChapterFamilies } from '@/components/home/story/chapter-families';
-import { ChapterShowsRestaurants } from '@/components/home/story/chapter-shows-restaurants';
-import { ChapterInPark } from '@/components/home/story/chapter-in-park';
-import { ChapterDictionary } from '@/components/home/story/chapter-dictionary';
-import { WhyParkFan } from '@/components/home/story/why-park-fan';
-import { FounderSection } from '@/components/home/story/founder-section';
-import { LatestBlogSection } from '@/components/home/latest-blog-section';
-import { FaqSection } from '@/components/home/story/faq-section';
-import { BlogChapter } from '@/components/home/story/blog-chapter';
-
-import { getOgImageUrl } from '@/lib/utils/og-image';
-import { pickHeroImage } from '@/lib/media/hero';
-import { heroBlurDataUrl } from '@/lib/media/hero-lqip';
-import { getMediaAltBySrc } from '@/lib/media/text';
-
-import type { Metadata } from 'next';
-import { assertServableRoute, isServableRoute } from '@/lib/utils/route-guards';
-import { RouteMessages } from '@/i18n/route-messages';
-import { blogFeedAlternates } from '@/lib/blog/feed';
-import { getNewsMenu } from '@/lib/navigation/news-menu';
-import { latestNewsFrom } from '@/components/blog/latest-news-chip';
 
 // A static shell per locale, served from the CDN. Every live figure on the page is a seed that a
-// client query overlays on mount (`useGlobalStats`, `useGeoLiveStats`, polling every 5 minutes),
-// so the shell's age is invisible to a reader with JavaScript, and a week would save ISR writes
-// without losing anything a reader sees.
-//
-// The window the route gets is the lowest fetch revalidate in its render, and two fetches it
-// reaches are cached a day (`getMLDashboard` under `ChapterAI`, `getParkByGeoPath` under
-// `ChapterFamilies`), so the shell regenerates daily. Read `initialRevalidateSeconds` in
-// `.next/prerender-manifest.json` after touching section fetches. See
+// client query overlays on mount (the hero's counts and map, nearby parks, favourites, the popular
+// parks' status), so the shell's age is invisible to a reader with JavaScript. The route's window
+// is the lowest fetch revalidate in its render; every fetch left (`getGlobalStats`,
+// `getGeoLiveStats`, `getGeoStructure`) is cached a week. Read `initialRevalidateSeconds` in
+// `.next/prerender-manifest.json` after touching a fetch here. See
 // docs/rules/a-revalidate-at-a-call-site-is-somebody-elses-page.md.
 export const revalidate = 604800;
 
@@ -110,19 +83,13 @@ export const revalidate = 604800;
 // re-picked on each shell regeneration. Server-rendered for LCP.
 const HERO_TTL_MS = 5 * 60_000;
 
-// On a phone the story chapters trade places with the park lists a returning visitor comes for:
-// everything wrapped in this class is drawn after the unwrapped sections below a 768 px page,
-// and from 768 px up the source order holds. `order` moves the box, not the DOM, so a screen
-// reader and a crawler still read the story where it stands. The tinted band alternation follows
-// the source order and is broken on a phone.
-const PHONE_LATER = '@max-[768px]/page:order-1';
+// The favourites and the popular parks are sections other pages draw as bands of their own. Here
+// they stand inside a stop (`HomeStop`), which sets the room and holds the heading, so their band
+// padding and tint go.
+const BORROWED_BAND = 'bg-transparent p-0';
 
-// The favorites band, hidden on a phone for a visitor without favorites (`.home-favorites` in
-// globals.css), and the popular parks, hidden on a phone outright: the nearby chapter above lists
-// parks already, and both bands empty or repeated cost a phone a screen each. Hidden by CSS, so
-// the popular parks' links stay in the HTML.
-const FAVORITES_BAND = `${STORY_SECTION_Y} home-favorites`;
-const FEATURED_BAND = `${STORY_SECTION_Y} @max-[768px]/page:hidden`;
+// The nearby card starts flush with its stop's heading, without the gap it keeps under a chapter.
+const FLUSH_TOP = 'mt-0 max-sm:mt-0';
 
 interface HomePageProps {
   params: Promise<{ locale: string }>;
@@ -159,28 +126,32 @@ export async function generateMetadata({ params }: HomePageProps): Promise<Metad
   };
 }
 
+/**
+ * The homepage, written for somebody who has never been here: what this is and whether their park
+ * is in it (the hero), then one stop after another, each a heading worded as people search beside
+ * its content (`HomeStop`): what is new (the news board), what park.fan does (the tour), their own
+ * parks, the popular parks, five questions and, for whoever has not found it yet, Parky.
+ * Everything that explains a tool at length lives on that tool's own page.
+ */
 export default async function HomePage({ params }: HomePageProps) {
   const { locale } = await params;
   assertServableRoute(locale);
   setRequestLocale(locale);
 
-  // Only the static, above-the-fold shell needs translations up front. Every
-  // data-dependent section fetches its own data (and translations) inside a
-  // Suspense boundary below, so the hero renders/streams without waiting on the API.
-  const tHome = await getTranslations('home');
-  // Resolved once, here, because the two streamed sections and their fallbacks
-  // must mount the SAME heading node — and a fallback that awaits anything
-  // suspends, so the skeleton cannot look these up itself.
-  const [headingLabels, featuredParksLabels] = await Promise.all([
-    getSectionHeadingLabels(),
+  // Only the static, above-the-fold shell needs translations up front. Every data-dependent
+  // section fetches its own data (and translations) inside a Suspense boundary below, so the hero
+  // renders and streams without waiting on the API.
+  const [tHome, tStory, featuredParksLabels] = await Promise.all([
+    getTranslations('home'),
+    getTranslations('homeStory'),
     getFeaturedParksLabels(),
   ]);
   const heroImage = pickHeroImage(HERO_TTL_MS);
   const randomHeroImage = heroImage?.src;
   const heroMeta = heroImage?.meta ?? null;
-  // The newest news post for the chip in the hero's badge row, out of the same news
-  // menu the header draws its chip from. The manifest, read synchronously, so the chip is in the
-  // static shell and in the fallback alike.
+  // The newest news post for the chip in the hero's badge row, out of the same news menu the
+  // header draws its chip from. The manifest, read synchronously, so the chip is in the static
+  // shell and in the fallback alike.
   const latestNews = latestNewsFrom(getNewsMenu(locale as Locale));
 
   return (
@@ -191,6 +162,8 @@ export default async function HomePage({ params }: HomePageProps) {
           z-50, so it still wins. */}
         {/* Below `md` the plate sits 12 px under the header and 12 px from the screen's edges: the
           room goes to the search list (docs/features/homepage-hero.md). */}
+        {/* `lg:pb-24` keeps the photo's caption, bottom-left (`HeroImageInfoPanel`), clear of the
+          plate. */}
         {/* `suppressHydrationWarning` covers `className`: HeroEntranceGate's inline script
           removes `hero-entering`, so on a slow load React hydrates against a class list the
           script already edited. React reads the flag one level deep, so a mismatch inside the
@@ -198,7 +171,7 @@ export default async function HomePage({ params }: HomePageProps) {
         <section
           id={HOME_HERO_ID}
           suppressHydrationWarning
-          className="hero-entering relative z-10 -mt-12 overflow-visible px-3 pt-15 pb-8 md:px-6 md:pt-24 md:pb-10 lg:flex lg:min-h-dvh lg:flex-col lg:justify-center lg:pt-20 lg:pb-12"
+          className="hero-entering relative z-10 -mt-12 overflow-visible px-3 pt-15 pb-8 md:px-6 md:pt-24 md:pb-10 lg:flex lg:min-h-dvh lg:flex-col lg:justify-center lg:pt-20 lg:pb-24"
         >
           <HeroRotationProvider>
             <HeroBackground
@@ -264,99 +237,82 @@ export default async function HomePage({ params }: HomePageProps) {
           which park it is. Client-only and absent for everybody else — see ParkCompassSlot. */}
         <ParkCompassSlot />
 
-        {/* The newest post, the first thing under the fold: the only spot on this page that
-          reaches a reader who has not decided to scroll yet. Inline, not behind a boundary: its
-          data is the synchronous manifest. */}
-        <BlogTeaserBand locale={locale as Locale} />
-
         <div className="pk-reveal">
           <AnnounceSection locale={locale} />
         </div>
 
         <LocationBanner />
 
-        {/* The story: a first visitor does not know what this site is, so the page answers that
-          before it shows anything to operate. Three steps, a chapter per thing park.fan does in
-          the order a stranger needs them, why it is built this way, the proof, the person.
-          Tinted and untinted bands alternate, except where `FavoritesSection`, a shared band,
-          meets the tinted live-wait chapter, whose `border-t` carries the boundary. */}
-        <div className={PHONE_LATER}>
-          <ThreeSteps />
+        {/* What is new comes first: the hero already lists the parks near the visitor, and the
+          news is what changes from one visit to the next. */}
+        <HomeReading locale={locale as Locale} />
+
+        <HomeTour locale={locale as Locale} />
+
+        {/* The tour's last stop: what park.fan does not show on a page, Parky answers. */}
+        <ParkyStop locale={locale as Locale} />
+
+        {/* The visitor's own parks: the nearest ones with the rides where a wait is short right
+          now, and their favourites, for a visitor who has some only, and then first: the inline
+          favourites script in app/[locale]/layout.tsx sets `data-has-favorites` before paint, and
+          `.home-favorites` in globals.css reads it, so neither choice moves anything after load.
+          Client Components that decide late (geolocation, a cookie), hence the dynamic imports and
+          the box-reserving fallbacks. */}
+        <div className="flex flex-col">
+          <NearbyChapter>
+            <NearbyParksCard nested showShortWaits className={FLUSH_TOP} />
+          </NearbyChapter>
+          <HomeStop
+            stacked
+            divider
+            className="home-favorites"
+            heading={
+              <ChapterHeading
+                variant="stop"
+                icon={Star}
+                kicker={tStory('favorites.kicker')}
+                title={tStory('favorites.title')}
+                hint={tStory('favorites.lead')}
+              />
+            }
+          >
+            <FavoritesSection heading="none" className={BORROWED_BAND} />
+          </HomeStop>
         </div>
 
-        {/* Step 1, made real: the visitor's own nearest parks, then their favourites, Client
-          Components that decide late (geolocation, a cookie), hence the dynamic imports and the
-          box-reserving fallbacks. The shared bands get the story's padding (`STORY_SECTION_Y`),
-          so every band edge in the block has the same gap. */}
-        <NearbyChapter>
-          <NearbyParksCard nested />
-        </NearbyChapter>
-        <FavoritesSection heading="tile" className={FAVORITES_BAND} />
-
-        {/* From here to the FAQ, everything is drawn after the parks on a phone — see
-          PHONE_LATER. The wrappers are plain boxes in this flex column; the sections inside
-          stay the top-level sections they were. */}
-        <div className={PHONE_LATER}>
-          <ChapterLiveWaits locale={locale} />
-          <ChapterAI />
-          <ChapterCalendar locale={locale} />
-          <ChapterBestTime locale={locale} />
-          <ChapterFamilies locale={locale} />
-          <ChapterShowsRestaurants />
-          <ChapterInPark />
-          <ChapterDictionary locale={locale as Locale} />
-
-          {/* The blog again, and deliberately not the same shape as the band under
-            the hero: that one is three cards for a desktop reader passing by, this
-            one is the lead post with four beside it for somebody who read this far.
-            The frame adds the two evergreen hubs (best travel time, dictionary). */}
-          <BlogChapter locale={locale as Locale}>
-            <LatestBlogSection locale={locale as Locale} variant="lead" />
-          </BlogChapter>
-
-          {/* The claim, then the evidence: `GlobalStatsSection` is the platform's own live
-            counters, so it sits directly under the six reasons. */}
-          <WhyParkFan locale={locale as Locale} />
-          <Suspense fallback={<GlobalStatsSkeleton labels={headingLabels} />}>
-            <GlobalStatsSection />
-          </Suspense>
-
-          <FounderSection locale={locale as Locale} />
-        </div>
-
-        {/* Featured Parks – locale-aware, direct park links for SEO (SSR seed + client live data) */}
-        <Suspense
-          fallback={
-            <FeaturedParksSkeleton
-              labels={featuredParksLabels}
-              heading="tile"
-              className={FEATURED_BAND}
+        {/* Popular parks per locale: the cards (SSR seed + client live data) beside the heading,
+          and under the heading a link to each one's waits and calendar, which needs no API. */}
+        <HomeStop
+          divider
+          reverse
+          heading={
+            <ChapterHeading
+              variant="stop"
+              icon={Flame}
+              kicker={tStory('popular.kicker')}
+              title={tStory('popular.title')}
+              hint={tStory('popular.lead')}
+              action={<StopLink href="/parks">{tHome('hero.cta')}</StopLink>}
             />
           }
+          aside={<PopularParkLinks locale={locale as Locale} />}
         >
-          <FeaturedParksSlot locale={locale} heading="tile" className={FEATURED_BAND} />
-        </Suspense>
+          <Suspense
+            fallback={
+              <FeaturedParksSkeleton
+                labels={featuredParksLabels}
+                heading="none"
+                className={BORROWED_BAND}
+              />
+            }
+          >
+            <FeaturedParksSlot locale={locale} heading="none" className={BORROWED_BAND} />
+          </Suspense>
+        </HomeStop>
 
-        {/* No pk-reveal: its cards are GlassCards, and the reveal's transform would flatten
-          their backdrop for the length of the entry range. */}
-        <Suspense fallback={<LiveActivitySkeleton labels={headingLabels} />}>
-          <LiveActivitySection />
-        </Suspense>
-
-        {/* The page's only FAQPage markup — FaqSection renders the questions and
-          the JSON-LD from one array. */}
-        <div className={PHONE_LATER}>
-          <FaqSection />
-        </div>
-
-        {/* "Make park.fan your preferred Google source", at the end, once the visitor has seen
-          what the site offers; the footer keeps the persistent link. `pt-8`, or the gap to the
-          neighbour would be only its bottom padding. */}
-        <section className={`px-4 pt-8 pb-16 ${PHONE_LATER}`}>
-          <div className="container mx-auto">
-            <PreferredSourcePrompt />
-          </div>
-        </section>
+        {/* The page's only FAQPage markup — FaqSection renders the questions and the JSON-LD from
+          one array. */}
+        <FaqSection locale={locale as Locale} />
       </div>
     </RouteMessages>
   );

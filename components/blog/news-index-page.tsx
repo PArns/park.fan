@@ -133,7 +133,7 @@ export async function NewsIndexPageBody({ locale, page }: { locale: string; page
         key: day,
         heading: (
           <h2>
-            <NewsAge date={day} className="text-sm sm:whitespace-normal" />
+            <NewsAge date={day} stacked className="text-sm" />
           </h2>
         ),
         items: [],

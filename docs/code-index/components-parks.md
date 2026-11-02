@@ -186,10 +186,6 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `GlassNotice` _component_: The surface every "here is why this page looks like this" notice sits on.
 
-### [`glass-section-title.tsx`](../../components/parks/glass-section-title.tsx)
-
-- `GlassSectionTitle` _component_: Frosted-glass section title pill (`bg-background/70` + backdrop blur).
-
 ### [`halloween-maze-badge.tsx`](../../components/parks/halloween-maze-badge.tsx)
 
 - `HalloweenMazeBadge` _component_: „Halloween-Maze": a seasonal walk-through, not a ride. Orange, because it belongs to one time of the year, and next to `TransportSystemBadge` in the badge row. Whether it is open follows the park's season like any other attraction.
@@ -285,6 +281,10 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`nearby-parks-section.tsx`](../../components/parks/nearby-parks-section.tsx)
 
 - `NearbyParksSection` _component_: Chapter listing up to three other parks within 100 km, on the park and ride pages. Renders a status-free list that `LiveNearbyParks` overlays with live status; nothing with fewer than two.
+
+### [`nearby-short-waits.tsx`](../../components/parks/nearby-short-waits.tsx)
+
+- `NearbyShortWaits` _component_: „Jetzt kurz anstehen": the rides in the open nearby parks whose live wait is well below their usual one, as the API picks them (`shortWaits`). The rows are the in-park lists' rows, so a ride reads the same here as standing in the park.
 
 ### [`next-best-rides.tsx`](../../components/parks/next-best-rides.tsx)
 
@@ -649,16 +649,6 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`ride-data-card.tsx`](../../components/parks/ride-data-card.tsx)
 
 - `RideDataCard` _component_: The ride page's data card: a paragraph built from the ride's own day-stable facts, with its key figures set large beside it. Server-rendered and never hydrated, so the text is in the HTML at any hour and cannot mismatch.
-
-### [`ride-day-curve-card.tsx`](../../components/parks/ride-day-curve-card.tsx)
-
-- `RideDayCurveCard` _component_: The day-curve chart, fed from `/stats/day`: one small projection with the historical percentiles, today's measured hours and the forecast, behind the same `useLoadLast` gate as every historical aggregate.
-- Types: `DayCurveCandidate`, `RideDayCurveCardProps`
-
-### [`ride-day-curve.tsx`](../../components/parks/ride-day-curve.tsx)
-
-- `RideDayCurve` _component_: A ride's day: today against what the ride normally does, with the spread it normally does it in. The good windows are drawn on the plot, since the chart answers "when do I walk over there".
-- Types: `DayCurveWindow`, `RideDayCurveProps`
 
 ### [`ride-exposure-line.tsx`](../../components/parks/ride-exposure-line.tsx)
 

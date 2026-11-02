@@ -47,7 +47,6 @@ export function NearbyParksCardSkeleton({
         nested={nested}
         title={t('title')}
         hint={<Skeleton as="span" className="block h-5 w-64" />}
-        iconClassName="text-muted-foreground"
       />
       {/* The live view wraps its grid in a plain <div> (it holds the "show all" button too),
           so this one does as well — same depth, same nesting. */}

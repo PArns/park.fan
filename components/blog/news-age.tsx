@@ -18,7 +18,20 @@ const NEW_DAYS = 7;
  * date is rendered on the server and stays, so the line has its text from the first byte and
  * only grows by the relative half after hydration — on the same line, so the height does not move.
  */
-export function NewsAge({ date, className }: { date: string; className?: string }) {
+export function NewsAge({
+  date,
+  stacked = false,
+  className,
+}: {
+  date: string;
+  /**
+   * From `sm`, the age over the date on two lines, for a column of dates (`/news`, the homepage's
+   * board); on a phone they share one line. The first line is held while the age is unknown, so
+   * its arrival after hydration moves nothing.
+   */
+  stacked?: boolean;
+  className?: string;
+}) {
   const format = useFormatter();
   const locale = useLocale();
   // One-shot: a day-granular label does not need a ticking clock.
@@ -44,6 +57,34 @@ export function NewsAge({ date, className }: { date: string; className?: string 
         : days < 60
           ? rtf.format(-Math.round(days / 7), 'week')
           : rtf.format(-Math.round(days / 30), 'month');
+  }
+
+  if (stacked) {
+    return (
+      <span className={cn('block truncate text-[11px] tabular-nums', className)}>
+        {/* Keyed apart, so the age arrives as a node of its own rather than the placeholder
+            changing its display. */}
+        {relative ? (
+          <span
+            key="age"
+            className={cn(
+              'font-semibold sm:block',
+              isNew ? 'text-primary' : 'text-muted-foreground'
+            )}
+          >
+            {relative}
+            <span className="sm:hidden">{' · '}</span>
+          </span>
+        ) : (
+          <span key="hold" aria-hidden="true" className="hidden sm:block">
+            {'\u00a0'}
+          </span>
+        )}
+        <time dateTime={date} className="text-muted-foreground/80 sm:block">
+          {absolute}
+        </time>
+      </span>
+    );
   }
 
   return (

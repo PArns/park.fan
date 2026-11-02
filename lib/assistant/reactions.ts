@@ -1,7 +1,7 @@
 import type { AssistantLineKind, SiteEventMap } from '@/lib/analytics/site-analytics';
 
 /** The acts Parky plays in answer to something the visitor did; `parky-logo.tsx` draws each. */
-export const REACTION_ACTS = ['plan', 'cheer', 'love', 'bell', 'shades', 'lights'] as const;
+export const REACTION_ACTS = ['plan', 'cheer', 'love', 'bell', 'shades', 'lights', 'hop'] as const;
 
 /** One of {@link REACTION_ACTS}. */
 export type ParkyReactionAct = (typeof REACTION_ACTS)[number];
@@ -48,6 +48,7 @@ const LIGHT: ParkyReaction = {
   keys: ['themeLight1', 'themeLight2', 'themeLight3'],
 };
 const INSTALL: ParkyReaction = { act: 'cheer', line: 'install', keys: ['install1', 'install2'] };
+const HELLO: ParkyReaction = { act: 'hop', line: 'hello', keys: ['thatsMe'] };
 
 /**
  * The site events Parky answers, keyed by the event's name, so renaming one breaks the build here
@@ -64,6 +65,8 @@ const REACTIONS: { [N in keyof SiteEventMap]?: (props: SiteEventMap[N]) => Parky
     // In the dark the Ferris wheel lights up; in the light Parky puts on sunglasses.
     theme_toggled: ({ theme }) => (theme === 'dark' ? DARK : theme === 'light' ? LIGHT : null),
     pwa_installed: () => INSTALL,
+    // Its picture on the homepage scrolls past: the live Parky in the corner points it out.
+    home_parky_seen: () => HELLO,
   };
 
 /** Parky's answer to a site event, or `null` for one it lets pass. */

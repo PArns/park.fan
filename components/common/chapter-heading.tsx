@@ -35,7 +35,8 @@ interface ChapterHeadingProps {
   /**
    * A control the chapter owns, pushed to the right of the title row (the calendar's month
    * stepper). `badge` reads as part of the title; this reads as something to operate. It wraps
-   * under the title on a narrow card rather than squeezing it.
+   * under the title on a narrow card rather than squeezing it. In `stop` it follows the lead: the
+   * chapter's link.
    */
   action?: ReactNode;
   /**
@@ -63,14 +64,18 @@ interface ChapterHeadingProps {
    */
   frosted?: boolean;
   /**
-   * How the chapter marks itself on the left. `watermark` (default) is the oversized translucent
-   * glyph; `tile` is the homepage story's, the icon in a 68 px gradient plate with a pill kicker,
-   * because a `/25` watermark icon disappears when it alone carries the chapter's identity.
-   * Everything below the mark is shared.
+   * How the chapter opens. `watermark` (default) puts the oversized translucent glyph on the left
+   * of the title and closes with a rule. `stop` is the homepage's: the number above, in the brand
+   * gradient, where there is one, the kicker beside a small icon plate, a large title and the
+   * `hint` as a lead paragraph, with no rule (`HomeStop`, `ShotRow`).
    */
-  variant?: 'watermark' | 'tile';
+  variant?: 'watermark' | 'stop';
   className?: string;
 }
+
+/** The stop's number in the brand gradient, held back to a watermark's weight. */
+const STOP_NUMBER_CLASS =
+  'from-primary to-status-operating block bg-gradient-to-br bg-clip-text text-6xl leading-none font-black text-transparent tabular-nums opacity-30 sm:text-8xl';
 
 /**
  * The site's chapter header: an oversized translucent glyph, an optional kicker, the title, and the
@@ -95,7 +100,41 @@ export function ChapterHeading({
   variant = 'watermark',
   className,
 }: ChapterHeadingProps) {
-  const tile = variant === 'tile';
+  if (variant === 'stop') {
+    return (
+      <div data-chapter-heading="" className={cn('space-y-5 max-sm:space-y-4', className)}>
+        {index && (
+          <span aria-hidden="true" className={STOP_NUMBER_CLASS}>
+            {index}
+          </span>
+        )}
+        {kicker && (
+          <p className="text-primary inline-flex items-center gap-2 text-xs font-bold tracking-[0.14em] uppercase">
+            {Icon && (
+              <span className="bg-primary/10 flex size-8 items-center justify-center rounded-lg">
+                <Icon className="size-4" aria-hidden="true" />
+              </span>
+            )}
+            {kicker}
+          </p>
+        )}
+        <As
+          id={id}
+          className={cn(
+            id && 'scroll-mt-24',
+            'text-3xl font-black tracking-tight text-balance sm:text-4xl'
+          )}
+        >
+          {title}
+        </As>
+        {hint && (
+          <p className="text-foreground/85 max-w-xl text-base leading-relaxed sm:text-xl">{hint}</p>
+        )}
+        {action}
+      </div>
+    );
+  }
+
   // Below `sm` every part of the heading is one step smaller, since a park page stacks many of
   // these. The glyph matches the title's 28 px line box, so a one-line heading is as tall as its
   // text, not its icon.
@@ -106,78 +145,46 @@ export function ChapterHeading({
     <div
       data-chapter-heading=""
       className={cn(
-        'border-border flex items-start border-b',
+        'border-border mb-6 flex items-start gap-3 border-b pb-4 sm:gap-4',
+        // The phone step is a `max-sm:` class added to the desktop value, never a base value with
+        // an `sm:` over it: call sites override these classes, and `twMerge` only drops the
+        // unprefixed class it conflicts with, so an `sm:mb-6` would survive a caller's `mb-0`.
+        size === 'md' && 'max-sm:pb-3',
         // `flex-wrap` only in the aside case, where the control column has to be able to drop
         // under the text: what makes it drop is the text column's `min-w`, which is what says
         // „below this the two do not share a line" rather than a breakpoint that guesses at the
         // width of six languages' worth of buttons.
         aside && 'flex-wrap',
-        // The phone step is a `max-sm:` class added to the desktop value, never a base value with
-        // an `sm:` over it: call sites override these classes, and `twMerge` only drops the
-        // unprefixed class it conflicts with, so an `sm:mb-6` would survive a caller's `mb-0`.
-        tile
-          ? 'mb-8 gap-4 pb-5 max-sm:mb-6 max-sm:gap-3 max-sm:pb-4'
-          : cn('mb-6 gap-3 pb-4 sm:gap-4', size === 'md' && 'max-sm:pb-3'),
         frosted && cn(TILE_GLASS, 'rounded-xl px-4 pt-3 max-sm:pt-2.5'),
         className
       )}
     >
-      {tile
-        ? Icon && (
-            <span
-              aria-hidden="true"
-              className={cn(
-                'border-primary/30 flex size-12 shrink-0 items-center justify-center rounded-2xl border sm:size-[68px]',
-                // The plate is the one gradient the design system spends, and it
-                // runs 150° so the lit corner sits opposite the title rather than
-                // under it. `shadow-[inset…]` is the top highlight that keeps the
-                // plate from reading as a flat swatch at 68 px.
-                'bg-[linear-gradient(150deg,color-mix(in_oklab,var(--color-primary)_22%,transparent)_0%,color-mix(in_oklab,var(--color-primary)_6%,transparent)_100%)]',
-                'shadow-[inset_0_1px_0_color-mix(in_oklab,var(--color-primary)_25%,transparent)]'
-              )}
-            >
-              <Icon className={cn('size-6 sm:size-8', iconClassName ?? 'text-primary')} />
-            </span>
-          )
-        : watermark !== null && (
-            <span
-              aria-hidden="true"
-              className={cn(
-                'shrink-0 leading-none font-black tabular-nums',
-                index ? 'text-primary/15' : (iconClassName ?? 'text-primary/25'),
-                size === 'lg' ? 'text-5xl sm:text-7xl' : 'text-3xl sm:text-6xl'
-              )}
-            >
-              {watermark}
-            </span>
+      {watermark !== null && (
+        <span
+          aria-hidden="true"
+          className={cn(
+            'shrink-0 leading-none font-black tabular-nums',
+            index ? 'text-primary/15' : (iconClassName ?? 'text-primary/25'),
+            size === 'lg' ? 'text-5xl sm:text-7xl' : 'text-3xl sm:text-6xl'
           )}
-      <div
-        className={cn(
-          'min-w-0 flex-1',
-          aside && 'sm:min-w-[18rem]',
-          tile ? 'pt-1' : 'pt-0.5 sm:pt-1'
+        >
+          {watermark}
+        </span>
+      )}
+      <div className={cn('min-w-0 flex-1 pt-0.5 sm:pt-1', aside && 'sm:min-w-[18rem]')}>
+        {kicker && (
+          <div className="text-primary mb-1 flex items-center gap-1.5 text-xs font-semibold tracking-widest uppercase">
+            {index && Icon && <Icon className="h-3.5 w-3.5" aria-hidden="true" />}
+            {kicker}
+          </div>
         )}
-      >
-        {kicker &&
-          (tile ? (
-            <div className="border-primary/30 bg-primary/10 text-primary mb-2 inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-[11px] font-bold tracking-[0.14em] uppercase sm:mb-3">
-              {Icon && <Icon className="h-3.5 w-3.5" aria-hidden="true" />}
-              {kicker}
-            </div>
-          ) : (
-            <div className="text-primary mb-1 flex items-center gap-1.5 text-xs font-semibold tracking-widest uppercase">
-              {index && Icon && <Icon className="h-3.5 w-3.5" aria-hidden="true" />}
-              {kicker}
-            </div>
-          ))}
         <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
           <As
             id={id}
             className={cn(
               id && 'scroll-mt-24',
-              tile
-                ? 'text-2xl leading-[1.08] font-extrabold tracking-[-0.03em] text-balance sm:text-[42px]'
-                : cn('font-bold', size === 'lg' ? 'text-2xl sm:text-4xl' : 'text-xl sm:text-3xl')
+              'font-bold',
+              size === 'lg' ? 'text-2xl sm:text-4xl' : 'text-xl sm:text-3xl'
             )}
           >
             {title}
@@ -189,16 +196,7 @@ export function ChapterHeading({
             <div className="ml-auto flex flex-wrap items-center justify-end gap-2">{action}</div>
           )}
         </div>
-        {hint && (
-          <p
-            className={cn(
-              'text-muted-foreground',
-              tile ? 'mt-2.5 max-w-3xl text-[15px] leading-relaxed' : 'mt-1.5 text-sm'
-            )}
-          >
-            {hint}
-          </p>
-        )}
+        {hint && <p className="text-muted-foreground mt-1.5 text-sm">{hint}</p>}
       </div>
       {aside && (
         <div className="ml-auto flex shrink-0 flex-wrap items-center justify-end gap-2 max-sm:w-full">

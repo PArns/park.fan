@@ -10,8 +10,7 @@ switches an inline style off.
 - **The hidden card does not preload a cover nobody sees**: its photo layers claim the row's size for
   the phone segment of `sizes`, so a `priority` card does not preload a full-width cover for a
   `display:none` element.
-- **The grid's gap is part of the row**: grids spaced for cards drop to `gap-2` below `sm`, and both
-  halves of `LatestBlogSection`'s `lead` agree.
+- **The grid's gap is part of the row**: grids spaced for cards drop to `gap-2` below `sm`.
 - **A full-bleed hero's overlap is safe by construction.** With `flowInto`, a phone's headline moves
   to the top and the next section is pulled up over the photo by `HERO_FLOW_INTO_PULL`
   (`components/marketing/editorial-ui.tsx`, `-mt-44`), which must stay smaller than the hero's mobile

@@ -569,9 +569,10 @@ export interface AttractionOutage {
    * Which signal placed this outage, and it changes the wording. `down` is the operator's feed
    * („Störung gemeldet seit …"). `closed_gap` is INFERRED, a ride shut inside opening hours apart
    * from the rest of the park, for parks whose feed never emits DOWN; nobody reported it, so the
-   * sentence may not say „gemeldet" („Steht seit … still").
+   * sentence may not say „gemeldet" („Steht seit … still"). `maintenance` is a ride the feed
+   * reports as under maintenance (REFURBISHMENT), with its own curve („In Wartung seit …").
    */
-  signal: 'down' | 'closed_gap';
+  signal: 'down' | 'closed_gap' | 'maintenance';
   /**
    * How long outages like this usually still take. Absent when the curve cannot answer (too early,
    * too thin, or no opening hours to count against). Absence never means nearly over.

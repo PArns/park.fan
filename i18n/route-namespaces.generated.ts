@@ -25,19 +25,7 @@ export const LAYOUT_MESSAGE_NAMESPACES = [
  * An empty list means the chrome set already covers the route.
  */
 export const ROUTE_MESSAGE_NAMESPACES = {
-  '/': [
-    'attractions',
-    'home',
-    'homeStory.bestTime',
-    'location',
-    'nearby',
-    'parkCard',
-    'parks',
-    'pushAlerts.pushErrors',
-    'pushAlerts.rideBell',
-    'pushAlerts.rideDialog',
-    'stats',
-  ],
+  '/': ['home', 'location', 'nearby', 'parkCard', 'parks'],
   '/[...rest]': [],
   '/alerts': ['pushAlerts.overview', 'pushAlerts.pushErrors'],
   '/best-time-to-visit': ['nearby', 'parkCard'],

@@ -79,6 +79,10 @@ Brand marks in one place, as plain paths since lucide-react dropped its brand se
 
 - `FavoriteStar` _component_: Star button that adds or removes a park, ride, show or restaurant from the visitor's favourites, reads its state from the favourites store and counts the change as `favorite_add` or `favorite_remove`, with the entity's UUID.
 
+### [`first-load-script.tsx`](../../components/common/first-load-script.tsx)
+
+- `FirstLoadScript` _component_: An inline script that belongs to the server's HTML only: it runs as the document loads, before hydration.
+
 ### [`geo-location-card.tsx`](../../components/common/geo-location-card.tsx)
 
 - `GeoLocationCard` _component_: Linked card for a continent, country or city: its name, open parks out of total with a progress bar, and the distance to its nearest park once the visitor's location is known.

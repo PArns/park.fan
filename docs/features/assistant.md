@@ -232,6 +232,9 @@ its corner offset. These lines go in it, from the `assistant` namespace:
   the `/stats` the page loads anyway (through its React Query cache, so no request of its own),
   else its top attraction (`topCoaster`). The Konami code typed anywhere buys a free ride with its
   own line (`secretKonami`).
+  With a fine pointer, the pointer resting on Parky's nose (between and just under the eyes) makes
+  it squint at it, both pupils turned in; circling it fast, two turns inside 1.5 s, makes it dizzy
+  (`useGaze` in `parky-logo.tsx`, the `dizzy` act through its own cue).
 - **Answers** (`lib/assistant/reactions.ts`): Parky answers what the visitor does, heard through
   `onSiteEvent`, which every `trackSiteEvent` call reaches whether or not the page counts, so no
   component is wired twice. Each answer is an act every time and a line once a session per kind
@@ -274,8 +277,8 @@ says off, a line says Parky is resting instead (`assistantGate.getStatus()`).
 
 The screenshots (`public/parky/<locale>/{chat,plan,search}.webp`) come from
 `scripts/capture-parky-shots.mjs`. The script lays two fixture chats into the browser's session,
-passes the challenge with a stand-in session and photographs the window on an iPhone 13 in the
-dark theme. Run it again after the widget changes visibly.
+passes the challenge with a stand-in session and photographs the window on an iPhone 17 (`scripts/lib/phone-device.mjs`) in
+the dark theme. Run it again after the widget changes visibly.
 
 ## Tracking
 

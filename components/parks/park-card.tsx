@@ -10,6 +10,7 @@ import { GlassCircle } from '@/components/common/glass-circle';
 import { ParkCardScheduleFooter } from '@/components/parks/park-card-schedule-footer';
 import { CardPhotoFrame } from '@/components/parks/card-photo';
 import { Skeleton } from '@/components/ui/skeleton';
+import { BlogCoverFallback, slugFromPostPath } from '@/components/blog/blog-cover-fallback';
 import { cn } from '@/lib/utils';
 import { formatDistance } from '@/lib/utils/distance-utils';
 import type { ParkStatus, CrowdLevel } from '@/lib/api/types';
@@ -365,7 +366,7 @@ export function ParkCard({
         <div className={cn('relative z-0', backgroundImage && 'sm:min-h-[220px]')}>
           {/* `hideOnMobile` is belt and braces: the whole card is `display:none` below `sm`, where
               the row above renders. */}
-          {backgroundImage && (
+          {backgroundImage ? (
             <CardPhotoFrame
               objectPosition={propObjectPosition ?? 'top'}
               src={backgroundImage}
@@ -374,6 +375,10 @@ export function ParkCard({
               hideOnMobile
               sizes={CARD_PHOTO_SIZES}
             />
+          ) : (
+            // A park without a photo beside one with: the grid stretches this row to match, and the
+            // brand cover fills it instead of an empty grey strip, as the parks menu does.
+            showBackground && <BlogCoverFallback slug={slugFromPostPath(effectiveHref)} />
           )}
         </div>
 

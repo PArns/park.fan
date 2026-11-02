@@ -55,6 +55,7 @@ The frontend side of each API surface; the contract itself is linked from each p
 - [glossary](features/glossary.md) — Glossary: files, URLs, adding a term and its checks, pages, SEO, ride-glossary link, 3-D player, blog use
 - [header-navigation](features/header-navigation.md) — Header bar entries, the parks/guides/news/„Mehr"/favorites bands, open-close mechanics, the phone sheet
 - [homepage-announcement](features/homepage-announcement.md) — The homepage announcement band with countdown: content/home/announce.<locale>.md, frontmatter, display window
+- [homepage](features/homepage.md) — The homepage under the hero: the stops and their layout, the news board, the screenshot tour, nearby parks and short waits, park links, FAQ, the search terms
 - [homepage-hero](features/homepage-hero.md) — Homepage hero: glass cost over the pan, live counts, inline search, in-park block, placeholders, map, motion
 - [how-park-fan-works](features/how-park-fan-works.md) — The guide page: localized URLs and redirects, demos and dated fixtures, motion, six content modules
 - [maintenance-page](features/maintenance-page.md) — How an API outage becomes /maintenance (502/1033 digest, error boundary) and the 15 s recovery poll

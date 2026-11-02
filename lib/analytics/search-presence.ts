@@ -1,8 +1,8 @@
 import { useSyncExternalStore } from 'react';
 
 /**
- * Whether a search is open anywhere on the page right now: the palette, the hero's field, the
- * homepage's step card, a listing's field. Parky reads it to search along. Every surface's session
+ * Whether a search is open anywhere on the page right now: the palette, the hero's field, a
+ * listing's field. Parky reads it to search along. Every surface's session
  * reports its openings and closings here (`useSearchSession`), so a new surface counts without
  * being wired up. Only a session still on the page counts, so a field that leaves the page while
  * open (a navigation) leaves no search behind.

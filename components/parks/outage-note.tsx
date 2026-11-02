@@ -65,12 +65,14 @@ export function OutageNote({
   // A `down` was reported by the park's own feed; a `closed_gap` is our reading, so it may not
   // say „gemeldet" (see `AttractionOutage.signal`). Anything that is not exactly `down` counts as
   // inferred: `signal` is not validated at runtime and the API deploys on its own, so an unknown
-  // value must fall to the WEAKER claim.
-  const inferred = outage.signal !== 'down';
-  const label =
-    when !== null
-      ? t(inferred ? 'sinceClosed' : 'since', { when })
-      : t(inferred ? 'startUnknownClosed' : 'startUnknown');
+  // value must fall to the WEAKER claim. `maintenance` is the feed saying so, never a fault.
+  const keys =
+    outage.signal === 'down'
+      ? ({ since: 'since', unknown: 'startUnknown' } as const)
+      : outage.signal === 'maintenance'
+        ? ({ since: 'sinceMaintenance', unknown: 'startUnknownMaintenance' } as const)
+        : ({ since: 'sinceClosed', unknown: 'startUnknownClosed' } as const);
+  const label = when !== null ? t(keys.since, { when }) : t(keys.unknown);
 
   const elapsed = outageElapsedMinutes(outage);
 

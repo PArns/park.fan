@@ -96,9 +96,29 @@ export interface ParkWithDistance {
   backgroundPosition?: string;
 }
 
+/**
+ * A ride in one of the nearby parks whose live wait is well below its usual one, as the API picks
+ * it (`pickShortWaits`, contract in the backend's docs/frontend/discovery.md#shortwaits).
+ */
+export interface NearbyShortWait {
+  id: string;
+  name: string;
+  slug: string;
+  /** Path of the ride page without the locale; null where the park has no geo path. */
+  url: string | null;
+  /** Live standby wait in minutes, rounded to 5 (13 stays 13). */
+  waitTime: number;
+  /** The ride's usual wait (its median over 548 days), rounded to 5; not this hour's. */
+  typicalWait: number;
+  isHeadliner: boolean;
+  park: { id: string; name: string; slug: string; distance: number; url: string | null };
+}
+
 export interface NearbyParksData {
   parks: ParkWithDistance[];
   count: number;
+  /** Absent from an API older than the field, and from a cached answer written before it. */
+  shortWaits?: NearbyShortWait[];
 }
 
 export interface NearbyResponse {

@@ -3,6 +3,7 @@
 import { useTranslations } from 'next-intl';
 import { NearbyHeading } from '@/components/parks/nearby-heading';
 import { ParkCard } from '@/components/parks/park-card';
+import { NearbyShortWaits } from '@/components/parks/nearby-short-waits';
 import { Button } from '@/components/ui/button';
 import { cn, stripNewPrefix } from '@/lib/utils';
 import type { NearbyParksData } from '@/types/nearby';
@@ -23,6 +24,7 @@ export function NearbyParksListView({
   data,
   className,
   nested = false,
+  showShortWaits = false,
   isExpanded,
   setIsExpanded,
 }: {
@@ -30,6 +32,8 @@ export function NearbyParksListView({
   className?: string;
   /** See `NearbyParksCard`. */
   nested?: boolean;
+  /** List the rides with a short wait under the parks (`NearbyShortWaits`); the homepage does. */
+  showShortWaits?: boolean;
   isExpanded: boolean;
   setIsExpanded: (expanded: boolean) => void;
 }) {
@@ -52,7 +56,7 @@ export function NearbyParksListView({
   if (parks.length === 0) {
     return (
       <div className={cn('min-h-[200px]', TOP_SPACING, className)}>
-        <NearbyHeading nested={nested} title={t('title')} iconClassName="text-muted-foreground" />
+        <NearbyHeading nested={nested} title={t('title')} />
         <p className="text-muted-foreground text-center text-sm">{t('noParksNearby')}</p>
       </div>
     );
@@ -62,7 +66,6 @@ export function NearbyParksListView({
     <section className={cn(TOP_SPACING, className)}>
       <NearbyHeading
         nested={nested}
-        iconClassName="text-park-primary"
         title={
           <>
             {nearestOpenPark
@@ -140,6 +143,8 @@ export function NearbyParksListView({
             </Button>
           </div>
         )}
+
+        {showShortWaits && <NearbyShortWaits rides={data.shortWaits} className="mt-10" />}
       </div>
     </section>
   );

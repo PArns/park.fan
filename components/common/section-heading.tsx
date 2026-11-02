@@ -28,7 +28,7 @@ interface SectionHeadingProps {
   /**
    * Frosted pill behind the heading — for headings that sit directly on a page
    * background photo (park/ride pages), where bare text is unreadable over the
-   * bright parts of an arbitrary image. Same treatment as `GlassSectionTitle`.
+   * bright parts of an arbitrary image.
    */
   frosted?: boolean;
   className?: string;

@@ -2,7 +2,8 @@
 
 The homepage hero: live headline and search on the left, a clickable world map on the right, over
 the rotating park photo. Open this when changing the hero's panels, its search, its live counts,
-its placeholders or its motion. Entry point: `app/[locale]/page.tsx`.
+its placeholders or its motion. Entry point: `app/[locale]/page.tsx`. Everything under the hero is
+[the homepage](homepage.md).
 
 ```
 ┌─────────────────────────────────────────────┐┌──────────────────────────┐
@@ -30,6 +31,10 @@ its placeholders or its motion. Entry point: `app/[locale]/page.tsx`.
 
 Both columns are panels — `HeroTextPanel` and the map's `GlassCard variant="heavy"` — so the hero
 reads as one composition.
+
+The photo's caption and credit (`HeroImageInfoPanel`, from `lg`) sit bottom-left, because Parky's
+button is fixed bottom-right and would cover them there; the section's `lg:pb-24` keeps them clear of
+the text panel above.
 
 ## Glass over a moving photo
 
@@ -106,8 +111,7 @@ or blur of its own (`HERO_SEARCH_INPUT_CLASS`), and a hairline separates it from
 of glass side by side showed a seam and two tints, and the field's own `backdrop-blur-lg` was one
 more filter over the moving photo. The frame lights its border while the field has focus through
 `group/hero-search` on their shared parent and `group-focus-within/hero-search:` on the frame
-([no `:has()`](../rules/no-has-selector-in-the-stylesheet.md)). The step card's copy of the field
-(`primary={false}`) is the same object in `tile` glass.
+([no `:has()`](../rules/no-has-selector-in-the-stylesheet.md)).
 
 **The first frame is `HeroSearchShell`, which looks like the final unit exactly**, field and list.
 `useMediaQuery` is false on the server, so choosing from it painted the phone's field on a desktop
@@ -277,8 +281,8 @@ mush at 44 px).
 
 ### What is counted
 
-The hero is the search surface `hero` on both viewports (the viewport of the hit tells them apart),
-the step card's copy is `home_steps`. A focus that follows a blur is an opening, a tap on a resting
+The hero is the search surface `hero` on both viewports (the viewport of the hit tells them apart).
+A focus that follows a blur is an opening, a tap on a resting
 row before any opening opens one first, and the phone's field opens the palette as `hero`. Each
 field has one session (`HeroInlineSearch`), which the desktop panel, the phone's palette and the
 phone's rows share, so a tap on a row after the palette closed counts in that opening rather than

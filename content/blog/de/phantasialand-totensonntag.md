@@ -26,6 +26,11 @@ rideLinks:
   - phantasialand/chiapas-die-wasserbahn
   - phantasialand/maus-au-chocolat
   - phantasialand/river-quest
+coverImage:
+  src: /media/phantasialand/background.jpg
+  alt: 'Ein beleuchtetes Kettenkarussell dreht sich, links ein Lichterbaum.'
+  caption: 'Der Wintertraum hat am Totensonntag sein zweites Wochenende.'
+  credit: 'Patrick Arns'
 seo:
   title: 'Phantasialand am Totensonntag 2026: Shows erst ab 18 Uhr'
   description: >-
