@@ -7,7 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Vanaf 6 november staat in SeaWorld Orlando tijdens de Christmas Celebration voor het eerst sinds 2019 weer de orcashow Miracles op het programma. Het kerstevenement loopt op geselecteerde dagen tot 4 januari 2027 en zit in de gewone entree.
+  SeaWorld Orlando haalt voor de Christmas Celebration de orcashow Miracles terug, voor het eerst sinds 2019. Het kerstevenement begint op 6 november, loopt op bepaalde dagen tot 4 januari 2027 en zit in de gewone entree.
 tags:
   - nieuws
   - seaworld-orlando
@@ -31,9 +31,9 @@ seo:
     - Orlando kerst 2026
 ---
 
-Op 6 november begint in [SeaWorld Orlando](ref:seaworld-orlando) de Christmas Celebration, en daarmee komt Miracles terug: een orcashow op kerstmuziek die 's avonds speelt en sinds 2019 niet meer te zien was. Het evenement loopt op geselecteerde dagen tot 4 januari 2027. Je betaalt er niets extra voor, ook niet met een jaarkaart, en reserveren is niet nodig.
+Op 6 november begint in [SeaWorld Orlando](ref:seaworld-orlando) de Christmas Celebration. Daarmee komt ook Miracles terug, een avondshow met orka's op kerstmuziek die sinds 2019 niet meer te zien was. Het evenement loopt tot 4 januari 2027, alleen al in november op 16 dagen. Je betaalt er niets extra voor, ook niet met een jaarkaart, en reserveren is niet nodig.
 
-Jaarkaarthouders, bij SeaWorld Pass Members genoemd, krijgen een eigen voorstelling van Miracles en zien de show dus als een van de eersten. Waar en hoe laat Miracles speelt, heeft SeaWorld nog niet bekendgemaakt. De showtijden van het evenement staan in de gratis app van het park.
+Jaarkaarthouders, bij SeaWorld Pass Members genoemd, krijgen een voorstelling van Miracles helemaal voor zichzelf. Waar en hoe laat Miracles speelt, heeft SeaWorld nog niet bekendgemaakt. De showtijden van het evenement staan in de gratis app van het park.
 
 ## Evenementdagen en openingstijden in november
 
@@ -49,7 +49,7 @@ In november is er op 16 dagen Christmas Celebration:
 
 Op de andere dagen, van 9 tot en met 12 november, van 16 tot en met 19 november en op 30 november, is het park alleen van 10.00 tot 18.00 uur open en is er geen kerstprogramma.
 
-Tot en met 1 januari sluit elke evenementavond bij sluitingstijd af met het vuurwerk Holiday Reflections: Fireworks Finale rond de lagune. Veel onderdelen zijn binnen en gaan ook bij regen door.
+Tot en met 1 januari sluit elke evenementavond bij sluitingstijd af met het vuurwerk Holiday Reflections: Fireworks Finale rond de lagune. Veel onderdelen zijn binnen en gaan bij een regenbui in Florida gewoon door, maar voor het vuurwerk boven de lagune geldt dat niet.
 
 ```best-days-widget slug=seaworld-orlando
 
@@ -57,7 +57,7 @@ Tot en met 1 januari sluit elke evenementavond bij sluitingstijd af met het vuur
 
 ## Wat bij de entree hoort
 
-In Sesame Street Land trekken Elmo en zijn vrienden rond in de Sesame Street Christmas Parade, en in het Seaport Theater speelt de Elmo's Christmas Wish Show. In O Wondrous Night komen meer dan 30 kerstliedjes op het podium, met levensgrote poppen en levende dieren. De schaatsshow Winter Wonderland on Ice speelt op geselecteerde dagen van 7 november tot 5 januari, dus een dag langer dan het evenement zelf. Verder staat Clyde & Seamore's Countdown to Christmas op het programma.
+In Sesame Street Land trekken Elmo en zijn vrienden rond in de Sesame Street Christmas Parade, en in het Seaport Theater speelt de Elmo's Christmas Wish Show. In O Wondrous Night komen meer dan 30 kerstliedjes op het podium, met levensgrote poppen en levende dieren. De schaatsshow Winter Wonderland on Ice speelt op bepaalde dagen van 7 november tot 5 januari, dus tot na 4 januari. Clyde en Seamore hebben met Clyde & Seamore's Countdown to Christmas een eigen kerstshow.
 
 Bij Sea of Trees aan de lagune lichten bomen op in de maat van kerstmuziek; de boom in het midden is 70 voet hoog, zo'n 21 meter. Aan de Waterfront vallen sneeuwvlokken, en dat zie je in Orlando in november niet vaak. Bij de Dolphin Nursery staat een kersttreintje in miniatuur.
 
@@ -65,11 +65,11 @@ De kerstman zit in de Waterway Grill, met fotografen erbij. Rudolph en Bumble vi
 
 ## Toeslagen, eten en tickets
 
-Tegen betaling kun je schaatsen op een ijsbaan in het Bayside Stadium, direct aan de lagune. Ook het Dinner with Santa in de Sea Harbor Pavilions en het Sesame Street Christmas Breakfast in de SeaFire Grill kosten extra. Het diner is er op geselecteerde dagen, maar niet in het openingsweekend.
+Tegen betaling kun je schaatsen op een ijsbaan in het Bayside Stadium, direct aan de lagune. Ook het Dinner with Santa in de Sea Harbor Pavilions en het Sesame Street Christmas Breakfast in de SeaFire Grill kosten extra. Het diner is er op bepaalde dagen, maar niet in het openingsweekend.
 
-Nieuw dit jaar zijn vuurplaatsen waar je marshmallows roostert en er s'mores van maakt, met chocola en graham crackers. Op de kaart staan onder meer Ropa Vieja Festiva met tostones, ravioli met drie kazen in een roomsaus met chardonnay en beignets met Lotus Biscoff-pasta. Eten en drinken betaal je apart. Eigen eten en koelboxen mogen niet mee naar binnen, een waterfles wel.
+Voor het eerst zijn er vuurplaatsen waar je marshmallows roostert en er s'mores van maakt, met chocola en graham crackers. Op de kaart staan onder meer Ropa Vieja Festiva met tostones, ravioli met drie kazen in een roomsaus met chardonnay en beignets met Lotus Biscoff-pasta. De gerechten betaal je apart, eigen eten en koelboxen blijven buiten en een waterfles mag je meenemen.
 
-Ook nieuw is een Christmas Market, naast de Shoppes at Waterfront en de SeaWorld Store.
+Voor wie wil winkelen, komt er dit jaar een Christmas Market bij.
 
 In de Black Friday-voorverkoop kost een dagticket online vanaf 59,99 dollar, voor iedereen vanaf drie jaar; de gewone prijs is 151,99 dollar. Wie in 2027 vaker wil komen, koopt in dezelfde actie vanaf 104,99 dollar de Fun Card. Daarmee kom je het hele jaar onbeperkt binnen, op de blokkadedata na. Gratis tickets voor militairen gelden ook tijdens het evenement.
 
@@ -80,7 +80,7 @@ In de Black Friday-voorverkoop kost een dagticket online vanaf 59,99 dollar, voo
 - Oudejaarsavond, 31 december: vuurwerk rond de jaarwisseling
 - Three Kings Celebration, 3 tot en met 6 januari: eten en voorstellingen in het Nautilus Theater voor Driekoningen
 
-SeaWorld Orlando is van United Parks & Resorts en ligt aan 7007 Sea World Drive. Wat Walt Disney World en Universal Orlando met kerst doen, lees je in onze gids over [kerst en oud en nieuw in Orlando en Parijs](/blog/kerst-nieuwjaar-orlando-parijs-2026).
+Het park ligt aan 7007 Sea World Drive. De kerstprogramma's van Walt Disney World en Universal Orlando staan in onze gids over [kerst en oud en nieuw in Orlando en Parijs](/blog/kerst-nieuwjaar-orlando-parijs-2026).
 
 [SeaWorld Orlando](ref:seaworld-orlando?full)
 

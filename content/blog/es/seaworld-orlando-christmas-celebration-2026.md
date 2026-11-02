@@ -31,9 +31,9 @@ seo:
     - Navidad en Orlando 2026
 ---
 
-La Christmas Celebration de [SeaWorld Orlando](ref:seaworld-orlando) empieza el 6 de noviembre, y con ella vuelve Miracles, un espectáculo nocturno de orcas con música navideña que el parque no programaba desde 2019. El evento se celebra en días concretos hasta el 4 de enero de 2027. Está incluido en la entrada normal al parque, también con pase anual, y no hace falta reservar nada.
+La Christmas Celebration de [SeaWorld Orlando](ref:seaworld-orlando) empieza el 6 de noviembre. Con ella vuelve Miracles, un espectáculo nocturno de orcas con música navideña que el parque no programaba desde 2019. El evento dura hasta el 4 de enero de 2027, con 16 días solo en noviembre. Está incluido en la entrada normal al parque, también con pase anual, y no hace falta reservar nada.
 
-Los Pass Members, es decir, quienes tienen pase anual, tendrán una función propia de Miracles y estarán entre los primeros en verla. SeaWorld todavía no ha publicado dónde ni a qué hora se representa Miracles. Los horarios de los espectáculos del evento aparecen en la app gratuita del parque.
+Los Pass Members, es decir, quienes tienen pase anual, tendrán una función de Miracles solo para ellos. SeaWorld todavía no ha publicado dónde ni a qué hora se representa Miracles. Los horarios de los espectáculos del evento aparecen en la app gratuita del parque.
 
 ## Días del evento y horarios en noviembre
 
@@ -49,7 +49,7 @@ En noviembre hay 16 días de Christmas Celebration:
 
 Los demás días, del 9 al 12 y del 16 al 19 de noviembre y el 30 de noviembre, el parque solo abre de 10:00 a 18:00 y no hay programa navideño.
 
-Hasta el 1 de enero, cada noche del evento termina a la hora de cierre con los fuegos artificiales Holiday Reflections: Fireworks Finale alrededor de la laguna. Buena parte del programa se hace bajo techo y sigue aunque llueva.
+Hasta el 1 de enero, cada noche del evento termina a la hora de cierre con los fuegos artificiales Holiday Reflections: Fireworks Finale alrededor de la laguna. Buena parte del programa se hace bajo techo y no se suspende por un chaparrón de Florida, aunque los fuegos artificiales sobre la laguna no entran en esa parte.
 
 ```best-days-widget slug=seaworld-orlando
 
@@ -57,9 +57,9 @@ Hasta el 1 de enero, cada noche del evento termina a la hora de cierre con los f
 
 ## Qué incluye la entrada
 
-En la Sesame Street Christmas Parade, Elmo y sus amigos recorren Sesame Street Land, y en el Seaport Theater se representa Elmo's Christmas Wish Show. O Wondrous Night sube al escenario más de 30 villancicos con marionetas de tamaño real y animales vivos. El espectáculo de patinaje Winter Wonderland on Ice se ofrece en días concretos del 7 de noviembre al 5 de enero, es decir, un día más allá del 4 de enero. En el escenario también está Clyde & Seamore's Countdown to Christmas.
+En la Sesame Street Christmas Parade, Elmo y sus amigos recorren Sesame Street Land, y en el Seaport Theater se representa Elmo's Christmas Wish Show. O Wondrous Night sube al escenario más de 30 villancicos con marionetas de tamaño real y animales vivos. El espectáculo de patinaje Winter Wonderland on Ice se ofrece en días concretos del 7 de noviembre al 5 de enero, es decir, más allá del 4 de enero. Clyde y Seamore tienen su propio espectáculo navideño, Clyde & Seamore's Countdown to Christmas.
 
-En la laguna, los árboles del Sea of Trees se iluminan al ritmo de la música navideña; el del centro mide 70 pies, unos 21 metros. En el Waterfront caen copos de nieve, algo que Orlando en noviembre no suele ofrecer por su cuenta. Junto a la Dolphin Nursery hay una maqueta de tren navideño.
+En la laguna, los árboles del Sea of Trees se iluminan al ritmo de la música navideña; el del centro mide 70 pies, unos 21 metros. En el Waterfront caen copos de nieve, algo que en Orlando no se suele ver en noviembre. Junto a la Dolphin Nursery hay una maqueta de tren navideño.
 
 A Santa lo encuentras en el Waterway Grill, con fotógrafos. Rudolph y Bumble esperan en Rudolph's Christmastown, en el Pipeline Pathway. En el SeaFire Grill ponen películas navideñas, también para quien no pide nada.
 
@@ -67,9 +67,9 @@ A Santa lo encuentras en el Waterway Grill, con fotógrafos. Rudolph y Bumble es
 
 Pagando aparte hay una pista de patinaje sobre hielo en el Bayside Stadium, a orillas de la laguna. También se pagan aparte la Dinner with Santa en los Sea Harbor Pavilions y el Sesame Street Christmas Breakfast en el SeaFire Grill. La cena se ofrece en días concretos, pero no el fin de semana de apertura.
 
-Como novedad, este año hay hogueras donde tostar malvaviscos y montarte s'mores con chocolate y galletas Graham. Entre los platos nuevos están la Ropa Vieja Festiva con tostones, raviolis de tres quesos en salsa de nata al Chardonnay y beignets con crema de galletas Lotus Biscoff. La comida y la bebida se pagan aparte. No se puede entrar con comida propia ni con neveras, pero sí con una botella de agua.
+Por primera vez hay braseros donde tostar malvaviscos y montarte s'mores con chocolate y galletas Graham. Entre los platos nuevos están la Ropa Vieja Festiva con tostones, raviolis de tres quesos en salsa de nata al Chardonnay y beignets con crema de galletas Lotus Biscoff. Los platos se pagan aparte, no se puede entrar con comida propia ni con neveras y una botella de agua sí se puede llevar.
 
-También es nuevo un Christmas Market, que se suma a las Shoppes at Waterfront y a la SeaWorld Store.
+Para ir de compras, este año se suma un Christmas Market.
 
 En la preventa de Black Friday, la entrada de un día cuesta en línea desde 59,99 dólares y se aplica a partir de tres años; el precio normal es de 151,99 dólares. Quien piense volver más veces en 2027 puede comprar en esa misma preventa la Fun Card desde 104,99 dólares, con visitas ilimitadas todo el año salvo en las fechas bloqueadas. Las entradas gratuitas para militares también valen durante el evento.
 
@@ -80,7 +80,7 @@ En la preventa de Black Friday, la entrada de un día cuesta en línea desde 59,
 - Nochevieja, 31 de diciembre: fuegos artificiales para recibir el año nuevo
 - Three Kings Celebration, del 3 al 6 de enero: comida y funciones en el Nautilus Theater por el Día de Reyes
 
-SeaWorld Orlando pertenece a United Parks & Resorts y está en el 7007 de Sea World Drive. La programación navideña de Walt Disney World y Universal Orlando está en nuestra guía de [Navidad y Nochevieja en Orlando y París](/blog/navidad-ano-nuevo-orlando-paris-2026).
+El parque está en el 7007 de Sea World Drive. La programación navideña de Walt Disney World y Universal Orlando está en nuestra guía de [Navidad y Nochevieja en Orlando y París](/blog/navidad-ano-nuevo-orlando-paris-2026).
 
 [SeaWorld Orlando](ref:seaworld-orlando?full)
 
