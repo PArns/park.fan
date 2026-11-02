@@ -275,7 +275,7 @@ through `openParky()` (`lib/assistant/open.ts`), which the launcher hears and co
 `assistant_opened` with source `page`. While the gate is undecided the button waits, and once it
 says off, a line says Parky is resting instead (`assistantGate.getStatus()`).
 
-The screenshots (`public/parky/<locale>/{chat,plan,search}.webp`) come from
+The screenshots (`public/media/parky/<locale>/{chat,plan,search}.webp`) come from
 `scripts/capture-parky-shots.mjs`. The script lays two fixture chats into the browser's session,
 passes the challenge with a stand-in session and photographs the window on an iPhone 17 (`scripts/lib/phone-device.mjs`) in
 the dark theme. Run it again after the widget changes visibly.

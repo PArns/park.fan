@@ -10,15 +10,15 @@ new, the tour shows the product on a phone, and only then come the visitor's own
 parks and the questions. On 2026-11-02 it had 21 sections and was 18,920 px tall on a desktop and
 20,530 px on a phone; three quarters of its views came from phones, which stayed 13 seconds.
 
-| #   | Stop             | Layout  | Component                                                            | Data                                                  |
-| --- | ---------------- | ------- | -------------------------------------------------------------------- | ----------------------------------------------------- |
-| –   | Hero             | –       | the `<section id="hero">` in `page.tsx`                              | [homepage hero](homepage-hero.md)                     |
-| –   | Neu auf park.fan | stacked | `HomeReading` → `NewsBoard`                                          | the blog manifest and the most-read seed, synchronous |
-| –   | The tour         | phone   | `HomeTour` → `ShotStop`                                              | none; screenshots in `public/home/`                   |
-| –   | Ask Parky        | phone   | `ParkyStop` → `ShotStop`, `ParkyAskLink`                             | none; the screenshot in `public/parky/<l>/chat.webp`  |
-| –   | Your parks       | stacked | `NearbyChapter` + `NearbyParksCard showShortWaits`; the favourites   | `/v1/discovery/nearby`, the favourites cookie         |
-| –   | Popular parks    | beside  | a `HomeStop` in `page.tsx`, `FeaturedParksSlot` + `PopularParkLinks` | `getGeoStructure` (a week), the page-view snapshot    |
-| –   | Questions        | beside  | `FaqSection`, the page's only `FAQPage`                              | `seo.homepage.faq`                                    |
+| #   | Stop             | Layout  | Component                                                            | Data                                                       |
+| --- | ---------------- | ------- | -------------------------------------------------------------------- | ---------------------------------------------------------- |
+| –   | Hero             | –       | the `<section id="hero">` in `page.tsx`                              | [homepage hero](homepage-hero.md)                          |
+| –   | Neu auf park.fan | stacked | `HomeReading` → `NewsBoard`                                          | the blog manifest and the most-read seed, synchronous      |
+| –   | The tour         | phone   | `HomeTour` → `ShotStop`                                              | none; screenshots in `public/media/home/`                  |
+| –   | Ask Parky        | phone   | `ParkyStop` → `ShotStop`, `ParkyAskLink`                             | none; the screenshot in `public/media/parky/<l>/chat.webp` |
+| –   | Your parks       | stacked | `NearbyChapter` + `NearbyParksCard showShortWaits`; the favourites   | `/v1/discovery/nearby`, the favourites cookie              |
+| –   | Popular parks    | beside  | a `HomeStop` in `page.tsx`, `FeaturedParksSlot` + `PopularParkLinks` | `getGeoStructure` (a week), the page-view snapshot         |
+| –   | Questions        | beside  | `FaqSection`, the page's only `FAQPage`                              | `seo.homepage.faq`                                         |
 
 In a park, `ParkCompassSlot` puts the headliners on a compass right under the hero
 ([the in-park compass](park-compass.md)); the announcement band (`AnnounceSection`,
@@ -100,7 +100,7 @@ first HTML and changes with every deploy that brings a post.
 | ride     | Silver Star's day with the forecast     | the trip planner   |
 
 - **The screenshots are per locale** and from the real pages, taken by
-  `scripts/capture-home-shots.mjs` (`public/home/<locale>/{park,calendar,ride}.webp`, 1206 × 2436,
+  `scripts/capture-home-shots.mjs` (`public/media/home/<locale>/{park,calendar,ride}.webp`, 1206 × 2436,
   an iPhone 17's screen under its status bar at 3×, `scripts/lib/phone-device.mjs`). `PhoneShot`
   draws the status bar and its island above the picture, so the frame has the phone's proportions
   and the page's header starts below the island. They show live data, so take them while the park is open.
@@ -148,7 +148,7 @@ which the stop links.
 
 Straight after the tour, `ParkyStop`: „Nicht gefunden, was du suchst? Frag Parky", for whoever has
 not found what they came for or does not quite know what that is, beside Parky's chat on a phone
-(`public/parky/<l>/chat.webp`, from `capture-parky-shots.mjs`). Its link, `ParkyAskLink`, opens the
+(`public/media/parky/<l>/chat.webp`, from `capture-parky-shots.mjs`). Its link, `ParkyAskLink`, opens the
 chat where Parky shows for the visitor (`openParky`) and otherwise leads to Parky's page. It never
 invites a visitor the rollout left out (`assistantGate.invite`); that stays Parky's page's call.
 Once the stop reaches the middle of the screen, `ParkyHello` reports `home_parky_seen`, and the live

@@ -7,7 +7,7 @@
  * Needs a running site with Parky's API reachable for the page around it:
  * `pnpm build && pnpm start -p 3100`, then
  * `node scripts/capture-parky-shots.mjs --base=http://localhost:3100`.
- * Writes `public/parky/<locale>/{chat,plan,search}.webp`.
+ * Writes `public/media/parky/<locale>/{chat,plan,search}.webp`.
  */
 import { existsSync, mkdirSync } from 'node:fs';
 import { chromium } from 'playwright';
@@ -205,7 +205,7 @@ async function settle(page, path) {
 
 async function save(page, locale, name) {
   const png = await page.screenshot();
-  await sharp(png).webp({ quality: 82 }).toFile(`public/parky/${locale}/${name}.webp`);
+  await sharp(png).webp({ quality: 82 }).toFile(`public/media/parky/${locale}/${name}.webp`);
   console.log(`  ✓ ${locale}/${name}.webp`);
 }
 
@@ -215,7 +215,7 @@ const browser = await chromium.launch(
 );
 for (const locale of Object.keys(CHATS)) {
   if (only && locale !== only) continue;
-  mkdirSync(`public/parky/${locale}`, { recursive: true });
+  mkdirSync(`public/media/parky/${locale}`, { recursive: true });
 
   for (const [name, which, park] of [
     ['chat', 'waits', PHANTASIALAND],

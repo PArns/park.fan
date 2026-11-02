@@ -20,7 +20,7 @@ import { getOgImageUrl } from '@/lib/utils/og-image';
 import { cn } from '@/lib/utils';
 import { getParkBackground } from '@/lib/media';
 import { getMediaAlt } from '@/lib/media/text';
-import { versionedSrc } from '@/lib/media/focus';
+import { versionedPath, versionedSrc } from '@/lib/media/focus';
 import { plannerPath } from '@/lib/planner/segments';
 import {
   BreadcrumbStructuredData,
@@ -92,9 +92,9 @@ export async function generateMetadata({ params }: ParkyPageProps): Promise<Meta
   };
 }
 
-/** A screenshot of the given kind in the reader's language (`public/parky/<locale>/`). */
+/** A screenshot of the given kind in the reader's language (`public/media/parky/<locale>/`). */
 function shot(locale: string, name: 'chat' | 'plan' | 'search'): string {
-  return `/parky/${locale}/${name}.webp`;
+  return versionedPath(`/media/parky/${locale}/${name}.webp`);
 }
 
 /**
