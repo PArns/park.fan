@@ -167,20 +167,35 @@
       "lead": "Met je locatie toont park.fan de dichtstbijzijnde parken, de parken die open zijn eerst, en hoe druk het er nu is.",
       "allParks": "Alle parken ontdekken"
     },
+    "favorites": {
+      "kicker": "Favorieten",
+      "title": "Jouw parken en attracties",
+      "lead": "Alles wat je met de ster hebt gemarkeerd, met status en actuele wachttijd."
+    },
+    "popular": {
+      "kicker": "Populaire parken",
+      "title": "Wachttijden en drukte in de populairste parken",
+      "lead": "Zes grote parken met live status en drukte, plus twaalf met een directe link naar wachttijden en drukte-kalender."
+    },
     "faq": {
       "kicker": "Veelgestelde vragen",
       "title": "Wachttijden in pretparken, kort uitgelegd",
+      "lead": "De vragen die bij een eerste bezoek opkomen.",
+      "link": "Zo werkt park.fan",
       "note": "Alle gegevens zonder garantie."
     },
+    "parky": {
+      "kicker": "Parky",
+      "title": "Niet gevonden wat je zoekt? Vraag het Parky",
+      "lead": "Of je weet nog niet precies wat je zoekt. Parky beantwoordt vragen over wachttijden, voorspellingen en openingstijden en kijkt daarvoor in dezelfde live data.",
+      "link": "Vraag het Parky"
+    },
     "reading": {
-      "kicker": "Nieuws & gidsen",
-      "title": "Nieuw op park.fan",
-      "lead": "Gidsen over afzonderlijke parken, en wat er nu in de parken verandert."
+      "kicker": "Nieuw op park.fan",
+      "title": "Pretparknieuws en gidsen",
+      "lead": "Wat er nu in de parken verandert, en uitgebreide gidsen over afzonderlijke parken."
     },
     "tour": {
-      "kicker": "Zo werkt het",
-      "title": "Zo ziet park.fan eruit op je telefoon",
-      "lead": "Alles gratis en zonder account, op je telefoon net als op je computer.",
       "live": {
         "kicker": "Live wachttijden",
         "title": "Wachttijden live, voor elke attractie",
@@ -201,12 +216,6 @@
         "text": "Voor elke attractie zie je hoe de wachttijd zich over de dag ontwikkelt. De dagplanner legt je attracties in de rustige uren.",
         "link": "Dag plannen",
         "alt": "De pagina van Silver Star op een telefoon: gemeten en voorspelde wachttijden van de dag en de beste tijden."
-      },
-      "parky": {
-        "kicker": "Parky",
-        "title": "Gewoon vragen",
-        "text": "Parky beantwoordt vragen over wachttijden, voorspellingen en openingstijden en kijkt daarvoor in dezelfde live data.",
-        "link": "Maak kennis met Parky"
       }
     },
     "parkLinks": {

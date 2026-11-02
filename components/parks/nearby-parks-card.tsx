@@ -106,7 +106,7 @@ export function NearbyParksCard({
   if (!permissionGranted && !permissionDenied && !geoLoading && !dataPending && !nearbyData) {
     return (
       <div className={cn('min-h-[200px]', TOP_SPACING, className)}>
-        <NearbyHeading nested={nested} title={t('title')} iconClassName="text-muted-foreground" />
+        <NearbyHeading nested={nested} title={t('title')} />
         <div className="flex flex-col items-center space-y-4 py-4 text-center">
           <p className="text-muted-foreground text-sm">{t('enableDescription')}</p>
           <Button onClick={refresh}>
@@ -124,7 +124,7 @@ export function NearbyParksCard({
   if (showErrorCard) {
     return (
       <div className={cn('min-h-[200px]', TOP_SPACING, className)}>
-        <NearbyHeading nested={nested} title={t('loadError')} iconClassName="text-park-primary" />
+        <NearbyHeading nested={nested} title={t('loadError')} />
         <div className="flex flex-col items-center space-y-4 py-4 text-center">
           <p className="text-muted-foreground mx-auto max-w-md text-sm">
             {t('loadErrorDescription')}

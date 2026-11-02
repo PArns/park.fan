@@ -17,6 +17,7 @@ import { getHeroReading } from '@/lib/home/hero-reading';
 import { getNewsMenu } from '@/lib/navigation/news-menu';
 import { latestNewsFrom } from '@/components/blog/latest-news-chip';
 
+import { Flame, Star } from 'lucide-react';
 import { HeroBackground } from '@/components/layout/hero-background';
 import { HeroImageInfoSwitch } from '@/components/layout/hero-image-info-switch';
 import { HeroImageInfo } from '@/components/layout/hero-image-info';
@@ -38,7 +39,9 @@ import { PopularParkLinks } from '@/components/home/popular-park-links';
 import { FeaturedParksSkeleton } from '@/components/home/home-skeletons';
 import { getFeaturedParksLabels } from '@/components/home/section-headings';
 import { FaqSection } from '@/components/home/faq-section';
-import { STORY_SECTION_Y } from '@/components/home/section-chrome';
+import { ParkyStop } from '@/components/home/parky-stop';
+import { HomeStop } from '@/components/home/home-stop';
+import { ChapterHeading } from '@/components/common/chapter-heading';
 import { NearbyParksCardSkeleton } from '@/components/parks/nearby-parks-card-skeleton';
 import { FavoritesEmptyState } from '@/components/parks/favorites-empty-state';
 
@@ -53,7 +56,7 @@ const FavoritesSection = nextDynamic(
   () =>
     import('@/components/parks/favorites-section').then((m) => ({ default: m.FavoritesSection })),
   {
-    loading: () => <FavoritesEmptyState textHidden heading="tile" className={FAVORITES_BAND} />,
+    loading: () => <FavoritesEmptyState textHidden heading="none" className={BORROWED_BAND} />,
     ssr: true,
   }
 );
@@ -62,7 +65,7 @@ const NearbyParksCard = nextDynamic(
   () =>
     import('@/components/parks/nearby-parks-card').then((m) => ({ default: m.NearbyParksCard })),
   {
-    loading: () => <NearbyParksCardSkeleton nested />,
+    loading: () => <NearbyParksCardSkeleton nested className={FLUSH_TOP} />,
     ssr: true,
   }
 );
@@ -80,10 +83,13 @@ export const revalidate = 604800;
 // re-picked on each shell regeneration. Server-rendered for LCP.
 const HERO_TTL_MS = 5 * 60_000;
 
-// The favourites band, for a visitor with favourites only, and then above the nearby parks: the
-// inline favourites script in app/[locale]/layout.tsx sets `data-has-favorites` before paint, and
-// `.home-favorites` in globals.css reads it, so neither choice moves anything after load.
-const FAVORITES_BAND = `${STORY_SECTION_Y} home-favorites`;
+// The favourites and the popular parks are sections other pages draw as bands of their own. Here
+// they stand inside a stop (`HomeStop`), which sets the room and holds the heading, so their band
+// padding and tint go.
+const BORROWED_BAND = 'bg-transparent p-0';
+
+// The nearby card starts flush with its stop's heading, without the gap it keeps under a chapter.
+const FLUSH_TOP = 'mt-0 max-sm:mt-0';
 
 interface HomePageProps {
   params: Promise<{ locale: string }>;
@@ -121,10 +127,11 @@ export async function generateMetadata({ params }: HomePageProps): Promise<Metad
 }
 
 /**
- * The homepage, written for somebody who has never been here: what this is (the hero's headline
- * and one sentence), whether their park is in it (the search, four popular parks, the parks near
- * them), what is new (guides and news), what else it does (four tools), the popular parks and four
- * questions. Everything that explains a tool at length lives on that tool's own page.
+ * The homepage, written for somebody who has never been here: what this is and whether their park
+ * is in it (the hero), then one stop after another, each a heading worded as people search beside
+ * its content (`HomeStop`): what is new (the news board), what park.fan does (the tour), their own
+ * parks, the popular parks, five questions and, for whoever has not found it yet, Parky.
+ * Everything that explains a tool at length lives on that tool's own page.
  */
 export default async function HomePage({ params }: HomePageProps) {
   const { locale } = await params;
@@ -134,8 +141,9 @@ export default async function HomePage({ params }: HomePageProps) {
   // Only the static, above-the-fold shell needs translations up front. Every data-dependent
   // section fetches its own data (and translations) inside a Suspense boundary below, so the hero
   // renders and streams without waiting on the API.
-  const [tHome, featuredParksLabels] = await Promise.all([
+  const [tHome, tStory, featuredParksLabels] = await Promise.all([
     getTranslations('home'),
+    getTranslations('homeStory'),
     getFeaturedParksLabels(),
   ]);
   const heroImage = pickHeroImage(HERO_TTL_MS);
@@ -242,41 +250,68 @@ export default async function HomePage({ params }: HomePageProps) {
         <HomeTour locale={locale as Locale} />
 
         {/* The visitor's own parks: the nearest ones with the rides where a wait is short right
-          now, and their favourites, which stand first for a visitor who has some (`order` from
-          `.home-favorites`). Client Components that decide late (geolocation, a cookie), hence the
-          dynamic imports and the box-reserving fallbacks. */}
+          now, and their favourites, for a visitor who has some only, and then first: the inline
+          favourites script in app/[locale]/layout.tsx sets `data-has-favorites` before paint, and
+          `.home-favorites` in globals.css reads it, so neither choice moves anything after load.
+          Client Components that decide late (geolocation, a cookie), hence the dynamic imports and
+          the box-reserving fallbacks. */}
         <div className="flex flex-col">
           <NearbyChapter>
-            <NearbyParksCard nested showShortWaits />
+            <NearbyParksCard nested showShortWaits className={FLUSH_TOP} />
           </NearbyChapter>
-          <FavoritesSection heading="tile" className={FAVORITES_BAND} />
+          <HomeStop
+            stacked
+            divider
+            className="home-favorites"
+            heading={
+              <ChapterHeading
+                variant="stop"
+                icon={Star}
+                kicker={tStory('favorites.kicker')}
+                title={tStory('favorites.title')}
+                hint={tStory('favorites.lead')}
+              />
+            }
+          >
+            <FavoritesSection heading="none" className={BORROWED_BAND} />
+          </HomeStop>
         </div>
 
-        {/* Popular parks per locale: the cards (SSR seed + client live data), then a link to each
-          one's waits and calendar, which the fallback draws as well, since it needs no API. */}
-        <Suspense
-          fallback={
-            <FeaturedParksSkeleton
-              labels={featuredParksLabels}
-              heading="tile"
-              className={`border-border border-t ${STORY_SECTION_Y}`}
-            >
-              <PopularParkLinks locale={locale as Locale} />
-            </FeaturedParksSkeleton>
+        {/* Popular parks per locale: the cards (SSR seed + client live data) beside the heading,
+          and under the heading a link to each one's waits and calendar, which needs no API. */}
+        <HomeStop
+          divider
+          reverse
+          heading={
+            <ChapterHeading
+              variant="stop"
+              icon={Flame}
+              kicker={tStory('popular.kicker')}
+              title={tStory('popular.title')}
+              hint={tStory('popular.lead')}
+            />
           }
+          aside={<PopularParkLinks locale={locale as Locale} />}
         >
-          <FeaturedParksSlot
-            locale={locale}
-            heading="tile"
-            className={`border-border border-t ${STORY_SECTION_Y}`}
+          <Suspense
+            fallback={
+              <FeaturedParksSkeleton
+                labels={featuredParksLabels}
+                heading="none"
+                className={BORROWED_BAND}
+              />
+            }
           >
-            <PopularParkLinks locale={locale as Locale} />
-          </FeaturedParksSlot>
-        </Suspense>
+            <FeaturedParksSlot locale={locale} heading="none" className={BORROWED_BAND} />
+          </Suspense>
+        </HomeStop>
 
         {/* The page's only FAQPage markup — FaqSection renders the questions and the JSON-LD from
           one array. */}
-        <FaqSection />
+        <FaqSection locale={locale as Locale} />
+
+        {/* Whoever has not found it yet: ask Parky. */}
+        <ParkyStop locale={locale as Locale} />
       </div>
     </RouteMessages>
   );

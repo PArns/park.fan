@@ -167,20 +167,35 @@
       "lead": "Con tu ubicación, park.fan te muestra los parques más cercanos, primero los que están abiertos, y cuánta gente hay en cada uno ahora mismo.",
       "allParks": "Descubrir todos los parques"
     },
+    "favorites": {
+      "kicker": "Favoritos",
+      "title": "Tus parques y atracciones",
+      "lead": "Todo lo que marcaste con la estrella, con su estado y su espera actual."
+    },
+    "popular": {
+      "kicker": "Parques populares",
+      "title": "Tiempos de espera y afluencia en los parques más populares",
+      "lead": "Seis parques grandes con su estado y su afluencia en directo, y doce con enlace directo a sus tiempos de espera y su calendario de afluencia."
+    },
     "faq": {
       "kicker": "Preguntas frecuentes",
       "title": "Los tiempos de espera en parques, en breve",
+      "lead": "Las preguntas que surgen en la primera visita.",
+      "link": "Cómo funciona park.fan",
       "note": "Todos los datos sin garantía."
     },
+    "parky": {
+      "kicker": "Parky",
+      "title": "¿No encuentras lo que buscas? Pregúntale a Parky",
+      "lead": "O todavía no sabes muy bien qué buscas. Parky responde preguntas sobre tiempos de espera, previsiones y horarios, y lo consulta en los mismos datos en directo.",
+      "link": "Preguntar a Parky"
+    },
     "reading": {
-      "kicker": "Noticias y guías",
-      "title": "Novedades en park.fan",
-      "lead": "Guías de cada parque, y lo que está cambiando ahora en los parques."
+      "kicker": "Novedades en park.fan",
+      "title": "Noticias y guías de parques temáticos",
+      "lead": "Lo que está cambiando ahora en los parques, y guías detalladas de cada parque."
     },
     "tour": {
-      "kicker": "Cómo funciona",
-      "title": "Así se ve park.fan en el móvil",
-      "lead": "Todo gratis y sin cuenta, en el móvil igual que en el ordenador.",
       "live": {
         "kicker": "Tiempos de espera en directo",
         "title": "Tiempos de espera en directo, para cada atracción",
@@ -201,12 +216,6 @@
         "text": "Para cada atracción ves cómo evoluciona la espera a lo largo del día. El planificador coloca tus atracciones en las horas tranquilas.",
         "link": "Planificar un día",
         "alt": "La página de Silver Star en un móvil: los tiempos de espera medidos y previstos del día y las mejores horas."
-      },
-      "parky": {
-        "kicker": "Parky",
-        "title": "Solo pregunta",
-        "text": "Parky responde preguntas sobre tiempos de espera, previsiones y horarios, y lo consulta en los mismos datos en directo.",
-        "link": "Conoce a Parky"
       }
     },
     "parkLinks": {

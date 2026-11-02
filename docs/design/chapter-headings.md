@@ -19,10 +19,11 @@ or action, and the `border-b` rule that closes it. It marks itself `data-chapter
 
 Under blog, news, glossary pages and every post, the three bottom blocks (nearby, favourites,
 popular parks) use the watermark variant, unnumbered, and so do their skeletons and empty states.
-The homepage stands them among its `tile` chapters.
+On the homepage they draw no heading of their own (`heading="none"`): each stands inside a stop
+(`HomeStop`) whose `stop` heading opens it.
 
-`GlassSectionTitle` is not a chapter header; its one use is the nearby-parks list on the homepage,
-an `<h3>` inside `NearbyChapter`, which opens that chapter itself. `SectionHeading`'s `plain`
+On the homepage the nearby-parks card draws no title at all (`NearbyHeading nested`): the stop
+around it holds the `<h2>`, and the card keeps only its hint line. `SectionHeading`'s `plain`
 variant (`as="h3"`) is what belongs **inside** a card: the rope-drop panel, the typical-waits block,
 a city row on a country page.
 
@@ -30,8 +31,11 @@ a city row on a country page.
 
 - **`variant="watermark"`** (default): the glyph at `text-primary/15` for a number, `/25` for an
   icon ([why](../rules/a-chapter-opens-the-same-way-everywhere.md)).
-- **`variant="tile"`**: the homepage's chapters, the icon in a gradient plate (48 px on a phone,
-  68 px from `sm`) with a pill kicker, because a `/25` icon cannot carry a chapter's identity alone.
+- **`variant="stop"`**: the homepage's stops under the hero
+  ([the homepage](../features/homepage.md#stops)). A number, where there is one, stands above in the
+  brand gradient at 30 % (`text-6xl`, `text-8xl` from `sm`); an icon draws no glyph of its own,
+  since the kicker's 32 px plate already carries it. Then a `text-3xl`/`text-4xl` black title,
+  `hint` as a lead paragraph and `action` (the stop's link) under it. No rule.
 - **`frosted`**: a full-width glass band (`TILE_GLASS`, `rounded-xl`), for park and ride pages
   over a photo.
 - **`size="lg"`**: the editorial pages' larger title and numeral.
@@ -56,7 +60,7 @@ Below `sm` the heading and the gap above it are one step smaller. A park page st
 chapters, a ride page 7, the homepage 20, and at 390 px a two-line `text-2xl` title under a 40 px
 glyph took 105 px. On a phone: the `md` title is `text-xl`, the watermark icon 28 px (the title's
 line box, so a one-line heading is as tall as its text), the numeral `text-3xl`, the frosted band
-`pt-2.5 pb-3`, the tile's plate 48 px and its title `text-2xl`. A chapter's top margin is `mt-6`
+`pt-2.5 pb-3`. A chapter's top margin is `mt-6`
 below `sm` and `mt-10` above, in all three places that set it: `ChapterPanel`, `PageSection`,
 `AttractionHistoryPanel`. The panel body keeps `p-4`: `p-3` would save a fifth of what the heading
 saves and put every panel's content 4 px from its border.

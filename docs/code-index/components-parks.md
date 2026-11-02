@@ -186,10 +186,6 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `GlassNotice` _component_: The surface every "here is why this page looks like this" notice sits on.
 
-### [`glass-section-title.tsx`](../../components/parks/glass-section-title.tsx)
-
-- `GlassSectionTitle` _component_: Frosted-glass section title pill (`bg-background/70` + backdrop blur).
-
 ### [`halloween-maze-badge.tsx`](../../components/parks/halloween-maze-badge.tsx)
 
 - `HalloweenMazeBadge` _component_: „Halloween-Maze": a seasonal walk-through, not a ride. Orange, because it belongs to one time of the year, and next to `TransportSystemBadge` in the badge row. Whether it is open follows the park's season like any other attraction.

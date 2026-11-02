@@ -7,7 +7,7 @@ import { PARK_CALENDAR_SEGMENTS } from '@/lib/parks/calendar-segments';
 import { linkBlockAttributes } from '@/lib/analytics/internal-link';
 import type { Locale } from '@/i18n/config';
 
-/** How many parks: two columns of six from `sm` up. */
+/** How many parks. */
 const PARKS = 12;
 
 /**
@@ -30,13 +30,13 @@ export async function PopularParkLinks({ locale }: { locale: Locale }) {
     'text-muted-foreground hover:text-primary inline-flex min-h-11 items-center gap-1.5 text-sm transition-colors md:min-h-0';
 
   return (
-    <nav aria-label={t('label')} className="mt-14" {...linkBlockAttributes('featured')}>
+    <nav aria-label={t('label')} {...linkBlockAttributes('featured')}>
       <h3 className="mb-4 text-lg font-semibold">{t('title')}</h3>
-      <ul className="grid gap-x-10 sm:grid-cols-2">
+      <ul>
         {parks.map((park) => (
           <li
             key={park.href}
-            className="border-border/60 flex flex-wrap items-center justify-between gap-x-4 border-t py-2"
+            className="border-border/60 flex flex-col gap-x-4 border-t py-2 sm:flex-row sm:items-center sm:justify-between"
           >
             <span className="font-medium">{park.name}</span>
             <span className="flex items-center gap-4">

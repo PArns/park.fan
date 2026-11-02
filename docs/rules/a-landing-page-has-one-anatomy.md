@@ -31,8 +31,8 @@ two kinds run the parts that apply, without reordering them.
 
 `PageBottomSections` (nearby, favourites, popular parks, under the blog and news indexes, every post
 and every glossary term) opens each block with `ChapterHeading`, watermark variant, unnumbered, and so
-do its skeletons and empty states. The homepage passes `heading="tile"` (favourites, popular parks)
-or `nested` (nearby, whose chapter `NearbyChapter` already opens).
+do its skeletons and empty states. The homepage passes `heading="none"` (favourites, popular parks)
+or `nested` (nearby), because each stands inside a stop whose heading already opens it.
 
 ## Check
 

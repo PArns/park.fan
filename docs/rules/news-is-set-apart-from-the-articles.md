@@ -25,7 +25,7 @@ and must never filter with `isNewsPost`.
 | Surface                      | Articles                                             | News                                            |
 | ---------------------------- | ---------------------------------------------------- | ----------------------------------------------- |
 | Homepage, hero               | —                                                    | `LatestNewsChip` in the badge row               |
-| Homepage, „Neu auf park.fan" | `HomeReading`, three cards, `listArticlesByRecency`  | `NewsRow` (six) under the cards                 |
+| Homepage, „Neu auf park.fan" | `NewsBoard`, three rows, `listArticlesByRecency`     | `NewsBoard`, six rows above them                |
 | Header menu                  | „Guides": opener + rows, `recent` in `getBlogMenu()` | its own entry: `NewsMenuPanel`, `getNewsMenu()` |
 | Phone menu (burger sheet)    | the „Guides" link                                    | the News link and a `LatestNewsChip` card       |
 | Park and ride pages          | the card grid in `blog-posts-sections.tsx`           | `NewsRow boxed` under the grid                  |
@@ -39,6 +39,11 @@ and must never filter with `isNewsPost`.
 - **On the teaser surfaces news is drawn a step below the articles** (a 112 px cover, a semibold
   title, no teaser, its own accent label) through one component: `NewsList`
   (`components/blog/news-list.tsx`), wrapped by `NewsRow` on server-rendered pages.
+- **The homepage draws both on one board** (`components/home/news-board.tsx`), news above the
+  articles, each group under its own label. The step holds there too: a news row has a semibold
+  title and no teaser, an article a bold, larger title with one. No covers on either, because most
+  news runs without one, and a column of the same brand fallback said nothing. The news stands by
+  day with the day's `NewsAge` in a column on the left, as on `/news`.
 - **The header's News entry is drawn as news**: one lead with cover and teaser, then the headlines on
   a time line, each led by its age (`lib/navigation/news-menu.ts`). An article is picked by topic, a
   news item by what happened and when.

@@ -41,21 +41,19 @@ async function FeaturedParkCards({ parks }: { parks: FeaturedPark[] }) {
  * Full featured-parks section (heading + intro + grid + "view all" CTA) — used on the homepage, the
  * blog context module and the bottom of glossary term pages.
  *
- * `className` goes onto the `<section>` and is for its padding: the homepage hands it the story's
- * rhythm (`STORY_SECTION_Y`), and must hand the same to `FeaturedParksSkeleton` in its fallback.
+ * `className` goes onto the `<section>` and is for its padding: the homepage, whose stop holds the
+ * heading (`heading="none"`), drops it, and must hand the same to `FeaturedParksSkeleton` in its
+ * fallback.
  */
 export async function FeaturedParksSlot({
   locale,
   className,
   heading = 'watermark',
-  children,
 }: {
   locale: string;
   className?: string;
-  /** `tile` on the homepage, `watermark` under editorial pages — see {@link FeaturedParksHeading}. */
-  heading?: 'watermark' | 'tile';
-  /** Drawn under the cards and the link to every park, inside the section (the homepage's links). */
-  children?: React.ReactNode;
+  /** `none` on the homepage, whose stop around the section carries the heading. */
+  heading?: 'watermark' | 'none';
 }) {
   const [tHome, geoData] = await Promise.all([
     getTranslations('home'),
@@ -69,13 +67,14 @@ export async function FeaturedParksSlot({
       <div className="container mx-auto">
         {/* The same heading node `FeaturedParksSkeleton` mounts, so the fallback is as tall as
             the section whichever way the title and the intro wrap. */}
-        <FeaturedParksHeading
-          variant={heading}
-          labels={{
-            title: tHome('sections.featuredParks'),
-            hint: tHome('sections.featuredParksIntro'),
-          }}
-        />
+        {heading !== 'none' && (
+          <FeaturedParksHeading
+            labels={{
+              title: tHome('sections.featuredParks'),
+              hint: tHome('sections.featuredParksIntro'),
+            }}
+          />
+        )}
 
         <FeaturedParkCards parks={parks} />
 
@@ -89,7 +88,6 @@ export async function FeaturedParksSlot({
             <ChevronRight className="h-4 w-4" />
           </Link>
         </div>
-        {children}
       </div>
     </section>
   );

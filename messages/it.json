@@ -167,20 +167,35 @@
       "lead": "Con la tua posizione park.fan mostra i parchi più vicini, prima quelli aperti, e quanto sono pieni in questo momento.",
       "allParks": "Scopri tutti i parchi"
     },
+    "favorites": {
+      "kicker": "Preferiti",
+      "title": "I tuoi parchi e attrazioni",
+      "lead": "Tutto ciò che hai segnato con la stella, con stato e attesa attuale."
+    },
+    "popular": {
+      "kicker": "Parchi popolari",
+      "title": "Tempi di attesa e affluenza nei parchi più popolari",
+      "lead": "Sei grandi parchi con stato e affluenza in diretta, e dodici con il link diretto ai tempi di attesa e al calendario dell’affluenza."
+    },
     "faq": {
       "kicker": "Domande frequenti",
       "title": "Tempi d’attesa nei parchi, spiegati in breve",
+      "lead": "Le domande che nascono alla prima visita.",
+      "link": "Come funziona park.fan",
       "note": "Tutti i dati senza garanzia."
     },
+    "parky": {
+      "kicker": "Parky",
+      "title": "Non trovi quello che cerchi? Chiedi a Parky",
+      "lead": "O non sai ancora bene cosa cerchi. Parky risponde a domande su tempi di attesa, previsioni e orari, e guarda negli stessi dati in diretta.",
+      "link": "Chiedi a Parky"
+    },
     "reading": {
-      "kicker": "News e guide",
-      "title": "Novità su park.fan",
-      "lead": "Guide ai singoli parchi, e cosa sta cambiando adesso nei parchi."
+      "kicker": "Novità su park.fan",
+      "title": "Notizie e guide dai parchi divertimento",
+      "lead": "Cosa sta cambiando adesso nei parchi, e guide dettagliate sui singoli parchi."
     },
     "tour": {
-      "kicker": "Come funziona",
-      "title": "park.fan sullo smartphone",
-      "lead": "Tutto gratis e senza account, sullo smartphone come sul computer.",
       "live": {
         "kicker": "Tempi di attesa in diretta",
         "title": "Tempi di attesa in diretta, per ogni attrazione",
@@ -201,12 +216,6 @@
         "text": "Per ogni attrazione vedi come cambia l’attesa durante la giornata. Il pianificatore mette le tue attrazioni nelle ore tranquille.",
         "link": "Pianifica una giornata",
         "alt": "La pagina di Silver Star su uno smartphone: i tempi di attesa misurati e previsti della giornata e gli orari migliori."
-      },
-      "parky": {
-        "kicker": "Parky",
-        "title": "Chiedi e basta",
-        "text": "Parky risponde a domande su tempi di attesa, previsioni e orari, e guarda negli stessi dati in diretta.",
-        "link": "Scopri Parky"
       }
     },
     "parkLinks": {

@@ -14,21 +14,18 @@ export function FeaturedParksSkeleton({
   className,
   labels,
   heading = 'watermark',
-  children,
 }: {
   className?: string;
   labels: FeaturedParksLabels;
-  heading?: 'watermark' | 'tile';
-  /** What `FeaturedParksSlot` gets as `children`, drawn here too, so the section keeps its height. */
-  children?: React.ReactNode;
+  heading?: 'watermark' | 'none';
 }) {
   return (
     <section className={cn('px-4 py-12', className)}>
       <div className="container mx-auto">
         {/* The real heading, not grey bars shaped like one: it needs no data, and its height
             moves with how title and intro wrap per locale and breakpoint. */}
-        <FeaturedParksHeading labels={labels} variant={heading} />
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {heading !== 'none' && <FeaturedParksHeading labels={labels} />}
+        <div className="grid gap-4 sm:grid-cols-2 @min-[1024px]/page:grid-cols-3">
           {Array.from({ length: 6 }).map((_, i) => (
             <ParkCardNearbySkeleton key={i} />
           ))}
@@ -37,7 +34,6 @@ export function FeaturedParksSkeleton({
           {/* The live CTA is a `text-sm` link: a 20 px line, not 16. */}
           <Skeleton className="h-5 w-32" />
         </div>
-        {children}
       </div>
     </section>
   );

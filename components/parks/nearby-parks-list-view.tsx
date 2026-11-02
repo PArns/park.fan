@@ -56,7 +56,7 @@ export function NearbyParksListView({
   if (parks.length === 0) {
     return (
       <div className={cn('min-h-[200px]', TOP_SPACING, className)}>
-        <NearbyHeading nested={nested} title={t('title')} iconClassName="text-muted-foreground" />
+        <NearbyHeading nested={nested} title={t('title')} />
         <p className="text-muted-foreground text-center text-sm">{t('noParksNearby')}</p>
       </div>
     );
@@ -66,7 +66,6 @@ export function NearbyParksListView({
     <section className={cn(TOP_SPACING, className)}>
       <NearbyHeading
         nested={nested}
-        iconClassName="text-park-primary"
         title={
           <>
             {nearestOpenPark

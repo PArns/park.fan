@@ -167,20 +167,35 @@
       "lead": "Avec ta position, park.fan affiche les parcs les plus proches, ceux qui sont ouverts en premier, et combien il y a de monde en ce moment.",
       "allParks": "Découvrir tous les parcs"
     },
+    "favorites": {
+      "kicker": "Favoris",
+      "title": "Tes parcs et attractions",
+      "lead": "Tout ce que tu as marqué d’une étoile, avec son état et son attente actuelle."
+    },
+    "popular": {
+      "kicker": "Parcs populaires",
+      "title": "Temps d’attente et affluence des parcs les plus populaires",
+      "lead": "Six grands parcs avec leur état et leur affluence en direct, et douze avec un lien direct vers leurs temps d’attente et leur calendrier d’affluence."
+    },
     "faq": {
       "kicker": "Questions fréquentes",
       "title": "Les temps d’attente en parc, en bref",
+      "lead": "Les questions qu’on se pose à la première visite.",
+      "link": "Comment fonctionne park.fan",
       "note": "Informations données sans garantie."
     },
+    "parky": {
+      "kicker": "Parky",
+      "title": "Tu ne trouves pas ce que tu cherches ? Demande à Parky",
+      "lead": "Ou tu ne sais pas encore bien ce que tu cherches. Parky répond aux questions sur les temps d’attente, les prévisions et les horaires, et cherche pour cela dans les mêmes données en direct.",
+      "link": "Demander à Parky"
+    },
     "reading": {
-      "kicker": "Actus & guides",
-      "title": "Nouveau sur park.fan",
-      "lead": "Des guides sur chaque parc, et ce qui change dans les parcs en ce moment."
+      "kicker": "Nouveau sur park.fan",
+      "title": "Actus et guides des parcs d’attractions",
+      "lead": "Ce qui change en ce moment dans les parcs, et des guides détaillés sur chaque parc."
     },
     "tour": {
-      "kicker": "Comment ça marche",
-      "title": "park.fan sur ton téléphone",
-      "lead": "Tout est gratuit et sans compte, sur ton téléphone comme sur ton ordinateur.",
       "live": {
         "kicker": "Temps d’attente en direct",
         "title": "Temps d’attente en direct, pour chaque attraction",
@@ -201,12 +216,6 @@
         "text": "Pour chaque attraction, tu vois comment l’attente évolue dans la journée. Le planificateur place tes attractions aux heures calmes.",
         "link": "Planifier une journée",
         "alt": "La page de Silver Star sur un téléphone : les temps d’attente mesurés et prévus de la journée et les meilleurs créneaux."
-      },
-      "parky": {
-        "kicker": "Parky",
-        "title": "Demande, tout simplement",
-        "text": "Parky répond aux questions sur les temps d’attente, les prévisions et les horaires, et cherche pour cela dans les mêmes données en direct.",
-        "link": "Découvrir Parky"
       }
     },
     "parkLinks": {

@@ -80,15 +80,22 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`home-reading.tsx`](../../components/home/home-reading.tsx)
 
-- `HomeReading` _component_: „Neu auf park.fan": the six newest news posts, then the three newest articles, the homepage's one reading chapter, right under the hero: what happened in the parks is the first thing a visitor reads.
+- `HomeReading` _component_: „Neu auf park.fan", the homepage's first stop under the hero: the six newest news posts and the three newest articles on one board (`NewsBoard`).
 
 ### [`home-skeletons.tsx`](../../components/home/home-skeletons.tsx)
 
 - `FeaturedParksSkeleton` _component_: `className` is the one `FeaturedParksSlot` gets, so the band's padding is the same box.
 
+### [`home-stop.tsx`](../../components/home/home-stop.tsx)
+
+- `HomeStop` _component_: One stop of the homepage under the hero: its opening (`ChapterHeading variant="stop"`, the chapter's link as its `action`) beside its content, the way the tour's stops stand beside their phones, or over it (`stacked`) where the content …
+- `ShotStop` _component_: A stop whose content is a screenshot on a phone (`ShotRow`), as the tour's and Parky's are: the heading beside the phone, which glides as the page scrolls past. `overflow-hidden` keeps the phone's glow from widening a phone's page.
+- `StopLink` _component_: A stop's link, under its lead (`ChapterHeading`'s `action`): the page that tells the rest. `onClick` lets a client caller do more than follow it (`ParkyAskLink`).
+- `STOP_DIVIDER_CLASS` _const_: A hairline that fades out at both ends, where a new group of stops begins: enough to tell two chapters apart without a band or a frame around either.
+
 ### [`home-tour.tsx`](../../components/home/home-tour.tsx)
 
-- `HomeTour` _component_: What park.fan does, shown rather than told: four stops, each a few lines beside a screenshot of the real page on a phone, as on Parky's page.
+- `HomeTour` _component_: What park.fan does, shown rather than told: three stops, each a few lines beside a screenshot of the real page on a phone (`ShotStop`), as on Parky's page.
 
 ### [`ml-sparkline-loader.tsx`](../../components/home/ml-sparkline-loader.tsx)
 
@@ -108,7 +115,11 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`nearby-chapter.tsx`](../../components/home/nearby-chapter.tsx)
 
-- `NearbyChapter` _component_: The chapter frame around the nearby-parks card, which comes in as a slot (a Client Component the caller already dynamic-imports). The frame exists for the plain `<h2>`: the card opens with a band label, not a chapter header.
+- `NearbyChapter` _component_: The stop around the nearby-parks card, which comes in as a slot (a Client Component the caller already dynamic-imports). The stop holds the `<h2>`: the card opens with a band label, not a chapter header.
+
+### [`news-board.tsx`](../../components/home/news-board.tsx)
+
+- `NewsBoard` _component_: „Neu auf park.fan" as one board: the newest news by day, each day's age and date in a column on the left as `/news` draws it (`NewsAge stacked`), and the newest articles with their date and reading time, under the news on a narrow page and …
 
 ### [`open-parks-badge.tsx`](../../components/home/open-parks-badge.tsx)
 
@@ -128,20 +139,21 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `ParkCompass` _component_: The headliners around somebody standing in a park, inside a compass bezel: which way each one is, how far, and what its queue costs right now (`ParkCompassDial`).
 
+### [`parky-ask-link.tsx`](../../components/home/parky-ask-link.tsx)
+
+- `ParkyAskLink` _component_: The Parky stop's link: where Parky shows for this visitor it opens the chat right here, and otherwise it leads to Parky's page, where everybody may ask. It never invites a visitor the rollout left out; that stays Parky's page's call.
+
+### [`parky-stop.tsx`](../../components/home/parky-stop.tsx)
+
+- `ParkyStop` _component_: The homepage's last stop: whoever has not found what they came for, or does not quite know what that is, can ask Parky.
+
 ### [`popular-park-links.tsx`](../../components/home/popular-park-links.tsx)
 
 - `PopularParkLinks` _component_: The parks this locale's readers open most, each with a link to its live waits and one to its crowd calendar, because that is how people search: „&lt;Park&gt; Wartezeiten" and „&lt;Park&gt; Andrang Kalender" are most of what finds park.fan.
 
-### [`section-chrome.ts`](../../components/home/section-chrome.ts)
-
-- `STORY_SECTION_Y` _const_: The vertical padding of every band on the homepage, alone, for the bands the homepage borrows: `FavoritesSection` and `FeaturedParksSlot` keep a tighter padding on blog and glossary pages, so the homepage hands them this one.
-- `STORY_SECTION` _const_: Untinted chapter band.
-- `STORY_SECTION_RULED` _const_: Untinted chapter band, with the rule that separates it from the one above.
-- `STORY_SECTION_TINTED` _const_: Tinted chapter band, with the rule that separates it from the one above.
-
 ### [`section-headings.tsx`](../../components/home/section-headings.tsx)
 
-- `FeaturedParksHeading` _component_: „Beliebte Parks", in the slot and in its fallback alike.
+- `FeaturedParksHeading` _component_: „Beliebte Parks", in the slot and in its fallback alike, under blog, news and glossary pages, whose own chapters carry the watermark glyph on the plain page background. No kicker.
 - `getFeaturedParksLabels` _function_: Resolves the title and intro of the featured parks heading for `FeaturedParksHeading`.
 - Types: `FeaturedParksLabels`
 

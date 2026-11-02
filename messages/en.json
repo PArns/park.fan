@@ -167,20 +167,35 @@
       "lead": "With your location, park.fan lists the nearest parks, open ones first, and shows how busy each one is right now.",
       "allParks": "Browse all parks"
     },
+    "favorites": {
+      "kicker": "Favorites",
+      "title": "Your parks and rides",
+      "lead": "Everything you marked with the star, with its status and current wait."
+    },
+    "popular": {
+      "kicker": "Popular parks",
+      "title": "Wait times and crowds at the most popular parks",
+      "lead": "Six big parks with their live status and crowds, plus twelve with a direct link to their wait times and crowd calendar."
+    },
     "faq": {
       "kicker": "Common questions",
       "title": "Theme park wait times, briefly explained",
+      "lead": "The questions a first visit brings.",
+      "link": "How park.fan works",
       "note": "All figures without guarantee."
     },
+    "parky": {
+      "kicker": "Parky",
+      "title": "Can’t find what you’re looking for? Ask Parky",
+      "lead": "Or you don’t quite know yet what you’re looking for. Parky answers questions about wait times, forecasts and opening hours, looking them up in the same live data.",
+      "link": "Ask Parky"
+    },
     "reading": {
-      "kicker": "News & guides",
-      "title": "New on park.fan",
-      "lead": "Guides to single parks, and what is changing in the parks right now."
+      "kicker": "New on park.fan",
+      "title": "Theme park news and guides",
+      "lead": "What is changing in the parks right now, and in-depth guides to single parks."
     },
     "tour": {
-      "kicker": "How it works",
-      "title": "What park.fan looks like on your phone",
-      "lead": "All free and without an account, on your phone as on your computer.",
       "live": {
         "kicker": "Live wait times",
         "title": "Live wait times for every ride",
@@ -201,12 +216,6 @@
         "text": "For every ride you see how its wait develops over the day. The trip planner puts your rides into the quiet hours.",
         "link": "Plan a day",
         "alt": "The Silver Star page on a phone: the day’s measured and forecast wait times and the best times."
-      },
-      "parky": {
-        "kicker": "Parky",
-        "title": "Just ask",
-        "text": "Parky answers questions about wait times, forecasts and opening hours, looking them up in the same live data.",
-        "link": "Meet Parky"
       }
     },
     "parkLinks": {

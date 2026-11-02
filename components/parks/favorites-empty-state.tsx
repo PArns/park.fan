@@ -36,7 +36,7 @@ export function FavoritesEmptyState({
   return (
     <section className={cn('bg-muted/30 px-4 py-12', className)}>
       <div className="container mx-auto">
-        {!standalone && <FavoritesHeading variant={heading} />}
+        {!standalone && heading !== 'none' && <FavoritesHeading />}
         {/* `inert`, not just `aria-hidden`: the box holds a link and a button, and a focusable
             control in an aria-hidden subtree is reachable by keyboard yet invisible to a screen
             reader. */}
@@ -64,26 +64,22 @@ export function FavoritesEmptyState({
   );
 }
 
-/** Which `ChapterHeading` look the favorites band opens with; see {@link FavoritesHeading}. */
-export type FavoritesHeadingVariant = 'watermark' | 'tile';
+/**
+ * Whether the favorites band opens with its own heading ({@link FavoritesHeading}). `none` is the
+ * homepage's, whose stop around the band carries the heading.
+ */
+export type FavoritesHeadingVariant = 'watermark' | 'none';
 
 /**
  * The band's chapter heading, in every state of it — the empty state, the skeleton and the list
- * — so whatever replaces what stands in the same box. `tile` on the homepage, where every chapter
- * opens with the plate; `watermark` under blog, news and glossary pages, on the plain background
- * their own chapters stand on. `count` only once the list is known.
+ * — so whatever replaces what stands in the same box. The watermark, as under blog, news and
+ * glossary pages, on the plain background their own chapters stand on. `count` only once the list
+ * is known.
  */
-export function FavoritesHeading({
-  variant,
-  count,
-}: {
-  variant: FavoritesHeadingVariant;
-  count?: number;
-}) {
+export function FavoritesHeading({ count }: { count?: number }) {
   const t = useTranslations('favorites');
   return (
     <ChapterHeading
-      variant={variant}
       icon={Star}
       title={count === undefined ? t('title') : `${t('title')} (${count})`}
     />

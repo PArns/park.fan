@@ -26,16 +26,9 @@ export async function getFeaturedParksLabels(): Promise<FeaturedParksLabels> {
 }
 
 /**
- * „Beliebte Parks", in the slot and in its fallback alike. `tile` on the homepage, where every
- * chapter opens with the plate; `watermark` (the default) under blog, news and glossary pages,
- * whose own chapters carry the watermark glyph on the plain page background. No kicker in either.
+ * „Beliebte Parks", in the slot and in its fallback alike, under blog, news and glossary pages,
+ * whose own chapters carry the watermark glyph on the plain page background. No kicker.
  */
-export function FeaturedParksHeading({
-  labels,
-  variant = 'watermark',
-}: {
-  labels: FeaturedParksLabels;
-  variant?: 'watermark' | 'tile';
-}) {
-  return <ChapterHeading variant={variant} icon={Star} title={labels.title} hint={labels.hint} />;
+export function FeaturedParksHeading({ labels }: { labels: FeaturedParksLabels }) {
+  return <ChapterHeading icon={Star} title={labels.title} hint={labels.hint} />;
 }

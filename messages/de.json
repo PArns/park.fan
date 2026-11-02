@@ -167,20 +167,35 @@
       "lead": "Mit deinem Standort zeigt park.fan die nächstgelegenen Parks, die geöffneten zuerst, und wie voll es dort gerade ist.",
       "allParks": "Alle Parks entdecken"
     },
+    "favorites": {
+      "kicker": "Favoriten",
+      "title": "Deine Parks und Bahnen",
+      "lead": "Alles, was du mit dem Stern markiert hast, mit Status und aktueller Wartezeit."
+    },
+    "popular": {
+      "kicker": "Beliebte Parks",
+      "title": "Wartezeiten und Andrang in den beliebtesten Parks",
+      "lead": "Sechs große Parks mit Live-Status und Andrang, dazu zwölf mit direktem Link zu Wartezeiten und Andrang-Kalender."
+    },
     "faq": {
       "kicker": "Häufige Fragen",
       "title": "Freizeitpark-Wartezeiten, kurz erklärt",
+      "lead": "Die Fragen, die beim ersten Besuch kommen.",
+      "link": "So funktioniert park.fan",
       "note": "Alle Angaben ohne Gewähr."
     },
+    "parky": {
+      "kicker": "Parky",
+      "title": "Nicht gefunden, was du suchst? Frag Parky",
+      "lead": "Oder du weißt noch gar nicht genau, was du suchst. Parky beantwortet Fragen zu Wartezeiten, Prognosen und Öffnungszeiten und schaut dafür in dieselben Live-Daten.",
+      "link": "Parky fragen"
+    },
     "reading": {
-      "kicker": "News & Guides",
-      "title": "Neu auf park.fan",
-      "lead": "Guides zu einzelnen Parks, und was sich in den Parks gerade ändert."
+      "kicker": "Neu auf park.fan",
+      "title": "Freizeitpark-News und Guides",
+      "lead": "Was sich in den Parks gerade ändert, und ausführliche Guides zu einzelnen Parks."
     },
     "tour": {
-      "kicker": "So funktioniert’s",
-      "title": "So sieht park.fan auf dem Handy aus",
-      "lead": "Alles kostenlos und ohne Anmeldung, auf dem Handy wie am Rechner.",
       "live": {
         "kicker": "Live-Wartezeiten",
         "title": "Wartezeiten live, für jede Bahn",
@@ -201,12 +216,6 @@
         "text": "Für jede Bahn siehst du, wie sich die Wartezeit über den Tag entwickelt. Der Tagesplaner legt deine Bahnen in die ruhigen Stunden.",
         "link": "Tag planen",
         "alt": "Die Seite von Silver Star auf dem Handy: gemessene und vorhergesagte Wartezeiten des Tages und die besten Zeiten."
-      },
-      "parky": {
-        "kicker": "Parky",
-        "title": "Einfach fragen",
-        "text": "Parky beantwortet Fragen zu Wartezeiten, Prognosen und Öffnungszeiten und schaut dafür in dieselben Live-Daten.",
-        "link": "Parky kennenlernen"
       }
     },
     "parkLinks": {

@@ -434,7 +434,7 @@ Route `/[locale]` (not-found).
 
 Route `/[locale]` (page).
 
-- `default (HomePage)` _component_: The homepage, written for somebody who has never been here: what this is (the hero's headline and one sentence), whether their park is in it (the search, four popular parks, the parks near them), what is new (guides and news), what else it …
+- `default (HomePage)` _component_: The homepage, written for somebody who has never been here: what this is and whether their park is in it (the hero), then one stop after another, each a heading worded as people search beside its content (`HomeStop`): what is new (the news …
 - `generateMetadata` _function_
 - `revalidate` _const_: A static shell per locale, served from the CDN.
 
