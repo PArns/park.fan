@@ -2,7 +2,7 @@
 title: 'Orcashow Miracles keert terug in SeaWorld Orlando'
 translationKey: seaworld-orlando-christmas-celebration-2026
 date: '2026-11-02'
-time: '18:30'
+time: '18:41'
 author: patrick
 mode: published
 featured: false
@@ -37,8 +37,6 @@ Jaarkaarthouders, bij SeaWorld Pass Members genoemd, krijgen een voorstelling va
 
 ## Evenementdagen en openingstijden in november
 
-In november is er op 16 dagen Christmas Celebration:
-
 - vrijdag 6, 13 en 20 november: 10.00 tot 21.00 uur
 - zaterdag 7 en zondag 8 november: 9.00 tot 21.00 uur
 - zaterdag 14 november: 9.00 tot 22.00 uur, zondag 15 november: 9.00 tot 21.00 uur
@@ -49,7 +47,7 @@ In november is er op 16 dagen Christmas Celebration:
 
 Op de andere dagen, van 9 tot en met 12 november, van 16 tot en met 19 november en op 30 november, is het park alleen van 10.00 tot 18.00 uur open en is er geen kerstprogramma.
 
-Tot en met 1 januari sluit elke evenementavond bij sluitingstijd af met het vuurwerk Holiday Reflections: Fireworks Finale rond de lagune. Veel onderdelen zijn binnen en gaan bij een regenbui in Florida gewoon door, maar voor het vuurwerk boven de lagune geldt dat niet.
+Tot en met 1 januari sluit elke evenementavond bij sluitingstijd af met het vuurwerk Holiday Reflections: Fireworks Finale rond de lagune. Een groot deel van het programma is binnen en gaat ook bij regen door.
 
 ```best-days-widget slug=seaworld-orlando
 
@@ -57,7 +55,7 @@ Tot en met 1 januari sluit elke evenementavond bij sluitingstijd af met het vuur
 
 ## Wat bij de entree hoort
 
-In Sesame Street Land trekken Elmo en zijn vrienden rond in de Sesame Street Christmas Parade, en in het Seaport Theater speelt de Elmo's Christmas Wish Show. In O Wondrous Night komen meer dan 30 kerstliedjes op het podium, met levensgrote poppen en levende dieren. De schaatsshow Winter Wonderland on Ice speelt op bepaalde dagen van 7 november tot 5 januari, dus tot na 4 januari. Clyde en Seamore hebben met Clyde & Seamore's Countdown to Christmas een eigen kerstshow.
+In Sesame Street Land trekken Elmo en zijn vrienden rond in de Sesame Street Christmas Parade, en in het Seaport Theater speelt de Elmo's Christmas Wish Show. In O Wondrous Night komen meer dan 30 kerstliedjes op het podium, met levensgrote poppen en levende dieren. De schaatsshow Winter Wonderland on Ice speelt op bepaalde dagen van 7 november tot 5 januari, een dag na het officiële einde van het evenement. Clyde en Seamore hebben met Clyde & Seamore's Countdown to Christmas een eigen kerstshow.
 
 Bij Sea of Trees aan de lagune lichten bomen op in de maat van kerstmuziek; de boom in het midden is 70 voet hoog, zo'n 21 meter. Aan de Waterfront vallen sneeuwvlokken, en dat zie je in Orlando in november niet vaak. Bij de Dolphin Nursery staat een kersttreintje in miniatuur.
 

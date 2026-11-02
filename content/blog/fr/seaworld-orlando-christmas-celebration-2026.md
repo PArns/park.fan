@@ -2,7 +2,7 @@
 title: 'Le spectacle d’orques Miracles revient à SeaWorld Orlando'
 translationKey: seaworld-orlando-christmas-celebration-2026
 date: '2026-11-02'
-time: '18:30'
+time: '18:41'
 author: patrick
 mode: published
 featured: false
@@ -37,8 +37,6 @@ Les Pass Members, autrement dit les titulaires d’un abonnement annuel, ont dro
 
 ## Jours de l’événement et horaires en novembre
 
-En novembre, la Christmas Celebration se tient sur 16 jours :
-
 - vendredis 6, 13 et 20 novembre : de 10 h à 21 h
 - samedi 7 et dimanche 8 novembre : de 9 h à 21 h
 - samedi 14 novembre : de 9 h à 22 h ; dimanche 15 novembre : de 9 h à 21 h
@@ -49,7 +47,7 @@ En novembre, la Christmas Celebration se tient sur 16 jours :
 
 Les autres jours, du 9 au 12 et du 16 au 19 novembre ainsi que le 30 novembre, le parc n’ouvre que de 10 h à 18 h, et sans aucun programme de Noël.
 
-Jusqu’au 1er janvier, chaque soirée de l’événement se termine à la fermeture du parc par le feu d’artifice Holiday Reflections: Fireworks Finale, tiré autour du lagon. Une bonne partie des animations se passe en intérieur et résiste à une averse floridienne, ce qui n’est pas le cas du feu d’artifice au-dessus du lagon.
+Jusqu’au 1er janvier, chaque soirée de l’événement se termine à la fermeture du parc par le feu d’artifice Holiday Reflections: Fireworks Finale, tiré autour du lagon. Une bonne partie des animations se passe en intérieur et a lieu même sous la pluie.
 
 ```best-days-widget slug=seaworld-orlando
 
@@ -57,7 +55,7 @@ Jusqu’au 1er janvier, chaque soirée de l’événement se termine à la ferme
 
 ## Ce que comprend le billet d’entrée
 
-Elmo et ses amis traversent Sesame Street Land avec la Sesame Street Christmas Parade, tandis que le Seaport Theater joue Elmo’s Christmas Wish Show. O Wondrous Night fait monter sur scène plus de 30 chants de Noël, avec des marionnettes grandeur nature et des animaux vivants. Le spectacle de patinage artistique Winter Wonderland on Ice se joue certains jours du 7 novembre au 5 janvier, donc au-delà du 4 janvier. Clyde et Seamore ont leur propre spectacle de Noël, Clyde & Seamore’s Countdown to Christmas.
+Elmo et ses amis traversent Sesame Street Land avec la Sesame Street Christmas Parade, tandis que le Seaport Theater joue Elmo’s Christmas Wish Show. O Wondrous Night fait monter sur scène plus de 30 chants de Noël, avec des marionnettes grandeur nature et des animaux vivants. Le spectacle de patinage artistique Winter Wonderland on Ice se joue certains jours du 7 novembre au 5 janvier, un jour après la fin officielle de l’événement. Clyde et Seamore ont leur propre spectacle de Noël, Clyde & Seamore’s Countdown to Christmas.
 
 Au bord du lagon, les arbres de Sea of Trees s’allument au rythme de la musique de Noël ; celui du centre mesure 70 pieds, soit environ 21 mètres. Sur le Waterfront, il tombe des flocons de neige, ce qu’on ne voit guère à Orlando en novembre. Près de la Dolphin Nursery, on trouve un réseau de train de Noël miniature.
 

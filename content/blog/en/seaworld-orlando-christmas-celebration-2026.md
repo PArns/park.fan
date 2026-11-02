@@ -2,7 +2,7 @@
 title: 'Orca show Miracles returns to SeaWorld Orlando'
 translationKey: seaworld-orlando-christmas-celebration-2026
 date: '2026-11-02'
-time: '18:30'
+time: '18:41'
 author: patrick
 mode: published
 featured: false
@@ -37,8 +37,6 @@ Pass Members, as SeaWorld calls its annual pass holders, get a performance of Mi
 
 ## Event days and hours in November
 
-The Christmas Celebration runs on 16 days in November:
-
 - Friday, November 6, 13 and 20: 10 am to 9 pm
 - Saturday, November 7, and Sunday, November 8: 9 am to 9 pm
 - Saturday, November 14: 9 am to 10 pm; Sunday, November 15: 9 am to 9 pm
@@ -49,7 +47,7 @@ The Christmas Celebration runs on 16 days in November:
 
 On the remaining days, November 9 to 12, November 16 to 19 and November 30, the park is open only from 10 am to 6 pm and there's no Christmas program.
 
-Every event night through January 1 ends at park close with Holiday Reflections: Fireworks Finale over the lagoon. Plenty of the program is indoors and survives a Florida downpour, though the fireworks over the lagoon don't count.
+Every event night through January 1 ends at park close with Holiday Reflections: Fireworks Finale over the lagoon. Much of the program is indoors, so it goes ahead in the rain.
 
 ```best-days-widget slug=seaworld-orlando
 
@@ -57,7 +55,7 @@ Every event night through January 1 ends at park close with Holiday Reflections:
 
 ## What admission covers
 
-Elmo and friends lead the Sesame Street Christmas Parade through Sesame Street Land, and the Seaport Theater has Elmo's Christmas Wish Show. O Wondrous Night puts more than 30 Christmas songs on stage with life-size puppets and live animals. The ice show Winter Wonderland on Ice plays on selected days from November 7 to January 5, past January 4. Clyde and Seamore get a Christmas show of their own, Clyde & Seamore's Countdown to Christmas.
+Elmo and friends lead the Sesame Street Christmas Parade through Sesame Street Land, and the Seaport Theater has Elmo's Christmas Wish Show. O Wondrous Night puts more than 30 Christmas songs on stage with life-size puppets and live animals. The ice show Winter Wonderland on Ice plays on selected days from November 7 to January 5, a day after the event officially ends. Clyde and Seamore get a Christmas show of their own, Clyde & Seamore's Countdown to Christmas.
 
 At the lagoon, the trees of Sea of Trees light up in time to Christmas music around a 70-foot (21-meter) tree in the middle. Snow falls along the Waterfront, not something Orlando usually manages in November. There's a miniature Christmas train layout at Dolphin Nursery.
 
