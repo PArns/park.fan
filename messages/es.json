@@ -2939,6 +2939,7 @@
     "challengeWhy": "Para que Parky esté para las personas y no para los bots.",
     "errorSession": "Tu sesión ha caducado. Parky vuelve a comprobar rápido; luego repite tu pregunta.",
     "errorExpired": "Este chat ha caducado. Vuelve a preguntar y Parky empieza de nuevo.",
+    "errorUnclear": "Mmm, no le encuentro sentido. Pregúntame sobre parques, atracciones o tiempos de espera.",
     "lookupPlanner": "Parky lo añade a tu planificador …",
     "lookupLocation": "Parky mira qué hay cerca de ti …",
     "lookupWeather": "Parky mira el tiempo …",

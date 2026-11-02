@@ -2939,6 +2939,7 @@
     "challengeWhy": "Zo is Parky er voor mensen en niet voor bots.",
     "errorSession": "Je sessie is verlopen. Parky controleert even opnieuw, stel je vraag daarna gewoon nog een keer.",
     "errorExpired": "Deze chat is verlopen. Stel je vraag gewoon opnieuw, Parky begint vers.",
+    "errorUnclear": "Hm, daar word ik niet wijs uit. Vraag me iets over parken, attracties of wachttijden.",
     "lookupPlanner": "Parky zet het in je dagplanner …",
     "lookupLocation": "Parky kijkt wat er bij je in de buurt is …",
     "lookupWeather": "Parky kijkt naar het weer …",

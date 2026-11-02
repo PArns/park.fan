@@ -2939,6 +2939,7 @@
     "challengeWhy": "Damit Parky für Menschen da ist und nicht für Bots.",
     "errorSession": "Deine Sitzung ist abgelaufen. Parky prüft kurz neu, dann stell die Frage einfach noch mal.",
     "errorExpired": "Dieser Chat ist abgelaufen. Stell die Frage einfach noch mal, Parky fängt neu an.",
+    "errorUnclear": "Hm, daraus werde ich nicht schlau. Frag mich etwas zu Parks, Fahrgeschäften oder Wartezeiten.",
     "lookupPlanner": "Parky trägt es in den Tagesplaner ein …",
     "lookupLocation": "Parky schaut, was in deiner Nähe ist …",
     "lookupWeather": "Parky schaut aufs Wetter …",

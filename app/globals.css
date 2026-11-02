@@ -392,13 +392,19 @@
  * what the visitor does: a checklist for the trip planner, confetti for a finished plan, heart eyes
  * for a favourite, a bell for an alert, sunglasses and a lit wheel when the theme turns.
  */
+/* Two blinks in 24 s, about 9 and 14 s apart: 5 to 10 in a minute and a half, never in a
+   steady beat. Each shuts and opens over some 170 ms. */
 @keyframes parky-blink {
   0%,
-  92%,
+  37.3%,
+  38.7%,
+  96.3%,
+  97.7%,
   100% {
     transform: scaleY(1);
   }
-  95% {
+  38%,
+  97% {
     transform: scaleY(0.1);
   }
 }
@@ -1384,7 +1390,7 @@
 }
 @media (prefers-reduced-motion: no-preference) {
   .parky-eyes {
-    animation: parky-blink 4.5s ease-in-out infinite;
+    animation: parky-blink 24s ease-in-out infinite;
   }
   .parky-wheel {
     animation: parky-spin 14s linear infinite;

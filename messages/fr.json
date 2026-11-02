@@ -2939,6 +2939,7 @@
     "challengeWhy": "Pour que Parky soit là pour les humains, pas pour les robots.",
     "errorSession": "Ta session a expiré. Parky revérifie vite, puis repose simplement ta question.",
     "errorExpired": "Cette discussion a expiré. Repose simplement ta question, Parky repart de zéro.",
+    "errorUnclear": "Hum, je n'y comprends rien. Pose-moi une question sur les parcs, les attractions ou les temps d'attente.",
     "lookupPlanner": "Parky l’ajoute à ton planning …",
     "lookupLocation": "Parky regarde ce qu’il y a près de toi …",
     "lookupWeather": "Parky regarde la météo …",
