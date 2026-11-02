@@ -3133,6 +3133,7 @@
     "challengeWhy": "So Parky is there for people, not for bots.",
     "errorSession": "Your session has expired. Parky checks again quickly, then just ask once more.",
     "errorExpired": "This chat has expired. Just ask again and Parky starts afresh.",
+    "errorUnclear": "Hm, I can't make sense of that. Ask me about parks, rides or wait times.",
     "lookupPlanner": "Parky is adding it to your day planner …",
     "lookupLocation": "Parky is checking what is near you …",
     "lookupWeather": "Parky is checking the weather …",

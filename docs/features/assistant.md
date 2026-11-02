@@ -52,6 +52,12 @@ click does the widget appear, in a glass card. The solved token is traded at the
 token (`useAssistantSession`, kept for the browser session), which every chat, rating and feedback
 carries. A 401 drops it and the window asks again.
 
+The API refuses a question without asking the model in two cases, and the window words each
+(`useAssistantChat`): a 429, more than three questions in 30 seconds or a pause for repeated junk,
+reads `errorLimit`; a 422 `unclear`, a message the API took for junk (nothing to read, one key held
+down, letters without a vowel, the question just answered asked again), reads `errorUnclear`. The
+rules live in the API's `assistant-junk.ts`.
+
 ## Answers are model output
 
 `AssistantMessageText` renders them with `react-markdown`, without raw HTML and with only `p`,
@@ -105,6 +111,16 @@ move or press, a key, the mouse wheel or a touch.
 | `bored`  | 25 s      | yawns, then every 5–9 s whistles, blows a gum bubble that pops, rolls its eyes, looks around, reads or naps    |
 | `asleep` | 75 s      | eyes fall shut, it breathes slowly under rising Zs, the hat stops; activity wakes it with a "!"                |
 
+That is the button in the corner. In the open window Parky sits beside the conversation and is
+`calm`: awake it only looks around, winks or tilts its head, every 20–35 s; bored it yawns, looks
+around or naps, every 9–15 s; asleep it is the same. Its eyes follow the pointer either way. It
+blinks twice in a 24 s cycle, about 9 and 14 s apart, so 5 to 10 times in a minute and a half.
+
+A change of stage never cuts an act short: an act still on stage when Parky gets bored, falls
+asleep or wakes up plays to its end, with the dizziness after a ride, and only then does the new
+stage begin. A cue (an easter egg, Parky's answer to something the visitor did) still plays at
+once, and without a life of its own (a mood, a search, the window closed) Parky stops at once.
+
 The hat, the rides and the dizzy stars reach beyond the drawing's 48-unit box, which only works
 while the `<svg>` element itself is not animated: Safari clips an animated SVG that has a filter,
 or sits under one, to its own box. So the button's bob moves a wrapper around the drawing, and the
@@ -145,6 +161,17 @@ resting point, so the two cannot drift apart. On the hills the car is slower nea
 faster low down. Eyes go wide and the mouth opens on every ride, and off every ride Parky is
 dizzy (`FOLLOW_UP`): the pupils swirl round their eyes, one each way, the body reels, the mouth
 goes wavy and three stars circle its head.
+
+A random ride (`ride`, by itself or from a cue) is only one that fits on screen where Parky is at
+that moment (`rideFits`). Every ride heads up or to the left, away from the button's corner, but in
+the open window Parky sits in the top left corner, where the launch climbs about 72 units and the
+free fall about 112 units above the drawing, 120 and 187 px at the window's size. The same module
+works out each ride's reach from its geometry: Parky in the car as points round its outline, placed
+at every stop, and the rails. Only the left and top edges count; to the right the loop reaches a
+little past the drawing, and the hills come back from off the page on purpose. With no ride that
+fits, the turn passes. On a phone Parky keeps 8 px from the window's edge so the loop still fits; a
+laptop window needs about 740 px of height for the launch and about 870 px for the free fall. A ride
+asked for by name, as on Parky's page, plays anywhere.
 
 While a search is open anywhere on the page (the palette from the header or ⌘K, the hero's field,
 the homepage's step card, a listing's, the glossary's, the compare picker), Parky searches along: a

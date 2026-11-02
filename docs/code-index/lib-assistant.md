@@ -70,11 +70,16 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`parky-rides.ts`](../../lib/assistant/parky-rides.ts)
 
 - `isRide` _function_: Whether a name is one of Parky's rides.
+- `rideFits` _function_: Whether a ride keeps Parky and its rails on screen, for a drawing whose box (its `getBoundingClientRect`) starts `left` and `top` pixels into the viewport and is `width` pixels wide.
 - `rideKeyframe` _function_: A stop as a keyframe for the car, turned about the wheels' resting point.
+- `VIEW` _const_: The drawing's width and height in its own units, its `viewBox`.
 - `REST` _const_: Where the wheels touch the rail while Parky sits at rest.
+- `HUB` _const_: The hat's hub: the centre of the Ferris wheel set into Parky's head.
+- `RIM` _const_: The Ferris wheel's radius, from the hub to the cabins' centres.
+- `LOOP` _const_: The coaster's loop: Parky turns about its centre, so the car's wheels, `r` below it, run round the inner rail; the outer rail runs `gauge` further out. The stylesheet's `.parky-act-coaster` turns about the same point.
 - `RIDES` _const_: The rides Parky can take; `coaster` is the loop, drawn and turned by the stylesheet.
 - `RIDE_MOTION` _const_: The rides played from these stops; the loop is the stylesheet's.
-- Types: `ParkyRide`, `RideStop`, `RideMotion`
+- Types: `ParkyRide`, `RideStop`, `RideReach`, `RideMotion`
 
 ### [`post-text.ts`](../../lib/assistant/post-text.ts)
 

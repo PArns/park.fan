@@ -3133,6 +3133,7 @@
     "challengeWhy": "Così Parky è qui per le persone, non per i bot.",
     "errorSession": "La tua sessione è scaduta. Parky ricontrolla in un attimo, poi rifai la domanda.",
     "errorExpired": "Questa chat è scaduta. Rifai la domanda e Parky riparte da capo.",
+    "errorUnclear": "Mmm, non ci capisco niente. Chiedimi di parchi, attrazioni o tempi di attesa.",
     "lookupPlanner": "Parky lo aggiunge al tuo planner …",
     "lookupLocation": "Parky guarda cosa c’è vicino a te …",
     "lookupWeather": "Parky controlla il meteo …",

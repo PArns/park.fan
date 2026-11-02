@@ -1,11 +1,28 @@
 /**
- * Parky's rides beyond the loop: each is a track and the car's way along it, worked out from one
- * geometry, so the rails drawn and the motion played cannot drift apart. Coordinates are the
- * 48-unit drawing's; a point is where the car's wheels touch the rail.
+ * Parky's rides: beyond the loop each is a track and the car's way along it, worked out from one
+ * geometry, so the rails drawn and the motion played cannot drift apart; and for every ride how far
+ * it reaches, so that a ride is only taken where it fits on screen. Coordinates are the 48-unit
+ * drawing's; a point is where the car's wheels touch the rail.
  */
+
+/** The drawing's width and height in its own units, its `viewBox`. */
+export const VIEW = 48;
 
 /** Where the wheels touch the rail while Parky sits at rest. */
 export const REST = { x: 24, y: 49 } as const;
+
+/** The hat's hub: the centre of the Ferris wheel set into Parky's head. */
+export const HUB = { x: 33, y: 0.5 } as const;
+
+/** The Ferris wheel's radius, from the hub to the cabins' centres. */
+export const RIM = 6.5;
+
+/**
+ * The coaster's loop: Parky turns about its centre, so the car's wheels, `r` below it, run round
+ * the inner rail; the outer rail runs `gauge` further out. The stylesheet's `.parky-act-coaster`
+ * turns about the same point.
+ */
+export const LOOP = { x: 24, y: 16, r: 33, gauge: 2.4 } as const;
 
 /** The rides Parky can take; `coaster` is the loop, drawn and turned by the stylesheet. */
 export const RIDES = ['coaster', 'launch', 'hills', 'tower'] as const;
@@ -32,18 +49,83 @@ export interface RideStop {
   opacity?: number;
 }
 
+/** How far a ride takes Parky and its rails to the left and up, in the drawing's units. */
+export interface RideReach {
+  left: number;
+  top: number;
+}
+
 /** A ride the component plays: the car's stops, the rails' path, and how the hat lifts off. */
 export interface RideMotion {
   stops: RideStop[];
   track: string;
   /** The hat's lift above the head (units) at moments of the ride, for the free fall. */
   hat?: { at: number; lift: number }[];
+  reach: RideReach;
+}
+
+interface Point {
+  x: number;
+  y: number;
 }
 
 const round = (value: number) => Math.round(value * 100) / 100;
 
-function trackOf(points: readonly { x: number; y: number }[]): string {
+function trackOf(points: readonly Point[]): string {
   return `M${points.map((point) => `${round(point.x)} ${round(point.y)}`).join('L')}`;
+}
+
+/** Sixteen points round an ellipse, or round a circle without `ry`. */
+function ring(cx: number, cy: number, rx: number, ry = rx): Point[] {
+  return Array.from({ length: 16 }, (_, i) => ({
+    x: cx + rx * Math.cos((i * Math.PI) / 8),
+    y: cy + ry * Math.sin((i * Math.PI) / 8),
+  }));
+}
+
+/**
+ * Parky in its car at rest, as points round the outline `parky-logo.tsx` draws: the bubble and its
+ * tail, the Ferris wheel out to its cabins' edge, the car and its two wheels. A ride reaches as far
+ * as these go.
+ */
+const FIGURE: Point[] = [
+  ...ring(24, 25.2, 20, 18.2),
+  { x: 7.5, y: 46 },
+  ...ring(HUB.x, HUB.y, RIM + 1.7),
+  { x: 7, y: 38 },
+  { x: 41, y: 38 },
+  { x: 9.5, y: 45.5 },
+  { x: 38.5, y: 45.5 },
+  ...ring(14, REST.y - 2, 2),
+  ...ring(34, REST.y - 2, 2),
+];
+
+/** Half the widest rail's stroke, the tower's mast. */
+const RAIL_EDGE = 1.6;
+
+/** Where a stop puts a point of the drawing: squashed and turned about the wheels, then moved. */
+function placed(point: Point, stop: RideStop): Point {
+  const dx = (point.x - REST.x) * (stop.scaleX ?? 1);
+  const dy = (point.y - REST.y) * (stop.scaleY ?? 1);
+  const turn = (stop.angle * Math.PI) / 180;
+  return {
+    x: stop.x + dx * Math.cos(turn) - dy * Math.sin(turn),
+    y: stop.y + dx * Math.sin(turn) + dy * Math.cos(turn),
+  };
+}
+
+/** The reach of a ride played along `rails`; where Parky has faded out, only the rails count. */
+function reachOf(stops: readonly RideStop[], rails: readonly Point[]): RideReach {
+  const points = [
+    ...stops
+      .filter((stop) => stop.opacity !== 0)
+      .flatMap((stop) => FIGURE.map((point) => placed(point, stop))),
+    ...rails.map((point) => ({ x: point.x - RAIL_EDGE, y: point.y - RAIL_EDGE })),
+  ];
+  return {
+    left: round(Math.min(...points.map((point) => point.x))),
+    top: round(Math.min(...points.map((point) => point.y))),
+  };
 }
 
 /**
@@ -107,21 +189,20 @@ function launch(): RideMotion {
   const up = [{ x: REST.x, y: REST.y, angle: 0 }, ...curve, { ...top, y: -40 }, top];
   const out = timed(up, 0.12, 0.4, top.y);
   const back = timed([...up].reverse(), 0.48, 0.66, top.y);
-  return {
-    stops: [
-      { ...REST, angle: 0, at: 0 },
-      { x: REST.x + 3, y: REST.y, angle: 0, at: 0.06 },
-      ...out,
-      { ...top, at: 0.48 },
-      ...back.slice(1),
-      { x: REST.x + 6, y: REST.y, angle: 0, at: 0.72 },
-      { x: REST.x - 7, y: REST.y, angle: 0, at: 0.8 },
-      { x: REST.x + 3, y: REST.y, angle: 0, at: 0.87 },
-      { x: REST.x - 1, y: REST.y, angle: 0, at: 0.93 },
-      { ...REST, angle: 0, at: 1 },
-    ],
-    track: `${trackOf([{ x: REST.x + 12, y: REST.y }, ...curve])}V${top.y - 9}`,
-  };
+  const stops: RideStop[] = [
+    { ...REST, angle: 0, at: 0 },
+    { x: REST.x + 3, y: REST.y, angle: 0, at: 0.06 },
+    ...out,
+    { ...top, at: 0.48 },
+    ...back.slice(1),
+    { x: REST.x + 6, y: REST.y, angle: 0, at: 0.72 },
+    { x: REST.x - 7, y: REST.y, angle: 0, at: 0.8 },
+    { x: REST.x + 3, y: REST.y, angle: 0, at: 0.87 },
+    { x: REST.x - 1, y: REST.y, angle: 0, at: 0.93 },
+    { ...REST, angle: 0, at: 1 },
+  ];
+  const rails = [{ x: REST.x + 12, y: REST.y }, ...curve, { x: corner.x, y: top.y - 9 }];
+  return { stops, track: trackOf(rails), reach: reachOf(stops, rails) };
 }
 
 /**
@@ -139,19 +220,18 @@ function hills(): RideMotion {
   ];
   const run = timed(away, 0.08, 0.62, REST.y - 30);
   run[run.length - 1].opacity = 0;
-  return {
-    stops: [
-      { ...REST, angle: 0, at: 0 },
-      { x: REST.x + 3, y: REST.y, angle: 0, at: 0.04 },
-      ...run.map((stop) => ({ ...stop, opacity: stop.opacity ?? 1 })),
-      { x: REST.x + 70, y: REST.y, angle: 0, at: 0.64, opacity: 0 },
-      { x: REST.x + 40, y: REST.y, angle: 0, at: 0.72, opacity: 1 },
-      { x: REST.x - 4, y: REST.y, angle: -6, at: 0.84, opacity: 1 },
-      { x: REST.x + 1, y: REST.y, angle: 3, at: 0.91, opacity: 1 },
-      { ...REST, angle: 0, at: 1, opacity: 1 },
-    ],
-    track: trackOf([{ x: REST.x + 40, y: REST.y }, ...away.slice(1)]),
-  };
+  const stops: RideStop[] = [
+    { ...REST, angle: 0, at: 0 },
+    { x: REST.x + 3, y: REST.y, angle: 0, at: 0.04 },
+    ...run.map((stop) => ({ ...stop, opacity: stop.opacity ?? 1 })),
+    { x: REST.x + 70, y: REST.y, angle: 0, at: 0.64, opacity: 0 },
+    { x: REST.x + 40, y: REST.y, angle: 0, at: 0.72, opacity: 1 },
+    { x: REST.x - 4, y: REST.y, angle: -6, at: 0.84, opacity: 1 },
+    { x: REST.x + 1, y: REST.y, angle: 3, at: 0.91, opacity: 1 },
+    { ...REST, angle: 0, at: 1, opacity: 1 },
+  ];
+  const rails = [{ x: REST.x + 40, y: REST.y }, ...away.slice(1)];
+  return { stops, track: trackOf(rails), reach: reachOf(stops, rails) };
 }
 
 /** The free fall: pulled up the tower, a shiver at the top, the drop, the brakes. */
@@ -161,23 +241,29 @@ function tower(): RideMotion {
     const s = (i + 1) / 6;
     return { x: REST.x, y: topY + (REST.y - topY) * s * s, angle: 0, at: round(0.58 + 0.08 * s) };
   });
+  const stops: RideStop[] = [
+    { ...REST, angle: 0, at: 0 },
+    { ...REST, angle: 0, at: 0.08 },
+    { x: REST.x, y: topY, angle: 0, at: 0.45 },
+    { x: REST.x + 0.6, y: topY, angle: 0, at: 0.48 },
+    { x: REST.x - 0.6, y: topY, angle: 0, at: 0.51 },
+    { x: REST.x + 0.4, y: topY, angle: 0, at: 0.54 },
+    { x: REST.x, y: topY, angle: 0, at: 0.58 },
+    ...drop.slice(0, -1),
+    { ...drop[drop.length - 1], scaleX: 1.14, scaleY: 0.86 },
+    { x: REST.x, y: REST.y - 5, angle: 0, at: 0.72, scaleX: 0.95, scaleY: 1.05 },
+    { ...REST, angle: 0, at: 0.78 },
+    { x: REST.x, y: REST.y - 1.5, angle: 0, at: 0.85 },
+    { ...REST, angle: 0, at: 1 },
+  ];
+  const rails = [
+    { x: REST.x, y: REST.y + 3 },
+    { x: REST.x, y: topY - 30 },
+  ];
   return {
-    stops: [
-      { ...REST, angle: 0, at: 0 },
-      { ...REST, angle: 0, at: 0.08 },
-      { x: REST.x, y: topY, angle: 0, at: 0.45 },
-      { x: REST.x + 0.6, y: topY, angle: 0, at: 0.48 },
-      { x: REST.x - 0.6, y: topY, angle: 0, at: 0.51 },
-      { x: REST.x + 0.4, y: topY, angle: 0, at: 0.54 },
-      { x: REST.x, y: topY, angle: 0, at: 0.58 },
-      ...drop.slice(0, -1),
-      { ...drop[drop.length - 1], scaleX: 1.14, scaleY: 0.86 },
-      { x: REST.x, y: REST.y - 5, angle: 0, at: 0.72, scaleX: 0.95, scaleY: 1.05 },
-      { ...REST, angle: 0, at: 0.78 },
-      { x: REST.x, y: REST.y - 1.5, angle: 0, at: 0.85 },
-      { ...REST, angle: 0, at: 1 },
-    ],
-    track: `M${REST.x} ${REST.y + 3}V${topY - 30}`,
+    stops,
+    track: trackOf(rails),
+    reach: reachOf(stops, rails),
     hat: [
       { at: 0, lift: 0 },
       { at: 0.6, lift: 0 },
@@ -195,6 +281,33 @@ export const RIDE_MOTION: Record<Exclude<ParkyRide, 'coaster'>, RideMotion> = {
   hills: hills(),
   tower: tower(),
 };
+
+/**
+ * The loop's reach: Parky turns all the way round the loop's centre, never further out than the
+ * outer rail or its own farthest point.
+ */
+const LOOP_EDGE = Math.max(
+  LOOP.r + LOOP.gauge + RAIL_EDGE,
+  ...FIGURE.map((point) => Math.hypot(point.x - LOOP.x, point.y - LOOP.y))
+);
+const LOOP_REACH: RideReach = { left: round(LOOP.x - LOOP_EDGE), top: round(LOOP.y - LOOP_EDGE) };
+
+/**
+ * Whether a ride keeps Parky and its rails on screen, for a drawing whose box (its
+ * `getBoundingClientRect`) starts `left` and `top` pixels into the viewport and is `width` pixels
+ * wide. Only those two edges count: every ride heads up or to the left, away from the corner the
+ * button sits in; to the right the loop reaches only a little past the drawing, and the hills come
+ * back from off the page on purpose. In the open window Parky sits in the top left corner instead,
+ * where the launch and the free fall would run off the screen.
+ */
+export function rideFits(
+  ride: ParkyRide,
+  box: { left: number; top: number; width: number }
+): boolean {
+  const reach = ride === 'coaster' ? LOOP_REACH : RIDE_MOTION[ride].reach;
+  const unit = box.width / VIEW;
+  return box.left + reach.left * unit >= 0 && box.top + reach.top * unit >= 0;
+}
 
 /** A stop as a keyframe for the car, turned about the wheels' resting point. */
 export function rideKeyframe(stop: RideStop): Keyframe {
