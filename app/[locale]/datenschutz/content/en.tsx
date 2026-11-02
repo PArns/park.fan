@@ -9,7 +9,7 @@ export function DatenschutzEN() {
   return (
     <>
       <h1 className="mb-2 text-4xl font-bold">Privacy Policy</h1>
-      <p className="text-muted-foreground mb-8 text-sm">Last updated: 29 October 2026</p>
+      <p className="text-muted-foreground mb-8 text-sm">Last updated: 2 November 2026</p>
 
       <div className="space-y-4 text-base leading-7">
         <LegalH2>1. Controller</LegalH2>
@@ -191,6 +191,59 @@ export function DatenschutzEN() {
           what is said about Cloudflare above applies.
         </p>
 
+        <LegalH3>Parky, the chat assistant</LegalH3>
+        <p>
+          Parky answers questions about parks, wait times, forecasts and our posts in a chat window
+          at the bottom right. Whether Parky appears in your browser is decided by a random number
+          between 0 and 99 that we keep in local storage. It says nothing about you. As long as you
+          do not chat with Parky, your browser only asks our website whether Parky is switched on.
+        </p>
+        <p>
+          Before your first question, Cloudflare Turnstile checks whether a person is using the chat
+          (see "Sending photos"). Your browser then receives a session key from our API server,
+          valid for two hours. With every question it sends api.park.fan your text, the language,
+          the path of the page you are on, your time zone and the chat's ID. It sends your location
+          only if you share it in the chat yourself. The server rounds it to about one kilometre,
+          uses it for the answer and does not store it. If you ask about nearby parks without
+          sharing your location, the server estimates your rough position from your IP address.
+        </p>
+        <p>
+          To answer, our server passes your question, the latest messages of the chat and the park
+          data looked up for it to the language model Claude by Anthropic PBC, 548 Market Street,
+          PMB 90375, San Francisco, CA 94104, USA. Anthropic does not receive your IP address.
+          Anthropic processes the data on our behalf to produce the answer and, under its terms for
+          business customers, does not use it to train its models. The transfer to the USA is based
+          on the European Commission's standard contractual clauses. More information:{' '}
+          <LegalLink href="https://www.anthropic.com/legal/privacy" />.
+        </p>
+        <p>
+          Our API server stores the chat, that is your questions and Parky's answers together with
+          the lookups it made for them, and your rating of an answer. This lets Parky refer back to
+          earlier messages in the same conversation and lets us find wrong answers. No IP address is
+          stored with it, only a checksum made from the address, the day and a secret key. It shows
+          nothing but which chats of one day came from the same address and cannot be turned back
+          into the address. We delete chats automatically after 90 days. So that nobody can overload
+          the service, the server counts questions per session key and new sessions per IP address,
+          both only as a checksum that expires after one day at the latest.
+        </p>
+        <p>
+          If you send us feedback through Parky, we store your text with the chat's ID and, if you
+          give it, your email address, so that we can reply. We delete the feedback once it is dealt
+          with.
+        </p>
+        <p>
+          For the length of the session, your browser's session storage holds a copy of the chat,
+          the session key, whether Parky is switched on and which lines it has already said. Closing
+          the tab deletes them.
+        </p>
+        <p>
+          The legal basis for the chat is providing the feature you asked for (Art. 6(1)(b) GDPR);
+          for storing chats, the checksums and Turnstile it is our legitimate interest in a reliable
+          assistant protected against misuse (Art. 6(1)(f) GDPR). Please do not write personal
+          details such as names, addresses or health information into the chat. Parky's answers are
+          produced by a language model and can contain mistakes.
+        </p>
+
         <LegalH3>Contact by email or phone</LegalH3>
         <p>
           If you write to us or call us, we process your request and your contact details in order
@@ -225,14 +278,16 @@ export function DatenschutzEN() {
           which search field was opened and what kind of result you clicked, which tab you opened on
           a park page, whether you added or removed a favorite, which language you chose, whether
           you set a wait-time alert or a show reminder, how you opened the day planner, that you
-          clicked a link to a park's website or ticket shop or shared a page, how you answered the
-          question about notifications, or that an error page was shown. If a post, a park or an
-          attraction is in the foreground for five seconds, that counts as a read. For posts we also
-          note whether you read a quarter, half, three quarters or all of it. If an event belongs to
-          a park, an attraction, a show or a restaurant, its ID is included, and for a post its name
-          from the address. What you type into a search field, your location and your input are not
-          sent to our counter. We do not measure loading times here. We do measure how long a page
-          was visible in the foreground of your browser: your browser counts the seconds and reports
+          clicked a link to a park's website or ticket shop or shared a page, whether Parky appeared
+          and whether you clicked it or one of its lines, whether a question to Parky was a
+          suggestion or typed and how the answer ended, how you answered the question about
+          notifications, or that an error page was shown. If a post, a park or an attraction is in
+          the foreground for five seconds, that counts as a read. For posts we also note whether you
+          read a quarter, half, three quarters or all of it. If an event belongs to a park, an
+          attraction, a show or a restaurant, its ID is included, and for a post its name from the
+          address. What you type into a search field, your location and your input are not sent to
+          our counter. We do not measure loading times here. We do measure how long a page was
+          visible in the foreground of your browser: your browser counts the seconds and reports
           them when you move to the next page or leave the tab. It sends no time of day with them,
           and at most 30 minutes count for one page view.
         </p>

@@ -8,7 +8,7 @@ export function DatenschutzDE() {
   return (
     <>
       <h1 className="mb-2 text-4xl font-bold">Datenschutzerklärung</h1>
-      <p className="text-muted-foreground mb-8 text-sm">Stand: 29. Oktober 2026</p>
+      <p className="text-muted-foreground mb-8 text-sm">Stand: 2. November 2026</p>
 
       <div className="space-y-4 text-base leading-7">
         <LegalH2>1. Verantwortlicher</LegalH2>
@@ -199,6 +199,63 @@ export function DatenschutzDE() {
           lit. f DSGVO). Zur Übermittlung in die USA gilt das oben zu Cloudflare Gesagte.
         </p>
 
+        <LegalH3>Parky, der Chat-Assistent</LegalH3>
+        <p>
+          Parky beantwortet in einem Chatfenster unten rechts Fragen zu Parks, Wartezeiten,
+          Prognosen und unseren Beiträgen. Ob Parky in Ihrem Browser erscheint, entscheidet eine
+          zufällige Zahl zwischen 0 und 99, die wir im lokalen Speicher ablegen. Sie sagt nichts
+          über Sie aus. Solange Sie nicht mit Parky chatten, fragt Ihr Browser nur bei unserer
+          Website ab, ob Parky gerade eingeschaltet ist.
+        </p>
+        <p>
+          Vor Ihrer ersten Frage prüft Cloudflare Turnstile, ob ein Mensch den Chat bedient (siehe
+          „Fotos einsenden“). Danach erhält Ihr Browser von unserem API-Server einen
+          Sitzungsschlüssel, der zwei Stunden gilt. Mit jeder Frage sendet er an api.park.fan Ihren
+          Text, die Sprache, den Pfad der Seite, auf der Sie gerade sind, Ihre Zeitzone und die
+          Kennung des Chats. Ihren Standort sendet er nur, wenn Sie ihn im Chat ausdrücklich teilen.
+          Der Server rundet ihn auf etwa einen Kilometer, nutzt ihn für die Antwort und speichert
+          ihn nicht. Fragen Sie ohne geteilten Standort nach Parks in der Nähe, schätzt der Server
+          Ihre ungefähre Lage aus Ihrer IP-Adresse.
+        </p>
+        <p>
+          Für die Antwort übergibt unser Server Ihre Frage, die letzten Nachrichten des Chats und
+          die dafür abgefragten Parkdaten an das Sprachmodell Claude der Anthropic PBC, 548 Market
+          Street, PMB 90375, San Francisco, CA 94104, USA. Ihre IP-Adresse erhält Anthropic nicht.
+          Anthropic verarbeitet die Daten in unserem Auftrag, um die Antwort zu erzeugen, und nutzt
+          sie nach seinen Bedingungen für Geschäftskunden nicht zum Training seiner Modelle. Die
+          Übermittlung in die USA stützt sich auf die Standardvertragsklauseln der EU-Kommission.
+          Weitere Informationen: <LegalLink href="https://www.anthropic.com/legal/privacy" />.
+        </p>
+        <p>
+          Auf unserem API-Server speichern wir den Chat, also Ihre Fragen und Parkys Antworten samt
+          der Abfragen, die er dafür gestellt hat, und Ihre Bewertung einer Antwort. So kann Parky
+          im selben Gespräch an Früheres anknüpfen, und wir finden falsche Antworten. Eine
+          IP-Adresse steht dabei nicht, nur eine Prüfsumme aus der Adresse, dem Tag und einem
+          geheimen Schlüssel. Sie zeigt allein, welche Chats eines Tages von derselben Adresse
+          kamen, und lässt sich nicht auf die Adresse zurückrechnen. Nach 90 Tagen löschen wir die
+          Chats automatisch. Damit niemand den Dienst überlastet, zählt der Server die Fragen je
+          Sitzungsschlüssel und die neuen Sitzungen je IP-Adresse, beides nur als Prüfsumme, die
+          spätestens nach einem Tag verfällt.
+        </p>
+        <p>
+          Schicken Sie uns über Parky eine Rückmeldung, speichern wir Ihren Text mit der Kennung des
+          Chats und, wenn Sie sie angeben, Ihre E-Mail-Adresse, um Ihnen antworten zu können. Wir
+          löschen die Rückmeldung, wenn sie erledigt ist.
+        </p>
+        <p>
+          Im Sitzungsspeicher (Session Storage) Ihres Browsers liegen für die Dauer der Sitzung eine
+          Kopie des Chats, der Sitzungsschlüssel, ob Parky eingeschaltet ist und welche Sprüche er
+          schon gesagt hat. Mit dem Schließen des Tabs ist das gelöscht.
+        </p>
+        <p>
+          Rechtsgrundlage für den Chat ist die Bereitstellung der von Ihnen gewünschten Funktion
+          (Art. 6 Abs. 1 lit. b DSGVO), für die Speicherung der Chats, die Prüfsummen und Turnstile
+          unser berechtigtes Interesse an einem verlässlichen und vor Missbrauch geschützten
+          Assistenten (Art. 6 Abs. 1 lit. f DSGVO). Bitte schreiben Sie keine persönlichen Angaben
+          wie Namen, Anschriften oder Gesundheitsdaten in den Chat. Parkys Antworten erzeugt ein
+          Sprachmodell, sie können Fehler enthalten.
+        </p>
+
         <LegalH3>Kontakt per E-Mail oder Telefon</LegalH3>
         <p>
           Wenn Sie uns schreiben oder anrufen, verarbeiten wir Ihre Anfrage mit Ihren Kontaktdaten,
@@ -237,7 +294,9 @@ export function DatenschutzDE() {
           geöffnet haben, ob Sie einen Favoriten gesetzt oder entfernt haben, welche Sprache Sie
           gewählt haben, ob Sie einen Wartezeit-Alarm oder eine Show-Erinnerung gesetzt haben, wie
           Sie den Tagesplaner geöffnet haben, dass Sie einen Link zur Website oder zum Ticketshop
-          eines Parks angeklickt oder eine Seite geteilt haben, wie Sie auf die Frage nach
+          eines Parks angeklickt oder eine Seite geteilt haben, ob Parky erschienen ist und ob Sie
+          ihn oder einen seiner Sprüche angeklickt haben, ob eine Frage an Parky ein Vorschlag war
+          oder getippt wurde und wie die Antwort ausging, wie Sie auf die Frage nach
           Benachrichtigungen geantwortet haben oder dass eine Fehlerseite angezeigt wurde. Steht ein
           Beitrag, ein Park oder eine Attraktion fünf Sekunden im Vordergrund, zählt das als Lesen.
           Bei Beiträgen halten wir außerdem fest, ob Sie ein Viertel, die Hälfte, drei Viertel oder
