@@ -230,6 +230,26 @@ waits and is said once they close, unless that takes longer than 15 s. Opening P
 (`stopTeasers`, `lib/assistant/teaser-store.ts`); closing a line by its ✕ ends every line,
 easter eggs included (`muteLines`).
 
+## Parky's page
+
+`/[locale]/parky` (`app/[locale]/parky/`) is a hub that shows what Parky does. Each of its three
+chapters pairs a screenshot of the real widget on a phone with a few questions somebody could ask:
+the wait times chat, a planned day, and Parky searching along. A stage plays five of Parky's acts
+on a loop while they are on screen, and a sixth tile keeps the rest a secret. After that come what
+happens to the questions, a FAQ and the next steps. The texts are in the `parkyPage` namespace,
+read on the server only.
+
+The page invites the visitor (`assistantGate.invite()`): for the rest of the session Parky shows
+whatever the rollout share says, as long as the admin's switch is on. Its button opens the window
+through `openParky()` (`lib/assistant/open.ts`), which the launcher hears and counts as
+`assistant_opened` with source `page`. While the gate is undecided the button waits, and once it
+says off, a line says Parky is resting instead (`assistantGate.getStatus()`).
+
+The screenshots (`public/parky/<locale>/{chat,plan,search}.webp`) come from
+`scripts/capture-parky-shots.mjs`. The script lays two fixture chats into the browser's session,
+passes the challenge with a stand-in session and photographs the window on an iPhone 13 in the
+dark theme. Run it again after the widget changes visibly.
+
 ## Tracking
 
 Our own statistic (`trackSiteEvent`, labels in `lib/admin/site-analytics.ts`): `assistant_shown`

@@ -163,6 +163,7 @@ export const ROUTE_MESSAGE_NAMESPACES = {
   ],
   '/parks/six-flags': ['nearby', 'parkCard'],
   '/parks/universal': ['nearby', 'parkCard'],
+  '/parky': [],
   '/search': [],
   '/trip-planner': ['parks.weather', 'planner'],
   '/trip-planner/shared': ['planner'],

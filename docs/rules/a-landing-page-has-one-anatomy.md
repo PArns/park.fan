@@ -6,7 +6,7 @@ and keeps its own hero.
 
 | Kind               | Pages                                                                          | Head                                                  |
 | ------------------ | ------------------------------------------------------------------------------ | ----------------------------------------------------- |
-| Hub                | best time to visit, trip planner, how park.fan works, Fancast, blog            | `LandingHero` (`data-landing-hero="hub"`)             |
+| Hub                | best time to visit, trip planner, how park.fan works, Fancast, Parky, blog     | `LandingHero` (`data-landing-hero="hub"`)             |
 | Tool page          | contribute, news index, compare, glossary index, changelog                     | `LandingHero variant="compact"` (`="compact"`)        |
 | Park audience page | `/mit-kindern`, `/durchschnittliche-wartezeiten`, the persona pages after them | the park chrome: `ParkTitleHeader` + `ParkHeaderCard` |
 

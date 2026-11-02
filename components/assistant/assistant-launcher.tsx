@@ -17,6 +17,7 @@ import { ENTRANCE_MS, pageEntrance, type ParkyEntrance } from '@/lib/assistant/e
 import { parkySwitch } from '@/lib/assistant/easter-eggs';
 import { isRide } from '@/lib/assistant/parky-rides';
 import { isReactionAct } from '@/lib/assistant/reactions';
+import { onParkyOpen } from '@/lib/assistant/open';
 import { usePageLocked } from '@/lib/hooks/use-page-locked';
 import { useSearchOpen } from '@/lib/analytics/search-presence';
 
@@ -234,6 +235,9 @@ export function AssistantLauncher() {
   }, []);
   const openFromButton = useCallback(() => openFrom('button'), [openFrom]);
   const openFromLine = useCallback(() => openFrom('line'), [openFrom]);
+  // Parky's own page asks for the window by its button; heard before the gate opens, so a press
+  // that comes first is not lost.
+  useEffect(() => onParkyOpen(() => openFrom('page')), [openFrom]);
   const play = useCallback(
     (act: ParkyCue['act']) => setCue((last) => ({ act, id: (last?.id ?? 0) + 1 })),
     []

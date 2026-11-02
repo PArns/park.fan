@@ -165,6 +165,7 @@ export async function GET(
       howto: { namespace: 'howto', key: 'title' },
       'how-park-fan-works': { namespace: 'howto', key: 'title' },
       fancast: { namespace: 'fancast', key: 'title' },
+      parky: { namespace: 'parkyPage', key: 'metaTitle' },
       'best-time-to-visit': { namespace: 'bestTime', key: 'title' },
       ...glossaryEntries,
     };

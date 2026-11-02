@@ -430,6 +430,7 @@
     "howto": "Understanding wait times",
     "planner": "Trip planner",
     "fancast": "Fancast",
+    "parky": "Parky",
     "bestTime": "Best time to visit",
     "glossaryLink": "Dictionary",
     "changelog": "Changelog",
@@ -3032,6 +3033,10 @@
     },
     "blog": {
       "kicker": "park.fan · Blog"
+    },
+    "parky": {
+      "kicker": "park.fan · Chat assistant",
+      "action": "Ask Parky"
     }
   },
   "compare": {
@@ -3194,5 +3199,103 @@
     "themeLight3": "Daylight! Perfect park weather.",
     "install1": "Now I live on your home screen!",
     "install2": "Installed! From now on I’m just a tap away."
+  },
+  "parkyPage": {
+    "metaTitle": "Parky, the park.fan chat assistant",
+    "metaDescription": "Ask Parky about wait times, forecasts and the quietest day to visit. It looks things up in park.fan’s live data and puts rides straight into your day plan.",
+    "title": "Parky, your companion for a day at the park",
+    "lead": "Ask it about wait times, forecasts and the quietest day. Parky looks things up in park.fan’s live data and helps you plan your day.",
+    "intro": "Parky lives at the bottom right of park.fan, in the round speech bubble with a Ferris wheel on its head. Tap it and write to it like you would to a friend who knows their theme parks.",
+    "ask": "Ask Parky now",
+    "off": "Parky is taking a break right now. Check back later.",
+    "shotLabel": "Screenshot",
+    "examplesLabel": "For example",
+    "chapters": {
+      "ask": {
+        "kicker": "Just ask",
+        "title": "Wait times, forecasts, opening hours",
+        "body": "For every answer, Parky looks in the same data you see on park.fan: the wait times right now, the forecast for the next hours and days, opening hours and the weather. It shows you the ride or the park as a card you can tap straight through.",
+        "alt": "Parky in the chat on a phone: it gives the wait time for Taron and the shortest queues at Phantasialand.",
+        "examples": [
+          "How busy will Phantasialand be on Saturday?",
+          "Which ride at Europa-Park has the shortest wait right now?",
+          "Will it rain at Movie Park this afternoon?"
+        ]
+      },
+      "plan": {
+        "kicker": "Lends a hand",
+        "title": "Parky helps plan your day",
+        "body": "Tell Parky which park you want to visit and when, and what matters to you. It puts the rides into your day plan and tells you where best to start. Afterwards you move and share the plan as usual.",
+        "alt": "Parky has added Silver Star, Blue Fire, Voltron Nevera and Wodan to the day plan for Europa-Park.",
+        "examples": [
+          "Plan me a day at Europa-Park with kids.",
+          "When is Efteling quietest in December?"
+        ]
+      },
+      "search": {
+        "kicker": "Searches along",
+        "title": "Magnifying glass at the ready",
+        "body": "When you open the search, Parky gets out its magnifying glass and searches along. With every key you press it leans in a little, and if the search finds nothing, a question mark pops up above it.",
+        "alt": "The search for Taron on park.fan, with Parky looking through its magnifying glass at the bottom right."
+      },
+      "character": {
+        "kicker": "With character",
+        "title": "More than a chat window",
+        "body": "Parky rides roller coasters, yawns when nothing happens and has plenty more up its sleeve. It shows you a few of its tricks here; the rest you will come across as you browse."
+      },
+      "data": {
+        "kicker": "Your data",
+        "title": "What happens to your questions",
+        "body": "Parky answers with the language model Claude by Anthropic. We store your questions without an IP address and delete them after 90 days. Parky only sees your location if you share it in the chat.",
+        "link": "Everything else is in the privacy policy."
+      }
+    },
+    "gallery": {
+      "coaster": "Loop",
+      "love": "New favourite",
+      "shades": "Lights on",
+      "nap": "Nap",
+      "gum": "Bubble gum",
+      "more": "And more …"
+    },
+    "faq": {
+      "kicker": "Quick questions",
+      "title": "Common questions about Parky",
+      "items": [
+        {
+          "question": "Does Parky cost anything?",
+          "answer": "No. Parky is free and needs no account, just like the rest of park.fan."
+        },
+        {
+          "question": "Where do Parky’s answers come from?",
+          "answer": "From park.fan’s live data: wait times, opening hours, forecasts, weather and our posts. It looks things up again for every question instead of remembering them."
+        },
+        {
+          "question": "Can Parky get things wrong?",
+          "answer": "Yes. A language model writes the answers, and it slips up now and then. The numbers on the cards in the chat come straight from park.fan. If an answer looks odd, give it a thumbs down and we will take a look."
+        },
+        {
+          "question": "Why don’t I see Parky everywhere?",
+          "answer": "Parky is not switched on for every visitor yet. The button on this page brings it along for your visit."
+        },
+        {
+          "question": "Which languages does Parky speak?",
+          "answer": "All of park.fan’s languages: German, English, Dutch, French, Spanish and Italian. It answers in the language of the page you are on."
+        },
+        {
+          "question": "Can I make Parky quieter?",
+          "answer": "Yes. Tap the ✕ in one of its speech bubbles and it stays quiet until the end of your visit. If “reduce motion” is on in your system, its animations stay off."
+        }
+      ]
+    },
+    "next": {
+      "title": "What next?",
+      "ask": "Ask Parky",
+      "askDescription": "At the bottom right, right here on this page.",
+      "planner": "Go to the trip planner",
+      "plannerDescription": "Plan your park day yourself, ride by ride.",
+      "parks": "All parks",
+      "parksDescription": "Wait times and forecasts for every park."
+    }
   }
 }

@@ -430,6 +430,7 @@
     "howto": "Entender los tiempos de espera",
     "planner": "Planificador",
     "fancast": "Fancast",
+    "parky": "Parky",
     "bestTime": "Mejor época para visitar",
     "glossaryLink": "Diccionario",
     "changelog": "Historial de versiones (inglés)",
@@ -3032,6 +3033,10 @@
     },
     "blog": {
       "kicker": "park.fan · Blog"
+    },
+    "parky": {
+      "kicker": "park.fan · Asistente de chat",
+      "action": "Preguntar a Parky"
     }
   },
   "compare": {
@@ -3194,5 +3199,103 @@
     "themeLight3": "¡Luz del día! Tiempo perfecto para el parque.",
     "install1": "¡Ahora vivo en tu pantalla de inicio!",
     "install2": "¡Instalado! A partir de ahora estoy a un toque."
+  },
+  "parkyPage": {
+    "metaTitle": "Parky, el asistente de chat de park.fan",
+    "metaDescription": "Pregunta a Parky por los tiempos de espera, las previsiones y el día más tranquilo para ir. Lo busca en los datos en directo de park.fan y añade atracciones directamente a tu plan del día.",
+    "title": "Parky, tu compañero para un día en el parque",
+    "lead": "Pregúntale por los tiempos de espera, las previsiones y el día más tranquilo. Parky lo busca en los datos en directo de park.fan y te ayuda a planificar el día.",
+    "intro": "Parky vive abajo a la derecha en park.fan, en el bocadillo redondo con una noria en la cabeza. Tócalo y escríbele como a un amigo que se conoce los parques de atracciones de memoria.",
+    "ask": "Preguntar a Parky ahora",
+    "off": "Parky está descansando ahora mismo. Vuelve a pasar más tarde.",
+    "shotLabel": "Captura de pantalla",
+    "examplesLabel": "Por ejemplo",
+    "chapters": {
+      "ask": {
+        "kicker": "Pregunta sin más",
+        "title": "Tiempos de espera, previsiones, horarios",
+        "body": "Para cada respuesta, Parky mira en los mismos datos que ves en park.fan: los tiempos de espera de ahora, la previsión para las próximas horas y días, los horarios y el tiempo. Te muestra la atracción o el parque como una tarjeta desde la que sigues con un toque.",
+        "alt": "Parky en el chat de un móvil: da el tiempo de espera de Taron y las colas más cortas de Phantasialand.",
+        "examples": [
+          "¿Habrá mucha gente el sábado en Phantasialand?",
+          "¿Qué atracción de Europa-Park tiene ahora la espera más corta?",
+          "¿Va a llover esta tarde en Movie Park?"
+        ]
+      },
+      "plan": {
+        "kicker": "Echa una mano",
+        "title": "Parky planifica el día contigo",
+        "body": "Dile a Parky a qué parque quieres ir, cuándo y qué es importante para ti. Añade las atracciones a tu plan del día y te dice por dónde empezar. Después mueves y compartes el plan como siempre.",
+        "alt": "Parky ha añadido Silver Star, Blue Fire, Voltron Nevera y Wodan al plan del día en Europa-Park.",
+        "examples": [
+          "Planifícame un día en Europa-Park con niños.",
+          "¿Cuándo hay menos gente en Efteling en diciembre?"
+        ]
+      },
+      "search": {
+        "kicker": "Busca contigo",
+        "title": "Con la lupa en la mano",
+        "body": "Cuando abres la búsqueda, Parky saca su lupa y busca contigo. Con cada tecla se inclina un poco, y si la búsqueda no encuentra nada, aparece un signo de interrogación sobre su cabeza.",
+        "alt": "La búsqueda de Taron en park.fan, con Parky mirando por su lupa abajo a la derecha."
+      },
+      "character": {
+        "kicker": "Con carácter",
+        "title": "Más que una ventana de chat",
+        "body": "Parky se sube a la montaña rusa, bosteza cuando no pasa nada y tiene muchos más trucos guardados. Aquí te enseña algunos; el resto lo descubrirás tú mientras navegas."
+      },
+      "data": {
+        "kicker": "Tus datos",
+        "title": "Qué pasa con tus preguntas",
+        "body": "Parky responde con el modelo de lenguaje Claude de Anthropic. Guardamos tus preguntas sin dirección IP y las borramos a los 90 días. Parky solo ve tu ubicación si la compartes en el chat.",
+        "link": "Todo lo demás está en la política de privacidad."
+      }
+    },
+    "gallery": {
+      "coaster": "Looping",
+      "love": "Nuevo favorito",
+      "shades": "Luz encendida",
+      "nap": "Siesta",
+      "gum": "Chicle",
+      "more": "Y mucho más …"
+    },
+    "faq": {
+      "kicker": "En pocas palabras",
+      "title": "Preguntas frecuentes sobre Parky",
+      "items": [
+        {
+          "question": "¿Cuesta algo Parky?",
+          "answer": "No. Parky es gratis y no necesita cuenta, igual que el resto de park.fan."
+        },
+        {
+          "question": "¿De dónde saca Parky sus respuestas?",
+          "answer": "De los datos en directo de park.fan: tiempos de espera, horarios, previsiones, el tiempo y nuestros artículos. Para cada pregunta vuelve a mirar en vez de recordar las cosas."
+        },
+        {
+          "question": "¿Puede equivocarse Parky?",
+          "answer": "Sí. Un modelo de lenguaje redacta las respuestas, y a veces se equivoca. Las cifras de las tarjetas del chat vienen directamente de park.fan. Si una respuesta te parece rara, dale un pulgar hacia abajo y le echaremos un vistazo."
+        },
+        {
+          "question": "¿Por qué no veo a Parky en todas partes?",
+          "answer": "Parky todavía no está activado para todos los visitantes. Con el botón de esta página lo traes para tu visita."
+        },
+        {
+          "question": "¿Qué idiomas habla Parky?",
+          "answer": "Todos los idiomas de park.fan: alemán, inglés, neerlandés, francés, español e italiano. Responde en el idioma de la página en la que estás."
+        },
+        {
+          "question": "¿Puedo hacer que Parky moleste menos?",
+          "answer": "Sí. Toca la ✕ en uno de sus bocadillos y se callará hasta el final de tu visita. Si tienes activado «reducir movimiento» en tu sistema, sus animaciones no se muestran."
+        }
+      ]
+    },
+    "next": {
+      "title": "¿Y ahora qué?",
+      "ask": "Preguntar a Parky",
+      "askDescription": "Abajo a la derecha, aquí mismo en esta página.",
+      "planner": "Ir al planificador",
+      "plannerDescription": "Planifica tú mismo tu día en el parque, atracción a atracción.",
+      "parks": "Todos los parques",
+      "parksDescription": "Tiempos de espera y previsiones para cada parque."
+    }
   }
 }

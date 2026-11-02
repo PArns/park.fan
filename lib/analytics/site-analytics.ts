@@ -141,8 +141,8 @@ type NoProps = Record<string, never>;
 /** How a question reached Parky: a suggestion chip or typed. */
 export type AssistantQuestionKind = 'suggestion' | 'typed';
 
-/** What made Parky's window open: the round button or a line in its speech bubble. */
-export type AssistantOpenSource = 'button' | 'line';
+/** What made Parky's window open: the round button, a line in its bubble, or Parky's own page. */
+export type AssistantOpenSource = 'button' | 'line' | 'page';
 
 /**
  * A line in Parky's speech bubble: an invitation, after an entrance, bored, woken, a holiday's, a

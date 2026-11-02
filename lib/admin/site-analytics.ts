@@ -1011,6 +1011,7 @@ const PLANNER_VALUE_LABEL: Record<string, Record<string, string>> = {
     optimize: 'Optimieren im Planer',
     button: 'Parky-Knopf',
     line: 'Parky-Spruch',
+    page: 'Parkys Seite',
   },
   mode: { day: '„Tag optimieren“', headliners: '„Alle Headliner“', fit: 'Antwort des Assistenten' },
   lever: {

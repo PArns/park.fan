@@ -44,7 +44,8 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`parky-logo.tsx`](../../components/assistant/parky-logo.tsx)
 
 - `ParkyLogo` _component_: Parky's face: a speech bubble in the brand's blue to green with big eyes that follow the mouse, rosy cheeks and a smile, and for a hat a Ferris wheel with coloured cabins on an A-frame.
-- Types: `ParkyCue`, `ParkyMood`
+- `actLength` _function_: How long an act runs with the one that follows it, for a page that plays acts in turn.
+- Types: `ParkyAct`, `ParkyCue`, `ParkyMood`
 
 ### [`use-assistant-actions.ts`](../../components/assistant/use-assistant-actions.ts)
 

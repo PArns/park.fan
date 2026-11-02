@@ -119,6 +119,21 @@ const on = { enabled: true, rolloutPercent: 25 };
 check(assistantVisible({ config: on, bucket: 24, forced: false }), true, 'inside the share');
 check(assistantVisible({ config: on, bucket: 25, forced: false }), false, 'outside the share');
 check(
+  assistantVisible({ config: on, bucket: 80, forced: false, invited: true }),
+  true,
+  "invited by Parky's page, outside the share"
+);
+check(
+  assistantVisible({
+    config: { enabled: false, rolloutPercent: 100 },
+    bucket: 0,
+    forced: false,
+    invited: true,
+  }),
+  false,
+  'an invitation does not switch a stopped Parky on'
+);
+check(
   assistantVisible({ config: { enabled: false, rolloutPercent: 100 }, bucket: 0, forced: false }),
   false,
   'off beats the share'

@@ -430,6 +430,7 @@
     "howto": "Wartezeiten verstehen",
     "planner": "Tagesplaner",
     "fancast": "Fancast",
+    "parky": "Parky",
     "bestTime": "Beste Reisezeit",
     "glossaryLink": "Wörterbuch",
     "changelog": "Changelog (Englisch)",
@@ -3032,6 +3033,10 @@
     },
     "blog": {
       "kicker": "park.fan · Blog"
+    },
+    "parky": {
+      "kicker": "park.fan · Chat-Assistent",
+      "action": "Parky fragen"
     }
   },
   "compare": {
@@ -3194,5 +3199,103 @@
     "themeLight3": "Tageslicht! Perfektes Parkwetter.",
     "install1": "Jetzt wohne ich auf deinem Homescreen!",
     "install2": "Installiert! Ab jetzt bin ich nur einen Tipp entfernt."
+  },
+  "parkyPage": {
+    "metaTitle": "Parky, der Chat-Assistent von park.fan",
+    "metaDescription": "Frag Parky nach Wartezeiten, Prognosen und dem ruhigsten Besuchstag. Er schaut in den Live-Daten von park.fan nach und trägt Bahnen direkt in deinen Tagesplaner ein.",
+    "title": "Parky, dein Begleiter für den Parktag",
+    "lead": "Frag ihn nach Wartezeiten, Prognosen und dem ruhigsten Tag. Parky schaut in den Live-Daten von park.fan nach und plant deinen Tag mit.",
+    "intro": "Parky wohnt unten rechts auf park.fan, in der runden Sprechblase mit dem Riesenrad auf dem Kopf. Tipp ihn an, und du schreibst ihm wie einem Freund, der sich in Freizeitparks auskennt.",
+    "ask": "Parky jetzt fragen",
+    "off": "Parky macht gerade Pause. Schau später noch mal vorbei.",
+    "shotLabel": "Screenshot",
+    "examplesLabel": "Zum Beispiel",
+    "chapters": {
+      "ask": {
+        "kicker": "Frag einfach",
+        "title": "Wartezeiten, Prognosen, Öffnungszeiten",
+        "body": "Parky schaut für jede Antwort in denselben Daten nach, die du auf park.fan siehst: die Wartezeiten von jetzt, die Prognose für die nächsten Stunden und Tage, Öffnungszeiten und das Wetter. Dazu zeigt er dir die Bahn oder den Park als Karte, von der aus du direkt weiterklickst.",
+        "alt": "Parky im Chat auf dem Handy: Er nennt die Wartezeit von Taron und die kürzesten Warteschlangen im Phantasialand.",
+        "examples": [
+          "Wie voll wird es am Samstag im Phantasialand?",
+          "Welche Bahn hat im Europa-Park gerade die kürzeste Wartezeit?",
+          "Regnet es heute Nachmittag im Movie Park?"
+        ]
+      },
+      "plan": {
+        "kicker": "Packt mit an",
+        "title": "Parky plant deinen Tag mit",
+        "body": "Sag Parky, wann du in welchen Park willst und was dir wichtig ist. Er trägt die Bahnen in deinen Tagesplaner ein und sagt dir, womit du am besten anfängst. Danach verschiebst und teilst du den Plan wie gewohnt.",
+        "alt": "Parky hat Silver Star, Blue Fire, Voltron Nevera und Wodan in den Tagesplaner für den Europa-Park eingetragen.",
+        "examples": [
+          "Plan mir einen Tag im Europa-Park mit Kindern.",
+          "Wann ist im Dezember im Efteling am wenigsten los?"
+        ]
+      },
+      "search": {
+        "kicker": "Sucht mit",
+        "title": "Mit der Lupe dabei",
+        "body": "Öffnest du die Suche, holt Parky seine Lupe raus und sucht mit. Bei jedem Tastendruck beugt er sich ein Stück vor, und findet die Suche nichts, taucht über ihm ein Fragezeichen auf.",
+        "alt": "Die Suche nach Taron auf park.fan, unten rechts schaut Parky durch seine Lupe."
+      },
+      "character": {
+        "kicker": "Mit Charakter",
+        "title": "Mehr als ein Chatfenster",
+        "body": "Parky fährt Achterbahn, gähnt, wenn nichts passiert, und hat noch einiges mehr drauf. Ein paar seiner Kunststücke zeigt er dir hier, den Rest entdeckst du beim Stöbern selbst."
+      },
+      "data": {
+        "kicker": "Deine Daten",
+        "title": "Was mit deinen Fragen passiert",
+        "body": "Parky antwortet mit dem Sprachmodell Claude von Anthropic. Deine Fragen speichern wir ohne IP-Adresse und löschen sie nach 90 Tagen. Deinen Standort sieht Parky nur, wenn du ihn im Chat teilst.",
+        "link": "Alles Weitere steht in der Datenschutzerklärung."
+      }
+    },
+    "gallery": {
+      "coaster": "Looping",
+      "love": "Neuer Favorit",
+      "shades": "Licht an",
+      "nap": "Nickerchen",
+      "gum": "Kaugummi",
+      "more": "Und noch mehr …"
+    },
+    "faq": {
+      "kicker": "Kurz gefragt",
+      "title": "Häufige Fragen zu Parky",
+      "items": [
+        {
+          "question": "Kostet Parky etwas?",
+          "answer": "Nein. Parky ist kostenlos und braucht kein Konto, genau wie der Rest von park.fan."
+        },
+        {
+          "question": "Woher hat Parky seine Antworten?",
+          "answer": "Aus den Live-Daten von park.fan: Wartezeiten, Öffnungszeiten, Prognosen, Wetter und unsere Beiträge. Für jede Frage schaut er neu nach, statt sich etwas zu merken."
+        },
+        {
+          "question": "Kann Parky sich irren?",
+          "answer": "Ja. Die Antworten formuliert ein Sprachmodell, und das vertut sich manchmal. Die Zahlen auf den Karten im Chat kommen direkt von park.fan. Kommt dir eine Antwort komisch vor, gib ihr einen Daumen nach unten, dann schauen wir sie uns an."
+        },
+        {
+          "question": "Warum sehe ich Parky nicht überall?",
+          "answer": "Parky ist noch nicht für alle Besucher eingeschaltet. Mit dem Knopf auf dieser Seite holst du ihn für deinen Besuch dazu."
+        },
+        {
+          "question": "Welche Sprachen spricht Parky?",
+          "answer": "Alle Sprachen von park.fan: Deutsch, Englisch, Niederländisch, Französisch, Spanisch und Italienisch. Er antwortet in der Sprache der Seite, auf der du gerade bist."
+        },
+        {
+          "question": "Kann ich Parky leiser stellen?",
+          "answer": "Ja. Tipp in einer seiner Sprechblasen auf das ✕, dann schweigt er bis zum Ende deines Besuchs. Ist in deinem System „Bewegung reduzieren“ eingeschaltet, bleiben seine Animationen aus."
+        }
+      ]
+    },
+    "next": {
+      "title": "Wie geht’s weiter?",
+      "ask": "Parky fragen",
+      "askDescription": "Unten rechts, gleich auf dieser Seite.",
+      "planner": "Zum Tagesplaner",
+      "plannerDescription": "Plane deinen Parktag selbst, Bahn für Bahn.",
+      "parks": "Alle Parks",
+      "parksDescription": "Wartezeiten und Prognosen für jeden Park."
+    }
   }
 }

@@ -8,11 +8,13 @@ import { MapPin } from 'lucide-react';
 import { directionsHref, safeAssistantHref } from '@/lib/assistant/links';
 import { localizedPath } from '@/lib/assistant/actions';
 import { splitWaits } from '@/lib/assistant/wait-chips';
+import { cn } from '@/lib/utils';
 import { useSmoothText } from '@/lib/assistant/use-smooth-text';
 import { LiveWaitPill } from '@/components/parks/live-wait-pill';
 
 const ALLOWED = ['p', 'strong', 'em', 'ul', 'ol', 'li', 'a', 'br'];
 const LINK = 'text-primary font-medium underline underline-offset-2';
+const PUNCTUATION = /^[,.;:!?)]/;
 
 /** Every wait named in the text drawn as the site's wait chip, the rest left as it was. */
 function withChips(children: ReactNode): ReactNode {
@@ -20,17 +22,19 @@ function withChips(children: ReactNode): ReactNode {
     if (typeof child !== 'string') return child;
     const parts = splitWaits(child);
     if (parts.length === 1 && 'text' in parts[0]) return child;
-    return parts.map((part, index) =>
-      'text' in part ? (
-        part.text
-      ) : (
+    return parts.map((part, index) => {
+      if ('text' in part) return part.text;
+      // Punctuation sits against the chip, as it would against the words it stands for.
+      const next = parts[index + 1];
+      const tight = next && 'text' in next && PUNCTUATION.test(next.text);
+      return (
         <LiveWaitPill
           key={index}
           minutes={part.minutes}
-          className="mx-0.5 px-1.5 py-0 align-baseline text-[11px]"
+          className={cn('ml-0.5 px-1.5 py-0 align-baseline text-[11px]', !tight && 'mr-0.5')}
         />
-      )
-    );
+      );
+    });
   });
 }
 

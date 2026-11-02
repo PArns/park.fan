@@ -215,6 +215,7 @@ export async function Footer({ locale, showBlog = true, newsLabel }: FooterProps
       heading: t('sections.tools'),
       items: [
         { key: 'fancast', href: '/fancast', label: t('fancast') },
+        { key: 'parky', href: '/parky', label: t('parky') },
         { key: 'bestTime', href: bestTimePath, label: t('bestTime') },
         { key: 'howto', href: howtoPath, label: t('howto') },
         { key: 'planner', href: plannerPath, label: t('planner') },
