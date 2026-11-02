@@ -33,7 +33,7 @@ seo:
 
 [SeaWorld Orlando](ref:seaworld-orlando) startet am 6. November seine Christmas Celebration, und zum ersten Mal seit 2019 zeigt der Park dabei wieder Miracles, eine nächtliche Orca-Präsentation mit weihnachtlicher Musik. Das Event läuft an ausgewählten Tagen bis zum 4. Januar 2027. Es ist im normalen Parkeintritt enthalten, auch mit Jahreskarte, und reservieren musst du nichts.
 
-Die Pass Members, also die Jahreskarteninhaber, bekommen eine eigene Vorstellung von Miracles und sehen die Show damit als Erste. Ort und Uhrzeit von Miracles hat SeaWorld noch nicht veröffentlicht, die Showzeiten des Events stehen in der kostenlosen App des Parks.
+Die Pass Members, also die Jahreskarteninhaber, bekommen eine eigene Vorstellung von Miracles und gehören damit zu den Ersten, die die Show sehen. Ort und Uhrzeit von Miracles hat SeaWorld noch nicht veröffentlicht, die Showzeiten des Events stehen in der kostenlosen App des Parks.
 
 ## Eventtage und Öffnungszeiten im November
 
@@ -47,7 +47,7 @@ Im November ist an 16 Tagen Christmas Celebration, an diesen Tagen bleibt der Pa
 - Freitag, 27., und Samstag, 28. November: 9 bis 22 Uhr
 - Sonntag, 29. November: 9 bis 21 Uhr
 
-An den Tagen dazwischen, etwa vom 9. bis 12. und vom 16. bis 19. November und am 30. November, öffnet der Park nur von 10 bis 18 Uhr. An einem Dienstag wie dem 10. November ist um sechs Feierabend, und das Weihnachtsprogramm hat dann gar nicht erst angefangen.
+An den Tagen dazwischen, etwa vom 9. bis 12. und vom 16. bis 19. November und am 30. November, öffnet der Park nur von 10 bis 18 Uhr. An einem Dienstag wie dem 10. November ist um sechs Feierabend, Weihnachtsprogramm gibt es an solchen Tagen nicht.
 
 Jeder Eventabend bis zum 1. Januar endet zum Parkschluss mit dem Feuerwerk Holiday Reflections: Fireworks Finale rund um die Lagune. Viele Programmpunkte finden drinnen statt und laufen auch bei Regen.
 
@@ -59,7 +59,7 @@ Jeder Eventabend bis zum 1. Januar endet zum Parkschluss mit dem Feuerwerk Holid
 
 Für Familien mit kleinen Kindern ist das meiste auf Sesame Street zugeschnitten. Elmo und seine Freunde ziehen bei der Sesame Street Christmas Parade durch Sesame Street Land, im Seaport Theater läuft die Elmo's Christmas Wish Show. O Wondrous Night bringt mehr als 30 Weihnachtslieder mit lebensgroßen Puppen und lebenden Tieren auf die Bühne. Die Eiskunstlauf-Show Winter Wonderland on Ice spielt an ausgewählten Tagen vom 7. November bis zum 5. Januar, also einen Tag länger als das Event selbst. Dazu kommt Clyde & Seamore's Countdown to Christmas.
 
-Über der Lagune leuchten beim Sea of Trees Bäume im Takt zu Weihnachtsmusik, der Baum in der Mitte ist 70 Fuß hoch, rund 21 Meter. An der Waterfront fallen Schneeflocken, was man in Orlando im November sonst eher nicht erlebt. Beim Dolphin Nursery fährt ein Miniatur-Weihnachtszug.
+Über der Lagune leuchten beim Sea of Trees Bäume im Takt zu Weihnachtsmusik, der Baum in der Mitte ist 70 Fuß hoch, rund 21 Meter. An der Waterfront fallen Schneeflocken, was man in Orlando im November sonst eher nicht erlebt. Beim Dolphin Nursery steht eine Miniatur-Weihnachtszuganlage.
 
 Den Weihnachtsmann triffst du im Waterway Grill, Fotografen sind dabei. Rudolph und Bumble stehen in Rudolph's Christmastown am Pipeline Pathway. Im SeaFire Grill laufen Weihnachtsfilme, und dafür musst du nicht einmal etwas bestellen.
 
@@ -67,7 +67,7 @@ Den Weihnachtsmann triffst du im Waterway Grill, Fotografen sind dabei. Rudolph 
 
 Gegen Aufpreis gibt es eine Eislaufbahn im Bayside Stadium direkt an der Lagune. Einen Aufpreis verlangt der Park auch für das Dinner with Santa in den Sea Harbor Pavilions, an ausgewählten Tagen außer am Eröffnungswochenende, und das Sesame Street Christmas Breakfast im SeaFire Grill.
 
-Neu sind in diesem Jahr Feuerstellen, an denen du Marshmallows röstest und dir S'mores mit Schokolade und Graham Crackern baust. Unter den neuen Gerichten sind Ropa Vieja Festiva mit Tostones, Ravioli mit drei Käsesorten in Chardonnay-Sahne und Beignets mit Lotus-Biscoff-Creme. Essen und Getränke bezahlst du extra. Eigenes Essen und Kühlboxen bleiben draußen, eine Wasserflasche darfst du mitbringen.
+Neu sind in diesem Jahr Feuerstellen, an denen du Marshmallows röstest und dir S'mores mit Schokolade und Graham Crackern baust. Unter den neuen Gerichten sind Ropa Vieja Festiva mit Tostones, Ravioli mit drei Käsesorten in Chardonnay-Sahne und Beignets mit Lotus-Biscoff-Keksaufstrich. Essen und Getränke bezahlst du extra. Eigenes Essen und Kühlboxen bleiben draußen, eine Wasserflasche darfst du mitbringen.
 
 Ebenfalls neu ist ein Christmas Market zum Einkaufen, zusätzlich zu den Shoppes at Waterfront und dem SeaWorld Store.
 
