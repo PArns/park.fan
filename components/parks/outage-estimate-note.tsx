@@ -81,11 +81,12 @@ export function OutageEstimateNote({
   variant?: 'compact' | 'full';
   className?: string;
 }) {
-  // Both namespaces carry the same six sentence keys; the scale's „jetzt" is
-  // the same word for either signal and lives only in the first.
+  // All three namespaces carry the same six sentence keys; the scale's „jetzt" is
+  // the same word for every signal and lives only in the first.
   const tReported = useTranslations('parks.outage.estimate');
   const tStanding = useTranslations('parks.outage.estimateClosed');
-  const t = signal === 'down' ? tReported : tStanding;
+  const tMaintenance = useTranslations('parks.outage.estimateMaintenance');
+  const t = signal === 'down' ? tReported : signal === 'maintenance' ? tMaintenance : tStanding;
   const locale = useLocale();
 
   if (!estimate) return null;
