@@ -48,7 +48,9 @@ export function MostReadBadge({
       {variant === 'label' ? (
         label
       ) : (
-        <span className={variant === 'auto' ? 'sr-only sm:not-sr-only' : 'sr-only'}>{label}</span>
+        // `max-sm:` rather than `sm:not-sr-only`, which zeroes the padding that centres a badge's
+        // text on its capitals.
+        <span className={variant === 'auto' ? 'max-sm:sr-only' : 'sr-only'}>{label}</span>
       )}
     </Badge>
   );
