@@ -17,6 +17,8 @@ import { ENTRANCE_MS, pageEntrance, type ParkyEntrance } from '@/lib/assistant/e
 import { parkySwitch } from '@/lib/assistant/easter-eggs';
 import { isRide } from '@/lib/assistant/parky-rides';
 import { isReactionAct } from '@/lib/assistant/reactions';
+import { usePageLocked } from '@/lib/hooks/use-page-locked';
+import { useSearchOpen } from '@/lib/analytics/search-presence';
 
 // Must stay in step with this file's entry in `LAZY_MESSAGE_BOUNDARIES`
 // (`lib/i18n/route-namespaces.mjs`).
@@ -107,6 +109,12 @@ function LauncherButton({
   const t = useTranslations('navigation');
   // A button that came in with an entrance has arrived; it must not fade in a second time after.
   const [entered] = useState(entrance !== null);
+  // A modal dialog has the screen (the planner's wizard, an alert): Parky ducks below the edge
+  // rather than sit on its buttons, and comes back up once it closes. Not for the search palette,
+  // where it searches along. `translate`, not `transform`, which an entrance's fill still holds.
+  const locked = usePageLocked();
+  const searching = useSearchOpen();
+  const dodging = locked && !searching;
   return (
     <button
       type="button"
@@ -117,6 +125,7 @@ function LauncherButton({
           : undefined
       }
       aria-expanded={open}
+      inert={dodging}
       aria-label={open ? t('assistantClose') : t('assistantOpen')}
       title={open ? undefined : t('assistantOpen')}
       className={cn(
@@ -124,7 +133,8 @@ function LauncherButton({
         PARKY_LAYER,
         'planner-wide:right-[calc(var(--planner-inset,0px)+1rem)]',
         entrance ? `parky-enter-${entrance}` : !entered && 'animate-in fade-in zoom-in-90',
-        'transition-transform duration-200 hover:-translate-y-0.5 active:scale-95 motion-reduce:transition-none',
+        'transition-transform duration-300 hover:-translate-y-0.5 active:scale-95 motion-reduce:transition-none',
+        dodging && 'pointer-events-none translate-y-[calc(100%+2.5rem)]',
         'focus-visible:ring-primary focus-visible:ring-offset-background focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none',
         open && 'from-primary to-status-operating bg-gradient-to-br text-white shadow-xl'
       )}
