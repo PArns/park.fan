@@ -38,7 +38,7 @@ export interface AssistantChatMessage {
   /** Parky asked for the visitor's position; the answer carries the share buttons. */
   asksLocation?: boolean;
   /** Set on an answer that failed; `text` is then empty. */
-  error?: 'limit' | 'off' | 'upstream' | 'network' | 'session' | 'expired';
+  error?: 'limit' | 'off' | 'upstream' | 'network' | 'session' | 'expired' | 'unclear';
 }
 
 /** Where the widget stands: idle, waiting for the first word, or writing. */
@@ -181,7 +181,9 @@ export function useAssistantChat(
           return;
         }
         if (!response.ok || !response.body) {
-          fail(response.status === 429 ? 'limit' : response.status === 503 ? 'off' : 'upstream');
+          // 422: the API took the message for junk and asked no model.
+          const failed = { 422: 'unclear', 429: 'limit', 503: 'off' } as const;
+          fail(failed[response.status as keyof typeof failed] ?? 'upstream');
           return;
         }
         for await (const { event, data } of readSse(response.body)) {

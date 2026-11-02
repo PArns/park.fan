@@ -52,6 +52,12 @@ click does the widget appear, in a glass card. The solved token is traded at the
 token (`useAssistantSession`, kept for the browser session), which every chat, rating and feedback
 carries. A 401 drops it and the window asks again.
 
+The API refuses a question without asking the model in two cases, and the window words each
+(`useAssistantChat`): a 429, more than three questions in 30 seconds or a pause for repeated junk,
+reads `errorLimit`; a 422 `unclear`, a message the API took for junk (nothing to read, one key held
+down, letters without a vowel, the question just answered asked again), reads `errorUnclear`. The
+rules live in the API's `assistant-junk.ts`.
+
 ## Answers are model output
 
 `AssistantMessageText` renders them with `react-markdown`, without raw HTML and with only `p`,

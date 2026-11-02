@@ -52,6 +52,7 @@ const ERROR_KEY: Record<NonNullable<AssistantChatMessage['error']>, string> = {
   network: 'errorNetwork',
   session: 'errorSession',
   expired: 'errorExpired',
+  unclear: 'errorUnclear',
 };
 
 const CHIP: Record<AssistantActionChip, { key: string; icon: typeof ExternalLink }> = {
