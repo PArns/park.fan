@@ -7,7 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  El Parc Astérix amplía su zona Grèce para la primavera de 2027 con dos atracciones familiares nuevas. Para comer llega el restaurante La Table de Dionysos, con 460 plazas. La montaña rusa de madera Tonnerre 2 Zeus estrena raíles en todo el recorrido en 2027.
+  El Parc Astérix amplía su zona Grèce para la primavera de 2027 con dos atracciones familiares nuevas. También abre el restaurante La Table de Dionysos, con 460 plazas. La montaña rusa de madera Tonnerre 2 Zeus estrena raíles en todo el recorrido en 2027.
 tags:
   - news
   - parc-asterix
@@ -44,17 +44,17 @@ El [Parc Astérix](ref:parc-asterix) amplía para la primavera de 2027 su zona G
 
 Tournikotis Tournikotas es una atracción familiar con dos torres de caída, y el nombre ya sube y baja un par de veces antes de que termines de pronunciarlo. Dentro de las torres pasa lo mismo: varias subidas y varias bajadas seguidas. En La Flotte de Poséidon vas en uno de ocho barcos que giran mientras suben por una columna central.
 
-El parque no ha dado a conocer quién fabrica las dos atracciones ni en qué punto exacto de la Grèce irán. Entre las dos deben mover a 800 personas por hora. Para los más pequeños llega además L'Aire de Jeu d'Ulysse, un parque infantil con la decoración de la zona.
+Las dos atracciones juntas deben mover a 800 personas por hora. Para los más pequeños llega además L'Aire de Jeu d'Ulysse, un parque infantil con la decoración de la zona.
 
 ## A la mesa con Dioniso
 
 El restaurante nuevo se llama La Table de Dionysos, sirve en mesa y tiene 460 plazas: 350 dentro y 110 en la terraza. La actual Taverne de Dionysos pasará a llamarse La Taverne de Poséidon, así que Poseidón tendrá en la Grèce su propia flota y también su propia taberna.
 
-En Chez Nikos Bouldeglas, el primero de los dos quioscos, se vende helado artesano. En el segundo, Elis, hay granizado. Elis ya da nombre en la zona a una atracción, La Rivière d'Elis.
+En el primer quiosco, Chez Nikos Bouldeglas, se vende helado artesano. El segundo ofrece granizado y se llama Elis, igual que la atracción La Rivière d'Elis.
 
-## Entradas y días de apertura
+## Días de apertura en 2026 y 2027
 
-La temporada 2027 empieza el sábado 27 de marzo, de 10:00 a 19:00. El parque abre del 27 al 29 de marzo, cierra del 30 de marzo al 2 de abril y desde el 3 de abril abre todos los días hasta principios de septiembre. Los precios de las entradas de un día para 2027 todavía no se han publicado. El [hotel L'Odyssée](/news/parc-asterix-hotel-odyssee-2027) abre antes, el 26 de marzo de 2027, un día antes de que empiece la temporada.
+La temporada 2027 empieza el sábado 27 de marzo, de 10:00 a 19:00. El primer fin de semana se alarga hasta el 29 de marzo. Después el parque cierra del 30 de marzo al 2 de abril y desde el 3 de abril abre todos los días hasta principios de septiembre. El parque todavía no ha publicado los precios de las entradas de un día para 2027. El [hotel L'Odyssée](/news/parc-asterix-hotel-odyssee-2027) abre ya el 26 de marzo de 2027, un día antes de que empiece la temporada.
 
 Este año el parque cierra del 9 de noviembre al 18 de diciembre. Antes y después abre estos días:
 
@@ -66,7 +66,7 @@ Este año el parque cierra del 9 de noviembre al 18 de diciembre. Antes y despu�
 
 En el invierno 2025/26, Rocky Mountain Construction (RMC) sustituyó unos 350 metros del recorrido. El parque quiere terminar esa reforma en la temporada actual. En la temporada 2027 la montaña rusa recibe raíles nuevos en todo el trazado. El parque no ha hecho público si Tonnerre 2 Zeus cerrará durante una parte de la temporada 2027 por estas obras.
 
-La atracción abrió el 5 de abril de 1997 con el nombre de Tonnerre de Zeus, construida por Custom Coasters International. La versión antigua funcionó por última vez el 7 de noviembre de 2021. The Gravity Group había ido rehaciendo el trazado por etapas desde el invierno de 2019 y quitó la doble hélice. La montaña rusa volvió el 9 de abril de 2022 con trenes nuevos de Gravitykraft. Desde entonces lleva un 2 en el nombre: en francés, «deux» suena casi igual que el «de» de antes. Mide 30 metros de altura; sin acompañante puedes subir a partir de 1,20 metros.
+La atracción abrió el 5 de abril de 1997 con el nombre de Tonnerre de Zeus, construida por Custom Coasters International. Desde el invierno de 2019, The Gravity Group fue rehaciendo el trazado por etapas y quitó la doble hélice. En su versión antigua funcionó por última vez el 7 de noviembre de 2021, y el 9 de abril de 2022 volvió con trenes nuevos de Gravitykraft. Desde entonces lleva un 2 en el nombre: en francés, «deux» suena casi igual que el «de» de antes. Mide 30 metros de altura; sin acompañante puedes subir a partir de 1,20 metros.
 
 ## Lo que hay hoy en la Grèce
 
@@ -74,11 +74,11 @@ La atracción abrió el 5 de abril de 1997 con el nombre de Tonnerre de Zeus, co
 
 ```
 
-El parque está a 35 kilómetros al norte de París y tiene cinco mundos temáticos: la Galia, el Imperio romano, la Grecia antigua, los vikingos y Egipto. La Grèce tiene hoy siete atracciones. Además de Tonnerre 2 Zeus están [Pégase Express](ref:parc-asterix/pegase-express?bare), [Discobélix](ref:parc-asterix/discobelix?bare), [Le Vol d'Icare](ref:parc-asterix/le-vol-dicare?bare), [Le Cheval de Troie](ref:parc-asterix/le-cheval-de-troie?bare), [L'Hydre de Lerne](ref:parc-asterix/lhydre-de-lerne?bare) y [La Rivière d'Elis](ref:parc-asterix/la-riviere-delis?bare). Con las dos nuevas serán nueve. A qué hora haces menos cola en cada atracción del parque lo cuenta nuestra [guía del Parc Astérix](/blog/parc-asterix-tiempos-de-espera-consejos) zona por zona, junto con cómo llegar a Plailly.
+El parque está a 35 kilómetros al norte de París y tiene cinco mundos temáticos: la Galia, el Imperio romano, la Grecia antigua, los vikingos y Egipto. Con las dos nuevas, la Grèce tendrá pronto nueve atracciones en lugar de siete. En nuestra [guía del Parc Astérix](/blog/parc-asterix-tiempos-de-espera-consejos) tienes, zona por zona, a qué hora haces menos cola en cada atracción y cómo llegar a Plailly.
 
 ## Más planes hasta 2030
 
-Hasta 2030 el parque quiere invertir 250 millones de euros. En 2026 renovó Egipto: el Oxygénarium pasó a ser La Descente du Nil y las Chaises Volantes, L'Envol d'Ibis. Para 2028 está anunciado Londinium, una zona cubierta basada en el álbum «Astérix en Bretaña», con una montaña rusa grande y un dark ride interactivo para familias. Cuando acaben todos los proyectos, el parque tendrá un 20 % más de capacidad, y dos tercios de ella bajo techo. Lo que construyen otros parques de Europa para 2027 lo recoge nuestro resumen de las [novedades de los parques en 2027](/blog/novedades-parques-tematicos-2027).
+Hasta 2030 el parque quiere invertir 250 millones de euros. En 2026 renovó Egipto: el Oxygénarium pasó a ser La Descente du Nil y las Chaises Volantes, L'Envol d'Ibis. Para 2028 está anunciado Londinium, una zona cubierta basada en el álbum «Astérix en Bretaña». Allí están previstos una montaña rusa grande y un dark ride interactivo para familias. Cuando acaben todos los proyectos, el parque debería tener un 20 % más de capacidad, con dos tercios de ese aumento bajo techo. Lo que construyen otros parques de Europa para 2027 está en nuestro resumen de las [novedades de los parques en 2027](/blog/novedades-parques-tematicos-2027).
 
 Fuentes:
 [comunicado del Parc Astérix sobre la Grèce 2027](https://newsroom.parcasterix.fr/actualites/en-2027-au-parc-asterix-la-grece-en-grand/?lang=fr),

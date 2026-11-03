@@ -7,7 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Der Parc Astérix baut seinen Bereich Grèce bis zum Frühjahr 2027 mit zwei neuen Familienbahnen aus. Zum Essen kommt das Restaurant La Table de Dionysos mit 460 Plätzen dazu. Die Holzachterbahn Tonnerre 2 Zeus bekommt 2027 komplett neue Schienen.
+  Der Parc Astérix baut seinen Bereich Grèce bis zum Frühjahr 2027 mit zwei neuen Familienbahnen aus. Dazu eröffnet das Restaurant La Table de Dionysos mit 460 Plätzen. Die Holzachterbahn Tonnerre 2 Zeus bekommt 2027 komplett neue Schienen.
 tags:
   - news
   - parc-asterix
@@ -38,23 +38,23 @@ seo:
     - Plailly Asterix
 ---
 
-Der [Parc Astérix](ref:parc-asterix) baut seinen Themenbereich Grèce, das antike Griechenland, bis zum Frühjahr 2027 aus. Dazu gehören zwei neue Familienattraktionen, ein Spielplatz, ein großes Restaurant und zwei Kioske. Das hat der Park am 2. November in Plailly mitgeteilt. Im selben Bereich steht die Holzachterbahn [Tonnerre 2 Zeus](ref:parc-asterix/tonnerre-2-zeus?bare), und die bekommt 2027 auf der ganzen Strecke neue Schienen.
+Der [Parc Astérix](ref:parc-asterix) baut seinen Themenbereich Grèce, das antike Griechenland, bis zum Frühjahr 2027 aus. Dazu gehören zwei neue Familienbahnen, ein Spielplatz, ein großes Restaurant und zwei Kioske. Das hat der Park am 2. November in Plailly mitgeteilt. Im selben Bereich steht die Holzachterbahn [Tonnerre 2 Zeus](ref:parc-asterix/tonnerre-2-zeus?bare), und die bekommt 2027 auf der ganzen Strecke neue Schienen.
 
 ## Zwei Bahnen und ein Spielplatz
 
 Tournikotis Tournikotas ist eine Familienattraktion mit zwei Falltürmen, deren Name schon beim Aussprechen ein paarmal hoch und runter geht. Die Fahrgäste machen es in den Türmen genauso, mit mehreren Fahrten nach oben und wieder nach unten. Bei La Flotte de Poséidon sitzt du in einem von acht Booten, die sich drehen und dabei an einer Säule in der Mitte aufsteigen.
 
-Wer die beiden Bahnen baut und wo genau in der Grèce sie stehen werden, hat der Park nicht bekannt gegeben. Zusammen sollen sie 800 Personen in der Stunde befördern. Für die Jüngsten kommt mit L'Aire de Jeu d'Ulysse ein Spielplatz im Stil des Bereichs dazu.
+Zusammen sollen die beiden Bahnen 800 Personen in der Stunde befördern. Für die Jüngsten kommt mit L'Aire de Jeu d'Ulysse ein Spielplatz im Stil des Bereichs dazu.
 
 ## Essen bei Dionysos
 
 Das neue Restaurant heißt La Table de Dionysos, hat Bedienung am Tisch und 460 Plätze, davon 350 drinnen und 110 auf der Terrasse. Die bestehende Taverne de Dionysos heißt künftig La Taverne de Poséidon, und Poseidon hat damit in der Grèce eine eigene Bootsflotte und ein eigenes Lokal.
 
-Am ersten der beiden Kioske, Chez Nikos Bouldeglas, gibt es handgemachtes Eis. Am zweiten Kiosk, Elis, gibt es Granita. Elis heißt im Bereich auch schon eine Bahn, La Rivière d'Elis.
+Am ersten Kiosk, Chez Nikos Bouldeglas, gibt es handgemachtes Eis. Der zweite verkauft Granita und heißt Elis, wie schon die Bahn La Rivière d'Elis.
 
-## Tickets und Öffnungstage
+## Öffnungstage 2026 und 2027
 
-Die Saison 2027 beginnt am Samstag, 27. März, von 10 bis 19 Uhr. Danach öffnet er vom 27. bis 29. März. Vom 30. März bis 2. April bleibt er zu, ab dem 3. April hat er bis Anfang September täglich offen. Die Preise für Tagestickets 2027 hat der Park noch nicht veröffentlicht. Das [Hotel L'Odyssée](/news/parc-asterix-hotel-odyssee-2027) öffnet schon am 26. März 2027, einen Tag vor dem Saisonstart.
+Die Saison 2027 beginnt am Samstag, 27. März, von 10 bis 19 Uhr. Bis zum 29. März hat der Park offen, vom 30. März bis 2. April bleibt er zu, und ab dem 3. April öffnet er bis Anfang September täglich. Die Preise für Tagestickets 2027 hat der Park noch nicht veröffentlicht. Das [Hotel L'Odyssée](/news/parc-asterix-hotel-odyssee-2027) öffnet schon am 26. März 2027, einen Tag vor dem Saisonstart.
 
 In diesem Jahr ist der Park vom 9. November bis zum 18. Dezember geschlossen. Davor und danach hat er an diesen Tagen offen:
 
@@ -66,7 +66,7 @@ In diesem Jahr ist der Park vom 9. November bis zum 18. Dezember geschlossen. Da
 
 Im Winter 2025/26 hat Rocky Mountain Construction (RMC) rund 350 Meter der Strecke ersetzt. Diese Sanierung will der Park in der laufenden Saison abschließen, in der Saison 2027 folgt dann die ganze Strecke. Ob Tonnerre 2 Zeus dafür in der Saison 2027 zeitweise schließt, hat der Park nicht bekannt gegeben.
 
-Eröffnet hat die Bahn am 5. April 1997, damals als Tonnerre de Zeus und gebaut von Custom Coasters International. Am 7. November 2021 fuhr die alte Version zum letzten Mal. The Gravity Group hatte die Strecke ab dem Winter 2019 in Etappen neu verlegt und die Doppelhelix entfernt. Am 9. April 2022 kam die Bahn mit neuen Zügen von Gravitykraft zurück. Seitdem steht eine 2 im Namen, die auf Französisch fast so klingt wie das alte de. Die Bahn ist 30 Meter hoch, allein mitfahren darfst du ab 1,20 Meter.
+Eröffnet hat die Bahn am 5. April 1997, damals als Tonnerre de Zeus und gebaut von Custom Coasters International. Ab dem Winter 2019 verlegte The Gravity Group die Strecke in Etappen neu und nahm die Doppelhelix heraus. In der alten Fassung fuhr die Bahn am 7. November 2021 zum letzten Mal, am 9. April 2022 kam sie mit neuen Zügen von Gravitykraft zurück. Seitdem steht eine 2 im Namen, die auf Französisch fast so klingt wie das alte de. Die Bahn ist 30 Meter hoch, allein mitfahren darfst du ab 1,20 Meter.
 
 ## Was heute in der Grèce steht
 
@@ -74,11 +74,11 @@ Eröffnet hat die Bahn am 5. April 1997, damals als Tonnerre de Zeus und gebaut 
 
 ```
 
-Der Park liegt 35 Kilometer nördlich von Paris und hat fünf Themenwelten: Gallien, das Römische Reich, das antike Griechenland, die Wikinger und Ägypten. In der Grèce stehen heute sieben Attraktionen, neben Tonnerre 2 Zeus sind das [Pégase Express](ref:parc-asterix/pegase-express?bare), [Discobélix](ref:parc-asterix/discobelix?bare), [Le Vol d'Icare](ref:parc-asterix/le-vol-dicare?bare), [Le Cheval de Troie](ref:parc-asterix/le-cheval-de-troie?bare), [L'Hydre de Lerne](ref:parc-asterix/lhydre-de-lerne?bare) und [La Rivière d'Elis](ref:parc-asterix/la-riviere-delis?bare). Mit den beiden Neuen werden es neun. Zu welcher Stunde du an welcher Bahn des Parks am kürzesten anstehst, geht unser [Guide zum Parc Astérix](/blog/parc-asterix-wartezeiten-tipps) Bereich für Bereich durch, mit der Anreise nach Plailly.
+Der Park liegt 35 Kilometer nördlich von Paris und hat fünf Themenwelten: Gallien, das Römische Reich, das antike Griechenland, die Wikinger und Ägypten. Mit den beiden Neuen stehen in der Grèce bald neun Attraktionen statt sieben. In unserem [Guide zum Parc Astérix](/blog/parc-asterix-wartezeiten-tipps) steht für jeden Bereich, zu welcher Stunde du an welcher Bahn am kürzesten anstehst, dazu die Anreise nach Plailly.
 
 ## Weitere Pläne bis 2030
 
-Bis 2030 will der Park 250 Millionen Euro investieren. Ägypten hat er 2026 umgestaltet, aus dem Oxygénarium wurde La Descente du Nil und aus den Chaises Volantes L'Envol d'Ibis. Für 2028 ist Londinium angekündigt, ein überdachter Bereich nach dem Album „Asterix bei den Briten“ mit einer großen Achterbahn und einem interaktiven Dark Ride für Familien. Am Ende aller Projekte soll der Park 20 Prozent mehr Kapazität haben, zwei Drittel davon überdacht. Was andere Parks in Europa für 2027 bauen, sammelt unser Überblick über die [Freizeitpark-Neuheiten 2027](/blog/freizeitpark-neuheiten-2027).
+Bis 2030 will der Park 250 Millionen Euro investieren. Ägypten hat er 2026 umgestaltet, aus dem Oxygénarium wurde La Descente du Nil und aus den Chaises Volantes L'Envol d'Ibis. Für 2028 ist Londinium angekündigt, ein überdachter Bereich nach dem Album „Asterix bei den Briten“. Dort sollen eine große Achterbahn und ein interaktiver Dark Ride für Familien stehen. Am Ende aller Projekte soll der Park 20 Prozent mehr Kapazität haben, zwei Drittel des Zuwachses überdacht. Was andere Parks in Europa für 2027 bauen, steht in unserem Überblick über die [Freizeitpark-Neuheiten 2027](/blog/freizeitpark-neuheiten-2027).
 
 Quellen:
 [Mitteilung des Parc Astérix zur Grèce 2027](https://newsroom.parcasterix.fr/actualites/en-2027-au-parc-asterix-la-grece-en-grand/?lang=fr),

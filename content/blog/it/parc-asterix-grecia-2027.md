@@ -7,7 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Entro la primavera 2027 il Parc Astérix amplia l'area Grèce con due nuove attrazioni per famiglie. Arriva anche il ristorante La Table de Dionysos con 460 posti. Nel 2027 le montagne russe in legno Tonnerre 2 Zeus ricevono binari completamente nuovi.
+  Entro la primavera 2027 il Parc Astérix amplia l'area Grèce con due nuove attrazioni per famiglie. Apre anche il ristorante La Table de Dionysos, con 460 posti. Nel 2027 le montagne russe in legno Tonnerre 2 Zeus ricevono binari completamente nuovi.
 tags:
   - news
   - parc-asterix
@@ -38,23 +38,23 @@ seo:
     - Plailly Asterix
 ---
 
-Entro la primavera 2027 il [Parc Astérix](ref:parc-asterix) amplia la Grèce, l'area dedicata all'antica Grecia, con due nuove attrazioni per famiglie, un parco giochi, un grande ristorante e due chioschi. Il parco lo ha annunciato il 2 novembre a Plailly. Nella stessa area si trovano le montagne russe in legno [Tonnerre 2 Zeus](ref:parc-asterix/tonnerre-2-zeus?bare), che nel 2027 avranno binari nuovi su tutto il percorso.
+Entro la primavera 2027 il [Parc Astérix](ref:parc-asterix) amplia la Grèce, l'area dedicata all'antica Grecia. Arrivano due nuove attrazioni per famiglie, un parco giochi, un grande ristorante e due chioschi. Il parco lo ha annunciato il 2 novembre a Plailly. Nella stessa area si trovano le montagne russe in legno [Tonnerre 2 Zeus](ref:parc-asterix/tonnerre-2-zeus?bare), che nel 2027 avranno binari nuovi su tutto il percorso.
 
 ## Due giostre e un parco giochi
 
-Tournikotis Tournikotas è già uno scioglilingua, e la giostra fa lo stesso con chi sale a bordo: due torri di caduta per famiglie che portano i passeggeri su e giù, più volte di fila. Su La Flotte de Poséidon prendi posto in una di otto barche che girano su se stesse e intanto salgono lungo una colonna centrale.
+Tournikotis Tournikotas è un'attrazione per famiglie con due torri di caduta, e il nome sale e scende già mentre lo pronunci. I passeggeri fanno lo stesso, su e giù più volte di fila. Su La Flotte de Poséidon prendi posto in una di otto barche che girano su se stesse e intanto salgono lungo una colonna centrale.
 
-Il parco non ha reso noto chi costruisce le due attrazioni né in quale punto preciso della Grèce sorgeranno. Insieme dovrebbero trasportare 800 persone all'ora. Per i più piccoli arriva anche L'Aire de Jeu d'Ulysse, un parco giochi a tema con il resto dell'area.
+Insieme le due attrazioni dovrebbero trasportare 800 persone all'ora. Per i più piccoli arriva anche L'Aire de Jeu d'Ulysse, un parco giochi a tema con il resto dell'area.
 
 ## A tavola da Dioniso
 
 Il nuovo ristorante si chiama La Table de Dionysos, ha servizio al tavolo e 460 posti: 350 all'interno e 110 in terrazza. La Taverne de Dionysos che c'è già cambia nome e diventa La Taverne de Poséidon. Poseidone si ritrova così nella Grèce con una flotta e un locale tutti suoi.
 
-Al primo chiosco, Chez Nikos Bouldeglas, si vende gelato artigianale. Il secondo, Elis, serve granite. Elis è un nome che l'area conosce già: c'è anche una giostra, La Rivière d'Elis.
+Al primo chiosco, Chez Nikos Bouldeglas, si vende gelato artigianale. Il secondo serve granite e si chiama Elis, come la giostra La Rivière d'Elis.
 
-## Biglietti e giorni di apertura
+## Giorni di apertura nel 2026 e nel 2027
 
-La stagione 2027 comincia sabato 27 marzo, con orario dalle 10 alle 19. Il parco resta aperto dal 27 al 29 marzo, chiude dal 30 marzo al 2 aprile e dal 3 aprile apre tutti i giorni fino a inizio settembre. I prezzi dei biglietti giornalieri per il 2027 non sono ancora stati pubblicati. L'[hotel L'Odyssée](/news/parc-asterix-hotel-odyssee-2027) apre già il 26 marzo 2027, il giorno prima dell'inizio della stagione.
+La stagione 2027 comincia sabato 27 marzo, con orario dalle 10 alle 19. Il primo fine settimana dura fino al 29 marzo. Poi il parco chiude dal 30 marzo al 2 aprile e dal 3 aprile apre tutti i giorni fino a inizio settembre. Il parco non ha ancora pubblicato i prezzi dei biglietti giornalieri per il 2027. L'[hotel L'Odyssée](/news/parc-asterix-hotel-odyssee-2027) apre già il 26 marzo 2027, il giorno prima dell'inizio della stagione.
 
 Quest'anno il parco è chiuso dal 9 novembre al 18 dicembre. Prima e dopo apre in questi giorni:
 
@@ -66,7 +66,7 @@ Quest'anno il parco è chiuso dal 9 novembre al 18 dicembre. Prima e dopo apre i
 
 Nell'inverno 2025/26 Rocky Mountain Construction (RMC) ha sostituito circa 350 metri di tracciato. Il parco vuole chiudere questo intervento nella stagione in corso, e nella stagione 2027 tocca a tutto il percorso. Se per questo Tonnerre 2 Zeus resterà ferma per un periodo nel 2027, il parco non lo ha reso noto.
 
-La giostra ha aperto il 5 aprile 1997 con il nome Tonnerre de Zeus, costruita da Custom Coasters International. La vecchia versione ha fatto l'ultimo giro il 7 novembre 2021. Dall'inverno 2019 The Gravity Group aveva rifatto il tracciato a tappe, togliendo la doppia elica. Il 9 aprile 2022 la giostra è tornata con nuovi treni di Gravitykraft. Da allora nel nome c'è un 2, che in francese suona quasi come il vecchio «de». È alta 30 metri, e per salire da solo devi misurare almeno 1,20 metri.
+La giostra ha aperto il 5 aprile 1997 con il nome Tonnerre de Zeus, costruita da Custom Coasters International. Dall'inverno 2019 The Gravity Group ha rifatto il tracciato a tappe, togliendo la doppia elica. Nella vecchia versione la giostra ha fatto l'ultimo giro il 7 novembre 2021, e il 9 aprile 2022 è tornata con nuovi treni di Gravitykraft. Da allora nel nome c'è un 2, che in francese suona quasi come il vecchio «de». È alta 30 metri, e per salire da solo devi misurare almeno 1,20 metri.
 
 ## Cosa c'è oggi nella Grèce
 
@@ -74,11 +74,11 @@ La giostra ha aperto il 5 aprile 1997 con il nome Tonnerre de Zeus, costruita da
 
 ```
 
-Il parco si trova 35 chilometri a nord di Parigi e ha cinque mondi a tema: la Gallia, l'Impero romano, l'antica Grecia, i Vichinghi e l'Egitto. Oggi la Grèce conta sette attrazioni: oltre a Tonnerre 2 Zeus ci sono [Pégase Express](ref:parc-asterix/pegase-express?bare), [Discobélix](ref:parc-asterix/discobelix?bare), [Le Vol d'Icare](ref:parc-asterix/le-vol-dicare?bare), [Le Cheval de Troie](ref:parc-asterix/le-cheval-de-troie?bare), [L'Hydre de Lerne](ref:parc-asterix/lhydre-de-lerne?bare) e [La Rivière d'Elis](ref:parc-asterix/la-riviere-delis?bare). Con le due nuove si arriva a nove. A che ora fai la coda più breve a ogni giostra del parco lo spiega area per area la nostra [guida al Parc Astérix](/blog/parc-asterix-tempi-di-attesa-consigli), insieme a come arrivare a Plailly.
+Il parco si trova 35 chilometri a nord di Parigi e ha cinque mondi a tema: la Gallia, l'Impero romano, l'antica Grecia, i Vichinghi e l'Egitto. Con le due nuove, la Grèce avrà presto nove attrazioni invece di sette. Nella nostra [guida al Parc Astérix](/blog/parc-asterix-tempi-di-attesa-consigli) trovi, area per area, a che ora fai la coda più breve a ogni giostra e come arrivare a Plailly.
 
 ## Gli altri progetti fino al 2030
 
-Fino al 2030 il parco vuole investire 250 milioni di euro. Nel 2026 ha rinnovato l'Egitto: l'Oxygénarium è diventato La Descente du Nil e le Chaises Volantes sono diventate L'Envol d'Ibis. Per il 2028 è annunciata Londinium, un'area coperta ispirata all'album «Asterix e i Britanni», con grandi montagne russe e un dark ride interattivo per famiglie. A progetti finiti il parco dovrebbe avere il 20 per cento di capacità in più, per due terzi al coperto. Cosa costruiscono gli altri parchi europei per il 2027 lo raccoglie la nostra panoramica sulle [novità dei parchi divertimento 2027](/blog/novita-parchi-divertimento-2027).
+Fino al 2030 il parco vuole investire 250 milioni di euro. Nel 2026 ha rinnovato l'Egitto: l'Oxygénarium è diventato La Descente du Nil e le Chaises Volantes sono diventate L'Envol d'Ibis. Per il 2028 è annunciata Londinium, un'area coperta ispirata all'album «Asterix e i Britanni». Lì dovrebbero arrivare grandi montagne russe e un dark ride interattivo per famiglie. A progetti finiti il parco dovrebbe avere il 20 per cento di capacità in più, con due terzi dell'aumento al coperto. Cosa costruiscono gli altri parchi europei per il 2027 è nella nostra panoramica sulle [novità dei parchi divertimento 2027](/blog/novita-parchi-divertimento-2027).
 
 Fonti:
 [Comunicato del Parc Astérix sulla Grèce 2027](https://newsroom.parcasterix.fr/actualites/en-2027-au-parc-asterix-la-grece-en-grand/?lang=fr),
