@@ -191,9 +191,8 @@
       "link": "Preguntar a Parky"
     },
     "reading": {
-      "kicker": "Novedades en park.fan",
       "title": "Noticias y guías de parques temáticos",
-      "lead": "Lo que está cambiando ahora en los parques, y guías de cada parque con los mejores días para ir y los tiempos de espera medidos de sus atracciones.",
+      "lead": "Quién construye qué, qué parque ha agotado las entradas, dónde cambian los horarios. Y las guías más leídas de los últimos 30 días.",
       "popularGuides": "Guías más leídas"
     },
     "tour": {

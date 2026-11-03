@@ -22,13 +22,13 @@ and must never filter with `isNewsPost`.
 
 ## Teasers keep the two apart
 
-| Surface                      | Articles                                             | News                                            |
-| ---------------------------- | ---------------------------------------------------- | ----------------------------------------------- |
-| Homepage, hero               | —                                                    | `LatestNewsChip` in the badge row               |
-| Homepage, „Neu auf park.fan" | `NewsBoard`, three rows, `listArticlesByRecency`     | `NewsBoard`, six rows above them                |
-| Header menu                  | „Guides": opener + rows, `recent` in `getBlogMenu()` | its own entry: `NewsMenuPanel`, `getNewsMenu()` |
-| Phone menu (burger sheet)    | the „Guides" link                                    | the News link and a `LatestNewsChip` card       |
-| Park and ride pages          | the card grid in `blog-posts-sections.tsx`           | `NewsRow boxed` under the grid                  |
+| Surface                   | Articles                                                     | News                                                |
+| ------------------------- | ------------------------------------------------------------ | --------------------------------------------------- |
+| Homepage, hero            | —                                                            | `LatestNewsChip` in the badge row                   |
+| Homepage, news and guides | `NewsBoard`, four rows (three on a phone), `getMostReadSeed` | `NewsBoard`, six rows (three on a phone) above them |
+| Header menu               | „Guides": opener + rows, `recent` in `getBlogMenu()`         | its own entry: `NewsMenuPanel`, `getNewsMenu()`     |
+| Phone menu (burger sheet) | the „Guides" link                                            | the News link and a `LatestNewsChip` card           |
+| Park and ride pages       | the card grid in `blog-posts-sections.tsx`                   | `NewsRow boxed` under the grid                      |
 
 - **The hero chip is the only news above the fold**, on any screen. It is one line by construction
   (`components/blog/latest-news-chip.tsx`): on the badge's line from a 34 rem row, under it below

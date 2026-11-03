@@ -191,9 +191,8 @@
       "link": "Ask Parky"
     },
     "reading": {
-      "kicker": "New on park.fan",
       "title": "Theme park news and guides",
-      "lead": "What’s changing in the parks right now, and guides to single parks with the best days to go and the measured wait times of their rides.",
+      "lead": "Who is building what, which park has sold out, where opening hours are changing. And the guides read most in the last 30 days.",
       "popularGuides": "Most read guides"
     },
     "tour": {

@@ -191,9 +191,8 @@
       "link": "Parky fragen"
     },
     "reading": {
-      "kicker": "Neu auf park.fan",
       "title": "Freizeitpark-News und Guides",
-      "lead": "Was sich in den Parks gerade ändert, und Guides zu einzelnen Parks mit den besten Besuchstagen und den gemessenen Wartezeiten der Bahnen.",
+      "lead": "Wer was baut, welcher Park ausverkauft ist, wo sich die Öffnungszeiten ändern. Dazu die Guides, die in den letzten 30 Tagen am meisten gelesen wurden.",
       "popularGuides": "Beliebteste Guides"
     },
     "tour": {

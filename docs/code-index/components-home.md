@@ -80,7 +80,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`home-reading.tsx`](../../components/home/home-reading.tsx)
 
-- `HomeReading` _component_: „Neu auf park.fan", the homepage's first stop under the hero: the six newest news posts and the three most read articles of the last 30 days, as the build's seed ranks them (`getMostReadSeed`, which falls back to the newest), on one board …
+- `HomeReading` _component_: News and guides, the homepage's first stop under the hero: the six newest news posts and the four most read articles of the last 30 days, as the build's seed ranks them (`getMostReadSeed`, which falls back to the newest), on one board …
 
 ### [`home-skeletons.tsx`](../../components/home/home-skeletons.tsx)
 
@@ -119,7 +119,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`news-board.tsx`](../../components/home/news-board.tsx)
 
-- `NewsBoard` _component_: „Neu auf park.fan" as one board: the newest news by day, each day's age and date in a column on the left as `/news` draws it (`NewsAge stacked`), and the most read articles with their date and reading time, under the news on a narrow page …
+- `NewsBoard` _component_: The homepage's news and guides as one board: the newest news by day, each day's age and date in a column on the left as `/news` draws it (`NewsAge stacked`), and the most read articles with their date and reading time, under the news on a …
 
 ### [`open-parks-badge.tsx`](../../components/home/open-parks-badge.tsx)
 

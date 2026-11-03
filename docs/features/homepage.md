@@ -10,15 +10,15 @@ new, the tour shows the product on a phone, and only then come the visitor's own
 parks and the questions. On 2026-11-02 it had 21 sections and was 18,920 px tall on a desktop and
 20,530 px on a phone; three quarters of its views came from phones, which stayed 13 seconds.
 
-| #   | Stop             | Layout  | Component                                                            | Data                                                       |
-| --- | ---------------- | ------- | -------------------------------------------------------------------- | ---------------------------------------------------------- |
-| –   | Hero             | –       | the `<section id="hero">` in `page.tsx`                              | [homepage hero](homepage-hero.md)                          |
-| –   | Neu auf park.fan | stacked | `HomeReading` → `NewsBoard`                                          | the blog manifest and the most-read seed, synchronous      |
-| –   | The tour         | phone   | `HomeTour` → `ShotStop`                                              | none; screenshots in `public/media/home/`                  |
-| –   | Ask Parky        | phone   | `ParkyStop` → `ShotStop`, `ParkyAskLink`                             | none; the screenshot in `public/media/parky/<l>/chat.webp` |
-| –   | Your parks       | stacked | `NearbyChapter` + `NearbyParksCard showShortWaits`; the favourites   | `/v1/discovery/nearby`, the favourites cookie              |
-| –   | Popular parks    | beside  | a `HomeStop` in `page.tsx`, `FeaturedParksSlot` + `PopularParkLinks` | `getGeoStructure` (a week), the page-view snapshot         |
-| –   | Questions        | beside  | `FaqSection`, the page's only `FAQPage`                              | `seo.homepage.faq`                                         |
+| #   | Stop            | Layout  | Component                                                            | Data                                                       |
+| --- | --------------- | ------- | -------------------------------------------------------------------- | ---------------------------------------------------------- |
+| –   | Hero            | –       | the `<section id="hero">` in `page.tsx`                              | [homepage hero](homepage-hero.md)                          |
+| –   | News and guides | stacked | `HomeReading` → `NewsBoard`                                          | the blog manifest and the most-read seed, synchronous      |
+| –   | The tour        | phone   | `HomeTour` → `ShotStop`                                              | none; screenshots in `public/media/home/`                  |
+| –   | Ask Parky       | phone   | `ParkyStop` → `ShotStop`, `ParkyAskLink`                             | none; the screenshot in `public/media/parky/<l>/chat.webp` |
+| –   | Your parks      | stacked | `NearbyChapter` + `NearbyParksCard showShortWaits`; the favourites   | `/v1/discovery/nearby`, the favourites cookie              |
+| –   | Popular parks   | beside  | a `HomeStop` in `page.tsx`, `FeaturedParksSlot` + `PopularParkLinks` | `getGeoStructure` (a week), the page-view snapshot         |
+| –   | Questions       | beside  | `FaqSection`, the page's only `FAQPage`                              | `seo.homepage.faq`                                         |
 
 In a park, `ParkCompassSlot` puts the headliners on a compass right under the hero
 ([the in-park compass](park-compass.md)); the announcement band (`AnnounceSection`,
@@ -50,7 +50,8 @@ layouts:
   rule over every chapter) took about 200 px each and said what the content under them showed.
 - **Only the tour is numbered.** A number must not skip
   ([the rule](../rules/a-chapter-opens-the-same-way-everywhere.md)), and the favourites show for few
-  visitors; the other stops open with their kicker.
+  visitors; the other stops open with their kicker. The news board has none: it is the first stop
+  under the hero, and its title already says news and guides.
 
 ## What people search for
 
@@ -71,17 +72,24 @@ app". The page answers in those words:
 
 ## What is new comes first: the news board
 
-`HomeReading` puts the six newest news posts and the three newest articles on one board
-(`NewsBoard`, `components/home/news-board.tsx`):
+`HomeReading` puts the six newest news posts and the four most read articles of the last 30 days
+(`getMostReadSeed`, the newest where the build did not reach the API) on one board (`NewsBoard`,
+`components/home/news-board.tsx`), the articles under the news on a narrow page and beside them from
+a 1024 px page. Four articles are about as tall as six news posts over five days: 611 px against
+585 px on a 1440 px window.
 
+- **A phone shows three of each** (`PHONE_ROWS`, below `sm`): stacked, the two groups make one long
+  column before the tour. The rows past the cut are hidden in CSS, and the row the cut ends in drops
+  the rule `divide-y` draws under it.
 - **The news stands by day, as on `/news`**: each day's date and age (`NewsAge`, „vorgestern · 31.
   Okt. 2026") in a column on the left, that day's posts beside it. Stacked on a phone.
-- **The articles** have their date in the same column, and their reading time over the title.
-- **No covers.** Most news runs without one, and a column of the same brand fallback said nothing.
+- **The articles** are ranked by reads, so their date stands beside the reading time over the
+  title, not in a column.
+- **Every post has a small cover** on the right, the brand fallback where it has no photo, its hue
+  from the slug so two posts of one day still read as two.
 - **News stays a step below the articles** ([the rule](../rules/news-is-set-apart-from-the-articles.md)):
   a semibold title and no teaser, against a bold, larger title with a two-line teaser.
-- **Dark in both themes**: the board carries the `dark` class, which sets the dark tokens for its
-  subtree (`@variant dark` in `app/globals.css`), so nothing inside needs a colour of its own. A
+- **The board follows the theme** like every card, so nothing inside needs a colour of its own. A
   pulsing dot in front of „News" says the group is what just happened.
 
 The stop stands first because the hero already lists the parks near the visitor, and the news is
