@@ -2,7 +2,7 @@
 title: 'Liseberg adds a light trail around its hill for Christmas'
 translationKey: jul-pa-liseberg-2026
 date: '2026-11-03'
-time: '17:30'
+time: '18:04'
 author: patrick
 mode: published
 featured: false
@@ -38,7 +38,7 @@ seo:
     - Gothenburg Christmas
 ---
 
-[Liseberg](ref:liseberg) in Gothenburg opens Jul på Liseberg, its Christmas season, on Saturday 14 November. This year it adds a light trail of about a kilometre that loops right round the hill inside the park. It's called Luma Celestia and cost SEK 8.6 million, the biggest single Christmas investment the park has ever made. The season runs until 30 December. Liseberg announced all of this on 3 November.
+[Liseberg](ref:liseberg) in Gothenburg opens Jul på Liseberg, its Christmas season, on Saturday 14 November. This year it adds a light trail of about a kilometre that loops right round the hill inside the park. It's called Luma Celestia and cost SEK 8.6 million, more than Liseberg has ever spent on a single Christmas project. The season runs until 30 December.
 
 ## The route through Luma Celestia
 
@@ -90,13 +90,13 @@ Entry includes Tomtehuset with Santa, the ice rink, Barnens Paradis (from age fo
 - Stormvåg: from 120 cm, or 95 cm with an adult
 - Lisebergshjulet: from 130 cm, no limit with an adult
 
-[Helix](ref:liseberg/helix) and Lisebergbanan aren't on the park's winter list. Our [Liseberg guide](/blog/liseberg-wait-times-tips) covers the summer, with every ride, its queues and the virtual queue.
+[Helix](ref:liseberg/helix) and Lisebergbanan aren't on the park's winter list. For the summer there is our [Liseberg guide](/blog/liseberg-wait-times-tips), with the queues for every ride and the virtual queue.
 
 ## Tomtebyn, markets and snow made of paper
 
-For children there's Tomtebyn, an elf village between the harbour area and Valkyria. The elves dance, play and sing with them there, and Santa collects the wish lists.
+For children there's Tomtebyn, an elf village between the harbour area and Valkyria. The elves sing and dance with the children, and anyone who brings a wish list can hand it straight to Santa.
 
-Three Christmas markets share 46 stalls. Tyrolermarknad, with après-ski, sits next to Slänggungan and the [Radiobilarna, which stopped running in October](/news/liseberg-radiobilarna-closed). Gammaldags jul is an old-style market in Kvarteret Storgatan, and Vintermarknad stands by Stora Scenen next to the ice rink. Spread across the park are more than 2,100 Christmas trees and 3.3 kilometres of fir garland. The seven tonnes of artificial snow are made from paper pulp, so for snow Liseberg trusts the paper industry more than a Gothenburg December. Jul på Liseberg has been running since 2000. For its 25th anniversary last winter, five million lights were lit, and this year more than a million are added. The park's 116-metre Christmas tree can be seen all over Gothenburg.
+Three Christmas markets share 46 stalls. Tyrolermarknad, with après-ski, sits next to Slänggungan and the [Radiobilarna, which stopped running in October](/news/liseberg-radiobilarna-closed). Gammaldags jul is an old-style market in Kvarteret Storgatan, and Vintermarknad stands by Stora Scenen next to the ice rink. The park puts up more than 2,100 Christmas trees and hangs 3.3 kilometres of fir garland. The seven tonnes of artificial snow are made from paper pulp, so for snow Liseberg trusts the paper industry more than a Gothenburg December. On top of the five million lights from last winter's 25th anniversary, Liseberg is hanging more than a million more this year. The park's 116-metre Christmas tree can be seen all over Gothenburg.
 
 The park's own Grand Curiosa Hotel sells a package of one night, entry and julbord, the Swedish Christmas buffet. It can be booked on selected days from 14 November to 23 December.
 

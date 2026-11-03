@@ -2,7 +2,7 @@
 title: 'Liseberg legt zu Weihnachten einen Lichterpfad um den Berg'
 translationKey: jul-pa-liseberg-2026
 date: '2026-11-03'
-time: '17:30'
+time: '18:04'
 author: patrick
 mode: published
 featured: false
@@ -38,7 +38,7 @@ seo:
     - Göteborg Weihnachten
 ---
 
-[Liseberg](ref:liseberg) in Göteborg öffnet am Samstag, 14. November, seine Weihnachtssaison Jul på Liseberg. Neu ist in diesem Jahr ein Lichterpfad von rund einem Kilometer einmal um den Berg im Park. Er heißt Luma Celestia und kostet 8,6 Millionen Kronen, die größte einzelne Weihnachtsinvestition in der Geschichte des Parks. Die Saison läuft bis zum 30. Dezember. Angekündigt hat Liseberg das am 3. November.
+[Liseberg](ref:liseberg) in Göteborg öffnet am Samstag, 14. November, seine Weihnachtssaison Jul på Liseberg. Neu ist in diesem Jahr ein Lichterpfad von rund einem Kilometer einmal um den Berg im Park. Er heißt Luma Celestia und kostet 8,6 Millionen Kronen, mehr als Liseberg je für ein einzelnes Weihnachtsprojekt ausgegeben hat. Die Saison läuft bis zum 30. Dezember.
 
 ## Der Weg durch Luma Celestia
 
@@ -91,13 +91,13 @@ Im Eintritt sind das Tomtehuset mit dem Weihnachtsmann, die Eisbahn, Barnens Par
 - Stormvåg: ab 120 cm, mit Erwachsenem ab 95 cm
 - Lisebergshjulet: ab 130 cm, mit Erwachsenem ohne Grenze
 
-[Helix](ref:liseberg/helix) und die Lisebergbanan stehen nicht auf der Winterliste des Parks. Unser [Liseberg-Guide](/blog/liseberg-wartezeiten-tipps) beschreibt den Sommer mit allen Bahnen, ihren Warteschlangen und der virtuellen Warteschlange.
+[Helix](ref:liseberg/helix) und die Lisebergbanan stehen nicht auf der Winterliste des Parks. Für den Sommer gibt es unseren [Liseberg-Guide](/blog/liseberg-wartezeiten-tipps), mit den Warteschlangen jeder Bahn und der virtuellen Warteschlange.
 
 ## Tomtebyn, Märkte und Schnee aus Papier
 
-Für Kinder gibt es die Tomtebyn, ein Wichteldorf zwischen dem Hafenbereich und Valkyria. Dort tanzen, spielen und singen Wichtel mit ihnen, und der Weihnachtsmann nimmt die Wunschzettel entgegen.
+Für Kinder gibt es die Tomtebyn, ein Wichteldorf zwischen dem Hafenbereich und Valkyria. Dort singen und tanzen Wichtel mit den Kindern, und wer einen Wunschzettel mitbringt, gibt ihn gleich beim Weihnachtsmann ab.
 
-Auf drei Weihnachtsmärkten stehen 46 Buden. Der Tyrolermarknad mit Après-Ski liegt bei der Slänggungan und den [Radiobilarna, die seit Oktober nicht mehr fahren](/news/liseberg-radiobilarna-geschlossen). Gammaldags jul ist ein Markt im alten Stil im Kvarteret Storgatan, und der Vintermarknad steht an der Stora Scenen neben der Eisbahn. Im Park verteilt stehen mehr als 2.100 Weihnachtsbäume und 3,3 Kilometer Tannengirlande. Die sieben Tonnen Kunstschnee sind aus Papiermasse, Liseberg vertraut beim Schnee also eher der Papierindustrie als dem Göteborger Dezember. Jul på Liseberg gibt es seit dem Jahr 2000. Zum 25-jährigen Jubiläum im vergangenen Winter leuchteten fünf Millionen Lichter, in diesem Jahr kommen mehr als eine Million dazu. Der 116 Meter hohe Weihnachtsbaum des Parks ist in ganz Göteborg zu sehen.
+Auf drei Weihnachtsmärkten stehen 46 Buden. Der Tyrolermarknad mit Après-Ski liegt bei der Slänggungan und den [Radiobilarna, die seit Oktober nicht mehr fahren](/news/liseberg-radiobilarna-geschlossen). Gammaldags jul ist ein Markt im alten Stil im Kvarteret Storgatan, und der Vintermarknad steht an der Stora Scenen neben der Eisbahn. Im Park stehen mehr als 2.100 Weihnachtsbäume, dazu hängen 3,3 Kilometer Tannengirlande. Die sieben Tonnen Kunstschnee sind aus Papiermasse, Liseberg vertraut beim Schnee also eher der Papierindustrie als dem Göteborger Dezember. Zu den fünf Millionen Lichtern vom 25-jährigen Jubiläum im vergangenen Winter hängt Liseberg in diesem Jahr mehr als eine Million weitere. Der 116 Meter hohe Weihnachtsbaum des Parks ist in ganz Göteborg zu sehen.
 
 Im parkeigenen Grand Curiosa Hotel gibt es ein Paket mit einer Übernachtung, dem schwedischen Weihnachtsbuffet Julbord und dem Eintritt. Buchbar ist es an ausgewählten Tagen vom 14. November bis zum 23. Dezember.
 

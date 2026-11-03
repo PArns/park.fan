@@ -2,7 +2,7 @@
 title: 'À Noël, Liseberg éclaire un sentier autour de sa colline'
 translationKey: jul-pa-liseberg-2026
 date: '2026-11-03'
-time: '17:30'
+time: '18:04'
 author: patrick
 mode: published
 featured: false
@@ -38,7 +38,7 @@ seo:
     - Göteborg Noël
 ---
 
-Le samedi 14 novembre, [Liseberg](ref:liseberg) ouvre Jul på Liseberg, sa saison de Noël à Göteborg. Cette année, un sentier lumineux d’environ un kilomètre fait le tour de la colline au cœur du parc. Il s’appelle Luma Celestia et a coûté 8,6 millions de couronnes : jamais Liseberg n’avait autant investi dans une seule nouveauté de Noël. La saison se termine le 30 décembre. Liseberg l’a présentée le 3 novembre.
+Le samedi 14 novembre, [Liseberg](ref:liseberg) ouvre Jul på Liseberg, sa saison de Noël à Göteborg. Cette année, un sentier lumineux d’environ un kilomètre fait le tour de la colline au cœur du parc. Il s’appelle Luma Celestia et a coûté 8,6 millions de couronnes, plus que Liseberg n’en a jamais dépensé pour un seul projet de Noël. La saison se termine le 30 décembre.
 
 ## Le parcours de Luma Celestia
 
@@ -90,13 +90,13 @@ L’entrée donne accès au Tomtehuset et à son père Noël, à la patinoire, �
 - Stormvåg : 120 cm, 95 cm avec un adulte
 - Lisebergshjulet : 130 cm, sans limite avec un adulte
 
-[Helix](ref:liseberg/helix) et la Lisebergbanan ne figurent pas sur la liste d’hiver du parc. Notre guide sur [Liseberg et ses temps d’attente](/blog/liseberg-temps-d-attente-conseils) décrit l’été, avec toutes les attractions, leurs files et la file virtuelle.
+[Helix](ref:liseberg/helix) et la Lisebergbanan ne figurent pas sur la liste d’hiver du parc. Pour l’été, il y a notre guide sur [Liseberg et ses temps d’attente](/blog/liseberg-temps-d-attente-conseils), avec les files de chaque attraction et la file virtuelle.
 
 ## Tomtebyn, marchés et neige en papier
 
-Les enfants ont la Tomtebyn, un village de lutins entre le secteur du port et Valkyria. Les lutins y dansent, jouent et chantent avec eux, et le père Noël récupère les listes de souhaits.
+Les enfants ont la Tomtebyn, un village de lutins entre le secteur du port et Valkyria. Les lutins y chantent et dansent avec les enfants, et ceux qui apportent leur liste de souhaits la remettent directement au père Noël.
 
-Les trois marchés de Noël comptent 46 chalets. Le Tyrolermarknad, avec son après-ski, se tient près de la Slänggungan et des [Radiobilarna, qui ne roulent plus depuis octobre](/news/liseberg-radiobilarna-fermes). Gammaldags jul, dans le Kvarteret Storgatan, est un marché à l’ancienne, et le Vintermarknad se tient devant la Stora Scenen, à côté de la patinoire. Le parc compte plus de 2 100 sapins et 3,3 kilomètres de guirlandes de sapin. Ses sept tonnes de neige artificielle sont faites de pâte à papier : pour la neige, Liseberg mise sur l’industrie papetière plutôt que sur le mois de décembre à Göteborg. Jul på Liseberg existe depuis 2000. L’hiver dernier, pour ses 25 ans, cinq millions de lumières brillaient, et plus d’un million s’y ajoutent cette année. Il y a aussi un sapin de Noël de 116 mètres, visible de toute la ville.
+Les trois marchés de Noël comptent 46 chalets. Le Tyrolermarknad, avec son après-ski, se tient près de la Slänggungan et des [Radiobilarna, qui ne roulent plus depuis octobre](/news/liseberg-radiobilarna-fermes). Gammaldags jul, dans le Kvarteret Storgatan, est un marché à l’ancienne, et le Vintermarknad se tient devant la Stora Scenen, à côté de la patinoire. Plus de 2 100 sapins sont installés dans le parc, et 3,3 kilomètres de guirlandes de sapin y sont suspendus. Ses sept tonnes de neige artificielle sont faites de pâte à papier : pour la neige, Liseberg mise sur l’industrie papetière plutôt que sur le mois de décembre à Göteborg. Aux cinq millions de lumières installées l’hiver dernier pour ses 25 ans, Liseberg en ajoute cette année plus d’un million. Il y a aussi un sapin de Noël de 116 mètres, visible de toute la ville.
 
 Le Grand Curiosa Hotel, qui appartient au parc, propose une formule avec une nuit, le Julbord, le buffet de Noël suédois, et l’entrée. On peut la réserver certains jours entre le 14 novembre et le 23 décembre.
 

@@ -2,7 +2,7 @@
 title: 'Liseberg illumina a Natale un sentiero intorno alla collina'
 translationKey: jul-pa-liseberg-2026
 date: '2026-11-03'
-time: '17:30'
+time: '18:04'
 author: patrick
 mode: published
 featured: false
@@ -38,7 +38,7 @@ seo:
     - Göteborg Natale
 ---
 
-Sabato 14 novembre [Liseberg](ref:liseberg), a Göteborg, apre Jul på Liseberg, la sua stagione di Natale. Quest'anno c'è una novità, Luma Celestia, un sentiero di luci lungo circa un chilometro che fa il giro completo della collina del parco. È costato 8,6 milioni di corone, l'investimento natalizio singolo più grande nella storia di Liseberg. Il parco lo ha annunciato il 3 novembre, e la stagione va avanti fino al 30 dicembre.
+Sabato 14 novembre [Liseberg](ref:liseberg), a Göteborg, apre Jul på Liseberg, la sua stagione di Natale. Quest'anno c'è una novità, Luma Celestia, un sentiero di luci lungo circa un chilometro che fa il giro completo della collina del parco. È costato 8,6 milioni di corone, più di quanto Liseberg abbia mai speso per un singolo progetto di Natale. La stagione va avanti fino al 30 dicembre.
 
 ## Il percorso di Luma Celestia
 
@@ -90,13 +90,13 @@ Con l'ingresso sono compresi il Tomtehuset con Babbo Natale, la pista di pattina
 - Stormvåg: da 120 cm, con un adulto da 95 cm
 - Lisebergshjulet: da 130 cm, con un adulto senza limiti
 
-[Helix](ref:liseberg/helix) e la Lisebergbanan non compaiono nell'elenco invernale del parco. La nostra [guida a Liseberg](/blog/liseberg-tempi-di-attesa-consigli) racconta l'estate, con tutte le attrazioni, le code e la coda virtuale.
+[Helix](ref:liseberg/helix) e la Lisebergbanan non compaiono nell'elenco invernale del parco. Per l'estate c'è la nostra [guida a Liseberg](/blog/liseberg-tempi-di-attesa-consigli), con le code di ogni attrazione e la coda virtuale.
 
 ## Tomtebyn, mercatini e neve di carta
 
-Per i bambini c'è la Tomtebyn, un villaggio degli gnomi tra la zona del porto e Valkyria. Lì gli gnomi ballano, giocano e cantano con loro, e Babbo Natale ritira le letterine.
+Per i bambini c'è la Tomtebyn, un villaggio degli gnomi tra la zona del porto e Valkyria. Lì gli gnomi cantano e ballano con i bambini, e chi porta la letterina la consegna subito a Babbo Natale.
 
-I mercatini di Natale sono tre, con 46 casette in tutto. Il Tyrolermarknad, con l'après-ski, sta vicino alla Slänggungan e alle [Radiobilarna, ferme da ottobre](/news/liseberg-radiobilarna-chiusi). Gammaldags jul è un mercatino all'antica nel Kvarteret Storgatan, mentre il Vintermarknad sta davanti alla Stora Scenen, accanto alla pista di pattinaggio. Sparsi per il parco ci sono più di 2.100 alberi di Natale e 3,3 chilometri di festoni di abete. Le sette tonnellate di neve finta sono fatte di pasta di carta: per la neve, a quanto pare, Liseberg si fida più dell'industria cartaria che del dicembre di Göteborg. Jul på Liseberg esiste dal 2000. Lo scorso inverno, per i 25 anni, le luci erano cinque milioni, e quest'anno se ne aggiunge più di un milione. C'è poi un albero di Natale alto 116 metri che si vede da tutta Göteborg.
+I mercatini di Natale sono tre, con 46 casette in tutto. Il Tyrolermarknad, con l'après-ski, sta vicino alla Slänggungan e alle [Radiobilarna, ferme da ottobre](/news/liseberg-radiobilarna-chiusi). Gammaldags jul è un mercatino all'antica nel Kvarteret Storgatan, mentre il Vintermarknad sta davanti alla Stora Scenen, accanto alla pista di pattinaggio. Nel parco ci sono più di 2.100 alberi di Natale, e in giro pendono 3,3 chilometri di festoni di abete. Le sette tonnellate di neve finta sono fatte di pasta di carta: per la neve, a quanto pare, Liseberg si fida più dell'industria cartaria che del dicembre di Göteborg. Ai cinque milioni di luci dei 25 anni, lo scorso inverno, quest'anno Liseberg ne aggiunge più di un milione. C'è poi un albero di Natale alto 116 metri che si vede da tutta Göteborg.
 
 Il Grand Curiosa Hotel, l'albergo del parco, propone un pacchetto con una notte, il Julbord (il buffet di Natale svedese) e l'ingresso. Si prenota in alcuni giorni tra il 14 novembre e il 23 dicembre.
 

@@ -2,7 +2,7 @@
 title: 'Un sendero de luces rodea la colina de Liseberg en Navidad'
 translationKey: jul-pa-liseberg-2026
 date: '2026-11-03'
-time: '17:30'
+time: '18:04'
 author: patrick
 mode: published
 featured: false
@@ -38,7 +38,7 @@ seo:
     - Navidad en Gotemburgo
 ---
 
-[Liseberg](ref:liseberg), en Gotemburgo, abre el sábado 14 de noviembre su temporada navideña, Jul på Liseberg. Este año estrena un sendero de luces de alrededor de un kilómetro que da la vuelta entera a la colina del parque. Se llama Luma Celestia y ha costado 8,6 millones de coronas, la mayor inversión navideña de la historia del parque en un solo proyecto. La temporada dura hasta el 30 de diciembre. Liseberg lo anunció todo el 3 de noviembre.
+[Liseberg](ref:liseberg), en Gotemburgo, abre el sábado 14 de noviembre su temporada navideña, Jul på Liseberg. Este año estrena un sendero de luces de alrededor de un kilómetro que da la vuelta entera a la colina del parque. Se llama Luma Celestia y ha costado 8,6 millones de coronas, más de lo que Liseberg había gastado nunca en un solo proyecto navideño. La temporada dura hasta el 30 de diciembre.
 
 ## El recorrido de Luma Celestia
 
@@ -90,13 +90,13 @@ La entrada incluye el Tomtehuset con Papá Noel, la pista de hielo, Barnens Para
 - Stormvåg: desde 120 cm, con un adulto desde 95 cm
 - Lisebergshjulet: desde 130 cm, con un adulto sin altura mínima
 
-[Helix](ref:liseberg/helix) y la Lisebergbanan no figuran en la lista de invierno del parque. Nuestra [guía de Liseberg](/blog/liseberg-tiempos-de-espera-consejos) explica el verano, con todas las atracciones, sus colas y la cola virtual.
+[Helix](ref:liseberg/helix) y la Lisebergbanan no figuran en la lista de invierno del parque. Para el verano está nuestra [guía de Liseberg](/blog/liseberg-tiempos-de-espera-consejos), con las colas de cada atracción y la cola virtual.
 
 ## Tomtebyn, mercados y nieve de papel
 
-Para los niños está Tomtebyn, un pueblo de duendes entre la zona del puerto y Valkyria. Allí los duendes bailan, juegan y cantan con ellos, y Papá Noel recoge las cartas con los deseos.
+Para los niños está Tomtebyn, un pueblo de duendes entre la zona del puerto y Valkyria. Allí los duendes cantan y bailan con los niños, y quien lleve su carta de deseos se la puede dar en mano a Papá Noel.
 
-Tres mercados navideños suman 46 casetas. El Tyrolermarknad, con après-ski, está junto a la Slänggungan y los [Radiobilarna, que ya no funcionan desde octubre](/news/liseberg-radiobilarna-cerrados). Gammaldags jul es un mercado a la antigua en el Kvarteret Storgatan, y el Vintermarknad está junto a la Stora Scenen, al lado de la pista de hielo. Repartidos por el parque hay más de 2100 árboles de Navidad y 3,3 kilómetros de guirnalda de abeto. Las siete toneladas de nieve artificial son de pasta de papel: para la nieve, Liseberg se fía más de la industria papelera que del diciembre de Gotemburgo. Jul på Liseberg existe desde el año 2000. En su 25 aniversario, el invierno pasado, brillaron cinco millones de luces, y este año se suma más de un millón. Además hay un árbol de Navidad de 116 metros que se ve desde toda Gotemburgo.
+Tres mercados navideños suman 46 casetas. El Tyrolermarknad, con après-ski, está junto a la Slänggungan y los [Radiobilarna, que ya no funcionan desde octubre](/news/liseberg-radiobilarna-cerrados). Gammaldags jul es un mercado a la antigua en el Kvarteret Storgatan, y el Vintermarknad está junto a la Stora Scenen, al lado de la pista de hielo. En el parque se levantan más de 2100 árboles de Navidad y cuelgan 3,3 kilómetros de guirnalda de abeto. Las siete toneladas de nieve artificial son de pasta de papel: para la nieve, Liseberg se fía más de la industria papelera que del diciembre de Gotemburgo. A los cinco millones de luces de su 25 aniversario, el invierno pasado, Liseberg suma este año más de un millón. Además hay un árbol de Navidad de 116 metros que se ve desde toda Gotemburgo.
 
 El Grand Curiosa Hotel, del propio parque, ofrece un paquete con una noche, el julbord (el bufé navideño sueco) y la entrada. Se puede reservar en días concretos del 14 de noviembre al 23 de diciembre.
 

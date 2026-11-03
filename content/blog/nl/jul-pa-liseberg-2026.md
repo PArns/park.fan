@@ -2,7 +2,7 @@
 title: 'Liseberg legt met kerst een lichtpad aan rond de berg'
 translationKey: jul-pa-liseberg-2026
 date: '2026-11-03'
-time: '17:30'
+time: '18:04'
 author: patrick
 mode: published
 featured: false
@@ -38,7 +38,7 @@ seo:
     - Göteborg kerst
 ---
 
-[Liseberg](ref:liseberg) in Göteborg opent op zaterdag 14 november het kerstseizoen Jul på Liseberg. Dit jaar loopt er voor het eerst een lichtpad van ongeveer een kilometer helemaal om de berg in het park. Het heet Luma Celestia en kost 8,6 miljoen kronen, de grootste losse kerstinvestering die het park ooit deed. Het seizoen duurt tot 30 december. Liseberg maakte het allemaal op 3 november bekend.
+[Liseberg](ref:liseberg) in Göteborg opent op zaterdag 14 november het kerstseizoen Jul på Liseberg. Dit jaar loopt er voor het eerst een lichtpad van ongeveer een kilometer helemaal om de berg in het park. Het heet Luma Celestia en kost 8,6 miljoen kronen, meer dan Liseberg ooit aan één kerstproject heeft uitgegeven. Het seizoen duurt tot 30 december.
 
 ## De route door Luma Celestia
 
@@ -90,13 +90,13 @@ Bij de entree inbegrepen zijn het Tomtehuset met de kerstman, de ijsbaan, Barnen
 - Stormvåg: vanaf 120 cm, met een volwassene vanaf 95 cm
 - Lisebergshjulet: vanaf 130 cm, met een volwassene zonder minimumlengte
 
-Onze [Liseberg-gids](/blog/liseberg-wachttijden-tips) beschrijft de zomer, met alle attracties, hun wachtrijen en de virtuele wachtrij. [Helix](ref:liseberg/helix) en de Lisebergbanan ontbreken op de winterlijst van het park.
+Voor de zomer is er onze [Liseberg-gids](/blog/liseberg-wachttijden-tips), met de wachtrij van elke attractie en de virtuele wachtrij. [Helix](ref:liseberg/helix) en de Lisebergbanan ontbreken op de winterlijst van het park.
 
 ## Tomtebyn, kerstmarkten en sneeuw van papier
 
-Voor kinderen is er de Tomtebyn, een kabouterdorp tussen het havengebied en Valkyria. De kabouters dansen, spelen en zingen er met de kinderen, en de kerstman neemt hun verlanglijstjes in ontvangst.
+Voor kinderen is er de Tomtebyn, een kabouterdorp tussen het havengebied en Valkyria. De kabouters zingen en dansen er met de kinderen, en wie een verlanglijstje meeneemt, geeft het meteen af bij de kerstman.
 
-Op drie kerstmarkten staan samen 46 kraampjes. De Tyrolermarknad, met après-ski, ligt bij de Slänggungan en de [Radiobilarna, die sinds oktober niet meer rijden](/news/liseberg-radiobilarna-gesloten). Gammaldags jul is een ouderwetse markt in het Kvarteret Storgatan, en de Vintermarknad staat bij de Stora Scenen, naast de ijsbaan. Verspreid door het park staan meer dan 2.100 kerstbomen en hangt 3,3 kilometer dennenslinger. De zeven ton kunstsneeuw is van papierpulp gemaakt: kennelijk rekent Liseberg voor een witte kerst liever op de papierindustrie dan op het weer in Göteborg. Jul på Liseberg bestaat sinds 2000. Bij het 25-jarig jubileum vorige winter brandden er vijf miljoen lampjes, dit jaar komen er meer dan een miljoen bij. Verder staat er een kerstboom van 116 meter die in heel Göteborg te zien is.
+Op drie kerstmarkten staan samen 46 kraampjes. De Tyrolermarknad, met après-ski, ligt bij de Slänggungan en de [Radiobilarna, die sinds oktober niet meer rijden](/news/liseberg-radiobilarna-gesloten). Gammaldags jul is een ouderwetse markt in het Kvarteret Storgatan, en de Vintermarknad staat bij de Stora Scenen, naast de ijsbaan. In het park staan meer dan 2.100 kerstbomen, en daarnaast hangt er 3,3 kilometer dennenslinger. De zeven ton kunstsneeuw is van papierpulp gemaakt: kennelijk rekent Liseberg voor een witte kerst liever op de papierindustrie dan op het weer in Göteborg. Bij de vijf miljoen lampjes van het 25-jarig jubileum vorige winter hangt Liseberg er dit jaar nog meer dan een miljoen bij. Verder staat er een kerstboom van 116 meter die in heel Göteborg te zien is.
 
 In het eigen Grand Curiosa Hotel van het park kun je een arrangement boeken met een overnachting, het Zweedse kerstbuffet julbord en de entree. Dat kan op geselecteerde dagen van 14 november tot en met 23 december.
 
