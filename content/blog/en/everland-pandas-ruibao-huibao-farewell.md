@@ -2,7 +2,7 @@
 title: 'Five pandas on show at Everland until 11 December'
 translationKey: everland-pandas-ruibao-huibao-abschied
 date: '2026-11-03'
-time: '18:30'
+time: '18:43'
 author: patrick
 mode: published
 featured: false
@@ -42,7 +42,7 @@ The last day you can see the panda twins Rui Bao and Hui Bao in public at [Everl
 
 ## Shubao, panda number five
 
-Shubao was born in Panda World on 3 June 2026, a daughter of Aibao and Le Bao conceived naturally. She weighed 171 grams at birth, roughly what a large apple weighs, and she's now past nine kilos. She got her name on her 100th day and took her first steps at about 120 days old. So she knew what she was called before she could walk anywhere. More than 10,000 people sent in ideas, a panel picked five of them, and Shubao took 42 per cent of 220,000 votes cast online and in the park. The characters 曙宝 mean dawn and treasure.
+Shubao was born in Panda World on 3 June 2026, a daughter of Aibao and Le Bao conceived naturally. She weighed 171 grams at birth, less than a block of butter, and she's now past nine kilos. She got her name on her 100th day and took her first steps at about 120 days old. More than 10,000 people sent in ideas, a panel picked five of them, and Shubao took 42 per cent of 220,000 votes cast online and in the park. The characters 曙宝 mean dawn and treasure.
 
 After Fu Bao and the twins, she's the fourth panda born in Korea. Everland plans to show her for longer each day and to more visitors, step by step.
 
@@ -70,7 +70,7 @@ By metro, take the Bundang Line to Giheung and change to the EverLine, which run
 
 ## What else is on until December
 
-The autumn festival runs until 22 November, with Blood City Zero: Hell Gate and the autumn show line-up. The circus show Wings of Memory closes sooner, on 15 November, and the Wild Savanna Expedition is running too.
+The autumn festival runs until 22 November, with Blood City Zero: Hell Gate and the autumn show line-up. The circus show Wings of Memory closes sooner, on 15 November. The Wild Savanna Expedition is part of the autumn line-up as well.
 
 Over the winter, Everland is taking down some older rides. Work on the Helicycle started on 2 November. The Play Yard follows from 23 November, Car Kingdom and Kids Village from 1 December and the Spooky Fun House from 3 December. The dates depend on the weather, so with small children it's safer to plan Kids Village and Car Kingdom before the end of November.
 
@@ -78,7 +78,7 @@ Over the winter, Everland is taking down some older rides. Work on the Helicycle
 
 Aibao and Le Bao came to Korea from the Dujiangyan Panda Habitat in Sichuan for the opening of Panda World on 21 April 2016. Around 18 million people have visited it since. Pandas born outside China move there before their fourth birthday, before they reach sexual maturity.
 
-Fu Bao was born on 20 July 2020, the first panda born in Korea. She made her last public appearance on 3 March 2024, and on 3 April 2024 she left Everland for the Shenshuping base in the Wolong Nature Reserve in Sichuan. Rui Bao and Hui Bao were born on 7 July 2023 as Korea's first panda twins, at 180 and 140 grams. Today each weighs about 90 kilos, more than most of the visitors watching them. Exactly when they leave and where in China they go depends on the temperature and the situation there. All that's fixed so far is the third week of December.
+Fu Bao was born on 20 July 2020, the first panda born in Korea. She made her last public appearance on 3 March 2024, and on 3 April 2024 she left Everland for the Shenshuping base in the Wolong Nature Reserve in Sichuan. Rui Bao and Hui Bao were born on 7 July 2023 as Korea's first panda twins, at 180 and 140 grams. Today each weighs about 90 kilos, more than most of the visitors watching them. Exactly when in the third week of December they leave, and where in China they go, depends on the temperature and the situation there.
 
 [Everland](ref:everland?full)
 

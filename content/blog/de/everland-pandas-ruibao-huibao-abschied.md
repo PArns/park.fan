@@ -2,7 +2,7 @@
 title: 'Bis zum 11. Dezember sind im Everland fünf Pandas zu sehen'
 translationKey: everland-pandas-ruibao-huibao-abschied
 date: '2026-11-03'
-time: '18:30'
+time: '18:43'
 author: patrick
 mode: published
 featured: false
@@ -42,7 +42,7 @@ Die Panda-Zwillinge Rui Bao und Hui Bao sind im [Everland](ref:everland) in Yong
 
 ## Shubao, der fünfte Panda
 
-Shubao kam am 3. Juni 2026 in Panda World zur Welt, als Tochter von Aibao und Le Bao, gezeugt auf natürlichem Weg. Bei der Geburt wog sie 171 Gramm, weniger als ein Päckchen Butter, heute sind es mehr als neun Kilo. Ihren Namen bekam sie an ihrem 100. Lebenstag, die ersten Schritte machte sie mit etwa 120 Tagen. Sie wusste also schon, wie sie heißt, bevor sie irgendwohin laufen konnte. Zum Wettbewerb hatten mehr als 10.000 Menschen Vorschläge eingereicht, Fachleute wählten fünf davon aus, und von 220.000 Stimmen online und im Park gingen 42 Prozent an Shubao. Die Schriftzeichen 曙宝 stehen für Morgendämmerung und Schatz.
+Shubao kam am 3. Juni 2026 in Panda World zur Welt, als Tochter von Aibao und Le Bao, gezeugt auf natürlichem Weg. Bei der Geburt wog sie 171 Gramm, weniger als ein Päckchen Butter, heute sind es mehr als neun Kilo. Ihren Namen bekam sie an ihrem 100. Lebenstag, die ersten Schritte machte sie mit etwa 120 Tagen. Zum Wettbewerb hatten mehr als 10.000 Menschen Vorschläge eingereicht, Fachleute wählten fünf davon aus, und von 220.000 Stimmen online und im Park gingen 42 Prozent an Shubao. Die Schriftzeichen 曙宝 stehen für Morgendämmerung und Schatz.
 
 Nach Fu Bao und den Zwillingen ist sie der vierte in Korea geborene Panda. Everland will sie nach und nach länger am Tag und für mehr Besucher zeigen.
 
@@ -70,7 +70,7 @@ Mit der U-Bahn fährst du auf der Bundang-Linie bis Giheung und steigst dort in 
 
 ## Was im Park bis Dezember läuft
 
-Das Herbstfest geht bis zum 22. November, mit Blood City Zero: Hell Gate und dem Herbstprogramm an Shows. Der Zirkus Wings of Memory endet schon am 15. November, und auch die Wild Savanna Expedition läuft.
+Das Herbstfest geht bis zum 22. November, mit Blood City Zero: Hell Gate und dem Herbstprogramm an Shows. Der Zirkus Wings of Memory endet schon am 15. November. Zum Herbstprogramm gehört außerdem die Wild Savanna Expedition.
 
 Über den Winter baut Everland ältere Anlagen ab. Den Helicycle trifft es seit dem 2. November, den Play Yard ab dem 23. November, Car Kingdom und Kids Village ab dem 1. Dezember und das Spooky Fun House ab dem 3. Dezember. Die Termine hängen vom Wetter ab. Kids Village und Car Kingdom plant man mit kleinen Kindern deshalb besser bis Ende November ein.
 
@@ -78,7 +78,7 @@ Das Herbstfest geht bis zum 22. November, mit Blood City Zero: Hell Gate und dem
 
 Aibao und Le Bao kamen aus dem Dujiangyan Panda Habitat in Sichuan nach Korea, zur Eröffnung von Panda World am 21. April 2016. Seitdem haben rund 18 Millionen Menschen die Anlage besucht. Außerhalb Chinas geborene Pandas ziehen vor ihrem vierten Geburtstag nach China, bevor sie geschlechtsreif werden.
 
-Fu Bao wurde am 20. Juli 2020 als erster Panda in Korea geboren. Ihren letzten öffentlichen Auftritt hatte sie am 3. März 2024, und am 3. April 2024 verließ sie das Everland in Richtung der Shenshuping-Basis im Wolong-Naturreservat in Sichuan. Rui Bao und Hui Bao kamen am 7. Juli 2023 als erste Panda-Zwillinge Koreas zur Welt, mit 180 und 140 Gramm. Heute wiegt jede rund 90 Kilo, mehr als die meisten Besucher, die ihnen zuschauen. Wann genau sie abreisen und wohin in China, hängt von der Temperatur und der Lage vor Ort ab. Fest steht bisher nur die dritte Dezemberwoche.
+Fu Bao wurde am 20. Juli 2020 als erster Panda in Korea geboren. Ihren letzten öffentlichen Auftritt hatte sie am 3. März 2024, und am 3. April 2024 verließ sie das Everland in Richtung der Shenshuping-Basis im Wolong-Naturreservat in Sichuan. Rui Bao und Hui Bao kamen am 7. Juli 2023 als erste Panda-Zwillinge Koreas zur Welt, mit 180 und 140 Gramm. Heute wiegt jede rund 90 Kilo, mehr als die meisten Besucher, die ihnen zuschauen. Wann genau in der dritten Dezemberwoche sie abreisen und wohin in China, hängt von der Temperatur und der Lage vor Ort ab.
 
 [Everland](ref:everland?full)
 

@@ -2,7 +2,7 @@
 title: "Tot 11 december zijn er in Everland vijf panda's te zien"
 translationKey: everland-pandas-ruibao-huibao-abschied
 date: '2026-11-03'
-time: '18:30'
+time: '18:43'
 author: patrick
 mode: published
 featured: false
@@ -42,7 +42,7 @@ Op 11 december is de pandatweeling Rui Bao en Hui Bao voor het laatst te zien in
 
 ## Shubao, de vijfde panda
 
-Shubao kwam op 3 juni 2026 in Panda World ter wereld, als dochter van Aibao en Le Bao, op natuurlijke wijze verwekt. Bij de geboorte woog ze 171 gram, minder dan een pak hagelslag; inmiddels is ze ruim negen kilo. Haar naam kreeg ze op haar 100e levensdag, haar eerste stapjes zette ze rond haar 120e dag. Ze wist dus al hoe ze heette voordat ze ergens heen kon lopen. Meer dan 10.000 mensen stuurden een voorstel in, een jury koos er vijf uit, en van de 220.000 stemmen online en in het park ging 42 procent naar Shubao. De tekens 曙宝 betekenen dageraad en schat.
+Shubao kwam op 3 juni 2026 in Panda World ter wereld, als dochter van Aibao en Le Bao, op natuurlijke wijze verwekt. Bij de geboorte woog ze 171 gram, minder dan een pak hagelslag; inmiddels is ze ruim negen kilo. Haar naam kreeg ze op haar 100e levensdag, haar eerste stapjes zette ze rond haar 120e dag. Meer dan 10.000 mensen stuurden een voorstel in, een jury koos er vijf uit, en van de 220.000 stemmen online en in het park ging 42 procent naar Shubao. De tekens 曙宝 betekenen dageraad en schat.
 
 Na Fu Bao en de tweeling is ze de vierde panda die in Korea is geboren. Everland wil haar stap voor stap langer per dag en aan meer bezoekers laten zien.
 
@@ -70,7 +70,7 @@ Met de metro neem je de Bundang-lijn tot Giheung en stap je daar over op de Ever
 
 ## Wat er tot december nog in het park te doen is
 
-Het herfstfestival loopt tot 22 november, met Blood City Zero: Hell Gate en het herfstprogramma aan shows. Het circus Wings of Memory houdt er al op 15 november mee op, en de Wild Savanna Expedition is er ook.
+Het herfstfestival loopt tot 22 november, met Blood City Zero: Hell Gate en het herfstprogramma aan shows. Het circus Wings of Memory houdt er al op 15 november mee op. Ook de Wild Savanna Expedition hoort bij het herfstprogramma.
 
 In de winter breekt Everland een paar oudere attracties af. De Helicycle is sinds 2 november aan de beurt, de Play Yard vanaf 23 november, Car Kingdom en Kids Village vanaf 1 december en het Spooky Fun House vanaf 3 december. De data hangen af van het weer. Met kleine kinderen kun je Kids Village en Car Kingdom dus beter voor eind november inplannen.
 
@@ -78,7 +78,7 @@ In de winter breekt Everland een paar oudere attracties af. De Helicycle is sind
 
 Aibao en Le Bao kwamen uit het Dujiangyan Panda Habitat in Sichuan naar Korea, voor de opening van Panda World op 21 april 2016. Sindsdien kwamen er zo'n 18 miljoen mensen kijken. Panda's die buiten China worden geboren, verhuizen voor hun vierde verjaardag naar China, voordat ze geslachtsrijp worden.
 
-Fu Bao werd op 20 juli 2020 geboren als eerste panda in Korea. Op 3 maart 2024 was ze voor het laatst publiek te zien, en op 3 april 2024 vertrok ze uit Everland naar de Shenshuping-basis in het natuurreservaat Wolong in Sichuan. Rui Bao en Hui Bao werden op 7 juli 2023 geboren, als eerste pandatweeling van Korea, met 180 en 140 gram. Nu weegt elk van hen zo'n 90 kilo, meer dan de meeste bezoekers die naar hen kijken. Wanneer ze precies vertrekken en waar in China ze heen gaan, hangt af van de temperatuur en de situatie ter plaatse. Vast staat voorlopig alleen de derde week van december.
+Fu Bao werd op 20 juli 2020 geboren als eerste panda in Korea. Op 3 maart 2024 was ze voor het laatst publiek te zien, en op 3 april 2024 vertrok ze uit Everland naar de Shenshuping-basis in het natuurreservaat Wolong in Sichuan. Rui Bao en Hui Bao werden op 7 juli 2023 geboren, als eerste pandatweeling van Korea, met 180 en 140 gram. Nu weegt elk van hen zo'n 90 kilo, meer dan de meeste bezoekers die naar hen kijken. Op welke dag in de derde week van december ze vertrekken en waar in China ze heen gaan, hangt af van de temperatuur en de situatie ter plaatse.
 
 [Everland](ref:everland?full)
 

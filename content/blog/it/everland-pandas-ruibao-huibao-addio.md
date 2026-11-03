@@ -2,7 +2,7 @@
 title: "Fino all'11 dicembre Everland ha cinque panda in vista"
 translationKey: everland-pandas-ruibao-huibao-abschied
 date: '2026-11-03'
-time: '18:30'
+time: '18:43'
 author: patrick
 mode: published
 featured: false
@@ -42,7 +42,7 @@ L'11 dicembre il pubblico dell'[Everland](ref:everland), a Yongin, vede per l'ul
 
 ## Shubao, il quinto panda
 
-Shubao è nata il 3 giugno 2026 a Panda World, figlia di Aibao e Le Bao, concepita in modo naturale. Alla nascita pesava 171 grammi, meno di un panetto di burro, oggi supera i nove chili. Il nome l'ha ricevuto nel suo centesimo giorno di vita, i primi passi li ha mossi verso i 120 giorni. Sapeva quindi già come si chiamava prima di riuscire ad andare da qualche parte. Al concorso avevano mandato proposte più di 10.000 persone, una giuria di esperti ne ha scelte cinque e, dei 220.000 voti arrivati online e nel parco, il 42% è andato a Shubao. I caratteri 曙宝 vogliono dire alba e tesoro.
+Shubao è nata il 3 giugno 2026 a Panda World, figlia di Aibao e Le Bao, concepita in modo naturale. Alla nascita pesava 171 grammi, meno di un panetto di burro, oggi supera i nove chili. Il nome l'ha ricevuto nel suo centesimo giorno di vita, i primi passi li ha mossi verso i 120 giorni. Al concorso avevano mandato proposte più di 10.000 persone, una giuria di esperti ne ha scelte cinque e, dei 220.000 voti arrivati online e nel parco, il 42% è andato a Shubao. I caratteri 曙宝 vogliono dire alba e tesoro.
 
 Dopo Fu Bao e le gemelle, è il quarto panda nato in Corea. Everland vuole mostrarla un po' alla volta per più ore al giorno e a più visitatori.
 
@@ -70,7 +70,7 @@ In metropolitana prendi la linea Bundang fino a Giheung e lì cambi per la EverL
 
 ## Cosa c'è nel parco fino a dicembre
 
-La festa d'autunno va avanti fino al 22 novembre, con Blood City Zero: Hell Gate e gli spettacoli della stagione. Il circo Wings of Memory chiude già il 15 novembre, e c'è anche la Wild Savanna Expedition.
+La festa d'autunno va avanti fino al 22 novembre, con Blood City Zero: Hell Gate e gli spettacoli della stagione. Il circo Wings of Memory chiude già il 15 novembre. Del programma d'autunno fa parte anche la Wild Savanna Expedition.
 
 Durante l'inverno Everland smonta alcune attrazioni vecchie. Per l'Helicycle è successo il 2 novembre, per il Play Yard tocca dal 23 novembre, per Car Kingdom e Kids Village dal 1° dicembre e per lo Spooky Fun House dal 3 dicembre. Le date dipendono dal meteo. Con bambini piccoli, quindi, Kids Village e Car Kingdom è meglio metterli in conto entro la fine di novembre.
 
@@ -78,7 +78,7 @@ Durante l'inverno Everland smonta alcune attrazioni vecchie. Per l'Helicycle è 
 
 Aibao e Le Bao sono arrivati in Corea dal Dujiangyan Panda Habitat, nel Sichuan, per l'apertura di Panda World il 21 aprile 2016. Da allora l'hanno visitato circa 18 milioni di persone. I panda nati fuori dalla Cina si trasferiscono lì prima di compiere quattro anni, prima di diventare sessualmente maturi.
 
-Fu Bao è nata il 20 luglio 2020, primo panda nato in Corea. È comparsa in pubblico per l'ultima volta il 3 marzo 2024 e il 3 aprile 2024 ha lasciato Everland per la base di Shenshuping, nella riserva naturale di Wolong, nel Sichuan. Rui Bao e Hui Bao sono nate il 7 luglio 2023, le prime gemelle panda della Corea, con 180 e 140 grammi. Oggi ognuna pesa circa 90 chili, più della maggior parte dei visitatori che le guardano. Quando partiranno di preciso, e per quale destinazione in Cina, dipende dalla temperatura e dalla situazione sul posto. Per ora è fissata solo la terza settimana di dicembre.
+Fu Bao è nata il 20 luglio 2020, primo panda nato in Corea. È comparsa in pubblico per l'ultima volta il 3 marzo 2024 e il 3 aprile 2024 ha lasciato Everland per la base di Shenshuping, nella riserva naturale di Wolong, nel Sichuan. Rui Bao e Hui Bao sono nate il 7 luglio 2023, le prime gemelle panda della Corea, con 180 e 140 grammi. Oggi ognuna pesa circa 90 chili, più della maggior parte dei visitatori che le guardano. In quale giorno della terza settimana di dicembre partiranno, e per quale destinazione in Cina, dipende dalla temperatura e dalla situazione sul posto.
 
 [Everland](ref:everland?full)
 

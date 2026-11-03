@@ -2,7 +2,7 @@
 title: 'Everland montre ses cinq pandas jusqu’au 11 décembre'
 translationKey: everland-pandas-ruibao-huibao-abschied
 date: '2026-11-03'
-time: '18:30'
+time: '18:43'
 author: patrick
 mode: published
 featured: false
@@ -42,7 +42,7 @@ Le 11 décembre, [Everland](ref:everland), à Yongin, montre pour la dernière f
 
 ## Shubao, la cinquième
 
-Shubao est née le 3 juin 2026 à Panda World. Ses parents sont Aibao et Le Bao, et elle a été conçue de façon naturelle. À la naissance, elle pesait 171 grammes, à peu près deux tiers d’une plaquette de beurre. Elle dépasse aujourd’hui les neuf kilos. Elle a reçu son nom à son 100e jour et fait ses premiers pas vers 120 jours. Elle connaissait donc son nom avant de savoir aller où que ce soit à pied. Plus de 10 000 personnes avaient envoyé des propositions, un jury de spécialistes en a retenu cinq, et sur 220 000 votes, en ligne et dans le parc, 42 % sont allés à Shubao. Les caractères 曙宝 veulent dire aube et trésor.
+Shubao est née le 3 juin 2026 à Panda World. Ses parents sont Aibao et Le Bao, et elle a été conçue de façon naturelle. À la naissance, elle pesait 171 grammes, à peu près deux tiers d’une plaquette de beurre. Elle dépasse aujourd’hui les neuf kilos. Elle a reçu son nom à son 100e jour et fait ses premiers pas vers 120 jours. Plus de 10 000 personnes avaient envoyé des propositions, un jury de spécialistes en a retenu cinq, et sur 220 000 votes, en ligne et dans le parc, 42 % sont allés à Shubao. Les caractères 曙宝 veulent dire aube et trésor.
 
 Après Fu Bao et les jumelles, c’est le quatrième panda né en Corée. Everland compte la montrer petit à petit plus longtemps chaque jour, et à davantage de visiteurs.
 
@@ -70,7 +70,7 @@ En métro, on prend la ligne Bundang jusqu’à Giheung, puis l’EverLine, qui 
 
 ## Au programme jusqu’en décembre
 
-La fête d’automne dure jusqu’au 22 novembre, avec Blood City Zero: Hell Gate et les spectacles de la saison. Le cirque Wings of Memory s’arrête dès le 15 novembre, et la Wild Savanna Expedition se visite aussi.
+La fête d’automne dure jusqu’au 22 novembre, avec Blood City Zero: Hell Gate et les spectacles de la saison. Le cirque Wings of Memory s’arrête dès le 15 novembre. La Wild Savanna Expedition fait aussi partie du programme d’automne.
 
 Pendant l’hiver, Everland démonte d’anciennes attractions. Le Helicycle est concerné depuis le 2 novembre, le Play Yard le sera à partir du 23 novembre, Car Kingdom et Kids Village à partir du 1er décembre, et le Spooky Fun House à partir du 3 décembre. Ces dates dépendent de la météo. Avec de jeunes enfants, mieux vaut donc caser Kids Village et Car Kingdom avant la fin novembre.
 
@@ -78,7 +78,7 @@ Pendant l’hiver, Everland démonte d’anciennes attractions. Le Helicycle est
 
 Aibao et Le Bao sont arrivés en Corée depuis le Dujiangyan Panda Habitat, dans le Sichuan, pour l’ouverture de Panda World le 21 avril 2016. Environ 18 millions de personnes l’ont visité depuis. Les pandas nés hors de Chine y partent avant leurs quatre ans, avant d’atteindre la maturité sexuelle.
 
-Fu Bao est née le 20 juillet 2020, premier panda né en Corée. Elle s’est montrée au public pour la dernière fois le 3 mars 2024 et a quitté Everland le 3 avril 2024 pour la base de Shenshuping, dans la réserve naturelle de Wolong, au Sichuan. Rui Bao et Hui Bao, premières jumelles panda de Corée, sont nées le 7 juillet 2023 avec 180 et 140 grammes. Aujourd’hui, chacune pèse environ 90 kilos, plus que la plupart des visiteurs qui les regardent. Le jour exact du départ et leur destination en Chine dépendent de la température et de la situation sur place. Pour l’instant, seule la troisième semaine de décembre est fixée.
+Fu Bao est née le 20 juillet 2020, premier panda né en Corée. Elle s’est montrée au public pour la dernière fois le 3 mars 2024 et a quitté Everland le 3 avril 2024 pour la base de Shenshuping, dans la réserve naturelle de Wolong, au Sichuan. Rui Bao et Hui Bao, premières jumelles panda de Corée, sont nées le 7 juillet 2023 avec 180 et 140 grammes. Aujourd’hui, chacune pèse environ 90 kilos, plus que la plupart des visiteurs qui les regardent. Le jour exact du départ dans la troisième semaine de décembre et leur destination en Chine dépendent de la température et de la situation sur place.
 
 [Everland](ref:everland?full)
 
