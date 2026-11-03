@@ -5,7 +5,8 @@
  * (`lib/assistant/parky-boredom.ts`), how a chat opens (`lib/assistant/opener.ts`) and Parky's easter
  * eggs (`lib/assistant/easter-eggs.ts`, muting in `teaser-store.ts`), its rides
  * (`lib/assistant/parky-rides.ts`) and how it answers what the visitor does
- * (`lib/assistant/reactions.ts`, heard through `onSiteEvent`).
+ * (`lib/assistant/reactions.ts`, heard through `onSiteEvent`), and when a hard scroll throws it
+ * (`lib/assistant/fling-tracker.ts`).
  */
 
 import assert from 'node:assert/strict';
@@ -57,6 +58,7 @@ import {
   rideFits,
   rideKeyframe,
 } from '@/lib/assistant/parky-rides.ts';
+import { FLING_HAND_MS, FLING_REST_MS, FlingTracker } from '@/lib/assistant/fling-tracker.ts';
 
 let passed = 0;
 function check(actual, expected, label) {
@@ -590,5 +592,135 @@ check([isRide('tower'), isRide('egg'), isRide(null)], [true, false, false], 'a r
   stopThrowing();
   trackSiteEvent('favorite_add', { type: 'show' });
   check(heard, [['favorite_add', { type: 'park' }]], 'heard once, then not after unsubscribing');
+}
+// Thrown by a scroll: distance by hand, how far by the hand, not one fast frame, and a rest after each.
+{
+  const FRAME = 1000 / 120;
+  const VIEWPORT = 800;
+  /** One reading a frame while `kind` moves the page at `speed(t)` px/ms; the first fling called. */
+  const flingOf = (
+    tracker,
+    speed,
+    { kind = 'touch', from = 0, ms = 1200, y = 10_000, hand } = {}
+  ) => {
+    for (let t = 0; t <= ms; t += FRAME) {
+      y += speed(t) * FRAME;
+      const { fling } = tracker.read(
+        from + t,
+        y,
+        VIEWPORT,
+        hand === undefined ? { kind, at: from + t } : hand
+      );
+      if (fling) return fling;
+    }
+    return null;
+  };
+  /** A flick with the momentum a phone gives it: `v0` px/ms, slowing down over half a second. */
+  const flick = (v0) => (t) => v0 * Math.exp(-t / 500);
+  /** A mouse wheel turned `perSecond` notches a second, 100 px each, smoothed over 100 ms. */
+  const wheel = (perSecond, ms) => (t) => (t < ms ? (perSecond * 100) / 1000 : 0);
+
+  check(flingOf(new FlingTracker(), flick(2)), null, 'a reading swipe leaves Parky in his corner');
+  check(flingOf(new FlingTracker(), flick(5)), null, 'so does a brisk one');
+  check(flingOf(new FlingTracker(), flick(9)), 'down', 'a hard flick down throws him up');
+  check(flingOf(new FlingTracker(), flick(-9)), 'up', 'a hard flick up presses him flat');
+  check(
+    flingOf(new FlingTracker(), (t) => (t >= 100 && t < 100 + FRAME ? 30 : 1)),
+    null,
+    'one frame read late, at 30 px/ms, is no throw'
+  );
+  check(
+    flingOf(new FlingTracker(), wheel(15, 1_000), { kind: 'wheel' }),
+    null,
+    'a wheel turned briskly is no throw'
+  );
+  check(
+    flingOf(new FlingTracker(), wheel(40, 1_000), { kind: 'wheel' }),
+    'down',
+    'a spun wheel is'
+  );
+  check(
+    [
+      flingOf(new FlingTracker(), (t) => (t < 500 ? 3.4 : 0), { kind: 'wheel' }),
+      flingOf(new FlingTracker(), (t) => (t < 500 ? 3.4 : 0), { kind: 'touch' }),
+    ],
+    ['down', null],
+    'the same distance throws him by wheel, which has no momentum, and not by finger, which has'
+  );
+  check(
+    flingOf(new FlingTracker(), (t) => (t % 400 < 150 ? 4.7 : 0), { kind: 'key' }),
+    null,
+    'the space bar, pressed again and again, is no throw'
+  );
+  check(
+    flingOf(new FlingTracker(), (t) => (t < 600 ? 7 : 0), { kind: 'key' }),
+    'down',
+    'a held key is'
+  );
+  {
+    // A link to a new page: the page jumps to its top in one frame.
+    const tracker = new FlingTracker();
+    flingOf(tracker, () => 0.5, { ms: 100 });
+    check(
+      tracker.read(120, 0, VIEWPORT, { kind: 'touch', at: 120 }).fling,
+      null,
+      'a jump to the top is no throw'
+    );
+  }
+  check(
+    [
+      flingOf(new FlingTracker(), flick(9), { hand: null }),
+      flingOf(new FlingTracker(), flick(9), { hand: { kind: 'touch', at: -FLING_HAND_MS - 1 } }),
+    ],
+    [null, null],
+    'a page scrolled by a script, with no hand on it lately, never throws him'
+  );
+
+  const tracker = new FlingTracker();
+  const touch = { kind: 'touch', at: 2_000 };
+  check(flingOf(tracker, flick(9)), 'down', 'thrown');
+  check(
+    tracker.read(2_000, 0, VIEWPORT, touch),
+    { fling: 'down', holding: false },
+    'a jump neither turns him over nor holds him up'
+  );
+  check(
+    tracker.read(2_010, 50, VIEWPORT, touch),
+    { fling: 'down', holding: true },
+    'the page still moving holds him'
+  );
+  check(
+    tracker.read(2_020, 40, VIEWPORT, touch),
+    { fling: 'down', holding: true },
+    'back up as well: the first direction holds until he lets go'
+  );
+  check(tracker.read(2_120, 42, VIEWPORT, touch).holding, false, 'the page all but stopped');
+  tracker.letGo(6_000);
+  check(
+    flingOf(tracker, flick(9), { from: 7_000 }),
+    null,
+    'not the same way again before its rest is over'
+  );
+  check(
+    flingOf(tracker, flick(-9), { from: 9_000 }),
+    'up',
+    'the other way at once: down and back up plays both'
+  );
+  tracker.letGo(10_000);
+  check(
+    [
+      flingOf(tracker, flick(-9), { from: 12_000 }),
+      flingOf(tracker, flick(9), { from: 6_000 + FLING_REST_MS }),
+    ],
+    [null, 'down'],
+    'each way again once its own rest is over'
+  );
+  const idle = new FlingTracker();
+  idle.letGo(0);
+  check(
+    flingOf(idle, flick(9), { from: 100 }),
+    'down',
+    'letting go without a fling starts no rest'
+  );
 }
 console.log(`assistant: ${passed} checks passed`);

@@ -184,6 +184,41 @@ there, and only a session still on the page counts, so a field that leaves the p
 no search behind. `/search` stays out (`presence: false`): each load there is an opening that
 never closes. The glass's size holds under reduced motion; its motion does not.
 
+A hard scroll throws Parky, an easter egg (`useScrollFling`, decided by `FlingTracker` in
+`lib/assistant/fling-tracker.ts`). Thrown down, the page carries him to the top of the screen, where
+he stares at the drop with his mouth open and trembles over streaming fall lines (`scared`,
+`.parky-drop`); thrown up, it presses him flat into his corner (`squashed`). He holds on while the
+page still moves faster than 0.5 px/ms and lets go once it has all but stopped for 150 ms, dropping
+back with a bounce into the dizzy act, or springing up past his height.
+
+A throw is distance, not a peak: the page has to travel a few viewport heights one way, moved by
+hand in the last second, and how far depends on the hand. Read once a frame, the speed jitters (a
+reading that catches two frames of movement in one frame's time doubles it), and ordinary swipes
+reach one fast frame. The hand is told apart by its events, not by the device, so a laptop
+with a touch screen or a tablet with a trackpad gets the right one:
+
+| Hand            | Throw               | Why                                                                                                 |
+| --------------- | ------------------- | --------------------------------------------------------------------------------------------------- |
+| finger          | 3 screens in 600 ms | a flick carries the page on its momentum: a brisk swipe covers two screens, only a hard flick three |
+| wheel, trackpad | 2 screens in 500 ms | a mouse wheel moves in steps without momentum: a brisk turn covers one screen, a spun wheel two     |
+| key             | 3 screens in 600 ms | one press of the space bar or Page Down is less than a screen; a held key goes far                  |
+
+More than a screen between two readings is a jump, as when a link opens a new page at its top, and a
+page scrolled by a link or a script never throws him. After a throw the same way waits 30 s; the
+other way is free, so a hard scroll down, a moment's stop and a hard scroll back up play both, and
+the third throw inside two minutes gets the `rough` line. Without the stop the first throw holds:
+a hanging Parky is not squashed. He trembles by a wrapper around
+the drawing (`.parky-shake`), which the compositor moves: an SVG transform is painted, and with the
+drop shadow and the glow's blur he would be painted again in every frame of the scroll.
+
+Replayed on a production build on 3 November 2026 (`/de/blog/europa-park-wartezeiten-tipps`, the old
+rule and the new on the same recording of the scroll position): on a Pixel 7, with the finger led
+along a phone's momentum curve, a flick at 5 px/ms threw him before and does not now, one at 8 px/ms
+still does; on a 1280×800 desktop each of three presses of the space bar threw him before and none
+does now, a wheel at 20 notches a second does not and one at 33 does. Hanging for 3 s on a Pixel 7
+at 4× CPU throttling, the tremble on the drawing cost about 350 paints, 200 ms of paint and 175
+layouts; on the wrapper it is about 50 paints, 35 ms and 24 layouts, the steps of the hat's wheel.
+
 The store keeps one timer for the next stage, so a moving pointer costs a timestamp. Each act's
 length is written once, in `ACT_MS`; the stylesheet reads it as `--parky-act`. Under reduced
 motion the store answers `null` and Parky only shows its moods.
@@ -296,6 +331,9 @@ the planner opening as `planner_opened` with source `assistant`.
 ## Checks
 
 `pnpm test:assistant` covers the stream reader, the link checks, the rollout decision, the post
-text, the action checks, the boredom stages on a fake clock, the opener's draw, and the easter
-eggs: a page's park path and park page, the coaster picked from a ranking, the park's name from
-structured data, the holidays, the Konami code and muting.
+text, the action checks, the boredom stages on a fake clock, the opener's draw, and the easter eggs:
+a page's park path and park page, the coaster picked from a ranking, the park's name from structured
+data, the holidays, the Konami code and muting, and which scrolls throw Parky: a reading swipe, one
+late frame, a briskly turned wheel, the space bar, a jump and a scripted scroll do not; a hard
+flick, a spun wheel and a held key do, the same distance by wheel and not by finger, and the other
+way at once but the same way only once its rest is over.

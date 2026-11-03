@@ -39,6 +39,14 @@ by hand: change the comment in the code and re-run the script. -->
 - `ENTRANCE_MS` _const_: How Parky arrives in its corner each time a page loads, and how long each takes. Each entrance has a line of its own; the stylesheet (`.parky-enter-*`) reads the length as `--parky-enter`, so it is written here only.
 - Types: `ParkyEntrance`
 
+### [`fling-tracker.ts`](../../lib/assistant/fling-tracker.ts)
+
+- `FlingTracker` _class_: Decides when a scroll throws Parky (`useScrollFling`), from the scroll position read once a frame.
+- `FLING_HAND_MS` _const_: A hand this recent means the visitor moves the page. It covers the momentum after the finger lifts; a link, a tab or a script scrolling the page on its own never throws him.
+- `SETTLE_MS` _const_: Once the page has moved slower than that for this long, he lets go.
+- `FLING_REST_MS` _const_: After a fling the same way waits this long, however hard the page is thrown: an easter egg. The other way is free, so a hard scroll down and back up plays both.
+- Types: `ParkyFling`, `FlingHand`, `FlingHandAt`, `FlingState`
+
 ### [`links.ts`](../../lib/assistant/links.ts)
 
 - `directionsHref` _function_: The one link off the site an answer may carry: Google Maps directions to coordinates, exactly in the form the API's `get_directions` writes it. Opened in a new tab; never used for navigation.
@@ -137,9 +145,8 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`use-scroll-fling.ts`](../../lib/assistant/use-scroll-fling.ts)
 
-- `useScrollFling` _hook_: The direction the page is being flung in, fast enough to move Parky (`.parky-hang`): `down` carries him up with the page, `up` presses him flat into his corner.
+- `useScrollFling` _hook_: The direction a hard scroll has thrown Parky in (`.parky-hang`, decided by `FlingTracker`): `down` carries him up with the page, `up` presses him flat into his corner.
 - `PARKY_FALL_MS` _const_: How long the drop back into the corner takes (`.parky-hang`'s `--parky-fall`).
-- Types: `ParkyFling`
 
 ### [`use-smooth-text.ts`](../../lib/assistant/use-smooth-text.ts)
 

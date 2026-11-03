@@ -465,9 +465,9 @@ function useSearchAlong(enabled: boolean) {
  * What Parky is busy with, each with its own look: `thinking` (waiting for the first word) gazes
  * up beside thought bubbles, `looking` (a lookup is running) reads in a little book, its eyes
  * following the lines and a page turning now and then, `talking` (the answer is written) moves its
- * mouth and nods, `scared` (flung up the screen by a fast scroll) stares down at the drop with
- * its mouth open, trembling, `squashed` (pressed flat by a fast scroll up) screws its eyes shut
- * and grits its teeth, with a puff of impact at each side.
+ * mouth and nods, `scared` (flung up the screen by a hard scroll) stares down at the drop with
+ * its mouth open while the launcher shakes it, `squashed` (pressed flat by a hard scroll up)
+ * screws its eyes shut and grits its teeth, with a puff of impact at each side.
  */
 export type ParkyMood = 'thinking' | 'looking' | 'talking' | 'scared' | 'squashed';
 

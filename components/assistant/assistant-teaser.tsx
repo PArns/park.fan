@@ -46,7 +46,8 @@ import { reactionTo, type ParkyReaction } from '@/lib/assistant/reactions';
 import { usePageLocked } from '@/lib/hooks/use-page-locked';
 import type { ParkyCue } from './parky-logo';
 import { PARKY_LAYER } from './parky-layer';
-import { PARKY_FALL_MS, type ParkyFling } from '@/lib/assistant/use-scroll-fling';
+import { PARKY_FALL_MS } from '@/lib/assistant/use-scroll-fling';
+import { FLING_REST_MS, type ParkyFling } from '@/lib/assistant/fling-tracker';
 
 const VISIBLE_MS = 7_000;
 const TEASER_KEYS = [
@@ -98,12 +99,11 @@ const RIDE_AFTER_MS = 1_200;
 const HANG_KEYS = ['flingHang1', 'flingHang2', 'flingHang3', 'flingHang4'] as const;
 /** What he says once he has been flung about too often. */
 const ROUGH_KEYS = ['flingRough1', 'flingRough2', 'flingRough3', 'flingRough4'] as const;
-/** That many flings inside the window are too many. */
+/** That many flings inside the window are too many; it has room for a rest after each. */
 const ROUGH_FLINGS = 3;
-const ROUGH_WINDOW_MS = 30_000;
-/** Most hangs get a line, at most one fling line in this long, never the same one twice running. */
+const ROUGH_WINDOW_MS = (ROUGH_FLINGS + 1) * FLING_REST_MS;
+/** Most hangs get a line, never the same one twice running. */
 const HANG_CHANCE = 0.75;
-const FLING_LINE_GAP_MS = 20_000;
 /** A beat after he is pressed flat; carried up, only once he has hung at the top a while. */
 const FLING_LINE_AFTER_MS = { up: 150, down: 500 } as const;
 /**
@@ -307,10 +307,10 @@ export function AssistantTeaser({
       clearTimeout(timer);
     };
   }, [answer]);
-  // Flung about, Parky says so: the third fling within half a minute is too rough, and up at the
-  // top he mostly quotes a drop tower. Never over a search or a dialog, nor once lines were closed.
+  // Flung about, Parky says so: the third fling in a short while is too rough, and up at the top
+  // he mostly quotes a drop tower. Never over a search or a dialog, nor once lines were closed.
   const flings = useRef<number[]>([]);
-  const flingLine = useRef<{ key: string; at: number } | null>(null);
+  const flingKey = useRef<string | undefined>(undefined);
   useEffect(() => {
     if (!fling) return;
     // Counted at once: a fling too short for its line still makes the next one rough.
@@ -318,10 +318,7 @@ export function AssistantTeaser({
     flings.current = [...flings.current.filter((then) => at - then < ROUGH_WINDOW_MS), at];
     // Cleared when he lets go first, so a line never starts on his way up or down.
     const timer = setTimeout(() => {
-      const now = Date.now();
-      const last = flingLine.current;
       if (linesMuted() || latest.current.covered) return;
-      if (last && now - last.at < FLING_LINE_GAP_MS) return;
       const kind =
         flings.current.length >= ROUGH_FLINGS
           ? 'rough'
@@ -330,8 +327,8 @@ export function AssistantTeaser({
             : null;
       if (!kind) return;
       if (kind === 'rough') flings.current = [];
-      const key = pickRandom<string>(kind === 'rough' ? ROUGH_KEYS : HANG_KEYS, last?.key);
-      flingLine.current = { key, at: now };
+      const key = pickRandom<string>(kind === 'rough' ? ROUGH_KEYS : HANG_KEYS, flingKey.current);
+      flingKey.current = key;
       setLine({ text: t(key), kind });
     }, FLING_LINE_AFTER_MS[fling]);
     return () => clearTimeout(timer);
