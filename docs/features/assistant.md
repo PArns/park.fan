@@ -199,31 +199,33 @@ touch screen or a tablet with a trackpad gets the right one. A press on the page
 lands on `<html>` and nothing reports the drag after it, so the scrollbar counts as the hand from
 that press until the button is let go, and a press anywhere else ends it:
 
-| Hand            | Throw                 | Why                                                                                                 |
-| --------------- | --------------------- | --------------------------------------------------------------------------------------------------- |
-| finger          | 3 screens in 600 ms   | a flick carries the page on its momentum: a brisk swipe covers two screens, only a hard flick three |
-| wheel, trackpad | 1.5 screens in 500 ms | a mouse wheel moves in steps without momentum: a few notches cover less than a screen               |
-| scrollbar       | 1.5 screens in 500 ms | the thumb pulled by mouse, as quickly as the wheel rolled hard; pulled slowly to read along, never  |
-| key             | 3 screens in 600 ms   | one press of the space bar or Page Down is less than a screen; a held key goes far                  |
+| Hand            | Throw                  | Why                                                                                                 |
+| --------------- | ---------------------- | --------------------------------------------------------------------------------------------------- |
+| finger          | 3 screens in 600 ms    | a flick carries the page on its momentum: a brisk swipe covers two screens, only a hard flick three |
+| wheel, trackpad | 1.25 screens in 500 ms | a mouse wheel moves in steps without momentum: a few notches at a time cover less than a screen     |
+| scrollbar       | 1 screen in 500 ms     | the thumb covers the most page per move of the hand: a quick pull, never a slow one to read along   |
+| key             | 3 screens in 600 ms    | one press of the space bar or Page Down is less than a screen; a held key goes far                  |
 
 More than a screen between two readings is a jump, as when a link opens a new page at its top,
 except while the scrollbar is pulled, whose thumb covers that much of a long page in a frame; a page
-scrolled by a link or a script never throws him. After a throw the same way waits 30 s; the other
-way is free, so a hard scroll down, a moment's stop and a hard scroll back up play both, and the
-third throw inside two minutes gets the `rough` line. Without the stop the first throw holds: a
-hanging Parky is not squashed. He trembles by a wrapper around the drawing (`.parky-shake`), which
-the compositor moves: an SVG transform is painted, and with the drop shadow and the glow's blur he
-would be painted again in every frame of the scroll.
+scrolled by a link or a script never throws him. Once he has let go he can be thrown again at once,
+either way, so a hard scroll down, a moment's stop and a hard scroll back up play both, again and
+again; the third throw inside 30 s gets the `rough` line, and he says at most one line about it
+every 20 s. Without the stop the first throw holds: a hanging Parky is not squashed. He trembles by
+a wrapper around the drawing (`.parky-shake`), which the compositor moves: an SVG transform is
+painted, and with the drop shadow and the glow's blur he would be painted again in every frame of
+the scroll.
 
 Replayed on a production build on 3 November 2026 (`/de/blog/europa-park-wartezeiten-tipps`, the old
 rule and the new on the same recording of the scroll position): on a Pixel 7, with the finger led
 along a phone's momentum curve, a flick at 5 px/ms threw him before and does not now, one at 8 px/ms
 still does; on a 1280×800 desktop each of three presses of the space bar threw him before and none
-does now, a wheel at 15 notches a second or in bursts of five to eight does not and one at 25 does.
-With a visible scrollbar on the same page (44,252 px high), a quick pull of the thumb (120 px in
-under half a second) throws him and a slow one to read along does not. Hanging for 3 s on a Pixel 7
-at 4× CPU throttling, the tremble on the drawing cost about 350 paints, 200 ms of paint and 175
-layouts; on the wrapper it is about 50 paints, 35 ms and 24 layouts, the steps of the hat's wheel.
+does now, a wheel at 15 notches a second or in bursts of five to eight does not and one at 20 does.
+With a visible scrollbar on the same page (44,252 px high), a pull of the thumb covering a screen
+and a half in its fastest half second throws him, and pulled down, up, down and up with 0.6 s stops
+it throws him four times; a slow pull to read along does not. Hanging for 3 s on a Pixel 7 at 4× CPU
+throttling, the tremble on the drawing cost about 350 paints, 200 ms of paint and 175 layouts; on
+the wrapper it is about 50 paints, 35 ms and 24 layouts, the steps of the hat's wheel.
 
 The store keeps one timer for the next stage, so a moving pointer costs a timestamp. Each act's
 length is written once, in `ACT_MS`; the stylesheet reads it as `--parky-act`. Under reduced
@@ -340,7 +342,7 @@ the planner opening as `planner_opened` with source `assistant`.
 text, the action checks, the boredom stages on a fake clock, the opener's draw, and the easter eggs:
 a page's park path and park page, the coaster picked from a ranking, the park's name from structured
 data, the holidays, the Konami code and muting, and which scrolls throw Parky: a reading swipe, one
-late frame, a briskly turned wheel, the scrollbar pulled slowly, the space bar, a jump and a
-scripted scroll do not; a hard flick, a wheel rolled hard, the scrollbar pulled quickly and a held
-key do, the same distance by wheel and not by finger, and the other way at once but the same way
-only once its rest is over.
+late frame, a briskly turned wheel or one turned bit by bit, the scrollbar pulled slowly, the space
+bar, a jump and a scripted scroll do not; a hard flick, a wheel rolled hard, the scrollbar pulled
+quickly and a held key do, the same distance by wheel and not by finger, and once he has let go the
+same throw again or the other way throws him at once.

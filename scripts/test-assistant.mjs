@@ -58,7 +58,7 @@ import {
   rideFits,
   rideKeyframe,
 } from '@/lib/assistant/parky-rides.ts';
-import { FLING_HAND_MS, FLING_REST_MS, FlingTracker } from '@/lib/assistant/fling-tracker.ts';
+import { FLING_HAND_MS, FlingTracker } from '@/lib/assistant/fling-tracker.ts';
 
 let passed = 0;
 function check(actual, expected, label) {
@@ -593,7 +593,7 @@ check([isRide('tower'), isRide('egg'), isRide(null)], [true, false, false], 'a r
   trackSiteEvent('favorite_add', { type: 'show' });
   check(heard, [['favorite_add', { type: 'park' }]], 'heard once, then not after unsubscribing');
 }
-// Thrown by a scroll: distance by hand, how far by the hand, not one fast frame, and a rest after each.
+// Thrown by a scroll: distance by hand, how far by the hand, not one fast frame.
 {
   const FRAME = 1000 / 120;
   const VIEWPORT = 800;
@@ -635,9 +635,19 @@ check([isRide('tower'), isRide('egg'), isRide(null)], [true, false, false], 'a r
     'a wheel turned briskly is no throw'
   );
   check(
+    flingOf(new FlingTracker(), (t) => (t % 500 < 200 ? 4 : 0), { kind: 'wheel', ms: 2_000 }),
+    null,
+    'nor is a wheel turned bit by bit, eight notches at a time'
+  );
+  check(
     flingOf(new FlingTracker(), wheel(25, 1_000), { kind: 'wheel' }),
     'down',
     'a wheel rolled hard is'
+  );
+  check(
+    flingOf(new FlingTracker(), (t) => (t < 600 ? 2.2 : 0), { kind: 'bar' }),
+    'down',
+    "the scrollbar's thumb pulled briskly, a screen in half a second, is"
   );
   check(
     flingOf(new FlingTracker(), (t) => (t < 300 ? 5 : 0), { kind: 'bar' }),
@@ -710,32 +720,17 @@ check([isRide('tower'), isRide('egg'), isRide(null)], [true, false, false], 'a r
     'back up as well: the first direction holds until he lets go'
   );
   check(tracker.read(2_120, 42, VIEWPORT, touch).holding, false, 'the page all but stopped');
-  tracker.letGo(6_000);
+  tracker.letGo();
   check(
-    flingOf(tracker, flick(9), { from: 7_000 }),
-    null,
-    'not the same way again before its rest is over'
-  );
-  check(
-    flingOf(tracker, flick(-9), { from: 9_000 }),
-    'up',
-    'the other way at once: down and back up plays both'
-  );
-  tracker.letGo(10_000);
-  check(
-    [
-      flingOf(tracker, flick(-9), { from: 12_000 }),
-      flingOf(tracker, flick(9), { from: 6_000 + FLING_REST_MS }),
-    ],
-    [null, 'down'],
-    'each way again once its own rest is over'
-  );
-  const idle = new FlingTracker();
-  idle.letGo(0);
-  check(
-    flingOf(idle, flick(9), { from: 100 }),
+    flingOf(tracker, flick(9), { from: 3_000 }),
     'down',
-    'letting go without a fling starts no rest'
+    'once he has let go, the same throw again throws him again'
+  );
+  tracker.letGo();
+  check(
+    flingOf(tracker, flick(-9), { from: 4_500 }),
+    'up',
+    'and the other way: down and back up plays both'
   );
 }
 console.log(`assistant: ${passed} checks passed`);

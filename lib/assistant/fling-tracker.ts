@@ -5,21 +5,18 @@ export type ParkyFling = 'down' | 'up';
 export type FlingHand = 'touch' | 'wheel' | 'key' | 'bar';
 
 /**
- * A wheel or the scrollbar moves the page without momentum, so what it covers is what the hand did:
- * a wheel rolled hard or the scrollbar's thumb pulled quickly, never a few notches at a time.
- */
-const BY_MOUSE = { screens: 1.5, ms: 500 };
-/**
  * How far the page has to travel one way, in viewport heights, and within how long, to throw
  * Parky, by what moves it. A finger's flick carries the page on its momentum, so on a phone a brisk
- * swipe already covers two screens. A key needs holding: one press of the space bar is less than a
- * screen (`docs/features/assistant.md`).
+ * swipe already covers two screens. A wheel moves the page in steps without momentum: a few notches
+ * at a time stay under a screen, a wheel rolled hard gets past it. The scrollbar's thumb covers the
+ * most page per move of the hand, so a quick pull is enough. A key needs holding: one press of the
+ * space bar is less than a screen (`docs/features/assistant.md`).
  */
 const THROW: Record<FlingHand, { screens: number; ms: number }> = {
   touch: { screens: 3, ms: 600 },
-  wheel: BY_MOUSE,
+  wheel: { screens: 1.25, ms: 500 },
   key: { screens: 3, ms: 600 },
-  bar: BY_MOUSE,
+  bar: { screens: 1, ms: 500 },
 };
 /** The longest span any hand is measured over. */
 const LONGEST_MS = Math.max(...Object.values(THROW).map(({ ms }) => ms));
@@ -35,11 +32,6 @@ const HOLD_SPEED = 0.5;
  * through the gaps between a wheel's bursts or a finger's swipes, so he does not bounce about.
  */
 export const SETTLE_MS = 250;
-/**
- * After a fling the same way waits this long, however hard the page is thrown: an easter egg. The
- * other way is free, so a hard scroll down and back up plays both.
- */
-export const FLING_REST_MS = 30_000;
 
 /** The last wheel, finger movement, scroll key or press on the scrollbar, and when it came. */
 export interface FlingHandAt {
@@ -68,14 +60,13 @@ export interface FlingState {
  * burst of speed the page never had, so a single fast frame must not be enough. More than a screen
  * between two readings is a jump (a link to the top of a new page) and starts the count again,
  * except while the scrollbar is pulled, whose thumb covers that much of a long page in a frame. The
- * first direction holds until he lets go, so a hanging Parky is not squashed; after that the same
- * direction rests for {@link FLING_REST_MS}. The clock is handed in, so the decision is testable
- * without a browser.
+ * first direction holds until he lets go, so a hanging Parky is not squashed; once he has, the next
+ * throw can come at once, either way. The clock is handed in, so the decision is testable without a
+ * browser.
  */
 export class FlingTracker {
   private readings: Reading[] = [];
   private fling: ParkyFling | null = null;
-  private restUntil: Record<ParkyFling, number> = { down: -Infinity, up: -Infinity };
 
   /** One reading: `at` in ms, `y` the scroll position and `viewport` the window's height. */
   read(at: number, y: number, viewport: number, hand: FlingHandAt | null): FlingState {
@@ -92,15 +83,13 @@ export class FlingTracker {
     const { screens, ms } = THROW[hand.kind];
     const from = this.readings.find((reading) => reading.at >= at - ms) ?? { at, y };
     const travel = y - from.y;
-    const way: ParkyFling = travel > 0 ? 'down' : 'up';
-    if (Math.abs(travel) < screens * viewport || at < this.restUntil[way]) return none;
-    this.fling = way;
-    return { fling: way, holding: true };
+    if (Math.abs(travel) < screens * viewport) return none;
+    this.fling = travel > 0 ? 'down' : 'up';
+    return { fling: this.fling, holding: true };
   }
 
-  /** The page has all but stopped, or Parky is needed elsewhere: he lets go, and that way rests. */
-  letGo(at: number): void {
-    if (this.fling) this.restUntil[this.fling] = at + FLING_REST_MS;
+  /** The page has all but stopped, or Parky is needed elsewhere: he lets go. */
+  letGo(): void {
     this.fling = null;
     this.readings = [];
   }
