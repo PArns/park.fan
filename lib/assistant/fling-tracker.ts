@@ -1,20 +1,25 @@
 /** Which way a hard scroll throws Parky: carried up (`down`) or pressed flat (`up`). */
 export type ParkyFling = 'down' | 'up';
 
-/** What moves the page: a finger, a wheel or trackpad, or a key. */
-export type FlingHand = 'touch' | 'wheel' | 'key';
+/** What moves the page: a finger, a wheel or trackpad, a key, or the scrollbar dragged by mouse. */
+export type FlingHand = 'touch' | 'wheel' | 'key' | 'bar';
 
+/**
+ * A wheel or the scrollbar moves the page without momentum, so what it covers is what the hand did:
+ * a wheel rolled hard or the scrollbar's thumb pulled quickly, never a few notches at a time.
+ */
+const BY_MOUSE = { screens: 1.5, ms: 500 };
 /**
  * How far the page has to travel one way, in viewport heights, and within how long, to throw
  * Parky, by what moves it. A finger's flick carries the page on its momentum, so on a phone a brisk
- * swipe already covers two screens; a mouse wheel moves it in steps without momentum and only a
- * spun one gets far. A key needs holding: one press of the space bar is less than a screen
- * (`docs/features/assistant.md`).
+ * swipe already covers two screens. A key needs holding: one press of the space bar is less than a
+ * screen (`docs/features/assistant.md`).
  */
 const THROW: Record<FlingHand, { screens: number; ms: number }> = {
   touch: { screens: 3, ms: 600 },
-  wheel: { screens: 2, ms: 500 },
+  wheel: BY_MOUSE,
   key: { screens: 3, ms: 600 },
+  bar: BY_MOUSE,
 };
 /** The longest span any hand is measured over. */
 const LONGEST_MS = Math.max(...Object.values(THROW).map(({ ms }) => ms));
@@ -25,15 +30,18 @@ const LONGEST_MS = Math.max(...Object.values(THROW).map(({ ms }) => ms));
 export const FLING_HAND_MS = 1_000;
 /** Once thrown he holds on while the page still moves this fast (px/ms), slower scrolling included. */
 const HOLD_SPEED = 0.5;
-/** Once the page has moved slower than that for this long, he lets go. */
-export const SETTLE_MS = 150;
+/**
+ * Once the page has moved slower than that for this long, he lets go: long enough to hold on
+ * through the gaps between a wheel's bursts or a finger's swipes, so he does not bounce about.
+ */
+export const SETTLE_MS = 250;
 /**
  * After a fling the same way waits this long, however hard the page is thrown: an easter egg. The
  * other way is free, so a hard scroll down and back up plays both.
  */
 export const FLING_REST_MS = 30_000;
 
-/** The last wheel, finger movement or scroll key, and when it came. */
+/** The last wheel, finger movement, scroll key or press on the scrollbar, and when it came. */
 export interface FlingHandAt {
   kind: FlingHand;
   at: number;
@@ -58,7 +66,8 @@ export interface FlingState {
  * A throw is distance, not a peak: the page has to travel a few viewport heights one way within
  * a fraction of a second, moved by hand, how far depending on the hand. A frame read late shows a
  * burst of speed the page never had, so a single fast frame must not be enough. More than a screen
- * between two readings is a jump (a link to the top of a new page) and starts the count again. The
+ * between two readings is a jump (a link to the top of a new page) and starts the count again,
+ * except while the scrollbar is pulled, whose thumb covers that much of a long page in a frame. The
  * first direction holds until he lets go, so a hanging Parky is not squashed; after that the same
  * direction rests for {@link FLING_REST_MS}. The clock is handed in, so the decision is testable
  * without a browser.
@@ -72,7 +81,7 @@ export class FlingTracker {
   read(at: number, y: number, viewport: number, hand: FlingHandAt | null): FlingState {
     const last = this.readings.at(-1);
     const moved = last ? Math.abs(y - last.y) : 0;
-    const jumped = moved > viewport;
+    const jumped = moved > viewport && hand?.kind !== 'bar';
     if (jumped) this.readings = [];
     const speed = last && !jumped ? moved / Math.max(at - last.at, 1) : 0;
     this.readings.push({ at, y });
