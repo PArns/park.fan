@@ -43,7 +43,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `FlingTracker` _class_: Decides when a scroll throws Parky (`useScrollFling`), from the scroll position read once a frame.
 - `FLING_HAND_MS` _const_: A hand this recent means the visitor moves the page. It covers the momentum after the finger lifts; a link, a tab or a script scrolling the page on its own never throws him.
-- `SETTLE_MS` _const_: Once the page has moved slower than that for this long, he lets go.
+- `SETTLE_MS` _const_: Once the page has moved slower than that for this long, he lets go: long enough to hold on through the gaps between a wheel's bursts or a finger's swipes, so he does not bounce about.
 - `FLING_REST_MS` _const_: After a fling the same way waits this long, however hard the page is thrown: an easter egg. The other way is free, so a hard scroll down and back up plays both.
 - Types: `ParkyFling`, `FlingHand`, `FlingHandAt`, `FlingState`
 

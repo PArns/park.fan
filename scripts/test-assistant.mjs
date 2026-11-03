@@ -635,9 +635,24 @@ check([isRide('tower'), isRide('egg'), isRide(null)], [true, false, false], 'a r
     'a wheel turned briskly is no throw'
   );
   check(
-    flingOf(new FlingTracker(), wheel(40, 1_000), { kind: 'wheel' }),
+    flingOf(new FlingTracker(), wheel(25, 1_000), { kind: 'wheel' }),
     'down',
-    'a spun wheel is'
+    'a wheel rolled hard is'
+  );
+  check(
+    flingOf(new FlingTracker(), (t) => (t < 300 ? 5 : 0), { kind: 'bar' }),
+    'down',
+    "the scrollbar's thumb pulled quickly is"
+  );
+  check(
+    flingOf(new FlingTracker(), () => 0.8, { kind: 'bar' }),
+    null,
+    'pulled slowly, to read along, it is not'
+  );
+  check(
+    flingOf(new FlingTracker(), (t) => (t < 100 ? 120 : 0), { kind: 'bar' }),
+    'down',
+    'on a long page the thumb moves more than a screen a frame, and that is no jump'
   );
   check(
     [

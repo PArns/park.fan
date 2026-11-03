@@ -38,8 +38,16 @@ export function useScrollFling(enabled: boolean): ParkyFling | null {
       tracker.letGo(performance.now());
       setFling(null);
     };
+    const by = (kind: FlingHand) => () => {
+      hand = { kind, at: performance.now() };
+    };
+    // A press on the page's own scrollbar lands on `<html>`, and nothing reports the drag that
+    // follows, so the hand counts as there until the button is let go.
+    let dragging = false;
+    const onBar = by('bar');
     const read = () => {
       frame = 0;
+      if (dragging) onBar();
       const state = tracker.read(performance.now(), window.scrollY, viewport, hand);
       if (!state.fling) return;
       setFling(state.fling);
@@ -50,14 +58,21 @@ export function useScrollFling(enabled: boolean): ParkyFling | null {
     const onScroll = () => {
       if (!frame) frame = requestAnimationFrame(read);
     };
-    const by = (kind: FlingHand) => () => {
-      hand = { kind, at: performance.now() };
-    };
     const onWheel = by('wheel');
     const onTouch = by('touch');
     const onScrollKey = by('key');
     const onKey = (event: KeyboardEvent) => {
       if (isScrollKey(event)) onScrollKey();
+    };
+    const onPress = (event: PointerEvent) => {
+      dragging = event.target === document.documentElement;
+      if (dragging) onBar();
+      // A press anywhere else, on a link say, ends it, so the new page's jump to its top is a jump.
+      else if (hand?.kind === 'bar') hand = null;
+    };
+    const onRelease = () => {
+      if (dragging) onBar();
+      dragging = false;
     };
     const onResize = () => {
       viewport = window.innerHeight;
@@ -66,12 +81,18 @@ export function useScrollFling(enabled: boolean): ParkyFling | null {
     window.addEventListener('wheel', onWheel, LISTEN);
     window.addEventListener('touchmove', onTouch, LISTEN);
     window.addEventListener('keydown', onKey, LISTEN);
+    window.addEventListener('pointerdown', onPress, LISTEN);
+    window.addEventListener('pointerup', onRelease, LISTEN);
+    window.addEventListener('pointercancel', onRelease, LISTEN);
     window.addEventListener('resize', onResize, { passive: true });
     return () => {
       window.removeEventListener('scroll', onScroll);
       window.removeEventListener('wheel', onWheel, LISTEN);
       window.removeEventListener('touchmove', onTouch, LISTEN);
       window.removeEventListener('keydown', onKey, LISTEN);
+      window.removeEventListener('pointerdown', onPress, LISTEN);
+      window.removeEventListener('pointerup', onRelease, LISTEN);
+      window.removeEventListener('pointercancel', onRelease, LISTEN);
       window.removeEventListener('resize', onResize);
       cancelAnimationFrame(frame);
       clearTimeout(settle);
