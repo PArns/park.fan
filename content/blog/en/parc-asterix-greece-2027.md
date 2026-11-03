@@ -38,13 +38,13 @@ seo:
     - Plailly Asterix
 ---
 
-[Parc Astérix](ref:parc-asterix) is expanding Grèce, its ancient Greece area, by spring 2027. The plans cover two new family rides, a playground, a big restaurant and two kiosks, the park announced in Plailly on 2 November. [Tonnerre 2 Zeus](ref:parc-asterix/tonnerre-2-zeus?bare), the wooden coaster in the same area, gets new track along its whole layout in 2027.
+[Parc Astérix](ref:parc-asterix) in Plailly, 35 kilometres north of Paris, is expanding Grèce, its ancient Greece area, by spring 2027. The plans cover two new family rides, a playground, a big restaurant and two kiosks, the park announced on 2 November. [Tonnerre 2 Zeus](ref:parc-asterix/tonnerre-2-zeus?bare), the wooden coaster in the same area, gets new track along its whole layout in 2027.
 
 ## Two rides and a playground
 
 Tournikotis Tournikotas is a family ride with two drop towers, and you'll need a couple of attempts before the name comes out right. Riders get several goes too, up and down a few times per ride. On La Flotte de Poséidon you sit in one of eight boats that spin while they climb a central column.
 
-Between them, the two rides are meant to carry 800 people an hour. For the youngest visitors there's also L'Aire de Jeu d'Ulysse, a playground themed to match the area.
+Between them, the two rides are meant to carry 800 people an hour. Smaller children get a playground of their own, L'Aire de Jeu d'Ulysse, named after Odysseus, who's called Ulysse in French.
 
 ## Dinner with Dionysus
 
@@ -54,7 +54,7 @@ The first kiosk, Chez Nikos Bouldeglas, sells handmade ice cream. The second sel
 
 ## Opening days in 2026 and 2027
 
-The 2027 season starts on Saturday 27 March, with the park open from 10 am to 7 pm. The first weekend runs until 29 March. The park is then closed from 30 March to 2 April and open daily from 3 April until early September. The park hasn't published day ticket prices for 2027 yet. [Hotel L'Odyssée](/news/parc-asterix-hotel-odyssee-2027) opens a day before the season, on 26 March 2027.
+The 2027 season starts on Saturday 27 March, with the park open from 10 am to 7 pm. The first weekend runs until 29 March. The park is then closed from 30 March to 2 April and open daily from 3 April until early September. [Hotel L'Odyssée](/news/parc-asterix-hotel-odyssee-2027) opens a day before the season, on 26 March 2027.
 
 This year the park is closed from 9 November to 18 December. Before and after that, it's open on these days:
 
@@ -64,9 +64,9 @@ This year the park is closed from 9 November to 18 December. Before and after th
 
 ## New track for Tonnerre 2 Zeus
 
-Over the winter of 2025/26, Rocky Mountain Construction (RMC) replaced around 350 metres of the track. The park aims to finish that work this season. In the 2027 season the whole layout follows. The park hasn't announced whether Tonnerre 2 Zeus will close for part of the 2027 season while that happens.
+Over the winter of 2025/26, Rocky Mountain Construction (RMC) replaced around 350 metres of the track. The park aims to finish that work this season. In the 2027 season the whole layout gets new track. Whether Tonnerre 2 Zeus closes for part of that season while it happens hasn't been announced.
 
-The coaster opened on 5 April 1997 as Tonnerre de Zeus, built by Custom Coasters International. From the winter of 2019, The Gravity Group relaid the track in stages and took out the double helix. The old version ran for the last time on 7 November 2021, and the ride came back with new Gravitykraft trains on 9 April 2022. Since then there's been a 2 in the name, which in French sounds almost like the old "de". It's 30 metres tall, and you can ride on your own from 1.20 metres.
+The coaster opened on 5 April 1997 as Tonnerre de Zeus, built by Custom Coasters International. From the winter of 2019, The Gravity Group relaid the track in stages and took out the double helix. It stood still after the 2021 season and came back in April 2022 with new Gravitykraft trains. So RMC's track arrives less than four years after that return. Since then there's been a 2 in the name, which in French sounds almost like the old "de". It's 30 metres tall, and you can ride on your own from 1.20 metres.
 
 ## What's in Grèce today
 
@@ -74,11 +74,11 @@ The coaster opened on 5 April 1997 as Tonnerre de Zeus, built by Custom Coasters
 
 ```
 
-The park is 35 kilometres north of Paris and has five themed worlds: Gaul, the Roman Empire, ancient Greece, the Vikings and Egypt. With the two new ones, Grèce will soon have nine attractions instead of seven. Our [Parc Astérix guide](/blog/parc-asterix-wait-times-tips) goes through the park area by area, with the hours when each queue is shortest and how to get to Plailly.
+Grèce is one of five themed worlds, alongside Gaul, the Roman Empire, the Vikings and Egypt. With the two new ones, Grèce will soon have nine attractions instead of seven. Our [Parc Astérix guide](/blog/parc-asterix-wait-times-tips) goes through the park area by area, with the hours when each queue is shortest and how to get to Plailly.
 
 ## More plans up to 2030
 
-The park plans to invest €250 million by 2030. It reworked Egypt in 2026: the Oxygénarium became La Descente du Nil, and the Chaises Volantes became L'Envol d'Ibis. Londinium is announced for 2028, a covered area based on the album "Asterix in Britain". It's set to have a big roller coaster and an interactive family dark ride. Once every project is done, the park should have 20 percent more capacity, with two thirds of the increase under cover. Our overview of [new theme park attractions for 2027](/blog/new-theme-park-attractions-2027) covers what other European parks are building.
+The park plans to invest €250 million by 2030. It reworked Egypt in 2026: the Oxygénarium became La Descente du Nil, and the Chaises Volantes became L'Envol d'Ibis. Londinium is announced for 2028, a covered area based on the album "Asterix in Britain". It's set to have a big roller coaster and an interactive family dark ride. Once every project is done, the park should have 20 percent more capacity, with two thirds of the increase under cover. We've collected what other European parks are opening in 2027 in our [new theme park attractions for 2027](/blog/new-theme-park-attractions-2027).
 
 Sources:
 [Parc Astérix press release on Grèce 2027](https://newsroom.parcasterix.fr/actualites/en-2027-au-parc-asterix-la-grece-en-grand/?lang=fr),

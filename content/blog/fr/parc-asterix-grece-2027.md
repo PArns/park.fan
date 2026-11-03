@@ -38,13 +38,13 @@ seo:
     - Plailly Astérix
 ---
 
-D’ici le printemps 2027, le [Parc Astérix](ref:parc-asterix) agrandit la Grèce, sa zone consacrée à l’Antiquité grecque. Deux nouvelles attractions familiales, une aire de jeux, un grand restaurant et deux kiosques s’y ajoutent. Le parc l’a annoncé le 2 novembre à Plailly. Les montagnes russes en bois [Tonnerre 2 Zeus](ref:parc-asterix/tonnerre-2-zeus?bare), qui se trouvent dans la même zone, recevront en 2027 des rails neufs sur tout leur parcours.
+D’ici le printemps 2027, le [Parc Astérix](ref:parc-asterix), situé à Plailly, à 35 kilomètres au nord de Paris, agrandit la Grèce, sa zone consacrée à l’Antiquité grecque. Deux nouvelles attractions familiales, une aire de jeux, un grand restaurant et deux kiosques s’y ajoutent. Le parc l’a annoncé le 2 novembre. Les montagnes russes en bois [Tonnerre 2 Zeus](ref:parc-asterix/tonnerre-2-zeus?bare), qui se trouvent dans la même zone, recevront en 2027 des rails neufs sur tout leur parcours.
 
 ## Deux attractions et une aire de jeux
 
 Tournikotis Tournikotas est une attraction familiale à deux tours de chute, et son nom monte et descend déjà quand on le prononce. Dans les tours, les passagers font pareil, plusieurs fois de suite. À La Flotte de Poséidon, vous prenez place dans l’un des huit bateaux qui tournent sur eux-mêmes tout en s’élevant le long d’une colonne centrale.
 
-Ensemble, les deux attractions doivent transporter 800 personnes par heure. Pour les plus petits s’ajoute L’Aire de Jeu d’Ulysse, une aire de jeux dans le style de la zone.
+Ensemble, les deux attractions doivent transporter 800 personnes par heure. Les plus petits auront leur propre aire de jeux, L’Aire de Jeu d’Ulysse, du nom du héros de l’Odyssée.
 
 ## À table chez Dionysos
 
@@ -54,7 +54,7 @@ Au premier kiosque, Chez Nikos Bouldeglas, on trouve des glaces artisanales. Le 
 
 ## Jours d’ouverture en 2026 et 2027
 
-La saison 2027 commence le samedi 27 mars, de 10 h à 19 h. Le premier week-end dure jusqu’au 29 mars. Le parc ferme ensuite du 30 mars au 2 avril, puis ouvre tous les jours du 3 avril jusqu’à début septembre. Il n’a pas encore publié les prix des billets à la journée pour 2027. L’[hôtel L’Odyssée](/news/parc-asterix-hotel-odyssee-2027) ouvre dès le 26 mars 2027, la veille du début de la saison.
+La saison 2027 commence le samedi 27 mars, de 10 h à 19 h. Le premier week-end dure jusqu’au 29 mars. Le parc ferme ensuite du 30 mars au 2 avril, puis ouvre tous les jours du 3 avril jusqu’à début septembre. L’[hôtel L’Odyssée](/news/parc-asterix-hotel-odyssee-2027) ouvre dès le 26 mars 2027, la veille du début de la saison.
 
 Cette année, le parc est fermé du 9 novembre au 18 décembre. Avant et après, il ouvre aux dates suivantes :
 
@@ -64,9 +64,9 @@ Cette année, le parc est fermé du 9 novembre au 18 décembre. Avant et après,
 
 ## De nouveaux rails pour Tonnerre 2 Zeus
 
-Pendant l’hiver 2025-2026, Rocky Mountain Construction (RMC) a remplacé environ 350 mètres du parcours. Le parc veut achever cette rénovation au cours de la saison actuelle. Pendant la saison 2027, c’est tout le parcours qui recevra des rails neufs. Le parc n’a pas annoncé si Tonnerre 2 Zeus fermera par moments en 2027 pour ces travaux.
+Pendant l’hiver 2025-2026, Rocky Mountain Construction (RMC) a remplacé environ 350 mètres du parcours. Le parc veut achever cette rénovation au cours de la saison actuelle. Pendant la saison 2027, c’est tout le parcours qui recevra des rails neufs. Rien n’a encore été annoncé sur une éventuelle fermeture temporaire de Tonnerre 2 Zeus en 2027 pendant ces travaux.
 
-L’attraction a ouvert le 5 avril 1997 sous le nom de Tonnerre de Zeus, construite par Custom Coasters International. À partir de l’hiver 2019, The Gravity Group a reposé la voie par étapes et supprimé la double hélice. Dans son ancienne version, l’attraction a roulé pour la dernière fois le 7 novembre 2021, et elle est revenue le 9 avril 2022 avec de nouveaux trains de Gravitykraft. Depuis, son nom porte un 2 qui, à l’oral, se distingue à peine de l’ancien « de ». Elle mesure 30 mètres de haut, et il faut 1,20 mètre pour y monter seul.
+L’attraction a ouvert le 5 avril 1997 sous le nom de Tonnerre de Zeus, construite par Custom Coasters International. À partir de l’hiver 2019, The Gravity Group a reposé la voie par étapes et supprimé la double hélice. L’attraction est restée à l’arrêt après la saison 2021, puis elle est revenue en avril 2022 avec de nouveaux trains de Gravitykraft. Les rails de RMC arrivent donc moins de quatre ans après ce retour. Depuis, son nom porte un 2 qui, à l’oral, se distingue à peine de l’ancien « de ». Elle mesure 30 mètres de haut, et il faut 1,20 mètre pour y monter seul.
 
 ## Ce qui se trouve aujourd’hui dans la Grèce
 
@@ -74,11 +74,11 @@ L’attraction a ouvert le 5 avril 1997 sous le nom de Tonnerre de Zeus, constru
 
 ```
 
-Le parc se trouve à 35 kilomètres au nord de Paris et compte cinq univers : la Gaule, l’Empire romain, la Grèce antique, les Vikings et l’Égypte. Avec les deux nouvelles, la Grèce comptera bientôt neuf attractions au lieu de sept. Dans notre [guide du Parc Astérix](/blog/parc-asterix-temps-d-attente-conseils), vous trouvez zone par zone l’heure à laquelle la file est la plus courte à chaque attraction, ainsi que l’accès à Plailly.
+La Grèce est l’un des cinq univers du parc, avec la Gaule, l’Empire romain, les Vikings et l’Égypte. Avec les deux nouvelles, la Grèce comptera bientôt neuf attractions au lieu de sept. Dans notre [guide du Parc Astérix](/blog/parc-asterix-temps-d-attente-conseils), vous trouvez zone par zone l’heure à laquelle la file est la plus courte à chaque attraction, ainsi que l’accès à Plailly.
 
 ## D’autres projets jusqu’en 2030
 
-Le parc veut investir 250 millions d’euros d’ici 2030. En 2026, il a réaménagé l’Égypte : l’Oxygénarium est devenu La Descente du Nil, et les Chaises Volantes L’Envol d’Ibis. Pour 2028 est annoncé Londinium, une zone couverte inspirée de l’album « Astérix chez les Bretons ». Elle doit accueillir de grandes montagnes russes et un parcours scénique interactif pour les familles. Une fois tous les projets terminés, le parc doit gagner 20 % de capacité, et deux tiers de cette capacité supplémentaire seront à couvert. Ce que les autres parcs européens construisent pour 2027 se trouve dans notre tour d’horizon des [nouveautés 2027 des parcs d’attractions](/blog/nouveautes-parcs-attractions-2027).
+Le parc veut investir 250 millions d’euros d’ici 2030. En 2026, il a réaménagé l’Égypte : l’Oxygénarium est devenu La Descente du Nil, et les Chaises Volantes L’Envol d’Ibis. Pour 2028 est annoncé Londinium, une zone couverte inspirée de l’album « Astérix chez les Bretons ». Elle doit accueillir de grandes montagnes russes et un parcours scénique interactif pour les familles. Une fois tous les projets terminés, le parc doit gagner 20 % de capacité, et deux tiers de cette capacité supplémentaire seront à couvert. Nous avons rassemblé ce que les autres parcs européens ouvrent en 2027 dans les [nouveautés 2027 des parcs d’attractions](/blog/nouveautes-parcs-attractions-2027).
 
 Sources :
 [communiqué du Parc Astérix sur la Grèce en 2027](https://newsroom.parcasterix.fr/actualites/en-2027-au-parc-asterix-la-grece-en-grand/?lang=fr),
