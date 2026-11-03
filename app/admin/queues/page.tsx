@@ -3,18 +3,15 @@
 import { useState } from 'react';
 import { ChevronDown, ChevronRight, ListChecks, Loader2 } from 'lucide-react';
 import { useAdminFetch } from '../_lib/admin-context';
-import { adminFetch } from '../_lib/api';
+import { ADMIN_PATHS, adminFetch } from '../_lib/api';
 import { formatAgo } from '../_lib/format';
 import type { QueueEntry, QueueStatusResponse } from '@/lib/api/admin';
 import {
   AdminPage,
-  Chip,
-  type ChipTone,
   EmptyState,
   ErrorState,
   LoadingState,
   Panel,
-  PanelBody,
   PanelHeader,
 } from '../_ui/primitives';
 
@@ -34,22 +31,29 @@ interface QueueFailure {
   succeededSince?: string | null;
 }
 
-type QueueState = 'active' | 'pending' | 'failed' | 'resolved' | 'delayed';
+/** The counts every row shows, in this order, with the tone a non-zero count takes. */
+const COLUMNS: ReadonlyArray<{ key: string; label: string; tone: string }> = [
+  { key: 'active', label: 'Aktiv', tone: 'text-primary-ink' },
+  { key: 'pending', label: 'Wartend', tone: 'text-foreground' },
+  { key: 'delayed', label: 'Geplant', tone: 'text-foreground' },
+  { key: 'failedOpen', label: 'Fehler', tone: 'text-red-400' },
+  { key: 'resolved', label: 'Aufgeholt', tone: 'text-muted-foreground' },
+  { key: 'completed', label: 'Erledigt', tone: 'text-muted-foreground' },
+];
 
-const QUEUE_TONES: Record<QueueState, ChipTone> = {
-  active: 'primary',
-  pending: 'muted',
-  failed: 'danger',
-  resolved: 'muted',
-  delayed: 'warning',
-};
+/** From `md`: the queue, one column per count, the fold button. */
+const ROW_GRID =
+  'md:grid md:grid-cols-[minmax(0,1.6fr)_repeat(6,minmax(0,0.8fr))_5.5rem] md:items-center md:gap-3';
 
-function QueueBadge({ count, variant }: { count: number; variant: QueueState }) {
-  if (count === 0) return null;
+/** A count in its column, quiet at zero; on a phone it carries its own label and a zero is left out. */
+function CountCell({ value, label, tone }: { value: number; label: string; tone: string }) {
   return (
-    <Chip tone={QUEUE_TONES[variant]} className="font-mono tabular-nums">
-      {count} {variant}
-    </Chip>
+    <span
+      className={`flex items-baseline gap-1.5 text-sm tabular-nums md:block md:text-right ${value === 0 ? 'max-md:hidden' : ''}`}
+    >
+      <span className="text-muted-foreground text-xs md:hidden">{label}</span>
+      <span className={value > 0 ? tone : 'text-muted-foreground/50'}>{value}</span>
+    </span>
   );
 }
 
@@ -81,33 +85,45 @@ function QueueRow({ q }: { q: QueueEntry }) {
     }
   }
 
+  const counts: Record<string, number> = {
+    active: q.active,
+    pending: q.pending,
+    delayed: q.delayed,
+    failedOpen: openFailed,
+    resolved: q.failed - openFailed,
+    completed: q.completed,
+  };
+  const tone = openFailed > 0 ? 'bg-red-500' : hasActivity ? 'bg-emerald-400' : 'bg-white/20';
+
   return (
-    <div
-      className={`rounded-lg border text-sm transition-colors ${hasActivity ? 'border-border/60 bg-card' : 'border-border/30 bg-card/40'}`}
-    >
-      <div className="flex items-center justify-between gap-2 px-3 py-2">
-        <span
-          className={`font-mono text-xs ${hasActivity ? 'text-foreground' : 'text-muted-foreground'}`}
-        >
-          {q.name}
+    <li>
+      <div
+        className={`grid grid-cols-[minmax(0,1fr)_auto] items-center gap-x-3 gap-y-2 px-4 py-2.5 ${ROW_GRID}`}
+      >
+        <span className="flex min-w-0 items-center gap-2.5">
+          <span aria-hidden="true" className={`h-2 w-2 shrink-0 rounded-full ${tone}`} />
+          <span
+            className={`truncate font-mono text-[13px] ${hasActivity ? 'text-foreground' : 'text-muted-foreground'}`}
+          >
+            {q.name}
+          </span>
         </span>
-        <div className="flex items-center gap-1">
-          {hasActivity ? (
-            <>
-              <QueueBadge count={q.active} variant="active" />
-              <QueueBadge count={q.pending} variant="pending" />
-              <QueueBadge count={openFailed} variant="failed" />
-              <QueueBadge count={q.failed - openFailed} variant="resolved" />
-              <QueueBadge count={q.delayed} variant="delayed" />
-            </>
-          ) : (
-            <span className="text-muted-foreground text-xs">idle</span>
-          )}
+        <div className="col-span-2 row-start-2 flex flex-wrap gap-x-4 gap-y-1 pl-[1.125rem] md:contents">
+          {COLUMNS.map((column) => (
+            <CountCell
+              key={column.key}
+              value={counts[column.key]}
+              label={column.label}
+              tone={column.tone}
+            />
+          ))}
+        </div>
+        <span className="col-start-2 row-start-1 flex justify-end md:col-start-auto md:row-start-auto">
           {q.failed > 0 && (
             <button
               onClick={toggle}
               aria-expanded={open}
-              className="text-muted-foreground hover:text-foreground ml-1 inline-flex items-center gap-1 text-xs"
+              className="text-muted-foreground hover:text-foreground inline-flex items-center gap-1 rounded-md px-1.5 py-1 text-xs hover:bg-white/[0.05]"
             >
               {open ? (
                 <ChevronDown className="h-3.5 w-3.5" />
@@ -117,11 +133,11 @@ function QueueRow({ q }: { q: QueueEntry }) {
               Warum
             </button>
           )}
-        </div>
+        </span>
       </div>
 
       {open && (
-        <div className="border-border/40 space-y-2 border-t px-3 py-2">
+        <div className="space-y-2 border-t border-white/[0.04] bg-black/15 px-4 py-3 pl-9">
           {loading && (
             <p className="text-muted-foreground flex items-center gap-2 text-xs">
               <Loader2 className="h-3.5 w-3.5 animate-spin" /> Wird geladen…
@@ -156,7 +172,7 @@ function QueueRow({ q }: { q: QueueEntry }) {
                 {failure.failedReason}
               </p>
               {failure.stack.length > 0 && (
-                <pre className="text-muted-foreground bg-muted/40 overflow-x-auto rounded-md p-2 text-[11px] leading-snug">
+                <pre className="text-muted-foreground overflow-x-auto rounded-md bg-black/25 p-2 text-[11px] leading-snug">
                   {failure.stack.slice(0, 4).join('\n')}
                 </pre>
               )}
@@ -164,28 +180,51 @@ function QueueRow({ q }: { q: QueueEntry }) {
           ))}
         </div>
       )}
-    </div>
+    </li>
   );
 }
 
 export default function QueuesPage() {
-  const { data, error } = useAdminFetch<QueueStatusResponse>('/api/admin/queue-status');
+  const { data, error } = useAdminFetch<QueueStatusResponse>(ADMIN_PATHS.queueStatus);
 
   if (error) return <ErrorState message={error} />;
-  if (!data) return <LoadingState label="Loading queues…" />;
+  if (!data) return <LoadingState label="Queues werden geladen…" />;
+
+  // The queues with something to look at first, failures before work, in the API's order within.
+  const rank = (q: QueueEntry) =>
+    (q.failedOpen ?? q.failed) > 0 ? 0 : q.active + q.pending + q.delayed > 0 ? 1 : 2;
+  const queues = [...data.queues].sort((a, b) => rank(a) - rank(b));
 
   return (
     <AdminPage width="wide">
       <Panel>
-        <PanelHeader icon={ListChecks} title="Queues" />
-        {data.queues.length === 0 ? (
-          <EmptyState title="No queues reported." />
+        <PanelHeader
+          icon={ListChecks}
+          title="Queues"
+          hint="Bull-Jobs je Queue. Fehler sind offene Fehlschläge; einer, nach dem derselbe Job wieder lief, zählt als aufgeholt."
+        />
+        {queues.length === 0 ? (
+          <EmptyState title="Keine Queue gemeldet." />
         ) : (
-          <PanelBody className="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-3">
-            {data.queues.map((q) => (
-              <QueueRow key={q.name} q={q} />
-            ))}
-          </PanelBody>
+          <>
+            <div
+              aria-hidden="true"
+              className={`text-muted-foreground hidden border-b border-white/[0.06] px-4 py-2 text-xs ${ROW_GRID}`}
+            >
+              <span className="pl-[1.125rem]">Queue</span>
+              {COLUMNS.map((column) => (
+                <span key={column.key} className="text-right">
+                  {column.label}
+                </span>
+              ))}
+              <span />
+            </div>
+            <ul className="divide-y divide-white/[0.05]">
+              {queues.map((q) => (
+                <QueueRow key={q.name} q={q} />
+              ))}
+            </ul>
+          </>
         )}
       </Panel>
     </AdminPage>

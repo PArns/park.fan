@@ -18,7 +18,7 @@ import {
 } from '@/lib/admin/ml-overview';
 import { FIXTURE_OVERVIEW } from '@/lib/admin/ml-overview-fixture';
 import { cn } from '@/lib/utils';
-import { adminKeys, useAdminQuery } from '../_lib/api';
+import { ADMIN_PATHS, adminKeys, useAdminQuery } from '../_lib/api';
 import { formatDay } from '../_lib/format';
 import {
   AdminPage,
@@ -36,8 +36,6 @@ import { DriftPanel } from './_components/drift-panel';
 import { MatrixSummary } from './_components/matrix-summary';
 import { MlDetails } from './_components/ml-details';
 
-const OVERVIEW_PATH = '/api/admin/ml-overview';
-
 /**
  * The ML-Zentrale: what is up for a decision, where which model is better, whether every model
  * and job ran, and the troubleshooting folds below. `?beispiel=1` shows the sample data.
@@ -45,8 +43,8 @@ const OVERVIEW_PATH = '/api/admin/ml-overview';
 export default function MlOverviewPage() {
   const fixture = useSearchParams().get('beispiel') === '1';
   const query = useAdminQuery<MlOverview>(
-    adminKeys.raw(OVERVIEW_PATH),
-    fixture ? null : OVERVIEW_PATH
+    adminKeys.raw(ADMIN_PATHS.mlOverview),
+    fixture ? null : ADMIN_PATHS.mlOverview
   );
   const overview = fixture ? FIXTURE_OVERVIEW : query.data;
 
@@ -245,7 +243,7 @@ function ComponentsPanel({ components }: { components: MlComponent[] }) {
         <div className="overflow-x-auto">
           <table className="w-full min-w-[44rem] text-sm">
             <thead>
-              <tr className="text-muted-foreground border-border/50 border-b text-left text-[11px] font-semibold tracking-wider uppercase">
+              <tr className="text-muted-foreground border-border/50 border-b text-left text-xs font-medium">
                 <th className="px-4 py-2.5 font-semibold">Modell</th>
                 <th className="px-4 py-2.5 font-semibold">Was es liefert</th>
                 <th className="px-4 py-2.5 font-semibold">Zuletzt</th>

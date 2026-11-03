@@ -555,7 +555,7 @@ function CuratedFieldsEditor({
       {activeGroup && (
         <section>
           {groups.length === 1 && (
-            <h3 className="text-muted-foreground mb-1 px-3 text-[11px] font-semibold tracking-widest uppercase">
+            <h3 className="text-muted-foreground mb-1 px-3 text-xs font-medium">
               {activeGroup[0]}
             </h3>
           )}

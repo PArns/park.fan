@@ -32,7 +32,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
             something to be lighter than. */}
         <div
           aria-hidden="true"
-          className="pointer-events-none fixed inset-0 bg-[radial-gradient(90rem_40rem_at_50%_-12rem,var(--color-primary)_0%,transparent_60%)] opacity-[0.11]"
+          className="pointer-events-none fixed inset-0 bg-[radial-gradient(90rem_40rem_at_50%_-12rem,var(--color-primary)_0%,transparent_60%)] opacity-[0.07]"
         />
         <div className="relative">
           <AdminProviders>{children}</AdminProviders>

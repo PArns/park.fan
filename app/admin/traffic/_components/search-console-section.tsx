@@ -143,10 +143,7 @@ function TotalsTiles({ data }: { data: SearchConsolePagesResponse }) {
         const chip = searchConsoleChip(metric.key, data.totals, data.previous);
         return (
           <Tile key={metric.key} className="space-y-1.5">
-            <p
-              className="text-muted-foreground text-[11px] font-medium tracking-wide uppercase"
-              title={metric.hint}
-            >
+            <p className="text-muted-foreground text-xs font-medium" title={metric.hint}>
               {metric.label}
             </p>
             <span className="block text-3xl font-bold tabular-nums">
@@ -211,7 +208,7 @@ function SeriesCharts({
   return (
     <div className="space-y-3">
       <div className="flex flex-wrap items-center justify-between gap-2">
-        <h3 className="text-xs font-semibold tracking-wide uppercase">Verlauf</h3>
+        <h3 className="text-xs font-semibold">Verlauf</h3>
         {steps.length > 1 && (
           <Segmented
             label="Schritt der Kurven"
@@ -235,7 +232,7 @@ function SeriesCharts({
           {SEARCH_CONSOLE_METRICS.map((metric) => (
             <div key={metric.key}>
               <p
-                className="text-muted-foreground mb-1 flex items-center gap-2 text-[11px] font-medium tracking-wide uppercase"
+                className="text-muted-foreground mb-1 flex items-center gap-2 text-xs font-medium"
                 title={metric.hint}
               >
                 <span

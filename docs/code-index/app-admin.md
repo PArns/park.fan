@@ -7,7 +7,8 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`_app/admin-shell.tsx`](../../app/admin/_app/admin-shell.tsx)
 
-- `AdminShell` _component_: Admin frame around every page: collapsible sidebar, topbar with title, search, refresh and account menu, then the page, the inspector column and the ⌘K command palette.
+- `AdminShell` _component_: Admin frame around every page: the sidebar (folding groups, status dots, the account at its foot), the topbar with the page's place, search, refresh and the inspector toggle, then the page on its inset surface, the inspector column and the …
+- `useOpenPalette` _hook_: Opens the ⌘K palette from a page, for a button that offers "everything else".
 
 ### [`_app/command-palette.tsx`](../../app/admin/_app/command-palette.tsx)
 
@@ -68,6 +69,8 @@ by hand: change the comment in the code and re-run the script. -->
 - `adminFetch` _function_: Same-origin fetch for admin API routes: sends `body` as JSON, returns the parsed payload (or `undefined` on 204) and throws `AdminApiError` with the backend's message on a non-2xx answer.
 - `AdminApiError` _class_: A non-2xx answer from an admin route, with its status, message and payload.
 - `adminKeys` _const_: Namespaced so `invalidate('parks')` can drop a whole family at once.
+- `DATA_QUALITY_DEFAULT_WINDOW` _const_: The window the data-quality page opens with, and the one the overview counts in.
+- `ADMIN_PATHS` _const_: The monitoring endpoints more than one screen reads: the page that shows one, the overview and the sidebar's status dots. One spelling, so a key built from a path is the same cache everywhere.
 
 ### [`_lib/format.ts`](../../app/admin/_lib/format.ts)
 
@@ -100,6 +103,11 @@ by hand: change the comment in the code and re-run the script. -->
 - `fitForCommit` _function_: Fits a photo under the commit cap, or hands it back untouched when it already fits. It strips EXIF, so it runs after `analyze` has read the GPS tag and capture date off the original.
 - `analyzePayload` _function_: The bytes `analyze` needs: for an oversized original, the first megabyte, where the EXIF segment sits. Dimensions may not survive the cut; the route reports what it can.
 
+### [`_lib/use-admin-health.ts`](../../app/admin/_lib/use-admin-health.ts)
+
+- `useAdminHealth` _hook_: The admin's situation for the overview and the sidebar's dots: reads the five monitoring answers under the keys their own pages use (so answering a data-quality card clears its count here too) and folds them with `deriveAdminHealth`.
+- Types: `AdminHealthData`
+
 ### [`_lib/use-hero-photo.ts`](../../app/admin/_lib/use-hero-photo.ts)
 
 - `useHeroPhoto` _hook_: The rotating admin photo, picked after mount because the choice depends on the clock, on which server and browser would disagree. It reads `@/lib/media/hero`, the client-safe slice of the media database.
@@ -108,6 +116,32 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`_lib/use-local-preference.ts`](../../app/admin/_lib/use-local-preference.ts)
 
 - `useLocalPreference` _hook_: Returns a string preference kept in localStorage and its setter. The server and a failed read give `defaultValue`; a change in another admin tab updates this one too.
+
+### [`_overview/area-table.tsx`](../../app/admin/_overview/area-table.tsx)
+
+- `AreaTable` _component_: The parts of the system as rows, each with its verdict, how many of its checks pass, the one figure that matters for it and a bar per check.
+
+### [`_overview/figures.tsx`](../../app/admin/_overview/figures.tsx)
+
+- `TodayFigures` _component_: The figures of the day: the site's visitors now and today, the wait-time feed, the host, the database, the queues, the models and the photo inbox.
+- `CatalogFigures` _component_: The catalogue's state: the editors' own work of the last 30 days, and what share of parks and rides somebody has corrected, given a ride profile or a season.
+
+### [`_overview/problem-list.tsx`](../../app/admin/_overview/problem-list.tsx)
+
+- `ProblemList` _component_: What needs a person, faults first, one card each. Every card names its question and carries the button to the page where it is answered, or asks a silent source again in place; the card goes once that page's answer has cleared the source.
+
+### [`_overview/status-hero.tsx`](../../app/admin/_overview/status-hero.tsx)
+
+- `StatusHero` _component_: The top of the overview: the state of things in one sentence, coloured by the worst problem, over the rotating park photo, with the shortcuts an editor reaches for most underneath.
+
+### [`_overview/tone.ts`](../../app/admin/_overview/tone.ts)
+
+- `TONE_META` _const_: A tone as the overview says and draws it.
+- `AREA_META` _const_: Each area's icon and the colour of its tile in the table.
+
+### [`_ui/admin-brand.tsx`](../../app/admin/_ui/admin-brand.tsx)
+
+- `AdminBrand` _component_: The admin's name: the site's own lockup (pin and wordmark, light ink, since the admin is always dark) with an „Admin“ label beside it. `md` heads the sidebar and the standalone pages, `lg` the login; `pinOnly` is the collapsed sidebar rail.
 
 ### [`_ui/api-token-list.tsx`](../../app/admin/_ui/api-token-list.tsx)
 
@@ -179,10 +213,18 @@ Crash protection for the curated-fields editor: a draft in localStorage survives
 
 ### [`_ui/metrics.tsx`](../../app/admin/_ui/metrics.tsx)
 
-- `MetricTile` _component_: Dashboard tile linking to the list it counts: a ring showing `value` as a share of `of`, the count beside it in German number format, and an optional note.
-- `CurationTrend` _component_: Thirty days of the admin's own work, without axes: it answers whether anything happened lately, and the last day carries the label.
-- `BacklogBars` _component_: Backlog rows, each a link showing its count and a bar for its share of the whole catalogue, not of the biggest row, so not every list looks equally urgent. Rows render in the order given.
-- Types: `MetricTone`
+- `StatCard` _component_: A figure on the overview: icon and label, the number large with its unit, a line under it, and its chart at the foot, so a row of cards lines up on the number and on the chart. The whole card links to the page the figure comes from.
+- `MeterRow` _component_: One labelled meter row: a short label, a thin bar filled to `percent`, the reading on the right.
+- `Meters` _component_: Stacked `MeterRow`s.
+- `SegmentBar` _component_: One thin segment per member of a set, each in its own tone: fifteen queues, seven models. Reads as "all green" at a glance and shows which one is not.
+- `ShareTrack` _component_: A share of a whole as one track, filled from the left: parks curated of all parks.
+- `TickStrip` _component_: Bars of the last minutes or days, side by side and bottom-aligned, without axes: the shape of the recent past. A zero keeps a stub, so a quiet minute reads as quiet rather than missing.
+- `CheckRing` _component_: A ring for "n of m checks passed": the arc is the share that passed, in the area's tone. The figure beside it carries the count.
+- `CheckBars` _component_: One bar per check, in the check's tone: an area's checks at a glance, named on hover.
+- `dailyBuckets` _function_: The last `days` days as counts, zero where `perDay` has no row, oldest first and ending on the UTC day of `now`.
+- `HEALTH_FILL` _const_: The fill of a bar, a segment or a dot in a health tone.
+- `HEALTH_TEXT` _const_: The text colour of a health tone.
+- Types: `StatTone`, `Segment`
 
 ### [`_ui/open-in-editor.tsx`](../../app/admin/_ui/open-in-editor.tsx)
 
@@ -191,7 +233,8 @@ Crash protection for the curated-fields editor: a draft in localStorage survives
 ### [`_ui/primitives.tsx`](../../app/admin/_ui/primitives.tsx)
 
 - `AdminPage` _component_: One admin page's column and spacing, in three widths named for what they hold: `wide` for boards and tables, the default for entity editors, `narrow` for a single form column.
-- `Panel` _component_: A card surface. `bg-card` on `bg-background` differs by two percent in lightness, so a drop shadow, an inset ring and a top highlight are what make it read as a card.
+- `Panel` _component_: A card surface. `bg-card` on the inset page differs by a few percent in lightness, so a hairline border, a soft drop shadow and a one-pixel top highlight are what make it read as a card.
+- `SectionHeading` _component_: The heading of a section of a board, outside any panel: the title, a muted count, a hint in a smaller voice, and an action on the right.
 - `PanelHeader` _component_: Header row of a `Panel`: optional icon, a title with a muted hint, an action on the right.
 - `PanelBody` _component_: Padded content area of a `Panel`.
 - `Tile` _component_: A bordered box inside a panel or a dialog: one machine, one model, one group of controls, under an optional title row and hint.
@@ -583,8 +626,6 @@ Route `/admin/data-quality` (page).
 
 - `SilencedClusterCard` _component_: Data-quality card for a group of a park's rides that went silent together, asking "season ending or dropped feed?": sets the season months for all of them in one write, or explains the feed case.
 - `UnreviewedParkCard` _component_: Data-quality card for one park's rides retired for absence and not yet reviewed: per ride (or all at once) mark it as gone, or as seasonal with its months.
-- `DATA_QUALITY_KEY` _const_: Query key of the data-quality report, invalidated after every season write.
-- Types: `SilencedCluster`, `AbsenceRetiredUnreviewed`
 
 ### [`duplicates/dropped-curations.tsx`](../../app/admin/duplicates/dropped-curations.tsx)
 
@@ -739,7 +780,7 @@ Route `/admin/oauth/consent` (page).
 
 Route `/admin` (page).
 
-- `default (AdminDashboard)` _component_: The first screen: what changed since the last visit and what is worth doing next, as lists a person can act on rather than a wall of metrics.
+- `default (AdminDashboard)` _component_: The first screen, read top to bottom as a situation report: one sentence on the state of things, what needs a person (each with its button), the figures of the day, every part of the system with its checks, the catalogue, and what changed …
 
 ### [`parks/[id]/page.tsx`](../../app/admin/parks/%5Bid%5D/page.tsx)
 
@@ -906,10 +947,6 @@ Route `/admin/system` (page).
 ### [`traffic/_components/series-panel.tsx`](../../app/admin/traffic/_components/series-panel.tsx)
 
 - `SeriesPanel` _component_: The series of the window: pick the figures to draw (hits against visits against visitors by default), and see them as lines or as a table of every period with all figures and the window's totals.
-
-### [`traffic/_components/today-tile.tsx`](../../app/admin/traffic/_components/today-tile.tsx)
-
-- `TrafficTodayTile` _component_: The admin home's window onto the traffic page: visitors today, how many are on the site right now and a line of the last half hour. The whole panel leads to Traffic, the active count to the live view.
 
 ### [`traffic/_components/traffic-crosstab-panel.tsx`](../../app/admin/traffic/_components/traffic-crosstab-panel.tsx)
 

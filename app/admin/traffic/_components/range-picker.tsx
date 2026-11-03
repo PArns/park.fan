@@ -98,9 +98,7 @@ export function RangePicker({
             }
           }}
         >
-          <p className="text-muted-foreground text-[11px] font-medium tracking-wide uppercase">
-            Eigener Zeitraum
-          </p>
+          <p className="text-muted-foreground text-xs font-medium">Eigener Zeitraum</p>
           <div className="grid grid-cols-2 gap-2">
             <label className="text-muted-foreground space-y-1 text-[11px]">
               Von

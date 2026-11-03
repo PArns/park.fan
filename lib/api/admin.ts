@@ -237,3 +237,43 @@ export interface QueueStatusResponse {
   timestamp: string;
   queues: QueueEntry[];
 }
+
+/** A park whose rides fell silent together while the park kept reporting. */
+export interface SilencedCluster {
+  parkId: string;
+  parkName: string;
+  attractionCount: number;
+  lastOperating: string;
+  sampleNames: string[];
+  /** Absent from an API that does not send it yet. */
+  attractions?: { attractionId: string; name: string }[];
+}
+
+/** A ride the absence rule retired that nobody has given a season. */
+export interface AbsenceRetiredUnreviewed {
+  attractionId: string;
+  name: string;
+  slug: string;
+  parkId: string;
+  parkName: string;
+  retiredAt: string;
+  lastReading: string | null;
+}
+
+/** A job that keeps failing, with the reason Bull gave last. */
+export interface FailingJob {
+  queue: string;
+  jobName: string;
+  failures: number;
+  lastReason: string;
+  lastFailedAt: string | null;
+}
+
+/** The admin data-quality endpoint's answer: what the silent-failure detectors found. */
+export interface DataQualityReport {
+  windowDays: number;
+  silencedClusters: SilencedCluster[];
+  failingJobs: FailingJob[];
+  /** Absent from an API that does not send it yet. */
+  absenceRetiredUnreviewed?: AbsenceRetiredUnreviewed[];
+}

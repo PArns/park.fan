@@ -1,39 +1,57 @@
 'use client';
 
-import { useCallback, useEffect, useRef, useState, type ReactNode } from 'react';
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+  type ReactNode,
+} from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import {
+  ArrowUpRight,
   ChevronDown,
   ChevronsLeft,
   ChevronsRight,
-  Command as CommandIcon,
-  ExternalLink,
+  ChevronsUpDown,
   LogOut,
   Menu,
   PanelRight,
   RefreshCw,
-  ShieldCheck,
+  Search,
   X,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { ROLE_LABELS, type AdminRole } from '@/lib/admin/roles';
+import type { NavSignal } from '@/lib/admin/health';
+import { AdminBrand } from '../_ui/admin-brand';
 import { Kbd } from '../_ui/primitives';
-import { Chip } from '../_ui/primitives';
 import { formatDisplayName } from '../_lib/format';
 import { useAdmin } from '../_lib/admin-context';
+import { useAdminHealth } from '../_lib/use-admin-health';
 import { useToast } from '../_ui/toast';
 import { useLocalPreference } from '../_lib/use-local-preference';
-import { activeNavItem, flatNavItems, navParent, visibleGroups, type NavItem } from './nav';
+import {
+  activeNavItem,
+  flatNavItems,
+  navParent,
+  visibleGroups,
+  type NavGroup,
+  type NavItem,
+} from './nav';
 import { useSession } from './session';
 import { CommandPalette } from './command-palette';
 import { InspectorPanel, useInspector } from './inspector';
 import { NewContributionsNotice } from './new-contributions-notice';
 
 /**
- * The frame every admin page sits in: navigation that collapses to an icon rail, the page, and
- * the inspector beside it. ⌘K and the `g`-then-letter jumps are advertised in the chrome, because
- * a shortcut nobody is told about is a shortcut nobody uses.
+ * The frame every admin page sits in: a sidebar whose entries carry the state of what they lead
+ * to, the page on an inset surface under a slim topbar, and the inspector beside it. ⌘K and the
+ * `g`-then-letter jumps are advertised in the chrome, because a shortcut nobody is told about is a
+ * shortcut nobody uses.
  */
 
 const SIDEBAR_STORAGE_KEY = 'parkfan_admin_sidebar';
@@ -55,15 +73,26 @@ const JUMP_KEYS: Record<string, string> = {
   o: '/admin/traffic/seo',
 };
 
+const PaletteContext = createContext<() => void>(() => undefined);
+
+/** Opens the ⌘K palette from a page, for a button that offers "everything else". */
+export function useOpenPalette(): () => void {
+  return useContext(PaletteContext);
+}
+
+/** The hover and focus surface of every row and icon button in the chrome. */
+const CHROME_HOVER = 'hover:bg-white/[0.05] hover:text-foreground';
+
 /**
- * Admin frame around every page: collapsible sidebar, topbar with title, search, refresh and
- * account menu, then the page, the inspector column and the ⌘K command palette. It also binds the
+ * Admin frame around every page: the sidebar (folding groups, status dots, the account at its
+ * foot), the topbar with the page's place, search, refresh and the inspector toggle, then the page
+ * on its inset surface, the inspector column and the ⌘K command palette. It also binds the
  * `g`-then-letter section jumps, which stay off while typing, under a dialog or with unsaved edits.
  */
 export function AdminShell({ children }: { children: ReactNode }) {
   const pathname = usePathname();
   const router = useRouter();
-  const { identity, signOut } = useSession();
+  const { identity } = useSession();
   const { refreshing, lastUpdated, triggerRefresh } = useAdmin();
   const inspector = useInspector();
   const toast = useToast();
@@ -78,8 +107,10 @@ export function AdminShell({ children }: { children: ReactNode }) {
   const active = activeNavItem(pathname);
   // The title alone ("Duplikate") does not say whether you are in curation or in operations.
   const activeGroup = active
-    ? groups.find((group) => flatNavItems(group.items).some((item) => item.href === active.href))
-        ?.label
+    ? groups.find(
+        (group) =>
+          !group.placement && flatNavItems(group.items).some((item) => item.href === active.href)
+      )?.label
     : undefined;
   const activeParent = active ? navParent(groups, active.href) : null;
 
@@ -143,9 +174,17 @@ export function AdminShell({ children }: { children: ReactNode }) {
   // `pathname`: reacting to the route change would be a setState inside an
   // effect, which renders the drawer open for one frame after every tap.
   const closeMobile = useCallback(() => setMobileOpen(false), []);
+  const openPalette = useCallback(() => {
+    setMobileOpen(false);
+    setPaletteOpen(true);
+  }, []);
+
+  const ActiveIcon = active?.icon;
 
   return (
-    <div className="flex min-h-[100dvh]">
+    // `--admin-chrome-height` is everything above a page: the topbar, and from `md` the inset's
+    // margin and border. A page that fills the viewport subtracts it instead of a number.
+    <div className="flex min-h-[100dvh] [--admin-chrome-height:3.5rem] md:[--admin-chrome-height:calc(3.5rem+1rem+2px)]">
       <Sidebar
         groups={groups}
         activeHref={active?.href}
@@ -153,92 +192,120 @@ export function AdminShell({ children }: { children: ReactNode }) {
         mobileOpen={mobileOpen}
         onCloseMobile={closeMobile}
         onToggleCollapsed={toggleCollapsed}
+        onSearch={openPalette}
       />
 
-      <div className="flex min-w-0 flex-1 flex-col">
-        <header className="border-border/50 bg-background/70 supports-[backdrop-filter]:bg-background/60 after:via-primary/30 relative sticky top-0 z-30 flex h-14 items-center gap-2 border-b px-3 backdrop-blur-xl after:pointer-events-none after:absolute after:inset-x-0 after:-bottom-px after:h-px after:bg-gradient-to-r after:from-transparent after:to-transparent sm:px-4">
-          <button
-            type="button"
-            onClick={() => setMobileOpen(true)}
-            aria-label="Navigation öffnen"
-            className="hover:bg-accent rounded-lg p-2 md:hidden"
-          >
-            <Menu className="h-4 w-4" />
-          </button>
-
-          <div className="min-w-0 flex-1">
-            <div className="flex items-baseline gap-2">
-              {activeGroup && (
-                <span className="text-muted-foreground hidden text-[11px] tracking-wide uppercase sm:inline">
-                  {activeGroup}
-                  <span className="mx-1.5 opacity-40">/</span>
-                </span>
-              )}
-              {activeParent && (
-                <Link
-                  href={activeParent.href}
-                  className="text-muted-foreground hover:text-foreground hidden text-[11px] tracking-wide uppercase sm:inline"
-                >
-                  {activeParent.label}
-                  <span className="mx-1.5 opacity-40">/</span>
-                </Link>
-              )}
-              <h1 className="truncate text-sm font-semibold">{active?.label ?? 'Admin'}</h1>
-            </div>
-            {active?.description && (
-              <p className="text-muted-foreground hidden truncate text-xs sm:block">
-                {active.description}
-              </p>
-            )}
-          </div>
-
-          <button
-            type="button"
-            onClick={() => setPaletteOpen(true)}
-            aria-label="Suchen"
-            className="border-border/60 bg-background/60 text-muted-foreground hover:border-primary/40 hover:text-foreground flex items-center gap-2 rounded-lg border p-2 text-xs transition-colors sm:px-2.5 sm:py-1.5"
-          >
-            <CommandIcon className="h-4 w-4 sm:h-3.5 sm:w-3.5" />
-            <span className="hidden sm:inline">Suchen</span>
-            <span className="hidden sm:inline-flex">
-              <Kbd>⌘K</Kbd>
-            </span>
-          </button>
-
-          <button
-            type="button"
-            onClick={triggerRefresh}
-            title={
-              lastUpdated
-                ? `Zuletzt aktualisiert ${lastUpdated.toLocaleTimeString('de-DE')}`
-                : 'Aktualisieren'
-            }
-            aria-label="Aktualisieren"
-            className="hover:bg-accent rounded-lg p-2"
-          >
-            <RefreshCw className={cn('h-4 w-4', refreshing && 'animate-spin')} />
-          </button>
-
-          {inspector.content && (
+      <div className="flex min-w-0 flex-1 flex-col md:py-2 md:pr-2">
+        <div className="flex min-w-0 flex-1 flex-col bg-white/[0.012] md:rounded-2xl md:border md:border-white/[0.06] md:shadow-[0_1px_0_rgba(255,255,255,0.03)_inset]">
+          <header className="bg-background/75 sticky top-0 z-30 flex h-14 items-center gap-1.5 border-b border-white/[0.06] px-3 backdrop-blur-xl sm:px-4 md:rounded-t-2xl">
             <button
               type="button"
-              onClick={inspector.toggle}
-              aria-label="Inspektor umschalten"
-              className={cn('hover:bg-accent rounded-lg p-2', inspector.open && 'text-primary')}
+              onClick={() => setMobileOpen(true)}
+              aria-label="Navigation öffnen"
+              className={cn('text-muted-foreground rounded-lg p-2 md:hidden', CHROME_HOVER)}
             >
-              <PanelRight className="h-4 w-4" />
+              <Menu className="h-4 w-4" />
             </button>
-          )}
 
-          <AccountMenu
-            name={identity.displayName}
-            email={identity.email}
-            role={identity.role}
-            onSignOut={() => void signOut()}
-          />
-        </header>
+            <div className="flex min-w-0 flex-1 items-center gap-2.5">
+              {ActiveIcon && (
+                <ActiveIcon
+                  aria-hidden="true"
+                  className="text-muted-foreground hidden h-4 w-4 shrink-0 sm:block"
+                />
+              )}
+              <div className="flex min-w-0 items-baseline gap-1.5 text-sm">
+                {activeGroup && (
+                  <span className="text-muted-foreground hidden shrink-0 lg:inline">
+                    {activeGroup}
+                    <span className="mx-1.5 opacity-40">/</span>
+                  </span>
+                )}
+                {activeParent && (
+                  <Link
+                    href={activeParent.href}
+                    className="text-muted-foreground hover:text-foreground hidden shrink-0 sm:inline"
+                  >
+                    {activeParent.label}
+                    <span className="mx-1.5 opacity-40">/</span>
+                  </Link>
+                )}
+                <h1 className="truncate font-medium">{active?.label ?? 'Admin'}</h1>
+              </div>
+              {active?.description && (
+                <p
+                  className="text-muted-foreground hidden min-w-0 truncate text-xs xl:block"
+                  title={active.description}
+                >
+                  <span className="mr-2.5 opacity-40">·</span>
+                  {active.description}
+                </p>
+              )}
+            </div>
 
-        <main className="min-w-0 flex-1">{children}</main>
+            <a
+              href="https://park.fan"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={cn(
+                'text-muted-foreground hidden items-center gap-1.5 rounded-lg border border-white/[0.07] px-2.5 py-1.5 text-xs transition-colors lg:inline-flex',
+                CHROME_HOVER
+              )}
+            >
+              park.fan
+              <ArrowUpRight className="h-3.5 w-3.5" />
+            </a>
+
+            <button
+              type="button"
+              onClick={triggerRefresh}
+              title={
+                lastUpdated
+                  ? `Zuletzt aktualisiert ${lastUpdated.toLocaleTimeString('de-DE')}`
+                  : 'Aktualisieren'
+              }
+              aria-label="Aktualisieren"
+              className={cn('text-muted-foreground rounded-lg p-2', CHROME_HOVER)}
+            >
+              <RefreshCw className={cn('h-4 w-4', refreshing && 'animate-spin')} />
+            </button>
+
+            {inspector.content && (
+              <button
+                type="button"
+                onClick={inspector.toggle}
+                aria-label="Inspektor umschalten"
+                className={cn(
+                  'text-muted-foreground rounded-lg p-2',
+                  CHROME_HOVER,
+                  inspector.open && 'text-primary'
+                )}
+              >
+                <PanelRight className="h-4 w-4" />
+              </button>
+            )}
+
+            <button
+              type="button"
+              onClick={() => setPaletteOpen(true)}
+              aria-label="Suchen"
+              className={cn(
+                'text-muted-foreground flex items-center gap-2 rounded-lg border border-white/[0.07] bg-white/[0.02] p-2 text-xs transition-colors sm:py-1.5 sm:pr-1.5 sm:pl-2.5',
+                CHROME_HOVER
+              )}
+            >
+              <Search className="h-4 w-4 sm:h-3.5 sm:w-3.5" />
+              <span className="hidden sm:inline">Suchen</span>
+              <span className="hidden sm:inline-flex">
+                <Kbd>⌘K</Kbd>
+              </span>
+            </button>
+          </header>
+
+          <main className="min-w-0 flex-1">
+            <PaletteContext.Provider value={openPalette}>{children}</PaletteContext.Provider>
+          </main>
+        </div>
       </div>
 
       <InspectorPanel />
@@ -255,14 +322,24 @@ function Sidebar({
   mobileOpen,
   onCloseMobile,
   onToggleCollapsed,
+  onSearch,
 }: {
-  groups: ReturnType<typeof visibleGroups>;
+  groups: NavGroup[];
   activeHref: string | undefined;
   collapsed: boolean;
   mobileOpen: boolean;
   onCloseMobile: () => void;
   onToggleCollapsed: () => void;
+  onSearch: () => void;
 }) {
+  const { identity, signOut } = useSession();
+  const { health } = useAdminHealth();
+  // The drawer on a phone is always the full sidebar; the rail exists from `md`.
+  const rail = collapsed && !mobileOpen;
+  const top = groups.filter((group) => group.placement === 'top');
+  const folding = groups.filter((group) => !group.placement);
+  const footer = groups.find((group) => group.placement === 'footer');
+
   return (
     <>
       {mobileOpen && (
@@ -274,87 +351,94 @@ function Sidebar({
         />
       )}
       <nav
+        aria-label="Admin"
         className={cn(
-          'bg-sidebar border-sidebar-border fixed inset-y-0 left-0 z-50 flex flex-col border-r transition-[width,transform] duration-200',
-          'bg-gradient-to-b from-[oklch(1_0_0_/_0.02)] to-transparent',
-          'md:sticky md:top-0 md:z-auto md:h-[100dvh] md:translate-x-0',
+          'bg-sidebar fixed inset-y-0 left-0 z-50 flex flex-col border-r border-white/[0.06] transition-[width,transform] duration-200',
+          'md:bg-background md:sticky md:top-0 md:z-auto md:h-[100dvh] md:translate-x-0 md:border-r-0',
           mobileOpen ? 'translate-x-0' : '-translate-x-full',
-          collapsed ? 'w-60 md:w-16' : 'w-60'
+          collapsed ? 'w-64 md:w-[4.25rem]' : 'w-64 md:w-60'
         )}
       >
-        <div className="flex h-14 items-center gap-2 px-3">
-          <span className="from-primary/30 to-primary/5 border-primary/25 text-primary shadow-primary/10 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border bg-gradient-to-br shadow-sm">
-            <ShieldCheck className="h-4 w-4" />
-          </span>
-          {(!collapsed || mobileOpen) && (
-            <div className="min-w-0 flex-1">
-              <p className="truncate text-sm font-semibold">
-                park<span className="text-primary">.fan</span>
-              </p>
-              <p className="text-muted-foreground truncate text-[10px] font-medium tracking-[0.2em] uppercase">
-                Verwaltung
-              </p>
-            </div>
+        <div className={cn('flex h-14 items-center gap-2.5 px-3', rail && 'md:justify-center')}>
+          <Link
+            href="/admin"
+            onClick={onCloseMobile}
+            className={cn(
+              'flex min-w-0 flex-1 items-center rounded-lg px-1.5 py-1',
+              rail && 'md:justify-center md:px-0'
+            )}
+          >
+            <AdminBrand pinOnly={rail} />
+          </Link>
+          {!rail && (
+            <button
+              type="button"
+              onClick={onSearch}
+              aria-label="Suchen"
+              title="Suchen (⌘K)"
+              className={cn('text-muted-foreground rounded-lg p-2', CHROME_HOVER)}
+            >
+              <Search className="h-4 w-4" />
+            </button>
           )}
           <button
             type="button"
             onClick={onCloseMobile}
             aria-label="Schließen"
-            className="hover:bg-accent rounded p-1.5 md:hidden"
+            className={cn('text-muted-foreground rounded-lg p-2 md:hidden', CHROME_HOVER)}
           >
             <X className="h-4 w-4" />
           </button>
         </div>
 
-        {/* Dense enough that every group clears the footer on a laptop, where the last one
-            sliding under "Zur Website" reads as a rendering fault rather than a scroll. */}
-        <div className="min-h-0 flex-1 space-y-3 overflow-y-auto px-2 py-2">
-          {groups.map((group) => (
-            <div key={group.label}>
-              {(!collapsed || mobileOpen) && (
-                <p className="text-muted-foreground px-2 pb-1 text-[10px] font-semibold tracking-widest uppercase">
-                  {group.label}
-                </p>
-              )}
-              <div className="space-y-0.5">
-                {group.items.map((item) =>
-                  item.children?.length ? (
-                    <SidebarBranch
-                      key={item.href}
-                      item={item}
-                      activeHref={activeHref}
-                      collapsed={collapsed && !mobileOpen}
-                      onNavigate={onCloseMobile}
-                    />
-                  ) : (
-                    <SidebarLink
-                      key={item.href}
-                      item={item}
-                      active={item.href === activeHref}
-                      collapsed={collapsed && !mobileOpen}
-                      onNavigate={onCloseMobile}
-                    />
-                  )
-                )}
-              </div>
-            </div>
+        <div className="min-h-0 flex-1 space-y-4 overflow-y-auto px-2.5 pt-1 pb-3">
+          {top.map((group) => (
+            <ul key={group.label} className="space-y-0.5">
+              {group.items.map((item) => (
+                <li key={item.href}>
+                  <SidebarLink
+                    item={item}
+                    active={item.href === activeHref}
+                    rail={rail}
+                    onNavigate={onCloseMobile}
+                    signal={health.signals[item.href]}
+                    emphasis
+                  />
+                </li>
+              ))}
+            </ul>
+          ))}
+          {folding.map((group) => (
+            <SidebarGroup
+              key={group.label}
+              group={group}
+              activeHref={activeHref}
+              rail={rail}
+              onNavigate={onCloseMobile}
+              signals={health.signals}
+            />
           ))}
         </div>
 
-        <div className="border-sidebar-border space-y-1 border-t p-2">
-          <a
-            href="https://park.fan"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-muted-foreground hover:bg-accent hover:text-foreground flex items-center gap-2.5 rounded-lg px-2.5 py-1.5 text-sm"
-          >
-            <ExternalLink className="h-4 w-4 shrink-0" />
-            {(!collapsed || mobileOpen) && <span className="truncate">Zur Website</span>}
-          </a>
+        <div className="space-y-1 border-t border-white/[0.06] p-2.5">
+          <AccountMenu
+            name={identity.displayName}
+            email={identity.email}
+            role={identity.role}
+            items={footer?.items ?? []}
+            rail={rail}
+            onNavigate={onCloseMobile}
+            onSignOut={() => void signOut()}
+          />
           <button
             type="button"
             onClick={onToggleCollapsed}
-            className="text-muted-foreground hover:bg-accent hover:text-foreground hidden w-full items-center gap-2.5 rounded-lg px-2.5 py-1.5 text-sm md:flex"
+            aria-label={collapsed ? 'Seitenleiste ausklappen' : 'Seitenleiste einklappen'}
+            className={cn(
+              'text-muted-foreground hidden w-full items-center gap-2.5 rounded-lg px-2.5 py-1.5 text-[13px] md:flex',
+              CHROME_HOVER,
+              rail && 'justify-center px-0'
+            )}
           >
             {collapsed ? (
               <ChevronsRight className="h-4 w-4 shrink-0" />
@@ -370,28 +454,107 @@ function Sidebar({
 }
 
 /**
+ * A group under its heading, which folds it. The choice is kept per group; a folded group still
+ * shows the entry of the current page, so the sidebar never hides where you are. The rail has no
+ * headings, only a hairline between groups.
+ */
+function SidebarGroup({
+  group,
+  activeHref,
+  rail,
+  onNavigate,
+  signals,
+}: {
+  group: NavGroup;
+  activeHref: string | undefined;
+  rail: boolean;
+  onNavigate: () => void;
+  signals: Record<string, NavSignal>;
+}) {
+  const [state, setState] = useLocalPreference(`parkfan_admin_nav_${group.label}`, 'open');
+  const open = state === 'open' || rail;
+  const items = open
+    ? group.items
+    : group.items.filter((item) => flatNavItems([item]).some((entry) => entry.href === activeHref));
+
+  return (
+    <section>
+      {rail ? (
+        <div aria-hidden="true" className="mx-3 mb-2 h-px bg-white/[0.06]" />
+      ) : (
+        <button
+          type="button"
+          onClick={() => setState(open ? 'closed' : 'open')}
+          aria-expanded={open}
+          className="text-muted-foreground hover:text-foreground flex items-center gap-1 rounded-md px-2.5 pb-1 text-xs font-medium transition-colors"
+        >
+          {group.label}
+          <ChevronDown
+            aria-hidden="true"
+            className={cn('h-3 w-3 transition-transform', !open && '-rotate-90')}
+          />
+        </button>
+      )}
+      <ul className="space-y-0.5">
+        {items.map((item) => (
+          <li key={item.href}>
+            {item.children?.length ? (
+              <SidebarBranch
+                item={item}
+                activeHref={activeHref}
+                rail={rail}
+                onNavigate={onNavigate}
+                signals={signals}
+              />
+            ) : (
+              <SidebarLink
+                item={item}
+                active={item.href === activeHref}
+                rail={rail}
+                onNavigate={onNavigate}
+                signal={signals[item.href]}
+              />
+            )}
+          </li>
+        ))}
+      </ul>
+    </section>
+  );
+}
+
+/**
  * An entry with sub-entries: the entry links to their overview, the chevron folds them. They stand
- * open while one of them is the current page; the collapsed rail shows the entry alone, lit for
- * the whole branch.
+ * open while one of them is the current page; the rail shows the entry alone, lit for the whole
+ * branch.
  */
 function SidebarBranch({
   item,
   activeHref,
-  collapsed,
+  rail,
   onNavigate,
+  signals,
 }: {
   item: NavItem;
   activeHref: string | undefined;
-  collapsed: boolean;
+  rail: boolean;
   onNavigate: () => void;
+  signals: Record<string, NavSignal>;
 }) {
   const children = item.children ?? [];
   const inBranch = item.href === activeHref || children.some((child) => child.href === activeHref);
   const [toggled, setToggled] = useState<boolean | null>(null);
   const open = toggled ?? inBranch;
 
-  if (collapsed) {
-    return <SidebarLink item={item} active={inBranch} collapsed onNavigate={onNavigate} />;
+  if (rail) {
+    return (
+      <SidebarLink
+        item={item}
+        active={inBranch}
+        rail
+        onNavigate={onNavigate}
+        signal={signals[item.href]}
+      />
+    );
   }
   return (
     <div>
@@ -399,8 +562,9 @@ function SidebarBranch({
         <SidebarLink
           item={item}
           active={item.href === activeHref}
-          collapsed={false}
+          rail={false}
           onNavigate={onNavigate}
+          signal={signals[item.href]}
           trailingSpace
         />
         <button
@@ -408,81 +572,186 @@ function SidebarBranch({
           onClick={() => setToggled(!open)}
           aria-expanded={open}
           aria-label={`${item.label} ${open ? 'zuklappen' : 'aufklappen'}`}
-          className="text-muted-foreground hover:bg-accent hover:text-foreground absolute top-1/2 right-1 -translate-y-1/2 rounded-md p-1"
+          className={cn(
+            'text-muted-foreground absolute top-1/2 right-1 -translate-y-1/2 rounded-md p-1',
+            CHROME_HOVER
+          )}
         >
           <ChevronDown className={cn('h-3.5 w-3.5 transition-transform', !open && '-rotate-90')} />
         </button>
       </div>
       {open && (
-        <div className="border-sidebar-border mt-0.5 ml-[18px] space-y-0.5 border-l pl-2">
+        <ul className="mt-0.5 ml-[19px] space-y-0.5 border-l border-white/[0.07] pl-2">
           {children.map((child) => (
-            <SidebarLink
-              key={child.href}
-              item={child}
-              active={child.href === activeHref}
-              collapsed={false}
-              onNavigate={onNavigate}
-              dense
-            />
+            <li key={child.href}>
+              <SidebarLink
+                item={child}
+                active={child.href === activeHref}
+                rail={false}
+                onNavigate={onNavigate}
+                signal={signals[child.href]}
+                dense
+              />
+            </li>
           ))}
-        </div>
+        </ul>
       )}
     </div>
   );
 }
 
+const SIGNAL_DOT: Record<NavSignal['tone'], string> = {
+  ok: 'bg-emerald-400',
+  warn: 'bg-amber-400 shadow-[0_0_8px_var(--color-amber-400)]',
+  bad: 'bg-red-500 shadow-[0_0_8px_var(--color-red-500)]',
+  unknown: 'bg-muted-foreground/50',
+};
+
+const SIGNAL_COUNT: Record<NavSignal['tone'], string> = {
+  ok: 'bg-white/[0.06] text-muted-foreground',
+  warn: 'bg-amber-400/12 text-amber-300 ring-1 ring-amber-400/25',
+  bad: 'bg-red-500/15 text-red-300 ring-1 ring-red-500/30',
+  unknown: 'bg-white/[0.06] text-muted-foreground',
+};
+
+/** The filled variant, for the overview's count: the one number the sidebar wants read first. */
+const SIGNAL_COUNT_EMPHASIS: Record<NavSignal['tone'], string> = {
+  ok: 'bg-white/10 text-foreground',
+  warn: 'bg-amber-400 text-amber-950',
+  bad: 'bg-red-500 text-white',
+  unknown: 'bg-white/10 text-foreground',
+};
+
+/** The state an entry carries on its right: a count where there is one, otherwise a dot. */
+function SignalMark({
+  signal,
+  emphasis,
+  rail,
+}: {
+  signal: NavSignal;
+  emphasis: boolean;
+  rail: boolean;
+}) {
+  // On the rail there is no room for digits: the icon gets a dot in its corner.
+  if (rail) {
+    return (
+      <span
+        aria-hidden="true"
+        className={cn(
+          'ring-background absolute top-1 right-1.5 h-2 w-2 rounded-full ring-2',
+          SIGNAL_DOT[signal.tone]
+        )}
+      />
+    );
+  }
+  if (signal.count) {
+    return (
+      <span
+        className={cn(
+          'ml-auto inline-flex h-5 min-w-5 shrink-0 items-center justify-center rounded-full px-1.5 text-[11px] font-semibold tabular-nums',
+          (emphasis ? SIGNAL_COUNT_EMPHASIS : SIGNAL_COUNT)[signal.tone]
+        )}
+      >
+        {signal.count > 99 ? '99+' : signal.count}
+      </span>
+    );
+  }
+  return (
+    <span
+      aria-hidden="true"
+      className={cn('ml-auto h-1.5 w-1.5 shrink-0 rounded-full', SIGNAL_DOT[signal.tone])}
+    />
+  );
+}
+
+const SIGNAL_WORDS: Record<NavSignal['tone'], string> = {
+  ok: 'alles in Ordnung',
+  warn: 'wartet auf dich',
+  bad: 'gestört',
+  unknown: 'Zustand unbekannt',
+};
+
 function SidebarLink({
   item,
   active,
-  collapsed,
+  rail,
   onNavigate,
+  signal,
+  emphasis = false,
   dense = false,
   trailingSpace = false,
 }: {
   item: NavItem;
   active: boolean;
-  collapsed: boolean;
+  rail: boolean;
   onNavigate: () => void;
+  signal?: NavSignal;
+  /** The overview entry: its count is filled. */
+  emphasis?: boolean;
   /** A sub-entry: smaller, under its parent's guide line. */
   dense?: boolean;
   /** Room on the right for the parent's fold button. */
   trailingSpace?: boolean;
 }) {
+  const state = signal
+    ? signal.count
+      ? `${signal.count}, ${SIGNAL_WORDS[signal.tone]}`
+      : SIGNAL_WORDS[signal.tone]
+    : null;
   return (
     <Link
       href={item.href}
       onClick={onNavigate}
-      title={collapsed ? item.label : undefined}
+      title={rail ? item.label : undefined}
       aria-current={active ? 'page' : undefined}
       className={cn(
-        // The rail makes "where am I" readable at a glance: a tinted row alone reads as hover, and
-        // the collapsed sidebar has no label to tell them apart.
-        'relative flex items-center gap-2.5 rounded-lg pr-2.5 pl-3 transition-colors',
-        dense ? 'py-1 text-[13px]' : 'py-1.5 text-sm',
+        'relative flex items-center gap-2.5 rounded-lg px-2.5 transition-colors',
+        dense ? 'py-1 text-[13px]' : 'py-[7px] text-sm',
         trailingSpace && 'pr-8',
-        'before:absolute before:top-1.5 before:bottom-1.5 before:left-0 before:w-0.5 before:rounded-full before:transition-colors',
+        rail && 'justify-center px-0 py-2',
         active
-          ? 'bg-sidebar-accent text-sidebar-accent-foreground before:bg-primary font-medium before:shadow-[0_0_10px_var(--color-primary)]'
-          : 'text-muted-foreground hover:bg-accent hover:text-foreground before:bg-transparent'
+          ? 'text-foreground bg-white/[0.07] font-medium shadow-[inset_0_1px_0_rgba(255,255,255,0.05)]'
+          : cn('text-muted-foreground', CHROME_HOVER)
       )}
     >
       <item.icon
-        className={cn('shrink-0', dense ? 'h-3.5 w-3.5' : 'h-4 w-4', active && 'text-primary')}
+        aria-hidden="true"
+        className={cn(
+          'shrink-0',
+          dense ? 'h-3.5 w-3.5' : 'h-4 w-4',
+          active ? 'text-primary-ink' : 'opacity-80'
+        )}
       />
-      {!collapsed && <span className="truncate">{item.label}</span>}
+      {rail ? (
+        <span className="sr-only">{item.label}</span>
+      ) : (
+        <span className="min-w-0 flex-1 truncate">{item.label}</span>
+      )}
+      {state && <span className="sr-only">, {state}</span>}
+      {signal && <SignalMark signal={signal} emphasis={emphasis} rail={rail} />}
     </Link>
   );
 }
 
+/**
+ * Who is signed in, at the foot of the sidebar; it opens upwards to the account pages of the nav's
+ * footer group, the public site and signing out.
+ */
 function AccountMenu({
   name,
   email,
   role,
+  items,
+  rail,
+  onNavigate,
   onSignOut,
 }: {
   name: string;
   email: string;
   role: AdminRole;
+  items: NavItem[];
+  rail: boolean;
+  onNavigate: () => void;
   onSignOut: () => void;
 }) {
   const [open, setOpen] = useState(false);
@@ -496,8 +765,15 @@ function AccountMenu({
       if (menuRef.current?.contains(event.target as Node)) return;
       setOpen(false);
     };
+    const escape = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setOpen(false);
+    };
     window.addEventListener('click', close, { capture: true });
-    return () => window.removeEventListener('click', close, { capture: true });
+    window.addEventListener('keydown', escape);
+    return () => {
+      window.removeEventListener('click', close, { capture: true });
+      window.removeEventListener('keydown', escape);
+    };
   }, [open]);
 
   const initials = name
@@ -505,6 +781,7 @@ function AccountMenu({
     .slice(0, 2)
     .map((part) => part[0]?.toUpperCase() ?? '')
     .join('');
+  const displayName = formatDisplayName(name);
 
   return (
     <div className="relative" ref={menuRef}>
@@ -514,39 +791,84 @@ function AccountMenu({
           event.stopPropagation();
           setOpen((current) => !current);
         }}
-        className="from-primary/35 to-primary/10 ring-primary/25 text-primary flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br text-xs font-semibold ring-1 transition-[filter] hover:brightness-125"
-        aria-label="Konto"
+        aria-expanded={open}
+        aria-label={rail ? `Konto: ${displayName}` : undefined}
+        className={cn(
+          'flex w-full items-center gap-2.5 rounded-lg p-1.5 text-left transition-colors',
+          CHROME_HOVER,
+          open && 'bg-white/[0.05]',
+          rail && 'justify-center'
+        )}
       >
-        {initials || '?'}
+        <span className="from-primary/40 to-primary/10 text-primary-ink flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-gradient-to-br text-xs font-semibold ring-1 ring-white/10">
+          {initials || '?'}
+        </span>
+        {!rail && (
+          <>
+            <span className="min-w-0 flex-1 leading-tight">
+              <span className="block truncate text-[13px] font-medium">{displayName}</span>
+              <span className="text-muted-foreground block truncate text-[11px]">
+                {ROLE_LABELS[role] ?? role}
+              </span>
+            </span>
+            <ChevronsUpDown aria-hidden="true" className="text-muted-foreground h-3.5 w-3.5" />
+          </>
+        )}
       </button>
 
       {open && (
-        <div className="border-border/60 bg-card absolute right-0 z-50 mt-2 w-60 rounded-xl border p-1 shadow-xl">
-          <div className="border-border/50 border-b px-3 py-2.5">
-            <p className="truncate text-sm font-medium">{formatDisplayName(name)}</p>
+        <div
+          className={cn(
+            'bg-popover absolute bottom-full z-50 mb-2 w-60 rounded-xl border border-white/10 p-1 shadow-2xl shadow-black/60',
+            rail ? 'left-0' : 'inset-x-0 w-auto'
+          )}
+        >
+          <div className="border-b border-white/[0.06] px-3 py-2.5">
+            <p className="truncate text-sm font-medium">{displayName}</p>
             <p className="text-muted-foreground truncate text-xs">{email}</p>
-            <Chip tone="primary" className="mt-1.5">
-              {ROLE_LABELS[role] ?? role}
-            </Chip>
           </div>
-          <Link
-            href="/admin/account"
-            className="hover:bg-accent block rounded-lg px-3 py-2 text-sm"
-          >
-            Mein Konto
-          </Link>
-          <button
-            type="button"
-            onClick={() => {
-              // Inside clicks do not close the menu (see above), so this one does.
-              setOpen(false);
-              onSignOut();
-            }}
-            className="hover:bg-accent text-destructive flex w-full items-center gap-2 rounded-lg px-3 py-2 text-left text-sm"
-          >
-            <LogOut className="h-3.5 w-3.5" />
-            Abmelden
-          </button>
+          <div className="py-1">
+            {items.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                onClick={() => {
+                  setOpen(false);
+                  onNavigate();
+                }}
+                className={cn(
+                  'flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm',
+                  CHROME_HOVER
+                )}
+              >
+                <item.icon className="text-muted-foreground h-4 w-4" />
+                {item.label}
+              </Link>
+            ))}
+            <a
+              href="https://park.fan"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={cn('flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm', CHROME_HOVER)}
+            >
+              <ArrowUpRight className="text-muted-foreground h-4 w-4" />
+              Zur Website
+            </a>
+          </div>
+          <div className="border-t border-white/[0.06] pt-1">
+            <button
+              type="button"
+              onClick={() => {
+                // Inside clicks do not close the menu (see above), so this one does.
+                setOpen(false);
+                onSignOut();
+              }}
+              className="text-destructive flex w-full items-center gap-2.5 rounded-lg px-3 py-2 text-left text-sm hover:bg-white/[0.05]"
+            >
+              <LogOut className="h-4 w-4" />
+              Abmelden
+            </button>
+          </div>
         </div>
       )}
     </div>

@@ -62,7 +62,7 @@ export function Field({
  * focused input and does not zoom back out on blur.
  */
 const CONTROL_BASE =
-  'border-border/70 bg-background/60 focus-visible:border-primary/60 focus-visible:ring-primary/20 w-full rounded-lg border px-3 text-base outline-none transition-colors focus-visible:ring-2 disabled:opacity-50 sm:text-sm';
+  'border-white/[0.09] bg-white/[0.025] focus-visible:border-primary/60 focus-visible:ring-primary/20 w-full rounded-lg border px-3 text-base outline-none transition-colors focus-visible:ring-2 disabled:opacity-50 sm:text-sm';
 
 /**
  * A select's list is portaled at `z-50`, below a dialog's `z-[70]`, so inside a dialog it would
@@ -178,7 +178,7 @@ export function TriSwitch({
   return (
     <div
       role="radiogroup"
-      className="border-border/70 bg-background/60 inline-flex rounded-lg border p-0.5"
+      className="inline-flex rounded-lg border border-white/[0.09] bg-white/[0.025] p-0.5"
     >
       {options.map((option) => {
         const active = value === option.value;
@@ -265,7 +265,7 @@ export function Segmented<T extends string | number | null>({
 }) {
   return (
     <div
-      className={cn('border-border/60 flex rounded-lg border p-0.5', className)}
+      className={cn('flex rounded-lg border border-white/[0.08] bg-white/[0.02] p-0.5', className)}
       role="group"
       aria-label={label}
     >
@@ -279,7 +279,7 @@ export function Segmented<T extends string | number | null>({
           className={cn(
             'rounded-md px-2.5 py-1 text-xs font-medium tabular-nums transition-colors max-sm:min-h-9',
             value === option.value
-              ? 'bg-primary text-primary-foreground'
+              ? 'text-foreground bg-white/[0.1] shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]'
               : 'text-muted-foreground hover:text-foreground'
           )}
         >

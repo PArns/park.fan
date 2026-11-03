@@ -251,7 +251,7 @@ export function RideProfileEditor({
         </div>
 
         <div>
-          <p className="text-muted-foreground mb-1 flex items-center gap-1.5 text-[11px] font-semibold tracking-widest uppercase">
+          <p className="text-muted-foreground mb-1 flex items-center gap-1.5 text-xs font-medium">
             <Gauge className="h-3 w-3" /> Maße
           </p>
           <p className="text-muted-foreground mb-2 text-xs">

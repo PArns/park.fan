@@ -30,31 +30,34 @@ export default function AnalyticsPage() {
   const geo = useAdminFetch<AnalyticsGeoLive>('/api/analytics/geo-live');
 
   if (realtime.error) return <ErrorState message={`Realtime: ${realtime.error}`} />;
-  if (!realtime.data) return <LoadingState label="Loading analytics…" />;
+  if (!realtime.data) return <LoadingState label="Live-Zahlen werden geladen…" />;
 
   const c = realtime.data.counts;
 
   return (
     <AdminPage width="wide">
       <Panel>
-        <PanelHeader icon={Activity} title="Realtime counts" />
+        <PanelHeader icon={Activity} title="Gerade in den Parks" />
         <PanelBody className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
-          <StatTile label="Open parks" value={c.openParks} sub={`of ${c.parks}`} />
-          <StatTile label="Open rides" value={c.openAttractions} sub={`of ${c.attractions}`} />
+          <StatTile label="Offene Parks" value={c.openParks} sub={`von ${c.parks}`} />
+          <StatTile label="Offene Bahnen" value={c.openAttractions} sub={`von ${c.attractions}`} />
           <StatTile label="Shows" value={c.shows} />
           <StatTile label="Restaurants" value={c.restaurants} />
-          <StatTile label="Total wait" value={`${c.totalWaitTime.toLocaleString('en-GB')}'`} />
-          <StatTile label="Queue records" value={c.queueDataRecords.toLocaleString('en-GB')} />
+          <StatTile
+            label="Wartezeit gesamt"
+            value={`${c.totalWaitTime.toLocaleString('de-DE')}'`}
+          />
+          <StatTile label="Wartezeit-Zeilen" value={c.queueDataRecords.toLocaleString('de-DE')} />
         </PanelBody>
       </Panel>
 
       <Panel>
-        <PanelHeader icon={Globe} title="Geographic activity" />
+        <PanelHeader icon={Globe} title="Nach Regionen" />
         <PanelBody className="grid grid-cols-1 gap-3 sm:grid-cols-3">
           {(geo.data?.continents ?? []).map((cont) => (
             <Tile
               key={cont.slug}
-              title={cont.slug.replace(/-/g, ' ')}
+              title={<span className="capitalize">{cont.slug.replace(/-/g, ' ')}</span>}
               action={
                 <span className="text-primary font-mono text-sm tabular-nums">
                   {cont.openParkCount}
@@ -83,19 +86,19 @@ export default function AnalyticsPage() {
       <Panel>
         <PanelHeader
           icon={Radio}
-          title="Live ticker"
+          title="Live-Ticker"
           hint={
             ticker.data
-              ? `Generated ${new Date(ticker.data.generatedAt).toLocaleTimeString('en-GB')}`
+              ? `Stand ${new Date(ticker.data.generatedAt).toLocaleTimeString('de-DE')}`
               : undefined
           }
         />
-        <PanelBody className="divide-border/40 divide-y py-2">
+        <PanelBody className="divide-y divide-white/[0.05] py-2">
           {(ticker.data?.items ?? []).slice(0, 25).map((item, i) => (
             <Link
               key={`${item.attractionSlug}-${i}`}
               href={item.url}
-              className="hover:bg-card/60 -mx-2 flex items-center gap-3 px-2 py-1.5 text-sm"
+              className="-mx-2 flex items-center gap-3 rounded-md px-2 py-1.5 text-sm hover:bg-white/[0.04]"
             >
               <span className={`w-4 shrink-0 text-center ${TREND_COLOR[item.trend] ?? ''}`}>
                 {TREND_ICON[item.trend] ?? '·'}

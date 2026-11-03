@@ -15,7 +15,7 @@ import Image from 'next/image';
  * they only tell the browser what to reserve before the file arrives, and `w-auto` takes the real
  * ratio from the file at any height.
  */
-function BrandPin({
+export function BrandPin({
   /** The height, as a class — e.g. `h-[26px] w-auto`. */
   className,
   /** Force the light-ink artwork regardless of theme. */
@@ -51,27 +51,27 @@ function BrandPin({
 }
 
 /**
- * The park.fan lockup, pin and wordmark at the header's size (26 px and 19 px), with light and dark
- * artwork switched by theme or forced light. The header renders it twice and cross-fades the pair.
+ * The lockup's wordmark „park.fan“, with its light and dark artwork, at whatever height the caller's
+ * class sets. `width`/`height` only reserve the ratio before the file arrives, as for the pin.
  */
-export function BrandLockup({
-  /** Force the light-ink artwork regardless of theme — for a lockup over a permanently dark hero. */
+export function BrandWordmark({
+  /** The height, as a class — e.g. `h-[19px] w-auto`. */
+  className,
+  /** Force the light-ink artwork regardless of theme. */
   forceLight = false,
 }: {
+  className: string;
   forceLight?: boolean;
 }) {
-  const pin = 'h-[26px] w-auto';
-  const word = 'h-[19px] w-auto';
   return (
     <>
-      <BrandPin className={pin} forceLight={forceLight} />
       <Image
         src="/parkfan-dark.svg"
         width={80}
         height={19}
         alt=""
         aria-hidden="true"
-        className={forceLight ? word : `hidden ${word} dark:block`}
+        className={forceLight ? className : `hidden ${className} dark:block`}
         loading="eager"
       />
       {!forceLight && (
@@ -81,10 +81,28 @@ export function BrandLockup({
           height={19}
           alt=""
           aria-hidden="true"
-          className={`block ${word} dark:hidden`}
+          className={`block ${className} dark:hidden`}
           loading="eager"
         />
       )}
+    </>
+  );
+}
+
+/**
+ * The park.fan lockup, pin and wordmark at the header's size (26 px and 19 px), with light and dark
+ * artwork switched by theme or forced light. The header renders it twice and cross-fades the pair.
+ */
+export function BrandLockup({
+  /** Force the light-ink artwork regardless of theme — for a lockup over a permanently dark hero. */
+  forceLight = false,
+}: {
+  forceLight?: boolean;
+}) {
+  return (
+    <>
+      <BrandPin className="h-[26px] w-auto" forceLight={forceLight} />
+      <BrandWordmark className="h-[19px] w-auto" forceLight={forceLight} />
     </>
   );
 }

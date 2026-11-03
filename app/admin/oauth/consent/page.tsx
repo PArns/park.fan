@@ -297,7 +297,7 @@ function Consent() {
       >
         <p
           id="consent-host"
-          className="flex items-center gap-1.5 text-[11px] font-semibold tracking-wider text-amber-300 uppercase"
+          className="flex items-center gap-1.5 text-xs font-semibold text-amber-300"
         >
           <TriangleAlert className="h-3.5 w-3.5" aria-hidden />
           Nach deiner Antwort geht es weiter zu
@@ -324,7 +324,7 @@ function Consent() {
       </section>
 
       <section aria-labelledby="consent-gets" className="space-y-2">
-        <h2 id="consent-gets" className="text-xs font-semibold tracking-wide uppercase">
+        <h2 id="consent-gets" className="text-xs font-semibold">
           Was die App bekommt
         </h2>
         <ul className="space-y-2 text-sm">

@@ -66,9 +66,7 @@ export function ParkRow({ parkName, states, onFiles }: ParkRowProps) {
 
       {SEASON && (
         <div className="flex flex-wrap items-center gap-1.5">
-          <span className="text-muted-foreground mr-0.5 text-[11px] font-medium tracking-wide uppercase">
-            Anlass
-          </span>
+          <span className="text-muted-foreground mr-0.5 text-xs font-medium">Anlass</span>
           {SEASON.tags.map((tag) => (
             <button
               key={tag}

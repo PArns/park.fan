@@ -11,7 +11,7 @@ import {
   ShieldCheck,
 } from 'lucide-react';
 import { useAdminFetch } from '../_lib/admin-context';
-import { useAdminQuery } from '../_lib/api';
+import { ADMIN_PATHS, adminKeys, DATA_QUALITY_DEFAULT_WINDOW, useAdminQuery } from '../_lib/api';
 import { formatDay } from '../_lib/format';
 import {
   AdminPage,
@@ -24,35 +24,14 @@ import {
   PanelHeader,
 } from '../_ui/primitives';
 import { Select } from '../_ui/controls';
-import {
-  DATA_QUALITY_KEY,
-  SilencedClusterCard,
-  UnreviewedParkCard,
-  type AbsenceRetiredUnreviewed,
-  type SilencedCluster,
-} from './season-actions';
+import { SilencedClusterCard, UnreviewedParkCard } from './season-actions';
+import type { AbsenceRetiredUnreviewed, DataQualityReport } from '@/lib/api/admin';
 
 /**
  * What the backend's detectors noticed (a silenced feed, a job that keeps dying, a glossary id a
  * ride profile still points at): wrong now, not wrong enough to throw, and wrong until a person
  * looks here.
  */
-
-interface FailingJob {
-  queue: string;
-  jobName: string;
-  failures: number;
-  lastReason: string;
-  lastFailedAt: string | null;
-}
-
-interface DataQuality {
-  windowDays: number;
-  silencedClusters: SilencedCluster[];
-  failingJobs: FailingJob[];
-  /** Absent from an API that does not send it yet. */
-  absenceRetiredUnreviewed?: AbsenceRetiredUnreviewed[];
-}
 
 interface BrokenTermId {
   termId: string;
@@ -76,12 +55,12 @@ const WINDOWS = [
 ];
 
 export default function DataQualityPage() {
-  const [windowDays, setWindowDays] = useState('14');
+  const [windowDays, setWindowDays] = useState(DATA_QUALITY_DEFAULT_WINDOW);
   // A query rather than `useAdminFetch`: the cards below write, and an answered
   // card has to disappear — which needs a cache that can be invalidated.
-  const qualityQuery = useAdminQuery<DataQuality>(
-    [...DATA_QUALITY_KEY, windowDays],
-    `/api/admin/data-quality?windowDays=${windowDays}`
+  const qualityQuery = useAdminQuery<DataQualityReport>(
+    adminKeys.dataQuality(windowDays),
+    ADMIN_PATHS.dataQuality(windowDays)
   );
   const quality = {
     data: qualityQuery.data ?? null,
@@ -112,7 +91,7 @@ export default function DataQualityPage() {
             </p>
             <Select
               value={windowDays}
-              onValueChange={(value) => setWindowDays(value ?? '14')}
+              onValueChange={(value) => setWindowDays(value ?? DATA_QUALITY_DEFAULT_WINDOW)}
               options={WINDOWS}
               className="w-36"
             />

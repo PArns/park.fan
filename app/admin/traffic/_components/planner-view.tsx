@@ -89,9 +89,7 @@ function countRows(prop: string, rows: readonly { value: string; count: number }
 function CountList({ title, rows, unit }: { title: string; rows: BarRow[]; unit: string }) {
   return (
     <div className="space-y-2">
-      <p className="text-muted-foreground text-[11px] font-medium tracking-wide uppercase">
-        {title}
-      </p>
+      <p className="text-muted-foreground text-xs font-medium">{title}</p>
       {rows.length === 0 ? (
         <p className="text-muted-foreground text-sm">Noch nichts gezählt</p>
       ) : (
@@ -159,7 +157,7 @@ function SourcesPanel({ planner }: { planner: PlannerOverview }) {
         ) : (
           <div className="overflow-x-auto">
             <table className="w-full min-w-[34rem] text-sm tabular-nums">
-              <thead className="text-muted-foreground text-[11px] tracking-wide uppercase">
+              <thead className="text-muted-foreground text-xs">
                 <tr className="border-border/50 border-b">
                   <th className="py-2 pl-4 text-left font-medium">Weg</th>
                   <th className="px-3 py-2 text-left font-medium">Geöffnet</th>
@@ -284,9 +282,7 @@ function ItemMatrix({
   const matrix = withoutEmptyColumns(plannerItemMatrix(planner, action));
   return (
     <div className="space-y-2">
-      <p className="text-muted-foreground text-[11px] font-medium tracking-wide uppercase">
-        {title}
-      </p>
+      <p className="text-muted-foreground text-xs font-medium">{title}</p>
       {matrix.rows.length === 0 ? (
         <p className="text-muted-foreground text-sm">Noch nichts gezählt</p>
       ) : (

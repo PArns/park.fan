@@ -22,6 +22,7 @@ import { adminFetch, adminKeys, AdminApiError } from '../_lib/api';
 import { heroObjectPosition } from '@/lib/media/hero';
 import { useHeroPhoto } from '../_lib/use-hero-photo';
 import { cn } from '@/lib/utils';
+import { AdminBrand } from '../_ui/admin-brand';
 import { TOTP_CODE_LENGTH, normalizeTotpCode } from '@/lib/admin/totp';
 
 type LoginResponse =
@@ -281,19 +282,7 @@ export function LoginScreen() {
 
       <div className="relative flex min-h-[100dvh] flex-col justify-center px-4 py-10 sm:px-10 lg:px-16 xl:px-24">
         <div className="animate-in fade-in slide-in-from-bottom-3 w-full max-w-md duration-700 motion-reduce:animate-none">
-          <div className="mb-7 flex items-center gap-3">
-            <span className="from-primary/30 to-primary/5 border-primary/30 text-primary shadow-primary/20 flex h-12 w-12 items-center justify-center rounded-2xl border bg-gradient-to-br shadow-lg backdrop-blur-sm">
-              <ShieldCheck className="h-6 w-6" />
-            </span>
-            <div>
-              <p className="text-xl leading-none font-bold tracking-tight drop-shadow-[0_1px_10px_rgba(0,0,0,0.9)]">
-                park<span className="text-primary">.fan</span>
-              </p>
-              <p className="mt-1.5 text-[10px] leading-none font-semibold tracking-[0.3em] text-white/55 uppercase drop-shadow-[0_1px_8px_rgba(0,0,0,0.9)]">
-                Verwaltung
-              </p>
-            </div>
-          </div>
+          <AdminBrand size="lg" className="mb-7 drop-shadow-[0_1px_10px_rgba(0,0,0,0.9)]" />
 
           {/* One form for all three fields from the first paint: a password manager fills a login
               from what is in the document when it looks, so a code field that arrives after a
@@ -364,11 +353,6 @@ export function LoginScreen() {
 
             {gateAndSubmit}
           </form>
-
-          <p className="text-muted-foreground mt-4 flex items-center gap-1.5 px-1 text-[11px]">
-            <ShieldCheck className="h-3 w-3 shrink-0" />
-            Die Sitzung liegt in einem httpOnly-Cookie. Der Browser hält kein Geheimnis.
-          </p>
         </div>
       </div>
 
@@ -572,8 +556,9 @@ function TurnstileGate({
         onError={onError}
       />
 
+      {/* One line in every state, so the form under it never moves when the challenge is solved. */}
       {broken ? (
-        <div className="text-muted-foreground mt-2 flex flex-wrap items-center gap-2 text-[11px]">
+        <div className="text-muted-foreground mt-2 flex min-h-4 flex-wrap items-center gap-2 text-[11px]">
           <span className="flex items-center gap-1.5">
             <TriangleAlert className="h-3 w-3 shrink-0 text-amber-400" />
             Die Sicherheitsprüfung konnte nicht geladen werden.
@@ -591,12 +576,22 @@ function TurnstileGate({
           </button>
         </div>
       ) : (
-        !solved && (
-          <p className="text-muted-foreground mt-2 flex items-center gap-1.5 text-[11px]">
-            <Loader2 className="h-3 w-3 shrink-0 animate-spin" />
-            Sicherheitsprüfung läuft.
-          </p>
-        )
+        <p
+          aria-live="polite"
+          className="text-muted-foreground mt-2 flex h-4 items-center gap-1.5 text-[11px]"
+        >
+          {solved ? (
+            <>
+              <ShieldCheck className="h-3 w-3 shrink-0 text-emerald-400" />
+              Sicherheitsprüfung bestanden.
+            </>
+          ) : (
+            <>
+              <Loader2 className="h-3 w-3 shrink-0 animate-spin" />
+              Sicherheitsprüfung läuft.
+            </>
+          )}
+        </p>
       )}
     </div>
   );

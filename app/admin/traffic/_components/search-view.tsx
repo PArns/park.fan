@@ -178,7 +178,7 @@ function SurfaceTable({ search }: { search: SearchOverview }) {
       <PanelBody className="p-0">
         <div className="overflow-x-auto">
           <table className="w-full min-w-[46rem] text-sm tabular-nums">
-            <thead className="text-muted-foreground text-[11px] tracking-wide uppercase">
+            <thead className="text-muted-foreground text-xs">
               <tr className="border-border/50 border-b">
                 <th className="py-2 pl-4 text-left font-medium">Feld</th>
                 <th className="px-3 py-2 text-left font-medium">Geöffnet</th>

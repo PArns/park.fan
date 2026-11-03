@@ -154,7 +154,7 @@ function LandingPagesPanel({
           </ul>
           <div className="hidden overflow-x-auto md:block">
             <table className="w-full min-w-[48rem] text-sm tabular-nums">
-              <thead className="text-muted-foreground text-[11px] tracking-wide uppercase">
+              <thead className="text-muted-foreground text-xs">
                 <tr className="border-border/50 border-b">
                   <th className="py-2 pl-4 text-left font-medium">Seite</th>
                   <th className="px-3 py-2 text-right font-medium">Besuche</th>

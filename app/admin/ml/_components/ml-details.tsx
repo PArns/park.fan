@@ -11,6 +11,7 @@ import type {
   MlPerformer,
 } from '@/lib/api/admin-stats';
 import { useAdminFetch } from '../../_lib/admin-context';
+import { ADMIN_PATHS } from '../../_lib/api';
 import { formatDay, maeColor } from '../../_lib/format';
 import {
   Chip,
@@ -147,7 +148,7 @@ function Fold({ title, hint, children }: { title: string; hint: string; children
 
 function TrainingDetails() {
   const dash = useAdminFetch<MlDashboard>('/api/ml/dashboard');
-  const health = useAdminFetch<SystemHealthResponse>('/api/admin/system-health');
+  const health = useAdminFetch<SystemHealthResponse>(ADMIN_PATHS.systemHealth);
 
   const catboost = health.data?.ml.catboost;
   const tft = health.data?.ml.tft;
@@ -202,7 +203,7 @@ function TrainingDetails() {
           hint="Live misst hier CatBoost allein, nicht das, was die App ausliefert. Was die App zeigt, vergleicht die Matrix."
         >
           <div className="overflow-x-auto">
-            <div className="border-border/60 text-muted-foreground grid min-w-[22rem] grid-cols-5 gap-2 border-b pb-2 text-xs font-medium tracking-wide uppercase">
+            <div className="border-border/60 text-muted-foreground grid min-w-[22rem] grid-cols-5 gap-2 border-b pb-2 text-xs font-medium">
               <span />
               <span className="text-right">MAE</span>
               <span className="text-right">RMSE</span>
