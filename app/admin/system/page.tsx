@@ -16,6 +16,17 @@ import {
   Zap,
 } from 'lucide-react';
 import { useAdminFetch } from '../_lib/admin-context';
+import { ADMIN_PATHS } from '../_lib/api';
+import {
+  CHIP_TEMP_C,
+  CPU_LOAD_PCT,
+  FEED_STALE_MINUTES,
+  WEATHER_DAYS_AHEAD,
+  levelAbove,
+  levelBelow,
+  type HealthTone,
+} from '@/lib/admin/health';
+import { HEALTH_TEXT } from '../_ui/metrics';
 import { formatUptime } from '../_lib/format';
 import { MetricBar } from '@/components/common/metric-bar';
 import type { HostDisk, SiteAnalyticsHealth, SystemHealthResponse } from '@/lib/api/admin';
@@ -45,8 +56,12 @@ function chipLabel(chip: string): string {
   if (chip.startsWith('r816')) return 'Ethernet';
   return chip;
 }
+/** A reading's colour: amber and red by the overview's thresholds, `okClass` while it is fine. */
+function readingClass(tone: HealthTone, okClass = 'text-emerald-400'): string {
+  return tone === 'ok' ? okClass : HEALTH_TEXT[tone];
+}
 function sensorTempClass(t: number): string {
-  return t >= 85 ? 'text-red-400' : t >= 70 ? 'text-amber-400' : 'text-emerald-400';
+  return readingClass(levelAbove(t, CHIP_TEMP_C));
 }
 function isDisk(d: HostDisk | { error: string }): d is HostDisk {
   return 'usedPct' in d;
@@ -100,7 +115,7 @@ function DropCounts({
 }
 
 export default function SystemPage() {
-  const { data, error } = useAdminFetch<SystemHealthResponse>('/api/admin/system-health');
+  const { data, error } = useAdminFetch<SystemHealthResponse>(ADMIN_PATHS.systemHealth);
 
   if (error) return <ErrorState message={error} />;
   if (!data) return <LoadingState label="Loading system metrics…" />;
@@ -111,25 +126,13 @@ export default function SystemPage() {
   const pgOk = data.postgres.status === 'connected';
   const redisOk = data.redis.status === 'connected';
   const cpuTemp = data.host.cpu.temperatureC;
-  const cpuTempClass =
-    (cpuTemp ?? 0) >= 85
-      ? 'text-red-400'
-      : (cpuTemp ?? 0) >= 70
-        ? 'text-amber-400'
-        : 'text-foreground';
+  const cpuTempClass = readingClass(levelAbove(cpuTemp ?? 0, CHIP_TEMP_C), 'text-foreground');
   const swap = data.host.swap;
   const fresh = data.freshness;
   const stats = data.siteAnalytics;
   // Wait-time ingestion: a stalled cron can go unnoticed for months, so staleness is loud.
   const queueStale = fresh?.queueStaleMinutes ?? null;
-  const queueClass =
-    queueStale == null
-      ? 'text-muted-foreground'
-      : queueStale >= 60
-        ? 'text-red-400'
-        : queueStale >= 20
-          ? 'text-amber-400'
-          : 'text-emerald-400';
+  const queueClass = readingClass(levelAbove(queueStale, FEED_STALE_MINUTES));
   // weather_data holds a ~16-day forecast, so MAX(date) is in the FUTURE: show how
   // many days ahead we have weather (healthy = positive; <= 0 means ingestion stalled).
   // Derived from the server-computed weatherStaleHours (negative for future dates) to
@@ -137,14 +140,7 @@ export default function SystemPage() {
   const weatherDate = fresh?.latestWeatherDate ?? null;
   const weatherDaysAhead =
     fresh?.weatherStaleHours != null ? Math.round(-fresh.weatherStaleHours / 24) : null;
-  const weatherClass =
-    weatherDaysAhead == null
-      ? 'text-muted-foreground'
-      : weatherDaysAhead <= 0
-        ? 'text-red-400'
-        : weatherDaysAhead < 7
-          ? 'text-amber-400'
-          : 'text-emerald-400';
+  const weatherClass = readingClass(levelBelow(weatherDaysAhead, WEATHER_DAYS_AHEAD));
   // All hwmon sensors, grouped by chip (CPU first, then NVMe, then the rest) and
   // sorted within a group (package/composite first, then by core/sensor number).
   const sensors = data.host.sensors ?? [];
@@ -176,7 +172,7 @@ export default function SystemPage() {
             <div className="grid grid-cols-2 gap-3">
               <div>
                 <span
-                  className={`text-3xl font-bold tabular-nums ${(data.host.cpu.loadPct ?? 0) >= 80 ? 'text-red-400' : (data.host.cpu.loadPct ?? 0) >= 60 ? 'text-amber-400' : 'text-foreground'}`}
+                  className={`text-3xl font-bold tabular-nums ${readingClass(levelAbove(data.host.cpu.loadPct ?? 0, CPU_LOAD_PCT), 'text-foreground')}`}
                 >
                   {data.host.cpu.loadPct ?? '—'}%
                 </span>
@@ -295,8 +291,7 @@ export default function SystemPage() {
           <PanelBody className="space-y-3">
             {data.gpu.gpus.map((g) => {
               const temp = g.temperatureC ?? 0;
-              const tempClass =
-                temp >= 85 ? 'text-red-400' : temp >= 70 ? 'text-amber-400' : 'text-foreground';
+              const tempClass = readingClass(levelAbove(temp, CHIP_TEMP_C), 'text-foreground');
               const vramTotal = g.memoryTotalMB ? g.memoryTotalMB / 1024 : 0;
               const vramUsed = (g.memoryUsedMB ?? 0) / 1024;
               return (

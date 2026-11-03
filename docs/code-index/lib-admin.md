@@ -30,6 +30,25 @@ by hand: change the comment in the code and re-run the script. -->
 - `MISSING_TOKEN_HINT` _const_: What the blog editor's write routes answer when no token is configured.
 - Types: `RepoRef`
 
+### [`health.ts`](../../lib/admin/health.ts)
+
+- `levelAbove` _function_: The tone of a figure where more is worse; `unknown` without a figure.
+- `levelBelow` _function_: The tone of a figure where less is worse; `unknown` without a figure.
+- `worstTone` _function_: The worst of several tones; `ok` for none. An unknown outranks ok and nothing else.
+- `durationLabel` _function_: A span of minutes in words, rounded down to its largest unit: `2 Min.`, `3 Std.`, `2 Tage`.
+- `minutesAgoLabel` _function_: Minutes since something happened, in words: `gerade eben`, `vor 2 Min.`, `vor 2 Tagen`.
+- `problemSourceLabel` _function_: The name of the part a problem comes from, for the line under its title.
+- `openFailures` _function_: The failures of a queue no later run has made up for; an older API sends no split.
+- `componentTone` _function_: The tone of an ML component's status; a status this build does not know is unknown.
+- `deriveAdminHealth` _function_: Folds the sources into areas, problems and sidebar signals. A source that is forbidden leaves its area out; one that is loading or failed keeps its row, empty, so the table does not jump.
+- `CPU_LOAD_PCT` _const_: CPU load in percent of all cores.
+- `CHIP_TEMP_C` _const_: A chip's temperature in °C: the CPU package, any hwmon sensor, the GPU.
+- `STORAGE_PCT` _const_: Memory and disk use in percent.
+- `CONNECTIONS_PCT` _const_: Postgres connections in percent of the maximum.
+- `FEED_STALE_MINUTES` _const_: Minutes since the newest wait-time row: a stalled cron goes unnoticed for months otherwise.
+- `WEATHER_DAYS_AHEAD` _const_: Days of weather forecast ahead of today; the table holds about 16, so fewer than a week means the import has stopped. Lower is worse: amber below `warn`, red at `bad` or below.
+- Types: `HealthTone`, `Reading`, `Threshold`, `HealthCheck`, `HealthAreaId`, `HealthArea`, `HealthProblem`, `NavSignal`, `AdminHealth`, `HealthSources`
+
 ### [`live-traffic.ts`](../../lib/admin/live-traffic.ts)
 
 - `minuteSeries` _function_: The chart's minutes, oldest first: exactly `LIVE_MINUTES`, ending at the newest minute of the answer or the minute of `at`, whichever is later.

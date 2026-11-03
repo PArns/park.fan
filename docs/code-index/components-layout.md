@@ -11,6 +11,8 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`brand-lockup.tsx`](../../components/layout/brand-lockup.tsx)
 
+- `BrandPin` _component_: The lockup's pin, with its light and dark artwork, at whatever height the caller's class sets.
+- `BrandWordmark` _component_: The lockup's wordmark „park.fan“, with its light and dark artwork, at whatever height the caller's class sets. `width`/`height` only reserve the ratio before the file arrives, as for the pin.
 - `BrandLockup` _component_: The park.fan lockup, pin and wordmark at the header's size (26 px and 19 px), with light and dark artwork switched by theme or forced light. The header renders it twice and cross-fades the pair.
 
 ### [`favorites-menu-alerts.tsx`](../../components/layout/favorites-menu-alerts.tsx)

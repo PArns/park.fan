@@ -5,7 +5,8 @@ import Link from 'next/link';
 import { CalendarCheck2, Loader2, Trash2, Unplug } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
-import { adminFetch, useInvalidateAdmin } from '../_lib/api';
+import { adminFetch, adminKeys, useInvalidateAdmin } from '../_lib/api';
+import type { AbsenceRetiredUnreviewed, SilencedCluster } from '@/lib/api/admin';
 import { formatDay } from '../_lib/format';
 import { Chip } from '../_ui/primitives';
 import { useToast } from '../_ui/toast';
@@ -15,9 +16,6 @@ import { useToast } from '../_ui/toast';
  * dropped feed?" and "season or gone?". Both write the same two curated columns through the
  * audited bulk endpoint, so an answered card disappears and stays answered.
  */
-
-/** Query key of the data-quality report, invalidated after every season write. */
-export const DATA_QUALITY_KEY = ['admin', 'data-quality'];
 
 const MONTHS = ['Jan', 'Feb', 'Mär', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez'];
 
@@ -105,7 +103,7 @@ function useSeasonWrite() {
         },
       });
       toast.push({ title: success, tone: 'success' });
-      invalidate(DATA_QUALITY_KEY);
+      invalidate(adminKeys.dataQuality());
       return true;
     } catch (err) {
       toast.push({
@@ -127,16 +125,6 @@ function monthsLabel(months: number[]): string {
 }
 
 /** A group of a park's rides that went silent together, from the data-quality report. */
-export interface SilencedCluster {
-  parkId: string;
-  parkName: string;
-  attractionCount: number;
-  lastOperating: string;
-  sampleNames: string[];
-  /** Absent from an API that does not send it yet. */
-  attractions?: { attractionId: string; name: string }[];
-}
-
 /**
  * Data-quality card for a group of a park's rides that went silent together, asking "season ending
  * or dropped feed?": sets the season months for all of them in one write, or explains the feed
@@ -258,16 +246,6 @@ export function SilencedClusterCard({
 }
 
 /** A ride retired for absence whose retirement nobody has reviewed yet. */
-export interface AbsenceRetiredUnreviewed {
-  attractionId: string;
-  name: string;
-  slug: string;
-  parkId: string;
-  parkName: string;
-  retiredAt: string;
-  lastReading: string | null;
-}
-
 function UnreviewedRide({ row }: { row: AbsenceRetiredUnreviewed }) {
   const { write, busy } = useSeasonWrite();
   const [picking, setPicking] = useState(false);

@@ -26,6 +26,7 @@ app/admin/
   _app/                     providers, session, shell, ⌘K palette, inspector, nav, login screen
   _ui/                      the component kit: one of each thing
   _lib/                     fetch layer (adminFetch, useAdminQuery), types, formatters, hooks
+  _overview/                the overview's parts: status hero, problems, figures, area table
   parks/ attractions/       the editors
   seasons/ retirement/ duplicates/ history/   cross-cutting curation views
   data-quality/             detectors with an answer button per card
@@ -50,6 +51,81 @@ Everything is reachable three ways: the sidebar, `⌘K` and `g`-then-a-letter
 (`_app/admin-shell.tsx`). The palette is the practical way to reach one of hundreds of parks or
 thousands of rides, and it searches the **curated** name as well as the upstream one, so a park
 renamed last week is found under the name it was given.
+
+## The frame
+
+The page sits on an inset surface beside the sidebar, under a 56 px topbar that names the group and
+the page (`Betrieb / System`) and holds the link to park.fan, refresh, the inspector toggle and
+search. `--admin-chrome-height` on the shell is everything above a page (topbar, and from `md` the
+inset's margin and border); a page that fills the viewport subtracts it, as the parks table does.
+
+**The sidebar is sorted by what a person does**, not by which API serves a page (`_app/nav.ts`):
+
+| Group        | Entries                                                                     |
+| ------------ | --------------------------------------------------------------------------- |
+| (top)        | Übersicht                                                                   |
+| Kuratieren   | Parks, Saisons, Datenqualität, Duplikate, Stilllegungen, Änderungen         |
+| Inhalte      | Blog, Medien, Vor Ort, Einsendungen                                         |
+| Publikum     | Traffic (Live, SEO, Suche, Wege, Tagesplaner, Beliebtheit), Parky (3 pages) |
+| Betrieb      | System, Queues, ML-Zentrale (Modellvergleich), Parks live, Wartung          |
+| Konto (foot) | Mein Konto, Konten: in the account menu at the sidebar's foot, and in ⌘K    |
+
+Datenqualität sits with the editors because its cards ask curation questions (season or gone?).
+`NavGroup.placement` puts a group on top without a heading (`top`) or behind the account button
+(`footer`). A group folds under its heading, per group in localStorage; a folded group still shows
+the entry of the current page. The rail (collapsed sidebar) shows icons only.
+
+**An entry carries the state of what it leads to**: a dot for System, Queues and ML-Zentrale, a count
+for Datenqualität (every open card), Einsendungen (pending submissions) and the overview (every
+problem, filled amber or red). They come from the same derivation as the overview, below, and an
+entry whose source has not answered shows nothing rather than a green dot.
+
+The name in the sidebar, on the login and on standalone pages is `AdminBrand` (`_ui/admin-brand.tsx`):
+the site's own pin and wordmark (`BrandPin`, `BrandWordmark` from `components/layout/brand-lockup.tsx`)
+with an „Admin“ label.
+
+## The overview: `/admin`
+
+A situation report, read top to bottom:
+
+1. **The status hero**: one sentence on the worst problem („Eine Störung“, „4 Dinge warten auf dich“,
+   „Alles läuft“) with the first two problem titles under it, tinted by its tone, over the rotating
+   park photo. Under it the shortcuts: the camera first (full width on a phone, which is opened at a
+   park gate), the pending submissions when there are any, the most used pages, live visitors, and
+   „Alles andere ⌘K“.
+2. **Wartet auf dich**: one card per problem, faults first, folded after four.
+3. **Heute**: visitors today and now, the wait-time feed, host, database, queues, models, photo
+   inbox. Each card's label turns amber or red with its area.
+4. **Bereiche**: Server, Wartezeiten, Queues, Modelle, Statistik, Datenqualität with their verdict,
+   how many checks pass, one key figure and a bar per check; a row opens to list its checks.
+5. **Katalog**: curations of 30 days, and the share of parks curated, rides with a profile, parks with
+   seasons.
+6. What changed lately, the seasons running today, and parks nobody has curated.
+
+Everything about the state of things is **one pure derivation**, `deriveAdminHealth`
+(`lib/admin/health.ts`, `pnpm test:admin-health`), fed by `useAdminHealth` (`_lib/use-admin-health.ts`)
+from `system-health`, `queue-status`, `data-quality` (14 days), `ml-overview` and the contributions
+summary. The hook reads them under the keys their own pages use (`adminKeys`, `ADMIN_PATHS` in
+`_lib/api.ts`), so answering a data-quality card clears the count in the sidebar and on the overview
+too. On the overview host and queues poll every minute while the tab is in front; elsewhere the
+sidebar's reads refresh on focus.
+
+- **A fault (`bad`)** is something broken now: a red host reading, Postgres or Redis not connected, no
+  wait-time row for 60 minutes, no weather ahead, a queue failure no later run has made up for, a
+  failed model, a statistic that falls behind.
+- **Waiting work (`warn`)** is a decision or a chore: a silenced park, a job that keeps failing, rides
+  retired without a season, a late model, drift, a model decision that is ready, photos to moderate.
+  Amber host readings colour the row and the card but raise no problem.
+- **A source that does not answer** keeps its row („keine Antwort“) and raises a card whose button
+  asks it again in place; a 403 leaves its area out.
+- The thresholds (`CPU_LOAD_PCT`, `CHIP_TEMP_C`, `STORAGE_PCT`, `FEED_STALE_MINUTES`,
+  `WEATHER_DAYS_AHEAD` …) are the ones `/admin/system` colours its readings with, so the two never
+  disagree.
+
+**A problem card is not a detector card.** It names its question and the button that leads to the
+one page where it is answered („Entscheiden“ → Datenqualität, „Stack in Queues ansehen“), named for
+what exists there ([an admin list without an action](../rules/an-admin-list-without-an-action-is-unfinished.md));
+it goes when that page's answer has cleared the source.
 
 ## Authentication
 
@@ -95,6 +171,11 @@ transparent field. Why it is one field and one step, and the check that holds th
 
 - The e-mail field takes the focus on mount, not the code field: most accounts have no second
   factor.
+- Nothing under the form moves when the challenge arrives or is solved. `TurnstileWidget` reserves
+  the visible widget's 72 px from the first paint (the 65 px iframe on its inline line box; an
+  `interaction-only` widget reserves nothing), and the status line under it („läuft“, „bestanden“,
+  the retry) is one line in every state. The form is centred vertically, so either change used to
+  move the whole column: CLS 0.095 on a phone, now 0.
 - A complete code submits itself, once the fresh Turnstile token is there.
 - The code fields under `/admin/account` (TOTP enrolment and switching it off, and the token
   dialog below) are one `OtpInput` (`_ui/controls.tsx`): one numeric field,

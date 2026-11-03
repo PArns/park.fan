@@ -11,6 +11,7 @@ import type {
   MlPerformer,
 } from '@/lib/api/admin-stats';
 import { useAdminFetch } from '../../_lib/admin-context';
+import { ADMIN_PATHS } from '../../_lib/api';
 import { formatDay, maeColor } from '../../_lib/format';
 import {
   Chip,
@@ -147,7 +148,7 @@ function Fold({ title, hint, children }: { title: string; hint: string; children
 
 function TrainingDetails() {
   const dash = useAdminFetch<MlDashboard>('/api/ml/dashboard');
-  const health = useAdminFetch<SystemHealthResponse>('/api/admin/system-health');
+  const health = useAdminFetch<SystemHealthResponse>(ADMIN_PATHS.systemHealth);
 
   const catboost = health.data?.ml.catboost;
   const tft = health.data?.ml.tft;

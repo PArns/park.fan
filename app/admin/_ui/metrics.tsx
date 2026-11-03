@@ -1,287 +1,294 @@
 'use client';
 
 import Link from 'next/link';
+import type { ReactNode } from 'react';
 import type { LucideIcon } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import type { HealthTone } from '@/lib/admin/health';
 
 /**
- * The dashboard's instrument row. Every tile links to the list it counts, the ring is the share
- * and the digits the count, and colour carries meaning: brand blue for coverage, amber for a
- * backlog, red for something wrong.
+ * The overview's instruments: a card per figure with the chart that belongs to it underneath (a
+ * meter, a strip of segments, a share, a line), and the small marks the area table draws. Colour
+ * carries meaning only: green for fine, amber for waiting work, red for a fault, the brand blue for
+ * something live.
  */
 
-export type MetricTone = 'brand' | 'good' | 'warn' | 'bad' | 'neutral';
+/** What a card's label colour says: nothing special, live, waiting work, or a fault. */
+export type StatTone = 'neutral' | 'live' | 'warn' | 'bad';
 
-const TONE_STROKE: Record<MetricTone, string> = {
-  brand: 'stroke-primary',
-  good: 'stroke-emerald-400',
-  warn: 'stroke-amber-400',
-  bad: 'stroke-red-400',
-  neutral: 'stroke-muted-foreground',
-};
-
-const TONE_TEXT: Record<MetricTone, string> = {
-  brand: 'text-primary',
-  good: 'text-emerald-400',
-  warn: 'text-amber-400',
-  bad: 'text-red-400',
+const LABEL_TONE: Record<StatTone, string> = {
   neutral: 'text-muted-foreground',
+  live: 'text-primary-ink',
+  warn: 'text-amber-300',
+  bad: 'text-red-400',
 };
 
-/** A ring is drawn from a dash offset, so the geometry lives here once. */
-function Ring({
-  share,
-  tone,
-  children,
-}: {
-  share: number;
-  tone: MetricTone;
-  children: React.ReactNode;
-}) {
-  const radius = 30;
-  const circumference = 2 * Math.PI * radius;
-  const clamped = Math.max(0, Math.min(1, share));
+/** The fill of a bar, a segment or a dot in a health tone. */
+export const HEALTH_FILL: Record<HealthTone, string> = {
+  ok: 'bg-emerald-400/85',
+  warn: 'bg-amber-400',
+  bad: 'bg-red-500',
+  unknown: 'bg-muted-foreground/35',
+};
 
-  return (
-    <div className="relative h-[72px] w-[72px] shrink-0">
-      <svg viewBox="0 0 72 72" className="h-[72px] w-[72px] -rotate-90">
-        <circle
-          cx="36"
-          cy="36"
-          r={radius}
-          fill="none"
-          strokeWidth="7"
-          className="stroke-muted-foreground/12"
-        />
-        {/* A tiny share would draw as a dot that reads as a broken ring, so the arc keeps a
-            minimum length; the digits carry the exact value. */}
-        <circle
-          cx="36"
-          cy="36"
-          r={radius}
-          fill="none"
-          strokeWidth="7"
-          strokeLinecap="round"
-          strokeDasharray={circumference}
-          strokeDashoffset={circumference * (1 - Math.max(clamped > 0 ? 0.015 : 0, clamped))}
-          className={cn(TONE_STROKE[tone], 'transition-[stroke-dashoffset] duration-700')}
-        />
-      </svg>
-      <div className="absolute inset-0 flex items-center justify-center">{children}</div>
-    </div>
-  );
-}
+/** The text colour of a health tone. */
+export const HEALTH_TEXT: Record<HealthTone, string> = {
+  ok: 'text-emerald-400',
+  warn: 'text-amber-300',
+  bad: 'text-red-400',
+  unknown: 'text-muted-foreground',
+};
 
 /**
- * Dashboard tile linking to the list it counts: a ring showing `value` as a share of `of`, the
- * count beside it in German number format, and an optional note.
+ * A figure on the overview: icon and label, the number large with its unit, a line under it, and
+ * its chart at the foot, so a row of cards lines up on the number and on the chart. The whole card
+ * links to the page the figure comes from. While `loading` the number is a dash and the card keeps
+ * its height.
  */
-export function MetricTile({
+export function StatCard({
   href,
   icon: Icon,
   label,
   value,
-  of,
-  suffix,
-  tone = 'brand',
+  unit,
   note,
+  tone = 'neutral',
   loading,
+  children,
 }: {
   href: string;
   icon: LucideIcon;
   label: string;
-  /** The count. The ring shows it against `of`, the digits show it as it is. */
-  value: number | undefined;
-  of?: number;
-  suffix?: string;
-  tone?: MetricTone;
-  note?: string;
+  value: ReactNode;
+  unit?: ReactNode;
+  note?: ReactNode;
+  tone?: StatTone;
   loading?: boolean;
+  /** The chart at the foot of the card. */
+  children?: ReactNode;
 }) {
-  const share = of && of > 0 && value !== undefined ? value / of : 0;
-  const percent = of && of > 0 && value !== undefined ? Math.round(share * 100) : null;
-
   return (
     <Link
       href={href}
-      className="border-border/60 bg-card/60 hover:border-primary/40 group flex items-center gap-3 rounded-xl border p-3 transition-colors"
+      className="group bg-card/70 relative flex min-h-[10.5rem] flex-col rounded-xl border border-white/[0.07] p-4 transition-[border-color,background-color] hover:border-white/[0.14] hover:bg-white/[0.035]"
     >
-      <Ring share={share} tone={tone}>
-        <span className={cn('text-sm font-semibold tabular-nums', TONE_TEXT[tone])}>
-          {percent === null ? <Icon className="h-4 w-4" /> : `${percent}%`}
+      <p className={cn('flex items-center gap-2 text-[13px] font-medium', LABEL_TONE[tone])}>
+        <Icon aria-hidden="true" className="h-4 w-4 shrink-0" />
+        <span className="truncate">{label}</span>
+      </p>
+      <p className="mt-3 flex min-w-0 items-baseline gap-1.5">
+        <span className="text-[2rem] leading-none font-semibold tracking-tight tabular-nums">
+          {loading ? '–' : value}
         </span>
-      </Ring>
-
-      <div className="min-w-0 flex-1">
-        <p className="text-muted-foreground group-hover:text-foreground flex items-center gap-1.5 truncate text-xs transition-colors">
-          <span
-            className={cn(
-              'flex h-5 w-5 shrink-0 items-center justify-center rounded-md',
-              tone === 'brand' && 'bg-primary/15 text-primary',
-              tone === 'good' && 'bg-emerald-400/15 text-emerald-400',
-              tone === 'warn' && 'bg-amber-400/15 text-amber-400',
-              tone === 'bad' && 'bg-red-400/15 text-red-400',
-              tone === 'neutral' && 'bg-muted-foreground/15 text-muted-foreground'
-            )}
-          >
-            <Icon className="h-3 w-3" />
-          </span>
-          {label}
-        </p>
-        <p className="flex items-baseline gap-1">
-          <span className="text-2xl leading-tight font-bold tabular-nums">
-            {loading ? '—' : (value?.toLocaleString('de-DE') ?? '—')}
-          </span>
-          {of !== undefined && (
-            <span className="text-muted-foreground text-xs tabular-nums">
-              / {of.toLocaleString('de-DE')}
-            </span>
-          )}
-          {suffix && <span className="text-muted-foreground text-xs">{suffix}</span>}
-        </p>
-        {note && <p className="text-muted-foreground truncate text-[11px]">{note}</p>}
-      </div>
+        {unit && !loading && <span className="text-muted-foreground truncate text-sm">{unit}</span>}
+      </p>
+      {note && !loading && (
+        <p className="text-muted-foreground mt-1.5 line-clamp-2 text-[13px] leading-snug">{note}</p>
+      )}
+      {children && !loading && <div className="mt-auto pt-4">{children}</div>}
     </Link>
   );
 }
 
-/**
- * Thirty days of the admin's own work, without axes: it answers whether anything happened lately,
- * and the last day carries the label.
- */
-export function CurationTrend({
-  perDay,
-  loading,
+/** One labelled meter row: a short label, a thin bar filled to `percent`, the reading on the right. */
+export function MeterRow({
+  label,
+  percent,
+  tone,
+  reading,
 }: {
-  perDay: Array<{ day: string; count: number }>;
-  loading?: boolean;
+  label: string;
+  /** 0 to 100; clamped. */
+  percent: number;
+  tone: HealthTone;
+  reading: string;
 }) {
-  const days = 30;
-  const today = new Date();
-  const buckets: Array<{ day: string; count: number }> = [];
-  for (let i = days - 1; i >= 0; i--) {
-    const date = new Date(today.getTime() - i * 86_400_000);
-    const key = date.toISOString().slice(0, 10);
-    buckets.push({ day: key, count: perDay.find((row) => row.day === key)?.count ?? 0 });
-  }
-
-  const max = Math.max(1, ...buckets.map((b) => b.count));
-  const total = buckets.reduce((sum, b) => sum + b.count, 0);
-
+  const width = Math.max(0, Math.min(100, percent));
   return (
-    <div>
-      <div className="flex items-baseline justify-between gap-2">
-        <div>
-          <p className="text-sm font-medium">Kuratierungen</p>
-          <p className="text-muted-foreground text-xs">letzte 30 Tage</p>
-        </div>
-        <p className="text-2xl font-bold tabular-nums">{loading ? '—' : total}</p>
-      </div>
-
-      {/* An area, not bars: mostly zeroes with a few spikes, and bars at floor height read as
-          missing data. */}
-      <svg viewBox="0 0 300 64" preserveAspectRatio="none" className="mt-3 h-16 w-full">
-        <defs>
-          <linearGradient id="curation-fill" x1="0" y1="0" x2="0" y2="1">
-            <stop
-              offset="0%"
-              className="text-primary"
-              stopColor="currentColor"
-              stopOpacity="0.35"
-            />
-            <stop offset="100%" className="text-primary" stopColor="currentColor" stopOpacity="0" />
-          </linearGradient>
-        </defs>
-        <path d={areaPath(buckets, max)} fill="url(#curation-fill)" />
-        <path
-          d={linePath(buckets, max)}
-          fill="none"
-          strokeWidth="1.5"
-          vectorEffect="non-scaling-stroke"
-          className="stroke-primary"
+    <div className="flex items-center gap-3 text-[13px] tabular-nums">
+      <span className="text-muted-foreground w-12 shrink-0 truncate">{label}</span>
+      <span className="h-1 min-w-0 flex-1 overflow-hidden rounded-full bg-white/[0.07]">
+        <span
+          className={cn('block h-full rounded-full', HEALTH_FILL[tone])}
+          // A sliver stays visible at a few percent, so "nearly nothing" does not read as "no data".
+          style={{ width: `${Math.max(width, 2)}%` }}
         />
-      </svg>
-
-      <div className="text-muted-foreground mt-1 flex justify-between text-[10px] tabular-nums">
-        <span>vor 30 Tagen</span>
-        <span>heute</span>
-      </div>
+      </span>
+      <span className="text-muted-foreground w-14 shrink-0 text-right">{reading}</span>
     </div>
   );
 }
 
-/** The 30 points as an SVG polyline, in a 300×64 box. */
-function points(buckets: Array<{ count: number }>, max: number): Array<[number, number]> {
-  const step = buckets.length > 1 ? 300 / (buckets.length - 1) : 300;
-  return buckets.map((bucket, index) => [
-    index * step,
-    // 4 px of headroom so a peak is not clipped by the viewBox.
-    60 - (bucket.count / max) * 56,
-  ]);
+/** Stacked {@link MeterRow}s. */
+export function Meters({ children }: { children: ReactNode }) {
+  return <div className="space-y-1.5">{children}</div>;
 }
 
-function linePath(buckets: Array<{ count: number }>, max: number): string {
-  return points(buckets, max)
-    .map(([x, y], index) => `${index === 0 ? 'M' : 'L'}${x.toFixed(1)},${y.toFixed(1)}`)
-    .join(' ');
-}
-
-function areaPath(buckets: Array<{ count: number }>, max: number): string {
-  return `${linePath(buckets, max)} L300,64 L0,64 Z`;
+/** A segment of a {@link SegmentBar}: one queue, one model, one check. */
+export interface Segment {
+  key: string;
+  tone: HealthTone;
+  /** Shown on hover. */
+  title: string;
 }
 
 /**
- * Backlog rows, each a link showing its count and a bar for its share of the whole catalogue, not
- * of the biggest row, so not every list looks equally urgent. Rows render in the order given.
+ * One thin segment per member of a set, each in its own tone: fifteen queues, seven models. Reads
+ * as "all green" at a glance and shows which one is not.
  */
-export function BacklogBars({
-  rows,
-  loading,
+export function SegmentBar({ segments }: { segments: readonly Segment[] }) {
+  return (
+    <div
+      className="flex h-1.5 gap-1"
+      role="img"
+      aria-label={segments.map((s) => s.title).join(', ')}
+    >
+      {segments.map((segment) => (
+        <span
+          key={segment.key}
+          title={segment.title}
+          className={cn('h-full min-w-0 flex-1 rounded-full', HEALTH_FILL[segment.tone])}
+        />
+      ))}
+    </div>
+  );
+}
+
+const SHARE_FILL = {
+  brand: 'bg-primary',
+  good: 'bg-emerald-400/85',
+  warn: 'bg-amber-400',
+} as const;
+
+/** A share of a whole as one track, filled from the left: parks curated of all parks. */
+export function ShareTrack({
+  value,
+  of,
+  tone = 'brand',
 }: {
-  rows: Array<{
-    key: string;
-    label: string;
-    value: number;
-    of: number;
-    href: string;
-    tone: MetricTone;
-  }>;
-  loading?: boolean;
+  value: number;
+  of: number;
+  tone?: keyof typeof SHARE_FILL;
+}) {
+  const share = of > 0 ? Math.min(1, value / of) : 0;
+  return (
+    <div className="flex items-center gap-3 text-[13px] tabular-nums">
+      <span className="h-1.5 min-w-0 flex-1 overflow-hidden rounded-full bg-white/[0.07]">
+        <span
+          className={cn('block h-full rounded-full', SHARE_FILL[tone])}
+          style={{ width: `${Math.max(share * 100, share > 0 ? 1.5 : 0)}%` }}
+        />
+      </span>
+      <span className="text-muted-foreground shrink-0">{Math.round(share * 100)} %</span>
+    </div>
+  );
+}
+
+/**
+ * Bars of the last minutes or days, side by side and bottom-aligned, without axes: the shape of
+ * the recent past. A zero keeps a stub, so a quiet minute reads as quiet rather than missing.
+ */
+export function TickStrip({
+  values,
+  className,
+}: {
+  values: readonly number[];
+  className?: string;
+}) {
+  const max = Math.max(1, ...values);
+  return (
+    <div aria-hidden="true" className={cn('flex h-8 items-end gap-[3px]', className)}>
+      {values.map((value, index) => (
+        <span
+          key={index}
+          className={cn(
+            'min-w-0 flex-1 rounded-[2px]',
+            value > 0 ? 'bg-primary/80' : 'bg-white/[0.08]'
+          )}
+          style={{ height: `${value > 0 ? Math.max(12, (value / max) * 100) : 8}%` }}
+        />
+      ))}
+    </div>
+  );
+}
+
+/**
+ * The last `days` days as counts, zero where `perDay` has no row, oldest first and ending on the
+ * UTC day of `now`.
+ */
+export function dailyBuckets(
+  perDay: ReadonlyArray<{ day: string; count: number }>,
+  days: number,
+  now: number
+): number[] {
+  const counts = new Map(perDay.map((row) => [row.day, row.count]));
+  return Array.from({ length: days }, (_, index) => {
+    const key = new Date(now - (days - 1 - index) * 86_400_000).toISOString().slice(0, 10);
+    return counts.get(key) ?? 0;
+  });
+}
+
+/**
+ * A ring for "n of m checks passed": the arc is the share that passed, in the area's tone. The
+ * figure beside it carries the count.
+ */
+export function CheckRing({
+  passed,
+  total,
+  tone,
+}: {
+  passed: number;
+  total: number;
+  tone: HealthTone;
+}) {
+  const radius = 7;
+  const circumference = 2 * Math.PI * radius;
+  const share = total > 0 ? passed / total : 0;
+  return (
+    <svg viewBox="0 0 20 20" aria-hidden="true" className="h-5 w-5 shrink-0 -rotate-90">
+      <circle
+        cx="10"
+        cy="10"
+        r={radius}
+        fill="none"
+        strokeWidth="2.5"
+        className="stroke-white/10"
+      />
+      <circle
+        cx="10"
+        cy="10"
+        r={radius}
+        fill="none"
+        strokeWidth="2.5"
+        strokeLinecap="round"
+        strokeDasharray={circumference}
+        strokeDashoffset={circumference * (1 - share)}
+        className={cn(
+          tone === 'ok' && 'stroke-emerald-400',
+          tone === 'warn' && 'stroke-amber-400',
+          tone === 'bad' && 'stroke-red-500',
+          tone === 'unknown' && 'stroke-muted-foreground/50'
+        )}
+      />
+    </svg>
+  );
+}
+
+/** One bar per check, in the check's tone: an area's checks at a glance, named on hover. */
+export function CheckBars({
+  checks,
+}: {
+  checks: ReadonlyArray<{ id: string; label: string; tone: HealthTone; value: string }>;
 }) {
   return (
-    <ul className="space-y-2.5">
-      {rows.map((row) => {
-        const share = row.of > 0 ? row.value / row.of : 0;
-        return (
-          <li key={row.key}>
-            <Link href={row.href} className="group block">
-              <div className="flex items-baseline justify-between gap-2 text-xs">
-                <span className="group-hover:text-primary truncate transition-colors">
-                  {row.label}
-                </span>
-                <span className="text-muted-foreground shrink-0 tabular-nums">
-                  {loading
-                    ? '—'
-                    : `${row.value.toLocaleString('de-DE')} / ${row.of.toLocaleString('de-DE')}`}
-                </span>
-              </div>
-              <div className="bg-muted-foreground/10 mt-1 h-1.5 overflow-hidden rounded-full">
-                <div
-                  className={cn(
-                    'h-full rounded-full transition-[width] duration-700',
-                    row.tone === 'bad' && 'bg-red-400/80',
-                    row.tone === 'warn' && 'bg-amber-400/80',
-                    row.tone === 'good' && 'bg-emerald-400/80',
-                    row.tone === 'brand' && 'bg-primary/80',
-                    row.tone === 'neutral' && 'bg-muted-foreground/40'
-                  )}
-                  style={{ width: `${Math.max(1.5, share * 100)}%` }}
-                />
-              </div>
-            </Link>
-          </li>
-        );
-      })}
-    </ul>
+    <div className="flex h-5 items-stretch gap-[3px]">
+      {checks.map((check) => (
+        <span
+          key={check.id}
+          title={`${check.label}: ${check.value}`}
+          className={cn('w-1.5 rounded-[2px]', HEALTH_FILL[check.tone])}
+        />
+      ))}
+    </div>
   );
 }

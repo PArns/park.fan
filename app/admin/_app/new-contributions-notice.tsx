@@ -3,7 +3,7 @@
 import { useEffect } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 import { ArrowRight } from 'lucide-react';
-import { useAdminQuery } from '../_lib/api';
+import { ADMIN_PATHS, adminKeys, useAdminQuery } from '../_lib/api';
 import { useToast } from '../_ui/toast';
 import { useCan } from './session';
 import type { SubmissionSummary } from '@/lib/contribute/types';
@@ -55,8 +55,8 @@ export function NewContributionsNotice() {
   const allowed = useCan('author');
 
   const { data } = useAdminQuery<SubmissionSummary>(
-    ['admin', 'contributions', 'summary'],
-    '/api/admin/contributions/summary',
+    adminKeys.contributionsSummary,
+    ADMIN_PATHS.contributionsSummary,
     { enabled: allowed, staleTime: STALE_MS, refetchOnWindowFocus: true }
   );
 

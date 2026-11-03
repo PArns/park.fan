@@ -107,8 +107,29 @@ export const adminKeys = {
   history: (params?: Record<string, unknown>) => ['admin', 'history', params ?? {}] as const,
   users: ['admin', 'users'] as const,
   sessions: ['admin', 'sessions'] as const,
+  /** Without a window, the prefix every window's report sits under. */
+  dataQuality: (windowDays?: string) =>
+    windowDays
+      ? (['admin', 'data-quality', windowDays] as const)
+      : (['admin', 'data-quality'] as const),
+  contributionsSummary: ['admin', 'contributions', 'summary'] as const,
   raw: (path: string) => ['admin', 'raw', path] as const,
 };
+
+/** The window the data-quality page opens with, and the one the overview counts in. */
+export const DATA_QUALITY_DEFAULT_WINDOW = '14';
+
+/**
+ * The monitoring endpoints more than one screen reads: the page that shows one, the overview and
+ * the sidebar's status dots. One spelling, so a key built from a path is the same cache everywhere.
+ */
+export const ADMIN_PATHS = {
+  systemHealth: '/api/admin/system-health',
+  queueStatus: '/api/admin/queue-status',
+  mlOverview: '/api/admin/ml-overview',
+  contributionsSummary: '/api/admin/contributions/summary',
+  dataQuality: (windowDays: string) => `/api/admin/data-quality?windowDays=${windowDays}`,
+} as const;
 
 /**
  * React Query hook that GETs an admin path through `adminFetch` under the given key. A `null` path

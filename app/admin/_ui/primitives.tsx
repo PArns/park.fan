@@ -40,19 +40,55 @@ export function AdminPage({
 }
 
 /**
- * A card surface. `bg-card` on `bg-background` differs by two percent in lightness, so a drop
- * shadow, an inset ring and a top highlight are what make it read as a card.
+ * A card surface. `bg-card` on the inset page differs by a few percent in lightness, so a hairline
+ * border, a soft drop shadow and a one-pixel top highlight are what make it read as a card. No
+ * backdrop blur: a page of panels would make the browser blur every one of them on each scroll.
  */
 export function Panel({ className, ...props }: ComponentProps<'section'>) {
   return (
     <section
       className={cn(
-        'border-border/60 bg-card/80 relative rounded-xl border shadow-lg ring-1 shadow-black/20 ring-white/[0.03] backdrop-blur-sm',
+        'bg-card/75 relative rounded-xl border border-white/[0.07] shadow-[0_12px_32px_-20px_rgba(0,0,0,0.8)]',
         'before:pointer-events-none before:absolute before:inset-x-6 before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-white/10 before:to-transparent',
         className
       )}
       {...props}
     />
+  );
+}
+
+/**
+ * The heading of a section of a board, outside any panel: the title, a muted count, a hint in a
+ * smaller voice, and an action on the right.
+ */
+export function SectionHeading({
+  title,
+  count,
+  hint,
+  action,
+  id,
+}: {
+  title: ReactNode;
+  count?: number;
+  hint?: ReactNode;
+  action?: ReactNode;
+  /** For `aria-labelledby` on the section it heads. */
+  id?: string;
+}) {
+  return (
+    <div className="flex items-end justify-between gap-3">
+      <h2
+        id={id}
+        className="flex min-w-0 flex-wrap items-baseline gap-x-2 text-[15px] font-semibold"
+      >
+        {title}
+        {count !== undefined && (
+          <span className="text-muted-foreground text-sm font-normal tabular-nums">{count}</span>
+        )}
+        {hint && <span className="text-muted-foreground text-[13px] font-normal">{hint}</span>}
+      </h2>
+      {action && <div className="shrink-0">{action}</div>}
+    </div>
   );
 }
 
@@ -71,9 +107,11 @@ export function PanelHeader({
   className?: string;
 }) {
   return (
-    <header className={cn('border-border/50 flex items-start gap-3 border-b px-4 py-3', className)}>
+    <header
+      className={cn('flex items-start gap-3 border-b border-white/[0.06] px-4 py-3', className)}
+    >
       {Icon && (
-        <span className="from-primary/20 to-primary/5 ring-primary/20 text-primary mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br ring-1">
+        <span className="bg-primary/10 ring-primary/20 text-primary-ink mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-lg ring-1">
           <Icon className="h-4 w-4" />
         </span>
       )}

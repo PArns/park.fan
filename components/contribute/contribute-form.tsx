@@ -194,10 +194,7 @@ export function ContributeForm({ initialEntity = null }: ContributeFormProps) {
           </Step>
 
           <Step n={4} title={t('step4')}>
-            {/* The widget is an iframe the Turnstile script injects after hydration into an empty
-                container; 72 px is its height once there, in every state. */}
             <TurnstileWidget
-              className="min-h-[72px]"
               action={TURNSTILE_ACTIONS.contribute}
               onVerify={setToken}
               onExpire={() => setToken('')}

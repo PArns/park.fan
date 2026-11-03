@@ -2,6 +2,7 @@
 
 import { useEffect, useImperativeHandle, useRef, type Ref } from 'react';
 import { useTheme } from 'next-themes';
+import { cn } from '@/lib/utils';
 
 /**
  * Cloudflare Turnstile widget (explicit render): loads the script once and surfaces the solved
@@ -12,6 +13,13 @@ import { useTheme } from 'next-themes';
  */
 
 const TEST_SITE_KEY = '1x00000000000000000000AA';
+
+/**
+ * The visible widget's height once the script has put its iframe in: the 65 px frame on its inline
+ * line box, 72 px in every state. Reserved from the first paint, because the script arrives seconds
+ * after the form and would otherwise push everything under it down.
+ */
+const RESERVED_HEIGHT = 'min-h-[72px]';
 const SCRIPT_SRC = 'https://challenges.cloudflare.com/turnstile/v0/api.js';
 
 interface TurnstileApi {
@@ -176,5 +184,12 @@ export function TurnstileWidget({
     // Re-render the widget when the theme flips so it matches light/dark.
   }, [appliedTheme, action, appearance]);
 
-  return <div ref={containerRef} className={className} />;
+  // An `interaction-only` widget stays invisible unless Cloudflare asks for a click, and its host
+  // frames that moment itself, so it reserves nothing.
+  return (
+    <div
+      ref={containerRef}
+      className={cn(appearance === 'interaction-only' ? undefined : RESERVED_HEIGHT, className)}
+    />
+  );
 }

@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { ChevronDown, ChevronRight, ListChecks, Loader2 } from 'lucide-react';
 import { useAdminFetch } from '../_lib/admin-context';
-import { adminFetch } from '../_lib/api';
+import { ADMIN_PATHS, adminFetch } from '../_lib/api';
 import { formatAgo } from '../_lib/format';
 import type { QueueEntry, QueueStatusResponse } from '@/lib/api/admin';
 import {
@@ -169,7 +169,7 @@ function QueueRow({ q }: { q: QueueEntry }) {
 }
 
 export default function QueuesPage() {
-  const { data, error } = useAdminFetch<QueueStatusResponse>('/api/admin/queue-status');
+  const { data, error } = useAdminFetch<QueueStatusResponse>(ADMIN_PATHS.queueStatus);
 
   if (error) return <ErrorState message={error} />;
   if (!data) return <LoadingState label="Loading queues…" />;

@@ -26,6 +26,7 @@ import {
   Search,
   Server,
   TrendingUp,
+  UserRound,
   Users,
   Wrench,
   type LucideIcon,
@@ -58,11 +59,17 @@ export interface NavItem {
 export interface NavGroup {
   label: string;
   items: NavItem[];
+  /**
+   * Where the sidebar draws the group: `top` above the folding groups without a heading, `footer`
+   * behind the account button. Default: a folding group with its heading.
+   */
+  placement?: 'top' | 'footer';
 }
 
 const NAV_GROUPS: NavGroup[] = [
   {
     label: 'Start',
+    placement: 'top',
     items: [
       {
         href: '/admin',
@@ -73,8 +80,10 @@ const NAV_GROUPS: NavGroup[] = [
       },
     ],
   },
+  // Sorted by what a person does here, not by which API serves it: the data-quality detectors ask
+  // curation questions (season or gone?), so they sit with the editors that answer them.
   {
-    label: 'Katalog',
+    label: 'Kuratieren',
     items: [
       {
         href: '/admin/parks',
@@ -91,6 +100,13 @@ const NAV_GROUPS: NavGroup[] = [
         icon: CalendarRange,
         description: 'Halloween, Winterschließung, Wartungsfenster',
         keywords: ['halloween', 'weihnachten', 'events', 'termine'],
+      },
+      {
+        href: '/admin/data-quality',
+        label: 'Datenqualität',
+        icon: HeartPulse,
+        description: 'Verstummte Feeds, gescheiterte Jobs, kaputte Verweise',
+        keywords: ['monitoring', 'silenced', 'fehler', 'audit', 'glossar'],
       },
       {
         href: '/admin/duplicates',
@@ -147,42 +163,6 @@ const NAV_GROUPS: NavGroup[] = [
         icon: ImageIcon,
         description: 'Von Besuchern eingeschickte Fotos moderieren',
         keywords: ['upload', 'moderation', 'community'],
-      },
-    ],
-  },
-  {
-    label: 'Assistent',
-    items: [
-      {
-        href: '/admin/assistant',
-        label: 'Parky',
-        icon: Bot,
-        description: 'Chat-Assistent: Nutzung, Kosten, Bewertungen',
-        keywords: ['assistent', 'chatbot', 'ki', 'ai', 'claude', 'parky', 'chat'],
-        children: [
-          {
-            href: '/admin/assistant/conversations',
-            label: 'Chats',
-            icon: MessagesSquare,
-            description: 'Was Besucher Parky gefragt haben und was er geantwortet hat',
-            keywords: ['verläufe', 'fragen', 'antworten', 'daumen', 'bewertung'],
-          },
-          {
-            href: '/admin/assistant/feedback',
-            label: 'Feedback',
-            icon: MessageSquareHeart,
-            description: 'Feedback zur Seite, das Besucher über das Widget schicken',
-            keywords: ['rückmeldung', 'kritik', 'lob', 'kontakt'],
-          },
-          {
-            href: '/admin/assistant/settings',
-            label: 'Einstellungen',
-            icon: KeyRound,
-            description: 'Claude-Key, an/aus, Rollout-Anteil, Tagesbudget',
-            minRole: 'owner',
-            keywords: ['key', 'schlüssel', 'anthropic', 'rollout', 'flag', 'budget'],
-          },
-        ],
       },
     ],
   },
@@ -287,31 +267,34 @@ const NAV_GROUPS: NavGroup[] = [
           },
         ],
       },
-    ],
-  },
-  {
-    label: 'Parkdaten',
-    items: [
       {
-        href: '/admin/analytics',
-        label: 'Parks live',
-        icon: Activity,
-        description: 'Live-Zahlen aus den Parks: offene Bahnen, Ticker, Regionen',
-        keywords: ['analytics', 'realtime', 'ticker', 'geo'],
-      },
-      {
-        href: '/admin/ml',
-        label: 'ML-Zentrale',
-        icon: Brain,
-        description: 'Was ansteht, welches Modell besser ist, ob alles läuft',
-        keywords: ['ml', 'catboost', 'tft', 'pcn', 'chronos', 'prognose', 'entscheidung', 'drift'],
+        href: '/admin/assistant',
+        label: 'Parky',
+        icon: Bot,
+        description: 'Chat-Assistent: Nutzung, Kosten, Bewertungen',
+        keywords: ['assistent', 'chatbot', 'ki', 'ai', 'claude', 'parky', 'chat'],
         children: [
           {
-            href: '/admin/ml/vergleich',
-            label: 'Modellvergleich',
-            icon: GitCompare,
-            description: 'Welches Modell wo besser trifft als das, was die App zeigt',
-            keywords: ['modelle', 'vergleich', 'matrix', 'chronos', 'tft', 'pcn', 'prognose'],
+            href: '/admin/assistant/conversations',
+            label: 'Chats',
+            icon: MessagesSquare,
+            description: 'Was Besucher Parky gefragt haben und was er geantwortet hat',
+            keywords: ['verläufe', 'fragen', 'antworten', 'daumen', 'bewertung'],
+          },
+          {
+            href: '/admin/assistant/feedback',
+            label: 'Feedback',
+            icon: MessageSquareHeart,
+            description: 'Feedback zur Seite, das Besucher über das Widget schicken',
+            keywords: ['rückmeldung', 'kritik', 'lob', 'kontakt'],
+          },
+          {
+            href: '/admin/assistant/settings',
+            label: 'Einstellungen',
+            icon: KeyRound,
+            description: 'Claude-Key, an/aus, Rollout-Anteil, Tagesbudget',
+            minRole: 'owner',
+            keywords: ['key', 'schlüssel', 'anthropic', 'rollout', 'flag', 'budget'],
           },
         ],
       },
@@ -335,11 +318,27 @@ const NAV_GROUPS: NavGroup[] = [
         keywords: ['bull', 'jobs', 'worker'],
       },
       {
-        href: '/admin/data-quality',
-        label: 'Datenqualität',
-        icon: HeartPulse,
-        description: 'Verstummte Feeds, gescheiterte Jobs, kaputte Verweise',
-        keywords: ['monitoring', 'silenced', 'fehler', 'audit', 'glossar'],
+        href: '/admin/ml',
+        label: 'ML-Zentrale',
+        icon: Brain,
+        description: 'Was ansteht, welches Modell besser ist, ob alles läuft',
+        keywords: ['ml', 'catboost', 'tft', 'pcn', 'chronos', 'prognose', 'entscheidung', 'drift'],
+        children: [
+          {
+            href: '/admin/ml/vergleich',
+            label: 'Modellvergleich',
+            icon: GitCompare,
+            description: 'Welches Modell wo besser trifft als das, was die App zeigt',
+            keywords: ['modelle', 'vergleich', 'matrix', 'chronos', 'tft', 'pcn', 'prognose'],
+          },
+        ],
+      },
+      {
+        href: '/admin/analytics',
+        label: 'Parks live',
+        icon: Activity,
+        description: 'Live-Zahlen aus den Parks: offene Bahnen, Ticker, Regionen',
+        keywords: ['analytics', 'realtime', 'ticker', 'geo'],
       },
       {
         href: '/admin/actions',
@@ -353,11 +352,12 @@ const NAV_GROUPS: NavGroup[] = [
   },
   {
     label: 'Konto',
+    placement: 'footer',
     items: [
       {
         href: '/admin/account',
         label: 'Mein Konto',
-        icon: Users,
+        icon: UserRound,
         description: 'Passwort, Zwei-Faktor, aktive Sitzungen, API-Zugriff',
         keywords: ['profil', 'passwort', '2fa', 'totp', 'sitzungen', 'mcp', 'token', 'api'],
       },

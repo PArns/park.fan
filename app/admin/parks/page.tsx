@@ -87,7 +87,7 @@ export default function ParksPage() {
   const filtersActive = country !== null || curated !== 'all' || query.trim().length > 0;
 
   return (
-    <div className="flex h-[calc(100dvh-3.5rem)] flex-col">
+    <div className="flex h-[calc(100dvh-var(--admin-chrome-height))] flex-col">
       <Toolbar>
         <div className="relative min-w-0 flex-1 sm:max-w-xs">
           <Search className="text-muted-foreground pointer-events-none absolute top-1/2 left-3 h-3.5 w-3.5 -translate-y-1/2" />
