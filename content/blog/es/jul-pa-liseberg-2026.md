@@ -42,7 +42,7 @@ seo:
 
 ## El recorrido de Luma Celestia
 
-El recorrido va de la zona de Luna Park al Lustgården y vuelve. Por dónde pasas y cuánto rato te quedas lo eliges tú. Por el camino hay grandes instalaciones, pensadas como capítulos de una misma historia, entre ellas Norrsken (aurora boreal), Tre Månar (tres lunas), Sägnernas Eld (el fuego de las leyendas), Himmelstrappan (la escalera al cielo) y Stjärnregn (lluvia de estrellas). Luma Celestia incluye además «Den fallna stjärnan», la estrella caída, un espectáculo de acrobacias aéreas y luz.
+El recorrido va de la zona de Luna Park al Lustgården y vuelve. No hay una ruta fija: el camino entre las estaciones lo eliges tú. Las grandes instalaciones del recorrido llevan nombres sacados del cielo nocturno y de viejas leyendas: Norrsken (aurora boreal), Tre Månar (tres lunas), Sägnernas Eld (el fuego de las leyendas), Himmelstrappan (la escalera al cielo) y Stjärnregn (lluvia de estrellas). Luma Celestia incluye además «Den fallna stjärnan», la estrella caída, un espectáculo de acrobacias aéreas y luz.
 
 > [!QUOTE]
 > La luz siempre ha sido una parte importante de Jul på Liseberg. Con Luma Celestia seguimos esa tradición y, al mismo tiempo, damos vida a toda una zona que hasta ahora no usábamos durante la temporada.
@@ -59,7 +59,7 @@ El recorrido va de la zona de Luna Park al Lustgården y vuelve. Por dónde pasa
 - del lunes 21 al miércoles 23 de diciembre: de 12:00 a 21:00
 - del sábado 26 al miércoles 30 de diciembre: de 12:00 a 20:00
 
-Hasta el 20 de diciembre, el parque no abre ni lunes ni martes. Nochebuena y Navidad también son días de cierre; es de suponer que el Papá Noel del Tomtehuset tiene otros repartos pendientes. Del 31 de diciembre al 10 de enero solo abren, cada día de 11:00 a 17:00, Kaninlandet, la zona infantil, y la pista de hielo. Los demás parques europeos que abren en invierno están en nuestra [guía de invierno](/blog/parques-atracciones-invierno-2026).
+Hasta el 20 de diciembre, el parque no abre ni lunes ni martes. Nochebuena y Navidad también son días de cierre; es de suponer que el Papá Noel del Tomtehuset tiene otros repartos pendientes. Del 31 de diciembre al 10 de enero solo abren, cada día de 11:00 a 17:00, Kaninlandet, la zona infantil, y la pista de hielo. Para Balder y las demás atracciones grandes tocará entonces ir a uno de los [parques que abren en invierno](/blog/parques-atracciones-invierno-2026).
 
 ```best-days-widget slug=liseberg
 
@@ -96,7 +96,7 @@ La entrada incluye el Tomtehuset con Papá Noel, la pista de hielo, Barnens Para
 
 Para los niños está Tomtebyn, un pueblo de duendes entre la zona del puerto y Valkyria. Allí los duendes bailan, juegan y cantan con ellos, y Papá Noel recoge las cartas con los deseos.
 
-Tres mercados navideños suman 46 casetas. El Tyrolermarknad, con après-ski, está junto a la Slänggungan y los [Radiobilarna, que ya no funcionan desde octubre](/news/liseberg-radiobilarna-cerrados). Gammaldags jul es un mercado a la antigua en el Kvarteret Storgatan, y el Vintermarknad está junto a la Stora Scenen, al lado de la pista de hielo. Repartidos por el parque hay más de 2100 árboles de Navidad y 3,3 kilómetros de guirnalda de abeto. Las siete toneladas de nieve artificial son de pasta de papel: para la nieve, Liseberg se fía más de la industria papelera que del diciembre de Gotemburgo. Jul på Liseberg existe desde el año 2000. En su 25 aniversario, el invierno pasado, brillaron cinco millones de luces, y este año se suma más de un millón. Además hay un árbol de Navidad de 116 metros que se ve desde toda Gotemburgo. Es justo la altura de la Lisebergstornet, la torre de AtmosFear.
+Tres mercados navideños suman 46 casetas. El Tyrolermarknad, con après-ski, está junto a la Slänggungan y los [Radiobilarna, que ya no funcionan desde octubre](/news/liseberg-radiobilarna-cerrados). Gammaldags jul es un mercado a la antigua en el Kvarteret Storgatan, y el Vintermarknad está junto a la Stora Scenen, al lado de la pista de hielo. Repartidos por el parque hay más de 2100 árboles de Navidad y 3,3 kilómetros de guirnalda de abeto. Las siete toneladas de nieve artificial son de pasta de papel: para la nieve, Liseberg se fía más de la industria papelera que del diciembre de Gotemburgo. Jul på Liseberg existe desde el año 2000. En su 25 aniversario, el invierno pasado, brillaron cinco millones de luces, y este año se suma más de un millón. Además hay un árbol de Navidad de 116 metros que se ve desde toda Gotemburgo.
 
 El Grand Curiosa Hotel, del propio parque, ofrece un paquete con una noche, el julbord (el bufé navideño sueco) y la entrada. Se puede reservar en días concretos del 14 de noviembre al 23 de diciembre.
 
@@ -110,5 +110,4 @@ Fuentes:
 [calendario de precios Navidad 2026 (PDF)](https://www.liseberg.se/787288ca/globalassets/_kampanjsidor/liseberg_priskalender_a4_jpl2026_online_sv.pdf),
 [horarios](https://www.liseberg.se/parken/oppettider/),
 [mercados navideños](https://www.liseberg.se/parken/jul-i-lisebergsparken/julmarknad/),
-[AtmosFear y Lisebergstornet](https://www.liseberg.se/parken/attraktioner/atmosfear/),
 [comunicado sobre los 25 años de Jul på Liseberg](https://www.liseberg.se/nyheter/jul-pa-liseberg-firar-25-ar-ett-gnistrande-jubileum-i-vintermagi/).

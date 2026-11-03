@@ -42,7 +42,7 @@ seo:
 
 ## The route through Luma Celestia
 
-The trail runs from the Luna Park area over to Lustgården and back, and the route and the pace are up to you. Along the way are large installations, meant as chapters of one story. Among them are Norrsken (northern lights), Tre Månar (three moons), Sägnernas Eld (fire of the legends), Himmelstrappan (stairway to heaven) and Stjärnregn (star rain). Luma Celestia also includes "Den fallna stjärnan", the fallen star, a show with aerial acrobatics and light.
+The trail runs from the Luna Park area over to Lustgården and back. There is no fixed route, so you pick your own way between the stations. The large installations along it take their names from the night sky and old legends: Norrsken (northern lights), Tre Månar (three moons), Sägnernas Eld (fire of the legends), Himmelstrappan (stairway to heaven) and Stjärnregn (star rain). Luma Celestia also includes "Den fallna stjärnan", the fallen star, a show with aerial acrobatics and light.
 
 > [!QUOTE]
 > Light has always been an important part of Jul på Liseberg. With Luma Celestia we're building on that tradition, and at the same time we're bringing a whole area to life that we haven't used during the season before.
@@ -59,7 +59,7 @@ The trail runs from the Luna Park area over to Lustgården and back, and the rou
 - Monday 21 to Wednesday 23 December: noon to 9 pm
 - Saturday 26 to Wednesday 30 December: noon to 8 pm
 
-Up to 20 December the park stays shut on Mondays and Tuesdays. It's also closed on Christmas Eve and Christmas Day, when the Santa from Tomtehuset presumably has other deliveries to make. From 31 December to 10 January, only Kaninlandet, the children's area, and the ice rink open, daily from 11 am to 5 pm. Other European parks [stay open over the winter](/blog/winter-theme-parks-2026) too.
+Up to 20 December the park stays shut on Mondays and Tuesdays. It's also closed on Christmas Eve and Christmas Day, when the Santa from Tomtehuset presumably has other deliveries to make. From 31 December to 10 January, only Kaninlandet, the children's area, and the ice rink open, daily from 11 am to 5 pm. For Balder and the other big rides you'll then have to try one of the [parks that stay open over the winter](/blog/winter-theme-parks-2026).
 
 ```best-days-widget slug=liseberg
 
@@ -96,7 +96,7 @@ Entry includes Tomtehuset with Santa, the ice rink, Barnens Paradis (from age fo
 
 For children there's Tomtebyn, an elf village between the harbour area and Valkyria. The elves dance, play and sing with them there, and Santa collects the wish lists.
 
-Three Christmas markets share 46 stalls. Tyrolermarknad, with après-ski, sits next to Slänggungan and the [Radiobilarna, which stopped running in October](/news/liseberg-radiobilarna-closed). Gammaldags jul is an old-style market in Kvarteret Storgatan, and Vintermarknad stands by Stora Scenen next to the ice rink. Spread across the park are more than 2,100 Christmas trees and 3.3 kilometres of fir garland. The seven tonnes of artificial snow are made from paper pulp, so for snow Liseberg trusts the paper industry more than a Gothenburg December. Jul på Liseberg has been running since 2000. For its 25th anniversary last winter, five million lights were lit, and this year more than a million are added. A 116-metre Christmas tree, visible all over Gothenburg, is exactly as tall as Lisebergstornet, the tower AtmosFear rides up.
+Three Christmas markets share 46 stalls. Tyrolermarknad, with après-ski, sits next to Slänggungan and the [Radiobilarna, which stopped running in October](/news/liseberg-radiobilarna-closed). Gammaldags jul is an old-style market in Kvarteret Storgatan, and Vintermarknad stands by Stora Scenen next to the ice rink. Spread across the park are more than 2,100 Christmas trees and 3.3 kilometres of fir garland. The seven tonnes of artificial snow are made from paper pulp, so for snow Liseberg trusts the paper industry more than a Gothenburg December. Jul på Liseberg has been running since 2000. For its 25th anniversary last winter, five million lights were lit, and this year more than a million are added. The park's 116-metre Christmas tree can be seen all over Gothenburg.
 
 The park's own Grand Curiosa Hotel sells a package of one night, entry and julbord, the Swedish Christmas buffet. It can be booked on selected days from 14 November to 23 December.
 
@@ -110,5 +110,4 @@ Sources:
 [Price calendar for Christmas 2026 (PDF)](https://www.liseberg.se/787288ca/globalassets/_kampanjsidor/liseberg_priskalender_a4_jpl2026_online_sv.pdf),
 [Opening hours](https://www.liseberg.se/parken/oppettider/),
 [Christmas markets](https://www.liseberg.se/parken/jul-i-lisebergsparken/julmarknad/),
-[AtmosFear and Lisebergstornet](https://www.liseberg.se/parken/attraktioner/atmosfear/),
 [Press release on 25 years of Jul på Liseberg](https://www.liseberg.se/nyheter/jul-pa-liseberg-firar-25-ar-ett-gnistrande-jubileum-i-vintermagi/).

@@ -42,7 +42,7 @@ seo:
 
 ## Der Weg durch Luma Celestia
 
-Der Pfad führt vom Bereich Luna Park hinüber zum Lustgarten und wieder zurück. Welchen Weg du dabei nimmst und wie lange du bleibst, entscheidest du selbst. Unterwegs stehen große Installationen, die als Kapitel einer gemeinsamen Geschichte gedacht sind. Darunter sind Norrsken (Nordlicht), Tre Månar (drei Monde), Sägnernas Eld (Feuer der Sagen), Himmelstrappan (Himmelstreppe) und Stjärnregn (Sternenregen). Zu Luma Celestia gehört außerdem „Den fallna stjärnan“, der gefallene Stern, eine Vorstellung mit Luftakrobatik und Licht.
+Der Pfad führt vom Bereich Luna Park hinüber zum Lustgarten und wieder zurück. Eine feste Route gibt es nicht, den Weg zwischen den Stationen suchst du dir selbst. Die großen Installationen am Weg tragen Namen vom Nachthimmel und aus alten Sagen: Norrsken (Nordlicht), Tre Månar (drei Monde), Sägnernas Eld (Feuer der Sagen), Himmelstrappan (Himmelstreppe) und Stjärnregn (Sternenregen). Zu Luma Celestia gehört außerdem „Den fallna stjärnan“, der gefallene Stern, eine Vorstellung mit Luftakrobatik und Licht.
 
 > [!QUOTE]
 > Das Licht war schon immer ein wichtiger Teil von Jul på Liseberg. Mit Luma Celestia bauen wir auf dieser Tradition auf und erwecken zugleich einen ganzen Bereich zum Leben, den wir in der Saison bisher nicht genutzt haben.
@@ -60,7 +60,7 @@ Der Pfad führt vom Bereich Luna Park hinüber zum Lustgarten und wieder zurück
 - Montag, 21., bis Mittwoch, 23. Dezember: 12 bis 21 Uhr
 - Samstag, 26., bis Mittwoch, 30. Dezember: 12 bis 20 Uhr
 
-Montags und dienstags bleibt der Park bis zum 20. Dezember zu. An Heiligabend und am ersten Weihnachtstag ist ebenfalls geschlossen, der Weihnachtsmann aus dem Tomtehuset hat an diesen beiden Tagen vermutlich anderswo zu tun. Vom 31. Dezember bis zum 10. Januar öffnen täglich von 11 bis 17 Uhr nur noch das Kaninlandet, der Kinderbereich, und die Eisbahn. Im Winter haben in Europa auch [andere Parks geöffnet](/blog/winter-freizeitparks-2026).
+Montags und dienstags bleibt der Park bis zum 20. Dezember zu. An Heiligabend und am ersten Weihnachtstag ist ebenfalls geschlossen, der Weihnachtsmann aus dem Tomtehuset hat an diesen beiden Tagen vermutlich anderswo zu tun. Vom 31. Dezember bis zum 10. Januar öffnen täglich von 11 bis 17 Uhr nur noch das Kaninlandet, der Kinderbereich, und die Eisbahn. Für Balder und die anderen großen Bahnen musst du dann in einen der [Parks ausweichen, die im Winter geöffnet haben](/blog/winter-freizeitparks-2026).
 
 ```best-days-widget slug=liseberg
 
@@ -97,7 +97,7 @@ Im Eintritt sind das Tomtehuset mit dem Weihnachtsmann, die Eisbahn, Barnens Par
 
 Für Kinder gibt es die Tomtebyn, ein Wichteldorf zwischen dem Hafenbereich und Valkyria. Dort tanzen, spielen und singen Wichtel mit ihnen, und der Weihnachtsmann nimmt die Wunschzettel entgegen.
 
-Auf drei Weihnachtsmärkten stehen 46 Buden. Der Tyrolermarknad mit Après-Ski liegt bei der Slänggungan und den [Radiobilarna, die seit Oktober nicht mehr fahren](/news/liseberg-radiobilarna-geschlossen). Gammaldags jul ist ein Markt im alten Stil im Kvarteret Storgatan, und der Vintermarknad steht an der Stora Scenen neben der Eisbahn. Im Park verteilt stehen mehr als 2.100 Weihnachtsbäume und 3,3 Kilometer Tannengirlande. Die sieben Tonnen Kunstschnee sind aus Papiermasse, Liseberg vertraut beim Schnee also eher der Papierindustrie als dem Göteborger Dezember. Jul på Liseberg gibt es seit dem Jahr 2000. Zum 25-jährigen Jubiläum im vergangenen Winter leuchteten fünf Millionen Lichter, in diesem Jahr kommen mehr als eine Million dazu. Außerdem steht im Park ein 116 Meter hoher Weihnachtsbaum, der in ganz Göteborg zu sehen ist. Genau so hoch ist der Lisebergstornet, an dem AtmosFear fährt.
+Auf drei Weihnachtsmärkten stehen 46 Buden. Der Tyrolermarknad mit Après-Ski liegt bei der Slänggungan und den [Radiobilarna, die seit Oktober nicht mehr fahren](/news/liseberg-radiobilarna-geschlossen). Gammaldags jul ist ein Markt im alten Stil im Kvarteret Storgatan, und der Vintermarknad steht an der Stora Scenen neben der Eisbahn. Im Park verteilt stehen mehr als 2.100 Weihnachtsbäume und 3,3 Kilometer Tannengirlande. Die sieben Tonnen Kunstschnee sind aus Papiermasse, Liseberg vertraut beim Schnee also eher der Papierindustrie als dem Göteborger Dezember. Jul på Liseberg gibt es seit dem Jahr 2000. Zum 25-jährigen Jubiläum im vergangenen Winter leuchteten fünf Millionen Lichter, in diesem Jahr kommen mehr als eine Million dazu. Der 116 Meter hohe Weihnachtsbaum des Parks ist in ganz Göteborg zu sehen.
 
 Im parkeigenen Grand Curiosa Hotel gibt es ein Paket mit einer Übernachtung, dem schwedischen Weihnachtsbuffet Julbord und dem Eintritt. Buchbar ist es an ausgewählten Tagen vom 14. November bis zum 23. Dezember.
 
@@ -111,5 +111,4 @@ Quellen:
 [Preiskalender Jul 2026 (PDF)](https://www.liseberg.se/787288ca/globalassets/_kampanjsidor/liseberg_priskalender_a4_jpl2026_online_sv.pdf),
 [Öffnungszeiten](https://www.liseberg.se/parken/oppettider/),
 [Weihnachtsmärkte](https://www.liseberg.se/parken/jul-i-lisebergsparken/julmarknad/),
-[AtmosFear und Lisebergstornet](https://www.liseberg.se/parken/attraktioner/atmosfear/),
 [Mitteilung zu 25 Jahren Jul på Liseberg](https://www.liseberg.se/nyheter/jul-pa-liseberg-firar-25-ar-ett-gnistrande-jubileum-i-vintermagi/).

@@ -42,7 +42,7 @@ Le samedi 14 novembre, [Liseberg](ref:liseberg) ouvre Jul på Liseberg, sa saiso
 
 ## Le parcours de Luma Celestia
 
-Le sentier part du secteur Luna Park, rejoint le Lustgården et revient. Chacun choisit son chemin et le temps qu’il y passe. De grandes installations jalonnent le parcours, pensées comme les chapitres d’une même histoire, parmi elles Norrsken (aurore boréale), Tre Månar (trois lunes), Sägnernas Eld (le feu des légendes), Himmelstrappan (l’escalier du ciel) et Stjärnregn (pluie d’étoiles). Luma Celestia comprend aussi « Den fallna stjärnan », l’étoile tombée, un spectacle d’acrobaties aériennes et de lumière.
+Le sentier part du secteur Luna Park, rejoint le Lustgården et revient. Il n’y a pas d’itinéraire imposé, chacun trace son chemin entre les étapes. Les grandes installations du parcours portent des noms tirés du ciel nocturne et des vieilles légendes : Norrsken (aurore boréale), Tre Månar (trois lunes), Sägnernas Eld (le feu des légendes), Himmelstrappan (l’escalier du ciel) et Stjärnregn (pluie d’étoiles). Luma Celestia comprend aussi « Den fallna stjärnan », l’étoile tombée, un spectacle d’acrobaties aériennes et de lumière.
 
 > [!QUOTE]
 > La lumière a toujours tenu une grande place dans Jul på Liseberg. Avec Luma Celestia, nous prolongeons cette tradition et nous donnons vie à tout un secteur que nous n’utilisions pas pendant cette saison.
@@ -59,7 +59,7 @@ Le sentier part du secteur Luna Park, rejoint le Lustgården et revient. Chacun 
 - du lundi 21 au mercredi 23 décembre de 12 h à 21 h
 - du samedi 26 au mercredi 30 décembre de 12 h à 20 h
 
-Jusqu’au 20 décembre, le parc reste fermé le lundi et le mardi. Il ferme aussi le 24 et le 25 décembre, deux jours où le père Noël du Tomtehuset doit avoir mieux à faire que de recevoir du monde. Du 31 décembre au 10 janvier, seuls le Kaninlandet, l’espace des enfants, et la patinoire ouvrent, tous les jours de 11 h à 17 h. Les autres parcs ouverts en Europe cet hiver sont réunis dans notre [guide de l’hiver](/blog/parcs-attractions-hiver-2026).
+Jusqu’au 20 décembre, le parc reste fermé le lundi et le mardi. Il ferme aussi le 24 et le 25 décembre, deux jours où le père Noël du Tomtehuset doit avoir mieux à faire que de recevoir du monde. Du 31 décembre au 10 janvier, seuls le Kaninlandet, l’espace des enfants, et la patinoire ouvrent, tous les jours de 11 h à 17 h. Pour Balder et les autres grandes attractions, il faudra alors se rabattre sur l’un des [parcs ouverts en hiver](/blog/parcs-attractions-hiver-2026).
 
 ```best-days-widget slug=liseberg
 
@@ -96,7 +96,7 @@ L’entrée donne accès au Tomtehuset et à son père Noël, à la patinoire, �
 
 Les enfants ont la Tomtebyn, un village de lutins entre le secteur du port et Valkyria. Les lutins y dansent, jouent et chantent avec eux, et le père Noël récupère les listes de souhaits.
 
-Les trois marchés de Noël comptent 46 chalets. Le Tyrolermarknad, avec son après-ski, se tient près de la Slänggungan et des [Radiobilarna, qui ne roulent plus depuis octobre](/news/liseberg-radiobilarna-fermes). Gammaldags jul, dans le Kvarteret Storgatan, est un marché à l’ancienne, et le Vintermarknad se tient devant la Stora Scenen, à côté de la patinoire. Le parc compte plus de 2 100 sapins et 3,3 kilomètres de guirlandes de sapin. Ses sept tonnes de neige artificielle sont faites de pâte à papier : pour la neige, Liseberg mise sur l’industrie papetière plutôt que sur le mois de décembre à Göteborg. Jul på Liseberg existe depuis 2000. L’hiver dernier, pour ses 25 ans, cinq millions de lumières brillaient, et plus d’un million s’y ajoutent cette année. Il y a aussi un sapin de Noël de 116 mètres, visible de toute la ville. C’est exactement la hauteur de la Lisebergstornet, la tour d’AtmosFear.
+Les trois marchés de Noël comptent 46 chalets. Le Tyrolermarknad, avec son après-ski, se tient près de la Slänggungan et des [Radiobilarna, qui ne roulent plus depuis octobre](/news/liseberg-radiobilarna-fermes). Gammaldags jul, dans le Kvarteret Storgatan, est un marché à l’ancienne, et le Vintermarknad se tient devant la Stora Scenen, à côté de la patinoire. Le parc compte plus de 2 100 sapins et 3,3 kilomètres de guirlandes de sapin. Ses sept tonnes de neige artificielle sont faites de pâte à papier : pour la neige, Liseberg mise sur l’industrie papetière plutôt que sur le mois de décembre à Göteborg. Jul på Liseberg existe depuis 2000. L’hiver dernier, pour ses 25 ans, cinq millions de lumières brillaient, et plus d’un million s’y ajoutent cette année. Il y a aussi un sapin de Noël de 116 mètres, visible de toute la ville.
 
 Le Grand Curiosa Hotel, qui appartient au parc, propose une formule avec une nuit, le Julbord, le buffet de Noël suédois, et l’entrée. On peut la réserver certains jours entre le 14 novembre et le 23 décembre.
 
@@ -110,5 +110,4 @@ Sources :
 [Calendrier des prix de Noël 2026 (PDF)](https://www.liseberg.se/787288ca/globalassets/_kampanjsidor/liseberg_priskalender_a4_jpl2026_online_sv.pdf),
 [Horaires d’ouverture](https://www.liseberg.se/parken/oppettider/),
 [Marchés de Noël](https://www.liseberg.se/parken/jul-i-lisebergsparken/julmarknad/),
-[AtmosFear et Lisebergstornet](https://www.liseberg.se/parken/attraktioner/atmosfear/),
 [Communiqué sur les 25 ans de Jul på Liseberg](https://www.liseberg.se/nyheter/jul-pa-liseberg-firar-25-ar-ett-gnistrande-jubileum-i-vintermagi/).
