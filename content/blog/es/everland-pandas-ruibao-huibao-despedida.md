@@ -38,29 +38,29 @@ seo:
     - Everland cómo llegar
 ---
 
-El 11 de diciembre es el último día en que el público de [Everland](ref:everland), en Yongin, puede ver a las gemelas panda Rui Bao y Hui Bao. En la tercera semana de diciembre se mudan a China. Hasta ese día se puede ver allí a los cinco pandas: los padres, Aibao y Le Bao, las dos gemelas y, desde el 30 de octubre, también Shubao, la cría nacida en junio. Samsung C&T, la empresa que gestiona el parque, anunció el último día de visita el 19 de octubre, y el debut de Shubao el 27 de octubre.
+El 11 de diciembre es el último día en que el público de [Everland](ref:everland), en Yongin, puede ver a las gemelas panda Rui Bao y Hui Bao. En la tercera semana de diciembre se mudan a China. Hasta entonces, se puede ver a toda la familia a la vez: los padres, Aibao y Le Bao, las dos gemelas y, desde el 30 de octubre, también Shubao, la cría nacida en junio. Samsung C&T, la empresa que gestiona el parque, anunció el último día de visita el 19 de octubre, y el debut de Shubao el 27 de octubre.
 
 ## Shubao, el quinto panda
 
-Shubao nació el 3 de junio de 2026 en Panda World. Es hija de Aibao y Le Bao y fue concebida de forma natural. Al nacer pesaba 171 gramos, menos que una lata de refresco llena, y hoy pasa de los nueve kilos. Dio sus primeros pasos con unos 120 días. El nombre lo recibió el día que cumplió 100 días de vida. Más de 10.000 personas mandaron propuestas al concurso, un grupo de especialistas eligió cinco y, de 220.000 votos emitidos en internet y en el parque, el 42 % fueron para Shubao. Los caracteres 曙宝 significan amanecer y tesoro.
+Shubao nació el 3 de junio de 2026 en Panda World. Es hija de Aibao y Le Bao y fue concebida de forma natural. Al nacer pesaba 171 gramos, menos que una lata de refresco llena, y hoy pasa de los nueve kilos. El nombre lo recibió el día que cumplió 100 días de vida, y los primeros pasos los dio con unos 120. O sea, que ya sabía cómo se llamaba antes de poder ir andando a ninguna parte. Más de 10.000 personas mandaron propuestas al concurso, un grupo de especialistas eligió cinco y, de 220.000 votos emitidos en internet y en el parque, el 42 % fueron para Shubao. Los caracteres 曙宝 significan amanecer y tesoro.
 
-Después de Fu Bao y de las gemelas, es el cuarto panda nacido en Corea. Everland irá ampliando poco a poco cuánto rato al día se la puede ver y para cuántos visitantes.
+Después de Fu Bao y de las gemelas, es el cuarto panda nacido en Corea. Everland irá mostrándola poco a poco más rato al día y a más visitantes.
 
 ## Dónde ver a los pandas y durante cuánto tiempo
 
-Aibao y Le Bao viven en Panda World, y Shubao también está allí. Rui Bao y Hui Bao tienen su casa al lado, en el Panda Second House, que abrió el 3 de octubre de 2025. Tiene 1.200 metros cuadrados, un recinto interior acristalado del suelo al techo y otro exterior.
+Aibao y Le Bao viven en Panda World, donde Shubao ya tiene también su público. Rui Bao y Hui Bao tienen su casa al lado, en el Panda Second House, que abrió el 3 de octubre de 2025. Tiene 1.200 metros cuadrados, un recinto interior acristalado del suelo al techo y otro exterior.
 
 Desde el 1 de octubre puedes quedarte diez minutos por turno en Panda World y cinco en el Panda Second House. Si en este último se junta mucha gente, Everland cambia a un recorrido en el que pasas por delante del recinto sin pararte. El horario de las dos casas puede cambiar el mismo día y sin previo aviso.
 
-El 13 de noviembre empieza la cuarentena de las gemelas antes del transporte, que dura alrededor de un mes y se hace en el Panda Second House. La de Fu Bao, en 2024, no fue pública. Esta vez, Rui Bao y Hui Bao se podrán seguir viendo durante ese tiempo, con limitaciones, en el recinto interior. Está separado por completo del exterior y por eso cumple los requisitos de la cuarentena. Everland todavía no ha anunciado a qué horas ni de qué forma. Decidirá ambas cosas según la salud de las gemelas y cómo vayan los preparativos del viaje.
+El 13 de noviembre empieza la cuarentena de las gemelas antes del transporte, que dura alrededor de un mes y se hace en el Panda Second House. La de Fu Bao, en 2024, no fue pública. Esta vez, Rui Bao y Hui Bao se podrán seguir viendo durante ese tiempo, con limitaciones, en el recinto interior. Está separado por completo del exterior y por eso cumple los requisitos de la cuarentena. Everland todavía no ha anunciado a qué horas ni de qué forma. Dependerá de cómo estén las gemelas y de cómo vayan los preparativos del viaje.
 
 Para la despedida, Everland prepara en noviembre un día especial con una charla-concierto de los cuidadores Kang Cheol-won y Song Young-gwan, con imágenes de la crianza que nunca se han enseñado. Faltan la fecha y la forma de apuntarse. El parque, además, tiene previsto proyectar una película sobre los primeros años de las gemelas.
 
 ## Entradas y cómo llegar
 
-En Everland, la entrada de un día cuesta distinto según el mes, y el 6 de octubre el parque subió los precios. En noviembre, los adultos y los jóvenes de 13 a 18 años pagan 65.000 wones, y los niños de 36 meses a 12 años y los mayores de 65 años, 55.000 wones. En diciembre son 55.000 y 45.000 wones. Diciembre sale más barato, pero solo le quedan once días con las gemelas. Los menores de 36 meses entran gratis.
+Desde el 6 de octubre, Everland es más caro, y lo que cuesta la entrada de un día depende del mes. En noviembre, los adultos y los jóvenes de 13 a 18 años pagan 65.000 wones, y los niños de 36 meses a 12 años y los mayores de 65 años, 55.000 wones. En diciembre son 55.000 y 45.000 wones. Diciembre sale más barato, pero solo le quedan once días con las gemelas. Los menores de 36 meses entran gratis.
 
-A partir del 9 de noviembre, el parque abre de domingo a jueves de 10:00 a 20:00, y los viernes y sábados hasta las 21:00. Para el viernes 11 de diciembre figura el horario de 10:00 a 21:00. Everland puede cambiar los horarios el mismo día.
+A partir del 9 de noviembre, el parque abre de domingo a jueves de 10:00 a 20:00, y los viernes y sábados hasta las 21:00. Para el viernes 11 de diciembre figura el horario de 10:00 a 21:00, y, como en las casas de los pandas, Everland puede cambiarlo el mismo día.
 
 ```best-days-widget slug=everland
 
@@ -70,7 +70,7 @@ En metro, vas en la línea Bundang hasta Giheung y allí cambias a la EverLine, 
 
 ## Qué hay en el parque hasta diciembre
 
-La fiesta de otoño sigue hasta el 22 de noviembre, con Blood City Zero: Hell Gate y los espectáculos de la temporada. También se puede hacer la Wild Savanna Expedition, y el circo Wings of Memory tiene función hasta el 15 de noviembre.
+La fiesta de otoño sigue hasta el 22 de noviembre, con Blood City Zero: Hell Gate y los espectáculos de la temporada. El circo Wings of Memory termina ya el 15 de noviembre, y también se puede hacer la Wild Savanna Expedition.
 
 Durante el invierno, Everland desmonta atracciones antiguas. Al Helicycle le ha tocado desde el 2 de noviembre, al Play Yard le toca desde el 23 de noviembre, a Car Kingdom y Kids Village desde el 1 de diciembre y al Spooky Fun House desde el 3 de diciembre. Las fechas dependen del tiempo. Si vas con niños pequeños, conviene dejar Kids Village y Car Kingdom para antes de que termine noviembre.
 
@@ -78,7 +78,7 @@ Durante el invierno, Everland desmonta atracciones antiguas. Al Helicycle le ha 
 
 Aibao y Le Bao llegaron a Corea desde el Dujiangyan Panda Habitat, en Sichuan, para la apertura de Panda World el 21 de abril de 2016. Desde entonces lo han visitado unos 18 millones de personas. Los pandas nacidos fuera de China se mudan allí antes de cumplir cuatro años, antes de alcanzar la madurez sexual.
 
-Fu Bao nació el 20 de julio de 2020 y fue el primer panda nacido en Corea. Apareció en público por última vez el 3 de marzo de 2024 y dejó Everland el 3 de abril de 2024 rumbo a la base de Shenshuping, en la reserva natural de Wolong, en Sichuan. Rui Bao y Hui Bao nacieron el 7 de julio de 2023 como las primeras gemelas panda de Corea, con 180 y 140 gramos. Hoy pesan unos 90 kilos cada una. El día exacto de la mudanza y su destino en China los fija Everland según la temperatura y la situación sobre el terreno.
+Fu Bao nació el 20 de julio de 2020 y fue el primer panda nacido en Corea. Apareció en público por última vez el 3 de marzo de 2024 y dejó Everland el 3 de abril de 2024 rumbo a la base de Shenshuping, en la reserva natural de Wolong, en Sichuan. Rui Bao y Hui Bao nacieron el 7 de julio de 2023 como las primeras gemelas panda de Corea, con 180 y 140 gramos. Hoy cada una pesa unos 90 kilos, más que la mayoría de los visitantes que las miran. Cuándo se marchan exactamente y a qué lugar de China depende de la temperatura y de la situación sobre el terreno. Por ahora solo está fijada la tercera semana de diciembre.
 
 [Everland](ref:everland?full)
 

@@ -38,29 +38,29 @@ seo:
     - Everland Anreise
 ---
 
-Die Panda-Zwillinge Rui Bao und Hui Bao sind im [Everland](ref:everland) in Yongin am 11. Dezember zum letzten Mal öffentlich zu sehen. In der dritten Dezemberwoche ziehen sie nach China. Bis dahin sind dort alle fünf Pandas zu sehen: die Eltern Aibao und Le Bao, die Zwillinge und seit dem 30. Oktober auch Shubao, das Jungtier vom Juni. Den letzten Besuchstag hat Samsung C&T, der Betreiber des Parks, am 19. Oktober bekannt gegeben, Shubaos ersten Auftritt am 27. Oktober.
+Die Panda-Zwillinge Rui Bao und Hui Bao sind im [Everland](ref:everland) in Yongin am 11. Dezember zum letzten Mal öffentlich zu sehen. In der dritten Dezemberwoche ziehen sie nach China. Bis dahin gibt es im Everland die ganze Familie auf einmal: die Eltern Aibao und Le Bao, die Zwillinge und seit dem 30. Oktober auch Shubao, das Jungtier vom Juni. Den letzten Besuchstag hat Samsung C&T, der Betreiber des Parks, am 19. Oktober bekannt gegeben, Shubaos ersten Auftritt am 27. Oktober.
 
 ## Shubao, der fünfte Panda
 
-Shubao kam am 3. Juni 2026 in Panda World zur Welt, als Tochter von Aibao und Le Bao, gezeugt auf natürlichem Weg. Bei der Geburt wog sie 171 Gramm, weniger als ein Päckchen Butter, heute sind es mehr als neun Kilo. Mit etwa 120 Tagen machte sie ihre ersten Schritte. Ihren Namen bekam sie an ihrem 100. Lebenstag. Zum Wettbewerb hatten mehr als 10.000 Menschen Vorschläge eingereicht, Fachleute wählten fünf davon aus, und von 220.000 Stimmen online und im Park gingen 42 Prozent an Shubao. Die Schriftzeichen 曙宝 stehen für Morgendämmerung und Schatz.
+Shubao kam am 3. Juni 2026 in Panda World zur Welt, als Tochter von Aibao und Le Bao, gezeugt auf natürlichem Weg. Bei der Geburt wog sie 171 Gramm, weniger als ein Päckchen Butter, heute sind es mehr als neun Kilo. Ihren Namen bekam sie an ihrem 100. Lebenstag, die ersten Schritte machte sie mit etwa 120 Tagen. Sie wusste also schon, wie sie heißt, bevor sie irgendwohin laufen konnte. Zum Wettbewerb hatten mehr als 10.000 Menschen Vorschläge eingereicht, Fachleute wählten fünf davon aus, und von 220.000 Stimmen online und im Park gingen 42 Prozent an Shubao. Die Schriftzeichen 曙宝 stehen für Morgendämmerung und Schatz.
 
-Nach Fu Bao und den Zwillingen ist sie der vierte in Korea geborene Panda. Wie lange am Tag und für wie viele Besucher sie zu sehen ist, will Everland nach und nach ausweiten.
+Nach Fu Bao und den Zwillingen ist sie der vierte in Korea geborene Panda. Everland will sie nach und nach länger am Tag und für mehr Besucher zeigen.
 
 ## Wo und wie lange du die Pandas siehst
 
-Aibao und Le Bao leben in Panda World, dort ist auch Shubao zu sehen. Rui Bao und Hui Bao wohnen nebenan im Panda Second House, das am 3. Oktober 2025 eröffnet hat. Es hat 1.200 Quadratmeter, ein Innengehege mit raumhoher Verglasung und ein Außengehege.
+Aibao und Le Bao leben in Panda World, wo jetzt auch Shubao ihr Publikum hat. Rui Bao und Hui Bao wohnen nebenan im Panda Second House, das am 3. Oktober 2025 eröffnet hat. Es hat 1.200 Quadratmeter, ein Innengehege mit raumhoher Verglasung und ein Außengehege.
 
 In Panda World darfst du seit dem 1. Oktober zehn Minuten pro Durchgang bleiben, im Panda Second House fünf. Ist der Andrang dort groß, stellt Everland auf einen Rundgang um, bei dem du am Gehege vorbeigehst, ohne stehen zu bleiben. Die Betriebszeiten beider Häuser können sich am selben Tag ohne Ankündigung ändern.
 
-Am 13. November beginnt für die Zwillinge die Quarantäne vor dem Transport, etwa einen Monat lang und im Panda Second House. Bei Fu Bao war die Quarantäne 2024 nicht öffentlich. Rui Bao und Hui Bao bleiben in dieser Zeit eingeschränkt zu sehen, im Innengehege. Es ist nach außen vollständig abgetrennt und erfüllt deshalb die Vorgaben für die Quarantäne. Zu welchen Uhrzeiten und auf welche Art, hat Everland bisher nicht bekannt gegeben. Der Park will beides nach der Gesundheit der Zwillinge und dem Stand der Reisevorbereitung richten.
+Am 13. November beginnt für die Zwillinge die Quarantäne vor dem Transport, etwa einen Monat lang und im Panda Second House. Bei Fu Bao war die Quarantäne 2024 nicht öffentlich. Rui Bao und Hui Bao bleiben in dieser Zeit eingeschränkt zu sehen, im Innengehege. Es ist nach außen vollständig abgetrennt und erfüllt deshalb die Vorgaben für die Quarantäne. Zu welchen Uhrzeiten und auf welche Art, hat Everland bisher nicht bekannt gegeben. Das hängt davon ab, wie es den Zwillingen geht und wie weit die Reisevorbereitung ist.
 
 Zum Abschied plant Everland für November einen eigenen Tag mit einem Talk-Konzert der Pfleger Kang Cheol-won und Song Young-gwan, mit bisher unveröffentlichten Aufnahmen aus der Aufzucht. Datum und Anmeldung dafür stehen noch aus. Im Park soll zudem ein Film über die ersten Jahre der Zwillinge gezeigt werden.
 
 ## Eintritt und Anreise
 
-Was die Tageskarte bei Everland kostet, hängt vom Monat ab, und am 6. Oktober hat der Park die Preise erhöht. Im November zahlen Erwachsene und Jugendliche von 13 bis 18 Jahren 65.000 Won, Kinder von 36 Monaten bis 12 Jahren und Senioren ab 65 Jahren 55.000 Won. Im Dezember sind es 55.000 und 45.000 Won. Der Dezember ist damit der günstigere Monat, nur bleiben von ihm elf Tage mit den Zwillingen. Kinder unter 36 Monaten haben freien Eintritt.
+Seit dem 6. Oktober ist Everland teurer, und was die Tageskarte kostet, hängt vom Monat ab. Im November zahlen Erwachsene und Jugendliche von 13 bis 18 Jahren 65.000 Won, Kinder von 36 Monaten bis 12 Jahren und Senioren ab 65 Jahren 55.000 Won. Im Dezember sind es 55.000 und 45.000 Won. Der Dezember ist damit der günstigere Monat, nur bleiben von ihm elf Tage mit den Zwillingen. Kinder unter 36 Monaten haben freien Eintritt.
 
-Ab dem 9. November ist der Park sonntags bis donnerstags von 10 bis 20 Uhr geöffnet, freitags und samstags bis 21 Uhr. Für Freitag, den 11. Dezember, stehen 10 bis 21 Uhr im Plan. Everland kann die Zeiten am selben Tag ändern.
+Ab dem 9. November ist der Park sonntags bis donnerstags von 10 bis 20 Uhr geöffnet, freitags und samstags bis 21 Uhr. Für Freitag, den 11. Dezember, stehen 10 bis 21 Uhr im Plan, und wie bei den Panda-Häusern kann Everland das noch am selben Tag ändern.
 
 ```best-days-widget slug=everland
 
@@ -70,7 +70,7 @@ Mit der U-Bahn fährst du auf der Bundang-Linie bis Giheung und steigst dort in 
 
 ## Was im Park bis Dezember läuft
 
-Das Herbstfest geht bis zum 22. November, mit Blood City Zero: Hell Gate und dem Herbstprogramm an Shows. Außerdem gibt es die Wild Savanna Expedition, und der Zirkus Wings of Memory spielt bis zum 15. November.
+Das Herbstfest geht bis zum 22. November, mit Blood City Zero: Hell Gate und dem Herbstprogramm an Shows. Der Zirkus Wings of Memory endet schon am 15. November, und auch die Wild Savanna Expedition läuft.
 
 Über den Winter baut Everland ältere Anlagen ab. Den Helicycle trifft es seit dem 2. November, den Play Yard ab dem 23. November, Car Kingdom und Kids Village ab dem 1. Dezember und das Spooky Fun House ab dem 3. Dezember. Die Termine hängen vom Wetter ab. Kids Village und Car Kingdom plant man mit kleinen Kindern deshalb besser bis Ende November ein.
 
@@ -78,7 +78,7 @@ Das Herbstfest geht bis zum 22. November, mit Blood City Zero: Hell Gate und dem
 
 Aibao und Le Bao kamen aus dem Dujiangyan Panda Habitat in Sichuan nach Korea, zur Eröffnung von Panda World am 21. April 2016. Seitdem haben rund 18 Millionen Menschen die Anlage besucht. Außerhalb Chinas geborene Pandas ziehen vor ihrem vierten Geburtstag nach China, bevor sie geschlechtsreif werden.
 
-Fu Bao wurde am 20. Juli 2020 als erster Panda in Korea geboren. Ihren letzten öffentlichen Auftritt hatte sie am 3. März 2024, und am 3. April 2024 verließ sie das Everland in Richtung der Shenshuping-Basis im Wolong-Naturreservat in Sichuan. Rui Bao und Hui Bao kamen am 7. Juli 2023 als erste Panda-Zwillinge Koreas zur Welt, mit 180 und 140 Gramm. Heute wiegen sie je rund 90 Kilo. Den genauen Tag des Umzugs und ihr Ziel in China legt Everland je nach Temperatur und Lage vor Ort fest.
+Fu Bao wurde am 20. Juli 2020 als erster Panda in Korea geboren. Ihren letzten öffentlichen Auftritt hatte sie am 3. März 2024, und am 3. April 2024 verließ sie das Everland in Richtung der Shenshuping-Basis im Wolong-Naturreservat in Sichuan. Rui Bao und Hui Bao kamen am 7. Juli 2023 als erste Panda-Zwillinge Koreas zur Welt, mit 180 und 140 Gramm. Heute wiegt jede rund 90 Kilo, mehr als die meisten Besucher, die ihnen zuschauen. Wann genau sie abreisen und wohin in China, hängt von der Temperatur und der Lage vor Ort ab. Fest steht bisher nur die dritte Dezemberwoche.
 
 [Everland](ref:everland?full)
 
