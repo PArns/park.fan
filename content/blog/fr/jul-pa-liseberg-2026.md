@@ -73,7 +73,7 @@ Les premiers billets sont en vente depuis le 3 novembre. Jusqu’au 9 novembre, 
 - entrée avec Åkpass : 285, 345 ou 395 couronnes
 - Åkpass seul : 235 couronnes, Åkpass Duo : 470 couronnes
 
-Les jours les moins chers sont les 15, 20, 22 et 27 novembre, puis en décembre les mercredis et jeudis jusqu’au 17. Les plus chers sont le 28 novembre, les week-ends de décembre à partir du 5 et la période du 21 au 23 décembre. Les enfants de moins de 110 centimètres entrent gratuitement ; leur Åkpass coûte à partir de 235 couronnes. Quand un enfant porte l’Åkpass Duo au poignet, n’importe quel adulte peut monter avec lui.
+Les jours les moins chers sont les 15, 20, 22 et 27 novembre, puis en décembre les mercredis et jeudis jusqu’au 17. Les plus chers sont le 28 novembre, les samedis et dimanches de décembre à partir du 5 et la période du 21 au 23 décembre. Les enfants de moins de 110 centimètres entrent gratuitement ; leur Åkpass coûte à partir de 235 couronnes. Quand un enfant porte l’Åkpass Duo au poignet, n’importe quel adulte peut monter avec lui.
 
 Sans Åkpass, chaque tour se paie en coupons de 25 couronnes. Il en faut quatre pour [Balder](ref:liseberg/balder) : au-delà de deux tours, l’Åkpass revient donc moins cher. Le Lisebergspasset, à 395 couronnes, donne l’entrée pendant douze mois, le Guldpasset, à 2 595 couronnes, l’entrée et toutes les attractions pendant douze mois.
 

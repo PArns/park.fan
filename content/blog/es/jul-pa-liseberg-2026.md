@@ -73,7 +73,7 @@ Las primeras entradas están a la venta desde el 3 de noviembre, y hasta el 9 de
 - entrada con Åkpass: 285, 345 o 395 coronas
 - Åkpass solo: 235 coronas; Åkpass Duo: 470 coronas
 
-Los días más baratos son el 15, 20, 22 y 27 de noviembre y, en diciembre, los miércoles y jueves hasta el 17. Los más caros, el 28 de noviembre, los fines de semana de diciembre a partir del 5 y del 21 al 23 de diciembre. Los niños de menos de 110 centímetros entran gratis, y para ellos el Åkpass cuesta desde 235 coronas. Si un niño lleva el Åkpass Duo en la muñeca, cualquier adulto puede subir con él.
+Los días más baratos son el 15, 20, 22 y 27 de noviembre y, en diciembre, los miércoles y jueves hasta el 17. Los más caros, el 28 de noviembre, los sábados y domingos de diciembre a partir del 5 y del 21 al 23 de diciembre. Los niños de menos de 110 centímetros entran gratis, y para ellos el Åkpass cuesta desde 235 coronas. Si un niño lleva el Åkpass Duo en la muñeca, cualquier adulto puede subir con él.
 
 Sin Åkpass, cada viaje se paga con cupones de 25 coronas. [Balder](ref:liseberg/balder) pide cuatro, así que a partir de la tercera vuelta ya compensa el Åkpass. El Lisebergspasset, por 395 coronas, sirve de entrada durante doce meses; el Guldpasset, por 2595 coronas, cubre doce meses de entrada y todas las atracciones.
 

@@ -73,7 +73,7 @@ De eerste tickets zijn sinds 3 november te koop. Tot en met 9 november kost entr
 - entree met Åkpass: 285, 345 of 395 kronen
 - alleen Åkpass: 235 kronen, Åkpass Duo: 470 kronen
 
-Het goedkoopst zijn 15, 20, 22 en 27 november, en in december de woensdagen en donderdagen tot en met de 17e. Het meest betaal je op 28 november, in de decemberweekenden vanaf de 5e en van 21 tot en met 23 december. Kinderen onder 110 centimeter mogen gratis naar binnen; een Åkpass kost voor hen vanaf 235 kronen. Draagt een kind de Åkpass Duo om de pols, dan mag een willekeurige volwassene met het kind mee in de attractie.
+Het goedkoopst zijn 15, 20, 22 en 27 november, en in december de woensdagen en donderdagen tot en met de 17e. Het meest betaal je op 28 november, op de zaterdagen en zondagen in december vanaf de 5e en van 21 tot en met 23 december. Kinderen onder 110 centimeter mogen gratis naar binnen; een Åkpass kost voor hen vanaf 235 kronen. Draagt een kind de Åkpass Duo om de pols, dan mag een willekeurige volwassene met het kind mee in de attractie.
 
 Zonder Åkpass betaal je elke rit met coupons van 25 kronen per stuk. [Balder](ref:liseberg/balder) kost er vier, dus wie meer dan twee keer wil, is met de Åkpass goedkoper uit. Het Lisebergspasset van 395 kronen geldt twaalf maanden als entreebewijs, het Guldpasset van 2.595 kronen twaalf maanden voor entree en alle attracties.
 

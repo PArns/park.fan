@@ -73,7 +73,7 @@ The first tickets went on sale on 3 November, and until 9 November entry with an
 - Entry with Åkpass: SEK 285, 345 or 395
 - Åkpass on its own: SEK 235; Åkpass Duo: SEK 470
 
-The cheapest days are 15, 20, 22 and 27 November, plus the Wednesdays and Thursdays in December up to the 17th. You pay the most on 28 November, on the December weekends from the 5th and from 21 to 23 December. Children under 110 centimetres get in without an entry ticket, and their Åkpass starts at SEK 235. If a child wears the Åkpass Duo on their wrist, any adult can ride with them.
+The cheapest days are 15, 20, 22 and 27 November, plus the Wednesdays and Thursdays in December up to the 17th. You pay the most on 28 November, on the Saturdays and Sundays in December from the 5th and from 21 to 23 December. Children under 110 centimetres get in without an entry ticket, and their Åkpass starts at SEK 235. If a child wears the Åkpass Duo on their wrist, any adult can ride with them.
 
 Without an Åkpass, you pay for each ride with coupons at SEK 25 each. [Balder](ref:liseberg/balder) takes four of them, so if you want more than two rides, the Åkpass comes out cheaper. The Lisebergspasset costs SEK 395 and covers entry for twelve months; the Guldpasset costs SEK 2,595 and covers entry and every ride for twelve months.
 

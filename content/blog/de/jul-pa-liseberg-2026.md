@@ -73,7 +73,7 @@ Die ersten Tickets sind seit dem 3. November im Verkauf, bis zum 9. November gib
 - Eintritt mit Åkpass: 285, 345 oder 395 Kronen
 - Åkpass allein: 235 Kronen, Åkpass Duo: 470 Kronen
 
-Am günstigsten sind der 15., 20., 22. und 27. November und im Dezember die Mittwoche und Donnerstage bis zum 17. Am meisten zahlst du am 28. November, an den Dezember-Wochenenden ab dem 5. und vom 21. bis 23. Dezember. Kinder unter 110 Zentimetern kommen ohne Eintritt hinein, für sie kostet der Åkpass ab 235 Kronen. Trägt ein Kind den Åkpass Duo am Handgelenk, darf ein beliebiger Erwachsener mit ihm fahren.
+Am günstigsten sind der 15., 20., 22. und 27. November und im Dezember die Mittwoche und Donnerstage bis zum 17. Am meisten zahlst du am 28. November, an den Samstagen und Sonntagen im Dezember ab dem 5. und vom 21. bis 23. Dezember. Kinder unter 110 Zentimetern kommen ohne Eintritt hinein, für sie kostet der Åkpass ab 235 Kronen. Trägt ein Kind den Åkpass Duo am Handgelenk, darf ein beliebiger Erwachsener mit ihm fahren.
 
 Ohne Åkpass bezahlst du jede Fahrt mit Kupons zu je 25 Kronen. [Balder](ref:liseberg/balder) kostet vier davon, wer mehr als zweimal fahren will, ist mit dem Åkpass also günstiger dran. Das Lisebergspasset für 395 Kronen gilt zwölf Monate als Eintritt, das Guldpasset für 2.595 Kronen zwölf Monate für Eintritt und alle Fahrten.
 
