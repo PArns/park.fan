@@ -87,7 +87,7 @@ export function AttractionStatus({
     <div className="border-border/60 bg-card space-y-3 rounded-lg border p-3">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div className="flex min-w-0 items-center gap-2">
-          <p className="text-muted-foreground text-[11px] tracking-wide uppercase">Status</p>
+          <p className="text-muted-foreground text-xs">Status</p>
           <Chip tone={retired ? 'warning' : 'success'}>{retired ? 'stillgelegt' : 'aktiv'}</Chip>
         </div>
 

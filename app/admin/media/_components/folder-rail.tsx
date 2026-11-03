@@ -220,9 +220,7 @@ export function FolderRail({
             {view === 'tag' &&
               tagGroups.map((group) => (
                 <li key={group.id}>
-                  <p className="text-muted-foreground px-2 pt-2 pb-0.5 text-[10px] tracking-wide uppercase">
-                    {group.label}
-                  </p>
+                  <p className="text-muted-foreground px-2 pt-2 pb-0.5 text-xs">{group.label}</p>
                   <ul className="space-y-px">
                     {group.tags.map((t) => (
                       <FolderRow

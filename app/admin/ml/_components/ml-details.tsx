@@ -203,7 +203,7 @@ function TrainingDetails() {
           hint="Live misst hier CatBoost allein, nicht das, was die App ausliefert. Was die App zeigt, vergleicht die Matrix."
         >
           <div className="overflow-x-auto">
-            <div className="border-border/60 text-muted-foreground grid min-w-[22rem] grid-cols-5 gap-2 border-b pb-2 text-xs font-medium tracking-wide uppercase">
+            <div className="border-border/60 text-muted-foreground grid min-w-[22rem] grid-cols-5 gap-2 border-b pb-2 text-xs font-medium">
               <span />
               <span className="text-right">MAE</span>
               <span className="text-right">RMSE</span>

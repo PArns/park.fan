@@ -129,7 +129,7 @@ export function SeriesPanel({ data }: { data: TrafficOverview }) {
             {groups.map((group, index) => (
               <div key={group.unit}>
                 {groups.length > 1 && (
-                  <p className="text-muted-foreground mb-1 text-[11px] font-medium tracking-wide uppercase">
+                  <p className="text-muted-foreground mb-1 text-xs font-medium">
                     {UNIT_TITLE[group.unit]}
                   </p>
                 )}
@@ -211,7 +211,7 @@ function PeriodTable({ data, columns }: { data: TrafficOverview; columns: readon
             )
           }
           className={cn(
-            'hover:text-foreground inline-flex items-center gap-1 uppercase',
+            'hover:text-foreground inline-flex items-center gap-1',
             on && 'text-foreground'
           )}
         >

@@ -358,7 +358,7 @@ export function SeriesChart({
       {chrome && view === 'table' ? (
         <div className="border-border/50 max-h-80 overflow-auto rounded-lg border">
           <table className="w-full text-sm tabular-nums">
-            <thead className="bg-card text-muted-foreground sticky top-0 text-[11px] tracking-wide uppercase">
+            <thead className="bg-card text-muted-foreground sticky top-0 text-xs">
               <tr>
                 <th className="py-1.5 pl-3 text-left font-medium">Zeitraum</th>
                 {series.map((line) => (
@@ -790,7 +790,7 @@ export function HeatMatrix({
   return (
     <div className="overflow-x-auto">
       <table className="w-full min-w-[34rem] border-separate border-spacing-0.5 text-sm tabular-nums">
-        <thead className="text-muted-foreground text-[11px] tracking-wide uppercase">
+        <thead className="text-muted-foreground text-xs">
           <tr>
             <th className="py-1.5 pr-3 text-left font-medium">{rowHeader}</th>
             {columns.map((column) => (
@@ -848,10 +848,7 @@ export function HeatMatrix({
         {columnTotals && (
           <tfoot className="text-muted-foreground">
             <tr>
-              <th
-                scope="row"
-                className="py-1.5 pr-3 text-left text-[11px] font-medium tracking-wide uppercase"
-              >
+              <th scope="row" className="py-1.5 pr-3 text-left text-xs font-medium">
                 {totalLabel}
               </th>
               {columnTotals.map((total, index) => (

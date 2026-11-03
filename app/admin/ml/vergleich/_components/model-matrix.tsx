@@ -111,7 +111,7 @@ export function ModelMatrix({ report }: { report: ModelComparisonReport }) {
               <tr>
                 <th
                   colSpan={columns.length + 1}
-                  className="bg-muted/40 text-muted-foreground px-3 py-1.5 text-left text-[11px] font-semibold tracking-wider uppercase"
+                  className="bg-muted/40 text-muted-foreground px-3 py-1.5 text-left text-xs font-medium"
                 >
                   {group.label}
                 </th>

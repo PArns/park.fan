@@ -243,7 +243,7 @@ function ComponentsPanel({ components }: { components: MlComponent[] }) {
         <div className="overflow-x-auto">
           <table className="w-full min-w-[44rem] text-sm">
             <thead>
-              <tr className="text-muted-foreground border-border/50 border-b text-left text-[11px] font-semibold tracking-wider uppercase">
+              <tr className="text-muted-foreground border-border/50 border-b text-left text-xs font-medium">
                 <th className="px-4 py-2.5 font-semibold">Modell</th>
                 <th className="px-4 py-2.5 font-semibold">Was es liefert</th>
                 <th className="px-4 py-2.5 font-semibold">Zuletzt</th>

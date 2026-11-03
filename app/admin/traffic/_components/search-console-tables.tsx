@@ -289,7 +289,7 @@ export function SearchConsoleQueriesPanel({
           </ul>
           <div className="hidden overflow-x-auto md:block">
             <table className="w-full min-w-[44rem] text-sm tabular-nums">
-              <thead className="text-muted-foreground text-[11px] tracking-wide uppercase">
+              <thead className="text-muted-foreground text-xs">
                 <tr className="border-border/50 border-b">
                   <th className="py-2 pl-4 text-left font-medium">Suchanfrage</th>
                   <th className={HEAD}>Klicks</th>
@@ -473,7 +473,7 @@ export function SearchConsolePagesPanel({
           </ul>
           <div className="hidden overflow-x-auto md:block">
             <table className="w-full min-w-[60rem] text-sm tabular-nums">
-              <thead className="text-muted-foreground text-[11px] tracking-wide uppercase">
+              <thead className="text-muted-foreground text-xs">
                 <tr>
                   <td />
                   <th

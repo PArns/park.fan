@@ -51,7 +51,7 @@ export function EventsTable({
     <div>
       <div
         aria-hidden="true"
-        className={`${ROW_GRID} border-border/50 text-muted-foreground hidden border-b px-4 py-2 text-[11px] tracking-wide uppercase sm:grid`}
+        className={`${ROW_GRID} border-border/50 text-muted-foreground hidden border-b px-4 py-2 text-xs sm:grid`}
       >
         <span>Ereignis</span>
         <span className="text-right">Anzahl</span>

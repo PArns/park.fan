@@ -78,10 +78,7 @@ export function KpiTiles({
         const missing = missingText(key, byVisitsOnly);
         return (
           <Tile key={key} className="space-y-1.5">
-            <p
-              className="text-muted-foreground text-[11px] font-medium tracking-wide uppercase"
-              title={metric.hint}
-            >
+            <p className="text-muted-foreground text-xs font-medium" title={metric.hint}>
               {metric.label}
             </p>
             <span className="block text-3xl font-bold tabular-nums">
@@ -116,7 +113,7 @@ export function KpiTiles({
       })}
 
       <Tile className="col-span-2 space-y-1.5 md:col-span-1">
-        <p className="text-muted-foreground flex items-center gap-1.5 text-[11px] font-medium tracking-wide uppercase">
+        <p className="text-muted-foreground flex items-center gap-1.5 text-xs font-medium">
           <Radio className="text-primary h-3.5 w-3.5" aria-hidden="true" />
           Jetzt aktiv
         </p>

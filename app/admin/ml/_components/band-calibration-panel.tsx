@@ -33,7 +33,7 @@ export function BandCalibrationPanel({ calibration }: { calibration: MlBandCalib
       <div className="overflow-x-auto">
         <table className="w-full min-w-[32rem] text-sm tabular-nums">
           <thead>
-            <tr className="text-muted-foreground border-border/50 border-b text-left text-[11px] font-semibold tracking-wider uppercase">
+            <tr className="text-muted-foreground border-border/50 border-b text-left text-xs font-medium">
               <th className="px-4 py-2.5 font-semibold">Vorlauf</th>
               <th className="px-4 py-2.5 text-right font-semibold">Faktor</th>
               <th className="px-4 py-2.5 text-right font-semibold">Abdeckung vorher → nachher</th>

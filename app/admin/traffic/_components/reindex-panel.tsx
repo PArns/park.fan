@@ -186,7 +186,7 @@ export function ReindexPanel({ siteUrl }: { siteUrl: string }) {
 
             {data.requested.length > 0 && (
               <section className="space-y-1">
-                <h3 className="text-muted-foreground text-xs font-semibold uppercase">
+                <h3 className="text-muted-foreground text-xs font-medium">
                   Beantragt, wartet auf Google ({data.requested.length})
                 </h3>
                 <ul className="divide-border/50 divide-y">

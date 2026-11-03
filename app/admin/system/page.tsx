@@ -27,7 +27,8 @@ import {
   type HealthTone,
 } from '@/lib/admin/health';
 import { HEALTH_TEXT } from '../_ui/metrics';
-import { formatUptime } from '../_lib/format';
+import { formatDay, formatUptime } from '../_lib/format';
+import { getNumberFormat } from '@/lib/utils/intl-format';
 import { MetricBar } from '@/components/common/metric-bar';
 import type { HostDisk, SiteAnalyticsHealth, SystemHealthResponse } from '@/lib/api/admin';
 import {
@@ -63,6 +64,13 @@ function readingClass(tone: HealthTone, okClass = 'text-emerald-400'): string {
 function sensorTempClass(t: number): string {
   return readingClass(levelAbove(t, CHIP_TEMP_C));
 }
+/** A figure with a fixed number of decimals, German style: `16,5`. */
+function decimal(value: number, digits: number): string {
+  return getNumberFormat('de-DE', {
+    minimumFractionDigits: digits,
+    maximumFractionDigits: digits,
+  }).format(value);
+}
 function isDisk(d: HostDisk | { error: string }): d is HostDisk {
   return 'usedPct' in d;
 }
@@ -94,7 +102,7 @@ function DropCounts({
   }
   return (
     <table className="w-full text-sm tabular-nums">
-      <thead className="text-muted-foreground text-[11px] tracking-wide uppercase">
+      <thead className="text-muted-foreground text-xs">
         <tr>
           <th className="py-1 text-left font-medium">Grund</th>
           <th className="py-1 text-right font-medium">Heute</th>
@@ -118,7 +126,7 @@ export default function SystemPage() {
   const { data, error } = useAdminFetch<SystemHealthResponse>(ADMIN_PATHS.systemHealth);
 
   if (error) return <ErrorState message={error} />;
-  if (!data) return <LoadingState label="Loading system metrics…" />;
+  if (!data) return <LoadingState label="Systemwerte werden geladen…" />;
 
   const disk = data.host.disk;
   const diskValid = isDisk(disk);
@@ -166,31 +174,31 @@ export default function SystemPage() {
   return (
     <AdminPage width="wide">
       <Panel>
-        <PanelHeader icon={Server} title="Host" />
+        <PanelHeader icon={Server} title="Server" />
         <PanelBody className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
           <Tile icon={Cpu} title="CPU" className="space-y-3">
             <div className="grid grid-cols-2 gap-3">
               <div>
                 <span
-                  className={`text-3xl font-bold tabular-nums ${readingClass(levelAbove(data.host.cpu.loadPct ?? 0, CPU_LOAD_PCT), 'text-foreground')}`}
+                  className={`text-[1.75rem] leading-tight font-semibold tracking-tight tabular-nums ${readingClass(levelAbove(data.host.cpu.loadPct ?? 0, CPU_LOAD_PCT), 'text-foreground')}`}
                 >
                   {data.host.cpu.loadPct ?? '—'}%
                 </span>
-                <p className="text-muted-foreground mt-0.5 text-xs">Load</p>
+                <p className="text-muted-foreground mt-0.5 text-xs">Last</p>
               </div>
               <div>
                 <span
-                  className={`flex items-center gap-1 text-3xl font-bold tabular-nums ${cpuTempClass}`}
+                  className={`flex items-center gap-1 text-[1.75rem] leading-tight font-semibold tracking-tight tabular-nums ${cpuTempClass}`}
                 >
                   <Thermometer className="h-5 w-5" />
                   {cpuTemp ?? '—'}
                   <span className="text-muted-foreground text-lg font-normal">°C</span>
                 </span>
-                <p className="text-muted-foreground mt-0.5 text-xs">Temp</p>
+                <p className="text-muted-foreground mt-0.5 text-xs">Temperatur</p>
               </div>
             </div>
             <p className="text-muted-foreground truncate text-xs" title={data.host.cpu.model}>
-              {data.host.cpu.cores} Cores · {data.host.cpu.model.split(' ').slice(0, 3).join(' ')}
+              {data.host.cpu.cores} Kerne · {data.host.cpu.model.split(' ').slice(0, 3).join(' ')}
             </p>
             <div className="space-y-1.5">
               <MetricBar
@@ -217,18 +225,18 @@ export default function SystemPage() {
             </div>
           </Tile>
 
-          <Tile icon={MemoryStick} title="Memory" className="space-y-3">
+          <Tile icon={MemoryStick} title="Arbeitsspeicher" className="space-y-3">
             <div>
-              <span className="text-3xl font-bold tabular-nums">
-                {data.host.memory.usedGB.toFixed(1)}
+              <span className="text-[1.75rem] leading-tight font-semibold tracking-tight tabular-nums">
+                {decimal(data.host.memory.usedGB, 1)}
                 <span className="text-muted-foreground text-lg font-normal"> GB</span>
               </span>
               <p className="text-muted-foreground mt-0.5 text-xs">
-                of {data.host.memory.totalGB.toFixed(1)} GB
+                von {decimal(data.host.memory.totalGB, 1)} GB
               </p>
             </div>
             <MetricBar
-              label="Usage"
+              label="Belegt"
               value={data.host.memory.usedGB}
               max={data.host.memory.totalGB}
               unit=" GB"
@@ -236,7 +244,7 @@ export default function SystemPage() {
             />
             {swap ? (
               <MetricBar
-                label={`Swap (${swap.usedGB.toFixed(1)} / ${swap.totalGB.toFixed(0)} GB)`}
+                label={`Swap (${decimal(swap.usedGB, 1)} / ${decimal(swap.totalGB, 0)} GB)`}
                 value={swap.usedGB}
                 max={swap.totalGB}
                 unit=" GB"
@@ -246,20 +254,20 @@ export default function SystemPage() {
             ) : null}
           </Tile>
 
-          <Tile icon={HardDrive} title="Disk" className="space-y-3">
+          <Tile icon={HardDrive} title="Festplatte" className="space-y-3">
             {diskValid ? (
               <>
                 <div>
-                  <span className="text-3xl font-bold tabular-nums">
-                    {(disk.totalGB - disk.freeGB).toFixed(0)}
+                  <span className="text-[1.75rem] leading-tight font-semibold tracking-tight tabular-nums">
+                    {decimal(disk.totalGB - disk.freeGB, 0)}
                     <span className="text-muted-foreground text-lg font-normal"> GB</span>
                   </span>
                   <p className="text-muted-foreground mt-0.5 text-xs">
-                    of {disk.totalGB.toFixed(0)} GB · {disk.freeGB.toFixed(0)} GB free
+                    von {decimal(disk.totalGB, 0)} GB · {decimal(disk.freeGB, 0)} GB frei
                   </p>
                 </div>
                 <MetricBar
-                  label="Used"
+                  label="Belegt"
                   value={disk.totalGB - disk.freeGB}
                   max={disk.totalGB}
                   unit=" GB"
@@ -268,22 +276,91 @@ export default function SystemPage() {
                 />
               </>
             ) : (
-              <p className="text-muted-foreground text-sm">N/A</p>
+              <p className="text-muted-foreground text-sm">nicht lesbar</p>
             )}
           </Tile>
 
-          <Tile icon={Clock} title="Uptime">
+          <Tile icon={Clock} title="Laufzeit">
             <div className="space-y-1">
-              <span className="text-3xl font-bold tabular-nums">
+              <span className="text-[1.75rem] leading-tight font-semibold tracking-tight tabular-nums">
                 {formatUptime(data.host.uptimeHours)}
               </span>
-              <p className="text-muted-foreground text-xs">
-                API v4 · {data.host.cpu.cores}-core server
-              </p>
+              <p className="text-muted-foreground text-xs">API v4 · seit dem letzten Neustart</p>
             </div>
           </Tile>
         </PanelBody>
       </Panel>
+
+      {fresh ? (
+        <Panel>
+          <PanelHeader icon={Activity} title="Datenzufuhr" />
+          <PanelBody className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+            <Tile
+              icon={Waves}
+              title="Wartezeiten"
+              className="space-y-3"
+              action={
+                <span className="flex items-center gap-1.5 text-xs">
+                  <StatusDot ok={queueStale != null && queueStale < 20} />
+                  <span className={queueClass}>
+                    {queueStale != null ? `vor ${queueStale} Min.` : 'keine Daten'}
+                  </span>
+                </span>
+              }
+            >
+              <div>
+                <span
+                  className={`text-[1.75rem] leading-tight font-semibold tracking-tight tabular-nums ${queueClass}`}
+                >
+                  {fresh.queueRowsLastHour.toLocaleString('de-DE')}
+                </span>
+                <p className="text-muted-foreground mt-0.5 text-xs">Zeilen in der letzten Stunde</p>
+              </div>
+              <div className="grid grid-cols-1 gap-3 pt-1 text-sm">
+                <Meta
+                  label="Neueste Zeile"
+                  value={
+                    fresh.latestQueueTime
+                      ? new Date(fresh.latestQueueTime).toLocaleString('de-DE')
+                      : '—'
+                  }
+                />
+              </div>
+            </Tile>
+
+            <Tile
+              icon={CloudSun}
+              title="Wettervorhersage"
+              className="space-y-3"
+              action={
+                <span className="flex items-center gap-1.5 text-xs">
+                  <StatusDot ok={weatherDaysAhead != null && weatherDaysAhead > 0} />
+                  <span className={weatherClass}>
+                    {weatherDaysAhead != null
+                      ? weatherDaysAhead > 0
+                        ? `${weatherDaysAhead} Tage voraus`
+                        : 'steht'
+                      : 'keine Daten'}
+                  </span>
+                </span>
+              }
+            >
+              <div>
+                <span
+                  className={`text-[1.75rem] leading-tight font-semibold tracking-tight tabular-nums ${weatherClass}`}
+                >
+                  {weatherDaysAhead ?? '—'}
+                  <span className="text-muted-foreground text-lg font-normal"> Tage</span>
+                </span>
+                <p className="text-muted-foreground mt-0.5 text-xs">reicht die Vorhersage</p>
+              </div>
+              <div className="grid grid-cols-1 gap-3 pt-1 text-sm">
+                <Meta label="Vorhersage bis" value={formatDay(weatherDate)} />
+              </div>
+            </Tile>
+          </PanelBody>
+        </Panel>
+      ) : null}
 
       {data.gpu?.available && data.gpu.gpus?.length ? (
         <Panel>
@@ -300,9 +377,9 @@ export default function SystemPage() {
                   key={g.index ?? g.name}
                   className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4"
                 >
-                  <Tile icon={Gauge} title="GPU Load" className="space-y-3">
+                  <Tile icon={Gauge} title="GPU-Last" className="space-y-3">
                     <div>
-                      <span className="text-3xl font-bold tabular-nums">
+                      <span className="text-[1.75rem] leading-tight font-semibold tracking-tight tabular-nums">
                         {g.utilizationGpuPct ?? '—'}
                         <span className="text-muted-foreground text-lg font-normal">%</span>
                       </span>
@@ -311,7 +388,7 @@ export default function SystemPage() {
                       </p>
                     </div>
                     <MetricBar
-                      label="Utilization"
+                      label="Auslastung"
                       value={g.utilizationGpuPct ?? 0}
                       max={100}
                       unit="%"
@@ -319,18 +396,20 @@ export default function SystemPage() {
                     />
                   </Tile>
 
-                  <Tile icon={Thermometer} title="Temperature" className="space-y-3">
+                  <Tile icon={Thermometer} title="Temperatur" className="space-y-3">
                     <div>
-                      <span className={`text-3xl font-bold tabular-nums ${tempClass}`}>
+                      <span
+                        className={`text-[1.75rem] leading-tight font-semibold tracking-tight tabular-nums ${tempClass}`}
+                      >
                         {g.temperatureC ?? '—'}
                         <span className="text-muted-foreground text-lg font-normal"> °C</span>
                       </span>
                       <p className="text-muted-foreground mt-0.5 text-xs">
-                        Mem I/O {g.utilizationMemPct ?? '—'}%
+                        Speicher-I/O {g.utilizationMemPct ?? '—'} %
                       </p>
                     </div>
                     <MetricBar
-                      label="Temp"
+                      label="Temperatur"
                       value={temp}
                       max={100}
                       unit=" °C"
@@ -340,17 +419,17 @@ export default function SystemPage() {
 
                   <Tile icon={MemoryStick} title="VRAM" className="space-y-3">
                     <div>
-                      <span className="text-3xl font-bold tabular-nums">
-                        {vramUsed.toFixed(1)}
+                      <span className="text-[1.75rem] leading-tight font-semibold tracking-tight tabular-nums">
+                        {decimal(vramUsed, 1)}
                         <span className="text-muted-foreground text-lg font-normal"> GB</span>
                       </span>
                       <p className="text-muted-foreground mt-0.5 text-xs">
-                        of {vramTotal.toFixed(0)} GB
+                        von {decimal(vramTotal, 0)} GB
                       </p>
                     </div>
                     {vramTotal ? (
                       <MetricBar
-                        label="Used"
+                        label="Belegt"
                         value={vramUsed}
                         max={vramTotal}
                         unit=" GB"
@@ -360,19 +439,19 @@ export default function SystemPage() {
                     ) : null}
                   </Tile>
 
-                  <Tile icon={Zap} title="Power" className="space-y-3">
+                  <Tile icon={Zap} title="Leistung" className="space-y-3">
                     <div>
-                      <span className="text-3xl font-bold tabular-nums">
-                        {g.powerW?.toFixed(0) ?? '—'}
+                      <span className="text-[1.75rem] leading-tight font-semibold tracking-tight tabular-nums">
+                        {g.powerW == null ? '—' : decimal(g.powerW, 0)}
                         <span className="text-muted-foreground text-lg font-normal"> W</span>
                       </span>
                       <p className="text-muted-foreground mt-0.5 text-xs">
-                        of {g.powerLimitW?.toFixed(0) ?? '—'} W limit
+                        Grenze {g.powerLimitW == null ? '—' : decimal(g.powerLimitW, 0)} W
                       </p>
                     </div>
                     {g.powerLimitW ? (
                       <MetricBar
-                        label="Draw"
+                        label="Aufnahme"
                         value={g.powerW ?? 0}
                         max={g.powerLimitW}
                         unit=" W"
@@ -389,7 +468,7 @@ export default function SystemPage() {
 
       {sensorEntries.length ? (
         <Panel>
-          <PanelHeader icon={Thermometer} title="Sensors" />
+          <PanelHeader icon={Thermometer} title="Sensoren" />
           <PanelBody className="grid grid-cols-1 gap-3">
             {sensorEntries.map(([chip, list]) => {
               const hot = Math.max(...list.map((s) => s.tempC));
@@ -400,16 +479,14 @@ export default function SystemPage() {
                   title={
                     <>
                       {chipLabel(chip)}
-                      <span className="text-muted-foreground/60 normal-case">
-                        · {list.length} {list.length === 1 ? 'sensor' : 'sensors'}
+                      <span className="text-muted-foreground/60">
+                        · {list.length} {list.length === 1 ? 'Sensor' : 'Sensoren'}
                       </span>
                     </>
                   }
                   action={
-                    <span
-                      className={`text-[11px] font-semibold tracking-wider uppercase tabular-nums ${sensorTempClass(hot)}`}
-                    >
-                      peak {hot}°C
+                    <span className={`text-xs font-semibold tabular-nums ${sensorTempClass(hot)}`}>
+                      Spitze {hot} °C
                     </span>
                   }
                 >
@@ -417,12 +494,9 @@ export default function SystemPage() {
                     {list.map((s, i) => (
                       <div
                         key={`${s.label}-${i}`}
-                        className="border-border/40 bg-muted/20 rounded-md border px-2.5 py-1.5"
+                        className="rounded-md border border-white/[0.06] bg-white/[0.02] px-2.5 py-1.5"
                       >
-                        <p
-                          className="text-muted-foreground truncate text-[10px] tracking-wide uppercase"
-                          title={s.label}
-                        >
+                        <p className="text-muted-foreground truncate text-xs" title={s.label}>
                           {s.label}
                         </p>
                         <p className={`text-lg font-bold tabular-nums ${sensorTempClass(s.tempC)}`}>
@@ -440,7 +514,7 @@ export default function SystemPage() {
       ) : null}
 
       <Panel>
-        <PanelHeader icon={Database} title="Database & Cache" />
+        <PanelHeader icon={Database} title="Datenbank und Cache" />
         <PanelBody className="grid grid-cols-1 gap-3 sm:grid-cols-2">
           <Tile
             icon={Database}
@@ -450,13 +524,13 @@ export default function SystemPage() {
               <span className="flex items-center gap-1.5 text-xs">
                 <StatusDot ok={pgOk} />
                 <span className={pgOk ? 'text-emerald-400' : 'text-red-400'}>
-                  {pgOk ? 'Connected' : data.postgres.status}
+                  {pgOk ? 'verbunden' : data.postgres.status}
                 </span>
               </span>
             }
           >
             <MetricBar
-              label={`Connections (active: ${data.postgres.activeQueries})`}
+              label={`Verbindungen (aktiv: ${data.postgres.activeQueries})`}
               value={data.postgres.connections}
               max={data.postgres.maxConnections}
               unit=""
@@ -464,10 +538,10 @@ export default function SystemPage() {
               thresholds={[60, 80]}
             />
             <div className="grid grid-cols-2 gap-3 pt-1 text-sm">
-              <Meta label="DB Size" value={`${data.postgres.dbSizeGB.toFixed(2)} GB`} />
+              <Meta label="Größe" value={`${decimal(data.postgres.dbSizeGB, 2)} GB`} />
               <Meta
-                label="Cache Hit"
-                value={`${data.postgres.cacheHitPct?.toFixed(1) ?? '—'}%`}
+                label="Cache-Treffer"
+                value={`${data.postgres.cacheHitPct == null ? '—' : decimal(data.postgres.cacheHitPct, 1)} %`}
                 valueClassName={
                   (data.postgres.cacheHitPct ?? 0) >= 99 ? 'text-emerald-400' : 'text-amber-400'
                 }
@@ -483,24 +557,24 @@ export default function SystemPage() {
               <span className="flex items-center gap-1.5 text-xs">
                 <StatusDot ok={redisOk} />
                 <span className={redisOk ? 'text-emerald-400' : 'text-red-400'}>
-                  {redisOk ? 'Connected' : data.redis.status}
+                  {redisOk ? 'verbunden' : data.redis.status}
                 </span>
               </span>
             }
           >
             <MetricBar
-              label="Memory"
+              label="Speicher"
               value={data.redis.usedMemoryMB}
               max={data.redis.maxMemoryMB ?? data.redis.usedMemoryMB * 2}
               unit=" MB"
               thresholds={[60, 80]}
             />
             <div className="grid grid-cols-3 gap-3 pt-1 text-sm">
-              <Meta label="Keys" value={data.redis.keys.toLocaleString('en-GB')} />
+              <Meta label="Schlüssel" value={data.redis.keys.toLocaleString('de-DE')} />
               <Meta label="Clients" value={data.redis.connectedClients} />
               <Meta
-                label="Hit Rate"
-                value={`${data.redis.hitRatePct?.toFixed(1) ?? '—'}%`}
+                label="Trefferquote"
+                value={`${data.redis.hitRatePct == null ? '—' : decimal(data.redis.hitRatePct, 1)} %`}
                 valueClassName={
                   (data.redis.hitRatePct ?? 0) >= 80 ? 'text-emerald-400' : 'text-amber-400'
                 }
@@ -569,73 +643,6 @@ export default function SystemPage() {
               </Tile>
             </PanelBody>
           )}
-        </Panel>
-      ) : null}
-
-      {fresh ? (
-        <Panel>
-          <PanelHeader icon={Activity} title="Data Ingestion" />
-          <PanelBody className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-            <Tile
-              icon={Waves}
-              title="Wait Times"
-              className="space-y-3"
-              action={
-                <span className="flex items-center gap-1.5 text-xs">
-                  <StatusDot ok={queueStale != null && queueStale < 20} />
-                  <span className={queueClass}>
-                    {queueStale != null ? `${queueStale} min ago` : 'no data'}
-                  </span>
-                </span>
-              }
-            >
-              <div>
-                <span className={`text-3xl font-bold tabular-nums ${queueClass}`}>
-                  {fresh.queueRowsLastHour.toLocaleString('en-GB')}
-                </span>
-                <p className="text-muted-foreground mt-0.5 text-xs">rows ingested · last hour</p>
-              </div>
-              <div className="grid grid-cols-1 gap-3 pt-1 text-sm">
-                <Meta
-                  label="Latest data point"
-                  value={
-                    fresh.latestQueueTime
-                      ? new Date(fresh.latestQueueTime).toLocaleString('en-GB')
-                      : '—'
-                  }
-                />
-              </div>
-            </Tile>
-
-            <Tile
-              icon={CloudSun}
-              title="Weather Forecast"
-              className="space-y-3"
-              action={
-                <span className="flex items-center gap-1.5 text-xs">
-                  <StatusDot ok={weatherDaysAhead != null && weatherDaysAhead > 0} />
-                  <span className={weatherClass}>
-                    {weatherDaysAhead != null
-                      ? weatherDaysAhead > 0
-                        ? `+${weatherDaysAhead}d ahead`
-                        : 'stalled'
-                      : 'no data'}
-                  </span>
-                </span>
-              }
-            >
-              <div>
-                <span className={`text-3xl font-bold tabular-nums ${weatherClass}`}>
-                  {weatherDaysAhead ?? '—'}
-                  <span className="text-muted-foreground text-lg font-normal"> days</span>
-                </span>
-                <p className="text-muted-foreground mt-0.5 text-xs">forecast horizon</p>
-              </div>
-              <div className="grid grid-cols-1 gap-3 pt-1 text-sm">
-                <Meta label="Forecast until" value={weatherDate ?? '—'} />
-              </div>
-            </Tile>
-          </PanelBody>
         </Panel>
       ) : null}
     </AdminPage>

@@ -55,7 +55,7 @@ const QUERY_KEY = ['admin', 'reissue-candidates'];
 function Side({ label, side }: { label: string; side: CandidateSide }) {
   return (
     <div className="min-w-0 flex-1">
-      <p className="text-muted-foreground text-[11px] tracking-wide uppercase">{label}</p>
+      <p className="text-muted-foreground text-xs">{label}</p>
       <Link
         href={`/admin/attractions/${side.attractionId}`}
         className="hover:text-primary block truncate text-sm font-medium transition-colors"

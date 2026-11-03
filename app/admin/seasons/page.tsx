@@ -116,7 +116,7 @@ export default function SeasonsPage() {
         ) : (
           grouped.map(([kindKey, list]) => (
             <section key={kindKey}>
-              <h2 className="text-muted-foreground mb-2 text-[11px] font-semibold tracking-widest uppercase">
+              <h2 className="text-muted-foreground mb-2 text-xs font-medium">
                 {KIND_LABELS[kindKey as ParkSeasonKind] ?? kindKey} · {list.length}
               </h2>
               <ul className="divide-border/40 border-border/60 bg-card/40 divide-y rounded-xl border">

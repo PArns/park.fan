@@ -47,6 +47,14 @@ here as there. Charts (a line chart with a hover readout, sparkline, bar list, s
 `_ui/charts.tsx`, drawn without a library. Pure formatters live in `_lib/format.ts`, never next to
 the components.
 
+The kit's look is the overview's: hairline borders (`border-white/[0.07]`), labels in sentence case
+at 12 to 13 px instead of spaced capitals, figures in semibold with tight tracking, a selected
+`Segmented` option as a lifted grey rather than a block of brand blue. A page takes that look by
+using the kit, not by repeating its classes. Two places keep their capitals on purpose: the blog
+editor, whose English labels and codes („de“, „info“) read as tags, and the media facet and locale
+buttons, whose values are lowercase codes. `Chip` also serves the light-themed overlay on public
+pages (`components/admin/`), so its tones keep their light-theme text.
+
 Everything is reachable three ways: the sidebar, `⌘K` and `g`-then-a-letter
 (`_app/admin-shell.tsx`). The palette is the practical way to reach one of hundreds of parks or
 thousands of rides, and it searches the **curated** name as well as the upstream one, so a park

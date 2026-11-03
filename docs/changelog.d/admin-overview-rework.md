@@ -14,6 +14,13 @@ Einsendungen tragen ihren Zustand als Punkt oder Zahl. Die Seite liegt eingerüc
 schlanken Topbar, und Admin, Login und Freigabeseite zeigen das echte park.fan-Lockup mit
 „Admin“-Etikett (`AdminBrand`).
 
+Die übrigen Seiten tragen den Stil über das Kit: `Tile`, `StatTile`, `Meta`, `Toolbar`, die
+Formularfelder und die Fehler- und Hinweiskästen haben feine Kanten und Beschriftungen in
+Satzschreibung statt gesperrter Großbuchstaben (44 Stellen in 28 Dateien, Blog-Editor und
+Medien-Codes ausgenommen). Die Queues sind eine Tabelle mit festen Spalten, Fehlern zuerst und
+ausgeblendeten Nullen auf dem Handy. System und Parks live sind deutsch beschriftet und zeigen
+Zahlen mit Dezimalkomma.
+
 Der Login sprang zweimal, wenn Turnstile nachlud: erst um das 72 px hohe Widget, dann um die
 verschwindende Zeile „Sicherheitsprüfung läuft.“. `TurnstileWidget` reserviert die Höhe jetzt
 selbst, die Statuszeile bleibt in jedem Zustand eine Zeile. CLS auf dem Handy 0,095 → 0, am

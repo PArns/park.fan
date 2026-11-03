@@ -254,9 +254,7 @@ function LiveHero({
           />
         )}
         <div className="relative">
-          <p className="text-muted-foreground text-[11px] font-medium tracking-wide uppercase">
-            Aktiv jetzt
-          </p>
+          <p className="text-muted-foreground text-xs font-medium">Aktiv jetzt</p>
           <p className="mt-1 text-7xl leading-none font-bold tracking-tight tabular-nums sm:text-8xl">
             <CountUp
               value={live.activeVisitors}
@@ -268,9 +266,7 @@ function LiveHero({
           <dl className="border-border/50 mt-6 grid grid-cols-3 gap-3 border-t pt-4">
             {figures.map((figure) => (
               <div key={figure.label} className="min-w-0">
-                <dt className="text-muted-foreground truncate text-[11px] tracking-wide uppercase">
-                  {figure.label}
-                </dt>
+                <dt className="text-muted-foreground truncate text-xs">{figure.label}</dt>
                 <dd className="mt-0.5 text-xl font-semibold tabular-nums">
                   <CountUp value={figure.value} animate={animate} duration={700} />
                 </dd>

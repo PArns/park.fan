@@ -171,7 +171,7 @@ export function PopularityView({ postTitles }: { postTitles: PostTitles }) {
             <PanelHeader icon={Languages} title="Nach Sprache" hint="Wo gelesen wird" />
             <PanelBody className="overflow-x-auto">
               <table className="w-full text-sm tabular-nums">
-                <thead className="text-muted-foreground text-[11px] tracking-wide uppercase">
+                <thead className="text-muted-foreground text-xs">
                   <tr>
                     <th className="py-1.5 pr-3 text-left font-medium">Art</th>
                     {LOCALES.map((locale) => (
@@ -248,7 +248,7 @@ export function PopularityView({ postTitles }: { postTitles: PostTitles }) {
                   />
                   <PanelBody className="overflow-x-auto p-0">
                     <table className="w-full min-w-[40rem] table-fixed text-sm tabular-nums">
-                      <thead className="text-muted-foreground text-[11px] tracking-wide uppercase">
+                      <thead className="text-muted-foreground text-xs">
                         <tr className="border-border/50 border-b">
                           <th className="w-10 py-2 pl-4 text-left font-medium">#</th>
                           <th className="py-2 text-left font-medium">Seite</th>

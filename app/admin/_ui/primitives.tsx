@@ -150,18 +150,21 @@ export function Tile({
 }) {
   return (
     <section
-      className={cn('border-border/60 bg-muted/20 space-y-2.5 rounded-lg border p-3', className)}
+      className={cn(
+        'space-y-2.5 rounded-lg border border-white/[0.07] bg-white/[0.025] p-3',
+        className
+      )}
     >
       {(title || action) && (
         <div className="flex items-center justify-between gap-3">
-          <h3 className="flex min-w-0 items-center gap-2 text-[11px] font-semibold tracking-wider uppercase">
-            {Icon && <Icon className="text-muted-foreground h-3.5 w-3.5 shrink-0" />}
+          <h3 className="text-muted-foreground flex min-w-0 items-center gap-2 text-[13px] font-medium">
+            {Icon && <Icon className="h-4 w-4 shrink-0" />}
             {title}
           </h3>
           {action}
         </div>
       )}
-      {hint && <p className="text-muted-foreground text-[11px]">{hint}</p>}
+      {hint && <p className="text-muted-foreground text-xs">{hint}</p>}
       {children}
     </section>
   );
@@ -178,11 +181,11 @@ export function StatTile({
   sub?: ReactNode;
 }) {
   return (
-    <Tile className="space-y-1">
-      <p className="text-muted-foreground text-[11px] font-medium tracking-wide uppercase">
-        {label}
-      </p>
-      <span className="block text-3xl font-bold tabular-nums">{value}</span>
+    <Tile className="space-y-1.5">
+      <p className="text-muted-foreground text-[13px] font-medium">{label}</p>
+      <span className="block text-[1.75rem] leading-none font-semibold tracking-tight tabular-nums">
+        {value}
+      </span>
       {sub && <p className="text-muted-foreground text-xs">{sub}</p>}
     </Tile>
   );
@@ -193,7 +196,7 @@ export function Toolbar({ className, ...props }: ComponentProps<'div'>) {
   return (
     <div
       className={cn(
-        'border-border/50 bg-background/70 flex flex-wrap items-center gap-2 border-b px-4 py-2.5 backdrop-blur-md',
+        'bg-background/70 flex flex-wrap items-center gap-2 border-b border-white/[0.06] px-4 py-2.5 backdrop-blur-md',
         className
       )}
       {...props}
@@ -220,7 +223,7 @@ export function StartTruncated({ children }: { children: ReactNode }) {
  *  discoverable by looking rather than by reading documentation. */
 export function Kbd({ children }: { children: ReactNode }) {
   return (
-    <kbd className="border-border/70 bg-muted/60 text-muted-foreground inline-flex h-5 min-w-5 items-center justify-center rounded border px-1.5 font-sans text-[10px] font-semibold">
+    <kbd className="text-muted-foreground inline-flex h-5 min-w-5 items-center justify-center rounded border border-white/10 bg-white/[0.06] px-1.5 font-sans text-[10px] font-semibold">
       {children}
     </kbd>
   );
@@ -241,7 +244,7 @@ export function Meta({
 }) {
   return (
     <div className={cn('min-w-0', className)}>
-      <p className="text-muted-foreground text-[11px] tracking-wide uppercase">{label}</p>
+      <p className="text-muted-foreground text-xs">{label}</p>
       <p className={cn('truncate text-sm font-medium tabular-nums', valueClassName)}>{value}</p>
     </div>
   );
@@ -359,7 +362,7 @@ export function LoadingState({ label = 'Lädt…' }: { label?: string }) {
 /** Red error box showing a message, with an `Erneut` retry button when `onRetry` is given. */
 export function ErrorState({ message, onRetry }: { message: string; onRetry?: () => void }) {
   return (
-    <div className="border-destructive/30 bg-destructive/10 text-destructive m-4 flex items-start gap-2 rounded-lg border px-3 py-2.5 text-sm">
+    <div className="m-4 flex items-start gap-2 rounded-xl border border-red-500/25 bg-red-500/[0.06] px-3.5 py-3 text-sm text-red-300">
       <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0" />
       <span className="min-w-0 flex-1 break-words">{message}</span>
       {onRetry && (
@@ -392,7 +395,7 @@ export function Notice({
     <div
       role={role}
       className={cn(
-        'flex items-start gap-2.5 rounded-lg border border-amber-500/30 bg-amber-500/10 px-3 py-2.5 text-sm text-amber-300',
+        'flex items-start gap-2.5 rounded-xl border border-amber-400/20 bg-amber-400/[0.05] px-3.5 py-3 text-sm text-amber-200',
         className
       )}
     >
@@ -417,7 +420,7 @@ export function EmptyState({
   return (
     <div className="flex flex-col items-center justify-center gap-3 px-6 py-14 text-center">
       {Icon && (
-        <span className="bg-muted/60 text-muted-foreground flex h-11 w-11 items-center justify-center rounded-xl">
+        <span className="text-muted-foreground flex h-11 w-11 items-center justify-center rounded-xl bg-white/[0.05] ring-1 ring-white/10">
           <Icon className="h-5 w-5" />
         </span>
       )}
@@ -438,21 +441,21 @@ export function EmptyState({
  */
 export function SkeletonRows({ rows = 6, className }: { rows?: number; className?: string }) {
   return (
-    <div className={cn('divide-border/40 divide-y', className)}>
+    <div className={cn('divide-y divide-white/[0.05]', className)}>
       {Array.from({ length: rows }, (_, index) => (
         <div key={index} className="flex items-center gap-3 px-4 py-3">
-          <div className="bg-muted/60 h-4 w-4 animate-pulse rounded" />
+          <div className="h-4 w-4 animate-pulse rounded bg-white/[0.06]" />
           <div className="min-w-0 flex-1 space-y-1.5">
             <div
-              className="bg-muted/60 h-3.5 animate-pulse rounded"
+              className="h-3.5 animate-pulse rounded bg-white/[0.06]"
               style={{ width: `${40 + ((index * 13) % 35)}%` }}
             />
             <div
-              className="bg-muted/40 h-2.5 animate-pulse rounded"
+              className="h-2.5 animate-pulse rounded bg-white/[0.04]"
               style={{ width: `${25 + ((index * 7) % 25)}%` }}
             />
           </div>
-          <div className="bg-muted/50 h-5 w-16 animate-pulse rounded-full" />
+          <div className="h-5 w-16 animate-pulse rounded-full bg-white/[0.05]" />
         </div>
       ))}
     </div>
