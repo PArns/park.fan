@@ -1,0 +1,6 @@
+### Startseite: die News-Tafel ohne Kicker, mit vier Guides, auf dem Handy drei und drei
+
+- **Kicker weg:** Über „Freizeitpark-News und Guides" steht kein „Neu auf park.fan" mehr, und mit ihm geht das Zeitungs-Icon (`HomeReading`, Key `homeStory.reading.kicker` in allen sechs Sprachen entfernt). Der Titel sagt schon, was kommt.
+- **Vier Guides statt drei** in „Beliebteste Guides" (`ARTICLES` in `components/home/home-reading.tsx`). Bei 1440 px ist die Guide-Spalte damit 611 px hoch, die News-Spalte mit sechs Meldungen an fünf Tagen 585 px; vorher blieben unter den drei Guides rund 130 px leer.
+- **Auf dem Handy** (unter `sm`) zeigt die Tafel die drei neuesten News und die drei meistgelesenen Guides (`PHONE_ROWS` in `components/home/news-board.tsx`). Untereinander gestapelt waren sechs News und vier Guides eine lange Spalte vor der Tour: bei 402 px ist die Tafel jetzt 837 px hoch statt 1.427 px. Die übrigen Zeilen blendet CSS aus, die letzte sichtbare verliert ihre Trennlinie.
+- **Neuer Lead:** „Wer baut, wer schließt, wer ist ausverkauft. Dazu die Guides, die im letzten Monat am meisten gelesen wurden.“ Der alte versprach Guides zu einzelnen Parks mit Besuchstagen und Wartezeiten, auf der Tafel standen aber die Neuheiten 2027, Halloween und Essen mitbringen.

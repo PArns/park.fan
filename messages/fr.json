@@ -191,9 +191,8 @@
       "link": "Demander à Parky"
     },
     "reading": {
-      "kicker": "Nouveau sur park.fan",
       "title": "Actus et guides des parcs d’attractions",
-      "lead": "Ce qui change en ce moment dans les parcs, et des guides par parc avec les meilleurs jours pour y aller et les temps d’attente mesurés des attractions.",
+      "lead": "Qui construit, qui ferme, qui affiche complet. Et les guides les plus lus ces trente derniers jours.",
       "popularGuides": "Guides les plus lus"
     },
     "tour": {

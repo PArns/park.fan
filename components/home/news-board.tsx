@@ -23,6 +23,19 @@ const ROW_CLASS =
 const LINK_CLASS =
   'group hover:bg-muted/60 -mx-2 flex items-center gap-4 rounded-xl px-2 py-1.5 transition-colors';
 
+/** How many rows of each group a phone shows, where the two groups stack into one long column. */
+const PHONE_ROWS = 3;
+
+/**
+ * The phone's cut for a row holding the posts from `start` on: hidden past {@link PHONE_ROWS}, and
+ * the row the cut ends in loses the rule `divide-y` draws under it, since the rows under it are gone.
+ */
+function phoneCut(start: number, count = 1): string | undefined {
+  if (start >= PHONE_ROWS) return 'max-sm:hidden';
+  if (start + count >= PHONE_ROWS) return 'max-sm:border-b-0';
+  return undefined;
+}
+
 /**
  * A post's cover, small; a post without one gets the brand fallback, its hue from the slug, so two
  * posts of one day still read as two.
@@ -98,22 +111,29 @@ function BoardGroup({
   );
 }
 
-/** News posts by day, newest first: `listNewsByDate` is sorted, so a day is a run of one date. */
-function byDay(posts: readonly BlogListItem[]): { date: string; posts: BlogListItem[] }[] {
-  const days: { date: string; posts: BlogListItem[] }[] = [];
-  for (const post of posts) {
+/**
+ * News posts by day, newest first: `listNewsByDate` is sorted, so a day is a run of one date. `start`
+ * is the index of the day's first post among all of them.
+ */
+function byDay(
+  posts: readonly BlogListItem[]
+): { date: string; start: number; posts: BlogListItem[] }[] {
+  const days: { date: string; start: number; posts: BlogListItem[] }[] = [];
+  posts.forEach((post, index) => {
     const last = days.at(-1);
     if (last?.date === post.frontmatter.date) last.posts.push(post);
-    else days.push({ date: post.frontmatter.date, posts: [post] });
-  }
+    else days.push({ date: post.frontmatter.date, start: index, posts: [post] });
+  });
   return days;
 }
 
 /**
- * „Neu auf park.fan" as one board: the newest news by day, each day's age and date in a column on
- * the left as `/news` draws it (`NewsAge stacked`), and the most read articles with their date and
- * reading time, under the news on a narrow page and beside it from 1024 px. Every post has a small cover on the right, the brand fallback where it has no photo ({@link Cover}). The
- * board follows the theme like every card, so nothing inside needs a colour of its own.
+ * The homepage's news and guides as one board: the newest news by day, each day's age and date in a
+ * column on the left as `/news` draws it (`NewsAge stacked`), and the most read articles with their
+ * date and reading time, under the news on a narrow page and beside it from 1024 px; a phone shows
+ * the first three of each ({@link PHONE_ROWS}). Every post has a small cover on the right, the brand
+ * fallback where it has no photo ({@link Cover}). The board follows the theme like every card, so
+ * nothing inside needs a colour of its own.
  *
  * News stays a step below the articles (docs/rules/news-is-set-apart-from-the-articles.md): a
  * semibold title and no teaser against a bold, larger title with one.
@@ -150,11 +170,18 @@ export async function NewsBoard({
           live
         >
           {byDay(news).map((day) => (
-            <li key={day.date} className={ROW_CLASS}>
+            <li key={day.date} className={cn(ROW_CLASS, phoneCut(day.start, day.posts.length))}>
               <NewsAge date={day.date} stacked className="text-sm sm:pt-1.5" />
               <ul className="divide-border/40 divide-y">
-                {day.posts.map((post) => (
-                  <li key={post.translationKey} className="py-1 first:pt-0 last:pb-0">
+                {day.posts.map((post, i) => (
+                  <li
+                    key={post.translationKey}
+                    className={cn(
+                      'py-1 first:pt-0 last:pb-0',
+                      phoneCut(day.start + i),
+                      day.start + i === PHONE_ROWS - 1 && 'max-sm:pb-0'
+                    )}
+                  >
                     <Link href={postPath(post) as '/'} prefetch={false} className={LINK_CLASS}>
                       <span className="text-foreground group-hover:text-primary min-w-0 flex-1 text-sm leading-snug font-semibold text-pretty transition-colors sm:text-base">
                         <MostReadBadge
@@ -190,8 +217,8 @@ export async function NewsBoard({
           href="/blog"
           linkLabel={tBlog('home.viewAll')}
         >
-          {articles.map((post) => (
-            <li key={post.translationKey} className="px-3 py-3 sm:py-3.5">
+          {articles.map((post, i) => (
+            <li key={post.translationKey} className={cn('px-3 py-3 sm:py-3.5', phoneCut(i))}>
               <Link href={postPath(post) as '/'} prefetch={false} className={LINK_CLASS}>
                 <span className="min-w-0 flex-1">
                   {/* Ranked by reads, so the date is a detail beside the reading time, not a column. */}
