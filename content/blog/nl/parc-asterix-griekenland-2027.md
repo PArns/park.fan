@@ -2,7 +2,7 @@
 title: 'Parc Astérix maakt zijn Griekse gebied in 2027 groter'
 translationKey: parc-asterix-griechenland-2027
 date: '2026-11-03'
-time: '12:00'
+time: '08:19'
 author: patrick
 mode: published
 featured: false
@@ -38,7 +38,7 @@ seo:
     - Plailly Asterix
 ---
 
-[Parc Astérix](ref:parc-asterix) in Plailly, 35 kilometer ten noorden van Parijs, maakt zijn themagebied Grèce, het oude Griekenland, tot het voorjaar van 2027 groter. Er komen twee familieattracties bij, een speeltuin, een groot restaurant en twee kiosken. Dat maakte het park op 2 november bekend. In hetzelfde gebied staat de houten achtbaan [Tonnerre 2 Zeus](ref:parc-asterix/tonnerre-2-zeus?bare), en die krijgt in 2027 over de hele baan nieuwe rails.
+[Parc Astérix](ref:parc-asterix) in Plailly, 35 kilometer ten noorden van Parijs, maakt zijn themagebied Grèce, het oude Griekenland, tot het voorjaar van 2027 groter. Er komen twee familieattracties bij, een speeltuin, een groot restaurant en twee kiosken. Dat maakte het park op 2 november bekend. In hetzelfde gebied staat de houten achtbaan [Tonnerre 2 Zeus](ref:parc-asterix/tonnerre-2-zeus?bare), waarvan het park in 2027 de hele baan vernieuwt.
 
 ## Twee attracties en een speeltuin
 
@@ -48,13 +48,13 @@ Samen moeten de twee attracties 800 mensen per uur vervoeren. Kleinere kinderen 
 
 ## Eten bij Dionysos
 
-Het nieuwe restaurant heet La Table de Dionysos. Je wordt er aan tafel bediend, en er zijn 460 plaatsen: 350 binnen en 110 op het terras. De bestaande Taverne de Dionysos gaat voortaan La Taverne de Poséidon heten. Zo heeft Poseidon in Grèce straks zijn eigen bootvloot en zijn eigen eethuis.
+Het nieuwe restaurant heet La Table de Dionysos. Je wordt er aan tafel bediend, en er zijn 460 plaatsen: 350 binnen en 110 op het terras. De bestaande Taverne de Dionysos gaat voortaan La Taverne de Poséidon heten, en de naam Dionysos gaat naar het nieuwe restaurant.
 
 Bij de eerste kiosk, Chez Nikos Bouldeglas, koop je ambachtelijk ijs. De tweede verkoopt granita en heet Elis, net als de attractie La Rivière d'Elis.
 
 ## Openingsdagen in 2026 en 2027
 
-Het seizoen 2027 begint op zaterdag 27 maart, van 10.00 tot 19.00 uur. Het eerste weekend loopt tot en met 29 maart. Daarna is het park van 30 maart tot en met 2 april dicht en vanaf 3 april tot begin september elke dag open. [Hotel L'Odyssée](/news/parc-asterix-hotel-odyssee-2027) opent al op 26 maart 2027, een dag voor de seizoensstart.
+Het seizoen 2027 begint op zaterdag 27 maart, van 10.00 tot 19.00 uur. Na het eerste weekend, dat tot en met 29 maart loopt, gaat het park vier dagen dicht, en vanaf 3 april is het tot begin september elke dag open. [Hotel L'Odyssée](/news/parc-asterix-hotel-odyssee-2027) opent al op 26 maart 2027, een dag voor de seizoensstart.
 
 Dit jaar is het park van 9 november tot en met 18 december gesloten. Daarvoor en daarna is het op deze dagen open:
 
@@ -66,7 +66,7 @@ Dit jaar is het park van 9 november tot en met 18 december gesloten. Daarvoor en
 
 In de winter van 2025/26 verving Rocky Mountain Construction (RMC) zo'n 350 meter van de baan. Die renovatie wil het park dit seizoen afronden. In het seizoen 2027 krijgt de achtbaan dan over de volledige lengte nieuwe rails. Of Tonnerre 2 Zeus daarvoor in 2027 een tijd dichtgaat, heeft het park niet bekendgemaakt.
 
-De achtbaan opende op 5 april 1997, toen nog als Tonnerre de Zeus en gebouwd door Custom Coasters International. Vanaf de winter van 2019 legde The Gravity Group de baan in etappes opnieuw en haalde de dubbele helix eruit. Na het seizoen 2021 stond de achtbaan stil, in april 2022 kwam hij terug met nieuwe treinen van Gravitykraft. De rails van RMC komen dus nog geen vier jaar na die terugkeer. Sindsdien staat er een 2 in de naam. In het Frans klinkt die bijna als het oude de, een woordgrap die je in het Nederlands alleen met veel goede wil hoort. De baan is 30 meter hoog, en zonder begeleiding mag je mee vanaf 1,20 meter.
+De achtbaan opende op 5 april 1997, toen nog als Tonnerre de Zeus en gebouwd door Custom Coasters International. Vanaf de winter van 2019 legde The Gravity Group de baan in etappes opnieuw en haalde de dubbele helix eruit. Na het seizoen 2021 stond de achtbaan stil, in april 2022 kwam hij terug met nieuwe treinen van Gravitykraft. Sinds die terugkeer heet hij Tonnerre 2 Zeus. In het Frans klinkt de 2 bijna als het oude de, een woordgrap die je in het Nederlands alleen met veel goede wil hoort. Met RMC werkt nog geen vier jaar later al de derde bouwer aan de baan. De baan is 30 meter hoog, en zonder begeleiding mag je mee vanaf 1,20 meter.
 
 ## Wat er nu in Grèce staat
 
@@ -74,11 +74,11 @@ De achtbaan opende op 5 april 1997, toen nog als Tonnerre de Zeus en gebouwd doo
 
 ```
 
-Grèce is een van de vijf themawerelden, naast Gallië, het Romeinse Rijk, de Vikingen en Egypte. Met de twee nieuwe staan er in Grèce straks negen attracties in plaats van zeven. In onze [gids voor Parc Astérix](/blog/parc-asterix-wachttijden-tips) staat per gebied op welk uur je bij welke attractie het kortst in de rij staat, en hoe je in Plailly komt.
+Grèce is een van de vijf themawerelden, naast Gallië, het Romeinse Rijk, de Vikingen en Egypte. In onze [gids voor Parc Astérix](/blog/parc-asterix-wachttijden-tips) staat per gebied op welk uur je bij welke attractie het kortst in de rij staat, en hoe je in Plailly komt.
 
 ## Verdere plannen tot 2030
 
-Tot 2030 wil het park 250 miljoen euro investeren. Egypte kreeg in 2026 een nieuwe inrichting: het Oxygénarium werd La Descente du Nil en de Chaises Volantes werden L'Envol d'Ibis. Voor 2028 staat Londinium op de planning, een overdekt gebied naar het album “Asterix en de Britten”. Daar moeten een grote achtbaan en een interactieve darkride voor gezinnen komen. Als alle projecten klaar zijn, moet het park 20 procent meer capaciteit hebben. Twee derde van die extra capaciteit moet overdekt zijn. Welke andere parken in Europa in 2027 iets nieuws openen, hebben we op een rij gezet bij de [nieuwe attracties in 2027](/blog/nieuwe-attracties-pretparken-2027).
+Welke andere parken in Europa in 2027 iets nieuws openen, hebben we op een rij gezet bij de [nieuwe attracties in 2027](/blog/nieuwe-attracties-pretparken-2027). Parc Astérix zelf wil tot 2030 250 miljoen euro investeren. Egypte kreeg in 2026 een nieuwe inrichting: het Oxygénarium werd La Descente du Nil en de Chaises Volantes werden L'Envol d'Ibis. Voor 2028 staat Londinium op de planning, een overdekt gebied naar het album “Asterix en de Britten”. Daar moeten een grote achtbaan en een interactieve darkride voor gezinnen komen. Als alle projecten klaar zijn, moet het park 20 procent meer capaciteit hebben. Twee derde van die extra capaciteit moet overdekt zijn.
 
 Bronnen:
 [Persbericht van Parc Astérix over Grèce 2027](https://newsroom.parcasterix.fr/actualites/en-2027-au-parc-asterix-la-grece-en-grand/?lang=fr),
