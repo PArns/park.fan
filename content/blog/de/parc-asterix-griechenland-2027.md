@@ -42,7 +42,7 @@ Der [Parc Astérix](ref:parc-asterix) baut seinen Themenbereich Grèce, das anti
 
 ## Zwei Bahnen und ein Spielplatz
 
-Tournikotis Tournikotas heißen zwei Falltürme für Familien, deren Name schon beim Aussprechen ein paarmal hoch und runter geht. Die Fahrgäste machen es in den Türmen genauso, mit mehreren Fahrten nach oben und wieder nach unten. Bei La Flotte de Poséidon sitzt du in einem von acht Booten, die sich drehen und dabei an einer Säule in der Mitte aufsteigen.
+Tournikotis Tournikotas ist eine Familienattraktion mit zwei Falltürmen, deren Name schon beim Aussprechen ein paarmal hoch und runter geht. Die Fahrgäste machen es in den Türmen genauso, mit mehreren Fahrten nach oben und wieder nach unten. Bei La Flotte de Poséidon sitzt du in einem von acht Booten, die sich drehen und dabei an einer Säule in der Mitte aufsteigen.
 
 Wer die beiden Bahnen baut und wo genau in der Grèce sie stehen werden, hat der Park nicht bekannt gegeben. Zusammen sollen sie 800 Personen in der Stunde befördern. Für die Jüngsten kommt mit L'Aire de Jeu d'Ulysse ein Spielplatz im Stil des Bereichs dazu.
 
@@ -50,23 +50,23 @@ Wer die beiden Bahnen baut und wo genau in der Grèce sie stehen werden, hat der
 
 Das neue Restaurant heißt La Table de Dionysos, hat Bedienung am Tisch und 460 Plätze, davon 350 drinnen und 110 auf der Terrasse. Die bestehende Taverne de Dionysos heißt künftig La Taverne de Poséidon, und Poseidon hat damit in der Grèce eine eigene Bootsflotte und ein eigenes Lokal.
 
-Bei Chez Nikos Bouldeglas, dem ersten der beiden Kioske, steckt die Eiskugel schon im Namen, auf Französisch heißt sie boule de glace, und verkauft wird dort handgemachtes Eis. Am zweiten Kiosk, Elis, gibt es Granita. Elis heißt im Bereich auch schon eine Bahn, La Rivière d'Elis.
+Am ersten der beiden Kioske, Chez Nikos Bouldeglas, gibt es handgemachtes Eis. Am zweiten Kiosk, Elis, gibt es Granita. Elis heißt im Bereich auch schon eine Bahn, La Rivière d'Elis.
 
 ## Tickets und Öffnungstage
 
-Als Termin für die neuen Bahnen nennt der Park nur das Frühjahr 2027. Die Saison 2027 beginnt am Samstag, 27. März, von 10 bis 19 Uhr. Offen ist der Park dann vom 27. bis 29. März, vom 30. März bis 2. April bleibt er zu, und ab dem 3. April öffnet er täglich. Tagestickets für 2027 stehen im Kalender des Parks noch ohne Preis. Das [Hotel L'Odyssée](/news/parc-asterix-hotel-odyssee-2027) öffnet schon am 26. März 2027, einen Tag vor dem Saisonstart.
+Die Saison 2027 beginnt am Samstag, 27. März, von 10 bis 19 Uhr. Danach öffnet er vom 27. bis 29. März. Vom 30. März bis 2. April bleibt er zu, ab dem 3. April hat er bis Anfang September täglich offen. Die Preise für Tagestickets 2027 hat der Park noch nicht veröffentlicht. Das [Hotel L'Odyssée](/news/parc-asterix-hotel-odyssee-2027) öffnet schon am 26. März 2027, einen Tag vor dem Saisonstart.
 
 In diesem Jahr ist der Park vom 9. November bis zum 18. Dezember geschlossen. Davor und danach hat er an diesen Tagen offen:
 
 - Samstag, 7. November, Peur sur le Parc: 9 bis 18 Uhr, dazu eine Nachtöffnung von 19 bis 1 Uhr
-- Sonntag, 8. November, Peur sur le Parc: 10 bis 19 Uhr
+- Sonntag, 8. November, der letzte Tag von Peur sur le Parc
 - Noël Gaulois vom 19. Dezember 2026 bis zum 3. Januar 2027: täglich 11 bis 20 Uhr, an Heiligabend und Silvester bis 19 Uhr
 
 ## Tonnerre 2 Zeus bekommt neue Schienen
 
-Im Winter 2025/26 hat Rocky Mountain Construction (RMC) rund 350 Meter der Strecke ersetzt, und diese Sanierung schließt der Park mit der Saison 2026 ab. In der Saison 2027 bekommt die Bahn dann auf der ganzen Strecke neue Schienen. Ob Tonnerre 2 Zeus dafür in der Saison 2027 zeitweise schließt, hat der Park nicht bekannt gegeben.
+Im Winter 2025/26 hat Rocky Mountain Construction (RMC) rund 350 Meter der Strecke ersetzt. Diese Sanierung will der Park in der laufenden Saison abschließen, in der Saison 2027 folgt dann die ganze Strecke. Ob Tonnerre 2 Zeus dafür in der Saison 2027 zeitweise schließt, hat der Park nicht bekannt gegeben.
 
-Eröffnet hat die Bahn am 5. April 1997, damals als Tonnerre de Zeus und gebaut von Custom Coasters International. Am 7. November 2021 fuhr die alte Version zum letzten Mal. The Gravity Group hatte die Strecke ab dem Winter 2019 in Etappen neu verlegt und die Doppelhelix entfernt, und mit neuen Zügen von Gravitykraft kam die Bahn am 9. April 2022 zurück, seitdem mit einer 2 im Namen, die auf Französisch fast so klingt wie das alte de. Sie ist 30 Meter hoch und fährt 84 km/h, allein mitfahren darfst du ab 1,20 Meter.
+Eröffnet hat die Bahn am 5. April 1997, damals als Tonnerre de Zeus und gebaut von Custom Coasters International. Am 7. November 2021 fuhr die alte Version zum letzten Mal. The Gravity Group hatte die Strecke ab dem Winter 2019 in Etappen neu verlegt und die Doppelhelix entfernt. Am 9. April 2022 kam die Bahn mit neuen Zügen von Gravitykraft zurück. Seitdem steht eine 2 im Namen, die auf Französisch fast so klingt wie das alte de. Die Bahn ist 30 Meter hoch, allein mitfahren darfst du ab 1,20 Meter.
 
 ## Was heute in der Grèce steht
 
@@ -78,7 +78,7 @@ Der Park liegt 35 Kilometer nördlich von Paris und hat fünf Themenwelten: Gall
 
 ## Weitere Pläne bis 2030
 
-Bis 2030 will der Park 250 Millionen Euro investieren. Ägypten hat er 2026 umgestaltet, aus dem Oxygénarium wurde La Descente du Nil und aus den Chaises Volantes L'Envol d'Ibis. Für 2028 ist Londinium angekündigt, ein überdachter Bereich nach dem Album „Asterix bei den Briten“ mit einer großen Achterbahn und einem interaktiven Dark Ride für Familien. Was andere Parks in Europa für 2027 bauen, sammelt unser Überblick über die [Freizeitpark-Neuheiten 2027](/blog/freizeitpark-neuheiten-2027). Am Ende aller Projekte soll der Park 20 Prozent mehr Kapazität haben, zwei Drittel davon überdacht.
+Bis 2030 will der Park 250 Millionen Euro investieren. Ägypten hat er 2026 umgestaltet, aus dem Oxygénarium wurde La Descente du Nil und aus den Chaises Volantes L'Envol d'Ibis. Für 2028 ist Londinium angekündigt, ein überdachter Bereich nach dem Album „Asterix bei den Briten“ mit einer großen Achterbahn und einem interaktiven Dark Ride für Familien. Am Ende aller Projekte soll der Park 20 Prozent mehr Kapazität haben, zwei Drittel davon überdacht. Was andere Parks in Europa für 2027 bauen, sammelt unser Überblick über die [Freizeitpark-Neuheiten 2027](/blog/freizeitpark-neuheiten-2027).
 
 Quellen:
 [Mitteilung des Parc Astérix zur Grèce 2027](https://newsroom.parcasterix.fr/actualites/en-2027-au-parc-asterix-la-grece-en-grand/?lang=fr),
@@ -87,6 +87,6 @@ Quellen:
 [Mitteilung zum Hotel L'Odyssée](https://newsroom.parcasterix.fr/actualites/le-parc-asterix-ouvre-son-nouvel-hotel-lodyssee-le-26-mars-2027-plus-grand-et-plus-spectaculaire-que-jamais/?lang=fr),
 [Mitteilung zur Sanierung von Tonnerre 2 Zeus](https://newsroom.parcasterix.fr/?p=27608),
 [Tonnerre 2 Zeus beim Parc Astérix](https://www.parcasterix.fr/attractions/sensations-fortes/tonnerre-2-zeus),
-[Attraktionen des Parc Astérix](https://www.parcasterix.fr/attractions),
+[Attraktionen im Bereich Grèce](https://www.parcasterix.fr/attractions?zones%5B105%5D=105),
 [Tonnerre 2 Zeus in der RCDB](https://rcdb.com/752.htm),
 [Tonnerre 2 Zeus in der Wikipedia](https://en.wikipedia.org/wiki/Tonnerre_2_Zeus).
