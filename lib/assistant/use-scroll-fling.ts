@@ -1,62 +1,82 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { isScrollKey } from '@/lib/utils/scroll-when-settled';
+import {
+  FlingTracker,
+  SETTLE_MS,
+  type FlingHand,
+  type FlingHandAt,
+  type ParkyFling,
+} from './fling-tracker';
 
-/** Pixels per millisecond to throw Parky: a fling or a held key, not a turn of the wheel. */
-const FLING_SPEED = 6;
-/** Once thrown he holds on while the page still moves this fast, slower scrolling included. */
-const HOLD_SPEED = 0.5;
-/** Slower than that for this long and he lets go. */
-const SETTLE_MS = 150;
 /** How long the drop back into the corner takes (`.parky-hang`'s `--parky-fall`). */
 export const PARKY_FALL_MS = 700;
 
-/** Which way a fast scroll throws Parky: carried up (`down`) or pressed flat (`up`). */
-export type ParkyFling = 'down' | 'up';
+// Passive, so none of them can hold up the scroll; capture, so a handler that stops propagation
+// cannot hide the hand from Parky.
+const LISTEN = { capture: true, passive: true } as const;
 
 /**
- * The direction the page is being flung in, fast enough to move Parky (`.parky-hang`): `down`
- * carries him up with the page, `up` presses him flat into his corner. Null once the page has all
- * but stopped for a moment, and he drops back or springs up; slower scrolling keeps him where he is.
- * The scroll position is read once a frame at most, so the listener adds no layout work of its own. Never with reduced motion, where he would not move.
+ * The direction a hard scroll has thrown Parky in (`.parky-hang`, decided by {@link FlingTracker}):
+ * `down` carries him up with the page, `up` presses him flat into his corner. Null once the page
+ * has all but stopped for a moment, and he drops back or springs up; slower scrolling keeps him
+ * where he is. The scroll position is read once a frame at most, so the listener adds no layout work
+ * of its own. Never with reduced motion, where he would not move.
  */
 export function useScrollFling(enabled: boolean): ParkyFling | null {
   const [fling, setFling] = useState<ParkyFling | null>(null);
+  // Outlives a dialog or the open window, so neither cuts his rest short.
+  const [tracker] = useState(() => new FlingTracker());
   useEffect(() => {
     if (!enabled || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    let lastY = window.scrollY;
-    let lastAt = performance.now();
+    let viewport = window.innerHeight;
+    let hand: FlingHandAt | null = null;
     let frame = 0;
     let settle = 0;
-    let thrown = false;
+    const letGo = () => {
+      tracker.letGo(performance.now());
+      setFling(null);
+    };
     const read = () => {
       frame = 0;
-      const y = window.scrollY;
-      const at = performance.now();
-      const speed = (y - lastY) / Math.max(at - lastAt, 1);
-      // The first fast direction holds until he lets go: a hanging Parky is not squashed.
-      if (Math.abs(speed) > (thrown ? HOLD_SPEED : FLING_SPEED)) {
-        thrown = true;
-        setFling((was) => was ?? (speed > 0 ? 'down' : 'up'));
-        clearTimeout(settle);
-        settle = window.setTimeout(() => {
-          thrown = false;
-          setFling(null);
-        }, SETTLE_MS);
-      }
-      lastY = y;
-      lastAt = at;
+      const state = tracker.read(performance.now(), window.scrollY, viewport, hand);
+      if (!state.fling) return;
+      setFling(state.fling);
+      if (!state.holding) return;
+      clearTimeout(settle);
+      settle = window.setTimeout(letGo, SETTLE_MS);
     };
     const onScroll = () => {
       if (!frame) frame = requestAnimationFrame(read);
     };
+    const by = (kind: FlingHand) => () => {
+      hand = { kind, at: performance.now() };
+    };
+    const onWheel = by('wheel');
+    const onTouch = by('touch');
+    const onScrollKey = by('key');
+    const onKey = (event: KeyboardEvent) => {
+      if (isScrollKey(event)) onScrollKey();
+    };
+    const onResize = () => {
+      viewport = window.innerHeight;
+    };
     window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('wheel', onWheel, LISTEN);
+    window.addEventListener('touchmove', onTouch, LISTEN);
+    window.addEventListener('keydown', onKey, LISTEN);
+    window.addEventListener('resize', onResize, { passive: true });
     return () => {
       window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('wheel', onWheel, LISTEN);
+      window.removeEventListener('touchmove', onTouch, LISTEN);
+      window.removeEventListener('keydown', onKey, LISTEN);
+      window.removeEventListener('resize', onResize);
       cancelAnimationFrame(frame);
       clearTimeout(settle);
-      setFling(null);
+      letGo();
     };
-  }, [enabled]);
+  }, [enabled, tracker]);
   return fling;
 }

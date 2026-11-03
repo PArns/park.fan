@@ -13,7 +13,9 @@ const SETTLE_DEADLINE_MS = 6000;
 /** Keys that scroll the document, unless they are typed into a field: a space in the attraction
  *  filter is not the visitor taking the page over. */
 const SCROLL_KEYS = new Set(['ArrowUp', 'ArrowDown', 'PageUp', 'PageDown', 'Home', 'End', ' ']);
-function isScrollKey(e: KeyboardEvent): boolean {
+
+/** Whether a key press scrolls the page: a scroll key, and not typed into a field. */
+export function isScrollKey(e: KeyboardEvent): boolean {
   if (!SCROLL_KEYS.has(e.key)) return false;
   const el = e.target as HTMLElement | null;
   const tag = el?.tagName;

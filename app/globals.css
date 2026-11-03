@@ -1772,15 +1772,21 @@
   .parky-mood-talking {
     animation: parky-nod 0.9s ease-in-out infinite;
   }
-  .parky-mood-scared {
+  /* He trembles by a wrapper, which the compositor moves; on the drawing he would be painted
+     again, filters and all, in every frame of the scroll. */
+  .parky-hang[data-fling='down'] .parky-shake {
     animation: parky-tremble 0.14s linear infinite;
   }
   .parky-hang[data-fling='down'] .parky-drop {
     opacity: 1;
     transition-duration: 0.15s;
   }
+  /* Still while nobody sees them; they freeze where they are as the lines fade after the drop. */
   .parky-drop > span {
-    animation: parky-drop 0.5s linear infinite;
+    animation: parky-drop 0.5s linear infinite paused;
+  }
+  .parky-hang[data-fling='down'] .parky-drop > span {
+    animation-play-state: running;
   }
   .parky-drop > span:nth-child(2) {
     animation-delay: -0.17s;
@@ -1941,17 +1947,17 @@
     transform: scaleX(0.3);
   }
 }
-/* A shiver on the spot, a fraction of a unit each way. */
+/* A shiver on the spot, half a pixel each way. */
 @keyframes parky-tremble {
   0%,
   100% {
-    transform: translateX(0);
+    translate: 0;
   }
   25% {
-    transform: translateX(-0.4px);
+    translate: -0.5px 0;
   }
   75% {
-    transform: translateX(0.4px);
+    translate: 0.5px 0;
   }
 }
 /* The lines under a hanging Parky stream down, away from him, to show how far it is to fall. */

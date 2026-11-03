@@ -20,7 +20,8 @@ import { isReactionAct } from '@/lib/assistant/reactions';
 import { onParkyOpen } from '@/lib/assistant/open';
 import { usePageLocked } from '@/lib/hooks/use-page-locked';
 import { useSearchOpen } from '@/lib/analytics/search-presence';
-import { PARKY_FALL_MS, useScrollFling, type ParkyFling } from '@/lib/assistant/use-scroll-fling';
+import { PARKY_FALL_MS, useScrollFling } from '@/lib/assistant/use-scroll-fling';
+import type { ParkyFling } from '@/lib/assistant/fling-tracker';
 import { PARKY_CORNER_ATTR, parkyJumpMs } from '@/lib/assistant/parky-jump';
 
 // Must stay in step with this file's entry in `LAZY_MESSAGE_BOUNDARIES`
@@ -190,12 +191,14 @@ function LauncherButton({
             {...{ [PARKY_CORNER_ATTR]: '' }}
             className="parky-bob relative grid size-14 sm:size-16"
           >
-            <ParkyLogo
-              idle
-              mood={fling === 'down' ? 'scared' : fling === 'up' ? 'squashed' : null}
-              cue={cue}
-              className="size-full drop-shadow-[0_6px_14px_rgb(0_0_0/0.35)]"
-            />
+            <span className="parky-shake grid size-full">
+              <ParkyLogo
+                idle
+                mood={fling === 'down' ? 'scared' : fling === 'up' ? 'squashed' : null}
+                cue={cue}
+                className="size-full drop-shadow-[0_6px_14px_rgb(0_0_0/0.35)]"
+              />
+            </span>
           </span>
         </span>
       )}

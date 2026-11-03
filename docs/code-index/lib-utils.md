@@ -422,6 +422,7 @@ Route guards for the `/[locale]/...` tree.
 
 ### [`scroll-when-settled.ts`](../../lib/utils/scroll-when-settled.ts)
 
+- `isScrollKey` _function_: Whether a key press scrolls the page: a scroll key, and not typed into a field.
 - `scrollWhenSettled` _function_: Scroll to an element and keep correcting until the page stops moving underneath it.
 - `HEADER_OFFSET` _const_: How far below the viewport's top edge a scrolled-to element comes to rest: the sticky bar plus a little air.
 - Types: `ScrollWhenSettledOptions`
