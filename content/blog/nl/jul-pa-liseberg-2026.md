@@ -42,7 +42,7 @@ seo:
 
 ## Een kilometer licht rond de berg
 
-Het pad loopt van het gebied rond Luna Park naar de Lustgården en weer terug. Welke route je kiest en hoe lang je blijft hangen, bepaal je zelf. Onderweg kom je vijf grote installaties tegen, bedoeld als hoofdstukken van één verhaal: Norrsken (noorderlicht), Tre Månar (drie manen), Sägnernas Eld (het vuur van de sagen), Himmelstrappan (de hemeltrap) en Stjärnregn (sterrenregen). Bij Luma Celestia hoort ook “Den fallna stjärnan”, de gevallen ster, een voorstelling met luchtacrobatiek en licht.
+Het pad loopt van het gebied rond Luna Park naar de Lustgården en weer terug. Welke route je kiest en hoe lang je blijft hangen, bepaal je zelf. Onderweg kom je grote installaties tegen, bedoeld als hoofdstukken van één verhaal, waaronder Norrsken (noorderlicht), Tre Månar (drie manen), Sägnernas Eld (het vuur van de sagen), Himmelstrappan (de hemeltrap) en Stjärnregn (sterrenregen). Bij Luma Celestia hoort ook “Den fallna stjärnan”, de gevallen ster, een voorstelling met luchtacrobatiek en licht.
 
 > [!QUOTE]
 > Licht is altijd een belangrijk deel van Jul på Liseberg geweest. Met Luma Celestia bouwen we op die traditie voort en brengen we tegelijk een heel gebied tot leven dat we in dit seizoen nog nooit gebruikt hebben.
@@ -96,7 +96,7 @@ Onze [Liseberg-gids](/blog/liseberg-wachttijden-tips) beschrijft de zomer, met a
 
 Voor kinderen is er de Tomtebyn, een kabouterdorp tussen het havengebied en Valkyria. De kabouters dansen, spelen en zingen er met de kinderen, en de kerstman neemt hun verlanglijstjes in ontvangst.
 
-Op drie kerstmarkten staan samen 46 kraampjes. De Tyrolermarknad ligt bij de Slänggungan en de [Radiobilarna, die sinds oktober niet meer rijden](/news/liseberg-radiobilarna-gesloten). Gammaldags jul is een ouderwetse markt in het Kvarteret Storgatan, en op de Vintermarknad bij de Stora Scenen vind je naast de ijsbaan ook après-ski. Verspreid door het park staan meer dan 2.100 kerstbomen en hangt 3,3 kilometer dennenslinger. De zeven ton kunstsneeuw is van papierpulp gemaakt: kennelijk rekent Liseberg voor een witte kerst liever op de papierindustrie dan op het weer in Göteborg. Jul på Liseberg bestaat sinds 2000. Bij het 25-jarig jubileum vorige winter brandden er vijf miljoen lampjes, dit jaar komen er meer dan een miljoen bij. Het park telt ook de 116 meter hoge Lisebergstornet als kerstboom mee; die is in heel Göteborg te zien.
+Op drie kerstmarkten staan samen 46 kraampjes. De Tyrolermarknad, met après-ski, ligt bij de Slänggungan en de [Radiobilarna, die sinds oktober niet meer rijden](/news/liseberg-radiobilarna-gesloten). Gammaldags jul is een ouderwetse markt in het Kvarteret Storgatan, en de Vintermarknad staat bij de Stora Scenen, naast de ijsbaan. Verspreid door het park staan meer dan 2.100 kerstbomen en hangt 3,3 kilometer dennenslinger. De zeven ton kunstsneeuw is van papierpulp gemaakt: kennelijk rekent Liseberg voor een witte kerst liever op de papierindustrie dan op het weer in Göteborg. Jul på Liseberg bestaat sinds 2000. Bij het 25-jarig jubileum vorige winter brandden er vijf miljoen lampjes, dit jaar komen er meer dan een miljoen bij. Daarbij komt een kerstboom van 116 meter die in heel Göteborg te zien is. Precies zo hoog is de Lisebergstornet, de toren van AtmosFear.
 
 In het eigen Grand Curiosa Hotel van het park kun je een arrangement boeken met een overnachting, het Zweedse kerstbuffet julbord en de entree. Dat kan op geselecteerde dagen van 14 november tot en met 23 december.
 

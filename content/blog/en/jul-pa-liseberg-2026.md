@@ -38,11 +38,11 @@ seo:
     - Gothenburg Christmas
 ---
 
-[Liseberg](ref:liseberg) in Gothenburg opens Jul på Liseberg, its Christmas season, on Saturday 14 November, and this year it adds a light trail of about a kilometre that loops right round the hill in the middle of the park. It's called Luma Celestia and cost SEK 8.6 million, the biggest single Christmas investment the park has ever made. The season runs until 30 December. Liseberg announced all of this on 3 November.
+[Liseberg](ref:liseberg) in Gothenburg opens Jul på Liseberg, its Christmas season, on Saturday 14 November, and this year it adds a light trail of about a kilometre that loops right round the hill inside the park. It's called Luma Celestia and cost SEK 8.6 million, the biggest single Christmas investment the park has ever made. The season runs until 30 December. Liseberg announced all of this on 3 November.
 
 ## A kilometre of light around the hill
 
-The trail runs from the Luna Park area over to Lustgården and back, and the route and the pace are up to you. Along the way are five large installations, meant as chapters of one story: Norrsken (northern lights), Tre Månar (three moons), Sägnernas Eld (fire of the legends), Himmelstrappan (stairway to heaven) and Stjärnregn (star rain). Luma Celestia also includes "Den fallna stjärnan", the fallen star, a show with aerial acrobatics and light.
+The trail runs from the Luna Park area over to Lustgården and back, and the route and the pace are up to you. Along the way stand large installations, meant as chapters of one story, among them Norrsken (northern lights), Tre Månar (three moons), Sägnernas Eld (fire of the legends), Himmelstrappan (stairway to heaven) and Stjärnregn (star rain). Luma Celestia also includes "Den fallna stjärnan", the fallen star, a show with aerial acrobatics and light.
 
 > [!QUOTE]
 > Light has always been an important part of Jul på Liseberg. With Luma Celestia we're building on that tradition, and at the same time we're bringing a whole area to life that we haven't used during the season before.
@@ -96,7 +96,7 @@ Entry includes Tomtehuset with Santa, the ice rink, Barnens Paradis (from age fo
 
 For children there's Tomtebyn, an elf village between the harbour area and Valkyria. The elves dance, play and sing with them there, and Santa collects the wish lists.
 
-Three Christmas markets share 46 stalls. Tyrolermarknad sits next to Slänggungan and the [Radiobilarna, which stopped running in October](/news/liseberg-radiobilarna-closed). Gammaldags jul is an old-style market in Kvarteret Storgatan, and Vintermarknad by Stora Scenen has the ice rink plus après-ski. Spread across the park are more than 2,100 Christmas trees and 3.3 kilometres of fir garland. The seven tonnes of artificial snow are made from paper pulp, so for snow Liseberg trusts the paper industry more than a Gothenburg December. Jul på Liseberg has been running since 2000. For its 25th anniversary last winter, five million lights were lit, and this year more than a million are added. The park also counts the 116-metre Lisebergstornet as a Christmas tree, and it can be seen all over Gothenburg.
+Three Christmas markets share 46 stalls. Tyrolermarknad, with après-ski, sits next to Slänggungan and the [Radiobilarna, which stopped running in October](/news/liseberg-radiobilarna-closed). Gammaldags jul is an old-style market in Kvarteret Storgatan, and Vintermarknad stands by Stora Scenen next to the ice rink. Spread across the park are more than 2,100 Christmas trees and 3.3 kilometres of fir garland. The seven tonnes of artificial snow are made from paper pulp, so for snow Liseberg trusts the paper industry more than a Gothenburg December. Jul på Liseberg has been running since 2000. For its 25th anniversary last winter, five million lights were lit, and this year more than a million are added. There is also a 116-metre Christmas tree that can be seen all over Gothenburg. That is exactly the height of Lisebergstornet, the tower AtmosFear rides up.
 
 The park's own Grand Curiosa Hotel sells a package with one night, julbord, the Swedish Christmas buffet, and entry. It can be booked on selected days from 14 November to 23 December.
 

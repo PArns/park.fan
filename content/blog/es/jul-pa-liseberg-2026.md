@@ -22,7 +22,7 @@ rideLinks:
 seo:
   title: 'Liseberg en Navidad 2026: Luma Celestia desde el 14/11'
   description: >-
-    Jul på Liseberg va del 14/11 al 30/12/2026 con el nuevo sendero de luces Luma Celestia. Entrada en línea desde 125 coronas, gratis para niños de menos de 110 cm.
+    Jul på Liseberg va del 14/11 al 30/12 con el nuevo sendero de luces Luma Celestia. Entrada en línea desde 125 coronas, gratis para menores de 110 cm.
   keywords:
     - Jul på Liseberg
     - Jul på Liseberg 2026
@@ -42,7 +42,7 @@ seo:
 
 ## Un kilómetro de luz alrededor de la colina
 
-El recorrido va de la zona de Luna Park al Lustgården y vuelve; por dónde pasas y cuánto rato te quedas lo eliges tú. Por el camino hay cinco grandes instalaciones, pensadas como capítulos de una misma historia: Norrsken (aurora boreal), Tre Månar (tres lunas), Sägnernas Eld (el fuego de las leyendas), Himmelstrappan (la escalera al cielo) y Stjärnregn (lluvia de estrellas). Luma Celestia incluye además «Den fallna stjärnan», la estrella caída, un espectáculo de acrobacias aéreas y luz.
+El recorrido va de la zona de Luna Park al Lustgården y vuelve; por dónde pasas y cuánto rato te quedas lo eliges tú. Por el camino hay grandes instalaciones, pensadas como capítulos de una misma historia, entre ellas Norrsken (aurora boreal), Tre Månar (tres lunas), Sägnernas Eld (el fuego de las leyendas), Himmelstrappan (la escalera al cielo) y Stjärnregn (lluvia de estrellas). Luma Celestia incluye además «Den fallna stjärnan», la estrella caída, un espectáculo de acrobacias aéreas y luz.
 
 > [!QUOTE]
 > La luz siempre ha sido una parte importante de Jul på Liseberg. Con Luma Celestia seguimos esa tradición y, al mismo tiempo, damos vida a toda una zona que hasta ahora no usábamos durante la temporada.
@@ -96,7 +96,7 @@ La entrada incluye el Tomtehuset con Papá Noel, la pista de hielo, Barnens Para
 
 Para los niños está Tomtebyn, un pueblo de duendes entre la zona del puerto y Valkyria. Allí los duendes bailan, juegan y cantan con ellos, y Papá Noel recoge las cartas con los deseos.
 
-Tres mercados navideños suman 46 casetas. El Tyrolermarknad está junto a la Slänggungan y los [Radiobilarna, que ya no funcionan desde octubre](/news/liseberg-radiobilarna-cerrados). Gammaldags jul es un mercado a la antigua en el Kvarteret Storgatan, y en el Vintermarknad, junto a la Stora Scenen, además de la pista de hielo hay après-ski. Repartidos por el parque hay más de 2100 árboles de Navidad y 3,3 kilómetros de guirnalda de abeto. Las siete toneladas de nieve artificial son de pasta de papel: para la nieve, Liseberg se fía más de la industria papelera que del diciembre de Gotemburgo. Jul på Liseberg existe desde el año 2000. En su 25 aniversario, el invierno pasado, brillaron cinco millones de luces, y este año se suma más de un millón. El parque cuenta también como árbol de Navidad la Lisebergstornet, de 116 metros, que se ve desde toda Gotemburgo.
+Tres mercados navideños suman 46 casetas. El Tyrolermarknad, con après-ski, está junto a la Slänggungan y los [Radiobilarna, que ya no funcionan desde octubre](/news/liseberg-radiobilarna-cerrados). Gammaldags jul es un mercado a la antigua en el Kvarteret Storgatan, y el Vintermarknad está junto a la Stora Scenen, al lado de la pista de hielo. Repartidos por el parque hay más de 2100 árboles de Navidad y 3,3 kilómetros de guirnalda de abeto. Las siete toneladas de nieve artificial son de pasta de papel: para la nieve, Liseberg se fía más de la industria papelera que del diciembre de Gotemburgo. Jul på Liseberg existe desde el año 2000. En su 25 aniversario, el invierno pasado, brillaron cinco millones de luces, y este año se suma más de un millón. Además hay un árbol de Navidad de 116 metros que se ve desde toda Gotemburgo. Es justo la altura de la Lisebergstornet, la torre de AtmosFear.
 
 El Grand Curiosa Hotel, del propio parque, ofrece un paquete con una noche, el julbord (el bufé navideño sueco) y la entrada. Se puede reservar en días concretos del 14 de noviembre al 23 de diciembre.
 
