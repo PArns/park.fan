@@ -38,9 +38,9 @@ seo:
     - Göteborg Noël
 ---
 
-Le samedi 14 novembre, [Liseberg](ref:liseberg) ouvre Jul på Liseberg, sa saison de Noël à Göteborg. Cette année, un sentier lumineux d’environ un kilomètre fait le tour de la colline sur laquelle s’étend le parc. Il s’appelle Luma Celestia et a coûté 8,6 millions de couronnes : jamais Liseberg n’avait autant investi dans une seule nouveauté de Noël. Le parc a présenté la saison le 3 novembre ; elle se termine le 30 décembre.
+Le samedi 14 novembre, [Liseberg](ref:liseberg) ouvre Jul på Liseberg, sa saison de Noël à Göteborg. Cette année, un sentier lumineux d’environ un kilomètre fait le tour de la colline au cœur du parc. Il s’appelle Luma Celestia et a coûté 8,6 millions de couronnes : jamais Liseberg n’avait autant investi dans une seule nouveauté de Noël. La saison se termine le 30 décembre. Liseberg l’a présentée le 3 novembre.
 
-## Un kilomètre de lumière autour de la colline
+## Le parcours de Luma Celestia
 
 Le sentier part du secteur Luna Park, rejoint le Lustgården et revient. Chacun choisit son chemin et le temps qu’il y passe. De grandes installations jalonnent le parcours, pensées comme les chapitres d’une même histoire, parmi elles Norrsken (aurore boréale), Tre Månar (trois lunes), Sägnernas Eld (le feu des légendes), Himmelstrappan (l’escalier du ciel) et Stjärnregn (pluie d’étoiles). Luma Celestia comprend aussi « Den fallna stjärnan », l’étoile tombée, un spectacle d’acrobaties aériennes et de lumière.
 
@@ -73,7 +73,7 @@ Les premiers billets sont en vente depuis le 3 novembre. Jusqu’au 9 novembre, 
 - entrée avec Åkpass : 285, 345 ou 395 couronnes
 - Åkpass seul : 235 couronnes, Åkpass Duo : 470 couronnes
 
-Les jours les moins chers sont les 15, 20, 22 et 27 novembre, puis en décembre les mercredis et jeudis jusqu’au 17. Les plus chers sont le 28 novembre, les samedis et dimanches de décembre à partir du 5 et la période du 21 au 23 décembre. Les enfants de moins de 110 centimètres entrent gratuitement ; leur Åkpass coûte à partir de 235 couronnes. Quand un enfant porte l’Åkpass Duo au poignet, n’importe quel adulte peut monter avec lui.
+Les jours les moins chers sont les 15, 20, 22 et 27 novembre, puis en décembre les mercredis et jeudis jusqu’au 17. Les plus chers sont le 28 novembre, les samedis et dimanches de décembre à partir du 5 et la période du 21 au 23 décembre. Les enfants de moins de 110 centimètres entrent gratuitement, et leur Åkpass coûte à partir de 235 couronnes. Quand un enfant porte l’Åkpass Duo au poignet, n’importe quel adulte peut monter avec lui.
 
 Sans Åkpass, chaque tour se paie en coupons de 25 couronnes. Il en faut quatre pour [Balder](ref:liseberg/balder) : au-delà de deux tours, l’Åkpass revient donc moins cher. Le Lisebergspasset, à 395 couronnes, donne l’entrée pendant douze mois, le Guldpasset, à 2 595 couronnes, l’entrée et toutes les attractions pendant douze mois.
 
@@ -90,13 +90,13 @@ L’entrée donne accès au Tomtehuset et à son père Noël, à la patinoire, �
 - Stormvåg : 120 cm, 95 cm avec un adulte
 - Lisebergshjulet : 130 cm, sans limite avec un adulte
 
-[Helix](ref:liseberg/helix) et la Lisebergbanan ne figurent pas sur la liste d’hiver du parc. L’été, avec toutes les attractions, leurs files et la file virtuelle, fait l’objet de notre guide sur [Liseberg et ses temps d’attente](/blog/liseberg-temps-d-attente-conseils).
+[Helix](ref:liseberg/helix) et la Lisebergbanan ne figurent pas sur la liste d’hiver du parc. Notre guide sur [Liseberg et ses temps d’attente](/blog/liseberg-temps-d-attente-conseils) décrit l’été, avec toutes les attractions, leurs files et la file virtuelle.
 
 ## Tomtebyn, marchés et neige en papier
 
 Les enfants ont la Tomtebyn, un village de lutins entre le secteur du port et Valkyria. Les lutins y dansent, jouent et chantent avec eux, et le père Noël récupère les listes de souhaits.
 
-Les trois marchés de Noël comptent 46 chalets. Le Tyrolermarknad, avec son après-ski, se tient près de la Slänggungan et des [Radiobilarna, qui ne roulent plus depuis octobre](/news/liseberg-radiobilarna-fermes). Gammaldags jul, dans le Kvarteret Storgatan, est un marché à l’ancienne, et le Vintermarknad se tient devant la Stora Scenen, à côté de la patinoire. Le parc dresse plus de 2 100 sapins et 3,3 kilomètres de guirlandes de sapin. Ses sept tonnes de neige artificielle sont faites de pâte à papier : pour la neige, Liseberg mise sur l’industrie papetière plutôt que sur le mois de décembre à Göteborg. Jul på Liseberg existe depuis 2000. L’hiver dernier, pour ses 25 ans, cinq millions de lumières brillaient, et plus d’un million s’y ajoutent cette année. S’y ajoute un sapin de Noël de 116 mètres, visible de toute la ville. C’est exactement la hauteur de la Lisebergstornet, la tour d’AtmosFear.
+Les trois marchés de Noël comptent 46 chalets. Le Tyrolermarknad, avec son après-ski, se tient près de la Slänggungan et des [Radiobilarna, qui ne roulent plus depuis octobre](/news/liseberg-radiobilarna-fermes). Gammaldags jul, dans le Kvarteret Storgatan, est un marché à l’ancienne, et le Vintermarknad se tient devant la Stora Scenen, à côté de la patinoire. Le parc compte plus de 2 100 sapins et 3,3 kilomètres de guirlandes de sapin. Ses sept tonnes de neige artificielle sont faites de pâte à papier : pour la neige, Liseberg mise sur l’industrie papetière plutôt que sur le mois de décembre à Göteborg. Jul på Liseberg existe depuis 2000. L’hiver dernier, pour ses 25 ans, cinq millions de lumières brillaient, et plus d’un million s’y ajoutent cette année. Il y a aussi un sapin de Noël de 116 mètres, visible de toute la ville. C’est exactement la hauteur de la Lisebergstornet, la tour d’AtmosFear.
 
 Le Grand Curiosa Hotel, qui appartient au parc, propose une formule avec une nuit, le Julbord, le buffet de Noël suédois, et l’entrée. On peut la réserver certains jours entre le 14 novembre et le 23 décembre.
 

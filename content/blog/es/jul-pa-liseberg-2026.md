@@ -7,7 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Liseberg, en Gotemburgo, abre el 14 de noviembre su temporada navideña Jul på Liseberg. La novedad es Luma Celestia, un sendero de luces de alrededor de un kilómetro que rodea la colina del parque. Hasta el 9 de noviembre, la entrada con Åkpass cuesta en línea la mitad.
+  Liseberg, en Gotemburgo, abre el 14 de noviembre su temporada navideña Jul på Liseberg. La novedad es Luma Celestia, un sendero de luces de alrededor de un kilómetro que rodea la colina del parque. Hasta el 9 de noviembre, la entrada con Åkpass comprada en línea cuesta la mitad.
 tags:
   - news
   - liseberg
@@ -38,11 +38,11 @@ seo:
     - Navidad en Gotemburgo
 ---
 
-[Liseberg](ref:liseberg), en Gotemburgo, abre el sábado 14 de noviembre su temporada navideña, Jul på Liseberg, y este año estrena un sendero de luces de alrededor de un kilómetro que da la vuelta entera a la colina del parque. Se llama Luma Celestia y ha costado 8,6 millones de coronas, la mayor inversión navideña de la historia del parque en un solo proyecto. La temporada dura hasta el 30 de diciembre. Liseberg lo anunció todo el 3 de noviembre.
+[Liseberg](ref:liseberg), en Gotemburgo, abre el sábado 14 de noviembre su temporada navideña, Jul på Liseberg. Este año estrena un sendero de luces de alrededor de un kilómetro que da la vuelta entera a la colina del parque. Se llama Luma Celestia y ha costado 8,6 millones de coronas, la mayor inversión navideña de la historia del parque en un solo proyecto. La temporada dura hasta el 30 de diciembre. Liseberg lo anunció todo el 3 de noviembre.
 
-## Un kilómetro de luz alrededor de la colina
+## El recorrido de Luma Celestia
 
-El recorrido va de la zona de Luna Park al Lustgården y vuelve; por dónde pasas y cuánto rato te quedas lo eliges tú. Por el camino hay grandes instalaciones, pensadas como capítulos de una misma historia, entre ellas Norrsken (aurora boreal), Tre Månar (tres lunas), Sägnernas Eld (el fuego de las leyendas), Himmelstrappan (la escalera al cielo) y Stjärnregn (lluvia de estrellas). Luma Celestia incluye además «Den fallna stjärnan», la estrella caída, un espectáculo de acrobacias aéreas y luz.
+El recorrido va de la zona de Luna Park al Lustgården y vuelve. Por dónde pasas y cuánto rato te quedas lo eliges tú. Por el camino hay grandes instalaciones, pensadas como capítulos de una misma historia, entre ellas Norrsken (aurora boreal), Tre Månar (tres lunas), Sägnernas Eld (el fuego de las leyendas), Himmelstrappan (la escalera al cielo) y Stjärnregn (lluvia de estrellas). Luma Celestia incluye además «Den fallna stjärnan», la estrella caída, un espectáculo de acrobacias aéreas y luz.
 
 > [!QUOTE]
 > La luz siempre ha sido una parte importante de Jul på Liseberg. Con Luma Celestia seguimos esa tradición y, al mismo tiempo, damos vida a toda una zona que hasta ahora no usábamos durante la temporada.
@@ -59,7 +59,7 @@ El recorrido va de la zona de Luna Park al Lustgården y vuelve; por dónde pasa
 - del lunes 21 al miércoles 23 de diciembre: de 12:00 a 21:00
 - del sábado 26 al miércoles 30 de diciembre: de 12:00 a 20:00
 
-Hasta el 20 de diciembre, el parque no abre ni lunes ni martes. Nochebuena y Navidad también son días de cierre; es de suponer que el Papá Noel del Tomtehuset tiene otros repartos pendientes. Del 31 de diciembre al 10 de enero solo abren, cada día de 11:00 a 17:00, Kaninlandet, la zona infantil, y la pista de hielo. Qué otros parques europeos abren en invierno lo cuenta nuestra [guía de invierno](/blog/parques-atracciones-invierno-2026).
+Hasta el 20 de diciembre, el parque no abre ni lunes ni martes. Nochebuena y Navidad también son días de cierre; es de suponer que el Papá Noel del Tomtehuset tiene otros repartos pendientes. Del 31 de diciembre al 10 de enero solo abren, cada día de 11:00 a 17:00, Kaninlandet, la zona infantil, y la pista de hielo. Los demás parques europeos que abren en invierno están en nuestra [guía de invierno](/blog/parques-atracciones-invierno-2026).
 
 ```best-days-widget slug=liseberg
 
@@ -90,7 +90,7 @@ La entrada incluye el Tomtehuset con Papá Noel, la pista de hielo, Barnens Para
 - Stormvåg: desde 120 cm, con un adulto desde 95 cm
 - Lisebergshjulet: desde 130 cm, con un adulto sin altura mínima
 
-[Helix](ref:liseberg/helix) y la Lisebergbanan no figuran en la lista de invierno del parque. El verano, con todas las atracciones, sus colas y la cola virtual, lo explica nuestra [guía de Liseberg](/blog/liseberg-tiempos-de-espera-consejos).
+[Helix](ref:liseberg/helix) y la Lisebergbanan no figuran en la lista de invierno del parque. Nuestra [guía de Liseberg](/blog/liseberg-tiempos-de-espera-consejos) explica el verano, con todas las atracciones, sus colas y la cola virtual.
 
 ## Tomtebyn, mercados y nieve de papel
 

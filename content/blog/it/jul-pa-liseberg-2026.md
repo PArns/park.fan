@@ -1,5 +1,5 @@
 ---
-title: 'Liseberg apre un sentiero di luci intorno alla collina'
+title: 'Liseberg illumina a Natale un sentiero intorno alla collina'
 translationKey: jul-pa-liseberg-2026
 date: '2026-11-03'
 time: '17:30'
@@ -38,9 +38,9 @@ seo:
     - Göteborg Natale
 ---
 
-Sabato 14 novembre [Liseberg](ref:liseberg), a Göteborg, apre Jul på Liseberg, la stagione di Natale che quest'anno porta una novità: Luma Celestia, un sentiero di luci lungo circa un chilometro che fa il giro completo della collina su cui sorge il parco. È costato 8,6 milioni di corone, l'investimento natalizio singolo più grande nella storia di Liseberg. Il parco lo ha annunciato il 3 novembre, e la stagione va avanti fino al 30 dicembre.
+Sabato 14 novembre [Liseberg](ref:liseberg), a Göteborg, apre Jul på Liseberg, la sua stagione di Natale. Quest'anno c'è una novità, Luma Celestia, un sentiero di luci lungo circa un chilometro che fa il giro completo della collina del parco. È costato 8,6 milioni di corone, l'investimento natalizio singolo più grande nella storia di Liseberg. Il parco lo ha annunciato il 3 novembre, e la stagione va avanti fino al 30 dicembre.
 
-## Un chilometro di luci intorno alla collina
+## Il percorso di Luma Celestia
 
 Il percorso parte dalla zona del Luna Park, arriva al Lustgården e torna indietro. Che strada fare e quanto fermarsi lo decidi tu. Lungo il cammino ci sono grandi installazioni, pensate come capitoli di un'unica storia, tra cui Norrsken (l'aurora boreale), Tre Månar (tre lune), Sägnernas Eld (il fuoco delle leggende), Himmelstrappan (la scala del cielo) e Stjärnregn (pioggia di stelle). Fa parte di Luma Celestia anche «Den fallna stjärnan», la stella caduta, uno spettacolo di acrobazia aerea e luci.
 
@@ -90,7 +90,7 @@ Con l'ingresso sono compresi il Tomtehuset con Babbo Natale, la pista di pattina
 - Stormvåg: da 120 cm, con un adulto da 95 cm
 - Lisebergshjulet: da 130 cm, con un adulto senza limiti
 
-[Helix](ref:liseberg/helix) e la Lisebergbanan non compaiono nell'elenco invernale del parco. L'estate, con tutte le attrazioni, le code e la coda virtuale, la racconta la nostra [guida a Liseberg](/blog/liseberg-tempi-di-attesa-consigli).
+[Helix](ref:liseberg/helix) e la Lisebergbanan non compaiono nell'elenco invernale del parco. La nostra [guida a Liseberg](/blog/liseberg-tempi-di-attesa-consigli) racconta l'estate, con tutte le attrazioni, le code e la coda virtuale.
 
 ## Tomtebyn, mercatini e neve di carta
 
