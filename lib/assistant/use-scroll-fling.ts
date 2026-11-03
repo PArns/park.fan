@@ -26,16 +26,15 @@ const LISTEN = { capture: true, passive: true } as const;
  */
 export function useScrollFling(enabled: boolean): ParkyFling | null {
   const [fling, setFling] = useState<ParkyFling | null>(null);
-  // Outlives a dialog or the open window, so neither cuts his rest short.
-  const [tracker] = useState(() => new FlingTracker());
   useEffect(() => {
     if (!enabled || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const tracker = new FlingTracker();
     let viewport = window.innerHeight;
     let hand: FlingHandAt | null = null;
     let frame = 0;
     let settle = 0;
     const letGo = () => {
-      tracker.letGo(performance.now());
+      tracker.letGo();
       setFling(null);
     };
     const by = (kind: FlingHand) => () => {
@@ -98,6 +97,6 @@ export function useScrollFling(enabled: boolean): ParkyFling | null {
       clearTimeout(settle);
       letGo();
     };
-  }, [enabled, tracker]);
+  }, [enabled]);
   return fling;
 }
