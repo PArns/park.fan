@@ -38,11 +38,11 @@ seo:
     - Gothenburg Christmas
 ---
 
-[Liseberg](ref:liseberg) in Gothenburg opens Jul på Liseberg, its Christmas season, on Saturday 14 November, and this year it adds a light trail of about a kilometre that loops right round the hill inside the park. It's called Luma Celestia and cost SEK 8.6 million, the biggest single Christmas investment the park has ever made. The season runs until 30 December. Liseberg announced all of this on 3 November.
+[Liseberg](ref:liseberg) in Gothenburg opens Jul på Liseberg, its Christmas season, on Saturday 14 November. This year it adds a light trail of about a kilometre that loops right round the hill inside the park. It's called Luma Celestia and cost SEK 8.6 million, the biggest single Christmas investment the park has ever made. The season runs until 30 December. Liseberg announced all of this on 3 November.
 
-## A kilometre of light around the hill
+## The route through Luma Celestia
 
-The trail runs from the Luna Park area over to Lustgården and back, and the route and the pace are up to you. Along the way stand large installations, meant as chapters of one story, among them Norrsken (northern lights), Tre Månar (three moons), Sägnernas Eld (fire of the legends), Himmelstrappan (stairway to heaven) and Stjärnregn (star rain). Luma Celestia also includes "Den fallna stjärnan", the fallen star, a show with aerial acrobatics and light.
+The trail runs from the Luna Park area over to Lustgården and back, and the route and the pace are up to you. Along the way are large installations, meant as chapters of one story. Among them are Norrsken (northern lights), Tre Månar (three moons), Sägnernas Eld (fire of the legends), Himmelstrappan (stairway to heaven) and Stjärnregn (star rain). Luma Celestia also includes "Den fallna stjärnan", the fallen star, a show with aerial acrobatics and light.
 
 > [!QUOTE]
 > Light has always been an important part of Jul på Liseberg. With Luma Celestia we're building on that tradition, and at the same time we're bringing a whole area to life that we haven't used during the season before.
@@ -55,11 +55,11 @@ The trail runs from the Luna Park area over to Lustgården and back, and the rou
 
 - Saturday 14 November: noon to 10 pm; Sunday 15 November: noon to 8 pm
 - every weekend from 20 November: Fridays 3 pm to 10 pm, Saturdays noon to 10 pm, Sundays noon to 8 pm
-- in December up to the 20th: Wednesdays and Thursdays 3 pm to 9 pm, Fridays 3 pm to 10 pm, Saturdays noon to 10 pm, Sundays noon to 8 pm, with 20 December running until 9 pm
+- in December up to the 20th: Wednesdays and Thursdays 3 pm to 9 pm, Fridays 3 pm to 10 pm, Saturdays noon to 10 pm, Sundays noon to 8 pm, and on 20 December until 9 pm
 - Monday 21 to Wednesday 23 December: noon to 9 pm
 - Saturday 26 to Wednesday 30 December: noon to 8 pm
 
-Up to 20 December the park stays shut on Mondays and Tuesdays. It's also closed on Christmas Eve and Christmas Day, which is fair enough: the Santa from Tomtehuset presumably has other deliveries to make. From 31 December to 10 January, only Kaninlandet, the children's area, and the ice rink open, daily from 11 am to 5 pm. Which other European parks stay open over the winter is in our [winter guide](/blog/winter-theme-parks-2026).
+Up to 20 December the park stays shut on Mondays and Tuesdays. It's also closed on Christmas Eve and Christmas Day, when the Santa from Tomtehuset presumably has other deliveries to make. From 31 December to 10 January, only Kaninlandet, the children's area, and the ice rink open, daily from 11 am to 5 pm. Other European parks [stay open over the winter](/blog/winter-theme-parks-2026) too.
 
 ```best-days-widget slug=liseberg
 
@@ -67,7 +67,7 @@ Up to 20 December the park stays shut on Mondays and Tuesdays. It's also closed 
 
 ## Tickets and prices
 
-The first tickets went on sale on 3 November, and until 9 November entry with an Åkpass is half price online. Liseberg releases the rest of the tickets in the week of 9 to 15 November. Buying online always works out cheaper than at the gate, and the regular price depends on the day:
+The first tickets went on sale on 3 November. Until 9 November, entry with an Åkpass is half price online. Liseberg releases the rest of the tickets in the week of 9 to 15 November. Buying online always works out cheaper than at the gate. The regular price depends on the day:
 
 - Entry: SEK 125, 165 or 195
 - Entry with Åkpass: SEK 285, 345 or 395
@@ -75,7 +75,7 @@ The first tickets went on sale on 3 November, and until 9 November entry with an
 
 The cheapest days are 15, 20, 22 and 27 November, plus the Wednesdays and Thursdays in December up to the 17th. You pay the most on 28 November, on the Saturdays and Sundays in December from the 5th and from 21 to 23 December. Children under 110 centimetres get in without an entry ticket, and their Åkpass starts at SEK 235. If a child wears the Åkpass Duo on their wrist, any adult can ride with them.
 
-Without an Åkpass, you pay for each ride with coupons at SEK 25 each. [Balder](ref:liseberg/balder) takes four of them, so if you want more than two rides, the Åkpass comes out cheaper. The Lisebergspasset costs SEK 395 and covers entry for twelve months; the Guldpasset costs SEK 2,595 and covers entry and every ride for twelve months.
+Without an Åkpass, you pay for each ride with coupons at SEK 25 each. [Balder](ref:liseberg/balder) takes four of them, so for more than two rides on Balder, the Åkpass comes out cheaper. The Lisebergspasset costs SEK 395 and covers entry for twelve months; the Guldpasset costs SEK 2,595 and covers entry and every ride for twelve months.
 
 ## Which rides run in winter
 
@@ -90,15 +90,15 @@ Entry includes Tomtehuset with Santa, the ice rink, Barnens Paradis (from age fo
 - Stormvåg: from 120 cm, or 95 cm with an adult
 - Lisebergshjulet: from 130 cm, no limit with an adult
 
-[Helix](ref:liseberg/helix) and Lisebergbanan aren't on the park's winter list. Summer, with every ride, its queues and the virtual queue, is covered in our [Liseberg guide](/blog/liseberg-wait-times-tips).
+[Helix](ref:liseberg/helix) and Lisebergbanan aren't on the park's winter list. Our [Liseberg guide](/blog/liseberg-wait-times-tips) covers the summer, with every ride, its queues and the virtual queue.
 
 ## Tomtebyn, markets and snow made of paper
 
 For children there's Tomtebyn, an elf village between the harbour area and Valkyria. The elves dance, play and sing with them there, and Santa collects the wish lists.
 
-Three Christmas markets share 46 stalls. Tyrolermarknad, with après-ski, sits next to Slänggungan and the [Radiobilarna, which stopped running in October](/news/liseberg-radiobilarna-closed). Gammaldags jul is an old-style market in Kvarteret Storgatan, and Vintermarknad stands by Stora Scenen next to the ice rink. Spread across the park are more than 2,100 Christmas trees and 3.3 kilometres of fir garland. The seven tonnes of artificial snow are made from paper pulp, so for snow Liseberg trusts the paper industry more than a Gothenburg December. Jul på Liseberg has been running since 2000. For its 25th anniversary last winter, five million lights were lit, and this year more than a million are added. There is also a 116-metre Christmas tree that can be seen all over Gothenburg. That is exactly the height of Lisebergstornet, the tower AtmosFear rides up.
+Three Christmas markets share 46 stalls. Tyrolermarknad, with après-ski, sits next to Slänggungan and the [Radiobilarna, which stopped running in October](/news/liseberg-radiobilarna-closed). Gammaldags jul is an old-style market in Kvarteret Storgatan, and Vintermarknad stands by Stora Scenen next to the ice rink. Spread across the park are more than 2,100 Christmas trees and 3.3 kilometres of fir garland. The seven tonnes of artificial snow are made from paper pulp, so for snow Liseberg trusts the paper industry more than a Gothenburg December. Jul på Liseberg has been running since 2000. For its 25th anniversary last winter, five million lights were lit, and this year more than a million are added. A 116-metre Christmas tree, visible all over Gothenburg, is exactly as tall as Lisebergstornet, the tower AtmosFear rides up.
 
-The park's own Grand Curiosa Hotel sells a package with one night, julbord, the Swedish Christmas buffet, and entry. It can be booked on selected days from 14 November to 23 December.
+The park's own Grand Curiosa Hotel sells a package of one night, entry and julbord, the Swedish Christmas buffet. It can be booked on selected days from 14 November to 23 December.
 
 [Liseberg](ref:liseberg?full)
 

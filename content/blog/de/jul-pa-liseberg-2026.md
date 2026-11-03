@@ -7,7 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Liseberg in Göteborg öffnet am 14. November seine Weihnachtssaison Jul på Liseberg. Neu ist Luma Celestia, ein Lichterpfad von rund einem Kilometer rund um den Berg im Park. Bis zum 9. November gibt es Eintritt mit Åkpass online zum halben Preis.
+  Liseberg in Göteborg öffnet am 14. November seine Weihnachtssaison Jul på Liseberg. Neu ist Luma Celestia, ein Lichterpfad von etwa einem Kilometer um den Berg im Park. Bis zum 9. November gibt es Eintritt mit Åkpass online zum halben Preis.
 tags:
   - news
   - liseberg
@@ -38,11 +38,11 @@ seo:
     - Göteborg Weihnachten
 ---
 
-[Liseberg](ref:liseberg) in Göteborg öffnet am Samstag, 14. November, seine Weihnachtssaison Jul på Liseberg, und neu ist in diesem Jahr ein Lichterpfad von rund einem Kilometer einmal um den Berg im Park. Er heißt Luma Celestia und kostet 8,6 Millionen Kronen, die größte einzelne Weihnachtsinvestition in der Geschichte des Parks. Die Saison läuft bis zum 30. Dezember, angekündigt hat Liseberg das alles am 3. November.
+[Liseberg](ref:liseberg) in Göteborg öffnet am Samstag, 14. November, seine Weihnachtssaison Jul på Liseberg. Neu ist in diesem Jahr ein Lichterpfad von rund einem Kilometer einmal um den Berg im Park. Er heißt Luma Celestia und kostet 8,6 Millionen Kronen, die größte einzelne Weihnachtsinvestition in der Geschichte des Parks. Die Saison läuft bis zum 30. Dezember. Angekündigt hat Liseberg das am 3. November.
 
-## Ein Kilometer Licht um den Berg
+## Der Weg durch Luma Celestia
 
-Der Pfad führt vom Bereich Luna Park hinüber zum Lustgarten und wieder zurück, welchen Weg du dabei nimmst und wie lange du bleibst, entscheidest du selbst. Unterwegs stehen große Installationen, die als Kapitel einer gemeinsamen Geschichte gedacht sind, darunter Norrsken (Nordlicht), Tre Månar (drei Monde), Sägnernas Eld (Feuer der Sagen), Himmelstrappan (Himmelstreppe) und Stjärnregn (Sternenregen). Zu Luma Celestia gehört außerdem „Den fallna stjärnan“, der gefallene Stern, eine Vorstellung mit Luftakrobatik und Licht.
+Der Pfad führt vom Bereich Luna Park hinüber zum Lustgarten und wieder zurück. Welchen Weg du dabei nimmst und wie lange du bleibst, entscheidest du selbst. Unterwegs stehen große Installationen, die als Kapitel einer gemeinsamen Geschichte gedacht sind. Darunter sind Norrsken (Nordlicht), Tre Månar (drei Monde), Sägnernas Eld (Feuer der Sagen), Himmelstrappan (Himmelstreppe) und Stjärnregn (Sternenregen). Zu Luma Celestia gehört außerdem „Den fallna stjärnan“, der gefallene Stern, eine Vorstellung mit Luftakrobatik und Licht.
 
 > [!QUOTE]
 > Das Licht war schon immer ein wichtiger Teil von Jul på Liseberg. Mit Luma Celestia bauen wir auf dieser Tradition auf und erwecken zugleich einen ganzen Bereich zum Leben, den wir in der Saison bisher nicht genutzt haben.
@@ -53,13 +53,14 @@ Der Pfad führt vom Bereich Luna Park hinüber zum Lustgarten und wieder zurück
 
 ## Öffnungstage und Uhrzeiten
 
-- Samstag, 14. November: 12 bis 22 Uhr, Sonntag, 15. November: 12 bis 20 Uhr
+- Samstag, 14. November: 12 bis 22 Uhr
+- Sonntag, 15. November: 12 bis 20 Uhr
 - ab 20. November an jedem Wochenende: freitags 15 bis 22 Uhr, samstags 12 bis 22 Uhr, sonntags 12 bis 20 Uhr
 - im Dezember bis zum 20.: mittwochs und donnerstags 15 bis 21 Uhr, freitags 15 bis 22 Uhr, samstags 12 bis 22 Uhr, sonntags 12 bis 20 Uhr, am 20. Dezember bis 21 Uhr
 - Montag, 21., bis Mittwoch, 23. Dezember: 12 bis 21 Uhr
 - Samstag, 26., bis Mittwoch, 30. Dezember: 12 bis 20 Uhr
 
-Montags und dienstags bleibt der Park bis zum 20. Dezember zu. An Heiligabend und am ersten Weihnachtstag ist ebenfalls geschlossen, der Weihnachtsmann aus dem Tomtehuset hat an diesen beiden Tagen vermutlich anderswo zu tun. Vom 31. Dezember bis zum 10. Januar öffnen täglich von 11 bis 17 Uhr nur noch das Kaninlandet, der Kinderbereich, und die Eisbahn. Welche Parks in Europa im Winter sonst geöffnet haben, steht in unserem [Winter-Guide](/blog/winter-freizeitparks-2026).
+Montags und dienstags bleibt der Park bis zum 20. Dezember zu. An Heiligabend und am ersten Weihnachtstag ist ebenfalls geschlossen, der Weihnachtsmann aus dem Tomtehuset hat an diesen beiden Tagen vermutlich anderswo zu tun. Vom 31. Dezember bis zum 10. Januar öffnen täglich von 11 bis 17 Uhr nur noch das Kaninlandet, der Kinderbereich, und die Eisbahn. Im Winter haben in Europa auch [andere Parks geöffnet](/blog/winter-freizeitparks-2026).
 
 ```best-days-widget slug=liseberg
 
@@ -67,7 +68,7 @@ Montags und dienstags bleibt der Park bis zum 20. Dezember zu. An Heiligabend un
 
 ## Tickets und Preise
 
-Die ersten Tickets sind seit dem 3. November im Verkauf, bis zum 9. November gibt es Eintritt mit Åkpass online zum halben Preis. Die übrigen Tickets gibt Liseberg in der Woche vom 9. bis 15. November frei. Online zahlst du immer weniger als an der Kasse, und der reguläre Preis hängt vom Tag ab:
+Die ersten Tickets sind seit dem 3. November im Verkauf. Bis zum 9. November kostet Eintritt mit Åkpass online die Hälfte. Die übrigen Tickets gibt Liseberg in der Woche vom 9. bis 15. November frei. Online zahlst du immer weniger als an der Kasse. Der reguläre Preis hängt vom Tag ab:
 
 - Eintritt: 125, 165 oder 195 Kronen
 - Eintritt mit Åkpass: 285, 345 oder 395 Kronen
@@ -75,7 +76,7 @@ Die ersten Tickets sind seit dem 3. November im Verkauf, bis zum 9. November gib
 
 Am günstigsten sind der 15., 20., 22. und 27. November und im Dezember die Mittwoche und Donnerstage bis zum 17. Am meisten zahlst du am 28. November, an den Samstagen und Sonntagen im Dezember ab dem 5. und vom 21. bis 23. Dezember. Kinder unter 110 Zentimetern kommen ohne Eintritt hinein, für sie kostet der Åkpass ab 235 Kronen. Trägt ein Kind den Åkpass Duo am Handgelenk, darf ein beliebiger Erwachsener mit ihm fahren.
 
-Ohne Åkpass bezahlst du jede Fahrt mit Kupons zu je 25 Kronen. [Balder](ref:liseberg/balder) kostet vier davon, wer mehr als zweimal fahren will, ist mit dem Åkpass also günstiger dran. Das Lisebergspasset für 395 Kronen gilt zwölf Monate als Eintritt, das Guldpasset für 2.595 Kronen zwölf Monate für Eintritt und alle Fahrten.
+Ohne Åkpass bezahlst du jede Fahrt mit Kupons zu je 25 Kronen. [Balder](ref:liseberg/balder) kostet vier davon. Wer Balder mehr als zweimal fahren will, ist mit dem Åkpass günstiger dran. Das Lisebergspasset für 395 Kronen gilt zwölf Monate als Eintritt, das Guldpasset für 2.595 Kronen zwölf Monate für Eintritt und alle Fahrten.
 
 ## Welche Bahnen im Winter fahren
 
@@ -90,13 +91,13 @@ Im Eintritt sind das Tomtehuset mit dem Weihnachtsmann, die Eisbahn, Barnens Par
 - Stormvåg: ab 120 cm, mit Erwachsenem ab 95 cm
 - Lisebergshjulet: ab 130 cm, mit Erwachsenem ohne Grenze
 
-[Helix](ref:liseberg/helix) und die Lisebergbanan stehen nicht auf der Winterliste des Parks. Den Sommer mit allen Bahnen, ihren Warteschlangen und der virtuellen Warteschlange beschreibt unser [Liseberg-Guide](/blog/liseberg-wartezeiten-tipps).
+[Helix](ref:liseberg/helix) und die Lisebergbanan stehen nicht auf der Winterliste des Parks. Unser [Liseberg-Guide](/blog/liseberg-wartezeiten-tipps) beschreibt den Sommer mit allen Bahnen, ihren Warteschlangen und der virtuellen Warteschlange.
 
 ## Tomtebyn, Märkte und Schnee aus Papier
 
 Für Kinder gibt es die Tomtebyn, ein Wichteldorf zwischen dem Hafenbereich und Valkyria. Dort tanzen, spielen und singen Wichtel mit ihnen, und der Weihnachtsmann nimmt die Wunschzettel entgegen.
 
-Auf drei Weihnachtsmärkten stehen 46 Buden. Der Tyrolermarknad mit Après-Ski liegt bei der Slänggungan und den [Radiobilarna, die seit Oktober nicht mehr fahren](/news/liseberg-radiobilarna-geschlossen). Gammaldags jul ist ein Markt im alten Stil im Kvarteret Storgatan, und der Vintermarknad steht an der Stora Scenen neben der Eisbahn. Im Park verteilt stehen mehr als 2.100 Weihnachtsbäume und 3,3 Kilometer Tannengirlande. Die sieben Tonnen Kunstschnee sind aus Papiermasse, Liseberg vertraut beim Schnee also eher der Papierindustrie als dem Göteborger Dezember. Jul på Liseberg gibt es seit dem Jahr 2000. Zum 25-jährigen Jubiläum im vergangenen Winter leuchteten fünf Millionen Lichter, in diesem Jahr kommen mehr als eine Million dazu. Dazu kommt ein 116 Meter hoher Weihnachtsbaum, der in ganz Göteborg zu sehen ist. Genau so hoch ist der Lisebergstornet, an dem AtmosFear fährt.
+Auf drei Weihnachtsmärkten stehen 46 Buden. Der Tyrolermarknad mit Après-Ski liegt bei der Slänggungan und den [Radiobilarna, die seit Oktober nicht mehr fahren](/news/liseberg-radiobilarna-geschlossen). Gammaldags jul ist ein Markt im alten Stil im Kvarteret Storgatan, und der Vintermarknad steht an der Stora Scenen neben der Eisbahn. Im Park verteilt stehen mehr als 2.100 Weihnachtsbäume und 3,3 Kilometer Tannengirlande. Die sieben Tonnen Kunstschnee sind aus Papiermasse, Liseberg vertraut beim Schnee also eher der Papierindustrie als dem Göteborger Dezember. Jul på Liseberg gibt es seit dem Jahr 2000. Zum 25-jährigen Jubiläum im vergangenen Winter leuchteten fünf Millionen Lichter, in diesem Jahr kommen mehr als eine Million dazu. Außerdem steht im Park ein 116 Meter hoher Weihnachtsbaum, der in ganz Göteborg zu sehen ist. Genau so hoch ist der Lisebergstornet, an dem AtmosFear fährt.
 
 Im parkeigenen Grand Curiosa Hotel gibt es ein Paket mit einer Übernachtung, dem schwedischen Weihnachtsbuffet Julbord und dem Eintritt. Buchbar ist es an ausgewählten Tagen vom 14. November bis zum 23. Dezember.
 
