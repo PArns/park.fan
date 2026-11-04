@@ -224,7 +224,7 @@ function ShortWaitCard({ ride }: { ride: NearbyShortWait }) {
 /**
  * A park near the visitor, a ride of the park they stand in or a popular park: while it is open its
  * wait (a park's average) as the figure and its crowd level (a ride: its status) at the foot; shut,
- * its status as the figure. A popular park carries no live data, so its figure leads to its waits.
+ * its status as the figure. A popular park whose live data has not come yet leads to its waits.
  */
 function BrowseCard({ item, href }: { item: NearbySearchItem; href: string }) {
   const t = useTranslations('nearby');

@@ -5,6 +5,7 @@ import { useQuery } from '@tanstack/react-query';
 import { useLocale, useTranslations } from 'next-intl';
 import { HOME_NEARBY_LIMIT, useHomeNearbyParks } from '@/lib/hooks/use-nearby-parks';
 import { useAfterLoad } from '@/lib/hooks/use-after-load';
+import { useLiveParksByRegion, type LiveParkFields } from '@/lib/hooks/use-live-parks-by-region';
 import { stripNewPrefix } from '@/lib/utils';
 import {
   BROWSE_MIN_PARKS,
@@ -80,7 +81,11 @@ export function useBrowseHeading(browse: HeroBrowseParks): string {
 /** How many rows the list holds at most: what the nearby request returns. */
 const BROWSE_LIMIT = HOME_NEARBY_LIMIT;
 
-const popularRow = (park: PopularPark): NearbySearchItem => ({
+/**
+ * A popular park as a row, with its live status, crowd, wait and next opening once
+ * `useLiveParksByRegion` has answered; without that, a row with no status rather than a guessed one.
+ */
+const popularRow = (park: PopularPark, live: LiveParkFields | undefined): NearbySearchItem => ({
   type: 'park',
   id: park.id,
   name: park.name,
@@ -91,8 +96,21 @@ const popularRow = (park: PopularPark): NearbySearchItem => ({
   continent: park.continent ?? undefined,
   imageUrl: park.backgroundImage ?? undefined,
   imagePosition: park.backgroundPosition,
+  status: live?.status,
+  load: live?.crowdLevel,
+  avgWaitTime: live?.averageWaitTime,
+  ...(live?.status && live.timezone
+    ? shutParkSchedules({ ...live, status: live.status, timezone: live.timezone })
+    : {}),
   browseItem: 'popular_park',
 });
+
+/** `<continent>/<country>` out of a park's API URL (`/v1/parks/<continent>/<country>/…`). */
+const regionOfParkUrl = (url: string | null): string | null =>
+  url
+    ?.match(/\/parks\/([^/]+)\/([^/]+)\//)
+    ?.slice(1, 3)
+    .join('/') ?? null;
 
 /**
  * What the search shows before anything is typed: the visitor's nearby parks, or — when the
@@ -139,11 +157,19 @@ export function useHeroBrowseParks(): HeroBrowseParks {
     retry: 1,
   });
 
+  // The popular parks' live status, in one request for their countries; none while there are none.
+  const popularRegions = useMemo(
+    () => (popular ?? []).flatMap((park) => regionOfParkUrl(park.url) ?? []),
+    [popular]
+  );
+  const { liveByParkId } = useLiveParksByRegion(popularRegions);
+
   // Pending until something is on screen: the nearby lookup itself (which does not even start
   // until after load), and then the popular-parks fallback when nearby came back empty.
   const isPending = !hasNearby && (!afterLoad || nearbyPending || popularPending);
 
   return useMemo((): HeroBrowseParks => {
+    const asPopularRow = (park: PopularPark) => popularRow(park, liveByParkId?.[park.id]);
     if (inParkData) {
       const rides: AttractionWithDistance[] = inParkData.rides.slice(0, BROWSE_LIMIT - 1);
       const parkUrl =
@@ -222,9 +248,7 @@ export function useHeroBrowseParks(): HeroBrowseParks {
             ...shutParkSchedules(park),
             browseItem: 'nearby_park' as const,
           })),
-          // The popular ranking carries no live data, so these rows show no status rather than
-          // a guessed one.
-          ...fill.map(popularRow),
+          ...fill.map(asPopularRow),
         ],
       };
     }
@@ -233,9 +257,9 @@ export function useHeroBrowseParks(): HeroBrowseParks {
       inPark: false,
       isFallback: fallback.length > 0,
       isPending,
-      items: fallback.map(popularRow),
+      items: fallback.map(asPopularRow),
     };
-  }, [inParkData, nearbyParks, popular, isPending]);
+  }, [inParkData, nearbyParks, popular, isPending, liveByParkId]);
 }
 
 /**
