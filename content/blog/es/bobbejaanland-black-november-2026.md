@@ -43,7 +43,7 @@ seo:
     - aparcamiento Bobbejaanland
 ---
 
-Desde el 9 de noviembre y hasta el 6 de diciembre incluido, [Bobbejaanland](ref:bobbejaanland), en Kasterlee, vende sus abonos anuales con hasta un 40 % de descuento. Cada abono vale 365 días desde la compra. Si lo compras en estas cuatro semanas, te sirve también para el Nickelodeon Land, que abre en abril de 2027. El parque llama a la promoción Black November aunque se alarga hasta diciembre, y con un 40 % de descuento nadie le va a discutir el calendario.
+Del 9 de noviembre al 6 de diciembre incluido, [Bobbejaanland](ref:bobbejaanland), en Kasterlee, vende sus abonos anuales con hasta un 40 % de descuento. El abono vale 365 días desde la compra, así que quien lo compre en estas cuatro semanas estará también en la apertura del Nickelodeon Land en abril de 2027. El parque llama a la promoción Black November aunque llega hasta diciembre, y con un 40 % de rebaja a nadie le importa que a este noviembre le sobren unos días.
 
 ## Cuánto cuestan los tres abonos
 
@@ -51,25 +51,30 @@ Desde el 9 de noviembre y hasta el 6 de diciembre incluido, [Bobbejaanland](ref:
 - PLUS: 83,95 € en lugar de 139,90 €
 - BASIC: 80,45 € en lugar de 114,90 €
 
-El abono de aparcamiento y el del autobús lanzadera solo van incluidos en el PREMIUM. PLUS y BASIC no traen ninguno de los dos, y tampoco se pueden comprar aparte. Durante el Black November, PLUS y BASIC cuestan casi lo mismo, así que la decisión real está entre el PREMIUM y los otros dos.
+El abono de aparcamiento y el del autobús lanzadera solo existen con el PREMIUM; al PLUS y al BASIC no se pueden añadir. Frente al BASIC, el PLUS suma visitas gratis a Movie Park Germany y a Slagharen, y el PREMIUM además el aparcamiento.
 
-El PREMIUM te da un 20 % de descuento en productos seleccionados de restaurantes y tiendas, entradas para amigos a precio reducido y sin límite (el precio depende del periodo) y un descuento en el Speedy Pass Diamond, Gold y Silver, cuyo precio varía según el día de la visita. En cada visita pueden entrar gratis hasta dos acompañantes de 65 años o más si enseñan su documento de identidad en taquilla. Tienes tres entradas gratis en [Movie Park Germany](/blog/movie-park-germany-tiempos-de-espera-consejos) y en Slagharen, que se canjean enseñando el abono digital, y una más en otro parque de Parques Reunidos. En los parques asociados entras gratis o con descuento, y en los Corsendonk Hotels te descuentan un 10 % del precio de la habitación.
+Con el PREMIUM tienes un 20 % de descuento en productos seleccionados de restaurantes y tiendas y un 10 % sobre el precio de la habitación en los Corsendonk Hotels. Las entradas para amigos, todas las que quieras, y el Speedy Pass Diamond, Gold y Silver te salen más baratos, a un precio que en los dos casos depende del día de la visita. En cada visita entran gratis hasta dos acompañantes de 65 años o más si enseñan su documento de identidad en taquilla. Enseñando el abono digital entras tres veces gratis en [Movie Park Germany](/blog/movie-park-germany-tiempos-de-espera-consejos) y en Slagharen, y una vez en otro parque de Parques Reunidos. Bobbejaanland, que fundó Bobbejaan Schoepen, pertenece desde 2004 a Parques Reunidos, igual que Movie Park.
 
-El PLUS es casi igual, pero con dos visitas gratis a Movie Park y Slagharen en vez de tres, y Bobbejaanland no incluye en él ningún otro parque de Parques Reunidos. El BASIC es la entrada sin extras, con un 10 % de descuento en restaurantes y tiendas.
+El PLUS trae casi lo mismo, pero con dos visitas gratis a Movie Park y Slagharen en vez de tres. La visita a otro parque de Parques Reunidos no aparece en la lista del PLUS. El BASIC es la entrada sin extras, con un 10 % de descuento en restaurantes y tiendas.
 
-Ninguno de los tres abonos vale en los días rojos, y esos días tampoco funcionan los códigos de descuento. Si en el calendario del parque no aparece ningún día en rojo, es que Bobbejaanland todavía no ha fijado ninguno. También quedan fuera los días con un evento privado, para los que tampoco se venden entradas.
+Ninguno de los tres abonos vale en los días rojos, y esos días tampoco funcionan los códigos de descuento. Si el calendario del parque no marca ningún día en rojo, es que Bobbejaanland aún no ha fijado ninguno. Los días con un evento privado no entras ni con abono ni con entrada.
 
-## ¿Abono o entrada de un día?
+## Abono o entrada de un día
 
-La entrada de un día para quien mide más de 140 centímetros cuesta desde 27,90 € en línea y desde 48,90 € en taquilla, y la tarifa estándar es de 49,90 €. Entre 100 y 140 centímetros pagas también desde 27,90 € en línea, y desde 44,90 € en taquilla. Los niños de menos de un metro no necesitan entrada ni reserva, así que para ellos no hace falta abono. Los mayores de 65 pagan 21,90 € en taquilla. El aparcamiento cuesta 13 € por visita en coche, 7 € en moto y 19 € en autocaravana.
+- más de 140 centímetros: en línea desde 27,90 €, en taquilla desde 48,90 € (tarifa estándar 49,90 €)
+- de 100 a 140 centímetros: en línea desde 27,90 €, en taquilla desde 44,90 €
+- 65 años o más: 21,90 € en taquilla
+- aparcamiento por visita: coche 13 €, moto 7 €, autocaravana 19 €
 
-Si fueras a pagar dos veces en taquilla, el abono BASIC ya te sale más barato; si compras en línea, a partir de la tercera visita como muy tarde. Si vas en coche, yo me quedaría con el PREMIUM, porque te ahorras el aparcamiento en cada visita. Los abonos de otros parques los hemos puesto uno al lado del otro en nuestra [comparativa de pases anuales](/blog/pase-anual-comparativa-parques).
+Los niños de menos de un metro entran sin entrada y sin reserva, así que el abono solo lo compras para los mayores.
+
+Con precios de taquilla, el abono BASIC de 80,45 € ya está amortizado en la segunda visita; con entradas en línea desde 27,90 €, en la tercera como muy tarde. Si vas en coche, yo cogería el PREMIUM, porque en cada visita te ahorras el tique de aparcamiento. Los abonos de otros parques están uno al lado del otro en nuestra [comparativa de pases anuales](/blog/pase-anual-comparativa-parques).
 
 ## Cuándo abre el parque
 
-Halloween sigue hasta el 15 de noviembre incluido. El 5 de diciembre empieza Bobbejaanland Wintert, una de las [temporadas de invierno en Europa](/blog/parques-atracciones-invierno-2026), que dura hasta el 3 de enero de 2027. El horario es de 11:00 a 19:00, y en Nochebuena y Nochevieja hasta las 17:00. El 25 de diciembre y el 1 de enero el parque cierra. En los días de Wintert el abono vale como cualquier otro día, siempre que no sea un día rojo. Durante el primer fin de semana de Wintert, el 5 y el 6 de diciembre, el Black November sigue en marcha, así que puedes comprar el abono antes de tu primera visita de invierno.
+Halloween sigue hasta el 15 de noviembre incluido. Bobbejaanland Wintert, una de las [temporadas de invierno en Europa](/blog/parques-atracciones-invierno-2026), va del 5 de diciembre al 3 de enero de 2027. Abre de 11:00 a 19:00, y en Nochebuena y Nochevieja hasta las 17:00. El 25 de diciembre y el 1 de enero el parque cierra. El abono vale también los días de Wintert, y como el Black November sigue en marcha el primer fin de semana de Wintert, el 5 y el 6 de diciembre, puede comprarlo incluso quien solo piensa ir en invierno.
 
-En invierno el parque se reparte en seis zonas invernales, con Papá Noel, un pueblo navideño y Land of Fire & Ice, y el estanque se convierte en pista de hielo. Funcionan, entre otras, Sledge Hammer, [Typhoon](ref:bobbejaanland/typhoon), [Fury](ref:bobbejaanland/fury), Dreamcatcher, Naga Bay, Bob Express, Revolution y The El Paso Special. Fury llegó al parque en 2019.
+En invierno el parque se reparte en seis zonas invernales, con Papá Noel, un pueblo navideño y Land of Fire & Ice, y el estanque se convierte en pista de hielo. Funcionan, entre otras, Sledge Hammer, [Typhoon](ref:bobbejaanland/typhoon), [Fury](ref:bobbejaanland/fury), que llegó en 2019, Dreamcatcher, Naga Bay, Bob Express, Revolution y The El Paso Special.
 
 ```best-days-widget slug=bobbejaanland
 
@@ -77,11 +82,9 @@ En invierno el parque se reparte en seis zonas invernales, con Papá Noel, un pu
 
 ## Nickelodeon Land desde abril de 2027
 
-En la página de sus abonos, Bobbejaanland anuncia para 2027 el Nickelodeon Land con tres atracciones nuevas. El consejero delegado, Yves Peeters, dio más detalles a la VRT. La zona tendrá personajes de Nickelodeon como Garfield y Bob Esponja y está justo detrás de la entrada del parque. Las obras ya han empezado, se están desmontando atracciones que había allí y la zona de obras está vallada. La inversión ronda los 15 millones de euros y la apertura está prevista para abril de 2027.
+Bobbejaanland anuncia para 2027 el Nickelodeon Land, con tres atracciones nuevas. El consejero delegado, Yves Peeters, contó a la VRT que la zona tendrá personajes de Nickelodeon como Garfield y Bob Esponja y que queda justo detrás de la entrada del parque. Para las obras se desmontan atracciones; cuáles, Bobbejaanland no lo ha publicado. El terreno está vallado y la zona cuesta unos 15 millones de euros.
 
-El Wild Swing lleva a 18 pasajeros a la vez y se balancea hasta 12 metros de altura. La torre de caída mide 15 metros, que a Garfield, con lo que le gusta el sofá, seguramente le parecerán muchos más que a los niños que la miran desde abajo. La atracción acuática Big Wavez sube a los pasajeros a más de 20 metros, los deja caer y levanta una ola de 10 metros. Según Peeters, en esta forma es la primera de su tipo en Europa. A la cadena le contó que Bobbejaanland ha pasado de ser un parque de atracciones a un parque temático con zonas muy tematizadas. Lo que abre en el resto de Europa en 2027 lo tienes en nuestras [novedades de 2027](/blog/novedades-parques-tematicos-2027).
-
-El parque lo fundó Bobbejaan Schoepen. Desde 2004 pertenece a Parques Reunidos, que también es dueño de Movie Park Germany. Tiene más de 40 atracciones.
+El Wild Swing lleva a 18 pasajeros a la vez y se balancea hasta 12 metros de altura. La torre de caída mide 15 metros, demasiados para un gato que solo se levanta del sofá cuando huele a lasaña. La atracción acuática Big Wavez sube a los pasajeros a más de 20 metros, los deja caer y empuja una ola de 10 metros de altura. Según Peeters, en Europa todavía no hay una atracción acuática así. Hoy Bobbejaanland tiene más de 40 atracciones, y lo que abre en el resto de Europa en 2027 está en nuestras [novedades de 2027](/blog/novedades-parques-tematicos-2027).
 
 [Bobbejaanland](ref:bobbejaanland?full)
 
