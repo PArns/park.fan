@@ -243,8 +243,8 @@ interface HeroBackgroundProps {
 }
 
 /**
- * The homepage hero background: a rotating, ken-burns park photo under a branded overlay. When the
- * visitor is inside a real park, that park's own photos crossfade in on top.
+ * The homepage hero background: a rotating, ken-burns park photo under the scrims the hero's text
+ * stands on. When the visitor is inside a real park, that park's own photos crossfade in on top.
  */
 export function HeroBackground({ imageSrc, blurDataURL, alt }: HeroBackgroundProps) {
   // Park the pan while the hero is scrolled away or the tab is in the background. It is a
@@ -262,10 +262,13 @@ export function HeroBackground({ imageSrc, blurDataURL, alt }: HeroBackgroundPro
       )}
     >
       <RandomHeroImage imageSrc={imageSrc} blurDataURL={blurDataURL} alt={alt} />
-      {/* Light mode only tints the top for the header, since the panels carry their own glass.
-          Dark mode keeps its heavier gradient, which makes the night photos read as night. */}
-      <div className="from-background/25 to-muted/20 dark:from-background dark:via-background/20 dark:to-muted/70 absolute inset-0 bg-gradient-to-br via-transparent" />
-      <div className="from-park-primary/10 absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] via-transparent to-transparent" />
+      {/* The scrims the hero's text stands on, in the page's own background so the photo runs
+          into the page in either theme: one under the header, one rising from the lower edge
+          behind the headline and the field, and from `md`, where the text stays left, one from
+          the left. */}
+      <div className="from-background/70 absolute inset-x-0 top-0 h-32 bg-gradient-to-b to-transparent" />
+      <div className="from-background via-background/80 absolute inset-x-0 bottom-0 h-4/5 bg-gradient-to-t via-35% to-transparent" />
+      <div className="from-background/65 via-background/15 absolute inset-0 hidden bg-gradient-to-r via-50% to-transparent md:block" />
     </div>
   );
 }

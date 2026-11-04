@@ -12,21 +12,15 @@ import { useHeroStatusLabels } from '@/lib/hooks/use-hero-status-labels';
 import { ANIMATED_HEIGHT_CLASS, useAnimatedHeight } from '@/lib/hooks/use-animated-height';
 import { SearchResultsPanel } from '@/components/search/search-results-panel';
 import { HeroBrowseHeader } from '@/components/search/hero-browse-header';
-import { HeroReadingGroup } from '@/components/search/hero-reading-group';
 import {
   HERO_SEARCH_INPUT_ROW_CLASS,
   HERO_SEARCH_ICON_CLASS,
   HERO_SEARCH_INPUT_CLASS,
   HERO_SEARCH_LIST_BOX_CLASS,
 } from '@/components/search/hero-search-classes';
-import { HeroSearchFrame, type HeroSearchRest } from '@/components/search/hero-search-field';
-import {
-  HERO_ROW_CLASS,
-  HERO_SKELETON_ROW_CLASS,
-  HeroReadingSkeleton,
-} from '@/components/search/search-skeleton-list';
-import { nothingFocused } from '@/lib/utils/page-focus';
-import type { HeroReading } from '@/lib/home/hero-search';
+import { HeroSearchFrame } from '@/components/search/hero-search-field';
+import { HERO_ROW_CLASS, HERO_SKELETON_ROW_CLASS } from '@/components/search/search-skeleton-list';
+import { isPageTypedKey } from '@/lib/utils/page-focus';
 import type { SearchSession } from '@/lib/analytics/search-session';
 
 /** Space kept between the dropdown's lower edge and the bottom of the viewport. */
@@ -38,10 +32,6 @@ interface HeroInlineSearchPanelProps {
   placeholder: string;
   /** Accessible name — the placeholder is a list of example parks, not a description. */
   label: string;
-  /** How many rows the resting list holds, and whether the posts follow them. */
-  rest: HeroSearchRest;
-  /** The two posts, where `rest.reading` asks for them. */
-  reading?: HeroReading | null;
   /** Text already typed into the static shell before this chunk finished loading. */
   initialQuery?: string;
   /** Focus the input on mount — set when the visitor's own interaction pulled this chunk in. */
@@ -63,18 +53,15 @@ interface HeroInlineSearchPanelProps {
 /**
  * Desktop-only in-place hero search: the input stays in the hero and its list hangs from it, one
  * glass object (`HeroSearchFrame`) that grows downward over the page. Nothing in the hero moves
- * when the list opens, grows or shrinks, which is what an in-flow list could not offer: the hero
- * is vertically centred, so every change in result count shifted the headline.
+ * when the list opens, grows or shrinks, which is what an in-flow list could not offer.
  *
- * At rest the list shows the first rows of the browse list and, on the hero, two posts; focus
- * opens the whole browse list; three characters swap in the results. The browse list is the same
- * the palette shows, from the same hook.
+ * At rest the field stands alone: what is near the visitor is the hero's card rail under it. Focus
+ * opens the browse list, the same the palette shows, from the same hook; three characters swap in
+ * the results. A blur or Escape on an empty field closes it again.
  */
 export default function HeroInlineSearchPanel({
   placeholder,
   label,
-  rest,
-  reading,
   initialQuery = '',
   autoFocus = false,
   onFocusHandled,
@@ -87,25 +74,14 @@ export default function HeroInlineSearchPanel({
   const frameRef = useRef<HTMLDivElement>(null);
   const boxRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
-  /** Measured height of the RESTING list under the field — what the spacer below reserves. */
-  const [restHeight, setRestHeight] = useState<number | null>(null);
-  /**
-   * Focused: the list grows from the resting rows to everything the browse hook has. At rest a
-   * few rows are an answer at a glance; once the visitor is actually in the field, showing more
-   * of what is nearby beats making them type.
-   */
+  /** Focused: the list is open under the field, the browse list until three characters arrive. */
   const [expanded, setExpanded] = useState(false);
 
   const withStatusLabels = useHeroStatusLabels();
   const fieldFocus = searchFieldFocusProps(session);
   const search = useSearchResults(query);
-  const {
-    handleSelect,
-    handleBrowseSelect,
-    handleGlossarySelect,
-    handlePostSelect,
-    handleBrowsePostSelect,
-  } = useSearchNavigation(session);
+  const { handleSelect, handleBrowseSelect, handleGlossarySelect, handlePostSelect } =
+    useSearchNavigation(session);
 
   useEffect(() => onTextTaken?.(), [onTextTaken]);
 
@@ -125,33 +101,8 @@ export default function HeroInlineSearchPanel({
 
   useAnimatedHeight(boxRef, contentRef);
 
-  // Reserve exactly the resting list's height in the flow, measured rather than assumed, so the
-  // plate below never drifts as a locale's strings change. Only at rest, and only off the real
-  // list: a grown list is meant to expand over the page, and a height taken off the skeleton
-  // would move the plate twice.
-  const resting = query.trim().length < 3 && !expanded;
-  const atRest = resting && !search.browse.isPending;
-  useEffect(() => {
-    const frame = frameRef.current;
-    const box = boxRef.current;
-    const content = contentRef.current;
-    if (!frame || !box || !content || !atRest) return;
-    // Off the content, which the box eases towards, plus the hairline above it and the frame's
-    // lower border: the box is mid-ease when the list collapses back to rest, and the spacer and
-    // the plate would follow it down and up again.
-    const borders =
-      box.offsetHeight - box.clientHeight + parseFloat(getComputedStyle(frame).borderBottomWidth);
-    const measure = () => {
-      const height = content.getBoundingClientRect().height;
-      setRestHeight(height + borders);
-      // The floor of the list's cap below: opening the list never makes it shorter than at rest.
-      frame.style.setProperty('--hero-search-rest-content', `${height}px`);
-    };
-    measure();
-    const observer = new ResizeObserver(measure);
-    observer.observe(content);
-    return () => observer.disconnect();
-  }, [atRest]);
+  // The list is open while the field has focus, and closed at rest and after a blur.
+  const closed = !expanded;
 
   // Cap the opened list at the room left below the field, so a long list scrolls inside itself. The
   // value is written onto the frame as a custom property, so scrolling re-renders nothing. This
@@ -233,10 +184,7 @@ export default function HeroInlineSearchPanel({
     const onKey = (e: KeyboardEvent) => {
       // Only when nothing is focused: letters on a focused control mean first-letter navigation
       // to a screen reader, not "start searching".
-      if (!nothingFocused(document.activeElement)) return;
-      if (e.metaKey || e.ctrlKey || e.altKey) return;
-      // Space stays with the page: it scrolls, and it activates a focused control.
-      if (e.key.length !== 1 || e.key === ' ') return;
+      if (!isPageTypedKey(e)) return;
       e.preventDefault();
       setQuery((prev) => prev + e.key);
       inputRef.current?.focus({ preventScroll: true });
@@ -245,19 +193,15 @@ export default function HeroInlineSearchPanel({
     return () => document.removeEventListener('keydown', onKey);
   }, [onHero]);
 
-  // The resting rows' height, held when the list is shorter, so the frame keeps its box: rows of
-  // 3.75 rem (`HERO_ROW_CLASS`) inside the group's own 4 px top and bottom.
-  const rowsStyle = { minHeight: `calc(${rest.desktopRows} * 3.75rem + 0.5rem)` };
-
   return (
     <CommandPrimitive
       shouldFilter={false}
       className="group/hero-search [&_[cmdk-group-heading]]:text-foreground/70 relative w-full bg-transparent [&_[cmdk-group-heading]]:px-4 [&_[cmdk-group-heading]]:pt-3.5 [&_[cmdk-group-heading]]:pb-1 [&_[cmdk-group-heading]]:text-[10px] [&_[cmdk-group-heading]]:font-semibold [&_[cmdk-group-heading]]:tracking-wider [&_[cmdk-group-heading]]:uppercase [&_[cmdk-group]]:px-1.5 [&_[cmdk-item]]:px-3 [&_[cmdk-item]]:py-2 [&_[cmdk-item]_svg]:h-5 [&_[cmdk-item]_svg]:w-5"
       onKeyDown={(e) => {
         // Escape steps back one level and KEEPS focus on the field: a query is cleared first,
-        // and only an already-empty field collapses to the resting rows. There is no closed
-        // state to fall back to — blurring to <body> dropped a keyboard user out of the hero
-        // with nothing announced and no defined place to tab on from.
+        // and only an already-empty field closes its list. Blurring to <body> instead dropped a
+        // keyboard user out of the hero with nothing announced and no defined place to tab on
+        // from.
         if (e.key !== 'Escape') return;
         if (query) {
           setQuery('');
@@ -287,37 +231,23 @@ export default function HeroInlineSearchPanel({
         />
       </div>
 
-      {/* Reserves the list's resting height in the hero's flow; a query that grows the list grows
-          it over the page instead. The CSS variable is the estimate that matches the shell's
-          skeleton; from mount on, the measured height takes over. */}
-      <div
-        aria-hidden="true"
-        className={rest.spacerClass}
-        // The measured height replaces the CSS estimate on the hero only: off the hero the step
-        // card's estimate stays, because replacing it would pull every chapter below up when this
-        // chunk mounts, and the floating list may overhang its reservation a little there.
-        style={onHero && restHeight != null ? { height: restHeight } : undefined}
-      />
-
       {/* `onMouseDown` preventDefault keeps focus in the input, so clicking a result cannot blur
           the field out from under the click. */}
-      <HeroSearchFrame
-        ref={frameRef}
-        onHero={onHero}
-        state={search.browse.isPending ? 'pending' : 'settled'}
-        onMouseDown={(e) => e.preventDefault()}
-      >
-        <div ref={boxRef} className={cn(HERO_SEARCH_LIST_BOX_CLASS, ANIMATED_HEIGHT_CLASS)}>
-          {/* Capped to the room below the field once it is opened, never below its resting
-              height: at rest it is reserved in the flow and the page scrolls to it. The content
-              carries the cap, not the box: the box's height eases, and the list only scrolls
-              inside a box whose height is already final. */}
+      <HeroSearchFrame ref={frameRef} onHero={onHero} onMouseDown={(e) => e.preventDefault()}>
+        {/* Closed, the list stays mounted (cmdk's `aria-controls` points into it) but takes no
+            room, and the box eases between nothing and the open list. */}
+        <div
+          ref={boxRef}
+          className={cn(HERO_SEARCH_LIST_BOX_CLASS, ANIMATED_HEIGHT_CLASS, closed && 'border-t-0')}
+        >
+          {/* Capped to the room below the field. The content carries the cap, not the box: the
+              box's height eases, and the list only scrolls inside a box whose height is already
+              final. */}
           <div
             ref={contentRef}
             className={cn(
-              'flex flex-col',
-              !resting &&
-                'max-h-[max(var(--hero-search-max-h,32rem),var(--hero-search-rest-content,0px))]'
+              'flex max-h-[var(--hero-search-max-h,32rem)] flex-col',
+              closed && 'hidden'
             )}
           >
             <SearchResultsPanel
@@ -328,18 +258,9 @@ export default function HeroInlineSearchPanel({
               onBrowseSelect={handleBrowseSelect}
               onGlossarySelect={handleGlossarySelect}
               onPostSelect={handlePostSelect}
-              browseLimit={expanded ? undefined : rest.desktopRows}
               browseItems={withStatusLabels(heroBrowseRows(search.browse))}
               browseHeader={<HeroBrowseHeader browse={search.browse} />}
-              browseStyle={rowsStyle}
               browseRowClassName={HERO_ROW_CLASS}
-              browseExtra={
-                rest.reading && reading ? (
-                  <HeroReadingGroup reading={reading} onSelect={handleBrowsePostSelect} />
-                ) : null
-              }
-              browseExtraPending={rest.reading && reading ? <HeroReadingSkeleton /> : null}
-              emptyBrowse={<div aria-hidden="true" style={rowsStyle} />}
               listClassName="min-h-0 flex-1"
               skeletonRowClassName={HERO_SKELETON_ROW_CLASS}
             />

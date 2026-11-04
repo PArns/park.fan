@@ -173,7 +173,7 @@ fits, the turn passes. On a phone Parky keeps 8 px from the window's edge so the
 laptop window needs about 740 px of height for the launch and about 870 px for the free fall. A ride
 asked for by name, as on Parky's page, plays anywhere.
 
-While a search is open anywhere on the page (the palette from the header or ⌘K, the hero's field,
+While a search is open anywhere on the page (the palette from the header or `/`, the hero's field,
 the homepage's step card, a listing's, the glossary's, the compare picker), Parky searches along: a
 magnifying glass swings up to its right eye, the eye looks big behind it, the pupils scan the
 page while the body peers to one side and the other, the mouth is pulled to one side with the

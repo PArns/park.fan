@@ -23,14 +23,7 @@ import { CHAPTER_GAP_COMPACT } from '@/components/common/chapter-spacing';
  * `pnpm measure:cls`, which sends a real `x-forwarded-for` — from localhost the API geolocates
  * nothing, the list comes back empty, and every placeholder here looks far too big.
  */
-export function NearbyParksCardSkeleton({
-  className,
-  nested = false,
-}: {
-  className?: string;
-  /** As on `NearbyParksCard`: the homepage, inside `NearbyChapter`. */
-  nested?: boolean;
-}) {
+export function NearbyParksCardSkeleton({ className }: { className?: string }) {
   const t = useTranslations('nearby');
 
   return (
@@ -43,11 +36,7 @@ export function NearbyParksCardSkeleton({
           side by side. Only the hint ("nearest open park: …") waits for data; its bar is a
           `text-sm` line box (20 px) inside the same `<p>` the live hint renders, so tag and
           height both match. `NearbyHeading` decides chapter or pill, here as in the card. */}
-      <NearbyHeading
-        nested={nested}
-        title={t('title')}
-        hint={<Skeleton as="span" className="block h-5 w-64" />}
-      />
+      <NearbyHeading title={t('title')} hint={<Skeleton as="span" className="block h-5 w-64" />} />
       {/* The live view wraps its grid in a plain <div> (it holds the "show all" button too),
           so this one does as well — same depth, same nesting. */}
       <div>

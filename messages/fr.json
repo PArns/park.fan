@@ -161,12 +161,6 @@
     }
   },
   "homeStory": {
-    "nearby": {
-      "kicker": "Ta position",
-      "title": "Les parcs près de chez toi",
-      "lead": "Avec ta position, park.fan affiche les parcs les plus proches, ceux qui sont ouverts en premier, et combien il y a de monde en ce moment.",
-      "allParks": "Découvrir tous les parcs"
-    },
     "favorites": {
       "kicker": "Favoris",
       "title": "Tes parcs et attractions",
@@ -1518,10 +1512,14 @@
       "demoNoLocation": "Sans ta position, tu restes à un point fixe du parc.",
       "dialGroup": "Boussole, nord en haut"
     },
+    "heroRail": {
+      "seeWaits": "Voir les temps d’attente"
+    },
     "shortWaits": {
-      "title": "File courte en ce moment",
-      "hint": "Les attractions proches dont la file est bien plus courte que d’habitude.",
-      "usually": "d’habitude {minutes} {unit}"
+      "title": "Files courtes près de vous",
+      "usually": "d’habitude {minutes} {unit}",
+      "now": "maintenant {minutes} {unit}",
+      "shorter": "{minutes} {unit} de moins"
     }
   },
   "location": {
@@ -1669,9 +1667,7 @@
     },
     "avgWait": "{minutes} min en moyenne",
     "avgWaitShort": "Ø {minutes} min",
-    "heroHint": "Tapez pour chercher des parcs, des attractions, des spectacles et des restaurants",
-    "newestNews": "Dernière actualité",
-    "newestGuide": "Dernier guide"
+    "heroHint": "Tapez pour chercher des parcs, des attractions, des spectacles et des restaurants"
   },
   "searchPage": {
     "types": {

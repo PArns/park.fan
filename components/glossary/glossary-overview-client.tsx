@@ -16,7 +16,7 @@ import { GLOSSARY_CATEGORY_ICONS } from './glossary-category-icons';
 import type { GlossaryTermListItem, GlossaryCategory } from '@/lib/glossary/types';
 import type { Locale } from '@/i18n/config';
 import { cn } from '@/lib/utils';
-import { nothingFocused } from '@/lib/utils/page-focus';
+import { isPageTypedKey, nothingFocused } from '@/lib/utils/page-focus';
 import { trackSiteEvent } from '@/lib/analytics/site-analytics';
 import { trackResultClick } from '@/lib/analytics/search-session';
 import {
@@ -67,8 +67,7 @@ export function GlossaryOverviewClient({
         setQuery('');
         return;
       }
-      if (e.metaKey || e.ctrlKey || e.altKey) return;
-      if (e.key.length !== 1 || e.key === ' ') return;
+      if (!isPageTypedKey(e)) return;
       inputRef.current?.focus();
     };
     document.addEventListener('keydown', handler);

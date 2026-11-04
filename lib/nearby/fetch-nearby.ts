@@ -1,13 +1,19 @@
 import { browserApiUrl } from '@/lib/api/client';
-import { loadCardImageMap, withParkCardImage, type CardImageMap } from '@/lib/media/card-images';
+import {
+  loadCardImageMap,
+  withParkCardImage,
+  withRideCardImage,
+  type CardImageMap,
+} from '@/lib/media/card-images';
 import type { NearbyAttractionsData, NearbyParksData, NearbyResponse } from '@/types/nearby';
 
 /** The widest radius the API takes; it answers 400 above it. */
 export const NEARBY_API_MAX_RADIUS_M = 10_000;
 
 /**
- * A nearby answer with the card photo on every park in it, the in-park one included. `/api/nearby`
- * and the direct browser call both run it, so a park gets the same photo either way.
+ * A nearby answer with the card photo on every park in it, the in-park one included, and on every
+ * ride in it (the short waits, the in-park rides) its own photo. `/api/nearby` and the direct
+ * browser call both run it, so a park or a ride gets the same photo either way.
  */
 export function withNearbyCardImages(map: CardImageMap, answer: NearbyResponse): NearbyResponse {
   if (answer.type === 'nearby_parks') {
@@ -15,13 +21,28 @@ export function withNearbyCardImages(map: CardImageMap, answer: NearbyResponse):
     if (!data?.parks) return answer;
     return {
       ...answer,
-      data: { ...data, parks: data.parks.map((p) => withParkCardImage(map, p)) },
+      data: {
+        ...data,
+        parks: data.parks.map((p) => withParkCardImage(map, p)),
+        shortWaits: data.shortWaits?.map((ride) => withRideCardImage(map, ride)),
+      },
     };
   }
   if (answer.type === 'in_park') {
     const data = answer.data as NearbyAttractionsData;
     if (!data?.park) return answer;
-    return { ...answer, data: { ...data, park: withParkCardImage(map, data.park) } };
+    const park = { slug: data.park.slug };
+    return {
+      ...answer,
+      data: {
+        ...data,
+        park: withParkCardImage(map, data.park),
+        rides: data.rides?.map((ride) => {
+          const { backgroundImage, backgroundPosition } = withRideCardImage(map, { ...ride, park });
+          return { ...ride, backgroundImage, backgroundPosition };
+        }),
+      },
+    };
   }
   return answer;
 }

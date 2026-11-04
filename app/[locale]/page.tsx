@@ -13,7 +13,6 @@ import { pickHeroImage } from '@/lib/media/hero';
 import { heroBlurDataUrl } from '@/lib/media/hero-lqip';
 import { getMediaAltBySrc } from '@/lib/media/text';
 import { HOME_HERO_ID } from '@/lib/home/hero-search';
-import { getHeroReading } from '@/lib/home/hero-reading';
 
 import { Flame, Star } from 'lucide-react';
 import { HeroBackground } from '@/components/layout/hero-background';
@@ -25,11 +24,9 @@ import { HeroEntranceGate } from '@/components/home/hero-entrance-gate';
 import { HeroWithNearby } from '@/components/home/hero-with-nearby';
 import { HeroStats } from '@/components/home/hero-stats';
 import { HeroTextPanel } from '@/components/home/hero-text-panel';
-import { HeroWorldPanel } from '@/components/home/hero-world-panel';
-import { HeroWorldPanelSkeleton } from '@/components/home/hero-skeletons';
+import { HeroRail } from '@/components/home/hero-rail';
 import { ParkCompassSlot } from '@/components/home/park-compass-slot';
 import { AnnounceSection } from '@/components/home/announce-section';
-import { NearbyChapter } from '@/components/home/nearby-chapter';
 import { HomeReading } from '@/components/home/home-reading';
 import { HomeTour } from '@/components/home/home-tour';
 import { FeaturedParksSlot } from '@/components/home/featured-parks-slot';
@@ -41,7 +38,6 @@ import { ParkyStop } from '@/components/home/parky-stop';
 import { FavoritesIntro } from '@/components/home/favorites-intro';
 import { HomeStop, StopLink } from '@/components/home/home-stop';
 import { ChapterHeading } from '@/components/common/chapter-heading';
-import { NearbyParksCardSkeleton } from '@/components/parks/nearby-parks-card-skeleton';
 import { FavoritesEmptyState } from '@/components/parks/favorites-empty-state';
 
 const LocationBanner = nextDynamic(
@@ -60,20 +56,11 @@ const FavoritesSection = nextDynamic(
   }
 );
 
-const NearbyParksCard = nextDynamic(
-  () =>
-    import('@/components/parks/nearby-parks-card').then((m) => ({ default: m.NearbyParksCard })),
-  {
-    loading: () => <NearbyParksCardSkeleton nested className={FLUSH_TOP} />,
-    ssr: true,
-  }
-);
-
 // A static shell per locale, served from the CDN. Every live figure on the page is a seed that a
-// client query overlays on mount (the hero's counts and map, nearby parks, favourites, the popular
+// client query overlays on mount (the hero's counts and card rail, favourites, the popular
 // parks' status), so the shell's age is invisible to a reader with JavaScript. The route's window
 // is the lowest fetch revalidate in its render; every fetch left (`getGlobalStats`,
-// `getGeoLiveStats`, `getGeoStructure`) is cached a week. Read `initialRevalidateSeconds` in
+// `getGeoStructure`) is cached a week. Read `initialRevalidateSeconds` in
 // `.next/prerender-manifest.json` after touching a fetch here. See
 // docs/rules/a-revalidate-at-a-call-site-is-somebody-elses-page.md.
 export const revalidate = 604800;
@@ -86,9 +73,6 @@ const HERO_TTL_MS = 5 * 60_000;
 // they stand inside a stop (`HomeStop`), which sets the room and holds the heading, so their band
 // padding and tint go.
 const BORROWED_BAND = 'bg-transparent p-0';
-
-// The nearby card starts flush with its stop's heading, without the gap it keeps under a chapter.
-const FLUSH_TOP = 'mt-0 max-sm:mt-0';
 
 interface HomePageProps {
   params: Promise<{ locale: string }>;
@@ -126,11 +110,11 @@ export async function generateMetadata({ params }: HomePageProps): Promise<Metad
 }
 
 /**
- * The homepage, written for somebody who has never been here: what this is and whether their park
- * is in it (the hero), then one stop after another, each a heading worded as people search beside
- * its content (`HomeStop`): what is new (the news board), their favourites where they have some,
- * what park.fan does (the tour), for whoever has not found it yet Parky, the parks near them, how
- * favourites work where they have none, the popular parks and five questions.
+ * The homepage, written for somebody who has never been here: what this is and where a queue is
+ * short near them right now (the hero and its card rail), then one stop after another, each a
+ * heading worded as people search beside its content (`HomeStop`): what is new (the news board),
+ * their favourites where they have some, what park.fan does (the tour), for whoever has not found
+ * it yet Parky, how favourites work where they have none, the popular parks and five questions.
  * Everything that explains a tool at length lives on that tool's own page.
  */
 export default async function HomePage({ params }: HomePageProps) {
@@ -154,12 +138,8 @@ export default async function HomePage({ params }: HomePageProps) {
     <RouteMessages route="/">
       <div className="flex flex-col">
         {/* z-10, not `isolate`, which stacked the section below later siblings: the search
-          dropdown floats out of this section over the content beneath it. The sticky header is
-          z-50, so it still wins. */}
-        {/* Below `md` the plate sits 12 px under the header and 12 px from the screen's edges: the
-          room goes to the search list (docs/features/homepage-hero.md). */}
-        {/* `lg:pb-24` keeps the photo's caption, bottom-left (`HeroImageInfoPanel`), clear of the
-          plate. */}
+          list floats out of this section over the content beneath it. The sticky header is z-50,
+          so it still wins. `-mt-12` runs the photo up under the header. */}
         {/* `suppressHydrationWarning` covers `className`: HeroEntranceGate's inline script
           removes `hero-entering`, so on a slow load React hydrates against a class list the
           script already edited. React reads the flag one level deep, so a mismatch inside the
@@ -167,32 +147,27 @@ export default async function HomePage({ params }: HomePageProps) {
         <section
           id={HOME_HERO_ID}
           suppressHydrationWarning
-          className="hero-entering relative z-10 -mt-12 overflow-visible px-3 pt-15 pb-8 md:px-6 md:pt-24 md:pb-10 lg:flex lg:min-h-dvh lg:flex-col lg:justify-center lg:pt-20 lg:pb-24"
+          className="hero-entering relative z-10 -mt-12"
         >
           <HeroRotationProvider>
-            <HeroBackground
-              imageSrc={randomHeroImage}
-              blurDataURL={heroBlurDataUrl(randomHeroImage)}
-              alt={getMediaAltBySrc(randomHeroImage, locale) ?? undefined}
-            />
-            {/* Closes the entrance window, so content that streams in later does not replay it
-              (see HeroEntranceGate). Outside the plate on purpose: a child there would shift the
-              content stagger's nth-child by one. */}
-            <HeroEntranceGate />
-            {/* No legibility scrim: a scrim would give the two panels different backdrops to
-              blur, and the plate's own blur does the legibility work. */}
-            {/* Tailwind's `container` tiers, asked of `@container/page` instead of the window,
-              which an open planner makes wider than the page. Same five tiers, so nothing moves
-              with the panel shut. `z-10` lifts the open search list over the image attribution
-              drawn on the photo below it. */}
-            <div className="relative z-10 mx-auto w-full @min-[640px]/page:max-w-[640px] @min-[768px]/page:max-w-[768px] @min-[1024px]/page:max-w-[1024px] @min-[1280px]/page:max-w-[1280px] @min-[1536px]/page:max-w-[1536px]">
-              {/* grid-cols-1, not a bare `grid`: an implicit column is sized to its content's
-                max-content width, and a truncated row or chip inside is as wide as its whole
-                text. Tailwind's grid-cols-1 is `minmax(0, 1fr)`, which caps it at the container
-                instead — without it the whole hero overflowed the viewport. */}
-              {/* The two-column split asks the page, not the window, so an open planner does not
-                leave the map its full column and the text a sliver. */}
-              <div className="grid grid-cols-1 items-start gap-10 @min-[1280px]/page:grid-cols-[minmax(0,1fr)_minmax(0,34rem)] @min-[1536px]/page:grid-cols-[minmax(0,1fr)_minmax(0,40rem)] @min-[1536px]/page:gap-14">
+            {/* The photo, with the text on its lower edge. From `md` its bottom padding is the
+              room the card rail below takes from it (`-mt-44`) plus the gap above the rail, so
+              the cards stand on the photo and the text sits high enough for them to be read on
+              the first screen. */}
+            <div className="relative flex min-h-[min(32rem,62svh)] flex-col justify-end px-4 pt-28 pb-6 md:min-h-[min(40rem,74svh)] md:px-6 md:pt-24 md:pb-52">
+              <HeroBackground
+                imageSrc={randomHeroImage}
+                blurDataURL={heroBlurDataUrl(randomHeroImage)}
+                alt={getMediaAltBySrc(randomHeroImage, locale) ?? undefined}
+              />
+              {/* Closes the entrance window, so content that streams in later does not replay it
+                (see HeroEntranceGate). Outside the text column on purpose: a child there would
+                shift the content stagger's nth-child by one. */}
+              <HeroEntranceGate />
+              {/* Tailwind's `container` tiers, asked of `@container/page` instead of the window,
+                which an open planner makes wider than the page. `z-20` lifts the open search
+                list over the card rail, which overlaps the photo from `md`. */}
+              <div className="relative z-20 mx-auto w-full @min-[640px]/page:max-w-[640px] @min-[768px]/page:max-w-[768px] @min-[1024px]/page:max-w-[1024px] @min-[1280px]/page:max-w-[1280px] @min-[1536px]/page:max-w-[1536px]">
                 <HeroTextPanel className="hero-in-stagger">
                   <Suspense fallback={<HeroWithNearby initialCounts={null} isFallback />}>
                     <HeroStats />
@@ -200,28 +175,26 @@ export default async function HomePage({ params }: HomePageProps) {
                   <HeroInlineSearch
                     placeholder={tHome('hero.searchExamples')}
                     label={tHome('hero.searchPlaceholder')}
-                    reading={getHeroReading(locale as Locale)}
-                    className="mt-5"
+                    className="mt-6 max-w-2xl"
                   />
                 </HeroTextPanel>
-
-                {/* The world-map panel, only where the page's box has room. Pushed down while the
-                  text column is pulled up, so the search dropdown, open at rest in the left
-                  column, has room. */}
-                <div className="hero-in-late hidden @min-[1280px]/page:mt-24 @min-[1280px]/page:block @min-[1536px]/page:mt-28">
-                  <Suspense fallback={<HeroWorldPanelSkeleton />}>
-                    <HeroWorldPanel />
-                  </Suspense>
-                </div>
               </div>
+
+              {/* Hero image attribution: the current image's park / city / country. */}
+              {heroMeta && (
+                <HeroImageInfoSwitch>
+                  <HeroImageInfo meta={heroMeta} src={randomHeroImage} />
+                </HeroImageInfoSwitch>
+              )}
             </div>
 
-            {/* Hero image attribution: the current image's park / city / country. */}
-            {heroMeta && (
-              <HeroImageInfoSwitch>
-                <HeroImageInfo meta={heroMeta} src={randomHeroImage} />
-              </HeroImageInfoSwitch>
-            )}
+            {/* What the headline asks, answered: the rides near the visitor with a short queue
+              right now, or the parks near them. Over the photo's lower edge from `md`. */}
+            <div className="relative z-10 px-4 pt-2 md:-mt-44 md:px-6 md:pt-0">
+              <div className="mx-auto w-full @min-[640px]/page:max-w-[640px] @min-[768px]/page:max-w-[768px] @min-[1024px]/page:max-w-[1024px] @min-[1280px]/page:max-w-[1280px] @min-[1536px]/page:max-w-[1536px]">
+                <HeroRail className="hero-in-stagger hero-in-late" />
+              </div>
+            </div>
           </HeroRotationProvider>
         </section>
 
@@ -266,13 +239,6 @@ export default async function HomePage({ params }: HomePageProps) {
 
         {/* The tour's last stop: what park.fan does not show on a page, Parky answers. */}
         <ParkyStop locale={locale as Locale} />
-
-        {/* The parks near the visitor, with the rides where a wait is short right now. A Client
-          Component that decides late (geolocation), hence the dynamic import and the box-reserving
-          fallback. */}
-        <NearbyChapter>
-          <NearbyParksCard nested showShortWaits className={FLUSH_TOP} />
-        </NearbyChapter>
 
         {/* For a visitor without favourites: how to star a park and where the favourites show. */}
         <FavoritesIntro locale={locale as Locale} />

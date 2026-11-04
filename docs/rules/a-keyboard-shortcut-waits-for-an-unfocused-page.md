@@ -2,12 +2,12 @@
 
 **A page-wide `keydown` listener acts only when nothing is focused, never on Space, and exists once
 per page.** „Nothing focused" is asked of `nothingFocused()` (`lib/utils/page-focus.ts`) in every
-such listener; the guard as `components/search/hero-inline-search-panel.tsx` has it:
+such listener. A type-to-search listener takes its key through `isPageTypedKey(e)`, which adds no
+modifier, one printable character, not Space and not `/`; `/` belongs to the site search
+(`isSearchShortcut`), which opens on it from any page:
 
 ```ts
-if (!nothingFocused(document.activeElement)) return;
-if (e.metaKey || e.ctrlKey || e.altKey) return;
-if (e.key.length !== 1 || e.key === ' ') return;
+if (!isPageTypedKey(e)) return;
 ```
 
 - **Escape belongs to the thing that has focus.** A global Escape that clears a filter also clears

@@ -11,7 +11,7 @@ import { cn } from '@/lib/utils';
 const subscribeNever = () => () => {};
 
 /**
- * The homepage's standing control for location, under the nearby chapter's lead. The banner asks
+ * The homepage's standing control for location, under the hero's card rail. The banner asks
  * by itself and stays away for 30 days after a no; this row is simply there, so a no can be taken
  * back: the button while nothing is decided, the state once location is on, and after a block the
  * steps to lift it (`LocationBlockedHelp`). It declares the page's need for location like the

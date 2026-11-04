@@ -22,19 +22,10 @@ import { CHAPTER_GAP_COMPACT } from '@/components/common/chapter-spacing';
 const TOP_SPACING = CHAPTER_GAP_COMPACT;
 
 /**
- * `nested` is the homepage's: there `NearbyChapter` opens the chapter and the card's own heading
- * is a pill under it. Without it (`PageBottomSections`) the card opens as a chapter of its own —
- * see `NearbyHeading`. `showShortWaits` adds the rides with a short wait under the parks.
+ * The parks near the visitor under an editorial page (`PageBottomSections`), a chapter of its own
+ * (see `NearbyHeading`): the prompt, the parks, the in-park view or the error.
  */
-export function NearbyParksCard({
-  className,
-  nested = false,
-  showShortWaits = false,
-}: {
-  className?: string;
-  nested?: boolean;
-  showShortWaits?: boolean;
-}) {
+export function NearbyParksCard({ className }: { className?: string }) {
   const t = useTranslations('nearby');
   const tCommon = useTranslations('common');
 
@@ -98,7 +89,7 @@ export function NearbyParksCard({
   // the list is 883 px from a German IP, 503 px from a US one and 250 px when geolocation
   // fails — but it is the bet on the outcome an actual visitor gets.
   if (!mounted || isLoading) {
-    return <NearbyParksCardSkeleton className={className} nested={nested} />;
+    return <NearbyParksCardSkeleton className={className} />;
   }
 
   // Prompt state: only when user hasn't granted location yet (or is still undecided).
@@ -106,7 +97,7 @@ export function NearbyParksCard({
   if (!permissionGranted && !permissionDenied && !geoLoading && !dataPending && !nearbyData) {
     return (
       <div className={cn('min-h-[200px]', TOP_SPACING, className)}>
-        <NearbyHeading nested={nested} title={t('title')} />
+        <NearbyHeading title={t('title')} />
         <div className="flex flex-col items-center space-y-4 py-4 text-center">
           <p className="text-muted-foreground text-sm">{t('enableDescription')}</p>
           <Button onClick={refresh}>
@@ -124,7 +115,7 @@ export function NearbyParksCard({
   if (showErrorCard) {
     return (
       <div className={cn('min-h-[200px]', TOP_SPACING, className)}>
-        <NearbyHeading nested={nested} title={t('loadError')} />
+        <NearbyHeading title={t('loadError')} />
         <div className="flex flex-col items-center space-y-4 py-4 text-center">
           <p className="text-muted-foreground mx-auto max-w-md text-sm">
             {t('loadErrorDescription')}
@@ -145,13 +136,7 @@ export function NearbyParksCard({
 
   // User is IN a park - show park info and nearby attractions
   if (nearbyData.type === 'in_park') {
-    return (
-      <InParkView
-        data={nearbyData.data as NearbyAttractionsData}
-        className={className}
-        nested={nested}
-      />
-    );
+    return <InParkView data={nearbyData.data as NearbyAttractionsData} className={className} />;
   }
 
   if (nearbyData.type === 'nearby_parks') {
@@ -159,8 +144,7 @@ export function NearbyParksCard({
       <NearbyParksListView
         data={nearbyData.data as NearbyParksData}
         className={className}
-        nested={nested}
-        showShortWaits={showShortWaits}
+
         isExpanded={isExpanded}
         setIsExpanded={setIsExpanded}
       />

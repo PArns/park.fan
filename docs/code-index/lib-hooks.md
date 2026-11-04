@@ -92,10 +92,6 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `useHeroPark` _hook_: The hero's park, after mount only: `useHomeNearbyParks` reads the last known position from localStorage and can answer in the first client render, which would not match the server's general hero.
 
-### [`use-hero-reading.ts`](../../lib/hooks/use-hero-reading.ts)
-
-- `useHeroReadingRows` _hook_: The hero's two posts, the newest news post and the newest guide, with their kickers. One source for the desktop's group and the phone's rows, so the two never list different posts. See docs/features/homepage-hero.md.
-
 ### [`use-hero-status-labels.ts`](../../lib/hooks/use-hero-status-labels.ts)
 
 - `useParkOpeningLabel` _hook_: „Öffnet um 09:00 Uhr" or „Öffnet am 15. März" for a park's next opening, in the park's zone (`formatParkOpening`): the hero's park block and its lists word it alike.
@@ -172,7 +168,6 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `useMounted` _hook_: True on the client, false on the server and during hydration.
 - `useBrowserTimezone` _hook_: The browser's IANA timezone, or null on the server and during hydration.
-- `useIsApplePlatform` _hook_: Whether the browser runs on an Apple platform (⌘ rather than Ctrl); true on the server and during hydration.
 - `useBrowserNow` _hook_: The browser's clock at mount, or null on the server and during hydration. A one-shot value: it never updates.
 
 ### [`use-nearby-analytics.ts`](../../lib/hooks/use-nearby-analytics.ts)

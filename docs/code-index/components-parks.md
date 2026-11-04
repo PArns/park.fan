@@ -272,7 +272,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`nearby-parks-card.tsx`](../../components/parks/nearby-parks-card.tsx)
 
-- `NearbyParksCard` _component_: `nested` is the homepage's: there `NearbyChapter` opens the chapter and the card's own heading is a pill under it. Without it (`PageBottomSections`) the card opens as a chapter of its own — see `NearbyHeading`.
+- `NearbyParksCard` _component_: The parks near the visitor under an editorial page (`PageBottomSections`), a chapter of its own (see `NearbyHeading`): the prompt, the parks, the in-park view or the error.
 
 ### [`nearby-parks-list-view.tsx`](../../components/parks/nearby-parks-list-view.tsx)
 
@@ -281,10 +281,6 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`nearby-parks-section.tsx`](../../components/parks/nearby-parks-section.tsx)
 
 - `NearbyParksSection` _component_: Chapter listing up to three other parks within 100 km, on the park and ride pages. Renders a status-free list that `LiveNearbyParks` overlays with live status; nothing with fewer than two.
-
-### [`nearby-short-waits.tsx`](../../components/parks/nearby-short-waits.tsx)
-
-- `NearbyShortWaits` _component_: „Jetzt kurz anstehen": the rides in the open nearby parks whose live wait is well below their usual one, as the API picks them (`shortWaits`). The rows are the in-park lists' rows, so a ride reads the same here as standing in the park.
 
 ### [`next-best-rides.tsx`](../../components/parks/next-best-rides.tsx)
 

@@ -236,7 +236,7 @@ export async function ParkPageShell({
 
           {/* On the crowd calendar the historical numbers belong directly under the grid: the
             month-by-month and weekday tables answer the same question the calendar does, one
-            level of detail down, and pushing „Parks in der Nähe" and the blog between them makes
+            level of detail down, and pushing „Parks in deiner Nähe" and the blog between them makes
             a reader scroll past two unrelated chapters to compare them. Everywhere else the
             statistics keep their place further down. */}
           {statsAfterChildren ? statsSlot : null}

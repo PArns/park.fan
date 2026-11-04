@@ -161,12 +161,6 @@
     }
   },
   "homeStory": {
-    "nearby": {
-      "kicker": "Your location",
-      "title": "Theme parks near you",
-      "lead": "With your location, park.fan lists the nearest parks, open ones first, and shows how busy each one is right now.",
-      "allParks": "Browse all parks"
-    },
     "favorites": {
       "kicker": "Favorites",
       "title": "Your parks and rides",
@@ -1518,10 +1512,14 @@
       "demoNoLocation": "Without your location you stay on one spot in the park.",
       "dialGroup": "Compass, north up"
     },
+    "heroRail": {
+      "seeWaits": "See wait times"
+    },
     "shortWaits": {
       "title": "Short queues near you",
-      "hint": "Rides nearby whose queue is much shorter than usual right now.",
-      "usually": "usually {minutes} {unit}"
+      "usually": "usually {minutes} {unit}",
+      "now": "now {minutes} {unit}",
+      "shorter": "{minutes} {unit} shorter"
     }
   },
   "location": {
@@ -1669,9 +1667,7 @@
     },
     "avgWait": "{minutes} min avg",
     "avgWaitShort": "Ø {minutes} min",
-    "heroHint": "Start typing to search parks, attractions, shows and restaurants",
-    "newestNews": "Latest news",
-    "newestGuide": "Latest guide"
+    "heroHint": "Start typing to search parks, attractions, shows and restaurants"
   },
   "searchPage": {
     "types": {

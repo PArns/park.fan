@@ -1,6 +1,6 @@
 # Site search over the guides and the news
 
-How the search palette (⌘K / Ctrl K, and the hero's field on the homepage), `/search`, the guides
+How the search palette (`/` on any page, and the hero's field on the homepage), `/search`, the guides
 panel in the header and the `/blog` and `/news` listings find posts, and how the palette ranks and
 tabs its results. Open this page before changing any search surface. Which parks and rides the palette
 lists is the API's call (`/v1/search`, the backend's
@@ -113,10 +113,8 @@ transition to `height: auto`. The palette wraps its panel in `AnimatedHeight`
 and the content inside carries the cap (`--hero-search-max-h`, once the list is opened), so the list
 scrolls inside a box whose height is already final.
 
-The hero's resting reservation is measured off the content plus the hairline and the frame's lower
-border, not off the box, which is mid-ease when the list collapses back to rest.
-`pnpm check:hero-search-rest` reads 485 / 485 / 485 px for the frame on a desktop and 424 / 424 /
-424 on a phone, in all six locales ([homepage hero](homepage-hero.md#what-the-list-holds-at-rest)).
+The hero's list is closed at rest and opens on focus, so it reserves nothing in the flow
+([homepage hero](homepage-hero.md#search-one-field-its-list-on-focus)).
 
 ## On `/blog` and `/news`
 
@@ -151,7 +149,7 @@ the viewport come with every hit, the surface with every search event.
 | `home_steps`     | the copy of the hero field in the step card | the same as `hero`                                                                                        |
 | `header`         | the header's field and its icon             | the palette opened                                                                                        |
 | `post_end`       | the field under a post's parks and rides    | the palette opened                                                                                        |
-| `keyboard`       | ⌘K / Ctrl K                                 | the palette opened                                                                                        |
+| `keyboard`       | `/`                                         | the palette opened                                                                                        |
 | `search_page`    | `/search`                                   | a load of the page (the form reloads it)                                                                  |
 | `listing_guides` | `ListingSearch` on `/blog`                  | a focus that follows a blur                                                                               |
 | `listing_news`   | `ListingSearch` on `/news`                  | a focus that follows a blur                                                                               |
@@ -200,10 +198,13 @@ the viewport come with every hit, the surface with every search event.
 - **`position`** is the row's place in its own group (the first park, the second guide), bucketed by
   `searchPosition`: 1, 2, 3, 4-5, 6-10, 11+. **`item`** says which list the row came from:
   `nearby_park`, `in_park_ride`, `popular_park`, `news`, `guide`.
-- **The palette knows its surface**: `SearchCommand` opens it as its `searchOpenSource`, ⌘K as
+- **The palette knows its surface**: `SearchCommand` opens it as its `searchOpenSource`, `/` as
   `keyboard`, and the hero's type-anywhere shortcut on a phone as `hero`; every event of that opening
-  carries it. The hero's phone field hands its palette the field's session (`session`), which the
-  resting rows under it share, so the palette's openings and the rows' taps are one surface's.
+  carries it. The hero's phone field hands its palette the field's session (`session`).
+- **`/` opens the palette** from any page with nothing focused (`isSearchShortcut`,
+  `lib/utils/page-focus.ts`), Shift included, since a German keyboard types the slash with Shift + 7.
+  In a field it is a character. ⌘K and Ctrl K stay with the browser, which uses them for its own
+  search field. The type-anywhere listeners (`isPageTypedKey`) leave `/` to it.
 - **Never the query**, not even its length: the events say whether a search ran, not what was
   searched. Lists a Server Component draws (`/search`) or that take no callback
   (`PostSearchResultList`) mark each link with `searchResultData` and count a click with one capture

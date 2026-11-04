@@ -161,12 +161,6 @@
     }
   },
   "homeStory": {
-    "nearby": {
-      "kicker": "Dein Standort",
-      "title": "Freizeitparks in deiner Nähe",
-      "lead": "Mit deinem Standort zeigt park.fan die nächstgelegenen Parks, die geöffneten zuerst, und wie voll es dort gerade ist.",
-      "allParks": "Alle Parks entdecken"
-    },
     "favorites": {
       "kicker": "Favoriten",
       "title": "Deine Parks und Bahnen",
@@ -1426,9 +1420,9 @@
     "permissionDeniedDescription": "Ohne Standort können wir dir keine Parks in deiner Nähe zeigen und im Park nicht sagen, was gerade neben dir liegt. Freigeben lässt sich das in den Browser-Einstellungen.",
     "locationUnavailable": "Standort konnte nicht ermittelt werden",
     "locationUnavailableDescription": "Dein Standort ließ sich nicht ermitteln. Aktiviere den Standortzugriff oder versuch es später noch einmal.",
-    "loadError": "Parks in der Nähe konnten nicht geladen werden",
-    "loadErrorDescription": "Beim Laden der Parks in der Nähe ist etwas schiefgelaufen. Bitte versuche es erneut.",
-    "locationHint": "Parks in der Nähe sind genauer, wenn du den Standortzugriff erlaubst.",
+    "loadError": "Parks in deiner Nähe konnten nicht geladen werden",
+    "loadErrorDescription": "Beim Laden der Parks in deiner Nähe ist etwas schiefgelaufen. Bitte versuche es erneut.",
+    "locationHint": "Parks in deiner Nähe sind genauer, wenn du den Standortzugriff erlaubst.",
     "bannerHeadline": "Parks in deiner Nähe brauchen deinen Standort",
     "bannerBody": "park.fan verwendet deine genaue Position nur, um dir Parks in deiner Nähe anzuzeigen und dir in einem Park Attraktionen und Wartezeiten um dich herum anzuzeigen.",
     "bannerBodyShort": "Nur für Parks in deiner Nähe und die Wartezeiten um dich herum im Park.",
@@ -1442,10 +1436,10 @@
     "headliners": "Top-Attraktionen",
     "headlinerBadge": "Top",
     "noParksNearby": "Keine Parks in deiner Nähe gefunden.",
-    "nearbyParks": "Parks in der Nähe",
+    "nearbyParks": "Parks in deiner Nähe",
     "nearestOpenTitle": "Nächster geöffneter Park",
     "nearbyParksClosedTitle": "Parks in deiner Nähe",
-    "noOpenNearbyFocus": "Keine Parks in der Nähe geöffnet – hier die nächsten.",
+    "noOpenNearbyFocus": "Keine Parks in deiner Nähe geöffnet – hier die nächsten.",
     "goToParkPage": "Zur Park-Seite",
     "nearestOpenBadge": "Nächster offen",
     "opens": "Öffnet",
@@ -1518,10 +1512,14 @@
       "demoNoLocation": "Ohne Standort stehst du fest an einem Punkt im Park.",
       "dialGroup": "Kompass, Norden oben"
     },
+    "heroRail": {
+      "seeWaits": "Wartezeiten ansehen"
+    },
     "shortWaits": {
-      "title": "Jetzt kurz anstehen",
-      "hint": "Bahnen in deiner Nähe, an denen die Warteschlange gerade deutlich kürzer ist als sonst.",
-      "usually": "sonst {minutes} {unit}"
+      "title": "Kurze Anstellzeiten in deiner Nähe",
+      "usually": "sonst {minutes} {unit}",
+      "now": "jetzt {minutes} {unit}",
+      "shorter": "{minutes} {unit} kürzer"
     }
   },
   "location": {
@@ -1643,7 +1641,7 @@
       "show": "Shows ({count})",
       "restaurant": "Restaurants ({count})",
       "location": "Orte ({count})",
-      "nearby": "Parks in der Nähe",
+      "nearby": "Parks in deiner Nähe",
       "inPark": "Du bist in {park}",
       "glossary": "Wörterbuch ({count})",
       "guides": "Guides ({count})",
@@ -1669,9 +1667,7 @@
     },
     "avgWait": "Ø {minutes} Min.",
     "avgWaitShort": "Ø {minutes} Min.",
-    "heroHint": "Tippe los, wir suchen Parks, Attraktionen, Shows und Restaurants",
-    "newestNews": "Neueste News",
-    "newestGuide": "Neuester Guide"
+    "heroHint": "Tippe los, wir suchen Parks, Attraktionen, Shows und Restaurants"
   },
   "searchPage": {
     "types": {

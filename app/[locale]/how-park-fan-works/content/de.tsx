@@ -193,7 +193,7 @@ const PARK_SECTIONS: AnatomyStep[] = [
     onlyWhen: 'der Park einen Betriebskalender veröffentlicht.',
   },
   {
-    title: 'Parks in der Nähe',
+    title: 'Parks in deiner Nähe',
     body: 'Was sonst in Reichweite liegt, mit Entfernung und Status.',
     example: 'Vom Phantasialand aus Toverland und Movie Park Germany, beide gut 90 Kilometer.',
     demo: <AnatomyNearbyDemo />,

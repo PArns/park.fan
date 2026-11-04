@@ -11,8 +11,7 @@ import {
   HERO_SEARCH_ICON_CLASS,
   HERO_SEARCH_INPUT_CLASS,
 } from '@/components/search/hero-search-classes';
-import { nothingFocused } from '@/lib/utils/page-focus';
-import { useIsApplePlatform } from '@/lib/hooks/use-mounted';
+import { SEARCH_SHORTCUT_KEY, isPageTypedKey, isSearchShortcut } from '@/lib/utils/page-focus';
 import { useSearchSession } from '@/lib/hooks/use-search-session';
 import type { SearchSurface } from '@/lib/analytics/site-analytics';
 import type { SearchSession } from '@/lib/analytics/search-session';
@@ -40,7 +39,7 @@ interface SearchCommandProps {
   size?: 'sm' | 'lg';
   /**
    * The surface this trigger opens the palette as, which every search event of that opening
-   * carries. ⌘K is always `keyboard`.
+   * carries. The `/` shortcut is always `keyboard`.
    */
   searchOpenSource?: SearchSurface;
   /**
@@ -94,7 +93,6 @@ export function SearchCommand({
   // Query lives here (not in the lazy dialog) so opening can seed it (autoFocusOnType's first
   // keystroke) and closing can clear it — no prop→state sync needed inside the dialog.
   const [query, setQuery] = useState(openOnMount ?? '');
-  const isMac = useIsApplePlatform();
   const fieldRef = useRef<HTMLButtonElement>(null);
   const ownSession = useSearchSession(searchOpenSource);
   const session = sharedSession ?? ownSession;
@@ -122,13 +120,12 @@ export function SearchCommand({
   });
   useEffect(() => onMountOpened(), []);
 
-  // Cmd+K / Ctrl+K toggles the palette (global only).
+  // `/` opens the palette (global only), at the page itself: in the palette's field or any other
+  // it is a character. Not ⌘K/Ctrl K, which the browser keeps for its own search field.
   const onShortcut = useEffectEvent((e: KeyboardEvent) => {
-    if (e.key === 'k' && (e.metaKey || e.ctrlKey)) {
-      e.preventDefault();
-      if (open) handleOpenChange(false);
-      else openSearch('keyboard');
-    }
+    if (open || !isSearchShortcut(e)) return;
+    e.preventDefault();
+    openSearch('keyboard');
   });
   useEffect(() => {
     if (!isGlobal) return;
@@ -137,15 +134,12 @@ export function SearchCommand({
     return () => document.removeEventListener('keydown', down);
   }, [isGlobal]);
 
-  // Auto-focus on type: a single character anywhere opens the palette seeded with that key —
-  // with the hero search's guard (`hero-inline-search-panel.tsx`): only when nothing is focused,
-  // and never for Space, which scrolls the page and activates a focused control. It is this
-  // trigger's shortcut, so it opens as this trigger's surface, not as ⌘K.
+  // Auto-focus on type: a single character anywhere opens the palette seeded with that key, with
+  // the page-wide guard (`isPageTypedKey`): only when nothing is focused, never for Space, which
+  // scrolls the page, and never for `/`, the search shortcut. It is this trigger's shortcut, so it
+  // opens as this trigger's surface, not as `keyboard`.
   const onTypeAnywhere = useEffectEvent((e: KeyboardEvent) => {
-    if (open) return;
-    if (!nothingFocused(document.activeElement)) return;
-    if (e.metaKey || e.ctrlKey || e.altKey) return;
-    if (e.key.length !== 1 || e.key === ' ') return;
+    if (open || !isPageTypedKey(e)) return;
     openSearch(searchOpenSource, e.key);
   });
   useEffect(() => {
@@ -229,7 +223,7 @@ export function SearchCommand({
               and centred rather than `top-2` because that trigger now comes in two heights. */}
           {size !== 'sm' && (
             <kbd className="bg-primary/40 text-primary border-primary/40 pointer-events-none absolute top-1/2 right-2 hidden h-5 -translate-y-1/2 items-center gap-1 rounded border px-1.5 font-mono text-xs font-medium opacity-100 shadow-sm select-none md:flex">
-              {isMac ? <span className="text-xs">⌘</span> : 'Ctrl'}K
+              {SEARCH_SHORTCUT_KEY}
             </kbd>
           )}
         </Button>
@@ -253,14 +247,7 @@ export function SearchCommand({
             </span>
           </span>
           <kbd className="bg-primary/20 text-primary border-primary/20 pointer-events-none absolute top-1/2 right-1.5 hidden h-5 -translate-y-1/2 items-center gap-0.5 rounded border px-1.5 font-mono text-[11px] font-medium shadow-sm md:flex">
-            {isMac ? (
-              <>
-                <span className="translate-y-[1px] text-sm">⌘</span>
-                <span>K</span>
-              </>
-            ) : (
-              <>Ctrl K</>
-            )}
+            {SEARCH_SHORTCUT_KEY}
           </kbd>
         </button>
       )}
@@ -311,7 +298,7 @@ export function SearchCommand({
             {placeholder || t('searchPlaceholderLong')}
           </span>
           <kbd className="bg-primary/20 text-primary border-primary/20 pointer-events-none hidden h-5 shrink-0 items-center gap-0.5 rounded border px-1.5 font-mono text-[11px] font-medium shadow-sm md:flex">
-            {isMac ? '⌘' : 'Ctrl'} K
+            {SEARCH_SHORTCUT_KEY}
           </kbd>
         </button>
       )}

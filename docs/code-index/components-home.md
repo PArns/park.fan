@@ -48,9 +48,9 @@ by hand: change the comment in the code and re-run the script. -->
 - `HeroParkActions` _component_: The part of the homepage hero for somebody standing in a park, or right next to one: two things to press and two to read.
 - Types: `HeroPark`
 
-### [`hero-skeletons.tsx`](../../components/home/hero-skeletons.tsx)
+### [`hero-rail.tsx`](../../components/home/hero-rail.tsx)
 
-- `HeroWorldPanelSkeleton` _component_: Stand-in for the world-map panel, through `GlassCard` rather than a copy of its classes, so the surface cannot drift from the real panel's.
+- `HeroRail` _component_: The row under the hero's text, which answers its question: the rides near the visitor whose queue is well below its usual length right now (`shortWaits`, the nearby answer's).
 
 ### [`hero-stats.tsx`](../../components/home/hero-stats.tsx)
 
@@ -58,29 +58,16 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`hero-text-panel.tsx`](../../components/home/hero-text-panel.tsx)
 
-- `HeroTextPanel` _component_: The plate the hero's left column sits on, so the hero is one composition of two panels. The same glass as the map panel (`GlassCard variant="heavy"`), so the two cannot drift apart.
+- `HeroTextPanel` _component_: The hero's text column: badge, headline, intro and the search field, standing on the photo's lower edge with no panel of its own, since the photo's scrim (`HeroBackground`) carries the contrast.
 
 ### [`hero-with-nearby.tsx`](../../components/home/hero-with-nearby.tsx)
 
-- `HeroWithNearby` _component_: The hero's left column: live open-count badge, headline and the intro with live park/ attraction counts (SSR seed + 5-min client overlay).
+- `HeroWithNearby` _component_: The hero's text: live open-count badge, headline and the intro with live park/attraction counts (SSR seed + 5-min client overlay).
 - Types: `HeroInitialCounts`
-
-### [`hero-world-panel-client.tsx`](../../components/home/hero-world-panel-client.tsx)
-
-- `HeroWorldPanelClient` _component_: The hero's right-hand panel: a clickable world map with live open-park counts, headed by the worldwide open-parks badge.
-
-### [`hero-world-panel-gate.tsx`](../../components/home/hero-world-panel-gate.tsx)
-
-- `HeroWorldPanelGate` _component_: Mounts the world-map panel only on viewports 1280 px and wider and after load and idle, so the map never competes with the hero photo for LCP.
-
-### [`hero-world-panel.tsx`](../../components/home/hero-world-panel.tsx)
-
-- `HeroWorldPanel` _component_: Server seed for the hero's world-map panel: the static geo structure, the geo-live open counts and the worldwide open count for the badge in its header, each at its fetch helper's cache window (a seed only; the client polls live values).
-- Types: `WorldPanelCountry`, `WorldPanelContinent`
 
 ### [`home-location-row.tsx`](../../components/home/home-location-row.tsx)
 
-- `HomeLocationRow` _component_: The homepage's standing control for location, under the nearby chapter's lead.
+- `HomeLocationRow` _component_: The homepage's standing control for location, under the hero's card rail.
 
 ### [`home-reading.tsx`](../../components/home/home-reading.tsx)
 
@@ -116,10 +103,6 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`ml-training-countdown.tsx`](../../components/home/ml-training-countdown.tsx)
 
 - `MLTrainingCountdown` _component_: Card with the model's age and a live countdown to the next daily retraining at 06:00 UTC, shown in the visitor's local time. Ticks only while the card is on screen.
-
-### [`nearby-chapter.tsx`](../../components/home/nearby-chapter.tsx)
-
-- `NearbyChapter` _component_: The stop around the nearby-parks card, which comes in as a slot (a Client Component the caller already dynamic-imports). The stop holds the `<h2>`: the card opens with a band label, not a chapter header.
 
 ### [`news-board.tsx`](../../components/home/news-board.tsx)
 

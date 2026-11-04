@@ -30,13 +30,11 @@ and must never filter with `isNewsPost`.
 | Phone menu (burger sheet) | the „Guides" link                                            | the News link and a `LatestNewsCard`                |
 | Park and ride pages       | the card grid in `blog-posts-sections.tsx`                   | `NewsRow boxed` under the grid                      |
 
-- **The hero's newest news post is the only news above the fold**, on any screen: a post row in
-  the search list beside the newest guide (`getHeroReading`, `lib/home/hero-reading.ts`), its kicker
-  „Neueste News". In the phone menu it is a small card (`LatestNewsCard`,
+- **On the homepage no news stands above the fold**: the hero's cards answer its question, and the
+  news board is the first stop under it. In the phone menu the newest news post is a small card (`LatestNewsCard`,
   `components/blog/latest-news-card.tsx`) that shows the date in UTC rather than `NewsAge`, whose
-  relative half grows after hydration and would move the lines under it. Both take the first post of
-  `listNewsByDate()`, the card through `getNewsMenu()` and `latestNewsFrom()`, so they agree on which
-  post is newest.
+  relative half grows after hydration and would move the lines under it. It takes the first post of
+  `listNewsByDate()` through `getNewsMenu()` and `latestNewsFrom()`.
 - **On the teaser surfaces news is drawn a step below the articles** (a 112 px cover, a semibold
   title, no teaser, its own accent label) through one component: `NewsList`
   (`components/blog/news-list.tsx`), wrapped by `NewsRow` on server-rendered pages.

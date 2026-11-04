@@ -161,12 +161,6 @@
     }
   },
   "homeStory": {
-    "nearby": {
-      "kicker": "Jouw locatie",
-      "title": "Pretparken bij jou in de buurt",
-      "lead": "Met je locatie toont park.fan de dichtstbijzijnde parken, de parken die open zijn eerst, en hoe druk het er nu is.",
-      "allParks": "Alle parken ontdekken"
-    },
     "favorites": {
       "kicker": "Favorieten",
       "title": "Jouw parken en attracties",
@@ -1518,10 +1512,14 @@
       "demoNoLocation": "Zonder locatie sta je vast op één plek in het park.",
       "dialGroup": "Kompas, noorden boven"
     },
+    "heroRail": {
+      "seeWaits": "Wachttijden bekijken"
+    },
     "shortWaits": {
-      "title": "Nu kort in de rij",
-      "hint": "Attracties in de buurt waar de rij nu veel korter is dan normaal.",
-      "usually": "anders {minutes} {unit}"
+      "title": "Korte wachtrijen bij jou in de buurt",
+      "usually": "anders {minutes} {unit}",
+      "now": "nu {minutes} {unit}",
+      "shorter": "{minutes} {unit} korter"
     }
   },
   "location": {
@@ -1669,9 +1667,7 @@
     },
     "avgWait": "gem. {minutes} min",
     "avgWaitShort": "Ø {minutes} min",
-    "heroHint": "Begin te typen, we zoeken parken, attracties, shows en restaurants",
-    "newestNews": "Laatste nieuws",
-    "newestGuide": "Nieuwste gids"
+    "heroHint": "Begin te typen, we zoeken parken, attracties, shows en restaurants"
   },
   "searchPage": {
     "types": {

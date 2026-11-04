@@ -161,12 +161,6 @@
     }
   },
   "homeStory": {
-    "nearby": {
-      "kicker": "La tua posizione",
-      "title": "Parchi di divertimento vicino a te",
-      "lead": "Con la tua posizione park.fan mostra i parchi più vicini, prima quelli aperti, e quanto sono pieni in questo momento.",
-      "allParks": "Scopri tutti i parchi"
-    },
     "favorites": {
       "kicker": "Preferiti",
       "title": "I tuoi parchi e attrazioni",
@@ -1518,10 +1512,14 @@
       "demoNoLocation": "Senza la tua posizione resti fermo in un punto del parco.",
       "dialGroup": "Bussola, nord in alto"
     },
+    "heroRail": {
+      "seeWaits": "Vedi i tempi di attesa"
+    },
     "shortWaits": {
-      "title": "Code brevi adesso",
-      "hint": "Attrazioni vicine con una coda molto più corta del solito in questo momento.",
-      "usually": "di solito {minutes} {unit}"
+      "title": "Code brevi vicino a te",
+      "usually": "di solito {minutes} {unit}",
+      "now": "ora {minutes} {unit}",
+      "shorter": "{minutes} {unit} in meno"
     }
   },
   "location": {
@@ -1669,9 +1667,7 @@
     },
     "avgWait": "{minutes} min in media",
     "avgWaitShort": "Ø {minutes} min",
-    "heroHint": "Inizia a digitare: parchi, attrazioni, spettacoli e ristoranti",
-    "newestNews": "Notizia più recente",
-    "newestGuide": "Guida più recente"
+    "heroHint": "Inizia a digitare: parchi, attrazioni, spettacoli e ristoranti"
   },
   "searchPage": {
     "types": {

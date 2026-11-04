@@ -43,7 +43,7 @@ import { existsSync } from 'node:fs';
 import { chromium } from 'playwright';
 
 const BASE = process.env.BASE ?? 'http://localhost:3000';
-/** Same rule as scripts/check-hero-search-rest.mjs: prefer a Chromium the image already ships. */
+/** Same rule as scripts/check-card-framing.mjs: prefer a Chromium the image already ships. */
 const PREINSTALLED = process.env.CHROMIUM_PATH ?? '/opt/pw-browsers/chromium';
 const LAUNCH = existsSync(PREINSTALLED) ? { executablePath: PREINSTALLED } : {};
 

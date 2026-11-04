@@ -32,6 +32,10 @@ export interface AttractionWithDistance {
   url: string;
   /** true = top/marquee attraction of the park (derived from historical wait times). */
   isHeadliner?: boolean;
+  /** The ride's own card photo, attached by `withNearbyCardImages`; never the park's. */
+  backgroundImage?: string | null;
+  /** Focal point as a CSS `object-position`. */
+  backgroundPosition?: string;
   /** Attraction only runs during certain months. */
   isSeasonal?: boolean;
   /** Months (1–12) the attraction typically runs in; null when unknown/not seasonal. */
@@ -112,6 +116,10 @@ export interface NearbyShortWait {
   typicalWait: number;
   isHeadliner: boolean;
   park: { id: string; name: string; slug: string; distance: number; url: string | null };
+  /** The ride's own card photo, attached by `withNearbyCardImages`; never the park's. */
+  backgroundImage?: string | null;
+  /** Focal point as a CSS `object-position`. */
+  backgroundPosition?: string;
 }
 
 export interface NearbyParksData {

@@ -1,7 +1,6 @@
 'use client';
 
 import { useLocale, useTranslations } from 'next-intl';
-import Image from 'next/image';
 import { useHeroPark } from '@/lib/hooks/use-hero-park';
 import { useMediaQuery } from '@/lib/hooks/use-media-query';
 import { useGlobalStats } from '@/lib/hooks/use-global-stats';
@@ -20,67 +19,36 @@ export interface HeroInitialCounts {
 }
 
 /**
- * The open-parks badge over the headline, where nothing else shows the count: not on a phone, whose
- * row went to the search list, and not where the page shows the world-map panel (`@container/page`
- * from 1280 px), whose header carries it. The newest news post stands in the search list's posts.
+ * The open-parks badge over the headline, from `md` up: a phone gives the photo the row.
  */
 function HeroBadgeRow({ openParks }: { openParks: number | null }) {
   const tHome = useTranslations('home');
   return (
     <OpenParksBadge
       label={openParks == null ? null : tHome('hero.openNow', { count: openParks })}
-      className="max-md:hidden @min-[1280px]/page:hidden"
+      className="max-md:hidden"
     />
   );
 }
 
 /**
- * The headline, with the detailed pin beside it on a wide page. The pin alone, not the full
- * lockup, which at a height that reads beside `text-5xl` would fold German and French to four
- * lines; `logo.svg` rather than `BrandPin`, whose flat silhouette is made for 26 px. 96 px (`h-24`)
- * is the two-line headline's own height. `mark` stays off for the welcome headline, which appears
- * only after mount and would otherwise move the intro and badge. The threshold asks the page
- * (`@container/page`): 1304 px is where the world map column stops squeezing the plate.
+ * The headline, set as large as the tour's headings and larger: it stands on the photo's lower
+ * edge (`HeroBackground`'s scrim) and is the one thing to read first. 40 px on a phone, three lines
+ * at 390 px in German, 80 px from 1280 px.
  */
 function HeroHeadline({
   children,
-  mark = false,
   as: Tag = 'h1',
 }: {
   children: React.ReactNode;
-  mark?: boolean;
   as?: 'h1' | 'p';
 }) {
   return (
-    // Margins do not collapse in a flex container, so `mt-4 mb-3` here spaces the headline as it
-    // would on the <h1>. The top margin is the gap under the open-parks badge, so it goes wherever
-    // the badge does not show and the headline opens the plate.
-    <div className="mt-4 mb-3 flex items-center gap-4 max-md:mt-0 @min-[1280px]/page:mt-0">
-      {mark && (
-        <span className="hidden shrink-0 @min-[1304px]/page:block">
-          <Image
-            src="/logo-dark.svg"
-            width={1562}
-            height={1905}
-            alt=""
-            aria-hidden="true"
-            className="hidden h-24 w-auto dark:block"
-            loading="eager"
-          />
-          <Image
-            src="/logo.svg"
-            width={1562}
-            height={1905}
-            alt=""
-            aria-hidden="true"
-            className="block h-24 w-auto dark:hidden"
-            loading="eager"
-          />
-        </span>
-      )}
-      {/* 28 px on a phone, where every line the headline takes is a line the search list under it
-          loses. */}
-      <Tag className="text-[1.75rem]/[1.15] font-extrabold tracking-tight text-balance sm:text-5xl">
+    // Margins do not collapse in a flex container, so `mt-4 mb-4` here spaces the headline as it
+    // would on the <h1>. The top margin is the gap under the open-parks badge, which a phone does
+    // not show.
+    <div className="mt-4 mb-4 max-md:mt-0">
+      <Tag className="text-[2.5rem]/[1.04] font-black tracking-tight text-balance sm:text-6xl/[1.02] lg:text-7xl/[1] xl:text-[5rem]/[0.98]">
         {children}
       </Tag>
     </div>
@@ -88,11 +56,10 @@ function HeroHeadline({
 }
 
 /**
- * The hero's left column: live open-count badge, headline and the intro with live park/
- * attraction counts (SSR seed + 5-min client overlay). From `md` up, a visitor inside or right
- * next to a park gets the „Willkommen im …" variant with that park's block (`useHeroPark`); on a
- * phone that block sits in the search list (`HeroPhoneList`), so nothing above the field changes
- * and the list never moves.
+ * The hero's text: live open-count badge, headline and the intro with live park/attraction counts
+ * (SSR seed + 5-min client overlay). From `md` up, a visitor inside or right next to a park gets
+ * the „Willkommen im …" variant with that park's block (`useHeroPark`); on a phone that block
+ * stands under the card rail (`HeroRail`), so nothing above the field changes.
  */
 export function HeroWithNearby({
   initialCounts,
@@ -150,21 +117,18 @@ export function HeroWithNearby({
   return (
     <>
       <HeroBadgeRow openParks={openParks} />
-      <HeroHeadline mark as={headlineTag}>
-        {tHome('hero.title')}
-      </HeroHeadline>
+      <HeroHeadline as={headlineTag}>{tHome('hero.title')}</HeroHeadline>
       {variant ? (
         <>
-          <p className="text-foreground/80 max-w-xl text-base leading-relaxed md:text-lg">
+          <p className="text-foreground/85 max-w-4xl text-base leading-relaxed md:text-lg">
             {t('heroNearPark', { parkName: variant.park.name })}
           </p>
           <HeroParkActions park={variant.park} className="mt-5" />
         </>
       ) : (
-        // A phone gets the one-line version, since the full sentence would take the room of the
-        // search list's rows. Both are in the HTML and CSS picks one, so the server's markup is
-        // right on every viewport.
-        <p className="text-foreground/80 max-w-xl text-base leading-relaxed md:text-lg">
+        // A phone gets the one-line version, so the photo above the text keeps its room. Both are
+        // in the HTML and CSS picks one, so the server's markup is right on every viewport.
+        <p className="text-foreground/85 max-w-4xl text-base leading-relaxed md:text-lg">
           <span className="md:hidden">{tHome.rich('hero.introShort', introValues)}</span>
           <span className="hidden md:inline">{tHome.rich('hero.intro', introValues)}</span>
         </p>

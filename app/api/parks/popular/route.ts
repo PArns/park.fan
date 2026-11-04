@@ -2,11 +2,12 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getMostViewedParks, getPopularParks } from '@/lib/api/parks';
 import { NO_STORE } from '@/lib/api/cdn-cache-headers';
 import { routing, type Locale } from '@/i18n/routing';
+import { enrichParksWithImages } from '@/lib/utils/park-assets';
 
 /**
- * The most popular parks. With `locale`, the ones that language's readers opened most
- * (`getMostViewedParks`, the hero's fallback); without, the API's request ranking, which the
- * maintenance page also polls to see whether the API is back.
+ * The most popular parks, each with its card photo. With `locale`, the ones that language's readers
+ * opened most (`getMostViewedParks`, the hero's fallback); without, the API's request ranking,
+ * which the maintenance page also polls to see whether the API is back.
  */
 export async function GET(request: NextRequest) {
   const params = new URL(request.url).searchParams;
@@ -18,7 +19,7 @@ export async function GET(request: NextRequest) {
 
   try {
     const data = locale ? await getMostViewedParks(locale, limit) : await getPopularParks(limit);
-    return NextResponse.json(data, {
+    return NextResponse.json(enrichParksWithImages(data), {
       headers: NO_STORE,
     });
   } catch (error) {
