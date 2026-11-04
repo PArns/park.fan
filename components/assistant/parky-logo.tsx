@@ -97,50 +97,51 @@ function actFor(act: ParkyAct | 'ride', svg: SVGSVGElement | null): ParkyAct | n
 }
 
 /**
- * With company Parky fidgets and shows off, the theme's two answers and the night sky included;
- * once nobody moves it yawns, reads, naps and pulls on its nightcap.
+ * Parky's life of its own comes in classes, and what he does is drawn from the one for the moment.
+ * The blink runs underneath all of them, in CSS (`parky-blink`), and so do the acts that answer
+ * what the visitor does (cues, moods, searching along).
+ *
+ * - `fidget`: small, easy to miss, every 7 to 8 s while somebody is on the page.
+ * - `mischief`: showing off, about every half minute in place of a fidget: a trick, a ride, a quick
+ *   nod-off.
+ * - `sleepy`: once nobody moves, until he falls asleep for good.
  */
-const ACTS: Record<'awake' | 'bored', readonly (ParkyAct | 'ride')[]> = {
-  // Now and then a ride, any of the four, as one act among the rest.
-  awake: [
+const CLASS_ACTS: Record<'fidget' | 'mischief' | 'sleepy', readonly (ParkyAct | 'ride')[]> = {
+  fidget: ['wink', 'look', 'tilt'],
+  mischief: [
     'hop',
-    'tilt',
-    'look',
     'spin',
-    'wink',
     'wiggle',
     'roll',
     'twirl',
     'dance',
     'read',
+    'whistle',
+    'gum',
     'shades',
     'lights',
-    'nightcap',
+    'doze',
     'ride',
   ],
-  bored: ['yawn', 'whistle', 'gum', 'roll', 'look', 'read', 'nap', 'nightcap'],
-};
-/** The rest between two acts, as the shortest wait and a random spread on top. */
-const PAUSE_MS: Record<'awake' | 'bored', readonly [number, number]> = {
-  awake: [12_000, 8_000],
-  bored: [5_000, 4_000],
+  sleepy: ['yawn', 'nap', 'nightcap', 'doze'],
 };
 
 /**
- * Beside a conversation Parky keeps still: a look around, a wink, a tilt of the head, and once
- * bored a yawn and a nap, with longer rests between. Its eyes still follow the pointer and it still
- * falls asleep; the full repertoire is for the button in the corner.
+ * The rest after an act before the class's next one, as the shortest wait and a random spread on
+ * top. A fidget lasts about a second and a half, so fidgets start 7 to 8 s apart.
  */
-const CALM = {
-  acts: {
-    awake: ['look', 'wink', 'tilt'],
-    bored: ['yawn', 'look', 'nap'],
-  } satisfies Record<'awake' | 'bored', readonly ParkyAct[]>,
-  pause: {
-    awake: [20_000, 15_000],
-    bored: [9_000, 6_000],
-  } satisfies Record<'awake' | 'bored', readonly [number, number]>,
+const CLASS_PAUSE_MS: Record<keyof typeof CLASS_ACTS, readonly [number, number]> = {
+  fidget: [6_000, 1_000],
+  mischief: [27_000, 6_000],
+  sleepy: [8_000, 4_000],
 };
+
+/** A wait drawn from a class's pause. */
+function pauseOf(kind: keyof typeof CLASS_ACTS): number {
+  const [shortest, spread] = CLASS_PAUSE_MS[kind];
+  return shortest + Math.random() * spread;
+}
+
 /** The first yawn and the eyes falling shut wait a moment after the boredom sets in. */
 const SETTLE_MS = 1_500;
 
@@ -417,12 +418,25 @@ function useIdleAct(
         timer = setTimeout(() => end(next, loop), ACT_MS[next]);
       }, wait);
     };
+    // When the next bit of mischief is due; a fidget that would come after it gives way to it.
+    let mischiefAt = Date.now() + pauseOf('mischief');
     const loop = () => {
       // Asleep, the doze is the last act: the sleeping face takes over until somebody moves.
       if (boredom === 'asleep') return;
-      const [shortest, spread] = (calm ? CALM.pause : PAUSE_MS)[boredom];
-      const acts: readonly (ParkyAct | 'ride')[] = (calm ? CALM.acts : ACTS)[boredom];
-      play(shortest + Math.random() * spread, pickRandom(acts, previous));
+      if (boredom === 'bored') {
+        play(pauseOf('sleepy'), pickRandom(CLASS_ACTS.sleepy, previous));
+        return;
+      }
+      // Beside a conversation, awake, he only blinks and follows the pointer with his eyes.
+      if (calm) return;
+      const wait = pauseOf('fidget');
+      if (Date.now() + wait < mischiefAt) {
+        play(wait, pickRandom(CLASS_ACTS.fidget, previous));
+        return;
+      }
+      const due = Math.max(0, mischiefAt - Date.now());
+      mischiefAt = Date.now() + due + pauseOf('mischief');
+      play(due, pickRandom(CLASS_ACTS.mischief, previous));
     };
     const enter = () => {
       if (boredom === 'asleep') play(SETTLE_MS, 'doze');
@@ -512,9 +526,9 @@ const BELL_GAZE = { x: -1.8, y: -2.2 };
 /**
  * Parky's face: a speech bubble in the brand's blue to green with big eyes that follow the mouse,
  * rosy cheeks and a smile, and for a hat a Ferris wheel with coloured cabins on an A-frame. It
- * blinks, shows its {@link ParkyMood}, and while `idle` fidgets, twirls, dances and reads, gets
- * bored when nobody moves (it yawns, whistles, blows gum, rolls its eyes, naps) and falls asleep
- * after a long quiet spell. While a search is open on the page it searches along, a magnifying
+ * blinks every 7 to 8 s, shows its {@link ParkyMood}, and while `idle` has a life of its own in
+ * classes (`CLASS_ACTS`): small fidgets every 7 to 8 s, mischief about every half minute, and once
+ * nobody moves everything sleepy until it falls asleep. While a search is open on the page it searches along, a magnifying
  * glass to its eye, leaning in at each keystroke. The motion lives in `app/globals.css`
  * (`.parky-*`) and only runs without `prefers-reduced-motion`.
  */
@@ -532,7 +546,11 @@ export function ParkyLogo({
   talking?: boolean;
   /** A life of its own while nothing happens: acts, boredom and sleep. */
   idle?: boolean;
-  /** With `idle`, only a few quiet acts and longer rests, for Parky beside a conversation. */
+  /**
+   * With `idle`, for Parky beside a conversation or in the homepage hero: awake he only blinks and
+   * follows the pointer, bored he gets sleepy and falls asleep; no fidgets and no mischief. What
+   * answers the visitor (cues, moods, searching along) plays either way.
+   */
   calm?: boolean;
   /** An act to play at once, with `idle`. */
   cue?: ParkyCue | null;

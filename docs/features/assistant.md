@@ -145,16 +145,21 @@ do (the closed button, the open window between answers) it has a life of its own
 store for the whole page, `parkyBoredom` (`lib/assistant/parky-boredom.ts`). Activity is a pointer
 move or press, a key, the mouse wheel or a touch.
 
-| Stage    | Quiet for | What Parky does                                                                                                                                                                                                                  |
-| -------- | --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `awake`  | < 25 s    | every 12–20 s: hops, tilts, looks around, spins its hat, winks, wiggles, rolls its eyes, twirls, dances, reads, puts on its sunglasses (`shades`) or its nightcap (`nightcap`), lights the wheel under moon and stars (`lights`) |
-| `bored`  | 25 s      | yawns, then every 5–9 s whistles, blows a gum bubble that pops, rolls its eyes, looks around, reads, naps or puts on its nightcap                                                                                                |
-| `asleep` | 75 s      | eyes fall shut, it breathes slowly under rising Zs, the hat stops; activity wakes it with a "!"                                                                                                                                  |
+Its life of its own comes in classes, each with its own pace (`CLASS_ACTS`, `CLASS_PAUSE_MS`):
 
-That is the button in the corner. In the open window Parky sits beside the conversation and is
-`calm`: awake it only looks around, winks or tilts its head, every 20–35 s; bored it yawns, looks
-around or naps, every 9–15 s; asleep it is the same. Its eyes follow the pointer either way. It
-blinks twice in a 24 s cycle, about 9 and 14 s apart, so 5 to 10 times in a minute and a half.
+| Class      | When                                     | What Parky does                                                                                                        |
+| ---------- | ---------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| blink      | always, every 7–8 s (CSS, `parky-blink`) | shuts and opens his eyes                                                                                               |
+| `fidget`   | `awake` (< 25 s quiet), every 7–8 s      | winks, looks around, tilts his head                                                                                    |
+| `mischief` | `awake`, about every 30 s (27–33 s)      | hops, spins, wiggles, rolls his eyes, twirls, dances, reads, whistles, blows gum, sunglasses, lights, nods off, a ride |
+| `sleepy`   | `bored` (25 s quiet), every 8–12 s       | yawns first, then naps, pulls on his nightcap, nods off                                                                |
+| asleep     | `asleep` (75 s quiet)                    | eyes shut, slow breathing under rising Zs, the hat stops; activity wakes him with a "!"                                |
+| doing      | whenever something happens               | moods (`thinking`, `looking`, `talking`), searching along, and the cues that answer the visitor                        |
+
+A bit of mischief takes the place of the fidget that would come after it is due. That is the button
+in the corner. In the open window and in the homepage hero Parky is `calm`: awake he only blinks
+and follows the pointer, bored he gets sleepy and falls asleep, and what he does for the visitor
+plays as everywhere.
 
 A change of stage never cuts an act short: an act still on stage when Parky gets bored, falls
 asleep or wakes up plays to its end, with the dizziness after a ride, and only then does the new

@@ -359,26 +359,30 @@
  * Parky's face (`components/assistant/parky-logo.tsx`): a blink every few seconds, the Ferris-wheel
  * hat turning while it writes, the mouth talking, and the closed button bobbing gently. The idle
  * acts last `--parky-act`, which the component sets from its own table, so a length lives there
- * only. With company Parky also twirls, dances and reads; bored, it yawns, whistles, blows gum,
- * rolls its eyes and naps; asleep it breathes slowly under rising Zs, and the hat stands still.
+ * only. With company Parky winks, looks around and tilts his head, and about every half minute
+ * hops, spins, twirls, dances, reads or nods off for a moment; bored, he yawns, naps and pulls on
+ * his nightcap; asleep he breathes slowly under rising Zs, and the hat stands still.
  * While a search is open it holds a magnifying glass to its eye and looks around the page. It answers
  * what the visitor does: a checklist for the trip planner, confetti for a finished plan, heart eyes
  * for a favourite, a bell for an alert, sunglasses when the theme turns light and a nightcap when it
  * turns dark; the sunglasses, the lit wheel under moon and stars and the nightcap also come on
  * their own.
  */
-/* Two blinks in 24 s, about 9 and 14 s apart: 5 to 10 in a minute and a half, never in a
-   steady beat. Each shuts and opens over some 170 ms. */
+/* Three blinks in 22.5 s, 7.4 to 7.6 s apart, so one every 7 to 8 s in every mode. Each shuts and
+   opens over some 170 ms. */
 @keyframes parky-blink {
   0%,
-  37.3%,
-  38.7%,
-  96.3%,
-  97.7%,
+  29.6%,
+  30.4%,
+  62.6%,
+  63.4%,
+  96.6%,
+  97.4%,
   100% {
     transform: scaleY(1);
   }
-  38%,
+  30%,
+  63%,
   97% {
     transform: scaleY(0.1);
   }
@@ -1434,7 +1438,7 @@
 }
 @media (prefers-reduced-motion: no-preference) {
   .parky-eyes {
-    animation: parky-blink 24s ease-in-out infinite;
+    animation: parky-blink 22.5s ease-in-out infinite;
   }
   /* An SVG transform is painted, not composited: every frame of a smooth spin lays out and paints
      Parky again. 8 steps a second move a cabin half a pixel, too little to see as a jump. */
