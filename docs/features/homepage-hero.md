@@ -57,9 +57,9 @@ under it, and in that corner alone where there is no caption.
 
 ## The text
 
-`HeroTextPanel` holds the open-parks badge (from `md`), the headline, the intro and the search
-field; its direct children are the entrance's steps. The headline is 40 px on a phone (three lines
-at 390 px in German) and 80 px from 1280 px, `font-black`.
+`HeroTextPanel` holds the open-parks badge (from `md`), the headline, Parky's row (from `lg`), the
+intro and the search field; its direct children are the entrance's steps. The headline is 40 px on
+a phone (three lines at 390 px in German), 60 px from 640 px and 68 px from 1280 px, `font-black`.
 
 | Value                           | Server seed                      | Client overlay                    |
 | ------------------------------- | -------------------------------- | --------------------------------- |
@@ -74,11 +74,37 @@ pin the whole six-locale homepage to it:
 The intro is one `t.rich` message with `{parks, number}` / `{attractions, number}` and a `<strong>`
 tag; a phone shows the one-line `home.hero.introShort`, and both are in the HTML.
 
-**The column reserves its height from `md`** (`md:min-h-[22.5rem]`): it stands on the photo's lower
-edge, so a column painted from half-parsed HTML would grow upwards and move the headline
+**The column reserves its height from `md`** (`md:min-h-[22.5rem]`, `lg:min-h-[27.25rem]`,
+`xl:min-h-[28.25rem]`): it stands on the photo's lower edge, so a column painted from half-parsed
+HTML would grow upwards and move the headline
 ([a streamed section owes the page its height](../rules/a-streamed-section-owes-the-page-its-height.md)).
-Measured on 2026-11-04, settled, in all six locales: 357 px from 1024 px, 352 px at 768 px (Italian
-323). A phone reserves nothing: the column is 197–280 px there and arrives in the first chunk.
+Measured on 2026-11-04, settled, in all six locales: 352 px at 768 px (Italian 323), 435 px at
+1024 px (English 374) and 449 px from 1280 px, Parky's row included. A phone reserves nothing: the
+column is 197–280 px there and arrives in the first chunk.
+
+## Parky in the hero (desktop)
+
+From a 1024 px window, under the headline, Parky stands 96 px tall beside a speech bubble: „Lass uns
+schauen, wo wir uns heute anstellen!" and, smaller, „Klick mich an, ich helfe dir."
+(`home.hero.parkyLine`, `home.hero.parkyCta`). Parky and the bubble are one button
+(`HeroParky`, `components/home/hero-parky.tsx`) that opens the chat window
+(`openParky('hero')`, counted as `assistant_opened` with source `hero`), into which he hops from
+here. Next to a park the park's block takes his place; below `lg` the row is not there.
+
+- **He stands here or in his corner, never both.** The slot registers with `parkyDock`
+  (`lib/assistant/parky-dock.ts`) while half of it is on screen. Meanwhile the corner button is
+  hidden and makes no entrance; once the slot scrolls away Parky hops down into the corner,
+  shrinking to its size, and back up, growing, when it returns (`parkyDockHop` in
+  `lib/assistant/parky-jump.ts`, the same arc as the hop into the window). The chat window's hop
+  starts and lands in the slot while it is on screen. Under reduced motion he changes places
+  without the hop.
+- **The slot draws him only while he is there** (`parkyInDock`): on his way, up in the window or
+  in the corner it is empty and the bubble faded, so the bubble never speaks for an absent Parky.
+- **Calm, as in the chat window** (`ParkyLogo idle calm`): his eyes follow the pointer, he blinks,
+  looks around, searches along with an open search and dozes off, but takes no rides. The row is
+  `h-28`, room for the hat and the Zs above his drawing.
+- **The row reserves its height from `lg`** whether or not Parky comes (the rollout gate decides in
+  the browser), so his arrival moves nothing. For a browser outside the rollout it stays empty.
 
 ## The card rail
 

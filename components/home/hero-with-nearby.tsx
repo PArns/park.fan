@@ -8,6 +8,7 @@ import { useMounted } from '@/lib/hooks/use-mounted';
 import { getNumberFormat } from '@/lib/utils/intl-format';
 import { HeroParkActions } from '@/components/home/hero-park-actions';
 import { OpenParksBadge } from '@/components/home/open-parks-badge';
+import { HeroParky } from '@/components/home/hero-parky';
 /** Sentence fallbacks when neither the SSR seed nor the live overlay has counts yet. */
 const FALLBACK_COUNTS = { openParks: null, parks: 200, attractions: 7000 };
 
@@ -34,7 +35,7 @@ function HeroBadgeRow({ openParks }: { openParks: number | null }) {
 /**
  * The headline, set as large as the tour's headings and larger: it stands on the photo's lower
  * edge (`HeroBackground`'s scrim) and is the one thing to read first. 40 px on a phone, three lines
- * at 390 px in German, 80 px from 1280 px.
+ * at 390 px in German, 68 px from 1280 px.
  */
 function HeroHeadline({
   children,
@@ -48,7 +49,7 @@ function HeroHeadline({
     // would on the <h1>. The top margin is the gap under the open-parks badge, which a phone does
     // not show.
     <div className="mt-4 mb-4 max-md:mt-0">
-      <Tag className="text-[2.5rem]/[1.04] font-black tracking-tight text-balance sm:text-6xl/[1.02] lg:text-7xl/[1] xl:text-[5rem]/[0.98]">
+      <Tag className="text-[2.5rem]/[1.04] font-black tracking-tight text-balance sm:text-6xl/[1.02] xl:text-[4.25rem]/[1]">
         {children}
       </Tag>
     </div>
@@ -118,6 +119,8 @@ export function HeroWithNearby({
     <>
       <HeroBadgeRow openParks={openParks} />
       <HeroHeadline as={headlineTag}>{tHome('hero.title')}</HeroHeadline>
+      {/* Parky under the question on a desktop; next to a park the park's block takes his place. */}
+      {!variant && <HeroParky />}
       {variant ? (
         <>
           <p className="text-foreground/85 max-w-4xl text-base leading-relaxed md:text-lg">

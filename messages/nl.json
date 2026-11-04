@@ -114,7 +114,9 @@
       "intro": "park.fan toont de wachttijden van <strong>{parks} pretparken</strong> en <strong>{attractions} attracties</strong>, elke vijf minuten opnieuw opgehaald. Voor de komende dagen staat erbij hoe druk het waarschijnlijk wordt.",
       "introShort": "Live wachttijden van <strong>{parks} parken</strong>.",
       "openNow": "{count, plural, =1 {1 park nu open} other {# parken nu open}}",
-      "searchExamples": "Efteling, Taron, Europa-Park …"
+      "searchExamples": "Efteling, Taron, Europa-Park …",
+      "parkyLine": "Laten we kijken waar we vandaag in de rij gaan staan!",
+      "parkyCta": "Klik op mij, ik help je."
     },
     "sections": {
       "featuredParks": "Populaire parken",

@@ -22,7 +22,8 @@ import { usePageLocked } from '@/lib/hooks/use-page-locked';
 import { useSearchOpen } from '@/lib/analytics/search-presence';
 import { PARKY_FALL_MS, useScrollFling } from '@/lib/assistant/use-scroll-fling';
 import type { ParkyFling } from '@/lib/assistant/fling-tracker';
-import { PARKY_CORNER_ATTR, parkyJumpMs } from '@/lib/assistant/parky-jump';
+import { PARKY_CORNER_ATTR, parkyDockHop, parkyJumpMs } from '@/lib/assistant/parky-jump';
+import { parkyDock, parkyInDock } from '@/lib/assistant/parky-dock';
 
 // Must stay in step with this file's entry in `LAZY_MESSAGE_BOUNDARIES`
 // (`lib/i18n/route-namespaces.mjs`).
@@ -255,8 +256,19 @@ export function AssistantLauncher() {
     };
   }, [shown]);
 
+  // Parky stands in a slot on the page while it is on screen (the homepage hero on a desktop,
+  // `parkyDock`), and only in his corner otherwise. Already in the slot when the button first
+  // shows, he makes no entrance: he never came in through the corner.
+  const docked = useSyncExternalStore(
+    parkyDock.subscribe,
+    parkyDock.getSnapshot,
+    parkyDock.getServerSnapshot
+  );
+  const [skipEntrance, setSkipEntrance] = useState(false);
+  if (docked && !skipEntrance && !arrived) setSkipEntrance(true);
+
   // Only in the browser once the button shows: `shown` is false on the server and while hydrating.
-  const entrance = shown ? pageEntrance() : null;
+  const entrance = shown && !skipEntrance && !docked ? pageEntrance() : null;
   const entering = entrance !== null && !arrived;
   // Landed once the entrance has run its length. A timer, because `animationend` never reached
   // React's handler on the home page.
@@ -278,10 +290,46 @@ export function AssistantLauncher() {
     return () => clearTimeout(timer);
   }, [landing]);
   const away = open || landing;
-  // Not while a dialog has Parky ducked below the edge (the search palette aside), nor while away.
+
+  // When the slot comes on screen or leaves it, Parky hops between it and his corner: the corner's
+  // drawing flies, so it shows for the hop, then hides while he stands in the slot. Not while he is
+  // up in the window or on his way: from there he lands wherever he belongs (`parkyJump`).
+  const [prevDocked, setPrevDocked] = useState(docked);
+  const [hop, setHop] = useState<'toSlot' | 'toCorner' | null>(null);
+  if (prevDocked !== docked) {
+    setPrevDocked(docked);
+    setHop(shown && !away ? (docked ? 'toSlot' : 'toCorner') : null);
+  }
+  useEffect(() => {
+    if (!hop) return;
+    const corner = document.querySelector<HTMLElement>(`[${PARKY_CORNER_ATTR}]`);
+    const slot = hop === 'toSlot' ? parkyDock.element() : parkyDock.lastElement();
+    const flight = corner && slot ? parkyDockHop(corner, slot, hop === 'toSlot') : null;
+    const done = () => setHop(null);
+    // No hop to play (reduced motion, nothing measured): he is simply where he belongs.
+    if (!flight) {
+      const timer = setTimeout(done, 0);
+      return () => clearTimeout(timer);
+    }
+    flight.addEventListener('finish', done);
+    flight.addEventListener('cancel', done);
+    return () => {
+      flight.removeEventListener('finish', done);
+      flight.removeEventListener('cancel', done);
+      flight.cancel();
+    };
+  }, [hop]);
+  const inSlot = docked && hop === null;
+  useEffect(() => {
+    parkyInDock.set(shown && inSlot && !away);
+    return () => parkyInDock.set(false);
+  }, [shown, inSlot, away]);
+
+  // Not while a dialog has Parky ducked below the edge (the search palette aside), nor while away
+  // or standing in the slot.
   const locked = usePageLocked();
   const searching = useSearchOpen();
-  const fling = useScrollFling(!away && !(locked && !searching));
+  const fling = useScrollFling(!away && !docked && !(locked && !searching));
   /** Opening Parky once ends the teaser lines for the session, and any entrance under way. */
   const openFrom = useCallback((source: AssistantOpenSource) => {
     stopTeasers();
@@ -291,9 +339,9 @@ export function AssistantLauncher() {
   }, []);
   const openFromButton = useCallback(() => openFrom('button'), [openFrom]);
   const openFromLine = useCallback(() => openFrom('line'), [openFrom]);
-  // Parky's own page asks for the window by its button; heard before the gate opens, so a press
-  // that comes first is not lost.
-  useEffect(() => onParkyOpen(() => openFrom('page')), [openFrom]);
+  // Parky's own page and Parky in the homepage hero ask for the window from outside, each with its
+  // own source; heard before the gate opens, so a press that comes first is not lost.
+  useEffect(() => onParkyOpen(openFrom), [openFrom]);
   const play = useCallback(
     (act: ParkyCue['act']) => setCue((last) => ({ act, id: (last?.id ?? 0) + 1 })),
     []
@@ -312,19 +360,20 @@ export function AssistantLauncher() {
   const content = (
     <>
       {Panel && <Panel open={open} onClose={close} openedBy={openedBy} />}
-      {/* Unseen while the window is open: the window's own ✕ and Escape close it. Kept mounted, so
-          Parky's jump has its corner to start from and land on. */}
+      {/* Unseen while the window is open, the window's own ✕ and Escape close it, and while Parky
+          stands in the page's slot. Kept mounted, so Parky's jumps have the corner to start from
+          and land on. */}
       <LauncherButton
         open={false}
         onToggle={openFromButton}
         entrance={entering ? entrance : null}
         cue={cue}
-        away={away}
+        away={away || inSlot}
         fling={fling}
         onLanded={landedDizzy}
       />
       {!open && <ShownCounter entrance={entrance} />}
-      {!away && (
+      {!away && !docked && (
         <AssistantTeaser
           onOpen={openFromLine}
           onAct={play}

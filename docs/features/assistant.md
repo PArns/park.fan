@@ -231,6 +231,13 @@ The store keeps one timer for the next stage, so a moving pointer costs a timest
 length is written once, in `ACT_MS`; the stylesheet reads it as `--parky-act`. Under reduced
 motion the store answers `null` and Parky only shows its moods.
 
+## In the homepage hero
+
+On the homepage from a 1024 px window Parky stands in the hero, bigger, beside a speech bubble that
+opens the window; his corner is empty while he is there, and he hops between the two as the hero
+scrolls away and back (`parkyDock`, `parkyDockHop`). He is calm there and makes no entrance. The
+whole of it is in [homepage hero → Parky in the hero](homepage-hero.md#parky-in-the-hero-desktop).
+
 ## How Parky arrives
 
 Each time a page loads, the button makes an entrance (`pageEntrance`, `lib/assistant/entrance.ts`),

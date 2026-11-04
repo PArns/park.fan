@@ -52,8 +52,8 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`open.ts`](../../lib/assistant/open.ts)
 
-- `openParky` _function_: Opens Parky's chat window from elsewhere on the page, as the button on Parky's own page does. The launcher hears it once its button shows; until then the request waits there.
-- `onParkyOpen` _function_: Hears `openParky`; returns the unsubscribe.
+- `openParky` _function_: Opens Parky's chat window from elsewhere on the page, as the button on Parky's own page does, counted with `source` (`assistant_opened`). The launcher hears it once its button shows; until then the request waits there.
+- `onParkyOpen` _function_: Hears `openParky`, with what asked for the window; returns the unsubscribe.
 
 ### [`opener.ts`](../../lib/assistant/opener.ts)
 
@@ -73,10 +73,18 @@ by hand: change the comment in the code and re-run the script. -->
 - `parkyBoredom` _const_: One boredom for the whole page, for `useSyncExternalStore`: the first subscriber starts the listeners, the last one stops them. Without motion (`prefers-reduced-motion`) Parky has no idle life and the snapshot is `null`, as on the server.
 - Types: `ParkyBoredom`
 
+### [`parky-dock.ts`](../../lib/assistant/parky-dock.ts)
+
+Where Parky stands while his chat window is shut: in his corner, or in a slot on the page that holds him bigger (the homepage hero on a desktop, `HeroParky`) while that slot is on screen.
+
+- `parkyDock` _const_: The slot Parky may stand in: the element, while it is on screen.
+- `parkyInDock` _const_: Whether Parky stands in the slot right now: not in his window, not on his way there or back, and done hopping in from the corner. The launcher sets it; the slot draws Parky only then.
+
 ### [`parky-jump.ts`](../../lib/assistant/parky-jump.ts)
 
 - `parkyJumpMs` _function_: The hop's length for this browser: none with reduced motion.
-- `parkyJump` _function_: Parky's face in the chat window hops in from the corner button (`open`) or back to it: down into a crouch, off in a parabola with his body stretched, onto the other end in a squash that springs back.
+- `parkyJump` _function_: Parky's face in the chat window hops in from where Parky stands (`open`) or back to it: from the slot that holds him on the page while it is on screen (`parkyDock`), else from his corner button.
+- `parkyDockHop` _function_: Parky in his corner button hops up into the page's slot (`toSlot`), growing to its size, or comes down from it into the corner, shrinking back. The corner drawing is what moves, so the corner is where it rests.
 - `PARKY_JUMP_MS` _const_: How long Parky's hop between his corner and the chat window's top edge takes.
 - `PARKY_CORNER_ATTR` _const_: Marks the drawing in the corner button, where the hop starts and lands.
 

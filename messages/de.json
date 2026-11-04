@@ -114,7 +114,9 @@
       "intro": "park.fan zeigt die Wartezeiten von <strong>{parks} Freizeitparks</strong> und <strong>{attractions} Attraktionen</strong>, alle fünf Minuten neu abgefragt. Für die kommenden Tage steht dabei, wie voll es voraussichtlich wird.",
       "introShort": "Live-Wartezeiten aus <strong>{parks} Parks</strong>.",
       "openNow": "{count, plural, =1 {1 Park gerade offen} other {# Parks gerade offen}}",
-      "searchExamples": "Europa-Park, Taron, Efteling …"
+      "searchExamples": "Europa-Park, Taron, Efteling …",
+      "parkyLine": "Lass uns schauen, wo wir uns heute anstellen!",
+      "parkyCta": "Klick mich an, ich helfe dir."
     },
     "sections": {
       "featuredParks": "Beliebte Parks",

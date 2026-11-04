@@ -114,7 +114,9 @@
       "intro": "park.fan affiche les temps d’attente de <strong>{parks} parcs d’attractions</strong> et <strong>{attractions} attractions</strong>, relevés toutes les cinq minutes. Pour les prochains jours, le site indique aussi l’affluence attendue.",
       "introShort": "Temps d’attente en direct de <strong>{parks} parcs</strong>.",
       "openNow": "{count, plural, one {# parc ouvert en ce moment} other {# parcs ouverts en ce moment}}",
-      "searchExamples": "Disneyland Paris, Taron, Efteling …"
+      "searchExamples": "Disneyland Paris, Taron, Efteling …",
+      "parkyLine": "Voyons où on fait la queue aujourd’hui !",
+      "parkyCta": "Clique sur moi, je t’aide."
     },
     "sections": {
       "featuredParks": "Parcs populaires",

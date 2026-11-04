@@ -674,7 +674,7 @@ export const EVENT_INFO: Record<SiteEventName, EventInfo> = {
   },
   assistant_opened: {
     label: 'Parky geöffnet',
-    when: 'Das Chatfenster von Parky geht von zu auf offen; über den Knopf oder einen Spruch.',
+    when: 'Das Chatfenster von Parky geht von zu auf offen; über den Knopf, einen Spruch, Parkys Seite oder Parky auf der Startseite.',
   },
   assistant_line_shown: {
     label: 'Parky-Spruch angezeigt',
@@ -1019,6 +1019,7 @@ const PLANNER_VALUE_LABEL: Record<string, Record<string, string>> = {
     button: 'Parky-Knopf',
     line: 'Parky-Spruch',
     page: 'Parkys Seite',
+    hero: 'Parky auf der Startseite',
   },
   mode: { day: '„Tag optimieren“', headliners: '„Alle Headliner“', fit: 'Antwort des Assistenten' },
   lever: {

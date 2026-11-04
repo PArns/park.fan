@@ -114,7 +114,9 @@
       "intro": "park.fan mostra i tempi di attesa di <strong>{parks} parchi divertimento</strong> e <strong>{attractions} attrazioni</strong>, aggiornati ogni cinque minuti. Per i prossimi giorni c’è anche l’affluenza prevista.",
       "introShort": "Le attese in tempo reale di <strong>{parks} parchi</strong>.",
       "openNow": "{count, plural, =1 {1 parco aperto ora} other {# parchi aperti ora}}",
-      "searchExamples": "Gardaland, Taron, Efteling …"
+      "searchExamples": "Gardaland, Taron, Efteling …",
+      "parkyLine": "Vediamo dove mettersi in fila oggi!",
+      "parkyCta": "Cliccami e ti aiuto."
     },
     "sections": {
       "featuredParks": "Parchi popolari",

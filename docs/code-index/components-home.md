@@ -48,6 +48,10 @@ by hand: change the comment in the code and re-run the script. -->
 - `HeroParkActions` _component_: The part of the homepage hero for somebody standing in a park, or right next to one: two things to press and two to read.
 - Types: `HeroPark`
 
+### [`hero-parky.tsx`](../../components/home/hero-parky.tsx)
+
+- `HeroParky` _component_: Parky in the homepage hero on a desktop, under the headline: big, beside a speech bubble with an invitation, and the two together a button that opens his chat window, into which he hops from here.
+
 ### [`hero-rail.tsx`](../../components/home/hero-rail.tsx)
 
 - `HeroRail` _component_: The row under the hero's text, which answers its question: the rides near the visitor whose queue is well below its usual length right now (`shortWaits`, the nearby answer's).

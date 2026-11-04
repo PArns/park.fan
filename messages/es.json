@@ -114,7 +114,9 @@
       "intro": "park.fan muestra los tiempos de espera de <strong>{parks} parques</strong> y <strong>{attractions} atracciones</strong>, consultados de nuevo cada cinco minutos. Para los próximos días verás también cuánta gente se espera.",
       "introShort": "Esperas en directo de <strong>{parks} parques</strong>.",
       "openNow": "{count, plural, =1 {1 parque abierto ahora} other {# parques abiertos ahora}}",
-      "searchExamples": "PortAventura, Taron, Efteling …"
+      "searchExamples": "PortAventura, Taron, Efteling …",
+      "parkyLine": "¡Vamos a ver dónde hacemos cola hoy!",
+      "parkyCta": "Haz clic en mí y te ayudo."
     },
     "sections": {
       "featuredParks": "Parques populares",
