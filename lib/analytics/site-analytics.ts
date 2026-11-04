@@ -343,6 +343,36 @@ const FLUSH_DELAY_MS = 1000;
 const FIRST_PAGEVIEW_WAIT_MS = 3000;
 const UUID_PATTERN = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/;
 const REFERRER_PATTERN = /^[a-z0-9][a-z0-9.-]{0,99}$/;
+/**
+ * The `utm_source` values that stand in for a missing referrer: the hosts of the AI assistants the
+ * API's `REFERRER_RULES` (`src/site-analytics/referrer.util.ts`) put in the `ai` channel. ChatGPT
+ * tags its links `utm_source=chatgpt.com` and often sends no referrer, so those visits counted as
+ * direct. A value outside this list, and every other part of the query string, is never read.
+ */
+const AI_SOURCE_HOSTS: ReadonlySet<string> = new Set([
+  'chatgpt.com',
+  'chat.openai.com',
+  'perplexity.ai',
+  'gemini.google.com',
+  'copilot.microsoft.com',
+  'claude.ai',
+  'meta.ai',
+  'grok.com',
+  'deepseek.com',
+  'chat.mistral.ai',
+  'you.com',
+  'phind.com',
+]);
+/**
+ * Phone systems a User-Agent names, with the platform the engine itself reports for them in
+ * `navigator.userAgentData`. A headless browser dressed up as a phone reports itself visible and
+ * passes every other gate, but its engine still names the system it really runs on. No iOS
+ * browser built on WebKit has `userAgentData`, so on an iPhone the check never fires.
+ */
+const CLAIMED_PLATFORMS: readonly (readonly [RegExp, string])[] = [
+  [/\b(?:iPhone|iPad|iPod)\b/, 'iOS'],
+  [/\bAndroid\b/, 'Android'],
+];
 const EVENT_NAME_PATTERN = /^[a-z][a-z0-9_]{1,47}$/;
 const PROP_KEY_PATTERN = /^[a-z][a-z0-9_]{0,31}$/;
 /** A text value: a letter or digit first, then letters, digits and a few separators, 120 at most. */
@@ -369,7 +399,11 @@ let holdTimer: ReturnType<typeof setTimeout> | undefined;
 /** This load's first pageview is queued, or its wait for it is over: flushing may begin. */
 let released = false;
 let referrerSent = false;
-let unloadHooked = false;
+let lifecycleHooked = false;
+/** This load has been on screen at least once; until then nothing it queued leaves. */
+let seenOnScreen = false;
+/** A pageview asked for while the page was off screen, counted once it comes on screen. */
+let pageviewWaiting = false;
 /** The page view now open, whose foreground time is measured, until the next one replaces it. */
 let openPage: { base: HitBase; timer: ForegroundTimer } | undefined;
 /** The path the not-found page has declared itself for, until the next navigation. */
@@ -432,14 +466,37 @@ function isSimulatedVisit(): boolean {
 }
 
 /**
- * Whether this tab may send anything: production hosts only, not from automation or a simulated
- * visit, not under Do Not Track, Global Privacy Control or the privacy page's opt-out. For a caller
- * that would otherwise start work (a timer, a listener) whose result nothing would send.
+ * Whether this tab may send anything: production hosts only, not from automation, a forged phone
+ * or a simulated visit, not under Do Not Track, Global Privacy Control or the privacy page's
+ * opt-out. For a caller that would otherwise start work (a timer, a listener) whose result nothing
+ * would send.
  */
 export function canCountSite(): boolean {
   if (typeof window === 'undefined') return false;
   if (!isAnalyticsHost(location.hostname)) return false;
-  return !navigator.webdriver && !analyticsOptedOut() && !isSimulatedVisit();
+  return (
+    !navigator.webdriver && !hasForgedPlatform() && !analyticsOptedOut() && !isSimulatedVisit()
+  );
+}
+
+/** The User-Agent names a phone system that the engine's own `userAgentData` contradicts. */
+function hasForgedPlatform(): boolean {
+  const { userAgentData } = navigator as Navigator & { userAgentData?: { platform?: string } };
+  const platform = userAgentData?.platform;
+  if (!platform || platform === 'Unknown') return false;
+  const claimed = CLAIMED_PLATFORMS.find(([pattern]) => pattern.test(navigator.userAgent ?? ''));
+  return claimed !== undefined && claimed[1] !== platform;
+}
+
+/**
+ * Whether the page is on screen now: not a background tab, not prerendered ahead of a click. The
+ * first time it is, the load counts as seen.
+ */
+function noteOnScreen(): boolean {
+  const { prerendering } = document as Document & { prerendering?: boolean };
+  if (prerendering || document.visibilityState !== 'visible') return false;
+  seenOnScreen = true;
+  return true;
 }
 
 function currentBase(): HitBase | null {
@@ -454,19 +511,34 @@ function currentBase(): HitBase | null {
 }
 
 /**
- * The host of the page that linked here, when it is another site. Read once per load, since later
- * pageviews of the tab are internal. Nothing of the URL's query string is read.
+ * The host of the page that linked here, when it is another site, else the AI assistant the
+ * link's `utm_source` names. Read once per load, since later pageviews of the tab are internal.
  */
 function pageLoadOrigin(): { referrer?: string } {
   if (referrerSent) return {};
   referrerSent = true;
+  const host = externalReferrerHost() || aiSourceHost();
+  return host && REFERRER_PATTERN.test(host) ? { referrer: host } : {};
+}
+
+/** The host in `document.referrer` without `www.`, or '' for none, this site or no URL at all. */
+function externalReferrerHost(): string {
   try {
     const host = new URL(document.referrer).hostname.toLowerCase().replace(/^www\./, '');
-    const external = host && host !== location.hostname.replace(/^www\./, '');
-    return external && REFERRER_PATTERN.test(host) ? { referrer: host } : {};
+    return host !== location.hostname.replace(/^www\./, '') ? host : '';
   } catch {
-    return {};
+    return '';
   }
+}
+
+/** The `utm_source` of the address when it is one of {@link AI_SOURCE_HOSTS}, else ''. */
+function aiSourceHost(): string {
+  const source = new URLSearchParams(location.search).get('utm_source') ?? '';
+  const host = source
+    .trim()
+    .toLowerCase()
+    .replace(/^www\./, '');
+  return AI_SOURCE_HOSTS.has(host) ? host : '';
 }
 
 function send(hits: CollectHit[], viaBeacon: boolean) {
@@ -498,6 +570,7 @@ function flush(viaBeacon = false) {
   clearTimeout(holdTimer);
   flushTimer = undefined;
   holdTimer = undefined;
+  if (!seenOnScreen) return;
   while (queue.length > 0) send(queue.splice(0, MAX_HITS_PER_REQUEST), viaBeacon);
 }
 
@@ -508,8 +581,33 @@ function flush(viaBeacon = false) {
  */
 function onPageHidden() {
   openPage?.timer.pause();
+  // A load nobody looked at counts nothing, not even the events its page sent while it loaded.
+  if (!seenOnScreen) {
+    queue.length = 0;
+    return;
+  }
   reportEngagement();
   flush(true);
+}
+
+/** The page came on screen: a pageview that waited for it counts now, an open one counts on. */
+function onPageShown() {
+  if (!noteOnScreen()) return;
+  if (pageviewWaiting) trackSitePageview();
+  else openPage?.timer.resume();
+}
+
+function hookPageLifecycle() {
+  if (lifecycleHooked) return;
+  lifecycleHooked = true;
+  // A hit queued just before the tab goes away would otherwise be lost with the timer.
+  addEventListener('pagehide', onPageHidden);
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'hidden') onPageHidden();
+    else onPageShown();
+  });
+  // A prerendered page the reader opens comes on screen here.
+  document.addEventListener('prerenderingchange', onPageShown);
 }
 
 /** Queues the foreground seconds the open page view added since its last report, if any. */
@@ -523,15 +621,8 @@ function reportEngagement(at = queue.length): boolean {
 
 function enqueue(hit: CollectHit, at = queue.length) {
   queue.splice(at, 0, hit);
-  if (!unloadHooked) {
-    unloadHooked = true;
-    // A hit queued just before the tab goes away would otherwise be lost with the timer.
-    addEventListener('pagehide', onPageHidden);
-    document.addEventListener('visibilitychange', () => {
-      if (document.visibilityState === 'hidden') onPageHidden();
-      else openPage?.timer.resume();
-    });
-  }
+  hookPageLifecycle();
+  noteOnScreen();
   if (hit.t === 'pageview') released = true;
   if (!released) {
     holdTimer ??= setTimeout(() => {
@@ -561,11 +652,15 @@ function pageviewSlot(path: string): number {
 /**
  * Counts a view of the page now in the address bar. Call once per navigation. The view before it
  * ends here, so the foreground time it has not reported yet is queued ahead of the new pageview,
- * under the path and page type it was opened with.
+ * under the path and page type it was opened with. A page in a background tab or prerendered
+ * ahead of a click is counted when it comes on screen, and never if it does not.
  */
 export function trackSitePageview(): void {
   try {
     if (!canCountSite()) return;
+    hookPageLifecycle();
+    pageviewWaiting = !noteOnScreen();
+    if (pageviewWaiting) return;
     const base = currentBase();
     const at = base ? pageviewSlot(base.path) : queue.length;
     const reported = reportEngagement(at);

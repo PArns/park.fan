@@ -36,7 +36,10 @@ and when, and the admin pages. Open it before touching `lib/analytics/site-analy
   no trailing slash), the page type and the language. The window width is not read: the API takes
   the device class (`mobile`, `tablet`, `desktop`) from the request's User-Agent. A pageview adds
   the referrer on the first view of a load: the external host without `www.`, read once and kept in
-  memory, and nothing of the address's query string, so `?utm_source=` sends no referrer. An event
+  memory. Without one, a `utm_source` that names an AI assistant's host (`AI_SOURCE_HOSTS`:
+  `chatgpt.com`, `perplexity.ai` and the other hosts the API's `REFERRER_RULES` put in the `ai`
+  channel) stands in for it, since ChatGPT tags its links that way and often sends no referrer.
+  Any other `utm_source`, and the rest of the query string, is not read. An event
   adds its name, its properties and, where the call site holds one, the UUID of the park, ride,
   show or restaurant.
 - **Any event, nothing free.** The API stores whatever name and properties arrive: a name is
@@ -48,11 +51,24 @@ and when, and the admin pages. Open it before touching `lib/analytics/site-analy
 - **Batched, in memory.** Hits queue for a second or until twenty are there, and leave in one
   request as `text/plain` (no preflight), through `sendBeacon` when the page is hidden. Nothing goes
   into browser storage.
-- **Five gates, all before anything is queued.** Only production hosts (`ANALYTICS_HOSTS`), not
-  automation (`navigator.webdriver`), not Do Not Track, Global Privacy Control or the privacy page's
-  opt-out (`analyticsOptedOut`, the same question as for Umami), not a simulated visit (`?sim=` or
-  `?state=`, the team on its own phones) and not a path the API would refuse (it has to match
-  `^/(locale)(/slug){0,8}$`, so an encoded character is not a page). The API checks the same again.
+- **Six gates, all before anything is queued.** Only production hosts (`ANALYTICS_HOSTS`), not
+  automation (`navigator.webdriver`), not a forged phone, not Do Not Track, Global Privacy Control
+  or the privacy page's opt-out (`analyticsOptedOut`, the same question as for Umami), not a
+  simulated visit (`?sim=` or `?state=`, the team on its own phones) and not a path the API would
+  refuse (it has to match `^/(locale)(/slug){0,8}$`, so an encoded character is not a page). The API
+  checks the host, the path and the bots it knows by User-Agent again.
+- **A forged phone is a User-Agent the engine contradicts.** A User-Agent that names iOS or Android
+  while `navigator.userAgentData.platform` names another system (`CLAIMED_PLATFORMS`) is a headless
+  browser dressed up as a phone: it reports itself visible and passes every other gate. In the week
+  before the check, "Chrome on iOS" entered the glossary 468 times without a referrer against 12
+  for Safari, the reverse of search visits. No WebKit browser has `userAgentData`, so an iPhone
+  never trips it, and a platform of `""` or `Unknown` says nothing. Both values are compared in the
+  browser and neither is sent.
+- **Nothing counts before the page is on screen.** A pageview asked for in a background tab or in
+  a page prerendered ahead of a click waits for `visibilitychange` or `prerenderingchange` and is
+  counted then, with the load's referrer; a load closed before anybody looked at it sends nothing,
+  not even the events its page queued while it loaded. A load that was on screen once flushes as
+  usual when it is hidden.
 - **Foreground time, nothing else about timing.** `ForegroundTimer` runs while the tab is visible
   and stands still while it is hidden. The seconds it added go out as an `engagement` hit (`seconds`
   1 to 1800, the path and page type of the page view it belongs to, no timestamp) when the next
@@ -394,9 +410,13 @@ pages).
 - **Durations are foreground time**, so a tab left in the background earns nothing, and they start
   with the first browser that sent the new hit: older periods have none, which reads as a dash.
 - **The channel comes from the referrer on the API**: search, ai, social, referral or direct. A
-  visit without a referrer is direct, and so is one from a browser that strips it. A link's
-  `utm_` parameters are not read, so a newsletter or an ad is a referral under its own host, or
-  direct.
+  visit without a referrer is direct, and so is one from a browser that strips it, unless its
+  `utm_source` names an AI assistant. Other `utm_` values are not read, so a newsletter or an ad is
+  a referral under its own host, or direct.
+- **Visits begin when the page is first on screen**, so a background tab closed unseen and a
+  prerendered page nobody opened are not visits. Days before the change (PAR-1224) still count
+  them and a forged phone, mostly as one-page direct visits of zero seconds, so a window across it
+  compares two ways of counting.
 - **Visitors from a different phone, network or browser are different visitors**, as in Umami.
 - **Do Not Track, Global Privacy Control, the opt-out and bots are not in it.** The figures are
   lower than the traffic by that share.

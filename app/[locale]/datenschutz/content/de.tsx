@@ -8,7 +8,7 @@ export function DatenschutzDE() {
   return (
     <>
       <h1 className="mb-2 text-4xl font-bold">Datenschutzerklärung</h1>
-      <p className="text-muted-foreground mb-8 text-sm">Stand: 2. November 2026</p>
+      <p className="text-muted-foreground mb-8 text-sm">Stand: 4. November 2026</p>
 
       <div className="space-y-4 text-base leading-7">
         <LegalH2>1. Verantwortlicher</LegalH2>
@@ -281,10 +281,12 @@ export function DatenschutzDE() {
           an api.park.fan: den Pfad der Seite ohne Suchbegriffe und Anker und daraus abgeleitet die
           Art der Seite (zum Beispiel Park, Attraktion oder Beitrag) und die Sprache. Die Größe
           Ihres Fensters liest es nicht aus. Beim ersten Aufruf nach dem Öffnen der Website liest es
-          zusätzlich die Herkunft aus: den Domainnamen der Website, von der Sie kommen. Die Art der
-          Herkunft (zum Beispiel Suchmaschine oder soziales Netzwerk) leitet der Server daraus ab.
-          Auch der Pfad einer Adresse, die es nicht gibt, wird gezählt, damit wir kaputte Links
-          finden.
+          zusätzlich die Herkunft aus: den Domainnamen der Website, von der Sie kommen. Gibt Ihr
+          Browser keine Herkunft weiter, nimmt es stattdessen den Wert <code>utm_source</code> aus
+          der Adresse, aber nur, wenn er einen KI-Assistenten aus einer festen Liste nennt (zum
+          Beispiel chatgpt.com). Andere Werte der Adresse liest es nicht. Die Art der Herkunft (zum
+          Beispiel Suchmaschine oder soziales Netzwerk) leitet der Server daraus ab. Auch der Pfad
+          einer Adresse, die es nicht gibt, wird gezählt, damit wir kaputte Links finden.
         </p>
         <p>
           Bei bestimmten Handlungen sendet Ihr Browser außerdem ein Ereignis. Name und Werte legen
@@ -427,9 +429,12 @@ export function DatenschutzDE() {
           Wer an einem anderen Tag wiederkommt, wird erneut gezählt, denn die Kennungen eines Tages
           haben mit denen des nächsten nichts gemeinsam. Damit niemand die Listen der meistgelesenen
           Beiträge verfälscht, zählt eine Seite pro Besucher höchstens dreimal am Tag. Anfragen von
-          Bots und aus automatisiert gesteuerten Browsern zählt der Server nicht. Gezählt wird nur
-          auf park.fan selbst. Die Anfrage läuft über Cloudflare (siehe Abschnitt 2). Der Zähler
-          setzt kein Cookie und legt nichts im lokalen Speicher ab.
+          Bots und aus automatisiert gesteuerten Browsern zählen wir nicht. Dafür prüft das Skript
+          in Ihrem Browser auch, ob das Betriebssystem, das Ihr Browser angibt, zu dem passt, auf
+          dem er läuft. Das Ergebnis verlässt Ihren Browser nicht. Eine Seite, die nie auf dem
+          Bildschirm war, etwa ein nie geöffneter Tab, wird nicht gezählt. Gezählt wird nur auf
+          park.fan selbst. Die Anfrage läuft über Cloudflare (siehe Abschnitt 2). Der Zähler setzt
+          kein Cookie und legt nichts im lokalen Speicher ab.
         </p>
         <p>
           Rechtsgrundlage ist unser berechtigtes Interesse, die meistgelesenen Beiträge zu zeigen,

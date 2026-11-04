@@ -103,7 +103,7 @@ The places a park page marks, top to bottom, the closed list of the event's `sec
 
 - `sitePageTypeOf` _function_: The page type of a locale-prefixed path such as `/de/parks/europe/germany/bruehl/phantasialand`.
 - `searchPosition` _function_: The bucket of a 1-based result position.
-- `canCountSite` _function_: Whether this tab may send anything: production hosts only, not from automation or a simulated visit, not under Do Not Track, Global Privacy Control or the privacy page's opt-out.
+- `canCountSite` _function_: Whether this tab may send anything: production hosts only, not from automation, a forged phone or a simulated visit, not under Do Not Track, Global Privacy Control or the privacy page's opt-out.
 - `flushSiteAnalytics` _function_: Sends what is queued now instead of in a second. The page does it on its own when it is hidden; this is for a caller that cannot wait for that, such as a test.
 - `trackSitePageview` _function_: Counts a view of the page now in the address bar. Call once per navigation. The view before it ends here, so the foreground time it has not reported yet is queued ahead of the new pageview, under the path and page type it was opened with.
 - `markPageNotFound` _function_: Declares the page in the address bar a "not found" page, which only that page knows: its pageview becomes `not_found`, whether it was queued already or comes after.
