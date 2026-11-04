@@ -24,18 +24,19 @@ and must never filter with `isNewsPost`.
 
 | Surface                   | Articles                                                     | News                                                |
 | ------------------------- | ------------------------------------------------------------ | --------------------------------------------------- |
-| Homepage, hero            | —                                                            | `LatestNewsChip` in the badge row                   |
+| Homepage, hero            | the newest guide, a post row in the search list              | the newest news post, the row beside it             |
 | Homepage, news and guides | `NewsBoard`, four rows (three on a phone), `getMostReadSeed` | `NewsBoard`, six rows (three on a phone) above them |
 | Header menu               | „Guides": opener + rows, `recent` in `getBlogMenu()`         | its own entry: `NewsMenuPanel`, `getNewsMenu()`     |
-| Phone menu (burger sheet) | the „Guides" link                                            | the News link and a `LatestNewsChip` card           |
+| Phone menu (burger sheet) | the „Guides" link                                            | the News link and a `LatestNewsCard`                |
 | Park and ride pages       | the card grid in `blog-posts-sections.tsx`                   | `NewsRow boxed` under the grid                      |
 
-- **The hero chip is the only news above the fold**, on any screen. It is one line by construction
-  (`components/blog/latest-news-chip.tsx`): on the badge's line from a 34 rem row, under it below
-  that, decided by the row's own width (`@container/badges`). In the phone menu it is a small card
-  (`variant="card"`). Both chips show the date in UTC rather than `NewsAge`, whose relative half
-  grows after hydration and would slide a truncated headline sideways, and both take their post from
-  `getNewsMenu()` through `latestNewsFrom()`, so they agree on which post is newest.
+- **The hero's newest news post is the only news above the fold**, on any screen: a post row in
+  the search list beside the newest guide (`getHeroReading`, `lib/home/hero-reading.ts`), its kicker
+  „Neueste News". In the phone menu it is a small card (`LatestNewsCard`,
+  `components/blog/latest-news-card.tsx`) that shows the date in UTC rather than `NewsAge`, whose
+  relative half grows after hydration and would move the lines under it. Both take the first post of
+  `listNewsByDate()`, the card through `getNewsMenu()` and `latestNewsFrom()`, so they agree on which
+  post is newest.
 - **On the teaser surfaces news is drawn a step below the articles** (a 112 px cover, a semibold
   title, no teaser, its own accent label) through one component: `NewsList`
   (`components/blog/news-list.tsx`), wrapped by `NewsRow` on server-rendered pages.

@@ -68,7 +68,7 @@ const ROW_WIDTHS = ['55%', '72%', '48%', '65%', '58%'];
 
 /**
  * The hero's phone list while it waits, in the boxes of `HeroPhoneList`: rows of a thumbnail, a
- * name and two small pills, then the two posts' rows of a kicker and a title.
+ * name and two small pills, then the two posts' rows of a cover, a kicker and a title.
  */
 export function HeroPhoneSkeleton({ rows, reading }: { rows: number; reading: boolean }) {
   return (
@@ -97,9 +97,7 @@ export function HeroPhoneSkeleton({ rows, reading }: { rows: number; reading: bo
               key={i}
               className={cn('flex items-center gap-2.5 px-3', HERO_PHONE_READING_ROW_CLASS)}
             >
-              <div className="flex w-9 shrink-0 justify-center">
-                <div className="bg-foreground/10 size-4 animate-pulse rounded" />
-              </div>
+              <div className="bg-foreground/10 size-9 shrink-0 animate-pulse rounded-lg" />
               <div className="flex min-w-0 flex-1 flex-col gap-1.5">
                 <div className="bg-foreground/[8%] h-2 w-20 animate-pulse rounded-full" />
                 <div

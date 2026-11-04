@@ -172,6 +172,20 @@
       "title": "Deine Parks und Bahnen",
       "lead": "Alles, was du mit dem Stern markiert hast, mit Status und aktueller Wartezeit."
     },
+    "favoritesIntro": {
+      "star": {
+        "kicker": "Favoriten",
+        "title": "So merkst du dir Parks und Bahnen",
+        "lead": "Jede Park- und Bahnseite hat einen Stern, jede Karte auch. Ein Tipp darauf, und der Park oder die Bahn steht in deinen Favoriten; ein zweiter Tipp nimmt sie wieder heraus. Ein Konto brauchst du nicht, die Liste bleibt in deinem Browser.",
+        "alt": "Tokyo Disneyland auf dem Handy: oben rechts der gedrückte Stern, darunter die Headliner mit ihren Wartezeiten."
+      },
+      "menu": {
+        "kicker": "Im Menü",
+        "title": "Deine Favoriten auf jeder Seite",
+        "lead": "Auf dem Handy liegen sie im Menü oben rechts, am Computer hinter dem Stern in der Leiste, jeweils mit Status und aktueller Wartezeit. Auf der Startseite stehen sie dann gleich unter den News.",
+        "alt": "Das geöffnete Menü auf dem Handy: unter „Favoriten“ Phantasialand und Europa-Park, darunter vier Bahnen mit ihrer Wartezeit."
+      }
+    },
     "popular": {
       "kicker": "Beliebte Parks",
       "title": "Wartezeiten und Andrang in den beliebtesten Parks",
@@ -187,7 +201,7 @@
     "parky": {
       "kicker": "Parky",
       "title": "Nicht gefunden, was du suchst? Frag Parky",
-      "lead": "Parky ist ein Freizeitpark-Nerd. Er weiß, wie lang du gerade an Taron anstehst, an welchem Samstag im Juni der Europa-Park am leersten ist und was Airtime eigentlich ist. Die Zahlen holt er aus denselben Live-Daten wie diese Seite.",
+      "lead": "Parky ist ein Freizeitpark-Nerd. Er weiß, wie lang du gerade an Taron anstehst, an welchem Samstag im Juni der Europa-Park am leersten ist und was Airtime eigentlich ist.",
       "link": "Parky fragen"
     },
     "reading": {
@@ -1658,6 +1672,7 @@
     "avgWait": "Ø {minutes} Min.",
     "avgWaitShort": "Ø {minutes} Min.",
     "heroHint": "Tippe los, wir suchen Parks, Attraktionen, Shows und Restaurants",
+    "newestNews": "Neueste News",
     "newestGuide": "Neuester Guide"
   },
   "searchPage": {
@@ -3007,9 +3022,9 @@
     "alert1": "Gute Idee! Du bekommst Bescheid, sobald es so weit ist.",
     "alert2": "Notiert. Jetzt musst du nicht dauernd nachschauen.",
     "alert3": "Bimmel, bimmel! So ungefähr klingt das dann.",
-    "themeDark1": "Licht aus! Jetzt leuchtet mein Riesenrad.",
+    "themeDark1": "Licht aus! Wo ist meine Schlafmütze?",
     "themeDark2": "Nachtmodus! Abends ist es im Park am schönsten.",
-    "themeDark3": "Schön dunkel hier. Und mein Hut leuchtet!",
+    "themeDark3": "Schön dunkel hier. Zeit für die Schlafmütze.",
     "themeLight1": "Huch, ist das hell! Gut, dass ich eine Sonnenbrille dabeihab.",
     "themeLight2": "Licht an, Sonnenbrille auf!",
     "themeLight3": "Tageslicht! Perfektes Parkwetter.",

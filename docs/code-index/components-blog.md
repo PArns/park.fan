@@ -215,10 +215,10 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `BlogYouTubeEmbed` _component_: Responsive 16:9 YouTube embed (privacy-enhanced nocookie host), behind a facade: `loading="lazy"` defers the player but does not shrink it, and a post can carry several.
 
-### [`latest-news-chip.tsx`](../../components/blog/latest-news-chip.tsx)
+### [`latest-news-card.tsx`](../../components/blog/latest-news-card.tsx)
 
-- `LatestNewsChip` _component_: The newest news post, in one of two shapes.
-- `latestNewsFrom` _function_: The chip's data out of the news menu, which already holds the newest item and the label.
+- `LatestNewsCard` _component_: The newest news post as the phone menu's card: label and date, then two lines of headline and a few of teaser, so a 300 px column says what the news is about.
+- `latestNewsFrom` _function_: The card's data out of the news menu, which already holds the newest item and the label, so the card and the news panel cannot disagree about which post is the newest or what the section is called.
 - Types: `LatestNews`
 
 ### [`listing-pagination.tsx`](../../components/blog/listing-pagination.tsx)

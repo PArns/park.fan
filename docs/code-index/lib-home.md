@@ -7,9 +7,10 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`compass-presence.ts`](../../lib/home/compass-presence.ts)
 
-- `useCompassPresent` _hook_: Returns true while the in-park compass is mounted on the homepage, so the hero can show its pill; false on the server.
+- `useCompassPresent` _hook_: Returns true while the in-park compass is mounted on the homepage, so the hero can show its link; false on the server.
 - `setCompassPresent` _function_: Records whether the in-park compass is mounted on the homepage and notifies `useCompassPresent` readers when it changes.
-- `PARK_COMPASS_ID` _const_: Whether the in-park compass is on the homepage right now, for the hero's pill that scrolls to it.
+- `jumpToCompass` _function_: The click of a link to `#park-compass`: scrolls to the compass and hands it the focus, so a keyboard or screen reader lands where the eye does.
+- `PARK_COMPASS_ID` _const_: Whether the in-park compass is on the homepage right now, for the hero's link that scrolls to it.
 
 ### [`hero-browse.ts`](../../lib/home/hero-browse.ts)
 
@@ -26,13 +27,12 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`hero-reading.ts`](../../lib/home/hero-reading.ts)
 
-- `getHeroReading` _function_: The hero's two posts as the build saw them: the most read news post the chip does not show, and the newest guide.
+- `getHeroReading` _function_: The hero's two posts: the newest news post and the newest guide, from the manifest. Both are in the static shell and nothing swaps them after load, so the hero is where a visitor finds the news that came out since the last visit.
 
 ### [`hero-search.ts`](../../lib/home/hero-search.ts)
 
-- `pickHeroNews` _function_: The first news post of a ranking that the chip above does not already show.
-- `HERO_REST_ROWS_PHONE` _const_: Rows of parks (or, in a park, rides) the hero's resting list holds below `md`, above the two posts.
-- `HERO_PARK_ROWS_PHONE` _const_: Rows of the phone's list for a visitor in or next to a park: the park's block (`useHeroPark`) takes the room of the other rows and of the posts, so the list keeps its height.
+- `HERO_REST_ROWS_PHONE` _const_: Rows of parks (or, in a park, rides) the hero's resting list holds below `md`, above the two posts: as many as from `md` up, so the two lists show the same parks and the plate ends well inside a 360 × 740 screen.
+- `HERO_PARK_ROWS_PHONE` _const_: Rows of the phone's list for a visitor in or next to a park: the park's block (`useHeroPark`) takes the room of the other rows and of the posts, so the list keeps its height. The block needs three rows and the posts' box, which leaves one.
 - `HERO_REST_ROWS_DESKTOP` _const_: Rows from `md` up, above the two posts. Four parks and the posts take the room the pill rows left, so the plate keeps its height.
 - `NEARBY_CHAPTER_ID` _const_: The anchor of the homepage's nearby chapter, which lists more of the visitor's nearby parks; the hero's list links to it.
 - `HOME_HERO_ID` _const_: The homepage hero's `id`: the location banner waits below `md` until it is scrolled past, since it would cover the hero's search list.

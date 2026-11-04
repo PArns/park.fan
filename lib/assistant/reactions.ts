@@ -1,7 +1,15 @@
 import type { AssistantLineKind, SiteEventMap } from '@/lib/analytics/site-analytics';
 
 /** The acts Parky plays in answer to something the visitor did; `parky-logo.tsx` draws each. */
-export const REACTION_ACTS = ['plan', 'cheer', 'love', 'bell', 'shades', 'lights', 'hop'] as const;
+export const REACTION_ACTS = [
+  'plan',
+  'cheer',
+  'love',
+  'bell',
+  'shades',
+  'nightcap',
+  'hop',
+] as const;
 
 /** One of {@link REACTION_ACTS}. */
 export type ParkyReactionAct = (typeof REACTION_ACTS)[number];
@@ -38,7 +46,7 @@ const FAVOURITE: ParkyReaction = {
 };
 const ALERT: ParkyReaction = { act: 'bell', line: 'alert', keys: ['alert1', 'alert2', 'alert3'] };
 const DARK: ParkyReaction = {
-  act: 'lights',
+  act: 'nightcap',
   line: 'theme',
   keys: ['themeDark1', 'themeDark2', 'themeDark3'],
 };
@@ -62,7 +70,7 @@ const REACTIONS: { [N in keyof SiteEventMap]?: (props: SiteEventMap[N]) => Parky
     favorite_add: () => FAVOURITE,
     ride_alert_set: () => ALERT,
     show_follow_add: () => ALERT,
-    // In the dark the Ferris wheel lights up; in the light Parky puts on sunglasses.
+    // In the dark Parky puts on its nightcap; in the light, sunglasses.
     theme_toggled: ({ theme }) => (theme === 'dark' ? DARK : theme === 'light' ? LIGHT : null),
     pwa_installed: () => INSTALL,
     // Its picture on the homepage scrolls past: the live Parky in the corner points it out.

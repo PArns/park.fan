@@ -22,7 +22,6 @@ export async function ParkyStop({ locale }: { locale: Locale }) {
   return (
     <ParkyHello>
       <ShotStop
-        divider
         reverse
         src={versionedPath(`/media/parky/${locale}/chat.webp`)}
         alt={tParky('chapters.ask.alt')}

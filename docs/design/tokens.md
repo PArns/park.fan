@@ -93,7 +93,8 @@ Glass in components is the constants in `components/common/glass-card.tsx`, not 
 `GlassCard` with `variant` `light` / `medium` (default) / `strong` / `heavy` / `tile`, and the
 strings `TILE_GLASS` (the header cards and frosted chapter bands), `HEAVY_GLASS`,
 `PHOTO_GLASS_FILL`, `HAIRLINE_FILL`, `PANEL_FLAT`. The header's menu band is `.pk-menu-glass`
-(40 px blur with saturate and brightness, so text behind it breaks up rather than ghosting).
+(40 px blur with saturate and brightness, so text behind it breaks up rather than ghosting), and
+so is the language banner that hangs under the header (`components/layout/language-banner.tsx`).
 `app/globals.css` still defines `.glass`, `.glass-light`, `.glass-strong`, `.glass-heavy`,
 `.glass-card`, `.glass-card-light`, `.glass-card-strong` and `.glass-header`; only `.glass-light`
 is used (`planner-day-grid.tsx`).

@@ -8,8 +8,6 @@ import { LANGUAGE_BANNER_MESSAGES } from '@/lib/i18n/language-banner-messages';
 import { rememberLocale } from '@/lib/i18n/remember-locale';
 import { useBrowserLocale } from '@/lib/hooks/use-browser-locale';
 import { FlagDE, FlagUS, FlagNL, FlagFR, FlagES, FlagIT } from '@/components/common/icons/flags';
-import { HEAVY_GLASS } from '@/components/common/glass-card';
-import { cn } from '@/lib/utils';
 
 interface LanguageBannerProps {
   currentLocale: Locale;
@@ -124,15 +122,12 @@ export function LanguageBanner({ currentLocale }: LanguageBannerProps) {
     >
       {/* Below `sm` one quiet row: the flags, the switch as a link in the brand colour and the ×,
           without the sentence the switch repeats. From `sm` the sentence and a filled button. It
-          floats over the page, so it takes the hero's glass and a border in the brand colour,
-          which also sets it apart from a cookie notice. */}
+          hangs under the header over whatever the page shows there, the hero's headline
+          included, so it takes the menu band's glass (`pk-menu-glass`), whose blur breaks up
+          lettering behind it, and a border in the brand colour, which also sets it apart from a
+          cookie notice. */}
       <div className="mx-auto max-w-7xl px-4 py-2 sm:px-6 sm:py-3 lg:px-8">
-        <div
-          className={cn(
-            HEAVY_GLASS,
-            'border-primary/50 relative overflow-hidden rounded-lg border py-0.5 pr-0.5 pl-3 shadow-md sm:p-4 sm:shadow-lg'
-          )}
-        >
+        <div className="pk-menu-glass border-primary/50 relative overflow-hidden rounded-lg border py-0.5 pr-0.5 pl-3 shadow-md sm:p-4 sm:shadow-lg">
           <div className="from-primary/5 to-primary/5 absolute inset-0 bg-gradient-to-r via-transparent" />
 
           <div className="relative flex items-center gap-2 sm:gap-4">

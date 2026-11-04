@@ -172,6 +172,20 @@
       "title": "Your parks and rides",
       "lead": "Everything you marked with the star, with its status and current wait."
     },
+    "favoritesIntro": {
+      "star": {
+        "kicker": "Favorites",
+        "title": "How to save parks and rides",
+        "lead": "Every park and ride page has a star, and so does every card. Tap it and the park or ride is in your favorites; tap it again and it is gone. You need no account, the list stays in your browser.",
+        "alt": "Tokyo Disneyland on a phone: the pressed star at the top right, the headliners and their waits below."
+      },
+      "menu": {
+        "kicker": "In the menu",
+        "title": "Your favorites on every page",
+        "lead": "On a phone they sit in the menu at the top right, on a computer behind the star in the bar, each with its status and current wait. On the homepage they then show up right under the news.",
+        "alt": "The open menu on a phone: Phantasialand and Europa-Park under “Favorites”, four rides and their waits below."
+      }
+    },
     "popular": {
       "kicker": "Popular parks",
       "title": "Wait times and crowds at the most popular parks",
@@ -187,7 +201,7 @@
     "parky": {
       "kicker": "Parky",
       "title": "Can’t find what you’re looking for? Ask Parky",
-      "lead": "Parky is a theme park nerd. He knows how long the line for Taron is right now, which Saturday in June Europa-Park is emptiest and what airtime actually is. He takes the numbers from the same live data as this page.",
+      "lead": "Parky is a theme park nerd. He knows how long the line for Taron is right now, which Saturday in June Europa-Park is emptiest and what airtime actually is.",
       "link": "Ask Parky"
     },
     "reading": {
@@ -1658,6 +1672,7 @@
     "avgWait": "{minutes} min avg",
     "avgWaitShort": "Ø {minutes} min",
     "heroHint": "Start typing to search parks, attractions, shows and restaurants",
+    "newestNews": "Latest news",
     "newestGuide": "Latest guide"
   },
   "searchPage": {
@@ -3007,9 +3022,9 @@
     "alert1": "Good idea! You’ll hear as soon as it’s time.",
     "alert2": "Got it. No need to keep checking now.",
     "alert3": "Ding, ding! That’s roughly how it will sound.",
-    "themeDark1": "Lights out! Now my Ferris wheel glows.",
+    "themeDark1": "Lights out! Where’s my nightcap?",
     "themeDark2": "Night mode! The park is at its loveliest in the evening.",
-    "themeDark3": "Nice and dark in here. And my hat lights up!",
+    "themeDark3": "Nice and dark in here. Nightcap time.",
     "themeLight1": "Whoa, that’s bright! Good thing I brought sunglasses.",
     "themeLight2": "Lights on, sunglasses on!",
     "themeLight3": "Daylight! Perfect park weather.",

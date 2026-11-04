@@ -89,7 +89,6 @@ behind; fine for 7- and 30-day windows.
 | Header, „Guides" panel  | `MostReadMenuColumn kind="article"`, third column | when the band opens |
 | Header, News panel      | `MostReadMenuColumn kind="news"`, third column    | when the band opens |
 | Homepage, blog chapter  | `MostReadStream kinds={['article', 'news']}`      | snapshot, then load |
-| Homepage hero, search   | `HeroReadingGroup`: the top news the chip lacks   | snapshot, then load |
 | Foot of every article   | `MostReadStream kinds={['article']}`, without it  | snapshot, then load |
 | Foot of every news post | `MostReadStream kinds={['news']}`, without it     | snapshot, then load |
 
@@ -165,9 +164,7 @@ the site they are the main internal links into park pages: a most-read park is o
 homepage instead of four (home → continent → country → city → park).
 
 On the homepage a phone (a page under 768 px) does not draw the chapter: the nearby chapter just
-above lists parks already, and the empty favorites band between them goes too for a visitor without
-favorites (`html[data-has-favorites]`, set before paint by an inline script in the layout). Both are
-hidden by CSS, so the links stay in the HTML.
+above lists parks already. It is hidden by CSS, so the links stay in the HTML.
 
 - **Server-rendered structure:** the slot reads `getGeoStructure()` at its default window
   (`CACHE_TTL.geo`) and bakes only day-stable fields (name, link, city, photo, translated country).

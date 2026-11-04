@@ -172,6 +172,20 @@
       "title": "Tus parques y atracciones",
       "lead": "Todo lo que marcaste con la estrella, con su estado y su espera actual."
     },
+    "favoritesIntro": {
+      "star": {
+        "kicker": "Favoritos",
+        "title": "Cómo guardar parques y atracciones",
+        "lead": "Cada página de parque y de atracción tiene una estrella, y cada tarjeta también. Tócala y el parque o la atracción pasa a tus favoritos; otro toque lo quita. No necesitas cuenta, la lista se queda en tu navegador.",
+        "alt": "Tokyo Disneyland en un móvil: arriba a la derecha la estrella pulsada, debajo las atracciones estrella con su espera."
+      },
+      "menu": {
+        "kicker": "En el menú",
+        "title": "Tus favoritos en cada página",
+        "lead": "En el móvil están en el menú de arriba a la derecha, en el ordenador tras la estrella de la barra, cada uno con su estado y la espera actual. En la portada aparecen entonces justo debajo de las noticias.",
+        "alt": "El menú abierto en un móvil: bajo «Favoritos», Phantasialand y Europa-Park, y debajo cuatro atracciones con su espera."
+      }
+    },
     "popular": {
       "kicker": "Parques populares",
       "title": "Tiempos de espera y afluencia en los parques más populares",
@@ -187,7 +201,7 @@
     "parky": {
       "kicker": "Parky",
       "title": "¿No encuentras lo que buscas? Pregúntale a Parky",
-      "lead": "Parky es un friki de los parques temáticos. Sabe cuánto esperas ahora mismo en Taron, qué sábado de junio está más vacío Europa-Park y qué es eso del airtime. Saca las cifras de los mismos datos en directo que esta página.",
+      "lead": "Parky es un friki de los parques temáticos. Sabe cuánto esperas ahora mismo en Taron, qué sábado de junio está más vacío Europa-Park y qué es eso del airtime.",
       "link": "Preguntar a Parky"
     },
     "reading": {
@@ -1658,6 +1672,7 @@
     "avgWait": "{minutes} min de media",
     "avgWaitShort": "Ø {minutes} min",
     "heroHint": "Empieza a escribir: parques, atracciones, espectáculos y restaurantes",
+    "newestNews": "Noticia más reciente",
     "newestGuide": "Guía más reciente"
   },
   "searchPage": {
@@ -3007,9 +3022,9 @@
     "alert1": "¡Buena idea! Te llegará un aviso en cuanto sea el momento.",
     "alert2": "Anotado. Ya no tienes que estar mirando todo el rato.",
     "alert3": "¡Din, don! Más o menos así sonará.",
-    "themeDark1": "¡Luces fuera! Ahora mi noria brilla.",
+    "themeDark1": "¡Luces fuera! ¿Dónde está mi gorro de dormir?",
     "themeDark2": "¡Modo noche! El parque es más bonito al anochecer.",
-    "themeDark3": "Qué oscurito. ¡Y mi sombrero se ilumina!",
+    "themeDark3": "Qué oscurito. Hora del gorro de dormir.",
     "themeLight1": "¡Uy, cuánta luz! Menos mal que traje gafas de sol.",
     "themeLight2": "¡Luz encendida, gafas de sol puestas!",
     "themeLight3": "¡Luz del día! Tiempo perfecto para el parque.",

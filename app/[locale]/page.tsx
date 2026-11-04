@@ -14,8 +14,6 @@ import { heroBlurDataUrl } from '@/lib/media/hero-lqip';
 import { getMediaAltBySrc } from '@/lib/media/text';
 import { HOME_HERO_ID } from '@/lib/home/hero-search';
 import { getHeroReading } from '@/lib/home/hero-reading';
-import { getNewsMenu } from '@/lib/navigation/news-menu';
-import { latestNewsFrom } from '@/components/blog/latest-news-chip';
 
 import { Flame, Star } from 'lucide-react';
 import { HeroBackground } from '@/components/layout/hero-background';
@@ -40,6 +38,7 @@ import { FeaturedParksSkeleton } from '@/components/home/home-skeletons';
 import { getFeaturedParksLabels } from '@/components/home/section-headings';
 import { FaqSection } from '@/components/home/faq-section';
 import { ParkyStop } from '@/components/home/parky-stop';
+import { FavoritesIntro } from '@/components/home/favorites-intro';
 import { HomeStop, StopLink } from '@/components/home/home-stop';
 import { ChapterHeading } from '@/components/common/chapter-heading';
 import { NearbyParksCardSkeleton } from '@/components/parks/nearby-parks-card-skeleton';
@@ -129,8 +128,9 @@ export async function generateMetadata({ params }: HomePageProps): Promise<Metad
 /**
  * The homepage, written for somebody who has never been here: what this is and whether their park
  * is in it (the hero), then one stop after another, each a heading worded as people search beside
- * its content (`HomeStop`): what is new (the news board), what park.fan does (the tour), their own
- * parks, the popular parks, five questions and, for whoever has not found it yet, Parky.
+ * its content (`HomeStop`): what is new (the news board), their favourites where they have some,
+ * what park.fan does (the tour), for whoever has not found it yet Parky, the parks near them, how
+ * favourites work where they have none, the popular parks and five questions.
  * Everything that explains a tool at length lives on that tool's own page.
  */
 export default async function HomePage({ params }: HomePageProps) {
@@ -149,10 +149,6 @@ export default async function HomePage({ params }: HomePageProps) {
   const heroImage = pickHeroImage(HERO_TTL_MS);
   const randomHeroImage = heroImage?.src;
   const heroMeta = heroImage?.meta ?? null;
-  // The newest news post for the chip in the hero's badge row, out of the same news menu the
-  // header draws its chip from. The manifest, read synchronously, so the chip is in the static
-  // shell and in the fallback alike.
-  const latestNews = latestNewsFrom(getNewsMenu(locale as Locale));
 
   return (
     <RouteMessages route="/">
@@ -198,17 +194,13 @@ export default async function HomePage({ params }: HomePageProps) {
                 leave the map its full column and the text a sliver. */}
               <div className="grid grid-cols-1 items-start gap-10 @min-[1280px]/page:grid-cols-[minmax(0,1fr)_minmax(0,34rem)] @min-[1536px]/page:grid-cols-[minmax(0,1fr)_minmax(0,40rem)] @min-[1536px]/page:gap-14">
                 <HeroTextPanel className="hero-in-stagger">
-                  <Suspense
-                    fallback={
-                      <HeroWithNearby initialCounts={null} latestNews={latestNews} isFallback />
-                    }
-                  >
-                    <HeroStats latestNews={latestNews} />
+                  <Suspense fallback={<HeroWithNearby initialCounts={null} isFallback />}>
+                    <HeroStats />
                   </Suspense>
                   <HeroInlineSearch
                     placeholder={tHome('hero.searchExamples')}
                     label={tHome('hero.searchPlaceholder')}
-                    reading={getHeroReading(locale as Locale, latestNews)}
+                    reading={getHeroReading(locale as Locale)}
                     className="mt-5"
                   />
                 </HeroTextPanel>
@@ -247,38 +239,43 @@ export default async function HomePage({ params }: HomePageProps) {
           news is what changes from one visit to the next. */}
         <HomeReading locale={locale as Locale} />
 
+        {/* The visitor's favourites, right under the news, for a visitor who has some only: for
+          them it is what they came back for, and for anybody else an empty state about a feature
+          they have not used. The inline favourites script in app/[locale]/layout.tsx sets
+          `data-has-favorites` before paint, and `.home-favorites` in globals.css reads it, so the
+          choice moves nothing after load. A Client Component that decides late (a cookie), hence
+          the dynamic import and the box-reserving fallback. */}
+        <HomeStop
+          stacked
+          flushTop
+          className="home-favorites"
+          heading={
+            <ChapterHeading
+              variant="stop"
+              icon={Star}
+              kicker={tStory('favorites.kicker')}
+              title={tStory('favorites.title')}
+              hint={tStory('favorites.lead')}
+            />
+          }
+        >
+          <FavoritesSection heading="none" className={BORROWED_BAND} />
+        </HomeStop>
+
         <HomeTour locale={locale as Locale} />
 
         {/* The tour's last stop: what park.fan does not show on a page, Parky answers. */}
         <ParkyStop locale={locale as Locale} />
 
-        {/* The visitor's own parks: the nearest ones with the rides where a wait is short right
-          now, and their favourites, for a visitor who has some only, and then first: the inline
-          favourites script in app/[locale]/layout.tsx sets `data-has-favorites` before paint, and
-          `.home-favorites` in globals.css reads it, so neither choice moves anything after load.
-          Client Components that decide late (geolocation, a cookie), hence the dynamic imports and
-          the box-reserving fallbacks. */}
-        <div className="flex flex-col">
-          <NearbyChapter>
-            <NearbyParksCard nested showShortWaits className={FLUSH_TOP} />
-          </NearbyChapter>
-          <HomeStop
-            stacked
-            divider
-            className="home-favorites"
-            heading={
-              <ChapterHeading
-                variant="stop"
-                icon={Star}
-                kicker={tStory('favorites.kicker')}
-                title={tStory('favorites.title')}
-                hint={tStory('favorites.lead')}
-              />
-            }
-          >
-            <FavoritesSection heading="none" className={BORROWED_BAND} />
-          </HomeStop>
-        </div>
+        {/* The parks near the visitor, with the rides where a wait is short right now. A Client
+          Component that decides late (geolocation), hence the dynamic import and the box-reserving
+          fallback. */}
+        <NearbyChapter>
+          <NearbyParksCard nested showShortWaits className={FLUSH_TOP} />
+        </NearbyChapter>
+
+        {/* For a visitor without favourites: how to star a park and where the favourites show. */}
+        <FavoritesIntro locale={locale as Locale} />
 
         {/* Popular parks per locale: the cards (SSR seed + client live data) beside the heading,
           and under the heading a link to each one's waits and calendar, which needs no API. */}

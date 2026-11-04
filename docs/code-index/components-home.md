@@ -13,6 +13,10 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `FaqSection` _component_: The homepage FAQ, visible, and the page's only `FAQPage` markup: `FaqList` emits it from the same array it renders, so the markup cannot drift from the page.
 
+### [`favorites-intro.tsx`](../../components/home/favorites-intro.tsx)
+
+- `FavoritesIntro` _component_: The favourites, explained to a visitor who has none yet, in two phone stops after the parks near them: how a park or a ride becomes one (a park page with its star just pressed) and where they show from then on (the menu, open).
+
 ### [`featured-park-cards-live.tsx`](../../components/home/featured-park-cards-live.tsx)
 
 - `FeaturedParkCardsLive` _component_: Featured-parks card grid with a live overlay: the shell bakes only day-stable structure (name, link, city, photo), so the pages embedding it keep long ISR windows, and status, crowd, wait and schedule land on the client on a 5-minute poll.

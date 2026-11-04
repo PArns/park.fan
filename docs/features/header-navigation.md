@@ -220,8 +220,8 @@ duplicates the desktop nav; put nothing unique there. From the top:
 - the three preferences (the bar does not carry them on a phone, see
   [header bar → on a phone the preferences live in the menu](../design/header.md#on-a-phone-the-preferences-live-in-the-menu));
 - the nearby park (`HeaderNearbyPark variant="sheet"`);
-- the newest news post as a `LatestNewsChip` card — label and date, the headline on two lines and
-  two to three lines of teaser (the hero's one-line chip left three words of the headline in a 300 px
+- the newest news post as a `LatestNewsCard` — label and date, the headline on two lines and
+  two to three lines of teaser (a one-line chip left three words of the headline in a 300 px
   column);
 - the favorites panel (`variant="sheet"`), before the destinations: a returning visitor's own parks
   are the shortest route out;

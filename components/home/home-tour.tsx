@@ -39,7 +39,9 @@ export async function HomeTour({ locale }: { locale: Locale }) {
       {stops.map(({ key, icon, href }, index) => (
         <ShotStop
           key={key}
-          divider={index === 0}
+          // The tour runs on from the stop above it (the news, or the favourites under them), with
+          // no hairline: that stop keeps its room below, and that room is the gap.
+          flushTop={index === 0}
           reverse={index % 2 === 1}
           src={versionedPath(`/media/home/${locale}/${shots[key]}.webp`)}
           alt={t(`${key}.alt`)}

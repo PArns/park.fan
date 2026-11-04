@@ -53,6 +53,7 @@ const ACT_MS = {
   bell: 2200,
   shades: 3000,
   lights: 3400,
+  nightcap: 3800,
 } as const satisfies Record<string, number> &
   Record<ParkyRide, number> &
   Record<ParkyReactionAct, number>;
@@ -94,7 +95,10 @@ function actFor(act: ParkyAct | 'ride', svg: SVGSVGElement | null): ParkyAct | n
   return room.length > 0 ? pickRandom(room) : null;
 }
 
-/** With company Parky fidgets and shows off; once nobody moves it yawns, reads and naps. */
+/**
+ * With company Parky fidgets and shows off, the theme's two answers and the night sky included;
+ * once nobody moves it yawns, reads, naps and pulls on its nightcap.
+ */
 const ACTS: Record<'awake' | 'bored', readonly (ParkyAct | 'ride')[]> = {
   // Now and then a ride, any of the four, as one act among the rest.
   awake: [
@@ -108,9 +112,12 @@ const ACTS: Record<'awake' | 'bored', readonly (ParkyAct | 'ride')[]> = {
     'twirl',
     'dance',
     'read',
+    'shades',
+    'lights',
+    'nightcap',
     'ride',
   ],
-  bored: ['yawn', 'whistle', 'gum', 'roll', 'look', 'read', 'nap'],
+  bored: ['yawn', 'whistle', 'gum', 'roll', 'look', 'read', 'nap', 'nightcap'],
 };
 /** The rest between two acts, as the shortest wait and a random spread on top. */
 const PAUSE_MS: Record<'awake' | 'bored', readonly [number, number]> = {
@@ -146,6 +153,8 @@ const ink = 'oklch(0.25 0.03 240)';
 const blue = 'oklch(0.628 0.137 241.275)';
 const green = 'oklch(0.752 0.181 146.391)';
 const pink = 'oklch(0.8 0.13 355)';
+/** The nightcap's cloth, a night sky's blue that stays apart from the bubble's own. */
+const capBlue = 'oklch(0.42 0.13 268)';
 
 /**
  * The hat, a Ferris wheel set into Parky's head: the lowest cabin goes behind it, and the A-frame's
@@ -774,7 +783,7 @@ export function ParkyLogo({
         )}
       >
         {/* The hat: a Ferris wheel standing on Parky's head. */}
-        <g ref={hat}>
+        <g ref={hat} className="parky-hat">
           <g
             className={cn(
               'parky-wheel',
@@ -924,6 +933,35 @@ export function ParkyLogo({
             />
           </g>
         )}
+        {act === 'nightcap' && (
+          // A nightcap in place of the wheel: a white brim round the top of the head, the cap
+          // flopping over to the left, a bobble at its tip and two stars on the cloth.
+          <g className="parky-nightcap">
+            <path
+              d="M38.6 13.6C38.4 3.4 31.6-5.6 22.2-5.4 13.6-5.2 6.4-.8 2.4 4.6c4.4-1.6 8.6.2 10 4.4L9.4 13.6Z"
+              fill={capBlue}
+            />
+            <path
+              d="M22.2-5.4C13.6-5.2 6.4-.8 2.4 4.6c4.4-1.6 8.6.2 10 4.4"
+              fill="none"
+              stroke="white"
+              strokeOpacity=".25"
+              strokeWidth="1.2"
+            />
+            <g fill="oklch(0.9 0.12 95)">
+              <path d={STAR} transform="translate(6 -1.5) scale(.7)" />
+              <path d={STAR} transform="translate(13 4.5) scale(.55)" />
+            </g>
+            <path
+              d="M9.2 13.8Q24 2.4 38.8 13.8"
+              fill="none"
+              stroke="white"
+              strokeWidth="3.6"
+              strokeLinecap="round"
+            />
+            <circle className="parky-bobble" cx="2.4" cy="5.4" r="2.6" fill="white" />
+          </g>
+        )}
         <ellipse cx="10.8" cy="31" rx="2.4" ry="1.4" fill="oklch(0.78 0.12 15)" opacity=".7" />
         <ellipse cx="37.2" cy="31" rx="2.4" ry="1.4" fill="oklch(0.78 0.12 15)" opacity=".7" />
         {state === 'squashed' ? (
@@ -965,7 +1003,7 @@ export function ParkyLogo({
             strokeLinecap="round"
           />
         )}
-        {act === 'yawn' && (
+        {(act === 'yawn' || act === 'nightcap') && (
           <g className="parky-yawn">
             <ellipse cx="24" cy="34" rx="3" ry="3.4" fill={ink} />
             <ellipse cx="24" cy="36.2" rx="1.8" ry="1" fill="oklch(0.7 0.15 15)" />

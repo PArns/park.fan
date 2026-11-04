@@ -1,9 +1,8 @@
 'use client';
 
-import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import { CommandGroup, CommandItem } from '@/components/ui/command';
-import { BlogCoverFallback } from '@/components/blog/blog-cover-fallback';
+import { HeroPostCover } from '@/components/search/hero-post-cover';
 import {
   HERO_READING_GROUP_CLASS,
   HERO_READING_ROW_CLASS,
@@ -34,20 +33,7 @@ function ReadingRow({
       onSelect={onSelect}
       className={`flex cursor-pointer items-start ${HERO_READING_ROW_CLASS}`}
     >
-      <span className="bg-muted relative block h-10 w-16 shrink-0 overflow-hidden rounded-md">
-        {post.image ? (
-          <Image
-            src={post.image}
-            alt=""
-            width={64}
-            height={40}
-            style={post.imagePosition ? { objectPosition: post.imagePosition } : undefined}
-            className="h-full w-full object-cover"
-          />
-        ) : (
-          <BlogCoverFallback slug={post.slug} />
-        )}
-      </span>
+      <HeroPostCover post={post} width={64} height={40} className="h-10 w-16 rounded-md" />
       <span className="min-w-0 flex-1">
         <span className="text-primary-ink block truncate text-[10px] leading-4 font-semibold tracking-wide uppercase">
           {kicker}

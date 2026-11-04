@@ -364,16 +364,19 @@
  * (`pnpm check:hero-search-rest`).
  */
 :root {
-  --hero-search-rest-h: 375px;
+  --hero-search-rest-h: 327px;
 
   /*
    * Resting height of the whole left plate from `md` up, a streaming fix: the plate's later
    * children arrive in a later HTML chunk, and a half-parsed plate painted short and then grew.
-   * 811px is the settled height in all six locales from 768 px up (fr from 1440 px is 860), not a
-   * padded one, so it changes no finished layout. It includes --hero-search-rest-h: re-measure
-   * both together. See docs/rules/a-streamed-section-owes-the-page-its-height.md.
+   * 808px is the settled height in all six locales from 768 px up; the wide value holds where the
+   * page shows the map panel (`@container/page` from 1280 px), whose header carries the open-parks
+   * badge the plate shows below that (fr from 1440 px is 810). Not padded, so neither changes a
+   * finished layout. Both include --hero-search-rest-h: re-measure them together. See
+   * docs/rules/a-streamed-section-owes-the-page-its-height.md.
    */
-  --hero-plate-min-h: 811px;
+  --hero-plate-min-h: 808px;
+  --hero-plate-min-h-wide: 762px;
 }
 
 @media (width >= 48rem) {
@@ -390,7 +393,9 @@
  * rolls its eyes and naps; asleep it breathes slowly under rising Zs, and the hat stands still.
  * While a search is open it holds a magnifying glass to its eye and looks around the page. It answers
  * what the visitor does: a checklist for the trip planner, confetti for a finished plan, heart eyes
- * for a favourite, a bell for an alert, sunglasses and a lit wheel when the theme turns.
+ * for a favourite, a bell for an alert, sunglasses when the theme turns light and a nightcap when it
+ * turns dark; the sunglasses, the lit wheel under moon and stars and the nightcap also come on
+ * their own.
  */
 /* Two blinks in 24 s, about 9 and 14 s apart: 5 to 10 in a minute and a half, never in a
    steady beat. Each shuts and opens over some 170 ms. */
@@ -1334,6 +1339,28 @@
     transform: translateY(-14px);
   }
 }
+/* The wheel steps aside for the nightcap and comes back once it is off. */
+@keyframes parky-hat-off {
+  0%,
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  15%,
+  85% {
+    opacity: 0;
+    transform: translateY(-3px);
+  }
+}
+@keyframes parky-bobble {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(-0.6px, 0.8px);
+  }
+}
 @keyframes parky-glow {
   0%,
   100% {
@@ -1408,6 +1435,19 @@
 .parky-confetti > * {
   transform-box: fill-box;
   transform-origin: center;
+}
+/* The nightcap settles on its brim. Without motion it simply sits there for the act, and the wheel
+   it stands in for is gone meanwhile. */
+.parky-nightcap {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+}
+.parky-bobble {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.parky-act-nightcap .parky-hat {
+  opacity: 0;
 }
 /* The bell swings from its top; a tick is drawn from its start, so it is hidden until then. */
 .parky-bell-swing {
@@ -1505,6 +1545,7 @@
     animation: parky-yawn var(--parky-act) ease-in-out both;
   }
   .parky-act-yawn .parky-smile,
+  .parky-act-nightcap .parky-smile,
   .parky-act-whistle .parky-smile,
   .parky-act-gum .parky-smile,
   .parky-act-coaster .parky-smile,
@@ -1749,6 +1790,23 @@
   }
   .parky-shades {
     animation: parky-shades var(--parky-act) ease-in-out both;
+  }
+  /* The nightcap: on in place of the wheel the way the sunglasses come down, eyes heavy and a yawn
+     under it, the bobble swaying. */
+  .parky-act-nightcap {
+    animation: parky-stretch var(--parky-act) ease-in-out;
+  }
+  .parky-act-nightcap .parky-eyes {
+    animation: parky-squint var(--parky-act) ease-in-out;
+  }
+  .parky-act-nightcap .parky-hat {
+    animation: parky-hat-off var(--parky-act) ease-in-out both;
+  }
+  .parky-nightcap {
+    animation: parky-shades var(--parky-act) ease-in-out both;
+  }
+  .parky-bobble {
+    animation: parky-bobble 1.2s ease-in-out infinite;
   }
   .parky-night {
     animation: parky-track var(--parky-act) ease-out both;
@@ -3034,15 +3092,13 @@ html[data-temp-unit='F'] .u-imperial {
   display: inline;
 }
 
-/* The homepage's favorites band is an empty state for a visitor with none, which tells somebody on
-   their first visit about a feature before they have seen a park; for a visitor with favorites it
-   is what they came back for, so it moves above the nearby parks. The inline favorites script in
-   app/[locale]/layout.tsx sets `data-has-favorites` before paint, so neither moves anything. */
-html:not([data-has-favorites]) .home-favorites {
+/* The homepage shows a visitor's favorites under the news, and to a visitor with none two stops
+   further down that explain them (`FavoritesIntro`) instead of an empty band about a feature they
+   have not used. The inline favorites script in app/[locale]/layout.tsx sets `data-has-favorites`
+   before paint, so neither choice moves anything. */
+html:not([data-has-favorites]) .home-favorites,
+html[data-has-favorites] .home-favorites-intro {
   display: none;
-}
-html[data-has-favorites] .home-favorites {
-  order: -1;
 }
 
 /* The header's °C/°F button renders both labels with the same two classes, so it agrees with

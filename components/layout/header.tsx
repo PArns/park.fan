@@ -31,7 +31,7 @@ import { MoreMenuLinks } from '@/components/layout/more-menu-links';
 import { MoreMenuPanel } from '@/components/layout/more-menu-panel';
 import { BlogMenuPanel } from '@/components/layout/blog-menu-panel';
 import { NewsMenuPanel } from '@/components/layout/news-menu-panel';
-import { LatestNewsChip, latestNewsFrom } from '@/components/blog/latest-news-chip';
+import { LatestNewsCard, latestNewsFrom } from '@/components/blog/latest-news-card';
 import { FavoritesMenu } from '@/components/layout/favorites-menu';
 import { FavoritesMenuPanel } from '@/components/layout/favorites-menu-panel';
 import { useSheetReveal } from '@/lib/hooks/use-menu-reveal';
@@ -656,7 +656,7 @@ export function Header({
                       menu's own data. */}
                     {latestNews && (
                       <div data-sheet-stagger>
-                        <LatestNewsChip news={latestNews} variant="card" />
+                        <LatestNewsCard news={latestNews} />
                       </div>
                     )}
                     {/* Favourites before the destinations: on a phone this sheet is the navigation,

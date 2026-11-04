@@ -7,9 +7,9 @@ its placeholders or its motion. Entry point: `app/[locale]/page.tsx`. Everything
 
 ```
 ┌─────────────────────────────────────────────┐┌──────────────────────────┐
-│ [NEWS] 28. Okt. · Universal Studios Japan … ││ ● 53 PARKS WELTWEIT OFFEN│
+│ Wo lohnt sich heute das Anstehen?           ││ ● 53 PARKS WELTWEIT OFFEN│
 │                                             ││ Parks in Europa    5/50  │
-│ Wo lohnt sich heute das Anstehen?           ││ ┌──────────────────────┐ │
+│                                             ││ ┌──────────────────────┐ │
 │ park.fan zeigt die Wartezeiten von 210 …    ││ │  world map, one      │ │
 │                                             ││ │  bubble per continent│ │
 │ ┌─────────────────────────────────────────┐ ││ └──────────────────────┘ │
@@ -21,7 +21,7 @@ its placeholders or its motion. Entry point: `app/[locale]/page.tsx`. Everything
 │ │ 🖼 Attractiepark Toverland   GESCHLOSSEN│ │
 │ │ 🖼 Bobbejaanland             GESCHLOSSEN│ │
 │ ├────────────────────┬────────────────────┤ │
-│ │ MEISTGELESEN · NEWS│ NEUESTER GUIDE     │ │
+│ │ NEUESTE NEWS       │ NEUESTER GUIDE     │ │
 │ ├────────────────────┴────────────────────┤ │
 │ │ Tippe los, wir suchen Parks, …          │ │
 │ └─────────────────────────────────────────┘ │
@@ -140,12 +140,12 @@ clicked:
 
 |                        | Below `md` (`HERO_REST_ROWS_PHONE`)         | From `md` (`HERO_REST_ROWS_DESKTOP`)        |
 | ---------------------- | ------------------------------------------- | ------------------------------------------- |
-| Rows                   | 5 nearby parks, then the two posts          | 4 nearby parks, then the two posts          |
+| Rows                   | 4 nearby parks, then the two posts          | 4 nearby parks, then the two posts          |
 | A park row             | name, then `[Geöffnet] [Ø 15 Min.] 16.3 km` | name and status, then place, wait, distance |
 | Footer                 | none                                        | the hint („Tippe los, wir suchen …")        |
 | Heading row            | 44 px, the link's tap target                | 32 px                                       |
 | Row height             | 48 px (`HERO_PHONE_ROW_CLASS`), posts 44    | 60 px (`HERO_ROW_CLASS`), posts 100         |
-| Reserved under the box | 375 px, exact in CSS                        | 428 px, the panel measures and replaces it  |
+| Reserved under the box | 327 px, exact in CSS                        | 428 px, the panel measures and replaces it  |
 
 - **A phone gets the room the hero gave up**, and the plate still ends inside a 360 × 740 screen
   (with its bars a phone browser shows about 750 px). Below `md` the plate sits 12 px under the
@@ -156,18 +156,24 @@ clicked:
   (`home.hero.introShort`, „Live-Wartezeiten aus 210 Parks.", one line at 360 in all six); both
   sentences are in the HTML and CSS shows one. The open-parks badge is not shown on a phone. The field is 48 px tall there, 56 from `md`: its text stays at
   16 px, below which iOS Safari zooms into a focused field, so the padding and the icon shrink
-  instead. Measured: the plate runs from 60 to 685 px on 390 × 844 and on 360 × 740 in every language
-  but French at 360 (718). Two rows with the pills and the full intro
-  ended at 712 and 738.
+  instead. The headline opens the plate, 16 px under its edge like the text beside it: its top
+  margin is the gap under the open-parks badge, and goes wherever the badge does not show (below
+  `md` and from a 1280 px page). Measured with nearby parks whose rows all carry their status pill:
+  the plate runs from 60 to 591 px on 390 × 844 and on 360 × 740 in every language but French at 360
+  (624). The phone lists four parks like the desktop, so both show the same ones; with five and
+  the headline under the badge's gap it ended at 639 and 672, with the news chip over the headline
+  at 685 and 718, and two rows with the pills
+  and the full intro at 712 and 738.
 - **A phone row puts the name on a line of its own**: the status and the wait follow as 18 px pills
   (`ParkStatusBadge`, `WaitBadge`, `avgWaitShort`) with the distance; a ride shows its own wait, a
   popular park its place. With the badges beside the name, „Movie Park G…" and „Brühl, Deu…" were
   cut at 360 px; now no park name in the list is.
-- **The two posts on a phone** are rows of a kicker and a one-line title under an icon for the kind,
-  from the same `useHeroReadingRows` as the desktop's pair.
+- **The two posts on a phone** are rows of the post's cover, a kicker and a one-line title, from the
+  same `useHeroReadingRows` as the desktop's pair. The cover (`HeroPostCover`,
+  `components/search/hero-post-cover.tsx`, 36 px square on a phone, 64 × 40 from `md`) stands in
+  the park rows' thumbnail column, the brand fallback where a post has no photo.
 - **Four parks and two posts from `md`** because they take the room the two pill rows and their gap
-  left: the plate is 812 px at 1440 px (782 with the pills) and ends at 892 px in a 1440 × 900
-  window. The park rows are 60 px so the posts can carry two lines of their teaser.
+  left: the plate is 762 px at 1440 px and ends at 842 px in a 1440 × 900 window. The park rows are 60 px so the posts can carry two lines of their teaser.
 - **A shut park says when it opens**: before today's opening its status pill reads „Öffnet um
   09:00 Uhr" (`parks.opensAt`), later „Öffnet am 25. März" (`parks.opensOn`), in the park's zone and
   on the minute clock (`useHeroStatusLabels`). `nextParkOpening` in `lib/utils/schedule-utils.ts`
@@ -181,9 +187,7 @@ clicked:
   schedule. The palette keeps „Geschlossen": the label needs `parks`, which ships with the
   homepage, and the palette is on every page. `pnpm test:park-opening` pins the decision.
 - **The posts carry their teaser from `md` up**, two lines clamped under a two-line title in a fixed
-  100 px row, so swapping in the live ranking moves nothing. The server sends the teasers of the
-  guide, the seed's news list and the ten newest news posts (`HeroReading.excerpts`), which covers
-  what a week's ranking picks without a request. Not on a phone: one teaser line per post adds 32 px
+  100 px row. The server sends both teasers (`HeroReading.excerpts`). Not on a phone: one teaser line per post adds 32 px
   and puts the plate at 750 px in French at 360 × 740, the edge of what a phone shows.
 - **The rows have a fixed height**: a shut park's row is 44 px of content, an open one with its wait
   badge 50, and the settled list grew 5.7 px past the skeleton until the rows were fixed.
@@ -221,7 +225,8 @@ clicked:
 - **In a park** the rows are the park's rides only (`heroBrowseRows`): the park block already leads
   to the park. The palette lists the park too.
 - **In a park or next to one, on a phone**, the park block (`HeroParkActions`, below) sits in the
-  list after two rows, in the room the other three rows and the posts had, and its park link reads
+  list after one row (`HERO_PARK_ROWS_PHONE`), in the room the other three rows and the posts had:
+  the block is 232 px, three rows and the posts' box are 233. Its park link reads
   the park's name. Nothing above the field changes: the headline and the one-line intro stay, so the
   field and the list never move when the nearby answer arrives. The block arrives with the answer
   that settles the list, so it replaces the skeleton rather than pushing anything. Measured on the
@@ -238,12 +243,12 @@ clicked:
 - **Fewer rows than reserved**: a nearby answer shorter than five parks is filled with popular parks
   it does not list (`useHeroBrowseParks`); anything shorter still keeps the box through the rows'
   `min-height`. Without a position the API answers by GeoIP; without that, popular parks.
-- **The two posts** (`useHeroReadingRows`, drawn by `HeroReadingGroup` from `md`): the news post this language read most in the last seven
-  days, skipping the one the badge row's chip already shows, and the newest guide. The server renders
-  the build's pick (`getHeroReading`, from `getMostReadSeed` and the manifest), the browser swaps in
-  the current ranking after load ([most read](most-read.md)). A news post nobody read yet carries the
-  section's label, not „Meistgelesen". They render with the park rows, not before, so cmdk highlights
-  the first park on mount and not the first post.
+- **The two posts** (`useHeroReadingRows`, drawn by `HeroReadingGroup` from `md`): the newest news
+  post („Neueste News") and the newest guide, both from the manifest (`getHeroReading`), so they are
+  in the static shell and nothing swaps them after load. The news post used to be a chip of its own
+  over the headline, a second bar beside the open-parks badge; in the list it costs no row, and the
+  phone's plate is 46 px shorter with the headline moved up into the room it left. They render with the park rows, not before, so cmdk highlights the
+  first park on mount and not the first post.
 
 ### Focus, results, Escape
 
@@ -319,8 +324,8 @@ Nähe" line. Both render `HeroParkActions` (`components/home/hero-park-actions.t
 ### Under the hero: the headliners on a compass
 
 For `in_park` (and `?sim=compass`), `ParkCompassSlot` puts the park's headliners on a compass right
-under the hero, and the badge row carries „Zum Kompass" in the news chip's slot; all of it is in
-[the in-park compass](park-compass.md).
+under the hero, and the search list's heading row carries „Zum Kompass" where its link to more
+stands; all of it is in [the in-park compass](park-compass.md).
 
 ## Nothing appears out of nowhere
 
@@ -336,11 +341,13 @@ runs each at 4× CPU / 1.6 Mbps against `pnpm build && pnpm start`.
 | Search unit     | `HeroSearchShell`: a real input and the list's skeleton for both viewports   |
 | Hero photo      | a 16 px inline preview of the same photo                                     |
 
-- **The plate reserves its own height** (`md:min-h-[var(--hero-plate-min-h)]`, 811 px in
+- **The plate reserves its own height** (`md:min-h-[var(--hero-plate-min-h)]`, 808 px in
   `app/globals.css`): its later children arrive in a later chunk of the HTML, and on a slow link the
   half-parsed plate painted 328 px tall and grew 456 px (0.10 CLS in two of five runs) — nothing
-  after hydration can prevent that. 811 px is the settled height in all six locales from 768 px up
-  (fr from 1440 px is 860); a min-height at or below the real height changes no finished layout.
+  after hydration can prevent that. 808 px is the settled height in all six locales from 768 px up,
+  762 px (`--hero-plate-min-h-wide`) where the map panel's header carries the open-parks badge from
+  a 1280 px page (fr from 1440 px is 810), with or without status pills in the rows; a min-height at
+  or below the real height changes no finished layout.
 - **The three states of the resting search list must be one height.** Shell skeleton, the pending
   list and the settled list had once drifted to 252 / 288 / 270 px, and what sat under the list
   hopped 19 px twice, seconds after load, with a green build. Every skeleton is
@@ -348,8 +355,8 @@ runs each at 4× CPU / 1.6 Mbps against `pnpm build && pnpm start`.
   `next/image` or cmdk, so the shell pulls in neither) with the rows' fixed heights; the footer hint
   is a static string; the panel does not measure a resting height while its list is pending.
   `pnpm check:hero-search-rest` records the frame's height in every state it passes (`data-state`)
-  on a desktop and a phone in six locales: 485 / 485 / 485 px with 428 px reserved, and
-  424 / 424 / 424 px with 375 px reserved.
+  on a desktop and a phone in six locales: 481 / 481 / 481 px with 424 px needed, and
+  376 / 376 / 376 px with 327 px reserved.
 - **The photo resolves out of itself**: a shared brand gradient under every photo changed 59 % of the
   hero box when the rendition landed, against 31 % for the photo's own preview (72 % vs 41 % on a
   second photo). The previews (~110 bytes each) are generated by `generate:media` into

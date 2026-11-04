@@ -172,6 +172,20 @@
       "title": "I tuoi parchi e attrazioni",
       "lead": "Tutto ciò che hai segnato con la stella, con stato e attesa attuale."
     },
+    "favoritesIntro": {
+      "star": {
+        "kicker": "Preferiti",
+        "title": "Come salvare parchi e attrazioni",
+        "lead": "Ogni pagina di parco e di attrazione ha una stella, e anche ogni scheda. Toccala e il parco o l’attrazione entra nei tuoi preferiti; un secondo tocco lo toglie. Non serve un account, l’elenco resta nel tuo browser.",
+        "alt": "Tokyo Disneyland su uno smartphone: in alto a destra la stella attivata, sotto le attrazioni di punta con la loro attesa."
+      },
+      "menu": {
+        "kicker": "Nel menu",
+        "title": "I tuoi preferiti su ogni pagina",
+        "lead": "Sullo smartphone sono nel menu in alto a destra, sul computer dietro la stella nella barra, ciascuno con stato e attesa attuale. In home page compaiono poi subito sotto le notizie.",
+        "alt": "Il menu aperto su uno smartphone: sotto «Preferiti» Phantasialand ed Europa-Park, poi quattro attrazioni con la loro attesa."
+      }
+    },
     "popular": {
       "kicker": "Parchi popolari",
       "title": "Tempi di attesa e affluenza nei parchi più popolari",
@@ -187,7 +201,7 @@
     "parky": {
       "kicker": "Parky",
       "title": "Non trovi quello che cerchi? Chiedi a Parky",
-      "lead": "Parky è un nerd dei parchi divertimento. Sa quanto stai aspettando adesso a Taron, quale sabato di giugno Europa-Park è più vuoto e cosa sia davvero l’airtime. Prende i numeri dagli stessi dati in diretta di questa pagina.",
+      "lead": "Parky è un nerd dei parchi divertimento. Sa quanto stai aspettando adesso a Taron, quale sabato di giugno Europa-Park è più vuoto e cosa sia davvero l’airtime.",
       "link": "Chiedi a Parky"
     },
     "reading": {
@@ -1658,6 +1672,7 @@
     "avgWait": "{minutes} min in media",
     "avgWaitShort": "Ø {minutes} min",
     "heroHint": "Inizia a digitare: parchi, attrazioni, spettacoli e ristoranti",
+    "newestNews": "Notizia più recente",
     "newestGuide": "Guida più recente"
   },
   "searchPage": {
@@ -3007,9 +3022,9 @@
     "alert1": "Buona idea! Riceverai un avviso appena è il momento.",
     "alert2": "Fatto. Ora non devi più controllare di continuo.",
     "alert3": "Din, don! Più o meno suonerà così.",
-    "themeDark1": "Luci spente! Adesso la mia ruota panoramica brilla.",
+    "themeDark1": "Luci spente! Dov’è il mio berretto da notte?",
     "themeDark2": "Modalità notte! La sera il parco è ancora più bello.",
-    "themeDark3": "Che bel buio. E il mio cappello si illumina!",
+    "themeDark3": "Che bel buio. È l’ora del berretto da notte.",
     "themeLight1": "Oh, che luce! Per fortuna ho gli occhiali da sole.",
     "themeLight2": "Luce accesa, occhiali da sole pronti!",
     "themeLight3": "Luce del giorno! Tempo perfetto per il parco.",
