@@ -3,19 +3,21 @@
 import { useLayoutEffect } from 'react';
 
 /**
- * Sizes the phone sheet by what the browser shows, not by what a viewport unit says it would. The
+ * Sizes a phone sheet by what the browser shows, not by what a viewport unit says it would. A
  * sheet is fixed to the layout viewport, so whenever less is on screen (a zoom, the keyboard, an
- * in-app browser) iOS takes the difference off its top, where the grabber and the × are.
+ * in-app browser) iOS takes the difference off its top, where the grabber and the × are, and lets
+ * the visitor pan to it.
  *
- * So two numbers from `window.visualViewport` go on `<html>` while `enabled` holds:
- * `--planner-viewport`, the height on screen, which every detent in `app/globals.css` is written
- * in, and `--planner-viewport-lift`, how far the bottom of the view sits above the layout
- * viewport's. Without `visualViewport` the stylesheet's `100svh` and `0px` apply. On `<html>`
- * because the detents are declared on `:root`. The lift is measured against a fixed
- * `top: 0; bottom: 0` probe, which is the layout viewport by definition, where `innerHeight` under
- * a zoom is not in every engine.
+ * So two numbers from `window.visualViewport` go on `<html>` while `enabled` holds, named by
+ * `prefix`: `--<prefix>-viewport`, the height on screen, and `--<prefix>-viewport-lift`, how far
+ * the bottom of the view sits above the layout viewport's (the keyboard). The trip planner's
+ * detents in `app/globals.css` are written in its pair, Parky's phone window in its own
+ * (`AssistantPanel`). Without `visualViewport` the stylesheet's fallbacks (`100svh`, `0px`)
+ * apply. On `<html>` because the planner's detents are declared on `:root`. The lift is measured
+ * against a fixed `top: 0; bottom: 0` probe, which is the layout viewport by definition, where
+ * `innerHeight` under a zoom is not in every engine.
  */
-export function useSheetViewport(enabled: boolean) {
+export function useSheetViewport(enabled: boolean, prefix: 'planner' | 'assistant') {
   useLayoutEffect(() => {
     if (!enabled) return;
     const viewport = window.visualViewport;
@@ -34,8 +36,8 @@ export function useSheetViewport(enabled: boolean) {
       if (layout <= 0 || viewport.height <= 0) return;
       const shown = Math.min(viewport.height, layout);
       const lift = Math.max(0, layout - viewport.offsetTop - viewport.height);
-      root.style.setProperty('--planner-viewport', `${shown}px`);
-      root.style.setProperty('--planner-viewport-lift', `${lift}px`);
+      root.style.setProperty(`--${prefix}-viewport`, `${shown}px`);
+      root.style.setProperty(`--${prefix}-viewport-lift`, `${lift}px`);
     };
     // One write per frame: a pinch or the keyboard fires these every frame, and the probe read is a
     // layout flush.
@@ -55,12 +57,12 @@ export function useSheetViewport(enabled: boolean) {
       viewport.removeEventListener('scroll', schedule);
       probe.remove();
     };
-  }, [enabled]);
+  }, [enabled, prefix]);
   useLayoutEffect(
     () => () => {
-      document.documentElement.style.removeProperty('--planner-viewport');
-      document.documentElement.style.removeProperty('--planner-viewport-lift');
+      document.documentElement.style.removeProperty(`--${prefix}-viewport`);
+      document.documentElement.style.removeProperty(`--${prefix}-viewport-lift`);
     },
-    []
+    [prefix]
   );
 }

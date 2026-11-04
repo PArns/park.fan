@@ -40,7 +40,7 @@ import {
   usePlannerPxPerMin,
 } from '@/lib/planner/use-grid-scale';
 import { capturePointer, isSamePointer, releasePointer } from '@/lib/planner/pointer-capture';
-import { useSheetViewport } from '@/lib/planner/use-sheet-viewport';
+import { useSheetViewport } from '@/lib/hooks/use-sheet-viewport';
 import {
   addDays,
   dayClock,
@@ -247,7 +247,7 @@ export function PlannerFlyout({
   // The phone sheet's height is what the browser shows, not a viewport unit:
   // a zoom or the keyboard otherwise leaves the grabber and the × above the
   // top of the screen with no way out. See `useSheetViewport`.
-  useSheetViewport(open && isPhone);
+  useSheetViewport(open && isPhone, 'planner');
   /**
    * A landscape phone, the one size where the sheet is a row, with the day's chrome beside the
    * axis. Always implies {@link isPhone}. Read only for which side draws the context band
