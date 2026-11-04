@@ -21,7 +21,7 @@ parkLinks:
   - /parks/north-america/united-states/buena-park/knotts-berry-farm
 rideLinks: false
 seo:
-  title: "Noël 2026 à Knott's Berry Farm : Merry Farm et show sur glace"
+  title: "Noël 2026 à Knott\'s Berry Farm : Merry Farm et Snoopy"
   description: >-
     Knott's Merry Farm du 20/11/2026 au 3/1/2027 : nouveau show de Snoopy sur glace, horaires, réveillon jusqu’à 1 h, billets dès 65 $, fermé le 25/12.
   keywords:
