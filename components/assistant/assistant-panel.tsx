@@ -275,9 +275,10 @@ export function AssistantPanel({
         // The launcher hides while the window is open, so the window takes its corner. Parky and
         // his hat rise over its top edge; the window keeps them clear of the 48 px header, which
         // they would otherwise cover. On a phone it fills what the browser shows from 5.5rem below
-        // its top to just above the keyboard (`--assistant-viewport*`, `useSheetViewport`); on a
-        // desktop its height is capped.
-        'inset-x-2 bottom-[calc(var(--assistant-viewport-lift,0px)+max(0.5rem,env(safe-area-inset-bottom)))] h-[calc(var(--assistant-viewport,100svh)-5.5rem-max(0.5rem,env(safe-area-inset-bottom)))] sm:h-[min(clamp(560px,72dvh,720px),calc(100dvh-10rem))]',
+        // its top to just above the keyboard (`--assistant-viewport*`, `useSheetViewport`), which
+        // covers the home indicator, so the safe-area gap is not added on top of it; on a desktop
+        // its height is capped.
+        'inset-x-2 bottom-[calc(var(--assistant-viewport-lift,0px)+max(0.5rem,env(safe-area-inset-bottom)-var(--assistant-viewport-lift,0px)))] h-[calc(var(--assistant-viewport,100svh)-5.5rem-max(0.5rem,env(safe-area-inset-bottom)-var(--assistant-viewport-lift,0px)))] sm:h-[min(clamp(560px,72dvh,720px),calc(100dvh-10rem))]',
         // Clear of the planner's edge tab, which sits on the right edge at mid height.
         'sm:inset-x-auto sm:right-12 sm:bottom-4 sm:w-[clamp(380px,32vw,480px)]',
         'planner-wide:right-[calc(var(--planner-inset,0px)+3rem)]',
