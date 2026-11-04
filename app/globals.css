@@ -359,26 +359,30 @@
  * Parky's face (`components/assistant/parky-logo.tsx`): a blink every few seconds, the Ferris-wheel
  * hat turning while it writes, the mouth talking, and the closed button bobbing gently. The idle
  * acts last `--parky-act`, which the component sets from its own table, so a length lives there
- * only. With company Parky also twirls, dances and reads; bored, it yawns, whistles, blows gum,
- * rolls its eyes and naps; asleep it breathes slowly under rising Zs, and the hat stands still.
+ * only. With company Parky winks, looks around and tilts his head, and about every half minute
+ * hops, spins, twirls, dances, reads or nods off for a moment; bored, he yawns, naps and pulls on
+ * his nightcap; asleep he breathes slowly under rising Zs, and the hat stands still.
  * While a search is open it holds a magnifying glass to its eye and looks around the page. It answers
  * what the visitor does: a checklist for the trip planner, confetti for a finished plan, heart eyes
  * for a favourite, a bell for an alert, sunglasses when the theme turns light and a nightcap when it
  * turns dark; the sunglasses, the lit wheel under moon and stars and the nightcap also come on
  * their own.
  */
-/* Two blinks in 24 s, about 9 and 14 s apart: 5 to 10 in a minute and a half, never in a
-   steady beat. Each shuts and opens over some 170 ms. */
+/* Three blinks in 22.5 s, 7.4 to 7.6 s apart, so one every 7 to 8 s in every mode. Each shuts and
+   opens over some 170 ms. */
 @keyframes parky-blink {
   0%,
-  37.3%,
-  38.7%,
-  96.3%,
-  97.7%,
+  29.6%,
+  30.4%,
+  62.6%,
+  63.4%,
+  96.6%,
+  97.4%,
   100% {
     transform: scaleY(1);
   }
-  38%,
+  30%,
+  63%,
   97% {
     transform: scaleY(0.1);
   }
@@ -386,6 +390,76 @@
 @keyframes parky-spin {
   to {
     transform: rotate(360deg);
+  }
+}
+/* Parky's dreams (`ParkyDreamCloud` in parky-logo.tsx). */
+@keyframes parky-dream-fade {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  8%,
+  88% {
+    opacity: 1;
+  }
+}
+@keyframes parky-dream-puff {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+@keyframes parky-dream-hop {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-2.5px);
+  }
+}
+@keyframes parky-dream-fall {
+  from {
+    transform: translateY(-3px) rotate(0);
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  to {
+    transform: translateY(16px) rotate(200deg);
+    opacity: 0;
+  }
+}
+@keyframes parky-dream-rise {
+  from {
+    transform: translateY(9px) scaleY(0.6);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0) scaleY(1);
+    opacity: 1;
+  }
+}
+@keyframes parky-dream-shoot {
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes parky-dream-twinkle {
+  0%,
+  100% {
+    transform: scale(0.4);
+    opacity: 0.3;
+  }
+  50% {
+    transform: scale(1);
+    opacity: 1;
   }
 }
 @keyframes parky-talk {
@@ -1378,6 +1452,20 @@
   transform-box: fill-box;
   transform-origin: center;
 }
+/* A dream's puffs and cloud, the cheering Parky, the confetti and the sparkles move about their own
+   middle; the castle rises from its foot. */
+.parky-dream-puff,
+.parky-dream-cloud,
+.parky-dream-hopper,
+.parky-dream-confetti,
+.parky-dream-sparkle {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.parky-dream-rise {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+}
 /* The open mouth and the bubble grow out of the lips, the exclamation mark out of its foot. */
 .parky-yawn,
 .parky-gum {
@@ -1434,7 +1522,7 @@
 }
 @media (prefers-reduced-motion: no-preference) {
   .parky-eyes {
-    animation: parky-blink 24s ease-in-out infinite;
+    animation: parky-blink 22.5s ease-in-out infinite;
   }
   /* An SVG transform is painted, not composited: every frame of a smooth spin lays out and paints
      Parky again. 8 steps a second move a cabin half a pixel, too little to see as a jump. */
@@ -1601,6 +1689,42 @@
   }
   .parky-zzz--nap path:nth-child(3) {
     animation-delay: calc(var(--parky-act) * 0.46);
+  }
+  /* A dream: the puffs come up out of the head one after the other and the cloud last, the scene
+     plays, and all of it fades before the dream ends (`--parky-dream`, from parky-logo.tsx). */
+  .parky-dream {
+    animation: parky-dream-fade var(--parky-dream) ease-in-out both;
+  }
+  .parky-dream-puff {
+    animation: parky-dream-puff 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  }
+  .parky-dream-puff:nth-child(2) {
+    animation-delay: 0.15s;
+  }
+  .parky-dream-puff:nth-child(3) {
+    animation-delay: 0.3s;
+  }
+  .parky-dream-cloud {
+    animation: parky-dream-puff 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) 0.45s both;
+  }
+  .parky-dream-scene {
+    animation: parky-dream-fade var(--parky-dream) ease-in-out 0.6s both;
+  }
+  .parky-dream-hopper {
+    animation: parky-dream-hop 0.7s ease-in-out infinite;
+  }
+  .parky-dream-confetti {
+    animation: parky-dream-fall 1.4s linear infinite both;
+  }
+  .parky-dream-rise {
+    animation: parky-dream-rise 1.6s ease-out 0.7s both;
+  }
+  .parky-dream-shoot {
+    stroke-dasharray: 1;
+    animation: parky-dream-shoot 1.6s ease-out 1.8s both;
+  }
+  .parky-dream-sparkle {
+    animation: parky-dream-twinkle 1.5s ease-in-out infinite both;
   }
   .parky-gaze {
     transition: transform 0.15s ease-out;

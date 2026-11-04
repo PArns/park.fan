@@ -40,9 +40,11 @@ import type { Locale } from '@/i18n/config';
  * The rail's row: five columns from a 1024 px page, three from 640 px (the rest wrap out of view
  * behind `RAIL_CARD_ITEM_CLASS`), and on a phone a row that scrolls sideways with the next card in
  * view, running to the screen's edges so a card scrolled in starts where the text above it does.
+ * `relative`, so an absolute child of a card (a `sr-only` label) is placed in the row and scrolls
+ * with it; placed by an ancestor outside, it made the whole page wider than a phone.
  */
 const RAIL_LIST_CLASS =
-  '-mx-4 flex snap-x snap-mandatory scroll-px-4 gap-3 overflow-x-auto px-4 pb-1 [scrollbar-width:none] sm:mx-0 sm:grid sm:grid-cols-3 sm:gap-4 sm:overflow-visible sm:px-0 sm:pb-0 lg:grid-cols-5 [&::-webkit-scrollbar]:hidden';
+  'relative -mx-4 flex snap-x snap-mandatory scroll-px-4 gap-3 overflow-x-auto px-4 pb-1 [scrollbar-width:none] sm:mx-0 sm:grid sm:grid-cols-3 sm:gap-4 sm:overflow-visible sm:px-0 sm:pb-0 lg:grid-cols-5 [&::-webkit-scrollbar]:hidden';
 
 /** One card's place in the row; from 640 to 1023 px only the first three show. */
 const RAIL_CARD_ITEM_CLASS =

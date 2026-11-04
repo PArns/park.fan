@@ -70,8 +70,8 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `boredomAfter` _function_: How bored Parky is after `quietMs` without a pointer, key, wheel or touch on the page.
 - `nextBoredomInMs` _function_: How long until the next stage after `quietMs` of quiet; `null` once asleep, which only activity ends.
-- `BORED_AFTER_MS` _const_: Quiet time on the page before Parky gets bored.
-- `ASLEEP_AFTER_MS` _const_: Quiet time on the page before Parky nods off.
+- `BORED_AFTER_MS` _const_: Quiet time on the page before Parky gets sleepy: two rounds of mischief first.
+- `ASLEEP_AFTER_MS` _const_: Quiet time on the page before Parky falls asleep: a minute and a half.
 - `parkyBoredom` _const_: One boredom for the whole page, for `useSyncExternalStore`: the first subscriber starts the listeners, the last one stops them. Without motion (`prefers-reduced-motion`) Parky has no idle life and the snapshot is `null`, as on the server.
 - Types: `ParkyBoredom`
 
