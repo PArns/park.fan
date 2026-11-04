@@ -5,6 +5,18 @@ export interface CpuLoad {
   '15m': number;
 }
 
+/**
+ * Where the CPU temperature turns amber and red, counted down from the chip's junction maximum
+ * (TjMax); the API's contract is its `docs/frontend/cpu-temperature.md`.
+ */
+export interface CpuTemperatureLimits {
+  warnC: number;
+  badC: number;
+  tjMaxC: number;
+  /** `assumed` when the sensor reports no TjMax of its own. */
+  tjMaxSource: 'sensor' | 'assumed';
+}
+
 /** The API host's CPU, as the admin system-health page shows it. */
 export interface HostCpu {
   cores: number;
@@ -13,6 +25,8 @@ export interface HostCpu {
   loadPct: number | null;
   // CPU package temperature (°C); null on non-Linux or when no sensor is exposed.
   temperatureC: number | null;
+  /** Absent from an API older than the field, null without a temperature. */
+  temperatureLimits?: CpuTemperatureLimits | null;
 }
 
 /** The API host's memory use. */

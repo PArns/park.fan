@@ -32,6 +32,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`health.ts`](../../lib/admin/health.ts)
 
+- `cpuTempThreshold` _function_: The limits the CPU temperature is judged by: the chip's own from the API, else `CPU_TEMP_C`.
 - `levelAbove` _function_: The tone of a figure where more is worse; `unknown` without a figure.
 - `levelBelow` _function_: The tone of a figure where less is worse; `unknown` without a figure.
 - `worstTone` _function_: The worst of several tones; `ok` for none. An unknown outranks ok and nothing else.
@@ -42,7 +43,8 @@ by hand: change the comment in the code and re-run the script. -->
 - `componentTone` _function_: The tone of an ML component's status; a status this build does not know is unknown.
 - `deriveAdminHealth` _function_: Folds the sources into areas, problems and sidebar signals. A source that is forbidden leaves its area out; one that is loading or failed keeps its row, empty, so the table does not jump.
 - `CPU_LOAD_PCT` _const_: CPU load in percent of all cores.
-- `CHIP_TEMP_C` _const_: A chip's temperature in °C: the CPU package, any hwmon sensor, the GPU.
+- `CHIP_TEMP_C` _const_: A chip's temperature in °C where nothing better is known: the GPU and the sensors beside the CPU.
+- `CPU_TEMP_C` _const_: The CPU's temperature in °C while the API sends no limits: 15 and 5 °C under an assumed TjMax of 100 °C, the API's own rule for a sensor that reports none.
 - `STORAGE_PCT` _const_: Memory and disk use in percent.
 - `CONNECTIONS_PCT` _const_: Postgres connections in percent of the maximum.
 - `FEED_STALE_MINUTES` _const_: Minutes since the newest wait-time row: a stalled cron goes unnoticed for months otherwise.

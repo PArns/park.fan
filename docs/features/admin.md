@@ -129,6 +129,13 @@ sidebar's reads refresh on focus.
 - The thresholds (`CPU_LOAD_PCT`, `CHIP_TEMP_C`, `STORAGE_PCT`, `FEED_STALE_MINUTES`,
   `WEATHER_DAYS_AHEAD` …) are the ones `/admin/system` colours its readings with, so the two never
   disagree.
+- **The CPU temperature** is the package sensor, judged by the limits the API counts down from the
+  chip's own TjMax (`host.cpu.temperatureLimits`): amber 15 °C and red 5 °C under it, so 90 and
+  100 °C on the production Core Ultra 9 275HX. On Intel the package follows the hottest core, so a
+  fixed limit made one busy core a fault. `cpuTempThreshold` reads the limits; `CPU_TEMP_C` (85 and
+  95 °C) stands in while an API without the field answers. `/admin/system` colours the CPU's sensors
+  by the same limits, the GPU and the other sensors by `CHIP_TEMP_C`. The contract and its sources:
+  [CPU temperature](https://github.com/PArns/v4.api.park.fan/blob/main/docs/frontend/cpu-temperature.md).
 
 **A problem card is not a detector card.** It names its question and the button that leads to the
 one page where it is answered („Entscheiden“ → Datenqualität, „Stack in Queues ansehen“), named for
