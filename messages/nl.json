@@ -172,6 +172,20 @@
       "title": "Jouw parken en attracties",
       "lead": "Alles wat je met de ster hebt gemarkeerd, met status en actuele wachttijd."
     },
+    "favoritesIntro": {
+      "star": {
+        "kicker": "Favorieten",
+        "title": "Zo bewaar je parken en attracties",
+        "lead": "Elke park- en attractiepagina heeft een ster, en elke kaart ook. Tik erop en het park of de attractie staat bij je favorieten; nog een tik haalt hem er weer af. Een account heb je niet nodig, de lijst blijft in je browser.",
+        "alt": "Tokyo Disneyland op een telefoon: rechtsboven de ingedrukte ster, daaronder de headliners met hun wachttijd."
+      },
+      "menu": {
+        "kicker": "In het menu",
+        "title": "Je favorieten op elke pagina",
+        "lead": "Op je telefoon zitten ze in het menu rechtsboven, op een computer achter de ster in de balk, elk met status en actuele wachttijd. Op de homepage staan ze dan direct onder het nieuws.",
+        "alt": "Het geopende menu op een telefoon: onder “Favorieten” Phantasialand en Europa-Park, daaronder vier attracties met hun wachttijd."
+      }
+    },
     "popular": {
       "kicker": "Populaire parken",
       "title": "Wachttijden en drukte in de populairste parken",

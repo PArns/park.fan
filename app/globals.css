@@ -3034,11 +3034,12 @@ html[data-temp-unit='F'] .u-imperial {
   display: inline;
 }
 
-/* The homepage's favorites band, under the news, is an empty state for a visitor with none, which
-   tells somebody on their first visit about a feature before they have seen a park. The inline
-   favorites script in app/[locale]/layout.tsx sets `data-has-favorites` before paint, so hiding it
-   moves nothing. */
-html:not([data-has-favorites]) .home-favorites {
+/* The homepage shows a visitor's favorites under the news, and to a visitor with none two stops
+   further down that explain them (`FavoritesIntro`) instead of an empty band about a feature they
+   have not used. The inline favorites script in app/[locale]/layout.tsx sets `data-has-favorites`
+   before paint, so neither choice moves anything. */
+html:not([data-has-favorites]) .home-favorites,
+html[data-has-favorites] .home-favorites-intro {
   display: none;
 }
 

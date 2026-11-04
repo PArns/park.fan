@@ -172,6 +172,20 @@
       "title": "Your parks and rides",
       "lead": "Everything you marked with the star, with its status and current wait."
     },
+    "favoritesIntro": {
+      "star": {
+        "kicker": "Favorites",
+        "title": "How to save parks and rides",
+        "lead": "Every park and ride page has a star, and so does every card. Tap it and the park or ride is in your favorites; tap it again and it is gone. You need no account, the list stays in your browser.",
+        "alt": "Tokyo Disneyland on a phone: the pressed star at the top right, the headliners and their waits below."
+      },
+      "menu": {
+        "kicker": "In the menu",
+        "title": "Your favorites on every page",
+        "lead": "On a phone they sit in the menu at the top right, on a computer behind the star in the bar, each with its status and current wait. On the homepage they then show up right under the news.",
+        "alt": "The open menu on a phone: Phantasialand and Europa-Park under “Favorites”, four rides and their waits below."
+      }
+    },
     "popular": {
       "kicker": "Popular parks",
       "title": "Wait times and crowds at the most popular parks",

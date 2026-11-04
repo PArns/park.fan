@@ -40,6 +40,7 @@ import { FeaturedParksSkeleton } from '@/components/home/home-skeletons';
 import { getFeaturedParksLabels } from '@/components/home/section-headings';
 import { FaqSection } from '@/components/home/faq-section';
 import { ParkyStop } from '@/components/home/parky-stop';
+import { FavoritesIntro } from '@/components/home/favorites-intro';
 import { HomeStop, StopLink } from '@/components/home/home-stop';
 import { ChapterHeading } from '@/components/common/chapter-heading';
 import { NearbyParksCardSkeleton } from '@/components/parks/nearby-parks-card-skeleton';
@@ -130,8 +131,8 @@ export async function generateMetadata({ params }: HomePageProps): Promise<Metad
  * The homepage, written for somebody who has never been here: what this is and whether their park
  * is in it (the hero), then one stop after another, each a heading worded as people search beside
  * its content (`HomeStop`): what is new (the news board), their favourites where they have some,
- * what park.fan does (the tour), for whoever has not found it yet Parky, the parks near them, the
- * popular parks and five questions.
+ * what park.fan does (the tour), for whoever has not found it yet Parky, the parks near them, how
+ * favourites work where they have none, the popular parks and five questions.
  * Everything that explains a tool at length lives on that tool's own page.
  */
 export default async function HomePage({ params }: HomePageProps) {
@@ -282,6 +283,9 @@ export default async function HomePage({ params }: HomePageProps) {
         <NearbyChapter>
           <NearbyParksCard nested showShortWaits className={FLUSH_TOP} />
         </NearbyChapter>
+
+        {/* For a visitor without favourites: how to star a park and where the favourites show. */}
+        <FavoritesIntro locale={locale as Locale} />
 
         {/* Popular parks per locale: the cards (SSR seed + client live data) beside the heading,
           and under the heading a link to each one's waits and calendar, which needs no API. */}

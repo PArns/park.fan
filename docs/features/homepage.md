@@ -18,6 +18,7 @@ popular parks and the questions. A visitor who has starred something finds it ri
 | –   | The tour        | phone   | `HomeTour` → `ShotStop`                                              | none; screenshots in `public/media/home/`                  |
 | –   | Ask Parky       | phone   | `ParkyStop` → `ShotStop`, `ParkyAskLink`                             | none; the screenshot in `public/media/parky/<l>/chat.webp` |
 | –   | Near you        | stacked | `NearbyChapter` + `NearbyParksCard showShortWaits`                   | `/v1/discovery/nearby`                                     |
+| –   | Favourites, how | phone   | `FavoritesIntro` → two `ShotStop`s; without favourites only          | none; screenshots in `public/media/home/`                  |
 | –   | Popular parks   | beside  | a `HomeStop` in `page.tsx`, `FeaturedParksSlot` + `PopularParkLinks` | `getGeoStructure` (a week), the page-view snapshot         |
 | –   | Questions       | beside  | `FaqSection`, the page's only `FAQPage`                              | `seo.homepage.faq`                                         |
 
@@ -145,9 +146,27 @@ Nothing is drawn when the list is empty, which is every evening and the whole of
 
 The favourites are a stop of their own (`FavoritesSection heading="none"` in a `HomeStop`), right
 under the news and shown only for a visitor with favourites: for them it is what they came back
-for, and for anybody else an empty state about a feature they have not used. The inline favourites
-script in `app/[locale]/layout.tsx` sets `data-has-favorites` before paint, and `.home-favorites` in
-`app/globals.css` hides the band without it, so the choice moves nothing after load.
+for, and for anybody else an empty state about a feature they have not used.
+
+A visitor without favourites gets two phone stops after the parks near them instead
+(`FavoritesIntro`, `components/home/favorites-intro.tsx`), in the tour's style:
+
+| Stop | Screenshot                                        | Says                                                |
+| ---- | ------------------------------------------------- | --------------------------------------------------- |
+| star | Tokyo Disneyland's page, its star pressed, ringed | where the star is, that no account is needed        |
+| menu | the phone's menu open, two parks and four rides   | where the favourites show: the menu, the bar's star |
+
+The inline favourites script in `app/[locale]/layout.tsx` sets `data-has-favorites` before paint,
+and one rule in `app/globals.css` hides `.home-favorites` without it and `.home-favorites-intro`
+with it, so neither choice moves anything after load.
+
+- **The screenshots** come from `scripts/capture-home-shots.mjs --shot=favorite,favorites-menu`
+  (`public/media/home/<locale>/{favorite,favorites-menu}.webp`). The star shot is Tokyo
+  Disneyland's page because it is open while Europe sleeps, so its waits are real; the star's
+  amber ring is drawn into the page before the shot. The menu shows Phantasialand, Europa-Park and
+  four of their rides, which have photos in the media database; the script answers the menu's
+  `/v1/favorites` request with the real response and sets only its live fields (`mockLive`), so the
+  shot does not wait for both parks to open.
 
 ## Popular parks and their links
 

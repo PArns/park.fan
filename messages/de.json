@@ -172,6 +172,20 @@
       "title": "Deine Parks und Bahnen",
       "lead": "Alles, was du mit dem Stern markiert hast, mit Status und aktueller Wartezeit."
     },
+    "favoritesIntro": {
+      "star": {
+        "kicker": "Favoriten",
+        "title": "So merkst du dir Parks und Bahnen",
+        "lead": "Jede Park- und Bahnseite hat einen Stern, jede Karte auch. Ein Tipp darauf, und der Park oder die Bahn steht in deinen Favoriten; ein zweiter Tipp nimmt sie wieder heraus. Ein Konto brauchst du nicht, die Liste bleibt in deinem Browser.",
+        "alt": "Tokyo Disneyland auf dem Handy: oben rechts der gedrückte Stern, darunter die Headliner mit ihren Wartezeiten."
+      },
+      "menu": {
+        "kicker": "Im Menü",
+        "title": "Deine Favoriten auf jeder Seite",
+        "lead": "Auf dem Handy liegen sie im Menü oben rechts, am Computer hinter dem Stern in der Leiste, jeweils mit Status und aktueller Wartezeit. Auf der Startseite stehen sie dann gleich unter den News.",
+        "alt": "Das geöffnete Menü auf dem Handy: unter „Favoriten“ Phantasialand und Europa-Park, darunter vier Bahnen mit ihrer Wartezeit."
+      }
+    },
     "popular": {
       "kicker": "Beliebte Parks",
       "title": "Wartezeiten und Andrang in den beliebtesten Parks",

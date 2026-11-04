@@ -172,6 +172,20 @@
       "title": "Tes parcs et attractions",
       "lead": "Tout ce que tu as marqué d’une étoile, avec son état et son attente actuelle."
     },
+    "favoritesIntro": {
+      "star": {
+        "kicker": "Favoris",
+        "title": "Comment enregistrer tes parcs et attractions",
+        "lead": "Chaque page de parc et d’attraction a une étoile, chaque carte aussi. Touche-la et le parc ou l’attraction rejoint tes favoris ; une seconde touche l’en retire. Pas besoin de compte, la liste reste dans ton navigateur.",
+        "alt": "Tokyo Disneyland sur un téléphone : l’étoile activée en haut à droite, en dessous les attractions phares et leur attente."
+      },
+      "menu": {
+        "kicker": "Dans le menu",
+        "title": "Tes favoris sur chaque page",
+        "lead": "Sur un téléphone, ils sont dans le menu en haut à droite, sur un ordinateur derrière l’étoile de la barre, chacun avec son statut et son attente du moment. Sur la page d’accueil, ils s’affichent alors juste sous les actualités.",
+        "alt": "Le menu ouvert sur un téléphone : sous « Favoris », Phantasialand et Europa-Park, puis quatre attractions avec leur attente."
+      }
+    },
     "popular": {
       "kicker": "Parcs populaires",
       "title": "Temps d’attente et affluence des parcs les plus populaires",

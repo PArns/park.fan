@@ -1,4 +1,4 @@
-### Startseite: Favoriten unter den News, Tour und Parky ohne Haarlinien
+### Startseite: Favoriten unter den News, ohne Favoriten erklärt, Tour und Parky ohne Haarlinien
 
 Zwischen dem News-Board und der ersten Tour-Station („Live-Wartezeiten") standen eine Haarlinie und das Polster beider Stationen: 129 px auf dem Handy, 193 px ab 640 px. Die erste Station der Tour zeichnet keine Linie mehr und kein eigenes Polster oben (`ShotStop flushTop`, `components/home/home-stop.tsx`), der Abstand ist nur noch das Polster unter den News: 64 px auf dem Handy, 96 px ab 640 px. Das Handy der ersten Station steht auf dem Desktop damit 140 statt 237 px unter dem Board.
 
@@ -7,3 +7,5 @@ Auch die Linie zwischen der Prognose-Station und Parky ist weg. `ShotStop` zeich
 Parkys Lead (`homeStory.parky.lead`) endet in allen sechs Sprachen nach dem Airtime-Satz; der Nachsatz zu den Live-Daten ist gestrichen.
 
 Wer Favoriten hat, findet sie jetzt direkt unter den News statt nach Parky über der Nähe-Station. Die Favoriten-Station steht im Quelltext hinter `HomeReading` und schließt ohne Linie an (`HomeStop flushTop`), der Abstand zu News und Tour ist je 64 px auf dem Handy und 96 px ab 640 px. Ohne Favoriten bleibt sie ausgeblendet (`html:not([data-has-favorites]) .home-favorites`), die Regel `order: -1` ist weg.
+
+Wer noch keine Favoriten hat, bekommt nach „Parks in deiner Nähe" zwei Phone-Stationen im Stil der Tour (`FavoritesIntro`, `components/home/favorites-intro.tsx`): „So merkst du dir Parks und Bahnen" mit der Parkseite von Tokyo Disneyland und dem gedrückten, amber umrandeten Stern, und „Deine Favoriten auf jeder Seite" mit dem geöffneten Handy-Menü, in dem Phantasialand, Europa-Park und vier ihrer Bahnen mit Wartezeit stehen. Ausgeblendet wird mit derselben Regel wie die Favoriten (`html[data-has-favorites] .home-favorites-intro`), vor dem ersten Paint. Die zwölf Screenshots (zwei je Sprache) kommen aus `scripts/capture-home-shots.mjs --shot=favorite,favorites-menu`; das Skript setzt im Menü-Shot nur die Live-Felder der echten `/v1/favorites`-Antwort (`mockLive`), weil die beiden Parks morgens noch geschlossen sind.

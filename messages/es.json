@@ -172,6 +172,20 @@
       "title": "Tus parques y atracciones",
       "lead": "Todo lo que marcaste con la estrella, con su estado y su espera actual."
     },
+    "favoritesIntro": {
+      "star": {
+        "kicker": "Favoritos",
+        "title": "Cómo guardar parques y atracciones",
+        "lead": "Cada página de parque y de atracción tiene una estrella, y cada tarjeta también. Tócala y el parque o la atracción pasa a tus favoritos; otro toque lo quita. No necesitas cuenta, la lista se queda en tu navegador.",
+        "alt": "Tokyo Disneyland en un móvil: arriba a la derecha la estrella pulsada, debajo las atracciones estrella con su espera."
+      },
+      "menu": {
+        "kicker": "En el menú",
+        "title": "Tus favoritos en cada página",
+        "lead": "En el móvil están en el menú de arriba a la derecha, en el ordenador tras la estrella de la barra, cada uno con su estado y la espera actual. En la portada aparecen entonces justo debajo de las noticias.",
+        "alt": "El menú abierto en un móvil: bajo «Favoritos», Phantasialand y Europa-Park, y debajo cuatro atracciones con su espera."
+      }
+    },
     "popular": {
       "kicker": "Parques populares",
       "title": "Tiempos de espera y afluencia en los parques más populares",
