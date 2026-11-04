@@ -44,7 +44,7 @@ rideLinks:
 seo:
   title: 'Kennywood: Wartezeiten heute, Holiday Lights, Tickets und Speedy Pass'
   description: >-
-    Kennywood Wartezeiten live und Crowd Calendar: Holiday Lights läuft vom 13. November 2026 bis 3. Januar 2027. Zur Öffnung lohnt sich Steel Curtain.
+    Holiday Lights in Kennywood läuft vom 13. November 2026 bis 3. Januar 2027. Zur Öffnung lohnt sich Steel Curtain, die Wartezeiten stehen live auf park.fan.
   keywords:
     - Kennywood
     - Kennywood Wartezeiten
@@ -64,25 +64,25 @@ seo:
     - Kennywood Pittsburgh
 ---
 
-[Kennywood](ref:kennywood) liegt in West Mifflin auf einer Anhöhe über dem Monongahela River, und angelegt hat ihn eine Straßenbahngesellschaft, als Ausflugsziel am Ende ihrer Linie. Solche Trolley Parks gab es in den USA einmal viele, nach Wikipedia sind noch 13 davon in Betrieb. Seit 1987 ist Kennywood ein National Historic Landmark. Diese höchste Denkmalstufe der USA teilt er nach Angaben des Parks nur mit einem einzigen anderen Freizeitpark, nach Wikipedia ist das Rye Playland.
+[Kennywood](ref:kennywood) liegt in West Mifflin auf einer Anhöhe über dem Monongahela River, und angelegt hat ihn eine Straßenbahngesellschaft, als Ausflugsziel am Ende ihrer Linie. Solche Trolley Parks gab es in den USA einmal viele, 13 davon sind noch in Betrieb. Seit 1987 ist Kennywood ein National Historic Landmark. Diese höchste Denkmalstufe der USA hat außer ihm nur noch ein Freizeitpark, Rye Playland.
 
 Acht Achterbahnen stehen im Park, drei davon aus Holz und aus den 1920er-Jahren. Die jüngste und höchste der fünf Stahlbahnen ist Steel Curtain, in einem Bereich, der ganz den Pittsburgh Steelers gehört. In Pittsburgh ist der Park so fest im Alltag verankert, dass „Kennywood’s open“ dort heißt, dass dein Hosenstall offen steht.
 
-Ich war selbst noch nicht in Kennywood. Bahndaten, Preise und Termine stammen von den Seiten des Parks, aus der Roller Coaster DataBase (RCDB) und von Wikipedia, die Wartezeiten aus unseren eigenen Messungen. Der Anlass, jetzt über Kennywood zu schreiben, ist der Winter. Am 13. November 2026 beginnt Holiday Lights mit mehr als drei Millionen Lichtern, und neu im Programm ist eine Eisshow.
+Ich war selbst noch nicht in Kennywood. Am 13. November 2026 beginnt Holiday Lights mit mehr als drei Millionen Lichtern, und neu im Programm ist eine Eisshow.
 
 ## Die Bahnen nach Bereichen
 
-Auf der Parkkarte von 2026 teilt Kennywood das Gelände in zehn Bereiche: Entrance Plaza, Good Time Midway, The Lagoon, Steelers Country, Kiddieland, Kennyville, Kennywood Junction, Lost Kennywood, Kenny Lane und Area 412. Insgesamt zählt der Park mehr als 40 Fahrgeschäfte und Attraktionen auf 80 Acres, gut 32 Hektar.
+Auf der Parkkarte von 2026 teilt Kennywood das Gelände in zehn Bereiche: Entrance Plaza, Good Time Midway, The Lagoon, Steelers Country, Kiddieland, Kennyville, Kennywood Junction, Lost Kennywood, Kenny Lane und Area 412. Das Gelände ist 80 Acres groß, gut 32 Hektar, und darauf stehen mehr als 40 Fahrgeschäfte und Attraktionen.
 
 ### Good Time Midway
 
-[Sky Rocket](ref:kennywood/sky-rocket?bare) ist ein Launch Coaster von Premier Rides und hat am 29. Juni 2010 eröffnet. Ein Linearmotor beschleunigt den Zug in drei Sekunden auf 80 km/h (50 mph), dann geht es senkrecht in einen 29 Meter (95 Fuß) hohen Top Hat. Auf den 640 Metern danach folgen ein Cutback, eine Zero-G-Roll und ein Korkenzieher, und nach 1:05 Minuten ist die Fahrt vorbei, die kürzeste unter den großen Bahnen im Park. Sky Rocket hat zwei Züge mit je zwölf Plätzen. Von Mai 2018 an stand Sky Rocket mehr als ein Jahr still und fuhr am 13. Juli 2019 wieder, am selben Tag, an dem Steel Curtain eröffnete.
+Seit dem 29. Juni 2010 startet in der Good Time Midway [Sky Rocket](ref:kennywood/sky-rocket?bare), ein Launch Coaster von Premier Rides. Ein Linearmotor beschleunigt den Zug in drei Sekunden auf 80 km/h (50 mph), dann geht es senkrecht in einen 29 Meter (95 Fuß) hohen Top Hat. Auf den 640 Metern danach folgen ein Cutback, eine Zero-G-Roll und ein Korkenzieher, und nach 1:05 Minuten ist die Fahrt vorbei, die kürzeste unter den großen Bahnen im Park. Sky Rocket hat zwei Züge mit je zwölf Plätzen. Von Mai 2018 an stand Sky Rocket mehr als ein Jahr still und fuhr am 13. Juli 2019 wieder, am selben Tag, an dem Steel Curtain eröffnete.
 
 ```glossary-widget slug=launch-coaster
 
 ```
 
-Der [Jack Rabbit](ref:kennywood/jack-rabbit?bare) ist die älteste Achterbahn in Kennywood und fährt seit dem 18. Juni 1920. John A. Miller hat die Holzachterbahn in eine natürliche Schlucht gelegt. Deshalb reicht ein Lifthill von nur 12 Metern (40 Fuß), und der Zug fällt trotzdem 21 Meter (70 Fuß) tief, in einem Double Dip, einer Abfahrt in zwei Stufen. Auf 650 Metern erreicht er 72 km/h (45 mph), die Fahrt dauert 1:36 Minuten. Der Jack Rabbit gehörte nach Angaben des Parks zu den ersten Achterbahnen mit Gegenrädern unter der Schiene, die den Zug auf der Strecke halten. Gekostet hat er 1920 nach der RCDB 50.000 Dollar.
+Der [Jack Rabbit](ref:kennywood/jack-rabbit?bare) ist die älteste Achterbahn in Kennywood und fährt seit dem 18. Juni 1920. John A. Miller hat die Holzachterbahn in eine natürliche Schlucht gelegt. Deshalb reicht ein Lifthill von nur 12 Metern (40 Fuß), und der Zug fällt trotzdem 21 Meter (70 Fuß) tief, in einem Double Dip, einer Abfahrt in zwei Stufen. Auf 650 Metern erreicht er 72 km/h (45 mph), die Fahrt dauert 1:36 Minuten. Der Jack Rabbit gehörte nach Angaben des Parks zu den ersten Achterbahnen mit Gegenrädern unter der Schiene, die den Zug auf der Strecke halten. Gekostet hat er 1920 50.000 Dollar.
 
 ```glossary-widget slug=terrain-coaster
 
@@ -94,15 +94,15 @@ Das [Kangaroo](ref:kennywood/kangaroo?bare) in der Good Time Midway stammt von 1
 
 ### The Lagoon
 
-Rund um die Lagoon hat sich die Anlage nach Angaben des Parks seit den Anfängen kaum verändert. Auf dem Wasser in der Mitte fahren seit 1898 Tretboote, die extra kosten und erst 2027 wieder auslaufen.
+Rund um die Lagoon hat sich die Anlage seit den Anfängen kaum verändert. Auf dem Wasser in der Mitte fahren Tretboote, die extra kosten und erst 2027 wieder auslaufen.
 
-[Racer](ref:kennywood/racer?bare) sieht aus wie zwei Holzachterbahnen, die nebeneinander um die Wette fahren. Die RCDB beschreibt die Strecke aber als Möbiusband: Es ist eine einzige Schiene, und wer rechts einsteigt, kommt links wieder an. Eine zweite Achterbahn mit so einer Strecke gibt es nach Angaben von Kennywood in den USA nicht. Gebaut hat sie Philadelphia Toboggan Coasters 1927 nach einem Entwurf von John A. Miller. Mit 22 Metern (72,5 Fuß) ist Racer die höchste der drei Holzbahnen und fährt doch mit 64 km/h (40 mph) am langsamsten. Die Strecke ist 1.372 Meter (4.500 Fuß) lang, eine Runde dauert 1:32 Minuten. Mit drei Zügen zu je 24 Plätzen kommt Racer auf 1.400 Fahrgäste in der Stunde. Eine erste Bahn mit dem Namen Racer stand von 1910 bis 1926 im Park.
+[Racer](ref:kennywood/racer?bare) sieht aus wie zwei Holzachterbahnen, die nebeneinander um die Wette fahren. Tatsächlich ist es eine einzige durchgehende Schiene, und wer rechts einsteigt, kommt links wieder an. Eine zweite Achterbahn mit so einer Strecke gibt es nach Angaben von Kennywood in den USA nicht, die RCDB führt Racer als Möbius-Achterbahn. Den Entwurf lieferte John A. Miller, und 1927 stellte Philadelphia Toboggan Coasters die Bahn auf. Mit 22 Metern (72,5 Fuß) ist Racer die höchste der drei Holzbahnen und fährt doch mit 64 km/h (40 mph) am langsamsten. Die Strecke ist 1.372 Meter (4.500 Fuß) lang, eine Runde dauert 1:32 Minuten. Mit drei Zügen zu je 24 Plätzen kommt Racer auf 1.400 Fahrgäste in der Stunde. Eine erste Bahn mit dem Namen Racer stand von 1910 bis 1926 im Park.
 
 ```glossary-widget slug=wooden-coaster
 
 ```
 
-Das [Merry-Go-Round](ref:kennywood/merry-go-round?bare) hat William Dentzel 1927 gebaut. Darauf drehen sich 64 Tiere, darunter 50 springende Pferde, ein Löwe und ein Tiger. Im Pavillon des ursprünglichen Karussells aus dem 19. Jahrhundert verkauft heute die Carousel Burger Co. Burger.
+Das [Merry-Go-Round](ref:kennywood/merry-go-round?bare) hat William Dentzel 1927 gebaut. Darauf drehen sich 64 Tiere, darunter 50 springende Pferde, ein Löwe und ein Tiger.
 
 Gleich vier Fahrgeschäfte im Park sind nach Angaben von Kennywood die letzten ihrer Art: die [Auto Race](ref:kennywood/auto-race?bare) von 1930 an der Lagoon, die [Turtle](ref:kennywood/turtle?bare), [Noah’s Ark](ref:kennywood/noahs-ark?bare) und das Kangaroo. Ein Teil des Parks ist damit ein Museum, in dem man mitfahren darf.
 
@@ -116,59 +116,59 @@ Im selben Bereich liegen das End Zone Cafe, die Punts Bar und ein Fanartikellade
 
 ### Kenny Lane
 
-[Phantom’s Revenge](ref:kennywood/phantoms-revenge?bare) fing 1991 als Steel Phantom an, eine Stahlachterbahn von Arrow Dynamics mit vier Loopings. Nach Angaben des Parks hielt sie damals mit 129 km/h (80 mph) und einer Abfahrt von 69 Metern (225 Fuß) die Weltrekorde für Geschwindigkeit und Fallhöhe. Im Winter 2000/01 baute D.H. Morgan die Bahn um, nahm die Loopings heraus und legte die große Abfahrt etwas tiefer. Seit 2001 heißt sie Phantom’s Revenge.
+Als Steel Phantom ging [Phantom’s Revenge](ref:kennywood/phantoms-revenge?bare) 1991 in Betrieb, eine Stahlachterbahn von Arrow Dynamics mit vier Loopings. Nach Angaben des Parks hielt sie damals mit 129 km/h (80 mph) und einer Abfahrt von 69 Metern (225 Fuß) die Weltrekorde für Geschwindigkeit und Fallhöhe. Im Winter 2000/01 baute D.H. Morgan die Bahn um, nahm die Loopings heraus und legte die große Abfahrt etwas tiefer. Seit 2001 heißt sie Phantom’s Revenge, und zum 25. Geburtstag 2026 fahren die Wagen abwechselnd in Grün und Lila, die Station ist erneuert, und in der Warteschlange laufen die ursprünglichen Fahrgeräusche, neu aufgenommen.
 
-Der Zug klettert 49 Meter (160 Fuß) hoch und erreicht 137 km/h (85 mph). Die zweite Abfahrt ist die längste, nach der RCDB 69,5 Meter (228 Fuß), nach Kennywood 71 Meter (232 Fuß). Auch bei der Länge weichen die beiden voneinander ab: 975 Meter (3.200 Fuß) bei der RCDB, 1.026 Meter (3.365 Fuß) beim Park. Unterwegs fährt der Zug zweimal durch das Holzgerüst von Thunderbolt. Die Fahrt dauert 1:57 Minuten, und in den beiden Zügen sitzen je 28 Personen.
+Der Zug klettert 49 Meter (160 Fuß) hoch und erreicht 137 km/h (85 mph). Die längste Abfahrt misst nach der RCDB 69,5 Meter (228 Fuß), Kennywood gibt für die zweite Abfahrt 71 Meter (232 Fuß) an. Auch bei der Länge weichen die beiden voneinander ab: 975 Meter (3.200 Fuß) bei der RCDB, 1.026 Meter (3.365 Fuß) beim Park. Unterwegs fährt der Zug zweimal durch das Holzgerüst von Thunderbolt. Die Fahrt dauert 1:57 Minuten, und in den beiden Zügen sitzen je 28 Personen.
 
 In Kenny Lane stehen außerdem der Musik Express und die Pirate, die bis auf 18 Meter (60 Fuß) Höhe und in einen Winkel von 75 Grad schwingt. Potato Smash hat 2024 den Autoscooter Gran Prix ersetzt, und die Wagen sind den Pommes aus der Potato Patch nachempfunden.
 
 ### Kennyville
 
-Thunderbolt steht nach Wikipedia in Kennyville. Die Bahn fing am 4. Mai 1924 als Pippin an, eine Holzachterbahn von John A. Miller. 1968 baute Andy Vettel sie zu Thunderbolt aus. Die erste Abfahrt führt in eine Schlucht, die größten kommen erst am Ende, mit 27 Metern (90 Fuß) Fallhöhe, obwohl der höchste Punkt nur 21 Meter (70 Fuß) über dem Boden liegt. Auf 991 Metern (3.250 Fuß) erreicht der Zug 89 km/h (55 mph), die Fahrt dauert 1:41 Minuten. Die Züge baute National Amusement Device, der Park nennt sie Century Flyer aus den 1950er-Jahren. 1974 nannte die New York Times Thunderbolt den „King of the Coasters“.
+Thunderbolt steht in Kennyville und war ursprünglich die Pippin, eine Holzachterbahn von John A. Miller, eröffnet am 4. Mai 1924. 1968 baute Andy Vettel sie zu Thunderbolt aus. Die erste Abfahrt führt in eine Schlucht, die größten kommen erst am Ende, mit 27 Metern (90 Fuß) Fallhöhe, obwohl der höchste Punkt nur 21 Meter (70 Fuß) über dem Boden liegt. Auf 991 Metern (3.250 Fuß) erreicht der Zug 89 km/h (55 mph), die Fahrt dauert 1:41 Minuten. Die Züge baute National Amusement Device, der Park nennt sie Century Flyer aus den 1950er-Jahren. 1974 nannte die New York Times Thunderbolt den „King of the Coasters“.
 
-Auf der Parkkarte von Phantom Fall Fest 2026 fehlt Thunderbolt, die Bahnseite des Parks trägt dagegen keinen Hinweis auf eine Schließung.
+Auf der Parkkarte von Phantom Fall Fest 2026 fehlt Thunderbolt, einen Schließhinweis hat die Bahnseite nicht.
 
-[Ghostwood Estate](ref:kennywood/ghostwood-estate?bare) ist seit 2008 eine interaktive Dunkelfahrt durch ein Anwesen mit acht Räumen. Mit „Ghost Blastern“ schießt du auf Geister und sammelst Punkte.
+Durch ein Anwesen mit acht Räumen führt seit 2008 [Ghostwood Estate](ref:kennywood/ghostwood-estate?bare), eine interaktive Dunkelfahrt. Mit „Ghost Blastern“ schießt du auf Geister und sammelst Punkte.
 
 ```glossary-widget slug=interactive-dark-ride
 
 ```
 
-Noah’s Ark, die Arche von 1936, hat Kennywood zweimal umgebaut: 1969 bekam sie den blauen Wal, 2016 eine Renovierung. Die Turtle fährt seit 1927, damals unter dem Namen Tumble Bug, mit sechs Wagen in Form von Schildkröten.
+Noah’s Ark, die Arche von 1936, hat Kennywood zweimal umgebaut: 1969 bekam sie den blauen Wal, 2016 eine Renovierung. Die Turtle fährt seit 1927, anfangs als Tumble Bug, und ihren sechsten Wagen und die Form von Schildkröten bekam sie 1948.
 
-[Raging Rapids](ref:kennywood/raging-rapids?bare) ist eine Wildwasserbahn von Intamin aus dem Jahr 1985, die einen natürlichen Hang hinunterfährt. Sie öffnet erst 2027 wieder. Vor Raging Rapids und Pittsburg\* Plunge stehen Trockenstationen, in denen du dich gegen eine kleine Gebühr in etwa drei Minuten trocknen lassen kannst, ein Service, den man sonst eher aus dem Hundesalon kennt.
+Einen natürlichen Hang hinunter fährt seit 1985 [Raging Rapids](ref:kennywood/raging-rapids?bare), eine Wildwasserbahn von Intamin, die erst 2027 wieder öffnet. Vor Raging Rapids und Pittsburg\* Plunge stehen Trockenstationen, in denen du dich gegen eine kleine Gebühr in etwa drei Minuten trocknen lassen kannst, ein Service, den man sonst eher aus dem Hundesalon kennt.
 
 ### Lost Kennywood
 
 Lost Kennywood hat 1995 eröffnet und war die größte einzelne Erweiterung in der Geschichte des Parks. Er liegt dort, wo früher der Sunlite Pool war, und Vorbild war der Luna Park in Pittsburgh, der 1909 geschlossen hat.
 
-Mittelpunkt des Bereichs ist [Pittsburg\* Plunge](ref:kennywood/pittsburg-plunge?bare), ein Shoot-the-Chute von 1995. Drei Boote für je 20 Personen stürzen 15 Meter (50 Fuß) tief ins Becken. Den Namen schreibt die Bahn ohne h, so wie die Stadt sich von 1890 bis 1911 schrieb. Auch sie öffnet erst 2027 wieder.
+Mittelpunkt des Bereichs ist [Pittsburg\* Plunge](ref:kennywood/pittsburg-plunge?bare), ein Shoot-the-Chute von 1995, der ebenfalls erst 2027 wieder öffnet. Drei Boote für je 20 Personen stürzen 15 Meter (50 Fuß) tief ins Becken. Im Namen fehlt das h, so wurde die Stadt früher geschrieben.
 
-Der [Exterminator](ref:kennywood/exterminator?bare) ist eine Wilde Maus von Reverchon mit drehenden Wagen, die in einer Halle fährt, und hat am 18. April 1999 eröffnet. Die Geschichte dazu: eine Fabrik, in der die Mäuse die Macht übernommen haben. Der höchste Punkt liegt bei 13 Metern (42,7 Fuß), die Wagen erreichen 47 km/h (29,1 mph) auf 420 Metern Strecke, und eine Fahrt dauert 1:48 Minuten. In den neun Wagen sitzen je vier Personen, 900 in der Stunde.
+In einer Halle fährt seit dem 18. April 1999 der [Exterminator](ref:kennywood/exterminator?bare), eine Wilde Maus von Reverchon mit drehenden Wagen. Erzählt wird von einer Fabrik, in der die Mäuse die Macht übernommen haben. Der höchste Punkt liegt bei 13 Metern (42,7 Fuß), die Wagen erreichen 47 km/h (29,1 mph) auf 420 Metern Strecke, und eine Fahrt dauert 1:48 Minuten. Neun Wagen mit je vier Plätzen bringen 900 Fahrgäste in der Stunde durch die Halle.
 
 ```glossary-widget slug=wild-mouse
 
 ```
 
-[Black Widow](ref:kennywood/black-widow?bare) hat 2012 den Fallturm Pitt Fall ersetzt, der von 1997 bis 2011 stand. Sie schwingt und dreht ihre Fahrgäste bis auf 45 Meter (146 Fuß) Höhe, mit bis zu 109 km/h (68 mph). Ebenfalls in Lost Kennywood schleudert SwingShot seit 2006 mit mehr als 80 km/h (50 mph). Der Wave Swinger mit seinen 48 Sitzen kommt aus Deutschland und nimmt Fahrgäste bis 100 kg (220 lbs) mit.
+[Black Widow](ref:kennywood/black-widow?bare) hat 2012 den Fallturm Pitt Fall ersetzt, der von 1997 bis 2011 stand. Sie schwingt und dreht ihre Fahrgäste bis auf 45 Meter (146 Fuß) Höhe, mit bis zu 109 km/h (68 mph). Ebenfalls in Lost Kennywood schleudert SwingShot seit 2006 mit mehr als 80 km/h (50 mph). Der Wave Swinger stammt von Zierer und nimmt Fahrgäste bis 100 kg (220 lbs) mit.
 
 Die [Whip](ref:kennywood/whip?bare) kam 1919 mit zwölf Wagen nach Kennywood, 1926 ersetzte der Park sie durch das heutige Modell mit 16 Wagen. Das hatte 2026 seinen 100. Geburtstag und bekam dazu einen neuen Zaun und ein Jubiläumslogo.
 
 ### Area 412
 
-Area 412 hat 2023 Volcano Valley ersetzt. Der Name verbindet Area 51 mit der Telefonvorwahl 412 von Pittsburgh, und entsprechend geht es um Außerirdische. [Spinvasion](ref:kennywood/spinvasion?bare) ist seit 2023 die erste Gryphon von Zamperla in den USA. In Cosmic Chaos fährt seit 2007 ein Ufo auf einer U-förmigen Schiene bis auf 15 Meter (50 Fuß) hinauf.
+Area 412 hat 2023 Volcano Valley ersetzt. Der Name verbindet Area 51 mit der Telefonvorwahl 412 von Pittsburgh, und entsprechend geht es um Außerirdische. Als erste Gryphon von Zamperla in den USA dreht sich dort seit 2023 [Spinvasion](ref:kennywood/spinvasion?bare). In Cosmic Chaos fährt seit 2007 ein Ufo auf einer U-förmigen Schiene bis auf 15 Meter (50 Fuß) hinauf.
 
 ### Kiddieland und Kennywood Junction
 
-Kiddieland liegt seit 1927 an seinem heutigen Platz, nach Wikipedia an der Kante des Steilhangs auf der Flussseite des Parks. Dort fährt die kleinste Achterbahn: [Lil’ Phantom](ref:kennywood/lil-phantom?bare) ist seit 1996 ein Moli-Coaster von Molina & Son’s mit einem Zug aus fünf Wagen für zehn Kinder, und nach 15 Sekunden ist die Runde vorbei. Whippersnapper gehörte zu den ersten vier Fahrgeschäften des Kiddielands, Kenny’s Karousel mit 16 springenden und 10 stehenden Pferden und zwei Kutschen steht dort seit 1924 und öffnet erst 2027 wieder. Daneben drehen sich unter anderem der Red Baron, die Steel City Choppers und das Wacky Wheel.
+Kiddieland liegt seit 1927 an seinem heutigen Platz, an der Kante des Steilhangs auf der Flussseite des Parks. Dort fährt die kleinste Achterbahn, [Lil’ Phantom](ref:kennywood/lil-phantom?bare), ein Moli-Coaster von Molina & Son’s aus dem Jahr 1996. Ihr Zug aus fünf Wagen nimmt zehn Kinder mit, und nach 15 Sekunden ist die Runde vorbei. Kenny’s Karousel mit 16 springenden und 10 stehenden Pferden und zwei Kutschen gehört seit 1924 zum Kiddieland und öffnet erst 2027 wieder. Daneben drehen sich unter anderem der Red Baron, die Steel City Choppers und das Wacky Wheel.
 
 Kennywood Junction hat am Eröffnungstag der Saison, dem 12. April 2025, eröffnet. Kennywood beschreibt den Bereich als kleines Viertel einer Stahlstadt mit fünf Familienfahrgeschäften: Olde Kennywood Railroad, Fire Bustin’ Brigade, Coal Haulin’ Convoy, Parker’s Cloud Cruisers und Kenny’s Cargo Drop. Vorher stand hier ab dem 27. Juli 2018 Thomas Town, dessen Thomas-Thema der Park nach der Saison 2024 entfernt hat.
 
-Die Lokomotive der [Olde Kennywood Railroad](ref:kennywood/olde-kennywood-railroad?bare), der Gimbels Flyer, fuhr schon auf der Weltausstellung 1939 in New York und ist seit 1945 in Kennywood, neu dazugekommen ist der Kenny Express. Von der Strecke siehst du auf den Monongahela River und die Edgar Thomson Works, nach Angaben des Parks das älteste Stahlwerk in Pittsburgh. Im Winter heißt der Zug Gingerbread Express.
+Die Lokomotive der [Olde Kennywood Railroad](ref:kennywood/olde-kennywood-railroad?bare), der Gimbels Flyer, fuhr schon auf der Weltausstellung 1939 in New York und ist seit 1945 in Kennywood, neu dazugekommen ist der Kenny Express. Von der Strecke siehst du auf den Monongahela River und die Edgar Thomson Works, das älteste Stahlwerk in Pittsburgh. Im Winter heißt der Zug Gingerbread Express.
 
 ## Mindestgrößen
 
-Kennywood gibt die Grenzen in Zoll an, in der Liste stehen sie in Klammern hinter den Zentimetern. Messen lassen kannst du dich am Safety Center am Haupteingang oder am Guest Service Center bei Noah’s Ark.
+Kennywood gibt die Grenzen in Zoll an. Messen lassen kannst du dich am Safety Center am Haupteingang oder am Guest Service Center bei Noah’s Ark.
 
 - 132 cm (52 Zoll): Steel Curtain (höchstens 196 cm), Sky Rocket (bis 140 cm nur mit Begleitung), Black Widow, Thunderbolt
 - 127 cm (50 Zoll): Musik Express
@@ -190,7 +190,7 @@ Als Begleitung zählt, wer mindestens 14 Jahre alt ist und die Bahn selbst allei
 
 ```
 
-Zur Öffnung würde ich zuerst zu Steel Curtain gehen. Nach unseren Messungen lohnt sich der frühe Start dort, an Phantom’s Revenge, am Exterminator und am Jack Rabbit, bei allen vier in mittlerem Maß, und Ghostwood Estate gehört in dieselbe Gruppe. Bei Racer und Sky Rocket lohnt es sich dagegen nicht, gleich zur Öffnung hinzulaufen, die beiden kannst du auch später fahren. Kennywood selbst empfiehlt, früh am hinteren Ende des Parks anzufangen, und an den Wasserbahnen seien die Warteschlangen morgens und abends kürzer.
+Zur Öffnung würde ich zuerst zu Steel Curtain gehen. Nach unseren Messungen lohnt sich der frühe Start an Steel Curtain, Phantom’s Revenge, Exterminator, Jack Rabbit und Ghostwood Estate, bei allen fünf in mittlerem Maß. Bei Racer und Sky Rocket lohnt es sich dagegen nicht, gleich zur Öffnung hinzulaufen, die beiden kannst du auch später fahren. Kennywood selbst empfiehlt, früh am hinteren Ende des Parks anzufangen, und an den Wasserbahnen seien die Warteschlangen morgens und abends kürzer.
 
 ```glossary-widget slug=rope-drop
 
@@ -206,7 +206,7 @@ Zur Öffnung würde ich zuerst zu Steel Curtain gehen. Nach unseren Messungen lo
 
 ```
 
-Die Saison geht nach Wikipedia von April bis Dezember. 2026 hat Kennywood am Samstag, dem 18. April, um 11 Uhr geöffnet, zu seiner 128. Saison. Am wenigsten los ist nach Angaben des Parks sonntags im Mai, an Memorial Day, unter der Woche Ende Juni und im ganzen Juli. Dass ausgerechnet ein Feiertag auf der Liste der ruhigen Tage steht, hätte ich nicht erwartet.
+Die Saison geht von April bis Dezember. 2026 hat Kennywood am Samstag, dem 18. April, um 11 Uhr geöffnet, zu seiner 128. Saison. Am wenigsten los ist sonntags im Mai, an Memorial Day, unter der Woche Ende Juni und im ganzen Juli. Dass ausgerechnet ein Feiertag auf der Liste der ruhigen Tage steht, hätte ich nicht erwartet.
 
 ```stats-widget slug=kennywood show=weekdays
 
@@ -218,16 +218,14 @@ Die Saison geht nach Wikipedia von April bis Dezember. 2026 hat Kennywood am Sam
 
 ### Holiday Lights 2026
 
-Holiday Lights gibt es seit 2011. 2026 läuft das Winterevent vom 13. November bis zum 3. Januar 2027, bis Mitte Dezember freitags, samstags und sonntags, danach täglich. Am 24. und 25. Dezember bleibt der Park zu, ebenso an Thanksgiving, dem 26. November. Nach dem 3. Januar 2027 stehen im Kalender bis Ende Mai keine Öffnungstage, und Termine für den Sommer 2027 hat Kennywood noch nicht veröffentlicht. Im Kalender des Parks stehen diese Öffnungstage und Zeiten:
+Holiday Lights gibt es seit 2011. 2026 läuft das Winterevent vom 13. November bis zum 3. Januar 2027, bis Mitte Dezember freitags, samstags und sonntags, danach täglich. Am 24. und 25. Dezember bleibt der Park zu, ebenso an Thanksgiving, dem 26. November. Geöffnet ist an diesen Tagen und zu diesen Zeiten:
 
 - im November der 13. bis 15., 20. bis 22. und 27. bis 29.
 - im Dezember der 4. bis 6., 11. bis 13., 18. bis 23. und 26. bis 31.
 - im Januar 2027 der 1. bis 3.
-- freitags von 17 bis 21 Uhr
+- freitags von 17 bis 21 Uhr, auch am 18. Dezember
 - samstags und sonntags von 15 bis 21 Uhr
-- am Freitag nach Thanksgiving und täglich ab dem 18. Dezember von 15 bis 21 Uhr
-
-Kennywood behält sich vor, Termine und Zeiten ohne Ankündigung zu ändern.
+- am Freitag nach Thanksgiving und täglich ab dem 19. Dezember von 15 bis 21 Uhr
 
 Der Weihnachtsbaum ist fast 30 Meter (knapp 100 Fuß) hoch und trägt mehr als 250.000 Lichter. Auch einen höheren Weihnachtsbaum gibt es nach Angaben des Parks in Pennsylvania nicht, Kennywood hält also gleich zwei Höhenrekorde des Bundesstaats. Jeden Abend um 17:45 Uhr wird er zwischen Aero 360 und der Pizza Warehouse angeschaltet.
 
@@ -236,12 +234,13 @@ Neu ist 2026 „Finding Christmas: A Whimsical Journey on Ice“, eine Eisshow m
 - Finding Christmas: 18:45 und 20:30 Uhr, an Tagen mit Öffnung um 15 Uhr auch 16:30 Uhr
 - A Broadway Christmas, ebenfalls auf der Garden Stage: 18:15 und 19:45 Uhr
 - die Lichtshow Holiday Reflections an der Lagoon: jede halbe Stunde von 18 bis 20:30 Uhr
-- die Snowy Sing Along und Auftritte von Gruppen aus der Gegend, diese bis zum 22. Dezember
+- die Snowy Sing Along bis zum 3. Januar
+- Auftritte von Gruppen aus der Gegend bis zum 22. Dezember
 - „’Twas the Night Before Christmas“, gelesen von bekannten Leuten aus Pittsburgh, auf der Kennyville Stage vom 20. November bis zum 22. Dezember
 
 In Christmastown führt ein Rundgang zu Rudolph the Red-Nosed Reindeer und seinen Freunden Clarice, Bumble und Sam the Snowman. Wieder da sind das Weihnachtsdorf in Kennywood Junction, der Gingerbread Express, Santa in der Celebration Station und die Tanzparty Jingle Bell Jamboree. Im Penny Arcade steht ab dem 20. November eine Modelleisenbahn, bei Noah’s Ark brennt ein Feuer, und eine Pop-up-Post nimmt Briefe an Santa an.
 
-Mehr als 20 Bahnen fahren, jeweils nur, wenn das Wetter mitspielt, und einige nur über 4 °C (40 °F). Auf der Liste des Parks stehen:
+Mehr als 20 Bahnen fahren, einige davon nur über 4 °C (40 °F):
 
 - Achterbahnen: Jack Rabbit, Lil’ Phantom
 - Klassiker: Merry-Go-Round, Noah’s Ark, Turtle, Kangaroo, Olde Kennywood Railroad als Gingerbread Express
@@ -252,15 +251,17 @@ Von den acht Achterbahnen stehen im Winter also nur die älteste und die kleinst
 
 Bei USA Today 10Best ist Holiday Lights als bestes Weihnachtsevent eines Freizeitparks nominiert, abgestimmt wird vom 2. bis zum 30. November, und am 3. Dezember stehen die Gewinner fest. Gäste bis 15 Jahre brauchen bei Holiday Lights die ganze Zeit eine Begleitung ab 21 Jahren mit Ausweis.
 
-### Die Saison 2026 bis Halloween
+### Die Saison 2026 und 2027
 
 Vom 18. April bis zum 10. Mai liefen 2026 zum ersten Mal die Celebrate Kennywood Weekends, an Samstagen und Sonntagen mit Essen rund um die Kartoffel. Das Food-Festival Bites and Pints folgte freitags bis sonntags vom 22. Mai bis zum 28. Juni und am Montag, dem 25. Mai, mit Ständen aus Frankreich und Deutschland. Für den 250. Geburtstag der USA zündete Zambelli am 4. Juli das nach Angaben des Parks größte Feuerwerk in der Geschichte von Kennywood, und an den Wochenenden vom 11. bis zum 26. Juli flogen mehr als 300 Drohnen.
 
-Die Fall Fantasy Parades gibt es seit 1955, mit mehr als 180 Blaskapellen aus der Gegend. Die 76. Ausgabe lief 2026 täglich vom 1. bis zum 17. August und am 22. August. Phantom Fall Fest, das Halloween-Event seit 2021, endete an ausgewählten Tagen am 1. November, und bei USA Today 10Best kam es 2026 auf Platz vier der Halloween-Events in Freizeitparks.
+Die Fall Fantasy Parades gibt es seit 1955, mit mehr als 180 Blaskapellen aus der Gegend. 2026 liefen sie täglich vom 1. bis zum 17. August und am 22. August. Phantom Fall Fest, das Halloween-Event seit 2021, lief an ausgewählten Tagen bis zum 1. November, und bei USA Today 10Best kam es 2026 auf Platz vier der Halloween-Events in Freizeitparks.
+
+Nach dem 3. Januar 2027 stehen im Kalender bis Ende Mai keine Öffnungstage, und Termine für den Sommer 2027 hat Kennywood noch nicht veröffentlicht. Mit „Reopens in 2027“ führt der Park Raging Rapids, Pittsburg\* Plunge, die Paddle Boats und Kenny’s Karousel.
 
 ## Speedy Pass
 
-Speedy Pass ist das Produkt, mit dem du dich in Kennywood an der Warteschlange vorbeikaufst. Es ist eine virtuelle Warteschlange auf dem Handy, und der Park verspricht bis zu 90 Prozent weniger Wartezeit. Die Stufen sind:
+Speedy Pass ist das Produkt, mit dem du dich in Kennywood an der Warteschlange vorbeikaufst. Es ist eine virtuelle Warteschlange auf dem Handy, in diesen Stufen:
 
 - Standard: Die virtuelle Wartezeit ist so lang wie die normale, du kannst sie aber woanders verbringen.
 - Premium: bis zu 50 Prozent weniger Wartezeit
@@ -292,7 +293,7 @@ Angenommen, du stehst an einem Sommersamstag zur Öffnung am Eingang und hast ke
 - am Nachmittag Racer und die Klassiker an der Lagoon, dazu Sky Rocket
 - ab 2027 zum Schluss Raging Rapids und Pittsburg\* Plunge, wenn die Warteschlangen an den Wasserbahnen kürzer sind
 
-Für einen Abend bei Holiday Lights an einem Wochenende würde ich um 15 Uhr kommen, zuerst Jack Rabbit fahren, solange es noch hell ist, und um 16:30 Uhr die Eisshow sehen. Um 17:45 Uhr geht der Baum an, und ab 18 Uhr läuft jede halbe Stunde Holiday Reflections an der Lagoon, sodass du zwischen zwei Durchgängen noch A Broadway Christmas um 18:15 Uhr schaffst.
+Für einen Abend bei Holiday Lights an einem Wochenende würde ich um 15 Uhr kommen, zuerst Jack Rabbit fahren, solange es noch hell ist, und dann die frühe Vorstellung von Finding Christmas sehen. Nach der Baumbeleuchtung passt zwischen zwei Durchgänge von Holiday Reflections an der Lagoon noch A Broadway Christmas.
 
 In den Park darfst du Taschen bis 38 × 38 × 38 Zentimeter (15 Zoll je Seite) mitnehmen, dazu Wickel- und Arzttaschen. Eigenes Essen und Trinken ist nicht erlaubt, außer einer verschlossenen Flasche Wasser und Essen für besondere Ernährungsbedürfnisse. Am Eingang wird auf Waffen kontrolliert. Bezahlt wird nur bargeldlos mit Karte, Apple Pay oder Google Pay, und an kostenlosen Automaten tauschst du Bargeld in eine Karte um.
 
@@ -304,9 +305,9 @@ Der reguläre Preis für Holiday Lights liegt bei 49,99 $. Online verkauft Kenny
 - mit festem Datum: ab 24,99 $
 - für jeden Tag: 44,99 $
 - für Gruppen von 10 bis 99 Personen: 17,99 $ bis zum 16. November
-- für Studierende mit Uni-E-Mail-Adresse: 19,99 $ statt 74,99 $
+- für Studierende mit Uni-E-Mail-Adresse: 19,99 $
 
-Kinder bis drei Jahre kommen umsonst hinein, die Sonderpreise gibt es nur online. Zu jedem Ticket gehört eine Rainy Day Guarantee: Macht das Wetter den Besuch zunichte, bekommst du ein kostenloses Ticket für einen anderen Tag. Zurückgegeben werden Tickets nicht. Tagestickets für den Sommer 2027 verkauft Kennywood noch nicht.
+Kinder bis drei Jahre kommen umsonst hinein, die Sonderpreise gibt es nur online. Tagestickets für den Sommer 2027 verkauft Kennywood noch nicht, und zurückgeben kannst du keine Tickets. Zu jedem Ticket gehört aber eine Rainy Day Guarantee: Macht das Wetter den Besuch zunichte, bekommst du ein kostenloses Ticket für einen anderen Tag.
 
 Die Season Passes für 2027 gibt es schon:
 
@@ -314,53 +315,45 @@ Die Season Passes für 2027 gibt es schon:
 - Gold für 124,99 $ statt 169,99 $: der Rest von 2026 samt Holiday Lights, das ganze Jahr 2027 mit Phantom Fall Fest und Holiday Lights, Preferred und V.I.P. Parking, ein Souvenirbecher, zwei Gästetickets und 15 Prozent Rabatt
 - Platinum für 189,99 $ statt 249,99 $: Holiday Lights 2026 und das Jahr 2027 in Kennywood, Sandcastle, Idlewild & SoakZone, Dutch Wonderland und sieben Parks in anderen Bundesstaaten, Parken in allen vier Parks in Pennsylvania, drei Gästetickets und 20 Prozent Rabatt
 
-Der Gold Pass kostet so viel wie fünf Holiday-Lights-Tickets mit Datum zum günstigsten Preis. Für einen einzigen Winterabend würde ich deshalb das Ticket mit Datum nehmen, und den Gold Pass erst, wenn feststeht, dass du 2027 wiederkommst.
+Für einen einzigen Winterabend würde ich das Ticket mit Datum nehmen und den Gold Pass erst, wenn feststeht, dass du 2027 wiederkommst.
 
 Unter Bronze wirbt Kennywood mit „Get a Silver Season Pass for the Price of a Bronze“, einen eigenen Bronze-Preis zeigt die Seite nicht. Für Bronze-Inhaber sind 2027 der 10., 17. und 24. Juli gesperrt. Die Silver-, Gold- und Platinum-Pässe kannst du in acht Raten zahlen. Die sieben weiteren Platinum-Parks sind Lake Compounce in Connecticut, der Noah’s Ark Waterpark in Wisconsin, Adventureland in Iowa, Story Land, das Living Shores Aquarium und Water Country in New Hampshire und Splish Splash in New York. Der Rabatt für Passinhaber auf Essen gilt nicht für Alkohol, bei Auntie Anne’s und bei Rogue BBQ.
 
 ## Parken
 
-Der Parkplatz an Gate A ist kostenlos, liegt aber weiter vom Eingang entfernt. Näher parkst du mit All-Day Preferred Parking ab 20 $, online im Voraus bezahlt, die Einfahrt ist an Gate A oder B vom Kennywood Boulevard. An Gate B liegen auch die Plätze für Fahrzeuge mit Behindertenausweis, Gate C ist für kurzes Halten, Abholen und Absetzen. Busse und Wohnmobile parken an Gate D umsonst. V.I.P. Parking für Gold- und Platinum-Inhaber hat eine eigene Einfahrt an Gate E vom Hoffman Boulevard, online buchen lässt es sich noch nicht.
+Der Parkplatz an Gate A ist kostenlos, liegt aber weiter vom Eingang entfernt. Näher parkst du mit All-Day Preferred Parking ab 20 $, online im Voraus bezahlt, die Einfahrt ist an Gate A oder B vom Kennywood Boulevard. An Gate B liegen auch die Plätze für Fahrzeuge mit Behindertenausweis, Gate C ist für kurzes Halten, Abholen und Absetzen. Busse und Wohnmobile parken an Gate D umsonst. Online kündigt Kennywood V.I.P. Parking als „coming soon“ an, Gold- und Platinum-Inhaber fahren dafür über eine eigene Einfahrt an Gate E vom Hoffman Boulevard.
 
 ## Anreise
 
 Die Adresse fürs Navi ist 4800 Kennywood Boulevard, West Mifflin, PA 15122. Der Park liegt an der Route 837, nach Angaben von Kennywood rund 19 Kilometer (12 Meilen) südöstlich der Innenstadt von Pittsburgh. Mit dem Auto fährst du auf der I-376 bis zur Ausfahrt 77, Edgewood-Swissvale, biegst links ab und folgst den Pfeilen nach Kennywood über die South Braddock Avenue. Nach rund 5 Kilometern (3 Meilen), hinter der Rankin Bridge, geht es links auf die Route 837, und nach 2,6 Kilometern (1,6 Meilen) liegt der Parkplatz rechts.
 
-Ohne Auto fährt die Buslinie 61C von Pittsburgh Regional Transit über Oakland, Squirrel Hill, Homestead, Munhall und West Mifflin zum Park und weiter nach Duquesne und McKeesport. Wenn der Park geöffnet hat, hält der Bus an der Haltestelle auf dem Parkplatz an Lot D, sonst am Kennywood Boulevard. Eine Fahrt kostet bar 2,75 $. Die Straßenbahn, für die Kennywood einmal gebaut wurde, fuhr bis zum 15. September 1958, dann stellte die Linie 68 auf Busse um.
+Ohne Auto fährt die Buslinie 61C von Pittsburgh Regional Transit über Oakland, Squirrel Hill, Homestead, Munhall und West Mifflin zum Park und weiter nach Duquesne und McKeesport. Wenn der Park geöffnet hat, hält der Bus an der Haltestelle auf dem Parkplatz an Lot D, sonst am Kennywood Boulevard. Eine Fahrt kostet bar 2,75 $.
 
 ## Essen
 
 Die Pommes der Potato Patch gibt es seit 1973. Sie sind frisch aus Kartoffeln aus Idaho geschnitten, und obendrauf kommen nach Wahl Cheddar, Speck, Essig, braune Soße oder Gewürzsalz. Small Fry’s in Lost Kennywood ist komplett glutenfrei und verkauft ebenfalls Potato-Patch-Pommes. Zum Frittieren nimmt der Park kein Erdnussöl.
 
-2026 hat der Centennial Grill in Lost Kennywood neben der Whip eröffnet, mit Cheesesteaks und Potato Tots. Das Eis des neuen Big Dipper neben Noah’s Ark erinnert an die Achterbahn Dipper, die von 1948 bis 1984 fuhr.
+2026 hat der Centennial Grill in Lost Kennywood neben der Whip eröffnet, mit Cheesesteaks und Potato Tots. Mit dem neuen Eisstand Big Dipper neben Noah’s Ark erinnert der Park an die Achterbahn Dipper, die von 1948 bis 1984 fuhr.
 
-Am Golden Nugget gibt es Vanilleeis in der Waffel, in Schokolade getaucht und mit Streuseln oder gehackten Erdnüssen und einer Kirsche obendrauf. Der Stand hat 1975 den Brand der Ghost Ship überstanden. Lucky verkauft seit den 1930er-Jahren Funnel Cakes. Bei Kandy Kaleidoscope gibt es hausgemachten Fudge und von Hand getauchte Kandisäpfel, und am Star Refreshment Stand werden Oreos frittiert. Das Parkside Café war ursprünglich das Casino des Parks.
+Am Golden Nugget gibt es Vanilleeis in der Waffel, in Schokolade getaucht und mit Streuseln oder gehackten Erdnüssen und einer Kirsche obendrauf. Der Stand hat 1975 den Brand der Ghost Ship überstanden. Lucky gibt es seit den 1930er-Jahren, heute verkauft der Stand Funnel Cakes. Bei Kandy Kaleidoscope gibt es hausgemachten Fudge und von Hand getauchte Kandisäpfel, und am Star Refreshment Stand werden Oreos frittiert. Das Parkside Café war ursprünglich das Casino des Parks, und die Carousel Burger Co. in der Good Time Midway sitzt im Pavillon des ursprünglichen Merry-Go-Round aus dem 19. Jahrhundert.
 
 Die weiteren Stände sind 1898 Coffee Co., Auntie Anne’s, der Beer Garden, Dippin’ Dots, Fire-Breathing Sausage, Jeeters’ Pub, der Midway Refreshment Stand, die Pagoda Creamery, Pedro’s, die Pizza Warehouse, Rogue BBQ und Snack-A-Saurus.
 
-Zu Holiday Lights kommen 2026 Truthahnessen, Chicken Pot Pie, Funnel Cake in Red Velvet, Softeis mit Pfefferminz, Zuckerstangen-Milchshakes, Zimtschnecken mit Cranberry und Orange und heiße Schokolade mit allem obendrauf. Dinner with Santa im End Zone Café gibt es an ausgewählten Tagen vom 20. November bis zum 23. Dezember. Es kostet ab zehn Jahren 29,99 $, von vier bis neun Jahren 24,99 $, bis drei Jahre nichts, jeweils plus Steuer, und Passinhaber zahlen 24,99 $. Den Parkeintritt ersetzt das Dinner nicht.
+Zu Holiday Lights kommen 2026 Truthahnessen, Chicken Pot Pie, Funnel Cake in Red Velvet, Softeis mit Pfefferminz, Zuckerstangen-Milchshakes, Zimtschnecken mit Cranberry und Orange und heiße Schokolade mit allem obendrauf. Dinner with Santa im End Zone Cafe ist kein Parkticket und findet an ausgewählten Tagen vom 20. November bis zum 23. Dezember statt. Es kostet ab zehn Jahren 29,99 $, von vier bis neun Jahren 24,99 $, bis drei Jahre nichts, jeweils plus Steuer, und Passinhaber zahlen 24,99 $.
 
 ## Übernachten
 
 Die Hotelpakete auf der Seite von Kennywood führen zu aRes Travel, das Hotels in der Nähe auflistet und Preise erst nennt, wenn du Reisedaten eingibst. In West Mifflin liegen das Wingate by Wyndham Pittsburgh/West Mifflin und die SpringHill Suites by Marriott, in West Homestead das Hampton Inn & Suites Pittsburgh/Waterfront, und viele weitere Hotels stehen in der Innenstadt von Pittsburgh. Telefonisch bucht aRes unter 1-800-213-5861.
 
-## Was neu ist und was 2027 zurückkommt
-
-Phantom’s Revenge feierte 2026 ihren 25. Geburtstag. Die Wagen fahren dazu abwechselnd in Grün und Lila, die Station ist erneuert, und in der Warteschlange laufen die ursprünglichen Fahrgeräusche, neu aufgenommen. Der Generalmanager zählt die beiden Jubiläen, die Celebrate Kennywood Weekends, den Centennial Grill und den Big Dipper zu den Neuheiten der Saison.
-
-Vier Attraktionen führt Kennywood mit „Reopens in 2027“: Raging Rapids, Pittsburg\* Plunge, die Paddle Boats und Kenny’s Karousel. Einen Grund dafür gibt der Park nicht an. Eine neue Attraktion für 2027 hat Kennywood bisher nicht angekündigt, und in der RCDB steht keine Achterbahn im Bau.
-
 ## Geschichte
 
-1818 kaufte Charles Kenny das Land über dem Monongahela River. Zur Zeit des Bürgerkriegs war „Kenny’s Grove“ ein beliebter Picknickplatz. Im Dezember 1898 verpachtete Anthony Kenny das Gelände an die Monongahela Street Railway, an der der Bankier Andrew Mellon beteiligt war. Mellon suchte den Namen Kennywood aus, und George S. Davidson, der Chefingenieur der Bahngesellschaft, entwarf die Anlage. Nach der RCDB öffnete der Park am 30. Mai 1899.
+1818 kaufte Charles Kenny das Land über dem Monongahela River. Zur Zeit des Bürgerkriegs war „Kenny’s Grove“ ein beliebter Picknickplatz. Im Dezember 1898 verpachtete Anthony Kenny das Gelände an die Monongahela Street Railway, an der der Bankier Andrew Mellon beteiligt war. Mellon suchte den Namen Kennywood aus, und George S. Davidson, der Chefingenieur der Bahngesellschaft, entwarf die Anlage. Am 30. Mai 1899 öffnete der Park.
 
-1902 kam die erste Achterbahn, der Figure Eight Toboggan. 1906 übernahmen A.S. McSwigan und F.W. Henninger den Park, und ihre Familien führten ihn ein ganzes Jahrhundert lang, nach der RCDB bis zur Saison 2007 in vierter und fünfter Generation. In den 1920er-Jahren entwarf John A. Miller den Jack Rabbit, die Pippin und Racer.
+1902 kam die erste Achterbahn, der Figure Eight Toboggan. 1906 übernahmen A.S. McSwigan und F.W. Henninger den Park, und ihre Familien führten ihn ein ganzes Jahrhundert lang, bis zur Saison 2007 in vierter und fünfter Generation. Die Straßenbahn, für die Kennywood einmal gebaut wurde, fuhr bis zum 15. September 1958, dann stellte die Linie 68 auf Busse um.
 
-1974 tauchte Kenny Kangaroo zum ersten Mal als Maskottchen auf. 1975 brannte die Dunkelfahrt Ghost Ship im alten Tanzsaal ab, und im selben Jahr eröffnete der Log Jammer, die erste Bahn des Parks für eine Million Dollar und seine erste echte Wasserbahn, die bis 2017 fuhr. 1980 folgte mit Laser Loop die erste Stahlachterbahn, sie fuhr bis 1990.
+1974 tauchte Kenny Kangaroo zum ersten Mal als Maskottchen auf. 1980 kam mit Laser Loop die erste Stahlachterbahn, die bis 1990 fuhr. Die Familien kauften 1983 Idlewild in Ligonier und bauten 1989 den Wasserpark Sandcastle in Homestead. 1988 lief bei WQED die Dokumentation „Kennywood Memories“ von Rick Sebak. Seit dem 5. August 1992 erinnert ein historischer Marker des Staates Pennsylvania an den Park, und der Film „Adventureland“ von 2009 wurde in Kennywood gedreht.
 
-Die Familien kauften 1983 Idlewild in Ligonier und bauten 1989 den Wasserpark Sandcastle in Homestead. Der National Park Service führt Kennywood seit dem 27. Februar 1987 als Landmark, als historischen Bezirk, den George S. Davidson geplant hat, mit 1898 und 1899 als bedeutenden Jahren. Seit dem 5. August 1992 erinnert außerdem ein historischer Marker des Staates Pennsylvania an den Park. 1988 lief bei WQED die Dokumentation „Kennywood Memories“ von Rick Sebak, und 2009 wurde hier der Film „Adventureland“ gedreht.
-
-Im Dezember 2007 verkauften die Familien Kennywood und die Schwesterparks an Palace Entertainment, eine Tochter von Parques Reunidos aus Madrid, nach der RCDB ging der Park 2008 über. Am 18. März 2025 unterschrieben Herschend Family Entertainment und Parques Reunidos den Vertrag, mit dem Herschend alle Parks von Palace Entertainment in den USA übernahm, Kennywood eingeschlossen. Generalmanager von Kennywood und Sandcastle ist Ricky Spicuzza, der seit 2002 im Park arbeitet.
+Im Dezember 2007 verkauften die Familien Kennywood und die Schwesterparks an Palace Entertainment, eine Tochter von Parques Reunidos aus Madrid, 2008 ging der Park über. Am 18. März 2025 unterschrieben Herschend Family Entertainment und Parques Reunidos den Vertrag, mit dem Herschend alle Parks von Palace Entertainment in den USA übernahm, Kennywood eingeschlossen. Generalmanager von Kennywood und Sandcastle ist Ricky Spicuzza, der seit 2002 im Park arbeitet.
 
 Zur 125-Jahr-Feier 2022 und 2023 renovierte Kennywood den ganzen Park. 2024 kehrte Jeeters als Maskottchen zurück, mit eigenem Pub. Elf Achterbahnen, die es nicht mehr gibt, führt die RCDB für Kennywood, unter ihnen Teddy Bear (1935 bis 1947), Tickler (1931 bis 1952) und Wild Mouse (1958 bis 1960).
 
@@ -368,7 +361,7 @@ Zur 125-Jahr-Feier 2022 und 2023 renovierte Kennywood den ganzen Park. 2024 kehr
 
 ### Wo sehe ich die Kennywood Wartezeiten live?
 
-Auf der [Parkseite von Kennywood](ref:kennywood) bei park.fan stehen die aktuellen Wartezeiten für die Bahnen des Parks und für jede Bahn, ob sie gerade fährt. Von Steel Curtain bis Lil’ Phantom ist jede Achterbahn dabei.
+Auf der [Parkseite von Kennywood](ref:kennywood) bei park.fan stehen die aktuellen Wartezeiten für die Bahnen des Parks und für jede Bahn, ob sie gerade fährt. Alle acht Achterbahnen sind dabei.
 
 ### Welche Bahnen fahren heute in Kennywood?
 
@@ -384,7 +377,7 @@ Ja, im [Wartezeiten-Kalender](ref:kennywood?calendar) steht für jeden Öffnungs
 
 ### Wann hat Kennywood geöffnet?
 
-Kennywood hat während Holiday Lights freitags von 17 bis 21 Uhr, samstags, sonntags und am Freitag nach Thanksgiving von 15 bis 21 Uhr und ab dem 18. Dezember täglich von 15 bis 21 Uhr geöffnet, an Thanksgiving und am 24. und 25. Dezember nicht. Letzter Tag ist der 3. Januar 2027. Die Saison 2027 hat Kennywood noch nicht im Kalender.
+Kennywood hat während Holiday Lights freitags von 17 bis 21 Uhr, samstags, sonntags und am Freitag nach Thanksgiving von 15 bis 21 Uhr und ab dem 19. Dezember täglich von 15 bis 21 Uhr geöffnet, an Thanksgiving und am 24. und 25. Dezember nicht. Letzter Tag ist der 3. Januar 2027. Die Saison 2027 hat Kennywood noch nicht im Kalender.
 
 ### Wie lange wartet man an Steel Curtain?
 
