@@ -1,5 +1,5 @@
 ---
-title: "Knott's Merry Farm abre el 20/11 con nuevo show sobre hielo"
+title: "Knott's Merry Farm abre el 20 de noviembre con show en hielo"
 translationKey: knotts-merry-farm-2026
 date: '2026-11-04'
 time: '17:30'
