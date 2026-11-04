@@ -7,7 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Del 20 de noviembre de 2026 al 3 de enero de 2027, Knott's Berry Farm, en Buena Park, celebra la Knott's Merry Farm. La novedad es un espectáculo sobre hielo con Snoopy y los Peanuts en el Walter Knott Theater. El parque solo cierra el día de Navidad.
+  Del 20 de noviembre de 2026 al 3 de enero de 2027, Knott's Berry Farm, en Buena Park, se viste de Knott's Merry Farm. La novedad es un show sobre hielo con Snoopy y los Peanuts en el Walter Knott Theater. El parque solo cierra el día de Navidad.
 tags:
   - noticias
   - knotts-berry-farm
@@ -21,7 +21,7 @@ parkLinks:
   - /parks/north-america/united-states/buena-park/knotts-berry-farm
 rideLinks: false
 seo:
-  title: "Knott's Merry Farm 2026: Navidad y show de hielo con Snoopy"
+  title: "Knott's Merry Farm 2026: Navidad y show de hielo"
   description: >-
     Knott's Merry Farm del 20/11/2026 al 3/1/2027: nuevo show de Snoopy sobre hielo, horarios, Nochevieja hasta la 1:00, entrada desde 65 $ y cierre el 25/12.
   keywords:
@@ -36,21 +36,21 @@ seo:
     - espectáculo sobre hielo de Snoopy Knott's
 ---
 
-Del 20 de noviembre de 2026 al 3 de enero de 2027, [Knott's Berry Farm](ref:knotts-berry-farm), en Buena Park, cerca de Los Ángeles, se convierte en la Knott's Merry Farm. Lo nuevo de este invierno es «Snoopy's Merry Christmas Follies», un espectáculo sobre hielo en el Walter Knott Theater con Snoopy, los Peanuts y un grupo de patinadores artísticos.
+El 20 de noviembre, [Knott's Berry Farm](ref:knotts-berry-farm), en Buena Park, se convierte en la Knott's Merry Farm, y así sigue hasta el 3 de enero de 2027. La novedad de este invierno es el show sobre hielo «Snoopy's Merry Christmas Follies» en el Walter Knott Theater.
 
-## El nuevo espectáculo del Walter Knott Theater
+## El nuevo show sobre hielo del Walter Knott Theater
 
-Un cuarteto vocal canta clásicos navideños, una fila de bailarinas de las Follies levanta las piernas al aire y, entre número y número, los patinadores salen a la pista con Snoopy y sus amigos. El teatro tiene unas 2.000 butacas, que para un beagle no está nada mal de público. Los pases solo aparecen en la app de Six Flags, y el programa cambia de un día para otro.
+Un cuarteto vocal canta clásicos navideños, y una fila de bailarinas de las Follies levanta las piernas al aire. Entre número y número, Snoopy y sus amigos salen a la pista con los patinadores artísticos. El teatro tiene unas 2.000 butacas, todo un público para un beagle. Los pases solo aparecen en la app de Six Flags, y el programa cambia de un día para otro.
 
-Ni Six Flags se pone de acuerdo con el nombre. La nota de prensa del 4 de noviembre habla de «Snoopy's Christmas Follies», y la guía del evento del parque, de «Snoopy's Merry Christmas Follies». Yo me quedo con el de la guía, que al fin y al cabo es el programa de mano del parque.
+Ni Six Flags se pone de acuerdo con el nombre: la nota de prensa del 4 de noviembre habla de «Snoopy's Christmas Follies», y la guía del evento del parque, de «Snoopy's Merry Christmas Follies».
 
-En años anteriores la Merry Farm ya tenía su espectáculo sobre hielo con Snoopy; según Wikipedia, el último se llamaba «Snoopy's Night Before Christmas». Las Follies son un programa nuevo: en la guía, encima de la descripción, pone «All new!».
+La Merry Farm ya había tenido antes shows sobre hielo con Snoopy, por ejemplo «Snoopy's Night Before Christmas».
 
 ## Luces, espectáculos y Papá Noel
 
-El parque entero se llena de miles de luces, kilómetros de guirnaldas y copos de nieve gigantes, y cada noche llega el Holiday Lighting Moment en todo el recinto. En Ghost Town, durante Snow and Glow, las luces de la Main Street y la Schoolhouse Road bailan al ritmo de música navideña mientras cae nieve. En el Calico Park, la «'Tis the Season Tree Lighting Ceremony» enciende el árbol de Navidad.
+Por todo el parque cuelgan miles de luces, guirnaldas y grandes copos de nieve. Cada noche llega el Holiday Lighting Moment. En Snow and Glow, en Ghost Town, las luces de la Main Street y la Schoolhouse Road bailan con música navideña mientras nieva. En el Calico Park, el árbol de Navidad se enciende durante la «'Tis the Season Tree Lighting Ceremony».
 
-En el programa también están:
+Además hay estos espectáculos:
 
 - Home for the Holidays: revista musical con baile y decorado invernal en la Calico Mine Stage
 - The Gift of the Magi, 1885 y A Calico Christmas Carol: dos obras basadas en O. Henry y Charles Dickens, en el Bird Cage Theatre
@@ -59,13 +59,13 @@ En el programa también están:
 
 Ghost Town pasa a ser el Christmas Crafts Village, con decenas de artesanos de la zona. Allí Myles Freedman sopla vidrio todos los días y Nathan Howard talla madera con motosierra.
 
-A Papá Noel lo encuentras en Santa's Christmas Cabin, que es la antigua Wilderness Dance Hall reconvertida. Abre cada día más o menos media hora después que el parque, y las fotos se pagan aparte. Hay galletas, chocolate caliente, hot toddy y vino caliente; el alcohol, solo a partir de 21 años y con documento de identidad. En Mrs. Claus' Kitchen, algunos días y por una pequeña tarifa, los niños decoran una magdalena y se la llevan a casa.
+A Papá Noel lo encuentras en Santa's Christmas Cabin, la antigua Wilderness Dance Hall reconvertida. Abre cada día más o menos media hora después que el parque, y las fotos se pagan aparte. En la cabaña hay galletas, chocolate caliente, hot toddy y vino caliente. El alcohol te lo sirven a partir de 21 años y con documento de identidad. En Mrs. Claus' Kitchen, algunos días y por una pequeña tarifa, los niños decoran una magdalena y se la llevan a casa.
 
 ## Horarios
 
-Durante el evento, el parque abre todos los días salvo el 25 de diciembre. Incluso en Thanksgiving, el 26 de noviembre, está abierto hasta las 22:00. Estos son los horarios del calendario del parque:
+El parque abre todos los días salvo el 25 de diciembre, también en Thanksgiving (26 de noviembre). Los horarios día a día:
 
-- del 20 al 28 de noviembre: de 10:00 a 22:00
+- del 20 al 28 de noviembre (con Thanksgiving el 26): de 10:00 a 22:00
 - 29 de noviembre: de 10:00 a 21:00
 - del 30 de noviembre al 4 de diciembre y del 7 al 10 de diciembre: de 10:00 a 18:00
 - 5, 11 y 12 de diciembre: de 10:00 a 22:00
@@ -86,11 +86,11 @@ Para estas fiestas, Knott's no ha anunciado el cierre programado de ninguna atra
 
 ```
 
-## Qué incluye la entrada y qué se paga aparte
+## Lo que cuesta el día
 
-Los espectáculos, las luces, algunas actividades y la mayoría de las atracciones entran con la entrada. La comida, las bebidas, los recuerdos y algunas experiencias concretas se pagan aparte. Una entrada de un día con fecha fija cuesta en internet desde 65 $ más impuestos, y los niños de hasta dos años no la necesitan. No hace falta reservar, pero la entrada no se reembolsa ni aunque llueva.
+Los espectáculos, las luces, el Christmas Crafts Village y la mayoría de las atracciones están incluidos en la entrada. Aparte pagas la comida, las bebidas y los recuerdos, las fotos con Papá Noel, la decoración de magdalenas en Mrs. Claus' Kitchen y Fast Lane. Una entrada de un día con fecha fija cuesta en internet desde 65 $ más impuestos, y los niños de hasta dos años no la necesitan. No hace falta reservar. Si llueve, no se devuelve el dinero.
 
-El Season Pass 2027 cuesta 120 $ y ya vale para lo que queda de 2026; la renovación, 110 $. A plazos son 30 $ de entrada y diez cuotas de 9 $. A partir de la segunda visita, el pase sale más barato que dos entradas de un día al precio más bajo, y de paso ya tienes resuelto el regalo de Navidad para ti mismo. Fast Lane, con el que te saltas la cola normal en las atracciones participantes, cuesta desde 75 $ por un día y tiene plazas limitadas cada día.
+El Season Pass 2027 cuesta 120 $ y ya vale para lo que queda de 2026; la renovación, 110 $. A plazos son 30 $ de pago inicial y diez cuotas de 9 $. Dos entradas de un día al precio más bajo cuestan 130 $, así que el pase se amortiza en la segunda visita. Como regalo de Navidad para ti mismo también cuela. Con Fast Lane te saltas la cola normal en las atracciones participantes, y cuesta desde 75 $ por un día. El parque solo vende un número limitado cada día.
 
 En la carta navideña, el Sutter's Grill tiene un Cranberry Bacon Jam Cheeseburger con cebolla frita, la Gourmet Churro Factory vende un Hot Chocolate Churro y en Mrs. Murphy's hay flatbread con arándanos rojos, menta y queso de cabra. El vaso de la Merry Farm cuesta 13,99 $, y cada recarga, 3,99 $.
 
@@ -98,15 +98,13 @@ El Knott's Hotel está al lado del parque y vende paquetes con entrada incluida.
 
 ## Cómo llegar y aparcar
 
-El parque está en el 8039 de Beach Boulevard, en Buena Park. Aparcar cuesta 40 $, y 60 $ en el Grand Preferred Lot, el más cercano al parque; no se acepta efectivo. Los aparcamientos abren más o menos una hora antes que el parque. Sin coche, llegas en Metrolink hasta la estación de Buena Park, en Lakeknoll Drive, y desde allí bajas por Beach Boulevard en un autobús de OCTA. El Karmel Shuttle sale de hoteles de Anaheim, Garden Grove y Buena Park si lo reservas antes. Según el parque, desde el aeropuerto John Wayne, en el condado de Orange, son 20 minutos, y desde LAX, 30.
+El parque está en el 8039 de Beach Boulevard, en Buena Park. Aparcar cuesta 40 $, y 60 $ en el Grand Preferred Lot, junto al parque. No se acepta efectivo. Los aparcamientos abren más o menos una hora antes que el parque. Sin coche, llegas en Metrolink hasta la estación de Buena Park, en Lakeknoll Drive, y desde allí bajas por Beach Boulevard en un autobús de OCTA. El Karmel Shuttle sale de hoteles de Anaheim, Garden Grove y Buena Park si lo reservas antes. Según el parque, desde el aeropuerto John Wayne, en el condado de Orange, son 20 minutos, y desde LAX, 30.
 
-En el Disneyland Resort de Anaheim, la [temporada navideña con Papá Noel en Toontown](/news/disneyland-resort-holidays-2026) empieza ya el 13 de noviembre.
+## De granja de bayas a Six Flags
 
-## La Merry Farm existe desde 1985
+Desde 1923, la familia Knott vendía bayas, mermelada y tartas en un puesto junto a la carretera. En 1941, Walter Knott abrió al lado la Ghost Town, y desde 1947 el conjunto se llama Knott's Berry Farm. Desde 1983, cuando se construyó Camp Snoopy, Snoopy es la mascota del parque. En 1985, Gary Salisbury creó la Merry Farm. En 1997 la familia vendió el parque a Cedar Fair, que el 1 de julio de 2024 se fusionó con Six Flags. En otoño aquí estuvo la Scary Farm, y hay más en nuestro resumen de [Halloween en Estados Unidos](/blog/halloween-estados-unidos-parques-2026).
 
-Desde 1923, la familia Knott vendía bayas, mermelada y tartas en un puesto junto a la carretera. En 1941, Walter Knott abrió al lado la Ghost Town, y desde 1947 el conjunto se llama Knott's Berry Farm. Snoopy es la mascota del parque desde 1983, el año en que se construyó Camp Snoopy, y dos años después Gary Salisbury se inventó la Merry Farm. En 1997 la familia vendió el parque a Cedar Fair, que el 1 de julio de 2024 se fusionó con Six Flags. En otoño, el parque todavía tenía la Scary Farm; hay más en nuestro resumen de [Halloween en Estados Unidos](/blog/halloween-estados-unidos-parques-2026).
-
-Este invierno, Six Flags celebra las fiestas en once parques. En [Six Flags Great Adventure](/news/six-flags-great-adventure-holiday-in-the-park-2026) y en Six Flags Over Georgia, Holiday in the Park llega renovado, y Six Flags Magic Mountain, en Valencia, estrena siete espectáculos a partir del 26 de noviembre. Dos ofertas de la nota de prensa no valen en Knott's: la nueva entrada gratuita para mayores de 65 años y la entrada de Black Friday que incluye un día de la temporada de primavera y verano de 2027.
+Este invierno, Six Flags celebra las fiestas en once parques. En [Six Flags Great Adventure](/news/six-flags-great-adventure-holiday-in-the-park-2026) y en Six Flags Over Georgia, Holiday in the Park llega renovado, y Six Flags Magic Mountain, en Valencia, estrena siete espectáculos a partir del 26 de noviembre. El Disneyland Resort de Anaheim celebra al mismo tiempo su [temporada navideña](/news/disneyland-resort-holidays-2026). La nueva entrada gratuita para mayores de 65 años y la entrada de Black Friday, con la que por el precio de un día tienes toda la temporada de primavera y verano de 2027, no valen en Knott's.
 
 [Knott's Berry Farm](ref:knotts-berry-farm?full)
 
