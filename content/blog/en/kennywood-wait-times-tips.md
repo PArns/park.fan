@@ -95,7 +95,7 @@ The [Jack Rabbit](ref:kennywood/jack-rabbit?bare) is Kennywood's oldest coaster 
 
 ```
 
-The [Old Mill](ref:kennywood/old-mill?bare) is older still. It opened in 1901, which makes it the oldest surviving ride in the park, and according to Kennywood no dark ride on water anywhere in the world has run longer without a break. It has gone by plenty of names over the years, "Panama Canal", "Tour Around the World" and, from 2004 to 2020, "Garfield's Nightmare". In 2020 the park restored it.
+The [Old Mill](ref:kennywood/old-mill?bare) is older still. It opened in 1901, which makes it the oldest surviving ride in the park, and Kennywood counts it as the longest unbroken run of any water dark ride in the world. It has gone by plenty of names over the years, "Panama Canal", "Tour Around the World" and, from 2004 to 2020, "Garfield's Nightmare". In 2020 the park restored it.
 
 The [Kangaroo](ref:kennywood/kangaroo?bare) in the Good Time Midway dates from 1962. After the 2020 season Kennywood took it down, renovated it and put it back up in 2022.
 
@@ -103,7 +103,7 @@ The [Kangaroo](ref:kennywood/kangaroo?bare) in the Good Time Midway dates from 1
 
 The layout around the Lagoon has barely changed since the early days, and three rides from 1927 to 1930 stand close together there: Racer, the Merry-Go-Round and the Auto Race. Paddle boats go out on the water in the middle. They cost extra and won't be back until 2027.
 
-[Racer](ref:kennywood/racer?bare) looks like two wooden coasters racing side by side. In fact it's one continuous track, and if you board on the right you come back on the left. There's no other coaster in the US with a track like it, Kennywood says, and RCDB lists Racer as a Möbius coaster. John A. Miller designed it, and Philadelphia Toboggan Coasters built it in 1927. At 72.5 feet (22 metres), Racer is the tallest of the three wooden coasters, yet at 40 mph (64 km/h) it's also the slowest. The track is 4,500 feet (1,372 metres) long, and a lap takes 1:32 minutes. With three trains of 24 seats each, Racer gets through 1,400 riders an hour. An earlier coaster called Racer stood in the park from 1910 to 1926.
+[Racer](ref:kennywood/racer?bare) looks like two wooden coasters racing side by side. In fact it's one continuous track, and if you board on the right you come back on the left. RCDB lists Racer as a Möbius coaster, and by Kennywood's count it's the only coaster in the US with a track like that. John A. Miller designed it, and Philadelphia Toboggan Coasters built it in 1927. At 72.5 feet (22 metres), Racer is the tallest of the three wooden coasters, yet at 40 mph (64 km/h) it's also the slowest. The track is 4,500 feet (1,372 metres) long, and a lap takes 1:32 minutes. With three trains of 24 seats each, Racer gets through 1,400 riders an hour. An earlier coaster called Racer stood in the park from 1910 to 1926.
 
 ```glossary-widget slug=wooden-coaster
 
@@ -115,7 +115,7 @@ According to Kennywood, the [Auto Race](ref:kennywood/auto-race?bare) from 1930 
 
 ### Steelers Country
 
-The Pittsburgh Steelers got an area of their own in 2019, Steelers Country, and its ride is [Steel Curtain](ref:kennywood/the-steel-curtain?bare). S&S Worldwide built the steel coaster to a design by Joe Draves, and it opened on 13 July 2019 where the Log Jammer flume used to be. Steel Curtain is 220 feet (67 metres) tall, and the park says no coaster in Pennsylvania is taller. RCDB gives 75 mph (121 km/h) and eight inversions, Kennywood 76 mph (122 km/h) and nine. The highest inversion is 197 feet (60 metres) above the ground and was the highest in the world when the coaster opened. The train needs two minutes for its 4,000 feet (1,219 metres), and two trains with 24 seats each are in service.
+The Pittsburgh Steelers got an area of their own in 2019, Steelers Country, and its ride is [Steel Curtain](ref:kennywood/the-steel-curtain?bare). S&S Worldwide built the steel coaster to a design by Joe Draves, and it opened on 13 July 2019 where the Log Jammer flume used to be. At 220 feet (67 metres), Steel Curtain is the tallest coaster in Pennsylvania by Kennywood's reckoning. RCDB gives 75 mph (121 km/h) and eight inversions, Kennywood 76 mph (122 km/h) and nine. The highest inversion is 197 feet (60 metres) above the ground and was the highest in the world when the coaster opened. The train needs two minutes for its 4,000 feet (1,219 metres), and two trains with 24 seats each are in service.
 
 In July 2023 Kennywood closed Steel Curtain to add extra footings and supports. The coaster sat out the whole 2024 season and came back in May 2025. The weight limit is 300 lbs (136 kg), and a test seat lets anyone built like a Steelers linebacker check the fit before joining the queue.
 
@@ -123,7 +123,7 @@ The End Zone Cafe, the Punts Bar and a Steelers merchandise shop are in the same
 
 ### Kenny Lane
 
-[Phantom's Revenge](ref:kennywood/phantoms-revenge?bare) opened in 1991 as Steel Phantom, an Arrow Dynamics steel coaster with four loops. Its 80 mph (129 km/h) and its 225-foot (69-metre) drop were world records for speed and drop height at the time, the park says. Over the winter of 2000/01, D.H. Morgan rebuilt it, took the loops out and set the big drop a little lower, and in 2001 it reopened as Phantom's Revenge. For its 25th birthday in 2026 the cars run alternately in green and purple, the station has been renewed, and the queue plays the original ride sounds, re-recorded.
+[Phantom's Revenge](ref:kennywood/phantoms-revenge?bare) opened in 1991 as Steel Phantom, an Arrow Dynamics steel coaster with four loops. Kennywood lists its 80 mph (129 km/h) and its 225-foot (69-metre) drop as the world records for speed and drop height at the time. Over the winter of 2000/01, D.H. Morgan rebuilt it, took the loops out and set the big drop a little lower, and in 2001 it reopened as Phantom's Revenge. For its 25th birthday in 2026 the cars run alternately in green and purple, the station has been renewed, and the queue plays the original ride sounds, re-recorded.
 
 The train climbs 160 feet (49 metres) and reaches 85 mph (137 km/h). RCDB puts the longest drop at 228 feet (69.5 metres), while Kennywood gives 232 feet (71 metres) for the second drop. The two disagree on the length as well, with 3,200 feet (975 metres) at RCDB and 3,365 feet (1,026 metres) from the park. Along the way the train passes twice through Thunderbolt's wooden structure. The ride lasts 1:57 minutes, and each of the two trains seats 28.
 
@@ -147,7 +147,7 @@ Kennywood has rebuilt Noah's Ark, which dates from 1936, twice: in 1969 it got t
 
 Lost Kennywood, opened in 1995, was the biggest single expansion in the park's history. It sits where the Sunlite Pool used to be, and it was modelled on Pittsburgh's Luna Park, which closed in 1909.
 
-At its centre is [Pittsburg\* Plunge](ref:kennywood/pittsburg-plunge?bare), a shoot-the-chute from 1995 that also won't reopen until 2027. Three boats holding 20 people each plunge 50 feet (15 metres) into the pool. The name is missing its h because that's how the city used to be spelled.
+At its centre is [Pittsburg\* Plunge](ref:kennywood/pittsburg-plunge?bare), a shoot-the-chute from 1995 that, like Raging Rapids, stays dry until 2027. Three boats holding 20 people each plunge 50 feet (15 metres) into the pool. The name is missing its h because that's how the city used to be spelled.
 
 The [Exterminator](ref:kennywood/exterminator?bare) is a wild mouse by Reverchon with spinning cars. It opened on 18 April 1999 inside a building dressed up as a factory taken over by mice. The highest point is 42.7 feet (13 metres), the cars reach 29.1 mph (47 km/h) on 420 metres of track, and a ride lasts 1:48 minutes. Nine cars with four seats each take 900 riders an hour through the building.
 
@@ -232,7 +232,7 @@ Holiday Lights, which started in 2011, runs in 2026 from 13 November to 3 Januar
 - Saturdays and Sundays from 3 to 9 p.m.
 - the Friday after Thanksgiving and every day from 19 December, from 3 to 9 p.m.
 
-The Christmas tree is just under 100 feet (almost 30 metres) tall and carries more than 250,000 lights. The park says there's no taller Christmas tree in Pennsylvania either, which gives Kennywood two of the state's height records at once. It's switched on every evening at 5:45 p.m. between Aero 360 and the Pizza Warehouse.
+The Christmas tree is just under 100 feet (almost 30 metres) tall and carries more than 250,000 lights. Kennywood also claims it as Pennsylvania's tallest Christmas tree, which puts the state's height records for coasters and conifers in the same park. It's switched on every evening at 5:45 p.m. between Aero 360 and the Pizza Warehouse.
 
 New for 2026 is "Finding Christmas: A Whimsical Journey on Ice", an ice show with singing, dancing and BMX stunts on the Garden Stage. Also on the schedule:
 
