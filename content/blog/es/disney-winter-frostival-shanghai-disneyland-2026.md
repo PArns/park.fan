@@ -72,7 +72,7 @@ En la carta aparecen rollitos de primavera rellenos de hamburguesa de wagyu con 
 
 ## En metro, y en noviembre sin ferri
 
-La línea 11 del metro termina en la estación Disney Resort, a pocos pasos del parque, de Disneytown y del Wishing Star Park. Pasa un tren cada pocos minutos: el primero llega a las 7:08 y el último a las 23:39. Del 4 al 30 de noviembre, el Wishing Star Ferry está en revisión, y mientras tanto un autobús lanzadera gratuito une el Shanghai Disneyland Hotel, el parque y Disneytown.
+La línea 11 del metro termina en la estación Disney Resort, a pocos pasos del parque, de Disneytown y del Wishing Star Park. Pasa un tren cada pocos minutos: el primero llega a las 7:08 y el último a las 23:39. Del 4 al 30 de noviembre, el Wishing Star Ferry está en revisión, y mientras tanto un servicio lanzadera gratuito une el Shanghai Disneyland Hotel, el parque y Disneytown.
 
 Los fines de semana y festivos, los aparcamientos se llenan o casi, así que el resort recomienda esos días ir en metro, taxi o autobús.
 

@@ -65,7 +65,7 @@ Avec des enfants, Disneytown vaut le détour un week-end ou un jour férié : l
 
 Pour l’hiver, le resort vend deux offres dont il n’a pas communiqué les prix :
 
-- Disney Dream Vacation – Winter Frostival Package : une nuit au Shanghai Disneyland Hotel ou au Toy Story Hotel, buffet du petit-déjeuner et du dîner pour deux adultes, deux billets d’une journée à date fixe, des bons de restauration pour le parc et le Disney Premier Access pour la Cavalcade, pour deux personnes
+- Disney Dream Vacation – Winter Frostival Package : une nuit au Shanghai Disneyland Hotel ou au Toy Story Hotel, buffet du petit-déjeuner et du dîner pour deux adultes, deux billets d’une journée à date fixe, des bons de restauration pour le parc et le Disney Premier Access pour la Cavalcade pour deux personnes
 - billet d’une journée avec un bon de 88 yuans : valable un jour au choix jusqu’au 3 janvier 2027, le bon donne droit à un menu combiné à l’heure du dîner dans certains restaurants rapides du parc
 
 À la carte, on trouve de nouveaux rouleaux de printemps fourrés façon cheeseburger au wagyu et des youdunzi en forme de Mickey, servis seulement au petit-déjeuner. Contre le froid, il y a du chocolat chaud et du thé au lait, plus des biscuits de Noël, des muffins, de la barbe à papa et des tanghulu aux couleurs de Mickey et de ses amis. La Royal Banquet Hall et l’Aurora proposent de nouveaux menus de fête, et les deux hôtels servent des buffets le soir.

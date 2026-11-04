@@ -39,7 +39,7 @@ seo:
     - Shanghai Disney Resort kerst
 ---
 
-Van 19 november 2026 tot 20 februari 2027 houdt [Shanghai Disneyland](ref:shanghai-disneyland) zijn Disney Winter Frostival. Nieuw deze winter is een meedoeshow waarin Olaf en Anna tussen het publiek staan, op het plein voor het Enchanted Storybook Castle.
+Van 19 november 2026 tot 20 februari 2027 houdt [Shanghai Disneyland](ref:shanghai-disneyland) zijn Disney Winter Frostival. Nieuw deze winter is een meedoeshow waarin Olaf en Anna tussen het publiek staan, in het publieksgedeelte voor het Enchanted Storybook Castle.
 
 ## De nieuwe show voor het kasteel
 

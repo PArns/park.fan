@@ -47,7 +47,7 @@ Lo show si chiama «Star Squad: Join Olaf for a Cozy Celebration» e la musica l
 
 ## Cosa ritorna dagli inverni passati
 
-Con Mickey's Snow Magic la Mickey Avenue torna a essere una palla di vetro con la neve, e dentro ci sei tu, mentre sopra la strada volteggiano i fiocchi. Nella Disney Winter Magic Cavalcade i personaggi Disney sfilano accanto a carri allegorici con scene invernali. Quando fa buio, con «A Celebration of Disney Winter Frostival» le proiezioni scorrono sul castello, e luci e musica arrivano fino ai Gardens of Imagination. In caso di pioggia, vento forte, aria di cattiva qualità, nebbia fitta o temporale il resort può rinviare o cancellare gli spettacoli.
+Con Mickey's Snow Magic la Mickey Avenue torna a essere una palla di vetro con la neve, e dentro ci sei tu, mentre sopra la strada volteggiano i fiocchi. Nella Disney Winter Magic Cavalcade i personaggi Disney sfilano accanto a carri allegorici con scene invernali. Quando fa buio, con «A Celebration of Disney Winter Frostival» le proiezioni scorrono sul castello, e luci e suoni arrivano fino ai Gardens of Imagination. In caso di pioggia, vento forte, aria di cattiva qualità, nebbia fitta o temporale il resort può rinviare o cancellare gli spettacoli.
 
 Per la foto invernale ci sono pupazzi di neve e sculture di ghiaccio dei personaggi Disney sulla Mickey Avenue e nei Gardens of Imagination. Nell’area Zootopia trovi in versione di neve gli animali di Zootropolis.
 
@@ -65,7 +65,7 @@ Se hai bambini, a Disneytown conviene andare nel fine settimana o in un giorno f
 
 Per l’inverno il resort vende due offerte, senza averne indicato i prezzi:
 
-- Disney Dream Vacation – Winter Frostival Package: una notte allo Shanghai Disneyland Hotel o al Toy Story Hotel, colazione e cena a buffet per due adulti, due biglietti giornalieri a data fissa, buoni da spendere nel parco e Disney Premier Access per la Cavalcade per due persone
+- Disney Dream Vacation – Winter Frostival Package: una notte allo Shanghai Disneyland Hotel o al Toy Story Hotel, colazione e cena a buffet per due adulti, due biglietti giornalieri a data fissa, buoni per cibo e bevande nel parco e Disney Premier Access per la Cavalcade per due persone
 - biglietto giornaliero con buono da 88 yuan: vale in un giorno a tua scelta fino al 3 gennaio 2027, e il buono copre un menù combinato all’ora di cena in alcuni ristoranti veloci del parco
 
 Fra le novità del menù ci sono involtini primavera ripieni di cheeseburger di wagyu e youdunzi a forma di Topolino, che si trovano solo a colazione. Contro il freddo ci sono cioccolata calda e tè al latte, poi biscotti di Natale, muffin, zucchero filato e tanghulu con l’aspetto di Topolino e dei suoi amici. La Royal Banquet Hall e l’Aurora hanno nuovi menù delle feste, e nei due hotel la cena è a buffet.
