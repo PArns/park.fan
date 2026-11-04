@@ -2,7 +2,7 @@
 title: 'New theme park attractions 2027: what parks and manufacturers have confirmed'
 translationKey: park-novelties-2027
 date: '2026-10-04'
-updatedAt: '2026-10-26'
+updatedAt: '2026-11-04'
 author: patrick
 mode: published
 featured: false
@@ -79,7 +79,7 @@ I've kept the feet, mph and inches the parks use and put rounded metric figures 
 | [Efteling](ref:efteling?bare)                                         | Fairytale Library               | 32nd fairytale in the Fairytale Forest | from 2027              |
 | [Bobbejaanland](ref:bobbejaanland?bare)                               | Nickelodeon area                | three family rides                     | from April 2027        |
 | [Disney Adventure World](ref:disney-adventure-world?bare)             | Wilderness Explorers Sky Swings | Swing ride themed to "Up"              | 2027                   |
-| [Parc Astérix](ref:parc-asterix?bare)                                 | Greek area expansion            | two family attractions                 | 2027                   |
+| [Parc Astérix](ref:parc-asterix?bare)                                 | Greek area expansion            | two family rides, restaurant           | spring 2027            |
 | [Nigloland](ref:nigloland?bare)                                       | Supersonic 1887                 | Launch coaster, Mack Rides             | 2027                   |
 | [Chessington](ref:chessington-world-of-adventures?bare)               | Minecraft World                 | Themed area with a coaster             | 2027                   |
 | [Paultons Park](ref:paultons-park?bare)                               | Serpent's Curse                 | Water coaster, Mack Rides              | 2027                   |
@@ -233,11 +233,17 @@ The "Lion King" area Disney is building in the same park still has no year.
 
 ### Expanding the Greek area at Parc Astérix
 
-[Parc Astérix](ref:parc-asterix) is enlarging its Greek area in 2027 with two family attractions,
-a playground and La Table de Dionysos, a restaurant with 450 seats. In its press area the park
-doesn't give the names or manufacturers of the two attractions. Next to the park, the 300-room
-Hotel L'Odyssée also opens in spring 2027, designed around Asterix and Obelix's travels to the
-Orient.
+[Parc Astérix](ref:parc-asterix) is adding two family rides to its Greek area by spring 2027. On
+Tournikotis Tournikotas, riders go up and down several times in two drop towers. La Flotte de
+Poséidon has eight boats that spin while they climb a central column. Between them the two rides
+handle 800 people an hour, and the park hasn't named a manufacturer for either. The area also gets
+the playground L'Aire de Jeu d'Ulysse and La Table de Dionysos, a table-service restaurant with 460
+seats, 350 indoors and 110 on the terrace.
+
+In the same area, the wooden coaster [Tonnerre 2 Zeus](ref:parc-asterix/tonnerre-2-zeus?bare) gets
+completely new track for the 2027 season. The park wants to finish repairs to individual sections
+this year. Next to the park, the 300-room Hotel L'Odyssée opens on 26 March 2027, designed around
+Asterix and Obelix's travels to the Orient.
 
 ### Supersonic 1887 at Nigloland
 
@@ -605,6 +611,8 @@ The next chance is the IAAPA Expo trade show in Orlando, with the exhibition run
 - Bobbejaanland: [Home page (Bobbejaanland)](https://www.bobbejaanland.be/), Nickelodeon area: ["Bobbejaanland start werken voor nieuwe themazone met 3 familieattracties" (VRT NWS, 12 September 2026)](https://www.vrt.be/vrtnws/nl/2026/09/02/bobbejaanland-investeringen/)
 - Disney Adventure World: [Our Transformation (Disneyland Paris)](https://news.disneylandparis.com/en/our-transformation/)
 - Parc Astérix: [Projects and development (Parc Astérix)](https://newsroom.parcasterix.fr/entreprise/projets-et-developpement/)
+- Parc Astérix: [Announcement on Grèce 2027 (Parc Astérix)](https://newsroom.parcasterix.fr/actualites/en-2027-au-parc-asterix-la-grece-en-grand/?lang=fr)
+- Parc Astérix: [Announcement on Hotel L'Odyssée (Parc Astérix)](https://newsroom.parcasterix.fr/actualites/le-parc-asterix-ouvre-son-nouvel-hotel-lodyssee-le-26-mars-2027-plus-grand-et-plus-spectaculaire-que-jamais/?lang=fr)
 - Nigloland: [Supersonic 1887 (Nigloland)](https://www.nigloland.fr/supersonic1887), calendar: [Our calendars (Nigloland)](https://www.nigloland.fr/nos-calendriers)
 - Futuroscope: [The 2027 season for the 40th anniversary (Futuroscope)](https://www.futuroscope.news/pour-son-40e-anniversaire-le-futuroscope-annonce-une-saison-evenement-avec-en-ligne-de-mire-un-nouvel-hotel-thematise-4-etoiles/?lang=fr)
 - Chessington: [Minecraft World (Merlin, 21 March 2026)](https://www.merlinentertainments.biz/newsroom/news-releases/2026/minecraft-chessington/), [Minecraft hotel (Merlin, 26 September 2026)](https://www.merlinentertainments.biz/newsroom/news-releases/2026/minecraft-hotel-coming-to-chessington/)
