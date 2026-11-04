@@ -8,16 +8,10 @@ import { cn } from '@/lib/utils';
 export function HeroTextPanel({ children, className, ...rest }: React.ComponentProps<'div'>) {
   return (
     // min-w-0: a truncated row inside must not widen this box past its column. From `md` it
-    // reserves its settled height (docs/features/homepage-hero.md), Parky's row included from `lg`:
-    // it stands on the photo's lower edge, so a column painted half-parsed would grow upwards and
-    // move the headline.
-    <div
-      {...rest}
-      className={cn(
-        'w-full max-w-5xl min-w-0 md:min-h-[22.5rem] lg:min-h-[27.25rem] xl:min-h-[28.25rem]',
-        className
-      )}
-    >
+    // reserves its settled height per language (`.hero-text-reserve`), Parky's row included from
+    // `lg`: it stands on the photo's lower edge, so a column painted half-parsed would grow upwards
+    // and move the headline.
+    <div {...rest} className={cn('hero-text-reserve w-full max-w-5xl min-w-0', className)}>
       {children}
     </div>
   );

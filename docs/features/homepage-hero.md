@@ -74,13 +74,15 @@ pin the whole six-locale homepage to it:
 The intro is one `t.rich` message with `{parks, number}` / `{attractions, number}` and a `<strong>`
 tag; a phone shows the one-line `home.hero.introShort`, and both are in the HTML.
 
-**The column reserves its height from `md`** (`md:min-h-[22.5rem]`, `lg:min-h-[27.25rem]`,
-`xl:min-h-[28.25rem]`): it stands on the photo's lower edge, so a column painted from half-parsed
-HTML would grow upwards and move the headline
+**The column reserves its height from `md`, per language** (`.hero-text-reserve` in
+`app/globals.css`): it stands on the photo's lower edge, so a column painted from half-parsed HTML
+would grow upwards and move the headline
 ([a streamed section owes the page its height](../rules/a-streamed-section-owes-the-page-its-height.md)).
-Measured on 2026-11-04, settled, in all six locales: 352 px at 768 px (Italian 323), 435 px at
-1024 px (English 374) and 449 px from 1280 px, Parky's row included. A phone reserves nothing: the
-column is 197–280 px there and arrives in the first chunk.
+One height for all languages left German and English 60 px of empty column above the card rail.
+Measured on 2026-11-05, settled: 298 px at 800 px (French 328), 386 px at 1024 px (French 434), and
+from 1280 px 397 px in German and English, 457 px in the other four, whose headline takes a third
+line. Parky's row is included from 1024 px. A phone reserves nothing: the column is 197–280 px there
+and arrives in the first chunk.
 
 ## Parky in the hero (desktop)
 

@@ -111,7 +111,8 @@ export function HeroWithNearby({ initialCounts }: { initialCounts: HeroInitialCo
       ) : (
         // A phone gets the one-line version, so the photo above the text keeps its room. Both are
         // in the HTML and CSS picks one, so the server's markup is right on every viewport.
-        <p className="text-foreground/85 max-w-4xl text-base leading-relaxed md:text-lg">
+        // `lg:mt-2` keeps the text off Parky's row above it.
+        <p className="text-foreground/85 max-w-4xl text-base leading-relaxed md:text-lg lg:mt-2">
           <span className="md:hidden">{tHome.rich('hero.introShort', introValues)}</span>
           <span className="hidden md:inline">{tHome.rich('hero.intro', introValues)}</span>
         </p>

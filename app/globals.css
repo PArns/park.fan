@@ -2385,6 +2385,40 @@
 }
 
 /*
+ * The hero's text column reserves its settled height from `md` (`HeroTextPanel`), per language:
+ * French wraps the intro a line longer, and from 1280 px the headline takes a third line in Dutch,
+ * French, Spanish and Italian. One height for all would leave German and English a gap above the
+ * card rail. Settled heights in docs/features/homepage-hero.md.
+ */
+@media (width >= 48rem) {
+  .hero-text-reserve {
+    min-height: 18.75rem;
+  }
+  :lang(fr) .hero-text-reserve {
+    min-height: 20.625rem;
+  }
+}
+@media (width >= 64rem) {
+  .hero-text-reserve {
+    min-height: 24.25rem;
+  }
+  :lang(fr) .hero-text-reserve {
+    min-height: 27.25rem;
+  }
+}
+@media (width >= 80rem) {
+  .hero-text-reserve {
+    min-height: 25rem;
+  }
+  :lang(nl) .hero-text-reserve,
+  :lang(fr) .hero-text-reserve,
+  :lang(es) .hero-text-reserve,
+  :lang(it) .hero-text-reserve {
+    min-height: 28.625rem;
+  }
+}
+
+/*
  * Hero entrance: the containers never animate (see the stagger rules below), their content does,
  * one line at a time from the left (`--hero-in-x`) out of a blur. The search field's glass loses
  * its blur for the length of its item's animation.
