@@ -2,7 +2,7 @@
 title: 'Olaf in scena al Winter Frostival di Shanghai Disneyland'
 translationKey: disney-winter-frostival-shanghai-disneyland-2026
 date: '2026-11-04'
-time: '09:00'
+time: '08:34'
 author: patrick
 mode: published
 featured: false
@@ -47,7 +47,7 @@ Lo show si chiama «Star Squad: Join Olaf for a Cozy Celebration» e la musica l
 
 ## Cosa ritorna dagli inverni passati
 
-Con Mickey's Snow Magic la Mickey Avenue torna a essere una palla di vetro con la neve, e dentro ci sei tu, mentre sopra la strada volteggiano i fiocchi. Nella Disney Winter Magic Cavalcade i personaggi Disney sfilano accanto a carri allegorici con scene invernali. Quando fa buio, con «A Celebration of Disney Winter Frostival» le proiezioni scorrono sul castello, e luci e suoni arrivano fino ai Gardens of Imagination. In caso di pioggia, vento forte, aria di cattiva qualità, nebbia fitta o temporale il resort può rinviare o cancellare gli spettacoli.
+Con Mickey's Snow Magic tornano a volteggiare i fiocchi sopra la Mickey Avenue, e chi ci sta sotto si ritrova dentro una palla di vetro con la neve. La Disney Winter Magic Cavalcade è la parata invernale con i carri allegorici, ed è proprio quella per cui il pacchetto invernale più sotto include il Premier Access. Quando fa buio, con «A Celebration of Disney Winter Frostival» le proiezioni scorrono sul castello, e luci e suoni arrivano fino ai Gardens of Imagination. Il resort può rinviare o cancellare gli spettacoli per pioggia, vento, nebbia o temporali, e anche quando la qualità dell’aria è cattiva.
 
 Per la foto invernale ci sono pupazzi di neve e sculture di ghiaccio dei personaggi Disney sulla Mickey Avenue e nei Gardens of Imagination. Nell’area Zootopia trovi in versione di neve gli animali di Zootropolis.
 
@@ -55,11 +55,11 @@ Per la foto invernale ci sono pupazzi di neve e sculture di ghiaccio dei persona
 
 Dal 1° dicembre al 3 gennaio Topolino e i suoi amici indossano nuovi costumi da sci, e nei negozi c’è la collezione Ski Party abbinata. Santa Goofy torna sulla Mickey Avenue, mentre Duffy e i suoi amici arrivano con nuovi abiti natalizi. Principesse, regine e principi li incontri per tutto il Frostival ai Castle Encounters, a volte con i costumi invernali della Cavalcade.
 
-Alla Mickey's Magical Tree Lighting Ceremony, nei Gardens of Imagination, Topolino, Minnie, Duffy e LinaBell accendono l’albero di Natale più alto del resort, con una band dal vivo. La data il resort non l’ha ancora comunicata. Si aggiungono altri tre spettacoli natalizi: Light Up the Holidays with Magic, Christmas Swing e i Mickey Avenue Carolers.
+Alla Mickey's Magical Tree Lighting Ceremony, nei Gardens of Imagination, Topolino, Minnie, Duffy e LinaBell accendono l’albero di Natale più alto del resort, con una band dal vivo. La data il resort non l’ha ancora comunicata. I Mickey Avenue Carolers cantano sulla Mickey Avenue, e in più ci sono gli spettacoli natalizi Light Up the Holidays with Magic e Christmas Swing.
 
-Il 31 dicembre e il 1° gennaio Topolino e i suoi amici si cambiano per il nuovo anno, e al castello va in scena lo show di Capodanno «Ignite the New Year».
+Il 31 dicembre e il 1° gennaio Topolino e i suoi amici lasciano i costumi da sci per quelli di Capodanno, e al castello va in scena lo show di fine anno «Ignite the New Year».
 
-Se hai bambini, a Disneytown conviene andare nel fine settimana o in un giorno festivo: è allora che Babbo Natale li accoglie nella sua casetta al Disneytown Christmas Market, fra bancarelle di lavoretti e di cibo. Lì il Christmas Tree Trail porta a un albero che quest’anno ha addobbi per il decimo compleanno, e sono decorati anche lo Shanghai Disneyland Hotel e il Toy Story Hotel. Quando l’albero di Disneytown si accende, canta il Magic Glee Club.
+Se hai bambini, a Disneytown conviene andare nel fine settimana o in un giorno festivo: è allora che Babbo Natale li accoglie nella sua casetta al Disneytown Christmas Market, fra bancarelle di lavoretti e di cibo. Lì il Christmas Tree Trail porta a un albero che quest’anno ha addobbi per il decimo compleanno. Quando l’albero di Disneytown si accende, canta il Magic Glee Club.
 
 ## Biglietti, pacchetti e cibo
 
@@ -68,7 +68,7 @@ Per l’inverno il resort vende due offerte, senza averne indicato i prezzi:
 - Disney Dream Vacation – Winter Frostival Package: una notte allo Shanghai Disneyland Hotel o al Toy Story Hotel, colazione e cena a buffet per due adulti, due biglietti giornalieri a data fissa, buoni per cibo e bevande nel parco e Disney Premier Access per la Cavalcade per due persone
 - biglietto giornaliero con buono da 88 yuan: vale in un giorno a tua scelta fino al 3 gennaio 2027, e il buono copre un menù combinato all’ora di cena in alcuni ristoranti veloci del parco
 
-Fra le novità del menù ci sono involtini primavera ripieni di cheeseburger di wagyu e youdunzi a forma di Topolino, che si trovano solo a colazione. Contro il freddo ci sono cioccolata calda e tè al latte, poi biscotti di Natale, muffin, zucchero filato e tanghulu con l’aspetto di Topolino e dei suoi amici. La Royal Banquet Hall e l’Aurora hanno nuovi menù delle feste, e nei due hotel la cena è a buffet.
+Fra le novità del menù ci sono involtini primavera ripieni di cheeseburger di wagyu e youdunzi a forma di Topolino, che si trovano solo a colazione. I tanghulu hanno l’aspetto di Topolino e compagnia, contro il freddo ci sono cioccolata calda e tè al latte, e poi biscotti di Natale, muffin e zucchero filato. La Royal Banquet Hall e l’Aurora hanno nuovi menù delle feste, e allo Shanghai Disneyland Hotel e al Toy Story Hotel per tutto l’inverno la cena è a buffet.
 
 ## In metro, e a novembre senza traghetto
 
@@ -82,9 +82,9 @@ Nei fine settimana e nei giorni festivi i parcheggi sono pieni o quasi, perciò 
 
 ## Dieci anni di resort, un nuovo hotel e un hotel partner
 
-Lo Shanghai Disney Resort ha aperto il 16 giugno 2016 e da allora ha contato più di 100 milioni di visite. Il Frostival è la parte invernale di questa festa di compleanno. Proprio nel mezzo, il 16 dicembre, apre lo [Shanghai Disney Enchanted Star Hotel](/news/shanghai-disney-enchanted-star-hotel), il terzo albergo del resort.
+Lo Shanghai Disney Resort ha aperto il 16 giugno 2016 e da allora ha contato più di 100 milioni di visite. Il Frostival fa parte dei festeggiamenti per questo decimo compleanno, ed è per questo che la parte da fare tutti insieme nello show al castello riprende il motto dell’anniversario e l’albero di Disneytown ha gli addobbi del compleanno. Proprio nel mezzo, il 16 dicembre, apre lo [Shanghai Disney Enchanted Star Hotel](/news/shanghai-disney-enchanted-star-hotel), il terzo albergo del resort.
 
-Per i soggiorni dal 16 novembre c’è poi un pacchetto al Meliá Shanghai Parkside, il primo hotel partner ufficiale del resort, a breve distanza a piedi. Comprende la camera, un biglietto giornaliero a data fissa e un Early Park Entry Pass, e si vende fino a esaurimento del contingente.
+Per i soggiorni dal 16 novembre il Meliá Shanghai Parkside, il primo hotel partner ufficiale del resort, a breve distanza a piedi, vende un contingente limitato di pacchetti con la camera, un biglietto giornaliero a data fissa e un Early Park Entry Pass.
 
 [Shanghai Disneyland](ref:shanghai-disneyland?full)
 

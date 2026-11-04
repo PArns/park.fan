@@ -2,7 +2,7 @@
 title: 'Olaf joins the Winter Frostival at Shanghai Disneyland'
 translationKey: disney-winter-frostival-shanghai-disneyland-2026
 date: '2026-11-04'
-time: '09:00'
+time: '08:34'
 author: patrick
 mode: published
 featured: false

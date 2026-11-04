@@ -2,7 +2,7 @@
 title: 'Olaf treedt op bij Winter Frostival in Shanghai Disneyland'
 translationKey: disney-winter-frostival-shanghai-disneyland-2026
 date: '2026-11-04'
-time: '09:00'
+time: '08:34'
 author: patrick
 mode: published
 featured: false
@@ -47,7 +47,7 @@ De show heet “Star Squad: Join Olaf for a Cozy Celebration”, en de Shanghai 
 
 ## Wat terugkomt uit eerdere winters
 
-Bij Mickey's Snow Magic verandert de Mickey Avenue weer in een sneeuwbol waar je zelf in staat, met vlokken die boven de straat dwarrelen. In de Disney Winter Magic Cavalcade lopen Disneyfiguren mee met praalwagens vol winterse taferelen. Als het donker is, gaan bij “A Celebration of Disney Winter Frostival” projecties over het kasteel, en licht en geluid lopen door tot in de Gardens of Imagination. Bij regen, harde wind, slechte luchtkwaliteit, dichte mist of onweer kan het resort de shows uitstellen of afgelasten.
+Bij Mickey's Snow Magic dwarrelen er weer vlokken boven de Mickey Avenue, en wie eronder staat, staat midden in een sneeuwbol. De Disney Winter Magic Cavalcade is de winterparade met praalwagens, en voor juist die parade zit Premier Access in het winterarrangement verderop. Als het donker is, gaan bij “A Celebration of Disney Winter Frostival” projecties over het kasteel, en licht en geluid lopen door tot in de Gardens of Imagination. Het resort kan de shows uitstellen of afgelasten bij regen, wind, mist en onweer, en ook als de luchtkwaliteit slecht is.
 
 Voor de winterfoto staan er op de Mickey Avenue en in de Gardens of Imagination sneeuwfiguren en ijssculpturen van Disneyfiguren. In het gebied Zootopia zijn de dieren uit de film als sneeuwfiguur te zien.
 
@@ -55,11 +55,11 @@ Voor de winterfoto staan er op de Mickey Avenue en in de Gardens of Imagination 
 
 Van 1 december tot 3 januari dragen Mickey en zijn vrienden nieuwe skipakken, en in de winkels ligt de bijpassende Ski Party-collectie. Santa Goofy staat weer op de Mickey Avenue, en Duffy en zijn vrienden komen in nieuwe kerstkleding. Prinsessen, koninginnen en prinsen ontmoet je het hele Frostival lang bij de Castle Encounters, soms in de winterkostuums uit de Cavalcade.
 
-Tijdens Mickey's Magical Tree Lighting Ceremony in de Gardens of Imagination zetten Mickey, Minnie, Duffy en LinaBell de hoogste kerstboom van het resort aan, met een liveband erbij. Op welke dag dat is, heeft het resort nog niet bekendgemaakt. Verder zijn er nog drie kerstshows: Light Up the Holidays with Magic, Christmas Swing en de Mickey Avenue Carolers.
+Tijdens Mickey's Magical Tree Lighting Ceremony in de Gardens of Imagination zetten Mickey, Minnie, Duffy en LinaBell de hoogste kerstboom van het resort aan, met een liveband erbij. Op welke dag dat is, heeft het resort nog niet bekendgemaakt. De Mickey Avenue Carolers zingen op de Mickey Avenue, en daarnaast zijn er de kerstshows Light Up the Holidays with Magic en Christmas Swing.
 
-Op 31 december en 1 januari trekken Mickey en zijn vrienden hun nieuwjaarskostuums aan. Bij het kasteel speelt rond de jaarwisseling de show “Ignite the New Year”.
+Op 31 december en 1 januari ruilen Mickey en zijn vrienden hun skipakken in voor nieuwjaarskostuums, en bij het kasteel speelt rond de jaarwisseling de show “Ignite the New Year”.
 
-Met kinderen kun je het best in het weekend of op een feestdag naar Disneytown. Dan ontvangt de kerstman ze in zijn hut op de Disneytown Christmas Market, tussen kraampjes met knutselwerk en eten. Het Christmas Tree Trail brengt je daar naar een boom die dit jaar versierd is voor de tiende verjaardag. Ook het Shanghai Disneyland Hotel en het Toy Story Hotel zijn versierd. Als de boom in Disneytown aangaat, zingt de Magic Glee Club.
+Met kinderen kun je het best in het weekend of op een feestdag naar Disneytown. Dan ontvangt de kerstman ze in zijn hut op de Disneytown Christmas Market, tussen kraampjes met knutselwerk en eten. Het Christmas Tree Trail brengt je daar naar een boom die dit jaar versierd is voor de tiende verjaardag. Als de boom in Disneytown aangaat, zingt de Magic Glee Club.
 
 ## Tickets, arrangementen en eten
 
@@ -68,7 +68,7 @@ Voor de winter verkoopt het resort twee aanbiedingen. Wat ze kosten, heeft het n
 - Disney Dream Vacation – Winter Frostival Package: een nacht in het Shanghai Disneyland Hotel of het Toy Story Hotel, ontbijt- en dinerbuffet voor twee volwassenen, twee dagtickets op een vaste datum, eetbonnen voor het park en Disney Premier Access voor de Cavalcade voor twee personen
 - Dagticket met een tegoedbon van 88 yuan: geldig op een dag naar keuze tot en met 3 januari 2027, de bon geldt voor een combimenu rond etenstijd in een aantal snackrestaurants in het park
 
-Nieuw op de kaart staan loempia’s gevuld met wagyu-cheeseburger en youdunzi in de vorm van Mickey, die er alleen bij het ontbijt zijn. Tegen de kou is er warme chocolademelk en melkthee, en verder kerstkoekjes, muffins, suikerspinnen en tanghulu die eruitzien als Mickey en zijn vrienden. De Royal Banquet Hall en Aurora hebben nieuwe feestmenu’s, en in de twee hotels staan buffetten klaar voor het diner.
+Nieuw op de kaart staan loempia’s gevuld met wagyu-cheeseburger en youdunzi in de vorm van Mickey, die er alleen bij het ontbijt zijn. Tanghulu krijg je in de vorm van Mickey en co, tegen de kou is er warme chocolademelk en melkthee, en verder zijn er kerstkoekjes, muffins en suikerspinnen. De Royal Banquet Hall en Aurora hebben nieuwe feestmenu’s, en in het Shanghai Disneyland Hotel en het Toy Story Hotel staan de hele winter buffetten klaar voor het diner.
 
 ## Met de metro, in november zonder veerboot
 
@@ -82,9 +82,9 @@ In het weekend en op feestdagen zijn de parkeerplaatsen vol of bijna vol. Op die
 
 ## Tien jaar resort, een nieuw hotel en een partnerhotel
 
-Shanghai Disney Resort ging op 16 juni 2016 open en heeft sindsdien meer dan 100 miljoen bezoeken geteld. Het Frostival is het winterdeel van dat verjaardagsfeest. Midden in die periode, op 16 december, opent het [Shanghai Disney Enchanted Star Hotel](/news/shanghai-disney-enchanted-star-hotel), het derde hotel van het resort.
+Shanghai Disney Resort ging op 16 juni 2016 open en heeft sindsdien meer dan 100 miljoen bezoeken geteld. Het Frostival hoort bij de feesten rond die tiende verjaardag, en daarom draagt het meedoedeel bij het kasteel het jubileummotto en hangt er verjaardagsversiering in de boom in Disneytown. Midden in die periode, op 16 december, opent het [Shanghai Disney Enchanted Star Hotel](/news/shanghai-disney-enchanted-star-hotel), het derde hotel van het resort.
 
-Voor verblijven vanaf 16 november is er ook een arrangement in het Meliá Shanghai Parkside, het eerste officiële partnerhotel van het resort, op korte loopafstand ervan. Daarin zitten de kamer, een dagticket op een vaste datum en een Early Park Entry Pass. Het wordt verkocht zolang de voorraad strekt.
+Voor verblijven vanaf 16 november verkoopt het Meliá Shanghai Parkside, het eerste officiële partnerhotel van het resort en op korte loopafstand, een beperkt aantal arrangementen met de kamer, een dagticket op een vaste datum en een Early Park Entry Pass.
 
 [Shanghai Disneyland](ref:shanghai-disneyland?full)
 
