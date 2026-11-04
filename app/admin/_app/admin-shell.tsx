@@ -565,7 +565,6 @@ function SidebarBranch({
           rail={false}
           onNavigate={onNavigate}
           signal={signals[item.href]}
-          trailingSpace
         />
         <button
           type="button"
@@ -679,7 +678,6 @@ function SidebarLink({
   signal,
   emphasis = false,
   dense = false,
-  trailingSpace = false,
 }: {
   item: NavItem;
   active: boolean;
@@ -690,8 +688,6 @@ function SidebarLink({
   emphasis?: boolean;
   /** A sub-entry: smaller, under its parent's guide line. */
   dense?: boolean;
-  /** Room on the right for the parent's fold button. */
-  trailingSpace?: boolean;
 }) {
   const state = signal
     ? signal.count
@@ -707,8 +703,9 @@ function SidebarLink({
       className={cn(
         'relative flex items-center gap-2.5 rounded-lg px-2.5 transition-colors',
         dense ? 'py-1 text-[13px]' : 'py-[7px] text-sm',
-        trailingSpace && 'pr-8',
-        rail && 'justify-center px-0 py-2',
+        // Every entry keeps the strip a branch's fold button stands in, so the dots and counts
+        // stand in one column whether or not a chevron follows them.
+        rail ? 'justify-center px-0 py-2' : 'pr-8',
         active
           ? 'text-foreground bg-white/[0.07] font-medium shadow-[inset_0_1px_0_rgba(255,255,255,0.05)]'
           : cn('text-muted-foreground', CHROME_HOVER)
