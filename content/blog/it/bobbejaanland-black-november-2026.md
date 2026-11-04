@@ -22,7 +22,7 @@ rideLinks:
 coverImage:
   src: /media/bobbejaanland/typhoon.jpg
   alt: 'Una figura di grifone con sella e, accanto, un vagone esposto con la scritta «Typhoon».'
-  caption: 'Il vagone esposto si trova accanto all'ingresso di Typhoon.'
+  caption: 'Il vagone esposto si trova accanto all’ingresso di Typhoon.'
   credit: 'Patrick Arns'
 seo:
   title: 'Abbonamento Bobbejaanland: fino al 40 % in meno entro il 6 dicembre'

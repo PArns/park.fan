@@ -22,7 +22,7 @@ rideLinks:
 coverImage:
   src: /media/bobbejaanland/typhoon.jpg
   alt: 'A griffin figure wearing a saddle, next to it a display car lettered "Typhoon".'
-  caption: 'Typhoon's display car sits beside the entrance.'
+  caption: 'Typhoon’s display car sits beside the entrance.'
   credit: 'Patrick Arns'
 seo:
   title: 'Bobbejaanland annual pass: up to 40% off until 6 December'
