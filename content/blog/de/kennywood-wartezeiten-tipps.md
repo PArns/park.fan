@@ -104,7 +104,7 @@ Rund um die Lagoon hat sich die Anlage seit den Anfängen kaum verändert, und m
 
 Das [Merry-Go-Round](ref:kennywood/merry-go-round?bare) hat William Dentzel 1927 gebaut. Darauf drehen sich 64 Tiere, darunter 50 springende Pferde, ein Löwe und ein Tiger.
 
-Gleich vier Fahrgeschäfte sind nach Angaben von Kennywood die letzten ihrer Art, du fährst hier also in Museumsstücken: die [Auto Race](ref:kennywood/auto-race?bare) von 1930 an der Lagoon, die [Turtle](ref:kennywood/turtle?bare), [Noah’s Ark](ref:kennywood/noahs-ark?bare) und das Kangaroo.
+Die [Auto Race](ref:kennywood/auto-race?bare) von 1930 an der Lagoon, die [Turtle](ref:kennywood/turtle?bare), [Noah’s Ark](ref:kennywood/noahs-ark?bare) und das Kangaroo sind nach Angaben von Kennywood die letzten ihrer Art, wer hier fährt, sitzt also in Museumsstücken mit Sicherheitsbügel.
 
 ### Steelers Country
 
@@ -120,11 +120,11 @@ Als Steel Phantom ging [Phantom’s Revenge](ref:kennywood/phantoms-revenge?bare
 
 Der Zug klettert 49 Meter (160 Fuß) hoch und erreicht 137 km/h (85 mph). Die längste Abfahrt misst nach der RCDB 69,5 Meter (228 Fuß), Kennywood gibt für die zweite Abfahrt 71 Meter (232 Fuß) an. Auch bei der Länge weichen die beiden voneinander ab: 975 Meter (3.200 Fuß) bei der RCDB, 1.026 Meter (3.365 Fuß) beim Park. Unterwegs fährt der Zug zweimal durch das Holzgerüst von Thunderbolt. Die Fahrt dauert 1:57 Minuten, und in den beiden Zügen sitzen je 28 Personen.
 
-In Kenny Lane stehen außerdem der Musik Express und die Pirate, die bis auf 18 Meter (60 Fuß) Höhe und in einen Winkel von 75 Grad schwingt. Die Autoscooter von Potato Smash sind den Pommes aus der Potato Patch nachempfunden und heißen seit 2024 so, vorher hießen sie Gran Prix.
+In Kenny Lane stehen außerdem der Musik Express und die Pirate, die bis auf 18 Meter (60 Fuß) Höhe und in einen Winkel von 75 Grad schwingt. Die Autoscooter von Potato Smash sehen aus wie die Pommes aus der Potato Patch.
 
 ### Kennyville
 
-Thunderbolt steht in Kennyville und war ursprünglich die Pippin, eine Holzachterbahn von John A. Miller, eröffnet am 4. Mai 1924. 1968 baute Andy Vettel sie zu Thunderbolt aus. Die erste Abfahrt führt in eine Schlucht, die größten kommen erst am Ende, mit 27 Metern (90 Fuß) Fallhöhe, obwohl der höchste Punkt nur 21 Meter (70 Fuß) über dem Boden liegt. Auf 991 Metern (3.250 Fuß) erreicht der Zug 89 km/h (55 mph), die Fahrt dauert 1:41 Minuten. Die Züge baute National Amusement Device, der Park nennt sie Century Flyer aus den 1950er-Jahren. 1974 nannte die New York Times Thunderbolt den „King of the Coasters“. Ob die Bahn fährt, ist offen: Auf der Parkkarte von Phantom Fall Fest 2026 fehlt sie, auf ihrer Seite beim Park steht sie ohne Schließhinweis.
+Thunderbolt steht in Kennyville und war ursprünglich die Pippin, eine Holzachterbahn von John A. Miller, eröffnet am 4. Mai 1924. 1968 baute Andy Vettel sie zu Thunderbolt aus. Die erste Abfahrt führt in eine Schlucht, die größten kommen erst am Ende, mit 27 Metern (90 Fuß) Fallhöhe, obwohl der höchste Punkt nur 21 Meter (70 Fuß) über dem Boden liegt. Auf 991 Metern (3.250 Fuß) erreicht der Zug 89 km/h (55 mph), die Fahrt dauert 1:41 Minuten. Die Züge baute National Amusement Device, der Park nennt sie Century Flyer aus den 1950er-Jahren. 1974 nannte die New York Times Thunderbolt den „King of the Coasters“. Auf der Parkkarte von Phantom Fall Fest 2026 fehlt Thunderbolt, auf ihrer Seite beim Park steht die Bahn ohne Schließhinweis.
 
 In [Ghostwood Estate](ref:kennywood/ghostwood-estate?bare), einer interaktiven Dunkelfahrt von 2008, schießt du in einem Anwesen mit acht Räumen mit „Ghost Blastern“ auf Geister und sammelst Punkte.
 
@@ -132,7 +132,7 @@ In [Ghostwood Estate](ref:kennywood/ghostwood-estate?bare), einer interaktiven D
 
 ```
 
-Noah’s Ark, die Arche von 1936, hat Kennywood zweimal umgebaut: 1969 bekam sie den blauen Wal, 2016 eine Renovierung. Die Turtle fährt seit 1927, anfangs als Tumble Bug, und ihren sechsten Wagen und die Form von Schildkröten bekam sie 1948.
+Noah’s Ark, die Arche von 1936, hat Kennywood zweimal umgebaut: 1969 bekam sie den blauen Wal, 2016 eine Renovierung. Die Turtle fährt seit 1927 und bekam 1948 ihren sechsten Wagen und die Form von Schildkröten.
 
 [Raging Rapids](ref:kennywood/raging-rapids?bare), die Wildwasserbahn von Intamin aus dem Jahr 1985, nutzt einen natürlichen Hang und öffnet erst 2027 wieder. Vor Raging Rapids und Pittsburg\* Plunge stehen Trockenstationen, in denen du dich gegen eine kleine Gebühr in etwa drei Minuten trocknen lassen kannst, ein Service, den man sonst eher aus dem Hundesalon kennt.
 
@@ -154,13 +154,13 @@ Die [Whip](ref:kennywood/whip?bare) kam 1919 mit zwölf Wagen nach Kennywood, 19
 
 ### Area 412
 
-Area 412 gibt es seit 2023, vorher hieß der Bereich Volcano Valley. Der Name verbindet Area 51 mit der Telefonvorwahl 412 von Pittsburgh, und entsprechend geht es um Außerirdische. Als erste Gryphon von Zamperla in den USA dreht sich dort seit 2023 [Spinvasion](ref:kennywood/spinvasion?bare). In Cosmic Chaos fährt seit 2007 ein Ufo auf einer U-förmigen Schiene bis auf 15 Meter (50 Fuß) hinauf.
+Der Name Area 412 verbindet Area 51 mit der Telefonvorwahl 412 von Pittsburgh, und entsprechend geht es in dem Bereich seit 2023 um Außerirdische. Als erste Gryphon von Zamperla in den USA dreht sich dort seit seiner Eröffnung [Spinvasion](ref:kennywood/spinvasion?bare). In Cosmic Chaos fährt seit 2007 ein Ufo auf einer U-förmigen Schiene bis auf 15 Meter (50 Fuß) hinauf.
 
 ### Kiddieland und Kennywood Junction
 
 Kiddieland liegt seit 1927 an seinem heutigen Platz, an der Kante des Steilhangs auf der Flussseite des Parks. Dort fährt die kleinste Achterbahn, [Lil’ Phantom](ref:kennywood/lil-phantom?bare), ein Moli-Coaster von Molina & Son’s aus dem Jahr 1996. Ihr Zug aus fünf Wagen nimmt zehn Kinder mit, und nach 15 Sekunden ist die Runde vorbei. Kenny’s Karousel mit 16 springenden und 10 stehenden Pferden und zwei Kutschen gehört seit 1924 zum Kiddieland und öffnet erst 2027 wieder. Daneben drehen sich unter anderem der Red Baron, die Steel City Choppers und das Wacky Wheel.
 
-Am Eröffnungstag der Saison, dem 12. April 2025, kam Kennywood Junction dazu. Kennywood beschreibt den Bereich als kleines Viertel einer Stahlstadt mit fünf Familienfahrgeschäften: Olde Kennywood Railroad, Fire Bustin’ Brigade, Coal Haulin’ Convoy, Parker’s Cloud Cruisers und Kenny’s Cargo Drop. Bis zur Saison 2024 war der Bereich Thomas Town, eröffnet am 27. Juli 2018, dann entfernte der Park das Thomas-Thema.
+Am Eröffnungstag der Saison, dem 12. April 2025, kam Kennywood Junction dazu. Kennywood beschreibt den Bereich als kleines Viertel einer Stahlstadt mit fünf Familienfahrgeschäften: Olde Kennywood Railroad, Fire Bustin’ Brigade, Coal Haulin’ Convoy, Parker’s Cloud Cruisers und Kenny’s Cargo Drop.
 
 Die Lokomotive der [Olde Kennywood Railroad](ref:kennywood/olde-kennywood-railroad?bare), der Gimbels Flyer, fuhr schon auf der Weltausstellung 1939 in New York und ist seit 1945 in Kennywood, neu dazugekommen ist der Kenny Express. Von der Strecke siehst du auf den Monongahela River und die Edgar Thomson Works, das älteste Stahlwerk in Pittsburgh. Im Winter heißt der Zug Gingerbread Express.
 
@@ -188,7 +188,7 @@ Als Begleitung zählt, wer mindestens 14 Jahre alt ist und die Bahn selbst allei
 
 ```
 
-Zur Öffnung würde ich zuerst zu Steel Curtain gehen. Nach unseren Messungen sparst du mit einem frühen Start etwas Zeit an Steel Curtain, Phantom’s Revenge, Exterminator, Jack Rabbit und Ghostwood Estate, viel ist es aber an keiner der fünf. Bei Racer und Sky Rocket lohnt es sich dagegen nicht, gleich zur Öffnung hinzulaufen, die beiden kannst du auch später fahren. Kennywood selbst empfiehlt, früh am hinteren Ende des Parks anzufangen, und an den Wasserbahnen seien die Warteschlangen morgens und abends kürzer.
+Zur Öffnung würde ich zuerst zu Steel Curtain gehen. Nach unseren Messungen sparst du mit einem frühen Start etwas Zeit an Steel Curtain, Phantom’s Revenge, Exterminator, Jack Rabbit und Ghostwood Estate, viel ist es aber an keiner der fünf. Racer und Sky Rocket legst du besser auf später, dort bringt ein früher Start nach unseren Messungen nichts. Kennywood selbst empfiehlt, früh am hinteren Ende des Parks anzufangen, und an den Wasserbahnen seien die Warteschlangen morgens und abends kürzer.
 
 ```glossary-widget slug=rope-drop
 
@@ -216,7 +216,7 @@ Die Saison geht von April bis Dezember. 2026 hat Kennywood am Samstag, dem 18. A
 
 ### Holiday Lights 2026
 
-Holiday Lights gibt es seit 2011. 2026 läuft das Winterevent vom 13. November bis zum 3. Januar 2027, bis Mitte Dezember freitags, samstags und sonntags, danach täglich. Am 24. und 25. Dezember bleibt der Park zu, ebenso an Thanksgiving, dem 26. November. Geöffnet ist an diesen Tagen und zu diesen Zeiten:
+Holiday Lights, seit 2011 im Programm, läuft 2026 vom 13. November bis zum 3. Januar 2027, bis Mitte Dezember freitags, samstags und sonntags, danach täglich. Am 24. und 25. Dezember bleibt der Park zu, ebenso an Thanksgiving, dem 26. November. Geöffnet ist an diesen Tagen und zu diesen Zeiten:
 
 - im November der 13. bis 15., 20. bis 22. und 27. bis 29.
 - im Dezember der 4. bis 6., 11. bis 13., 18. bis 23. und 26. bis 31.
@@ -251,13 +251,13 @@ Bei USA Today 10Best ist Holiday Lights als bestes Weihnachtsevent eines Freizei
 
 Vom 18. April bis zum 10. Mai liefen 2026 zum ersten Mal die Celebrate Kennywood Weekends, an Samstagen und Sonntagen mit Essen rund um die Kartoffel. Das Food-Festival Bites and Pints folgte freitags bis sonntags vom 22. Mai bis zum 28. Juni und am Montag, dem 25. Mai, mit Ständen aus Frankreich und Deutschland. Für den 250. Geburtstag der USA zündete Zambelli am 4. Juli das nach Angaben des Parks größte Feuerwerk in der Geschichte von Kennywood, und an den Wochenenden vom 11. bis zum 26. Juli flogen mehr als 300 Drohnen.
 
-Die Fall Fantasy Parades gibt es seit 1955, mit mehr als 180 Blaskapellen aus der Gegend. 2026 liefen sie täglich vom 1. bis zum 17. August und am 22. August. Phantom Fall Fest, das Halloween-Event seit 2021, lief an ausgewählten Tagen bis zum 1. November, und bei USA Today 10Best kam es 2026 auf Platz vier der Halloween-Events in Freizeitparks.
+Bei den Fall Fantasy Parades laufen seit 1955 Blaskapellen aus der Gegend mit, heute mehr als 180. 2026 liefen sie täglich vom 1. bis zum 17. August und am 22. August. Phantom Fall Fest, das Halloween-Event seit 2021, lief an ausgewählten Tagen bis zum 1. November, und bei USA Today 10Best kam es 2026 auf Platz vier der Halloween-Events in Freizeitparks.
 
 Nach dem 3. Januar 2027 stehen im Kalender bis Ende Mai keine Öffnungstage, und Termine für den Sommer 2027 hat Kennywood noch nicht veröffentlicht. Mit „Reopens in 2027“ führt der Park Raging Rapids, Pittsburg\* Plunge, die Paddle Boats und Kenny’s Karousel.
 
 ## Speedy Pass
 
-Speedy Pass ist das Produkt, mit dem du dich in Kennywood an der Warteschlange vorbeikaufst. Es ist eine virtuelle Warteschlange auf dem Handy, in diesen Stufen:
+Speedy Pass ist eine virtuelle Warteschlange auf dem Handy. Je nach Stufe ist die virtuelle Wartezeit so lang wie die normale oder kürzer:
 
 - Standard: Die virtuelle Wartezeit ist so lang wie die normale, du kannst sie aber woanders verbringen.
 - Premium: bis zu 50 Prozent weniger Wartezeit
@@ -327,7 +327,7 @@ Ohne Auto fährt die Buslinie 61C von Pittsburgh Regional Transit über Oakland,
 
 ## Essen
 
-Die Pommes der Potato Patch gibt es seit 1973. Sie sind frisch aus Kartoffeln aus Idaho geschnitten, und obendrauf kommen nach Wahl Cheddar, Speck, Essig, braune Soße oder Gewürzsalz. Small Fry’s in Lost Kennywood ist komplett glutenfrei und verkauft ebenfalls Potato-Patch-Pommes. Zum Frittieren nimmt der Park kein Erdnussöl.
+Die Pommes der Potato Patch, 1973 zum ersten Mal verkauft, sind frisch aus Kartoffeln aus Idaho geschnitten, und obendrauf kommen nach Wahl Cheddar, Speck, Essig, braune Soße oder Gewürzsalz. Small Fry’s in Lost Kennywood ist komplett glutenfrei und verkauft ebenfalls Potato-Patch-Pommes. Zum Frittieren nimmt der Park kein Erdnussöl.
 
 2026 hat der Centennial Grill in Lost Kennywood neben der Whip eröffnet, mit Cheesesteaks und Potato Tots. Mit dem neuen Eisstand Big Dipper neben Noah’s Ark erinnert der Park an die Achterbahn Dipper, die von 1948 bis 1984 fuhr.
 
@@ -345,13 +345,13 @@ Die Hotelpakete auf der Seite von Kennywood führen zu aRes Travel, das Hotels i
 
 1818 kaufte Charles Kenny das Land über dem Monongahela River. Zur Zeit des Bürgerkriegs war „Kenny’s Grove“ ein beliebter Picknickplatz. Im Dezember 1898 verpachtete Anthony Kenny das Gelände an die Monongahela Street Railway, an der der Bankier Andrew Mellon beteiligt war. Mellon suchte den Namen Kennywood aus, und George S. Davidson, der Chefingenieur der Bahngesellschaft, entwarf die Anlage. Am 30. Mai 1899 öffnete der Park.
 
-1902 kam die erste Achterbahn, der Figure Eight Toboggan. 1906 übernahmen A.S. McSwigan und F.W. Henninger den Park, und ihre Familien führten ihn ein ganzes Jahrhundert lang, bis zur Saison 2007 in vierter und fünfter Generation. Die Straßenbahn, für die Kennywood einmal gebaut wurde, fuhr bis zum 15. September 1958, dann stellte die Linie 68 auf Busse um.
+1902 kam die erste Achterbahn, der Figure Eight Toboggan. 1906 übernahmen A.S. McSwigan und F.W. Henninger den Park, und ihre Familien führten ihn ein ganzes Jahrhundert lang, bis zur Saison 2007 in vierter und fünfter Generation. Die Turtle fuhr ab 1927 zuerst unter dem Namen Tumble Bug. Die Straßenbahn, für die Kennywood einmal gebaut wurde, fuhr bis zum 15. September 1958, dann stellte die Linie 68 auf Busse um.
 
 1974 tauchte Kenny Kangaroo zum ersten Mal als Maskottchen auf. 1980 kam mit Laser Loop die erste Stahlachterbahn, die bis 1990 fuhr. Die Familien kauften 1983 Idlewild in Ligonier und bauten 1989 den Wasserpark Sandcastle in Homestead. 1988 lief bei WQED die Dokumentation „Kennywood Memories“ von Rick Sebak. Seit dem 5. August 1992 erinnert ein historischer Marker des Staates Pennsylvania an den Park, und der Film „Adventureland“ von 2009 wurde in Kennywood gedreht.
 
 Im Dezember 2007 verkauften die Familien Kennywood und die Schwesterparks an Palace Entertainment, eine Tochter von Parques Reunidos aus Madrid, 2008 ging der Park über. Am 18. März 2025 unterschrieben Herschend Family Entertainment und Parques Reunidos den Vertrag, mit dem Herschend alle Parks von Palace Entertainment in den USA übernahm, Kennywood eingeschlossen. Generalmanager von Kennywood und Sandcastle ist Ricky Spicuzza, der seit 2002 im Park arbeitet.
 
-Zur 125-Jahr-Feier 2022 und 2023 renovierte Kennywood den ganzen Park. 2024 kehrte Jeeters als Maskottchen zurück, mit eigenem Pub. Elf Achterbahnen, die es nicht mehr gibt, führt die RCDB für Kennywood, unter ihnen Teddy Bear (1935 bis 1947), Tickler (1931 bis 1952) und Wild Mouse (1958 bis 1960).
+Zur 125-Jahr-Feier 2022 und 2023 renovierte Kennywood den ganzen Park, und 2023 ersetzte Area 412 den Bereich Volcano Valley. 2024 kehrte Jeeters als Maskottchen zurück, mit eigenem Pub, und aus dem Autoscooter Gran Prix wurde Potato Smash. Thomas Town, am 27. Juli 2018 als Erweiterung des Kiddielands eröffnet, verlor nach der Saison 2024 sein Thomas-Thema und wurde zu Kennywood Junction. Elf Achterbahnen, die es nicht mehr gibt, führt die RCDB für Kennywood, unter ihnen Teddy Bear (1935 bis 1947), Tickler (1931 bis 1952) und Wild Mouse (1958 bis 1960).
 
 ## Häufige Fragen zu Kennywood
 
