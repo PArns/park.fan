@@ -258,9 +258,15 @@ function BrowseCard({ item, href }: { item: NearbySearchItem; href: string }) {
             <span className="text-muted-foreground text-sm font-semibold">{tCommon('min')}</span>
           </>
         ) : item.status ? (
-          // Shut or down: what the badge would say, as the figure („Öffnet um 10:00 Uhr").
-          <span className="text-muted-foreground self-center truncate text-base font-semibold">
-            {item.statusLabel ?? tStatus(item.status)}
+          // Shut or down: how far off the next opening is („Öffnet morgen", „Öffnet in 2:33 Stunden"),
+          // which says more at a glance than its date.
+          <span
+            title={item.statusCountdown ? item.statusLabel : undefined}
+            className="text-muted-foreground self-center truncate text-base font-semibold"
+          >
+            {item.statusCountdown
+              ? `${t('opens')} ${item.statusCountdown}`
+              : (item.statusLabel ?? tStatus(item.status))}
           </span>
         ) : (
           <span className="text-primary-ink inline-flex items-center gap-1 self-center text-sm font-semibold">
