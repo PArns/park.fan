@@ -48,12 +48,14 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`links.ts`](../../lib/assistant/links.ts)
 
 - `directionsHref` _function_: The one link off the site an answer may carry: Google Maps directions to coordinates, exactly in the form the API's `get_directions` writes it. Opened in a new tab; never used for navigation.
-- `safeAssistantHref` _function_
+- `safeAssistantHref` _function_: The link an answer may carry, or null to show it as text: only park.fan pages, absolute or as a path.
 
 ### [`open.ts`](../../lib/assistant/open.ts)
 
-- `openParky` _function_: Opens Parky's chat window from elsewhere on the page, as the button on Parky's own page does. The launcher hears it once its button shows; until then the request waits there.
-- `onParkyOpen` _function_: Hears `openParky`; returns the unsubscribe.
+- `openParky` _function_: Opens Parky's chat window from elsewhere on the page, as the button on Parky's own page does, counted with `source` (`assistant_opened`). The launcher hears it once its button shows; until then the request waits there.
+- `onParkyOpen` _function_: Hears `openParky`, with what asked for the window; returns the unsubscribe.
+- `reopenAfterSwitch` _function_: Asks the launcher on the page Parky's language switch leads to for the window open: the new locale mounts the layout, and the launcher with it, afresh. The chat itself is in session storage.
+- `takeReopen` _function_: Whether a language switch asked for the window open, once: reading it clears the request.
 
 ### [`opener.ts`](../../lib/assistant/opener.ts)
 
@@ -73,10 +75,18 @@ by hand: change the comment in the code and re-run the script. -->
 - `parkyBoredom` _const_: One boredom for the whole page, for `useSyncExternalStore`: the first subscriber starts the listeners, the last one stops them. Without motion (`prefers-reduced-motion`) Parky has no idle life and the snapshot is `null`, as on the server.
 - Types: `ParkyBoredom`
 
+### [`parky-dock.ts`](../../lib/assistant/parky-dock.ts)
+
+Where Parky stands while his chat window is shut: in his corner, or in a slot on the page that holds him bigger (the homepage hero on a desktop, `HeroParky`) while that slot is on screen.
+
+- `parkyDock` _const_: The slot Parky may stand in: the element, while it is on screen.
+- `parkyInDock` _const_: Whether Parky stands in the slot right now: not in his window, not on his way there or back, and done hopping in from the corner. The launcher sets it; the slot draws Parky only then.
+
 ### [`parky-jump.ts`](../../lib/assistant/parky-jump.ts)
 
 - `parkyJumpMs` _function_: The hop's length for this browser: none with reduced motion.
-- `parkyJump` _function_: Parky's face in the chat window hops in from the corner button (`open`) or back to it: down into a crouch, off in a parabola with his body stretched, onto the other end in a squash that springs back.
+- `parkyJump` _function_: Parky's face in the chat window hops in from where Parky stands (`open`) or back to it: from the slot that holds him on the page while it is on screen (`parkyDock`), else from his corner button.
+- `parkyDockHop` _function_: Parky in his corner button hops up into the page's slot (`toSlot`), growing to its size, or comes down from it into the corner, shrinking back. The corner drawing is what moves, so the corner is where it rests.
 - `PARKY_JUMP_MS` _const_: How long Parky's hop between his corner and the chat window's top edge takes.
 - `PARKY_CORNER_ATTR` _const_: Marks the drawing in the corner button, where the hop starts and lands.
 
@@ -110,6 +120,10 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `readSse` _function_: Reads a `text/event-stream` body event by event. A hand-written reader rather than `EventSource`, which can only GET and so cannot send the question as a body.
 - Types: `SseEvent`
+
+### [`switch-locale.ts`](../../lib/assistant/switch-locale.ts)
+
+- `localeSwitchPath` _function_: Where Parky's language switch goes: the page at `pathname` in `locale`, as a path without the locale, which next-intl's router puts in front.
 
 ### [`teaser-store.ts`](../../lib/assistant/teaser-store.ts)
 

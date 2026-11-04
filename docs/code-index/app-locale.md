@@ -264,17 +264,15 @@ Route `/[locale]/glossary` (page).
 
 ### [`how-park-fan-works/_anatomy-demos.tsx`](../../app/%5Blocale%5D/how-park-fan-works/_anatomy-demos.tsx)
 
-- `AnatomyHeaderDemo` _component_: 01 — the header's opening hours block.
-- `AnatomyHolidayDemo` _component_: 02 — which school holidays reach this park today.
-- `AnatomyPurchasesDemo` _component_: 06 — paid skip-the-line day prices. Disney only, so the fixture is a Disney one.
-- `AnatomyAttractionDemo` _component_: 07 — one ride card, the same one chapter 01 opens with.
-- `AnatomyCalendarDemo` _component_: 08 — one calendar day, the recommended one from chapter 04.
-- `AnatomyShowsDemo` _component_: 09 — a show and a restaurant, the two tabs a park may or may not have.
-- `AnatomyBestDaysDemo` _component_: 10 — the best-days chapter opens with this header on every park page.
-- `AnatomyNearbyDemo` _component_: 11 — one neighbour, as the nearby list renders it.
-- `AnatomyBlogDemo` _component_: 12 — the newest post that mentions this park.
-- `AnatomyStatsDemo` _component_: 13 — the park's longest queues, the table chapter 02 ends on.
-- `AnatomySeasonDemo` _component_: 14 — the season a ride runs in, on the ride from chapter 08.
+- `AnatomyHolidayDemo` _component_: The bottom row of „Heute im Park": which school holidays reach this park today.
+- `AnatomyPurchasesDemo` _component_: Paid skip-the-line day prices. Disney only, so the fixture is Magic Kingdom's on 2026-11-04, two of its three lines.
+- `AnatomyAttractionDemo` _component_: One ride card, the same one chapter 01 opens with.
+- `AnatomyCalendarDemo` _component_: One calendar day, the quietest of the four from chapter 04.
+- `AnatomyShowsDemo` _component_: A show and a restaurant, the two tabs a park may or may not have. The showtimes are the show's wall-clock times laid on today's date, because the card strikes through the ones already past.
+- `AnatomyBestDaysDemo` _component_: The best-days chapter of the wait-time calendar opens with this header.
+- `AnatomyNearbyDemo` _component_: One neighbour, as the nearby list renders it.
+- `AnatomyBlogDemo` _component_: The newest post that mentions this park.
+- `AnatomyStatsDemo` _component_: The park's longest queues, as the park page's statistics chapter labels them.
 
 ### [`how-park-fan-works/_chapter-rail.tsx`](../../app/%5Blocale%5D/how-park-fan-works/_chapter-rail.tsx)
 
@@ -299,13 +297,15 @@ Route `/[locale]/glossary` (page).
 - `CalendarDaysDemo` _component_: Four days of an autumn break, side by side. The real calendar cell.
 - `OffSeasonDemo` _component_: The ride that is out of season, and the badge that says so in three words.
 - `NoWaitTimesDemo` _component_: What a park with no readable feed gets instead of invented numbers.
-- `BadgeRowDemo` _component_: The two badges that turn a reading into a statement. Rendered as the real components so their colours match the ones on a park page exactly.
+- `BadgeRowDemo` _component_: Every crowd level a ride or a park can show, as the real badges, so their colours match the ones on a park page exactly. The row is labelled, or it reads as an inventory of chips.
+- `ParkyShot` _component_: Parky's chapter: its text beside the real chat on a phone, the screenshot Parky's page and the homepage tour show (`public/media/parky/<locale>/chat.webp`), with the alt text they use.
 - `PlannerDayFigure` _component_: A whole planned day, drawn by the planner's own components: `PlannerDayDemo` and its fixture are imported from the planner's page rather than rebuilt, so there is one day grid and one dated payload to keep honest.
 - `LiveHourlyProfile` _component_: The park's real hourly table: one row per ride, each ride's peak hour bold.
-- `LiveTopAttractions` _component_: The park's real ranking: rank, ride, the live wait where there is one, typical and busy.
+- `LiveTopAttractions` _component_: The park's real ranking: rank, ride, the live wait where there is one, and each ride's hourly P50 and P90 averaged over the opening hours, which is not the daily-peak scale of chapter 02.
 
 ### [`how-park-fan-works/_fixtures.ts`](../../app/%5Blocale%5D/how-park-fan-works/_fixtures.ts)
 
+- `parkLocalInstant` _function_: The UTC instant of `hour:minute` **park time on the day `nowMs` falls in**.
 - `buildDemoFixtures` _function_: Builds the instants-bearing half of the fixtures around `nowMs`.
 - `DEMO_TIMEZONE` _const_
 - `TARON_WAIT_NOW` _const_: What it says at the entrance. Everything else on this page is context for it.
@@ -315,8 +315,8 @@ Route `/[locale]/glossary` (page).
 - `TARON_WEEKDAY_DAYS` _const_: Days behind the two summary buckets on the ride's card, read off the fixture above so the prose and the card cannot disagree.
 - `TARON_WEEKEND_DAYS` _const_
 - `WAIT_SCALE_MAX` _const_: Upper end of the scale the figure draws. Above Taron's record, so nothing clips.
-- `OFF_SEASON_CARD` _const_: A ride that is shut for a reason no live feed states: it runs from November to January, and in August nobody reports anything about it at all. The seasonal fields are what keeps that silence from being read as "open".
-- `DEMO_CALENDAR_DAYS` _const_: Four days out of an autumn-break week, the case the calendar exists for: the dates are consecutive, the crowd levels are not, and what separates them is whose schools are off rather than anything visible in a brochure.
+- `OFF_SEASON_CARD` _const_: Phantasialand's ice rink as it reads in August, when nobody reports anything about it: name, land and season months as the API returned them on 2026-11-04. The seasonal fields are what keeps that silence from being read as "open".
+- `DEMO_CALENDAR_DAYS` _const_: Four days of one week of the North Rhine-Westphalia autumn holidays at Phantasialand, as `/calendar` returned them on 2026-11-04, measured rather than forecast: the same school break on every day and four different crowd levels.
 - Types: `DemoFixtures`
 
 ### [`how-park-fan-works/_night-shift.tsx`](../../app/%5Blocale%5D/how-park-fan-works/_night-shift.tsx)
@@ -434,7 +434,7 @@ Route `/[locale]` (not-found).
 
 Route `/[locale]` (page).
 
-- `default (HomePage)` _component_: The homepage, written for somebody who has never been here: what this is and whether their park is in it (the hero), then one stop after another, each a heading worded as people search beside its content (`HomeStop`): what is new (the news …
+- `default (HomePage)` _component_: The homepage, written for somebody who has never been here: what this is and where a queue is short near them right now (the hero and its card rail), then one stop after another, each a heading worded as people search beside its content …
 - `generateMetadata` _function_
 - `revalidate` _const_: A static shell per locale, served from the CDN.
 

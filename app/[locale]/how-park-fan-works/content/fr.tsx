@@ -20,6 +20,7 @@ import { HOWTO_CHAPTERS } from '@/lib/howto/chapters';
 import {
   Activity,
   BarChart3,
+  Bell,
   CalendarClock,
   CalendarDays,
   CloudSun,
@@ -29,7 +30,9 @@ import {
   HelpCircle,
   Layers,
   MapPin,
+  MessageCircle,
   Ruler,
+  Scale,
   Search,
   Sparkles,
   Star,
@@ -44,6 +47,7 @@ import {
   LiveTopAttractions,
   NoWaitTimesDemo,
   OffSeasonDemo,
+  ParkyShot,
   PlannerDayFigure,
   RopeDropDemo,
   TwoRidesDemo,
@@ -54,11 +58,9 @@ import {
   AnatomyBestDaysDemo,
   AnatomyBlogDemo,
   AnatomyCalendarDemo,
-  AnatomyHeaderDemo,
   AnatomyHolidayDemo,
   AnatomyNearbyDemo,
   AnatomyPurchasesDemo,
-  AnatomySeasonDemo,
   AnatomyShowsDemo,
   AnatomyStatsDemo,
 } from '../_anatomy-demos';
@@ -85,18 +87,18 @@ const PARK = '/parks/europe/germany/bruehl/phantasialand';
 const TARON = `${PARK}/taron`;
 
 const SCALE_LABELS = {
-  typical: 'Habituel',
+  typical: 'Normal',
   busy: 'Chargé',
   unit: 'min',
   days: 'jours mesurés',
   record: 'Record',
   summary:
-    'Taron le {label} : habituellement {typical} minutes, {busy} les jours chargés, sur {days} jours mesurés. À l’entrée, {wait} minutes.',
+    'Taron, {label} : normalement {typical} minutes, {busy} les jours chargés, sur {days} jours mesurés. À l’entrée, {wait} minutes.',
 };
 
 const SCALE_LEGEND = [
   {
-    term: 'Habituel',
+    term: 'Normal',
     def: 'Sur la moitié des jours mesurés, la file la plus longue était plus courte que cela.',
     swatch: 'bg-primary/45',
   },
@@ -128,77 +130,80 @@ const SCALE_STEPS: WaitScaleStep[] = [
 ];
 
 /**
- * The sections of a park page in exactly the order they render
- * (`app/[locale]/parks/.../page.tsx`). Whoever reorders them there reorders
- * them here, or the guide describes a page that does not exist.
+ * The sections of a park page in the order they render (`app/[locale]/parks/.../page.tsx`,
+ * `ParkPageShell`, `LiveParkData`). Whoever reorders them there reorders them here, or the guide
+ * describes a page that does not exist.
  */
 const PARK_SECTIONS: AnatomyStep[] = [
   {
-    title: 'En-tête',
-    body: 'Nom, lieu et distance, plus le statut, les horaires du jour, l’affluence et le nombre d’attractions ouvertes en ce moment.',
-    example: 'Phantasialand, Brühl. Aujourd’hui 09:00–19:00, 36 attractions sur 40 ouvertes.',
-    demo: <AnatomyHeaderDemo />,
-  },
-  {
-    title: 'Vacances scolaires alentour',
-    body: 'Les vacances scolaires et les jours fériés qui pèsent aujourd’hui sur le parc, ceux de sa propre région en premier.',
-    demo: <AnatomyHolidayDemo />,
-    onlyWhen: 'des vacances ou un jour férié entrent en jeu aujourd’hui.',
-  },
-  {
-    title: 'Alerte météo',
-    body: 'Alertes officielles du DWD et de MeteoAlarm, reprises telles quelles.',
-    demo: <WeatherWarningBannerDemo />,
-    onlyWhen: 'une alerte est active pour le lieu.',
-  },
-  {
-    title: 'Radar de pluie',
-    body: 'Les prochaines heures par quarts d’heure. Vous y voyez si une averse sera passée dans vingt minutes.',
-    demo: <NowcastBannerDemo single />,
-    onlyWhen: 'il pleut à proximité.',
-  },
-  {
-    title: 'Carte météo',
-    body: 'La météo du moment, la courbe de la journée et la prévision. Sur l’axe, les heures où le parc est ouvert prennent le plus de place.',
-    demo: <WeatherCardShowcase variant="single" />,
+    title: 'Carte de titre',
+    body: 'Nom et lieu, la distance qui vous en sépare, l’étoile pour vos favoris, un court texte sur le parc, ses liens et le bouton vers le planificateur. Là où les mesures suffisent, elle indique aussi quels jours de la semaine sont d’ordinaire calmes et lesquels sont chargés.',
   },
   {
     title: 'Prix coupe-file',
     body: 'Tarifs du jour des files payantes comme Lightning Lane, complet signalé comme tel.',
+    example:
+      'À Magic Kingdom le 4 novembre 2026 : le Multi Pass à 37 dollars, la réservation à l’unité pour Seven Dwarfs Mine Train complète.',
     demo: <AnatomyPurchasesDemo />,
     onlyWhen: 'le parc les publie, pour l’instant seulement les parcs Disney aux États-Unis.',
   },
   {
+    title: 'Quand vous êtes dans le parc',
+    body: 'Une boussole montre dans quelle direction se trouvent les grandes attractions. En dessous figurent les attractions où la file est plus courte maintenant que plus tard, et les plus proches avec leur distance et leur temps d’attente.',
+    onlyWhen: 'vous êtes dans le parc et avez partagé votre position.',
+  },
+  {
+    title: 'Aujourd’hui dans le parc',
+    body: 'Le statut et les horaires, le nombre d’attractions ouvertes, l’affluence du moment, la prévision du jour, le taux d’occupation, les temps d’attente des grandes attractions et les prochains spectacles. Quand une alerte météo officielle du DWD ou de MeteoAlarm est en vigueur, elle figure tout en haut, telle quelle. La ligne de titre affiche la température et un avertissement quand de la pluie ou un orage approche ; en appuyant dessus, vous voyez les prochaines heures par quarts d’heure. Tout en bas viennent les vacances qui pèsent aujourd’hui sur le parc, celles de sa propre région en premier.',
+    example:
+      'Le 24 août 2026, Phantasialand était ouvert de 9 h à 19 h, et la Gueldre était en vacances d’été comme la Rhénanie-du-Nord-Westphalie.',
+    demo: (
+      <div className="space-y-3">
+        <WeatherWarningBannerDemo />
+        <NowcastBannerDemo single />
+        <AnatomyHolidayDemo />
+      </div>
+    ),
+  },
+  {
+    title: 'Les tuiles',
+    body: 'Sous « Aujourd’hui dans le parc » s’aligne une rangée de tuiles, la plupart avec un chiffre du jour, comme le nombre d’attractions ouvertes ou l’heure du prochain spectacle. Attractions, Météo, Carte, Spectacles et Restaurants ouvrent leur onglet sur la même page ; le calendrier des temps d’attente et les statistiques sont des pages à part.',
+  },
+  {
     title: 'Attractions',
-    body: 'Toutes les attractions en cartes comme au chapitre 01, avec recherche, groupées par zone. Au-dessus figurent celles pour lesquelles il vaut la peine d’arriver tôt.',
-    example: 'À Phantasialand, Taron y figure, avec 60 minutes gagnées.',
+    body: 'L’onglet sélectionné à l’ouverture : toutes les attractions en cartes comme au chapitre 01, groupées par zone ou triées par temps d’attente, avec recherche et filtres, par exemple selon la taille ou les attractions ouvertes. Au-dessus figurent celles pour lesquelles il vaut la peine d’arriver tôt. Quand une attraction a une saison, elle figure sur sa carte. En dessous viennent, s’il y en a, les attractions fermées définitivement et le lien vers la page « Avec des enfants ».',
+    example: 'À Phantasialand, Taron y figure en tête.',
     demo: <AnatomyAttractionDemo />,
   },
   {
-    title: 'Calendrier et carte',
-    body: 'Les prévisions journalières du chapitre 04 dans la grille du mois, et une carte avec toutes les attractions.',
-    demo: <AnatomyCalendarDemo />,
+    title: 'Calendrier des temps d’attente',
+    body: 'Une page à part pour chaque mois : les jours du chapitre 04 dans la grille du mois, une fenêtre avec le détail de chaque jour, et la comparaison de deux jours. En haut figurent les dates les plus calmes des trois prochains mois et le jour de semaine le plus calme.',
+    demo: (
+      <div className="space-y-3">
+        <AnatomyBestDaysDemo locale="fr" />
+        <AnatomyCalendarDemo />
+      </div>
+    ),
   },
   {
-    title: 'Spectacles et restaurants',
-    body: 'Horaires des spectacles pour toute la journée, restaurants avec heures d’ouverture.',
-    example: 'À Phantasialand, quatre spectacles et 46 restaurants.',
-    demo: <AnatomyShowsDemo />,
-    onlyWhen: 'le parc en fournit.',
-  },
-  {
-    title: 'Meilleurs jours',
-    body: 'Les dates les plus calmes des trois prochains mois et le jour de semaine le plus calme du parc.',
-    demo: <AnatomyBestDaysDemo locale="fr" />,
-    onlyWhen: 'le parc publie un calendrier d’exploitation.',
+    title: 'Météo, carte, spectacles, restaurants',
+    body: 'Quatre autres onglets. La météo du moment, la courbe de la journée et la prévision, les heures d’ouverture du parc prenant le plus de place sur l’axe. Une carte avec toutes les attractions. Les spectacles avec leurs horaires pour toute la journée et les restaurants avec leur statut, les deux seulement si le parc en fournit.',
+    example:
+      'Le 4 novembre 2026, Europa-Park recensait 16 spectacles et 64 restaurants. Phantasialand n’avait aucun spectacle au programme ce jour-là, donc pas d’onglet spectacles non plus.',
+    demo: (
+      <div className="space-y-3">
+        <WeatherCardShowcase variant="single" />
+        <AnatomyShowsDemo />
+      </div>
+    ),
   },
   {
     title: 'Parcs à proximité',
-    body: 'Ce qu’il y a d’autre à portée, avec la distance et le statut.',
+    body: 'Jusqu’à trois autres parcs dans un rayon de 100 kilomètres, avec la distance et le statut.',
     example:
       'Depuis Phantasialand, Toverland et Movie Park Germany, tous deux à 90 bons kilomètres.',
     demo: <AnatomyNearbyDemo />,
-    onlyWhen: 'un autre parc se trouve à portée.',
+    onlyWhen: 'au moins deux autres parcs se trouvent dans ce rayon.',
   },
   {
     title: 'Blog',
@@ -208,23 +213,22 @@ const PARK_SECTIONS: AnatomyStep[] = [
   },
   {
     title: 'Statistiques',
-    body: 'Les files les plus longues du parc avec leur valeur habituelle et chargée, plus la répartition par mois et par jour de semaine.',
-    demo: (
-      <AnatomyStatsDemo
-        title="Attractions aux files les plus longues"
-        labelAttraction="Attractions"
-        labelMinutes="min"
-        labelNow="Maintenant"
-        labelP50="Habituel"
-        labelP90="Pointe"
-      />
-    ),
+    body: 'Les files les plus longues du parc, en moyenne sur les heures d’ouverture, plus les mois, les jours de semaine et les jours mesurés les plus chargés et les plus calmes. La tuile « Statistiques » mène à une page à part, qui montre en plus une journée normale heure par heure.',
+    demo: <AnatomyStatsDemo />,
   },
   {
-    title: 'Saison, infos, questions',
-    body: 'Périodes d’ouverture et événements, adresse et fuseau horaire, questions fréquentes sur ce parc.',
-    example: 'La patinoire du chapitre 08 y figure, avec sa saison de novembre à janvier.',
-    demo: <AnatomySeasonDemo label="Patinoire" />,
+    title: 'Les douze prochains mois',
+    body: 'La prévision jour par jour, regroupée par mois, avec le nombre de jours recommandés. Un mois mène au calendrier des temps d’attente.',
+    onlyWhen: 'il existe une prévision pour le parc.',
+  },
+  {
+    title: 'Saisons et événements',
+    body: 'Halloween, Noël et d’autres événements avec leurs dates, l’indication s’ils sont confirmés, annoncés ou seulement attendus, et le prix d’un billet séparé.',
+    onlyWhen: 'nous avons recherché des événements pour ce parc.',
+  },
+  {
+    title: 'Infos et questions',
+    body: 'Adresse, téléphone, année d’ouverture et superficie, dans la mesure où nous les avons, puis les questions fréquentes sur ce parc.',
   },
 ];
 
@@ -233,61 +237,75 @@ const NIGHT_JOBS: NightShiftJob[] = [
     hour: 2,
     minute: 0,
     at: 0.04,
-    title: 'Ce qu’une heure a d’habituel',
-    body: 'Valeur habituelle et valeur chargée pour chaque attraction et chaque heure.',
+    title: 'La veille, heure par heure',
+    body: 'Pour chaque attraction et chaque heure de la veille, l’attente habituelle et celle des moments les plus chargés.',
   },
   {
     hour: 3,
     minute: 0,
-    at: 0.22,
+    at: 0.2,
     title: 'Le niveau normal de chaque parc',
-    body: 'La valeur à laquelle l’affluence est comparée.',
+    body: 'La valeur à laquelle l’affluence d’un parc est comparée.',
+  },
+  {
+    hour: 3,
+    minute: 0,
+    at: 0.2,
+    title: 'Le modèle des semaines à venir réapprend',
+    body: 'Il intègre les temps d’attente de la veille.',
+  },
+  {
+    hour: 4,
+    minute: 0,
+    at: 0.34,
+    title: 'Le niveau normal de chaque attraction',
+    body: 'La valeur à laquelle se mesure le niveau d’affluence de la carte du chapitre 01.',
   },
   {
     hour: 4,
     minute: 30,
-    at: 0.42,
+    at: 0.46,
     title: 'Résumer la veille',
     body: 'Toute la journée précédente, par quarts d’heure.',
   },
   {
     hour: 5,
     minute: 15,
-    at: 0.56,
+    at: 0.6,
     title: 'Se lever tôt, ça vaut le coup ?',
     body: 'Par attraction, ce que fait gagner un départ matinal et combien de temps l’avance tient.',
   },
   {
     hour: 5,
     minute: 30,
-    at: 0.67,
-    title: 'L’habituel par jour de semaine',
-    body: 'Le tableau du chapitre 02 pour chaque attraction, avec le record.',
+    at: 0.72,
+    title: 'Normal et chargé par jour de semaine',
+    body: 'Les valeurs du chapitre 02 pour chaque attraction, avec le record.',
   },
   {
     hour: 6,
     minute: 0,
-    at: 0.8,
-    title: 'Le modèle de prévision réapprend',
-    body: 'Il s’entraîne sur les temps d’attente de la veille.',
+    at: 0.86,
+    title: 'Le modèle du reste de l’année réapprend',
+    body: 'Lui aussi intègre les temps d’attente de la veille.',
   },
 ];
 
 const FAQ = [
   {
-    question: 'Que veulent dire « habituel » et « chargé » pour un temps d’attente ?',
+    question: 'Que veulent dire « normal » et « chargé » pour un temps d’attente ?',
     answer:
-      'Habituel est la médiane des pics quotidiens : sur la moitié des jours mesurés, la file la plus longue était plus courte. Chargé est le 90e centile de la même série, à peu près le jour le plus chargé sur dix. Le record est affiché à part, pour qu’une seule valeur extrême ne déplace ni l’une ni l’autre.',
+      'Normal est la médiane des pics quotidiens : sur la moitié des jours mesurés, la file la plus longue était plus courte. Chargé est le 90e centile de la même série, à peu près le jour le plus chargé sur dix. Le record est affiché à côté. Comme ces deux valeurs sont des centiles, une seule valeur extrême les déplace à peine.',
   },
   {
     question: 'Est-ce que 70 minutes d’attente, c’est beaucoup ?',
     answer:
-      'Cela dépend de l’attraction et du jour de la semaine. Le lundi, Taron, à Phantasialand, plafonne habituellement à 55 minutes, et 70, c’est donc beaucoup. Le samedi, 70 minutes correspondent à la médiane, soit une journée tout à fait normale. Les deux valeurs de comparaison figurent sur park.fan, sur la page de l’attraction.',
+      'Cela dépend de l’attraction et du jour de la semaine. Le lundi, Taron, à Phantasialand, plafonne normalement à 55 minutes, et 70, c’est donc beaucoup. Le samedi, 70 minutes correspondent à la médiane, soit une journée tout à fait normale. Les deux valeurs de comparaison figurent sur park.fan, sur la page de l’attraction.',
   },
   {
     question: 'D’où viennent les temps d’attente ?',
     answer:
-      'De trois sources publiques : ThemeParks.wiki, Wartezeiten.app et Queue-Times.com. Nous interrogeons chaque parc toutes les cinq minutes, et quand les sources divergent, la majorité l’emporte.',
+      'De trois sources publiques au plus. ThemeParks.wiki est la source de base ; Queue-Times.com et Wartezeiten.app ajoutent les attractions qui y manquent et corrigent un « fermé » périmé. Nous récupérons de nouvelles valeurs toutes les cinq minutes.',
   },
   {
     question: 'Pourquoi certains parcs affichent-ils « Pas de prévision » ?',
@@ -297,7 +315,7 @@ const FAQ = [
   {
     question: 'Pourquoi Hansa-Park n’affiche-t-il aucun temps d’attente ?',
     answer:
-      'Le parc n’affiche ses temps d’attente que dans sa propre application, et uniquement sur le wifi du parc. Il n’existe aucune interface publique. Sur park.fan, une mention remplace donc 82 attractions qui auraient l’air vides.',
+      'Le parc n’affiche ses temps d’attente que dans sa propre application, et uniquement sur le wifi du parc. Il n’existe aucune interface publique. Sur park.fan, une mention placée au-dessus de la liste des attractions explique donc pourquoi aucun temps n’y figure.',
   },
   {
     question: 'Qu’est-ce que le rope drop ?',
@@ -307,12 +325,12 @@ const FAQ = [
   {
     question: 'park.fan est-il payant, et faut-il un compte ?',
     answer:
-      'Non et non. Tout sur park.fan est gratuit et utilisable sans inscription. Les favoris et les plans de journée restent dans votre navigateur.',
+      'Non et non. Tout sur park.fan est gratuit et utilisable sans inscription. Les favoris et les plans de journée restent dans votre navigateur. C’est seulement si vous partagez un plan ou demandez des notifications à son sujet que nous le conservons aussi chez nous.',
   },
   {
     question: 'À quelle fréquence les chiffres sont-ils actualisés ?',
     answer:
-      'Une page de parc ouverte récupère de nouvelles valeurs toutes les cinq minutes. Nous recalculons les temps d’attente habituels et les recommandations rope drop une fois par nuit, parce qu’ils bougent à peine d’un jour à l’autre.',
+      'Une page de parc ouverte récupère de nouvelles valeurs toutes les cinq minutes. Nous recalculons les valeurs par jour de semaine et les recommandations rope drop une fois par nuit, parce qu’elles bougent à peine d’un jour à l’autre.',
   },
 ];
 
@@ -338,9 +356,10 @@ export function ContentFR() {
           raccourcit et quel jour la visite vaut vraiment le coup.
         </P>
         <P>
-          Les cartes, badges et tableaux qui suivent sont les composants mêmes de park.fan,
-          alimentés par des chiffres d’exemple figés, relevés à Phantasialand. Au parc, vous avez
-          les mêmes cartes sur votre téléphone, avec les chiffres du jour.
+          Les cartes, badges et tableaux qui suivent sont les composants mêmes de park.fan. La
+          plupart affichent des chiffres d’exemple figés, tels que l’API les a fournis à l’été et à
+          l’automne 2026, presque tous relevés à Phantasialand ; deux tableaux sont en direct. Au
+          parc, vous avez les mêmes cartes sur votre téléphone, avec les chiffres du jour.
         </P>
 
         <Reveal>
@@ -371,15 +390,16 @@ export function ContentFR() {
 
         <div className="space-y-4 pt-2">
           <P>
-            Le niveau d’affluence compare le chiffre à ce qui est normal pour cette attraction.
-            Taron tourne en moyenne à {TARON_BASELINE} minutes, {TARON_WAIT_NOW} en représentent un
-            peu plus d’une fois et demie, et ce niveau s’appelle « Très élevée ». La petite flèche à
-            côté indique si la file grossit ou se résorbe.
+            Le niveau d’affluence compare le chiffre au niveau normal de cette attraction, la
+            médiane de ses temps d’attente mesurés. Pour Taron, il était de {TARON_BASELINE} minutes
+            en septembre, {TARON_WAIT_NOW} en représentent un peu plus d’une fois et demie, et ce
+            niveau s’appelle « Très élevée ». La petite flèche à côté indique si la file grossit ou
+            se résorbe.
           </P>
           <PG>
             Quand une attraction a une file single rider, son temps d’attente figure lui aussi sur
             la carte. La taille minimale également, pour ne pas découvrir à la toise qu’un enfant de
-            130 centimètres est trop petit.
+            120 centimètres est trop petit.
           </PG>
         </div>
 
@@ -398,17 +418,17 @@ export function ContentFR() {
           id="echelle"
           index="02"
           kicker="L’échelle"
-          title="Habituel, chargé, record"
+          title="Normal, chargé, record"
           icon={Ruler}
         >
           <IntroWithAside
             value={`${TARON_RECORD} min`}
             label="La plus longue file mesurée de Taron"
-            note="Le 16 juillet 2026, pendant les vacances d’été. Un seul jour, qui figure donc à part comme record et reste en dehors de l’échelle."
+            note="Le 16 juillet 2026. En Rhénanie-du-Nord-Westphalie, l’école n’était pas finie, mais les régions voisines étaient déjà en vacances d’été. Un seul jour : il figure à côté comme record et ne déplace guère l’échelle."
           >
             <P>
               Pour savoir si 70 minutes, c’est beaucoup, il faut deux valeurs de comparaison.
-              « Habituel » donne la longueur ordinaire de la plus longue file de la journée à cette
+              « Normal » donne la longueur ordinaire de la plus longue file de la journée à cette
               attraction, « chargé » la longueur qu’elle atteignait les dix pour cent de jours les
               plus chargés.
             </P>
@@ -430,8 +450,8 @@ export function ContentFR() {
                   </div>
                   <h3 className="mb-3 text-xl font-bold sm:text-2xl">
                     {i === 0 && 'Pour un lundi, 70 minutes, c’est beaucoup'}
-                    {i === 1 && 'Pour un samedi, 70 minutes, c’est la normale'}
-                    {i === 2 && 'Et une fois, il y en a eu 135'}
+                    {i === 1 && 'Le samedi, 70 minutes, c’est normal'}
+                    {i === 2 && 'Et une fois, ce fut 135'}
                   </h3>
                   <p className="text-muted-foreground leading-relaxed">
                     {i === 0 && (
@@ -443,9 +463,9 @@ export function ContentFR() {
                     )}
                     {i === 1 && (
                       <>
-                        Le samedi, {step.typical} minutes, c’est la médiane. Ce jour-là, le même
-                        affichage est tout à fait normal, et les attractions voisines sont tout
-                        aussi chargées.
+                        Le samedi, {step.typical} minutes, c’est la médiane : la moitié des samedis,
+                        la plus longue file est restée en dessous. Ce jour-là, le même affichage est
+                        tout à fait normal.
                       </>
                     )}
                     {i === 2 && (
@@ -490,7 +510,7 @@ export function ContentFR() {
               <P>
                 Sur la page de chaque attraction, cette échelle figure jour de semaine par jour de
                 semaine. Le chiffre au-dessus de la barre est la valeur chargée, la partie pleine en
-                dessous la valeur habituelle, et tout en bas se trouve le record avec sa date.
+                dessous la valeur normale, et tout en bas se trouve le record avec sa date.
               </P>
               <P>
                 Le samedi est le seul jour où les {TARON_WAIT_NOW} minutes de Taron tombent pile au
@@ -501,8 +521,8 @@ export function ContentFR() {
           </div>
 
           <DemoFrame
-            label="Le même tableau pour tout le parc, en direct"
-            note="L’état actuel de Phantasialand, avec pour chaque attraction la valeur habituelle et la valeur chargée."
+            label="Tout le parc, en direct"
+            note="Les files les plus longues de Phantasialand, telles qu’elles figurent en ce moment sur la page du parc. Ce tableau est calculé autrement que la page d’une attraction : il fait la moyenne sur toutes les heures d’ouverture des deux dernières années. « Typique », c’est l’attente habituelle au sein d’une heure, « Pic », celle des minutes les plus chargées de cette heure. C’est pourquoi ses chiffres restent sous les pics quotidiens de l’échelle ci-dessus."
             href={PARK}
             hrefLabel="Phantasialand sur park.fan →"
           >
@@ -577,8 +597,8 @@ export function ContentFR() {
         </P>
 
         <DemoFrame
-          label="Quatre jours des vacances d’automne"
-          note="Le 15 octobre est le plus calme des quatre parce qu’il pleut, bien qu’il tombe en pleine période de vacances. Le 19, le parc est fermé. Sur park.fan, le même calendrier se déroule mois par mois."
+          label="Une semaine de vacances d’automne"
+          note="Quatre jours mesurés à Phantasialand, tous pendant les vacances d’automne 2026 de Rhénanie-du-Nord-Westphalie : le mardi 20 octobre, 45 minutes en moyenne aux grandes attractions, le dimanche suivant 20. Les mêmes vacances, quatre niveaux différents. Sur park.fan, le même calendrier se déroule mois par mois."
         >
           <CalendarDaysDemo />
         </DemoFrame>
@@ -589,19 +609,19 @@ export function ContentFR() {
           <P>
             Les vacances des régions voisines comptent souvent autant que celles de la région du
             parc, parce que les visiteurs à la journée ne s’arrêtent pas aux frontières.
-            Phantasialand est à environ 90 kilomètres des Pays-Bas, et son calendrier affiche, en
-            plus des vacances de Rhénanie-du-Nord-Westphalie, celles de la province de Gueldre. Les
-            régions de vacances situées dans un rayon d’environ 200 kilomètres reçoivent leur propre
-            marque.
+            Phantasialand est à environ 60 kilomètres des Pays-Bas, et son calendrier affiche, en
+            plus des vacances de Rhénanie-du-Nord-Westphalie, celles des provinces du Limbourg et de
+            Gueldre. Les vacances des régions voisines que nous avons retenues pour un parc
+            reçoivent leur propre marque.
           </P>
           <PG>
-            La couleur d’un jour est une prévision. La page Fancast calcule publiquement à quel
-            point nos prévisions tombent juste.
+            La couleur d’un jour à venir est une prévision, celle d’un jour passé est mesurée. La
+            page Fancast calcule publiquement à quel point nos prévisions tombent juste.
           </PG>
           <P>
-            Pour un parc ouvert toute l’année, le calendrier va environ onze mois à l’avance. Pour
-            un parc saisonnier, il s’arrête avec la saison publiée, et un jour où le parc est fermé
-            apparaît comme fermé.
+            Quand un parc publie ses horaires, le calendrier va aussi loin qu’eux, un an au plus, et
+            un jour où le parc est fermé apparaît comme fermé. Pour une vue d’ensemble, la page du
+            parc résume la prévision mois par mois sous « Les douze prochains mois ».
           </P>
         </div>
 
@@ -678,11 +698,12 @@ export function ContentFR() {
           <div className="space-y-4 lg:sticky lg:top-20 lg:self-start">
             <Highlight>
               La moitié de ces sections n’apparaît que s’il y a quelque chose à montrer. Un parc
-              sans spectacles n’a pas d’onglet spectacles vide.
+              sans spectacles n’a ni tuile spectacles ni onglet spectacles vide.
             </Highlight>
             <PG>
-              L’onglet choisi est enregistré dans l’adresse. Un lien envoyé depuis le calendrier
-              ouvre le calendrier, pas la liste des attractions.
+              L’onglet choisi est enregistré dans l’adresse. Un lien envoyé depuis la carte ouvre la
+              carte, pas la liste des attractions. Le calendrier et les statistiques sont des pages
+              qui ont leur propre adresse.
             </PG>
             <div className="pt-1">
               <Link
@@ -707,25 +728,29 @@ export function ContentFR() {
           icon={Database}
         >
           <P>
-            Toutes les cinq minutes, nous interrogeons chacun des 212 parcs auprès de trois sources
-            publiques à la fois. Quand elles divergent, la majorité l’emporte.
+            Toutes les cinq minutes, nous récupérons de nouveaux temps d’attente pour chacun des
+            plus de 200 parcs, auprès de trois sources publiques au plus. ThemeParks.wiki est la
+            source de base. Queue-Times.com et Wartezeiten.app ajoutent les attractions qui y
+            manquent et corrigent un « fermé » périmé. Pour quelques parcs, l’une des deux est la
+            seule source.
           </P>
 
           <IngredientGrid>
             <IngredientCard icon={Activity} title="Temps d’attente" delay={0}>
-              ThemeParks.wiki, Wartezeiten.app et Queue-Times.com, toutes les cinq minutes.
+              ThemeParks.wiki comme base, Queue-Times.com et Wartezeiten.app pour ce qui y manque.
             </IngredientCard>
             <IngredientCard icon={GraduationCap} title="Vacances & jours fériés" delay={60}>
-              Nager.Date pour les jours fériés et les ponts, OpenHolidays pour les vacances
-              scolaires, chaque région séparément.
+              Région par région : en Europe par Nager.Date et OpenHolidays, ailleurs d’après les
+              calendriers des autorités et des districts scolaires.
             </IngredientCard>
             <IngredientCard icon={CloudSun} title="Météo" delay={120}>
-              Open-Meteo pour la prévision et le radar de pluie, les alertes météo du DWD et de
-              MeteoAlarm.
+              Open-Meteo pour la prévision et une prévision de pluie à court terme par quarts
+              d’heure, les alertes météo du DWD et de MeteoAlarm.
             </IngredientCard>
             <IngredientCard icon={CalendarDays} title="Horaires d’ouverture" delay={0}>
-              Depuis les calendriers des parcs. Là où un parc n’en publie pas, nous estimons les
-              horaires à partir de l’activité des attractions, et nous l’indiquons.
+              Depuis les calendriers des parcs. Là où un parc n’en publie pas, nous déduisons les
+              horaires du jour et des jours précédents de l’activité des attractions, et nous
+              indiquons qu’ils sont estimés.
             </IngredientCard>
             <IngredientCard icon={Layers} title="Historique" delay={60}>
               Chaque temps d’attente mesuré reste enregistré, même celui d’un mardi matin
@@ -740,15 +765,15 @@ export function ContentFR() {
           <div className="space-y-4 pt-4">
             <P>
               La longueur de la file de Taron un mardi ordinaire, nous la calculons la nuit, pendant
-              que les parcs sont fermés. Quand vous ouvrez la page le matin, le calcul est déjà
-              fait.
+              que les parcs d’Europe sont fermés. Quand vous ouvrez la page le matin, le calcul est
+              déjà fait.
             </P>
           </div>
 
           <NightShift
             locale="fr"
             jobs={NIGHT_JOBS}
-            caption="Heures en UTC. Chaque étape s’appuie sur la précédente."
+            caption="Heures en UTC. L’ordre garantit que chaque étape trouve déjà les chiffres dont elle a besoin. Le modèle du jour ne réapprend qu’à 08:30."
           />
         </SectionShell>
       </Ambience>
@@ -767,14 +792,14 @@ export function ContentFR() {
         <div className="grid gap-6 lg:grid-cols-3">
           <DemoFrame
             label="Parc sans source lisible"
-            note="Hansa-Park n’affiche ses temps d’attente que dans sa propre application, sur le wifi du parc. Sans cette mention, park.fan montrerait 82 attractions qui ont l’air vides."
+            note="Hansa-Park n’affiche ses temps d’attente que dans sa propre application, sur le wifi du parc. Cette mention figure donc au-dessus de ses quelque 80 attractions et explique pourquoi aucun temps n’y est indiqué."
           >
             <NoWaitTimesDemo />
           </DemoFrame>
 
           <DemoFrame
             label="Attraction hors saison"
-            note="Personne ne remonte quoi que ce soit sur une patinoire en août. Elle apparaît donc hors saison et, ce jour-là, ne compte pas parmi les attractions ouvertes."
+            note="Personne ne remonte quoi que ce soit sur une patinoire en août. Comme nous connaissons sa saison, de novembre à janvier, elle apparaît alors hors saison et ne compte pas parmi les attractions ouvertes."
           >
             <OffSeasonDemo />
           </DemoFrame>
@@ -784,9 +809,8 @@ export function ContentFR() {
             note="Sous une trentaine de jours d’exploitation, la valeur de référence manque. Un parc récent reçoit donc « Pas de prévision » au lieu d’une couleur."
           >
             <BadgeRowDemo
-              crowdLabel="Affluence : à quel point c’est plein maintenant"
-              comparisonLabel="Comparaison : plus que d’habitude ?"
-              caption="À 70 minutes, Taron est en affluence « Très élevée », et face à ses 45 minutes habituelles, en « Beaucoup plus élevé ». Dans un petit parc où 25 minutes sont normales, « Très élevée » peut aller avec « Habituel »."
+              crowdLabel="Les niveaux"
+              caption={`Chaque niveau se mesure au passé de l’attraction ou du parc lui-même, jamais aux autres parcs. À 70 minutes, Taron est en affluence « Très élevée » parce que son niveau normal était de ${TARON_BASELINE} minutes en septembre.`}
             />
           </DemoFrame>
         </div>
@@ -800,8 +824,8 @@ export function ContentFR() {
               title: 'Recherche',
               body: (
                 <>
-                  Ctrl + K ou ⌘ + K sur chaque page. Trouve parcs, attractions, spectacles et
-                  restaurants, même avec des fautes de frappe.
+                  La touche / sur chaque page, ou le champ de recherche en haut. Trouve parcs,
+                  attractions, spectacles, restaurants et lieux, même avec des fautes de frappe.
                 </>
               ),
             },
@@ -810,8 +834,9 @@ export function ContentFR() {
               title: 'Localisation',
               body: (
                 <>
-                  Si vous l’autorisez, la page d’accueil affiche les parcs près de chez vous, et
-                  dans le parc, les attractions les plus proches avec distance et temps d’attente.
+                  Si vous l’autorisez, la page d’accueil affiche les parcs près de chez vous. Dans
+                  le parc, une boussole indique où se trouvent les grandes attractions, avec les
+                  plus proches, leur distance et leur temps d’attente.
                 </>
               ),
             },
@@ -820,9 +845,20 @@ export function ContentFR() {
               title: 'Favoris',
               body: (
                 <>
-                  L’étoile sur chaque carte de parc et d’attraction. Les favoris apparaissent sur la
-                  page d’accueil avec leur temps d’attente actuel et restent dans le navigateur,
-                  sans compte.
+                  L’étoile sur les parcs, attractions, spectacles et restaurants. Les favoris
+                  apparaissent avec leur temps d’attente actuel sur la page d’accueil et dans{' '}
+                  <A href="/favorites">Mes favoris</A>, enregistrés dans le navigateur, sans compte.
+                </>
+              ),
+            },
+            {
+              icon: Bell,
+              title: 'Alertes',
+              body: (
+                <>
+                  La cloche d’une attraction ou d’un spectacle vous envoie une notification quand
+                  l’attente passe sous votre seuil, que l’attraction rouvre ou que le spectacle va
+                  commencer. Toutes figurent dans <A href="/alerts">Mes alertes</A>.
                 </>
               ),
             },
@@ -832,7 +868,8 @@ export function ContentFR() {
               body: (
                 <>
                   Dans l’onglet Attractions, réglez le curseur sur le plus petit enfant, et il ne
-                  reste que les attractions qu’il a le droit de faire.
+                  reste que les attractions qu’il a le droit de faire. La page « Avec des enfants »
+                  d’un parc a le même curseur.
                 </>
               ),
             },
@@ -851,19 +888,31 @@ export function ContentFR() {
               title: 'Page d’attraction',
               body: (
                 <>
-                  Historique, temps d’attente habituels par jour de semaine, rope drop, taille
+                  Historique, attente normale et chargée par jour de semaine, rope drop, taille
                   minimale et précision de la prévision pour cette attraction.
                 </>
               ),
             },
             {
+              icon: Scale,
+              title: 'Comparer des parcs',
+              body: (
+                <>
+                  <A href="/compare">Comparer des parcs</A> place deux à quatre parcs côte à côte,
+                  avec leur attente moyenne, leur file la plus longue et leur jour de semaine le
+                  plus calme.
+                </>
+              ),
+            },
+            {
               icon: Activity,
-              title: 'Blog',
+              title: 'Blog et actualités',
               body: (
                 <>
                   Des textes plus longs sur des parcs et des attractions, dont des{' '}
                   <A href="/blog/category/guides">guides de parc</A> avec billets, ordre de visite
-                  et accès.
+                  et accès. Les <A href="/news">Actualités</A> donnent de brèves nouvelles des
+                  parcs.
                 </>
               ),
             },
@@ -882,8 +931,48 @@ export function ContentFR() {
       </SectionShell>
 
       <SectionShell
-        id="faq"
+        id="parky"
         index="10"
+        kicker="L’assistant"
+        title="Demandez à Parky"
+        icon={MessageCircle}
+      >
+        <ParkyShot locale="fr">
+          <P>
+            Parky est l’assistant de chat de park.fan et habite le bouton rond en bas à droite. Sur
+            la page d’accueil, sur un grand écran, il se tient juste sous le titre et ne saute dans
+            son coin qu’une fois que vous faites défiler la page.
+          </P>
+          <P>
+            Demandez-lui combien de temps on attend en ce moment, ce qui est prévu pour aujourd’hui
+            ou les semaines à venir, quels jours les files d’un parc sont courtes, quelle est la
+            hauteur et la vitesse d’un grand huit, ou ce que racontent nos articles. Pour chaque
+            réponse, il consulte les mêmes données que celles des pages.
+          </P>
+          <P>
+            Il montre les parcs et les attractions sous forme de cartes avec leurs chiffres. Si vous
+            le lui demandez, il vous emmène sur la bonne page et prépare une journée dans le
+            planificateur, y ajoute des attractions ou les trie. Il ne voit votre position que si
+            vous appuyez sur « Partager ma position » dans le chat, et il ne la garde pas.
+          </P>
+          <P>
+            Les réponses sont rédigées par un modèle de langage, qui se trompe parfois. Les chiffres
+            des cartes du chat viennent directement de park.fan ; en cas de doute sur ce que Parky
+            en dit, vérifiez sur la page de l’attraction. Il s’en tient aux parcs et aux
+            attractions, ne cherche pas sur Internet, et après trois questions en 30 secondes, il a
+            besoin d’une courte pause.
+          </P>
+          <P>
+            Nous enregistrons vos questions sans adresse IP et les supprimons au bout de 90 jours.
+            Vous trouverez plus d’informations sur Parky, avec des exemples de questions, sur{' '}
+            <A href="/parky">sa propre page</A>.
+          </P>
+        </ParkyShot>
+      </SectionShell>
+
+      <SectionShell
+        id="faq"
+        index="11"
         kicker="Vos questions"
         title="Questions fréquentes"
         icon={HelpCircle}
@@ -894,7 +983,7 @@ export function ContentFR() {
       <LandingNextSteps
         kicker="Et maintenant ?"
         title="Pour aller plus loin"
-        body="park.fan est gratuit, sans compte et sans publicité. La page d’un parc montre tout cela avec les chiffres du jour, la page Fancast détaille la précision des prévisions des 30 derniers jours, et la meilleure période compare plusieurs parcs."
+        body="park.fan est gratuit, sans compte et sans publicité. La page d’un parc montre tout cela avec les chiffres du jour, la page Fancast détaille la précision des prévisions des sept derniers jours, et la meilleure période compare plusieurs parcs."
         destinations={[
           { href: PARK, label: 'Voir un exemple de page de parc', icon: Activity, prefetch: false },
           { href: bestTime, label: 'Meilleure période', icon: CalendarDays, prefetch: false },

@@ -108,9 +108,19 @@ export function useAssistantChat(
   const [phase, setPhase] = useState<AssistantChatPhase>('idle');
   const [lookup, setLookup] = useState<AssistantLookup | null>(null);
   const abort = useRef<AbortController | null>(null);
+  /** A language switch, held until the answer is complete and stored. */
+  const afterAnswer = useRef<AssistantAction | null>(null);
 
   useEffect(() => save(stored), [stored]);
   useEffect(() => () => abort.current?.abort(), []);
+  // After the save above, in the same commit: the switch remounts the window, which would cut off
+  // an answer still streaming and lose one not yet stored.
+  useEffect(() => {
+    const action = afterAnswer.current;
+    if (phase !== 'idle' || !action) return;
+    afterAnswer.current = null;
+    onAction(action);
+  }, [phase, onAction]);
 
   const patchLast = useCallback(
     (patch: (message: AssistantChatMessage) => AssistantChatMessage) =>
@@ -135,6 +145,7 @@ export function useAssistantChat(
       trackSiteEvent('assistant_question', { kind });
       let lookups = 0;
       let result: NonNullable<AssistantChatMessage['error']> | 'answered' = 'answered';
+      let switchTo: AssistantAction | null = null;
       setStored((current) => ({
         ...current,
         messages: [
@@ -203,6 +214,9 @@ export function useAssistantChat(
               patchLast((m) => ({ ...m, cards: [...(m.cards ?? []), action.card] }));
             } else if (action?.type === 'request_location') {
               patchLast((m) => ({ ...m, asksLocation: true }));
+            } else if (action?.type === 'switch_locale') {
+              switchTo = action;
+              patchLast((m) => ({ ...m, chips: [...(m.chips ?? []), 'language'] }));
             } else if (action) {
               const chip = onAction(action);
               if (chip) patchLast((m) => ({ ...m, chips: [...(m.chips ?? []), chip] }));
@@ -216,7 +230,10 @@ export function useAssistantChat(
       } catch {
         if (!controller.signal.aborted) fail('network');
       } finally {
-        if (!controller.signal.aborted) trackSiteEvent('assistant_answer', { result, lookups });
+        if (!controller.signal.aborted) {
+          trackSiteEvent('assistant_answer', { result, lookups });
+          afterAnswer.current = switchTo;
+        }
         setPhase('idle');
         setLookup(null);
       }

@@ -383,7 +383,7 @@ Route `/api/parks/near` (route).
 
 Route `/api/parks/popular` (route).
 
-- `GET` _function_: The most popular parks. With `locale`, the ones that language's readers opened most (`getMostViewedParks`, the hero's fallback); without, the API's request ranking, which the maintenance page also polls to see whether the API is back.
+- `GET` _function_: The most popular parks, each with its card photo.
 
 ### [`push/ride-alerts/route.ts`](../../app/api/push/ride-alerts/route.ts)
 

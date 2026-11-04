@@ -5,13 +5,13 @@ the fold, in a background tab or in a closed panel still runs its effects, liste
 timers unless it asks whether anybody can see it. Gate the work on the same question the markup
 answers:
 
-| Hidden by                        | Ask                                                               | Example                                          |
-| -------------------------------- | ----------------------------------------------------------------- | ------------------------------------------------ |
-| a breakpoint (`hidden lg:block`) | `useMediaQuery('(min-width: 64rem)')` (rem, like Tailwind's `lg`) | blog ToC scroll spy, guide page wait scale       |
-| being far down the page          | an `IntersectionObserver` with a generous `rootMargin`            | `BlogMapClient`, `LazyMount`                     |
-| a background tab                 | `document.hidden` / the shared clock, which pauses on its own     | `useMinuteNow`, hero rotation                    |
-| a closed dialog                  | mount it on the first press                                       | `RideAlertBell`, `ShowFollowBell`                |
-| an effect meant for a change     | skip the first run                                                | world map chip tween (`hero-world-panel-client`) |
+| Hidden by                        | Ask                                                               | Example                                    |
+| -------------------------------- | ----------------------------------------------------------------- | ------------------------------------------ |
+| a breakpoint (`hidden lg:block`) | `useMediaQuery('(min-width: 64rem)')` (rem, like Tailwind's `lg`) | blog ToC scroll spy, guide page wait scale |
+| being far down the page          | an `IntersectionObserver` with a generous `rootMargin`            | `BlogMapClient`, `LazyMount`               |
+| a background tab                 | `document.hidden` / the shared clock, which pauses on its own     | `useMinuteNow`, hero rotation              |
+| a closed dialog                  | mount it on the first press                                       | `RideAlertBell`, `ShowFollowBell`          |
+| an effect meant for a change     | skip the first run                                                | `ScrollToTop`                              |
 
 - **No endless animation inside a `backdrop-filter` box.** The blur is re-read whenever its region
   is dirtied, and `will-change` did not stop the "Heute im Park" header from flickering. A live

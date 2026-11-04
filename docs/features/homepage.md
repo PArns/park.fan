@@ -2,12 +2,12 @@
 
 Everything on the homepage under the hero, which has its own page
 ([homepage hero](homepage-hero.md)). Open this when changing the order or the layout of the stops,
-the news board, the tour and its screenshots, the nearby parks and their short waits, the popular
-parks' links or the FAQ. Entry point: `app/[locale]/page.tsx`.
+the news board, the tour and its screenshots, the popular parks' links or the FAQ. Entry point:
+`app/[locale]/page.tsx`.
 
-The page welcomes a first visit: the hero says what this is and finds a park, the news says what is
-new, the tour shows the product on a phone, and only then come the parks near the visitor, the
-popular parks and the questions. A visitor who has starred something finds it right under the news. On 2026-11-02 it had 21 sections and was 18,920 px tall on a desktop and
+The page welcomes a first visit: the hero says what this is and where a queue is short near the
+visitor right now, the news says what is new, the tour shows the product on a phone, and only then
+come the popular parks and the questions. A visitor who has starred something finds it right under the news. On 2026-11-02 it had 21 sections and was 18,920 px tall on a desktop and
 20,530 px on a phone; three quarters of its views came from phones, which stayed 13 seconds.
 
 | #   | Stop            | Layout  | Component                                                            | Data                                                       |
@@ -17,7 +17,6 @@ popular parks and the questions. A visitor who has starred something finds it ri
 | –   | Favourites      | stacked | a `HomeStop` in `page.tsx`, `FavoritesSection`; with favourites only | the favourites cookie                                      |
 | –   | The tour        | phone   | `HomeTour` → `ShotStop`                                              | none; screenshots in `public/media/home/`                  |
 | –   | Ask Parky       | phone   | `ParkyStop` → `ShotStop`, `ParkyAskLink`                             | none; the screenshot in `public/media/parky/<l>/chat.webp` |
-| –   | Near you        | stacked | `NearbyChapter` + `NearbyParksCard showShortWaits`                   | `/v1/discovery/nearby`                                     |
 | –   | Favourites, how | phone   | `FavoritesIntro` → two `ShotStop`s; without favourites only          | none; screenshots in `public/media/home/`                  |
 | –   | Popular parks   | beside  | a `HomeStop` in `page.tsx`, `FeaturedParksSlot` + `PopularParkLinks` | `getGeoStructure` (a week), the page-view snapshot         |
 | –   | Questions       | beside  | `FaqSection`, the page's only `FAQPage`                              | `seo.homepage.faq`                                         |
@@ -35,8 +34,7 @@ kicker, an `<h2>` worded as people search, a lead and the stop's link. A stop ha
 layouts:
 
 - **Stacked** (`HomeStop stacked`): the heading over the content, the content at the page's full
-  width. For what wants every column: the news board, the nearby parks (three cards a row), the
-  favourites. A heading beside these left half the page to a few lines of text.
+  width. For what wants every column: the news board and the favourites. A heading beside these left half the page to a few lines of text.
 - **Beside** (`HomeStop`): from a 1024 px page the heading takes five twelfths and stays in view
   (`sticky`) while the content scrolls past; `reverse` swaps the sides and the tracks with them, so
   the content keeps the wide one. Only where both columns fill: the popular parks, whose twelve
@@ -74,8 +72,8 @@ app". The page answers in those words:
 
 - every stop's `<h2>` is worded as people search: „Freizeitpark-News und Guides", the tour's
   „Wartezeiten live, für jede Bahn", „Der Andrang-Kalender: wie voll es wird, Tag für Tag",
-  „Prognose: …", then „Freizeitparks in deiner Nähe", „Wartezeiten und Andrang in den
-  beliebtesten Parks" and „Freizeitpark-Wartezeiten, kurz erklärt";
+  „Prognose: …", then „Wartezeiten und Andrang in den beliebtesten Parks" and
+  „Freizeitpark-Wartezeiten, kurz erklärt";
 - `PopularParkLinks` links each popular park's waits and its calendar, the two pages those queries
   want, with the park's name in the link text;
 - the FAQ asks whether park.fan works on a phone without an app (`mobileQ`).
@@ -102,7 +100,7 @@ a 1024 px page. Four articles are about as tall as six news posts over five days
 - **The board follows the theme** like every card, so nothing inside needs a colour of its own. A
   pulsing dot in front of „News" says the group is what just happened.
 
-The stop stands first because the hero already lists the parks near the visitor, and the news is
+The stop stands first because the hero's cards already show what is near the visitor, and the news is
 what changes from one visit to the next. The manifest is read synchronously, so the board is in the
 first HTML and changes with every deploy that brings a post.
 
@@ -135,17 +133,12 @@ first HTML and changes with every deploy that brings a post.
 - **Room**: `overflow-hidden` on each `ShotStop` keeps the phone's glow from widening a phone's
   page.
 
-## Near you
+## Near you: in the hero
 
-`NearbyChapter` (stacked) frames `NearbyParksCard` (geolocation, else the API's GeoIP guess, after load and
-idle) with all its states: the prompt, the nearby parks with the open ones first, the in-park view,
-the error. The stop holds the `<h2>` and the location button (`HomeLocationRow`) under its lead,
-so the card (`nested`) draws no title of its own, only its hint line, and starts flush with the
-heading. On the homepage the card passes `showShortWaits`, so the parks are followed by „Jetzt
-kurz anstehen" (`NearbyShortWaits`): the rides in the open nearby parks whose live wait is well below
-their usual one, as the API picks them (`shortWaits`, contract in the API's
-[discovery](https://github.com/PArns/v4.api.park.fan/blob/main/docs/frontend/discovery.md#shortwaits)).
-Nothing is drawn when the list is empty, which is every evening and the whole off-season.
+The page has no nearby chapter of its own. What is near the visitor is the hero's card rail: the
+rides with a short queue right now, or the nearby parks where there are none, with the location row
+under them ([homepage hero → the card rail](homepage-hero.md#the-card-rail)). A chapter of nearby
+parks repeated the same parks a screen and a half further down.
 
 ## Favourites
 
@@ -153,7 +146,7 @@ The favourites are a stop of their own (`FavoritesSection heading="none"` in a `
 under the news and shown only for a visitor with favourites: for them it is what they came back
 for, and for anybody else an empty state about a feature they have not used.
 
-A visitor without favourites gets two phone stops after the parks near them instead
+A visitor without favourites gets two phone stops after Parky instead
 (`FavoritesIntro`, `components/home/favorites-intro.tsx`), in the tour's style:
 
 | Stop | Screenshot                                        | Says                                                |

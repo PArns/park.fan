@@ -45,7 +45,7 @@ export type SearchEventSender = <N extends SearchEventName>(
 export interface SearchSession {
   /**
    * Starts an opening, unless one is running. The palette passes the way it was opened (header,
-   * ⌘K, hero); a field has one surface and passes nothing.
+   * the `/` shortcut, hero); a field has one surface and passes nothing.
    */
   open(surface?: SearchSurface): void;
   /**

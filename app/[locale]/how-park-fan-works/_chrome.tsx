@@ -204,7 +204,10 @@ export function ParkAnatomy({
   onlyWhenLabel: string;
 }) {
   return (
-    <ol className="not-prose relative space-y-0">
+    // `min-w-0` here and on each step's column: below `lg` the rail sits in an `auto` grid track
+    // and each step is a flex item, and either would otherwise grow to the widest demo's
+    // min-content, which the page's `overflow-x-clip` then cuts off on a phone.
+    <ol className="not-prose relative min-w-0 space-y-0">
       {steps.map((step, i) => (
         <li key={step.title} className="relative flex gap-4 pb-6 last:pb-0">
           {/* The rail. Drawn per row and stopped on the last one, so it ends at
@@ -218,7 +221,7 @@ export function ParkAnatomy({
           >
             {i + 1}
           </span>
-          <div className="pt-0.5">
+          <div className="min-w-0 flex-1 pt-0.5">
             <h3 className="font-semibold">{step.title}</h3>
             <p className="text-muted-foreground mt-1 text-sm leading-relaxed">{step.body}</p>
             {step.example && (

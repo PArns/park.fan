@@ -7,11 +7,13 @@
  */
 import assert from 'node:assert/strict';
 import {
+  cpuTempThreshold,
   deriveAdminHealth,
   levelAbove,
   levelBelow,
   minutesAgoLabel,
   worstTone,
+  CPU_TEMP_C,
   FEED_STALE_MINUTES,
   WEATHER_DAYS_AHEAD,
 } from '../lib/admin/health.ts';
@@ -233,6 +235,41 @@ test('a stale feed and a stopped weather import are faults with their own button
   assert.deepEqual(ids, ['feeds:stale', 'feeds:weather']);
   assert.match(health.problems[0].detail, /1 Std\. alt/);
   assert.equal(health.areas.find((a) => a.id === 'feeds').tone, 'bad');
+});
+
+/** The limits the API sends for the production CPU, whose sensor reports a TjMax of 105 °C. */
+const TJMAX_105 = { warnC: 90, badC: 100, tjMaxC: 105, tjMaxSource: 'sensor' };
+
+/** The system answer with the CPU at `temperatureC`; without `limits`, as an older API sends it. */
+function cpuAt(temperatureC, limits) {
+  const base = system();
+  const cpu = { ...base.host.cpu, temperatureC };
+  if (limits) cpu.temperatureLimits = limits;
+  return ok({ ...base, host: { ...base.host, cpu } });
+}
+
+function temperatureTone(health) {
+  return health.areas[0].checks.find((c) => c.id === 'temperature').tone;
+}
+
+test('the CPU temperature is judged against TjMax, not a fixed 85 °C', () => {
+  // One busy core pulls the package to 88 °C; the chip throttles only at 105.
+  assert.equal(temperatureTone(deriveAdminHealth(sources({ system: cpuAt(88, TJMAX_105) }))), 'ok');
+  assert.equal(
+    temperatureTone(deriveAdminHealth(sources({ system: cpuAt(90, TJMAX_105) }))),
+    'warn'
+  );
+  const hot = deriveAdminHealth(sources({ system: cpuAt(100, TJMAX_105) }));
+  assert.equal(temperatureTone(hot), 'bad');
+  assert.equal(hot.problems[0].id, 'server:temperature');
+  assert.equal(hot.problems[0].title, 'CPU-Temperatur: 100 °C');
+});
+
+test('without limits from the API the CPU is judged at 85 and 95 °C', () => {
+  assert.deepEqual(cpuTempThreshold(system().host.cpu), CPU_TEMP_C);
+  assert.equal(temperatureTone(deriveAdminHealth(sources({ system: cpuAt(84) }))), 'ok');
+  assert.equal(temperatureTone(deriveAdminHealth(sources({ system: cpuAt(85) }))), 'warn');
+  assert.equal(temperatureTone(deriveAdminHealth(sources({ system: cpuAt(95) }))), 'bad');
 });
 
 test('the detectors ask their questions, and the sidebar counts every card', () => {

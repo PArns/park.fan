@@ -2,27 +2,13 @@
 
 import { useCallback, useEffect, useRef, useState, type ComponentType } from 'react';
 import { SearchCommand } from '@/components/search/search-bar';
-import { HeroSearchShell, type HeroSearchRest } from '@/components/search/hero-search-field';
-import { HeroPhoneList } from '@/components/search/hero-phone-list';
+import { HeroSearchFrame, HeroSearchShell } from '@/components/search/hero-search-field';
 import { useMediaQuery } from '@/lib/hooks/use-media-query';
 import { useMounted } from '@/lib/hooks/use-mounted';
 import { useAfterLoad } from '@/lib/hooks/use-after-load';
 import { useSearchSession } from '@/lib/hooks/use-search-session';
 import type { SearchSession } from '@/lib/analytics/search-session';
-import {
-  HERO_REST_ROWS_DESKTOP,
-  HERO_REST_ROWS_PHONE,
-  type HeroReading,
-} from '@/lib/home/hero-search';
 import { cn } from '@/lib/utils';
-
-/** The hero's resting list: parks, then the two posts, on both viewports. */
-const HERO_REST: HeroSearchRest = {
-  phoneRows: HERO_REST_ROWS_PHONE,
-  desktopRows: HERO_REST_ROWS_DESKTOP,
-  reading: true,
-  spacerClass: 'h-[var(--hero-search-rest-h)]',
-};
 
 interface HeroInlineSearchProps {
   /** Example park/ride names shown in the empty field. */
@@ -30,15 +16,11 @@ interface HeroInlineSearchProps {
   /** What the field is for — the accessible name, since the placeholder is only examples. */
   label: string;
   className?: string;
-  /** The two posts under the hero's resting list, resolved on the server (`getHeroReading`). */
-  reading?: HeroReading | null;
 }
 
 type PanelComponent = ComponentType<{
   placeholder: string;
   label: string;
-  rest: HeroSearchRest;
-  reading?: HeroReading | null;
   initialQuery?: string;
   autoFocus?: boolean;
   onFocusHandled?: () => void;
@@ -48,20 +30,14 @@ type PanelComponent = ComponentType<{
 }>;
 
 /**
- * The hero search: a field with its resting list attached, one glass object on every viewport.
- * From `md` up the field searches in place (`HeroInlineSearchPanel`, fetched only after load and
- * idle); on a phone it opens the `SearchCommand` palette, and the list's rows are links. Until the
- * panel exists {@link HeroSearchShell} is a working input that hands its focus and typed text to
- * the panel on mount; on a phone the palette opens with that text instead. One search session
- * per field, whichever part the visitor uses.
+ * The hero search: one field, whose list opens under it once it has focus. From `md` up the field
+ * searches in place (`HeroInlineSearchPanel`, fetched only after load and idle); on a phone it opens
+ * the `SearchCommand` palette. Until the panel exists {@link HeroSearchShell} is a working input
+ * that hands its focus and typed text to the panel on mount; on a phone the palette opens with that
+ * text instead. One search session per field, whichever part the visitor uses. What is near the
+ * visitor stands under the hero's text instead, in the card rail (`HeroRail`).
  */
-export function HeroInlineSearch({
-  placeholder,
-  label,
-  className,
-  reading,
-}: HeroInlineSearchProps) {
-  const rest = HERO_REST;
+export function HeroInlineSearch({ placeholder, label, className }: HeroInlineSearchProps) {
   const isDesktop = useMediaQuery('(min-width: 768px)');
   const mounted = useMounted();
   const afterLoad = useAfterLoad();
@@ -133,18 +109,11 @@ export function HeroInlineSearch({
   return (
     <div ref={hostRef} className={cn('w-full', className)}>
       {showShell ? (
-        <HeroSearchShell
-          placeholder={placeholder}
-          label={label}
-          rest={rest}
-          onActivate={activate}
-        />
+        <HeroSearchShell placeholder={placeholder} label={label} onActivate={activate} />
       ) : isDesktop && Panel ? (
         <Panel
           placeholder={placeholder}
           label={label}
-          rest={rest}
-          reading={reading}
           initialQuery={typed ?? undefined}
           autoFocus={pendingFocus}
           onFocusHandled={() => setPendingFocus(false)}
@@ -164,8 +133,7 @@ export function HeroInlineSearch({
             openOnMount={typed ?? undefined}
             onOpenedOnMount={handedOver}
           />
-          <div aria-hidden="true" className={rest.spacerClass} />
-          <HeroPhoneList rows={rest.phoneRows} reading={reading} session={session} />
+          <HeroSearchFrame aria-hidden="true" />
         </div>
       )}
     </div>

@@ -13,6 +13,7 @@ import { localeNames } from '@/i18n/config';
 import { FlagDE, FlagUS, FlagNL, FlagFR, FlagES, FlagIT } from '@/components/common/icons/flags';
 import { trackSiteEvent } from '@/lib/analytics/site-analytics';
 import { rememberLocale } from '@/lib/i18n/remember-locale';
+import { hreflangPath } from '@/lib/i18n/hreflang';
 
 const LOCALE_CODES: Record<Locale, string> = {
   de: 'DE',
@@ -68,12 +69,9 @@ export function LocaleSwitcher() {
     // next-intl's own client-side sync never runs for it.
     rememberLocale(newLocale);
 
-    const hreflangEl = document.querySelector<HTMLLinkElement>(
-      `link[rel="alternate"][hreflang="${newLocale}"]`
-    );
-    if (hreflangEl?.href) {
-      const { pathname: hreflangPath } = new URL(hreflangEl.href);
-      window.location.replace(hreflangPath);
+    const alternate = hreflangPath(newLocale);
+    if (alternate) {
+      window.location.replace(alternate);
       return;
     }
 

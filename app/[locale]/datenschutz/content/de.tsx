@@ -127,7 +127,7 @@ export function DatenschutzDE() {
           Browsers löschen.
         </p>
 
-        <LegalH3>Standort und „Parks in der Nähe“</LegalH3>
+        <LegalH3>Standort und „Parks in deiner Nähe“</LegalH3>
         <p>
           Auf der Startseite und auf Parkseiten zeigen wir Parks in Ihrer Nähe und, wenn Sie in
           einem Park stehen, Hinweise für diesen Park. Erteilen Sie in Ihrem Browser die

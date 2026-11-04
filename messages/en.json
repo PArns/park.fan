@@ -114,7 +114,9 @@
       "intro": "park.fan shows the wait times at <strong>{parks} theme parks</strong> and <strong>{attractions} attractions</strong>, updated every five minutes. For the coming days there is also a forecast of how busy each park will be.",
       "introShort": "Live wait times at <strong>{parks} theme parks</strong>.",
       "openNow": "{count, plural, =1 {1 park open right now} other {# parks open right now}}",
-      "searchExamples": "Europa-Park, Taron, Efteling …"
+      "searchExamples": "Europa-Park, Taron, Efteling …",
+      "parkyLine": "Let’s see where we queue today!",
+      "parkyCta": "Click me and I’ll help you."
     },
     "sections": {
       "featuredParks": "Popular Parks",
@@ -161,12 +163,6 @@
     }
   },
   "homeStory": {
-    "nearby": {
-      "kicker": "Your location",
-      "title": "Theme parks near you",
-      "lead": "With your location, park.fan lists the nearest parks, open ones first, and shows how busy each one is right now.",
-      "allParks": "Browse all parks"
-    },
     "favorites": {
       "kicker": "Favorites",
       "title": "Your parks and rides",
@@ -1518,10 +1514,14 @@
       "demoNoLocation": "Without your location you stay on one spot in the park.",
       "dialGroup": "Compass, north up"
     },
+    "heroRail": {
+      "seeWaits": "See wait times"
+    },
     "shortWaits": {
       "title": "Short queues near you",
-      "hint": "Rides nearby whose queue is much shorter than usual right now.",
-      "usually": "usually {minutes} {unit}"
+      "usually": "usually {minutes} {unit}",
+      "now": "now {minutes} {unit}",
+      "shorter": "{minutes} {unit} shorter"
     }
   },
   "location": {
@@ -1669,9 +1669,7 @@
     },
     "avgWait": "{minutes} min avg",
     "avgWaitShort": "Ø {minutes} min",
-    "heroHint": "Start typing to search parks, attractions, shows and restaurants",
-    "newestNews": "Latest news",
-    "newestGuide": "Latest guide"
+    "heroHint": "Start typing to search parks, attractions, shows and restaurants"
   },
   "searchPage": {
     "types": {
@@ -1809,7 +1807,7 @@
         "whichParksQ": "Which theme parks are on park.fan?",
         "whichParksA": "park.fan covers over 200 theme parks worldwide, among them Phantasialand, Europa-Park, Disneyland Paris, Efteling, Walibi Belgium, Toverland and Bobbejaanland. The full list with live wait times is on the parks overview page.",
         "liveDataQ": "Are the wait times on park.fan live and in real-time?",
-        "liveDataA": "Yes. Wherever a park publishes its wait times, we poll them every five minutes from three public sources at once: ThemeParks.wiki, Wartezeiten.app and Queue-Times.com. Where the sources disagree, the majority decides, then the median, then the mean. The result is rounded to five minutes, because that is how the parks post them.",
+        "liveDataA": "Yes. Wherever a park publishes its wait times, we poll them every five minutes from the sources that list the park, up to three: ThemeParks.wiki, Wartezeiten.app and Queue-Times.com. ThemeParks.wiki is the main source; the other two add rides it lacks and correct a stale “closed” status. The result is rounded to five minutes, because that is how the parks post them.",
         "freeQ": "Is using park.fan free?",
         "freeA": "Yes. Live wait times, opening hours, shows, restaurants and the crowd calendar are all there without an account and without a paywall. There is no subscription tier with more data behind it.",
         "mobileQ": "Does park.fan work on smartphones?",
@@ -2968,6 +2966,8 @@
     "chipNavigated": "Page opened",
     "chipPlanned": "In your day planner",
     "chipOptimized": "Sorting your day",
+    "chipLanguage": "Language switched",
+    "chipFeedback": "Passed on to the team",
     "locationAsk": "Parky would like your location to find parks and rides near you.",
     "locationShare": "Share location",
     "locationNo": "Rather not",

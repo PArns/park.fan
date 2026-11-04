@@ -26,6 +26,7 @@ import { Kbd } from '../_ui/primitives';
 import { useSession } from '../_app/session';
 import { useOpenPalette } from '../_app/admin-shell';
 import { TONE_META } from './tone';
+import { SEARCH_SHORTCUT_KEY } from '@/lib/utils/page-focus';
 
 const DAY = getDateTimeFormat('de-DE', {
   weekday: 'long',
@@ -206,7 +207,7 @@ export function StatusHero({
         >
           <Search className="h-4 w-4" aria-hidden="true" />
           Alles andere
-          <Kbd>⌘K</Kbd>
+          <Kbd>{SEARCH_SHORTCUT_KEY}</Kbd>
         </button>
       </div>
 

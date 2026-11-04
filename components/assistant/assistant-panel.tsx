@@ -6,6 +6,8 @@ import { usePathname } from 'next/navigation';
 import {
   CalendarCheck,
   ExternalLink,
+  Languages,
+  MessageSquareHeart,
   RotateCcw,
   SendHorizontal,
   Sparkles,
@@ -60,6 +62,8 @@ const CHIP: Record<AssistantActionChip, { key: string; icon: typeof ExternalLink
   navigated: { key: 'chipNavigated', icon: ExternalLink },
   planned: { key: 'chipPlanned', icon: CalendarCheck },
   optimized: { key: 'chipOptimized', icon: Sparkles },
+  language: { key: 'chipLanguage', icon: Languages },
+  feedback: { key: 'chipFeedback', icon: MessageSquareHeart },
 };
 
 /** Three bouncing dots: Parky is thinking or looking something up. */

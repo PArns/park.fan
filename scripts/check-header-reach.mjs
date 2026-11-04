@@ -39,7 +39,7 @@ import { chromium } from 'playwright';
 import { existsSync } from 'node:fs';
 
 const BASE = process.env.BASE ?? 'http://localhost:3000';
-/** Same fallback as scripts/check-card-framing.mjs and check-hero-search-rest.mjs. */
+/** Same fallback as scripts/check-card-framing.mjs. */
 const PREINSTALLED = process.env.CHROMIUM_PATH ?? '/opt/pw-browsers/chromium';
 const LAUNCH = existsSync(PREINSTALLED) ? { executablePath: PREINSTALLED } : {};
 

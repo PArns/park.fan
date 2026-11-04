@@ -23,7 +23,7 @@ curated column means, the write order, seasons, undo, merges).
 ```
 app/admin/
   layout.tsx                own document
-  _app/                     providers, session, shell, ⌘K palette, inspector, nav, login screen
+  _app/                     providers, session, shell, `/` palette, inspector, nav, login screen
   _ui/                      the component kit: one of each thing
   _lib/                     fetch layer (adminFetch, useAdminQuery), types, formatters, hooks
   _overview/                the overview's parts: status hero, problems, figures, area table
@@ -55,7 +55,7 @@ editor, whose English labels and codes („de“, „info“) read as tags, and 
 buttons, whose values are lowercase codes. `Chip` also serves the light-themed overlay on public
 pages (`components/admin/`), so its tones keep their light-theme text.
 
-Everything is reachable three ways: the sidebar, `⌘K` and `g`-then-a-letter
+Everything is reachable three ways: the sidebar, `/` (the command palette) and `g`-then-a-letter
 (`_app/admin-shell.tsx`). The palette is the practical way to reach one of hundreds of parks or
 thousands of rides, and it searches the **curated** name as well as the upstream one, so a park
 renamed last week is found under the name it was given.
@@ -76,7 +76,7 @@ inset's margin and border); a page that fills the viewport subtracts it, as the 
 | Inhalte      | Blog, Medien, Vor Ort, Einsendungen                                         |
 | Publikum     | Traffic (Live, SEO, Suche, Wege, Tagesplaner, Beliebtheit), Parky (3 pages) |
 | Betrieb      | System, Queues, ML-Zentrale (Modellvergleich), Parks live, Wartung          |
-| Konto (foot) | Mein Konto, Konten: in the account menu at the sidebar's foot, and in ⌘K    |
+| Konto (foot) | Mein Konto, Konten: in the account menu at the sidebar's foot, and in `/`   |
 
 Datenqualität sits with the editors because its cards ask curation questions (season or gone?).
 `NavGroup.placement` puts a group on top without a heading (`top`) or behind the account button
@@ -100,7 +100,7 @@ A situation report, read top to bottom:
    „Alles läuft“) with the first two problem titles under it, tinted by its tone, over the rotating
    park photo. Under it the shortcuts: the camera first (full width on a phone, which is opened at a
    park gate), the pending submissions when there are any, the most used pages, live visitors, and
-   „Alles andere ⌘K“.
+   „Alles andere /“.
 2. **Wartet auf dich**: one card per problem, faults first, folded after four.
 3. **Heute**: visitors today and now, the wait-time feed, host, database, queues, models, photo
    inbox. Each card's label turns amber or red with its area.
@@ -129,6 +129,13 @@ sidebar's reads refresh on focus.
 - The thresholds (`CPU_LOAD_PCT`, `CHIP_TEMP_C`, `STORAGE_PCT`, `FEED_STALE_MINUTES`,
   `WEATHER_DAYS_AHEAD` …) are the ones `/admin/system` colours its readings with, so the two never
   disagree.
+- **The CPU temperature** is the package sensor, judged by the limits the API counts down from the
+  chip's own TjMax (`host.cpu.temperatureLimits`): amber 15 °C and red 5 °C under it, so 90 and
+  100 °C on the production Core Ultra 9 275HX. On Intel the package follows the hottest core, so a
+  fixed limit made one busy core a fault. `cpuTempThreshold` reads the limits; `CPU_TEMP_C` (85 and
+  95 °C) stands in while an API without the field answers. `/admin/system` colours the CPU's sensors
+  by the same limits, the GPU and the other sensors by `CHIP_TEMP_C`. The contract and its sources:
+  [CPU temperature](https://github.com/PArns/v4.api.park.fan/blob/main/docs/frontend/cpu-temperature.md).
 
 **A problem card is not a detector card.** It names its question and the button that leads to the
 one page where it is answered („Entscheiden“ → Datenqualität, „Stack in Queues ansehen“), named for

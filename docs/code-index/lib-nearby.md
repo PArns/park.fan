@@ -7,7 +7,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`fetch-nearby.ts`](../../lib/nearby/fetch-nearby.ts)
 
-- `withNearbyCardImages` _function_: A nearby answer with the card photo on every park in it, the in-park one included. `/api/nearby` and the direct browser call both run it, so a park gets the same photo either way.
+- `withNearbyCardImages` _function_: A nearby answer with the card photo on every park in it, the in-park one included, and on every ride in it (the short waits, the in-park rides) its own photo.
 - `fetchNearby` _function_: One nearby request from the browser: to api.park.fan directly when calls go direct, with the photos the relay would have attached, else through `/api/nearby`, which a simulation always takes.
 - `NEARBY_API_MAX_RADIUS_M` _const_: The widest radius the API takes; it answers 400 above it.
 - Types: `NearbyQuery`, `NearbyResult`

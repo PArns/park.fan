@@ -1,6 +1,5 @@
 'use client';
 
-import { useSyncExternalStore } from 'react';
 import { useTranslations } from 'next-intl';
 import { CommandDialog, CommandInput } from '@/components/ui/command';
 import { useMediaQuery } from '@/lib/hooks/use-media-query';
@@ -28,11 +27,6 @@ interface SearchDialogProps {
  */
 const LIST_HEIGHT_CLASS = 'max-h-[calc(100svh-12rem)] sm:max-h-[min(48rem,calc(84svh-12.5rem))]';
 
-const subscribeNever = () => () => {};
-const isApplePlatform = () => /(Mac|iPhone|iPod|iPad)/i.test(navigator.userAgent);
-/** The ⌘ hint is the default, so the server and hydration passes agree. */
-const assumeApple = () => true;
-
 /**
  * The heavy search palette: cmdk + live result/glossary/nearby queries, guides and news + result
  * rendering. Code-split out of the always-rendered <SearchCommand> trigger (see search-bar.tsx) so
@@ -59,7 +53,6 @@ export default function SearchDialog({
     useSearchNavigation(session, () => onOpenChange(false));
 
   const isMobile = useMediaQuery('(max-width: 639px)');
-  const isMac = useSyncExternalStore(subscribeNever, isApplePlatform, assumeApple);
 
   return (
     <CommandDialog
@@ -75,18 +68,6 @@ export default function SearchDialog({
         placeholder={isMobile ? t('searchPlaceholderShort') : t('searchPlaceholderLong')}
         value={query}
         onValueChange={onQueryChange}
-        hint={
-          <kbd className="bg-primary/15 text-primary border-primary/20 hidden shrink-0 items-center gap-0.5 rounded border px-1.5 py-1 font-mono text-xs shadow-sm md:flex">
-            {isMac ? (
-              <>
-                <span className="translate-y-px text-sm">⌘</span>
-                <span>K</span>
-              </>
-            ) : (
-              <>Ctrl K</>
-            )}
-          </kbd>
-        }
       />
       <AnimatedHeight>
         <SearchResultsPanel

@@ -35,7 +35,7 @@ export function AskParkyButton({ label, off }: { label: string; off: string }) {
   return (
     <button
       type="button"
-      onClick={openParky}
+      onClick={() => openParky()}
       disabled={status === 'pending'}
       className={cn(
         'from-primary to-status-operating inline-flex items-center gap-2 rounded-full bg-gradient-to-br px-6 py-3 text-base font-semibold text-white shadow-lg',

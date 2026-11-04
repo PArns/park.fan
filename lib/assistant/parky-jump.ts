@@ -1,3 +1,5 @@
+import { parkyDock } from '@/lib/assistant/parky-dock';
+
 /** How long Parky's hop between his corner and the chat window's top edge takes. */
 export const PARKY_JUMP_MS = 720;
 
@@ -12,31 +14,34 @@ const LAND = 0.2;
 /** Points along the flight: enough for the parabola to read as a curve. */
 const STEPS = 16;
 
+/** Where the hopping element stands at one end: moved by `x`, `y` and scaled by `s`. */
+interface Pose {
+  x: number;
+  y: number;
+  s: number;
+}
+
+const AT_REST: Pose = { x: 0, y: 0, s: 1 };
+
 /** The hop's length for this browser: none with reduced motion. */
 export function parkyJumpMs(): number {
   return window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : PARKY_JUMP_MS;
 }
 
-/**
- * Parky's face in the chat window hops in from the corner button (`open`) or back to it: down into
- * a crouch, off in a parabola with his body stretched, onto the other end in a squash that springs
- * back. The face is measured at rest and moved by its transform from its bottom centre, so the hop
- * fits whatever size and place the window has. Null with reduced motion or no button to hop from.
- */
-export function parkyJump(face: HTMLElement, open: boolean): Animation | null {
-  const corner = document.querySelector(`[${PARKY_CORNER_ATTR}]`);
-  if (!corner || parkyJumpMs() === 0) return null;
-  const rest = face.getBoundingClientRect();
-  const button = corner.getBoundingClientRect();
-  if (rest.width === 0 || button.width === 0) return null;
-  // Feet to feet: the face scales from its bottom centre.
-  const atCorner = {
-    x: button.left + button.width / 2 - (rest.left + rest.width / 2),
-    y: button.bottom - rest.bottom,
-    s: button.width / rest.width,
+/** The pose that puts an element measured at `rest` onto `target`, feet to feet. */
+function poseOn(rest: DOMRect, target: DOMRect): Pose {
+  return {
+    x: target.left + target.width / 2 - (rest.left + rest.width / 2),
+    y: target.bottom - rest.bottom,
+    s: target.width / rest.width,
   };
-  const atWindow = { x: 0, y: 0, s: 1 };
-  const [from, to] = open ? [atCorner, atWindow] : [atWindow, atCorner];
+}
+
+/**
+ * Down into a crouch, off in a parabola with the body stretched, onto the other end in a squash
+ * that springs back, scaling from one end's size to the other's on the way.
+ */
+function hop(element: HTMLElement, from: Pose, to: Pose): Animation {
   const rise = Math.abs(from.y - to.y) / 2 + ARC_PX;
   const at = (x: number, y: number, sx: number, sy: number) =>
     `translate(${x.toFixed(1)}px, ${y.toFixed(1)}px) scale(${sx.toFixed(3)}, ${sy.toFixed(3)})`;
@@ -69,9 +74,50 @@ export function parkyJump(face: HTMLElement, open: boolean): Animation | null {
     { offset: 1 - LAND / 2, transform: at(to.x, to.y - 8, to.s * 0.94, to.s * 1.08) },
     { offset: 1, transform: at(to.x, to.y, to.s, to.s) }
   );
-  // Seen for the whole hop, though the closed window's face is otherwise hidden.
-  return face.animate(
+  // Seen for the whole hop, though the element may otherwise be hidden at one end.
+  return element.animate(
     frames.map((frame) => ({ ...frame, opacity: 1, transformOrigin: '50% 100%' })),
     { duration: PARKY_JUMP_MS }
   );
+}
+
+/**
+ * Parky's face in the chat window hops in from where Parky stands (`open`) or back to it: from the
+ * slot that holds him on the page while it is on screen (`parkyDock`), else from his corner button.
+ * The face is measured at rest and moved by its transform from its bottom centre, so the hop fits
+ * whatever size and place the window has. Null with reduced motion or nowhere to hop from.
+ */
+export function parkyJump(face: HTMLElement, open: boolean): Animation | null {
+  const anchor = parkyDock.element() ?? document.querySelector(`[${PARKY_CORNER_ATTR}]`);
+  if (!anchor || parkyJumpMs() === 0) return null;
+  const rest = face.getBoundingClientRect();
+  const start = anchor.getBoundingClientRect();
+  if (rest.width === 0 || start.width === 0) return null;
+  const atAnchor = poseOn(rest, start);
+  return open ? hop(face, atAnchor, AT_REST) : hop(face, AT_REST, atAnchor);
+}
+
+/**
+ * Parky in his corner button hops up into the page's slot (`toSlot`), growing to its size, or
+ * comes down from it into the corner, shrinking back. The corner drawing is what moves, so the
+ * corner is where it rests. Null with reduced motion or a slot or button that takes no room.
+ */
+export function parkyDockHop(
+  corner: HTMLElement,
+  slot: HTMLElement,
+  toSlot: boolean
+): Animation | null {
+  if (parkyJumpMs() === 0) return null;
+  const rest = corner.getBoundingClientRect();
+  const measured = slot.getBoundingClientRect();
+  if (rest.width === 0 || measured.width === 0) return null;
+  // A slot scrolled far up is left from the screen's top edge, not from where it went.
+  const target = new DOMRect(
+    measured.left,
+    Math.max(measured.top, -measured.height / 2),
+    measured.width,
+    measured.height
+  );
+  const atSlot = poseOn(rest, target);
+  return toSlot ? hop(corner, AT_REST, atSlot) : hop(corner, atSlot, AT_REST);
 }

@@ -3,12 +3,9 @@ import { PhotoCredit } from '@/components/media/photo-credit';
 import type { HeroImageMeta } from '@/lib/media/hero';
 
 /**
- * Hero photo attribution panel (bottom-left, desktop only), pure markup shared by the server
- * caption and the client in-park caption. Bottom-left because Parky's button is fixed to the
- * bottom-right corner, where it would cover the caption on a hero as tall as the window; the hero
- * leaves room under its left column for it (`lg:pb-24` in `app/[locale]/page.tsx`). A photo that
- * is not ours gets its credit under the panel, and in the same corner on the widths that have no
- * panel.
+ * Hero photo attribution panel (desktop only), pure markup shared by the server caption and the
+ * client in-park caption, in the photo's top-right corner. A photo that is not ours gets its credit
+ * under it, and in the same corner on the widths that have no caption.
  */
 export function HeroImageInfoPanel({
   meta,
@@ -38,33 +35,27 @@ export function HeroImageInfoPanel({
     </div>
   );
 
-  // `left-4` lines it up with the panel, whose `bottom-6` leaves the badge room beneath it. A
-  // sibling of the panel's link, not inside it, so it may link to the photo's source.
-  const credit = <PhotoCredit src={src} linked className="right-auto left-4" />;
-
-  if (meta.parkUrl) {
-    return (
-      <>
-        {credit}
-        <div className="absolute bottom-6 left-4 hidden lg:block">
-          <Link
-            href={meta.parkUrl}
-            prefetch={false}
-            className="block transition-opacity hover:opacity-80"
-          >
-            {panel}
-          </Link>
-        </div>
-      </>
-    );
-  }
+  // In the photo's top-right corner, under the header: the text stands at the left and low, the
+  // cards over the photo's lower edge, so the corner is the part of the photo nothing covers. The
+  // credit, for a photo that is not ours, follows under the caption, and stands there alone on the
+  // widths without a caption; a sibling of the caption's link, so it may link to the source.
+  const credit = <PhotoCredit src={src} linked className="static max-w-full" />;
+  const caption = meta.parkUrl ? (
+    <Link
+      href={meta.parkUrl}
+      prefetch={false}
+      className="block transition-opacity hover:opacity-80"
+    >
+      {panel}
+    </Link>
+  ) : (
+    <div className="pointer-events-none select-none">{panel}</div>
+  );
 
   return (
-    <>
+    <div className="absolute top-16 right-4 z-10 flex max-w-sm flex-col items-end gap-1.5 text-right lg:top-20 lg:right-6">
+      <div className="hidden lg:block">{caption}</div>
       {credit}
-      <div className="pointer-events-none absolute bottom-6 left-4 hidden select-none lg:block">
-        {panel}
-      </div>
-    </>
+    </div>
   );
 }

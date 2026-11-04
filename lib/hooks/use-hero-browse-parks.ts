@@ -89,6 +89,8 @@ const popularRow = (park: PopularPark): NearbySearchItem => ({
   city: park.city ?? undefined,
   country: park.country ?? undefined,
   continent: park.continent ?? undefined,
+  imageUrl: park.backgroundImage ?? undefined,
+  imagePosition: park.backgroundPosition,
   browseItem: 'popular_park',
 });
 
@@ -162,6 +164,7 @@ export function useHeroBrowseParks(): HeroBrowseParks {
             load: inParkData.park.analytics?.crowdLevel as CrowdLevel | undefined,
             distanceM: inParkData.park.distance,
             imageUrl: inParkData.park.backgroundImage ?? undefined,
+            imagePosition: inParkData.park.backgroundPosition,
             avgWaitTime: inParkData.park.analytics?.avgWaitTime,
             ...shutParkSchedules(inParkData.park),
             browseItem: 'nearby_park' as const,
@@ -181,6 +184,8 @@ export function useHeroBrowseParks(): HeroBrowseParks {
               url: parkUrl ?? '',
             },
             distanceM: ride.distance,
+            imageUrl: ride.backgroundImage ?? undefined,
+            imagePosition: ride.backgroundPosition,
             browseItem: 'in_park_ride' as const,
           })),
         ],
@@ -212,6 +217,7 @@ export function useHeroBrowseParks(): HeroBrowseParks {
             load: park.analytics?.crowdLevel as CrowdLevel | undefined,
             distanceM: park.distance,
             imageUrl: park.backgroundImage ?? undefined,
+            imagePosition: park.backgroundPosition,
             avgWaitTime: park.analytics?.avgWaitTime,
             ...shutParkSchedules(park),
             browseItem: 'nearby_park' as const,

@@ -114,7 +114,9 @@
       "intro": "park.fan zeigt die Wartezeiten von <strong>{parks} Freizeitparks</strong> und <strong>{attractions} Attraktionen</strong>, alle fünf Minuten neu abgefragt. Für die kommenden Tage steht dabei, wie voll es voraussichtlich wird.",
       "introShort": "Live-Wartezeiten aus <strong>{parks} Parks</strong>.",
       "openNow": "{count, plural, =1 {1 Park gerade offen} other {# Parks gerade offen}}",
-      "searchExamples": "Europa-Park, Taron, Efteling …"
+      "searchExamples": "Europa-Park, Taron, Efteling …",
+      "parkyLine": "Lass uns schauen, wo wir uns heute anstellen!",
+      "parkyCta": "Klick mich an, ich helfe dir."
     },
     "sections": {
       "featuredParks": "Beliebte Parks",
@@ -161,12 +163,6 @@
     }
   },
   "homeStory": {
-    "nearby": {
-      "kicker": "Dein Standort",
-      "title": "Freizeitparks in deiner Nähe",
-      "lead": "Mit deinem Standort zeigt park.fan die nächstgelegenen Parks, die geöffneten zuerst, und wie voll es dort gerade ist.",
-      "allParks": "Alle Parks entdecken"
-    },
     "favorites": {
       "kicker": "Favoriten",
       "title": "Deine Parks und Bahnen",
@@ -1426,9 +1422,9 @@
     "permissionDeniedDescription": "Ohne Standort können wir dir keine Parks in deiner Nähe zeigen und im Park nicht sagen, was gerade neben dir liegt. Freigeben lässt sich das in den Browser-Einstellungen.",
     "locationUnavailable": "Standort konnte nicht ermittelt werden",
     "locationUnavailableDescription": "Dein Standort ließ sich nicht ermitteln. Aktiviere den Standortzugriff oder versuch es später noch einmal.",
-    "loadError": "Parks in der Nähe konnten nicht geladen werden",
-    "loadErrorDescription": "Beim Laden der Parks in der Nähe ist etwas schiefgelaufen. Bitte versuche es erneut.",
-    "locationHint": "Parks in der Nähe sind genauer, wenn du den Standortzugriff erlaubst.",
+    "loadError": "Parks in deiner Nähe konnten nicht geladen werden",
+    "loadErrorDescription": "Beim Laden der Parks in deiner Nähe ist etwas schiefgelaufen. Bitte versuche es erneut.",
+    "locationHint": "Parks in deiner Nähe sind genauer, wenn du den Standortzugriff erlaubst.",
     "bannerHeadline": "Parks in deiner Nähe brauchen deinen Standort",
     "bannerBody": "park.fan verwendet deine genaue Position nur, um dir Parks in deiner Nähe anzuzeigen und dir in einem Park Attraktionen und Wartezeiten um dich herum anzuzeigen.",
     "bannerBodyShort": "Nur für Parks in deiner Nähe und die Wartezeiten um dich herum im Park.",
@@ -1442,10 +1438,10 @@
     "headliners": "Top-Attraktionen",
     "headlinerBadge": "Top",
     "noParksNearby": "Keine Parks in deiner Nähe gefunden.",
-    "nearbyParks": "Parks in der Nähe",
+    "nearbyParks": "Parks in deiner Nähe",
     "nearestOpenTitle": "Nächster geöffneter Park",
     "nearbyParksClosedTitle": "Parks in deiner Nähe",
-    "noOpenNearbyFocus": "Keine Parks in der Nähe geöffnet – hier die nächsten.",
+    "noOpenNearbyFocus": "Keine Parks in deiner Nähe geöffnet – hier die nächsten.",
     "goToParkPage": "Zur Park-Seite",
     "nearestOpenBadge": "Nächster offen",
     "opens": "Öffnet",
@@ -1518,10 +1514,14 @@
       "demoNoLocation": "Ohne Standort stehst du fest an einem Punkt im Park.",
       "dialGroup": "Kompass, Norden oben"
     },
+    "heroRail": {
+      "seeWaits": "Wartezeiten ansehen"
+    },
     "shortWaits": {
-      "title": "Jetzt kurz anstehen",
-      "hint": "Bahnen in deiner Nähe, an denen die Warteschlange gerade deutlich kürzer ist als sonst.",
-      "usually": "sonst {minutes} {unit}"
+      "title": "Kurze Anstellzeiten in deiner Nähe",
+      "usually": "sonst {minutes} {unit}",
+      "now": "jetzt {minutes} {unit}",
+      "shorter": "{minutes} {unit} kürzer"
     }
   },
   "location": {
@@ -1643,7 +1643,7 @@
       "show": "Shows ({count})",
       "restaurant": "Restaurants ({count})",
       "location": "Orte ({count})",
-      "nearby": "Parks in der Nähe",
+      "nearby": "Parks in deiner Nähe",
       "inPark": "Du bist in {park}",
       "glossary": "Wörterbuch ({count})",
       "guides": "Guides ({count})",
@@ -1669,9 +1669,7 @@
     },
     "avgWait": "Ø {minutes} Min.",
     "avgWaitShort": "Ø {minutes} Min.",
-    "heroHint": "Tippe los, wir suchen Parks, Attraktionen, Shows und Restaurants",
-    "newestNews": "Neueste News",
-    "newestGuide": "Neuester Guide"
+    "heroHint": "Tippe los, wir suchen Parks, Attraktionen, Shows und Restaurants"
   },
   "searchPage": {
     "types": {
@@ -1809,7 +1807,7 @@
         "whichParksQ": "Welche Freizeitparks sind bei park.fan dabei?",
         "whichParksA": "park.fan deckt über 200 Freizeitparks weltweit ab, darunter Phantasialand, Europa-Park, Disneyland Paris, Efteling, Walibi Belgium, Toverland und Bobbejaanland. Die vollständige Liste mit Live-Wartezeiten steht auf der Parks-Übersichtsseite.",
         "liveDataQ": "Sind die Wartezeiten bei park.fan live und in Echtzeit?",
-        "liveDataA": "Ja. Wo ein Park seine Wartezeiten veröffentlicht, fragen wir sie alle fünf Minuten ab, aus drei öffentlichen Quellen gleichzeitig: ThemeParks.wiki, Wartezeiten.app und Queue-Times.com. Widersprechen sich die Quellen, entscheidet die Mehrheit, danach der Median, danach der Mittelwert. Das Ergebnis wird auf fünf Minuten gerundet, weil die Parks selbst in Fünf-Minuten-Schritten anschreiben.",
+        "liveDataA": "Ja. Wo ein Park seine Wartezeiten veröffentlicht, fragen wir sie alle fünf Minuten bei den Quellen ab, die den Park führen, bis zu drei: ThemeParks.wiki, Wartezeiten.app und Queue-Times.com. ThemeParks.wiki ist die Grundquelle; die beiden anderen ergänzen Bahnen, die dort fehlen, und korrigieren einen veralteten Status „geschlossen“. Das Ergebnis wird auf fünf Minuten gerundet, weil die Parks selbst in Fünf-Minuten-Schritten anschreiben.",
         "freeQ": "Ist die Nutzung von park.fan kostenlos?",
         "freeA": "Ja. Live-Wartezeiten, Öffnungszeiten, Shows, Restaurants und der Andrang-Kalender sind ohne Konto und ohne Bezahlschranke zu sehen. Es gibt keine Abo-Stufe, hinter der mehr Daten liegen.",
         "mobileQ": "Funktioniert park.fan auch auf dem Smartphone?",
@@ -2968,6 +2966,8 @@
     "chipNavigated": "Seite geöffnet",
     "chipPlanned": "Im Tagesplaner",
     "chipOptimized": "Tag wird sortiert",
+    "chipLanguage": "Sprache gewechselt",
+    "chipFeedback": "Ans Team weitergegeben",
     "locationAsk": "Parky möchte deinen Standort, um Parks und Fahrgeschäfte in deiner Nähe zu finden.",
     "locationShare": "Standort teilen",
     "locationNo": "Lieber nicht",

@@ -8,11 +8,11 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`_app/admin-shell.tsx`](../../app/admin/_app/admin-shell.tsx)
 
 - `AdminShell` _component_: Admin frame around every page: the sidebar (folding groups, status dots, the account at its foot), the topbar with the page's place, search, refresh and the inspector toggle, then the page on its inset surface, the inspector column and the …
-- `useOpenPalette` _hook_: Opens the ⌘K palette from a page, for a button that offers "everything else".
+- `useOpenPalette` _hook_: Opens the command palette (`/`) from a page, for a button that offers "everything else".
 
 ### [`_app/command-palette.tsx`](../../app/admin/_app/command-palette.tsx)
 
-- `CommandPalette` _component_: ⌘K dialog that searches parks and rides by upstream or curated name and lists the admin pages and actions (reload, open park.fan, sign out). Searches start at two characters, debounced.
+- `CommandPalette` _component_: The `/` dialog that searches parks and rides by upstream or curated name and lists the admin pages and actions (reload, open park.fan, sign out). Searches start at two characters, debounced.
 
 ### [`_app/inspector.tsx`](../../app/admin/_app/inspector.tsx)
 
@@ -295,12 +295,13 @@ Route `/admin/analytics` (page).
 
 ### [`assistant/_lib/assistant.ts`](../../app/admin/assistant/_lib/assistant.ts)
 
+- `sitePageUrl` _function_: Where a page a chat or a feedback names opens on the site, or null for anything but a path of slugs. The API stores only those; checked again because the path is glued to the origin, where `@host` or `//host` would lead off the site.
 - `formatUsd` _function_: A cost in US dollars, to a hundredth of a cent: one answer costs fractions of a cent.
 - `formatDateTime` _function_: A timestamp in the admin's own clock.
 - `formatCount` _function_: A count with thousands separators.
 - `ASSISTANT_API` _const_: The admin proxy prefix of every Parky endpoint.
-- `SITE_ORIGIN` _const_: The public site, for links to the page a chat or feedback came from.
-- Types: `AssistantSettings`, `ConversationRow`, `ToolCall`, `ConversationMessage`, `FeedbackEntry`, `FeedbackStatus`, `Page`, `ConversationDetail`, `AssistantStats`
+- `FEEDBACK_KIND_LABEL` _const_: The admin's words for a `FeedbackKind`.
+- Types: `AssistantSettings`, `ConversationRow`, `ToolCall`, `ConversationMessage`, `FeedbackEntry`, `FeedbackStatus`, `FeedbackKind`, `Page`, `ConversationDetail`, `AssistantStats`
 
 ### [`assistant/_lib/delete-chat.tsx`](../../app/admin/assistant/_lib/delete-chat.tsx)
 
@@ -322,7 +323,7 @@ Route `/admin/assistant/conversations` (page).
 
 Route `/admin/assistant/feedback` (page).
 
-- `default (AssistantFeedbackPage)` _component_: What visitors sent through the widget's feedback tab, to read and close.
+- `default (AssistantFeedbackPage)` _component_: What visitors sent through the widget's feedback tab or told Parky, to read and close.
 
 ### [`assistant/page.tsx`](../../app/admin/assistant/page.tsx)
 

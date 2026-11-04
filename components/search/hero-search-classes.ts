@@ -18,9 +18,12 @@ export const HERO_SEARCH_FIELD_HEIGHT_CLASS = 'h-12 md:h-14';
  */
 export const HERO_SEARCH_INPUT_CLASS = `placeholder:text-foreground/40 dark:placeholder:text-muted-foreground/50 ${HERO_SEARCH_FIELD_HEIGHT_CLASS} w-full bg-transparent pr-4 pl-10 text-base outline-none md:pl-12`;
 
-/** The search icon at the field's left edge, in the padding {@link HERO_SEARCH_INPUT_CLASS} leaves. */
+/**
+ * The search icon at the field's left edge, in the padding {@link HERO_SEARCH_INPUT_CLASS} leaves,
+ * in the brand colour like the frame's border: on the photo the field is the hero's one control.
+ */
 export const HERO_SEARCH_ICON_CLASS =
-  'text-muted-foreground pointer-events-none absolute top-1/2 left-3.5 z-10 h-4 w-4 -translate-y-1/2 md:left-4 md:h-5 md:w-5';
+  'text-primary pointer-events-none absolute top-1/2 left-3.5 z-10 h-4 w-4 -translate-y-1/2 md:left-4 md:h-5 md:w-5';
 
 /**
  * The field's row, painted over the frame (`z-40`), which starts at the field's top edge. Put on the
@@ -36,28 +39,6 @@ export const HERO_SEARCH_INPUT_ROW_CLASS = `${HERO_SEARCH_FIELD_ROW_CLASS} focus
 
 /** The hairline between the field and its list, on the box that holds the list. */
 export const HERO_SEARCH_LIST_BOX_CLASS = 'border-foreground/10 border-t';
-
-/**
- * A row of the hero's phone list: a fixed 48 px, the 36 px thumbnail and two lines (the name, then
- * the status and wait pills and the distance), so the reserved height holds at every phone width.
- */
-export const HERO_PHONE_ROW_CLASS = 'h-12';
-
-/**
- * The phone list's rows box: inset sideways like cmdk's groups, under the heading row. No padding
- * above or below: the heading row's 44 px tap target took it.
- */
-export const HERO_PHONE_LIST_CLASS = 'px-1.5';
-
-/** The box of the phone's two posts: a hairline above, the rows inset like the parks. */
-export const HERO_PHONE_READING_CLASS = 'border-foreground/10 border-t px-1.5';
-
-/** The box of the phone's park block (`HeroParkActions`) in place of rows and posts. */
-export const HERO_PHONE_PARK_CLASS =
-  'border-foreground/10 flex flex-col justify-center border-t p-3';
-
-/** A post row on the phone: the kicker over a one-line title, a fixed 44 px. */
-export const HERO_PHONE_READING_ROW_CLASS = 'h-11';
 
 /**
  * The hero list's group headings, read out but not drawn: the heading row above the listbox names
@@ -83,3 +64,14 @@ export const HERO_SEARCH_FOOTER_CLASS =
 
 /** The hint under the hero's desktop list („Tippe los, …"), in the shell and in the panel alike. */
 export const HERO_SEARCH_HINT_CLASS = `${HERO_SEARCH_FOOTER_CLASS} ${SEARCH_SECONDARY_TEXT_CLASS} px-4 py-2 text-xs`;
+
+/**
+ * The `/` key at the hero field's right edge (`SearchShortcutKey`), from `md` where a keyboard is
+ * likely, and gone while the field has focus, where `/` is a character. The field leaves it room
+ * ({@link HERO_SEARCH_INPUT_KEY_ROOM_CLASS}).
+ */
+export const HERO_SEARCH_KEY_CLASS =
+  'absolute top-1/2 right-4 z-10 hidden -translate-y-1/2 md:flex group-focus-within/hero-search:hidden';
+
+/** The room the hero field's text leaves for {@link HERO_SEARCH_KEY_CLASS}. */
+export const HERO_SEARCH_INPUT_KEY_ROOM_CLASS = 'md:pr-12';

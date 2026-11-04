@@ -1,10 +1,10 @@
 # The guide page (`/{locale}/{howto-segment}`)
 
-The page that answers "what does this site do that a wait-time feed does not": ten chapters, the same
-in every locale (the ride card; typical, busy, record; the best moment of the day; the right day; the
-day as a plan; a park page top to bottom; where the numbers come from; what we leave blank; where to
-find what; FAQ). Route folder `app/[locale]/how-park-fan-works/`. Open this page before editing the
-guide's content, its demos or its URLs.
+The page that answers "what does this site do that a wait-time feed does not": eleven chapters, the
+same in every locale (the ride card; normal, busy, record; the best moment of the day; the right day;
+the day as a plan; a park page top to bottom; where the numbers come from; what we leave blank; where
+to find what; ask Parky; FAQ). Route folder `app/[locale]/how-park-fan-works/`. Open this page before
+editing the guide's content, its demos or its URLs.
 
 The standing rule, with the audit of what the cards really show, the live-block exceptions, the
 motion constraints and the structured-data decision, is
@@ -15,6 +15,14 @@ This page holds the mechanism.
 comment, never in the page.** The 2026-09-30 rewrite took the crowd thresholds, the hourly-profile
 column rules, the source-disagreement chain, the night-job order and the planner's transfer formula
 out of all six locales (German prose from about 4,000 to 2,200 words).
+
+The 2026-11-04 fact check went through every claim against both repos and the live API and fixed
+what had gone stale or was never true: the sources are no majority vote (ThemeParks.wiki is the base,
+the other two add rides and overrule a stale "closed"), chapter 06 follows the park page as it renders
+now, the park-wide table is an hourly average and not the ride page's daily peaks, no holiday radius
+exists, Fancast measures seven days, and the search opens with `/`. It added chapter 10 on Parky. The
+words on the page are the UI's: the ride page's P50 is „Normal", so chapter 02 says so, while the park
+table's own labels („Typisch"/„Spitze") are named as that table's.
 
 ## URLs
 
@@ -51,16 +59,28 @@ English segment for every locale, so one key covers all six.
 
 `_demos.tsx` and `_anatomy-demos.tsx` render **production** components (`AttractionCard`,
 `AttractionTypicalWaits`, `RopeDropCard`, `ParkCalendarDay`, `NoLiveWaitTimesNotice`,
-`CrowdLevelBadge`, `ComparisonBadge`, …) fed from `_fixtures.ts`, each inside a `DemoFrame`, and the
+`CrowdLevelBadge`, `ParkHolidayBand`, …) fed from `_fixtures.ts`, each inside a `DemoFrame`, and the
 intro says the figures are examples: a card pixel-identical to the live one must not be mistaken for
 a live reading. Two blocks fetch instead (`LiveHourlyProfile` around `ParkHourlyProfileCard`,
 `LiveTopAttractions` around `ParkStatsSection`), gated by `useLoadLast` like every trip-planning
 query.
 
-Every figure in chapters 01–03 is a value the API returned for Taron and Phantasialand on 2026-08-24,
-dated in `_fixtures.ts`. They are frozen on purpose: chapter 02's three steps are written around 70
-minutes landing above Monday's busy line and on Saturday's median (Taron's Saturday median is exactly
-70). Re-check them against the ride's page when the guide is next edited.
+Every figure is a value the API returned, dated in `_fixtures.ts` or beside the demo:
+
+| Fixture                                                                                | Read on    |
+| -------------------------------------------------------------------------------------- | ---------- |
+| Taron's typical waits and its 45-minute baseline (chapter 01–02)                       | 2026-09-10 |
+| The live-looking ride cards and the rope-drop card                                     | 2026-08-24 |
+| Taron's land and height (130 cm), the ice rink's season                                | 2026-11-04 |
+| The four autumn-holiday days (19, 20, 22 and 25 October 2026)                          | 2026-11-04 |
+| Magic Kingdom's skip-the-line lines, Europa-Park's show and restaurant, the stats rows | 2026-11-04 |
+| The holiday band's day (09:00–19:00, NRW and Gelderland on summer holidays)            | 2026-08-24 |
+
+The scale figures are frozen on purpose: chapter 02's three steps are written around 70 minutes
+landing on Monday's busy line and on Saturday's median. Re-checked on 2026-11-04: Monday still 55/70,
+Saturday still 70/85 and the only day with a median of 70, while the weekday bucket moved to 55/80 and
+the baseline to 40, which is why the prose dates the 45 to September. Re-check them against the
+ride's page when the guide is next edited.
 
 `_fixtures.ts` has two anchors:
 
@@ -71,7 +91,9 @@ minutes landing above Monday's busy line and on Saturday's median (Taron's Satur
   resolves at build time on this prerendered route and the daily revalidate refreshes it. The
   rope-drop instants are wall-clock times on today's date in the **park's** zone; `parkLocalInstant()`
   formats the instant in the zone and re-reads the fields as UTC to get the offset in force, which
-  holds across a DST change.
+  holds across a DST change. Chapter 06's `todaySchedule` (opening hours on the park-local date, via
+  `parkDayOf`) and the show's times use it too: fixed `07:00Z`/`17:00Z` read 09:00–19:00 in summer
+  and 08:00–18:00 after the clocks went back.
 
 Traps beyond the rule's audit list:
 
@@ -83,6 +105,18 @@ Traps beyond the rule's audit list:
 - **Demo photos come from the media database**, never a typed path: `/media/phantasialand/taron.jpg`
   typed into `_demos.tsx` drops the sidecar's focal point and the `?v=` hash, so the card would be
   cropped differently from the park page's.
+- **Chapter 06 shows no `ParkTimeInfo`.** That card renders on no park page any more; „Heute im Park"
+  (`ParkTodayPanel`) took its hours, countdown and holidays, and the panel polls its own queries, so
+  it has no fixture mode. The step shows the three parts of the panel that do take fixtures: the
+  warning strip (`WeatherWarningBanner`), the rain banner a press on the title row opens
+  (`NowcastAlertBanner`) and the holiday band (`ParkHolidayBand`).
+- **The park-wide table is not the ride page's scale.** `ParkStatsAttractionsCard` averages hourly P50
+  and P90 over every opening hour of two years (`/stats`), so Taron reads 45/45 there and 55/80 on its
+  own page. `AnatomyStatsDemo` takes its labels from `useParkStatsAttractionsLabels`, the hook the
+  park page's section uses, so the guide cannot name a column the page does not.
+- **`ComparisonBadge` is on no public surface**, so chapter 08 shows the crowd levels alone.
+- **Two night jobs at one time** (03:00, the park baseline and the TFT training) share one marker on
+  the track; the cards are keyed by title.
 
 Chapter 05 mounts `PlannerDayFigure`, a server wrapper around `PlannerDayDemo` from
 `app/[locale]/trip-planner/_demos.tsx`, fed by that page's `_fixtures.ts`: imported, not copied, so
@@ -125,10 +159,21 @@ container and stop the chapter 02 figure sticking.
 Each locale is a full `content/<locale>.tsx`, the convention `fancast` and `best-time-to-visit` use,
 with localized chapter ids (`#massstab`, `#scale`, `#echelle`, …). The duplication is deliberate: a
 shared structure with a per-locale string table would be an i18n mechanism invented for one page. The
-cost is an edit applied six times. Chapter ids and labels live in `HOWTO_CHAPTERS`
+cost is an edit applied six times. French spacing follows the file: U+00A0 before a colon,
+U+202F before `?`, `;` and inside « ». Chapter ids and labels live in `HOWTO_CHAPTERS`
 (`lib/howto/chapters.ts`), read by the page, its rail and the header's "more" band;
 `pnpm test:hub-chapters` fails on an id the page does not render. The `locale=` prop on the two live
 blocks must match the file it is in.
+
+## Parky's chapter
+
+Chapter 10 (`#parky` in every locale) sits between "where to find what" and the FAQ, the way the
+homepage tour ends on Parky. `ParkyShot` puts the text beside the same phone screenshot Parky's page
+and the tour show (`ShotRow`, `public/media/parky/<locale>/chat.webp` through `versionedPath`), with
+the alt text from `parkyPage.chapters.ask.alt`, read on the server. What the chapter claims comes from
+[the assistant page](assistant.md) and the API's `docs/frontend/assistant.md`: the lookups, the
+actions only on request, the position only after „Standort teilen", no web search, three questions
+per 30 seconds, questions kept 90 days without an address.
 
 ## Companion post
 

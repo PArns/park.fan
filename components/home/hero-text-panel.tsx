@@ -1,35 +1,24 @@
 import { cn } from '@/lib/utils';
-import { GlassCard } from '@/components/common/glass-card';
 
 /**
- * The plate the hero's left column sits on, so the hero is one composition of two panels. The
- * same glass as the map panel (`GlassCard variant="heavy"`), so the two cannot drift apart. That
- * glass re-filters the ken-burns photo every frame (docs/features/homepage-hero.md), so small
- * things on the plate must not blur as well.
+ * The hero's text column: badge, headline, intro and the search field, standing on the photo's
+ * lower edge with no panel of its own, since the photo's scrim (`HeroBackground`) carries the
+ * contrast. Its direct children are the entrance stagger's steps (`hero-in-stagger`).
  */
 export function HeroTextPanel({ children, className, ...rest }: React.ComponentProps<'div'>) {
   return (
-    <GlassCard
-      variant="heavy"
+    // min-w-0: a truncated row inside must not widen this box past its column. From `md` it
+    // reserves its settled height (docs/features/homepage-hero.md), Parky's row included from `lg`:
+    // it stands on the photo's lower edge, so a column painted half-parsed would grow upwards and
+    // move the headline.
+    <div
       {...rest}
       className={cn(
-        // min-w-0: a truncated row inside must not widen this box past its grid column.
-        // 16 px inside on a phone, where the width goes to the park names in the search list.
-        'w-full min-w-0 rounded-3xl border p-4 shadow-xl md:p-8',
-        // Below 1280 px there is no map panel beside it, so the plate widens and centres itself.
-        // The threshold is `@container/page`, not `xl:`, so it agrees with the grid even while the
-        // planner narrows the page.
-        'mx-auto max-w-3xl @min-[1280px]/page:mx-0 @min-[1280px]/page:max-w-2xl',
-        // No forced height: each column is as tall as its content.
-        'xl:flex xl:flex-col',
-        // …but a reserved MINIMUM from md up, which is where the search dropdown's resting list
-        // starts occupying the flow. It stops the browser painting a short plate while the rest
-        // of its markup is still streaming in. See --hero-plate-min-h for the measurements.
-        'md:min-h-[var(--hero-plate-min-h)] @min-[1280px]/page:min-h-[var(--hero-plate-min-h-wide)]',
+        'w-full max-w-5xl min-w-0 md:min-h-[22.5rem] lg:min-h-[27.25rem] xl:min-h-[28.25rem]',
         className
       )}
     >
       {children}
-    </GlassCard>
+    </div>
   );
 }

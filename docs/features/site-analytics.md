@@ -132,7 +132,7 @@ carry none.
 ## The admin
 
 The pages are German like the rest of the admin. Traffic, Live, SEO, Suche, Wege and Tagesplaner are
-in the sidebar and in ⌘K, the first four also on `g` `t`, `g` `l`, `g` `o` and `g` `u`. The admin home carries a tile with the visitors of today and how many are on the site,
+in the sidebar and in the `/` palette, the first four also on `g` `t`, `g` `l`, `g` `o` and `g` `u`. The admin home carries a tile with the visitors of today and how many are on the site,
 the second figure a link to the live view.
 Every call goes through the admin proxy as `/api/admin/analytics/…`, which maps to
 `/v1/admin/analytics/…` ([the admin holds no credential](../rules/the-admin-holds-no-credential.md)).

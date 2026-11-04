@@ -2110,6 +2110,10 @@ export interface PopularPark {
   country: string | null;
   city: string | null;
   continent: string | null;
+  /** The park's card photo, attached by `/api/parks/popular`; absent from the API's own answer. */
+  backgroundImage?: string | null;
+  /** Focal point as a CSS `object-position`. */
+  backgroundPosition?: string;
 }
 
 /**

@@ -46,7 +46,7 @@ export interface WaitScaleStep {
 }
 
 interface BarLabels {
-  /** e.g. "Typisch" */
+  /** e.g. "Normal", the ride page's word for it */
   typical: string;
   /** e.g. "Voll" */
   busy: string;

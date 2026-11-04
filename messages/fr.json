@@ -114,7 +114,9 @@
       "intro": "park.fan affiche les temps d’attente de <strong>{parks} parcs d’attractions</strong> et <strong>{attractions} attractions</strong>, relevés toutes les cinq minutes. Pour les prochains jours, le site indique aussi l’affluence attendue.",
       "introShort": "Temps d’attente en direct de <strong>{parks} parcs</strong>.",
       "openNow": "{count, plural, one {# parc ouvert en ce moment} other {# parcs ouverts en ce moment}}",
-      "searchExamples": "Disneyland Paris, Taron, Efteling …"
+      "searchExamples": "Disneyland Paris, Taron, Efteling …",
+      "parkyLine": "Voyons où on fait la queue aujourd’hui !",
+      "parkyCta": "Clique sur moi, je t’aide."
     },
     "sections": {
       "featuredParks": "Parcs populaires",
@@ -161,12 +163,6 @@
     }
   },
   "homeStory": {
-    "nearby": {
-      "kicker": "Ta position",
-      "title": "Les parcs près de chez toi",
-      "lead": "Avec ta position, park.fan affiche les parcs les plus proches, ceux qui sont ouverts en premier, et combien il y a de monde en ce moment.",
-      "allParks": "Découvrir tous les parcs"
-    },
     "favorites": {
       "kicker": "Favoris",
       "title": "Tes parcs et attractions",
@@ -1518,10 +1514,14 @@
       "demoNoLocation": "Sans ta position, tu restes à un point fixe du parc.",
       "dialGroup": "Boussole, nord en haut"
     },
+    "heroRail": {
+      "seeWaits": "Voir les temps d’attente"
+    },
     "shortWaits": {
-      "title": "File courte en ce moment",
-      "hint": "Les attractions proches dont la file est bien plus courte que d’habitude.",
-      "usually": "d’habitude {minutes} {unit}"
+      "title": "Files courtes près de vous",
+      "usually": "d’habitude {minutes} {unit}",
+      "now": "maintenant {minutes} {unit}",
+      "shorter": "{minutes} {unit} de moins"
     }
   },
   "location": {
@@ -1669,9 +1669,7 @@
     },
     "avgWait": "{minutes} min en moyenne",
     "avgWaitShort": "Ø {minutes} min",
-    "heroHint": "Tapez pour chercher des parcs, des attractions, des spectacles et des restaurants",
-    "newestNews": "Dernière actualité",
-    "newestGuide": "Dernier guide"
+    "heroHint": "Tapez pour chercher des parcs, des attractions, des spectacles et des restaurants"
   },
   "searchPage": {
     "types": {
@@ -1809,7 +1807,7 @@
         "whichParksQ": "Quels parcs d’attractions trouve-t-on sur park.fan ?",
         "whichParksA": "park.fan couvre plus de 200 parcs d’attractions dans le monde, dont Phantasialand, Europa-Park, Disneyland Paris, Efteling, Walibi Belgium, Toverland et Bobbejaanland. La liste complète, avec les temps d’attente en direct, se trouve sur la page d’ensemble des parcs.",
         "liveDataQ": "Les temps d’attente sur park.fan sont-ils en direct et en temps réel ?",
-        "liveDataA": "Oui. Là où un parc publie ses temps d’attente, nous les interrogeons toutes les cinq minutes, à partir de trois sources publiques en parallèle : ThemeParks.wiki, Wartezeiten.app et Queue-Times.com. Si les sources divergent, la majorité tranche, puis la médiane, puis la moyenne. Le résultat est arrondi à cinq minutes, car c’est ainsi que les parcs les affichent.",
+        "liveDataA": "Oui. Là où un parc publie ses temps d’attente, nous les interrogeons toutes les cinq minutes auprès des sources qui suivent ce parc, jusqu’à trois : ThemeParks.wiki, Wartezeiten.app et Queue-Times.com. ThemeParks.wiki est la source principale ; les deux autres complètent les attractions qui y manquent et corrigent un statut « fermé » dépassé. Le résultat est arrondi à cinq minutes, car c’est ainsi que les parcs les affichent.",
         "freeQ": "L’utilisation de park.fan est-elle gratuite ?",
         "freeA": "Oui. Les temps d’attente en direct, les horaires d’ouverture, les spectacles, les restaurants et le calendrier d’affluence sont accessibles sans compte et sans péage. Il n’y a pas de formule payante derrière laquelle se cacheraient plus de données.",
         "mobileQ": "Est-ce que park.fan fonctionne sur les smartphones ?",
@@ -2968,6 +2966,8 @@
     "chipNavigated": "Page ouverte",
     "chipPlanned": "Dans ton planning",
     "chipOptimized": "Journée en cours de tri",
+    "chipLanguage": "Langue changée",
+    "chipFeedback": "Transmis à l’équipe",
     "locationAsk": "Parky aimerait ta position pour trouver les parcs et attractions près de toi.",
     "locationShare": "Partager ma position",
     "locationNo": "Plutôt pas",

@@ -400,7 +400,7 @@ export const DEVICE_LABEL: Record<string, string> = {
 export const SURFACE_LABEL: Record<SearchSurface, string> = {
   hero: 'Hero (Startseite)',
   header: 'Header',
-  keyboard: 'Tastenkürzel (⌘K)',
+  keyboard: 'Tastenkürzel (/)',
   search_page: 'Suchseite',
   listing_guides: 'Guide-Liste',
   listing_news: 'News-Liste',
@@ -626,7 +626,7 @@ export const EVENT_INFO: Record<SiteEventName, EventInfo> = {
     when: 'Der Browser liefert eine Position (erteilt) oder die Freigabe wird jetzt verweigert.',
   },
   nearby_parks_loaded: {
-    label: 'Parks in der Nähe geladen',
+    label: 'Parks in deiner Nähe geladen',
     when: 'Beim Laden: die erste Antwort der Nähe-Suche je Art und Quelle in einem Tab; ohne Park.',
   },
   language_switched: { label: 'Sprache gewechselt', when: 'Eine Sprache im Umschalter gewählt.' },
@@ -674,7 +674,7 @@ export const EVENT_INFO: Record<SiteEventName, EventInfo> = {
   },
   assistant_opened: {
     label: 'Parky geöffnet',
-    when: 'Das Chatfenster von Parky geht von zu auf offen; über den Knopf oder einen Spruch.',
+    when: 'Das Chatfenster von Parky geht von zu auf offen; über den Knopf, einen Spruch, Parkys Seite, Parky auf der Startseite oder neu nach einem Sprachwechsel durch Parky.',
   },
   assistant_line_shown: {
     label: 'Parky-Spruch angezeigt',
@@ -916,7 +916,7 @@ export const LINK_BLOCK_LABEL: Record<LinkBlock, string> = {
   nav: 'Vorheriger, nächster Beitrag',
   related: 'Weiterlesen',
   most_read: 'Meistgelesen',
-  nearby: 'Parks in der Nähe',
+  nearby: 'Parks in deiner Nähe',
   favorites: 'Favoriten',
   featured: 'Beliebte Parks',
   header: 'Header',
@@ -928,7 +928,7 @@ export const LINK_BLOCK_LABEL: Record<LinkBlock, string> = {
 /** The marked places of a park page, top to bottom, in German. */
 export const SECTION_LABEL: Record<SeenSection, string> = {
   main_end: 'Ende der Fahrgeschäfte bzw. des Kalenders',
-  nearby: 'Parks in der Nähe',
+  nearby: 'Parks in deiner Nähe',
   blog: 'Beiträge',
   stats: 'Statistik',
   outlook: 'Jahresausblick',
@@ -1019,6 +1019,8 @@ const PLANNER_VALUE_LABEL: Record<string, Record<string, string>> = {
     button: 'Parky-Knopf',
     line: 'Parky-Spruch',
     page: 'Parkys Seite',
+    hero: 'Parky auf der Startseite',
+    language: 'Sprachwechsel durch Parky',
   },
   mode: { day: '„Tag optimieren“', headliners: '„Alle Headliner“', fit: 'Antwort des Assistenten' },
   lever: {

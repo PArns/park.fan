@@ -18,10 +18,10 @@ import {
 } from '../../../_ui/primitives';
 import {
   ASSISTANT_API,
-  SITE_ORIGIN,
   formatCount,
   formatDateTime,
   formatUsd,
+  sitePageUrl,
   type ConversationDetail,
   type ConversationMessage,
 } from '../../_lib/assistant';
@@ -39,6 +39,7 @@ export default function AssistantConversationPage({ params }: { params: Promise<
 
   if (error) return <ErrorState message={error.message} onRetry={refetch} />;
   if (!data) return <LoadingState label="Lädt Chat…" />;
+  const startUrl = sitePageUrl(data.startPath);
 
   return (
     <AdminPage>
@@ -48,14 +49,16 @@ export default function AssistantConversationPage({ params }: { params: Promise<
           title={`Chat vom ${formatDateTime(data.createdAt)}`}
           action={
             <div className="flex items-center gap-2">
-              <a
-                href={`${SITE_ORIGIN}${data.startPath}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-primary inline-flex items-center gap-1 text-xs hover:underline"
-              >
-                Startseite <ExternalLink className="h-3 w-3" />
-              </a>
+              {startUrl && (
+                <a
+                  href={startUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-primary inline-flex items-center gap-1 text-xs hover:underline"
+                >
+                  Startseite <ExternalLink className="h-3 w-3" />
+                </a>
+              )}
               <DeleteChatButton
                 id={data.id}
                 label={`Chat vom ${formatDateTime(data.createdAt)}`}
@@ -88,6 +91,7 @@ export default function AssistantConversationPage({ params }: { params: Promise<
                 <p className="whitespace-pre-wrap">{entry.message}</p>
                 <p className="text-muted-foreground mt-1 text-xs">
                   {formatDateTime(entry.createdAt)} ·{' '}
+                  {entry.source === 'chat' ? 'von Parky weitergegeben' : 'aus dem Formular'} ·{' '}
                   <Link href="/admin/assistant/feedback" className="hover:underline">
                     {entry.status}
                   </Link>

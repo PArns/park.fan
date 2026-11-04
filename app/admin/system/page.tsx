@@ -22,9 +22,11 @@ import {
   CPU_LOAD_PCT,
   FEED_STALE_MINUTES,
   WEATHER_DAYS_AHEAD,
+  cpuTempThreshold,
   levelAbove,
   levelBelow,
   type HealthTone,
+  type Threshold,
 } from '@/lib/admin/health';
 import { HEALTH_TEXT } from '../_ui/metrics';
 import { formatDay, formatUptime } from '../_lib/format';
@@ -52,6 +54,7 @@ const CHIP_LABELS: Record<string, string> = {
   iwlwifi: 'Wi-Fi',
   iwlwifi_1: 'Wi-Fi',
 };
+const CPU_CHIP = /coretemp|k10temp|zenpower|cpu/i;
 function chipLabel(chip: string): string {
   if (CHIP_LABELS[chip]) return CHIP_LABELS[chip];
   if (chip.startsWith('r816')) return 'Ethernet';
@@ -61,8 +64,8 @@ function chipLabel(chip: string): string {
 function readingClass(tone: HealthTone, okClass = 'text-emerald-400'): string {
   return tone === 'ok' ? okClass : HEALTH_TEXT[tone];
 }
-function sensorTempClass(t: number): string {
-  return readingClass(levelAbove(t, CHIP_TEMP_C));
+function sensorTempClass(t: number, threshold: Threshold): string {
+  return readingClass(levelAbove(t, threshold));
 }
 /** A figure with a fixed number of decimals, German style: `16,5`. */
 function decimal(value: number, digits: number): string {
@@ -134,7 +137,8 @@ export default function SystemPage() {
   const pgOk = data.postgres.status === 'connected';
   const redisOk = data.redis.status === 'connected';
   const cpuTemp = data.host.cpu.temperatureC;
-  const cpuTempClass = readingClass(levelAbove(cpuTemp ?? 0, CHIP_TEMP_C), 'text-foreground');
+  const cpuThreshold = cpuTempThreshold(data.host.cpu);
+  const cpuTempClass = readingClass(levelAbove(cpuTemp ?? 0, cpuThreshold), 'text-foreground');
   const swap = data.host.swap;
   const fresh = data.freshness;
   const stats = data.siteAnalytics;
@@ -156,8 +160,7 @@ export default function SystemPage() {
     (acc[s.chip] ??= []).push(s);
     return acc;
   }, {});
-  const chipRank = (c: string) =>
-    /coretemp|k10temp|zenpower|cpu/i.test(c) ? 0 : /nvme/i.test(c) ? 1 : 2;
+  const chipRank = (c: string) => (CPU_CHIP.test(c) ? 0 : /nvme/i.test(c) ? 1 : 2);
   const sensorEntries = Object.entries(sensorGroups).sort(
     (a, b) => chipRank(a[0]) - chipRank(b[0]) || a[0].localeCompare(b[0])
   );
@@ -186,7 +189,7 @@ export default function SystemPage() {
                 </span>
                 <p className="text-muted-foreground mt-0.5 text-xs">Last</p>
               </div>
-              <div>
+              <div title={`Gelb ab ${cpuThreshold.warn} °C, rot ab ${cpuThreshold.bad} °C`}>
                 <span
                   className={`flex items-center gap-1 text-[1.75rem] leading-tight font-semibold tracking-tight tabular-nums ${cpuTempClass}`}
                 >
@@ -472,6 +475,8 @@ export default function SystemPage() {
           <PanelBody className="grid grid-cols-1 gap-3">
             {sensorEntries.map(([chip, list]) => {
               const hot = Math.max(...list.map((s) => s.tempC));
+              // Cores take the CPU's limits, or a core reads red where the overview does not.
+              const threshold = CPU_CHIP.test(chip) ? cpuThreshold : CHIP_TEMP_C;
               return (
                 <Tile
                   key={chip}
@@ -485,7 +490,9 @@ export default function SystemPage() {
                     </>
                   }
                   action={
-                    <span className={`text-xs font-semibold tabular-nums ${sensorTempClass(hot)}`}>
+                    <span
+                      className={`text-xs font-semibold tabular-nums ${sensorTempClass(hot, threshold)}`}
+                    >
                       Spitze {hot} °C
                     </span>
                   }
@@ -499,7 +506,9 @@ export default function SystemPage() {
                         <p className="text-muted-foreground truncate text-xs" title={s.label}>
                           {s.label}
                         </p>
-                        <p className={`text-lg font-bold tabular-nums ${sensorTempClass(s.tempC)}`}>
+                        <p
+                          className={`text-lg font-bold tabular-nums ${sensorTempClass(s.tempC, threshold)}`}
+                        >
                           {s.tempC}
                           <span className="text-muted-foreground text-xs font-normal"> °C</span>
                         </p>

@@ -9,6 +9,10 @@ import { plannerUi } from '@/lib/planner/ui-store';
 import { openDay } from '@/lib/planner/actions';
 import { safeAssistantHref } from '@/lib/assistant/links';
 import { localizedPath } from '@/lib/i18n/localized-path';
+import { hreflangPath } from '@/lib/i18n/hreflang';
+import { useRouter as useLocaleRouter } from '@/i18n/navigation';
+import { localeSwitchPath } from '@/lib/assistant/switch-locale';
+import { reopenAfterSwitch } from '@/lib/assistant/open';
 import {
   type AssistantAction,
   type AssistantActionChip,
@@ -19,12 +23,14 @@ import {
 const PHONE = '(max-width: 639px)';
 
 /**
- * Carries out what Parky asked for, through the site's own paths: the router for a page, the
- * planner's store and its open and optimise signals for the plan, so every write is counted and
- * undoable like a press of the planner's own buttons.
+ * Carries out what Parky asked for, through the site's own paths: the router for a page,
+ * next-intl's router for the same page in another language, the planner's store and its open and
+ * optimise signals for the plan, so every write is counted and undoable like a press of the
+ * planner's own buttons.
  */
 export function useAssistantActions(closeWindow: () => void) {
   const router = useRouter();
+  const localeRouter = useLocaleRouter();
   const locale = useLocale();
   const { addRide, addCustom } = usePlanner();
 
@@ -89,10 +95,26 @@ export function useAssistantActions(closeWindow: () => void) {
           showDay(action.park, action.date);
           plannerUi.requestOptimize(action.park.slug, action.date, action.mode);
           return 'optimized';
+        case 'switch_locale': {
+          if (action.locale === locale) return null;
+          const path = localeSwitchPath(
+            window.location.pathname,
+            action.locale,
+            hreflangPath(action.locale)
+          );
+          if (!path) return null;
+          // The window stays open: the new locale mounts the layout afresh, and the launcher there
+          // opens it again with the chat from session storage.
+          reopenAfterSwitch();
+          localeRouter.replace(`${path}${window.location.search}`, { locale: action.locale });
+          return 'language';
+        }
+        case 'feedback_sent':
+          return 'feedback';
         default:
           return null;
       }
     },
-    [router, locale, addRide, addCustom, closeWindow]
+    [router, localeRouter, locale, addRide, addCustom, closeWindow]
   );
 }

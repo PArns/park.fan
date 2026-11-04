@@ -22,7 +22,7 @@ Public entry for the glossary 3-D coaster player.
 
 ### [`glossary-background.tsx`](../../components/glossary/glossary-background.tsx)
 
-- `GlossaryBackground` _component_: A park photo behind the head of a glossary page, server-rendered for a fast LCP, without the ken-burns pan.
+- `GlossaryBackground` _component_: A park photo behind the head of a glossary page, server-rendered for a fast LCP and still. Washed toward the page background and faded out before the content under the head, so the cards, the player and the sidebar stand on the plain page.
 
 ### [`glossary-category-icons.ts`](../../components/glossary/glossary-category-icons.ts)
 

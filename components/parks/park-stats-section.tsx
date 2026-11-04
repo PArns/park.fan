@@ -7,7 +7,10 @@ import { Link } from '@/i18n/navigation';
 import { ParkStatsHeader } from '@/components/parks/park-stats-header';
 import { ParkStatsCrowdCard } from '@/components/parks/park-stats-crowd-card';
 import { ParkStatsExtremeDaysCard } from '@/components/parks/park-stats-extreme-days-card';
-import { ParkStatsAttractionsCard } from '@/components/parks/park-stats-attractions-card';
+import {
+  ParkStatsAttractionsCard,
+  useParkStatsAttractionsLabels,
+} from '@/components/parks/park-stats-attractions-card';
 import {
   ALL_STATS_CARDS,
   ParkStatsSectionSkeleton,
@@ -221,7 +224,7 @@ function StatsContent({
   statsPageHref?: string;
 }) {
   const t = useTranslations('parks.stats');
-  const tParks = useTranslations('parks');
+  const attractionLabels = useParkStatsAttractionsLabels();
 
   // Live wait times for the "now" column — read from the SHARED cache, never fetched here:
   // `enabled: false` keeps this observer subscribed to `['park-live', …]` without ever issuing a
@@ -374,14 +377,7 @@ function StatsContent({
                 attractions={stats.topAttractions}
                 currentWaits={currentWaits}
                 showCurrentWaits={showCurrentWaits}
-                title={t('topAttractionsTitle')}
-                labelAttraction={tParks('attractions')}
-                labelMinutes={tParks('overview.minutesUnit')}
-                labelNow={tParks('now')}
-                labelP50={t('p50')}
-                labelP90={t('p90')}
-                labelLand={t('rideWaitsLand')}
-                labelType={t('rideWaitsType')}
+                {...attractionLabels}
                 continent={continent}
                 country={country}
                 city={city}

@@ -114,7 +114,9 @@
       "intro": "park.fan toont de wachttijden van <strong>{parks} pretparken</strong> en <strong>{attractions} attracties</strong>, elke vijf minuten opnieuw opgehaald. Voor de komende dagen staat erbij hoe druk het waarschijnlijk wordt.",
       "introShort": "Live wachttijden van <strong>{parks} parken</strong>.",
       "openNow": "{count, plural, =1 {1 park nu open} other {# parken nu open}}",
-      "searchExamples": "Efteling, Taron, Europa-Park …"
+      "searchExamples": "Efteling, Taron, Europa-Park …",
+      "parkyLine": "Laten we kijken waar we vandaag in de rij gaan staan!",
+      "parkyCta": "Klik op mij, ik help je."
     },
     "sections": {
       "featuredParks": "Populaire parken",
@@ -161,12 +163,6 @@
     }
   },
   "homeStory": {
-    "nearby": {
-      "kicker": "Jouw locatie",
-      "title": "Pretparken bij jou in de buurt",
-      "lead": "Met je locatie toont park.fan de dichtstbijzijnde parken, de parken die open zijn eerst, en hoe druk het er nu is.",
-      "allParks": "Alle parken ontdekken"
-    },
     "favorites": {
       "kicker": "Favorieten",
       "title": "Jouw parken en attracties",
@@ -1518,10 +1514,14 @@
       "demoNoLocation": "Zonder locatie sta je vast op één plek in het park.",
       "dialGroup": "Kompas, noorden boven"
     },
+    "heroRail": {
+      "seeWaits": "Wachttijden bekijken"
+    },
     "shortWaits": {
-      "title": "Nu kort in de rij",
-      "hint": "Attracties in de buurt waar de rij nu veel korter is dan normaal.",
-      "usually": "anders {minutes} {unit}"
+      "title": "Korte wachtrijen bij jou in de buurt",
+      "usually": "anders {minutes} {unit}",
+      "now": "nu {minutes} {unit}",
+      "shorter": "{minutes} {unit} korter"
     }
   },
   "location": {
@@ -1669,9 +1669,7 @@
     },
     "avgWait": "gem. {minutes} min",
     "avgWaitShort": "Ø {minutes} min",
-    "heroHint": "Begin te typen, we zoeken parken, attracties, shows en restaurants",
-    "newestNews": "Laatste nieuws",
-    "newestGuide": "Nieuwste gids"
+    "heroHint": "Begin te typen, we zoeken parken, attracties, shows en restaurants"
   },
   "searchPage": {
     "types": {
@@ -1809,7 +1807,7 @@
         "whichParksQ": "Welke pretparken staan op park.fan?",
         "whichParksA": "park.fan dekt meer dan 200 pretparken wereldwijd, waaronder Phantasialand, Europa-Park, Disneyland Paris, Efteling, Walibi Belgium, Toverland en Bobbejaanland. De volledige lijst met live wachttijden staat op de overzichtspagina met parken.",
         "liveDataQ": "Zijn de wachttijden op park.fan live en in realtime?",
-        "liveDataA": "Ja. Waar een park zijn wachttijden publiceert, vragen we ze elke vijf minuten op, uit drie openbare bronnen tegelijk: ThemeParks.wiki, Wartezeiten.app en Queue-Times.com. Wijken de bronnen van elkaar af, dan beslist de meerderheid, daarna de mediaan, daarna het gemiddelde. Het resultaat wordt op vijf minuten afgerond, omdat de parken ze zo aangeven.",
+        "liveDataA": "Ja. Waar een park zijn wachttijden publiceert, vragen we ze elke vijf minuten op bij de bronnen die het park kennen, tot drie: ThemeParks.wiki, Wartezeiten.app en Queue-Times.com. ThemeParks.wiki is de hoofdbron; de andere twee vullen attracties aan die daar ontbreken en corrigeren een verouderde status „gesloten”. Het resultaat wordt op vijf minuten afgerond, omdat de parken ze zo aangeven.",
         "freeQ": "Is het gebruik van park.fan gratis?",
         "freeA": "Ja. Live wachttijden, openingstijden, shows, restaurants en de druktekalender zijn te zien zonder account en zonder betaalmuur. Er is geen abonnement waarachter meer gegevens liggen.",
         "mobileQ": "Werkt park.fan ook op smartphones?",
@@ -2968,6 +2966,8 @@
     "chipNavigated": "Pagina geopend",
     "chipPlanned": "In je dagplanner",
     "chipOptimized": "Dag wordt gesorteerd",
+    "chipLanguage": "Taal gewisseld",
+    "chipFeedback": "Doorgegeven aan het team",
     "locationAsk": "Parky wil graag je locatie om parken en attracties bij jou in de buurt te vinden.",
     "locationShare": "Locatie delen",
     "locationNo": "Liever niet",

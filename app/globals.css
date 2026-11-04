@@ -356,36 +356,6 @@
 }
 
 /*
- * Resting height of the list under the hero's search field, reserved in the flow under the field;
- * the list itself floats, so a longer result list never moves the hero. Below `md` the list's
- * rows are fixed, so the value is exact; from `md` up the panel measures its list and replaces it,
- * and it is the shell skeleton's estimate. Tied to HERO_REST_ROWS_PHONE / _DESKTOP
- * (lib/home/hero-search.ts): changing one means re-measuring the other
- * (`pnpm check:hero-search-rest`).
- */
-:root {
-  --hero-search-rest-h: 327px;
-
-  /*
-   * Resting height of the whole left plate from `md` up, a streaming fix: the plate's later
-   * children arrive in a later HTML chunk, and a half-parsed plate painted short and then grew.
-   * 808px is the settled height in all six locales from 768 px up; the wide value holds where the
-   * page shows the map panel (`@container/page` from 1280 px), whose header carries the open-parks
-   * badge the plate shows below that (fr from 1440 px is 810). Not padded, so neither changes a
-   * finished layout. Both include --hero-search-rest-h: re-measure them together. See
-   * docs/rules/a-streamed-section-owes-the-page-its-height.md.
-   */
-  --hero-plate-min-h: 808px;
-  --hero-plate-min-h-wide: 762px;
-}
-
-@media (width >= 48rem) {
-  :root {
-    --hero-search-rest-h: 428px;
-  }
-}
-
-/*
  * Parky's face (`components/assistant/parky-logo.tsx`): a blink every few seconds, the Ferris-wheel
  * hat turning while it writes, the mouth talking, and the closed button bobbing gently. The idle
  * acts last `--parky-act`, which the component sets from its own table, so a length lives there
@@ -2209,9 +2179,9 @@
 }
 
 /*
- * Hero entrance: the panels never animate (see the stagger rules below), their content does, one
- * line at a time from the outside edge (`--hero-in-x`, opposite signs per column) out of a blur.
- * The search block's glass dropdown loses its blur for the length of its item's animation.
+ * Hero entrance: the containers never animate (see the stagger rules below), their content does,
+ * one line at a time from the left (`--hero-in-x`) out of a blur. The search field's glass loses
+ * its blur for the length of its item's animation.
  *
  * `backwards`, not `both`: `both` would retain the final keyframe's identity transform and
  * `filter`, and either isolates the subtree's backdrop for good.
@@ -2229,74 +2199,12 @@
   }
 }
 
-/*
- * The world map's landmasses, in a west-to-east sweep (the delay comes from each continent's
- * anchor). `transform-box: fill-box` on the path makes each grow about its own box instead of the
- * SVG's origin.
- */
-@keyframes hero-map-in {
-  from {
-    opacity: 0;
-    scale: 0.92;
-  }
-  to {
-    opacity: 1;
-    scale: 1;
-  }
-}
-
-/*
- * The map's continent bubbles grow out of it. Animates the standalone `scale`, not `transform`:
- * Tailwind's `-translate-x-1/2 -translate-y-1/2` compiles to the standalone `translate`, and a
- * keyframe on `transform` would compose on top of it and move the bubble twice.
- */
-@keyframes hero-pop-in {
-  from {
-    opacity: 0;
-    scale: 0.6;
-  }
-  to {
-    opacity: 1;
-    scale: 1;
-  }
-}
-
-/*
- * The selected continent's highlight blooms once the sweep has passed it. `fill-opacity`
- * multiplies the alpha already in `fill-primary/35`, so there is no second fill value to sync.
- */
-@keyframes hero-map-lock {
-  0% {
-    fill-opacity: 0.2;
-  }
-  55% {
-    fill-opacity: 1;
-  }
-  72% {
-    fill-opacity: 0.7;
-  }
-  100% {
-    fill-opacity: 1;
-  }
-}
-
-/* One ring going out from the selected bubble as it lands. `box-shadow` only: a `scale` here
-   would fight the standalone `translate` that centres the bubble on its anchor. */
-@keyframes hero-bubble-ring {
-  from {
-    box-shadow: 0 0 0 0 var(--color-primary);
-  }
-  to {
-    box-shadow: 0 0 0 14px transparent;
-  }
-}
-
 @media (prefers-reduced-motion: no-preference) {
   /*
-   * Nothing animates the panels themselves: transform, opacity and filter each establish a
-   * backdrop root while applied, so an animating panel has no glass. The plate's direct children
-   * (HeroWithNearby returns a fragment, so its three land here too) are staggered by nth-child,
-   * so no component has to know its place in the sequence.
+   * The text column's direct children (HeroWithNearby returns a fragment, so its three land here
+   * too) and the card rail's are staggered by nth-child, so no component has to know its place in
+   * the sequence. Their containers never animate: transform, opacity and filter each establish a
+   * backdrop root while applied, and the search field's glass would lose its blur.
    */
   .hero-entering .hero-in-stagger > * {
     animation: hero-item-in 0.85s cubic-bezier(0.16, 1, 0.3, 1) backwards;
@@ -2319,41 +2227,12 @@
   }
 
   /*
-   * The right column starts once the left is under way, so the hero reads left to right
-   * instead of both halves arriving at once. It shifts the whole stagger rather than each
-   * element's delay — the step between siblings stays the same.
+   * The card rail starts once the text is under way, so the hero reads top to bottom instead of
+   * both arriving at once. It shifts the whole stagger rather than each element's delay, so the
+   * step between siblings stays the same.
    */
   .hero-in-late {
     --hero-in-from: 0.34s;
-    /* Mirrored, so the two columns close toward the hero's centre rather than both sliding
-       the same way. */
-    --hero-in-x: 22px;
-  }
-
-  /*
-   * The map's landmasses and its bubbles. These run on MOUNT, not on first paint — the panel
-   * is a lazy chunk that replaces a skeleton — so they are the one entrance here that is
-   * allowed to arrive late. Both carry their own delay inline (per continent, west to east).
-   */
-  .hero-map-in {
-    animation: hero-map-in 0.55s cubic-bezier(0.16, 1, 0.3, 1) backwards;
-    transform-box: fill-box;
-    transform-origin: center;
-  }
-  /* Two animations on one path, so they have to be declared together — a second `animation`
-     rule would replace the sweep rather than join it. */
-  .hero-map-in.hero-map-lock {
-    animation:
-      hero-map-in 0.55s cubic-bezier(0.16, 1, 0.3, 1) backwards,
-      hero-map-lock 0.6s ease-out 0.95s backwards;
-  }
-  .hero-bubble-in {
-    animation: hero-pop-in 0.42s cubic-bezier(0.34, 1.4, 0.64, 1) backwards;
-  }
-  .hero-bubble-in[aria-current] {
-    animation:
-      hero-pop-in 0.42s cubic-bezier(0.34, 1.4, 0.64, 1) backwards,
-      hero-bubble-ring 0.85s ease-out 1.1s backwards;
   }
 }
 
@@ -2404,36 +2283,6 @@
 @keyframes flip-digit-fade-out {
   to {
     opacity: 0;
-  }
-}
-
-/* Hero background: Ken Burns slow zoom + pan */
-@keyframes ken-burns {
-  0% {
-    transform: scale(1) translate(0, 0);
-  }
-  100% {
-    transform: scale(1.12) translate(-2%, -1%);
-  }
-}
-
-/*
- * A class, not an inline `style={{animation}}`, so a media query can switch it off. Every frame
- * of it re-blurs each `backdrop-filter` over the photo, so reduced motion also gets a hero that
- * costs nothing to composite.
- */
-@media (prefers-reduced-motion: no-preference) {
-  .hero-ken-burns {
-    animation: ken-burns 22s ease-in-out infinite alternate;
-  }
-
-  /*
-   * Parked while the hero is scrolled away or the tab is hidden. `animation-play-state` holds the
-   * pan where it is; removing the class would snap the photo back. Set on the background wrapper,
-   * so it covers the base photo and every in-park layer.
-   */
-  .hero-motion-paused .hero-ken-burns {
-    animation-play-state: paused;
   }
 }
 

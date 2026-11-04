@@ -20,6 +20,7 @@ import { HOWTO_CHAPTERS } from '@/lib/howto/chapters';
 import {
   Activity,
   BarChart3,
+  Bell,
   CalendarClock,
   CalendarDays,
   CloudSun,
@@ -29,7 +30,9 @@ import {
   HelpCircle,
   Layers,
   MapPin,
+  MessageCircle,
   Ruler,
+  Scale,
   Search,
   Sparkles,
   Star,
@@ -44,6 +47,7 @@ import {
   LiveTopAttractions,
   NoWaitTimesDemo,
   OffSeasonDemo,
+  ParkyShot,
   PlannerDayFigure,
   RopeDropDemo,
   TwoRidesDemo,
@@ -54,11 +58,9 @@ import {
   AnatomyBestDaysDemo,
   AnatomyBlogDemo,
   AnatomyCalendarDemo,
-  AnatomyHeaderDemo,
   AnatomyHolidayDemo,
   AnatomyNearbyDemo,
   AnatomyPurchasesDemo,
-  AnatomySeasonDemo,
   AnatomyShowsDemo,
   AnatomyStatsDemo,
 } from '../_anatomy-demos';
@@ -85,18 +87,18 @@ const PARK = '/parks/europe/germany/bruehl/phantasialand';
 const TARON = `${PARK}/taron`;
 
 const SCALE_LABELS = {
-  typical: 'Typisch',
+  typical: 'Normal',
   busy: 'Voll',
   unit: 'Min.',
   days: 'Messtage',
   record: 'Rekord',
   summary:
-    'Taron am {label}: typischerweise {typical} Minuten, an vollen Tagen {busy}, gemessen an {days} Tagen. Angeschrieben sind {wait} Minuten.',
+    'Taron, {label}: normalerweise {typical} Minuten, an vollen Tagen {busy}, gemessen an {days} Tagen. Angeschrieben sind {wait} Minuten.',
 };
 
 const SCALE_LEGEND = [
   {
-    term: 'Typisch',
+    term: 'Normal',
     def: 'An der Hälfte der gemessenen Tage war die längste Warteschlange kürzer.',
     swatch: 'bg-primary/45',
   },
@@ -128,76 +130,79 @@ const SCALE_STEPS: WaitScaleStep[] = [
 ];
 
 /**
- * The sections of a park page in exactly the order they render
- * (`app/[locale]/parks/.../page.tsx`). Whoever reorders them there reorders
- * them here, or the guide describes a page that does not exist.
+ * The sections of a park page in the order they render (`app/[locale]/parks/.../page.tsx`,
+ * `ParkPageShell`, `LiveParkData`). Whoever reorders them there reorders them here, or the guide
+ * describes a page that does not exist.
  */
 const PARK_SECTIONS: AnatomyStep[] = [
   {
-    title: 'Kopfbereich',
-    body: 'Name, Ort und Entfernung, dazu Status, heutige Öffnungszeiten, die Auslastung und wie viele Bahnen gerade offen sind.',
-    example: 'Phantasialand, Brühl. Heute 09:00–19:00, 36 von 40 Bahnen offen.',
-    demo: <AnatomyHeaderDemo />,
-  },
-  {
-    title: 'Ferien im Einzugsgebiet',
-    body: 'Welche Schulferien und Feiertage heute auf den Park wirken, die der eigenen Region zuerst.',
-    demo: <AnatomyHolidayDemo />,
-    onlyWhen: 'heute Ferien oder ein Feiertag hineinspielen.',
-  },
-  {
-    title: 'Unwetterwarnung',
-    body: 'Amtliche Warnungen von DWD und MeteoAlarm im Wortlaut.',
-    demo: <WeatherWarningBannerDemo />,
-    onlyWhen: 'für den Standort eine Warnung gilt.',
-  },
-  {
-    title: 'Regenradar',
-    body: 'Die nächsten Stunden in Viertelstunden. Daran siehst du, ob ein Schauer in zwanzig Minuten durch ist.',
-    demo: <NowcastBannerDemo single />,
-    onlyWhen: 'Regen in der Nähe ist.',
-  },
-  {
-    title: 'Wetterkarte',
-    body: 'Wetter von jetzt, Tagesverlauf und Vorhersage. Die Stunden, in denen der Park geöffnet hat, bekommen auf der Achse den meisten Platz.',
-    demo: <WeatherCardShowcase variant="single" />,
+    title: 'Titelkarte',
+    body: 'Name und Ort, wie weit du entfernt bist, der Stern für deine Favoriten, ein kurzer Text zum Park, seine Links und der Knopf zum Tagesplaner. Wo genug gemessen ist, steht darunter, welche Wochentage meist ruhig und welche voll sind.',
   },
   {
     title: 'Skip-the-line-Preise',
     body: 'Tagespreise für kostenpflichtige Warteschlangen wie Lightning Lane, ausverkaufte als solche markiert.',
+    example:
+      'Im Magic Kingdom am 4. November 2026: der Multi Pass für 37 Dollar, die Einzelbuchung für Seven Dwarfs Mine Train ausverkauft.',
     demo: <AnatomyPurchasesDemo />,
     onlyWhen: 'der Park sie veröffentlicht, bisher nur die Disney-Parks in den USA.',
   },
   {
+    title: 'Wenn du im Park bist',
+    body: 'Ein Kompass zeigt, in welcher Richtung die großen Bahnen liegen. Darunter stehen die Bahnen, an denen es jetzt kürzer ist als später, und die nächsten mit Entfernung und Wartezeit.',
+    onlyWhen: 'du im Park stehst und deinen Standort freigegeben hast.',
+  },
+  {
+    title: 'Heute im Park',
+    body: 'Status und Öffnungszeiten, wie viele Bahnen offen sind, der Andrang jetzt, die Prognose für heute, die Auslastung, die Wartezeiten der großen Bahnen und die nächsten Shows. Gilt eine amtliche Unwetterwarnung von DWD oder MeteoAlarm, steht sie ganz oben im Wortlaut. In der Titelzeile stehen die Temperatur und eine Warnung, wenn Regen oder ein Gewitter kommt; ein Druck darauf zeigt die nächsten Stunden in Viertelstunden. Ganz unten stehen die Ferien, die heute auf den Park wirken, die der eigenen Region zuerst.',
+    example:
+      'Am 24. August 2026 hatte das Phantasialand von 9 bis 19 Uhr geöffnet, und neben Nordrhein-Westfalen hatte auch Gelderland Sommerferien.',
+    demo: (
+      <div className="space-y-3">
+        <WeatherWarningBannerDemo />
+        <NowcastBannerDemo single />
+        <AnatomyHolidayDemo />
+      </div>
+    ),
+  },
+  {
+    title: 'Die Kacheln',
+    body: 'Unter „Heute im Park“ liegt eine Reihe Kacheln, die meisten mit einer Zahl von heute, etwa wie viele Bahnen offen sind oder wann die nächste Show beginnt. Attraktionen, Wetter, Karte, Shows und Restaurants öffnen ihren Reiter auf derselben Seite, Wartezeiten-Kalender und Statistik sind eigene Seiten.',
+  },
+  {
     title: 'Attraktionen',
-    body: 'Alle Bahnen als Karten wie in Kapitel 01, durchsuchbar und nach Bereichen gruppiert. Darüber stehen die Bahnen, bei denen sich früh kommen lohnt.',
-    example: 'Im Phantasialand steht Taron dort oben, mit 60 gesparten Minuten.',
+    body: 'Der Reiter, der beim Öffnen gewählt ist: alle Bahnen als Karten wie in Kapitel 01, nach Bereichen gruppiert oder nach Wartezeit sortiert, durchsuchbar und filterbar, etwa nach Körpergröße oder nach offenen Bahnen. Darüber stehen die Bahnen, bei denen sich früh kommen lohnt. Hat eine Bahn eine Saison, steht sie auf ihrer Karte. Darunter folgen, wo es sie gibt, die Bahnen, die für immer geschlossen haben, und der Link zur Seite „Mit Kindern“.',
+    example: 'Im Phantasialand steht dort oben Taron.',
     demo: <AnatomyAttractionDemo />,
   },
   {
-    title: 'Kalender und Karte',
-    body: 'Die Tagesprognosen aus Kapitel 04 im Monatsraster und eine Karte mit allen Bahnen.',
-    demo: <AnatomyCalendarDemo />,
+    title: 'Wartezeiten-Kalender',
+    body: 'Eine eigene Seite pro Monat: die Tage aus Kapitel 04 im Monatsraster, zu jedem Tag ein Fenster mit den Details und der Vergleich zweier Tage. Oben steht „Beste Reisezeit“ mit den ruhigsten Terminen der nächsten drei Monate und dem ruhigsten Wochentag.',
+    demo: (
+      <div className="space-y-3">
+        <AnatomyBestDaysDemo locale="de" />
+        <AnatomyCalendarDemo />
+      </div>
+    ),
   },
   {
-    title: 'Shows und Restaurants',
-    body: 'Spielzeiten für den ganzen Tag, Restaurants mit Öffnungszeiten.',
-    example: 'Im Phantasialand vier Shows und 46 Restaurants.',
-    demo: <AnatomyShowsDemo />,
-    onlyWhen: 'der Park welche meldet.',
+    title: 'Wetter, Karte, Shows, Restaurants',
+    body: 'Vier weitere Reiter. Das Wetter von jetzt, im Tagesverlauf und als Vorhersage, wobei die Öffnungsstunden auf der Achse den meisten Platz bekommen. Eine Karte mit allen Bahnen. Shows mit ihren Spielzeiten für den ganzen Tag und Restaurants mit ihrem Status, beide nur, wenn der Park welche meldet.',
+    example:
+      'Am 4. November 2026 listete der Europa-Park 16 Shows und 64 Restaurants. Das Phantasialand hatte an dem Tag keine Show im Programm und deshalb auch keinen Show-Reiter.',
+    demo: (
+      <div className="space-y-3">
+        <WeatherCardShowcase variant="single" />
+        <AnatomyShowsDemo />
+      </div>
+    ),
   },
   {
-    title: 'Beste Tage',
-    body: 'Die ruhigsten Termine der nächsten drei Monate und der ruhigste Wochentag des Parks.',
-    demo: <AnatomyBestDaysDemo locale="de" />,
-    onlyWhen: 'der Park einen Betriebskalender veröffentlicht.',
-  },
-  {
-    title: 'Parks in der Nähe',
-    body: 'Was sonst in Reichweite liegt, mit Entfernung und Status.',
+    title: 'Parks in deiner Nähe',
+    body: 'Bis zu drei andere Parks im Umkreis von 100 Kilometern, mit Entfernung und Status.',
     example: 'Vom Phantasialand aus Toverland und Movie Park Germany, beide gut 90 Kilometer.',
     demo: <AnatomyNearbyDemo />,
-    onlyWhen: 'in Reichweite ein anderer Park liegt.',
+    onlyWhen: 'mindestens zwei andere Parks in diesem Umkreis liegen.',
   },
   {
     title: 'Blog',
@@ -207,23 +212,22 @@ const PARK_SECTIONS: AnatomyStep[] = [
   },
   {
     title: 'Statistik',
-    body: 'Die längsten Warteschlangen des Parks mit typischem und vollem Wert, dazu die Verteilung über Monate und Wochentage.',
-    demo: (
-      <AnatomyStatsDemo
-        title="Attraktionen mit längsten Wartezeiten"
-        labelAttraction="Attraktionen"
-        labelMinutes="Min."
-        labelNow="Jetzt"
-        labelP50="Typisch"
-        labelP90="Spitze"
-      />
-    ),
+    body: 'Die längsten Warteschlangen des Parks, gemittelt über die Öffnungsstunden, dazu die Monate, die Wochentage und die vollsten und ruhigsten gemessenen Tage. Die Kachel „Statistik“ führt zu einer eigenen Seite, die außerdem einen normalen Tag Stunde für Stunde zeigt.',
+    demo: <AnatomyStatsDemo />,
   },
   {
-    title: 'Saison, Infos, Fragen',
-    body: 'Saisonzeiten und Events, Adresse und Zeitzone, häufige Fragen zu diesem Park.',
-    example: 'Der Schlittschuhverleih aus Kapitel 08 steht hier mit November bis Januar.',
-    demo: <AnatomySeasonDemo label="Schlittschuhverleih" />,
+    title: 'Die nächsten zwölf Monate',
+    body: 'Die Prognose Tag für Tag, zu Monaten zusammengefasst, mit der Zahl der empfohlenen Tage. Ein Monat führt in den Wartezeiten-Kalender.',
+    onlyWhen: 'es für den Park eine Prognose gibt.',
+  },
+  {
+    title: 'Saisons und Events',
+    body: 'Halloween, Weihnachten und andere Events mit ihren Daten, ob sie bestätigt, angekündigt oder nur erwartet sind, und was ein eigenes Ticket kostet.',
+    onlyWhen: 'wir für den Park Events recherchiert haben.',
+  },
+  {
+    title: 'Infos und Fragen',
+    body: 'Adresse, Telefon, Eröffnungsjahr und Fläche, soweit wir sie haben, dann häufige Fragen zu diesem Park.',
   },
 ];
 
@@ -232,71 +236,85 @@ const NIGHT_JOBS: NightShiftJob[] = [
     hour: 2,
     minute: 0,
     at: 0.04,
-    title: 'Was jede Stunde typisch ist',
-    body: 'Typischer und voller Wert für jede Bahn und jede Stunde.',
+    title: 'Gestern Stunde für Stunde',
+    body: 'Für jede Bahn und jede Stunde des Vortags, was meist anstand und was in den vollen Momenten.',
   },
   {
     hour: 3,
     minute: 0,
-    at: 0.22,
+    at: 0.2,
     title: 'Der Normalwert jedes Parks',
-    body: 'Der Wert, an dem die Auslastung gemessen wird.',
+    body: 'Der Wert, an dem der Andrang eines Parks gemessen wird.',
+  },
+  {
+    hour: 3,
+    minute: 0,
+    at: 0.2,
+    title: 'Das Modell für die nächsten Wochen lernt nach',
+    body: 'Es bekommt die Wartezeiten von gestern dazu.',
+  },
+  {
+    hour: 4,
+    minute: 0,
+    at: 0.34,
+    title: 'Der Normalwert jeder Bahn',
+    body: 'Der Wert, an dem die Stufe auf der Karte aus Kapitel 01 misst.',
   },
   {
     hour: 4,
     minute: 30,
-    at: 0.42,
+    at: 0.46,
     title: 'Gestern zusammenfassen',
     body: 'Der ganze Vortag in Viertelstunden.',
   },
   {
     hour: 5,
     minute: 15,
-    at: 0.56,
+    at: 0.6,
     title: 'Lohnt früh aufstehen?',
     body: 'Pro Bahn, wie viel ein früher Start spart und wie lange der Vorsprung hält.',
   },
   {
     hour: 5,
     minute: 30,
-    at: 0.67,
-    title: 'Typisch pro Wochentag',
-    body: 'Die Tabelle aus Kapitel 02 für jede Bahn, dazu der Rekord.',
+    at: 0.72,
+    title: 'Normal und voll pro Wochentag',
+    body: 'Die Werte aus Kapitel 02 für jede Bahn, dazu der Rekord.',
   },
   {
     hour: 6,
     minute: 0,
-    at: 0.8,
-    title: 'Das Prognosemodell lernt nach',
-    body: 'Es trainiert mit den Wartezeiten von gestern.',
+    at: 0.86,
+    title: 'Das Modell für den Rest des Jahres lernt nach',
+    body: 'Auch es bekommt die Wartezeiten von gestern dazu.',
   },
 ];
 
 const FAQ = [
   {
-    question: 'Was heißt „typisch“ und „voll“ bei einer Wartezeit?',
+    question: 'Was heißt „normal“ und „voll“ bei einer Wartezeit?',
     answer:
-      'Typisch ist der Median der Tagesspitzen: An der Hälfte der gemessenen Tage war die längste Warteschlange kürzer. Voll ist das 90. Perzentil derselben Reihe, ungefähr der vollste Tag von zehn. Der Rekord steht getrennt daneben, damit ein einzelner Ausreißer die beiden Werte nicht verschiebt.',
+      'Normal ist der Median der Tagesspitzen: An der Hälfte der gemessenen Tage war die längste Warteschlange kürzer. Voll ist das 90. Perzentil derselben Reihe, ungefähr der vollste Tag von zehn. Der Rekord steht daneben. Weil beide Werte Perzentile sind, verschiebt ein einzelner Ausreißer sie kaum.',
   },
   {
     question: 'Sind 70 Minuten Wartezeit viel?',
     answer:
-      'Das hängt von der Bahn und vom Wochentag ab. An Taron im Phantasialand liegt die Spitze montags typischerweise bei 55 Minuten, 70 sind dort also viel. Samstags sind 70 Minuten der Median und damit ein ganz normaler Tag. Beide Vergleichswerte stehen auf park.fan auf der Seite der Bahn.',
+      'Das hängt von der Bahn und vom Wochentag ab. An Taron im Phantasialand liegt die Spitze montags normalerweise bei 55 Minuten, 70 sind dort also viel. Samstags sind 70 Minuten der Median und damit ein ganz normaler Tag. Beide Vergleichswerte stehen auf park.fan auf der Seite der Bahn.',
   },
   {
     question: 'Woher kommen die Wartezeiten?',
     answer:
-      'Aus drei öffentlichen Quellen: ThemeParks.wiki, Wartezeiten.app und Queue-Times.com. Wir fragen jeden Park alle fünf Minuten ab, und wenn sich die Quellen widersprechen, gilt die Mehrheit.',
+      'Aus bis zu drei öffentlichen Quellen. ThemeParks.wiki ist die Grundquelle; Queue-Times.com und Wartezeiten.app ergänzen Bahnen, die dort fehlen, und korrigieren ein veraltetes „geschlossen“. Neue Werte holen wir alle fünf Minuten.',
   },
   {
-    question: 'Warum steht bei manchen Parks „keine Prognose“?',
+    question: 'Warum steht bei manchen Parks „Keine Prognose“?',
     answer:
       'Eine Auslastungsstufe vergleicht den Park mit seiner eigenen Vergangenheit, und dafür braucht es rund 30 Betriebstage. Bei neuen oder selten geöffneten Parks steht deshalb nichts statt einer geratenen Farbe.',
   },
   {
     question: 'Warum zeigt der Hansa-Park keine Wartezeiten?',
     answer:
-      'Der Park zeigt seine Wartezeiten nur in der eigenen App und nur im Park-WLAN, eine öffentliche Schnittstelle gibt es nicht. Auf park.fan steht deshalb ein Hinweis statt 82 Bahnen, die leer aussehen.',
+      'Der Park zeigt seine Wartezeiten nur in der eigenen App und nur im Park-WLAN, eine öffentliche Schnittstelle gibt es nicht. Auf park.fan steht deshalb über der Bahnliste ein Hinweis, warum dort keine Zeiten stehen.',
   },
   {
     question: 'Was ist Rope Drop?',
@@ -306,12 +324,12 @@ const FAQ = [
   {
     question: 'Kostet park.fan etwas, und brauche ich ein Konto?',
     answer:
-      'Nein und nein. Alles auf park.fan ist kostenlos und ohne Anmeldung nutzbar. Favoriten und Tagespläne liegen in deinem Browser.',
+      'Nein und nein. Alles auf park.fan ist kostenlos und ohne Anmeldung nutzbar. Favoriten und Tagespläne liegen in deinem Browser. Nur wenn du einen Plan teilst oder dir zu ihm Mitteilungen schicken lässt, legen wir ihn auch bei uns ab.',
   },
   {
     question: 'Wie oft aktualisieren sich die Zahlen?',
     answer:
-      'Eine geöffnete Parkseite holt alle fünf Minuten neue Werte. Typische Wartezeiten und Rope-Drop-Empfehlungen rechnen wir einmal pro Nacht neu, weil sie sich von einem Tag auf den anderen kaum bewegen.',
+      'Eine geöffnete Parkseite holt alle fünf Minuten neue Werte. Die Werte pro Wochentag und die Rope-Drop-Empfehlungen rechnen wir einmal pro Nacht neu, weil sie sich von einem Tag auf den anderen kaum bewegen.',
   },
 ];
 
@@ -337,8 +355,9 @@ export function ContentDE() {
           welchem Tag sich der Besuch überhaupt lohnt.
         </P>
         <P>
-          Die Karten, Badges und Tabellen weiter unten sind die Bauteile von park.fan selbst,
-          gefüttert mit festen Beispielzahlen aus dem Phantasialand. Im Park hast du dieselben
+          Die Karten, Badges und Tabellen weiter unten sind die Bauteile von park.fan selbst. Die
+          meisten zeigen feste Beispielzahlen, wie die API sie im Sommer und Herbst 2026 geliefert
+          hat, fast alle aus dem Phantasialand; zwei Tabellen laufen live. Im Park hast du dieselben
           Karten auf dem Handy, dann mit den Zahlen von heute.
         </P>
 
@@ -370,14 +389,14 @@ export function ContentDE() {
 
         <div className="space-y-4 pt-2">
           <P>
-            Die Auslastungsstufe vergleicht die Zahl mit dem, was an dieser Bahn normal ist. Taron
-            liegt im Mittel bei {TARON_BASELINE} Minuten, {TARON_WAIT_NOW} sind gut anderthalbmal so
-            viel, und das heißt „Sehr hoch“. Der kleine Pfeil daneben zeigt, ob die Warteschlange
-            gerade wächst oder kürzer wird.
+            Die Auslastungsstufe vergleicht die Zahl mit dem Normalwert dieser Bahn, dem Median
+            ihrer gemessenen Wartezeiten. Bei Taron lag er im September bei {TARON_BASELINE}{' '}
+            Minuten, {TARON_WAIT_NOW} sind gut anderthalbmal so viel, und das heißt „Sehr hoch“. Der
+            kleine Pfeil daneben zeigt, ob die Warteschlange gerade wächst oder kürzer wird.
           </P>
           <PG>
             Wo eine Bahn eine Single-Rider-Warteschlange hat, steht ihre Wartezeit mit auf der
-            Karte. Die Mindestgröße ebenfalls, damit du mit einem 130 Zentimeter großen Kind nicht
+            Karte. Die Mindestgröße ebenfalls, damit du mit einem 120 Zentimeter großen Kind nicht
             erst an der Messlatte erfährst, dass es nicht reicht.
           </PG>
         </div>
@@ -397,18 +416,18 @@ export function ContentDE() {
           id="massstab"
           index="02"
           kicker="Der Maßstab"
-          title="Typisch, voll, Rekord"
+          title="Normal, voll, Rekord"
           icon={Ruler}
         >
           <IntroWithAside
             value={`${TARON_RECORD} Min.`}
             label="Tarons längste gemessene Warteschlange"
-            note="Am 16. Juli 2026, in den Sommerferien. Ein einzelner Tag, deshalb steht er als Rekord daneben und nicht im Maßstab."
+            note="Am 16. Juli 2026. In Nordrhein-Westfalen war noch Schule, in den Nachbarregionen schon Sommerferien. Ein einzelner Tag: Er steht als Rekord daneben, den Maßstab verschiebt er kaum."
           >
             <P>
-              Ob 70 Minuten viel sind, zeigen zwei Vergleichswerte. Typisch ist, wie lang die
-              längste Warteschlange des Tages an dieser Bahn normalerweise ist, voll, wie lang sie
-              an den vollsten zehn Prozent der Tage war.
+              Ob 70 Minuten viel sind, zeigen zwei Vergleichswerte. Normal ist, wie lang die längste
+              Warteschlange des Tages an dieser Bahn gewöhnlich wird, voll, wie lang sie an den
+              vollsten zehn Prozent der Tage war.
             </P>
           </IntroWithAside>
 
@@ -434,20 +453,21 @@ export function ContentDE() {
                   <p className="text-muted-foreground leading-relaxed">
                     {i === 0 && (
                       <>
-                        Montags liegt die Tagesspitze typischerweise bei {step.typical} Minuten, und
+                        Montags liegt die Tagesspitze normalerweise bei {step.typical} Minuten, und
                         an neun von zehn Montagen bleibt sie bei {step.busy} oder darunter. Wer
                         heute {TARON_WAIT_NOW} sieht, hat einen der vollen Montage erwischt.
                       </>
                     )}
                     {i === 1 && (
                       <>
-                        Samstags sind {step.typical} Minuten der Median. Dieselbe Anzeige ist an
-                        diesem Tag ganz normal, und die Bahnen daneben sind genauso voll.
+                        Samstags sind {step.typical} Minuten der Median: An der Hälfte der Samstage
+                        blieb die längste Warteschlange darunter. Dieselbe Anzeige ist an diesem Tag
+                        ganz normal.
                       </>
                     )}
                     {i === 2 && (
                       <>
-                        Unter der Woche liegt die Spitze typischerweise bei {step.typical} Minuten.
+                        Unter der Woche liegt die Spitze normalerweise bei {step.typical} Minuten.
                         Die gestrichelte Linie ganz hinten ist der Rekord von {TARON_RECORD} Minuten
                         am 16. Juli. Ein Tag wie dieser würde einen Durchschnitt verzerren, deshalb
                         rechnet „voll“ mit den vollsten zehn Prozent der Tage statt mit dem Maximum.
@@ -485,7 +505,7 @@ export function ContentDE() {
             <div className="space-y-4">
               <P>
                 Auf der Seite jeder Bahn steht dieser Maßstab Wochentag für Wochentag. Die Zahl über
-                dem Balken ist der volle Wert, der kräftige Teil darunter der typische, und unten
+                dem Balken ist der volle Wert, der kräftige Teil darunter der normale, und unten
                 steht der Rekord mit Datum.
               </P>
               <P>
@@ -497,8 +517,8 @@ export function ContentDE() {
           </div>
 
           <DemoFrame
-            label="Dieselbe Tabelle für den ganzen Park, live"
-            note="Der aktuelle Stand für das Phantasialand, pro Bahn der typische und der volle Wert."
+            label="Der ganze Park, live"
+            note="Die längsten Warteschlangen im Phantasialand, so wie sie gerade auf der Parkseite stehen. Diese Tabelle ist anders gerechnet als die Seite einer Bahn: Sie mittelt über alle Öffnungsstunden der letzten zwei Jahre. „Typisch“ ist, was in einer Stunde meist ansteht, „Spitze“, was in ihren vollen Minuten ansteht. Deshalb liegen ihre Zahlen unter den Tagesspitzen aus dem Maßstab oben."
             href={PARK}
             hrefLabel="Phantasialand auf park.fan →"
           >
@@ -573,8 +593,8 @@ export function ContentDE() {
         </P>
 
         <DemoFrame
-          label="Vier Tage aus den Herbstferien"
-          note="Der 15. Oktober ist der ruhigste der vier, obwohl er mitten in den Ferien liegt, weil es regnet. Am 19. hat der Park zu. Auf park.fan steht derselbe Kalender Monat für Monat."
+          label="Eine Woche Herbstferien"
+          note="Vier gemessene Tage im Phantasialand, alle in den Herbstferien von Nordrhein-Westfalen 2026: am Dienstag, 20. Oktober, im Schnitt 45 Minuten an den großen Bahnen, am Sonntag darauf 20. Dieselben Ferien, vier verschiedene Stufen. Auf park.fan steht derselbe Kalender Monat für Monat."
         >
           <CalendarDaysDemo />
         </DemoFrame>
@@ -584,19 +604,20 @@ export function ContentDE() {
         <div className="space-y-4 pt-2">
           <P>
             Oft zählen die Ferien der Nachbarn so viel wie die eigenen, weil Tagesgäste keine
-            Grenzen kennen. Das Phantasialand liegt rund 90 Kilometer von den Niederlanden entfernt,
-            und im Kalender stehen neben den Ferien in Nordrhein-Westfalen auch die der Provinz
-            Gelderland. Ferienregionen im Umkreis von rund 200 Kilometern bekommen eine eigene
-            Markierung.
+            Grenzen kennen. Das Phantasialand liegt rund 60 Kilometer von den Niederlanden entfernt,
+            und im Kalender stehen neben den Ferien in Nordrhein-Westfalen auch die der Provinzen
+            Limburg und Gelderland. Die Ferien der Nachbarregionen, die wir für einen Park
+            hinterlegt haben, bekommen eine eigene Markierung.
           </P>
           <PG>
-            Die Farbe eines Tages ist eine Prognose. Wie gut unsere Prognosen treffen, rechnet die
-            Fancast-Seite öffentlich nach.
+            Die Farbe eines kommenden Tages ist eine Prognose, die eines vergangenen ist gemessen.
+            Wie gut unsere Prognosen treffen, rechnet die Fancast-Seite öffentlich nach.
           </PG>
           <P>
-            Bei einem Park, der das ganze Jahr geöffnet hat, reicht der Kalender rund elf Monate
-            weit. Bei einem Saisonpark endet er mit der veröffentlichten Saison, und ein Tag, an dem
-            der Park zu hat, steht als geschlossen da.
+            Veröffentlicht ein Park seine Öffnungszeiten, reicht der Kalender so weit wie sie,
+            höchstens ein Jahr, und ein Tag, an dem der Park zu hat, steht als geschlossen da. Für
+            den Überblick fasst die Parkseite die Prognose unter „Die nächsten zwölf Monate“ Monat
+            für Monat zusammen.
           </P>
         </div>
 
@@ -672,11 +693,12 @@ export function ContentDE() {
           <div className="space-y-4 lg:sticky lg:top-20 lg:self-start">
             <Highlight>
               Die Hälfte dieser Abschnitte erscheint nur, wenn es etwas zu zeigen gibt. Ein Park
-              ohne Shows bekommt keinen leeren Show-Reiter.
+              ohne Shows bekommt weder eine Show-Kachel noch einen leeren Show-Reiter.
             </Highlight>
             <PG>
-              Der gewählte Reiter steht in der Adresse. Wer den Link zum Kalender verschickt,
-              verschickt den Kalender und nicht die Attraktionsliste.
+              Der gewählte Reiter steht in der Adresse. Wer den Link zur Karte verschickt,
+              verschickt die Karte und nicht die Liste der Attraktionen. Kalender und Statistik sind
+              eigene Seiten mit eigener Adresse.
             </PG>
             <div className="pt-1">
               <Link
@@ -701,24 +723,29 @@ export function ContentDE() {
           icon={Database}
         >
           <P>
-            Alle fünf Minuten fragen wir jeden der 212 Parks ab, bei drei öffentlichen Quellen
-            gleichzeitig. Widersprechen sie sich, gilt die Mehrheit.
+            Alle fünf Minuten holen wir für jeden der über 200 Parks neue Wartezeiten, aus bis zu
+            drei öffentlichen Quellen. ThemeParks.wiki ist die Grundquelle. Queue-Times.com und
+            Wartezeiten.app ergänzen Bahnen, die dort fehlen, und korrigieren ein veraltetes
+            „geschlossen“. Für ein paar Parks ist eine von beiden die einzige Quelle.
           </P>
 
           <IngredientGrid>
             <IngredientCard icon={Activity} title="Wartezeiten" delay={0}>
-              ThemeParks.wiki, Wartezeiten.app und Queue-Times.com, alle fünf Minuten.
+              ThemeParks.wiki als Grundlage, Queue-Times.com und Wartezeiten.app für das, was dort
+              fehlt.
             </IngredientCard>
             <IngredientCard icon={GraduationCap} title="Ferien & Feiertage" delay={60}>
-              Nager.Date für Feiertage und Brückentage, OpenHolidays für Schulferien, jede Region
-              einzeln.
+              Region für Region: in Europa von Nager.Date und OpenHolidays, anderswo aus den
+              Kalendern von Behörden und Schulbezirken.
             </IngredientCard>
             <IngredientCard icon={CloudSun} title="Wetter" delay={120}>
-              Open-Meteo für Vorhersage und Regenradar, Unwetterwarnungen von DWD und MeteoAlarm.
+              Open-Meteo für die Vorhersage und eine Kurzfristprognose für Regen in Viertelstunden,
+              Unwetterwarnungen von DWD und MeteoAlarm.
             </IngredientCard>
             <IngredientCard icon={CalendarDays} title="Öffnungszeiten" delay={0}>
-              Aus den Parkkalendern. Wo ein Park keinen veröffentlicht, schätzen wir die Zeiten aus
-              dem Betrieb der Bahnen und schreiben das dazu.
+              Aus den Parkkalendern. Wo ein Park keine veröffentlicht, leiten wir die Zeiten für
+              heute und die Tage davor aus dem Betrieb der Bahnen ab und schreiben dazu, dass sie
+              geschätzt sind.
             </IngredientCard>
             <IngredientCard icon={Layers} title="Historie" delay={60}>
               Jede gemessene Wartezeit bleibt gespeichert, auch die eines ruhigen
@@ -732,15 +759,16 @@ export function ContentDE() {
 
           <div className="space-y-4 pt-4">
             <P>
-              Wie lang Tarons Warteschlange an einem typischen Dienstag ist, rechnen wir nachts,
-              während die Parks zu haben. Wenn du morgens die Seite öffnest, ist es fertig.
+              Wie lang Tarons Warteschlange an einem normalen Dienstag ist, rechnen wir nachts,
+              während die Parks in Europa zu haben. Wenn du morgens die Seite öffnest, ist es
+              fertig.
             </P>
           </div>
 
           <NightShift
             locale="de"
             jobs={NIGHT_JOBS}
-            caption="Uhrzeiten in UTC. Jeder Schritt baut auf dem vorigen auf."
+            caption="Uhrzeiten in UTC. Die Reihenfolge sorgt dafür, dass jeder Schritt die Zahlen schon vorfindet, die er braucht. Das Modell für heute lernt erst um 08:30 nach."
           />
         </SectionShell>
       </Ambience>
@@ -757,14 +785,14 @@ export function ContentDE() {
         <div className="grid gap-6 lg:grid-cols-3">
           <DemoFrame
             label="Park ohne lesbare Quelle"
-            note="Der Hansa-Park zeigt seine Wartezeiten nur in der eigenen App im Park-WLAN. Ohne diesen Hinweis stünden auf park.fan 82 Bahnen, die leer aussehen."
+            note="Der Hansa-Park zeigt seine Wartezeiten nur in der eigenen App im Park-WLAN. Über seinen rund 80 Bahnen steht deshalb dieser Hinweis, warum dort keine Zeiten stehen."
           >
             <NoWaitTimesDemo />
           </DemoFrame>
 
           <DemoFrame
             label="Bahn außerhalb ihrer Saison"
-            note="Über eine Eisbahn im August meldet niemand etwas. Sie steht deshalb als außerhalb der Saison da und zählt an dem Tag nicht zu den geöffneten Bahnen."
+            note="Über eine Eisbahn im August meldet niemand etwas. Weil wir ihre Saison kennen, November bis Januar, steht sie dann als außerhalb der Saison da und zählt nicht zu den geöffneten Bahnen."
           >
             <OffSeasonDemo />
           </DemoFrame>
@@ -774,9 +802,8 @@ export function ContentDE() {
             note="Unter rund 30 Betriebstagen fehlt der Vergleichswert. Ein neuer Park bekommt deshalb „Keine Prognose“ statt einer Farbe."
           >
             <BadgeRowDemo
-              crowdLabel="Auslastung: wie voll ist es gerade"
-              comparisonLabel="Vergleich: voller als sonst?"
-              caption="Taron steht bei 70 Minuten auf „Sehr hoch“, und verglichen mit seinen typischen 45 Minuten auf „Viel höher“. Bei einem kleinen Park, an dem 25 Minuten normal sind, kann „Sehr hoch“ neben „Typisch“ stehen."
+              crowdLabel="Die Stufen"
+              caption={`Jede Stufe misst gegen die eigene Vergangenheit der Bahn oder des Parks, nie gegen andere Parks. Taron steht bei 70 Minuten auf „Sehr hoch“, weil sein Normalwert im September bei ${TARON_BASELINE} lag.`}
             />
           </DemoFrame>
         </div>
@@ -790,8 +817,8 @@ export function ContentDE() {
               title: 'Suche',
               body: (
                 <>
-                  Strg + K oder ⌘ + K auf jeder Seite. Findet Parks, Bahnen, Shows und Restaurants,
-                  auch mit Tippfehlern.
+                  Die Taste / auf jeder Seite oder das Suchfeld oben. Findet Parks, Bahnen, Shows,
+                  Restaurants und Orte, auch mit Tippfehlern.
                 </>
               ),
             },
@@ -800,8 +827,9 @@ export function ContentDE() {
               title: 'Standort',
               body: (
                 <>
-                  Gibst du ihn frei, stehen auf der Startseite die Parks in deiner Nähe, im Park die
-                  nächsten Bahnen mit Entfernung und Wartezeit.
+                  Gibst du ihn frei, stehen auf der Startseite die Parks in deiner Nähe. Im Park
+                  zeigt ein Kompass, wo die großen Bahnen liegen, dazu die nächsten mit Entfernung
+                  und Wartezeit.
                 </>
               ),
             },
@@ -810,8 +838,20 @@ export function ContentDE() {
               title: 'Favoriten',
               body: (
                 <>
-                  Der Stern auf jeder Park- und Attraktionskarte. Favoriten stehen mit ihrer
-                  aktuellen Wartezeit auf der Startseite und liegen im Browser, ohne Konto.
+                  Der Stern auf Parks, Bahnen, Shows und Restaurants. Favoriten stehen mit ihrer
+                  aktuellen Wartezeit auf der Startseite und unter{' '}
+                  <A href="/favorites">Meine Favoriten</A>, gespeichert im Browser, ohne Konto.
+                </>
+              ),
+            },
+            {
+              icon: Bell,
+              title: 'Alarme',
+              body: (
+                <>
+                  Die Glocke auf einer Bahn oder Show schickt dir eine Mitteilung, wenn die
+                  Wartezeit unter deine Grenze fällt, die Bahn wieder öffnet oder die Show bald
+                  beginnt. Alle stehen unter <A href="/alerts">Meine Alarme</A>.
                 </>
               ),
             },
@@ -821,7 +861,8 @@ export function ContentDE() {
               body: (
                 <>
                   Im Reiter Attraktionen stellst du den Regler auf das kleinste Kind, dann bleiben
-                  nur die Bahnen, die es fahren darf.
+                  nur die Bahnen, die es fahren darf. Die Seite „Mit Kindern“ eines Parks hat
+                  denselben Regler.
                 </>
               ),
             },
@@ -839,19 +880,30 @@ export function ContentDE() {
               title: 'Attraktionsseite',
               body: (
                 <>
-                  Verlauf, typische Wartezeiten pro Wochentag, Rope Drop, Mindestgröße und wie gut
-                  die Prognose für diese Bahn trifft.
+                  Verlauf, normale und volle Wartezeit pro Wochentag, Rope Drop, Mindestgröße und
+                  wie gut die Prognose für diese Bahn trifft.
+                </>
+              ),
+            },
+            {
+              icon: Scale,
+              title: 'Parks vergleichen',
+              body: (
+                <>
+                  Unter <A href="/compare">Parks vergleichen</A> stehen zwei bis vier Parks
+                  nebeneinander, mit ihrer Wartezeit im Schnitt, der längsten Warteschlange und dem
+                  ruhigsten Wochentag.
                 </>
               ),
             },
             {
               icon: Activity,
-              title: 'Blog',
+              title: 'Blog und News',
               body: (
                 <>
                   Längere Texte zu Parks und Bahnen, darunter{' '}
                   <A href="/blog/category/guides">Parkführer</A> mit Tickets, Reihenfolge und
-                  Anreise.
+                  Anreise. Unter <A href="/news">News</A> stehen kurze Meldungen aus den Parks.
                 </>
               ),
             },
@@ -870,8 +922,46 @@ export function ContentDE() {
       </SectionShell>
 
       <SectionShell
-        id="faq"
+        id="parky"
         index="10"
+        kicker="Der Assistent"
+        title="Frag Parky"
+        icon={MessageCircle}
+      >
+        <ParkyShot locale="de">
+          <P>
+            Parky ist der Chat-Assistent von park.fan und wohnt im runden Knopf unten rechts. Auf
+            der Startseite steht er auf einem breiten Bildschirm gleich unter der Überschrift und
+            hüpft erst beim Scrollen in seine Ecke.
+          </P>
+          <P>
+            Frag ihn, wie lang die Warteschlangen gerade sind, was für heute oder die nächsten
+            Wochen vorhergesagt ist, an welchen Tagen die Warteschlangen in einem Park kurz sind,
+            wie hoch und schnell eine Achterbahn ist oder was in unseren Beiträgen steht. Für jede
+            Antwort schaut er in denselben Daten nach, die auf den Seiten stehen.
+          </P>
+          <P>
+            Parks und Bahnen zeigt er als Karten mit ihren Zahlen. Wenn du ihn darum bittest, bringt
+            er dich zur passenden Seite und legt im Tagesplaner einen Tag an, trägt Bahnen ein oder
+            sortiert sie. Deinen Standort sieht er nur, wenn du im Chat auf „Standort teilen“
+            drückst, und er behält ihn nicht.
+          </P>
+          <P>
+            Die Antworten schreibt ein Sprachmodell, und das verrechnet sich manchmal. Die Zahlen
+            auf den Karten im Chat kommen direkt von park.fan; was Parky dazu schreibt, prüfst du im
+            Zweifel auf der Seite der Bahn. Er bleibt bei Parks und Bahnen, sucht nicht im Internet,
+            und nach drei Fragen in 30 Sekunden braucht er eine kurze Pause.
+          </P>
+          <P>
+            Deine Fragen speichern wir ohne IP-Adresse und löschen sie nach 90 Tagen. Mehr über
+            Parky, mit Beispielfragen, steht auf <A href="/parky">seiner eigenen Seite</A>.
+          </P>
+        </ParkyShot>
+      </SectionShell>
+
+      <SectionShell
+        id="faq"
+        index="11"
         kicker="Nachgefragt"
         title="Häufige Fragen"
         icon={HelpCircle}
@@ -882,7 +972,7 @@ export function ContentDE() {
       <LandingNextSteps
         kicker="Und jetzt?"
         title="Weiterlesen"
-        body="park.fan ist kostenlos, ohne Konto und ohne Werbung. Die Parkseite zeigt alles mit den Zahlen von heute, Fancast rechnet vor, wie gut die Prognosen der letzten 30 Tage getroffen haben, und die beste Reisezeit vergleicht mehrere Parks."
+        body="park.fan ist kostenlos, ohne Konto und ohne Werbung. Die Parkseite zeigt alles mit den Zahlen von heute, Fancast rechnet vor, wie gut die Prognosen der letzten sieben Tage getroffen haben, und die beste Reisezeit vergleicht mehrere Parks."
         destinations={[
           { href: PARK, label: 'Beispiel-Parkseite ansehen', icon: Activity, prefetch: false },
           { href: bestTime, label: 'Beste Reisezeit', icon: CalendarDays, prefetch: false },

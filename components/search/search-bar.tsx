@@ -11,8 +11,8 @@ import {
   HERO_SEARCH_ICON_CLASS,
   HERO_SEARCH_INPUT_CLASS,
 } from '@/components/search/hero-search-classes';
-import { nothingFocused } from '@/lib/utils/page-focus';
-import { useIsApplePlatform } from '@/lib/hooks/use-mounted';
+import { isPageTypedKey, isSearchShortcut, searchShortcutTarget } from '@/lib/utils/page-focus';
+import { SearchShortcutKey } from '@/components/search/search-shortcut-key';
 import { useSearchSession } from '@/lib/hooks/use-search-session';
 import type { SearchSurface } from '@/lib/analytics/site-analytics';
 import type { SearchSession } from '@/lib/analytics/search-session';
@@ -40,7 +40,7 @@ interface SearchCommandProps {
   size?: 'sm' | 'lg';
   /**
    * The surface this trigger opens the palette as, which every search event of that opening
-   * carries. ⌘K is always `keyboard`.
+   * carries. The `/` shortcut is always `keyboard`.
    */
   searchOpenSource?: SearchSurface;
   /**
@@ -94,7 +94,6 @@ export function SearchCommand({
   // Query lives here (not in the lazy dialog) so opening can seed it (autoFocusOnType's first
   // keystroke) and closing can clear it — no prop→state sync needed inside the dialog.
   const [query, setQuery] = useState(openOnMount ?? '');
-  const isMac = useIsApplePlatform();
   const fieldRef = useRef<HTMLButtonElement>(null);
   const ownSession = useSearchSession(searchOpenSource);
   const session = sharedSession ?? ownSession;
@@ -122,13 +121,15 @@ export function SearchCommand({
   });
   useEffect(() => onMountOpened(), []);
 
-  // Cmd+K / Ctrl+K toggles the palette (global only).
+  // `/` opens the palette (global only), at the page itself: in the palette's field or any other
+  // it is a character. Not ⌘K/Ctrl K, which the browser keeps for its own search field. A page's
+  // own search field on screen (the homepage hero's) takes the focus instead.
   const onShortcut = useEffectEvent((e: KeyboardEvent) => {
-    if (e.key === 'k' && (e.metaKey || e.ctrlKey)) {
-      e.preventDefault();
-      if (open) handleOpenChange(false);
-      else openSearch('keyboard');
-    }
+    if (open || !isSearchShortcut(e)) return;
+    e.preventDefault();
+    const field = searchShortcutTarget();
+    if (field) field.focus({ preventScroll: true });
+    else openSearch('keyboard');
   });
   useEffect(() => {
     if (!isGlobal) return;
@@ -137,15 +138,12 @@ export function SearchCommand({
     return () => document.removeEventListener('keydown', down);
   }, [isGlobal]);
 
-  // Auto-focus on type: a single character anywhere opens the palette seeded with that key —
-  // with the hero search's guard (`hero-inline-search-panel.tsx`): only when nothing is focused,
-  // and never for Space, which scrolls the page and activates a focused control. It is this
-  // trigger's shortcut, so it opens as this trigger's surface, not as ⌘K.
+  // Auto-focus on type: a single character anywhere opens the palette seeded with that key, with
+  // the page-wide guard (`isPageTypedKey`): only when nothing is focused, never for Space, which
+  // scrolls the page, and never for `/`, the search shortcut. It is this trigger's shortcut, so it
+  // opens as this trigger's surface, not as `keyboard`.
   const onTypeAnywhere = useEffectEvent((e: KeyboardEvent) => {
-    if (open) return;
-    if (!nothingFocused(document.activeElement)) return;
-    if (e.metaKey || e.ctrlKey || e.altKey) return;
-    if (e.key.length !== 1 || e.key === ' ') return;
+    if (open || !isPageTypedKey(e)) return;
     openSearch(searchOpenSource, e.key);
   });
   useEffect(() => {
@@ -208,6 +206,7 @@ export function SearchCommand({
       {/* Trigger — the only part in the initial bundle; opening lazy-loads <SearchDialog>. */}
       {trigger === 'button' && (
         <Button
+          aria-keyshortcuts="/"
           variant="outline"
           /* `sm` is the header bar's icon, where the field does not fit: below a 360 px bar and
              between 1024 and 1279, where the nav row takes the width. No taller than the burger;
@@ -228,9 +227,7 @@ export function SearchCommand({
           {/* Only on the wide trigger — there is no room for a shortcut hint in a 36 px square,
               and centred rather than `top-2` because that trigger now comes in two heights. */}
           {size !== 'sm' && (
-            <kbd className="bg-primary/40 text-primary border-primary/40 pointer-events-none absolute top-1/2 right-2 hidden h-5 -translate-y-1/2 items-center gap-1 rounded border px-1.5 font-mono text-xs font-medium opacity-100 shadow-sm select-none md:flex">
-              {isMac ? <span className="text-xs">⌘</span> : 'Ctrl'}K
-            </kbd>
+            <SearchShortcutKey className="bg-primary/40 border-primary/40 absolute top-1/2 right-2 hidden -translate-y-1/2 text-xs md:flex" />
           )}
         </Button>
       )}
@@ -239,6 +236,7 @@ export function SearchCommand({
         // A button, so a keyboard and a screen reader reach it too; it looks like the text box it
         // opens, and the header shows it on a phone as well as on a wide bar.
         <button
+          aria-keyshortcuts="/"
           type="button"
           aria-haspopup="dialog"
           className="group focus-visible:ring-ring/50 relative block w-full cursor-pointer rounded-lg text-left outline-none focus-visible:ring-[3px]"
@@ -252,16 +250,7 @@ export function SearchCommand({
               {placeholder || t('searchPlaceholderLong')}
             </span>
           </span>
-          <kbd className="bg-primary/20 text-primary border-primary/20 pointer-events-none absolute top-1/2 right-1.5 hidden h-5 -translate-y-1/2 items-center gap-0.5 rounded border px-1.5 font-mono text-[11px] font-medium shadow-sm md:flex">
-            {isMac ? (
-              <>
-                <span className="translate-y-[1px] text-sm">⌘</span>
-                <span>K</span>
-              </>
-            ) : (
-              <>Ctrl K</>
-            )}
-          </kbd>
+          <SearchShortcutKey className="absolute top-1/2 right-1.5 hidden -translate-y-1/2 md:flex" />
         </button>
       )}
 
@@ -294,6 +283,7 @@ export function SearchCommand({
         // A button that looks like the text box it opens, like the hero's on a phone: the palette
         // brings its own field, so this one never takes a keystroke.
         <button
+          aria-keyshortcuts="/"
           ref={fieldRef}
           type="button"
           aria-haspopup="dialog"
@@ -310,9 +300,7 @@ export function SearchCommand({
           <span className="text-muted-foreground min-w-0 flex-1 truncate text-base md:text-sm">
             {placeholder || t('searchPlaceholderLong')}
           </span>
-          <kbd className="bg-primary/20 text-primary border-primary/20 pointer-events-none hidden h-5 shrink-0 items-center gap-0.5 rounded border px-1.5 font-mono text-[11px] font-medium shadow-sm md:flex">
-            {isMac ? '⌘' : 'Ctrl'} K
-          </kbd>
+          <SearchShortcutKey className="hidden shrink-0 md:flex" />
         </button>
       )}
 

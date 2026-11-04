@@ -1,5 +1,6 @@
 import type {
   DataQualityReport,
+  HostCpu,
   QueueEntry,
   QueueStatusResponse,
   SystemHealthResponse,
@@ -34,8 +35,20 @@ export interface Threshold {
 
 /** CPU load in percent of all cores. */
 export const CPU_LOAD_PCT: Threshold = { warn: 60, bad: 80 };
-/** A chip's temperature in °C: the CPU package, any hwmon sensor, the GPU. */
+/** A chip's temperature in °C where nothing better is known: the GPU and the sensors beside the CPU. */
 export const CHIP_TEMP_C: Threshold = { warn: 70, bad: 85 };
+/**
+ * The CPU's temperature in °C while the API sends no limits: 15 and 5 °C under an assumed TjMax of
+ * 100 °C, the API's own rule for a sensor that reports none.
+ */
+export const CPU_TEMP_C: Threshold = { warn: 85, bad: 95 };
+
+/** The limits the CPU temperature is judged by: the chip's own from the API, else `CPU_TEMP_C`. */
+export function cpuTempThreshold(cpu: HostCpu): Threshold {
+  const limits = cpu.temperatureLimits;
+  return limits ? { warn: limits.warnC, bad: limits.badC } : CPU_TEMP_C;
+}
+
 /** Memory and disk use in percent. */
 export const STORAGE_PCT: Threshold = { warn: 85, bad: 95 };
 /** Postgres connections in percent of the maximum. */
@@ -270,7 +283,7 @@ function serverArea(system: SystemHealthResponse): HealthArea {
     checks.push({
       id: 'temperature',
       label: 'CPU-Temperatur',
-      tone: levelAbove(host.cpu.temperatureC, CHIP_TEMP_C),
+      tone: levelAbove(host.cpu.temperatureC, cpuTempThreshold(host.cpu)),
       value: `${integer.format(host.cpu.temperatureC)} °C`,
     });
   }

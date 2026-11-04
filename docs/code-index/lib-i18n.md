@@ -12,6 +12,10 @@ Country and continent names that fall back to the prettified slug and log the mi
 - `translateCountry` _function_: Translate a country by its slug with logging
 - `translateContinent` _function_: Translate a continent by its slug with logging
 
+### [`hreflang.ts`](../../lib/i18n/hreflang.ts)
+
+- `hreflangPath` _function_: The path of this page in `locale` as its own hreflang link names it, or null when the page has none.
+
 ### [`language-banner-messages.ts`](../../lib/i18n/language-banner-messages.ts)
 
 - `LANGUAGE_BANNER_MESSAGES` _const_

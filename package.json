@@ -1,6 +1,6 @@
 {
   "name": "park.fan",
-  "version": "2.18.0",
+  "version": "2.19.0",
   "private": true,
   "type": "module",
   "packageManager": "pnpm@11.16.0",
@@ -192,7 +192,6 @@
     "check:header-reach": "node scripts/check-header-reach.mjs",
     "check:landing-pages": "node scripts/check-landing-pages.mjs",
     "check:semantic-html": "node scripts/check-semantic-html.mjs",
-    "check:hero-search-rest": "node scripts/check-hero-search-rest.mjs",
     "check:admin-login-form": "node scripts/check-admin-login-form.mjs",
     "probe:isr": "node scripts/isr-cache-probe.mjs",
     "crawl:translations": "node scripts/crawl-translations.cjs",

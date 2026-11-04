@@ -109,7 +109,7 @@ homepage keeps the icon up to 1279, since its hero is the search field. The fiel
 the lockup and the actions leave and can never push the row over; from 1280 it is the fixed `w-64`.
 Its left margin is `ml-4`, not the `mr-2` of its right, because on a hero page the corner logo sits
 at `left-6`, 8 px further in than the row's `px-4`. Its placeholder is the short word
-(`searchPlaceholderShort`); the padding for the ⌘K hint and the wider icon inset apply from `md`,
+(`searchPlaceholderShort`); the padding for the `/` hint and the wider icon inset apply from `md`,
 where the hint is drawn.
 
 Why: in the first day and a half of the site statistic (28 and 29 October 2026, 912 page views)

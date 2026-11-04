@@ -72,7 +72,7 @@ counts per day, like every other event.
 
 ## In the admin
 
-`/admin/traffic/planner` („Tagesplaner", in the sidebar and in ⌘K) reads
+`/admin/traffic/planner` („Tagesplaner", in the sidebar and in the `/` palette) reads
 `GET /v1/admin/analytics/planner` (`PlannerOverview` in `lib/api/admin-site-analytics.ts`) under the
 same window, language, filters and data-centre switch as the other traffic pages:
 

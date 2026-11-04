@@ -14,7 +14,7 @@ import {
 import { canRideAtHeight, riderHeightStops } from '@/lib/utils/rider-height';
 import { coveredOfferReady, isCovered } from '@/lib/utils/covered-rides';
 import type { ClosedRideSearchItem } from '@/components/parks/closed-ride-matches';
-import { nothingFocused } from '@/lib/utils/page-focus';
+import { isPageTypedKey, nothingFocused } from '@/lib/utils/page-focus';
 
 /**
  * Shortest pattern Fuse can match, and therefore the shortest query worth running.
@@ -177,10 +177,7 @@ export function useAttractionFilter({
   useEffect(() => {
     const handleGlobalKeyDown = (e: KeyboardEvent) => {
       if (activeTab !== 'attractions') return;
-      if (!nothingFocused(document.activeElement)) return;
-      if (e.metaKey || e.ctrlKey || e.altKey) return;
-      // Single printable characters only, and Space stays with the page.
-      if (e.key.length !== 1 || e.key === ' ') return;
+      if (!isPageTypedKey(e)) return;
       inputRef.current?.focus();
     };
 

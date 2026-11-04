@@ -114,7 +114,9 @@
       "intro": "park.fan muestra los tiempos de espera de <strong>{parks} parques</strong> y <strong>{attractions} atracciones</strong>, consultados de nuevo cada cinco minutos. Para los próximos días verás también cuánta gente se espera.",
       "introShort": "Esperas en directo de <strong>{parks} parques</strong>.",
       "openNow": "{count, plural, =1 {1 parque abierto ahora} other {# parques abiertos ahora}}",
-      "searchExamples": "PortAventura, Taron, Efteling …"
+      "searchExamples": "PortAventura, Taron, Efteling …",
+      "parkyLine": "¡Vamos a ver dónde hacemos cola hoy!",
+      "parkyCta": "Haz clic en mí y te ayudo."
     },
     "sections": {
       "featuredParks": "Parques populares",
@@ -161,12 +163,6 @@
     }
   },
   "homeStory": {
-    "nearby": {
-      "kicker": "Tu ubicación",
-      "title": "Parques cerca de ti",
-      "lead": "Con tu ubicación, park.fan te muestra los parques más cercanos, primero los que están abiertos, y cuánta gente hay en cada uno ahora mismo.",
-      "allParks": "Descubrir todos los parques"
-    },
     "favorites": {
       "kicker": "Favoritos",
       "title": "Tus parques y atracciones",
@@ -1518,10 +1514,14 @@
       "demoNoLocation": "Sin tu ubicación te quedas fijo en un punto del parque.",
       "dialGroup": "Brújula, norte arriba"
     },
+    "heroRail": {
+      "seeWaits": "Ver tiempos de espera"
+    },
     "shortWaits": {
-      "title": "Colas cortas ahora",
-      "hint": "Atracciones cercanas cuya cola es ahora mucho más corta de lo normal.",
-      "usually": "normalmente {minutes} {unit}"
+      "title": "Colas cortas cerca de ti",
+      "usually": "normalmente {minutes} {unit}",
+      "now": "ahora {minutes} {unit}",
+      "shorter": "{minutes} {unit} menos"
     }
   },
   "location": {
@@ -1669,9 +1669,7 @@
     },
     "avgWait": "{minutes} min de media",
     "avgWaitShort": "Ø {minutes} min",
-    "heroHint": "Empieza a escribir: parques, atracciones, espectáculos y restaurantes",
-    "newestNews": "Noticia más reciente",
-    "newestGuide": "Guía más reciente"
+    "heroHint": "Empieza a escribir: parques, atracciones, espectáculos y restaurantes"
   },
   "searchPage": {
     "types": {
@@ -1809,7 +1807,7 @@
         "whichParksQ": "¿Qué parques temáticos hay en park.fan?",
         "whichParksA": "Más de 200 en todo el mundo, entre ellos Phantasialand, Europa-Park, Disneyland Paris, Efteling, Walibi Belgium, Toverland y Bobbejaanland. La lista completa con tiempos de espera en vivo está en la página general de parques.",
         "liveDataQ": "¿Los tiempos de espera en park.fan son en vivo y en tiempo real?",
-        "liveDataA": "Sí. Donde un parque publica sus tiempos de espera, los consultamos cada cinco minutos desde tres fuentes públicas a la vez: ThemeParks.wiki, Wartezeiten.app y Queue-Times.com. Si las fuentes discrepan, decide la mayoría, después la mediana y después la media. El resultado se redondea a cinco minutos, porque así los publican los propios parques.",
+        "liveDataA": "Sí. Donde un parque publica sus tiempos de espera, los consultamos cada cinco minutos en las fuentes que lo incluyen, hasta tres: ThemeParks.wiki, Wartezeiten.app y Queue-Times.com. ThemeParks.wiki es la fuente principal; las otras dos añaden las atracciones que allí faltan y corrigen un estado «cerrado» desactualizado. El resultado se redondea a cinco minutos, porque así los publican los propios parques.",
         "freeQ": "¿Es gratis usar park.fan?",
         "freeA": "Sí. Los tiempos de espera en vivo, los horarios de apertura, los espectáculos, los restaurantes y el calendario de afluencia se ven sin cuenta y sin muro de pago. No hay ninguna suscripción que dé acceso a más datos.",
         "mobileQ": "¿Funciona park.fan en teléfonos inteligentes?",
@@ -2968,6 +2966,8 @@
     "chipNavigated": "Página abierta",
     "chipPlanned": "En tu planificador",
     "chipOptimized": "Ordenando tu día",
+    "chipLanguage": "Idioma cambiado",
+    "chipFeedback": "Enviado al equipo",
     "locationAsk": "Parky quiere tu ubicación para encontrar parques y atracciones cerca de ti.",
     "locationShare": "Compartir ubicación",
     "locationNo": "Mejor no",

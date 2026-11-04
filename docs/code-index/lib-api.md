@@ -27,7 +27,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`admin.ts`](../../lib/api/admin.ts)
 
-- Types: `CpuLoad`, `HostCpu`, `HostMemory`, `HostDisk`, `HostSwap`, `HostSensor`, `HostMetrics`, `FreshnessMetrics`, `SiteAnalyticsHealth`, `PostgresMetrics`, `RedisMetrics`, `TftTrainingProgress`, `MlTrainingStatus`, `MlActiveModel`, `MlTftHealth`, `CatBoostMetrics`, `MlTftActiveModel`, `TftMetrics`, `MlMetrics`, `GpuDevice`, `GpuMetrics`, `SystemHealthResponse`, `QueueEntry`, `QueueStatusResponse`, `SilencedCluster`, `AbsenceRetiredUnreviewed`, `FailingJob`, `DataQualityReport`
+- Types: `CpuLoad`, `CpuTemperatureLimits`, `HostCpu`, `HostMemory`, `HostDisk`, `HostSwap`, `HostSensor`, `HostMetrics`, `FreshnessMetrics`, `SiteAnalyticsHealth`, `PostgresMetrics`, `RedisMetrics`, `TftTrainingProgress`, `MlTrainingStatus`, `MlActiveModel`, `MlTftHealth`, `CatBoostMetrics`, `MlTftActiveModel`, `TftMetrics`, `MlMetrics`, `GpuDevice`, `GpuMetrics`, `SystemHealthResponse`, `QueueEntry`, `QueueStatusResponse`, `SilencedCluster`, `AbsenceRetiredUnreviewed`, `FailingJob`, `DataQualityReport`
 
 ### [`analytics.ts`](../../lib/api/analytics.ts)
 

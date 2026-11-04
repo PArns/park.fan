@@ -203,12 +203,9 @@ function ParkAnalyticsRow({
 export function InParkView({
   data,
   className,
-  nested = false,
 }: {
   data: NearbyAttractionsData;
   className?: string;
-  /** See `NearbyParksCard`: on the homepage `NearbyChapter` holds the chapter's `<h2>`. */
-  nested?: boolean;
 }) {
   const t = useTranslations('nearby');
   const tStatus = useTranslations('parks.status');
@@ -261,20 +258,13 @@ export function InParkView({
       )}
 
       <div className="relative z-10 container mx-auto px-4">
-        {nested ? (
-          <h3 className="mb-6 flex items-center gap-2 text-xl font-bold">
-            <MapPin className="text-park-primary h-5 w-5" />
-            {t('youAreInPark', { parkName: stripNewPrefix(park.name) })}
-          </h3>
-        ) : (
-          // A chapter of its own under editorial pages, and `frosted` because it stands over the
-          // park's photo, where a bare watermark is unreadable — the park page's reason.
-          <ChapterHeading
-            frosted
-            icon={MapPin}
-            title={t('youAreInPark', { parkName: stripNewPrefix(park.name) })}
-          />
-        )}
+        {/* A chapter of its own under editorial pages, and `frosted` because it stands over the
+            park's photo, where a bare watermark is unreadable — the park page's reason. */}
+        <ChapterHeading
+          frosted
+          icon={MapPin}
+          title={t('youAreInPark', { parkName: stripNewPrefix(park.name) })}
+        />
         <div className="space-y-4">
           {parkPageUrl && (
             <div className="mb-4">
