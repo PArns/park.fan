@@ -369,11 +369,14 @@
   /*
    * Resting height of the whole left plate from `md` up, a streaming fix: the plate's later
    * children arrive in a later HTML chunk, and a half-parsed plate painted short and then grew.
-   * 811px is the settled height in all six locales from 768 px up (fr from 1440 px is 860), not a
-   * padded one, so it changes no finished layout. It includes --hero-search-rest-h: re-measure
-   * both together. See docs/rules/a-streamed-section-owes-the-page-its-height.md.
+   * 808px is the settled height in all six locales from 768 px up; the wide value holds where the
+   * page shows the map panel (`@container/page` from 1280 px), whose header carries the open-parks
+   * badge the plate shows below that (fr from 1440 px is 826). Not padded, so neither changes a
+   * finished layout. Both include --hero-search-rest-h: re-measure them together. See
+   * docs/rules/a-streamed-section-owes-the-page-its-height.md.
    */
-  --hero-plate-min-h: 811px;
+  --hero-plate-min-h: 808px;
+  --hero-plate-min-h-wide: 778px;
 }
 
 @media (width >= 48rem) {

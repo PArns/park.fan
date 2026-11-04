@@ -219,10 +219,12 @@ day-cached and listed in `next.config.ts` with the handler's own value (see
 [API budget](../architecture/api-budget.md#ride-positions-for-the-in-park-compass-88-kb--07-kb)). The
 face and the panel's glass share one 256 px rendition of the park photo, 2.9 KB as AVIF.
 
-## The hero pill
+## The hero link
 
-While the compass is on the homepage, the hero's badge row carries „Zum Kompass" in the news chip's
-slot (30 px, a 44 px target); it scrolls the section under the sticky header and focuses it. The hero
+While the compass is on the homepage, the heading row of the hero's search list carries „Zum
+Kompass ↓" where its link to more stands (`HeroBrowseHeader`; the row is one height in every state,
+44 px on a phone, so the link appearing moves nothing). It scrolls the section under the sticky
+header and focuses it (`jumpToCompass`). The hero
 learns of the compass from `useCompassPresent` (`lib/home/compass-presence.ts`), set by the slot when
 the compass is actually in, not from its own nearby answer, because under `?sim=compass` the hero stays
 on the device's real position.

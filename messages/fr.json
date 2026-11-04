@@ -1672,6 +1672,7 @@
     "avgWait": "{minutes} min en moyenne",
     "avgWaitShort": "Ø {minutes} min",
     "heroHint": "Tapez pour chercher des parcs, des attractions, des spectacles et des restaurants",
+    "newestNews": "Dernière actualité",
     "newestGuide": "Dernier guide"
   },
   "searchPage": {

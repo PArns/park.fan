@@ -34,25 +34,10 @@ export const HOME_HERO_ID = 'hero';
 
 /** The two posts the hero's resting list closes with, resolved on the server. */
 export interface HeroReading {
-  /** The most read news post of the build's ranking, or the newest one when nothing was read. */
+  /** The newest news post (`listNewsByDate`). */
   news: MostReadPost | null;
   /** The newest guide, new or with new content (`listArticlesByRecency`). */
   guide: MostReadPost | null;
-  /** The news post the badge row's chip already shows, which the news pick skips. */
-  skipNewsSlug: string | null;
-  /** The news section's label in this locale (`categories.json`). */
-  newsLabel: string;
-  /**
-   * Teasers by post key, cut on the server: the guide's and those of every news post the live
-   * ranking is likely to pick, so the swap after load finds its post's teaser without a request.
-   */
+  /** The two posts' teasers by post key, cut on the server. */
   excerpts: Record<string, string>;
-}
-
-/** The first news post of a ranking that the chip above does not already show. */
-export function pickHeroNews(
-  ranking: readonly MostReadPost[],
-  skipSlug: string | null
-): MostReadPost | null {
-  return ranking.find((post) => post.slug !== skipSlug) ?? null;
 }

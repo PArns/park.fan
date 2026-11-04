@@ -2,17 +2,13 @@
 
 import { useLocale, useTranslations } from 'next-intl';
 import Image from 'next/image';
-import { ArrowDown, Compass } from 'lucide-react';
 import { useHeroPark } from '@/lib/hooks/use-hero-park';
 import { useMediaQuery } from '@/lib/hooks/use-media-query';
 import { useGlobalStats } from '@/lib/hooks/use-global-stats';
 import { useMounted } from '@/lib/hooks/use-mounted';
-import { PARK_COMPASS_ID, useCompassPresent } from '@/lib/home/compass-presence';
-import { trackSiteEvent } from '@/lib/analytics/site-analytics';
 import { getNumberFormat } from '@/lib/utils/intl-format';
 import { HeroParkActions } from '@/components/home/hero-park-actions';
 import { OpenParksBadge } from '@/components/home/open-parks-badge';
-import { LatestNewsChip, type LatestNews } from '@/components/blog/latest-news-chip';
 /** Sentence fallbacks when neither the SSR seed nor the live overlay has counts yet. */
 const FALLBACK_COUNTS = { openParks: null, parks: 200, attractions: 7000 };
 
@@ -24,78 +20,17 @@ export interface HeroInitialCounts {
 }
 
 /**
- * The open-parks badge and, beside it, the newest news post as a chip that runs to the row's end.
- * The row's own width decides the layout, never the badge's, which changes after first paint: from
- * 34 rem (the widest badge plus 15 rem of chip) it is one line that never wraps and the chip
- * truncates; below that, badge above chip. Where the page shows the world-map panel
- * (`@container/page` from 1280 px, the column's own threshold) the badge sits in that panel's
- * header instead, and the chip has the row to itself. In a park, while the compass is on the
- * page, the chip's slot holds a pill that scrolls down to it, same height, so the swap moves
- * nothing.
+ * The open-parks badge over the headline, where nothing else shows the count: not on a phone, whose
+ * row went to the search list, and not where the page shows the world-map panel (`@container/page`
+ * from 1280 px), whose header carries it. The newest news post stands in the search list's posts.
  */
-function HeroBadgeRow({
-  openParks,
-  latestNews,
-}: {
-  openParks: number | null;
-  latestNews: LatestNews | null | undefined;
-}) {
-  const compass = useCompassPresent();
+function HeroBadgeRow({ openParks }: { openParks: number | null }) {
   const tHome = useTranslations('home');
   return (
-    // Two elements because a container query styles the container's descendants, never the
-    // container itself: the outer box is measured, the inner one is laid out.
-    <div className="@container/badges w-full">
-      <div className="flex flex-col items-start gap-2 @min-[34rem]/badges:flex-row @min-[34rem]/badges:items-center">
-        {/* Not on a phone, where its row went to the search list; the map panel carries it from
-            1280 px. */}
-        <OpenParksBadge
-          label={openParks == null ? null : tHome('hero.openNow', { count: openParks })}
-          className="max-md:hidden @min-[1280px]/page:hidden"
-        />
-        {compass ? (
-          <CompassPill />
-        ) : (
-          latestNews && <LatestNewsChip news={latestNews} className="w-full" />
-        )}
-      </div>
-    </div>
-  );
-}
-
-/**
- * „Zum Kompass": scrolls to the in-park compass under the hero and hands it the focus, so a
- * keyboard or screen reader lands where the eye does. A plain fragment link underneath, which is
- * what it does without JavaScript; the smooth scroll is dropped under reduced motion.
- */
-function CompassPill() {
-  const t = useTranslations('nearby.compass');
-  const jump = (event: React.MouseEvent<HTMLAnchorElement>) => {
-    trackSiteEvent('compass_pill_clicked', {});
-    const target = document.getElementById(PARK_COMPASS_ID);
-    if (!target) return;
-    event.preventDefault();
-    const still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    target.scrollIntoView({ behavior: still ? 'auto' : 'smooth', block: 'start' });
-    target.focus({ preventScroll: true });
-  };
-  return (
-    <a
-      href={`#${PARK_COMPASS_ID}`}
-      onClick={jump}
-      data-hero-compass=""
-      // 30 px to match the chip it stands in for; the `::after` makes the target 44 px tall.
-      className="group border-primary/40 bg-primary/10 text-foreground hover:bg-primary/15 relative inline-flex h-[30px] max-w-full min-w-0 items-center gap-2 rounded-full border pr-3 pl-1 text-xs font-semibold shadow-sm transition-colors after:absolute after:inset-x-0 after:-inset-y-[7px] after:content-['']"
-    >
-      <span className="bg-primary text-primary-foreground flex size-[22px] shrink-0 items-center justify-center rounded-full">
-        <Compass className="size-3.5" aria-hidden="true" />
-      </span>
-      <span className="min-w-0 truncate">{t('heroPill')}</span>
-      <ArrowDown
-        className="text-primary size-3.5 shrink-0 transition-transform group-hover:translate-y-0.5 motion-reduce:transition-none"
-        aria-hidden="true"
-      />
-    </a>
+    <OpenParksBadge
+      label={openParks == null ? null : tHome('hero.openNow', { count: openParks })}
+      className="max-md:hidden @min-[1280px]/page:hidden"
+    />
   );
 }
 
@@ -160,12 +95,9 @@ function HeroHeadline({
  */
 export function HeroWithNearby({
   initialCounts,
-  latestNews,
   isFallback = false,
 }: {
   initialCounts: HeroInitialCounts | null;
-  /** The newest news post, for the chip in the badge row. Resolved on the server. */
-  latestNews?: LatestNews | null;
   /**
    * Set where this is the Suspense fallback of the streamed hero. Both copies are in the
    * document until the stream swaps them, so the fallback's headline is a `<p>` with the same
@@ -205,7 +137,7 @@ export function HeroWithNearby({
     // children, like the general variant, so the entrance stagger counts alike.
     return (
       <>
-        <HeroBadgeRow openParks={openParks} latestNews={latestNews} />
+        <HeroBadgeRow openParks={openParks} />
         <HeroHeadline as={headlineTag}>
           {t('heroWelcome', { parkName: variant.park.name })}
         </HeroHeadline>
@@ -216,7 +148,7 @@ export function HeroWithNearby({
 
   return (
     <>
-      <HeroBadgeRow openParks={openParks} latestNews={latestNews} />
+      <HeroBadgeRow openParks={openParks} />
       <HeroHeadline mark as={headlineTag}>
         {tHome('hero.title')}
       </HeroHeadline>

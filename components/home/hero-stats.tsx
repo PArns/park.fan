@@ -1,7 +1,6 @@
 import { getGlobalStats } from '@/lib/api/analytics';
 import { catchNonFatal } from '@/lib/api/client';
 import { HeroWithNearby, type HeroInitialCounts } from './hero-with-nearby';
-import type { LatestNews } from '@/components/blog/latest-news-chip';
 
 /**
  * Server seed for the hero's live numbers (open-parks badge and intro counts), cached as long as
@@ -9,7 +8,7 @@ import type { LatestNews } from '@/components/blog/latest-news-chip';
  * values via `useGlobalStats` after mount. Streamed inside a Suspense boundary whose fallback
  * renders the same hero without the seed, so a slow or failing stats call never blocks the hero.
  */
-export async function HeroStats({ latestNews }: { latestNews: LatestNews | null }) {
+export async function HeroStats() {
   const stats = await catchNonFatal(getGlobalStats());
   const counts: HeroInitialCounts | null = stats
     ? {
@@ -19,5 +18,5 @@ export async function HeroStats({ latestNews }: { latestNews: LatestNews | null 
       }
     : null;
 
-  return <HeroWithNearby initialCounts={counts} latestNews={latestNews} />;
+  return <HeroWithNearby initialCounts={counts} />;
 }

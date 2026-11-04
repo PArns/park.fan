@@ -6,6 +6,7 @@ import { Link } from '@/i18n/navigation';
 import { Skeleton } from '@/components/ui/skeleton';
 import { useBrowseHeading, type HeroBrowseParks } from '@/lib/hooks/use-hero-browse-parks';
 import { NEARBY_CHAPTER_ID } from '@/lib/home/hero-search';
+import { PARK_COMPASS_ID, jumpToCompass, useCompassPresent } from '@/lib/home/compass-presence';
 import { searchResultHref } from '@/lib/utils/url-utils';
 import { SEARCH_SECONDARY_TEXT_CLASS } from '@/components/search/hero-search-classes';
 import type { Locale } from '@/i18n/config';
@@ -39,21 +40,25 @@ export function HeroBrowseHeaderSkeleton() {
 /**
  * The heading row over the hero's pre-query list: what the list is („Parks in der Nähe", „Du bist
  * in …", „Beliebte Parks") and a link to more of it. Nearby parks lead to the homepage's nearby
- * chapter, a park's rides to the park's page, the popular parks to `/parks`. Outside the listbox,
- * so the link is a link and not an option.
+ * chapter, a park's rides to the park's page, the popular parks to `/parks`. While the in-park
+ * compass is under the hero, the link is „Zum Kompass" instead: the row keeps its height in every
+ * state, so the link appearing moves nothing, and the park's page is one of the park block's
+ * tiles. Outside the listbox, so the link is a link and not an option.
  */
 export function HeroBrowseHeader({ browse }: { browse: HeroBrowseParks }) {
   const heading = useBrowseHeading(browse);
   const tCommon = useTranslations('common');
+  const tCompass = useTranslations('nearby.compass');
+  const compass = useCompassPresent();
   const locale = useLocale() as Locale;
 
   if (browse.isPending) return <HeroBrowseHeaderSkeleton />;
 
   const park = browse.inPark ? browse.items.find((item) => item.type === 'park') : undefined;
   const parkHref = park ? searchResultHref(park, locale) : null;
-  const label = (Arrow: typeof ArrowRight) => (
+  const label = (Arrow: typeof ArrowRight, text = tCommon('viewAll')) => (
     <span className="inline-flex items-center gap-1">
-      {tCommon('viewAll')}
+      {text}
       <Arrow className="size-3" aria-hidden="true" />
     </span>
   );
@@ -61,7 +66,11 @@ export function HeroBrowseHeader({ browse }: { browse: HeroBrowseParks }) {
   return (
     <div className={HEADER_CLASS}>
       <span className={LABEL_CLASS}>{heading}</span>
-      {browse.inPark ? (
+      {compass ? (
+        <a href={`#${PARK_COMPASS_ID}`} onClick={jumpToCompass} className={LINK_CLASS}>
+          {label(ArrowDown, tCompass('heroPill'))}
+        </a>
+      ) : browse.inPark ? (
         parkHref && (
           <Link href={parkHref as '/parks'} prefetch={false} className={LINK_CLASS}>
             {label(ArrowRight)}

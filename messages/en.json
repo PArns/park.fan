@@ -1672,6 +1672,7 @@
     "avgWait": "{minutes} min avg",
     "avgWaitShort": "Ø {minutes} min",
     "heroHint": "Start typing to search parks, attractions, shows and restaurants",
+    "newestNews": "Latest news",
     "newestGuide": "Latest guide"
   },
   "searchPage": {

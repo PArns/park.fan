@@ -1672,6 +1672,7 @@
     "avgWait": "{minutes} min de media",
     "avgWaitShort": "Ø {minutes} min",
     "heroHint": "Empieza a escribir: parques, atracciones, espectáculos y restaurantes",
+    "newestNews": "Noticia más reciente",
     "newestGuide": "Guía más reciente"
   },
   "searchPage": {

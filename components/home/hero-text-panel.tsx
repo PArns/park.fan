@@ -25,7 +25,7 @@ export function HeroTextPanel({ children, className, ...rest }: React.ComponentP
         // …but a reserved MINIMUM from md up, which is where the search dropdown's resting list
         // starts occupying the flow. It stops the browser painting a short plate while the rest
         // of its markup is still streaming in. See --hero-plate-min-h for the measurements.
-        'md:min-h-[var(--hero-plate-min-h)]',
+        'md:min-h-[var(--hero-plate-min-h)] @min-[1280px]/page:min-h-[var(--hero-plate-min-h-wide)]',
         className
       )}
     >

@@ -14,8 +14,6 @@ import { heroBlurDataUrl } from '@/lib/media/hero-lqip';
 import { getMediaAltBySrc } from '@/lib/media/text';
 import { HOME_HERO_ID } from '@/lib/home/hero-search';
 import { getHeroReading } from '@/lib/home/hero-reading';
-import { getNewsMenu } from '@/lib/navigation/news-menu';
-import { latestNewsFrom } from '@/components/blog/latest-news-chip';
 
 import { Flame, Star } from 'lucide-react';
 import { HeroBackground } from '@/components/layout/hero-background';
@@ -151,10 +149,6 @@ export default async function HomePage({ params }: HomePageProps) {
   const heroImage = pickHeroImage(HERO_TTL_MS);
   const randomHeroImage = heroImage?.src;
   const heroMeta = heroImage?.meta ?? null;
-  // The newest news post for the chip in the hero's badge row, out of the same news menu the
-  // header draws its chip from. The manifest, read synchronously, so the chip is in the static
-  // shell and in the fallback alike.
-  const latestNews = latestNewsFrom(getNewsMenu(locale as Locale));
 
   return (
     <RouteMessages route="/">
@@ -200,17 +194,13 @@ export default async function HomePage({ params }: HomePageProps) {
                 leave the map its full column and the text a sliver. */}
               <div className="grid grid-cols-1 items-start gap-10 @min-[1280px]/page:grid-cols-[minmax(0,1fr)_minmax(0,34rem)] @min-[1536px]/page:grid-cols-[minmax(0,1fr)_minmax(0,40rem)] @min-[1536px]/page:gap-14">
                 <HeroTextPanel className="hero-in-stagger">
-                  <Suspense
-                    fallback={
-                      <HeroWithNearby initialCounts={null} latestNews={latestNews} isFallback />
-                    }
-                  >
-                    <HeroStats latestNews={latestNews} />
+                  <Suspense fallback={<HeroWithNearby initialCounts={null} isFallback />}>
+                    <HeroStats />
                   </Suspense>
                   <HeroInlineSearch
                     placeholder={tHome('hero.searchExamples')}
                     label={tHome('hero.searchPlaceholder')}
-                    reading={getHeroReading(locale as Locale, latestNews)}
+                    reading={getHeroReading(locale as Locale)}
                     className="mt-5"
                   />
                 </HeroTextPanel>

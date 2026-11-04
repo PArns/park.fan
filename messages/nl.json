@@ -1672,6 +1672,7 @@
     "avgWait": "gem. {minutes} min",
     "avgWaitShort": "Ø {minutes} min",
     "heroHint": "Begin te typen, we zoeken parken, attracties, shows en restaurants",
+    "newestNews": "Laatste nieuws",
     "newestGuide": "Nieuwste gids"
   },
   "searchPage": {
