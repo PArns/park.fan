@@ -364,7 +364,7 @@
  * (`pnpm check:hero-search-rest`).
  */
 :root {
-  --hero-search-rest-h: 375px;
+  --hero-search-rest-h: 327px;
 
   /*
    * Resting height of the whole left plate from `md` up, a streaming fix: the plate's later

@@ -140,12 +140,12 @@ clicked:
 
 |                        | Below `md` (`HERO_REST_ROWS_PHONE`)         | From `md` (`HERO_REST_ROWS_DESKTOP`)        |
 | ---------------------- | ------------------------------------------- | ------------------------------------------- |
-| Rows                   | 5 nearby parks, then the two posts          | 4 nearby parks, then the two posts          |
+| Rows                   | 4 nearby parks, then the two posts          | 4 nearby parks, then the two posts          |
 | A park row             | name, then `[Geöffnet] [Ø 15 Min.] 16.3 km` | name and status, then place, wait, distance |
 | Footer                 | none                                        | the hint („Tippe los, wir suchen …")        |
 | Heading row            | 44 px, the link's tap target                | 32 px                                       |
 | Row height             | 48 px (`HERO_PHONE_ROW_CLASS`), posts 44    | 60 px (`HERO_ROW_CLASS`), posts 100         |
-| Reserved under the box | 375 px, exact in CSS                        | 428 px, the panel measures and replaces it  |
+| Reserved under the box | 327 px, exact in CSS                        | 428 px, the panel measures and replaces it  |
 
 - **A phone gets the room the hero gave up**, and the plate still ends inside a 360 × 740 screen
   (with its bars a phone browser shows about 750 px). Below `md` the plate sits 12 px under the
@@ -159,15 +159,19 @@ clicked:
   instead. The headline opens the plate, 16 px under its edge like the text beside it: its top
   margin is the gap under the open-parks badge, and goes wherever the badge does not show (below
   `md` and from a 1280 px page). Measured with nearby parks whose rows all carry their status pill:
-  the plate runs from 60 to 639 px on 390 × 844 and on 360 × 740 in every language but French at 360
-  (672). With the news chip over the headline it ended at 685 and 718, and two rows with the pills
+  the plate runs from 60 to 591 px on 390 × 844 and on 360 × 740 in every language but French at 360
+  (624). The phone lists four parks like the desktop, so both show the same ones; with five and
+  the headline under the badge's gap it ended at 639 and 672, with the news chip over the headline
+  at 685 and 718, and two rows with the pills
   and the full intro at 712 and 738.
 - **A phone row puts the name on a line of its own**: the status and the wait follow as 18 px pills
   (`ParkStatusBadge`, `WaitBadge`, `avgWaitShort`) with the distance; a ride shows its own wait, a
   popular park its place. With the badges beside the name, „Movie Park G…" and „Brühl, Deu…" were
   cut at 360 px; now no park name in the list is.
-- **The two posts on a phone** are rows of a kicker and a one-line title under an icon for the kind,
-  from the same `useHeroReadingRows` as the desktop's pair.
+- **The two posts on a phone** are rows of the post's cover, a kicker and a one-line title, from the
+  same `useHeroReadingRows` as the desktop's pair. The cover (`HeroPostCover`,
+  `components/search/hero-post-cover.tsx`, 36 px square on a phone, 64 × 40 from `md`) stands in
+  the park rows' thumbnail column, the brand fallback where a post has no photo.
 - **Four parks and two posts from `md`** because they take the room the two pill rows and their gap
   left: the plate is 762 px at 1440 px and ends at 842 px in a 1440 × 900 window. The park rows are 60 px so the posts can carry two lines of their teaser.
 - **A shut park says when it opens**: before today's opening its status pill reads „Öffnet um
@@ -221,7 +225,8 @@ clicked:
 - **In a park** the rows are the park's rides only (`heroBrowseRows`): the park block already leads
   to the park. The palette lists the park too.
 - **In a park or next to one, on a phone**, the park block (`HeroParkActions`, below) sits in the
-  list after two rows, in the room the other three rows and the posts had, and its park link reads
+  list after one row (`HERO_PARK_ROWS_PHONE`), in the room the other three rows and the posts had:
+  the block is 232 px, three rows and the posts' box are 233. Its park link reads
   the park's name. Nothing above the field changes: the headline and the one-line intro stay, so the
   field and the list never move when the nearby answer arrives. The block arrives with the answer
   that settles the list, so it replaces the skeleton rather than pushing anything. Measured on the
@@ -350,8 +355,8 @@ runs each at 4× CPU / 1.6 Mbps against `pnpm build && pnpm start`.
   `next/image` or cmdk, so the shell pulls in neither) with the rows' fixed heights; the footer hint
   is a static string; the panel does not measure a resting height while its list is pending.
   `pnpm check:hero-search-rest` records the frame's height in every state it passes (`data-state`)
-  on a desktop and a phone in six locales: 485 / 485 / 485 px with 428 px reserved, and
-  424 / 424 / 424 px with 375 px reserved.
+  on a desktop and a phone in six locales: 481 / 481 / 481 px with 424 px needed, and
+  376 / 376 / 376 px with 327 px reserved.
 - **The photo resolves out of itself**: a shared brand gradient under every photo changed 59 % of the
   hero box when the rendition landed, against 31 % for the photo's own preview (72 % vs 41 % on a
   second photo). The previews (~110 bytes each) are generated by `generate:media` into

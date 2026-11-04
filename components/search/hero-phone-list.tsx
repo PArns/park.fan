@@ -1,7 +1,6 @@
 'use client';
 
 import { useLocale, useTranslations } from 'next-intl';
-import { Megaphone, Newspaper } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import { useMounted } from '@/lib/hooks/use-mounted';
 import {
@@ -25,6 +24,7 @@ import {
 } from '@/components/search/search-result-row-body';
 import { ParkStatusBadge } from '@/components/parks/park-status-badge';
 import { HeroPhoneSkeleton } from '@/components/search/search-skeleton-list';
+import { HeroPostCover } from '@/components/search/hero-post-cover';
 import { HeroBrowseHeader, HeroBrowseHeaderSkeleton } from '@/components/search/hero-browse-header';
 import { HeroSearchFrame } from '@/components/search/hero-search-field';
 import {
@@ -122,7 +122,10 @@ function PhoneRow({
   );
 }
 
-/** The two posts on the phone: an icon for the kind, the kicker, and the title on one line. */
+/**
+ * The two posts on the phone: the post's cover in the park rows' thumbnail column, the kicker, and
+ * the title on one line.
+ */
 function PhoneReading({ reading, session }: { reading: HeroReading; session: SearchSession }) {
   const rows = useHeroReadingRows(reading);
 
@@ -133,7 +136,6 @@ function PhoneReading({ reading, session }: { reading: HeroReading; session: Sea
       style={{ minHeight: 'calc(2 * 2.75rem + 1px)' }}
     >
       {rows.map(({ post, item, kicker }, index) => {
-        const Icon = item === 'news' ? Megaphone : Newspaper;
         return (
           <li key={post.path}>
             <Link
@@ -142,9 +144,7 @@ function PhoneReading({ reading, session }: { reading: HeroReading; session: Sea
               onClick={() => session.browseClicked(item, index)}
               className={cn(ROW_LINK_CLASS, HERO_PHONE_READING_ROW_CLASS)}
             >
-              <span className="flex w-9 shrink-0 justify-center">
-                <Icon aria-hidden="true" className="text-primary size-4" />
-              </span>
+              <HeroPostCover post={post} width={36} height={36} className="size-9 rounded-lg" />
               <span className="min-w-0 flex-1">
                 <span className="text-primary-ink block truncate text-[10px] leading-3.5 font-semibold tracking-wide uppercase">
                   {kicker}

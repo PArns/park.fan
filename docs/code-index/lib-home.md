@@ -31,8 +31,8 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`hero-search.ts`](../../lib/home/hero-search.ts)
 
-- `HERO_REST_ROWS_PHONE` _const_: Rows of parks (or, in a park, rides) the hero's resting list holds below `md`, above the two posts.
-- `HERO_PARK_ROWS_PHONE` _const_: Rows of the phone's list for a visitor in or next to a park: the park's block (`useHeroPark`) takes the room of the other rows and of the posts, so the list keeps its height.
+- `HERO_REST_ROWS_PHONE` _const_: Rows of parks (or, in a park, rides) the hero's resting list holds below `md`, above the two posts: as many as from `md` up, so the two lists show the same parks and the plate ends well inside a 360 × 740 screen.
+- `HERO_PARK_ROWS_PHONE` _const_: Rows of the phone's list for a visitor in or next to a park: the park's block (`useHeroPark`) takes the room of the other rows and of the posts, so the list keeps its height. The block needs three rows and the posts' box, which leaves one.
 - `HERO_REST_ROWS_DESKTOP` _const_: Rows from `md` up, above the two posts. Four parks and the posts take the room the pill rows left, so the plate keeps its height.
 - `NEARBY_CHAPTER_ID` _const_: The anchor of the homepage's nearby chapter, which lists more of the visitor's nearby parks; the hero's list links to it.
 - `HOME_HERO_ID` _const_: The homepage hero's `id`: the location banner waits below `md` until it is scrolled past, since it would cover the hero's search list.

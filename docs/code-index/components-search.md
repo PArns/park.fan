@@ -22,6 +22,10 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `HeroPhoneList` _component_: The hero's resting list on a phone, attached under the field like the desktop one: the first rows of the browse list as compact links, so a tap opens the park at once, then the hero's two posts.
 
+### [`hero-post-cover.tsx`](../../components/search/hero-post-cover.tsx)
+
+- `HeroPostCover` _component_: A hero post's small cover, as both of the hero's lists draw it: the post's photo at its focal point, or the brand fallback where it has none.
+
 ### [`hero-reading-group.tsx`](../../components/search/hero-reading-group.tsx)
 
 - `HeroReadingGroup` _component_: The two posts under the hero's resting list from `md` up, side by side, as cmdk items (`useHeroReadingRows`). The phone draws the same rows as links (`HeroPhoneList`).
@@ -96,7 +100,7 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`search-skeleton-list.tsx`](../../components/search/search-skeleton-list.tsx)
 
 - `HeroReadingSkeleton` _component_: The two posts as the shell draws them, in the box `HERO_READING_GROUP_CLASS` gives them.
-- `HeroPhoneSkeleton` _component_: The hero's phone list while it waits, in the boxes of `HeroPhoneList`: rows of a thumbnail, a name and two small pills, then the two posts' rows of a kicker and a title.
+- `HeroPhoneSkeleton` _component_: The hero's phone list while it waits, in the boxes of `HeroPhoneList`: rows of a thumbnail, a name and two small pills, then the two posts' rows of a cover, a kicker and a title.
 - `SearchSkeletonList` _component_: Heading and rows, everything inside a pending dropdown above its footer. The heading's bar is inline-block inside a `text-[10px]` line box, so the line keeps the height the real heading's text gives it.
 - `HERO_SKELETON_ROW_CLASS` _const_: The hero's resting rows from `md` up: a fixed 60 px, because a row's content is 44 px for a shut park and 50 px for an open one with its wait badge, and the hero reserves the list's height; the open row's extra 6 px stay inside its padding.
 - `HERO_ROW_CLASS` _const_: The real rows' half of `HERO_SKELETON_ROW_CLASS`; the padding is the panel root's.

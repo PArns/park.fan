@@ -2,17 +2,18 @@ import type { MostReadPost } from '@/lib/blog/most-read';
 
 /**
  * Rows of parks (or, in a park, rides) the hero's resting list holds below `md`, above the two
- * posts. Five fit because the phone's plate sits higher and wider, its headline, intro and badge
- * row are shorter and the rows are compact; the plate still ends inside a 360 × 740 screen. The
- * measurements are in docs/features/homepage-hero.md#what-the-list-holds-at-rest.
+ * posts: as many as from `md` up, so the two lists show the same parks and the plate ends well
+ * inside a 360 × 740 screen. The measurements are in
+ * docs/features/homepage-hero.md#what-the-list-holds-at-rest.
  */
-export const HERO_REST_ROWS_PHONE = 5;
+export const HERO_REST_ROWS_PHONE = 4;
 
 /**
  * Rows of the phone's list for a visitor in or next to a park: the park's block (`useHeroPark`)
- * takes the room of the other rows and of the posts, so the list keeps its height.
+ * takes the room of the other rows and of the posts, so the list keeps its height. The block needs
+ * three rows and the posts' box, which leaves one.
  */
-export const HERO_PARK_ROWS_PHONE = 2;
+export const HERO_PARK_ROWS_PHONE = 1;
 
 /**
  * Rows from `md` up, above the two posts. Four parks and the posts take the room the pill rows
