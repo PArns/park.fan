@@ -43,7 +43,7 @@ seo:
     - Bobbejaanland parking
 ---
 
-[Bobbejaanland](ref:bobbejaanland) in Kasterlee is selling its annual passes at up to 40 percent off from 9 November until 6 December inclusive. A pass runs for 365 days from the day you buy it. Buy one in those four weeks and it also gets you into Nickelodeon Land, which opens in April 2027. The park calls the sale Black November even though it runs into December, and at 40 percent off nobody's going to check its calendar.
+[Bobbejaanland](ref:bobbejaanland) in Kasterlee is selling its annual passes at up to 40 percent off from 9 November until 6 December inclusive. A pass runs for 365 days from the day you buy it, so anyone who buys in those four weeks will be around for the opening of Nickelodeon Land in April 2027. The park calls the sale Black November even though it runs into December, and at 40 percent off nobody's going to count the days.
 
 ## What the three passes cost
 
@@ -51,23 +51,28 @@ seo:
 - PLUS: €83.95 instead of €139.90
 - BASIC: €80.45 instead of €114.90
 
-Only PREMIUM includes the parking pass and the pass for the shuttle bus. PLUS and BASIC come without either, and you can't add them separately. During Black November PLUS and BASIC are almost the same price, so the real choice is between PREMIUM and the other two.
+The parking pass and the shuttle bus pass only come with PREMIUM; you can't add them to PLUS or BASIC. For €83.95 instead of €80.45, PLUS adds two free visits to Movie Park Germany and Slagharen. The bigger question is whether parking is worth PREMIUM to you.
 
-PREMIUM gets you 20 percent off selected products in the restaurants and shops and as many cheaper friend tickets as you like (the price depends on the period). The Speedy Pass Diamond, Gold and Silver are discounted too, at a price that depends on the day you visit. Up to two companions aged 65 or over get in free on each visit if they show ID at the ticket desk. You get three free visits each to [Movie Park Germany](/blog/movie-park-germany-wait-times-tips) and to Slagharen by showing the digital pass, plus one visit to another Parques Reunidos park. Partner parks let you in free or at a lower price, and the Corsendonk Hotels take 10 percent off the room rate.
+PREMIUM gets you 20 percent off selected products in the restaurants and shops and 10 percent off the room rate at Corsendonk Hotels. Friend tickets, as many as you like, and the Speedy Pass Diamond, Gold and Silver are cheaper too, both at a price that depends on the day you visit. Up to two companions aged 65 or over get in free on each visit if they show ID at the ticket desk. Show the digital pass and you get three free visits to [Movie Park Germany](/blog/movie-park-germany-wait-times-tips) and Slagharen, plus one to another Parques Reunidos park. That's down to the owner: Bobbejaan Schoepen founded the park, and since 2004 it has belonged to Parques Reunidos, like Movie Park.
 
 PLUS has nearly the same, but with two free visits to Movie Park and Slagharen instead of three. Bobbejaanland doesn't list a visit to another Parques Reunidos park for PLUS. BASIC is entry without the extras, with 10 percent off in the restaurants and shops.
 
-None of the three passes is valid on red days, and discount codes don't work on those days either. If no day is marked red in the park's calendar, Bobbejaanland hasn't set any yet. Days with a private event are excluded too, and no tickets are sold for them.
+None of the three passes is valid on red days, and discount codes don't work on those days. If no day is marked red in the park's calendar, Bobbejaanland hasn't set any yet. On days with a private event you can't get in with a pass or a ticket.
 
 ## Pass or day ticket
 
-A day ticket for anyone taller than 140 centimetres costs from €27.90 online and from €48.90 at the ticket desk, with the standard rate at €49.90. Between 100 and 140 centimetres you also pay from €27.90 online, and from €44.90 at the desk. Children under one metre get in without a ticket or a booking, so they don't need a pass. Visitors aged 65 and over pay €21.90 at the desk. Parking costs €13 per visit by car, €7 by motorbike and €19 by motorhome.
+- taller than 140 cm: from €27.90 online, from €48.90 at the desk (standard rate €49.90)
+- 100 to 140 cm: from €27.90 online, from €44.90 at the desk
+- 65 and over: €21.90 at the desk
+- parking per visit: car €13, motorbike €7, motorhome €19
 
-If you'd pay at the desk twice, the BASIC pass already works out cheaper; if you book online, it does by the third visit at the latest. For trips by car I'd go for PREMIUM, because parking is included on every visit. For what annual passes cost at other parks, see our [annual pass comparison](/blog/theme-park-annual-pass-comparison).
+Children under one metre get in without a ticket or a booking, so you only buy passes for the taller ones.
+
+At €80.45, the BASIC pass has paid for itself by your second visit at desk prices, and by the third at the latest with online tickets from €27.90. For trips by car I'd go for PREMIUM, because parking is included on every visit. Other parks' passes sit side by side in our [annual pass comparison](/blog/theme-park-annual-pass-comparison).
 
 ## When the park is open
 
-Halloween runs until 15 November inclusive. Bobbejaanland Wintert, one of the [winter seasons in Europe](/blog/winter-theme-parks-2026), runs from 5 December to 3 January 2027. It's open from 11 am to 7 pm, and until 5 pm on Christmas Eve and New Year's Eve. The park is closed on 25 December and 1 January. The pass works on Wintert days too. Black November is still on during the first Wintert weekend, 5 and 6 December, so you can still get the discount for your first winter visit.
+Halloween runs until 15 November inclusive. Bobbejaanland Wintert, one of the [winter seasons in Europe](/blog/winter-theme-parks-2026), runs from 5 December to 3 January 2027. It's open from 11 am to 7 pm, and until 5 pm on Christmas Eve and New Year's Eve. The park is closed on 25 December and 1 January. The pass works on Wintert days too, and since Black November is still on during the first Wintert weekend, 5 and 6 December, you can buy it at the discount even if you're only coming for winter.
 
 In winter the park is split into six winter zones, with Father Christmas, a Christmas village and Land of Fire & Ice, and the pond turns into an ice rink. Among the rides running are Sledge Hammer, [Typhoon](ref:bobbejaanland/typhoon), [Fury](ref:bobbejaanland/fury), which arrived in 2019, Dreamcatcher, Naga Bay, Bob Express, Revolution and The El Paso Special.
 
@@ -77,11 +82,9 @@ In winter the park is split into six winter zones, with Father Christmas, a Chri
 
 ## Nickelodeon Land from April 2027
 
-Bobbejaanland is announcing Nickelodeon Land for 2027, with three new attractions. The area gets Nickelodeon characters such as Garfield and SpongeBob and sits right behind the park entrance, CEO Yves Peeters told VRT. Construction has started, existing attractions are being taken down to make room, and the site is fenced off. The area costs around €15 million and is due to open in April 2027.
+Bobbejaanland is announcing Nickelodeon Land for 2027, with three new attractions. CEO Yves Peeters told VRT the area gets Nickelodeon characters such as Garfield and SpongeBob and sits right behind the park entrance. Attractions are coming down to make room; Bobbejaanland hasn't announced which ones. The site is fenced off, and the area costs around €15 million.
 
-The Wild Swing takes 18 riders at a time and swings them up to 12 metres. The drop tower is 15 metres tall, about 15 metres more than Garfield would get off the sofa for. The water ride Big Wavez lifts riders more than 20 metres, drops them and pushes up a 10-metre wave as it does. Peeters says it's the first of its kind in Europe in this form. Bobbejaanland has grown from an amusement park into a theme park with heavily themed areas, he told the broadcaster. Everything else opening in Europe in 2027 is in our [new attractions for 2027](/blog/new-theme-park-attractions-2027).
-
-Bobbejaan Schoepen founded the park, and since 2004 it has belonged to Parques Reunidos, which also owns Movie Park Germany. Today Bobbejaanland has more than 40 attractions.
+The Wild Swing takes 18 riders at a time and swings them up to 12 metres. The drop tower is 15 metres tall, about 15 metres more than Garfield would get off the sofa for. The water ride Big Wavez lifts riders more than 20 metres, drops them and pushes up a 10-metre wave as it does. According to Peeters, no water ride in Europe yet drops its riders while pushing up its own wave like this. That makes three more for a park with over 40 attractions, and the rest of Europe's 2027 openings are in our [new attractions for 2027](/blog/new-theme-park-attractions-2027).
 
 [Bobbejaanland](ref:bobbejaanland?full)
 

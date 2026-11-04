@@ -43,7 +43,7 @@ seo:
     - Bobbejaanland Parkplatz
 ---
 
-[Bobbejaanland](ref:bobbejaanland) in Kasterlee verkauft seine Jahresabos vom 9. November bis einschließlich 6. Dezember mit bis zu 40 Prozent Rabatt. Ein Abo gilt 365 Tage ab dem Kauf. Wer in diesen vier Wochen kauft, kommt damit also auch ins Nickelodeon Land, das im April 2027 öffnet. Der Park nennt die Aktion Black November, obwohl sie bis in den Dezember läuft, und bei 40 Prozent rechnet da kaum jemand die Tage nach.
+[Bobbejaanland](ref:bobbejaanland) in Kasterlee verkauft seine Jahresabos vom 9. November bis einschließlich 6. Dezember mit bis zu 40 Prozent Rabatt. Ein Abo gilt 365 Tage ab dem Kauf, wer in diesen vier Wochen zugreift, ist im April 2027 also auch bei der Eröffnung von Nickelodeon Land dabei. Der Park nennt die Aktion Black November, obwohl sie bis in den Dezember läuft, und bei 40 Prozent rechnet da kaum jemand die Tage nach.
 
 ## Was die drei Abos kosten
 
@@ -51,23 +51,28 @@ seo:
 - PLUS: 83,95 € statt 139,90 €
 - BASIC: 80,45 € statt 114,90 €
 
-Nur beim PREMIUM-Abo sind das Parkplatz-Abo und das Abo für den Pendelbus dabei. Bei PLUS und BASIC fehlen beide, und einzeln dazukaufen kannst du sie auch nicht. Preislich liegen PLUS und BASIC im Black November fast gleichauf, die Wahl fällt eher zwischen PREMIUM und dem Rest.
+Das Parkplatz-Abo und das Abo für den Pendelbus gibt es nur mit PREMIUM, zu PLUS und BASIC lassen sie sich nicht dazukaufen. Für 83,95 € statt 80,45 € bringt PLUS zwei freie Besuche im Movie Park Germany und in Slagharen mit. Die größere Frage ist also, ob dir der Parkplatz das PREMIUM-Abo wert ist.
 
-Mit PREMIUM bekommst du 20 Prozent Rabatt auf ausgewählte Produkte in den Restaurants und Shops und so viele Freundestickets zum günstigeren Preis, wie du willst. Was eines kostet, hängt vom Zeitraum ab. Auch den Speedy Pass Diamond, Gold und Silver gibt es günstiger, sein Preis richtet sich nach dem Besuchstag. Bis zu zwei Begleiter ab 65 Jahren kommen pro Besuch ohne Eintritt hinein, wenn sie an der Kasse einen Ausweis zeigen. Gegen Vorzeigen des digitalen Abos ist der Eintritt in den [Movie Park Germany](/blog/movie-park-germany-wartezeiten-tipps) und in Slagharen dreimal frei, dazu einmal in einen anderen Park von Parques Reunidos. In Partnerparks kommst du gratis oder günstiger hinein, und in den Corsendonk Hotels gibt es 10 Prozent auf den Zimmerpreis.
+Mit PREMIUM bekommst du 20 Prozent Rabatt auf ausgewählte Produkte in den Restaurants und Shops und 10 Prozent auf den Zimmerpreis in den Corsendonk Hotels. Freundestickets, so viele du willst, und den Speedy Pass Diamond, Gold und Silver bekommst du günstiger, beide zu einem Preis, der vom Besuchstag abhängt. Bis zu zwei Begleiter ab 65 Jahren kommen pro Besuch ohne Eintritt hinein, wenn sie an der Kasse einen Ausweis zeigen. Gegen Vorzeigen des digitalen Abos ist der Eintritt in den [Movie Park Germany](/blog/movie-park-germany-wartezeiten-tipps) und in Slagharen dreimal frei, dazu einmal in einen anderen Park von Parques Reunidos. Das liegt am Besitzer: Bobbejaan Schoepen hat den Park gegründet, seit 2004 gehört er wie der Movie Park zu Parques Reunidos.
 
 PLUS hat fast dasselbe, nur mit zwei statt drei freien Besuchen im Movie Park und in Slagharen. Einen Besuch in einem weiteren Park von Parques Reunidos führt Bobbejaanland beim PLUS nicht auf. BASIC ist der Eintritt ohne Extras, mit 10 Prozent Rabatt in den Restaurants und Shops.
 
-An roten Tagen gilt keines der drei Abos, und Rabattcodes funktionieren dann auch nicht. Ist im Kalender des Parks kein Tag rot markiert, hat Bobbejaanland noch keinen festgelegt. Ebenfalls ausgenommen sind Tage mit einer privaten Veranstaltung, für die es auch keine Tickets gibt.
+An roten Tagen gilt keines der drei Abos, und Rabattcodes funktionieren an diesen Tagen ebenfalls nicht. Ist im Kalender des Parks kein Tag rot markiert, hat Bobbejaanland noch keinen festgelegt. An Tagen mit einer privaten Veranstaltung kommst du weder mit Abo noch mit Ticket hinein.
 
 ## Abo oder Tagesticket
 
-Ein Tagesticket für alle über 140 Zentimeter kostet online ab 27,90 €, an der Kasse ab 48,90 €, der Standardtarif liegt bei 49,90 €. Zwischen 100 und 140 Zentimetern zahlst du online ebenfalls ab 27,90 €, an der Kasse ab 44,90 €. Kinder unter einem Meter kommen ohne Ticket und ohne Reservierung hinein, für sie brauchst du also kein Abo. Besucher ab 65 zahlen an der Kasse 21,90 €. Wer mit dem Auto kommt, zahlt pro Besuch 13 € fürs Parken, mit dem Motorrad 7 € und mit dem Wohnmobil 19 €.
+- über 140 Zentimeter: online ab 27,90 €, an der Kasse ab 48,90 € (Standardtarif 49,90 €)
+- 100 bis 140 Zentimeter: online ab 27,90 €, an der Kasse ab 44,90 €
+- ab 65 Jahren: 21,90 € an der Kasse
+- Parken pro Besuch: Auto 13 €, Motorrad 7 €, Wohnmobil 19 €
 
-Wer an der Kasse zahlt, fährt mit dem BASIC-Abo schon ab dem zweiten Besuch günstiger. Wer online bucht, fährt es spätestens ab dem dritten Besuch billiger. Kommst du mit dem Auto, würde ich zum PREMIUM-Abo greifen, weil das Parkticket bei jedem Besuch wegfällt. Was Jahreskarten in anderen Parks kosten und können, steht im [Jahreskarten-Vergleich](/blog/jahreskarte-vergleich-freizeitparks).
+Kinder unter einem Meter kommen ohne Ticket und ohne Reservierung hinein, ein Abo kaufst du nur für die Größeren.
+
+Das BASIC-Abo für 80,45 € hat sich bei Kassenpreisen schon mit dem zweiten Besuch bezahlt gemacht, mit Online-Tickets ab 27,90 € spätestens mit dem dritten. Kommst du mit dem Auto, würde ich zum PREMIUM-Abo greifen, weil das Parkticket bei jedem Besuch wegfällt. Die Abos anderer Parks stehen in unserem [Jahreskarten-Vergleich](/blog/jahreskarte-vergleich-freizeitparks) nebeneinander.
 
 ## Wann der Park offen hat
 
-Halloween läuft noch bis einschließlich 15. November. Bobbejaanland Wintert, einer der [Winterbetriebe in Europa](/blog/winter-freizeitparks-2026), läuft vom 5. Dezember bis zum 3. Januar 2027. Geöffnet ist von 11 bis 19 Uhr, an Heiligabend und Silvester bis 17 Uhr. Am 25. Dezember und am 1. Januar bleibt der Park zu. Das Abo gilt auch an den Wintert-Tagen. Der Black November läuft noch am ersten Wintert-Wochenende, dem 5. und 6. Dezember, du bekommst den Rabatt also auch noch für den ersten Winterbesuch.
+Halloween läuft noch bis einschließlich 15. November. Bobbejaanland Wintert, einer der [Winterbetriebe in Europa](/blog/winter-freizeitparks-2026), läuft vom 5. Dezember bis zum 3. Januar 2027. Geöffnet ist von 11 bis 19 Uhr, an Heiligabend und Silvester bis 17 Uhr. Am 25. Dezember und am 1. Januar bleibt der Park zu. Das Abo gilt auch an den Wintert-Tagen, und weil der Black November noch am ersten Wintert-Wochenende läuft, dem 5. und 6. Dezember, kann es kaufen, wer erst zum Winter kommt.
 
 Im Winter verteilt sich der Park auf sechs Winterzonen, mit Weihnachtsmann, Weihnachtsdorf und Land of Fire & Ice, und der Teich wird zur Eisbahn. Es fahren unter anderem Sledge Hammer, [Typhoon](ref:bobbejaanland/typhoon), die 2019 dazugekommene [Fury](ref:bobbejaanland/fury), Dreamcatcher, Naga Bay, Bob Express, Revolution und The El Paso Special.
 
@@ -77,11 +82,9 @@ Im Winter verteilt sich der Park auf sechs Winterzonen, mit Weihnachtsmann, Weih
 
 ## Nickelodeon Land ab April 2027
 
-Bobbejaanland kündigt für 2027 das Nickelodeon Land mit drei neuen Attraktionen an. Der Bereich bekommt Figuren von Nickelodeon wie Garfield und SpongeBob und liegt direkt hinter dem Parkeingang, so hat es CEO Yves Peeters der VRT erzählt. Die Bauarbeiten haben begonnen. Dafür werden bestehende Attraktionen abgebaut, die Baustelle ist abgesperrt. Der Bereich kostet rund 15 Millionen Euro und soll im April 2027 eröffnen.
+Bobbejaanland kündigt für 2027 das Nickelodeon Land mit drei neuen Attraktionen an. CEO Yves Peeters hat der VRT erzählt, dass der Bereich Figuren von Nickelodeon wie Garfield und SpongeBob bekommt und direkt hinter dem Parkeingang liegt. Für die Baustelle werden Attraktionen abgebaut, welche, hat Bobbejaanland nicht bekannt gegeben. Das Gelände ist abgesperrt, der Bereich kostet rund 15 Millionen Euro.
 
-Der Wild Swing nimmt 18 Fahrgäste gleichzeitig mit und schwingt bis auf 12 Meter Höhe. Der Freifallturm ist 15 Meter hoch, für einen Kater wie Garfield, der am liebsten auf dem Sofa liegt, ungefähr 15 Meter zu viel. Die Wasserattraktion Big Wavez hebt die Fahrgäste auf über 20 Meter, lässt sie fallen und schiebt dabei eine 10 Meter hohe Welle an. Peeters nennt sie in dieser Form die erste ihrer Art in Europa. Bobbejaanland habe sich von einem Attraktionspark zu einem Themenpark mit stark thematisierten Bereichen entwickelt, sagte er dem Sender. Was 2027 sonst in Europa eröffnet, steht in unseren [Neuheiten 2027](/blog/freizeitpark-neuheiten-2027).
-
-Gegründet hat den Park Bobbejaan Schoepen, seit 2004 gehört er zur Gruppe Parques Reunidos, der auch der Movie Park Germany gehört. Heute hat Bobbejaanland über 40 Attraktionen.
+Der Wild Swing nimmt 18 Fahrgäste gleichzeitig mit und schwingt bis auf 12 Meter Höhe. Der Freifallturm ist 15 Meter hoch, für einen Kater wie Garfield, der am liebsten auf dem Sofa liegt, ungefähr 15 Meter zu viel. Die Wasserattraktion Big Wavez hebt die Fahrgäste auf über 20 Meter, lässt sie fallen und schiebt dabei eine 10 Meter hohe Welle an. Eine Wasserbahn, die ihre Fahrgäste fallen lässt und dabei selbst eine Welle anschiebt, gibt es laut Peeters in Europa so noch nicht. Zu den über 40 Attraktionen des Parks kommen damit drei dazu, die übrigen Neuheiten Europas für 2027 stehen in unseren [Neuheiten 2027](/blog/freizeitpark-neuheiten-2027).
 
 [Bobbejaanland](ref:bobbejaanland?full)
 
