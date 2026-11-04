@@ -68,7 +68,7 @@ seo:
 
 Acht Achterbahnen stehen im Park, drei davon aus Holz und aus den 1920er-Jahren. Die jüngste und höchste der fünf Stahlbahnen ist Steel Curtain, in einem Bereich, der ganz den Pittsburgh Steelers gehört. In Pittsburgh ist der Park so fest im Alltag verankert, dass „Kennywood’s open“ dort heißt, dass dein Hosenstall offen steht.
 
-Ich war selbst noch nicht in Kennywood. Am 13. November 2026 beginnt Holiday Lights mit mehr als drei Millionen Lichtern, und neu im Programm ist eine Eisshow.
+Ich war selbst noch nicht in Kennywood, die Angaben stammen vom Park, aus der RCDB, von Wikipedia und aus unseren Messungen. Wer jetzt hinfährt, sieht ab Mitte November Holiday Lights mit mehr als drei Millionen Lichtern und einer neuen Eisshow.
 
 ## Die Bahnen nach Bereichen
 
@@ -94,7 +94,7 @@ Das [Kangaroo](ref:kennywood/kangaroo?bare) in der Good Time Midway stammt von 1
 
 ### The Lagoon
 
-Rund um die Lagoon hat sich die Anlage seit den Anfängen kaum verändert. Auf dem Wasser in der Mitte fahren Tretboote, die extra kosten und erst 2027 wieder auslaufen.
+Rund um die Lagoon hat sich die Anlage seit den Anfängen kaum verändert, und mit Racer, dem Merry-Go-Round und der Auto Race stehen dort drei Fahrgeschäfte aus den Jahren 1927 bis 1930 beieinander. Auf dem Wasser in der Mitte fahren Tretboote, die extra kosten und erst 2027 wieder auslaufen.
 
 [Racer](ref:kennywood/racer?bare) sieht aus wie zwei Holzachterbahnen, die nebeneinander um die Wette fahren. Tatsächlich ist es eine einzige durchgehende Schiene, und wer rechts einsteigt, kommt links wieder an. Eine zweite Achterbahn mit so einer Strecke gibt es nach Angaben von Kennywood in den USA nicht, die RCDB führt Racer als Möbius-Achterbahn. Den Entwurf lieferte John A. Miller, und 1927 stellte Philadelphia Toboggan Coasters die Bahn auf. Mit 22 Metern (72,5 Fuß) ist Racer die höchste der drei Holzbahnen und fährt doch mit 64 km/h (40 mph) am langsamsten. Die Strecke ist 1.372 Meter (4.500 Fuß) lang, eine Runde dauert 1:32 Minuten. Mit drei Zügen zu je 24 Plätzen kommt Racer auf 1.400 Fahrgäste in der Stunde. Eine erste Bahn mit dem Namen Racer stand von 1910 bis 1926 im Park.
 
@@ -104,11 +104,11 @@ Rund um die Lagoon hat sich die Anlage seit den Anfängen kaum verändert. Auf d
 
 Das [Merry-Go-Round](ref:kennywood/merry-go-round?bare) hat William Dentzel 1927 gebaut. Darauf drehen sich 64 Tiere, darunter 50 springende Pferde, ein Löwe und ein Tiger.
 
-Gleich vier Fahrgeschäfte im Park sind nach Angaben von Kennywood die letzten ihrer Art: die [Auto Race](ref:kennywood/auto-race?bare) von 1930 an der Lagoon, die [Turtle](ref:kennywood/turtle?bare), [Noah’s Ark](ref:kennywood/noahs-ark?bare) und das Kangaroo. Ein Teil des Parks ist damit ein Museum, in dem man mitfahren darf.
+Gleich vier Fahrgeschäfte sind nach Angaben von Kennywood die letzten ihrer Art, du fährst hier also in Museumsstücken: die [Auto Race](ref:kennywood/auto-race?bare) von 1930 an der Lagoon, die [Turtle](ref:kennywood/turtle?bare), [Noah’s Ark](ref:kennywood/noahs-ark?bare) und das Kangaroo.
 
 ### Steelers Country
 
-Steelers Country hat 2019 eröffnet, und seine Bahn ist [Steel Curtain](ref:kennywood/the-steel-curtain?bare). S&S Worldwide hat die Stahlachterbahn nach einem Entwurf von Joe Draves gebaut, eröffnet wurde sie am 13. Juli 2019, dort, wo früher die Wasserbahn Log Jammer stand. Steel Curtain ist 67 Meter (220 Fuß) hoch, und höher ist nach Angaben des Parks keine Achterbahn in Pennsylvania. Die RCDB misst 121 km/h (75 mph) und zählt acht Inversionen, Kennywood kommt auf 122 km/h (76 mph) und neun. Die höchste Inversion liegt 60 Meter (197 Fuß) über dem Boden und war bei der Eröffnung die höchste der Welt, nach Wikipedia bis 2025. Für die 1.219 Meter (4.000 Fuß) braucht der Zug zwei Minuten, zwei Züge mit je 24 Plätzen sind im Einsatz.
+Den Pittsburgh Steelers gehört seit 2019 ein eigener Bereich, Steelers Country, und seine Bahn ist [Steel Curtain](ref:kennywood/the-steel-curtain?bare). S&S Worldwide hat die Stahlachterbahn nach einem Entwurf von Joe Draves gebaut, eröffnet wurde sie am 13. Juli 2019, dort, wo früher die Wasserbahn Log Jammer stand. Steel Curtain ist 67 Meter (220 Fuß) hoch, und höher ist nach Angaben des Parks keine Achterbahn in Pennsylvania. Die RCDB misst 121 km/h (75 mph) und zählt acht Inversionen, Kennywood kommt auf 122 km/h (76 mph) und neun. Die höchste Inversion liegt 60 Meter (197 Fuß) über dem Boden und war bei der Eröffnung die höchste der Welt. Für die 1.219 Meter (4.000 Fuß) braucht der Zug zwei Minuten, zwei Züge mit je 24 Plätzen sind im Einsatz.
 
 Im Juli 2023 hat Kennywood Steel Curtain geschlossen, um zusätzliche Fundamente und Träger einzubauen. Die Bahn stand die ganze Saison 2024 über und fuhr im Mai 2025 wieder. Das Gewichtslimit liegt bei 136 kg (300 lbs), und es gibt einen Testsitz, den ein Linebacker der Steelers vermutlich als Erstes ausprobieren würde.
 
@@ -120,15 +120,13 @@ Als Steel Phantom ging [Phantom’s Revenge](ref:kennywood/phantoms-revenge?bare
 
 Der Zug klettert 49 Meter (160 Fuß) hoch und erreicht 137 km/h (85 mph). Die längste Abfahrt misst nach der RCDB 69,5 Meter (228 Fuß), Kennywood gibt für die zweite Abfahrt 71 Meter (232 Fuß) an. Auch bei der Länge weichen die beiden voneinander ab: 975 Meter (3.200 Fuß) bei der RCDB, 1.026 Meter (3.365 Fuß) beim Park. Unterwegs fährt der Zug zweimal durch das Holzgerüst von Thunderbolt. Die Fahrt dauert 1:57 Minuten, und in den beiden Zügen sitzen je 28 Personen.
 
-In Kenny Lane stehen außerdem der Musik Express und die Pirate, die bis auf 18 Meter (60 Fuß) Höhe und in einen Winkel von 75 Grad schwingt. Potato Smash hat 2024 den Autoscooter Gran Prix ersetzt, und die Wagen sind den Pommes aus der Potato Patch nachempfunden.
+In Kenny Lane stehen außerdem der Musik Express und die Pirate, die bis auf 18 Meter (60 Fuß) Höhe und in einen Winkel von 75 Grad schwingt. Die Autoscooter von Potato Smash sind den Pommes aus der Potato Patch nachempfunden und heißen seit 2024 so, vorher hießen sie Gran Prix.
 
 ### Kennyville
 
-Thunderbolt steht in Kennyville und war ursprünglich die Pippin, eine Holzachterbahn von John A. Miller, eröffnet am 4. Mai 1924. 1968 baute Andy Vettel sie zu Thunderbolt aus. Die erste Abfahrt führt in eine Schlucht, die größten kommen erst am Ende, mit 27 Metern (90 Fuß) Fallhöhe, obwohl der höchste Punkt nur 21 Meter (70 Fuß) über dem Boden liegt. Auf 991 Metern (3.250 Fuß) erreicht der Zug 89 km/h (55 mph), die Fahrt dauert 1:41 Minuten. Die Züge baute National Amusement Device, der Park nennt sie Century Flyer aus den 1950er-Jahren. 1974 nannte die New York Times Thunderbolt den „King of the Coasters“.
+Thunderbolt steht in Kennyville und war ursprünglich die Pippin, eine Holzachterbahn von John A. Miller, eröffnet am 4. Mai 1924. 1968 baute Andy Vettel sie zu Thunderbolt aus. Die erste Abfahrt führt in eine Schlucht, die größten kommen erst am Ende, mit 27 Metern (90 Fuß) Fallhöhe, obwohl der höchste Punkt nur 21 Meter (70 Fuß) über dem Boden liegt. Auf 991 Metern (3.250 Fuß) erreicht der Zug 89 km/h (55 mph), die Fahrt dauert 1:41 Minuten. Die Züge baute National Amusement Device, der Park nennt sie Century Flyer aus den 1950er-Jahren. 1974 nannte die New York Times Thunderbolt den „King of the Coasters“. Ob die Bahn fährt, ist offen: Auf der Parkkarte von Phantom Fall Fest 2026 fehlt sie, auf ihrer Seite beim Park steht sie ohne Schließhinweis.
 
-Auf der Parkkarte von Phantom Fall Fest 2026 fehlt Thunderbolt, einen Schließhinweis hat die Bahnseite nicht.
-
-Durch ein Anwesen mit acht Räumen führt seit 2008 [Ghostwood Estate](ref:kennywood/ghostwood-estate?bare), eine interaktive Dunkelfahrt. Mit „Ghost Blastern“ schießt du auf Geister und sammelst Punkte.
+In [Ghostwood Estate](ref:kennywood/ghostwood-estate?bare), einer interaktiven Dunkelfahrt von 2008, schießt du in einem Anwesen mit acht Räumen mit „Ghost Blastern“ auf Geister und sammelst Punkte.
 
 ```glossary-widget slug=interactive-dark-ride
 
@@ -136,33 +134,33 @@ Durch ein Anwesen mit acht Räumen führt seit 2008 [Ghostwood Estate](ref:kenny
 
 Noah’s Ark, die Arche von 1936, hat Kennywood zweimal umgebaut: 1969 bekam sie den blauen Wal, 2016 eine Renovierung. Die Turtle fährt seit 1927, anfangs als Tumble Bug, und ihren sechsten Wagen und die Form von Schildkröten bekam sie 1948.
 
-Einen natürlichen Hang hinunter fährt seit 1985 [Raging Rapids](ref:kennywood/raging-rapids?bare), eine Wildwasserbahn von Intamin, die erst 2027 wieder öffnet. Vor Raging Rapids und Pittsburg\* Plunge stehen Trockenstationen, in denen du dich gegen eine kleine Gebühr in etwa drei Minuten trocknen lassen kannst, ein Service, den man sonst eher aus dem Hundesalon kennt.
+[Raging Rapids](ref:kennywood/raging-rapids?bare), die Wildwasserbahn von Intamin aus dem Jahr 1985, nutzt einen natürlichen Hang und öffnet erst 2027 wieder. Vor Raging Rapids und Pittsburg\* Plunge stehen Trockenstationen, in denen du dich gegen eine kleine Gebühr in etwa drei Minuten trocknen lassen kannst, ein Service, den man sonst eher aus dem Hundesalon kennt.
 
 ### Lost Kennywood
 
-Lost Kennywood hat 1995 eröffnet und war die größte einzelne Erweiterung in der Geschichte des Parks. Er liegt dort, wo früher der Sunlite Pool war, und Vorbild war der Luna Park in Pittsburgh, der 1909 geschlossen hat.
+Die größte einzelne Erweiterung in der Geschichte des Parks war 1995 Lost Kennywood. Der Bereich liegt dort, wo früher der Sunlite Pool war, und Vorbild war der Luna Park in Pittsburgh, der 1909 geschlossen hat.
 
 Mittelpunkt des Bereichs ist [Pittsburg\* Plunge](ref:kennywood/pittsburg-plunge?bare), ein Shoot-the-Chute von 1995, der ebenfalls erst 2027 wieder öffnet. Drei Boote für je 20 Personen stürzen 15 Meter (50 Fuß) tief ins Becken. Im Namen fehlt das h, so wurde die Stadt früher geschrieben.
 
-In einer Halle fährt seit dem 18. April 1999 der [Exterminator](ref:kennywood/exterminator?bare), eine Wilde Maus von Reverchon mit drehenden Wagen. Erzählt wird von einer Fabrik, in der die Mäuse die Macht übernommen haben. Der höchste Punkt liegt bei 13 Metern (42,7 Fuß), die Wagen erreichen 47 km/h (29,1 mph) auf 420 Metern Strecke, und eine Fahrt dauert 1:48 Minuten. Neun Wagen mit je vier Plätzen bringen 900 Fahrgäste in der Stunde durch die Halle.
+Der [Exterminator](ref:kennywood/exterminator?bare) ist eine Wilde Maus von Reverchon mit drehenden Wagen und fährt seit dem 18. April 1999 in einer Halle, die eine von Mäusen übernommene Fabrik darstellt. Der höchste Punkt liegt bei 13 Metern (42,7 Fuß), die Wagen erreichen 47 km/h (29,1 mph) auf 420 Metern Strecke, und eine Fahrt dauert 1:48 Minuten. Neun Wagen mit je vier Plätzen bringen 900 Fahrgäste in der Stunde durch die Halle.
 
 ```glossary-widget slug=wild-mouse
 
 ```
 
-[Black Widow](ref:kennywood/black-widow?bare) hat 2012 den Fallturm Pitt Fall ersetzt, der von 1997 bis 2011 stand. Sie schwingt und dreht ihre Fahrgäste bis auf 45 Meter (146 Fuß) Höhe, mit bis zu 109 km/h (68 mph). Ebenfalls in Lost Kennywood schleudert SwingShot seit 2006 mit mehr als 80 km/h (50 mph). Der Wave Swinger stammt von Zierer und nimmt Fahrgäste bis 100 kg (220 lbs) mit.
+[Black Widow](ref:kennywood/black-widow?bare) schwingt und dreht ihre Fahrgäste seit 2012 bis auf 45 Meter (146 Fuß) Höhe, mit bis zu 109 km/h (68 mph). Sie ist der Nachfolger des Fallturms Pitt Fall, der von 1997 bis 2011 lief. Ebenfalls in Lost Kennywood schleudert SwingShot seit 2006 mit mehr als 80 km/h (50 mph). Der Wave Swinger stammt von Zierer und nimmt Fahrgäste bis 100 kg (220 lbs) mit.
 
 Die [Whip](ref:kennywood/whip?bare) kam 1919 mit zwölf Wagen nach Kennywood, 1926 ersetzte der Park sie durch das heutige Modell mit 16 Wagen. Das hatte 2026 seinen 100. Geburtstag und bekam dazu einen neuen Zaun und ein Jubiläumslogo.
 
 ### Area 412
 
-Area 412 hat 2023 Volcano Valley ersetzt. Der Name verbindet Area 51 mit der Telefonvorwahl 412 von Pittsburgh, und entsprechend geht es um Außerirdische. Als erste Gryphon von Zamperla in den USA dreht sich dort seit 2023 [Spinvasion](ref:kennywood/spinvasion?bare). In Cosmic Chaos fährt seit 2007 ein Ufo auf einer U-förmigen Schiene bis auf 15 Meter (50 Fuß) hinauf.
+Area 412 gibt es seit 2023, vorher hieß der Bereich Volcano Valley. Der Name verbindet Area 51 mit der Telefonvorwahl 412 von Pittsburgh, und entsprechend geht es um Außerirdische. Als erste Gryphon von Zamperla in den USA dreht sich dort seit 2023 [Spinvasion](ref:kennywood/spinvasion?bare). In Cosmic Chaos fährt seit 2007 ein Ufo auf einer U-förmigen Schiene bis auf 15 Meter (50 Fuß) hinauf.
 
 ### Kiddieland und Kennywood Junction
 
 Kiddieland liegt seit 1927 an seinem heutigen Platz, an der Kante des Steilhangs auf der Flussseite des Parks. Dort fährt die kleinste Achterbahn, [Lil’ Phantom](ref:kennywood/lil-phantom?bare), ein Moli-Coaster von Molina & Son’s aus dem Jahr 1996. Ihr Zug aus fünf Wagen nimmt zehn Kinder mit, und nach 15 Sekunden ist die Runde vorbei. Kenny’s Karousel mit 16 springenden und 10 stehenden Pferden und zwei Kutschen gehört seit 1924 zum Kiddieland und öffnet erst 2027 wieder. Daneben drehen sich unter anderem der Red Baron, die Steel City Choppers und das Wacky Wheel.
 
-Kennywood Junction hat am Eröffnungstag der Saison, dem 12. April 2025, eröffnet. Kennywood beschreibt den Bereich als kleines Viertel einer Stahlstadt mit fünf Familienfahrgeschäften: Olde Kennywood Railroad, Fire Bustin’ Brigade, Coal Haulin’ Convoy, Parker’s Cloud Cruisers und Kenny’s Cargo Drop. Vorher stand hier ab dem 27. Juli 2018 Thomas Town, dessen Thomas-Thema der Park nach der Saison 2024 entfernt hat.
+Am Eröffnungstag der Saison, dem 12. April 2025, kam Kennywood Junction dazu. Kennywood beschreibt den Bereich als kleines Viertel einer Stahlstadt mit fünf Familienfahrgeschäften: Olde Kennywood Railroad, Fire Bustin’ Brigade, Coal Haulin’ Convoy, Parker’s Cloud Cruisers und Kenny’s Cargo Drop. Bis zur Saison 2024 war der Bereich Thomas Town, eröffnet am 27. Juli 2018, dann entfernte der Park das Thomas-Thema.
 
 Die Lokomotive der [Olde Kennywood Railroad](ref:kennywood/olde-kennywood-railroad?bare), der Gimbels Flyer, fuhr schon auf der Weltausstellung 1939 in New York und ist seit 1945 in Kennywood, neu dazugekommen ist der Kenny Express. Von der Strecke siehst du auf den Monongahela River und die Edgar Thomson Works, das älteste Stahlwerk in Pittsburgh. Im Winter heißt der Zug Gingerbread Express.
 
@@ -190,7 +188,7 @@ Als Begleitung zählt, wer mindestens 14 Jahre alt ist und die Bahn selbst allei
 
 ```
 
-Zur Öffnung würde ich zuerst zu Steel Curtain gehen. Nach unseren Messungen lohnt sich der frühe Start an Steel Curtain, Phantom’s Revenge, Exterminator, Jack Rabbit und Ghostwood Estate, bei allen fünf in mittlerem Maß. Bei Racer und Sky Rocket lohnt es sich dagegen nicht, gleich zur Öffnung hinzulaufen, die beiden kannst du auch später fahren. Kennywood selbst empfiehlt, früh am hinteren Ende des Parks anzufangen, und an den Wasserbahnen seien die Warteschlangen morgens und abends kürzer.
+Zur Öffnung würde ich zuerst zu Steel Curtain gehen. Nach unseren Messungen sparst du mit einem frühen Start etwas Zeit an Steel Curtain, Phantom’s Revenge, Exterminator, Jack Rabbit und Ghostwood Estate, viel ist es aber an keiner der fünf. Bei Racer und Sky Rocket lohnt es sich dagegen nicht, gleich zur Öffnung hinzulaufen, die beiden kannst du auch später fahren. Kennywood selbst empfiehlt, früh am hinteren Ende des Parks anzufangen, und an den Wasserbahnen seien die Warteschlangen morgens und abends kürzer.
 
 ```glossary-widget slug=rope-drop
 
@@ -242,12 +240,10 @@ In Christmastown führt ein Rundgang zu Rudolph the Red-Nosed Reindeer und seine
 
 Mehr als 20 Bahnen fahren, einige davon nur über 4 °C (40 °F):
 
-- Achterbahnen: Jack Rabbit, Lil’ Phantom
+- Achterbahnen: Jack Rabbit, die älteste im Park, und Lil’ Phantom, die kleinste; die übrigen sechs fahren im Winter nicht
 - Klassiker: Merry-Go-Round, Noah’s Ark, Turtle, Kangaroo, Olde Kennywood Railroad als Gingerbread Express
 - weitere Fahrgeschäfte: Musik Express, Pirate, Potato Smash, Spinvasion
 - für Kinder: Coal Haulin’ Convoy, Crazy Trolley, Dizzy Dynamo, Fire Bustin’ Brigade, Kenny’s Cargo Drop, Parker’s Cloud Cruisers, Red Baron, Steel City Choppers, Turtle Chase, Wacky Wheel, Whirlwind
-
-Von den acht Achterbahnen stehen im Winter also nur die älteste und die kleinste auf der Liste.
 
 Bei USA Today 10Best ist Holiday Lights als bestes Weihnachtsevent eines Freizeitparks nominiert, abgestimmt wird vom 2. bis zum 30. November, und am 3. Dezember stehen die Gewinner fest. Gäste bis 15 Jahre brauchen bei Holiday Lights die ganze Zeit eine Begleitung ab 21 Jahren mit Ausweis.
 
@@ -377,7 +373,7 @@ Ja, im [Wartezeiten-Kalender](ref:kennywood?calendar) steht für jeden Öffnungs
 
 ### Wann hat Kennywood geöffnet?
 
-Kennywood hat während Holiday Lights freitags von 17 bis 21 Uhr, samstags, sonntags und am Freitag nach Thanksgiving von 15 bis 21 Uhr und ab dem 19. Dezember täglich von 15 bis 21 Uhr geöffnet, an Thanksgiving und am 24. und 25. Dezember nicht. Letzter Tag ist der 3. Januar 2027. Die Saison 2027 hat Kennywood noch nicht im Kalender.
+Kennywood hat während Holiday Lights freitags von 17 bis 21 Uhr, samstags, sonntags und am Freitag nach Thanksgiving von 15 bis 21 Uhr und ab dem 19. Dezember täglich von 15 bis 21 Uhr geöffnet, an Thanksgiving und am 24. und 25. Dezember nicht. Letzter Tag ist der 3. Januar 2027.
 
 ### Wie lange wartet man an Steel Curtain?
 
@@ -385,7 +381,7 @@ Die aktuelle Wartezeit steht auf der Seite von [Steel Curtain](ref:kennywood/the
 
 ### Wie lange wartet man am Exterminator?
 
-Die aktuelle Wartezeit steht auf der Seite des [Exterminator](ref:kennywood/exterminator?bare) bei park.fan. Wie bei Steel Curtain, Phantom’s Revenge und Jack Rabbit lohnt es sich nach unseren Messungen, ihn gleich nach der Öffnung zu fahren. Der Exterminator ist im Speedy Pass Thrills enthalten.
+Die aktuelle Wartezeit steht auf der Seite des [Exterminator](ref:kennywood/exterminator?bare) bei park.fan. Nach unseren Messungen lohnt sich auch hier ein früher Start, wenn auch nicht viel. Der Exterminator ist im Speedy Pass Thrills enthalten.
 
 ### Was kostet ein Ticket für Kennywood?
 
