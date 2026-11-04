@@ -24,6 +24,10 @@ answer cannot carry a per-origin CORS header.
 The browser sends one question at a time with the chat's id. The history stays on the API, so
 nobody can hand Parky made-up earlier answers.
 
+On a phone the window takes the screen, and only the chat scrolls: while it is open the page
+behind is pinned (`position: fixed` on `<body>`, moved up by the scroll it had, put back on close,
+in `AssistantPanel`), since `overflow: hidden` alone lets iOS Safari scroll it under a finger.
+
 ## Rollout
 
 Nothing is drawn on the server. `assistantGate` (`lib/assistant/config.ts`) decides in the browser,

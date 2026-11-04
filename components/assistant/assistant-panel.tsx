@@ -128,18 +128,37 @@ export function AssistantPanel({
   }, [open, openedBy]);
 
   /**
-   * On a phone the open window takes the screen, so the page behind it must not move: its scroll
-   * is locked while the window is open, and the chat keeps its own scroll to itself.
+   * On a phone the open window takes the screen, so the page behind it must not move: only the
+   * chat scrolls. `overflow: hidden` on `<body>` alone does not stop iOS Safari from scrolling the
+   * page under a finger, so the body is pinned in place (`position: fixed`, moved up by the scroll
+   * it had) and put back where it was when the window closes.
    */
   useEffect(() => {
     if (!open || !window.matchMedia('(max-width: 639px)').matches) return;
     const { body, documentElement: html } = document;
-    const before = { overflow: body.style.overflow, overscroll: html.style.overscrollBehavior };
+    const scrollY = window.scrollY;
+    const before = {
+      position: body.style.position,
+      top: body.style.top,
+      left: body.style.left,
+      right: body.style.right,
+      overflow: body.style.overflow,
+      overscroll: html.style.overscrollBehavior,
+    };
+    body.style.position = 'fixed';
+    body.style.top = `-${scrollY}px`;
+    body.style.left = '0';
+    body.style.right = '0';
     body.style.overflow = 'hidden';
     html.style.overscrollBehavior = 'none';
     return () => {
+      body.style.position = before.position;
+      body.style.top = before.top;
+      body.style.left = before.left;
+      body.style.right = before.right;
       body.style.overflow = before.overflow;
       html.style.overscrollBehavior = before.overscroll;
+      window.scrollTo({ top: scrollY, behavior: 'instant' });
     };
   }, [open]);
 
