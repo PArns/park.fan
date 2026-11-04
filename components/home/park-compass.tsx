@@ -444,9 +444,11 @@ export function ParkCompass({
       {/* Below `md` the dial follows straight on: the status line already ends in a line kept for
           the fix and calibration notes, which is room enough. */}
       <div className="mb-1 flex flex-col gap-2 md:mb-4">
-        <div className="flex items-center gap-2">
-          <Compass className="text-primary h-5 w-5 shrink-0" aria-hidden="true" />
-          <h2 className="text-xl font-bold">{t('title')}</h2>
+        {/* 18 px on a phone, where 20 px broke the title over two lines beside a one-line icon;
+            where it still breaks, the icon stays with the first line. */}
+        <div className="flex items-start gap-2">
+          <Compass className="text-primary mt-1 h-5 w-5 shrink-0" aria-hidden="true" />
+          <h2 className="text-lg font-bold text-balance sm:text-xl">{t('title')}</h2>
         </div>
         <CompassStatusLine
           status={status}
