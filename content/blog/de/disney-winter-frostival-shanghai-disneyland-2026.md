@@ -47,7 +47,7 @@ Die Show heißt „Star Squad: Join Olaf for a Cozy Celebration“, live spielt 
 
 ## Was aus den vergangenen Wintern zurückkommt
 
-Bei Mickey's Snow Magic wird die Mickey Avenue wieder zu einer Schneekugel, in der du selbst stehst, und über der Straße wirbeln Flocken. Bei der Disney Winter Magic Cavalcade laufen Disney-Figuren neben Festwagen mit Winterszenen. Nach Einbruch der Dunkelheit laufen bei „A Celebration of Disney Winter Frostival“ Projektionen über das Schloss, Licht und Ton reichen bis in die Gardens of Imagination. Bei Regen, starkem Wind, schlechter Luftqualität, dichtem Nebel oder Gewitter kann das Resort die Shows verschieben oder absagen.
+Mickey's Snow Magic macht die Mickey Avenue wieder zu einer Schneekugel, in der du selbst stehst, über der Straße wirbeln Flocken. Bei der Disney Winter Magic Cavalcade laufen Disney-Figuren neben Festwagen mit Winterszenen. Nach Einbruch der Dunkelheit laufen bei „A Celebration of Disney Winter Frostival“ Projektionen über das Schloss, Licht und Ton reichen bis in die Gardens of Imagination. Verschieben oder absagen kann das Resort die Shows bei Regen, Wind, Nebel und Gewitter und auch dann, wenn die Luftqualität schlecht ist.
 
 Fürs Winterfoto stehen an der Mickey Avenue und in den Gardens of Imagination Schneefiguren und Eisskulpturen von Disney-Figuren, im Bereich Zootopia die Tiere aus dem Film, der bei uns Zoomania heißt, als Schneefiguren.
 
@@ -55,11 +55,11 @@ Fürs Winterfoto stehen an der Mickey Avenue und in den Gardens of Imagination S
 
 Vom 1. Dezember bis zum 3. Januar tragen Mickey und seine Freunde neue Skikostüme, die passende Ski-Party-Kollektion liegt in den Läden. Santa Goofy steht wieder auf der Mickey Avenue, Duffy und seine Freunde kommen in neuen Weihnachtsoutfits. Prinzessinnen, Königinnen und Prinzen triffst du während des ganzen Frostivals bei den Castle Encounters, manchmal in den Winterkostümen aus der Cavalcade.
 
-Bei Mickey's Magical Tree Lighting Ceremony in den Gardens of Imagination schalten Mickey, Minnie, Duffy und LinaBell den höchsten Weihnachtsbaum des Resorts an, eine Live-Band spielt dazu. Einen Termin dafür hat das Resort noch nicht genannt. Dazu kommen drei weitere Weihnachtsshows: Light Up the Holidays with Magic, Christmas Swing und die Mickey Avenue Carolers.
+Bei Mickey's Magical Tree Lighting Ceremony in den Gardens of Imagination schalten Mickey, Minnie, Duffy und LinaBell den höchsten Weihnachtsbaum des Resorts an, eine Live-Band spielt dazu. Einen Termin dafür hat das Resort noch nicht genannt. Auf der Mickey Avenue singen außerdem die Mickey Avenue Carolers, und mit Light Up the Holidays with Magic und Christmas Swing laufen zwei weitere Weihnachtsshows.
 
 Am 31. Dezember und am 1. Januar ziehen Mickey und seine Freunde Neujahrskostüme an. Am Schloss läuft zum Jahreswechsel die Show „Ignite the New Year“.
 
-Mit Kindern lohnt sich Disneytown am Wochenende oder an einem Feiertag, denn dann empfängt der Weihnachtsmann sie in seiner Hütte auf dem Disneytown Christmas Market, zwischen Bastel- und Essensständen. Der Christmas Tree Trail führt dort zu einem Baum, der in diesem Jahr Schmuck zum zehnten Geburtstag trägt, und geschmückt sind auch das Shanghai Disneyland Hotel und das Toy Story Hotel. Wenn der Baum in Disneytown angeschaltet wird, singt der Magic Glee Club.
+Mit Kindern lohnt sich Disneytown am Wochenende oder an einem Feiertag, denn dann empfängt der Weihnachtsmann sie in seiner Hütte auf dem Disneytown Christmas Market, zwischen Bastel- und Essensständen. Der Christmas Tree Trail führt dort zu einem Baum, der in diesem Jahr Schmuck zum zehnten Geburtstag trägt. Wenn der Baum in Disneytown angeschaltet wird, singt der Magic Glee Club.
 
 ## Tickets, Pakete und Essen
 
@@ -68,7 +68,7 @@ Für den Winter verkauft das Resort zwei Angebote, deren Preise es nicht genannt
 - Disney Dream Vacation – Winter Frostival Package: eine Nacht im Shanghai Disneyland Hotel oder im Toy Story Hotel, Frühstücks- und Abendbuffet für zwei Erwachsene, zwei Tagestickets mit festem Datum, Verzehrgutscheine für den Park und Disney Premier Access für die Cavalcade für zwei Personen
 - Tagesticket mit Gutschein über 88 Yuan: gilt an einem Tag deiner Wahl bis zum 3. Januar 2027, der Gutschein gilt für ein Kombi-Menü zur Abendessenszeit in ausgewählten Schnellrestaurants im Park
 
-Neu auf der Karte stehen Frühlingsrollen mit Wagyu-Cheeseburger-Füllung und Youdunzi in Mickey-Form, die es nur zum Frühstück gibt. Gegen die Kälte gibt es heiße Schokolade und Milchtee, dazu Weihnachtskekse, Muffins, Zuckerwatte und Tanghulu im Look von Mickey und seinen Freunden. Die Royal Banquet Hall und das Aurora haben neue Festmenüs, in den beiden Hotels gibt es Buffets zum Abendessen.
+Neu auf der Karte stehen Frühlingsrollen mit Wagyu-Cheeseburger-Füllung und Youdunzi in Mickey-Form, die es nur zum Frühstück gibt. Tanghulu gibt es im Look von Mickey und seinen Freunden, außerdem Weihnachtskekse, Muffins und Zuckerwatte, und zum Aufwärmen heiße Schokolade und Milchtee. Die Royal Banquet Hall und das Aurora haben neue Festmenüs, in den beiden Hotels gibt es Buffets zum Abendessen.
 
 ## Anreise mit der Metro, im November ohne Fähre
 
@@ -84,7 +84,7 @@ An Wochenenden und Feiertagen sind die Parkplätze voll oder fast voll, deshalb 
 
 Das Shanghai Disney Resort hat am 16. Juni 2016 eröffnet und seitdem mehr als 100 Millionen Besuche gezählt. Das Frostival ist der Winterteil dieser Geburtstagsfeier. Mitten hinein fällt am 16. Dezember die Eröffnung des [Shanghai Disney Enchanted Star Hotel](/news/shanghai-disney-enchanted-star-hotel), des dritten Hotels im Resort.
 
-Für Aufenthalte ab dem 16. November gibt es außerdem ein Paket im Meliá Shanghai Parkside, dem ersten offiziellen Partnerhotel des Resorts, das einen kurzen Fußweg vom Resort entfernt liegt. Enthalten sind das Zimmer, ein Tagesticket mit festem Datum und ein Early Park Entry Pass. Verkauft wird es, solange das Kontingent reicht.
+Für Aufenthalte ab dem 16. November verkauft das Meliá Shanghai Parkside, das erste offizielle Partnerhotel des Resorts und einen kurzen Fußweg entfernt, ein begrenztes Kontingent an Paketen mit Zimmer, Tagesticket mit festem Datum und Early Park Entry Pass.
 
 [Shanghai Disneyland](ref:shanghai-disneyland?full)
 

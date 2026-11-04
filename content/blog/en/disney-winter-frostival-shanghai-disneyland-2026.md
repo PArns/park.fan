@@ -47,7 +47,7 @@ It's called "Star Squad: Join Olaf for a Cozy Celebration", with the Shanghai Di
 
 ## What's back from earlier winters
 
-At Mickey's Snow Magic, Mickey Avenue turns into a snow globe again, with you standing inside it and flakes swirling above the street. In the Disney Winter Magic Cavalcade, Disney characters walk alongside floats dressed as winter scenes. Once it's dark, "A Celebration of Disney Winter Frostival" projects onto the castle, and the light and sound carry into the Gardens of Imagination. Rain, strong wind, poor air quality, thick fog or thunderstorms can lead the resort to delay or cancel the shows.
+Mickey's Snow Magic turns Mickey Avenue into a snow globe again, with you standing inside it and flakes swirling above the street. In the Disney Winter Magic Cavalcade, Disney characters walk alongside floats dressed as winter scenes. Once it's dark, "A Celebration of Disney Winter Frostival" projects onto the castle, and the light and sound carry into the Gardens of Imagination. The resort can delay or cancel the shows for rain, wind, fog or thunderstorms, and when the air quality is poor.
 
 For the winter photo, there are snow figures and ice sculptures of Disney characters on Mickey Avenue and in the Gardens of Imagination, and in the Zootopia land the animals from the film stand around as snow figures.
 
@@ -55,11 +55,11 @@ For the winter photo, there are snow figures and ice sculptures of Disney charac
 
 From 1 December to 3 January, Mickey and his friends wear new ski outfits, and the matching Ski Party collection is in the shops. Santa Goofy is back on Mickey Avenue, and Duffy and his friends turn up in new Christmas outfits. You'll meet princesses, queens and princes at the Castle Encounters throughout the Frostival, sometimes in the winter costumes from the Cavalcade.
 
-At Mickey's Magical Tree Lighting Ceremony in the Gardens of Imagination, Mickey, Minnie, Duffy and LinaBell switch on the resort's tallest Christmas tree while a live band plays. The resort hasn't given a date for it yet. Three more Christmas shows join in: Light Up the Holidays with Magic, Christmas Swing and the Mickey Avenue Carolers.
+At Mickey's Magical Tree Lighting Ceremony in the Gardens of Imagination, Mickey, Minnie, Duffy and LinaBell switch on the resort's tallest Christmas tree while a live band plays. The resort hasn't given a date for it yet. The Mickey Avenue Carolers sing on Mickey Avenue too, and Light Up the Holidays with Magic and Christmas Swing are two more Christmas shows on the programme.
 
 On 31 December and 1 January, Mickey and his friends change into New Year outfits. The castle show for the turn of the year is "Ignite the New Year".
 
-If you've got kids with you, go to Disneytown on a weekend or a public holiday. That's when Santa welcomes them in his cabin at the Disneytown Christmas Market, between craft and food stalls. The Christmas Tree Trail there leads to a tree decorated for the tenth birthday this year, and the Shanghai Disneyland Hotel and the Toy Story Hotel are decorated too. When the Disneytown tree is switched on, the Magic Glee Club sings.
+If you've got kids with you, go to Disneytown on a weekend or a public holiday. That's when Santa welcomes them in his cabin at the Disneytown Christmas Market, between craft and food stalls. The Christmas Tree Trail there leads to a tree decorated for the tenth birthday this year. When the Disneytown tree is switched on, the Magic Glee Club sings.
 
 ## Tickets, packages and food
 
@@ -68,7 +68,7 @@ The resort is selling two winter offers and hasn't published prices for either:
 - Disney Dream Vacation – Winter Frostival Package: one night at the Shanghai Disneyland Hotel or the Toy Story Hotel, breakfast and dinner buffet for two adults, two date-specific one-day tickets, dining vouchers for the park and Disney Premier Access to the Cavalcade for two
 - One-day ticket with an 88-yuan voucher: valid on a day of your choice up to 3 January 2027, with the voucher good for a combo meal at dinnertime in selected quick-service restaurants in the park
 
-New on the menu are spring rolls filled like a wagyu cheeseburger and Mickey-shaped youdunzi, which you'll only get at breakfast. Against the cold there's hot chocolate and milk tea, plus Christmas cookies, muffins, cotton candy and tanghulu made to look like Mickey and his friends. Royal Banquet Hall and Aurora have new festive menus, and both hotels serve dinner buffets.
+New on the menu are spring rolls filled like a wagyu cheeseburger and Mickey-shaped youdunzi, which you'll only get at breakfast. Tanghulu comes made up as Mickey and his friends, alongside Christmas cookies, muffins and cotton candy, with hot chocolate and milk tea for warming up. Royal Banquet Hall and Aurora have new festive menus, and both hotels serve dinner buffets.
 
 ## Getting there by metro, and no ferry in November
 
@@ -84,7 +84,7 @@ On weekends and public holidays the car parks are full or close to it, so on tho
 
 Shanghai Disney Resort opened on 16 June 2016 and has counted more than 100 million visits since. The Frostival is the winter chapter of that birthday celebration. Right in the middle of it, on 16 December, the [Shanghai Disney Enchanted Star Hotel](/news/shanghai-disney-enchanted-star-hotel) opens as the resort's third hotel.
 
-For stays from 16 November there's also a package at the Meliá Shanghai Parkside, the resort's first official partner hotel, a short walk from the resort. It includes the room, a date-specific one-day ticket and an Early Park Entry Pass, and it's on sale while the allocation lasts.
+For stays from 16 November, the Meliá Shanghai Parkside, the resort's first official partner hotel and a short walk away, sells a limited allocation of packages with the room, a date-specific one-day ticket and an Early Park Entry Pass.
 
 [Shanghai Disneyland](ref:shanghai-disneyland?full)
 
