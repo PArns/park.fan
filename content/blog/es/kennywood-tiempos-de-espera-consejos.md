@@ -76,7 +76,7 @@ En el plano de 2026, Kennywood divide el recinto en diez zonas: Entrance Plaza, 
 
 ### Good Time Midway
 
-Desde el 29 de junio de 2010 sale disparada en la Good Time Midway [Sky Rocket](ref:kennywood/sky-rocket?bare), una montaña rusa de lanzamiento de Premier Rides. Un motor lineal lleva el tren a 80 km/h (50 mph) en tres segundos, y luego sube en vertical a un top hat de 29 metros (95 pies). En los 640 metros siguientes vienen un cutback, un zero-g roll y un sacacorchos, y a los 1:05 minutos se ha acabado, el viaje más corto de las grandes montañas rusas del parque. Sky Rocket tiene dos trenes de doce plazas. A partir de mayo de 2018 estuvo parada más de un año, y volvió a funcionar el 13 de julio de 2019, el mismo día en que se inauguró Steel Curtain.
+Desde el 29 de junio de 2010 sale disparada en la Good Time Midway [Sky Rocket](ref:kennywood/sky-rocket?bare), una montaña rusa de lanzamiento de Premier Rides. Un motor lineal lleva el tren a 80 km/h (50 mph) en tres segundos, y luego sube en vertical a un top hat de 29 metros (95 pies). Después vienen un cutback, un zero-g roll y un sacacorchos, en un recorrido de 640 metros (2.100 pies) en total, y a los 1:05 minutos se ha acabado, el viaje más corto de las grandes montañas rusas del parque. Sky Rocket tiene dos trenes de doce plazas. A partir de mayo de 2018 estuvo parada más de un año, y volvió a funcionar el 13 de julio de 2019, el mismo día en que se inauguró Steel Curtain.
 
 ```glossary-widget slug=launch-coaster
 
@@ -204,7 +204,7 @@ A la apertura, yo iría primero a Steel Curtain. Según nuestras mediciones, emp
 
 ```
 
-La temporada va de abril a diciembre. En 2026 Kennywood abrió el sábado 18 de abril a las 11:00, para su temporada número 128. Menos gente hay los domingos de mayo, el Memorial Day, entre semana a finales de junio y durante todo julio. Que justo un festivo aparezca en la lista de los días con menos gente no me lo esperaba.
+La temporada va de abril a principios de enero. En 2026 Kennywood abrió el sábado 18 de abril a las 11:00, para su temporada número 128. Menos gente hay los domingos de mayo, el Memorial Day, entre semana a finales de junio y durante todo julio. Que justo un festivo aparezca en la lista de los días con menos gente no me lo esperaba.
 
 ```stats-widget slug=kennywood show=weekdays
 
@@ -236,7 +236,7 @@ La novedad de 2026 es «Finding Christmas: A Whimsical Journey on Ice», un espe
 - actuaciones de grupos de la zona, hasta el 22 de diciembre
 - «’Twas the Night Before Christmas», leído por personas conocidas de Pittsburgh, en el Kennyville Stage del 20 de noviembre al 22 de diciembre
 
-En Christmastown, un recorrido a pie te lleva hasta Rudolph the Red-Nosed Reindeer y sus amigos Clarice, Bumble y Sam the Snowman. Vuelven el pueblo navideño de Kennywood Junction, el Gingerbread Express, Santa en la Celebration Station y la fiesta de baile Jingle Bell Jamboree. En el Penny Arcade hay una maqueta de tren desde el 20 de noviembre, junto a Noah’s Ark arde un fuego y una oficina de correos temporal recoge las cartas para Santa.
+En Christmastown, un recorrido a pie te lleva hasta Rudolph the Red-Nosed Reindeer y sus amigos Clarice, Bumble y Sam the Snowman. Vuelven el pueblo navideño de Kennywood Junction, el Gingerbread Express, Santa en la Celebration Station y la fiesta de baile Jingle Bell Jamboree. Junto a Noah’s Ark arde un fuego, una oficina de correos temporal recoge las cartas para Santa y desde el 20 de noviembre hay una maqueta de tren en el Penny Arcade.
 
 Funcionan más de 20 atracciones, algunas solo por encima de 4 °C (40 °F):
 

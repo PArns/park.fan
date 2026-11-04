@@ -76,7 +76,7 @@ Op de parkkaart van 2026 deelt Kennywood het terrein op in tien gebieden: Entran
 
 ### Good Time Midway
 
-Sinds 29 juni 2010 vertrekt in de Good Time Midway [Sky Rocket](ref:kennywood/sky-rocket?bare), een launch coaster van Premier Rides. Een lineaire motor brengt de trein in drie seconden op 80 km/u (50 mph), en dan gaat het loodrecht omhoog een 29 meter (95 voet) hoge top hat in. Op de 640 meter die volgen zitten een cutback, een zero-g-roll en een kurkentrekker, en na 1:05 minuten sta je alweer stil. Daarmee is het de kortste rit van de grote banen in het park. Sky Rocket heeft twee treinen met elk twaalf plaatsen. Vanaf mei 2018 stond de baan meer dan een jaar stil, en op 13 juli 2019 reed hij weer, op dezelfde dag waarop Steel Curtain openging.
+Sinds 29 juni 2010 vertrekt in de Good Time Midway [Sky Rocket](ref:kennywood/sky-rocket?bare), een launch coaster van Premier Rides. Een lineaire motor brengt de trein in drie seconden op 80 km/u (50 mph), en dan gaat het loodrecht omhoog een 29 meter (95 voet) hoge top hat in. Daarna volgen een cutback, een zero-g-roll en een kurkentrekker, op een baan die in totaal 640 meter (2.100 voet) lang is, en na 1:05 minuten sta je alweer stil. Daarmee is het de kortste rit van de grote banen in het park. Sky Rocket heeft twee treinen met elk twaalf plaatsen. Vanaf mei 2018 stond de baan meer dan een jaar stil, en op 13 juli 2019 reed hij weer, op dezelfde dag waarop Steel Curtain openging.
 
 ```glossary-widget slug=launch-coaster
 
@@ -204,7 +204,7 @@ Bij de opening zou ik eerst naar Steel Curtain lopen. Volgens onze metingen win 
 
 ```
 
-Het seizoen loopt van april tot december. In 2026 ging Kennywood op zaterdag 18 april om 11.00 uur open, voor zijn 128e seizoen. Het minst druk is het op zondagen in mei, op Memorial Day, doordeweeks eind juni en de hele maand juli. Dat uitgerekend een feestdag tussen de rustige dagen staat, had ik niet zien aankomen.
+Het seizoen loopt van april tot begin januari. In 2026 ging Kennywood op zaterdag 18 april om 11.00 uur open, voor zijn 128e seizoen. Het minst druk is het op zondagen in mei, op Memorial Day, doordeweeks eind juni en de hele maand juli. Dat uitgerekend een feestdag tussen de rustige dagen staat, had ik niet zien aankomen.
 
 ```stats-widget slug=kennywood show=weekdays
 
@@ -236,7 +236,7 @@ Nieuw in 2026 is “Finding Christmas: A Whimsical Journey on Ice”, een ijssho
 - optredens van groepen uit de omgeving tot en met 22 december
 - “’Twas the Night Before Christmas”, voorgelezen door bekende Pittsburghers, op de Kennyville Stage van 20 november tot en met 22 december
 
-In Christmastown loop je een route langs Rudolph the Red-Nosed Reindeer en zijn vrienden Clarice, Bumble en Sam the Snowman. Ook weer terug zijn het kerstdorp in Kennywood Junction, de Gingerbread Express, Santa in de Celebration Station en het dansfeest Jingle Bell Jamboree. In de Penny Arcade staat vanaf 20 november een modelspoorbaan, bij Noah’s Ark brandt een vuur, en een pop-uppostkantoor neemt brieven aan Santa aan.
+In Christmastown loop je een route langs Rudolph the Red-Nosed Reindeer en zijn vrienden Clarice, Bumble en Sam the Snowman. Ook weer terug zijn het kerstdorp in Kennywood Junction, de Gingerbread Express, Santa in de Celebration Station en het dansfeest Jingle Bell Jamboree. Bij Noah’s Ark brandt een vuur, een pop-uppostkantoor neemt brieven aan Santa aan, en vanaf 20 november staat in de Penny Arcade een modelspoorbaan.
 
 Er draaien meer dan 20 attracties, sommige alleen boven 4 °C (40 °F):
 

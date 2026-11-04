@@ -83,7 +83,7 @@ On its 2026 park map, Kennywood divides the grounds into ten areas: Entrance Pla
 
 ### Good Time Midway
 
-[Sky Rocket](ref:kennywood/sky-rocket?bare), a launch coaster by Premier Rides, has been firing trains out of the Good Time Midway since 29 June 2010. A linear motor gets the train to 50 mph (80 km/h) in three seconds, then it heads straight up into a top hat 95 feet (29 metres) high. The 640 metres of track after that hold a cutback, a zero-g roll and a corkscrew, and after 1:05 minutes you're back in the station, the shortest ride of the big coasters in the park. Sky Rocket has two trains with twelve seats each. From May 2018 it stood idle for more than a year and returned on 13 July 2019, the same day Steel Curtain opened.
+[Sky Rocket](ref:kennywood/sky-rocket?bare), a launch coaster by Premier Rides, started firing trains out of the Good Time Midway on 29 June 2010. A linear motor gets the train to 50 mph (80 km/h) in three seconds, then it heads straight up into a top hat 95 feet (29 metres) high. After that come a cutback, a zero-g roll and a corkscrew, on a track 2,100 feet (640 metres) long from start to finish, and after 1:05 minutes you're back in the station, the shortest ride of the big coasters in the park. Sky Rocket has two trains with twelve seats each. From May 2018 it stood idle for more than a year and returned on 13 July 2019, the same day Steel Curtain opened.
 
 ```glossary-widget slug=launch-coaster
 
@@ -95,7 +95,7 @@ The [Jack Rabbit](ref:kennywood/jack-rabbit?bare) is Kennywood's oldest coaster 
 
 ```
 
-The [Old Mill](ref:kennywood/old-mill?bare) is older still. It's been here since 1901, the oldest surviving ride in the park, and according to Kennywood no dark ride on water anywhere in the world has run longer without a break. It has gone by plenty of names over the years, "Panama Canal", "Tour Around the World" and, from 2004 to 2020, "Garfield's Nightmare". In 2020 the park restored it.
+The [Old Mill](ref:kennywood/old-mill?bare) is older still. It opened in 1901, which makes it the oldest surviving ride in the park, and according to Kennywood no dark ride on water anywhere in the world has run longer without a break. It has gone by plenty of names over the years, "Panama Canal", "Tour Around the World" and, from 2004 to 2020, "Garfield's Nightmare". In 2020 the park restored it.
 
 The [Kangaroo](ref:kennywood/kangaroo?bare) in the Good Time Midway dates from 1962. After the 2020 season Kennywood took it down, renovated it and put it back up in 2022.
 
@@ -115,15 +115,15 @@ According to Kennywood, the [Auto Race](ref:kennywood/auto-race?bare) from 1930 
 
 ### Steelers Country
 
-The Pittsburgh Steelers have had an area of their own since 2019, Steelers Country, and its ride is [Steel Curtain](ref:kennywood/the-steel-curtain?bare). S&S Worldwide built the steel coaster to a design by Joe Draves, and it opened on 13 July 2019 where the Log Jammer flume used to be. Steel Curtain is 220 feet (67 metres) tall, and the park says no coaster in Pennsylvania is taller. RCDB gives 75 mph (121 km/h) and eight inversions, Kennywood 76 mph (122 km/h) and nine. The highest inversion is 197 feet (60 metres) above the ground and was the highest in the world when the coaster opened. The train needs two minutes for its 4,000 feet (1,219 metres), and two trains with 24 seats each are in service.
+The Pittsburgh Steelers got an area of their own in 2019, Steelers Country, and its ride is [Steel Curtain](ref:kennywood/the-steel-curtain?bare). S&S Worldwide built the steel coaster to a design by Joe Draves, and it opened on 13 July 2019 where the Log Jammer flume used to be. Steel Curtain is 220 feet (67 metres) tall, and the park says no coaster in Pennsylvania is taller. RCDB gives 75 mph (121 km/h) and eight inversions, Kennywood 76 mph (122 km/h) and nine. The highest inversion is 197 feet (60 metres) above the ground and was the highest in the world when the coaster opened. The train needs two minutes for its 4,000 feet (1,219 metres), and two trains with 24 seats each are in service.
 
-In July 2023 Kennywood closed Steel Curtain to add extra footings and supports. The coaster sat out the whole 2024 season and came back in May 2025. The weight limit is 300 lbs (136 kg), and there's a test seat, which a Steelers linebacker would probably want to try before anyone else.
+In July 2023 Kennywood closed Steel Curtain to add extra footings and supports. The coaster sat out the whole 2024 season and came back in May 2025. The weight limit is 300 lbs (136 kg), and a test seat lets anyone built like a Steelers linebacker check the fit before joining the queue.
 
 The End Zone Cafe, the Punts Bar and a Steelers merchandise shop are in the same area.
 
 ### Kenny Lane
 
-[Phantom's Revenge](ref:kennywood/phantoms-revenge?bare) opened in 1991 as Steel Phantom, an Arrow Dynamics steel coaster with four loops. Its 80 mph (129 km/h) and its 225-foot (69-metre) drop were world records for speed and drop height at the time, the park says. Over the winter of 2000/01, D.H. Morgan rebuilt it, took the loops out and set the big drop a little lower. It's been called Phantom's Revenge since 2001. For its 25th birthday in 2026 the cars run alternately in green and purple, the station has been renewed, and the queue plays the original ride sounds, re-recorded.
+[Phantom's Revenge](ref:kennywood/phantoms-revenge?bare) opened in 1991 as Steel Phantom, an Arrow Dynamics steel coaster with four loops. Its 80 mph (129 km/h) and its 225-foot (69-metre) drop were world records for speed and drop height at the time, the park says. Over the winter of 2000/01, D.H. Morgan rebuilt it, took the loops out and set the big drop a little lower, and in 2001 it reopened as Phantom's Revenge. For its 25th birthday in 2026 the cars run alternately in green and purple, the station has been renewed, and the queue plays the original ride sounds, re-recorded.
 
 The train climbs 160 feet (49 metres) and reaches 85 mph (137 km/h). RCDB puts the longest drop at 228 feet (69.5 metres), while Kennywood gives 232 feet (71 metres) for the second drop. The two disagree on the length as well, with 3,200 feet (975 metres) at RCDB and 3,365 feet (1,026 metres) from the park. Along the way the train passes twice through Thunderbolt's wooden structure. The ride lasts 1:57 minutes, and each of the two trains seats 28.
 
@@ -139,7 +139,7 @@ In [Ghostwood Estate](ref:kennywood/ghostwood-estate?bare), an interactive dark 
 
 ```
 
-Kennywood has rebuilt Noah's Ark, which dates from 1936, twice: in 1969 it got the blue whale, and in 2016 a renovation. The Turtle has run since 1927 and got its sixth car and its turtle shapes in 1948.
+Kennywood has rebuilt Noah's Ark, which dates from 1936, twice: in 1969 it got the blue whale, and in 2016 a renovation. The Turtle dates from 1927 and got its sixth car and its turtle shapes in 1948.
 
 [Raging Rapids](ref:kennywood/raging-rapids?bare), the Intamin river rapids ride from 1985, uses a natural slope and won't reopen until 2027. Outside Raging Rapids and Pittsburg\* Plunge there are drying stations where, for a small fee, you can get blown dry in about three minutes, a service you'd otherwise expect at a dog groomer's.
 
@@ -149,27 +149,27 @@ Lost Kennywood, opened in 1995, was the biggest single expansion in the park's h
 
 At its centre is [Pittsburg\* Plunge](ref:kennywood/pittsburg-plunge?bare), a shoot-the-chute from 1995 that also won't reopen until 2027. Three boats holding 20 people each plunge 50 feet (15 metres) into the pool. The name is missing its h because that's how the city used to be spelled.
 
-The [Exterminator](ref:kennywood/exterminator?bare) is a wild mouse by Reverchon with spinning cars. It's run since 18 April 1999 inside a building dressed up as a factory taken over by mice. The highest point is 42.7 feet (13 metres), the cars reach 29.1 mph (47 km/h) on 420 metres of track, and a ride lasts 1:48 minutes. Nine cars with four seats each take 900 riders an hour through the building.
+The [Exterminator](ref:kennywood/exterminator?bare) is a wild mouse by Reverchon with spinning cars. It opened on 18 April 1999 inside a building dressed up as a factory taken over by mice. The highest point is 42.7 feet (13 metres), the cars reach 29.1 mph (47 km/h) on 420 metres of track, and a ride lasts 1:48 minutes. Nine cars with four seats each take 900 riders an hour through the building.
 
 ```glossary-widget slug=wild-mouse
 
 ```
 
-[Black Widow](ref:kennywood/black-widow?bare) has swung and spun its riders up to 146 feet (45 metres) since 2012, at up to 68 mph (109 km/h). It replaced the Pitt Fall drop tower, which ran from 1997 to 2011. SwingShot, also in Lost Kennywood, has flung riders at more than 50 mph (80 km/h) since 2006. The Wave Swinger is a Zierer ride and takes riders up to 220 lbs (100 kg).
+[Black Widow](ref:kennywood/black-widow?bare) took the place of the Pitt Fall drop tower (1997 to 2011) in 2012 and swings and spins its riders up to 146 feet (45 metres) at up to 68 mph (109 km/h). SwingShot, added to Lost Kennywood in 2006, flings riders at more than 50 mph (80 km/h). The Wave Swinger is a Zierer ride and takes riders up to 220 lbs (100 kg).
 
 The [Whip](ref:kennywood/whip?bare) came to Kennywood in 1919 with twelve cars, and in 1926 the park replaced it with today's model, which has 16. That one turned 100 in 2026 and got a new fence and an anniversary logo for the occasion.
 
 ### Area 412
 
-The name Area 412 combines Area 51 with Pittsburgh's 412 area code, so since 2023 the area has been all about aliens. [Spinvasion](ref:kennywood/spinvasion?bare), the first Zamperla Gryphon in the US, has spun there since it opened. In Cosmic Chaos, a UFO has ridden up a U-shaped track to 50 feet (15 metres) since 2007.
+The name Area 412 combines Area 51 with Pittsburgh's 412 area code, so in 2023 the area went over to aliens. [Spinvasion](ref:kennywood/spinvasion?bare), the first Zamperla Gryphon in the US, spins riders there. Cosmic Chaos dates from 2007: a UFO that rides up a U-shaped track to 50 feet (15 metres).
 
 ### Kiddieland and Kennywood Junction
 
-Kiddieland has been in its current spot since 1927, on the edge of the bluff on the river side of the park. The smallest coaster runs there, [Lil' Phantom](ref:kennywood/lil-phantom?bare), a Moli-Coaster by Molina & Son's from 1996. Its five-car train carries ten kids, and the lap is over after 15 seconds. Kenny's Karousel, with 16 jumping and 10 standing horses and two chariots, has been part of Kiddieland since 1924 and won't reopen until 2027. The Red Baron, the Steel City Choppers and the Wacky Wheel are among the rides spinning nearby.
+Kiddieland has been in its current spot since 1927, on the edge of the bluff on the river side of the park. The smallest coaster runs there, [Lil' Phantom](ref:kennywood/lil-phantom?bare), a Moli-Coaster by Molina & Son's from 1996. Its five-car train carries ten kids, and the lap is over after 15 seconds. Kenny's Karousel, with 16 jumping and 10 standing horses and two chariots, came to Kiddieland in 1924 and won't reopen until 2027. The Red Baron, the Steel City Choppers and the Wacky Wheel are among the rides spinning nearby.
 
 Kennywood Junction arrived on the season's opening day, 12 April 2025. Kennywood describes it as a small neighbourhood of a steel town with five family rides: Olde Kennywood Railroad, Fire Bustin' Brigade, Coal Haulin' Convoy, Parker's Cloud Cruisers and Kenny's Cargo Drop.
 
-The locomotive of the [Olde Kennywood Railroad](ref:kennywood/olde-kennywood-railroad?bare), the Gimbels Flyer, ran at the 1939 New York World's Fair and has been at Kennywood since 1945, and the Kenny Express is a new addition. From the train you look out over the Monongahela River and the Edgar Thomson Works, Pittsburgh's oldest steelworks. In winter it goes by Gingerbread Express.
+The locomotive of the [Olde Kennywood Railroad](ref:kennywood/olde-kennywood-railroad?bare), the Gimbels Flyer, ran at the 1939 New York World's Fair and came to Kennywood in 1945, and the Kenny Express is a new addition. From the train you look out over the Monongahela River and the Edgar Thomson Works, Pittsburgh's oldest steelworks. In winter it goes by Gingerbread Express.
 
 ## Height requirements
 
@@ -195,7 +195,7 @@ A companion has to be at least 14 and tall enough to ride alone. Babies aren't a
 
 ```
 
-At opening I'd go to Steel Curtain first. By our measurements, starting early saves you some time at Steel Curtain, Phantom's Revenge, Exterminator, Jack Rabbit and Ghostwood Estate, though it doesn't add up to much at any of the five. Racer and Sky Rocket are better left for later, because by our measurements an early start gains you nothing there. Kennywood's own advice is to start early at the back of the park, and the park says the queues at the water rides are shorter in the morning and in the evening.
+At opening I'd go to Steel Curtain first. By our measurements Steel Curtain, Phantom's Revenge, Exterminator, Jack Rabbit and Ghostwood Estate are a little shorter right after opening than later in the day, while at Racer and Sky Rocket the first hour gains you nothing, so those two can wait. Kennywood's own advice is to start early at the back of the park, and the park says the queues at the water rides are shorter in the morning and in the evening.
 
 ```glossary-widget slug=rope-drop
 
@@ -211,7 +211,7 @@ At opening I'd go to Steel Curtain first. By our measurements, starting early sa
 
 ```
 
-The season runs from April to December. In 2026 Kennywood opened for its 128th season on Saturday 18 April at 11 a.m. It's least busy on Sundays in May, on Memorial Day, on weekdays in late June and right through July. A public holiday on the list of quiet days wasn't something I'd have bet on.
+The season runs from April into early January. In 2026 Kennywood opened for its 128th season on Saturday 18 April at 11 a.m. It's least busy on Sundays in May, on weekdays in late June, right through July and, of all days, on the Memorial Day public holiday.
 
 ```stats-widget slug=kennywood show=weekdays
 
@@ -243,7 +243,7 @@ New for 2026 is "Finding Christmas: A Whimsical Journey on Ice", an ice show wit
 - performances by local groups until 22 December
 - "'Twas the Night Before Christmas", read by well-known Pittsburghers, on the Kennyville Stage from 20 November to 22 December
 
-In Christmastown a walk-through takes you to Rudolph the Red-Nosed Reindeer and his friends Clarice, Bumble and Sam the Snowman. Back again are the Christmas village in Kennywood Junction, the Gingerbread Express, Santa in the Celebration Station and the Jingle Bell Jamboree dance party. From 20 November there's a model railway in the Penny Arcade, a fire burns by Noah's Ark, and a pop-up post office takes letters to Santa.
+In Christmastown a walk-through takes you to Rudolph the Red-Nosed Reindeer and his friends Clarice, Bumble and Sam the Snowman. Back again are the Christmas village in Kennywood Junction, the Gingerbread Express, Santa in the Celebration Station and the Jingle Bell Jamboree dance party. A fire burns by Noah's Ark, a pop-up post office takes letters to Santa, and from 20 November a model railway runs in the Penny Arcade.
 
 More than 20 rides operate, some of them only above 40 °F (4 °C):
 
@@ -258,13 +258,13 @@ Holiday Lights is nominated for best theme park holiday event in the USA Today 1
 
 From 18 April to 10 May 2026 the park held its first Celebrate Kennywood Weekends, on Saturdays and Sundays, with food built around the potato. The Bites and Pints food festival followed from Friday to Sunday between 22 May and 28 June, and on Monday 25 May, with stands from France and Germany. For the 250th birthday of the US, Zambelli set off what the park calls the biggest fireworks show in Kennywood's history on 4 July, and on the weekends from 11 to 26 July more than 300 drones went up.
 
-Local marching bands have walked in the Fall Fantasy Parades since 1955, more than 180 of them today. In 2026 the parades ran every day from 1 to 17 August and on 22 August. Phantom Fall Fest, the Halloween event since 2021, ran on selected days until 1 November, and in the 2026 USA Today 10Best awards it came fourth among theme park Halloween events.
+Local marching bands have walked in the Fall Fantasy Parades since 1955, more than 180 of them today. In 2026 the parades ran every day from 1 to 17 August and on 22 August. Phantom Fall Fest, the Halloween event that started in 2021, ran on selected days until 1 November, and in the 2026 USA Today 10Best awards it came fourth among theme park Halloween events.
 
-After 3 January 2027 there are no operating days in the calendar until the end of May, and Kennywood hasn't published dates for summer 2027 yet. The park marks Raging Rapids, Pittsburg\* Plunge, the Paddle Boats and Kenny's Karousel as "Reopens in 2027".
+After 3 January 2027 there are no operating days in the calendar until the end of May, and Kennywood hasn't published dates for summer 2027 yet.
 
 ## Speedy Pass
 
-Speedy Pass is a virtual queue on your phone. Depending on the tier, the virtual wait is as long as the regular one or shorter:
+Speedy Pass is a virtual queue on your phone, sold in four tiers:
 
 - Standard: the virtual wait is as long as the regular one, but you can spend it somewhere else.
 - Premium: up to 50 percent less waiting
@@ -354,7 +354,7 @@ In 1818 Charles Kenny bought the land above the Monongahela River. Around the ti
 
 The first coaster, the Figure Eight Toboggan, arrived in 1902. In 1906 A.S. McSwigan and F.W. Henninger took over the park, and their families ran it for a whole century, by the 2007 season in the fourth and fifth generations. When the Turtle arrived in 1927, it ran under the name Tumble Bug at first. The streetcar line Kennywood was once built for ran until 15 September 1958, when route 68 switched to buses.
 
-Kenny Kangaroo first appeared as the mascot in 1974. In 1980 came the first steel coaster, Laser Loop, which ran until 1990. The families bought Idlewild in Ligonier in 1983 and built the Sandcastle water park in Homestead in 1989. In 1988 WQED aired Rick Sebak's documentary "Kennywood Memories". A Pennsylvania state historical marker has stood for the park since 5 August 1992, and the 2009 film "Adventureland" was shot at Kennywood.
+Kenny Kangaroo first appeared as the mascot in 1974. In 1980 came the first steel coaster, Laser Loop, which ran until 1990. The families bought Idlewild in Ligonier in 1983 and built the Sandcastle water park in Homestead in 1989. In 1988 WQED aired Rick Sebak's documentary "Kennywood Memories". The park got a Pennsylvania state historical marker on 5 August 1992, and the 2009 film "Adventureland" was shot at Kennywood.
 
 In December 2007 the families sold Kennywood and its sister parks to Palace Entertainment, a subsidiary of Parques Reunidos in Madrid, and the park changed hands in 2008. On 18 March 2025 Herschend Family Entertainment and Parques Reunidos signed the agreement under which Herschend took over all of Palace Entertainment's US parks, Kennywood included. The general manager of Kennywood and Sandcastle is Ricky Spicuzza, who has worked at the park since 2002.
 
