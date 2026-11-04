@@ -2,7 +2,7 @@
 title: "Knott's Merry Farm startet am 20. November mit neuer Eisshow"
 translationKey: knotts-merry-farm-2026
 date: '2026-11-04'
-time: '17:30'
+time: '18:23'
 author: patrick
 mode: published
 featured: false
@@ -42,15 +42,13 @@ Am 20. November wird [Knott's Berry Farm](ref:knotts-berry-farm) in Buena Park z
 
 Ein Vokalquartett singt Weihnachtsklassiker, und eine Reihe Follies-Tänzerinnen wirft die Beine in die Höhe. Dazwischen laufen Snoopy und seine Freunde mit den Eiskunstläufern übers Eis. Das Theater hat rund 2.000 Plätze, für einen Beagle ist das ein ordentliches Publikum. Spielzeiten stehen nur in der Six-Flags-App, und das Programm wechselt von Tag zu Tag.
 
-Beim Namen ist sich Six Flags selbst nicht einig: Die Pressemitteilung vom 4. November nennt die Show „Snoopy's Christmas Follies“, der Event-Guide des Parks „Snoopy's Merry Christmas Follies“.
-
-Eine Eisshow mit Snoopy gab es zur Merry Farm schon früher, etwa „Snoopy's Night Before Christmas“.
+Beim Namen ist sich Six Flags selbst nicht einig: Die Pressemitteilung vom 4. November nennt die Show „Snoopy's Christmas Follies“, der Event-Guide des Parks „Snoopy's Merry Christmas Follies“. Snoopy stand zur Merry Farm schon in früheren Wintern auf dem Eis, etwa in „Snoopy's Night Before Christmas“.
 
 ## Lichter, Shows und der Weihnachtsmann
 
-Zwischen Girlanden und großen Schneeflocken hängen Tausende Lichter, und jeden Abend kommt parkweit der Holiday Lighting Moment dazu. Die Lichter auf der Main Street und der Schoolhouse Road in Ghost Town tanzen bei Snow and Glow zu Weihnachtsmusik, während es schneit. Im Calico Park geht bei der „'Tis the Season Tree Lighting Ceremony“ der Weihnachtsbaum an.
+Zwischen Girlanden und großen Schneeflocken hängen Tausende Lichter. Den Holiday Lighting Moment gibt es jeden Abend im ganzen Park. Die Lichter auf der Main Street und der Schoolhouse Road in Ghost Town tanzen bei Snow and Glow zu Weihnachtsmusik, während es schneit. Im Calico Park geht bei der „'Tis the Season Tree Lighting Ceremony“ der Weihnachtsbaum an.
 
-Dazu laufen diese Shows:
+Auf den anderen Bühnen rund um Calico und im Fiesta Village läuft ebenfalls Programm:
 
 - Home for the Holidays: Musikrevue mit Tanz und Winterkulisse auf der Calico Mine Stage
 - The Gift of the Magi, 1885 und A Calico Christmas Carol: zwei Stücke nach O. Henry und Charles Dickens im Bird Cage Theatre
@@ -98,11 +96,11 @@ Das Knott's Hotel liegt direkt am Park und verkauft Pakete mit Eintritt. Zum Bla
 
 ## Anreise und Parken
 
-Der Park liegt am 8039 Beach Boulevard in Buena Park. Parken kostet 40 Dollar, auf dem Grand Preferred Lot direkt am Park 60 Dollar. Bargeld nimmt der Park nicht. Die Parkplätze öffnen etwa eine Stunde vor dem Park. Ohne Auto fährst du mit Metrolink bis zum Bahnhof Buena Park an der Lakeknoll Drive und von dort mit einem OCTA-Bus den Beach Boulevard hinunter. Aus Hotels in Anaheim, Garden Grove und Buena Park fährt der Karmel Shuttle, wenn du ihn vorher reservierst. Wer für die [Weihnachtssaison im Disneyland Resort](/news/disneyland-resort-holidays-2026) in Anaheim wohnt, kommt mit dem Karmel Shuttle auch zu Knott's. Vom Flughafen John Wayne in Orange County sind es nach Angaben des Parks 20 Minuten, von LAX 30.
+Der Park liegt am 8039 Beach Boulevard in Buena Park. Parken kostet 40 Dollar, auf dem Grand Preferred Lot direkt am Park 60 Dollar. Bargeld nimmt der Park nicht. Die Parkplätze öffnen etwa eine Stunde vor dem Park. Ohne Auto fährst du mit Metrolink bis zum Bahnhof Buena Park an der Lakeknoll Drive und von dort mit einem OCTA-Bus den Beach Boulevard hinunter. Aus Hotels in Anaheim, wo das Disneyland Resort seine [Weihnachtssaison](/news/disneyland-resort-holidays-2026) feiert, sowie aus Garden Grove und Buena Park fährt der Karmel Shuttle, wenn du ihn vorher reservierst. Vom Flughafen John Wayne in Orange County sind es nach Angaben des Parks 20 Minuten, von LAX 30.
 
 ## Von der Beerenfarm zu Six Flags
 
-Ab 1923 verkaufte die Familie Knott an einem Stand an der Straße Beeren, Marmelade und Kuchen. Daneben eröffnete Walter Knott 1941 die Ghost Town, und seit 1947 heißt das Ganze Knott's Berry Farm. Snoopy ist das Maskottchen des Parks, seit 1983 Camp Snoopy gebaut wurde. Die erste Merry Farm dachte sich 1985 Gary Salisbury aus, zwei Jahre nachdem der Beagle eingezogen war. Vor der Merry Farm lief hier im Herbst die Scary Farm, die in unserem Überblick [Halloween in den USA](/blog/halloween-usa-freizeitparks-2026) vorkommt. 1997 verkaufte die Familie den Park an Cedar Fair, das am 1. Juli 2024 mit Six Flags fusionierte.
+Ab 1923 verkaufte die Familie Knott an einem Stand an der Straße Beeren, Marmelade und Kuchen. Daneben eröffnete Walter Knott 1941 die Ghost Town, und seit 1947 heißt das Ganze Knott's Berry Farm. Snoopy ist das Maskottchen des Parks, seit 1983 Camp Snoopy gebaut wurde. Die erste Merry Farm dachte sich 1985 Gary Salisbury aus. Vor der Merry Farm lief hier im Herbst die Scary Farm, die in unserem Überblick [Halloween in den USA](/blog/halloween-usa-freizeitparks-2026) vorkommt. 1997 verkaufte die Familie den Park an Cedar Fair, das am 1. Juli 2024 mit Six Flags fusionierte.
 
 Six Flags feiert in diesem Winter in elf Parks. In [Six Flags Great Adventure](/news/six-flags-great-adventure-holiday-in-the-park-2026) und in Six Flags Over Georgia ist Holiday in the Park neu gestaltet, Six Flags Magic Mountain in Valencia zeigt ab dem 26. November sieben neue Shows. Den neuen freien Eintritt ab 65 Jahren und das Black-Friday-Ticket, mit dem du für den Preis eines Tages die ganze Frühjahrs- und Sommersaison 2027 bekommst, gibt es bei Knott's nicht.
 
