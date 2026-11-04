@@ -15,6 +15,10 @@ heading, and the same pull request writes the public entry in `content/changelog
 
 Geschnitten am 2026-11-04 aus 82 Fragmenten in `docs/changelog.d/`. Der öffentliche Eintrag ist `content/changelog/2.19.0.md`. Neueste Abschnitte zuerst.
 
+### Admin: die CPU-Temperatur wird erst kurz vor der Grenze des Chips rot, nicht schon bei 85 °C
+
+Die CPU-Temperatur im Admin wird jetzt an der Grenze des Chips gemessen statt an festen 85 °C: gelb 15 °C und rot 5 °C unter TjMax, auf dem Server also ab 90 und ab 100 °C. Auf Intel folgt das Package dem heißesten Kern, also hob ein einzelner heißer Kern unter Last das Package auf 85 °C und färbte Server-Bereich, Problemkarte und Seitenleiste rot, obwohl der Chip erst bei 105 °C drosselt. Die API liefert dazu `host.cpu.temperatureLimits` aus `temp*_crit` des Sensors (API PAR-1226); ohne das Feld gelten 85/95 °C (`CPU_TEMP_C`, `cpuTempThreshold` in `lib/admin/health.ts`). Auf der Systemseite gelten für die CPU-Sensoren dieselben Grenzen, GPU und übrige Sensoren behalten `CHIP_TEMP_C`.
+
 ### Das Hero-Foto steht still, und die FAQ nennt die Quellen richtig
 
 Der langsame Ken-Burns-Zoom des Hero-Fotos entfällt samt `useHeroPanAllowed`, `.hero-ken-burns` und `.hero-motion-paused`: Mit Parky, seiner Sprechblase und den Karten war er eine Bewegung zu viel, und jeder seiner Frames ließ das Glas des Suchfelds neu filtern. Die Antwort auf „Sind die Wartezeiten live?“ (`seo.homepage.faq.liveDataA`) sagte in allen sechs Sprachen, bei Widerspruch entscheide die Mehrheit der Quellen. Gespeichert wird aber die Zahl von ThemeParks.wiki, wo sie eine hat; Wartezeiten.app und Queue-Times.com ergänzen fehlende Bahnen und korrigieren einen veralteten Status „geschlossen“. So steht es jetzt da, abgefragt bei den Quellen, die den Park führen, bis zu drei.
