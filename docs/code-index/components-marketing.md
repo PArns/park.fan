@@ -31,7 +31,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`scroll-reveal.tsx`](../../components/marketing/scroll-reveal.tsx)
 
-- `Reveal` _component_: Lightweight scroll-reveal: fades + rises its children in the first time they enter the viewport, then stays put (one-shot observer).
+- `Reveal` _component_: Lightweight scroll-reveal: fades + rises its children in the first time any of them shows in the viewport, then stays put (one-shot observer).
 - `ScrollCue` _component_: Animated scroll-down chevron for a full-bleed hero. Links to the page's `#start` anchor. Purely decorative.
 
 ### [`shot-row.tsx`](../../components/marketing/shot-row.tsx)

@@ -145,7 +145,7 @@ simState]`) passes the server render as `initialData` with `initialDataUpdatedAt
 
 ### A cached entry may only seed the question it answered
 
-`useNearbyParks` seeds its query from `localStorage` (`nearby-parks-v2`) through `initialData` and
+`useNearbyParks` seeds its query from `localStorage` (`nearby-parks-v3`) through `initialData` and
 `initialDataUpdatedAt`, so `staleTime` applies to whatever it finds. An entry written by the IP
 request (no coordinates; city-level at best) once seeded the GPS query that followed a location
 grant, React Query called it fresh, and no coordinate request went out for five minutes: a visitor

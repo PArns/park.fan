@@ -8,6 +8,7 @@ import { useParkyBoredom } from '@/lib/assistant/use-parky-boredom';
 import { useSearchOpen } from '@/lib/analytics/search-presence';
 import { onSiteEvent } from '@/lib/analytics/site-analytics';
 import type { ParkyReactionAct } from '@/lib/assistant/reactions';
+import { PARKY_LANDED_EVENT } from '@/lib/assistant/parky-jump';
 import {
   HUB,
   LOOP,
@@ -250,7 +251,8 @@ let lastPointer: { x: number; y: number } | null = null;
  * The pupils' offset towards the pointer, so Parky looks at the mouse. Only for a fine pointer and
  * without reduced motion; one frame at most per pointer move. A Parky that appears looks where the
  * pointer was last seen, and `pointerover`, which the browser sends when the page moves under a
- * still pointer, aims him without waiting for the mouse to move. Two easter eggs ride along: the
+ * still pointer, aims him without waiting for the mouse to move, and so does a hop landing
+ * (`PARKY_LANDED_EVENT`). Two easter eggs ride along: the
  * pointer on Parky's nose makes it squint at it (`cross`), and the pointer circling it fast, two
  * turns inside 1.5 s, calls `onDizzy`.
  */
@@ -297,6 +299,16 @@ function useGaze(svg: React.RefObject<SVGSVGElement | null>, onDizzy?: () => voi
         frame = 0;
         aim(seen.x, seen.y);
       });
+    // A hop moves Parky under a still pointer, and the page scrolling under it aims him mid-air:
+    // once he lands, he looks again from where he stands.
+    const onLanded = () => {
+      const pointer = lastPointer;
+      if (!pointer || frame) return;
+      frame = requestAnimationFrame(() => {
+        frame = 0;
+        aim(pointer.x, pointer.y);
+      });
+    };
     const onOver = (event: PointerEvent) => {
       lastPointer = { x: event.clientX, y: event.clientY };
       if (frame) return;
@@ -340,9 +352,11 @@ function useGaze(svg: React.RefObject<SVGSVGElement | null>, onDizzy?: () => voi
     };
     window.addEventListener('pointermove', onMove, { passive: true });
     window.addEventListener('pointerover', onOver, { passive: true });
+    window.addEventListener(PARKY_LANDED_EVENT, onLanded);
     return () => {
       window.removeEventListener('pointermove', onMove);
       window.removeEventListener('pointerover', onOver);
+      window.removeEventListener(PARKY_LANDED_EVENT, onLanded);
       cancelAnimationFrame(frame);
     };
   }, [svg]);

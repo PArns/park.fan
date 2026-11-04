@@ -15,6 +15,8 @@ export function OpenParksBadge({ label, className }: { label: string | null; cla
     <span
       className={cn(
         'inline-flex h-[30px] w-fit shrink-0 items-center gap-2 self-start rounded-full border px-3.5 text-[11px] font-bold tracking-[0.14em] uppercase shadow-sm',
+        // A strong blur, so the text stands on the photo whatever runs behind it.
+        'backdrop-blur-xl',
         pending
           ? 'border-border/50 bg-background/50'
           : 'border-status-operating/40 bg-status-operating/10 text-status-operating',

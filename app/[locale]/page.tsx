@@ -21,7 +21,6 @@ import { HeroImageInfo } from '@/components/layout/hero-image-info';
 import { HeroRotationProvider } from '@/components/layout/hero-rotation-context';
 import { HeroInlineSearch } from '@/components/search/hero-inline-search';
 import { HeroEntranceGate } from '@/components/home/hero-entrance-gate';
-import { HeroWithNearby } from '@/components/home/hero-with-nearby';
 import { HeroStats } from '@/components/home/hero-stats';
 import { HeroTextPanel } from '@/components/home/hero-text-panel';
 import { HeroRail } from '@/components/home/hero-rail';
@@ -123,8 +122,8 @@ export default async function HomePage({ params }: HomePageProps) {
   setRequestLocale(locale);
 
   // Only the static, above-the-fold shell needs translations up front. Every data-dependent
-  // section fetches its own data (and translations) inside a Suspense boundary below, so the hero
-  // renders and streams without waiting on the API.
+  // section below the hero fetches its own data (and translations) inside a Suspense boundary; the
+  // hero's counts are the one wait, served from a week's cache (`getGlobalStats`).
   const [tHome, tStory, featuredParksLabels] = await Promise.all([
     getTranslations('home'),
     getTranslations('homeStory'),
@@ -150,11 +149,11 @@ export default async function HomePage({ params }: HomePageProps) {
           className="hero-entering relative z-10 -mt-12"
         >
           <HeroRotationProvider>
-            {/* The photo, with the text on its lower edge. From `md` its bottom padding is the
-              room the card rail below takes from it (`-mt-44`) plus the gap above the rail, so
-              the cards stand on the photo and the text sits high enough for them to be read on
-              the first screen. */}
-            <div className="relative flex min-h-[min(32rem,62svh)] flex-col justify-end px-4 pt-28 pb-6 md:min-h-[min(40rem,74svh)] md:px-6 md:pt-24 md:pb-52">
+            {/* The photo, with the text on its lower edge. Its bottom padding is the room the
+              card rail below takes from it (`-mt-10`, from `md` `-mt-44`) plus the gap above the
+              rail, so the cards stand on the photo and the text sits high enough for them to be
+              read on the first screen; on a phone the photo is as tall as its text. */}
+            <div className="relative flex flex-col justify-end px-4 pt-20 pb-16 md:min-h-[min(40rem,74svh)] md:px-6 md:pt-24 md:pb-52">
               <HeroBackground
                 imageSrc={randomHeroImage}
                 blurDataURL={heroBlurDataUrl(randomHeroImage)}
@@ -169,9 +168,9 @@ export default async function HomePage({ params }: HomePageProps) {
                 list over the card rail, which overlaps the photo from `md`. */}
               <div className="relative z-20 mx-auto w-full @min-[640px]/page:max-w-[640px] @min-[768px]/page:max-w-[768px] @min-[1024px]/page:max-w-[1024px] @min-[1280px]/page:max-w-[1280px] @min-[1536px]/page:max-w-[1536px]">
                 <HeroTextPanel className="hero-in-stagger">
-                  <Suspense fallback={<HeroWithNearby initialCounts={null} isFallback />}>
-                    <HeroStats />
-                  </Suspense>
+                  {/* Rendered with the page, counts and all: Parky's slot is in the first HTML,
+                    so his button finds it at once (the counts come from a week's cache). */}
+                  <HeroStats />
                   <HeroInlineSearch
                     placeholder={tHome('hero.searchExamples')}
                     label={tHome('hero.searchPlaceholder')}
@@ -190,7 +189,7 @@ export default async function HomePage({ params }: HomePageProps) {
 
             {/* What the headline asks, answered: the rides near the visitor with a short queue
               right now, or the parks near them. Over the photo's lower edge from `md`. */}
-            <div className="relative z-10 px-4 pt-2 md:-mt-44 md:px-6 md:pt-0">
+            <div className="relative z-10 -mt-10 px-4 md:-mt-44 md:px-6">
               <div className="mx-auto w-full @min-[640px]/page:max-w-[640px] @min-[768px]/page:max-w-[768px] @min-[1024px]/page:max-w-[1024px] @min-[1280px]/page:max-w-[1280px] @min-[1536px]/page:max-w-[1536px]">
                 <HeroRail className="hero-in-stagger hero-in-late" />
               </div>

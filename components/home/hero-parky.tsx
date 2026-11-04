@@ -6,12 +6,21 @@ import { MessageCircle } from 'lucide-react';
 import { ParkyLogo } from '@/components/assistant/parky-logo';
 import { assistantGate } from '@/lib/assistant/config';
 import { openParky } from '@/lib/assistant/open';
-import { parkyDock, parkyInDock } from '@/lib/assistant/parky-dock';
+import {
+  PARKY_DOCK_MEDIA,
+  PARKY_TOP_CLEARANCE,
+  parkyDock,
+  parkyInDock,
+} from '@/lib/assistant/parky-dock';
 import { useMediaQuery } from '@/lib/hooks/use-media-query';
 import { cn } from '@/lib/utils';
 
-/** Share of the slot on screen from which Parky stands in it rather than in his corner. */
-const ON_SCREEN_RATIO = 0.5;
+/**
+ * Share of the slot that must show below the header for Parky to stand in it rather than in his
+ * corner: all of it, so he hops down before the header covers him and lands only where he is seen.
+ * Just under 1, since a box that fits can measure a hair short of it.
+ */
+const ON_SCREEN_RATIO = 0.99;
 
 /**
  * Parky in the homepage hero on a desktop, under the headline: big, beside a speech bubble with an
@@ -28,26 +37,33 @@ const ON_SCREEN_RATIO = 0.5;
  */
 export function HeroParky() {
   const t = useTranslations('home');
-  const desktop = useMediaQuery('(min-width: 1024px)');
+  const desktop = useMediaQuery(PARKY_DOCK_MEDIA);
   const gateOpen = useSyncExternalStore(
     assistantGate.subscribe,
     assistantGate.getSnapshot,
     assistantGate.getServerSnapshot
   );
-  const present = useSyncExternalStore(
+  const arrival = useSyncExternalStore(
     parkyInDock.subscribe,
     parkyInDock.getSnapshot,
     parkyInDock.getServerSnapshot
   );
+  const present = arrival !== null;
   const active = desktop && gateOpen;
   const slotRef = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
     const slot = slotRef.current;
     if (!active || !slot) return;
+    // Measured at once as well: the observer's first answer comes a frame or more later, and
+    // Parky's button would show in the corner meanwhile, only to hop up here.
+    const box = slot.getBoundingClientRect();
+    const seen = Math.min(box.bottom, window.innerHeight) - Math.max(box.top, PARKY_TOP_CLEARANCE);
+    if (box.height > 0 && seen / box.height >= ON_SCREEN_RATIO) parkyDock.set(slot);
     const observer = new IntersectionObserver(
       ([entry]) => parkyDock.set(entry.intersectionRatio >= ON_SCREEN_RATIO ? slot : null),
-      { threshold: [0, ON_SCREEN_RATIO, 1] }
+      // On screen means below the sticky header: he leaves before it covers him.
+      { threshold: [0, ON_SCREEN_RATIO, 1], rootMargin: `-${PARKY_TOP_CLEARANCE}px 0px 0px 0px` }
     );
     observer.observe(slot);
     return () => {
@@ -68,7 +84,14 @@ export function HeroParky() {
         >
           <span ref={slotRef} className="relative grid size-24 shrink-0">
             {present && (
-              <span className="animate-in fade-in grid size-full duration-200">
+              // Fades in only when he stood here from the start; one who hopped in is handed over
+              // in the same frame, where a fade would flicker.
+              <span
+                className={cn(
+                  'grid size-full',
+                  arrival === 'appeared' && 'animate-in fade-in duration-200'
+                )}
+              >
                 <ParkyLogo
                   idle
                   calm

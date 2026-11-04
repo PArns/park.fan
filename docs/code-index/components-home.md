@@ -59,7 +59,7 @@ How long the entrance window stays open, from the moment the hero's markup is pa
 
 ### [`hero-stats.tsx`](../../components/home/hero-stats.tsx)
 
-- `HeroStats` _component_: Server seed for the hero's live numbers (open-parks badge and intro counts), cached as long as `getGlobalStats` says, so it never pins the homepage's ISR window; the client overlays the live values via `useGlobalStats` after mount.
+- `HeroStats` _component_: The hero's text with its numbers (open-parks badge and intro counts) from `getGlobalStats`, cached a week so it never pins the homepage's ISR window; the client overlays the live open count via `useGlobalStats` after mount.
 
 ### [`hero-text-panel.tsx`](../../components/home/hero-text-panel.tsx)
 

@@ -11,7 +11,11 @@ import type { NearbyAttractionsData, NearbyResponse, NearbyParksData } from '@/t
  * can import it directly.
  */
 
-export const CACHE_KEY = 'nearby-parks-v2';
+/**
+ * Bumped when an answer gains a field the cards need, so one stored by an older build never seeds
+ * the query: v3 has the rides' own photos on the short waits.
+ */
+export const CACHE_KEY = 'nearby-parks-v3';
 export const CACHE_MAX_AGE_MS = 5 * 60 * 1000;
 /** Skip a cached entry once the user has moved more than this far since it was written. */
 export const CACHE_COORD_MAX_DIST_KM = 10;
