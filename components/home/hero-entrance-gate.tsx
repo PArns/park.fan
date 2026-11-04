@@ -1,8 +1,18 @@
+'use client';
+
+import { useEffect, useState, useSyncExternalStore } from 'react';
+
 /** How long the entrance window stays open, from the moment the hero's markup is parsed. */
 const HERO_ENTRANCE_MS = 1700;
 
 /** Duration of `hero-item-in` in globals.css. Kept here so the two cannot drift apart. */
 export const HERO_ITEM_IN_MS = 850;
+
+const noSubscription = () => () => {};
+
+function closeEntrance() {
+  document.querySelector('.hero-entering')?.classList.remove('hero-entering');
+}
 
 /**
  * Closes the hero's entrance window once it has played. The hero's content streams into a dynamic
@@ -10,13 +20,30 @@ export const HERO_ITEM_IN_MS = 850;
  * link the headline faded in twice and LCP moved to the second fade. The entrance is scoped to
  * `.hero-entering` and this drops the class.
  *
- * An inline script, not an effect: on a throttled phone hydration lands after the swap, so an
- * effect's timer starts too late. That is why the hero `<section>` carries
+ * In the server's HTML an inline script, not an effect: on a throttled phone hydration lands after
+ * the swap, so an effect's timer starts too late. That is why the hero `<section>` carries
  * `suppressHydrationWarning`: the server ships the class and this script removes it, and the flag
  * silences only the development build's attribute warning on that element. If the script is
  * blocked the class stays and late content animates in, with nothing hidden.
+ *
+ * Mounted by a client navigation, React would create the script without running it (and warn), so
+ * then an effect's timer closes the window instead.
  */
 export function HeroEntranceGate({ windowMs = HERO_ENTRANCE_MS }: { windowMs?: number }) {
+  // True on the server and while hydrating its HTML, false for a gate a client navigation mounts;
+  // held, so the render after hydration keeps the script it hydrated.
+  const hydrating = useSyncExternalStore(
+    noSubscription,
+    () => false,
+    () => true
+  );
+  const [fromServer] = useState(hydrating);
+  useEffect(() => {
+    if (fromServer) return;
+    const timer = setTimeout(closeEntrance, windowMs);
+    return () => clearTimeout(timer);
+  }, [fromServer, windowMs]);
+  if (!fromServer) return null;
   return (
     <script
       dangerouslySetInnerHTML={{
