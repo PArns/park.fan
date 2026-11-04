@@ -6,17 +6,18 @@ the news board, the tour and its screenshots, the nearby parks and their short w
 parks' links or the FAQ. Entry point: `app/[locale]/page.tsx`.
 
 The page welcomes a first visit: the hero says what this is and finds a park, the news says what is
-new, the tour shows the product on a phone, and only then come the visitor's own parks, the popular
-parks and the questions. On 2026-11-02 it had 21 sections and was 18,920 px tall on a desktop and
+new, the tour shows the product on a phone, and only then come the parks near the visitor, the
+popular parks and the questions. A visitor who has starred something finds it right under the news. On 2026-11-02 it had 21 sections and was 18,920 px tall on a desktop and
 20,530 px on a phone; three quarters of its views came from phones, which stayed 13 seconds.
 
 | #   | Stop            | Layout  | Component                                                            | Data                                                       |
 | --- | --------------- | ------- | -------------------------------------------------------------------- | ---------------------------------------------------------- |
 | –   | Hero            | –       | the `<section id="hero">` in `page.tsx`                              | [homepage hero](homepage-hero.md)                          |
 | –   | News and guides | stacked | `HomeReading` → `NewsBoard`                                          | the blog manifest and the most-read seed, synchronous      |
+| –   | Favourites      | stacked | a `HomeStop` in `page.tsx`, `FavoritesSection`; with favourites only | the favourites cookie                                      |
 | –   | The tour        | phone   | `HomeTour` → `ShotStop`                                              | none; screenshots in `public/media/home/`                  |
 | –   | Ask Parky       | phone   | `ParkyStop` → `ShotStop`, `ParkyAskLink`                             | none; the screenshot in `public/media/parky/<l>/chat.webp` |
-| –   | Your parks      | stacked | `NearbyChapter` + `NearbyParksCard showShortWaits`; the favourites   | `/v1/discovery/nearby`, the favourites cookie              |
+| –   | Near you        | stacked | `NearbyChapter` + `NearbyParksCard showShortWaits`                   | `/v1/discovery/nearby`                                     |
 | –   | Popular parks   | beside  | a `HomeStop` in `page.tsx`, `FeaturedParksSlot` + `PopularParkLinks` | `getGeoStructure` (a week), the page-view snapshot         |
 | –   | Questions       | beside  | `FaqSection`, the page's only `FAQPage`                              | `seo.homepage.faq`                                         |
 
@@ -45,8 +46,8 @@ layouts:
   sides. The tour and Parky.
 
 - **Separation is room and a hairline**: `py-16 sm:py-24` per stop, and `STOP_DIVIDER_CLASS`, a
-  line that fades out at both ends, where a new group begins (your parks, popular parks, the
-  questions). The chapter headers before them (a 68 px plate, a pill, the title, a hint and a rule
+  line that fades out at both ends, where a new group begins (the parks near you, popular parks,
+  the questions). The chapter headers before them (a 68 px plate, a pill, the title, a hint and a rule
   over every chapter) took about 200 px each and said what the content under them showed.
 - **The tour and Parky are one run**: `ShotStop` draws no hairline, and on a phone its room is
   half a `HomeStop`'s (`py-8 sm:py-24`), 64 px between two stops: text and phone stack to more
@@ -54,7 +55,8 @@ layouts:
 - **The tour runs on from the news board**: no hairline between them, and the tour's first stop
   has no room of its own on top (`ShotStop flushTop`), so the news stop's room below is the whole
   gap, 64 px on a phone and 96 px from 640 px. With a line and both stops' room it was 129 px and
-  193 px.
+  193 px. The favourites, where they show, stand between the two the same way (`HomeStop
+flushTop`), so each gap is the room under the stop above.
 - **Only the tour is numbered.** A number must not skip
   ([the rule](../rules/a-chapter-opens-the-same-way-everywhere.md)), and the favourites show for few
   visitors; the other stops open with their kicker. The news board has none: it is the first stop
@@ -127,7 +129,7 @@ first HTML and changes with every deploy that brings a post.
 - **Room**: `overflow-hidden` on each `ShotStop` keeps the phone's glow from widening a phone's
   page.
 
-## Your parks
+## Near you
 
 `NearbyChapter` (stacked) frames `NearbyParksCard` (geolocation, else the API's GeoIP guess, after load and
 idle) with all its states: the prompt, the nearby parks with the open ones first, the in-park view,
@@ -139,10 +141,13 @@ their usual one, as the API picks them (`shortWaits`, contract in the API's
 [discovery](https://github.com/PArns/v4.api.park.fan/blob/main/docs/frontend/discovery.md#shortwaits)).
 Nothing is drawn when the list is empty, which is every evening and the whole off-season.
 
-The favourites are a stop of their own (`FavoritesSection heading="none"` in a `HomeStop`) in the
-same flex column, shown only for a visitor with favourites, and then above the nearby parks: the inline favourites script in `app/[locale]/layout.tsx` sets
-`data-has-favorites` before paint, and `.home-favorites` in `app/globals.css` hides the band without
-it and gives it `order: -1` with it, so neither choice moves anything after load.
+## Favourites
+
+The favourites are a stop of their own (`FavoritesSection heading="none"` in a `HomeStop`), right
+under the news and shown only for a visitor with favourites: for them it is what they came back
+for, and for anybody else an empty state about a feature they have not used. The inline favourites
+script in `app/[locale]/layout.tsx` sets `data-has-favorites` before paint, and `.home-favorites` in
+`app/globals.css` hides the band without it, so the choice moves nothing after load.
 
 ## Popular parks and their links
 

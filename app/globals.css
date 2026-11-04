@@ -3034,15 +3034,12 @@ html[data-temp-unit='F'] .u-imperial {
   display: inline;
 }
 
-/* The homepage's favorites band is an empty state for a visitor with none, which tells somebody on
-   their first visit about a feature before they have seen a park; for a visitor with favorites it
-   is what they came back for, so it moves above the nearby parks. The inline favorites script in
-   app/[locale]/layout.tsx sets `data-has-favorites` before paint, so neither moves anything. */
+/* The homepage's favorites band, under the news, is an empty state for a visitor with none, which
+   tells somebody on their first visit about a feature before they have seen a park. The inline
+   favorites script in app/[locale]/layout.tsx sets `data-has-favorites` before paint, so hiding it
+   moves nothing. */
 html:not([data-has-favorites]) .home-favorites {
   display: none;
-}
-html[data-has-favorites] .home-favorites {
-  order: -1;
 }
 
 /* The header's °C/°F button renders both labels with the same two classes, so it agrees with

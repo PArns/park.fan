@@ -24,7 +24,8 @@ export const STOP_DIVIDER_CLASS =
  * `@container/page`: a card grid inside asks `@min-[1024px]/page` for a third column, and a column
  * this narrow wants two.
  *
- * `divider` draws {@link STOP_DIVIDER_CLASS} above the stop.
+ * `divider` draws {@link STOP_DIVIDER_CLASS} above the stop. `flushTop` drops the room above it, for
+ * a stop that runs on from the one before it, as {@link ShotStop}'s does.
  */
 export function HomeStop({
   heading,
@@ -33,6 +34,7 @@ export function HomeStop({
   children,
   reverse = false,
   divider = false,
+  flushTop = false,
   block,
   className,
 }: {
@@ -51,11 +53,13 @@ export function HomeStop({
   children: ReactNode;
   reverse?: boolean;
   divider?: boolean;
+  flushTop?: boolean;
   /** What a click inside counts as (`linkBlockAttributes`). */
   block?: LinkBlock;
   /** For the section itself, e.g. `home-favorites`. */
   className?: string;
 }) {
+  const room = flushTop ? 'pb-16 sm:pb-24' : 'py-16 sm:py-24';
   // The tracks swap with the sides, so the content keeps the wide one either way. The content
   // spans both rows, and the second row takes what is left (`1fr`), so the aside sits right under
   // the heading however tall the content runs.
@@ -63,7 +67,7 @@ export function HomeStop({
     return (
       <section className={cn('px-4', className)} {...(block ? linkBlockAttributes(block) : {})}>
         {divider && <div aria-hidden="true" className={STOP_DIVIDER_CLASS} />}
-        <div className="container mx-auto py-16 sm:py-24">
+        <div className={cn('container mx-auto', room)}>
           <Reveal containsGlass className="mb-8 max-w-3xl sm:mb-10">
             {heading}
           </Reveal>
@@ -80,7 +84,8 @@ export function HomeStop({
       {divider && <div aria-hidden="true" className={STOP_DIVIDER_CLASS} />}
       <div
         className={cn(
-          'container mx-auto grid grid-cols-1 items-start gap-x-16 gap-y-10 py-16 sm:py-24 @min-[1024px]/page:grid-rows-[auto_1fr]',
+          'container mx-auto grid grid-cols-1 items-start gap-x-16 gap-y-10 @min-[1024px]/page:grid-rows-[auto_1fr]',
+          room,
           reverse
             ? '@min-[1024px]/page:grid-cols-[minmax(0,7fr)_minmax(0,5fr)]'
             : '@min-[1024px]/page:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]'
