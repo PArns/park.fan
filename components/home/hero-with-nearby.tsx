@@ -34,8 +34,8 @@ function HeroBadgeRow({ openParks }: { openParks: number | null }) {
 
 /**
  * The headline, set as large as the tour's headings and larger: it stands on the photo's lower
- * edge (`HeroBackground`'s scrim) and is the one thing to read first. 40 px on a phone, three lines
- * at 390 px in German, 68 px from 1280 px.
+ * edge (`HeroBackground`'s scrim) and is the one thing to read first. 36 px on a phone, 48 px from
+ * 640 px and 60 px from 1280 px.
  */
 function HeroHeadline({ children }: { children: React.ReactNode }) {
   return (
@@ -43,7 +43,7 @@ function HeroHeadline({ children }: { children: React.ReactNode }) {
     // would on the <h1>. The top margin is the gap under the open-parks badge, which a phone does
     // not show.
     <div className="mt-4 mb-4 max-md:mt-0">
-      <h1 className="text-[2.5rem]/[1.04] font-black tracking-tight text-balance sm:text-6xl/[1.02] xl:text-[4.25rem]/[1]">
+      <h1 className="text-4xl/[1.04] font-black tracking-tight text-balance sm:text-5xl/[1.02] xl:text-6xl/[1]">
         {children}
       </h1>
     </div>
@@ -111,7 +111,8 @@ export function HeroWithNearby({ initialCounts }: { initialCounts: HeroInitialCo
       ) : (
         // A phone gets the one-line version, so the photo above the text keeps its room. Both are
         // in the HTML and CSS picks one, so the server's markup is right on every viewport.
-        <p className="text-foreground/85 max-w-4xl text-base leading-relaxed md:text-lg">
+        // `lg:mt-2` keeps the text off Parky's row above it.
+        <p className="text-foreground/85 max-w-4xl text-base leading-relaxed md:text-lg lg:mt-2">
           <span className="md:hidden">{tHome.rich('hero.introShort', introValues)}</span>
           <span className="hidden md:inline">{tHome.rich('hero.intro', introValues)}</span>
         </p>

@@ -224,7 +224,7 @@ function ShortWaitCard({ ride }: { ride: NearbyShortWait }) {
 /**
  * A park near the visitor, a ride of the park they stand in or a popular park: while it is open its
  * wait (a park's average) as the figure and its crowd level (a ride: its status) at the foot; shut,
- * its status as the figure. A popular park carries no live data, so its figure leads to its waits.
+ * its status as the figure. A popular park whose live data has not come yet leads to its waits.
  */
 function BrowseCard({ item, href }: { item: NearbySearchItem; href: string }) {
   const t = useTranslations('nearby');
@@ -258,9 +258,15 @@ function BrowseCard({ item, href }: { item: NearbySearchItem; href: string }) {
             <span className="text-muted-foreground text-sm font-semibold">{tCommon('min')}</span>
           </>
         ) : item.status ? (
-          // Shut or down: what the badge would say, as the figure („Öffnet um 10:00 Uhr").
-          <span className="text-muted-foreground self-center truncate text-base font-semibold">
-            {item.statusLabel ?? tStatus(item.status)}
+          // Shut or down: how far off the next opening is („Öffnet morgen", „Öffnet in 2:33 Stunden"),
+          // which says more at a glance than its date.
+          <span
+            title={item.statusCountdown ? item.statusLabel : undefined}
+            className="text-muted-foreground self-center truncate text-base font-semibold"
+          >
+            {item.statusCountdown
+              ? `${t('opens')} ${item.statusCountdown}`
+              : (item.statusLabel ?? tStatus(item.status))}
           </span>
         ) : (
           <span className="text-primary-ink inline-flex items-center gap-1 self-center text-sm font-semibold">

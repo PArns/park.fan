@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useSyncExternalStore } from 'react';
+import { useEffect, useLayoutEffect, useRef, useSyncExternalStore } from 'react';
 import { useTranslations } from 'next-intl';
 import { MessageCircle } from 'lucide-react';
 import { ParkyLogo } from '@/components/assistant/parky-logo';
@@ -52,6 +52,14 @@ export function HeroParky() {
   const active = desktop && gateOpen;
   const slotRef = useRef<HTMLSpanElement>(null);
 
+  // Leaving with the page (a navigation, the search's among them), the slot is measured while it is
+  // still there, so Parky hops down from it rather than appearing in his corner.
+  useLayoutEffect(() => {
+    const slot = slotRef.current;
+    if (!active || !slot) return;
+    return () => parkyDock.leave(slot.getBoundingClientRect());
+  }, [active]);
+
   useEffect(() => {
     const slot = slotRef.current;
     if (!active || !slot) return;
@@ -73,14 +81,14 @@ export function HeroParky() {
   }, [active]);
 
   return (
-    // `h-28` holds Parky's 96 px and the hat and Zs that rise above his drawing, so nothing of him
-    // is cut and the row is one height before and after he arrives.
-    <div className="hidden h-28 items-end lg:flex">
+    // `h-32` holds Parky's 96 px with the hat and Zs that rise above his drawing, and the two-line
+    // bubble, so nothing is cut and the row is one height before and after he arrives.
+    <div className="hidden h-32 items-end lg:flex">
       {active && (
         <button
           type="button"
           onClick={() => openParky('hero')}
-          className="group focus-visible:ring-primary-ink flex items-end gap-5 rounded-3xl text-left outline-none focus-visible:ring-2 focus-visible:ring-offset-4 focus-visible:ring-offset-transparent"
+          className="group focus-visible:ring-primary-ink flex cursor-pointer items-end gap-5 rounded-3xl text-left outline-none focus-visible:ring-2 focus-visible:ring-offset-4 focus-visible:ring-offset-transparent"
         >
           <span ref={slotRef} className="relative grid size-24 shrink-0">
             {present && (
@@ -109,7 +117,8 @@ export function HeroParky() {
               present ? 'scale-100 opacity-100' : 'pointer-events-none scale-95 opacity-0'
             )}
           >
-            <span className="text-xl leading-snug font-bold tracking-tight text-balance xl:text-2xl">
+            <span className="text-xl leading-snug font-bold tracking-tight text-balance">
+              <span className="block">{t('hero.parkyHello')}</span>
               {t('hero.parkyLine')}
             </span>
             {/* Fixed dark text, as the bubble is white in both themes. */}

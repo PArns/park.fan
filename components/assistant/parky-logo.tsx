@@ -43,6 +43,9 @@ const ACT_MS = {
   nap: 5000,
   doze: 2000,
   startle: 900,
+  stretch: 1600,
+  groggy: 2000,
+  shakeoff: 1000,
   coaster: 3600,
   launch: 4400,
   hills: 4800,
@@ -108,6 +111,14 @@ function actFor(act: ParkyAct | 'ride', svg: SVGSVGElement | null): ParkyAct | n
  * - `sleepy`: after a minute without anybody moving, until he falls asleep at a minute and a half.
  * - asleep he now and then dreams (`DREAMS`).
  */
+/** How Parky wakes up when somebody moves, calm or not. */
+const WAKE_ACTS = [
+  'startle',
+  'stretch',
+  'groggy',
+  'shakeoff',
+] as const satisfies readonly ParkyAct[];
+
 const CLASS_ACTS: Record<'fidget' | 'showy' | 'sleepy', readonly (ParkyAct | 'ride')[]> = {
   fidget: ['wink', 'look', 'tilt', 'wiggle'],
   showy: [
@@ -462,12 +473,12 @@ function useIdleAct(
         dreamOn();
         return;
       }
+      // Calm, awake or bored, he only blinks and follows the pointer with his eyes, then sleeps.
+      if (calm) return;
       if (boredom === 'bored') {
         play(pauseOf('sleepy'), pickRandom(CLASS_ACTS.sleepy, previous));
         return;
       }
-      // Beside a conversation, awake, he only blinks and follows the pointer with his eyes.
-      if (calm) return;
       const wait = pauseOf('fidget');
       if (Date.now() + wait < showyAt) {
         play(wait, pickRandom(CLASS_ACTS.fidget, previous));
@@ -479,8 +490,9 @@ function useIdleAct(
     };
     const enter = () => {
       if (boredom === 'asleep') play(SETTLE_MS, 'doze');
+      else if (woke) play(0, pickRandom(WAKE_ACTS));
+      else if (calm) loop();
       else if (boredom === 'bored') play(SETTLE_MS, 'yawn');
-      else if (woke) play(0, 'startle');
       else loop();
     };
     const onStage = running.current;
@@ -769,9 +781,10 @@ export function ParkyLogo({
   /** A life of its own while nothing happens: acts, boredom and sleep. */
   idle?: boolean;
   /**
-   * With `idle`, for Parky beside a conversation or in the homepage hero: awake he only blinks and
-   * follows the pointer, bored he gets sleepy and falls asleep; no fidgets and no mischief. What
-   * answers the visitor (cues, moods, searching along) plays either way.
+   * With `idle`, for Parky beside a conversation or in the homepage hero: he only blinks and
+   * follows the pointer until he falls asleep, and wakes as any Parky does; no fidgets, no
+   * mischief, no yawning and no dizziness when circled. What answers the visitor (cues, moods, searching along)
+   * plays either way.
    */
   calm?: boolean;
   /** An act to play at once, with `idle`. */
@@ -795,7 +808,7 @@ export function ParkyLogo({
     setOwnCue(next);
     setLatestCue(next);
   }, [ownCue]);
-  const { cross, ...mouseGaze } = useGaze(svg, idle ? getDizzy : undefined);
+  const { cross, ...mouseGaze } = useGaze(svg, idle && !calm ? getDizzy : undefined);
   // A mood has its own motion; the idle life is for a face with nothing to do, and a search open
   // on the page is something to do.
   const { search, puzzled } = useSearchAlong(idle && !state);

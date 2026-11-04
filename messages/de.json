@@ -111,12 +111,13 @@
       "cta": "Parks entdecken",
       "searchPlaceholder": "Parks, Attraktionen, Shows & Restaurants suchen…",
       "title": "Wo lohnt sich heute das Anstehen?",
-      "intro": "park.fan zeigt die Wartezeiten von <strong>{parks} Freizeitparks</strong> und <strong>{attractions} Attraktionen</strong>, alle fünf Minuten neu abgefragt. Für die kommenden Tage steht dabei, wie voll es voraussichtlich wird.",
+      "intro": "Finde den Park mit den kürzesten Warteschlangen: Wartezeiten aus <strong>{parks} Freizeitparks</strong> und <strong>{attractions} Attraktionen</strong>, alle fünf Minuten aktualisiert, plus Prognose für die nächsten Tage.",
       "introShort": "Live-Wartezeiten aus <strong>{parks} Parks</strong>.",
       "openNow": "{count, plural, =1 {1 Park gerade offen} other {# Parks gerade offen}}",
       "searchExamples": "Europa-Park, Taron, Efteling …",
-      "parkyLine": "Lass uns schauen, wo wir uns heute anstellen!",
-      "parkyCta": "Klick mich an, ich helfe dir."
+      "parkyHello": "Hey, ich bin Parky!",
+      "parkyLine": "Sollen wir schauen, wo wir uns heute zusammen anstellen?",
+      "parkyCta": "Klick mich an, dann legen wir los."
     },
     "sections": {
       "featuredParks": "Beliebte Parks",

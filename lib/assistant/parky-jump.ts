@@ -1,10 +1,10 @@
-import { PARKY_TOP_CLEARANCE, parkyDock } from '@/lib/assistant/parky-dock';
+import { PARKY_TOP_CLEARANCE, parkyDock, type ParkySlotBox } from '@/lib/assistant/parky-dock';
 
 /** How long Parky's hop between his corner and the chat window's top edge takes. */
 export const PARKY_JUMP_MS = 720;
 
-/** How long his hop between the corner and a slot on the page takes: the longer way, more time. */
-export const PARKY_DOCK_HOP_MS = 1100;
+/** How long his hop between the corner and a slot on the page takes. */
+export const PARKY_DOCK_HOP_MS = 650;
 
 /** Marks the drawing in the corner button, where the hop starts and lands. */
 export const PARKY_CORNER_ATTR = 'data-parky-corner';
@@ -200,7 +200,7 @@ let flying: { element: HTMLElement; frame: Frame } | null = null;
  */
 export function parkyDockHop(
   corner: HTMLElement,
-  slot: HTMLElement,
+  slot: ParkySlotBox,
   toSlot: boolean,
   onLanded: () => void
 ): (() => void) | null {

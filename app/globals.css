@@ -881,6 +881,74 @@
     transform: translateY(0) scale(0.98, 1.02);
   }
 }
+/* Woken up slowly: a long stretch up, a slump, a smaller one. */
+@keyframes parky-stretch {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  30%,
+  45% {
+    transform: scale(0.9, 1.14);
+  }
+  60% {
+    transform: scale(1.05, 0.95);
+  }
+  78% {
+    transform: scale(0.97, 1.04);
+  }
+}
+/* Woken up groggy: the eyes come half open, fall shut, then open for good. */
+@keyframes parky-groggy-eyes {
+  0% {
+    transform: scaleY(0.1);
+  }
+  25%,
+  40% {
+    transform: scaleY(0.45);
+  }
+  52% {
+    transform: scaleY(0.1);
+  }
+  70%,
+  100% {
+    transform: scaleY(1);
+  }
+}
+@keyframes parky-groggy {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  30% {
+    transform: rotate(-5deg);
+  }
+  60% {
+    transform: rotate(4deg);
+  }
+}
+/* Woken up and shaking the sleep off like a wet dog. */
+@keyframes parky-shake-off {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  15% {
+    transform: rotate(-10deg);
+  }
+  30% {
+    transform: rotate(10deg);
+  }
+  45% {
+    transform: rotate(-8deg);
+  }
+  60% {
+    transform: rotate(6deg);
+  }
+  75% {
+    transform: rotate(-3deg);
+  }
+}
 @keyframes parky-wide {
   0%,
   100% {
@@ -1820,6 +1888,20 @@
   .parky-act-startle .parky-eyes {
     animation: parky-wide var(--parky-act) ease-out;
   }
+  .parky-act-stretch {
+    transform-origin: 50% 100%;
+    animation: parky-stretch var(--parky-act) ease-in-out;
+  }
+  .parky-act-groggy {
+    animation: parky-groggy var(--parky-act) ease-in-out;
+  }
+  .parky-act-groggy .parky-eyes {
+    animation: parky-groggy-eyes var(--parky-act) ease-in-out;
+  }
+  .parky-act-shakeoff {
+    transform-origin: 50% 100%;
+    animation: parky-shake-off var(--parky-act) ease-in-out;
+  }
   .parky-alarm {
     animation: parky-alarm var(--parky-act) ease-out both;
   }
@@ -2299,6 +2381,40 @@
   }
   .parky-sparkles > span {
     animation: parky-sparkle var(--parky-enter) ease-out both;
+  }
+}
+
+/*
+ * The hero's text column reserves its settled height from `md` (`HeroTextPanel`), per language:
+ * French wraps the intro a line longer, and from 1280 px the headline takes a third line in Dutch,
+ * French, Spanish and Italian. One height for all would leave German and English a gap above the
+ * card rail. Settled heights in docs/features/homepage-hero.md.
+ */
+@media (width >= 48rem) {
+  .hero-text-reserve {
+    min-height: 18.75rem;
+  }
+  :lang(fr) .hero-text-reserve {
+    min-height: 20.625rem;
+  }
+}
+@media (width >= 64rem) {
+  .hero-text-reserve {
+    min-height: 24.25rem;
+  }
+  :lang(fr) .hero-text-reserve {
+    min-height: 27.25rem;
+  }
+}
+@media (width >= 80rem) {
+  .hero-text-reserve {
+    min-height: 25rem;
+  }
+  :lang(nl) .hero-text-reserve,
+  :lang(fr) .hero-text-reserve,
+  :lang(es) .hero-text-reserve,
+  :lang(it) .hero-text-reserve {
+    min-height: 28.625rem;
   }
 }
 

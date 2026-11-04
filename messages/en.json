@@ -111,12 +111,13 @@
       "cta": "Explore Parks",
       "searchPlaceholder": "Search parks, attractions, shows & restaurants...",
       "title": "Where is the wait worth it today?",
-      "intro": "park.fan shows the wait times at <strong>{parks} theme parks</strong> and <strong>{attractions} attractions</strong>, updated every five minutes. For the coming days there is also a forecast of how busy each park will be.",
+      "intro": "Find the park with the shortest queues: wait times at <strong>{parks} theme parks</strong> and <strong>{attractions} attractions</strong>, updated every five minutes, plus a forecast for the days ahead.",
       "introShort": "Live wait times at <strong>{parks} theme parks</strong>.",
       "openNow": "{count, plural, =1 {1 park open right now} other {# parks open right now}}",
       "searchExamples": "Europa-Park, Taron, Efteling …",
-      "parkyLine": "Let’s see where we queue today!",
-      "parkyCta": "Click me and I’ll help you."
+      "parkyHello": "Hey, I’m Parky!",
+      "parkyLine": "Shall we find out where to queue together today?",
+      "parkyCta": "Click me and let’s get going."
     },
     "sections": {
       "featuredParks": "Popular Parks",
