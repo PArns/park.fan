@@ -38,7 +38,7 @@ seo:
 
 On 20 November, [Knott's Berry Farm](ref:knotts-berry-farm) in Buena Park turns into Knott's Merry Farm, and it stays that way until 3 January 2027. New this winter is the ice show "Snoopy's Merry Christmas Follies" in the Walter Knott Theater.
 
-## The new ice show in the Walter Knott Theater
+## Snoopy on skates
 
 A vocal quartet sings Christmas standards, and a line of Follies dancers high-kicks across the stage. In between, Snoopy and his friends take to the ice with the figure skaters. The theater seats about 2,000, which is a decent crowd for a beagle. Showtimes are only in the Six Flags app, and the schedule changes from day to day.
 
@@ -48,7 +48,7 @@ Merry Farm has had a Snoopy ice show before, such as "Snoopy's Night Before Chri
 
 ## Lights, shows and Santa
 
-Thousands of lights, garlands and big snowflakes hang all over the park. Every evening there's the Holiday Lighting Moment. At Snow and Glow in Ghost Town, the lights on Main Street and Schoolhouse Road dance to Christmas music while snow falls. In Calico Park, the Christmas tree is switched on during the "'Tis the Season Tree Lighting Ceremony".
+Thousands of lights hang between garlands and big snowflakes, and every evening brings the parkwide Holiday Lighting Moment. The lights on Main Street and Schoolhouse Road in Ghost Town dance to Christmas music during Snow and Glow, while snow falls. In Calico Park, the Christmas tree is switched on during the "'Tis the Season Tree Lighting Ceremony".
 
 These shows run as well:
 
@@ -90,7 +90,7 @@ Knott's hasn't listed any scheduled ride closures for the holidays.
 
 Shows, lights, the Christmas Crafts Village and most rides are included with admission. You pay extra for food, drinks and souvenirs, the photos with Santa, cupcake decorating in Mrs. Claus' Kitchen and Fast Lane. A date-specific one-day ticket starts at $65 plus tax online, and kids two and under get in free. You don't need a reservation. There are no refunds for rain.
 
-The 2027 Season Pass costs $120 and already covers the rest of 2026; renewing costs $110. On a payment plan it's $30 down and ten payments of $9. Two day tickets at the lowest price come to $130, so the pass pays for itself by your second visit. It also works as a Christmas present to yourself. Fast Lane takes you past the regular line on participating rides and starts at $75 for one day. The park sells only a limited number each day.
+The 2027 Season Pass costs $120, and renewing it $110. And because it already covers the rest of 2026, it's the one Christmas present to yourself you're allowed to unwrap before the 25th. On a payment plan it's $30 down and ten payments of $9. Two day tickets at the lowest price come to $130, so the pass pays for itself by your second visit. Fast Lane takes you past the regular line on participating rides and starts at $75 for one day. The park sells only a limited number each day.
 
 The holiday menu has a Cranberry Bacon Jam Cheeseburger with crispy onions at Sutter's Grill, a Hot Chocolate Churro from the Gourmet Churro Factory, and a flatbread with cranberry, mint and goat cheese at Mrs. Murphy's. The Merry Farm souvenir cup is $13.99, and each refill $3.99.
 
@@ -98,13 +98,13 @@ The Knott's Hotel sits right next to the park and sells packages that include ad
 
 ## Getting there and parking
 
-The park is at 8039 Beach Boulevard in Buena Park. Parking is $40, or $60 in the Grand Preferred Lot right by the park. The park doesn't take cash. The lots open about an hour before the park. Without a car, take Metrolink to Buena Park station on Lakeknoll Drive and an OCTA bus down Beach Boulevard from there. The Karmel Shuttle runs from hotels in Anaheim, Garden Grove and Buena Park if you book it ahead. The park puts John Wayne Airport in Orange County 20 minutes away and LAX 30.
+The park is at 8039 Beach Boulevard in Buena Park. Parking is $40, or $60 in the Grand Preferred Lot right by the park. The park doesn't take cash. The lots open about an hour before the park. Without a car, take Metrolink to Buena Park station on Lakeknoll Drive and an OCTA bus down Beach Boulevard from there. The Karmel Shuttle runs from hotels in Anaheim, Garden Grove and Buena Park if you book it ahead. If you're staying in Anaheim for the [Disneyland Resort holiday season](/news/disneyland-resort-holidays-2026), the Karmel Shuttle gets you to Knott's as well. The park puts John Wayne Airport in Orange County 20 minutes away and LAX 30.
 
 ## From berry farm to Six Flags
 
-From 1923, the Knott family sold berries, jam and pies at a roadside stand. Walter Knott opened Ghost Town next to it in 1941, and the whole place has been called Knott's Berry Farm since 1947. Snoopy has been the park's mascot since 1983, when Camp Snoopy was built. In 1985 Gary Salisbury came up with Merry Farm. The family sold the park to Cedar Fair in 1997, and Cedar Fair merged with Six Flags on 1 July 2024. In the fall the park ran Scary Farm, and there's more on it in our roundup of [Halloween in the USA](/blog/halloween-usa-theme-parks-2026).
+From 1923, the Knott family sold berries, jam and pies at a roadside stand. Next to it, Walter Knott opened Ghost Town in 1941, and the whole place has been called Knott's Berry Farm since 1947. Snoopy has been the park's mascot since Camp Snoopy was built in 1983. Gary Salisbury dreamed up the first Merry Farm in 1985, two years after the beagle moved in. In the fall, before Merry Farm, the park ran Scary Farm, which features in our roundup of [Halloween in the USA](/blog/halloween-usa-theme-parks-2026). The family sold the park to Cedar Fair in 1997, and Cedar Fair merged with Six Flags on 1 July 2024.
 
-Six Flags is celebrating in eleven parks this winter. [Six Flags Great Adventure](/news/six-flags-great-adventure-holiday-in-the-park-2026) and Six Flags Over Georgia have redesigned Holiday in the Park, and Six Flags Magic Mountain in Valencia has seven new shows from 26 November. The Disneyland Resort in Anaheim is celebrating its [holiday season](/news/disneyland-resort-holidays-2026) at the same time. The new free admission for guests 65 and over and the Black Friday ticket, which gets you the whole spring and summer 2027 season for the price of one day, aren't available at Knott's.
+Six Flags is celebrating in eleven parks this winter. [Six Flags Great Adventure](/news/six-flags-great-adventure-holiday-in-the-park-2026) and Six Flags Over Georgia have redesigned Holiday in the Park, and Six Flags Magic Mountain in Valencia has seven new shows from 26 November. The new free admission for guests 65 and over and the Black Friday ticket, which gets you the whole spring and summer 2027 season for the price of one day, aren't available at Knott's.
 
 [Knott's Berry Farm](ref:knotts-berry-farm?full)
 

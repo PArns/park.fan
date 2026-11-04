@@ -38,7 +38,7 @@ seo:
 
 Am 20. November wird [Knott's Berry Farm](ref:knotts-berry-farm) in Buena Park zur Knott's Merry Farm und bleibt es bis zum 3. Januar 2027. Neu ist in diesem Winter die Eisshow „Snoopy's Merry Christmas Follies“ im Walter Knott Theater.
 
-## Die neue Eisshow im Walter Knott Theater
+## Snoopy auf Schlittschuhen
 
 Ein Vokalquartett singt Weihnachtsklassiker, und eine Reihe Follies-Tänzerinnen wirft die Beine in die Höhe. Dazwischen laufen Snoopy und seine Freunde mit den Eiskunstläufern übers Eis. Das Theater hat rund 2.000 Plätze, für einen Beagle ist das ein ordentliches Publikum. Spielzeiten stehen nur in der Six-Flags-App, und das Programm wechselt von Tag zu Tag.
 
@@ -48,7 +48,7 @@ Eine Eisshow mit Snoopy gab es zur Merry Farm schon früher, etwa „Snoopy's Ni
 
 ## Lichter, Shows und der Weihnachtsmann
 
-Im ganzen Park hängen Tausende Lichter, Girlanden und große Schneeflocken. Jeden Abend gibt es den Holiday Lighting Moment. Bei Snow and Glow in Ghost Town tanzen die Lichter auf der Main Street und der Schoolhouse Road zu Weihnachtsmusik, und es schneit. Im Calico Park geht bei der „'Tis the Season Tree Lighting Ceremony“ der Weihnachtsbaum an.
+Zwischen Girlanden und großen Schneeflocken hängen Tausende Lichter, und jeden Abend kommt parkweit der Holiday Lighting Moment dazu. Die Lichter auf der Main Street und der Schoolhouse Road in Ghost Town tanzen bei Snow and Glow zu Weihnachtsmusik, während es schneit. Im Calico Park geht bei der „'Tis the Season Tree Lighting Ceremony“ der Weihnachtsbaum an.
 
 Dazu laufen diese Shows:
 
@@ -90,7 +90,7 @@ Für die Weihnachtszeit hat Knott's keine Bahn als geplant geschlossen gemeldet.
 
 Shows, Lichter, das Christmas Crafts Village und die meisten Bahnen sind im Eintritt enthalten. Extra zahlst du für Essen, Getränke und Souvenirs, die Fotos beim Weihnachtsmann, das Cupcake-Verzieren in Mrs. Claus' Kitchen und Fast Lane. Ein Tagesticket mit festem Datum kostet online ab 65 Dollar plus Steuer, Kinder bis zwei Jahre brauchen keins. Reservieren musst du nicht. Bei Regen gibt es kein Geld zurück.
 
-Der Season Pass 2027 kostet 120 Dollar und gilt schon für den Rest von 2026, die Verlängerung 110 Dollar. In Raten sind es 30 Dollar Anzahlung und zehnmal 9 Dollar. Zwei Tagestickets zum günstigsten Preis kosten 130 Dollar, der Pass rechnet sich also schon beim zweiten Besuch. Als Weihnachtsgeschenk an dich selbst geht er auch durch. Fast Lane bringt dich an teilnehmenden Bahnen an der normalen Warteschlange vorbei und kostet für einen Tag ab 75 Dollar. Davon verkauft der Park nur eine begrenzte Zahl pro Tag.
+Der Season Pass 2027 kostet 120 Dollar, die Verlängerung 110 Dollar. Und weil er schon für den Rest von 2026 gilt, ist er das eine Weihnachtsgeschenk an dich selbst, das du vor dem 24. auspacken darfst. In Raten sind es 30 Dollar Anzahlung und zehnmal 9 Dollar. Zwei Tagestickets zum günstigsten Preis kosten 130 Dollar, der Pass rechnet sich also schon beim zweiten Besuch. Fast Lane bringt dich an teilnehmenden Bahnen an der normalen Warteschlange vorbei und kostet für einen Tag ab 75 Dollar. Davon verkauft der Park nur eine begrenzte Zahl pro Tag.
 
 Auf der Weihnachtskarte steht bei Sutter's Grill ein Cranberry Bacon Jam Cheeseburger mit Röstzwiebeln, die Gourmet Churro Factory verkauft einen Hot Chocolate Churro, und bei Mrs. Murphy's gibt es Flatbread mit Cranberry, Minze und Ziegenkäse. Der Merry-Farm-Becher kostet 13,99 Dollar, jedes Nachfüllen 3,99 Dollar.
 
@@ -98,13 +98,13 @@ Das Knott's Hotel liegt direkt am Park und verkauft Pakete mit Eintritt. Zum Bla
 
 ## Anreise und Parken
 
-Der Park liegt am 8039 Beach Boulevard in Buena Park. Parken kostet 40 Dollar, auf dem Grand Preferred Lot direkt am Park 60 Dollar. Bargeld nimmt der Park nicht. Die Parkplätze öffnen etwa eine Stunde vor dem Park. Ohne Auto fährst du mit Metrolink bis zum Bahnhof Buena Park an der Lakeknoll Drive und von dort mit einem OCTA-Bus den Beach Boulevard hinunter. Aus Hotels in Anaheim, Garden Grove und Buena Park fährt der Karmel Shuttle, wenn du ihn vorher reservierst. Vom Flughafen John Wayne in Orange County sind es nach Angaben des Parks 20 Minuten, von LAX 30.
+Der Park liegt am 8039 Beach Boulevard in Buena Park. Parken kostet 40 Dollar, auf dem Grand Preferred Lot direkt am Park 60 Dollar. Bargeld nimmt der Park nicht. Die Parkplätze öffnen etwa eine Stunde vor dem Park. Ohne Auto fährst du mit Metrolink bis zum Bahnhof Buena Park an der Lakeknoll Drive und von dort mit einem OCTA-Bus den Beach Boulevard hinunter. Aus Hotels in Anaheim, Garden Grove und Buena Park fährt der Karmel Shuttle, wenn du ihn vorher reservierst. Wer für die [Weihnachtssaison im Disneyland Resort](/news/disneyland-resort-holidays-2026) in Anaheim wohnt, kommt mit dem Karmel Shuttle auch zu Knott's. Vom Flughafen John Wayne in Orange County sind es nach Angaben des Parks 20 Minuten, von LAX 30.
 
 ## Von der Beerenfarm zu Six Flags
 
-Ab 1923 verkaufte die Familie Knott an einem Stand an der Straße Beeren, Marmelade und Kuchen. 1941 eröffnete Walter Knott daneben die Ghost Town, seit 1947 heißt das Ganze Knott's Berry Farm. Seit 1983, als Camp Snoopy gebaut wurde, ist Snoopy das Maskottchen des Parks. 1985 erfand Gary Salisbury die Merry Farm. 1997 verkaufte die Familie den Park an Cedar Fair, das am 1. Juli 2024 mit Six Flags fusionierte. Im Herbst lief hier die Scary Farm, mehr dazu in unserem Überblick [Halloween in den USA](/blog/halloween-usa-freizeitparks-2026).
+Ab 1923 verkaufte die Familie Knott an einem Stand an der Straße Beeren, Marmelade und Kuchen. Daneben eröffnete Walter Knott 1941 die Ghost Town, und seit 1947 heißt das Ganze Knott's Berry Farm. Snoopy ist das Maskottchen des Parks, seit 1983 Camp Snoopy gebaut wurde. Die erste Merry Farm dachte sich 1985 Gary Salisbury aus, zwei Jahre nachdem der Beagle eingezogen war. Vor der Merry Farm lief hier im Herbst die Scary Farm, die in unserem Überblick [Halloween in den USA](/blog/halloween-usa-freizeitparks-2026) vorkommt. 1997 verkaufte die Familie den Park an Cedar Fair, das am 1. Juli 2024 mit Six Flags fusionierte.
 
-Six Flags feiert in diesem Winter in elf Parks. In [Six Flags Great Adventure](/news/six-flags-great-adventure-holiday-in-the-park-2026) und in Six Flags Over Georgia ist Holiday in the Park neu gestaltet, Six Flags Magic Mountain in Valencia zeigt ab dem 26. November sieben neue Shows. Das Disneyland Resort in Anaheim feiert zur selben Zeit seine [Weihnachtssaison](/news/disneyland-resort-holidays-2026). Den neuen freien Eintritt ab 65 Jahren und das Black-Friday-Ticket, mit dem du für den Preis eines Tages die ganze Frühjahrs- und Sommersaison 2027 bekommst, gibt es bei Knott's nicht.
+Six Flags feiert in diesem Winter in elf Parks. In [Six Flags Great Adventure](/news/six-flags-great-adventure-holiday-in-the-park-2026) und in Six Flags Over Georgia ist Holiday in the Park neu gestaltet, Six Flags Magic Mountain in Valencia zeigt ab dem 26. November sieben neue Shows. Den neuen freien Eintritt ab 65 Jahren und das Black-Friday-Ticket, mit dem du für den Preis eines Tages die ganze Frühjahrs- und Sommersaison 2027 bekommst, gibt es bei Knott's nicht.
 
 [Knott's Berry Farm](ref:knotts-berry-farm?full)
 
