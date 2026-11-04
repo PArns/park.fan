@@ -34,9 +34,11 @@ it. `HeroBackground` (`components/layout/hero-background.tsx`) paints three scri
 theme's foreground: one under the header, one rising from the lower edge behind the headline and
 the field, and from `md`, where the text stays at the left, one from the left.
 
-- **Its height is a minimum**, `min(32rem, 62svh)` on a phone and `min(40rem, 74svh)` from `md`; the
-  text and the card rail fill it from the bottom (`justify-end`). From `md` its bottom padding
-  (`pb-52`) is the 176 px the rail takes from it (`-mt-44`) and the gap above the rail.
+- **Its height:** on a phone as tall as its text, which starts 32 px under the header (`pt-20`);
+  from `md` at least `min(40rem, 74svh)`, the text filling it from the bottom (`justify-end`). Its
+  bottom padding is the room the card rail takes from it and the gap above the rail: `pb-16`
+  against `-mt-10` on a phone, `pb-52` against `-mt-44` (176 px) from `md`, so the cards stand on
+  the photo on either.
 - **One photo per five minutes** (`pickHeroImage`), the same for every request in that window, so
   the shell stays cacheable. A visitor in a park gets that park's photos as a crossfade
   (`HeroRotationProvider`, `InParkHeroImages`).
@@ -61,7 +63,7 @@ a phone (three lines at 390 px in German), 60 px from 640 px and 68 px from 1280
 
 | Value                           | Server seed                      | Client overlay                    |
 | ------------------------------- | -------------------------------- | --------------------------------- |
-| Open-parks badge + intro counts | `HeroStats` → `getGlobalStats()` | `useGlobalStats`                  |
+| Open-parks badge + intro counts | `HeroStats` → `getGlobalStats()` | `useGlobalStats` (open count)     |
 | The card rail                   | —                                | `useHomeNearbyParks`, client only |
 | Popular parks for the rail      | —                                | `/api/parks/popular`, client only |
 
@@ -90,12 +92,19 @@ schauen, wo wir uns heute anstellen!" and, smaller, „Klick mich an, ich helfe 
 here. Next to a park the park's block takes his place; below `lg` the row is not there.
 
 - **He stands here or in his corner, never both.** The slot registers with `parkyDock`
-  (`lib/assistant/parky-dock.ts`) while half of it is on screen. Meanwhile the corner button is
-  hidden and makes no entrance; once the slot scrolls away Parky hops down into the corner,
-  shrinking to its size, and back up, growing, when it returns (`parkyDockHop` in
-  `lib/assistant/parky-jump.ts`, the same arc as the hop into the window). The chat window's hop
-  starts and lands in the slot while it is on screen. Under reduced motion he changes places
-  without the hop.
+  (`lib/assistant/parky-dock.ts`) while all of it shows below the sticky header
+  (`PARKY_TOP_CLEARANCE`), measured once on mount as well as by the observer. It is in the first
+  HTML, since the hero renders with its counts (`HeroStats`, no `<Suspense>`), and Parky's button
+  shows 150 ms after the page, so on a load at the top he simply stands here and the corner makes
+  no entrance. Once the slot scrolls under the header Parky hops down into the corner, shrinking
+  to its size, and back up, growing, when it returns (`parkyDockHop` in
+  `lib/assistant/parky-jump.ts`, the arc of the hop into the window, 1.1 s). The hop is drawn
+  frame by frame: on the way up it aims at where the slot is now, since the page is still
+  scrolling, and no arc rises over the header. Its first frame and the slot giving him up land in
+  one paint, and so do its last frame and the slot drawing him, in layout effects, so no frame
+  shows him twice or not at all; arriving that way he does not fade in. A landing re-aims his eyes
+  (`PARKY_LANDED_EVENT`). The chat window's hop starts and lands in the slot while it is on
+  screen. Under reduced motion he changes places without the hop.
 - **The slot draws him only while he is there** (`parkyInDock`): on his way, up in the window or
   in the corner it is empty and the bubble faded, so the bubble never speaks for an absent Parky.
 - **Calm, as in the chat window** (`ParkyLogo idle calm`): his eyes follow the pointer, he blinks,

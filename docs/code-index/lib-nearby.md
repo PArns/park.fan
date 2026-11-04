@@ -21,7 +21,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `readCacheEntry` _function_: Read from localStorage. Returns undefined when: - No entry exists, or it is unreadable - The entry is older than CACHE_MAX_AGE_MS - The entry and the current query do not share a location basis (see sameLocationBasis) - Both carry …
 - `readCache` _function_: Returns the cached nearby answer that still fits the current coordinates (see `readCacheEntry`), or undefined.
 - `writeCache` _function_: Stores a nearby answer in localStorage with the time and the coordinates it was asked with (null for a GeoIP answer); storage errors are ignored.
-- `CACHE_KEY` _const_: The last nearby answer, persisted so a returning visitor sees parks before the network does anything.
+- `CACHE_KEY` _const_: Bumped when an answer gains a field the cards need, so one stored by an older build never seeds the query: v3 has the rides' own photos on the short waits.
 - `CACHE_MAX_AGE_MS` _const_
 - `CACHE_COORD_MAX_DIST_KM` _const_: Skip a cached entry once the user has moved more than this far since it was written.
 - Types: `CachedNearby`

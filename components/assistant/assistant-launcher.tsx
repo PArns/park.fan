@@ -1,6 +1,13 @@
 'use client';
 
-import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from 'react';
+import {
+  useCallback,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+  useSyncExternalStore,
+} from 'react';
 import { useTranslations } from 'next-intl';
 import { usePathname } from 'next/navigation';
 import { X } from 'lucide-react';
@@ -28,6 +35,9 @@ import { parkyDock, parkyInDock } from '@/lib/assistant/parky-dock';
 // Must stay in step with this file's entry in `LAZY_MESSAGE_BOUNDARIES`
 // (`lib/i18n/route-namespaces.mjs`).
 // `parks.status` and `parks.crowdLevels` are the badges on the cards Parky shows.
+/** How long after the page Parky's button shows; a slot on the page has answered by then. */
+const SHOW_DELAY_MS = 150;
+
 const ASSISTANT_NAMESPACES = ['assistant', 'parks.status', 'parks.crowdLevels'] as const;
 
 // Loaded apart, like the window: its lines would otherwise put `assistant` into every page's chrome.
@@ -246,7 +256,23 @@ export function AssistantLauncher() {
    * The room Parky's button takes in the corner, for the location banner to sit above it. A
    * property on the document, like `--planner-inset`, so the banner reads it without a render.
    */
-  const shown = visible && messages.ready;
+  const ready = visible && messages.ready;
+  // Parky's slot on the page (the homepage hero's on a desktop), read here rather than below so
+  // the button can wait for it.
+  const docked = useSyncExternalStore(
+    parkyDock.subscribe,
+    parkyDock.getSnapshot,
+    parkyDock.getServerSnapshot
+  );
+  // A beat after the page, or at once once a slot has said it is on screen: he shows where he
+  // belongs instead of entering in the corner and hopping up from there.
+  const [settled, setSettled] = useState(false);
+  useEffect(() => {
+    if (!ready) return;
+    const timer = setTimeout(() => setSettled(true), SHOW_DELAY_MS);
+    return () => clearTimeout(timer);
+  }, [ready]);
+  const shown = ready && (settled || docked);
   useEffect(() => {
     if (!shown) return;
     const root = document.documentElement;
@@ -259,11 +285,6 @@ export function AssistantLauncher() {
   // Parky stands in a slot on the page while it is on screen (the homepage hero on a desktop,
   // `parkyDock`), and only in his corner otherwise. Already in the slot when the button first
   // shows, he makes no entrance: he never came in through the corner.
-  const docked = useSyncExternalStore(
-    parkyDock.subscribe,
-    parkyDock.getSnapshot,
-    parkyDock.getServerSnapshot
-  );
   const [skipEntrance, setSkipEntrance] = useState(false);
   if (docked && !skipEntrance && !arrived) setSkipEntrance(true);
 
@@ -280,7 +301,11 @@ export function AssistantLauncher() {
 
   // Back from the window, Parky lands in his corner before the button shows again.
   const [landing, setLanding] = useState(false);
+  // Whether Parky has moved since the page loaded: once he has, he arrives in the slot by a hop or
+  // a jump, handed over in one frame, and never fades in there again.
+  const moved = useRef(false);
   const close = useCallback(() => {
+    moved.current = true;
     setOpen(false);
     setLanding(true);
   }, []);
@@ -298,31 +323,31 @@ export function AssistantLauncher() {
   const [hop, setHop] = useState<'toSlot' | 'toCorner' | null>(null);
   if (prevDocked !== docked) {
     setPrevDocked(docked);
-    setHop(shown && !away ? (docked ? 'toSlot' : 'toCorner') : null);
+    // Not up from the corner while he is still making his entrance there: then the slot was
+    // simply slow to say it is on screen, and he only belongs there.
+    setHop(shown && !away && !(docked && entering) ? (docked ? 'toSlot' : 'toCorner') : null);
   }
-  useEffect(() => {
+  // Layout effects, both: the hop's first frame and the slot giving Parky up land in the same paint
+  // as the button showing, and at the end the button hiding, the hop letting go and the slot
+  // drawing him do too. Anything later shows him twice or not at all for a frame.
+  useLayoutEffect(() => {
     if (!hop) return;
+    moved.current = true;
     const corner = document.querySelector<HTMLElement>(`[${PARKY_CORNER_ATTR}]`);
     const slot = hop === 'toSlot' ? parkyDock.element() : parkyDock.lastElement();
-    const flight = corner && slot ? parkyDockHop(corner, slot, hop === 'toSlot') : null;
     const done = () => setHop(null);
+    const stop = corner && slot ? parkyDockHop(corner, slot, hop === 'toSlot', done) : null;
     // No hop to play (reduced motion, nothing measured): he is simply where he belongs.
-    if (!flight) {
+    if (!stop) {
       const timer = setTimeout(done, 0);
       return () => clearTimeout(timer);
     }
-    flight.addEventListener('finish', done);
-    flight.addEventListener('cancel', done);
-    return () => {
-      flight.removeEventListener('finish', done);
-      flight.removeEventListener('cancel', done);
-      flight.cancel();
-    };
+    return stop;
   }, [hop]);
   const inSlot = docked && hop === null;
-  useEffect(() => {
-    parkyInDock.set(shown && inSlot && !away);
-    return () => parkyInDock.set(false);
+  useLayoutEffect(() => {
+    parkyInDock.set(shown && inSlot && !away ? (moved.current ? 'landed' : 'appeared') : null);
+    return () => parkyInDock.set(null);
   }, [shown, inSlot, away]);
 
   // Not while a dialog has Parky ducked below the edge (the search palette aside), nor while away

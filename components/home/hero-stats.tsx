@@ -3,10 +3,10 @@ import { catchNonFatal } from '@/lib/api/client';
 import { HeroWithNearby, type HeroInitialCounts } from './hero-with-nearby';
 
 /**
- * Server seed for the hero's live numbers (open-parks badge and intro counts), cached as long as
- * `getGlobalStats` says, so it never pins the homepage's ISR window; the client overlays the live
- * values via `useGlobalStats` after mount. Streamed inside a Suspense boundary whose fallback
- * renders the same hero without the seed, so a slow or failing stats call never blocks the hero.
+ * The hero's text with its numbers (open-parks badge and intro counts) from `getGlobalStats`,
+ * cached a week so it never pins the homepage's ISR window; the client overlays the live open
+ * count via `useGlobalStats` after mount. Rendered with the page, not streamed: Parky's slot is
+ * in the first HTML, and a failing stats call only leaves the sentence's round numbers.
  */
 export async function HeroStats() {
   const stats = await catchNonFatal(getGlobalStats());

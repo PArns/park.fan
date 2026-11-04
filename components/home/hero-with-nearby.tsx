@@ -12,7 +12,7 @@ import { HeroParky } from '@/components/home/hero-parky';
 /** Sentence fallbacks when neither the SSR seed nor the live overlay has counts yet. */
 const FALLBACK_COUNTS = { openParks: null, parks: 200, attractions: 7000 };
 
-/** Seed for the live counts, baked into the static shell by <HeroStats>. */
+/** The counts the hero renders with, from <HeroStats>; the open count is overlaid live after mount. */
 export interface HeroInitialCounts {
   openParks: number;
   parks: number;
@@ -37,21 +37,15 @@ function HeroBadgeRow({ openParks }: { openParks: number | null }) {
  * edge (`HeroBackground`'s scrim) and is the one thing to read first. 40 px on a phone, three lines
  * at 390 px in German, 68 px from 1280 px.
  */
-function HeroHeadline({
-  children,
-  as: Tag = 'h1',
-}: {
-  children: React.ReactNode;
-  as?: 'h1' | 'p';
-}) {
+function HeroHeadline({ children }: { children: React.ReactNode }) {
   return (
     // Margins do not collapse in a flex container, so `mt-4 mb-4` here spaces the headline as it
     // would on the <h1>. The top margin is the gap under the open-parks badge, which a phone does
     // not show.
     <div className="mt-4 mb-4 max-md:mt-0">
-      <Tag className="text-[2.5rem]/[1.04] font-black tracking-tight text-balance sm:text-6xl/[1.02] xl:text-[4.25rem]/[1]">
+      <h1 className="text-[2.5rem]/[1.04] font-black tracking-tight text-balance sm:text-6xl/[1.02] xl:text-[4.25rem]/[1]">
         {children}
-      </Tag>
+      </h1>
     </div>
   );
 }
@@ -62,19 +56,7 @@ function HeroHeadline({
  * the „Willkommen im …" variant with that park's block (`useHeroPark`); on a phone that block
  * stands under the card rail (`HeroRail`), so nothing above the field changes.
  */
-export function HeroWithNearby({
-  initialCounts,
-  isFallback = false,
-}: {
-  initialCounts: HeroInitialCounts | null;
-  /**
-   * Set where this is the Suspense fallback of the streamed hero. Both copies are in the
-   * document until the stream swaps them, so the fallback's headline is a `<p>` with the same
-   * box and a reader of the raw HTML finds one `<h1>`.
-   */
-  isFallback?: boolean;
-}) {
-  const headlineTag = isFallback ? 'p' : 'h1';
+export function HeroWithNearby({ initialCounts }: { initialCounts: HeroInitialCounts | null }) {
   const t = useTranslations('parks');
   const tHome = useTranslations('home');
   const locale = useLocale();
@@ -107,9 +89,7 @@ export function HeroWithNearby({
     return (
       <>
         <HeroBadgeRow openParks={openParks} />
-        <HeroHeadline as={headlineTag}>
-          {t('heroWelcome', { parkName: variant.park.name })}
-        </HeroHeadline>
+        <HeroHeadline>{t('heroWelcome', { parkName: variant.park.name })}</HeroHeadline>
         <HeroParkActions park={variant.park} className="mt-2" />
       </>
     );
@@ -118,7 +98,7 @@ export function HeroWithNearby({
   return (
     <>
       <HeroBadgeRow openParks={openParks} />
-      <HeroHeadline as={headlineTag}>{tHome('hero.title')}</HeroHeadline>
+      <HeroHeadline>{tHome('hero.title')}</HeroHeadline>
       {/* Parky under the question on a desktop; next to a park the park's block takes his place. */}
       {!variant && <HeroParky />}
       {variant ? (

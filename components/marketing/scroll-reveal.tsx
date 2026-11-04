@@ -4,8 +4,8 @@ import { useEffect, useRef, useState, type ReactNode } from 'react';
 import { cn } from '@/lib/utils';
 
 /**
- * Lightweight scroll-reveal: fades + rises its children in the first time they
- * enter the viewport, then stays put (one-shot observer). SSR-safe — the text is
+ * Lightweight scroll-reveal: fades + rises its children in the first time any of them shows in
+ * the viewport, then stays put (one-shot observer). SSR-safe — the text is
  * always in the DOM (only visually transparent before reveal, so crawlers still
  * read it) and `prefers-reduced-motion` users get the content shown instantly.
  *
@@ -43,7 +43,9 @@ export function Reveal({
           io.disconnect();
         }
       },
-      { rootMargin: '0px 0px -8% 0px', threshold: 0.05 }
+      // From the first pixel on screen: a section that only peeks in under the fold is part of
+      // what the page shows, not a blank band until the visitor scrolls.
+      { threshold: 0 }
     );
     io.observe(el);
     return () => io.disconnect();
