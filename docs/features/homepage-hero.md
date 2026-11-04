@@ -156,9 +156,12 @@ clicked:
   (`home.hero.introShort`, „Live-Wartezeiten aus 210 Parks.", one line at 360 in all six); both
   sentences are in the HTML and CSS shows one. The open-parks badge is not shown on a phone. The field is 48 px tall there, 56 from `md`: its text stays at
   16 px, below which iOS Safari zooms into a focused field, so the padding and the icon shrink
-  instead. Measured: the plate runs from 60 to 655 px on 390 × 844 and on 360 × 740 in every language
-  but French at 360 (688). With the news chip over the headline it ended at 685 and 718, and two
-  rows with the pills and the full intro at 712 and 738.
+  instead. The headline opens the plate, 16 px under its edge like the text beside it: its top
+  margin is the gap under the open-parks badge, and goes wherever the badge does not show (below
+  `md` and from a 1280 px page). Measured with nearby parks whose rows all carry their status pill:
+  the plate runs from 60 to 639 px on 390 × 844 and on 360 × 740 in every language but French at 360
+  (672). With the news chip over the headline it ended at 685 and 718, and two rows with the pills
+  and the full intro at 712 and 738.
 - **A phone row puts the name on a line of its own**: the status and the wait follow as 18 px pills
   (`ParkStatusBadge`, `WaitBadge`, `avgWaitShort`) with the distance; a ride shows its own wait, a
   popular park its place. With the badges beside the name, „Movie Park G…" and „Brühl, Deu…" were
@@ -166,7 +169,7 @@ clicked:
 - **The two posts on a phone** are rows of a kicker and a one-line title under an icon for the kind,
   from the same `useHeroReadingRows` as the desktop's pair.
 - **Four parks and two posts from `md`** because they take the room the two pill rows and their gap
-  left: the plate is 778 px at 1440 px and ends at 858 px in a 1440 × 900 window. The park rows are 60 px so the posts can carry two lines of their teaser.
+  left: the plate is 762 px at 1440 px and ends at 842 px in a 1440 × 900 window. The park rows are 60 px so the posts can carry two lines of their teaser.
 - **A shut park says when it opens**: before today's opening its status pill reads „Öffnet um
   09:00 Uhr" (`parks.opensAt`), later „Öffnet am 25. März" (`parks.opensOn`), in the park's zone and
   on the minute clock (`useHeroStatusLabels`). `nextParkOpening` in `lib/utils/schedule-utils.ts`
@@ -239,7 +242,7 @@ clicked:
   post („Neueste News") and the newest guide, both from the manifest (`getHeroReading`), so they are
   in the static shell and nothing swaps them after load. The news post used to be a chip of its own
   over the headline, a second bar beside the open-parks badge; in the list it costs no row, and the
-  phone's plate is 30 px shorter. They render with the park rows, not before, so cmdk highlights the
+  phone's plate is 46 px shorter with the headline moved up into the room it left. They render with the park rows, not before, so cmdk highlights the
   first park on mount and not the first post.
 
 ### Focus, results, Escape
@@ -337,9 +340,9 @@ runs each at 4× CPU / 1.6 Mbps against `pnpm build && pnpm start`.
   `app/globals.css`): its later children arrive in a later chunk of the HTML, and on a slow link the
   half-parsed plate painted 328 px tall and grew 456 px (0.10 CLS in two of five runs) — nothing
   after hydration can prevent that. 808 px is the settled height in all six locales from 768 px up,
-  778 px (`--hero-plate-min-h-wide`) where the map panel's header carries the open-parks badge from
-  a 1280 px page (fr from 1440 px is 826); a min-height at or below the real height changes no
-  finished layout.
+  762 px (`--hero-plate-min-h-wide`) where the map panel's header carries the open-parks badge from
+  a 1280 px page (fr from 1440 px is 810), with or without status pills in the rows; a min-height at
+  or below the real height changes no finished layout.
 - **The three states of the resting search list must be one height.** Shell skeleton, the pending
   list and the settled list had once drifted to 252 / 288 / 270 px, and what sat under the list
   hopped 19 px twice, seconds after load, with a green build. Every skeleton is

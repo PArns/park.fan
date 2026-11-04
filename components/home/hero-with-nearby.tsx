@@ -53,8 +53,9 @@ function HeroHeadline({
 }) {
   return (
     // Margins do not collapse in a flex container, so `mt-4 mb-3` here spaces the headline as it
-    // would on the <h1>.
-    <div className="mt-4 mb-3 flex items-center gap-4">
+    // would on the <h1>. The top margin is the gap under the open-parks badge, so it goes wherever
+    // the badge does not show and the headline opens the plate.
+    <div className="mt-4 mb-3 flex items-center gap-4 max-md:mt-0 @min-[1280px]/page:mt-0">
       {mark && (
         <span className="hidden shrink-0 @min-[1304px]/page:block">
           <Image
