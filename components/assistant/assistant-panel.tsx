@@ -1,6 +1,8 @@
 'use client';
 
 import { useEffect, useLayoutEffect, useRef, useState, type FormEvent } from 'react';
+import { useMediaQuery } from '@/lib/hooks/use-media-query';
+import { useSheetViewport } from '@/lib/hooks/use-sheet-viewport';
 import { useLocale, useTranslations } from 'next-intl';
 import { usePathname } from 'next/navigation';
 import {
@@ -26,7 +28,7 @@ import { drawOpener, sessionOpener } from '@/lib/assistant/opener';
 import { parkPathOf } from '@/lib/assistant/easter-eggs';
 import { trackSiteEvent, type AssistantOpenSource } from '@/lib/analytics/site-analytics';
 import { ParkyLogo } from './parky-logo';
-import { PARKY_LAYER } from './parky-layer';
+import { ASSISTANT_PHONE_QUERY, PARKY_LAYER } from './parky-layer';
 import { parkyJump } from '@/lib/assistant/parky-jump';
 import { AssistantMessageText } from './assistant-message-text';
 import { AssistantFeedbackForm } from './assistant-feedback-form';
@@ -82,6 +84,38 @@ function TypingDots({ label }: { label: string }) {
 }
 
 /**
+ * Whether a drag of `dx`, `dy` from where the finger came down can scroll something under it
+ * inside `root`: a box between the touched element and `root` that overflows in the drag's main
+ * direction and has room left that way. Outside `root` nothing may move.
+ */
+function scrollsWithin(
+  target: EventTarget | null,
+  root: HTMLElement | null,
+  dx: number,
+  dy: number
+) {
+  if (!root || !(target instanceof Node) || !root.contains(target)) return false;
+  const vertical = Math.abs(dy) >= Math.abs(dx);
+  for (
+    let node = target instanceof HTMLElement ? target : target.parentElement;
+    node && root.contains(node);
+    node = node.parentElement
+  ) {
+    const style = getComputedStyle(node);
+    if (vertical) {
+      if (!/auto|scroll/.test(style.overflowY) || node.scrollHeight <= node.clientHeight) continue;
+      if (dy > 0 ? node.scrollTop > 0 : node.scrollTop + node.clientHeight < node.scrollHeight - 1)
+        return true;
+    } else {
+      if (!/auto|scroll/.test(style.overflowX) || node.scrollWidth <= node.clientWidth) continue;
+      if (dx > 0 ? node.scrollLeft > 0 : node.scrollLeft + node.clientWidth < node.scrollWidth - 1)
+        return true;
+    }
+  }
+  return false;
+}
+
+/**
  * The window Parky opens in: the chat and, on its second tab, the feedback form. Mounted once
  * the launcher was first pressed and kept, so a closed and reopened chat is where it was.
  */
@@ -106,6 +140,8 @@ export function AssistantPanel({
   const [opener, setOpener] = useState(sessionOpener);
   const input = useRef<HTMLTextAreaElement>(null);
   const scroller = useRef<HTMLDivElement>(null);
+  const frame = useRef<HTMLDivElement>(null);
+  const phone = useMediaQuery(ASSISTANT_PHONE_QUERY);
   const face = useRef<HTMLDivElement>(null);
   const parkPage = parkPathOf(usePathname()) !== null;
 
@@ -127,21 +163,62 @@ export function AssistantPanel({
       trackSiteEvent('assistant_closed', { questions: askedNow.current - askedAtOpen.current });
   }, [open, openedBy]);
 
+  // On a phone the window stands in what the browser shows: with the keyboard up iOS shows less
+  // than the layout viewport and would let the visitor pan to the rest (`useSheetViewport`).
+  useSheetViewport(open && phone, 'assistant');
+
   /**
-   * On a phone the open window takes the screen, so the page behind it must not move: its scroll
-   * is locked while the window is open, and the chat keeps its own scroll to itself.
+   * On a phone the open window takes the screen, so the page behind it must not move: only the
+   * chat scrolls. `overflow: hidden` on `<body>` alone does not stop iOS Safari from scrolling the
+   * page under a finger, so the body is pinned in place (`position: fixed`, moved up by the scroll
+   * it had) and put back where it was when the window closes. With the keyboard up iOS still pans
+   * the view under a dragging finger, so a drag that no scroll area inside the window can take is
+   * cancelled; a pinch still zooms.
    */
   useEffect(() => {
-    if (!open || !window.matchMedia('(max-width: 639px)').matches) return;
+    if (!open || !phone) return;
     const { body, documentElement: html } = document;
-    const before = { overflow: body.style.overflow, overscroll: html.style.overscrollBehavior };
+    const scrollY = window.scrollY;
+    const before = {
+      position: body.style.position,
+      top: body.style.top,
+      left: body.style.left,
+      right: body.style.right,
+      overflow: body.style.overflow,
+      overscroll: html.style.overscrollBehavior,
+    };
+    body.style.position = 'fixed';
+    body.style.top = `-${scrollY}px`;
+    body.style.left = '0';
+    body.style.right = '0';
     body.style.overflow = 'hidden';
     html.style.overscrollBehavior = 'none';
+    let start = { x: 0, y: 0 };
+    const onTouchStart = (event: TouchEvent) => {
+      const touch = event.touches[0];
+      if (touch) start = { x: touch.clientX, y: touch.clientY };
+    };
+    const onTouchMove = (event: TouchEvent) => {
+      const touch = event.touches[0];
+      if (!touch || event.touches.length > 1) return;
+      const dx = touch.clientX - start.x;
+      const dy = touch.clientY - start.y;
+      if (!scrollsWithin(event.target, frame.current, dx, dy)) event.preventDefault();
+    };
+    document.addEventListener('touchstart', onTouchStart, { passive: true });
+    document.addEventListener('touchmove', onTouchMove, { passive: false });
     return () => {
+      document.removeEventListener('touchstart', onTouchStart);
+      document.removeEventListener('touchmove', onTouchMove);
+      body.style.position = before.position;
+      body.style.top = before.top;
+      body.style.left = before.left;
+      body.style.right = before.right;
       body.style.overflow = before.overflow;
       html.style.overscrollBehavior = before.overscroll;
+      window.scrollTo({ top: scrollY, behavior: 'instant' });
     };
-  }, [open]);
+  }, [open, phone]);
 
   useEffect(() => {
     if (!open) return;
@@ -191,14 +268,17 @@ export function AssistantPanel({
     // The window's place; the window fades in it, and Parky's face, beside it rather than in it,
     // jumps without fading along.
     <div
+      ref={frame}
       className={cn(
         'fixed',
         PARKY_LAYER,
         // The launcher hides while the window is open, so the window takes its corner. Parky and
         // his hat rise over its top edge; the window keeps them clear of the 48 px header, which
-        // they would otherwise cover. On a phone it is anchored to the top, on a desktop its
-        // height is capped.
-        'inset-x-2 top-[5.5rem] bottom-[max(0.5rem,env(safe-area-inset-bottom))] sm:top-auto sm:h-[min(clamp(560px,72dvh,720px),calc(100dvh-10rem))]',
+        // they would otherwise cover. On a phone it fills what the browser shows from 5.5rem below
+        // its top to just above the keyboard (`--assistant-viewport*`, `useSheetViewport`), which
+        // covers the home indicator, so the safe-area gap is not added on top of it; on a desktop
+        // its height is capped.
+        'inset-x-2 bottom-[calc(var(--assistant-viewport-lift,0px)+max(0.5rem,env(safe-area-inset-bottom)-var(--assistant-viewport-lift,0px)))] h-[calc(var(--assistant-viewport,100svh)-5.5rem-max(0.5rem,env(safe-area-inset-bottom)-var(--assistant-viewport-lift,0px)))] sm:h-[min(clamp(560px,72dvh,720px),calc(100dvh-10rem))]',
         // Clear of the planner's edge tab, which sits on the right edge at mid height.
         'sm:inset-x-auto sm:right-12 sm:bottom-4 sm:w-[clamp(380px,32vw,480px)]',
         'planner-wide:right-[calc(var(--planner-inset,0px)+3rem)]',

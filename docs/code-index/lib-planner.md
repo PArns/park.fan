@@ -467,10 +467,6 @@ The link that hands a stored plan to somebody else, and how it is read back.
 
 - `useRideDragSource` _hook_: Teach every ride card on the page what it is, for the length of a drag.
 
-### [`use-sheet-viewport.ts`](../../lib/planner/use-sheet-viewport.ts)
-
-- `useSheetViewport` _hook_: Sizes the phone sheet by what the browser shows, not by what a viewport unit says it would.
-
 ### [`weather-rail.ts`](../../lib/planner/weather-rail.ts)
 
 - `weatherRailGroup` _function_: WMO weather code to the group the band paints, on the ranges `getWeatherConfig` splits on. An unknown code is `cloud`, never a hole, since the band is continuous.

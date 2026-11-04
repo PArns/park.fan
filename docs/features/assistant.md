@@ -24,6 +24,14 @@ answer cannot carry a per-origin CORS header.
 The browser sends one question at a time with the chat's id. The history stays on the API, so
 nobody can hand Parky made-up earlier answers.
 
+On a phone the window takes the screen, and only the chat scrolls. While it is open the page
+behind is pinned (`position: fixed` on `<body>`, moved up by the scroll it had, put back on close),
+since `overflow: hidden` alone lets iOS Safari scroll it under a finger. The window stands in what
+the browser shows, from 5.5rem below its top to just above the keyboard (`useSheetViewport` with
+`--assistant-viewport` and `--assistant-viewport-lift`), and a drag that no scroll area inside the
+window can take is cancelled (`scrollsWithin`), so with the keyboard up iOS cannot pan the view
+either; a pinch still zooms. All of it in `AssistantPanel`, below `ASSISTANT_PHONE_QUERY`.
+
 ## Rollout
 
 Nothing is drawn on the server. `assistantGate` (`lib/assistant/config.ts`) decides in the browser,

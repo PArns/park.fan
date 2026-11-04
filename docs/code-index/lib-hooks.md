@@ -297,6 +297,10 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `useSecondNow` _hook_: The browser clock, advancing every second on one shared timer while `enabled`. Disabled it reads `null` and takes no subscription, so the timer stops with the last enabled reader.
 
+### [`use-sheet-viewport.ts`](../../lib/hooks/use-sheet-viewport.ts)
+
+- `useSheetViewport` _hook_: Sizes a phone sheet by what the browser shows, not by what a viewport unit says it would.
+
 ### [`use-tab-hash-routing.ts`](../../lib/hooks/use-tab-hash-routing.ts)
 
 - `useTabHashRouting` _hook_: URL-hash ↔ tab synchronization for the park page tabs.

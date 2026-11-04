@@ -1,6 +1,7 @@
 'use client';
 
 import { useCallback } from 'react';
+import { ASSISTANT_PHONE_QUERY } from '@/components/assistant/parky-layer';
 import { useLocale } from 'next-intl';
 import { useRouter } from 'next/navigation';
 import { usePlanner } from '@/lib/planner/use-planner';
@@ -19,9 +20,6 @@ import {
   type AssistantPlannerPark,
 } from '@/lib/assistant/actions';
 
-/** Below `sm` Parky's window covers the page, so it steps aside after acting on it. */
-const PHONE = '(max-width: 639px)';
-
 /**
  * Carries out what Parky asked for, through the site's own paths: the router for a page,
  * next-intl's router for the same page in another language, the planner's store and its open and
@@ -37,7 +35,7 @@ export function useAssistantActions(closeWindow: () => void) {
   return useCallback(
     (action: AssistantAction): AssistantActionChip | null => {
       const stepAside = () => {
-        if (window.matchMedia(PHONE).matches) closeWindow();
+        if (window.matchMedia(ASSISTANT_PHONE_QUERY).matches) closeWindow();
       };
       const showDay = (park: AssistantPlannerPark, date: string) => {
         plannerStore.update((state) => openDay(state, park, date));

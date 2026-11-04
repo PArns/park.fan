@@ -40,6 +40,7 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`parky-layer.ts`](../../components/assistant/parky-layer.ts)
 
 - `PARKY_LAYER` _const_: Parky's layer: button, speech bubble and window lie above everything else on the page, the header, the planner and the navigation bar's `z-[9999]` included. One class for all three.
+- `ASSISTANT_PHONE_QUERY` _const_: Below this width Parky's window takes the screen: the page behind it is locked, it stands in what the browser shows, and a step that leads elsewhere on the page closes it.
 
 ### [`parky-logo.tsx`](../../components/assistant/parky-logo.tsx)
 

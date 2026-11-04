@@ -182,7 +182,7 @@ in Safari — `large` opens over the site header, 12 px under the top edge (`SHE
 Detents written in `svh` are layout-viewport heights; a pinch, the keyboard, an in-app browser or a
 toolbar leaves less on screen, and iOS takes the difference off the top — grabber and × first
 (measured at page scale 1.3: 195 px of the sheet outside the view). `useSheetViewport()`
-(`lib/planner/use-sheet-viewport.ts`) reads `window.visualViewport` while the phone sheet is open and
+(`lib/hooks/use-sheet-viewport.ts`, shared with Parky's phone window) reads `window.visualViewport` while the phone sheet is open and
 keeps `--planner-viewport` (the height on screen) and `--planner-viewport-lift` (how far the bottom
 of what is on screen sits above the layout viewport's bottom) on `<html>`, where the detents are
 declared, falling back to `100svh` and `0px`. The lift is measured against a fixed `top: 0; bottom:
