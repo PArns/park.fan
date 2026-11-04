@@ -29,7 +29,7 @@ parkLinks:
 rideLinks:
   - legoland-deutschland/*
 seo:
-  title: 'Legoland Deutschland: tiempos de espera, Fastrack, entradas y Halloween'
+  title: 'Legoland Deutschland: ¿compensa el Fastrack?'
   description: >-
     En Legoland Deutschland, el viernes es el día más tranquilo y el sábado el
     más lleno. Con un adulto, un niño nunca necesita más de 1,25 metros.

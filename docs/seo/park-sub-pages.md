@@ -19,6 +19,23 @@ It does not help the head term: "phantasialand wartezeiten" belongs to the park 
 position 10.4 on 2026-09-19 with "Wartezeiten" in title and H1), and closing that gap is domain
 authority and inbound links, not a page.
 
+## "<park> Wartezeiten" is the park page's query
+
+The sub-pages and the crowd calendar leave the words of that query to the park page. In October
+2026 Google spread "europapark wartezeiten" over four URLs, the statistics page (976 impressions),
+the homepage (255), the park page (252) and the calendar (154), and none of them got a click; the
+homepage alone took "europapark wartezeiten live". So:
+
+- The statistics title names the busiest months, days and hours, not the waits
+  (`parks.statsPage.metaTitle`), and the calendar's title and H1 name the crowds of the month
+  (`parks.calendarPage.metaTitle`, `h1Suffix`: "Andrang im {month}").
+- Both sub-pages carry `ParkLiveLink` under their lead, "<park>: Wartezeiten live →" to the park
+  page (`parks.liveLink`), and the homepage tour's live stop links its pictured park with the same
+  words ([homepage](../features/homepage.md#the-tour)).
+- The calendar keeps its URL segment (`wartezeiten-kalender`) and the name in its tiles and
+  breadcrumb: renaming a URL costs a redirect for every indexed month, and the tiles are the site's
+  name for the feature.
+
 ## Average wait times (PAR-371)
 
 The park's historical half, which the park page loads only on the client

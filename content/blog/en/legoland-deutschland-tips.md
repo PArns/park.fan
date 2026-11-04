@@ -29,7 +29,7 @@ parkLinks:
 rideLinks:
   - legoland-deutschland/*
 seo:
-  title: 'Legoland Deutschland Tips: Wait Times, Fastrack, Tickets and Halloween'
+  title: 'Legoland Deutschland Tips: Is Fastrack Worth It?'
   description: >-
     Legoland Deutschland is quietest on Fridays and busiest on Saturdays. A
     child riding with an adult never needs more than 1.25 metres on any ride.

@@ -14,7 +14,8 @@ import { readSse } from '@/lib/assistant/sse.ts';
 import { directionsHref, safeAssistantHref } from '@/lib/assistant/links.ts';
 import { assistantVisible } from '@/lib/assistant/config.ts';
 import { postPlainText, POST_TEXT_LIMIT } from '@/lib/assistant/post-text.ts';
-import { localizedPath, readAssistantAction } from '@/lib/assistant/actions.ts';
+import { readAssistantAction } from '@/lib/assistant/actions.ts';
+import { localizedPath } from '@/lib/i18n/localized-path.ts';
 import { splitWaits } from '@/lib/assistant/wait-chips.ts';
 import {
   ASLEEP_AFTER_MS,

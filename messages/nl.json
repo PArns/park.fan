@@ -214,7 +214,6 @@
         "kicker": "Live wachttijden",
         "title": "Wachttijden live, voor elke attractie",
         "text": "Taron, Blue Fire, Wodan: op elke parkpagina staat hoe lang je nu bij elke attractie in de rij staat, plus de drukte van zeer rustig tot extreem. De cijfers worden elke vijf minuten ververst.",
-        "link": "Zo werkt park.fan",
         "alt": "De parkpagina van Europa-Park op een telefoon: de topattracties met hun live wachttijden en de drukte."
       },
       "calendar": {
@@ -380,6 +379,7 @@
     "toggle": "Thema wisselen"
   },
   "parks": {
+    "liveLink": "{park}: live wachttijden",
     "liveFreshness": {
       "asOf": "Bijgewerkt",
       "outdated": "Niet actueel",
@@ -994,7 +994,7 @@
     },
     "calendarPage": {
       "breadcrumb": "Wachttijden-kalender",
-      "h1Suffix": "Wachttijden in {month}",
+      "h1Suffix": "Drukte in {month}",
       "metaTitle": "{park}: druktekalender voor {month}",
       "metaTitleShort": "{park}: drukte in {month}",
       "metaTitleBare": "{park}: {month}",
@@ -1010,7 +1010,6 @@
       "nextMonth": "Volgende maand",
       "currentMonth": "Vandaag",
       "currentMonthAria": "Naar de huidige maand",
-      "backToPark": "Terug naar de wachttijden in {park}",
       "monthIndexLabel": "Alle maanden",
       "summary": {
         "openingFuture": "In {month} is {park} op {open} van de {total} dagen open.",
@@ -1048,7 +1047,6 @@
       "h1Suffix": "Gemiddelde wachttijden",
       "metaTitle": "{park}: drukste maanden, dagen en uren",
       "metaTitleShort": "{park}: drukste dagen en maanden",
-      "liveLink": "{park}: live wachttijden →",
       "metaDescription": "Hoe lang sta je in de rij {inPark} in {city}? Typische en piekwachttijden per maand, weekdag en uur, gemeten over {days} openingsdagen.",
       "metaDescriptionNoCity": "Hoe lang sta je in de rij {inPark}? Typische en piekwachttijden per maand, weekdag en uur, gemeten over {days} openingsdagen.",
       "leadBusiest": "Het drukst is het {inPark} in {months}, met typisch {minutes} minuten.",

@@ -214,7 +214,6 @@
         "kicker": "Temps d’attente en direct",
         "title": "Temps d’attente en direct, pour chaque attraction",
         "text": "Taron, Blue Fire, Wodan : chaque page de parc montre combien de temps tu attends à chaque attraction en ce moment, avec l’affluence de très faible à extrême. Les chiffres sont mis à jour toutes les cinq minutes.",
-        "link": "Comment fonctionne park.fan",
         "alt": "La page d’Europa-Park sur un téléphone : les attractions phares avec leur attente en direct et l’affluence."
       },
       "calendar": {
@@ -380,6 +379,7 @@
     "toggle": "Changer de thème"
   },
   "parks": {
+    "liveLink": "{park} : temps d’attente en direct",
     "liveFreshness": {
       "asOf": "Mis à jour",
       "outdated": "Pas à jour",
@@ -994,7 +994,7 @@
     },
     "calendarPage": {
       "breadcrumb": "Calendrier des temps d’attente",
-      "h1Suffix": "Temps d’attente en {month}",
+      "h1Suffix": "Affluence en {month}",
       "metaTitle": "{park} : calendrier d’affluence en {month}",
       "metaTitleShort": "{park} : affluence en {month}",
       "metaTitleBare": "{park} : {month}",
@@ -1010,7 +1010,6 @@
       "nextMonth": "Mois suivant",
       "currentMonth": "Aujourd’hui",
       "currentMonthAria": "Aller au mois en cours",
-      "backToPark": "Retour aux temps d’attente à {park}",
       "monthIndexLabel": "Tous les mois",
       "summary": {
         "openingFuture": "En {month}, {park} ouvre {open} jours sur {total}.",
@@ -1048,7 +1047,6 @@
       "h1Suffix": "Temps d’attente moyens",
       "metaTitle": "{park} : mois, jours et heures les plus chargés",
       "metaTitleShort": "{park} : jours les plus chargés",
-      "liveLink": "{park} : temps d’attente en direct →",
       "metaDescription": "Combien attend-on {inPark} à {city} ? Attente typique et de pointe par mois, jour et heure, mesurée sur {days} jours d’ouverture.",
       "metaDescriptionNoCity": "Combien attend-on {inPark} ? Attente typique et de pointe par mois, jour et heure, mesurée sur {days} jours d’ouverture.",
       "leadBusiest": "C’est en {months} qu’il y a le plus de monde {inPark}, avec {minutes} minutes en temps normal.",

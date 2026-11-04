@@ -9,7 +9,8 @@ import { ParkStatusBadge } from '@/components/parks/park-status-badge';
 import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
 import { LiveWaitPill } from '@/components/parks/live-wait-pill';
 import { cn } from '@/lib/utils';
-import { localizedPath, type AssistantCard } from '@/lib/assistant/actions';
+import type { AssistantCard } from '@/lib/assistant/actions';
+import { localizedPath } from '@/lib/i18n/localized-path';
 import type { CrowdLevel, ParkStatus } from '@/lib/api/types';
 import { loadCardImageMap, rideCardImageKey, type CardImageMap } from '@/lib/media/card-images';
 

@@ -214,7 +214,6 @@
         "kicker": "Live wait times",
         "title": "Live wait times for every ride",
         "text": "Taron, Blue Fire, Wodan: every park page shows how long you’ll queue for each ride right now, plus the crowd level from very low to extreme. The numbers refresh every five minutes.",
-        "link": "How park.fan works",
         "alt": "The Europa-Park page on a phone: the headliners with their live wait times and how busy they are."
       },
       "calendar": {
@@ -380,6 +379,7 @@
     "toggle": "Toggle theme"
   },
   "parks": {
+    "liveLink": "{park}: live wait times",
     "liveFreshness": {
       "asOf": "As of",
       "outdated": "Not up to date",
@@ -994,7 +994,7 @@
     },
     "calendarPage": {
       "breadcrumb": "Wait-Time Calendar",
-      "h1Suffix": "Wait times in {month}",
+      "h1Suffix": "Crowds in {month}",
       "metaTitle": "{park} Crowd Calendar & Opening Hours, {month}",
       "metaTitleShort": "{park} Crowd Calendar, {month}",
       "metaTitleBare": "{park}: {month}",
@@ -1010,7 +1010,6 @@
       "nextMonth": "Next month",
       "currentMonth": "Today",
       "currentMonthAria": "Jump to the current month",
-      "backToPark": "Back to wait times {inPark}",
       "monthIndexLabel": "All months",
       "summary": {
         "openingFuture": "{park} opens on {open} of the {total} days in {month}.",
@@ -1048,7 +1047,6 @@
       "h1Suffix": "Average Wait Times",
       "metaTitle": "{park}: Busiest Months, Days and Hours",
       "metaTitleShort": "{park}: Busiest Days and Months",
-      "liveLink": "{park}: live wait times →",
       "metaDescription": "How long do you really queue {inPark} in {city}? Typical and peak waits by month, weekday and hour, measured across {days} operating days.",
       "metaDescriptionNoCity": "How long do you really queue {inPark}? Typical and peak waits by month, weekday and hour, measured across {days} operating days.",
       "leadBusiest": "It is busiest {inPark} in {months}, at a typical {minutes} minutes.",

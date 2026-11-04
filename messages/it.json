@@ -214,7 +214,6 @@
         "kicker": "Tempi di attesa in diretta",
         "title": "Tempi di attesa in diretta, per ogni attrazione",
         "text": "Taron, Blue Fire, Wodan: ogni pagina del parco mostra quanto aspetti adesso a ogni attrazione, con l’affluenza da molto bassa a estrema. I numeri si aggiornano ogni cinque minuti.",
-        "link": "Come funziona park.fan",
         "alt": "La pagina di Europa-Park su uno smartphone: le attrazioni di punta con i tempi di attesa in diretta e l’affluenza."
       },
       "calendar": {
@@ -380,6 +379,7 @@
     "toggle": "Cambia tema"
   },
   "parks": {
+    "liveLink": "{park}: tempi di attesa in diretta",
     "liveFreshness": {
       "asOf": "Aggiornato",
       "outdated": "Non aggiornato",
@@ -994,7 +994,7 @@
     },
     "calendarPage": {
       "breadcrumb": "Calendario tempi di attesa",
-      "h1Suffix": "Tempi di attesa in {month}",
+      "h1Suffix": "Affluenza a {month}",
       "metaTitle": "{park}: calendario delle affluenze a {month}",
       "metaTitleShort": "{park}: affluenza a {month}",
       "metaTitleBare": "{park}: {month}",
@@ -1010,7 +1010,6 @@
       "nextMonth": "Mese successivo",
       "currentMonth": "Oggi",
       "currentMonthAria": "Vai al mese corrente",
-      "backToPark": "Torna ai tempi di attesa al {park}",
       "monthIndexLabel": "Tutti i mesi",
       "summary": {
         "openingFuture": "{month}: {park} apre {open} giorni su {total}.",
@@ -1048,7 +1047,6 @@
       "h1Suffix": "Tempi di attesa medi",
       "metaTitle": "{park}: mesi, giorni e ore più affollati",
       "metaTitleShort": "{park}: giorni e mesi più affollati",
-      "liveLink": "{park}: tempi di attesa in diretta →",
       "metaDescription": "Quanto si aspetta davvero {inPark} a {city}? Attesa tipica e di picco per mese, giorno e ora, misurata su {days} giorni di apertura.",
       "metaDescriptionNoCity": "Quanto si aspetta davvero {inPark}? Attesa tipica e di picco per mese, giorno e ora, misurata su {days} giorni di apertura.",
       "leadBusiest": "{count, plural, =1 {Il mese più affollato {inPark} è {months}, con {minutes} minuti nella norma.} other {I mesi più affollati {inPark} sono {months}, con {minutes} minuti nella norma.}}",

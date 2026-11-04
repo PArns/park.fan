@@ -4,6 +4,7 @@ import remarkGfm from 'remark-gfm';
 import rehypeSlug from 'rehype-slug';
 import rehypeHighlight from 'rehype-highlight';
 import type { Locale } from '@/i18n/config';
+import { localizedPath } from '@/lib/i18n/localized-path';
 import { remarkTableThemes } from '@/lib/blog/remark-table-themes';
 import { remarkCallouts, type CalloutType } from '@/lib/blog/remark-callouts';
 import {
@@ -580,6 +581,10 @@ export async function BlogContent({ markdown, locale }: BlogContentProps) {
         );
       }
       const isExternal = href?.startsWith('http://') || href?.startsWith('https://');
+      // A site path written without a locale (`/best-time-to-visit`, `/parks/…`) would answer with a
+      // redirect, and next-intl sends a crawler to the English page; the reader's locale and its
+      // spelling of the segment are added here instead.
+      const target = href && !isExternal ? localizedPath(href, locale) : href;
       // A link whose text is its URL is one unbreakable token that pushes the column past a phone's
       // viewport. Such a label is cut with an ellipsis below `sm` (the full address stays in `href`
       // and `title`); a real label wraps with `wrap-anywhere`, since `break-words` still reports
@@ -589,7 +594,7 @@ export async function BlogContent({ markdown, locale }: BlogContentProps) {
         isExternal && !!href && (label === href || label === href.replace(/^https?:\/\//, ''));
       return (
         <a
-          href={href}
+          href={target}
           {...(isExternal ? { rel: 'noopener noreferrer', target: '_blank' } : {})}
           {...(labelIsUrl ? { title: href } : {})}
           className={cn(

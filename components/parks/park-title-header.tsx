@@ -42,7 +42,7 @@ interface ParkTitleHeaderProps {
   locale: Locale | string;
   /**
    * What follows the park name in the H1, in lighter weight. Every page of a park has its own —
-   * "Wartezeiten live" on the park page, "Wartezeiten-Kalender" on the calendar — and it is the only
+   * "Wartezeiten live" on the park page, "Andrang im November 2026" on the calendar — and it is the only
    * part of this header that must differ, because two pages sharing an H1 is two pages a crawler
    * has no reason to tell apart.
    */
