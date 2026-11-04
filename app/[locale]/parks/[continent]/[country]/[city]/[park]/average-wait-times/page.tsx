@@ -54,8 +54,8 @@ import { ParkNavTiles } from '@/components/parks/park-nav-tiles';
 import { ParkPageShell } from '@/components/parks/park-page-shell';
 import { ParkStatsMethod } from '@/components/parks/park-stats-method';
 import { ParkStatsSection } from '@/components/parks/park-stats-section';
+import { ParkLiveLink } from '@/components/parks/park-live-link';
 import { ParkTitleHeader } from '@/components/parks/park-title-header';
-import { Link } from '@/i18n/navigation';
 import { ParkTodayPanel } from '@/components/parks/park-today-panel';
 import { CHAPTER_GAP_COMPACT } from '@/components/common/chapter-spacing';
 
@@ -343,15 +343,7 @@ export default async function ParkStatsPage({ params }: ParkStatsPageProps) {
             suffix={t('h1Suffix')}
             intro={lead}
           >
-            {/* Google showed this page for "<park> wartezeiten", which the live page answers; the
-              link with the park's name in its text says which of the two that is. */}
-            <Link
-              href={parkPath}
-              prefetch={false}
-              className="text-primary mt-3 inline-flex text-sm font-medium underline-offset-4 hover:underline"
-            >
-              {t('liveLink', { park: parkName })}
-            </Link>
+            <ParkLiveLink href={parkPath} park={parkName} locale={locale as Locale} />
           </ParkTitleHeader>
         }
       >

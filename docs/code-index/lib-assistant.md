@@ -8,7 +8,6 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`actions.ts`](../../lib/assistant/actions.ts)
 
 - `readAssistantAction` _function_: The action as the widget will carry it out, or null. Checked again here although the API built it: the stream is model-driven, and a page change or a planner write is the user's state.
-- `localizedPath` _function_: A site path with the reader's locale in front, as the site's own links carry it.
 - Types: `AssistantPlannerPark`, `AssistantCard`, `AssistantAction`, `AssistantActionChip`
 
 ### [`config.ts`](../../lib/assistant/config.ts)

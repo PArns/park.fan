@@ -6,7 +6,7 @@ import { useLocale } from 'next-intl';
 import ReactMarkdown, { type Components } from 'react-markdown';
 import { MapPin } from 'lucide-react';
 import { directionsHref, safeAssistantHref } from '@/lib/assistant/links';
-import { localizedPath } from '@/lib/assistant/actions';
+import { localizedPath } from '@/lib/i18n/localized-path';
 import { splitWaits } from '@/lib/assistant/wait-chips';
 import { cn } from '@/lib/utils';
 import { useSmoothText } from '@/lib/assistant/use-smooth-text';

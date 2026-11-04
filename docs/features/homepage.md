@@ -111,12 +111,17 @@ first HTML and changes with every deploy that brings a post.
 `HomeTour` shows three stops, each its heading beside a screenshot in a phone
 (`ShotStop`; `ShotRow` and `PhoneShot` in `components/marketing/`, shared with Parky's page):
 
-| Stop     | Screenshot                              | Leads to           |
-| -------- | --------------------------------------- | ------------------ |
-| live     | Europa-Park's page, the headliners      | the guide page     |
-| calendar | Europa-Park's crowd calendar, the month | best time to visit |
-| ride     | Silver Star's day with the forecast     | the trip planner   |
+| Stop     | Screenshot                              | Leads to                                                        |
+| -------- | --------------------------------------- | --------------------------------------------------------------- |
+| live     | Europa-Park's page, the headliners      | that page (`TOUR_PARK`), worded "Europa-Park: Wartezeiten live" |
+| calendar | Europa-Park's crowd calendar, the month | best time to visit                                              |
+| ride     | Silver Star's day with the forecast     | the trip planner                                                |
 
+- **The live stop links the park in its picture**, `TOUR_PARK` in `lib/home/tour-park.mjs`, which
+  the capture script photographs too. Its words are the park page's own query (`parks.liveLink`,
+  the same link the statistics and calendar pages carry), so the homepage passes "europapark
+  wartezeiten live" on to the park page; Google ranked the homepage itself for it. The guide page
+  stays one click away in the FAQ stop.
 - **The screenshots are per locale** and from the real pages, taken by
   `scripts/capture-home-shots.mjs` (`public/media/home/<locale>/{park,calendar,ride}.webp`, 1206 × 2436,
   an iPhone 17's screen under its status bar at 3×, `scripts/lib/phone-device.mjs`). `PhoneShot`

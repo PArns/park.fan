@@ -29,7 +29,7 @@ parkLinks:
 rideLinks:
   - legoland-deutschland/*
 seo:
-  title: 'Legoland Deutschland Tipps: Wartezeiten, Fastrack, Tickets und Halloween'
+  title: 'Legoland Deutschland Tipps: Lohnt sich Fastrack?'
   description: >-
     Im Legoland Deutschland ist freitags am wenigsten los und samstags am
     meisten. In Begleitung braucht ein Kind an keiner Bahn mehr als 1,25 Meter.

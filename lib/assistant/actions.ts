@@ -1,6 +1,5 @@
 import type { PlannerBlockIcon, PlannerGeo } from '@/lib/planner/types';
 import { PLANNER_BLOCK_ICONS } from '@/lib/planner/types';
-import { locales } from '@/i18n/config';
 import { safeAssistantHref } from './links';
 
 /** The park as the API names it for the planner. */
@@ -183,10 +182,4 @@ export function readAssistantAction(raw: unknown): AssistantAction | null {
     default:
       return null;
   }
-}
-
-/** A site path with the reader's locale in front, as the site's own links carry it. */
-export function localizedPath(path: string, locale: string): string {
-  const first = path.split('/')[1] ?? '';
-  return (locales as readonly string[]).includes(first) ? path : `/${locale}${path}`;
 }

@@ -485,6 +485,10 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `ParkKidsTiers` _component_: The park's height ladder: one card per height at which its answer changes. The steps and counts come from the same `riderHeightThresholds` and `canRideAtHeight` as the park page's slider, so the two pages cannot give a parent two answers.
 
+### [`park-live-link.tsx`](../../components/parks/park-live-link.tsx)
+
+- `ParkLiveLink` _component_: The link from a park's sub-page (statistics, crowd calendar) to the park page, worded "&lt;park&gt;: Wartezeiten live".
+
 ### [`park-location-line.tsx`](../../components/parks/park-location-line.tsx)
 
 - `ParkLocationLine` _component_: The park page's control for location, on the title card's address line beside the distance badge: the button while nothing is decided, the way out after a block, „location on" once the position is in, and „you are in the park" when the …

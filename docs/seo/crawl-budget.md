@@ -77,6 +77,10 @@ What the four drilldowns contained:
    city, and 103 of 144 cities hold one park and 308 to it — every page of those parks, 4,338 of
    the 7,374 rides among them. The crumb is now left out where `cityHasOwnPage()` says no. A
    rendered page should not contain an `<a href>` or a BreadcrumbList `item` that answers 3xx.
+   Posts linked site pages without a locale (`/best-time-to-visit`, `/parks/…`, `/compare`), 32
+   links in each language in November 2026, and two German ones landed on English pages. `BlogContent`'s link renderer now passes every site path through
+   `localizedPath` (`lib/i18n/localized-path.ts`), which adds the post's locale and that locale's
+   spelling of a localized segment, so the anchor answers 200 however the Markdown spelled it.
 3. **Sitemap entries the page cannot render.** `/v1/sitemap/attractions` listed every attraction
    row, while the ride page resolves a ride only from the park payload, which drops retired rides
    and deduplicates by name. Measured by fetching every park payload and diffing: 82 listed slugs

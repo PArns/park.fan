@@ -214,7 +214,6 @@
         "kicker": "Tiempos de espera en directo",
         "title": "Tiempos de espera en directo, para cada atracción",
         "text": "Taron, Blue Fire, Wodan: cada página de parque muestra cuánto esperas ahora mismo en cada atracción, junto con la afluencia de muy baja a extrema. Las cifras se actualizan cada cinco minutos.",
-        "link": "Cómo funciona park.fan",
         "alt": "La página de Europa-Park en un móvil: las atracciones estrella con sus tiempos de espera en directo y la afluencia."
       },
       "calendar": {
@@ -380,6 +379,7 @@
     "toggle": "Cambiar tema"
   },
   "parks": {
+    "liveLink": "{park}: tiempos de espera en vivo",
     "liveFreshness": {
       "asOf": "Actualizado",
       "outdated": "Desactualizado",
@@ -994,7 +994,7 @@
     },
     "calendarPage": {
       "breadcrumb": "Calendario de tiempos de espera",
-      "h1Suffix": "Tiempos de espera en {month}",
+      "h1Suffix": "Afluencia en {month}",
       "metaTitle": "{park}: calendario de afluencia en {month}",
       "metaTitleShort": "{park}: afluencia en {month}",
       "metaTitleBare": "{park}: {month}",
@@ -1010,7 +1010,6 @@
       "nextMonth": "Mes siguiente",
       "currentMonth": "Hoy",
       "currentMonthAria": "Ir al mes actual",
-      "backToPark": "Volver a los tiempos de espera en {park}",
       "monthIndexLabel": "Todos los meses",
       "summary": {
         "openingFuture": "En {month}, {park} abre {open} de los {total} días.",
@@ -1048,7 +1047,6 @@
       "h1Suffix": "Tiempos de espera medios",
       "metaTitle": "{park}: meses, días y horas con más gente",
       "metaTitleShort": "{park}: días y meses con más gente",
-      "liveLink": "{park}: tiempos de espera en vivo →",
       "metaDescription": "¿Cuánto se espera realmente {inPark} en {city}? Espera típica y punta por mes, día y hora, medida en {days} días de apertura.",
       "metaDescriptionNoCity": "¿Cuánto se espera realmente {inPark}? Espera típica y punta por mes, día y hora, medida en {days} días de apertura.",
       "leadBusiest": "{count, plural, =1 {El mes con más gente {inPark} es {months}, con {minutes} minutos habituales.} other {Los meses con más gente {inPark} son {months}, con {minutes} minutos habituales.}}",
