@@ -1,13 +1,11 @@
 import type { Locale } from '@/i18n/config';
 import type {
-  ParkAttraction,
   ParkRestaurant,
   ParkWithAttractions,
   ScheduleItem,
   TopAttractionStat,
 } from '@/lib/api/types';
 
-import { ParkTimeInfo } from '@/components/parks/park-time-info';
 import { ParkHolidayRow } from '@/components/parks/park-holiday-row';
 import { ParkPurchasesCard } from '@/components/parks/park-purchases-card';
 import { AttractionCard } from '@/components/parks/attraction-card';
@@ -17,13 +15,21 @@ import { RestaurantCard } from '@/components/parks/restaurant-card';
 import { ParkBestDaysHeader } from '@/components/parks/park-best-days-header';
 import { ParkCard } from '@/components/parks/park-card';
 import { BlogPostCard } from '@/components/blog/blog-post-card';
-import { ParkStatsAttractionsCard } from '@/components/parks/park-stats-attractions-card';
-import { SeasonalBadge } from '@/components/parks/seasonal-badge';
+import {
+  ParkStatsAttractionsCard,
+  useParkStatsAttractionsLabels,
+} from '@/components/parks/park-stats-attractions-card';
 import { getPostsForPark } from '@/lib/blog/backlinks';
+import { parkDayOf } from '@/lib/utils/park-day';
 import { getAttractionBackgroundImage, getCardObjectPosition } from '@/lib/utils/park-assets';
 import { getParkBackgroundImage } from '@/lib/utils/park-assets';
 import { getServerNowMs } from '@/lib/utils/server-time';
-import { buildDemoFixtures, DEMO_CALENDAR_DAYS, DEMO_TIMEZONE, OFF_SEASON_CARD } from './_fixtures';
+import {
+  buildDemoFixtures,
+  DEMO_CALENDAR_DAYS,
+  DEMO_TIMEZONE,
+  parkLocalInstant,
+} from './_fixtures';
 
 /**
  * One production component per step of the park-page walk-through (chapter 06): every block
@@ -40,19 +46,17 @@ const DEMO_GEO = {
   parkSlug: 'phantasialand',
 } as const;
 
-/** Today, 09:00–19:00 in the park's zone — the hours the walk-through quotes. */
+/**
+ * Phantasialand's schedule on 2026-08-24 (09:00–19:00, Summer Holidays at home and in
+ * Gelderland), laid on today's date in the park's zone: the cards read "today" off the clock, and
+ * the hours are wall-clock times, so they stay 09:00–19:00 on either side of a DST change.
+ */
 function todaySchedule(nowMs: number): ScheduleItem {
-  const d = new Date(nowMs);
-  const date = `${d.getUTCFullYear()}-${String(d.getUTCMonth() + 1).padStart(2, '0')}-${String(
-    d.getUTCDate()
-  ).padStart(2, '0')}`;
   return {
-    date,
+    date: parkDayOf(nowMs, DEMO_TIMEZONE),
     scheduleType: 'OPERATING',
-    // 07:00Z / 17:00Z is 09:00–19:00 in Europe/Berlin during summer time, which is
-    // what the API returned for this park on the day these examples were read.
-    openingTime: `${date}T07:00:00.000Z`,
-    closingTime: `${date}T17:00:00.000Z`,
+    openingTime: parkLocalInstant(nowMs, 9, 0),
+    closingTime: parkLocalInstant(nowMs, 19, 0),
     description: null,
     purchases: null,
     isHoliday: true,
@@ -72,23 +76,7 @@ function todaySchedule(nowMs: number): ScheduleItem {
   };
 }
 
-/**
- * 01 — the header's opening hours block.
- *
- * The countdown badge under the hours ("schließt in …") needs the browser clock and arrives after
- * hydration, so the box holds its height: 316 px at 360 to 1440 px in all six locales. After the
- * fixture's park has closed there is no badge, and the space stays empty rather than letting the
- * page below jump.
- */
-export async function AnatomyHeaderDemo() {
-  return (
-    <div className="min-h-[316px]">
-      <ParkTimeInfo timezone={DEMO_TIMEZONE} schedule={[todaySchedule(await getServerNowMs())]} />
-    </div>
-  );
-}
-
-/** 02 — which school holidays reach this park today. */
+/** The bottom row of „Heute im Park": which school holidays reach this park today. */
 export async function AnatomyHolidayDemo() {
   const schedule = todaySchedule(await getServerNowMs());
   // Only the fields the panel reads, cast: a whole ParkWithAttractions fixture would be 40 rides
@@ -109,7 +97,8 @@ export async function AnatomyHolidayDemo() {
 }
 
 /**
- * 06 — paid skip-the-line day prices. Disney only, so the fixture is a Disney one.
+ * Paid skip-the-line day prices. Disney only, so the fixture is Magic Kingdom's on 2026-11-04,
+ * two of its three lines.
  *
  * The card reads "today" off the browser clock and renders nothing before it, so its box is held
  * here: 101 px below `sm`, where the card drops to its tighter padding, and 149 px from `sm` up,
@@ -126,15 +115,15 @@ export async function AnatomyPurchasesDemo() {
             ...schedule,
             purchases: [
               {
-                name: 'Lightning Lane Single Pass',
-                type: 'ATTRACTION',
-                price: { amount: 1800, currency: 'USD', formatted: '$18.00' },
+                name: 'Lightning Lane Multi Pass',
+                type: 'PACKAGE',
+                price: { amount: 3700, currency: 'USD', formatted: '$37.00' },
                 available: true,
               },
               {
-                name: 'Lightning Lane Multi Pass',
-                type: 'PACKAGE',
-                price: { amount: 3200, currency: 'USD', formatted: '$32.00' },
+                name: 'Lightning Lane for Seven Dwarfs Mine Train',
+                type: 'ATTRACTION',
+                price: { amount: 1600, currency: 'USD', formatted: '$16.00' },
                 available: false,
               },
             ],
@@ -145,7 +134,7 @@ export async function AnatomyPurchasesDemo() {
   );
 }
 
-/** 07 — one ride card, the same one chapter 01 opens with. */
+/** One ride card, the same one chapter 01 opens with. */
 export async function AnatomyAttractionDemo() {
   const { taron } = buildDemoFixtures(await getServerNowMs());
   return (
@@ -162,53 +151,63 @@ export async function AnatomyAttractionDemo() {
   );
 }
 
-/** 08 — one calendar day, the recommended one from chapter 04. */
+/** One calendar day, the quietest of the four from chapter 04. */
 export function AnatomyCalendarDemo() {
-  const day = DEMO_CALENDAR_DAYS[2] ?? DEMO_CALENDAR_DAYS[0];
+  const day = DEMO_CALENDAR_DAYS[3] ?? DEMO_CALENDAR_DAYS[0];
   return (
     <div className="max-w-[13rem]">
-      <ParkCalendarDay day={day} parkTimezone={DEMO_TIMEZONE} isToday={false} isBest />
+      <ParkCalendarDay day={day} parkTimezone={DEMO_TIMEZONE} isToday={false} />
     </div>
   );
 }
 
+/** Phantasialand listed no show on 2026-11-04, so both cards are Europa-Park's from that day. */
+const SHOWS_PARK_PATH = '/parks/europe/germany/rust/europa-park';
+
 const DEMO_RESTAURANT: ParkRestaurant = {
-  id: 'demo-restaurant',
-  name: 'Uhrwerk',
-  slug: 'uhrwerk',
+  id: 'demo-fiskehuset',
+  name: 'Fiskehuset',
+  slug: 'fiskehuset',
   latitude: null,
   longitude: null,
-  cuisineType: 'Buffet',
+  cuisineType: null,
   requiresReservation: false,
   status: 'OPERATING',
-  operatingHours: [{ type: 'OPERATING', startTime: '11:30', endTime: '18:30' }],
 };
 
-/** 09 — a show and a restaurant, the two tabs a park may or may not have. */
-export function AnatomyShowsDemo() {
+/**
+ * A show and a restaurant, the two tabs a park may or may not have. The showtimes are the show's
+ * wall-clock times laid on today's date, because the card strikes through the ones already past.
+ */
+export async function AnatomyShowsDemo() {
+  const nowMs = await getServerNowMs();
   return (
     <div className="grid gap-3 sm:grid-cols-2">
       <ShowCard
-        id="demo-show"
-        name="Chiapas Fiesta"
-        slug="chiapas-fiesta"
+        id="demo-limerick-bubbles"
+        name="Limerick Bubbles"
+        slug="limerick-bubbles"
         status="OPERATING"
-        showtimes={[{ startTime: '13:00' }, { startTime: '15:30' }, { startTime: '17:00' }]}
+        showtimes={[
+          { startTime: parkLocalInstant(nowMs, 12, 45) },
+          { startTime: parkLocalInstant(nowMs, 14, 30) },
+          { startTime: parkLocalInstant(nowMs, 16, 15) },
+        ]}
         timezone={DEMO_TIMEZONE}
-        href={`${PARK_PATH}#shows`}
+        href={`${SHOWS_PARK_PATH}#shows`}
       />
       <RestaurantCard restaurant={DEMO_RESTAURANT} />
     </div>
   );
 }
 
-/** 10 — the best-days chapter opens with this header on every park page. */
+/** The best-days chapter of the wait-time calendar opens with this header. */
 export function AnatomyBestDaysDemo({ locale }: { locale: Locale }) {
   return <ParkBestDaysHeader parkName="Phantasialand" parkSlug="phantasialand" locale={locale} />;
 }
 
 /**
- * 11 — one neighbour, as the nearby list renders it.
+ * One neighbour, as the nearby list renders it.
  *
  * The row template belongs on the card's own wrapper: `ParkCard` is
  * `row-span-3` + `grid-template-rows: subgrid`, so without three tracks to
@@ -237,7 +236,7 @@ export function AnatomyNearbyDemo() {
   );
 }
 
-/** 12 — the newest post that mentions this park. */
+/** The newest post that mentions this park. */
 export function AnatomyBlogDemo({ locale }: { locale: Locale }) {
   const post = getPostsForPark(locale, 'phantasialand', { limit: 1 })[0];
   if (!post) return null;
@@ -248,77 +247,49 @@ export function AnatomyBlogDemo({ locale }: { locale: Locale }) {
   );
 }
 
+/** The first three rows of Phantasialand's `/stats` on 2026-11-04. */
 const DEMO_TOP_ATTRACTIONS: TopAttractionStat[] = [
   {
     rank: 1,
     attractionSlug: 'taron',
     attractionName: 'Taron',
-    avgWaitP50: 50,
-    avgWaitP90: 55,
-    sampleDays: 155,
+    avgWaitP50: 45,
+    avgWaitP90: 45,
+    sampleDays: 245,
+    land: 'Mystery',
   },
   {
     rank: 2,
-    attractionSlug: 'chiapas-die-wasserbahn',
-    attractionName: 'Chiapas - DIE Wasserbahn',
-    avgWaitP50: 45,
-    avgWaitP90: 55,
-    sampleDays: 155,
+    attractionSlug: 'fly',
+    attractionName: 'F.L.Y.',
+    avgWaitP50: 35,
+    avgWaitP90: 40,
+    sampleDays: 245,
+    land: 'Rookburgh',
   },
   {
     rank: 3,
-    attractionSlug: 'fly',
-    attractionName: 'F.L.Y.',
-    avgWaitP50: 40,
-    avgWaitP90: 50,
-    sampleDays: 155,
+    attractionSlug: 'winjas-force',
+    attractionName: 'Winja‘s Force',
+    avgWaitP50: 30,
+    avgWaitP90: 40,
+    sampleDays: 244,
+    land: 'Fantasy',
   },
 ];
 
-/** 13 — the park's longest queues, the table chapter 02 ends on. */
-export function AnatomyStatsDemo({
-  title,
-  labelAttraction,
-  labelMinutes,
-  labelNow,
-  labelP50,
-  labelP90,
-}: {
-  title: string;
-  labelAttraction: string;
-  labelMinutes: string;
-  labelNow: string;
-  labelP50: string;
-  labelP90: string;
-}) {
+/** The park's longest queues, as the park page's statistics chapter labels them. */
+export function AnatomyStatsDemo() {
+  const labels = useParkStatsAttractionsLabels();
   return (
     <ParkStatsAttractionsCard
       attractions={DEMO_TOP_ATTRACTIONS}
       showCurrentWaits={false}
-      title={title}
-      labelAttraction={labelAttraction}
-      labelMinutes={labelMinutes}
-      labelNow={labelNow}
-      labelP50={labelP50}
-      labelP90={labelP90}
+      {...labels}
       continent={DEMO_GEO.continent}
       country={DEMO_GEO.country}
       city={DEMO_GEO.city}
       parkSlug={DEMO_GEO.parkSlug}
     />
-  );
-}
-
-/** 14 — the season a ride runs in, on the ride from chapter 08. */
-export function AnatomySeasonDemo({ label }: { label: string }) {
-  const ride = OFF_SEASON_CARD as ParkAttraction;
-  return (
-    <div className="flex flex-wrap items-center gap-2">
-      <span className="text-sm font-medium">{label}</span>
-      <SeasonalBadge
-        seasonMonths={ride.seasonMonths}
-        isCurrentlyInSeason={ride.isCurrentlyInSeason}
-      />
-    </div>
   );
 }

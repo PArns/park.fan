@@ -11,11 +11,12 @@ import { AttractionCard } from '@/components/parks/attraction-card';
 import { AttractionTypicalWaits } from '@/components/parks/attraction-typical-waits';
 import { RopeDropCard } from '@/components/parks/rope-drop-card';
 import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
-import { ComparisonBadge } from '@/components/parks/comparison-badge';
 import { ParkCalendarDay } from '@/components/parks/park-calendar-day';
 import { NoLiveWaitTimesNotice } from '@/components/parks/no-live-wait-times-notice';
 import { getServerNowMs } from '@/lib/utils/server-time';
 import { getAttractionBackgroundImage, getCardObjectPosition } from '@/lib/utils/park-assets';
+import { versionedPath } from '@/lib/media/focus';
+import { ShotRow } from '@/components/marketing/shot-row';
 import { PlannerDayDemo } from '../trip-planner/_demos';
 import { demoEntries, demoPlanDay } from '../trip-planner/_fixtures';
 import { WaitSign } from './_chrome';
@@ -203,13 +204,7 @@ export function CalendarDaysDemo() {
   return (
     <div className="not-prose grid grid-cols-2 gap-2 sm:grid-cols-4">
       {DEMO_CALENDAR_DAYS.map((day) => (
-        <ParkCalendarDay
-          key={day.date}
-          day={day}
-          parkTimezone={DEMO_TIMEZONE}
-          isToday={false}
-          isBest={day.date === '2026-10-15'}
-        />
+        <ParkCalendarDay key={day.date} day={day} parkTimezone={DEMO_TIMEZONE} isToday={false} />
       ))}
     </div>
   );
@@ -242,24 +237,16 @@ export function NoWaitTimesDemo() {
 }
 
 /**
- * The two badges that turn a reading into a statement. Rendered as the real
- * components so their colours match the ones on a park page exactly.
- *
- * Each row is labelled, because unlabelled the block is an inventory of chips:
- * a reader cannot tell that the first row rates the park against every park and
- * the second rates a ride against itself. The labels are props rather than a
- * sentence in the caption, so the copy never has to say "the upper row".
+ * Every crowd level a ride or a park can show, as the real badges, so their colours match the ones
+ * on a park page exactly. The row is labelled, or it reads as an inventory of chips.
  */
 export function BadgeRowDemo({
   caption,
   crowdLabel,
-  comparisonLabel,
 }: {
   caption: string;
-  /** Names the first row, e.g. "Auslastung: wie voll ist es". */
+  /** Names the row, e.g. „Die Stufen". */
   crowdLabel: string;
-  /** Names the second row, e.g. "Vergleich: voller als sonst?". */
-  comparisonLabel: string;
 }) {
   return (
     <div className="not-prose space-y-3">
@@ -275,18 +262,27 @@ export function BadgeRowDemo({
         <CrowdLevelBadge level="extreme" />
         <CrowdLevelBadge level="unknown" />
       </div>
-      <div className="text-muted-foreground/80 pt-1 text-[11px] font-semibold tracking-wide uppercase">
-        {comparisonLabel}
-      </div>
-      <div className="flex flex-wrap items-center gap-2">
-        <ComparisonBadge comparison="much_lower" />
-        <ComparisonBadge comparison="lower" />
-        <ComparisonBadge comparison="typical" />
-        <ComparisonBadge comparison="higher" />
-        <ComparisonBadge comparison="much_higher" />
-      </div>
       <p className="text-muted-foreground text-xs leading-relaxed">{caption}</p>
     </div>
+  );
+}
+
+/**
+ * Parky's chapter: its text beside the real chat on a phone, the screenshot Parky's page and the
+ * homepage tour show (`public/media/parky/<locale>/chat.webp`), with the alt text they use.
+ */
+export async function ParkyShot({
+  locale,
+  children,
+}: {
+  locale: Locale;
+  children: React.ReactNode;
+}) {
+  const t = await getTranslations({ locale, namespace: 'parkyPage' });
+  return (
+    <ShotRow src={versionedPath(`/media/parky/${locale}/chat.webp`)} alt={t('chapters.ask.alt')}>
+      {children}
+    </ShotRow>
   );
 }
 
@@ -343,7 +339,10 @@ export async function LiveHourlyProfile({ locale }: { locale: Locale }) {
   );
 }
 
-/** The park's real ranking: rank, ride, the live wait where there is one, typical and busy. */
+/**
+ * The park's real ranking: rank, ride, the live wait where there is one, and each ride's hourly P50
+ * and P90 averaged over the opening hours, which is not the daily-peak scale of chapter 02.
+ */
 export function LiveTopAttractions({ locale }: { locale: Locale }) {
   return <ParkStatsSection {...DEMO_GEO} locale={locale} show={['attractions']} hideHeading />;
 }

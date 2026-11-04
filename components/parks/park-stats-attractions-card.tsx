@@ -1,3 +1,4 @@
+import { useTranslations } from 'next-intl';
 import { BareFrame, CardFrame } from '@/components/parks/park-stats-frame';
 import { roundWaitTo5 } from '@/lib/utils/wait-time';
 import { Clock } from 'lucide-react';
@@ -54,6 +55,25 @@ const RANK_STYLES: Record<number, string> = {
 
 /** Numeric columns share one width so the three wait times line up as a column each. */
 const VALUE_CELL = 'w-[4.5rem] py-1.5 pr-1 text-right tabular-nums';
+
+/**
+ * The card's title and column labels from the messages, for the park page's stats section and the
+ * guide's frozen copy of the table alike, so the two cannot name a column differently.
+ */
+export function useParkStatsAttractionsLabels() {
+  const t = useTranslations('parks.stats');
+  const tParks = useTranslations('parks');
+  return {
+    title: t('topAttractionsTitle'),
+    labelAttraction: tParks('attractions'),
+    labelMinutes: tParks('overview.minutesUnit'),
+    labelNow: tParks('now'),
+    labelP50: t('p50'),
+    labelP90: t('p90'),
+    labelLand: t('rideWaitsLand'),
+    labelType: t('rideWaitsType'),
+  };
+}
 
 /**
  * Top-ten ranking as a table: typical and peak wait beside what the ride shows right now, the

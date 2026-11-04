@@ -20,6 +20,7 @@ import { HOWTO_CHAPTERS } from '@/lib/howto/chapters';
 import {
   Activity,
   BarChart3,
+  Bell,
   CalendarClock,
   CalendarDays,
   CloudSun,
@@ -29,7 +30,9 @@ import {
   HelpCircle,
   Layers,
   MapPin,
+  MessageCircle,
   Ruler,
+  Scale,
   Search,
   Sparkles,
   Star,
@@ -44,6 +47,7 @@ import {
   LiveTopAttractions,
   NoWaitTimesDemo,
   OffSeasonDemo,
+  ParkyShot,
   PlannerDayFigure,
   RopeDropDemo,
   TwoRidesDemo,
@@ -54,11 +58,9 @@ import {
   AnatomyBestDaysDemo,
   AnatomyBlogDemo,
   AnatomyCalendarDemo,
-  AnatomyHeaderDemo,
   AnatomyHolidayDemo,
   AnatomyNearbyDemo,
   AnatomyPurchasesDemo,
-  AnatomySeasonDemo,
   AnatomyShowsDemo,
   AnatomyStatsDemo,
 } from '../_anatomy-demos';
@@ -85,18 +87,18 @@ const PARK = '/parks/europe/germany/bruehl/phantasialand';
 const TARON = `${PARK}/taron`;
 
 const SCALE_LABELS = {
-  typical: 'Típico',
+  typical: 'Normal',
   busy: 'Lleno',
   unit: 'min',
   days: 'días medidos',
   record: 'Récord',
   summary:
-    'Taron el {label}: normalmente {typical} minutos, {busy} en días llenos, medido sobre {days} días. En la entrada pone {wait} minutos.',
+    'Taron, {label}: normalmente {typical} minutos, {busy} en días llenos, medido sobre {days} días. En la entrada pone {wait} minutos.',
 };
 
 const SCALE_LEGEND = [
   {
-    term: 'Típico',
+    term: 'Normal',
     def: 'En la mitad de los días medidos, la cola más larga fue más corta que eso.',
     swatch: 'bg-primary/45',
   },
@@ -128,77 +130,80 @@ const SCALE_STEPS: WaitScaleStep[] = [
 ];
 
 /**
- * The sections of a park page in exactly the order they render
- * (`app/[locale]/parks/.../page.tsx`). Whoever reorders them there reorders
- * them here, or the guide describes a page that does not exist.
+ * The sections of a park page in the order they render (`app/[locale]/parks/.../page.tsx`,
+ * `ParkPageShell`, `LiveParkData`). Whoever reorders them there reorders them here, or the guide
+ * describes a page that does not exist.
  */
 const PARK_SECTIONS: AnatomyStep[] = [
   {
-    title: 'Cabecera',
-    body: 'Nombre, ubicación y distancia, además del estado, el horario de hoy, la afluencia y cuántas atracciones están abiertas ahora mismo.',
-    example: 'Phantasialand, Brühl. Hoy 09:00–19:00, 36 de 40 atracciones abiertas.',
-    demo: <AnatomyHeaderDemo />,
-  },
-  {
-    title: 'Vacaciones en el área de influencia',
-    body: 'Qué vacaciones escolares y festivos afectan hoy al parque, primero los de su propia región.',
-    demo: <AnatomyHolidayDemo />,
-    onlyWhen: 'hoy influyen unas vacaciones o un festivo.',
-  },
-  {
-    title: 'Aviso meteorológico',
-    body: 'Avisos oficiales del DWD y de MeteoAlarm, con su texto original.',
-    demo: <WeatherWarningBannerDemo />,
-    onlyWhen: 'hay un aviso vigente para la ubicación.',
-  },
-  {
-    title: 'Radar de lluvia',
-    body: 'Las próximas horas en cuartos de hora. Así ves si un chubasco habrá pasado en veinte minutos.',
-    demo: <NowcastBannerDemo single />,
-    onlyWhen: 'hay lluvia cerca.',
-  },
-  {
-    title: 'Tarjeta del tiempo',
-    body: 'El tiempo que hace ahora, la curva del día y la previsión. Las horas en las que el parque abre ocupan la mayor parte del eje.',
-    demo: <WeatherCardShowcase variant="single" />,
+    title: 'Tarjeta de título',
+    body: 'Nombre y ubicación, a qué distancia estás, la estrella para tus favoritos, un texto breve sobre el parque, sus enlaces y el botón del planificador. Donde hay suficientes mediciones, indica además qué días de la semana suelen ser tranquilos y cuáles llenos.',
   },
   {
     title: 'Precios de acceso rápido',
     body: 'Precios del día de las colas de pago como Lightning Lane, con los agotados marcados como tales.',
+    example:
+      'En Magic Kingdom el 4 de noviembre de 2026: el Multi Pass por 37 dólares y la reserva suelta para Seven Dwarfs Mine Train, agotada.',
     demo: <AnatomyPurchasesDemo />,
     onlyWhen: 'el parque los publica, por ahora solo los parques de Disney en EE. UU.',
   },
   {
+    title: 'Cuando estás en el parque',
+    body: 'Una brújula muestra en qué dirección quedan las grandes atracciones. Debajo están las atracciones cuya cola es ahora más corta que luego, y las más cercanas con su distancia y su tiempo de espera.',
+    onlyWhen: 'estás dentro del parque y has compartido tu ubicación.',
+  },
+  {
+    title: 'Hoy en el parque',
+    body: 'Estado y horario, cuántas atracciones están abiertas, la afluencia ahora, la previsión de hoy, la ocupación, los tiempos de espera de las grandes atracciones y los próximos espectáculos. Si hay un aviso meteorológico oficial del DWD o de MeteoAlarm, aparece arriba del todo con su texto original. En la línea del título están la temperatura y un aviso cuando se acerca lluvia o tormenta; al pulsarlo ves las próximas horas en cuartos de hora. Abajo del todo están las vacaciones que afectan hoy al parque, primero las de su propia región.',
+    example:
+      'El 24 de agosto de 2026 Phantasialand abrió de 9 a 19 h, y además de Renania del Norte-Westfalia, también Güeldres estaba de vacaciones de verano.',
+    demo: (
+      <div className="space-y-3">
+        <WeatherWarningBannerDemo />
+        <NowcastBannerDemo single />
+        <AnatomyHolidayDemo />
+      </div>
+    ),
+  },
+  {
+    title: 'Las fichas',
+    body: 'Bajo «Hoy en el parque» hay una fila de fichas, casi todas con una cifra del día, como cuántas atracciones están abiertas o cuándo empieza el próximo espectáculo. Atracciones, Clima, Mapa, Espectáculos y Restaurantes abren su pestaña en la misma página; el Calendario de tiempos de espera y las Estadísticas son páginas propias.',
+  },
+  {
     title: 'Atracciones',
-    body: 'Todas las atracciones en tarjetas como las del capítulo 01, con buscador y agrupadas por zonas. Encima están aquellas en las que compensa llegar temprano.',
-    example: 'En Phantasialand, Taron figura ahí arriba con 60 minutos ahorrados.',
+    body: 'La pestaña que está elegida al abrir la página: todas las atracciones en tarjetas como las del capítulo 01, agrupadas por zonas u ordenadas por tiempo de espera, con buscador y filtros, por ejemplo por estatura o solo las abiertas. Encima están aquellas en las que compensa llegar temprano. Si una atracción tiene temporada, aparece en su tarjeta. Debajo vienen, si las hay, las atracciones cerradas definitivamente y el enlace a la página «Con niños».',
+    example: 'En Phantasialand, Taron figura ahí arriba.',
     demo: <AnatomyAttractionDemo />,
   },
   {
-    title: 'Calendario y mapa',
-    body: 'Las previsiones diarias del capítulo 04 en la retícula del mes y un mapa con todas las atracciones.',
-    demo: <AnatomyCalendarDemo />,
+    title: 'Calendario de tiempos de espera',
+    body: 'Una página propia para cada mes: los días del capítulo 04 en la retícula del mes, una ventana con los detalles de cada día y la comparación de dos días. Arriba están las fechas más tranquilas de los próximos tres meses y el día de la semana más tranquilo.',
+    demo: (
+      <div className="space-y-3">
+        <AnatomyBestDaysDemo locale="es" />
+        <AnatomyCalendarDemo />
+      </div>
+    ),
   },
   {
-    title: 'Espectáculos y restaurantes',
-    body: 'Horarios de espectáculos para todo el día, restaurantes con su horario de apertura.',
-    example: 'En Phantasialand, cuatro espectáculos y 46 restaurantes.',
-    demo: <AnatomyShowsDemo />,
-    onlyWhen: 'el parque informa de ellos.',
-  },
-  {
-    title: 'Mejores días',
-    body: 'Las fechas más tranquilas de los próximos tres meses y el día de la semana más tranquilo del parque.',
-    demo: <AnatomyBestDaysDemo locale="es" />,
-    onlyWhen: 'el parque publica un calendario de apertura.',
+    title: 'Clima, mapa, espectáculos, restaurantes',
+    body: 'Cuatro pestañas más. El tiempo que hace ahora, la curva del día y la previsión, con las horas en las que el parque abre ocupando la mayor parte del eje. Un mapa con todas las atracciones. Los espectáculos con sus horarios de todo el día y los restaurantes con su estado, ambos solo si el parque informa de ellos.',
+    example:
+      'El 4 de noviembre de 2026 Europa-Park tenía 16 espectáculos y 64 restaurantes. Phantasialand no tenía ningún espectáculo en el programa ese día, y por tanto tampoco pestaña de espectáculos.',
+    demo: (
+      <div className="space-y-3">
+        <WeatherCardShowcase variant="single" />
+        <AnatomyShowsDemo />
+      </div>
+    ),
   },
   {
     title: 'Parques cercanos',
-    body: 'Qué más hay al alcance, con distancia y estado.',
+    body: 'Hasta tres parques más en un radio de 100 kilómetros, con distancia y estado.',
     example:
       'Desde Phantasialand, Toverland y Movie Park Germany, ambos a unos buenos 90 kilómetros.',
     demo: <AnatomyNearbyDemo />,
-    onlyWhen: 'hay otro parque al alcance.',
+    onlyWhen: 'hay al menos otros dos parques en ese radio.',
   },
   {
     title: 'Blog',
@@ -208,24 +213,22 @@ const PARK_SECTIONS: AnatomyStep[] = [
   },
   {
     title: 'Estadísticas',
-    body: 'Las colas más largas del parque con su valor típico y lleno, además del reparto por meses y días de la semana.',
-    demo: (
-      <AnatomyStatsDemo
-        title="Atracciones con las colas más largas"
-        labelAttraction="Atracciones"
-        labelMinutes="min"
-        labelNow="Ahora"
-        labelP50="Típico"
-        labelP90="Máximo"
-      />
-    ),
+    body: 'Las colas más largas del parque, como media de sus horas de apertura, además de los meses, los días de la semana y los días medidos más llenos y más tranquilos. La ficha «Estadísticas» lleva a una página propia que además muestra un día normal hora a hora.',
+    demo: <AnatomyStatsDemo />,
   },
   {
-    title: 'Temporada, información, preguntas',
-    body: 'Temporadas y eventos, dirección y zona horaria, preguntas frecuentes sobre este parque.',
-    example:
-      'La pista de patinaje del capítulo 08 aparece aquí, con su temporada de noviembre a enero.',
-    demo: <AnatomySeasonDemo label="Pista de patinaje" />,
+    title: 'Los próximos doce meses',
+    body: 'La previsión día a día, agrupada por meses, con el número de días recomendados. Cada mes lleva al calendario de tiempos de espera.',
+    onlyWhen: 'hay una previsión para el parque.',
+  },
+  {
+    title: 'Temporadas y eventos',
+    body: 'Halloween, Navidad y otros eventos con sus fechas, si están confirmados, anunciados o solo previstos, y lo que cuesta una entrada aparte.',
+    onlyWhen: 'hemos investigado eventos para el parque.',
+  },
+  {
+    title: 'Información y preguntas',
+    body: 'Dirección, teléfono, año de apertura y superficie, en la medida en que los tenemos, y luego las preguntas frecuentes sobre este parque.',
   },
 ];
 
@@ -234,51 +237,65 @@ const NIGHT_JOBS: NightShiftJob[] = [
     hour: 2,
     minute: 0,
     at: 0.04,
-    title: 'Qué tiene de típico cada hora',
-    body: 'El valor típico y el lleno para cada atracción y cada hora.',
+    title: 'Ayer, hora a hora',
+    body: 'Para cada atracción y cada hora del día anterior, lo que solía haber de cola y lo que hubo en los momentos más llenos.',
   },
   {
     hour: 3,
     minute: 0,
-    at: 0.22,
+    at: 0.2,
     title: 'El nivel normal de cada parque',
-    body: 'El valor con el que se mide la afluencia.',
+    body: 'El valor con el que se mide la afluencia de un parque.',
+  },
+  {
+    hour: 3,
+    minute: 0,
+    at: 0.2,
+    title: 'El modelo de las próximas semanas aprende',
+    body: 'Incorpora los tiempos de espera de ayer.',
+  },
+  {
+    hour: 4,
+    minute: 0,
+    at: 0.34,
+    title: 'El nivel normal de cada atracción',
+    body: 'El valor con el que se mide el nivel de afluencia de la tarjeta del capítulo 01.',
   },
   {
     hour: 4,
     minute: 30,
-    at: 0.42,
+    at: 0.46,
     title: 'Resumir el día anterior',
     body: 'Todo el día anterior en cuartos de hora.',
   },
   {
     hour: 5,
     minute: 15,
-    at: 0.56,
+    at: 0.6,
     title: '¿Compensa madrugar?',
     body: 'Por atracción, cuánto ahorra llegar temprano y cuánto dura la ventaja.',
   },
   {
     hour: 5,
     minute: 30,
-    at: 0.67,
-    title: 'Lo típico por día de la semana',
-    body: 'La tabla del capítulo 02 para cada atracción, más el récord.',
+    at: 0.72,
+    title: 'Normal y lleno por día de la semana',
+    body: 'Los valores del capítulo 02 para cada atracción, más el récord.',
   },
   {
     hour: 6,
     minute: 0,
-    at: 0.8,
-    title: 'El modelo de previsión aprende',
-    body: 'Se entrena con los tiempos de espera de ayer.',
+    at: 0.86,
+    title: 'El modelo del resto del año aprende',
+    body: 'También incorpora los tiempos de espera de ayer.',
   },
 ];
 
 const FAQ = [
   {
-    question: '¿Qué significan «típico» y «lleno» en un tiempo de espera?',
+    question: '¿Qué significan «normal» y «lleno» en un tiempo de espera?',
     answer:
-      'Típico es la mediana de los picos diarios: en la mitad de los días medidos la cola más larga fue más corta. Lleno es el percentil 90 de la misma serie, más o menos el día más lleno de cada diez. El récord va aparte, para que un único valor extremo no desplace ninguno de los dos.',
+      'Normal es la mediana de los picos diarios: en la mitad de los días medidos la cola más larga fue más corta. Lleno es el percentil 90 de la misma serie, más o menos el día más lleno de cada diez. El récord va al lado. Como los dos valores son percentiles, un único valor extremo apenas los mueve.',
   },
   {
     question: '¿Son muchos 70 minutos de espera?',
@@ -288,7 +305,7 @@ const FAQ = [
   {
     question: '¿De dónde salen los tiempos de espera?',
     answer:
-      'De tres fuentes públicas: ThemeParks.wiki, Wartezeiten.app y Queue-Times.com. Consultamos cada parque cada cinco minutos, y si las fuentes discrepan, decide la mayoría.',
+      'De hasta tres fuentes públicas. ThemeParks.wiki es la fuente base; Queue-Times.com y Wartezeiten.app añaden las atracciones que allí faltan y corrigen un «cerrado» desfasado. Pedimos valores nuevos cada cinco minutos.',
   },
   {
     question: '¿Por qué en algunos parques pone «Sin previsión»?',
@@ -298,7 +315,7 @@ const FAQ = [
   {
     question: '¿Por qué Hansa-Park no muestra tiempos de espera?',
     answer:
-      'El parque muestra sus tiempos de espera solo en su propia aplicación y únicamente con la wifi del parque, y no existe ninguna interfaz pública. Por eso en park.fan aparece un aviso en lugar de 82 atracciones que parecen vacías.',
+      'El parque muestra sus tiempos de espera solo en su propia aplicación y únicamente con la wifi del parque, y no existe ninguna interfaz pública. Por eso en park.fan aparece encima de la lista de atracciones un aviso que explica por qué no hay tiempos.',
   },
   {
     question: '¿Qué es el rope drop?',
@@ -308,12 +325,12 @@ const FAQ = [
   {
     question: '¿park.fan cuesta algo y necesito una cuenta?',
     answer:
-      'No y no. Todo en park.fan es gratuito y se puede usar sin registro. Los favoritos y los planes del día se guardan en tu navegador.',
+      'No y no. Todo en park.fan es gratuito y se puede usar sin registro. Los favoritos y los planes del día se guardan en tu navegador. Solo si compartes un plan o pides avisos sobre él lo guardamos también en nuestro servidor.',
   },
   {
     question: '¿Con qué frecuencia se actualizan las cifras?',
     answer:
-      'Una página de parque abierta pide valores nuevos cada cinco minutos. Los tiempos de espera típicos y las recomendaciones de rope drop los recalculamos una vez por noche, porque de un día para otro apenas se mueven.',
+      'Una página de parque abierta pide valores nuevos cada cinco minutos. Los valores por día de la semana y las recomendaciones de rope drop los recalculamos una vez por noche, porque de un día para otro apenas se mueven.',
   },
 ];
 
@@ -338,9 +355,10 @@ export function ContentES() {
           la visita.
         </P>
         <P>
-          Las tarjetas, los indicadores y las tablas de más abajo son piezas del propio park.fan,
-          alimentadas con cifras de ejemplo fijas de Phantasialand. En el parque tendrás las mismas
-          tarjetas en el móvil, ya con las cifras del día.
+          Las tarjetas, los indicadores y las tablas de más abajo son piezas del propio park.fan. La
+          mayoría muestra cifras de ejemplo fijas tal como las devolvió la API en el verano y el
+          otoño de 2026, casi todas de Phantasialand; dos tablas van en directo. En el parque
+          tendrás las mismas tarjetas en el móvil, ya con las cifras del día.
         </P>
 
         <Reveal>
@@ -371,14 +389,14 @@ export function ContentES() {
 
         <div className="space-y-4 pt-2">
           <P>
-            El nivel de afluencia compara la cifra con lo que es normal en esa atracción. Taron está
-            de media en {TARON_BASELINE} minutos, {TARON_WAIT_NOW} son algo más de una vez y media
-            eso, y ese nivel se llama «Muy alta». La flechita de al lado indica si la cola está
-            creciendo o bajando.
+            El nivel de afluencia compara la cifra con el nivel normal de esa atracción, la mediana
+            de sus tiempos de espera medidos. En Taron era de {TARON_BASELINE} minutos en
+            septiembre, {TARON_WAIT_NOW} son algo más de una vez y media eso, y ese nivel se llama
+            «Muy alta». La flechita de al lado indica si la cola está creciendo o bajando.
           </P>
           <PG>
             Si una atracción tiene cola de single rider, su tiempo de espera también está en la
-            tarjeta. Lo mismo la altura mínima, para que con un niño de 130 centímetros no te
+            tarjeta. Lo mismo la altura mínima, para que con un niño de 120 centímetros no te
             enteres en el medidor de que no llega.
           </PG>
         </div>
@@ -398,16 +416,16 @@ export function ContentES() {
           id="escala"
           index="02"
           kicker="La escala"
-          title="Típico, lleno, récord"
+          title="Normal, lleno, récord"
           icon={Ruler}
         >
           <IntroWithAside
             value={`${TARON_RECORD} min`}
             label="La cola más larga medida en Taron"
-            note="El 16 de julio de 2026, en vacaciones de verano. Es un solo día, y por eso figura aparte como récord y no entra en la escala."
+            note="El 16 de julio de 2026. En Renania del Norte-Westfalia todavía había colegio, en las regiones vecinas ya eran vacaciones de verano. Es un solo día: figura al lado como récord y apenas mueve la escala."
           >
             <P>
-              Para saber si 70 minutos son muchos hacen falta dos valores de comparación. Típico es
+              Para saber si 70 minutos son muchos hacen falta dos valores de comparación. Normal es
               lo que suele medir la cola más larga del día en esa atracción, y lleno, lo que medía
               en el diez por ciento de días más llenos.
             </P>
@@ -429,7 +447,7 @@ export function ContentES() {
                   </div>
                   <h3 className="mb-3 text-xl font-bold sm:text-2xl">
                     {i === 0 && 'Para un lunes, 70 minutos son muchos'}
-                    {i === 1 && 'Para un sábado, 70 minutos son lo normal'}
+                    {i === 1 && 'Un sábado, 70 minutos son normales'}
                     {i === 2 && 'Y una vez fueron 135'}
                   </h3>
                   <p className="text-muted-foreground leading-relaxed">
@@ -442,8 +460,9 @@ export function ContentES() {
                     )}
                     {i === 1 && (
                       <>
-                        Los sábados {step.typical} minutos son la mediana. La misma cifra es ese día
-                        completamente normal, y las atracciones de al lado están igual de llenas.
+                        Los sábados {step.typical} minutos son la mediana: en la mitad de los
+                        sábados la cola más larga se quedó por debajo. La misma cifra es ese día
+                        completamente normal.
                       </>
                     )}
                     {i === 2 && (
@@ -486,7 +505,7 @@ export function ContentES() {
             <div className="space-y-4">
               <P>
                 La página de cada atracción lleva esta escala día de la semana a día de la semana.
-                La cifra sobre la barra es el valor lleno, la parte sólida de debajo el típico, y
+                La cifra sobre la barra es el valor lleno, la parte sólida de debajo el normal, y
                 abajo figura el récord con su fecha.
               </P>
               <P>
@@ -498,8 +517,8 @@ export function ContentES() {
           </div>
 
           <DemoFrame
-            label="La misma tabla para todo el parque, en directo"
-            note="El estado actual de Phantasialand, con el valor típico y el lleno de cada atracción."
+            label="Todo el parque, en directo"
+            note="Las colas más largas de Phantasialand, tal como aparecen ahora en la página del parque. Esta tabla está calculada de otra manera que la página de una atracción: hace la media de todas las horas de apertura de los dos últimos años. «Típico» es lo que suele haber de cola dentro de una hora, «Pico», lo que hay en los minutos más llenos de esa hora. Por eso sus cifras quedan por debajo de los picos diarios de la escala de arriba."
             href={PARK}
             hrefLabel="Phantasialand en park.fan →"
           >
@@ -574,8 +593,8 @@ export function ContentES() {
         </P>
 
         <DemoFrame
-          label="Cuatro días de las vacaciones de otoño"
-          note="El 15 de octubre es el más tranquilo de los cuatro aunque cae en plenas vacaciones, porque llueve. El 19 el parque está cerrado. En park.fan, el mismo calendario va mes a mes."
+          label="Una semana de vacaciones de otoño"
+          note="Cuatro días medidos en Phantasialand, todos en las vacaciones de otoño de 2026 de Renania del Norte-Westfalia: el martes 20 de octubre, 45 minutos de media en las grandes atracciones, el domingo siguiente, 20. Las mismas vacaciones, cuatro niveles distintos. En park.fan, el mismo calendario va mes a mes."
         >
           <CalendarDaysDemo />
         </DemoFrame>
@@ -585,19 +604,20 @@ export function ContentES() {
         <div className="space-y-4 pt-2">
           <P>
             A menudo las vacaciones de los vecinos cuentan tanto como las propias, porque los
-            visitantes de un día no entienden de fronteras. Phantasialand está a unos 90 kilómetros
+            visitantes de un día no entienden de fronteras. Phantasialand está a unos 60 kilómetros
             de los Países Bajos, y en su calendario están las vacaciones de Renania del
-            Norte-Westfalia y también las de la provincia de Güeldres. Las regiones de vacaciones en
-            un radio de unos 200 kilómetros reciben su propia marca.
+            Norte-Westfalia y también las de las provincias de Limburgo y Güeldres. Las vacaciones
+            de las regiones vecinas que tenemos registradas para un parque reciben su propia marca.
           </P>
           <PG>
-            El color de un día es una previsión. En la página de Fancast calculamos en público
-            cuánto aciertan nuestras previsiones.
+            El color de un día futuro es una previsión, el de un día pasado está medido. En la
+            página de Fancast calculamos en público cuánto aciertan nuestras previsiones.
           </PG>
           <P>
-            En un parque que abre todo el año, el calendario llega a unos once meses vista. En un
-            parque de temporada termina con la temporada publicada, y un día en que el parque cierra
-            aparece como cerrado.
+            Si un parque publica sus horarios, el calendario llega tan lejos como ellos, como mucho
+            un año, y un día en que el parque cierra aparece como cerrado. Para tener una visión de
+            conjunto, la página del parque resume la previsión mes a mes en «Los próximos doce
+            meses».
           </P>
         </div>
 
@@ -673,11 +693,12 @@ export function ContentES() {
           <div className="space-y-4 lg:sticky lg:top-20 lg:self-start">
             <Highlight>
               La mitad de estas secciones solo aparece si hay algo que enseñar. Un parque sin
-              espectáculos no recibe una pestaña de espectáculos vacía.
+              espectáculos no recibe ni ficha de espectáculos ni una pestaña vacía.
             </Highlight>
             <PG>
-              La pestaña elegida queda en la dirección. Si envías el enlace del calendario, quien lo
-              abre llega al calendario y no a la lista de atracciones.
+              La pestaña elegida queda en la dirección. Si envías el enlace del mapa, quien lo abre
+              llega al mapa y no a la lista de atracciones. El calendario y las estadísticas son
+              páginas con su propia dirección.
             </PG>
             <div className="pt-1">
               <Link
@@ -702,25 +723,28 @@ export function ContentES() {
           icon={Database}
         >
           <P>
-            Cada cinco minutos consultamos cada uno de los 212 parques en tres fuentes públicas a la
-            vez. Si discrepan, decide la mayoría.
+            Cada cinco minutos pedimos tiempos de espera nuevos para cada uno de los más de 200
+            parques, de hasta tres fuentes públicas. ThemeParks.wiki es la fuente base.
+            Queue-Times.com y Wartezeiten.app añaden las atracciones que allí faltan y corrigen un
+            «cerrado» desfasado. Para unos pocos parques, una de las dos es la única fuente.
           </P>
 
           <IngredientGrid>
             <IngredientCard icon={Activity} title="Tiempos de espera" delay={0}>
-              ThemeParks.wiki, Wartezeiten.app y Queue-Times.com, cada cinco minutos.
+              ThemeParks.wiki como base, Queue-Times.com y Wartezeiten.app para lo que allí falta.
             </IngredientCard>
             <IngredientCard icon={GraduationCap} title="Vacaciones y festivos" delay={60}>
-              Nager.Date para festivos y puentes, OpenHolidays para vacaciones escolares, cada
-              región por separado.
+              Región por región: en Europa de Nager.Date y OpenHolidays, en otros lugares de los
+              calendarios de las autoridades y los distritos escolares.
             </IngredientCard>
             <IngredientCard icon={CloudSun} title="Tiempo" delay={120}>
-              Open-Meteo para la previsión y el radar de lluvia, avisos meteorológicos del DWD y de
-              MeteoAlarm.
+              Open-Meteo para la previsión y una previsión de lluvia a corto plazo en cuartos de
+              hora, avisos meteorológicos del DWD y de MeteoAlarm.
             </IngredientCard>
             <IngredientCard icon={CalendarDays} title="Horarios" delay={0}>
-              De los calendarios de los parques. Donde un parque no publica ninguno, estimamos el
-              horario a partir del funcionamiento de las atracciones y lo indicamos.
+              De los calendarios de los parques. Donde un parque no publica ninguno, deducimos el
+              horario de hoy y de los días anteriores a partir del funcionamiento de las atracciones
+              e indicamos que es una estimación.
             </IngredientCard>
             <IngredientCard icon={Layers} title="Historial" delay={60}>
               Cada tiempo de espera medido se queda guardado, también el de una mañana tranquila de
@@ -735,14 +759,14 @@ export function ContentES() {
           <div className="space-y-4 pt-4">
             <P>
               Cuánto dura la cola de Taron un martes normal lo calculamos de noche, mientras los
-              parques están cerrados. Cuando abres la página por la mañana, ya está listo.
+              parques de Europa están cerrados. Cuando abres la página por la mañana, ya está listo.
             </P>
           </div>
 
           <NightShift
             locale="es"
             jobs={NIGHT_JOBS}
-            caption="Horas en UTC. Cada paso se apoya en el anterior."
+            caption="Horas en UTC. El orden hace que cada paso encuentre ya las cifras que necesita. El modelo de hoy no aprende hasta las 08:30."
           />
         </SectionShell>
       </Ambience>
@@ -759,14 +783,14 @@ export function ContentES() {
         <div className="grid gap-6 lg:grid-cols-3">
           <DemoFrame
             label="Parque sin fuente legible"
-            note="Hansa-Park muestra sus tiempos de espera solo en su propia aplicación, con la wifi del parque. Sin este aviso, en park.fan aparecerían 82 atracciones que parecen vacías."
+            note="Hansa-Park muestra sus tiempos de espera solo en su propia aplicación, con la wifi del parque. Por eso este aviso aparece encima de sus unas 80 atracciones y explica por qué no tienen tiempos."
           >
             <NoWaitTimesDemo />
           </DemoFrame>
 
           <DemoFrame
             label="Atracción fuera de temporada"
-            note="Sobre una pista de hielo en agosto no informa nadie. Por eso aparece como fuera de temporada y ese día no cuenta entre las atracciones abiertas."
+            note="Sobre una pista de hielo en agosto no informa nadie. Como conocemos su temporada, de noviembre a enero, entonces aparece como fuera de temporada y no cuenta entre las atracciones abiertas."
           >
             <OffSeasonDemo />
           </DemoFrame>
@@ -776,9 +800,8 @@ export function ContentES() {
             note="Por debajo de unos 30 días de funcionamiento falta el valor de referencia. Por eso un parque nuevo recibe «Sin previsión» en lugar de un color."
           >
             <BadgeRowDemo
-              crowdLabel="Afluencia: cuánto se llena ahora"
-              comparisonLabel="Comparación: ¿más que de costumbre?"
-              caption="Con 70 minutos, Taron está en «Muy alta», y frente a sus 45 minutos típicos, en «Mucho más alto». En un parque pequeño donde 25 minutos son lo normal, «Muy alta» puede aparecer junto a «Típico»."
+              crowdLabel="Los niveles"
+              caption={`Cada nivel se mide contra el propio pasado de la atracción o del parque, nunca contra otros parques. Con 70 minutos, Taron está en «Muy alta» porque su nivel normal en septiembre era de ${TARON_BASELINE}.`}
             />
           </DemoFrame>
         </div>
@@ -798,8 +821,8 @@ export function ContentES() {
               title: 'Búsqueda',
               body: (
                 <>
-                  Ctrl + K o ⌘ + K en cualquier página. Encuentra parques, atracciones, espectáculos
-                  y restaurantes, también con erratas.
+                  La tecla / en cualquier página o el campo de búsqueda de arriba. Encuentra
+                  parques, atracciones, espectáculos, restaurantes y lugares, también con erratas.
                 </>
               ),
             },
@@ -808,8 +831,9 @@ export function ContentES() {
               title: 'Ubicación',
               body: (
                 <>
-                  Si la activas, en la página de inicio aparecen los parques cercanos, y dentro de
-                  un parque, las atracciones más próximas con distancia y tiempo de espera.
+                  Si la activas, en la página de inicio aparecen los parques cercanos. Dentro de un
+                  parque, una brújula señala dónde están las grandes atracciones, junto con las más
+                  próximas, su distancia y su tiempo de espera.
                 </>
               ),
             },
@@ -818,9 +842,20 @@ export function ContentES() {
               title: 'Favoritos',
               body: (
                 <>
-                  La estrella de cada tarjeta de parque y de atracción. Los favoritos aparecen en la
-                  página de inicio con su tiempo de espera actual y se guardan en el navegador, sin
-                  cuenta.
+                  La estrella en parques, atracciones, espectáculos y restaurantes. Los favoritos
+                  aparecen con su tiempo de espera actual en la página de inicio y en{' '}
+                  <A href="/favorites">Mis favoritos</A>, guardados en el navegador, sin cuenta.
+                </>
+              ),
+            },
+            {
+              icon: Bell,
+              title: 'Avisos',
+              body: (
+                <>
+                  La campana de una atracción o un espectáculo te manda un aviso cuando la espera
+                  baja de tu límite, la atracción vuelve a abrir o el espectáculo está a punto de
+                  empezar. Todos están en <A href="/alerts">Mis avisos</A>.
                 </>
               ),
             },
@@ -830,7 +865,8 @@ export function ContentES() {
               body: (
                 <>
                   En la pestaña Atracciones pones el control deslizante en la estatura del niño más
-                  pequeño, y solo quedan las atracciones a las que puede subir.
+                  pequeño, y solo quedan las atracciones a las que puede subir. La página «Con
+                  niños» de cada parque tiene el mismo control.
                 </>
               ),
             },
@@ -849,19 +885,29 @@ export function ContentES() {
               title: 'Página de atracción',
               body: (
                 <>
-                  Histórico, tiempos de espera típicos por día de la semana, rope drop, altura
-                  mínima y cuánto acierta la previsión en esa atracción.
+                  Histórico, espera normal y llena por día de la semana, rope drop, altura mínima y
+                  cuánto acierta la previsión en esa atracción.
+                </>
+              ),
+            },
+            {
+              icon: Scale,
+              title: 'Comparar parques',
+              body: (
+                <>
+                  <A href="/compare">Comparar parques</A> pone de dos a cuatro parques uno junto al
+                  otro, con su espera media, su cola más larga y su día de la semana más tranquilo.
                 </>
               ),
             },
             {
               icon: Activity,
-              title: 'Blog',
+              title: 'Blog y noticias',
               body: (
                 <>
                   Textos más largos sobre parques y atracciones, entre ellos{' '}
                   <A href="/blog/category/guides">guías de parques</A> con entradas, orden de visita
-                  y cómo llegar.
+                  y cómo llegar. En <A href="/news">Noticias</A> hay notas breves de los parques.
                 </>
               ),
             },
@@ -880,8 +926,46 @@ export function ContentES() {
       </SectionShell>
 
       <SectionShell
-        id="faq"
+        id="parky"
         index="10"
+        kicker="El asistente"
+        title="Pregúntale a Parky"
+        icon={MessageCircle}
+      >
+        <ParkyShot locale="es">
+          <P>
+            Parky es el asistente de chat de park.fan y vive en el botón redondo de abajo a la
+            derecha. En la página de inicio, en una pantalla ancha, aparece justo debajo del titular
+            y no salta a su esquina hasta que haces scroll.
+          </P>
+          <P>
+            Pregúntale cuánto duran ahora las colas, qué se prevé para hoy o para las próximas
+            semanas, qué días son cortas las colas de un parque, qué altura y velocidad tiene una
+            montaña rusa o qué cuentan nuestros artículos. Para cada respuesta mira en los mismos
+            datos que ves en las páginas.
+          </P>
+          <P>
+            Los parques y las atracciones te los enseña como tarjetas con sus cifras. Si se lo
+            pides, te lleva a la página adecuada y prepara un día en el planificador, añade
+            atracciones o las ordena. Solo ve tu ubicación si pulsas «Compartir ubicación» en el
+            chat, y no la guarda.
+          </P>
+          <P>
+            Las respuestas las redacta un modelo de lenguaje, y a veces se equivoca. Las cifras de
+            las tarjetas del chat vienen directamente de park.fan; si dudas de lo que Parky dice
+            sobre ellas, compruébalo en la página de la atracción. Se ciñe a parques y atracciones,
+            no busca en internet y, tras tres preguntas en 30 segundos, necesita una pausa corta.
+          </P>
+          <P>
+            Guardamos tus preguntas sin dirección IP y las borramos a los 90 días. Hay más sobre
+            Parky, con preguntas de ejemplo, en <A href="/parky">su propia página</A>.
+          </P>
+        </ParkyShot>
+      </SectionShell>
+
+      <SectionShell
+        id="faq"
+        index="11"
         kicker="Consultas"
         title="Preguntas frecuentes"
         icon={HelpCircle}
@@ -892,7 +976,7 @@ export function ContentES() {
       <LandingNextSteps
         kicker="¿Y ahora?"
         title="Seguir leyendo"
-        body="park.fan es gratuito, sin cuenta y sin publicidad. La página de un parque enseña todo esto con las cifras de hoy, Fancast calcula cuánto acertaron las previsiones de los últimos 30 días, y la mejor época compara varios parques."
+        body="park.fan es gratuito, sin cuenta y sin publicidad. La página de un parque enseña todo esto con las cifras de hoy, Fancast calcula cuánto acertaron las previsiones de los últimos siete días, y la mejor época compara varios parques."
         destinations={[
           {
             href: PARK,

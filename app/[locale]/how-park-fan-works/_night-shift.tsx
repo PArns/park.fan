@@ -25,7 +25,8 @@ export interface NightShiftJob {
   hour: number;
   /** UTC minute. */
   minute: number;
-  /** Hour as a fraction of the window the track spans. */
+  /** Hour as a fraction of the window the track spans; a job sharing its time with an earlier one
+   *  shares that one's marker. */
   at: number;
   title: string;
   body: string;
@@ -121,24 +122,29 @@ export function NightShift({
           data-sweep
           className="via-primary/70 absolute top-5 h-px w-1/4 bg-gradient-to-r from-transparent to-transparent"
         />
-        {jobs.map((job) => (
-          <div
-            key={`${job.hour}:${job.minute}`}
-            className="absolute top-0 -translate-x-1/2"
-            style={{ left: `${job.at * 100}%` }}
-          >
-            <span className="text-muted-foreground text-[10px] font-semibold tabular-nums">
-              {formatUtc(locale, job.hour, job.minute)}
-            </span>
-            <span className="bg-primary/70 mx-auto mt-1.5 block h-2 w-2 rounded-full" />
-          </div>
-        ))}
+        {/* One marker per time: two jobs that start together share it. */}
+        {jobs
+          .filter(
+            (job, i) => jobs.findIndex((j) => j.hour === job.hour && j.minute === job.minute) === i
+          )
+          .map((job) => (
+            <div
+              key={`${job.hour}:${job.minute}`}
+              className="absolute top-0 -translate-x-1/2"
+              style={{ left: `${job.at * 100}%` }}
+            >
+              <span className="text-muted-foreground text-[10px] font-semibold tabular-nums">
+                {formatUtc(locale, job.hour, job.minute)}
+              </span>
+              <span className="bg-primary/70 mx-auto mt-1.5 block h-2 w-2 rounded-full" />
+            </div>
+          ))}
       </div>
 
       <ol className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
         {jobs.map((job) => (
           <li
-            key={`${job.hour}:${job.minute}`}
+            key={job.title}
             data-job
             className="bg-card/70 hover:border-primary/40 rounded-xl border p-4 transition-colors"
           >

@@ -112,7 +112,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`comparison-badge.tsx`](../../components/parks/comparison-badge.tsx)
 
-- `ComparisonBadge` _component_: Badge saying how busy a ride is compared with usual (`much_lower` to `much_higher`, or `closed`), in the crowd-level colours. Renders nothing for `null`; only `/ui` and the guide page use it.
+- `ComparisonBadge` _component_: Badge saying how busy a ride is compared with usual (`much_lower` to `much_higher`, or `closed`), in the crowd-level colours. Renders nothing for `null`; only `/ui` uses it.
 
 ### [`country-park-groups.tsx`](../../components/parks/country-park-groups.tsx)
 
@@ -543,6 +543,7 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`park-stats-attractions-card.tsx`](../../components/parks/park-stats-attractions-card.tsx)
 
 - `ParkStatsAttractionsCard` _component_: Top-ten ranking as a table: typical and peak wait beside what the ride shows right now, the comparison the historical numbers exist for. A phone keeps only the peak column, since four numeric columns do not fit beside a ride name.
+- `useParkStatsAttractionsLabels` _hook_: The card's title and column labels from the messages, for the park page's stats section and the guide's frozen copy of the table alike, so the two cannot name a column differently.
 
 ### [`park-stats-crowd-card.tsx`](../../components/parks/park-stats-crowd-card.tsx)
 

@@ -1,6 +1,7 @@
 import type {
   BestVisitSlot,
   CalendarDay,
+  NeighborHoliday,
   ParkAttraction,
   RopeDropInfo,
   TypicalWaits,
@@ -25,7 +26,7 @@ export const DEMO_TIMEZONE = PARK_TZ;
  * were UTC gives the zone's offset for that very instant, which is the only way
  * to get this right across a DST boundary without a date library.
  */
-function parkLocalInstant(nowMs: number, hour: number, minute: number): string {
+export function parkLocalInstant(nowMs: number, hour: number, minute: number): string {
   const parts = new Intl.DateTimeFormat('en-CA', {
     timeZone: PARK_TZ,
     year: 'numeric',
@@ -185,14 +186,16 @@ export function buildDemoFixtures(nowMs: number): DemoFixtures {
     url: `${PARK_PATH}/taron`,
     latitude: null,
     longitude: null,
-    land: 'Klugheim',
+    // Land and height as the API had them on 2026-11-04; chapter 01's child example is written
+    // around the 130 cm.
+    land: 'Mystery',
     status: 'OPERATING',
     // 70 ÷ the ride's 45-minute baseline is ~156 %, and the tier boundary to
     // "very high" is 150. The card's badge is therefore not a styling choice.
     crowdLevel: 'very_high',
     trend: 'up',
     isHeadliner: true,
-    minimumHeight: 140,
+    minimumHeight: 130,
     queues: [
       {
         queueType: 'STANDBY',
@@ -272,96 +275,215 @@ export function buildDemoFixtures(nowMs: number): DemoFixtures {
 }
 
 /**
- * A ride that is shut for a reason no live feed states: it runs from November
- * to January, and in August nobody reports anything about it at all. The
- * seasonal fields are what keeps that silence from being read as "open".
+ * Phantasialand's ice rink as it reads in August, when nobody reports anything about it: name,
+ * land and season months as the API returned them on 2026-11-04. The seasonal fields are what
+ * keeps that silence from being read as "open".
  */
 export const OFF_SEASON_CARD: ParkAttraction = {
-  id: 'demo-eisbahn',
-  name: 'Schlittschuhverleih',
-  slug: 'schlittschuhverleih',
-  url: `${PARK_PATH}/schlittschuhverleih`,
+  id: 'demo-berliner-eislaufen',
+  name: 'Berliner Eislaufen',
+  slug: 'berliner-eislaufen',
+  url: `${PARK_PATH}/berliner-eislaufen`,
   latitude: null,
   longitude: null,
   land: 'Berlin',
   status: 'CLOSED',
   isSeasonal: true,
-  seasonMonths: [11, 12, 1],
+  seasonMonths: [1, 11, 12],
   isCurrentlyInSeason: false,
   queues: [],
 };
 
+/** The neighbouring regions on a school break that the API listed for the days below. */
+const AUTUMN_NEIGHBOURS = {
+  lowerSaxony: {
+    name: 'Autumn Holidays',
+    source: { countryCode: 'DE', regionCode: 'NI' },
+    holidayType: 'school',
+    priority: 3,
+  },
+  gelderland: {
+    name: 'Autumn Holidays',
+    source: { countryCode: 'NL', regionCode: 'GE' },
+    holidayType: 'school',
+    priority: 5,
+  },
+  wallonia: {
+    name: 'All Saints Holidays',
+    source: { countryCode: 'BE', regionCode: 'FR' },
+    holidayType: 'school',
+    priority: 6,
+  },
+} as const satisfies Record<string, NeighborHoliday>;
+
+const AUTUMN_HOLIDAYS = [{ name: 'Autumn Holidays', type: 'school-holiday', isNationwide: false }];
+
+const HEADLINER_IDS = {
+  taron: '4249fed8-46f7-4848-abae-57cf7953c9b2',
+  crazyBats: 'd9833356-1e38-4bb2-89ac-79dca6b691f5',
+  winjasForce: '472c8b2f-d545-426d-8bd8-08bbccced973',
+  winjasFear: 'a6d18c60-5370-4920-b980-3ab6a316b49e',
+  fly: '7c7bd29a-ff3a-4f24-864e-73a49f878a23',
+} as const;
+
+function headliner(ride: keyof typeof HEADLINER_IDS, name: string, waitTime: number) {
+  return { attractionId: HEADLINER_IDS[ride], name, waitTime };
+}
+
 /**
- * Four days out of an autumn-break week, the case the calendar exists for: the
- * dates are consecutive, the crowd levels are not, and what separates them is
- * whose schools are off rather than anything visible in a brochure.
+ * Four days of one week of the North Rhine-Westphalia autumn holidays at Phantasialand, as
+ * `/calendar` returned them on 2026-11-04, measured rather than forecast: the same school break on
+ * every day and four different crowd levels.
  */
 export const DEMO_CALENDAR_DAYS: CalendarDay[] = [
   {
-    date: '2026-10-12',
-    status: 'OPERATING',
-    isToday: false,
-    isTomorrow: false,
-    crowdLevel: 'moderate',
-    avgWaitTime: 24,
-    isHoliday: false,
-    isBridgeDay: false,
-    isSchoolVacation: false,
-    hours: {
-      openingTime: '2026-10-12T07:00:00.000Z',
-      closingTime: '2026-10-12T16:00:00.000Z',
-      type: 'OPERATING',
-      isInferred: false,
-    },
-    weather: { condition: 'Bewölkt', icon: 3, tempMin: 9, tempMax: 16, rainChance: 0.4 },
-  },
-  {
-    date: '2026-10-14',
-    status: 'OPERATING',
-    isToday: false,
-    isTomorrow: false,
-    crowdLevel: 'very_high',
-    avgWaitTime: 52,
-    isHoliday: false,
-    isBridgeDay: false,
-    isSchoolVacation: true,
-    isSchoolHoliday: true,
-    hours: {
-      openingTime: '2026-10-14T07:00:00.000Z',
-      closingTime: '2026-10-14T18:00:00.000Z',
-      type: 'OPERATING',
-      isInferred: false,
-    },
-    weather: { condition: 'Sonnig', icon: 0, tempMin: 11, tempMax: 20, rainChance: 0 },
-  },
-  {
-    date: '2026-10-15',
-    status: 'OPERATING',
-    isToday: false,
-    isTomorrow: false,
-    crowdLevel: 'low',
-    avgWaitTime: 16,
-    isHoliday: false,
-    isBridgeDay: false,
-    isSchoolVacation: true,
-    isSchoolHoliday: true,
-    hours: {
-      openingTime: '2026-10-15T07:00:00.000Z',
-      closingTime: '2026-10-15T18:00:00.000Z',
-      type: 'OPERATING',
-      isInferred: false,
-    },
-    weather: { condition: 'Regen', icon: 61, tempMin: 8, tempMax: 13, rainChance: 7.2 },
-  },
-  {
     date: '2026-10-19',
-    status: 'CLOSED',
+    status: 'OPERATING',
     isToday: false,
-    isTomorrow: false,
-    crowdLevel: 'unknown',
+    isEstimated: false,
+    crowdLevel: 'low',
     isHoliday: false,
     isBridgeDay: false,
     isSchoolVacation: true,
-    weather: { condition: 'Bewölkt', icon: 3, tempMin: 7, tempMax: 14, rainChance: 1.1 },
+    events: AUTUMN_HOLIDAYS,
+    hours: {
+      openingTime: '2026-10-19T07:00:00.000Z',
+      closingTime: '2026-10-19T16:00:00.000Z',
+      type: 'OPERATING',
+      isInferred: false,
+    },
+    weather: {
+      condition: 'Drizzle, light intensity',
+      icon: 51,
+      tempMin: 7.9,
+      tempMax: 15.1,
+      rainChance: 0.1,
+    },
+    headlinerForecast: {
+      avgWait: 25,
+      actual: true,
+      rides: [
+        headliner('taron', 'Taron', 35),
+        headliner('crazyBats', 'Crazy Bats', 30),
+        headliner('winjasForce', 'Winja‘s Force', 30),
+        headliner('winjasFear', 'Winja‘s Fear', 30),
+        headliner('fly', 'F.L.Y.', 30),
+      ],
+    },
+    neighborHolidays: [
+      AUTUMN_NEIGHBOURS.lowerSaxony,
+      AUTUMN_NEIGHBOURS.gelderland,
+      AUTUMN_NEIGHBOURS.wallonia,
+    ],
+  },
+  {
+    date: '2026-10-20',
+    status: 'OPERATING',
+    isToday: false,
+    isEstimated: false,
+    crowdLevel: 'high',
+    isHoliday: false,
+    isBridgeDay: false,
+    isSchoolVacation: true,
+    events: AUTUMN_HOLIDAYS,
+    hours: {
+      openingTime: '2026-10-20T07:00:00.000Z',
+      closingTime: '2026-10-20T16:00:00.000Z',
+      type: 'OPERATING',
+      isInferred: false,
+    },
+    weather: {
+      condition: 'Rain, slight intensity',
+      icon: 61,
+      tempMin: 4.3,
+      tempMax: 11.3,
+      rainChance: 10.4,
+    },
+    headlinerForecast: {
+      avgWait: 45,
+      actual: true,
+      rides: [
+        headliner('winjasFear', 'Winja‘s Fear', 65),
+        headliner('winjasForce', 'Winja‘s Force', 60),
+        headliner('taron', 'Taron', 55),
+        headliner('fly', 'F.L.Y.', 45),
+        headliner('crazyBats', 'Crazy Bats', 40),
+      ],
+    },
+    neighborHolidays: [
+      AUTUMN_NEIGHBOURS.lowerSaxony,
+      AUTUMN_NEIGHBOURS.gelderland,
+      AUTUMN_NEIGHBOURS.wallonia,
+    ],
+  },
+  {
+    date: '2026-10-22',
+    status: 'OPERATING',
+    isToday: false,
+    isEstimated: false,
+    crowdLevel: 'moderate',
+    isHoliday: false,
+    isBridgeDay: false,
+    isSchoolVacation: true,
+    events: AUTUMN_HOLIDAYS,
+    hours: {
+      openingTime: '2026-10-22T07:00:00.000Z',
+      closingTime: '2026-10-22T16:00:00.000Z',
+      type: 'OPERATING',
+      isInferred: false,
+    },
+    weather: { condition: 'Overcast', icon: 3, tempMin: 6, tempMax: 12, rainChance: 0 },
+    headlinerForecast: {
+      avgWait: 35,
+      actual: true,
+      rides: [
+        headliner('taron', 'Taron', 50),
+        headliner('crazyBats', 'Crazy Bats', 40),
+        headliner('winjasForce', 'Winja‘s Force', 40),
+        headliner('winjasFear', 'Winja‘s Fear', 40),
+        headliner('fly', 'F.L.Y.', 35),
+      ],
+    },
+    neighborHolidays: [
+      AUTUMN_NEIGHBOURS.lowerSaxony,
+      AUTUMN_NEIGHBOURS.gelderland,
+      AUTUMN_NEIGHBOURS.wallonia,
+    ],
+  },
+  {
+    date: '2026-10-25',
+    status: 'OPERATING',
+    isToday: false,
+    isEstimated: false,
+    crowdLevel: 'very_low',
+    isHoliday: false,
+    isBridgeDay: false,
+    isSchoolVacation: true,
+    events: AUTUMN_HOLIDAYS,
+    hours: {
+      openingTime: '2026-10-25T08:00:00.000Z',
+      closingTime: '2026-10-25T17:00:00.000Z',
+      type: 'OPERATING',
+      isInferred: false,
+    },
+    weather: {
+      condition: 'Rain, moderate intensity',
+      icon: 63,
+      tempMin: 7.8,
+      tempMax: 13.2,
+      rainChance: 18,
+    },
+    headlinerForecast: {
+      avgWait: 20,
+      actual: true,
+      rides: [
+        headliner('taron', 'Taron', 25),
+        headliner('winjasForce', 'Winja‘s Force', 25),
+        headliner('winjasFear', 'Winja‘s Fear', 25),
+        headliner('crazyBats', 'Crazy Bats', 25),
+        headliner('fly', 'F.L.Y.', 15),
+      ],
+    },
+    neighborHolidays: [AUTUMN_NEIGHBOURS.gelderland, AUTUMN_NEIGHBOURS.wallonia],
   },
 ];
