@@ -36,10 +36,16 @@ export function isSearchShortcut(e: KeyboardEvent): boolean {
  */
 export const SEARCH_SHORTCUT_TARGET_ATTR = 'data-search-shortcut-target';
 
-/** The marked field on screen, if there is one. */
+/**
+ * The marked field, while all of it shows between the sticky header and the screen's bottom edge:
+ * one half under the header or scrolled off reads as gone, so the shortcut opens the palette.
+ */
 export function searchShortcutTarget(): HTMLElement | null {
   const field = document.querySelector<HTMLElement>(`[${SEARCH_SHORTCUT_TARGET_ATTR}]`);
   if (!field) return null;
   const box = field.getBoundingClientRect();
-  return box.width > 0 && box.bottom > 0 && box.top < window.innerHeight ? field : null;
+  const headerBottom = document.querySelector('header.sticky')?.getBoundingClientRect().bottom ?? 0;
+  return box.width > 0 && box.top >= headerBottom && box.bottom <= window.innerHeight
+    ? field
+    : null;
 }

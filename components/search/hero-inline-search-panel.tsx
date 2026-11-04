@@ -23,7 +23,11 @@ import {
 import { SearchShortcutKey } from '@/components/search/search-shortcut-key';
 import { HeroSearchFrame } from '@/components/search/hero-search-field';
 import { HERO_ROW_CLASS, HERO_SKELETON_ROW_CLASS } from '@/components/search/search-skeleton-list';
-import { SEARCH_SHORTCUT_TARGET_ATTR, isPageTypedKey } from '@/lib/utils/page-focus';
+import {
+  SEARCH_SHORTCUT_TARGET_ATTR,
+  isPageTypedKey,
+  searchShortcutTarget,
+} from '@/lib/utils/page-focus';
 import type { SearchSession } from '@/lib/analytics/search-session';
 
 /** Space kept between the dropdown's lower edge and the bottom of the viewport. */
@@ -186,8 +190,9 @@ export default function HeroInlineSearchPanel({
     if (!onHero) return;
     const onKey = (e: KeyboardEvent) => {
       // Only when nothing is focused: letters on a focused control mean first-letter navigation
-      // to a screen reader, not "start searching".
-      if (!isPageTypedKey(e)) return;
+      // to a screen reader, not "start searching". And only while the field shows: scrolled away,
+      // the letters would go into a field nobody sees.
+      if (!isPageTypedKey(e) || !searchShortcutTarget()) return;
       e.preventDefault();
       setQuery((prev) => prev + e.key);
       inputRef.current?.focus({ preventScroll: true });
@@ -201,16 +206,12 @@ export default function HeroInlineSearchPanel({
       shouldFilter={false}
       className="group/hero-search [&_[cmdk-group-heading]]:text-foreground/70 relative w-full bg-transparent [&_[cmdk-group-heading]]:px-4 [&_[cmdk-group-heading]]:pt-3.5 [&_[cmdk-group-heading]]:pb-1 [&_[cmdk-group-heading]]:text-[10px] [&_[cmdk-group-heading]]:font-semibold [&_[cmdk-group-heading]]:tracking-wider [&_[cmdk-group-heading]]:uppercase [&_[cmdk-group]]:px-1.5 [&_[cmdk-item]]:px-3 [&_[cmdk-item]]:py-2 [&_[cmdk-item]_svg]:h-5 [&_[cmdk-item]_svg]:w-5"
       onKeyDown={(e) => {
-        // Escape steps back one level and KEEPS focus on the field: a query is cleared first,
-        // and only an already-empty field closes its list. Blurring to <body> instead dropped a
-        // keyboard user out of the hero with nothing announced and no defined place to tab on
-        // from.
+        // Escape leaves the field in one press, whatever state it is in: the query cleared, the
+        // list closed and the focus gone, so no half-open frame stays behind.
         if (e.key !== 'Escape') return;
-        if (query) {
-          setQuery('');
-        } else if (expanded) {
-          setExpanded(false);
-        }
+        setQuery('');
+        setExpanded(false);
+        inputRef.current?.blur();
       }}
     >
       {/* The field, over the frame's first 56 px — same look as the static shell it replaces. */}

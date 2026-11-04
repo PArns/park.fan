@@ -306,7 +306,7 @@ When the nowcast says it is time to go under a roof: the trigger for the covered
 - `nothingFocused` _function_: Whether focus is on the page itself rather than on a control somebody moved to: `<body>`, `<html>` or nothing. A page-wide shortcut acts only then, see docs/rules/a-keyboard-shortcut-waits-for-an-unfocused-page.md.
 - `isPageTypedKey` _function_: Whether a keydown is a character typed at the page itself, which a type-to-search field may take: nothing focused, no modifier, one printable character, not Space (it scrolls the page) and not `SEARCH_SHORTCUT_KEY`, which opens the site …
 - `isSearchShortcut` _function_: Whether a keydown is `SEARCH_SHORTCUT_KEY` pressed at the page itself. Shift is allowed: on a German keyboard the slash is Shift + 7.
-- `searchShortcutTarget` _function_: The marked field on screen, if there is one.
+- `searchShortcutTarget` _function_: The marked field, while all of it shows between the sticky header and the screen's bottom edge: one half under the header or scrolled off reads as gone, so the shortcut opens the palette.
 - `SEARCH_SHORTCUT_KEY` _const_: The key that opens the site search from anywhere on a page (`SearchCommand`).
 - `SEARCH_SHORTCUT_TARGET_ATTR` _const_: Marks a search field that `SEARCH_SHORTCUT_KEY` focuses while it is on screen, rather than opening the palette over it: the homepage hero's.
 
