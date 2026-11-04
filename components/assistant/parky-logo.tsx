@@ -101,46 +101,61 @@ function actFor(act: ParkyAct | 'ride', svg: SVGSVGElement | null): ParkyAct | n
  * The blink runs underneath all of them, in CSS (`parky-blink`), and so do the acts that answer
  * what the visitor does (cues, moods, searching along).
  *
- * - `fidget`: small, easy to miss, every 7 to 8 s while somebody is on the page.
- * - `mischief`: showing off, about every half minute in place of a fidget: a trick, a ride, a quick
- *   nod-off.
- * - `sleepy`: once nobody moves, until he falls asleep for good.
+ * - `fidget`: small and easy to miss, starting 7 to 10 s apart while somebody is on the page.
+ * - `showy`: something to notice, about every half minute in place of a fidget: a coaster or
+ *   another ride (each `ride` entry is one ticket, so rides come up most), a spin, a twirl, the
+ *   sunglasses, the lit wheel, a dance, a quick nod-off.
+ * - `sleepy`: after a minute without anybody moving, until he falls asleep at a minute and a half.
+ * - asleep he now and then dreams (`DREAMS`).
  */
-const CLASS_ACTS: Record<'fidget' | 'mischief' | 'sleepy', readonly (ParkyAct | 'ride')[]> = {
-  fidget: ['wink', 'look', 'tilt'],
-  mischief: [
+const CLASS_ACTS: Record<'fidget' | 'showy' | 'sleepy', readonly (ParkyAct | 'ride')[]> = {
+  fidget: ['wink', 'look', 'tilt', 'wiggle'],
+  showy: [
+    'ride',
+    'ride',
+    'ride',
     'hop',
     'spin',
-    'wiggle',
     'roll',
     'twirl',
     'dance',
-    'read',
-    'whistle',
-    'gum',
     'shades',
     'lights',
+    'whistle',
+    'gum',
+    'read',
     'doze',
-    'ride',
   ],
   sleepy: ['yawn', 'nap', 'nightcap', 'doze'],
 };
 
 /**
  * The rest after an act before the class's next one, as the shortest wait and a random spread on
- * top. A fidget lasts about a second and a half, so fidgets start 7 to 8 s apart.
+ * top. A fidget lasts about a second and a half, so fidgets start 7 to 10 s apart; a dream comes
+ * 15 to 25 s after the last one ended.
  */
-const CLASS_PAUSE_MS: Record<keyof typeof CLASS_ACTS, readonly [number, number]> = {
-  fidget: [6_000, 1_000],
-  mischief: [27_000, 6_000],
+const CLASS_PAUSE_MS: Record<keyof typeof CLASS_ACTS | 'dream', readonly [number, number]> = {
+  fidget: [5_500, 3_000],
+  showy: [27_000, 6_000],
   sleepy: [8_000, 4_000],
+  dream: [15_000, 10_000],
 };
 
 /** A wait drawn from a class's pause. */
-function pauseOf(kind: keyof typeof CLASS_ACTS): number {
+function pauseOf(kind: keyof typeof CLASS_PAUSE_MS): number {
   const [shortest, spread] = CLASS_PAUSE_MS[kind];
   return shortest + Math.random() * spread;
 }
+
+/**
+ * What Parky dreams of, in a cloud over his sleeping head: riding a coaster, cheering under
+ * confetti, or a fairy-tale castle rising under a shooting star.
+ */
+const DREAMS = ['coaster', 'cheer', 'castle'] as const;
+/** One of Parky's dreams. */
+type ParkyDream = (typeof DREAMS)[number];
+/** How long a dream lasts; the stylesheet reads it as `--parky-dream`. */
+const DREAM_MS = 6_500;
 
 /** The first yawn and the eyes falling shut wait a moment after the boredom sets in. */
 const SETTLE_MS = 1_500;
@@ -378,6 +393,7 @@ function useIdleAct(
 ) {
   const boredom = useParkyBoredom(enabled);
   const [act, setAct] = useState<ParkyAct | null>(null);
+  const [dream, setDream] = useState<ParkyDream | null>(null);
   // A cue already there when the face mounts (the button back after the window closed) is old.
   const played = useRef(cue?.id);
   /**
@@ -386,14 +402,22 @@ function useIdleAct(
    */
   const running = useRef<{ act: ParkyAct; endsAt: number } | null>(null);
   useEffect(() => {
-    // One timer at a time, re-armed from its own callback, so cleanup always reaches it.
+    // One timer at a time, re-armed from its own callback, so cleanup always reaches it (and one
+    // more that ends a stale dream).
     let timer: ReturnType<typeof setTimeout> | undefined;
     if (!boredom) {
       // No life of its own now (a mood, a search, a closed window): what played is over.
       running.current = null;
-      timer = setTimeout(() => setAct(null), 0);
+      timer = setTimeout(() => {
+        setAct(null);
+        setDream(null);
+      }, 0);
       return () => clearTimeout(timer);
     }
+    let lastDream: ParkyDream | null = null;
+    // Whatever was dreamt is over with a new stage, a cue or a new sleep; the next dream comes from
+    // the loop below.
+    const wake = setTimeout(() => setDream(null), 0);
     const woke = parkyBoredom.wokeUp();
     let previous: ParkyAct | null = running.current?.act ?? null;
     const end = (done: ParkyAct, then: () => void) => {
@@ -418,11 +442,26 @@ function useIdleAct(
         timer = setTimeout(() => end(next, loop), ACT_MS[next]);
       }, wait);
     };
-    // When the next bit of mischief is due; a fidget that would come after it gives way to it.
-    let mischiefAt = Date.now() + pauseOf('mischief');
+    // Asleep he dreams now and then, in his own rhythm: a dream is no act, the face sleeps on.
+    const dreamOn = () => {
+      timer = setTimeout(() => {
+        const next = pickRandom(DREAMS, lastDream);
+        lastDream = next;
+        setDream(next);
+        timer = setTimeout(() => {
+          setDream(null);
+          dreamOn();
+        }, DREAM_MS);
+      }, pauseOf('dream'));
+    };
+    // When the next showy act is due; a fidget that would come after it gives way to it.
+    let showyAt = Date.now() + pauseOf('showy');
     const loop = () => {
       // Asleep, the doze is the last act: the sleeping face takes over until somebody moves.
-      if (boredom === 'asleep') return;
+      if (boredom === 'asleep') {
+        dreamOn();
+        return;
+      }
       if (boredom === 'bored') {
         play(pauseOf('sleepy'), pickRandom(CLASS_ACTS.sleepy, previous));
         return;
@@ -430,13 +469,13 @@ function useIdleAct(
       // Beside a conversation, awake, he only blinks and follows the pointer with his eyes.
       if (calm) return;
       const wait = pauseOf('fidget');
-      if (Date.now() + wait < mischiefAt) {
+      if (Date.now() + wait < showyAt) {
         play(wait, pickRandom(CLASS_ACTS.fidget, previous));
         return;
       }
-      const due = Math.max(0, mischiefAt - Date.now());
-      mischiefAt = Date.now() + due + pauseOf('mischief');
-      play(due, pickRandom(CLASS_ACTS.mischief, previous));
+      const due = Math.max(0, showyAt - Date.now());
+      showyAt = Date.now() + due + pauseOf('showy');
+      play(due, pickRandom(CLASS_ACTS.showy, previous));
     };
     const enter = () => {
       if (boredom === 'asleep') play(SETTLE_MS, 'doze');
@@ -452,11 +491,15 @@ function useIdleAct(
     } else if (onStage) {
       timer = setTimeout(() => end(onStage.act, enter), Math.max(0, onStage.endsAt - Date.now()));
     } else enter();
-    return () => clearTimeout(timer);
+    return () => {
+      clearTimeout(timer);
+      clearTimeout(wake);
+    };
   }, [boredom, cue, svg, calm]);
   // Shown only while Parky has a life of its own, so a mood or a search never meets an act.
   const shown = boredom ? act : null;
-  return { act: shown, asleep: boredom === 'asleep' && shown === null };
+  const asleep = boredom === 'asleep' && shown === null;
+  return { act: shown, asleep, dream: asleep ? dream : null };
 }
 
 /**
@@ -524,6 +567,166 @@ const SEARCH_GAZE = { x: 0, y: 0.8 };
 const BELL_GAZE = { x: -1.8, y: -2.2 };
 
 /**
+ * The track Parky's dream coaster runs on: in from the left, once round a loop and out to the
+ * right, all of it inside the cloud so the train is always in view.
+ */
+const DREAM_TRACK =
+  'M-22.5 -7.5L-16 -7.5C-11 -7.5-8 -10.5-8 -14.5A4.5 4.5 0 0 0-17 -14.5C-17 -10.5-14 -7.5-9 -7.5L-2.5 -7.5';
+/** One lap of the dream train, and the points along the track its motion is drawn through. */
+const TRAIN_LAP_MS = 3_200;
+const TRAIN_STEPS = 32;
+/** The castle's walls and its roofs, pastel against the night of the cloud. */
+const CASTLE_WALL = 'oklch(0.86 0.06 340)';
+const CASTLE_ROOF = 'oklch(0.58 0.15 265)';
+const DREAM_GOLD = 'oklch(0.86 0.15 90)';
+
+/**
+ * Parky's dream in a cloud over his sleeping head, led to by three little puffs as his thoughts
+ * are: a coaster car running a loop with him aboard, arms up; a little Parky
+ * cheering under confetti; or a fairy-tale castle rising under a shooting star. The scene stays
+ * inside the cloud (`clipPath`); the motion is CSS (`.parky-dream-*`), and the train a web
+ * animation along its track.
+ */
+function ParkyDreamCloud({ dream, ground }: { dream: ParkyDream; ground: string }) {
+  const clip = `${ground}-dream`;
+  const track = useRef<SVGPathElement>(null);
+  const train = useRef<SVGGElement>(null);
+  // The train runs the track, measured off the path itself, nose along the rail; a web animation,
+  // so it keeps the document's clock like the CSS around it.
+  useEffect(() => {
+    const path = track.current;
+    const cars = train.current;
+    if (dream !== 'coaster' || !path || !cars) return;
+    const length = path.getTotalLength();
+    const frames = Array.from({ length: TRAIN_STEPS + 1 }, (_, i) => {
+      const at = (i / TRAIN_STEPS) * length;
+      const here = path.getPointAtLength(at);
+      const ahead = path.getPointAtLength(Math.min(length, at + 0.5));
+      const behind = path.getPointAtLength(Math.max(0, at - 0.5));
+      const angle = (Math.atan2(ahead.y - behind.y, ahead.x - behind.x) * 180) / Math.PI;
+      return {
+        transform: `translate(${here.x.toFixed(2)}px, ${here.y.toFixed(2)}px) rotate(${angle.toFixed(1)}deg)`,
+      };
+    });
+    const run = cars.animate(frames, { duration: TRAIN_LAP_MS, iterations: Infinity });
+    return () => run.cancel();
+  }, [dream]);
+  return (
+    <g className={cn('parky-dream', `parky-dream--${dream}`)}>
+      <clipPath id={clip}>
+        <ellipse cx="-12.5" cy="-14" rx="14.2" ry="9.6" />
+      </clipPath>
+      <g fill="white" stroke={blue} strokeWidth=".8">
+        <circle className="parky-dream-puff" cx="7" cy="9" r="1.4" />
+        <circle className="parky-dream-puff" cx="3.6" cy="4.4" r="1.9" />
+        <circle className="parky-dream-puff" cx="-0.6" cy="-0.6" r="2.5" />
+        <ellipse className="parky-dream-puff" cx="-12.5" cy="-14" rx="15" ry="10.4" />
+      </g>
+      <g clipPath={`url(#${clip})`} className="parky-dream-scene">
+        {dream === 'coaster' && (
+          <>
+            <circle cx="-20.5" cy="-17.5" r="1.6" fill={DREAM_GOLD} />
+            <path d="M-19 -7.5V-4M-6 -7.5V-4" stroke={ink} strokeWidth=".5" opacity=".35" />
+            <path
+              ref={track}
+              d={DREAM_TRACK}
+              fill="none"
+              stroke={rail}
+              strokeWidth="1"
+              strokeLinecap="round"
+            />
+            <g ref={train}>
+              {/* A car on the rail, nose ahead, with Parky in it, arms up. */}
+              <rect x="-2.6" y="-2.6" width="5.2" height="2.4" rx=".8" fill={CABIN_COLOURS[1]} />
+              <circle cx=".2" cy="-3.9" r="1.6" fill={`url(#${ground})`} />
+              <path
+                d="M-1.1 -4.9L-2 -6.9M1.5 -4.9L2.4 -6.9"
+                stroke={blue}
+                strokeWidth=".55"
+                strokeLinecap="round"
+              />
+            </g>
+          </>
+        )}
+        {dream === 'cheer' && (
+          <>
+            {CABIN_COLOURS.concat(CABIN_COLOURS).map((colour, i) => (
+              <rect
+                key={i}
+                className="parky-dream-confetti"
+                x={-24 + i * 3.3}
+                y={-23 + (i % 3) * 1.5}
+                width=".9"
+                height="1.7"
+                rx=".3"
+                fill={colour}
+                style={{ animationDelay: `${(i % 4) * 0.35}s` } as React.CSSProperties}
+              />
+            ))}
+            <g className="parky-dream-hopper">
+              <path
+                d="M-16.4 -12.6L-18.6 -17M-8.6 -12.6L-6.4 -17"
+                stroke={blue}
+                strokeWidth=".7"
+                strokeLinecap="round"
+              />
+              <circle cx="-12.5" cy="-11" r="4.4" fill={`url(#${ground})`} />
+              <path
+                d="M-14.6 -12.2q.8-.9 1.6 0M-12 -12.2q.8-.9 1.6 0"
+                fill="none"
+                stroke={ink}
+                strokeWidth=".55"
+                strokeLinecap="round"
+              />
+              <path d="M-14 -10.2q1.5 2.2 3 0z" fill={ink} />
+            </g>
+          </>
+        )}
+        {dream === 'castle' && (
+          <>
+            <path
+              className="parky-dream-shoot"
+              d="M-25 -16Q-14 -27 0 -20"
+              fill="none"
+              stroke={DREAM_GOLD}
+              strokeWidth=".6"
+              strokeLinecap="round"
+              pathLength={1}
+            />
+            {[
+              [-22, -10],
+              [-3, -9],
+              [-6, -21],
+            ].map(([x, y], i) => (
+              <path
+                key={i}
+                className="parky-dream-sparkle"
+                d={`M${x} ${y - 1.4}L${x + 0.4} ${y - 0.4}L${x + 1.4} ${y}L${x + 0.4} ${y + 0.4}L${x} ${y + 1.4}L${x - 0.4} ${y + 0.4}L${x - 1.4} ${y}L${x - 0.4} ${y - 0.4}Z`}
+                fill={DREAM_GOLD}
+                style={{ animationDelay: `${i * 0.5}s` } as React.CSSProperties}
+              />
+            ))}
+            <g className="parky-dream-rise">
+              <path d="M-19 -4V-11H-6V-4Z" fill={CASTLE_WALL} />
+              <path
+                d="M-20.5 -4V-14H-17.5V-4ZM-7.5 -4V-14H-4.5V-4ZM-14.5 -4V-16.5H-10.5V-4Z"
+                fill={CASTLE_WALL}
+              />
+              <path
+                d="M-21 -14L-19 -18.5L-17 -14ZM-8 -14L-6 -18.5L-4 -14ZM-15 -16.5L-12.5 -22.5L-10 -16.5Z"
+                fill={CASTLE_ROOF}
+              />
+              <path d="M-12.5 -22.5V-24.5L-11 -24" stroke={rail} strokeWidth=".4" fill={rail} />
+              <path d="M-13.8 -4V-6.6A1.3 1.3 0 0 1-11.2 -6.6V-4Z" fill={CASTLE_ROOF} />
+            </g>
+          </>
+        )}
+      </g>
+    </g>
+  );
+}
+
+/**
  * Parky's face: a speech bubble in the brand's blue to green with big eyes that follow the mouse,
  * rosy cheeks and a smile, and for a hat a Ferris wheel with coloured cabins on an A-frame. It
  * blinks every 7 to 8 s, shows its {@link ParkyMood}, and while `idle` has a life of its own in
@@ -577,7 +780,7 @@ export function ParkyLogo({
   // A mood has its own motion; the idle life is for a face with nothing to do, and a search open
   // on the page is something to do.
   const { search, puzzled } = useSearchAlong(idle && !state);
-  const { act, asleep } = useIdleAct(idle && !state && !search, latestCue, svg, calm);
+  const { act, asleep, dream } = useIdleAct(idle && !state && !search, latestCue, svg, calm);
   const searching = search === 'searching';
   const gaze =
     state === 'thinking' || act === 'lights'
@@ -639,7 +842,14 @@ export function ParkyLogo({
       ref={svg}
       viewBox={`0 0 ${VIEW} ${VIEW}`}
       className={cn('size-8 overflow-visible', className)}
-      style={length ? ({ '--parky-act': `${length}ms` } as React.CSSProperties) : undefined}
+      style={
+        length || dream
+          ? ({
+              ...(length && { '--parky-act': `${length}ms` }),
+              ...(dream && { '--parky-dream': `${DREAM_MS}ms` }),
+            } as React.CSSProperties)
+          : undefined
+      }
       aria-hidden="true"
     >
       <defs>
@@ -728,7 +938,8 @@ export function ParkyLogo({
           />
         </g>
       )}
-      {sleeping && (
+      {dream && <ParkyDreamCloud dream={dream} ground={ground} />}
+      {sleeping && !dream && (
         // Three Zs rising over the bubble's top left, away from the hat; once each in a nap.
         <g
           className={cn('parky-zzz', act === 'nap' && 'parky-zzz--nap')}

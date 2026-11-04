@@ -147,19 +147,21 @@ move or press, a key, the mouse wheel or a touch.
 
 Its life of its own comes in classes, each with its own pace (`CLASS_ACTS`, `CLASS_PAUSE_MS`):
 
-| Class      | When                                     | What Parky does                                                                                                        |
-| ---------- | ---------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| blink      | always, every 7–8 s (CSS, `parky-blink`) | shuts and opens his eyes                                                                                               |
-| `fidget`   | `awake` (< 25 s quiet), every 7–8 s      | winks, looks around, tilts his head                                                                                    |
-| `mischief` | `awake`, about every 30 s (27–33 s)      | hops, spins, wiggles, rolls his eyes, twirls, dances, reads, whistles, blows gum, sunglasses, lights, nods off, a ride |
-| `sleepy`   | `bored` (25 s quiet), every 8–12 s       | yawns first, then naps, pulls on his nightcap, nods off                                                                |
-| asleep     | `asleep` (75 s quiet)                    | eyes shut, slow breathing under rising Zs, the hat stops; activity wakes him with a "!"                                |
-| doing      | whenever something happens               | moods (`thinking`, `looking`, `talking`), searching along, and the cues that answer the visitor                        |
+| Class    | When                                      | What Parky does                                                                                                                                                                    |
+| -------- | ----------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| blink    | always, every 7–8 s (CSS, `parky-blink`)  | shuts and opens his eyes                                                                                                                                                           |
+| `fidget` | `awake` (< 60 s quiet), 7–10 s apart      | winks, looks around, tilts his head, wiggles                                                                                                                                       |
+| `showy`  | `awake`, about every 30 s (27–33 s)       | a ride (three tickets of fourteen, so the coasters come up most), hops, spins, rolls his eyes, twirls, dances, sunglasses, lights, whistles, gum, reads, nods off                  |
+| `sleepy` | `bored` (60 s quiet), every 8–12 s        | yawns first, then naps, pulls on his nightcap, nods off                                                                                                                            |
+| asleep   | `asleep` (90 s quiet)                     | eyes shut, slow breathing under rising Zs, the hat stops; activity wakes him with a "!"                                                                                            |
+| dreams   | asleep, 15–25 s after the last one, 6.5 s | a cloud over his head (`ParkyDreamCloud`): a coaster car round a loop with him aboard, a little Parky cheering under confetti, or a fairy-tale castle rising under a shooting star |
+| doing    | whenever something happens                | moods (`thinking`, `looking`, `talking`), searching along, and the cues that answer the visitor                                                                                    |
 
-A bit of mischief takes the place of the fidget that would come after it is due. That is the button
-in the corner. In the open window and in the homepage hero Parky is `calm`: awake he only blinks
-and follows the pointer, bored he gets sleepy and falls asleep, and what he does for the visitor
-plays as everywhere.
+A showy act takes the place of the fidget that would come after it is due. That is the button in
+the corner. In the open window and in the homepage hero Parky is `calm`: awake he only blinks and
+follows the pointer, bored he gets sleepy, falls asleep and dreams, and what he does for the
+visitor plays as everywhere. The dream's scenes stay inside the cloud (`clipPath`); the train runs
+its track as a web animation measured off the path.
 
 A change of stage never cuts an act short: an act still on stage when Parky gets bored, falls
 asleep or wakes up plays to its end, with the dizziness after a ride, and only then does the new

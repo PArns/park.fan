@@ -4,10 +4,10 @@
  */
 export type ParkyBoredom = 'awake' | 'bored' | 'asleep';
 
-/** Quiet time on the page before Parky gets bored. */
-export const BORED_AFTER_MS = 25_000;
-/** Quiet time on the page before Parky nods off. */
-export const ASLEEP_AFTER_MS = 75_000;
+/** Quiet time on the page before Parky gets sleepy: two rounds of mischief first. */
+export const BORED_AFTER_MS = 60_000;
+/** Quiet time on the page before Parky falls asleep: a minute and a half. */
+export const ASLEEP_AFTER_MS = 90_000;
 
 /** How bored Parky is after `quietMs` without a pointer, key, wheel or touch on the page. */
 export function boredomAfter(quietMs: number): ParkyBoredom {
