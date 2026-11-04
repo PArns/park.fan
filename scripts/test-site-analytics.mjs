@@ -179,10 +179,13 @@ await test('the referrer is the external host, once per load', async () => {
   assert.equal('referrer' in second, false);
 });
 
-await test('a utm_source in the address sends no referrer, and the referrer host is left alone', async () => {
+await test('a utm_source that names no AI assistant sends no referrer, and the referrer host is left alone', async () => {
   for (const search of [
     '?utm_source=Newsletter',
     '?utm_source=news.example.com&utm_campaign=summer',
+    '?utm_source=chatgpt.com.example.net',
+    '?utm_source=chatgpt',
+    '?utm_medium=chatgpt.com',
   ]) {
     browser({ search });
     const { trackSitePageview, flushSiteAnalytics } = await facade();
@@ -197,6 +200,30 @@ await test('a utm_source in the address sends no referrer, and the referrer host
   trackSitePageview();
   flushSiteAnalytics();
   assert.equal((await hits())[0].referrer, 'google.com');
+});
+
+await test("an AI assistant's utm_source stands in for a missing referrer, once per load", async () => {
+  for (const [search, referrer] of [
+    ['?utm_source=chatgpt.com', ''],
+    ['?utm_source=ChatGPT.com&utm_campaign=x', ''],
+    ['?utm_source=www.perplexity.ai', ''],
+    ['?utm_source=chatgpt.com', 'https://park.fan/de'],
+  ]) {
+    browser({ search, referrer });
+    const { trackSitePageview, flushSiteAnalytics } = await facade();
+    trackSitePageview();
+    trackSitePageview();
+    flushSiteAnalytics();
+    const [first, second] = await hits();
+    assert.match(first.referrer, /^(chatgpt\.com|perplexity\.ai)$/, search);
+    assert.equal('referrer' in second, false, `${search}: only the first view of a load`);
+    assert.equal('campaign' in first, false, search);
+  }
+  browser({ search: '?utm_source=chatgpt.com', referrer: 'https://www.google.de/' });
+  const { trackSitePageview, flushSiteAnalytics } = await facade();
+  trackSitePageview();
+  flushSiteAnalytics();
+  assert.equal((await hits())[0].referrer, 'google.de', 'a real referrer wins');
 });
 
 await test('an internal or missing referrer sends none', async () => {
@@ -439,6 +466,93 @@ await test('Do Not Track, Global Privacy Control, the opt-out and automation sen
     flushSiteAnalytics();
     assert.equal(requests.length, 0, JSON.stringify(page));
   }
+});
+
+await test('a User-Agent naming a phone its engine contradicts sends nothing', async () => {
+  const iphone =
+    'Mozilla/5.0 (iPhone; CPU iPhone OS 18_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) CriOS/141.0 Mobile/15E148 Safari/604.1';
+  const android =
+    'Mozilla/5.0 (Linux; Android 15; Pixel 9) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0 Mobile Safari/537.36';
+  const desktop =
+    'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0 Safari/537.36';
+  const forged = [
+    { userAgent: iphone, userAgentData: { platform: 'Linux' } },
+    { userAgent: iphone, userAgentData: { platform: 'Windows' } },
+    { userAgent: android, userAgentData: { platform: 'Linux' } },
+    { userAgent: android, userAgentData: { platform: 'macOS' } },
+  ];
+  for (const page of forged) {
+    browser(page);
+    const { canCountSite, trackSitePageview, trackSiteEvent, flushSiteAnalytics } = await facade();
+    assert.equal(canCountSite(), false, JSON.stringify(page));
+    trackSitePageview();
+    trackSiteEvent('favorite_add', { type: 'park' });
+    flushSiteAnalytics();
+    assert.equal(requests.length, 0, JSON.stringify(page));
+  }
+  const real = [
+    { userAgent: iphone },
+    { userAgent: iphone, userAgentData: { platform: 'iOS' } },
+    { userAgent: android, userAgentData: { platform: 'Android' } },
+    { userAgent: android, userAgentData: { platform: '' } },
+    { userAgent: android, userAgentData: { platform: 'Unknown' } },
+    { userAgent: desktop, userAgentData: { platform: 'Linux' } },
+    { userAgent: desktop, userAgentData: { platform: 'Android' } },
+  ];
+  for (const page of real) {
+    browser(page);
+    const { trackSitePageview, flushSiteAnalytics } = await facade();
+    trackSitePageview();
+    flushSiteAnalytics();
+    assert.equal(requests.length, 1, JSON.stringify(page));
+  }
+});
+
+await test('a page opened in the background counts when it comes on screen, with its referrer', async () => {
+  browser({ visibility: 'hidden', referrer: 'https://www.google.com/' });
+  const { trackSitePageview, trackSiteEvent, flushSiteAnalytics } = await facade();
+  trackSiteEvent('nearby_parks_loaded', {});
+  trackSitePageview();
+  clock.now += 10_000;
+  flushSiteAnalytics();
+  assert.equal(requests.length, 0, 'nothing leaves while nobody has looked');
+  fire('visibilitychange', 'visible');
+  clock.now += 4000;
+  fire('visibilitychange', 'hidden');
+  const sent = await hits();
+  assert.deepEqual(
+    sent.map((hit) => hit.t),
+    ['pageview', 'event', 'engagement']
+  );
+  assert.equal(sent[0].referrer, 'google.com');
+  assert.equal(sent[2].seconds, 4);
+});
+
+await test('a page closed before anybody looked at it sends nothing, its events included', async () => {
+  browser({ visibility: 'hidden' });
+  const { trackSitePageview, trackSiteEvent } = await facade();
+  trackSitePageview();
+  trackSiteEvent('glossary_term_viewed', {});
+  clock.now += 30_000;
+  fire('pagehide');
+  assert.equal(requests.length, 0);
+});
+
+await test('a prerendered page counts once the reader opens it', async () => {
+  browser({ prerendering: true });
+  const { trackSitePageview, flushSiteAnalytics } = await facade();
+  trackSitePageview();
+  flushSiteAnalytics();
+  assert.equal(requests.length, 0, 'not while it is only prerendered');
+  document.prerendering = false;
+  fire('prerenderingchange');
+  fire('visibilitychange', 'visible');
+  flushSiteAnalytics();
+  assert.deepEqual(
+    (await hits()).map((hit) => hit.t),
+    ['pageview'],
+    'counted once, though both events say it came on screen'
+  );
 });
 
 await test('a "0" Do Not Track and a cleared opt-out are counted', async () => {
