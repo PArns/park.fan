@@ -46,10 +46,11 @@ import { useSession } from './session';
 import { CommandPalette } from './command-palette';
 import { InspectorPanel, useInspector } from './inspector';
 import { NewContributionsNotice } from './new-contributions-notice';
+import { SEARCH_SHORTCUT_KEY } from '@/lib/utils/page-focus';
 
 /**
  * The frame every admin page sits in: a sidebar whose entries carry the state of what they lead
- * to, the page on an inset surface under a slim topbar, and the inspector beside it. ⌘K and the
+ * to, the page on an inset surface under a slim topbar, and the inspector beside it. `/` and the
  * `g`-then-letter jumps are advertised in the chrome, because a shortcut nobody is told about is a
  * shortcut nobody uses.
  */
@@ -75,7 +76,7 @@ const JUMP_KEYS: Record<string, string> = {
 
 const PaletteContext = createContext<() => void>(() => undefined);
 
-/** Opens the ⌘K palette from a page, for a button that offers "everything else". */
+/** Opens the command palette (`/`) from a page, for a button that offers "everything else". */
 export function useOpenPalette(): () => void {
   return useContext(PaletteContext);
 }
@@ -86,7 +87,7 @@ const CHROME_HOVER = 'hover:bg-white/[0.05] hover:text-foreground';
 /**
  * Admin frame around every page: the sidebar (folding groups, status dots, the account at its
  * foot), the topbar with the page's place, search, refresh and the inspector toggle, then the page
- * on its inset surface, the inspector column and the ⌘K command palette. It also binds the
+ * on its inset surface, the inspector column and the command palette (`/`). It also binds the
  * `g`-then-letter section jumps, which stay off while typing, under a dialog or with unsaved edits.
  */
 export function AdminShell({ children }: { children: ReactNode }) {
@@ -121,16 +122,17 @@ export function AdminShell({ children }: { children: ReactNode }) {
         target &&
         (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA' || target.isContentEditable);
 
-      if (event.key.toLowerCase() === 'k' && (event.metaKey || event.ctrlKey)) {
-        event.preventDefault();
-        setPaletteOpen((open) => !open);
-        return;
-      }
-
-      // Dead while typing (writing "Gondoletta" must not jump to the dashboard) and under any
-      // open dialog, which may hold unsaved work.
+      // Dead while typing (writing "Gondoletta" must not jump to the dashboard, a slash in a field
+      // is a slash) and under any open dialog, which may hold unsaved work.
       if (typing || event.metaKey || event.ctrlKey || event.altKey) return;
       if (document.querySelector('[role="dialog"], [role="alertdialog"]')) return;
+
+      // `/` opens the palette, as on the public site; ⌘K stays with the browser.
+      if (event.key === SEARCH_SHORTCUT_KEY) {
+        event.preventDefault();
+        setPaletteOpen(true);
+        return;
+      }
 
       if (jumpArmed.current) {
         jumpArmed.current = false;
@@ -297,7 +299,7 @@ export function AdminShell({ children }: { children: ReactNode }) {
               <Search className="h-4 w-4 sm:h-3.5 sm:w-3.5" />
               <span className="hidden sm:inline">Suchen</span>
               <span className="hidden sm:inline-flex">
-                <Kbd>⌘K</Kbd>
+                <Kbd>{SEARCH_SHORTCUT_KEY}</Kbd>
               </span>
             </button>
           </header>
@@ -375,7 +377,7 @@ function Sidebar({
               type="button"
               onClick={onSearch}
               aria-label="Suchen"
-              title="Suchen (⌘K)"
+              title={`Suchen (${SEARCH_SHORTCUT_KEY})`}
               className={cn('text-muted-foreground rounded-lg p-2', CHROME_HOVER)}
             >
               <Search className="h-4 w-4" />

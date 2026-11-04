@@ -15,7 +15,7 @@ Ab 1024 px steht Parky 96 px groß unter der Schlagzeile, neben einer Sprechblas
 
 #### Die Suche öffnet sich mit `/` statt mit ⌘K oder Strg K
 
-Strg K und ⌘K belegt der Browser für sein eigenes Suchfeld. `/` öffnet die Palette jetzt auf jeder Seite, wenn kein Feld den Fokus hat (`isSearchShortcut` in `lib/utils/page-focus.ts`), auch mit Shift, weil eine deutsche Tastatur den Schrägstrich so tippt. In einem Feld bleibt `/` ein Zeichen. Die Tipp-Kürzel der Hero-Suche, der Parkseite und des Wörterbuchs prüfen einheitlich `isPageTypedKey` und lassen `/` der Suche. Die Hinweise im Header zeigen `/`, der ⌘K-Hinweis im Suchdialog entfällt.
+Strg K und ⌘K belegt der Browser für sein eigenes Suchfeld. `/` öffnet die Palette jetzt auf jeder Seite, wenn kein Feld den Fokus hat (`isSearchShortcut` in `lib/utils/page-focus.ts`), auch mit Shift, weil eine deutsche Tastatur den Schrägstrich so tippt. In einem Feld bleibt `/` ein Zeichen. Die Tipp-Kürzel der Hero-Suche, der Parkseite und des Wörterbuchs prüfen einheitlich `isPageTypedKey` und lassen `/` der Suche. Jedes Suchfeld, das `/` erreicht, zeigt rechts die Taste `/` (`SearchShortcutKey`, mit `aria-keyshortcuts`), auch das Feld im Hero; der ⌘K-Hinweis im Suchdialog entfällt. Auf der Startseite setzt `/` den Cursor ins Hero-Feld, solange es zu sehen ist (`searchShortcutTarget`), weiter unten öffnet es die Palette. Im Admin öffnet `/` die Befehls-Palette, nicht beim Tippen und nicht über einem offenen Dialog; ⌘K tut dort nichts mehr.
 
 #### Admin: Die Punkte und Zahlen der Seitenleiste stehen in einer Spalte
 

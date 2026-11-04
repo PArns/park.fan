@@ -37,7 +37,7 @@ import { flatNavItems, visibleGroups } from './nav';
 import { useSession } from './session';
 
 /**
- * ⌘K, the practical way to reach one park or ride among thousands. It searches the admin's own
+ * `/`, the practical way to reach one park or ride among thousands. It searches the admin's own
  * endpoints, which match the curated name too, where the public index waits for its next rebuild.
  */
 
@@ -51,7 +51,7 @@ interface PaletteAction {
 }
 
 /**
- * ⌘K dialog that searches parks and rides by upstream or curated name and lists the admin pages
+ * The `/` dialog that searches parks and rides by upstream or curated name and lists the admin pages
  * and actions (reload, open park.fan, sign out). Searches start at two characters, debounced.
  */
 export function CommandPalette({

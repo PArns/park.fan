@@ -11,7 +11,8 @@ import {
   HERO_SEARCH_ICON_CLASS,
   HERO_SEARCH_INPUT_CLASS,
 } from '@/components/search/hero-search-classes';
-import { SEARCH_SHORTCUT_KEY, isPageTypedKey, isSearchShortcut } from '@/lib/utils/page-focus';
+import { isPageTypedKey, isSearchShortcut, searchShortcutTarget } from '@/lib/utils/page-focus';
+import { SearchShortcutKey } from '@/components/search/search-shortcut-key';
 import { useSearchSession } from '@/lib/hooks/use-search-session';
 import type { SearchSurface } from '@/lib/analytics/site-analytics';
 import type { SearchSession } from '@/lib/analytics/search-session';
@@ -121,11 +122,14 @@ export function SearchCommand({
   useEffect(() => onMountOpened(), []);
 
   // `/` opens the palette (global only), at the page itself: in the palette's field or any other
-  // it is a character. Not ⌘K/Ctrl K, which the browser keeps for its own search field.
+  // it is a character. Not ⌘K/Ctrl K, which the browser keeps for its own search field. A page's
+  // own search field on screen (the homepage hero's) takes the focus instead.
   const onShortcut = useEffectEvent((e: KeyboardEvent) => {
     if (open || !isSearchShortcut(e)) return;
     e.preventDefault();
-    openSearch('keyboard');
+    const field = searchShortcutTarget();
+    if (field) field.focus({ preventScroll: true });
+    else openSearch('keyboard');
   });
   useEffect(() => {
     if (!isGlobal) return;
@@ -202,6 +206,7 @@ export function SearchCommand({
       {/* Trigger — the only part in the initial bundle; opening lazy-loads <SearchDialog>. */}
       {trigger === 'button' && (
         <Button
+          aria-keyshortcuts="/"
           variant="outline"
           /* `sm` is the header bar's icon, where the field does not fit: below a 360 px bar and
              between 1024 and 1279, where the nav row takes the width. No taller than the burger;
@@ -222,9 +227,7 @@ export function SearchCommand({
           {/* Only on the wide trigger — there is no room for a shortcut hint in a 36 px square,
               and centred rather than `top-2` because that trigger now comes in two heights. */}
           {size !== 'sm' && (
-            <kbd className="bg-primary/40 text-primary border-primary/40 pointer-events-none absolute top-1/2 right-2 hidden h-5 -translate-y-1/2 items-center gap-1 rounded border px-1.5 font-mono text-xs font-medium opacity-100 shadow-sm select-none md:flex">
-              {SEARCH_SHORTCUT_KEY}
-            </kbd>
+            <SearchShortcutKey className="bg-primary/40 border-primary/40 absolute top-1/2 right-2 hidden -translate-y-1/2 text-xs md:flex" />
           )}
         </Button>
       )}
@@ -233,6 +236,7 @@ export function SearchCommand({
         // A button, so a keyboard and a screen reader reach it too; it looks like the text box it
         // opens, and the header shows it on a phone as well as on a wide bar.
         <button
+          aria-keyshortcuts="/"
           type="button"
           aria-haspopup="dialog"
           className="group focus-visible:ring-ring/50 relative block w-full cursor-pointer rounded-lg text-left outline-none focus-visible:ring-[3px]"
@@ -246,9 +250,7 @@ export function SearchCommand({
               {placeholder || t('searchPlaceholderLong')}
             </span>
           </span>
-          <kbd className="bg-primary/20 text-primary border-primary/20 pointer-events-none absolute top-1/2 right-1.5 hidden h-5 -translate-y-1/2 items-center gap-0.5 rounded border px-1.5 font-mono text-[11px] font-medium shadow-sm md:flex">
-            {SEARCH_SHORTCUT_KEY}
-          </kbd>
+          <SearchShortcutKey className="absolute top-1/2 right-1.5 hidden -translate-y-1/2 md:flex" />
         </button>
       )}
 
@@ -281,6 +283,7 @@ export function SearchCommand({
         // A button that looks like the text box it opens, like the hero's on a phone: the palette
         // brings its own field, so this one never takes a keystroke.
         <button
+          aria-keyshortcuts="/"
           ref={fieldRef}
           type="button"
           aria-haspopup="dialog"
@@ -297,9 +300,7 @@ export function SearchCommand({
           <span className="text-muted-foreground min-w-0 flex-1 truncate text-base md:text-sm">
             {placeholder || t('searchPlaceholderLong')}
           </span>
-          <kbd className="bg-primary/20 text-primary border-primary/20 pointer-events-none hidden h-5 shrink-0 items-center gap-0.5 rounded border px-1.5 font-mono text-[11px] font-medium shadow-sm md:flex">
-            {SEARCH_SHORTCUT_KEY}
-          </kbd>
+          <SearchShortcutKey className="hidden shrink-0 md:flex" />
         </button>
       )}
 

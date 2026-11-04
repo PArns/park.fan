@@ -9,7 +9,11 @@ import {
   HERO_SEARCH_INPUT_ROW_CLASS,
   HERO_SEARCH_ICON_CLASS,
   HERO_SEARCH_INPUT_CLASS,
+  HERO_SEARCH_INPUT_KEY_ROOM_CLASS,
+  HERO_SEARCH_KEY_CLASS,
 } from '@/components/search/hero-search-classes';
+import { SearchShortcutKey } from '@/components/search/search-shortcut-key';
+import { SEARCH_SHORTCUT_TARGET_ATTR } from '@/lib/utils/page-focus';
 
 type HeroSearchFrameProps = Omit<React.ComponentProps<typeof GlassCard>, 'children'> & {
   /** The list under the field, once the field has focus. */
@@ -91,9 +95,15 @@ export function HeroSearchShell({
           ref={inputRef}
           onFocus={(e) => onActivate(e.currentTarget.value, true)}
           onInput={(e) => onActivate(e.currentTarget.value, true)}
+          {...(onHero ? { [SEARCH_SHORTCUT_TARGET_ATTR]: '', 'aria-keyshortcuts': '/' } : {})}
           // The phone's trigger it hands over to truncates its placeholder; so does this.
-          className={cn(HERO_SEARCH_INPUT_CLASS, 'text-ellipsis')}
+          className={cn(
+            HERO_SEARCH_INPUT_CLASS,
+            'text-ellipsis',
+            onHero && HERO_SEARCH_INPUT_KEY_ROOM_CLASS
+          )}
         />
+        {onHero && <SearchShortcutKey className={HERO_SEARCH_KEY_CLASS} />}
       </div>
       <HeroSearchFrame aria-hidden="true" onHero={onHero} />
     </div>

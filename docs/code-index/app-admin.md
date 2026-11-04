@@ -8,11 +8,11 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`_app/admin-shell.tsx`](../../app/admin/_app/admin-shell.tsx)
 
 - `AdminShell` _component_: Admin frame around every page: the sidebar (folding groups, status dots, the account at its foot), the topbar with the page's place, search, refresh and the inspector toggle, then the page on its inset surface, the inspector column and the …
-- `useOpenPalette` _hook_: Opens the ⌘K palette from a page, for a button that offers "everything else".
+- `useOpenPalette` _hook_: Opens the command palette (`/`) from a page, for a button that offers "everything else".
 
 ### [`_app/command-palette.tsx`](../../app/admin/_app/command-palette.tsx)
 
-- `CommandPalette` _component_: ⌘K dialog that searches parks and rides by upstream or curated name and lists the admin pages and actions (reload, open park.fan, sign out). Searches start at two characters, debounced.
+- `CommandPalette` _component_: The `/` dialog that searches parks and rides by upstream or curated name and lists the admin pages and actions (reload, open park.fan, sign out). Searches start at two characters, debounced.
 
 ### [`_app/inspector.tsx`](../../app/admin/_app/inspector.tsx)
 

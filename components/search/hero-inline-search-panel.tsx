@@ -17,10 +17,13 @@ import {
   HERO_SEARCH_ICON_CLASS,
   HERO_SEARCH_INPUT_CLASS,
   HERO_SEARCH_LIST_BOX_CLASS,
+  HERO_SEARCH_INPUT_KEY_ROOM_CLASS,
+  HERO_SEARCH_KEY_CLASS,
 } from '@/components/search/hero-search-classes';
+import { SearchShortcutKey } from '@/components/search/search-shortcut-key';
 import { HeroSearchFrame } from '@/components/search/hero-search-field';
 import { HERO_ROW_CLASS, HERO_SKELETON_ROW_CLASS } from '@/components/search/search-skeleton-list';
-import { isPageTypedKey } from '@/lib/utils/page-focus';
+import { SEARCH_SHORTCUT_TARGET_ATTR, isPageTypedKey } from '@/lib/utils/page-focus';
 import type { SearchSession } from '@/lib/analytics/search-session';
 
 /** Space kept between the dropdown's lower edge and the bottom of the viewport. */
@@ -227,8 +230,10 @@ export default function HeroInlineSearchPanel({
             setExpanded(false);
             fieldFocus.onBlur(e);
           }}
-          className={HERO_SEARCH_INPUT_CLASS}
+          {...(onHero ? { [SEARCH_SHORTCUT_TARGET_ATTR]: '', 'aria-keyshortcuts': '/' } : {})}
+          className={cn(HERO_SEARCH_INPUT_CLASS, onHero && HERO_SEARCH_INPUT_KEY_ROOM_CLASS)}
         />
+        {onHero && <SearchShortcutKey className={HERO_SEARCH_KEY_CLASS} />}
       </div>
 
       {/* `onMouseDown` preventDefault keeps focus in the input, so clicking a result cannot blur

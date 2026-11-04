@@ -30,6 +30,8 @@ by hand: change the comment in the code and re-run the script. -->
 - `SEARCH_SECONDARY_TEXT_CLASS` _const_: The small grey text of the search lists: a heading, a place, a distance, a teaser. 70 % of the foreground clears 4.5 : 1 on the hero's glass over every hero photo, in both themes (docs/features/homepage-hero.md); the 35–60 % it replaced …
 - `HERO_SEARCH_FOOTER_CLASS` _const_: The bar closing the search list: the hint at rest, „Alle Ergebnisse" once a query ran. A darker pane than the list's glass, so it reads as the list's foot and not as one more row.
 - `HERO_SEARCH_HINT_CLASS` _const_: The hint under the hero's desktop list („Tippe los, …"), in the shell and in the panel alike.
+- `HERO_SEARCH_KEY_CLASS` _const_: The `/` key at the hero field's right edge (`SearchShortcutKey`), from `md` where a keyboard is likely, and gone while the field has focus, where `/` is a character. The field leaves it room (`HERO_SEARCH_INPUT_KEY_ROOM_CLASS`).
+- `HERO_SEARCH_INPUT_KEY_ROOM_CLASS` _const_: The room the hero field's text leaves for `HERO_SEARCH_KEY_CLASS`.
 
 ### [`hero-search-field.tsx`](../../components/search/hero-search-field.tsx)
 
@@ -78,6 +80,10 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`search-results-panel.tsx`](../../components/search/search-results-panel.tsx)
 
 - `SearchResultsPanel` _component_: The body of both search surfaces, the hero's floating dropdown and the header's palette: skeleton, then results (parks and rides, glossary, guides and news, or "no results") once a query runs, and the browse list before that.
+
+### [`search-shortcut-key.tsx`](../../components/search/search-shortcut-key.tsx)
+
+- `SearchShortcutKey` _component_: The search shortcut drawn as a key (`/`), at the right edge of every search field and trigger that `/` reaches. Decorative: the field carries `aria-keyshortcuts` for a screen reader.
 
 ### [`search-skeleton-list.tsx`](../../components/search/search-skeleton-list.tsx)
 

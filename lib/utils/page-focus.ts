@@ -29,3 +29,17 @@ export function isSearchShortcut(e: KeyboardEvent): boolean {
   if (e.key !== SEARCH_SHORTCUT_KEY || e.metaKey || e.ctrlKey || e.altKey) return false;
   return nothingFocused(document.activeElement);
 }
+
+/**
+ * Marks a search field that {@link SEARCH_SHORTCUT_KEY} focuses while it is on screen, rather than
+ * opening the palette over it: the homepage hero's.
+ */
+export const SEARCH_SHORTCUT_TARGET_ATTR = 'data-search-shortcut-target';
+
+/** The marked field on screen, if there is one. */
+export function searchShortcutTarget(): HTMLElement | null {
+  const field = document.querySelector<HTMLElement>(`[${SEARCH_SHORTCUT_TARGET_ATTR}]`);
+  if (!field) return null;
+  const box = field.getBoundingClientRect();
+  return box.width > 0 && box.bottom > 0 && box.top < window.innerHeight ? field : null;
+}

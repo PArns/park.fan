@@ -64,3 +64,14 @@ export const HERO_SEARCH_FOOTER_CLASS =
 
 /** The hint under the hero's desktop list („Tippe los, …"), in the shell and in the panel alike. */
 export const HERO_SEARCH_HINT_CLASS = `${HERO_SEARCH_FOOTER_CLASS} ${SEARCH_SECONDARY_TEXT_CLASS} px-4 py-2 text-xs`;
+
+/**
+ * The `/` key at the hero field's right edge (`SearchShortcutKey`), from `md` where a keyboard is
+ * likely, and gone while the field has focus, where `/` is a character. The field leaves it room
+ * ({@link HERO_SEARCH_INPUT_KEY_ROOM_CLASS}).
+ */
+export const HERO_SEARCH_KEY_CLASS =
+  'absolute top-1/2 right-4 z-10 hidden -translate-y-1/2 md:flex group-focus-within/hero-search:hidden';
+
+/** The room the hero field's text leaves for {@link HERO_SEARCH_KEY_CLASS}. */
+export const HERO_SEARCH_INPUT_KEY_ROOM_CLASS = 'md:pr-12';
