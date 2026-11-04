@@ -43,7 +43,7 @@ seo:
     - Bobbejaanland parking
 ---
 
-[Bobbejaanland](ref:bobbejaanland) in Kasterlee verkoopt zijn abonnementen van 9 november tot en met 6 december met tot 40 procent korting. Een abonnement is 365 dagen geldig vanaf de aankoop. Koop je het in die vier weken, dan zit ook het Nickelodeon Land erin dat in april 2027 vlak achter de ingang van het park opengaat. Het park noemt de actie Black November, al loopt ze door tot in december. Met 40 procent korting zal niemand daar lang over klagen.
+[Bobbejaanland](ref:bobbejaanland) in Kasterlee verkoopt zijn abonnementen van 9 november tot en met 6 december met tot 40 procent korting. Een abonnement is 365 dagen geldig vanaf de aankoop. Koop je het in die vier weken, dan zit ook het Nickelodeon Land erin, dat in april 2027 opengaat. Het park noemt de actie Black November, al loopt ze door tot in december. Met 40 procent korting zal niemand daar lang over klagen.
 
 ## Wat de drie abonnementen kosten
 
@@ -51,19 +51,19 @@ seo:
 - PLUS: € 83,95 in plaats van € 139,90
 - BASIC: € 80,45 in plaats van € 114,90
 
-Alleen bij PREMIUM zitten het parkingabonnement en het abonnement voor de pendelbus inbegrepen. PLUS en BASIC hebben geen van beide, en je kunt ze er ook niet los bij kopen. Tijdens Black November liggen PLUS en BASIC qua prijs bijna gelijk, dus eigenlijk kies je tussen PREMIUM en de rest.
+Het parkingabonnement en het abonnement voor de pendelbus zitten alleen in PREMIUM. PLUS en BASIC hebben geen van beide, en je kunt ze er ook niet los bij kopen. Tijdens Black November liggen PLUS en BASIC qua prijs bijna gelijk, dus eigenlijk kies je tussen PREMIUM en de rest.
 
 Met PREMIUM krijg je 20 procent korting op geselecteerde producten in de restaurants en winkels. Je koopt vriendentickets tegen een lagere prijs, zonder maximum (de prijs hangt af van de periode), en je krijgt korting op de Speedy Pass Diamond, Gold en Silver, waarvan de prijs afhangt van de dag van je bezoek. Per bezoek mogen tot twee begeleiders van 65 jaar of ouder gratis mee naar binnen als ze aan de kassa hun identiteitskaart tonen. Drie keer heb je gratis toegang tot [Movie Park Germany](/blog/movie-park-germany-wachttijden-tips) en tot Slagharen, op vertoon van je digitale abonnement, en één keer tot een ander park van Parques Reunidos. In partnerparken kom je gratis of goedkoper binnen, en in de Corsendonk Hotels krijg je 10 procent korting op de kamerprijs.
 
 PLUS biedt bijna hetzelfde, maar met twee gratis bezoeken aan Movie Park en Slagharen in plaats van drie, en een extra park van Parques Reunidos vermeldt Bobbejaanland bij PLUS niet. BASIC is de toegang zonder extra’s, met 10 procent korting in de restaurants en winkels.
 
-Op rode dagen geldt geen van de drie abonnementen, en kortingscodes werken dan ook niet. Staat er in de kalender van het park nog geen enkele dag in het rood, dan heeft Bobbejaanland ze nog niet vastgelegd. Ook dagen met een privé-evenement vallen erbuiten; daarvoor zijn evenmin tickets te koop.
+Op rode dagen geldt geen van de drie abonnementen, en kortingscodes werken dan ook niet. Staat er in de kalender van het park nog geen enkele dag in het rood, dan heeft Bobbejaanland ze nog niet vastgelegd. Ook dagen met een privé-evenement vallen erbuiten, en daarvoor zijn evenmin tickets te koop.
 
 ## Abonnement of dagticket
 
 Een dagticket voor iedereen boven 140 centimeter kost online vanaf € 27,90 en aan de kassa vanaf € 48,90; het standaardtarief is € 49,90. Tussen 100 en 140 centimeter betaal je online ook vanaf € 27,90, aan de kassa vanaf € 44,90. Kinderen onder één meter mogen zonder ticket en zonder reservatie binnen, voor hen heb je dus geen abonnement nodig. Wie 65 of ouder is, betaalt aan de kassa € 21,90. Parkeren kost per bezoek € 13 met de auto, € 7 met de motor en € 19 met een mobilhome.
 
-Zou je twee keer aan de kassa betalen, dan ben je met BASIC al goedkoper uit. Boek je online, dan is dat ten laatste bij het derde bezoek zo. Kom je met de auto, dan zou ik voor PREMIUM gaan, want dan valt het parkeergeld bij elk bezoek weg. De jaarkaarten van andere parken staan naast elkaar in onze [vergelijking van jaarkaarten](/blog/jaarkaart-vergelijking-pretparken).
+Zou je twee keer aan de kassa betalen, dan ben je met BASIC al goedkoper uit. Boek je online, dan is dat ten laatste bij het derde bezoek zo. Met de auto zou ik voor PREMIUM gaan, want dan valt het parkeergeld bij elk bezoek weg. De jaarkaarten van andere parken staan naast elkaar in onze [vergelijking van jaarkaarten](/blog/jaarkaart-vergelijking-pretparken).
 
 ## Wanneer het park open is
 
@@ -79,7 +79,7 @@ In de winter is het park verdeeld over zes winterzones, met de kerstman, een ker
 
 Op zijn abonnementenpagina kondigt Bobbejaanland voor 2027 Nickelodeon Land aan, met drie nieuwe attracties. CEO Yves Peeters vertelde er meer over aan de VRT. De zone krijgt figuren van Nickelodeon zoals Garfield en SpongeBob en ligt meteen achter de ingang van het park. De werken zijn begonnen, bestaande attracties worden daarvoor afgebroken en de werf is afgesloten. De zone kost ongeveer 15 miljoen euro en moet in april 2027 opengaan.
 
-De Wild Swing neemt 18 mensen tegelijk mee en zwaait tot 12 meter hoog. De vrijevaltoren is 15 meter hoog, wat voor een kater die het liefst in de zetel ligt al ruim volstaat. De waterattractie Big Wavez tilt de passagiers tot boven 20 meter, laat ze vallen en duwt daarbij een golf van 10 meter hoog op. Peeters noemt ze in deze vorm de eerste van haar soort in Europa. Bobbejaanland is volgens hem geëvolueerd “van een attractiepark naar een themapark met sterk gethematiseerde zones”. Wat er in 2027 verder in Europa opengaat, staat in ons overzicht van de [nieuwe attracties voor 2027](/blog/nieuwe-attracties-pretparken-2027).
+De Wild Swing neemt 18 mensen tegelijk mee en zwaait tot 12 meter hoog. De vrijevaltoren is 15 meter hoog, wat voor een kater die het liefst in de zetel ligt al ruim volstaat. De waterattractie Big Wavez tilt de passagiers tot boven 20 meter, laat ze vallen en duwt daarbij een golf van 10 meter hoog op. Peeters noemt ze in deze vorm de eerste van haar soort in Europa. Bobbejaanland is volgens hem geëvolueerd van een attractiepark naar een themapark met sterk gethematiseerde zones. Wat er in 2027 verder in Europa opengaat, staat in ons overzicht van de [nieuwe attracties voor 2027](/blog/nieuwe-attracties-pretparken-2027).
 
 Het park is opgericht door Bobbejaan Schoepen. Sinds 2004 hoort Bobbejaanland bij Parques Reunidos, dat ook eigenaar is van Movie Park Germany. Er staan meer dan 40 attracties.
 

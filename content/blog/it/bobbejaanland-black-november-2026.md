@@ -22,10 +22,10 @@ rideLinks:
 coverImage:
   src: /media/bobbejaanland/typhoon.jpg
   alt: 'Una figura di grifone con sella e, accanto, un vagone esposto con la scritta «Typhoon».'
-  caption: 'Il vagone esposto si trova accanto all’ingresso di Typhoon.'
+  caption: 'Il vagone esposto si trova accanto all'ingresso di Typhoon.'
   credit: 'Patrick Arns'
 seo:
-  title: 'Abbonamento Bobbejaanland: fino al 40 % in meno al 6 dicembre'
+  title: 'Abbonamento Bobbejaanland: fino al 40 % in meno entro il 6 dicembre'
   description: >-
     Dal 9 novembre al 6 dicembre l'abbonamento di Bobbejaanland parte da 80,45 €. Vale 365 giorni, a Wintert e da aprile 2027 nel nuovo Nickelodeon Land.
   keywords:
@@ -43,7 +43,7 @@ seo:
     - Bobbejaanland parcheggio
 ---
 
-Dal 9 novembre al 6 dicembre compreso [Bobbejaanland](ref:bobbejaanland), a Kasterlee, mette in vendita i suoi abbonamenti annuali con uno sconto che arriva al 40 per cento. L'abbonamento vale 365 giorni dall'acquisto: chi lo compra in queste quattro settimane entra quindi anche nel Nickelodeon Land, che ad aprile 2027 apre subito dietro l'ingresso del parco. Il parco chiama la promozione Black November anche se sconfina in dicembre, ma con il 40 per cento di sconto difficilmente qualcuno andrà a contare i giorni sul calendario.
+Dal 9 novembre al 6 dicembre compreso [Bobbejaanland](ref:bobbejaanland), a Kasterlee, mette in vendita i suoi abbonamenti annuali con uno sconto che arriva al 40 per cento. L'abbonamento vale 365 giorni dall'acquisto: chi lo compra in queste quattro settimane entra anche nel Nickelodeon Land, che apre ad aprile 2027. Il parco chiama la promozione Black November anche se sconfina in dicembre, ma con il 40 per cento di sconto difficilmente qualcuno andrà a contare i giorni sul calendario.
 
 ## Quanto costano i tre abbonamenti
 
@@ -51,9 +51,9 @@ Dal 9 novembre al 6 dicembre compreso [Bobbejaanland](ref:bobbejaanland), a Kast
 - PLUS: 83,95 € invece di 139,90 €
 - BASIC: 80,45 € invece di 114,90 €
 
-L'abbonamento al parcheggio e quello alla navetta sono compresi solo nel PREMIUM. PLUS e BASIC non li hanno, e non puoi nemmeno aggiungerli a parte. Durante il Black November PLUS e BASIC costano quasi uguale, per cui la vera scelta è tra il PREMIUM e gli altri due.
+L'abbonamento al parcheggio e quello alla navetta sono compresi solo nel PREMIUM. PLUS e BASIC non li hanno, e non puoi nemmeno aggiungerli a parte. Durante il Black November PLUS e BASIC costano quasi lo stesso, per cui la vera scelta è tra il PREMIUM e gli altri due.
 
-Il PREMIUM ti dà il 20 per cento di sconto su una selezione di prodotti nei ristoranti e nei negozi, biglietti per gli amici a prezzo ridotto senza limite di numero (il prezzo cambia a seconda del periodo) e uno sconto sullo Speedy Pass Diamond, Gold e Silver, il cui prezzo dipende dal giorno della visita. A ogni visita fino a due accompagnatori dai 65 anni in su entrano senza pagare, se alla cassa mostrano un documento. Hai tre ingressi gratuiti al [Movie Park Germany](/blog/movie-park-germany-tempi-di-attesa-consigli) e a Slagharen, basta mostrare l'abbonamento digitale, più uno in un altro parco di Parques Reunidos. Nei parchi partner entri gratis o a prezzo scontato, e negli hotel Corsendonk hai il 10 per cento sul prezzo della camera.
+Il PREMIUM ti dà il 20 per cento di sconto su una selezione di prodotti nei ristoranti e nei negozi, biglietti per gli amici a prezzo ridotto senza limite di numero (il prezzo cambia a seconda del periodo) e uno sconto sullo Speedy Pass Diamond, Gold e Silver, il cui prezzo dipende dal giorno della visita. A ogni visita fino a due accompagnatori dai 65 anni in su entrano senza pagare, se alla cassa mostrano un documento. Al [Movie Park Germany](/blog/movie-park-germany-tempi-di-attesa-consigli) e a Slagharen entri gratis tre volte mostrando l'abbonamento digitale, e una volta in un altro parco di Parques Reunidos. Nei parchi partner entri gratis o a prezzo scontato, e negli hotel Corsendonk hai il 10 per cento sul prezzo della camera.
 
 Il PLUS offre quasi le stesse cose, ma gli ingressi gratuiti al Movie Park e a Slagharen scendono da tre a due, e per il PLUS Bobbejaanland non elenca un altro parco di Parques Reunidos. Il BASIC è l'ingresso senza extra, con il 10 per cento di sconto nei ristoranti e nei negozi.
 
@@ -61,13 +61,13 @@ Nei giorni rossi nessuno dei tre abbonamenti è valido, e non funzionano nemmeno
 
 ## Abbonamento o biglietto giornaliero
 
-Sopra i 140 centimetri il biglietto giornaliero costa da 27,90 € online e da 48,90 € alla cassa, mentre la tariffa standard è di 49,90 €. Tra 100 e 140 centimetri paghi anche tu da 27,90 € online, e da 44,90 € alla cassa. I bambini sotto il metro entrano senza biglietto e senza prenotazione, quindi per loro l'abbonamento non serve. Dai 65 anni in su alla cassa si pagano 21,90 €. Il parcheggio costa 13 € a visita per l'auto, 7 € per la moto e 19 € per il camper.
+Sopra i 140 centimetri il biglietto giornaliero costa da 27,90 € online e da 48,90 € alla cassa, mentre la tariffa standard è di 49,90 €. Tra 100 e 140 centimetri il biglietto costa ugualmente da 27,90 € online e da 44,90 € alla cassa. I bambini sotto il metro entrano senza biglietto e senza prenotazione, quindi per loro l'abbonamento non serve. Dai 65 anni in su alla cassa si pagano 21,90 €. Il parcheggio costa 13 € a visita per l'auto, 7 € per la moto e 19 € per il camper.
 
-Se pagheresti due volte alla cassa, con il BASIC spendi già meno; se prenoti online, al più tardi dalla terza visita. Se arrivi in auto io prenderei il PREMIUM, perché a ogni visita ti risparmi il biglietto del parcheggio. Gli abbonamenti degli altri parchi li abbiamo messi uno accanto all'altro nel [confronto degli abbonamenti annuali](/blog/abbonamento-annuale-confronto-parchi).
+Se pagassi due volte alla cassa, con il BASIC spenderesti già meno; se prenoti online, al più tardi dalla terza visita. Se arrivi in auto, io prenderei il PREMIUM, perché a ogni visita ti risparmi il biglietto del parcheggio. Gli abbonamenti degli altri parchi li abbiamo messi uno accanto all'altro nel [confronto degli abbonamenti annuali](/blog/abbonamento-annuale-confronto-parchi).
 
 ## Quando è aperto il parco
 
-Halloween va avanti fino al 15 novembre compreso. Il 5 dicembre comincia Bobbejaanland Wintert, una delle [aperture invernali in Europa](/blog/parchi-divertimenti-inverno-2026), che dura fino al 3 gennaio 2027 con orario dalle 11 alle 19, mentre la vigilia di Natale e il 31 dicembre si chiude alle 17. Il 25 dicembre e il primo gennaio il parco resta chiuso. Nei giorni di Wintert l'abbonamento vale come in qualsiasi altro giorno, purché non sia rosso. Il primo fine settimana di Wintert, il 5 e 6 dicembre, cade ancora dentro il Black November, quindi puoi comprare l'abbonamento anche poco prima della tua prima visita invernale.
+Halloween va avanti fino al 15 novembre compreso. Il 5 dicembre comincia Bobbejaanland Wintert, una delle [aperture invernali in Europa](/blog/parchi-divertimenti-inverno-2026), che dura fino al 3 gennaio 2027. L'orario è dalle 11 alle 19, la vigilia di Natale e il 31 dicembre si chiude alle 17. Il 25 dicembre e il primo gennaio il parco resta chiuso. Nei giorni di Wintert l'abbonamento vale come in qualsiasi altro giorno, purché non sia rosso. Il primo fine settimana di Wintert, il 5 e 6 dicembre, cade ancora dentro il Black November, quindi puoi comprare l'abbonamento prima del tuo primo giorno a Wintert.
 
 D'inverno il parco si divide in sei zone, con Babbo Natale, un villaggio natalizio e Land of Fire & Ice, e lo stagno diventa una pista di pattinaggio. Tra le attrazioni in funzione ci sono Sledge Hammer, [Typhoon](ref:bobbejaanland/typhoon), [Fury](ref:bobbejaanland/fury), Dreamcatcher, Naga Bay, Bob Express, Revolution e The El Paso Special. Fury è arrivato nel parco nel 2019.
 
