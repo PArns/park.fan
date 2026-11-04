@@ -178,7 +178,9 @@ tap, a denied prompt, a dead stream) there are no arrows: chips show the compass
 say „Richtung Südwesten", and the dial stays north up and says so.
 
 - **iOS**: „Kompass einschalten" with a line explaining Safari's motion prompt; after a denial,
-  „Nochmal fragen". The grant is kept for the page, not the component, because the park page's block
+  „Nochmal fragen". The button is centred and keeps its 32 px `sm` box on a phone, with
+  the 44 px target from `PHONE_HIT_AREA`
+  ([touch targets](../design/touch-targets.md#the-button-scale-has-one-phone-height)). The grant is kept for the page, not the component, because the park page's block
   unmounts the compass whenever its nearby answer drops out for a moment.
 - **A stream that stops** (no event for 3 s, or none within 1.5 s of listening again;
   `STREAM_LOST_MS`, `FIRST_READING_MS`) drops back to north up instead of a frozen arrow under a live

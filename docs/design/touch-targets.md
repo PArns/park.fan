@@ -18,8 +18,11 @@ decision and a finger has no density; horizontal padding still steps.
 `min-h-11|h-11|touch-manipulation` returned no control, so most touch findings in the mobile audits
 were the scale's fault, not the component's.
 
-Cancel the tier only where a row's height is itself a requirement, with `max-sm:` at the call site
-and a comment naming it. The one such place is the [header bar](header.md#what-sits-in-it).
+Cancel the tier only where a row's height is itself a requirement, or where the product asks for a
+quieter button, with `max-sm:` at the call site and a comment naming it. Those places are the
+[header bar](header.md#what-sits-in-it) and the compass's „Kompass einschalten"
+(`components/home/park-compass.tsx`), which keeps its 32 px box on a phone and gets its 44 px target
+from `PHONE_HIT_AREA`.
 `Badge` is deliberately outside the tier: badges are labels, and growing every status chip would
 move layout that placeholders reserve. Controls that are not `<Button>` (the glossary filter pills,
 the blog tag cloud) are still open.

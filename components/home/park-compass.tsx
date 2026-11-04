@@ -44,6 +44,7 @@ import { calculateDistance, formatDistance } from '@/lib/utils/distance-utils';
 import { getDateTimeFormat } from '@/lib/utils/intl-format';
 import { convertApiUrlToFrontendUrl } from '@/lib/utils/url-utils';
 import { cn, stripNewPrefix } from '@/lib/utils';
+import { PHONE_HIT_AREA } from '@/lib/utils/touch-target';
 import type { NearbyAttractionsData, UserLocation } from '@/types/nearby';
 
 /**
@@ -440,7 +441,9 @@ export function ParkCompass({
         </div>
       )}
 
-      <div className="mb-4 flex flex-col gap-2">
+      {/* Below `md` the dial follows straight on: the status line already ends in a line kept for
+          the fix and calibration notes, which is room enough. */}
+      <div className="mb-1 flex flex-col gap-2 md:mb-4">
         <div className="flex items-center gap-2">
           <Compass className="text-primary h-5 w-5 shrink-0" aria-hidden="true" />
           <h2 className="text-xl font-bold">{t('title')}</h2>
@@ -615,7 +618,14 @@ function CompassStatusLine({
         </span>
       ) : status === 'needs-permission' ? (
         <>
-          <Button size="sm" onClick={onEnable} className="self-start">
+          {/* Centred, and below `sm` in the 32 px box it has from `sm` up rather than the
+              scale's 44 px phone tier, which made it the loudest thing in the card: a product
+              decision. `PHONE_HIT_AREA` keeps the 44 px target. */}
+          <Button
+            size="sm"
+            onClick={onEnable}
+            className={cn('self-center max-sm:h-8', PHONE_HIT_AREA)}
+          >
             <Compass aria-hidden="true" />
             {t('enable')}
           </Button>
