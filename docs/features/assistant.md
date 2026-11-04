@@ -105,11 +105,11 @@ do (the closed button, the open window between answers) it has a life of its own
 store for the whole page, `parkyBoredom` (`lib/assistant/parky-boredom.ts`). Activity is a pointer
 move or press, a key, the mouse wheel or a touch.
 
-| Stage    | Quiet for | What Parky does                                                                                                |
-| -------- | --------- | -------------------------------------------------------------------------------------------------------------- |
-| `awake`  | < 25 s    | every 12–20 s: hops, tilts, looks around, spins its hat, winks, wiggles, rolls its eyes, twirls, dances, reads |
-| `bored`  | 25 s      | yawns, then every 5–9 s whistles, blows a gum bubble that pops, rolls its eyes, looks around, reads or naps    |
-| `asleep` | 75 s      | eyes fall shut, it breathes slowly under rising Zs, the hat stops; activity wakes it with a "!"                |
+| Stage    | Quiet for | What Parky does                                                                                                                                                                                                                  |
+| -------- | --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `awake`  | < 25 s    | every 12–20 s: hops, tilts, looks around, spins its hat, winks, wiggles, rolls its eyes, twirls, dances, reads, puts on its sunglasses (`shades`) or its nightcap (`nightcap`), lights the wheel under moon and stars (`lights`) |
+| `bored`  | 25 s      | yawns, then every 5–9 s whistles, blows a gum bubble that pops, rolls its eyes, looks around, reads, naps or puts on its nightcap                                                                                                |
+| `asleep` | 75 s      | eyes fall shut, it breathes slowly under rising Zs, the hat stops; activity wakes it with a "!"                                                                                                                                  |
 
 That is the button in the corner. In the open window Parky sits beside the conversation and is
 `calm`: awake it only looks around, winks or tilts its head, every 20–35 s; bored it yawns, looks
@@ -283,15 +283,15 @@ its corner offset. These lines go in it, from the `assistant` namespace:
   component is wired twice. Each answer is an act every time and a line once a session per kind
   (`answeredWithLine`, `countAnswer`):
 
-  | The visitor                               | Act                                                | Lines              |
-  | ----------------------------------------- | -------------------------------------------------- | ------------------ |
-  | opens the trip planner (`planner_opened`) | `plan`: ticks off a checklist on a clipboard       | `plannerOpen1`–`4` |
-  | finishes the wizard, or re-plans the day  | `cheer`: happy squint, a grin, confetti, two hops  | `planReady1`–`3`   |
-  | adds a favourite                          | `love`: heart eyes, hearts floating up             | `favourite1`–`4`   |
-  | sets a wait time alert, or follows a show | `bell`: a bell rings over its head                 | `alert1`–`3`       |
-  | switches to dark                          | `lights`: the wheel lights up under moon and stars | `themeDark1`–`3`   |
-  | switches to light                         | `shades`: sunglasses slide down from the hat       | `themeLight1`–`3`  |
-  | installs the app (`pwa_installed`)        | `cheer`                                            | `install1`–`2`     |
+  | The visitor                               | Act                                                  | Lines              |
+  | ----------------------------------------- | ---------------------------------------------------- | ------------------ |
+  | opens the trip planner (`planner_opened`) | `plan`: ticks off a checklist on a clipboard         | `plannerOpen1`–`4` |
+  | finishes the wizard, or re-plans the day  | `cheer`: happy squint, a grin, confetti, two hops    | `planReady1`–`3`   |
+  | adds a favourite                          | `love`: heart eyes, hearts floating up               | `favourite1`–`4`   |
+  | sets a wait time alert, or follows a show | `bell`: a bell rings over its head                   | `alert1`–`3`       |
+  | switches to dark                          | `nightcap`: a nightcap in place of the wheel, a yawn | `themeDark1`–`3`   |
+  | switches to light                         | `shades`: sunglasses slide down from the hat         | `themeLight1`–`3`  |
+  | installs the app (`pwa_installed`)        | `cheer`                                              | `install1`–`2`     |
 
   The act plays at once, the line 600 ms later, by when a dialog the action opened has locked the
   page. A search found nothing gets no line, only a question mark over the searching Parky.

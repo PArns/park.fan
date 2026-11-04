@@ -511,8 +511,8 @@ check([isRide('tower'), isRide('egg'), isRide(null)], [true, false, false], 'a r
       act('theme_toggled', { theme: 'light' }),
       act('theme_toggled', { theme: 'system' }),
     ],
-    ['lights', 'shades', null],
-    'the dark lights the wheel up, the light brings out the sunglasses'
+    ['nightcap', 'shades', null],
+    'the dark brings out the nightcap, the light the sunglasses'
   );
   check(
     [act('favorite_add', { type: 'park' }), act('favorite_remove', { type: 'park' })],
