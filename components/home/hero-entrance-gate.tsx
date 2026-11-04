@@ -1,9 +1,5 @@
-/**
- * How long the entrance window stays open, from the moment the hero's markup is parsed. Exported
- * for the ken-burns pan, which waits until it is over because every frame of the pan re-blurs
- * both glass panels (see `hero-background.tsx`).
- */
-export const HERO_ENTRANCE_MS = 1700;
+/** How long the entrance window stays open, from the moment the hero's markup is parsed. */
+const HERO_ENTRANCE_MS = 1700;
 
 /** Duration of `hero-item-in` in globals.css. Kept here so the two cannot drift apart. */
 export const HERO_ITEM_IN_MS = 850;

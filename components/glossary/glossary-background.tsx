@@ -18,8 +18,8 @@ function pickGlossaryHero(): string | null {
 }
 
 /**
- * A park photo behind the head of a glossary page, server-rendered for a fast LCP, without the
- * ken-burns pan. Washed toward the page background and faded out before the content under the
+ * A park photo behind the head of a glossary page, server-rendered for a fast LCP and still.
+ * Washed toward the page background and faded out before the content under the
  * head, so the cards, the player and the sidebar stand on the plain page.
  */
 export async function GlossaryBackground() {
@@ -34,7 +34,7 @@ export async function GlossaryBackground() {
   return (
     <div className="pointer-events-none absolute top-0 right-0 left-0 -z-10 h-[26rem] overflow-hidden select-none sm:h-[30rem]">
       <div className="relative h-full w-full">
-        <RandomHeroImage imageSrc={imageSrc} noAnimation alt={alt ?? undefined} />
+        <RandomHeroImage imageSrc={imageSrc} alt={alt ?? undefined} />
         {/* The wash keeps the head legible in both themes without a panel; the fade has the photo
             gone where the page's own content begins. */}
         <div className="bg-background/70 absolute inset-0" />

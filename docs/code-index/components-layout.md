@@ -54,8 +54,8 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`hero-background.tsx`](../../components/layout/hero-background.tsx)
 
-- `RandomHeroImage` _component_: The hero photo: the server-picked image (or a random one), with a blurred preview and a ken-burns pan once loaded, crossfading into the park's own photos when the visitor is inside a park.
-- `HeroBackground` _component_: The homepage hero background: a rotating, ken-burns park photo under the scrims the hero's text stands on. When the visitor is inside a real park, that park's own photos crossfade in on top.
+- `RandomHeroImage` _component_: The hero photo: the server-picked image (or a random one), standing still over a blurred preview, crossfading into the park's own photos when the visitor is inside a park. No pan: the hero's text, Parky and the card rail are motion enough.
+- `HeroBackground` _component_: The homepage hero background: the park photo, still, under the scrims the hero's text stands on. When the visitor is inside a real park, that park's own photos crossfade in on top.
 
 ### [`hero-image-info-panel.tsx`](../../components/layout/hero-image-info-panel.tsx)
 

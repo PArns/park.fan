@@ -1807,7 +1807,7 @@
         "whichParksQ": "Welke pretparken staan op park.fan?",
         "whichParksA": "park.fan dekt meer dan 200 pretparken wereldwijd, waaronder Phantasialand, Europa-Park, Disneyland Paris, Efteling, Walibi Belgium, Toverland en Bobbejaanland. De volledige lijst met live wachttijden staat op de overzichtspagina met parken.",
         "liveDataQ": "Zijn de wachttijden op park.fan live en in realtime?",
-        "liveDataA": "Ja. Waar een park zijn wachttijden publiceert, vragen we ze elke vijf minuten op, uit drie openbare bronnen tegelijk: ThemeParks.wiki, Wartezeiten.app en Queue-Times.com. Wijken de bronnen van elkaar af, dan beslist de meerderheid, daarna de mediaan, daarna het gemiddelde. Het resultaat wordt op vijf minuten afgerond, omdat de parken ze zo aangeven.",
+        "liveDataA": "Ja. Waar een park zijn wachttijden publiceert, vragen we ze elke vijf minuten op bij de bronnen die het park kennen, tot drie: ThemeParks.wiki, Wartezeiten.app en Queue-Times.com. ThemeParks.wiki is de hoofdbron; de andere twee vullen attracties aan die daar ontbreken en corrigeren een verouderde status „gesloten”. Het resultaat wordt op vijf minuten afgerond, omdat de parken ze zo aangeven.",
         "freeQ": "Is het gebruik van park.fan gratis?",
         "freeA": "Ja. Live wachttijden, openingstijden, shows, restaurants en de druktekalender zijn te zien zonder account en zonder betaalmuur. Er is geen abonnement waarachter meer gegevens liggen.",
         "mobileQ": "Werkt park.fan ook op smartphones?",

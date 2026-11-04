@@ -1807,7 +1807,7 @@
         "whichParksQ": "¿Qué parques temáticos hay en park.fan?",
         "whichParksA": "Más de 200 en todo el mundo, entre ellos Phantasialand, Europa-Park, Disneyland Paris, Efteling, Walibi Belgium, Toverland y Bobbejaanland. La lista completa con tiempos de espera en vivo está en la página general de parques.",
         "liveDataQ": "¿Los tiempos de espera en park.fan son en vivo y en tiempo real?",
-        "liveDataA": "Sí. Donde un parque publica sus tiempos de espera, los consultamos cada cinco minutos desde tres fuentes públicas a la vez: ThemeParks.wiki, Wartezeiten.app y Queue-Times.com. Si las fuentes discrepan, decide la mayoría, después la mediana y después la media. El resultado se redondea a cinco minutos, porque así los publican los propios parques.",
+        "liveDataA": "Sí. Donde un parque publica sus tiempos de espera, los consultamos cada cinco minutos en las fuentes que lo incluyen, hasta tres: ThemeParks.wiki, Wartezeiten.app y Queue-Times.com. ThemeParks.wiki es la fuente principal; las otras dos añaden las atracciones que allí faltan y corrigen un estado «cerrado» desactualizado. El resultado se redondea a cinco minutos, porque así los publican los propios parques.",
         "freeQ": "¿Es gratis usar park.fan?",
         "freeA": "Sí. Los tiempos de espera en vivo, los horarios de apertura, los espectáculos, los restaurantes y el calendario de afluencia se ven sin cuenta y sin muro de pago. No hay ninguna suscripción que dé acceso a más datos.",
         "mobileQ": "¿Funciona park.fan en teléfonos inteligentes?",

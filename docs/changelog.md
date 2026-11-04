@@ -15,6 +15,10 @@ heading, and the same pull request writes the public entry in `content/changelog
 
 Geschnitten am 2026-11-04 aus 82 Fragmenten in `docs/changelog.d/`. Der öffentliche Eintrag ist `content/changelog/2.19.0.md`. Neueste Abschnitte zuerst.
 
+### Das Hero-Foto steht still, und die FAQ nennt die Quellen richtig
+
+Der langsame Ken-Burns-Zoom des Hero-Fotos entfällt samt `useHeroPanAllowed`, `.hero-ken-burns` und `.hero-motion-paused`: Mit Parky, seiner Sprechblase und den Karten war er eine Bewegung zu viel, und jeder seiner Frames ließ das Glas des Suchfelds neu filtern. Die Antwort auf „Sind die Wartezeiten live?“ (`seo.homepage.faq.liveDataA`) sagte in allen sechs Sprachen, bei Widerspruch entscheide die Mehrheit der Quellen. Gespeichert wird aber die Zahl von ThemeParks.wiki, wo sie eine hat; Wartezeiten.app und Queue-Times.com ergänzen fehlende Bahnen und korrigieren einen veralteten Status „geschlossen“. So steht es jetzt da, abgefragt bei den Quellen, die den Park führen, bis zu drei.
+
 ### Startseite: Foto über die volle Breite, die Frage darauf und darunter kurze Anstellzeiten als Karten
 
 Der Hero stand als zwei Glasplatten über dem Parkfoto: links Schlagzeile, Suche mit vier Parks und zwei Beiträgen, rechts eine Weltkarte mit zwölf Länder-Chips. Jetzt steht das Foto frei über die volle Breite, unter dem Header, mit drei Verläufen in der Hintergrundfarbe der Seite (`HeroBackground`). Auf seinem unteren Rand stehen Badge, Schlagzeile (68 px ab 1280 px, 40 px am Handy), Intro und ein Suchfeld mit Rand und Lupe in der Markenfarbe; die Bildunterschrift steht oben rechts in der Ecke.

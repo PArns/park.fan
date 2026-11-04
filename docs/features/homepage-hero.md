@@ -42,11 +42,9 @@ the field, and from `md`, where the text stays at the left, one from the left.
   (`HeroRotationProvider`, `InParkHeroImages`).
 - **The crop follows the photo's focal point** (`heroObjectPosition`, from the media database). From
   `md` the photo fills the width, so only the vertical crop can follow it.
-- **The ken-burns pan** (`.hero-ken-burns`) waits for load, idle and the entrance window
-  (`useHeroPanAllowed`) and is paused while the hero is off screen or the tab hidden
-  (`useActiveOnScreen` → `.hero-motion-paused`). `prefers-reduced-motion` stops it. The only blurred
-  surface over the moving photo is the search field's glass, which is small; the glass plates and the
-  map panel that once stood here re-filtered the whole photo every frame.
+- **The photo stands still.** The slow ken-burns zoom it once had went with Parky's arrival in the
+  hero: with Parky, his bubble and the card rail moving, it was one motion too many, and every frame
+  of it made the search field's glass re-filter what lay under it.
 - **The photo resolves out of itself**: the first frame is a ~110 byte preview of the same photo
   (`heroBlurDataUrl`, `lib/media/manifest-hero-lqip.ts`, server-side only), below Chrome's LCP
   entropy floor, so LCP still measures the real photo.
@@ -230,7 +228,7 @@ for good, and with it the backdrop root.
 
 The header's logo handoff over the hero is in
 [header bar → one lockup, two copies](../design/header.md#one-lockup-two-copies). Under
-`prefers-reduced-motion: reduce` every path bails out, the pan included.
+`prefers-reduced-motion: reduce` every path bails out.
 
 ## Related
 

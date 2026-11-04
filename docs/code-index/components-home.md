@@ -39,8 +39,9 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`hero-entrance-gate.tsx`](../../components/home/hero-entrance-gate.tsx)
 
+How long the entrance window stays open, from the moment the hero's markup is parsed.
+
 - `HeroEntranceGate` _component_: Closes the hero's entrance window once it has played.
-- `HERO_ENTRANCE_MS` _const_: How long the entrance window stays open, from the moment the hero's markup is parsed. Exported for the ken-burns pan, which waits until it is over because every frame of the pan re-blurs both glass panels (see `hero-background.tsx`).
 - `HERO_ITEM_IN_MS` _const_: Duration of `hero-item-in` in globals.css. Kept here so the two cannot drift apart.
 
 ### [`hero-park-actions.tsx`](../../components/home/hero-park-actions.tsx)

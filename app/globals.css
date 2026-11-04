@@ -2286,36 +2286,6 @@
   }
 }
 
-/* Hero background: Ken Burns slow zoom + pan */
-@keyframes ken-burns {
-  0% {
-    transform: scale(1) translate(0, 0);
-  }
-  100% {
-    transform: scale(1.12) translate(-2%, -1%);
-  }
-}
-
-/*
- * A class, not an inline `style={{animation}}`, so a media query can switch it off. Every frame
- * of it re-blurs each `backdrop-filter` over the photo, so reduced motion also gets a hero that
- * costs nothing to composite.
- */
-@media (prefers-reduced-motion: no-preference) {
-  .hero-ken-burns {
-    animation: ken-burns 22s ease-in-out infinite alternate;
-  }
-
-  /*
-   * Parked while the hero is scrolled away or the tab is hidden. `animation-play-state` holds the
-   * pan where it is; removing the class would snap the photo back. Set on the background wrapper,
-   * so it covers the base photo and every in-park layer.
-   */
-  .hero-motion-paused .hero-ken-burns {
-    animation-play-state: paused;
-  }
-}
-
 /* Scroll indicator: ball travels down inside mouse shape */
 @keyframes scroll-ball {
   0%,
