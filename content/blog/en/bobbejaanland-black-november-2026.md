@@ -51,9 +51,9 @@ seo:
 - PLUS: €83.95 instead of €139.90
 - BASIC: €80.45 instead of €114.90
 
-The parking pass and the shuttle bus pass only come with PREMIUM; you can't add them to PLUS or BASIC. For €83.95 instead of €80.45, PLUS adds two free visits to Movie Park Germany and Slagharen. The bigger question is whether parking is worth PREMIUM to you.
+The parking pass and the shuttle bus pass only come with PREMIUM; you can't add them to PLUS or BASIC. Compared with BASIC, PLUS adds free visits to Movie Park Germany and Slagharen, and PREMIUM adds parking on top.
 
-PREMIUM gets you 20 percent off selected products in the restaurants and shops and 10 percent off the room rate at Corsendonk Hotels. Friend tickets, as many as you like, and the Speedy Pass Diamond, Gold and Silver are cheaper too, both at a price that depends on the day you visit. Up to two companions aged 65 or over get in free on each visit if they show ID at the ticket desk. Show the digital pass and you get three free visits to [Movie Park Germany](/blog/movie-park-germany-wait-times-tips) and Slagharen, plus one to another Parques Reunidos park. That's down to the owner: Bobbejaan Schoepen founded the park, and since 2004 it has belonged to Parques Reunidos, like Movie Park.
+PREMIUM gets you 20 percent off selected products in the restaurants and shops and 10 percent off the room rate at Corsendonk Hotels. Friend tickets, as many as you like, and the Speedy Pass Diamond, Gold and Silver are cheaper too, both at a price that depends on the day you visit. Up to two companions aged 65 or over get in free on each visit if they show ID at the ticket desk. Show the digital pass and you get three free visits to [Movie Park Germany](/blog/movie-park-germany-wait-times-tips) and Slagharen, plus one to another Parques Reunidos park. Bobbejaanland has belonged to Parques Reunidos since 2004, like Movie Park; Bobbejaan Schoepen founded it.
 
 PLUS has nearly the same, but with two free visits to Movie Park and Slagharen instead of three. Bobbejaanland doesn't list a visit to another Parques Reunidos park for PLUS. BASIC is entry without the extras, with 10 percent off in the restaurants and shops.
 
@@ -84,7 +84,7 @@ In winter the park is split into six winter zones, with Father Christmas, a Chri
 
 Bobbejaanland is announcing Nickelodeon Land for 2027, with three new attractions. CEO Yves Peeters told VRT the area gets Nickelodeon characters such as Garfield and SpongeBob and sits right behind the park entrance. Attractions are coming down to make room; Bobbejaanland hasn't announced which ones. The site is fenced off, and the area costs around €15 million.
 
-The Wild Swing takes 18 riders at a time and swings them up to 12 metres. The drop tower is 15 metres tall, about 15 metres more than Garfield would get off the sofa for. The water ride Big Wavez lifts riders more than 20 metres, drops them and pushes up a 10-metre wave as it does. According to Peeters, no water ride in Europe yet drops its riders while pushing up its own wave like this. That makes three more for a park with over 40 attractions, and the rest of Europe's 2027 openings are in our [new attractions for 2027](/blog/new-theme-park-attractions-2027).
+The Wild Swing takes 18 riders at a time and swings them up to 12 metres. The drop tower is 15 metres tall, about 15 metres more than Garfield would get off the sofa for. The water ride Big Wavez lifts riders more than 20 metres, drops them and pushes up a 10-metre wave as it does. Peeters says there's nothing like it in Europe yet. Bobbejaanland has over 40 attractions so far, and the rest of Europe's 2027 openings are in our [new attractions for 2027](/blog/new-theme-park-attractions-2027).
 
 [Bobbejaanland](ref:bobbejaanland?full)
 
