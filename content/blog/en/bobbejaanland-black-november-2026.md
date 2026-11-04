@@ -2,7 +2,7 @@
 title: 'Bobbejaanland takes up to 40 percent off its annual passes'
 translationKey: bobbejaanland-black-november-2026
 date: '2026-11-04'
-time: '07:30'
+time: '08:03'
 author: patrick
 mode: published
 featured: false
