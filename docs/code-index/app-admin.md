@@ -295,12 +295,13 @@ Route `/admin/analytics` (page).
 
 ### [`assistant/_lib/assistant.ts`](../../app/admin/assistant/_lib/assistant.ts)
 
+- `sitePageUrl` _function_: Where a page a chat or a feedback names opens on the site, or null for anything but a path of slugs. The API stores only those; checked again because the path is glued to the origin, where `@host` or `//host` would lead off the site.
 - `formatUsd` _function_: A cost in US dollars, to a hundredth of a cent: one answer costs fractions of a cent.
 - `formatDateTime` _function_: A timestamp in the admin's own clock.
 - `formatCount` _function_: A count with thousands separators.
 - `ASSISTANT_API` _const_: The admin proxy prefix of every Parky endpoint.
-- `SITE_ORIGIN` _const_: The public site, for links to the page a chat or feedback came from.
-- Types: `AssistantSettings`, `ConversationRow`, `ToolCall`, `ConversationMessage`, `FeedbackEntry`, `FeedbackStatus`, `Page`, `ConversationDetail`, `AssistantStats`
+- `FEEDBACK_KIND_LABEL` _const_: The admin's words for a `FeedbackKind`.
+- Types: `AssistantSettings`, `ConversationRow`, `ToolCall`, `ConversationMessage`, `FeedbackEntry`, `FeedbackStatus`, `FeedbackKind`, `Page`, `ConversationDetail`, `AssistantStats`
 
 ### [`assistant/_lib/delete-chat.tsx`](../../app/admin/assistant/_lib/delete-chat.tsx)
 
@@ -322,7 +323,7 @@ Route `/admin/assistant/conversations` (page).
 
 Route `/admin/assistant/feedback` (page).
 
-- `default (AssistantFeedbackPage)` _component_: What visitors sent through the widget's feedback tab, to read and close.
+- `default (AssistantFeedbackPage)` _component_: What visitors sent through the widget's feedback tab or told Parky, to read and close.
 
 ### [`assistant/page.tsx`](../../app/admin/assistant/page.tsx)
 

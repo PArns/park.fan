@@ -7,7 +7,7 @@
 export const ASSISTANT_API = '/api/admin/assistant';
 
 /** The public site, for links to the page a chat or feedback came from. */
-export const SITE_ORIGIN = 'https://park.fan';
+const SITE_ORIGIN = 'https://park.fan';
 
 /** Parky's settings as `GET assistant/settings` returns them; the key only masked. */
 export interface AssistantSettings {
@@ -57,7 +57,10 @@ export interface ConversationMessage {
   createdAt: string;
 }
 
-/** Feedback a visitor sent from the widget. */
+/**
+ * Feedback a visitor sent from the widget's form, or Parky passed on from a chat (`source`
+ * `chat`), whose `message` is then the visitor's words as typed.
+ */
 export interface FeedbackEntry {
   id: string;
   message: string;
@@ -66,11 +69,37 @@ export interface FeedbackEntry {
   pagePath: string;
   conversationId?: string;
   status: FeedbackStatus;
+  /** Absent from an API older than the column, which only knew the form. */
+  source?: 'form' | 'chat';
+  kind?: FeedbackKind;
   createdAt: string;
 }
 
 /** Where a piece of feedback stands. */
 export type FeedbackStatus = 'new' | 'done' | 'archived';
+
+/** What Parky took feedback from a chat for; mirrors the API's `FEEDBACK_KINDS`. */
+export type FeedbackKind =
+  'bug' | 'wrong_data' | 'missing_park_or_ride' | 'feature_wish' | 'praise' | 'criticism';
+
+/** The admin's words for a {@link FeedbackKind}. */
+export const FEEDBACK_KIND_LABEL: Record<FeedbackKind, string> = {
+  bug: 'Fehler',
+  wrong_data: 'Falsche Daten',
+  missing_park_or_ride: 'Park oder Attraktion fehlt',
+  feature_wish: 'Wunsch',
+  praise: 'Lob',
+  criticism: 'Kritik',
+};
+
+/**
+ * Where a page a chat or a feedback names opens on the site, or null for anything but a path of
+ * slugs. The API stores only those; checked again because the path is glued to the origin, where
+ * `@host` or `//host` would lead off the site.
+ */
+export function sitePageUrl(path: string): string | null {
+  return /^\/[a-z0-9-][a-z0-9\-/]*$|^\/$/.test(path) ? `${SITE_ORIGIN}${path}` : null;
+}
 
 /** A page of a list endpoint. */
 export interface Page<T> {

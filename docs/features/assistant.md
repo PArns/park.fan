@@ -64,12 +64,17 @@ rules live in the API's `assistant-junk.ts`.
 `strong`, `em`, lists, `br` and `a`. A link stays a link only when `safeAssistantHref` accepts it
 (a park.fan page, given the reader's locale) or it is Google Maps directions to coordinates
 (`directionsHref`, new tab). Anything else, `javascript:` and `/\host` included, is shown as text.
-The admin shows chats as plain text.
+What the visitor typed is shown as text too. The admin shows chats, tool inputs and feedback as
+plain text, never as Markdown or HTML, and links a stored page only through `sitePageUrl`
+(`app/admin/assistant/_lib/assistant.ts`), which takes nothing but a path of slugs, so a path
+glued to the origin cannot become `https://park.fan@host`. The admin exports nothing.
 
 ## Actions, cards and the position
 
 The API sends an `action` event when Parky acts; `readAssistantAction` (`lib/assistant/actions.ts`)
-checks it again and `useAssistantActions` carries it out through the site's own paths:
+checks it again, hands on a page or a card's links as the path it checked, and builds the language
+switch and the feedback chip anew, so nothing else rides along. `useAssistantActions` carries it out
+through the site's own paths:
 
 | Action              | What the widget does                                                       | Chip        |
 | ------------------- | -------------------------------------------------------------------------- | ----------- |
@@ -80,6 +85,8 @@ checks it again and `useAssistantActions` carries it out through the site's own 
 | `planner_add_block` | `addCustom(…, 'assistant')`, then opens the day                            | Tagesplaner |
 | `planner_optimize`  | opens the day and `plannerUi.requestOptimize`: the day's optimise row runs | sortiert    |
 | `request_location`  | shows the share card under the answer                                      |             |
+| `switch_locale`     | once the answer is complete, the same page in that language, window open   | Sprache     |
+| `feedback_sent`     | nothing; the API stored the visitor's feedback                             | Team        |
 
 `plannerUi.requestOptimize` is held until the day's `PlannerOptimizeActions` is on screen with its
 data, which then presses its own button (`RunOnce`), fit assistant and undo included. On a phone
@@ -88,6 +95,39 @@ Parky's window closes after a page change or a planner action, so the result is 
 The position is never read without a press: the share card calls the site's own geolocation
 (`useGeolocation().refresh()`), so the same yes also brings the in-park markers and the compass on
 the park's page. It goes to the API once, with the next question, and Parky keeps it nowhere.
+
+## Language
+
+Parky answers in the language the visitor writes in when it is one of the site's six, else in the
+page's. Asked for the site in another of them ("in English please", "auf Deutsch?"), he switches it
+at once; a visitor who simply writes in one of them gets the answer in it and, once per chat, the
+offer to switch, and a yes counts as asking. A name, a ride title or a single word is no reason to
+offer. The rule is in the API's prompt (`# Language`, `docs/frontend/assistant.md` there).
+
+The switch is the `switch_language` tool, which the API allows only to one of the six other than the
+page's, once per answer and before any lookup, so a post or a name a tool brought in cannot ask for
+it. The widget holds `switch_locale` until the answer is complete and stored (`useAssistantChat`),
+since the new locale mounts the layout afresh and would cut off an answer still streaming. It then
+goes where the page's own hreflang link for that language points (`hreflangPath`,
+`lib/i18n/hreflang.ts`, which the header's switcher and the language banner read too), as a post's
+slug differs per language, else to the same path with its localized segment respelled
+(`localeSwitchPath`, `lib/assistant/switch-locale.ts`); anything that would not land on a park.fan
+page in that language is dropped. next-intl's router replaces the page with `{ locale }`, which also
+sets the locale cookie, and keeps the query. Before it, `reopenAfterSwitch` (`lib/assistant/open.ts`)
+notes in session storage that the window was open; the launcher on the new page reads it once
+(`takeReopen`, within 30 s) and opens the window with the chat as it was, counted as
+`assistant_opened` with source `language`.
+
+## Feedback
+
+The window's second tab is a form: a message, an e-mail for those who want an answer, the page and
+the open chat. Parky also passes feedback on from the chat: a bug, a wrong figure, a missing park or
+ride, a wish, praise or criticism with substance goes to the same inbox through the API's
+`submit_feedback`, as the visitor's own words, and the answer carries the chip „Ans Team
+weitergegeben". The API stores only the visitor's messages as typed, never text the model wrote, at
+most twice per chat, never the same words twice, within the form's limits per session and per
+address. The admin's feedback list marks those „Von Parky aus dem Chat" with the kind Parky took them
+for, and quotes them.
 
 ## Chips and times
 
@@ -334,7 +374,8 @@ the dark theme. Run it again after the widget changes visibly.
 
 Our own statistic (`trackSiteEvent`, labels in `lib/admin/site-analytics.ts`): `assistant_shown`
 (the button on screen, once per page view, with the entrance it made or `none`),
-`assistant_opened` (with `source`: the button or a line), `assistant_line_shown`,
+`assistant_opened` (with `source`: the button, a line, Parky's page, or `language` after his
+language switch), `assistant_line_shown`,
 `assistant_line_clicked` and `assistant_line_closed` (each with the line's kind as `line`: invitation,
 entrance, bored, woke, holiday, park, secret, or the answer's planner, plan, favourite, alert, theme
 or install), `assistant_closed` (questions while open), `assistant_question` (suggestion or typed, never the
@@ -346,7 +387,11 @@ the planner opening as `planner_opened` with source `assistant`.
 ## Checks
 
 `pnpm test:assistant` covers the stream reader, the link checks, the rollout decision, the post
-text, the action checks, the boredom stages on a fake clock, the opener's draw, and the easter eggs:
+text, the action checks (a link carried out as the path it was checked as, the planner's modes, zones
+and block lengths, only the six locales and nothing riding along with a switch), where a switch
+leads (the page's hreflang alternate, a respelled segment, never off the site or into a third
+language) and the reopen after it, the boredom stages on a fake clock, the opener's draw, and the
+easter eggs:
 a page's park path and park page, the coaster picked from a ranking, the park's name from structured
 data, the holidays, the Konami code and muting, and which scrolls throw Parky: a reading swipe, one
 late frame, a briskly turned wheel or one turned bit by bit, the scrollbar pulled slowly, the space

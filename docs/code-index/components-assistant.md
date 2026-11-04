@@ -49,4 +49,4 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`use-assistant-actions.ts`](../../components/assistant/use-assistant-actions.ts)
 
-- `useAssistantActions` _hook_: Carries out what Parky asked for, through the site's own paths: the router for a page, the planner's store and its open and optimise signals for the plan, so every write is counted and undoable like a press of the planner's own buttons.
+- `useAssistantActions` _hook_: Carries out what Parky asked for, through the site's own paths: the router for a page, next-intl's router for the same page in another language, the planner's store and its open and optimise signals for the plan, so every write is counted …

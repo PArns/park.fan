@@ -48,12 +48,14 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`links.ts`](../../lib/assistant/links.ts)
 
 - `directionsHref` _function_: The one link off the site an answer may carry: Google Maps directions to coordinates, exactly in the form the API's `get_directions` writes it. Opened in a new tab; never used for navigation.
-- `safeAssistantHref` _function_
+- `safeAssistantHref` _function_: The link an answer may carry, or null to show it as text: only park.fan pages, absolute or as a path.
 
 ### [`open.ts`](../../lib/assistant/open.ts)
 
 - `openParky` _function_: Opens Parky's chat window from elsewhere on the page, as the button on Parky's own page does, counted with `source` (`assistant_opened`). The launcher hears it once its button shows; until then the request waits there.
 - `onParkyOpen` _function_: Hears `openParky`, with what asked for the window; returns the unsubscribe.
+- `reopenAfterSwitch` _function_: Asks the launcher on the page Parky's language switch leads to for the window open: the new locale mounts the layout, and the launcher with it, afresh. The chat itself is in session storage.
+- `takeReopen` _function_: Whether a language switch asked for the window open, once: reading it clears the request.
 
 ### [`opener.ts`](../../lib/assistant/opener.ts)
 
@@ -118,6 +120,10 @@ Where Parky stands while his chat window is shut: in his corner, or in a slot on
 
 - `readSse` _function_: Reads a `text/event-stream` body event by event. A hand-written reader rather than `EventSource`, which can only GET and so cannot send the question as a body.
 - Types: `SseEvent`
+
+### [`switch-locale.ts`](../../lib/assistant/switch-locale.ts)
+
+- `localeSwitchPath` _function_: Where Parky's language switch goes: the page at `pathname` in `locale`, as a path without the locale, which next-intl's router puts in front.
 
 ### [`teaser-store.ts`](../../lib/assistant/teaser-store.ts)
 

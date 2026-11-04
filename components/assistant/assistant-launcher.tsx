@@ -17,7 +17,7 @@ import { ENTRANCE_MS, pageEntrance, type ParkyEntrance } from '@/lib/assistant/e
 import { parkySwitch } from '@/lib/assistant/easter-eggs';
 import { isRide } from '@/lib/assistant/parky-rides';
 import { isReactionAct } from '@/lib/assistant/reactions';
-import { onParkyOpen } from '@/lib/assistant/open';
+import { onParkyOpen, takeReopen } from '@/lib/assistant/open';
 import { usePageLocked } from '@/lib/hooks/use-page-locked';
 import { useSearchOpen } from '@/lib/analytics/search-presence';
 import { PARKY_FALL_MS, useScrollFling } from '@/lib/assistant/use-scroll-fling';
@@ -342,6 +342,11 @@ export function AssistantLauncher() {
   // Parky's own page and Parky in the homepage hero ask for the window from outside, each with its
   // own source; heard before the gate opens, so a press that comes first is not lost.
   useEffect(() => onParkyOpen(openFrom), [openFrom]);
+  // Parky switched the site's language: the page came back in the other one, and the chat with it.
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- session storage, read once the button shows
+    if (shown && takeReopen()) openFrom('language');
+  }, [shown, openFrom]);
   const play = useCallback(
     (act: ParkyCue['act']) => setCue((last) => ({ act, id: (last?.id ?? 0) + 1 })),
     []

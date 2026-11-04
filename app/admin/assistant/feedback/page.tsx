@@ -25,11 +25,13 @@ import {
   Toolbar,
 } from '../../_ui/primitives';
 import { useToast } from '../../_ui/toast';
+import { cn } from '@/lib/utils';
 import {
   ASSISTANT_API,
-  SITE_ORIGIN,
+  FEEDBACK_KIND_LABEL,
   formatCount,
   formatDateTime,
+  sitePageUrl,
   type FeedbackEntry,
   type FeedbackStatus,
   type Page,
@@ -47,7 +49,7 @@ const STATUS_TONES: Record<FeedbackStatus, ChipTone> = {
   archived: 'muted',
 };
 
-/** What visitors sent through the widget's feedback tab, to read and close. */
+/** What visitors sent through the widget's feedback tab or told Parky, to read and close. */
 export default function AssistantFeedbackPage() {
   const [status, setStatus] = useState<FeedbackStatus>('new');
   const [page, setPage] = useState(1);
@@ -145,20 +147,33 @@ function FeedbackRow({ entry }: { entry: FeedbackEntry }) {
     }
   };
 
+  const pageUrl = sitePageUrl(entry.pagePath);
+  const fromChat = entry.source === 'chat';
+
   return (
     <li className="space-y-2 px-4 py-3 text-sm">
       <div className="text-muted-foreground flex flex-wrap items-center gap-2 text-xs">
         <span className="tabular-nums">{formatDateTime(entry.createdAt)}</span>
         <Chip>{entry.locale}</Chip>
         <Chip tone={STATUS_TONES[entry.status]}>{entry.status}</Chip>
-        <a
-          href={`${SITE_ORIGIN}${entry.pagePath}`}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hover:text-foreground inline-flex max-w-64 items-center gap-1 truncate"
-        >
-          {entry.pagePath} <ExternalLink className="h-3 w-3 shrink-0" />
-        </a>
+        {fromChat && (
+          <Chip tone="primary">
+            Von Parky aus dem Chat
+            {entry.kind && ` · ${FEEDBACK_KIND_LABEL[entry.kind] ?? entry.kind}`}
+          </Chip>
+        )}
+        {pageUrl ? (
+          <a
+            href={pageUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-foreground inline-flex max-w-64 items-center gap-1 truncate"
+          >
+            {entry.pagePath} <ExternalLink className="h-3 w-3 shrink-0" />
+          </a>
+        ) : (
+          <span className="max-w-64 truncate">{entry.pagePath}</span>
+        )}
         {entry.conversationId && (
           <Link
             href={`/admin/assistant/conversations/${entry.conversationId}`}
@@ -173,7 +188,15 @@ function FeedbackRow({ entry }: { entry: FeedbackEntry }) {
           </a>
         )}
       </div>
-      <p className="break-words whitespace-pre-wrap">{entry.message}</p>
+      {/* Plain text in either case; from the chat it is the visitor's words, quoted as typed. */}
+      <p
+        className={cn(
+          'break-words whitespace-pre-wrap',
+          fromChat && 'border-primary/40 border-l-2 pl-3 italic'
+        )}
+      >
+        {entry.message}
+      </p>
       <div className="flex flex-wrap gap-2">
         {entry.status !== 'done' && (
           <Button

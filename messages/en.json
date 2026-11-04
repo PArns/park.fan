@@ -2966,6 +2966,8 @@
     "chipNavigated": "Page opened",
     "chipPlanned": "In your day planner",
     "chipOptimized": "Sorting your day",
+    "chipLanguage": "Language switched",
+    "chipFeedback": "Passed on to the team",
     "locationAsk": "Parky would like your location to find parks and rides near you.",
     "locationShare": "Share location",
     "locationNo": "Rather not",

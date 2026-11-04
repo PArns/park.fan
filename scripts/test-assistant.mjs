@@ -1,6 +1,8 @@
 /**
  * Parky, the chat assistant: the stream reader (`lib/assistant/sse.ts`), the link check on its
- * answers (`lib/assistant/links.ts`), the rollout gate (`lib/assistant/config.ts`), the post
+ * answers (`lib/assistant/links.ts`), the action checks (`lib/assistant/actions.ts`), where a
+ * language switch leads (`lib/assistant/switch-locale.ts`, `open.ts`), the rollout gate
+ * (`lib/assistant/config.ts`), the post
  * text it reads (`lib/assistant/post-text.ts`), how bored its face gets
  * (`lib/assistant/parky-boredom.ts`), how a chat opens (`lib/assistant/opener.ts`) and Parky's easter
  * eggs (`lib/assistant/easter-eggs.ts`, muting in `teaser-store.ts`), its rides
@@ -15,6 +17,8 @@ import { directionsHref, safeAssistantHref } from '@/lib/assistant/links.ts';
 import { assistantVisible } from '@/lib/assistant/config.ts';
 import { postPlainText, POST_TEXT_LIMIT } from '@/lib/assistant/post-text.ts';
 import { readAssistantAction } from '@/lib/assistant/actions.ts';
+import { localeSwitchPath } from '@/lib/assistant/switch-locale.ts';
+import { reopenAfterSwitch, takeReopen } from '@/lib/assistant/open.ts';
 import { localizedPath } from '@/lib/i18n/localized-path.ts';
 import { splitWaits } from '@/lib/assistant/wait-chips.ts';
 import {
@@ -254,6 +258,120 @@ check(
   null,
   'refuses a park row linking off site'
 );
+check(
+  readAssistantAction({ type: 'navigate', path: 'https://park.fan/de/blog/x', extra: 1 }),
+  { type: 'navigate', path: '/de/blog/x' },
+  'a page is carried out as the path it was checked as'
+);
+check(
+  readAssistantAction({
+    type: 'card',
+    card: {
+      kind: 'ride',
+      name: 'Taron',
+      park: null,
+      status: 'OPERATING',
+      crowdLevel: null,
+      waitMinutes: 15,
+      url: 'https://www.park.fan/de/parks/europe/germany/bruehl/phantasialand/taron',
+    },
+  })?.card.url,
+  '/de/parks/europe/germany/bruehl/phantasialand/taron',
+  'a card links the path it was checked as'
+);
+check(
+  readAssistantAction({ type: 'planner_optimize', park, date: '2026-11-02', mode: 'drop' }),
+  null,
+  'refuses an optimise mode the planner does not have'
+);
+check(
+  readAssistantAction({
+    type: 'planner_open_day',
+    park: { ...park, timezone: 'Mars/Olympus' },
+    date: '2026-11-02',
+  }),
+  null,
+  'refuses a time zone the browser cannot format'
+);
+for (const durationMinutes of ['lots', 10_000, 2.5]) {
+  check(
+    readAssistantAction({
+      type: 'planner_add_block',
+      park,
+      date: '2026-11-02',
+      block: { label: 'Essen', icon: 'food', durationMinutes },
+    }),
+    null,
+    `refuses a block of ${durationMinutes} minutes`
+  );
+}
+
+// The language switch: one of the six, nothing else rides along, and never off the site.
+check(
+  readAssistantAction({ type: 'switch_locale', locale: 'it', path: 'https://evil.example/' }),
+  { type: 'switch_locale', locale: 'it' },
+  'switches to one of the six, carrying nothing else'
+);
+for (const locale of ['pt', 'de-DE', 'EN', '../admin', '', null, 42, { toString: () => 'de' }]) {
+  check(
+    readAssistantAction({ type: 'switch_locale', locale }),
+    null,
+    `refuses the locale ${String(locale)}`
+  );
+}
+check(
+  readAssistantAction({ type: 'feedback_sent', message: '<b>x</b>' }),
+  { type: 'feedback_sent' },
+  'feedback sent is only a chip'
+);
+check(
+  localeSwitchPath('/de/beste-reisezeit', 'en', null),
+  '/best-time-to-visit',
+  'respells a localized segment'
+);
+check(
+  localeSwitchPath(
+    '/de/parks/europe/germany/bruehl/phantasialand/wartezeiten-kalender',
+    'fr',
+    null
+  ),
+  '/parks/europe/germany/bruehl/phantasialand/calendrier-temps-attente',
+  "respells a park's sub-page"
+);
+check(localeSwitchPath('/de', 'it', null), '/', 'the home page in the other language');
+check(
+  localeSwitchPath('/de/blog/taron-wartezeiten', 'en', '/en/blog/taron-wait-times'),
+  '/blog/taron-wait-times',
+  "the page's own hreflang alternate wins"
+);
+check(
+  localeSwitchPath('/de/blog/x', 'en', '//evil.example/en/blog/x'),
+  '/blog/x',
+  'an alternate off the site is passed over'
+);
+check(
+  localeSwitchPath('/de/blog/x', 'en', '/fr/blog/x'),
+  '/blog/x',
+  'an alternate in another language is passed over'
+);
+check(localeSwitchPath('//evil.example/de', 'en', null), null, 'never a path off the site');
+{
+  const store = new Map();
+  globalThis.window = {
+    sessionStorage: {
+      getItem: (key) => store.get(key) ?? null,
+      setItem: (key, value) => store.set(key, value),
+      removeItem: (key) => store.delete(key),
+    },
+  };
+  reopenAfterSwitch();
+  check(takeReopen(), true, 'the switched page opens the window again');
+  check(takeReopen(), false, 'once');
+  reopenAfterSwitch();
+  check(takeReopen(Date.now() + 60_000), false, 'a switch that never landed opens nothing later');
+  delete globalThis.window;
+}
+
 check(localizedPath('/parks/europe', 'de'), '/de/parks/europe', 'adds the locale');
 check(localizedPath('/en/blog/x', 'de'), '/en/blog/x', 'keeps a locale already there');
 
