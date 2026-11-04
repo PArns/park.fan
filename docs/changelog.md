@@ -11,6 +11,889 @@ heading, and the same pull request writes the public entry in `content/changelog
 
 ---
 
+## 2.19.0 (2026-11-04) – Parky, der Chat-Assistent, eine neue Startseite mit kurzen Anstellzeiten und die Suche auf /
+
+Geschnitten am 2026-11-04 aus 82 Fragmenten in `docs/changelog.d/`. Der öffentliche Eintrag ist `content/changelog/2.19.0.md`. Neueste Abschnitte zuerst.
+
+### Startseite: Foto über die volle Breite, die Frage darauf und darunter kurze Anstellzeiten als Karten
+
+Der Hero stand als zwei Glasplatten über dem Parkfoto: links Schlagzeile, Suche mit vier Parks und zwei Beiträgen, rechts eine Weltkarte mit zwölf Länder-Chips. Jetzt steht das Foto frei über die volle Breite, unter dem Header, mit drei Verläufen in der Hintergrundfarbe der Seite (`HeroBackground`). Auf seinem unteren Rand stehen Badge, Schlagzeile (68 px ab 1280 px, 40 px am Handy), Intro und ein Suchfeld mit Rand und Lupe in der Markenfarbe; die Bildunterschrift steht oben rechts in der Ecke.
+
+Über den unteren Fotorand ragt `HeroRail` um 176 px: fünf Karten ab 1024 px, drei ab 640 px, am Handy eine Reihe zum Wischen. Sie zeigen die Bahnen in der Nähe, deren Schlange gerade deutlich kürzer ist als sonst („Kurze Anstellzeiten in deiner Nähe“, `shortWaits` aus `/v1/discovery/nearby`): eigenes Foto der Bahn, „35 Min kürzer“, die Wartezeit als größte Zahl und ein Balken jetzt gegen sonst in der Farbe der Wartezeit. Ohne kurze Schlangen zeigen dieselben Karten die Parks in der Nähe mit Ø-Wartezeit und Andrang, im Park die Bahnen des Parks, ohne Standort die beliebtesten Parks, jetzt mit Foto (`/api/parks/popular` hängt es an). Alle Zustände haben denselben Kartenkasten, das Skelett wird ohne Verschiebung zur Antwort. Bei 1440 × 900 stehen Schlagzeile, Suche und die Zahlen der Karten auf dem ersten Bildschirm.
+
+- **Suche**: Die Liste unter dem Feld ist im Ruhezustand zu und öffnet sich beim Fokus (`HeroInlineSearchPanel`), am Handy öffnet das Feld wie bisher die Palette. Die Liste der vier Parks und die beiden Beiträge („Neueste News“, „Neuester Guide“) unter dem Feld entfallen samt `HeroPhoneList`, `HeroReadingGroup`, `getHeroReading` und `pnpm check:hero-search-rest`.
+- **Weltkarte**: `HeroWorldPanel` und seine Teile entfallen, mit ihnen `lib/geo/world-map-data.ts` (38 KB) und `scripts/generate-hero-world-map.mjs`.
+- **Parks in deiner Nähe**: Die eigene Sektion weiter unten entfällt; die Nähe steht in den Hero-Karten, der Standort-Knopf (`HomeLocationRow`) darunter. Der Standort-Hinweis (`LocationBanner`) erscheint nur noch ab `md`. „Parks in der Nähe“ heißt auf Deutsch überall „Parks in deiner Nähe“.
+- **Textspalte**: Sie reserviert ab `md` ihre Höhe (gemessen in allen sechs Sprachen: 352 px bei 768 px, 449 px ab 1280 px mit Parkys Zeile), damit halb geladenes HTML die Schlagzeile nicht verschiebt.
+
+#### Parky steht am Desktop im Hero und springt beim Scrollen in seine Ecke
+
+Ab 1024 px steht Parky 96 px groß unter der Schlagzeile, neben einer Sprechblase „Lass uns schauen, wo wir uns heute anstellen!“ mit „Klick mich an, ich helfe dir.“ darunter (`HeroParky`). Blase und Parky sind ein Knopf, der das Chatfenster öffnet; Parky springt aus dem Hero hinein und beim Schließen zurück. Solange sein Platz im Hero zur Hälfte zu sehen ist, bleibt die Ecke leer; scrollt er weg, springt Parky verkleinert in die Ecke, scrollt man zurück, wieder hinauf (`parkyDock`, `parkyDockHop`). Im Hero ist er ruhig wie im Chatfenster: Er folgt dem Mauszeiger, blinzelt, sucht mit und döst ein, fährt aber keine Bahnen. `assistant_opened` zählt die Quelle `hero`. Die Schlagzeile ist ab 1280 px 68 statt 80 px groß, damit Parkys Zeile und die Zahlen der Karten auf den ersten Bildschirm passen.
+
+#### Die Suche öffnet sich mit `/` statt mit ⌘K oder Strg K
+
+Strg K und ⌘K belegt der Browser für sein eigenes Suchfeld. `/` öffnet die Palette jetzt auf jeder Seite, wenn kein Feld den Fokus hat (`isSearchShortcut` in `lib/utils/page-focus.ts`), auch mit Shift, weil eine deutsche Tastatur den Schrägstrich so tippt. In einem Feld bleibt `/` ein Zeichen. Die Tipp-Kürzel der Hero-Suche, der Parkseite und des Wörterbuchs prüfen einheitlich `isPageTypedKey` und lassen `/` der Suche. Jedes Suchfeld, das `/` erreicht, zeigt rechts die Taste `/` (`SearchShortcutKey`, mit `aria-keyshortcuts`), auch das Feld im Hero; der ⌘K-Hinweis im Suchdialog entfällt. Auf der Startseite setzt `/` den Cursor ins Hero-Feld, solange es zu sehen ist (`searchShortcutTarget`), weiter unten öffnet es die Palette. Im Admin öffnet `/` die Befehls-Palette, nicht beim Tippen und nicht über einem offenen Dialog; ⌘K tut dort nichts mehr.
+
+#### Admin: Die Punkte und Zahlen der Seitenleiste stehen in einer Spalte
+
+Ein Eintrag mit Untermenü (ML-Zentrale, Traffic, Parky) hielt rechts 32 px für seinen Pfeil frei, jeder andere 10 px, also stand sein Punkt 22 px weiter links als die übrigen. `SidebarLink` gibt jetzt jedem Eintrag außerhalb der eingeklappten Leiste dieselben 32 px (`pr-8`), Untereinträge eingeschlossen; die Option `trailingSpace` entfällt.
+
+### „Europa-Park Wartezeiten“ führt auf die Parkseite, der Legoland-Guide fragt nach Fastrack, Links in Posts tragen ihre Sprache
+
+Im Oktober verteilte Google „europapark wartezeiten“ auf vier eigene URLs: die Statistikseite (976 Impressionen), die Startseite (255), die Parkseite (252) und den Kalender (154), ohne einen einzigen Klick. „europapark wartezeiten live“ (1.171 Impressionen) rankte mit der Startseite. Die H1 des Kalenders heißt jetzt „Andrang im {Monat}“ wie sein Title, in allen sechs Sprachen; bisher hieß sie bewusst noch „Wartezeiten im …“. Statistik- und Kalenderseite tragen unter der Einleitung denselben Link „{Park}: Wartezeiten live →“ (`ParkLiveLink` in `components/parks/park-live-link.tsx`, Text `parks.liveLink`; der ungenutzte `calendarPage.backToPark` ist weg). Die Live-Station der Startseiten-Tour verlinkt den Park aus ihrem Screenshot mit denselben Worten statt des Erklär-Guides, der über die FAQ verlinkt bleibt. Den Park teilen sich Tour und `scripts/capture-home-shots.mjs` über `TOUR_PARK` in `lib/home/tour-park.mjs`.
+
+Der SEO-Title des Legoland-Guides hatte in allen sechs Sprachen 70–72 Zeichen, zählte vier Themen auf und nannte Halloween, das am 8. November endet. Er heißt jetzt „Legoland Deutschland Tipps: Lohnt sich Fastrack?“ (42–52 Zeichen je Sprache), die Frage aus der FAQ des Guides. Suchen nach Fastrack, Fast Track und Express Pass brachten der Seite 197 Impressionen in vier Wochen und keinen Klick.
+
+Posts verlinkten Seiten ohne Sprachpräfix (`/best-time-to-visit`, `/parks/…`, `/compare`), 32 Links in jeder Sprache, die meisten auf die beste Reisezeit und Fancast. Jeder antwortete mit einer Weiterleitung, zwei deutsche führten auf englische Seiten. Der Link-Renderer in `BlogContent` gibt jeden Seitenpfad jetzt durch `localizedPath` (`lib/i18n/localized-path.ts`, bisher nur im Assistenten), das die Sprache des Posts und deren Schreibweise eines übersetzten Segments setzt: `/best-time-to-visit` wird auf Deutsch zu `/de/beste-reisezeit`. Dateien, `/api`, Anker und fremde Hosts bleiben, wie sie sind. Sechs Fälle in `pnpm test:localized-path`.
+
+### Die Statistik zählt eine Seite erst auf dem Bildschirm, lässt gefälschte Handys aus und erkennt ChatGPT-Links
+
+In der ersten Woche der eigenen Statistik kam mehr als die Hälfte aller Besuche ohne Referrer (5.052 von 8.376), mit 90 % Absprüngen und 18 Sekunden pro Besuch. Glossar- und Attraktionsseiten kamen auf Dutzende solcher Besuche mit 0 Sekunden im Vordergrund, und unter den Glossar-Einstiegen ohne Referrer standen 468 von „Chrome auf iOS“ gegen 12 von Safari, das Gegenteil der Suchbesuche (155 zu 1.231). Die Suche selbst war vollständig: 2.631 Klicks in der Search Console gegen 2.704 Google-Besuche (29.10.–2.11.).
+
+`trackSitePageview` in `lib/analytics/site-analytics.ts` zählt einen Seitenaufruf jetzt erst, wenn die Seite auf dem Bildschirm ist. Ein Hintergrund-Tab oder eine vorgerenderte Seite wartet auf `visibilitychange` oder `prerenderingchange`, und eine Seite, die nie zu sehen war, schickt nichts, auch nicht die Ereignisse, die sie beim Laden gemeldet hat. Ein neues Tor in `canCountSite` lässt Browser aus, deren User-Agent iOS oder Android nennt, während `navigator.userAgentData.platform` ein anderes System meldet: ein Headless-Browser im Kostüm eines Handys. Kein WebKit-Browser hat `userAgentData`, ein echtes iPhone fällt also nie darunter.
+
+Fehlt ein externer Referrer, gilt ein `utm_source` als Herkunft, wenn er einen KI-Assistenten aus `AI_SOURCE_HOSTS` nennt (`chatgpt.com`, `perplexity.ai` und die übrigen Hosts, die die API dem Kanal `ai` zuordnet). ChatGPT hängt `utm_source=chatgpt.com` an seine Links und schickt oft keinen Referrer, solche Besuche zählten bisher als direkt. Jeder andere Wert der Adresse bleibt ungelesen. Die Datenschutzerklärung (Abschnitt 4, de und en) sagt beides. Fünf neue Fälle in `pnpm test:site-analytics`.
+
+### Startseite: Hero ohne News-Balken und kürzer, Favoriten unter den News, ohne Favoriten erklärt, Tour und Parky ohne Haarlinien
+
+Zwischen dem News-Board und der ersten Tour-Station („Live-Wartezeiten") standen eine Haarlinie und das Polster beider Stationen: 129 px auf dem Handy, 193 px ab 640 px. Die erste Station der Tour zeichnet keine Linie mehr und kein eigenes Polster oben (`ShotStop flushTop`, `components/home/home-stop.tsx`), der Abstand ist nur noch das Polster unter den News: 64 px auf dem Handy, 96 px ab 640 px. Das Handy der ersten Station steht auf dem Desktop damit 140 statt 237 px unter dem Board.
+
+Auch die Linie zwischen der Prognose-Station und Parky ist weg. `ShotStop` zeichnet keine `divider` mehr; Tour und Parky laufen als eine Strecke durch, getrennt nur durch Luft wie die Tour-Stationen untereinander. Diese Luft ist auf dem Handy halbiert (`py-8 sm:py-24` statt `py-16 sm:py-24`): zwischen zwei Phone-Stationen stehen dort 64 statt 128 px, so viel wie zwischen News und Tour. Ab 640 px bleibt alles bei 192 px.
+
+Parkys Lead (`homeStory.parky.lead`) endet in allen sechs Sprachen nach dem Airtime-Satz; der Nachsatz zu den Live-Daten ist gestrichen.
+
+Wer Favoriten hat, findet sie jetzt direkt unter den News statt nach Parky über der Nähe-Station. Die Favoriten-Station steht im Quelltext hinter `HomeReading` und schließt ohne Linie an (`HomeStop flushTop`), der Abstand zu News und Tour ist je 64 px auf dem Handy und 96 px ab 640 px. Ohne Favoriten bleibt sie ausgeblendet (`html:not([data-has-favorites]) .home-favorites`), die Regel `order: -1` ist weg.
+
+Wer noch keine Favoriten hat, bekommt nach „Parks in deiner Nähe" zwei Phone-Stationen im Stil der Tour (`FavoritesIntro`, `components/home/favorites-intro.tsx`): „So merkst du dir Parks und Bahnen" mit der Parkseite von Tokyo Disneyland und dem gedrückten, amber umrandeten Stern, und „Deine Favoriten auf jeder Seite" mit dem geöffneten Handy-Menü, in dem Phantasialand, Europa-Park und vier ihrer Bahnen mit Wartezeit stehen. Ausgeblendet wird mit derselben Regel wie die Favoriten (`html[data-has-favorites] .home-favorites-intro`), vor dem ersten Paint. Die zwölf Screenshots (zwei je Sprache) kommen aus `scripts/capture-home-shots.mjs --shot=favorite,favorites-menu`; das Skript setzt im Menü-Shot nur die Live-Felder der echten `/v1/favorites`-Antwort (`mockLive`), weil die beiden Parks morgens noch geschlossen sind.
+
+Im Hero fällt der blaue News-Balken über der Überschrift weg (`LatestNewsChip` im `HeroBadgeRow`). Die neueste News steht stattdessen in der Lesezeile der Suchliste, wo bisher die meistgelesene News stand, mit dem Kicker „Neueste News" (`search.newestNews`) neben „Neuester Guide". `getHeroReading` liest beide Posts aus dem Manifest, der Hero holt keine Meistgelesen-Rangliste mehr nach (`useMostRead` und `pickHeroNews` sind dort raus). Die Überschrift rückt in den frei gewordenen Platz: Ihr oberer Abstand gehörte zum Offen-Badge und fällt dort weg, wo das Badge nicht steht (unter `md` und ab einer 1280-px-Seite). Auf dem Handy wird die Platte dadurch 46 px kürzer und endet bei 639 statt 685 px (Französisch bei 360 px: 672 statt 718), gemessen mit Nähe-Parks, deren Zeilen alle ihren Status-Chip tragen. `--hero-plate-min-h` sinkt von 811 auf 808 px; ab einer 1280-px-Seite gilt `--hero-plate-min-h-wide` mit 762 px, weil das Offen-Badge dort in der Kartenleiste steht. „Zum Kompass" für Besucher im Park steht jetzt in der Kopfzeile der Suchliste statt im Slot des Balkens (`HeroBrowseHeader`, `jumpToCompass`); die Zeile ist in jedem Zustand gleich hoch, also verschiebt der Link nichts. Von der Chip-Komponente bleibt nur die Karte im Handy-Menü (`LatestNewsCard`, `components/blog/latest-news-card.tsx`).
+
+Auf dem Handy zeigt die Suchliste im Hero wie auf dem Desktop vier Parks statt fünf (`HERO_REST_ROWS_PHONE`), `--hero-search-rest-h` sinkt dort von 375 auf 327 px; die Platte endet bei 591 px auf 390 × 844 (Französisch bei 360 px: 624). Im Park steht über dem Park-Block eine Bahn statt zwei (`HERO_PARK_ROWS_PHONE`), weil der Block mit 232 px genau den Platz von drei Zeilen und den Posts braucht. News und Guide tragen auf dem Handy ihr Bild statt eines Icons, in der Spalte der Parkbilder (`HeroPostCover`, `components/search/hero-post-cover.tsx`, auch vom Desktop genutzt). `pnpm check:hero-search-rest`: 376 / 376 / 376 px auf dem Handy in allen sechs Sprachen.
+
+Der Sprach-Banner („Switch to English") nimmt das Glas des Header-Menüs (`pk-menu-glass`, 40 px Blur mit Sättigung und Helligkeit) statt `HEAVY_GLASS`: Er hängt unter dem Header über der Hero-Überschrift, und die Buchstaben dahinter sollen zerfallen statt durchzuscheinen.
+
+„Kompass einschalten" im In-Park-Kompass steht jetzt mittig und bleibt auf dem Handy bei der 32-px-Box von `size="sm"` statt der 44-px-Stufe der Button-Skala; die 44-px-Tippfläche kommt aus `PHONE_HIT_AREA`. Unter `md` folgt die Rose mit 4 statt 16 px Abstand auf die Statuszeile, die ohnehin mit einer reservierten Zeile für Ortungs- und Kalibrierhinweise endet. Der Kompass-Abschnitt wird dadurch auf dem Handy 24 px kürzer. Sein Titel ist auf dem Handy 18 statt 20 px groß und passt auf 390 px in fünf der sechs Sprachen in eine Zeile; wo er umbricht, bleibt das Icon an der ersten Zeile und die Zeilen werden ausgeglichen (`text-balance`).
+
+#### Parky mit Schlafmütze
+
+Parky hat eine neue Nummer, `nightcap`: Das Riesenrad blendet aus, eine dunkelblaue Zipfelmütze mit weißem Rand, Bommel und zwei Sternen fällt auf den Kopf, die Augen werden schwer, Parky gähnt, und nach 3,8 s kommt das Rad zurück (`parky-logo.tsx`, `parky-hat-off`, `parky-bobble` in `app/globals.css`). Beim Wechsel auf Dunkel spielt er sie statt `lights` (`lib/assistant/reactions.ts`); zwei der drei Sprüche dazu (`themeDark1`, `themeDark3`) sprechen jetzt von der Schlafmütze statt vom leuchtenden Rad, in allen sechs Sprachen. Von sich aus spielt Parky jetzt auch `shades`, `lights` und `nightcap` (im Pool `awake`), gelangweilt außerdem `nightcap`. Ohne Bewegung sitzt die Mütze für die Dauer der Nummer einfach auf dem Kopf und das Rad ist so lange weg. `pnpm test:assistant` erwartet beim Wechsel auf Dunkel jetzt `nightcap`.
+
+### Admin: eine Übersicht als Lagebild, eine Seitenleiste nach Aufgaben, ein Login ohne Sprung
+
+`/admin` öffnet mit einem Lagebild statt einer Kennzahlenwand. Oben steht ein Satz zum schlimmsten
+Problem („4 Dinge warten auf dich“) über dem Parkfoto, darunter die Schnellzugriffe. Es folgen eine
+Karte pro Problem mit ihrer Schaltfläche, die Zahlen des Tages (Besucher jetzt und heute, Wartezeiten
+pro Stunde, Server, Datenbank, Queues, Modelle, Einsendungen), eine Tabelle der Bereiche mit einem
+Strich pro Prüfung und der Katalog. Alles Urteil kommt aus `deriveAdminHealth`
+(`lib/admin/health.ts`, `pnpm test:admin-health`, 11 Fälle); `/admin/system` färbt mit denselben
+Schwellen.
+
+Die Seitenleiste ist neu sortiert: Kuratieren, Inhalte, Publikum, Betrieb, das Konto unten im
+Kontomenü. Gruppen lassen sich einklappen, und System, Queues, ML-Zentrale, Datenqualität und
+Einsendungen tragen ihren Zustand als Punkt oder Zahl. Die Seite liegt eingerückt unter einer
+schlanken Topbar, und Admin, Login und Freigabeseite zeigen das echte park.fan-Lockup mit
+„Admin“-Etikett (`AdminBrand`).
+
+Die übrigen Seiten tragen den Stil über das Kit: `Tile`, `StatTile`, `Meta`, `Toolbar`, die
+Formularfelder und die Fehler- und Hinweiskästen haben feine Kanten und Beschriftungen in
+Satzschreibung statt gesperrter Großbuchstaben (44 Stellen in 28 Dateien, Blog-Editor und
+Medien-Codes ausgenommen). Die Queues sind eine Tabelle mit festen Spalten, Fehlern zuerst und
+ausgeblendeten Nullen auf dem Handy. System und Parks live sind deutsch beschriftet und zeigen
+Zahlen mit Dezimalkomma.
+
+Der Login sprang zweimal, wenn Turnstile nachlud: erst um das 72 px hohe Widget, dann um die
+verschwindende Zeile „Sicherheitsprüfung läuft.“. `TurnstileWidget` reserviert die Höhe jetzt
+selbst, die Statuszeile bleibt in jedem Zustand eine Zeile. CLS auf dem Handy 0,095 → 0, am
+Desktop 0,019 → 0, gemessen am Dev-Server mit Cloudflares Testschlüssel.
+
+### Startseite: die News-Tafel ohne Kicker, mit vier Guides, auf dem Handy drei und drei
+
+- **Kicker weg:** Über „Freizeitpark-News und Guides" steht kein „Neu auf park.fan" mehr, und mit ihm geht das Zeitungs-Icon (`HomeReading`, Key `homeStory.reading.kicker` in allen sechs Sprachen entfernt). Der Titel sagt schon, was kommt.
+- **Vier Guides statt drei** in „Beliebteste Guides" (`ARTICLES` in `components/home/home-reading.tsx`). Bei 1440 px ist die Guide-Spalte damit 611 px hoch, die News-Spalte mit sechs Meldungen an fünf Tagen 585 px; vorher blieben unter den drei Guides rund 130 px leer.
+- **Auf dem Handy** (unter `sm`) zeigt die Tafel die drei neuesten News und die drei meistgelesenen Guides (`PHONE_ROWS` in `components/home/news-board.tsx`). Untereinander gestapelt waren sechs News und vier Guides eine lange Spalte vor der Tour: bei 402 px ist die Tafel jetzt 837 px hoch statt 1.427 px. Die übrigen Zeilen blendet CSS aus, die letzte sichtbare verliert ihre Trennlinie.
+- **Neuer Lead:** „Wer baut, wer schließt, wer ist ausverkauft. Dazu die Guides, die im letzten Monat am meisten gelesen wurden.“ Der alte versprach Guides zu einzelnen Parks mit Besuchstagen und Wartezeiten, auf der Tafel standen aber die Neuheiten 2027, Halloween und Essen mitbringen.
+
+### Parky lässt sich sofort wieder werfen, und die Scrollbar braucht keinen so schnellen Zug mehr
+
+Nach jedem Wurf wartete dieselbe Richtung 30 s (`FLING_REST_MS`). Wer an der Scrollbar einmal runter
+und wieder hoch gezogen hatte, konnte Parky danach eine halbe Minute lang nicht mehr werfen, und das
+sah aus wie ein Fehler. Die Ruhezeit ist entfernt: Sobald Parky losgelassen hat, wirft ihn der
+nächste Wurf sofort wieder, in beide Richtungen (`FlingTracker`). Gegen das Auslösen beim
+stückweisen Scrollen helfen die Strecke, die ein Wurf zurücklegen muss, und die 250 ms, die die
+Seite fast stillstehen muss, bevor er fällt.
+
+Die Scrollbar wirft ihn jetzt bei einer Fensterhöhe in 500 ms statt anderthalb, das Mausrad bei
+1,25 statt 1,5. Finger und Tasten bleiben bei drei Fensterhöhen in 600 ms.
+
+Die Sprüche gehen wieder nach ihren eigenen Zeiten: „Das geht aber ganz schön rund hier!“ beim
+dritten Wurf innerhalb von 30 s statt zwei Minuten, und höchstens ein Fall-Spruch alle 20 s, damit
+Parky bei vielen Würfen nicht jedes Mal etwas sagt.
+
+Gemessen auf dem Produktions-Build mit sichtbarer Scrollbar (1280×800,
+`/de/blog/europa-park-wartezeiten-tipps`, Playwright): Viermal hintereinander an der Scrollbar
+gezogen, runter, rauf, runter, rauf, mit je 0,6 s Pause, wirft Parky viermal. Ein zügiger Zug (40 px
+Daumenweg in gut einer Sekunde, 1,5 Fensterhöhen in den schnellsten 500 ms) wirft ihn jetzt, ein
+gleichmäßiger zum Mitlesen (0,5) und ein langsamer (0,2) nicht. Das Mausrad wirft ihn ab 20 Rasten
+pro Sekunde, mit 15 Rasten pro Sekunde und in Schüben von fünf oder acht Rasten nicht, dreimal die
+Leertaste auch nicht.
+
+`pnpm test:assistant` prüft dazu: Nach dem Loslassen wirft ihn derselbe Wurf sofort wieder, und die
+andere Richtung auch; ein Mausrad in Schüben von acht Rasten wirft ihn nicht, ein zügiger Zug an der
+Scrollbar von gut einer Fensterhöhe in einer halben Sekunde schon.
+
+### Parky lässt sich wieder mit der Scrollbar werfen, ein kräftig gedrehtes Mausrad reicht, und er fällt erst nach 250 ms
+
+Seit Parky nur noch fliegt, wenn eine Hand die Seite bewegt, zählten nur Mausrad, Finger und
+Scroll-Tasten. Wer an der Scrollbar zog, bewegte die Seite ohne eines dieser Ereignisse, und der Zug
+galt als Skript-Scroll. Am Desktop war Parky damit kaum noch zu werfen, denn ein Mausrad mit Rasten
+musste dafür etwa 30 Rasten pro Sekunde schaffen. Jetzt zählt ein Druck auf die Scrollbar der Seite
+als Hand, bis die Maustaste losgelassen wird: Chrome meldet ihn als `pointerdown` auf `<html>`, den
+Zug danach meldet nichts (`useScrollFling`). Die Scrollbar wirft ihn wie das Mausrad bei anderthalb
+Fensterhöhen in 500 ms, statt zwei wie bisher beim Mausrad (`FlingTracker`). Mehr als eine
+Fensterhöhe zwischen zwei Frames gilt beim Ziehen an der Scrollbar nicht als Sprung, weil der Daumen
+auf einer langen Seite so weit in einem Frame kommt. Ein Druck irgendwo anders, etwa auf einen Link,
+beendet das wieder, sodass der Sprung der neuen Seite an ihren Anfang ein Sprung bleibt. Finger und
+Tasten bleiben bei drei Fensterhöhen in 600 ms.
+
+Parky lässt erst los, wenn die Seite 250 ms statt 150 ms fast stillsteht (unter 0,5 px/ms,
+`SETTLE_MS`). In der kurzen Pause zwischen zwei Schüben am Mausrad oder zwei Wischern fiel er schon
+zurück, obwohl weitergescrollt wurde, und vor der Ruhezeit flog er beim nächsten Schub gleich wieder
+hoch. Jetzt hält er durch und fällt erst, wenn das Scrollen aufgehört hat. Live gemessen lässt er
+nach einem schnellen Zug an der Scrollbar 256 bis 267 ms nach dem letzten Scroll-Frame los. Ein
+Klick auf einen Link gleich nach dem Loslassen der Scrollbar wirft ihn mit dem Sprung der neuen
+Seite von 8073 px auf 0 nicht.
+
+Gemessen auf dem Produktions-Build mit sichtbarer Scrollbar (1280×800,
+`/de/blog/europa-park-wartezeiten-tipps`, 44 252 px hoch, Playwright): Ein schneller Zug am Daumen
+(120 px in gut 0,4 s, 8,6 Fensterhöhen) und ein kräftiger (60 px in 0,7 s, 3,0 Fensterhöhen in den
+schnellsten 500 ms) werfen Parky, runter, Halt und wieder hoch spielt beide Richtungen. Ein
+langsamer Zug zum Mitlesen (0,1 bis 0,4 Fensterhöhen in 500 ms) und ein zügiger mit 1,4 werfen ihn
+nicht. Das Mausrad wirft ihn ab 25 Rasten pro Sekunde (1,6 Fensterhöhen in 500 ms), mit 15 Rasten
+pro Sekunde nicht, und Rasten in Schüben von fünf oder acht mit kurzen Pausen dazwischen auch nicht.
+Die alte Regel aus der Zeit vor dem Hand-Filter warf ihn bei diesen Schüben ein- bis zweimal und bei
+drei Drücken auf die Leertaste zwei- bis dreimal.
+
+`pnpm test:assistant` prüft dazu vier Fälle: Ein kräftig gedrehtes Mausrad wirft ihn, ein schneller
+Zug an der Scrollbar auch, ebenso einer, der mehr als eine Fensterhöhe pro Frame schafft, ein
+langsamer Zug zum Mitlesen nicht.
+
+### Parky fliegt nur noch bei einem echten Wurf und ruckelt dabei nicht mehr
+
+Beim Scrollen sprang Parky zu oft nach oben oder wurde flachgedrückt. Ausgelöst hat ein einzelner
+Frame über 6 px pro Millisekunde, und weil die pro Frame gemessene Geschwindigkeit schwankt, reichte
+dafür ein gewöhnlicher Wisch auf dem Handy, jeder Druck auf die Leertaste oder der Sprung an den
+Seitenanfang nach einem Link. Jetzt zählt die Strecke statt der Spitze, und wie weit die Seite
+fliegen muss, hängt davon ab, was sie bewegt (`FlingTracker` in `lib/assistant/fling-tracker.ts`):
+mit dem Finger drei Fensterhöhen in 600 ms, weil ein Wisch die Seite mit Schwung weiterträgt; mit
+Mausrad oder Trackpad zwei Fensterhöhen in 500 ms, weil ein Mausrad in Rasten ohne Schwung scrollt;
+mit einer Taste drei Fensterhöhen in 600 ms, also nur gehalten. Unterschieden wird nach dem Ereignis
+(`touchmove`, `wheel`, Scroll-Taste in der letzten Sekunde), nicht nach dem Gerät, sodass ein Laptop
+mit Touchscreen oder ein Tablet mit Trackpad die passende Schwelle bekommt. Mehr als eine
+Fensterhöhe zwischen zwei Messungen gilt als Sprung und zählt nicht, und eine Seite, die ein Link
+oder ein Skript scrollt, wirft ihn nie. Nach einem Wurf wartet dieselbe Richtung 30 s, die andere
+nicht: Hart runter, kurz anhalten und hart wieder hoch spielt beides, ohne den Halt bleibt es beim
+ersten, weil ein hängender Parky nicht flachgedrückt wird. Der Spruch „Das geht aber ganz schön rund
+hier!“ kommt beim dritten Wurf innerhalb von zwei Minuten statt einer halben, und die eigene Sperre
+von 20 s zwischen zwei Fall-Sprüchen entfällt, weil die Ruhezeit länger ist.
+
+Nachgestellt auf dem Produktions-Build (`pnpm build && pnpm start`,
+`/de/blog/europa-park-wartezeiten-tipps`) mit Playwright, alte und neue Regel auf derselben
+Aufzeichnung der Scroll-Position pro Frame. Auf einem Pixel 7 (412×839), der Finger per
+`Input.dispatchTouchEvent` entlang der Schwungkurve eines Handys geführt, weil Headless-Chromium
+keinen eigenen Schwung erzeugt: Ein Wisch mit 5 px/ms (3,3 Fensterhöhen) und drei davon
+hintereinander warfen Parky bisher und jetzt nicht mehr, Lese-Wische und zügige Wische, auch fünf
+hintereinander, werfen ihn weiterhin nicht, ein harter Wurf mit 8 px/ms nach unten oder oben wirft
+ihn weiterhin. Der Sprung an den Seitenanfang warf ihn bisher und jetzt nicht mehr. Hart runter,
+eine halbe Sekunde Halt und hart wieder hoch spielt beide Würfe, ohne Halt bleibt es beim Hängen;
+zwei harte Würfe nach unten im Abstand von 3 s warfen ihn bisher zweimal, jetzt einmal. Am Desktop
+(1280×800) warf ihn jeder von drei Drücken auf die Leertaste, jetzt keiner. Ein Mausrad mit 12
+Rasten in knapp einer Sekunde oder 20 Rasten pro Sekunde wirft ihn nicht, 33 Rasten pro Sekunde,
+fünf schnelle Drücke auf die Leertaste und eine gehaltene Bild-ab-Taste werfen ihn.
+
+Oben zittert Parky jetzt über eine HTML-Hülle um die Zeichnung (`.parky-shake`) statt über das SVG
+(`.parky-mood-scared`). Eine SVG-Transformation wird gemalt, nicht vom Compositor verschoben, und so
+wurde Parky mit Schlagschatten und dem Blur seines Leuchtens in jedem Frame neu gemalt, während die
+Seite scrollte. Im Trace über 3 s, während Parky oben hängt (Pixel 7, CPU vierfach gedrosselt, je
+zwei Läufe): mit dem Zittern im SVG 346 bis 350 Paints mit 202 bis 205 ms Paint-Zeit und 175
+Layouts, mit dem Zittern auf der Hülle 48 bis 50 Paints mit 31 bis 37 ms und 24 Layouts, das sind
+die Stufen des Riesenrads auf seinem Hut. Die Fall-Striche unter ihm laufen nur noch, solange er
+hängt, und stehen sonst still.
+
+`pnpm test:assistant` prüft den Wurf mit 21 neuen Checks: Ein Lese-Wisch, ein zügiger Wisch, ein
+einzelner Frame mit 30 px/ms, ein zügig gedrehtes Mausrad, die immer wieder gedrückte Leertaste, ein
+Sprung und ein Skript-Scroll werfen ihn nicht; ein harter Wurf in beide Richtungen, ein frei
+gedrehtes Mausrad und eine gehaltene Taste schon. Dieselbe Strecke wirft ihn mit dem Mausrad und
+nicht mit dem Finger, die erste Richtung hält bis zum Loslassen, die andere Richtung geht sofort,
+und dieselbe erst nach ihrer Ruhezeit.
+
+### Die Admin-Zahlen unten links starten eingeklappt
+
+Für angemeldete Admins zeigt die Ecke unten links zuerst nur die Lupe. Ein Klick klappt die Zeile mit Klicks, CTR und Position auf, und bis zum ✕ bleibt sie in dieser Sitzung offen (`SearchConsoleGate`). Solange nur die Lupe da ist, wird das Overlay nicht geladen, und auch die Lesetiefe-Marken erscheinen erst nach dem Aufklappen.
+
+### Parky hängt beim schnellen Scrollen oben
+
+Wer die Seite schnell nach unten wirft, nimmt Parky mit: Er rutscht bis ganz nach oben, über den Header, und bleibt dort, solange gescrollt wird. Er hält sich fest, solange die Seite noch läuft, auch wenn man langsamer weiterscrollt. Erst wenn sie 150 ms lang fast steht (unter 0,5 px pro Millisekunde), fällt er mit einem Aufprall zurück in seine Ecke. Ausgelöst wird das ab 6 px pro Millisekunde nach unten, also bei einem Wurf mit dem Trackpad oder einer gehaltenen Taste, nicht bei einem einzelnen Mausrad-Schritt (`useScrollFling`, `.parky-hang`). Oben schaut er mit offenem Mund nach unten und zittert ein wenig (`ParkyMood` `scared`), unter ihm laufen Fall-Striche (`.parky-drop`). Nach dem Aufprall sieht er Sterne: Der Schwindel-Act läuft. Wirft man die Seite genauso schnell nach oben, drückt ihn das flach in seine Ecke: Er kneift die Augen zu > <, beißt die Zähne zusammen, und an den Seiten puffen Aufprall-Striche (`squashed`); und wenn die Seite steht, federt er über seine Größe hinaus zurück. Bei offenem Fenster, bei einem modalen Dialog und mit reduzierter Bewegung bleibt er, wo er ist.
+
+### Parky hüpft ins Chatfenster
+
+Öffnet sich das Chatfenster, blendet Parky nicht mehr mit ihm ein. Er geht in seiner Ecke in die Knie, springt in einer Wurfparabel auf die obere Ecke des Fensters, wächst dabei auf dessen Größe und landet mit einem Stauchen. Beim Schließen springt er denselben Weg zurück, erst danach erscheint der Button wieder (`parkyJump` in `lib/assistant/parky-jump.ts`, 720 ms). Dafür steht sein Gesicht neben dem Fenster statt darin, und der Button bleibt unsichtbar stehen, solange der Chat offen ist. Mit reduzierter Bewegung erscheint er wie bisher.
+
+### Parky malt weniger
+
+Das Riesenrad auf Parkys Hut drehte sich als SVG-Animation stufenlos, und Chrome hat dafür in jedem Frame Layout und Paint neu gerechnet, rund 30-mal pro Sekunde, auch auf einer ruhigen Seite. Jetzt dreht es in 112 Schritten pro Umdrehung. Auf `/de/impressum` sinken Layout-Durchläufe in 5 s von 151 auf 50 und Paints von 304 auf 104. Die schnelle Drehung während eines Acts bleibt stufenlos.
+
+### Parky kommentiert, wenn man ihn herumwirft
+
+Hängt Parky nach einem schnellen Scroll oben, sagt er manchmal einen Freifall-Spruch: die Ansage von Mystery Castle im deutschen Original („Seid stark, schwächt das Böse, wenn ihr ihm begegnet dort oben!“), eine Anspielung auf die fünfte Dimension des Tower of Terror oder „Nicht runterschauen“. Er sagt ihn erst, wenn er eine halbe Sekunde oben hängt, nie auf dem Weg nach oben; die Sprechblase fährt danach mit ihm wieder herunter. Wer ihn innerhalb von 30 Sekunden dreimal herumwirft, hört „Das geht aber ganz schön rund hier!“ oder „Das ist ja wie im Mystery Castle!“. Der Spruch oben kommt in drei von vier Fällen, insgesamt sagt er höchstens alle 20 Sekunden einen davon und nie denselben zweimal hintereinander. In der Statistik heißen sie `hang` und `rough`, Zitate bleiben in allen sechs Sprachen in ihrer Originalsprache.
+
+### Parkys Augen gleiten statt zu springen
+
+Nach dem Schwindel-Act sprangen die Pupillen aus der Spirale zurück in die Mitte. Jetzt wächst der Radius der Spirale am Anfang aus der Mitte heraus und schrumpft am Ende wieder auf null (`--parky-swirl`, eine registrierte CSS-Eigenschaft). Bei allen Acts, die die Pupillen selbst bewegen (Augenrollen, Schwindel, Umschauen, Pfeifen, Kaugummi), addierte sich ihre Bahn zum Blick auf die Maus, und die Pupillen rutschten über den Rand des Weißen. Jetzt gleitet der Blick erst in die Mitte, dann läuft die Augen-Animation, danach gleitet er zurück zur Maus (`parky-gaze-aside`, der Blick als `--gaze-x`/`--gaze-y`). Außerdem schaut ein neu erscheinender Parky, etwa im Chatfenster, sofort dorthin, wo der Mauszeiger zuletzt war, und reagiert auch auf `pointerover`, nicht erst auf die nächste Mausbewegung.
+
+### Added — a ride in maintenance says since when, and when it usually runs again
+
+A ride the park reports as under maintenance now carries the same live block as an outage:
+„In Wartung seit …", plus how long maintenance stops like this one usually still took. The API
+sends these as `signal: "maintenance"` with an estimate from a curve built from maintenance stops
+alone, so the wording never says „Störung gemeldet" or „steht still".
+
+### Parky bleibt im Chatfenster ruhig, blinzelt seltener, bricht keine Fahrt mehr ab, und das Eingabefeld wächst mit
+
+Im offenen Chatfenster spielte Parky sein ganzes Repertoire neben dem Gespräch: Achterbahn, Tanz,
+Pirouette, alle 12 bis 20 Sekunden. Dort ist er jetzt `calm` (`ParkyLogo`): wach schaut er sich um,
+zwinkert oder legt den Kopf schief, alle 20 bis 35 Sekunden; gelangweilt gähnt er, schaut oder macht
+ein Nickerchen, alle 9 bis 15 Sekunden; einschlafen tut er wie bisher. Das volle Repertoire bleibt
+dem Button in der Ecke. Gemessen über 85 Sekunden: Gähnen, Umschauen, Nickerchen, Umschauen,
+Einschlafen.
+
+Er blinzelte alle 4,5 Sekunden im gleichen Takt, also rund 20-mal in 90 Sekunden. `parky-blink`
+schließt die Augen jetzt zweimal in 24 Sekunden, etwa 9 und 14 Sekunden auseinander: gemessen 6-mal
+in 90 Sekunden.
+
+Das Eingabefeld blieb bei jeder Länge eine Zeile hoch, eine zweite Zeile schob die erste aus dem
+Blick. Es wächst jetzt mit dem Text bis zu seiner Maximalhöhe von 112 px und scrollt erst darüber,
+geprüft in Chromium (1280×800) und WebKit (iPhone-Format) mit einer, drei und acht Zeilen.
+
+Wurde Parky mitten in einem Akt gelangweilt, schläfrig oder wieder wach, brach `useIdleAct` den Akt
+sofort ab: eine Fahrt hielt mitten in der Luft an, und 1,5 Sekunden später gähnte er. Nachgestellt
+mit festem Zufall: der Schwindel nach dem Freefall endete nach 1,25 statt 2,7 Sekunden. Ein laufender
+Akt spielt jetzt zu Ende, samt Schwindel, und erst dann beginnt die neue Phase. Ein Cue spielt weiter
+sofort, und ohne eigenes Leben (Stimmung, Suche, geschlossenes Fenster) hört Parky weiter sofort auf.
+
+### Parky sagt, wenn er eine Nachricht nicht lesen kann
+
+Die API lehnt Müll-Nachrichten jetzt ab, ohne das Modell zu fragen (nur Zeichen ohne Buchstaben,
+eine gedrückte Taste, Buchstaben ohne einen Vokal, dieselbe Frage direkt noch mal), mit 422
+`unclear`. `useAssistantChat` zeigt dafür den neuen Text `assistant.errorUnclear` in allen sechs
+Sprachen statt „Da hat etwas nicht geklappt“. Mehr als drei Fragen in 30 Sekunden und die
+zehnminütige Pause nach drei Müll-Nachrichten in Folge kommen als 429 und lesen sich weiter als
+`errorLimit`.
+
+### Die Startseite begrüßt: Stationen statt Kapitelköpfe, eine Tafel für News und Guides, eine Tour mit Handy-Screenshots, und unter den Parks in der Nähe die Bahnen, an denen es gerade kurz ist
+
+Die Startseite war am Desktop 18.920 px hoch, auf dem Handy 20.530 px, in 21 Abschnitten; drei Viertel ihrer Aufrufe kommen vom Handy, wo man im Schnitt 13 Sekunden blieb. Jetzt: Hero, „Neu auf park.fan", die Tour, deine Parks, beliebte Parks, fünf Fragen, Parky, rund 8.600 px am Desktop und 10.700 px auf dem Handy, gemessen mit Parks in der Nähe ([Startseite](features/homepage.md)).
+
+- **Hero:** bleibt, wie er war. Die Bildbeschreibung mit Fotonachweis (`HeroImageInfoPanel`) steht ab `lg` unten links, denn unten rechts lag Parkys Button darüber; `lg:pb-24` am Hero hält sie von der Textplatte frei. Mit der Schritt-Karte ist ihre Kopie des Suchfelds weg (`STEP_REST`, `primary`, `--step-search-rest-h`, Suchfläche `home_steps`).
+- **Stationen statt Kapitelköpfe:** Jeder Abschnitt unter dem Hero ist eine Station mit `ChapterHeading variant="stop"` (ersetzt `tile`): Kicker, ein `<h2>` in den Worten der Suche, Lead, Link. Die alten Köpfe (68-px-Kachel, Pill, Titel, Hinweis, Linie) kosteten je rund 200 px. Drei Layouts (`components/home/home-stop.tsx`): `stacked` (Überschrift über dem Inhalt in voller Breite: News, Nähe, Favoriten), daneben (`HomeStop`, ab 1024 px mitlaufend, nur wo beide Spalten voll sind: beliebte Parks mit den Park-Links als `aside`, Fragen) und `ShotStop` (Handy-Screenshot: Tour, Parky). Getrennt wird mit Luft und einer auslaufenden Haarlinie (`STOP_DIVIDER_CLASS`). `FeaturedParkCardsLive` fragt für die dritte Spalte jetzt `@min-[1024px]/page` statt `lg`. Favoriten und beliebte Parks zeichnen dort keinen eigenen Kopf (`heading="none"`), die Nähe-Karte nur ihre Hinweiszeile (`NearbyHeading nested`); `GlassSectionTitle` ist damit weg.
+- **„Neu auf park.fan"** (`HomeReading`, `NewsBoard`) direkt unter dem Hero: eine Tafel im Theme der Seite, News und Guides ab 1024 px nebeneinander. Sechs News nach Tagen, Alter und Datum links zweizeilig wie auf `/news` (`NewsAge stacked`, dort jetzt auch), daneben die drei meistgelesenen Guides mit Datum und Lesezeit; ein kleines Cover rechts. Ersetzt das Blog-Band unter dem Hero und das Blog-Kapitel weiter unten.
+- **Die Tour** (`HomeTour`): drei Stationen mit Screenshot im Handy, wie auf Parkys Seite: Live-Wartezeiten auf der Parkseite, Andrang-Kalender, die Prognose einer Bahn. **Parky** folgt direkt auf die Tour: „Nicht gefunden, was du suchst? Frag Parky", mit seinem Chat-Screenshot. Scrollt sein Abschnitt in die Bildschirmmitte, hüpft der echte Parky in der Ecke und sagt „Hey, cool! Das bin ja ich!" (`ParkyHello`, Event `home_parky_seen`); der Link öffnet den Chat, wo Parky für den Besucher an ist, sonst Parkys Seite (`ParkyAskLink`, ohne `assistantGate.invite`). `ShotRow` und `PhoneShot` liegen jetzt in `components/marketing/`, beide Seiten nutzen sie. Die Screenshots gibt es je Sprache aus `scripts/capture-home-shots.mjs` (`public/media/home/<locale>/`, 18 Bilder), jetzt wie Parkys im Format eines iPhone 17 (`scripts/lib/phone-device.mjs`); `PhoneShot` zeichnet Statusleiste und Dynamic Island darüber, das Badge „Screenshot“ ist weg. Jede Station steigt beim Scrollen ein (`Reveal`) das Handy gleitet dabei 48 px gegen die Seite (`.pk-shot-drift`, eine scroll-getriebene Animation auf `translate`, nicht bei `prefers-reduced-motion`).
+- **Deine Parks:** `NearbyParksCard showShortWaits` zeigt unter den Parks „Jetzt kurz anstehen" (`NearbyShortWaits`), aus dem neuen `shortWaits` von `GET /v1/discovery/nearby` (`PArns/v4.api.park.fan`, PAR-1215; das Backend geht zuerst live). Favoriten erscheinen nur mit Favoriten, dann über der Nähe (`.home-favorites`, `data-has-favorites` vor dem ersten Paint).
+- **Beliebte Parks:** unter den sechs Karten zwölf Parks mit je einem Link zu Wartezeiten und Andrang-Kalender (`PopularParkLinks`), auch im Suspense-Fallback, also ohne Sprung. In der Search Console (90 Tage) lautet fast jede Anfrage, über die park.fan gefunden wird, „<Park> Wartezeiten" oder „<Park> Auslastung / Andrang Kalender".
+- **Suchwörter:** Jede Station hat ein `<h2>` in den Worten der Suche („Freizeitpark-News und Guides", „Wartezeiten live, für jede Bahn", „Der Andrang-Kalender: wie voll es wird, Tag für Tag", „Freizeitparks in deiner Nähe", „Wartezeiten und Andrang in den beliebtesten Parks"). Das FAQ hat fünf Fragen, darunter wieder die, ob park.fan auf dem Handy ohne App läuft, und verlinkt die Seite, die park.fan erklärt.
+- **Entfernt:** drei Schritte, die Kapitel zu Live-Wartezeiten, Prognose, Kalender, ruhigen Fenstern, Mindestgrößen, Shows, Im-Park und Wörterbuch, „Warum park.fan", globale und Plattform-Statistiken, der Gründer, der Hinweis auf Google als bevorzugte Quelle (der Footer hat ihn) und mit der Tageskurve `pnpm test:ride-day-curve`.
+- Die Route schickt fünf Message-Namespaces an den Client statt elf. Ohne die KI- und Familien-Kapitel bestimmen `getGlobalStats`, `getGeoLiveStats` und `getGeoStructure` (je eine Woche) das Fenster der Route, nicht mehr ein Tag (PAR-1113, `initialRevalidateSeconds` 604800).
+- **Parkys Sprechblase** ist weiß mit schwarzem Text, in beiden Themes; ihre Spitze zeigt auf seinen Mund, das ✕ sitzt links vor dem Satz.
+- **Beliebte Parks:** Die zwölf Park-Links sind Pillen statt Tabellenzeilen: Name zu den Wartezeiten, Kalender-Symbol zum Andrang-Kalender.
+- **News-Tafel:** Jede Meldung trägt ein kleines Bild, ohne Foto das Marken-Cover. Mehrere Meldungen eines Tages trennt eine Haarlinie, die Datumsspalte ist schmaler. Rechts stehen jetzt die drei meistgelesenen Guides der letzten 30 Tage („Beliebteste Guides“), ihr Datum neben der Lesezeit.
+- **Parkkarten ohne Foto** zeigen das Marken-Cover statt einer leeren grauen Fläche, wenn das Grid sie auf die Höhe der Nachbarkarte streckt.
+- **Beliebte Parks:** Die Links lassen die Parks der Karten daneben aus (neun statt zwölf), „Parks entdecken“ ist ein `StopLink` im Kopf, und die Karten stehen bündig an der Spalte.
+- **Totensonntag im Phantasialand** hat ein Titelbild: der Wintertraum bei Nacht.
+- **Suche:** In den Park-Zeilen steht die Entfernung jetzt hinter dem Ort („Sevenum, Niederlande · 49.7 km“); die Zahl der offenen Attraktionen ist weg.
+- **Parkys Sprechblase** blendet jetzt auch aus, statt schlagartig zu verschwinden: Sie behält ihren Satz, bis das Ausblenden fertig ist.
+- **Parkseite:** Reacts Dev-Warnung „Encountered a script tag“ nach einer Navigation zur Parkseite ist weg. Das Skript für alte `#calendar`-Links steht nur noch im Server-HTML (`FirstLoadScript`); bei einer Client-Navigation leitet wie bisher `useTabHashRouting` weiter.
+- **Parky-Easteregg:** Zeigt die Maus genau auf Parkys Nase, schielt er auf den Zeiger. Kreist sie schnell um ihn (zwei Runden in 1,5 s), wird ihm schwindelig.
+
+### Parkys Achterbahnfahrten bleiben im Chatfenster auf dem Bildschirm
+
+Im offenen Chatfenster sitzt Parky oben links. Von dort fuhr der Launch etwa 120 px und der Freefall
+etwa 187 px über die Zeichnung hinaus, also auf einem Laptop unter rund 870 px Fensterhöhe oben aus dem
+Bildschirm; auf dem Handy liefen Launch, Freefall und Hügelbahn über den oberen bzw. linken Rand.
+`lib/assistant/parky-rides.ts` berechnet jetzt für jede Fahrt aus ihrer Geometrie, wie weit sie
+nach links und oben reicht (`rideFits`), und eine zufällige Fahrt ist nur noch eine, die an Parkys
+aktueller Stelle auf den Bildschirm passt. Auf dem Handy rückt Parky im Fenster 4 px vom Rand ab,
+damit dort der Looping Platz hat. Geprüft in Chromium und WebKit: 1280×680 nur Looping und Hügel,
+1280×1000 alle vier, iPhone-Format nur der Looping, jedes Mal ganz im Bild.
+
+### Admin: Nachindizieren listet zuerst, wo ein Antrag am meisten bringt
+
+Das Panel „Nachindizieren“ war nach Impressionen sortiert. Oben stand damit der Heide Park (14.648 Impressionen), den Google zwei Tage vor der Änderung gecrawlt hatte und ohnehin bald wieder holt. Die API sortiert jetzt nach Impressionen mal Tagen, die Google die Seite bei der Inspection nicht gecrawlt hatte, höchstens 30, für „unsicher“ die Hälfte (`reindexPriority`, `PArns/v4.api.park.fan`). Der Glossareintrag „Vertical Loop“ (1.593 Impressionen, zuletzt am 1. September gecrawlt) kommt damit auf 47.790 und steht vor dem Heide Park mit 29.296. Der Hinweis im Kopf des Panels nennt die Regel.
+
+### Parky hat eine eigene Seite
+
+Unter `/parky` stellt sich Parky vor, in allen sechs Sprachen:
+
+- Oben steht ein großer, lebendiger Parky neben der Überschrift. Darunter liegt eine Karte, deren Knopf direkt das Chatfenster öffnet.
+- Drei Kapitel zeigen echte Screenshots des Chats auf dem Handy, jeweils mit ein paar Fragen zum Ausprobieren: Wartezeiten, ein geplanter Tag und Parky, der mit der Lupe mitsucht.
+- Auf einer kleinen Bühne führt Parky fünf seiner Kunststücke vor, der Rest bleibt ein Geheimnis.
+- Danach kommen ein kurzer Abschnitt dazu, was mit den Fragen passiert, Antworten auf häufige Fragen und die nächsten Schritte.
+
+Wer die Seite besucht, sieht Parky für den Rest des Besuchs, auch wenn er für diesen Browser noch nicht eingeschaltet ist, solange Parky im Admin an ist. Die Screenshots erzeugt `scripts/capture-parky-shots.mjs` aus dem echten Widget mit zwei vorbereiteten Gesprächen. Im Footer verlinkt „Parky“ unter den Werkzeugen auf die Seite.
+
+Nebenbei steht ein Satzzeichen hinter einem Wartezeit-Chip in Parkys Antworten jetzt direkt am Chip statt mit Abstand.
+
+### „Meistgelesen“ steht mittig in seiner Pille
+
+In der Pille neben dem Kicker eines Artikels oder einer News und auf den Covern der Blog- und News-Übersicht saß das Wort zu hoch: bei doppelter Auflösung 7 Pixel Luft über den Versalien und 14 darunter. Diese Pillen zeigen auf dem Handy nur die Flamme. Das Wort war dort `sr-only` und kam ab `sm` mit `sm:not-sr-only` zurück. `not-sr-only` setzt aber `padding: 0` und schlägt als Utility das `padding-block` von `caps-centred`, das in `@layer base` liegt. `MostReadBadge` versteckt das Wort jetzt mit `max-sm:sr-only`, ab `sm` bekommt es dieselbe Polsterung wie jede andere Pille. Danach sind es 11 und 10 Pixel; den einen Pixel Rest macht die Rundung der Grundlinie auf ganze Pixel. Zur Kicker-Zeile steht die Pille unverändert mittig, 0,1 px neben der Mitte der Versalien.
+
+### Datenschutzerklärung nennt Parky
+
+Die Datenschutzerklärung hat einen eigenen Abschnitt zu Parky, auf Deutsch und Englisch. Er beschreibt:
+
+- die zufällige Rollout-Zahl im lokalen Speicher und die Turnstile-Prüfung vor der ersten Frage
+- was eine Frage an unseren Server schickt, den Standort nur nach ausdrücklicher Freigabe, auf etwa einen Kilometer gerundet und nicht gespeichert
+- die Übergabe an das Sprachmodell Claude von Anthropic, ohne IP-Adresse
+- dass Chats ohne IP-Adresse gespeichert und nach 90 Tagen gelöscht werden
+- die Rückmeldung mit freiwilliger E-Mail-Adresse, den Sitzungsspeicher und die Rechtsgrundlagen
+
+Der Statistik-Abschnitt zählt jetzt auch Parkys Ereignisse auf.
+
+### Parky geht Dialogen aus dem Weg
+
+Auf dem Handy lag Parkys Button über dem „Weiter“ im Planer-Assistenten. Solange ein Dialog den Bildschirm hat, etwa der Planer-Assistent, der ganze Planer auf dem Handy oder ein Wartezeit-Alarm, taucht Parky jetzt unter den Bildschirmrand ab. Ist der Dialog zu, kommt er wieder hoch. In der Such-Palette bleibt er da und sucht mit der Lupe mit.
+
+### Parky reagiert auf das, was du tust
+
+Parky antwortet jetzt auf ein paar Handgriffe auf der Seite. Jedes Mal spielt er dazu eine eigene Animation, und pro Art kommt einmal je Sitzung ein Spruch, in allen sechs Sprachen und mit zwei bis vier Varianten:
+
+- Tagesplaner öffnen: Er hakt auf einem Klemmbrett eine Liste ab.
+- Plan im Assistenten fertigstellen oder den Tag neu planen: Konfetti, Freudenaugen und zwei Hüpfer.
+- Favorit merken: Herzaugen, und Herzen steigen auf.
+- Wartezeit-Alarm stellen oder einer Show folgen: Über ihm läutet eine Glocke.
+- Auf dunkel schalten: Sein Riesenrad leuchtet unter Mond und Sternen.
+- Auf hell schalten: Eine Sonnenbrille rutscht ihm vom Hut auf die Augen.
+- App installieren: Konfetti.
+- Suche ohne Treffer: Über dem suchenden Parky erscheint ein Fragezeichen.
+
+Parky erfährt das über die Ereignisse, die die Seite fürs Tracking ohnehin meldet (`onSiteEvent`). Keine Komponente musste dafür neu verdrahtet werden. Er reagiert auch, wenn nicht gezählt wird. Solange ein modaler Dialog offen ist, schweigt die Sprechblase, sonst hätte sie auf dem Handy die Knöpfe im Planer-Assistenten verdeckt. Der Spruch kommt dann nach dem Schließen, wenn das höchstens 15 Sekunden dauert. Mit `?parky=love` (oder `plan`, `cheer`, `bell`, `shades`, `lights`) lässt sich jede Animation ausprobieren.
+
+### Parkys Hut in Safari wieder ganz
+
+Auf dem iPhone war Parkys Riesenrad-Hut über dem Button abgeschnitten, und auf seinen Fahrten wären Gleise und Wagen genauso abgeschnitten gewesen. Der Grund: Wippen und Schlagschatten lagen beide auf derselben SVG-Zeichnung, und Safari schneidet eine animierte Zeichnung mit Filter an ihrer eigenen Box ab. Jetzt bewegt das Wippen ein umgebendes Element, und der Schatten bleibt an der Zeichnung.
+
+### Parky sucht mit
+
+Ist auf der Seite eine Suche offen, hält Parky eine Lupe vors rechte Auge und sucht mit. Das gilt für die Palette aus dem Header oder über ⌘K, das Suchfeld im Hero und das im Schritte-Block der Startseite, die Suche in den Listen, im Glossar und im Parkvergleich. Hinter der Lupe ist das Auge groß, die Pupillen wandern über die Seite, Parky schaut mal nach links, mal nach rechts, und bei jedem Tastendruck beugt er die Lupe vor. Solange gesucht wird, pausieren seine kleinen Akte und Sprüche; eine Sprechblase, die gerade zu sehen ist, geht weg, damit sie nicht über den Ergebnissen hängt. Geht die Suche zu, schwenkt die Lupe weg.
+
+Woher Parky das weiß: Jede Such-Session meldet ihre Öffnungen und Schließungen an `searchPresence` (`lib/analytics/search-presence.ts`). Es zählt nur eine Session, die noch auf der Seite ist, damit ein Feld, das offen verschwindet, keine Suche zurücklässt. `/search` zählt nicht mit, weil dort jeder Seitenaufruf eine Öffnung ist, die nie schließt. `pnpm test:search-session` prüft beides.
+
+### Parky fährt Katapult, Airtime-Hügel und Freifallturm
+
+Bisher kannte Parky nur den Looping, bei dem er sich auf der Stelle dreht. Dazu kommen drei Fahrten, bei denen er sich wirklich bewegt: das Katapult (nach links abgeschossen, eine senkrechte Rampe hoch, oben hängen, rückwärts zurück und auspendeln, 4,4 s), die Airtime-Hügel (über zwei Kamelrücken aus dem Bild, von rechts zurück in die Ecke mit Bremsruck, 4,8 s) und der Freifallturm (den Mast hoch, oben zittern, Absturz, dabei hebt der Hut kurz ab, Bremsstoß, 4,2 s). Easter Eggs und Konami-Code nehmen eine zufällige der vier Fahrten, ab und zu fährt Parky auch von sich aus, und danach ist er immer schwindelig. `?parky=launch` (oder `hills`, `tower`, `coaster`) zeigt eine bestimmte.
+
+Schienen und Bewegung kommen aus einer Geometrie in `lib/assistant/parky-rides.ts` und werden per Web Animations API abgespielt, gedreht um den Ruhepunkt der Räder; so können gezeichnete Schiene und Fahrt nicht auseinanderlaufen. Auf den Hügeln richtet sich das Tempo nach der Höhe, oben langsam, unten schnell. `pnpm test:assistant` prüft für jede Fahrt, dass sie in Ruhe beginnt und endet, ihre Zeitpunkte vorwärts laufen und sie Schienen hat.
+
+### Parky hat Easter Eggs für jeden Park, einen Auftritt bei jedem Laden und wird von der Achterbahn schwindelig
+
+Der Park-Spruch kam nur auf 16 fest eingetragenen Parks und dort einmal pro Sitzung. Jetzt kommt er auf jeder Parkseite, bei 40 % der Besuche (`PARK_EGG_CHANCE`), auch wieder beim nächsten. Die 16 Lieblinge behalten ihre Bahn (`PARK_FAVOURITES`), für jeden anderen Park nimmt Parky den Namen aus den strukturierten Daten der Seite (`AmusementPark`) und die Achterbahn mit den längsten Wartezeiten aus `/stats`, sonst die Top-Attraktion (`topCoaster`). `/stats` lädt die Parkseite ohnehin; der Spruch liest es über denselben React-Query-Schlüssel und stellt keine eigene Anfrage. Auf LEGOLAND Deutschland etwa: „LEGOLAND Deutschland! Hier fahr ich immer zuerst Jungle X-pedition. Kommst du mit?“
+
+Der Auftritt kommt jetzt bei jedem Laden einer Seite (`pageEntrance`), nicht mehr nur einmal pro Sitzung; nach einer Navigation innerhalb der Seite und nach dem Schließen des Fensters blendet Parky wie bisher nur ein. Der Spruch zum Auftritt bleibt der erste der Sitzung. Nach der Achterbahn ist Parky immer schwindelig (`FOLLOW_UP`): Die Pupillen kreisen gegenläufig um die Augen, der Körper torkelt, der Mund wird wellig und drei Sternchen kreisen über dem Kopf (2,7 s). Zum Ausprobieren: `?parky=egg` löst den Park-Spruch auf einer Parkseite aus, `?parky=drop` (oder `scurry`, `roll`, `peek`, `pop`) wählt den Auftritt.
+
+### Parky liegt über allem
+
+Knopf, Sprechblase und Fenster lagen auf `z-[45]`, unter dem Header (`z-50`), dem Planer und anderen Ebenen. Sie teilen sich jetzt eine Ebene, `PARKY_LAYER` (`z-[10000]`, `components/assistant/parky-layer.ts`), über der Ladeleiste mit `z-[9999]`. Weil der Header Parky damit nicht mehr verdecken kann, beginnt das Fenster auf dem Handy bei 88 statt 112 px, und Parky ist dort wieder 64 px groß und ragt 28 px über die Kante; die Oberkante seines Huts liegt auf 390 × 844 bei 52 px, unter dem 48 px hohen Header.
+
+### Parky hat Easter Eggs: Lieblingsbahnen, Feiertage, Konami-Code und eine Achterbahnfahrt
+
+Auf der Seite von 16 bekannten Parks (`PARK_EGGS` in `lib/assistant/easter-eggs.ts`, nach Geo-Pfad, weil zwei Parks `disneyland-park` heißen) sagt Parky 5 s nach dem Laden etwas zu seiner Lieblingsbahn dort, etwa „Ach ja, Phantasialand! Ich muss auch noch mal Taron fahren.“, und fährt danach Achterbahn: Er sitzt in einem roten Wagen und dreht sich um die Mitte eines Loopings, sodass der Wagen die Schienen entlangfährt, oben kopfüber, mit großen Augen und offenem Mund. Jede Bahn ist eine, die park.fan führt. Pro Park einmal und höchstens drei pro Sitzung. An Halloween, Weihnachten und Neujahr ist die erste Einladung ein Spruch zum Tag. Wer irgendwo auf der Seite den Konami-Code tippt (↑↑↓↓←→←→BA), bekommt „Cheat aktiviert: unendlich Freifahrten!“ und eine Fahrt. Alle Texte in sechs Sprachen.
+
+Ein Spruch, der von Hand geschlossen wird, schaltet jetzt alle Sprüche der Sitzung ab, Easter Eggs eingeschlossen (`muteLines`). Das Öffnen von Parky beendet wie bisher Einladungen und Reaktionen, lässt die Easter Eggs aber stehen. Den Akt bekommt Parky von außen über `cue` an `ParkyLogo`. `pnpm test:assistant` prüft Parkpfad, Feiertage, Konami-Code und die Grenzen der Park-Sprüche.
+
+### Parky zählt, wie oft er zu sehen ist und wer klickt
+
+Bisher zählte nur das Öffnen des Fensters (`assistant_opened`), ohne zu wissen, wie oft Parky überhaupt zu sehen war. Neu in der eigenen Statistik: `assistant_shown`, einmal je Seitenaufruf, solange Parkys Knopf zu sehen ist, beim ersten mit dem Auftritt (`entrance`, sonst `none`); ein geschlossenes und wieder geöffnetes Fenster zählt auf derselben Seite nicht doppelt. `assistant_opened` trägt jetzt die Quelle (`source`: Knopf oder Spruch). Die Sprechblase meldet `assistant_line_shown`, `assistant_line_clicked` und `assistant_line_closed`, jeweils mit der Art des Spruchs (`line`: Einladung, Auftritt, Langeweile, Aufgewacht, Feiertag, Park, Geheimcode). Aus `assistant_shown` und `assistant_opened` lässt sich die Klickrate je Seitentyp ablesen, aus den drei Spruch-Ereignissen, welche Sprüche ziehen und welche weggeklickt werden. Labels für Ereignisse, Eigenschaften und Werte stehen in `lib/admin/site-analytics.ts`.
+
+### Parky hat einen Auftritt
+
+Beim ersten Erscheinen pro Sitzung kommt Parkys Button nicht mehr nur per Einblenden, sondern mit einem von fünf Auftritten (`sessionEntrance`, `lib/assistant/entrance.ts`): von rechts reinhuschen mit Speed-Linien und einer Drehung in der Luft (1,7 s), von oben fallen und mit Staubwölkchen landen (1,3 s), reinrollen und schwindelig wackeln (1,5 s), schräg vom Rand reinlugen und dann reinhüpfen (2,2 s) oder mit Glitzer aus dem Nichts ploppen (0,9 s). Nach der Landung sagt Parky einen Spruch, der zum Auftritt passt („Uff, mir ist ganz schwindelig … Hallo, ich bin Parky!“), in allen sechs Sprachen. Er ersetzt die erste Einladung nach 8 s, es bleiben zwei Sprüche pro Sitzung. Nach einem Neuladen, nach dem Schließen des Fensters und mit `prefers-reduced-motion` blendet der Button nur ein.
+
+Die Längen stehen nur in `ENTRANCE_MS` und erreichen das CSS als `--parky-enter`. Der Launcher wartet diese Zeit per Timer, bevor Parky spricht: `animationend` kam auf der Startseite nie bei Reacts Handler an, auch nicht, wenn es von Hand ausgelöst wurde. Ein Button, der mit einem Auftritt kam, blendet danach nicht ein zweites Mal ein. Geprüft auf 1440 × 900 und 390 × 844: alle fünf Auftritte Bild für Bild, jeder mit seinem Spruch, und kein horizontales Scrollen, während Parky von rechts kommt.
+
+### Parkys Hut ist als Riesenrad zu erkennen
+
+Der Hut war eine weiße Scheibe mit vier dicken Speichen und grünem Punkt, halb hinter dem Kopf; klein sah er aus wie eine Zitronenscheibe. Jetzt steckt ein Riesenrad auf einem A-Gestell in Parkys Kopf: ein offener blauer Kranz mit acht dünnen Speichen und acht bunten Gondeln (rosa, gelb, grün, orange), die Beine in dunklerem Blau. Die unterste Gondel verschwindet hinter dem Kopf, und das rechte Bein läuft die Kopfschräge hinunter, damit das Rad im Kopf steht statt obendrauf. Die Gondeln sind Kreise, damit sie beim Drehen ohne Gegendrehung gerade hängen. Ein heller Rand unter dem Kranz hält das Rad auf dunklen, hellen und bunten Hintergründen lesbar. Die Geometrie steht einmal in `parky-logo.tsx` (`HUB`, `RIM`, `CABINS`), Speichen und Gondeln werden daraus berechnet.
+
+Der Hut ragt etwa 7,5 der 48 Einheiten über das Gesicht hinaus. Dass der Header ihn im offenen Fenster nicht mehr verdeckt, regelt PAR-1204.
+
+### Parky eröffnet den Chat jedes Mal etwas anders
+
+Jeder Chat begann mit demselben Text („Hi, ich bin Parky 🎡 …“) und denselben drei Vorschlägen. Jetzt zieht das Fenster eine von fünf Begrüßungen (`greeting1`–`greeting5`): die bisherige und vier neue, unterschiedlich gebaut, mal mit einer Frage, mal mit Parkys Riesenrad-Hut. Die drei Vorschläge darunter kommen aus acht Fragen für jede Seite (bisher drei; neu: Parks in der Nähe, Airtime, Wetter am Wochenende, einen Tag planen, die Geschwindigkeit einer Achterbahn) und aus sieben Fragen auf einer Parkseite (bisher drei; neu: hier einen Tag planen, das Wetter heute, die Achterbahn mit der kürzesten Wartezeit, bis wann der Park offen hat). Jede Frage ist eine, die Parky nachschlagen kann; die Parks darin passen zur Sprache. Alles in sechs Sprachen.
+
+Begrüßung und Vorschläge werden zusammen gezogen und stehen in `sessionStorage` (`lib/assistant/opener.ts`), damit ein Neuladen oder ein geschlossenes und wieder geöffnetes Fenster den Chat so zeigt, wie er war. „Neuer Chat“ zieht neu, nie zweimal dieselbe Begrüßung hintereinander.
+
+Die Zufallsauswahl für Begrüßungen, Vorschläge, Sprüche und Parkys Akte steht an einer Stelle, `pickRandom` und `pickSome` in `lib/utils/pick-random.ts`; vorher hatten Gesicht und Sprechblase je eine eigene Kopie.
+
+### Parky langweilt sich, liest, tanzt, schläft ein und sagt etwas dazu
+
+`ParkyLogo` hatte im Leerlauf vier Akte (hüpfen, neigen, umschauen, Hut drehen), alle 15–25 s. Solange jemand die Seite benutzt, kommen jetzt alle 12–20 s auch Zwinkern, Wackeln, Augenrollen, eine Pirouette mit Sprung, ein kleiner Tanz mit Noten und Lesen in einem Buch dazu. Nach 25 s ohne Zeiger, Taste, Mausrad oder Touch ist Parky gelangweilt: erst ein Gähnen, dann alle 5–9 s Pfeifen, eine Kaugummiblase, die platzt, Augenrollen, Umschauen, Lesen oder ein kurzes Nickerchen. Nach 75 s fallen ihm die Augen zu, er atmet langsam, „Zzz“ steigt auf und das Riesenrad steht. Die nächste Bewegung weckt ihn mit einem Sprung und einem „!“. Parky im offenen Chatfenster macht das ebenfalls, solange er nichts zu tun hat.
+
+Die Sprechblase neben dem Button hat einen Zipfel, der auf Parkys Mund zeigt; rechter Rand und Unterkante sind aus Größe und Abstand des Buttons gerechnet (56 px, ab `sm` 64 px). Vorher hatte sie keinen Zipfel und stand 12 px neben dem Button, ohne erkennbaren Bezug zu Parky. Zu den sechs Einladungen kommen drei weitere, dazu Reaktionen: ein Spruch, wenn Parky sich langweilt (vier Varianten), und einer, wenn man ihn weckt (drei), höchstens drei pro Sitzung. Eine Einladung, die fällig wird, während Parky schläft oder schon etwas sagt, wartet. Schließen oder Öffnen beendet beide Arten für die Sitzung. Alle Texte in sechs Sprachen.
+
+Die Stufen kommen aus einem Store für die ganze Seite (`lib/assistant/parky-boredom.ts`) mit einem Timer für die nächste Stufe; eine Mausbewegung kostet nur einen Zeitstempel. Gesicht und Sprechblase lesen ihn über `useParkyBoredom`. Die Länge jedes Akts steht nur in `ACT_MS` und erreicht das CSS als `--parky-act`. Die Pupillen gleiten in 150 ms an einen neuen Blickpunkt. Mit `prefers-reduced-motion` bleibt Parky still, zeigt nur seine Stimmungen beim Antworten und sagt nur die Einladungen. `pnpm test:assistant` prüft die Stufen mit simulierter Uhr.
+
+### Changed — Parky's park list shows waits and crowds
+
+Every park in a list Parky shows now carries its status, crowd level and average wait in the site's badges and wait chip ([assistant](features/assistant.md)).
+
+### Changed — a slimmer header on Parky's window, and a big book to read
+
+The line under Parky's name is gone, and the header is lower on phones and desktops alike; Parky's face still rises over its top edge. While Parky looks something up it now peeks over a big open book, its eyes running along the lines ([assistant](features/assistant.md)).
+
+### Fixed — Parky holds the scroll on a phone
+
+While Parky's window is open on a phone the page behind it is locked, and the chat and the feedback form keep their scroll to themselves, so a swipe no longer moves the page underneath. On a phone the window's header is flatter and Parky's face rises over its top edge, as on a desktop ([assistant](features/assistant.md)).
+
+### Changed — Parky reads a book while it looks something up
+
+While a lookup runs Parky holds an open book, looks down into it, follows the lines and turns a page now and then. While it thinks, the small thought bubbles lead up to a big cloud with three bobbing dots ([assistant](features/assistant.md)).
+
+### Added — Parky's park lists and ride lists can be clicked
+
+A list of parks shows as a card with a photo, the place and a link per park, and every ride in a ride list links its own page ([assistant](features/assistant.md)).
+
+### Changed — Parky in a blue frame and taller on phones; the Google overlay closes
+
+Parky's window gets a frame in the theme's blue and, on a phone, reaches up to just below the header. The Search Console overlay that a signed-in admin sees on every page can be put away for the session with its ✕; a small button in the corner brings it back ([assistant](features/assistant.md)).
+
+### Changed — Parky shows what it is doing
+
+While waiting for the first word Parky gazes up, tilts its head and thought bubbles rise. While a lookup runs its eyes scan back and forth and its hat spins. While it writes, its mouth moves and it nods. Random acts are left for an idle face ([assistant](features/assistant.md)).
+
+### Changed — Parky floats, follows the mouse and shows photos
+
+The button at the bottom right hides while Parky's window is open, which closes with its own ✕ or Escape. On a desktop Parky sits large over the window's top edge, with bigger eyes that follow the mouse. While thinking it hops, tilts, looks around or spins its hat at random, and now and then does so while idle. Beside the closed button a short line invites a click, at most twice a session and never again once Parky was opened or a line was closed. Its lines load only with it. Park and ride cards show their photo from `/api/card-images`. See [assistant](features/assistant.md).
+
+### Added — delete a Parky chat in the admin
+
+Every row of `/admin/assistant/conversations` and each chat's own page get a delete button. It asks first, then removes the chat with its messages; feedback sent from the chat stays ([assistant](features/assistant.md)).
+
+### Changed — Parky gets a face, wait chips everywhere and times in your own clock
+
+Parky now has a face: big eyes, rosy cheeks and a smile, with the Ferris wheel as its hat. It blinks, bobs gently and turns its wheel while it writes, and everything stays still under reduced motion. Every wait in an answer is drawn in the site's wait chip (`LiveWaitPill`): in the text, on park cards and in a new card that lists a park's rides. Card times use the reader's own clock, and the chat sends the browser's time zone, so the API states every time in it. Speech bubbles are only as wide as their text, and the note under the input fits on one line. A bug fix: the launcher read the `assistant` namespace, so its strings shipped in every page's chrome. Its label now comes from `navigation`. See [assistant](features/assistant.md).
+
+### Added — Parky, the chat assistant, and site feedback
+
+Parky sits at the bottom right as a round Ferris-wheel bubble. A press opens a small chat window, which is a sheet from below on a phone ([assistant](features/assistant.md)). Parky answers questions about parks, rides, wait times, forecasts, the weather and our posts, in the page's language and with the informal address. The answer streams in as it is written, with three dots and a line saying what Parky is looking up, and each answer can be rated 👍 or 👎.
+
+On request Parky also acts on the page. It shows park and ride cards with the site's own badges, takes you to a park, a ride or a post, finds parks near you, and gives directions. It can plan a day too: open the day, add rides or a block, and sort the day with the planner's own optimiser. It reads the position only after a press on „Standort teilen", through the site's own geolocation, so the same yes brings the in-park markers and the compass.
+
+The bot runs on api.park.fan. Before the first question the window solves an invisible Turnstile challenge for a session token. Answers render without HTML, and only park.fan links and Google Maps directions are clickable.
+
+A second tab sends feedback about the site. The rollout is a switch and a share in the admin; a browser signed in to the admin always sees Parky, `?assistant=on` shows it for a session, and `NEXT_PUBLIC_ASSISTANT=off` is the emergency switch. The new admin area `/admin/assistant` shows an overview with cost, the settings with the Claude key (stored on the API, shown only masked), the chats and the feedback with actions. Parky's events are counted in our own statistic. The location banner moves above Parky's button.
+
+The frontend now runs on Node.js 26 (`.nvmrc`, `engines` 26.x, CI).
+
+### Admin-Overlay: Lesetiefe und Linkklicks auf der Seite, Snippet, Index und Technik
+
+Im Overlay unten links steht neben „park.fan-Statistik“ ein Schalter „Auf der Seite“. Eingeschaltet zeichnet er die eigene Statistik der letzten 28 Tage direkt in die Seite: auf Parkseiten eine gestrichelte Linie an jeder Stelle, die `section_seen` misst, mit dem Anteil der Aufrufe, die bis dorthin kamen; auf Beiträgen eine Linie bei 25, 50, 75 und 100 % (`article_read`), dort, wo der untere Bildschirmrand dann steht, also passend zur Höhe des eigenen Fensters; und um jeden sichtbaren Linkblock einen Rahmen mit seinen Klicks (`internal_link_clicked`), im Tooltip der Anteil an allen Linkklicks der Seite. Die Ebene liegt absolut über der Seite und verschiebt nichts, nur die Beschriftungen nehmen die Maus. Der Browser merkt sich den Schalter.
+
+Das Panel zeigt zusätzlich die Ausstiegsquote, die Zahl der Linkklicks und die Seitenarten, zu denen diese Links führten. Neu sind drei Abschnitte. „Snippet“ zeigt Titel und Beschreibung, wie sie im `<head>` stehen, mit Zeichen und Pixelbreite und einer Warnung, wo Google kürzt (etwa 60 Zeichen oder 580 px beim Titel, 155 Zeichen bei der Beschreibung). Unter jeder Suchanfrage steht, welche ihrer Wörter im Titel fehlen, und eine Seite oder Anfrage auf Platz 10 oder besser mit unter 1 % CTR wird markiert. „Index bei Google“ liest die Liste zum Nachindizieren: Wartet die Seite, steht dort, wann sie sich geändert hat und wann Google zuletzt da war, mit demselben „Beantragen“ wie im Panel (die Logik teilen sich beide jetzt). „Technik“ prüft im Browser Canonical, noindex, hreflang, JSON-LD-Typen und Bilder ohne `alt`.
+
+Besucher ohne Admin-Login laden davon nichts: Alles steckt im Overlay, das `SearchConsoleGate` erst nach dem Marker-Cookie dynamisch nachlädt. Die Abfragen laufen erst, wenn das Panel offen oder der Schalter an ist; die beiden Lesetiefe-Ereignisse nur, wenn die Seite die passenden Marken hat.
+
+### Admin: Die Seitenleiste ordnet 26 Seiten in sieben Bereiche, mit Untermenüs
+
+Unter „Betrieb“ standen vierzehn Einträge, von System über SEO bis Modellvergleich. Die Leiste hat jetzt sieben Bereiche: Start, Katalog (Parks, Saisons, Duplikate, Stilllegungen, Änderungen), Inhalte (Blog, Medien, Vor Ort, Einsendungen), Publikum, Parkdaten, Betrieb (System, Queues, Datenqualität, Wartung) und Konto. Unter Publikum klappt „Traffic“ Live, SEO, Suche, Wege, Tagesplaner und Beliebtheit auf; unter Parkdaten hängt der Modellvergleich an der ML-Zentrale, daneben steht „Parks live“, bisher „Analytics“, das neben „Traffic“ nicht verriet, dass es um die Parks geht. Ein Untermenü steht offen, solange eine seiner Seiten aufgerufen ist, und lässt sich mit dem Pfeil auf- und zuklappen; die eingeklappte Leiste zeigt nur den Obereintrag und leuchtet für alle seine Seiten. Die Kopfzeile nennt den Obereintrag als Link („Publikum / Traffic / SEO“), die ⌘K-Suche findet Untereinträge wie bisher. `pnpm test:admin-nav` prüft, dass jede Seite genau einen Eintrag hat und der Rollenfilter auch Untereinträge erreicht.
+
+### Admin-Overlay: eigene Statistik neben den Google-Zahlen
+
+Das Overlay unten links auf jeder öffentlichen Seite zeigt aufgeklappt jetzt zuerst die eigene Statistik der Seite über dieselben 28 Tage: Aufrufe und Einstiege mit Veränderung gegen die 28 Tage davor, die Absprungrate der hier begonnenen Besuche und die durchschnittliche Zeit auf der Seite. Darunter zwei Balken: woher die Einstiege kamen (Suchmaschinen, KI-Assistenten, Social Media, andere Websites, direkt) und auf welchen Geräten die Seite gelesen wurde. Die drei Abfragen (`/v1/admin/analytics/overview` mit `filter=path:`, `breakdown?dim=channel` mit `filter=entry:` und `breakdown?dim=device` mit `filter=path:`) laufen erst beim Aufklappen, weil ein Filter auf eine Seite die Stundenzeilen liest. Besucher pro Seite gibt die API unter einem Seitenfilter nicht her (`visitors: null`), deshalb stehen dort Einstiege. Die Zeile „Eigener Zähler: … Besuche aus der Suche“ entfällt, der Herkunftsbalken zeigt dieselben Einstiege nach Kanal.
+
+Die Google-Zahlen stehen als vier Kacheln mit Symbol darunter, die Veränderung von Klicks und Position als Chip an der Kachel. Das Panel nutzt das Glas der Parkseiten-Kacheln (`TILE_GLASS`), scrollt auf kleinen Bildschirmen in sich und verlinkt zusätzlich auf `/admin/traffic`, auf die Seite gefiltert. Die grünen und gelben Chips des Admins haben im hellen Design eine dunklere Schrift, im Admin selbst (immer dunkel) ändert sich nichts.
+
+### Admin: Nachindizieren, mit Grund, Zahlen und Gedächtnis
+
+Unter SEO steht ein neues Panel „Nachindizieren“. Es listet die Seiten, die sich in den letzten 30 Tagen geändert haben und die Google seitdem nicht gecrawlt hat, jede mit Grund (Google kennt sie nicht, hat die alte Fassung oder hat vielleicht schon die neue) und mit Klicks, Impressionen, CTR und Position aus 28 Tagen. „Beantragen“ kopiert die Adresse und öffnet die Search Console; dort kommt sie oben ins Feld „URL prüfen“, und dann folgt „Indexierung beantragen“. Eine API dafür bietet Google nicht, und auch keinen Link, der das Feld vorausfüllt. Der Klick wird gemerkt: Eine beantragte Seite rückt unter „Beantragt, wartet auf Google“ und lässt sich bis zur nächsten Änderung nicht noch einmal beantragen, auch wenn die Search Console noch den alten Crawl zeigt. Ab zehn Anträgen in 24 Stunden warnt das Panel, denn mehr nimmt Google pro Tag meist nicht an.
+
+Blogposts bekommen dafür ein beobachtetes `<lastmod>`. Der Content-Change-Crawl vergleicht jetzt auch einen Hash aus Frontmatter und Text jedes Posts. Bisher bewegte ein neuer Title die Sitemap nicht, weil `updatedAt` nur für neuen Inhalt weiterrückt. Beim ersten Lauf nimmt jeder Post sein `updatedAt` oder `date`, damit nicht alle 648 auf einmal als geändert gelten.
+
+### Admin: Die Queues-Karte trennt alte Fehlschläge von aktuellen
+
+Bull behält einen gescheiterten Job, bis neuere ihn verdrängen, und die Karte zeigte jeden rot und ohne Datum. Am 30.10. standen drei Queues rot da: `search-console` mit einem Klick vom 28.10., am nächsten Morgen behoben; `ml-training` mit einem Training vom 24.10., am selben Nachmittag behoben und seitdem jeden Tag gelaufen; `children-metadata` mit dem Wochenlauf vom 25.10., der seitdem nicht mehr lief. Rot zählt jetzt nur noch `failedOpen` aus `/v1/admin/queue-status`, also Fehlschläge, nach denen kein Lauf desselben Jobs mehr gelungen ist; die übrigen stehen grau als „resolved“. Unter „Warum“ steht bei jedem Fehlschlag, wie alt er ist, und gegebenenfalls „Seitdem erfolgreich, zuletzt vor …“ (`app/admin/queues/page.tsx`). Eine API ohne `failedOpen` zählt wie bisher jeden Fehlschlag als offen.
+
+### Admin: Die Search-Console-Karte sieht einen laufenden Import
+
+Die Karte wusste nicht, ob ein Import läuft. Nach „Jetzt importieren“ wartete sie bis zu fünf Minuten auf ein neues `lastImportAt`. Einen Lauf, den der Cron um 09:20 oder ein anderer Tab gestartet hatte, sah sie gar nicht, und ein Klick währenddessen reihte einen Job ein, der sofort zurückkam. Die API liefert dafür jetzt `runningSince`. Solange es gesetzt ist, steht in der Statuszeile „Import läuft, gestartet vor …“, der Knopf bleibt gesperrt und der Status wird alle 6 s neu gelesen (`importInProgress` in `lib/admin/search-console.ts`, `useSearchConsoleStatus`). Eine API ohne das Feld liest sich als „kein Lauf“, dann gilt wie bisher nur die Wartezeit nach dem Klick.
+
+### Handy: kürzere Park-, Ride- und Startseite
+
+62 % der Besuche kommen vom Handy, auf Parkseiten 84 %. Sechs Stellen, an denen ein Handy Bildschirme für nichts bezahlt hat:
+
+- **Geschlossener Park:** Die Ride-Karten der Parkliste (`LandSection` → `AttractionCard underParkStatus`) zeigen kein „Geschlossen" mehr, solange der Park zu ist. Bei Europa-Park standen nachts 97 rote Badges untereinander; die Statuskarte sagt es einmal. Karten außerhalb der Parkliste (Blog, Favoriten) behalten ihr Badge.
+- **Standort-Banner der Startseite:** Unter `md` erscheint `LocationBanner` nur noch, solange das Kapitel „Freizeitparks in deiner Nähe" im Bild ist und der Hero nicht. Vorher lag der Toast fest über den restlichen 34 Bildschirmen und deckte ein Fünftel jedes Bildschirms ab.
+- **Ride-Seite:** `AddToPlannerButton` ist unter `sm` ein 36-px-Icon (Name im `aria-label`). Neben dem Stern ließ das Label dem H1 so wenig Breite, dass „RC Racer – Temps d'attente en direct" auf drei Zeilen brach; jetzt zwei (72 px).
+- **Parkseite:** Website-, Ticket-, Social- und Kartenlinks (`ParkOutboundLinks`, neu in `park-quick-links.tsx`) stehen unter `sm` am Fuß von `ParkInfoCard` statt im Kopf. „Heute im Park" rückt bei Europa-Park von 650 auf 543 px und damit in den ersten Bildschirm (664 px).
+- **Startseite Handy:** „Beliebte Parks" ist unter 768 px Seitenbreite ausgeblendet (das Nähe-Kapitel darüber listet schon Parks; die Links bleiben im HTML). Das leere Favoriten-Band fällt für Besucher ohne Favoriten weg: ein Inline-Skript im Layout setzt `html[data-has-favorites]` vor dem ersten Paint, `saveFavoritesToCookies` hält es aktuell, also ohne Layout-Shift.
+- **Ride-Verlauf Handy:** `AttractionHistoryGrid` zeigt unter 768 px die neuesten acht Tage, die übrigen 23 hinter `MobileMore`. Alle 31 waren dort 16 Reihen, rund acht Bildschirme. Die Platzhalterhöhe hat dafür eine dritte Stufe (`phone`: 552 px), `pnpm test:attraction-history-geometry` prüft sie.
+
+### Die Suche zählt drei Felder mehr und weiß, welcher Park geöffnet wurde
+
+Ein geöffneter Treffer oder Vorschlag der Suche (`search_result_clicked`, `search_browse_clicked`) trägt jetzt die UUID des Parks, Fahrgeschäfts, der Show oder des Restaurants als Entity, nur wenn es eine UUID ist (`lib/analytics/search-session.ts`). Daraus zeigt Traffic › Suche die meistgesuchten Parks und Fahrgeschäfte, wie der Planer seine meistgeplanten. Was getippt wurde, wird weiter nie gesendet. Drei Suchfelder waren bisher gar nicht erfasst und zählen jetzt wie die anderen, mit Öffnung, Eingabe, „nichts gefunden“ und Klick:
+
+- `park_rides`: die Fahrgeschäft-Suche auf jeder Parkseite. Ein Klick auf eine Karte unter den Treffern zählt, die Glocke und der Planer-Knopf darin nicht.
+- `compare`: die Park-Auswahl im Vergleich.
+- `glossary`: das Suchfeld der Glossar-Übersicht. `glossary_searched` entfällt, dafür gibt es `search_typed`.
+
+Die Palette der Admin-Diagramme (`CATEGORICAL`) hat drei Farben mehr, Cyan, Braun und Lila, damit jedes der elf Suchfelder eine eigene Farbe hat statt eines Graus. Jedes Nachbarpaar besteht den Farbsehschwäche- und Kontrast-Check des Dataviz-Validators auf dem dunklen Hintergrund. Die Rangliste teilt sich Traffic › Suche mit dem Planer (`ranked-entities.tsx`). `pnpm test:search-session` prüft die UUID am Klick und dass ein Knopf in der Karte nicht zählt; siehe [Site search](features/site-search.md#what-is-counted).
+
+### Der Tagesplaner zählt seinen Weg: Assistent, Blöcke, Werkzeuge, Teilen und Push
+
+Der eigene Zähler kannte vom Planer nur vier Events (`planner_opened`, `plan_day_started`, `plan_optimized`, `planner_closed_empty`) und wusste nie, welcher Park geplant wurde. Jetzt kommen elf Events dazu (`lib/analytics/planner-funnel.ts`):
+
+- **Assistent:** jeder Schritt einmal je Öffnung (`planner_wizard_step`, `step`) und der letzte Knopf (`planner_wizard_finished`, mit der Angabe, ob er die Headliner einplant). So sieht man, wo Leute im Assistenten aussteigen.
+- **Blöcke:** jeder Block, der in den Plan kommt oder einzeln wieder herausgeht (`plan_item_added` / `plan_item_removed`, `kind` Fahrgeschäft, Show oder eigener Block). Dazu kommt `source`, der Knopf, über den es geschah: Suche im Planer, „Zum Plan“, Ziehen, fehlende Headliner, Show-Auswahl, eigener Block, Assistent oder „Alle Headliner“. Gezählt wird in `usePlanner`, durch das jeder Schreibvorgang läuft, und jeder Aufruf muss die Quelle nennen.
+- **Werkzeuge:** `plan_optimized` sagt jetzt mit `mode`, ob „Tag optimieren“, „Alle Headliner“ oder eine Antwort des Passt-Assistenten den Tag umgeplant hat. Ältere Zeilen haben keinen. Neu sind außerdem `planner_fit_opened`, `planner_fit_lever` (ein Hebel eingeschaltet), `planner_undo` und `planner_day_cleared`.
+- **Teilen und Push:** `planner_shared_opened` mit dem, was der Link enthielt, `planner_shared_adopted` und `planner_push_on` (erst wenn die API die Benachrichtigung angenommen hat).
+
+Der Plan speichert nur Slugs, ein Event nennt seinen Gegenstand aber per UUID. `lib/planner/entity-ids.ts` merkt sich im Speicher des Tabs die IDs, die eine Seite schon kennt: den Park der Seite (`PlannerPageParkBeacon`), den im Assistenten gewählten Park und Park und Fahrgeschäft auf dem „Zum Plan“-Knopf der Fahrgeschäft-Seite. Ein `/plan/day`, das `parkId`, `attractionId` und `showId` mitliefert, wird ebenfalls gelesen. Ohne bekannte ID geht das Event ohne Entity hinaus, nie mit einer geratenen. Die Admin-Labels stehen in `lib/admin/site-analytics.ts`.
+
+`plan_day_started` trägt jetzt `source`, den Weg in die Öffnung, in der der Tag begann, und `none` bei zugeklapptem Planer. Damit zeigt die neue Admin-Seite Traffic › Tagesplaner (`/admin/traffic/planner`, aus `GET /v1/admin/analytics/planner`) je Weg hinein, wie oft daraus ein Plan wird. Dazu kommen der Trichter von der Öffnung bis zum Teilen, Seitenart nach Gerät, die Schritte des Assistenten, Blöcke nach Knopf und Art, die Werkzeuge, Teilen und Push, die meistgeplanten Parks und Fahrgeschäfte mit Link in den Editor und der Verlauf. `pnpm test:planner-events` prüft zehn Fälle, `pnpm test:admin-site-analytics` die Matrizen und Wörter der Seite; siehe [What the planner counts](features/trip-planner/analytics.md#in-the-admin).
+
+### Aufrufe aus Rechenzentren zählen getrennt, die Statistik blendet sie aus
+
+Die API markiert jetzt jeden Treffer, dessen Adresse zum Netz einer Cloud oder eines Hosters gehört (ASN aus GeoLite2-ASN von MaxMind, nicht gespeichert). Solche Aufrufe kommen meist von Programmen, die sich als Browser ausgeben, und zählten bisher als Besucher mit. Im Admin blendet jede Traffic-Seite sie standardmäßig aus. Der neue Schalter „Rechenzentren“ in der Filterleiste und auf der Live-Seite (`?datacenter=include|only`) zählt sie mit oder zeigt nur sie; Werte und Wörter stehen in `DATACENTER_SCOPES` und `DATACENTER_LABEL` in `lib/admin/site-analytics.ts`. Die Meistgelesen-Listen zählen sie nie. Die Datenschutzerklärung (DE und EN) sagt in Abschnitt 4, dass der Server das Netz der Adresse nachschlägt und nur das Merkmal behält.
+
+### Six Flags hat eine eigene Seite: alle Parks mit Live-Status
+
+„six flags wait times“ und seine Varianten kamen in 28 Tagen auf etwa 8.500 Impressionen bei Position 7, und Google zeigte dafür die Seite von Six Flags Great Adventure. `/{locale}/parks/six-flags` listet jetzt alle Parks mit „Six Flags“ im Namen und die Hurricane-Harbor-Wasserparks, die mit vollem Namen Six Flags Hurricane Harbor heißen (heute 13 und 11), nach Land gruppiert, Freizeitparks vor Wasserparks, mit Öffnungsstatus und Andrang wie auf den Länderseiten; Titel „Six Flags Wartezeiten LIVE: alle 24 Parks“, `BreadcrumbList` und `ItemList`, hreflang in sechs Sprachen, Eintrag in `/sitemap.xml` mit beobachtetem `<lastmod>`. Jede Six-Flags-Parkseite verlinkt sie in der Adresszeile („Alle Six-Flags-Parks“). Wer dazugehört, entscheidet der Name (`lib/parks/park-brands.ts`): La Ronde gehört Six Flags, heißt aber nicht so, und steht nicht auf der Seite. `CountryParkGroups` und `LiveParkGrid` nehmen dafür eine Liste von Regionen statt eines Landes, alle Länder der Seite kommen in einer `/api/parks/live`-Anfrage. Ein Fehler der API beim Lesen des Geo-Baums wirft, damit ISR die letzte gute Seite behält, statt ein 404 für das ganze `revalidate` zu cachen; ohne einen einzigen Park der Marke ist die Seite ein 404 und fehlt in der Sitemap. Die Karten-Felder eines Parks baut jetzt `toStaticPark` (`lib/parks/static-park.ts`) für Land, Stadt und Marke an einer Stelle. `pnpm test:park-brands` prüft fünf Fälle; siehe [Brand pages](seo/brand-pages.md).
+
+### Die Parkseite nennt die Kürzel, unter denen ein Park gesucht wird
+
+Die API liefert kuratierte Kürzel als `abbreviations` („EP“ für den Europa-Park). `nameWithAbbreviations` (`lib/utils.ts`) setzt sie hinter den Namen: in die H1 jeder Parkseite („Europa-Park (EP) – Wartezeiten live“) und in die Meta-Beschreibung der Parkseite; das `AmusementPark`-JSON-LD trägt sie als `alternateName`. Ohne Kürzel bleibt alles wie bisher. Gesucht wird so: „ep wartezeiten“ 563 Impressionen, „uss waiting time“ 155, „sfga wait times“ 127 in 28 Tagen. `pnpm test:park-name` prüft drei Fälle.
+
+### Search Console: Die Startseite verlinkt den Lead-Park beim Namen, Kalendertitel nennen den Andrang, alte Ride-Slugs leiten weiter
+
+Ausgewertet über den Admin-MCP, 28 Tage bis 27.10.2026. Für „europapark wartezeiten live“ zeigte Google die deutsche Startseite (1.225 Impressionen, Position 7,3, kein Klick), nicht die Europa-Park-Seite (45). Die Startseite zeigt im Kapitel „Live-Wartezeiten“ die Rangliste ihres Lead-Parks, verlinkte die Parkseite aber nur mit „Beispiel ansehen“, und „Crowd-Kalender eines Parks ansehen“ führte auf die Parkseite statt auf den Kalender. Beide Links tragen jetzt den Parknamen („Europa-Park: alle Wartezeiten live“, „Europa-Park: Andrangskalender für jeden Tag“), der zweite führt auf `parkCalendarPath` des Lead-Parks, in allen sechs Sprachen (`homeStory.live.ridesLink`, `homeStory.calendar.cta`).
+
+Der deutsche Kalendertitel hieß „{Park}: Öffnungszeiten & Wartezeiten {Monat}“. Gesucht wird der Kalender mit Andrang, Auslastung und Kalender (Europa-Park-Kalender: „andrang kalender“ 473, „andrangskalender“ 445, „andrang“ 435 Impressionen), und „Wartezeiten“ im Titel ließ ihn mit der Parkseite konkurrieren. Er heißt jetzt „{Park}: Andrang & Öffnungszeiten im {Monat}“, die Beschreibung nennt Andrangskalender und Auslastung. Niederländisch genauso: „{Park}: druktekalender voor {maand}“, weil der Walibi-Kalender 757 Impressionen für „walibi wachttijden“ holte, die der Parkseite gehören. Französisch, Spanisch und Italienisch ebenso: „{Park} : calendrier d’affluence en {mois}“, „{Park}: calendario de afluencia en {mes}“, „{Park}: calendario delle affluenze a {mese}“; der französische Astérix-Kalender holte rund 390 Impressionen für Varianten von „temps d’attente asterix“, auf Position 10 und ohne Klick.
+
+Die API beantwortet einen alten Ride-Slug aus `attraction_slug_aliases` (Merge, Korrektur von Hand, Umzug in einen Schwesterpark) mit 301, `fetch` folgt, und die Ride-Seite sah einen laufenden Ride, der nicht geschlossen ist: 404. `findMovedRideRedirect` (`lib/parks/closed-ride.ts`) nimmt die `url` der Antwort und schickt mit 308 weiter, Canonical in den Metadaten ebenso; `movedPath` (`lib/utils/redirect-utils.ts`) ist der Vergleich, den `findRenamedParkRedirect` schon für Parks machte. Beispiel: `michigans-adventure/lazy-river` liegt seit PAR-743 unter `wildwater-adventure`. Das gilt auch, wenn der Ride am Ziel für immer geschlossen ist: Dann zeigt die neue URL die Seite des geschlossenen Rides, statt dass die alte sie unter falschem Canonical doppelt. `pnpm test:closed-ride` prüft vier Fälle mehr.
+
+robots.txt sperrt `/*?height=`. Das sind die Links der Kinderseiten in den Größenfilter der Parkseite, eine URL je Größenstufe, rund tausend insgesamt; in der URL-Prüfung waren sie die meisten Verweisquellen der Parkseiten, und die englische Thorpe-Park-Seite war seit Februar nicht mehr gecrawlt. Die spanische Parkbeschreibung nennt das Wetter („clima“): „six flags méxico tiempo“ kam auf 1.363 Impressionen bei Position 10 und 0,2 % CTR.
+
+### Die Zustimmungsseite des Admin-MCP warnt, wenn die Anfrage aus einem anderen Land oder Browser kommt
+
+`/admin/oauth/consent` zeigt einen Hinweis, wenn die Verbindung in einem anderen Land oder mit einer anderen Browser-Familie gestartet wurde als dort, wo der freigebende Admin gerade angemeldet ist: „Gestartet: Vereinigte Staaten, Firefox / Du: Deutschland, Chrome“. So sieht ein Link aus, den jemand anderes gestartet und weitergeschickt hat. Die API liefert dafür `startedFrom` und `viewer` (Land per GeoIP, Browser-Familie, nie Adresse oder User-Agent). `describeOriginMismatch` (`lib/admin/mcp.ts`) nennt nur, was abweicht, und vergleicht nichts, was eine Seite nicht kennt; `pnpm test:admin-mcp` prüft sechs Fälle mehr.
+
+### Network Error Logging ist aus, die Datenschutzerklärung erwähnt es nicht mehr
+
+Cloudflare sendete auf `park.fan` und `api.park.fan` die Header `nel` und `report-to`; Browser meldeten damit fehlgeschlagene Anfragen samt URL und Referrer an `a.nel.cloudflare.com`. NEL ist im Cloudflare-Dashboard abgeschaltet, beide Header fehlen seit dem 29.10.2026 (per curl geprüft, auch auf `www.park.fan`). Der Satz dazu im Abschnitt „Cloudflare“ der Datenschutzerklärung (DE/EN) ist gestrichen.
+
+### Die SEO-Seite zeigt, was Google über park.fan meldet: Anfragen, Seiten und Verlauf aus der Search Console
+
+`/admin/traffic/seo` beginnt jetzt mit dem Abschnitt „Google Search Console“. Die Statuszeile nennt die Property, den letzten Import, die gespeicherten Tage und die Zeilen und zeigt den Fehlertext eines gescheiterten Imports; ein Editor startet mit „Jetzt importieren“ einen Import, die Seite fragt danach alle sechs Sekunden den Status ab (höchstens fünf Minuten), bis sich `lastImportAt` oder `lastError` ändert. Darunter stehen Klicks, Impressionen, CTR und Ø Position gegen den Zeitraum davor (Prozent für Klicks und Impressionen, Prozentpunkte für die CTR, Plätze für die Position: von 8 auf 4 sind vier Plätze besser, nicht „minus 50 %“) und vier Verlaufsdiagramme mit je eigener Achse, denn Klicks und Impressionen unterscheiden sich um den Faktor 30 und mehr. Zeiträume, die das Fenster anschneidet oder die in die noch fehlenden Tage reichen, sind schattiert (die Seite nimmt `partial` der API, und rechnet nur selbst, wenn keines gesetzt ist); ein Monat, dem Google die letzten drei Tage noch schuldet, läse sich sonst als Einbruch.
+
+Die Liste „Suchanfragen“ (Klicks, Impressionen, CTR, Position, Veränderung) und die Liste „Seiten in der Google-Suche“ mit den Zahlen des eigenen Zählers daneben (Besuche aus der Suche, Absprung, Ø Dauer) schränken einander ein: Ein Klick auf eine Anfrage zeigt die Seiten dazu (`?gscQuery=`), ein Klick auf eine Seite ihre Anfragen (`?gscPage=`), jeweils als Chip, der sich selbst entfernt. Die Kacheln bleiben dabei unverändert: Sie lesen die Summen des Seiten-Endpunkts (`limit=1`), denn die Summen der Anfragen lassen die anonymisierten Suchanfragen aus und lägen unter den Diagrammen. Die Filter der anderen Panels gelten nicht für Google, nur Zeitraum und Sprache, und der Abschnitt sagt das, solange einer gesetzt ist. Eine Position ohne Impressionen kommt als `null` und steht als Strich da, nie als 0, und die Veränderung vergleicht mit gleich vielen Tagen mit Daten, weil Google zwei bis drei Tage hinterherhinkt. Ohne Zugangsdaten (`status.configured` ist `false`) bleibt ein Hinweis mit den zwei fehlenden Variablen `GSC_SERVICE_ACCOUNT_JSON` und `GSC_SITE_URL`, mit `lastError`, falls sie gesetzt, aber unbrauchbar sind, und mit dem Link auf die Einrichtungsseite der API, bis der erste Import Zeilen gespeichert hat, steht dort, dass er die letzten 16 Monate holt.
+
+Die Zahlen stehen in `lib/admin/search-console.ts` (Kennzahlen, Veränderung, Adressen, Drill-down, Status, angeschnittene Zeiträume), `pnpm test:admin-search-console` prüft 59 Fälle. `PageLinks`, `MoreButton` und der Filter-Chip (`FilterChip`) liegen jetzt als gemeinsame Teile in `list-parts.tsx` und `filter-bar.tsx`, `useAddressWriter` schreibt die Adresse für `useTrafficFilters` und den Drill-down, `DeltaChip` nimmt einen eigenen Text für eine Veränderung in der Einheit der Kennzahl. Das Diagramm kennt die Einheit `position`.
+
+Die Zahlen von Google enden jetzt am letzten Tag mit Daten (die API verankert ein rollendes Fenster dort). Über den Kacheln steht, welcher Zeitraum gemeint ist, aus `from`/`to` der API: „Google-Zahlen: 28 Tage bis 26.10.2026 (letzter Tag mit Daten).“ Der Satz „Die Zahlen reichen bis … Die Tage danach fehlen noch“ ist ersetzt (`googleWindowNote` statt `coverageNote`); er erscheint nur noch bei einem festen Zeitraum, der über die gespeicherten Tage hinausreicht.
+
+### Umami ist abgeschaltet
+
+Das Locale-Layout bindet das Umami-Skript nicht mehr ein und hängt den `WebVitalsReporter` nicht mehr ein, der nur an Umami meldete. Der Browser schickt nichts mehr an Umami; Seitenaufrufe zählt allein der eigene Zähler. `lib/analytics/umami.ts`, der Reporter und `pnpm test:umami-events` bleiben liegen, Wiedereinschalten heißt die zwei Stellen im Layout zurückholen. `NEXT_PUBLIC_UMAMI_URL` und `NEXT_PUBLIC_UMAMI_WEBSITE_ID` liest nichts mehr ([analytics](development/analytics.md)).
+
+Die Datenschutzerklärung (DE/EN, Stand 29. Oktober 2026) nennt Umami nicht mehr: Abschnitt „Umami“ gestrichen, „In Kürze“ und der Widerspruch sprechen nur noch vom eigenen Zähler, der „Do Not Track“ und „Global Privacy Control“ gleich behandelt. Der Statussatz der Opt-out-Box für „Global Privacy Control“ sagt in allen sechs Sprachen nicht mehr „Umami schon“. Das Merkmal im Browser heißt weiter `umami.disabled`, damit bestehende Widersprüche gelten. Der Hinweis über der Admin-Traffic-Seite und die Code-Kommentare, die Umami noch als laufend beschrieben, sind angepasst.
+
+### Ein Token erstellen verlangt das Passwort, die Freigabeseite nennt das Alter der Anfrage
+
+`POST /v1/admin/auth/tokens` prüft jetzt das Passwort und, wenn das Konto einen zweiten Faktor hat, den Code. Ein Token überlebt die Sitzung, die es ausstellt, also konnte eine gestohlene Sitzung sich eines ausstellen, das nach ihrem Ende weiter las. Der Dialog unter `/admin/account` hat dafür ein Feld „Passwort“ (`autocomplete="current-password"`) und, wenn `identity.totpEnabled` gesetzt ist, ein Feld „Code“ (`autocomplete="one-time-code"`, ein Feld wie im Login). Die Antworten der API stehen auf Deutsch an dem Feld, das sie meint: `invalid-password`, `invalid-totp` (ein Code gilt nur einmal, auch einer, mit dem man sich in denselben 30 Sekunden angemeldet hat, die Meldung sagt: auf den nächsten warten), `totp-required` für eine Sitzung, die vom zweiten Faktor nichts wusste (das Codefeld erscheint dann), die Sperre des Limiters (429 `rate-limited` mit `retryAfterSeconds`) in Minuten, und ein 401 ohne einen dieser Werte als beendete Sitzung. Beide Felder werden nach jeder Anfrage geleert, ob sie gelang oder nicht, die Eingabemarke steht danach im Passwortfeld. `createTokenBody` sendet `totpCode` nur als vollständigen Code, `describeTokenCreateError` ordnet die Antworten zu. Widerrufen verlangt kein Passwort.
+
+Die Freigabeseite unter `/admin/oauth/consent` zeigt aus `createdAt` der Anfrage, wie alt sie ist („vor 2 Minuten gestartet“), und warnt darüber, wenn sie älter als fünf Minuten ist: Wer eine Verbindung gerade in der App startet, landet nach Sekunden hier, eine ältere hat womöglich jemand anderes gestartet und den Link geschickt. Fehlt `createdAt` (eine API, die es noch nicht sendet), steht weder Alter noch Warnung da. Das Alter zählt ab dem späteren von Minutentakt und Abrufzeit der Anfrage, damit ein vorher gelesener Takt es nicht jünger macht.
+
+`OtpInput` (`_ui/controls.tsx`) ersetzt die beiden einzeln gebauten Codefelder der Kontoseite, `lib/admin/totp.ts` hält die Länge und den Ziffernfilter, den auch die Kästchen des Logins nutzen. `Notice` (`_ui/primitives.tsx`) ist der gelbe Hinweiskasten, den das Token-Dialogfenster schon hatte. `formatAgo` in `_lib/format.ts` ersetzt vier Kopien von `formatDistanceToNow(parseISO(…), { addSuffix: true, locale: de })`. `pnpm test:admin-mcp` prüft 67 Fälle (vorher 47), darunter Body, jede Antwort der API und die Grenzen des Alters bei 5 Minuten.
+
+Nachbesserungen: Die Freigabe verlangt jetzt das Passwort, und bei einem Konto mit zweitem Faktor den Code (`POST /v1/admin/oauth/requests/:id/approve` mit `{ password, totpCode? }`). Die Seite hat dafür dieselben Felder wie der Token-Dialog; `passwordProofBody` ist der gemeinsame Teil von `createTokenBody` und der Freigabe, `describeTokenCreateError` ordnet beide Antworten zu. Beide Felder werden nach der Anfrage geleert. Verweist die Antwort nach erteilter Freigabe auf eine andere Adresse, bleibt die Seite in diesem Zustand („Freigabe erteilt, aber die Zieladresse stimmt nicht. Prüfe „Mein Konto“ und trenne die Verbindung.“), statt die Knöpfe wieder anzubieten; zurückgesetzt wird sie nur bei Netzwerkfehlern und 404.
+
+### Die Datenschutzerklärung beschreibt Protokolle, Kennungen, Widerspruch und Umami genauer
+
+Abschnitt 2 nennt, was in den Protokollen der API steht: In den Anfragezeilen des Redaktionsbereichs
+steht das /24 oder /48 der Adresse, in keiner anderen Zeile eine Adresse. Abschnitt 4 sagt, was der
+Server aus Adresse und User-Agent ableitet, wie die Tageskennungen gebildet werden und dass Cloudflare
+die Adresse verarbeitet. Dazu beschreibt er den Widerspruch (Merkmal `ANALYTICS_OPT_OUT_KEY` im
+Browser, Do Not Track für beide Zähler, Global Privacy Control für den eigenen, gelöschte Browserdaten
+und Safari), warum die Zeilen 400 Tage bleiben und was das Umami-Skript liest (Adresse, Seitentitel,
+Referrer, Bildschirmgröße, Sprache). Neu sind ein Absatz „In Kürze“, das Merkmal unter den notwendigen
+Einträgen in Abschnitt 3, ein Satz zu Art. 11 in Abschnitt 6 und einer zu Cloudflares Network Error
+Logging. DE und EN.
+
+Ein Suchbegriff erreicht Umami nicht mehr. Das Skript bekam auf der Suchseite `?q=` in der Adresse, im
+Referrer der nächsten Seite und im Seitentitel. `data-exclude-search` nimmt die Suchparameter aus
+Adresse und Referrer, ein Hook für `data-before-send` (`UMAMI_BEFORE_SEND_SCRIPT`) lässt den Titel jeder
+Seite mit Suchparametern weg.
+
+### Der Admin hat eine Freigabeseite für Claude und verwaltet die Tokens des MCP-Servers
+
+`/admin/oauth/consent?request=<id>` ist die Seite, auf die `GET /v1/oauth/authorize` der API den
+Browser leitet. Sie zeigt den Namen der App als deren eigene Angabe und darunter in Monospace, als
+größte Zeile der Seite, den Host, an den der Code geht. Der Name ist freier Text, der Host nicht;
+Steuer-, Null-Breite- und Bidi-Zeichen fliegen aus dem Namen, ein `xn--`-Label und ein Loopback-Host
+tragen ein Chip. Der Browser folgt `redirectTo` nur, wenn es `https` oder Loopback-`http` ist und
+denselben Host hat wie der angezeigte (`safeRedirectTarget`). Die Seite rendert im `StandaloneFrame`
+ohne Sidebar und ⌘K, steht hinter dem normalen Login auf derselben URL und lässt sich nicht
+einbetten: `X-Frame-Options: DENY` kommt aus dem `/(.*)`-Block der `next.config.ts` und ist jetzt ein
+Test, dazu verweigert die Seite sich selbst, wenn `window.top` nicht sie selbst ist.
+
+Unter `/admin/account` steht der Abschnitt „API-Zugriff / MCP“ mit der Adresse, dem Befehl für
+Claude Code, der Liste der Tokens und OAuth-Verbindungen samt Widerrufen und „Token erstellen“ (30,
+90, 365 Tage oder ohne Ablauf). Das Token erscheint genau einmal; Escape und ein Klick neben den
+Dialog schließen ihn nicht. Ein Inhaber sieht die Tokens eines anderen Kontos in `/admin/users`.
+
+Die Liste eines `Select` öffnete in einem Dialog hinter dem Formular (`z-50` gegen `z-[70]`) und
+liegt jetzt auf `z-[75]`. Die Rollenbezeichnungen stehen in `ROLE_LABELS` (`lib/admin/roles.ts`)
+statt in zwei Kopien. `pnpm test:admin-mcp` prüft 47 Fälle.
+
+### Eigene Statistik für jede Seite, jedes Ereignis und jeden Lesevorgang, dazu die Admin-Seiten Traffic, SEO und Suche
+
+`SitePageviewBeacon` zählt im Locale-Layout bei jedem Pfadwechsel einen Aufruf in der eigenen Statistik auf api.park.fan (`POST /v1/analytics/collect`), ohne Cookie und ohne etwas im Browser abzulegen. Ein Wechsel von Hash oder Query zählt nicht, der Admin liegt nicht unter dem Layout. Der erste Aufruf eines Besuchs trägt die Herkunft mit (der Domainname der verweisenden Website, sonst nichts aus der Adresse), die 404-Seite markiert ihren Aufruf als `not_found` (`NotFoundMarker`), damit tote Adressen samt Verweisern auffindbar sind. `sitePageTypeOf` las nur die englischen URL-Segmente, also waren `/de/tagesplaner`, der Kalender und die Park-Unterseiten in fünf von sechs Sprachen „other“. Die Schreibweisen kommen jetzt aus `PLANNER_SEGMENTS`, `GLOSSARY_SEGMENTS`, `PARK_CALENDAR_SEGMENTS`, `PARK_STATS_SEGMENTS` und `PARK_KIDS_SEGMENTS`, und `pnpm test:site-analytics` prüft jede Sprache. Die Fassade verwirft Pfade, die die API ablehnen würde, und jeden simulierten Besuch (`?sim=`, `?state=`). Die beiden Web Vitals bleiben bei Umami.
+
+`trackSiteEvent` nimmt jeden Ereignisnamen (Kleinbuchstaben, Ziffern, Unterstriche) mit bis zu acht Eigenschaften aus Wort, Zahl oder Flag. Die Ereignisse in `SiteEventMap` bleiben gegen ihre Werte geprüft, jeder andere Name geht ungeprüft durch und taucht im Admin von selbst auf. Freier Text und alles, was eine Person erkennbar macht, wird nie gesendet. Alle Klick-Ereignisse außer der Suche laufen nicht mehr über Umami, wo jede Eigenschaft als eigenes Ereignis zählt: Favoriten, Standort, Sprache, Farbschema, Park-Reiter, Standort-Banner, Blog-Hinweis, Glossar, Alarme und Show-Erinnerungen, der Planer-Trichter (`lib/analytics/planner-funnel.ts`, mit unveränderter Flanken- und Einmal-Logik), Attraktionsfilter, überdachte Bahnen und der Kompass. Wo die Stelle die UUID kennt, steht sie als Entität dabei statt des Parknamens. Ereignisse, die vom Standort des Besuchers abhängen (Parks in der Nähe, Kompass), senden keinen Park. Neu sind `outbound_link_clicked` für Website-, Ticket-, Karten- und Social-Links der Parkseite (zwei Datenattribute und ein Listener am Dokument statt einer Client-Insel je Link, `OutboundLinkTracker`), `pwa_installed`, `article_read` (25, 50, 75 und 100 Prozent eines Guides oder Beitrags), `calendar_day_opened`, `calendar_month_changed`, `push_permission`, `error_shown` und `share_clicked` an den Teilen-Knöpfen. Umami behält die Seitenaufrufe und die beiden Web Vitals; die Such-Ereignisse stellt PAR-1150 um.
+
+Die Meistgelesen-Zählung läuft über dieselbe Fassade: `PageViewBeacon` schickt nach fünf Sekunden im Vordergrund das Ereignis `page_read` (Beitrag mit `kind` und `key`, Park und Bahn mit der UUID als Entität) statt `POST /v1/page-views`. Die Rangliste, der Seed und `/admin/popularity` ändern sich nicht. Die Datenschutzerklärung (DE, EN) beschreibt in Abschnitt 4 jetzt einen Zähler: was der Browser sendet, dass Ereignisse aus Werten bestehen, die wir im Code festlegen, was der Server ableitet und danach nicht behält, was gespeichert wird (Zeilen mit Zählern je voller Stunde in UTC, alle fünf Minuten nur hinzugefügt und nach 90 Tagen als ganze Teile der Tabelle gelöscht, dazu Tageszahlen nach wenigen Merkmalen zugleich für bis zu 400 Tage und die Besucherzahlen) und dass Do Not Track, Global Privacy Control, der Opt-out und Bots ihn nicht auslösen. Die Erklärung nennt jede Art von Zeile (Seitenaufruf, Beginn und Ende eines Besuchs, Ereignis) mit ihren Angaben, und jeden Schlüssel im Arbeitsspeicher mit seiner Lebensdauer: pseudonym unter einem Tagesschlüssel, Besuch 30 bis 35 Minuten (höchstens 40), offene Besuche höchstens zwei Stunden, Live-Zähler 35 Minuten, Besucherzählung bis zum Ende des Folgetags (höchstens etwa 49 Stunden), noch nicht geschriebene Zähler normalerweise etwa sechs Minuten und, wenn das Schreiben scheitert, bis zu sieben Tage, Obergrenzen bis zum Ende des Tages, Mengen bis zum Ende des Folgetags.
+
+Neue Admin-Seiten, auf Deutsch, in der Sidebar, in ⌘K und auf `g` `t`, `g` `o` und `g` `u`: `/admin/traffic` filtert wie Umami. Ein Klick auf einen Wert in einem Feld (Kanal, Herkunft, Seite, Einstiegsseite, Land, Gerät, Browser, System, Seitenart) filtert die ganze Seite danach (`?filter=<Feld>:<Wert>`, mehrere möglich, als Chips wieder entfernbar). Dazu Besucher, Besuche, Aufrufe, Aufrufe je Besuch, Absprungrate und Ereignisse mit der Veränderung zum Zeitraum davor, „Jetzt aktiv“ mit Aufrufen pro Minute, der Verlauf (für „Heute“ stündlich), Länder als Liste und Weltkarte aus `public/world.svg`, Einstiegsseiten mit Absprungrate und die Liste aller Ereignisse, gesperrte eingeschlossen. `/admin/traffic/events/<name>` entdeckt die Eigenschaften eines Ereignisses selbst, zeigt die Kombinationen, eine Kreuztabelle aus zwei beliebigen Merkmalen und die Parks, Bahnen, Shows und Restaurants dahinter. Wer mindestens Editor ist, kann einen Namen sperren und wieder freigeben. `/admin/traffic/search` beantwortet, ob Hero oder Header öfter geöffnet wird und von welcher Seite und welchem Gerät aus. `/admin/traffic/seo` zeigt die Einstiegsseiten aus Suchmaschinen und aus KI-Assistenten mit Veränderung, Absprung und Quellen, die steigenden und fallenden Seiten, 404-Adressen mit ihren Verweisern und Parks und Bahnen ohne Besuch aus der Suche, jede Zeile mit Link auf die Seite und in den Editor. Die Übersicht hat eine Kachel „Besucher heute“, `/admin/popularity` verlinkt auf Traffic. Die Diagramme kommen aus `_ui/charts.tsx` ohne Bibliothek, `Segmented` zog aus `popularity-view.tsx` nach `_ui/controls.tsx`.
+
+Die Fassade misst jetzt, wie lange eine Seite im Vordergrund stand (`ForegroundTimer`, `engagement`-Treffer mit 1 bis 1800 Sekunden, bei jedem Seitenwechsel und bei jedem Wechsel in den Hintergrund über `sendBeacon`, ohne Zeitstempel, höchstens eine halbe Stunde je Seitenaufruf), und der erste Versand eines Seitenaufrufs wartet bis zu drei Sekunden auf dessen Pageview, damit ein früher Klick nie vor ihr abgeschickt wird. Der Admin bekommt einen Zeitraum-Wähler (Heute, Gestern, 7, 28 und 90 Tage, diese und letzte Woche, dieser und letzter Monat, 12 Monate, eigene Tage) und einen Schritt für die Kurve (Stunde, Tag, Woche, Monat, nur die, die zum Zeitraum passen), beides in der Adresse und auf Traffic, Ereignis, Suche und SEO. Neu sind „Ø Besuchsdauer“ und „Ø Zeit auf der Seite“ als Kacheln und in den Listen, die Kurve mit wählbaren Kennzahlen (Aufrufe, Besuche, Besucher, Ereignisse, Aufrufe je Besuch, Absprungrate, beide Zeiten; je Einheit ein eigenes Diagramm) und eine Tabelle mit jedem Zeitraum und der Summe, angeschnittene Zeiträume sind schattiert, über 180 Tage entfällt der Vergleich sichtbar. Dazu kommen die Panels „Ausstiegsseiten“ und „Browsersprache“, Ausstiege und Ausstiegsrate in der Seitenliste und eine Kreuztabelle auf Traffic (System × Gerät, Kanal × Land, Einstieg × Ausstieg). Eine Absprung- oder Klickrate von 0 % steht jetzt als „0 %“ da und nicht mehr als Strich.
+
+`/admin/traffic/live` zeigt, wer gerade auf park.fan ist, und fragt dafür alle fünf Sekunden `GET /v1/admin/analytics/live`, nur solange der Tab vorne ist. Oben die aktiven Besucher der letzten fünf Minuten als große Zahl, die zum neuen Wert hochzählt, daneben die Weltkarte der Traffic-Seite: Länder mit Aufrufen leuchten nach ihrem Anteil, ein Land mit mehr Aufrufen als bei der letzten Abfrage schickt zwei Ringe aus (höchstens fünf pro Abfrage, nie zwei übereinander). Darunter die letzten 30 Minuten als Säulen für Aufrufe und Ereignisse mit den Besuchern als Linie, die nach links weiterrücken, wenn eine Minute vergeht, und Listen für Seiten, Ereignisse, Kanäle, Herkunft, Länder und Geräte, deren Zeilen beim Umsortieren an ihren neuen Platz gleiten. Jede Zeile führt weiter: zu Traffic von heute mit diesem Wert als Filter, zur Seite auf park.fan, in den Editor oder zum Ereignis. Scheitert eine Abfrage, wird der Punkt grau und die Seite nennt den Stand der Zahlen. Mit `prefers-reduced-motion` stehen alle Werte sofort, ohne Ringe und ohne Hochzählen. Erreichbar über die Sidebar, ⌘K, `g` `l`, eine „Live“-Pille im Kopf der Traffic-Seite und die Kachel „Besucher heute“ auf der Übersicht. Die Karte lädt ihre Pfade jetzt über `useCountryPaths` (`app/admin/traffic/_lib/country-paths.ts`) für beide Seiten, und `pnpm test:admin-live-traffic` prüft die Minutenreihe, welche Länder Ringe bekommen, das Ausblenden weggefallener Zeilen und die Lage der Ländermarken.
+
+Der Admin-Proxy reicht wiederholte Query-Parameter jetzt alle an die API weiter (`adminProxyQuery` in `lib/admin/proxy-path.ts`, geprüft von `pnpm test:admin-proxy-path`). Bisher kopierte er sie mit `set`, und von zwei Filtern auf der Traffic-Seite kam nur der letzte an.
+
+Die Admin-Seiten folgen den Antworten der API genau. Ein Filter auf Einstiegsseite, Herkunft oder Kanal lässt nur Besuchswerte übrig: Aufrufe, Ereignisse und Aufrufe je Besuch kommen als `null`, die Seiten- und Ereignisberichte antworten mit 400. Der Admin fragt sie dann gar nicht erst, zeigt „Nur Besuchswerte“ und „Mit Filter nicht zählbar“, einen Hinweis mit „Alle Filter entfernen“ und im Verlauf nur Besuche, Absprungrate und Besuchsdauer (`unsupportedReason`, `UnsupportedNote`). Jede Liste nennt, was sie zählt (`measure`: Aufrufe, Besuche, Ausstiege), die Ausstiegsseiten und die Ausstiege je Pfad sind dabei, nicht gefundene Adressen führen ihre Verweiser mit Besuchen, die Reste einer Kreuztabelle heißen „Übrige“, und das Zeitraum-Label folgt dem Schritt, den die Antwort nennt. Stunden vor heute haben keine Besucher, der Verlauf zeichnet dann keine Besucherlinie, und die Tabelle zeigt die Tagessumme. Die steigenden und fallenden Seiten der SEO-Seite gibt es für höchstens 180 Tage, darüber steht, welchen Zeitraum man wählen soll. Auf der System-Seite zeigt das Feld „Statistik“, wie viele Fenster auf das Schreiben warten, wie alt das älteste ist, ob eines aufgegeben wurde, wie viele Besuche offen sind und was heute und gestern verworfen wurde.
+
+Das Skript liest weder die Fensterbreite noch UTM-Parameter. Ein Aufruf trägt nur Pfad, Seitenart und Sprache, beim ersten eines Besuchs den Domainnamen der verweisenden Website (`lib/analytics/site-analytics.ts`: `viewport`, `window.innerWidth`, `utmValue` und das Feld `campaign` sind weg, `?utm_source=` in der Adresse schickt keinen Verweiser). Die Geräteart (`mobile`, `tablet`, `desktop`) leitet die API aus dem User-Agent ab, wie Browser- und Systemfamilie; ein iPad mit iPadOS 13 oder neuer meldet sich als Mac und zählt als Computer. Im Admin heißt `viewport` jetzt `device` (Filter `device:`, Kreuztabelle, Live-Liste „Geräte“, Suche und Ereignis nach Gerät, Hinweis „Aus dem User-Agent abgeleitet“), das Feld „Kampagnen“, der Filter, die Kreuztabellen-Dimension und der Kanal „Kampagnen“ entfallen, „Browsersprache“ und „Sprachen“ stehen nun in einer Zeile. Eine gespeicherte Adresse mit `?filter=viewport:…` oder `campaign:…` wird für diesen Filter übergangen und zeigt die Seite ohne ihn. Die Seite `/datenschutz` (DE, EN) nennt die Geräteart als Ableitung aus dem User-Agent auf dem Server und führt keine Kampagne mehr auf. `pnpm test:site-analytics` prüft, dass kein Aufruf `viewport`, `device` oder `campaign` trägt, dass die Fensterbreite nie gelesen wird und dass `?utm_source=` keinen Verweiser ergibt.
+
+Die API hält die Stundenzeilen der Statistik 90 bis 97 Tage und die Tageszahlen 400 Tage. Eine Auswertung, die keine Tageszahl liefern kann (ein Filter auf eine Seite oder Einstiegsseite, drei Filter, ein Ereignis unter Land, Browser oder System, die Kurve nach Stunden), liest die Stundenzeilen und findet für ältere Tage nichts. Jede Antwort trägt dafür `hourlyFrom` (`AnalyticsWindow`), den ersten Tag, ab dem diese Zahlen vollständig sind, und das Feld unter der Auswertung zeigt einen Hinweis (`HourlyNotice`, `hourlyNotice` in `lib/admin/site-analytics.ts`, Datum über `germanDay`): „Diese Auswertung reicht nur bis 30.07.2026 zurück; ältere Tage gibt es nur als Tageswerte“, oder, wenn nur der Zeitraum davor zu kurz ist, dass die Vergleichswerte zu niedrig sind. Ohne `hourlyFrom` bleibt die Seite wie sie war und reserviert keinen Platz. Der Hinweis steht in den Feldern von Traffic, Ereignis, Suche und SEO; `pnpm test:admin-site-analytics` prüft die Texte. Die Datenschutzerklärung (DE, EN) nennt jetzt die 90 Tage der Stundenzeilen, die Tageszahlen mit ihrer Auswahl an Merkmalen und die 400 Tage von Tageszahlen und Besucherzahlen, dazu dass ganze Wochenteile der Tabelle fallen und eine Zeile deshalb bis zu 97 oder 407 Tage bleibt.
+
+Besucher gibt es im Admin jetzt auch unter einem einzelnen Filter auf Land, Gerät, Browser, Betriebssystem oder Kanal, mit oder ohne Sprache. Die Kachel „Besucher“ und der Verlauf zeigen dann die Zahl der API, und die Listen dieser fünf Dimensionen nennen unter jeder Zeile die Besucher des Werts (`breakdownDetail` in `lib/admin/site-analytics.ts`, vorher `rowDetail` im Feld selbst, jetzt mit Test). Unter zwei Filtern oder einem Filter auf Seite, Seitenart, Einstiegsseite, Herkunft oder Browsersprache bleibt die Kachel leer und sagt „Besucher gibt es für einen Filter auf Land, Gerät, Browser, Betriebssystem oder Kanal, nicht für mehrere zugleich.“ (`VISITOR_FILTER_HINT`). Stundenweise gibt es unter einem Filter keine Besucher, den Satz unter dem Titel des Verlaufs wählt `visitorsNote`. Der Text auf `/datenschutz` nennt die Tageszähler der Besucher je Land, Gerät, Browser, Betriebssystem und Kanal mit derselben Kennung des Tages und derselben Lebensdauer, und dass die Tageszahlen je Wert nach 400 Tagen gelöscht werden.
+
+Nachbesserungen: Ein Aufruf nach einer Seite mit Query-String geht auch ohne Titel an Umami, weil der Suchtitel beim weichen Wechsel noch stehen kann. Liefert `sendBeacon` `false`, geht der Stapel über das `fetch` mit `keepalive` hinaus, statt verloren zu sein. Ob ein Besuch simuliert ist (`?sim=`, `?state=`), wird einmal je Seitenladen beim ersten Aufruf entschieden: wer später auf eine Adresse mit `?state=` gelangt, zählt weiter, und ein Testbesuch, der wegnavigiert, fängt nicht an zu zählen. Das Kopieren eines Pfads auf der 404-Liste der SEO-Seite nutzt `CopyButton` (neu: `iconOnly`) statt einer eigenen Kopie.
+
+Das Standardfenster der Traffic-Seiten sind jetzt 28 statt 30 Tage, wie bei Google („Letzte 28 Tage“). `?days=30` aus alten Lesezeichen öffnet weiter.
+
+### Die Hero-Suche ist ein Feld mit angehängter Liste, und jede Suche zählt in der eigenen Statistik
+
+Die Pill-Reihen unter der Hero-Suche sind weg, auf jedem Viewport. Feld und Liste sind ein
+Glasobjekt (`HeroSearchFrame`): ein Rahmen, ein Radius, ein Blur, unter dem Feld eine Haarlinie. Das
+Feld hat keinen eigenen Hintergrund und kein `backdrop-blur-lg` mehr, über dem Ken-Burns-Foto liegt
+also ein Filter weniger. Ab `md` zeigt die ruhende Liste vier Parks in der Nähe statt drei und
+darunter zwei Beiträge: die meistgelesene News der letzten sieben Tage, die der Chip über der
+Überschrift nicht schon zeigt, und den neuesten Guide (`HeroReadingGroup`, aus dem Build über
+`getHeroReading`, nach dem Laden aus `useMostRead`). Über den Zeilen steht „Alle anzeigen": aus der
+Nähe zum Kapitel weiter unten, im Park zur Parkseite, bei den beliebten Parks zu `/parks`.
+
+Auf dem Handy hängt die Liste auch unter dem Feld: fünf Parks als Links (`HeroPhoneList`), darunter
+dieselben zwei Beiträge. Ein Tipp aufs Feld öffnet weiter die Palette, der pulsierende Ring darum
+entfällt. Eine Park-Zeile hat den Namen allein in der ersten Zeile, darunter Status und Wartezeit als
+18 px hohe Pills und die Entfernung (`[Geöffnet] [Ø 15 Min.] 16.3 km`); mit den Badges neben dem
+Namen war „Movie Park G…" bei 360 px abgeschnitten. Den Platz gibt die Hero auf dem Handy ab: die
+Platte sitzt 12 px unter dem Header und 12 px vom Rand (vorher 40 und 24 px) und hat innen 16 px, die
+Überschrift ist 28 px groß (zwei Zeilen bei 390 px in allen sechs Sprachen, drei auf Französisch bei
+360 px), der Intro-Satz ist eine Zeile (`home.hero.introShort`), und das Badge „N Parks gerade offen"
+und der Parkfan95-Hinweis unter der Platte entfallen dort. Das Feld ist auf dem Handy 48 px hoch statt
+56; die Schrift bleibt bei 16 px, sonst zoomt iOS Safari beim Fokus. Die Platte endet bei 685 px auf
+390 × 844 und auf 360 × 740, auf Französisch bei 360 px bei 718 px; mit zwei Zeilen, Pills und dem ganzen
+Intro waren es 712 und 738 px. Im Park listet die Hero nur die Fahrgeschäfte, weil die Park-Aktionen
+darüber schon zum Park führen. Die Park-Zeile im Park nimmt ihre URL aus der eines Fahrgeschäfts und
+führt damit auch in der Palette zur Parkseite.
+
+Die Zeilen sind fest hoch (60 px, auf dem Handy 48 px): ein geöffneter Park mit Wartezeit-Badge ließ
+die Liste nach dem Laden um 5,7 px wachsen. `pnpm check:hero-search-rest` misst Desktop und Handy in
+sechs Sprachen über `data-state` am Rahmen: 485 / 485 / 485 px bei 428 px Reservierung und
+424 / 424 / 424 px bei 375 px. `--hero-plate-min-h` steigt von 784 auf 811 px. Eine geöffnete Liste
+wird auf den Platz unter dem Feld begrenzt, aber nie kürzer als in Ruhe. CLS gegen
+`pnpm build && pnpm start`, zehn Läufe bei 4× CPU und 1,6 Mbit/s: Desktop 0 bis 0,0112 aus der
+Navigation im Header, ein Lauf 0,0259, in dem auch die Länder-Chips der Kartenplatte rückten; Handy 0
+in allen zehn Läufen.
+
+Ein geschlossener Park nennt in seiner Status-Pill, wann er wieder öffnet: vor der heutigen
+Öffnung „Öffnet um 09:00 Uhr", sonst „Öffnet am 25. März", auf Desktop und Handy, in der Zeitzone
+des Parks und nach der Minutenuhr. Entscheidet `nextParkOpening`, das auch der Park-Block der Hero
+fragt: die heutige Öffnung, solange sie noch kommt, sonst die des nächsten Öffnungstags, und nie
+eine, die schon vorbei ist. Vorher stand bei Disneyland um sieben Uhr früh „Öffnet am 29. Oktober",
+und ein Park weit im Osten bekam aus der gebündelten Antwort der API die heutige, schon vergangene
+Öffnung als nächste. Ohne Öffnung vor sich bleibt es bei „Geschlossen"; einen Monat ohne Tag
+liefert keine Antwort (`pnpm test:park-opening`). Ab `md` tragen die beiden Beiträge zwei Zeilen ihres Teasers
+in einer festen 100-px-Zeile; die Teaser von Guide, Seed-News und den zehn neuesten News kommen mit
+dem HTML, damit der Wechsel auf das Live-Ranking keine Anfrage und keinen Sprung kostet. Auf dem Handy
+fehlt dafür der Platz: zwei Teaserzeilen hätten die Platte auf Französisch bei 360 px auf 750 px
+geschoben.
+
+Jede Suchfläche meldet sich über die eigene Statistik (`trackSiteEvent`) statt über Umami:
+`search_opened`, `search_typed`, `search_no_results`, `search_result_clicked`,
+`search_browse_clicked` und `search_view_all`, jeweils mit `surface` (`hero`, `home_steps` für das
+Feld in der Schritt-Karte, `header`, `keyboard`, `search_page`, `listing_guides`, `listing_news`,
+`guides_panel`). Gezählt wird pro Öffnung (`createSearchSession`): ein Fokus nach einem Blur öffnet
+eine, ein zweiter Fokus, eine zweite Suche oder eine zweite Suche ohne Treffer darin zählen nicht,
+ein Klick vor jeder Öffnung öffnet zuerst eine. Ein Klick nach dem Schließen zählt für die Öffnung,
+die er geschlossen hat: ein Klick auf ein Ergebnis nimmt dem Feld den Fokus, bevor er ankommt.
+Klick- und Nulltrefferquote bleiben so zwischen 0 und 1 (`pnpm test:search-session`). Die Palette kennt die Fläche, die sie geöffnet hat.
+`/search`, die Suchfelder auf `/blog` und `/news` und das Guides-Panel zählen zum ersten Mal. Die
+Umami-Events `search_opened`, `hero_search_clicked`, `search_result_clicked`, `search_view_all` und
+`search_no_results` samt Helfern sind entfernt.
+
+Für Besucher im Park oder in der Nähe steht der Park-Block auf dem Handy jetzt in der Liste unter
+zwei Zeilen, an der Stelle der übrigen Zeilen und der Beiträge, und über dem Feld ändert sich nichts
+mehr. Vorher wuchs der Block über dem Feld und schob Feld und Liste um bis zu 280 px nach unten
+(CLS 0,21 bis 0,30 bei 360 px). Jetzt bleibt der CLS in der Nähe eines Parks bei 0 (360 und 390 px, je fünf Läufe gegen den Build);
+im Park bleibt nur das Einfügen des Kompasses unter der Hero, 0,031 bei 360 und 0,15 bei 390 px, ein
+Preis, den die Kompass-Doku bewusst zahlt. Ab `md` steht der Block weiter über dem Feld (0,03 bis
+0,05 bei 1440 × 900). Text, der vor der Hydration ins Feld getippt
+wurde, geht nicht mehr verloren: auf dem Desktop übernimmt ihn das Panel samt Fokus, auf dem Handy
+öffnet sich die Palette damit. Palette und Zeilen der Handy-Hero zählen als eine Sitzung. Kleine
+Schrift auf dem Glas erreicht in beiden Themes über allen Hero-Fotos mindestens 4,5 : 1
+(`SEARCH_SECONDARY_TEXT_CLASS`, neues Token `--primary-ink`), das Feld bekommt einen sichtbaren
+Fokusring, und „Alle anzeigen" ist auf dem Handy 44 px hoch antippbar. Die Liste heißt für
+Screenreader „Vorschläge" oder „Suchergebnisse", die Beiträge sind eine eigene Gruppe, die Zahl der
+Treffer wird angesagt, und `aria-activedescendant` folgt der markierten Zeile. Das Standort-Banner
+wartet auf dem Handy, bis die Hero aus dem Bild ist, statt die Liste zu verdecken. In der
+Blog- und News-Suche zählt ein Klick auf das Kategorie-Label nicht mehr als Ergebnis-Klick.
+
+Nachbesserungen: `nextParkOpening` gibt `null` zurück, solange die heutigen Zeiten laufen (`Öffnung <= jetzt < Schluss`), auch wenn der Status noch `CLOSED` meldet; die Pille sagt dann „Geschlossen“ und nicht „Öffnet am“ des nächsten Tages. Der in die Hero getippte Text wird gelöscht, sobald das Panel ihn übernommen hat, und kommt bei einem neuen Einhängen nicht zurück. Die Entscheidung der Hero über den Park (`resolveHeroPark`) und die reinen Teile der Liste (`shutParkSchedules`, `sortOpenFirst`, `popularFill`) liegen in `lib/home/hero-park.ts` und `lib/home/hero-browse.ts`, `pnpm test:hero-park` prüft `in_park`, `nearby_parks` bei 800 m, 4 km und 6 km und `in_park` ohne Park-URL.
+
+Die offene Liste der Hero-Suche liegt über dem Bild und seiner Beschriftung, „Alle Ergebnisse für …“
+ist nicht mehr verdeckt. Die Fußleiste der Liste, also Hinweis und „Alle Ergebnisse“, ist eine eigene,
+dunklere Glasleiste mit weniger Innenabstand. Der Hinweis auf Parkfan95 unter der Hero ist entfernt.
+
+### `CLAUDE.md` ist ein Wegweiser, `docs/README.md` führt jede Seite, und die Doku stimmt mit dem Code überein
+
+`CLAUDE.md` hatte 39 KB und wurde in jeder Session ganz gelesen; jede Regel stand dort und in
+`docs/rules/README.md`. Jetzt sind es rund 5 KB: was das Repo ist, wo eine Aufgabe anfängt, die
+sieben Regeln für jede Änderung und was CI vor dem Push prüft. Die übrigen Regeln stehen nur in
+`docs/rules/README.md`, neu dazu `a-renamed-route-keeps-its-old-url`. `docs/README.md` führt jede
+Seite mit einer Zeile, ein Ordner ist dort eine Zeile und listet seine Seiten selbst.
+
+Jede Seite wurde gegen den Code geprüft und gekürzt, danach von einem zweiten, unabhängigen Durchgang
+noch einmal. Wiederholt sich etwas zwischen einer Regel und ihrer Hintergrundseite, steht die Regel
+in der Regeldatei und die Messung auf der Hintergrundseite. Aufgeteilt: `docs/blog.md` in
+`docs/writing/` (ein Kapitel pro Datei, die §-Nummern bleiben), `trip-planner.md` in
+`docs/features/trip-planner/`, `design-system.md` in sechs Seiten unter `docs/design/`,
+`caching-strategy.md` um `cdn-caching.md`. Neue Seiten: Ride-Alarme, Blog-Editor, OG-Bilder,
+Crowd-Kalender, Parkkarte, Vergleich, PWA-Installation, Wartungsseite, Ankündigungsband, dazu
+alle Umgebungsvariablen und Cron-Jobs in `docs/development/setup.md`. Erledigte Pläne, Specs und das
+SEO-Roadmap-Papier sind gelöscht. `docs/api/` beschreibt nur noch die Frontend-Seite und verlinkt
+die Verträge im Backend. `todo.md`, die Backend-Wunschliste und die offenen Listen in den Docs sind
+aufgelöst: Offenes steht in Linear. Das README sagt, was die Seite kann und wie man sie startet.
+
+### Meistgelesen: Top 5 Guides (30 Tage) und Top 5 News (7 Tage) pro Sprache
+
+Beiträge, Parks und Fahrgeschäfte zählen ihre Aufrufe jetzt selbst: `PageViewBeacon` schickt nach fünf Sekunden im Vordergrund Art, Schlüssel und Sprache direkt an `POST /v1/page-views` auf api.park.fan, ohne Relay über Vercel, und nur auf park.fan selbst (`ANALYTICS_HOSTS`, dieselbe Liste wie Umamis `data-domains`). Der Schlüssel ist sprachunabhängig (`translationKey` bzw. UUID), die Sprache steht daneben. Nichts wird im Browser gespeichert; bei Do Not Track, Global Privacy Control und nach dem Statistik-Opt-out wird nichts gesendet. Bots und die vierte Zählung pro Leser und Seite und Tag verwirft das Backend, ohne eine IP abzulegen.
+
+Die Ranglisten kommen über `/api/nav/most-read/[locale]` (eine Stunde Cache; schlägt die API fehl, antwortet die Route 502 ohne Cache statt leerer Listen). Jede Liste ist immer voll: Wurden zu wenige Beiträge gelesen, folgen die neuesten mit 0 Aufrufen. Die Zeilen haben eine feste Höhe. Unter jedem Beitrag und auf der Startseite steht die Rangliste, wie sie der Build gesehen hat (`generate:most-read-seed`, `getMostReadSeed`), schon im HTML, damit Suchmaschinen die Links finden; nach dem Laden tauscht der Browser sie Zeile für Zeile gegen die aktuelle. Sie stehen im Guides- und im News-Panel des Supermenüs als dritte Spalte (`MostReadMenuColumn`, ab 1280 px Header-Breite, geladen beim ersten Öffnen), im Blog-Kapitel der Startseite und unter jedem Beitrag (`MostReadStream`/`MostReadList`, nummerierte Zeilen `MostReadRow`, der Beitrag selbst ausgenommen, Plätze nicht umnummeriert). Der klar meistgelesene Guide und die klar meistgelesene News (`mostReadLeader`: mindestens fünf Aufrufe und mehr als der Zweite) tragen überall, wo sie gelistet sind, und auf ihrer eigenen Seite ein „Meistgelesen"-Badge (`MostReadBadge`). Im Banner sitzt es absolut positioniert neben der Kategorie und ändert weder Höhe noch Umbruch.
+
+Neue Admin-Seite `/admin/popularity` („Beliebtheit"): Aufrufe pro Art und Sprache, jeder Tag des Zeitraums (7/30/90 Tage) und die meistgesehenen Seiten jeder Art mit einer Spalte pro Sprache, sortiert über alle Sprachen oder nach einer. Die Datenschutzerklärung (DE, EN) beschreibt den Zähler in Abschnitt 4.
+
+Auch die beliebten Parks richten sich jetzt nach den Aufrufen der jeweiligen Sprache (30 Tage, ab drei Aufrufen): die vier Länderspalten im Footer (Deutschland, USA, Frankreich, Japan bleiben fest, nur die Parks darunter wechseln), die „Beliebte Parks"-Karten der Startseite, die Fotokarten im Parks-Menü und der Hero ohne Park in der Nähe. Footer, Startseite und Menü lesen die Momentaufnahme des Builds, der Hero die aktuelle Rangliste (`/api/parks/popular?locale=`). Wo zu wenige Parks gezählt sind, füllen die bisherigen Listen auf.
+
+### Durchschnittliche Wartezeiten: eigener Titel, Link auf die Live-Seite
+
+Google zeigte für „europapark wartezeiten“ und seine Varianten im Oktober rund 1.700-mal die Seite mit den durchschnittlichen Wartezeiten, die Live-Seite des Europa-Park nur 184-mal; für „rulantica wartezeiten“ war es dasselbe. Der Titel „{Park}: durchschnittliche Wartezeiten“ konkurrierte mit der Parkseite um ihre wichtigste Anfrage. Er heißt jetzt „{Park}: die vollsten Monate, Tage und Uhrzeiten“, in allen sechs Sprachen nach demselben Muster. Unter der Einleitung steht ein Link „{Park}: Wartezeiten live →“ auf die Parkseite.
+
+Der englische Kalender heißt „{Park} Crowd Calendar & Opening Hours, {Monat}“ statt „… & Wait Times …“, wie die anderen fünf Sprachen seit PAR-1168: Für „wonderland wait times“ und „canada's wonderland wait times“ zeigte Google rund 1.700-mal den Kalender, nicht die Parkseite, ohne einen Klick.
+
+Die Meta-Beschreibung einer Bahn nennt nach dem Bahntyp Höchstgeschwindigkeit, Höhe und Fahrzeit, wenn wir sie haben („Launch Coaster, 100 km/h schnell, 38 m hoch, Fahrzeit 2:25 Min.“). Gesucht wurde danach, etwa „red force vitesse“, „hauteur red force“ oder „quanto dura oblivion gardaland“, ohne einen Klick.
+
+### Jede Pille steht mittig: Schrift auf den Versalien zentriert, das Icon links so weit vom Rand wie oben
+
+Die Schrift saß in den Pillen zu hoch, bei doppelter Auflösung 13 Pixel Luft über den Versalien und 16 darunter, bei „Ø 10 Min.“ 12 und 16. Das Icon saß 9 px vom linken Rand und 5 px vom oberen. Die Suche hatte das zuerst allein bekommen, mit eigenen Klassen, und sah danach anders aus als die Parkseite. Jetzt regelt es `Badge` für jede Pille der Seite.
+
+Die Utility `caps-centred` (`app/globals.css`) beschneidet den Text mit `text-box: trim-both cap alphabetic` auf Versalhöhe und Grundlinie, polstert ihn mit `calc((1lh - 1cap) / 2)` wieder auf seine Zeilenhöhe und hält mit `min-height: 1lh` die ganze Zeile. Eine Regel in `@layer base` gibt sie jedem Kind eines `[data-slot='badge']` außer dem Icon, `Badge` packt dafür jeden Lauf aus reinem Text in ein `<span>`. Wo der Text nicht durch `Badge` geht (`asChild` in `RcdbBadge`, die Links mit `badgeLinkProps`), steht er jetzt selbst in einem `<span>`. Danach sind es 14 und 14 Pixel. Die Höhen bleiben, wie sie waren: Auf `/de/ui` und der Phantasialand-Seite weicht keine der 207 verglichenen Pillen ab.
+
+Das Icon setzt die Variante `badge-icon:` (`& > svg:first-child:not(:only-child)`). `Badge` zieht es mit `badge-icon:-ml-1` um 4 px nach links. Das passt für die 22-px-Pille mit `px-2 py-0.5` und für die 18-px-Pillen mit `px-1.5 py-0` (Blog-Links, Favoriten, Park-Menü), denn bei beiden ist das linke Padding 6 px größer als das obere. Eigene Werte setzen die Handy-Liste der Suche (10-px-Icon, `badge-icon:-ml-0.75`) und die großen Pillen in `ParkStatus` (`badge-icon:-ml-1.5`). Steht das Icon allein, weil der Text `sr-only` ist („Meistgelesen“ auf kleinen Covern, die Nachbarferien im Planer auf dem Handy), bleibt es mit `badge-icon:ml-0` mittig. Die Suche zieht jedes Icon einer Zeile auf 16 oder 20 px; die Pillen dort halten mit `[&>svg]:size-3!` ihre 12 px wie überall.
+
+Gemessen mit Playwright: Icon-Abstand oben gleich links und Schrift mittig auf der Startseite mit offener Suche (Desktop und Handy), der Phantasialand-Seite (Desktop und Handy), `/de/ui`, einem Blog-Artikel mit Inline-Pillen und der Blog-Liste auf dem Handy, zusammen 526 Pillen ohne Abweichung. `ParkStatusBadge` und `CrowdLevelBadge` haben kein `centreCaps` mehr, `lib/utils/text-box.ts` ist durch die Utility ersetzt.
+
+### Ein Production-Deploy purgt Cloudflare, und die News-Seiten liegen einen Tag im Edge-Cache
+
+`app/api/webhooks/vercel-deploy/route.ts` ruft nach `deployment.promoted` jetzt `purge_cache` statt `invalidate_cache` auf, weiter mit `hosts: ["park.fan"]`. Eine Invalidierung lässt jeden Eintrag stehen, und mit `stale-while-revalidate` bekommt der erste Abruf je PoP noch einmal die alte Seite. Bei einem News-Beitrag ist das genau der Leser, der seinetwegen kommt. Nach einem Purge holt der nächste Abruf je PoP die Seite vom neuen Deployment; Vercel beantwortet das aus dem eigenen Cache, weil die Seiten beim Build vorgerendert werden.
+
+`/:locale/news/:path*` hatte als einziger Inhaltsbereich kein `CDN-Cache-Control`, also kam jede News-Seite mit `public, max-age=0, must-revalidate` und Cloudflare fragte bei jedem Abruf Vercel (`cf-cache-status: REVALIDATED`). Die Regel für den Blog in `next.config.ts` deckt jetzt beide ab (`/:locale/:section(blog|news)/:path*`, `CONTENT_WINDOW`, einen Tag frisch plus eine Stunde `stale-while-revalidate`). Das Alter eines Beitrags („vor 2 Tagen") rechnet `NewsAge` im Browser aus, die gecachte Seite trägt also kein Tagesdatum.
+
+Gemessen am 26.10.2026 nach den Deploys um 08:13 und 08:19 Uhr: `park.fan/de`, `/en`, `/fr`, `/nl`, `/de/blog` und `/de/glossar` antworteten weiter mit `HIT`, 4 bis 14 Stunden alt und mit dem `data-dpl-id` vom Vorabend. Die Startseite zeigte deshalb die Toontown-News nicht, `/de/news` schon. Ein `POST` auf den Webhook-Pfad bekam aus einem Cloud-Container `403` mit `cf-mitigated: challenge`; ob Vercels Zustellung genauso hängen bleibt, zeigt nur das Zustell-Log des Webhooks.
+
+### Production-Deploys warten in GitHub Actions, bis `main` zehn Minuten ruhig ist
+
+Ein Push auf `main` startet keinen Vercel-Build mehr (`vercel.json`, `git.deploymentEnabled.main: false`). `.github/workflows/deploy-production.yml` wartet `DEPLOY_DEBOUNCE_MINUTES` (10) und ruft dann einen Vercel Deploy Hook auf. Jeder weitere Push bricht das Warten des vorigen Laufs ab, also werden Merges mehrerer Sessions kurz hintereinander zu einem Build. Am 25.10. (17:43 und 18:07) und am 26.10. (08:13 und 08:19) waren das jeweils zwei volle Builds. `[deploy now]` im Commit oder ein manueller Start des Workflows deployt sofort.
+
+Gewartet wird in GitHub Actions statt im Ignored Build Step, weil Vercel jede Minute im Build-Container mit beiden Kernen abrechnet, Warten eingeschlossen. Zehn Minuten Warten wären 20 CPU-Minuten pro Build gewesen, doppelt so viel wie ein ganzer Build. Build CPU Minutes waren vom 19. bis 26.10. mit 17 Stunden und $3,58 der größte Posten der Rechnung. Der `[skip deploy]`-Poll in `scripts/vercel-ignore-build.sh` zahlte denselben Preis und ist entfernt, `pnpm test:ignore-build` ist entsprechend angepasst.
+
+Vor dem Merge brauchen Vercel einen Deploy Hook für `main` und GitHub das Secret `VERCEL_DEPLOY_HOOK_PRODUCTION` (`docs/development/deploys.md`).
+
+### Blog, News, Glossar und die Park-Unterseiten rendern pro Request statt in den ISR-Cache
+
+Glossar-Begriffe, `durchschnittliche-wartezeiten`, `mit-kindern`, Blog-Beiträge und News-Beiträge sind jetzt `export const dynamic = 'force-dynamic'` ohne `generateStaticParams`, wie die Park-Seite. Ihr einziger Cache ist das `CDN-Cache-Control`-Fenster (ein Tag) aus `next.config.ts`, das Cloudflare und das Vercel-CDN lesen. Vorher war jede dieser Seiten On-Demand-ISR oder ein vorgebauter Beitrag. Vercel hält den ISR-Cache pro Deployment, die Seite deployt rund zehnmal am Tag, also wurde fast jeder Crawl zu einem Render plus Write, den niemand zurücklas: in 12 Stunden bis zum 26.10. 13:00 schrieb `glossary/[term]` 9,0K Units bei 300 gelesenen, `average-wait-times` 6,2K bei 182, `with-kids` 1,2K bei 32. Vorgebaute Wartezeit-Beiträge schrieben je 40–80 Units bei 0 Reads, weil ihre Widgets Parkdaten mit Backend-Tags lesen (`geo attractions parks park:<geo> weather`) und jeder Tag-Push sie neu rendern ließ. Glossar und dünne Tags waren mit den Build-Zeit-Optimierungen vom 16. und 20.10. aus dem Build gefallen; beide Einträge hatten den Build gemessen, die Writes nicht.
+
+Die Widgets im Beitrag rendern jetzt ohne `<Suspense fallback={null}>`, damit ein gestreamtes Widget den Text darunter nicht verschiebt. `pnpm test:edge-windows` prüft, dass jedes lokalisierte Segment dieser Routen ein Fenster bekommt; fehlt eines, wäre jeder Abruf ein Render. Der IndexNow-Cron meldet die dünnen `noindex`-Tag-Archive nicht mehr (`listIndexableTags`, dieselbe Liste wie Sitemap und Build). `getParkWeatherNowcast` nimmt kein Fenster mehr entgegen; der einzige Grund dafür war die ISR-Uhr eines Beitrags.
+
+Jeder Server-Render blieb im Speicher, solange ein Timer lief: TanStack Query startet beim SSR für jede Query einen gc-Timer mit dem `gcTime` ihres Hooks (bis zu 24 Stunden), und der Timer hält den Request mit dem ganzen gerenderten Baum fest, 3,5 MB pro Blog-Beitrag. `createQueryClient()` (`lib/query-client.ts`) gibt auf dem Server jeder Query `gcTime: Infinity`; die Seite und der Admin bauen ihren Client damit. Die Ride-Referenzen eines Beitrags warten höchstens 3 s auf das Backend statt 15 s, der Nowcast im Wetter-Widget 2 s, und der Seed-Timeout in `lib/api/stats.ts` räumt seinen Timer jetzt weg (`withSeedTimeout`). Die Regel steht in `docs/rules/a-server-render-arms-no-timer.md`.
+
+Lokal (4 Kerne) baut `next build` jetzt 965 statt 1.535 Seiten. Die Regel steht in `docs/rules/an-isr-route-needs-both-halves.md`: Wer Seiten aus dem Build nimmt, schickt sie hinter das Edge-Fenster, nicht in On-Demand-ISR.
+
+### Niederländische Parkseiten: „Drukte“ im Titel
+
+In den Niederlanden sucht man nach „drukte“ ebenso oft wie nach „wachttijden“: „walibi drukte“, „walibi drukte vandaag“, „walibi drukte verwachting“, „toverland drukte kalender“, „druktemeter plopsaland“. Die Parkseite von Walibi Holland stand dafür in den letzten 90 Tagen um Platz 10 und bekam kaum einen Klick, denn ihr Titel nannte nur „Wachttijden LIVE“. Er heißt jetzt „{Park} Wachttijden LIVE & Drukte – {Ort}“, ohne Ort „{Park} – Wachttijden LIVE & Drukte“ statt „… & Beste Dagen“. Das gilt für jeden Park auf der niederländischen Seite.
+
+### Parkseiten: Restaurants nicht mehr in den strukturierten Daten
+
+Das JSON-LD einer Parkseite listete neben jeder Bahn auch jedes Restaurant als `FoodEstablishment`, bei Walibi Holland 63 Stück. Danach sucht niemand eine Wartezeiten-Seite ab, und es machte das HTML für Crawler schwerer, ohne eine Frage zu beantworten. `containsPlace` nennt jetzt nur noch die Bahnen. Die Restaurants auf der Seite selbst bleiben.
+
+### Beliebtheit: „Pro Tag“ zeigt beim Darüberfahren die Werte
+
+Die Tagesbalken auf `/admin/popularity` hatten nur ein `title`-Attribut. Das erscheint erst nach einer Sekunde Stillhalten und auf dem Telefon nie, eine Achse gab es nicht. Jetzt zeichnet das Panel das `SeriesChart` der Traffic-Seiten: eine Linie für alle Arten zusammen und eine je Art, mit y-Achse, Werten beim Darüberfahren, Tabellenansicht und dem laufenden Tag markiert.
+
+### Nach dem Beitrag stehen seine Parks live, die Suche ist auf dem Handy ein Feld, und die Statistik zählt die Wege durch die Seite
+
+Unter dem Text eines Guides oder einer News folgen jetzt direkt nach der Teilen-Zeile die Parks und Fahrgeschäfte des Beitrags (`BlogReferences`), als dieselben Live-Karten wie die Vorschauen der Links im Text (`BlogParkCardLive`, `BlogAttractionCardLive`), und darunter ein Suchfeld, das die Palette mit der Liste des Heros öffnet (`SearchCommand trigger="field"`, Suchfeld `post_end`, auf dem Handy vorgeladen, sobald es eine Bildschirmhöhe entfernt ist). Vorher standen die Karten am Fuß der Weiterlesen-Box mit dem Status des Geo-Snapshots. In den ersten anderthalb Tagen der eigenen Statistik sprangen 89 % der Google-Besuche auf News und 93 % auf Guides ab, und 19 von 65 News-Aufrufen kamen bis zum Ende des Textes. Die Reihenfolge und die Zahlen stehen in `docs/features/post-page-end.md`.
+
+Im Header ist die Suche von einer 360 px breiten Leiste bis 1023 px das Feld des Desktops (32 px hoch) und nimmt den Platz zwischen Logo und Knöpfen ein: 121 px bei 360, 151 bei 390, 173 bei 412, in allen sechs Sprachen ohne Überlauf und ohne abgeschnittenes Wort. Unter 360, von 1024 bis 1279 und auf der Startseite, deren Hero das Suchfeld ist, bleibt das Icon. Der Feld-Auslöser ist jetzt ein Button und damit per Tastatur erreichbar. Das Sprach-Banner ist auf dem Handy eine Zeile von 50 px (Flaggen, „Switch to English“ als Link, ×), trägt das Glas des Heros (`HEAVY_GLASS`) und einen Rahmen in der Markenfarbe.
+
+Neue Ereignisse der eigenen Statistik: `internal_link_clicked` (Block, Seitenart des Ziels, Platz; Text, Tags, Parks und Fahrgeschäfte im Beitrag, Weiterlesen, Meistgelesen, Nähe, Favoriten, beliebte Parks, Header, Handy-Menü, Footer, Brotkrumen, Fahrgeschäfte und Beiträge der Parkseite), `section_seen` (sieben Marken der Parkseite, von „Ende der Fahrgeschäfte“ bis „Seitenende“), `nav_menu_opened` und `faq_opened`. Gezählt wird über Datenattribute und einen Satz Listener am Dokument, `MarkupEventTracker`, der `OutboundLinkTracker` ersetzt. Die neue Admin-Seite Wege (`/admin/traffic/paths`) zeigt die Lesetiefe der Parkseiten gegen ihre Aufrufe, die Klicks je Block, die Menüs und das FAQ. `pnpm test:markup-events` prüft, welcher Klick zählt.
+
+### Search Console: Suchfeld in beiden Listen, Google-Zahlen auf jeder Seite
+
+Die Listen „Suchanfragen“ und „Seiten in der Google-Suche“ auf `/admin/traffic/seo` haben ein Suchfeld. Es fragt die API mit `search=` (neu im Backend, Teilstring, Groß- und Kleinschreibung egal), die alle Zeilen des Zeitraums durchsucht, nicht nur die 50 geladenen; Treffer kommen bis 200 auf einmal. Die Summen oben bleiben die des ganzen Berichts.
+
+Wer im Admin angemeldet ist, sieht auf jeder öffentlichen Seite unten links eine Zeile mit Klicks, CTR und Position der letzten 28 Tage. Aufgeklappt zeigt sie Impressionen, die Veränderung gegen die 28 Tage davor, die Besuche aus der Suche laut eigenem Zähler, die fünf stärksten Suchanfragen und einen Link in den Admin, auf diese Seite gefiltert. Ob das Overlay geladen wird, entscheidet ein lesbares Cookie `parkfan_admin` ohne Geheimnis, das die Session-Route beim Login und bei jedem Admin-Besuch setzt und beim Abmelden löscht. Alle anderen Besucher laden nur diese Prüfung, keine Anfrage geht raus, und die gecachte Seite bleibt für alle gleich. Eine abgelaufene Session antwortet 401, dann löscht das Overlay das Cookie und verschwindet. Auf einer Park- oder Bahnseite führen zwei Links direkt in den Editor des Parks und der Bahn.
+
+Die Meta-Beschreibung einer Parkseite nennt jetzt die ruhigsten Wochentage aus derselben Statistik, die der Seitenkopf zeigt („Ruhigste Tage: Dienstag und Mittwoch“). Ein Park ohne diese Statistik, ohne öffentliche Live-Wartezeiten oder ein geschlossener Park behält die bisherige Beschreibung. Phantasialand (21.248 Impressionen, 0,5 % CTR) und Heide Park (13.464, 0,5 %) standen im Oktober auf Position 7 bis 9 mit einer Beschreibung, die wörtlich auch bei jedem anderen Park steht.
+
+`check:prose` warnt bei `seo.title` nicht mehr vor einer Frage mit Antwort (§2.12): Der Title-Tag trifft so die Suchanfrage wörtlich, etwa „wann ist der Europa-Park am leersten“. Für den H1 gilt die Regel weiter.
+
+### Die Status-Pille der Suche sagt, wie lange es bis zur Öffnung dauert
+
+In der Liste unter dem Suchfeld der Startseite trägt die Pille eines geschlossenen Parks jetzt den Abstand zur nächsten Öffnung: „Öffnet um 10:00 Uhr (in 1:30 Stunden)“, in der letzten Stunde „(in 45 Minuten)“, am nächsten Tag „(morgen)“, innerhalb der kommenden Woche der Wochentag, „Öffnet am 31. Oktober (Samstag)“, und erst danach „(in 9 Tagen)“. Die Tage sind Kalendertage in der Zeitzone des Parks, damit die Zahl zum Datum daneben passt. `formatParkOpeningCountdown` (`lib/utils/schedule-utils.ts`) rechnet das, `useHeroStatusLabels` legt es als `statusCountdown` neben `statusLabel`. Die Zeile zeigt den Zusatz nur, wenn ihre Textspalte mindestens 30rem breit ist (`@container`), also im Panel auf dem Desktop, nicht in der Handy-Liste. Die Wörter stehen in allen sechs Sprachen unter `parks.opensInDays`, `parks.opensInHours` und `parks.opensInMinutes`. `daysBetween` liegt jetzt in `lib/utils/park-day.ts`, `lib/planner/park-time.ts` exportiert es weiter.
+
+### Header und Footer stehen im ersten HTML, und das Markup sagt, was jeder Teil der Seite ist
+
+Header und Footer liegen in `app/[locale]/layout.tsx` nicht mehr in je einem `<Suspense>`. Ohne PPR hat die Grenze nichts verzögert, sondern beide nur hinter `</main>` in ein `<div hidden>` sortiert: auf Production stand der Header eines Beitrags (99 Links) bei Byte 505.991 von 1.364.773, nach dem Inhalt, und an seiner Stelle ein leeres `<div class="h-12">`. Crawler ohne JavaScript (GPTBot, ClaudeBot, PerplexityBot) lasen die Navigation als versteckten Text. Ein Skip-Link führt jetzt auf `<main id="main-content">`.
+
+Dazu: ein `<nav>` je Navigationsblock, benannt aus `messages/` und mit Liste (3 bis 7 statt 7 bis 12 pro Seite, „Main navigation" und „Breadcrumb" waren in allen Sprachen englisch). Die Breadcrumbs sind ein `<nav>` mit `<ol>`, der Footer zwei `<nav>` mit neun Listen statt sechs `<nav>` ohne Liste. Das `<article>` eines Beitrags reicht von der `<h1>` im Banner bis zu den Tags, Teilen, Weitere Beiträge und Meistgelesen stehen dahinter, „Aktualisiert" ist ein `<time>`. „Quellen & Weiterlesen" ist in 330 Beitragsdateien ein `##`-Kapitel statt `###` unter den FAQ. Die Glossar-Übersicht ist eine `<dl>` (13 statt 322 Überschriften), die Begriffsseite hat `<dfn>`. Leeres Microdata (`itemScope` ohne `itemProp`) auf vier Seitentypen ist entfernt. Die Flaggen zeichnen ohne `id`: `FlagGB` wurde von `clip-path="url(#s)"` am Stern der US-Flagge beschnitten, `FlagUS` zeichnete Sterne außerhalb des blauen Felds.
+
+Regeln: [the chrome is in the first HTML](../rules/the-chrome-is-in-the-first-html-in-reading-order.md), [the markup says what each part is](../rules/the-markup-says-what-each-part-is.md), Audit in [semantic-html.md](../seo/semantic-html.md). `pnpm check:semantic-html` prüft 27 Seiten aller Seitentypen.
+
+### Universal: eine Seite mit allen Parks und ihrem Live-Status
+
+„universal wait times“ und „universal studios wait times“ kamen in 28 Tagen auf über 1.100 Impressionen ohne einen Klick, und Google zeigte dafür die Seite von Universal Studios Hollywood auf Position 9 bis 11. `/{locale}/parks/universal` listet jetzt alle acht Parks mit „Universal“ im Namen nach Land: Hollywood, die vier Parks in Orlando mit Epic Universe und Volcano Bay sowie Osaka, Singapur und Peking. Wie auf der Six-Flags-Seite zeigt jede Karte, ob der Park heute offen ist und wie voll er ist; dazu kommen BreadcrumbList, ItemList, hreflang in sechs Sprachen und ein Sitemap-Eintrag. Jede Universal-Parkseite verlinkt die Übersicht in ihrer Adresszeile.
+
+Beide Markenseiten teilen sich jetzt `components/parks/brand-page.tsx`; die Seitenordner geben nur noch ihre Marke weiter. Sitemap, Content-Change-Crawl und der Link auf der Parkseite lesen `PARK_BRANDS`, eine dritte Marke braucht also nur ihre Konstante, ihren Ordner und ihre Texte.
+
+### Wochentage auf der Parkseite: nicht mehr „MoMontag“
+
+Die Wochentags-Leiste der Parkseite schrieb den kurzen Namen sichtbar und den langen für Screenreader direkt nebeneinander. Jede Textfassung der Seite klebte beide zusammen, auch das Markdown, das KI-Agenten von Cloudflare bekommen: „mamaandag: te weinig dagen gemeten“, „MoMontag: ruhig“. Ausgerechnet die Zeile, die eine Antwort auf „wann ist es leer“ zitieren würde, war unlesbar, in allen sechs Sprachen. Der kurze Name wird jetzt per CSS gezeichnet und steht nicht mehr im Text; zu lesen ist nur noch „maandag: gemiddeld“. Sichtbar ändert sich nichts.
+
+### Next.js, eslint-config-next und der Bundle-Analyzer stehen auf 16.4.3
+
+Wöchentliche Pflege: Alle drei Pakete wandern von 16.4.2 auf 16.4.3. Lint, `tsc`, die 117 Unit-Tests, die `check:*`-Skripte und `pnpm build` laufen unverändert grün, `pnpm audit --prod` meldet nichts. TypeScript 7.0.2 bleibt bewusst auf 6.0.3, bis der Major-Sprung eigens geprüft ist.
+
 ## 2.18.0 (2026-10-26) – Tagespanel für die nächsten zwölf Monate, Wartezeit im Browser-Tab, Ausweichbahnen und Sortierung nach kürzester Wartezeit, Seite für geschlossene Parks, Suchtabs
 
 Geschnitten am 2026-10-26 aus 51 Fragmenten in `docs/changelog.d/`. Der öffentliche Eintrag ist `content/changelog/2.18.0.md`. Neueste Abschnitte zuerst.
