@@ -115,8 +115,9 @@
       "introShort": "Live-Wartezeiten aus <strong>{parks} Parks</strong>.",
       "openNow": "{count, plural, =1 {1 Park gerade offen} other {# Parks gerade offen}}",
       "searchExamples": "Europa-Park, Taron, Efteling …",
-      "parkyLine": "Lass uns schauen, wo wir uns heute anstellen!",
-      "parkyCta": "Klick mich an, ich helfe dir."
+      "parkyHello": "Hey, ich bin Parky!",
+      "parkyLine": "Sollen wir schauen, wo wir uns heute zusammen anstellen?",
+      "parkyCta": "Klick mich an, dann legen wir los."
     },
     "sections": {
       "featuredParks": "Beliebte Parks",

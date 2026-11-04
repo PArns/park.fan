@@ -83,7 +83,7 @@ Where Parky stands while his chat window is shut: in his corner, or in a slot on
 - `PARKY_DOCK_MEDIA` _const_: From this width a slot on the page holds Parky (`HeroParky`); below it he keeps his corner.
 - `parkyDock` _const_: The slot Parky may stand in: the element, while it is on screen.
 - `parkyInDock` _const_: Whether Parky stands in the slot right now, and how he got there (`ParkyArrival`), or null: in his window, on his way there or back, or still hopping in from the corner. The launcher sets it; the slot draws Parky only then.
-- Types: `ParkyArrival`
+- Types: `ParkyArrival`, `ParkySlotBox`
 
 ### [`parky-jump.ts`](../../lib/assistant/parky-jump.ts)
 
@@ -91,7 +91,7 @@ Where Parky stands while his chat window is shut: in his corner, or in a slot on
 - `parkyJump` _function_: Parky's face in the chat window hops in from where Parky stands (`open`) or back to it: from the slot that holds him on the page while it is on screen (`parkyDock`), else from his corner button.
 - `parkyDockHop` _function_: Parky in his corner button hops up into the page's slot (`toSlot`), growing to its size, or comes down from it into the corner, shrinking back. The corner drawing is what moves, so the corner is where it rests.
 - `PARKY_JUMP_MS` _const_: How long Parky's hop between his corner and the chat window's top edge takes.
-- `PARKY_DOCK_HOP_MS` _const_: How long his hop between the corner and a slot on the page takes: the longer way, more time.
+- `PARKY_DOCK_HOP_MS` _const_: How long his hop between the corner and a slot on the page takes.
 - `PARKY_CORNER_ATTR` _const_: Marks the drawing in the corner button, where the hop starts and lands.
 - `PARKY_LANDED_EVENT` _const_: Sent on `window` when a hop has landed. Parky's eyes aimed at the pointer from wherever he was mid-air (the page scrolls under a still pointer while he flies), so they aim again from where he stands now.
 

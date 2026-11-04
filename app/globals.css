@@ -881,6 +881,74 @@
     transform: translateY(0) scale(0.98, 1.02);
   }
 }
+/* Woken up slowly: a long stretch up, a slump, a smaller one. */
+@keyframes parky-stretch {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  30%,
+  45% {
+    transform: scale(0.9, 1.14);
+  }
+  60% {
+    transform: scale(1.05, 0.95);
+  }
+  78% {
+    transform: scale(0.97, 1.04);
+  }
+}
+/* Woken up groggy: the eyes come half open, fall shut, then open for good. */
+@keyframes parky-groggy-eyes {
+  0% {
+    transform: scaleY(0.1);
+  }
+  25%,
+  40% {
+    transform: scaleY(0.45);
+  }
+  52% {
+    transform: scaleY(0.1);
+  }
+  70%,
+  100% {
+    transform: scaleY(1);
+  }
+}
+@keyframes parky-groggy {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  30% {
+    transform: rotate(-5deg);
+  }
+  60% {
+    transform: rotate(4deg);
+  }
+}
+/* Woken up and shaking the sleep off like a wet dog. */
+@keyframes parky-shake-off {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  15% {
+    transform: rotate(-10deg);
+  }
+  30% {
+    transform: rotate(10deg);
+  }
+  45% {
+    transform: rotate(-8deg);
+  }
+  60% {
+    transform: rotate(6deg);
+  }
+  75% {
+    transform: rotate(-3deg);
+  }
+}
 @keyframes parky-wide {
   0%,
   100% {
@@ -1819,6 +1887,20 @@
   }
   .parky-act-startle .parky-eyes {
     animation: parky-wide var(--parky-act) ease-out;
+  }
+  .parky-act-stretch {
+    transform-origin: 50% 100%;
+    animation: parky-stretch var(--parky-act) ease-in-out;
+  }
+  .parky-act-groggy {
+    animation: parky-groggy var(--parky-act) ease-in-out;
+  }
+  .parky-act-groggy .parky-eyes {
+    animation: parky-groggy-eyes var(--parky-act) ease-in-out;
+  }
+  .parky-act-shakeoff {
+    transform-origin: 50% 100%;
+    animation: parky-shake-off var(--parky-act) ease-in-out;
   }
   .parky-alarm {
     animation: parky-alarm var(--parky-act) ease-out both;

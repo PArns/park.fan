@@ -115,8 +115,9 @@
       "introShort": "Le attese in tempo reale di <strong>{parks} parchi</strong>.",
       "openNow": "{count, plural, =1 {1 parco aperto ora} other {# parchi aperti ora}}",
       "searchExamples": "Gardaland, Taron, Efteling …",
-      "parkyLine": "Vediamo dove mettersi in fila oggi!",
-      "parkyCta": "Cliccami e ti aiuto."
+      "parkyHello": "Ciao, sono Parky!",
+      "parkyLine": "Vediamo dove fare la fila insieme oggi?",
+      "parkyCta": "Cliccami e partiamo."
     },
     "sections": {
       "featuredParks": "Parchi popolari",

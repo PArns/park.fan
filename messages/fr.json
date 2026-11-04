@@ -115,8 +115,9 @@
       "introShort": "Temps d’attente en direct de <strong>{parks} parcs</strong>.",
       "openNow": "{count, plural, one {# parc ouvert en ce moment} other {# parcs ouverts en ce moment}}",
       "searchExamples": "Disneyland Paris, Taron, Efteling …",
-      "parkyLine": "Voyons où on fait la queue aujourd’hui !",
-      "parkyCta": "Clique sur moi, je t’aide."
+      "parkyHello": "Salut, moi c’est Parky !",
+      "parkyLine": "On regarde où faire la queue ensemble aujourd’hui ?",
+      "parkyCta": "Clique sur moi et c’est parti."
     },
     "sections": {
       "featuredParks": "Parcs populaires",

@@ -42,6 +42,11 @@ const slotStore = createStore<HTMLElement | null>(null);
 const presentStore = createStore<ParkyArrival | null>(null);
 /** The slot last on screen, which the hop down to the corner starts from once it has left. */
 let lastSlot: HTMLElement | null = null;
+/** Where that slot stood as it left the page (a navigation), measured before it went. */
+let lastBox: DOMRect | null = null;
+
+/** What the hop measures a slot by: the element, or the box it last had. */
+export type ParkySlotBox = Pick<HTMLElement, 'getBoundingClientRect'>;
 
 /** From this width a slot on the page holds Parky (`HeroParky`); below it he keeps his corner. */
 export const PARKY_DOCK_MEDIA = '(min-width: 1024px)';
@@ -50,14 +55,28 @@ export const PARKY_DOCK_MEDIA = '(min-width: 1024px)';
 export const parkyDock = {
   /** The slot reports itself while it is on screen, `null` once it is not or goes. */
   set(slot: HTMLElement | null) {
-    if (slot) lastSlot = slot;
+    if (slot) {
+      lastSlot = slot;
+      lastBox = null;
+    }
     slotStore.set(slot);
+  },
+  /**
+   * The slot is about to leave the page, still in it: its box, for the hop down from where it
+   * stood. Called from a layout effect's cleanup, which runs before the element is removed.
+   */
+  leave(box: DOMRect) {
+    lastBox = box;
   },
   subscribe: slotStore.subscribe,
   /** The slot on screen, or `null`: Parky then belongs in his corner. */
   element: slotStore.get,
-  /** The slot last on screen, while it is still in the page. */
-  lastElement: () => (lastSlot?.isConnected ? lastSlot : null),
+  /** The slot last on screen, or once it has left the page the box it had then. */
+  lastElement: (): ParkySlotBox | null => {
+    if (lastSlot?.isConnected) return lastSlot;
+    const box = lastBox;
+    return box ? { getBoundingClientRect: () => box } : null;
+  },
   /** Whether Parky belongs in the slot rather than in his corner. */
   getSnapshot: () => slotStore.get() !== null,
   getServerSnapshot: () => false,

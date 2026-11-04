@@ -115,8 +115,9 @@
       "introShort": "Live wait times at <strong>{parks} theme parks</strong>.",
       "openNow": "{count, plural, =1 {1 park open right now} other {# parks open right now}}",
       "searchExamples": "Europa-Park, Taron, Efteling …",
-      "parkyLine": "Let’s see where we queue today!",
-      "parkyCta": "Click me and I’ll help you."
+      "parkyHello": "Hey, I’m Parky!",
+      "parkyLine": "Shall we find out where to queue together today?",
+      "parkyCta": "Click me and let’s get going."
     },
     "sections": {
       "featuredParks": "Popular Parks",

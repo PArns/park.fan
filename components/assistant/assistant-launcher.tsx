@@ -115,6 +115,7 @@ function LauncherButton({
   cue,
   away,
   fling,
+  hopping,
   onLanded,
 }: {
   open: boolean;
@@ -125,6 +126,8 @@ function LauncherButton({
   cue: ParkyCue | null;
   /** A fast scroll moving Parky: carried up or pressed flat. */
   fling: ParkyFling | null;
+  /** Parky is hopping between his corner and the page's slot: the glow waits in the corner. */
+  hopping: boolean;
   /** Parky has dropped back from a fast scroll and hit the corner. */
   onLanded: () => void;
 }) {
@@ -132,13 +135,23 @@ function LauncherButton({
   // the whole namespace into every page's chrome (docs/rules/translations-are-routed-not-bundled.md).
   const t = useTranslations('navigation');
   // A button that came in with an entrance has arrived; it must not fade in a second time after.
-  const [entered] = useState(entrance !== null);
+  // Set on the entrance's first render, not the mount: the button mounts unseen before it has one.
+  const [entered, setEntered] = useState(entrance !== null);
+  if (entrance && !entered) setEntered(true);
   // A modal dialog has the screen (the planner's wizard, an alert): Parky ducks below the edge
   // rather than sit on its buttons, and comes back up once it closes. Not for the search palette,
   // where it searches along. `translate`, not `transform`, which an entrance's fill still holds.
   const locked = usePageLocked();
   const searching = useSearchOpen();
-  const dodging = locked && !searching;
+  // Whether the lock began with the search: the palette lets go of the page only once its close
+  // animation has run, after it said it is shut, and Parky would duck for that moment.
+  const [lockedBySearch, setLockedBySearch] = useState(false);
+  const [wasLocked, setWasLocked] = useState(locked);
+  if (wasLocked !== locked) {
+    setWasLocked(locked);
+    setLockedBySearch(locked && searching);
+  }
+  const dodging = locked && !searching && !lockedBySearch;
   const hanging = fling === 'down';
   const hung = useRef(false);
   useEffect(() => {
@@ -165,7 +178,7 @@ function LauncherButton({
       aria-label={open ? t('assistantClose') : t('assistantOpen')}
       title={open ? undefined : t('assistantOpen')}
       className={cn(
-        'group fixed right-4 bottom-[max(1rem,env(safe-area-inset-bottom))] grid size-14 place-items-center rounded-full sm:size-16',
+        'group fixed right-4 bottom-[max(1rem,env(safe-area-inset-bottom))] grid size-14 cursor-pointer place-items-center rounded-full sm:size-16',
         PARKY_LAYER,
         'planner-wide:right-[calc(var(--planner-inset,0px)+1rem)]',
         entrance ? `parky-enter-${entrance}` : !entered && 'animate-in fade-in zoom-in-90',
@@ -188,7 +201,10 @@ function LauncherButton({
           {/* A soft glow of the brand colours behind the bubble, stronger on hover. */}
           <span
             aria-hidden="true"
-            className="from-primary/40 to-status-operating/40 absolute inset-1 rounded-full bg-gradient-to-br opacity-70 blur-lg transition-opacity group-hover:opacity-100"
+            className={cn(
+              'from-primary/40 to-status-operating/40 absolute inset-1 rounded-full bg-gradient-to-br opacity-70 blur-lg transition-opacity group-hover:opacity-100',
+              hopping && 'opacity-0 transition-none group-hover:opacity-0'
+            )}
           />
           {entrance && <EntranceEffects entrance={entrance} />}
           <span aria-hidden="true" className="parky-drop">
@@ -398,8 +414,9 @@ export function AssistantLauncher() {
         onToggle={openFromButton}
         entrance={entering ? entrance : null}
         cue={cue}
-        away={away || inSlot}
+        away={away || inSlot || !shown}
         fling={fling}
+        hopping={hop !== null}
         onLanded={landedDizzy}
       />
       {!open && <ShownCounter entrance={entrance} />}
