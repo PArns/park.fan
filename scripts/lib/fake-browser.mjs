@@ -18,9 +18,9 @@ export const listeners = { window: [], document: [] };
 
 /**
  * Plays a browser event to whoever listens: `visibilitychange` after setting the visibility,
- * `pagehide` on the window.
+ * `prerenderingchange` on the document, `pagehide` on the window.
  *
- * @param {'visibilitychange' | 'pagehide'} type
+ * @param {'visibilitychange' | 'prerenderingchange' | 'pagehide'} type
  * @param {'visible' | 'hidden'} [visibility] the state the document is in when it fires
  */
 export function fire(type, visibility) {
@@ -45,7 +45,10 @@ export function navigate(path) {
  * @param {string} [page.dnt] `navigator.doNotTrack`
  * @param {boolean} [page.gpc] `navigator.globalPrivacyControl`
  * @param {boolean} [page.webdriver] `navigator.webdriver`
+ * @param {string} [page.userAgent] `navigator.userAgent`
+ * @param {{ platform?: string }} [page.userAgentData] `navigator.userAgentData`, absent as in WebKit
  * @param {'visible' | 'hidden'} [page.visibility] `document.visibilityState`
+ * @param {boolean} [page.prerendering] `document.prerendering`
  * @param {Record<string, string>} [page.storage] what `localStorage` holds
  */
 export function browser(page = {}) {
@@ -58,7 +61,10 @@ export function browser(page = {}) {
     dnt,
     gpc,
     webdriver,
+    userAgent = '',
+    userAgentData,
     visibility = 'visible',
+    prerendering = false,
     storage = {},
   } = page;
   clock.now = 0;
@@ -82,6 +88,8 @@ export function browser(page = {}) {
     doNotTrack: dnt,
     globalPrivacyControl: gpc,
     webdriver,
+    userAgent,
+    userAgentData,
     sendBeacon: (url, body) => {
       requests.push({ url, via: 'beacon', pending: body.text().then(JSON.parse), type: body.type });
       return true;
@@ -90,6 +98,7 @@ export function browser(page = {}) {
   define('document', {
     referrer,
     visibilityState: visibility,
+    prerendering,
     addEventListener: (type, handler) => listeners.document.push({ type, handler }),
   });
   define('addEventListener', (type, handler) => listeners.window.push({ type, handler }));

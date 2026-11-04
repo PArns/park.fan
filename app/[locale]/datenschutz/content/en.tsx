@@ -9,7 +9,7 @@ export function DatenschutzEN() {
   return (
     <>
       <h1 className="mb-2 text-4xl font-bold">Privacy Policy</h1>
-      <p className="text-muted-foreground mb-8 text-sm">Last updated: 2 November 2026</p>
+      <p className="text-muted-foreground mb-8 text-sm">Last updated: 4 November 2026</p>
 
       <div className="space-y-4 text-base leading-7">
         <LegalH2>1. Controller</LegalH2>
@@ -268,9 +268,12 @@ export function DatenschutzEN() {
           without search terms and anchor and, derived from it, the kind of page (for example park,
           attraction or post) and the language. It does not read the size of your window. On the
           first page view after the website is opened, it also reads the origin: the domain name of
-          the website you came from. The server works out the kind of origin (for example search
-          engine or social network) from that. The path of an address that does not exist is counted
-          too, so that we can find broken links.
+          the website you came from. If your browser passes on no origin, it takes the{' '}
+          <code>utm_source</code> value from the address instead, but only when it names an AI
+          assistant on a fixed list (for example chatgpt.com). It reads no other value of the
+          address. The server works out the kind of origin (for example search engine or social
+          network) from that. The path of an address that does not exist is counted too, so that we
+          can find broken links.
         </p>
         <p>
           For certain actions your browser also sends an event. We set its name and values in the
@@ -405,9 +408,12 @@ export function DatenschutzEN() {
           Somebody who comes back on another day is counted again, because the IDs of one day have
           nothing in common with those of the next. So that nobody can distort the lists of
           most-read posts, a page counts at most three times a day per visitor. Requests from bots
-          and from automated browsers are not counted. Only views on park.fan itself are counted.
-          The request passes through Cloudflare (see section 2). The counter sets no cookie and
-          stores nothing in local storage.
+          and from automated browsers are not counted. To tell them apart, the script also checks in
+          your browser whether the operating system your browser states matches the one it runs on.
+          The result does not leave your browser. A page that was never on screen, such as a tab you
+          never opened, is not counted. Only views on park.fan itself are counted. The request
+          passes through Cloudflare (see section 2). The counter sets no cookie and stores nothing
+          in local storage.
         </p>
         <p>
           The legal basis is our legitimate interest in showing the most-read posts, in seeing which

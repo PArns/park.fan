@@ -15,6 +15,7 @@ import { existsSync, mkdirSync } from 'node:fs';
 import { chromium } from 'playwright';
 import sharp from 'sharp';
 import { PHONE } from './lib/phone-device.mjs';
+import { TOUR_PARK } from '../lib/home/tour-park.mjs';
 
 const base =
   process.argv.find((arg) => arg.startsWith('--base='))?.slice(7) ?? 'http://localhost:3000';
@@ -24,7 +25,7 @@ const onlyShots = process.argv
   ?.slice(7)
   .split(',');
 
-const PARK = 'parks/europe/germany/rust/europa-park';
+const PARK = TOUR_PARK.path;
 const RIDE = `${PARK}/silver-star`;
 const TOKYO_DISNEYLAND = 'parks/asia/japan/tokyo/tokyo-disneyland';
 

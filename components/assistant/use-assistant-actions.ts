@@ -8,8 +8,8 @@ import { plannerStore } from '@/lib/planner/store';
 import { plannerUi } from '@/lib/planner/ui-store';
 import { openDay } from '@/lib/planner/actions';
 import { safeAssistantHref } from '@/lib/assistant/links';
+import { localizedPath } from '@/lib/i18n/localized-path';
 import {
-  localizedPath,
   type AssistantAction,
   type AssistantActionChip,
   type AssistantPlannerPark,

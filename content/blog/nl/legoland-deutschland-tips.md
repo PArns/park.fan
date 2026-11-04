@@ -29,7 +29,7 @@ parkLinks:
 rideLinks:
   - legoland-deutschland/*
 seo:
-  title: 'Legoland Deutschland tips: wachttijden, Fastrack, tickets en Halloween'
+  title: 'Legoland Deutschland tips: loont Fastrack?'
   description: >-
     In Legoland Deutschland is het op vrijdag het rustigst en op zaterdag het
     drukst. Met een volwassene hoeft een kind nergens langer te zijn dan 1,25

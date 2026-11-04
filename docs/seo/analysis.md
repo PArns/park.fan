@@ -64,6 +64,19 @@ Search Console 404 export against `/v1/discovery/geo`, add the redirects, then r
 for the top pages. hreflang is correct site-wide; a language swap on google.de only works while
 the localized URLs resolve.
 
+### A park without live waits keeps "Wartezeiten LIVE" in its title
+
+Hansa-Park publishes its waits only in its own app (`liveWaitTimes.available: false`), yet its
+title (`seo.parks.titleTemplate`), meta description and intro promise live waits like every other
+park page. It is the page with the most search clicks: 712 of 11,646 from 6 October to 2 November
+2026, position 5.3 and 14 % CTR, and „hansa park wartezeiten" at position 3.5 with 27 % CTR. On
+2026-11-04 Patrick decided to leave the wording as it is: a title without "Wartezeiten" would give
+up that query, and the page answers the visit with the notice (`NoLiveWaitTimesNotice`), the
+crowd calendar and the opening hours. The notice keeps `data-nosnippet`, so the snippet stays the
+meta description ([parks without wait times](../api/parks-without-wait-times.md)). Reopen it with
+numbers: the share of those visits that leave at once, once the site statistic has a season of
+Hansa-Park traffic.
+
 ## Resolved, and kept resolved
 
 Each of these was a real incident. The fix lives in code; the reason is here so nobody undoes it.

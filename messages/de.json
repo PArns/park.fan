@@ -214,7 +214,6 @@
         "kicker": "Live-Wartezeiten",
         "title": "Wartezeiten live, für jede Bahn",
         "text": "Taron, Blue Fire, Wodan: Auf jeder Parkseite steht, wie lang du gerade an jeder Bahn anstehst, dazu der Andrang von sehr niedrig bis extrem. Die Zahlen kommen alle fünf Minuten neu.",
-        "link": "So funktioniert park.fan",
         "alt": "Die Parkseite des Europa-Park auf dem Handy: die Headliner mit ihren Live-Wartezeiten und dem Andrang."
       },
       "calendar": {
@@ -380,6 +379,7 @@
     "toggle": "Design wechseln"
   },
   "parks": {
+    "liveLink": "{park}: Wartezeiten live",
     "liveFreshness": {
       "asOf": "Stand",
       "outdated": "Nicht aktuell",
@@ -994,7 +994,7 @@
     },
     "calendarPage": {
       "breadcrumb": "Wartezeiten-Kalender",
-      "h1Suffix": "Wartezeiten im {month}",
+      "h1Suffix": "Andrang im {month}",
       "metaTitle": "{park}: Andrang & Öffnungszeiten im {month}",
       "metaTitleShort": "{park}: Andrang im {month}",
       "metaTitleBare": "{park}: {month}",
@@ -1010,7 +1010,6 @@
       "nextMonth": "Nächster Monat",
       "currentMonth": "Heute",
       "currentMonthAria": "Zum aktuellen Monat",
-      "backToPark": "Zurück zu den Wartezeiten {inPark}",
       "monthIndexLabel": "Alle Monate",
       "summary": {
         "openingFuture": "Im {month} öffnet {park} an {open} von {total} Tagen.",
@@ -1048,7 +1047,6 @@
       "h1Suffix": "Durchschnittliche Wartezeiten",
       "metaTitle": "{park}: die vollsten Monate, Tage und Uhrzeiten",
       "metaTitleShort": "{park}: die vollsten Tage und Monate",
-      "liveLink": "{park}: Wartezeiten live →",
       "metaDescription": "Wie lange wartet man {inPark} in {city} wirklich? Typische und Spitzenwerte nach Monat, Wochentag und Uhrzeit, gemessen an {days} Öffnungstagen.",
       "metaDescriptionNoCity": "Wie lange wartet man {inPark} wirklich? Typische und Spitzenwerte nach Monat, Wochentag und Uhrzeit, gemessen an {days} Öffnungstagen.",
       "leadBusiest": "Am vollsten ist es {inPark} im {months}, mit typisch {minutes} Minuten.",

@@ -17,6 +17,10 @@ Country and continent names that fall back to the prettified slug and log the mi
 - `LANGUAGE_BANNER_MESSAGES` _const_
 - Types: `LanguageBannerMessages`
 
+### [`localized-path.ts`](../../lib/i18n/localized-path.ts)
+
+- `localizedPath` _function_: A site path with the reader's locale in front, as the site's own links carry it.
+
 ### [`logger.ts`](../../lib/i18n/logger.ts)
 
 `fs` and `path` load lazily, on the server only: this module is reachable from Client Components, where a static `import fs` fails to resolve under Turbopack.

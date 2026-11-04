@@ -59,6 +59,7 @@ import {
 } from '@/components/parks/park-calendar-month-summary';
 import { ParkCalendarMonthIndex } from '@/components/parks/park-calendar-month-index';
 import { ParkPageShell } from '@/components/parks/park-page-shell';
+import { ParkLiveLink } from '@/components/parks/park-live-link';
 import { ParkTitleHeader } from '@/components/parks/park-title-header';
 import { ParkHeaderCard } from '@/components/parks/park-header-card';
 import { ParkNavTiles } from '@/components/parks/park-nav-tiles';
@@ -440,7 +441,9 @@ export default async function ParkCalendarPage({ params }: ParkCalendarPageProps
                   })
                 : t('intro', parkArgs(locale as Locale, parkName, park.nameArticleDe))
             }
-          />
+          >
+            <ParkLiveLink href={parkPath} park={parkName} locale={locale as Locale} />
+          </ParkTitleHeader>
         }
       >
         {/* The park page's header card, with link cells instead of tab triggers: there is no

@@ -43,4 +43,6 @@ and fixed.
 
 **Not fixed by it:** the title (`seo.parks.titleTemplate`, "{park} Wartezeiten LIVE") and
 the FAQ's `waitTimesNoDataA` ("Die Live-Wartezeiten … stehen oben") still promise live
-wait times for such a park. Changing the title is a ranking decision on the biggest page.
+wait times for such a park. Changing the title is a ranking decision on the biggest page, and on
+2026-11-04 it was decided to keep it:
+[accepted trade-off](../seo/analysis.md#a-park-without-live-waits-keeps-wartezeiten-live-in-its-title).

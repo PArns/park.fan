@@ -140,6 +140,7 @@
     "test:admin-proxy-path": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-admin-proxy-path.mjs",
     "test:calendar-park-projection": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-calendar-park-projection.mjs",
     "test:maze-grouping": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-maze-grouping.mjs",
+    "test:localized-path": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-localized-path.mjs",
     "test:live-park-counts": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-live-park-counts.mjs",
     "test:live-park-daily-block": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-live-park-daily-block.mjs",
     "test:live-data-freshness": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-live-data-freshness.mjs",
