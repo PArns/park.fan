@@ -160,8 +160,9 @@ Its life of its own comes in classes, each with its own pace (`CLASS_ACTS`, `CLA
 A showy act takes the place of the fidget that would come after it is due. That is the button in
 the corner. In the open window and in the homepage hero Parky is `calm`: awake he only blinks and
 follows the pointer, bored he gets sleepy, falls asleep and dreams, and what he does for the
-visitor plays as everywhere. The dream's scenes stay inside the cloud (`clipPath`); the train runs
-its track as a web animation measured off the path.
+visitor plays as everywhere. The dream's cloud is drawn half again as large as its puffs
+(`DREAM_CLOUD_SCALE`), its scene stays inside it (`clipPath`), and the train runs its track as a
+web animation measured off the path.
 
 A change of stage never cuts an act short: an act still on stage when Parky gets bored, falls
 asleep or wakes up plays to its end, with the dizziness after a ride, and only then does the new

@@ -572,6 +572,11 @@ const BELL_GAZE = { x: -1.8, y: -2.2 };
  */
 const DREAM_TRACK =
   'M-22.5 -7.5L-16 -7.5C-11 -7.5-8 -10.5-8 -14.5A4.5 4.5 0 0 0-17 -14.5C-17 -10.5-14 -7.5-9 -7.5L-2.5 -7.5';
+/**
+ * The dream cloud's size and place: half again as large as it is drawn, its lower edge on the last
+ * puff and its left edge 34 units off the drawing, which the homepage hero's 80 px margin holds.
+ */
+const DREAM_CLOUD_SCALE = 'translate(4 -6) scale(1.5) translate(2 6)';
 /** One lap of the dream train, and the points along the track its motion is drawn through. */
 const TRAIN_LAP_MS = 3_200;
 const TRAIN_STEPS = 32;
@@ -613,114 +618,128 @@ function ParkyDreamCloud({ dream, ground }: { dream: ParkyDream; ground: string 
   }, [dream]);
   return (
     <g className={cn('parky-dream', `parky-dream--${dream}`)}>
-      <clipPath id={clip}>
-        <ellipse cx="-12.5" cy="-14" rx="14.2" ry="9.6" />
-      </clipPath>
       <g fill="white" stroke={blue} strokeWidth=".8">
         <circle className="parky-dream-puff" cx="7" cy="9" r="1.4" />
         <circle className="parky-dream-puff" cx="3.6" cy="4.4" r="1.9" />
         <circle className="parky-dream-puff" cx="-0.6" cy="-0.6" r="2.5" />
-        <ellipse className="parky-dream-puff" cx="-12.5" cy="-14" rx="15" ry="10.4" />
       </g>
-      <g clipPath={`url(#${clip})`} className="parky-dream-scene">
-        {dream === 'coaster' && (
-          <>
-            <circle cx="-20.5" cy="-17.5" r="1.6" fill={DREAM_GOLD} />
-            <path d="M-19 -7.5V-4M-6 -7.5V-4" stroke={ink} strokeWidth=".5" opacity=".35" />
-            <path
-              ref={track}
-              d={DREAM_TRACK}
-              fill="none"
-              stroke={rail}
-              strokeWidth="1"
-              strokeLinecap="round"
-            />
-            <g ref={train}>
-              {/* A car on the rail, nose ahead, with Parky in it, arms up. */}
-              <rect x="-2.6" y="-2.6" width="5.2" height="2.4" rx=".8" fill={CABIN_COLOURS[1]} />
-              <circle cx=".2" cy="-3.9" r="1.6" fill={`url(#${ground})`} />
+      {/* The cloud and its scene are drawn at one size and scaled up from the corner the puffs
+          lead to, so the scene reads at a glance; the stroke keeps its width. */}
+      <g transform={DREAM_CLOUD_SCALE}>
+        <clipPath id={clip}>
+          <ellipse cx="-12.5" cy="-14" rx="14.2" ry="9.6" />
+        </clipPath>
+        <ellipse
+          className="parky-dream-cloud"
+          cx="-12.5"
+          cy="-14"
+          rx="15"
+          ry="10.4"
+          fill="white"
+          stroke={blue}
+          strokeWidth=".8"
+          vectorEffect="non-scaling-stroke"
+        />
+        <g clipPath={`url(#${clip})`} className="parky-dream-scene">
+          {dream === 'coaster' && (
+            <>
+              <circle cx="-20.5" cy="-17.5" r="1.6" fill={DREAM_GOLD} />
+              <path d="M-19 -7.5V-4M-6 -7.5V-4" stroke={ink} strokeWidth=".5" opacity=".35" />
               <path
-                d="M-1.1 -4.9L-2 -6.9M1.5 -4.9L2.4 -6.9"
-                stroke={blue}
-                strokeWidth=".55"
-                strokeLinecap="round"
-              />
-            </g>
-          </>
-        )}
-        {dream === 'cheer' && (
-          <>
-            {CABIN_COLOURS.concat(CABIN_COLOURS).map((colour, i) => (
-              <rect
-                key={i}
-                className="parky-dream-confetti"
-                x={-24 + i * 3.3}
-                y={-23 + (i % 3) * 1.5}
-                width=".9"
-                height="1.7"
-                rx=".3"
-                fill={colour}
-                style={{ animationDelay: `${(i % 4) * 0.35}s` } as React.CSSProperties}
-              />
-            ))}
-            <g className="parky-dream-hopper">
-              <path
-                d="M-16.4 -12.6L-18.6 -17M-8.6 -12.6L-6.4 -17"
-                stroke={blue}
-                strokeWidth=".7"
-                strokeLinecap="round"
-              />
-              <circle cx="-12.5" cy="-11" r="4.4" fill={`url(#${ground})`} />
-              <path
-                d="M-14.6 -12.2q.8-.9 1.6 0M-12 -12.2q.8-.9 1.6 0"
+                ref={track}
+                d={DREAM_TRACK}
                 fill="none"
-                stroke={ink}
-                strokeWidth=".55"
+                stroke={rail}
+                strokeWidth="1"
                 strokeLinecap="round"
               />
-              <path d="M-14 -10.2q1.5 2.2 3 0z" fill={ink} />
-            </g>
-          </>
-        )}
-        {dream === 'castle' && (
-          <>
-            <path
-              className="parky-dream-shoot"
-              d="M-25 -16Q-14 -27 0 -20"
-              fill="none"
-              stroke={DREAM_GOLD}
-              strokeWidth=".6"
-              strokeLinecap="round"
-              pathLength={1}
-            />
-            {[
-              [-22, -10],
-              [-3, -9],
-              [-6, -21],
-            ].map(([x, y], i) => (
+              <g ref={train}>
+                {/* A car on the rail, nose ahead, with Parky in it, arms up. */}
+                <rect x="-2.6" y="-2.6" width="5.2" height="2.4" rx=".8" fill={CABIN_COLOURS[1]} />
+                <circle cx=".2" cy="-3.9" r="1.6" fill={`url(#${ground})`} />
+                <path
+                  d="M-1.1 -4.9L-2 -6.9M1.5 -4.9L2.4 -6.9"
+                  stroke={blue}
+                  strokeWidth=".55"
+                  strokeLinecap="round"
+                />
+              </g>
+            </>
+          )}
+          {dream === 'cheer' && (
+            <>
+              {CABIN_COLOURS.concat(CABIN_COLOURS).map((colour, i) => (
+                <rect
+                  key={i}
+                  className="parky-dream-confetti"
+                  x={-24 + i * 3.3}
+                  y={-23 + (i % 3) * 1.5}
+                  width=".9"
+                  height="1.7"
+                  rx=".3"
+                  fill={colour}
+                  style={{ animationDelay: `${(i % 4) * 0.35}s` } as React.CSSProperties}
+                />
+              ))}
+              <g className="parky-dream-hopper">
+                <path
+                  d="M-16.4 -12.6L-18.6 -17M-8.6 -12.6L-6.4 -17"
+                  stroke={blue}
+                  strokeWidth=".7"
+                  strokeLinecap="round"
+                />
+                <circle cx="-12.5" cy="-11" r="4.4" fill={`url(#${ground})`} />
+                <path
+                  d="M-14.6 -12.2q.8-.9 1.6 0M-12 -12.2q.8-.9 1.6 0"
+                  fill="none"
+                  stroke={ink}
+                  strokeWidth=".55"
+                  strokeLinecap="round"
+                />
+                <path d="M-14 -10.2q1.5 2.2 3 0z" fill={ink} />
+              </g>
+            </>
+          )}
+          {dream === 'castle' && (
+            <>
               <path
-                key={i}
-                className="parky-dream-sparkle"
-                d={`M${x} ${y - 1.4}L${x + 0.4} ${y - 0.4}L${x + 1.4} ${y}L${x + 0.4} ${y + 0.4}L${x} ${y + 1.4}L${x - 0.4} ${y + 0.4}L${x - 1.4} ${y}L${x - 0.4} ${y - 0.4}Z`}
-                fill={DREAM_GOLD}
-                style={{ animationDelay: `${i * 0.5}s` } as React.CSSProperties}
+                className="parky-dream-shoot"
+                d="M-25 -16Q-14 -27 0 -20"
+                fill="none"
+                stroke={DREAM_GOLD}
+                strokeWidth=".6"
+                strokeLinecap="round"
+                pathLength={1}
               />
-            ))}
-            <g className="parky-dream-rise">
-              <path d="M-19 -4V-11H-6V-4Z" fill={CASTLE_WALL} />
-              <path
-                d="M-20.5 -4V-14H-17.5V-4ZM-7.5 -4V-14H-4.5V-4ZM-14.5 -4V-16.5H-10.5V-4Z"
-                fill={CASTLE_WALL}
-              />
-              <path
-                d="M-21 -14L-19 -18.5L-17 -14ZM-8 -14L-6 -18.5L-4 -14ZM-15 -16.5L-12.5 -22.5L-10 -16.5Z"
-                fill={CASTLE_ROOF}
-              />
-              <path d="M-12.5 -22.5V-24.5L-11 -24" stroke={rail} strokeWidth=".4" fill={rail} />
-              <path d="M-13.8 -4V-6.6A1.3 1.3 0 0 1-11.2 -6.6V-4Z" fill={CASTLE_ROOF} />
-            </g>
-          </>
-        )}
+              {[
+                [-22, -10],
+                [-3, -9],
+                [-6, -21],
+              ].map(([x, y], i) => (
+                <path
+                  key={i}
+                  className="parky-dream-sparkle"
+                  d={`M${x} ${y - 1.4}L${x + 0.4} ${y - 0.4}L${x + 1.4} ${y}L${x + 0.4} ${y + 0.4}L${x} ${y + 1.4}L${x - 0.4} ${y + 0.4}L${x - 1.4} ${y}L${x - 0.4} ${y - 0.4}Z`}
+                  fill={DREAM_GOLD}
+                  style={{ animationDelay: `${i * 0.5}s` } as React.CSSProperties}
+                />
+              ))}
+              <g className="parky-dream-rise">
+                <path d="M-19 -4V-11H-6V-4Z" fill={CASTLE_WALL} />
+                <path
+                  d="M-20.5 -4V-14H-17.5V-4ZM-7.5 -4V-14H-4.5V-4ZM-14.5 -4V-16.5H-10.5V-4Z"
+                  fill={CASTLE_WALL}
+                />
+                <path
+                  d="M-21 -14L-19 -18.5L-17 -14ZM-8 -14L-6 -18.5L-4 -14ZM-15 -16.5L-12.5 -22.5L-10 -16.5Z"
+                  fill={CASTLE_ROOF}
+                />
+                <path d="M-12.5 -22.5V-24.5L-11 -24" stroke={rail} strokeWidth=".4" fill={rail} />
+                <path d="M-13.8 -4V-6.6A1.3 1.3 0 0 1-11.2 -6.6V-4Z" fill={CASTLE_ROOF} />
+              </g>
+            </>
+          )}
+        </g>
       </g>
     </g>
   );
