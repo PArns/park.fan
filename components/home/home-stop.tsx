@@ -115,26 +115,31 @@ export function HomeStop({
 /**
  * A stop whose content is a screenshot on a phone (`ShotRow`), as the tour's and Parky's are: the
  * heading beside the phone, which glides as the page scrolls past. `overflow-x-clip` keeps the
- * phone's glow from widening a phone's page without cutting it off above and below.
+ * phone's glow from widening a phone's page without cutting it off above and below. It draws no
+ * hairline: the tour and Parky after it read as one run, set apart by room alone. On a phone that
+ * room is half a `HomeStop`'s: text and phone stack to more than a screen, and the full room left
+ * a hole between two stops.
+ *
+ * `flushTop` drops the room above the stop, for a stop that runs on from the one before it: the
+ * stop above keeps its own room below, which is then the whole gap.
  */
 export function ShotStop({
   heading,
   src,
   alt,
   reverse = false,
-  divider = false,
+  flushTop = false,
 }: {
   /** The stop's `ChapterHeading variant="stop"`. */
   heading: ReactNode;
   src: string;
   alt: string;
   reverse?: boolean;
-  divider?: boolean;
+  flushTop?: boolean;
 }) {
   return (
     <section className="overflow-x-clip px-4">
-      {divider && <div aria-hidden="true" className={STOP_DIVIDER_CLASS} />}
-      <div className="container mx-auto py-16 sm:py-24">
+      <div className={cn('container mx-auto', flushTop ? 'pb-8 sm:pb-24' : 'py-8 sm:py-24')}>
         <Reveal>
           <ShotRow src={src} alt={alt} reverse={reverse} drift>
             {heading}

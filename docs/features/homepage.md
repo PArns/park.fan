@@ -45,9 +45,16 @@ layouts:
   sides. The tour and Parky.
 
 - **Separation is room and a hairline**: `py-16 sm:py-24` per stop, and `STOP_DIVIDER_CLASS`, a
-  line that fades out at both ends, where a new group begins (the tour, your parks, popular parks,
-  the questions, Parky). The chapter headers before them (a 68 px plate, a pill, the title, a hint and a
-  rule over every chapter) took about 200 px each and said what the content under them showed.
+  line that fades out at both ends, where a new group begins (your parks, popular parks, the
+  questions). The chapter headers before them (a 68 px plate, a pill, the title, a hint and a rule
+  over every chapter) took about 200 px each and said what the content under them showed.
+- **The tour and Parky are one run**: `ShotStop` draws no hairline, and on a phone its room is
+  half a `HomeStop`'s (`py-8 sm:py-24`), 64 px between two stops: text and phone stack to more
+  than a screen, and 128 px between two of them read as a hole.
+- **The tour runs on from the news board**: no hairline between them, and the tour's first stop
+  has no room of its own on top (`ShotStop flushTop`), so the news stop's room below is the whole
+  gap, 64 px on a phone and 96 px from 640 px. With a line and both stops' room it was 129 px and
+  193 px.
 - **Only the tour is numbered.** A number must not skip
   ([the rule](../rules/a-chapter-opens-the-same-way-everywhere.md)), and the favourites show for few
   visitors; the other stops open with their kicker. The news board has none: it is the first stop
