@@ -69,7 +69,7 @@ Zou je twee keer aan de kassa betalen, dan ben je met BASIC al goedkoper uit. Bo
 
 Halloween loopt nog tot en met 15 november. Op 5 december begint Bobbejaanland Wintert, een van de [winteropeningen in Europa](/blog/winter-pretparken-2026), en dat duurt tot 3 januari 2027. Het park is dan open van 11 tot 19 uur, op kerstavond en oudejaarsavond tot 17 uur. Op 25 december en 1 januari blijft het dicht. Op de Wintert-dagen geldt het abonnement zoals op elke andere dag, zolang de dag niet rood is. Het eerste Wintert-weekend, 5 en 6 december, valt nog in Black November: je kunt het abonnement dus kopen vóór je eerste winterbezoek.
 
-In de winter is het park verdeeld over zes winterzones, met de kerstman, een kerstdorp en Land of Fire & Ice, en de vijver wordt een schaatsbaan. Onder meer Sledge Hammer, [Typhoon](ref:bobbejaanland/typhoon), [Fury](ref:bobbejaanland/fury), Dreamcatcher, Naga Bay, Bob Express, Revolution en The El Paso Special draaien dan. Fury opende in 2019.
+In de winter is het park verdeeld over zes winterzones, met de kerstman, een kerstdorp en Land of Fire & Ice, en de vijver wordt een schaatsbaan. Onder meer Sledge Hammer, [Typhoon](ref:bobbejaanland/typhoon), [Fury](ref:bobbejaanland/fury), Dreamcatcher, Naga Bay, Bob Express, Revolution en The El Paso Special draaien dan. Fury kwam er in 2019 bij.
 
 ```best-days-widget slug=bobbejaanland
 
@@ -79,7 +79,7 @@ In de winter is het park verdeeld over zes winterzones, met de kerstman, een ker
 
 Op zijn abonnementenpagina kondigt Bobbejaanland voor 2027 Nickelodeon Land aan, met drie nieuwe attracties. CEO Yves Peeters vertelde er meer over aan de VRT. De zone krijgt figuren van Nickelodeon zoals Garfield en SpongeBob en ligt meteen achter de ingang van het park. De werken zijn begonnen, bestaande attracties worden daarvoor afgebroken en de werf is afgesloten. De zone kost ongeveer 15 miljoen euro en moet in april 2027 opengaan.
 
-De Wild Swing neemt 18 mensen tegelijk mee en zwaait tot 12 meter hoog. De vrijevaltoren is 15 meter hoog, wat voor een kater die het liefst in de zetel ligt al ruim volstaat. De waterattractie Big Wavez tilt de passagiers tot boven 20 meter, laat ze vallen en duwt daarbij een golf van tot 10 meter op. Peeters noemt ze in deze vorm de eerste van haar soort in Europa. Bobbejaanland is volgens hem geëvolueerd “van een attractiepark naar een themapark met sterk gethematiseerde zones”. Wat er in 2027 verder in Europa opengaat, staat in ons overzicht van de [nieuwe attracties voor 2027](/blog/nieuwe-attracties-pretparken-2027).
+De Wild Swing neemt 18 mensen tegelijk mee en zwaait tot 12 meter hoog. De vrijevaltoren is 15 meter hoog, wat voor een kater die het liefst in de zetel ligt al ruim volstaat. De waterattractie Big Wavez tilt de passagiers tot boven 20 meter, laat ze vallen en duwt daarbij een golf van 10 meter hoog op. Peeters noemt ze in deze vorm de eerste van haar soort in Europa. Bobbejaanland is volgens hem geëvolueerd “van een attractiepark naar een themapark met sterk gethematiseerde zones”. Wat er in 2027 verder in Europa opengaat, staat in ons overzicht van de [nieuwe attracties voor 2027](/blog/nieuwe-attracties-pretparken-2027).
 
 Het park is opgericht door Bobbejaan Schoepen. Sinds 2004 hoort Bobbejaanland bij Parques Reunidos, dat ook eigenaar is van Movie Park Germany. Er staan meer dan 40 attracties.
 

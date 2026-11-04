@@ -69,7 +69,7 @@ Wer zweimal an der Kasse zahlen würde, fährt mit dem BASIC-Abo schon günstige
 
 Halloween läuft noch bis einschließlich 15. November. Am 5. Dezember beginnt Bobbejaanland Wintert, einer der [Winterbetriebe in Europa](/blog/winter-freizeitparks-2026), und dauert bis zum 3. Januar 2027, geöffnet ist von 11 bis 19 Uhr, an Heiligabend und Silvester bis 17 Uhr. Am 25. Dezember und am 1. Januar bleibt der Park zu. Das Abo gilt an den Wintert-Tagen wie an jedem anderen Tag, solange der Tag nicht rot ist. Am ersten Wintert-Wochenende, dem 5. und 6. Dezember, läuft der Black November noch, du kannst das Abo also noch vor dem ersten Wintert-Besuch kaufen.
 
-Im Winter verteilt sich der Park auf sechs Winterzonen, mit Weihnachtsmann, Weihnachtsdorf und Land of Fire & Ice, und der Teich wird zur Eisbahn. Es fahren unter anderem Sledge Hammer, [Typhoon](ref:bobbejaanland/typhoon), [Fury](ref:bobbejaanland/fury), Dreamcatcher, Naga Bay, Bob Express, Revolution und The El Paso Special. Fury hat 2019 eröffnet.
+Im Winter verteilt sich der Park auf sechs Winterzonen, mit Weihnachtsmann, Weihnachtsdorf und Land of Fire & Ice, und der Teich wird zur Eisbahn. Es fahren unter anderem Sledge Hammer, [Typhoon](ref:bobbejaanland/typhoon), [Fury](ref:bobbejaanland/fury), Dreamcatcher, Naga Bay, Bob Express, Revolution und The El Paso Special. Fury kam 2019 dazu.
 
 ```best-days-widget slug=bobbejaanland
 
@@ -79,7 +79,7 @@ Im Winter verteilt sich der Park auf sechs Winterzonen, mit Weihnachtsmann, Weih
 
 Auf seiner Abo-Seite kündigt Bobbejaanland für 2027 das Nickelodeon Land mit drei neuen Attraktionen an. Mehr dazu hat CEO Yves Peeters der VRT erzählt. Der Bereich bekommt Figuren von Nickelodeon wie Garfield und SpongeBob und liegt direkt hinter dem Parkeingang. Die Bauarbeiten haben begonnen, dafür werden bestehende Attraktionen abgebaut, und die Baustelle ist abgesperrt. Der Bereich kostet rund 15 Millionen Euro und soll im April 2027 eröffnen.
 
-Der Wild Swing nimmt 18 Fahrgäste gleichzeitig mit und schwingt bis auf 12 Meter Höhe. Der Freifallturm ist 15 Meter hoch, was Garfield als Kater mit Hang zum Sofa vermutlich anders sieht als die Kinder davor. Die Wasserattraktion Big Wavez hebt die Fahrgäste auf über 20 Meter, lässt sie fallen und schiebt dabei eine Welle von bis zu 10 Metern an. Peeters nennt sie in dieser Form die erste ihrer Art in Europa. Bobbejaanland habe sich von einem Attraktionspark zu einem Themenpark mit stark thematisierten Bereichen entwickelt, sagte er dem Sender. Was 2027 sonst in Europa eröffnet, steht in unseren [Neuheiten 2027](/blog/freizeitpark-neuheiten-2027).
+Der Wild Swing nimmt 18 Fahrgäste gleichzeitig mit und schwingt bis auf 12 Meter Höhe. Der Freifallturm ist 15 Meter hoch, was Garfield als Kater mit Hang zum Sofa vermutlich anders sieht als die Kinder davor. Die Wasserattraktion Big Wavez hebt die Fahrgäste auf über 20 Meter, lässt sie fallen und schiebt dabei eine 10 Meter hohe Welle an. Peeters nennt sie in dieser Form die erste ihrer Art in Europa. Bobbejaanland habe sich von einem Attraktionspark zu einem Themenpark mit stark thematisierten Bereichen entwickelt, sagte er dem Sender. Was 2027 sonst in Europa eröffnet, steht in unseren [Neuheiten 2027](/blog/freizeitpark-neuheiten-2027).
 
 Gegründet hat den Park Bobbejaan Schoepen. Seit 2004 gehört Bobbejaanland zu Parques Reunidos, denen auch der Movie Park Germany gehört. Der Park hat über 40 Attraktionen.
 

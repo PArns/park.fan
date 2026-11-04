@@ -69,7 +69,7 @@ If you'd pay at the desk twice, the BASIC pass already works out cheaper; if you
 
 Halloween runs until 15 November inclusive. Bobbejaanland Wintert, one of the [winter seasons in Europe](/blog/winter-theme-parks-2026), starts on 5 December and lasts until 3 January 2027, open from 11 am to 7 pm, and until 5 pm on Christmas Eve and New Year's Eve. The park is closed on 25 December and 1 January. The pass works on Wintert days like on any other day, as long as the day isn't red. Black November is still on during the first Wintert weekend, 5 and 6 December, so you can buy the pass before your first winter visit.
 
-In winter the park is split into six winter zones, with Father Christmas, a Christmas village and Land of Fire & Ice, and the pond turns into an ice rink. Among the rides running are Sledge Hammer, [Typhoon](ref:bobbejaanland/typhoon), [Fury](ref:bobbejaanland/fury), Dreamcatcher, Naga Bay, Bob Express, Revolution and The El Paso Special. Fury opened in 2019.
+In winter the park is split into six winter zones, with Father Christmas, a Christmas village and Land of Fire & Ice, and the pond turns into an ice rink. Among the rides running are Sledge Hammer, [Typhoon](ref:bobbejaanland/typhoon), [Fury](ref:bobbejaanland/fury), Dreamcatcher, Naga Bay, Bob Express, Revolution and The El Paso Special. Fury joined the line-up in 2019.
 
 ```best-days-widget slug=bobbejaanland
 
@@ -79,7 +79,7 @@ In winter the park is split into six winter zones, with Father Christmas, a Chri
 
 On its annual pass page, Bobbejaanland announces Nickelodeon Land for 2027, with three new attractions. CEO Yves Peeters told VRT more about it. The area gets Nickelodeon characters such as Garfield and SpongeBob and sits right behind the park entrance. Construction has started, existing attractions are being taken down to make room, and the site is fenced off. The area costs around €15 million and is due to open in April 2027.
 
-The Wild Swing takes 18 riders at a time and swings them up to 12 metres. The drop tower is 15 metres tall, which a cat as fond of the sofa as Garfield would probably call far too high. The water ride Big Wavez lifts riders more than 20 metres, drops them and pushes a wave of up to 10 metres as it does. Peeters says it's the first of its kind in Europe in this form. Bobbejaanland has grown from an attraction park into a theme park with heavily themed areas, he told the broadcaster. What else opens in Europe in 2027 is in our [new attractions for 2027](/blog/new-theme-park-attractions-2027).
+The Wild Swing takes 18 riders at a time and swings them up to 12 metres. The drop tower is 15 metres tall, which a cat as fond of the sofa as Garfield would probably call far too high. The water ride Big Wavez lifts riders more than 20 metres, drops them and pushes up a 10-metre wave as it does. Peeters says it's the first of its kind in Europe in this form. Bobbejaanland has grown from an attraction park into a theme park with heavily themed areas, he told the broadcaster. What else opens in Europe in 2027 is in our [new attractions for 2027](/blog/new-theme-park-attractions-2027).
 
 The park was founded by Bobbejaan Schoepen. Since 2004 Bobbejaanland has belonged to Parques Reunidos, which also owns Movie Park Germany. The park has more than 40 attractions.
 
