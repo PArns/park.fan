@@ -1,4 +1,4 @@
-import type { ParkAttraction } from '@/lib/api/types';
+import type { ParkAttraction, ParkWithAttractions } from '@/lib/api/types';
 
 /**
  * How old the park page's live data may get before the „as of" line says so. The poll runs every
@@ -7,10 +7,34 @@ import type { ParkAttraction } from '@/lib/api/types';
 export const LIVE_DATA_STALE_AFTER_MS = 10 * 60_000;
 
 /**
- * The newest `lastUpdated` of any queue in the server-rendered seed, or `null`. Shown before the
- * tab's first poll answers (to crawlers, without JavaScript, and in the first paint): the page is
- * cached, so only the queues know when the backend last heard from the park. After the first poll
- * the line uses the query's `dataUpdatedAt`.
+ * The time the „as of" line shows, or `null`: when the API built the park payload the page holds
+ * (`dataTimestamp`), from the poll's answer once there is one, else from the server-rendered seed
+ * (to crawlers, without JavaScript, and in the first paint). A poll's answer without the field falls
+ * back to `dataUpdatedAt`, the time the answer arrived.
+ */
+export function liveDataAsOf({
+  seed,
+  live,
+  dataUpdatedAt,
+}: {
+  seed: Pick<ParkWithAttractions, 'dataTimestamp' | 'attractions'>;
+  live: Pick<ParkWithAttractions, 'dataTimestamp'> | undefined;
+  dataUpdatedAt: number;
+}): number | null {
+  if (dataUpdatedAt > 0) return parseTimestamp(live?.dataTimestamp) ?? dataUpdatedAt;
+  // shortcut: the queue fallback covers an api.park.fan without `dataTimestamp` (backend PR #625),
+  // drop it and `newestQueueUpdate` once that is deployed and the field is seen on live payloads.
+  return parseTimestamp(seed.dataTimestamp) ?? newestQueueUpdate(seed.attractions);
+}
+
+function parseTimestamp(iso: string | undefined): number | null {
+  const ms = iso === undefined ? NaN : Date.parse(iso);
+  return Number.isFinite(ms) ? ms : null;
+}
+
+/**
+ * The newest `lastUpdated` of any queue in the server-rendered seed, or `null`: when the backend
+ * last heard from the park, for a payload that has no `dataTimestamp` yet.
  */
 export function newestQueueUpdate(attractions: ParkAttraction[] | undefined): number | null {
   let newest: number | null = null;

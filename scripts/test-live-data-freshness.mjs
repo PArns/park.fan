@@ -8,6 +8,7 @@
 //    was shut, and a fresh page load would otherwise open with "not up to date".
 import {
   LIVE_DATA_STALE_AFTER_MS,
+  liveDataAsOf,
   liveDataHint,
   newestQueueUpdate,
 } from '../lib/utils/live-data-freshness.ts';
@@ -43,6 +44,61 @@ const testCases = [
     actual: () =>
       newestQueueUpdate([{ id: 'a', queues: [queue('garbage'), queue('2026-09-23T10:00:00Z')] }]),
     expected: Date.parse('2026-09-23T10:00:00Z'),
+  },
+
+  // ---- liveDataAsOf ----
+  {
+    name: 'liveDataAsOf: seed with dataTimestamp → the build time, not the older queue',
+    actual: () =>
+      liveDataAsOf({
+        seed: {
+          dataTimestamp: '2026-09-23T11:55:00Z',
+          attractions: [{ id: 'a', queues: [queue('2026-09-23T01:10:00Z')] }],
+        },
+        live: undefined,
+        dataUpdatedAt: 0,
+      }),
+    expected: Date.parse('2026-09-23T11:55:00Z'),
+  },
+  {
+    name: 'liveDataAsOf: seed without dataTimestamp → newest queue',
+    actual: () =>
+      liveDataAsOf({
+        seed: { attractions: [{ id: 'a', queues: [queue('2026-09-23T10:00:00Z')] }] },
+        live: undefined,
+        dataUpdatedAt: 0,
+      }),
+    expected: Date.parse('2026-09-23T10:00:00Z'),
+  },
+  {
+    name: 'liveDataAsOf: poll answer with dataTimestamp → its build time, not the arrival',
+    actual: () =>
+      liveDataAsOf({
+        seed: { dataTimestamp: '2026-09-23T08:00:00Z', attractions: [] },
+        live: { dataTimestamp: '2026-09-23T11:57:00Z' },
+        dataUpdatedAt: NOW,
+      }),
+    expected: Date.parse('2026-09-23T11:57:00Z'),
+  },
+  {
+    name: 'liveDataAsOf: poll answer without dataTimestamp → dataUpdatedAt, not the seed',
+    actual: () =>
+      liveDataAsOf({
+        seed: { dataTimestamp: '2026-09-23T08:00:00Z', attractions: [] },
+        live: {},
+        dataUpdatedAt: NOW,
+      }),
+    expected: NOW,
+  },
+  {
+    name: 'liveDataAsOf: unparseable dataTimestamp → fallback, not NaN',
+    actual: () =>
+      liveDataAsOf({
+        seed: { dataTimestamp: 'garbage', attractions: [] },
+        live: undefined,
+        dataUpdatedAt: 0,
+      }),
+    expected: null,
   },
 
   // ---- liveDataHint ----

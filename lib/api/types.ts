@@ -932,6 +932,11 @@ export interface ParkWithAttractions extends ParkBase {
   scheduleCoverage?: ScheduleCoverage;
   /** Day-stable, so it rides on the server render and the live merge carries it. */
   liveWaitTimes?: LiveWaitTimes;
+  /**
+   * When the API built this payload (ISO 8601, UTC), whichever cache served it. Absent on a payload
+   * built before the field existed; see `liveDataAsOf`.
+   */
+  dataTimestamp?: string;
 }
 
 /**
