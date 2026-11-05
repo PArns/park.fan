@@ -8,7 +8,7 @@
  * eggs (`lib/assistant/easter-eggs.ts`, muting in `teaser-store.ts`), its rides
  * (`lib/assistant/parky-rides.ts`) and how it answers what the visitor does
  * (`lib/assistant/reactions.ts`, heard through `onSiteEvent`), when a hard scroll throws it
- * (`lib/assistant/fling-tracker.ts`), and the calendar and tiles cards (`lib/assistant/cards.ts`).
+ * (`lib/assistant/fling-tracker.ts`), and the calendar, tiles and shows cards (`lib/assistant/cards.ts`).
  */
 
 import assert from 'node:assert/strict';
@@ -64,7 +64,14 @@ import {
   rideKeyframe,
 } from '@/lib/assistant/parky-rides.ts';
 import { FLING_HAND_MS, FlingTracker } from '@/lib/assistant/fling-tracker.ts';
-import { calendarWeeks, parkHours, presentTiles } from '@/lib/assistant/cards.ts';
+import {
+  calendarWeeks,
+  parkClock,
+  parkHours,
+  presentTiles,
+  showTimes,
+} from '@/lib/assistant/cards.ts';
+import { parkChapterUrl } from '@/lib/utils/url-utils.ts';
 
 let passed = 0;
 function check(actual, expected, label) {
@@ -945,7 +952,13 @@ check([isRide('tower'), isRide('egg'), isRide(null)], [true, false, false], 'a r
     {
       ...tiles,
       avgWaitMinutes: null,
-      weather: { condition: 'sun', tempMin: null, tempMax: null, climateNormal: false },
+      weather: {
+        condition: 'sun',
+        tempMin: null,
+        tempMax: null,
+        weatherCode: null,
+        climateNormal: false,
+      },
     },
     'a tiles value it cannot draw is dropped, not the card'
   );
@@ -995,6 +1008,175 @@ check([isRide('tower'), isRide('egg'), isRide(null)], [true, false, false], 'a r
     localizedPath(`${calendar.url}/wait-time-calendar`, 'fr'),
     '/fr/parks/europe/netherlands/kaatsheuvel/efteling/calendrier-temps-attente',
     'the calendar link lands on the crowd calendar in the reader’s spelling'
+  );
+}
+// Ride extras, rides rows without a wait, shows and restaurants.
+{
+  const read = (card) => readAssistantAction({ type: 'card', card: structuredClone(card) })?.card;
+  const parkUrl = '/parks/europe/germany/bruehl/phantasialand';
+
+  const times = [
+    '2026-11-05T11:00:00+01:00',
+    '2026-11-05T14:00:00+01:00',
+    '2026-11-05T17:00:00+01:00',
+  ];
+  check(
+    showTimes(times, Date.parse('2026-11-05T13:30:00+01:00')).map(({ past, next }) => [past, next]),
+    [
+      [true, false],
+      [false, true],
+      [false, false],
+    ],
+    'times before now are past, the first one after is next'
+  );
+  check(
+    showTimes(times, null).some(({ past, next }) => past || next),
+    false,
+    'without a clock no time is past or next, so the server render and hydration agree'
+  );
+  check(
+    showTimes(times, Date.parse('2026-11-05T18:00:00+01:00')).filter(({ next }) => next).length,
+    0,
+    'after the last show nothing is next'
+  );
+  check(parkClock('2026-11-05T14:00:00+01:00', 'de'), '14:00', 'a show time in the park clock');
+  check(parkClock('soon', 'de'), null, 'an unreadable time has no clock');
+
+  const ride = {
+    kind: 'ride',
+    name: 'Taron',
+    park: 'Phantasialand',
+    status: 'OPERATING',
+    crowdLevel: null,
+    waitMinutes: 40,
+    url: `${parkUrl}/taron`,
+  };
+  check(
+    read({
+      ...ride,
+      ropeDrop: { strength: 'high', savings: 35 },
+      singleRider: true,
+      virtualLine: false,
+      paidExpress: 'yes',
+      outOfSeason: true,
+    }),
+    { ...ride, ropeDrop: { strength: 'high', savings: 35 }, singleRider: true, outOfSeason: true },
+    'a ride keeps the extras that hold and drops any flag that is not true'
+  );
+  check(
+    read({ ...ride, ropeDrop: { strength: 'huge', savings: 35 } }),
+    ride,
+    'a rope-drop hint the badge cannot draw is dropped'
+  );
+
+  const rides = { kind: 'rides', park: 'Phantasialand', order: 'longest', url: parkUrl };
+  check(
+    read({
+      ...rides,
+      rides: [
+        { name: 'Taron', waitMinutes: 40, url: null },
+        { name: 'F.L.Y.', waitMinutes: null, status: 'DOWN', url: null },
+        { name: 'Chiapas', waitMinutes: null, status: 'BROKEN', url: null },
+      ],
+    })?.rides,
+    [
+      { name: 'Taron', waitMinutes: 40, status: null, url: null },
+      { name: 'F.L.Y.', waitMinutes: null, status: 'DOWN', url: null },
+      { name: 'Chiapas', waitMinutes: null, status: null, url: null },
+    ],
+    'a row without a wait keeps its status; a status without a badge is dropped'
+  );
+  check(
+    read({ ...rides, rides: [{ name: 'Taron', waitMinutes: 40 }] })?.rides[0].waitMinutes,
+    40,
+    'a row from before rows had a status still reads'
+  );
+
+  const shows = {
+    kind: 'shows',
+    park: 'Phantasialand',
+    url: parkUrl,
+    date: '2026-11-05',
+    shows: [{ name: 'Rookburgh Show', status: 'OPERATING', times, url: null }],
+  };
+  check(read(shows)?.shows[0].times, times, 'takes a shows card');
+  check(
+    read({ ...shows, shows: [{ name: 'X', status: 'ON', times: ['noon', times[0]], url: null }] })
+      ?.shows[0],
+    { name: 'X', status: null, times: [times[0]], url: null },
+    'an unreadable time or status is dropped, not the show'
+  );
+  check(
+    read({ ...shows, shows: [{ ...shows.shows[0], url: 'https://evil.example' }] }),
+    undefined,
+    'refuses a show linking off site'
+  );
+  check(read({ ...shows, date: null }), undefined, 'refuses a shows card without a day');
+
+  const restaurants = {
+    kind: 'restaurants',
+    park: 'Phantasialand',
+    url: parkUrl,
+    restaurants: [
+      {
+        name: 'Uhrwerk',
+        status: 'OPERATING',
+        land: 'Rookburgh',
+        cuisine: null,
+        requiresReservation: true,
+      },
+      {
+        name: 'Cocorico',
+        status: 'nope',
+        land: null,
+        cuisine: 'Burger',
+        requiresReservation: 'maybe',
+      },
+    ],
+  };
+  check(
+    read(restaurants)?.restaurants,
+    [
+      restaurants.restaurants[0],
+      { name: 'Cocorico', status: null, land: null, cuisine: 'Burger', requiresReservation: null },
+    ],
+    'a restaurant keeps what it knows and drops the rest'
+  );
+  check(
+    read({ ...restaurants, restaurants: [{ name: null }] }),
+    undefined,
+    'refuses a restaurant without a name'
+  );
+  check(
+    [parkChapterUrl(parkUrl, 'shows'), parkChapterUrl(parkUrl, 'restaurants')],
+    [`${parkUrl}#shows`, `${parkUrl}#restaurants`],
+    'the list cards link the park page chapter'
+  );
+
+  check(
+    presentTiles({
+      kind: 'tiles',
+      park: 'X',
+      url: null,
+      date: '2026-11-05',
+      live: true,
+      crowdLevel: null,
+      avgWaitMinutes: null,
+      peakWaitMinutes: null,
+      openRides: null,
+      totalRides: null,
+      opens: null,
+      closes: null,
+      weather: {
+        condition: null,
+        tempMin: null,
+        tempMax: null,
+        weatherCode: 61,
+        climateNormal: false,
+      },
+    }),
+    ['weather'],
+    'a weather code alone is a weather tile'
   );
 }
 console.log(`assistant: ${passed} checks passed`);

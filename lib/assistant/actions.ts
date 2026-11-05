@@ -1,4 +1,5 @@
 import type { PlannerBlockIcon, PlannerGeo } from '@/lib/planner/types';
+import type { RopeDropStrength } from '@/lib/api/types';
 import { PLANNER_BLOCK_ICONS } from '@/lib/planner/types';
 import { isValidLocale, type Locale } from '@/i18n/config';
 import { safeAssistantHref } from './links';
@@ -11,7 +12,7 @@ export interface AssistantPlannerPark {
   timezone: string;
 }
 
-/** A card from live data (a park, rides, parks, days or stats); mirrors the API's `AssistantCard`. */
+/** A card from live data (parks, rides, days, stats, shows, restaurants); mirrors the API's `AssistantCard`. */
 export type AssistantCard =
   | {
       kind: 'park';
@@ -32,12 +33,25 @@ export type AssistantCard =
       crowdLevel: string | null;
       waitMinutes: number | null;
       url: string | null;
+      /** Each of these is sent only when it holds. */
+      ropeDrop?: { strength: RopeDropStrength | null; savings: number };
+      singleRider?: true;
+      virtualLine?: true;
+      paidExpress?: true;
+      worksPeriod?: true;
+      outOfSeason?: true;
     }
   | {
       kind: 'rides';
       park: string;
       order: 'longest' | 'shortest';
-      rides: Array<{ name: string; waitMinutes: number; url?: string | null }>;
+      /** A row without a wait shows its status; answers stored before `status` have none. */
+      rides: Array<{
+        name: string;
+        waitMinutes: number | null;
+        status?: string | null;
+        url?: string | null;
+      }>;
       url: string | null;
     }
   | {
@@ -84,9 +98,31 @@ export type AssistantCard =
         condition: string | null;
         tempMin: number | null;
         tempMax: number | null;
+        /** WMO code; the condition text is the fallback without one. */
+        weatherCode?: number | null;
         /** The season's usual values, past the forecast's reach. */
         climateNormal: boolean;
       } | null;
+    }
+  | {
+      kind: 'shows';
+      park: string;
+      url: string | null;
+      date: string;
+      /** `times` are instants with the park's offset. */
+      shows: Array<{ name: string; status: string | null; times: string[]; url: string | null }>;
+    }
+  | {
+      kind: 'restaurants';
+      park: string;
+      url: string | null;
+      restaurants: Array<{
+        name: string;
+        status: string | null;
+        land: string | null;
+        cuisine: string | null;
+        requiresReservation: boolean | null;
+      }>;
     };
 
 /** What Parky may ask the widget to do; mirrors the API's `ClientAction`. */
@@ -164,12 +200,15 @@ const short = (value: unknown, max = 120) => typeof value === 'string' && value.
 const orNull = (value: unknown, test: (v: unknown) => boolean) => value === null || test(value);
 
 const isSiteUrl = (v: unknown) => typeof v === 'string' && safeAssistantHref(v) !== null;
-const isRideList = (rides: unknown) =>
+/** Rides with their waits; `waitless` lets a row go without one (the rides card shows its status). */
+const isRideList = (rides: unknown, waitless = false) =>
   Array.isArray(rides) &&
   rides.length <= 10 &&
   rides.every(
     (r) =>
-      short(r?.name) && typeof r?.waitMinutes === 'number' && (r.url == null || isSiteUrl(r.url))
+      short(r?.name) &&
+      (typeof r?.waitMinutes === 'number' || (waitless && r?.waitMinutes == null)) &&
+      (r.url == null || isSiteUrl(r.url))
   );
 const isParkList = (parks: unknown) =>
   Array.isArray(parks) &&
@@ -178,6 +217,18 @@ const isParkList = (parks: unknown) =>
 
 /** A checked link as the path it was checked as, so what a card links is what passed. */
 const sitePath = (url: string | null | undefined) => (url == null ? null : safeAssistantHref(url));
+
+const status = (v: unknown) => (typeof v === 'string' && STATUSES.has(v) ? v : null);
+const RIDE_FLAGS = [
+  'singleRider',
+  'virtualLine',
+  'paidExpress',
+  'worksPeriod',
+  'outOfSeason',
+] as const;
+const ROPE_DROP_STRENGTHS = new Set(['high', 'moderate', null]);
+const MAX_ROWS = 12;
+const MAX_SHOW_TIMES = 24;
 
 const DAY_STATUSES = new Set(['OPERATING', 'CLOSED', 'UNKNOWN']);
 const MAX_CALENDAR_DAYS = 42;
@@ -227,10 +278,52 @@ function isDaysOrTiles(card: AssistantCard): boolean {
           condition: short(w.condition, 40) ? w.condition : null,
           tempMin: number(w.tempMin),
           tempMax: number(w.tempMax),
+          weatherCode: number(w.weatherCode),
           climateNormal: w.climateNormal === true,
         }
       : null;
   return true;
+}
+
+/** Shows and restaurants: a row with a bad link or name refuses the card, a bad value is dropped. */
+function isShowsOrRestaurants(card: AssistantCard): boolean {
+  if (card.kind === 'shows') {
+    if (!DAY.test(card.date) || !Array.isArray(card.shows) || card.shows.length > MAX_ROWS) {
+      return false;
+    }
+    for (const show of card.shows) {
+      if (!short(show?.name) || !orNull(show.url ?? null, isSiteUrl)) return false;
+      show.url = sitePath(show.url);
+      show.status = status(show.status);
+      show.times = Array.isArray(show.times)
+        ? show.times.slice(0, MAX_SHOW_TIMES).flatMap((t) => instant(t) ?? [])
+        : [];
+    }
+    return true;
+  }
+  if (card.kind !== 'restaurants') return false;
+  if (!Array.isArray(card.restaurants) || card.restaurants.length > MAX_ROWS) return false;
+  for (const r of card.restaurants) {
+    if (!short(r?.name)) return false;
+    r.status = status(r.status);
+    r.land = short(r.land) ? r.land : null;
+    r.cuisine = short(r.cuisine) ? r.cuisine : null;
+    r.requiresReservation =
+      typeof r.requiresReservation === 'boolean' ? r.requiresReservation : null;
+  }
+  return true;
+}
+
+/** A ride card's extras, kept only in the form the badges draw. */
+function readRideExtras(card: Extract<AssistantCard, { kind: 'ride' }>): void {
+  for (const flag of RIDE_FLAGS) if (card[flag] !== true) delete card[flag];
+  const rope = card.ropeDrop;
+  if (
+    rope !== undefined &&
+    !(number(rope?.savings) !== null && ROPE_DROP_STRENGTHS.has(rope.strength ?? null))
+  ) {
+    delete card.ropeDrop;
+  }
 }
 
 function isCard(card: AssistantCard | undefined): card is AssistantCard {
@@ -253,9 +346,16 @@ function isCard(card: AssistantCard | undefined): card is AssistantCard {
   if (card.kind === 'calendar' || card.kind === 'tiles') {
     return short(card.park) && isDaysOrTiles(card);
   }
+  if (card.kind === 'shows' || card.kind === 'restaurants') {
+    return short(card.park) && isShowsOrRestaurants(card);
+  }
   if (card.kind === 'rides') {
-    if (!short(card.park) || !isRideList(card.rides)) return false;
-    for (const ride of card.rides) ride.url = sitePath(ride.url);
+    if (!short(card.park) || !isRideList(card.rides, true)) return false;
+    for (const ride of card.rides) {
+      ride.url = sitePath(ride.url);
+      ride.waitMinutes = number(ride.waitMinutes);
+      ride.status = status(ride.status);
+    }
     return true;
   }
   if (!short(card.name)) return false;
@@ -263,6 +363,7 @@ function isCard(card: AssistantCard | undefined): card is AssistantCard {
   if (card.status !== null && !STATUSES.has(card.status)) card.status = null;
   if (card.crowdLevel !== null && !CROWD.has(card.crowdLevel)) card.crowdLevel = null;
   if (card.kind === 'ride') {
+    readRideExtras(card);
     return orNull(card.park, short) && orNull(card.waitMinutes, (v) => typeof v === 'number');
   }
   return card.kind === 'park' && orNull(card.place, short) && isRideList(card.waits);

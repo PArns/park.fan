@@ -3058,7 +3058,10 @@
     "cardAvgWait": "Attesa media",
     "cardHours": "Orari",
     "cardWeather": "Meteo",
-    "cardHoliday": "Festività"
+    "cardHoliday": "Festività",
+    "cardShowsLink": "Tutti gli spettacoli del parco",
+    "cardRestaurantsLink": "Tutti i ristoranti del parco",
+    "cardPaidExpress": "Fila rapida a pagamento"
   },
   "parkyPage": {
     "metaTitle": "Parky, l’assistente in chat di park.fan",

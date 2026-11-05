@@ -1,4 +1,4 @@
-import { formatHoursRange } from '@/lib/utils/intl-format';
+import { formatClockTime, formatHoursRange } from '@/lib/utils/intl-format';
 import type { AssistantCard } from './actions';
 
 /** A calendar card as the API sends it. */
@@ -6,6 +6,12 @@ export type AssistantCalendarCard = Extract<AssistantCard, { kind: 'calendar' }>
 
 /** A tiles card as the API sends it. */
 export type AssistantTilesCard = Extract<AssistantCard, { kind: 'tiles' }>;
+
+/** A shows card as the API sends it. */
+export type AssistantShowsCard = Extract<AssistantCard, { kind: 'shows' }>;
+
+/** A restaurants card as the API sends it. */
+export type AssistantRestaurantsCard = Extract<AssistantCard, { kind: 'restaurants' }>;
 
 const DAY_MS = 86_400_000;
 const OFFSET = /(?:Z|([+-])(\d{2}):?(\d{2}))$/;
@@ -49,6 +55,34 @@ export function parkHours(
   return from && to ? formatHoursRange(from, to, locale, 'UTC') : null;
 }
 
+/** One time in the park's own clock, read off its offset like {@link parkHours}; null if unreadable. */
+export function parkClock(iso: string, locale: string): string | null {
+  const wall = wallClockUtc(iso);
+  return wall && formatClockTime(wall, locale, 'UTC');
+}
+
+/** A show time as its chip draws it. */
+export interface ShowTime {
+  iso: string;
+  past: boolean;
+  /** The first time not yet past. */
+  next: boolean;
+}
+
+/**
+ * A show's times split at `now`: those before it are past, the first one after is next. Without a
+ * clock (the server render and hydration) none is either, so both renders agree.
+ */
+export function showTimes(times: readonly string[], now: number | null): ShowTime[] {
+  let nextFound = false;
+  return times.map((iso) => {
+    const past = now !== null && Date.parse(iso) < now;
+    const next = now !== null && !past && !nextFound;
+    if (next) nextFound = true;
+    return { iso, past, next };
+  });
+}
+
 /** One stat a tiles card can show. */
 export type AssistantTile = 'crowd' | 'avgWait' | 'peakWait' | 'rides' | 'hours' | 'weather';
 
@@ -63,7 +97,10 @@ export function presentTiles(card: AssistantTilesCard): AssistantTile[] {
     hours: parkHours(card.opens, card.closes, 'en') !== null,
     weather:
       weather != null &&
-      (weather.condition != null || weather.tempMin != null || weather.tempMax != null),
+      (weather.weatherCode != null ||
+        weather.condition != null ||
+        weather.tempMin != null ||
+        weather.tempMax != null),
   };
   return (Object.keys(has) as AssistantTile[]).filter((tile) => has[tile]);
 }

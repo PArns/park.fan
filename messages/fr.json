@@ -3058,7 +3058,10 @@
     "cardAvgWait": "Attente moy.",
     "cardHours": "Horaires",
     "cardWeather": "Météo",
-    "cardHoliday": "Jour férié"
+    "cardHoliday": "Jour férié",
+    "cardShowsLink": "Tous les spectacles du parc",
+    "cardRestaurantsLink": "Tous les restaurants du parc",
+    "cardPaidExpress": "File rapide payante"
   },
   "parkyPage": {
     "metaTitle": "Parky, l’assistant de chat de park.fan",

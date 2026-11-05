@@ -3058,7 +3058,10 @@
     "cardAvgWait": "Gem. wacht",
     "cardHours": "Openingstijden",
     "cardWeather": "Weer",
-    "cardHoliday": "Feestdag"
+    "cardHoliday": "Feestdag",
+    "cardShowsLink": "Alle shows in het park",
+    "cardRestaurantsLink": "Alle restaurants in het park",
+    "cardPaidExpress": "Betaalde snelle wachtrij"
   },
   "parkyPage": {
     "metaTitle": "Parky, de chatassistent van park.fan",

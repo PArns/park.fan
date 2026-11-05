@@ -3058,7 +3058,10 @@
     "cardAvgWait": "Avg wait",
     "cardHours": "Opening hours",
     "cardWeather": "Weather",
-    "cardHoliday": "Holiday"
+    "cardHoliday": "Holiday",
+    "cardShowsLink": "All shows in the park",
+    "cardRestaurantsLink": "All restaurants in the park",
+    "cardPaidExpress": "Paid express queue"
   },
   "parkyPage": {
     "metaTitle": "Parky, the park.fan chat assistant",

@@ -3058,7 +3058,10 @@
     "cardAvgWait": "Ø Wartezeit",
     "cardHours": "Öffnungszeiten",
     "cardWeather": "Wetter",
-    "cardHoliday": "Feiertag"
+    "cardHoliday": "Feiertag",
+    "cardShowsLink": "Alle Shows im Park",
+    "cardRestaurantsLink": "Alle Restaurants im Park",
+    "cardPaidExpress": "Express gegen Aufpreis"
   },
   "parkyPage": {
     "metaTitle": "Parky, der Chat-Assistent von park.fan",

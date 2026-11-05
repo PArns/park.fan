@@ -15,9 +15,13 @@ import type { CrowdLevel, ParkStatus } from '@/lib/api/types';
 import { loadCardImageMap, rideCardImageKey, type CardImageMap } from '@/lib/media/card-images';
 import {
   calendarWeeks,
+  parkClock,
   parkHours,
   presentTiles,
+  showTimes,
   type AssistantCalendarCard,
+  type AssistantRestaurantsCard,
+  type AssistantShowsCard,
   type AssistantTile,
   type AssistantTilesCard,
 } from '@/lib/assistant/cards';
@@ -31,7 +35,18 @@ import {
   WEEKDAYS_MONDAY_FIRST,
 } from '@/lib/utils/intl-format';
 import { roundWaitTo5 } from '@/lib/utils/wait-time';
+import { getWeatherConfig } from '@/lib/utils/weather-utils';
+import { parkChapterUrl } from '@/lib/utils/url-utils';
+import { useMinuteNow } from '@/lib/hooks/use-minute-now';
+import type { WorksPeriod } from '@/lib/api/types';
 import { Temp } from '@/components/common/unit-display';
+import { RopeDropBadge } from '@/components/parks/rope-drop-badge';
+import { SingleRiderBadge } from '@/components/parks/single-rider-badge';
+import { VirtualLineBadge } from '@/components/parks/virtual-line-badge';
+import { FastPassBadge } from '@/components/parks/fast-pass-badge';
+import { WorksPeriodBadge } from '@/components/parks/works-period-badge';
+import { SeasonalBadge } from '@/components/parks/seasonal-badge';
+import { ReservationBadge } from '@/components/parks/reservation-badge';
 
 /** The park and ride slugs of a park.fan page path: `/parks/<c>/<c>/<c>/<park>[/<ride>]`. */
 function slugsOf(url: string | null): { park: string; ride?: string } | null {
@@ -94,14 +109,19 @@ function MaybeLink({
   );
 }
 
-/** One ride with its wait, in the chips the site's in-park lists use; a link to it when it has one. */
+/**
+ * One ride with its wait, in the chips the site's in-park lists use, or its status when it posts
+ * no wait; a link to it when it has one.
+ */
 function RideRow({
   name,
   waitMinutes,
+  status,
   url,
 }: {
   name: string;
-  waitMinutes: number;
+  waitMinutes: number | null;
+  status?: string | null;
   url?: string | null;
 }) {
   return (
@@ -114,7 +134,11 @@ function RideRow({
         )}
       >
         <span className="truncate">{name}</span>
-        <LiveWaitPill minutes={waitMinutes} className="shrink-0 px-2 py-0.5 text-[11px]" />
+        {waitMinutes != null ? (
+          <LiveWaitPill minutes={waitMinutes} className="shrink-0 px-2 py-0.5 text-[11px]" />
+        ) : (
+          status && <ParkStatusBadge status={status as ParkStatus} className="shrink-0" />
+        )}
       </MaybeLink>
     </li>
   );
@@ -277,8 +301,10 @@ function CalendarCard({ card }: { card: AssistantCalendarCard }) {
 function TilesCard({ card }: { card: AssistantTilesCard }) {
   const locale = useLocale();
   const t = useTranslations('assistant');
+  const tWeather = useTranslations('parks.weather');
   const { weather } = card;
   const minutes = (value: number | null) => t('cardWait', { minutes: roundWaitTo5(value ?? 0) });
+  const sky = weather?.weatherCode != null ? getWeatherConfig(weather.weatherCode) : null;
 
   const tile: Record<AssistantTile, { label: string; value: ReactNode }> = {
     crowd: {
@@ -300,7 +326,14 @@ function TilesCard({ card }: { card: AssistantTilesCard }) {
       label: weather?.climateNormal ? t('cardSeasonal') : t('cardWeather'),
       value: weather && (
         <>
-          {weather.condition && <span className="block truncate">{weather.condition}</span>}
+          {sky ? (
+            <span className="flex items-center gap-1 truncate">
+              <sky.icon className={cn('size-3.5 shrink-0', sky.color)} aria-hidden />
+              {tWeather(sky.label)}
+            </span>
+          ) : (
+            weather.condition && <span className="block truncate">{weather.condition}</span>
+          )}
           {weather.tempMin != null && <Temp celsius={weather.tempMin} />}
           {weather.tempMin != null && weather.tempMax != null && ' – '}
           {weather.tempMax != null && <Temp celsius={weather.tempMax} />}
@@ -327,18 +360,160 @@ function TilesCard({ card }: { card: AssistantTilesCard }) {
   );
 }
 
-const KNOWN_KINDS = new Set(['park', 'ride', 'rides', 'parks', 'calendar', 'tiles']);
+/** The link under a list card: the park page's chapter for it, else the park. */
+function ChapterLink({ href, label }: { href: string | null; label: string }) {
+  const locale = useLocale();
+  return href ? (
+    <NextLink
+      href={localizedPath(href, locale)}
+      className="text-primary mt-2 inline-flex items-center gap-1 font-medium hover:underline"
+    >
+      {label}
+      <ChevronRight className="size-3.5" />
+    </NextLink>
+  ) : null;
+}
 
 /**
- * A park, a ride, a park's rides, a few parks, a park's next days or its day in stat tiles as a
- * card in Parky's chat: the site's own status, crowd and wait chips and photos on live data. A
- * single park or ride is one link; in a list every row links its own page. The API builds the
- * data; nothing here is model text. A kind this widget does not know draws nothing.
+ * A park's shows for one day, each with its times in the park's clock. Once the page knows the
+ * time, past times are muted and the next one is marked; the server render shows them all alike.
+ */
+function ShowsCard({ card }: { card: AssistantShowsCard }) {
+  const locale = useLocale();
+  const t = useTranslations('assistant');
+  const now = useMinuteNow();
+
+  return (
+    <div className={cn(FRAME, 'p-3')}>
+      <CardHeading park={card.park} url={card.url} />
+      <p className="text-muted-foreground">{dayLabel(card.date, locale)}</p>
+      <ul className="mt-2 space-y-2">
+        {card.shows.map((show) => (
+          <li key={show.name}>
+            <div className="flex items-center justify-between gap-2">
+              <MaybeLink url={show.url} className="truncate font-medium">
+                {show.name}
+              </MaybeLink>
+              {show.status && show.status !== 'OPERATING' && (
+                <ParkStatusBadge status={show.status as ParkStatus} className="shrink-0" />
+              )}
+            </div>
+            {show.times.length > 0 && (
+              <div className="mt-1 flex flex-wrap gap-1">
+                {showTimes(show.times, now).map(({ iso, past, next }) => (
+                  <time
+                    key={iso}
+                    dateTime={iso}
+                    className={cn(
+                      'rounded-full border px-1.5 py-0.5 text-[10px] tabular-nums',
+                      next
+                        ? 'bg-primary text-primary-foreground border-transparent font-semibold'
+                        : past
+                          ? 'text-muted-foreground/60 border-border/40'
+                          : 'border-border/60'
+                    )}
+                  >
+                    {parkClock(iso, locale)}
+                  </time>
+                ))}
+              </div>
+            )}
+          </li>
+        ))}
+      </ul>
+      <ChapterLink href={parkChapterUrl(card.url, 'shows')} label={t('cardShowsLink')} />
+    </div>
+  );
+}
+
+/** A park's restaurants: name, land and cuisine, status and whether a table must be booked. */
+function RestaurantsCard({ card }: { card: AssistantRestaurantsCard }) {
+  const t = useTranslations('assistant');
+
+  return (
+    <div className={cn(FRAME, 'p-3')}>
+      <CardHeading park={card.park} url={card.url} />
+      <ul className="divide-border/50 mt-1 divide-y">
+        {card.restaurants.map((place) => {
+          const about = [place.land, place.cuisine].filter(Boolean).join(' · ');
+          return (
+            <li key={place.name} className="flex items-center justify-between gap-2 py-1.5">
+              <div className="min-w-0">
+                <p className="truncate font-medium">{place.name}</p>
+                {about && <p className="text-muted-foreground truncate">{about}</p>}
+              </div>
+              <div className="flex shrink-0 flex-wrap justify-end gap-1">
+                {place.status && <ParkStatusBadge status={place.status as ParkStatus} />}
+                {place.requiresReservation === true && <ReservationBadge />}
+              </div>
+            </li>
+          );
+        })}
+      </ul>
+      <ChapterLink
+        href={parkChapterUrl(card.url, 'restaurants') ?? card.url}
+        label={t('cardRestaurantsLink')}
+      />
+    </div>
+  );
+}
+
+// The API decided the works window covers today; the badge only needs a window that does.
+const WORKS_FROM = '0000-01-01';
+const WORKS_NOW: WorksPeriod = { from: WORKS_FROM, to: null, toUncertain: false };
+
+/** A ride card's extras as the site's own ride badges, in one wrapping row. */
+function RideExtras({ card }: { card: Extract<AssistantCard, { kind: 'ride' }> }) {
+  const t = useTranslations('assistant');
+  const { ropeDrop } = card;
+  if (
+    !ropeDrop &&
+    !card.singleRider &&
+    !card.virtualLine &&
+    !card.paidExpress &&
+    !card.worksPeriod &&
+    !card.outOfSeason
+  ) {
+    return null;
+  }
+  return (
+    <div className="mt-1.5 flex flex-wrap items-center gap-1">
+      {ropeDrop && (
+        <RopeDropBadge strength={ropeDrop.strength} savings={roundWaitTo5(ropeDrop.savings)} />
+      )}
+      <SingleRiderBadge hasSingleRider={card.singleRider} insideLink />
+      <VirtualLineBadge hasVirtualLine={card.virtualLine} insideLink />
+      {card.paidExpress && <FastPassBadge fastPass={{ name: t('cardPaidExpress') }} insideLink />}
+      {card.worksPeriod && <WorksPeriodBadge worksPeriod={WORKS_NOW} todayIso={WORKS_FROM} />}
+      {card.outOfSeason && <SeasonalBadge isCurrentlyInSeason={false} />}
+    </div>
+  );
+}
+
+const KNOWN_KINDS = new Set([
+  'park',
+  'ride',
+  'rides',
+  'parks',
+  'calendar',
+  'tiles',
+  'shows',
+  'restaurants',
+]);
+
+/**
+ * A park, a ride, a park's rides, a few parks, a park's next days, its day in stat tiles, its shows
+ * or its restaurants as a card in Parky's chat: the site's own status, crowd and wait chips and
+ * photos on live data. A single park or ride is one link; in a list every row links its own page.
+ * The API builds the data; nothing here is model text. A kind this widget does not know draws
+ * nothing.
  */
 export function AssistantCardView({ card }: { card: AssistantCard }) {
   if (!KNOWN_KINDS.has(card.kind)) return null;
   if (card.kind === 'calendar') return <CalendarCard card={card} />;
   if (card.kind === 'tiles') return <TilesCard card={card} />;
+  if (card.kind === 'shows') return <ShowsCard card={card} />;
+  if (card.kind === 'restaurants') return <RestaurantsCard card={card} />;
   return <LiveCard card={card} />;
 }
 
@@ -346,7 +521,7 @@ export function AssistantCardView({ card }: { card: AssistantCard }) {
 function LiveCard({
   card,
 }: {
-  card: Exclude<AssistantCard, AssistantCalendarCard | AssistantTilesCard>;
+  card: Extract<AssistantCard, { kind: 'park' | 'ride' | 'rides' | 'parks' }>;
 }) {
   const locale = useLocale();
   const map = useCardImageMap();
@@ -457,6 +632,7 @@ function LiveCard({
             </span>
           )}
         </div>
+        {card.kind === 'ride' && <RideExtras card={card} />}
         {card.kind === 'park' && card.waits.length > 0 && (
           <ul className="border-border/60 mt-2 space-y-1 border-t pt-2">
             {card.waits.map((ride) => (
