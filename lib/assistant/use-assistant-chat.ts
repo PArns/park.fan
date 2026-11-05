@@ -12,6 +12,13 @@ import {
 import { trackSiteEvent, type AssistantQuestionKind } from '@/lib/analytics/site-analytics';
 import { plannerStore } from '@/lib/planner/store';
 import { assistantPlannerSnapshot } from './planner-context';
+import {
+  assistantAlertsSnapshot,
+  type AssistantActionOutcome,
+  type AssistantAlertPrompt,
+} from './alerts-context';
+import { readPushState } from './alert-writes';
+import { listRideAlertsLocal, listShowFollowsLocal } from '@/lib/push/push-follows-store';
 
 /** A lookup Parky names while it runs, as the API's `status` event sends it. */
 export type AssistantLookup =
@@ -37,6 +44,8 @@ export interface AssistantChatMessage {
   chips?: AssistantActionChip[];
   /** Live cards Parky showed with the answer. */
   cards?: AssistantCard[];
+  /** Reminders Parky asked for that wait for the visitor's press, or failed. */
+  alerts?: AssistantAlertPrompt[];
   /** Parky asked for the visitor's position; the answer carries the share buttons. */
   asksLocation?: boolean;
   /** Set on an answer that failed; `text` is then empty. */
@@ -100,10 +109,8 @@ const localId = () => `m${Date.now()}-${nextId++}`;
 export function useAssistantChat(
   locale: string,
   session: { token: string | null; drop: () => void },
-  /** Carries out an action Parky asked for; returns the chip to show, if any, once it is done. */
-  onAction: (
-    action: AssistantAction
-  ) => AssistantActionChip | null | Promise<AssistantActionChip | null>
+  /** Carries out an action Parky asked for; returns the chip or card to show, once it is done. */
+  onAction: (action: AssistantAction) => AssistantActionOutcome | Promise<AssistantActionOutcome>
 ) {
   const { token: sessionToken, drop: dropSession } = session;
   const [stored, setStored] = useState<Stored>(() =>
@@ -168,6 +175,11 @@ export function useAssistantChat(
         patchLast((m) => ({ ...m, error }));
       };
       try {
+        const alerts = assistantAlertsSnapshot(
+          await readPushState().catch(() => 'unavailable' as const),
+          listRideAlertsLocal(),
+          listShowFollowsLocal()
+        );
         const response = await fetch(`${ASSISTANT_API}/chat`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -183,6 +195,7 @@ export function useAssistantChat(
             timeZone: browserTimeZone(),
             // The plan lives in this browser alone; Parky reads it with every question.
             planner: assistantPlannerSnapshot(plannerStore.getSnapshot()),
+            alerts,
           }),
         });
         if (response.status === 401) {
@@ -224,8 +237,12 @@ export function useAssistantChat(
               switchTo = action;
               patchLast((m) => ({ ...m, chips: [...(m.chips ?? []), 'language'] }));
             } else if (action) {
-              const chip = await onAction(action);
-              if (chip) patchLast((m) => ({ ...m, chips: [...(m.chips ?? []), chip] }));
+              const outcome = await onAction(action);
+              if (typeof outcome === 'string') {
+                patchLast((m) => ({ ...m, chips: [...(m.chips ?? []), outcome] }));
+              } else if (outcome) {
+                patchLast((m) => ({ ...m, alerts: [...(m.alerts ?? []), outcome] }));
+              }
             }
           } else if (event === 'done') {
             patchLast((m) => ({ ...m, messageId: payload.messageId }));
@@ -283,6 +300,20 @@ export function useAssistantChat(
     [send]
   );
 
+  /** A reminder's card after the visitor's press: set, or failed with the reason. */
+  const settleAlert = useCallback(
+    (messageId: string, prompt: AssistantAlertPrompt) =>
+      setStored((current) => ({
+        ...current,
+        messages: current.messages.map((m) =>
+          m.id === messageId
+            ? { ...m, alerts: m.alerts?.map((a) => (a.id === prompt.id ? prompt : a)) }
+            : m
+        ),
+      })),
+    []
+  );
+
   const reset = useCallback(() => {
     abort.current?.abort();
     setStored({ conversationId: null, messages: [] });
@@ -295,6 +326,7 @@ export function useAssistantChat(
     lookup,
     send,
     shareLocation,
+    settleAlert,
     rate,
     reset,
   };

@@ -24,6 +24,12 @@ import {
   setDayPrefs,
 } from '@/lib/planner/actions.ts';
 import { EMPTY_PLANNER_STATE, entriesFor } from '@/lib/planner/types.ts';
+import {
+  ALERTS_SNAPSHOT_MAX,
+  assistantAlertsSnapshot,
+  rideTarget,
+  showTarget,
+} from '@/lib/assistant/alerts-context.ts';
 
 let passed = 0;
 function check(actual, expected, label) {
@@ -296,5 +302,191 @@ check(
   { type: 'planner_share' },
   'share carries nothing'
 );
+
+// --- Reminders: the snapshot ---
+check(assistantAlertsSnapshot('unavailable', [], []), undefined, 'no push, nothing set: no field');
+check(
+  assistantAlertsSnapshot('needs-permission', [], []),
+  { push: 'needs-permission', rides: [], shows: [] },
+  'push in reach is sent though nothing is set'
+);
+const names = { parkSlug: 'phantasialand', slug: 'taron', name: 'Taron' };
+check(
+  assistantAlertsSnapshot(
+    'unavailable',
+    [
+      { attractionId: 'a', thresholdMinutes: 20, ...names },
+      { attractionId: 'b', thresholdMinutes: null, kind: 'reopen', ...names, slug: 'raik' },
+      { attractionId: 'c', thresholdMinutes: 10 },
+    ],
+    [
+      {
+        showId: 's',
+        startTime: '2026-11-05T13:30:00.000Z',
+        parkSlug: 'phantasialand',
+        slug: 'fantissima',
+        name: 'Fantissima',
+        timezone: 'Europe/Berlin',
+      },
+      {
+        showId: 't',
+        startTime: null,
+        parkSlug: 'phantasialand',
+        slug: 'ice-college',
+        name: 'Ice College',
+      },
+    ]
+  ),
+  {
+    push: 'unavailable',
+    rides: [
+      {
+        park: 'phantasialand',
+        rideSlug: 'taron',
+        name: 'Taron',
+        kind: 'wait_below',
+        thresholdMinutes: 20,
+      },
+      { park: 'phantasialand', rideSlug: 'raik', name: 'Taron', kind: 'reopen' },
+    ],
+    shows: [
+      { park: 'phantasialand', showSlug: 'fantissima', name: 'Fantissima', start: '14:30' },
+      { park: 'phantasialand', showSlug: 'ice-college', name: 'Ice College' },
+    ],
+  },
+  'set reminders are sent even without push; an entry without names is left out; a pin reads in the park clock'
+);
+check(
+  assistantAlertsSnapshot(
+    'ready',
+    Array.from({ length: 40 }, (_, i) => ({
+      attractionId: `a${i}`,
+      thresholdMinutes: 5,
+      ...names,
+    })),
+    []
+  ).rides.length,
+  ALERTS_SNAPSHOT_MAX,
+  'at most thirty rides'
+);
+
+// --- Reminders: resolving slugs ---
+const planDay = {
+  timezone: 'Europe/Berlin',
+  rides: [{ attractionSlug: 'taron', attractionName: 'Taron', attractionId: 'uuid-taron' }],
+  shows: [
+    {
+      showSlug: 'fantissima',
+      showName: 'Fantissima',
+      showId: 'uuid-show',
+      times: ['11:00', '15:00'],
+      source: 'listed',
+    },
+  ],
+};
+check(
+  rideTarget(planDay, 'taron', 15),
+  { kind: 'ride', attractionId: 'uuid-taron', name: 'Taron', thresholdMinutes: 15 },
+  'a ride resolves to its id'
+);
+check(rideTarget(planDay, 'raik', null), null, 'a ride the day does not have');
+check(
+  showTarget(planDay, 'fantissima', '15:00', now),
+  {
+    kind: 'show',
+    showId: 'uuid-show',
+    name: 'Fantissima',
+    startTime: '2026-11-05T14:00:00.000Z',
+    start: '15:00',
+  },
+  "a performance today, as the instant in the park's zone"
+);
+check(showTarget(planDay, 'fantissima', '11:00', now), null, 'a performance already over');
+check(showTarget(planDay, 'fantissima', '16:00', now), null, 'a time the day does not list');
+
+// --- Reminders: the actions ---
+check(
+  readAssistantAction({
+    type: 'alert_ride_set',
+    park,
+    rideSlug: 'taron',
+    rideName: 'Taron',
+    kind: 'wait_below',
+    thresholdMinutes: 15,
+    x: 1,
+  }),
+  {
+    type: 'alert_ride_set',
+    park,
+    rideSlug: 'taron',
+    rideName: 'Taron',
+    kind: 'wait_below',
+    thresholdMinutes: 15,
+  },
+  'ride alert'
+);
+check(
+  readAssistantAction({
+    type: 'alert_ride_set',
+    park,
+    rideSlug: 'taron',
+    rideName: 'Taron',
+    kind: 'reopen',
+    thresholdMinutes: 15,
+  }),
+  { type: 'alert_ride_set', park, rideSlug: 'taron', rideName: 'Taron', kind: 'reopen' },
+  'a reopen alert carries no threshold'
+);
+check(
+  readAssistantAction({
+    type: 'alert_ride_set',
+    park,
+    rideSlug: 'taron',
+    rideName: 'Taron',
+    kind: 'wait_below',
+    thresholdMinutes: 500,
+  }),
+  null,
+  'a threshold the API refuses'
+);
+check(
+  readAssistantAction({
+    type: 'alert_ride_set',
+    park,
+    rideSlug: 'taron',
+    rideName: 'Taron',
+    kind: 'soon',
+  }),
+  null,
+  'an unknown kind'
+);
+check(
+  readAssistantAction({
+    type: 'alert_show_set',
+    park,
+    showSlug: 'fantissima',
+    showName: 'Fantissima',
+    start: '15:00',
+  }),
+  { type: 'alert_show_set', park, showSlug: 'fantissima', showName: 'Fantissima', start: '15:00' },
+  'show reminder'
+);
+check(
+  readAssistantAction({
+    type: 'alert_show_set',
+    park,
+    showSlug: 'fantissima',
+    showName: '',
+    start: '15:00',
+  }),
+  null,
+  'a show without a name'
+);
+check(
+  readAssistantAction({ type: 'alert_remove', park, rideSlug: 'taron', showSlug: '<b>' }),
+  { type: 'alert_remove', park, rideSlug: 'taron' },
+  'remove: a bad slug is left out'
+);
+check(readAssistantAction({ type: 'alert_remove', park }), null, 'remove: nothing named');
 
 console.log(`assistant context: ${passed} checks passed`);

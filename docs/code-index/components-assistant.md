@@ -5,6 +5,10 @@ by hand: change the comment in the code and re-run the script. -->
 
 [All pages](README.md).
 
+### [`assistant-alert-ask.tsx`](../../components/assistant/assistant-alert-ask.tsx)
+
+- `AssistantAlertAsk` _component_: A reminder Parky asked for that could not be written mid-answer: notifications are not allowed yet, or the write failed.
+
 ### [`assistant-card.tsx`](../../components/assistant/assistant-card.tsx)
 
 - `AssistantCardView` _component_: A park, a ride, a park's rides, a few parks, a park's next days, its day in stat tiles, its shows or its restaurants as a card in Parky's chat: the site's own status, crowd and wait chips and photos on live data.

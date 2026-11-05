@@ -11,6 +11,8 @@ import {
   Languages,
   MessageSquareHeart,
   RotateCcw,
+  BellOff,
+  BellRing,
   SendHorizontal,
   Sparkles,
   ThumbsDown,
@@ -34,6 +36,7 @@ import { AssistantMessageText } from './assistant-message-text';
 import { AssistantFeedbackForm } from './assistant-feedback-form';
 import { AssistantChallenge } from './assistant-challenge';
 import { AssistantLocationAsk } from './assistant-location-ask';
+import { AssistantAlertAsk } from './assistant-alert-ask';
 import { AssistantCardView } from './assistant-card';
 import { useAssistantActions } from './use-assistant-actions';
 import type { AssistantActionChip } from '@/lib/assistant/actions';
@@ -66,6 +69,8 @@ const CHIP: Record<AssistantActionChip, { key: string; icon: typeof ExternalLink
   optimized: { key: 'chipOptimized', icon: Sparkles },
   language: { key: 'chipLanguage', icon: Languages },
   feedback: { key: 'chipFeedback', icon: MessageSquareHeart },
+  alert: { key: 'chipAlert', icon: BellRing },
+  alertRemoved: { key: 'chipAlertRemoved', icon: BellOff },
 };
 
 /** Three bouncing dots: Parky is thinking or looking something up. */
@@ -431,6 +436,13 @@ export function AssistantPanel({
                         })}
                       </div>
                     )}
+                    {message.alerts?.map((prompt) => (
+                      <AssistantAlertAsk
+                        key={prompt.id}
+                        prompt={prompt}
+                        onSettle={(next) => chat.settleAlert(message.id, next)}
+                      />
+                    ))}
                     {message.asksLocation && (
                       <AssistantLocationAsk
                         onShare={(position) =>

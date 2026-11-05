@@ -10,6 +10,19 @@ by hand: change the comment in the code and re-run the script. -->
 - `readAssistantAction` _function_: The action as the widget will carry it out, or null. Checked again here although the API built it: the stream is model-driven, and a page change or a planner write is the user's state.
 - Types: `AssistantPlannerPark`, `AssistantCard`, `AssistantAction`, `AssistantActionChip`
 
+### [`alert-writes.ts`](../../lib/assistant/alert-writes.ts)
+
+- `readPushState` _function_: Ready only with a subscription and the permission granted: then a write reuses the subscription and cannot prompt, which an action arriving mid-stream must never do.
+- `writeAssistantAlert` _function_: A reminder through the bells' own writes (subscription reuse, the 404 retry, the mirror after the server), counted like a bell's press, which is also what makes Parky ring his bell.
+
+### [`alerts-context.ts`](../../lib/assistant/alerts-context.ts)
+
+- `assistantAlertsSnapshot` _function_: The mirror's reminders; entries stored before the mirror kept their names are left out, as Parky could not name them. `undefined` where push is out of reach and nothing is set.
+- `rideTarget` _function_: The ride by its slug in today's `/plan/day`, or null.
+- `showTarget` _function_: The performance at `start` today in the park's zone, by its slug in today's `/plan/day`, or null for a time the day does not list or one already past.
+- `ALERTS_SNAPSHOT_MAX` _const_: The most rides and shows a question carries.
+- Types: `AssistantPushState`, `AssistantAlertsSnapshot`, `AssistantAlertTarget`, `AssistantAlertPrompt`, `AssistantActionOutcome`
+
 ### [`cards.ts`](../../lib/assistant/cards.ts)
 
 - `calendarWeeks` _function_: The days of a calendar card as Monday-first weeks of seven, with `null` before the first day and after the last. Each day sits by its date, so a gap in the days stays a gap.

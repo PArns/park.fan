@@ -31,6 +31,16 @@ import {
   rememberDayForUndo,
   undoParkyChange,
 } from '@/lib/assistant/planner-context';
+import {
+  rideTarget,
+  showTarget,
+  type AssistantActionOutcome,
+  type AssistantAlertTarget,
+} from '@/lib/assistant/alerts-context';
+import { readPushState, writeAssistantAlert } from '@/lib/assistant/alert-writes';
+import { listRideAlertsLocal, listShowFollowsLocal } from '@/lib/push/push-follows-store';
+import { removeRideAlert, unfollowShow } from '@/lib/push/push-follows';
+import { trackSiteEvent } from '@/lib/analytics/site-analytics';
 import { safeAssistantHref } from '@/lib/assistant/links';
 import { localizedPath } from '@/lib/i18n/localized-path';
 import { hreflangPath } from '@/lib/i18n/hreflang';
@@ -42,6 +52,8 @@ import {
   type AssistantActionChip,
   type AssistantPlannerPark,
 } from '@/lib/assistant/actions';
+
+let promptIds = 0;
 
 /** `HH:MM` as park-local minutes; the action check has already read the shape. */
 const minuteOf = (clock: string) => Number(clock.slice(0, 2)) * 60 + Number(clock.slice(3));
@@ -76,7 +88,7 @@ export function useAssistantActions(closeWindow: () => void) {
   const { addRide, addCustom, addShow } = usePlanner();
 
   return useCallback(
-    async (action: AssistantAction): Promise<AssistantActionChip | null> => {
+    async (action: AssistantAction): Promise<AssistantActionOutcome> => {
       const stepAside = () => {
         if (window.matchMedia(ASSISTANT_PHONE_QUERY).matches) closeWindow();
       };
@@ -115,6 +127,25 @@ export function useAssistantActions(closeWindow: () => void) {
       /** Before an add through `usePlanner`, which always changes the day. */
       const rememberDay = (park: AssistantPlannerPark, date: string) =>
         rememberDayForUndo(plannerStore.getSnapshot(), park.slug, date);
+
+      /** Today's `/plan/day` of the park, through the planner's own cache entry. */
+      const today = (park: AssistantPlannerPark) =>
+        queryClient
+          .fetchQuery(planDayQuery({ ...park.geo, parkSlug: park.slug }))
+          .catch(() => null);
+      /**
+       * Written at once where push is ready; otherwise a card whose button is the visitor's press,
+       * since a permission prompt needs one.
+       */
+      const setAlert = async (
+        target: AssistantAlertTarget | null
+      ): Promise<AssistantActionOutcome> => {
+        if (!target) return null;
+        const prompt = { id: `alert-${++promptIds}`, target };
+        if ((await readPushState()) !== 'ready') return { ...prompt, state: 'confirm' };
+        const result = await writeAssistantAlert(target);
+        return result.ok ? 'alert' : { ...prompt, state: 'failed', error: result.error };
+      };
 
       switch (action.type) {
         case 'navigate': {
@@ -283,6 +314,43 @@ export function useAssistantActions(closeWindow: () => void) {
           stepAside();
           revealShare();
           return 'planned';
+        }
+        case 'alert_ride_set':
+          return setAlert(
+            rideTarget(
+              await today(action.park),
+              action.rideSlug,
+              action.kind === 'reopen' ? null : (action.thresholdMinutes ?? null)
+            )
+          );
+        case 'alert_show_set':
+          return setAlert(showTarget(await today(action.park), action.showSlug, action.start));
+        case 'alert_remove': {
+          const { park, rideSlug, showSlug } = action;
+          // The mirror names what this browser set; today's day is the fallback for an older entry.
+          const mine = (entry: { parkSlug?: string; slug?: string }, slug?: string) =>
+            !!slug && entry.parkSlug === park.slug && entry.slug === slug;
+          let rideId = listRideAlertsLocal().find((a) => mine(a, rideSlug))?.attractionId;
+          let showId = listShowFollowsLocal().find((f) => mine(f, showSlug))?.showId;
+          if ((rideSlug && !rideId) || (showSlug && !showId)) {
+            const day = await today(park);
+            rideId ??=
+              day?.rides.find((r) => r.attractionSlug === rideSlug)?.attractionId ?? undefined;
+            showId ??= day?.shows?.find((s) => s.showSlug === showSlug)?.showId ?? undefined;
+          }
+          const removed =
+            (id: string, event: 'ride_alert_removed' | 'show_follow_remove') =>
+            (result: { ok: boolean }) => {
+              if (result.ok) trackSiteEvent(event, {}, id);
+              return result;
+            };
+          const results = await Promise.all([
+            ...(rideId
+              ? [removeRideAlert(rideId).then(removed(rideId, 'ride_alert_removed'))]
+              : []),
+            ...(showId ? [unfollowShow(showId).then(removed(showId, 'show_follow_remove'))] : []),
+          ]);
+          return results.length > 0 && results.every((r) => r.ok) ? 'alertRemoved' : null;
         }
         case 'switch_locale': {
           if (action.locale === locale) return null;

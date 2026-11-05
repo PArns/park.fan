@@ -120,6 +120,20 @@ prints on the block (`formatGridTime`), a block's or show's length and the tick;
 preferences, and the active park and day. With nothing planned the field is left out. The API
 answers with the next turn, so Parky reads what its last action did from that plan.
 
+Reminders (`lib/assistant/alerts-context.ts`, `alert-writes.ts`) resolve the slugs Parky sends
+through today's `/plan/day`, which carries the ride and show ids; a ride or a performance the day
+does not list, or one already over, is ignored. Only with push `ready` (a subscription and the
+permission granted, `readPushState`) is the reminder written mid-answer, since then nothing can
+prompt. Otherwise, and after a failed write, the answer carries `AssistantAlertAsk`: what would be
+set and a button, whose press is the visitor's gesture and runs the same write, prompt included; a
+failure reads in the bells' own sentences (`usePushErrorMessage`, the 429 wait among them). A set
+counts as `ride_alert_set` or `show_follow_add` with source `assistant`, which also rings Parky's
+bell. The removal goes by the mirror's names, today's day as the fallback.
+
+The `alerts` field of every question is the mirror (`assistantAlertsSnapshot`): `push`, and the
+ride alerts and show reminders whose names the mirror keeps, at most 30 each, a pinned performance
+as the park's `HH:MM`. Left out where push is out of reach and nothing is set.
+
 `plannerUi.requestOptimize` is held until the day's `PlannerOptimizeActions` is on screen with its
 data, which then presses its own button (`RunOnce`), fit assistant and undo included. On a phone
 Parky's window closes after a page change or a planner action, so the result is visible.
@@ -442,4 +456,5 @@ same throw again or the other way throws him at once.
 `pnpm test:assistant-context` covers what the browser tells Parky and lets him change: the plan
 snapshot (from today on, nearest first, the caps, the printed starts, nothing when empty), the
 reorder, Parky's undo, and the checks of every planner edit (ids that are no ids dropped, an
-optional field that fails left out, nothing riding along).
+optional field that fails left out, nothing riding along), the reminders' snapshot, the slugs they
+resolve to, and their action checks.

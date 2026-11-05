@@ -2,6 +2,7 @@ import type { PlannerBlockIcon, PlannerDayPrefs, PlannerGeo } from '@/lib/planne
 import type { RopeDropStrength } from '@/lib/api/types';
 import { PLANNER_BLOCK_ICONS } from '@/lib/planner/types';
 import { MAX_RIDER_CM, MIN_RIDER_CM } from '@/lib/planner/party';
+import { MAX_THRESHOLD_MIN, MIN_THRESHOLD_MIN } from '@/lib/push/threshold-minutes';
 import { isValidLocale, type Locale } from '@/i18n/config';
 import { safeAssistantHref } from './links';
 
@@ -198,13 +199,33 @@ export type AssistantAction =
   | { type: 'planner_reserve_days'; park: AssistantPlannerPark; dates: string[] }
   | { type: 'planner_undo'; park: AssistantPlannerPark; date: string }
   | { type: 'planner_share' }
+  | {
+      type: 'alert_ride_set';
+      park: AssistantPlannerPark;
+      rideSlug: string;
+      rideName: string;
+      kind: 'wait_below' | 'reopen';
+      /** With `wait_below` only. */
+      thresholdMinutes?: number;
+    }
+  | {
+      type: 'alert_show_set';
+      park: AssistantPlannerPark;
+      showSlug: string;
+      showName: string;
+      /** Park-local `HH:MM`, one of today's performances. */
+      start: string;
+    }
+  /** One of the two slugs, or both. */
+  | { type: 'alert_remove'; park: AssistantPlannerPark; rideSlug?: string; showSlug?: string }
   /** The same page in another of the site's languages, once the answer is complete. */
   | { type: 'switch_locale'; locale: Locale }
   /** Parky passed the visitor's feedback on to the team. */
   | { type: 'feedback_sent' };
 
 /** What an answer did, as a chip under it. */
-export type AssistantActionChip = 'navigated' | 'planned' | 'optimized' | 'language' | 'feedback';
+export type AssistantActionChip =
+  'navigated' | 'planned' | 'optimized' | 'language' | 'feedback' | 'alert' | 'alertRemoved';
 
 const SLUG = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 const DAY = /^\d{4}-\d{2}-\d{2}$/;
@@ -515,6 +536,58 @@ function readPlannerEdit(action: Record<string, unknown>): AssistantAction | nul
     case 'planner_reserve_days':
     case 'planner_undo':
       return readPlannerEdit(action as unknown as Record<string, unknown>);
+    case 'alert_ride_set':
+    case 'alert_show_set':
+    case 'alert_remove':
+      return readAlert(action as unknown as Record<string, unknown>);
+    default:
+      return null;
+  }
+}
+
+const isSlug = (value: unknown): value is string => typeof value === 'string' && SLUG.test(value);
+const isName = (value: unknown): value is string =>
+  typeof value === 'string' && value.trim().length > 0 && value.length <= 120;
+
+/** A reminder Parky sets or takes away, built anew like the planner's edits. */
+function readAlert(action: Record<string, unknown>): AssistantAction | null {
+  const { park } = action;
+  if (!isPark(park)) return null;
+  switch (action.type) {
+    case 'alert_ride_set': {
+      if (!isSlug(action.rideSlug) || !isName(action.rideName)) return null;
+      const ride = { park, rideSlug: action.rideSlug, rideName: action.rideName.trim() };
+      if (action.kind === 'reopen') return { type: 'alert_ride_set', ...ride, kind: 'reopen' };
+      return action.kind === 'wait_below' &&
+        isWhole(action.thresholdMinutes, MIN_THRESHOLD_MIN, MAX_THRESHOLD_MIN)
+        ? {
+            type: 'alert_ride_set',
+            ...ride,
+            kind: 'wait_below',
+            thresholdMinutes: action.thresholdMinutes as number,
+          }
+        : null;
+    }
+    case 'alert_show_set':
+      return isSlug(action.showSlug) &&
+        isName(action.showName) &&
+        typeof action.start === 'string' &&
+        CLOCK.test(action.start)
+        ? {
+            type: 'alert_show_set',
+            park,
+            showSlug: action.showSlug,
+            showName: action.showName.trim(),
+            start: action.start,
+          }
+        : null;
+    case 'alert_remove': {
+      const slugs = {
+        ...(isSlug(action.rideSlug) ? { rideSlug: action.rideSlug } : {}),
+        ...(isSlug(action.showSlug) ? { showSlug: action.showSlug } : {}),
+      };
+      return Object.keys(slugs).length > 0 ? { type: 'alert_remove', park, ...slugs } : null;
+    }
     default:
       return null;
   }
@@ -577,6 +650,10 @@ export function readAssistantAction(raw: unknown): AssistantAction | null {
     case 'planner_reserve_days':
     case 'planner_undo':
       return readPlannerEdit(action as unknown as Record<string, unknown>);
+    case 'alert_ride_set':
+    case 'alert_show_set':
+    case 'alert_remove':
+      return readAlert(action as unknown as Record<string, unknown>);
     default:
       return null;
   }
