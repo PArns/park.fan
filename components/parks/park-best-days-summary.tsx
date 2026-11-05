@@ -6,11 +6,9 @@ import {
 } from '@/components/parks/weekday-forecast-hover';
 import { cn } from '@/lib/utils';
 import { CROWD_CHIP_CLASS, CROWD_DOT_CLASS } from '@/lib/utils/crowd-level-styles';
-import { getDateTimeFormat, weekdayName, WEEKDAYS_MONDAY_FIRST } from '@/lib/utils/intl-format';
-import { formatRuns, formatWeekdayList, WEEKEND } from '@/lib/utils/day-runs';
+import { weekdayName, WEEKDAYS_MONDAY_FIRST } from '@/lib/utils/intl-format';
+import { formatMonthList, formatWeekdayList, WEEKEND } from '@/lib/utils/day-runs';
 import type { BestDaysTier, ParkBestDays } from '@/lib/parks/park-stats-derive';
-
-const MONTHS: readonly number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
 /** Day and month on one line, each kept whole, so a narrow column breaks between them and never inside one. */
 function EndColumn({ label, parts }: { label: string; parts: (string | null)[] }) {
@@ -66,18 +64,9 @@ export async function ParkBestDaysSummary({
   const tLegend = await getTranslations('attractions.historyLegend');
   const tierLabel = { quiet: t('quieter'), middle: t('middle'), busy: t('busier') };
 
-  // Three or more months go short, so a column holds them on one line.
-  const monthName = (keys: number[]) => {
-    const format = getDateTimeFormat(locale, {
-      month: keys.length > 2 ? 'short' : 'long',
-      timeZone: 'UTC',
-    });
-    return (m: number) => format.format(Date.UTC(2024, m - 1, 12));
-  };
   const dayLabels = { weekdays: t('weekdays'), weekend: t('weekend') };
   const days = (keys: number[]) => formatWeekdayList(keys, locale, dayLabels);
-  const months = (keys: number[]) =>
-    keys.length ? formatRuns(keys, MONTHS, locale, monthName(keys)) : null;
+  const months = (keys: number[]) => formatMonthList(keys, locale);
 
   const quiet = { days: days(bestDays.quietDays), months: months(bestDays.quietMonths) };
   const busy = { days: days(bestDays.busyDays), months: months(bestDays.busyMonths) };

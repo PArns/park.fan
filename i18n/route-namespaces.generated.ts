@@ -191,6 +191,8 @@ export const LAZY_CHUNK_NAMESPACES = [
   'attractions.meta',
   'attractions.ropeDrop',
   'nearby',
+  'parkBestDays.weekdays',
+  'parkBestDays.weekend',
   'parkCard',
   'parks',
   'parks.crowdLevels',

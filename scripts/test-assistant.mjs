@@ -7,7 +7,8 @@
  * (`lib/assistant/parky-boredom.ts`), how a chat opens (`lib/assistant/opener.ts`) and Parky's easter
  * eggs (`lib/assistant/easter-eggs.ts`, muting in `teaser-store.ts`), its rides
  * (`lib/assistant/parky-rides.ts`) and how it answers what the visitor does
- * (`lib/assistant/reactions.ts`, heard through `onSiteEvent`), when a hard scroll throws it
+ * (`lib/assistant/reactions.ts`, heard through `onSiteEvent`), its facts and which line fills a slot
+ * (`lib/assistant/parky-facts.ts`, `line-priority.ts`), when a hard scroll throws it
  * (`lib/assistant/fling-tracker.ts`), and the calendar, tiles and shows cards (`lib/assistant/cards.ts`).
  */
 
@@ -46,6 +47,8 @@ import {
   parkPathOf,
   topCoaster,
 } from '@/lib/assistant/easter-eggs.ts';
+import { FACT_KEYS, parkyFacts } from '@/lib/assistant/parky-facts.ts';
+import { lineSources } from '@/lib/assistant/line-priority.ts';
 import {
   answeredWithLine,
   countAnswer,
@@ -523,6 +526,98 @@ check(
 );
 check(topCoaster([{ attractionName: 'Piraten', attractionType: null }]), 'Piraten', 'else the top');
 check(topCoaster([]), null, 'no ranking, no ride');
+
+// Parky's facts: one per sentence a finding supports, none without its data.
+{
+  const labels = { weekdays: 'Weekdays', weekend: 'Weekends' };
+  const full = {
+    parkP50: 21,
+    longestName: 'Taron',
+    longestP50: 48,
+    quietestDays: [1, 2, 3, 4, 5],
+    quietestP50: 17,
+    busiestMonths: [7, 8],
+    busiestP50: 34,
+  };
+  const facts = parkyFacts(full, 'Phantasialand', 'en', labels);
+  check(
+    facts.map((f) => f.key),
+    Object.values(FACT_KEYS).flat(),
+    'every sentence once for a park with every finding'
+  );
+  check(
+    facts.find((f) => f.key === 'factLongest1').values,
+    { park: 'Phantasialand', ride: 'Taron', wait: 50 },
+    'the longest queue on the five-minute grid'
+  );
+  check(facts.find((f) => f.key === 'factGap1').values.extra, 30, 'the gap between grid values');
+  check(facts.find((f) => f.key === 'factQuietest1').values.days, 'Weekdays', 'the working week');
+  check(
+    facts.find((f) => f.key === 'factBusiest1').values.months,
+    'July and August',
+    'months named'
+  );
+  const close = parkyFacts({ ...full, longestP50: 27 }, 'P', 'en', labels).map((f) => f.key);
+  check(close.includes('factGap1'), false, 'no gap under ten minutes');
+  check(
+    parkyFacts(
+      { ...full, longestName: null, quietestDays: [], busiestP50: null, parkP50: 1 },
+      'P',
+      'en',
+      labels
+    ),
+    [],
+    'nothing without data, nor for a wait the grid rounds below five'
+  );
+  for (const locale of ['de', 'en', 'nl', 'fr', 'es', 'it']) {
+    const messages = JSON.parse(readFileSync(`messages/${locale}.json`, 'utf8')).assistant;
+    for (const key of Object.values(FACT_KEYS).flat()) {
+      check(typeof messages[key], 'string', `${locale} has ${key}`);
+    }
+  }
+}
+
+// Which source fills a session slot, best first.
+{
+  const slot = {
+    slot: 0,
+    lastSlot: 1,
+    arrival: false,
+    holiday: false,
+    page: 'other',
+    parkLuck: false,
+    forced: null,
+  };
+  check(lineSources(slot), ['invitation'], 'an ordinary page invites');
+  check(
+    lineSources({ ...slot, arrival: true, holiday: true }),
+    ['entrance', 'holiday', 'invitation'],
+    'the entrance first, then the holiday'
+  );
+  check(
+    lineSources({ ...slot, slot: 1, arrival: true, holiday: true }),
+    ['invitation'],
+    'entrance and holiday only in the first slot'
+  );
+  check(
+    lineSources({ ...slot, slot: 1, page: 'park', parkLuck: true }),
+    ['fact', 'park', 'invitation'],
+    'a fact in the last slot before the park line'
+  );
+  check(lineSources({ ...slot, page: 'park' }), ['invitation'], 'the park line only on its draw');
+  check(lineSources({ ...slot, slot: 1, page: 'home' }), ['fact', 'invitation'], 'home: a fact');
+  check(lineSources({ ...slot, slot: 1 }), ['invitation'], 'no fact on other pages');
+  check(
+    lineSources({ ...slot, page: 'park', forced: 'fact' }),
+    ['fact', 'invitation'],
+    '?parky=fact in any slot'
+  );
+  check(
+    lineSources({ ...slot, page: 'park', forced: 'egg' }),
+    ['park', 'invitation'],
+    '?parky=egg'
+  );
+}
 check(
   parkNameIn([
     { textContent: 'not json' },

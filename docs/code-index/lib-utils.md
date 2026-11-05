@@ -108,6 +108,7 @@ Covered rides: where a visitor can go when the nowcast says rain is coming. The 
 - `sameKeys` _function_: Same members, any order.
 - `formatRuns` _function_: Keys of a cyclic order (weekdays, months) as one list: runs of three or more as a span, the rest by name, joined the locale's way, or with `&` where `compact`.
 - `formatWeekdayList` _function_: Weekdays (0 = Sunday) the way the park header names its quiet and busy ends: five days tied at one end is the week against its weekend and reads as that, three or more neighbours as a span, the rest by name.
+- `formatMonthList` _function_: Months (1 = January) the way the park header names its quiet and busy ends: runs of three or more as a span, and three or more months short, so a column holds them on one line. `null` for no months.
 - `MONDAY_TO_FRIDAY` _const_
 - `WEEKEND` _const_
 - Types: `WeekdayListLabels`

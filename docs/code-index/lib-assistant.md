@@ -54,6 +54,11 @@ by hand: change the comment in the code and re-run the script. -->
 - `SETTLE_MS` _const_: Once the page has moved slower than that for this long, he lets go: long enough to hold on through the gaps between a wheel's bursts or a finger's swipes, so he does not bounce about.
 - Types: `ParkyFling`, `FlingHand`, `FlingHandAt`, `FlingState`
 
+### [`line-priority.ts`](../../lib/assistant/line-priority.ts)
+
+- `lineSources` _function_: The sources that may fill a slot, best first. The scheduler says the first that has a line: a park whose statistics are too thin for a fact falls through to the next one.
+- Types: `LineSource`, `LineSlot`
+
 ### [`links.ts`](../../lib/assistant/links.ts)
 
 - `directionsHref` _function_: The one link off the site an answer may carry: Google Maps directions to coordinates, exactly in the form the API's `get_directions` writes it. Opened in a new tab; never used for navigation.
@@ -93,6 +98,12 @@ Where Parky stands while his chat window is shut: in his corner, or in a slot on
 - `parkyDock` _const_: The slot Parky may stand in: the element, while it is on screen.
 - `parkyInDock` _const_: Whether Parky stands in the slot right now, and how he got there (`ParkyArrival`), or null: in his window, on his way there or back, or still hopping in from the corner. The launcher sets it; the slot draws Parky only then.
 - Types: `ParkyArrival`, `ParkySlotBox`
+
+### [`parky-facts.ts`](../../lib/assistant/parky-facts.ts)
+
+- `parkyFacts` _function_: Every fact a park's two-year aggregate supports, each sentence of `FACT_KEYS` once: the longest queue, how far it beats the park's typical wait, the quietest weekdays, the busiest months and the typical wait.
+- `FACT_KEYS` _const_: The sentences for each finding, every one with `{park}`; a finding without its data has none.
+- Types: `ParkyFact`
 
 ### [`parky-jump.ts`](../../lib/assistant/parky-jump.ts)
 

@@ -320,24 +320,45 @@ row.
 bubble's right edge and bottom are reckoned from the button's size (56 px, 64 px from `sm`) and
 its corner offset. These lines go in it, from the `assistant` namespace:
 
-- **Invitations** (`teaser1`–`teaser9`): 8 s after the button shows and again 90 s after that, at
-  most two a session (`TEASER_SCHEDULE_MS`). After an entrance the first is the entrance's own
-  line (`entranceScurry`, `entranceDrop`, `entranceRoll`, `entrancePeek`, `entrancePop`), said a
-  beat after landing. One that falls due over another line, while Parky sleeps or while a search
-  is open tries again 5 s later.
+- **The session's two slots**: 8 s after the button shows and again 90 s after that
+  (`TEASER_SCHEDULE_MS`), two lines a session at most. Which line fills a slot is one list,
+  `lineSources` in `lib/assistant/line-priority.ts`, best first; the first source with a line for
+  the page speaks, so a park whose statistics are too thin for a fact falls through to the next:
+
+  | Source       | When                                                                  | Lines                                                                                           |
+  | ------------ | --------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+  | `entrance`   | first slot, after an entrance, a beat after landing                   | `entranceScurry`, `entranceDrop`, `entranceRoll`, `entrancePeek`, `entrancePop`                 |
+  | `holiday`    | first slot, on one of Parky's holidays                                | `holidayHalloween`, `holidayChristmas`, `holidayNewYear`                                        |
+  | `fact`       | last slot, on a park's page or the homepage (`?parky=fact`: any slot) | `factLongest1`–`3`, `factGap1`–`2`, `factQuietest1`–`3`, `factBusiest1`–`3`, `factAverage1`–`3` |
+  | `park`       | a park's page, on `PARK_EGG_CHANCE` (40 %) or `?parky=egg`            | `parkLine1`–`6`, `parkQueue1`–`3`, `parkRopeDrop1`–`2`, `parkClosing1`–`2`, `parkFood1`–`2`     |
+  | `invitation` | always                                                                | `teaser1`–`teaser13`                                                                            |
+
+  A new kind of scheduled line (live waits, the park's clock, a returning visitor) goes into that
+  list at its rank. One that falls due over another line, while Parky sleeps or while a search is
+  open tries again 5 s later.
+
+- **Facts** (`parkyFacts`, `lib/assistant/parky-facts.ts`): every sentence a park's two-year
+  aggregate supports (`deriveParkStatsFindings`): the longest queue and its typical wait, how much
+  longer it is than the park's typical queue (from 10 minutes), the quietest weekdays, the busiest
+  months, the typical wait. Waits on the five-minute grid and never under five, days and months
+  named as the park header names them. On a park's page the facts are about that park, from the
+  `/stats` it has loaded anyway; on the homepage about one of `PARK_FAVOURITES` at random, one
+  CDN-cached `/stats` request when the slot falls due. The fact list is open for hand-written facts
+  from the API, merged in as further `{ key, values }`. Parky reads (`read`) after a fact.
 - **Reactions**, read from the same `parkyBoredom`: a bored line (`teaserBored1`–`4`) after the
   first yawn, a woken line (`teaserWoke1`–`3`) once somebody wakes Parky. At most
   `REACTIONS_PER_SESSION` (3).
 - **Easter eggs** (`lib/assistant/easter-eggs.ts`): on Halloween, at Christmas and at New Year
   the first invitation is the day's own line (`holidayHalloween`, `holidayChristmas`,
-  `holidayNewYear`, by the browser's calendar). On a park's own page, on `PARK_EGG_CHANCE` (40 %)
-  of the visits or always with `?parky=egg`, Parky names a ride there 5 s after the page settles
-  (`parkLine1`–`4`, with `{park}` and `{ride}`) and then takes one of its rides. The ride is the park's
-  favourite in `PARK_FAVOURITES` (16 parks, keyed by geo path), else from its own data: the name
-  from the page's `AmusementPark` structured data, the ride the coaster with the longest waits in
-  the `/stats` the page loads anyway (through its React Query cache, so no request of its own),
-  else its top attraction (`topCoaster`). The Konami code typed anywhere buys a free ride with its
-  own line (`secretKonami`).
+  `holidayNewYear`, by the browser's calendar). On a park's own page, when its slot draws it, Parky
+  says one of the park lines (with `{park}` and `{ride}`) and then plays the act it goes with: a
+  ride after `parkLine1`–`6`, a whistle in the queue, a stretch before rope drop, a yawn at
+  closing time, heart eyes for the churros (`PARK_LINES` in `assistant-teaser.tsx`). The ride is
+  the park's favourite in `PARK_FAVOURITES` (16 parks, keyed by geo path), else from its own data:
+  the name from the page's `AmusementPark` structured data, the ride the coaster with the longest
+  waits in the `/stats` the page loads anyway (through its React Query cache, so no request of its
+  own), else its top attraction (`topCoaster`). The Konami code typed anywhere buys a free ride
+  with its own line (`secretKonami`).
   With a fine pointer, the pointer resting on Parky's nose (between and just under the eyes) makes
   it squint at it, both pupils turned in; circling it fast, two turns inside 1.5 s, makes it dizzy
   (`useGaze` in `parky-logo.tsx`, the `dizzy` act through its own cue).
@@ -393,7 +414,7 @@ Our own statistic (`trackSiteEvent`, labels in `lib/admin/site-analytics.ts`): `
 `assistant_opened` (with `source`: the button, a line, Parky's page, or `language` after his
 language switch), `assistant_line_shown`,
 `assistant_line_clicked` and `assistant_line_closed` (each with the line's kind as `line`: invitation,
-entrance, bored, woke, holiday, park, secret, or the answer's planner, plan, favourite, alert, theme
+entrance, bored, woke, holiday, park, fact, secret, or the answer's planner, plan, favourite, alert, theme
 or install), `assistant_closed` (questions while open), `assistant_question` (suggestion or typed, never the
 text), `assistant_answer` (result and number of lookups), `assistant_rated`,
 `assistant_feedback_sent` (whether with an e-mail, never the e-mail) and
@@ -408,7 +429,7 @@ and block lengths, only the six locales and nothing riding along with a switch),
 leads (the page's hreflang alternate, a respelled segment, never off the site or into a third
 language) and the reopen after it, the boredom stages on a fake clock, the opener's draw, and the
 easter eggs:
-a page's park path and park page, the coaster picked from a ranking, the park's name from structured
+a page's park path and park page, the facts a park's findings support, which source fills a slot, the coaster picked from a ranking, the park's name from structured
 data, the holidays, the Konami code and muting, and which scrolls throw Parky: a reading swipe, one
 late frame, a briskly turned wheel or one turned bit by bit, the scrollbar pulled slowly, the space
 bar, a jump and a scripted scroll do not; a hard flick, a wheel rolled hard, the scrollbar pulled

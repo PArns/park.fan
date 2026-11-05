@@ -166,6 +166,7 @@ export type AssistantLineKind =
   | 'woke'
   | 'holiday'
   | 'park'
+  | 'fact'
   | 'secret'
   | 'planner'
   | 'plan'

@@ -985,6 +985,7 @@ const PLANNER_VALUE_LABEL: Record<string, Record<string, string>> = {
     woke: 'Aufgewacht',
     holiday: 'Feiertag',
     park: 'Park-Spruch',
+    fact: 'Park-Fakt',
     secret: 'Geheimcode',
     planner: 'Tagesplaner geöffnet',
     plan: 'Plan fertig',
