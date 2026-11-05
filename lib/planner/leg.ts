@@ -141,6 +141,11 @@ export interface Transfer {
   floorMinutes: number;
   /** Assumed upper bound. */
   ceilingMinutes: number;
+  /**
+   * The walk alone inside the ceiling, without leaving the station or the ride: what the plan allows
+   * for walking, and what the day's total sums.
+   */
+  walkMinutes: number;
 }
 
 /**
@@ -156,7 +161,7 @@ export function transferBetween(
 ): Transfer {
   // Leaving a block with no position: no station to leave, no ride, no walk.
   if (ends.fromBlock && !from) {
-    return { metres: null, crossesLand: false, floorMinutes: 0, ceilingMinutes: 0 };
+    return { metres: null, crossesLand: false, floorMinutes: 0, ceilingMinutes: 0, walkMinutes: 0 };
   }
 
   const a = coordsOf(from);
@@ -187,7 +192,13 @@ export function transferBetween(
   // Walking to a block with no position: the visitor still leaves the ride, but
   // there is no walk to count, so both bounds are what leaving costs.
   if (ends.toBlock && !to) {
-    return { metres: null, crossesLand: false, floorMinutes: leaving, ceilingMinutes: leaving };
+    return {
+      metres: null,
+      crossesLand: false,
+      floorMinutes: leaving,
+      ceilingMinutes: leaving,
+      walkMinutes: 0,
+    };
   }
 
   return {
@@ -195,7 +206,29 @@ export function transferBetween(
     crossesLand,
     floorMinutes: leaving + walkFloorMin,
     ceilingMinutes: leaving + walkCeilMin,
+    walkMinutes: walkCeilMin,
   };
+}
+
+/**
+ * The day's walking, in minutes: the walk of every transfer between consecutive entries, paired in
+ * start order as the grid pairs its legs, so the total and the chips describe the same walks.
+ */
+export function dayWalkMinutes(
+  day: PlanDay | null | undefined,
+  entries: readonly PlannerEntry[]
+): number {
+  const ordered = [...entries].sort((a, b) => a.startMinute - b.startMinute);
+  let total = 0;
+  for (let i = 1; i < ordered.length; i++) {
+    const from = ordered[i - 1];
+    const to = ordered[i];
+    total += transferBetween(entryPlace(day, from), entryPlace(day, to), null, {
+      fromBlock: isBlockEntry(from),
+      toBlock: isBlockEntry(to),
+    }).walkMinutes;
+  }
+  return total;
 }
 
 /**

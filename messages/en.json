@@ -2363,6 +2363,8 @@
       "rides": "{count, plural, =0 {No rides} one {One ride} other {# rides}}",
       "waiting": "Time queuing in total",
       "waitingLabel": "Wait",
+      "walking": "Time walking between blocks, as the plan allows for it",
+      "walkingLabel": "Walking",
       "done": "{done} of {total} ridden",
       "blocks": "{count, plural, one {# block} other {# blocks}}"
     },

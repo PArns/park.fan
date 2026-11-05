@@ -70,6 +70,15 @@ ticked or live one, a block with no figure or a model that reported no spread. A
 `LIVE_WINDOW_MIN` (45) of now is re-based on the live wait (`lib/planner/live.ts`) and passed on with
 `uncertaintyMinutes: null`: a queue read off the park's board carries no forecast error.
 
+## A ticked-off ride
+
+A done block prints the queue the visitor typed (`actualWait`, as typed) and, beside it, how far
+that came in from the forecast for its hour, signed (`+10`, `−5`, `±0`), with the sentence in the
+title and for screen readers. The difference goes through `actualVsEstimate`
+(`roundWaitDeltaTo5`, never `roundWaitTo5`, which would floor every small difference to zero); no
+forecast, or only the assumed floor, means no difference. Beside the figure rather than on the
+block's third line, because a short measured queue draws a block too low for that line.
+
 ## A park nobody measures
 
 `estimateFor` answers a ride it cannot find with `ASSUMED_WAIT_MIN` (5) and `missing: 'assumed'`,

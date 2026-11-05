@@ -16,6 +16,7 @@ import {
   DETOUR_MAX,
   EXIT_MIN,
   SAME_LAND_CEIL_MIN,
+  dayWalkMinutes,
   earliestGoodStart,
   legBetween,
   legDeficit,
@@ -408,6 +409,23 @@ test('the detour factor is the documented one', DETOUR_MAX, 1.6);
   // kürzer als seine Schlange — und würde die Pille nach OBEN in den Block
   // darüber schieben, während er behauptet, ihr Platz verschafft zu haben.
   test('ein negativer Überhang wird geklemmt', legChipPlacement(24, -8).roomPx, 24);
+}
+
+// ── The day's walking: the walk inside each chip's ceiling, summed ───────────
+{
+  const day = { rides: [taron, mamba], shows: [] };
+  const ride = (slug, startMinute) => ({ id: slug, attractionSlug: slug, startMinute });
+  const leg = legBetween(from(600, 20, taron), { startMinute: 660, wait: 10, ride: mamba }, 5);
+  const walk = leg.ceilingMinutes - EXIT_MIN - RIDE_DURATION_MIN;
+  // Entered out of order on purpose: the grid pairs its legs in start order.
+  const entries = [ride('taron', 720), ride('black-mamba', 660), ride('taron', 600)];
+  test('the day walks what its two chips allow for', dayWalkMinutes(day, entries), 2 * walk);
+  test('one entry has no walk', dayWalkMinutes(day, [ride('taron', 600)]), 0);
+  test(
+    'a free block with no place adds no walk',
+    dayWalkMinutes(day, [ride('taron', 600), { id: 'lunch', startMinute: 660, custom: {} }]),
+    0
+  );
 }
 
 // ── Report ───────────────────────────────────────────────────────────────────

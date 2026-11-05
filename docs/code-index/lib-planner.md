@@ -179,6 +179,7 @@ Whether the drag gesture has been explained once: a store over `localStorage`, l
 - `entryPlace` _function_: Where an entry is, for the walk to it and from it: the ride's or the show's coordinates from `/plan/day`, or `null`. A show without both coordinates and a free block have no place, and no placeholder, since a guess may never feed the floor.
 - `isBlockEntry` _function_: True for an entry that is not a ride: a show, or a free block.
 - `transferBetween` _function_: How long it takes to get from one ride to the next, the geometry alone.
+- `dayWalkMinutes` _function_: The day's walking, in minutes: the walk of every transfer between consecutive entries, paired in start order as the grid pairs its legs, so the total and the chips describe the same walks.
 - `legBetween` _function_: The transfer between two consecutive entries.
 - `earliestGoodStart` _function_: The earliest start for the later ride that clears the transfer, snapped up, never down. Offered on a button and never applied on its own, so the visitor sees that the plan did not work.
 - `legDeficit` _function_: Minutes of shortfall on a broken leg — what a reader is told is missing.
