@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { CornerUpRight, Loader2 } from 'lucide-react';
 import { useCan } from '../../_app/session';
 import { AdminApiError, adminFetch, adminKeys, adminRequest, useAdminQuery } from '../../_lib/api';
-import { slugsFromPublicPath } from '../../_lib/public-path';
+import { isRedirectablePath, slugsFromPublicPath } from '../../_lib/public-path';
 import type { AdminAttractionListItem, AdminParkListItem } from '../../_lib/types';
 import { SearchSelect } from '../../_ui/controls';
 import { useToast } from '../../_ui/toast';
@@ -43,7 +43,7 @@ function errorToast(err: unknown, titles: Record<number, string>, fallback: stri
 export function RedirectAction({ path, onChange }: { path: string; onChange: () => void }) {
   const canEdit = useCan('editor');
   const [open, setOpen] = useState(false);
-  const slugs = slugsFromPublicPath(path);
+  const slugs = isRedirectablePath(path) ? slugsFromPublicPath(path) : null;
   if (!canEdit || !slugs) return null;
   return (
     <>

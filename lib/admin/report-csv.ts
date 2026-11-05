@@ -53,7 +53,8 @@ function collect(
 /** A cell as CSV: quoted when it must be, and a text a spreadsheet would run as a formula defused. */
 function csvCell(value: CsvCell): string {
   if (value === null || value === undefined) return '';
-  let text = String(value);
+  // German Excel reads `7.3` as a date and `0.042` as text; it wants a decimal comma.
+  let text = typeof value === 'number' ? String(value).replace('.', ',') : String(value);
   // Paths and referrers are visitor input; a leading = + - @ would run as a formula in a spreadsheet.
   if (typeof value === 'string' && /^[=+\-@\t\r]/.test(text)) text = `'${text}`;
   return /[",\n\r;]/.test(text) ? `"${text.replace(/"/g, '""')}"` : text;
@@ -79,10 +80,16 @@ export function reportCsv(data: unknown, meta: CsvMeta = []): string {
   return `﻿${lines.map((line) => line.map(csvCell).join(';')).join('\r\n')}\r\n`;
 }
 
-/** A file name part from free text: lower case, letters, digits and dashes only. */
+/** A file name part from free text: lower case, letters, digits and dashes only, umlauts spelled out. */
 export function csvNamePart(text: string): string {
   return text
     .toLowerCase()
+    .replace(/ä/g, 'ae')
+    .replace(/ö/g, 'oe')
+    .replace(/ü/g, 'ue')
+    .replace(/ß/g, 'ss')
+    .normalize('NFKD')
+    .replace(/[\u0300-\u036f]/g, '')
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/^-|-$/g, '');
 }

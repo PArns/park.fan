@@ -16,7 +16,7 @@ import type { AuthorOption, CategoryOption, EditorInitialData } from './_lib/ini
 import type { EditorFrontmatter, LocaleDraft } from './_lib/types';
 import type { NewAuthorDraft } from './_components/author-create-modal';
 import type { NewCategoryDraft } from './_components/category-create-modal';
-import { emptyDraft, isDraftFilled, slugify, toFrontmatter } from './_lib/types';
+import { emptyDraft, isDraftFilled, rawForTranslation, slugify, toFrontmatter } from './_lib/types';
 import {
   clearDraftSnapshot,
   isMeaningfulSnapshot,
@@ -434,7 +434,7 @@ export function BlogEditorClient({ initialData }: { initialData: EditorInitialDa
       const newFm: EditorFrontmatter = {
         ...baseFm,
         // A locale that already has a file keeps its own unknown fields (its caption, its time).
-        raw: drafts[target]?.fm.raw ?? baseFm.raw,
+        raw: drafts[target]?.fm.raw ?? rawForTranslation(baseFm.raw),
         title: data.title,
         excerpt: data.excerpt,
         seoTitle: data.seoTitle ?? '',

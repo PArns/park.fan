@@ -189,7 +189,7 @@ The path guard and the query of `/api/admin/[...path]`, pure so they can be test
 ### [`report-csv.ts`](../../lib/admin/report-csv.ts)
 
 - `reportCsv` _function_: An admin report's API answer as one CSV: `meta` (window and filters) and the answer's single values first as `Übersicht` rows, then every list as rows named by its path, the columns the union of all keys.
-- `csvNamePart` _function_: A file name part from free text: lower case, letters, digits and dashes only.
+- `csvNamePart` _function_: A file name part from free text: lower case, letters, digits and dashes only, umlauts spelled out.
 - Types: `CsvCell`, `CsvMeta`
 
 ### [`roles.ts`](../../lib/admin/roles.ts)

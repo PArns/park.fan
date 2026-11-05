@@ -289,7 +289,7 @@ Route `/api/glossary-term-ids` (route).
 
 Route `/api/health` (route).
 
-- `GET` _function_: Whether api.park.fan answers right now, for the maintenance page's recovery poll. Nothing on the way is cached (neither the Data Cache nor a CDN), so a copy from before the outage can never report the API as back.
+- `GET` _function_: Whether api.park.fan can serve pages again, for the maintenance page's recovery poll: `ready` also checks Postgres and Redis, which a deploy restarts after the API itself.
 
 ### [`image/route.ts`](../../app/api/image/route.ts)
 

@@ -534,6 +534,8 @@ export interface ParkYearlyPredictions {
    */
   holidays?: ParkYearlyHoliday[];
   generatedAt: string;
+  /** Set when the API could not read the forecast: an empty list that means "unknown", sent `no-store`. */
+  isDegraded?: boolean;
 }
 
 /**
@@ -552,7 +554,9 @@ export interface ParkYearlyPredictions {
  * window out.
  *
  * Returns `null` for anything that goes wrong, including the 404 a park without a forecast gets:
- * a park page must not fail over a chapter most of its readers scroll past.
+ * a park page must not fail over a chapter most of its readers scroll past. A degraded answer is
+ * asked for once more past the Data Cache, which ignores the API's `no-store` and would otherwise
+ * keep the empty outlook for the whole window.
  */
 export async function getParkYearlyPredictions(
   continent: string,
@@ -560,16 +564,17 @@ export async function getParkYearlyPredictions(
   city: string,
   parkSlug: string
 ): Promise<ParkYearlyPredictions | null> {
+  const path = `/v1/parks/${continent}/${country}/${city}/${parkSlug}/predictions/yearly`;
   try {
-    return await api.get<ParkYearlyPredictions>(
-      `/v1/parks/${continent}/${country}/${city}/${parkSlug}/predictions/yearly`,
-      {
-        next: {
-          revalidate: CACHE_TTL.predictions,
-          tags: ['parks', parkCacheTag(continent, country, city, parkSlug)],
-        },
-      }
-    );
+    const cached = await api.get<ParkYearlyPredictions>(path, {
+      next: {
+        revalidate: CACHE_TTL.predictions,
+        tags: ['parks', parkCacheTag(continent, country, city, parkSlug)],
+      },
+    });
+    if (!cached.isDegraded) return cached;
+    const fresh = await api.get<ParkYearlyPredictions>(path, { cache: 'no-store' });
+    return fresh.isDegraded ? null : fresh;
   } catch {
     return null;
   }

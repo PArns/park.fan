@@ -10,7 +10,11 @@ import { readdirSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { isDeepStrictEqual } from 'node:util';
 import matter from 'gray-matter';
-import { fromFrontmatter, toFrontmatter } from '../app/admin/blog-editor/_lib/types.ts';
+import {
+  fromFrontmatter,
+  rawForTranslation,
+  toFrontmatter,
+} from '../app/admin/blog-editor/_lib/types.ts';
 import { buildPostFile } from '../app/admin/blog-editor/_lib/serialize.ts';
 
 const root = join(import.meta.dirname, '..', 'content', 'blog');
@@ -44,6 +48,21 @@ for (const locale of locales) {
   else {
     failed++;
     console.log('❌ FAIL: cover caption follows its photo');
+  }
+}
+
+{
+  // A new translation keeps the cover photo and its credit, but not the source language's caption.
+  const raw = { title: 'x', coverImage: { src: '/a.jpg', credit: 'C', caption: 'Im Winter.' } };
+  const copied = rawForTranslation(raw);
+  if (
+    isDeepStrictEqual(copied?.coverImage, { src: '/a.jpg', credit: 'C' }) &&
+    raw.coverImage.caption === 'Im Winter.'
+  )
+    passed++;
+  else {
+    failed++;
+    console.log('❌ FAIL: a translation starts without the source caption');
   }
 }
 

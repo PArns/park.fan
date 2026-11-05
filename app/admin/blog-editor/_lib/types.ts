@@ -77,6 +77,18 @@ export function toFrontmatter(fm: EditorFrontmatter): BlogFrontmatter {
 }
 
 /**
+ * The unknown fields a new translation starts from: the source's, without its cover caption, which
+ * is text in the source's language and would land unchanged in the other locale's file.
+ */
+export function rawForTranslation(
+  raw?: Record<string, unknown>
+): Record<string, unknown> | undefined {
+  if (!raw || !raw.coverImage) return raw;
+  const { caption: _caption, ...cover } = raw.coverImage as Record<string, unknown>;
+  return { ...raw, coverImage: cover };
+}
+
+/**
  * Inverse of {@link toFrontmatter} — hydrate a parsed YAML frontmatter back
  * into the form-state shape so an existing post can be loaded into the editor.
  * Forgiving on input (gray-matter parses dates into Date objects, optional

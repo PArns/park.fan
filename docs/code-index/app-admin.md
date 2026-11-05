@@ -91,6 +91,7 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`_lib/public-path.ts`](../../app/admin/_lib/public-path.ts)
 
 - `slugsFromPublicPath` _function_: `/<locale>/parks/<continent>/<country>/<city>/<park>[/<ride>]` → its slugs.
+- `isRedirectablePath` _function_: Whether `POST /v1/admin/redirects` can take `path` at all: an optional locale, `parks`, then a park's four slugs or a ride's five, lower case.
 - Types: `PublicPathSlugs`
 
 ### [`_lib/types.ts`](../../app/admin/_lib/types.ts)
@@ -523,6 +524,7 @@ Route `/admin/attractions/[id]` (page).
 ### [`blog-editor/_lib/types.ts`](../../app/admin/blog-editor/_lib/types.ts)
 
 - `toFrontmatter` _function_: Convert the form state into the final blog frontmatter shape we serialise to YAML. Starts from the loaded frontmatter, so unknown fields and the key order survive a save.
+- `rawForTranslation` _function_: The unknown fields a new translation starts from: the source's, without its cover caption, which is text in the source's language and would land unchanged in the other locale's file.
 - `fromFrontmatter` _function_: Inverse of `toFrontmatter` — hydrate a parsed YAML frontmatter back into the form-state shape so an existing post can be loaded into the editor.
 - `emptyDraft` _function_: Returns a blank locale draft: empty frontmatter, body and slug, slug not yet edited by hand.
 - `slugify` _function_: Slugify a title into a URL-safe post slug.

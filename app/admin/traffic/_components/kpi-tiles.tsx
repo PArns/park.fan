@@ -121,11 +121,11 @@ export function KpiTiles({
         );
       })}
 
-      {botHits !== null && (
+      {overview.bots && (
         <Tile className="space-y-1.5">
           <p
             className="text-muted-foreground flex items-center gap-1.5 text-xs font-medium"
-            title="Bot-Anfragen gegen Bot-Anfragen plus Aufrufe. Die Bots zählen jede Anfrage, nicht nur Seitenaufrufe, der Anteil ist also eine Obergrenze. Bots werden erst gezählt, seit der Zähler in der API läuft; ein Zeitraum, der früher beginnt, liegt zu niedrig."
+            title="Bot-Anfragen gegen Bot-Anfragen plus Aufrufe. Die Bots zählen jede Anfrage, nicht nur Seitenaufrufe, der Anteil ist also eine Obergrenze. Ohne Wert unter einer Sprache oder einem Filter und solange der Zeitraum einen Tag enthält, an dem Bots nicht voll gezählt wurden (vor und am ersten Zähltag)."
           >
             <Bot className="h-3.5 w-3.5" aria-hidden="true" />
             Bot-Anteil
@@ -134,7 +134,7 @@ export function KpiTiles({
             {botShare === null ? '–' : `≤ ${formatShare(botShare)}`}
           </span>
           <p className="text-muted-foreground text-xs tabular-nums">
-            {formatCount(botHits)} Bot-Anfragen
+            {botHits === null ? 'Nicht gezählt' : `${formatCount(botHits)} Bot-Anfragen`}
           </p>
         </Tile>
       )}

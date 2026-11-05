@@ -28,4 +28,9 @@ assert.deepEqual(csv.slice(1).trimEnd().split('\r\n'), [
   `items;;;"'=HYPERLINK(""x"")";2;;"a,b"`,
 ]);
 assert.equal(csvNamePart('Ohne Suchbesuch: Parks'), 'ohne-suchbesuch-parks');
+// German Excel: a decimal comma, or 7.3 turns into a date and 0.042 into text.
+const decimals = reportCsv({ items: [{ position: 7.3, ctr: 0.042, clicks: 12 }] });
+assert.equal(decimals.slice(1).trimEnd().split('\r\n')[1], 'items;"7,3";"0,042";12');
+assert.equal(csvNamePart('Geräte & Länder'), 'geraete-laender');
+assert.equal(csvNamePart('Größe café'), 'groesse-cafe');
 console.log('report-csv: all assertions passed.');
