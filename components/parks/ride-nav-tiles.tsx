@@ -10,7 +10,7 @@ import {
   phoneLastCellSpan,
   tileCell,
   tileRowPhone,
-} from '@/components/parks/park-entry-tiles';
+} from '@/components/common/entry-tile';
 import { useAttractionDetail } from '@/lib/hooks/use-attraction-detail';
 import { useMinuteNowDate } from '@/lib/hooks/use-minute-now';
 import { getLiveAttractionStatus, getStandbyWait } from '@/lib/utils/park-utils';

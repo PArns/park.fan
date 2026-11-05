@@ -134,7 +134,9 @@ function ParkCalendarDayComponent({
     day.isHoliday || day.isPublicHoliday ? tLegend('holiday') : null,
     day.isSchoolHoliday || day.isSchoolVacation ? tLegend('schoolVacation') : null,
     day.isBridgeDay ? tLegend('bridgeDay') : null,
-    (day.neighborHolidays?.length ?? 0) > 0 && !isClosed ? t('influencingHolidays') : null,
+    (day.neighborHolidays?.length ?? 0) > 0 && !isClosed
+      ? t('holidayContext.influencingHolidays')
+      : null,
   ]
     .filter(Boolean)
     .join(' · ');

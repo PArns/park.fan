@@ -75,7 +75,7 @@ export function RideNowPanel({
 }: RideNowPanelProps) {
   const t = useTranslations('attractions');
   const tCommon = useTranslations('common');
-  const tParks = useTranslations('parks');
+  const tClock = useTranslations('parks.clock');
   const locale = useLocale();
   const timezone = park.timezone ?? 'UTC';
 
@@ -196,7 +196,7 @@ export function RideNowPanel({
                 timeZone: timezone,
               })}
               {tCommon('timeSuffix')}
-              <span className="max-sm:hidden"> · {tParks('localTime')}</span>
+              <span className="max-sm:hidden"> · {tClock('localTime')}</span>
             </span>
           </span>
         )}

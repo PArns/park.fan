@@ -233,5 +233,103 @@ export function leanParkForCalendarShell(park: ParkWithAttractions): ParkWithAtt
       const effectiveStatus = (a as { effectiveStatus?: ParkAttraction['status'] }).effectiveStatus;
       return effectiveStatus === undefined ? lean : { ...lean, effectiveStatus };
     }),
+    // `useParkTileItems` reads a count and an `OPERATING` count, and the poll merges by `id`; the
+    // rest are the fields `ParkRestaurant` requires. `operatingHours` was most of the bytes.
+    restaurants: park.restaurants?.map((r) => pickPresent(r, CALENDAR_RESTAURANT_FIELDS)),
   };
+}
+
+const CALENDAR_RESTAURANT_FIELDS = [
+  'id',
+  'name',
+  'slug',
+  'latitude',
+  'longitude',
+  'cuisineType',
+  'requiresReservation',
+  'status',
+] as const satisfies readonly (keyof ParkRestaurant)[];
+
+/**
+ * The ride fields the ride page's client trees read off its seed: `RideLiveHeader` and
+ * `RideNowPanel` (status, queues, statistics, typical waits, outage and the opens-at note),
+ * `RideNavTiles` and `LiveAttractionData` (best visit times). `RideAlternatives` takes positions,
+ * types and heights from its own query. The badges, the ride profile, rope drop and the FAQ are
+ * Server Components that read the full ride, so none of their fields has to reach the browser.
+ * `id`, `name`, `slug`, `latitude`, `longitude` and `land` are required by `ParkAttraction`.
+ */
+const RIDE_SHELL_FIELDS = [
+  'id',
+  'name',
+  'slug',
+  'latitude',
+  'longitude',
+  'land',
+  'status',
+  'effectiveStatus',
+  'queues',
+  'statistics',
+  'trend',
+  'bestVisitTimes',
+  'typicalWaits',
+  'outage',
+  'notRunToday',
+  'runsOnWeekdays',
+] as const;
+
+/**
+ * `source` reduced to `keys`. A key the source does not carry stays absent rather than becoming
+ * `undefined`, which React Flight would write out as `"$undefined"`.
+ */
+function pickPresent<T extends object>(source: T, keys: readonly string[]): T {
+  const out: Record<string, unknown> = {};
+  for (const key of keys) {
+    const value = (source as Record<string, unknown>)[key];
+    if (value !== undefined) out[key] = value;
+  }
+  return out as T;
+}
+
+/**
+ * Trim for the ATTRACTION page's `initialPark` prop — the React Query seed for
+ * `useLiveAttractionData`, serialized into the HTML of every attraction page.
+ *
+ * The page already narrows `attractions` to the one ride being shown, but it still spread the
+ * whole park around it. Measured on `/de/…/phantasialand/taron`, that prop was 36.3 KB, of which
+ * the page reads 1.9 KB:
+ *
+ *     schedule [17]     18.43 KB      attractions [1]    1.91 KB  ← the only part anything reads
+ *     restaurants [46]   9.54 KB      shows [4]          1.21 KB
+ *     weather            3.78 KB      analytics          0.55 KB
+ *
+ * Its only consumer, `LiveAttractionData`, reads exactly `park.status`, `park.timezone` and
+ * `park.attractions`; nothing else on the page subscribes to that query (`ParkTimeInfo`, which
+ * does read `schedule`/`nextSchedule`, is not mounted here). So the park-level blocks below are
+ * dropped — 46 restaurants and 17 opening days have no business in the HTML of a single ride.
+ *
+ * They are NOT lost: the 5-minute live poll (`getParkByGeoPathFresh` via the /api/parks proxy)
+ * returns the full park and fills the shared query cache, exactly as it already does for the
+ * sibling attractions this prop has always omitted.
+ *
+ * The one ride is an allow-list too ({@link RIDE_SHELL_FIELDS}): the badges, ride profile, rope
+ * drop and FAQ render on the server from the full ride, and the poll fills the live fields.
+ * Pass `attractions[0]` of the result, not the full ride, to any Client Component prop, so React
+ * Flight writes the object once and the prop costs a back-reference.
+ */
+export function leanParkForAttractionShell(
+  park: ParkWithAttractions,
+  attraction: ParkAttraction
+): ParkWithAttractions {
+  const lean: ParkWithAttractions = {
+    ...park,
+    attractions: [pickPresent(attraction, RIDE_SHELL_FIELDS)],
+  };
+  delete lean.closedAttractions;
+  delete lean.schedule;
+  delete lean.restaurants;
+  delete lean.weather;
+  delete lean.shows;
+  delete lean.analytics;
+  delete lean.ropeDropHeadliners;
+  return lean;
 }

@@ -536,10 +536,12 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
 
   /**
    * The one shell snapshot both client trees read, built once: React Flight dedupes by object
-   * identity, so two equal objects would be written to the payload twice. `attraction` below is
-   * the object inside it, so that prop costs a back-reference. See docs/architecture/api-budget.md.
+   * identity, so two equal objects would be written to the payload twice. `shellAttraction` is the
+   * object inside it, so a Client Component prop given it costs a back-reference; the full
+   * `attraction` would be written out a second time. See docs/architecture/api-budget.md.
    */
   const shellPark = leanParkForAttractionShell(park, attraction);
+  const shellAttraction = shellPark.attractions[0];
 
   // Whether „Beste Besuchszeit planen" renders anything: both of its cards are optional, and the
   // chapter row must not offer a jump to an anchor that is not on the page.
@@ -745,7 +747,7 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
                   city={city}
                   parkSlug={parkSlug}
                   attractionSlug={attractionSlug}
-                  attraction={attraction}
+                  attraction={shellAttraction}
                   timezone={park.timezone}
                   hasWaitTimeChapters={waitsReadable}
                   hasPlanChapter={hasPlanChapter}

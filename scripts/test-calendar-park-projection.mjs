@@ -12,6 +12,7 @@
 // through the REAL readers (`getStandbyWait`, `getAttractionDisplayStatus`, `isInSeason`,
 // and the two counts `useParkTileItems` derives) rather than against a list of key names.
 import {
+  leanParkForAttractionShell,
   leanParkForCalendarShell,
   leanParkForLivePoll,
   mergeLiveParkSnapshot,
@@ -35,7 +36,15 @@ const PARK = {
   schedule: [{ date: '2026-09-01', type: 'OPERATING' }],
   analytics: { statistics: { crowdLevel: 'moderate' } },
   restaurants: [
-    { id: 'r1', name: 'Uhrwerk', slug: 'uhrwerk', status: 'OPERATING', cuisineType: 'German' },
+    {
+      id: 'r1',
+      name: 'Uhrwerk',
+      slug: 'uhrwerk',
+      status: 'OPERATING',
+      cuisineType: 'German',
+      operatingHours: [{ type: 'OPERATING', startTime: '11:00', endTime: '18:00' }],
+      lastUpdated: '2026-09-01T10:00:00Z',
+    },
     { id: 'r2', name: 'Bamboo', slug: 'bamboo', status: 'CLOSED', cuisineType: 'Asian' },
     { id: 'r3', name: 'Wirtshaus', slug: 'wirtshaus', status: 'OPERATING', cuisineType: 'German' },
   ],
@@ -167,11 +176,7 @@ const testCases = [
     expected: false,
   },
 
-  // ---- restaurants ride along whole, on purpose ----
-  // `useParkTileItems` reads them for a `.length` and an `OPERATING` count, which is 6.6 KB of
-  // records for two numbers. Projecting them means moving those numbers onto `ParkTileSource`;
-  // faking a `ParkRestaurant` with an empty `name` to satisfy the type would be a lie one render
-  // away from a reader. Until then the tile has to keep working.
+  // ---- restaurants keep what the tile counts, and the fields `ParkRestaurant` requires ----
   {
     name: 'the restaurants tile still gets its count',
     actual: () => cal.restaurants.length,
@@ -186,6 +191,48 @@ const testCases = [
     name: 'with real names, not placeholders',
     actual: () => cal.restaurants[0].name,
     expected: 'Uhrwerk',
+  },
+  {
+    name: 'opening hours and lastUpdated are gone — no restaurant card on this route',
+    actual: () => 'operatingHours' in cal.restaurants[0] || 'lastUpdated' in cal.restaurants[0],
+    expected: false,
+  },
+  {
+    name: 'a field the restaurant does not carry stays absent, not undefined',
+    actual: () => 'latitude' in cal.restaurants[0],
+    expected: false,
+  },
+
+  // ---- the ride page seeds its client trees with the fields they read ----
+  {
+    name: 'the ride shell keeps what RideNowPanel reads',
+    actual: () => {
+      const a = leanParkForAttractionShell(PARK, PARK.attractions[0]).attractions[0];
+      return (
+        getStandbyWait(a) === 45 &&
+        a.effectiveStatus === 'OPERATING' &&
+        a.typicalWaits.p50 === 35 &&
+        a.statistics.avgWaitToday === 40 &&
+        a.bestVisitTimes.length === 1
+      );
+    },
+    expected: true,
+  },
+  {
+    name: 'and drops what only Server Components read (ride profile, rope drop, crowd level)',
+    actual: () => {
+      const a = leanParkForAttractionShell(PARK, PARK.attractions[0]).attractions[0];
+      return 'rideProfile' in a || 'ropeDrop' in a || 'crowdLevel' in a || 'isHeadliner' in a;
+    },
+    expected: false,
+  },
+  {
+    name: 'and carries no park-level block but the one ride',
+    actual: () => {
+      const lean = leanParkForAttractionShell(PARK, PARK.attractions[0]);
+      return lean.attractions.length === 1 && !lean.restaurants && !lean.schedule;
+    },
+    expected: true,
   },
 
   // ---- park-level fields the panel reads are untouched ----

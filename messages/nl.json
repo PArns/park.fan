@@ -491,12 +491,14 @@
     "searchAttractions": "Filter attracties...",
     "noAttractionsFound": "Geen attracties gevonden",
     "clearSearch": "Zoekopdracht wissen",
-    "seasonal": "Seizoensgebonden",
-    "seasonalWinter": "Winter",
-    "seasonalSummer": "Zomer",
-    "seasonalWinterOnly": "Alleen in de winter",
-    "seasonalSummerOnly": "Alleen in de zomer",
-    "seasonalOffSeason": "Buiten seizoen",
+    "seasonal": {
+      "label": "Seizoensgebonden",
+      "winterOnly": "Alleen in de winter",
+      "summerOnly": "Alleen in de zomer",
+      "offSeason": "Buiten seizoen",
+      "winter": "Winter",
+      "summer": "Zomer"
+    },
     "offSeasonCount": "{count} buiten seizoen",
     "filterSection": {
       "title": "Attracties verfijnen",
@@ -889,8 +891,12 @@
     "crowdToday": "Drukte vandaag",
     "crowdTodaySoFar": "tot nu toe",
     "crowdTodayShort": "Vandaag",
-    "localTime": "lokale tijd",
-    "influencingHolidays": "Vakantie in nabije regio’s",
+    "clock": {
+      "localTime": "lokale tijd"
+    },
+    "holidayContext": {
+      "influencingHolidays": "Vakantie in nabije regio’s"
+    },
     "influencingHolidaysBody": "Daar is nu schoolvakantie – van daaruit komen veel dagjesmensen. Reken op meer drukte en langere wachttijden dan normaal.",
     "influencingHolidaysEffect": "Daar is schoolvakantie, dus meer dagjesmensen dan normaal.",
     "influencingHolidaysShort": "Nabije regio’s",

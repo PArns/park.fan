@@ -121,6 +121,8 @@ ride page, −10.4 %, ~3.8 GB a month**, and the migration is four call sites mo
 sub-namespaces (`parks.holidayContext.*`, `parks.seasonal.*`). Open; see
 [the overview](README.md#open-levers).
 
+> **Done 2026-11-05.** See [the ride route ships twelve `parks` sub-namespaces](#2026-11-05--accepted-the-ride-route-ships-twelve-parks-sub-namespaces-instead-of-the-whole-one).
+
 ---
 
 ## 2026-09-01 — REJECTED: the backend payload deletions
@@ -476,3 +478,97 @@ works and how to deploy at once: [deploys](../development/deploys.md). **Cost sh
 production deploy, news included, goes out about ten minutes after the last merge unless the commit
 says `[deploy now]`. **Open:** confirm the deploy hook creates a deployment while automatic Git
 deployments are off for `main`; if not, revert the `git` block in `vercel.json`.
+
+---
+
+## 2026-11-05 — ACCEPTED: the ride route ships twelve `parks` sub-namespaces instead of the whole one
+
+**Lever:** bytes per invocation. **Files:** `messages/*.json`, `components/parks/seasonal-badge.tsx`,
+`attraction-history-day.tsx`, `park-calendar-legend.tsx`, `ride-now-panel.tsx`, `ride-nav-tiles.tsx`,
+`components/common/entry-tile.tsx`, `i18n/route-namespaces.generated.ts`.
+
+The 2026-09-02 re-measurement left this open. Two consumers had joined since: `RideNowPanel` read
+`parks.localTime`, and `RideNavTiles` imported four layout helpers from `park-entry-tiles.tsx`,
+whose own tile hints read about twenty root keys of `parks`; the graph walk is per file, so the
+helpers brought the whole namespace with them. The helpers moved to `components/common/entry-tile.tsx`
+(`park-entry-tiles.tsx` re-exports them), the six `seasonal*` keys became `parks.seasonal.*`,
+`influencingHolidays` became `parks.holidayContext.influencingHolidays` and `localTime`
+`parks.clock.localTime`, in all six locales; the legend and the history day read
+`parks.crowdLevels` (already in the layout set) and `parks.calendarLegendGroups`.
+
+Measured on the message JSON the route hands the provider, old namespace against the new
+sub-namespaces, per locale: **28.4–31.4 KB → 3.2–3.5 KB raw, 9.4–10.5 KB → 1.0–1.2 KB brotli
+quality 4** (quality 11: 8.0–9.2 → 0.8–1.1 KB). That is the fragment on its own; inside the page the
+gain is smaller, since brotli finds some of the same strings elsewhere in the document (the
+2026-09-02 production measurement put the whole-page gain at 5.7–5.9 KB). Not measured on a
+production build: see the note at the end of this entry.
+
+---
+
+## 2026-11-05 — ACCEPTED: the ride page's seed is an allow-list, and the calendar's restaurants are too
+
+**Lever:** bytes per invocation. **Files:** `lib/api/park-live-projection.ts`
+(`leanParkForAttractionShell`, moved here from `lib/api/parks.ts`, which re-exports it;
+`leanParkForCalendarShell`), the ride page, `scripts/test-calendar-park-projection.mjs`.
+
+The ticket named `leanAttractionForShell`. That trim feeds every server render of a park, and every
+field it keeps has a server-side reader (`rcdbId` the badge, `rideProfile` the profile section,
+`downtime` the downtime chapter); only `minimumHeightUnit` is read nowhere outside the admin. The
+fields read by nobody are read by nobody **in the browser**, on the ride page: the one ride inside
+`initialPark`. Its client trees (`RideLiveHeader`, `RideNowPanel`, `LiveAttractionData`,
+`RideNavTiles`, `RideAlternatives`, walked file by file) read sixteen fields; the badges, the ride
+profile, rope drop and the FAQ are Server Components with the full ride. So the allow-list sits in
+`leanParkForAttractionShell`, and `RideNavTiles` now gets `attractions[0]` of the seed, so Flight
+writes the ride once. Dropped from the seed: `rideProfile`, `ropeDrop`, `crowdLevel`,
+`isHeadliner`, `isSeasonal`, `isCurrentlyInSeason`, `seasonMonths`, `minimumHeight`,
+`minimumHeightUnit`, `maximumHeight`, `hasSingleRider`, `hasVirtualLine`, `fastPass`,
+`indoorOutdoor`, `mayGetWet`, `rcdbId`, `attractionKind`, `worksPeriod`, `downtime`, `currentLoad`.
+
+The calendar, `average-wait-times` and `with-kids` seeds keep the restaurant fields
+`ParkRestaurant` requires plus `status`; `useParkTileItems` reads a count and an `OPERATING` count
+and the poll merges by `id`. `operatingHours` and `lastUpdated` go.
+
+Measured on the live API payload of four parks (JSON of the seed, old projection against new):
+
+| Park                                     | Ride seed, mean per ride, brotli q4 | Calendar seed, brotli q4 |
+| ---------------------------------------- | ----------------------------------- | ------------------------ |
+| Phantasialand (40 rides, 46 restaurants) | 1.15 → 0.96 KB                      | 6.87 → 6.84 KB           |
+| Europa-Park (97, 64)                     | 1.06 → 0.94 KB                      | 13.54 → 13.31 KB         |
+| Efteling (37, 70)                        | 1.09 → 0.95 KB                      | 8.98 → 8.54 KB           |
+| Heide Park (39, 21)                      | 1.06 → 0.94 KB                      | 5.56 → 5.54 KB           |
+
+About 0.12–0.19 KB per ride page and 0.02–0.44 KB per calendar page: smaller than the ~0.95 KB the
+ticket estimated for the restaurants, because only parks whose API sends opening hours per
+restaurant carry much to drop. Small, but free, and an allow-list keeps a field the API adds later
+out of both seeds. The tests pin both projections through their real readers.
+
+**Not measured on a production build.** This worktree has no `.env.local`, and the ride page renders
+per request against the live API, so a local A/B in one build was not run; the numbers above are the
+seed and message fragments alone. Re-measure on production HTML after the deploy, brotli quality 4.
+
+---
+
+## 2026-11-05 — DEFERRED: thin tag archives and single-park cities to `force-dynamic`
+
+**Lever:** ISR write units. **Files:** none changed.
+
+`dynamic` and `dynamicParams` are route segment config: one value for every path of the route. Both
+routes mix the two kinds. `blog/tag/[tag]` builds the 232 indexable archives (six locales) and
+renders the other 779 on demand; `[city]` builds the 41 cities with more than one park (246 pages)
+and renders the 103 single-park cities (618 URLs, each a 308) on demand. Only the unbuilt halves
+write ISR entries nobody reads back, and there is no way to put those alone on `force-dynamic`:
+
+- **A proxy rewrite to a second, `force-dynamic` route** needs the answer in `proxy.ts`. For tags
+  that is the blog manifest (`listIndexableTags`), loaded by a function that runs on every request;
+  for cities it is the geo index, an API call per request. Both cost more than the writes they save.
+- **The whole route on `force-dynamic`** works, takes 478 pages out of every build, and is what
+  2026-10-26 did to blog posts. It also moves the indexable archives and the city hubs off ISR,
+  which [an ISR route needs both halves](../rules/an-isr-route-needs-both-halves.md) keeps there
+  because their entries are read back. That needs the ISR → Routes read and write units of these two
+  routes, which the Vercel observability query could not return from this session.
+
+**Open:** read ISR → Routes → Units for `/[locale]/blog/tag/[tag]` and
+`/[locale]/parks/[continent]/[country]/[city]`. If reads stay well below writes, set each route to
+`force-dynamic`, drop its `generateStaticParams`, add it to `scripts/test-edge-windows.mjs` (both
+already have a window: the tag archive the `:section(blog|news)` rule, the city the
+`parks/:continent?/:country?/:city?` hub rule) and correct the rule's list of ISR routes.
