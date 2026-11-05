@@ -283,7 +283,7 @@ Route `/api/glossary-search` (route).
 Route `/api/glossary-term-ids` (route).
 
 - `GET` _function_
-- `revalidate` _const_: The canonical list of glossary term ids, which this app owns and the API only stores; the API diffs it against the ids in `attraction_ride_profiles`.
+- `dynamic` _const_: The canonical list of glossary term ids, which this app owns and the API only stores; the API diffs it against the ids in `attraction_ride_profiles`.
 
 ### [`image/route.ts`](../../app/api/image/route.ts)
 

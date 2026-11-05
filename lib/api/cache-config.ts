@@ -4,17 +4,10 @@
  * so a window is named here or in its helper's default and never typed at a call site
  * (docs/rules/a-revalidate-at-a-call-site-is-somebody-elses-page.md).
  *
- * Some entries are read by no fetch: live reads are `no-store`, and the park, attraction, calendar
- * and popular-parks fetches name their own windows in `lib/api/parks.ts` and
- * `lib/api/integrated-calendar.ts`. Grep `CACHE_TTL.<key>` before trusting one.
+ * Live reads are `no-store` and have no entry; the park, attraction, calendar and popular-parks
+ * fetches name their own windows in `lib/api/parks.ts` and `lib/api/integrated-calendar.ts`.
  */
 export const CACHE_TTL = {
-  // Live data, fetched `no-store`, so no fetch reads these three.
-  // API cache: 60s (search), 120s (analytics), 300s (parks, wait times)
-  search: 60, // ⚠️ Using cache: 'no-store' - respects API 60s cache
-  nearby: 60, // ⚠️ Using cache: 'no-store' - IP/GeoIP-dependent, must not be cached
-  realtime: 120, // ⚠️ Using cache: 'no-store' - live ticker/realtime stats
-
   // Discovery & Park data. Raised to 24h once the hub pages (continent/country/city) render their
   // ParkCards STATUS-FREE: live status/crowd/wait now come from the client (<LiveParkGrid> →
   // /api/parks/live), so the per-locale ISR shells carry only structure (park names/slugs), which
@@ -48,24 +41,11 @@ export const CACHE_TTL = {
   continents: 604800, // same as geo
   // Top parks and best months of a country move daily, not weekly, so it does not ride on `geo`.
   countrySummary: 86400,
-  parks: 300, // read by no fetch: `getPopularParks` names its own 30 min
   // The MCP server's live park read. One agent polls it every three minutes; the backend refreshes
   // wait times on a five-minute cycle, so a shared five-minute copy answers the same numbers
   // without a parse of the full park per call. A status flip still busts it via `parkCacheTag`.
   agentPark: 300,
-  // Data-Cache TTL for the park/attraction structure fetch (see PARK_REVALIDATE /
-  // ATTRACTION_REVALIDATE in lib/api/parks.ts). The pages render force-dynamic; this only gates
-  // the shared fetch cache for the SSR seed. Live wait times/status come from the client poll via
-  // getParkByGeoPathFresh (no-store), and all "today/now" content is client-derived, so the
-  // cached structure can revalidate once a day and live data still stays fresh.
-  parkDetail: 86400, // structure fetch 1d - live wait times via getParkByGeoPathFresh
-  waitTimes: 86400, // structure fetch 1d - live wait times via getParkByGeoPathFresh
-
-  // Calendar, weather, forecast and holidays. Only `predictions` is read by a fetch.
-  calendar: 900, // /v1/parks/:slug/calendar - API: 900s (past/today) / 1800s (future); the forecast under it only changes ~13h, and today's crowdLevel is patched client-side via a separate 5-min today-only fetch — so 5 min here was pure rebuild churn
-  weather: 300, // /v1/parks/:slug/weather - API: 3600s
   predictions: 86400, // /v1/parks/:slug/predictions/yearly - API: 86400s
-  holidays: 86400, // Holiday data - API: 86400s
   // /v1/parks/:geo/stats and /stats/hourly — the historical aggregates. The backend recomputes
   // them once a day, so a day is the data's own cadence and not a floor propped under a page.
   //

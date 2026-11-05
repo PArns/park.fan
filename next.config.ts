@@ -1096,7 +1096,8 @@ const nextConfig: NextConfig = {
         headers: sharedCache('public, max-age=300, s-maxage=86400, stale-while-revalidate=604800'),
       },
       {
-        // Build-time glossary ids — immutable until the next deploy.
+        // Build-time glossary ids, prerendered per deploy; an hour bounds how long the edge
+        // serves the previous deploy's list.
         source: '/api/glossary-term-ids',
         headers: sharedCache('public, s-maxage=3600, stale-while-revalidate=86400'),
       },
