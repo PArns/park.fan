@@ -71,7 +71,7 @@ Der Europa-Park öffnet vom 7. bis 19. März zu den **Pre-Opening Weeks**, zum e
 
 Elf der 23 Parks in dieser Übersicht haben einen festen Tag. Phantasialand, Movie Park, Toverland, Walibi Holland und Bobbejaanland haben ihren Kalender für 2027 noch nicht freigegeben. Steht in der Tabelle „Online-Kalender“, hat der Park den Tag in seinen Buchungskalender eingetragen, ohne ihn anzukündigen. Aus genau diesen Kalendern kommen auch die Öffnungstage im Crowd-Kalender auf park.fan.
 
-Die Neubauten der Saison, vom Buddenbrook-Turm im Hansa-Park bis zur Supersonic 1887 in Nigloland, stehen in den [Freizeitpark-Neuheiten 2027](/blog/freizeitpark-neuheiten-2027).
+Die Neubauten der Saison, darunter der Buddenbrook-Turm im Hansa-Park und die Supersonic 1887 in Nigloland, stehen in den [Freizeitpark-Neuheiten 2027](/blog/freizeitpark-neuheiten-2027).
 
 ## Alle Termine auf einen Blick
 
@@ -228,7 +228,7 @@ In Wavre ist das erste Wochenende gleich Ostern. Laut Online-Kalender öffnet [W
 
 ### Bobbejaanland
 
-[Bobbejaanland](ref:bobbejaanland) in Kasterlee baut direkt hinter dem Eingang einen Bereich mit Figuren von Nickelodeon. Drei neue Familienattraktionen öffnen dort laut VRT „ab April 2027“. Ab wann davor schon der Rest des Parks fährt, sagt Bobbejaanland noch nicht.
+[Bobbejaanland](ref:bobbejaanland) in Kasterlee baut direkt hinter dem Eingang einen Bereich mit Figuren von Nickelodeon. Drei neue Familienattraktionen öffnen dort laut VRT „ab April 2027“. Ab wann davor schon der Rest des Parks fährt, nennt Bobbejaanland noch nicht.
 
 ### Plopsaland Belgium und Bellewaerde
 
@@ -258,7 +258,7 @@ Im Fahrplan von [Disneyland Paris](ref:/parks/europe/france/paris/disneyland-par
 
 ### Nigloland und Walibi Rhône-Alpes
 
-[Nigloland](ref:nigloland) bei Troyes hat noch bis zum 11. November Nigloween und baut für 2027 die Abschussachterbahn Supersonic 1887 ([Neuheiten 2027](/blog/freizeitpark-neuheiten-2027)). Wann die Supersonic 1887 und mit ihr die Saison anfängt, sagt der Park noch nicht. [Walibi Rhône-Alpes](ref:walibi-rhone-alpes) hat vom 19. Dezember bis 3. Januar „Merry ChristWAAAs“ und danach noch keinen Kalender für 2027.
+[Nigloland](ref:nigloland) bei Troyes hat noch bis zum 11. November Nigloween und baut für 2027 die Abschussachterbahn Supersonic 1887 ([Neuheiten 2027](/blog/freizeitpark-neuheiten-2027)). Wann die Supersonic 1887 und mit ihr die Saison anfängt, hat der Park noch nicht bekannt gegeben. [Walibi Rhône-Alpes](ref:walibi-rhone-alpes) hat vom 19. Dezember bis 3. Januar „Merry ChristWAAAs“ und danach noch keinen Kalender für 2027.
 
 ## Saisonstart in Österreich und der Schweiz
 
