@@ -66,6 +66,17 @@ reads `errorLimit`; a 422 `unclear`, a message the API took for junk (nothing to
 down, letters without a vowel, the question just answered asked again), reads `errorUnclear`. The
 rules live in the API's `assistant-junk.ts`.
 
+## Parky's break
+
+After repeated abuse the API ends the chat: `chat_end` with `cooldownMinutes` (1 to 1440), the
+answer being Parky's goodbye. Once the answer is in, the goodbye stays 2.5 s, the window closes and
+Parky puts on his `nightcap` on the button. Until the break ends (`lib/assistant/chat-end.ts`, the
+end kept in session storage as `parkfan:assistant-break`, so a reload keeps it) the window shows
+`paused` („Parky macht gerade eine kurze Pause.") where the input was; the launcher stays. While the
+break runs the API refuses questions with the code `CHAT_ENDED_CODE` (`chat_ended`), as an HTTP
+error's body or a stream `error` event; the widget takes that the same way, which is how a second
+tab learns of it, with the refusal's `cooldownMinutes`, else its `Retry-After`, else 15 minutes.
+
 ## Answers are model output
 
 `AssistantMessageText` renders them with `react-markdown`, without raw HTML and with only `p`,
@@ -466,4 +477,5 @@ same throw again or the other way throws him at once.
 snapshot (from today on, nearest first, the caps, the printed starts, nothing when empty), the
 reorder, Parky's undo, and the checks of every planner edit (ids that are no ids dropped, an
 optional field that fails left out, nothing riding along), the reminders' snapshot, the slugs they
-resolve to, and their action checks, and the favourites' snapshot and checks.
+resolve to, and their action checks, the favourites' snapshot and checks, and Parky's break:
+its action check, the refusal code and length, and the end kept across a reload.

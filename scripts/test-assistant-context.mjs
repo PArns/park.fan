@@ -30,6 +30,15 @@ import {
   assistantAlertsSnapshot,
 } from '@/lib/assistant/alerts-context.ts';
 import {
+  breakMinutesFrom,
+  CHAT_ENDED_CODE,
+  DEFAULT_BREAK_MINUTES,
+  isChatEnded,
+  MAX_BREAK_MINUTES,
+  readBreakUntil,
+  startBreak,
+} from '@/lib/assistant/chat-end.ts';
+import {
   assistantFavoritesSnapshot,
   FAVORITES_SNAPSHOT_MAX,
 } from '@/lib/assistant/favorites-context.ts';
@@ -500,5 +509,56 @@ check(
 );
 check(readAssistantAction({ ...favorite, id: 'taron' }), null, 'an id that is no UUID');
 check(readAssistantAction({ ...favorite, on: 'yes' }), null, 'on must be a boolean');
+
+// --- Parky's break ---
+check(
+  readAssistantAction({ type: 'chat_end', cooldownMinutes: 30, text: 'x' }),
+  { type: 'chat_end', cooldownMinutes: 30 },
+  'chat end'
+);
+check(readAssistantAction({ type: 'chat_end', cooldownMinutes: 0 }), null, 'chat end: no break');
+check(
+  readAssistantAction({ type: 'chat_end', cooldownMinutes: MAX_BREAK_MINUTES + 1 }),
+  null,
+  'chat end: longer than a day'
+);
+check(readAssistantAction({ type: 'chat_end' }), null, 'chat end: the length is required');
+check(isChatEnded(CHAT_ENDED_CODE), true, 'the refusal code');
+check(isChatEnded('off'), false, 'another code is not the break');
+check(
+  breakMinutesFrom({ code: 'chat_ended', cooldownMinutes: 12 }),
+  12,
+  "the refusal's own length"
+);
+check(breakMinutesFrom({ code: 'chat_ended' }, '90'), 2, 'Retry-After seconds, rounded up');
+check(breakMinutesFrom(null, null), DEFAULT_BREAK_MINUTES, 'nothing said: the default');
+check(breakMinutesFrom({ cooldownMinutes: 1e9 }), MAX_BREAK_MINUTES, 'capped at a day');
+
+const memory = () => {
+  const items = new Map();
+  return {
+    getItem: (k) => items.get(k) ?? null,
+    setItem: (k, v) => items.set(k, String(v)),
+    removeItem: (k) => items.delete(k),
+  };
+};
+const tab = memory();
+check(readBreakUntil(tab, now), null, 'no break');
+const until = startBreak(tab, 10, now);
+check(until, now + 10 * 60_000, 'a break ends after its minutes');
+check(readBreakUntil(tab, now + 60_000), until, 'and is read back, as after a reload');
+check(readBreakUntil(tab, until), null, 'over at its end');
+check(readBreakUntil(tab, now), null, 'and forgotten once over');
+const refusing = {
+  getItem() {
+    throw new Error('blocked');
+  },
+  setItem() {
+    throw new Error('blocked');
+  },
+  removeItem() {},
+};
+check(startBreak(refusing, 5, now), now + 5 * 60_000, 'blocked storage still gives the end');
+check(readBreakUntil(refusing, now), null, 'and reads as no break');
 
 console.log(`assistant context: ${passed} checks passed`);

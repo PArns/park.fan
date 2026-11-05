@@ -7,6 +7,7 @@ import { isValidLocale, type Locale } from '@/i18n/config';
 import { safeAssistantHref } from './links';
 import type { FavoriteType } from '@/lib/utils/favorites';
 import { isUuid } from '@/lib/utils';
+import { MAX_BREAK_MINUTES } from './chat-end';
 
 /** The park as the API names it for the planner. */
 export interface AssistantPlannerPark {
@@ -229,6 +230,8 @@ export type AssistantAction =
   /** Exactly one of the two slugs. */
   | { type: 'alert_remove'; park: AssistantPlannerPark; rideSlug: string; showSlug?: never }
   | { type: 'alert_remove'; park: AssistantPlannerPark; showSlug: string; rideSlug?: never }
+  /** Parky ends the chat after repeated abuse; the answer is his goodbye. */
+  | { type: 'chat_end'; cooldownMinutes: number }
   /** The same page in another of the site's languages, once the answer is complete. */
   | { type: 'switch_locale'; locale: Locale }
   /** Parky passed the visitor's feedback on to the team. */
@@ -628,6 +631,10 @@ export function readAssistantAction(raw: unknown): AssistantAction | null {
       return { type: 'request_location' };
     case 'feedback_sent':
       return { type: 'feedback_sent' };
+    case 'chat_end':
+      return isWhole(action.cooldownMinutes, 1, MAX_BREAK_MINUTES)
+        ? { type: 'chat_end', cooldownMinutes: action.cooldownMinutes }
+        : null;
     case 'switch_locale':
       // One of the site's six, nothing else: a new object, so no other field rides along.
       return typeof action.locale === 'string' && isValidLocale(action.locale)

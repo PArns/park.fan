@@ -21,6 +21,13 @@ import { readPushState } from './alert-writes';
 import { listRideAlertsLocal, listShowFollowsLocal } from '@/lib/push/push-follows-store';
 import { getFavoritesFromCookies } from '@/lib/utils/favorites';
 import { assistantFavoritesSnapshot } from './favorites-context';
+import {
+  breakMinutesFrom,
+  breakStorage,
+  isChatEnded,
+  readBreakUntil,
+  startBreak,
+} from './chat-end';
 
 /** A lookup Parky names while it runs, as the API's `status` event sends it. */
 export type AssistantLookup =
@@ -51,7 +58,7 @@ export interface AssistantChatMessage {
   /** Parky asked for the visitor's position; the answer carries the share buttons. */
   asksLocation?: boolean;
   /** Set on an answer that failed; `text` is then empty. */
-  error?: 'limit' | 'off' | 'upstream' | 'network' | 'session' | 'expired' | 'unclear';
+  error?: 'limit' | 'off' | 'upstream' | 'network' | 'session' | 'expired' | 'unclear' | 'ended';
 }
 
 /** Where the widget stands: idle, waiting for the first word, or writing. */
@@ -112,7 +119,9 @@ export function useAssistantChat(
   locale: string,
   session: { token: string | null; drop: () => void },
   /** Carries out an action Parky asked for; returns the chip or card to show, once it is done. */
-  onAction: (action: AssistantAction) => AssistantActionOutcome | Promise<AssistantActionOutcome>
+  onAction: (action: AssistantAction) => AssistantActionOutcome | Promise<AssistantActionOutcome>,
+  /** Parky ended the chat, by his goodbye or the API's refusal; called once the answer is in. */
+  onEnded?: () => void
 ) {
   const { token: sessionToken, drop: dropSession } = session;
   const [stored, setStored] = useState<Stored>(() =>
@@ -120,6 +129,15 @@ export function useAssistantChat(
   );
   const [phase, setPhase] = useState<AssistantChatPhase>('idle');
   const [lookup, setLookup] = useState<AssistantLookup | null>(null);
+  /** The end of Parky's break; the input stays closed until then. */
+  const [pausedUntil, setPausedUntil] = useState<number | null>(() =>
+    readBreakUntil(breakStorage())
+  );
+  useEffect(() => {
+    if (pausedUntil === null) return;
+    const timer = setTimeout(() => setPausedUntil(null), Math.max(0, pausedUntil - Date.now()));
+    return () => clearTimeout(timer);
+  }, [pausedUntil]);
   const abort = useRef<AbortController | null>(null);
   /** A language switch, held until the answer is complete and stored. */
   const afterAnswer = useRef<AssistantAction | null>(null);
@@ -155,10 +173,16 @@ export function useAssistantChat(
     ) => {
       const question = text.trim().slice(0, 1000);
       if (!question || phase !== 'idle' || !sessionToken) return;
+      if (readBreakUntil(breakStorage()) !== null) return;
       trackSiteEvent('assistant_question', { kind });
       let lookups = 0;
       let result: NonNullable<AssistantChatMessage['error']> | 'answered' = 'answered';
       let switchTo: AssistantAction | null = null;
+      /** The break's end, once the chat was ended. */
+      let endedUntil: number | null = null;
+      const endChat = (minutes: number) => {
+        endedUntil = startBreak(breakStorage(), minutes);
+      };
       setStored((current) => ({
         ...current,
         messages: [
@@ -213,6 +237,14 @@ export function useAssistantChat(
           fail('expired');
           return;
         }
+        if (!response.ok) {
+          const body: unknown = await response.json().catch(() => null);
+          if (isChatEnded((body as { code?: unknown } | null)?.code)) {
+            endChat(breakMinutesFrom(body, response.headers.get('Retry-After')));
+            fail('ended');
+            return;
+          }
+        }
         if (!response.ok || !response.body) {
           // 422: the API took the message for junk and asked no model.
           const failed = { 422: 'unclear', 429: 'limit', 503: 'off' } as const;
@@ -236,6 +268,8 @@ export function useAssistantChat(
               patchLast((m) => ({ ...m, cards: [...(m.cards ?? []), action.card] }));
             } else if (action?.type === 'request_location') {
               patchLast((m) => ({ ...m, asksLocation: true }));
+            } else if (action?.type === 'chat_end') {
+              endChat(action.cooldownMinutes);
             } else if (action?.type === 'switch_locale') {
               switchTo = action;
               patchLast((m) => ({ ...m, chips: [...(m.chips ?? []), 'language'] }));
@@ -250,7 +284,10 @@ export function useAssistantChat(
           } else if (event === 'done') {
             patchLast((m) => ({ ...m, messageId: payload.messageId }));
           } else if (event === 'error') {
-            fail(payload.code === 'off' ? 'off' : 'upstream');
+            if (isChatEnded(payload.code)) {
+              endChat(breakMinutesFrom(payload));
+              fail('ended');
+            } else fail(payload.code === 'off' ? 'off' : 'upstream');
           }
         }
       } catch {
@@ -262,9 +299,13 @@ export function useAssistantChat(
         }
         setPhase('idle');
         setLookup(null);
+        if (endedUntil !== null) {
+          setPausedUntil(endedUntil);
+          onEnded?.();
+        }
       }
     },
-    [locale, phase, stored.conversationId, patchLast, sessionToken, dropSession, onAction]
+    [locale, phase, stored.conversationId, patchLast, sessionToken, dropSession, onAction, onEnded]
   );
 
   const rate = useCallback(
@@ -327,6 +368,7 @@ export function useAssistantChat(
     conversationId: stored.conversationId,
     phase,
     lookup,
+    pausedUntil,
     send,
     shareLocation,
     settleAlert,
