@@ -259,6 +259,10 @@ Every call goes through the admin proxy as `/api/admin/analytics/…`, which map
   that was already there (`200`) gets no undo, since it was not this click's. A refused write names
   the reason: a target that does not fit the path (`400`), a target that is gone (`404`), a path that
   is a live page or points elsewhere (`409`). A blog post or any other address is no target yet.
+- **The bot share** is a tile beside the others when the overview carries `bots`: bot requests over
+  bot requests plus page views. Bots count every request, so it reads `≤` and is an upper bound. The
+  API sends `null` under a language or a filter and counts from its own deploy on; without the field
+  the tile is not there. The CSV of the overview carries `bots.hits` with the rest of the answer.
 - **The System page carries the statistic's own health** (`siteAnalytics` in
   `GET /v1/admin/system-health`, panel "Statistik"): the windows waiting to be written and how old
   the oldest is, the windows the writer gave up on, the visits still open, the last write in UTC,

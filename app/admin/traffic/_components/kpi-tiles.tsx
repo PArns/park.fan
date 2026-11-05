@@ -1,7 +1,12 @@
 'use client';
 
-import { Radio } from 'lucide-react';
-import { VISITOR_FILTER_HINT, figureDelta, formatCount } from '@/lib/admin/site-analytics';
+import { Bot, Radio } from 'lucide-react';
+import {
+  VISITOR_FILTER_HINT,
+  figureDelta,
+  formatCount,
+  formatShare,
+} from '@/lib/admin/site-analytics';
 import { formatMetric, metricOf, metricValue, type MetricKey } from '@/lib/admin/traffic-series';
 import type { TrafficOverview } from '@/lib/api/admin-site-analytics';
 import { CATEGORICAL, DeltaChip, Sparkline } from '../../_ui/charts';
@@ -66,6 +71,9 @@ export function KpiTiles({
   const runningDay = overview.days === 1 && overview.to === today;
   // Page views are null only under a filter on how a visit began, where visits are all there is.
   const byVisitsOnly = overview.totals.pageviews === null;
+  const bots = overview.bots;
+  const pageviews = overview.totals.pageviews ?? 0;
+  const botShare = bots && bots.hits + pageviews > 0 ? bots.hits / (bots.hits + pageviews) : null;
   return (
     <div className="grid grid-cols-2 gap-3 md:grid-cols-4 xl:grid-cols-5">
       {KPI_ORDER.map((key) => {
@@ -111,6 +119,24 @@ export function KpiTiles({
           </Tile>
         );
       })}
+
+      {bots && (
+        <Tile className="space-y-1.5">
+          <p
+            className="text-muted-foreground flex items-center gap-1.5 text-xs font-medium"
+            title="Bot-Anfragen gegen Bot-Anfragen plus Aufrufe. Die Bots zählen jede Anfrage, nicht nur Seitenaufrufe, der Anteil ist also eine Obergrenze."
+          >
+            <Bot className="h-3.5 w-3.5" aria-hidden="true" />
+            Bot-Anteil
+          </p>
+          <span className="block text-3xl font-bold tabular-nums">
+            {botShare === null ? '–' : `≤ ${formatShare(botShare)}`}
+          </span>
+          <p className="text-muted-foreground text-xs tabular-nums">
+            {formatCount(bots.hits)} Bot-Anfragen
+          </p>
+        </Tile>
+      )}
 
       <Tile className="col-span-2 space-y-1.5 md:col-span-1">
         <p className="text-muted-foreground flex items-center gap-1.5 text-xs font-medium">
