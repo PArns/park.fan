@@ -66,6 +66,33 @@ test('an unknown close refuses too', showDayHours(11, undefined), null);
   );
 }
 
+// ── A show after midnight on a wrap day (PAR-51 files it under the evening) ─
+{
+  // Magic Kingdom 08:00 → 01:00 with the fireworks re-run at midnight.
+  const shows = [
+    show('fireworks', ['21:00', '00:00'], 'scheduled'),
+    show('parade', ['15:00'], 'projected'),
+  ];
+  const lines = showLinesFor(shows, showDayHours(8, 1));
+  test('the 00:00 show is unfolded to 1440', lines.at(-1)?.minute, 1440);
+  test(
+    'and sits after the last evening show, before the unfolded close',
+    lines.map((l) => l.minute).join(','),
+    '900,1260,1440'
+  );
+  test(
+    'a projected 00:00 survives the clip on a wrap day',
+    showLinesFor([show('kiss', ['00:00'], 'projected')], showDayHours(8, 1))[0]?.minute,
+    1440
+  );
+  // USJ opens 08:30 and closes 21:00: a 01:00 walkthrough is not past midnight, it stays early.
+  test(
+    'a park without a wrap keeps a small hour in the morning',
+    showLinesFor([show('walkthrough', ['01:00'], 'scheduled')], showDayHours(8, 21))[0]?.minute,
+    60
+  );
+}
+
 // ── The clip still clips ─────────────────────────────────────────────────────
 {
   // Phantasialand 09:00–18:00 with a late-summer projection behind it.

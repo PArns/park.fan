@@ -2,7 +2,7 @@
 title: 'Magic Kingdom: de langste rij staat bij TRON'
 translationKey: magic-kingdom-guide
 date: '2026-09-30'
-updatedAt: '2026-10-14'
+updatedAt: '2026-11-05'
 author: patrick
 mode: published
 featured: false
@@ -350,10 +350,10 @@ werkt de show om, met een nieuwe figuur van Walt Disney en scènes uit recentere
 decennia, en de stemmen van de ouders komen van Jamie Lee Curtis en Bryan
 Cranston. Disney verwacht de attractie eind voorjaar 2027 weer te openen.
 
-De Walt Disney World Railroad is sinds 28 september 2026 dicht voor onderhoud
-en moet in november weer rijden. Sinds de verbouwing van Frontierland maakt de
-trein geen rondje meer om het park en rijdt hij alleen nog tussen Main Street
-en Fantasyland.
+De Walt Disney World Railroad ging op 28 september 2026 dicht voor onderhoud en
+rijdt sinds 30 oktober weer. Sinds de verbouwing van Frontierland maakt de trein
+geen rondje meer om het park en rijdt hij alleen nog tussen Main Street en
+Fantasyland. Het station in Frontierland blijft dicht.
 
 Het kasteel heeft in 2026 nieuwe kleuren gekregen. Voor 2027 heeft Disney
 avonden na sluitingstijd aangekondigd, Disney After Hours, met een eigen ticket

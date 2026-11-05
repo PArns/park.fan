@@ -2,7 +2,7 @@
 title: 'Magic Kingdom: the longest queue is at TRON'
 translationKey: magic-kingdom-guide
 date: '2026-09-30'
-updatedAt: '2026-10-14'
+updatedAt: '2026-11-05'
 author: patrick
 mode: published
 featured: false
@@ -345,9 +345,10 @@ Disney is reworking the show with a new Walt Disney figure and scenes from more
 recent decades, and Jamie Lee Curtis and Bryan Cranston voice the parents.
 Disney expects it to reopen in late spring 2027.
 
-The Walt Disney World Railroad has been closed for maintenance since 28
-September 2026 and is due back in November. Since the Frontierland rebuild it no
-longer circles the park and only runs between Main Street and Fantasyland.
+The Walt Disney World Railroad closed for maintenance on 28 September 2026 and
+has been running again since 30 October. Since the Frontierland rebuild it no
+longer circles the park and only runs between Main Street and Fantasyland. The
+Frontierland station stays closed.
 
 The castle got new colours in 2026. For 2027 Disney has announced evenings after
 park close, Disney After Hours, with their own ticket, on selected days from 11

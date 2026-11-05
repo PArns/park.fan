@@ -27,11 +27,13 @@ operator's listing for the date outranks opening hours we derived (`hoursSource:
 **The clip window is unfolded.** A day crossing midnight publishes `closeHour < openHour` (La Ronde
 `11 → 1`), and multiplied out the window ran backwards and silently dropped every projection.
 `showDayHours()` builds it through the same `unfoldedCloseHour` the axis uses, and both call sites
-go through it. The show **times** are not unfolded yet, and that is a bug: since PAR-51 the API files a
-performance under the **previous** date when that date's published window still covers it
+go through it. The show **times** are unfolded too: since PAR-51 the API files a performance under
+the **previous** date when that date's published window still covers it
 ([backend contract](https://github.com/PArns/v4.api.park.fan/blob/main/docs/frontend/plan-day/shows.md#past-midnight-performances)),
-so on a wrap day a 00:00 show arrives in that day's `shows` and lands before the opening
-(PAR-1102). `pnpm test:planner-shows` pins the window, the clip and the listing's exemption.
+so on a wrap day a 00:00 show arrives in that day's `shows`. `showLinesFor` lifts a time before the
+opening by 1440 on such a day, which puts it after the evening shows and inside the unfolded close
+before the clip runs. A park whose day does not cross midnight keeps its small hours as they are
+(a 01:00 walkthrough stays in the morning). `pnpm test:planner-shows` pins the window, the clip, the unfolded times and the listing's exemption.
 
 ## A performance can be planned
 

@@ -5,6 +5,15 @@ where the chip is drawn. Code: `lib/planner/leg.ts` (`transferBetween`, `legBetw
 `lib/planner/leg-chip.ts` (`legChipPlacement`), `components/planner/planner-leg.tsx`. Tests:
 `pnpm test:planner-leg`, `pnpm test:planner-grid`.
 
+## The day's walking
+
+The foot's day total names the walking next to the wait (`dayWalkMinutes`, `lib/planner/leg.ts`):
+the walk term of every transfer's ceiling (`Transfer.walkMinutes`, park pace with the detour
+factor, `SAME_LAND_CEIL_MIN` / `CROSS_LAND_CEIL_MIN` without coordinates), paired in start order as
+the grid pairs its legs, without leaving the station or the ride. It is the walking the plan
+allows for, from the same `transferBetween` the chips read, so the total and the chips cannot
+disagree. A free block with no place adds none.
+
 ## The verdict ladder
 
 `legBetween` grades a gap on four rungs: `broken` when the gap is under the transfer's certifiable

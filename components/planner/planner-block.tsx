@@ -279,8 +279,8 @@ export function PlannerBlock({
             : null;
 
   /**
-   * How far the queue came in from the forecast, on a ticked-off block. It takes the slot of the
-   * `±` band figure: a band belongs to a forecast, a delta to a measurement, so only one is drawn.
+   * How far the queue came in from the forecast, on a ticked-off block. A done block draws no `±`
+   * band figure: a band belongs to a forecast, a delta to a measurement, so only one is drawn.
    */
   const delta = custom ? null : actualVsEstimate(entry, estimate);
   const deltaLabel = !delta
@@ -290,6 +290,17 @@ export function PlannerBlock({
       : t(delta.direction === 'over' ? 'entry.deltaOver' : 'entry.deltaUnder', {
           minutes: Math.abs(delta.minutes),
         });
+  // Signed and beside the figure, so a block too short for the sentence still says how far off the
+  // forecast was; the sentence goes into the title and to a screen reader.
+  const deltaFigure = delta && (
+    <span className="text-muted-foreground ml-1 font-normal" title={deltaLabel ?? undefined}>
+      <span aria-hidden="true">
+        {delta.minutes > 0 ? '+' : delta.minutes < 0 ? '−' : '±'}
+        {Math.abs(delta.minutes)}
+      </span>
+      <span className="sr-only">{deltaLabel}</span>
+    </span>
+  );
 
   const { left: laneLeft, width: laneWidth } = laneBox(lane);
 
@@ -559,6 +570,7 @@ export function PlannerBlock({
                     <>
                       {formatGridTime(entry.startMinute)} · {assumed && '~'}
                       {shownWait} {t('unit.min')}
+                      {deltaFigure}
                     </>
                   )}
                 </span>
@@ -617,6 +629,7 @@ export function PlannerBlock({
                     <span className="ml-0.5 text-[9px] font-normal opacity-70">
                       {t('unit.min')}
                     </span>
+                    {deltaFigure}
                   </span>
                 )}
               </div>
@@ -641,7 +654,6 @@ export function PlannerBlock({
                       {t('band.plusMinus', { minutes: estimate.uncertaintyMinutes })}
                     </span>
                   )}
-                  {deltaLabel && <span className="ml-1.5">{deltaLabel}</span>}
                 </p>
               )}
             </>

@@ -2363,6 +2363,8 @@
       "rides": "{count, plural, =0 {Nessuna attrazione} one {Un’attrazione} other {# attrazioni}}",
       "waiting": "Attesa complessiva",
       "waitingLabel": "Attesa",
+      "walking": "Tempo a piedi tra i blocchi, come lo conta il piano",
+      "walkingLabel": "A piedi",
       "done": "{done} su {total} fatte",
       "blocks": "{count, plural, one {# blocco} other {# blocchi}}"
     },

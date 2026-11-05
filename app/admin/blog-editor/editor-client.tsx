@@ -293,7 +293,8 @@ export function BlogEditorClient({ initialData }: { initialData: EditorInitialDa
       if (!isDraftFilled(d)) continue;
       perLocale[l] = {
         slug: d.slug.trim() || baseSlug,
-        frontmatter: toFrontmatter(d.fm),
+        // A new post's locales share the source slug as key, or the manifest keys each by its own.
+        frontmatter: toFrontmatter({ ...d.fm, translationKey: d.fm.translationKey || baseSlug }),
         body: d.body,
       };
     }

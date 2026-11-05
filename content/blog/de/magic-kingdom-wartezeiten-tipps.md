@@ -2,7 +2,7 @@
 title: 'Magic Kingdom: Die längste Warteschlange hat TRON'
 translationKey: magic-kingdom-guide
 date: '2026-09-30'
-updatedAt: '2026-10-14'
+updatedAt: '2026-11-05'
 author: patrick
 mode: published
 featured: false
@@ -316,9 +316,9 @@ Das Carousel of Progress in Tomorrowland ist seit dem 6. Juli 2026 zu. Disney ar
 mit einer neuen Figur von Walt Disney und Szenen aus neueren Jahrzehnten. Die Eltern sprechen Jamie
 Lee Curtis und Bryan Cranston. Die Wiedereröffnung erwartet Disney im späten Frühjahr 2027.
 
-Die Walt Disney World Railroad ist seit dem 28. September 2026 wegen Wartung geschlossen und soll im
-November wieder fahren. Sie fährt seit dem Umbau von Frontierland nicht mehr rund um den Park,
-sondern nur noch zwischen der Main Street und Fantasyland.
+Die Walt Disney World Railroad war ab dem 28. September 2026 wegen Wartung geschlossen und fährt
+seit dem 30. Oktober wieder. Rund um den Park geht es seit dem Umbau von Frontierland nicht mehr,
+nur noch zwischen der Main Street und Fantasyland. Der Bahnhof in Frontierland bleibt zu.
 
 Das Schloss hat 2026 neue Farben bekommen. Für 2027 hat Disney Abende nach Parkschluss angekündigt,
 Disney After Hours, mit eigenem Ticket und an ausgewählten Tagen vom 11. Januar bis zum 19. Juli.

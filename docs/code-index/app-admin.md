@@ -512,7 +512,7 @@ Route `/admin/attractions/[id]` (page).
 
 ### [`blog-editor/_lib/types.ts`](../../app/admin/blog-editor/_lib/types.ts)
 
-- `toFrontmatter` _function_: Convert the form state into the final blog frontmatter shape we serialise to YAML.
+- `toFrontmatter` _function_: Convert the form state into the final blog frontmatter shape we serialise to YAML. Starts from the loaded frontmatter, so unknown fields and the key order survive a save.
 - `fromFrontmatter` _function_: Inverse of `toFrontmatter` — hydrate a parsed YAML frontmatter back into the form-state shape so an existing post can be loaded into the editor.
 - `emptyDraft` _function_: Returns a blank locale draft: empty frontmatter, body and slug, slug not yet edited by hand.
 - `slugify` _function_: Slugify a title into a URL-safe post slug.
@@ -525,7 +525,7 @@ Route `/admin/attractions/[id]` (page).
 - `widgetLabel` _function_: "park-widget" → "Park widget" — used in the PropertiesPanel header.
 - `widgetTagLabel` _function_: "park-widget" → "Park" — short form for the in-canvas chip tag.
 - `WIDGETS` _const_
-- `WIDGET_NAMES` _const_
+- `WIDGET_NAMES` _const_: Every widget fence name; the load route uses it to tell a widget fence from a code block.
 - Types: `WidgetField`, `WidgetDef`
 
 ### [`blog-editor/editor-client.tsx`](../../app/admin/blog-editor/editor-client.tsx)

@@ -2,7 +2,7 @@
 title: 'Magic Kingdom : la plus longue file d’attente est à TRON'
 translationKey: magic-kingdom-guide
 date: '2026-09-30'
-updatedAt: '2026-10-14'
+updatedAt: '2026-11-05'
 author: patrick
 mode: published
 featured: false
@@ -369,10 +369,10 @@ des scènes tirées de décennies plus récentes, et ce sont Jamie Lee Curtis et
 Bryan Cranston qui prêtent leur voix aux parents. Disney prévoit la réouverture
 pour la fin du printemps 2027.
 
-Le Walt Disney World Railroad est fermé pour maintenance depuis le 28 septembre
-2026 et doit rouler de nouveau en novembre. Depuis le réaménagement de
-Frontierland, le train ne fait plus le tour du parc et relie seulement Main
-Street à Fantasyland.
+Le Walt Disney World Railroad a fermé pour maintenance le 28 septembre 2026 et
+roule de nouveau depuis le 30 octobre. Depuis le réaménagement de Frontierland,
+le train ne fait plus le tour du parc et relie seulement Main Street à
+Fantasyland. La gare de Frontierland reste fermée.
 
 Le château a reçu de nouvelles couleurs en 2026. Pour 2027, Disney a annoncé
 des soirées après la fermeture du parc, Disney After Hours, avec leur propre

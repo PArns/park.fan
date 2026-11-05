@@ -2363,6 +2363,8 @@
       "rides": "{count, plural, =0 {Geen attractie} one {Eén attractie} other {# attracties}}",
       "waiting": "Wachttijd bij elkaar",
       "waitingLabel": "Wachttijd",
+      "walking": "Looptijd tussen de blokken, zoals het plan die inrekent",
+      "walkingLabel": "Lopen",
       "done": "{done} van {total} gedaan",
       "blocks": "{count, plural, one {# blok} other {# blokken}}"
     },

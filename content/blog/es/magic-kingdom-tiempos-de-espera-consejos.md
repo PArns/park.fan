@@ -2,7 +2,7 @@
 title: 'Magic Kingdom: la cola más larga es la de TRON'
 translationKey: magic-kingdom-guide
 date: '2026-09-30'
-updatedAt: '2026-10-14'
+updatedAt: '2026-11-05'
 author: patrick
 mode: published
 featured: false
@@ -359,10 +359,10 @@ Disney está rehaciendo el espectáculo con una nueva figura de Walt Disney y
 escenas de décadas más recientes, y a los padres les ponen voz Jamie Lee Curtis y
 Bryan Cranston. Disney cuenta con reabrirlo a finales de la primavera de 2027.
 
-El Walt Disney World Railroad está cerrado por mantenimiento desde el 28 de
-septiembre de 2026 y debería volver a funcionar en noviembre. Desde la
-remodelación de Frontierland ya no da la vuelta al parque y solo circula entre
-Main Street y Fantasyland.
+El Walt Disney World Railroad cerró por mantenimiento el 28 de septiembre de
+2026 y vuelve a funcionar desde el 30 de octubre. Desde la remodelación de
+Frontierland ya no da la vuelta al parque y solo circula entre Main Street y
+Fantasyland. La estación de Frontierland sigue cerrada.
 
 El castillo estrenó colores nuevos en 2026. Para 2027 Disney ha anunciado noches
 después del cierre del parque, Disney After Hours, con entrada propia, en fechas
