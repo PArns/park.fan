@@ -767,7 +767,7 @@ function ParkyDreamCloud({ dream, ground }: { dream: ParkyDream; ground: string 
  * blinks every 7 to 8 s, shows its {@link ParkyMood}, and while `idle` has a life of its own in
  * classes (`CLASS_ACTS`): small fidgets every 7 to 8 s, mischief about every half minute, and once
  * nobody moves everything sleepy until it falls asleep. While a search is open on the page it searches along, a magnifying
- * glass to its eye, leaning in at each keystroke. The motion lives in `app/globals.css`
+ * glass to its eye, leaning in at each keystroke. The motion lives in `app/parky.css`
  * (`.parky-*`) and only runs without `prefers-reduced-motion`.
  */
 export function ParkyLogo({

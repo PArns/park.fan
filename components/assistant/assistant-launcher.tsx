@@ -116,7 +116,7 @@ function ShownCounter({ entrance }: { entrance: ParkyEntrance | null }) {
 
 /**
  * The round button; its label comes from the layout's `navigation` namespace. With an `entrance`
- * it arrives that way (`app/globals.css`, `.parky-enter-*`); a `cue` makes Parky act at once.
+ * it arrives that way (`app/parky.css`, `.parky-enter-*`); a `cue` makes Parky act at once.
  */
 function LauncherButton({
   open,
