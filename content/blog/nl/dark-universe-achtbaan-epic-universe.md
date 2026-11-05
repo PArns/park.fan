@@ -36,21 +36,19 @@ seo:
     - Universal Orlando 2027
 ---
 
-In [Epic Universe](ref:universal-epic-universe) komt een nieuwe indoorachtbaan, maakte Universal Orlando op 5 november bekend. De baan krijgt een plek in Dark Universe, het gebied van de klassieke Universal-monsters, direct naast [Monsters Unchained: The Frankenstein Experiment](ref:universal-epic-universe/monsters-unchained-the-frankenstein-experiment). Er wordt al gebouwd, maar wanneer de baan opengaat, heeft Universal nog niet bekendgemaakt.
+In [Epic Universe](ref:universal-epic-universe) komt een nieuwe indoorachtbaan, maakte Universal Orlando op 5 november bekend. De baan komt in Dark Universe, de wereld van de klassieke Universal-monsters. Hij krijgt een plek direct naast [Monsters Unchained: The Frankenstein Experiment](ref:universal-epic-universe/monsters-unchained-the-frankenstein-experiment). Er wordt al gebouwd, maar wanneer de baan opengaat, heeft Universal nog niet bekendgemaakt.
 
 ## Wat er al vaststaat
 
-Volgens Universal wordt het een thrill coaster in een hal, met een nieuw verhaal rond de Universal Monsters. Een naam is er nog niet, of Universal houdt hem voorlopig voor zich. Meer details volgen volgens Universal later. Over de opening zegt het persbericht alleen “in the years ahead”, ongeveer zo precies als een weerbericht voor volgend voorjaar. Een jaartal staat er niet bij.
+Volgens Universal wordt het een thrill coaster in een hal, met een nieuw verhaal rond de Universal Monsters. Een naam en een minimumlengte zijn er nog niet, of Universal houdt ze voorlopig voor zich. Meer details volgen later. Over de opening zegt het persbericht alleen “in the years ahead”, ongeveer zo precies als een weerbericht voor volgend voorjaar.
 
 ## Wat er nu al in Dark Universe staat
 
 Dark Universe is het dorp Darkmoor, een van de vijf werelden van het park dat op 22 mei 2025 openging. De andere vier zijn Celestial Park, The Wizarding World of Harry Potter – Ministry of Magic, Super Nintendo World en How to Train Your Dragon – Isle of Berk.
 
-Monsters Unchained neemt je mee de catacomben van Frankenstein Manor in. Dr. Victoria Frankenstein laat daar een experiment zien, tot Dracula de monsters in opstand brengt, met onder anderen de Wolf Man en de mummie. Universal noemt het de engste attractie die Universal Orlando tot nu toe heeft gebouwd. Het orgel van het Phantom of the Opera zorgt voor de muziek, en op twaalf plekken schieten op de maat vlammen van zo'n meter hoog op, wat je een vurige uitvoering mag noemen. Je moet minstens 122 cm lang zijn.
+In Monsters Unchained ga je de catacomben van Frankenstein Manor in. Dr. Victoria Frankenstein laat daar een experiment zien, tot Dracula de monsters in opstand brengt. Daarbij zijn onder anderen de Wolf Man en de mummie. Het orgel van het Phantom of the Opera zorgt voor de muziek. Op twaalf plekken schieten op de maat vlammen van zo'n meter hoog op, voor een orgelconcert een behoorlijk temperamentvolle uitvoering. Je moet minstens 122 cm lang zijn.
 
-[Curse of the Werewolf](ref:universal-epic-universe/curse-of-the-werewolf) is een familieachtbaan met ronddraaiende karretjes, waarin je de weerwolven moet zien te ontlopen voordat je er zelf een wordt. De baan gaat vanaf 102 cm, en kinderen tussen 102 en 122 cm mogen alleen onder begeleiding mee. Met kleinere kinderen kun je in Darkmoor terecht bij de Darkmoor Monster Makeup Experience, met schmink en tattoos die er weer af gaan, in het restaurant Das Stakehaus en bij de ontmoetingen met de Bride of Frankenstein, de Invisible Man en Ygor.
-
-Of kinderen onder 122 cm ook in de nieuwe achtbaan mogen, weet je pas als Universal de minimumlengte bekendmaakt.
+[Curse of the Werewolf](ref:universal-epic-universe/curse-of-the-werewolf) is een familieachtbaan met ronddraaiende karretjes, waarin je de weerwolven moet zien te ontlopen voordat je er zelf een wordt. De baan gaat vanaf 102 cm, en kinderen tussen 102 en 122 cm mogen alleen onder begeleiding mee. Voor kleinere kinderen zijn er de Darkmoor Monster Makeup Experience, met schmink en afwasbare tattoos, en het restaurant Das Stakehaus. Je kunt er ook de Bride of Frankenstein, de Invisible Man en Ygor ontmoeten.
 
 ```ride-waits-widget rides=universal-epic-universe/monsters-unchained-the-frankenstein-experiment|Monsters Unchained|Darkride;universal-epic-universe/curse-of-the-werewolf|Curse of the Werewolf|Familieachtbaan columns=type,peak,days
 
@@ -58,13 +56,13 @@ Of kinderen onder 122 cm ook in de nieuwe achtbaan mogen, weet je pas als Univer
 
 ## De buren hebben al twee prijzen in de kast
 
-Monsters Unchained won in 2025 de Golden Ticket Award van Amusement Today voor de beste darkride. In november 2025 maakte Universal daarnaast vier Thea Awards voor Epic Universe bekend: voor het park zelf, voor Harry Potter and the Battle at the Ministry, voor Isle of Berk en, in de categorie “Outstanding Achievement – Attraction”, voor Monsters Unchained.
+Monsters Unchained won in 2025 de Golden Ticket Award van Amusement Today voor de beste darkride. In november 2025 kwam daar een Thea Award in de categorie “Outstanding Achievement – Attraction” bij. Nog drie Thea Awards gingen naar Epic Universe zelf, naar Harry Potter and the Battle at the Ministry en naar Isle of Berk.
 
-Bij Monsters Unchained geldt Universal Express. Wat tickets en Express in Epic Universe kosten, waar welke pass geldt en alle minimumlengtes vind je in de [gids over Universal Orlando](/blog/universal-orlando-wachttijden-tips).
+Bij Monsters Unchained geldt Universal Express. De prijzen van tickets en Express in Epic Universe, waar welke pass geldt en alle minimumlengtes vind je in de [gids over Universal Orlando](/blog/universal-orlando-wachttijden-tips).
 
 ## Wat Universal Orlando verder opent
 
-In hetzelfde persbericht zet Universal de projecten van het komende jaar op een rij. Later dit jaar start in Universal Studios Florida een vernieuwde Universal Horror Make-Up Show, samen met Blumhouse. In 2027 volgen in datzelfde park de achtbaan Fast & Furious: Hollywood Drift en in Islands of Adventure een nieuw restaurant met bediening in Jurassic Park. Eind 2027 moet in CityWalk Luke Combs' Category 10 opengaan, een zaak voor muziek en entertainment. Van alles op die lijst is de achtbaan in Dark Universe het enige project zonder jaartal.
+In hetzelfde persbericht kondigt Universal voor later dit jaar een vernieuwde Universal Horror Make-Up Show met Blumhouse in Universal Studios Florida aan. In 2027 volgen in datzelfde park de achtbaan Fast & Furious: Hollywood Drift en in Islands of Adventure een nieuw restaurant met bediening in Jurassic Park. Eind 2027 moet in CityWalk Luke Combs' Category 10 opengaan, een zaak voor muziek en entertainment. Van alles op die lijst is de achtbaan in Dark Universe het enige project zonder jaartal.
 
 [Epic Universe](ref:universal-epic-universe?full)
 
