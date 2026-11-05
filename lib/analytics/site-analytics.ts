@@ -95,7 +95,8 @@ export type SearchQueryLength = '1-4' | '5-8' | '9-15' | '16+';
 export type NavMenuId = 'guides' | 'news' | 'parks' | 'more' | 'favorites' | 'sheet';
 
 /** What was picked from a search surface's list before anything was typed. */
-export type SearchBrowseItem = 'nearby_park' | 'in_park_ride' | 'popular_park' | 'news' | 'guide';
+export type SearchBrowseItem =
+  'nearby_park' | 'in_park_ride' | 'popular_park' | 'favorite_park' | 'news' | 'guide';
 
 /** A step of the planner's wizard, in the order it asks them. */
 export type PlannerWizardStep = 'park' | 'date' | 'setup' | 'headliners';

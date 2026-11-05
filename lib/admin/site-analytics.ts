@@ -445,6 +445,7 @@ export const BROWSE_ITEM_LABEL: Record<SearchBrowseItem, string> = {
   nearby_park: 'Park in der Nähe',
   in_park_ride: 'Fahrgeschäft im Park',
   popular_park: 'Beliebter Park',
+  favorite_park: 'Favorisierter Park',
   news: 'News',
   guide: 'Guide',
 };

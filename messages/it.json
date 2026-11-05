@@ -396,8 +396,6 @@
       "termsIntro": "Cartelli e app dei parchi li danno per scontati."
     },
     "title": "Più looping, meno attese",
-    "heroWelcome": "Benvenuti a {parkName}",
-    "heroNearPark": "{parkName} è nelle vicinanze (entro 5 km). Di seguito trovi i tempi di attesa live, gli orari di apertura e i livelli di affluenza – oppure cerca un altro parco.",
     "heroWelcomeAttractions": "{count} attrazioni operative",
     "heroParkLink": "Al parco",
     "heroPlanToday": "Pianifica oggi",

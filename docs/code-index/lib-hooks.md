@@ -85,6 +85,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `useBrowseHeading` _hook_: Heading above the pre-query list — "You're at X" / "Nearby parks" / "Popular parks". Shared so the palette and the hero's in-place list label the same data the same way.
 - `useHeroBrowseParks` _hook_: What the search shows before anything is typed: the visitor's nearby parks, or — when the nearby lookup yields nothing (location denied AND the GeoIP fallback came up empty) — the most popular parks, so the list is never blank.
+- `useFavoriteParkRows` _hook_: The visitor's starred parks as rows for the pre-query list, at most `FAVORITE_ROWS`. It shares `useFavorites`' query, so on the homepage the favourites band has already asked; it does not poll, since the list is open for seconds.
 - `heroBrowseRows` _function_: The rows the hero lists: in a park only its rides, since the hero's park actions above already lead to the park itself. The palette lists the park too.
 - Types: `NearbySearchExtras`, `NearbySearchItem`, `HeroBrowseParks`
 

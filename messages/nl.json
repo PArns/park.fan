@@ -396,8 +396,6 @@
       "termsIntro": "Bordjes en park-apps gaan ervan uit dat je ze kent."
     },
     "title": "Meer loopings, minder wachten",
-    "heroWelcome": "Welkom in {parkName}",
-    "heroNearPark": "{parkName} is in de buurt (binnen 5 km). Hieronder vind je actuele wachttijden, openingstijden en drukte – of zoek een ander park.",
     "heroWelcomeAttractions": "{count} attracties in bedrijf",
     "heroParkLink": "Naar park",
     "heroPlanToday": "Vandaag plannen",

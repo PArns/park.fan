@@ -123,7 +123,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`park-compass-slot.tsx`](../../components/home/park-compass-slot.tsx)
 
-- `ParkCompassSlot` _component_: Directly under the homepage hero: the in-park compass, or nothing. It reads the same `/api/nearby` answer as the hero's welcome and, like it, waits for the mount.
+- `ParkCompassSlot` _component_: The homepage's in-park compass, or nothing.
 
 ### [`park-compass.tsx`](../../components/home/park-compass.tsx)
 
