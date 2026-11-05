@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useEffect, useId, useRef, useState } from 'react';
+import { useCallback, useEffect, useId, useMemo, useRef, useState } from 'react';
 import { cn } from '@/lib/utils';
 import { pickRandom } from '@/lib/utils/pick-random';
 import { parkyBoredom } from '@/lib/assistant/parky-boredom';
@@ -21,6 +21,16 @@ import {
   rideKeyframe,
   type ParkyRide,
 } from '@/lib/assistant/parky-rides';
+import { outfitFor, sceneFits, showyPool, type ParkyLookAct } from '@/lib/assistant/parky-look';
+import { useParkyLook } from '@/lib/assistant/use-parky-look';
+import {
+  LOOK_GAZE,
+  ParkyLookBack,
+  ParkyLookFog,
+  ParkyLookHands,
+  ParkyLookHat,
+  ParkyLookWear,
+} from './parky-looks';
 
 /**
  * Parky's little acts and how long each runs. The stylesheet reads the length as `--parky-act`,
@@ -58,9 +68,17 @@ const ACT_MS = {
   shades: 3000,
   lights: 3400,
   nightcap: 3800,
+  ghost: 3600,
+  snowglobe: 4200,
+  fireworks: 3800,
+  snowman: 6500,
+  brolly: 2400,
+  shiver: 1600,
+  fan: 3000,
 } as const satisfies Record<string, number> &
   Record<ParkyRide, number> &
-  Record<ParkyReactionAct, number>;
+  Record<ParkyReactionAct, number> &
+  Record<ParkyLookAct, number>;
 /** One of Parky's acts by name, as {@link ParkyCue} asks for one. */
 export type ParkyAct = keyof typeof ACT_MS;
 
@@ -93,8 +111,9 @@ export interface ParkyCue {
  * `null` when none does. A ride asked for by name plays wherever Parky is, as on its page's stage.
  */
 function actFor(act: ParkyAct | 'ride', svg: SVGSVGElement | null): ParkyAct | null {
-  if (act !== 'ride') return act;
   const box = svg?.getBoundingClientRect();
+  // A scene beside him (the snowman, the fireworks) passes its turn where it would be cut off.
+  if (act !== 'ride') return !box || sceneFits(act, box) ? act : null;
   const room = box ? RIDES.filter((ride) => rideFits(ride, box)) : RIDES;
   return room.length > 0 ? pickRandom(room) : null;
 }
@@ -400,7 +419,8 @@ function useIdleAct(
   enabled: boolean,
   cue: ParkyCue | null,
   svg: React.RefObject<SVGSVGElement | null>,
-  calm: boolean
+  calm: boolean,
+  showy: readonly (ParkyAct | 'ride')[]
 ) {
   const boredom = useParkyBoredom(enabled);
   const [act, setAct] = useState<ParkyAct | null>(null);
@@ -486,7 +506,7 @@ function useIdleAct(
       }
       const due = Math.max(0, showyAt - Date.now());
       showyAt = Date.now() + due + pauseOf('showy');
-      play(due, pickRandom(CLASS_ACTS.showy, previous));
+      play(due, pickRandom(showy, previous));
     };
     const enter = () => {
       if (boredom === 'asleep') play(SETTLE_MS, 'doze');
@@ -507,7 +527,7 @@ function useIdleAct(
       clearTimeout(timer);
       clearTimeout(wake);
     };
-  }, [boredom, cue, svg, calm]);
+  }, [boredom, cue, svg, calm, showy]);
   // Shown only while Parky has a life of its own, so a mood or a search never meets an act.
   const shown = boredom ? act : null;
   const asleep = boredom === 'asleep' && shown === null;
@@ -816,7 +836,10 @@ export function ParkyLogo({
   // A mood has its own motion; the idle life is for a face with nothing to do, and a search open
   // on the page is something to do.
   const { search, puzzled } = useSearchAlong(idle && !state);
-  const { act, asleep, dream } = useIdleAct(idle && !state && !search, latestCue, svg, calm);
+  const look = useParkyLook();
+  const showy = useMemo(() => showyPool(CLASS_ACTS.showy, look), [look]);
+  const { act, asleep, dream } = useIdleAct(idle && !state && !search, latestCue, svg, calm, showy);
+  const outfit = outfitFor(look, act ?? state ?? (search ? 'search' : null));
   const searching = search === 'searching';
   const gaze =
     state === 'thinking' || act === 'lights'
@@ -827,9 +850,11 @@ export function ParkyLogo({
           ? SCARED_GAZE
           : act === 'bell'
             ? BELL_GAZE
-            : searching
-              ? SEARCH_GAZE
-              : mouseGaze;
+            : act && LOOK_GAZE[act]
+              ? LOOK_GAZE[act]
+              : searching
+                ? SEARCH_GAZE
+                : mouseGaze;
   const squint = cross && gaze === mouseGaze;
   // Heart eyes and the cheer's happy squint take the place of the open eyes.
   const eyesOpen = !asleep && act !== 'love' && act !== 'cheer' && state !== 'squashed';
@@ -894,6 +919,7 @@ export function ParkyLogo({
           <stop offset="1" stopColor={green} />
         </linearGradient>
       </defs>
+      <ParkyLookBack outfit={outfit} act={act} />
       {state === 'thinking' && (
         <g className="parky-thoughts" fill="white" stroke={blue} strokeWidth=".8">
           <circle cx="7" cy="9" r="1.5" />
@@ -1062,7 +1088,8 @@ export function ParkyLogo({
         )}
       >
         {/* The hat: a Ferris wheel standing on Parky's head. */}
-        <g ref={hat} className="parky-hat">
+        <g ref={hat} className={cn('parky-hat', outfit.hat && 'parky-hat--dressed')}>
+          {outfit.hat && <ParkyLookHat hat={outfit.hat} />}
           <g
             className={cn(
               'parky-wheel',
@@ -1123,6 +1150,7 @@ export function ParkyLogo({
           d="M24 7c11 0 20 8.1 20 18.2S35 43.4 24 43.4c-2.5 0-4.9-.4-7.1-1.1L7.5 46l2.3-8C6.1 34.7 4 30.2 4 25.2 4 15.1 13 7 24 7Z"
           fill={`url(#${ground})`}
         />
+        <ParkyLookWear outfit={outfit} ground={ground} />
         {eyesOpen && (
           // One group per eye, so a wink closes one and the gum makes them cross.
           <g className="parky-eyes">
@@ -1457,7 +1485,9 @@ export function ParkyLogo({
             <path d="M24 30v18.5" stroke={blue} strokeWidth="1.3" />
           </g>
         )}
+        <ParkyLookHands act={act} ground={ground} />
       </g>
+      {outfit.sky === 'fog' && <ParkyLookFog />}
     </svg>
   );
 }

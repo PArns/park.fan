@@ -157,7 +157,7 @@ export type AssistantOpenSource = 'button' | 'line' | 'page' | 'hero' | 'languag
  * A line in Parky's speech bubble: an invitation, after an entrance, bored, woken, a holiday's, a
  * park's own, the Konami code's, or an answer to something the visitor did (the trip planner
  * opened, a plan finished, a favourite, an alert, the theme switched, the app installed, its own
- * stop on the homepage scrolled into view).
+ * stop on the homepage scrolled into view), or the park's weather.
  */
 export type AssistantLineKind =
   | 'invitation'
@@ -176,7 +176,8 @@ export type AssistantLineKind =
   | 'install'
   | 'hello'
   | 'hang'
-  | 'rough';
+  | 'rough'
+  | 'weather';
 
 /** How one of Parky's answers ended. */
 export type AssistantAnswerResult =

@@ -996,6 +996,7 @@ const PLANNER_VALUE_LABEL: Record<string, Record<string, string>> = {
     hello: 'Das bin ich (Startseite)',
     hang: 'Oben hängen (schnell gescrollt)',
     rough: 'Zu oft herumgeworfen',
+    weather: 'Wetter im Park',
   },
   entrance: {
     scurry: 'Huschen',

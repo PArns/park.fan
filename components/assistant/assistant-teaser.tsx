@@ -45,6 +45,7 @@ import { parkyFacts } from '@/lib/assistant/parky-facts';
 import { lineSources, type LineSource } from '@/lib/assistant/line-priority';
 import { reactionTo, type ParkyReaction } from '@/lib/assistant/reactions';
 import { usePageLocked } from '@/lib/hooks/use-page-locked';
+import { useParkyWeather } from '@/lib/assistant/use-parky-weather';
 import type { ParkyCue } from './parky-logo';
 import { PARKY_LAYER } from './parky-layer';
 import { PARKY_FALL_MS } from '@/lib/assistant/use-scroll-fling';
@@ -326,6 +327,13 @@ export function AssistantTeaser({
     // Somebody came back before the line was due: Parky is not bored any more.
     return () => clearTimeout(timer);
   }, [boredom, t]);
+
+  useParkyWeather({
+    entering,
+    busy,
+    say: (text) => setLine({ text, kind: 'weather' }),
+    act: onAct,
+  });
 
   // The Konami code buys a free ride, typed anywhere on the page.
   useEffect(() => {
