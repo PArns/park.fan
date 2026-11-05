@@ -2979,6 +2979,8 @@
     "chipFeedback": "Ans Team weitergegeben",
     "chipAlert": "Erinnerung gestellt",
     "chipAlertRemoved": "Erinnerung gelöscht",
+    "chipFavorite": "Bei den Favoriten",
+    "chipUnfavorite": "Aus den Favoriten genommen",
     "alertRide": "{name}: Bescheid, sobald die Wartezeit unter {minutes} Minuten fällt.",
     "alertReopen": "{name}: Bescheid, sobald sie wieder fährt.",
     "alertShow": "{name}: Erinnerung vor der Vorstellung um {time}.",

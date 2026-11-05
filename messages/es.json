@@ -2979,6 +2979,8 @@
     "chipFeedback": "Enviado al equipo",
     "chipAlert": "Aviso activado",
     "chipAlertRemoved": "Aviso eliminado",
+    "chipFavorite": "Añadido a favoritos",
+    "chipUnfavorite": "Quitado de favoritos",
     "alertRide": "{name}: un aviso en cuanto la espera baje de {minutes} minutos.",
     "alertReopen": "{name}: un aviso en cuanto vuelva a funcionar.",
     "alertShow": "{name}: un aviso antes de la función de las {time}.",

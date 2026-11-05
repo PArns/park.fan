@@ -41,6 +41,7 @@ import { readPushState, writeAssistantAlert } from '@/lib/assistant/alert-writes
 import { listRideAlertsLocal, listShowFollowsLocal } from '@/lib/push/push-follows-store';
 import { removeRideAlert, unfollowShow } from '@/lib/push/push-follows';
 import { trackSiteEvent } from '@/lib/analytics/site-analytics';
+import { isFavorite, toggleFavorite } from '@/lib/utils/favorites';
 import { safeAssistantHref } from '@/lib/assistant/links';
 import { localizedPath } from '@/lib/i18n/localized-path';
 import { hreflangPath } from '@/lib/i18n/hreflang';
@@ -351,6 +352,18 @@ export function useAssistantActions(closeWindow: () => void) {
             ...(showId ? [unfollowShow(showId).then(removed(showId, 'show_follow_remove'))] : []),
           ]);
           return results.length > 0 && results.every((r) => r.ok) ? 'alertRemoved' : null;
+        }
+        case 'favorite_set': {
+          // Set, never toggled blindly: a star already in the asked state stays as it is.
+          if (isFavorite(action.kind, action.id) === action.on) return null;
+          toggleFavorite(action.kind, action.id);
+          // Counted like a star's press, which is also what plays Parky's `love`.
+          trackSiteEvent(
+            action.on ? 'favorite_add' : 'favorite_remove',
+            { type: action.kind },
+            action.id
+          );
+          return action.on ? 'favorite' : 'unfavorite';
         }
         case 'switch_locale': {
           if (action.locale === locale) return null;

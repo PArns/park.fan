@@ -2979,6 +2979,8 @@
     "chipFeedback": "Inoltrato al team",
     "chipAlert": "Promemoria attivato",
     "chipAlertRemoved": "Promemoria rimosso",
+    "chipFavorite": "Aggiunto ai preferiti",
+    "chipUnfavorite": "Tolto dai preferiti",
     "alertRide": "{name}: una notifica appena l’attesa scende sotto i {minutes} minuti.",
     "alertReopen": "{name}: una notifica appena torna in funzione.",
     "alertShow": "{name}: un promemoria prima dello spettacolo delle {time}.",

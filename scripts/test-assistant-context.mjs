@@ -30,6 +30,10 @@ import {
   rideTarget,
   showTarget,
 } from '@/lib/assistant/alerts-context.ts';
+import {
+  assistantFavoritesSnapshot,
+  FAVORITES_SNAPSHOT_MAX,
+} from '@/lib/assistant/favorites-context.ts';
 
 let passed = 0;
 function check(actual, expected, label) {
@@ -488,5 +492,67 @@ check(
   'remove: a bad slug is left out'
 );
 check(readAssistantAction({ type: 'alert_remove', park }), null, 'remove: nothing named');
+
+// --- Favourites ---
+const noFavorites = { parks: [], attractions: [], shows: [], restaurants: [] };
+check(assistantFavoritesSnapshot(noFavorites), undefined, 'no favourites, no field');
+const uuid = '0b6f2f1e-3c4d-4e5f-8a9b-0c1d2e3f4a5b';
+check(
+  assistantFavoritesSnapshot({ ...noFavorites, attractions: [uuid] }),
+  { ...noFavorites, attractions: [uuid] },
+  'the ids as stored'
+);
+check(
+  assistantFavoritesSnapshot({
+    ...noFavorites,
+    parks: Array.from({ length: 60 }, (_, i) => `p${i}`),
+  }).parks.length,
+  FAVORITES_SNAPSHOT_MAX,
+  'at most fifty of a kind'
+);
+check(
+  readAssistantAction({
+    type: 'favorite_set',
+    kind: 'attraction',
+    id: uuid,
+    name: 'Taron',
+    on: true,
+    x: 1,
+  }),
+  { type: 'favorite_set', kind: 'attraction', id: uuid, name: 'Taron', on: true },
+  'favourite'
+);
+check(
+  readAssistantAction({
+    type: 'favorite_set',
+    favoriteType: 'park',
+    id: uuid,
+    name: 'Phantasialand',
+    on: false,
+  }),
+  { type: 'favorite_set', kind: 'park', id: uuid, name: 'Phantasialand', on: false },
+  'favourite: the type may come as favoriteType'
+);
+check(
+  readAssistantAction({ type: 'favorite_set', kind: 'hotel', id: uuid, name: 'X', on: true }),
+  null,
+  'favourite: a kind the site does not star'
+);
+check(
+  readAssistantAction({
+    type: 'favorite_set',
+    kind: 'park',
+    id: 'phantasialand',
+    name: 'X',
+    on: true,
+  }),
+  null,
+  'favourite: an id that is no UUID'
+);
+check(
+  readAssistantAction({ type: 'favorite_set', kind: 'park', id: uuid, name: 'X', on: 'yes' }),
+  null,
+  'favourite: on must be a boolean'
+);
 
 console.log(`assistant context: ${passed} checks passed`);

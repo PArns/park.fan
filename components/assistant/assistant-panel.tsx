@@ -13,6 +13,8 @@ import {
   RotateCcw,
   BellOff,
   BellRing,
+  Heart,
+  HeartOff,
   SendHorizontal,
   Sparkles,
   ThumbsDown,
@@ -71,6 +73,8 @@ const CHIP: Record<AssistantActionChip, { key: string; icon: typeof ExternalLink
   feedback: { key: 'chipFeedback', icon: MessageSquareHeart },
   alert: { key: 'chipAlert', icon: BellRing },
   alertRemoved: { key: 'chipAlertRemoved', icon: BellOff },
+  favorite: { key: 'chipFavorite', icon: Heart },
+  unfavorite: { key: 'chipUnfavorite', icon: HeartOff },
 };
 
 /** Three bouncing dots: Parky is thinking or looking something up. */

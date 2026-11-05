@@ -2979,6 +2979,8 @@
     "chipFeedback": "Transmis à l’équipe",
     "chipAlert": "Rappel activé",
     "chipAlertRemoved": "Rappel supprimé",
+    "chipFavorite": "Ajouté aux favoris",
+    "chipUnfavorite": "Retiré des favoris",
     "alertRide": "{name} : une notification dès que l’attente passe sous {minutes} minutes.",
     "alertReopen": "{name} : une notification dès qu’elle rouvre.",
     "alertShow": "{name} : un rappel avant la représentation de {time}.",

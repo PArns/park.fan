@@ -19,6 +19,8 @@ import {
 } from './alerts-context';
 import { readPushState } from './alert-writes';
 import { listRideAlertsLocal, listShowFollowsLocal } from '@/lib/push/push-follows-store';
+import { getFavoritesFromCookies } from '@/lib/utils/favorites';
+import { assistantFavoritesSnapshot } from './favorites-context';
 
 /** A lookup Parky names while it runs, as the API's `status` event sends it. */
 export type AssistantLookup =
@@ -196,6 +198,7 @@ export function useAssistantChat(
             // The plan lives in this browser alone; Parky reads it with every question.
             planner: assistantPlannerSnapshot(plannerStore.getSnapshot()),
             alerts,
+            favorites: assistantFavoritesSnapshot(getFavoritesFromCookies()),
           }),
         });
         if (response.status === 401) {

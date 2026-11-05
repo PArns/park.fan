@@ -5,6 +5,8 @@ import { MAX_RIDER_CM, MIN_RIDER_CM } from '@/lib/planner/party';
 import { MAX_THRESHOLD_MIN, MIN_THRESHOLD_MIN } from '@/lib/push/threshold-minutes';
 import { isValidLocale, type Locale } from '@/i18n/config';
 import { safeAssistantHref } from './links';
+import type { FavoriteType } from '@/lib/utils/favorites';
+import { isUuid } from '@/lib/utils';
 
 /** The park as the API names it for the planner. */
 export interface AssistantPlannerPark {
@@ -216,6 +218,11 @@ export type AssistantAction =
       /** Park-local `HH:MM`, one of today's performances. */
       start: string;
     }
+  /**
+   * Star or unstar one thing, by the id the favourites cookie keeps. `kind` is the favourite's
+   * type, since `type` names the action.
+   */
+  | { type: 'favorite_set'; kind: FavoriteType; id: string; name: string; on: boolean }
   /** One of the two slugs, or both. */
   | { type: 'alert_remove'; park: AssistantPlannerPark; rideSlug?: string; showSlug?: string }
   /** The same page in another of the site's languages, once the answer is complete. */
@@ -225,7 +232,15 @@ export type AssistantAction =
 
 /** What an answer did, as a chip under it. */
 export type AssistantActionChip =
-  'navigated' | 'planned' | 'optimized' | 'language' | 'feedback' | 'alert' | 'alertRemoved';
+  | 'navigated'
+  | 'planned'
+  | 'optimized'
+  | 'language'
+  | 'feedback'
+  | 'alert'
+  | 'alertRemoved'
+  | 'favorite'
+  | 'unfavorite';
 
 const SLUG = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 const DAY = /^\d{4}-\d{2}-\d{2}$/;
@@ -536,6 +551,25 @@ function readPlannerEdit(action: Record<string, unknown>): AssistantAction | nul
     case 'planner_reserve_days':
     case 'planner_undo':
       return readPlannerEdit(action as unknown as Record<string, unknown>);
+    case 'favorite_set': {
+      const raw = action as unknown as Record<string, unknown>;
+      // `type` is taken by the action itself; the API may name the favourite's `favoriteType`.
+      const kind = raw.kind ?? raw.favoriteType;
+      return typeof kind === 'string' &&
+        FAVORITE_TYPES.has(kind) &&
+        typeof raw.id === 'string' &&
+        isUuid(raw.id) &&
+        isName(raw.name) &&
+        typeof raw.on === 'boolean'
+        ? {
+            type: 'favorite_set',
+            kind: kind as FavoriteType,
+            id: raw.id,
+            name: raw.name.trim(),
+            on: raw.on,
+          }
+        : null;
+    }
     case 'alert_ride_set':
     case 'alert_show_set':
     case 'alert_remove':
@@ -544,6 +578,8 @@ function readPlannerEdit(action: Record<string, unknown>): AssistantAction | nul
       return null;
   }
 }
+
+const FAVORITE_TYPES = new Set(['park', 'attraction', 'show', 'restaurant']);
 
 const isSlug = (value: unknown): value is string => typeof value === 'string' && SLUG.test(value);
 const isName = (value: unknown): value is string =>
@@ -650,6 +686,25 @@ export function readAssistantAction(raw: unknown): AssistantAction | null {
     case 'planner_reserve_days':
     case 'planner_undo':
       return readPlannerEdit(action as unknown as Record<string, unknown>);
+    case 'favorite_set': {
+      const raw = action as unknown as Record<string, unknown>;
+      // `type` is taken by the action itself; the API may name the favourite's `favoriteType`.
+      const kind = raw.kind ?? raw.favoriteType;
+      return typeof kind === 'string' &&
+        FAVORITE_TYPES.has(kind) &&
+        typeof raw.id === 'string' &&
+        isUuid(raw.id) &&
+        isName(raw.name) &&
+        typeof raw.on === 'boolean'
+        ? {
+            type: 'favorite_set',
+            kind: kind as FavoriteType,
+            id: raw.id,
+            name: raw.name.trim(),
+            on: raw.on,
+          }
+        : null;
+    }
     case 'alert_ride_set':
     case 'alert_show_set':
     case 'alert_remove':

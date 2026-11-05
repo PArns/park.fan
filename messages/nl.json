@@ -2979,6 +2979,8 @@
     "chipFeedback": "Doorgegeven aan het team",
     "chipAlert": "Herinnering ingesteld",
     "chipAlertRemoved": "Herinnering verwijderd",
+    "chipFavorite": "Bij je favorieten",
+    "chipUnfavorite": "Uit je favorieten gehaald",
     "alertRide": "{name}: een melding zodra de wachttijd onder {minutes} minuten zakt.",
     "alertReopen": "{name}: een melding zodra hij weer draait.",
     "alertShow": "{name}: een herinnering voor de voorstelling van {time}.",

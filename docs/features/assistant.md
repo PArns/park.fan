@@ -134,6 +134,13 @@ The `alerts` field of every question is the mirror (`assistantAlertsSnapshot`): 
 ride alerts and show reminders whose names the mirror keeps, at most 30 each, a pinned performance
 as the park's `HH:MM`. Left out where push is out of reach and nothing is set.
 
+Favourites go through `lib/utils/favorites.ts`, so every star on the page follows. `favorite_set`
+names the favourite's type `kind` (`type` is the action's; `favoriteType` is read too) and an id
+the cookie keeps, a UUID; it sets the state asked for and never toggles blindly. An add plays
+Parky's `love`, through the same `favorite_add` a star sends. The `favorites` field of every
+question is the cookie's ids as stored, at most 50 of each kind, left out when there are none
+(`assistantFavoritesSnapshot`).
+
 `plannerUi.requestOptimize` is held until the day's `PlannerOptimizeActions` is on screen with its
 data, which then presses its own button (`RunOnce`), fit assistant and undo included. On a phone
 Parky's window closes after a page change or a planner action, so the result is visible.
@@ -457,4 +464,4 @@ same throw again or the other way throws him at once.
 snapshot (from today on, nearest first, the caps, the printed starts, nothing when empty), the
 reorder, Parky's undo, and the checks of every planner edit (ids that are no ids dropped, an
 optional field that fails left out, nothing riding along), the reminders' snapshot, the slugs they
-resolve to, and their action checks.
+resolve to, and their action checks, and the favourites' snapshot and checks.

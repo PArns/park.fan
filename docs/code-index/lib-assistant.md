@@ -60,6 +60,11 @@ by hand: change the comment in the code and re-run the script. -->
 - `ENTRANCE_MS` _const_: How Parky arrives in its corner each time a page loads, and how long each takes. Each entrance has a line of its own; the stylesheet (`.parky-enter-*`) reads the length as `--parky-enter`, so it is written here only.
 - Types: `ParkyEntrance`
 
+### [`favorites-context.ts`](../../lib/assistant/favorites-context.ts)
+
+- `assistantFavoritesSnapshot` _function_: The `favorites` field of a chat request: the cookie's ids as stored, so Parky can tell what is starred; `undefined` where nothing is.
+- `FAVORITES_SNAPSHOT_MAX` _const_: The most ids of each kind a question carries.
+
 ### [`fling-tracker.ts`](../../lib/assistant/fling-tracker.ts)
 
 - `FlingTracker` _class_: Decides when a scroll throws Parky (`useScrollFling`), from the scroll position read once a frame.
