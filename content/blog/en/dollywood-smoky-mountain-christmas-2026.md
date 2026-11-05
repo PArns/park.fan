@@ -68,7 +68,7 @@ Before that, he has breakfast with guests on December 12, 13, 19 and 20 at Aunt 
 The "Everyone Pays Kids' Price" deal covers date-specific 1-Day Tickets between November 6 and 22, 2026. You have to come on the day you pick when you buy. After that, the regular adult prices apply, all before tax:
 
 - Pick-A-Day (fixed date): one day from $94.99, two days from $124.99
-- Good-Any-Day (any operating day in 2026): one day from $99.99, two days from $129.99
+- Good-Any-Day (any operating day in 2026): one day $99.99, two days $129.99
 
 Kids and seniors get a discount. Pick-A-Day prices depend on the date.
 
@@ -90,7 +90,7 @@ Buy a season pass between November 2 and December 13 and you get a Bring-A-Frien
 
 ## Getting there and parking
 
-Dollywood is in Pigeon Forge in East Tennessee, at the edge of Great Smoky Mountains National Park. The nearest airport is McGhee Tyson in Knoxville, less than an hour's drive from the park.
+Dollywood is in Pigeon Forge, Tennessee, at the edge of Great Smoky Mountains National Park. The nearest airport is McGhee Tyson in Knoxville, less than an hour's drive from the park.
 
 Parking is $25 per vehicle. Free trams run from lots A to E to the main entrance; from lot F you walk. Preferred Parking right by the park is $55 and comes with its own ticket window and entrance. RVs also park in lot F, for $30. Gold and Diamond passholders park free.
 
@@ -100,7 +100,7 @@ At DreamMore Resort and Spa, a Christmas tree two floors tall stands in the lobb
 
 ## Golden Ticket Awards and a new coaster
 
-Smoky Mountain Christmas has won the Golden Ticket Award for best holiday event at an amusement park 15 times. This year it's nominated in the USA Today 10Best Awards. New in the park since this season is [NightFlight Expedition](ref:dollywood/nightflight-expedition), an indoor coaster.
+Smoky Mountain Christmas has won the Golden Ticket Award for best holiday event at an amusement park 15 times. This year it's nominated in the USA Today 10Best Awards. New in the park is [NightFlight Expedition](ref:dollywood/nightflight-expedition), an indoor coaster.
 
 [Dollywood](ref:dollywood?full)
 

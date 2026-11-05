@@ -68,7 +68,7 @@ Antes desayuna con los visitantes los días 12, 13, 19 y 20 de diciembre en el A
 La promoción «Everyone Pays Kids' Price» vale para las entradas 1-Day con fecha fija entre el 6 y el 22 de noviembre de 2026. Tienes que ir el día que eliges al comprar. Después vuelven los precios normales para adultos, sin impuestos:
 
 - Pick-A-Day (fecha fija): un día desde 94,99 $, dos días desde 124,99 $
-- Good-Any-Day (cualquier día de apertura de 2026): un día desde 99,99 $, dos días desde 129,99 $
+- Good-Any-Day (cualquier día de apertura de 2026): un día 99,99 $, dos días 129,99 $
 
 Niños y mayores tienen descuento. En Pick-A-Day, el precio depende del día.
 
@@ -90,7 +90,7 @@ Quien compre un pase de temporada entre el 2 de noviembre y el 13 de diciembre r
 
 ## Cómo llegar y dónde aparcar
 
-Dollywood está en Pigeon Forge, en el este de Tennessee, junto al Parque Nacional de las Great Smoky Mountains. El aeropuerto más cercano es el McGhee Tyson de Knoxville, a menos de una hora del parque.
+Dollywood está en Pigeon Forge (Tennessee), junto al Parque Nacional de las Great Smoky Mountains. El aeropuerto más cercano es el McGhee Tyson de Knoxville, a menos de una hora del parque.
 
 Aparcar cuesta 25 $ por vehículo. Desde los aparcamientos A a E salen tranvías gratuitos hasta la entrada principal; desde el F se va andando. El Preferred Parking, pegado al parque, cuesta 55 $ e incluye taquilla y entrada propias. Las autocaravanas pagan 30 $ y también van al F. Con pase de temporada Gold o Diamond, el aparcamiento es gratis.
 
@@ -100,7 +100,7 @@ En el vestíbulo del DreamMore Resort and Spa hay un árbol de Navidad de dos pl
 
 ## Golden Ticket Awards y una montaña rusa nueva
 
-Smoky Mountain Christmas ha ganado 15 veces el Golden Ticket Award al mejor evento navideño de un parque de atracciones, y este año está nominada a los 10Best Awards de USA Today. Desde esta temporada, el parque tiene además [NightFlight Expedition](ref:dollywood/nightflight-expedition), una montaña rusa bajo techo.
+Smoky Mountain Christmas ha ganado 15 veces el Golden Ticket Award al mejor evento navideño de un parque de atracciones, y este año está nominada a los 10Best Awards de USA Today. El parque tiene además una novedad, [NightFlight Expedition](ref:dollywood/nightflight-expedition), una montaña rusa bajo techo.
 
 [Dollywood](ref:dollywood?full)
 

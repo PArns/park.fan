@@ -68,7 +68,7 @@ Avant de partir, il prend le petit-déjeuner avec les visiteurs les 12, 13, 19 e
 L’offre « Everyone Pays Kids' Price » s’applique aux billets 1-Day à date fixe entre le 6 et le 22 novembre 2026. Tu dois venir le jour choisi à l’achat. Ensuite, ce sont les prix adultes habituels, hors taxes :
 
 - Pick-A-Day (date fixe) : une journée dès 94,99 $, deux journées dès 124,99 $
-- Good-Any-Day (n’importe quel jour d’ouverture en 2026) : une journée dès 99,99 $, deux journées dès 129,99 $
+- Good-Any-Day (n’importe quel jour d’ouverture en 2026) : une journée 99,99 $, deux journées 129,99 $
 
 Les enfants et les seniors ont droit à une réduction. En Pick-A-Day, le prix dépend du jour.
 
@@ -90,7 +90,7 @@ En achetant un pass saison entre le 2 novembre et le 13 décembre, tu obtiens un
 
 ## Venir et se garer
 
-Dollywood se trouve à Pigeon Forge, dans l’est du Tennessee, en bordure du parc national des Great Smoky Mountains. L’aéroport le plus proche est McGhee Tyson, à Knoxville, à moins d’une heure du parc.
+Dollywood se trouve à Pigeon Forge, dans le Tennessee, en bordure du parc national des Great Smoky Mountains. L’aéroport le plus proche est McGhee Tyson, à Knoxville, à moins d’une heure du parc.
 
 Le parking coûte 25 $ par véhicule. Des trams gratuits relient les parkings A à E à l’entrée principale, depuis le parking F on y va à pied. Le Preferred Parking, juste à côté du parc, coûte 55 $ et comprend un guichet et une entrée réservés. Les camping-cars se garent aussi sur le F, pour 30 $. Avec un pass saison Gold ou Diamond, le parking est gratuit.
 
@@ -100,7 +100,7 @@ Au DreamMore Resort and Spa, un sapin de deux étages trône dans le hall, et le
 
 ## Golden Ticket Awards et nouveau coaster
 
-Aux Golden Ticket Awards, Smoky Mountain Christmas a remporté 15 fois le prix du meilleur événement de Noël d’un parc d’attractions. Cette année, la fête est nommée aux 10Best Awards de USA Today. Et depuis cette saison, le parc compte un nouveau coaster en intérieur, [NightFlight Expedition](ref:dollywood/nightflight-expedition).
+Aux Golden Ticket Awards, Smoky Mountain Christmas a remporté 15 fois le prix du meilleur événement de Noël d’un parc d’attractions. Cette année, la fête est nommée aux 10Best Awards de USA Today. Et le parc compte un nouveau coaster en intérieur, [NightFlight Expedition](ref:dollywood/nightflight-expedition).
 
 [Dollywood](ref:dollywood?full)
 

@@ -26,7 +26,7 @@ rideLinks:
 seo:
   title: 'Dollywood-tickets tegen kinderprijs tot 22 november 2026'
   description: >-
-    Smoky Mountain Christmas in Dollywood van 6-11-2026 tot 3-1-2027, met ruim 6 miljoen lichtjes. Tot 22-11 betaalt iedereen voor een dagticket de kinderprijs.
+    Smoky Mountain Christmas in Dollywood van 6-11-2026 tot 3-1-2027, met ruim 6 miljoen lampjes. Tot 22-11 betaalt iedereen voor een dagticket de kinderprijs.
   keywords:
     - Dollywood kerst
     - Smoky Mountain Christmas 2026
@@ -68,7 +68,7 @@ Eerst ontbijt hij nog met gasten: op 12, 13, 19 en 20 december in Aunt Granny's 
 De actie “Everyone Pays Kids' Price” geldt voor 1-Day Tickets met een vaste datum tussen 6 en 22 november 2026. Je moet komen op de dag die je bij het kopen kiest. Daarna gelden de gewone prijzen voor volwassenen, telkens zonder belasting:
 
 - Pick-A-Day (vaste datum): één dag vanaf $94,99, twee dagen vanaf $124,99
-- Good-Any-Day (elke openingsdag in 2026): één dag vanaf $99,99, twee dagen vanaf $129,99
+- Good-Any-Day (elke openingsdag in 2026): één dag $99,99, twee dagen $129,99
 
 Kinderen en senioren krijgen korting. Bij Pick-A-Day hangt de prijs af van de dag.
 
@@ -90,7 +90,7 @@ Koop je tussen 2 november en 13 december een jaarkaart, dan krijg je er een Brin
 
 ## Erheen en parkeren
 
-Dollywood ligt in Pigeon Forge in het oosten van Tennessee, aan de rand van het nationale park Great Smoky Mountains. Het dichtstbijzijnde vliegveld is McGhee Tyson in Knoxville, en van daar ben je in minder dan een uur bij het park.
+Dollywood ligt in Pigeon Forge in Tennessee, aan de rand van het nationale park Great Smoky Mountains. Het dichtstbijzijnde vliegveld is McGhee Tyson in Knoxville, en van daar ben je in minder dan een uur bij het park.
 
 Parkeren kost $25 per voertuig. Vanaf de parkeerterreinen A tot en met E rijden gratis trams naar de hoofdingang, vanaf terrein F loop je. Preferred Parking vlak bij het park kost $55, met een eigen ticketloket en een eigen ingang. Campers staan voor $30 ook op F. Met een Gold- of Diamond-jaarkaart parkeer je gratis.
 
@@ -100,7 +100,7 @@ In de lobby van het DreamMore Resort and Spa staat een kerstboom van twee verdie
 
 ## Golden Ticket Awards en een nieuwe achtbaan
 
-Bij de Golden Ticket Awards won Smoky Mountain Christmas 15 keer de prijs voor het beste kerstevenement van een pretpark. Bij de 10Best Awards van USA Today is het feest dit jaar genomineerd. Nieuw in het park is sinds dit jaar [NightFlight Expedition](ref:dollywood/nightflight-expedition), een overdekte achtbaan.
+Bij de Golden Ticket Awards won Smoky Mountain Christmas 15 keer de prijs voor het beste kerstevenement van een pretpark. Bij de 10Best Awards van USA Today is het feest dit jaar genomineerd. Nieuw in het park is [NightFlight Expedition](ref:dollywood/nightflight-expedition), een overdekte achtbaan.
 
 [Dollywood](ref:dollywood?full)
 
