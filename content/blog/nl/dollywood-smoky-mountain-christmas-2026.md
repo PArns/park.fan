@@ -2,7 +2,7 @@
 title: 'Iedereen betaalt tot 22 november kinderprijs in Dollywood'
 translationKey: dollywood-smoky-mountain-christmas-2026
 date: '2026-11-05'
-time: '08:30'
+time: '08:02'
 author: patrick
 mode: published
 featured: false
@@ -39,19 +39,19 @@ seo:
     - Dollywood Pigeon Forge
 ---
 
-Op vrijdag 6 november begint [Dollywood](ref:dollywood) in Pigeon Forge, Tennessee, aan Smoky Mountain Christmas. Tot en met 22 november kost een dagticket voor volwassenen evenveel als voor kinderen. Het kerstseizoen loopt door tot 3 januari 2027.
+Op vrijdag 6 november begint [Dollywood](ref:dollywood) in Pigeon Forge, Tennessee, aan Smoky Mountain Christmas. Tot en met 22 november kost een dagticket voor volwassenen evenveel als voor kinderen. Het kerstseizoen loopt door tot 3 januari 2027. Bij de Golden Ticket Awards won het feest al 15 keer de prijs voor het beste kerstevenement van een pretpark, en dit jaar is het ook genomineerd voor de 10Best Awards van USA Today.
 
 ## Lichtjes en sneeuw
 
-Er hangen meer dan zes miljoen lichtjes in het park, en elk themagebied heeft zijn eigen kleuren. Santa's Village is rood en groen, Glacier Ridge blauw en wit, en Craftsman's Valley heeft de warme gloed van kaarslicht. Ook Glacier Ridge is terug, een lichtlandschap in poolstijl dat van Timber Canyon via Wildwood Grove en Wilderness Pass doorloopt tot in het bovenste stuk van Craftsman's Valley. Aan de vijver in Rivertown Junction staan de Christmas Reflections: vijf gekleurde lichtbomen die na het donker in het water weerspiegelen.
+Er hangen meer dan zes miljoen lichtjes in het park, rood en groen in Santa's Village, met de warme gloed van kaarslicht in Craftsman's Valley. In blauw en wit straalt Glacier Ridge, een lichtlandschap in poolstijl. Het is terug en loopt van Timber Canyon via Wildwood Grove en Wilderness Pass door tot in het bovenste stuk van Craftsman's Valley. Aan de vijver in Rivertown Junction staan de Christmas Reflections: vijf gekleurde lichtbomen die na het donker in het water weerspiegelen.
 
 Nieuw is Snow in the Grove in [Wildwood Grove](ref:dollywood/wildwood-grove). Daar valt elke avond sneeuw boven de Wildwood Creek, en [The Wildwood Tree](ref:dollywood/the-wildwood-tree) licht op in bonte kleuren op de muziek. Waarschijnlijk is het de enige sneeuw in de Smokies die zich aan een dienstregeling houdt. Verder lopen de kerstfiguren van het park rond: Roly en Poly, Benjamin Bear en Flit en Flutter.
 
-Country Fair heet deze winter Peppermint Valley en hangt vol rood-witte lichtjes in de vorm van zuurstokken. De meeste attracties draaien ook in het kerstseizoen. De nieuwste, [NightFlight Expedition](ref:dollywood/nightflight-expedition), is een overdekte achtbaan, dus daarbinnen sneeuwt het niet, ook niet volgens dienstregeling.
+Country Fair heet deze winter Peppermint Valley en hangt vol rood-witte lichtjes in de vorm van zuurstokken. De meeste attracties draaien ook in het kerstseizoen. De nieuwste attractie van het park, [NightFlight Expedition](ref:dollywood/nightflight-expedition), is een overdekte achtbaan.
 
 ## Shows en de kerstman
 
-De grootste show is “Christmas in the Smokies” in het Celebrity Theater. In “Heidi Parton's A Christmas To Remember” zingt Dolly's nichtje Heidi liedjes en vertelt ze verhalen over kerst bij haar familie thuis. Daarnaast zijn deze weer te zien:
+De grootste show is “Christmas in the Smokies” in het Celebrity Theater. In “Heidi Parton's A Christmas To Remember” zingt Dolly's nichtje Heidi liedjes en vertelt ze verhalen over kerst bij haar familie thuis. Uit eerdere jaren keren nog vijf shows terug:
 
 - “'Twas the Night Before Christmas”
 - “Christmas with the Kingdom Heirs”
@@ -70,9 +70,9 @@ De actie “Everyone Pays Kids' Price” geldt voor 1-Day Tickets die je boekt v
 - Pick-A-Day (vaste datum): één dag vanaf $94,99, twee dagen vanaf $124,99
 - Good-Any-Day (elke openingsdag in 2026): één dag vanaf $99,99, twee dagen vanaf $129,99
 
-Kinderen en senioren betalen minder, en bij Pick-A-Day schuift de prijs mee met de datum, vandaar het “vanaf”.
+Kinderen en senioren betalen minder dan volwassenen. Bij Pick-A-Day hangt de prijs af van de datum, vandaar het “vanaf”.
 
-Een dagticket geeft toegang tot het feest, eten en parkeren betaal je apart. Met de Festival Tasting Pass krijg je tot vijf gerechten van het feest voor $45,99 plus belasting; met een Gold- of Diamond-jaarkaart betaal je $42,99. Je koopt hem online of bij de eetkraampjes in het park. Hartig kies je uit gepofte aardappels gevuld met buffalo chicken, jambalaya, Stuffing Stackers en aardappelsoep. Als toetje is er een mint-chocolate-chip-browniesundae, red-velvet-chocolademelk, vanille-eggnog, zuurstokcupcakes, apple dumplings en peperkoekmannetjes.
+Het feest zelf zit bij het dagticket inbegrepen, het eten niet. De Festival Tasting Pass dekt tot vijf gerechten van het feest en kost $45,99 plus belasting; met een Gold- of Diamond-jaarkaart betaal je $42,99. Je koopt hem online of bij de eetkraampjes in het park. Aan de hartige kant staan onder meer jambalaya, aardappelsoep, Stuffing Stackers en gepofte aardappels met buffalo chicken. Zoet wordt het met red-velvet-chocolademelk, vanille-eggnog, een mint-chocolate-chip-browniesundae, zuurstokcupcakes, apple dumplings en peperkoekmannetjes.
 
 Bij de Smoky Mountain Christmas Guided Tour zit je op gereserveerde plaatsen in de [Dollywood Express](ref:dollywood/dollywood-express-train-depot), ontmoet je de figuren en krijg je een snack, een warm drankje en een lanyard om te houden.
 
@@ -90,17 +90,13 @@ Koop je tussen 2 november en 13 december een jaarkaart, dan krijg je er een Brin
 
 ## Bereikbaarheid en parkeren
 
-Dollywood ligt in Pigeon Forge in Tennessee, aan de rand van het nationale park Great Smoky Mountains. Het dichtstbijzijnde vliegveld is McGhee Tyson in Knoxville, en van daar ben je in minder dan een uur bij het park.
+Het park ligt aan de rand van het nationale park Great Smoky Mountains. Het dichtstbijzijnde vliegveld is McGhee Tyson in Knoxville, en van daar ben je in minder dan een uur bij het park.
 
-Parkeren kost $25 per voertuig. Vanaf de parkeerterreinen A tot en met E rijden gratis trams naar de hoofdingang, vanaf terrein F loop je. Preferred Parking vlak bij het park kost $55, met een eigen ticketloket en een eigen ingang. Campers staan voor $30 ook op F. Met een Gold- of Diamond-jaarkaart parkeer je gratis.
+Parkeren kost $25 per voertuig. Vanaf de parkeerterreinen A tot en met E rijden gratis trams naar de hoofdingang, vanaf terrein F loop je. Preferred Parking vlak bij het park kost $55, met een eigen ticketloket en een eigen ingang. Campers staan voor $30 ook op F. Wie een Gold- of Diamond-jaarkaart heeft, parkeert gratis.
 
 ## De twee resorts
 
-In de lobby van het DreamMore Resort and Spa staat een kerstboom van twee verdiepingen hoog, en bij het zwembad draait de Christmas Tree Show. Restaurant Song & Hearth serveert een feestmaal op Thanksgiving, kerstavond, eerste kerstdag en oudjaarsavond. Gasten van DreamMore gaan met de shuttle naar het park en krijgen er TimeSaver Passes bij. HeartSong Lodge & Resort is versierd in de stijl van de Great Smoky Mountains. Het restaurant Ember & Elm serveert op dezelfde feestdagen als Song & Hearth een diner, alleen niet op kerstavond. In beide resorts kun je marshmallows roosteren, en in Camp DW zijn er knutseluurtjes voor kinderen.
-
-## Golden Ticket Awards
-
-Bij de Golden Ticket Awards won Smoky Mountain Christmas 15 keer de prijs voor het beste kerstevenement van een pretpark. Bij de 10Best Awards van USA Today is het feest dit jaar genomineerd.
+In de lobby van het DreamMore Resort and Spa staat een kerstboom van twee verdiepingen hoog, en bij het zwembad draait de Christmas Tree Show. Restaurant Song & Hearth serveert een feestmaal op Thanksgiving, kerstavond, eerste kerstdag en oudjaarsavond. Gasten van DreamMore gaan met de shuttle naar het park en krijgen er TimeSaver Passes bij. In de lobby van HeartSong Lodge & Resort zit je bij de open haard voor ramen van vier verdiepingen hoog, die op lantaarns zijn geïnspireerd. Het restaurant Ember & Elm serveert op dezelfde feestdagen als Song & Hearth een diner, alleen niet op kerstavond. In beide resorts kun je marshmallows roosteren, en in Camp DW zijn er knutseluurtjes voor kinderen.
 
 [Dollywood](ref:dollywood?full)
 

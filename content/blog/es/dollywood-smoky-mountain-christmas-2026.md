@@ -2,7 +2,7 @@
 title: 'En Dollywood todos pagan como niños hasta el 22 de noviembre'
 translationKey: dollywood-smoky-mountain-christmas-2026
 date: '2026-11-05'
-time: '08:30'
+time: '08:02'
 author: patrick
 mode: published
 featured: false
@@ -39,19 +39,19 @@ seo:
     - Dollywood Pigeon Forge
 ---
 
-El viernes 6 de noviembre arranca Smoky Mountain Christmas, la temporada navideña de [Dollywood](ref:dollywood) en Pigeon Forge (Tennessee). Hasta el 22 de noviembre, a un adulto la entrada de un día le cuesta lo mismo que a un niño. La fiesta dura hasta el 3 de enero de 2027.
+El viernes 6 de noviembre arranca Smoky Mountain Christmas, la temporada navideña de [Dollywood](ref:dollywood) en Pigeon Forge (Tennessee). Hasta el 22 de noviembre, a un adulto la entrada de un día le cuesta lo mismo que a un niño. La fiesta dura hasta el 3 de enero de 2027. Ha ganado 15 veces el Golden Ticket Award al mejor evento navideño de un parque de atracciones, y este año además está nominada a los 10Best Awards de USA Today.
 
 ## Luces y nieve
 
-En el parque cuelgan más de seis millones de luces, y cada zona tiene sus colores: Santa's Village va en rojo y verde, Glacier Ridge en azul y blanco, y Craftsman's Valley en el tono cálido de una vela. También vuelve Glacier Ridge, un paisaje de luces de aire ártico que va de Timber Canyon a la parte alta de Craftsman's Valley pasando por Wildwood Grove y Wilderness Pass. En el estanque de Rivertown Junction están las Christmas Reflections: cinco árboles de luces de colores que, cuando oscurece, se reflejan en el agua.
+En el parque cuelgan más de seis millones de luces, rojas y verdes en Santa's Village y con el tono cálido de una vela en Craftsman's Valley. En azul y blanco brilla Glacier Ridge, un paisaje de luces de aire ártico. Ha vuelto y va de Timber Canyon a la parte alta de Craftsman's Valley pasando por Wildwood Grove y Wilderness Pass. En el estanque de Rivertown Junction están las Christmas Reflections: cinco árboles de luces de colores que, cuando oscurece, se reflejan en el agua.
 
 La novedad es Snow in the Grove, en [Wildwood Grove](ref:dollywood/wildwood-grove). Cada noche cae nieve sobre el Wildwood Creek y [The Wildwood Tree](ref:dollywood/the-wildwood-tree) se ilumina de colores al ritmo de la música. Seguramente es la única nieve de las Smokies que cumple un horario. Por allí andan también los personajes navideños del parque: Roly y Poly, Benjamin Bear, y Flit y Flutter.
 
-Este invierno, Country Fair se convierte en Peppermint Valley y se llena de luces rojas y blancas con forma de bastón de caramelo. La mayoría de las atracciones siguen funcionando en Navidad. La más reciente, [NightFlight Expedition](ref:dollywood/nightflight-expedition), es una montaña rusa bajo techo, así que ahí dentro no nieva, ni siquiera con horario.
+Este invierno, Country Fair se convierte en Peppermint Valley y se llena de luces rojas y blancas con forma de bastón de caramelo. La mayoría de las atracciones siguen funcionando en Navidad. La atracción más reciente del parque, [NightFlight Expedition](ref:dollywood/nightflight-expedition), es una montaña rusa bajo techo.
 
 ## Espectáculos y Papá Noel
 
-El espectáculo principal es «Christmas in the Smokies», en el Celebrity Theater. En «Heidi Parton's A Christmas To Remember», Heidi, sobrina de Dolly, canta y cuenta historias de las Navidades de su familia. Vuelven además:
+El espectáculo principal es «Christmas in the Smokies», en el Celebrity Theater. En «Heidi Parton's A Christmas To Remember», Heidi, sobrina de Dolly, canta y cuenta historias de las Navidades de su familia. De años anteriores vuelven otros cinco espectáculos:
 
 - «'Twas the Night Before Christmas»
 - «Christmas with the Kingdom Heirs»
@@ -70,9 +70,9 @@ La promoción «Everyone Pays Kids' Price» vale para las entradas 1-Day que res
 - Pick-A-Day (fecha fija): un día desde 94,99 $, dos días desde 124,99 $
 - Good-Any-Day (cualquier día de apertura de 2026): un día desde 99,99 $, dos días desde 129,99 $
 
-Para niños y mayores sale más barato, y en Pick-A-Day el precio cambia con la fecha, de ahí el «desde».
+Los niños y los mayores pagan menos que los adultos. En Pick-A-Day el precio depende de la fecha, de ahí el «desde».
 
-Con la entrada de un día ya estás dentro de la fiesta. La comida y el aparcamiento se pagan aparte. El Festival Tasting Pass da hasta cinco platos de la fiesta por 45,99 $ más impuestos, o 42,99 $ con pase de temporada Gold o Diamond. Se vende en línea y en los puestos de comida del parque. De salado puedes elegir entre patatas asadas rellenas de pollo Buffalo, jambalaya, Stuffing Stackers y crema de patata. De postre hay un sundae de brownie con menta y chocolate, cacao red velvet, eggnog de vainilla, cupcakes de bastón de caramelo, apple dumplings y galletas de jengibre con forma de muñeco.
+La fiesta en sí va incluida en la entrada de un día; la comida, no. El Festival Tasting Pass cubre hasta cinco platos de la fiesta y cuesta 45,99 $ más impuestos, o 42,99 $ con pase de temporada Gold o Diamond. Se vende en línea y en los puestos de comida del parque. Entre lo salado hay, por ejemplo, jambalaya, crema de patata, Stuffing Stackers y patatas asadas con pollo Buffalo. Lo dulce llega con cacao red velvet, eggnog de vainilla, un sundae de brownie con menta y chocolate, cupcakes de bastón de caramelo, apple dumplings y galletas de jengibre con forma de muñeco.
 
 En la Smoky Mountain Christmas Guided Tour vas en asientos reservados del [Dollywood Express](ref:dollywood/dollywood-express-train-depot), conoces a los personajes y te llevas un tentempié, una bebida caliente y un lanyard de recuerdo.
 
@@ -90,17 +90,13 @@ Quien compre un pase de temporada entre el 2 de noviembre y el 13 de diciembre r
 
 ## Cómo llegar y dónde aparcar
 
-Dollywood está en Pigeon Forge (Tennessee), junto al Parque Nacional de las Great Smoky Mountains. El aeropuerto más cercano es el McGhee Tyson de Knoxville, a menos de una hora del parque.
+El parque está junto al Parque Nacional de las Great Smoky Mountains. El aeropuerto más cercano es el McGhee Tyson de Knoxville, a menos de una hora del parque.
 
-Aparcar cuesta 25 $ por vehículo. Desde los aparcamientos A a E salen tranvías gratuitos hasta la entrada principal; desde el F se va andando. El Preferred Parking, pegado al parque, cuesta 55 $ e incluye taquilla y entrada propias. Las autocaravanas pagan 30 $ y también van al F. Con pase de temporada Gold o Diamond, el aparcamiento es gratis.
+Aparcar cuesta 25 $ por vehículo. Desde los aparcamientos A a E salen tranvías gratuitos hasta la entrada principal; desde el F se va andando. El Preferred Parking, pegado al parque, cuesta 55 $ e incluye taquilla y entrada propias. Las autocaravanas pagan 30 $ y también van al F. Quienes tienen pase de temporada Gold o Diamond aparcan gratis.
 
 ## Los dos resorts
 
-En el vestíbulo del DreamMore Resort and Spa hay un árbol de Navidad de dos plantas, y junto a la piscina se ve la Christmas Tree Show. El restaurante Song & Hearth sirve una comida especial en Acción de Gracias, Nochebuena, Navidad y Nochevieja. Los huéspedes del DreamMore van al parque en lanzadera y reciben TimeSaver Passes. El HeartSong Lodge & Resort está decorado al estilo de las Great Smoky Mountains. Su restaurante, Ember & Elm, ofrece cena los mismos días de fiesta que el Song & Hearth, salvo en Nochebuena. En los dos resorts puedes tostar malvaviscos, y en el Camp DW hay talleres de manualidades para niños.
-
-## Golden Ticket Awards
-
-Smoky Mountain Christmas ha ganado 15 veces el Golden Ticket Award al mejor evento navideño de un parque de atracciones, y este año está nominada a los 10Best Awards de USA Today.
+En el vestíbulo del DreamMore Resort and Spa hay un árbol de Navidad de dos plantas, y junto a la piscina se ve la Christmas Tree Show. El restaurante Song & Hearth sirve una comida especial en Acción de Gracias, Nochebuena, Navidad y Nochevieja. Los huéspedes del DreamMore van al parque en lanzadera y reciben TimeSaver Passes. En el vestíbulo del HeartSong Lodge & Resort puedes sentarte junto a la chimenea, frente a unos ventanales de cuatro plantas inspirados en faroles. Su restaurante, Ember & Elm, ofrece cena los mismos días de fiesta que el Song & Hearth, salvo en Nochebuena. En los dos resorts puedes tostar malvaviscos, y en el Camp DW hay talleres de manualidades para niños.
 
 [Dollywood](ref:dollywood?full)
 

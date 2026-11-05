@@ -2,7 +2,7 @@
 title: "Everyone pays the kids' price at Dollywood until November 22"
 translationKey: dollywood-smoky-mountain-christmas-2026
 date: '2026-11-05'
-time: '08:30'
+time: '08:02'
 author: patrick
 mode: published
 featured: false
@@ -39,19 +39,19 @@ seo:
     - Dollywood Pigeon Forge
 ---
 
-Smoky Mountain Christmas starts at [Dollywood](ref:dollywood) in Pigeon Forge, Tennessee, on Friday, November 6. Until November 22, adults pay the same for a one-day ticket as their kids do. The holiday season runs until January 3, 2027.
+Smoky Mountain Christmas starts at [Dollywood](ref:dollywood) in Pigeon Forge, Tennessee, on Friday, November 6. Until November 22, adults pay the same for a one-day ticket as their kids do. The holiday season runs until January 3, 2027. The festival has won the Golden Ticket Award for best holiday event at an amusement park 15 times, and this year it's also nominated in the USA Today 10Best Awards.
 
 ## Lights and snow
 
-More than six million lights hang in the park, and each area has a color scheme of its own: red and green in Santa's Village, blue and white in Glacier Ridge, warm candlelight in Craftsman's Valley. Glacier Ridge is back too, an Arctic-style landscape of lights that runs from Timber Canyon through Wildwood Grove and Wilderness Pass to the upper end of Craftsman's Valley. By the pond in Rivertown Junction stand the Christmas Reflections, five colorful trees of light that show up a second time in the water once it's dark.
+More than six million lights hang in the park, red and green in Santa's Village and a warm candlelight glow in Craftsman's Valley. Glacier Ridge is back in blue and white, an Arctic-style landscape of lights that runs from Timber Canyon through Wildwood Grove and Wilderness Pass to the upper end of Craftsman's Valley. By the pond in Rivertown Junction stand the Christmas Reflections, five colorful trees of light that show up a second time in the water once it's dark.
 
 New this year is Snow in the Grove, in [Wildwood Grove](ref:dollywood/wildwood-grove). Snow falls over Wildwood Creek every evening, and [The Wildwood Tree](ref:dollywood/the-wildwood-tree) lights up in color, set to music. It's probably the only snow in the Smokies that keeps to a timetable. The park's holiday characters are around too: Roly and Poly, Benjamin Bear, and Flit and Flutter.
 
-Country Fair has become Peppermint Valley this winter, strung with red and white lights shaped like candy canes. Most of the rides keep running through the holiday season. The newest, [NightFlight Expedition](ref:dollywood/nightflight-expedition), is an indoor coaster, so it doesn't snow in there, not even on a timetable.
+Country Fair has become Peppermint Valley this winter, strung with red and white lights shaped like candy canes. Most of the rides keep running through the holiday season. The park's newest ride, [NightFlight Expedition](ref:dollywood/nightflight-expedition), is an indoor coaster.
 
 ## Shows and Santa
 
-The main show is "Christmas in the Smokies" at the Celebrity Theater. In "Heidi Parton's A Christmas To Remember," Dolly's niece Heidi sings and tells stories from her family's Christmases. Also back this year:
+The main show is "Christmas in the Smokies" at the Celebrity Theater. In "Heidi Parton's A Christmas To Remember," Dolly's niece Heidi sings and tells stories from her family's Christmases. Five more shows return from past years:
 
 - "'Twas the Night Before Christmas"
 - "Christmas with the Kingdom Heirs"
@@ -70,9 +70,9 @@ The "Everyone Pays Kids' Price" deal covers 1-Day Tickets you book for a day bet
 - Pick-A-Day (fixed date): one day from $94.99, two days from $124.99
 - Good-Any-Day (any operating day in 2026): one day from $99.99, two days from $129.99
 
-Kids and seniors pay less, and Pick-A-Day prices move with the date, hence the "from".
+Kids and seniors pay less than adults. Pick-A-Day prices depend on the date, hence the "from".
 
-A one-day ticket gets you into the festival, but food and parking cost extra. The Festival Tasting Pass gives you up to five festival dishes for $45.99 plus tax, or $42.99 if you hold a Gold or Diamond pass. You can buy it online or at the food stands in the park. On the savory side, you can choose from buffalo chicken stuffed baked potatoes, jambalaya, Stuffing Stackers and potato soup. For afterwards there's a mint chocolate chip brownie sundae, red velvet hot cocoa, vanilla eggnog, candy cane cupcakes, apple dumplings and gingerbread men.
+The festival itself is included in the one-day ticket; the food isn't. The Festival Tasting Pass covers up to five festival dishes and costs $45.99 plus tax, or $42.99 if you hold a Gold or Diamond pass. You can buy it online or at the food stands in the park. The savory side includes jambalaya, potato soup, Stuffing Stackers and baked potatoes with buffalo chicken. For something sweet there's red velvet hot cocoa, vanilla eggnog, a mint chocolate chip brownie sundae, candy cane cupcakes, apple dumplings and gingerbread men.
 
 On the Smoky Mountain Christmas Guided Tour you sit in reserved seats on the [Dollywood Express](ref:dollywood/dollywood-express-train-depot), meet the characters and pick up a snack, a hot drink and a lanyard to keep.
 
@@ -90,17 +90,13 @@ Buy a season pass between November 2 and December 13 and you get a Bring-A-Frien
 
 ## Getting there and parking
 
-Dollywood is in Pigeon Forge, Tennessee, at the edge of Great Smoky Mountains National Park. The nearest airport is McGhee Tyson in Knoxville, less than an hour's drive from the park.
+The park sits at the edge of Great Smoky Mountains National Park. The nearest airport is McGhee Tyson in Knoxville, less than an hour's drive from the park.
 
 Parking is $25 per vehicle. Free trams run from lots A to E to the main entrance; from lot F you walk. Preferred Parking right by the park is $55 and comes with its own ticket window and entrance. RVs also park in lot F, for $30. Gold and Diamond passholders park free.
 
 ## The two resorts
 
-At DreamMore Resort and Spa, a Christmas tree two floors tall stands in the lobby, and the Christmas Tree Show plays by the pool. The Song & Hearth restaurant serves a holiday meal on Thanksgiving, Christmas Eve, Christmas Day and New Year's Eve. DreamMore guests ride a shuttle to the park and get TimeSaver Passes as well. HeartSong Lodge & Resort takes its holiday decorations from the Great Smoky Mountains, and its restaurant Ember & Elm serves dinner on the same holidays as Song & Hearth, except Christmas Eve. At both resorts you can roast marshmallows, and Camp DW runs craft sessions for kids.
-
-## Golden Ticket Awards
-
-Smoky Mountain Christmas has won the Golden Ticket Award for best holiday event at an amusement park 15 times. This year it's nominated in the USA Today 10Best Awards.
+At DreamMore Resort and Spa, a Christmas tree two floors tall stands in the lobby, and the Christmas Tree Show plays by the pool. The Song & Hearth restaurant serves a holiday meal on Thanksgiving, Christmas Eve, Christmas Day and New Year's Eve. DreamMore guests ride a shuttle to the park and get TimeSaver Passes as well. In the HeartSong Lodge & Resort lobby you can sit by the fire in front of four-story windows modeled on lanterns. Its restaurant Ember & Elm serves dinner on the same holidays as Song & Hearth, except Christmas Eve. At both resorts you can roast marshmallows, and Camp DW runs craft sessions for kids.
 
 [Dollywood](ref:dollywood?full)
 
