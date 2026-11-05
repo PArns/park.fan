@@ -47,7 +47,12 @@ export function ShowCard({
   isCurrentlyInSeason,
 }: ShowCardProps) {
   const card = (
-    <Card className="hover:border-primary/50 relative h-full transition-all duration-200 hover:scale-[1.02] hover:shadow-md">
+    <Card
+      className={cn(
+        'relative h-full transition-all duration-200',
+        href && 'hover:border-primary/50 hover:scale-[1.02] hover:shadow-md'
+      )}
+    >
       {/* `max-sm:gap-7`: below `sm` each icon's `::after` touch target is 44 px, and 28 px
             between them puts the two centres 44 px apart, so the zones meet without overlapping. A
             mouse has no such zone, hence `gap-1` above `sm`. */}

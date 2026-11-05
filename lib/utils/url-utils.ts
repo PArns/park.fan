@@ -87,7 +87,10 @@ export function parkChapterUrl(
   chapter: 'shows' | 'restaurants',
   park?: Omit<ParkGeoData, 'url'>
 ): string | null {
-  const parkUrl = park ? buildParkUrl({ ...park, url }) : convertApiUrlToFrontendUrl(url);
+  const parkUrl =
+    park?.continent && park.country && park.city
+      ? buildParkUrl({ ...park, url })
+      : convertApiUrlToFrontendUrl(url);
   return parkUrl.startsWith('/parks/') ? `${parkUrl.split('#')[0]}#${chapter}` : null;
 }
 

@@ -433,6 +433,8 @@ export function BlogEditorClient({ initialData }: { initialData: EditorInitialDa
       const baseFm = src.fm;
       const newFm: EditorFrontmatter = {
         ...baseFm,
+        // A locale that already has a file keeps its own unknown fields (its caption, its time).
+        raw: drafts[target]?.fm.raw ?? baseFm.raw,
         title: data.title,
         excerpt: data.excerpt,
         seoTitle: data.seoTitle ?? '',

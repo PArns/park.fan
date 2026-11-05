@@ -125,7 +125,7 @@ export function KpiTiles({
         <Tile className="space-y-1.5">
           <p
             className="text-muted-foreground flex items-center gap-1.5 text-xs font-medium"
-            title="Bot-Anfragen gegen Bot-Anfragen plus Aufrufe. Die Bots zählen jede Anfrage, nicht nur Seitenaufrufe, der Anteil ist also eine Obergrenze."
+            title="Bot-Anfragen gegen Bot-Anfragen plus Aufrufe. Die Bots zählen jede Anfrage, nicht nur Seitenaufrufe, der Anteil ist also eine Obergrenze. Bots werden erst gezählt, seit der Zähler in der API läuft; ein Zeitraum, der früher beginnt, liegt zu niedrig."
           >
             <Bot className="h-3.5 w-3.5" aria-hidden="true" />
             Bot-Anteil

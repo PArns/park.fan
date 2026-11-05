@@ -21,11 +21,11 @@ const csv = reportCsv(
 );
 assert.ok(csv.startsWith('﻿'));
 assert.deepEqual(csv.slice(1).trimEnd().split('\r\n'), [
-  'Tabelle,Feld,Wert,value,views,referrers,extra',
-  'Übersicht,Von,2026-10-01,,,,',
-  'Übersicht,total.views,12,,,,',
-  'items,,,/de/parks,10,"[{""referrer"":""a"",""views"":1}]",',
-  `items,,,"'=HYPERLINK(""x"")",2,,"a,b"`,
+  'Tabelle;Feld;Wert;value;views;referrers;extra',
+  'Übersicht;Von;2026-10-01;;;;',
+  'Übersicht;total.views;12;;;;',
+  'items;;;/de/parks;10;"[{""referrer"":""a"",""views"":1}]";',
+  `items;;;"'=HYPERLINK(""x"")";2;;"a,b"`,
 ]);
 assert.equal(csvNamePart('Ohne Suchbesuch: Parks'), 'ohne-suchbesuch-parks');
 console.log('report-csv: all assertions passed.');

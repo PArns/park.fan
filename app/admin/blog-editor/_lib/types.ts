@@ -59,10 +59,10 @@ export function toFrontmatter(fm: EditorFrontmatter): BlogFrontmatter {
   put(out, 'tags', fm.tags);
   put(out, 'category', fm.category.trim());
   if (fm.coverSrc.trim()) {
-    const cover: Record<string, unknown> = {
-      ...(out.coverImage as object),
-      src: fm.coverSrc.trim(),
-    };
+    const kept = (out.coverImage ?? {}) as Record<string, unknown>;
+    // A caption the form can't edit belongs to the photo it was written for, not to a new one.
+    const cover: Record<string, unknown> = { ...kept, src: fm.coverSrc.trim() };
+    if (kept.src !== cover.src) delete cover.caption;
     put(cover, 'alt', fm.coverAlt.trim());
     put(cover, 'credit', fm.coverCredit.trim());
     out.coverImage = cover;

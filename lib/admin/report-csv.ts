@@ -62,7 +62,8 @@ function csvCell(value: CsvCell): string {
 /**
  * An admin report's API answer as one CSV: `meta` (window and filters) and the answer's single
  * values first as `Übersicht` rows, then every list as rows named by its path, the columns the
- * union of all keys. Comma-separated, UTF-8 with a byte order mark so Excel reads the umlauts.
+ * union of all keys. Semicolon-separated, because German Excel splits a double-clicked file on
+ * `;`; UTF-8 with a byte order mark so Excel reads the umlauts.
  */
 export function reportCsv(data: unknown, meta: CsvMeta = []): string {
   const rows: Record<string, CsvCell>[] = [];
@@ -75,7 +76,7 @@ export function reportCsv(data: unknown, meta: CsvMeta = []): string {
   const all = [...summary, ...rows];
   const columns = [...new Set(all.flatMap((row) => Object.keys(row)))];
   const lines = [columns, ...all.map((row) => columns.map((column) => row[column]))];
-  return `﻿${lines.map((line) => line.map(csvCell).join(',')).join('\r\n')}\r\n`;
+  return `﻿${lines.map((line) => line.map(csvCell).join(';')).join('\r\n')}\r\n`;
 }
 
 /** A file name part from free text: lower case, letters, digits and dashes only. */

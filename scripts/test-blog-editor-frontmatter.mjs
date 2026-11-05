@@ -35,5 +35,17 @@ for (const locale of locales) {
   }
 }
 
+// A new cover photo drops the old one's caption; the same photo keeps it.
+{
+  const fm = fromFrontmatter({ title: 'T', coverImage: { src: '/media/a.jpg', caption: 'Alt' } });
+  const same = toFrontmatter(fm).coverImage;
+  const swapped = toFrontmatter({ ...fm, coverSrc: '/media/b.jpg' }).coverImage;
+  if (same?.caption === 'Alt' && swapped && !('caption' in swapped)) passed++;
+  else {
+    failed++;
+    console.log('❌ FAIL: cover caption follows its photo');
+  }
+}
+
 console.log(`${passed} passed, ${failed} failed`);
 if (failed) process.exit(1);
