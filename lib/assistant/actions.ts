@@ -11,7 +11,7 @@ export interface AssistantPlannerPark {
   timezone: string;
 }
 
-/** A park or ride card from live data; mirrors the API's `AssistantCard`. */
+/** A card from live data (a park, rides, parks, days or stats); mirrors the API's `AssistantCard`. */
 export type AssistantCard =
   | {
       kind: 'park';
@@ -50,6 +50,43 @@ export type AssistantCard =
         crowdLevel?: string | null;
         avgWaitMinutes?: number | null;
       }>;
+    }
+  | {
+      kind: 'calendar';
+      park: string;
+      url: string | null;
+      /** Consecutive park-local days; the hours are instants with the park's offset. */
+      days: Array<{
+        date: string;
+        status: 'OPERATING' | 'CLOSED' | 'UNKNOWN';
+        crowdLevel: string | null;
+        opens: string | null;
+        closes: string | null;
+        holiday: boolean;
+      }>;
+    }
+  | {
+      kind: 'tiles';
+      park: string;
+      url: string | null;
+      date: string;
+      /** Right now, or a forecast for `date`. */
+      live: boolean;
+      crowdLevel: string | null;
+      avgWaitMinutes: number | null;
+      /** Live: the highest so far today; forecast: the expected headliner peak. */
+      peakWaitMinutes: number | null;
+      openRides: number | null;
+      totalRides: number | null;
+      opens: string | null;
+      closes: string | null;
+      weather: {
+        condition: string | null;
+        tempMin: number | null;
+        tempMax: number | null;
+        /** The season's usual values, past the forecast's reach. */
+        climateNormal: boolean;
+      } | null;
     };
 
 /** What Parky may ask the widget to do; mirrors the API's `ClientAction`. */
@@ -142,6 +179,60 @@ const isParkList = (parks: unknown) =>
 /** A checked link as the path it was checked as, so what a card links is what passed. */
 const sitePath = (url: string | null | undefined) => (url == null ? null : safeAssistantHref(url));
 
+const DAY_STATUSES = new Set(['OPERATING', 'CLOSED', 'UNKNOWN']);
+const MAX_CALENDAR_DAYS = 42;
+const number = (v: unknown) => (typeof v === 'number' && Number.isFinite(v) ? v : null);
+const instant = (v: unknown) =>
+  short(v, 40) && !Number.isNaN(Date.parse(v as string)) ? (v as string) : null;
+const level = (v: unknown, unknown: boolean) =>
+  typeof v === 'string' && (CROWD.has(v) || (unknown && v === 'unknown')) ? v : null;
+
+/** Days in order, one per date, within the six weeks a card can draw. */
+function isDayRun(days: unknown): days is Array<{ date: string }> {
+  if (!Array.isArray(days) || days.length === 0 || days.length > MAX_CALENDAR_DAYS) return false;
+  const dates = days.map((d) =>
+    typeof d?.date === 'string' && DAY.test(d.date) ? Date.parse(d.date) : NaN
+  );
+  return (
+    dates.every((at, i) => !Number.isNaN(at) && (i === 0 || at > dates[i - 1])) &&
+    dates[dates.length - 1] - dates[0] < MAX_CALENDAR_DAYS * 86_400_000
+  );
+}
+
+/** Days and stats: what the card cannot draw is dropped, a malformed shape refuses the card. */
+function isDaysOrTiles(card: AssistantCard): boolean {
+  if (card.kind === 'calendar') {
+    if (!isDayRun(card.days)) return false;
+    for (const day of card.days) {
+      if (!DAY_STATUSES.has(day.status)) day.status = 'UNKNOWN';
+      day.crowdLevel = day.status === 'CLOSED' ? null : level(day.crowdLevel, true);
+      day.opens = instant(day.opens);
+      day.closes = instant(day.closes);
+      day.holiday = day.holiday === true;
+    }
+    return true;
+  }
+  if (card.kind !== 'tiles' || !DAY.test(card.date) || typeof card.live !== 'boolean') return false;
+  card.crowdLevel = level(card.crowdLevel, true);
+  card.avgWaitMinutes = number(card.avgWaitMinutes);
+  card.peakWaitMinutes = number(card.peakWaitMinutes);
+  card.openRides = number(card.openRides);
+  card.totalRides = number(card.totalRides);
+  card.opens = instant(card.opens);
+  card.closes = instant(card.closes);
+  const w = card.weather;
+  card.weather =
+    w && typeof w === 'object'
+      ? {
+          condition: short(w.condition, 40) ? w.condition : null,
+          tempMin: number(w.tempMin),
+          tempMax: number(w.tempMax),
+          climateNormal: w.climateNormal === true,
+        }
+      : null;
+  return true;
+}
+
 function isCard(card: AssistantCard | undefined): card is AssistantCard {
   if (!card) return false;
   if (card.kind === 'parks') {
@@ -159,6 +250,9 @@ function isCard(card: AssistantCard | undefined): card is AssistantCard {
   }
   if (!orNull(card.url, isSiteUrl)) return false;
   card.url = sitePath(card.url);
+  if (card.kind === 'calendar' || card.kind === 'tiles') {
+    return short(card.park) && isDaysOrTiles(card);
+  }
   if (card.kind === 'rides') {
     if (!short(card.park) || !isRideList(card.rides)) return false;
     for (const ride of card.rides) ride.url = sitePath(ride.url);

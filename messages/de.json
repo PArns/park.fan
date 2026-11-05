@@ -3045,7 +3045,20 @@
     "flingRough1": "Das geht aber ganz schön rund hier!",
     "flingRough2": "Das ist ja wie im Mystery Castle!",
     "flingRough3": "„Never the same fear twice“, hieß es. Das war jetzt dreimal dieselbe!",
-    "flingRough4": "Bitte während der Fahrt sitzen bleiben!"
+    "flingRough4": "Bitte während der Fahrt sitzen bleiben!",
+    "cardNow": "Gerade jetzt",
+    "cardForecastFor": "Prognose für {date}",
+    "cardPeakSoFar": "Spitze bisher",
+    "cardPeakExpected": "Erwartete Spitze",
+    "cardRidesOpen": "Attraktionen offen",
+    "cardSeasonal": "Wetter im Mittel der Jahreszeit",
+    "cardCalendarHint": "Tippe auf einen Tag, dann siehst du die Öffnungszeiten.",
+    "cardCalendarLink": "Zum Wartezeiten-Kalender",
+    "cardCrowd": "Auslastung",
+    "cardAvgWait": "Ø Wartezeit",
+    "cardHours": "Öffnungszeiten",
+    "cardWeather": "Wetter",
+    "cardHoliday": "Feiertag"
   },
   "parkyPage": {
     "metaTitle": "Parky, der Chat-Assistent von park.fan",

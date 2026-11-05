@@ -3045,7 +3045,20 @@
     "flingRough1": "Qui si gira parecchio!",
     "flingRough2": "Sembra di stare su Mystery Castle!",
     "flingRough3": "«Never the same fear twice», dicevano. Questa era la stessa tre volte!",
-    "flingRough4": "Restate seduti per tutta la durata della corsa!"
+    "flingRough4": "Restate seduti per tutta la durata della corsa!",
+    "cardNow": "In questo momento",
+    "cardForecastFor": "Previsione per {date}",
+    "cardPeakSoFar": "Picco finora",
+    "cardPeakExpected": "Picco previsto",
+    "cardRidesOpen": "Attrazioni aperte",
+    "cardSeasonal": "Meteo medio stagionale",
+    "cardCalendarHint": "Tocca un giorno per vedere gli orari.",
+    "cardCalendarLink": "Apri il calendario tempi di attesa",
+    "cardCrowd": "Affluenza",
+    "cardAvgWait": "Attesa media",
+    "cardHours": "Orari",
+    "cardWeather": "Meteo",
+    "cardHoliday": "Festività"
   },
   "parkyPage": {
     "metaTitle": "Parky, l’assistente in chat di park.fan",

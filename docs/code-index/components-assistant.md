@@ -7,7 +7,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`assistant-card.tsx`](../../components/assistant/assistant-card.tsx)
 
-- `AssistantCardView` _component_: A park, a ride, a park's rides or a few parks as a card in Parky's chat: the site's own status, crowd and wait chips and photos on live data. A single park or ride is one link; in a list every row links its own page.
+- `AssistantCardView` _component_: A park, a ride, a park's rides, a few parks, a park's next days or its day in stat tiles as a card in Parky's chat: the site's own status, crowd and wait chips and photos on live data.
 
 ### [`assistant-challenge.tsx`](../../components/assistant/assistant-challenge.tsx)
 
