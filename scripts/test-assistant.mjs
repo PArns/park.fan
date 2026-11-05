@@ -587,8 +587,35 @@ check(
 );
 check(
   rideKeyframe({ x: 20, y: 40, angle: 45, at: 0.5 }).transform,
-  'translate(-4px, -9px) rotate(45deg) scale(1, 1)',
+  'translate(-4px, -9px) rotate(45deg) translate(0px, 0px) scale(1, 1)',
   'a stop as a keyframe, turned about the wheels'
+);
+check(
+  rideKeyframe({ x: 24, y: 20, angle: 0, at: 0.5, lift: 6 }).transform,
+  'translate(0px, -29px) rotate(0deg) translate(0px, -6px) scale(1, 1)',
+  'airtime floats Parky up off his seat in the car'
+);
+for (const ride of ['hills', 'tower', 'flume']) {
+  check(
+    RIDE_MOTION[ride].stops.some((stop) => stop.lift > 0),
+    true,
+    `${ride}: Parky gets airtime`
+  );
+}
+check(
+  RIDE_MOTION.flume.splash?.at,
+  RIDE_MOTION.flume.stops.find((stop) => stop.scaleY < 1)?.at,
+  'the flume splashes as the boat hits the water'
+);
+check(
+  RIDE_MOTION.flume.stops.some((stop) => stop.opacity === 0),
+  true,
+  'the log boat drifts out of the picture and floats back in'
+);
+check(
+  RIDE_MOTION.teacups.stops.filter((stop) => stop.x === REST.x && stop.y === REST.y).length > 3,
+  true,
+  'the teacup passes the station on each lap'
 );
 check([isRide('tower'), isRide('egg'), isRide(null)], [true, false, false], 'a ride by name');
 {
@@ -605,7 +632,7 @@ check([isRide('tower'), isRide('egg'), isRide(null)], [true, false, false], 'a r
   );
   check(
     fitting({ left: 828, top: 102, width: 80 }),
-    ['coaster', 'hills'],
+    ['coaster', 'hills', 'flume', 'teacups'],
     'in the window on a short laptop screen the launch and the free fall would leave the top'
   );
   check(fitting({ left: 828, top: 290, width: 80 }), [...RIDES], 'a tall screen fits them all');
