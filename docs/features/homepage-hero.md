@@ -170,6 +170,12 @@ or shrinks; its height eases (`useAnimatedHeight`) and it is capped to the room 
 (`--hero-search-max-h`). It is never unmounted, because cmdk's `aria-controls` and
 `aria-activedescendant` point into it.
 
+**Under the browse rows, the visitor's starred parks** („Favoriten", at most four,
+`useFavoriteParkRows`), in the hero and in the palette; a park the browse rows already list is left
+out. They come from `useFavorites`' query, which the homepage's favourites band has already run, so
+the list costs no request there; it does not poll. A click counts as `favorite_park`. „Recently
+viewed" is not listed: nothing records which pages a visitor opened.
+
 - **The field and its list are one object**: `HeroSearchFrame` is one `GlassCard variant="heavy"`
   from the field's top edge down under the list, with the brand colour as its border and a soft
   ring of it that firms up on focus; the search icon is in the brand colour too. On the photo the

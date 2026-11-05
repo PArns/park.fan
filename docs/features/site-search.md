@@ -197,7 +197,7 @@ the viewport come with every hit, the surface with every search event.
   `useSettledQueryEvents`; `glossary_searched` is gone, the glossary's typing is `search_typed`.
 - **`position`** is the row's place in its own group (the first park, the second guide), bucketed by
   `searchPosition`: 1, 2, 3, 4-5, 6-10, 11+. **`item`** says which list the row came from:
-  `nearby_park`, `in_park_ride`, `popular_park`, `news`, `guide`.
+  `nearby_park`, `in_park_ride`, `popular_park`, `favorite_park`, `news`, `guide`.
 - **The palette knows its surface**: `SearchCommand` opens it as its `searchOpenSource`, `/` as
   `keyboard`, and the hero's type-anywhere shortcut on a phone as `hero`; every event of that opening
   carries it. The hero's phone field hands its palette the field's session (`session`).

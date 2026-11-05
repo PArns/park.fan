@@ -265,6 +265,7 @@ export default function HeroInlineSearchPanel({
               onGlossarySelect={handleGlossarySelect}
               onPostSelect={handlePostSelect}
               browseItems={withStatusLabels(heroBrowseRows(search.browse))}
+              labelFavorites={withStatusLabels}
               browseHeader={<HeroBrowseHeader browse={search.browse} />}
               browseRowClassName={HERO_ROW_CLASS}
               listClassName="min-h-0 flex-1"
