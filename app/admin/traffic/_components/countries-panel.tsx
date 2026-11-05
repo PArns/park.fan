@@ -11,6 +11,7 @@ import {
 } from '../_lib/use-traffic';
 import { MEASURE_UNIT, breakdownRow } from './breakdown-panel';
 import { HourlyNotice } from './hourly-notice';
+import { TrafficCsvButton } from './list-parts';
 import { WorldMap } from './world-map';
 
 /**
@@ -28,7 +29,11 @@ export function CountriesPanel({ filters }: { filters: TrafficFilters & TrafficF
 
   return (
     <Panel>
-      <PanelHeader title={title} hint={hint} />
+      <PanelHeader
+        title={title}
+        hint={hint}
+        action={<TrafficCsvButton report={title} data={data} filters={filters} />}
+      />
       {!data && error ? (
         <ErrorState message={`${title}: ${error.message}`} onRetry={() => void refetch()} />
       ) : !data ? (

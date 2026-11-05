@@ -186,6 +186,10 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `CopyButton` _component_: Copies `value` to the clipboard and says so for a moment. When the browser refuses (an insecure context, a blocked permission) the button says that instead, so a secret shown once is never left on screen believing it was copied.
 
+### [`_ui/csv-button.tsx`](../../app/admin/_ui/csv-button.tsx)
+
+- `CsvButton` _component_: Saves what a report shows as a CSV file, built in the browser from the answer the page already holds (`reportCsv`), so the file has exactly the window and filters on screen and costs no request. Disabled until there is an answer.
+
 ### [`_ui/curated-draft.ts`](../../app/admin/_ui/curated-draft.ts)
 
 Crash protection for the curated-fields editor: a draft in localStorage survives every way out of the form (a tab, a link, a reload, the back button, a crash), which no navigation guard can cover.
@@ -264,6 +268,11 @@ Crash protection for the curated-fields editor: a draft in localStorage survives
 - `unretireAttraction` _function_: Takes a ride's retirement back, so it counts as an active attraction again.
 - `RETIRE_REASON_REQUIRED` _const_: Reason and source are required: a retirement takes the ride out of every list and the sitemap, and without a written reason nobody can answer for the decision later.
 - `RETIREMENT_KEYS` _const_: Query prefixes a retirement invalidates.
+
+### [`_ui/row-links.tsx`](../../app/admin/_ui/row-links.tsx)
+
+- `PublicLink` _component_: The icon link to a page on park.fan, opening in a new tab; `label` is the accessible name.
+- `PageLinks` _component_: The two links every page row carries: the public page, and for a park or ride its editor.
 
 ### [`_ui/toast.tsx`](../../app/admin/_ui/toast.tsx)
 
@@ -857,7 +866,6 @@ Route `/admin/system` (page).
 
 ### [`traffic/_components/breakdown-panel.tsx`](../../app/admin/traffic/_components/breakdown-panel.tsx)
 
-- `RowLink` _component_: The small link beside a row: an icon that is a way out of the filter and into the site.
 - `BreakdownPanel` _component_: One breakdown of the window: the biggest values of a dimension with bar, count and share, and for the dimensions that start a visit (entry page, referrer, channel) the bounce rate. Every row is a filter switch for the page.
 - `breakdownRow` _function_: A row of a breakdown: pressing it filters the whole page by that value (a language sets the language switch; the exit page is no filter, since a visit's last page is known only when it ends), and a page, an entry or exit page or a referrer …
 - `MEASURE_UNIT` _const_: What the counts of a breakdown are called, by what the API says it counted.
@@ -902,9 +910,8 @@ Route `/admin/system` (page).
 
 ### [`traffic/_components/list-parts.tsx`](../../app/admin/traffic/_components/list-parts.tsx)
 
-- `PublicLink` _component_: The icon link to a page on park.fan, opening in a new tab; `label` is the accessible name.
-- `PageLinks` _component_: The two links every page row carries: the public page, and for a park or ride its editor.
 - `MoreButton` _component_: A show-more switch for a list that is longer than `LIST_SHOWN`.
+- `TrafficCsvButton` _component_: The CSV button of a traffic report: `data` is the answer the panel shows, and the file is named by `report` and the window, its first rows the window, language, filters and network scope.
 - `useShowMore` _hook_: The first `LIST_SHOWN` rows of a list, or all of them once opened, with the props for its `MoreButton` and a way to fold it again when the list changes underneath.
 - `LIST_SHOWN` _const_: Rows shown before the rest of a list waits behind a button.
 

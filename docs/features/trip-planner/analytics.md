@@ -57,7 +57,7 @@ planner event or changing where one fires.
 ## Which park, which ride
 
 The plan stores slugs, and an event names its subject by UUID. `lib/planner/entity-ids.ts` keeps
-the ids a page has already named, in memory for the tab, never in the plan:
+the ids a page has already named, in memory for the tab:
 
 - the page's park, from `PlannerPageParkBeacon` (`id`) on every park-scoped route;
 - the park picked in the wizard, from the search hit's `id`;
@@ -65,7 +65,10 @@ the ids a page has already named, in memory for the tab, never in the plan:
 - a `/plan/day` answer's `parkId`, `rides[].attractionId` and `shows[].showId`, where the API sends
   them.
 
-A slug no page has named goes without an entity, never with a guess. An item event names the ride
+A park's id also goes into the plan (`PlannerPark.parkId`) with the next write to that park, so
+`plan_day_started` and `plan_optimized` still name the park when a plan from an earlier visit is
+reopened where no page has named it yet; `parkIdOf` reads the tab's ids first, then the plan's. Ride
+and show ids stay in memory. A slug nobody has named goes without an entity, never with a guess. An item event names the ride
 or the show and never the park, so the ranking of planned rides holds rides only; the park ranking
 comes from the park events (`plan_day_started` above all). Nothing here is about the visitor:
 counts per day, like every other event.

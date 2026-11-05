@@ -1,7 +1,5 @@
 'use client';
 
-import Link from 'next/link';
-import { ExternalLink, Pencil } from 'lucide-react';
 import type { Locale } from '@/i18n/config';
 import {
   BREAKDOWN_PANELS,
@@ -10,7 +8,6 @@ import {
   formatCount,
   formatShare,
   isFilterDimension,
-  pathEditorHref,
   referrerHref,
   VISIT_DIMENSIONS,
 } from '@/lib/admin/site-analytics';
@@ -21,6 +18,7 @@ import type {
   BreakdownResponse,
 } from '@/lib/api/admin-site-analytics';
 import { BarList, type BarRow } from '../../_ui/charts';
+import { PageLinks, PublicLink } from '../../_ui/row-links';
 import { ErrorState, Panel, PanelBody, PanelHeader, SkeletonRows } from '../../_ui/primitives';
 import {
   useTrafficData,
@@ -28,40 +26,9 @@ import {
   type TrafficFilters,
 } from '../_lib/use-traffic';
 import { HourlyNotice } from './hourly-notice';
+import { TrafficCsvButton } from './list-parts';
 
 type PanelFilters = TrafficFilters & TrafficFilterActions;
-
-/** The small link beside a row: an icon that is a way out of the filter and into the site. */
-export function RowLink({
-  href,
-  label,
-  external,
-  children,
-}: {
-  href: string;
-  label: string;
-  external?: boolean;
-  children: React.ReactNode;
-}) {
-  const className =
-    'text-muted-foreground hover:text-primary flex h-6 w-6 items-center justify-center rounded';
-  return external ? (
-    <a
-      href={href}
-      target="_blank"
-      rel="noreferrer noopener"
-      title={label}
-      aria-label={label}
-      className={className}
-    >
-      {children}
-    </a>
-  ) : (
-    <Link href={href} title={label} aria-label={label} className={className}>
-      {children}
-    </Link>
-  );
-}
 
 /** What the counts of a breakdown are called, by what the API says it counted. */
 export const MEASURE_UNIT: Record<BreakdownMeasure, string> = {
@@ -101,33 +68,13 @@ export function breakdownRow(
     row.onSelect = () => filters.toggleFilter(dim, item.value);
   }
   if (dim === 'path' || dim === 'entry' || dim === 'exit') {
-    const editor = pathEditorHref(item.value);
-    return {
-      ...row,
-      startTruncate: true,
-      actions: (
-        <>
-          <RowLink href={item.value} label="Auf park.fan öffnen" external>
-            <ExternalLink className="h-3 w-3" />
-          </RowLink>
-          {editor && (
-            <RowLink href={editor} label="Im Editor öffnen">
-              <Pencil className="h-3 w-3" />
-            </RowLink>
-          )}
-        </>
-      ),
-    };
+    return { ...row, startTruncate: true, actions: <PageLinks path={item.value} /> };
   }
   if (dim === 'referrer') {
     const href = referrerHref(item.value);
     return {
       ...row,
-      actions: href && (
-        <RowLink href={href} label="Website öffnen" external>
-          <ExternalLink className="h-3 w-3" />
-        </RowLink>
-      ),
+      actions: href && <PublicLink href={href} label="Website öffnen" />,
     };
   }
   return row;
@@ -172,7 +119,12 @@ export function BreakdownPanel({
       <PanelHeader
         title={title}
         hint={visitsOfPages ? `${hint}. ${visitsOfPages}` : hint}
-        action={<span className="text-muted-foreground text-[11px]">{unit}</span>}
+        action={
+          <span className="flex items-center gap-2">
+            <span className="text-muted-foreground text-[11px]">{unit}</span>
+            <TrafficCsvButton report={title} data={data} filters={filters} />
+          </span>
+        }
       />
       {!data && error ? (
         <ErrorState message={`${title}: ${error.message}`} onRetry={() => void refetch()} />

@@ -125,7 +125,7 @@ Whether the drag gesture has been explained once: a store over `localStorage`, l
 - `rememberRideId` _function_: Note a ride's UUID under its park.
 - `rememberShowId` _function_: Note a show's UUID under its park.
 - `rememberPlanDayIds` _function_: Note every id a `/plan/day` answer carries.
-- `parkIdOf` _function_: A park's UUID, where a page has named it.
+- `parkIdOf` _function_: A park's UUID, where a page has named it in this tab or the plan has stored it.
 - `rideIdOf` _function_: A ride's UUID, where a page has named it.
 - `showIdOf` _function_: A show's UUID, where a page has named it.
 - Types: `PlanDayIds`

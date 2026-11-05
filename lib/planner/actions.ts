@@ -16,6 +16,7 @@ import {
   MIN_CUSTOM_MINUTES,
 } from './types';
 import { clampRiderHeight } from './party';
+import { parkIdOf } from './entity-ids';
 import { SNAP_MIN_FINE } from './day-grid';
 import { dayClock, resolveTimeZone } from './park-time';
 
@@ -74,12 +75,14 @@ function withDay(
     days: {},
   };
 
+  const parkId = park.parkId ?? parkIdOf(parkSlug);
   return {
     ...state,
     parks: {
       ...state.parks,
       [parkSlug]: {
         ...park,
+        ...(parkId && { parkId }),
         // A park added under a slug alone gets its real name and path once a caller supplies them.
         name: seed?.parkName ?? park.name,
         geo: seed?.geo ?? park.geo,

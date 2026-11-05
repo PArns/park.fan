@@ -80,7 +80,7 @@ export function useSettledQueryEvents(
     if (query.trim().length < 3 || found === null) return;
     const timer = setTimeout(() => {
       session.typed();
-      if (!found) session.noResults();
+      if (!found) session.noResults(query);
     }, SEARCH_SETTLE_MS);
     return () => clearTimeout(timer);
   }, [session, query, found]);

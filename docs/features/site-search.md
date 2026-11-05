@@ -158,14 +158,14 @@ the viewport come with every hit, the surface with every search event.
 | `compare`        | the park picker of the comparison           | a focus that follows a blur                                                                               |
 | `glossary`       | the glossary overview's field               | a focus that follows a blur, also the one typing on an unfocused page gives it                            |
 
-| Event                   | Sent                                                                | Properties                                 |
-| ----------------------- | ------------------------------------------------------------------- | ------------------------------------------ |
-| `search_opened`         | once per opening                                                    | `surface`                                  |
-| `search_typed`          | once per opening, when a query of 3+ characters has settled         | `surface`                                  |
-| `search_no_results`     | once per opening, when a settled query found nothing on the surface | `surface`                                  |
-| `search_result_clicked` | a result opened                                                     | `surface`, `result` (its kind), `position` |
-| `search_browse_clicked` | a row of the list shown before typing opened                        | `surface`, `item`, `position`              |
-| `search_view_all`       | „Alle Ergebnisse", on the way to `/search`                          | `surface`                                  |
+| Event                   | Sent                                                                | Properties                                                           |
+| ----------------------- | ------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| `search_opened`         | once per opening                                                    | `surface`                                                            |
+| `search_typed`          | once per opening, when a query of 3+ characters has settled         | `surface`                                                            |
+| `search_no_results`     | once per opening, when a settled query found nothing on the surface | `surface`, `length` (`1-4` … `16+`)                                  |
+| `search_result_clicked` | a result opened                                                     | `surface`, `result` (its kind), `position`, `tab` (palette and hero) |
+| `search_browse_clicked` | a row of the list shown before typing opened                        | `surface`, `item`, `position`                                        |
+| `search_view_all`       | „Alle Ergebnisse", on the way to `/search`                          | `surface`                                                            |
 
 - **Per opening, so the rates divide.** `createSearchSession` (`lib/analytics/search-session.ts`)
   holds one opening at a time: a second focus inside it, a second query, a second dead end send
@@ -189,6 +189,10 @@ the viewport come with every hit, the surface with every search event.
   take the result's `id` and send it only when it is a UUID; a place's `city:slug` and a post go
   without). That is what ranks the parks and rides opened most from a search in the admin, without
   a query ever being sent. On `/search`, `searchResultData` carries the id as `data-search-id`.
+- **Never the query.** `search_no_results` carries only the class of the query's length
+  (`searchQueryLength`: `1-4`, `5-8`, `9-15`, `16+` characters, trimmed). `search_result_clicked`
+  from the palette and the hero carries the `tab` the list showed (`all` or a category,
+  `session.showTab`); a surface without tabs sends none.
 - **The fields that filter a list count like the others.** The ride search on a park page counts a
   dead end when no ride, open or closed, matches; a ride card opened from the hits is a click, with
   its place in its land, while a button inside the card (the alert bell, the planner) is none. The

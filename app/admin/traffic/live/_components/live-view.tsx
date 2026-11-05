@@ -3,7 +3,7 @@
 import { useCallback, useMemo } from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
-import { Activity, ExternalLink, MoonStar, Pencil, Radio, TrendingUp } from 'lucide-react';
+import { Activity, MoonStar, Radio, TrendingUp } from 'lucide-react';
 import { localeNames, type Locale } from '@/i18n/config';
 import { useMediaQuery } from '@/lib/hooks/use-media-query';
 import {
@@ -15,7 +15,6 @@ import {
   pageTypeLabel,
   parseDatacenterScope,
   parseTrafficLocale,
-  pathEditorHref,
   referrerHref,
   type DatacenterScope,
 } from '@/lib/admin/site-analytics';
@@ -40,7 +39,7 @@ import {
   PanelBody,
   PanelHeader,
 } from '../../../_ui/primitives';
-import { RowLink } from '../../_components/breakdown-panel';
+import { PageLinks, PublicLink } from '../../../_ui/row-links';
 import { LanguageSwitch } from '../../_components/language-switch';
 import { Segmented } from '../../../_ui/controls';
 import { useLiveTraffic } from '../_lib/use-live-traffic';
@@ -294,7 +293,6 @@ function LiveDetails({
   locale: Locale | null;
 }) {
   const pages: BarRow[] = live.pages.map((page) => {
-    const editor = pathEditorHref(page.path);
     return {
       key: page.path,
       label: page.path,
@@ -302,18 +300,7 @@ function LiveDetails({
       value: page.views,
       href: liveDrillHref('path', page.path, locale),
       detail: pageTypeLabel(page.pageType),
-      actions: (
-        <>
-          <RowLink href={page.path} label="Auf park.fan öffnen" external>
-            <ExternalLink className="h-3 w-3" />
-          </RowLink>
-          {editor && (
-            <RowLink href={editor} label="Im Editor öffnen">
-              <Pencil className="h-3 w-3" />
-            </RowLink>
-          )}
-        </>
-      ),
+      actions: <PageLinks path={page.path} />,
     };
   });
 
@@ -344,11 +331,7 @@ function LiveDetails({
       label: referrer.referrer,
       value: referrer.visits,
       href: liveDrillHref('referrer', referrer.referrer, locale),
-      actions: site && (
-        <RowLink href={site} label="Website öffnen" external>
-          <ExternalLink className="h-3 w-3" />
-        </RowLink>
-      ),
+      actions: site && <PublicLink href={site} label="Website öffnen" />,
     };
   });
 

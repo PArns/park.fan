@@ -160,8 +160,8 @@ export function SearchResultsPanel({
     if (queryRan) session.typed();
   }, [queryRan, session]);
   useEffect(() => {
-    if (nothingFound) session.noResults();
-  }, [nothingFound, session]);
+    if (nothingFound) session.noResults(debouncedQuery);
+  }, [nothingFound, session, debouncedQuery]);
 
   const groups =
     queryRan && !nothingFound
@@ -175,6 +175,7 @@ export function SearchResultsPanel({
   // The tab paints on the press and the list follows, see
   // docs/rules/an-interaction-may-not-rebuild-the-grid-in-its-own-commit.md.
   const listTab = useDeferredValue(activeTab);
+  useEffect(() => session.showTab(listTab), [session, listTab]);
 
   // cmdk keeps its highlight on a row the new tab no longer lists, and Enter would open nothing.
   // Home is cmdk's own "highlight the first row", and it scrolls that row into view.

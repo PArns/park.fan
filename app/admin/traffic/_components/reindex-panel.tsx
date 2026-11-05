@@ -26,7 +26,7 @@ import {
 } from '../../_ui/primitives';
 import { useToast } from '../../_ui/toast';
 import { REINDEX_STATE_CHIP, reindexReason, requestReindex } from '../_lib/reindex';
-import { PublicLink } from './list-parts';
+import { PublicLink } from '../../_ui/row-links';
 
 const reindexKey = ['admin', 'search-console', 'reindex'] as const;
 

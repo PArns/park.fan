@@ -53,7 +53,8 @@ import {
 } from '../_lib/use-traffic';
 import { TrafficFilterBar } from './filter-bar';
 import { HourlyNotice } from './hourly-notice';
-import { MoreButton, useShowMore, PageLinks, PublicLink } from './list-parts';
+import { MoreButton, TrafficCsvButton, useShowMore } from './list-parts';
+import { PageLinks, PublicLink } from '../../_ui/row-links';
 import { SearchConsoleSection } from './search-console-section';
 import { UnsupportedNote } from './unsupported-note';
 
@@ -116,7 +117,12 @@ function LandingPagesPanel({
 
   return (
     <Panel>
-      <PanelHeader icon={icon} title={title} hint={hint} />
+      <PanelHeader
+        icon={icon}
+        title={title}
+        hint={hint}
+        action={<TrafficCsvButton report={title} data={data} filters={filters} />}
+      />
       {!data && error ? (
         <ErrorState message={`${title}: ${error.message}`} onRetry={() => void refetch()} />
       ) : !data ? (
@@ -209,16 +215,23 @@ function TrendList({
   icon: Icon,
   rows,
   tone,
+  filters,
 }: {
   title: string;
   hint: string;
   icon: typeof TrendingUp;
   rows: SeoTrendPage[];
   tone: 'up' | 'down';
+  filters: TrafficFilters;
 }) {
   return (
     <Panel>
-      <PanelHeader icon={Icon} title={title} hint={hint} />
+      <PanelHeader
+        icon={Icon}
+        title={title}
+        hint={hint}
+        action={<TrafficCsvButton report={title} data={rows} filters={filters} />}
+      />
       {rows.length === 0 ? (
         <PanelBody>
           <p className="text-muted-foreground py-4 text-center text-sm">
@@ -308,6 +321,7 @@ function TrendsPanels({ filters }: { filters: TrafficFilters }) {
         icon={TrendingUp}
         rows={data.rising}
         tone="up"
+        filters={filters}
       />
       <TrendList
         title="Fallende Seiten"
@@ -315,6 +329,7 @@ function TrendsPanels({ filters }: { filters: TrafficFilters }) {
         icon={TrendingDown}
         rows={data.falling}
         tone="down"
+        filters={filters}
       />
     </div>
   );
@@ -341,6 +356,7 @@ function NotFoundPanel({ filters }: { filters: TrafficFilters & TrafficFilterAct
       <PanelHeader
         icon={FileQuestion}
         title="Nicht gefunden (404)"
+        action={!reason && <TrafficCsvButton report="404" data={data} filters={filters} />}
         hint="Adressen, die es nicht gibt, und woher die Besuche kamen. Ein Link, der falsch ist, wird an der Quelle korrigiert, sonst bekommt die Adresse eine Weiterleitung."
       />
       {reason ? (
@@ -423,18 +439,21 @@ function UncoveredPanel({ filters }: { filters: TrafficFilters }) {
             : 'Seiten, auf die in diesem Zeitraum kein einziger Besuch aus einer Suchmaschine kam.'
         }
         action={
-          <Segmented
-            label="Art"
-            value={kind}
-            onChange={(value) => {
-              setKind(value);
-              collapse();
-            }}
-            options={[
-              { value: 'park', label: 'Parks' },
-              { value: 'attraction', label: 'Fahrgeschäfte' },
-            ]}
-          />
+          <div className="flex items-center gap-2">
+            <TrafficCsvButton report={`Ohne Suchbesuch ${kind}`} data={data} filters={filters} />
+            <Segmented
+              label="Art"
+              value={kind}
+              onChange={(value) => {
+                setKind(value);
+                collapse();
+              }}
+              options={[
+                { value: 'park', label: 'Parks' },
+                { value: 'attraction', label: 'Fahrgeschäfte' },
+              ]}
+            />
+          </div>
         }
       />
       {!data && error ? (
