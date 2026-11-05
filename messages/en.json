@@ -1515,6 +1515,7 @@
       "tapHint": "Tap a dot to pin that ride.",
       "unpinHint": "Tap it again to unpin it.",
       "allClosed": "All top attractions are closed right now.",
+      "nextShow": "Next show",
       "demoEnd": "End demo",
       "demoNoLocation": "Without your location you stay on one spot in the park.",
       "dialGroup": "Compass, north up"

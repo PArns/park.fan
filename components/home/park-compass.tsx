@@ -11,13 +11,14 @@ import {
 } from 'react';
 import Image from 'next/image';
 import { useLocale, useTranslations } from 'next-intl';
-import { ArrowUp, ChevronRight, Compass, MapPin, Pin, X } from 'lucide-react';
+import { ArrowUp, ChevronRight, Compass, MapPin, Pin, Theater, X } from 'lucide-react';
 import { Link, usePathname } from '@/i18n/navigation';
 import { PANEL_FLAT, PHOTO_GLASS_FILL } from '@/components/common/glass-card';
 import { LiveDot } from '@/components/common/live-dot';
+import { ParkTime } from '@/components/common/park-time';
 import { Button } from '@/components/ui/button';
 import { splitInParkRides } from '@/components/parks/nearby-in-park-view';
-import { IN_PARK_LIST, IN_PARK_ROW_LINK } from '@/components/parks/in-park-row';
+import { IN_PARK_LIST, IN_PARK_ROW_LINK, InParkRow } from '@/components/parks/in-park-row';
 import { LiveWaitPill, RIDE_STATUS_TEXT } from '@/components/parks/live-wait-pill';
 import { ParkCompassDial, type DialRide, type DialRideKind } from './park-compass-dial';
 import { trackSiteEvent } from '@/lib/analytics/site-analytics';
@@ -25,6 +26,7 @@ import { useGeolocation } from '@/lib/contexts/geolocation-context';
 import { useCompassHeading } from '@/lib/hooks/use-compass-heading';
 import { useInViewAndFront } from '@/lib/hooks/use-in-view-and-front';
 import { useLivePosition, type LivePosition } from '@/lib/hooks/use-live-position';
+import { useMinuteNow } from '@/lib/hooks/use-minute-now';
 import { useRidePositions } from '@/lib/hooks/use-ride-positions';
 import { heroObjectPosition, parkHeroImageSrcs } from '@/lib/media/hero';
 import { resolveSimLocation } from '@/lib/nearby-simulation';
@@ -34,6 +36,7 @@ import {
   bearingBetween,
   compassPoint,
   dialLabel,
+  nextShow,
   normalizeDegrees,
   relocate,
   rideAhead,
@@ -132,6 +135,9 @@ export function ParkCompass({
   const tCommon = useTranslations('common');
   const locale = useLocale();
   const pathname = usePathname();
+  const now = useMinuteNow();
+  const upcoming = now === null ? null : nextShow(data.shows, now);
+  const showsHref = convertApiUrlToFrontendUrl(upcoming?.show.url ?? data.park.url);
   const rootRef = useRef<HTMLDivElement>(null);
   // `useId` answers with characters (`«r1»`) a `url(#…)` reference does not survive.
   const coneId = `compass-cone-${useId().replace(/[^a-zA-Z0-9_-]/g, '')}`;
@@ -587,6 +593,31 @@ export function ParkCompass({
               </Link>
             </li>
           ))}
+          {/* Shows have no page: the row opens the park page's shows tab. */}
+          {upcoming && showsHref !== '#' && (
+            <InParkRow
+              href={`${showsHref}#shows`}
+              title={
+                <>
+                  <Theater className="size-4 shrink-0" aria-hidden="true" />
+                  <span className="truncate">{stripNewPrefix(upcoming.show.name)}</span>
+                </>
+              }
+              meta={
+                <>
+                  {t('nextShow')} ·{' '}
+                  <ParkTime
+                    isoTime={upcoming.startTime}
+                    parkTimezone={data.park.timezone}
+                    locale={locale}
+                    showSuffix
+                  />
+                  {upcoming.show.distance !== null &&
+                    ` · ${formatDistance(upcoming.show.distance)}`}
+                </>
+              }
+            />
+          )}
         </ul>
       </div>
     </div>

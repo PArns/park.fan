@@ -4,6 +4,8 @@
  * `scripts/test-compass.mjs` can hold them to the numbers. See docs/features/park-compass.md.
  */
 
+import type { NearbyShow } from '@/types/nearby';
+
 const toRad = (deg: number) => (deg * Math.PI) / 180;
 const toDeg = (rad: number) => (rad * 180) / Math.PI;
 
@@ -386,4 +388,22 @@ export function stableOrder<T extends { id: string; distance: number }>(
     }
   }
   return list;
+}
+
+/**
+ * The first performance after `nowMs` across the park's shows, with its show, or `null` when none
+ * is left today. Ties go to the nearer show, since the API lists them nearest first.
+ */
+export function nextShow(
+  shows: readonly NearbyShow[] | undefined,
+  nowMs: number
+): { show: NearbyShow; startTime: string } | null {
+  let best: { show: NearbyShow; startTime: string; at: number } | null = null;
+  for (const show of shows ?? []) {
+    for (const { startTime } of show.showtimes ?? []) {
+      const at = Date.parse(startTime);
+      if (at > nowMs && (best === null || at < best.at)) best = { show, startTime, at };
+    }
+  }
+  return best && { show: best.show, startTime: best.startTime };
 }

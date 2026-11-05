@@ -177,7 +177,13 @@ walk, and a row is a link. The range ring grows at once and shrinks only when th
 under three quarters of the step below (`stableRange`).
 
 **The list** puts a ride's status on its second line as text („126 m · Geschlossen"), so the name
-keeps the row; waits are the solid pills. A closed park gets one line under the title instead:
+keeps the row; waits are the solid pills. Its last row is the park's next show, when one is still to
+come today: the first performance after now across `data.shows` (`nextShow`, `lib/utils/compass.ts`),
+with the show's name, „Nächste Show · 15:30 Uhr" in the park's time zone (`ParkTime`) and the API's
+distance. It links to the park page's shows tab, since a show has no page. It arrives with the rides,
+in the same answer, so it moves nothing; the minute clock (`useMinuteNow`) moves it on to the next
+show and takes it away after the day's last one. An answer without `shows` (an API older than
+PAR-1107) shows no row. A closed park gets one line under the title instead:
 „Alle Top-Attraktionen haben gerade geschlossen. Öffnet am …".
 
 ## Without a compass, and when it is unsure

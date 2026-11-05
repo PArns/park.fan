@@ -62,8 +62,10 @@ const href = convertApiUrlToFrontendUrl(attraction.url);
   converting `url`, then `'#'`.
 - **`buildAttractionUrlFromGeo({ slug, park?, url? })`**, the same for a ride.
 - **`buildAttractionUrl(parkUrl, attractionSlug)`**: park URL plus `/<slug>`.
-- **`parkChapterUrl(url, 'shows' | 'restaurants')`**: the park page's tab (`…#shows`), or `null`
-  when the URL names no park.
+- **`parkChapterUrl(url, 'shows' | 'restaurants', park?)`**: the park page's tab (`…#shows`), or
+  `null` when neither names a park. With `park` (a favourite's geo slugs) `buildParkUrl` builds it and
+  `url` is the fallback: `/v1/favorites` used to send a bare `/v1/shows/<id>` and now sends the park's
+  path, and both link.
 - **`searchResultHref(result, locale)`**: where a search result links, for every search surface.
 
 ## Breadcrumbs

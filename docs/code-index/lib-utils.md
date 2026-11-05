@@ -57,6 +57,7 @@ The arithmetic behind the in-park compass (`ParkCompass`): which way a ride lies
 - `rideAhead` _function_: The ride the reader is facing: the one whose bearing lies nearest the heading, within `reach` degrees either side (the dial's view cone with a little give), or `null`.
 - `compassPoint` _function_: The point of the compass a bearing falls in, 45° each, north from 337.5° to 22.5°.
 - `stableOrder` _function_: The rides nearest first, but a row only overtakes the one above it when it is nearer by more than `tolerance` metres, so GPS jitter does not reorder rows (links) under the thumb.
+- `nextShow` _function_: The first performance after `nowMs` across the park's shows, with its show, or `null` when none is left today. Ties go to the nearer show, since the API lists them nearest first.
 - `COMPASS_POINTS` _const_: The eight points of the compass, clockwise from north, as message keys.
 - Types: `OrientationReading`, `RadarPoint`, `LabelBox`, `CompassPoint`
 
