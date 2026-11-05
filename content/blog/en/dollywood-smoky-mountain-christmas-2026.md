@@ -1,0 +1,110 @@
+---
+title: "Everyone pays the kids' price at Dollywood until November 22"
+translationKey: dollywood-smoky-mountain-christmas-2026
+date: '2026-11-05'
+time: '08:02'
+author: patrick
+mode: published
+featured: false
+excerpt: >-
+  Dollywood in Pigeon Forge holds Smoky Mountain Christmas from November 6, 2026 to January 3, 2027. Until November 22, every visitor pays the kids' price for a one-day ticket. Wildwood Grove now gets snow every evening.
+tags:
+  - news
+  - dollywood
+  - christmas
+  - usa
+  - season-2026
+category: news
+parkLinks:
+  - /parks/north-america/united-states/pigeon-forge/dollywood
+rideLinks:
+  - dollywood/wildwood-grove
+  - dollywood/the-wildwood-tree
+  - dollywood/santas-list-naughty-or-nice
+  - dollywood/dollywood-express-train-depot
+  - dollywood/nightflight-expedition
+seo:
+  title: "Dollywood tickets at the kids' price until November 22, 2026"
+  description: >-
+    Smoky Mountain Christmas at Dollywood runs November 6, 2026 to January 3, 2027, with over 6 million lights. Until November 22, adults pay the kids' price.
+  keywords:
+    - dollywood christmas 2026
+    - smoky mountain christmas
+    - Dollywood Smoky Mountain Christmas
+    - dollywood tickets
+    - Dollywood kids' price
+    - Dollywood hours
+    - dollywood wait times
+    - Dollywood season pass 2027
+    - Dollywood Pigeon Forge
+---
+
+Smoky Mountain Christmas starts at [Dollywood](ref:dollywood) in Pigeon Forge, Tennessee, on Friday, November 6. Until November 22, adults pay the same for a one-day ticket as their kids do. The holiday season runs until January 3, 2027. The festival has won the Golden Ticket Award for best holiday event at an amusement park 15 times, and this year it's also nominated in the USA Today 10Best Awards.
+
+## Lights and snow
+
+More than six million lights hang in the park, red and green in Santa's Village and a warm candlelight glow in Craftsman's Valley. Glacier Ridge is back in blue and white, an Arctic-style landscape of lights that runs from Timber Canyon through Wildwood Grove and Wilderness Pass to the upper end of Craftsman's Valley. By the pond in Rivertown Junction stand the Christmas Reflections, five colorful trees of light that show up a second time in the water once it's dark.
+
+New this year is Snow in the Grove, in [Wildwood Grove](ref:dollywood/wildwood-grove). Snow falls over Wildwood Creek every evening, and [The Wildwood Tree](ref:dollywood/the-wildwood-tree) lights up in color, set to music. It's probably the only snow in the Smokies that keeps to a timetable. The park's holiday characters are around too: Roly and Poly, Benjamin Bear, and Flit and Flutter.
+
+Country Fair has become Peppermint Valley this winter, strung with red and white lights shaped like candy canes. Most of the rides keep running through the holiday season. The park's newest ride, [NightFlight Expedition](ref:dollywood/nightflight-expedition), is an indoor coaster.
+
+## Shows and Santa
+
+The main show is "Christmas in the Smokies" at the Celebrity Theater. In "Heidi Parton's A Christmas To Remember," Dolly's niece Heidi sings and tells stories from her family's Christmases. Five more shows return from past years:
+
+- "'Twas the Night Before Christmas"
+- "Christmas with the Kingdom Heirs"
+- "O' Holy Night"
+- "Appalachian Christmas with the Smoky Mountain String Band"
+- the Candlelight Carolers
+
+At [Santa's List... Naughty or Nice?](ref:dollywood/santas-list-naughty-or-nice), Santa sits in his cabin checking who's been good and who hasn't. Kids write their wish lists there with the elves and hand them to Santa in person. His last day in the park is December 23, since he has a fairly well-known overnight flight around the world on the 24th.
+
+Before that, he has breakfast with guests on December 12, 13, 19 and 20 at Aunt Granny's Restaurant, with seatings at 8:30 and 10 a.m. Breakfast with Santa needs its own ticket and costs $24.99 for adults and $12.99 for kids.
+
+## What a day costs
+
+The "Everyone Pays Kids' Price" deal covers 1-Day Tickets you book for a day between November 6 and 22, 2026, and can only use on that exact day. After that, the regular adult prices apply, all before tax:
+
+- Pick-A-Day (fixed date): one day from $94.99, two days from $124.99
+- Good-Any-Day (any operating day in 2026): one day from $99.99, two days from $129.99
+
+Kids and seniors pay less than adults. Pick-A-Day prices depend on the date, hence the "from".
+
+The festival itself is included in the one-day ticket; the food isn't. The Festival Tasting Pass covers up to five festival dishes and costs $45.99 plus tax, or $42.99 if you hold a Gold or Diamond pass. You can buy it online or at the food stands in the park. The savory side includes jambalaya, potato soup, Stuffing Stackers and baked potatoes with buffalo chicken. For something sweet there's red velvet hot cocoa, vanilla eggnog, a mint chocolate chip brownie sundae, candy cane cupcakes, apple dumplings and gingerbread men.
+
+On the Smoky Mountain Christmas Guided Tour you sit in reserved seats on the [Dollywood Express](ref:dollywood/dollywood-express-train-depot), meet the characters and pick up a snack, a hot drink and a lanyard to keep.
+
+If rain stops the rides and you have to leave early, the Weather Guarantee applies. Before you go, pick up a return ticket at a ticket window for another operating day this season. Everyone in your group has to be at the window with you.
+
+```best-days-widget slug=dollywood
+
+```
+
+## The 2027 season pass covers this Christmas
+
+Dollywood has been selling [season passes for 2027](/news/dollywood-season-2027) since November 2. Gold and Diamond already work this Christmas, through January 3, and Silver through December 13. Only the Summer Fun Pass waits until April 19, 2027. If you already have a one-day ticket, you can upgrade it to a season pass on the day of your visit, and the value of a regular one-day ticket counts toward it.
+
+Buy a season pass between November 2 and December 13 and you get a Bring-A-Friend ticket for $45, which brings one guest to the festival between November 6 and December 13. Active and retired military save $35 per pass on Silver, Gold and Diamond from November 2 to 15, and so does their immediate family. They verify their status with id.me first. Kids born in 2022 or 2023 get in free with the Pre-K Imagination Season Pass.
+
+## Getting there and parking
+
+The park sits at the edge of Great Smoky Mountains National Park. The nearest airport is McGhee Tyson in Knoxville, less than an hour's drive from the park.
+
+Parking is $25 per vehicle. Free trams run from lots A to E to the main entrance; from lot F you walk. Preferred Parking right by the park is $55 and comes with its own ticket window and entrance. RVs also park in lot F, for $30. Gold and Diamond passholders park free.
+
+## The two resorts
+
+At DreamMore Resort and Spa, a Christmas tree two floors tall stands in the lobby, and the Christmas Tree Show plays by the pool. The Song & Hearth restaurant serves a holiday meal on Thanksgiving, Christmas Eve, Christmas Day and New Year's Eve. DreamMore guests ride a shuttle to the park and get TimeSaver Passes as well. In the HeartSong Lodge & Resort lobby you can sit by the fire in front of four-story windows modeled on lanterns. Its restaurant Ember & Elm serves dinner on the same holidays as Song & Hearth, except Christmas Eve. At both resorts you can roast marshmallows, and Camp DW runs craft sessions for kids.
+
+[Dollywood](ref:dollywood?full)
+
+Sources:
+[Smoky Mountain Christmas 2026 press release (Dollywood)](https://www.dollywood.com/press/smoky-mountain-christmas-2026/),
+[Smoky Mountain Christmas](https://www.dollywood.com/themepark/festivals/smoky-mountain-christmas/),
+[Tickets](https://www.dollywood.com/tickets/),
+[Parking](https://www.dollywood.com/tickets/add-ons/parking/),
+[Season passes](https://www.dollywood.com/tickets/season-passes/),
+[Christmas at Dollywood](https://www.dollywood.com/plan-your-visit/christmas/),
+[10Best Awards nomination (Dollywood)](https://www.dollywood.com/press/smoky-mountain-christmas-10best/).
