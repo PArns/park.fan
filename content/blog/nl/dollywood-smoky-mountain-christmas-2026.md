@@ -39,15 +39,15 @@ seo:
     - Dollywood Pigeon Forge
 ---
 
-Op vrijdag 6 november begint [Dollywood](ref:dollywood) in Pigeon Forge, Tennessee, aan Smoky Mountain Christmas. Tot en met 22 november betaalt iedereen voor een dagticket de kinderprijs, ook volwassenen. Het kerstseizoen loopt door tot 3 januari 2027.
+Op vrijdag 6 november begint [Dollywood](ref:dollywood) in Pigeon Forge, Tennessee, aan Smoky Mountain Christmas. Tot en met 22 november kost een dagticket voor volwassenen evenveel als voor kinderen. Het kerstseizoen loopt door tot 3 januari 2027.
 
 ## Lichtjes en sneeuw
 
-Er hangen meer dan zes miljoen lichtjes in het park, en elk themagebied heeft zijn eigen kleuren. Santa's Village is rood en groen, Glacier Ridge blauw en wit, en Craftsman's Valley heeft de warme gloed van kaarslicht. Glacier Ridge, een lichtlandschap in poolstijl, is terug en loopt door Timber Canyon, Wildwood Grove, Wilderness Pass en het bovenste stuk van Craftsman's Valley. Aan de vijver in Rivertown Junction staan de Christmas Reflections: vijf gekleurde lichtbomen die na het donker in het water weerspiegelen.
+Er hangen meer dan zes miljoen lichtjes in het park, en elk themagebied heeft zijn eigen kleuren. Santa's Village is rood en groen, Glacier Ridge blauw en wit, en Craftsman's Valley heeft de warme gloed van kaarslicht. Ook Glacier Ridge is terug, een lichtlandschap in poolstijl dat van Timber Canyon via Wildwood Grove en Wilderness Pass doorloopt tot in het bovenste stuk van Craftsman's Valley. Aan de vijver in Rivertown Junction staan de Christmas Reflections: vijf gekleurde lichtbomen die na het donker in het water weerspiegelen.
 
 Nieuw is Snow in the Grove in [Wildwood Grove](ref:dollywood/wildwood-grove). Daar valt elke avond sneeuw boven de Wildwood Creek, en [The Wildwood Tree](ref:dollywood/the-wildwood-tree) licht op in bonte kleuren op de muziek. Waarschijnlijk is het de enige sneeuw in de Smokies die zich aan een dienstregeling houdt. Verder lopen de kerstfiguren van het park rond: Roly en Poly, Benjamin Bear en Flit en Flutter.
 
-Ook nieuw is Peppermint Valley, waarvoor het gebied Country Fair volhangt met rood-witte lichtjes in de vorm van zuurstokken. De meeste attracties draaien ook in het kerstseizoen, en van bovenaf zie je de lichtjes van het park onder je liggen.
+Country Fair heet deze winter Peppermint Valley en hangt vol rood-witte lichtjes in de vorm van zuurstokken. De meeste attracties draaien ook in het kerstseizoen. De nieuwste, [NightFlight Expedition](ref:dollywood/nightflight-expedition), is een overdekte achtbaan, dus daarbinnen sneeuwt het niet, ook niet volgens dienstregeling.
 
 ## Shows en de kerstman
 
@@ -65,16 +65,16 @@ Eerst ontbijt hij nog met gasten: op 12, 13, 19 en 20 december in Aunt Granny's 
 
 ## Wat een dag kost
 
-De actie “Everyone Pays Kids' Price” geldt voor 1-Day Tickets met een vaste datum tussen 6 en 22 november 2026. Je moet komen op de dag die je bij het kopen kiest. Daarna gelden de gewone prijzen voor volwassenen, telkens zonder belasting:
+De actie “Everyone Pays Kids' Price” geldt voor 1-Day Tickets die je boekt voor een dag tussen 6 en 22 november 2026 en alleen op precies die dag kunt gebruiken. Daarna gelden de gewone prijzen voor volwassenen, telkens zonder belasting:
 
 - Pick-A-Day (vaste datum): één dag vanaf $94,99, twee dagen vanaf $124,99
 - Good-Any-Day (elke openingsdag in 2026): één dag vanaf $99,99, twee dagen vanaf $129,99
 
-Kinderen en senioren krijgen korting. Bij Pick-A-Day hangt de prijs af van de dag.
+Kinderen en senioren betalen minder, en bij Pick-A-Day schuift de prijs mee met de datum, vandaar het “vanaf”.
 
-Een dagticket geeft toegang tot het feest, eten en parkeren betaal je apart. Met de Festival Tasting Pass krijg je tot vijf gerechten van het feest voor $45,99 plus belasting; met een Gold- of Diamond-jaarkaart betaal je $42,99. Je koopt hem online of bij de eetkraampjes in het park. Vijf gerechten zijn te weinig voor de hele kaart. Hartig zijn er gepofte aardappels gevuld met buffalo chicken, jambalaya, Stuffing Stackers en aardappelsoep. Als toetje is er een mint-chocolate-chip-browniesundae, red-velvet-chocolademelk, vanille-eggnog, zuurstokcupcakes, apple dumplings en peperkoekmannetjes.
+Een dagticket geeft toegang tot het feest, eten en parkeren betaal je apart. Met de Festival Tasting Pass krijg je tot vijf gerechten van het feest voor $45,99 plus belasting; met een Gold- of Diamond-jaarkaart betaal je $42,99. Je koopt hem online of bij de eetkraampjes in het park. Hartig kies je uit gepofte aardappels gevuld met buffalo chicken, jambalaya, Stuffing Stackers en aardappelsoep. Als toetje is er een mint-chocolate-chip-browniesundae, red-velvet-chocolademelk, vanille-eggnog, zuurstokcupcakes, apple dumplings en peperkoekmannetjes.
 
-De Smoky Mountain Christmas Guided Tour is een rondleiding door het feest. Je krijgt een lanyard om te houden, gereserveerde plaatsen in de [Dollywood Express](ref:dollywood/dollywood-express-train-depot), ontmoetingen met de figuren, een snack en een warm drankje.
+Bij de Smoky Mountain Christmas Guided Tour zit je op gereserveerde plaatsen in de [Dollywood Express](ref:dollywood/dollywood-express-train-depot), ontmoet je de figuren en krijg je een snack, een warm drankje en een lanyard om te houden.
 
 Regent het zo hard dat attracties stilstaan en je eerder weggaat, dan geldt de Weather Guarantee. Voor je vertrekt haal je bij een ticketloket een ticket waarmee je op een andere openingsdag van dit seizoen terugkomt. Iedereen uit je groep moet daarvoor mee naar het loket.
 
@@ -84,7 +84,7 @@ Regent het zo hard dat attracties stilstaan en je eerder weggaat, dan geldt de W
 
 ## De jaarkaart 2027 geldt deze kerst al
 
-Sinds 2 november verkoopt Dollywood de [jaarkaarten voor 2027](/news/dollywood-seizoen-2027). Met drie van de vier kaarten kom je al naar Smoky Mountain Christmas. Gold en Diamond gelden tot 3 januari, Silver tot 13 december. De Summer Fun Pass geldt pas vanaf 19 april 2027. Heb je al een dagticket, dan kun je dat op de dag van je bezoek omzetten in een jaarkaart, en de waarde van een gewoon dagticket gaat van de prijs af.
+Sinds 2 november verkoopt Dollywood de [jaarkaarten voor 2027](/news/dollywood-seizoen-2027). Gold en Diamond gelden deze kerst al, tot 3 januari, Silver tot 13 december. Alleen de Summer Fun Pass wacht tot 19 april 2027. Heb je al een dagticket, dan kun je dat op de dag van je bezoek omzetten in een jaarkaart, en de waarde van een gewoon dagticket gaat van de prijs af.
 
 Koop je tussen 2 november en 13 december een jaarkaart, dan krijg je er een Bring-A-Friend-ticket van $45 bij. Daarmee kan iemand van 6 november tot 13 december met je mee naar het feest. Actieve militairen en veteranen krijgen van 2 tot 15 november $35 korting per kaart op Silver, Gold en Diamond, ook voor hun naaste familie. Ze tonen hun status vooraf aan bij id.me. Kinderen die in 2022 of 2023 geboren zijn, komen met de Pre-K Imagination Season Pass gratis in het park.
 
@@ -96,11 +96,11 @@ Parkeren kost $25 per voertuig. Vanaf de parkeerterreinen A tot en met E rijden 
 
 ## De twee resorts
 
-In de lobby van het DreamMore Resort and Spa staat een kerstboom van twee verdiepingen hoog, en bij het zwembad draait de Christmas Tree Show. Restaurant Song & Hearth serveert een feestmaal op Thanksgiving, kerstavond, eerste kerstdag en oudjaarsavond. Gasten van DreamMore gaan met de shuttle naar het park en krijgen er TimeSaver Passes bij. HeartSong Lodge & Resort is versierd in de stijl van de Great Smoky Mountains. Het restaurant Ember & Elm serveert een diner op Thanksgiving, eerste kerstdag en oudjaarsavond. In beide resorts roosteren gasten marshmallows, en in Camp DW knutselen de kleinsten.
+In de lobby van het DreamMore Resort and Spa staat een kerstboom van twee verdiepingen hoog, en bij het zwembad draait de Christmas Tree Show. Restaurant Song & Hearth serveert een feestmaal op Thanksgiving, kerstavond, eerste kerstdag en oudjaarsavond. Gasten van DreamMore gaan met de shuttle naar het park en krijgen er TimeSaver Passes bij. HeartSong Lodge & Resort is versierd in de stijl van de Great Smoky Mountains. Het restaurant Ember & Elm serveert op dezelfde feestdagen als Song & Hearth een diner, alleen niet op kerstavond. In beide resorts kun je marshmallows roosteren, en in Camp DW zijn er knutseluurtjes voor kinderen.
 
-## Golden Ticket Awards en een nieuwe achtbaan
+## Golden Ticket Awards
 
-Bij de Golden Ticket Awards won Smoky Mountain Christmas 15 keer de prijs voor het beste kerstevenement van een pretpark. Bij de 10Best Awards van USA Today is het feest dit jaar genomineerd. Nieuw in het park is [NightFlight Expedition](ref:dollywood/nightflight-expedition), een overdekte achtbaan.
+Bij de Golden Ticket Awards won Smoky Mountain Christmas 15 keer de prijs voor het beste kerstevenement van een pretpark. Bij de 10Best Awards van USA Today is het feest dit jaar genomineerd.
 
 [Dollywood](ref:dollywood?full)
 

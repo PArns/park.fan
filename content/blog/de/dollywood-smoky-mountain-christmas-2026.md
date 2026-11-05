@@ -39,15 +39,15 @@ seo:
     - Dollywood Pigeon Forge
 ---
 
-[Dollywood](ref:dollywood) in Pigeon Forge, Tennessee, beginnt am Freitag, dem 6. November, seine Weihnachtssaison Smoky Mountain Christmas. Bis zum 22. November zahlen alle Besucher für ein Tagesticket den Kinderpreis, auch Erwachsene. Das Fest läuft bis zum 3. Januar 2027.
+[Dollywood](ref:dollywood) in Pigeon Forge, Tennessee, beginnt am Freitag, dem 6. November, seine Weihnachtssaison Smoky Mountain Christmas. Bis zum 22. November kostet das Tagesticket für Erwachsene so viel wie für Kinder. Das Fest läuft bis zum 3. Januar 2027.
 
 ## Lichter und Schnee
 
-Im Park hängen mehr als sechs Millionen Lichter, und jeder Bereich hat seine eigenen Farben: Santa's Village leuchtet rot und grün, Glacier Ridge blau und weiß, Craftsman's Valley im warmen Ton von Kerzenlicht. Glacier Ridge ist eine Lichterlandschaft im Stil der Arktis. Sie ist zurück und zieht sich durch Timber Canyon, Wildwood Grove, Wilderness Pass und den oberen Teil von Craftsman's Valley. Am Teich in Rivertown Junction stehen die Christmas Reflections, fünf bunte Lichterbäume, die sich nach Einbruch der Dunkelheit im Wasser spiegeln.
+Im Park hängen mehr als sechs Millionen Lichter, und jeder Bereich hat seine eigenen Farben: Santa's Village leuchtet rot und grün, Glacier Ridge blau und weiß, Craftsman's Valley im warmen Ton von Kerzenlicht. Zurück ist auch Glacier Ridge, eine Lichterlandschaft im Stil der Arktis, die sich von Timber Canyon über Wildwood Grove und Wilderness Pass bis in den oberen Teil von Craftsman's Valley zieht. Am Teich in Rivertown Junction stehen die Christmas Reflections, fünf bunte Lichterbäume, die sich nach Einbruch der Dunkelheit im Wasser spiegeln.
 
 Neu ist Snow in the Grove in [Wildwood Grove](ref:dollywood/wildwood-grove). Jeden Abend fällt dort Schnee über den Wildwood Creek, und [The Wildwood Tree](ref:dollywood/the-wildwood-tree) leuchtet dazu in bunten Farben zur Musik. Das ist in den Smokies vermutlich der einzige Schnee, der sich an einen Fahrplan hält. Dazu kommen die Weihnachtsfiguren des Parks, Roly und Poly, Benjamin Bear sowie Flit und Flutter.
 
-Ebenfalls neu ist Peppermint Valley. Der Bereich Country Fair hängt dafür voller rot-weißer Lichter in Form von Zuckerstangen. Die meisten Fahrattraktionen fahren auch in der Weihnachtssaison, und von oben sieht man die Lichter im Park unter sich.
+Aus Country Fair wird in diesem Winter Peppermint Valley, der Bereich hängt voller rot-weißer Lichter in Form von Zuckerstangen. Die meisten Bahnen fahren auch in der Weihnachtssaison. Die neueste, [NightFlight Expedition](ref:dollywood/nightflight-expedition), ist eine Achterbahn in einer Halle, dort schneit es also nicht, auch nicht nach Fahrplan.
 
 ## Shows und der Weihnachtsmann
 
@@ -65,16 +65,16 @@ Vorher frühstückt er noch mit Gästen: am 12., 13., 19. und 20. Dezember im Au
 
 ## Was der Tag kostet
 
-Die Aktion „Everyone Pays Kids' Price“ gilt für 1-Day Tickets mit festem Datum zwischen dem 6. und dem 22. November 2026. Du musst an dem Tag kommen, den du beim Kauf wählst. Danach gelten die regulären Preise für Erwachsene, jeweils ohne Steuer:
+Die Aktion „Everyone Pays Kids' Price“ gilt für 1-Day Tickets, die du auf einen Tag zwischen dem 6. und dem 22. November 2026 buchst und nur an genau diesem Tag einlösen kannst. Danach gelten die regulären Preise für Erwachsene, jeweils ohne Steuer:
 
 - Pick-A-Day (festes Datum): ein Tag ab 94,99 $, zwei Tage ab 124,99 $
 - Good-Any-Day (jeder Öffnungstag 2026): ein Tag ab 99,99 $, zwei Tage ab 129,99 $
 
-Kinder und Senioren bekommen einen Rabatt. Bei Pick-A-Day hängt der Preis vom Tag ab.
+Für Kinder und Senioren ist es billiger, und bei Pick-A-Day wandert der Preis mit dem Datum, daher das „ab“.
 
-Mit dem Tagesticket bist du beim Fest dabei, Essen und Parken kosten extra. Mit dem Festival Tasting Pass bekommst du bis zu fünf Gerichte des Festes für 45,99 $ plus Steuer, Inhaber einer Gold- oder Diamond-Saisonkarte zahlen 42,99 $. Es gibt ihn online und an den Essensständen im Park. Für die ganze Karte reichen fünf Gerichte nicht. Herzhaft stehen darauf mit Buffalo Chicken gefüllte Ofenkartoffeln, Jambalaya, Stuffing Stackers und Kartoffelsuppe. Für danach gibt es ein Mint-Chocolate-Chip-Brownie-Sundae, Red-Velvet-Kakao, Vanille-Eggnog, Candy-Cane-Cupcakes, Apple Dumplings und Lebkuchenmänner.
+Mit dem Tagesticket bist du beim Fest dabei, Essen und Parken kosten extra. Mit dem Festival Tasting Pass bekommst du bis zu fünf Gerichte des Festes für 45,99 $ plus Steuer, Inhaber einer Gold- oder Diamond-Saisonkarte zahlen 42,99 $. Es gibt ihn online und an den Essensständen im Park. Zur Wahl stehen herzhaft mit Buffalo Chicken gefüllte Ofenkartoffeln, Jambalaya, Stuffing Stackers und Kartoffelsuppe. Für danach gibt es ein Mint-Chocolate-Chip-Brownie-Sundae, Red-Velvet-Kakao, Vanille-Eggnog, Candy-Cane-Cupcakes, Apple Dumplings und Lebkuchenmänner.
 
-Die Smoky Mountain Christmas Guided Tour ist eine Führung durch das Fest mit einem Lanyard zum Behalten, reservierten Plätzen im [Dollywood Express](ref:dollywood/dollywood-express-train-depot), Begegnungen mit den Figuren, einem Snack und einem heißen Getränk.
+Bei der Smoky Mountain Christmas Guided Tour sitzt du auf reservierten Plätzen im [Dollywood Express](ref:dollywood/dollywood-express-train-depot), triffst die Figuren und bekommst einen Snack, ein heißes Getränk und ein Lanyard zum Behalten.
 
 Regnet es so, dass Bahnen stillstehen und du früher gehen musst, gilt die Weather Guarantee. Du holst dir vor dem Gehen an einem Ticketschalter ein Rückkehrticket für einen anderen Öffnungstag dieser Saison. Alle aus deiner Gruppe müssen dafür mit am Schalter stehen.
 
@@ -84,7 +84,7 @@ Regnet es so, dass Bahnen stillstehen und du früher gehen musst, gilt die Weath
 
 ## Die Saisonkarte 2027 gilt schon zu diesem Weihnachten
 
-Seit dem 2. November verkauft Dollywood die [Saisonkarten für 2027](/news/dollywood-saison-2027). Mit drei der vier Karten kommst du schon zu Smoky Mountain Christmas. Gold- und Diamond-Karten gelten bis zum 3. Januar, die Silver-Karte bis zum 13. Dezember. Der Summer Fun Pass gilt erst ab dem 19. April 2027. Hast du schon ein Tagesticket, kannst du es am Besuchstag in eine Saisonkarte umwandeln, und der Wert eines regulären Tagestickets wird angerechnet.
+Seit dem 2. November verkauft Dollywood die [Saisonkarten für 2027](/news/dollywood-saison-2027). Gold und Diamond gelten schon an diesem Weihnachten bis zum 3. Januar, Silver bis zum 13. Dezember. Nur der Summer Fun Pass wartet bis zum 19. April 2027. Hast du schon ein Tagesticket, kannst du es am Besuchstag in eine Saisonkarte umwandeln, und der Wert eines regulären Tagestickets wird angerechnet.
 
 Kaufst du zwischen dem 2. November und dem 13. Dezember eine Saisonkarte, bekommst du ein Bring-A-Friend-Ticket für 45 $. Damit kommt eine Begleitung vom 6. November bis zum 13. Dezember zum Fest. Aktive und ehemalige Soldaten sparen vom 2. bis zum 15. November 35 $ pro Karte bei Silver, Gold und Diamond, auch für die engste Familie. Den Status weisen sie vorher bei id.me nach. Kinder mit Geburtsjahr 2022 oder 2023 kommen mit dem Pre-K Imagination Season Pass kostenlos in den Park.
 
@@ -96,11 +96,11 @@ Parken kostet 25 $ pro Fahrzeug. Von den Parkplätzen A bis E fahren kostenlose 
 
 ## Die beiden Resorts
 
-Im DreamMore Resort and Spa steht in der Lobby ein Weihnachtsbaum über zwei Etagen, und am Pool läuft die Christmas Tree Show. Das Restaurant Song & Hearth kocht an Thanksgiving, Heiligabend, dem ersten Weihnachtstag und Silvester ein Festessen. Gäste des DreamMore kommen mit dem Shuttle zum Park und bekommen TimeSaver Passes dazu. Die HeartSong Lodge & Resort ist im Stil der Great Smoky Mountains geschmückt. Ihr Restaurant Ember & Elm serviert an Thanksgiving, am ersten Weihnachtstag und an Silvester ein Abendessen. In beiden Resorts werden Marshmallows geröstet, und im Camp DW basteln die Kleinsten.
+Im DreamMore Resort and Spa steht in der Lobby ein Weihnachtsbaum über zwei Etagen, und am Pool läuft die Christmas Tree Show. Das Restaurant Song & Hearth kocht an Thanksgiving, Heiligabend, dem ersten Weihnachtstag und Silvester ein Festessen. Gäste des DreamMore kommen mit dem Shuttle zum Park und bekommen TimeSaver Passes dazu. Die HeartSong Lodge & Resort ist im Stil der Great Smoky Mountains geschmückt. Ihr Restaurant Ember & Elm serviert an denselben Feiertagen wie das Song & Hearth ein Abendessen, nur nicht an Heiligabend. In beiden Resorts kannst du Marshmallows rösten, und im Camp DW gibt es Bastelstunden für Kinder.
 
-## Golden Ticket Awards und eine neue Achterbahn
+## Golden Ticket Awards
 
-Bei den Golden Ticket Awards hat Smoky Mountain Christmas 15-mal den Preis für das beste Weihnachtsevent eines Freizeitparks gewonnen. Bei den 10Best Awards von USA Today ist das Fest in diesem Jahr nominiert. Neu im Park ist [NightFlight Expedition](ref:dollywood/nightflight-expedition), eine Achterbahn in einer Halle.
+Bei den Golden Ticket Awards hat Smoky Mountain Christmas 15-mal den Preis für das beste Weihnachtsevent eines Freizeitparks gewonnen. Bei den 10Best Awards von USA Today ist das Fest in diesem Jahr nominiert.
 
 [Dollywood](ref:dollywood?full)
 
