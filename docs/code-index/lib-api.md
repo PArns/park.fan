@@ -109,12 +109,11 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`kids-page.ts`](../../lib/api/kids-page.ts)
 
-- `hasParkKidsPage` _function_: Does this park have a „with kids" page at all? For the sitemap and links that must know whether the URL exists; reads the park payload from the Data Cache entry the park page already fills.
 - `parksWithKidsPage` _function_: Which of these parks have a "with kids" page, as a set of `parkGeoKey`s. A failed probe throws, for the reason `parksWithStatsPage` gives: one outage must not empty the sitemap's class.
 
 ### [`ml.ts`](../../lib/api/ml.ts)
 
-- `getMLDashboard` _function_: Get the ML model dashboard (accuracy, coverage, model health), cached a day because training runs once a day. This fetch sets the ISR window of the pages that render `MLStatsSection`, including the homepage.
+- `getMLDashboard` _function_: Get the ML model dashboard (accuracy, coverage, model health), cached a day because training runs once a day. This fetch sets the ISR window of the pages that render `MLStatsSection` (`/fancast`).
 - `getMLMetricsHistory` _function_: Get ML metrics history for sparklines (oldest first, up to `limit`), cached a day likewise.
 
 ### [`park-live-projection.ts`](../../lib/api/park-live-projection.ts)

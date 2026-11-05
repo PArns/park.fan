@@ -2921,32 +2921,8 @@
     @apply bg-background/40 border-border/30 border backdrop-blur-sm;
   }
 
-  .glass {
-    @apply bg-background/60 border-border/40 border backdrop-blur-md;
-  }
-
-  .glass-strong {
-    @apply bg-background/80 border-border/50 border shadow-lg backdrop-blur-lg;
-  }
-
-  .glass-heavy {
-    @apply bg-background/90 border-border/60 border shadow-xl backdrop-blur-xl;
-  }
-
-  .glass-card-light {
-    @apply bg-card/40 border-border/30 border backdrop-blur-sm;
-  }
-
   .glass-card {
     @apply bg-card/60 border-border/40 border shadow-lg backdrop-blur-md;
-  }
-
-  .glass-card-strong {
-    @apply bg-card/80 border-border/50 border shadow-xl backdrop-blur-lg;
-  }
-
-  .glass-header {
-    @apply bg-background/80 border-border/50 border-b backdrop-blur-md;
   }
 
   .interactive-card {
@@ -3087,11 +3063,6 @@
 
   .group:hover .group-interactive-icon {
     color: hsl(var(--primary));
-  }
-
-  /* Mobile-first touch targets */
-  .touch-target {
-    @apply min-h-[44px] min-w-[44px];
   }
 
   .text-trend-up {

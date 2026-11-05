@@ -32,7 +32,7 @@ export function ParkCalendarMonthIndexChip({
       // carries the locale prefix, while `href` is locale-relative. `MonthStep` does the same.
       onClick={() => suppressScrollToTopFor(getPathname({ href, locale }))}
       // Every chip carries a surface, inactive ones too: a month is a control here, and bare text
-      // did not read as one. `min-h-9` (the button scale's default height) and not `.touch-target`:
+      // did not read as one. `min-h-9` (the button scale's default height) and not a 44 px floor:
       // 25 chips at 44 px would turn the index into a wall.
       className={cn(
         'inline-flex min-h-9 items-center rounded-md border px-2.5 py-1 text-xs font-medium tabular-nums transition-colors',

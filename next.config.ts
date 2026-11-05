@@ -4,6 +4,7 @@ import createNextIntlPlugin from 'next-intl/plugin';
 import withBundleAnalyzer from '@next/bundle-analyzer';
 import { HOMEPAGE_LINK_HEADER } from './lib/agents/api-catalog';
 import { LICENSE_LINK_HEADER } from './lib/agents/licensing';
+import { HOWTO_CANONICAL_SEGMENT, HOWTO_SEGMENTS } from './lib/howto/segments';
 
 const withNextIntl = createNextIntlPlugin('./i18n/request.ts');
 
@@ -91,14 +92,6 @@ const bestTimeHeaderSegments = [
   'periodo-migliore-per-visitare',
   'beste-tijd-om-te-bezoeken',
   'mejor-epoca-para-visitar',
-];
-const howtoHeaderSegments = [
-  'how-park-fan-works',
-  'so-funktioniert-park-fan',
-  'comment-fonctionne-park-fan',
-  'come-funziona-park-fan',
-  'hoe-park-fan-werkt',
-  'como-funciona-park-fan',
 ];
 /**
  * The trip planner, in the six segments a browser actually asks for.
@@ -562,17 +555,9 @@ const nextConfig: NextConfig = {
     // best-time hub above). The page shipped for a year on `/howto` in all six
     // languages, so the legacy segment is folded into the wrong-segment set — it
     // is what the index, the daily IndexNow push and every old link still name.
-    const howtoSegments: Record<string, string> = {
-      en: 'how-park-fan-works',
-      de: 'so-funktioniert-park-fan',
-      fr: 'comment-fonctionne-park-fan',
-      it: 'come-funziona-park-fan',
-      nl: 'hoe-park-fan-werkt',
-      es: 'como-funciona-park-fan',
-    };
     const howtoLegacySegment = 'howto';
-    const howtoAll = [...Object.values(howtoSegments), howtoLegacySegment];
-    for (const [locale, correct] of Object.entries(howtoSegments)) {
+    const howtoAll = [...Object.values(HOWTO_SEGMENTS), howtoLegacySegment];
+    for (const [locale, correct] of Object.entries(HOWTO_SEGMENTS)) {
       for (const wrong of howtoAll) {
         if (wrong === correct) continue;
         rules.push({
@@ -724,17 +709,11 @@ const nextConfig: NextConfig = {
 
     // "How park.fan works" guide: serve localized segments via the canonical
     // route folder (app/[locale]/how-park-fan-works). EN needs no rewrite.
-    const howtoSegments: Record<string, string> = {
-      de: 'so-funktioniert-park-fan',
-      fr: 'comment-fonctionne-park-fan',
-      it: 'come-funziona-park-fan',
-      nl: 'hoe-park-fan-werkt',
-      es: 'como-funciona-park-fan',
-    };
-    for (const [locale, segment] of Object.entries(howtoSegments)) {
+    for (const [locale, segment] of Object.entries(HOWTO_SEGMENTS)) {
+      if (segment === HOWTO_CANONICAL_SEGMENT) continue;
       rules.push({
         source: `/${locale}/${segment}`,
-        destination: `/${locale}/how-park-fan-works`,
+        destination: `/${locale}/${HOWTO_CANONICAL_SEGMENT}`,
       });
     }
 
@@ -1117,7 +1096,8 @@ const nextConfig: NextConfig = {
         headers: sharedCache('public, max-age=300, s-maxage=86400, stale-while-revalidate=604800'),
       },
       {
-        // Build-time glossary ids — immutable until the next deploy.
+        // Build-time glossary ids, prerendered per deploy; an hour bounds how long the edge
+        // serves the previous deploy's list.
         source: '/api/glossary-term-ids',
         headers: sharedCache('public, s-maxage=3600, stale-while-revalidate=86400'),
       },
@@ -1193,7 +1173,7 @@ const nextConfig: NextConfig = {
       ]),
       ...[
         ...bestTimeHeaderSegments,
-        ...howtoHeaderSegments,
+        ...Object.values(HOWTO_SEGMENTS),
         // The trip planner's own page. It was left out of this block, and the
         // reason is visible in its own docblock: it shipped `force-dynamic`,
         // where an edge window would have been meaningless, and when it became
