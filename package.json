@@ -102,6 +102,7 @@
     "test:is-uuid": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-is-uuid.mjs",
     "test:park-name": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-park-name.mjs",
     "test:park-brands": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-park-brands.mjs",
+    "test:report-csv": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-report-csv.mjs",
     "test:search-session": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-search-session.mjs",
     "test:markup-events": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-markup-events.mjs",
     "test:planner-events": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-planner-events.mjs",

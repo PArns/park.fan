@@ -44,7 +44,8 @@ import { HourlyNotice } from './hourly-notice';
 import { BlockEventButton } from './block-event-button';
 import { CrosstabView } from './crosstab-view';
 import { TrafficFilterBar } from './filter-bar';
-import { PublicLink } from './list-parts';
+import { PublicLink } from '../../_ui/row-links';
+import { TrafficCsvButton } from './list-parts';
 import { UnsupportedNote } from './unsupported-note';
 
 /**
@@ -129,6 +130,7 @@ export function EventDetailView({ name }: { name: string }) {
       action={
         <div className="flex flex-wrap items-center justify-end gap-3">
           {data && <BlockEventButton name={name} blocked={data.blocked ?? false} />}
+          <TrafficCsvButton report={name} data={data} filters={filters} />
           <Link
             href={back}
             className="text-primary flex items-center gap-1 text-xs hover:underline"

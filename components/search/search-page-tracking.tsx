@@ -26,7 +26,7 @@ export function SearchPageTracking({
     session.open();
     if (query.trim().length < 3) return;
     session.typed();
-    if (!found) session.noResults();
+    if (!found) session.noResults(query);
   }, [session, query, found]);
 
   return <div onClickCapture={(event) => trackResultClick(session, event.target)}>{children}</div>;

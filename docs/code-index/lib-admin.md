@@ -186,6 +186,12 @@ The path guard and the query of `/api/admin/[...path]`, pure so they can be test
 - `adminProxyPath` _function_: `['content', 'parks', '<id>'] → 'content/parks/<id>'`, or null if unsafe.
 - `adminProxyQuery` _function_: The query the proxy relays upstream: every parameter in its order, a repeated one every time (the traffic pages AND several `filter=` values), except the deprecated shared `pass` in any case.
 
+### [`report-csv.ts`](../../lib/admin/report-csv.ts)
+
+- `reportCsv` _function_: An admin report's API answer as one CSV: `meta` (window and filters) and the answer's single values first as `Übersicht` rows, then every list as rows named by its path, the columns the union of all keys.
+- `csvNamePart` _function_: A file name part from free text: lower case, letters, digits and dashes only.
+- Types: `CsvCell`, `CsvMeta`
+
 ### [`roles.ts`](../../lib/admin/roles.ts)
 
 - `roleAtLeast` _function_: Returns true when an admin role ranks at or above the given minimum (owner &gt; editor &gt; author &gt; viewer).
@@ -282,7 +288,7 @@ The path guard and the query of `/api/admin/[...path]`, pure so they can be test
 - `isPlannerEvent` _function_: Whether an event belongs to the planner dashboard.
 - `propLabel` _function_: The name of an event property in German; an unknown one stays as sent.
 - `propValueLabel` _function_: How a property's value reads: search fields, result kinds and suggestions get their words.
-- `sortPropValues` _function_: The values of one property in the order they read best: positions first to last, depths shallow to deep and a park page's places top to bottom, everything else as the API sent them, which is biggest first.
+- `sortPropValues` _function_: The values of one property in the order they read best: positions first to last, depths and query lengths shallow to deep and a park page's places top to bottom, everything else as the API sent them, which is biggest first.
 - `isResolvedEntity` _function_: Whether an entity still resolves; a retired or deleted one is only an id and a count.
 - `entityPublicHref` _function_: Where to read about an entity on the public site, in German, which is the admin's language.
 - `entityEditorHref` _function_: Where an entity is edited: a park and a ride by id, a show or a restaurant through its park's address, which `/admin/go` resolves to the park that holds it.

@@ -14,6 +14,7 @@ import {
   type PlannerState,
 } from './types';
 import { clampRiderHeight } from './party';
+import { isUuid } from '@/lib/utils';
 
 /**
  * The planner's storage, as an external store over localStorage alone; a multi-park trip is a few
@@ -182,6 +183,7 @@ function toPlannerState(parsed: unknown): PlannerState {
         // Stored so pages without a park payload can answer "what day is it there?", which the
         // browser's own offset gets wrong for a park in another zone.
         ...(typeof park.timezone === 'string' ? { timezone: park.timezone } : {}),
+        ...(typeof park.parkId === 'string' && isUuid(park.parkId) ? { parkId: park.parkId } : {}),
       };
     }
   }

@@ -139,6 +139,11 @@ export interface PlannerPark {
    * no payload for any of them.
    */
   timezone?: string;
+  /**
+   * The park's UUID, for the planner's events only: stored so a plan reopened in a later visit,
+   * where no page has named the park yet, still sends its park (`lib/planner/entity-ids.ts`).
+   */
+  parkId?: string;
   /** Keyed by date, so several days of the same park sit side by side. */
   days: Record<string, PlannerDay>;
 }

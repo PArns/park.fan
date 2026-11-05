@@ -102,6 +102,7 @@ The places a park page marks, top to bottom, the closed list of the event's `sec
 ### [`site-analytics.ts`](../../lib/analytics/site-analytics.ts)
 
 - `sitePageTypeOf` _function_: The page type of a locale-prefixed path such as `/de/parks/europe/germany/bruehl/phantasialand`.
+- `searchQueryLength` _function_: The bucket of a query's length, counted after trimming.
 - `searchPosition` _function_: The bucket of a 1-based result position.
 - `canCountSite` _function_: Whether this tab may send anything: production hosts only, not from automation, a forged phone or a simulated visit, not under Do Not Track, Global Privacy Control or the privacy page's opt-out.
 - `flushSiteAnalytics` _function_: Sends what is queued now instead of in a second. The page does it on its own when it is hidden; this is for a caller that cannot wait for that, such as a test.
@@ -109,7 +110,7 @@ The places a park page marks, top to bottom, the closed list of the event's `sec
 - `markPageNotFound` _function_: Declares the page in the address bar a "not found" page, which only that page knows: its pageview becomes `not_found`, whether it was queued already or comes after.
 - `onSiteEvent` _function_: Hears every event the page reports, counted or not (a visitor who opted out, a bot), for what answers what a visitor does: Parky reacts to a few of them.
 - `trackSiteEvent` _function_: Counts one event on the current page. A name in `SiteEventMap` is checked against its properties; any other name (lower case, digits and underscores, two to 48 characters) goes through with any properties of `SiteEventProps`.
-- Types: `SitePageType`, `SearchSurface`, `SearchResultKind`, `SearchPosition`, `NavMenuId`, `SearchBrowseItem`, `PlannerWizardStep`, `PlanItemKind`, `PlanItemAddSource`, `PlanItemRemoveSource`, `PlanOptimizeMode`, `PlannerFitSource`, `PlannerFitLever`, `PlannerUndoSource`, `SharedPlanResult`, `AssistantQuestionKind`, `AssistantOpenSource`, `AssistantLineKind`, `AssistantAnswerResult`, `SiteEventMap`, `SiteEventName`, `AttractionFilterName`, `SiteEventListener`
+- Types: `SitePageType`, `SearchSurface`, `SearchResultKind`, `SearchPosition`, `SearchQueryLength`, `NavMenuId`, `SearchBrowseItem`, `PlannerWizardStep`, `PlanItemKind`, `PlanItemAddSource`, `PlanItemRemoveSource`, `PlanOptimizeMode`, `PlannerFitSource`, `PlannerFitLever`, `PlannerUndoSource`, `SharedPlanResult`, `AssistantQuestionKind`, `AssistantOpenSource`, `AssistantLineKind`, `AssistantAnswerResult`, `SiteEventMap`, `SiteEventName`, `AttractionFilterName`, `SiteEventListener`
 
 ### [`umami.ts`](../../lib/analytics/umami.ts)
 

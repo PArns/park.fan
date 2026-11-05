@@ -46,6 +46,7 @@ import { useTrafficData, useTrafficFilters } from '../_lib/use-traffic';
 import { EventLinks } from './event-links';
 import { TrafficFilterBar } from './filter-bar';
 import { HourlyNotice } from './hourly-notice';
+import { TrafficCsvButton } from './list-parts';
 import { RankedEntitiesPanel } from './ranked-entities';
 import { UnsupportedNote } from './unsupported-note';
 
@@ -471,12 +472,15 @@ export function PlannerView() {
         title="Tagesplaner"
         hint="Wie der Planer geöffnet wird, wie weit er führt und was in die Pläne kommt. Gezählt wird nie, wie ein Plan aussieht."
         action={
-          <Link
-            href={`/admin/traffic?${trafficQuery(filters)}`}
-            className="text-primary flex items-center gap-1 text-xs hover:underline"
-          >
-            <ArrowLeft className="h-3.5 w-3.5" /> Traffic
-          </Link>
+          <div className="flex items-center gap-3">
+            <TrafficCsvButton report="Tagesplaner" data={data} filters={filters} />
+            <Link
+              href={`/admin/traffic?${trafficQuery(filters)}`}
+              className="text-primary flex items-center gap-1 text-xs hover:underline"
+            >
+              <ArrowLeft className="h-3.5 w-3.5" /> Traffic
+            </Link>
+          </div>
         }
       />
       <div className="border-border/50 flex flex-wrap items-center justify-between gap-3 border-b px-4 py-3">

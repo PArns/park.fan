@@ -9,6 +9,7 @@ import { Select } from '../../_ui/controls';
 import { ErrorState, Panel, PanelBody, PanelHeader, SkeletonRows } from '../../_ui/primitives';
 import { useTrafficData, type TrafficFilters } from '../_lib/use-traffic';
 import { HourlyNotice } from './hourly-notice';
+import { TrafficCsvButton } from './list-parts';
 
 /**
  * Two dimensions of the counter against each other as a shaded matrix: the rows, the columns, the
@@ -59,7 +60,14 @@ export function CrosstabView({
 
   return (
     <Panel>
-      <PanelHeader icon={Grid3x3} title={title} hint={hint} />
+      <PanelHeader
+        icon={Grid3x3}
+        title={title}
+        hint={hint}
+        action={
+          <TrafficCsvButton report={`${title} ${row} ${col}`} data={data} filters={filters} />
+        }
+      />
       <PanelBody>
         {toolbar}
         <div className="mb-4 flex flex-wrap items-center gap-x-4 gap-y-2 text-xs">

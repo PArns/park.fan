@@ -30,6 +30,9 @@ import {
   rideIdOf,
   showIdOf,
 } from '../lib/planner/entity-ids.ts';
+import { addCustomEntry } from '../lib/planner/actions.ts';
+import { parsePlannerPayload } from '../lib/planner/store.ts';
+import { EMPTY_PLANNER_STATE } from '../lib/planner/types.ts';
 
 let passed = 0;
 async function test(name, fn) {
@@ -185,6 +188,28 @@ await test('plan_day_started names the way into its opening, and none with the p
       ['plan_day_started', { source: 'park-header' }],
     ]
   );
+});
+
+await test('a park named once goes into the plan, so a later visit still sends it', () => {
+  const block = {
+    parkName: 'Efteling',
+    geo: { continent: 'europe', country: 'netherlands', city: 'kaatsheuvel' },
+    date: '2030-06-01',
+    label: 'Lunch',
+    icon: 'food',
+  };
+  const named = addCustomEntry(EMPTY_PLANNER_STATE, { ...block, parkSlug: 'efteling' });
+  const unnamed = addCustomEntry(EMPTY_PLANNER_STATE, { ...block, parkSlug: 'nowhere-park' });
+  assert.equal(named.parks.efteling.parkId, PARK);
+  assert.equal('parkId' in unnamed.parks['nowhere-park'], false);
+  const read = (parkId) =>
+    parsePlannerPayload(
+      JSON.stringify({
+        payload: { ...named, parks: { efteling: { ...named.parks.efteling, parkId } } },
+      })
+    ).parks.efteling.parkId;
+  assert.equal(read(PARK), PARK);
+  assert.equal(read('not-a-uuid'), undefined);
 });
 
 console.log(`\n${passed} assertions passed.`);

@@ -34,6 +34,7 @@ import { EventsTable } from './events-table';
 import { HourlyNotice } from './hourly-notice';
 import { TrafficFilterBar } from './filter-bar';
 import { KpiTiles } from './kpi-tiles';
+import { TrafficCsvButton } from './list-parts';
 import { SeriesPanel } from './series-panel';
 import { TrafficCrosstabPanel } from './traffic-crosstab-panel';
 import { UnsupportedNote } from './unsupported-note';
@@ -79,6 +80,11 @@ export function TrafficView() {
       action={
         <div className="flex items-center gap-3 text-xs">
           <LivePill active={realtime.data?.realtime.activeVisitors} />
+          <TrafficCsvButton
+            report="Traffic"
+            data={overview.data && { overview: overview.data, events: events.data }}
+            filters={filters}
+          />
           <Link
             href="/admin/traffic/seo"
             className="text-primary flex items-center gap-1 hover:underline max-sm:hidden"

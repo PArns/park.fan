@@ -60,6 +60,7 @@ import {
 } from '../../_ui/primitives';
 import { useTrafficData, useTrafficFilters, type TrafficFilters } from '../_lib/use-traffic';
 import { HourlyNotice } from './hourly-notice';
+import { TrafficCsvButton } from './list-parts';
 import { TrafficFilterBar } from './filter-bar';
 import { eventHref } from './events-table';
 import { RankedEntitiesPanel } from './ranked-entities';
@@ -483,12 +484,15 @@ export function SearchView() {
         title="Suche"
         hint="Welches Suchfeld wird gebraucht, von welcher Seite aus und mit welchem Erfolg. Gezählt wird nie, was getippt wurde."
         action={
-          <Link
-            href={`/admin/traffic?${trafficQuery(filters)}`}
-            className="text-primary flex items-center gap-1 text-xs hover:underline"
-          >
-            <ArrowLeft className="h-3.5 w-3.5" /> Traffic
-          </Link>
+          <div className="flex items-center gap-3">
+            <TrafficCsvButton report="Suche" data={data} filters={filters} />
+            <Link
+              href={`/admin/traffic?${trafficQuery(filters)}`}
+              className="text-primary flex items-center gap-1 text-xs hover:underline"
+            >
+              <ArrowLeft className="h-3.5 w-3.5" /> Traffic
+            </Link>
+          </div>
         }
       />
       <div className="border-border/50 flex flex-wrap items-center justify-between gap-3 border-b px-4 py-3">
