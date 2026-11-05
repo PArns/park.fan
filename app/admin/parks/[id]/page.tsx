@@ -22,6 +22,8 @@ import { cn } from '@/lib/utils';
 import { formatRiderHeight } from '@/lib/utils/temperature';
 import { adminKeys, useAdminQuery } from '../../_lib/api';
 import type { AdminAttractionListItem, AdminParkDetail } from '../../_lib/types';
+import { withFuzzyMatches } from '../../_lib/search-hits';
+import { useFuzzyHits } from '../../_lib/use-fuzzy-hits';
 import {
   AdminPage,
   Chip,
@@ -290,7 +292,21 @@ function ParkAttractionsTab({ parkId }: { parkId: string }) {
     `/api/admin/content/parks/${parkId}/attractions?${params}`
   );
 
-  const rows = attractions.data?.attractions ?? [];
+  // The site's fuzzy search adds the rides a typo hides ("blue fir"); retired ones it never finds.
+  const fuzzyIds = useFuzzyHits(query, 'attraction').hits.map((hit) => hit.id);
+  const unsearchedParams = includeRetired ? 'includeRetired=true' : '';
+  const unsearched = useAdminQuery<{ total: number; attractions: AdminAttractionListItem[] }>(
+    adminKeys.parkAttractions(parkId, { params: unsearchedParams }),
+    fuzzyIds.length > 0
+      ? `/api/admin/content/parks/${parkId}/attractions?${unsearchedParams}`
+      : null
+  );
+  const rows = withFuzzyMatches(
+    attractions.data?.attractions ?? [],
+    unsearched.data?.attractions ?? [],
+    fuzzyIds,
+    (attraction) => attraction.id
+  );
 
   return (
     <Panel>

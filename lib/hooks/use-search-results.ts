@@ -1,23 +1,19 @@
 'use client';
 
-import { useState, useEffect, useMemo } from 'react';
+import { useMemo } from 'react';
 import { useLocale } from 'next-intl';
 import { keepPreviousData, useQuery } from '@tanstack/react-query';
 import type { SearchResult, SearchResultItem } from '@/lib/api/types';
+import { useDebouncedValue } from '@/lib/hooks/use-debounced-value';
+import { useSiteSearch } from '@/lib/hooks/use-site-search';
 import { useHeroBrowseParks, type HeroBrowseParks } from '@/lib/hooks/use-hero-browse-parks';
 import { usePostSearchIndex } from '@/lib/hooks/use-post-search-index';
 import { searchPostsBySection, type PostSearchSection } from '@/lib/navigation/post-search';
-import { foldText } from '@/lib/utils/text-fold';
+import { rankByMatch } from '@/lib/utils/search-ranking';
 import { SEARCH_SETTLE_MS } from '@/lib/analytics/search-session';
 
 /** Guides and news a section keeps: what their own tab lists. "All" shows the first few of them. */
 const POSTS_PER_SECTION = 20;
-
-/**
- * `foldText` plus punctuation removal — "F.L.Y." becomes "fly". `foldText` folds accents the way
- * the API's matcher does, so the scoring here agrees with the order the API sorted the results into.
- */
-const foldAlphanumeric = (value: string): string => foldText(value).replace(/[^a-z0-9]/g, '');
 
 /** Shape of a single glossary hit returned by /api/glossary-search. */
 export interface GlossarySearchItem {
@@ -54,32 +50,8 @@ export interface UseSearchResultsReturn {
  */
 export function useSearchResults(query: string): UseSearchResultsReturn {
   const locale = useLocale();
-  const [debouncedQuery, setDebouncedQuery] = useState('');
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setDebouncedQuery(query);
-    }, SEARCH_SETTLE_MS);
-
-    return () => clearTimeout(timer);
-  }, [query]);
-
-  const { data: results, isLoading: loading } = useQuery<SearchResult>({
-    queryKey: ['search', debouncedQuery],
-    queryFn: async () => {
-      const response = await fetch(`/api/search?q=${encodeURIComponent(debouncedQuery)}`);
-      if (!response.ok) throw new Error('Search failed');
-      return (await response.json()) as SearchResult;
-    },
-    enabled: debouncedQuery.length >= 3,
-    // Keep the previous query's results on screen while the next ones load — without this,
-    // every debounced keystroke resets `data` to undefined and the dialog flashes
-    // results → skeleton → results on each typed batch.
-    placeholderData: keepPreviousData,
-    staleTime: 60_000,
-    gcTime: 5 * 60_000,
-    retry: 1,
-  });
+  const debouncedQuery = useDebouncedValue(query, SEARCH_SETTLE_MS);
+  const { data: results, isLoading: loading } = useSiteSearch(debouncedQuery);
 
   const { data: glossaryData } = useQuery<{ results: GlossarySearchItem[] }>({
     queryKey: ['glossary-search', debouncedQuery, locale],
@@ -113,42 +85,7 @@ export function useSearchResults(query: string): UseSearchResultsReturn {
   // all into one backend request.
   const browse = useHeroBrowseParks();
 
-  const calculateMatchScore = (item: SearchResultItem): number => {
-    const name = foldText(item.name);
-    const query = foldText(debouncedQuery);
-    const plainName = foldAlphanumeric(item.name);
-    const plainQuery = foldAlphanumeric(debouncedQuery);
-    const hasPlainQuery = plainQuery.length > 0;
-
-    // Also without the punctuation the name carries: "fly" for "F.L.Y.".
-    if (name === query || (hasPlainQuery && plainName === plainQuery)) {
-      return 100;
-    }
-
-    if (name.startsWith(query) || (hasPlainQuery && plainName.startsWith(plainQuery))) {
-      return 50;
-    }
-
-    if (name.includes(query) || (hasPlainQuery && plainName.includes(plainQuery))) {
-      return 30;
-    }
-
-    return 0;
-  };
-
-  const sortResultsByMatch = (
-    items: SearchResultItem[]
-  ): { item: SearchResultItem; score: number }[] => {
-    return items
-      .map((item) => ({ item, score: calculateMatchScore(item) }))
-      .sort((a, b) => {
-        const scoreDiff = b.score - a.score;
-        if (scoreDiff !== 0) return scoreDiff;
-        const aOperating = a.item.status === 'OPERATING' ? 0 : 1;
-        const bOperating = b.item.status === 'OPERATING' ? 0 : 1;
-        return aOperating - bOperating;
-      });
-  };
+  const sortResultsByMatch = (items: SearchResultItem[]) => rankByMatch(items, debouncedQuery);
 
   return {
     debouncedQuery,

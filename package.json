@@ -118,6 +118,7 @@
     "test:favorites-band": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-favorites-band-plan.mjs",
     "test:direct-api": "node scripts/generate-media-manifest.mjs > /dev/null && node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-direct-api.mjs",
     "test:menu-focus": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-menu-focus.mjs",
+    "test:search-hits": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-search-hits.mjs",
     "test:post-search": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-post-search.mjs",
     "test:park-phrase": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-park-phrase.mjs",
     "test:park-null-wait-stats": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-park-null-wait-stats.mjs",
