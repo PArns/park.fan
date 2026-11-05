@@ -55,6 +55,7 @@ import { TrafficFilterBar } from './filter-bar';
 import { HourlyNotice } from './hourly-notice';
 import { MoreButton, TrafficCsvButton, useShowMore } from './list-parts';
 import { PageLinks, PublicLink } from '../../_ui/row-links';
+import { RedirectAction } from './redirect-action';
 import { SearchConsoleSection } from './search-console-section';
 import { UnsupportedNote } from './unsupported-note';
 
@@ -337,8 +338,8 @@ function TrendsPanels({ filters }: { filters: TrafficFilters }) {
 
 /**
  * Addresses people asked for that do not exist, with the pages and sites that sent them: a dead
- * link is fixed at its source or answered with a redirect. A path can be copied, and every row opens
- * the address itself, to see what a visitor sees.
+ * link is fixed at its source or answered with a redirect, which an editor sets on the row. A path
+ * can be copied, and every row opens the address itself, to see what a visitor sees.
  */
 function NotFoundPanel({ filters }: { filters: TrafficFilters & TrafficFilterActions }) {
   const reason = unsupportedReason('pageviews', filters.filters);
@@ -376,7 +377,7 @@ function NotFoundPanel({ filters }: { filters: TrafficFilters & TrafficFilterAct
           <ul className="divide-border/40 divide-y">
             {shown.map((row) => (
               <li key={row.path} className="space-y-1 px-4 py-2.5 text-sm">
-                <div className="flex items-center gap-3">
+                <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
                   <span className="min-w-0 flex-1 font-mono text-xs">
                     <StartTruncated>{row.path}</StartTruncated>
                   </span>
@@ -394,6 +395,7 @@ function NotFoundPanel({ filters }: { filters: TrafficFilters & TrafficFilterAct
                   <span className="w-12 shrink-0 text-right font-semibold tabular-nums">
                     {formatCount(row.views)}
                   </span>
+                  <RedirectAction path={row.path} onChange={() => void refetch()} />
                 </div>
                 {row.referrers.length > 0 && (
                   <p className="text-muted-foreground flex flex-wrap gap-x-3 gap-y-1 text-xs">

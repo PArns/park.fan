@@ -41,6 +41,17 @@ interface RequestOptions {
  * `undefined` on 204) and throws `AdminApiError` with the backend's message on a non-2xx answer.
  */
 export async function adminFetch<T>(path: string, options: RequestOptions = {}): Promise<T> {
+  return (await adminRequest<T>(path, options)).data;
+}
+
+/**
+ * {@link adminFetch} with the status beside the payload, for a write whose 2xx answers differ, as
+ * `201` created and `200` already there.
+ */
+export async function adminRequest<T>(
+  path: string,
+  options: RequestOptions = {}
+): Promise<{ status: number; data: T }> {
   const response = await fetch(path, {
     method: options.method ?? 'GET',
     cache: 'no-store',
@@ -50,7 +61,7 @@ export async function adminFetch<T>(path: string, options: RequestOptions = {}):
   });
 
   if (response.status === 204 || response.headers.get('content-length') === '0') {
-    return undefined as T;
+    return { status: response.status, data: undefined as T };
   }
 
   const text = await response.text();
@@ -59,7 +70,7 @@ export async function adminFetch<T>(path: string, options: RequestOptions = {}):
   if (!response.ok) {
     throw new AdminApiError(response.status, messageFrom(payload, response), payload);
   }
-  return payload as T;
+  return { status: response.status, data: payload as T };
 }
 
 function safeParse(text: string): unknown {

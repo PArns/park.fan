@@ -67,6 +67,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `useAdminQuery` _hook_: React Query hook that GETs an admin path through `adminFetch` under the given key. A `null` path disables the query, but an `enabled` passed in `options` overrides that.
 - `useInvalidateAdmin` _hook_: Drops every cached admin query under a prefix: a curation write ripples (a park's name is embedded in each of its rides), and one prefix beats five keys at the call site.
 - `adminFetch` _function_: Same-origin fetch for admin API routes: sends `body` as JSON, returns the parsed payload (or `undefined` on 204) and throws `AdminApiError` with the backend's message on a non-2xx answer.
+- `adminRequest` _function_: `adminFetch` with the status beside the payload, for a write whose 2xx answers differ, as `201` created and `200` already there.
 - `AdminApiError` _class_: A non-2xx answer from an admin route, with its status, message and payload.
 - `adminKeys` _const_: Namespaced so `invalidate('parks')` can drop a whole family at once.
 - `DATA_QUALITY_DEFAULT_WINDOW` _const_: The window the data-quality page opens with, and the one the overview counts in.
@@ -930,6 +931,10 @@ Route `/admin/system` (page).
 ### [`traffic/_components/ranked-entities.tsx`](../../app/admin/traffic/_components/ranked-entities.tsx)
 
 - `RankedEntitiesPanel` _component_: A report's ranking of parks or rides as a panel: each name leads into its editor and the symbol beside it to its page, an id no table knows any more reads „Nicht mehr vorhanden".
+
+### [`traffic/_components/redirect-action.tsx`](../../app/admin/traffic/_components/redirect-action.tsx)
+
+- `RedirectAction` _component_: The redirect answer to a row of the not-found list: a dead park path points at a park, a dead ride path at a ride of the park in the path, since the API takes nothing else.
 
 ### [`traffic/_components/reindex-panel.tsx`](../../app/admin/traffic/_components/reindex-panel.tsx)
 

@@ -251,6 +251,14 @@ Every call goes through the admin proxy as `/api/admin/analytics/…`, which map
 - **Rows lead somewhere.** A page opens on park.fan and, for a park or a ride, in its editor
   (`/admin/go`); a referrer opens its site; an entity opens its editor by id and its public page;
   a search field's numbers lead to `search_opened` and its siblings; a 404 address copies or opens.
+- **An editor answers a 404 with a redirect** (`redirect-action.tsx`, `POST /v1/admin/redirects`).
+  "Weiterleiten" on a row opens a picker under it: a dead park path takes a park from the catalogue,
+  a dead ride path a ride of the park its path names (resolved by `/admin/go`'s resolve call), since
+  the API takes nothing else. The row goes once the list is asked again, because the API drops a
+  path an alias answers. The toast names `from → to` and offers undo (`DELETE ?fromPath=`); an alias
+  that was already there (`200`) gets no undo, since it was not this click's. A refused write names
+  the reason: a target that does not fit the path (`400`), a target that is gone (`404`), a path that
+  is a live page or points elsewhere (`409`). A blog post or any other address is no target yet.
 - **The System page carries the statistic's own health** (`siteAnalytics` in
   `GET /v1/admin/system-health`, panel "Statistik"): the windows waiting to be written and how old
   the oldest is, the windows the writer gave up on, the visits still open, the last write in UTC,
