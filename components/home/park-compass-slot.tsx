@@ -4,6 +4,7 @@ import { useEffect, useMemo, useRef, useState, useSyncExternalStore } from 'reac
 import { useQuery } from '@tanstack/react-query';
 import { splitInParkRides } from '@/components/parks/nearby-in-park-view';
 import { useHomeNearbyParks } from '@/lib/hooks/use-nearby-parks';
+import { useMediaQuery } from '@/lib/hooks/use-media-query';
 import { useMounted } from '@/lib/hooks/use-mounted';
 import { usePlacedOutOfSight } from '@/lib/hooks/use-placed-out-of-sight';
 import { fetchNearby } from '@/lib/nearby/fetch-nearby';
@@ -16,8 +17,11 @@ const subscribeNever = () => () => {};
 const readSim = () => new URLSearchParams(window.location.search).get('sim');
 
 /**
- * Directly under the homepage hero: the in-park compass, or nothing. It reads the same
- * `/api/nearby` answer as the hero's welcome and, like it, waits for the mount. Only for `in_park`
+ * The homepage's in-park compass, or nothing. From `lg` it stands directly under the hero; below
+ * (`placement="news"`, phones and tablets) under the news, because there the hero ends inside the
+ * first screen and the compass pushed what peeked in below it (docs/features/park-compass.md). The
+ * page renders one slot of each; only the one whose viewport it is does anything. It reads the same
+ * `/api/nearby` answer as the hero's park block and, like it, waits for the mount. Only for `in_park`
  * with a headliner in season, the filter `ParkCompass` lists by (`splitInParkRides`).
  *
  * Where it appears, and when: no box is held open for it (a screen of nothing for everyone at
@@ -25,8 +29,9 @@ const readSim = () => new URLSearchParams(window.location.search).get('sim');
  * it moves nothing the reader is looking at (`usePlacedOutOfSight`). Here even Chromium's scroll
  * anchoring did not absorb it, so the rule holds in every browser.
  */
-export function ParkCompassSlot() {
+export function ParkCompassSlot({ placement }: { placement: 'hero' | 'news' }) {
   const mounted = useMounted();
+  const active = useMediaQuery('(min-width: 1024px)') === (placement === 'hero');
   const { data: nearby } = useHomeNearbyParks();
 
   // `?sim=compass[:preset]`: the park's own nearby answer, asked for at the preset's coordinates —
@@ -52,7 +57,8 @@ export function ParkCompassSlot() {
   });
 
   const data = demo ? demoAnswer : nearby;
-  const inPark = mounted && data?.type === 'in_park' ? (data.data as NearbyAttractionsData) : null;
+  const inPark =
+    mounted && active && data?.type === 'in_park' ? (data.data as NearbyAttractionsData) : null;
   const shown = inPark !== null && splitInParkRides(inPark.rides ?? []).headliners.length > 0;
   const parkName = inPark?.park.name;
   // One object for as long as the demo and the park stay the same: `ParkCompass` keys its
@@ -76,11 +82,13 @@ export function ParkCompassSlot() {
   const placed = usePlacedOutOfSight(slotRef, shown && ParkCompass !== null);
   const visible = shown && placed && ParkCompass !== null;
 
-  // The hero's pill to this section appears while it is here (`useCompassPresent`).
+  // The hero's pill to this section appears while it is here (`useCompassPresent`). Only the
+  // active slot reports, or the other one's `false` could land after its `true`.
   useEffect(() => {
+    if (!active) return;
     setCompassPresent(visible);
     return () => setCompassPresent(false);
-  }, [visible]);
+  }, [active, visible]);
 
   return (
     <div ref={slotRef} data-compass-slot="">

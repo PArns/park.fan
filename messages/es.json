@@ -396,8 +396,6 @@
       "termsIntro": "Los carteles y las apps de los parques los dan por sabidos."
     },
     "title": "Más loopings, menos esperas",
-    "heroWelcome": "Bienvenido a {parkName}",
-    "heroNearPark": "{parkName} está cerca (a menos de 5 km). Abajo verás tiempos de espera en vivo, horarios y nivel de afluencia, o puedes buscar otro parque.",
     "heroWelcomeAttractions": "{count} atracciones en funcionamiento",
     "heroParkLink": "Ver parque",
     "heroPlanToday": "Planificar hoy",

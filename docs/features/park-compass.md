@@ -2,14 +2,15 @@
 
 For a visitor whom the nearby answer places inside a park: the park's headliners on a compass dial,
 the ride the phone points at in a bar under it, and the same rides as a list with direction,
-distance and wait. It appears under the homepage hero and at the top of that park's own page. Open
-this page before touching the compass, its placement rules or the in-park block on the park page.
+distance and wait. It appears on the homepage (under the hero from 1024 px, under the news below
+that) and at the top of that park's own page. Open this page before touching the compass, its
+placement rules or the in-park block on the park page.
 
 The park map on the map tab and in posts: [park map](park-map.md).
 
 | Piece                                        | File                                                     |
 | -------------------------------------------- | -------------------------------------------------------- |
-| Homepage mount point                         | `components/home/park-compass-slot.tsx`                  |
+| Homepage mount points (hero, news)           | `components/home/park-compass-slot.tsx`                  |
 | Park page mount point                        | `components/parks/park-in-park-block.tsx`                |
 | The module, loaded by hand                   | `components/home/use-load-park-compass.ts`               |
 | State, bar and list                          | `components/home/park-compass.tsx`                       |
@@ -38,27 +39,35 @@ for the module, then inserts the compass only where `mayPlace` allows: while the
 viewport with at most 10 % of the screen showing below it (`VISIBLE_SLICE`), or with the reader at
 the very top of the page.
 
-**The top of the page is an exception on purpose.** On a phone the hero ends at 717 px in every
-language, so on a 390 × 844 phone the slot is already on screen and never "below the viewport"; with
-only the first rule the compass never appeared on 390–430 px phones in five of six locales (measured
-2026-09-28 at Disneyland Anaheim). At the top the compass pushes the sliver of the next chapter's
-heading out of view, which costs, reader at y = 0 (`?sim=in_park`, 2026-10-28):
+**The top of the page is an exception on purpose.** A slot that is already on screen at y = 0 is
+never "below the viewport", and with only the first rule the compass never appeared there. At the
+top the compass pushes what peeks in below its slot out of view, so the slot sits where nothing
+peeks in.
 
-| Viewport   | Hero ends (de / en) | CLS de | CLS en |
-| ---------- | ------------------- | ------ | ------ |
-| 360 × 740  | 717 / 717 px        | 0.0311 | 0.0311 |
-| 390 × 844  | 717 / 717 px        | 0.1505 | 0.1505 |
-| 412 × 915  | 717 / 717 px        | 0.2164 | 0.2164 |
-| 430 × 932  | 717 / 717 px        | 0.2307 | 0.2307 |
-| 768 × 1024 | 1062 / 947 px       | 0.0025 | 0.0708 |
-| 1280 × 800 | 1142 / 982 px       | 0.0229 | 0.0105 |
+**Below 1024 px it stands under the news.** The page renders two slots, `ParkCompassSlot
+placement="hero"` under the hero and `placement="news"` under `HomeReading`; `useMediaQuery` makes
+one of them active, and only the active one loads the module and reports `useCompassPresent`. On a
+phone and a tablet in portrait the hero ends inside the first screen (882 px on a 390 × 844 phone,
+922 px on a 768 × 1024 tablet, with the park block), so the compass under it pushed the news
+heading's sliver out of view; under the news it goes in a screen further down. Measured in
+Phantasialand with the geolocation emulated and the nearby answer held back 3 s, Chromium,
+`pnpm build && pnpm start`, reader at y = 0 (2026-11-05):
 
-Up to 0.23 is paid once, only on page views from inside a park; the alternative was a compass that
-never appeared on the phones most people carry. The hero itself moves nothing for a visitor in a
-park: on a phone its park block sits in the search list ([homepage hero](homepage-hero.md)). A
-scrolled reader is still never moved by the compass. (A scrolled reader in a park _is_ moved by
-„Parks in deiner Nähe", which grows from 661 to 2,057 px when its card switches to the in-park view;
-its skeleton is sized for the park list.)
+| Viewport   | Compass under the hero | Compass under the news |
+| ---------- | ---------------------- | ---------------------- |
+| 430 × 932  | 0.0397 (en, de) ¹      | 0                      |
+| 768 × 1024 | 0.0855                 | 0                      |
+| 1024 × 768 | 0                      | (not used)             |
+| 1440 × 900 | 0                      | (not used)             |
+
+¹ Measured with the answer not held back; the others with it.
+
+What is left on a phone in a park is the hero's park block (`HeroParkActions`), which lands under
+the card rail with the nearby answer and pushes the next chapter's sliver: 0.010 to 0.054 from 360 to
+430 px, 0.012 at 768 × 1024. The „Zum Kompass ↓" link in the rail's heading row reaches the compass
+wherever it stands. A scrolled reader is still never moved by the compass. (A scrolled reader in a
+park _is_ moved by „Parks in deiner Nähe", which grows from 661 to 2,057 px when its card switches
+to the in-park view; its skeleton is sized for the park list.)
 
 Inside, the compass keeps its height as data arrives: the status line always has its second line
 (calibration, „Standort wird genauer bestimmt …", the coarse-fix warning, or nothing), the hint under

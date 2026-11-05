@@ -396,8 +396,6 @@
       "termsIntro": "Schilder und Park-Apps setzen sie voraus."
     },
     "title": "Mehr Loopings, weniger Stehen",
-    "heroWelcome": "Herzlich willkommen im {parkName}",
-    "heroNearPark": "{parkName} ist in deiner Nähe (unter 5 km). Unten siehst du aktuelle Wartezeiten, Öffnungszeiten und Auslastung – oder suche einen anderen Park.",
     "heroWelcomeAttractions": "{count} Attraktionen in Betrieb",
     "heroParkLink": "Zum Park",
     "heroPlanToday": "Heute planen",

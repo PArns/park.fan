@@ -91,7 +91,7 @@ schauen, wo wir uns heute anstellen!" and, smaller, „Klick mich an, ich helfe 
 (`home.hero.parkyLine`, `home.hero.parkyCta`). Parky and the bubble are one button
 (`HeroParky`, `components/home/hero-parky.tsx`) that opens the chat window
 (`openParky('hero')`, counted as `assistant_opened` with source `hero`), into which he hops from
-here. Next to a park the park's block takes his place; below `lg` the row is not there.
+here. Below `lg` the row is not there.
 
 - **He stands here or in his corner, never both.** The slot registers with `parkyDock`
   (`lib/assistant/parky-dock.ts`) while all of it shows below the sticky header
@@ -144,7 +144,7 @@ that scrolls sideways with the next card in view. What it shows, in order:
   skeleton stays until mount even with a cached answer, because the nearby query seeds from
   `localStorage` and the server rendered the skeleton.
 - **The heading row** is `HeroBrowseHeader` (`tone="rail"`), the same as over the search list: its
-  link leads to the park's page in a park, to the compass while that is under the hero
+  link leads to the park's page in a park, to the compass while that is on the page
   ([the in-park compass](park-compass.md)), and to `/parks` otherwise.
 - **Under the cards** stands the location row (`HomeLocationRow`), at one height in every state: the
   button while nothing is decided, „Standort aktiv", or how to lift a block. The corner banner
@@ -187,9 +187,10 @@ desktop panel and the phone's palette share. The events and their rules for ever
 
 ## In a park, or next to one
 
-When `/api/nearby` places the visitor inside a park (`in_park`, or the nearest park under 1 km) the
-headline becomes „Herzlich willkommen im …"; within 5 km the general headline gets a „… ist in deiner
-Nähe" line. Both render `HeroParkActions` (`components/home/hero-park-actions.tsx`), a 2×2 block:
+When `/api/nearby` places the visitor inside a park (`in_park`, or the nearest park under 1 km) or
+within 5 km of one, `HeroParkActions` (`components/home/hero-park-actions.tsx`) stands under the
+card rail: four cells, 2×2 on a phone and one row from `md`, the park link carrying the park's name.
+The hero's text stays the general one for everybody.
 
 | Cell           | Shows                                                | Leads to                                      |
 | -------------- | ---------------------------------------------------- | --------------------------------------------- |
@@ -198,23 +199,23 @@ Nähe" line. Both render `HeroParkActions` (`components/home/hero-park-actions.t
 | Öffnungszeiten | today's hours (`formatHoursRange`), dot for open now | the park's crowd calendar                     |
 | Wetter         | nowcast condition and temperature                    | `#weather` on the park page                   |
 
-- **From `md` it stands under the headline**, which then grows upwards over the photo; on a phone the
-  hero's text stays the general one and the block stands under the card rail, at the hero's foot,
-  where it arrives without moving what is above it.
+- **At the hero's foot, on every viewport**, where it arrives without moving what is above it. From
+  `md` it used to stand under the headline in a „Herzlich willkommen im …" variant, which arrived
+  after load and moved the search field: 73 px up in a park, 6 px down next to one from 1024 px and
+  142 px at 800 px. Measured with the nearby answer held back 3 s: CLS 0.018 in a park at 1024 px,
+  0.030 next to one at 1440 px in French, 0.10 at 800 px; now 0.005 or less, the rest from the
+  photo caption and the header. From 1024 px the rail ends below the first screen.
 - **The park's slugs come from a ride**: the `in_park` answer carries no URL for the park, so
   `parkGeoFromUrl` reads them off the first ride URL, as `PlannerInParkCta` does.
 - **„Heute planen" is the calendar's hand-off**: a `PlannerPageParkBeacon` is mounted with the block;
   the press files today with `plannerPageDay` and requests `page-park-wizard` (source `home-hero`), so
   the wizard opens on „Wer kommt mit". Today already planned: „Plan für heute" opens that day. Shut
   or already closed today: „Besuch planen", which asks for the date, with the next opening under it.
-- **No intro sentence in the welcome variant.** The variant is client-only, so the served HTML keeps
-  the general intro; it has three children like the general one, so the entrance stagger counts the
-  same places.
 - **One request of its own**: the nowcast, under the park page's query key, only for a visitor
   placed in or near a park.
 
 For `in_park` (and `?sim=compass`), `ParkCompassSlot` puts the park's headliners on a compass right
-under the hero, and the rail's heading row carries „Zum Kompass"; all of it is in
+under the hero (below 1024 px under the news), and the rail's heading row carries „Zum Kompass"; all of it is in
 [the in-park compass](park-compass.md).
 
 ## Motion

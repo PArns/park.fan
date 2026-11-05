@@ -396,8 +396,6 @@
       "termsIntro": "Signs and park apps use them without explaining them."
     },
     "title": "More Thrills, Less Waiting",
-    "heroWelcome": "Welcome to {parkName}",
-    "heroNearPark": "{parkName} is nearby (within 5 km). Below you’ll find live wait times, opening hours and crowd levels – or search for another park.",
     "heroWelcomeAttractions": "{count} attractions operating",
     "heroParkLink": "Go to park",
     "heroPlanToday": "Plan today",
