@@ -667,6 +667,7 @@
     "opensOn": "Öffnet am",
     "opensAt": "Öffnet um {time} Uhr",
     "opensInDays": "{count, plural, =1 {morgen} other {in # Tagen}}",
+    "opensCountdownAt": "{when}, {time} Uhr",
     "opensInHours": "in {time} Stunden",
     "opensInMinutes": "in {count, plural, one {# Minute} other {# Minuten}}",
     "offseason": "OffSeason",

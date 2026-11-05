@@ -556,6 +556,7 @@
     "opensOn": "Opent op",
     "opensAt": "Opent om {time}",
     "opensInDays": "{count, plural, =1 {morgen} other {over # dagen}}",
+    "opensCountdownAt": "{when} om {time} uur",
     "opensInHours": "over {time} uur",
     "opensInMinutes": "over {count, plural, one {# minuut} other {# minuten}}",
     "offseason": "Buiten seizoen",

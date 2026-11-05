@@ -258,7 +258,7 @@ function BrowseCard({ item, href }: { item: NearbySearchItem; href: string }) {
             <span className="text-muted-foreground text-sm font-semibold">{tCommon('min')}</span>
           </>
         ) : item.status ? (
-          // Shut or down: how far off the next opening is („Öffnet morgen", „Öffnet in 2:33 Stunden"),
+          // Shut or down: how far off the next opening is („Öffnet morgen, 10:00 Uhr", „Öffnet in 2:33 Stunden"),
           // which says more at a glance than its date.
           <span
             title={item.statusCountdown ? item.statusLabel : undefined}

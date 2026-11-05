@@ -556,6 +556,7 @@
     "opensOn": "Abre el",
     "opensAt": "Abre a las {time}",
     "opensInDays": "{count, plural, =1 {mañana} other {en # días}}",
+    "opensCountdownAt": "{when} a las {time}",
     "opensInHours": "en {time} horas",
     "opensInMinutes": "en {count, plural, one {# minuto} other {# minutos}}",
     "offseason": "Fuera de temporada",
