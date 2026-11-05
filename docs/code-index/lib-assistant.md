@@ -19,8 +19,9 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `assistantAlertsSnapshot` _function_: The mirror's reminders; entries stored before the mirror kept their names are left out, as Parky could not name them. `undefined` where push is out of reach and nothing is set.
 - `alertTarget` _function_: The reminder an action asks for, in the ids the push endpoints take; null for a performance that is already over, which the API would refuse.
+- `removalOutcome` _function_: What a removal leaves under the answer: its chip, the failure in the bells' sentence, or nothing where there was no reminder to remove.
 - `ALERTS_SNAPSHOT_MAX` _const_: The most rides and shows a question carries.
-- Types: `AssistantPushState`, `AssistantAlertsSnapshot`, `AssistantAlertTarget`, `AssistantAlertPrompt`, `AssistantActionOutcome`
+- Types: `AssistantPushState`, `AssistantAlertsSnapshot`, `AssistantAlertTarget`, `AssistantAlertPrompt`, `AssistantActionFailure`, `AssistantActionOutcome`
 
 ### [`cards.ts`](../../lib/assistant/cards.ts)
 
@@ -149,12 +150,11 @@ Where Parky stands while his chat window is shut: in his corner, or in a slot on
 ### [`planner-context.ts`](../../lib/assistant/planner-context.ts)
 
 - `assistantPlannerSnapshot` _function_: The planned days from today on, each in its park's own date, nearest first; `undefined` when there is none, so the request leaves the field out.
-- `rememberDayForUndo` _function_: Keep the day as it is now, before Parky writes to it.
-- `hasParkyUndo` _function_: Whether Parky changed this day and has not undone it yet.
-- `undoParkyChange` _function_: The plan with that day put back as it was before Parky's last change: its entries through `restoreDay`, its preferences and its reservation as they were. Consumes the snapshot; the same state where there is none.
+- `rememberParkyChange` _function_: Keep a change Parky just made to a day: the plan before it and the plan after it.
+- `undoParkyChange` _function_: The plan with that day put back as it was before Parky's last change, its entries through `restoreDay`, its preferences and reservation as they were; only while the day is still what Parky left, so the visitor's own edits are never undone.
 - `SNAPSHOT_MAX_DAYS` _const_: The nearest days a question carries, and the entries per day.
 - `SNAPSHOT_MAX_ENTRIES` _const_
-- Types: `AssistantPlannerEntry`, `AssistantPlannerSnapshot`
+- Types: `AssistantPlannerEntry`, `AssistantPlannerSnapshot`, `ParkyUndoOutcome`
 
 ### [`post-text.ts`](../../lib/assistant/post-text.ts)
 

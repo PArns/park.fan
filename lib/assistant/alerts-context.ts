@@ -1,6 +1,6 @@
 import { formatInTimeZone } from 'date-fns-tz';
 import type { RideAlertLocal, ShowFollowLocal } from '@/lib/push/push-follows-store';
-import type { PushWriteError } from '@/lib/push/push-follows';
+import type { PushWriteError, PushWriteResult } from '@/lib/push/push-follows';
 import type { AssistantAction, AssistantActionChip } from './actions';
 
 /**
@@ -100,8 +100,14 @@ export interface AssistantAlertPrompt {
   error?: PushWriteError;
 }
 
-/** What carrying out an action leaves under the answer: a chip, or a reminder's card. */
-export type AssistantActionOutcome = AssistantActionChip | AssistantAlertPrompt | null;
+/** A write that failed, shown under the answer in the bells' own sentence. */
+export interface AssistantActionFailure {
+  failed: PushWriteError;
+}
+
+/** What carrying out an action leaves under the answer: a chip, a reminder's card or a failure. */
+export type AssistantActionOutcome =
+  AssistantActionChip | AssistantAlertPrompt | AssistantActionFailure | null;
 
 /**
  * The reminder an action asks for, in the ids the push endpoints take; null for a performance that
@@ -128,4 +134,13 @@ export function alertTarget(
     startTime: action.start,
     start,
   };
+}
+
+/**
+ * What a removal leaves under the answer: its chip, the failure in the bells' sentence, or
+ * nothing where there was no reminder to remove.
+ */
+export function removalOutcome(result: PushWriteResult<void> | null): AssistantActionOutcome {
+  if (!result) return null;
+  return result.ok ? 'alertRemoved' : { failed: result.error };
 }

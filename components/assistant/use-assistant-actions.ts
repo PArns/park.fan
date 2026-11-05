@@ -27,12 +27,13 @@ import { formatGridTime } from '@/lib/planner/park-time';
 import { trackPlannerDayCleared } from '@/lib/analytics/planner-funnel';
 import {
   assistantPlannerSnapshot,
-  hasParkyUndo,
-  rememberDayForUndo,
+  rememberParkyChange,
   undoParkyChange,
+  type ParkyUndoOutcome,
 } from '@/lib/assistant/planner-context';
 import {
   alertTarget,
+  removalOutcome,
   type AssistantActionOutcome,
   type AssistantAlertTarget,
 } from '@/lib/assistant/alerts-context';
@@ -114,19 +115,22 @@ export function useAssistantActions(closeWindow: () => void) {
         date: string,
         recipe: (state: PlannerState) => PlannerState
       ): AssistantActionChip | null => {
-        let changed = false;
-        plannerStore.update((state) => {
-          const next = recipe(state);
-          changed = next !== state;
-          if (changed) rememberDayForUndo(state, park.slug, date);
-          return next;
-        });
+        const changed = withUndo(park, date, () => plannerStore.update(recipe));
         showDay(park, date);
         return changed ? 'planned' : null;
       };
-      /** Before an add through `usePlanner`, which always changes the day. */
-      const rememberDay = (park: AssistantPlannerPark, date: string) =>
-        rememberDayForUndo(plannerStore.getSnapshot(), park.slug, date);
+      /**
+       * Runs writes to one day and keeps the day before and after them for `planner_undo`; writes
+       * that change nothing keep the earlier undo. Whether anything changed.
+       */
+      const withUndo = (park: AssistantPlannerPark, date: string, run: () => void) => {
+        const before = plannerStore.getSnapshot();
+        run();
+        const after = plannerStore.getSnapshot();
+        if (after === before) return false;
+        rememberParkyChange(before, after, park.slug, date);
+        return true;
+      };
 
       /** Today's `/plan/day` of the park, through the planner's own cache entry. */
       const today = (park: AssistantPlannerPark) =>
@@ -159,37 +163,39 @@ export function useAssistantActions(closeWindow: () => void) {
           showDay(action.park, action.date);
           return 'planned';
         case 'planner_add_rides':
-          if (action.rides.length > 0) rememberDay(action.park, action.date);
-          plannerStore.update((state) => openDay(state, action.park, action.date));
-          for (const ride of action.rides) {
-            addRide(
-              {
-                ...base(action.park, action.date),
-                attractionSlug: ride.slug,
-                attractionName: ride.name,
-              },
-              'assistant'
-            );
-          }
+          withUndo(action.park, action.date, () => {
+            plannerStore.update((state) => openDay(state, action.park, action.date));
+            for (const ride of action.rides) {
+              addRide(
+                {
+                  ...base(action.park, action.date),
+                  attractionSlug: ride.slug,
+                  attractionName: ride.name,
+                },
+                'assistant'
+              );
+            }
+          });
           showDay(action.park, action.date);
           return 'planned';
         case 'planner_add_block':
-          rememberDay(action.park, action.date);
-          plannerStore.update((state) => openDay(state, action.park, action.date));
-          addCustom(
-            {
-              ...base(action.park, action.date),
-              label: action.block.label,
-              icon: action.block.icon,
-              durationMinutes: action.block.durationMinutes,
-              startMinute: action.block.startMinute,
-            },
-            'assistant'
-          );
+          withUndo(action.park, action.date, () => {
+            plannerStore.update((state) => openDay(state, action.park, action.date));
+            addCustom(
+              {
+                ...base(action.park, action.date),
+                label: action.block.label,
+                icon: action.block.icon,
+                durationMinutes: action.block.durationMinutes,
+                startMinute: action.block.startMinute,
+              },
+              'assistant'
+            );
+          });
           showDay(action.park, action.date);
           return 'planned';
+        // The optimise row keeps its own undo; the sorted day is written later, there.
         case 'planner_optimize':
-          rememberDay(action.park, action.date);
           showDay(action.park, action.date);
           plannerUi.requestOptimize(action.park.slug, action.date, action.mode);
           return 'optimized';
@@ -237,15 +243,16 @@ export function useAssistantActions(closeWindow: () => void) {
             showDay(park, date);
             return null;
           }
-          rememberDay(park, date);
-          addShow(
-            {
-              ...base(park, date),
-              showSlug,
-              showName: line.name,
-              startMinute: line.minute,
-            },
-            'assistant'
+          withUndo(park, date, () =>
+            addShow(
+              {
+                ...base(park, date),
+                showSlug,
+                showName: line.name,
+                startMinute: line.minute,
+              },
+              'assistant'
+            )
           );
           showDay(park, date);
           return 'planned';
@@ -290,17 +297,23 @@ export function useAssistantActions(closeWindow: () => void) {
               after.parks[action.park.slug]?.days[date] !==
               before.parks[action.park.slug]?.days[date]
             ) {
-              rememberDayForUndo(before, action.park.slug, date);
+              rememberParkyChange(before, after, action.park.slug, date);
             }
           }
           showDay(action.park, action.dates[0]);
           return 'planned';
         }
         case 'planner_undo': {
-          if (!hasParkyUndo(action.park.slug, action.date)) return null;
-          plannerStore.update((state) => undoParkyChange(state, action.park, action.date));
+          let outcome: ParkyUndoOutcome = 'none';
+          plannerStore.update((state) => {
+            const undone = undoParkyChange(state, action.park, action.date);
+            outcome = undone.outcome;
+            return undone.state;
+          });
+          if (outcome === 'none') return null;
           showDay(action.park, action.date);
-          return 'planned';
+          // The visitor changed the day since: it stays as they left it, and Parky can say so.
+          return outcome === 'undone' ? 'planned' : 'undoStale';
         }
         case 'planner_share': {
           const state = plannerStore.getSnapshot();
@@ -331,19 +344,20 @@ export function useAssistantActions(closeWindow: () => void) {
               day?.rides.find((r) => r.attractionSlug === rideSlug)?.attractionId ?? undefined;
             showId ??= day?.shows?.find((s) => s.showSlug === showSlug)?.showId ?? undefined;
           }
-          const removed =
-            (id: string, event: 'ride_alert_removed' | 'show_follow_remove') =>
-            (result: { ok: boolean }) => {
-              if (result.ok) trackSiteEvent(event, {}, id);
-              return result;
-            };
-          const results = await Promise.all([
-            ...(rideId
-              ? [removeRideAlert(rideId).then(removed(rideId, 'ride_alert_removed'))]
-              : []),
-            ...(showId ? [unfollowShow(showId).then(removed(showId, 'show_follow_remove'))] : []),
-          ]);
-          return results.length > 0 && results.every((r) => r.ok) ? 'alertRemoved' : null;
+          // The action names exactly one; an id neither the mirror nor today's day knows is ignored.
+          const result = rideId
+            ? await removeRideAlert(rideId)
+            : showId
+              ? await unfollowShow(showId)
+              : null;
+          if (result?.ok) {
+            trackSiteEvent(
+              rideId ? 'ride_alert_removed' : 'show_follow_remove',
+              {},
+              (rideId ?? showId) as string
+            );
+          }
+          return removalOutcome(result);
         }
         case 'favorite_set': {
           // Set, never toggled blindly: a star already in the asked state stays as it is.

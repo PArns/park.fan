@@ -2982,6 +2982,7 @@
     "chipAlertRemoved": "Reminder removed",
     "chipFavorite": "Added to favorites",
     "chipUnfavorite": "Removed from favorites",
+    "chipUndoStale": "Day changed since, nothing undone",
     "alertRide": "{name}: a push once the wait drops under {minutes} minutes.",
     "alertReopen": "{name}: a push once it runs again.",
     "alertShow": "{name}: a reminder before the {time} performance.",

@@ -95,32 +95,35 @@ checks it again, hands on a page or a card's links as the path it checked, and b
 switch and the feedback chip anew, so nothing else rides along. `useAssistantActions` carries it out
 through the site's own paths:
 
-| Action                 | What the widget does                                                       | Chip        |
-| ---------------------- | -------------------------------------------------------------------------- | ----------- |
-| `card`                 | draws a park or ride card with `ParkStatusBadge` and `CrowdLevelBadge`     |             |
-| `navigate`             | `router.push` to the park.fan path in the reader's locale                  | Seite       |
-| `planner_open_day`     | `openDay` in the planner store, `plannerUi.requestOpen('assistant')`       | Tagesplaner |
-| `planner_add_rides`    | `addRide(…, 'assistant')` per ride, then opens the day                     | Tagesplaner |
-| `planner_add_block`    | `addCustom(…, 'assistant')`, then opens the day                            | Tagesplaner |
-| `planner_optimize`     | opens the day and `plannerUi.requestOptimize`: the day's optimise row runs | sortiert    |
-| `planner_remove`       | `removeEntry` per id, then opens the day                                   | Tagesplaner |
-| `planner_move`         | `moveEntryToIndex`: the day's start minutes taken in the new order         | Tagesplaner |
-| `planner_update_block` | `setCustomBlock`, and `moveEntry` for a new start; free blocks only        | Tagesplaner |
-| `planner_add_show`     | `addShow(…, 'assistant')` for a showtime the day's `/plan/day` lists       | Tagesplaner |
-| `planner_set_prefs`    | `setDayPrefs` (height, water rides, early entry)                           | Tagesplaner |
-| `planner_mark_done`    | `setEntryDone` per id                                                      | Tagesplaner |
-| `planner_clear_day`    | `clearDay`, undoable through `planner_undo`                                | Tagesplaner |
-| `planner_reserve_days` | `reserveDays` for the park, opens the first                                | Tagesplaner |
-| `planner_undo`         | puts the day back as it was before Parky's last change to it               | Tagesplaner |
-| `planner_share`        | opens the panel and the bell's popover with the share link; never shares   | Tagesplaner |
-| `request_location`     | shows the share card under the answer                                      |             |
-| `switch_locale`        | once the answer is complete, the same page in that language, window open   | Sprache     |
-| `feedback_sent`        | nothing; the API stored the visitor's feedback                             | Team        |
+| Action                 | What the widget does                                                                 | Chip        |
+| ---------------------- | ------------------------------------------------------------------------------------ | ----------- |
+| `card`                 | draws a park or ride card with `ParkStatusBadge` and `CrowdLevelBadge`               |             |
+| `navigate`             | `router.push` to the park.fan path in the reader's locale                            | Seite       |
+| `planner_open_day`     | `openDay` in the planner store, `plannerUi.requestOpen('assistant')`                 | Tagesplaner |
+| `planner_add_rides`    | `addRide(…, 'assistant')` per ride, then opens the day                               | Tagesplaner |
+| `planner_add_block`    | `addCustom(…, 'assistant')`, then opens the day                                      | Tagesplaner |
+| `planner_optimize`     | opens the day and `plannerUi.requestOptimize`: the day's optimise row runs           | sortiert    |
+| `planner_remove`       | `removeEntry` per id, then opens the day                                             | Tagesplaner |
+| `planner_move`         | `moveEntryToIndex`: the day's start minutes taken in the new order                   | Tagesplaner |
+| `planner_update_block` | `setCustomBlock`, and `moveEntry` for a new start; free blocks only                  | Tagesplaner |
+| `planner_add_show`     | `addShow(…, 'assistant')` for a showtime the day's `/plan/day` lists                 | Tagesplaner |
+| `planner_set_prefs`    | `setDayPrefs` (height, water rides, early entry)                                     | Tagesplaner |
+| `planner_mark_done`    | `setEntryDone` per id                                                                | Tagesplaner |
+| `planner_clear_day`    | `clearDay`, undoable through `planner_undo`                                          | Tagesplaner |
+| `planner_reserve_days` | `reserveDays` for the park, opens the first                                          | Tagesplaner |
+| `planner_undo`         | puts the day back as before Parky's last change, unless the visitor changed it since | Tagesplaner |
+| `planner_share`        | opens the panel and the bell's popover with the share link; never shares             | Tagesplaner |
+| `request_location`     | shows the share card under the answer                                                |             |
+| `switch_locale`        | once the answer is complete, the same page in that language, window open             | Sprache     |
+| `feedback_sent`        | nothing; the API stored the visitor's feedback                                       | Team        |
 
-Every planner change keeps the day as it was before (`rememberDayForUndo`,
-`lib/assistant/planner-context.ts`), one level per park and day for the tab, which `planner_undo`
-puts back with `restoreDay`, preferences and reservation included; a day that did not exist is
-dropped again. An entry id that is not in the plan changes nothing, and a change that changes
+Every planner change keeps the day as it was before and as it was right after
+(`rememberParkyChange`, `lib/assistant/planner-context.ts`), one level per park and day for the
+tab. `planner_undo` puts the day back with `restoreDay`, preferences and reservation included, and
+drops a day that did not exist, but only while the day is still what Parky left: once the visitor
+has changed it (a move, an add, a tick) the undo leaves it alone and shows „Tag seither geändert",
+so their own edits are never undone. The optimise row keeps its own undo, so `planner_optimize`
+leaves none here. An entry id that is not in the plan changes nothing, and a change that changes
 nothing shows no chip and keeps the earlier undo. A show is added only at a time the planner's own
 show picker would list (`showLinesFor` over the day's `/plan/day`).
 
@@ -142,7 +145,8 @@ set and a button, whose press is the visitor's gesture and runs the same write, 
 failure reads in the bells' own sentences (`usePushErrorMessage`, the 429 wait among them). A set
 counts as `ride_alert_set` or `show_follow_add` with source `assistant`, which also rings Parky's
 bell. `alert_remove` names exactly one slug and goes by the mirror's names, today's `/plan/day` as
-the fallback for an entry stored without them.
+the fallback for an entry stored without them. A removal that fails shows an error chip with the
+bells' sentence for it (`removalOutcome`), the 429 wait among them.
 
 The `alerts` field of every question is the mirror (`assistantAlertsSnapshot`): `push`, and the
 ride alerts and show reminders whose names the mirror keeps, at most 100 each, a pinned performance
@@ -475,7 +479,7 @@ same throw again or the other way throws him at once.
 
 `pnpm test:assistant-context` covers what the browser tells Parky and lets him change: the plan
 snapshot (from today on, nearest first, the caps, the printed starts, nothing when empty), the
-reorder, Parky's undo, and the checks of every planner edit (ids that are no ids dropped, an
+reorder, Parky's undo (and that it leaves a day the visitor changed since), and the checks of every planner edit (ids that are no ids dropped, an
 optional field that fails left out, nothing riding along), the reminders' snapshot, the slugs they
-resolve to, and their action checks, the favourites' snapshot and checks, and Parky's break:
+resolve to, their action checks and what a failed removal shows, the favourites' snapshot and checks, and Parky's break:
 its action check, the refusal code and length, and the end kept across a reload.

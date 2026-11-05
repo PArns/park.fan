@@ -2982,6 +2982,7 @@
     "chipAlertRemoved": "Rappel supprimé",
     "chipFavorite": "Ajouté aux favoris",
     "chipUnfavorite": "Retiré des favoris",
+    "chipUndoStale": "Journée modifiée depuis, rien d’annulé",
     "alertRide": "{name} : une notification dès que l’attente passe sous {minutes} minutes.",
     "alertReopen": "{name} : une notification dès qu’elle rouvre.",
     "alertShow": "{name} : un rappel avant la représentation de {time}.",
