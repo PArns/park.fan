@@ -7,7 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Universal is building a new indoor coaster at Epic Universe in Orlando. It goes into Dark Universe, right next to Monsters Unchained. Construction has started, and Universal hasn't announced an opening date yet.
+  Universal is building an indoor coaster for Dark Universe at Epic Universe in Orlando, right next to Monsters Unchained. On the opening, the announcement says only "in the years ahead".
 tags:
   - news
   - epic-universe
@@ -37,19 +37,21 @@ seo:
     - Universal Orlando 2027
 ---
 
-On 5 November, Universal Orlando announced a new indoor coaster for [Epic Universe](ref:universal-epic-universe). It's going into Dark Universe, the world of the classic Universal Monsters. It's being built right beside [Monsters Unchained: The Frankenstein Experiment](ref:universal-epic-universe/monsters-unchained-the-frankenstein-experiment). Construction is already under way, but Universal hasn't announced when it opens.
+On 5 November, Universal Orlando announced a new indoor coaster for [Epic Universe](ref:universal-epic-universe). It's going into Dark Universe, the world of the classic Universal Monsters, right beside [Monsters Unchained: The Frankenstein Experiment](ref:universal-epic-universe/monsters-unchained-the-frankenstein-experiment). Construction is already under way, but Universal hasn't announced when it opens.
 
 ## What we know about the ride
 
-Universal calls it an indoor thrill coaster with a new story built around the Universal Monsters. It doesn't have a name or a minimum height yet, or at least none Universal is sharing. More details are due later. On the opening, the announcement says "in the years ahead", a phrase that rules out next Tuesday and not much else.
+Universal calls it an indoor thrill coaster with a new story built around the Universal Monsters. It doesn't have a name or a minimum height yet, or at least none Universal is sharing. On the opening, the announcement says "in the years ahead", a phrase that rules out next Tuesday and not much else.
 
 ## What's in Dark Universe today
 
-Dark Universe is the village of Darkmoor, one of five worlds in the park, which opened on 22 May 2025. The other four are Celestial Park, The Wizarding World of Harry Potter – Ministry of Magic, Super Nintendo World and How to Train Your Dragon – Isle of Berk.
+Dark Universe is the village of Darkmoor, one of five worlds in the park, which opened on 22 May 2025. Mario, Harry Potter and the dragons of Berk live next door; Darkmoor belongs to Frankenstein, Dracula and the Wolf Man.
 
-Monsters Unchained takes you down into the catacombs of Frankenstein Manor. Dr. Victoria Frankenstein is showing off an experiment when Dracula leads the monsters in a revolt. Among them are the Wolf Man and the Mummy. The Phantom of the Opera's organ supplies the soundtrack. At twelve points flames shoot up about a metre in time with the music, more pyrotechnics than most organ recitals get. Riders need to be at least 48 inches (122 cm) tall.
+Monsters Unchained takes you down into the catacombs of Frankenstein Manor. Dr. Victoria Frankenstein is showing off an experiment when Dracula leads the Wolf Man, the Mummy and the rest of the monsters in a revolt. The Phantom of the Opera's organ supplies the soundtrack. At twelve points flames shoot up about a metre in time with the music, more pyrotechnics than most organ recitals get. Riders need to be at least 48 inches (122 cm) tall, and Universal Express works here too.
 
-[Curse of the Werewolf](ref:universal-epic-universe/curse-of-the-werewolf) is a family coaster with spinning cars, where riders try to get away from the werewolves before they turn into one. The minimum height is 40 inches (102 cm), and children between 40 and 48 inches ride only with a companion. For younger children there's the Darkmoor Monster Makeup Experience with make-up and wash-off tattoos, and the restaurant Das Stakehaus. You can also meet the Bride of Frankenstein, the Invisible Man and Ygor.
+[Curse of the Werewolf](ref:universal-epic-universe/curse-of-the-werewolf) is a family coaster with spinning cars, where riders try to get away from the werewolves before they turn into one. The minimum height is 40 inches (102 cm), and children between 40 and 48 inches ride only with a companion. With smaller children, the Darkmoor Monster Makeup Experience does monster faces and wash-off tattoos. Lunch is at Das Stakehaus, and the Bride of Frankenstein, the Invisible Man and Ygor meet guests in the village.
+
+Ticket and Express prices for Epic Universe, which pass works where and every minimum height are in the [Universal Orlando guide](/blog/universal-orlando-wait-times-tips).
 
 ```ride-waits-widget rides=universal-epic-universe/monsters-unchained-the-frankenstein-experiment|Monsters Unchained|Dark ride;universal-epic-universe/curse-of-the-werewolf|Curse of the Werewolf|Family coaster columns=type,peak,days
 
@@ -57,13 +59,11 @@ Monsters Unchained takes you down into the catacombs of Frankenstein Manor. Dr. 
 
 ## The neighbour has awards on the shelf
 
-Monsters Unchained won Amusement Today's 2025 Golden Ticket Award for best dark ride. In November 2025 it added a Thea Award in the "Outstanding Achievement – Attraction" category. Three more Thea Awards went to Epic Universe itself, Harry Potter and the Battle at the Ministry and the Isle of Berk.
-
-Universal Express is valid on Monsters Unchained. Ticket and Express prices for Epic Universe, which pass works where and every minimum height are in the [Universal Orlando guide](/blog/universal-orlando-wait-times-tips).
+Monsters Unchained won Amusement Today's 2025 Golden Ticket Award for best dark ride. In November 2025 it added a Thea Award in the "Outstanding Achievement – Attraction" category. Three more Thea Awards from the same ceremony went to Epic Universe, one of them to the park itself.
 
 ## What else Universal Orlando is opening
 
-In the same announcement, Universal promises a reworked Universal Horror Make-Up Show with Blumhouse at Universal Studios Florida later this year. In 2027, the same park adds the coaster Fast & Furious: Hollywood Drift, and Islands of Adventure gets a new table-service restaurant in Jurassic Park. Luke Combs' Category 10, a music and entertainment venue, is due to open at CityWalk in late 2027. The Dark Universe coaster is the only project on that list without a year.
+In the same announcement, Universal promises a reworked Universal Horror Make-Up Show with Blumhouse at Universal Studios Florida later this year. In 2027, the same park adds the coaster Fast & Furious: Hollywood Drift, and Islands of Adventure gets a new table-service restaurant in Jurassic Park. Luke Combs' Category 10, a music and entertainment venue, is due to open at CityWalk in late 2027.
 
 [Epic Universe](ref:universal-epic-universe?full)
 

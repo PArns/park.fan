@@ -7,7 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Universal baut im Epic Universe in Orlando eine neue Indoor-Achterbahn. Sie kommt nach Dark Universe, direkt neben Monsters Unchained. Gebaut wird schon, einen Eröffnungstermin hat Universal noch nicht bekannt gegeben.
+  Universal baut im Epic Universe in Orlando eine Indoor-Achterbahn für Dark Universe, direkt neben Monsters Unchained. Zur Eröffnung steht in der Mitteilung nur „in the years ahead“.
 tags:
   - news
   - epic-universe
@@ -36,19 +36,21 @@ seo:
     - Universal Orlando 2027
 ---
 
-Universal Orlando hat am 5. November angekündigt, dass im [Epic Universe](ref:universal-epic-universe) eine neue Indoor-Achterbahn entsteht. Sie kommt nach Dark Universe, in die Welt der klassischen Universal-Monster. Dort entsteht sie direkt neben [Monsters Unchained: The Frankenstein Experiment](ref:universal-epic-universe/monsters-unchained-the-frankenstein-experiment). Die Bauarbeiten laufen bereits, einen Eröffnungstermin hat Universal noch nicht bekannt gegeben.
+Universal Orlando hat am 5. November eine neue Indoor-Achterbahn für das [Epic Universe](ref:universal-epic-universe) angekündigt. Sie entsteht in Dark Universe, der Welt der klassischen Universal-Monster, direkt neben [Monsters Unchained: The Frankenstein Experiment](ref:universal-epic-universe/monsters-unchained-the-frankenstein-experiment). Die Bauarbeiten laufen bereits, einen Eröffnungstermin hat Universal noch nicht bekannt gegeben.
 
 ## Was über die Bahn feststeht
 
-Universal beschreibt sie als Thrill Coaster in einer Halle, mit einer neuen Geschichte rund um die Universal Monsters. Einen Namen und eine Mindestgröße hat sie noch nicht, jedenfalls keine, die Universal schon verrät. Weitere Einzelheiten sollen später folgen. Für die Eröffnung steht in der Mitteilung „in the years ahead“, was ungefähr heißt: irgendwann, aber sicher nicht nächste Woche.
+Universal beschreibt sie als Thrill Coaster in einer Halle, mit einer neuen Geschichte rund um die Universal Monsters. Einen Namen und eine Mindestgröße hat sie noch nicht, jedenfalls keine, die Universal schon verrät. Für die Eröffnung steht in der Mitteilung „in the years ahead“, was ungefähr heißt: irgendwann, aber sicher nicht nächste Woche.
 
 ## Was heute in Dark Universe steht
 
-Dark Universe ist das Dorf Darkmoor, eine der fünf Welten des Parks, der am 22. Mai 2025 eröffnet hat. Die anderen vier sind Celestial Park, The Wizarding World of Harry Potter – Ministry of Magic, Super Nintendo World und How to Train Your Dragon – Isle of Berk.
+Dark Universe ist das Dorf Darkmoor, eine der fünf Welten des Parks, der am 22. Mai 2025 eröffnet hat. Nebenan wohnen Mario, Harry Potter und die Drachen von Berk, Darkmoor gehört Frankenstein, Dracula und dem Wolf Man.
 
-In Monsters Unchained geht es in die Katakomben von Frankenstein Manor. Dr. Victoria Frankenstein führt ein Experiment vor, bis Dracula die Monster zum Aufstand anführt. Mit dabei sind unter anderem der Wolf Man und die Mumie. Dazu dröhnt die Orgel des Phantoms der Oper. An zwölf Stellen schießen im Takt Flammen rund einen Meter hoch, für ein Orgelkonzert ein ziemlich temperamentvoller Vortrag. Mitfahren darf, wer mindestens 122 cm groß ist.
+In Monsters Unchained geht es in die Katakomben von Frankenstein Manor. Dr. Victoria Frankenstein führt ein Experiment vor, bis Dracula den Wolf Man, die Mumie und die übrigen Monster zum Aufstand anführt. Dazu dröhnt die Orgel des Phantoms der Oper. An zwölf Stellen schießen im Takt Flammen rund einen Meter hoch, für ein Orgelkonzert ein ziemlich temperamentvoller Vortrag. Mitfahren darf, wer mindestens 122 cm groß ist, und Universal Express gilt auch hier.
 
-[Curse of the Werewolf](ref:universal-epic-universe/curse-of-the-werewolf) ist eine Familienachterbahn mit sich drehenden Wagen, auf der die Fahrgäste den Werwölfen entkommen sollen, bevor sie selbst zu einem werden. Sie fährt ab 102 cm, Kinder zwischen 102 und 122 cm nur mit Begleitung. Für kleinere Kinder bleiben die Darkmoor Monster Makeup Experience mit Schminke und abwaschbaren Tattoos und das Restaurant Das Stakehaus. Treffen kann man dort die Bride of Frankenstein, den Invisible Man und Ygor.
+[Curse of the Werewolf](ref:universal-epic-universe/curse-of-the-werewolf) ist eine Familienachterbahn mit sich drehenden Wagen, auf der die Fahrgäste den Werwölfen entkommen sollen, bevor sie selbst zu einem werden. Sie fährt ab 102 cm, Kinder zwischen 102 und 122 cm nur mit Begleitung. Mit kleineren Kindern geht es in die Darkmoor Monster Makeup Experience, mit Schminke und abwaschbaren Tattoos. Gegessen wird im Stakehaus, und in Darkmoor kann man der Bride of Frankenstein, dem Invisible Man und Ygor begegnen.
+
+Die Preise für Tickets und Express im Epic Universe, wo welcher Pass gilt, und alle Mindestgrößen findest du im [Guide zu Universal Orlando](/blog/universal-orlando-wartezeiten-tipps).
 
 ```ride-waits-widget rides=universal-epic-universe/monsters-unchained-the-frankenstein-experiment|Monsters Unchained|Dunkelfahrt;universal-epic-universe/curse-of-the-werewolf|Curse of the Werewolf|Familienachterbahn columns=type,peak,days
 
@@ -56,13 +58,11 @@ In Monsters Unchained geht es in die Katakomben von Frankenstein Manor. Dr. Vict
 
 ## Die Nachbarin hat zwei Preise im Regal
 
-Monsters Unchained hat 2025 den Golden Ticket Award von Amusement Today als beste Dunkelfahrt gewonnen. Im November 2025 kam ein Thea Award in der Kategorie „Outstanding Achievement – Attraction“ dazu. Drei weitere Thea Awards gingen an das Epic Universe selbst, an Harry Potter and the Battle at the Ministry und an die Isle of Berk.
-
-An Monsters Unchained gilt Universal Express. Die Preise für Tickets und Express im Epic Universe, wo welcher Pass gilt, und alle Mindestgrößen findest du im [Guide zu Universal Orlando](/blog/universal-orlando-wartezeiten-tipps).
+Monsters Unchained hat 2025 den Golden Ticket Award von Amusement Today als beste Dunkelfahrt gewonnen. Im November 2025 kam ein Thea Award in der Kategorie „Outstanding Achievement – Attraction“ dazu. Bei derselben Verleihung gingen drei weitere Thea Awards ins Epic Universe, einer davon an den Park selbst.
 
 ## Was Universal Orlando sonst eröffnet
 
-In derselben Mitteilung kündigt Universal für später in diesem Jahr eine neu gestaltete Universal Horror Make-Up Show mit Blumhouse in Universal Studios Florida an. 2027 folgen im selben Park die Achterbahn Fast & Furious: Hollywood Drift und in den Islands of Adventure ein neues Restaurant mit Bedienung im Jurassic Park. Ende 2027 soll im CityWalk Luke Combs' Category 10 öffnen, ein Lokal für Musik und Unterhaltung. Die Achterbahn in Dark Universe ist das einzige Projekt auf dieser Liste ohne Jahr.
+In derselben Mitteilung kündigt Universal für später in diesem Jahr eine neu gestaltete Universal Horror Make-Up Show mit Blumhouse in Universal Studios Florida an. 2027 folgen im selben Park die Achterbahn Fast & Furious: Hollywood Drift und in den Islands of Adventure ein neues Restaurant mit Bedienung im Jurassic Park. Ende 2027 soll im CityWalk Luke Combs' Category 10 öffnen, ein Lokal für Musik und Unterhaltung.
 
 [Epic Universe](ref:universal-epic-universe?full)
 
