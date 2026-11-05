@@ -444,6 +444,11 @@ Route guards for the `/[locale]/...` tree.
 - `parkHits` _function_: Park hits out of the search payload, with their geo read off the API's own URL.
 - Types: `SearchParkHit`
 
+### [`search-ranking.ts`](../../lib/utils/search-ranking.ts)
+
+- `searchMatchScore` _function_: How closely `name` matches `query`: 100 for the whole name, 50 for its start, 30 inside it, 0 for a hit only the API's fuzzy matcher saw ("phantsialand"). Punctuation is ignored on both sides, so "fly" scores the full 100 against "F.L.Y.".
+- `rankByMatch` _function_: Search hits in the order the site lists them: by `searchMatchScore`, then operating before anything else. The sort is stable, so equal hits keep the order they came in.
+
 ### [`season.ts`](../../lib/utils/season.ts)
 
 - `isInSeason` _function_: Whether a seasonal entity counts as running right now. `isCurrentlyInSeason` has three values: `false` is known closed, `null` is „seasonal, nothing else known" and must not hide the ride, and `undefined` is an older payload.

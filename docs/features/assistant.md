@@ -77,6 +77,17 @@ reads `errorLimit`; a 422 `unclear`, a message the API took for junk (nothing to
 down, letters without a vowel, the question just answered asked again), reads `errorUnclear`. The
 rules live in the API's `assistant-junk.ts`.
 
+## Parky's break
+
+After repeated abuse the API ends the chat: `chat_end` with `cooldownMinutes` (1 to 1440), the
+answer being Parky's goodbye. Once the answer is in, the goodbye stays 2.5 s, the window closes and
+Parky puts on his `nightcap` on the button. Until the break ends (`lib/assistant/chat-end.ts`, the
+end kept in session storage as `parkfan:assistant-break`, so a reload keeps it) the window shows
+`paused` („Parky macht gerade eine kurze Pause.") where the input was; the launcher stays. While the
+break runs the API refuses questions with the code `CHAT_ENDED_CODE` (`chat_ended`), as an HTTP
+error's body or a stream `error` event; the widget takes that the same way, which is how a second
+tab learns of it, with the refusal's `cooldownMinutes`, else its `Retry-After`, else 15 minutes.
+
 ## Answers are model output
 
 `AssistantMessageText` renders them with `react-markdown`, without raw HTML and with only `p`,
@@ -95,17 +106,64 @@ checks it again, hands on a page or a card's links as the path it checked, and b
 switch and the feedback chip anew, so nothing else rides along. `useAssistantActions` carries it out
 through the site's own paths:
 
-| Action              | What the widget does                                                       | Chip        |
-| ------------------- | -------------------------------------------------------------------------- | ----------- |
-| `card`              | draws a park or ride card with `ParkStatusBadge` and `CrowdLevelBadge`     |             |
-| `navigate`          | `router.push` to the park.fan path in the reader's locale                  | Seite       |
-| `planner_open_day`  | `openDay` in the planner store, `plannerUi.requestOpen('assistant')`       | Tagesplaner |
-| `planner_add_rides` | `addRide(…, 'assistant')` per ride, then opens the day                     | Tagesplaner |
-| `planner_add_block` | `addCustom(…, 'assistant')`, then opens the day                            | Tagesplaner |
-| `planner_optimize`  | opens the day and `plannerUi.requestOptimize`: the day's optimise row runs | sortiert    |
-| `request_location`  | shows the share card under the answer                                      |             |
-| `switch_locale`     | once the answer is complete, the same page in that language, window open   | Sprache     |
-| `feedback_sent`     | nothing; the API stored the visitor's feedback                             | Team        |
+| Action                 | What the widget does                                                       | Chip        |
+| ---------------------- | -------------------------------------------------------------------------- | ----------- |
+| `card`                 | draws a park or ride card with `ParkStatusBadge` and `CrowdLevelBadge`     |             |
+| `navigate`             | `router.push` to the park.fan path in the reader's locale                  | Seite       |
+| `planner_open_day`     | `openDay` in the planner store, `plannerUi.requestOpen('assistant')`       | Tagesplaner |
+| `planner_add_rides`    | `addRide(…, 'assistant')` per ride, then opens the day                     | Tagesplaner |
+| `planner_add_block`    | `addCustom(…, 'assistant')`, then opens the day                            | Tagesplaner |
+| `planner_optimize`     | opens the day and `plannerUi.requestOptimize`: the day's optimise row runs | sortiert    |
+| `planner_remove`       | `removeEntry` per id, then opens the day                                   | Tagesplaner |
+| `planner_move`         | `moveEntryToIndex`: the day's start minutes taken in the new order         | Tagesplaner |
+| `planner_update_block` | `setCustomBlock`, and `moveEntry` for a new start; free blocks only        | Tagesplaner |
+| `planner_add_show`     | `addShow(…, 'assistant')` for a showtime the day's `/plan/day` lists       | Tagesplaner |
+| `planner_set_prefs`    | `setDayPrefs` (height, water rides, early entry)                           | Tagesplaner |
+| `planner_mark_done`    | `setEntryDone` per id                                                      | Tagesplaner |
+| `planner_clear_day`    | `clearDay`, undoable through `planner_undo`                                | Tagesplaner |
+| `planner_reserve_days` | `reserveDays` for the park, opens the first                                | Tagesplaner |
+| `planner_undo`         | puts the day back as it was before Parky's last change to it               | Tagesplaner |
+| `planner_share`        | opens the panel and the bell's popover with the share link; never shares   | Tagesplaner |
+| `request_location`     | shows the share card under the answer                                      |             |
+| `switch_locale`        | once the answer is complete, the same page in that language, window open   | Sprache     |
+| `feedback_sent`        | nothing; the API stored the visitor's feedback                             | Team        |
+
+Every planner change keeps the day as it was before (`rememberDayForUndo`,
+`lib/assistant/planner-context.ts`), one level per park and day for the tab, which `planner_undo`
+puts back with `restoreDay`, preferences and reservation included; a day that did not exist is
+dropped again. An entry id that is not in the plan changes nothing, and a change that changes
+nothing shows no chip and keeps the earlier undo. A show is added only at a time the planner's own
+show picker would list (`showLinesFor` over the day's `/plan/day`).
+
+Parky sees the plan through the `planner` field every question carries
+(`assistantPlannerSnapshot`): the planned days (`isPlannedDay`) from today on in each park's own
+date, nearest first, at most 6, each with at most 40 entries in plan order, the start the planner
+prints on the block (`formatGridTime`), a block's or show's length and the tick; the day's
+preferences, and the active park and day. With nothing planned the field is left out. The API
+answers with the next turn, so Parky reads what its last action did from that plan.
+
+Reminders (`lib/assistant/alerts-context.ts`, `alert-writes.ts`) carry the ids the push endpoints
+take: `alert_ride_set` the ride's UUID as `rideId`, a `kind` (`wait_below` with
+`thresholdMinutes` 1 to 240, or `reopen`), `alert_show_set` the show's UUID and the performance
+as an ISO instant with the park's offset, which `alertTarget` prints in the park's clock and
+ignores once it is over. Only with push `ready` (a subscription and the
+permission granted, `readPushState`) is the reminder written mid-answer, since then nothing can
+prompt. Otherwise, and after a failed write, the answer carries `AssistantAlertAsk`: what would be
+set and a button, whose press is the visitor's gesture and runs the same write, prompt included; a
+failure reads in the bells' own sentences (`usePushErrorMessage`, the 429 wait among them). A set
+counts as `ride_alert_set` or `show_follow_add` with source `assistant`, which also rings Parky's
+bell. `alert_remove` names exactly one slug and goes by the mirror's names, today's `/plan/day` as
+the fallback for an entry stored without them.
+
+The `alerts` field of every question is the mirror (`assistantAlertsSnapshot`): `push`, and the
+ride alerts and show reminders whose names the mirror keeps, at most 100 each, a pinned performance
+as the park's `HH:MM`. Left out where push is out of reach and nothing is set.
+
+Favourites go through `lib/utils/favorites.ts`, so every star on the page follows. `favorite_set`
+names the favourite's type `entity` (`type` is the action's) and an id the cookie keeps, a UUID; it sets the state asked for and never toggles blindly. An add plays
+Parky's `love`, through the same `favorite_add` a star sends. The `favorites` field of every
+question is the cookie's ids as stored, UUIDs only (all the API takes), at most 50 of each kind, left out when there are none
+(`assistantFavoritesSnapshot`).
 
 `plannerUi.requestOptimize` is held until the day's `PlannerOptimizeActions` is on screen with its
 data, which then presses its own button (`RunOnce`), fit assistant and undo included. On a phone
@@ -500,3 +558,10 @@ same throw again or the other way throws him at once.
 `pnpm test:parky-look` covers the outfits: the seasons at their edges, the weather states and
 their order, what each kind of act puts aside, the showy pool only growing, where a scene fits,
 and the `?parky=` look switch.
+
+`pnpm test:assistant-context` covers what the browser tells Parky and lets him change: the plan
+snapshot (from today on, nearest first, the caps, the printed starts, nothing when empty), the
+reorder, Parky's undo, and the checks of every planner edit (ids that are no ids dropped, an
+optional field that fails left out, nothing riding along), the reminders' snapshot, the slugs they
+resolve to, and their action checks, the favourites' snapshot and checks, and Parky's break:
+its action check, the refusal code and length, and the end kept across a reload.

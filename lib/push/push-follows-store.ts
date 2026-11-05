@@ -15,7 +15,19 @@ export const PUSH_FOLLOWS_CHANGED_EVENT = 'push-follows-changed';
 /** `RideAlertRemote.kind` of an alert that fires when a ride opens, not on a wait time. */
 export type RideAlertKind = 'reopen';
 
-export interface RideAlertLocal {
+/**
+ * What the server's row names a ride or show by, kept beside its id so Parky can read the
+ * alerts without a request. Absent on entries written before it was stored.
+ */
+export interface PushFollowNames {
+  parkSlug?: string;
+  slug?: string;
+  name?: string;
+  /** Shows only: the park's zone, to read the pinned performance as the park's clock. */
+  timezone?: string;
+}
+
+export interface RideAlertLocal extends PushFollowNames {
   attractionId: string;
   /** `null` for a reopen alert, which has no threshold. */
   thresholdMinutes: number | null;
@@ -37,7 +49,7 @@ export interface RideAlertLocal {
  * The API allows exactly one row per (subscription, show) and its upsert
  * overwrites `startTime`, so this list holds at most one entry per show too.
  */
-export interface ShowFollowLocal {
+export interface ShowFollowLocal extends PushFollowNames {
   showId: string;
   startTime: string | null;
 }
@@ -75,7 +87,21 @@ export function parseShowFollowEntry(entry: unknown): ShowFollowLocal | null {
   if (typeof entry !== 'object' || entry === null) return null;
   const { showId, startTime } = entry as { showId?: unknown; startTime?: unknown };
   if (typeof showId !== 'string') return null;
-  return { showId, startTime: typeof startTime === 'string' ? startTime : null };
+  return {
+    showId,
+    startTime: typeof startTime === 'string' ? startTime : null,
+    ...namesOf(entry),
+  };
+}
+
+/** The names a stored entry carries, each only where it is a string. */
+function namesOf(entry: object): PushFollowNames {
+  const raw = entry as Record<string, unknown>;
+  const names: PushFollowNames = {};
+  for (const key of ['parkSlug', 'slug', 'name', 'timezone'] as const) {
+    if (typeof raw[key] === 'string') names[key] = raw[key];
+  }
+  return names;
 }
 
 function readShowFollows(): ShowFollowLocal[] {
@@ -161,15 +187,16 @@ export function isSameInstant(a: string, b: string): boolean {
 export function setShowFollowedLocal(
   showId: string,
   followed: boolean,
-  startTime: string | null = null
+  startTime: string | null = null,
+  names?: PushFollowNames
 ): void {
   const current = readShowFollows();
   const existing = current.find((entry) => entry.showId === showId) ?? null;
   if (followed) {
-    if (existing && existing.startTime === startTime) return;
+    if (existing && existing.startTime === startTime && !names) return;
     writeJson(SHOW_FOLLOWS_KEY, [
       ...current.filter((entry) => entry.showId !== showId),
-      { showId, startTime },
+      { ...(existing && namesOf(existing)), ...names, showId, startTime },
     ]);
     return;
   }
@@ -202,6 +229,11 @@ export function getRideAlertLocal(attractionId: string): RideAlertLocal | null {
   return readRideAlerts().find((entry) => entry.attractionId === attractionId) ?? null;
 }
 
+/** Every show follow in this browser's local mirror. */
+export function listShowFollowsLocal(): ShowFollowLocal[] {
+  return readShowFollows();
+}
+
 /** Every ride alert in this browser's local mirror. */
 export function listRideAlertsLocal(): RideAlertLocal[] {
   return readRideAlerts();
@@ -211,17 +243,15 @@ export function listRideAlertsLocal(): RideAlertLocal[] {
 export function setRideAlertLocal(
   attractionId: string,
   thresholdMinutes: number | null,
-  kind: RideAlertKind | null = null
+  kind: RideAlertKind | null = null,
+  names?: PushFollowNames
 ): void {
   const current = readRideAlerts();
   const next = current.filter((entry) => entry.attractionId !== attractionId);
   next.push(
     kind === 'reopen'
-      ? { attractionId, thresholdMinutes: null, kind }
-      : {
-          attractionId,
-          thresholdMinutes,
-        }
+      ? { ...names, attractionId, thresholdMinutes: null, kind }
+      : { ...names, attractionId, thresholdMinutes }
   );
   writeJson(RIDE_ALERTS_KEY, next);
 }

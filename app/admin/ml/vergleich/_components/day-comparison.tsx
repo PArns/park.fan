@@ -130,6 +130,7 @@ export function DayComparison({ fixture }: { fixture: boolean }) {
             <Field label="Park" htmlFor={ids.park}>
               <SearchSelect
                 id={ids.park}
+                fuzzy="park"
                 value={park?.id ?? null}
                 searchPlaceholder="Park suchen…"
                 emptyLabel="Kein Park gefunden"
@@ -147,6 +148,7 @@ export function DayComparison({ fixture }: { fixture: boolean }) {
             <Field label="Fahrgeschäft" htmlFor={ids.ride}>
               <SearchSelect
                 id={ids.ride}
+                fuzzy="attraction"
                 value={ride?.id ?? null}
                 searchPlaceholder="Fahrgeschäft suchen…"
                 emptyLabel="Kein Fahrgeschäft gefunden"

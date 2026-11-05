@@ -220,9 +220,9 @@ export interface SiteEventMap {
   glossary_term_viewed: { term: string };
   glossary_category_filtered: { category: string };
   preferred_source_clicked: NoProps;
-  ride_alert_set: { source: 'card' | 'central' };
+  ride_alert_set: { source: 'card' | 'central' | 'assistant' };
   ride_alert_removed: NoProps;
-  show_follow_add: { source: 'card' | 'panel' };
+  show_follow_add: { source: 'card' | 'panel' | 'assistant' };
   show_follow_remove: NoProps;
   planner_opened: { source: PlannerOpenedSource };
   /** Parky's button is on screen, once per page view; with the entrance it made, `none` without. */

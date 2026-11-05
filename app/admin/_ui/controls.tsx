@@ -13,6 +13,8 @@ import {
 import { cn } from '@/lib/utils';
 import { TOTP_CODE_LENGTH, normalizeTotpCode } from '@/lib/admin/totp';
 import { matchesQuery } from '@/lib/utils/text-fold';
+import { withFuzzyMatches } from '../_lib/search-hits';
+import { useFuzzyHits } from '../_lib/use-fuzzy-hits';
 
 /**
  * The form controls the admin edits with, built here because the Radix select, switch, checkbox,
@@ -386,7 +388,8 @@ export function Select({
 /**
  * A select whose list is filtered as you type, for lists too long to scroll (a hundred parks, a
  * park's seventy rides). Matching ignores case and accents and also reads `keywords`; arrows,
- * Enter and Escape work as in any combobox.
+ * Enter and Escape work as in any combobox. With `fuzzy`, whose option values are park or ride
+ * ids, the site's typo-tolerant search adds the options it finds after the plain matches.
  */
 export function SearchSelect({
   value,
@@ -398,6 +401,7 @@ export function SearchSelect({
   className,
   disabled,
   id,
+  fuzzy,
 }: {
   value: string | null;
   onValueChange: (value: string) => void;
@@ -408,12 +412,17 @@ export function SearchSelect({
   className?: string;
   disabled?: boolean;
   id?: string;
+  fuzzy?: 'park' | 'attraction';
 }) {
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState('');
+  const fuzzyHits = useFuzzyHits(fuzzy ? query : '', fuzzy ?? 'park').hits;
   const selected = options.find((option) => option.value === value) ?? null;
-  const matches = options.filter((option) =>
-    matchesQuery([option.label, ...(option.keywords ?? [])], query)
+  const matches = withFuzzyMatches(
+    options.filter((option) => matchesQuery([option.label, ...(option.keywords ?? [])], query)),
+    options,
+    fuzzyHits.map((hit) => hit.id),
+    (option) => option.value
   );
 
   return (

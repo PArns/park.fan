@@ -356,6 +356,38 @@ export function moveEntry(
   );
 }
 
+/**
+ * Put one entry at a place in the day's order (`toIndex` counts every entry, shows included). The
+ * day's start minutes stay where they are and the entries that may move take them in the new
+ * order, so the day keeps its shape; a show keeps its performance. What Parky's reorder writes.
+ */
+export function moveEntryToIndex(
+  state: PlannerState,
+  parkSlug: string,
+  date: string,
+  entryId: string,
+  toIndex: number
+): PlannerState {
+  const existing = state.parks[parkSlug]?.days[date]?.entries;
+  const target = existing?.find((e) => e.id === entryId);
+  if (!existing || !target || target.showSlug) return state;
+
+  const ordered = byStart(existing);
+  const order = ordered.filter((e) => e.id !== entryId);
+  order.splice(Math.max(0, Math.min(order.length, Math.round(toIndex))), 0, target);
+  const slots = ordered.filter((e) => !e.showSlug).map((e) => e.startMinute);
+  let slot = 0;
+  const next = byStart(
+    order.map((e) => {
+      if (e.showSlug) return e;
+      const minute = slots[slot++];
+      return minute === e.startMinute ? e : withHourMirror({ ...e, startMinute: minute });
+    })
+  );
+  if (next.every((e, i) => e === ordered[i])) return state;
+  return withDay(state, parkSlug, date, next);
+}
+
 /** One stop of a plan for {@link applyPlan}: an entry to move, or a ride to add. */
 export interface ApplyPlanStop {
   /** An existing entry to move, or `null` for a ride being added. */

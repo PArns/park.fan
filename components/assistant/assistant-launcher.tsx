@@ -415,7 +415,7 @@ export function AssistantLauncher() {
 
   const content = (
     <>
-      {Panel && <Panel open={open} onClose={close} openedBy={openedBy} />}
+      {Panel && <Panel open={open} onClose={close} openedBy={openedBy} onAct={play} />}
       {/* Unseen while the window is open, the window's own ✕ and Escape close it, and while Parky
           stands in the page's slot. Kept mounted, so Parky's jumps have the corner to start from
           and land on. */}

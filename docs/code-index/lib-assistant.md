@@ -10,6 +10,18 @@ by hand: change the comment in the code and re-run the script. -->
 - `readAssistantAction` _function_: The action as the widget will carry it out, or null. Checked again here although the API built it: the stream is model-driven, and a page change or a planner write is the user's state.
 - Types: `AssistantPlannerPark`, `AssistantCard`, `AssistantAction`, `AssistantActionChip`
 
+### [`alert-writes.ts`](../../lib/assistant/alert-writes.ts)
+
+- `readPushState` _function_: Ready only with a subscription and the permission granted: then a write reuses the subscription and cannot prompt, which an action arriving mid-stream must never do.
+- `writeAssistantAlert` _function_: A reminder through the bells' own writes (subscription reuse, the 404 retry, the mirror after the server), counted like a bell's press, which is also what makes Parky ring his bell.
+
+### [`alerts-context.ts`](../../lib/assistant/alerts-context.ts)
+
+- `assistantAlertsSnapshot` _function_: The mirror's reminders; entries stored before the mirror kept their names are left out, as Parky could not name them. `undefined` where push is out of reach and nothing is set.
+- `alertTarget` _function_: The reminder an action asks for, in the ids the push endpoints take; null for a performance that is already over, which the API would refuse.
+- `ALERTS_SNAPSHOT_MAX` _const_: The most rides and shows a question carries.
+- Types: `AssistantPushState`, `AssistantAlertsSnapshot`, `AssistantAlertTarget`, `AssistantAlertPrompt`, `AssistantActionOutcome`
+
 ### [`cards.ts`](../../lib/assistant/cards.ts)
 
 - `calendarWeeks` _function_: The days of a calendar card as Monday-first weeks of seven, with `null` before the first day and after the last. Each day sits by its date, so a gap in the days stays a gap.
@@ -18,6 +30,17 @@ by hand: change the comment in the code and re-run the script. -->
 - `showTimes` _function_: A show's times split at `now`: those before it are past, the first one after is next. Without a clock (the server render and hydration) none is either, so both renders agree.
 - `presentTiles` _function_: The tiles a card has a value for, in the order they are drawn; a missing value has no tile.
 - Types: `AssistantCalendarCard`, `AssistantTilesCard`, `AssistantShowsCard`, `AssistantRestaurantsCard`, `ShowTime`, `AssistantTile`
+
+### [`chat-end.ts`](../../lib/assistant/chat-end.ts)
+
+- `breakMinutesFrom` _function_: How long a refusal says the break lasts: its `cooldownMinutes`, else the `Retry-After` seconds, else the default. Rounded up to whole minutes and capped at a day.
+- `isChatEnded` _function_: Whether an API error code is the break's refusal.
+- `readBreakUntil` _function_: The break's end as a timestamp, or null when there is none or it is over.
+- `startBreak` _function_: Start a break of `minutes` from now; returns its end.
+- `breakStorage` _function_: The tab's session storage, where it can be reached.
+- `CHAT_ENDED_CODE` _const_: The code the API refuses a question with while the break lasts.
+- `DEFAULT_BREAK_MINUTES` _const_: The break taken when a refusal says nothing of its length (another tab's chat ended it).
+- `MAX_BREAK_MINUTES` _const_: The longest break the widget believes, a day; anything longer is a broken value.
 
 ### [`config.ts`](../../lib/assistant/config.ts)
 
@@ -46,6 +69,11 @@ by hand: change the comment in the code and re-run the script. -->
 - `pageEntrance` _function_: This page load's entrance: a random one each time the page loads, `?parky=<entrance>` to see a given one, none without motion.
 - `ENTRANCE_MS` _const_: How Parky arrives in its corner each time a page loads, and how long each takes. Each entrance has a line of its own; the stylesheet (`.parky-enter-*`) reads the length as `--parky-enter`, so it is written here only.
 - Types: `ParkyEntrance`
+
+### [`favorites-context.ts`](../../lib/assistant/favorites-context.ts)
+
+- `assistantFavoritesSnapshot` _function_: The `favorites` field of a chat request: the cookie's ids as stored, so Parky can tell what is starred; only UUIDs, which is all the API takes. `undefined` where nothing is.
+- `FAVORITES_SNAPSHOT_MAX` _const_: The most ids of each kind a question carries.
 
 ### [`fling-tracker.ts`](../../lib/assistant/fling-tracker.ts)
 
@@ -147,6 +175,16 @@ Where Parky stands while his chat window is shut: in his corner, or in a slot on
 - `RIDES` _const_: The rides Parky can take; `coaster` is the loop, drawn and turned by the stylesheet.
 - `RIDE_MOTION` _const_: The rides played from these stops; the loop is the stylesheet's.
 - Types: `ParkyRide`, `RideStop`, `RideReach`, `RideMotion`
+
+### [`planner-context.ts`](../../lib/assistant/planner-context.ts)
+
+- `assistantPlannerSnapshot` _function_: The planned days from today on, each in its park's own date, nearest first; `undefined` when there is none, so the request leaves the field out.
+- `rememberDayForUndo` _function_: Keep the day as it is now, before Parky writes to it.
+- `hasParkyUndo` _function_: Whether Parky changed this day and has not undone it yet.
+- `undoParkyChange` _function_: The plan with that day put back as it was before Parky's last change: its entries through `restoreDay`, its preferences and its reservation as they were. Consumes the snapshot; the same state where there is none.
+- `SNAPSHOT_MAX_DAYS` _const_: The nearest days a question carries, and the entries per day.
+- `SNAPSHOT_MAX_ENTRIES` _const_
+- Types: `AssistantPlannerEntry`, `AssistantPlannerSnapshot`
 
 ### [`post-text.ts`](../../lib/assistant/post-text.ts)
 

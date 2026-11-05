@@ -56,6 +56,10 @@ by hand: change the comment in the code and re-run the script. -->
 - `useCompassHeading` _hook_: The phone's compass heading, delivered through a callback rather than through state.
 - Types: `CompassStatus`
 
+### [`use-debounced-value.ts`](../../lib/hooks/use-debounced-value.ts)
+
+- `useDebouncedValue` _hook_: `value` once it has stopped changing for `delayMs`, so a request waits for the typing to pause.
+
 ### [`use-distance-to.ts`](../../lib/hooks/use-distance-to.ts)
 
 - `useViewerPosition` _hook_: `useViewerPositionState` without the pending flag, for callers that only need the value.
@@ -301,6 +305,11 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`use-sheet-viewport.ts`](../../lib/hooks/use-sheet-viewport.ts)
 
 - `useSheetViewport` _hook_: Sizes a phone sheet by what the browser shows, not by what a viewport unit says it would.
+
+### [`use-site-search.ts`](../../lib/hooks/use-site-search.ts)
+
+- `useSiteSearch` _hook_: The site's typo-tolerant search (`/api/search`, the API's `/v1/search`) for a query that has already settled. One cache entry per query, shared by the search palette and the admin.
+- `SEARCH_MIN_QUERY_LENGTH` _const_: `/api/search` answers an empty set below this many characters.
 
 ### [`use-tab-hash-routing.ts`](../../lib/hooks/use-tab-hash-routing.ts)
 

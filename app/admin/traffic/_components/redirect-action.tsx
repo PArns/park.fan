@@ -174,6 +174,7 @@ function RedirectPicker({
           value={null}
           onValueChange={(id) => void create(id)}
           options={options}
+          fuzzy={ride ? 'attraction' : 'park'}
           disabled={busy || !loaded}
           className="max-w-sm flex-1"
           placeholder={
