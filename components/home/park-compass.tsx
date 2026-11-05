@@ -45,7 +45,7 @@ import {
 } from '@/lib/utils/compass';
 import { calculateDistance, formatDistance } from '@/lib/utils/distance-utils';
 import { getDateTimeFormat } from '@/lib/utils/intl-format';
-import { convertApiUrlToFrontendUrl } from '@/lib/utils/url-utils';
+import { convertApiUrlToFrontendUrl, parkChapterUrl } from '@/lib/utils/url-utils';
 import { cn, stripNewPrefix } from '@/lib/utils';
 import { PHONE_HIT_AREA } from '@/lib/utils/touch-target';
 import type { NearbyAttractionsData, UserLocation } from '@/types/nearby';
@@ -137,7 +137,9 @@ export function ParkCompass({
   const pathname = usePathname();
   const now = useMinuteNow();
   const upcoming = now === null ? null : nextShow(data.shows, now);
-  const showsHref = convertApiUrlToFrontendUrl(upcoming?.show.url ?? data.park.url);
+  const showsHref = upcoming
+    ? (parkChapterUrl(upcoming.show.url, 'shows') ?? parkChapterUrl(data.park.url, 'shows'))
+    : null;
   const rootRef = useRef<HTMLDivElement>(null);
   // `useId` answers with characters (`«r1»`) a `url(#…)` reference does not survive.
   const coneId = `compass-cone-${useId().replace(/[^a-zA-Z0-9_-]/g, '')}`;
@@ -594,9 +596,9 @@ export function ParkCompass({
             </li>
           ))}
           {/* Shows have no page: the row opens the park page's shows tab. */}
-          {upcoming && showsHref !== '#' && (
+          {upcoming && showsHref && (
             <InParkRow
-              href={`${showsHref}#shows`}
+              href={showsHref}
               title={
                 <>
                   <Theater className="size-4 shrink-0" aria-hidden="true" />

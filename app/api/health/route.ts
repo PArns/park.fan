@@ -9,7 +9,7 @@ import { NO_STORE } from '@/lib/api/cdn-cache-headers';
  */
 export async function GET() {
   try {
-    await api.get('/v1/health/ping', { cache: 'no-store' });
+    await api.get('/v1/health/ping', { cache: 'no-store', signal: AbortSignal.timeout(3_000) });
     return NextResponse.json({ ok: true }, { headers: NO_STORE });
   } catch {
     return NextResponse.json({ ok: false }, { status: 503, headers: NO_STORE });

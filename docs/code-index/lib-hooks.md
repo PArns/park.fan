@@ -96,7 +96,7 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`use-hero-status-labels.ts`](../../lib/hooks/use-hero-status-labels.ts)
 
 - `useParkOpeningLabel` _hook_: „Öffnet um 09:00 Uhr" or „Öffnet am 15. März" for a park's next opening, in the park's zone (`formatParkOpening`): the hero's park block and its lists word it alike.
-- `useHeroStatusLabels` _hook_: The hero's rows with the status pill of a shut park reading its next opening (`nextParkOpening` on the minute clock) in place of „Geschlossen", and how far off it is („morgen", „Samstag") for a row wide enough to show it.
+- `useHeroStatusLabels` _hook_: The hero's rows with the status pill of a shut park reading its next opening (`nextParkOpening` on the minute clock) in place of „Geschlossen", and how far off it is („morgen, 10:00 Uhr", „Samstag, 10:00 Uhr") for a row wide enough to show …
 
 ### [`use-in-park-block.ts`](../../lib/hooks/use-in-park-block.ts)
 

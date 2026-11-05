@@ -184,7 +184,8 @@ export const DEFAULT_SHOW_MINUTES = 30;
 export function addShowEntry(state: PlannerState, params: AddShowParams): PlannerState {
   const { parkSlug, parkName, geo, timezone, date, showSlug, showName, startMinute } = params;
   const existing = state.parks[parkSlug]?.days[date]?.entries ?? [];
-  const at = clampMinute(startMinute);
+  // A show's time is the operator's, not a drag, so an unfolded 01:30 (1530) must not clamp to 25:00.
+  const at = clampMinute(startMinute, MAX_PLANNED_MINUTE);
   if (existing.some((e) => e.showSlug === showSlug && e.startMinute === at)) return state;
 
   const entry: PlannerEntry = withHourMirror({

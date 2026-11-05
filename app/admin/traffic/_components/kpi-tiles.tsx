@@ -71,9 +71,10 @@ export function KpiTiles({
   const runningDay = overview.days === 1 && overview.to === today;
   // Page views are null only under a filter on how a visit began, where visits are all there is.
   const byVisitsOnly = overview.totals.pageviews === null;
-  const bots = overview.bots;
+  const botHits = overview.bots?.hits ?? null;
   const pageviews = overview.totals.pageviews ?? 0;
-  const botShare = bots && bots.hits + pageviews > 0 ? bots.hits / (bots.hits + pageviews) : null;
+  const botShare =
+    botHits !== null && botHits + pageviews > 0 ? botHits / (botHits + pageviews) : null;
   return (
     <div className="grid grid-cols-2 gap-3 md:grid-cols-4 xl:grid-cols-5">
       {KPI_ORDER.map((key) => {
@@ -120,7 +121,7 @@ export function KpiTiles({
         );
       })}
 
-      {bots && (
+      {botHits !== null && (
         <Tile className="space-y-1.5">
           <p
             className="text-muted-foreground flex items-center gap-1.5 text-xs font-medium"
@@ -133,7 +134,7 @@ export function KpiTiles({
             {botShare === null ? '–' : `≤ ${formatShare(botShare)}`}
           </span>
           <p className="text-muted-foreground text-xs tabular-nums">
-            {formatCount(bots.hits)} Bot-Anfragen
+            {formatCount(botHits)} Bot-Anfragen
           </p>
         </Tile>
       )}

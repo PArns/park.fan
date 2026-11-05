@@ -67,7 +67,8 @@ export function showLinesFor(
       const minute = Number(match[2]);
       if (hour > 23 || minute > 59) continue;
       let at = hour * 60 + minute;
-      if (hours && hours.closeMin >= 1440 && at < hours.openMin) at += 1440;
+      // Only times inside the wrapped tail unfold; a 08:45 welcome show on a 09–02 day stays in the morning.
+      if (hours && hours.closeMin >= 1440 && at < hours.closeMin - 1440) at += 1440;
       // A projection carries another day's programme, often a longer one, so it is clipped to this
       // day's hours. A listing is never clipped: an operator's time for this date outranks hours we
       // derived.

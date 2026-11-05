@@ -85,6 +85,11 @@ test('an unknown close refuses too', showDayHours(11, undefined), null);
     showLinesFor([show('kiss', ['00:00'], 'projected')], showDayHours(8, 1))[0]?.minute,
     1440
   );
+  test(
+    'a welcome show before opening on a 09–02 day stays in the morning',
+    showLinesFor([show('welcome', ['08:45'], 'scheduled')], showDayHours(9, 2))[0]?.minute,
+    525
+  );
   // USJ opens 08:30 and closes 21:00: a 01:00 walkthrough is not past midnight, it stays early.
   test(
     'a park without a wrap keeps a small hour in the morning',
