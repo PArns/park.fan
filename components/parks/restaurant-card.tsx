@@ -4,7 +4,8 @@ import { Badge } from '@/components/ui/badge';
 import { FavoriteStar } from '@/components/common/favorite-star';
 import { DistanceBadge } from '@/components/common/distance-badge';
 import { ParkStatusBadge } from '@/components/parks/park-status-badge';
-import { Clock, CalendarCheck } from 'lucide-react';
+import { ReservationBadge } from '@/components/parks/reservation-badge';
+import { Clock } from 'lucide-react';
 import { cn, stripNewPrefix } from '@/lib/utils';
 import { useTranslations } from 'next-intl';
 import type { ParkRestaurant, ParkStatus } from '@/lib/api/types';
@@ -77,12 +78,7 @@ export function RestaurantCard({ restaurant, href, parkName, distance }: Restaur
                 {waitTime} {tCommon('minute', { count: waitTime })}
               </span>
             )}
-            {requiresReservation && (
-              <Badge variant="outline" className="text-xs">
-                <CalendarCheck className="mr-1 h-3 w-3" />
-                {tCommon('reservation')}
-              </Badge>
-            )}
+            {requiresReservation && <ReservationBadge />}
           </div>
         )}
 

@@ -34,11 +34,21 @@ import { parkyDock, parkyInDock } from '@/lib/assistant/parky-dock';
 
 // Must stay in step with this file's entry in `LAZY_MESSAGE_BOUNDARIES`
 // (`lib/i18n/route-namespaces.mjs`).
-// `parks.status` and `parks.crowdLevels` are the badges on the cards Parky shows.
+// The others are the site's badges and weather labels on the cards Parky shows. They add nothing
+// to the download: the one lazy chunk already carries all of `parks` and `attractions`.
 /** How long after the page Parky's button shows; a slot on the page has answered by then. */
 const SHOW_DELAY_MS = 150;
 
-const ASSISTANT_NAMESPACES = ['assistant', 'parks.status', 'parks.crowdLevels'] as const;
+const ASSISTANT_NAMESPACES = [
+  'assistant',
+  'parks.status',
+  'parks.crowdLevels',
+  'parks.seasonal',
+  'parks.weather',
+  'parks.worksPeriod',
+  'attractions.meta',
+  'attractions.ropeDrop',
+] as const;
 
 // Loaded apart, like the window: its lines would otherwise put `assistant` into every page's chrome.
 const AssistantTeaser = dynamic(

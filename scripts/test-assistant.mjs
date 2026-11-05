@@ -7,8 +7,8 @@
  * (`lib/assistant/parky-boredom.ts`), how a chat opens (`lib/assistant/opener.ts`) and Parky's easter
  * eggs (`lib/assistant/easter-eggs.ts`, muting in `teaser-store.ts`), its rides
  * (`lib/assistant/parky-rides.ts`) and how it answers what the visitor does
- * (`lib/assistant/reactions.ts`, heard through `onSiteEvent`), and when a hard scroll throws it
- * (`lib/assistant/fling-tracker.ts`).
+ * (`lib/assistant/reactions.ts`, heard through `onSiteEvent`), when a hard scroll throws it
+ * (`lib/assistant/fling-tracker.ts`), and the calendar, tiles and shows cards (`lib/assistant/cards.ts`).
  */
 
 import assert from 'node:assert/strict';
@@ -64,6 +64,14 @@ import {
   rideKeyframe,
 } from '@/lib/assistant/parky-rides.ts';
 import { FLING_HAND_MS, FlingTracker } from '@/lib/assistant/fling-tracker.ts';
+import {
+  calendarWeeks,
+  parkClock,
+  parkHours,
+  presentTiles,
+  showTimes,
+} from '@/lib/assistant/cards.ts';
+import { parkChapterUrl } from '@/lib/utils/url-utils.ts';
 
 let passed = 0;
 function check(actual, expected, label) {
@@ -850,6 +858,325 @@ check([isRide('tower'), isRide('egg'), isRide(null)], [true, false, false], 'a r
     flingOf(tracker, flick(-9), { from: 4_500 }),
     'up',
     'and the other way: down and back up plays both'
+  );
+}
+// The calendar and tiles cards (`lib/assistant/cards.ts`) and their checks in `actions.ts`.
+{
+  const calendarDay = (date, extra = {}) => ({
+    date,
+    status: 'OPERATING',
+    crowdLevel: 'low',
+    opens: `${date}T10:00:00+01:00`,
+    closes: `${date}T18:00:00+01:00`,
+    holiday: false,
+    ...extra,
+  });
+  const run = (from, count) =>
+    Array.from({ length: count }, (_, i) =>
+      calendarDay(new Date(Date.parse(from) + i * 86_400_000).toISOString().slice(0, 10))
+    );
+
+  // 2026-11-05 is a Thursday: three blanks before it, Monday first.
+  const weeks = calendarWeeks(run('2026-11-05', 7));
+  check(weeks.length, 2, 'a week from a Thursday spans two rows');
+  check(
+    weeks[0].map((cell) => cell?.date ?? null),
+    [null, null, null, '2026-11-05', '2026-11-06', '2026-11-07', '2026-11-08'],
+    'the first row is padded to the first weekday'
+  );
+  check(
+    weeks[1].map((cell) => cell?.date ?? null),
+    ['2026-11-09', '2026-11-10', '2026-11-11', null, null, null, null],
+    'the last row is padded after the last day'
+  );
+  check(calendarWeeks(run('2026-11-02', 14)).length, 2, 'two weeks from a Monday need no blanks');
+  check(
+    calendarWeeks([calendarDay('2026-11-02'), calendarDay('2026-11-04')])[0]
+      .slice(0, 3)
+      .map((cell) => cell?.date ?? null),
+    ['2026-11-02', null, '2026-11-04'],
+    'a missing day stays a gap'
+  );
+  check(calendarWeeks([]), [], 'no days, no weeks');
+
+  check(
+    parkHours('2026-11-07T10:00:00+01:00', '2026-11-07T18:30:00+01:00', 'de'),
+    '10:00–18:30',
+    'hours in the park clock the offset gives, not the reader’s'
+  );
+  check(
+    parkHours('2026-07-04T09:00:00-04:00', '2026-07-04T23:00:00-04:00', 'en'),
+    '9 AM–11 PM',
+    'an offset west of Greenwich, on a 12-hour clock'
+  );
+  check(parkHours('2026-11-07T10:00:00+01:00', null, 'de'), null, 'no closing time, no hours');
+  check(parkHours('2026-11-07T10:00:00', '2026-11-07T18:00:00', 'de'), null, 'no offset, no hours');
+
+  const tiles = {
+    kind: 'tiles',
+    park: 'Efteling',
+    url: '/parks/europe/netherlands/kaatsheuvel/efteling',
+    date: '2026-11-07',
+    live: false,
+    crowdLevel: 'moderate',
+    avgWaitMinutes: 22,
+    peakWaitMinutes: 55,
+    openRides: 30,
+    totalRides: 41,
+    opens: '2026-11-07T10:00:00+01:00',
+    closes: '2026-11-07T18:00:00+01:00',
+    weather: { condition: 'rain', tempMin: 4, tempMax: 9, climateNormal: true },
+  };
+  check(
+    presentTiles(tiles),
+    ['crowd', 'avgWait', 'peakWait', 'rides', 'hours', 'weather'],
+    'every stat with a value has a tile'
+  );
+  check(
+    presentTiles({
+      ...tiles,
+      crowdLevel: null,
+      peakWaitMinutes: null,
+      openRides: null,
+      closes: null,
+      weather: { condition: null, tempMin: null, tempMax: null, climateNormal: false },
+    }),
+    ['avgWait'],
+    'a stat without a value has none'
+  );
+
+  const read = (card) => readAssistantAction({ type: 'card', card: structuredClone(card) })?.card;
+  check(read(tiles)?.kind, 'tiles', 'takes a tiles card');
+  check(
+    read({ ...tiles, avgWaitMinutes: 'lots', weather: { condition: 'sun' } }),
+    {
+      ...tiles,
+      avgWaitMinutes: null,
+      weather: {
+        condition: 'sun',
+        tempMin: null,
+        tempMax: null,
+        weatherCode: null,
+        climateNormal: false,
+      },
+    },
+    'a tiles value it cannot draw is dropped, not the card'
+  );
+  check(read({ ...tiles, date: 'tomorrow' }), undefined, 'refuses a tiles card without a day');
+  const calendar = {
+    kind: 'calendar',
+    park: 'Efteling',
+    url: '/parks/europe/netherlands/kaatsheuvel/efteling',
+    days: run('2026-11-05', 7),
+  };
+  check(read(calendar)?.days.length, 7, 'takes a calendar card');
+  check(
+    read({
+      ...calendar,
+      days: [calendarDay('2026-11-05', { status: 'CLOSED', crowdLevel: 'low', holiday: 'yes' })],
+    })?.days[0],
+    calendarDay('2026-11-05', { status: 'CLOSED', crowdLevel: null }),
+    'a closed day carries no level, and a holiday is true or false'
+  );
+  check(
+    read({ ...calendar, days: [calendarDay('2026-11-05', { crowdLevel: 'unknown' })] })?.days[0]
+      .crowdLevel,
+    'unknown',
+    'a day may say its level is unknown'
+  );
+  check(
+    read({ ...calendar, days: [calendarDay('2026-11-06'), calendarDay('2026-11-05')] }),
+    undefined,
+    'refuses days out of order'
+  );
+  check(
+    read({ ...calendar, days: run('2026-11-01', 43) }),
+    undefined,
+    'refuses more than six weeks'
+  );
+  check(
+    read({ ...calendar, url: 'https://evil.example' }),
+    undefined,
+    'refuses a calendar off site'
+  );
+  check(
+    read({ kind: 'hologram', name: 'X', url: null }),
+    undefined,
+    'refuses a kind it does not know'
+  );
+  check(
+    localizedPath(`${calendar.url}/wait-time-calendar`, 'fr'),
+    '/fr/parks/europe/netherlands/kaatsheuvel/efteling/calendrier-temps-attente',
+    'the calendar link lands on the crowd calendar in the reader’s spelling'
+  );
+}
+// Ride extras, rides rows without a wait, shows and restaurants.
+{
+  const read = (card) => readAssistantAction({ type: 'card', card: structuredClone(card) })?.card;
+  const parkUrl = '/parks/europe/germany/bruehl/phantasialand';
+
+  const times = [
+    '2026-11-05T11:00:00+01:00',
+    '2026-11-05T14:00:00+01:00',
+    '2026-11-05T17:00:00+01:00',
+  ];
+  check(
+    showTimes(times, Date.parse('2026-11-05T13:30:00+01:00')).map(({ past, next }) => [past, next]),
+    [
+      [true, false],
+      [false, true],
+      [false, false],
+    ],
+    'times before now are past, the first one after is next'
+  );
+  check(
+    showTimes(times, null).some(({ past, next }) => past || next),
+    false,
+    'without a clock no time is past or next, so the server render and hydration agree'
+  );
+  check(
+    showTimes(times, Date.parse('2026-11-05T18:00:00+01:00')).filter(({ next }) => next).length,
+    0,
+    'after the last show nothing is next'
+  );
+  check(parkClock('2026-11-05T14:00:00+01:00', 'de'), '14:00', 'a show time in the park clock');
+  check(parkClock('soon', 'de'), null, 'an unreadable time has no clock');
+
+  const ride = {
+    kind: 'ride',
+    name: 'Taron',
+    park: 'Phantasialand',
+    status: 'OPERATING',
+    crowdLevel: null,
+    waitMinutes: 40,
+    url: `${parkUrl}/taron`,
+  };
+  check(
+    read({
+      ...ride,
+      ropeDrop: { strength: 'high', savings: 35 },
+      singleRider: true,
+      virtualLine: false,
+      paidExpress: 'yes',
+      outOfSeason: true,
+    }),
+    { ...ride, ropeDrop: { strength: 'high', savings: 35 }, singleRider: true, outOfSeason: true },
+    'a ride keeps the extras that hold and drops any flag that is not true'
+  );
+  check(
+    read({ ...ride, ropeDrop: { strength: 'huge', savings: 35 } }),
+    ride,
+    'a rope-drop hint the badge cannot draw is dropped'
+  );
+
+  const rides = { kind: 'rides', park: 'Phantasialand', order: 'longest', url: parkUrl };
+  check(
+    read({
+      ...rides,
+      rides: [
+        { name: 'Taron', waitMinutes: 40, url: null },
+        { name: 'F.L.Y.', waitMinutes: null, status: 'DOWN', url: null },
+        { name: 'Chiapas', waitMinutes: null, status: 'BROKEN', url: null },
+      ],
+    })?.rides,
+    [
+      { name: 'Taron', waitMinutes: 40, status: null, url: null },
+      { name: 'F.L.Y.', waitMinutes: null, status: 'DOWN', url: null },
+      { name: 'Chiapas', waitMinutes: null, status: null, url: null },
+    ],
+    'a row without a wait keeps its status; a status without a badge is dropped'
+  );
+  check(
+    read({ ...rides, rides: [{ name: 'Taron', waitMinutes: 40 }] })?.rides[0].waitMinutes,
+    40,
+    'a row from before rows had a status still reads'
+  );
+
+  const shows = {
+    kind: 'shows',
+    park: 'Phantasialand',
+    url: parkUrl,
+    date: '2026-11-05',
+    shows: [{ name: 'Rookburgh Show', status: 'OPERATING', times, url: null }],
+  };
+  check(read(shows)?.shows[0].times, times, 'takes a shows card');
+  check(
+    read({ ...shows, shows: [{ name: 'X', status: 'ON', times: ['noon', times[0]], url: null }] })
+      ?.shows[0],
+    { name: 'X', status: null, times: [times[0]], url: null },
+    'an unreadable time or status is dropped, not the show'
+  );
+  check(
+    read({ ...shows, shows: [{ ...shows.shows[0], url: 'https://evil.example' }] }),
+    undefined,
+    'refuses a show linking off site'
+  );
+  check(read({ ...shows, date: null }), undefined, 'refuses a shows card without a day');
+
+  const restaurants = {
+    kind: 'restaurants',
+    park: 'Phantasialand',
+    url: parkUrl,
+    restaurants: [
+      {
+        name: 'Uhrwerk',
+        status: 'OPERATING',
+        land: 'Rookburgh',
+        cuisine: null,
+        requiresReservation: true,
+      },
+      {
+        name: 'Cocorico',
+        status: 'nope',
+        land: null,
+        cuisine: 'Burger',
+        requiresReservation: 'maybe',
+      },
+    ],
+  };
+  check(
+    read(restaurants)?.restaurants,
+    [
+      restaurants.restaurants[0],
+      { name: 'Cocorico', status: null, land: null, cuisine: 'Burger', requiresReservation: null },
+    ],
+    'a restaurant keeps what it knows and drops the rest'
+  );
+  check(
+    read({ ...restaurants, restaurants: [{ name: null }] }),
+    undefined,
+    'refuses a restaurant without a name'
+  );
+  check(
+    [parkChapterUrl(parkUrl, 'shows'), parkChapterUrl(parkUrl, 'restaurants')],
+    [`${parkUrl}#shows`, `${parkUrl}#restaurants`],
+    'the list cards link the park page chapter'
+  );
+
+  check(
+    presentTiles({
+      kind: 'tiles',
+      park: 'X',
+      url: null,
+      date: '2026-11-05',
+      live: true,
+      crowdLevel: null,
+      avgWaitMinutes: null,
+      peakWaitMinutes: null,
+      openRides: null,
+      totalRides: null,
+      opens: null,
+      closes: null,
+      weather: {
+        condition: null,
+        tempMin: null,
+        tempMax: null,
+        weatherCode: 61,
+        climateNormal: false,
+      },
+    }),
+    ['weather'],
+    'a weather code alone is a weather tile'
   );
 }
 console.log(`assistant: ${passed} checks passed`);

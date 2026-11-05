@@ -623,6 +623,10 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `RcdbBadge` _component_: Outbound link to the ride's Roller Coaster DataBase record, naming the ride („Taron on RCDB") so the link says what is on the other end.
 
+### [`reservation-badge.tsx`](../../components/parks/reservation-badge.tsx)
+
+- `ReservationBadge` _component_: „Reservierung erforderlich" on a restaurant that takes guests only with a booking.
+
 ### [`restaurant-card-skeleton.tsx`](../../components/parks/restaurant-card-skeleton.tsx)
 
 - `RestaurantCardSkeleton` _component_: Placeholder in the shape of `RestaurantCard`: title, park name, cuisine badge and distance.
