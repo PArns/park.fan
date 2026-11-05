@@ -32,8 +32,7 @@ import {
   undoParkyChange,
 } from '@/lib/assistant/planner-context';
 import {
-  rideTarget,
-  showTarget,
+  alertTarget,
   type AssistantActionOutcome,
   type AssistantAlertTarget,
 } from '@/lib/assistant/alerts-context';
@@ -317,15 +316,8 @@ export function useAssistantActions(closeWindow: () => void) {
           return 'planned';
         }
         case 'alert_ride_set':
-          return setAlert(
-            rideTarget(
-              await today(action.park),
-              action.rideSlug,
-              action.kind === 'reopen' ? null : (action.thresholdMinutes ?? null)
-            )
-          );
         case 'alert_show_set':
-          return setAlert(showTarget(await today(action.park), action.showSlug, action.start));
+          return setAlert(alertTarget(action));
         case 'alert_remove': {
           const { park, rideSlug, showSlug } = action;
           // The mirror names what this browser set; today's day is the fallback for an older entry.

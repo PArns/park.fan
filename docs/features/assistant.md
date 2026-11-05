@@ -120,18 +120,21 @@ prints on the block (`formatGridTime`), a block's or show's length and the tick;
 preferences, and the active park and day. With nothing planned the field is left out. The API
 answers with the next turn, so Parky reads what its last action did from that plan.
 
-Reminders (`lib/assistant/alerts-context.ts`, `alert-writes.ts`) resolve the slugs Parky sends
-through today's `/plan/day`, which carries the ride and show ids; a ride or a performance the day
-does not list, or one already over, is ignored. Only with push `ready` (a subscription and the
+Reminders (`lib/assistant/alerts-context.ts`, `alert-writes.ts`) carry the ids the push endpoints
+take: `alert_ride_set` the ride's UUID as `rideId`, a `kind` (`wait_below` with
+`thresholdMinutes` 1 to 240, or `reopen`), `alert_show_set` the show's UUID and the performance
+as an ISO instant with the park's offset, which `alertTarget` prints in the park's clock and
+ignores once it is over. Only with push `ready` (a subscription and the
 permission granted, `readPushState`) is the reminder written mid-answer, since then nothing can
 prompt. Otherwise, and after a failed write, the answer carries `AssistantAlertAsk`: what would be
 set and a button, whose press is the visitor's gesture and runs the same write, prompt included; a
 failure reads in the bells' own sentences (`usePushErrorMessage`, the 429 wait among them). A set
 counts as `ride_alert_set` or `show_follow_add` with source `assistant`, which also rings Parky's
-bell. The removal goes by the mirror's names, today's day as the fallback.
+bell. `alert_remove` names exactly one slug and goes by the mirror's names, today's `/plan/day` as
+the fallback for an entry stored without them.
 
 The `alerts` field of every question is the mirror (`assistantAlertsSnapshot`): `push`, and the
-ride alerts and show reminders whose names the mirror keeps, at most 30 each, a pinned performance
+ride alerts and show reminders whose names the mirror keeps, at most 100 each, a pinned performance
 as the park's `HH:MM`. Left out where push is out of reach and nothing is set.
 
 Favourites go through `lib/utils/favorites.ts`, so every star on the page follows. `favorite_set`

@@ -18,8 +18,7 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`alerts-context.ts`](../../lib/assistant/alerts-context.ts)
 
 - `assistantAlertsSnapshot` _function_: The mirror's reminders; entries stored before the mirror kept their names are left out, as Parky could not name them. `undefined` where push is out of reach and nothing is set.
-- `rideTarget` _function_: The ride by its slug in today's `/plan/day`, or null.
-- `showTarget` _function_: The performance at `start` today in the park's zone, by its slug in today's `/plan/day`, or null for a time the day does not list or one already past.
+- `alertTarget` _function_: The reminder an action asks for, in the ids the push endpoints take; null for a performance that is already over, which the API would refuse.
 - `ALERTS_SNAPSHOT_MAX` _const_: The most rides and shows a question carries.
 - Types: `AssistantPushState`, `AssistantAlertsSnapshot`, `AssistantAlertTarget`, `AssistantAlertPrompt`, `AssistantActionOutcome`
 

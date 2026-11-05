@@ -1,13 +1,11 @@
-import { formatInTimeZone, fromZonedTime } from 'date-fns-tz';
-import type { PlanDay } from '@/lib/api/types';
+import { formatInTimeZone } from 'date-fns-tz';
 import type { RideAlertLocal, ShowFollowLocal } from '@/lib/push/push-follows-store';
 import type { PushWriteError } from '@/lib/push/push-follows';
-import { parkToday } from '@/lib/planner/park-time';
-import type { AssistantActionChip } from './actions';
+import type { AssistantAction, AssistantActionChip } from './actions';
 
 /**
- * The reminders as Parky reads them with each question, from the bells' local mirror, and the
- * ids a reminder Parky asks for resolves to. No request here: the mirror is what the bells draw.
+ * The reminders as Parky reads them with each question, from the bells' local mirror, and what a
+ * reminder Parky asks for writes. No request here: the mirror is what the bells draw.
  */
 
 /** Whether a reminder can be written now without a prompt. */
@@ -27,7 +25,7 @@ export interface AssistantAlertsSnapshot {
 }
 
 /** The most rides and shows a question carries. */
-export const ALERTS_SNAPSHOT_MAX = 30;
+export const ALERTS_SNAPSHOT_MAX = 100;
 
 /** A pinned performance as the park's `HH:MM`, or nothing where the zone is not known. */
 function parkClock(instant: string | null, timezone: string | undefined): string | undefined {
@@ -105,37 +103,29 @@ export interface AssistantAlertPrompt {
 /** What carrying out an action leaves under the answer: a chip, or a reminder's card. */
 export type AssistantActionOutcome = AssistantActionChip | AssistantAlertPrompt | null;
 
-/** The ride by its slug in today's `/plan/day`, or null. */
-export function rideTarget(
-  day: PlanDay | null,
-  rideSlug: string,
-  thresholdMinutes: number | null
-): AssistantAlertTarget | null {
-  const ride = day?.rides.find((r) => r.attractionSlug === rideSlug && r.attractionId);
-  return ride?.attractionId
-    ? { kind: 'ride', attractionId: ride.attractionId, name: ride.attractionName, thresholdMinutes }
-    : null;
-}
-
 /**
- * The performance at `start` today in the park's zone, by its slug in today's `/plan/day`, or null
- * for a time the day does not list or one already past.
+ * The reminder an action asks for, in the ids the push endpoints take; null for a performance that
+ * is already over, which the API would refuse.
  */
-export function showTarget(
-  day: PlanDay | null,
-  showSlug: string,
-  start: string,
+export function alertTarget(
+  action: Extract<AssistantAction, { type: 'alert_ride_set' | 'alert_show_set' }>,
   now: number = Date.now()
 ): AssistantAlertTarget | null {
-  const show = day?.shows?.find((s) => s.showSlug === showSlug && s.showId);
-  if (!day || !show?.showId || !show.times.some((t) => t.trim() === start)) return null;
-  const instant = fromZonedTime(`${parkToday(day.timezone, now)}T${start}:00`, day.timezone);
-  if (instant.getTime() <= now) return null;
+  if (action.type === 'alert_ride_set') {
+    return {
+      kind: 'ride',
+      attractionId: action.rideId,
+      name: action.rideName,
+      thresholdMinutes: action.kind === 'reopen' ? null : (action.thresholdMinutes ?? null),
+    };
+  }
+  const start = parkClock(action.start, action.park.timezone);
+  if (!start || Date.parse(action.start) <= now) return null;
   return {
     kind: 'show',
-    showId: show.showId,
-    name: show.showName,
-    startTime: instant.toISOString(),
+    showId: action.showId,
+    name: action.showName,
+    startTime: action.start,
     start,
   };
 }

@@ -26,9 +26,8 @@ import {
 import { EMPTY_PLANNER_STATE, entriesFor } from '@/lib/planner/types.ts';
 import {
   ALERTS_SNAPSHOT_MAX,
+  alertTarget,
   assistantAlertsSnapshot,
-  rideTarget,
-  showTarget,
 } from '@/lib/assistant/alerts-context.ts';
 import {
   assistantFavoritesSnapshot,
@@ -363,7 +362,7 @@ check(
 check(
   assistantAlertsSnapshot(
     'ready',
-    Array.from({ length: 40 }, (_, i) => ({
+    Array.from({ length: 120 }, (_, i) => ({
       attractionId: `a${i}`,
       thresholdMinutes: 5,
       ...names,
@@ -371,125 +370,96 @@ check(
     []
   ).rides.length,
   ALERTS_SNAPSHOT_MAX,
-  'at most thirty rides'
+  'at most a hundred rides'
 );
 
-// --- Reminders: resolving slugs ---
-const planDay = {
-  timezone: 'Europe/Berlin',
-  rides: [{ attractionSlug: 'taron', attractionName: 'Taron', attractionId: 'uuid-taron' }],
-  shows: [
-    {
-      showSlug: 'fantissima',
-      showName: 'Fantissima',
-      showId: 'uuid-show',
-      times: ['11:00', '15:00'],
-      source: 'listed',
-    },
-  ],
+// --- Reminders: the actions and what they write ---
+const rideId = '1a2b3c4d-1111-4222-8333-444455556666';
+const showId = '9f8e7d6c-1111-4222-8333-444455556666';
+const rideSet = {
+  type: 'alert_ride_set',
+  park,
+  rideId,
+  rideSlug: 'taron',
+  rideName: 'Taron',
+  kind: 'wait_below',
+  thresholdMinutes: 15,
 };
+check(readAssistantAction({ ...rideSet, x: 1 }), rideSet, 'ride alert, nothing rides along');
 check(
-  rideTarget(planDay, 'taron', 15),
-  { kind: 'ride', attractionId: 'uuid-taron', name: 'Taron', thresholdMinutes: 15 },
-  'a ride resolves to its id'
+  alertTarget(rideSet),
+  { kind: 'ride', attractionId: rideId, name: 'Taron', thresholdMinutes: 15 },
+  'a wait alert writes its threshold'
 );
-check(rideTarget(planDay, 'raik', null), null, 'a ride the day does not have');
+const reopen = readAssistantAction({ ...rideSet, kind: 'reopen' });
 check(
-  showTarget(planDay, 'fantissima', '15:00', now),
-  {
-    kind: 'show',
-    showId: 'uuid-show',
-    name: 'Fantissima',
-    startTime: '2026-11-05T14:00:00.000Z',
-    start: '15:00',
-  },
-  "a performance today, as the instant in the park's zone"
-);
-check(showTarget(planDay, 'fantissima', '11:00', now), null, 'a performance already over');
-check(showTarget(planDay, 'fantissima', '16:00', now), null, 'a time the day does not list');
-
-// --- Reminders: the actions ---
-check(
-  readAssistantAction({
-    type: 'alert_ride_set',
-    park,
-    rideSlug: 'taron',
-    rideName: 'Taron',
-    kind: 'wait_below',
-    thresholdMinutes: 15,
-    x: 1,
-  }),
-  {
-    type: 'alert_ride_set',
-    park,
-    rideSlug: 'taron',
-    rideName: 'Taron',
-    kind: 'wait_below',
-    thresholdMinutes: 15,
-  },
-  'ride alert'
-);
-check(
-  readAssistantAction({
-    type: 'alert_ride_set',
-    park,
-    rideSlug: 'taron',
-    rideName: 'Taron',
-    kind: 'reopen',
-    thresholdMinutes: 15,
-  }),
-  { type: 'alert_ride_set', park, rideSlug: 'taron', rideName: 'Taron', kind: 'reopen' },
+  reopen,
+  { type: 'alert_ride_set', park, rideId, rideSlug: 'taron', rideName: 'Taron', kind: 'reopen' },
   'a reopen alert carries no threshold'
 );
+check(alertTarget(reopen).thresholdMinutes, null, 'and writes none');
 check(
-  readAssistantAction({
-    type: 'alert_ride_set',
-    park,
-    rideSlug: 'taron',
-    rideName: 'Taron',
-    kind: 'wait_below',
-    thresholdMinutes: 500,
-  }),
+  readAssistantAction({ ...rideSet, thresholdMinutes: 241 }),
   null,
   'a threshold the API refuses'
 );
 check(
-  readAssistantAction({
-    type: 'alert_ride_set',
-    park,
-    rideSlug: 'taron',
-    rideName: 'Taron',
-    kind: 'soon',
-  }),
+  readAssistantAction({ ...rideSet, thresholdMinutes: undefined }),
   null,
-  'an unknown kind'
+  'a wait alert needs one'
 );
+check(readAssistantAction({ ...rideSet, kind: 'soon' }), null, 'an unknown kind');
+check(readAssistantAction({ ...rideSet, rideId: 'taron' }), null, 'a ride id that is no UUID');
 check(
-  readAssistantAction({
-    type: 'alert_show_set',
-    park,
-    showSlug: 'fantissima',
-    showName: 'Fantissima',
-    start: '15:00',
-  }),
-  { type: 'alert_show_set', park, showSlug: 'fantissima', showName: 'Fantissima', start: '15:00' },
-  'show reminder'
-);
-check(
-  readAssistantAction({
-    type: 'alert_show_set',
-    park,
-    showSlug: 'fantissima',
-    showName: '',
-    start: '15:00',
-  }),
+  readAssistantAction({ ...rideSet, park: 'phantasialand' }),
   null,
-  'a show without a name'
+  'the park is the planner park'
+);
+const showSet = {
+  type: 'alert_show_set',
+  park,
+  showId,
+  showSlug: 'fantissima',
+  showName: 'Fantissima',
+  start: '2026-11-05T15:00:00+01:00',
+};
+check(readAssistantAction(showSet), showSet, 'show reminder');
+check(
+  alertTarget(showSet, now),
+  {
+    kind: 'show',
+    showId,
+    name: 'Fantissima',
+    startTime: '2026-11-05T15:00:00+01:00',
+    start: '15:00',
+  },
+  "the instant as sent, printed in the park's clock"
 );
 check(
-  readAssistantAction({ type: 'alert_remove', park, rideSlug: 'taron', showSlug: '<b>' }),
+  alertTarget({ ...showSet, start: '2026-11-05T11:00:00+01:00' }, now),
+  null,
+  'a performance already over'
+);
+check(
+  readAssistantAction({ ...showSet, start: '15:00' }),
+  null,
+  'start is an instant, not a clock'
+);
+check(readAssistantAction({ ...showSet, showName: '' }), null, 'a show without a name');
+check(
+  readAssistantAction({ type: 'alert_remove', park, rideSlug: 'taron' }),
   { type: 'alert_remove', park, rideSlug: 'taron' },
-  'remove: a bad slug is left out'
+  'remove a ride alert'
+);
+check(
+  readAssistantAction({ type: 'alert_remove', park, showSlug: 'fantissima', rideSlug: '<b>' }),
+  { type: 'alert_remove', park, showSlug: 'fantissima' },
+  'remove a show reminder; a slug that is none does not count'
+);
+check(
+  readAssistantAction({ type: 'alert_remove', park, rideSlug: 'taron', showSlug: 'fantissima' }),
+  null,
+  'remove: exactly one'
 );
 check(readAssistantAction({ type: 'alert_remove', park }), null, 'remove: nothing named');
 

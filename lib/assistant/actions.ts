@@ -204,6 +204,8 @@ export type AssistantAction =
   | {
       type: 'alert_ride_set';
       park: AssistantPlannerPark;
+      /** The ride's UUID, which the push endpoint takes as `attractionId`. */
+      rideId: string;
       rideSlug: string;
       rideName: string;
       kind: 'wait_below' | 'reopen';
@@ -213,9 +215,10 @@ export type AssistantAction =
   | {
       type: 'alert_show_set';
       park: AssistantPlannerPark;
+      showId: string;
       showSlug: string;
       showName: string;
-      /** Park-local `HH:MM`, one of today's performances. */
+      /** The performance as an ISO instant with the park's offset, the endpoint's `startTime`. */
       start: string;
     }
   /**
@@ -223,8 +226,9 @@ export type AssistantAction =
    * type, since `type` names the action.
    */
   | { type: 'favorite_set'; kind: FavoriteType; id: string; name: string; on: boolean }
-  /** One of the two slugs, or both. */
-  | { type: 'alert_remove'; park: AssistantPlannerPark; rideSlug?: string; showSlug?: string }
+  /** Exactly one of the two slugs. */
+  | { type: 'alert_remove'; park: AssistantPlannerPark; rideSlug: string; showSlug?: never }
+  | { type: 'alert_remove'; park: AssistantPlannerPark; showSlug: string; rideSlug?: never }
   /** The same page in another of the site's languages, once the answer is complete. */
   | { type: 'switch_locale'; locale: Locale }
   /** Parky passed the visitor's feedback on to the team. */
@@ -539,41 +543,6 @@ function readPlannerEdit(action: Record<string, unknown>): AssistantAction | nul
     case 'planner_clear_day':
     case 'planner_undo':
       return { type: action.type, ...day };
-    case 'planner_share':
-      return { type: 'planner_share' };
-    case 'planner_remove':
-    case 'planner_move':
-    case 'planner_update_block':
-    case 'planner_add_show':
-    case 'planner_set_prefs':
-    case 'planner_mark_done':
-    case 'planner_clear_day':
-    case 'planner_reserve_days':
-    case 'planner_undo':
-      return readPlannerEdit(action as unknown as Record<string, unknown>);
-    case 'favorite_set': {
-      const raw = action as unknown as Record<string, unknown>;
-      // `type` is taken by the action itself; the API may name the favourite's `favoriteType`.
-      const kind = raw.kind ?? raw.favoriteType;
-      return typeof kind === 'string' &&
-        FAVORITE_TYPES.has(kind) &&
-        typeof raw.id === 'string' &&
-        isUuid(raw.id) &&
-        isName(raw.name) &&
-        typeof raw.on === 'boolean'
-        ? {
-            type: 'favorite_set',
-            kind: kind as FavoriteType,
-            id: raw.id,
-            name: raw.name.trim(),
-            on: raw.on,
-          }
-        : null;
-    }
-    case 'alert_ride_set':
-    case 'alert_show_set':
-    case 'alert_remove':
-      return readAlert(action as unknown as Record<string, unknown>);
     default:
       return null;
   }
@@ -591,8 +560,20 @@ function readAlert(action: Record<string, unknown>): AssistantAction | null {
   if (!isPark(park)) return null;
   switch (action.type) {
     case 'alert_ride_set': {
-      if (!isSlug(action.rideSlug) || !isName(action.rideName)) return null;
-      const ride = { park, rideSlug: action.rideSlug, rideName: action.rideName.trim() };
+      if (
+        typeof action.rideId !== 'string' ||
+        !isUuid(action.rideId) ||
+        !isSlug(action.rideSlug) ||
+        !isName(action.rideName)
+      ) {
+        return null;
+      }
+      const ride = {
+        park,
+        rideId: action.rideId,
+        rideSlug: action.rideSlug,
+        rideName: action.rideName.trim(),
+      };
       if (action.kind === 'reopen') return { type: 'alert_ride_set', ...ride, kind: 'reopen' };
       return action.kind === 'wait_below' &&
         isWhole(action.thresholdMinutes, MIN_THRESHOLD_MIN, MAX_THRESHOLD_MIN)
@@ -604,26 +585,29 @@ function readAlert(action: Record<string, unknown>): AssistantAction | null {
           }
         : null;
     }
-    case 'alert_show_set':
-      return isSlug(action.showSlug) &&
+    case 'alert_show_set': {
+      const start = instant(action.start);
+      return typeof action.showId === 'string' &&
+        isUuid(action.showId) &&
+        isSlug(action.showSlug) &&
         isName(action.showName) &&
-        typeof action.start === 'string' &&
-        CLOCK.test(action.start)
+        start
         ? {
             type: 'alert_show_set',
             park,
+            showId: action.showId,
             showSlug: action.showSlug,
             showName: action.showName.trim(),
-            start: action.start,
+            start,
           }
         : null;
-    case 'alert_remove': {
-      const slugs = {
-        ...(isSlug(action.rideSlug) ? { rideSlug: action.rideSlug } : {}),
-        ...(isSlug(action.showSlug) ? { showSlug: action.showSlug } : {}),
-      };
-      return Object.keys(slugs).length > 0 ? { type: 'alert_remove', park, ...slugs } : null;
     }
+    case 'alert_remove':
+      // Exactly one: a removal names what it takes away.
+      if (isSlug(action.rideSlug) === isSlug(action.showSlug)) return null;
+      return isSlug(action.rideSlug)
+        ? { type: 'alert_remove', park, rideSlug: action.rideSlug }
+        : { type: 'alert_remove', park, showSlug: action.showSlug as string };
     default:
       return null;
   }
