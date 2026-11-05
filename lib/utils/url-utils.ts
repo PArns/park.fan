@@ -78,14 +78,16 @@ export function getParkUrlFromAttractionUrl(attractionUrl: string): string {
 
 /**
  * The park-page tab a show or restaurant lives under: `/parks/…#shows` or `/parks/…#restaurants`.
- * `null` for a bare `/v1/shows/<id>` that names no park, so each caller picks its own fallback
- * rather than linking to `#shows` on whatever page it is on.
+ * With the entry's `park`, its geo path wins and `url` is the fallback, so an API that still sends
+ * a bare `/v1/shows/<id>` links as well as one sending the park's path. `null` when neither names a
+ * park, so each caller picks its own fallback rather than linking to `#shows` on whatever page it is on.
  */
 export function parkChapterUrl(
   url: string | null | undefined,
-  chapter: 'shows' | 'restaurants'
+  chapter: 'shows' | 'restaurants',
+  park?: Omit<ParkGeoData, 'url'>
 ): string | null {
-  const parkUrl = convertApiUrlToFrontendUrl(url);
+  const parkUrl = park ? buildParkUrl({ ...park, url }) : convertApiUrlToFrontendUrl(url);
   return parkUrl.startsWith('/parks/') ? `${parkUrl.split('#')[0]}#${chapter}` : null;
 }
 

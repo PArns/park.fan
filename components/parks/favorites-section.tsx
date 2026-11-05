@@ -356,7 +356,7 @@ export function FavoritesSection({
                       status={show.status}
                       showtimes={show.showtimes}
                       timezone={show.park?.timezone || 'UTC'}
-                      href={parkChapterUrl(show.url, 'shows') ?? '#'}
+                      href={parkChapterUrl(show.url, 'shows', show.park) ?? undefined}
                       parkName={show.park?.name ? stripNewPrefix(show.park.name) : undefined}
                       distance={show.distance}
                     />
@@ -375,7 +375,9 @@ export function FavoritesSection({
                   <RestaurantCard
                     key={restaurant.id}
                     restaurant={restaurant}
-                    href={parkChapterUrl(restaurant.url, 'restaurants') ?? undefined}
+                    href={
+                      parkChapterUrl(restaurant.url, 'restaurants', restaurant.park) ?? undefined
+                    }
                     parkName={
                       restaurant.park?.name ? stripNewPrefix(restaurant.park.name) : undefined
                     }
