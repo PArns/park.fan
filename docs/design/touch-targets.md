@@ -13,8 +13,8 @@ and raising them would only move the hero search field. `sm` vs `default` vs `lg
 decision and a finger has no density; horizontal padding still steps.
 
 44 was already written down twice and applied nowhere public: `CONTROL_HEIGHT = 'h-11 sm:h-9'` in
-`app/admin/_ui/controls.tsx` (the smallest target a thumb hits reliably) and `.touch-target` in
-`globals.css`, which no element uses. A grep over `components/` and `app/[locale]` for
+`app/admin/_ui/controls.tsx` (the smallest target a thumb hits reliably) and a `.touch-target`
+class in `globals.css` that no element used. A grep over `components/` and `app/[locale]` for
 `min-h-11|h-11|touch-manipulation` returned no control, so most touch findings in the mobile audits
 were the scale's fault, not the component's.
 

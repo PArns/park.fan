@@ -124,13 +124,28 @@ export function readFragments(dir = FRAGMENT_DIR, { dated = true } = {}) {
   );
 }
 
-/** The block a cut writes: the version heading, one sentence, then every fragment as it stands. */
+/**
+ * A fragment's relative links, moved from `docs/changelog.d/` to `docs/`, where the cut puts the
+ * text: `../rules/x.md` becomes `rules/x.md`, a sibling `README.md` becomes `changelog.d/README.md`.
+ * Links stay written relative to the fragment's own file, so they resolve while it is a fragment.
+ * Anchors, absolute paths and URLs are left alone.
+ *
+ * shortcut: a link-shaped string inside a code span or fence is rewritten too; parse the Markdown
+ * if a fragment ever needs one.
+ */
+export function rebaseLinks(body) {
+  return body.replace(/\]\((?!#|\/|[a-z][a-z0-9+.-]*:)([^)\s]+)/gi, (_, target) =>
+    target.startsWith('../') ? `](${target.slice(3)}` : `](changelog.d/${target}`
+  );
+}
+
+/** The block a cut writes: the version heading, one sentence, then every fragment, links rebased. */
 export function renderRelease({ version, date, title, fragments }) {
   const intro =
     `Geschnitten am ${date} aus ${fragments.length} Fragment${fragments.length === 1 ? '' : 'en'} ` +
     `in \`docs/changelog.d/\`. Der öffentliche Eintrag ist \`content/changelog/${version}.md\`. ` +
     'Neueste Abschnitte zuerst.';
-  const sections = fragments.map((f) => `### ${f.title}\n\n${f.body}`);
+  const sections = fragments.map((f) => `### ${f.title}\n\n${rebaseLinks(f.body)}`);
   return [`## ${version} (${date}) – ${title}`, intro, ...sections].join('\n\n') + '\n';
 }
 

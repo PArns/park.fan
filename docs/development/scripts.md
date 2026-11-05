@@ -197,5 +197,5 @@ generated first. Each script's header comment says what it pins.
 
 ## Unregistered leftovers
 
-`scripts/test-url-building.mjs` (URL builders against old 404s) and the four
-`scripts/benchmark-search-*.mjs` micro-benchmarks have no `pnpm` entry and nothing runs them.
+`scripts/test-url-building.mjs` (URL builders against old 404s) has no `pnpm` entry and nothing
+runs it.

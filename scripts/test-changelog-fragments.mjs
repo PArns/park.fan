@@ -20,6 +20,7 @@ import {
   insertRelease,
   isNewerVersion,
   parseFragment,
+  rebaseLinks,
   renderRelease,
   sortFragments,
 } from './lib/changelog-fragments.mjs';
@@ -117,6 +118,22 @@ test('the release block: heading, one sentence, the sections as written', () => 
     /^## 2\.14\.0 \(2026-10-05\) – Titel\n\nGeschnitten am 2026-10-05 aus 2 Fragmenten/
   );
   assert.ok(block.includes('### A\n\nText A\n\n### B\n\nText B\n\n#### Nachtrag\n\nmehr\n'));
+});
+
+test('links written from docs/changelog.d/ resolve from docs/ after the cut', () => {
+  assert.equal(
+    rebaseLinks(
+      '[a](../rules/x.md#y) [b](../../lib/z.ts) [c](README.md) [d](#top) [e](https://park.fan/x) [f](/de)'
+    ),
+    '[a](rules/x.md#y) [b](../lib/z.ts) [c](changelog.d/README.md) [d](#top) [e](https://park.fan/x) [f](/de)'
+  );
+  const block = renderRelease({
+    version: '2.14.0',
+    date: '2026-10-05',
+    title: 'Titel',
+    fragments: [{ title: 'A', body: 'Siehe [die Regel](../rules/x.md).' }],
+  });
+  assert.ok(block.includes('Siehe [die Regel](rules/x.md).'));
 });
 
 test('the block goes above the newest version, under the file header', () => {

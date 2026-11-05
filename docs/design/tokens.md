@@ -95,9 +95,8 @@ strings `TILE_GLASS` (the header cards and frosted chapter bands), `HEAVY_GLASS`
 `PHOTO_GLASS_FILL`, `HAIRLINE_FILL`, `PANEL_FLAT`. The header's menu band is `.pk-menu-glass`
 (40 px blur with saturate and brightness, so text behind it breaks up rather than ghosting), and
 so is the language banner that hangs under the header (`components/layout/language-banner.tsx`).
-`app/globals.css` still defines `.glass`, `.glass-light`, `.glass-strong`, `.glass-heavy`,
-`.glass-card`, `.glass-card-light`, `.glass-card-strong` and `.glass-header`; only `.glass-light`
-is used (`planner-day-grid.tsx`).
+Two glass utility classes are left in `app/globals.css`: `.glass-light` (`planner-day-grid.tsx`)
+and `.glass-card` (the pill breadcrumb in `breadcrumb-nav.tsx`).
 
 Two constraints hold for every glass surface: a transform or `backdrop-filter` on an ancestor makes
 it a backdrop root and flattens the blur (see [cards](cards-and-heroes.md#pointer-depth) and the
@@ -115,7 +114,6 @@ it a backdrop root and flattens the blur (see [cards](cards-and-heroes.md#pointe
 | `.pk-photo-zoom`, `.pk-photo-closed` | a card photo's hover zoom; greyscale for a closed park, lifted only on a real hover                                                             |
 | `.pk-panel-seam-sm`                  | the top panel's lower edge on a card with no bottom panel                                                                                       |
 | `.interactive-card`                  | `hover:border-primary/50 hover:scale-[1.02] hover:shadow-lg`                                                                                    |
-| `.touch-target`                      | `min-h/min-w 44px`; applied nowhere, use [`PHONE_HIT_AREA`](touch-targets.md#the-target-grows-the-box-does-not)                                 |
 | `.no-scrollbar`                      | hides a scroll container's bar                                                                                                                  |
 
 ### Section reveals
