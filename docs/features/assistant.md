@@ -147,7 +147,7 @@ clock; the cards format their instants with the browser's own clock too.
 ## Parky's face
 
 `ParkyLogo` (`components/assistant/parky-logo.tsx`) draws Parky as an SVG; all its motion is CSS in
-`app/globals.css` (`.parky-*`) and runs only without `prefers-reduced-motion`. While the chat works
+`app/parky.css` (`.parky-*`) and runs only without `prefers-reduced-motion`. While the chat works
 it shows a mood: `thinking` with thought bubbles, `looking` into a book, `talking`. With nothing to
 do (the closed button, the open window between answers) it has a life of its own, paced by one
 store for the whole page, `parkyBoredom` (`lib/assistant/parky-boredom.ts`). Activity is a pointer
