@@ -118,6 +118,16 @@ Where Parky stands while his chat window is shut: in his corner, or in a slot on
 - `RIDE_MOTION` _const_: The rides played from these stops; the loop is the stylesheet's.
 - Types: `ParkyRide`, `RideStop`, `RideReach`, `RideMotion`
 
+### [`planner-context.ts`](../../lib/assistant/planner-context.ts)
+
+- `assistantPlannerSnapshot` _function_: The planned days from today on, each in its park's own date, nearest first; `undefined` when there is none, so the request leaves the field out.
+- `rememberDayForUndo` _function_: Keep the day as it is now, before Parky writes to it.
+- `hasParkyUndo` _function_: Whether Parky changed this day and has not undone it yet.
+- `undoParkyChange` _function_: The plan with that day put back as it was before Parky's last change: its entries through `restoreDay`, its preferences and its reservation as they were. Consumes the snapshot; the same state where there is none.
+- `SNAPSHOT_MAX_DAYS` _const_: The nearest days a question carries, and the entries per day.
+- `SNAPSHOT_MAX_ENTRIES` _const_
+- Types: `AssistantPlannerEntry`, `AssistantPlannerSnapshot`
+
 ### [`post-text.ts`](../../lib/assistant/post-text.ts)
 
 - `postPlainText` _function_: A post's Markdown as plain text for the chat assistant: code, images, embeds, HTML and table rules removed, links reduced to their text, cut at a paragraph near `POST_TEXT_LIMIT`.

@@ -29,19 +29,20 @@ and [a day that does not fit opens an assistant](../../rules/a-day-that-does-not
 
 ## Where it lives
 
-| Piece                                  | File                                                                                            |
-| -------------------------------------- | ----------------------------------------------------------------------------------------------- |
-| Its own page                           | `app/[locale]/trip-planner/page.tsx`, body `components/planner/planner-page-body.tsx`           |
-| Localized URL segments                 | `lib/planner/segments.ts` (`PLANNER_SEGMENTS`)                                                  |
-| Store (localStorage only)              | `lib/planner/store.ts` (`parkfan_planner`), operations in `lib/planner/actions.ts`              |
-| Plan shape                             | `lib/planner/types.ts`                                                                          |
-| Day geometry (minutes → pixels)        | `lib/planner/day-grid.ts`, `lib/planner/bar-geometry.ts`                                        |
-| Park-local time                        | `lib/planner/park-time.ts`                                                                      |
-| The wizard                             | `components/planner/planner-wizard.tsx`                                                         |
-| The panel (side sheet / bottom sheet)  | `components/planner/planner-flyout.tsx`, one day column `planner-day-column.tsx`                |
-| The day grid                           | `components/planner/planner-day-grid.tsx`, `planner-block.tsx`                                  |
-| The optimizer and the fit assistant    | `lib/planner/optimize.ts`, `lib/planner/fit.ts`, `components/planner/planner-fit-assistant.tsx` |
-| The page's article, fixtures and demos | `app/[locale]/trip-planner/content/<locale>.tsx`, `_fixtures.ts`, `_demos.tsx`                  |
+| Piece                                  | File                                                                                                                                          |
+| -------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| Its own page                           | `app/[locale]/trip-planner/page.tsx`, body `components/planner/planner-page-body.tsx`                                                         |
+| Localized URL segments                 | `lib/planner/segments.ts` (`PLANNER_SEGMENTS`)                                                                                                |
+| Store (localStorage only)              | `lib/planner/store.ts` (`parkfan_planner`), operations in `lib/planner/actions.ts`                                                            |
+| Plan shape                             | `lib/planner/types.ts`                                                                                                                        |
+| Day geometry (minutes → pixels)        | `lib/planner/day-grid.ts`, `lib/planner/bar-geometry.ts`                                                                                      |
+| Park-local time                        | `lib/planner/park-time.ts`                                                                                                                    |
+| The wizard                             | `components/planner/planner-wizard.tsx`                                                                                                       |
+| The panel (side sheet / bottom sheet)  | `components/planner/planner-flyout.tsx`, one day column `planner-day-column.tsx`                                                              |
+| The day grid                           | `components/planner/planner-day-grid.tsx`, `planner-block.tsx`                                                                                |
+| The optimizer and the fit assistant    | `lib/planner/optimize.ts`, `lib/planner/fit.ts`, `components/planner/planner-fit-assistant.tsx`                                               |
+| Parky reading and editing the plan     | `lib/assistant/planner-context.ts`, `components/assistant/use-assistant-actions.ts` ([Parky](../assistant.md#actions-cards-and-the-position)) |
+| The page's article, fixtures and demos | `app/[locale]/trip-planner/content/<locale>.tsx`, `_fixtures.ts`, `_demos.tsx`                                                                |
 
 ## Storage
 

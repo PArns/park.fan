@@ -10,6 +10,8 @@ import {
   type AssistantCard,
 } from './actions';
 import { trackSiteEvent, type AssistantQuestionKind } from '@/lib/analytics/site-analytics';
+import { plannerStore } from '@/lib/planner/store';
+import { assistantPlannerSnapshot } from './planner-context';
 
 /** A lookup Parky names while it runs, as the API's `status` event sends it. */
 export type AssistantLookup =
@@ -98,8 +100,10 @@ const localId = () => `m${Date.now()}-${nextId++}`;
 export function useAssistantChat(
   locale: string,
   session: { token: string | null; drop: () => void },
-  /** Carries out an action Parky asked for; returns the chip to show, if any. */
-  onAction: (action: AssistantAction) => AssistantActionChip | null
+  /** Carries out an action Parky asked for; returns the chip to show, if any, once it is done. */
+  onAction: (
+    action: AssistantAction
+  ) => AssistantActionChip | null | Promise<AssistantActionChip | null>
 ) {
   const { token: sessionToken, drop: dropSession } = session;
   const [stored, setStored] = useState<Stored>(() =>
@@ -119,7 +123,7 @@ export function useAssistantChat(
     const action = afterAnswer.current;
     if (phase !== 'idle' || !action) return;
     afterAnswer.current = null;
-    onAction(action);
+    void onAction(action);
   }, [phase, onAction]);
 
   const patchLast = useCallback(
@@ -177,6 +181,8 @@ export function useAssistantChat(
             ...(location && { location }),
             // Parky gives every time in the reader's own clock; the API converts, not the model.
             timeZone: browserTimeZone(),
+            // The plan lives in this browser alone; Parky reads it with every question.
+            planner: assistantPlannerSnapshot(plannerStore.getSnapshot()),
           }),
         });
         if (response.status === 401) {
@@ -218,7 +224,7 @@ export function useAssistantChat(
               switchTo = action;
               patchLast((m) => ({ ...m, chips: [...(m.chips ?? []), 'language'] }));
             } else if (action) {
-              const chip = onAction(action);
+              const chip = await onAction(action);
               if (chip) patchLast((m) => ({ ...m, chips: [...(m.chips ?? []), chip] }));
             }
           } else if (event === 'done') {

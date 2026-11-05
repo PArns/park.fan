@@ -1,6 +1,7 @@
-import type { PlannerBlockIcon, PlannerGeo } from '@/lib/planner/types';
+import type { PlannerBlockIcon, PlannerDayPrefs, PlannerGeo } from '@/lib/planner/types';
 import type { RopeDropStrength } from '@/lib/api/types';
 import { PLANNER_BLOCK_ICONS } from '@/lib/planner/types';
+import { MAX_RIDER_CM, MIN_RIDER_CM } from '@/lib/planner/party';
 import { isValidLocale, type Locale } from '@/i18n/config';
 import { safeAssistantHref } from './links';
 
@@ -154,6 +155,49 @@ export type AssistantAction =
       date: string;
       mode: 'order' | 'headliners';
     }
+  | { type: 'planner_remove'; park: AssistantPlannerPark; date: string; entryIds: string[] }
+  | {
+      type: 'planner_move';
+      park: AssistantPlannerPark;
+      date: string;
+      entryId: string;
+      toIndex: number;
+    }
+  | {
+      type: 'planner_update_block';
+      park: AssistantPlannerPark;
+      date: string;
+      entryId: string;
+      label?: string;
+      /** Park-local `HH:MM`. */
+      start?: string;
+      durationMinutes?: number;
+    }
+  | {
+      type: 'planner_add_show';
+      park: AssistantPlannerPark;
+      date: string;
+      showSlug: string;
+      /** Park-local `HH:MM`, one of the day's showtimes. */
+      start: string;
+    }
+  | {
+      type: 'planner_set_prefs';
+      park: AssistantPlannerPark;
+      date: string;
+      prefs: PlannerDayPrefs;
+    }
+  | {
+      type: 'planner_mark_done';
+      park: AssistantPlannerPark;
+      date: string;
+      entryIds: string[];
+      done: boolean;
+    }
+  | { type: 'planner_clear_day'; park: AssistantPlannerPark; date: string }
+  | { type: 'planner_reserve_days'; park: AssistantPlannerPark; dates: string[] }
+  | { type: 'planner_undo'; park: AssistantPlannerPark; date: string }
+  | { type: 'planner_share' }
   /** The same page in another of the site's languages, once the answer is complete. */
   | { type: 'switch_locale'; locale: Locale }
   /** Parky passed the visitor's feedback on to the team. */
@@ -165,6 +209,12 @@ export type AssistantActionChip = 'navigated' | 'planned' | 'optimized' | 'langu
 const SLUG = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 const DAY = /^\d{4}-\d{2}-\d{2}$/;
 const OPTIMIZE_MODES = new Set(['order', 'headliners']);
+/** Park-local `HH:MM`, the way the planner prints a start. */
+const CLOCK = /^(?:[01]\d|2[0-3]):[0-5]\d$/;
+/** A planner entry id as `makeId` mints it: a slug and a counter. */
+const ENTRY_ID = /^[a-z0-9-]{1,100}$/;
+const MAX_PLAN_ENTRIES = 40;
+const MAX_RESERVED_DAYS = 14;
 
 /** A zone the browser's `Intl` knows: the planner formats every time of the park in it. */
 function isTimeZone(value: unknown): boolean {
@@ -369,6 +419,107 @@ function isCard(card: AssistantCard | undefined): card is AssistantCard {
   return card.kind === 'park' && orNull(card.place, short) && isRideList(card.waits);
 }
 
+/** The entry ids that look like ids, at most a day's worth, one each; null where none is left. */
+function entryIds(value: unknown): string[] | null {
+  if (!Array.isArray(value)) return null;
+  const ids = [...new Set(value.filter((id) => typeof id === 'string' && ENTRY_ID.test(id)))];
+  return ids.length > 0 ? ids.slice(0, MAX_PLAN_ENTRIES) : null;
+}
+
+/**
+ * The planner's edits, each built anew from the fields it names, so nothing else rides along. An
+ * optional field that fails its check is left out; a required one refuses the action.
+ */
+function readPlannerEdit(action: Record<string, unknown>): AssistantAction | null {
+  const { park, date } = action;
+  if (!isPark(park)) return null;
+  if (action.type === 'planner_reserve_days') {
+    const dates = Array.isArray(action.dates)
+      ? [...new Set(action.dates.filter((d) => typeof d === 'string' && DAY.test(d)))]
+      : [];
+    return dates.length > 0
+      ? { type: 'planner_reserve_days', park, dates: dates.slice(0, MAX_RESERVED_DAYS) }
+      : null;
+  }
+  if (typeof date !== 'string' || !DAY.test(date)) return null;
+  const day = { park, date };
+  switch (action.type) {
+    case 'planner_remove': {
+      const ids = entryIds(action.entryIds);
+      return ids ? { type: 'planner_remove', ...day, entryIds: ids } : null;
+    }
+    case 'planner_mark_done': {
+      const ids = entryIds(action.entryIds);
+      return ids && typeof action.done === 'boolean'
+        ? { type: 'planner_mark_done', ...day, entryIds: ids, done: action.done }
+        : null;
+    }
+    case 'planner_move':
+      return typeof action.entryId === 'string' &&
+        ENTRY_ID.test(action.entryId) &&
+        isWhole(action.toIndex, 0, MAX_PLAN_ENTRIES - 1)
+        ? {
+            type: 'planner_move',
+            ...day,
+            entryId: action.entryId,
+            toIndex: action.toIndex as number,
+          }
+        : null;
+    case 'planner_update_block': {
+      if (typeof action.entryId !== 'string' || !ENTRY_ID.test(action.entryId)) return null;
+      const edit = {
+        ...(short(action.label, 40) && (action.label as string).trim()
+          ? { label: (action.label as string).trim() }
+          : {}),
+        ...(typeof action.start === 'string' && CLOCK.test(action.start)
+          ? { start: action.start }
+          : {}),
+        ...(isWhole(action.durationMinutes, 10, 240)
+          ? { durationMinutes: action.durationMinutes as number }
+          : {}),
+      };
+      return Object.keys(edit).length > 0
+        ? { type: 'planner_update_block', ...day, entryId: action.entryId, ...edit }
+        : null;
+    }
+    case 'planner_add_show':
+      return typeof action.showSlug === 'string' &&
+        SLUG.test(action.showSlug) &&
+        typeof action.start === 'string' &&
+        CLOCK.test(action.start)
+        ? { type: 'planner_add_show', ...day, showSlug: action.showSlug, start: action.start }
+        : null;
+    case 'planner_set_prefs': {
+      const raw = (action.prefs ?? {}) as Record<string, unknown>;
+      const prefs: PlannerDayPrefs = {
+        ...(isWhole(raw.riderHeightCm, MIN_RIDER_CM, MAX_RIDER_CM)
+          ? { riderHeightCm: raw.riderHeightCm as number }
+          : {}),
+        ...(typeof raw.avoidWet === 'boolean' ? { avoidWet: raw.avoidWet } : {}),
+        ...(typeof raw.earlyEntry === 'boolean' ? { earlyEntry: raw.earlyEntry } : {}),
+      };
+      return Object.keys(prefs).length > 0 ? { type: 'planner_set_prefs', ...day, prefs } : null;
+    }
+    case 'planner_clear_day':
+    case 'planner_undo':
+      return { type: action.type, ...day };
+    case 'planner_share':
+      return { type: 'planner_share' };
+    case 'planner_remove':
+    case 'planner_move':
+    case 'planner_update_block':
+    case 'planner_add_show':
+    case 'planner_set_prefs':
+    case 'planner_mark_done':
+    case 'planner_clear_day':
+    case 'planner_reserve_days':
+    case 'planner_undo':
+      return readPlannerEdit(action as unknown as Record<string, unknown>);
+    default:
+      return null;
+  }
+}
+
 /**
  * The action as the widget will carry it out, or null. Checked again here although the API built
  * it: the stream is model-driven, and a page change or a planner write is the user's state.
@@ -414,6 +565,18 @@ export function readAssistantAction(raw: unknown): AssistantAction | null {
         (action.block.startMinute == null || isWhole(action.block.startMinute, 0, 24 * 60 - 1))
         ? action
         : null;
+    case 'planner_share':
+      return { type: 'planner_share' };
+    case 'planner_remove':
+    case 'planner_move':
+    case 'planner_update_block':
+    case 'planner_add_show':
+    case 'planner_set_prefs':
+    case 'planner_mark_done':
+    case 'planner_clear_day':
+    case 'planner_reserve_days':
+    case 'planner_undo':
+      return readPlannerEdit(action as unknown as Record<string, unknown>);
     default:
       return null;
   }

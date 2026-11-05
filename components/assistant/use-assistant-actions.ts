@@ -1,13 +1,36 @@
 'use client';
 
 import { useCallback } from 'react';
+import { useQueryClient } from '@tanstack/react-query';
 import { ASSISTANT_PHONE_QUERY } from '@/components/assistant/parky-layer';
 import { useLocale } from 'next-intl';
 import { useRouter } from 'next/navigation';
 import { usePlanner } from '@/lib/planner/use-planner';
 import { plannerStore } from '@/lib/planner/store';
 import { plannerUi } from '@/lib/planner/ui-store';
-import { openDay } from '@/lib/planner/actions';
+import {
+  clearDay,
+  moveEntry,
+  moveEntryToIndex,
+  openDay,
+  removeEntry,
+  reserveDays,
+  setActive,
+  setCustomBlock,
+  setDayPrefs,
+  setEntryDone,
+} from '@/lib/planner/actions';
+import { entriesFor, hasAnyPlan, type PlannerState } from '@/lib/planner/types';
+import { planDayQuery } from '@/lib/hooks/use-plan-day';
+import { showDayHours, showLinesFor } from '@/lib/planner/shows';
+import { formatGridTime } from '@/lib/planner/park-time';
+import { trackPlannerDayCleared } from '@/lib/analytics/planner-funnel';
+import {
+  assistantPlannerSnapshot,
+  hasParkyUndo,
+  rememberDayForUndo,
+  undoParkyChange,
+} from '@/lib/assistant/planner-context';
 import { safeAssistantHref } from '@/lib/assistant/links';
 import { localizedPath } from '@/lib/i18n/localized-path';
 import { hreflangPath } from '@/lib/i18n/hreflang';
@@ -20,6 +43,25 @@ import {
   type AssistantPlannerPark,
 } from '@/lib/assistant/actions';
 
+/** `HH:MM` as park-local minutes; the action check has already read the shape. */
+const minuteOf = (clock: string) => Number(clock.slice(0, 2)) * 60 + Number(clock.slice(3));
+
+/**
+ * The planner's share row: the bell's popover in the panel, which holds the share link while push
+ * is on and the switch that turns it on otherwise. Opened, never pressed: sharing stays the
+ * visitor's tap.
+ */
+function revealShare(): void {
+  window.setTimeout(() => {
+    const trigger = document.querySelector<HTMLElement>('[data-planner-push-trigger]');
+    if (trigger) trigger.click();
+    else
+      document
+        .querySelector('[data-planner-share], [data-planner-push]')
+        ?.scrollIntoView({ block: 'center', behavior: 'smooth' });
+  }, 400);
+}
+
 /**
  * Carries out what Parky asked for, through the site's own paths: the router for a page,
  * next-intl's router for the same page in another language, the planner's store and its open and
@@ -30,10 +72,11 @@ export function useAssistantActions(closeWindow: () => void) {
   const router = useRouter();
   const localeRouter = useLocaleRouter();
   const locale = useLocale();
-  const { addRide, addCustom } = usePlanner();
+  const queryClient = useQueryClient();
+  const { addRide, addCustom, addShow } = usePlanner();
 
   return useCallback(
-    (action: AssistantAction): AssistantActionChip | null => {
+    async (action: AssistantAction): Promise<AssistantActionChip | null> => {
       const stepAside = () => {
         if (window.matchMedia(ASSISTANT_PHONE_QUERY).matches) closeWindow();
       };
@@ -50,6 +93,29 @@ export function useAssistantActions(closeWindow: () => void) {
         date,
       });
 
+      /**
+       * One change to a day in one store write, with the day as it was kept for `planner_undo`; a
+       * change that changes nothing (ids not in the plan) keeps the earlier undo and shows no chip.
+       */
+      const edit = (
+        park: AssistantPlannerPark,
+        date: string,
+        recipe: (state: PlannerState) => PlannerState
+      ): AssistantActionChip | null => {
+        let changed = false;
+        plannerStore.update((state) => {
+          const next = recipe(state);
+          changed = next !== state;
+          if (changed) rememberDayForUndo(state, park.slug, date);
+          return next;
+        });
+        showDay(park, date);
+        return changed ? 'planned' : null;
+      };
+      /** Before an add through `usePlanner`, which always changes the day. */
+      const rememberDay = (park: AssistantPlannerPark, date: string) =>
+        rememberDayForUndo(plannerStore.getSnapshot(), park.slug, date);
+
       switch (action.type) {
         case 'navigate': {
           const path = safeAssistantHref(action.path);
@@ -62,6 +128,7 @@ export function useAssistantActions(closeWindow: () => void) {
           showDay(action.park, action.date);
           return 'planned';
         case 'planner_add_rides':
+          if (action.rides.length > 0) rememberDay(action.park, action.date);
           plannerStore.update((state) => openDay(state, action.park, action.date));
           for (const ride of action.rides) {
             addRide(
@@ -76,6 +143,7 @@ export function useAssistantActions(closeWindow: () => void) {
           showDay(action.park, action.date);
           return 'planned';
         case 'planner_add_block':
+          rememberDay(action.park, action.date);
           plannerStore.update((state) => openDay(state, action.park, action.date));
           addCustom(
             {
@@ -90,9 +158,132 @@ export function useAssistantActions(closeWindow: () => void) {
           showDay(action.park, action.date);
           return 'planned';
         case 'planner_optimize':
+          rememberDay(action.park, action.date);
           showDay(action.park, action.date);
           plannerUi.requestOptimize(action.park.slug, action.date, action.mode);
           return 'optimized';
+        case 'planner_remove':
+          return edit(action.park, action.date, (state) =>
+            action.entryIds.reduce(
+              (s, id) => removeEntry(s, action.park.slug, action.date, id),
+              state
+            )
+          );
+        case 'planner_move':
+          return edit(action.park, action.date, (state) =>
+            moveEntryToIndex(state, action.park.slug, action.date, action.entryId, action.toIndex)
+          );
+        case 'planner_update_block': {
+          const { park, date, entryId, label, start, durationMinutes } = action;
+          return edit(park, date, (state) => {
+            const block = entriesFor(state, park.slug, date).find((e) => e.id === entryId);
+            // A free block only: a show's time and length are the performance's.
+            if (!block?.custom || block.showSlug) return state;
+            const relabelled = setCustomBlock(state, park.slug, date, entryId, {
+              ...(label !== undefined ? { label } : {}),
+              ...(durationMinutes !== undefined ? { durationMinutes } : {}),
+            });
+            return start === undefined
+              ? relabelled
+              : moveEntry(relabelled, park.slug, date, entryId, minuteOf(start));
+          });
+        }
+        case 'planner_add_show': {
+          const { park, date, showSlug, start } = action;
+          // The performance as the planner's own show picker lists it, or nothing.
+          const day = await queryClient
+            .fetchQuery(planDayQuery({ ...park.geo, parkSlug: park.slug, date }))
+            .catch(() => null);
+          const line = day
+            ? showLinesFor(
+                day.shows,
+                showDayHours(day.context.openHour, day.context.closeHour)
+              ).find((l) => l.slug === showSlug && formatGridTime(l.minute) === start)
+            : undefined;
+          if (!line) return null;
+          const planned = entriesFor(plannerStore.getSnapshot(), park.slug, date);
+          if (planned.some((e) => e.showSlug === showSlug && e.startMinute === line.minute)) {
+            showDay(park, date);
+            return null;
+          }
+          rememberDay(park, date);
+          addShow(
+            {
+              ...base(park, date),
+              showSlug,
+              showName: line.name,
+              startMinute: line.minute,
+            },
+            'assistant'
+          );
+          showDay(park, date);
+          return 'planned';
+        }
+        case 'planner_set_prefs':
+          return edit(action.park, action.date, (state) => {
+            const opened = openDay(state, action.park, action.date);
+            const next = setDayPrefs(opened, action.park.slug, action.date, action.prefs);
+            return next === opened ? state : next;
+          });
+        case 'planner_mark_done':
+          return edit(action.park, action.date, (state) =>
+            action.entryIds.reduce((s, id) => {
+              const entry = entriesFor(s, action.park.slug, action.date).find((e) => e.id === id);
+              return !entry || !!entry.done === action.done
+                ? s
+                : setEntryDone(s, action.park.slug, action.date, id, action.done);
+            }, state)
+          );
+        case 'planner_clear_day': {
+          const chip = edit(action.park, action.date, (state) =>
+            entriesFor(state, action.park.slug, action.date).length > 0 ||
+            state.parks[action.park.slug]?.days[action.date]?.reserved
+              ? clearDay(state, action.park.slug, action.date)
+              : state
+          );
+          if (chip) trackPlannerDayCleared(action.park.slug);
+          return chip;
+        }
+        case 'planner_reserve_days': {
+          const before = plannerStore.getSnapshot();
+          plannerStore.update((state) =>
+            reserveDays(
+              state,
+              action.dates.map((date) => ({ park: action.park, date }))
+            )
+          );
+          const after = plannerStore.getSnapshot();
+          if (after === before) return null;
+          for (const date of action.dates) {
+            if (
+              after.parks[action.park.slug]?.days[date] !==
+              before.parks[action.park.slug]?.days[date]
+            ) {
+              rememberDayForUndo(before, action.park.slug, date);
+            }
+          }
+          showDay(action.park, action.dates[0]);
+          return 'planned';
+        }
+        case 'planner_undo': {
+          if (!hasParkyUndo(action.park.slug, action.date)) return null;
+          plannerStore.update((state) => undoParkyChange(state, action.park, action.date));
+          showDay(action.park, action.date);
+          return 'planned';
+        }
+        case 'planner_share': {
+          const state = plannerStore.getSnapshot();
+          if (!hasAnyPlan(state)) return null;
+          // The bell is drawn only over a day with entries, so the panel opens on one.
+          if (entriesFor(state, state.activeParkSlug, state.activeDate).length === 0) {
+            const next = assistantPlannerSnapshot(state)?.days.find((d) => d.entries.length > 0);
+            if (next) plannerStore.update((s) => setActive(s, next.park.slug, next.date));
+          }
+          plannerUi.requestOpen('assistant');
+          stepAside();
+          revealShare();
+          return 'planned';
+        }
         case 'switch_locale': {
           if (action.locale === locale) return null;
           const path = localeSwitchPath(
@@ -113,6 +304,6 @@ export function useAssistantActions(closeWindow: () => void) {
           return null;
       }
     },
-    [router, localeRouter, locale, addRide, addCustom, closeWindow]
+    [router, localeRouter, locale, addRide, addCustom, addShow, queryClient, closeWindow]
   );
 }

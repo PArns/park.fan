@@ -84,17 +84,41 @@ checks it again, hands on a page or a card's links as the path it checked, and b
 switch and the feedback chip anew, so nothing else rides along. `useAssistantActions` carries it out
 through the site's own paths:
 
-| Action              | What the widget does                                                       | Chip        |
-| ------------------- | -------------------------------------------------------------------------- | ----------- |
-| `card`              | draws a park or ride card with `ParkStatusBadge` and `CrowdLevelBadge`     |             |
-| `navigate`          | `router.push` to the park.fan path in the reader's locale                  | Seite       |
-| `planner_open_day`  | `openDay` in the planner store, `plannerUi.requestOpen('assistant')`       | Tagesplaner |
-| `planner_add_rides` | `addRide(…, 'assistant')` per ride, then opens the day                     | Tagesplaner |
-| `planner_add_block` | `addCustom(…, 'assistant')`, then opens the day                            | Tagesplaner |
-| `planner_optimize`  | opens the day and `plannerUi.requestOptimize`: the day's optimise row runs | sortiert    |
-| `request_location`  | shows the share card under the answer                                      |             |
-| `switch_locale`     | once the answer is complete, the same page in that language, window open   | Sprache     |
-| `feedback_sent`     | nothing; the API stored the visitor's feedback                             | Team        |
+| Action                 | What the widget does                                                       | Chip        |
+| ---------------------- | -------------------------------------------------------------------------- | ----------- |
+| `card`                 | draws a park or ride card with `ParkStatusBadge` and `CrowdLevelBadge`     |             |
+| `navigate`             | `router.push` to the park.fan path in the reader's locale                  | Seite       |
+| `planner_open_day`     | `openDay` in the planner store, `plannerUi.requestOpen('assistant')`       | Tagesplaner |
+| `planner_add_rides`    | `addRide(…, 'assistant')` per ride, then opens the day                     | Tagesplaner |
+| `planner_add_block`    | `addCustom(…, 'assistant')`, then opens the day                            | Tagesplaner |
+| `planner_optimize`     | opens the day and `plannerUi.requestOptimize`: the day's optimise row runs | sortiert    |
+| `planner_remove`       | `removeEntry` per id, then opens the day                                   | Tagesplaner |
+| `planner_move`         | `moveEntryToIndex`: the day's start minutes taken in the new order         | Tagesplaner |
+| `planner_update_block` | `setCustomBlock`, and `moveEntry` for a new start; free blocks only        | Tagesplaner |
+| `planner_add_show`     | `addShow(…, 'assistant')` for a showtime the day's `/plan/day` lists       | Tagesplaner |
+| `planner_set_prefs`    | `setDayPrefs` (height, water rides, early entry)                           | Tagesplaner |
+| `planner_mark_done`    | `setEntryDone` per id                                                      | Tagesplaner |
+| `planner_clear_day`    | `clearDay`, undoable through `planner_undo`                                | Tagesplaner |
+| `planner_reserve_days` | `reserveDays` for the park, opens the first                                | Tagesplaner |
+| `planner_undo`         | puts the day back as it was before Parky's last change to it               | Tagesplaner |
+| `planner_share`        | opens the panel and the bell's popover with the share link; never shares   | Tagesplaner |
+| `request_location`     | shows the share card under the answer                                      |             |
+| `switch_locale`        | once the answer is complete, the same page in that language, window open   | Sprache     |
+| `feedback_sent`        | nothing; the API stored the visitor's feedback                             | Team        |
+
+Every planner change keeps the day as it was before (`rememberDayForUndo`,
+`lib/assistant/planner-context.ts`), one level per park and day for the tab, which `planner_undo`
+puts back with `restoreDay`, preferences and reservation included; a day that did not exist is
+dropped again. An entry id that is not in the plan changes nothing, and a change that changes
+nothing shows no chip and keeps the earlier undo. A show is added only at a time the planner's own
+show picker would list (`showLinesFor` over the day's `/plan/day`).
+
+Parky sees the plan through the `planner` field every question carries
+(`assistantPlannerSnapshot`): the planned days (`isPlannedDay`) from today on in each park's own
+date, nearest first, at most 6, each with at most 40 entries in plan order, the start the planner
+prints on the block (`formatGridTime`), a block's or show's length and the tick; the day's
+preferences, and the active park and day. With nothing planned the field is left out. The API
+answers with the next turn, so Parky reads what its last action did from that plan.
 
 `plannerUi.requestOptimize` is held until the day's `PlannerOptimizeActions` is on screen with its
 data, which then presses its own button (`RunOnce`), fit assistant and undo included. On a phone
@@ -414,3 +438,8 @@ late frame, a briskly turned wheel or one turned bit by bit, the scrollbar pulle
 bar, a jump and a scripted scroll do not; a hard flick, a wheel rolled hard, the scrollbar pulled
 quickly and a held key do, the same distance by wheel and not by finger, and once he has let go the
 same throw again or the other way throws him at once.
+
+`pnpm test:assistant-context` covers what the browser tells Parky and lets him change: the plan
+snapshot (from today on, nearest first, the caps, the printed starts, nothing when empty), the
+reorder, Parky's undo, and the checks of every planner edit (ids that are no ids dropped, an
+optional field that fails left out, nothing riding along).
