@@ -16,7 +16,12 @@ import assert from 'node:assert/strict';
 import { readSse } from '@/lib/assistant/sse.ts';
 import { directionsHref, safeAssistantHref } from '@/lib/assistant/links.ts';
 import { assistantVisible } from '@/lib/assistant/config.ts';
-import { postPlainText, POST_TEXT_LIMIT } from '@/lib/assistant/post-text.ts';
+import {
+  postPlainText,
+  postSections,
+  postTextForQuery,
+  POST_TEXT_LIMIT,
+} from '@/lib/assistant/post-text.ts';
 import { readAssistantAction } from '@/lib/assistant/actions.ts';
 import { localeSwitchPath } from '@/lib/assistant/switch-locale.ts';
 import { reopenAfterSwitch, takeReopen } from '@/lib/assistant/open.ts';
@@ -180,6 +185,123 @@ check(
 const long = postPlainText(`${'a'.repeat(6000)}\n\n${'b'.repeat(6000)}`);
 check(long.shortened, true, 'marks a cut text');
 check(long.text.length <= POST_TEXT_LIMIT, true, 'cuts at the limit');
+
+const guide = [
+  'Intro about the park.',
+  '## Getting there',
+  'Take the [train](/x) from Cologne.',
+  '```md\n## not a heading\n```',
+  '### Parking',
+  'Parking costs **ten** euros.',
+  '## Food',
+  `${'Restaurants serve schnitzel. '.repeat(150)}`,
+  '## Best days to visit',
+  `Tuesdays are quiet. ${'Crowds vary. '.repeat(300)}`,
+].join('\n\n');
+check(
+  postSections(guide).sections.map((section) => section.heading),
+  ['Getting there', 'Parking', 'Food', 'Best days to visit'],
+  'splits at H2 and H3, not inside code'
+);
+check(postSections(guide).intro, 'Intro about the park.', 'keeps the intro apart');
+check(
+  postSections(guide).sections[0].body,
+  'Take the train from Cologne.',
+  'plain-texts each section'
+);
+const parking = postTextForQuery(guide, 'what does parking cost?');
+check(parking.text.startsWith('Intro about the park.\n\nGetting there'), true, 'intro first');
+check(parking.text.includes('Parking costs ten euros.'), true, 'keeps the matching section');
+check(parking.omitted, [], 'leaves nothing out of a short post');
+const big = [
+  'Intro.',
+  ...['Arrival', 'Food', 'Hotels', 'Rides', 'Shows', 'Tickets'].map(
+    (heading) => `## ${heading}\n\n${`${heading} text here. `.repeat(100)}`
+  ),
+  '## Quiet days',
+  'Tuesdays in May are the quietest.',
+].join('\n\n');
+const quiet = postTextForQuery(big, 'Which days are quiet?');
+check(
+  quiet.text.includes('Tuesdays in May are the quietest.'),
+  true,
+  'reaches the end of a long post'
+);
+check(quiet.text.length <= POST_TEXT_LIMIT, true, 'stays within the limit');
+check(quiet.omitted.length > 0 && quiet.shortened, true, 'names what it left out');
+check(quiet.sections.length, 7, 'lists every heading');
+check(
+  quiet.text.indexOf('Arrival') < quiet.text.indexOf('Quiet days'),
+  true,
+  "keeps the post's order"
+);
+check(
+  postTextForQuery(big, 'hotels').omitted.includes('Hotels'),
+  false,
+  'a heading hit wins its section a place'
+);
+const filler = (heading) => `## ${heading}\n\n${`${heading} Text hier. `.repeat(150)}`;
+const leer = postTextForQuery(
+  [
+    'Einleitung.',
+    filler('Anreise'),
+    filler('Essen'),
+    '## Wann der Europa-Park am leersten ist',
+    'Es hängt vom Kalender ab.',
+    '### Der Wochentag',
+    'Dienstag und Mittwoch sind ruhig.',
+    '### Der Monat',
+    'Im Mai ist wenig los.',
+    '### Welche Ferien den Park füllen',
+    'Sommerferien. '.repeat(250),
+    '### Der Brückentag',
+    'Freitag. '.repeat(450),
+    filler('Hotels'),
+    filler('Shows'),
+    '## Häufige Fragen',
+    '### Wann ist im Europa-Park am wenigsten los?',
+    `Unter der Woche im Mai. ${'Mehr dazu oben. '.repeat(100)}`,
+  ].join('\n\n'),
+  'Wann ist Europa-Park am leersten?'
+);
+check(
+  leer.omitted.includes('Wann ist im Europa-Park am wenigsten los?'),
+  false,
+  'a matching FAQ entry beats the H3s of a winning H2 that do not match'
+);
+check(leer.omitted.includes('Der Brückentag'), true, 'those H3s fill only the room left');
+check(
+  ['Der Wochentag', 'Der Monat'].filter((heading) => leer.omitted.includes(heading)),
+  [],
+  'a winning H2 brings its H3s'
+);
+check(
+  leer.text.indexOf('Wann der') < leer.text.indexOf('Dienstag') &&
+    leer.text.indexOf('Dienstag') < leer.text.indexOf('Im Mai'),
+  true,
+  'keeps the H3s in order under their H2'
+);
+const h3Alone = postTextForQuery(
+  [
+    'Intro.',
+    filler('Arrival'),
+    '## Tickets',
+    `${'Prices change every season. '.repeat(320)}`,
+    '### VIP tour',
+    `The VIP tour skips every queue. ${'It starts at the gate. '.repeat(400)}`,
+    filler('Food'),
+    filler('Hotels'),
+  ].join('\n\n'),
+  'Can I book VIP?'
+);
+// Only the best section is cut to fit, so the long H3 is in only when "VIP" counted.
+check(
+  h3Alone.text.includes('The VIP tour skips every queue.'),
+  true,
+  'keeps a short word written in capitals'
+);
+check(h3Alone.text.includes('Tickets\n\nVIP tour'), true, 'a winning H3 keeps its H2 heading line');
+check(h3Alone.omitted.includes('Tickets'), true, 'names the H2 whose text it left out');
 
 const park = {
   slug: 'phantasialand',

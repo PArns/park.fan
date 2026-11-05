@@ -151,7 +151,10 @@ Where Parky stands while his chat window is shut: in his corner, or in a slot on
 ### [`post-text.ts`](../../lib/assistant/post-text.ts)
 
 - `postPlainText` _function_: A post's Markdown as plain text for the chat assistant: code, images, embeds, HTML and table rules removed, links reduced to their text, cut at a paragraph near `POST_TEXT_LIMIT`.
+- `postSections` _function_: A post split at its H2 and H3 headings, each part plain text: `intro` is what stands before the first one. Code blocks go first, so a `## ` inside one is not taken for a heading.
+- `postTextForQuery` _function_: A post's text for one question: the intro plus the sections that answer `query` best, in the post's order, within `POST_TEXT_LIMIT`.
 - `POST_TEXT_LIMIT` _const_: About 2,500 tokens: enough to answer from a post, cheap enough per question.
+- Types: `PostSection`
 
 ### [`reactions.ts`](../../lib/assistant/reactions.ts)
 
