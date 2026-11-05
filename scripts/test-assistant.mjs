@@ -237,6 +237,56 @@ check(
   false,
   'a heading hit wins its section a place'
 );
+const filler = (heading) => `## ${heading}\n\n${`${heading} Text hier. `.repeat(150)}`;
+const leer = postTextForQuery(
+  [
+    'Einleitung.',
+    filler('Anreise'),
+    filler('Essen'),
+    '## Wann der Europa-Park am leersten ist',
+    'Es hängt vom Kalender ab.',
+    '### Der Wochentag',
+    'Dienstag und Mittwoch sind ruhig.',
+    '### Der Monat',
+    'Im Mai ist wenig los.',
+    filler('Hotels'),
+    filler('Shows'),
+    filler('Tickets'),
+  ].join('\n\n'),
+  'Wann ist Europa-Park am leersten?'
+);
+check(
+  ['Der Wochentag', 'Der Monat'].filter((heading) => leer.omitted.includes(heading)),
+  [],
+  'a winning H2 brings its H3s'
+);
+check(
+  leer.text.indexOf('Wann der') < leer.text.indexOf('Dienstag') &&
+    leer.text.indexOf('Dienstag') < leer.text.indexOf('Im Mai'),
+  true,
+  'keeps the H3s in order under their H2'
+);
+const h3Alone = postTextForQuery(
+  [
+    'Intro.',
+    filler('Arrival'),
+    '## Tickets',
+    `${'Prices change every season. '.repeat(320)}`,
+    '### VIP tour',
+    `The VIP tour skips every queue. ${'It starts at the gate. '.repeat(400)}`,
+    filler('Food'),
+    filler('Hotels'),
+  ].join('\n\n'),
+  'Can I book VIP?'
+);
+// Only the best section is cut to fit, so the long H3 is in only when "VIP" counted.
+check(
+  h3Alone.text.includes('The VIP tour skips every queue.'),
+  true,
+  'keeps a short word written in capitals'
+);
+check(h3Alone.text.includes('Tickets\n\nVIP tour'), true, 'a winning H3 keeps its H2 heading line');
+check(h3Alone.omitted.includes('Tickets'), true, 'names the H2 whose text it left out');
 
 const park = {
   slug: 'phantasialand',

@@ -27,9 +27,10 @@ past that limit, so the API passes the visitor's question as `q` (at most 200 ch
 then holds the intro and the sections that answer it best, in the post's order, and `omitted` names
 the headings left out. A section scores with the site search's word matching: a hit in its heading
 counts four times one in its body, a word found in few sections counts more than one found in most,
-and words under four letters drop out, as a stand-in for stop words (`postTextForQuery` in
-`lib/assistant/post-text.ts`). Both routes are
-CDN-cached per URL.
+and words under four letters drop out as a stand-in for stop words, unless the question writes them
+as a name ("VIP", or "Zoo" inside a sentence). An H2 that is taken brings its H3s along as far as
+they fit, and an H3 taken alone keeps its H2's heading line above it (`postTextForQuery` in
+`lib/assistant/post-text.ts`). Both routes are CDN-cached per URL.
 
 The browser sends one question at a time with the chat's id. The history stays on the API, so
 nobody can hand Parky made-up earlier answers.
