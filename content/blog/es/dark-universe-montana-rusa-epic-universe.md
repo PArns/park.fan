@@ -24,7 +24,7 @@ rideLinks:
 seo:
   title: 'Epic Universe Orlando suma una montaña rusa en Dark Universe'
   description: >-
-    Universal construye en Dark Universe, en Epic Universe, una montaña rusa cubierta junto a Monsters Unchained. Las obras ya empezaron; año de apertura aún no hay.
+    Universal construye en Dark Universe, en Epic Universe, una montaña rusa cubierta junto a Monsters Unchained. Las obras ya empezaron, sin año de apertura.
   keywords:
     - Epic Universe
     - Epic Universe Orlando
