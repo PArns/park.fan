@@ -46,6 +46,7 @@ The frontend side of each API surface; the contract itself is linked from each p
 
 - [admin](features/admin.md) — The /admin app: shape, UI kit, session auth and Turnstile, login, curated editors, field capture, ML pages
 - [assistant](features/assistant.md) — Parky, the chat assistant bottom right: what runs on the API, rollout gate, `?assistant=on`, safe rendering of answers
+- [parky-character](features/parky-character.md) — who Parky is, what he loves and can't stand, how he reacts to the page; chat, lines and drawing are measured against it
 - [attraction-filter-panel](features/attraction-filter-panel.md) — Park page attraction filter panel: layout, phone sheet, pills, rider-height slider, filter composition
 - [blog-cover-fallback](features/blog-cover-fallback.md) — BlogCoverFallback for coverless posts: every slot it renders in, `mark` placement, CSS-only, per-slug hue
 - [blog-editor](features/blog-editor.md) — The admin blog editor: what it edits, save as draft PR, translate route and its env, known data-loss limits
