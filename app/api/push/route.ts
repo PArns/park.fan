@@ -1,32 +1,12 @@
-import { NextResponse } from 'next/server';
-import { getApiBaseUrl, getServerApiHeaders } from '@/lib/api/client';
+import type { NextRequest } from 'next/server';
+import { PUSH_UNREACHABLE, relayToApi } from '@/lib/api/relay';
 
 /**
  * Whether push works and the key to subscribe with, asked before the browser offers the control,
- * so a deploy without a VAPID keypair shows no switch that does nothing. `no-store`, or a cached
- * `available: false` would hide the control after push is switched on.
+ * so a deploy without a VAPID keypair shows no switch that does nothing. Relayed with its status, as
+ * a direct call to the API would answer: a failed probe must not read as `available: false`, which
+ * the bell reports as "not configured" instead of "try again".
  */
-export async function GET() {
-  try {
-    const response = await fetch(`${getApiBaseUrl()}/v1/push`, {
-      headers: { 'Content-Type': 'application/json', ...getServerApiHeaders() },
-      cache: 'no-store',
-    });
-    if (!response.ok) {
-      // A deploy whose API does not know this route yet is not an error worth
-      // showing anybody: it means push is unavailable, which is the answer.
-      return NextResponse.json(
-        { available: false, topics: [] },
-        { headers: { 'Cache-Control': 'no-store' } }
-      );
-    }
-    return NextResponse.json(await response.json(), {
-      headers: { 'Cache-Control': 'no-store' },
-    });
-  } catch {
-    return NextResponse.json(
-      { available: false, topics: [] },
-      { headers: { 'Cache-Control': 'no-store' } }
-    );
-  }
+export function GET(request: NextRequest) {
+  return relayToApi(request, '/v1/push', { unreachable: PUSH_UNREACHABLE });
 }

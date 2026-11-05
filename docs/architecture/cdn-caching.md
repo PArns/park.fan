@@ -200,7 +200,11 @@ Purge by hostname is on every Cloudflare plan; the Free plan allows 5 such reque
    only until the next deploy.
 4. Redeploy, so the variables reach a deployment; its promote is the first run.
 
-**Checking it.** The webhook's delivery log in Vercel shows Cloudflare's answer (`"success": true`).
+**Checking it.** Every successful purge writes one line to the function's runtime log,
+`Cloudflare purge_cache ok: host park.fan, deployment <id>`; a failed one logs Cloudflare's status
+and errors. That a real promote produces the success line has not been checked yet: look for it in
+the runtime logs after the next production promote. The webhook's delivery log in Vercel shows
+Cloudflare's answer (`"success": true`).
 A cached URL then answers `MISS` once (`EXPIRED` with Tiered Cache) and `HIT` after, with an `age`
 that starts at the purge and a `data-dpl-id` in the HTML naming the new deployment. A 403 challenge
 page in the delivery log means the WAF stopped Vercel's request.

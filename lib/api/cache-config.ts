@@ -4,8 +4,8 @@
  * so a window is named here or in its helper's default and never typed at a call site
  * (docs/rules/a-revalidate-at-a-call-site-is-somebody-elses-page.md).
  *
- * Some entries are read by no fetch: live reads are `no-store`, and the park, attraction, calendar
- * and popular-parks fetches name their own windows in `lib/api/parks.ts` and
+ * Some entries are read by no fetch: live reads are `no-store`, and the park, attraction and
+ * calendar fetches name their own windows in `lib/api/parks.ts` and
  * `lib/api/integrated-calendar.ts`. Grep `CACHE_TTL.<key>` before trusting one.
  */
 export const CACHE_TTL = {
@@ -48,7 +48,9 @@ export const CACHE_TTL = {
   continents: 604800, // same as geo
   // Top parks and best months of a country move daily, not weekly, so it does not ride on `geo`.
   countrySummary: 86400,
-  parks: 300, // read by no fetch: `getPopularParks` names its own 30 min
+  parks: 300, // read by no fetch
+  // `getPopularParks`, the API's request ranking, which drifts over days.
+  popularParks: 1800,
   // The MCP server's live park read. One agent polls it every three minutes; the backend refreshes
   // wait times on a five-minute cycle, so a shared five-minute copy answers the same numbers
   // without a parse of the full park per call. A status flip still busts it via `parkCacheTag`.

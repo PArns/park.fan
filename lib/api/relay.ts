@@ -66,7 +66,8 @@ export async function relayJsonWrite(
   return relayToApi(request, apiPath, { ...init, body });
 }
 
-const PUSH_UNREACHABLE = 'Push service unreachable';
+/** The error every push relay's 502 carries when the backend cannot be reached. */
+export const PUSH_UNREACHABLE = 'Push service unreachable';
 
 /** Relays `GET <apiPath>?endpoint=…`, the „this browser's own rows" read of alerts and follows. */
 export async function relayPushGet(request: NextRequest, apiPath: string): Promise<NextResponse> {
