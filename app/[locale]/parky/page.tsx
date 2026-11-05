@@ -35,7 +35,7 @@ import {
   SectionShell,
 } from '@/components/marketing/editorial-ui';
 import type { ParkyAct } from '@/components/assistant/parky-logo';
-import { AskParkyButton, ParkyFigure, ParkyStage } from './_parky-ui';
+import { AskParkyButton, ParkyFigure, ParkyLookPicker, ParkyStage } from './_parky-ui';
 import { ShotRow } from '@/components/marketing/shot-row';
 
 /** The photo behind the hero: the only park background wide enough for a full-bleed head. */
@@ -281,6 +281,7 @@ export default async function ParkyPage({ params }: ParkyPageProps) {
         >
           <P>{t('chapters.character.body')}</P>
           <ParkyStage tiles={tiles} more={t('gallery.more')} />
+          <ParkyLookPicker labels={t.raw('looks')} />
         </SectionShell>
 
         <SectionShell

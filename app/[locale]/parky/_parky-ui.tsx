@@ -11,6 +11,15 @@ import {
   type ParkyAct,
   type ParkyCue,
 } from '@/components/assistant/parky-logo';
+import {
+  SEASONS,
+  showyPool,
+  WEATHER_ACT,
+  WEATHERS,
+  type ParkySeason,
+  type ParkyWeather,
+} from '@/lib/assistant/parky-look';
+import { previewParkyLook, useParkyLook } from '@/lib/assistant/use-parky-look';
 
 /**
  * Whether Parky shows here, inviting this visitor first: Parky's own page shows Parky to everybody
@@ -59,17 +68,22 @@ export function ParkyFigure({ className }: { className?: string }) {
 const TILE_PAUSE_MS = 2_400;
 
 /**
- * One act on a loop, played while the tile is on screen. The tile clips what a ride takes out of
- * it: the launch runs up out of the top, the airtime hills off to the left and back in.
+ * Acts on a loop, one after another, played while `tile` is on screen; the cue to hand Parky.
+ * Nothing plays under reduced motion.
  */
-function StageTile({ act, label, delay }: { act: ParkyAct; label: string; delay: number }) {
-  const [tile, setTile] = useState<HTMLElement | null>(null);
+function useActLoop(tile: HTMLElement | null, acts: readonly ParkyAct[], delay: number) {
   const [cue, setCue] = useState<ParkyCue | null>(null);
+  const key = acts.join(' ');
   useEffect(() => {
-    if (!tile || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const queue = key ? (key.split(' ') as ParkyAct[]) : [];
+    if (!tile || !queue.length || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      return;
+    }
     let timer: ReturnType<typeof setTimeout> | undefined;
+    let turn = 0;
     const run = (wait: number) => {
       timer = setTimeout(() => {
+        const act = queue[turn++ % queue.length];
         setCue((last) => ({ act, id: (last?.id ?? 0) + 1 }));
         run(actLength(act) + TILE_PAUSE_MS);
       }, wait);
@@ -83,7 +97,17 @@ function StageTile({ act, label, delay }: { act: ParkyAct; label: string; delay:
       observer.disconnect();
       clearTimeout(timer);
     };
-  }, [tile, act, delay]);
+  }, [tile, key, delay]);
+  return cue;
+}
+
+/**
+ * One act on a loop, played while the tile is on screen. The tile clips what a ride takes out of
+ * it: the launch runs up out of the top, the airtime hills off to the left and back in.
+ */
+function StageTile({ act, label, delay }: { act: ParkyAct; label: string; delay: number }) {
+  const [tile, setTile] = useState<HTMLElement | null>(null);
+  const cue = useActLoop(tile, [act], delay);
   return (
     <figure
       ref={setTile}
@@ -125,6 +149,101 @@ export function ParkyStage({
           {more}
         </figcaption>
       </figure>
+    </div>
+  );
+}
+
+/** The preview's captions: its title, the two rows, and a name for each season and weather. */
+type LookLabels = Record<
+  'title' | 'season' | 'weather' | 'none' | ParkySeason | ParkyWeather,
+  string
+>;
+
+/** A row of outfits to pick from, one pressed. */
+function LookRow<T extends string>({
+  label,
+  none,
+  options,
+  labels,
+  picked,
+  onPick,
+}: {
+  label: string;
+  none: string;
+  options: readonly T[];
+  labels: Record<T, string>;
+  picked: T | null;
+  onPick: (option: T | null) => void;
+}) {
+  return (
+    <div role="group" aria-label={label} className="flex flex-wrap items-center gap-2">
+      <span className="text-muted-foreground mr-1 text-xs font-semibold tracking-widest uppercase">
+        {label}
+      </span>
+      {[null, ...options].map((option) => (
+        <button
+          key={option ?? 'none'}
+          type="button"
+          aria-pressed={picked === option}
+          onClick={() => onPick(option)}
+          className={cn(
+            'rounded-2xl border px-3.5 py-1.5 text-sm transition-colors motion-reduce:transition-none',
+            'focus-visible:ring-primary focus-visible:ring-2 focus-visible:outline-none',
+            picked === option
+              ? 'border-primary bg-primary text-primary-foreground'
+              : 'border-primary/30 bg-primary/10 text-foreground hover:bg-primary/20'
+          )}
+        >
+          {option ? labels[option] : none}
+        </button>
+      ))}
+    </div>
+  );
+}
+
+/**
+ * Parky's outfits to try on: a season and a weather, worn by every Parky on the page, with a Parky
+ * that plays the acts the picked look brings along. Leaving the page hands the look back to the
+ * calendar and the park's weather.
+ */
+export function ParkyLookPicker({ labels }: { labels: LookLabels }) {
+  const look = useParkyLook();
+  useEffect(() => () => previewParkyLook(null), []);
+  const [tile, setTile] = useState<HTMLElement | null>(null);
+  const acts = [
+    ...new Set<ParkyAct>([
+      ...showyPool([], look),
+      ...(look.weather ? [WEATHER_ACT[look.weather]] : []),
+    ]),
+  ];
+  const cue = useActLoop(tile, acts, 400);
+  return (
+    <div className="border-border/60 grid items-center gap-6 rounded-3xl border p-5 sm:grid-cols-[auto_1fr] sm:p-6">
+      <figure
+        ref={setTile}
+        className="from-primary/10 to-status-operating/10 relative mx-auto grid size-40 place-items-center rounded-3xl bg-gradient-to-b"
+      >
+        <ParkyLogo idle cue={cue} className="size-24" />
+      </figure>
+      <div className="space-y-4">
+        <p className="text-lg font-semibold">{labels.title}</p>
+        <LookRow
+          label={labels.season}
+          none={labels.none}
+          options={SEASONS}
+          labels={labels}
+          picked={look.season}
+          onPick={(season) => previewParkyLook({ ...look, season })}
+        />
+        <LookRow
+          label={labels.weather}
+          none={labels.none}
+          options={WEATHERS}
+          labels={labels}
+          picked={look.weather}
+          onPick={(weather) => previewParkyLook({ ...look, weather })}
+        />
+      </div>
     </div>
   );
 }

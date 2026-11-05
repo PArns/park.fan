@@ -48,6 +48,15 @@ by hand: change the comment in the code and re-run the script. -->
 - `actLength` _function_: How long an act runs with the one that follows it, for a page that plays acts in turn.
 - Types: `ParkyAct`, `ParkyCue`, `ParkyMood`
 
+### [`parky-looks.tsx`](../../components/assistant/parky-looks.tsx)
+
+- `ParkyLookHat` _component_: The season's hat, drawn in the Ferris wheel's place and, like it, behind the head.
+- `ParkyLookWear` _component_: The pieces Parky wears under his face, drawn right after the bubble: the scarf, the woolly hat's brim, the umbrella, the sweat of a hot day.
+- `ParkyLookFog` _component_: Fog drifting in front of Parky's lower half, below the mouth.
+- `ParkyLookBack` _component_: What stands behind Parky: the weather round him and the scenes of the acts that go beyond him (the ghost, the fireworks, the snowman). Drawn first, so every act and mood paints over it.
+- `ParkyLookHands` _component_: What Parky holds over his face during an act, drawn last in the body: the snow globe, the fan, the chattering teeth of a shiver.
+- `LOOK_GAZE` _const_: Where the pupils go during a scene: at the ghost, the fireworks, the snowman, the globe.
+
 ### [`use-assistant-actions.ts`](../../components/assistant/use-assistant-actions.ts)
 
 - `useAssistantActions` _hook_: Carries out what Parky asked for, through the site's own paths: the router for a page, next-intl's router for the same page in another language, the planner's store and its open and optimise signals for the plan, so every write is counted …

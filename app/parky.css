@@ -2026,3 +2026,319 @@
     animation: parky-sparkle var(--parky-enter) ease-out both;
   }
 }
+
+/*
+ * Parky's outfits (`components/assistant/parky-looks.tsx`): the season's hat in the wheel's place,
+ * the scarf, the umbrella, the weather round him, and the acts that come with them. Every piece
+ * stands finished without motion; the scenes only move with it.
+ */
+.parky-hat--dressed > :not(.parky-look-hat) {
+  display: none;
+}
+.parky-look-canopy,
+.parky-look-ghost,
+.parky-look-burst,
+.parky-look-flake,
+.parky-look-pompom,
+.parky-look-star,
+.parky-look-swirl {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+/* The fan swings from the hand; each snowball grows from where it rests on the one below, and the
+   snowman melts from his feet. */
+.parky-look-fan,
+.parky-look-build,
+.parky-look-snowman {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+}
+.parky-act-shiver .parky-smile {
+  opacity: 0;
+}
+@keyframes parky-look-drop {
+  0% {
+    opacity: 0;
+    transform: translateY(0);
+  }
+  15% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+}
+/* Under the umbrella a drop stops on the canopy and bounces off it, up and away from the middle. */
+@keyframes parky-look-bounce {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0);
+  }
+  15% {
+    opacity: 1;
+  }
+  60% {
+    opacity: 1;
+    transform: translate(0, 8px);
+  }
+  80% {
+    opacity: 0.8;
+    transform: translate(1.6px, 5px) scaleY(0.5);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(3px, 8px) scaleY(0.4);
+  }
+}
+@keyframes parky-look-flake {
+  0% {
+    opacity: 0;
+    transform: translate(0, -8px) rotate(0);
+  }
+  20%,
+  80% {
+    opacity: 1;
+  }
+  50% {
+    transform: translate(1.5px, 0) rotate(90deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-1px, 8px) rotate(180deg);
+  }
+}
+@keyframes parky-look-gust {
+  0% {
+    stroke-dashoffset: 1;
+  }
+  50% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: -1;
+  }
+}
+@keyframes parky-look-drift {
+  0%,
+  100% {
+    transform: translateX(-1.5px);
+  }
+  50% {
+    transform: translateX(1.5px);
+  }
+}
+@keyframes parky-look-flash {
+  0%,
+  40%,
+  52%,
+  100% {
+    opacity: 0;
+  }
+  44%,
+  48%,
+  56% {
+    opacity: 1;
+  }
+}
+@keyframes parky-look-sweat {
+  0%,
+  20% {
+    opacity: 0;
+    transform: translateY(-1px);
+  }
+  40% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+}
+@keyframes parky-look-bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-0.8px);
+  }
+}
+/* The ghost rises from behind Parky's shoulder, sways over his head and fades away. */
+@keyframes parky-look-ghost {
+  0% {
+    opacity: 0;
+    transform: translate(9px, 14px) scale(0.4);
+  }
+  25% {
+    opacity: 1;
+    transform: translate(0, 0) scale(1);
+  }
+  45% {
+    transform: translate(-2px, -1px) rotate(-8deg);
+  }
+  65% {
+    transform: translate(1px, -2px) rotate(6deg);
+  }
+  85% {
+    opacity: 1;
+    transform: translate(-1px, -3px) rotate(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-2px, -6px);
+  }
+}
+@keyframes parky-look-burst {
+  0% {
+    opacity: 0;
+    transform: scale(0.2);
+  }
+  10% {
+    opacity: 1;
+  }
+  45% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  70%,
+  100% {
+    opacity: 0;
+    transform: scale(1.15);
+  }
+}
+/* One snowball after another rolls in and settles; the act's last tenth melts the snowman. */
+@keyframes parky-look-build {
+  from {
+    opacity: 0;
+    transform: scale(0.2);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+@keyframes parky-look-melt {
+  0%,
+  86% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.3, 0.1);
+  }
+}
+/* Twirled, the canopy turns on its shaft: a flat shape turning shows as its width flipping. */
+@keyframes parky-look-twirl {
+  0%,
+  100% {
+    transform: scaleX(1);
+  }
+  25%,
+  75% {
+    transform: scaleX(-1);
+  }
+  50% {
+    transform: scaleX(1);
+  }
+}
+@keyframes parky-look-shake {
+  0%,
+  30%,
+  100% {
+    transform: rotate(0);
+  }
+  10% {
+    transform: rotate(-9deg);
+  }
+  20% {
+    transform: rotate(9deg);
+  }
+}
+@keyframes parky-look-swirl {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes parky-look-fan {
+  0%,
+  100% {
+    transform: rotate(-14deg);
+  }
+  50% {
+    transform: rotate(14deg);
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .parky-look-drop {
+    animation: parky-look-drop 1.4s linear infinite both;
+  }
+  .parky-look-rain--sheltered .parky-look-drop--canopy {
+    animation-name: parky-look-bounce;
+  }
+  .parky-look-flake {
+    animation: parky-look-flake 4.8s linear infinite both;
+  }
+  .parky-look-wind path {
+    stroke-dasharray: 1;
+    animation: parky-look-gust 2.6s ease-in-out infinite both;
+  }
+  .parky-look-fog path {
+    animation: parky-look-drift 6s ease-in-out infinite;
+  }
+  .parky-look-bolt {
+    animation: parky-look-flash 4s linear infinite;
+  }
+  .parky-look-sweat {
+    animation: parky-look-sweat 2.8s ease-in infinite;
+  }
+  .parky-look-sun {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: parky-spin 30s steps(120) infinite;
+  }
+  .parky-look-star,
+  .parky-look-pompom {
+    animation: parky-twinkle 3s ease-in-out infinite;
+  }
+  .parky-look-pompom {
+    animation-name: parky-look-bob;
+  }
+  .parky-look-ghost {
+    animation: parky-look-ghost var(--parky-act) ease-in-out both;
+  }
+  .parky-look-burst {
+    animation: parky-look-burst 1.6s ease-out both;
+  }
+  .parky-look-snowman {
+    animation: parky-look-melt var(--parky-act) ease-in both;
+  }
+  .parky-look-build {
+    animation: parky-look-build 0.5s cubic-bezier(0.3, 1.5, 0.6, 1) both;
+  }
+  .parky-act-brolly .parky-look-canopy {
+    animation: parky-look-twirl calc(var(--parky-act) / 2) ease-in-out 2;
+  }
+  .parky-act-brolly {
+    animation: parky-sway var(--parky-act) ease-in-out;
+  }
+  .parky-act-shiver {
+    animation: parky-tremble 0.12s linear infinite;
+  }
+  .parky-look-chatter path {
+    animation: parky-tremble 0.1s linear infinite;
+  }
+  .parky-look-globe {
+    animation: parky-look-shake var(--parky-act) ease-in-out;
+  }
+  .parky-look-swirl {
+    animation: parky-look-swirl 2.4s linear infinite;
+  }
+  .parky-look-fan {
+    animation: parky-look-fan 0.5s ease-in-out infinite;
+  }
+}

@@ -287,6 +287,48 @@ The store keeps one timer for the next stage, so a moving pointer costs a timest
 length is written once, in `ACT_MS`; the stylesheet reads it as `--parky-act`. Under reduced
 motion the store answers `null` and Parky only shows its moods.
 
+### Outfits
+
+Parky dresses for the time of year and, on a park's page, for the weather there
+(`lib/assistant/parky-look.ts`, drawn in `components/assistant/parky-looks.tsx`). Every Parky on
+the page reads the same look from `useParkyLook` (`lib/assistant/use-parky-look.ts`); the server
+answers none, so the prerendered page and the first paint agree.
+
+| Season (`seasonOn`, browser calendar)  | Hat in the wheel's place                      |
+| -------------------------------------- | --------------------------------------------- |
+| `halloween`, 1–31 October              | a jack-o'-lantern                             |
+| `christmas`, 1–26 December             | a little tree with baubles and a star on top  |
+| `newyear`, 31 December and 1 January   | a party hat with gold dots and a pompom       |
+| `winter`, 2 January to end of February | a red woolly hat with a white pompom, a scarf |
+
+The weather comes from the park's nowcast, which the page has already loaded: `useParkyWeather`
+reads it from React Query's cache with a disabled query, so it costs no request. `weatherLook`
+takes the most striking state: `storm` (WMO 95–99), `snow`, `rain` (drizzle included), `windy`
+(gusts from 50 km/h or wind from 35), `fog`, `hot` (from 28 °C), `cold` (below 5 °C). Rain and a
+storm put an umbrella in his right hand, beyond the wheel, with drops bouncing off it; a storm adds
+a cloud with a flashing bolt; snow falls as flakes; the cold and snow bring the scarf; wind blows
+gusts past him; fog drifts in front of his lower half, below the mouth; heat brings the sun and a
+drop of sweat. The pieces sit on their own anchors (hat, middle, right hand, around him), so a
+season and a weather combine and none reaches the eyes or the tree's star.
+
+The face works as without an outfit. Where an act and an outfit compete, one table decides
+(`SETS_ASIDE`, read by `outfitFor`): the nightcap and the lit wheel send the season's hat away for
+their length; a ride and the dizziness after it fold the umbrella, and so does anything in his
+hands (reading, the clipboard, the book of a lookup, the magnifying glass, the snow globe, the
+snowman, the fan). A new act that uses his hands gets a row there.
+
+While a context holds, `showyPool` adds tickets to the showy pool and never takes one away: at
+Halloween a little ghost rises behind him (`ghost`), at Christmas he shakes a snow globe
+(`snowglobe`), at New Year fireworks go off over his head (`fireworks`), in winter or in snow he
+builds a snowman beside him (`snowman`: three snowballs, coal eyes and buttons, the carrot nose
+last, a tiny Ferris wheel for a hat, then it melts), in rain he twirls the umbrella (`brolly`), in
+the cold he shivers with chattering teeth (`shiver`), in heat he fans himself (`fan`) and the
+sunglasses get two more tickets. A scene that reaches beyond him (the snowman to the left, the
+fireworks above) only plays where it fits on screen (`sceneFits`), as a ride does. Without motion
+every piece stands still and each scene shows finished.
+
+`?parky=` tries a look anywhere: a season, a weather or both (`?parky=christmas,rain`).
+
 ## In the homepage hero
 
 On the homepage from a 1024 px window Parky stands in the hero, bigger, beside a speech bubble that
@@ -338,6 +380,12 @@ its corner offset. These lines go in it, from the `assistant` namespace:
   the `/stats` the page loads anyway (through its React Query cache, so no request of its own),
   else its top attraction (`topCoaster`). The Konami code typed anywhere buys a free ride with its
   own line (`secretKonami`).
+- **The park's weather** (`useParkyWeather`): on a park's page with a weather look, once per park
+  per session (`weather:<park path>` in `countAnswer`) and 12 s after the page settles, never over
+  another line, Parky plays the weather's act (`WEATHER_ACT`) and says a `weather` line
+  (`weatherRain1`–`3`, `weatherStorm1`–`2`, `weatherSnow1`–`3`, `weatherCold1`–`3`,
+  `weatherWindy1`–`2`, `weatherFog1`–`2`, `weatherHot1`–`3`, with `{park}` and `{temp}` in the
+  visitor's unit). It counts against `REACTIONS_PER_SESSION` and stays away once lines are muted.
   With a fine pointer, the pointer resting on Parky's nose (between and just under the eyes) makes
   it squint at it, both pupils turned in; circling it fast, two turns inside 1.5 s, makes it dizzy
   (`useGaze` in `parky-logo.tsx`, the `dizzy` act through its own cue).
@@ -371,7 +419,9 @@ easter eggs included (`muteLines`).
 `/[locale]/parky` (`app/[locale]/parky/`) is a hub that shows what Parky does. Each of its three
 chapters pairs a screenshot of the real widget on a phone with a few questions somebody could ask:
 the wait times chat, a planned day, and Parky searching along. A stage plays five of Parky's acts
-on a loop while they are on screen, and a sixth tile keeps the rest a secret. After that come what
+on a loop while they are on screen, and a sixth tile keeps the rest a secret; below it a picker
+dresses every Parky on the page in a season and a weather (`ParkyLookPicker`, through
+`previewParkyLook`), with a Parky that plays the acts the look brings. After that come what
 happens to the questions, a FAQ and the next steps. The texts are in the `parkyPage` namespace,
 read on the server only.
 
@@ -393,7 +443,7 @@ Our own statistic (`trackSiteEvent`, labels in `lib/admin/site-analytics.ts`): `
 `assistant_opened` (with `source`: the button, a line, Parky's page, or `language` after his
 language switch), `assistant_line_shown`,
 `assistant_line_clicked` and `assistant_line_closed` (each with the line's kind as `line`: invitation,
-entrance, bored, woke, holiday, park, secret, or the answer's planner, plan, favourite, alert, theme
+entrance, bored, woke, holiday, park, secret, weather, or the answer's planner, plan, favourite, alert, theme
 or install), `assistant_closed` (questions while open), `assistant_question` (suggestion or typed, never the
 text), `assistant_answer` (result and number of lookups), `assistant_rated`,
 `assistant_feedback_sent` (whether with an e-mail, never the e-mail) and
@@ -414,3 +464,7 @@ late frame, a briskly turned wheel or one turned bit by bit, the scrollbar pulle
 bar, a jump and a scripted scroll do not; a hard flick, a wheel rolled hard, the scrollbar pulled
 quickly and a held key do, the same distance by wheel and not by finger, and once he has let go the
 same throw again or the other way throws him at once.
+
+`pnpm test:parky-look` covers the outfits: the seasons at their edges, the weather states and
+their order, what each kind of act puts aside, the showy pool only growing, where a scene fits,
+and the `?parky=` look switch.

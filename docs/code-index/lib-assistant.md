@@ -104,6 +104,25 @@ Where Parky stands while his chat window is shut: in his corner, or in a slot on
 - `PARKY_CORNER_ATTR` _const_: Marks the drawing in the corner button, where the hop starts and lands.
 - `PARKY_LANDED_EVENT` _const_: Sent on `window` when a hop has landed. Parky's eyes aimed at the pointer from wherever he was mid-air (the page scrolls under a still pointer while he flies), so they aim again from where he stands now.
 
+### [`parky-look.ts`](../../lib/assistant/parky-look.ts)
+
+- `seasonOn` _function_: The season a date falls in, in the browser's calendar: Halloween all October, Christmas 1 to 26 December, New Year 31 December and 1 January, winter from 2 January to the end of February.
+- `weatherLook` _function_: The look for the park's weather, the most striking state first: a storm, snow, rain, wind, fog, heat, cold; `null` for weather with nothing to dress for. The codes are grouped as the weather background groups them (`weatherCodeToScene`).
+- `outfitFor` _function_: The pieces of `look` drawn while `doing` (an act, a mood, `search`, or nothing) plays.
+- `showyPool` _function_: The showy pool for a look: every base act, plus the tickets its season and weather add.
+- `sceneFits` _function_: Whether an act's scene stays on screen for a drawing whose box starts `left` and `top` pixels into the viewport and is `width` pixels wide; an act without a scene always does.
+- `lookSwitch` _function_: A look asked for in `?parky=`, for trying the outfits out: a season, a weather, or both with a comma (`?parky=christmas,rain`). Whatever else the switch says is left to the other switches.
+- `SEASONS` _const_: The times of year Parky dresses for, in the order the preview lists them.
+- `WEATHERS` _const_: The park weather Parky dresses for, in the order the preview lists them.
+- `NO_LOOK` _const_: Parky in his everyday look, the wheel and nothing else; also the server's answer.
+- `HOT_FROM_C` _const_: From this many °C Parky finds it hot.
+- `COLD_BELOW_C` _const_: Below this many °C Parky finds it cold.
+- `WINDY_GUSTS_KMH` _const_: Gusts this strong, in km/h, count as windy.
+- `WINDY_KMH` _const_: A steady wind this strong, in km/h, counts as windy.
+- `LOOK_ACTS` _const_: The acts that belong to a season or the weather, drawn in `parky-looks.tsx`.
+- `WEATHER_ACT` _const_: The act Parky answers the park's weather with, beside its line.
+- Types: `ParkySeason`, `ParkyWeather`, `ParkyLook`, `WeatherReading`, `ParkyHat`, `ParkyOutfit`, `ParkyLookAct`
+
 ### [`parky-rides.ts`](../../lib/assistant/parky-rides.ts)
 
 - `isRide` _function_: Whether a name is one of Parky's rides.
@@ -168,6 +187,16 @@ Where Parky stands while his chat window is shut: in his corner, or in a slot on
 ### [`use-parky-boredom.ts`](../../lib/assistant/use-parky-boredom.ts)
 
 - `useParkyBoredom` _hook_: How bored Parky is, from the page-wide `parkyBoredom`; `null` while `enabled` is false, on the server and under reduced motion, so a disabled reader takes no subscription.
+
+### [`use-parky-look.ts`](../../lib/assistant/use-parky-look.ts)
+
+- `useParkyLook` _hook_: What every Parky on the page wears: the season from the browser's calendar and the park's weather on a park page, or what `?parky=` or the preview on Parky's page asks for.
+- `setParkyWeather` _function_: The park's weather look while a park page shows it (`useParkyWeather`), `null` elsewhere.
+- `previewParkyLook` _function_: A look picked on Parky's page, in place of the date's and the park's; `null` lets them back.
+
+### [`use-parky-weather.ts`](../../lib/assistant/use-parky-weather.ts)
+
+- `useParkyWeather` _hook_: Parky and the weather at the park whose page this is: he dresses for it while the page shows (`setParkyWeather`), and once a park per session, after the page has settled and never over another line, he plays a fitting act and says a …
 
 ### [`use-scroll-fling.ts`](../../lib/assistant/use-scroll-fling.ts)
 
