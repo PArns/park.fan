@@ -19,6 +19,11 @@ export interface EditorFrontmatter {
   seoDescription: string;
   seoKeywords: string[];
   translationKey: string;
+  /**
+   * The frontmatter as loaded, so the fields the form does not hold (`time`, `parkLinks`,
+   * `gallery`, `coverImage.caption`, `seo.canonical` …) are written back unchanged.
+   */
+  raw?: Record<string, unknown>;
 }
 
 /** Per-locale slice — each locale tab keeps its own frontmatter + body + slug. */
@@ -31,33 +36,44 @@ export interface LocaleDraft {
   slugTouched: boolean;
 }
 
-/** Convert the form state into the final blog frontmatter shape we serialise to YAML. */
+/** Sets `key` to `value`, or removes it when the value is empty, so a cleared field leaves the file. */
+function put(obj: Record<string, unknown>, key: string, value: string | string[] | undefined) {
+  if (value === undefined || value.length === 0) delete obj[key];
+  else obj[key] = value;
+}
+
+/**
+ * Convert the form state into the final blog frontmatter shape we serialise to YAML. Starts from
+ * the loaded frontmatter, so unknown fields and the key order survive a save.
+ */
 export function toFrontmatter(fm: EditorFrontmatter): BlogFrontmatter {
-  const out: BlogFrontmatter = {
-    title: fm.title.trim(),
-    date: fm.date,
-    author: fm.authorKey,
-    excerpt: fm.excerpt.trim(),
-  };
-  if (fm.translationKey.trim()) out.translationKey = fm.translationKey.trim();
-  if (fm.updatedAt) out.updatedAt = fm.updatedAt;
-  if (fm.mode !== 'published') out.mode = fm.mode;
-  if (fm.featured) out.featured = true;
-  if (fm.tags.length) out.tags = fm.tags;
-  if (fm.category.trim()) out.category = fm.category.trim();
+  const out: Record<string, unknown> = { ...fm.raw };
+  out.title = fm.title.trim();
+  out.date = fm.date;
+  out.author = fm.authorKey;
+  out.excerpt = fm.excerpt.trim();
+  put(out, 'translationKey', fm.translationKey.trim());
+  put(out, 'updatedAt', fm.updatedAt);
+  if (fm.mode !== 'published' || 'mode' in out) out.mode = fm.mode;
+  if (fm.featured || 'featured' in out) out.featured = fm.featured;
+  put(out, 'tags', fm.tags);
+  put(out, 'category', fm.category.trim());
   if (fm.coverSrc.trim()) {
-    out.coverImage = {
+    const cover: Record<string, unknown> = {
+      ...(out.coverImage as object),
       src: fm.coverSrc.trim(),
-      ...(fm.coverAlt.trim() ? { alt: fm.coverAlt.trim() } : {}),
-      ...(fm.coverCredit.trim() ? { credit: fm.coverCredit.trim() } : {}),
     };
-  }
-  const seo: NonNullable<BlogFrontmatter['seo']> = {};
-  if (fm.seoTitle.trim()) seo.title = fm.seoTitle.trim();
-  if (fm.seoDescription.trim()) seo.description = fm.seoDescription.trim();
-  if (fm.seoKeywords.length) seo.keywords = fm.seoKeywords;
+    put(cover, 'alt', fm.coverAlt.trim());
+    put(cover, 'credit', fm.coverCredit.trim());
+    out.coverImage = cover;
+  } else delete out.coverImage;
+  const seo: Record<string, unknown> = { ...(out.seo as object) };
+  put(seo, 'title', fm.seoTitle.trim());
+  put(seo, 'description', fm.seoDescription.trim());
+  put(seo, 'keywords', fm.seoKeywords);
   if (Object.keys(seo).length) out.seo = seo;
-  return out;
+  else delete out.seo;
+  return out as unknown as BlogFrontmatter;
 }
 
 /**
@@ -95,6 +111,7 @@ export function fromFrontmatter(raw: Record<string, unknown>): EditorFrontmatter
     seoDescription: str(seo.description),
     seoKeywords: arr(seo.keywords),
     translationKey: str(raw.translationKey),
+    raw,
   };
 }
 

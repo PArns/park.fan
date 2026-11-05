@@ -11,7 +11,7 @@ contain is the [blog authoring guide](../../content/blog/README.md), how it is w
 | `app/admin/blog-editor/page.tsx`                   | Reads authors and categories (`_lib/initial-data.ts`), ships an English-only bundle |
 | `app/admin/blog-editor/editor-client.tsx`          | The workspace: one draft per locale, save, load, translate, delete                  |
 | `_components/`, `_extensions/`                     | TipTap canvas, toolbars, slash menu, pickers, the `.md` source view                 |
-| `_lib/widgets.ts`                                  | The widget catalogue every toolbar, menu and preview reads                          |
+| `_lib/widgets.ts`                                  | The widget catalogue every toolbar, menu, preview and the load route read           |
 | `_lib/types.ts`                                    | Form state ↔ frontmatter (`toFrontmatter`, `fromFrontmatter`)                       |
 | `_lib/draft-autosave.ts`, `_lib/pending-images.ts` | Crash snapshot; staged image uploads                                                |
 | `app/api/admin/blog-editor/*`                      | `posts`, `posts/[key]`, `save`, `delete`, `translate`, `images`, `resolve-ref`      |
@@ -31,31 +31,30 @@ and embeds get live previews (`resolve-ref` resolves a `ref:` to name, location 
 image picker lists the media database through `images`). New authors and categories can be created
 or edited inline and land in the same pull request.
 
-**Known limits, all of them silent:**
+**What the form does not hold is kept.** `fromFrontmatter` stores the loaded frontmatter on the
+draft (`raw`), and `toFrontmatter` starts from it: `time`, `parkLinks`, `rideLinks`,
+`coverImage.caption`, `gallery`, `seo.ogImage`, `seo.canonical`, `seo.noindex`, `relatedParks` and
+every other field go back into the file unchanged and in their order; a form field left empty is
+removed. `pnpm test:blog-editor-frontmatter` loads every post file, saves it and fails on any
+frontmatter that changed. A post written from scratch has no `raw`, so a news post still needs its
+`time` added in the pull request.
 
-- **Saving an existing post drops every frontmatter field the form does not hold.**
-  `fromFrontmatter` reads only the fields above and `buildPostFile` writes only what
-  `toFrontmatter` returns, so `time` (every news post), `parkLinks`, `rideLinks`,
-  `coverImage.caption`, `gallery`, `seo.ogImage`, `seo.canonical` and `seo.noindex` vanish from the
-  file. On 2026-10-27, 546 of 602 post files carried `parkLinks` and 270 a `time`. Read the pull
-  request's diff and restore them by hand.
-- **There is no `translationKey` field.** A loaded post keeps its key; a new post gets none, and the
-  manifest then keys a post by its slug. The translate button gives every locale its own slug
-  (`slugify` of the translated title), so a new post saved from here is six unrelated posts until a
-  key is added in the pull request
-  ([six languages in one pull request](../rules/a-post-ships-in-six-languages-in-one-pull-request.md)).
-- **The post list is the running deployment's.** `posts` and `posts/[key]` read `content/blog` off
-  the deployment's filesystem, so a post in an open pull request is not there, and a save branches
-  from the base branch's head, not from what was loaded.
+**One `translationKey` per post.** The form has no field for it. A loaded post keeps its own; a new
+post, and a loaded one without a key, gets the source locale's slug in every locale on save, so the
+translations (each with its own `slugify`d slug) stay one post
+([six languages in one pull request](../rules/a-post-ships-in-six-languages-in-one-pull-request.md)).
+
+**The post list is the running deployment's.** `posts` and `posts/[key]` read `content/blog` off
+the deployment's filesystem, so a post in an open pull request is not there, and a save branches
+from the base branch's head, not from what was loaded.
 
 ## How it saves
 
 `POST /api/admin/blog-editor/save` sends every locale that has content (`isDraftFilled`):
 
-1. A branch at the head of the base branch (`forkFromBase`): `blog/<slug>-<YYYY-MM-DD>`, or
-   `blog/edit-<slug>-<YYYY-MM-DD>` for a loaded post. The name carries only the day, so a second
-   save of the same post on the same day fails with "Could not create branch"; delete or merge the
-   first branch, or save under another slug.
+1. A branch at the head of the base branch (`forkFromBase`): `blog/<slug>-<YYYY-MM-DDTHHMMSS>`, or
+   `blog/edit-<slug>-<YYYY-MM-DDTHHMMSS>` for a loaded post (UTC), so every save opens its own pull
+   request.
 2. One commit per locale to `content/blog/<locale>/<slug>.md` (gray-matter's YAML). A renamed slug
    deletes the old file. New authors become `content/blog/authors/<key>.md`; new and edited
    categories are merged into `content/blog/categories.json`.

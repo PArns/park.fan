@@ -168,6 +168,7 @@ export const WIDGETS: readonly WidgetDef[] = [
   },
 ];
 
+/** Every widget fence name; the load route uses it to tell a widget fence from a code block. */
 export const WIDGET_NAMES = new Set(WIDGETS.map((w) => w.name));
 
 const WIDGET_BY_NAME = new Map(WIDGETS.map((w) => [w.name, w]));

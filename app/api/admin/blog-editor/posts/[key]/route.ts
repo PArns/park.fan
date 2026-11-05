@@ -4,24 +4,11 @@ import path from 'path';
 import matter from 'gray-matter';
 import { NextResponse, type NextRequest } from 'next/server';
 import { fromFrontmatter } from '@/app/admin/blog-editor/_lib/types';
+import { WIDGET_NAMES } from '@/app/admin/blog-editor/_lib/widgets';
 import { denyUnlessAdmin } from '@/lib/admin/session';
 import { BLOG_LOCALE_RE, BLOG_SLUG_RE } from '@/lib/admin/blog-paths';
 
 const BLOG_ROOT = path.resolve(process.cwd(), 'content', 'blog');
-
-const WIDGET_NAMES = new Set([
-  'park-widget',
-  'map-widget',
-  'weather-widget',
-  'best-days-widget',
-  'stats-widget',
-  'attraction-widget',
-  'glossary-widget',
-  'gallery-widget',
-  'park-comparison-widget',
-  'ride-waits-widget',
-  'hourly-profile-widget',
-]);
 
 /**
  * Moves widget fence attrs from the info string (```park-widget slug=…```) into the body
