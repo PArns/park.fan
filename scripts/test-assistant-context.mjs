@@ -467,62 +467,38 @@ check(readAssistantAction({ type: 'alert_remove', park }), null, 'remove: nothin
 const noFavorites = { parks: [], attractions: [], shows: [], restaurants: [] };
 check(assistantFavoritesSnapshot(noFavorites), undefined, 'no favourites, no field');
 const uuid = '0b6f2f1e-3c4d-4e5f-8a9b-0c1d2e3f4a5b';
+const uuidN = (i) => `0b6f2f1e-3c4d-4e5f-8a9b-${String(i).padStart(12, '0')}`;
 check(
-  assistantFavoritesSnapshot({ ...noFavorites, attractions: [uuid] }),
+  assistantFavoritesSnapshot({ ...noFavorites, attractions: [uuid, 'taron'] }),
   { ...noFavorites, attractions: [uuid] },
-  'the ids as stored'
+  'UUIDs as stored, anything else dropped'
+);
+check(
+  assistantFavoritesSnapshot({ ...noFavorites, shows: ['old-slug'] }),
+  undefined,
+  'nothing but slugs is nothing'
 );
 check(
   assistantFavoritesSnapshot({
     ...noFavorites,
-    parks: Array.from({ length: 60 }, (_, i) => `p${i}`),
+    parks: Array.from({ length: 60 }, (_, i) => uuidN(i)),
   }).parks.length,
   FAVORITES_SNAPSHOT_MAX,
   'at most fifty of a kind'
 );
+const favorite = { type: 'favorite_set', entity: 'attraction', id: uuid, name: 'Taron', on: true };
+check(readAssistantAction({ ...favorite, x: 1 }), favorite, 'favourite, nothing rides along');
 check(
-  readAssistantAction({
-    type: 'favorite_set',
-    kind: 'attraction',
-    id: uuid,
-    name: 'Taron',
-    on: true,
-    x: 1,
-  }),
-  { type: 'favorite_set', kind: 'attraction', id: uuid, name: 'Taron', on: true },
-  'favourite'
-);
-check(
-  readAssistantAction({
-    type: 'favorite_set',
-    favoriteType: 'park',
-    id: uuid,
-    name: 'Phantasialand',
-    on: false,
-  }),
-  { type: 'favorite_set', kind: 'park', id: uuid, name: 'Phantasialand', on: false },
-  'favourite: the type may come as favoriteType'
-);
-check(
-  readAssistantAction({ type: 'favorite_set', kind: 'hotel', id: uuid, name: 'X', on: true }),
+  readAssistantAction({ ...favorite, entity: 'hotel' }),
   null,
-  'favourite: a kind the site does not star'
+  'an entity the site does not star'
 );
 check(
-  readAssistantAction({
-    type: 'favorite_set',
-    kind: 'park',
-    id: 'phantasialand',
-    name: 'X',
-    on: true,
-  }),
+  readAssistantAction({ ...favorite, entity: undefined, kind: 'park' }),
   null,
-  'favourite: an id that is no UUID'
+  'the field is entity'
 );
-check(
-  readAssistantAction({ type: 'favorite_set', kind: 'park', id: uuid, name: 'X', on: 'yes' }),
-  null,
-  'favourite: on must be a boolean'
-);
+check(readAssistantAction({ ...favorite, id: 'taron' }), null, 'an id that is no UUID');
+check(readAssistantAction({ ...favorite, on: 'yes' }), null, 'on must be a boolean');
 
 console.log(`assistant context: ${passed} checks passed`);

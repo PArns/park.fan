@@ -31,6 +31,17 @@ by hand: change the comment in the code and re-run the script. -->
 - `presentTiles` _function_: The tiles a card has a value for, in the order they are drawn; a missing value has no tile.
 - Types: `AssistantCalendarCard`, `AssistantTilesCard`, `AssistantShowsCard`, `AssistantRestaurantsCard`, `ShowTime`, `AssistantTile`
 
+### [`chat-end.ts`](../../lib/assistant/chat-end.ts)
+
+- `breakMinutesFrom` _function_: How long a refusal says the break lasts: its `cooldownMinutes`, else the `Retry-After` seconds, else the default. Rounded up to whole minutes and capped at a day.
+- `isChatEnded` _function_: Whether an API error code is the break's refusal.
+- `readBreakUntil` _function_: The break's end as a timestamp, or null when there is none or it is over.
+- `startBreak` _function_: Start a break of `minutes` from now; returns its end.
+- `breakStorage` _function_: The tab's session storage, where it can be reached.
+- `CHAT_ENDED_CODE` _const_: The code the API refuses a question with while the break lasts.
+- `DEFAULT_BREAK_MINUTES` _const_: The break taken when a refusal says nothing of its length (another tab's chat ended it).
+- `MAX_BREAK_MINUTES` _const_: The longest break the widget believes, a day; anything longer is a broken value.
+
 ### [`config.ts`](../../lib/assistant/config.ts)
 
 - `assistantVisible` _function_: Whether this browser sees Parky: `?assistant=on` forces it for the session (`off` ends that), otherwise a stable bucket 0–99 against the rollout share.
@@ -61,7 +72,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`favorites-context.ts`](../../lib/assistant/favorites-context.ts)
 
-- `assistantFavoritesSnapshot` _function_: The `favorites` field of a chat request: the cookie's ids as stored, so Parky can tell what is starred; `undefined` where nothing is.
+- `assistantFavoritesSnapshot` _function_: The `favorites` field of a chat request: the cookie's ids as stored, so Parky can tell what is starred; only UUIDs, which is all the API takes. `undefined` where nothing is.
 - `FAVORITES_SNAPSHOT_MAX` _const_: The most ids of each kind a question carries.
 
 ### [`fling-tracker.ts`](../../lib/assistant/fling-tracker.ts)

@@ -138,10 +138,9 @@ ride alerts and show reminders whose names the mirror keeps, at most 100 each, a
 as the park's `HH:MM`. Left out where push is out of reach and nothing is set.
 
 Favourites go through `lib/utils/favorites.ts`, so every star on the page follows. `favorite_set`
-names the favourite's type `kind` (`type` is the action's; `favoriteType` is read too) and an id
-the cookie keeps, a UUID; it sets the state asked for and never toggles blindly. An add plays
+names the favourite's type `entity` (`type` is the action's) and an id the cookie keeps, a UUID; it sets the state asked for and never toggles blindly. An add plays
 Parky's `love`, through the same `favorite_add` a star sends. The `favorites` field of every
-question is the cookie's ids as stored, at most 50 of each kind, left out when there are none
+question is the cookie's ids as stored, UUIDs only (all the API takes), at most 50 of each kind, left out when there are none
 (`assistantFavoritesSnapshot`).
 
 `plannerUi.requestOptimize` is held until the day's `PlannerOptimizeActions` is on screen with its

@@ -222,10 +222,10 @@ export type AssistantAction =
       start: string;
     }
   /**
-   * Star or unstar one thing, by the id the favourites cookie keeps. `kind` is the favourite's
+   * Star or unstar one thing, by the id the favourites cookie keeps. `entity` is the favourite's
    * type, since `type` names the action.
    */
-  | { type: 'favorite_set'; kind: FavoriteType; id: string; name: string; on: boolean }
+  | { type: 'favorite_set'; entity: FavoriteType; id: string; name: string; on: boolean }
   /** Exactly one of the two slugs. */
   | { type: 'alert_remove'; park: AssistantPlannerPark; rideSlug: string; showSlug?: never }
   | { type: 'alert_remove'; park: AssistantPlannerPark; showSlug: string; rideSlug?: never }
@@ -672,17 +672,16 @@ export function readAssistantAction(raw: unknown): AssistantAction | null {
       return readPlannerEdit(action as unknown as Record<string, unknown>);
     case 'favorite_set': {
       const raw = action as unknown as Record<string, unknown>;
-      // `type` is taken by the action itself; the API may name the favourite's `favoriteType`.
-      const kind = raw.kind ?? raw.favoriteType;
-      return typeof kind === 'string' &&
-        FAVORITE_TYPES.has(kind) &&
+      const { entity } = raw;
+      return typeof entity === 'string' &&
+        FAVORITE_TYPES.has(entity) &&
         typeof raw.id === 'string' &&
         isUuid(raw.id) &&
         isName(raw.name) &&
         typeof raw.on === 'boolean'
         ? {
             type: 'favorite_set',
-            kind: kind as FavoriteType,
+            entity: entity as FavoriteType,
             id: raw.id,
             name: raw.name.trim(),
             on: raw.on,

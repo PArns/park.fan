@@ -347,12 +347,12 @@ export function useAssistantActions(closeWindow: () => void) {
         }
         case 'favorite_set': {
           // Set, never toggled blindly: a star already in the asked state stays as it is.
-          if (isFavorite(action.kind, action.id) === action.on) return null;
-          toggleFavorite(action.kind, action.id);
+          if (isFavorite(action.entity, action.id) === action.on) return null;
+          toggleFavorite(action.entity, action.id);
           // Counted like a star's press, which is also what plays Parky's `love`.
           trackSiteEvent(
             action.on ? 'favorite_add' : 'favorite_remove',
-            { type: action.kind },
+            { type: action.entity },
             action.id
           );
           return action.on ? 'favorite' : 'unfavorite';
