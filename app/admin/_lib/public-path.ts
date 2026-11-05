@@ -33,3 +33,14 @@ export function slugsFromPublicPath(input: string): PublicPathSlugs | null {
   if (!continent || !country || !city || !park) return null;
   return { parkSlug: park, citySlug: city, ...(ride ? { rideSlug: ride } : {}) };
 }
+
+const REDIRECT_PATH = /^\/(?:(?:en|de|nl|fr|es|it)\/)?parks(?:\/[a-z0-9]+(?:-[a-z0-9]+)*){4,5}\/?$/;
+
+/**
+ * Whether `POST /v1/admin/redirects` can take `path` at all: an optional locale, `parks`, then a
+ * park's four slugs or a ride's five, lower case. The API refuses deeper paths (a calendar month,
+ * a sub-page of a ride), so the not-found list offers no redirect for them.
+ */
+export function isRedirectablePath(path: string): boolean {
+  return REDIRECT_PATH.test(path);
+}

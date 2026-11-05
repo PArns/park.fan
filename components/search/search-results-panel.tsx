@@ -27,7 +27,11 @@ import {
   HERO_SEARCH_FOOTER_CLASS,
   HERO_SEARCH_HINT_CLASS,
 } from '@/components/search/hero-search-classes';
-import { useBrowseHeading, type NearbySearchItem } from '@/lib/hooks/use-hero-browse-parks';
+import {
+  useBrowseHeading,
+  useFavoriteParkRows,
+  type NearbySearchItem,
+} from '@/lib/hooks/use-hero-browse-parks';
 import { useCmdkActiveDescendant } from '@/lib/hooks/use-cmdk-active-descendant';
 import type { UseSearchResultsReturn } from '@/lib/hooks/use-search-results';
 import type { GlossarySearchItem } from '@/lib/hooks/use-search-results';
@@ -53,6 +57,11 @@ interface SearchResultsPanelProps {
   browseLimit?: number;
   /** The rows to list before a query, where they are not `search.browse.items` (the hero's). */
   browseItems?: NearbySearchItem[];
+  /**
+   * Maps the starred parks listed under the browse rows; the hero passes the status labels it puts
+   * on its own rows.
+   */
+  labelFavorites?: (items: NearbySearchItem[]) => NearbySearchItem[];
   /**
    * The hero's heading row above the pre-query list, outside the listbox so it can hold a link.
    * With it the list has no cmdk heading of its own.
@@ -107,6 +116,7 @@ export function SearchResultsPanel({
   onNavigate,
   browseLimit,
   browseItems,
+  labelFavorites,
   browseHeader,
   browseStyle,
   browseRowClassName,
@@ -119,6 +129,7 @@ export function SearchResultsPanel({
 }: SearchResultsPanelProps) {
   const t = useTranslations('common');
   const tSearch = useTranslations('search');
+  const tFavorites = useTranslations('favorites');
   const router = useRouter();
   const [tab, setTab] = useState<SearchTab>('all');
 
@@ -155,13 +166,18 @@ export function SearchResultsPanel({
   const browsing = query.length < 3;
   const heading = useBrowseHeading(browse);
   const rows = (browseItems ?? browse.items).slice(0, browseLimit);
+  // A starred park the browse rows already list stays there: cmdk keys a row by its id.
+  const starred = useFavoriteParkRows();
+  const favorites = (labelFavorites ?? ((items) => items))(
+    starred.filter((park) => !rows.some((row) => row.id === park.id))
+  );
 
   useEffect(() => {
     if (queryRan) session.typed();
   }, [queryRan, session]);
   useEffect(() => {
-    if (nothingFound) session.noResults();
-  }, [nothingFound, session]);
+    if (nothingFound) session.noResults(debouncedQuery);
+  }, [nothingFound, session, debouncedQuery]);
 
   const groups =
     queryRan && !nothingFound
@@ -175,6 +191,7 @@ export function SearchResultsPanel({
   // The tab paints on the press and the list follows, see
   // docs/rules/an-interaction-may-not-rebuild-the-grid-in-its-own-commit.md.
   const listTab = useDeferredValue(activeTab);
+  useEffect(() => session.showTab(listTab), [session, listTab]);
 
   // cmdk keeps its highlight on a row the new tab no longer lists, and Enter would open nothing.
   // Home is cmdk's own "highlight the first row", and it scrolls that row into view.
@@ -237,6 +254,14 @@ export function SearchResultsPanel({
         ) : (
           emptyBrowse
         ))}
+      {!isPending && browsing && (
+        <SearchBrowseGroup
+          items={favorites}
+          heading={tFavorites('title')}
+          onSelect={onBrowseSelect}
+          rowClassName={browseRowClassName}
+        />
+      )}
       {browsing && (isPending ? browseExtraPending : browseExtra)}
     </CommandList>
   );

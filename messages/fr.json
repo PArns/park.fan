@@ -396,8 +396,6 @@
       "termsIntro": "Les panneaux et les applis des parcs les emploient sans les expliquer."
     },
     "title": "Plus de loopings, moins d’attente",
-    "heroWelcome": "Bienvenue à {parkName}",
-    "heroNearPark": "{parkName} est à proximité (moins de 5 km). Consultez ci-dessous les temps d’attente en direct, horaires d’ouverture et affluence – ou recherchez un autre parc.",
     "heroWelcomeAttractions": "{count} attractions en fonctionnement",
     "heroParkLink": "Voir le parc",
     "heroPlanToday": "Planifier aujourd’hui",
@@ -491,12 +489,14 @@
     "searchAttractions": "Filtrer attractions...",
     "noAttractionsFound": "Aucune attraction trouvée",
     "clearSearch": "Effacer recherche",
-    "seasonal": "Saisonnier",
-    "seasonalWinter": "Hiver",
-    "seasonalSummer": "Été",
-    "seasonalWinterOnly": "Hiver uniquement",
-    "seasonalSummerOnly": "Été uniquement",
-    "seasonalOffSeason": "Hors saison",
+    "seasonal": {
+      "label": "Saisonnier",
+      "winterOnly": "Hiver uniquement",
+      "summerOnly": "Été uniquement",
+      "offSeason": "Hors saison",
+      "winter": "Hiver",
+      "summer": "Été"
+    },
     "offSeasonCount": "{count} hors saison",
     "filterSection": {
       "title": "Affiner les attractions",
@@ -556,6 +556,7 @@
     "opensOn": "Ouvre le",
     "opensAt": "Ouvre à {time}",
     "opensInDays": "{count, plural, =1 {demain} other {dans # jours}}",
+    "opensCountdownAt": "{when} à {time}",
     "opensInHours": "dans {time} h",
     "opensInMinutes": "dans {count, plural, one {# minute} other {# minutes}}",
     "offseason": "Hors saison",
@@ -889,8 +890,12 @@
     "crowdToday": "Affluence du jour",
     "crowdTodaySoFar": "jusqu’ici",
     "crowdTodayShort": "Aujourd’hui",
-    "localTime": "heure locale",
-    "influencingHolidays": "Vacances dans les régions voisines",
+    "clock": {
+      "localTime": "heure locale"
+    },
+    "holidayContext": {
+      "influencingHolidays": "Vacances dans les régions voisines"
+    },
     "influencingHolidaysBody": "Ces régions sont en vacances scolaires : beaucoup de visiteurs à la journée viennent de là. Attends-toi à plus d’affluence et des files plus longues que d’habitude.",
     "influencingHolidaysEffect": "Vacances scolaires là-bas : plus de visiteurs à la journée.",
     "influencingHolidaysShort": "Régions voisines",
@@ -1511,6 +1516,7 @@
       "tapHint": "Touche un point pour épingler cette attraction.",
       "unpinHint": "Touche-le encore pour le libérer.",
       "allClosed": "Toutes les attractions phares sont fermées pour le moment.",
+      "nextShow": "Prochain spectacle",
       "demoEnd": "Quitter la démo",
       "demoNoLocation": "Sans ta position, tu restes à un point fixe du parc.",
       "dialGroup": "Boussole, nord en haut"
@@ -2363,6 +2369,8 @@
       "rides": "{count, plural, =0 {Aucune attraction} one {Une attraction} other {# attractions}}",
       "waiting": "Temps d’attente cumulé",
       "waitingLabel": "Attente",
+      "walking": "Temps de marche entre les blocs, tel que le plan le compte",
+      "walkingLabel": "Marche",
       "done": "{done} sur {total} faites",
       "blocks": "{count, plural, one {# bloc} other {# blocs}}"
     },
@@ -3037,7 +3045,23 @@
     "flingRough1": "Ça secoue sacrément ici !",
     "flingRough2": "On se croirait dans Mystery Castle !",
     "flingRough3": "« Never the same fear twice », qu’ils disaient. Là, c’était trois fois la même !",
-    "flingRough4": "Restez assis pendant toute la durée du trajet !"
+    "flingRough4": "Restez assis pendant toute la durée du trajet !",
+    "cardNow": "En ce moment",
+    "cardForecastFor": "Prévision pour {date}",
+    "cardPeakSoFar": "Pic jusqu’ici",
+    "cardPeakExpected": "Pic attendu",
+    "cardRidesOpen": "Attractions ouvertes",
+    "cardSeasonal": "Météo moyenne de saison",
+    "cardCalendarHint": "Touche un jour pour voir les horaires.",
+    "cardCalendarLink": "Voir le calendrier des temps d’attente",
+    "cardCrowd": "Affluence",
+    "cardAvgWait": "Attente moy.",
+    "cardHours": "Horaires",
+    "cardWeather": "Météo",
+    "cardHoliday": "Jour férié",
+    "cardShowsLink": "Tous les spectacles du parc",
+    "cardRestaurantsLink": "Tous les restaurants du parc",
+    "cardPaidExpress": "File rapide payante"
   },
   "parkyPage": {
     "metaTitle": "Parky, l’assistant de chat de park.fan",

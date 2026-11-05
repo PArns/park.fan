@@ -36,7 +36,7 @@ import {
   FlagAU,
   FlagBR,
 } from '@/components/common/icons/flags'; // Added generic icon import if needed, but imported specifically here
-import { cdnCacheHeaders } from '@/lib/api/cdn-cache-headers';
+import { cdnCacheHeaders, NO_STORE } from '@/lib/api/cdn-cache-headers';
 import { isSlugPath } from '@/lib/utils/servable-route';
 
 // OG Image dimensions
@@ -45,6 +45,9 @@ const HEIGHT = 630;
 
 /** Trailing filenames this endpoint answers to — the current one plus the legacy `.png`. */
 const OG_IMAGE_FILENAMES = new Set([OG_IMAGE_FILENAME, 'og.png']);
+
+// Both keys, or the `/api/og/:path*` rule's thirty-day `CDN-Cache-Control` would still apply to a 4xx.
+const NOT_CACHED = { headers: cdnCacheHeaders(NO_STORE['Cache-Control']) };
 
 // Flag mapping
 const FLAGS: Record<string, React.ComponentType<React.ComponentProps<'svg'>>> = {
@@ -102,7 +105,10 @@ export async function GET(
     // Parse path: locale/continent/country/city/park or locale/continent/country/city/park/attraction
     // New: Allow locale (1), locale/continent (2), ...
     if (path.length < 1) {
-      return new Response('Invalid path. Expected at least: locale', { status: 400 });
+      return new Response('Invalid path. Expected at least: locale', {
+        status: 400,
+        ...NOT_CACHED,
+      });
     }
 
     // Blog branch — `<locale>/blog/...` (index / post / category / tag) is
@@ -167,6 +173,8 @@ export async function GET(
       fancast: { namespace: 'fancast', key: 'title' },
       parky: { namespace: 'parkyPage', key: 'metaTitle' },
       'best-time-to-visit': { namespace: 'bestTime', key: 'title' },
+      'trip-planner': { namespace: 'planner.page', key: 'title' },
+      contribute: { namespace: 'contribute.meta', key: 'title' },
       ...glossaryEntries,
     };
 
@@ -178,7 +186,7 @@ export async function GET(
     // be slug-shaped before anything is fetched — see `isSlugPath`. A generic page's second segment
     // is one of the keys above and passes the same test.
     if (!isSlugPath(path.slice(1))) {
-      return new Response('Invalid path', { status: 400 });
+      return new Response('Invalid path', { status: 400, ...NOT_CACHED });
     }
 
     // Aliases for path segments to match existing logic
@@ -301,11 +309,12 @@ export async function GET(
         }
       }
     } else if (type === 'PARK' || type === 'ATTRACTION') {
-      // ... Original Logic for Park/Attraction ...
-      park = await getParkByGeoPath(continent, country, city, parkSlug).catch(() => null);
+      // `null` is the API's 404; any other failure throws into the 500 below, which has its own
+      // short window, so an outage is never cached as "not found".
+      park = await getParkByGeoPath(continent, country, city, parkSlug);
 
       if (!park) {
-        return new Response('Park not found', { status: 404 });
+        return new Response('Park not found', { status: 404, ...NOT_CACHED });
       }
 
       let attraction = null;
@@ -320,11 +329,12 @@ export async function GET(
             city,
             parkSlug,
             attractionSlug
-          ).catch(() => null);
+          );
           if (fullAttraction) attraction = fullAttraction;
         }
 
-        if (!attraction) return new Response('Attraction not found', { status: 404 });
+        if (!attraction)
+          return new Response('Attraction not found', { status: 404, ...NOT_CACHED });
 
         name = stripNewPrefix(attraction.name);
         backgroundImagePath =

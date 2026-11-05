@@ -5,7 +5,7 @@ import { entityEditorHref, entityPublicHref } from '@/lib/admin/site-analytics';
 import type { RankedEntity } from '@/lib/api/admin-site-analytics';
 import { BarList, type BarRow } from '../../_ui/charts';
 import { Panel, PanelBody, PanelHeader } from '../../_ui/primitives';
-import { PublicLink } from './list-parts';
+import { PublicLink } from '../../_ui/row-links';
 
 /** One ranked entity as a bar row: the editor behind its name, the public page beside it. */
 function entityRow(entity: RankedEntity, kind: 'park' | 'attraction'): BarRow {

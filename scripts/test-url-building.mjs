@@ -8,10 +8,31 @@ import {
   buildParkUrl,
   buildAttractionUrl,
   buildAttractionUrlFromGeo,
+  parkChapterUrl,
 } from '../lib/utils/url-utils.ts';
+
+const PHL = { continent: 'europe', country: 'germany', city: 'bruehl', slug: 'phantasialand' };
 
 // Test cases from actual 404 logs
 const test404Cases = [
+  {
+    name: 'Favourite show, park API path (PAR-1134)',
+    input: { url: '/v1/parks/europe/germany/bruehl/phantasialand', chapter: 'shows' },
+    expected: '/parks/europe/germany/bruehl/phantasialand#shows',
+    test: 'parkChapterUrl',
+  },
+  {
+    name: 'Favourite show, old bare path, park geo wins',
+    input: { url: '/v1/shows/abc', chapter: 'shows', park: PHL },
+    expected: '/parks/europe/germany/bruehl/phantasialand#shows',
+    test: 'parkChapterUrl',
+  },
+  {
+    name: 'Favourite restaurant, old bare path, no park: no link',
+    input: { url: '/v1/restaurants/abc', chapter: 'restaurants' },
+    expected: null,
+    test: 'parkChapterUrl',
+  },
   // ✅ FIXED: /v1/ URLs (should be converted to /parks/)
   {
     name: '/v1/ URL - Wild Waterval',
@@ -187,6 +208,8 @@ test404Cases.forEach((testCase, index) => {
     result = buildParkUrl(testCase.input);
   } else if (testCase.test === 'buildAttractionUrl') {
     result = buildAttractionUrl(testCase.input.parkUrl, testCase.input.slug);
+  } else if (testCase.test === 'parkChapterUrl') {
+    result = parkChapterUrl(testCase.input.url, testCase.input.chapter, testCase.input.park);
   } else if (testCase.test === 'buildAttractionUrlFromGeo') {
     result = buildAttractionUrlFromGeo(testCase.input);
   }

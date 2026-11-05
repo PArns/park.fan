@@ -125,7 +125,7 @@ Whether the drag gesture has been explained once: a store over `localStorage`, l
 - `rememberRideId` _function_: Note a ride's UUID under its park.
 - `rememberShowId` _function_: Note a show's UUID under its park.
 - `rememberPlanDayIds` _function_: Note every id a `/plan/day` answer carries.
-- `parkIdOf` _function_: A park's UUID, where a page has named it.
+- `parkIdOf` _function_: A park's UUID, where a page has named it in this tab or the plan has stored it.
 - `rideIdOf` _function_: A ride's UUID, where a page has named it.
 - `showIdOf` _function_: A show's UUID, where a page has named it.
 - Types: `PlanDayIds`
@@ -179,6 +179,7 @@ Whether the drag gesture has been explained once: a store over `localStorage`, l
 - `entryPlace` _function_: Where an entry is, for the walk to it and from it: the ride's or the show's coordinates from `/plan/day`, or `null`. A show without both coordinates and a free block have no place, and no placeholder, since a guess may never feed the floor.
 - `isBlockEntry` _function_: True for an entry that is not a ride: a show, or a free block.
 - `transferBetween` _function_: How long it takes to get from one ride to the next, the geometry alone.
+- `dayWalkMinutes` _function_: The day's walking, in minutes: the walk of every transfer between consecutive entries, paired in start order as the grid pairs its legs, so the total and the chips describe the same walks.
 - `legBetween` _function_: The transfer between two consecutive entries.
 - `earliestGoodStart` _function_: The earliest start for the later ride that clears the transfer, snapped up, never down. Offered on a button and never applied on its own, so the visitor sees that the plan did not work.
 - `legDeficit` _function_: Minutes of shortfall on a broken leg — what a reader is told is missing.
@@ -375,7 +376,7 @@ Whether the day's showtimes are drawn: useful, and a lot of ink over a plan on a
 ### [`shows.ts`](../../lib/planner/shows.ts)
 
 - `showDayHours` _function_: The clip window for one day, or `null` where the park's hours are unknown. `closeHour` is unfolded like the axis (`unfoldedCloseHour`), or a day crossing midnight clips every projected show.
-- `showLinesFor` _function_: One line per showtime, ascending. `times` is park-local `HH:mm`, like the axis, so nothing is converted; a malformed entry is dropped rather than drawn at midnight.
+- `showLinesFor` _function_: One line per showtime, ascending. `times` is park-local `HH:mm`, like the axis, so nothing is converted beyond unfolding a past-midnight time like the axis; a malformed entry is dropped rather than drawn at midnight.
 - `dayHasShowLines` _function_: Whether the grid draws any show on this day, asked exactly as the grid asks. The phone's show switch and its row render only where this is true.
 - `lineSource` _function_: The source a drawn line speaks with where several shows fold into one: a projection anywhere in the group, since a projection may never be drawn as a listing.
 - Types: `ShowDayHours`, `PlannerShowLine`

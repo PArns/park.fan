@@ -132,7 +132,8 @@ export async function POST(req: Request) {
   const { owner, repo, baseBranch } = target;
   const octokit = new Octokit({ auth: token });
 
-  const stamp = new Date().toISOString().slice(0, 10);
+  // Down to the second, so a second save of the same post gets its own branch.
+  const stamp = new Date().toISOString().slice(0, 19).replace(/:/g, '');
   const branch = payload.editing ? `blog/edit-${baseSlug}-${stamp}` : `blog/${baseSlug}-${stamp}`;
   const forkError = await forkFromBase(octokit, target, branch);
   if (forkError) return NextResponse.json({ error: forkError }, { status: 500 });

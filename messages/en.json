@@ -396,8 +396,6 @@
       "termsIntro": "Signs and park apps use them without explaining them."
     },
     "title": "More Thrills, Less Waiting",
-    "heroWelcome": "Welcome to {parkName}",
-    "heroNearPark": "{parkName} is nearby (within 5 km). Below you’ll find live wait times, opening hours and crowd levels – or search for another park.",
     "heroWelcomeAttractions": "{count} attractions operating",
     "heroParkLink": "Go to park",
     "heroPlanToday": "Plan today",
@@ -491,12 +489,14 @@
     "searchAttractions": "Filter attractions...",
     "noAttractionsFound": "No attractions found",
     "clearSearch": "Clear search",
-    "seasonal": "Seasonal",
-    "seasonalWinter": "Winter",
-    "seasonalSummer": "Summer",
-    "seasonalWinterOnly": "Winter only",
-    "seasonalSummerOnly": "Summer only",
-    "seasonalOffSeason": "Off-season",
+    "seasonal": {
+      "label": "Seasonal",
+      "winterOnly": "Winter only",
+      "summerOnly": "Summer only",
+      "offSeason": "Off-season",
+      "winter": "Winter",
+      "summer": "Summer"
+    },
     "offSeasonCount": "{count} off-season",
     "filterSection": {
       "title": "Narrow down the attractions",
@@ -556,6 +556,7 @@
     "opensOn": "Opens on",
     "opensAt": "Opens at {time}",
     "opensInDays": "{count, plural, =1 {tomorrow} other {in # days}}",
+    "opensCountdownAt": "{when} at {time}",
     "opensInHours": "in {time} hours",
     "opensInMinutes": "in {count, plural, one {# minute} other {# minutes}}",
     "offseason": "OffSeason",
@@ -889,8 +890,12 @@
     "crowdToday": "Crowds today",
     "crowdTodaySoFar": "so far",
     "crowdTodayShort": "Today",
-    "localTime": "local time",
-    "influencingHolidays": "Holidays in nearby regions",
+    "clock": {
+      "localTime": "local time"
+    },
+    "holidayContext": {
+      "influencingHolidays": "Holidays in nearby regions"
+    },
     "influencingHolidaysBody": "It’s school holidays there right now, and plenty of day visitors come from that region. Expect bigger crowds and longer waits than usual.",
     "influencingHolidaysEffect": "School holidays there, so more day visitors than usual.",
     "influencingHolidaysShort": "Nearby regions",
@@ -1511,6 +1516,7 @@
       "tapHint": "Tap a dot to pin that ride.",
       "unpinHint": "Tap it again to unpin it.",
       "allClosed": "All top attractions are closed right now.",
+      "nextShow": "Next show",
       "demoEnd": "End demo",
       "demoNoLocation": "Without your location you stay on one spot in the park.",
       "dialGroup": "Compass, north up"
@@ -2363,6 +2369,8 @@
       "rides": "{count, plural, =0 {No rides} one {One ride} other {# rides}}",
       "waiting": "Time queuing in total",
       "waitingLabel": "Wait",
+      "walking": "Time walking between blocks, as the plan allows for it",
+      "walkingLabel": "Walking",
       "done": "{done} of {total} ridden",
       "blocks": "{count, plural, one {# block} other {# blocks}}"
     },
@@ -3037,7 +3045,23 @@
     "flingRough1": "Things are getting pretty wild in here!",
     "flingRough2": "This is just like Mystery Castle!",
     "flingRough3": "“Never the same fear twice,” they said. That was the same one three times!",
-    "flingRough4": "Please remain seated while the ride is in motion!"
+    "flingRough4": "Please remain seated while the ride is in motion!",
+    "cardNow": "Right now",
+    "cardForecastFor": "Forecast for {date}",
+    "cardPeakSoFar": "Peak so far",
+    "cardPeakExpected": "Expected peak",
+    "cardRidesOpen": "Rides open",
+    "cardSeasonal": "Seasonal average weather",
+    "cardCalendarHint": "Tap a day to see its hours.",
+    "cardCalendarLink": "Open the wait-time calendar",
+    "cardCrowd": "Crowd level",
+    "cardAvgWait": "Avg wait",
+    "cardHours": "Opening hours",
+    "cardWeather": "Weather",
+    "cardHoliday": "Holiday",
+    "cardShowsLink": "All shows in the park",
+    "cardRestaurantsLink": "All restaurants in the park",
+    "cardPaidExpress": "Paid express queue"
   },
   "parkyPage": {
     "metaTitle": "Parky, the park.fan chat assistant",

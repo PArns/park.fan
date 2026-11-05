@@ -85,6 +85,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `useBrowseHeading` _hook_: Heading above the pre-query list — "You're at X" / "Nearby parks" / "Popular parks". Shared so the palette and the hero's in-place list label the same data the same way.
 - `useHeroBrowseParks` _hook_: What the search shows before anything is typed: the visitor's nearby parks, or — when the nearby lookup yields nothing (location denied AND the GeoIP fallback came up empty) — the most popular parks, so the list is never blank.
+- `useFavoriteParkRows` _hook_: The visitor's starred parks as rows for the pre-query list, at most `FAVORITE_ROWS`. It shares `useFavorites`' query, so on the homepage the favourites band has already asked; it does not poll, since the list is open for seconds.
 - `heroBrowseRows` _function_: The rows the hero lists: in a park only its rides, since the hero's park actions above already lead to the park itself. The palette lists the park too.
 - Types: `NearbySearchExtras`, `NearbySearchItem`, `HeroBrowseParks`
 
@@ -95,7 +96,7 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`use-hero-status-labels.ts`](../../lib/hooks/use-hero-status-labels.ts)
 
 - `useParkOpeningLabel` _hook_: „Öffnet um 09:00 Uhr" or „Öffnet am 15. März" for a park's next opening, in the park's zone (`formatParkOpening`): the hero's park block and its lists word it alike.
-- `useHeroStatusLabels` _hook_: The hero's rows with the status pill of a shut park reading its next opening (`nextParkOpening` on the minute clock) in place of „Geschlossen", and how far off it is („morgen", „Samstag") for a row wide enough to show it.
+- `useHeroStatusLabels` _hook_: The hero's rows with the status pill of a shut park reading its next opening (`nextParkOpening` on the minute clock) in place of „Geschlossen", and how far off it is („morgen, 10:00 Uhr", „Samstag, 10:00 Uhr") for a row wide enough to show …
 
 ### [`use-in-park-block.ts`](../../lib/hooks/use-in-park-block.ts)
 

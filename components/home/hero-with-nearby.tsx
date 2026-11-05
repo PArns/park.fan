@@ -1,12 +1,9 @@
 'use client';
 
 import { useLocale, useTranslations } from 'next-intl';
-import { useHeroPark } from '@/lib/hooks/use-hero-park';
-import { useMediaQuery } from '@/lib/hooks/use-media-query';
 import { useGlobalStats } from '@/lib/hooks/use-global-stats';
 import { useMounted } from '@/lib/hooks/use-mounted';
 import { getNumberFormat } from '@/lib/utils/intl-format';
-import { HeroParkActions } from '@/components/home/hero-park-actions';
 import { OpenParksBadge } from '@/components/home/open-parks-badge';
 import { HeroParky } from '@/components/home/hero-parky';
 /** Sentence fallbacks when neither the SSR seed nor the live overlay has counts yet. */
@@ -52,17 +49,13 @@ function HeroHeadline({ children }: { children: React.ReactNode }) {
 
 /**
  * The hero's text: live open-count badge, headline and the intro with live park/attraction counts
- * (SSR seed + 5-min client overlay). From `md` up, a visitor inside or right next to a park gets
- * the „Willkommen im …" variant with that park's block (`useHeroPark`); on a phone that block
- * stands under the card rail (`HeroRail`), so nothing above the field changes.
+ * (SSR seed + 5-min client overlay). The same for every visitor: a visitor inside or next to a park
+ * gets that park's block under the card rail (`HeroRail`), because a block arriving here after
+ * load moved the search field under the reader.
  */
 export function HeroWithNearby({ initialCounts }: { initialCounts: HeroInitialCounts | null }) {
-  const t = useTranslations('parks');
   const tHome = useTranslations('home');
   const locale = useLocale();
-  const isDesktop = useMediaQuery('(min-width: 768px)');
-  const heroPark = useHeroPark();
-  const variant = isDesktop ? heroPark : null;
   /*
    * The seed counts in the first client render, for the same reason `GlobalStatsLiveCounts` gates
    * them: `useGlobalStats` can already hold data while this subtree hydrates, and the badge writes
@@ -82,41 +75,18 @@ export function HeroWithNearby({ initialCounts }: { initialCounts: HeroInitialCo
     ),
   };
 
-  if (variant?.kind === 'in_park') {
-    // No intro under the welcome: it stood between the welcome and what somebody in the park came
-    // for, and this variant is client-only, so the crawlable HTML keeps the general intro. Three
-    // children, like the general variant, so the entrance stagger counts alike.
-    return (
-      <>
-        <HeroBadgeRow openParks={openParks} />
-        <HeroHeadline>{t('heroWelcome', { parkName: variant.park.name })}</HeroHeadline>
-        <HeroParkActions park={variant.park} className="mt-2" />
-      </>
-    );
-  }
-
   return (
     <>
       <HeroBadgeRow openParks={openParks} />
       <HeroHeadline>{tHome('hero.title')}</HeroHeadline>
-      {/* Parky under the question on a desktop; next to a park the park's block takes his place. */}
-      {!variant && <HeroParky />}
-      {variant ? (
-        <>
-          <p className="text-foreground/85 max-w-4xl text-base leading-relaxed md:text-lg">
-            {t('heroNearPark', { parkName: variant.park.name })}
-          </p>
-          <HeroParkActions park={variant.park} className="mt-5" />
-        </>
-      ) : (
-        // A phone gets the one-line version, so the photo above the text keeps its room. Both are
-        // in the HTML and CSS picks one, so the server's markup is right on every viewport.
-        // `lg:mt-2` keeps the text off Parky's row above it.
-        <p className="text-foreground/85 max-w-4xl text-base leading-relaxed md:text-lg lg:mt-2">
-          <span className="md:hidden">{tHome.rich('hero.introShort', introValues)}</span>
-          <span className="hidden md:inline">{tHome.rich('hero.intro', introValues)}</span>
-        </p>
-      )}
+      <HeroParky />
+      {/* A phone gets the one-line version, so the photo above the text keeps its room. Both are
+        in the HTML and CSS picks one, so the server's markup is right on every viewport.
+        `lg:mt-2` keeps the text off Parky's row above it. */}
+      <p className="text-foreground/85 max-w-4xl text-base leading-relaxed md:text-lg lg:mt-2">
+        <span className="md:hidden">{tHome.rich('hero.introShort', introValues)}</span>
+        <span className="hidden md:inline">{tHome.rich('hero.intro', introValues)}</span>
+      </p>
     </>
   );
 }

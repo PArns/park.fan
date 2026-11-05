@@ -418,15 +418,15 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`park-entry-tiles.tsx`](../../components/parks/park-entry-tiles.tsx)
 
-- `SelectionBar` _component_: The selected cell's bar along its top edge. An element, not a border or a shadow: `border-t-primary` loses to the shorthand border colour the cell needs to beat `TabsTrigger`'s base, and an inset shadow loses to the base's `shadow-sm`.
 - `ParkTileGrid` _component_: The row's grid. Both renderings mount it, and the park page's tablist sits inside it at `display: contents` so its triggers become grid items directly — a link inside `role="tablist"` is not a tab, and the calendar cell is a link.
 - `useParkTileItems` _hook_: The cells with their live hints, plus how many there are (four of the seven are optional).
-- `phoneLastCellSpan` _function_: The span of the LAST cell on a phone, so the three-column row never ends on an empty cell: one cell left over takes the whole row, two share it.
-- `tileCell` _const_: The classes every cell of the row shares, tab trigger or link.
-- `tileRowPhone` _const_: The row on a phone: three columns instead of two, and no second line in the cells. Two columns put seven cells in four rows, most of the first screen; three columns make three rows. Both rows use it, `ParkTileGrid` and `RideNavTiles`.
 - `activeChip` _const_: The chip's active treatment, shared so a tab's selected state and a link's current state cannot drift apart.
 - `activeCell` _const_: The cell's active fill, likewise shared between the tab and the link rendering.
 - `EntryTileBody` _const_
+- `SelectionBar` _const_
+- `phoneLastCellSpan` _const_
+- `tileCell` _const_
+- `tileRowPhone` _const_
 - Types: `ParkTileKey`, `ParkTileItem`, `ParkTileSource`
 
 ### [`park-favorite-button.tsx`](../../components/parks/park-favorite-button.tsx)
@@ -622,6 +622,10 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`rcdb-badge.tsx`](../../components/parks/rcdb-badge.tsx)
 
 - `RcdbBadge` _component_: Outbound link to the ride's Roller Coaster DataBase record, naming the ride („Taron on RCDB") so the link says what is on the other end.
+
+### [`reservation-badge.tsx`](../../components/parks/reservation-badge.tsx)
+
+- `ReservationBadge` _component_: „Reservierung erforderlich" on a restaurant that takes guests only with a booking.
 
 ### [`restaurant-card-skeleton.tsx`](../../components/parks/restaurant-card-skeleton.tsx)
 

@@ -649,7 +649,7 @@ export function ParkCalendarDayDetail({
                 <div className="border-border/50 mt-1 border-t pt-2">
                   <p className="flex items-center gap-1.5 text-xs font-semibold text-amber-600 dark:text-amber-400">
                     <Luggage className="h-3.5 w-3.5" />
-                    {t('influencingHolidays')}
+                    {t('holidayContext.influencingHolidays')}
                   </p>
                   <p className="text-muted-foreground mt-1 text-xs leading-relaxed">
                     {t('influencingHolidaysBody')}

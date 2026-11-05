@@ -36,6 +36,7 @@ export {
   leanParkForLivePoll,
   mergeLiveParkSnapshot,
   leanParkForCalendarShell,
+  leanParkForAttractionShell,
 } from './park-live-projection';
 export type {
   LiveAttractionSnapshot,
@@ -197,27 +198,6 @@ function leanAttractionForShell(a: ParkAttraction): ParkAttraction {
 }
 
 /**
- * Trim for the ATTRACTION page's `initialPark` prop — the React Query seed for
- * `useLiveAttractionData`, serialized into the HTML of every attraction page.
- *
- * The page already narrows `attractions` to the one ride being shown, but it still spread the
- * whole park around it. Measured on `/de/…/phantasialand/taron`, that prop was 36.3 KB, of which
- * the page reads 1.9 KB:
- *
- *     schedule [17]     18.43 KB      attractions [1]    1.91 KB  ← the only part anything reads
- *     restaurants [46]   9.54 KB      shows [4]          1.21 KB
- *     weather            3.78 KB      analytics          0.55 KB
- *
- * Its only consumer, `LiveAttractionData`, reads exactly `park.status`, `park.timezone` and
- * `park.attractions`; nothing else on the page subscribes to that query (`ParkTimeInfo`, which
- * does read `schedule`/`nextSchedule`, is not mounted here). So the park-level blocks below are
- * dropped — 46 restaurants and 17 opening days have no business in the HTML of a single ride.
- *
- * They are NOT lost: the 5-minute live poll (`getParkByGeoPathFresh` via the /api/parks proxy)
- * returns the full park and fills the shared query cache, exactly as it already does for the
- * sibling attractions this prop has always omitted.
- */
-/**
  * Trim for the PARK page's serialized park snapshot.
  *
  * Two per-attraction fields exist only for the ride page and are dead weight when multiplied by
@@ -230,8 +210,8 @@ function leanAttractionForShell(a: ParkAttraction): ParkAttraction {
  *                             `RideProfileSection` on the ride page; `attraction-card.tsx` has
  *                             no reference to it at all.
  *
- * The ride page keeps both: it narrows the list to its one attraction first
- * ({@link leanParkForAttractionShell}), where the pair costs ~1 KB rather than ~11 KB.
+ * The ride page keeps `typicalWaits`, which its live panel reads: it narrows the list to its one
+ * attraction first ({@link leanParkForAttractionShell}), and its ride profile renders on the server.
  */
 export function leanParkForParkShell(park: ParkWithAttractions): ParkWithAttractions {
   // `closedAttractions` is rendered by the server from the full park (`ClosedRidesList`), so the
@@ -244,21 +224,6 @@ export function leanParkForParkShell(park: ParkWithAttractions): ParkWithAttract
       ({ typicalWaits: _typicalWaits, rideProfile: _rideProfile, ...lean }) => lean
     ),
   };
-}
-
-export function leanParkForAttractionShell(
-  park: ParkWithAttractions,
-  attraction: ParkAttraction
-): ParkWithAttractions {
-  const lean: ParkWithAttractions = { ...park, attractions: [attraction] };
-  delete lean.closedAttractions;
-  delete lean.schedule;
-  delete lean.restaurants;
-  delete lean.weather;
-  delete lean.shows;
-  delete lean.analytics;
-  delete lean.ropeDropHeadliners;
-  return lean;
 }
 
 /**
@@ -569,6 +534,8 @@ export interface ParkYearlyPredictions {
    */
   holidays?: ParkYearlyHoliday[];
   generatedAt: string;
+  /** Set when the API could not read the forecast: an empty list that means "unknown", sent `no-store`. */
+  isDegraded?: boolean;
 }
 
 /**
@@ -587,7 +554,9 @@ export interface ParkYearlyPredictions {
  * window out.
  *
  * Returns `null` for anything that goes wrong, including the 404 a park without a forecast gets:
- * a park page must not fail over a chapter most of its readers scroll past.
+ * a park page must not fail over a chapter most of its readers scroll past. A degraded answer is
+ * asked for once more past the Data Cache, which ignores the API's `no-store` and would otherwise
+ * keep the empty outlook for the whole window.
  */
 export async function getParkYearlyPredictions(
   continent: string,
@@ -595,16 +564,17 @@ export async function getParkYearlyPredictions(
   city: string,
   parkSlug: string
 ): Promise<ParkYearlyPredictions | null> {
+  const path = `/v1/parks/${continent}/${country}/${city}/${parkSlug}/predictions/yearly`;
   try {
-    return await api.get<ParkYearlyPredictions>(
-      `/v1/parks/${continent}/${country}/${city}/${parkSlug}/predictions/yearly`,
-      {
-        next: {
-          revalidate: CACHE_TTL.predictions,
-          tags: ['parks', parkCacheTag(continent, country, city, parkSlug)],
-        },
-      }
-    );
+    const cached = await api.get<ParkYearlyPredictions>(path, {
+      next: {
+        revalidate: CACHE_TTL.predictions,
+        tags: ['parks', parkCacheTag(continent, country, city, parkSlug)],
+      },
+    });
+    if (!cached.isDegraded) return cached;
+    const fresh = await api.get<ParkYearlyPredictions>(path, { cache: 'no-store' });
+    return fresh.isDegraded ? null : fresh;
   } catch {
     return null;
   }
@@ -618,7 +588,7 @@ export async function getParkYearlyPredictions(
 export function getPopularParks(limit = 20): Promise<PopularPark[]> {
   return api.get<PopularPark[]>('/v1/parks/popular', {
     params: { limit },
-    next: { revalidate: 1800, tags: ['popular-parks'] },
+    next: { revalidate: CACHE_TTL.popularParks, tags: ['popular-parks'] },
   });
 }
 

@@ -16,7 +16,7 @@ import type { AuthorOption, CategoryOption, EditorInitialData } from './_lib/ini
 import type { EditorFrontmatter, LocaleDraft } from './_lib/types';
 import type { NewAuthorDraft } from './_components/author-create-modal';
 import type { NewCategoryDraft } from './_components/category-create-modal';
-import { emptyDraft, isDraftFilled, slugify, toFrontmatter } from './_lib/types';
+import { emptyDraft, isDraftFilled, rawForTranslation, slugify, toFrontmatter } from './_lib/types';
 import {
   clearDraftSnapshot,
   isMeaningfulSnapshot,
@@ -293,7 +293,8 @@ export function BlogEditorClient({ initialData }: { initialData: EditorInitialDa
       if (!isDraftFilled(d)) continue;
       perLocale[l] = {
         slug: d.slug.trim() || baseSlug,
-        frontmatter: toFrontmatter(d.fm),
+        // A new post's locales share the source slug as key, or the manifest keys each by its own.
+        frontmatter: toFrontmatter({ ...d.fm, translationKey: d.fm.translationKey || baseSlug }),
         body: d.body,
       };
     }
@@ -432,6 +433,8 @@ export function BlogEditorClient({ initialData }: { initialData: EditorInitialDa
       const baseFm = src.fm;
       const newFm: EditorFrontmatter = {
         ...baseFm,
+        // A locale that already has a file keeps its own unknown fields (its caption, its time).
+        raw: drafts[target]?.fm.raw ?? rawForTranslation(baseFm.raw),
         title: data.title,
         excerpt: data.excerpt,
         seoTitle: data.seoTitle ?? '',

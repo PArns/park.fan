@@ -31,7 +31,7 @@ export function SeasonalBadge({
   isCurrentlyInSeason,
   className,
 }: SeasonalBadgeProps) {
-  const t = useTranslations('parks');
+  const t = useTranslations('parks.seasonal');
   const season = getSeasonLabel(seasonMonths ?? null);
   const offSeason = isCurrentlyInSeason === false;
 
@@ -41,15 +41,15 @@ export function SeasonalBadge({
   // did not connect to the card's „Geschlossen", so it says both halves: „Nur im Winter".
   const label = offSeason
     ? season === 'winter'
-      ? t('seasonalWinterOnly')
+      ? t('winterOnly')
       : season === 'summer'
-        ? t('seasonalSummerOnly')
-        : t('seasonalOffSeason')
+        ? t('summerOnly')
+        : t('offSeason')
     : season === 'winter'
-      ? t('seasonalWinter')
+      ? t('winter')
       : season === 'summer'
-        ? t('seasonalSummer')
-        : t('seasonal');
+        ? t('summer')
+        : t('label');
 
   return (
     <Badge

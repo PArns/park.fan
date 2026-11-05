@@ -396,8 +396,6 @@
       "termsIntro": "Bordjes en park-apps gaan ervan uit dat je ze kent."
     },
     "title": "Meer loopings, minder wachten",
-    "heroWelcome": "Welkom in {parkName}",
-    "heroNearPark": "{parkName} is in de buurt (binnen 5 km). Hieronder vind je actuele wachttijden, openingstijden en drukte – of zoek een ander park.",
     "heroWelcomeAttractions": "{count} attracties in bedrijf",
     "heroParkLink": "Naar park",
     "heroPlanToday": "Vandaag plannen",
@@ -491,12 +489,14 @@
     "searchAttractions": "Filter attracties...",
     "noAttractionsFound": "Geen attracties gevonden",
     "clearSearch": "Zoekopdracht wissen",
-    "seasonal": "Seizoensgebonden",
-    "seasonalWinter": "Winter",
-    "seasonalSummer": "Zomer",
-    "seasonalWinterOnly": "Alleen in de winter",
-    "seasonalSummerOnly": "Alleen in de zomer",
-    "seasonalOffSeason": "Buiten seizoen",
+    "seasonal": {
+      "label": "Seizoensgebonden",
+      "winterOnly": "Alleen in de winter",
+      "summerOnly": "Alleen in de zomer",
+      "offSeason": "Buiten seizoen",
+      "winter": "Winter",
+      "summer": "Zomer"
+    },
     "offSeasonCount": "{count} buiten seizoen",
     "filterSection": {
       "title": "Attracties verfijnen",
@@ -556,6 +556,7 @@
     "opensOn": "Opent op",
     "opensAt": "Opent om {time}",
     "opensInDays": "{count, plural, =1 {morgen} other {over # dagen}}",
+    "opensCountdownAt": "{when} om {time} uur",
     "opensInHours": "over {time} uur",
     "opensInMinutes": "over {count, plural, one {# minuut} other {# minuten}}",
     "offseason": "Buiten seizoen",
@@ -889,8 +890,12 @@
     "crowdToday": "Drukte vandaag",
     "crowdTodaySoFar": "tot nu toe",
     "crowdTodayShort": "Vandaag",
-    "localTime": "lokale tijd",
-    "influencingHolidays": "Vakantie in nabije regio’s",
+    "clock": {
+      "localTime": "lokale tijd"
+    },
+    "holidayContext": {
+      "influencingHolidays": "Vakantie in nabije regio’s"
+    },
     "influencingHolidaysBody": "Daar is nu schoolvakantie – van daaruit komen veel dagjesmensen. Reken op meer drukte en langere wachttijden dan normaal.",
     "influencingHolidaysEffect": "Daar is schoolvakantie, dus meer dagjesmensen dan normaal.",
     "influencingHolidaysShort": "Nabije regio’s",
@@ -1511,6 +1516,7 @@
       "tapHint": "Tik op een punt om die attractie vast te zetten.",
       "unpinHint": "Nog een keer tikken maakt hem los.",
       "allClosed": "Alle topattracties zijn nu gesloten.",
+      "nextShow": "Volgende show",
       "demoEnd": "Demo stoppen",
       "demoNoLocation": "Zonder locatie sta je vast op één plek in het park.",
       "dialGroup": "Kompas, noorden boven"
@@ -2363,6 +2369,8 @@
       "rides": "{count, plural, =0 {Geen attractie} one {Eén attractie} other {# attracties}}",
       "waiting": "Wachttijd bij elkaar",
       "waitingLabel": "Wachttijd",
+      "walking": "Looptijd tussen de blokken, zoals het plan die inrekent",
+      "walkingLabel": "Lopen",
       "done": "{done} van {total} gedaan",
       "blocks": "{count, plural, one {# blok} other {# blokken}}"
     },
@@ -3037,7 +3045,23 @@
     "flingRough1": "Het gaat hier wel flink tekeer!",
     "flingRough2": "Dit is net Mystery Castle!",
     "flingRough3": "“Never the same fear twice”, zeiden ze. Dit was drie keer dezelfde!",
-    "flingRough4": "Blijf zitten tijdens de rit!"
+    "flingRough4": "Blijf zitten tijdens de rit!",
+    "cardNow": "Op dit moment",
+    "cardForecastFor": "Verwachting voor {date}",
+    "cardPeakSoFar": "Piek tot nu toe",
+    "cardPeakExpected": "Verwachte piek",
+    "cardRidesOpen": "Attracties open",
+    "cardSeasonal": "Gemiddeld weer voor het seizoen",
+    "cardCalendarHint": "Tik op een dag voor de openingstijden.",
+    "cardCalendarLink": "Naar de wachttijden-kalender",
+    "cardCrowd": "Drukte",
+    "cardAvgWait": "Gem. wacht",
+    "cardHours": "Openingstijden",
+    "cardWeather": "Weer",
+    "cardHoliday": "Feestdag",
+    "cardShowsLink": "Alle shows in het park",
+    "cardRestaurantsLink": "Alle restaurants in het park",
+    "cardPaidExpress": "Betaalde snelle wachtrij"
   },
   "parkyPage": {
     "metaTitle": "Parky, de chatassistent van park.fan",

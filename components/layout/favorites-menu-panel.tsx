@@ -840,13 +840,13 @@ function venueRows(shows: FavoriteShow[], restaurants: FavoriteRestaurant[]) {
       id: show.id,
       title: stripNewPrefix(show.name),
       park: show.park ? stripNewPrefix(show.park.name) : null,
-      chapter: parkChapterUrl(show.url, 'shows'),
+      chapter: parkChapterUrl(show.url, 'shows', show.park),
     })),
     ...restaurants.map((restaurant) => ({
       id: restaurant.id,
       title: stripNewPrefix(restaurant.name),
       park: restaurant.park ? stripNewPrefix(restaurant.park.name) : null,
-      chapter: parkChapterUrl(restaurant.url, 'restaurants'),
+      chapter: parkChapterUrl(restaurant.url, 'restaurants', restaurant.park),
     })),
   ].map((v) => ({
     id: v.id,

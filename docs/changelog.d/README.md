@@ -21,6 +21,8 @@ Was sich geändert hat, warum es vorher falsch war, und die Zahl, die das belegt
 - **First line:** `### <title>`. The title is what the section is called in the log after the cut.
 - **Below it:** the section, in the voice of the ones already in `docs/changelog.md`: German,
   technical, the component or file, and the measured number.
+- **Links** are relative to the fragment's own file (`../rules/…`); the cut rewrites them for
+  `docs/changelog.md`.
 - **No `#` or `##` heading.** A fragment is one section; a subsection is `####`.
 - **No line of only `-`, `=` or `*`.** Under a paragraph that is a heading, and telling the two apart
   takes a Markdown parser, so the check refuses both. Use a blank line.

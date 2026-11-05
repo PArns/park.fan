@@ -110,6 +110,12 @@ export interface TrafficOverview extends AnalyticsWindow {
   previous: AnalyticsTotals | null;
   series: SeriesPoint[];
   realtime: { activeVisitors: number; perMinute: RealtimeMinute[] };
+  /**
+   * Requests the counter dropped as a bot's in the window, every kind of request. `null` under a
+   * language or filter, and while the window holds a day not fully counted (the first counted day
+   * and every day before it); missing on an API from before the count.
+   */
+  bots?: { hits: number | null } | null;
 }
 
 /** What `breakdown` can group by, and what a `filter` can name. */

@@ -27,6 +27,7 @@ import { CrosstabView } from './crosstab-view';
 import { EventLinks } from './event-links';
 import { TrafficFilterBar } from './filter-bar';
 import { HourlyNotice } from './hourly-notice';
+import { TrafficCsvButton } from './list-parts';
 import { UnsupportedNote } from './unsupported-note';
 
 /** The raw events behind the page, so every number on it can be taken apart. */
@@ -56,6 +57,7 @@ function ReachPanel({ filters }: { filters: TrafficFilters }) {
       <PanelHeader
         icon={ArrowDownToLine}
         title="Wie weit Parkseiten gelesen werden"
+        action={<TrafficCsvButton report="Lesetiefe" data={reach} filters={filters} />}
         hint="Je Stelle der Seite: wie viele Aufrufe sie ins Bild bekamen, und welcher Anteil aller Aufrufe der Seitenart das ist. Eine Stelle zählt auch dort, wo der Park das Kapitel nicht hat, die Zahl sagt also, wie weit gelesen wurde, nicht, wie oft das Kapitel gesehen wurde."
       />
       <PanelBody>

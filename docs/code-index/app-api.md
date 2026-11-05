@@ -283,7 +283,13 @@ Route `/api/glossary-search` (route).
 Route `/api/glossary-term-ids` (route).
 
 - `GET` _function_
-- `revalidate` _const_: The canonical list of glossary term ids, which this app owns and the API only stores; the API diffs it against the ids in `attraction_ride_profiles`.
+- `dynamic` _const_: The canonical list of glossary term ids, which this app owns and the API only stores; the API diffs it against the ids in `attraction_ride_profiles`.
+
+### [`health/route.ts`](../../app/api/health/route.ts)
+
+Route `/api/health` (route).
+
+- `GET` _function_: Whether api.park.fan can serve pages again, for the maintenance page's recovery poll: `ready` also checks Postgres and Redis, which a deploy restarts after the API itself.
 
 ### [`image/route.ts`](../../app/api/image/route.ts)
 
@@ -383,7 +389,7 @@ Route `/api/parks/near` (route).
 
 Route `/api/parks/popular` (route).
 
-- `GET` _function_: The most popular parks, each with its card photo.
+- `GET` _function_: The most popular parks, each with its card photo. With `locale`, the ones that language's readers opened most (`getMostViewedParks`, the hero's fallback); without, the API's request ranking.
 
 ### [`push/ride-alerts/route.ts`](../../app/api/push/ride-alerts/route.ts)
 

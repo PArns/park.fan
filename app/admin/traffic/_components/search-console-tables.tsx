@@ -30,7 +30,8 @@ import { TextInput } from '../../_ui/controls';
 import { useSearchConsoleData, useSearchConsoleDrill } from '../_lib/use-search-console';
 import type { TrafficFilterActions, TrafficFilters } from '../_lib/use-traffic';
 import { FilterChip } from './filter-bar';
-import { MoreButton, useShowMore, PageLinks } from './list-parts';
+import { MoreButton, TrafficCsvButton, useShowMore } from './list-parts';
+import { PageLinks } from '../../_ui/row-links';
 
 /** Rows asked for from the API; the list shows a dozen and the rest waits behind a button. */
 const ROWS_ASKED = 50;
@@ -220,6 +221,7 @@ export function SearchConsoleQueriesPanel({
       <PanelHeader
         icon={Search}
         title="Suchanfragen"
+        action={<TrafficCsvButton report="Google Suchanfragen" data={data} filters={filters} />}
         hint="Wonach gesucht wurde, bevor jemand auf park.fan geklickt hat. Google nennt seltene Anfragen nicht, die Liste ergibt deshalb weniger Klicks als die Summe oben. Ein Klick auf eine Anfrage zeigt darunter die Seiten dazu."
       />
       <RowSearch
@@ -389,6 +391,7 @@ export function SearchConsolePagesPanel({
       <PanelHeader
         icon={FileText}
         title="Seiten in der Google-Suche"
+        action={<TrafficCsvButton report="Google Seiten" data={data} filters={filters} />}
         hint="Welche Seiten Google zeigt, daneben die Besuche aus der Suche, die unser eigener Zähler gesehen hat. Er lässt Do Not Track, Global Privacy Control und Opt-out aus, die Zahlen weichen deshalb ab. Ein Klick auf eine Seite zeigt ihre Suchanfragen."
       />
       <RowSearch label="Seiten durchsuchen" placeholder="Pfad enthält…" onSearch={setSearch} />

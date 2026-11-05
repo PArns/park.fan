@@ -1,10 +1,12 @@
 import {
   searchPosition,
+  searchQueryLength,
   type SearchBrowseItem,
   type SearchResultKind,
   type SearchSurface,
   type SiteEventMap,
 } from '@/lib/analytics/site-analytics';
+import type { SearchTab } from '@/components/search/search-result-groups';
 import { isUuid } from '@/lib/utils';
 
 /**
@@ -55,8 +57,16 @@ export interface SearchSession {
   close(): void;
   /** A query long enough to search (three characters) has settled. Once per opening. */
   typed(): void;
-  /** A settled query found nothing on this surface. Once per opening. */
-  noResults(): void;
+  /**
+   * A settled `query` found nothing on this surface. Once per opening; the event carries the
+   * query's length class, never the query.
+   */
+  noResults(query: string): void;
+  /**
+   * The tab the result list shows, for a surface with tabs (the palette, the hero). Every click
+   * after it names that tab; a surface that never calls this sends no tab.
+   */
+  showTab(tab: SearchTab): void;
   /**
    * A result was opened; `index` is its 0-based place in its own group, `id` the result's own id,
    * which goes along as the entity when it is a UUID (a place's `city:slug` and a post's path are
@@ -89,6 +99,7 @@ export function createSearchSession(
   let openedOnce = false;
   let typed = false;
   let noResults = false;
+  let tab: SearchTab | undefined;
 
   const ensureOpen = () => {
     if (!openedOnce) session.open();
@@ -116,17 +127,20 @@ export function createSearchSession(
       typed = true;
       send('search_typed', { surface: current });
     },
-    noResults() {
+    noResults(query) {
       ensureOpen();
       if (noResults) return;
       noResults = true;
-      send('search_no_results', { surface: current });
+      send('search_no_results', { surface: current, length: searchQueryLength(query) });
+    },
+    showTab(next) {
+      tab = next;
     },
     resultClicked(result, index, id) {
       ensureOpen();
       send(
         'search_result_clicked',
-        { surface: current, result, position: searchPosition(index + 1) },
+        { surface: current, result, position: searchPosition(index + 1), ...(tab && { tab }) },
         entityOf(id)
       );
     },

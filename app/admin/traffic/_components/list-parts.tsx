@@ -1,54 +1,13 @@
 'use client';
 
 import { useState } from 'react';
-import Link from 'next/link';
-import { ExternalLink, Pencil } from 'lucide-react';
-import { pathEditorHref } from '@/lib/admin/site-analytics';
+import { DATACENTER_LABEL, serializeTrafficFilters } from '@/lib/admin/site-analytics';
+import { csvNamePart } from '@/lib/admin/report-csv';
+import { CsvButton } from '../../_ui/csv-button';
+import type { TrafficFilters } from '../_lib/use-traffic';
 
 /** Rows shown before the rest of a list waits behind a button. */
 export const LIST_SHOWN = 12;
-
-/** The icon link to a page on park.fan, opening in a new tab; `label` is the accessible name. */
-export function PublicLink({
-  href,
-  label = 'Auf park.fan öffnen',
-}: {
-  href: string;
-  label?: string;
-}) {
-  return (
-    <a
-      href={href}
-      target="_blank"
-      rel="noreferrer noopener"
-      title="Auf park.fan öffnen"
-      aria-label={label}
-      className="text-muted-foreground hover:text-primary flex h-6 w-6 items-center justify-center rounded"
-    >
-      <ExternalLink className="h-3.5 w-3.5" />
-    </a>
-  );
-}
-
-/** The two links every page row carries: the public page, and for a park or ride its editor. */
-export function PageLinks({ path }: { path: string }) {
-  const editor = pathEditorHref(path);
-  return (
-    <span className="flex shrink-0 items-center gap-1.5">
-      <PublicLink href={path} />
-      {editor && (
-        <Link
-          href={editor}
-          title="Im Editor öffnen"
-          aria-label="Im Editor öffnen"
-          className="text-muted-foreground hover:text-primary flex h-6 w-6 items-center justify-center rounded"
-        >
-          <Pencil className="h-3.5 w-3.5" />
-        </Link>
-      )}
-    </span>
-  );
-}
 
 /**
  * The first {@link LIST_SHOWN} rows of a list, or all of them once opened, with the props for its
@@ -82,5 +41,36 @@ export function MoreButton({
     >
       {open ? 'weniger zeigen' : `${total - LIST_SHOWN} weitere zeigen`}
     </button>
+  );
+}
+
+/**
+ * The CSV button of a traffic report: `data` is the answer the panel shows, and the file is named
+ * by `report` and the window, its first rows the window, language, filters and network scope.
+ */
+export function TrafficCsvButton({
+  report,
+  data,
+  filters,
+}: {
+  report: string;
+  data: unknown;
+  filters: TrafficFilters;
+}) {
+  const { from, to } = filters.window;
+  const filterList = serializeTrafficFilters(filters.filters);
+  return (
+    <CsvButton
+      data={data}
+      filename={`parkfan-${csvNamePart(report)}-${from}_${to}`}
+      meta={[
+        ['Bericht', report],
+        ['Von', from],
+        ['Bis', to],
+        ['Sprache', filters.locale ?? 'alle'],
+        ['Filter', filterList.length > 0 ? filterList.join(' | ') : 'keine'],
+        ['Rechenzentren', DATACENTER_LABEL[filters.datacenter].label],
+      ]}
+    />
   );
 }

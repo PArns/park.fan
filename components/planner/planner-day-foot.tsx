@@ -6,6 +6,7 @@ import { CalendarPlus } from 'lucide-react';
 import { PlannerOptimizeActions } from './planner-optimize-actions';
 import { PlannerMissingHeadliners } from './planner-missing-headliners';
 import { totalsFor } from '@/lib/planner/estimate';
+import { dayWalkMinutes } from '@/lib/planner/leg';
 import { roundWaitDeltaTo5 } from '@/lib/utils/wait-time';
 import { cn } from '@/lib/utils';
 import { formatShortDuration } from '@/lib/utils/duration';
@@ -65,6 +66,7 @@ export function PlannerDayFoot({
   const t = useTranslations('planner');
   const locale = useLocale();
   const totals = totalsFor(day, entries);
+  const walkMinutes = dayWalkMinutes(day, entries);
 
   return (
     <>
@@ -142,6 +144,14 @@ export function PlannerDayFoot({
                 <span className="text-foreground font-mono tabular-nums">
                   {/* Summed raw, printed on the five grid like every single wait. */}
                   {formatShortDuration(roundWaitDeltaTo5(totals.expectedMinutes), locale)}
+                </span>
+              </span>
+            )}
+            {walkMinutes > 0 && (
+              <span className="flex items-baseline gap-1" title={t('summary.walking')}>
+                <span>{t('summary.walkingLabel')}</span>
+                <span className="text-foreground font-mono tabular-nums">
+                  {formatShortDuration(walkMinutes, locale)}
                 </span>
               </span>
             )}

@@ -69,9 +69,27 @@ export interface NearbyParkInfo {
   backgroundPosition?: string;
 }
 
+/**
+ * A show of the park the visitor stands in. It has no page of its own, so `url` is the park's API
+ * path; contract in the backend's docs/frontend/discovery.md.
+ */
+export interface NearbyShow {
+  id: string;
+  name: string;
+  slug: string;
+  /** Metres from the request's point, `null` without coordinates. */
+  distance: number | null;
+  status: string;
+  /** Today's performances on the park-local operating day, past ones included, as UTC instants. */
+  showtimes: { startTime: string }[];
+  url: string | null;
+}
+
 export interface NearbyAttractionsData {
   park: NearbyParkInfo;
   rides: AttractionWithDistance[]; // Backend sends 'rides', not 'attractions'
+  /** Absent from APIs older than the field. */
+  shows?: NearbyShow[];
 }
 
 export interface ParkWithDistance {

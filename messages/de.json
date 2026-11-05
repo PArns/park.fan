@@ -396,8 +396,6 @@
       "termsIntro": "Schilder und Park-Apps setzen sie voraus."
     },
     "title": "Mehr Loopings, weniger Stehen",
-    "heroWelcome": "Herzlich willkommen im {parkName}",
-    "heroNearPark": "{parkName} ist in deiner Nähe (unter 5 km). Unten siehst du aktuelle Wartezeiten, Öffnungszeiten und Auslastung – oder suche einen anderen Park.",
     "heroWelcomeAttractions": "{count} Attraktionen in Betrieb",
     "heroParkLink": "Zum Park",
     "heroPlanToday": "Heute planen",
@@ -669,6 +667,7 @@
     "opensOn": "Öffnet am",
     "opensAt": "Öffnet um {time} Uhr",
     "opensInDays": "{count, plural, =1 {morgen} other {in # Tagen}}",
+    "opensCountdownAt": "{when}, {time} Uhr",
     "opensInHours": "in {time} Stunden",
     "opensInMinutes": "in {count, plural, one {# Minute} other {# Minuten}}",
     "offseason": "OffSeason",
@@ -814,12 +813,14 @@
     "searchAttractions": "Attraktionen filtern…",
     "noAttractionsFound": "Keine Attraktionen gefunden",
     "clearSearch": "Suche zurücksetzen",
-    "seasonal": "Saisonal",
-    "seasonalWinter": "Winter",
-    "seasonalSummer": "Sommer",
-    "seasonalWinterOnly": "Nur im Winter",
-    "seasonalSummerOnly": "Nur im Sommer",
-    "seasonalOffSeason": "Außer Saison",
+    "seasonal": {
+      "label": "Saisonal",
+      "winterOnly": "Nur im Winter",
+      "summerOnly": "Nur im Sommer",
+      "offSeason": "Außer Saison",
+      "winter": "Winter",
+      "summer": "Sommer"
+    },
     "offSeasonCount": "{count} außer Saison",
     "filterSection": {
       "title": "Attraktionen eingrenzen",
@@ -889,8 +890,12 @@
     "crowdToday": "Auslastung heute",
     "crowdTodaySoFar": "bisher",
     "crowdTodayShort": "Heute",
-    "localTime": "Ortszeit",
-    "influencingHolidays": "Ferien in Nachbarregionen",
+    "clock": {
+      "localTime": "Ortszeit"
+    },
+    "holidayContext": {
+      "influencingHolidays": "Ferien in Nachbarregionen"
+    },
     "influencingHolidaysBody": "Dort sind gerade Schulferien – von hier reisen viele Tagesgäste an. Rechne mit mehr Andrang und längeren Wartezeiten als üblich.",
     "influencingHolidaysEffect": "Schulferien – von dort kommen mehr Tagesgäste.",
     "influencingHolidaysShort": "Nachbarregionen",
@@ -1511,6 +1516,7 @@
       "tapHint": "Tipp auf einen Punkt, um die Bahn zu fixieren.",
       "unpinHint": "Nochmal tippen löst die Fixierung.",
       "allClosed": "Alle Top-Attraktionen haben gerade geschlossen.",
+      "nextShow": "Nächste Show",
       "demoEnd": "Demo beenden",
       "demoNoLocation": "Ohne Standort stehst du fest an einem Punkt im Park.",
       "dialGroup": "Kompass, Norden oben"
@@ -2363,6 +2369,8 @@
       "rides": "{count, plural, =0 {Keine Bahn} one {Eine Bahn} other {# Bahnen}}",
       "waiting": "Wartezeit zusammen",
       "waitingLabel": "Wartezeit",
+      "walking": "Fußwege zwischen den Blöcken, so wie der Plan sie einrechnet",
+      "walkingLabel": "Fußweg",
       "done": "{done} von {total} gefahren",
       "blocks": "{count, plural, one {# Block} other {# Blöcke}}"
     },
@@ -3037,7 +3045,23 @@
     "flingRough1": "Das geht aber ganz schön rund hier!",
     "flingRough2": "Das ist ja wie im Mystery Castle!",
     "flingRough3": "„Never the same fear twice“, hieß es. Das war jetzt dreimal dieselbe!",
-    "flingRough4": "Bitte während der Fahrt sitzen bleiben!"
+    "flingRough4": "Bitte während der Fahrt sitzen bleiben!",
+    "cardNow": "Gerade jetzt",
+    "cardForecastFor": "Prognose für {date}",
+    "cardPeakSoFar": "Spitze bisher",
+    "cardPeakExpected": "Erwartete Spitze",
+    "cardRidesOpen": "Attraktionen offen",
+    "cardSeasonal": "Wetter im Mittel der Jahreszeit",
+    "cardCalendarHint": "Tippe auf einen Tag, dann siehst du die Öffnungszeiten.",
+    "cardCalendarLink": "Zum Wartezeiten-Kalender",
+    "cardCrowd": "Auslastung",
+    "cardAvgWait": "Ø Wartezeit",
+    "cardHours": "Öffnungszeiten",
+    "cardWeather": "Wetter",
+    "cardHoliday": "Feiertag",
+    "cardShowsLink": "Alle Shows im Park",
+    "cardRestaurantsLink": "Alle Restaurants im Park",
+    "cardPaidExpress": "Express gegen Aufpreis"
   },
   "parkyPage": {
     "metaTitle": "Parky, der Chat-Assistent von park.fan",

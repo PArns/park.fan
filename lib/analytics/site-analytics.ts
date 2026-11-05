@@ -11,6 +11,7 @@ import { PARK_CALENDAR_SEGMENTS } from '@/lib/parks/calendar-segments';
 import { PARK_STATS_SEGMENTS } from '@/lib/parks/stats-segments';
 import { PARK_KIDS_SEGMENTS } from '@/lib/parks/kids-segments';
 import type { ParkyEntrance } from '@/lib/assistant/entrance';
+import type { SearchTab } from '@/components/search/search-result-groups';
 
 /**
  * Our own cookieless statistic on api.park.fan (`POST /v1/analytics/collect`): page views and
@@ -84,6 +85,9 @@ export type SearchResultKind =
 /** A 1-based result position, bucketed so a long list does not spread over fifty values. */
 export type SearchPosition = '1' | '2' | '3' | '4-5' | '6-10' | '11+';
 
+/** How long a query was, in characters and bucketed: the class of a query, never its text. */
+export type SearchQueryLength = '1-4' | '5-8' | '9-15' | '16+';
+
 /**
  * A menu of the header: the guides, news, parks, „Mehr" and favourites bands of the bar, and the
  * phone's sheet behind the burger.
@@ -91,7 +95,8 @@ export type SearchPosition = '1' | '2' | '3' | '4-5' | '6-10' | '11+';
 export type NavMenuId = 'guides' | 'news' | 'parks' | 'more' | 'favorites' | 'sheet';
 
 /** What was picked from a search surface's list before anything was typed. */
-export type SearchBrowseItem = 'nearby_park' | 'in_park_ride' | 'popular_park' | 'news' | 'guide';
+export type SearchBrowseItem =
+  'nearby_park' | 'in_park_ride' | 'popular_park' | 'favorite_park' | 'news' | 'guide';
 
 /** A step of the planner's wizard, in the order it asks them. */
 export type PlannerWizardStep = 'park' | 'date' | 'setup' | 'headliners';
@@ -187,11 +192,13 @@ type SiteEventProps = Record<string, string | number | boolean>;
 export interface SiteEventMap {
   search_opened: { surface: SearchSurface };
   search_typed: { surface: SearchSurface };
-  search_no_results: { surface: SearchSurface };
+  search_no_results: { surface: SearchSurface; length: SearchQueryLength };
   search_result_clicked: {
     surface: SearchSurface;
     result: SearchResultKind;
     position: SearchPosition;
+    /** The palette's or the hero's tab the result was listed under; a surface without tabs has none. */
+    tab?: SearchTab;
   };
   search_browse_clicked: {
     surface: SearchSurface;
@@ -439,6 +446,15 @@ export function sitePageTypeOf(pathname: string): SitePageType {
   if (PLANNER_SEGMENT_SET.has(first)) return 'planner';
   if (first === 'favorites') return 'favorites';
   return 'other';
+}
+
+/** The bucket of a query's length, counted after trimming. */
+export function searchQueryLength(query: string): SearchQueryLength {
+  const length = query.trim().length;
+  if (length <= 4) return '1-4';
+  if (length <= 8) return '5-8';
+  if (length <= 15) return '9-15';
+  return '16+';
 }
 
 /** The bucket of a 1-based result position. */

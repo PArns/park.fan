@@ -2,7 +2,7 @@
 title: 'Magic Kingdom: la coda più lunga è quella di TRON'
 translationKey: magic-kingdom-guide
 date: '2026-09-30'
-updatedAt: '2026-10-14'
+updatedAt: '2026-11-05'
 author: patrick
 mode: published
 featured: false
@@ -354,9 +354,10 @@ rifacendo lo spettacolo con una nuova figura animata di Walt Disney e scene dei
 decenni più recenti, e i genitori avranno le voci di Jamie Lee Curtis e Bryan
 Cranston. Disney conta di riaprirlo nella tarda primavera del 2027.
 
-La Walt Disney World Railroad è chiusa per manutenzione dal 28 settembre 2026 e
-dovrebbe ripartire a novembre. Da quando Frontierland è in trasformazione il
-treno va solo da Main Street a Fantasyland e non fa più il giro del parco.
+La Walt Disney World Railroad ha chiuso per manutenzione il 28 settembre 2026 ed
+è ripartita il 30 ottobre. Da quando Frontierland è in trasformazione il treno va
+solo da Main Street a Fantasyland e non fa più il giro del parco. La stazione di
+Frontierland resta chiusa.
 
 Nel 2026 il castello ha ricevuto colori nuovi. Per il 2027 Disney ha annunciato
 serate dopo la chiusura del parco, Disney After Hours, con un biglietto a parte

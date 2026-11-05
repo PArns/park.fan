@@ -92,7 +92,8 @@ function daySignals(
 function AttractionHistoryDayComponent({ day, yMax }: AttractionHistoryDayProps) {
   const t = useTranslations('attractions');
   const tCommon = useTranslations('common');
-  const tParks = useTranslations('parks');
+  const tCrowd = useTranslations('parks.crowdLevels');
+  const tHolidays = useTranslations('parks.holidayContext');
   const tLegend = useTranslations('attractions.historyLegend');
   const locale = useLocale();
 
@@ -128,15 +129,15 @@ function AttractionHistoryDayComponent({ day, yMax }: AttractionHistoryDayProps)
 
   const statusLabel = isOpen
     ? colored
-      ? tParks(`crowdLevels.${colored}`)
-      : tParks('crowdLevels.unknown')
+      ? tCrowd(colored)
+      : tCrowd('unknown')
     : day.attractionStatus === 'PARK_CLOSED'
       ? t('parkClosed')
       : day.attractionStatus === 'NOT_YET_OPEN'
         ? t('notYetOpen')
         : day.attractionStatus === 'CLOSED_RIDE'
           ? t('rideClosed')
-          : tParks('crowdLevels.unknown');
+          : tCrowd('unknown');
 
   /**
    * The bar's segments, each with the name of what it marks: the legend names the category, only
@@ -147,7 +148,7 @@ function AttractionHistoryDayComponent({ day, yMax }: AttractionHistoryDayProps)
       (day.scheduleData?.holidayType === 'school'
         ? translateHolidayName(day.scheduleData?.holidayName, locale)
         : '') || tLegend('schoolVacation'),
-    neighbor: tParks('influencingHolidays'),
+    neighbor: tHolidays('influencingHolidays'),
     holiday: translateHolidayName(day.scheduleData?.holidayName, locale) || tLegend('holiday'),
     bridge: tLegend('bridgeDay'),
   });
@@ -161,7 +162,7 @@ function AttractionHistoryDayComponent({ day, yMax }: AttractionHistoryDayProps)
     day.scheduleData?.isBridgeDay ? tLegend('bridgeDay') : null,
     (day.scheduleData?.influencingHolidays?.length ?? 0) > 0 &&
     day.attractionStatus !== 'PARK_CLOSED'
-      ? tParks('influencingHolidays')
+      ? tHolidays('influencingHolidays')
       : null,
   ]
     .filter(Boolean)

@@ -18,6 +18,7 @@ import {
   headingFromOrientation,
   normalizeDegrees,
   niceRange,
+  nextShow,
   placeLabels,
   placeMarkers,
   relocate,
@@ -413,6 +414,25 @@ test('a smaller marker lets its label sit closer', () => {
     face: 45,
   });
   assert.ok(small[0].x < big[0].x, `${small[0].x} against ${big[0].x}`);
+});
+
+test('the next show is the first performance still to come, across shows', () => {
+  const show = (id, ...times) => ({
+    id,
+    name: id,
+    slug: id,
+    distance: null,
+    status: 'OPERATING',
+    url: null,
+    showtimes: times.map((t) => ({ startTime: `2026-11-05T${t}:00Z` })),
+  });
+  const shows = [show('near', '10:00', '15:00'), show('far', '13:30', '15:00')];
+  const now = Date.parse('2026-11-05T12:00:00Z');
+  assert.deepEqual(nextShow(shows, now), { show: shows[1], startTime: '2026-11-05T13:30:00Z' });
+  // Same start: the nearer show, listed first.
+  assert.equal(nextShow(shows, Date.parse('2026-11-05T14:00:00Z')).show.id, 'near');
+  assert.equal(nextShow(shows, Date.parse('2026-11-05T15:00:00Z')), null);
+  assert.equal(nextShow(undefined, now), null);
 });
 
 console.log(`\n${passed} tests passed.`);

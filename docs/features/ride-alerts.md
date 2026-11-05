@@ -50,10 +50,9 @@ over (`usePushFollowRemoval`).
 `/v1/push` (`available`, `publicKey`, `topics`) with `no-store`, so a deploy that adds the keypair
 shows the bells at once. `fetchAvailability()` memoizes only a successful answer for the page's
 life. `urlBase64ToUint8Array` (`lib/push/vapid-key.ts`) turns the base64url key into the bytes
-`pushManager.subscribe` takes. The relay answers `{ available: false }` for any upstream failure,
-so through the relay an API outage reads as `not-configured`; only a direct call
-(`NEXT_PUBLIC_API_DIRECT=1`, [the rule](../rules/a-request-no-cache-can-share-goes-to-the-api-directly.md))
-can end in `probe-failed`.
+`pushManager.subscribe` takes. The relay passes the API's status through (`relayToApi`), and 502
+when the API cannot be reached, so an outage ends in `probe-failed` through the relay as on a direct
+call (`NEXT_PUBLIC_API_DIRECT=1`, [the rule](../rules/a-request-no-cache-can-share-goes-to-the-api-directly.md)).
 
 ## Ride alerts
 

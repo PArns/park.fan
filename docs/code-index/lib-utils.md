@@ -57,6 +57,7 @@ The arithmetic behind the in-park compass (`ParkCompass`): which way a ride lies
 - `rideAhead` _function_: The ride the reader is facing: the one whose bearing lies nearest the heading, within `reach` degrees either side (the dial's view cone with a little give), or `null`.
 - `compassPoint` _function_: The point of the compass a bearing falls in, 45° each, north from 337.5° to 22.5°.
 - `stableOrder` _function_: The rides nearest first, but a row only overtakes the one above it when it is nearer by more than `tolerance` metres, so GPS jitter does not reorder rows (links) under the thumb.
+- `nextShow` _function_: The first performance after `nowMs` across the park's shows, with its show, or `null` when none is left today. Ties go to the nearer show, since the API lists them nearest first.
 - `COMPASS_POINTS` _const_: The eight points of the compass, clockwise from north, as message keys.
 - Types: `OrientationReading`, `RadarPoint`, `LabelBox`, `CompassPoint`
 
@@ -231,7 +232,8 @@ Cached `Intl` formatter factories. Constructing a formatter costs far more than 
 
 ### [`live-data-freshness.ts`](../../lib/utils/live-data-freshness.ts)
 
-- `newestQueueUpdate` _function_: The newest `lastUpdated` of any queue in the server-rendered seed, or `null`.
+- `liveDataAsOf` _function_: The time the „as of" line shows, or `null`: when the API built the park payload the page holds (`dataTimestamp`), from the poll's answer once there is one, else from the server-rendered seed (to crawlers, without JavaScript, and in the …
+- `newestQueueUpdate` _function_: The newest `lastUpdated` of any queue in the server-rendered seed, or `null`: when the backend last heard from the park, for a payload that has no `dataTimestamp` yet.
 - `liveDataHint` _function_: Whether the line should carry a warning, and which one. `now === null` is the pre-mount render, where no clock is read, so no warning.
 - `LIVE_DATA_STALE_AFTER_MS` _const_: How old the park page's live data may get before the „as of" line says so. The poll runs every five minutes, so ten means at least one poll went missing.
 - Types: `LiveDataHint`

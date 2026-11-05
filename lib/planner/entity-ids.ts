@@ -1,11 +1,14 @@
 import { isUuid } from '@/lib/utils';
+import { plannerStore } from './store';
 
 /**
  * The UUIDs behind the slugs a plan is filed under, for the planner's events and nothing else: the
  * plan keys parks, rides and shows by slug, and an event names its subject by UUID. Learned where a
  * page already holds one (the page's park, a ride page's button, the wizard's search hit, a
- * `/plan/day` answer that carries them) and kept in memory for the tab, never stored. A slug no page
- * has named an id for has none, and its event goes without an entity rather than with a guess.
+ * `/plan/day` answer that carries them) and kept in memory for the tab. A park's id also goes into
+ * the plan with the next write to that park (`withDay`), so a later visit still knows it; rides and
+ * shows stay in memory. A slug nobody has named an id for has none, and its event goes without an
+ * entity rather than with a guess.
  */
 const parkIds = new Map<string, string>();
 const rideIds = new Map<string, string>();
@@ -57,9 +60,10 @@ export function rememberPlanDayIds(plan: PlanDayIds): void {
   for (const show of plan.shows ?? []) rememberShowId(plan.parkSlug, show.showSlug, show.showId);
 }
 
-/** A park's UUID, where a page has named it. */
+/** A park's UUID, where a page has named it in this tab or the plan has stored it. */
 export function parkIdOf(parkSlug: string | null | undefined): string | undefined {
-  return parkSlug ? parkIds.get(parkSlug) : undefined;
+  if (!parkSlug) return undefined;
+  return parkIds.get(parkSlug) ?? plannerStore.getSnapshot().parks[parkSlug]?.parkId;
 }
 
 /** A ride's UUID, where a page has named it. */

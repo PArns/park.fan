@@ -198,8 +198,9 @@ export default async function HomePage({ params }: HomePageProps) {
         </section>
 
         {/* Standing in a park: the headliners on a compass ring, straight under the hero that says
-          which park it is. Client-only and absent for everybody else — see ParkCompassSlot. */}
-        <ParkCompassSlot />
+          which park it is (below `lg` under the news, further down). Client-only and absent for
+          everybody else — see ParkCompassSlot. */}
+        <ParkCompassSlot placement="hero" />
 
         <div className="pk-reveal">
           <AnnounceSection locale={locale} />
@@ -210,6 +211,8 @@ export default async function HomePage({ params }: HomePageProps) {
         {/* What is new comes first: the hero already lists the parks near the visitor, and the
           news is what changes from one visit to the next. */}
         <HomeReading locale={locale as Locale} />
+
+        <ParkCompassSlot placement="news" />
 
         {/* The visitor's favourites, right under the news, for a visitor who has some only: for
           them it is what they came back for, and for anybody else an empty state about a feature

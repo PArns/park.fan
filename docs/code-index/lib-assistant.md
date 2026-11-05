@@ -10,6 +10,15 @@ by hand: change the comment in the code and re-run the script. -->
 - `readAssistantAction` _function_: The action as the widget will carry it out, or null. Checked again here although the API built it: the stream is model-driven, and a page change or a planner write is the user's state.
 - Types: `AssistantPlannerPark`, `AssistantCard`, `AssistantAction`, `AssistantActionChip`
 
+### [`cards.ts`](../../lib/assistant/cards.ts)
+
+- `calendarWeeks` _function_: The days of a calendar card as Monday-first weeks of seven, with `null` before the first day and after the last. Each day sits by its date, so a gap in the days stays a gap.
+- `parkHours` _function_: Opening to closing time in the park's own clock, read off the offsets the API wrote: „09:00–18:00" in German, „9 AM–6 PM" in English. Null when either is missing.
+- `parkClock` _function_: One time in the park's own clock, read off its offset like `parkHours`; null if unreadable.
+- `showTimes` _function_: A show's times split at `now`: those before it are past, the first one after is next. Without a clock (the server render and hydration) none is either, so both renders agree.
+- `presentTiles` _function_: The tiles a card has a value for, in the order they are drawn; a missing value has no tile.
+- Types: `AssistantCalendarCard`, `AssistantTilesCard`, `AssistantShowsCard`, `AssistantRestaurantsCard`, `ShowTime`, `AssistantTile`
+
 ### [`config.ts`](../../lib/assistant/config.ts)
 
 - `assistantVisible` _function_: Whether this browser sees Parky: `?assistant=on` forces it for the session (`off` ends that), otherwise a stable bucket 0–99 against the rollout share.

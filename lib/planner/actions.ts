@@ -16,6 +16,7 @@ import {
   MIN_CUSTOM_MINUTES,
 } from './types';
 import { clampRiderHeight } from './party';
+import { parkIdOf } from './entity-ids';
 import { SNAP_MIN_FINE } from './day-grid';
 import { dayClock, resolveTimeZone } from './park-time';
 
@@ -74,12 +75,14 @@ function withDay(
     days: {},
   };
 
+  const parkId = park.parkId ?? parkIdOf(parkSlug);
   return {
     ...state,
     parks: {
       ...state.parks,
       [parkSlug]: {
         ...park,
+        ...(parkId && { parkId }),
         // A park added under a slug alone gets its real name and path once a caller supplies them.
         name: seed?.parkName ?? park.name,
         geo: seed?.geo ?? park.geo,
@@ -181,7 +184,8 @@ export const DEFAULT_SHOW_MINUTES = 30;
 export function addShowEntry(state: PlannerState, params: AddShowParams): PlannerState {
   const { parkSlug, parkName, geo, timezone, date, showSlug, showName, startMinute } = params;
   const existing = state.parks[parkSlug]?.days[date]?.entries ?? [];
-  const at = clampMinute(startMinute);
+  // A show's time is the operator's, not a drag, so an unfolded 01:30 (1530) must not clamp to 25:00.
+  const at = clampMinute(startMinute, MAX_PLANNED_MINUTE);
   if (existing.some((e) => e.showSlug === showSlug && e.startMinute === at)) return state;
 
   const entry: PlannerEntry = withHourMirror({

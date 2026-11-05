@@ -7,6 +7,9 @@ import type { Locale } from '@/i18n/config';
  * route folder is the English slug, the other locales are served on it via a
  * rewrite in `next.config.ts` and canonicalized via redirects. Kept in its own
  * tiny module so server and client code can both import it cheaply.
+ *
+ * `next.config.ts` imports this module too, and it loads before the `@/` aliases
+ * exist, so the only import here stays a type import, which compiles away.
  */
 export const HOWTO_SEGMENTS: Record<Locale, string> = {
   en: 'how-park-fan-works',

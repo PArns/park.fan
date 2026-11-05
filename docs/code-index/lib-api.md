@@ -109,12 +109,11 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`kids-page.ts`](../../lib/api/kids-page.ts)
 
-- `hasParkKidsPage` _function_: Does this park have a „with kids" page at all? For the sitemap and links that must know whether the URL exists; reads the park payload from the Data Cache entry the park page already fills.
 - `parksWithKidsPage` _function_: Which of these parks have a "with kids" page, as a set of `parkGeoKey`s. A failed probe throws, for the reason `parksWithStatsPage` gives: one outage must not empty the sitemap's class.
 
 ### [`ml.ts`](../../lib/api/ml.ts)
 
-- `getMLDashboard` _function_: Get the ML model dashboard (accuracy, coverage, model health), cached a day because training runs once a day. This fetch sets the ISR window of the pages that render `MLStatsSection`, including the homepage.
+- `getMLDashboard` _function_: Get the ML model dashboard (accuracy, coverage, model health), cached a day because training runs once a day. This fetch sets the ISR window of the pages that render `MLStatsSection` (`/fancast`).
 - `getMLMetricsHistory` _function_: Get ML metrics history for sparklines (oldest first, up to `limit`), cached a day likewise.
 
 ### [`park-live-projection.ts`](../../lib/api/park-live-projection.ts)
@@ -123,12 +122,12 @@ by hand: change the comment in the code and re-run the script. -->
 - `leanParkForLivePoll` _function_: Project a park down to `LiveParkSnapshot`.
 - `mergeLiveParkSnapshot` _function_: Lay a `LiveParkSnapshot` back over the server-rendered park.
 - `leanParkForCalendarShell` _function_: Trim for the serialized park on the park SUB-pages (calendar, wait-time record), which render no attraction cards: only `ParkTodayPanel`'s headliner rows and `useParkTileItems` read `park.attractions`, and they need a dozen fields.
+- `leanParkForAttractionShell` _function_: Trim for the ATTRACTION page's `initialPark` prop — the React Query seed for `useLiveAttractionData`, serialized into the HTML of every attraction page.
 - Types: `LiveAttractionSnapshot`, `LiveRestaurantSnapshot`, `LiveParkSnapshot`
 
 ### [`parks.ts`](../../lib/api/parks.ts)
 
 - `leanParkForParkShell` _function_: Trim for the PARK page's serialized park snapshot.
-- `leanParkForAttractionShell` _function_
 - `getParkSeasons` _function_: A park's named seasons and events, for the public page.
 - `getParkByGeoPath` _function_: Get parks by geographic path. Cached in the Vercel Data Cache via `fetch` `next: { revalidate }` (stale-while-revalidate, 1-day window): the per-request `force-dynamic` park/attraction render reads this shared snapshot (keyed by the …
 - `getParkByGeoPathFresh` _function_: Live (no-store) variant of `getParkByGeoPath` for the client poll path.
@@ -152,6 +151,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `relayJsonWrite` _function_: Relays a write with the request's JSON body forwarded as-is, or answers 400 when not JSON.
 - `relayPushGet` _function_: Relays `GET <apiPath>?endpoint=…`, the „this browser's own rows" read of alerts and follows.
 - `relayPushWrite` _function_: Relays a push `POST` or `DELETE` with the request's JSON body forwarded as-is.
+- `PUSH_UNREACHABLE` _const_: The error every push relay's 502 carries when the backend cannot be reached.
 
 ### [`ride-figures.ts`](../../lib/api/ride-figures.ts)
 

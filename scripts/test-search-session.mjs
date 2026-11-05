@@ -44,13 +44,36 @@ test('an opening types once and finds nothing once, however many queries it runs
   const { session, sent } = recorded('header');
   session.open();
   session.typed();
-  session.noResults();
+  session.noResults('xyz');
   session.typed();
-  session.noResults();
+  session.noResults('xyzz');
   assert.deepEqual(
     sent.map(([name]) => name),
     ['search_opened', 'search_typed', 'search_no_results']
   );
+});
+
+test('no results names the length class of the query, never the query', () => {
+  const lengths = ['abc', ' abcde ', 'Phantasialand B', 'Phantasialand Brühl'].map((query) => {
+    const { session, sent } = recorded('header');
+    session.noResults(query);
+    return sent.at(-1)[1].length;
+  });
+  assert.deepEqual(lengths, ['1-4', '5-8', '9-15', '16+']);
+});
+
+test('a click names the tab the list showed, and a surface without tabs names none', () => {
+  const { session, sent } = recorded('header');
+  session.resultClicked('park', 0);
+  session.showTab('attraction');
+  session.resultClicked('attraction', 1);
+  assert.deepEqual(sent.slice(1), [
+    ['search_result_clicked', { surface: 'header', result: 'park', position: '1' }],
+    [
+      'search_result_clicked',
+      { surface: 'header', result: 'attraction', position: '2', tab: 'attraction' },
+    ],
+  ]);
 });
 
 test('the next opening counts its query again', () => {

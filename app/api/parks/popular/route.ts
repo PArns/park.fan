@@ -6,8 +6,7 @@ import { enrichParksWithImages } from '@/lib/utils/park-assets';
 
 /**
  * The most popular parks, each with its card photo. With `locale`, the ones that language's readers
- * opened most (`getMostViewedParks`, the hero's fallback); without, the API's request ranking,
- * which the maintenance page also polls to see whether the API is back.
+ * opened most (`getMostViewedParks`, the hero's fallback); without, the API's request ranking.
  */
 export async function GET(request: NextRequest) {
   const params = new URL(request.url).searchParams;

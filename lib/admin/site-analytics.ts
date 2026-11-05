@@ -445,6 +445,7 @@ export const BROWSE_ITEM_LABEL: Record<SearchBrowseItem, string> = {
   nearby_park: 'Park in der Nähe',
   in_park_ride: 'Fahrgeschäft im Park',
   popular_park: 'Beliebter Park',
+  favorite_park: 'Favorisierter Park',
   news: 'News',
   guide: 'Guide',
 };
@@ -605,11 +606,11 @@ export const EVENT_INFO: Record<SiteEventName, EventInfo> = {
   },
   search_no_results: {
     label: 'Suche ohne Treffer',
-    when: 'Eine Eingabe ab drei Zeichen findet nichts.',
+    when: 'Eine Eingabe ab drei Zeichen findet nichts; mit der Länge der Eingabe, nie der Eingabe selbst.',
   },
   search_result_clicked: {
     label: 'Treffer geöffnet',
-    when: 'Ein Treffer der Suche wird angeklickt; mit Feld, Treffertyp und Position.',
+    when: 'Ein Treffer der Suche wird angeklickt; mit Feld, Treffertyp, Position und, in Palette und Startseiten-Suche, dem Reiter.',
   },
   search_browse_clicked: {
     label: 'Vorschlag geöffnet',
@@ -901,6 +902,7 @@ const PROP_LABEL: Record<string, string> = {
   menu: 'Menü',
   entrance: 'Auftritt',
   line: 'Spruch',
+  length: 'Länge der Eingabe',
 };
 
 /**
@@ -1040,6 +1042,7 @@ export function propLabel(prop: string): string {
 /** How a property's value reads: search fields, result kinds and suggestions get their words. */
 export function propValueLabel(prop: string, value: string): string {
   if (prop === 'position') return `Platz ${value}`;
+  if (prop === 'length') return `${value} Zeichen`;
   if (prop === 'surface') return surfaceLabel(value);
   if (prop === 'result') return resultKindLabel(value);
   if (prop === 'item') return browseItemLabel(value);
@@ -1053,8 +1056,8 @@ export function propValueLabel(prop: string, value: string): string {
 }
 
 /**
- * The values of one property in the order they read best: positions first to last, depths shallow
- * to deep and a park page's places top to bottom, everything else as the API sent them, which is
+ * The values of one property in the order they read best: positions first to last, depths and
+ * query lengths shallow to deep and a park page's places top to bottom, everything else as the API sent them, which is
  * biggest first.
  */
 export function sortPropValues<Value extends { value: string }>(
@@ -1062,6 +1065,7 @@ export function sortPropValues<Value extends { value: string }>(
   values: readonly Value[]
 ): Value[] {
   if (prop === 'depth') return [...values].sort((a, b) => Number(a.value) - Number(b.value));
+  if (prop === 'length') return [...values].sort((a, b) => parseInt(a.value) - parseInt(b.value));
   if (prop === 'section') {
     const place = (value: string) => {
       const index = (SEEN_SECTION_ORDER as readonly string[]).indexOf(value);

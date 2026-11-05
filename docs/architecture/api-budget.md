@@ -116,6 +116,10 @@ render appears within one poll.
   would not have anyway: +39 B brotli per poll on Epcot's 33 rides.
 - Each ride's `park: { slug }`, the key `enrichAttractionsWithImages` looks a photo up by, is
   stripped after the lookup: nothing reads a park that carries only a slug.
+- `dataTimestamp`, the time the API built the payload, rides every poll: the „as of" line over the
+  ride list shows it (`liveDataAsOf`), because a cached answer can be five minutes older than its
+  arrival. A payload without it falls back to the poll's arrival, and the server render to its
+  newest `queues[].lastUpdated` (a closed park's queues report closing time all night).
 
 **Shows and restaurant status are day-scoped.** They do not move between two polls; they move once,
 at opening. The API dates showtimes to today and reports every show CLOSED while the park is
@@ -156,6 +160,12 @@ ones. `HourlyPrediction.hour` is a **UTC** hour: `upcomingHourlyPredictions`
 `leanAttractionForDetail` keeps four schedule fields: `date` and `scheduleType` for
 `AttractionHistoryGrid` (ride closed vs park closed) and today's `openingTime`/`closingTime` for
 `DailyWaitTimeChartClient`'s axis.
+
+The detail's `hasDayCurve` decides whether the chart asks `/stats/day` for its P25–P90 corridor:
+`false` (most rides; 34 of 454 had a curve in the backend's sample) means a 404, so
+`useRideDayCurve` sends nothing; `true` or absent (unknown to the API) asks as before. The flag
+reaches the chart through the client's own detail query, not the ride shell, which is built from
+the park payload and never carries it.
 
 ### Park schedule: only today's holiday context ships
 

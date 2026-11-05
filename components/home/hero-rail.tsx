@@ -258,7 +258,7 @@ function BrowseCard({ item, href }: { item: NearbySearchItem; href: string }) {
             <span className="text-muted-foreground text-sm font-semibold">{tCommon('min')}</span>
           </>
         ) : item.status ? (
-          // Shut or down: how far off the next opening is („Öffnet morgen", „Öffnet in 2:33 Stunden"),
+          // Shut or down: how far off the next opening is („Öffnet morgen, 10:00 Uhr", „Öffnet in 2:33 Stunden"),
           // which says more at a glance than its date.
           <span
             title={item.statusCountdown ? item.statusLabel : undefined}
@@ -300,9 +300,9 @@ function BrowseCard({ item, href }: { item: NearbySearchItem; href: string }) {
  * (`useHeroBrowseParks`), under the heading row the search list uses. Every state has the same
  * card box, so the skeleton becomes the answer without moving anything.
  *
- * Under the cards the location row (`HomeLocationRow`). On a phone a visitor in or next to a park
- * gets the park's block (`HeroParkActions`) under it; from `md` it stands under the headline
- * (`HeroWithNearby`).
+ * Under the cards the location row (`HomeLocationRow`), and for a visitor in or next to a park the
+ * park's block (`HeroParkActions`) under it, at the hero's foot: it arrives after load, and there
+ * it moves nothing above it. On a desktop the rail ends below the first screen.
  */
 export function HeroRail({ className }: { className?: string }) {
   const t = useTranslations('nearby');
@@ -356,7 +356,7 @@ export function HeroRail({ className }: { className?: string }) {
           on, or shows how to lift a block, at one height in every state. */}
       <HomeLocationRow className="mt-2" />
       {mounted && heroPark && (
-        <HeroParkActions park={heroPark.park} named className="mt-4 md:hidden" />
+        <HeroParkActions park={heroPark.park} named className="mt-4 md:grid-cols-4" />
       )}
     </div>
   );

@@ -2,6 +2,7 @@
 
 import { useLocale, useTranslations } from 'next-intl';
 import { useMinuteNow } from '@/lib/hooks/use-minute-now';
+import { formatClockTime } from '@/lib/utils/intl-format';
 import {
   formatParkOpening,
   formatParkOpeningCountdown,
@@ -27,8 +28,9 @@ export function useParkOpeningLabel(): (opening: ParkOpening, timeZone: string) 
 
 /**
  * The hero's rows with the status pill of a shut park reading its next opening (`nextParkOpening`
- * on the minute clock) in place of „Geschlossen", and how far off it is („morgen", „Samstag") for a row
- * wide enough to show it. A park with no opening ahead keeps „Geschlossen".
+ * on the minute clock) in place of „Geschlossen", and how far off it is („morgen, 10:00 Uhr",
+ * „Samstag, 10:00 Uhr") for a row wide enough to show it. A day-away countdown carries the clock
+ * time, since „morgen" alone doesn't say when to set off. A park with no opening ahead keeps „Geschlossen".
  * The hero's own hook, not the browse hook's: `parks` ships with the homepage, and the palette,
  * which every page carries, would pull the whole namespace into the chrome.
  */
@@ -51,18 +53,23 @@ export function useHeroStatusLabels(): (items: NearbySearchItem[]) => NearbySear
         item.timezone,
         nowMs
       );
-      return opening
-        ? {
-            ...item,
-            statusLabel: openingLabel(opening, item.timezone),
-            statusCountdown: formatParkOpeningCountdown(
-              opening,
-              nowMs,
-              countdownStrings,
-              item.timezone,
-              locale
-            ),
-          }
-        : item;
+      if (!opening) return item;
+      const countdown = formatParkOpeningCountdown(
+        opening,
+        nowMs,
+        countdownStrings,
+        item.timezone,
+        locale
+      );
+      return {
+        ...item,
+        statusLabel: openingLabel(opening, item.timezone),
+        statusCountdown: opening.today
+          ? countdown
+          : tParks('opensCountdownAt', {
+              when: countdown,
+              time: formatClockTime(opening.at, locale, item.timezone),
+            }),
+      };
     });
 }

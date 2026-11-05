@@ -13,7 +13,7 @@ Ride alerts and show reminders outside the planner: [ride alerts](../ride-alerts
 
 `usePushSubscription` resolves a `PushState`: `unsupported` (no service worker / `PushManager` /
 `Notification`) and `unavailable` (the deploy has no VAPID keypair: `/api/push` → `/v1/push`
-answers `available: false`, never cached) hide the control; `denied` explains; `off` / `working` /
+answers `available: false`, never cached; a failed probe hides it too) hide the control; `denied` explains; `off` / `working` /
 `on` are the switch. The VAPID keypair and the topic list are the API's; the frontend only reads
 them from `/api/push`.
 

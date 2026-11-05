@@ -5,6 +5,7 @@ import { useQuery } from '@tanstack/react-query';
 import { useLocale, useTranslations } from 'next-intl';
 import { HOME_NEARBY_LIMIT, useHomeNearbyParks } from '@/lib/hooks/use-nearby-parks';
 import { useAfterLoad } from '@/lib/hooks/use-after-load';
+import { useFavorites } from '@/lib/hooks/use-favorites';
 import { useLiveParksByRegion, type LiveParkFields } from '@/lib/hooks/use-live-parks-by-region';
 import { stripNewPrefix } from '@/lib/utils';
 import {
@@ -260,6 +261,39 @@ export function useHeroBrowseParks(): HeroBrowseParks {
       items: fallback.map(asPopularRow),
     };
   }, [inParkData, nearbyParks, popular, isPending, liveByParkId]);
+}
+
+/** How many starred parks the pre-query list shows under the browse rows. */
+const FAVORITE_ROWS = 4;
+
+/**
+ * The visitor's starred parks as rows for the pre-query list, at most {@link FAVORITE_ROWS}. It
+ * shares `useFavorites`' query, so on the homepage the favourites band has already asked; it does
+ * not poll, since the list is open for seconds.
+ */
+export function useFavoriteParkRows(): NearbySearchItem[] {
+  const { data } = useFavorites({ poll: false });
+  return useMemo(
+    () =>
+      (data?.parks ?? []).slice(0, FAVORITE_ROWS).map((park) => ({
+        type: 'park' as const,
+        id: park.id,
+        name: park.name,
+        slug: park.slug,
+        url: park.url,
+        city: park.city,
+        country: park.country,
+        status: park.status as ParkStatus,
+        load: park.analytics?.crowdLevel,
+        distanceM: park.distance,
+        imageUrl: park.backgroundImage ?? undefined,
+        imagePosition: park.backgroundPosition,
+        avgWaitTime: park.analytics?.avgWaitTime,
+        ...shutParkSchedules(park),
+        browseItem: 'favorite_park' as const,
+      })),
+    [data]
+  );
 }
 
 /**
