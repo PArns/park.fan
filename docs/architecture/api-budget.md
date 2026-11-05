@@ -160,6 +160,13 @@ ones. `HourlyPrediction.hour` is a **UTC** hour: `upcomingHourlyPredictions`
 `leanAttractionForDetail` keeps four schedule fields: `date` and `scheduleType` for
 `AttractionHistoryGrid` (ride closed vs park closed) and today's `openingTime`/`closingTime` for
 `DailyWaitTimeChartClient`'s axis.
+
+The detail's `hasDayCurve` decides whether the chart asks `/stats/day` for its P25–P90 corridor:
+`false` (most rides; 34 of 454 had a curve in the backend's sample) means a 404, so
+`useRideDayCurve` sends nothing; `true` or absent (unknown to the API) asks as before. The flag
+reaches the chart through the client's own detail query, not the ride shell, which is built from
+the park payload and never carries it.
+
 ### Park schedule: only today's holiday context ships
 
 The same field on the park payload is 8.4 KB over 17 days, and only today's entry is rendered

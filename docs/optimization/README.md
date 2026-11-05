@@ -54,8 +54,9 @@ the ride route is 55 % of measured CPU, the calendar 25 % and the park page 12 %
 The two largest are decisions, not refactors, and no code lever comes near them. Open work:
 PAR-1122 (the crawl surface, about 43,000 ride URLs that are 7,152 rides × 6 locales, and the AI
 crawlers' share of the sweep, plus the measurements only the dashboards give), PAR-1123 (the
-frontend code levers and the last on-demand ISR routes), PAR-1124 (a `hasDayCurve` flag, so a ride
-page stops asking for a day curve that answers 404 for about 92 % of rides).
+frontend code levers and the last on-demand ISR routes). PAR-1124 (a ride page stops asking for a
+day curve that answers 404 for about 92 % of rides) is in the frontend and takes effect once the API
+sends `hasDayCurve` ([api budget](../architecture/api-budget.md#attraction-detail-58-kb--27-kb)).
 
 Not a lever: the header's mega-menu is the largest fixed part of every page's markup and of its
 render time, and it is server-rendered for the link graph on purpose

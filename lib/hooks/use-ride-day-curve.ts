@@ -9,6 +9,11 @@ interface UseRideDayCurveParams {
   parkSlug: string;
   /** Pin a ride. Omit to let the backend pick one that reported today. */
   attraction?: string;
+  /**
+   * The ride detail's `hasDayCurve`. `false` means the route would answer 404, so nothing is asked;
+   * absent means the API did not know, and the hook asks.
+   */
+  hasDayCurve?: boolean;
   /** Keep the hook call unconditional while the caller has no park yet. */
   enabled?: boolean;
 }
@@ -25,6 +30,7 @@ export function useRideDayCurve({
   city,
   parkSlug,
   attraction,
+  hasDayCurve,
   enabled = true,
 }: UseRideDayCurveParams) {
   const releasedLast = useLoadLast();
@@ -41,7 +47,12 @@ export function useRideDayCurve({
       if (!res.ok) throw new Error(`day curve ${parkSlug}: ${res.statusText}`);
       return (await res.json()) as RideDayCurve;
     },
-    enabled: enabled && typeof window !== 'undefined' && releasedLast && Boolean(parkSlug),
+    enabled:
+      enabled &&
+      hasDayCurve !== false &&
+      typeof window !== 'undefined' &&
+      releasedLast &&
+      Boolean(parkSlug),
     staleTime: 5 * 60_000,
     gcTime: 10 * 60_000,
     refetchOnWindowFocus: false,

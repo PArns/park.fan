@@ -134,7 +134,14 @@ export function LiveAttractionData({
                 timezone={park.timezone}
                 schedule={detail!.schedule}
                 bestVisitTimes={detail!.bestVisitTimes ?? attraction.bestVisitTimes}
-                corridor={{ continent, country, city, parkSlug, attractionSlug }}
+                corridor={{
+                  continent,
+                  country,
+                  city,
+                  parkSlug,
+                  attractionSlug,
+                  hasDayCurve: detail!.hasDayCurve,
+                }}
                 translations={{
                   title: tChart('title'),
                   now: tChart('now'),
