@@ -47,6 +47,8 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`post-search.ts`](../../lib/navigation/post-search.ts)
 
+- `matchStrength` _function_: How well `word` sits in `text`, both folded: 1 where it starts a word ("dis" in "Disneyland"), half inside one from four letters on, so German compounds answer ("karte" in "Jahreskarte") while a short fragment does not drag in every word …
+- `queryWords` _function_: The words of a query, folded; `isPostQuery` and the search split it the same way.
 - `isPostQuery` _function_: Whether `query` is long enough to search for, rather than to keep showing the newest posts.
 - `searchPosts` _function_: The posts that match every word of `query`, best first, and how many there are in all. A word matches in the title, category, tags, linked parks or teaser, accents and case folded, weighted by `FIELD_WEIGHTS` and `matchStrength`.
 - `searchPostsBySection` _function_: `searchPosts` split into the articles and the news, each best first and cut to `limit`, with how many match in all: the search palette and `/search` list the two as groups of their own.

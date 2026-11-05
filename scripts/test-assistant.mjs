@@ -15,7 +15,12 @@ import assert from 'node:assert/strict';
 import { readSse } from '@/lib/assistant/sse.ts';
 import { directionsHref, safeAssistantHref } from '@/lib/assistant/links.ts';
 import { assistantVisible } from '@/lib/assistant/config.ts';
-import { postPlainText, POST_TEXT_LIMIT } from '@/lib/assistant/post-text.ts';
+import {
+  postPlainText,
+  postSections,
+  postTextForQuery,
+  POST_TEXT_LIMIT,
+} from '@/lib/assistant/post-text.ts';
 import { readAssistantAction } from '@/lib/assistant/actions.ts';
 import { localeSwitchPath } from '@/lib/assistant/switch-locale.ts';
 import { reopenAfterSwitch, takeReopen } from '@/lib/assistant/open.ts';
@@ -177,6 +182,61 @@ check(
 const long = postPlainText(`${'a'.repeat(6000)}\n\n${'b'.repeat(6000)}`);
 check(long.shortened, true, 'marks a cut text');
 check(long.text.length <= POST_TEXT_LIMIT, true, 'cuts at the limit');
+
+const guide = [
+  'Intro about the park.',
+  '## Getting there',
+  'Take the [train](/x) from Cologne.',
+  '```md\n## not a heading\n```',
+  '### Parking',
+  'Parking costs **ten** euros.',
+  '## Food',
+  `${'Restaurants serve schnitzel. '.repeat(150)}`,
+  '## Best days to visit',
+  `Tuesdays are quiet. ${'Crowds vary. '.repeat(300)}`,
+].join('\n\n');
+check(
+  postSections(guide).sections.map((section) => section.heading),
+  ['Getting there', 'Parking', 'Food', 'Best days to visit'],
+  'splits at H2 and H3, not inside code'
+);
+check(postSections(guide).intro, 'Intro about the park.', 'keeps the intro apart');
+check(
+  postSections(guide).sections[0].body,
+  'Take the train from Cologne.',
+  'plain-texts each section'
+);
+const parking = postTextForQuery(guide, 'what does parking cost?');
+check(parking.text.startsWith('Intro about the park.\n\nGetting there'), true, 'intro first');
+check(parking.text.includes('Parking costs ten euros.'), true, 'keeps the matching section');
+check(parking.omitted, [], 'leaves nothing out of a short post');
+const big = [
+  'Intro.',
+  ...['Arrival', 'Food', 'Hotels', 'Rides', 'Shows', 'Tickets'].map(
+    (heading) => `## ${heading}\n\n${`${heading} text here. `.repeat(100)}`
+  ),
+  '## Quiet days',
+  'Tuesdays in May are the quietest.',
+].join('\n\n');
+const quiet = postTextForQuery(big, 'Which days are quiet?');
+check(
+  quiet.text.includes('Tuesdays in May are the quietest.'),
+  true,
+  'reaches the end of a long post'
+);
+check(quiet.text.length <= POST_TEXT_LIMIT, true, 'stays within the limit');
+check(quiet.omitted.length > 0 && quiet.shortened, true, 'names what it left out');
+check(quiet.sections.length, 7, 'lists every heading');
+check(
+  quiet.text.indexOf('Arrival') < quiet.text.indexOf('Quiet days'),
+  true,
+  "keeps the post's order"
+);
+check(
+  postTextForQuery(big, 'hotels').omitted.includes('Hotels'),
+  false,
+  'a heading hit wins its section a place'
+);
 
 const park = {
   slug: 'phantasialand',

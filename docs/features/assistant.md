@@ -21,6 +21,16 @@ The chat goes to the API directly, not through a relay route, so a streamed answ
 Vercel function open. The config goes through a route because Cloudflare caches it, and a cached
 answer cannot carry a per-origin CORS header.
 
+`/api/assistant-post?locale=&slug=` returns a post's `title`, `date`, `url`, its plain `text` cut
+near 9,000 characters (`shortened` when cut) and `sections`, the H2 and H3 headings. A guide runs
+past that limit, so the API passes the visitor's question as `q` (at most 200 characters): `text`
+then holds the intro and the sections that answer it best, in the post's order, and `omitted` names
+the headings left out. A section scores with the site search's word matching: a hit in its heading
+counts four times one in its body, a word found in few sections counts more than one found in most,
+and words under four letters drop out, as a stand-in for stop words (`postTextForQuery` in
+`lib/assistant/post-text.ts`). Both routes are
+CDN-cached per URL.
+
 The browser sends one question at a time with the chat's id. The history stays on the API, so
 nobody can hand Parky made-up earlier answers.
 
@@ -403,7 +413,7 @@ the planner opening as `planner_opened` with source `assistant`.
 ## Checks
 
 `pnpm test:assistant` covers the stream reader, the link checks, the rollout decision, the post
-text, the action checks (a link carried out as the path it was checked as, the planner's modes, zones
+text and its sections for a question, the action checks (a link carried out as the path it was checked as, the planner's modes, zones
 and block lengths, only the six locales and nothing riding along with a switch), where a switch
 leads (the page's hreflang alternate, a respelled segment, never off the site or into a third
 language) and the reopen after it, the boredom stages on a fake clock, the opener's draw, and the
