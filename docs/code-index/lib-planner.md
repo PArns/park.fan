@@ -375,7 +375,7 @@ Whether the day's showtimes are drawn: useful, and a lot of ink over a plan on a
 ### [`shows.ts`](../../lib/planner/shows.ts)
 
 - `showDayHours` _function_: The clip window for one day, or `null` where the park's hours are unknown. `closeHour` is unfolded like the axis (`unfoldedCloseHour`), or a day crossing midnight clips every projected show.
-- `showLinesFor` _function_: One line per showtime, ascending. `times` is park-local `HH:mm`, like the axis, so nothing is converted; a malformed entry is dropped rather than drawn at midnight.
+- `showLinesFor` _function_: One line per showtime, ascending. `times` is park-local `HH:mm`, like the axis, so nothing is converted beyond unfolding a past-midnight time like the axis; a malformed entry is dropped rather than drawn at midnight.
 - `dayHasShowLines` _function_: Whether the grid draws any show on this day, asked exactly as the grid asks. The phone's show switch and its row render only where this is true.
 - `lineSource` _function_: The source a drawn line speaks with where several shows fold into one: a projection anywhere in the group, since a projection may never be drawn as a listing.
 - Types: `ShowDayHours`, `PlannerShowLine`

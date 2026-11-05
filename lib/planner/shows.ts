@@ -20,8 +20,9 @@ export interface ShowDayHours {
 /**
  * The clip window for one day, or `null` where the park's hours are unknown. `closeHour` is
  * unfolded like the axis ({@link unfoldedCloseHour}), or a day crossing midnight clips every
- * projected show. The showtimes are not unfolded: the API files a 00:45 show under the next date,
- * so each day's times are an ordinary 0–1439.
+ * projected show. {@link showLinesFor} unfolds the times to match: the API files a performance
+ * under the previous date while that date's published window still covers it, so on such a day a
+ * 00:00 show belongs after the evening, not before the opening.
  */
 export function showDayHours(
   openHour: number | null | undefined,
@@ -39,7 +40,7 @@ export function showDayHours(
 export interface PlannerShowLine {
   slug: string;
   name: string;
-  /** Park-local minutes since midnight. */
+  /** Park-local minutes since midnight, past 1439 for a show after midnight on a wrap day. */
   minute: number;
   source: PlanDayShowSource;
   /** `projected` only — the date these times were observed on. */
@@ -50,7 +51,8 @@ export interface PlannerShowLine {
 
 /**
  * One line per showtime, ascending. `times` is park-local `HH:mm`, like the axis, so nothing is
- * converted; a malformed entry is dropped rather than drawn at midnight.
+ * converted beyond unfolding a past-midnight time like the axis; a malformed entry is dropped
+ * rather than drawn at midnight.
  */
 export function showLinesFor(
   shows: readonly PlanDayShow[] | undefined | null,
@@ -64,7 +66,8 @@ export function showLinesFor(
       const hour = Number(match[1]);
       const minute = Number(match[2]);
       if (hour > 23 || minute > 59) continue;
-      const at = hour * 60 + minute;
+      let at = hour * 60 + minute;
+      if (hours && hours.closeMin >= 1440 && at < hours.openMin) at += 1440;
       // A projection carries another day's programme, often a longer one, so it is clipped to this
       // day's hours. A listing is never clipped: an operator's time for this date outranks hours we
       // derived.
