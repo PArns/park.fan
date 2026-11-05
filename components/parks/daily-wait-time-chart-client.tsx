@@ -44,6 +44,8 @@ interface DailyWaitTimeChartClientProps {
     city: string;
     parkSlug: string;
     attractionSlug: string;
+    /** The detail's flag; `false` skips the request. See `useRideDayCurve`. */
+    hasDayCurve?: boolean;
   };
 }
 
@@ -239,6 +241,7 @@ export function DailyWaitTimeChartClient(props: DailyWaitTimeChartClientProps) {
     city: corridor?.city ?? '',
     parkSlug: corridor?.parkSlug ?? '',
     attraction: corridor?.attractionSlug,
+    hasDayCurve: corridor?.hasDayCurve,
     enabled: Boolean(corridor),
   });
 

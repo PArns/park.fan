@@ -232,7 +232,8 @@ Cached `Intl` formatter factories. Constructing a formatter costs far more than 
 
 ### [`live-data-freshness.ts`](../../lib/utils/live-data-freshness.ts)
 
-- `newestQueueUpdate` _function_: The newest `lastUpdated` of any queue in the server-rendered seed, or `null`.
+- `liveDataAsOf` _function_: The time the „as of" line shows, or `null`: when the API built the park payload the page holds (`dataTimestamp`), from the poll's answer once there is one, else from the server-rendered seed (to crawlers, without JavaScript, and in the …
+- `newestQueueUpdate` _function_: The newest `lastUpdated` of any queue in the server-rendered seed, or `null`: when the backend last heard from the park, for a payload that has no `dataTimestamp` yet.
 - `liveDataHint` _function_: Whether the line should carry a warning, and which one. `now === null` is the pre-mount render, where no clock is read, so no warning.
 - `LIVE_DATA_STALE_AFTER_MS` _const_: How old the park page's live data may get before the „as of" line says so. The poll runs every five minutes, so ten means at least one poll went missing.
 - Types: `LiveDataHint`

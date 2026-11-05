@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button';
 import { LocalTime } from '@/components/ui/local-time';
 import { useLiveParkData } from '@/lib/hooks/use-live-park-data';
 import { useMinuteNow } from '@/lib/hooks/use-minute-now';
-import { liveDataHint, newestQueueUpdate } from '@/lib/utils/live-data-freshness';
+import { liveDataAsOf, liveDataHint } from '@/lib/utils/live-data-freshness';
 import { hasReadableWaitTimes } from '@/lib/utils/live-wait-times';
 import { cn } from '@/lib/utils';
 import type { ParkWithAttractions } from '@/lib/api/types';
@@ -56,7 +56,7 @@ export const LiveDataFreshness = memo(function LiveDataFreshness({
   const t = useTranslations('parks.liveFreshness');
   const now = useMinuteNow();
 
-  const { dataUpdatedAt, isError, fetchStatus, isFetching, failureCount, refetch } =
+  const { data, dataUpdatedAt, isError, fetchStatus, isFetching, failureCount, refetch } =
     useLiveParkData({
       continent,
       country,
@@ -68,7 +68,7 @@ export const LiveDataFreshness = memo(function LiveDataFreshness({
   // docs/rules/parks-we-cannot-read.md. Day-stable, so both sides of hydration agree.
   if (!hasReadableWaitTimes(park)) return null;
 
-  const asOf = dataUpdatedAt > 0 ? dataUpdatedAt : newestQueueUpdate(park.attractions);
+  const asOf = liveDataAsOf({ seed: park, live: data, dataUpdatedAt });
   const hint = liveDataHint({
     now,
     dataUpdatedAt,

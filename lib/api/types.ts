@@ -932,6 +932,11 @@ export interface ParkWithAttractions extends ParkBase {
   scheduleCoverage?: ScheduleCoverage;
   /** Day-stable, so it rides on the server render and the live merge carries it. */
   liveWaitTimes?: LiveWaitTimes;
+  /**
+   * When the API built this payload (ISO 8601, UTC), whichever cache served it. Absent on a payload
+   * built before the field existed; see `liveDataAsOf`.
+   */
+  dataTimestamp?: string;
 }
 
 /**
@@ -1024,6 +1029,11 @@ export interface AttractionResponse {
   trend?: 'up' | 'down' | 'stable' | null;
   statistics?: AttractionStatistics;
   predictionAccuracy?: PredictionAccuracy | null;
+  /**
+   * Whether `/stats/day?attraction=<slug>` answers for this ride. Absent means unknown (the API's
+   * hourly profile was not cached when it built the detail); see `useRideDayCurve`.
+   */
+  hasDayCurve?: boolean;
   history?: AttractionHistoryDay[];
   schedule?: ScheduleItem[];
   isSeasonal?: boolean;

@@ -76,6 +76,8 @@ export interface LiveParkSnapshot {
   analytics?: ParkWithAttractions['analytics'];
   weather?: ParkWithAttractions['weather'];
   nextSchedule?: ParkWithAttractions['nextSchedule'];
+  /** New on every rebuild, so it rides every poll: the „as of" line reads it. */
+  dataTimestamp?: ParkWithAttractions['dataTimestamp'];
   attractions: LiveAttractionSnapshot[];
   /**
    * The day-scoped block, sent only on a `?full=1` poll (see {@link leanParkForLivePoll}). Absent
@@ -107,6 +109,7 @@ export function leanParkForLivePoll(
     analytics: park.analytics,
     weather: park.weather,
     nextSchedule: park.nextSchedule,
+    dataTimestamp: park.dataTimestamp,
     attractions: (park.attractions ?? []).map((a) => ({
       id: a.id,
       name: a.name,
