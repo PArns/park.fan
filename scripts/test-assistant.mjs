@@ -249,12 +249,24 @@ const leer = postTextForQuery(
     'Dienstag und Mittwoch sind ruhig.',
     '### Der Monat',
     'Im Mai ist wenig los.',
+    '### Welche Ferien den Park füllen',
+    'Sommerferien. '.repeat(250),
+    '### Der Brückentag',
+    'Freitag. '.repeat(450),
     filler('Hotels'),
     filler('Shows'),
-    filler('Tickets'),
+    '## Häufige Fragen',
+    '### Wann ist im Europa-Park am wenigsten los?',
+    `Unter der Woche im Mai. ${'Mehr dazu oben. '.repeat(100)}`,
   ].join('\n\n'),
   'Wann ist Europa-Park am leersten?'
 );
+check(
+  leer.omitted.includes('Wann ist im Europa-Park am wenigsten los?'),
+  false,
+  'a matching FAQ entry beats the H3s of a winning H2 that do not match'
+);
+check(leer.omitted.includes('Der Brückentag'), true, 'those H3s fill only the room left');
 check(
   ['Der Wochentag', 'Der Monat'].filter((heading) => leer.omitted.includes(heading)),
   [],

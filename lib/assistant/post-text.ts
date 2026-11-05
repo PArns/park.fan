@@ -87,9 +87,10 @@ function namedShortWords(query: string): Set<string> {
  * A post's text for one question: the intro plus the sections that answer `query` best, in the
  * post's order, within {@link POST_TEXT_LIMIT}. Each query word matches by `matchStrength`, the
  * site search's matching, and counts {@link HEADING_WEIGHT} times in a heading, more the more
- * often it stands in the body, and less the more sections it is found in, so "how" or "the" add
- * next to nothing. An H2 that is taken brings its H3s along, best first, as far as they fit; an H3
- * taken without its H2 gets the H2's heading line above it. Only the best section is cut to fit;
+ * often it stands in the body, and less the more sections it is found in; found in more than half
+ * of them, it counts nothing. An H2 that is taken brings its H3s along as far as they fit, those without a
+ * hit of their own only after every other section with one; an H3 taken without its H2 gets the
+ * H2's heading line above it. Only the best section is cut to fit;
  * sections without a hit fill what room is left, in order. `sections` lists every heading,
  * `omitted` those whose text is left out, an H2 shown only as a heading line among them.
  */
@@ -112,7 +113,8 @@ export function postTextForQuery(
     const found = folded.filter(
       ({ heading, body }) => matchStrength(heading, word) + matchStrength(body, word) > 0
     ).length;
-    return found ? Math.log(1 + sections.length / found) : 0;
+    // A word in most sections, like the park's own name, tells none of them apart.
+    return found && found <= sections.length / 2 ? Math.log(1 + sections.length / found) : 0;
   });
   let h2 = -1;
   const parent = sections.map((section, index) => {
@@ -161,12 +163,21 @@ export function postTextForQuery(
     return true;
   }
 
-  for (const { index, score, text } of ranked) {
-    if (!take(index, text, score > 0 && chosen.size === 0)) continue;
-    for (const child of ranked) {
+  function takeFamily(index: number, text: string, mayCut: boolean, from: typeof ranked): void {
+    if (!take(index, text, mayCut)) return;
+    for (const child of from) {
       if (parent[child.index] === index) take(child.index, child.text, false);
     }
   }
+
+  // Sections with a hit come first, an H2 bringing only its H3s that have one too; then the
+  // other H3s of the H2s taken; then whatever fills the room, in order.
+  const hits = ranked.filter(({ score }) => score > 0);
+  for (const { index, text } of hits) takeFamily(index, text, chosen.size === 0, hits);
+  for (const { index, text } of ranked) {
+    if (chosen.has(parent[index])) take(index, text, false);
+  }
+  for (const { index, text } of ranked) takeFamily(index, text, false, ranked);
 
   const parts = [head];
   sections.forEach((section, index) => {
