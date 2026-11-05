@@ -63,8 +63,8 @@ export interface RideMotion {
   track: string;
   /** The hat's lift above the head (units) at moments of the ride, for the free fall. */
   hat?: { at: number; lift: number }[];
-  /** Where the boat hits the water and when, for the splash drawn there. */
-  splash?: { at: number; x: number; y: number };
+  /** When the boat hits the water (0 to 1), for the splash drawn with it. */
+  splash?: number;
   reach: RideReach;
 }
 
@@ -298,44 +298,35 @@ function tower(): RideMotion {
  * the bottom; the boat drifts on out of sight and floats back in from the right.
  */
 function flume(): RideMotion {
-  const lift = { x: -29.8, y: 25, angle: 30 };
-  const crest = { x: -37, y: 23.5, angle: 0 };
-  const bottom = { x: -59, y: REST.y, angle: -10 };
+  // The channel the boat runs down, kept short so the splash lands near the station.
+  const channel: RideStop[] = [
+    { x: 14, y: REST.y, angle: 0, at: 0.08 },
+    { x: 11, y: 48, angle: 20, at: 0.11 },
+    { x: -13, y: 27, angle: 40, at: 0.42 },
+    { x: -15.5, y: 26.2, angle: 10, at: 0.46 },
+    { x: -18, y: 26, angle: 0, at: 0.5, lift: 3 },
+    { x: -20, y: 27.2, angle: -40, at: 0.53, lift: 6 },
+    { x: -30.3, y: 46.5, angle: -62, at: 0.58, lift: 2 },
+  ];
+  const bottom = { x: -33, y: REST.y, angle: -10 };
   const stops: RideStop[] = [
     { ...REST, angle: 0, at: 0 },
-    { x: 14, y: REST.y, angle: 0, at: 0.08 },
-    { x: 10, y: 48, angle: 15, at: 0.11 },
-    { ...lift, at: 0.42 },
-    { x: -33.5, y: 23.6, angle: 10, at: 0.46 },
-    { ...crest, at: 0.5, lift: 3 },
-    { x: -40, y: 24.6, angle: -35, at: 0.53, lift: 6 },
-    { x: -55.3, y: 46.5, angle: -55, at: 0.58, lift: 2 },
+    ...channel,
     { ...bottom, at: 0.6, scaleX: 1.12, scaleY: 0.88 },
-    { x: -64, y: REST.y, angle: 0, at: 0.64 },
-    { x: -80, y: REST.y, angle: 0, at: 0.7, opacity: 0 },
+    { x: -38, y: REST.y, angle: 0, at: 0.64 },
+    { x: -52, y: REST.y, angle: 0, at: 0.7, opacity: 0 },
     { x: REST.x + 40, y: REST.y, angle: 0, at: 0.72, opacity: 0 },
     { x: REST.x + 26, y: REST.y, angle: 0, at: 0.8 },
     { x: REST.x + 8, y: REST.y - 0.8, angle: -3, at: 0.88 },
     { x: REST.x + 2, y: REST.y, angle: 2, at: 0.94 },
     { ...REST, angle: 0, at: 1 },
   ].map((stop) => ({ ...stop, opacity: stop.opacity ?? 1 }));
-  const rails = [
-    { x: REST.x + 40, y: REST.y },
-    { x: 14, y: REST.y },
-    { x: 10, y: 48 },
-    lift,
-    { x: -33.5, y: 23.6 },
-    crest,
-    { x: -40, y: 24.6 },
-    { x: -55.3, y: 46.5 },
-    bottom,
-    { x: -72, y: REST.y },
-  ];
+  const rails = [{ x: REST.x + 40, y: REST.y }, ...channel, bottom, { x: -46, y: REST.y }];
   return {
     stops,
     track: trackOf(rails),
     reach: reachOf(stops, rails),
-    splash: { at: 0.6, x: bottom.x, y: REST.y },
+    splash: 0.6,
   };
 }
 

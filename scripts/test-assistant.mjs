@@ -603,7 +603,7 @@ for (const ride of ['hills', 'tower', 'flume']) {
   );
 }
 check(
-  RIDE_MOTION.flume.splash?.at,
+  RIDE_MOTION.flume.splash,
   RIDE_MOTION.flume.stops.find((stop) => stop.scaleY < 1)?.at,
   'the flume splashes as the boat hits the water'
 );

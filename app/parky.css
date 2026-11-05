@@ -2081,11 +2081,12 @@
 .parky-dream-drop {
   opacity: 0;
 }
-/* Shut for the photo, and no smile under the frown, with or without motion. */
+/* Shut for the photo, and no smile under the frown or the pursed lips, with or without motion. */
 .parky-act-photo .parky-eye:first-child {
   transform: scaleY(0.1);
 }
-.parky-act-grumpy .parky-smile {
+.parky-act-grumpy .parky-smile,
+.parky-act-slurp .parky-smile {
   opacity: 0;
 }
 @keyframes parky-eyes-shut-up {
@@ -2114,6 +2115,25 @@
     opacity: 0;
     transform: translate(var(--dx), var(--dy)) scale(1);
   }
+}
+/* The wall of water shoots up from the surface and falls back. */
+@keyframes parky-splash-crown {
+  0% {
+    opacity: 0;
+    transform: scaleY(0.1);
+  }
+  15% {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scaleY(0.6);
+  }
+}
+.parky-splash-crown {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
 }
 @keyframes parky-turntable {
   to {
@@ -2666,8 +2686,11 @@
     animation: parky-turntable 0.6s linear infinite;
   }
   .parky-splash > * {
-    animation: parky-splash calc(var(--parky-act) * 0.16) ease-out
+    animation: parky-splash calc(var(--parky-act) * 0.2) ease-out
       calc(var(--parky-act) * var(--parky-splash-at)) both;
+  }
+  .parky-splash > .parky-splash-crown {
+    animation-name: parky-splash-crown;
   }
   .parky-act-airtime {
     transform-origin: 50% 100%;

@@ -20,14 +20,20 @@ const water = 'oklch(0.72 0.12 230)';
 const spray = 'oklch(0.93 0.05 225)';
 const teacupPink = 'oklch(0.78 0.13 355)';
 
-/** Where the drops of the flume's splash fly to from where the boat hits the water. */
+/**
+ * Where the drops of the flume's splash fly to from where the boat hits the water, out past both
+ * ends of the boat so they read at button size.
+ */
 const SPLASH = [
-  { dx: -9, dy: -10 },
-  { dx: -4, dy: -15 },
-  { dx: 1, dy: -16 },
-  { dx: 6, dy: -12 },
-  { dx: 10, dy: -6 },
+  { dx: -24, dy: -16 },
+  { dx: -15, dy: -26 },
+  { dx: -4, dy: -30 },
+  { dx: 8, dy: -28 },
+  { dx: 18, dy: -22 },
+  { dx: 25, dy: -12 },
 ];
+/** The wall of water the splash throws up on both sides of the boat. */
+const SPLASH_CROWN = 'M-27 0-25-11-21-4-18-17-14-6-10-14 0-4 10-14 14-6 18-17 21-4 25-11 27 0Z';
 
 /**
  * The rails a ride runs on, drawn behind Parky so they stand while he moves: the loop's two rails
@@ -74,44 +80,49 @@ export function ParkyRideTrack({ ride }: { ride: ParkyRide }) {
         <ellipse cx={TURNTABLE.x} cy={TURNTABLE.y} rx="2.4" ry="1.1" fill={rail} />
       </g>
     );
-  const splash = motion.splash;
   return (
-    <>
-      <g
-        className="parky-track"
-        fill="none"
-        stroke={ride === 'flume' ? wood : rail}
-        strokeLinejoin="round"
-      >
-        <path d={motion.track} strokeWidth="2.6" />
-        <path
-          d={motion.track}
-          stroke={ride === 'flume' ? water : 'white'}
-          strokeOpacity={ride === 'flume' ? 1 : 0.55}
-          strokeWidth=".7"
-          strokeDasharray={ride === 'flume' ? undefined : '.5 2.2'}
+    <g
+      className="parky-track"
+      fill="none"
+      stroke={ride === 'flume' ? wood : rail}
+      strokeLinejoin="round"
+    >
+      <path d={motion.track} strokeWidth="2.6" />
+      <path
+        d={motion.track}
+        stroke={ride === 'flume' ? water : 'white'}
+        strokeOpacity={ride === 'flume' ? 1 : 0.55}
+        strokeWidth=".7"
+        strokeDasharray={ride === 'flume' ? undefined : '.5 2.2'}
+      />
+    </g>
+  );
+}
+
+/**
+ * The splash where the boat hits the water, timed by the ride's own clock (its `splash`): a wall
+ * of water up both sides of the boat and drops flying off. Drawn with the boat, over Parky, so it
+ * reads at button size.
+ */
+function Splash({ at }: { at: number }) {
+  return (
+    <g
+      className="parky-splash"
+      transform={`translate(${REST.x} ${REST.y - 3})`}
+      fill={spray}
+      stroke={water}
+      strokeWidth=".7"
+      style={{ '--parky-splash-at': at } as React.CSSProperties}
+    >
+      <path className="parky-splash-crown" d={SPLASH_CROWN} />
+      {SPLASH.map((drop) => (
+        <circle
+          key={drop.dx}
+          r="2.4"
+          style={{ '--dx': `${drop.dx}px`, '--dy': `${drop.dy}px` } as React.CSSProperties}
         />
-      </g>
-      {splash && (
-        // The drops fly up where the boat hits the water, timed by the ride's own clock.
-        <g
-          className="parky-splash"
-          transform={`translate(${splash.x} ${splash.y - 2})`}
-          fill={spray}
-          stroke={water}
-          strokeWidth=".5"
-          style={{ '--parky-splash-at': splash.at } as React.CSSProperties}
-        >
-          {SPLASH.map((drop) => (
-            <circle
-              key={drop.dx}
-              r="1.6"
-              style={{ '--dx': `${drop.dx}px`, '--dy': `${drop.dy}px` } as React.CSSProperties}
-            />
-          ))}
-        </g>
-      )}
-    </>
+      ))}
+    </g>
   );
 }
 
@@ -147,6 +158,7 @@ export function ParkyVehicle({ ride, ms }: { ride: ParkyRide; ms: number }) {
           <ellipse cx="6.6" cy="42.5" rx="2" ry="4" fill="oklch(0.72 0.1 70)" />
           <ellipse cx="6.6" cy="42.5" rx=".9" ry="2" fill="none" stroke={wood} strokeWidth=".5" />
           <path d="M8 48.2q4-1.4 8 0t8 0 8 0 8 0" fill="none" stroke={water} strokeWidth="1.2" />
+          {RIDE_MOTION.flume.splash !== undefined && <Splash at={RIDE_MOTION.flume.splash} />}
         </>
       ) : ride === 'teacups' ? (
         <>
@@ -207,7 +219,7 @@ export function ParkyMoment({ act }: { act: string | null }) {
         <>
           <Chomp />
           <g className="parky-candy">
-            <path d="M43 47.5 40.6 33" stroke="oklch(0.96 0.02 90)" strokeWidth="1.5" />
+            <path d="M43 47.5 40.6 33" stroke="oklch(0.78 0.06 75)" strokeWidth="1.5" />
             <g fill="oklch(0.85 0.11 350)" stroke="oklch(0.72 0.14 350)" strokeWidth=".6">
               <circle cx="45" cy="29.5" r="4.8" />
               <circle cx="45.5" cy="24" r="3.8" />
@@ -399,8 +411,8 @@ export function ParkyMoment({ act }: { act: string | null }) {
               d="M26 37h11v9.6q0 1.6-1.6 1.6h-7.8q-1.6 0-1.6-1.6Z"
               fill="white"
               fillOpacity=".3"
-              stroke="white"
-              strokeOpacity=".9"
+              stroke={frame}
+              strokeOpacity=".8"
               strokeWidth=".8"
             />
             <path d="M27.4 38.6v7" stroke="white" strokeOpacity=".6" strokeWidth=".7" />

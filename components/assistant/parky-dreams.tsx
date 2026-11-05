@@ -278,7 +278,8 @@ export function ParkyDreamCloud({ dream, ground }: { dream: ParkyDream; ground: 
                 strokeLinejoin="round"
               />
               <path d="M-9.5 -5.8q3-1.2 6 0t6 0t6 0V-3h-18Z" fill="oklch(0.72 0.12 230)" />
-              <g className="parky-dream-boat">
+              {/* Without motion the boat waits at the foot of the chute; the CSS moves it otherwise. */}
+              <g className="parky-dream-boat" transform="translate(-9 -7.6) rotate(37)">
                 {/* The log boat with Parky in it, arms up for the drop. */}
                 <path d="M-2.8 -1.8h5.6l-.9 1.8h-3.8Z" fill="oklch(0.6 0.1 60)" />
                 <circle cx="0" cy="-3.1" r="1.6" fill={`url(#${ground})`} />
