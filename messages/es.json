@@ -2982,6 +2982,7 @@
     "chipAlertRemoved": "Aviso eliminado",
     "chipFavorite": "Añadido a favoritos",
     "chipUnfavorite": "Quitado de favoritos",
+    "chipUndoStale": "El día cambió desde entonces, no se deshizo nada",
     "alertRide": "{name}: un aviso en cuanto la espera baje de {minutes} minutos.",
     "alertReopen": "{name}: un aviso en cuanto vuelva a funcionar.",
     "alertShow": "{name}: un aviso antes de la función de las {time}.",

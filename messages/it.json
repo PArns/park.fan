@@ -2982,6 +2982,7 @@
     "chipAlertRemoved": "Promemoria rimosso",
     "chipFavorite": "Aggiunto ai preferiti",
     "chipUnfavorite": "Tolto dai preferiti",
+    "chipUndoStale": "Giornata cambiata nel frattempo, nulla annullato",
     "alertRide": "{name}: una notifica appena l’attesa scende sotto i {minutes} minuti.",
     "alertReopen": "{name}: una notifica appena torna in funzione.",
     "alertShow": "{name}: un promemoria prima dello spettacolo delle {time}.",

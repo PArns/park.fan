@@ -8,8 +8,7 @@ import assert from 'node:assert/strict';
 import { readAssistantAction } from '@/lib/assistant/actions.ts';
 import {
   assistantPlannerSnapshot,
-  hasParkyUndo,
-  rememberDayForUndo,
+  rememberParkyChange,
   SNAPSHOT_MAX_DAYS,
   SNAPSHOT_MAX_ENTRIES,
   undoParkyChange,
@@ -18,16 +17,20 @@ import {
   addCustomEntry,
   addEntry,
   addShowEntry,
+  clearDay,
   moveEntryToIndex,
+  openDay,
   removeEntry,
   reserveDays,
   setDayPrefs,
+  setEntryDone,
 } from '@/lib/planner/actions.ts';
 import { EMPTY_PLANNER_STATE, entriesFor } from '@/lib/planner/types.ts';
 import {
   ALERTS_SNAPSHOT_MAX,
   alertTarget,
   assistantAlertsSnapshot,
+  removalOutcome,
 } from '@/lib/assistant/alerts-context.ts';
 import {
   breakMinutesFrom,
@@ -145,23 +148,50 @@ check(moveEntryToIndex(day, park.slug, '2026-11-07', 'a-1', 0), day, 'the same p
 check(moveEntryToIndex(day, park.slug, '2026-11-07', 'nope', 1), day, 'an unknown id is ignored');
 
 // --- Parky's undo ---
-rememberDayForUndo(day, park.slug, '2026-11-07');
-const removed = removeEntry(day, park.slug, '2026-11-07', 'b-1');
-check(hasParkyUndo(park.slug, '2026-11-07'), true, 'a change leaves an undo');
-const undone = undoParkyChange(removed, park, '2026-11-07');
+const undoDate = '2026-11-07';
+const removed = removeEntry(day, park.slug, undoDate, 'b-1');
+rememberParkyChange(day, removed, park.slug, undoDate);
+const undone = undoParkyChange(removed, park, undoDate);
+check(undone.outcome, 'undone', 'an untouched day is put back');
 check(
-  entriesFor(undone, park.slug, '2026-11-07').map((e) => e.id),
+  entriesFor(undone.state, park.slug, undoDate).map((e) => e.id),
   ['a-1', 'b-1', 'c-1'],
-  'undo puts the day back'
+  'with what Parky removed'
 );
-check(hasParkyUndo(park.slug, '2026-11-07'), false, 'and is used up');
-check(undoParkyChange(undone, park, '2026-11-07'), undone, 'a second undo does nothing');
-rememberDayForUndo(EMPTY_PLANNER_STATE, park.slug, '2026-11-08');
-const reserved = reserveDays(EMPTY_PLANNER_STATE, [{ park, date: '2026-11-08' }]);
 check(
-  undoParkyChange(reserved, park, '2026-11-08').parks[park.slug],
+  undoParkyChange(undone.state, park, undoDate),
+  { state: undone.state, outcome: 'none' },
+  'and the change is used up'
+);
+
+rememberParkyChange(day, removed, park.slug, undoDate);
+const edited = ride(removed, undoDate, 'd', 900);
+check(
+  undoParkyChange(edited, park, undoDate),
+  { state: edited, outcome: 'changed' },
+  "the visitor's own edit since is never undone"
+);
+check(undoParkyChange(edited, park, undoDate).outcome, 'none', 'nor tried again');
+
+const ticked = setEntryDone(removed, park.slug, undoDate, 'a-1', true);
+rememberParkyChange(day, removed, park.slug, undoDate);
+check(undoParkyChange(ticked, park, undoDate).outcome, 'changed', 'a tick is an edit too');
+
+const reserved = reserveDays(EMPTY_PLANNER_STATE, [{ park, date: '2026-11-08' }]);
+rememberParkyChange(EMPTY_PLANNER_STATE, reserved, park.slug, '2026-11-08');
+// Opening the date files an empty day, which reads as no change.
+const reopened = openDay(reserved, park, '2026-11-08');
+check(
+  undoParkyChange(reopened, park, '2026-11-08').state.parks[park.slug],
   undefined,
   'undo drops a day that did not exist'
+);
+const cleared = clearDay(day, park.slug, undoDate);
+rememberParkyChange(day, cleared, park.slug, undoDate);
+check(
+  undoParkyChange(openDay(cleared, park, undoDate), park, undoDate).outcome,
+  'undone',
+  'a cleared day shown again empty still undoes'
 );
 
 // --- The actions ---
@@ -471,6 +501,13 @@ check(
   'remove: exactly one'
 );
 check(readAssistantAction({ type: 'alert_remove', park }), null, 'remove: nothing named');
+check(removalOutcome({ ok: true, value: undefined }), 'alertRemoved', 'a removal shows its chip');
+check(
+  removalOutcome({ ok: false, error: { reason: 'rate-limited', retryAfterSeconds: 30 } }),
+  { failed: { reason: 'rate-limited', retryAfterSeconds: 30 } },
+  'a failed removal carries its failure, the wait included'
+);
+check(removalOutcome(null), null, 'nothing to remove, nothing shown');
 
 // --- Favourites ---
 const noFavorites = { parks: [], attractions: [], shows: [], restaurants: [] };

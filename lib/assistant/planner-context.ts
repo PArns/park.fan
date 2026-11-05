@@ -89,52 +89,101 @@ export function assistantPlannerSnapshot(
 type UndoPark = { slug: string; name: string; geo: PlannerGeo; timezone?: string };
 
 /**
- * The day as it was before Parky's last change to it, one level per park and day, for the tab's
- * lifetime: `null` where the day did not exist, so undoing drops it again.
+ * Parky's last change to a day, one per park and day for the tab's lifetime: the day before it
+ * (`null` where it did not exist, so undoing drops it again) and the day right after it, so an undo
+ * can tell whether the visitor has changed the day since.
  */
-const undoSnapshots = new Map<string, PlannerDay | null>();
+interface ParkyChange {
+  before: PlannerDay | null;
+  after: string;
+}
+const undoSnapshots = new Map<string, ParkyChange>();
 const undoKey = (parkSlug: string, date: string) => `${parkSlug}|${date}`;
 
-/** Keep the day as it is now, before Parky writes to it. */
-export function rememberDayForUndo(state: PlannerState, parkSlug: string, date: string): void {
-  const day = state.parks[parkSlug]?.days[date];
-  undoSnapshots.set(
-    undoKey(parkSlug, date),
-    day ? { ...day, entries: day.entries.map((e) => ({ ...e })) } : null
-  );
+const copyOf = (day: PlannerDay | undefined): PlannerDay | null =>
+  day ? { ...day, entries: day.entries.map((e) => ({ ...e })) } : null;
+
+/**
+ * What a day holds, field by field, so two copies compare equal however they were built. A day
+ * with nothing in it reads like no day, since opening a date files an empty one.
+ */
+function daySignature(day: PlannerDay | undefined): string {
+  if (!day || (day.entries.length === 0 && !day.prefs && !day.reserved)) return '';
+  return JSON.stringify([
+    day.entries.map((e) => [
+      e.id,
+      e.attractionSlug ?? null,
+      e.showSlug ?? null,
+      e.startMinute,
+      e.custom?.label ?? null,
+      e.custom?.icon ?? null,
+      e.custom?.durationMinutes ?? null,
+      e.done === true,
+      e.actualWait ?? null,
+    ]),
+    day.prefs?.riderHeightCm ?? null,
+    day.prefs?.avoidWet === true,
+    day.prefs?.earlyEntry === true,
+    day.reserved === true,
+  ]);
 }
 
-/** Whether Parky changed this day and has not undone it yet. */
-export function hasParkyUndo(parkSlug: string, date: string): boolean {
-  return undoSnapshots.has(undoKey(parkSlug, date));
+/** Keep a change Parky just made to a day: the plan before it and the plan after it. */
+export function rememberParkyChange(
+  before: PlannerState,
+  after: PlannerState,
+  parkSlug: string,
+  date: string
+): void {
+  undoSnapshots.set(undoKey(parkSlug, date), {
+    before: copyOf(before.parks[parkSlug]?.days[date]),
+    after: daySignature(after.parks[parkSlug]?.days[date]),
+  });
 }
 
 /**
- * The plan with that day put back as it was before Parky's last change: its entries through
- * `restoreDay`, its preferences and its reservation as they were. Consumes the snapshot; the same
- * state where there is none.
+ * What an undo did: put the day back, found it changed by the visitor since Parky's change (and
+ * left it), or found no change of Parky's to undo.
  */
-export function undoParkyChange(state: PlannerState, park: UndoPark, date: string): PlannerState {
+export type ParkyUndoOutcome = 'undone' | 'changed' | 'none';
+
+/**
+ * The plan with that day put back as it was before Parky's last change, its entries through
+ * `restoreDay`, its preferences and reservation as they were; only while the day is still what
+ * Parky left, so the visitor's own edits are never undone. Consumes the change either way.
+ */
+export function undoParkyChange(
+  state: PlannerState,
+  park: UndoPark,
+  date: string
+): { state: PlannerState; outcome: ParkyUndoOutcome } {
   const key = undoKey(park.slug, date);
-  if (!undoSnapshots.has(key)) return state;
-  const before = undoSnapshots.get(key) ?? null;
+  const change = undoSnapshots.get(key);
+  if (!change) return { state, outcome: 'none' };
   undoSnapshots.delete(key);
-  if (!before) return clearDay(state, park.slug, date);
+  if (daySignature(state.parks[park.slug]?.days[date]) !== change.after) {
+    return { state, outcome: 'changed' };
+  }
+  const { before } = change;
+  if (!before) return { state: clearDay(state, park.slug, date), outcome: 'undone' };
   const restored = restoreDay(openDay(state, park, date), park.slug, date, before.entries);
   const filed = restored.parks[park.slug];
   const { prefs: _prefs, reserved: _reserved, ...day } = filed.days[date];
   return {
-    ...restored,
-    parks: {
-      ...restored.parks,
-      [park.slug]: {
-        ...filed,
-        days: {
-          ...filed.days,
-          [date]: {
-            ...day,
-            ...(before.prefs ? { prefs: before.prefs } : {}),
-            ...(before.reserved ? { reserved: true } : {}),
+    outcome: 'undone',
+    state: {
+      ...restored,
+      parks: {
+        ...restored.parks,
+        [park.slug]: {
+          ...filed,
+          days: {
+            ...filed.days,
+            [date]: {
+              ...day,
+              ...(before.prefs ? { prefs: before.prefs } : {}),
+              ...(before.reserved ? { reserved: true } : {}),
+            },
           },
         },
       },

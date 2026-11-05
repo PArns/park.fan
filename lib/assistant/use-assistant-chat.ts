@@ -18,6 +18,7 @@ import {
   type AssistantAlertPrompt,
 } from './alerts-context';
 import { readPushState } from './alert-writes';
+import type { PushWriteError } from '@/lib/push/push-follows';
 import { listRideAlertsLocal, listShowFollowsLocal } from '@/lib/push/push-follows-store';
 import { getFavoritesFromCookies } from '@/lib/utils/favorites';
 import { assistantFavoritesSnapshot } from './favorites-context';
@@ -55,6 +56,8 @@ export interface AssistantChatMessage {
   cards?: AssistantCard[];
   /** Reminders Parky asked for that wait for the visitor's press, or failed. */
   alerts?: AssistantAlertPrompt[];
+  /** Writes that failed (a reminder Parky could not remove), as error chips. */
+  failures?: PushWriteError[];
   /** Parky asked for the visitor's position; the answer carries the share buttons. */
   asksLocation?: boolean;
   /** Set on an answer that failed; `text` is then empty. */
@@ -277,6 +280,8 @@ export function useAssistantChat(
               const outcome = await onAction(action);
               if (typeof outcome === 'string') {
                 patchLast((m) => ({ ...m, chips: [...(m.chips ?? []), outcome] }));
+              } else if (outcome && 'failed' in outcome) {
+                patchLast((m) => ({ ...m, failures: [...(m.failures ?? []), outcome.failed] }));
               } else if (outcome) {
                 patchLast((m) => ({ ...m, alerts: [...(m.alerts ?? []), outcome] }));
               }

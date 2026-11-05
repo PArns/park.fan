@@ -7,6 +7,8 @@ import { useLocale, useTranslations } from 'next-intl';
 import { usePathname } from 'next/navigation';
 import {
   CalendarCheck,
+  CalendarX2,
+  CircleAlert,
   ExternalLink,
   Languages,
   MessageSquareHeart,
@@ -39,6 +41,7 @@ import { AssistantFeedbackForm } from './assistant-feedback-form';
 import { AssistantChallenge } from './assistant-challenge';
 import { AssistantLocationAsk } from './assistant-location-ask';
 import { AssistantAlertAsk } from './assistant-alert-ask';
+import { usePushErrorMessage } from '@/components/push/use-push-error-message';
 import { AssistantCardView } from './assistant-card';
 import { useAssistantActions } from './use-assistant-actions';
 import type { AssistantActionChip } from '@/lib/assistant/actions';
@@ -80,6 +83,7 @@ const CHIP: Record<AssistantActionChip, { key: string; icon: typeof ExternalLink
   alertRemoved: { key: 'chipAlertRemoved', icon: BellOff },
   favorite: { key: 'chipFavorite', icon: Heart },
   unfavorite: { key: 'chipUnfavorite', icon: HeartOff },
+  undoStale: { key: 'chipUndoStale', icon: CalendarX2 },
 };
 
 /** Three bouncing dots: Parky is thinking or looking something up. */
@@ -161,6 +165,7 @@ export function AssistantPanel({
     }, GOODBYE_MS);
   }, [onClose, onAct]);
   const chat = useAssistantChat(locale, session, act, ended);
+  const pushErrorMessage = usePushErrorMessage();
   const [tab, setTab] = useState<'chat' | 'feedback'>('chat');
   const [draft, setDraft] = useState('');
   // One greeting and set of suggestions per chat, kept for the session; a new chat draws again.
@@ -456,6 +461,19 @@ export function AssistantPanel({
                             </span>
                           );
                         })}
+                      </div>
+                    )}
+                    {message.failures && message.failures.length > 0 && (
+                      <div className="mt-1.5 flex flex-wrap gap-1.5 pl-1" role="alert">
+                        {message.failures.map((failure, index) => (
+                          <span
+                            key={`failure-${index}`}
+                            className="bg-destructive/15 text-destructive inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[11px] font-medium"
+                          >
+                            <CircleAlert className="size-3" />
+                            {pushErrorMessage(failure)}
+                          </span>
+                        ))}
                       </div>
                     )}
                     {message.alerts?.map((prompt) => (
