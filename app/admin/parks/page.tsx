@@ -18,6 +18,8 @@ import {
 import { cn } from '@/lib/utils';
 import { adminKeys, useAdminQuery } from '../_lib/api';
 import type { AdminParkListItem } from '../_lib/types';
+import { withFuzzyMatches } from '../_lib/search-hits';
+import { useFuzzyHits } from '../_lib/use-fuzzy-hits';
 import { Chip, EmptyState, ErrorState, SkeletonRows, Toolbar } from '../_ui/primitives';
 import { Select, TextInput } from '../_ui/controls';
 import { useLocalPreference } from '../_lib/use-local-preference';
@@ -52,13 +54,17 @@ export default function ParksPage() {
   // request and the server filters it.
   const deferredQuery = useDeferredValue(query);
 
-  const params = useMemo(() => {
+  const baseParams = useMemo(() => {
     const search = new URLSearchParams({ limit: '500' });
-    if (deferredQuery.trim().length > 0) search.set('q', deferredQuery.trim());
     if (country) search.set('country', country);
     if (curated !== 'all') search.set('curated', curated);
     return search.toString();
-  }, [deferredQuery, country, curated]);
+  }, [country, curated]);
+  const params = useMemo(() => {
+    const search = new URLSearchParams(baseParams);
+    if (deferredQuery.trim().length > 0) search.set('q', deferredQuery.trim());
+    return search.toString();
+  }, [baseParams, deferredQuery]);
 
   const parks = useAdminQuery<{ total: number; parks: AdminParkListItem[] }>(
     adminKeys.parks({ params }),
@@ -83,7 +89,20 @@ export default function ParksPage() {
       .sort((a, b) => a.label.localeCompare(b.label, 'de'));
   }, [allParks.data]);
 
-  const rows = parks.data?.parks ?? [];
+  // The server matches the typed letters; the site's fuzzy search adds the parks a typo hides,
+  // taken from the list under the same country and curation filters.
+  const fuzzyIds = useFuzzyHits(query, 'park').hits.map((hit) => hit.id);
+  const unsearched = useAdminQuery<{ total: number; parks: AdminParkListItem[] }>(
+    adminKeys.parks({ params: baseParams }),
+    fuzzyIds.length > 0 ? `/api/admin/content/parks?${baseParams}` : null,
+    { staleTime: 10 * 60_000 }
+  );
+  const rows = withFuzzyMatches(
+    parks.data?.parks ?? [],
+    unsearched.data?.parks ?? [],
+    fuzzyIds,
+    (park) => park.id
+  );
   const filtersActive = country !== null || curated !== 'all' || query.trim().length > 0;
 
   return (

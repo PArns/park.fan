@@ -94,6 +94,11 @@ by hand: change the comment in the code and re-run the script. -->
 - `isRedirectablePath` _function_: Whether `POST /v1/admin/redirects` can take `path` at all: an optional locale, `parks`, then a park's four slugs or a ride's five, lower case.
 - Types: `PublicPathSlugs`
 
+### [`_lib/search-hits.ts`](../../app/admin/_lib/search-hits.ts)
+
+- `mergeSearchHits` _function_: Hits from the site's fuzzy search and from the admin's own lookup as one list, ranked the way the site ranks.
+- `withFuzzyMatches` _function_: `matched` plus the entries of `pool` the fuzzy search found (`ids`, in its order) and the plain match missed, so "phantsialand" still finds Phantasialand in a loaded list.
+
 ### [`_lib/types.ts`](../../app/admin/_lib/types.ts)
 
 - Types: `CuratedFieldType`, `CuratedField`, `CuratedFieldSpec`, `AuditEntry`, `AdminParkListItem`, `AdminParkDetail`, `AdminAttractionListItem`, `RideProfile`, `RideMeasurements`, `AdminAttractionDetail`, `ParkSeasonKind`, `ParkSeasonStatus`, `ParkSeason`, `CurationResponse`, `AdminSessionInfo`, `AdminOverview`
@@ -109,6 +114,10 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `useAdminHealth` _hook_: The admin's situation for the overview and the sidebar's dots: reads the five monitoring answers under the keys their own pages use (so answering a data-quality card clears its count here too) and folds them with `deriveAdminHealth`.
 - Types: `AdminHealthData`
+
+### [`_lib/use-fuzzy-hits.ts`](../../app/admin/_lib/use-fuzzy-hits.ts)
+
+- `useFuzzyHits` _hook_: The parks or rides the site's search finds for `query`, ranked as the site ranks them, so the admin forgives the same typos ("phantsialand", "blue fir").
 
 ### [`_lib/use-hero-photo.ts`](../../app/admin/_lib/use-hero-photo.ts)
 

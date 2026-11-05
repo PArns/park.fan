@@ -60,6 +60,14 @@ Everything is reachable three ways: the sidebar, `/` (the command palette) and `
 thousands of rides, and it searches the **curated** name as well as the upstream one, so a park
 renamed last week is found under the name it was given.
 
+Where a park or ride name is typed (the palette, the parks list, a park's ride list and every
+`SearchSelect` given `fuzzy`), the admin asks the site's search too (`useFuzzyHits`, the
+`/api/search` the public palette reads) and ranks its hits with the public palette's scores
+(`rankByMatch` in `lib/utils/search-ranking.ts`). So "phantsialand" finds Phantasialand here as it
+does on the site. The admin's own lookups stay beside it for what the public index leaves out: the
+curated name before the index rebuilds, a slug, a retired ride. The palette also opens a pasted
+park or ride id directly and sends a copied public address to `/admin/go`.
+
 ## The frame
 
 The page sits on an inset surface beside the sidebar, under a 56 px topbar that names the group and

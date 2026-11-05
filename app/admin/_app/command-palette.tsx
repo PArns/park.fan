@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import {
   ArrowRight,
@@ -22,24 +22,60 @@ import {
   CommandList,
   CommandSeparator,
 } from '@/components/ui/command';
+import { isUuid } from '@/lib/utils';
+import { useDebouncedValue } from '@/lib/hooks/use-debounced-value';
 import { Kbd } from '../_ui/primitives';
-import { adminFetch } from '../_lib/api';
-import type { AdminParkListItem } from '../_lib/types';
+import { adminKeys, useAdminQuery } from '../_lib/api';
+import { slugsFromPublicPath } from '../_lib/public-path';
+import { mergeSearchHits } from '../_lib/search-hits';
+import type { AdminAttractionDetail, AdminParkListItem } from '../_lib/types';
+import { useFuzzyHits } from '../_lib/use-fuzzy-hits';
 
-interface RideHit {
-  id: string;
-  name: string;
-  upstreamName: string;
-  slug: string;
-  park: { id: string; name: string } | null;
-}
 import { flatNavItems, visibleGroups } from './nav';
 import { useSession } from './session';
 
 /**
- * `/`, the practical way to reach one park or ride among thousands. It searches the admin's own
- * endpoints, which match the curated name too, where the public index waits for its next rebuild.
+ * `/`, the practical way to reach one park or ride among thousands. It asks the site's fuzzy
+ * search, which forgives typos, and the admin's own endpoints, which match the curated name the
+ * public index only learns on its next rebuild, and lists both as one ranking.
  */
+
+interface RideListHit {
+  id: string;
+  name: string;
+  upstreamName: string;
+  park: { id: string; name: string } | null;
+}
+
+/** A park or ride row, whichever search found it. */
+interface EntityHit {
+  id: string;
+  name: string;
+  upstreamName?: string;
+  detail: string;
+  status?: string;
+}
+
+const PARK_LIMIT = 6;
+const RIDE_LIMIT = 8;
+
+function parkHit(park: AdminParkListItem): EntityHit {
+  return {
+    id: park.id,
+    name: park.name,
+    upstreamName: park.upstreamName,
+    detail: [park.city, park.countryCode].filter(Boolean).join(', '),
+  };
+}
+
+function rideHit(ride: RideListHit | AdminAttractionDetail): EntityHit {
+  return {
+    id: ride.id,
+    name: ride.name,
+    upstreamName: ride.upstreamName,
+    detail: ride.park?.name ?? '',
+  };
+}
 
 interface PaletteAction {
   id: string;
@@ -64,10 +100,6 @@ export function CommandPalette({
   const router = useRouter();
   const { identity, signOut } = useSession();
   const [query, setQuery] = useState('');
-  const [parks, setParks] = useState<AdminParkListItem[]>([]);
-  const [rides, setRides] = useState<RideHit[]>([]);
-  const [searching, setSearching] = useState(false);
-
   const groups = useMemo(() => visibleGroups(identity.role), [identity.role]);
 
   const go = useCallback(
@@ -78,47 +110,75 @@ export function CommandPalette({
     [onOpenChange, router]
   );
 
-  // Debounced, and only from two characters: one character matches most of the
-  // catalogue and the request would be thrown away by the next keystroke
-  // anyway. Every state write happens inside the timer rather than in the
-  // effect body — a synchronous setState there renders twice per keystroke.
-  useEffect(() => {
-    const term = query.trim();
-    const controller = new AbortController();
+  // Debounced, and only from two characters: one character matches most of the catalogue and
+  // the request would be thrown away by the next keystroke anyway. Parks and rides in parallel:
+  // "taron" means the ride and "toverland" the park, and nobody should have to say which first.
+  const term = useDebouncedValue(query.trim(), 180);
+  const listTerm = term.length >= 2 && !isUuid(term) ? encodeURIComponent(term) : null;
+  const parkList = useAdminQuery<{ parks: AdminParkListItem[] }>(
+    adminKeys.raw(`palette-parks:${term}`),
+    listTerm && `/api/admin/content/parks?q=${listTerm}&limit=${PARK_LIMIT}`
+  );
+  const rideList = useAdminQuery<{ attractions: RideListHit[] }>(
+    adminKeys.raw(`palette-rides:${term}`),
+    listTerm && `/api/admin/content/attractions?q=${listTerm}&limit=${RIDE_LIMIT}`
+  );
+  // A pasted id opens what it names, a retired ride included; one of the two answers 404.
+  const idTerm = isUuid(term) ? term : null;
+  const parkById = useAdminQuery<AdminParkListItem>(
+    adminKeys.park(idTerm ?? ''),
+    idTerm && `/api/admin/content/parks/${idTerm}`,
+    { retry: false }
+  );
+  const rideById = useAdminQuery<AdminAttractionDetail>(
+    adminKeys.attraction(idTerm ?? ''),
+    idTerm && `/api/admin/content/attractions/${idTerm}`,
+    { retry: false }
+  );
+  const fuzzyParks = useFuzzyHits(query, 'park');
+  const fuzzyRides = useFuzzyHits(query, 'attraction');
 
-    const timer = setTimeout(() => {
-      if (term.length < 2) {
-        setParks([]);
-        setRides([]);
-        setSearching(false);
-        return;
-      }
-      setSearching(true);
-      const encoded = encodeURIComponent(term);
-      // Both in parallel: "taron" means the ride and "toverland" the park, and nobody should have
-      // to say which first.
-      Promise.allSettled([
-        adminFetch<{ parks: AdminParkListItem[] }>(
-          `/api/admin/content/parks?q=${encoded}&limit=6`,
-          { signal: controller.signal }
-        ),
-        adminFetch<{ attractions: RideHit[] }>(
-          `/api/admin/content/attractions?q=${encoded}&limit=8`,
-          { signal: controller.signal }
-        ),
-      ])
-        .then(([parkResult, rideResult]) => {
-          setParks(parkResult.status === 'fulfilled' ? (parkResult.value.parks ?? []) : []);
-          setRides(rideResult.status === 'fulfilled' ? (rideResult.value.attractions ?? []) : []);
-        })
-        .finally(() => setSearching(false));
-    }, 180);
-
-    return () => {
-      clearTimeout(timer);
-      controller.abort();
-    };
-  }, [query]);
+  const parks =
+    term.length < 2
+      ? []
+      : mergeSearchHits<EntityHit>(
+          fuzzyParks.hits.map((hit) => ({
+            id: hit.id,
+            name: hit.name,
+            detail: [hit.city, hit.countryCode].filter(Boolean).join(', '),
+            ...(hit.status ? { status: hit.status } : {}),
+          })),
+          [
+            ...(parkList.data?.parks ?? []),
+            ...(idTerm && parkById.data ? [parkById.data] : []),
+          ].map(parkHit),
+          term
+        ).slice(0, PARK_LIMIT);
+  const rides =
+    term.length < 2
+      ? []
+      : mergeSearchHits<EntityHit>(
+          fuzzyRides.hits.map((hit) => ({
+            id: hit.id,
+            name: hit.name,
+            detail: hit.parentPark?.name ?? '',
+            ...(hit.status ? { status: hit.status } : {}),
+          })),
+          [
+            ...(rideList.data?.attractions ?? []),
+            ...(idTerm && rideById.data ? [rideById.data] : []),
+          ].map(rideHit),
+          term
+        ).slice(0, RIDE_LIMIT);
+  const searching =
+    fuzzyParks.loading ||
+    fuzzyRides.loading ||
+    parkList.isFetching ||
+    rideList.isFetching ||
+    parkById.isFetching ||
+    rideById.isFetching;
+  // A copied public address goes where `/admin/go` sends it.
+  const pastedPath = slugsFromPublicPath(query) ? query.trim() : null;
 
   const actions: PaletteAction[] = useMemo(
     () => [
@@ -165,11 +225,7 @@ export function CommandPalette({
       onOpenChange={(next) => {
         // Cleared here rather than in an effect on `open`: the reset belongs to
         // the act of closing, and an effect would run it during a render.
-        if (!next) {
-          setQuery('');
-          setParks([]);
-          setRides([]);
-        }
+        if (!next) setQuery('');
         onOpenChange(next);
       }}
       title="Befehle"
@@ -188,6 +244,18 @@ export function CommandPalette({
       <CommandList>
         <CommandEmpty>{searching ? 'Suche…' : 'Nichts gefunden.'}</CommandEmpty>
 
+        {pastedPath && (
+          <CommandGroup heading="Adresse">
+            <CommandItem
+              value="pasted-path"
+              onSelect={() => go(`/admin/go?${new URLSearchParams({ path: pastedPath })}`)}
+            >
+              <ArrowRight className="h-4 w-4" />
+              <span className="flex-1 truncate">Zur Bearbeitung dieser Seite</span>
+            </CommandItem>
+          </CommandGroup>
+        )}
+
         {parks.length > 0 && (
           <CommandGroup heading="Parks">
             {parks.map((park) => (
@@ -199,15 +267,13 @@ export function CommandPalette({
                 <MapPin className="h-4 w-4" />
                 <span className="flex-1 truncate">
                   {park.name}
-                  {park.name !== park.upstreamName && (
+                  {park.upstreamName && park.name !== park.upstreamName && (
                     <span className="text-muted-foreground ml-1.5 text-xs">
                       (Upstream: {park.upstreamName})
                     </span>
                   )}
                 </span>
-                <span className="text-muted-foreground shrink-0 text-xs">
-                  {[park.city, park.countryCode].filter(Boolean).join(', ')}
-                </span>
+                <span className="text-muted-foreground shrink-0 text-xs">{park.detail}</span>
               </CommandItem>
             ))}
           </CommandGroup>
@@ -224,15 +290,13 @@ export function CommandPalette({
                 <RollerCoaster className="h-4 w-4" />
                 <span className="flex-1 truncate">
                   {ride.name}
-                  {ride.name !== ride.upstreamName && (
+                  {ride.upstreamName && ride.name !== ride.upstreamName && (
                     <span className="text-muted-foreground ml-1.5 text-xs">
                       (Upstream: {ride.upstreamName})
                     </span>
                   )}
                 </span>
-                <span className="text-muted-foreground shrink-0 text-xs">
-                  {ride.park?.name ?? ''}
-                </span>
+                <span className="text-muted-foreground shrink-0 text-xs">{ride.detail}</span>
               </CommandItem>
             ))}
           </CommandGroup>
@@ -276,7 +340,8 @@ export function CommandPalette({
               <Rows3 className="h-4 w-4" />
               <span className="text-muted-foreground flex-1 text-xs">
                 Tippe zwei Buchstaben: Parks und Fahrgeschäfte werden zugleich gesucht, auch unter
-                ihrem kuratierten Namen.
+                ihrem kuratierten Namen und mit Tippfehlern. Eine ID oder eine kopierte Adresse
+                führt direkt zur Bearbeitung.
               </span>
             </CommandItem>
             <CommandItem value="tip-seasons" disabled>
