@@ -2,7 +2,7 @@
 title: "Nell'Epic Universe nascono nuove montagne russe al coperto"
 translationKey: dark-universe-coaster-epic-universe-2026
 date: '2026-11-05'
-time: '18:00'
+time: '17:56'
 author: patrick
 mode: published
 featured: false
@@ -24,7 +24,7 @@ rideLinks:
 seo:
   title: 'Dark Universe avrà nuove montagne russe al coperto'
   description: >-
-    Universal costruisce in Dark Universe, nell'Epic Universe, montagne russe al coperto accanto a Monsters Unchained. Lavori in corso, anno ancora ignoto.
+    Universal costruisce nell'Epic Universe montagne russe al coperto in Dark Universe, vicino a Monsters Unchained. Lavori avviati, Universal non dice l'anno.
   keywords:
     - Epic Universe
     - Dark Universe
@@ -36,27 +36,27 @@ seo:
     - Universal Orlando 2027
 ---
 
-Il 5 novembre Universal Orlando ha annunciato nuove montagne russe al coperto per l'[Epic Universe](ref:universal-epic-universe). Sorgeranno in Dark Universe, il mondo dedicato ai mostri classici della Universal, proprio accanto a [Monsters Unchained: The Frankenstein Experiment](ref:universal-epic-universe/monsters-unchained-the-frankenstein-experiment). Il cantiere è già aperto, mentre una data di apertura Universal non l'ha ancora comunicata.
+Il 5 novembre Universal Orlando ha annunciato nuove montagne russe al coperto per l'[Epic Universe](ref:universal-epic-universe). Sorgeranno in Dark Universe, il mondo dedicato ai mostri classici della Universal, proprio accanto a [Monsters Unchained: The Frankenstein Experiment](ref:universal-epic-universe/monsters-unchained-the-frankenstein-experiment). Il cantiere è già aperto.
 
 ## Cosa si sa finora
 
-Universal le presenta come un thrill coaster dentro un capannone, con una storia nuova sui suoi Universal Monsters. Un nome e un'altezza minima ancora non ci sono, o almeno Universal se li tiene per sé. Sull'apertura il comunicato scrive «in the years ahead», un'indicazione vaga quanto le previsioni del tempo per il mese prossimo.
+Universal le presenta come un thrill coaster con una storia nuova sui suoi Universal Monsters. Un nome e un'altezza minima ancora non ci sono, o almeno Universal se li tiene per sé. Per l'apertura Universal indica solo «in the years ahead», mentre lo stesso comunicato per Hollywood Drift e Category 10 scrive chiaramente 2027.
 
 ## Che cosa c'è oggi in Dark Universe
 
-Dark Universe è il villaggio di Darkmoor, uno dei cinque mondi del parco, che ha aperto il 22 maggio 2025. Lì accanto abitano Mario, Harry Potter e i draghi di Berk; Darkmoor appartiene a Frankenstein, Dracula e all'Uomo Lupo.
+Dark Universe è il villaggio di Darkmoor, uno dei cinque mondi del parco, che ha aperto il 22 maggio 2025. Lì accanto abitano Mario, Harry Potter e i draghi di Berk.
 
 In Monsters Unchained si scende nelle catacombe di Frankenstein Manor. La dottoressa Victoria Frankenstein sta mostrando un esperimento quando Dracula guida alla rivolta l'Uomo Lupo, la Mummia e tutti gli altri mostri. A fare da colonna sonora c'è l'organo del Fantasma dell'Opera. In dodici punti si alzano a tempo fiammate di circa un metro, un effetto scenico che nessuna parrocchia concederebbe al suo organista. Per salire bisogna essere alti almeno 122 cm, e anche qui vale Universal Express.
 
 [Curse of the Werewolf](ref:universal-epic-universe/curse-of-the-werewolf) è un family coaster con vetture che girano su se stesse: i passeggeri devono sfuggire ai lupi mannari prima di trasformarsi a loro volta. Si sale da 102 cm, e i bambini tra 102 e 122 cm solo se accompagnati. Con bambini più piccoli si va alla Darkmoor Monster Makeup Experience, per un trucco da mostro e tatuaggi che si lavano via. Si mangia da Das Stakehaus, e in paese la Bride of Frankenstein, l'Invisible Man e Ygor vengono a salutare gli ospiti.
 
-I prezzi di biglietti ed Express nell'Epic Universe, dove vale ciascun pass e tutte le altezze minime li trovi nella [guida a Universal Orlando](/blog/universal-orlando-tempi-di-attesa-consigli).
+Nella [guida a Universal Orlando](/blog/universal-orlando-tempi-di-attesa-consigli) trovi i prezzi di biglietti ed Express per l'Epic Universe e l'altezza minima di ogni attrazione.
 
 ```ride-waits-widget rides=universal-epic-universe/monsters-unchained-the-frankenstein-experiment|Monsters Unchained|Dark ride;universal-epic-universe/curse-of-the-werewolf|Curse of the Werewolf|Montagne russe per famiglie columns=type,peak,days
 
 ```
 
-## La vicina ha già due premi in bacheca
+## Due premi per Monsters Unchained
 
 Nel 2025 Monsters Unchained ha vinto il Golden Ticket Award di Amusement Today come miglior dark ride. A novembre 2025 si è aggiunto un Thea Award nella categoria «Outstanding Achievement – Attraction». Alla stessa cerimonia altri tre Thea Awards sono andati all'Epic Universe, uno dei quali al parco stesso.
 

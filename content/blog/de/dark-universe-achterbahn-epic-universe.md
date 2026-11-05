@@ -2,7 +2,7 @@
 title: 'Im Epic Universe entsteht eine neue Indoor-Achterbahn'
 translationKey: dark-universe-coaster-epic-universe-2026
 date: '2026-11-05'
-time: '18:00'
+time: '17:56'
 author: patrick
 mode: published
 featured: false
@@ -24,7 +24,7 @@ rideLinks:
 seo:
   title: 'Neue Indoor-Achterbahn für Dark Universe im Epic Universe'
   description: >-
-    Universal baut in Dark Universe im Epic Universe eine Indoor-Achterbahn neben Monsters Unchained. Der Bau läuft, ein Eröffnungsjahr steht noch nicht fest.
+    Universal baut in Dark Universe im Epic Universe eine Indoor-Achterbahn neben Monsters Unchained. Der Bau läuft, ein Eröffnungsjahr nennt Universal nicht.
   keywords:
     - Epic Universe
     - Dark Universe
@@ -36,27 +36,27 @@ seo:
     - Universal Orlando 2027
 ---
 
-Universal Orlando hat am 5. November eine neue Indoor-Achterbahn für das [Epic Universe](ref:universal-epic-universe) angekündigt. Sie entsteht in Dark Universe, der Welt der klassischen Universal-Monster, direkt neben [Monsters Unchained: The Frankenstein Experiment](ref:universal-epic-universe/monsters-unchained-the-frankenstein-experiment). Die Bauarbeiten laufen bereits, einen Eröffnungstermin hat Universal noch nicht bekannt gegeben.
+Universal Orlando hat am 5. November eine neue Indoor-Achterbahn für das [Epic Universe](ref:universal-epic-universe) angekündigt. Sie entsteht in Dark Universe, der Welt der klassischen Universal-Monster, direkt neben [Monsters Unchained: The Frankenstein Experiment](ref:universal-epic-universe/monsters-unchained-the-frankenstein-experiment). Die Bauarbeiten laufen bereits.
 
 ## Was über die Bahn feststeht
 
-Universal beschreibt sie als Thrill Coaster in einer Halle, mit einer neuen Geschichte rund um die Universal Monsters. Einen Namen und eine Mindestgröße hat sie noch nicht, jedenfalls keine, die Universal schon verrät. Für die Eröffnung steht in der Mitteilung „in the years ahead“, was ungefähr heißt: irgendwann, aber sicher nicht nächste Woche.
+Universal nennt sie einen Thrill Coaster mit einer neuen Geschichte rund um die Universal Monsters. Einen Namen und eine Mindestgröße hat sie noch nicht, jedenfalls keine, die Universal schon verrät. Für die Eröffnung nennt Universal nur „in the years ahead“, obwohl dieselbe Mitteilung bei Hollywood Drift und Category 10 ausdrücklich 2027 dazuschreibt.
 
 ## Was heute in Dark Universe steht
 
-Dark Universe ist das Dorf Darkmoor, eine der fünf Welten des Parks, der am 22. Mai 2025 eröffnet hat. Nebenan wohnen Mario, Harry Potter und die Drachen von Berk, Darkmoor gehört Frankenstein, Dracula und dem Wolf Man.
+Dark Universe ist das Dorf Darkmoor, eine der fünf Welten des Parks, der am 22. Mai 2025 eröffnet hat. Nebenan wohnen Mario, Harry Potter und die Drachen von Berk.
 
 In Monsters Unchained geht es in die Katakomben von Frankenstein Manor. Dr. Victoria Frankenstein führt ein Experiment vor, bis Dracula den Wolf Man, die Mumie und die übrigen Monster zum Aufstand anführt. Dazu dröhnt die Orgel des Phantoms der Oper. An zwölf Stellen schießen im Takt Flammen rund einen Meter hoch, für ein Orgelkonzert ein ziemlich temperamentvoller Vortrag. Mitfahren darf, wer mindestens 122 cm groß ist, und Universal Express gilt auch hier.
 
 [Curse of the Werewolf](ref:universal-epic-universe/curse-of-the-werewolf) ist eine Familienachterbahn mit sich drehenden Wagen, auf der die Fahrgäste den Werwölfen entkommen sollen, bevor sie selbst zu einem werden. Sie fährt ab 102 cm, Kinder zwischen 102 und 122 cm nur mit Begleitung. Mit kleineren Kindern geht es in die Darkmoor Monster Makeup Experience, mit Schminke und abwaschbaren Tattoos. Gegessen wird im Stakehaus, und in Darkmoor kann man der Bride of Frankenstein, dem Invisible Man und Ygor begegnen.
 
-Die Preise für Tickets und Express im Epic Universe, wo welcher Pass gilt, und alle Mindestgrößen findest du im [Guide zu Universal Orlando](/blog/universal-orlando-wartezeiten-tipps).
+Im [Guide zu Universal Orlando](/blog/universal-orlando-wartezeiten-tipps) stehen die Ticket- und Express-Preise fürs Epic Universe und die Mindestgrößen aller Bahnen.
 
 ```ride-waits-widget rides=universal-epic-universe/monsters-unchained-the-frankenstein-experiment|Monsters Unchained|Dunkelfahrt;universal-epic-universe/curse-of-the-werewolf|Curse of the Werewolf|Familienachterbahn columns=type,peak,days
 
 ```
 
-## Die Nachbarin hat zwei Preise im Regal
+## Zwei Preise für Monsters Unchained
 
 Monsters Unchained hat 2025 den Golden Ticket Award von Amusement Today als beste Dunkelfahrt gewonnen. Im November 2025 kam ein Thea Award in der Kategorie „Outstanding Achievement – Attraction“ dazu. Bei derselben Verleihung gingen drei weitere Thea Awards ins Epic Universe, einer davon an den Park selbst.
 
