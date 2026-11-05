@@ -615,12 +615,16 @@ function ParkyDreamCloud({ dream, ground }: { dream: ParkyDream; ground: string 
     const cars = train.current;
     if (dream !== 'coaster' || !path || !cars) return;
     const length = path.getTotalLength();
+    let angle = 0;
     const frames = Array.from({ length: TRAIN_STEPS + 1 }, (_, i) => {
       const at = (i / TRAIN_STEPS) * length;
       const here = path.getPointAtLength(at);
       const ahead = path.getPointAtLength(Math.min(length, at + 0.5));
       const behind = path.getPointAtLength(Math.max(0, at - 0.5));
-      const angle = (Math.atan2(ahead.y - behind.y, ahead.x - behind.x) * 180) / Math.PI;
+      const heading = (Math.atan2(ahead.y - behind.y, ahead.x - behind.x) * 180) / Math.PI;
+      // atan2 flips from 180° to -180° upside down at the loop's top; the frames between would
+      // spin the car the long way round, so each angle stays within half a turn of the last.
+      angle += ((((heading - angle + 180) % 360) + 360) % 360) - 180;
       return {
         transform: `translate(${here.x.toFixed(2)}px, ${here.y.toFixed(2)}px) rotate(${angle.toFixed(1)}deg)`,
       };
