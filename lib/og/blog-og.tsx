@@ -7,6 +7,7 @@ import { findCanonicalTag } from '@/lib/blog/tags';
 import { resolveCategoryLabel } from '@/lib/blog/categories';
 import { getTranslations } from 'next-intl/server';
 import { NEWS_CATEGORY } from '@/lib/blog/paths';
+import { getAuthor } from '@/lib/blog/authors';
 
 const SITE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? 'https://park.fan';
 
@@ -25,6 +26,7 @@ interface BlogOgParams {
  *   /api/og/<locale>/blog/<slug>                → single post
  *   /api/og/<locale>/blog/category/<path...>    → category archive
  *   /api/og/<locale>/blog/tag/<tag>             → tag archive
+ *   /api/og/<locale>/blog/author/<key>          → author profile
  *   /api/og/<locale>/news                       → news overview (`section: 'news'`)
  *
  * A news post's card is still asked for under `/blog/<slug>`: it is found by its slug either way,
@@ -68,6 +70,15 @@ export async function renderBlogOg({
     title = canonical ? `#${canonical}` : `#${tagSlug ?? 'tag'}`;
     kicker = 'Blog · Tag';
     palette = paletteFromString(tagSlug ?? '');
+  } else if (first === 'author') {
+    // An unknown key keeps the blog index's card rather than printing the key as a name.
+    const author = rest[0] ? getAuthor(rest[0], locale) : null;
+    if (author) {
+      title = author.name;
+      subtitle = author.bio ?? '';
+      kicker = `Blog · ${(await getTranslations({ locale, namespace: 'blog' }))('author.label')}`;
+      palette = paletteFromString(rest[0]);
+    }
   } else if (first === 'category') {
     const fullPath = rest.join('/');
     const last = rest[rest.length - 1] ?? '';

@@ -7,8 +7,8 @@ import { useTranslations } from 'next-intl';
 const RECOVERY_POLL_MS = 15_000;
 
 /**
- * Full-screen outage page shown while the API is down. Polls `/api/parks/popular` every 15 s and
- * reloads `/` once it answers.
+ * Full-screen outage page shown while the API is down. Polls `/api/health` every 15 s and reloads
+ * `/` once it answers 200.
  */
 export function MaintenancePage() {
   const t = useTranslations('common');
@@ -19,7 +19,7 @@ export function MaintenancePage() {
     let cancelled = false;
     const check = async () => {
       try {
-        const res = await fetch('/api/parks/popular?limit=1', { cache: 'no-store' });
+        const res = await fetch('/api/health', { cache: 'no-store' });
         if (!cancelled && res.ok) window.location.replace('/');
       } catch {
         // Still down — keep polling.

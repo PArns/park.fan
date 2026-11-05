@@ -29,9 +29,9 @@ own component's error state, and an API route answers its own failure status.
 (`components/maintenance-page.tsx`): a full-screen card with the logo and two strings from
 `common` (`maintenanceTitle`, `maintenanceDescription`).
 
-Because the route is static it would show the outage for ever, so it polls
-`/api/parks/popular?limit=1` every 15 s (`RECOVERY_POLL_MS`) and leaves with
-`location.replace('/')`, a full navigation, once that answers 200. That route reads
-`getPopularParks`, which goes through Next's Data Cache (`revalidate: 1800`), so an entry cached
-before the outage can answer 200 while the API is still down; the page then lands on `/` and, if
-that render fails, comes back here.
+Because the route is static it would show the outage for ever, so it polls `/api/health` every
+15 s (`RECOVERY_POLL_MS`) and leaves with `location.replace('/')`, a full navigation, once that
+answers 200. `/api/health` asks the API's `/v1/health/ping` with `no-store` and answers 200 or 503,
+itself `no-store`. Nothing on that path is cached, so an answer from before the outage cannot send
+the page to `/` while the API is still down; it polled `/api/parks/popular` before, whose Data Cache
+entry (30 min) did exactly that.

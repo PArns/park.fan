@@ -29,15 +29,15 @@ directly: a redirect would add a hop to the expensive requests. A blog post's me
 
 Checked in this order:
 
-| Path after `/api/og/`                                   | Card                                                                   |
-| ------------------------------------------------------- | ---------------------------------------------------------------------- |
-| `<locale>/blog[/…]`                                     | `renderBlogOg`: index, post (`<slug>`), `category/<path>`, `tag/<tag>` |
-| `<locale>/news`                                         | `renderBlogOg` with `section: 'news'`                                  |
-| `<locale>/<glossary segment>/<term>`                    | `renderGlossaryTermOg`; an unknown term falls through                  |
-| `<locale>`                                              | home: tagline, total park count, a random hero photo                   |
-| `<locale>/<key of genericPages>`                        | generic: the page's title from its namespace, a random hero photo      |
-| `<locale>/<continent>[/<country>[/<city>]]`             | region: name, park count, the region's outline (`getRegionGeoSVG`)     |
-| `<locale>/<continent>/<country>/<city>/<park>[/<ride>]` | place: name and location over the park's or ride's photo               |
+| Path after `/api/og/`                                   | Card                                                                                   |
+| ------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| `<locale>/blog[/…]`                                     | `renderBlogOg`: index, post (`<slug>`), `category/<path>`, `tag/<tag>`, `author/<key>` |
+| `<locale>/news`                                         | `renderBlogOg` with `section: 'news'`                                                  |
+| `<locale>/<glossary segment>/<term>`                    | `renderGlossaryTermOg`; an unknown term falls through                                  |
+| `<locale>`                                              | home: tagline, total park count, a random hero photo                                   |
+| `<locale>/<key of genericPages>`                        | generic: the page's title from its namespace, a random hero photo                      |
+| `<locale>/<continent>[/<country>[/<city>]]`             | region: name, park count, the region's outline (`getRegionGeoSVG`)                     |
+| `<locale>/<continent>/<country>/<city>/<park>[/<ride>]` | place: name and location over the park's or ride's photo                               |
 
 A two-segment path whose second segment is not a key of `genericPages` is read as a continent, and
 an unknown continent renders an empty headline over "0 parks". **A new page that calls
@@ -45,9 +45,15 @@ an unknown continent renders an empty headline over "0 parks". **A new page that
 `{ namespace, key }` of its title, or `{ literal }` for an English-only page such as the changelog.
 Old segments stay (`howto` beside `how-park-fan-works`), because shared URLs keep being fetched.
 
+An author profile's card (`blog/author/<key>`) takes the name and short bio from
+`content/blog/authors` (`getAuthor`), under the kicker "Blog · Author"; an unknown key gets the blog
+index's card. Before it had a branch of its own, the key was looked up as a post slug, and the card
+said "author".
+
 The geo segments reach backend URLs, so anything that is not slug-shaped is a 400 before a fetch
 ([an API route passes only slugs upstream](../rules/an-api-route-passes-only-slugs-upstream.md)); an
-unknown park or ride is a 404. The blog, news and glossary branches run before that check and fetch
+unknown park or ride is a 404. Only the API's own 404 counts as unknown: any other failure of the
+park or ride fetch is the route's 500, so an outage is never answered as "not found". The blog, news and glossary branches run before that check and fetch
 nothing upstream.
 
 **No live data on any card.** Status, crowd level and wait time were taken off: a platform shows a
@@ -78,7 +84,7 @@ skipped, since Satori cannot size it.
 | ----------------------------- | ------------------------------------------------------------------------- |
 | A card                        | `public, max-age=2592000, s-maxage=2592000, stale-while-revalidate=86400` |
 | Render threw (500)            | `public, max-age=0, s-maxage=300`                                         |
-| Bad path (400), unknown (404) | none of their own                                                         |
+| Bad path (400), unknown (404) | `no-store, must-revalidate`, as `CDN-Cache-Control` too                   |
 
 Thirty days because nothing on a card changes before the next deploy, which purges Cloudflare, and
 because the URLs are many and each is asked for about once a day: the five-minute window it
@@ -87,8 +93,9 @@ replaced hit the cache almost never. The route sets the value with `cdnCacheHead
 `next.config.ts` repeats it; the three must agree, because on Vercel the handler's header wins and
 under `next start` the rule does ([CDN caching](../architecture/cdn-caching.md#api-routes)). The
 failure window is its own five minutes so a card that failed once is not frozen for a month, yet one
-that always fails is rendered at most once per five minutes per URL. The 400 and 404 answers carry
-no header, so they take the rule's thirty days.
+that always fails is rendered at most once per five minutes per URL. The 400 and 404 answers set
+both keys to `no-store`: without a header of their own they took the rule's thirty days, and a park
+added after its URL was first asked for kept a broken card for a month.
 
 `robots.txt` allows `/api/og/` while disallowing the rest of `/api/`
 ([SEO analysis](../seo/analysis.md)).

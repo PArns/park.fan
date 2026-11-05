@@ -618,7 +618,7 @@ export async function getParkYearlyPredictions(
 export function getPopularParks(limit = 20): Promise<PopularPark[]> {
   return api.get<PopularPark[]>('/v1/parks/popular', {
     params: { limit },
-    next: { revalidate: 1800, tags: ['popular-parks'] },
+    next: { revalidate: CACHE_TTL.popularParks, tags: ['popular-parks'] },
   });
 }
 

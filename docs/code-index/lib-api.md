@@ -152,6 +152,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `relayJsonWrite` _function_: Relays a write with the request's JSON body forwarded as-is, or answers 400 when not JSON.
 - `relayPushGet` _function_: Relays `GET <apiPath>?endpoint=…`, the „this browser's own rows" read of alerts and follows.
 - `relayPushWrite` _function_: Relays a push `POST` or `DELETE` with the request's JSON body forwarded as-is.
+- `PUSH_UNREACHABLE` _const_: The error every push relay's 502 carries when the backend cannot be reached.
 
 ### [`ride-figures.ts`](../../lib/api/ride-figures.ts)
 

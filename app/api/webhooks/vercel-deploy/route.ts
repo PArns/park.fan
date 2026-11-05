@@ -39,16 +39,18 @@ export async function POST(request: Request) {
   if (event?.type !== 'deployment.promoted') return Response.json({ ignored: event?.type ?? null });
   // The delivery must name the deployment answering it. That keeps out other projects in the
   // webhook's scope, and a captured delivery replays only until the next deploy.
-  if (event.payload?.deployment?.id !== process.env.VERCEL_DEPLOYMENT_ID) {
+  const deploymentId = event.payload?.deployment?.id;
+  if (deploymentId !== process.env.VERCEL_DEPLOYMENT_ID) {
     return Response.json({ ignored: 'not the live deployment' });
   }
 
+  const host = new URL(SITE_URL).host;
   try {
     // The host, not the whole zone: api.park.fan sits in the same zone, and its cache is the backend's.
     const response = await fetch(`https://api.cloudflare.com/client/v4/zones/${zone}/purge_cache`, {
       method: 'POST',
       headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
-      body: JSON.stringify({ hosts: [new URL(SITE_URL).host] }),
+      body: JSON.stringify({ hosts: [host] }),
       signal: AbortSignal.timeout(10_000),
     });
     const result = await response.json().catch(() => null);
@@ -59,6 +61,8 @@ export async function POST(request: Request) {
         `Cloudflare purge_cache ${response.status}: zone ${zone}, token ${token.slice(0, 5)}… (${token.length} chars)`,
         JSON.stringify(result?.errors ?? result)
       );
+    // So the runtime logs show that a promote purged, not only that a purge failed.
+    else console.info(`Cloudflare purge_cache ok: host ${host}, deployment ${deploymentId}`);
     // A non-2xx makes Vercel deliver the event again, with backoff, for up to a day.
     return Response.json(result, { status: response.ok ? 200 : 502 });
   } catch (error) {
