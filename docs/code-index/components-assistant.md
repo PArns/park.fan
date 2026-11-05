@@ -41,6 +41,30 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `AssistantTeaser` _component_: A short line beside the closed Parky button ("Hey, ich bin Parky – klick mich an!"), at most twice a session and never once Parky was opened or a line was closed. A press on the line opens Parky.
 
+### [`parky-drawing.ts`](../../components/assistant/parky-drawing.ts)
+
+- `ink` _const_: The ink of the pupils, the mouth and every outline drawn dark.
+- `blue` _const_: The brand's blue, where the bubble's gradient starts.
+- `green` _const_: The brand's green, where the bubble's gradient ends.
+- `pink` _const_: The bubblegum's pink.
+- `capBlue` _const_: A night sky's blue that stays apart from the bubble's own: the nightcap, a night dream.
+- `rail` _const_: The red of the rails and the car Parky rides in.
+- `frame` _const_: The dark blue of the hat's A-frame.
+- `heartRed` _const_: The red of a heart.
+- `gold` _const_: Warm gold for stars, sparkles and lit windows.
+- `CABIN_COLOURS` _const_: The Ferris wheel's cabins in turn, and confetti in the same colours.
+- `STAR` _const_: A four-pointed star at the centre of the orbit dizzy stars run round, above the left eye.
+- `HEART` _const_: A heart about 10 units wide round the origin, for heart eyes and the ones floating up.
+- `GRIN` _const_: The open grin of a ride or a cheer, in place of the smile.
+- `HAPPY_EYES` _const_: A happy squint: both eyes turned up into arcs.
+
+### [`parky-dreams.tsx`](../../components/assistant/parky-dreams.tsx)
+
+- `ParkyDreamCloud` _component_: Parky's dream in a cloud over his sleeping head, led to by three little puffs as his thoughts are (`DREAMS`).
+- `DREAMS` _const_: What Parky dreams of, in a cloud over his sleeping head: riding a coaster, cheering under confetti, a fairy-tale castle rising under a shooting star, fireworks over the castle, a log boat plunging into a splash, or a Ferris wheel at night …
+- `DREAM_MS` _const_: How long a dream lasts; the stylesheet reads it as `--parky-dream`.
+- Types: `ParkyDream`
+
 ### [`parky-layer.ts`](../../components/assistant/parky-layer.ts)
 
 - `PARKY_LAYER` _const_: Parky's layer: button, speech bubble and window lie above everything else on the page, the header, the planner and the navigation bar's `z-[9999]` included. One class for all three.
@@ -60,6 +84,12 @@ by hand: change the comment in the code and re-run the script. -->
 - `ParkyLookBack` _component_: What stands behind Parky: the weather round him and the scenes of the acts that go beyond him (the ghost, the fireworks, the snowman). Drawn first, so every act and mood paints over it.
 - `ParkyLookHands` _component_: What Parky holds over his face during an act, drawn last in the body: the snow globe, the fan, the chattering teeth of a shiver.
 - `LOOK_GAZE` _const_: Where the pupils go during a scene: at the ghost, the fireworks, the snowman, the globe.
+
+### [`parky-props.tsx`](../../components/assistant/parky-props.tsx)
+
+- `ParkyRideTrack` _component_: The rails a ride runs on, drawn behind Parky so they stand while he moves: the loop's two rails with ties between them, the tower's mast, the flume's water channel with its splash, the teacups' turntable, or the track a ride's geometry …
+- `ParkyVehicle` _component_: What Parky rides in, its foot on the rail at the resting point: the red car, the flume's log boat or a pink teacup.
+- `ParkyMoment` _component_: What Parky holds or wears for a moment of a park day, drawn over his face; `null` for an act without one. The motion is the stylesheet's (`.parky-act-<act>`); under reduced motion the prop simply shows for the act.
 
 ### [`use-assistant-actions.ts`](../../components/assistant/use-assistant-actions.ts)
 

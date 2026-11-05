@@ -25,7 +25,7 @@ export const RIM = 6.5;
 export const LOOP = { x: 24, y: 16, r: 33, gauge: 2.4 } as const;
 
 /** The rides Parky can take; `coaster` is the loop, drawn and turned by the stylesheet. */
-export const RIDES = ['coaster', 'launch', 'hills', 'tower'] as const;
+export const RIDES = ['coaster', 'launch', 'hills', 'tower', 'flume', 'teacups'] as const;
 
 /** One of {@link RIDES}. */
 export type ParkyRide = (typeof RIDES)[number];
@@ -37,7 +37,8 @@ export function isRide(value: string | null | undefined): value is ParkyRide {
 
 /**
  * A moment of a ride: the wheels' place, the car's tilt (degrees, clockwise), how far into the ride
- * (0 to 1), and optionally a squash and how visible Parky is.
+ * (0 to 1), and optionally a squash, how visible Parky is and his airtime: how far he floats up off
+ * his seat (units), while the car stays on the rail.
  */
 export interface RideStop {
   x: number;
@@ -47,6 +48,7 @@ export interface RideStop {
   scaleX?: number;
   scaleY?: number;
   opacity?: number;
+  lift?: number;
 }
 
 /** How far a ride takes Parky and its rails to the left and up, in the drawing's units. */
@@ -61,6 +63,8 @@ export interface RideMotion {
   track: string;
   /** The hat's lift above the head (units) at moments of the ride, for the free fall. */
   hat?: { at: number; lift: number }[];
+  /** When the boat hits the water (0 to 1), for the splash drawn with it. */
+  splash?: number;
   reach: RideReach;
 }
 
@@ -103,10 +107,13 @@ const FIGURE: Point[] = [
 /** Half the widest rail's stroke, the tower's mast. */
 const RAIL_EDGE = 1.6;
 
-/** Where a stop puts a point of the drawing: squashed and turned about the wheels, then moved. */
+/**
+ * Where a stop puts a point of the drawing: squashed, floated up by the airtime, turned about the
+ * wheels, then moved; the same order as {@link rideKeyframe}.
+ */
 function placed(point: Point, stop: RideStop): Point {
   const dx = (point.x - REST.x) * (stop.scaleX ?? 1);
-  const dy = (point.y - REST.y) * (stop.scaleY ?? 1);
+  const dy = (point.y - REST.y) * (stop.scaleY ?? 1) - (stop.lift ?? 0);
   const turn = (stop.angle * Math.PI) / 180;
   return {
     x: stop.x + dx * Math.cos(turn) - dy * Math.sin(turn),
@@ -152,16 +159,21 @@ function timed(
   });
 }
 
-/** Camel-back hills to the left: from `x0` to `x1`, `height` high, as points with their tilt. */
-function hill(x0: number, x1: number, height: number, count = 10) {
+/**
+ * Camel-back hills to the left: from `x0` to `x1`, `height` high, as points with their tilt. Over
+ * the crest Parky floats up to `airtime` off his seat, only near the top.
+ */
+function hill(x0: number, x1: number, height: number, airtime = 0, count = 10) {
   const width = x0 - x1;
   return Array.from({ length: count + 1 }, (_, i) => {
     const u = i / count;
     const slope = (height * Math.PI * Math.sin(2 * Math.PI * u)) / width;
+    const up = (1 - Math.cos(2 * Math.PI * u)) / 2;
     return {
       x: x0 - width * u,
-      y: REST.y - (height * (1 - Math.cos(2 * Math.PI * u))) / 2,
+      y: REST.y - height * up,
       angle: (Math.atan(slope) * 180) / Math.PI,
+      lift: round(airtime * up ** 3),
     };
   });
 }
@@ -210,8 +222,8 @@ function launch(): RideMotion {
  * as if the circuit ran on behind the page, braking into the station.
  */
 function hills(): RideMotion {
-  const first = hill(10, -50, 30);
-  const second = hill(-50, -100, 20).slice(1);
+  const first = hill(10, -50, 30, 7);
+  const second = hill(-50, -100, 20, 5).slice(1);
   const away = [
     { x: REST.x, y: REST.y, angle: 0 },
     ...first,
@@ -239,7 +251,13 @@ function tower(): RideMotion {
   const topY = -55;
   const drop = Array.from({ length: 6 }, (_, i) => {
     const s = (i + 1) / 6;
-    return { x: REST.x, y: topY + (REST.y - topY) * s * s, angle: 0, at: round(0.58 + 0.08 * s) };
+    return {
+      x: REST.x,
+      y: topY + (REST.y - topY) * s * s,
+      angle: 0,
+      at: round(0.58 + 0.08 * s),
+      lift: round(7 * Math.sin(Math.PI * s)),
+    };
   });
   const stops: RideStop[] = [
     { ...REST, angle: 0, at: 0 },
@@ -275,11 +293,89 @@ function tower(): RideMotion {
   };
 }
 
+/**
+ * The log flume: slowly up a lift hill to the left, a float over the crest, the plunge, a splash at
+ * the bottom; the boat drifts on out of sight and floats back in from the right.
+ */
+function flume(): RideMotion {
+  // The channel the boat runs down, kept short so the splash lands near the station.
+  const channel: RideStop[] = [
+    { x: 14, y: REST.y, angle: 0, at: 0.08 },
+    { x: 11, y: 48, angle: 20, at: 0.11 },
+    { x: -13, y: 27, angle: 40, at: 0.42 },
+    { x: -15.5, y: 26.2, angle: 10, at: 0.46 },
+    { x: -18, y: 26, angle: 0, at: 0.5, lift: 3 },
+    { x: -20, y: 27.2, angle: -40, at: 0.53, lift: 6 },
+    { x: -30.3, y: 46.5, angle: -62, at: 0.58, lift: 2 },
+  ];
+  const bottom = { x: -33, y: REST.y, angle: -10 };
+  const stops: RideStop[] = [
+    { ...REST, angle: 0, at: 0 },
+    ...channel,
+    { ...bottom, at: 0.6, scaleX: 1.12, scaleY: 0.88 },
+    { x: -38, y: REST.y, angle: 0, at: 0.64 },
+    { x: -52, y: REST.y, angle: 0, at: 0.7, opacity: 0 },
+    { x: REST.x + 40, y: REST.y, angle: 0, at: 0.72, opacity: 0 },
+    { x: REST.x + 26, y: REST.y, angle: 0, at: 0.8 },
+    { x: REST.x + 8, y: REST.y - 0.8, angle: -3, at: 0.88 },
+    { x: REST.x + 2, y: REST.y, angle: 2, at: 0.94 },
+    { ...REST, angle: 0, at: 1 },
+  ].map((stop) => ({ ...stop, opacity: stop.opacity ?? 1 }));
+  const rails = [{ x: REST.x + 40, y: REST.y }, ...channel, bottom, { x: -46, y: REST.y }];
+  return {
+    stops,
+    track: trackOf(rails),
+    reach: reachOf(stops, rails),
+    splash: 0.6,
+  };
+}
+
+/** The teacups' turntable, which the cup circles: its middle and the cup's way round it. */
+export const TURNTABLE = { x: REST.x - 13, y: REST.y, rx: 13, ry: 4.5, rim: 6 } as const;
+
+/**
+ * The teacups: twice round the turntable to the left of the station, the cup swaying as it goes
+ * and a little smaller at the back, then a wobble to rest.
+ */
+function teacups(): RideMotion {
+  const { x, y, rx, ry, rim } = TURNTABLE;
+  const steps = 48;
+  const laps: RideStop[] = Array.from({ length: steps + 1 }, (_, i) => {
+    const turn = (i / steps) * 4 * Math.PI;
+    const back = Math.sin(turn);
+    return {
+      x: round(x + rx * Math.cos(turn)),
+      y: round(y - ry * back),
+      angle: round(6 * Math.sin(2 * turn)),
+      at: round(0.06 + (0.8 * i) / steps),
+      scaleX: round(1 - 0.12 * back),
+      scaleY: round(1 - 0.12 * back),
+    };
+  });
+  const stops: RideStop[] = [
+    { ...REST, angle: 0, at: 0 },
+    ...laps,
+    { ...REST, angle: -5, at: 0.92 },
+    { ...REST, angle: 3, at: 0.96 },
+    { ...REST, angle: 0, at: 1 },
+  ];
+  const outer = { rx: rx + rim, ry: ry + rim / 2 };
+  return {
+    stops,
+    track:
+      `M${x - outer.rx} ${y}a${outer.rx} ${outer.ry} 0 1 0 ${2 * outer.rx} 0` +
+      `a${outer.rx} ${outer.ry} 0 1 0 ${-2 * outer.rx} 0Z`,
+    reach: reachOf(stops, ring(x, y, outer.rx, outer.ry)),
+  };
+}
+
 /** The rides played from these stops; the loop is the stylesheet's. */
 export const RIDE_MOTION: Record<Exclude<ParkyRide, 'coaster'>, RideMotion> = {
   launch: launch(),
   hills: hills(),
   tower: tower(),
+  flume: flume(),
+  teacups: teacups(),
 };
 
 /**
@@ -309,11 +405,15 @@ export function rideFits(
   return box.left + reach.left * unit >= 0 && box.top + reach.top * unit >= 0;
 }
 
-/** A stop as a keyframe for the car, turned about the wheels' resting point. */
+/**
+ * A stop as a keyframe for Parky in the car, turned about the wheels' resting point. Every frame
+ * lists the same functions, the airtime's lift among them, so each interpolates as itself.
+ */
 export function rideKeyframe(stop: RideStop): Keyframe {
   const transform =
     `translate(${round(stop.x - REST.x)}px, ${round(stop.y - REST.y)}px) ` +
-    `rotate(${round(stop.angle)}deg) scale(${stop.scaleX ?? 1}, ${stop.scaleY ?? 1})`;
+    `rotate(${round(stop.angle)}deg) translate(0px, ${-(stop.lift ?? 0) || 0}px) ` +
+    `scale(${stop.scaleX ?? 1}, ${stop.scaleY ?? 1})`;
   return {
     offset: stop.at,
     transform,

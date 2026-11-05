@@ -228,15 +228,26 @@ move or press, a key, the mouse wheel or a touch.
 
 Its life of its own comes in classes, each with its own pace (`CLASS_ACTS`, `CLASS_PAUSE_MS`):
 
-| Class    | When                                      | What Parky does                                                                                                                                                                    |
-| -------- | ----------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| blink    | always, every 7–8 s (CSS, `parky-blink`)  | shuts and opens his eyes                                                                                                                                                           |
-| `fidget` | `awake` (< 60 s quiet), 7–10 s apart      | winks, looks around, tilts his head, wiggles                                                                                                                                       |
-| `showy`  | `awake`, about every 30 s (27–33 s)       | a ride (three tickets of fourteen, so the coasters come up most), hops, spins, rolls his eyes, twirls, dances, sunglasses, lights, whistles, gum, reads, nods off                  |
-| `sleepy` | `bored` (60 s quiet), every 8–12 s        | yawns first, then naps, pulls on his nightcap, nods off                                                                                                                            |
-| asleep   | `asleep` (90 s quiet)                     | eyes shut, slow breathing under rising Zs, the hat stops; activity wakes him with a "!"                                                                                            |
-| dreams   | asleep, 15–25 s after the last one, 6.5 s | a cloud over his head (`ParkyDreamCloud`): a coaster car round a loop with him aboard, a little Parky cheering under confetti, or a fairy-tale castle rising under a shooting star |
-| doing    | whenever something happens                | moods (`thinking`, `looking`, `talking`), searching along, and the cues that answer the visitor                                                                                    |
+| Class    | When                                      | What Parky does                                                                                                                                                                                                                                                                               |
+| -------- | ----------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| blink    | always, every 7–8 s (CSS, `parky-blink`)  | shuts and opens his eyes                                                                                                                                                                                                                                                                      |
+| `fidget` | `awake` (< 60 s quiet), 7–10 s apart      | winks, looks around, tilts his head, wiggles                                                                                                                                                                                                                                                  |
+| `showy`  | `awake`, about every 30 s (27–33 s)       | a ride (seven tickets of 36, about one in five); two tickets each for hops, spins, eye rolls, twirls, dances, sunglasses, lights, whistles, gum, reading, nodding off; one each for cotton candy, a churro, a balloon, the park map, a photo, a drink and airtime                             |
+| `sleepy` | `bored` (60 s quiet), every 8–12 s        | yawns first, then naps, pulls on his nightcap, nods off                                                                                                                                                                                                                                       |
+| asleep   | `asleep` (90 s quiet)                     | eyes shut, slow breathing under rising Zs, the hat stops; activity wakes him with a "!"                                                                                                                                                                                                       |
+| dreams   | asleep, 15–25 s after the last one, 6.5 s | a cloud over his head (`ParkyDreamCloud`): a coaster car round a loop with him aboard, a little Parky cheering under confetti, a fairy-tale castle rising under a shooting star, fireworks over the castle, a log boat plunging into a splash, or a Ferris wheel at night with its cabins lit |
+| doing    | whenever something happens                | moods (`thinking`, `looking`, `talking`), searching along, and the cues that answer the visitor                                                                                                                                                                                               |
+
+The moments of a park day are props drawn over his face (`ParkyMoment` in
+`components/assistant/parky-props.tsx`): cotton candy at his right cheek with a bite gone at each
+chomp; a churro, two bites, a happy squint and a heart, because it is his favourite; a balloon that
+bobs, slips away and floats off while he watches it go; a three-panel park map unfolding with a dot
+pulsing where he is; a camera over his right eye, the left one shut, a click and a flash; a drink
+through a straw, the level dropping and bubbles rising. Airtime, his signature move, floats him up
+off the ground for joy, the hat a little higher still. `grumpy` (arms crossed, brows down, a frown,
+steam off the top of his head) is an act like the others but holds no ticket: it is meant for long
+queues on the page. The drawing's shared colours and shapes are in `parky-drawing.ts`, the dreams
+in `parky-dreams.tsx`.
 
 A showy act takes the place of the fidget that would come after it is due. That is the button in
 the corner. In the open window and in the homepage hero Parky is `calm`: awake he only blinks and
@@ -272,8 +283,9 @@ once the dialog closes. It moves by `translate`, which an entrance's `transform`
 The search palette is the exception: there Parky stays and searches along.
 
 An easter egg can ask for a ride from outside: `ParkyLogo`'s `cue` plays it at once, a named one
-or `ride` for any of four, and now and then Parky takes one by itself as one act among the rest.
-Parky sits in a red car for each:
+or `ride` for any of six, and now and then Parky takes one by itself as one act among the rest.
+Parky sits in a red car, a log boat or a teacup (`ParkyVehicle`, with the rails drawn by
+`ParkyRideTrack`):
 
 - **Loop** (`coaster`): it turns about the centre of a loop (`LOOP`), so the car's wheels run
   round the rails drawn around it, upside down at the top. The stylesheet turns it.
@@ -281,14 +293,24 @@ Parky sits in a red car for each:
   backwards through the station and a few swings to rest.
 - **Hills**: over two camel-backs to the left and out of sight, back in from the right as if the
   circuit ran on behind the page, braking into the station.
-- **Tower**: pulled up a mast, a shiver at the top, the drop, the brakes; the hat lifts off the
-  head as it falls and lands again.
+- **Tower**: pulled up a mast with his eyes screwed shut (he is afraid of heights), a shiver at
+  the top, eyes wide for the drop, the brakes; the hat lifts off the head as it falls and lands
+  again.
+- **Flume**: a log boat slowly up a lift hill to the left, a float over the crest, the plunge, a
+  splash where it hits the water (the ride's `splash`); it drifts out of sight and floats back in
+  from the right, and Parky shakes the water off like a wet dog.
+- **Teacups**: a pink teacup twice round a turntable to the left of the station, swaying and a
+  little smaller at the back.
 
-The last three are worked out in `lib/assistant/parky-rides.ts`: one geometry gives both the rails
+Airtime runs through the rides as a stop's `lift`: over the hills' crests, in the tower's free fall
+and over the flume's crest Parky floats up off his seat while the vehicle sinks back by as much and
+stays on the rail.
+
+The rides beyond the loop are worked out in `lib/assistant/parky-rides.ts`: one geometry gives both the rails
 drawn and the stops the car passes, played with the Web Animations API and turned about the wheels'
 resting point, so the two cannot drift apart. On the hills the car is slower near the top and
-faster low down. Eyes go wide and the mouth opens on every ride, and off every ride Parky is
-dizzy (`FOLLOW_UP`): the pupils swirl round their eyes, one each way, the body reels, the mouth
+faster low down. Eyes go wide and the mouth opens on every ride, and off every ride but the flume
+Parky is dizzy (`FOLLOW_UP`): the pupils swirl round their eyes, one each way, the body reels, the mouth
 goes wavy and three stars circle its head.
 
 A random ride (`ride`, by itself or from a cue) is only one that fits on screen where Parky is at
