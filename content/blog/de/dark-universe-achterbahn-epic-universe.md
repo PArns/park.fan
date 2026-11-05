@@ -40,13 +40,13 @@ Universal Orlando hat am 5. November angekündigt, dass im [Epic Universe](ref:u
 
 ## Was über die Bahn feststeht
 
-Universal beschreibt sie als Thrill Coaster in einer Halle, mit einer neuen Geschichte rund um die Universal Monsters. Einen Namen hat sie noch nicht, jedenfalls keinen, den Universal verrät. Hersteller, Höhe, Tempo und Mindestgröße will der Konzern später bekannt geben. Für die Eröffnung steht in der Mitteilung „in the years ahead“, was ungefähr „irgendwann, aber sicher nicht nächste Woche“ heißt. Ein Jahr steht nicht dabei.
+Universal beschreibt sie als Thrill Coaster in einer Halle, mit einer neuen Geschichte rund um die Universal Monsters. Einen Namen hat sie noch nicht, jedenfalls keinen, den Universal verrät. Mehr will Universal später verraten. Für die Eröffnung steht in der Mitteilung „in the years ahead“, was ungefähr „irgendwann, aber sicher nicht nächste Woche“ heißt. Ein Jahr steht nicht dabei.
 
 ## Was heute in Dark Universe steht
 
 Dark Universe ist das Dorf Darkmoor, eine der fünf Welten des Parks, der am 22. Mai 2025 eröffnet hat. Die anderen vier sind Celestial Park, The Wizarding World of Harry Potter – Ministry of Magic, Super Nintendo World und How to Train Your Dragon – Isle of Berk.
 
-In Monsters Unchained geht es in die Katakomben von Frankenstein Manor. Dr. Victoria Frankenstein führt ein Experiment vor, bis Dracula die Monster zum Aufstand anführt, dabei sind unter anderem der Wolf Man und die Mumie. Universal nennt die Bahn die bisher furchterregendste Attraktion von Universal Orlando. Das Phantom der Oper spielt dazu Orgel, und an zwölf Stellen schießen im Takt Flammen rund einen Meter hoch, für ein Orgelkonzert ein ziemlich temperamentvoller Vortrag. Mitfahren darf, wer mindestens 122 cm groß ist.
+In Monsters Unchained geht es in die Katakomben von Frankenstein Manor. Dr. Victoria Frankenstein führt ein Experiment vor, bis Dracula die Monster zum Aufstand anführt, dabei sind unter anderem der Wolf Man und die Mumie. Universal nennt die Bahn die bisher furchterregendste Attraktion von Universal Orlando. Dazu dröhnt die Orgel des Phantoms der Oper, und an zwölf Stellen schießen im Takt Flammen rund einen Meter hoch, für ein Orgelkonzert ein ziemlich temperamentvoller Vortrag. Mitfahren darf, wer mindestens 122 cm groß ist.
 
 [Curse of the Werewolf](ref:universal-epic-universe/curse-of-the-werewolf) ist eine Familienachterbahn mit sich drehenden Wagen, auf der die Fahrgäste den Werwölfen entkommen sollen, bevor sie selbst zu einem werden. Sie fährt ab 102 cm, Kinder zwischen 102 und 122 cm nur mit Begleitung. Mit kleineren Kindern bleiben in Darkmoor die Darkmoor Monster Makeup Experience mit Schminke und Tattoos zum Abwaschen, das Restaurant Das Stakehaus und die Treffen mit der Bride of Frankenstein, dem Invisible Man und Ygor.
 
