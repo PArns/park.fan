@@ -26,7 +26,7 @@ rideLinks:
 seo:
   title: 'Dollywood: biglietti a prezzo bambini fino al 22/11/2026'
   description: >-
-    Smoky Mountain Christmas a Dollywood dal 6/11/2026 al 3/1/2027, con oltre 6 milioni di luci. Fino al 22/11 il biglietto giornaliero costa a tutti come per i bambini.
+    Smoky Mountain Christmas a Dollywood dal 6/11/2026 al 3/1/2027, con oltre 6 milioni di luci. Fino al 22/11 tutti pagano il biglietto a prezzo bambini.
   keywords:
     - Dollywood Natale
     - Smoky Mountain Christmas 2026
