@@ -73,7 +73,11 @@ Brand marks in one place, as plain paths since lucide-react dropped its brand se
 ### [`entry-tile.tsx`](../../components/common/entry-tile.tsx)
 
 - `EntryTileBody` _component_: Icon chip and label, with the optional count inside the label.
+- `SelectionBar` _component_: The selected cell's bar along its top edge. An element, not a border or a shadow: `border-t-primary` loses to the shorthand border colour the cell needs to beat `TabsTrigger`'s base, and an inset shadow loses to the base's `shadow-sm`.
+- `phoneLastCellSpan` _function_: The span of the LAST cell on a phone, so the three-column row never ends on an empty cell: one cell left over takes the whole row, two share it.
 - `entryTileChip` _const_: The icon chip. Square, so the row is scannable by shape before any label is read.
+- `tileCell` _const_: The classes every cell of the row shares, tab trigger or link.
+- `tileRowPhone` _const_: The row on a phone: three columns instead of two, and no second line in the cells. Two columns put seven cells in four rows, most of the first screen; three columns make three rows. Both rows use it, `ParkTileGrid` and `RideNavTiles`.
 
 ### [`favorite-star.tsx`](../../components/common/favorite-star.tsx)
 

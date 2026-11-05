@@ -491,12 +491,14 @@
     "searchAttractions": "Filtrar atracciones...",
     "noAttractionsFound": "No se encontraron atracciones",
     "clearSearch": "Borrar búsqueda",
-    "seasonal": "Temporada",
-    "seasonalWinter": "Invierno",
-    "seasonalSummer": "Verano",
-    "seasonalWinterOnly": "Solo en invierno",
-    "seasonalSummerOnly": "Solo en verano",
-    "seasonalOffSeason": "Fuera de temporada",
+    "seasonal": {
+      "label": "Temporada",
+      "winterOnly": "Solo en invierno",
+      "summerOnly": "Solo en verano",
+      "offSeason": "Fuera de temporada",
+      "winter": "Invierno",
+      "summer": "Verano"
+    },
     "offSeasonCount": "{count} fuera de temporada",
     "filterSection": {
       "title": "Acotar las atracciones",
@@ -889,8 +891,12 @@
     "crowdToday": "Afluencia de hoy",
     "crowdTodaySoFar": "hasta ahora",
     "crowdTodayShort": "Hoy",
-    "localTime": "hora local",
-    "influencingHolidays": "Vacaciones en regiones cercanas",
+    "clock": {
+      "localTime": "hora local"
+    },
+    "holidayContext": {
+      "influencingHolidays": "Vacaciones en regiones cercanas"
+    },
     "influencingHolidaysBody": "Allí están de vacaciones escolares y llegan muchos visitantes de día. Espera más gente y colas más largas de lo normal.",
     "influencingHolidaysEffect": "Allí hay vacaciones escolares, así que llegan más visitantes de día.",
     "influencingHolidaysShort": "Regiones cercanas",

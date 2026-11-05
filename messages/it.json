@@ -491,12 +491,14 @@
     "searchAttractions": "Filtra attrazioni...",
     "noAttractionsFound": "Nessuna attrazione trovata",
     "clearSearch": "Cancella ricerca",
-    "seasonal": "Stagionale",
-    "seasonalWinter": "Inverno",
-    "seasonalSummer": "Estate",
-    "seasonalWinterOnly": "Solo in inverno",
-    "seasonalSummerOnly": "Solo in estate",
-    "seasonalOffSeason": "Fuori stagione",
+    "seasonal": {
+      "label": "Stagionale",
+      "winterOnly": "Solo in inverno",
+      "summerOnly": "Solo in estate",
+      "offSeason": "Fuori stagione",
+      "winter": "Inverno",
+      "summer": "Estate"
+    },
     "offSeasonCount": "{count} fuori stagione",
     "filterSection": {
       "title": "Restringi le attrazioni",
@@ -889,8 +891,12 @@
     "crowdToday": "Affluenza di oggi",
     "crowdTodaySoFar": "finora",
     "crowdTodayShort": "Oggi",
-    "localTime": "ora locale",
-    "influencingHolidays": "Vacanze nelle regioni vicine",
+    "clock": {
+      "localTime": "ora locale"
+    },
+    "holidayContext": {
+      "influencingHolidays": "Vacanze nelle regioni vicine"
+    },
     "influencingHolidaysBody": "Lì sono in vacanza scolastica: arrivano molti visitatori giornalieri. Aspettati più folla e attese più lunghe del solito.",
     "influencingHolidaysEffect": "Lì sono in vacanza scolastica: più visitatori giornalieri.",
     "influencingHolidaysShort": "Regioni vicine",

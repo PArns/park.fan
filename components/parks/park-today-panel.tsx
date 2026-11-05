@@ -481,7 +481,7 @@ export function ParkTodayPanel({
             <span>
               {sched.currentTimeFormatted}
               {tCommon('timeSuffix')}
-              <span className="max-sm:hidden"> · {t('localTime')}</span>
+              <span className="max-sm:hidden"> · {t('clock.localTime')}</span>
             </span>
           </span>
         )}

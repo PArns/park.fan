@@ -14,14 +14,16 @@ import { DaySignalKey } from '@/components/parks/day-signal-key';
  * be looked up.
  */
 export function ParkCalendarLegend({ className }: { className?: string }) {
-  const t = useTranslations('parks');
+  const tGroups = useTranslations('parks.calendarLegendGroups');
+  const tCrowd = useTranslations('parks.crowdLevels');
+  const tHolidays = useTranslations('parks.holidayContext');
   const tLegend = useTranslations('attractions.historyLegend');
 
   return (
     <div className={cn('flex flex-wrap items-center gap-x-5 gap-y-2', className)}>
       <div className="flex w-full min-w-0 items-center gap-2 sm:w-auto">
         <span className="text-muted-foreground shrink-0 text-[10px] font-medium tracking-widest uppercase">
-          {t('calendarLegendGroups.crowd')}
+          {tGroups('crowd')}
         </span>
 
         {/* Below `sm` the six names do not fit and pushed the legend past the card's edge, so the
@@ -34,8 +36,8 @@ export function ParkCalendarLegend({ className }: { className?: string }) {
             ))}
           </div>
           <div className="text-muted-foreground flex justify-between text-[9px] font-medium tracking-wide uppercase">
-            <span>{t('crowdLevels.very_low')}</span>
-            <span>{t('crowdLevels.extreme')}</span>
+            <span>{tCrowd('very_low')}</span>
+            <span>{tCrowd('extreme')}</span>
           </div>
         </div>
 
@@ -48,7 +50,7 @@ export function ParkCalendarLegend({ className }: { className?: string }) {
                 CROWD_SCALE_CLASS[level]
               )}
             >
-              {t(`crowdLevels.${level}`)}
+              {tCrowd(level)}
             </span>
           ))}
         </div>
@@ -56,10 +58,13 @@ export function ParkCalendarLegend({ className }: { className?: string }) {
 
       <div className="flex flex-wrap items-center gap-x-4 gap-y-1.5">
         <span className="text-muted-foreground text-[10px] font-medium tracking-widest uppercase">
-          {t('calendarLegendGroups.signals')}
+          {tGroups('signals')}
         </span>
         <DaySignalKey className={DAY_SIGNAL_CLASS.school} label={tLegend('schoolVacation')} />
-        <DaySignalKey className={DAY_SIGNAL_CLASS.neighbor} label={t('influencingHolidays')} />
+        <DaySignalKey
+          className={DAY_SIGNAL_CLASS.neighbor}
+          label={tHolidays('influencingHolidays')}
+        />
         <DaySignalKey className={DAY_SIGNAL_CLASS.holiday} label={tLegend('holiday')} />
         <DaySignalKey className={DAY_SIGNAL_CLASS.bridge} label={tLegend('bridgeDay')} />
       </div>

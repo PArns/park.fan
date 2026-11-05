@@ -491,12 +491,14 @@
     "searchAttractions": "Filter attractions...",
     "noAttractionsFound": "No attractions found",
     "clearSearch": "Clear search",
-    "seasonal": "Seasonal",
-    "seasonalWinter": "Winter",
-    "seasonalSummer": "Summer",
-    "seasonalWinterOnly": "Winter only",
-    "seasonalSummerOnly": "Summer only",
-    "seasonalOffSeason": "Off-season",
+    "seasonal": {
+      "label": "Seasonal",
+      "winterOnly": "Winter only",
+      "summerOnly": "Summer only",
+      "offSeason": "Off-season",
+      "winter": "Winter",
+      "summer": "Summer"
+    },
     "offSeasonCount": "{count} off-season",
     "filterSection": {
       "title": "Narrow down the attractions",
@@ -889,8 +891,12 @@
     "crowdToday": "Crowds today",
     "crowdTodaySoFar": "so far",
     "crowdTodayShort": "Today",
-    "localTime": "local time",
-    "influencingHolidays": "Holidays in nearby regions",
+    "clock": {
+      "localTime": "local time"
+    },
+    "holidayContext": {
+      "influencingHolidays": "Holidays in nearby regions"
+    },
     "influencingHolidaysBody": "It’s school holidays there right now, and plenty of day visitors come from that region. Expect bigger crowds and longer waits than usual.",
     "influencingHolidaysEffect": "School holidays there, so more day visitors than usual.",
     "influencingHolidaysShort": "Nearby regions",
