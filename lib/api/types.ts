@@ -794,7 +794,8 @@ export interface ParkRestaurant {
   latitude: number | null;
   longitude: number | null;
   cuisineType: string | null;
-  requiresReservation: boolean;
+  /** Absent when no source says; only `true` earns the badge, absent is never "walk-in". */
+  requiresReservation?: boolean | null;
   status?: string;
   waitTime?: number | null;
   partySize?: number | null;
