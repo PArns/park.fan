@@ -157,7 +157,7 @@ export type AssistantOpenSource = 'button' | 'line' | 'page' | 'hero' | 'languag
  * A line in Parky's speech bubble: an invitation, after an entrance, bored, woken, a holiday's, a
  * park's own, the Konami code's, or an answer to something the visitor did (the trip planner
  * opened, a plan finished, a favourite, an alert, the theme switched, the app installed, its own
- * stop on the homepage scrolled into view).
+ * stop on the homepage scrolled into view), or the park's weather.
  */
 export type AssistantLineKind =
   | 'invitation'
@@ -166,6 +166,7 @@ export type AssistantLineKind =
   | 'woke'
   | 'holiday'
   | 'park'
+  | 'fact'
   | 'secret'
   | 'planner'
   | 'plan'
@@ -175,7 +176,10 @@ export type AssistantLineKind =
   | 'install'
   | 'hello'
   | 'hang'
-  | 'rough';
+  | 'rough'
+  | 'weather'
+  | 'live'
+  | 'clock';
 
 /** How one of Parky's answers ended. */
 export type AssistantAnswerResult =
@@ -218,9 +222,9 @@ export interface SiteEventMap {
   glossary_term_viewed: { term: string };
   glossary_category_filtered: { category: string };
   preferred_source_clicked: NoProps;
-  ride_alert_set: { source: 'card' | 'central' };
+  ride_alert_set: { source: 'card' | 'central' | 'assistant' };
   ride_alert_removed: NoProps;
-  show_follow_add: { source: 'card' | 'panel' };
+  show_follow_add: { source: 'card' | 'panel' | 'assistant' };
   show_follow_remove: NoProps;
   planner_opened: { source: PlannerOpenedSource };
   /** Parky's button is on screen, once per page view; with the entrance it made, `none` without. */

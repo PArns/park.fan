@@ -1,0 +1,3235 @@
+/*
+ * Parky's face (`components/assistant/parky/parky-logo.tsx`): a blink every few seconds, the Ferris-wheel
+ * hat turning while it writes, the mouth talking, and the closed button bobbing gently. The idle
+ * acts last `--parky-act`, which the component sets from its own table, so a length lives there
+ * only. With company Parky winks, looks around and tilts his head, and about every half minute
+ * hops, spins, twirls, dances, reads or nods off for a moment; bored, he yawns, naps and pulls on
+ * his nightcap; asleep he breathes slowly under rising Zs, and the hat stands still.
+ * While a search is open it holds a magnifying glass to its eye and looks around the page. It answers
+ * what the visitor does: a checklist for the trip planner, confetti for a finished plan, heart eyes
+ * for a favourite, a bell for an alert, sunglasses when the theme turns light and a nightcap when it
+ * turns dark; the sunglasses, the lit wheel under moon and stars and the nightcap also come on
+ * their own.
+ */
+/* Three blinks in 22.5 s, 7.4 to 7.6 s apart, so one every 7 to 8 s in every mode. Each shuts and
+   opens over some 170 ms. */
+@keyframes parky-blink {
+  0%,
+  29.6%,
+  30.4%,
+  62.6%,
+  63.4%,
+  96.6%,
+  97.4%,
+  100% {
+    transform: scaleY(1);
+  }
+  30%,
+  63%,
+  97% {
+    transform: scaleY(0.1);
+  }
+}
+@keyframes parky-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+/* Parky's dreams (`ParkyDreamCloud` in parky-logo.tsx). */
+@keyframes parky-dream-fade {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  8%,
+  88% {
+    opacity: 1;
+  }
+}
+@keyframes parky-dream-puff {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+@keyframes parky-dream-hop {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-2.5px);
+  }
+}
+@keyframes parky-dream-fall {
+  from {
+    transform: translateY(-3px) rotate(0);
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  to {
+    transform: translateY(16px) rotate(200deg);
+    opacity: 0;
+  }
+}
+@keyframes parky-dream-rise {
+  from {
+    transform: translateY(9px) scaleY(0.6);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0) scaleY(1);
+    opacity: 1;
+  }
+}
+@keyframes parky-dream-shoot {
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes parky-dream-twinkle {
+  0%,
+  100% {
+    transform: scale(0.4);
+    opacity: 0.3;
+  }
+  50% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+@keyframes parky-talk {
+  0%,
+  100% {
+    transform: scaleY(1);
+  }
+  50% {
+    transform: scaleY(0.45);
+  }
+}
+@keyframes parky-bob {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-3px) rotate(-3deg);
+  }
+}
+@keyframes parky-hop {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  30% {
+    transform: translateY(-5px) scale(1.04, 0.96);
+  }
+  55% {
+    transform: translateY(0) scale(0.97, 1.03);
+  }
+}
+@keyframes parky-tilt {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  35%,
+  65% {
+    transform: rotate(-12deg);
+  }
+}
+@keyframes parky-look {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25%,
+  40% {
+    transform: translateX(-1.4px);
+  }
+  60%,
+  80% {
+    transform: translateX(1.4px);
+  }
+}
+@keyframes parky-wink {
+  0%,
+  100% {
+    transform: scaleY(1);
+  }
+  20%,
+  60% {
+    transform: scaleY(0.1);
+  }
+}
+@keyframes parky-lean {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  25%,
+  60% {
+    transform: rotate(5deg);
+  }
+}
+@keyframes parky-wiggle {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  15% {
+    transform: rotate(-8deg);
+  }
+  30% {
+    transform: rotate(7deg);
+  }
+  45% {
+    transform: rotate(-5deg);
+  }
+  60% {
+    transform: rotate(3deg);
+  }
+  75% {
+    transform: rotate(-1deg);
+  }
+}
+/* The yawn: the body stretches, the eyes squeeze shut and the mouth opens wide in place of the smile. */
+@keyframes parky-stretch {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+  30%,
+  60% {
+    transform: translateY(-1.5px) scale(0.97, 1.05);
+  }
+  80% {
+    transform: translateY(0) scale(1.02, 0.98);
+  }
+}
+@keyframes parky-squint {
+  0%,
+  100% {
+    transform: scaleY(1);
+  }
+  25%,
+  65% {
+    transform: scaleY(0.2);
+  }
+  85% {
+    transform: scaleY(0.85);
+  }
+}
+@keyframes parky-yawn {
+  0%,
+  100% {
+    transform: scale(0.4, 0);
+  }
+  30% {
+    transform: scale(0.9);
+  }
+  45%,
+  65% {
+    transform: scale(1, 1.15);
+  }
+  88% {
+    transform: scale(0.5, 0.15);
+  }
+}
+/* A mouth that stands in for the smile (yawn, whistle, gum) while the smile fades out. */
+@keyframes parky-smile-away {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  12%,
+  88% {
+    opacity: 0;
+  }
+}
+@keyframes parky-mouth-in {
+  0%,
+  100% {
+    transform: scale(0);
+  }
+  12%,
+  88% {
+    transform: scale(1);
+  }
+}
+/* The whistle: a sway, an innocent look up and to the side, notes drifting off. */
+@keyframes parky-sway {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  20% {
+    transform: rotate(-4deg);
+  }
+  45% {
+    transform: rotate(4deg);
+  }
+  70% {
+    transform: rotate(-4deg);
+  }
+  90% {
+    transform: rotate(2deg);
+  }
+}
+@keyframes parky-innocent {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  15%,
+  85% {
+    transform: translate(1.4px, -1.8px);
+  }
+}
+@keyframes parky-note {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0) scale(0.6) rotate(0deg);
+  }
+  20% {
+    opacity: 1;
+    transform: translate(1px, -3px) scale(1) rotate(-8deg);
+  }
+  60% {
+    opacity: 1;
+    transform: translate(3px, -9px) scale(1) rotate(8deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(4px, -14px) scale(0.9) rotate(-4deg);
+  }
+}
+/* The gum: the bubble grows, the eyes cross on it, it pops, Parky flinches and blinks. */
+@keyframes parky-gum {
+  0%,
+  15% {
+    opacity: 1;
+    transform: scale(0);
+  }
+  35% {
+    transform: scale(0.55);
+  }
+  45% {
+    transform: scale(0.48);
+  }
+  70% {
+    transform: scale(1);
+  }
+  74% {
+    opacity: 1;
+    transform: scale(1.12);
+  }
+  78%,
+  100% {
+    opacity: 0;
+    transform: scale(1.35);
+  }
+}
+@keyframes parky-pop {
+  0%,
+  74% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  78% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  90%,
+  100% {
+    opacity: 0;
+    transform: scale(1.2);
+  }
+}
+@keyframes parky-flinch {
+  0%,
+  74%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+  78% {
+    transform: translateY(-2px) scale(1.04, 0.96);
+  }
+  86% {
+    transform: translateY(0) scale(0.98, 1.02);
+  }
+}
+@keyframes parky-pop-blink {
+  0%,
+  74%,
+  88%,
+  100% {
+    transform: scaleY(1);
+  }
+  79% {
+    transform: scaleY(0.1);
+  }
+}
+@keyframes parky-cross-left {
+  0%,
+  80%,
+  100% {
+    transform: translate(0, 0);
+  }
+  20%,
+  72% {
+    transform: translate(1.3px, 2px);
+  }
+}
+@keyframes parky-cross-right {
+  0%,
+  80%,
+  100% {
+    transform: translate(0, 0);
+  }
+  20%,
+  72% {
+    transform: translate(-1.3px, 2px);
+  }
+}
+/* The eye roll: the pupils circle over the top, then the eyes half close and the head drops. */
+/* The pupils' own act runs from 10 % to 90 % of it (`.parky-act-*`), the glides before and after. */
+@keyframes parky-gaze-aside {
+  0%,
+  100% {
+    transform: translate(var(--gaze-x, 0), var(--gaze-y, 0));
+  }
+  10%,
+  90% {
+    transform: translate(0, 0);
+  }
+}
+@keyframes parky-roll {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  15% {
+    transform: translate(-2.2px, 0.4px);
+  }
+  32% {
+    transform: translate(-1.6px, -2.1px);
+  }
+  48% {
+    transform: translate(0, -2.8px);
+  }
+  64% {
+    transform: translate(1.6px, -2.1px);
+  }
+  78% {
+    transform: translate(2.2px, 0.4px);
+  }
+}
+@keyframes parky-meh {
+  0%,
+  70%,
+  100% {
+    transform: scaleY(1);
+  }
+  84% {
+    transform: scaleY(0.55);
+  }
+}
+@keyframes parky-slump {
+  0%,
+  60%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  80% {
+    transform: translateY(0.6px) rotate(4deg);
+  }
+}
+/* Falling asleep: the eyes droop, open once more and shut; the head sinks into the sleeping pose. */
+@keyframes parky-droop {
+  0% {
+    transform: scaleY(1);
+  }
+  25% {
+    transform: scaleY(0.45);
+  }
+  40% {
+    transform: scaleY(0.9);
+  }
+  70% {
+    transform: scaleY(0.35);
+  }
+  100% {
+    transform: scaleY(0.1);
+  }
+}
+@keyframes parky-nod-off {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  40% {
+    transform: translateY(0.5px) rotate(-2deg);
+  }
+  50% {
+    transform: translateY(0) rotate(0deg);
+  }
+  100% {
+    transform: translateY(1px) rotate(-5deg);
+  }
+}
+/* Starts where the nod-off ends, so the sleeping face takes over without a jump. */
+@keyframes parky-breathe {
+  0%,
+  100% {
+    transform: translateY(1px) rotate(-5deg) scale(1);
+  }
+  50% {
+    transform: translateY(0.4px) rotate(-5deg) scale(1.035, 1.02);
+  }
+}
+@keyframes parky-z {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0) scale(0.5);
+  }
+  20%,
+  70% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-6px, -14px) scale(1.2) rotate(-12deg);
+  }
+}
+/* Woken up: a jump, wide eyes and an exclamation mark. */
+@keyframes parky-startle {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+  20% {
+    transform: translateY(-6px) scale(0.94, 1.08);
+  }
+  45% {
+    transform: translateY(0) scale(1.05, 0.95);
+  }
+  65% {
+    transform: translateY(0) scale(0.98, 1.02);
+  }
+}
+/* Woken up slowly: a long stretch up, a slump, a smaller one. */
+@keyframes parky-stretch {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  30%,
+  45% {
+    transform: scale(0.9, 1.14);
+  }
+  60% {
+    transform: scale(1.05, 0.95);
+  }
+  78% {
+    transform: scale(0.97, 1.04);
+  }
+}
+/* Woken up groggy: the eyes come half open, fall shut, then open for good. */
+@keyframes parky-groggy-eyes {
+  0% {
+    transform: scaleY(0.1);
+  }
+  25%,
+  40% {
+    transform: scaleY(0.45);
+  }
+  52% {
+    transform: scaleY(0.1);
+  }
+  70%,
+  100% {
+    transform: scaleY(1);
+  }
+}
+@keyframes parky-groggy {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  30% {
+    transform: rotate(-5deg);
+  }
+  60% {
+    transform: rotate(4deg);
+  }
+}
+/* Woken up and shaking the sleep off like a wet dog. */
+@keyframes parky-shake-off {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  15% {
+    transform: rotate(-10deg);
+  }
+  30% {
+    transform: rotate(10deg);
+  }
+  45% {
+    transform: rotate(-8deg);
+  }
+  60% {
+    transform: rotate(6deg);
+  }
+  75% {
+    transform: rotate(-3deg);
+  }
+}
+@keyframes parky-wide {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  15%,
+  55% {
+    transform: scale(1.15);
+  }
+}
+@keyframes parky-alarm {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  20% {
+    opacity: 1;
+    transform: scale(1.25);
+  }
+  35%,
+  75% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1);
+  }
+}
+/* The pirouette: a crouch, a jump with a full turn, a landing. One list of functions in every frame,
+   so the turn is interpolated as a turn. */
+@keyframes parky-twirl {
+  0% {
+    transform: translateY(0) rotate(0deg) scale(1, 1);
+  }
+  15% {
+    transform: translateY(1.5px) rotate(0deg) scale(1.06, 0.94);
+  }
+  30% {
+    transform: translateY(-7px) rotate(0deg) scale(0.96, 1.04);
+  }
+  65% {
+    transform: translateY(-6px) rotate(360deg) scale(1, 1);
+  }
+  82% {
+    transform: translateY(0) rotate(360deg) scale(1.05, 0.95);
+  }
+  100% {
+    transform: translateY(0) rotate(360deg) scale(1, 1);
+  }
+}
+@keyframes parky-dance {
+  0%,
+  25%,
+  50%,
+  75%,
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  12.5%,
+  62.5% {
+    transform: translate(-2px, -3px) rotate(-8deg);
+  }
+  37.5%,
+  87.5% {
+    transform: translate(2px, -3px) rotate(8deg);
+  }
+}
+/* Reading for fun: the book rises in front of the mouth and sinks away again. */
+@keyframes parky-book-in {
+  0% {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  12%,
+  88% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+}
+/* A nap: the eyes close and cross-fade with the shut ones, a few breaths, then a jolt awake. */
+@keyframes parky-nap {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg) scale(1, 1);
+  }
+  15%,
+  50%,
+  80% {
+    transform: translateY(1px) rotate(-5deg) scale(1, 1);
+  }
+  32%,
+  65% {
+    transform: translateY(0.4px) rotate(-5deg) scale(1.035, 1.02);
+  }
+  88% {
+    transform: translateY(-3px) rotate(3deg) scale(1, 1);
+  }
+  94% {
+    transform: translateY(0) rotate(-2deg) scale(1, 1);
+  }
+}
+@keyframes parky-nap-eyes {
+  0% {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+  14% {
+    opacity: 1;
+    transform: scaleY(0.1);
+  }
+  18%,
+  82% {
+    opacity: 0;
+    transform: scaleY(0.1);
+  }
+  86% {
+    opacity: 1;
+    transform: scaleY(0.1);
+  }
+  93% {
+    opacity: 1;
+    transform: scaleY(1.15);
+  }
+  100% {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+}
+@keyframes parky-nap-shut {
+  0%,
+  14%,
+  86%,
+  100% {
+    opacity: 0;
+  }
+  18%,
+  82% {
+    opacity: 1;
+  }
+}
+/* The coaster: Parky turns about the loop's centre (`LOOP` in the component), so its car runs
+   round the rails; a roll back, the run, a little rock as it comes to rest. */
+@keyframes parky-coaster {
+  0% {
+    transform: rotate(0deg);
+  }
+  12% {
+    transform: rotate(-12deg);
+  }
+  22% {
+    transform: rotate(0deg);
+    animation-timing-function: cubic-bezier(0.35, 0, 0.65, 1);
+  }
+  72% {
+    transform: rotate(360deg);
+  }
+  82% {
+    transform: rotate(366deg);
+  }
+  91% {
+    transform: rotate(358deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes parky-track {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  10%,
+  88% {
+    opacity: 1;
+  }
+}
+/* How far out the pupils swirl: grows from the middle and shrinks back to it, so they glide in and
+   out of the swirl rather than jump. Registered, so it can be animated. */
+@property --parky-swirl {
+  syntax: '<number>';
+  inherits: false;
+  initial-value: 0;
+}
+@keyframes parky-swirl-radius {
+  0% {
+    --parky-swirl: 0;
+  }
+  12%,
+  85% {
+    --parky-swirl: 1;
+  }
+  100% {
+    --parky-swirl: 0;
+  }
+}
+/* Off the coaster: the pupils swirl round their eyes, one each way, the body reels, stars circle. */
+@keyframes parky-swirl-cw {
+  0%,
+  100% {
+    transform: translate(0, calc(-1.8px * var(--parky-swirl)));
+  }
+  12.5% {
+    transform: translate(calc(1.27px * var(--parky-swirl)), calc(-1.27px * var(--parky-swirl)));
+  }
+  25% {
+    transform: translate(calc(1.8px * var(--parky-swirl)), 0);
+  }
+  37.5% {
+    transform: translate(calc(1.27px * var(--parky-swirl)), calc(1.27px * var(--parky-swirl)));
+  }
+  50% {
+    transform: translate(0, calc(1.8px * var(--parky-swirl)));
+  }
+  62.5% {
+    transform: translate(calc(-1.27px * var(--parky-swirl)), calc(1.27px * var(--parky-swirl)));
+  }
+  75% {
+    transform: translate(calc(-1.8px * var(--parky-swirl)), 0);
+  }
+  87.5% {
+    transform: translate(calc(-1.27px * var(--parky-swirl)), calc(-1.27px * var(--parky-swirl)));
+  }
+}
+@keyframes parky-swirl-ccw {
+  0%,
+  100% {
+    transform: translate(0, calc(-1.8px * var(--parky-swirl)));
+  }
+  12.5% {
+    transform: translate(calc(-1.27px * var(--parky-swirl)), calc(-1.27px * var(--parky-swirl)));
+  }
+  25% {
+    transform: translate(calc(-1.8px * var(--parky-swirl)), 0);
+  }
+  37.5% {
+    transform: translate(calc(-1.27px * var(--parky-swirl)), calc(1.27px * var(--parky-swirl)));
+  }
+  50% {
+    transform: translate(0, calc(1.8px * var(--parky-swirl)));
+  }
+  62.5% {
+    transform: translate(calc(1.27px * var(--parky-swirl)), calc(1.27px * var(--parky-swirl)));
+  }
+  75% {
+    transform: translate(calc(1.8px * var(--parky-swirl)), 0);
+  }
+  87.5% {
+    transform: translate(calc(1.27px * var(--parky-swirl)), calc(-1.27px * var(--parky-swirl)));
+  }
+}
+@keyframes parky-reel {
+  0%,
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  12% {
+    transform: translate(-1.5px, 0) rotate(-9deg);
+  }
+  26% {
+    transform: translate(1.5px, 0.5px) rotate(8deg);
+  }
+  40% {
+    transform: translate(-1px, 0) rotate(-6deg);
+  }
+  55% {
+    transform: translate(1px, 0.5px) rotate(5deg);
+  }
+  70% {
+    transform: translate(-0.5px, 0) rotate(-3deg);
+  }
+  85% {
+    transform: translate(0.5px, 0) rotate(2deg);
+  }
+}
+/* A flat ellipse round the star's own place, so the three read as circling the head. */
+@keyframes parky-orbit {
+  0%,
+  100% {
+    transform: translate(9px, 0) scale(1);
+  }
+  25% {
+    transform: translate(0, 3px) scale(1.15);
+  }
+  50% {
+    transform: translate(-9px, 0) scale(1);
+  }
+  75% {
+    transform: translate(0, -3px) scale(0.8);
+  }
+}
+@keyframes parky-ponder {
+  0%,
+  100% {
+    transform: rotate(-5deg);
+  }
+  50% {
+    transform: rotate(-9deg) translateY(-1px);
+  }
+}
+@keyframes parky-scan {
+  0%,
+  100% {
+    transform: translateX(-2.4px);
+  }
+  50% {
+    transform: translateX(2.4px);
+  }
+}
+@keyframes parky-nod {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(1px) rotate(2deg);
+  }
+}
+@keyframes parky-page {
+  0%,
+  70% {
+    transform: scaleX(1);
+    opacity: 0;
+  }
+  72% {
+    opacity: 1;
+  }
+  85% {
+    transform: scaleX(-1);
+    opacity: 1;
+  }
+  86%,
+  100% {
+    transform: scaleX(-1);
+    opacity: 0;
+  }
+}
+@keyframes parky-dot {
+  0%,
+  60%,
+  100% {
+    transform: translateY(0);
+  }
+  30% {
+    transform: translateY(-1.6px);
+  }
+}
+@keyframes parky-thought {
+  0% {
+    opacity: 0;
+    transform: translateY(2px) scale(0.6);
+  }
+  30%,
+  70% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-2px) scale(0.9);
+  }
+}
+@keyframes parky-lens-in {
+  0% {
+    opacity: 0;
+    transform: rotate(-35deg) scale(0.3);
+  }
+  65% {
+    opacity: 1;
+    transform: rotate(6deg) scale(1.06);
+  }
+  100% {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+  }
+}
+@keyframes parky-lens-out {
+  to {
+    opacity: 0;
+    transform: rotate(-35deg) scale(0.3);
+  }
+}
+/* Looking round the page through the glass: over to one side, a moment's peer, over to the other. */
+@keyframes parky-hunt {
+  0%,
+  100% {
+    transform: translateX(0) rotate(0deg);
+  }
+  25%,
+  40% {
+    transform: translateX(-1.2px) rotate(-6deg);
+  }
+  70%,
+  85% {
+    transform: translateX(1.2px) rotate(5deg);
+  }
+}
+/* Answers to the visitor. The confetti flies along each piece's own `--dx`, `--dy` and `--spin`. */
+@keyframes parky-confetti {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0) rotate(0deg);
+  }
+  10% {
+    opacity: 1;
+  }
+  45%,
+  60% {
+    opacity: 1;
+    transform: translate(var(--dx), var(--dy)) rotate(var(--spin));
+  }
+  100% {
+    opacity: 0;
+    transform: translate(calc(var(--dx) * 1.25), calc(var(--dy) + 26px))
+      rotate(calc(var(--spin) * 2));
+  }
+}
+@keyframes parky-tick {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes parky-heart {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  15% {
+    opacity: 1;
+    transform: scale(1.25);
+  }
+  25%,
+  45%,
+  65%,
+  85% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  35%,
+  55% {
+    opacity: 1;
+    transform: scale(1.18);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+}
+@keyframes parky-bell-swing {
+  0%,
+  80%,
+  100% {
+    transform: rotate(0deg);
+  }
+  10%,
+  30%,
+  50%,
+  70% {
+    transform: rotate(18deg);
+  }
+  20%,
+  40%,
+  60% {
+    transform: rotate(-18deg);
+  }
+}
+@keyframes parky-ring {
+  0% {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+  40% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.25);
+  }
+}
+@keyframes parky-shades {
+  0% {
+    opacity: 0;
+    transform: translateY(-14px);
+  }
+  22% {
+    opacity: 1;
+    transform: translateY(1px);
+  }
+  30%,
+  82% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-14px);
+  }
+}
+/* The wheel steps aside for the nightcap and comes back once it is off. */
+@keyframes parky-hat-off {
+  0%,
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  15%,
+  85% {
+    opacity: 0;
+    transform: translateY(-3px);
+  }
+}
+@keyframes parky-bobble {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(-0.6px, 0.8px);
+  }
+}
+@keyframes parky-glow {
+  0%,
+  100% {
+    opacity: 0.15;
+  }
+  50% {
+    opacity: 0.85;
+  }
+}
+@keyframes parky-twinkle {
+  0%,
+  100% {
+    opacity: 0.5;
+    transform: scale(0.6);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+}
+.parky-thoughts circle,
+.parky-thoughts .parky-cloud {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+/* The turning page hinges on the spine, the book's left edge of the right half. */
+.parky-page {
+  transform-box: fill-box;
+  transform-origin: left center;
+  opacity: 0;
+}
+/* Where the pupils look (`useGaze` in `use-gaze.ts`, a mood or an act), set by `parky-logo.tsx`. */
+.parky-gaze {
+  transform: translate(var(--gaze-x, 0), var(--gaze-y, 0));
+}
+.parky-eyes,
+.parky-eye,
+.parky-mouth,
+.parky-purse,
+.parky-wheel,
+.parky-body,
+.parky-pupils,
+.parky-note,
+.parky-zzz path {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+/* A dream's puffs and cloud, the cheering Parky, the confetti and the sparkles move about their own
+   middle; the castle rises from its foot. */
+.parky-dream-puff,
+.parky-dream-cloud,
+.parky-dream-hopper,
+.parky-dream-confetti,
+.parky-dream-sparkle {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.parky-dream-rise {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+}
+/* The open mouth and the bubble grow out of the lips, the exclamation mark out of its foot. */
+.parky-yawn,
+.parky-gum {
+  transform-box: fill-box;
+  transform-origin: 50% 15%;
+}
+.parky-alarm {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+}
+.parky-pop {
+  transform-box: fill-box;
+  transform-origin: center;
+  opacity: 0;
+}
+.parky-book {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.parky-grin,
+.parky-woozy,
+.parky-heart,
+.parky-ring,
+.parky-twinkle,
+.parky-confetti > * {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+/* The nightcap settles on its brim. Without motion it simply sits there for the act, and the wheel
+   it stands in for is gone meanwhile. */
+.parky-nightcap {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+}
+.parky-bobble {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.parky-act-nightcap .parky-hat {
+  opacity: 0;
+}
+/* The bell swings from its top; a tick is drawn from its start, so it is hidden until then. */
+.parky-bell-swing {
+  transform-box: fill-box;
+  transform-origin: 50% 0;
+}
+.parky-tick {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+}
+/* The eye behind the glass, magnified; a size, not a motion, so it holds under reduced motion. */
+.parky-searching .parky-eye:last-child {
+  transform: scale(1.2);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .parky-eyes {
+    animation: parky-blink 22.5s ease-in-out infinite;
+  }
+  /* An SVG transform is painted, not composited: every frame of a smooth spin lays out and paints
+     Parky again. 8 steps a second move a cabin half a pixel, too little to see as a jump. */
+  .parky-wheel {
+    animation: parky-spin 14s steps(112) infinite;
+  }
+  .parky-wheel--turning {
+    animation-duration: 3s;
+    animation-timing-function: linear;
+  }
+  .parky-mouth {
+    animation: parky-talk 0.45s ease-in-out infinite;
+  }
+  .parky-bob {
+    animation: parky-bob 3.2s ease-in-out infinite;
+  }
+  /* Back down with a bounce (ease-out-bounce as linear() stops); up quick, as if snatched. Out of
+     a squash he springs up past his height and settles. Both from his feet. */
+  .parky-hang {
+    transform-origin: 50% 100%;
+    transition:
+      scale 0.55s linear(0, 0.35, 1.25 35%, 0.92 55%, 1.04 75%, 1),
+      translate var(--parky-fall)
+        linear(
+          0,
+          0.063,
+          0.25,
+          0.563,
+          1 36.4%,
+          0.812,
+          0.75,
+          0.813,
+          1 72.7%,
+          0.953,
+          0.938,
+          0.953,
+          1 90.9%,
+          0.984,
+          1
+        );
+  }
+  /* Up to the top of the screen, over the header: 5.5rem is the corner's 1rem and the button's
+     height; 20px more keep the hat and his speech bubble inside the window. */
+  .parky-hang[data-fling='down'] {
+    translate: 0 calc(-100dvh + 5.5rem + 20px + env(safe-area-inset-top));
+    transition: translate 0.25s ease-out;
+  }
+  /* Scrolled up fast, the page's speed presses him flat into his corner. */
+  .parky-hang[data-fling='up'] {
+    scale: 1.25 0.6;
+    transition: scale 0.15s ease-out;
+  }
+  .parky-act-hop {
+    animation: parky-hop calc(var(--parky-act) / 2) ease-out 2;
+  }
+  .parky-act-tilt {
+    animation: parky-tilt var(--parky-act) ease-in-out;
+  }
+  .parky-act-look .parky-pupils {
+    animation: parky-look calc(var(--parky-act) * 0.8) ease-in-out calc(var(--parky-act) * 0.1);
+  }
+  .parky-act-wink {
+    animation: parky-lean var(--parky-act) ease-in-out;
+  }
+  .parky-act-wink .parky-eye:last-child {
+    animation: parky-wink var(--parky-act) ease-in-out;
+  }
+  .parky-act-wiggle {
+    animation: parky-wiggle var(--parky-act) ease-in-out;
+  }
+  .parky-act-yawn {
+    animation: parky-stretch var(--parky-act) ease-in-out;
+  }
+  .parky-act-yawn .parky-eyes {
+    animation: parky-squint var(--parky-act) ease-in-out;
+  }
+  .parky-yawn {
+    animation: parky-yawn var(--parky-act) ease-in-out both;
+  }
+  .parky-act-yawn .parky-smile,
+  .parky-act-nightcap .parky-smile,
+  .parky-act-whistle .parky-smile,
+  .parky-act-gum .parky-smile,
+  .parky-act-coaster .parky-smile,
+  .parky-act-launch .parky-smile,
+  .parky-act-hills .parky-smile,
+  .parky-act-tower .parky-smile,
+  .parky-act-dizzy .parky-smile,
+  .parky-act-cheer .parky-smile {
+    animation: parky-smile-away var(--parky-act) ease-in-out;
+  }
+  .parky-purse {
+    animation: parky-mouth-in var(--parky-act) ease-in-out both;
+  }
+  .parky-act-whistle {
+    animation: parky-sway var(--parky-act) ease-in-out;
+  }
+  .parky-act-whistle .parky-pupils {
+    animation: parky-innocent calc(var(--parky-act) * 0.8) ease-in-out calc(var(--parky-act) * 0.1);
+  }
+  .parky-note {
+    animation: parky-note calc(var(--parky-act) * 0.55) ease-out calc(var(--parky-act) * 0.1) both;
+  }
+  .parky-notes > :nth-child(2) .parky-note {
+    animation-delay: calc(var(--parky-act) * 0.4);
+  }
+  .parky-act-gum {
+    animation: parky-flinch var(--parky-act) ease-out;
+  }
+  .parky-act-gum .parky-eyes {
+    animation: parky-pop-blink var(--parky-act) ease-in-out;
+  }
+  .parky-act-gum .parky-eye:first-child .parky-pupils {
+    animation: parky-cross-left calc(var(--parky-act) * 0.8) ease-in-out
+      calc(var(--parky-act) * 0.1);
+  }
+  .parky-act-gum .parky-eye:last-child .parky-pupils {
+    animation: parky-cross-right calc(var(--parky-act) * 0.8) ease-in-out
+      calc(var(--parky-act) * 0.1);
+  }
+  .parky-gum {
+    animation: parky-gum var(--parky-act) ease-in-out both;
+  }
+  .parky-pop {
+    animation: parky-pop var(--parky-act) ease-out both;
+  }
+  .parky-act-roll {
+    animation: parky-slump var(--parky-act) ease-in-out;
+  }
+  .parky-act-roll .parky-eyes {
+    animation: parky-meh var(--parky-act) ease-in-out;
+  }
+  .parky-act-roll .parky-pupils {
+    animation: parky-roll calc(var(--parky-act) * 0.8) ease-in-out calc(var(--parky-act) * 0.1);
+  }
+  /* `forwards`: the eyes stay shut until the sleeping face replaces them. */
+  .parky-act-doze {
+    animation: parky-nod-off var(--parky-act) ease-in-out forwards;
+  }
+  .parky-act-doze .parky-eyes {
+    animation: parky-droop var(--parky-act) ease-in forwards;
+  }
+  .parky-asleep {
+    animation: parky-breathe 3.6s ease-in-out infinite;
+  }
+  .parky-asleep .parky-wheel {
+    animation-play-state: paused;
+  }
+  .parky-zzz path {
+    animation: parky-z 3s ease-out infinite both;
+  }
+  .parky-zzz path:nth-child(2) {
+    animation-delay: 1s;
+  }
+  .parky-zzz path:nth-child(3) {
+    animation-delay: 2s;
+  }
+  /* In a nap each Z rises once and is gone before Parky jolts awake. */
+  .parky-zzz--nap path {
+    animation: parky-z calc(var(--parky-act) * 0.4) ease-out calc(var(--parky-act) * 0.2) both;
+  }
+  .parky-zzz--nap path:nth-child(2) {
+    animation-delay: calc(var(--parky-act) * 0.33);
+  }
+  .parky-zzz--nap path:nth-child(3) {
+    animation-delay: calc(var(--parky-act) * 0.46);
+  }
+  /* A dream: the puffs come up out of the head one after the other and the cloud last, the scene
+     plays, and all of it fades before the dream ends (`--parky-dream`, from parky-logo.tsx). */
+  .parky-dream {
+    animation: parky-dream-fade var(--parky-dream) ease-in-out both;
+  }
+  .parky-dream-puff {
+    animation: parky-dream-puff 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  }
+  .parky-dream-puff:nth-child(2) {
+    animation-delay: 0.15s;
+  }
+  .parky-dream-puff:nth-child(3) {
+    animation-delay: 0.3s;
+  }
+  .parky-dream-cloud {
+    animation: parky-dream-puff 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) 0.45s both;
+  }
+  .parky-dream-scene {
+    animation: parky-dream-fade var(--parky-dream) ease-in-out 0.6s both;
+  }
+  .parky-dream-hopper {
+    animation: parky-dream-hop 0.7s ease-in-out infinite;
+  }
+  .parky-dream-confetti {
+    animation: parky-dream-fall 1.4s linear infinite both;
+  }
+  .parky-dream-rise {
+    animation: parky-dream-rise 1.6s ease-out 0.7s both;
+  }
+  .parky-dream-shoot {
+    stroke-dasharray: 1;
+    animation: parky-dream-shoot 1.6s ease-out 1.8s both;
+  }
+  .parky-dream-sparkle {
+    animation: parky-dream-twinkle 1.5s ease-in-out infinite both;
+  }
+  .parky-gaze {
+    transition: transform 0.15s ease-out;
+  }
+  /* The acts that move the pupils themselves would add their path to the look at the mouse and
+     carry the pupils off the white: the look glides to the middle first, the act's own motion runs
+     from 10 % to 90 % of it, and the look glides back once that has ended. */
+  .parky-act-look .parky-gaze,
+  .parky-act-whistle .parky-gaze,
+  .parky-act-gum .parky-gaze,
+  .parky-act-roll .parky-gaze,
+  .parky-act-dizzy .parky-gaze {
+    animation: parky-gaze-aside var(--parky-act) ease-in-out;
+  }
+  .parky-act-twirl {
+    animation: parky-twirl var(--parky-act) ease-in-out;
+  }
+  .parky-act-dance {
+    animation: parky-dance var(--parky-act) ease-in-out;
+  }
+  .parky-act-read .parky-book {
+    animation: parky-book-in var(--parky-act) ease-out both;
+  }
+  .parky-act-nap {
+    animation: parky-nap var(--parky-act) ease-in-out;
+  }
+  .parky-act-nap .parky-eyes {
+    animation: parky-nap-eyes var(--parky-act) ease-in-out both;
+  }
+  .parky-act-nap .parky-shut {
+    animation: parky-nap-shut var(--parky-act) ease-in-out both;
+  }
+  .parky-act-nap .parky-wheel {
+    animation-play-state: paused;
+  }
+  .parky-act-coaster {
+    transform-box: view-box;
+    transform-origin: 24px 16px;
+    animation: parky-coaster var(--parky-act) linear;
+  }
+  /* The other rides are played from their geometry (`lib/assistant/parky/rides.ts`), turned
+     about the wheels' resting point. */
+  .parky-act-launch,
+  .parky-act-hills,
+  .parky-act-tower {
+    transform-box: view-box;
+    transform-origin: 24px 49px;
+  }
+  .parky-act-coaster .parky-eyes,
+  .parky-act-launch .parky-eyes,
+  .parky-act-hills .parky-eyes,
+  .parky-act-tower .parky-eyes {
+    animation: parky-wide var(--parky-act) ease-out;
+  }
+  .parky-grin {
+    animation: parky-mouth-in var(--parky-act) ease-in-out both;
+  }
+  .parky-track,
+  .parky-car {
+    animation: parky-track var(--parky-act) ease-out both;
+  }
+  .parky-act-dizzy {
+    animation: parky-reel var(--parky-act) ease-in-out;
+  }
+  .parky-act-dizzy .parky-eye:first-child .parky-pupils {
+    animation:
+      parky-swirl-cw calc(var(--parky-act) * 0.8 / 3) linear calc(var(--parky-act) * 0.1) 3,
+      parky-swirl-radius calc(var(--parky-act) * 0.8) ease-in-out calc(var(--parky-act) * 0.1);
+  }
+  .parky-act-dizzy .parky-eye:last-child .parky-pupils {
+    animation:
+      parky-swirl-ccw calc(var(--parky-act) * 0.8 / 3) linear calc(var(--parky-act) * 0.1) 3,
+      parky-swirl-radius calc(var(--parky-act) * 0.8) ease-in-out calc(var(--parky-act) * 0.1);
+  }
+  .parky-woozy {
+    animation: parky-mouth-in var(--parky-act) ease-in-out both;
+  }
+  .parky-stars {
+    animation: parky-track var(--parky-act) ease-out both;
+  }
+  .parky-stars path {
+    animation: parky-orbit 0.9s linear infinite;
+  }
+  .parky-stars path:nth-child(2) {
+    animation-delay: -0.3s;
+  }
+  .parky-stars path:nth-child(3) {
+    animation-delay: -0.6s;
+  }
+  .parky-act-startle {
+    animation: parky-startle var(--parky-act) ease-out;
+  }
+  .parky-act-startle .parky-eyes {
+    animation: parky-wide var(--parky-act) ease-out;
+  }
+  .parky-act-stretch {
+    transform-origin: 50% 100%;
+    animation: parky-stretch var(--parky-act) ease-in-out;
+  }
+  .parky-act-groggy {
+    animation: parky-groggy var(--parky-act) ease-in-out;
+  }
+  .parky-act-groggy .parky-eyes {
+    animation: parky-groggy-eyes var(--parky-act) ease-in-out;
+  }
+  .parky-act-shakeoff {
+    transform-origin: 50% 100%;
+    animation: parky-shake-off var(--parky-act) ease-in-out;
+  }
+  .parky-alarm {
+    animation: parky-alarm var(--parky-act) ease-out both;
+  }
+  .parky-mood-thinking {
+    animation: parky-ponder 2.4s ease-in-out infinite;
+  }
+  .parky-eye {
+    transition: transform 0.3s ease-out;
+  }
+  .parky-lens {
+    animation: parky-lens-in 0.5s ease-out both;
+  }
+  .parky-lens--out {
+    animation: parky-lens-out var(--parky-act) ease-in both;
+  }
+  .parky-searching {
+    animation: parky-hunt 4.2s ease-in-out 0.5s infinite;
+  }
+  .parky-searching .parky-pupils {
+    animation: parky-scan 1.6s ease-in-out infinite;
+  }
+  .parky-act-plan .parky-book {
+    animation: parky-book-in var(--parky-act) ease-out both;
+  }
+  .parky-tick {
+    animation: parky-tick calc(var(--parky-act) * 0.08) ease-out calc(var(--parky-act) * 0.25)
+      forwards;
+  }
+  .parky-clipboard > g:nth-of-type(2) .parky-tick {
+    animation-delay: calc(var(--parky-act) * 0.42);
+  }
+  .parky-clipboard > g:nth-of-type(3) .parky-tick {
+    animation-delay: calc(var(--parky-act) * 0.59);
+  }
+  .parky-act-cheer {
+    animation: parky-hop calc(var(--parky-act) / 2) ease-out 2;
+  }
+  .parky-confetti > * {
+    animation: parky-confetti calc(var(--parky-act) * 0.95) ease-out both;
+  }
+  .parky-confetti > :nth-child(even) {
+    animation-delay: calc(var(--parky-act) * 0.06);
+  }
+  .parky-act-love {
+    animation: parky-sway var(--parky-act) ease-in-out;
+  }
+  .parky-heart {
+    animation: parky-heart var(--parky-act) ease-in-out both;
+  }
+  .parky-act-bell {
+    animation: parky-tilt var(--parky-act) ease-in-out;
+  }
+  .parky-bell-swing {
+    animation: parky-bell-swing calc(var(--parky-act) * 0.6) ease-in-out
+      calc(var(--parky-act) * 0.15) both;
+  }
+  .parky-ring {
+    animation: parky-ring calc(var(--parky-act) / 4) ease-out calc(var(--parky-act) * 0.15) 3 both;
+  }
+  .parky-act-shades {
+    animation: parky-lean var(--parky-act) ease-in-out;
+  }
+  .parky-shades {
+    animation: parky-shades var(--parky-act) ease-in-out both;
+  }
+  /* The nightcap: on in place of the wheel the way the sunglasses come down, eyes heavy and a yawn
+     under it, the bobble swaying. */
+  .parky-act-nightcap {
+    animation: parky-stretch var(--parky-act) ease-in-out;
+  }
+  .parky-act-nightcap .parky-eyes {
+    animation: parky-squint var(--parky-act) ease-in-out;
+  }
+  .parky-act-nightcap .parky-hat {
+    animation: parky-hat-off var(--parky-act) ease-in-out both;
+  }
+  .parky-nightcap {
+    animation: parky-shades var(--parky-act) ease-in-out both;
+  }
+  .parky-bobble {
+    animation: parky-bobble 1.2s ease-in-out infinite;
+  }
+  .parky-night {
+    animation: parky-track var(--parky-act) ease-out both;
+  }
+  .parky-glow {
+    animation: parky-glow 0.9s ease-in-out infinite;
+  }
+  .parky-twinkle {
+    animation: parky-twinkle 1.1s ease-in-out infinite;
+  }
+  .parky-night > g > g:nth-child(2) .parky-twinkle {
+    animation-delay: -0.5s;
+  }
+  .parky-mood-looking .parky-pupils,
+  .parky-act-read .parky-pupils {
+    animation: parky-scan 1.4s ease-in-out infinite;
+  }
+  .parky-page {
+    animation: parky-page 2.8s ease-in-out infinite;
+  }
+  .parky-mood-talking {
+    animation: parky-nod 0.9s ease-in-out infinite;
+  }
+  /* He trembles by a wrapper, which the compositor moves; on the drawing he would be painted
+     again, filters and all, in every frame of the scroll. */
+  .parky-hang[data-fling='down'] .parky-shake {
+    animation: parky-tremble 0.14s linear infinite;
+  }
+  .parky-hang[data-fling='down'] .parky-drop {
+    opacity: 1;
+    transition-duration: 0.15s;
+  }
+  /* Still while nobody sees them; they freeze where they are as the lines fade after the drop. */
+  .parky-drop > span {
+    animation: parky-drop 0.5s linear infinite paused;
+  }
+  .parky-hang[data-fling='down'] .parky-drop > span {
+    animation-play-state: running;
+  }
+  .parky-drop > span:nth-child(2) {
+    animation-delay: -0.17s;
+  }
+  .parky-drop > span:nth-child(3) {
+    animation-delay: -0.33s;
+  }
+  .parky-thoughts > circle {
+    animation: parky-thought 1.8s ease-in-out infinite both;
+  }
+  .parky-thoughts > circle:nth-child(2) {
+    animation-delay: 0.3s;
+  }
+  .parky-thoughts > circle:nth-child(3) {
+    animation-delay: 0.6s;
+  }
+  .parky-cloud-dots circle {
+    transform-box: fill-box;
+    animation: parky-dot 1.1s ease-in-out infinite;
+  }
+  .parky-cloud-dots circle:nth-child(2) {
+    animation-delay: 0.15s;
+  }
+  .parky-cloud-dots circle:nth-child(3) {
+    animation-delay: 0.3s;
+  }
+}
+
+/*
+ * Parky's entrances (`components/assistant/assistant-launcher.tsx`): the first time the button
+ * shows in a session it arrives one of five ways, and Parky speaks once it has landed. The length
+ * comes from `ENTRANCE_MS` as `--parky-enter`, for the button and what it strews about. Frames list
+ * the same functions in the same order, so a turn interpolates as a turn.
+ */
+@keyframes parky-enter-scurry {
+  0% {
+    transform: translate(calc(100% + 2rem), 0) rotate(0deg) scale(1, 1);
+  }
+  28% {
+    transform: translate(-12px, 0) rotate(-12deg) scale(1, 1);
+  }
+  38% {
+    transform: translate(4px, 0) rotate(5deg) scale(1, 1);
+  }
+  46% {
+    transform: translate(0, 0) rotate(0deg) scale(1.06, 0.94);
+  }
+  56% {
+    transform: translate(0, -12px) rotate(0deg) scale(0.95, 1.05);
+  }
+  80% {
+    transform: translate(0, -12px) rotate(360deg) scale(1, 1);
+  }
+  90% {
+    transform: translate(0, 0) rotate(360deg) scale(1.06, 0.94);
+  }
+  100% {
+    transform: translate(0, 0) rotate(360deg) scale(1, 1);
+  }
+}
+@keyframes parky-enter-drop {
+  0% {
+    transform: translate(0, -100vh) scale(1, 1);
+    animation-timing-function: cubic-bezier(0.5, 0, 1, 0.6);
+  }
+  42% {
+    transform: translate(0, 0) scale(1.22, 0.72);
+    animation-timing-function: ease-out;
+  }
+  58% {
+    transform: translate(0, -18px) scale(0.92, 1.08);
+    animation-timing-function: ease-in;
+  }
+  72% {
+    transform: translate(0, 0) scale(1.1, 0.9);
+    animation-timing-function: ease-out;
+  }
+  84% {
+    transform: translate(0, -5px) scale(0.98, 1.02);
+  }
+  100% {
+    transform: translate(0, 0) scale(1, 1);
+  }
+}
+/* Rolling left turns it backwards, two full turns, then a dizzy wobble. */
+@keyframes parky-enter-roll {
+  0% {
+    transform: translate(calc(100% + 2rem), 0) rotate(720deg);
+    animation-timing-function: cubic-bezier(0.2, 0.6, 0.4, 1);
+  }
+  62% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  72% {
+    transform: translate(0, 0) rotate(-14deg);
+  }
+  82% {
+    transform: translate(0, 0) rotate(10deg);
+  }
+  91% {
+    transform: translate(0, 0) rotate(-5deg);
+  }
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+}
+/* Half in from the edge at a tilt, a look, a duck back, then a hop into place. */
+@keyframes parky-enter-peek {
+  0% {
+    transform: translate(calc(100% + 2rem), 0) rotate(0deg) scale(1, 1);
+  }
+  18%,
+  40% {
+    transform: translate(calc(50% + 1rem), 0) rotate(-24deg) scale(1, 1);
+  }
+  48% {
+    transform: translate(calc(70% + 1rem), 0) rotate(-14deg) scale(1, 1);
+  }
+  64% {
+    transform: translate(20%, -16px) rotate(0deg) scale(0.95, 1.05);
+  }
+  76% {
+    transform: translate(0, 0) rotate(0deg) scale(1.08, 0.92);
+  }
+  88% {
+    transform: translate(0, -4px) rotate(0deg) scale(0.98, 1.02);
+  }
+  100% {
+    transform: translate(0, 0) rotate(0deg) scale(1, 1);
+  }
+}
+@keyframes parky-enter-pop {
+  0% {
+    transform: rotate(-30deg) scale(0);
+  }
+  45% {
+    transform: rotate(8deg) scale(1.2);
+  }
+  65% {
+    transform: rotate(-4deg) scale(0.92);
+  }
+  82% {
+    transform: rotate(0deg) scale(1.04);
+  }
+  100% {
+    transform: rotate(0deg) scale(1);
+  }
+}
+@keyframes parky-trail {
+  0%,
+  22% {
+    opacity: 0.9;
+    transform: scaleX(1);
+  }
+  34%,
+  100% {
+    opacity: 0;
+    transform: scaleX(0.3);
+  }
+}
+/* A shiver on the spot, half a pixel each way. */
+@keyframes parky-tremble {
+  0%,
+  100% {
+    translate: 0;
+  }
+  25% {
+    translate: -0.5px 0;
+  }
+  75% {
+    translate: 0.5px 0;
+  }
+}
+/* The lines under a hanging Parky stream down, away from him, to show how far it is to fall. */
+@keyframes parky-drop {
+  0% {
+    opacity: 0;
+    transform: translateY(-4px) scaleY(0.6);
+  }
+  30% {
+    opacity: 0.9;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(14px) scaleY(1);
+  }
+}
+/* The dust rises where the drop lands, at 42 % of it. */
+@keyframes parky-dust {
+  0%,
+  40% {
+    opacity: 0;
+    transform: translate(0, 0) scale(0.4);
+  }
+  46% {
+    opacity: 0.9;
+    transform: translate(calc(var(--side) * 4px), 0) scale(1);
+  }
+  80%,
+  100% {
+    opacity: 0;
+    transform: translate(calc(var(--side) * 14px), -4px) scale(1.5);
+  }
+}
+@keyframes parky-sparkle {
+  0%,
+  30% {
+    opacity: 0;
+    transform: translate(0, 0) rotate(45deg) scale(0);
+  }
+  45% {
+    opacity: 1;
+    transform: translate(calc(var(--dx) * 0.6), calc(var(--dy) * 0.6)) rotate(45deg) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--dx), var(--dy)) rotate(45deg) scale(0.4);
+  }
+}
+/* The drop squashes on landing, so it scales from its foot. */
+.parky-enter-drop {
+  transform-origin: 50% 100%;
+}
+/* Nothing an entrance strews about shows without its animation. */
+/* Fall lines under Parky while a fast scroll holds him up; they fade as he drops back. */
+.parky-drop {
+  position: absolute;
+  top: 92%;
+  left: 50%;
+  display: flex;
+  gap: 7px;
+  translate: -50% 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s ease-out;
+}
+.parky-drop > span {
+  display: block;
+  width: 2.5px;
+  height: 14px;
+  border-radius: 9999px;
+  background: linear-gradient(to bottom, var(--color-primary), transparent);
+}
+.parky-drop > span:nth-child(2) {
+  height: 20px;
+}
+.parky-trail,
+.parky-dust,
+.parky-sparkles {
+  position: absolute;
+  pointer-events: none;
+  opacity: 0;
+}
+.parky-trail {
+  left: 82%;
+  top: 32%;
+  display: grid;
+  gap: 5px;
+  transform-origin: left center;
+}
+.parky-trail > span {
+  display: block;
+  height: 3px;
+  border-radius: 9999px;
+  background: linear-gradient(to right, var(--color-primary), transparent);
+}
+.parky-trail > span:nth-child(1) {
+  width: 22px;
+}
+.parky-trail > span:nth-child(2) {
+  width: 30px;
+  margin-left: 6px;
+}
+.parky-trail > span:nth-child(3) {
+  width: 18px;
+  margin-left: 2px;
+}
+.parky-dust {
+  bottom: 0;
+  width: 16px;
+  height: 9px;
+  border-radius: 9999px;
+  background: color-mix(in oklab, var(--color-muted-foreground) 45%, transparent);
+}
+.parky-dust-left {
+  --side: -1;
+  left: -2px;
+}
+.parky-dust-right {
+  --side: 1;
+  right: -2px;
+}
+.parky-sparkles {
+  inset: 0;
+  opacity: 1;
+}
+.parky-sparkles > span {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 7px;
+  height: 7px;
+  margin: -3.5px;
+  border-radius: 1px;
+  opacity: 0;
+}
+.parky-sparkles > span:nth-child(1) {
+  --dx: 0px;
+  --dy: -40px;
+  background: oklch(0.72 0.17 355);
+}
+.parky-sparkles > span:nth-child(2) {
+  --dx: 35px;
+  --dy: -20px;
+  background: oklch(0.86 0.15 90);
+}
+.parky-sparkles > span:nth-child(3) {
+  --dx: 35px;
+  --dy: 20px;
+  background: var(--color-status-operating);
+}
+.parky-sparkles > span:nth-child(4) {
+  --dx: 0px;
+  --dy: 40px;
+  background: oklch(0.76 0.16 55);
+}
+.parky-sparkles > span:nth-child(5) {
+  --dx: -35px;
+  --dy: 20px;
+  background: oklch(0.72 0.17 355);
+}
+.parky-sparkles > span:nth-child(6) {
+  --dx: -35px;
+  --dy: -20px;
+  background: var(--color-primary);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .parky-enter-scurry {
+    animation: parky-enter-scurry var(--parky-enter) ease-in-out both;
+  }
+  .parky-enter-drop {
+    animation: parky-enter-drop var(--parky-enter) both;
+  }
+  .parky-enter-roll {
+    animation: parky-enter-roll var(--parky-enter) both;
+  }
+  .parky-enter-peek {
+    animation: parky-enter-peek var(--parky-enter) ease-in-out both;
+  }
+  .parky-enter-pop {
+    animation: parky-enter-pop var(--parky-enter) ease-out both;
+  }
+  .parky-trail {
+    animation: parky-trail var(--parky-enter) ease-out both;
+  }
+  .parky-dust {
+    animation: parky-dust var(--parky-enter) ease-out both;
+  }
+  .parky-sparkles > span {
+    animation: parky-sparkle var(--parky-enter) ease-out both;
+  }
+}
+
+/*
+ * Parky's outfits (`components/assistant/parky/looks.tsx`): the season's hat in the wheel's place,
+ * the scarf, the umbrella, the weather round him, and the acts that come with them. Every piece
+ * stands finished without motion; the scenes only move with it.
+ */
+.parky-hat--dressed > :not(.parky-look-hat) {
+  display: none;
+}
+.parky-look-canopy,
+.parky-look-ghost,
+.parky-look-burst,
+.parky-look-flake,
+.parky-look-pompom,
+.parky-look-star,
+.parky-look-swirl {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+/* The fan swings from the hand; each snowball grows from where it rests on the one below, and the
+   snowman melts from his feet. */
+.parky-look-fan,
+.parky-look-build,
+.parky-look-snowman {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+}
+.parky-act-shiver .parky-smile {
+  opacity: 0;
+}
+@keyframes parky-look-drop {
+  0% {
+    opacity: 0;
+    transform: translateY(0);
+  }
+  15% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+}
+/* Under the umbrella a drop stops on the canopy and bounces off it, up and away from the middle. */
+@keyframes parky-look-bounce {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0);
+  }
+  15% {
+    opacity: 1;
+  }
+  60% {
+    opacity: 1;
+    transform: translate(0, 8px);
+  }
+  80% {
+    opacity: 0.8;
+    transform: translate(1.6px, 5px) scaleY(0.5);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(3px, 8px) scaleY(0.4);
+  }
+}
+@keyframes parky-look-flake {
+  0% {
+    opacity: 0;
+    transform: translate(0, -8px) rotate(0);
+  }
+  20%,
+  80% {
+    opacity: 1;
+  }
+  50% {
+    transform: translate(1.5px, 0) rotate(90deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-1px, 8px) rotate(180deg);
+  }
+}
+@keyframes parky-look-gust {
+  0% {
+    stroke-dashoffset: 1;
+  }
+  50% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: -1;
+  }
+}
+@keyframes parky-look-drift {
+  0%,
+  100% {
+    transform: translateX(-1.5px);
+  }
+  50% {
+    transform: translateX(1.5px);
+  }
+}
+@keyframes parky-look-flash {
+  0%,
+  40%,
+  52%,
+  100% {
+    opacity: 0;
+  }
+  44%,
+  48%,
+  56% {
+    opacity: 1;
+  }
+}
+@keyframes parky-look-sweat {
+  0%,
+  20% {
+    opacity: 0;
+    transform: translateY(-1px);
+  }
+  40% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+}
+@keyframes parky-look-bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-0.8px);
+  }
+}
+/* The ghost rises from behind Parky's shoulder, sways over his head and fades away. */
+@keyframes parky-look-ghost {
+  0% {
+    opacity: 0;
+    transform: translate(9px, 14px) scale(0.4);
+  }
+  25% {
+    opacity: 1;
+    transform: translate(0, 0) scale(1);
+  }
+  45% {
+    transform: translate(-2px, -1px) rotate(-8deg);
+  }
+  65% {
+    transform: translate(1px, -2px) rotate(6deg);
+  }
+  85% {
+    opacity: 1;
+    transform: translate(-1px, -3px) rotate(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-2px, -6px);
+  }
+}
+@keyframes parky-look-burst {
+  0% {
+    opacity: 0;
+    transform: scale(0.2);
+  }
+  10% {
+    opacity: 1;
+  }
+  45% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  70%,
+  100% {
+    opacity: 0;
+    transform: scale(1.15);
+  }
+}
+/* One snowball after another rolls in and settles; the act's last tenth melts the snowman. */
+@keyframes parky-look-build {
+  from {
+    opacity: 0;
+    transform: scale(0.2);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+@keyframes parky-look-melt {
+  0%,
+  86% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.3, 0.1);
+  }
+}
+/* Twirled, the canopy turns on its shaft: a flat shape turning shows as its width flipping. */
+@keyframes parky-look-twirl {
+  0%,
+  100% {
+    transform: scaleX(1);
+  }
+  25%,
+  75% {
+    transform: scaleX(-1);
+  }
+  50% {
+    transform: scaleX(1);
+  }
+}
+@keyframes parky-look-shake {
+  0%,
+  30%,
+  100% {
+    transform: rotate(0);
+  }
+  10% {
+    transform: rotate(-9deg);
+  }
+  20% {
+    transform: rotate(9deg);
+  }
+}
+@keyframes parky-look-swirl {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes parky-look-fan {
+  0%,
+  100% {
+    transform: rotate(-14deg);
+  }
+  50% {
+    transform: rotate(14deg);
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .parky-look-drop {
+    animation: parky-look-drop 1.4s linear infinite both;
+  }
+  .parky-look-rain--sheltered .parky-look-drop--canopy {
+    animation-name: parky-look-bounce;
+  }
+  .parky-look-flake {
+    animation: parky-look-flake 4.8s linear infinite both;
+  }
+  .parky-look-wind path {
+    stroke-dasharray: 1;
+    animation: parky-look-gust 2.6s ease-in-out infinite both;
+  }
+  .parky-look-fog path {
+    animation: parky-look-drift 6s ease-in-out infinite;
+  }
+  .parky-look-bolt {
+    animation: parky-look-flash 4s linear infinite;
+  }
+  .parky-look-sweat {
+    animation: parky-look-sweat 2.8s ease-in infinite;
+  }
+  .parky-look-sun {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: parky-spin 30s steps(120) infinite;
+  }
+  .parky-look-star,
+  .parky-look-pompom {
+    animation: parky-twinkle 3s ease-in-out infinite;
+  }
+  .parky-look-pompom {
+    animation-name: parky-look-bob;
+  }
+  .parky-look-ghost {
+    animation: parky-look-ghost var(--parky-act) ease-in-out both;
+  }
+  .parky-look-burst {
+    animation: parky-look-burst 1.6s ease-out both;
+  }
+  .parky-look-snowman {
+    animation: parky-look-melt var(--parky-act) ease-in both;
+  }
+  .parky-look-build {
+    animation: parky-look-build 0.5s cubic-bezier(0.3, 1.5, 0.6, 1) both;
+  }
+  .parky-act-brolly .parky-look-canopy {
+    animation: parky-look-twirl calc(var(--parky-act) / 2) ease-in-out 2;
+  }
+  .parky-act-brolly {
+    animation: parky-sway var(--parky-act) ease-in-out;
+  }
+  .parky-act-shiver {
+    animation: parky-tremble 0.12s linear infinite;
+  }
+  .parky-look-chatter path {
+    animation: parky-tremble 0.1s linear infinite;
+  }
+  .parky-look-globe {
+    animation: parky-look-shake var(--parky-act) ease-in-out;
+  }
+  .parky-look-swirl {
+    animation: parky-look-swirl 2.4s linear infinite;
+  }
+  .parky-look-fan {
+    animation: parky-look-fan 0.5s ease-in-out infinite;
+  }
+}
+
+/*
+ * Parky's park day (`components/assistant/parky/props.tsx`, `dreams.tsx`): the log flume and
+ * the teacups, airtime on a ride and for joy, cotton candy, a churro, a balloon, the park map, a
+ * photo, a drink, the grumpy face for long queues, and three more dreams. The tower's way up is
+ * ridden with eyes shut. Without motion a prop simply shows for its act; what only makes sense
+ * moving (a splash, a flash, the happy squint after a churro) stays hidden.
+ */
+.parky-candy,
+.parky-churro,
+.parky-camera,
+.parky-cup,
+.parky-arms,
+.parky-frown,
+.parky-chomp,
+.parky-oh,
+.parky-flash,
+.parky-treat,
+.parky-bite,
+.parky-steam circle,
+.parky-bubbles circle,
+.parky-here-ring,
+.parky-dream-burst,
+.parky-dream-wheel {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.parky-balloon {
+  transform-box: fill-box;
+  transform-origin: 24% 100%;
+}
+.parky-map-left {
+  transform-box: fill-box;
+  transform-origin: 100% 50%;
+}
+.parky-map-right {
+  transform-box: fill-box;
+  transform-origin: 0 50%;
+}
+.parky-drink {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+}
+.parky-chomp,
+.parky-oh {
+  transform: scale(0);
+}
+.parky-splash > *,
+.parky-flash,
+.parky-happy,
+.parky-treat,
+.parky-streaks,
+.parky-dream-drop {
+  opacity: 0;
+}
+/* Shut for the photo, and no smile under the frown or the pursed lips, with or without motion. */
+.parky-act-photo .parky-eye:first-child {
+  transform: scaleY(0.1);
+}
+.parky-act-grumpy .parky-smile,
+.parky-act-slurp .parky-smile {
+  opacity: 0;
+}
+@keyframes parky-eyes-shut-up {
+  0%,
+  100% {
+    transform: scale(1, 1);
+  }
+  8%,
+  44% {
+    transform: scale(1, 0.1);
+  }
+  52%,
+  72% {
+    transform: scale(1.15, 1.15);
+  }
+}
+@keyframes parky-splash {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0) scale(0.4);
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--dx), var(--dy)) scale(1);
+  }
+}
+/* The wall of water shoots up from the surface and falls back. */
+@keyframes parky-splash-crown {
+  0% {
+    opacity: 0;
+    transform: scaleY(0.1);
+  }
+  15% {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scaleY(0.6);
+  }
+}
+.parky-splash-crown {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+}
+@keyframes parky-turntable {
+  to {
+    stroke-dashoffset: -8;
+  }
+}
+@keyframes parky-airtime {
+  0%,
+  100% {
+    transform: translateY(0) scale(1, 1);
+  }
+  12% {
+    transform: translateY(0) scale(1.08, 0.9);
+  }
+  24% {
+    transform: translateY(-13px) scale(0.96, 1.05);
+  }
+  34% {
+    transform: translateY(-14px) scale(1, 1);
+  }
+  48% {
+    transform: translateY(-15px) scale(1, 1);
+  }
+  62% {
+    transform: translateY(-13.5px) scale(1, 1);
+  }
+  74% {
+    transform: translateY(0) scale(1.1, 0.88);
+  }
+  84% {
+    transform: translateY(0) scale(0.97, 1.03);
+  }
+}
+@keyframes parky-hat-float {
+  0%,
+  20%,
+  74%,
+  100% {
+    transform: translateY(0);
+  }
+  34%,
+  62% {
+    transform: translateY(-3px);
+  }
+}
+@keyframes parky-streaks {
+  0%,
+  20%,
+  70%,
+  100% {
+    opacity: 0;
+  }
+  28%,
+  62% {
+    opacity: 1;
+  }
+}
+/* A bite: the piece is gone. */
+@keyframes parky-bite {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(0);
+  }
+}
+/* The cotton candy comes up beside the cheek and goes to the mouth three times. */
+@keyframes parky-candy {
+  0% {
+    opacity: 0;
+    transform: translate(6px, 8px);
+  }
+  10%,
+  18%,
+  32%,
+  43%,
+  57%,
+  68%,
+  82%,
+  90% {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+  24%,
+  49%,
+  74% {
+    opacity: 1;
+    transform: translate(-7px, 1px);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(6px, 8px);
+  }
+}
+@keyframes parky-chomp-candy {
+  0%,
+  100% {
+    transform: scale(0);
+  }
+  10%,
+  25%,
+  35%,
+  50%,
+  60%,
+  75%,
+  88% {
+    transform: scale(1, 0.25);
+  }
+  20%,
+  45%,
+  70% {
+    transform: scale(1, 1);
+  }
+  30%,
+  55%,
+  80% {
+    transform: scale(1, 0.5);
+  }
+}
+/* The churro slides in from the right, its tip at the mouth; after each bite it moves up. */
+@keyframes parky-churro {
+  0% {
+    opacity: 0;
+    transform: translateX(16px);
+  }
+  12%,
+  30% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  40%,
+  55% {
+    opacity: 1;
+    transform: translateX(-3px);
+  }
+  65%,
+  90% {
+    opacity: 1;
+    transform: translateX(-6px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(14px);
+  }
+}
+@keyframes parky-chomp-churro {
+  0%,
+  100% {
+    transform: scale(0);
+  }
+  10%,
+  30%,
+  42%,
+  55%,
+  66%,
+  88% {
+    transform: scale(1, 0.25);
+  }
+  25%,
+  50% {
+    transform: scale(1, 1);
+  }
+  36%,
+  60% {
+    transform: scale(1, 0.5);
+  }
+}
+@keyframes parky-eyes-away {
+  0%,
+  66%,
+  94%,
+  100% {
+    transform: scale(1, 1);
+  }
+  70%,
+  88% {
+    transform: scale(1, 0);
+  }
+}
+@keyframes parky-happy {
+  0%,
+  66%,
+  94%,
+  100% {
+    opacity: 0;
+  }
+  70%,
+  88% {
+    opacity: 1;
+  }
+}
+@keyframes parky-treat {
+  0%,
+  70% {
+    opacity: 0;
+    transform: translate(0, 2px) scale(0.6);
+  }
+  76% {
+    opacity: 1;
+    transform: translate(0, 0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(2px, -9px) scale(1);
+  }
+}
+/* The balloon bobs on its string, slips away and floats off. */
+@keyframes parky-balloon {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0) rotate(0deg);
+  }
+  8% {
+    opacity: 1;
+    transform: translate(0, 0) rotate(0deg);
+  }
+  18% {
+    transform: translate(0, -0.6px) rotate(6deg);
+  }
+  30% {
+    transform: translate(0, 0) rotate(-5deg);
+  }
+  42% {
+    transform: translate(0, -0.6px) rotate(5deg);
+  }
+  54% {
+    opacity: 1;
+    transform: translate(0, 0) rotate(-2deg);
+  }
+  90% {
+    opacity: 1;
+    transform: translate(8px, -40px) rotate(8deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(10px, -48px) rotate(6deg);
+  }
+}
+@keyframes parky-watch-up {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  10%,
+  54% {
+    transform: translate(1.6px, -1.2px);
+  }
+  72%,
+  90% {
+    transform: translate(0.8px, -2.6px);
+  }
+}
+@keyframes parky-look-after {
+  0%,
+  56%,
+  100% {
+    transform: rotate(0deg);
+  }
+  70%,
+  90% {
+    transform: rotate(-4deg);
+  }
+}
+@keyframes parky-smile-late {
+  0%,
+  56%,
+  100% {
+    opacity: 1;
+  }
+  62%,
+  92% {
+    opacity: 0;
+  }
+}
+@keyframes parky-oh {
+  0%,
+  56%,
+  100% {
+    transform: scale(0);
+  }
+  62%,
+  92% {
+    transform: scale(1);
+  }
+}
+/* The map: the left panel unfolds off the middle one, then the right. */
+@keyframes parky-unfold {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+@keyframes parky-here {
+  from {
+    opacity: 0.8;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(2.4);
+  }
+}
+@keyframes parky-map-look {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  10%,
+  90% {
+    transform: translate(0, 2.6px);
+  }
+  50% {
+    transform: translate(-1.4px, 2.6px);
+  }
+  70% {
+    transform: translate(1.4px, 2.6px);
+  }
+}
+/* The camera comes up to the eye, the shutter goes, the flash fires. */
+@keyframes parky-camera {
+  0% {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  15%,
+  50%,
+  58%,
+  86% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  54% {
+    opacity: 1;
+    transform: translateY(0.8px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+}
+@keyframes parky-shutter {
+  0%,
+  50%,
+  58%,
+  100% {
+    transform: translateY(0);
+  }
+  54% {
+    transform: translateY(1px);
+  }
+}
+@keyframes parky-flash {
+  0%,
+  53% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  56% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  72%,
+  100% {
+    opacity: 0;
+    transform: scale(1.3);
+  }
+}
+/* Three sips: the level drops each time, and the cheeks pull in. */
+@keyframes parky-drink {
+  0%,
+  20% {
+    transform: scaleY(1);
+  }
+  30%,
+  45% {
+    transform: scaleY(0.72);
+  }
+  55%,
+  70% {
+    transform: scaleY(0.45);
+  }
+  80%,
+  100% {
+    transform: scaleY(0.18);
+  }
+}
+@keyframes parky-sip {
+  0%,
+  20%,
+  30%,
+  45%,
+  55%,
+  70%,
+  80%,
+  100% {
+    transform: scale(1, 1);
+  }
+  25%,
+  50%,
+  75% {
+    transform: scale(0.96, 1.02);
+  }
+}
+@keyframes parky-bubble {
+  0% {
+    opacity: 0;
+    transform: translateY(0);
+  }
+  30% {
+    opacity: 0.9;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-5.5px);
+  }
+}
+@keyframes parky-look-cup {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  10%,
+  90% {
+    transform: translate(1.2px, 2.4px);
+  }
+}
+/* Grumpy: two huffs, the steam puffing off the top of the head, the eyes off to the side. */
+@keyframes parky-huff {
+  0%,
+  26%,
+  60%,
+  100% {
+    transform: translateY(0) scale(1, 1);
+  }
+  18%,
+  52% {
+    transform: translateY(-1px) scale(1.05, 0.95);
+  }
+}
+@keyframes parky-steam {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0) scale(0.3);
+  }
+  30% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-2px, -5px) scale(1.2);
+  }
+}
+@keyframes parky-sulk {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  10%,
+  90% {
+    transform: translate(-1.6px, 0.6px);
+  }
+}
+/* The dreams: fireworks burst over the castle, the log boat plunges, the wheel turns. */
+@keyframes parky-dream-burst {
+  0% {
+    opacity: 0;
+    transform: scale(0.2);
+  }
+  15% {
+    opacity: 1;
+  }
+  70% {
+    opacity: 0.9;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.15);
+  }
+}
+@keyframes parky-dream-boat {
+  0% {
+    opacity: 0;
+    transform: translate(-24px, -19px) rotate(37deg);
+  }
+  8% {
+    opacity: 1;
+    transform: translate(-22.5px, -17.9px) rotate(37deg);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(-9px, -7.6px) rotate(37deg);
+  }
+  56% {
+    opacity: 1;
+    transform: translate(-6px, -7.2px) rotate(0deg);
+  }
+  85% {
+    opacity: 1;
+    transform: translate(0, -7.2px) rotate(0deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(2px, -7.2px) rotate(0deg);
+  }
+}
+@keyframes parky-dream-splash {
+  0%,
+  52% {
+    opacity: 0;
+    transform: translate(0, 0);
+  }
+  56% {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+  80%,
+  100% {
+    opacity: 0;
+    transform: translate(var(--dx), var(--dy));
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .parky-act-flume,
+  .parky-act-teacups {
+    transform-box: view-box;
+    transform-origin: 24px 49px;
+  }
+  .parky-act-flume .parky-eyes,
+  .parky-act-teacups .parky-eyes,
+  .parky-act-airtime .parky-eyes {
+    animation: parky-wide var(--parky-act) ease-out;
+  }
+  /* Afraid of heights: up the tower with his eyes screwed shut, wide open for the drop. */
+  .parky-act-tower .parky-eyes {
+    animation: parky-eyes-shut-up var(--parky-act) ease-in-out;
+  }
+  .parky-act-flume .parky-smile,
+  .parky-act-teacups .parky-smile,
+  .parky-act-airtime .parky-smile,
+  .parky-act-candy .parky-smile,
+  .parky-act-churro .parky-smile,
+  .parky-act-slurp .parky-smile,
+  .parky-act-grumpy .parky-smile {
+    animation: parky-smile-away var(--parky-act) ease-in-out;
+  }
+  .parky-turntable {
+    animation: parky-turntable 0.6s linear infinite;
+  }
+  .parky-splash > * {
+    animation: parky-splash calc(var(--parky-act) * 0.2) ease-out
+      calc(var(--parky-act) * var(--parky-splash-at)) both;
+  }
+  .parky-splash > .parky-splash-crown {
+    animation-name: parky-splash-crown;
+  }
+  .parky-act-airtime {
+    transform-origin: 50% 100%;
+    animation: parky-airtime var(--parky-act) ease-in-out;
+  }
+  .parky-act-airtime .parky-hat {
+    animation: parky-hat-float var(--parky-act) ease-in-out;
+  }
+  .parky-streaks {
+    animation: parky-streaks var(--parky-act) ease-in-out both;
+  }
+  .parky-bite {
+    animation: parky-bite calc(var(--parky-act) * 0.04) ease-in both;
+  }
+  .parky-act-candy .parky-bite--1 {
+    animation-delay: calc(var(--parky-act) * 0.24);
+  }
+  .parky-act-candy .parky-bite--2 {
+    animation-delay: calc(var(--parky-act) * 0.49);
+  }
+  .parky-act-candy .parky-bite--3 {
+    animation-delay: calc(var(--parky-act) * 0.74);
+  }
+  .parky-act-churro .parky-bite--1 {
+    animation-delay: calc(var(--parky-act) * 0.3);
+  }
+  .parky-act-churro .parky-bite--2 {
+    animation-delay: calc(var(--parky-act) * 0.55);
+  }
+  .parky-candy {
+    animation: parky-candy var(--parky-act) ease-in-out both;
+  }
+  .parky-act-candy .parky-chomp {
+    animation: parky-chomp-candy var(--parky-act) ease-in-out both;
+  }
+  .parky-act-churro .parky-chomp {
+    animation: parky-chomp-churro var(--parky-act) ease-in-out both;
+  }
+  .parky-churro {
+    animation: parky-churro var(--parky-act) ease-in-out both;
+  }
+  .parky-act-churro .parky-eyes {
+    animation: parky-eyes-away var(--parky-act) ease-in-out;
+  }
+  .parky-happy {
+    animation: parky-happy var(--parky-act) ease-in-out both;
+  }
+  .parky-treat {
+    animation: parky-treat var(--parky-act) ease-out both;
+  }
+  .parky-balloon {
+    animation: parky-balloon var(--parky-act) ease-in-out both;
+  }
+  .parky-act-balloon {
+    animation: parky-look-after var(--parky-act) ease-in-out;
+  }
+  .parky-act-balloon .parky-smile {
+    animation: parky-smile-late var(--parky-act) ease-in-out;
+  }
+  .parky-oh {
+    animation: parky-oh var(--parky-act) ease-in-out both;
+  }
+  .parky-act-map .parky-book {
+    animation: parky-book-in var(--parky-act) ease-out both;
+  }
+  .parky-map-left {
+    animation: parky-unfold calc(var(--parky-act) * 0.1) ease-out calc(var(--parky-act) * 0.14) both;
+  }
+  .parky-map-right {
+    animation: parky-unfold calc(var(--parky-act) * 0.1) ease-out calc(var(--parky-act) * 0.26) both;
+  }
+  .parky-here-ring {
+    animation: parky-here 1s ease-out infinite;
+  }
+  .parky-act-photo {
+    animation: parky-lean var(--parky-act) ease-in-out;
+  }
+  .parky-camera {
+    animation: parky-camera var(--parky-act) ease-out both;
+  }
+  .parky-shutter {
+    animation: parky-shutter var(--parky-act) ease-in-out;
+  }
+  .parky-flash {
+    animation: parky-flash var(--parky-act) ease-out both;
+  }
+  .parky-cup {
+    animation: parky-book-in var(--parky-act) ease-out both;
+  }
+  .parky-act-slurp {
+    animation: parky-sip var(--parky-act) ease-in-out;
+  }
+  .parky-drink {
+    animation: parky-drink var(--parky-act) ease-in-out both;
+  }
+  .parky-bubbles circle {
+    animation: parky-bubble 0.9s ease-out infinite both;
+  }
+  .parky-bubbles circle:nth-child(2) {
+    animation-delay: 0.3s;
+  }
+  .parky-bubbles circle:nth-child(3) {
+    animation-delay: 0.6s;
+  }
+  .parky-act-grumpy {
+    transform-origin: 50% 100%;
+    animation: parky-huff var(--parky-act) ease-in-out;
+  }
+  .parky-brows {
+    animation: parky-track var(--parky-act) ease-out both;
+  }
+  .parky-arms,
+  .parky-frown {
+    animation: parky-mouth-in var(--parky-act) ease-in-out both;
+  }
+  .parky-steam circle {
+    animation: parky-steam 1.2s ease-out infinite both;
+  }
+  .parky-steam circle:nth-child(2) {
+    animation-delay: 0.3s;
+  }
+  .parky-steam circle:nth-child(3) {
+    animation-delay: 0.6s;
+  }
+  /* The acts that move the pupils themselves glide the look at the mouse to the middle first. */
+  .parky-act-candy .parky-gaze,
+  .parky-act-balloon .parky-gaze,
+  .parky-act-map .parky-gaze,
+  .parky-act-slurp .parky-gaze,
+  .parky-act-grumpy .parky-gaze {
+    animation: parky-gaze-aside var(--parky-act) ease-in-out;
+  }
+  .parky-act-candy .parky-pupils {
+    animation: parky-innocent calc(var(--parky-act) * 0.8) ease-in-out calc(var(--parky-act) * 0.1);
+  }
+  .parky-act-balloon .parky-pupils {
+    animation: parky-watch-up var(--parky-act) ease-in-out;
+  }
+  .parky-act-map .parky-pupils {
+    animation: parky-map-look var(--parky-act) ease-in-out;
+  }
+  .parky-act-slurp .parky-pupils {
+    animation: parky-look-cup var(--parky-act) ease-in-out;
+  }
+  .parky-act-grumpy .parky-pupils {
+    animation: parky-sulk var(--parky-act) ease-in-out;
+  }
+  .parky-dream-burst {
+    animation: parky-dream-burst 1.6s ease-out infinite both;
+  }
+  .parky-dream-boat {
+    animation: parky-dream-boat 2.4s ease-in infinite both;
+  }
+  .parky-dream-drop {
+    animation: parky-dream-splash 2.4s ease-out infinite both;
+  }
+  .parky-dream-wheel {
+    animation: parky-spin 9s linear infinite;
+  }
+}
+
+/*
+ * Applause before a show (`ParkySpotlight`, `ParkyMoment` in `components/assistant/parky/props.tsx`):
+ * he claps six times under the spotlight, a spark where his hands meet, the sparkles twinkling.
+ * The light fades in rather than switching on. Without motion the hands stay together under a lit
+ * stage.
+ */
+.parky-clap,
+.parky-clap-spark,
+.parky-sparkle {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.parky-clap-spark {
+  opacity: 0;
+}
+@keyframes parky-clap {
+  0%,
+  100% {
+    transform: translateX(-2.8px) rotate(-12deg);
+  }
+  45%,
+  55% {
+    transform: translateX(0) rotate(0);
+  }
+}
+@keyframes parky-clap-spark {
+  0%,
+  40%,
+  100% {
+    opacity: 0;
+    transform: scale(0.4);
+  }
+  55% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+@keyframes parky-stage-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .parky-stage {
+    animation: parky-stage-in calc(var(--parky-act) * 0.12) ease-out both;
+  }
+  .parky-clap {
+    animation: parky-clap calc(var(--parky-act) / 6) ease-in-out 6;
+  }
+  .parky-clap-spark {
+    animation: parky-clap-spark calc(var(--parky-act) / 6) ease-out 6;
+  }
+  .parky-sparkle {
+    animation: parky-twinkle 1.1s ease-in-out infinite;
+  }
+  .parky-stage g:nth-child(2) > .parky-sparkle {
+    animation-delay: -0.4s;
+  }
+  .parky-stage g:nth-child(3) > .parky-sparkle {
+    animation-delay: -0.8s;
+  }
+}

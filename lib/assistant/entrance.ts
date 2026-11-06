@@ -1,5 +1,6 @@
 import { pickRandom } from '@/lib/utils/pick-random';
-import { parkySwitch } from './easter-eggs';
+import { parkySwitch } from './parky/easter-eggs';
+import { parkyStill } from './parky/motion';
 
 /**
  * How Parky arrives in its corner each time a page loads, and how long each takes. Each entrance
@@ -29,7 +30,7 @@ export function pageEntrance(): ParkyEntrance | null {
   if (drawn !== undefined) return drawn;
   drawn = null;
   try {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return drawn;
+    if (parkyStill()) return drawn;
   } catch {
     return drawn;
   }

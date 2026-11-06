@@ -191,7 +191,7 @@ Route `/api/assistant-config` (route).
 
 Route `/api/assistant-post` (route).
 
-- `GET` _function_: Answers `?locale=&slug=` with the post's title, URL and text, or 404.
+- `GET` _function_: Answers `?locale=&slug=&q=` with the post's title, URL, text and headings (`sections`), or 404; with `q`, also the headings whose sections the text leaves out (`omitted`).
 
 ### [`assistant-posts/route.ts`](../../app/api/assistant-posts/route.ts)
 

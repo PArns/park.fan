@@ -1,10 +1,16 @@
-import { getListFormat, weekdayName, WEEKDAYS_MONDAY_FIRST } from '@/lib/utils/intl-format';
+import {
+  getDateTimeFormat,
+  getListFormat,
+  weekdayName,
+  WEEKDAYS_MONDAY_FIRST,
+} from '@/lib/utils/intl-format';
 
 /** Three or more neighbours read as a span („Di.–Fr."), two as a pair. */
 const MIN_RUN = 3;
 
 export const MONDAY_TO_FRIDAY: readonly number[] = [1, 2, 3, 4, 5];
 export const WEEKEND: readonly number[] = [0, 6];
+const MONTHS: readonly number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
 /** Same members, any order. */
 export const sameKeys = (a: readonly number[], b: readonly number[]) =>
@@ -83,4 +89,18 @@ export function formatWeekdayList(
     (d, inRange) => weekdayName(d, locale, inRange || keys.length > 2 ? 'short' : 'long'),
     compact
   );
+}
+
+/**
+ * Months (1 = January) the way the park header names its quiet and busy ends: runs of three or
+ * more as a span, and three or more months short, so a column holds them on one line. `null` for
+ * no months.
+ */
+export function formatMonthList(keys: readonly number[], locale: string): string | null {
+  if (!keys.length) return null;
+  const format = getDateTimeFormat(locale, {
+    month: keys.length > 2 ? 'short' : 'long',
+    timeZone: 'UTC',
+  });
+  return formatRuns(keys, MONTHS, locale, (m) => format.format(Date.UTC(2024, m - 1, 12)));
 }

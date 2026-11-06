@@ -9,7 +9,7 @@ export function DatenschutzEN() {
   return (
     <>
       <h1 className="mb-2 text-4xl font-bold">Privacy Policy</h1>
-      <p className="text-muted-foreground mb-8 text-sm">Last updated: 4 November 2026</p>
+      <p className="text-muted-foreground mb-8 text-sm">Last updated: 6 November 2026</p>
 
       <div className="space-y-4 text-base leading-7">
         <LegalH2>1. Controller</LegalH2>
@@ -202,18 +202,23 @@ export function DatenschutzEN() {
           Before your first question, Cloudflare Turnstile checks whether a person is using the chat
           (see "Sending photos"). Your browser then receives a session key from our API server,
           valid for two hours. With every question it sends api.park.fan your text, the language,
-          the path of the page you are on, your time zone and the chat's ID. It sends your location
+          the path of the page you are on, your time zone and the chat's ID. It also sends what you
+          have planned in the trip planner (parks, days, entries and what you entered about your
+          group, such as the height of its shortest rider), the reminders you have set and the IDs
+          of your favourites. These otherwise stay in your browser; Parky needs them to read your
+          plan, reminders and favourites and to change them when you ask. It sends your location
           only if you share it in the chat yourself. The server rounds it to about one kilometre,
           uses it for the answer and does not store it. If you ask about nearby parks without
           sharing your location, the server estimates your rough position from your IP address.
         </p>
         <p>
-          To answer, our server passes your question, the latest messages of the chat and the park
-          data looked up for it to the language model Claude by Anthropic PBC, 548 Market Street,
-          PMB 90375, San Francisco, CA 94104, USA. Anthropic does not receive your IP address.
-          Anthropic processes the data on our behalf to produce the answer and, under its terms for
-          business customers, does not use it to train its models. The transfer to the USA is based
-          on the European Commission's standard contractual clauses. More information:{' '}
+          To answer, our server passes your question, the latest messages of the chat, your plan and
+          reminders as described above, and the park data looked up for it to the language model
+          Claude by Anthropic PBC, 548 Market Street, PMB 90375, San Francisco, CA 94104, USA.
+          Anthropic does not receive your IP address. Anthropic processes the data on our behalf to
+          produce the answer and, under its terms for business customers, does not use it to train
+          its models. The transfer to the USA is based on the European Commission's standard
+          contractual clauses. More information:{' '}
           <LegalLink href="https://www.anthropic.com/legal/privacy" />.
         </p>
         <p>
@@ -222,7 +227,7 @@ export function DatenschutzEN() {
           earlier messages in the same conversation and lets us find wrong answers. No IP address is
           stored with it, only a checksum made from the address, the day and a secret key. It shows
           nothing but which chats of one day came from the same address and cannot be turned back
-          into the address. We delete chats automatically after 90 days. So that nobody can overload
+          into the address. We delete chats automatically after 7 days. So that nobody can overload
           the service, the server counts questions per session key and new sessions per IP address,
           both only as a checksum that expires after one day at the latest.
         </p>

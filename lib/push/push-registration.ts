@@ -63,7 +63,8 @@ function fetchAvailability(): Promise<PushAvailability | null> {
   return availabilityPromise;
 }
 
-function supportsPush(): boolean {
+/** Whether this browser can hold a push subscription at all. */
+export function supportsPush(): boolean {
   return (
     typeof window !== 'undefined' &&
     'serviceWorker' in navigator &&

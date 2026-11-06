@@ -957,7 +957,7 @@ export function ContentES() {
             no busca en internet y, tras tres preguntas en 30 segundos, necesita una pausa corta.
           </P>
           <P>
-            Guardamos tus preguntas sin dirección IP y las borramos a los 90 días. Hay más sobre
+            Guardamos tus preguntas sin dirección IP y las borramos a los 7 días. Hay más sobre
             Parky, con preguntas de ejemplo, en <A href="/parky">su propia página</A>.
           </P>
         </ParkyShot>

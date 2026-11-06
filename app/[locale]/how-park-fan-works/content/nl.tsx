@@ -955,7 +955,7 @@ export function ContentNL() {
             niet op internet, en na drie vragen in 30 seconden heeft hij even pauze nodig.
           </P>
           <P>
-            Je vragen bewaren we zonder IP-adres en we verwijderen ze na 90 dagen. Meer over Parky,
+            Je vragen bewaren we zonder IP-adres en we verwijderen ze na 7 dagen. Meer over Parky,
             met voorbeeldvragen, staat op <A href="/parky">zijn eigen pagina</A>.
           </P>
         </ParkyShot>

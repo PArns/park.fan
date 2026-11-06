@@ -103,11 +103,24 @@ async function postFollowShow(
       }),
     });
     if (!response.ok) return { ok: false, error: await classifyWriteFailure(response) };
+    const row = (await response.json().catch(() => null)) as ShowFollowRemote | null;
     // The mirror records WHICH performance was armed, because the API keeps
     // one row per (subscription, show) and its upsert overwrites `startTime`:
     // a browser that follows the 19:10 performance does not follow the 17:30
     // one, and a bell beside 17:30 must not claim it does.
-    setShowFollowedLocal(showId, true, startTime ?? null);
+    setShowFollowedLocal(
+      showId,
+      true,
+      startTime ?? null,
+      row
+        ? {
+            parkSlug: row.parkSlug,
+            slug: row.showSlug,
+            name: row.showName,
+            ...(row.timezone ? { timezone: row.timezone } : {}),
+          }
+        : undefined
+    );
     return { ok: true, value: undefined };
   } catch {
     return { ok: false, error: { reason: 'network' } };
@@ -208,8 +221,13 @@ async function postRideAlert(
     });
     if (!response.ok) return { ok: false, error: await classifyWriteFailure(response) };
     const alert = (await response.json()) as RideAlertRemote;
-    if ('kind' in what) setRideAlertLocal(attractionId, null, what.kind);
-    else setRideAlertLocal(attractionId, what.thresholdMinutes);
+    const names = {
+      parkSlug: alert.parkSlug,
+      slug: alert.attractionSlug,
+      name: alert.attractionName,
+    };
+    if ('kind' in what) setRideAlertLocal(attractionId, null, what.kind, names);
+    else setRideAlertLocal(attractionId, what.thresholdMinutes, null, names);
     return { ok: true, value: alert };
   } catch {
     return { ok: false, error: { reason: 'network' } };

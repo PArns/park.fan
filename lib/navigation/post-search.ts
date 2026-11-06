@@ -42,7 +42,7 @@ function foldedFields(entries: readonly PostSearchEntry[]): Record<Field, string
  * while a short fragment does not drag in every word that happens to contain it ("dis" in
  * "Paradis"), and 0 elsewhere.
  */
-function matchStrength(text: string, word: string): number {
+export function matchStrength(text: string, word: string): number {
   let from = text.indexOf(word);
   if (from === -1) return 0;
   while (from !== -1) {
@@ -53,7 +53,7 @@ function matchStrength(text: string, word: string): number {
 }
 
 /** The words of a query, folded; `isPostQuery` and the search split it the same way. */
-function queryWords(query: string): string[] {
+export function queryWords(query: string): string[] {
   return foldText(query)
     .split(/[^\p{L}\p{N}]+/u)
     .filter(Boolean);

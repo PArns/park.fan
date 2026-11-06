@@ -189,7 +189,7 @@ not found what they came for or does not quite know what that is, beside Parky's
 chat where Parky shows for the visitor (`openParky`) and otherwise leads to Parky's page. It never
 invites a visitor the rollout left out (`assistantGate.invite`); that stays Parky's page's call.
 Once the stop reaches the middle of the screen, `ParkyHello` reports `home_parky_seen`, and the live
-Parky in the corner hops and says „Hey, cool! Das bin ja ich!" (`HELLO` in `lib/assistant/reactions.ts`,
+Parky in the corner hops and says „Hey, cool! Das bin ja ich!" (`HELLO` in `lib/assistant/parky/reactions.ts`,
 once a session like every answer).
 
 ## Caching and payload

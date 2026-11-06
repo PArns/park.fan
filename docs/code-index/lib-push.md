@@ -16,13 +16,14 @@ A local mirror of a browser's ride alerts and show follows, shaped like `lib/uti
 - `setShowFollowedLocal` _function_: Records or clears this browser's follow of a show, with the performance it is for.
 - `reconcileShowFollowLocal` _function_: Brings this browser's entry for one show in line with a list the server really returned (`PushListResult` with `ok: true`): a missing show's entry goes, a present one takes the server's `startTime`. Every other show's entry is left alone.
 - `getRideAlertLocal` _function_: This browser's alert for a ride in the local mirror, or null.
+- `listShowFollowsLocal` _function_: Every show follow in this browser's local mirror.
 - `listRideAlertsLocal` _function_: Every ride alert in this browser's local mirror.
 - `setRideAlertLocal` _function_: One entry per ride, whichever kind: setting one kind replaces the other, as the API does.
 - `removeRideAlertLocal` _function_: Removes a ride's alert from the local mirror.
 - `countPushFollowsLocal` _function_: How many local alerts and follows this browser has.
 - `hasAnyPushFollowsLocal` _function_: Whether this browser has any local alert or follow at all — gates the "view all" link.
 - `PUSH_FOLLOWS_CHANGED_EVENT` _const_
-- Types: `RideAlertKind`, `RideAlertLocal`, `ShowFollowLocal`
+- Types: `RideAlertKind`, `PushFollowNames`, `RideAlertLocal`, `ShowFollowLocal`
 
 ### [`push-follows.ts`](../../lib/push/push-follows.ts)
 
@@ -41,6 +42,7 @@ A local mirror of a browser's ride alerts and show follows, shaped like `lib/uti
 
 ### [`push-registration.ts`](../../lib/push/push-registration.ts)
 
+- `supportsPush` _function_: Whether this browser can hold a push subscription at all.
 - `lookupExistingPushIdentity` _function_: Reads this browser's push subscription without prompting; `{ ok: false }` when that fails.
 - `getExistingPushIdentity` _function_: This browser's existing subscription without prompting, `null` for every reason there is none, a failed lookup included.
 - `ensurePushRegistered` _function_: Subscribe this browser, or reuse its existing subscription.

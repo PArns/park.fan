@@ -4,10 +4,11 @@
  * language switch leads (`lib/assistant/switch-locale.ts`, `open.ts`), the rollout gate
  * (`lib/assistant/config.ts`), the post
  * text it reads (`lib/assistant/post-text.ts`), how bored its face gets
- * (`lib/assistant/parky-boredom.ts`), how a chat opens (`lib/assistant/opener.ts`) and Parky's easter
- * eggs (`lib/assistant/easter-eggs.ts`, muting in `teaser-store.ts`), its rides
- * (`lib/assistant/parky-rides.ts`) and how it answers what the visitor does
- * (`lib/assistant/reactions.ts`, heard through `onSiteEvent`), when a hard scroll throws it
+ * (`lib/assistant/parky/boredom.ts`), how a chat opens (`lib/assistant/opener.ts`) and Parky's easter
+ * eggs (`lib/assistant/parky/easter-eggs.ts`, muting in `teaser-store.ts`), its rides
+ * (`lib/assistant/parky/rides.ts`) and how it answers what the visitor does
+ * (`lib/assistant/parky/reactions.ts`, heard through `onSiteEvent`), its facts and which line fills a slot
+ * (`lib/assistant/parky/facts.ts`, `lines.ts`), when a hard scroll throws it
  * (`lib/assistant/fling-tracker.ts`), and the calendar, tiles and shows cards (`lib/assistant/cards.ts`).
  */
 
@@ -15,7 +16,12 @@ import assert from 'node:assert/strict';
 import { readSse } from '@/lib/assistant/sse.ts';
 import { directionsHref, safeAssistantHref } from '@/lib/assistant/links.ts';
 import { assistantVisible } from '@/lib/assistant/config.ts';
-import { postPlainText, POST_TEXT_LIMIT } from '@/lib/assistant/post-text.ts';
+import {
+  postPlainText,
+  postSections,
+  postTextForQuery,
+  POST_TEXT_LIMIT,
+} from '@/lib/assistant/post-text.ts';
 import { readAssistantAction } from '@/lib/assistant/actions.ts';
 import { localeSwitchPath } from '@/lib/assistant/switch-locale.ts';
 import { reopenAfterSwitch, takeReopen } from '@/lib/assistant/open.ts';
@@ -24,10 +30,11 @@ import { splitWaits } from '@/lib/assistant/wait-chips.ts';
 import {
   ASLEEP_AFTER_MS,
   BORED_AFTER_MS,
+  LATE_SLEEPY_FACTOR,
   boredomAfter,
   nextBoredomInMs,
   parkyBoredom,
-} from '@/lib/assistant/parky-boredom.ts';
+} from '@/lib/assistant/parky/boredom.ts';
 import {
   drawOpener,
   GREETING_KEYS,
@@ -45,14 +52,34 @@ import {
   parkPageOf,
   parkPathOf,
   topCoaster,
-} from '@/lib/assistant/easter-eggs.ts';
+} from '@/lib/assistant/parky/easter-eggs.ts';
+import { FACT_KEYS, parkyFacts } from '@/lib/assistant/parky/facts.ts';
+import { lineSources, parkNewsKey } from '@/lib/assistant/parky/lines.ts';
+import {
+  headlinersOf,
+  LIVE_ACT_GAP_MS,
+  LIVE_LINES,
+  liveActDue,
+  liveChange,
+  liveMoment,
+  SHOW_RUN_MIN,
+  SHOW_SOON_MIN,
+  showRunning,
+  showSoon,
+} from '@/lib/assistant/parky/live.ts';
+import {
+  CLOCK_PARK_KEYS,
+  opensToday,
+  clockMoment,
+  openingDaysOf,
+} from '@/lib/assistant/parky/clock.ts';
 import {
   answeredWithLine,
   countAnswer,
   linesMuted,
   muteLines,
 } from '@/lib/assistant/teaser-store.ts';
-import { isReactionAct, REACTION_ACTS, reactionTo } from '@/lib/assistant/reactions.ts';
+import { isReactionAct, REACTION_ACTS, reactionTo } from '@/lib/assistant/parky/reactions.ts';
 import { onSiteEvent, trackSiteEvent } from '@/lib/analytics/site-analytics.ts';
 import { readFileSync } from 'node:fs';
 import {
@@ -62,7 +89,7 @@ import {
   RIDES,
   rideFits,
   rideKeyframe,
-} from '@/lib/assistant/parky-rides.ts';
+} from '@/lib/assistant/parky/rides.ts';
 import { FLING_HAND_MS, FlingTracker } from '@/lib/assistant/fling-tracker.ts';
 import {
   calendarWeeks,
@@ -177,6 +204,123 @@ check(
 const long = postPlainText(`${'a'.repeat(6000)}\n\n${'b'.repeat(6000)}`);
 check(long.shortened, true, 'marks a cut text');
 check(long.text.length <= POST_TEXT_LIMIT, true, 'cuts at the limit');
+
+const guide = [
+  'Intro about the park.',
+  '## Getting there',
+  'Take the [train](/x) from Cologne.',
+  '```md\n## not a heading\n```',
+  '### Parking',
+  'Parking costs **ten** euros.',
+  '## Food',
+  `${'Restaurants serve schnitzel. '.repeat(150)}`,
+  '## Best days to visit',
+  `Tuesdays are quiet. ${'Crowds vary. '.repeat(300)}`,
+].join('\n\n');
+check(
+  postSections(guide).sections.map((section) => section.heading),
+  ['Getting there', 'Parking', 'Food', 'Best days to visit'],
+  'splits at H2 and H3, not inside code'
+);
+check(postSections(guide).intro, 'Intro about the park.', 'keeps the intro apart');
+check(
+  postSections(guide).sections[0].body,
+  'Take the train from Cologne.',
+  'plain-texts each section'
+);
+const parking = postTextForQuery(guide, 'what does parking cost?');
+check(parking.text.startsWith('Intro about the park.\n\nGetting there'), true, 'intro first');
+check(parking.text.includes('Parking costs ten euros.'), true, 'keeps the matching section');
+check(parking.omitted, [], 'leaves nothing out of a short post');
+const big = [
+  'Intro.',
+  ...['Arrival', 'Food', 'Hotels', 'Rides', 'Shows', 'Tickets'].map(
+    (heading) => `## ${heading}\n\n${`${heading} text here. `.repeat(100)}`
+  ),
+  '## Quiet days',
+  'Tuesdays in May are the quietest.',
+].join('\n\n');
+const quiet = postTextForQuery(big, 'Which days are quiet?');
+check(
+  quiet.text.includes('Tuesdays in May are the quietest.'),
+  true,
+  'reaches the end of a long post'
+);
+check(quiet.text.length <= POST_TEXT_LIMIT, true, 'stays within the limit');
+check(quiet.omitted.length > 0 && quiet.shortened, true, 'names what it left out');
+check(quiet.sections.length, 7, 'lists every heading');
+check(
+  quiet.text.indexOf('Arrival') < quiet.text.indexOf('Quiet days'),
+  true,
+  "keeps the post's order"
+);
+check(
+  postTextForQuery(big, 'hotels').omitted.includes('Hotels'),
+  false,
+  'a heading hit wins its section a place'
+);
+const filler = (heading) => `## ${heading}\n\n${`${heading} Text hier. `.repeat(150)}`;
+const leer = postTextForQuery(
+  [
+    'Einleitung.',
+    filler('Anreise'),
+    filler('Essen'),
+    '## Wann der Europa-Park am leersten ist',
+    'Es hängt vom Kalender ab.',
+    '### Der Wochentag',
+    'Dienstag und Mittwoch sind ruhig.',
+    '### Der Monat',
+    'Im Mai ist wenig los.',
+    '### Welche Ferien den Park füllen',
+    'Sommerferien. '.repeat(250),
+    '### Der Brückentag',
+    'Freitag. '.repeat(450),
+    filler('Hotels'),
+    filler('Shows'),
+    '## Häufige Fragen',
+    '### Wann ist im Europa-Park am wenigsten los?',
+    `Unter der Woche im Mai. ${'Mehr dazu oben. '.repeat(100)}`,
+  ].join('\n\n'),
+  'Wann ist Europa-Park am leersten?'
+);
+check(
+  leer.omitted.includes('Wann ist im Europa-Park am wenigsten los?'),
+  false,
+  'a matching FAQ entry beats the H3s of a winning H2 that do not match'
+);
+check(leer.omitted.includes('Der Brückentag'), true, 'those H3s fill only the room left');
+check(
+  ['Der Wochentag', 'Der Monat'].filter((heading) => leer.omitted.includes(heading)),
+  [],
+  'a winning H2 brings its H3s'
+);
+check(
+  leer.text.indexOf('Wann der') < leer.text.indexOf('Dienstag') &&
+    leer.text.indexOf('Dienstag') < leer.text.indexOf('Im Mai'),
+  true,
+  'keeps the H3s in order under their H2'
+);
+const h3Alone = postTextForQuery(
+  [
+    'Intro.',
+    filler('Arrival'),
+    '## Tickets',
+    `${'Prices change every season. '.repeat(320)}`,
+    '### VIP tour',
+    `The VIP tour skips every queue. ${'It starts at the gate. '.repeat(400)}`,
+    filler('Food'),
+    filler('Hotels'),
+  ].join('\n\n'),
+  'Can I book VIP?'
+);
+// Only the best section is cut to fit, so the long H3 is in only when "VIP" counted.
+check(
+  h3Alone.text.includes('The VIP tour skips every queue.'),
+  true,
+  'keeps a short word written in capitals'
+);
+check(h3Alone.text.includes('Tickets\n\nVIP tour'), true, 'a winning H3 keeps its H2 heading line');
+check(h3Alone.omitted.includes('Tickets'), true, 'names the H2 whose text it left out');
 
 const park = {
   slug: 'phantasialand',
@@ -402,6 +546,15 @@ check(boredomAfter(ASLEEP_AFTER_MS), 'asleep', 'asleep after a long one');
 check(nextBoredomInMs(1_000), BORED_AFTER_MS - 1_000, 'counts down to boredom');
 check(nextBoredomInMs(BORED_AFTER_MS), ASLEEP_AFTER_MS - BORED_AFTER_MS, 'then to sleep');
 check(nextBoredomInMs(ASLEEP_AFTER_MS), null, 'only activity ends sleep');
+check(boredomAfter(BORED_AFTER_MS * LATE_SLEEPY_FACTOR, 22), 'bored', 'at 22:00 sleepy sooner');
+check(boredomAfter(BORED_AFTER_MS * LATE_SLEEPY_FACTOR, 21), 'awake', 'at 21:00 not yet');
+check(boredomAfter(ASLEEP_AFTER_MS * LATE_SLEEPY_FACTOR, 2), 'asleep', 'asleep sooner at 02:00');
+check(boredomAfter(BORED_AFTER_MS * LATE_SLEEPY_FACTOR, 5), 'awake', 'morning from 05:00');
+check(
+  nextBoredomInMs(0, 23),
+  BORED_AFTER_MS * LATE_SLEEPY_FACTOR,
+  'the late countdown is the shorter one'
+);
 
 // The store on a fake clock: one timer for the next stage, activity resets the quiet time.
 {
@@ -415,6 +568,9 @@ check(nextBoredomInMs(ASLEEP_AFTER_MS), null, 'only activity ends sleep');
     if (id) timers[id - 1].fn = null;
   };
   performance.now = () => now;
+  // Midday, so the run's own hour cannot make Parky sleepy sooner.
+  const realHours = Date.prototype.getHours;
+  Date.prototype.getHours = () => 12;
   globalThis.window = Object.assign(new EventTarget(), { matchMedia: () => ({ matches: false }) });
   const advance = (ms) => {
     now += ms;
@@ -453,6 +609,7 @@ check(nextBoredomInMs(ASLEEP_AFTER_MS), null, 'only activity ends sleep');
   globalThis.setTimeout = realTimeout;
   globalThis.clearTimeout = realClear;
   performance.now = realNow;
+  Date.prototype.getHours = realHours;
   delete globalThis.window;
 }
 for (let i = 0; i < 50; i++) {
@@ -523,6 +680,433 @@ check(
 );
 check(topCoaster([{ attractionName: 'Piraten', attractionType: null }]), 'Piraten', 'else the top');
 check(topCoaster([]), null, 'no ranking, no ride');
+
+// Parky's facts: one per sentence a finding supports, none without its data.
+{
+  const labels = { weekdays: 'Weekdays', weekend: 'Weekends' };
+  const full = {
+    parkP50: 21,
+    longestName: 'Taron',
+    longestP50: 48,
+    quietestDays: [1, 2, 3, 4, 5],
+    quietestP50: 17,
+    busiestMonths: [7, 8],
+    busiestP50: 34,
+  };
+  const facts = parkyFacts(full, 'Phantasialand', 'en', labels);
+  check(
+    facts.map((f) => f.key),
+    Object.values(FACT_KEYS).flat(),
+    'every sentence once for a park with every finding'
+  );
+  check(
+    facts.find((f) => f.key === 'factLongest1').values,
+    { park: 'Phantasialand', ride: 'Taron', wait: 50 },
+    'the longest queue on the five-minute grid'
+  );
+  check(facts.find((f) => f.key === 'factGap1').values.extra, 30, 'the gap between grid values');
+  check(facts.find((f) => f.key === 'factQuietest1').values.days, 'Weekdays', 'the working week');
+  check(
+    facts.find((f) => f.key === 'factBusiest1').values.months,
+    'July and August',
+    'months named'
+  );
+  const close = parkyFacts({ ...full, longestP50: 27 }, 'P', 'en', labels).map((f) => f.key);
+  check(close.includes('factGap1'), false, 'no gap under ten minutes');
+  check(
+    parkyFacts(
+      { ...full, longestName: null, quietestDays: [], busiestP50: null, parkP50: 1 },
+      'P',
+      'en',
+      labels
+    ),
+    [],
+    'nothing without data, nor for a wait the grid rounds below five'
+  );
+  for (const locale of ['de', 'en', 'nl', 'fr', 'es', 'it']) {
+    const messages = JSON.parse(readFileSync(`messages/${locale}.json`, 'utf8')).assistant;
+    for (const key of Object.values(FACT_KEYS).flat()) {
+      check(typeof messages[key], 'string', `${locale} has ${key}`);
+    }
+  }
+}
+
+// Which source fills a session slot, best first.
+{
+  const slot = {
+    slot: 0,
+    lastSlot: 1,
+    arrival: false,
+    holiday: false,
+    page: 'other',
+    parkLuck: false,
+    parkNews: false,
+    forced: null,
+  };
+  check(lineSources(slot), ['invitation'], 'an ordinary page invites');
+  check(
+    lineSources({ ...slot, arrival: true, holiday: true }),
+    ['entrance', 'holiday', 'invitation'],
+    'the entrance first, then the holiday'
+  );
+  check(
+    lineSources({ ...slot, slot: 1, arrival: true, holiday: true }),
+    ['invitation'],
+    'entrance and holiday only in the first slot'
+  );
+  check(
+    lineSources({ ...slot, slot: 1, page: 'park', parkLuck: true }),
+    ['live', 'clock', 'fact', 'park', 'invitation'],
+    'live and clock before the fact, a fact in the last slot before the park line'
+  );
+  check(
+    lineSources({ ...slot, page: 'park', arrival: true, holiday: true }),
+    ['entrance', 'live', 'clock', 'holiday', 'invitation'],
+    'the entrance before the live waits, the live waits before the clock'
+  );
+  check(
+    lineSources({ ...slot, page: 'park' }),
+    ['live', 'clock', 'invitation'],
+    'the park line only on its draw'
+  );
+  check(
+    lineSources({ ...slot, page: 'park', parkNews: true }),
+    ['clock', 'invitation'],
+    'live is level with the weather: once the park had its news, no live line'
+  );
+  check(
+    lineSources({ ...slot, page: 'park', parkNews: true, forced: 'live' }),
+    ['live', 'clock', 'invitation'],
+    '?parky=live past the news already said'
+  );
+  check(
+    lineSources({ ...slot, page: 'park', parkNews: true, forced: 'show' }),
+    ['live', 'clock', 'invitation'],
+    '?parky=show puts the live line first, past the news already said'
+  );
+  check(lineSources({ ...slot, slot: 1, page: 'home' }), ['fact', 'invitation'], 'home: a fact');
+  check(lineSources({ ...slot, slot: 1 }), ['invitation'], 'no fact on other pages');
+  check(
+    lineSources({ ...slot, page: 'park', forced: 'fact' }),
+    ['fact', 'live', 'clock', 'invitation'],
+    '?parky=fact in any slot, first'
+  );
+  check(
+    lineSources({ ...slot, page: 'park', arrival: true, forced: 'clock' }),
+    ['clock', 'entrance', 'live', 'invitation'],
+    '?parky=clock first, even over an entrance'
+  );
+  check(
+    lineSources({ ...slot, page: 'park', forced: 'egg' }),
+    ['live', 'clock', 'park', 'invitation'],
+    '?parky=egg'
+  );
+  check(lineSources({ ...slot, forced: 'live' }), ['invitation'], 'live only on a park page');
+  check(parkNewsKey('europe/a/b/c'), 'news:europe/a/b/c', 'one news key per park');
+}
+
+// The live waits: moments, changes and the act's rate limit.
+{
+  const ride = (name, status, wait) => ({
+    id: name,
+    name,
+    slug: name,
+    land: null,
+    effectiveStatus: status,
+    queues: [{ queueType: 'STANDBY', status, waitTime: wait }],
+  });
+  const park = (rides, extra = {}) => ({ status: 'OPERATING', attractions: rides, ...extra });
+  const heads = ['Taron', 'Black Mamba'];
+  check(
+    liveMoment(park([ride('Taron', 'OPERATING', 10), ride('Maus', 'OPERATING', 5)]), heads, false),
+    { kind: 'walkOn', ride: 'Taron', wait: 10 },
+    'a headliner at 10 minutes is a walk-on'
+  );
+  check(
+    liveMoment(park([ride('Taron', 'OPERATING', 15), ride('Maus', 'OPERATING', 5)]), heads, false),
+    null,
+    'a walk-on counts only for a headliner, and 15 minutes is no walk-on'
+  );
+  check(
+    liveMoment(park([ride('Taron', 'OPERATING', 75), ride('Maus', 'OPERATING', 61)]), heads, false),
+    { kind: 'queue', ride: 'Taron', wait: 75 },
+    'the longest queue over an hour'
+  );
+  check(
+    liveMoment(park([ride('Taron', 'OPERATING', 60)]), heads, false),
+    null,
+    'an hour exactly is not over an hour'
+  );
+  check(
+    liveMoment(park([ride('Taron', 'DOWN', 90)]), heads, false),
+    null,
+    'a ride that is down has no queue to grumble at'
+  );
+  check(
+    liveMoment(
+      park([ride('Taron', 'OPERATING', 75)], { currentLoad: { crowdLevel: 'very_high' } }),
+      heads,
+      false
+    ),
+    { kind: 'full' },
+    'a very full park before a long queue'
+  );
+  check(
+    liveMoment(
+      park([], {
+        analytics: { statistics: { crowdLevel: 'extreme' } },
+        currentLoad: { crowdLevel: 'low' },
+      }),
+      heads,
+      false
+    ),
+    { kind: 'full' },
+    "the day's crowd statistic first, as the park header reads it"
+  );
+  check(
+    liveMoment(
+      park([ride('Taron', 'OPERATING', 5)], { currentLoad: { crowdLevel: 'extreme' } }),
+      heads,
+      false
+    ),
+    { kind: 'walkOn', ride: 'Taron', wait: 5 },
+    'a walk-on is better news than a full park'
+  );
+  check(liveMoment(park([], { status: 'CLOSED' }), heads, true), { kind: 'closed' }, 'shut today');
+  check(liveMoment(park([], { status: 'CLOSED' }), heads, false), null, 'shut for the night');
+  check(
+    liveMoment(park([ride('Taron', 'OPERATING', 40)]), heads, false, true),
+    { kind: 'queue', ride: 'Taron', wait: 40 },
+    '?parky=live counts any open queue as long'
+  );
+  check(
+    liveMoment(park([ride('New: Taron', 'OPERATING', 5)]), ['Taron'], false)?.ride,
+    'Taron',
+    'names without their "New" prefix'
+  );
+
+  // Shows: the window before a start, the order among the moments, and a show on right now.
+  const now = Date.parse('2026-11-06T15:00:00+08:00');
+  const at = (minutes) => new Date(now + minutes * 60_000).toISOString();
+  const show = (name, minutes, status = 'OPERATING') => ({
+    id: name,
+    name,
+    status,
+    showtimes: minutes.map((m) => ({ startTime: at(m) })),
+  });
+  const quiet = (shows) => park([ride('Taron', 'OPERATING', 30)], { shows });
+  check(
+    showSoon(quiet([show('Parade', [SHOW_SOON_MIN.from])]), now),
+    { kind: 'show', show: 'Parade', minutes: 15 },
+    'a show 15 minutes off is soon'
+  );
+  check(showSoon(quiet([show('Parade', [SHOW_SOON_MIN.to])]), now)?.minutes, 30, 'and 30 still');
+  check(showSoon(quiet([show('Parade', [14, 31])]), now), null, 'outside the window, nothing');
+  check(
+    showSoon(quiet([show('Late', [25]), show('Early', [-60, 20])]), now),
+    { kind: 'show', show: 'Early', minutes: 20 },
+    'the next show of all, from any of its showtimes'
+  );
+  check(showSoon(quiet([show('Gone', [20], 'CLOSED')]), now), null, 'a closed show is no show');
+  check(
+    showSoon(quiet([show('Tonight', [240])]), now, true),
+    { kind: 'show', show: 'Tonight', minutes: 240 },
+    '?parky=show takes any show still to start'
+  );
+  check(showSoon(quiet([show('Earlier', [-5])]), now, true), null, 'but none that started');
+  check(
+    liveMoment(quiet([show('Parade', [20])]), heads, false, false, { now }),
+    { kind: 'show', show: 'Parade', minutes: 20 },
+    'a show soon when nothing else holds'
+  );
+  check(
+    liveMoment(quiet([show('Parade', [20])]), heads, false),
+    null,
+    'shows count only with a clock to read them at'
+  );
+  check(
+    liveMoment(
+      park([ride('Taron', 'OPERATING', 75)], { shows: [show('Parade', [20])] }),
+      heads,
+      false,
+      false,
+      { now }
+    )?.kind,
+    'queue',
+    'a long queue before a show'
+  );
+  check(
+    liveMoment(
+      park([ride('Taron', 'OPERATING', 5)], { shows: [show('Parade', [20])] }),
+      heads,
+      false,
+      false,
+      { now }
+    )?.kind,
+    'walkOn',
+    'a walk-on before a show'
+  );
+  check(
+    liveMoment(
+      park([ride('Taron', 'OPERATING', 5)], { shows: [show('Tonight', [240])] }),
+      heads,
+      false,
+      false,
+      { now, preview: true }
+    ),
+    { kind: 'show', show: 'Tonight', minutes: 240 },
+    '?parky=show ahead of every other moment'
+  );
+  check(
+    liveMoment(
+      park([], { status: 'CLOSED', shows: [show('Parade', [20], 'CLOSED')] }),
+      heads,
+      true,
+      false,
+      { now }
+    ),
+    { kind: 'closed' },
+    'a park shut today has no show line'
+  );
+  check(showRunning(quiet([show('Parade', [0])]), now), true, 'a show that starts now is on');
+  check(showRunning(quiet([show('Parade', [-SHOW_RUN_MIN + 1])]), now), true, 'and still on');
+  check(showRunning(quiet([show('Parade', [-SHOW_RUN_MIN])]), now), false, 'then over');
+  check(showRunning(quiet([show('Parade', [5])]), now), false, 'not on before it starts');
+  check(showRunning(park([]), now), false, 'no shows, none on');
+
+  const before = park([ride('Taron', 'OPERATING', 60), ride('Black Mamba', 'OPERATING', 40)]);
+  check(
+    liveChange(
+      before,
+      park([ride('Taron', 'DOWN', null), ride('Black Mamba', 'OPERATING', 40)]),
+      heads
+    ),
+    { kind: 'down', ride: 'Taron' },
+    'a headliner went down'
+  );
+  check(
+    liveChange(
+      before,
+      park([ride('Taron', 'OPERATING', 25), ride('Black Mamba', 'OPERATING', 40)]),
+      heads
+    ),
+    { kind: 'drop', ride: 'Taron', wait: 25 },
+    'a sharp drop: 35 minutes less, more than half gone'
+  );
+  check(
+    liveChange(
+      before,
+      park([ride('Taron', 'OPERATING', 35), ride('Black Mamba', 'OPERATING', 40)]),
+      heads
+    ),
+    null,
+    'not half gone: no drop'
+  );
+  check(
+    liveChange(
+      before,
+      park([ride('Taron', 'OPERATING', 60), ride('Black Mamba', 'OPERATING', 25)]),
+      heads
+    ),
+    null,
+    '15 minutes less is no drop'
+  );
+  check(
+    liveChange(park([ride('Maus', 'OPERATING', 20)]), park([ride('Maus', 'DOWN', null)]), heads),
+    null,
+    'a ride outside the headliners going down is no news'
+  );
+  check(
+    liveChange(park([ride('Maus', 'OPERATING', 20)]), park([ride('Maus', 'DOWN', null)]), []),
+    { kind: 'down', ride: 'Maus' },
+    'without known headliners every ride counts'
+  );
+  check(
+    liveChange(
+      before,
+      park([ride('Taron', 'OPERATING', 75), ride('Black Mamba', 'OPERATING', 40)]),
+      heads
+    ),
+    { kind: 'queue', ride: 'Taron', wait: 75 },
+    'a queue newly over an hour'
+  );
+  check(
+    liveChange(
+      park([ride('Taron', 'OPERATING', 75)]),
+      park([ride('Taron', 'OPERATING', 80)]),
+      heads
+    ),
+    null,
+    'a long queue that stays long is nothing new'
+  );
+  check(liveChange(before, before, heads), null, 'the same reading changes nothing');
+  check(liveActDue(null, 0), true, 'the first act plays');
+  check(liveActDue(0, LIVE_ACT_GAP_MS - 1), false, 'then not before the gap');
+  check(liveActDue(0, LIVE_ACT_GAP_MS), true, 'and again after it');
+  check(
+    headlinersOf(
+      'Taron',
+      [1, 2, 3, 4, 5, 6].map((n) => ({ attractionName: `R${n}` }))
+    ),
+    ['Taron', 'R1', 'R2', 'R3', 'R4', 'R5'],
+    'the favourite and five top attractions'
+  );
+  check(
+    Object.values(LIVE_LINES).every((lines) => lines.length >= 3),
+    true,
+    'several lines for every reading'
+  );
+}
+
+// The park's clock, in the park's zone, across midnight.
+{
+  const hours = [
+    { date: '2026-07-01', opens: '09:00', closes: '18:00' },
+    { date: '2026-07-02', opens: '10:00', closes: '01:00' },
+  ];
+  const berlin = 'Europe/Berlin';
+  // Berlin is UTC+2 in July.
+  const at = (iso) => Date.parse(iso);
+  check(clockMoment(hours, berlin, at('2026-07-01T06:00:00Z')), 'ropeDrop', '08:00: an hour to go');
+  check(clockMoment(hours, berlin, at('2026-07-01T05:59:00Z')), null, '07:59: too early');
+  check(clockMoment(hours, berlin, at('2026-07-01T07:00:00Z')), null, '09:00: open, no rope drop');
+  check(clockMoment(hours, berlin, at('2026-07-01T12:00:00Z')), null, 'midday: nothing');
+  check(clockMoment(hours, berlin, at('2026-07-01T15:30:00Z')), 'closing', '17:30: half an hour');
+  check(clockMoment(hours, berlin, at('2026-07-01T16:00:00Z')), null, '18:00: closed');
+  check(clockMoment(hours, berlin, at('2026-07-02T22:45:00Z')), 'closing', '00:45: past midnight');
+  check(clockMoment(hours, berlin, at('2026-07-02T21:45:00Z')), null, '23:45: still over an hour');
+  check(clockMoment(hours, berlin, at('2026-07-02T23:00:00Z')), null, '01:00: the day is over');
+  check(
+    clockMoment(hours, 'America/New_York', at('2026-07-01T12:30:00Z')),
+    'ropeDrop',
+    'the same hours in New York: 08:30 there'
+  );
+  check(clockMoment(hours, berlin, at('2026-07-03T08:00:00Z')), null, 'no hours, no clock');
+  check(clockMoment(hours, berlin, at('2026-07-01T02:00:00Z'), true), 'ropeDrop', 'preview: early');
+  check(clockMoment(hours, berlin, at('2026-07-01T12:00:00Z'), true), 'closing', 'preview: open');
+  check(clockMoment(hours, berlin, at('2026-07-01T20:00:00Z'), true), 'closing', 'preview: late');
+  check(opensToday(hours, berlin, at('2026-07-01T20:00:00Z')), true, 'opens today');
+  check(opensToday(hours, berlin, at('2026-07-03T08:00:00Z')), false, 'shut today');
+  check(
+    openingDaysOf({
+      openingHoursSpecification: [
+        { opens: '09:00', closes: '18:00', validFrom: '2026-07-01' },
+        { opens: 'soon', closes: '18:00', validFrom: '2026-07-02' },
+        null,
+      ],
+    }),
+    [{ date: '2026-07-01', opens: '09:00', closes: '18:00' }],
+    'hours from structured data, the unreadable left out'
+  );
+  check(openingDaysOf(null), [], 'no structured data, no hours');
+  check(
+    CLOCK_PARK_KEYS.test('parkRopeDrop1') &&
+      CLOCK_PARK_KEYS.test('parkClosing2') &&
+      !CLOCK_PARK_KEYS.test('parkLine1'),
+    true,
+    'the clock keeps the general opening and closing lines out'
+  );
+}
 check(
   parkNameIn([
     { textContent: 'not json' },
@@ -587,8 +1171,35 @@ check(
 );
 check(
   rideKeyframe({ x: 20, y: 40, angle: 45, at: 0.5 }).transform,
-  'translate(-4px, -9px) rotate(45deg) scale(1, 1)',
+  'translate(-4px, -9px) rotate(45deg) translate(0px, 0px) scale(1, 1)',
   'a stop as a keyframe, turned about the wheels'
+);
+check(
+  rideKeyframe({ x: 24, y: 20, angle: 0, at: 0.5, lift: 6 }).transform,
+  'translate(0px, -29px) rotate(0deg) translate(0px, -6px) scale(1, 1)',
+  'airtime floats Parky up off his seat in the car'
+);
+for (const ride of ['hills', 'tower', 'flume']) {
+  check(
+    RIDE_MOTION[ride].stops.some((stop) => stop.lift > 0),
+    true,
+    `${ride}: Parky gets airtime`
+  );
+}
+check(
+  RIDE_MOTION.flume.splash,
+  RIDE_MOTION.flume.stops.find((stop) => stop.scaleY < 1)?.at,
+  'the flume splashes as the boat hits the water'
+);
+check(
+  RIDE_MOTION.flume.stops.some((stop) => stop.opacity === 0),
+  true,
+  'the log boat drifts out of the picture and floats back in'
+);
+check(
+  RIDE_MOTION.teacups.stops.filter((stop) => stop.x === REST.x && stop.y === REST.y).length > 3,
+  true,
+  'the teacup passes the station on each lap'
 );
 check([isRide('tower'), isRide('egg'), isRide(null)], [true, false, false], 'a ride by name');
 {
@@ -605,7 +1216,7 @@ check([isRide('tower'), isRide('egg'), isRide(null)], [true, false, false], 'a r
   );
   check(
     fitting({ left: 828, top: 102, width: 80 }),
-    ['coaster', 'hills'],
+    ['coaster', 'hills', 'flume', 'teacups'],
     'in the window on a short laptop screen the launch and the free fall would leave the top'
   );
   check(fitting({ left: 828, top: 290, width: 80 }), [...RIDES], 'a tall screen fits them all');

@@ -104,8 +104,10 @@ in the park's zone (`formatShowClock`, `LocalTime`), counted against the browser
 
 `lib/push/push-follows-store.ts` keeps `localStorage['parkfan_ride_alerts']` and
 `['parkfan_show_follows']` and fires `push-follows-changed` on every write, so every bell on the page
-re-reads (`useLocalPushFollowsValue`). It is a cache for rendering bells without a request, not the
-truth:
+re-reads (`useLocalPushFollowsValue`). Each entry also keeps the park slug, the ride's or show's slug and name (and a show's
+zone) from the server's row, for [Parky](assistant.md#actions-cards-and-the-position), which reads the
+mirror with each question and may set and remove reminders through the same writes; an entry from
+before has only its id. It is a cache for rendering bells without a request, not the truth:
 
 - It is written only after the server answered 2xx. A removal goes to the server first, and a 404 on
   a `DELETE` counts as removed (the API answers 404 only for an unknown subscription). Without a push

@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { isScrollKey } from '@/lib/utils/scroll-when-settled';
+import { parkyStill } from './parky/motion';
 import {
   FlingTracker,
   SETTLE_MS,
@@ -27,7 +28,7 @@ const LISTEN = { capture: true, passive: true } as const;
 export function useScrollFling(enabled: boolean): ParkyFling | null {
   const [fling, setFling] = useState<ParkyFling | null>(null);
   useEffect(() => {
-    if (!enabled || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (!enabled || parkyStill()) return;
     const tracker = new FlingTracker();
     let viewport = window.innerHeight;
     let hand: FlingHandAt | null = null;

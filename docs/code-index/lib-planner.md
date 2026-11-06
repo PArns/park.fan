@@ -13,6 +13,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `addEntry` _function_: Returns the plan with one ride added to a park-day at the given minute, or an hour after the day's last block and never before now when none is given.
 - `removeEntry` _function_: Returns the plan without the block with this id on that park-day; the same state when the day does not exist.
 - `moveEntry` _function_: Move one entry to another minute; the list re-sorts and nothing else moves.
+- `moveEntryToIndex` _function_: Put one entry at a place in the day's order (`toIndex` counts every entry, shows included).
 - `applyPlan` _function_: A whole re-plan, in one write, which is what the optimiser commits: a loop of single moves would rewrite and broadcast the whole plan per stop and render half-old, half-new days in between.
 - `restoreDay` _function_: Put a day back exactly as it was: the undo for `applyPlan`. It replaces rather than merges, so an entry added since the snapshot goes.
 - `shiftFrom` _function_: Push one entry and everything after it by the same amount: a repair the visitor accepts in one gesture and one undoable write. Never called on its own.

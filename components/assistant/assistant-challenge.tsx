@@ -7,7 +7,7 @@ import { cn } from '@/lib/utils';
 import { TurnstileWidget } from '@/components/common/turnstile-widget';
 import { TURNSTILE_ACTIONS } from '@/lib/security/turnstile-actions';
 import type { AssistantSessionState } from '@/lib/assistant/use-assistant-session';
-import { ParkyLogo } from './parky-logo';
+import { ParkyLogo } from './parky/parky-logo';
 
 /**
  * The challenge in Parky's window, drawn as part of it rather than as a bare Cloudflare box. Almost

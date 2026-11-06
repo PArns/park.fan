@@ -21,6 +21,17 @@ The chat goes to the API directly, not through a relay route, so a streamed answ
 Vercel function open. The config goes through a route because Cloudflare caches it, and a cached
 answer cannot carry a per-origin CORS header.
 
+`/api/assistant-post?locale=&slug=` returns a post's `title`, `date`, `url`, its plain `text` cut
+near 9,000 characters (`shortened` when cut) and `sections`, the H2 and H3 headings. A guide runs
+past that limit, so the API passes the visitor's question as `q` (at most 200 characters): `text`
+then holds the intro and the sections that answer it best, in the post's order, and `omitted` names
+the headings left out. A section scores with the site search's word matching: a hit in its heading
+counts four times one in its body, a word found in few sections counts more, one found in more than half counts nothing,
+and words under four letters drop out as a stand-in for stop words, unless the question writes them
+as a name ("VIP", or "Zoo" inside a sentence). An H2 that is taken brings its H3s along as far as
+they fit, those without a hit of their own only after every other section with one, and an H3 taken alone keeps its H2's heading line above it (`postTextForQuery` in
+`lib/assistant/post-text.ts`). Both routes are CDN-cached per URL.
+
 The browser sends one question at a time with the chat's id. The history stays on the API, so
 nobody can hand Parky made-up earlier answers.
 
@@ -66,6 +77,17 @@ reads `errorLimit`; a 422 `unclear`, a message the API took for junk (nothing to
 down, letters without a vowel, the question just answered asked again), reads `errorUnclear`. The
 rules live in the API's `assistant-junk.ts`.
 
+## Parky's break
+
+After repeated abuse the API ends the chat: `chat_end` with `cooldownMinutes` (1 to 1440), the
+answer being Parky's goodbye. Once the answer is in, the goodbye stays 2.5 s, the window closes and
+Parky puts on his `nightcap` on the button. Until the break ends (`lib/assistant/chat-end.ts`, the
+end kept in session storage as `parkfan:assistant-break`, so a reload keeps it) the window shows
+`paused` („Parky macht gerade eine kurze Pause.") where the input was; the launcher stays. While the
+break runs the API refuses questions with the code `CHAT_ENDED_CODE` (`chat_ended`), as an HTTP
+error's body or a stream `error` event; the widget takes that the same way, which is how a second
+tab learns of it, with the refusal's `cooldownMinutes`, else its `Retry-After`, else 15 minutes.
+
 ## Answers are model output
 
 `AssistantMessageText` renders them with `react-markdown`, without raw HTML and with only `p`,
@@ -84,17 +106,68 @@ checks it again, hands on a page or a card's links as the path it checked, and b
 switch and the feedback chip anew, so nothing else rides along. `useAssistantActions` carries it out
 through the site's own paths:
 
-| Action              | What the widget does                                                       | Chip        |
-| ------------------- | -------------------------------------------------------------------------- | ----------- |
-| `card`              | draws a park or ride card with `ParkStatusBadge` and `CrowdLevelBadge`     |             |
-| `navigate`          | `router.push` to the park.fan path in the reader's locale                  | Seite       |
-| `planner_open_day`  | `openDay` in the planner store, `plannerUi.requestOpen('assistant')`       | Tagesplaner |
-| `planner_add_rides` | `addRide(…, 'assistant')` per ride, then opens the day                     | Tagesplaner |
-| `planner_add_block` | `addCustom(…, 'assistant')`, then opens the day                            | Tagesplaner |
-| `planner_optimize`  | opens the day and `plannerUi.requestOptimize`: the day's optimise row runs | sortiert    |
-| `request_location`  | shows the share card under the answer                                      |             |
-| `switch_locale`     | once the answer is complete, the same page in that language, window open   | Sprache     |
-| `feedback_sent`     | nothing; the API stored the visitor's feedback                             | Team        |
+| Action                 | What the widget does                                                                 | Chip        |
+| ---------------------- | ------------------------------------------------------------------------------------ | ----------- |
+| `card`                 | draws a park or ride card with `ParkStatusBadge` and `CrowdLevelBadge`               |             |
+| `navigate`             | `router.push` to the park.fan path in the reader's locale                            | Seite       |
+| `planner_open_day`     | `openDay` in the planner store, `plannerUi.requestOpen('assistant')`                 | Tagesplaner |
+| `planner_add_rides`    | `addRide(…, 'assistant')` per ride, then opens the day                               | Tagesplaner |
+| `planner_add_block`    | `addCustom(…, 'assistant')`, then opens the day                                      | Tagesplaner |
+| `planner_optimize`     | opens the day and `plannerUi.requestOptimize`: the day's optimise row runs           | sortiert    |
+| `planner_remove`       | `removeEntry` per id, then opens the day                                             | Tagesplaner |
+| `planner_move`         | `moveEntryToIndex`: the day's start minutes taken in the new order                   | Tagesplaner |
+| `planner_update_block` | `setCustomBlock`, and `moveEntry` for a new start; free blocks only                  | Tagesplaner |
+| `planner_add_show`     | `addShow(…, 'assistant')` for a showtime the day's `/plan/day` lists                 | Tagesplaner |
+| `planner_set_prefs`    | `setDayPrefs` (height, water rides, early entry)                                     | Tagesplaner |
+| `planner_mark_done`    | `setEntryDone` per id                                                                | Tagesplaner |
+| `planner_clear_day`    | `clearDay`, undoable through `planner_undo`                                          | Tagesplaner |
+| `planner_reserve_days` | `reserveDays` for the park, opens the first                                          | Tagesplaner |
+| `planner_undo`         | puts the day back as before Parky's last change, unless the visitor changed it since | Tagesplaner |
+| `planner_share`        | opens the panel and the bell's popover with the share link; never shares             | Tagesplaner |
+| `request_location`     | shows the share card under the answer                                                |             |
+| `switch_locale`        | once the answer is complete, the same page in that language, window open             | Sprache     |
+| `feedback_sent`        | nothing; the API stored the visitor's feedback                                       | Team        |
+
+Every planner change keeps the day as it was before and as it was right after
+(`rememberParkyChange`, `lib/assistant/planner-context.ts`), one level per park and day for the
+tab. `planner_undo` puts the day back with `restoreDay`, preferences and reservation included, and
+drops a day that did not exist, but only while the day is still what Parky left: once the visitor
+has changed it (a move, an add, a tick) the undo leaves it alone and shows „Tag seither geändert",
+so their own edits are never undone. The optimise row keeps its own undo, so `planner_optimize`
+leaves none here. An entry id that is not in the plan changes nothing, and a change that changes
+nothing shows no chip and keeps the earlier undo. A show is added only at a time the planner's own
+show picker would list (`showLinesFor` over the day's `/plan/day`).
+
+Parky sees the plan through the `planner` field every question carries
+(`assistantPlannerSnapshot`): the planned days (`isPlannedDay`) from today on in each park's own
+date, nearest first, at most 6, each with at most 40 entries in plan order, the start the planner
+prints on the block (`formatGridTime`), a block's or show's length and the tick; the day's
+preferences, and the active park and day. With nothing planned the field is left out. The API
+answers with the next turn, so Parky reads what its last action did from that plan.
+
+Reminders (`lib/assistant/alerts-context.ts`, `alert-writes.ts`) carry the ids the push endpoints
+take: `alert_ride_set` the ride's UUID as `rideId`, a `kind` (`wait_below` with
+`thresholdMinutes` 1 to 240, or `reopen`), `alert_show_set` the show's UUID and the performance
+as an ISO instant with the park's offset, which `alertTarget` prints in the park's clock and
+ignores once it is over. Only with push `ready` (a subscription and the
+permission granted, `readPushState`) is the reminder written mid-answer, since then nothing can
+prompt. Otherwise, and after a failed write, the answer carries `AssistantAlertAsk`: what would be
+set and a button, whose press is the visitor's gesture and runs the same write, prompt included; a
+failure reads in the bells' own sentences (`usePushErrorMessage`, the 429 wait among them). A set
+counts as `ride_alert_set` or `show_follow_add` with source `assistant`, which also rings Parky's
+bell. `alert_remove` names exactly one slug and goes by the mirror's names, today's `/plan/day` as
+the fallback for an entry stored without them. A removal that fails shows an error chip with the
+bells' sentence for it (`removalOutcome`), the 429 wait among them.
+
+The `alerts` field of every question is the mirror (`assistantAlertsSnapshot`): `push`, and the
+ride alerts and show reminders whose names the mirror keeps, at most 100 each, a pinned performance
+as the park's `HH:MM`. Left out where push is out of reach and nothing is set.
+
+Favourites go through `lib/utils/favorites.ts`, so every star on the page follows. `favorite_set`
+names the favourite's type `entity` (`type` is the action's) and an id the cookie keeps, a UUID; it sets the state asked for and never toggles blindly. An add plays
+Parky's `love`, through the same `favorite_add` a star sends. The `favorites` field of every
+question is the cookie's ids as stored, UUIDs only (all the API takes), at most 50 of each kind, left out when there are none
+(`assistantFavoritesSnapshot`).
 
 `plannerUi.requestOptimize` is held until the day's `PlannerOptimizeActions` is on screen with its
 data, which then presses its own button (`RunOnce`), fit assistant and undo included. On a phone
@@ -146,24 +219,52 @@ clock; the cards format their instants with the browser's own clock too.
 
 ## Parky's face
 
-`ParkyLogo` (`components/assistant/parky-logo.tsx`) draws Parky as an SVG; all its motion is CSS in
-`app/globals.css` (`.parky-*`) and runs only without `prefers-reduced-motion`. While the chat works
+Parky's code has two folders. What is drawn sits in `components/assistant/parky/`: `parky-logo.tsx`
+composes the face, `drawing.ts` holds the palette and shapes, `props.tsx`, `dreams.tsx` and
+`looks.tsx` the props, dreams and outfits, and the face's hooks are `use-gaze.ts`,
+`use-idle-act.ts` and `use-search-along.ts`. What decides sits in `lib/assistant/parky/`, free of
+React except for the `use-parky-*` hooks: `acts.ts` (every act, its length, the classes and their
+pauses), `rides.ts`, `look.ts`, `boredom.ts`, `facts.ts`, `lines.ts`, `reactions.ts`,
+`easter-eggs.ts` and `motion.ts`. The launcher, the window, the teaser and Parky's hops between
+them (`parky-jump.ts`, `parky-dock.ts`, `entrance.ts`, the fling) stay with the chat in
+`components/assistant/` and `lib/assistant/`.
+
+`ParkyLogo` (`components/assistant/parky/parky-logo.tsx`) draws Parky as an SVG; its motion is CSS
+in `app/parky.css` (`.parky-*`) and runs only without `prefers-reduced-motion`. The few motions
+that are web animations (a ride's path, the seat's airtime, the dream train) go through
+`animateParky` (`lib/assistant/parky/motion.ts`), which under reduced motion holds them at their
+finished pose, as the stylesheet leaves its own parts; `parkyStill()` there is the one
+reduced-motion check every Parky script asks. While the chat works
 it shows a mood: `thinking` with thought bubbles, `looking` into a book, `talking`. With nothing to
 do (the closed button, the open window between answers) it has a life of its own, paced by one
-store for the whole page, `parkyBoredom` (`lib/assistant/parky-boredom.ts`). Activity is a pointer
+store for the whole page, `parkyBoredom` (`lib/assistant/parky/boredom.ts`). Activity is a pointer
 move or press, a key, the mouse wheel or a touch.
 
 Its life of its own comes in classes, each with its own pace (`CLASS_ACTS`, `CLASS_PAUSE_MS`):
 
-| Class    | When                                      | What Parky does                                                                                                                                                                    |
-| -------- | ----------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| blink    | always, every 7–8 s (CSS, `parky-blink`)  | shuts and opens his eyes                                                                                                                                                           |
-| `fidget` | `awake` (< 60 s quiet), 7–10 s apart      | winks, looks around, tilts his head, wiggles                                                                                                                                       |
-| `showy`  | `awake`, about every 30 s (27–33 s)       | a ride (three tickets of fourteen, so the coasters come up most), hops, spins, rolls his eyes, twirls, dances, sunglasses, lights, whistles, gum, reads, nods off                  |
-| `sleepy` | `bored` (60 s quiet), every 8–12 s        | yawns first, then naps, pulls on his nightcap, nods off                                                                                                                            |
-| asleep   | `asleep` (90 s quiet)                     | eyes shut, slow breathing under rising Zs, the hat stops; activity wakes him with a "!"                                                                                            |
-| dreams   | asleep, 15–25 s after the last one, 6.5 s | a cloud over his head (`ParkyDreamCloud`): a coaster car round a loop with him aboard, a little Parky cheering under confetti, or a fairy-tale castle rising under a shooting star |
-| doing    | whenever something happens                | moods (`thinking`, `looking`, `talking`), searching along, and the cues that answer the visitor                                                                                    |
+| Class    | When                                      | What Parky does                                                                                                                                                                                                                                                                               |
+| -------- | ----------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| blink    | always, every 7–8 s (CSS, `parky-blink`)  | shuts and opens his eyes                                                                                                                                                                                                                                                                      |
+| `fidget` | `awake` (< 60 s quiet), 7–10 s apart      | winks, looks around, tilts his head, wiggles                                                                                                                                                                                                                                                  |
+| `showy`  | `awake`, about every 30 s (27–33 s)       | a ride (seven tickets of 36, about one in five); two tickets each for hops, spins, eye rolls, twirls, dances, sunglasses, lights, whistles, gum, reading, nodding off; one each for cotton candy, a churro, a balloon, the park map, a photo, a drink and airtime                             |
+| `sleepy` | `bored` (60 s quiet), every 8–12 s        | yawns first, then naps, pulls on his nightcap, nods off                                                                                                                                                                                                                                       |
+| asleep   | `asleep` (90 s quiet)                     | eyes shut, slow breathing under rising Zs, the hat stops; activity wakes him with a "!"                                                                                                                                                                                                       |
+| dreams   | asleep, 15–25 s after the last one, 6.5 s | a cloud over his head (`ParkyDreamCloud`): a coaster car round a loop with him aboard, a little Parky cheering under confetti, a fairy-tale castle rising under a shooting star, fireworks over the castle, a log boat plunging into a splash, or a Ferris wheel at night with its cabins lit |
+| doing    | whenever something happens                | moods (`thinking`, `looking`, `talking`), searching along, and the cues that answer the visitor                                                                                                                                                                                               |
+
+Late in the visitor's evening, from 22:00 until 05:00 by the browser's clock, both quiet times are
+halved (`LATE_SLEEPY_FACTOR` in `boredomThresholds`): bored at 30 s, asleep at 45 s.
+
+The moments of a park day are props drawn over his face (`ParkyMoment` in
+`components/assistant/parky/props.tsx`): cotton candy at his right cheek with a bite gone at each
+chomp; a churro, two bites, a happy squint and a heart, because it is his favourite; a balloon that
+bobs, slips away and floats off while he watches it go; a three-panel park map unfolding with a dot
+pulsing where he is; a camera over his right eye, the left one shut, a click and a flash; a drink
+through a straw, the level dropping and bubbles rising. Airtime, his signature move, floats him up
+off the ground for joy, the hat a little higher still. `grumpy` (arms crossed, brows down, a frown,
+steam off the top of his head) is an act like the others but holds no ticket: it is meant for long
+queues on the page. The drawing's shared colours and shapes are in `components/assistant/parky/drawing.ts`, the dreams
+in `dreams.tsx`.
 
 A showy act takes the place of the fidget that would come after it is due. That is the button in
 the corner. In the open window and in the homepage hero Parky is `calm`: awake he only blinks and
@@ -199,8 +300,9 @@ once the dialog closes. It moves by `translate`, which an entrance's `transform`
 The search palette is the exception: there Parky stays and searches along.
 
 An easter egg can ask for a ride from outside: `ParkyLogo`'s `cue` plays it at once, a named one
-or `ride` for any of four, and now and then Parky takes one by itself as one act among the rest.
-Parky sits in a red car for each:
+or `ride` for any of six, and now and then Parky takes one by itself as one act among the rest.
+Parky sits in a red car, a log boat or a teacup (`ParkyVehicle`, with the rails drawn by
+`ParkyRideTrack`):
 
 - **Loop** (`coaster`): it turns about the centre of a loop (`LOOP`), so the car's wheels run
   round the rails drawn around it, upside down at the top. The stylesheet turns it.
@@ -208,14 +310,24 @@ Parky sits in a red car for each:
   backwards through the station and a few swings to rest.
 - **Hills**: over two camel-backs to the left and out of sight, back in from the right as if the
   circuit ran on behind the page, braking into the station.
-- **Tower**: pulled up a mast, a shiver at the top, the drop, the brakes; the hat lifts off the
-  head as it falls and lands again.
+- **Tower**: pulled up a mast with his eyes screwed shut (he is afraid of heights), a shiver at
+  the top, eyes wide for the drop, the brakes; the hat lifts off the head as it falls and lands
+  again.
+- **Flume**: a log boat slowly up a lift hill to the left, a float over the crest, the plunge, a
+  splash where it hits the water (the ride's `splash`); it drifts out of sight and floats back in
+  from the right, and Parky shakes the water off like a wet dog.
+- **Teacups**: a pink teacup twice round a turntable to the left of the station, swaying and a
+  little smaller at the back.
 
-The last three are worked out in `lib/assistant/parky-rides.ts`: one geometry gives both the rails
+Airtime runs through the rides as a stop's `lift`: over the hills' crests, in the tower's free fall
+and over the flume's crest Parky floats up off his seat while the vehicle sinks back by as much and
+stays on the rail.
+
+The rides beyond the loop are worked out in `lib/assistant/parky/rides.ts`: one geometry gives both the rails
 drawn and the stops the car passes, played with the Web Animations API and turned about the wheels'
 resting point, so the two cannot drift apart. On the hills the car is slower near the top and
-faster low down. Eyes go wide and the mouth opens on every ride, and off every ride Parky is
-dizzy (`FOLLOW_UP`): the pupils swirl round their eyes, one each way, the body reels, the mouth
+faster low down. Eyes go wide and the mouth opens on every ride, and off every ride but the flume
+Parky is dizzy (`FOLLOW_UP`): the pupils swirl round their eyes, one each way, the body reels, the mouth
 goes wavy and three stars circle its head.
 
 A random ride (`ride`, by itself or from a cue) is only one that fits on screen where Parky is at
@@ -287,6 +399,50 @@ The store keeps one timer for the next stage, so a moving pointer costs a timest
 length is written once, in `ACT_MS`; the stylesheet reads it as `--parky-act`. Under reduced
 motion the store answers `null` and Parky only shows its moods.
 
+### Outfits
+
+Parky dresses for the time of year and, on a park's page, for the weather there
+(`lib/assistant/parky/look.ts`, drawn in `components/assistant/parky/looks.tsx`). Every Parky on
+the page reads the same look from `useParkyLook` (`lib/assistant/parky/use-parky-look.ts`); the server
+answers none, so the prerendered page and the first paint agree.
+
+| Season (`seasonOn`, browser calendar)  | Hat in the wheel's place                      |
+| -------------------------------------- | --------------------------------------------- |
+| `halloween`, 1–31 October              | a jack-o'-lantern                             |
+| `christmas`, 1–26 December             | a little tree with baubles and a star on top  |
+| `newyear`, 31 December and 1 January   | a party hat with gold dots and a pompom       |
+| `winter`, 2 January to end of February | a red woolly hat with a white pompom, a scarf |
+
+The weather comes from the park's nowcast, which the page has already loaded: `useParkyWeather`
+reads it from React Query's cache with a disabled query, so it costs no request. `weatherLook`
+takes the most striking state: `storm` (WMO 95–99), `snow`, `rain` (drizzle included), `windy`
+(gusts from 50 km/h or wind from 35), `fog`, `hot` (from 28 °C), `cold` (below 5 °C). Rain and a
+storm put an umbrella in his right hand, beyond the wheel, with drops bouncing off it; a storm adds
+a cloud with a flashing bolt; snow falls as flakes; the cold and snow bring the scarf; wind blows
+gusts past him; fog drifts in front of his lower half, below the mouth; heat brings the sun and a
+drop of sweat. The pieces sit on their own anchors (hat, middle, right hand, around him), so a
+season and a weather combine and none reaches the eyes or the tree's star.
+
+The face works as without an outfit. Where an act and an outfit compete, one table decides
+(`SETS_ASIDE`, read by `outfitFor`): the nightcap and the lit wheel send the season's hat away for
+their length; a ride and the dizziness after it fold the umbrella, and so does anything in his
+hands (reading, the clipboard, the book of a lookup, the magnifying glass, the snow globe, the
+snowman, the fan, the clapping). A new act that uses his hands gets a row there.
+
+While a context holds, `showyPool` adds tickets to the showy pool and never takes one away: at
+Halloween a little ghost rises behind him (`ghost`), at Christmas he shakes a snow globe
+(`snowglobe`), at New Year fireworks go off over his head (`fireworks`), in winter or in snow he
+builds a snowman beside him (`snowman`: three snowballs, coal eyes and buttons, the carrot nose
+last, a tiny Ferris wheel for a hat, then it melts), in rain he twirls the umbrella (`brolly`), in
+the cold he shivers with chattering teeth (`shiver`), in heat he fans himself (`fan`) and the
+sunglasses get two more tickets. While one of the page's park's shows is on (from its start for
+`SHOW_RUN_MIN`, 30 minutes, since the API sends no end; `showRunning`, set by `useParkyLive` through
+`setParkyShow` and checked again with every poll), `applause` gets two tickets. A scene that reaches beyond him (the snowman to the left, the
+fireworks above) only plays where it fits on screen (`sceneFits`), as a ride does. Without motion
+every piece stands still and each scene shows finished.
+
+`?parky=` tries a look anywhere: a season, a weather or both (`?parky=christmas,rain`).
+
 ## In the homepage hero
 
 On the homepage from a 1024 px window Parky stands in the hero, bigger, beside a speech bubble that
@@ -320,28 +476,101 @@ row.
 bubble's right edge and bottom are reckoned from the button's size (56 px, 64 px from `sm`) and
 its corner offset. These lines go in it, from the `assistant` namespace:
 
-- **Invitations** (`teaser1`–`teaser9`): 8 s after the button shows and again 90 s after that, at
-  most two a session (`TEASER_SCHEDULE_MS`). After an entrance the first is the entrance's own
-  line (`entranceScurry`, `entranceDrop`, `entranceRoll`, `entrancePeek`, `entrancePop`), said a
-  beat after landing. One that falls due over another line, while Parky sleeps or while a search
-  is open tries again 5 s later.
+- **The session's two slots**: 8 s after the button shows and again 90 s after that
+  (`TEASER_SCHEDULE_MS`), two lines a session at most. Which line fills a slot is one list,
+  `lineSources` in `lib/assistant/parky/lines.ts`, best first; the first source with a line for
+  the page speaks, so a park whose statistics are too thin for a fact falls through to the next:
+
+  | Source       | When                                                                  | Lines                                                                                           |
+  | ------------ | --------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+  | `entrance`   | first slot, after an entrance, a beat after landing                   | `entranceScurry`, `entranceDrop`, `entranceRoll`, `entrancePeek`, `entrancePop`                 |
+  | `live`       | a park's page, once a park a session, level with the weather          | `liveWalkOn1`–`3`, `liveQueue1`–`3`, `liveFull1`–`3`, `liveClosed1`–`3`, `liveShow1`–`3`        |
+  | `clock`      | a park's page, once a park a session, in the clock's windows          | `clockRopeDrop1`–`3`, `clockClosing1`–`3`                                                       |
+  | `holiday`    | first slot, on one of Parky's holidays                                | `holidayHalloween`, `holidayChristmas`, `holidayNewYear`                                        |
+  | `fact`       | last slot, on a park's page or the homepage (`?parky=fact`: any slot) | `factLongest1`–`3`, `factGap1`–`2`, `factQuietest1`–`3`, `factBusiest1`–`3`, `factAverage1`–`3` |
+  | `park`       | a park's page, on `PARK_EGG_CHANCE` (40 %) or `?parky=egg`            | `parkLine1`–`6`, `parkQueue1`–`3`, `parkRopeDrop1`–`2`, `parkClosing1`–`2`, `parkFood1`–`2`     |
+  | `invitation` | always                                                                | `teaser1`–`teaser13`                                                                            |
+
+  A new kind of scheduled line goes into that list at its rank. One that falls due over another
+  line, while Parky sleeps or while a search is open tries again 5 s later. `?parky=live`,
+  `?parky=clock` and `?parky=fact` put their source first in whichever slot comes, past its
+  once-a-session rule; `?parky=show` does the same for `live` and says the show line whenever the
+  park has a show still to start today, however far off. Forced, `live` counts any open queue as long and `clock` drops its windows,
+  so an open park shows the line and it may overstate the moment; a park before opening has no live
+  line even then. Two rules settle a tie: `live` comes before
+  `clock` (what the queues say now is the more useful news, and the clock takes the next slot),
+  and `live` is level with the weather's line: a park gets one line a session about how it is
+  right now (`parkNewsKey`, `news:<park path>` in `countAnswer`), from whichever comes first.
+
+- **Live waits** (`lib/assistant/parky/live.ts`, `useParkyLive`): read from the live poll the
+  park's page runs anyway (`parkLiveQueryKey`, React Query's cache, no request of its own). The
+  headliners are the park's favourite in `PARK_FAVOURITES` and the first five top attractions of
+  the `/stats` the page has loaded (`headlinersOf`). The slot's line is the first of these that
+  holds (`liveMoment`, limits in `LIVE_LIMITS`):
+
+  | The page says                                       | Act                    | Lines             |
+  | --------------------------------------------------- | ---------------------- | ----------------- |
+  | shut today (closed, no hours for today on the page) | `doze` or `read`       | `liveClosed1`–`3` |
+  | a headliner open at 10 minutes or less              | `airtime`              | `liveWalkOn1`–`3` |
+  | the park's crowd level is very high or extreme      | `squashed` mood, 2.4 s | `liveFull1`–`3`   |
+  | the longest open queue is over 60 minutes           | `grumpy`               | `liveQueue1`–`3`  |
+  | a show starts in 15 to 30 minutes                   | `applause`             | `liveShow1`–`3`   |
+
+  The show times are today's showtimes in the live poll's `shows` (ISO instants with the park's
+  offset, kept across the polls that leave the block out), a show reading `CLOSED` left out;
+  `SHOW_SOON_MIN` holds the window. `liveShow3` points at the bell on the show for a reminder.
+  Clapping, Parky stands in a spotlight cone between the edges of a red curtain, with a few
+  sparkles (`ParkySpotlight`).
+
+  While the page stays open, each poll is compared with the last (`liveChange`). A headliner that
+  goes down gets a `startle` and `liveDown1`–`3`, which point at the bell on the ride for its
+  reopen alert; a headliner's queue that drops by 20 minutes or more, to half or less, gets a
+  `hop` and `liveDrop1`–`3` ("Psst, Taron is down to 20 minutes."). Each of the two has its line
+  once a session, against `REACTIONS_PER_SESSION`, never over another line. A moment that newly
+  holds (a walk-on, a queue over an hour, a full park) plays its act without a line. An act without
+  its line plays at most every `LIVE_ACT_GAP_MS` (4 minutes). Without known headliners every ride
+  counts.
+
+- **The park's clock** (`lib/assistant/parky/clock.ts`): the park's hours are the page's
+  `AmusementPark` structured data (`openingHoursSpecification`, in park time), its zone that of the
+  live data. In the hour before today's opening Parky stretches or hops for rope drop
+  (`clockRopeDrop1`–`3`); in the last half hour before closing, also for a day that runs past
+  midnight, he lets off the `fireworks` (`clockClosing1`–`3`); `CLOCK_WINDOWS_MIN` holds both.
+  While the clock has its line for a park, the park line leaves out `parkRopeDrop1`–`2` and
+  `parkClosing1`–`2` (`CLOCK_PARK_KEYS`).
+
+- **Facts** (`parkyFacts`, `lib/assistant/parky/facts.ts`): every sentence a park's two-year
+  aggregate supports (`deriveParkStatsFindings`): the longest queue and its typical wait, how much
+  longer it is than the park's typical queue (from 10 minutes), the quietest weekdays, the busiest
+  months, the typical wait. Waits on the five-minute grid and never under five, days and months
+  named as the park header names them. On a park's page the facts are about that park, from the
+  `/stats` it has loaded anyway; on the homepage about one of `PARK_FAVOURITES` at random, one
+  CDN-cached `/stats` request when the slot falls due. The fact list is open for hand-written facts
+  from the API, merged in as further `{ key, values }`. Parky reads (`read`) after a fact.
 - **Reactions**, read from the same `parkyBoredom`: a bored line (`teaserBored1`–`4`) after the
   first yawn, a woken line (`teaserWoke1`–`3`) once somebody wakes Parky. At most
   `REACTIONS_PER_SESSION` (3).
-- **Easter eggs** (`lib/assistant/easter-eggs.ts`): on Halloween, at Christmas and at New Year
+- **Easter eggs** (`lib/assistant/parky/easter-eggs.ts`): on Halloween, at Christmas and at New Year
   the first invitation is the day's own line (`holidayHalloween`, `holidayChristmas`,
-  `holidayNewYear`, by the browser's calendar). On a park's own page, on `PARK_EGG_CHANCE` (40 %)
-  of the visits or always with `?parky=egg`, Parky names a ride there 5 s after the page settles
-  (`parkLine1`–`4`, with `{park}` and `{ride}`) and then takes one of its rides. The ride is the park's
-  favourite in `PARK_FAVOURITES` (16 parks, keyed by geo path), else from its own data: the name
-  from the page's `AmusementPark` structured data, the ride the coaster with the longest waits in
-  the `/stats` the page loads anyway (through its React Query cache, so no request of its own),
-  else its top attraction (`topCoaster`). The Konami code typed anywhere buys a free ride with its
-  own line (`secretKonami`).
+  `holidayNewYear`, by the browser's calendar). On a park's own page, when its slot draws it, Parky
+  says one of the park lines (with `{park}` and `{ride}`) and then plays the act it goes with: a
+  ride after `parkLine1`–`6`, a whistle in the queue, a stretch before rope drop, a yawn at
+  closing time, heart eyes for the churros (`PARK_LINES` in `assistant-teaser.tsx`). The ride is
+  the park's favourite in `PARK_FAVOURITES` (16 parks, keyed by geo path), else from its own data:
+  the name from the page's `AmusementPark` structured data, the ride the coaster with the longest
+  waits in the `/stats` the page loads anyway (through its React Query cache, so no request of its
+  own), else its top attraction (`topCoaster`). The Konami code typed anywhere buys a free ride
+  with its own line (`secretKonami`).
+- **The park's weather** (`useParkyWeather`): on a park's page with a weather look, once per park
+  per session (`parkNewsKey`, shared with the live line) and 12 s after the page settles, never over
+  another line, Parky plays the weather's act (`WEATHER_ACT`) and says a `weather` line
+  (`weatherRain1`–`3`, `weatherStorm1`–`2`, `weatherSnow1`–`3`, `weatherCold1`–`3`,
+  `weatherWindy1`–`2`, `weatherFog1`–`2`, `weatherHot1`–`3`, with `{park}` and `{temp}` in the
+  visitor's unit). It counts against `REACTIONS_PER_SESSION` and stays away once lines are muted.
   With a fine pointer, the pointer resting on Parky's nose (between and just under the eyes) makes
   it squint at it, both pupils turned in; circling it fast, two turns inside 1.5 s, makes it dizzy
-  (`useGaze` in `parky-logo.tsx`, the `dizzy` act through its own cue).
-- **Answers** (`lib/assistant/reactions.ts`): Parky answers what the visitor does, heard through
+  (`useGaze`, `components/assistant/parky/use-gaze.ts`, the `dizzy` act through its own cue).
+- **Answers** (`lib/assistant/parky/reactions.ts`): Parky answers what the visitor does, heard through
   `onSiteEvent`, which every `trackSiteEvent` call reaches whether or not the page counts, so no
   component is wired twice. Each answer is an act every time and a line once a session per kind
   (`answeredWithLine`, `countAnswer`):
@@ -371,7 +600,9 @@ easter eggs included (`muteLines`).
 `/[locale]/parky` (`app/[locale]/parky/`) is a hub that shows what Parky does. Each of its three
 chapters pairs a screenshot of the real widget on a phone with a few questions somebody could ask:
 the wait times chat, a planned day, and Parky searching along. A stage plays five of Parky's acts
-on a loop while they are on screen, and a sixth tile keeps the rest a secret. After that come what
+on a loop while they are on screen, and a sixth tile keeps the rest a secret; below it a picker
+dresses every Parky on the page in a season and a weather (`ParkyLookPicker`, through
+`previewParkyLook`), with a Parky that plays the acts the look brings. After that come what
 happens to the questions, a FAQ and the next steps. The texts are in the `parkyPage` namespace,
 read on the server only.
 
@@ -393,7 +624,7 @@ Our own statistic (`trackSiteEvent`, labels in `lib/admin/site-analytics.ts`): `
 `assistant_opened` (with `source`: the button, a line, Parky's page, or `language` after his
 language switch), `assistant_line_shown`,
 `assistant_line_clicked` and `assistant_line_closed` (each with the line's kind as `line`: invitation,
-entrance, bored, woke, holiday, park, secret, or the answer's planner, plan, favourite, alert, theme
+entrance, bored, woke, holiday, park, fact, secret, weather, live, clock, or the answer's planner, plan, favourite, alert, theme
 or install), `assistant_closed` (questions while open), `assistant_question` (suggestion or typed, never the
 text), `assistant_answer` (result and number of lookups), `assistant_rated`,
 `assistant_feedback_sent` (whether with an e-mail, never the e-mail) and
@@ -403,14 +634,25 @@ the planner opening as `planner_opened` with source `assistant`.
 ## Checks
 
 `pnpm test:assistant` covers the stream reader, the link checks, the rollout decision, the post
-text, the action checks (a link carried out as the path it was checked as, the planner's modes, zones
+text and its sections for a question, the action checks (a link carried out as the path it was checked as, the planner's modes, zones
 and block lengths, only the six locales and nothing riding along with a switch), where a switch
 leads (the page's hreflang alternate, a respelled segment, never off the site or into a third
-language) and the reopen after it, the boredom stages on a fake clock, the opener's draw, and the
+language) and the reopen after it, the boredom stages on a fake clock and sooner late in the evening, the opener's draw, and the
 easter eggs:
-a page's park path and park page, the coaster picked from a ranking, the park's name from structured
+a page's park path and park page, the facts a park's findings support, which source fills a slot and how its ties fall, the live waits' moments and changes and the rate of their acts, the park's clock across zones and midnight, the coaster picked from a ranking, the park's name from structured
 data, the holidays, the Konami code and muting, and which scrolls throw Parky: a reading swipe, one
 late frame, a briskly turned wheel or one turned bit by bit, the scrollbar pulled slowly, the space
 bar, a jump and a scripted scroll do not; a hard flick, a wheel rolled hard, the scrollbar pulled
 quickly and a held key do, the same distance by wheel and not by finger, and once he has let go the
 same throw again or the other way throws him at once.
+
+`pnpm test:parky-look` covers the outfits: the seasons at their edges, the weather states and
+their order, what each kind of act puts aside, the showy pool only growing, where a scene fits,
+and the `?parky=` look switch.
+
+`pnpm test:assistant-context` covers what the browser tells Parky and lets him change: the plan
+snapshot (from today on, nearest first, the caps, the printed starts, nothing when empty), the
+reorder, Parky's undo (and that it leaves a day the visitor changed since), and the checks of every planner edit (ids that are no ids dropped, an
+optional field that fails left out, nothing riding along), the reminders' snapshot, the slugs they
+resolve to, their action checks and what a failed removal shows, the favourites' snapshot and checks, and Parky's break:
+its action check, the refusal code and length, and the end kept across a reload.

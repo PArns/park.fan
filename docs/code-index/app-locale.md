@@ -528,6 +528,7 @@ Route `/[locale]/parks/universal` (page).
 - `AskParkyButton` _component_: The page's one real way into the chat: opens Parky's window, or says Parky is resting when it is switched off. Until the gate has decided it waits, disabled.
 - `ParkyFigure` _component_: Parky in the page itself, at any size, with its life of its own.
 - `ParkyStage` _component_: A few of Parky's acts side by side, each on its own loop and a little apart so they do not move as one, and a last tile that keeps the rest a secret.
+- `ParkyLookPicker` _component_: Parky's outfits to try on: a season and a weather, worn by every Parky on the page, with a Parky that plays the acts the picked look brings along. Leaving the page hands the look back to the calendar and the park's weather.
 
 ### [`parky/page.tsx`](../../app/%5Blocale%5D/parky/page.tsx)
 

@@ -1,16 +1,22 @@
 'use client';
 
-import { useEffect, useLayoutEffect, useRef, useState, type FormEvent } from 'react';
+import { useCallback, useEffect, useLayoutEffect, useRef, useState, type FormEvent } from 'react';
 import { useMediaQuery } from '@/lib/hooks/use-media-query';
 import { useSheetViewport } from '@/lib/hooks/use-sheet-viewport';
 import { useLocale, useTranslations } from 'next-intl';
 import { usePathname } from 'next/navigation';
 import {
   CalendarCheck,
+  CalendarX2,
+  CircleAlert,
   ExternalLink,
   Languages,
   MessageSquareHeart,
   RotateCcw,
+  BellOff,
+  BellRing,
+  Heart,
+  HeartOff,
   SendHorizontal,
   Sparkles,
   ThumbsDown,
@@ -25,18 +31,21 @@ import {
 } from '@/lib/assistant/use-assistant-chat';
 import { useAssistantSession } from '@/lib/assistant/use-assistant-session';
 import { drawOpener, sessionOpener } from '@/lib/assistant/opener';
-import { parkPathOf } from '@/lib/assistant/easter-eggs';
+import { parkPathOf } from '@/lib/assistant/parky/easter-eggs';
 import { trackSiteEvent, type AssistantOpenSource } from '@/lib/analytics/site-analytics';
-import { ParkyLogo } from './parky-logo';
+import { ParkyLogo } from './parky/parky-logo';
 import { ASSISTANT_PHONE_QUERY, PARKY_LAYER } from './parky-layer';
 import { parkyJump } from '@/lib/assistant/parky-jump';
 import { AssistantMessageText } from './assistant-message-text';
 import { AssistantFeedbackForm } from './assistant-feedback-form';
 import { AssistantChallenge } from './assistant-challenge';
 import { AssistantLocationAsk } from './assistant-location-ask';
+import { AssistantAlertAsk } from './assistant-alert-ask';
+import { usePushErrorMessage } from '@/components/push/use-push-error-message';
 import { AssistantCardView } from './assistant-card';
 import { useAssistantActions } from './use-assistant-actions';
 import type { AssistantActionChip } from '@/lib/assistant/actions';
+import type { ParkyReactionAct } from '@/lib/assistant/parky/reactions';
 
 const LOOKUP_KEY: Record<AssistantLookup, string> = {
   parks: 'lookupParks',
@@ -58,7 +67,11 @@ const ERROR_KEY: Record<NonNullable<AssistantChatMessage['error']>, string> = {
   session: 'errorSession',
   expired: 'errorExpired',
   unclear: 'errorUnclear',
+  ended: 'paused',
 };
+
+/** How long Parky's goodbye stays on screen before the window closes. */
+const GOODBYE_MS = 2500;
 
 const CHIP: Record<AssistantActionChip, { key: string; icon: typeof ExternalLink }> = {
   navigated: { key: 'chipNavigated', icon: ExternalLink },
@@ -66,6 +79,11 @@ const CHIP: Record<AssistantActionChip, { key: string; icon: typeof ExternalLink
   optimized: { key: 'chipOptimized', icon: Sparkles },
   language: { key: 'chipLanguage', icon: Languages },
   feedback: { key: 'chipFeedback', icon: MessageSquareHeart },
+  alert: { key: 'chipAlert', icon: BellRing },
+  alertRemoved: { key: 'chipAlertRemoved', icon: BellOff },
+  favorite: { key: 'chipFavorite', icon: Heart },
+  unfavorite: { key: 'chipUnfavorite', icon: HeartOff },
+  undoStale: { key: 'chipUndoStale', icon: CalendarX2 },
 };
 
 /** Three bouncing dots: Parky is thinking or looking something up. */
@@ -123,17 +141,31 @@ export function AssistantPanel({
   open,
   onClose,
   openedBy,
+  onAct,
 }: {
   open: boolean;
   onClose: () => void;
   /** What opened the window, for `assistant_opened`. */
   openedBy: AssistantOpenSource;
+  /** Plays one of Parky's acts on the button in the corner. */
+  onAct?: (act: ParkyReactionAct) => void;
 }) {
   const t = useTranslations('assistant');
   const locale = useLocale();
   const session = useAssistantSession();
   const act = useAssistantActions(onClose);
-  const chat = useAssistantChat(locale, session, act);
+  // The goodbye is read, then the window closes and Parky turns in for his break.
+  const goodbye = useRef<ReturnType<typeof setTimeout>>(undefined);
+  useEffect(() => () => clearTimeout(goodbye.current), []);
+  const ended = useCallback(() => {
+    clearTimeout(goodbye.current);
+    goodbye.current = setTimeout(() => {
+      onClose();
+      onAct?.('nightcap');
+    }, GOODBYE_MS);
+  }, [onClose, onAct]);
+  const chat = useAssistantChat(locale, session, act, ended);
+  const pushErrorMessage = usePushErrorMessage();
   const [tab, setTab] = useState<'chat' | 'feedback'>('chat');
   const [draft, setDraft] = useState('');
   // One greeting and set of suggestions per chat, kept for the session; a new chat draws again.
@@ -431,6 +463,26 @@ export function AssistantPanel({
                         })}
                       </div>
                     )}
+                    {message.failures && message.failures.length > 0 && (
+                      <div className="mt-1.5 flex flex-wrap gap-1.5 pl-1" role="alert">
+                        {message.failures.map((failure, index) => (
+                          <span
+                            key={`failure-${index}`}
+                            className="bg-destructive/15 text-destructive inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[11px] font-medium"
+                          >
+                            <CircleAlert className="size-3" />
+                            {pushErrorMessage(failure)}
+                          </span>
+                        ))}
+                      </div>
+                    )}
+                    {message.alerts?.map((prompt) => (
+                      <AssistantAlertAsk
+                        key={prompt.id}
+                        prompt={prompt}
+                        onSettle={(next) => chat.settleAlert(message.id, next)}
+                      />
+                    ))}
                     {message.asksLocation && (
                       <AssistantLocationAsk
                         onShare={(position) =>
@@ -468,34 +520,44 @@ export function AssistantPanel({
                 )
               )}
             </div>
-            <form onSubmit={submit} className="border-border/60 border-t px-3 pt-2 pb-2">
-              <div className="bg-muted/50 focus-within:ring-primary/40 flex items-end gap-2 rounded-2xl px-3 py-1.5 focus-within:ring-2">
-                <textarea
-                  ref={input}
-                  value={draft}
-                  onChange={(event) => setDraft(event.target.value)}
-                  onKeyDown={(event) => {
-                    if (event.key === 'Enter' && !event.shiftKey) submit(event);
-                  }}
-                  rows={1}
-                  maxLength={1000}
-                  placeholder={t('placeholder')}
-                  aria-label={t('placeholder')}
-                  className="max-h-28 min-h-8 flex-1 resize-none bg-transparent py-1.5 text-base outline-none sm:text-sm"
-                />
-                <button
-                  type="submit"
-                  disabled={!draft.trim() || chat.phase !== 'idle'}
-                  className="bg-primary text-primary-foreground mb-0.5 rounded-full p-2 transition-opacity disabled:opacity-40"
-                  aria-label={t('send')}
-                >
-                  <SendHorizontal className="size-4" />
-                </button>
-              </div>
-              <p className="text-muted-foreground mt-1.5 text-center text-[11px]">
-                {t('disclaimer')}
+            {chat.pausedUntil !== null ? (
+              <p
+                className="border-border/60 text-muted-foreground border-t px-3 py-4 text-center text-sm"
+                role="status"
+                data-assistant-paused=""
+              >
+                {t('paused')}
               </p>
-            </form>
+            ) : (
+              <form onSubmit={submit} className="border-border/60 border-t px-3 pt-2 pb-2">
+                <div className="bg-muted/50 focus-within:ring-primary/40 flex items-end gap-2 rounded-2xl px-3 py-1.5 focus-within:ring-2">
+                  <textarea
+                    ref={input}
+                    value={draft}
+                    onChange={(event) => setDraft(event.target.value)}
+                    onKeyDown={(event) => {
+                      if (event.key === 'Enter' && !event.shiftKey) submit(event);
+                    }}
+                    rows={1}
+                    maxLength={1000}
+                    placeholder={t('placeholder')}
+                    aria-label={t('placeholder')}
+                    className="max-h-28 min-h-8 flex-1 resize-none bg-transparent py-1.5 text-base outline-none sm:text-sm"
+                  />
+                  <button
+                    type="submit"
+                    disabled={!draft.trim() || chat.phase !== 'idle'}
+                    className="bg-primary text-primary-foreground mb-0.5 rounded-full p-2 transition-opacity disabled:opacity-40"
+                    aria-label={t('send')}
+                  >
+                    <SendHorizontal className="size-4" />
+                  </button>
+                </div>
+                <p className="text-muted-foreground mt-1.5 text-center text-[11px]">
+                  {t('disclaimer')}
+                </p>
+              </form>
+            )}
           </>
         )}
       </section>

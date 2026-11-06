@@ -70,10 +70,12 @@ export function topCoaster(
 }
 
 /**
- * The park's name as the page's own structured data gives it (`AmusementPark`, a root node or one
- * in `@graph`), so the line needs no request of its own; `null` where the page has none.
+ * The page's own `AmusementPark` structured data (a root node or one in `@graph`), so Parky reads
+ * the park's name and opening hours with no request of its own; `null` where the page has none.
  */
-export function parkNameIn(scripts: Iterable<{ textContent: string | null }>): string | null {
+export function amusementParkIn(
+  scripts: Iterable<{ textContent: string | null }>
+): Record<string, unknown> | null {
   for (const script of scripts) {
     let data: unknown;
     try {
@@ -85,19 +87,24 @@ export function parkNameIn(scripts: Iterable<{ textContent: string | null }>): s
     for (const node of nodes) {
       const graph = (node as { '@graph'?: unknown[] })?.['@graph'];
       for (const item of Array.isArray(graph) ? [node, ...graph] : [node]) {
-        const thing = item as { '@type'?: unknown; name?: unknown };
-        if (thing?.['@type'] === 'AmusementPark' && typeof thing.name === 'string') {
-          return thing.name;
-        }
+        const thing = item as Record<string, unknown> | null;
+        if (thing?.['@type'] === 'AmusementPark') return thing;
       }
     }
   }
   return null;
 }
 
+/** The park's name from {@link amusementParkIn}; `null` where the page names none. */
+export function parkNameIn(scripts: Iterable<{ textContent: string | null }>): string | null {
+  const name = amusementParkIn(scripts)?.name;
+  return typeof name === 'string' ? name : null;
+}
+
 /**
  * What `?parky=` asks for on this page, for trying the easter eggs out: `egg` for a park's line
- * whatever the chance, or an entrance's name. Browser only.
+ * whatever the chance, `fact`, `live` or `clock` for that line in any slot, or an entrance's, a
+ * ride's or a reaction's name. Browser only.
  */
 export function parkySwitch(): string | null {
   try {
