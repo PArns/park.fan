@@ -2,12 +2,12 @@
 title: 'Hollywood Christmas in Movie Park krijgt een ijsglijbaan'
 translationKey: movie-park-hollywood-christmas-2026
 date: '2026-11-06'
-time: '17:45'
+time: '18:12'
 author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Bij Hollywood Christmas in Movie Park Germany in Bottrop glijd je vanaf 27 november voor het eerst op een band van een ijsglijbaan. De parade voor het 30-jarig bestaan van het park rijdt dan in een winterversie. Het feest duurt 21 dagen, tot 5 januari.
+  Bij Hollywood Christmas vanaf 27 november heeft Movie Park Germany in Bottrop voor het eerst een ijsglijbaan, waar je op een band vanaf glijdt. De parade voor het 30-jarig bestaan van het park rijdt dan in een winterversie. Het feest duurt 21 dagen, tot 5 januari.
 tags:
   - nieuws
   - movie-park
@@ -41,15 +41,15 @@ seo:
     - Movie Park wachttijden
 ---
 
-Op vrijdag 27 november begint in [Movie Park Germany](ref:movie-park-germany) in Bottrop-Kirchhellen het winterfeest Movie Park's Hollywood Christmas. Nieuw zijn een ijsglijbaan waar je op een band af glijdt en een winterversie van de parade voor het 30-jarig bestaan van het park. Het feest loopt 21 dagen, tot 5 januari 2027. Eerst sluit op 8 november nog het Halloween Horror Festival af. Tussen de laatste kettingzaag en de eerste verlichte kerstboom is het park dan 18 dagen dicht, van 9 tot en met 26 november.
+Op vrijdag 27 november begint in [Movie Park Germany](ref:movie-park-germany) in Bottrop-Kirchhellen het winterfeest Movie Park's Hollywood Christmas. Nieuw zijn een ijsglijbaan van Ice-World, waar je op een band vanaf glijdt, en de parade voor het 30-jarig bestaan van het park in een winterversie. Het feest loopt 21 dagen, tot 5 januari 2027. Eerst sluit op 8 november nog het Halloween Horror Festival af. Tussen de laatste kettingzaag en de eerste verlichte kerstboom is het park dan 18 dagen dicht, van 9 tot en met 26 november.
 
 ## Nieuw deze winter
 
-De ijsglijbaan komt er samen met Ice-World. Als Movie Park's Parade of Celebration – Winter Edition trekt de jubileumparade met versierde wagens door het park, met showstops waar gedanst en gezongen wordt.
+In de winter rijdt de jubileumparade als Movie Park's Parade of Celebration – Winter Edition en houdt onderweg halt voor showstops.
 
 De Christmas Tree Celebration, waarmee elke evenementavond op de Christmas Boulevard begint, heeft een nieuw script. Naast de elfjes Holly en Jolly, de notenkrakers en de kerstman speelt de chagrijnige filmklapper S.A.D. mee, die wil voorkomen dat de grote kerstboom aangaat. Tegen meer dan een miljoen lampjes heeft één filmklapper weinig in te brengen, en aan het eind van de show branden de boom en de straten.
 
-In Van Helsing's Club vervangt de show Night of Wonder het programma Christmas Sparkle van vorig jaar. Met livezang, dans en acrobatiek vertelt die over een meisje dat vlak voor Kerstmis de kerstman tegenkomt.
+In Van Helsing's Club vervangt de show Night of Wonder het programma Christmas Sparkle van vorig jaar. Daarin ontmoet een meisje vlak voor Kerstmis de kerstman, er wordt live gezongen en tussendoor is er acrobatiek.
 
 De Santa Experience is verhuisd van het gebouw van Time Riders naar het evenementencentrum bij de ingang. Daar brengt Santa's Enchanted Express kinderen in drie minuten naar de Noordpool, waar de kerstman met zijn elfen wacht. In hetzelfde gebouw versieren kinderen koekjes in de Kids Cookie & Christmas Factory, en er wordt geknutseld.
 
@@ -82,19 +82,19 @@ Voor de Santa Experience betaal je apart: € 5 voor volwassenen, € 3 voor kin
 
 ## IJsbaan, shows en lichtjes
 
-De lichtjes hangen in vier gebieden: Christmas Boulevard USA, Nickelodeon HoHoHoliday Land, Rockefeller Plaza en Wild West Christmas. Vorig jaar waren het er meer dan 800.000. Terug zijn de overdekte ijsbaan van 360 vierkante meter, het eisstockschieten (een soort curling), een mappingshow en Amerikaans eten.
+De meer dan een miljoen lampjes hangen in vier gebieden: Christmas Boulevard USA, Nickelodeon HoHoHoliday Land, Rockefeller Plaza en Wild West Christmas. Vorig jaar waren het er ruim 800.000. Van vorig jaar blijven de overdekte ijsbaan van 360 vierkante meter, het eisstockschieten (een soort curling), de mappingshow en het Amerikaanse eten.
 
-In Studio 7 staat Christian Farla tot drie keer per dag op het podium met The Great Christmas Magic Show. Dit jaar vraagt de kerstman hem om hulp, zodat alle wensen voor Kerstmis uitkomen. In de Western Saloon zingen en dansen de kerstman en zijn elfen voor de derde keer in Meet Santa & Friends, met een nieuw verhaal. Voor geen van beide shows heb je een extra ticket nodig. Op sommige dagen zingt in de saloon ook het gospelkoor Leslie B. Harmonies.
+In Studio 7 tovert Christian Farla tot drie keer per dag in The Great Christmas Magic Show, dit keer als hulpje van de kerstman, die het in zijn eentje niet redt om voor Kerstmis alle wensen te vervullen. In de Western Saloon zingen en dansen de kerstman en zijn elfen voor de derde keer in Meet Santa & Friends, met een nieuw verhaal. Voor geen van beide shows heb je een extra ticket nodig. Op sommige dagen zingt in de saloon ook het gospelkoor Leslie B. Harmonies.
 
 Het Roxy 4-D Kino draait weer Scrooge 4D: A Christmas Carol, en in Nickelodeon HoHoHoliday Land is er de Nickelodeon Dance Party Holiday Edition. Elke avond sluit af met Hollywood Christmas Lights op de Christmas Boulevard, een show met vlammen en lasers.
 
 ## De Coca-Cola Truck op 29 november
 
-Op zondag 29 november staat de Coca-Cola Xmas Truck in het park, en bij de truck kun je op de foto met de kerstman. Was je eerder op de dag al bij de Noordpool in het evenementencentrum, dan ga je die dag dus twee keer met hem op de foto. Verder zijn er een selfiepodium en een digitaal rad van fortuin waarmee je Coca-Cola-artikelen kunt winnen.
+Op zondag 29 november staat de Coca-Cola Xmas Truck in het park, en bij de truck kun je op de foto met de kerstman. Wie die dag ook met de trein naar de Noordpool in het evenementencentrum gaat, ziet de kerstman twee keer. Verder zijn er een selfiepodium en een digitaal rad van fortuin waarmee je Coca-Cola-artikelen kunt winnen.
 
 ## Attracties in de winter
 
-Naast de familieattracties rijden ook een paar achtbanen, en welke dat zijn, bepaalt op de dag het weer. De waterattracties blijven dicht, en in december mist niemand een nat pak. [Van Helsing's Factory](ref:movie-park-germany/van-helsings-factory) en [Star Trek: Operation Enterprise](ref:movie-park-germany/star-trek-operation-enterprise) staan aan de Rockefeller Plaza, [The Bandit](ref:movie-park-germany/the-bandit) in Wild West Christmas. De [Movie Park Studio Tour](ref:movie-park-germany/movie-park-studio-tour) hoort in de winter bij Nickelodeon HoHoHoliday Land en draait als Christmas Edition. Onze [gids voor Movie Park](/blog/movie-park-germany-wachttijden-tips) beschrijft elke attractie met haar verhaal en de gemeten wachttijden.
+Naast de familieattracties rijden ook een paar achtbanen; welke precies, hangt op de dag af van het weer. De waterattracties blijven dicht. [Van Helsing's Factory](ref:movie-park-germany/van-helsings-factory) en [Star Trek: Operation Enterprise](ref:movie-park-germany/star-trek-operation-enterprise) staan aan de Rockefeller Plaza, [The Bandit](ref:movie-park-germany/the-bandit) in Wild West Christmas. De [Movie Park Studio Tour](ref:movie-park-germany/movie-park-studio-tour) hoort in de winter bij Nickelodeon HoHoHoliday Land en draait als Christmas Edition. Onze [gids voor Movie Park](/blog/movie-park-germany-wachttijden-tips) beschrijft elke attractie met haar verhaal en de gemeten wachttijden.
 
 ## Parkeren en betalen
 
@@ -104,7 +104,7 @@ Bij een paar glühweinkramen en in de restaurants betaal je alleen met een kaart
 
 ## De vierde Hollywood Christmas
 
-Het winterfeest bestaat sinds de winter van 2023/24, en dit is de vierde editie. In het tweede jaar kwamen er volgens het park 20 procent meer bezoekers dan bij de première.
+Het winterfeest bestaat sinds de winter van 2023/24. In het tweede jaar kwamen er volgens het park 20 procent meer bezoekers dan bij de première.
 
 [Movie Park Germany](ref:movie-park-germany?full)
 

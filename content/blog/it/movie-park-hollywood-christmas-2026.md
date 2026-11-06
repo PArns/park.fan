@@ -2,12 +2,12 @@
 title: 'Hollywood Christmas al Movie Park ha lo scivolo di ghiaccio'
 translationKey: movie-park-hollywood-christmas-2026
 date: '2026-11-06'
-time: '17:45'
+time: '18:12'
 author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Dal 27 novembre, per Hollywood Christmas, al Movie Park Germany di Bottrop si scende per la prima volta su una ciambella lungo uno scivolo di ghiaccio. La parata per i 30 anni del parco sfila in versione invernale. La festa dura 21 giorni, fino al 5 gennaio.
+  Dal 27 novembre, per Hollywood Christmas, il Movie Park Germany di Bottrop ha per la prima volta uno scivolo di ghiaccio, da percorrere seduti su una ciambella. La parata per i 30 anni del parco sfila in versione invernale. La festa dura 21 giorni, fino al 5 gennaio.
 tags:
   - notizie
   - movie-park
@@ -41,15 +41,15 @@ seo:
     - Movie Park tempi di attesa
 ---
 
-Venerdì 27 novembre il [Movie Park Germany](ref:movie-park-germany) di Bottrop-Kirchhellen apre la sua festa d’inverno, Movie Park’s Hollywood Christmas. Le novità sono uno scivolo di ghiaccio da percorrere seduti su una ciambella e una versione invernale della parata per i 30 anni del parco. La festa dura 21 giorni, fino al 5 gennaio 2027. Prima, l’8 novembre, si chiude l’Halloween Horror Festival. Tra l’ultima motosega e il primo albero illuminato il parco resta poi chiuso 18 giorni, dal 9 al 26 novembre.
+Venerdì 27 novembre il [Movie Park Germany](ref:movie-park-germany) di Bottrop-Kirchhellen apre la sua festa d’inverno, Movie Park’s Hollywood Christmas. Le novità sono uno scivolo di ghiaccio di Ice-World, da percorrere seduti su una ciambella, e la parata per i 30 anni del parco in versione invernale. La festa dura 21 giorni, fino al 5 gennaio 2027. Prima, l’8 novembre, si chiude l’Halloween Horror Festival. Tra l’ultima motosega e il primo albero illuminato il parco resta poi chiuso 18 giorni, dal 9 al 26 novembre.
 
 ## Le novità di quest’inverno
 
-Lo scivolo di ghiaccio arriva al parco in collaborazione con Ice-World. La parata del giubileo diventa Movie Park’s Parade of Celebration – Winter Edition e attraversa il parco con carri addobbati, fermandosi per alcuni show stop in cui si balla e si canta.
+D’inverno la parata del giubileo sfila come Movie Park’s Parade of Celebration – Winter Edition e lungo il percorso si ferma per alcuni show stop.
 
 La Christmas Tree Celebration, che apre ogni serata dell’evento sul Christmas Boulevard, ha un copione nuovo. Accanto agli elfi Holly e Jolly, agli schiaccianoci e a Santa Claus recita S.A.D., un ciak brontolone deciso a impedire che il grande albero di Natale si accenda. Il ciak è uno solo, le luci sono più di un milione, e il finale si indovina: a fine spettacolo albero e strade sono illuminati.
 
-Al Van Helsing’s Club lo spettacolo Night of Wonder prende il posto di Christmas Sparkle dell’anno scorso. Con canto dal vivo, danza e acrobazie racconta di una bambina che poco prima di Natale incontra Santa Claus.
+Al Van Helsing’s Club lo spettacolo Night of Wonder prende il posto di Christmas Sparkle dell’anno scorso. Nello spettacolo una bambina incontra Santa Claus poco prima di Natale, si canta dal vivo e tra una scena e l’altra ci sono acrobazie.
 
 La Santa Experience ha lasciato l’edificio di Time Riders e si è trasferita nell’Eventcenter vicino all’ingresso. Lì il Santa’s Enchanted Express porta i bambini al Polo Nord in tre minuti, dove Babbo Natale li aspetta con i suoi elfi. Nello stesso edificio, alla Kids Cookie & Christmas Factory, i bambini decorano biscotti e ci sono attività di bricolage.
 
@@ -82,19 +82,19 @@ La Santa Experience si paga a parte: 5 € per gli adulti, 3 € per i bambini d
 
 ## Pista di pattinaggio, spettacoli e luci
 
-Le luci decorano le quattro aree Christmas Boulevard USA, Nickelodeon HoHoHoliday Land, Rockefeller Plaza e Wild West Christmas; l’anno scorso erano più di 800.000. Tornano la pista di pattinaggio coperta di 360 metri quadrati, il curling bavarese (Eisstockschießen), un mapping show e la cucina americana.
+Le oltre un milione di luci decorano le quattro aree Christmas Boulevard USA, Nickelodeon HoHoHoliday Land, Rockefeller Plaza e Wild West Christmas; l’anno scorso erano poco più di 800.000. Dell’anno scorso restano la pista di pattinaggio coperta di 360 metri quadrati, il curling bavarese (Eisstockschießen), il mapping show e la cucina americana.
 
-Allo Studio 7 Christian Farla va in scena fino a tre volte al giorno con The Great Christmas Magic Show. Quest’anno è Santa Claus a chiedergli aiuto, perché entro Natale tutti i desideri vengano esauditi. Al Western Saloon Santa e i suoi elfi cantano e ballano per la terza volta in Meet Santa & Friends, con una storia nuova. Per nessuno dei due spettacoli serve un biglietto in più. In alcuni giorni al Saloon canta anche il coro gospel Leslie B. Harmonies.
+Allo Studio 7 Christian Farla fa magie fino a tre volte al giorno in The Great Christmas Magic Show, stavolta come aiutante di Santa Claus, che da solo non riesce a esaudire tutti i desideri entro Natale. Al Western Saloon Santa e i suoi elfi cantano e ballano per la terza volta in Meet Santa & Friends, con una storia nuova. Per nessuno dei due spettacoli serve un biglietto in più. In alcuni giorni al Saloon canta anche il coro gospel Leslie B. Harmonies.
 
 Il Roxy 4-D Kino ripropone Scrooge 4D: A Christmas Carol, e nel Nickelodeon HoHoHoliday Land c’è la Nickelodeon Dance Party Holiday Edition. Ogni sera si chiude con Hollywood Christmas Lights sul Christmas Boulevard, uno spettacolo di fiamme e laser.
 
 ## Il camion Coca-Cola il 29 novembre
 
-Domenica 29 novembre nel parco c’è il Coca-Cola Xmas Truck, e accanto al camion si fanno foto con Santa Claus. Chi è già passato dal Polo Nord nell’Eventcenter quel giorno torna a casa con due ritratti con Babbo Natale, e la nonna ne sarà contenta. Ci sono anche una pedana per i selfie e una ruota della fortuna digitale con cui vincere articoli Coca-Cola.
+Domenica 29 novembre nel parco c’è il Coca-Cola Xmas Truck, e accanto al camion si fanno foto con Santa Claus. Chi quel giorno prende anche il treno per il Polo Nord nell’Eventcenter incontra Santa Claus due volte. Ci sono anche una pedana per i selfie e una ruota della fortuna digitale con cui vincere articoli Coca-Cola.
 
 ## Le attrazioni d’inverno
 
-Oltre alle attrazioni per famiglie funzionano anche alcune montagne russe, e quali, lo decide il meteo del giorno. Le attrazioni acquatiche restano chiuse, e a dicembre non è che manchino a molti. [Van Helsing’s Factory](ref:movie-park-germany/van-helsings-factory) e [Star Trek: Operation Enterprise](ref:movie-park-germany/star-trek-operation-enterprise) sono alla Rockefeller Plaza, [The Bandit](ref:movie-park-germany/the-bandit) nel Wild West Christmas. La [Movie Park Studio Tour](ref:movie-park-germany/movie-park-studio-tour) d’inverno fa parte del Nickelodeon HoHoHoliday Land e gira come Christmas Edition. La nostra [guida al Movie Park](/blog/movie-park-germany-tempi-di-attesa-consigli) descrive ogni attrazione con la sua storia e i tempi di attesa misurati.
+Oltre alle attrazioni per famiglie funzionano anche alcune montagne russe; quali di preciso dipende dal meteo del giorno. Le attrazioni acquatiche restano chiuse. [Van Helsing’s Factory](ref:movie-park-germany/van-helsings-factory) e [Star Trek: Operation Enterprise](ref:movie-park-germany/star-trek-operation-enterprise) sono alla Rockefeller Plaza, [The Bandit](ref:movie-park-germany/the-bandit) nel Wild West Christmas. La [Movie Park Studio Tour](ref:movie-park-germany/movie-park-studio-tour) d’inverno fa parte del Nickelodeon HoHoHoliday Land e gira come Christmas Edition. La nostra [guida al Movie Park](/blog/movie-park-germany-tempi-di-attesa-consigli) descrive ogni attrazione con la sua storia e i tempi di attesa misurati.
 
 ## Parcheggio e pagamenti
 
@@ -104,7 +104,7 @@ In alcune casette del vin brulé e nei ristoranti si paga solo con la carta.
 
 ## Il quarto Hollywood Christmas
 
-La festa d’inverno esiste dall’inverno 2023/24, e questa è la quarta edizione. Al secondo anno, secondo il parco, i visitatori sono stati il 20 per cento in più rispetto alla prima edizione.
+La festa d’inverno esiste dall’inverno 2023/24. Al secondo anno, secondo il parco, i visitatori sono stati il 20 per cento in più rispetto alla prima edizione.
 
 [Movie Park Germany](ref:movie-park-germany?full)
 

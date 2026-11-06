@@ -2,7 +2,7 @@
 title: "Movie Park's Hollywood Christmas gets an ice slide"
 translationKey: movie-park-hollywood-christmas-2026
 date: '2026-11-06'
-time: '17:45'
+time: '18:12'
 author: patrick
 mode: published
 featured: false
