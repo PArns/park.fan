@@ -128,6 +128,14 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `useLocalPreference` _hook_: Returns a string preference kept in localStorage and its setter. The server and a failed read give `defaultValue`; a change in another admin tab updates this one too.
 
+### [`_lib/works-periods.ts`](../../app/admin/_lib/works-periods.ts)
+
+- `isHiddenCuratedField` _function_: Whether the editor leaves a field out: flagged `legacy` or `hidden` by the backend, or one of the old single-window columns while a `periods` field in the same group already holds their value.
+- `sortWorksPeriods` _function_: The windows in the order the backend stores them: by start, an open start first, then by end.
+- `worksPeriodsError` _function_: The API's checks on a window list, run before the save so the editor sees the problem at the row. Returns the first problem as a German sentence, or null when the list may be saved.
+- `MAX_WORKS_PERIODS` _const_: The backend's cap on windows per ride.
+- Types: `WorksPeriodRow`
+
 ### [`_overview/area-table.tsx`](../../app/admin/_overview/area-table.tsx)
 
 - `AreaTable` _component_: The parts of the system as rows, each with its verdict, how many of its checks pass, the one figure that matters for it and a bar per check.

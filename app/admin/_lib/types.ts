@@ -16,6 +16,8 @@ export type CuratedFieldType =
   // boundary by a day for every park west of Greenwich.
   | 'date'
   | 'url'
+  // A list of park-local works windows, `{ from, to, toUncertain }[]`, saved as a whole.
+  | 'periods'
   // A frontend glossary term id. Rendered as a text input — the editor's
   // `default` case — and checked against the glossary when it is saved.
   | 'glossaryTerm';
@@ -43,6 +45,10 @@ export interface CuratedField {
   /** Text and url fields only. */
   maxLength?: number;
   hint?: string;
+  /** Superseded by another field and kept for old clients; the editor leaves it out. */
+  legacy?: boolean;
+  /** Not for the editor; same effect as `legacy`. */
+  hidden?: boolean;
 }
 
 /**
