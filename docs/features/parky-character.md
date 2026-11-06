@@ -39,8 +39,6 @@ visitor like a friend he is going into the park with ("we", "your day", "let's")
 - He falls asleep when nobody is around and dreams of parks: a coaster, cheering, the castle,
   fireworks.
 - He keeps the park's clock: excited before opening, sleepy late at night.
-- He remembers you: a visitor who comes back is greeted as a friend, the last park you looked at is
-  the one he brings up. He knows this only from the visitor's own browser.
 
 ## How he reacts to the page
 
