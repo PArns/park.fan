@@ -35,11 +35,11 @@ seo:
     - Six Flags Silver Pass 2027
 ---
 
-[Six Flags Magic Mountain](ref:six-flags-magic-mountain), en Valencia (California), inaugura el 26 de noviembre su Holiday in the Park con siete espectáculos en directo nuevos. La fiesta se celebra en días concretos hasta el 3 de enero de 2027. Va incluida en la entrada de un día, en el Season Pass y en la Membership. El primer día coincide con Thanksgiving, así que quien deje el pavo para más tarde tiene hasta las 21:00.
+El 26 de noviembre empieza en [Six Flags Magic Mountain](ref:six-flags-magic-mountain), en Valencia (California), Holiday in the Park, la fiesta de invierno del parque, que este año trae siete espectáculos en directo nuevos. La fiesta dura hasta el 3 de enero de 2027, aunque antes del 11 de diciembre solo se celebra siete días. Va incluida en la entrada de un día, en el Season Pass y en la Membership. El primer día coincide con Thanksgiving, así que quien deje el pavo para más tarde tiene hasta las 21:00.
 
 ## Los espectáculos y dónde se ven
 
-Six Flags anuncia producciones musicales, actuaciones navideñas y comedia, además de programa con los Looney Tunes y con elfos. Six Flags no ha anunciado cuáles de ellos son los siete nuevos. El encendido del árbol en Full Throttle Plaza ya existía en inviernos anteriores. Este año va acompañado de Magic of the Holidays, un espectáculo navideño nuevo con bailarines, cantantes y un gran árbol de Navidad.
+Además de música, comedia y los Looney Tunes, Six Flags anuncia elfos, pero ningún espectáculo dice en cuál salen. Six Flags no ha anunciado cuáles de ellos son los siete nuevos. El árbol de Full Throttle Plaza ya se encendía en inviernos anteriores; lo nuevo es Magic of the Holidays, un espectáculo con bailarines y cantantes a su alrededor.
 
 | Espectáculo                                      | Lugar                 | Qué se ve                                                         |
 | ------------------------------------------------ | --------------------- | ----------------------------------------------------------------- |
@@ -56,7 +56,7 @@ En 'Twas: A Merry Mishap alguien del público puede acabar con un papel, de modo
 
 ## Qué días hay fiesta
 
-El parque abre a las 10:30. Hasta mediados de diciembre se alternan días de evento, días normales y días de cierre.
+El parque abre a las 10:30. Hasta el 10 de diciembre, el parque cierra cuatro días y otros cuatro abre solo hasta las 18:00, sin programa navideño.
 
 - 26 y 27 de noviembre: Holiday in the Park hasta las 21:00
 - 28 de noviembre: Holiday in the Park hasta las 22:00
@@ -67,7 +67,7 @@ El parque abre a las 10:30. Hasta mediados de diciembre se alternan días de eve
 - del 11 al 31 de diciembre: Holiday in the Park todos los días
 - 3 de enero de 2027: último día de la fiesta; Six Flags aún no ha publicado el horario de enero
 
-En Nochebuena el parque cierra a las 18:00 y el día de Navidad abre hasta las 20:00. En Nochevieja Magic Mountain despide el año y no cierra hasta las 0:30, media hora después de las campanadas.
+En Nochebuena el parque cierra a las 18:00 y el día de Navidad abre hasta las 20:00. En Nochevieja el parque celebra el cambio de año y no cierra hasta las 0:30, así que quien siga haciendo cola con las campanadas entra en 2027 esperando.
 
 ```best-days-widget slug=six-flags-magic-mountain
 
@@ -79,11 +79,11 @@ En Nochebuena el parque cierra a las 18:00 y el día de Navidad abre hasta las 2
 
 ## Qué incluye la entrada
 
-Con la entrada tienes los espectáculos, las luces, algunas actividades y la mayoría de las atracciones que funcionan ese día. Se pagan aparte la comida, la bebida, los recuerdos y algunas experiencias, entre ellas decorar galletas y las hogueras donde se preparan s'mores. El chocolate caliente se sirve en vaso de recuerdo, y hay platos de temporada y cócteles para adultos.
+Con la entrada tienes los espectáculos, las luces y la mayoría de las atracciones que funcionan ese día, aunque no todas las actividades. Se pagan aparte la comida, la bebida, los recuerdos y algunas experiencias, entre ellas decorar galletas y las hogueras donde se preparan s'mores. El chocolate caliente se sirve en vaso de recuerdo, así que el primer souvenir ya lo llevas en la mano, y para los adultos hay cócteles.
 
-Para los niños, Mrs. Claus lee cuentos en la Story Time, y también están el North Pole Craft Depot and Post Office y el Tree Lot Maze. La foto con Papá Noel se hace en Santa's Cottage.
+Para los niños, Mrs. Claus lee cuentos en la Story Time, en el North Pole Craft Depot and Post Office se hacen manualidades, y quien aún tenga energía puede buscar la salida del Tree Lot Maze, un laberinto inspirado en un puesto de árboles de Navidad. La foto con Papá Noel se hace en Santa's Cottage.
 
-Los días de evento funcionan algunas atracciones. Six Flags solo cita una por su nombre, la atracción familiar [Road Runner Express](ref:six-flags-magic-mountain/road-runner-express). [X2](/news/x2-six-flags-magic-mountain-cierra) no estará: está parada desde julio y Six Flags la retiró de forma definitiva a finales de septiembre.
+De las atracciones que funcionan los días de evento, Six Flags solo ha dado a conocer una, la atracción familiar [Road Runner Express](ref:six-flags-magic-mountain/road-runner-express). [X2](/news/x2-six-flags-magic-mountain-cierra) no estará: está parada desde julio y Six Flags la retiró de forma definitiva a finales de septiembre.
 
 ## Entradas, pases y aparcamiento
 
@@ -95,7 +95,7 @@ Aparcar cuesta desde 42 $ en el General Parking y desde 62 $ en el Preferred Par
 
 ## Otros parques Six Flags y Thrill Glider
 
-Este invierno, Six Flags ha renovado Holiday in the Park en [Great Adventure](/news/six-flags-great-adventure-holiday-in-the-park-2026) y en [Over Georgia](/news/six-flags-over-georgia-holiday-in-the-park-2026). Knott's Berry Farm celebra su [Knott's Merry Farm](/news/knotts-merry-farm-2026). En el propio Magic Mountain, la próxima gran novedad es [Thrill Glider](/news/thrill-glider-six-flags-magic-mountain), una montaña rusa de Vekoma que debería abrir en 2027.
+Este invierno, Six Flags ha renovado Holiday in the Park en [Great Adventure](/news/six-flags-great-adventure-holiday-in-the-park-2026) y en [Over Georgia](/news/six-flags-over-georgia-holiday-in-the-park-2026). Knott's Berry Farm se convierte en [Knott's Merry Farm](/news/knotts-merry-farm-2026). En el propio Magic Mountain, la próxima gran novedad es [Thrill Glider](/news/thrill-glider-six-flags-magic-mountain), una montaña rusa de Vekoma que debería abrir en 2027.
 
 [Six Flags Magic Mountain](ref:six-flags-magic-mountain?full)
 

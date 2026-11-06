@@ -35,11 +35,11 @@ seo:
     - Six Flags Silver Pass 2027
 ---
 
-[Six Flags Magic Mountain](ref:six-flags-magic-mountain) in Valencia, Kalifornien, eröffnet am 26. November Holiday in the Park mit sieben neuen Live-Shows. Das Fest läuft an ausgewählten Tagen bis zum 3. Januar 2027. Tagesticket, Season Pass und Membership decken es ab. Der erste Tag ist Thanksgiving, und wer den Truthahn auf später verschiebt, hat an dem Tag bis 21 Uhr Zeit.
+Am 26. November beginnt in [Six Flags Magic Mountain](ref:six-flags-magic-mountain) in Valencia, Kalifornien, Holiday in the Park, das Winterfest, das in diesem Jahr sieben neue Live-Shows mitbringt. Das Fest läuft bis zum 3. Januar 2027, vor dem 11. Dezember allerdings nur an sieben Tagen. Tagesticket, Season Pass und Membership decken es ab. Der erste Tag ist Thanksgiving, und wer den Truthahn auf später verschiebt, hat an dem Tag bis 21 Uhr Zeit.
 
 ## Die Shows und ihre Bühnen
 
-Six Flags kündigt Musikproduktionen, Weihnachtsauftritte und Comedy an, dazu Programm mit den Looney Tunes und mit Elfen. Welche Shows die sieben neuen sind, hat Six Flags nicht bekannt gegeben. Die Baumbeleuchtung auf der Full Throttle Plaza gab es schon in früheren Wintern. In diesem Jahr gehört zu ihr Magic of the Holidays, eine neue Weihnachtsshow mit Tänzern, Sängern und einem großen Weihnachtsbaum.
+Außer Musik, Comedy und den Looney Tunes kündigt Six Flags auch Elfen an, in welcher der Shows sie auftreten, steht aber bei keiner dabei. Welche Shows die sieben neuen sind, hat Six Flags nicht bekannt gegeben. Den Baum auf der Full Throttle Plaza haben sie schon in früheren Wintern angeknipst, neu ist Magic of the Holidays, eine Show mit Tänzern und Sängern um ihn herum.
 
 | Show                                             | Ort                   | Was dort läuft                                                         |
 | ------------------------------------------------ | --------------------- | ---------------------------------------------------------------------- |
@@ -56,7 +56,7 @@ Bei 'Twas: A Merry Mishap kann auch jemand aus dem Publikum eine Rolle bekommen,
 
 ## An welchen Tagen das Fest läuft
 
-Der Park öffnet um 10:30 Uhr. Bis Mitte Dezember wechseln sich Eventtage, normale Tage und geschlossene Tage ab.
+Der Park öffnet um 10:30 Uhr. Bis zum 10. Dezember hat der Park an vier Tagen zu und ist an vier weiteren nur bis 18 Uhr offen, ohne Weihnachtsprogramm.
 
 - 26. und 27. November: Holiday in the Park bis 21 Uhr
 - 28. November: Holiday in the Park bis 22 Uhr
@@ -67,7 +67,7 @@ Der Park öffnet um 10:30 Uhr. Bis Mitte Dezember wechseln sich Eventtage, norma
 - 11. bis 31. Dezember: Holiday in the Park an jedem Tag
 - 3. Januar 2027: der letzte Tag des Fests, die Öffnungszeiten für Januar hat Six Flags noch nicht veröffentlicht
 
-An Heiligabend schließt der Park um 18 Uhr, am ersten Weihnachtstag ist er bis 20 Uhr offen. An Silvester feiert Magic Mountain den Jahreswechsel und macht erst um 0:30 Uhr zu, eine halbe Stunde ins neue Jahr hinein.
+An Heiligabend schließt der Park um 18 Uhr, am ersten Weihnachtstag ist er bis 20 Uhr offen. An Silvester feiert der Park den Jahreswechsel und macht erst um 0:30 Uhr zu, wer um Mitternacht noch ansteht, wartet sich also ins Jahr 2027 hinein.
 
 ```best-days-widget slug=six-flags-magic-mountain
 
@@ -79,11 +79,11 @@ An Heiligabend schließt der Park um 18 Uhr, am ersten Weihnachtstag ist er bis 
 
 ## Was im Eintritt steckt
 
-Mit dem Ticket bekommst du die Shows, die Lichter, ausgewählte Aktivitäten und die meisten der Bahnen, die an dem Tag fahren. Extra zahlst du für Essen, Getränke, Souvenirs und einige Erlebnisse, darunter das Plätzchenverzieren und die Feuerstellen, an denen du S'mores machst. Heiße Schokolade gibt es im Souvenirbecher, dazu Gerichte der Saison und für Erwachsene Cocktails.
+Mit dem Ticket bekommst du die Shows, die Lichter und die meisten Bahnen, die an dem Tag fahren, von den Aktivitäten aber nicht alle. Extra zahlst du für Essen, Getränke, Souvenirs und einige Erlebnisse, darunter das Plätzchenverzieren und die Feuerstellen, an denen du S'mores machst. Die heiße Schokolade kommt im Souvenirbecher, damit hast du das erste Mitbringsel schon in der Hand, und für Erwachsene gibt es Cocktails.
 
-Für Kinder liest Mrs. Claus bei der Story Time vor, außerdem gibt es das North Pole Craft Depot and Post Office und das Tree Lot Maze. Zum Foto mit dem Weihnachtsmann gehst du in Santa's Cottage.
+Für Kinder liest Mrs. Claus bei der Story Time vor, im North Pole Craft Depot and Post Office wird gebastelt, und wer danach noch Energie hat, sucht im Tree Lot Maze, einem Irrgarten nach dem Vorbild eines Weihnachtsbaumverkaufs, den Ausgang. Zum Foto mit dem Weihnachtsmann gehst du in Santa's Cottage.
 
-An den Eventtagen fahren ausgewählte Bahnen. Six Flags nennt davon nur eine beim Namen, die Familienbahn [Road Runner Express](ref:six-flags-magic-mountain/road-runner-express). [X2](/news/x2-six-flags-magic-mountain-geschlossen) ist nicht dabei, sie steht seit Juli still, und Ende September hat Six Flags sie endgültig stillgelegt.
+Welche Bahnen an den Eventtagen fahren, hat Six Flags nur für eine bekannt gegeben, die Familienbahn [Road Runner Express](ref:six-flags-magic-mountain/road-runner-express). [X2](/news/x2-six-flags-magic-mountain-geschlossen) ist nicht dabei, sie steht seit Juli still, und Ende September hat Six Flags sie endgültig stillgelegt.
 
 ## Tickets, Pässe und Parken
 
@@ -95,7 +95,7 @@ Parken kostet ab 42 Dollar auf dem General Parking und ab 62 Dollar auf dem Pref
 
 ## Andere Six-Flags-Parks und der Thrill Glider
 
-Neu gestaltet hat Six Flags Holiday in the Park in diesem Winter in [Great Adventure](/news/six-flags-great-adventure-holiday-in-the-park-2026) und in [Over Georgia](/news/six-flags-over-georgia-holiday-in-the-park-2026). Knott's Berry Farm feiert ihre [Knott's Merry Farm](/news/knotts-merry-farm-2026). In Magic Mountain selbst ist die nächste große Neuheit der [Thrill Glider](/news/thrill-glider-six-flags-magic-mountain), eine Achterbahn von Vekoma, die 2027 öffnen soll.
+Neu gestaltet hat Six Flags Holiday in the Park in diesem Winter in [Great Adventure](/news/six-flags-great-adventure-holiday-in-the-park-2026) und in [Over Georgia](/news/six-flags-over-georgia-holiday-in-the-park-2026). Knott's Berry Farm wird zur [Knott's Merry Farm](/news/knotts-merry-farm-2026). In Magic Mountain selbst ist die nächste große Neuheit der [Thrill Glider](/news/thrill-glider-six-flags-magic-mountain), eine Achterbahn von Vekoma, die 2027 öffnen soll.
 
 [Six Flags Magic Mountain](ref:six-flags-magic-mountain?full)
 
