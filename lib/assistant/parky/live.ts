@@ -19,8 +19,11 @@ export type LiveChange = 'down' | 'drop';
  */
 export const LIVE_LIMITS = { walkOn: 10, queue: 60, drop: 20 } as const;
 
-/** `?parky=live`: every limit open, so a page shows its line whatever its waits are now. */
-const PREVIEW_LIMITS = { walkOn: Infinity, queue: 0 } as const;
+/**
+ * `?parky=live`: any open queue counts as long, so an open park always has its line; the walk-on
+ * keeps its limit, since its line calls the wait a gift.
+ */
+const PREVIEW_LIMITS = { walkOn: LIVE_LIMITS.walkOn, queue: 0 } as const;
 
 const FULL: readonly CrowdLevel[] = ['very_high', 'extreme'];
 
@@ -113,7 +116,7 @@ function longestQueue(rides: Ride[]): Ride | null {
  * The moment the park's live data gives right now, best first: shut today, a headliner that is a
  * walk-on, a very full park, a queue over an hour; `null` when none holds. `headliners` are ride
  * names (the park's favourite and its top attractions); `closedToday` comes from the opening hours.
- * `preview` (`?parky=live`) opens every limit.
+ * `preview` (`?parky=live`) counts any open queue as long.
  */
 export function liveMoment(
   park: LiveParkSnapshot,
@@ -129,7 +132,8 @@ export function liveMoment(
   if (walkOn && walkOn.wait! <= limits.walkOn) {
     return { kind: 'walkOn', ride: walkOn.name, wait: walkOn.wait! };
   }
-  const level = park.currentLoad?.crowdLevel;
+  // As the park header reads it: the day's statistic, else the live load.
+  const level = park.analytics?.statistics?.crowdLevel ?? park.currentLoad?.crowdLevel;
   if (level && FULL.includes(level)) return { kind: 'full' };
   const queue = longestQueue(rides);
   if (queue && queue.wait! > limits.queue) {

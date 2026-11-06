@@ -492,8 +492,9 @@ its corner offset. These lines go in it, from the `assistant` namespace:
   A new kind of scheduled line goes into that list at its rank. One that falls due over another
   line, while Parky sleeps or while a search is open tries again 5 s later. `?parky=live`,
   `?parky=clock` and `?parky=fact` put their source first in whichever slot comes, past its
-  once-a-session rule; `live` and `clock` then open their limits too (below), so the line shows
-  whatever the park is doing, and may overstate it. Two rules settle a tie: `live` comes before
+  once-a-session rule. Forced, `live` counts any open queue as long and `clock` drops its windows,
+  so an open park shows the line and it may overstate the moment; a park before opening has no live
+  line even then. Two rules settle a tie: `live` comes before
   `clock` (what the queues say now is the more useful news, and the clock takes the next slot),
   and `live` is level with the weather's line: a park gets one line a session about how it is
   right now (`parkNewsKey`, `news:<park path>` in `countAnswer`), from whichever comes first.

@@ -844,6 +844,18 @@ check(topCoaster([]), null, 'no ranking, no ride');
   );
   check(
     liveMoment(
+      park([], {
+        analytics: { statistics: { crowdLevel: 'extreme' } },
+        currentLoad: { crowdLevel: 'low' },
+      }),
+      heads,
+      false
+    ),
+    { kind: 'full' },
+    "the day's crowd statistic first, as the park header reads it"
+  );
+  check(
+    liveMoment(
       park([ride('Taron', 'OPERATING', 5)], { currentLoad: { crowdLevel: 'extreme' } }),
       heads,
       false
@@ -855,8 +867,8 @@ check(topCoaster([]), null, 'no ranking, no ride');
   check(liveMoment(park([], { status: 'CLOSED' }), heads, false), null, 'shut for the night');
   check(
     liveMoment(park([ride('Taron', 'OPERATING', 40)]), heads, false, true),
-    { kind: 'walkOn', ride: 'Taron', wait: 40 },
-    '?parky=live opens the limits'
+    { kind: 'queue', ride: 'Taron', wait: 40 },
+    '?parky=live counts any open queue as long'
   );
   check(
     liveMoment(park([ride('New: Taron', 'OPERATING', 5)]), ['Taron'], false)?.ride,
