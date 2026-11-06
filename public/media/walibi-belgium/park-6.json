@@ -1,0 +1,16 @@
+{
+  "park": "walibi-belgium",
+  "tags": ["day", "halloween", "park", "photo"],
+  "credit": {
+    "author": "Patrick",
+    "license": "all-rights-reserved",
+    "source": "own",
+    "year": 2026
+  },
+  "shotAt": "2026-11-01",
+  "gps": {
+    "lat": 50.699108,
+    "lon": 4.589667
+  },
+  "review": true
+}

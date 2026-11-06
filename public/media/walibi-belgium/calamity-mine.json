@@ -1,0 +1,18 @@
+{
+  "park": "walibi-belgium",
+  "ride": "calamity-mine",
+  "area": "Family",
+  "tags": ["day", "photo", "ride"],
+  "credit": {
+    "author": "Patrick",
+    "license": "all-rights-reserved",
+    "source": "own",
+    "year": 2026
+  },
+  "shotAt": "2026-11-01",
+  "gps": {
+    "lat": 50.699069,
+    "lon": 4.587533
+  },
+  "review": true
+}
