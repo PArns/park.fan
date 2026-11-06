@@ -99,6 +99,11 @@ plain text, never as Markdown or HTML, and links a stored page only through `sit
 (`app/admin/assistant/_lib/assistant.ts`), which takes nothing but a path of slugs, so a path
 glued to the origin cannot become `https://park.fan@host`. The admin exports nothing.
 
+Each answer in the chat view carries the prompt version it was written with (`Prompt v26`), and
+the chat list shows the version of a chat's latest answer and filters by it, so a bad answer
+can be placed before or after a prompt fix. Chats stored before the API kept the version show
+none.
+
 ## Actions, cards and the position
 
 The API sends an `action` event when Parky acts; `readAssistantAction` (`lib/assistant/actions.ts`)
