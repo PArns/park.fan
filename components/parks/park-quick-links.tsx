@@ -18,6 +18,19 @@ type QuickLink = Omit<ComponentProps<typeof LinkBandLink>, 'href'> & { href?: st
 
 const hasHref = (link: QuickLink): link is QuickLink & { href: string } => Boolean(link.href);
 
+/** Whether a park has any of the links `ParkQuickLinks` draws — the header's „Mehr" hides without. */
+export function hasQuickLinks(info: ParkInfo | null | undefined): boolean {
+  return Boolean(
+    info &&
+    (info.website ||
+      info.ticketsUrl ||
+      info.wikipediaUrl ||
+      info.instagramUrl ||
+      info.facebookUrl ||
+      info.youtubeUrl)
+  );
+}
+
 /**
  * The park's own website and ticket shop as one band, its Wikipedia entry and socials as a second,
  * in the page header's row of links. Rendered as a fragment, so each band is an item of that row
@@ -99,15 +112,21 @@ export async function ParkQuickLinks({ info, parkId }: ParkQuickLinksProps) {
  * Every outbound link of a park as bands of one flex row: its own links (`ParkQuickLinks`), then
  * the way to the gate in Google and Apple Maps as a single band. The page header shows them from
  * `sm` up and `ParkInfoCard` below it, where the header row cost a phone the first screen.
+ * `withMaps={false}` leaves the maps band out where the address already leads to the gate.
  */
 export async function ParkOutboundLinks({
   info,
   parkId,
   latitude,
   longitude,
-}: ParkQuickLinksProps & { latitude?: number | null; longitude?: number | null }) {
+  withMaps = true,
+}: ParkQuickLinksProps & {
+  latitude?: number | null;
+  longitude?: number | null;
+  withMaps?: boolean;
+}) {
   const t = await getTranslations('parks.info');
-  const maps = parkMapsLinks(latitude, longitude);
+  const maps = withMaps ? parkMapsLinks(latitude, longitude) : null;
 
   return (
     <>

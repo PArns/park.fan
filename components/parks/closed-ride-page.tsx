@@ -167,7 +167,7 @@ export async function ClosedRidePage({
               {/* What the ride was, which stays true after it closed. The height limits and the
                   queue-jump badges of the live page are left out: they describe a visit. */}
               {(ride.rideProfile || rcdbBadge) && (
-                <div className="border-border/50 no-scrollbar mt-5 flex items-center gap-2 border-t pt-4 max-sm:overflow-x-auto sm:flex-wrap">
+                <div className="border-border/50 mt-5 border-t pt-4">
                   {ride.rideProfile ? (
                     <RideProfileTeaser profile={ride.rideProfile} locale={locale}>
                       {rcdbBadge}

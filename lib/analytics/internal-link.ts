@@ -16,6 +16,8 @@ const LINK_BLOCKS = [
   'parks',
   'rides',
   'posts',
+  'guide_band',
+  'news_band',
   'nav',
   'related',
   'most_read',

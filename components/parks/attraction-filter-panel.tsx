@@ -81,6 +81,8 @@ interface AttractionFilterPanelProps {
   onToggleOnlyCovered: () => void;
   sortMode: AttractionSort;
   onSortChange: (sort: AttractionSort) => void;
+  /** The ride list's „Stand", at the right end of the heading (`LiveDataFreshness`). */
+  status?: React.ReactNode;
 }
 
 /**
@@ -147,6 +149,7 @@ export function AttractionFilterPanel({
   onToggleOnlyCovered,
   sortMode,
   onSortChange,
+  status,
 }: AttractionFilterPanelProps) {
   const t = useTranslations('parks');
   const trackFilter = (filter: AttractionFilterName) =>
@@ -337,6 +340,7 @@ export function AttractionFilterPanel({
         as="h3"
         title={t('filterSection.title')}
         hint={t('filterSection.hint')}
+        action={status}
         className="mb-3 gap-3 pb-3 max-sm:hidden sm:gap-3"
       />
 

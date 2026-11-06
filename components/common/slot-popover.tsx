@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useState, type ReactNode, type RefObject } from 'react';
+import { useEffect, useRef, useState, type ReactNode, type RefObject } from 'react';
 import { ArrowRight } from 'lucide-react';
 
 import { Popover, PopoverAnchor, PopoverContent } from '@/components/ui/popover';
@@ -15,8 +15,9 @@ interface Slot {
 
 /**
  * Hover and tap for a row of slots that share one panel, such as the days of the twelve-month
- * outlook or the weekdays of the park header. A mouse shows a slot's panel while it hovers; a tap
- * pins the panel, which then takes presses (its links). The panel hangs off whichever slot is
+ * outlook or the weekdays of the park header. A mouse shows a slot's panel while it hovers and can
+ * move into it to press its link: leaving the row closes only after a short grace, which entering
+ * the panel cancels. A tap pins the panel. The panel hangs off whichever slot is
  * active, so moving along the row moves one panel instead of mounting one per slot.
  *
  * Slots are found by event delegation on `data-<slotKey>`: the row can be server-rendered markup,
@@ -68,18 +69,30 @@ export function useSlotPopover({
     setPinned(false);
   };
 
+  // The way from the row up into the panel crosses a gap and leaves the row: wait that long.
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const cancelClose = () => {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+    closeTimer.current = null;
+  };
+  const closeSoon = (event: React.PointerEvent) => {
+    if (event.pointerType !== 'mouse' || pinned) return;
+    cancelClose();
+    closeTimer.current = setTimeout(close, CLOSE_GRACE_MS);
+  };
+  useEffect(() => cancelClose, []);
+
   const handlers = {
     onPointerDown: (event: React.PointerEvent) => {
       pointerTypeRef.current = event.pointerType;
     },
     onPointerMove: (event: React.PointerEvent) => {
       if (event.pointerType !== 'mouse' || pinned) return;
+      cancelClose();
       const slot = slotAt(event.target);
       if (slot && slot.index !== active) show(slot, false);
     },
-    onPointerLeave: (event: React.PointerEvent) => {
-      if (event.pointerType === 'mouse' && !pinned) close();
-    },
+    onPointerLeave: closeSoon,
     onClick: (event: React.MouseEvent) => {
       const slot = slotAt(event.target);
       if (!slot) return;
@@ -88,8 +101,14 @@ export function useSlotPopover({
     },
   };
 
-  return { containerRef, anchorRef, active, shown, pinned, close, handlers };
+  /** For the panel: the pointer inside it keeps it open, leaving it closes like leaving the row. */
+  const panelHandlers = { onPointerEnter: cancelClose, onPointerLeave: closeSoon };
+
+  return { containerRef, anchorRef, active, shown, pinned, close, handlers, panelHandlers };
 }
+
+/** How long a panel stays after the pointer left the row or the panel, for the way between them. */
+const CLOSE_GRACE_MS = 200;
 
 /**
  * The panel of a {@link useSlotPopover} row: above the active slot, glass like the site's other
@@ -100,18 +119,22 @@ export function useSlotPopover({
  */
 export function SlotPopover({
   open,
-  pinned,
   anchorRef,
   containerRef,
   onClose,
+  panelHandlers,
   className,
   children,
 }: {
   open: boolean;
-  pinned: boolean;
   anchorRef: RefObject<HTMLElement | null>;
   containerRef: RefObject<HTMLDivElement | null>;
   onClose: () => void;
+  /** The hook's `panelHandlers`. */
+  panelHandlers: {
+    onPointerEnter: () => void;
+    onPointerLeave: (event: React.PointerEvent) => void;
+  };
   className?: string;
   children: ReactNode;
 }) {
@@ -128,12 +151,11 @@ export function SlotPopover({
         onPointerDownOutside={(event) => {
           if (containerRef.current?.contains(event.target as Node)) event.preventDefault();
         }}
+        {...panelHandlers}
         // `z-[90]`, the tooltip layer: a hover panel must not slide under the sticky header
-        // (components/ui/tooltip.tsx). Until a tap pins it, it takes no pointer either, so it
-        // cannot steal the hover from the row it describes.
+        // (components/ui/tooltip.tsx).
         className={cn(
           'z-[90] w-64 max-w-[calc(100vw-1rem)] overflow-hidden p-0 text-xs',
-          !pinned && 'pointer-events-none',
           className
         )}
       >

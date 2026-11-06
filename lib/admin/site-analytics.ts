@@ -848,6 +848,10 @@ export const EVENT_INFO: Record<SiteEventName, EventInfo> = {
     label: 'FAQ-Frage geöffnet',
     when: 'Eine Frage eines FAQ wird aufgeklappt; mit ihrem Platz in der Liste, nie mit ihrem Text.',
   },
+  park_links_opened: {
+    label: 'Park-Links aufgeklappt',
+    when: 'Das „Mehr“ im Kopf einer Parkseite klappt die Links des Parks auf (Website, Tickets, Wikipedia, Social, Karten); mit dem Park.',
+  },
 };
 
 /** The info of an event this build knows, `undefined` for any other. */
@@ -915,6 +919,8 @@ export const LINK_BLOCK_LABEL: Record<LinkBlock, string> = {
   parks: 'Parks im Beitrag',
   rides: 'Fahrgeschäfte im Beitrag',
   posts: 'Beiträge zum Park oder Fahrgeschäft',
+  guide_band: 'Guide-Band im Parkkopf',
+  news_band: 'News-Band im Parkkopf',
   nav: 'Vorheriger, nächster Beitrag',
   related: 'Weiterlesen',
   most_read: 'Meistgelesen',
@@ -930,8 +936,8 @@ export const LINK_BLOCK_LABEL: Record<LinkBlock, string> = {
 /** The marked places of a park page, top to bottom, in German. */
 export const SECTION_LABEL: Record<SeenSection, string> = {
   main_end: 'Ende der Fahrgeschäfte bzw. des Kalenders',
-  nearby: 'Parks in deiner Nähe',
   blog: 'Beiträge',
+  nearby: 'Parks in deiner Nähe',
   stats: 'Statistik',
   outlook: 'Jahresausblick',
   faq: 'FAQ',

@@ -1,5 +1,5 @@
 import 'server-only';
-import { listPosts } from './listing';
+import { isNewsPost, listPosts } from './listing';
 import {
   BLOG_POSTS_META,
   type ManifestParkRef,
@@ -364,6 +364,41 @@ export function getGuideForPark(
 }
 
 /**
+ * The first day a news post still counts as fresh for a title card's rail: 30 days back from the
+ * park's `todayIso`, so readers find something to read on most parks.
+ */
+export function freshNewsSince(todayIso: string): string {
+  return new Date(Date.parse(`${todayIso}T00:00:00Z`) - 30 * 86_400_000).toISOString().slice(0, 10);
+}
+
+/**
+ * The newest news post ABOUT one park (its {@link getNewsParkRef} is this park, not a passing
+ * mention) dated on or after `sinceIso`, or `null`. What the park page's title card offers as
+ * „Neu", so a closure or a new ride reaches the reader before the ride list does.
+ */
+export function getFreshNewsForPark(
+  locale: Locale,
+  parkSlug: string,
+  sinceIso: string,
+  options: BacklinkOptions = {}
+): BlogListItem | null {
+  const fresh = resolveRanked(buildIndex().parks.get(parkSlug), locale, options)
+    .map(({ post }) => post)
+    .filter(
+      (post) =>
+        isNewsPost(post) &&
+        post.frontmatter.date >= sinceIso &&
+        getNewsParkRef(post.translationKey)?.slug === parkSlug
+    )
+    .sort((a, b) =>
+      `${b.frontmatter.date} ${b.frontmatter.time ?? ''}`.localeCompare(
+        `${a.frontmatter.date} ${a.frontmatter.time ?? ''}`
+      )
+    );
+  return fresh[0] ?? null;
+}
+
+/**
  * The one park a news post is about, for its label and the park filter on `/news`: the first
  * `parkLinks` entry in the author's order (English first, then the other locales alphabetically,
  * so the answer does not depend on file order), else the best-scored park the post mentions.
@@ -420,6 +455,41 @@ export function getPostsForRide(
   options: BacklinkOptions = {}
 ): BlogListItem[] {
   return resolveMentions(buildIndex().rides.get(`${parkSlug}/${rideSlug}`), locale, options);
+}
+
+/**
+ * The post ABOUT one ride — configured for it, or tagged or filed under it, never a passing mention
+ * in the body — preferring an article to news, or `null`. What the ride page's title card shows.
+ */
+export function getPostAboutRide(
+  locale: Locale,
+  parkSlug: string,
+  rideSlug: string,
+  options: BacklinkOptions = {}
+): BlogListItem | null {
+  const about = resolveRanked(buildIndex().rides.get(`${parkSlug}/${rideSlug}`), locale, options)
+    .filter(({ score }) => score >= TAG_SCORE)
+    .map(({ post }) => post);
+  return about.find((post) => !isNewsPost(post)) ?? about[0] ?? null;
+}
+
+/**
+ * The newest news post about one ride (configured, tagged or filed under it) dated on or after
+ * `sinceIso`, or `null`: the ride page's rail, ahead of the park's own news.
+ */
+export function getFreshNewsAboutRide(
+  locale: Locale,
+  parkSlug: string,
+  rideSlug: string,
+  sinceIso: string,
+  options: BacklinkOptions = {}
+): BlogListItem | null {
+  const fresh = resolveRanked(buildIndex().rides.get(`${parkSlug}/${rideSlug}`), locale, options)
+    .filter(({ score, post }) => score >= TAG_SCORE && isNewsPost(post))
+    .map(({ post }) => post)
+    .filter((post) => post.frontmatter.date >= sinceIso)
+    .sort((a, b) => b.frontmatter.date.localeCompare(a.frontmatter.date));
+  return fresh[0] ?? null;
 }
 
 /**

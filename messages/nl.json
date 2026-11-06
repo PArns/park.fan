@@ -389,7 +389,11 @@
       "viewAll": "Alle artikelen lezen",
       "moreGuides": "Meer gidsen"
     },
+    "freshNews": {
+      "label": "Nieuw"
+    },
     "firstVisit": {
+      "label": "Eerste bezoek",
       "title": "Eerste bezoek: {park}",
       "intro": "Begin met de gids en lees daarna de begrippen die elke nieuwe bezoeker tegenkomt.",
       "termsTitle": "Begrippen voor je eerste dag",
@@ -745,6 +749,7 @@
     },
     "mazeSection": "Halloween-mazes",
     "info": {
+      "more": "Meer",
       "title": "Parkinformatie",
       "address": "Adres",
       "phone": "Telefoon",

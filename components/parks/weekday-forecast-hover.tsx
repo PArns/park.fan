@@ -176,19 +176,21 @@ export function WeekdayForecastHover({
   labels: WeekdayForecastLabels;
   children: ReactNode;
 }) {
-  const { containerRef, anchorRef, active, shown, pinned, close, handlers } = useSlotPopover({
-    slotKey: 'weekday',
-  });
+  const { containerRef, anchorRef, active, shown, close, handlers, panelHandlers } = useSlotPopover(
+    {
+      slotKey: 'weekday',
+    }
+  );
 
   return (
     <div ref={containerRef} {...handlers}>
       {children}
       <SlotPopover
         open={active !== null}
-        pinned={pinned}
         anchorRef={anchorRef}
         containerRef={containerRef}
         onClose={close}
+        panelHandlers={panelHandlers}
       >
         <WeekdayForecastPanel weekday={shown} park={park} labels={labels} />
       </SlotPopover>

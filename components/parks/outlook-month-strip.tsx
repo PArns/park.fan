@@ -62,18 +62,20 @@ export function OutlookMonthStrip({
     calendarHref ? `${calendarHref}${parkCalendarDayHash(dateOf(index))}` : null;
   const isWeekStart = (index: number) => index > 0 && (firstWeekday + index) % 7 === 1;
 
-  const { containerRef, anchorRef, active, shown, pinned, close, handlers } = useSlotPopover({
-    slotKey: 'day',
-    // A day already over has nothing to forecast.
-    isEnabled: (index) => index >= pastDays,
-    // A mouse already sees the panel on hover, so a click only navigates. Where the calendar does
-    // not serve the month there is nowhere to go, and pinning would freeze the hover instead.
-    onMouseClick: (index) => {
-      const href = dayHref(index);
-      if (href) router.push(href);
-      return true;
-    },
-  });
+  const { containerRef, anchorRef, active, shown, close, handlers, panelHandlers } = useSlotPopover(
+    {
+      slotKey: 'day',
+      // A day already over has nothing to forecast.
+      isEnabled: (index) => index >= pastDays,
+      // A mouse already sees the panel on hover, so a click only navigates. Where the calendar does
+      // not serve the month there is nowhere to go, and pinning would freeze the hover instead.
+      onMouseClick: (index) => {
+        const href = dayHref(index);
+        if (href) router.push(href);
+        return true;
+      },
+    }
+  );
   const shownHref = dayHref(shown);
 
   return (
@@ -120,10 +122,10 @@ export function OutlookMonthStrip({
       {interactive && (
         <SlotPopover
           open={active !== null}
-          pinned={pinned}
           anchorRef={anchorRef}
           containerRef={containerRef}
           onClose={close}
+          panelHandlers={panelHandlers}
         >
           <ForecastDayDetails
             date={dateOf(shown)}

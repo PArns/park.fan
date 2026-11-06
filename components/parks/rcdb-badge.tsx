@@ -1,6 +1,6 @@
 import { ExternalLink } from 'lucide-react';
 import { useTranslations } from 'next-intl';
-import { Badge } from '@/components/ui/badge';
+import { GLASS_BUTTON } from '@/components/common/glass-card';
 
 interface RcdbBadgeProps {
   /** RCDB database id — links to https://rcdb.com/{id}.htm */
@@ -9,26 +9,20 @@ interface RcdbBadgeProps {
   attractionName: string;
 }
 
-/**
- * Outbound link to the ride's Roller Coaster DataBase record, naming the ride („Taron on RCDB") so
- * the link says what is on the other end. Kept apart from `AttractionMetaBadges`, the
- * rider-restriction set, because it belongs after the ride's facts.
- */
+/** The ride's entry in the Roller Coaster DataBase, as a secondary button of the title card. */
 export function RcdbBadge({ rcdbId, attractionName }: RcdbBadgeProps) {
   const t = useTranslations('attractions.meta');
 
   return (
-    <Badge asChild variant="outline" className="gap-1">
-      <a
-        href={`https://rcdb.com/${rcdbId}.htm`}
-        target="_blank"
-        rel="noopener noreferrer"
-        title={t('rcdbTitle')}
-      >
-        {/* A span, as `Badge` would wrap the text: `asChild` hands it the link as it is. */}
-        <span>{t('rcdbLabel', { attraction: attractionName })}</span>
-        <ExternalLink className="h-3 w-3 shrink-0" aria-hidden="true" />
-      </a>
-    </Badge>
+    <a
+      href={`https://rcdb.com/${rcdbId}.htm`}
+      target="_blank"
+      rel="noopener noreferrer"
+      title={t('rcdbTitle')}
+      className={GLASS_BUTTON}
+    >
+      {t('rcdbLabel', { attraction: attractionName })}
+      <ExternalLink className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
+    </a>
   );
 }

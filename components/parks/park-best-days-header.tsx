@@ -10,14 +10,6 @@ import { getGermanArticle } from '@/lib/utils';
 import type { Locale } from '@/i18n/config';
 import { parkArgs } from '@/lib/i18n/park-phrase';
 
-/** "den Europa-Park", not "Europa-Park", where the German title needs the accusative. */
-export function localizedParkName(parkName: string, parkSlug: string, locale: string): string {
-  if (locale !== 'de') return parkName;
-  const nominative = getGermanArticle(parkName, parkSlug);
-  const accusative = nominative === 'der' ? 'den' : nominative;
-  return accusative ? `${accusative} ${parkName}` : parkName;
-}
-
 /**
  * The best-days section's frosted header. It carries no calendar data, so the loading skeleton
  * renders this same component and reserves the exact height at every breakpoint and in every
@@ -44,12 +36,14 @@ export function ParkBestDaysHeader({
   className?: string;
 }) {
   const t = useTranslations('parks.bestDays');
-  const displayName = localizedParkName(parkName, parkSlug, locale);
 
   return (
     <ChapterHeading
       icon={CalendarDays}
-      title={t('title', parkArgs(locale as Locale, displayName, articleDe))}
+      title={t(
+        'title',
+        parkArgs(locale as Locale, parkName, getGermanArticle(parkName, parkSlug, articleDe))
+      )}
       id="best-days-heading"
       frosted
       className={className}

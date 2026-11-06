@@ -215,6 +215,10 @@ export function useAttractionFilter({
           (!deferredOnlyCovered || isCovered(a))
       );
 
+    // „Shortest wait" is the reader asking for a new order, so the headliners follow it too:
+    // otherwise the whole first screen stays put and the switch looks dead.
+    if (deferredSortMode === 'wait') return sortByShortestWait(all, parkStatus);
+
     // A ride that became a headliner after the paint goes after the ranked ones.
     return all.sort(
       (a, b) =>
@@ -231,6 +235,7 @@ export function useAttractionFilter({
     deferredOnlyFastPass,
     deferredOnlySingleRider,
     deferredOnlyCovered,
+    deferredSortMode,
     parkStatus,
   ]);
 

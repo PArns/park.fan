@@ -21,6 +21,7 @@ import { cn } from '@/lib/utils';
 import {
   buildYearlyOutlook,
   outlookBadgeLevel,
+  withoutGuessedClosures,
   type OutlookHoliday,
   type OutlookMonth,
 } from '@/lib/utils/yearly-outlook';
@@ -294,7 +295,11 @@ export async function ParkYearlyOutlookSection({
     );
   }
 
-  const months = buildYearlyOutlook(forecast.predictions, todayIso, forecast.holidays);
+  const months = buildYearlyOutlook(
+    withoutGuessedClosures(forecast.predictions, coverageTo),
+    todayIso,
+    forecast.holidays
+  );
 
   // No month has a single day the backend could rate: no forecast at all, or one made entirely of
   // `unknown` (too little history). Twelve rows of „Keine Prognose" is not a chapter.

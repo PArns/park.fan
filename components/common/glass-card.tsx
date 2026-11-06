@@ -22,6 +22,13 @@ export const TILE_GLASS =
   'bg-background/75 backdrop-blur-2xl dark:bg-[oklch(0.13_0.02_241_/_0.75)]';
 
 /**
+ * A secondary button on a title card's glass: „Mehr", the ride's RCDB link and its figures. Quiet
+ * beside the filled call to action, but a button and not a chip.
+ */
+export const GLASS_BUTTON =
+  'border-border/60 bg-background/40 hover:bg-background/70 inline-flex cursor-pointer items-center gap-1.5 rounded-lg border px-3 py-2 text-sm font-medium whitespace-nowrap transition-colors';
+
+/**
  * The fill of a hairline or a slider track on {@link TILE_GLASS}. The foreground at a low opacity
  * rather than the `--border` token: in the dark theme that token is white at 10 %, so any opacity
  * modifier on it composites to nothing.

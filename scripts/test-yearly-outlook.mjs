@@ -15,6 +15,7 @@ import {
   buildYearlyOutlook,
   outlookBadgeLevel,
   OUTLOOK_MONTHS,
+  withoutGuessedClosures,
 } from '../lib/utils/yearly-outlook.ts';
 
 let passed = 0;
@@ -186,6 +187,27 @@ test('a month the park is shut for says closed, not „no forecast"', () => {
   assert.equal(outlookBadgeLevel(months[1]), 'closed');
   assert.equal(outlookBadgeLevel(months[0]), 'unknown', 'December carries no entry at all');
   assert.equal(outlookBadgeLevel(months[2]), 'unknown', 'past the horizon');
+});
+
+test('a few closed days where the forecast ends are not a closed month', () => {
+  // Phantasialand, 2026-11-06: May 2027 had six `closed` days and nothing after them.
+  const may = Array.from({ length: 6 }, (_, i) => day(`2027-05-0${i + 1}`, 'closed', 'closed'));
+  const months = buildYearlyOutlook(may, '2026-11-06');
+  assert.equal(months[6].closedDays, 6);
+  assert.equal(outlookBadgeLevel(months[6]), 'unknown');
+});
+
+test('a closure past the published schedule is a guess, not a fact', () => {
+  const predictions = [
+    day('2027-01-10', 'closed', 'closed'),
+    day('2027-04-15', 'closed', 'closed'),
+  ];
+  const kept = withoutGuessedClosures(predictions, '2027-01-24');
+  assert.deepEqual(
+    kept.map((p) => p.crowdLevel),
+    ['closed', 'unknown']
+  );
+  assert.equal(withoutGuessedClosures(predictions, null), predictions, 'no coverage, no change');
 });
 
 test('a month with rated days names its tier, closed days or not', () => {

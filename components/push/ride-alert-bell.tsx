@@ -14,6 +14,7 @@ import {
   useRideAlertParkAttractions,
   useRideAlertReopenAvailable,
 } from './ride-alert-park-context';
+import { ICON_TOGGLE_FOCUS } from '@/lib/utils/focus-ring';
 
 interface RideAlertBellProps {
   attractionId: string;
@@ -80,7 +81,7 @@ export function RideAlertBell({
           onClick={handleClick}
           className={cn(
             'relative z-10 flex h-full w-full items-center justify-center transition-all hover:scale-110',
-            'focus:ring-primary focus:ring-2 focus:ring-offset-2 focus:outline-none',
+            ICON_TOGGLE_FOCUS,
             GLASS_CIRCLE_HIT_AREA
           )}
           aria-label={

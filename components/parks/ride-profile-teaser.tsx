@@ -4,8 +4,16 @@ import { getTranslations } from 'next-intl/server';
 // and are served by a next.config rewrite, so the i18n <Link> would prefix the
 // locale twice. Plain next/link, prefetch off, matching the app-wide default.
 import Link from 'next/link';
-import { Wrench, CalendarDays, RefreshCcw, ArrowDown, RollerCoaster, Gauge } from 'lucide-react';
-import { Badge, badgeLinkProps } from '@/components/ui/badge';
+import {
+  ArrowDown,
+  CalendarDays,
+  Gauge,
+  RefreshCcw,
+  RollerCoaster,
+  Wrench,
+  type LucideIcon,
+} from 'lucide-react';
+import { GLASS_BUTTON } from '@/components/common/glass-card';
 import { Speed } from '@/components/common/unit-display';
 import { resolveRideProfile } from '@/lib/glossary/ride-profile';
 import type { Locale } from '@/i18n/config';
@@ -21,19 +29,35 @@ interface RideProfileTeaserProps {
   children?: ReactNode;
 }
 
+/** One figure of the strip: a small label over its value. */
+function Fact({
+  icon: Icon,
+  label,
+  children,
+}: {
+  icon: LucideIcon;
+  label: string;
+  children: ReactNode;
+}) {
+  return (
+    <div className="shrink-0">
+      <dt className="text-muted-foreground flex items-center gap-1 text-[11px] font-medium tracking-wider uppercase">
+        <Icon className="h-3 w-3 shrink-0" aria-hidden="true" />
+        {label}
+      </dt>
+      <dd className="mt-0.5 text-base font-semibold tabular-nums">{children}</dd>
+    </div>
+  );
+}
+
 /**
- * The ride's identifying facts, lifted into the page header. Every badge names its own fact
- * („Manufacturer: Intamin"), since an unlabelled value in a row of height limits and lands is a
- * guess. Year and inversions show from `sm` up only: on a phone every extra badge pushes the live
- * wait time down. A fragment, so the badges wrap as one group with `AttractionMetaBadges` in the
- * parent's row.
+ * The ride's identifying facts in the page header, as a strip of figures — top speed, inversions,
+ * type, manufacturer, opening year — each a small label over its value, like the live panel's
+ * figures; then the RCDB link (`children`) and the jump to the ride's figures as buttons. Below
+ * `sm` the strip scrolls sideways instead of wrapping in front of the live wait.
  */
 export async function RideProfileTeaser({ profile, locale, children }: RideProfileTeaserProps) {
   const t = await getTranslations('attraction.rideProfile');
-  // Resolved, NOT `profile.elements.length`: ids this app has no glossary term
-  // for are dropped downstream, so the raw length would promise nine figures
-  // where the rail renders seven. `types` comes from the same call so the
-  // header cannot call a ride a multi-launch while the profile below does not.
   const { elements, types } = await resolveRideProfile(profile, locale);
   const primaryType = types[0] ?? null;
 
@@ -46,60 +70,55 @@ export async function RideProfileTeaser({ profile, locale, children }: RideProfi
   if (!hasFacts && elements.length === 0) return <>{children}</>;
 
   return (
-    <>
-      {profile.inversions != null && (
-        <Badge variant="outline" className="hidden gap-1 tabular-nums sm:inline-flex">
-          <RefreshCcw className="h-3 w-3 shrink-0" aria-hidden="true" />
-          {t('inversions')}: {profile.inversions}
-        </Badge>
+    <div className="flex flex-wrap items-end justify-between gap-x-6 gap-y-4">
+      {hasFacts && (
+        <dl className="no-scrollbar flex min-w-0 gap-x-7 max-sm:-mx-6 max-sm:overflow-x-auto max-sm:px-6 sm:flex-wrap sm:gap-y-3">
+          {profile.stats?.topSpeedKmh != null && (
+            <Fact icon={Gauge} label={t('topSpeed')}>
+              <Speed kmh={profile.stats.topSpeedKmh} />
+            </Fact>
+          )}
+          {profile.inversions != null && (
+            <Fact icon={RefreshCcw} label={t('inversions')}>
+              {profile.inversions}
+            </Fact>
+          )}
+          {/* Linked into the glossary like the type chips in the profile below. Only the
+              first: the seed lists a ride's types from most to least identifying. */}
+          {primaryType && (
+            <Fact icon={RollerCoaster} label={t('typeLabel')}>
+              <Link
+                href={primaryType.href}
+                prefetch={false}
+                className="hover:text-primary underline decoration-dotted underline-offset-4 transition-colors"
+              >
+                {primaryType.name}
+              </Link>
+            </Fact>
+          )}
+          {profile.manufacturer && (
+            <Fact icon={Wrench} label={t('manufacturer')}>
+              {profile.manufacturer}
+            </Fact>
+          )}
+          {profile.openedYear != null && (
+            <Fact icon={CalendarDays} label={t('opened')}>
+              {profile.openedYear}
+            </Fact>
+          )}
+        </dl>
       )}
-      {/* Top speed keeps its place next to the inversions — both answer "what
-          does it do to you". Visible at every width, unlike the year: it is the
-          number people actually came to compare. */}
-      {profile.stats?.topSpeedKmh != null && (
-        <Badge variant="outline" className="gap-1 tabular-nums">
-          <Gauge className="h-3 w-3 shrink-0" aria-hidden="true" />
-          {t('topSpeed')}: <Speed kmh={profile.stats.topSpeedKmh} />
-        </Badge>
+      {(children || elements.length > 0) && (
+        <div className="flex flex-wrap items-center gap-2">
+          {children}
+          {elements.length > 0 && (
+            <a href="#ride-profile" className={GLASS_BUTTON}>
+              {t('figureCount', { count: elements.length })}
+              <ArrowDown className="h-3.5 w-3.5" aria-hidden="true" />
+            </a>
+          )}
+        </div>
       )}
-      {/* What kind of ride this is, linked into the glossary like the type chips
-          in the profile below. Only the first: the seed lists a ride's types
-          from most to least identifying ("Launch Coaster, Terrain Coaster,
-          steel coaster"), and the rest are one tap away. */}
-      {/* badgeLinkProps, not `<Badge asChild>` — server component, see
-          docs/development/conventions.md#never-aschild-a-client-element-from-a-server-component. */}
-      {primaryType && (
-        <Link
-          href={primaryType.href}
-          prefetch={false}
-          {...badgeLinkProps({ variant: 'outline', className: 'gap-1' })}
-        >
-          <RollerCoaster className="h-3 w-3 shrink-0" aria-hidden="true" />
-          <span>{primaryType.name}</span>
-        </Link>
-      )}
-      {profile.manufacturer && (
-        <Badge variant="outline" className="gap-1">
-          <Wrench className="h-3 w-3 shrink-0" aria-hidden="true" />
-          {t('manufacturer')}: {profile.manufacturer}
-        </Badge>
-      )}
-      {profile.openedYear != null && (
-        <Badge variant="outline" className="hidden gap-1 tabular-nums sm:inline-flex">
-          <CalendarDays className="h-3 w-3 shrink-0" aria-hidden="true" />
-          {t('opened')}: {profile.openedYear}
-        </Badge>
-      )}
-      {children}
-      {elements.length > 0 && (
-        <a
-          href="#ride-profile"
-          className="text-primary hover:bg-primary/10 ml-auto inline-flex shrink-0 items-center gap-1 rounded-md px-2 py-1 text-sm font-medium whitespace-nowrap transition-colors"
-        >
-          {t('figureCount', { count: elements.length })}
-          <ArrowDown className="h-3.5 w-3.5" aria-hidden="true" />
-        </a>
-      )}
-    </>
+    </div>
   );
 }

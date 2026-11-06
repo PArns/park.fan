@@ -376,6 +376,7 @@ export function ParkTodayPanel({
         city={city}
         parkSlug={parkSlug}
         initialData={null}
+        openingHours={initialData}
         className="space-y-0 rounded-none border-x-0 border-t-0 shadow-none [&_.rounded-xl]:rounded-none [&>div]:rounded-none"
       />
 

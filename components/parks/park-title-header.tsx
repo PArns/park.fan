@@ -7,7 +7,11 @@ import { ParkBestDaysSummary } from '@/components/parks/park-best-days-summary';
 import { ParkFavoriteButton } from '@/components/parks/park-favorite-button';
 import { ParkLocationLine } from '@/components/parks/park-location-line';
 import { ParkPlannerLink } from '@/components/parks/park-planner-link';
-import { ParkOutboundLinks } from '@/components/parks/park-quick-links';
+import { ParkLinksFlyout } from '@/components/parks/park-links-flyout';
+import { TitleCardWindowSplit } from '@/components/parks/park-header-posts';
+import { ParkMapsLink } from '@/components/parks/park-maps-link';
+import { parkMapsLinks } from '@/lib/parks/maps-links';
+import { hasQuickLinks, ParkOutboundLinks } from '@/components/parks/park-quick-links';
 import { RiddenCounter } from '@/components/parks/ridden-counter';
 import { catchNonFatal } from '@/lib/api/client';
 import { getParkStatsForPage } from '@/lib/api/stats';
@@ -51,6 +55,13 @@ interface ParkTitleHeaderProps {
   intro: string;
   /** Anything the page wants under the intro — a back link, for instance. */
   children?: React.ReactNode;
+  /**
+   * „The window": a pane cut into the card's glass, edge to edge on the right from `lg` and full
+   * width under the weekdays below it. Without one the card keeps its single column.
+   */
+  windowPane?: React.ReactNode;
+  /** A rail along the card's bottom edge, under the window — the park's fresh news. */
+  note?: React.ReactNode;
 }
 
 /**
@@ -78,6 +89,8 @@ export async function ParkTitleHeader({
   suffix,
   intro,
   children,
+  windowPane,
+  note,
 }: ParkTitleHeaderProps) {
   const tGeo = await getTranslations('geo');
   // The planner button's sentence, resolved HERE rather than inside the button: that one is a
@@ -88,6 +101,7 @@ export async function ParkTitleHeader({
   const countryLabel = translateGeoSlug(tGeo, 'countries', country, countryName);
   const cityHref = trail.find((c) => c.url === `/parks/${continent}/${country}/${city}`)?.url;
   const countryHref = trail.find((c) => c.url === `/parks/${continent}/${country}`)?.url;
+  const maps = parkMapsLinks(park.latitude, park.longitude);
   // Every park page already reads this for `hasParkStatsPage`; React `cache` and the Data Cache
   // make it the same request, so the quietest days cost no upstream call on any of them.
   const bestDays = deriveParkBestDays(
@@ -96,128 +110,141 @@ export async function ParkTitleHeader({
 
   return (
     <>
-      {/* Title row: park name + location on the left, favourite button pinned top-right. */}
-      <div className="flex items-start justify-between gap-4">
-        <div className="min-w-0 flex-1">
-          {/* Left on the window on purpose: 30 px against 36 px changes how the name looks, not
-            where anything sits, and this heading wraps to as many lines as its column needs at
-            either size. Nothing measures it. */}
-          <h1 className="mb-2 text-3xl font-bold md:text-4xl">
-            {nameWithAbbreviations(parkName, park.abbreviations)}{' '}
-            <span className="font-normal">– {suffix}</span>
-          </h1>
-          {/* 56px = 24 (the address at text-base) + 12 (gap-3) + 20 (the distance line) — two
+      <TitleCardWindowSplit pane={windowPane} hasRail={Boolean(note)}>
+        <div>
+          {/* Title row: the favourite star in front of the name, so the right edge is free. Beside
+        the heading, not inside it: a button in the `<h1>` would put its label into the heading's
+        accessible name. */}
+          <div className="min-w-0">
+            <div className="mb-2 flex items-start gap-3">
+              {park.id && (
+                // As tall as the heading's first line (its line-height at each size), so the star
+                // centres on the name however many lines the name wraps to.
+                <div className="flex h-9 shrink-0 items-center md:h-10">
+                  <ParkFavoriteButton parkId={park.id} />
+                </div>
+              )}
+              {/* Left on the window on purpose: 30 px against 36 px changes how the name looks, not
+              where anything sits, and this heading wraps to as many lines as its column needs at
+              either size. Nothing measures it. */}
+              <h1 className="min-w-0 text-3xl font-bold md:text-4xl">
+                {nameWithAbbreviations(parkName, park.abbreviations)}{' '}
+                <span className="font-normal">– {suffix}</span>
+              </h1>
+            </div>
+            {/* 56px = 24 (the address at text-base) + 12 (gap-3) + 20 (the distance line) — two
             lines is what this row settles on below `sm` once the city and country are long
             enough. Same reservation as the ride header, reasoned through there. */}
-          <div className="text-muted-foreground flex min-h-14 flex-wrap content-start items-center gap-3 sm:min-h-0">
-            {/* City and country are ONE flex item, not two with a comma between them: the row
+            <div className="text-muted-foreground flex min-h-14 flex-wrap content-start items-center gap-3 sm:min-h-0">
+              {/* City and country are ONE flex item, not two with a comma between them: the row
               is `gap-1`, so a bare `,` text node between two spans is a third item and the gap
               lands in front of it — „Brühl , Germany" on every park page, in every locale. Same
               spelling `ParkCard` uses, which never had the bug. */}
-            <address className="flex items-center gap-1 not-italic">
-              <MapPin className="h-4 w-4 shrink-0" aria-hidden="true" />
-              <span>
-                {cityHref ? (
-                  <Link href={cityHref} prefetch={false} className={ADDRESS_LINK}>
-                    {cityName}
-                  </Link>
+              <address className="flex items-center not-italic">
+                {/* Pin and city are the way to the gate, in the maps app the device has; the
+                  country stays a link into the site, and the city page is the breadcrumb's. */}
+                {maps ? (
+                  <ParkMapsLink
+                    maps={maps}
+                    parkId={park.id}
+                    label={`${cityName} · ${tParks('info.directions')}`}
+                    className="hover:text-primary inline-flex items-center gap-1 transition-colors"
+                  >
+                    <MapPin className="h-4 w-4 shrink-0" aria-hidden="true" />
+                    <span className={ADDRESS_LINK}>{cityName}</span>
+                  </ParkMapsLink>
                 ) : (
-                  cityName
+                  <>
+                    <MapPin className="mr-1 h-4 w-4 shrink-0" aria-hidden="true" />
+                    {cityHref ? (
+                      <Link href={cityHref} prefetch={false} className={ADDRESS_LINK}>
+                        {cityName}
+                      </Link>
+                    ) : (
+                      cityName
+                    )}
+                  </>
                 )}
-                ,{' '}
-                {countryHref ? (
-                  <Link href={countryHref} prefetch={false} className={ADDRESS_LINK}>
-                    {countryLabel}
-                  </Link>
-                ) : (
-                  countryLabel
-                )}
-              </span>
-            </address>
-            {/* A park of a brand with its own page links it, so the brand's overview is reached from
+                <span>
+                  ,{' '}
+                  {countryHref ? (
+                    <Link href={countryHref} prefetch={false} className={ADDRESS_LINK}>
+                      {countryLabel}
+                    </Link>
+                  ) : (
+                    countryLabel
+                  )}
+                </span>
+              </address>
+              {/* A park of a brand with its own page links it, so the brand's overview is reached from
               every park it lists. */}
-            {brand && tBrand && (
-              <Link href={`/parks/${brand.slug}`} prefetch={false} className={ADDRESS_LINK}>
-                {tBrand('parkLink')}
-              </Link>
-            )}
-            {/* How far the visitor is from this park — client-only (needs their position), so it
+              {brand && tBrand && (
+                <Link href={`/parks/${brand.slug}`} prefetch={false} className={ADDRESS_LINK}>
+                  {tBrand('parkLink')}
+                </Link>
+              )}
+              {/* How far the visitor is from this park — client-only (needs their position), so it
               just appears next to the address once known. */}
-            <ParkDistance latitude={park.latitude} longitude={park.longitude} size="md" keepGap />
-            {/* A line of its own below `lg`: beside the address and the distance a phone has
+              <ParkDistance latitude={park.latitude} longitude={park.longitude} size="md" keepGap />
+              {/* A line of its own below `lg`: beside the address and the distance a phone has
               about 250 px, and every locale's "At the park? Show rides near you" is longer. From
               `lg` up it takes what is left of the line (`basis-0`), so its own width never decides
               whether the row wraps and no state of it can move the card. */}
-            <div className="flex min-w-0 basis-full items-center gap-3 lg:flex-1 lg:basis-0">
-              <ParkLocationLine
-                park={{ id: park.id, latitude: park.latitude, longitude: park.longitude }}
-                className="flex-1"
-              />
-              {/* The rides the list offers a „ridden" switch on; `closedAttractions` are a
+              <div className="flex min-w-0 basis-full items-center gap-3 lg:flex-1 lg:basis-0">
+                <ParkLocationLine
+                  park={{ id: park.id, latitude: park.latitude, longitude: park.longitude }}
+                  className="flex-1"
+                />
+                {/* The rides the list offers a „ridden" switch on; `closedAttractions` are a
                 separate list and stay out of the total. */}
-              <RiddenCounter rideIds={(park.attractions ?? []).map((a) => a.id).filter(isUuid)} />
+                <RiddenCounter rideIds={(park.attractions ?? []).map((a) => a.id).filter(isUuid)} />
+              </div>
             </div>
           </div>
-        </div>
-        {park.id && <ParkFavoriteButton parkId={park.id} />}
-      </div>
-
-      {/* Clamped to two lines below `sm`: at five lines it was 114 px of a 664 px phone screen
+          {/* Clamped to two lines below `sm`: at five lines it was 114 px of a 664 px phone screen
         in front of "Heute im Park". The clamp is CSS only, so the whole paragraph is still in the
         served HTML — it is the crawlable text the live grid cannot give (see the park page). */}
-      <p className="text-muted-foreground mt-5 max-w-2xl text-sm leading-relaxed max-sm:line-clamp-2">
-        {intro}
-      </p>
+          <p className="text-muted-foreground mt-5 max-w-2xl text-sm leading-relaxed max-sm:line-clamp-2">
+            {intro}
+          </p>
 
-      {bestDays && (
-        <ParkBestDaysSummary
-          bestDays={bestDays}
-          locale={locale}
-          forecast={{
-            continent,
-            country,
-            city,
-            parkSlug: park.slug,
-            timezone: park.timezone ?? 'UTC',
-            coverageTo: park.scheduleCoverage?.to,
-          }}
-        />
-      )}
+          {bestDays && (
+            <ParkBestDaysSummary
+              bestDays={bestDays}
+              locale={locale}
+              forecast={{
+                continent,
+                country,
+                city,
+                parkSlug: park.slug,
+                timezone: park.timezone ?? 'UTC',
+                coverageTo: park.scheduleCoverage?.to,
+              }}
+            />
+          )}
 
-      {/* One row for everything this header offers to press: the outbound links as bands on the
-        left (`LinkBand`), the way into the planner pushed to the right edge. They used
-        to be two rows, the planner above the links, so that the one action staying on this site
-        would not read as a fourth outbound link — the right edge and the tint say that better
-        than the order did, and the header is a row shorter for it. The right edge is not invented
-        here either: the favourite star already holds it, directly above.
-
-        The quick links used to be the bottom row of a titled "Infos zum Park" section far down the
-        page, which on most parks was a heading and a frame around exactly these two buttons. They
-        render nothing at all for a park nobody has curated, and then the planner button is simply
-        the row.
-
-        `flex-wrap` with NO shrink override on any child is what makes this safe on a narrow page: flex
-        breaks the line before it shrinks anything, so a band that no longer fits moves whole onto
-        the next line, and the button onto one of its own. `ml-auto` rather than `justify-between`, because
-        `justify-between` puts a lone item on that second line at the START. */}
-      <div className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-3">
-        {/* `contents`, so the bands stay items of this row; on a phone they stand in
-          `ParkInfoCard` instead, and the planner button is the row. */}
-        <div className="contents max-sm:hidden">
-          <ParkOutboundLinks
-            info={park.info}
-            parkId={park.id}
-            latitude={park.latitude}
-            longitude={park.longitude}
-          />
+          {/* One call to action and one „Mehr": the planner, the action that stays on park.fan and
+            the way in for 63 % of its openings, as the card's filled button; the park's outbound
+            links (website, tickets, Wikipedia, socials, maps) folded into a flyout beside it. On a
+            phone those links stand in `ParkInfoCard` instead, and the planner is the row. */}
+          <div className="mt-5 flex flex-wrap items-center gap-3">
+            <ParkPlannerLink
+              label={tParks('planDayCta', { park: parkName })}
+              locale={locale}
+              className="bg-primary text-primary-foreground hover:bg-primary/90 justify-center px-4 py-2 shadow-md max-sm:w-full"
+            />
+            {hasQuickLinks(park.info) && (
+              <div className="max-sm:hidden">
+                <ParkLinksFlyout label={tParks('info.more')} parkId={park.id}>
+                  <ParkOutboundLinks info={park.info} parkId={park.id} withMaps={false} />
+                </ParkLinksFlyout>
+              </div>
+            )}
+          </div>
         </div>
-        <ParkPlannerLink
-          label={tParks('planDayCta', { park: parkName })}
-          locale={locale}
-          className="ml-auto"
-        />
-      </div>
+      </TitleCardWindowSplit>
 
+      {note}
       {children}
     </>
   );

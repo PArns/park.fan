@@ -59,6 +59,9 @@ import {
 } from '@/components/parks/park-calendar-month-summary';
 import { ParkCalendarMonthIndex } from '@/components/parks/park-calendar-month-index';
 import { ParkPageShell } from '@/components/parks/park-page-shell';
+import { ParkYearlyOutlookSection } from '@/components/parks/park-yearly-outlook-section';
+import { ParkYearlyOutlookSkeleton } from '@/components/parks/park-yearly-outlook-skeleton';
+import { parkDayOf } from '@/lib/utils/park-day';
 import { ParkLiveLink } from '@/components/parks/park-live-link';
 import { ParkTitleHeader } from '@/components/parks/park-title-header';
 import { ParkHeaderCard } from '@/components/parks/park-header-card';
@@ -291,6 +294,8 @@ export default async function ParkCalendarPage({ params }: ParkCalendarPageProps
   const cityName = park.city || city.charAt(0).toUpperCase() + city.slice(1).replace(/-/g, ' ');
   const countryName = translateCountry(tGeo, country, locale, park.country ?? undefined);
   const parkPath = `/parks/${continent}/${country}/${city}/${parkSlug}`;
+  // The park's day for the outlook. Safe to read the server clock: this route is `force-dynamic`.
+  const todayIso = parkDayOf(new Date(), park.timezone);
 
   const tCommon = await getTranslations('common');
   const tNav = await getTranslations('navigation');
@@ -366,6 +371,22 @@ export default async function ParkCalendarPage({ params }: ParkCalendarPageProps
         currentPage={monthName ?? t('breadcrumb')}
         pagePath={parkCalendarPath(locale, continent, country, city, parkSlug, month ?? undefined)}
         statsAfterChildren
+        /* The twelve months past the grid's window, the next grain of the question this page
+           answers. Streamed: a cold forecast read falls through to an ML rebuild, and the
+           placeholder is the same chapter over an empty frame, so it reserves the real height. */
+        outlookSection={
+          <Suspense fallback={<ParkYearlyOutlookSkeleton todayIso={todayIso} locale={locale} />}>
+            <ParkYearlyOutlookSection
+              continent={continent}
+              country={country}
+              city={city}
+              parkSlug={parkSlug}
+              coverageTo={coverageTo}
+              todayIso={todayIso}
+              locale={locale}
+            />
+          </Suspense>
+        }
         head={
           <>
             {/* A `Dataset` for the table of days (`summaryMonth`, the month the grid opens on) and

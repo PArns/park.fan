@@ -161,6 +161,10 @@ Short „minutes" and „hours" labels per locale. A static map, because `Intl.N
 - `FAVORITES_COOKIE_NAME` _const_: Name of the cookie that holds the visitor's favorites.
 - Types: `FavoriteType`, `FavoritesData`, `FavoriteCounts`
 
+### [`focus-ring.ts`](../../lib/utils/focus-ring.ts)
+
+- `ICON_TOGGLE_FOCUS` _const_: The focus ring of the small icon toggles on cards and headers (favourite star, alert bells, the „ridden" switch). `focus-visible`, so a keyboard shows it and a mouse or finger press does not leave a box around the icon.
+
 ### [`geo-svg.ts`](../../lib/utils/geo-svg.ts)
 
 - `getRegionGeoSVG` _function_: The viewBox and paths for a set of countries, matched by ISO code, name or class, for the OG image's map.
@@ -533,6 +537,12 @@ Converts backend API URLs to frontend routes. Always go through these helpers wi
 - `shortTermWaitTrend` _function_: The short-term movement of one queue, as a direction and the number that produced it, from the same arithmetic so arrow and figure cannot disagree.
 - `WALK_ON_WAIT_MINUTES` _const_: Disney's walk-on: 13 minutes, the one posted wait that stays off the five-minute grid. It is the park's signal for „walk straight on", and rounding it to 15 makes it an ordinary short queue.
 
+### [`warnings-in-opening-hours.ts`](../../lib/utils/warnings-in-opening-hours.ts)
+
+One day's hours as the park payload carries them (`schedule[]`, `nextSchedule`).
+
+- `warningsInOpeningHours` _function_: The warnings that touch the park's opening hours. A frost warning from 22:00 to 09:00 matters to nobody standing in the queue at 09:00, and on the park page it pushed the day's numbers down all night.
+
 ### [`weather-chart-axis.ts`](../../lib/utils/weather-chart-axis.ts)
 
 - `hoursOf` _function_: Park-local hour of each hourly point, parsed from its naive "YYYY-MM-DDTHH:MM".
@@ -585,6 +595,7 @@ Converts backend API URLs to frontend routes. Always go through these helpers wi
 ### [`yearly-outlook.ts`](../../lib/utils/yearly-outlook.ts)
 
 - `buildYearlyOutlook` _function_: Build the twelve-month frame and drop the forecast into it.
-- `outlookBadgeLevel` _function_: The level a month's badge names: its dominant tier, else `closed` when every day the forecast covers is a closed day, else `unknown` („no forecast").
+- `outlookBadgeLevel` _function_: The level a month's badge names: its dominant tier, else `closed` when every day of the month still ahead is a closed day, else `unknown` („no forecast"). Six closed days and twenty-five the forecast does not reach are not a closed month.
+- `withoutGuessedClosures` _function_: The forecast with every `closed` past the park's published schedule turned into `unknown`.
 - `OUTLOOK_MONTHS` _const_: How many months the chapter draws, starting with the month the park is in today.
 - Types: `OutlookDay`, `OutlookHoliday`, `OutlookMonth`

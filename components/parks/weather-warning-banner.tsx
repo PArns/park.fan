@@ -21,7 +21,8 @@ import { cn } from '@/lib/utils';
 import { getDateTimeFormat } from '@/lib/utils/intl-format';
 import { useWeatherNowcast } from '@/lib/hooks/use-weather-nowcast';
 import { useMounted } from '@/lib/hooks/use-mounted';
-import type { WeatherNowcast, WeatherWarning } from '@/lib/api/types';
+import { warningsInOpeningHours } from '@/lib/utils/warnings-in-opening-hours';
+import type { ParkWithAttractions, WeatherNowcast, WeatherWarning } from '@/lib/api/types';
 
 interface WeatherWarningBannerProps {
   /** Live mode (park page): poll warnings via the shared nowcast query. */
@@ -34,6 +35,9 @@ interface WeatherWarningBannerProps {
   enabled?: boolean;
   /** Static mode: render these warnings instead of querying (showcase/SSR). */
   warnings?: WeatherWarning[];
+  /** The park's hours. Given, a warning that touches none of them is left out; see
+   *  `warningsInOpeningHours`. */
+  openingHours?: Pick<ParkWithAttractions, 'schedule' | 'nextSchedule'>;
   /** IANA timezone for formatting validity times (defaults to the viewer's). */
   timezone?: string;
   className?: string;
@@ -145,6 +149,7 @@ export function WeatherWarningBanner({
   initialData = null,
   enabled,
   warnings: warningsProp,
+  openingHours,
   timezone,
   className,
 }: WeatherWarningBannerProps) {
@@ -167,7 +172,8 @@ export function WeatherWarningBanner({
     enabled: enabled ?? warningsProp === undefined,
   });
 
-  const warnings = warningsProp ?? data?.warnings ?? initialData?.warnings ?? [];
+  const all = warningsProp ?? data?.warnings ?? initialData?.warnings ?? [];
+  const warnings = openingHours ? warningsInOpeningHours(all, openingHours) : all;
   if (!mounted || warnings.length === 0) return null;
 
   const tz = timezone ?? data?.park.timezone;
