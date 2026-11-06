@@ -32,6 +32,7 @@ import { PARKY_FALL_MS, useScrollFling } from '@/lib/assistant/use-scroll-fling'
 import type { ParkyFling } from '@/lib/assistant/fling-tracker';
 import { PARKY_CORNER_ATTR, parkyDockHop, parkyJumpMs } from '@/lib/assistant/parky-jump';
 import { parkyDock, parkyInDock } from '@/lib/assistant/parky-dock';
+import { useParkyShowLook, useParkyWeatherLook } from '@/lib/assistant/parky/use-parky-dress';
 
 // Must stay in step with this file's entry in `LAZY_MESSAGE_BOUNDARIES`
 // (`lib/i18n/route-namespaces.mjs`).
@@ -267,6 +268,9 @@ export function AssistantLauncher() {
   const [arrived, setArrived] = useState(false);
   const [openedBy, setOpenedBy] = useState<AssistantOpenSource>('button');
   const [cue, setCue] = useState<ParkyCue | null>(null);
+  // Here, not in the teaser: the teaser leaves while the chat window is open, the look stays.
+  useParkyWeatherLook();
+  useParkyShowLook();
 
   useEffect(() => {
     if (!open || Panel) return;
