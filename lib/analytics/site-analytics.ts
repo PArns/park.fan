@@ -333,7 +333,7 @@ interface HitBase {
 }
 
 type CollectHit =
-  | (HitBase & { t: 'pageview'; referrer?: string })
+  | (HitBase & { t: 'pageview'; referrer?: string; source?: string })
   | (HitBase & {
       t: 'event';
       name: string;
@@ -355,7 +355,7 @@ const FIRST_PAGEVIEW_WAIT_MS = 3000;
 const UUID_PATTERN = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/;
 const REFERRER_PATTERN = /^[a-z0-9][a-z0-9.-]{0,99}$/;
 /**
- * The `utm_source` values that stand in for a missing referrer: the hosts of the AI assistants the
+ * The `utm_source` values sent as `source` when no referrer came: the hosts of the AI assistants the
  * API's `REFERRER_RULES` (`src/site-analytics/referrer.util.ts`) put in the `ai` channel. ChatGPT
  * tags its links `utm_source=chatgpt.com` and often sends no referrer, so those visits counted as
  * direct. A value outside this list, and every other part of the query string, is never read.
@@ -531,14 +531,17 @@ function currentBase(): HitBase | null {
 }
 
 /**
- * The host of the page that linked here, when it is another site, else the AI assistant the
- * link's `utm_source` names. Read once per load, since later pageviews of the tab are internal.
+ * The host of the page that linked here as `referrer`, when it is another site, else the AI
+ * assistant the link's `utm_source` names as `source`. Read once per load, since later pageviews
+ * of the tab are internal.
  */
-function pageLoadOrigin(): { referrer?: string } {
+function pageLoadOrigin(): { referrer?: string; source?: string } {
   if (referrerSent) return {};
   referrerSent = true;
-  const host = externalReferrerHost() || aiSourceHost();
-  return host && REFERRER_PATTERN.test(host) ? { referrer: host } : {};
+  const host = externalReferrerHost();
+  if (host) return REFERRER_PATTERN.test(host) ? { referrer: host } : {};
+  const source = aiSourceHost();
+  return source ? { source } : {};
 }
 
 /** The host in `document.referrer` without `www.`, or '' for none, this site or no URL at all. */
