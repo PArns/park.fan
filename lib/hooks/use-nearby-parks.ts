@@ -130,9 +130,9 @@ function useNearbyParks(options: UseNearbyParksOptions | number = {}) {
     // moment later. The new fix's key fetches by itself; the effect below covers a fix that does
     // not move. A simulation places the visitor on the server, so its coordinates cannot be stale.
     refetchOnWindowFocus: !hasCoords || !!simMode,
-    // Poll only with real coordinates, to notice somebody walking into a park. A GeoIP answer is
-    // city-level, cannot resolve the in-park radius and does not move while the tab is open.
-    refetchInterval: hasCoords ? 5 * 60 * 1000 : false,
+    // Poll with or without coordinates: the answer carries live waits (`shortWaits`, the parks'
+    // averages), which go stale on a page left open even where the position does not move.
+    refetchInterval: CACHE_MAX_AGE_MS,
   });
 
   // Coming back to the tab with a position: once the provider's new fix has had its chance to
