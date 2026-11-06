@@ -7,7 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Der Movie Park Germany in Bottrop startet am 27. November Hollywood Christmas, zum ersten Mal mit einer Eisrutsche, auf der du auf Reifen hinunterrodelst. Die Parade zum 30. Parkjubiläum fährt dann in einer Winterfassung. Das Fest läuft an 21 Tagen bis zum 5. Januar.
+  Zu Hollywood Christmas ab 27. November rodelst du im Movie Park Germany in Bottrop zum ersten Mal auf Reifen eine Eisrutsche hinunter. Die Parade zum 30. Parkjubiläum fährt dann in einer Winterfassung. Das Fest läuft an 21 Tagen bis zum 5. Januar.
 tags:
   - news
   - movie-park
@@ -41,11 +41,11 @@ seo:
     - Movie Park Wartezeiten
 ---
 
-Der [Movie Park Germany](ref:movie-park-germany) in Bottrop-Kirchhellen startet am Freitag, 27. November, sein Winterfest Movie Park's Hollywood Christmas, zum ersten Mal mit einer Eisrutsche, auf der du auf Reifen hinunterrodelst, und mit einer Winterfassung der Parade zum 30. Parkjubiläum. Das Fest läuft an 21 Tagen bis zum 5. Januar 2027. Vorher endet am 8. November das Halloween Horror Festival, vom 9. bis 26. November ist der Park geschlossen, zwischen der letzten Kettensäge und dem ersten Lichterbaum liegen also 18 Tage.
+Der [Movie Park Germany](ref:movie-park-germany) in Bottrop-Kirchhellen startet am Freitag, 27. November, sein Winterfest Movie Park's Hollywood Christmas. Neu sind eine Eisrutsche, die du auf Reifen hinunterrodelst, und eine Winterfassung der Parade zum 30. Parkjubiläum. Das Fest läuft an 21 Tagen bis zum 5. Januar 2027. Vorher endet am 8. November das Halloween Horror Festival. Zwischen der letzten Kettensäge und dem ersten Lichterbaum hat der Park dann 18 Tage zu, vom 9. bis 26. November.
 
 ## Neu in diesem Winter
 
-Die Eisrutsche kommt in Zusammenarbeit mit Ice-World in den Park, hinunter geht es sitzend auf einem Reifen. Als Movie Park's Parade of Celebration – Winter Edition zieht die Jubiläumsparade mit geschmückten Wagen durch den Park und hält für Showstopps, an denen getanzt und gesungen wird.
+Die Eisrutsche kommt in Zusammenarbeit mit Ice-World in den Park. Als Movie Park's Parade of Celebration – Winter Edition zieht die Jubiläumsparade mit geschmückten Wagen durch den Park und hält für Showstopps, an denen getanzt und gesungen wird.
 
 Die Christmas Tree Celebration, mit der jeder Eventabend am Christmas Boulevard beginnt, hat ein neues Drehbuch. Neben den Elfen Holly und Jolly, den Nussknackern und Santa Claus spielt darin die mürrische Filmklappe S.A.D. mit, die verhindern will, dass der große Weihnachtsbaum angeht. Gegen mehr als eine Million Lichter hat eine einzelne Filmklappe schlechte Karten, und am Ende der Show leuchten Baum und Straßen.
 
@@ -76,17 +76,17 @@ Online kostet die Tageskarte mit festem Datum an allen 21 Tagen 24,90 €, ab 12
 
 Kinder unter vier brauchen kein Ticket. Wer jünger als 14 ist, darf nur mit einem Erwachsenen in den Park.
 
-Die Saisonpässe 2027 gelten schon jetzt, und Platin, Gold und Silber schließen Hollywood Christmas ausdrücklich ein. Für kurze Zeit kosten sie 30 Prozent weniger, also 125,90 €, 109,10 € und 95,10 €, bei Platin und Gold ist der Parkplatz dabei. Auch mit Pass meldest du jeden Besuch vorher an, das Kontingent pro Tag ist begrenzt, und mehr als eine Reservierung auf einmal geht nicht. Der Bronze-Pass ist im Dezember und Januar gesperrt, nach der Saisonpass-Seite auch vom 28. bis 30. November.
+Die Saisonpässe 2027 gelten schon jetzt, und Platin, Gold und Silber schließen Hollywood Christmas ein. Für kurze Zeit kosten sie 30 Prozent weniger, also 125,90 €, 109,10 € und 95,10 €, bei Platin und Gold ist der Parkplatz dabei. Auch mit Pass meldest du jeden Besuch vorher an. Das Kontingent pro Tag ist begrenzt, und mehr als eine Reservierung auf einmal geht nicht. Der Bronze-Pass ist vom 28. bis 30. November sowie im Dezember und Januar gesperrt.
 
-Extra zahlst du für die Santa Experience: 5 € für Erwachsene, 3 € für Kinder von 4 bis 11 Jahren. Sie hat von 13 bis 16:30 Uhr geöffnet, freitags erst ab 15 Uhr. Jeder Sitzplatz im Zug braucht ein Ticket, Kinder unter vier fahren auf dem Schoß ohne, und Kinder unter acht kommen nur mit einem Erwachsenen hinein. Auch die Eisrutsche kostet einen Aufpreis, den Betrag hat der Park aber noch nicht bekannt gegeben.
+Extra zahlst du für die Santa Experience: 5 € für Erwachsene, 3 € für Kinder von 4 bis 11 Jahren. Sie hat von 13 bis 16:30 Uhr geöffnet, freitags erst ab 15 Uhr. Jeder Sitzplatz im Zug braucht ein Ticket, Kinder unter vier fahren auf dem Schoß ohne. Kinder unter acht kommen nur mit einem Erwachsenen hinein. Auch die Eisrutsche kostet einen Aufpreis, den Betrag hat der Park aber noch nicht bekannt gegeben.
 
 ## Eisbahn, Shows und Lichter
 
-Mehr als eine Million Lichter hängen in diesem Winter in den vier Bereichen Christmas Boulevard USA, Nickelodeon HoHoHoliday Land, Rockefeller Plaza und Wild West Christmas, im Vorjahr waren es über 800.000. Wieder da sind die überdachte Eisfläche mit 360 Quadratmetern, das Eisstockschießen, eine Mapping Show und amerikanisches Essen.
+Die Lichter hängen in den vier Bereichen Christmas Boulevard USA, Nickelodeon HoHoHoliday Land, Rockefeller Plaza und Wild West Christmas, im Vorjahr waren es über 800.000. Wieder da sind die überdachte Eisfläche mit 360 Quadratmetern, das Eisstockschießen, eine Mapping Show und amerikanisches Essen.
 
 In Studio 7 tritt Christian Farla bis zu dreimal am Tag in The Great Christmas Magic Show auf, in diesem Jahr bittet ihn Santa Claus um Hilfe, damit bis Weihnachten alle Wünsche erfüllt sind. Im Western Saloon singen und tanzen Santa und seine Elfen zum dritten Mal bei Meet Santa & Friends, mit einer neuen Geschichte. Für beide Shows brauchst du kein Extra-Ticket. An einigen Tagen singt im Saloon außerdem der Gospelchor Leslie B. Harmonies.
 
-Das Roxy 4-D Kino zeigt wieder Scrooge 4D: A Christmas Carol, und im Nickelodeon HoHoHoliday Land läuft die Nickelodeon Dance Party Holiday Edition. Den Abend beschließt jedes Mal Hollywood Christmas Lights am Christmas Boulevard, mit Feuer, Laser und Licht. Die Showzeiten stehen tagesaktuell in der Movie Park App, auf der Website hat der Park sie noch nicht veröffentlicht.
+Das Roxy 4-D Kino zeigt wieder Scrooge 4D: A Christmas Carol, und im Nickelodeon HoHoHoliday Land läuft die Nickelodeon Dance Party Holiday Edition. Den Abend beschließt jedes Mal Hollywood Christmas Lights am Christmas Boulevard, mit Feuer, Laser und Licht.
 
 ## Der Coca-Cola Truck am 29. November
 
@@ -94,11 +94,11 @@ Am Sonntag, 29. November, steht der Coca-Cola Xmas Truck im Park, und am Truck g
 
 ## Bahnen im Winter
 
-Es fahren Familienfahrgeschäfte und einige Achterbahnen, je nachdem, was das Wetter zulässt. Die Wasserbahnen bleiben zu, was im Dezember kaum jemand als Verlust verbuchen wird, und auch sonst steht nicht das ganze Angebot des Sommers bereit. In den Weihnachtsbereichen stehen [Van Helsing's Factory](ref:movie-park-germany/van-helsings-factory) und [Star Trek: Operation Enterprise](ref:movie-park-germany/star-trek-operation-enterprise) an der Rockefeller Plaza und [The Bandit](ref:movie-park-germany/the-bandit) im Wild West Christmas. Die [Movie Park Studio Tour](ref:movie-park-germany/movie-park-studio-tour) gehört im Winter zum Nickelodeon HoHoHoliday Land und läuft als Christmas Edition. Jede Bahn mit ihrer Geschichte und den gemessenen Wartezeiten beschreibt unser [Movie-Park-Guide](/blog/movie-park-germany-wartezeiten-tipps).
+Es fahren Familienfahrgeschäfte und einige Achterbahnen, je nachdem, was das Wetter zulässt. Die Wasserbahnen bleiben zu, was im Dezember kaum jemand als Verlust verbuchen wird, und auch sonst steht nicht das ganze Angebot des Sommers bereit. In den Weihnachtsbereichen stehen [Van Helsing's Factory](ref:movie-park-germany/van-helsings-factory) und [Star Trek: Operation Enterprise](ref:movie-park-germany/star-trek-operation-enterprise) an der Rockefeller Plaza und [The Bandit](ref:movie-park-germany/the-bandit) im Wild West Christmas. Die [Movie Park Studio Tour](ref:movie-park-germany/movie-park-studio-tour) gehört im Winter zum Nickelodeon HoHoHoliday Land und läuft als Christmas Edition. Unser [Movie-Park-Guide](/blog/movie-park-germany-wartezeiten-tipps) beschreibt jede Bahn mit ihrer Geschichte und den gemessenen Wartezeiten.
 
 ## Parken und Bezahlen
 
-Parken kostet 9 € am Tag, online oder vor Ort. Der VIP-Parkplatz D kostet 19,90 € und ist nur online zu buchen, Motorräder parken umsonst. Mit dem Auto nimmst du von der A31 die Ausfahrt 39 Bottrop-Feldhausen. Mit der Bahn fährst du bis zum Haltepunkt Feldhausen, mit dem RE14 ab Essen oder der RB43 ab Dortmund, und läufst von dort etwa 400 Meter. Die Busse X42 und 267 halten am Haupteingang.
+Parken kostet 9 € am Tag, online oder vor Ort. Der VIP-Parkplatz D kostet 19,90 € und ist nur online zu buchen, Motorräder parken umsonst. Mit dem Auto nimmst du von der A31 die Ausfahrt 39 Bottrop-Feldhausen. Mit dem RE14 ab Essen oder der RB43 ab Dortmund fährst du bis zum Haltepunkt Feldhausen. Von dort sind es etwa 400 Meter zu Fuß. Die Busse X42 und 267 halten am Haupteingang.
 
 An einigen Glühweinhütten und in den Restaurants zahlst du nur mit Karte.
 
