@@ -41,17 +41,17 @@ seo:
     - Movie Park temps d’attente
 ---
 
-Le vendredi 27 novembre, le [Movie Park Germany](ref:movie-park-germany) de Bottrop-Kirchhellen lance sa fête d’hiver, Movie Park's Hollywood Christmas. Deux nouveautés cette année : une glissade sur glace qu’on descend assis sur une bouée, et une version hivernale de la parade des 30 ans du parc. La fête compte 21 jours, jusqu’au 5 janvier 2027. Le Halloween Horror Festival se termine avant, le 8 novembre, puis le parc ferme 18 jours, du 9 au 26 novembre, le temps de passer des tronçonneuses aux guirlandes.
+Le vendredi 27 novembre, le [Movie Park Germany](ref:movie-park-germany) de Bottrop-Kirchhellen lance sa fête d’hiver, Movie Park’s Hollywood Christmas. Cette année, le parc ajoute une glissade sur glace qu’on descend assis sur une bouée et une version hivernale de la parade des 30 ans du parc. La fête compte 21 jours, jusqu’au 5 janvier 2027. Avant cela, le Halloween Horror Festival se termine le 8 novembre. Entre la dernière tronçonneuse et le premier sapin illuminé, le parc ferme ensuite 18 jours, du 9 au 26 novembre.
 
 ## Les nouveautés de l’hiver
 
-La glissade sur glace arrive au parc en partenariat avec Ice-World. La parade du jubilé devient Movie Park's Parade of Celebration – Winter Edition : ses chars décorés traversent le parc et s’arrêtent pour des show stops où l’on danse et où l’on chante.
+La glissade sur glace arrive au parc en partenariat avec Ice-World. La parade du jubilé devient Movie Park’s Parade of Celebration – Winter Edition : ses chars décorés traversent le parc et s’arrêtent pour des show stops où l’on danse et où l’on chante.
 
 La Christmas Tree Celebration, qui ouvre chaque soirée sur le Christmas Boulevard, a un nouveau scénario. À côté des elfes Holly et Jolly, des casse-noisettes et du père Noël, on y croise S.A.D., un clap de cinéma grincheux qui veut empêcher le grand sapin de s’allumer. Face à plus d’un million de lumières, un clap seul ne pèse pas lourd, et à la fin du spectacle le sapin et les rues s’illuminent.
 
-Au Van Helsing's Club, Night of Wonder remplace Christmas Sparkle, le spectacle de l’an dernier. Avec du chant en direct, de la danse et des acrobaties, il raconte l’histoire d’une fillette qui rencontre le père Noël juste avant les fêtes.
+Au Van Helsing’s Club, Night of Wonder remplace Christmas Sparkle, le spectacle de l’an dernier. Avec du chant en direct, de la danse et des acrobaties, il raconte l’histoire d’une fillette qui rencontre le père Noël juste avant les fêtes.
 
-La Santa Experience a quitté le bâtiment de Time Riders pour l’Eventcenter, à l’entrée. Le Santa's Enchanted Express y emmène les enfants au pôle Nord en trois minutes, et le père Noël les y attend avec ses elfes. Dans le même bâtiment, les enfants décorent des biscuits à la Kids Cookie & Christmas Factory, et des ateliers de bricolage complètent le programme.
+La Santa Experience a quitté le bâtiment de Time Riders pour l’Eventcenter, à l’entrée. Le Santa’s Enchanted Express y emmène les enfants au pôle Nord en trois minutes, et le père Noël les y attend avec ses elfes. Dans le même bâtiment, les enfants décorent des biscuits à la Kids Cookie & Christmas Factory, et des ateliers de bricolage complètent le programme.
 
 ## Jours de fête et horaires
 
@@ -64,7 +64,7 @@ Le vendredi, le parc ouvre à 14 h, les autres jours de fête à 12 h. Il ferm
 - du 27 au 31 décembre, Saint-Sylvestre comprise
 - du 2 au 5 janvier 2027
 
-Pendant l’Avent, le parc reste fermé du lundi au jeudi, ainsi que du 21 au 26 décembre et le jour de l’An. L’hiver dernier, la fête durait encore 23 jours.
+Pendant l’Avent, le parc reste fermé du lundi au jeudi, ainsi que du 21 au 26 décembre et le jour de l’An. Les parcs ouverts ces jours-là figurent dans notre [guide de l’hiver](/blog/parcs-attractions-hiver-2026). L’hiver dernier, la fête durait encore 23 jours.
 
 ```best-days-widget slug=movie-park-germany
 
@@ -86,7 +86,7 @@ Les lumières habillent les quatre zones Christmas Boulevard USA, Nickelodeon Ho
 
 Au Studio 7, Christian Farla présente jusqu’à trois fois par jour The Great Christmas Magic Show. Cette année, le père Noël lui demande un coup de main pour que tous les vœux soient exaucés à temps. Au Western Saloon, le père Noël et ses elfes chantent et dansent pour la troisième fois dans Meet Santa & Friends, avec une nouvelle histoire. Aucun des deux spectacles ne demande de billet en plus. Certains jours, la chorale gospel Leslie B. Harmonies chante aussi au saloon.
 
-Le Roxy 4-D Kino projette de nouveau Scrooge 4D: A Christmas Carol, et la Nickelodeon Dance Party Holiday Edition anime le Nickelodeon HoHoHoliday Land. Chaque soirée se termine sur le Christmas Boulevard avec Hollywood Christmas Lights, entre flammes, lasers et lumière.
+Le Roxy 4-D Kino projette de nouveau Scrooge 4D: A Christmas Carol, et la Nickelodeon Dance Party Holiday Edition anime le Nickelodeon HoHoHoliday Land. Chaque soirée se termine sur le Christmas Boulevard avec Hollywood Christmas Lights, un spectacle de flammes et de lasers.
 
 ## Le Coca-Cola Truck le 29 novembre
 
@@ -94,22 +94,22 @@ Le dimanche 29 novembre, le Coca-Cola Xmas Truck s’installe dans le parc, et o
 
 ## Les attractions en hiver
 
-Les attractions familiales et quelques montagnes russes tournent, selon ce que permet la météo. Les attractions aquatiques restent fermées, ce que peu de monde regrettera en décembre, et le reste de l’offre d’été n’est pas non plus disponible en entier. Dans les zones de Noël, [Van Helsing's Factory](ref:movie-park-germany/van-helsings-factory) et [Star Trek: Operation Enterprise](ref:movie-park-germany/star-trek-operation-enterprise) se trouvent à la Rockefeller Plaza, et [The Bandit](ref:movie-park-germany/the-bandit) au Wild West Christmas. En hiver, la [Movie Park Studio Tour](ref:movie-park-germany/movie-park-studio-tour) fait partie du Nickelodeon HoHoHoliday Land et tourne en Christmas Edition. Notre [guide du Movie Park](/blog/movie-park-germany-temps-d-attente-conseils) décrit chaque attraction, avec son histoire et les temps d’attente mesurés.
+En plus des attractions familiales, quelques montagnes russes tournent aussi, et c’est la météo du jour qui décide lesquelles. Les attractions aquatiques restent fermées, ce que peu de monde regrettera en décembre. [Van Helsing’s Factory](ref:movie-park-germany/van-helsings-factory) et [Star Trek: Operation Enterprise](ref:movie-park-germany/star-trek-operation-enterprise) se trouvent à la Rockefeller Plaza, [The Bandit](ref:movie-park-germany/the-bandit) au Wild West Christmas. En hiver, la [Movie Park Studio Tour](ref:movie-park-germany/movie-park-studio-tour) fait partie du Nickelodeon HoHoHoliday Land et tourne en Christmas Edition. Notre [guide du Movie Park](/blog/movie-park-germany-temps-d-attente-conseils) décrit chaque attraction, avec son histoire et les temps d’attente mesurés.
 
 ## Parking et paiement
 
-Le parking coûte 9 € par jour, en ligne ou sur place. Le parking VIP D coûte 19,90 € et se réserve uniquement en ligne, et les motos se garent gratuitement. En voiture, prenez sur l’A31 la sortie 39 Bottrop-Feldhausen. En train, le RE14 depuis Essen ou la RB43 depuis Dortmund vous dépose au Haltepunkt Feldhausen, à environ 400 mètres à pied du parc. Les bus X42 et 267 s’arrêtent à l’entrée principale.
+Le parking coûte 9 € par jour, en ligne ou sur place. Le parking VIP D coûte 19,90 € et se réserve uniquement en ligne, et les motos se garent gratuitement. En voiture, prenez la sortie 39 Bottrop-Feldhausen de l’A31. En train, le RE14 depuis Essen ou la RB43 depuis Dortmund vous dépose au Haltepunkt Feldhausen, à environ 400 mètres à pied du parc. Les bus X42 et 267 s’arrêtent à l’entrée principale.
 
 À certains chalets de vin chaud et dans les restaurants, on ne paie que par carte.
 
 ## Le quatrième Hollywood Christmas
 
-La fête d’hiver existe depuis l’hiver 2023/24, et pour le directeur général Thorsten Backhaus, 2026 en est la quatrième édition. Selon le parc, la deuxième année a attiré 20 % de visiteurs de plus que la première. Si vous voulez voir d’autres parcs cet hiver, ils sont dans notre [guide de l’hiver](/blog/parcs-attractions-hiver-2026).
+La fête d’hiver existe depuis l’hiver 2023/24, et celle-ci est la quatrième. Selon le parc, la deuxième année a attiré 20 % de visiteurs de plus que la première.
 
 [Movie Park Germany](ref:movie-park-germany?full)
 
 Sources :
-[Communiqué sur Movie Park's Hollywood Christmas 2026](https://www.movieparkgermany.de/presse/pm-05-11-2026-mphc2026),
+[Communiqué sur Movie Park’s Hollywood Christmas 2026](https://www.movieparkgermany.de/presse/pm-05-11-2026-mphc2026),
 [Communiqué en PDF](https://www.movieparkgermany.de/content/dam/mpg/presse/05-11-2026/PM%20Movie%20Park%27s%20Hollywood%20Christmas%202026.pdf),
 [Hollywood Christmas](https://www.movieparkgermany.de/christmas),
 [Zones thématiques](https://www.movieparkgermany.de/christmas/themenbereiche),
