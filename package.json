@@ -64,6 +64,7 @@
     "test:admin-site-analytics": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-admin-site-analytics.mjs",
     "test:admin-traffic-range": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-admin-traffic-range.mjs",
     "test:admin-nav": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-admin-nav.mjs",
+    "test:admin-works-periods": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-admin-works-periods.mjs",
     "test:admin-health": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-admin-health.mjs",
     "test:site-analytics": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-site-analytics.mjs",
     "test:park-day-over": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-park-day-over.mjs",
