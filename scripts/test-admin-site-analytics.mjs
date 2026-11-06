@@ -825,7 +825,7 @@ test('a way into the planner reads in German, and so does a day begun with it sh
 });
 
 test('the ways through the site read in German, a value this build does not know as sent', () => {
-  assert.equal(Object.keys(LINK_BLOCK_LABEL).length, 15);
+  assert.equal(Object.keys(LINK_BLOCK_LABEL).length, 17);
   assert.equal(Object.keys(SECTION_LABEL).length, 7);
   assert.equal(Object.keys(NAV_MENU_LABEL).length, 6);
   assert.equal(propValueLabel('block', 'parks'), 'Parks im Beitrag');
@@ -875,7 +875,7 @@ test('reach divides each place by its page type views, every place listed, at mo
   assert.deepEqual(reach.views, [200, 40]);
   assert.deepEqual(
     reach.rows.map((row) => row.section),
-    ['main_end', 'nearby', 'blog', 'stats', 'outlook', 'faq', 'end']
+    ['main_end', 'blog', 'nearby', 'stats', 'outlook', 'faq', 'end']
   );
   assert.deepEqual(reach.rows[0].cells, [
     { reached: 60, share: 0.3 },

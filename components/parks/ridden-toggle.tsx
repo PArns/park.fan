@@ -11,6 +11,7 @@ import {
   subscribeToRidden,
   toggleRidden,
 } from '@/lib/utils/ridden-rides';
+import { ICON_TOGGLE_FOCUS } from '@/lib/utils/focus-ring';
 
 interface RiddenToggleProps {
   /** The ride's `id`; the mark is kept per id. */
@@ -45,7 +46,7 @@ export function RiddenToggle({ id }: RiddenToggleProps) {
       onClick={handleClick}
       className={cn(
         'relative z-10 flex h-full w-full items-center justify-center transition-all hover:scale-110',
-        'focus:ring-primary focus:ring-2 focus:ring-offset-2 focus:outline-none',
+        ICON_TOGGLE_FOCUS,
         // A near miss on a phone would open the ride's page.
         GLASS_CIRCLE_HIT_AREA
       )}

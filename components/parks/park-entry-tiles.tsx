@@ -26,6 +26,7 @@ import { isInSeason } from '@/lib/utils/season';
 import { getAttractionDisplayStatus, getStandbyWait } from '@/lib/utils/park-utils';
 import { formatDurationShort } from '@/lib/i18n/time';
 import { getWeatherConfig } from '@/lib/utils/weather-utils';
+import { warningsInOpeningHours } from '@/lib/utils/warnings-in-opening-hours';
 import { analyzeBestDays } from '@/lib/utils/crowd-analysis';
 import { parkDayOf } from '@/lib/utils/park-day';
 import { daysBetween } from '@/lib/planner/park-time';
@@ -181,7 +182,8 @@ export function useParkTileItems({
     );
     // An official warning outranks the conditions on a tile this small: it is the reason to open
     // the weather chapter at all.
-    const warning = (w.warnings?.length ?? 0) > 0;
+    // Only one inside the park's hours, as the banner above counts it.
+    const warning = warningsInOpeningHours(w.warnings ?? [], park).length > 0;
     return {
       // The icon shows the conditions, from the same config as the label, so icon and text cannot
       // contradict each other.
@@ -193,7 +195,7 @@ export function useParkTileItems({
         </>
       ),
     };
-  }, [park.weather, nowcast, tWeather, t]);
+  }, [park, nowcast, tWeather, t]);
 
   const nextShowtime = useMemo(() => {
     if (!browserNow) return null;

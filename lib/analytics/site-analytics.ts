@@ -321,6 +321,8 @@ export interface SiteEventMap {
   nav_menu_opened: { menu: NavMenuId };
   /** A question of an FAQ opened; `position` is its 1-based place in the list. */
   faq_opened: { position: number };
+  /** The „Mehr" flyout of a park's title card opened, with the park's outbound links. */
+  park_links_opened: NoProps;
 }
 
 /** The name of an event the API accepts. */

@@ -9,6 +9,7 @@ import { useLocalPushFollowsValue } from '@/lib/push/use-local-push-follows-valu
 import { useMinuteNowDate } from '@/lib/hooks/use-minute-now';
 import { ShowFollowDialog } from '@/components/push/show-follow-dialog';
 import { SHOW_FOLLOW_MIN_LEAD_MIN } from '@/lib/push/show-lead';
+import { ICON_TOGGLE_FOCUS } from '@/lib/utils/focus-ring';
 
 interface ShowFollowBellProps {
   showId: string;
@@ -106,7 +107,7 @@ export function ShowFollowBell({
         onClick={handleClick}
         className={cn(
           'relative z-10 flex items-center justify-center transition-all hover:scale-110',
-          'focus:ring-primary focus:ring-2 focus:ring-offset-2 focus:outline-none',
+          ICON_TOGGLE_FOCUS,
           'disabled:pointer-events-none disabled:opacity-60',
           // The same 44 px hit area over a smaller visual box as FavoriteStar; see that component
           // for why.

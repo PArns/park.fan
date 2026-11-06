@@ -6,6 +6,7 @@ import { Check, Link2 } from 'lucide-react';
 import { FacebookIcon, WhatsAppIcon, XIcon } from '@/components/common/brand-icons';
 import { trackSiteEvent } from '@/lib/analytics/site-analytics';
 import { cn } from '@/lib/utils';
+import { TILE_GLASS } from '@/components/common/glass-card';
 import { PHONE_HIT_AREA } from '@/lib/utils/touch-target';
 
 interface ShareButtonsProps {
@@ -66,7 +67,15 @@ export function ShareButtons({ url, title, className }: ShareButtonsProps) {
   return (
     // `gap-y-3.5` below `sm`: the buttons are 30 px high and wrap on a phone, and 14 px between
     // the rows is what keeps the 44 px targets of two rows from overlapping.
-    <div className={cn('flex flex-wrap items-center gap-2 max-sm:gap-y-3.5', className)}>
+    // On its own glass: on the park and ride pages the row stands on the park's photo, where bare
+    // outlined buttons and a muted label were unreadable.
+    <div
+      className={cn(
+        TILE_GLASS,
+        'border-border/60 flex w-fit max-w-full flex-wrap items-center gap-2 rounded-xl border p-2 pl-3 max-sm:gap-y-3.5',
+        className
+      )}
+    >
       <span className="text-muted-foreground mr-1 text-xs font-semibold tracking-wider uppercase">
         {t('title')}
       </span>

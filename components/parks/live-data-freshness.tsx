@@ -10,6 +10,7 @@ import { useMinuteNow } from '@/lib/hooks/use-minute-now';
 import { liveDataAsOf, liveDataHint } from '@/lib/utils/live-data-freshness';
 import { hasReadableWaitTimes } from '@/lib/utils/live-wait-times';
 import { cn } from '@/lib/utils';
+import { TILE_GLASS } from '@/components/common/glass-card';
 import type { ParkWithAttractions } from '@/lib/api/types';
 import { parkDayOf } from '@/lib/utils/park-day';
 
@@ -22,6 +23,12 @@ interface LiveDataFreshnessProps {
   country: string;
   city: string;
   parkSlug: string;
+  /**
+   * `heading`: the right end of the filter panel's heading, from `sm` up, every state. `phone`: a
+   * line of its own above the rides below `sm`, only when the numbers are off — there the panel has
+   * no heading, and a bare time on a phone said nothing a reader needed.
+   */
+  placement: 'heading' | 'phone';
 }
 
 const TIME_ONLY: Intl.DateTimeFormatOptions = { hour: '2-digit', minute: '2-digit' };
@@ -33,13 +40,13 @@ const DAY_AND_TIME: Intl.DateTimeFormatOptions = {
 };
 
 /**
- * "As of 14:35" above the ride list, and a warning with a retry button when that is no longer
- * current. Below `sm` only the warning shows: on a phone the bare time sat on the hero photo,
- * unreadable, between the filters and the rides, and a reader there needs to hear only when the
- * numbers are off. The price is that a warning pushes the list down by the row on a phone.
+ * "As of 14:35" for the ride list, and a warning with a retry button when that is no longer
+ * current: in the filter panel's heading from `sm` up, as a line of its own on a phone only when
+ * there is a warning (see {@link LiveDataFreshnessProps.placement}). The price is that a warning
+ * pushes the list down by the row on a phone.
  *
- * From `sm` up, one line, one height, in every state: the warning and the button sit on the same
- * `h-7` row the time does, so a failed poll moves nothing below it. It subscribes to the park's
+ * In the heading, one line, one height, in every state: the warning and the button sit on the
+ * same `h-7` row the time does, so a failed poll moves nothing. It subscribes to the park's
  * live query itself (same key as `LiveParkData`, so no extra fetch) because `TabsWithHash` is
  * memoised so the ride grid does not re-render on every `isFetching` flip; only this row does.
  * Memoised itself for the same reason as `ParkTabsList`: its props hold still while the filters
@@ -52,6 +59,7 @@ export const LiveDataFreshness = memo(function LiveDataFreshness({
   country,
   city,
   parkSlug,
+  placement,
 }: LiveDataFreshnessProps) {
   const t = useTranslations('parks.liveFreshness');
   const now = useMinuteNow();
@@ -85,11 +93,16 @@ export const LiveDataFreshness = memo(function LiveDataFreshness({
   const format =
     asOf !== null && parkDayOrNull(asOf, park.timezone) !== today ? DAY_AND_TIME : TIME_ONLY;
 
+  if (placement === 'phone' && !hint) return null;
+
   return (
     <div
       className={cn(
-        'mb-4 flex h-7 min-w-0 items-center gap-2 text-xs max-sm:mb-2',
-        hint ? 'text-amber-700 dark:text-amber-400' : 'text-muted-foreground max-sm:hidden'
+        'flex h-7 min-w-0 items-center gap-2 text-xs',
+        // The phone line stands on the park's photo, so it brings its own glass.
+        placement === 'phone' &&
+          cn(TILE_GLASS, 'border-border/60 mb-2 rounded-full border px-3 sm:hidden'),
+        hint ? 'text-amber-700 dark:text-amber-400' : 'text-muted-foreground'
       )}
     >
       <p className="shrink-0 whitespace-nowrap tabular-nums" aria-live="polite">

@@ -11,13 +11,14 @@ import {
 import { useTranslations } from 'next-intl';
 import { cn } from '@/lib/utils';
 import { trackSiteEvent } from '@/lib/analytics/site-analytics';
+import { ICON_TOGGLE_FOCUS } from '@/lib/utils/focus-ring';
 
 interface FavoriteStarProps {
   type: FavoriteType;
   id: string;
   className?: string;
   onToggle?: (isFavorite: boolean) => void;
-  size?: 'sm' | 'md' | 'lg';
+  size?: 'sm' | 'md' | 'lg' | 'xl';
   noCircle?: boolean; // Remove circle background/border
   /** Glass variant: uses theme-aware translucent icon colors for glass/photo backgrounds. */
   variant?: 'default' | 'glass';
@@ -61,6 +62,7 @@ export function FavoriteStar({
     sm: 'h-3 w-3',
     md: 'h-4 w-4',
     lg: 'h-6 w-6',
+    xl: 'h-7 w-7 md:h-8 md:w-8',
   };
 
   const iconSize = sizeClasses[size];
@@ -75,7 +77,7 @@ export function FavoriteStar({
       onClick={handleClick}
       className={cn(
         'relative z-10 flex items-center justify-center transition-all hover:scale-110',
-        'focus:ring-primary focus:ring-2 focus:ring-offset-2 focus:outline-none',
+        ICON_TOGGLE_FOCUS,
         // The hit area, not the star: the star often sits inside a card's `<Link>`, where a near
         // miss navigates instead of favouriting. Below `sm` a pseudo-element gives it 44 px while
         // the box keeps the size its call site gave it, since a grown box shifts the star out of

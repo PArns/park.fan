@@ -6,7 +6,7 @@
  */
 
 /** The places a park page marks, top to bottom, the closed list of the event's `section`. */
-const SEEN_SECTIONS = ['main_end', 'nearby', 'blog', 'stats', 'outlook', 'faq', 'end'] as const;
+const SEEN_SECTIONS = ['main_end', 'blog', 'nearby', 'stats', 'outlook', 'faq', 'end'] as const;
 
 /** One of {@link SEEN_SECTIONS}. */
 export type SeenSection = (typeof SEEN_SECTIONS)[number];

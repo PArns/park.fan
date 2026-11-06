@@ -235,11 +235,32 @@ export function buildYearlyOutlook(
 }
 
 /**
- * The level a month's badge names: its dominant tier, else `closed` when every day the forecast
- * covers is a closed day, else `unknown` („no forecast").
+ * The level a month's badge names: its dominant tier, else `closed` when every day of the month
+ * still ahead is a closed day, else `unknown` („no forecast"). Six closed days and twenty-five the
+ * forecast does not reach are not a closed month.
  */
 export function outlookBadgeLevel(month: OutlookMonth): ColoredCrowdLevel | 'closed' | 'unknown' {
   if (month.dominant) return month.dominant;
-  if (month.closedDays > 0 && month.closedDays === month.coveredDays) return 'closed';
+  if (month.closedDays > 0 && month.closedDays === month.daysInMonth - month.pastDays) {
+    return 'closed';
+  }
   return 'unknown';
+}
+
+/**
+ * The forecast with every `closed` past the park's published schedule turned into `unknown`. Past
+ * `scheduleCoverage.to` a closure is the model's guess (Phantasialand's spring 2027 at about 50 %
+ * confidence, a season it opens in), and the outlook would print it as a fact. No `coverageTo`, no
+ * change.
+ */
+export function withoutGuessedClosures<P extends Pick<ParkDailyPrediction, 'date' | 'crowdLevel'>>(
+  predictions: P[],
+  coverageTo: string | null | undefined
+): P[] {
+  if (!coverageTo) return predictions;
+  return predictions.map((prediction) =>
+    prediction.crowdLevel === 'closed' && prediction.date > coverageTo
+      ? { ...prediction, crowdLevel: 'unknown' }
+      : prediction
+  );
 }

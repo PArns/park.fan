@@ -8,7 +8,7 @@ interface ParkFavoriteButtonProps {
 export function ParkFavoriteButton({ parkId }: ParkFavoriteButtonProps) {
   return (
     <div className="flex items-center">
-      <FavoriteStar type="park" id={parkId} size="lg" />
+      <FavoriteStar type="park" id={parkId} size="xl" />
     </div>
   );
 }

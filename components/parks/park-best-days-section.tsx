@@ -11,11 +11,11 @@ import type { IntegratedCalendarResponse } from '@/lib/api/types';
 import type { BestDaysByDayOfWeek, BestDaysSnapshot } from '@/lib/api/integrated-calendar';
 import { analyzeBestDays, scoreToCrowdLevel } from '@/lib/utils/crowd-analysis';
 import { CROWD_CHIP_CLASS } from '@/lib/utils/crowd-level-styles';
-import { cn } from '@/lib/utils';
+import { cn, getGermanArticle } from '@/lib/utils';
 import { useParkBestDaysCalendar } from '@/lib/hooks/use-park-best-days-calendar';
 import { useParkHistoricalStats } from '@/lib/hooks/use-park-historical-stats';
 import { ParkBestDaysSectionSkeleton } from '@/components/parks/park-best-days-section-skeleton';
-import { ParkBestDaysHeader, localizedParkName } from '@/components/parks/park-best-days-header';
+import { ParkBestDaysHeader } from '@/components/parks/park-best-days-header';
 import { getDateTimeFormat } from '@/lib/utils/intl-format';
 import { parkArgs } from '@/lib/i18n/park-phrase';
 import type { Locale } from '@/i18n/config';
@@ -267,8 +267,6 @@ function BestDaysContent({
     (statsByDayOfWeek && statsByDayOfWeek.length > 0) || analysis.totalDays >= 7;
   if (!hasEnoughData || (!hasBestDays && !hasUpcoming)) return null;
 
-  const displayName = localizedParkName(parkName, parkSlug, locale);
-
   if (compact) {
     if (!hasBestDays && !bestWeekendDay) return null;
 
@@ -444,7 +442,16 @@ function BestDaysContent({
           />
           <div className="relative flex items-start gap-2 px-4 py-3">
             <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
-            <p>{t('schoolHolidayWarning', parkArgs(locale as Locale, displayName, articleDe))}</p>
+            <p>
+              {t(
+                'schoolHolidayWarning',
+                parkArgs(
+                  locale as Locale,
+                  parkName,
+                  getGermanArticle(parkName, parkSlug, articleDe)
+                )
+              )}
+            </p>
           </div>
         </div>
       )}

@@ -159,9 +159,10 @@ the rule is on the call site, and `trackSiteEvent` says it too.
 | `error_shown`                | an error page is rendered; the message is not sent                                                 | `boundary` (page, maintenance, global)                       |                       |
 | `share_clicked`              | a share row button (WhatsApp, Facebook, X, copy link) or the planner's share link                  | `target` (whatsapp, facebook, x, link, trip_plan)            |                       |
 | `internal_link_clicked`      | a click, middle click included, on a link to another page of the site inside a marked block        | `block`, `dest` (the page type it leads to), `position`      | a card's park or ride |
-| `section_seen`               | a marked place of a park page comes on screen, once per page view and place                        | `section` (main_end, nearby, blog, stats, outlook, faq, end) |                       |
+| `section_seen`               | a marked place of a park page comes on screen, once per page view and place                        | `section` (main_end, blog, nearby, stats, outlook, faq, end) |                       |
 | `nav_menu_opened`            | a header band opens (hover after 90 ms included) or the phone sheet does, once per opening         | `menu` (guides, news, parks, more, favorites, sheet)         |                       |
 | `faq_opened`                 | a question of an FAQ (`FaqAccordion`) opens                                                        | `position` (1-based)                                         |                       |
+| `park_links_opened`          | the „Mehr" flyout of a park's title card opens; what is clicked inside is the outbound tracking    | none                                                         | the park              |
 
 ### The pageview's extras
 
@@ -261,7 +262,7 @@ all from server-rendered markup and the same listeners as the outbound links:
   one place. A card's wrapper may carry `linkEntityAttributes(uuid)`, which sends its park or ride
   as the entity. A button inside a link (a favourite star) counts nothing, a link to another site is
   `outbound_link_clicked` or nothing. The blocks: the post's `body`, `tags`, `parks`, `rides`, `nav`,
-  `related`, `most_read`; the park page's `rides` and `posts` (the ride page's posts too); `nearby`,
+  `related`, `most_read`; the park page's `rides`, `posts` (the ride page's posts too), and its title card's `guide_band` (the guide's window) and `news_band` (the news rail); `nearby`,
   `favorites`, `featured`; the chrome's `header`, `menu_sheet`, `footer`, `breadcrumbs`. Together
   with the page type every hit carries, it is a one-step map of where readers go from where.
 - **`section_seen`.** `ParkPageShell` draws a zero-height `SectionMark` where each chapter begins,

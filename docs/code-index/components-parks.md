@@ -230,7 +230,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`live-data-freshness.tsx`](../../components/parks/live-data-freshness.tsx)
 
-- `LiveDataFreshness` _component_: "As of 14:35" above the ride list, and a warning with a retry button when that is no longer current.
+- `LiveDataFreshness` _component_: "As of 14:35" for the ride list, and a warning with a retry button when that is no longer current: in the filter panel's heading from `sm` up, as a line of its own on a phone only when there is a warning (see …
 
 ### [`live-nearby-parks.tsx`](../../components/parks/live-nearby-parks.tsx)
 
@@ -338,7 +338,6 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`park-best-days-header.tsx`](../../components/parks/park-best-days-header.tsx)
 
 - `ParkBestDaysHeader` _component_: The best-days section's frosted header. It carries no calendar data, so the loading skeleton renders this same component and reserves the exact height at every breakpoint and in every locale.
-- `localizedParkName` _function_: "den Europa-Park", not "Europa-Park", where the German title needs the accusative.
 
 ### [`park-best-days-section-skeleton.tsx`](../../components/parks/park-best-days-section-skeleton.tsx)
 
@@ -441,6 +440,12 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `ParkHeaderCard` _component_: The park page's header card: „Heute im Park" on top, the entry-tile row as its footer band. One card, and the box lives here because both halves need the same `overflow-hidden` to clip their trailing hairlines.
 
+### [`park-header-posts.tsx`](../../components/parks/park-header-posts.tsx)
+
+- `TitleCardWindowSplit` _component_: A title card's two columns: the text on the left and „the window" on the right from `lg`, reaching through the card's padding (`p-6` on `GlassCard`) to its top, right and — without a rail under it — bottom edge; below `lg` the window spans …
+- `ParkHeaderWindow` _component_: „The window": a pane cut into the title card's glass, edge to edge. With a guide it shows the guide's cover with its title over it, as the blog's own cards do; without one, the park's photo sharp where the rest of the card blurs it.
+- `ParkNewsBand` _component_: The park's newest news of the last 30 days (`getFreshNewsForPark`) as a rail along the title card's bottom edge, under the window: one line, so its height never depends on the title.
+
 ### [`park-height-filter-context.tsx`](../../components/parks/park-height-filter-context.tsx)
 
 - `useParkHeightFilter` _hook_: Reads the park page's shared rider-height filter. `null` outside the park page and on a park that publishes no minimum heights.
@@ -481,6 +486,10 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `ParkKidsTiers` _component_: The park's height ladder: one card per height at which its answer changes. The steps and counts come from the same `riderHeightThresholds` and `canRideAtHeight` as the park page's slider, so the two pages cannot give a parent two answers.
 
+### [`park-links-flyout.tsx`](../../components/parks/park-links-flyout.tsx)
+
+- `ParkLinksFlyout` _component_: „Mehr ›" beside the planner in the park's title card: the park's outbound links (website, tickets, Wikipedia, socials) slide out to its right when the pointer reaches the button, on focus or on a tap, so the row holds one call to action …
+
 ### [`park-live-link.tsx`](../../components/parks/park-live-link.tsx)
 
 - `ParkLiveLink` _component_: The link from a park's sub-page (statistics, crowd calendar) to the park page, worded "&lt;park&gt;: Wartezeiten live".
@@ -499,6 +508,10 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`park-map.tsx`](../../components/parks/park-map.tsx)
 
 - `ParkMap` _component_: Leaflet map of a park (CARTO tiles) with markers for in-season rides, shows and restaurants, the visitor's position and, when located, a panel of what is nearby. Used by the map tab and the blog's map widget.
+
+### [`park-maps-link.tsx`](../../components/parks/park-maps-link.tsx)
+
+- `ParkMapsLink` _component_: The way to the gate in the maps app the visitor's device has: Apple Maps on Apple devices, Google Maps everywhere else.
 
 ### [`park-nav-tiles.tsx`](../../components/parks/park-nav-tiles.tsx)
 
@@ -531,6 +544,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `ParkQuickLinks` _component_: The park's own website and ticket shop as one band, its Wikipedia entry and socials as a second, in the page header's row of links. Rendered as a fragment, so each band is an item of that row and wraps on its own.
 - `ParkOutboundLinks` _component_: Every outbound link of a park as bands of one flex row: its own links (`ParkQuickLinks`), then the way to the gate in Google and Apple Maps as a single band.
+- `hasQuickLinks` _function_: Whether a park has any of the links `ParkQuickLinks` draws — the header's „Mehr" hides without.
 
 ### [`park-seasons-card.tsx`](../../components/parks/park-seasons-card.tsx)
 
@@ -621,7 +635,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`rcdb-badge.tsx`](../../components/parks/rcdb-badge.tsx)
 
-- `RcdbBadge` _component_: Outbound link to the ride's Roller Coaster DataBase record, naming the ride („Taron on RCDB") so the link says what is on the other end.
+- `RcdbBadge` _component_: The ride's entry in the Roller Coaster DataBase, as a secondary button of the title card.
 
 ### [`reservation-badge.tsx`](../../components/parks/reservation-badge.tsx)
 
@@ -686,7 +700,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`ride-profile-teaser.tsx`](../../components/parks/ride-profile-teaser.tsx)
 
-- `RideProfileTeaser` _component_: The ride's identifying facts, lifted into the page header. Every badge names its own fact („Manufacturer: Intamin"), since an unlabelled value in a row of height limits and lands is a guess.
+- `RideProfileTeaser` _component_: The ride's identifying facts in the page header, as a strip of figures — top speed, inversions, type, manufacturer, opening year — each a small label over its value, like the live panel's figures; then the RCDB link (`children`) and the …
 
 ### [`ride-status-block.tsx`](../../components/parks/ride-status-block.tsx)
 

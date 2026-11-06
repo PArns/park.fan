@@ -389,7 +389,11 @@
       "viewAll": "Alle Beiträge lesen",
       "moreGuides": "Weitere Guides"
     },
+    "freshNews": {
+      "label": "Neu"
+    },
     "firstVisit": {
+      "label": "Erster Besuch",
       "title": "Erster Besuch: {park}",
       "intro": "Der Guide zuerst, danach die Begriffe, die jedem Erstbesucher begegnen.",
       "termsTitle": "Begriffe für den ersten Tag",
@@ -497,6 +501,7 @@
     },
     "mazeSection": "Halloween-Mazes",
     "info": {
+      "more": "Mehr",
       "title": "Infos zum Park",
       "address": "Adresse",
       "phone": "Telefon",

@@ -389,7 +389,11 @@
       "viewAll": "Leer todos los artículos",
       "moreGuides": "Más guías"
     },
+    "freshNews": {
+      "label": "Nuevo"
+    },
     "firstVisit": {
+      "label": "Primera visita",
       "title": "Primera visita: {park}",
       "intro": "Empieza por la guía y sigue con los términos que encuentra todo visitante nuevo.",
       "termsTitle": "Términos para tu primer día",
@@ -745,6 +749,7 @@
     },
     "mazeSection": "Laberintos de Halloween",
     "info": {
+      "more": "Más",
       "title": "Información del parque",
       "address": "Dirección",
       "phone": "Teléfono",

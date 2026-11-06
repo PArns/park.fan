@@ -442,6 +442,22 @@ export const TabsWithHash = memo(function TabsWithHash({
   const rideSearchFocus = useMemo(() => searchFieldFocusProps(rideSearch), [rideSearch]);
   useSettledQueryEvents(rideSearch, searchQuery, hasSearchResults || closedRideMatches.length > 0);
 
+  // "As of 14:35" for the rides: in the filter panel's heading, and on a phone a warning line of
+  // its own between the filters and the rides. Each carries its own subscription to the live
+  // query, so a poll re-renders that row and not the grid.
+  const freshness = (placement: 'heading' | 'phone') => (
+    <LiveDataFreshness
+      park={park}
+      todayIso={todayIso}
+      continent={continent}
+      country={country}
+      city={city}
+      parkSlug={parkSlug}
+      placement={placement}
+    />
+  );
+  const freshnessLine = freshness('phone');
+
   const filterPanel = (
     <MemoAttractionFilterPanel
       parkId={park.id}
@@ -477,19 +493,7 @@ export const TabsWithHash = memo(function TabsWithHash({
       onToggleOnlyCovered={toggleOnlyCovered}
       sortMode={sortMode}
       onSortChange={setSortMode}
-    />
-  );
-
-  // "As of 14:35" between the filters and the rides, on both sides of hydration. It carries its
-  // own subscription to the live query, so a poll re-renders this row and not the grid.
-  const freshnessLine = (
-    <LiveDataFreshness
-      park={park}
-      todayIso={todayIso}
-      continent={continent}
-      country={country}
-      city={city}
-      parkSlug={parkSlug}
+      status={freshness('heading')}
     />
   );
 

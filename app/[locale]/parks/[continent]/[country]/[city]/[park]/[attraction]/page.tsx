@@ -82,6 +82,18 @@ import { RideProfileSection } from '@/components/parks/ride-profile-section';
 import { NoLiveWaitTimesNotice } from '@/components/parks/no-live-wait-times-notice';
 import { hasReadableWaitTimes, noLiveWaitTimesReason } from '@/lib/utils/live-wait-times';
 import { AttractionBlogPostsSection } from '@/components/parks/blog-posts-sections';
+import {
+  ParkHeaderWindow,
+  ParkNewsBand,
+  TitleCardWindowSplit,
+} from '@/components/parks/park-header-posts';
+import {
+  freshNewsSince,
+  getFreshNewsAboutRide,
+  getFreshNewsForPark,
+  getGuideForPark,
+  getPostAboutRide,
+} from '@/lib/blog/backlinks';
 import { RideProfileTeaser } from '@/components/parks/ride-profile-teaser';
 import { isEveningBetter } from '@/lib/utils/rope-drop';
 import { getOgImageUrl } from '@/lib/utils/og-image';
@@ -486,6 +498,12 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
   // The ride's own photo or nothing (`ParkBackground` renders null): the park's photo would make
   // a photo-less ride look like it had one, and the wrong one.
   const backgroundImage = getAttractionBackgroundImage(parkSlug, attractionSlug);
+
+  // The title card's window: the post about this ride, else the park's visit guide, else the
+  // ride's photo sharp; none of the three, and the card keeps one column.
+  const geoPath = `${continent}/${country}/${city}`;
+  const ridePost = getPostAboutRide(locale as Locale, parkSlug, attractionSlug, { geoPath });
+  const headerPost = ridePost ?? getGuideForPark(locale as Locale, parkSlug, { geoPath });
   // OG card is only a fallback for the JSON-LD image when the ride has no photo.
   const ogImageUrl = getOgImageUrl([locale, continent, country, city, parkSlug, attractionSlug]);
 
@@ -533,6 +551,11 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
   // row reservation; the browser's date can be a day off. Safe to read the server clock here: the
   // route is `force-dynamic`, so there is no ISR window to pin.
   const todayIso = parkDayOf(new Date(), park.timezone);
+  // The title card's rail: fresh news about this ride, else the park's.
+  const headerNews =
+    getFreshNewsAboutRide(locale as Locale, parkSlug, attractionSlug, freshNewsSince(todayIso), {
+      geoPath,
+    }) ?? getFreshNewsForPark(locale as Locale, parkSlug, freshNewsSince(todayIso), { geoPath });
 
   /**
    * The one shell snapshot both client trees read, built once: React Flight dedupes by object
@@ -616,19 +639,41 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
               `ParkPageShell`, so two pages over the same photo open on the same glass. */}
             <div className="mb-4">
               <GlassCard variant="tile">
-                {/* In flow, not absolutely positioned, so a long name wraps beside the star
-                  instead of underneath it. */}
-                <div className="flex items-start justify-between gap-4">
-                  <div className="min-w-0 flex-1">
-                    {/* The wait-time keyword lives inside the h1 (a styled span) so the primary
+                <TitleCardWindowSplit
+                  hasRail={Boolean(headerNews)}
+                  pane={
+                    headerPost || backgroundImage ? (
+                      <ParkHeaderWindow
+                        guide={headerPost}
+                        photo={backgroundImage}
+                        // The park guide keeps its own „Erster Besuch".
+                        label={
+                          ridePost ? t('blogPosts.title', { ride: attractionName }) : undefined
+                        }
+                      />
+                    ) : undefined
+                  }
+                >
+                  <div className="min-w-0">
+                    {/* The favourite star in front of the name, as on the park page: beside the
+                    heading, not inside it, so its label stays out of the heading's name. */}
+                    <div className="mb-2 flex items-start gap-3">
+                      {attraction.id && (
+                        // As tall as the heading's first line, so the star centres on it.
+                        <div className="flex h-9 shrink-0 items-center md:h-10">
+                          <FavoriteStar type="attraction" id={attraction.id} size="xl" />
+                        </div>
+                      )}
+                      {/* The wait-time keyword lives inside the h1 (a styled span) so the primary
                       heading carries "Wartezeit". The literal space before the span keeps the
                       extracted text from reading "Taron– Aktuelle Wartezeit". */}
-                    <h1 className="mb-2 text-3xl font-bold md:text-4xl">
-                      {attractionName}{' '}
-                      <span className="text-muted-foreground text-xl font-normal md:text-2xl">
-                        – {t('h1Suffix')}
-                      </span>
-                    </h1>
+                      <h1 className="min-w-0 text-3xl font-bold md:text-4xl">
+                        {attractionName}{' '}
+                        <span className="text-muted-foreground text-xl font-normal md:text-2xl">
+                          – {t('h1Suffix')}
+                        </span>
+                      </h1>
+                    </div>
                     {/* Muted like the park header's address line: where the ride is, not what it
                       is. min-h reserves the row's two-line height on a phone (24 + 12 + 22 px):
                       below `sm` it sits at its wrap threshold, and the font swap and
@@ -666,9 +711,53 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
                       <WorksPeriodBadge worksPeriod={attraction.worksPeriod} todayIso={todayIso} />
                     </div>
                   </div>
+
+                  {/* Facts band: what this ride is, apart from where it is, in the order that
+                  matters: whether you may ride (height), what it does, what kind it is, who built
+                  it, then RCDB. Below `sm` it is one row that scrolls sideways instead of
+                  wrapping in front of the live wait, so the order decides what is in view. */}
+                  {(hasMetaBadges || attraction.rideProfile || rcdbBadge) && (
+                    <div className="border-border/50 mt-5 space-y-4 border-t pt-4">
+                      <div className="no-scrollbar flex items-center gap-2 empty:hidden max-sm:overflow-x-auto sm:flex-wrap">
+                        <AttractionMetaBadges
+                          minimumHeight={attraction.minimumHeight}
+                          maximumHeight={attraction.maximumHeight}
+                          mayGetWet={attraction.mayGetWet}
+                        />
+                        {/* After the restrictions, before what the ride IS: a queue-jump
+                        pass is a fact about the visit, like the height limits, and
+                        not part of the ride's identity. */}
+                        <SingleRiderBadge hasSingleRider={attraction.hasSingleRider} />
+                        <VirtualLineBadge hasVirtualLine={attraction.hasVirtualLine} />
+                        <FastPassBadge fastPass={attraction.fastPass} />
+                      </div>
+                      {attraction.rideProfile ? (
+                        <RideProfileTeaser
+                          profile={attraction.rideProfile}
+                          locale={locale as Locale}
+                        >
+                          {rcdbBadge}
+                        </RideProfileTeaser>
+                      ) : (
+                        rcdbBadge
+                      )}
+                    </div>
+                  )}
+                  <RideExposureLine indoorOutdoor={attraction.indoorOutdoor} />
+
+                  {/* Server-rendered intro: crawlable text for "{attraction} Wartezeit" that the
+                  client-streamed live panel does not give as HTML. Inside the card, as on the
+                  park page. Clamped to two lines below `sm`; the full text stays in the HTML. */}
+                  <p className="text-muted-foreground mt-4 max-w-2xl text-sm leading-relaxed max-sm:line-clamp-2">
+                    {t('intro', {
+                      attraction: attractionName,
+                      ...parkArgs(locale as Locale, parkName, park?.nameArticleDe),
+                    })}
+                  </p>
+
+                  {/* The planner's first step from a ride page, as the card's call to action. */}
                   {attraction.id && (
-                    <div className="flex items-center gap-2">
-                      {/* The planner's first step from a ride page. */}
+                    <div className="mt-5">
                       <AddToPlannerButton
                         parkSlug={parkSlug}
                         parkName={parkName}
@@ -679,48 +768,10 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
                         attractionId={attraction.id}
                         timezone={park.timezone}
                       />
-                      <FavoriteStar type="attraction" id={attraction.id} size="lg" />
                     </div>
                   )}
-                </div>
-
-                {/* Facts band: what this ride is, apart from where it is, in the order that
-                  matters: whether you may ride (height), what it does, what kind it is, who built
-                  it, then RCDB. Below `sm` it is one row that scrolls sideways instead of
-                  wrapping in front of the live wait, so the order decides what is in view. */}
-                {(hasMetaBadges || attraction.rideProfile) && (
-                  <div className="border-border/50 no-scrollbar mt-5 flex items-center gap-2 border-t pt-4 max-sm:overflow-x-auto sm:flex-wrap">
-                    <AttractionMetaBadges
-                      minimumHeight={attraction.minimumHeight}
-                      maximumHeight={attraction.maximumHeight}
-                      mayGetWet={attraction.mayGetWet}
-                    />
-                    {/* After the restrictions, before what the ride IS: a queue-jump
-                        pass is a fact about the visit, like the height limits, and
-                        not part of the ride's identity. */}
-                    <SingleRiderBadge hasSingleRider={attraction.hasSingleRider} />
-                    <VirtualLineBadge hasVirtualLine={attraction.hasVirtualLine} />
-                    <FastPassBadge fastPass={attraction.fastPass} />
-                    {attraction.rideProfile ? (
-                      <RideProfileTeaser profile={attraction.rideProfile} locale={locale as Locale}>
-                        {rcdbBadge}
-                      </RideProfileTeaser>
-                    ) : (
-                      rcdbBadge
-                    )}
-                  </div>
-                )}
-                <RideExposureLine indoorOutdoor={attraction.indoorOutdoor} />
-
-                {/* Server-rendered intro: crawlable text for "{attraction} Wartezeit" that the
-                  client-streamed live panel does not give as HTML. Inside the card, as on the
-                  park page. Clamped to two lines below `sm`; the full text stays in the HTML. */}
-                <p className="text-muted-foreground mt-4 max-w-2xl text-sm leading-relaxed max-sm:line-clamp-2">
-                  {t('intro', {
-                    attraction: attractionName,
-                    ...parkArgs(locale as Locale, parkName, park?.nameArticleDe),
-                  })}
-                </p>
+                </TitleCardWindowSplit>
+                {headerNews && <ParkNewsBand locale={locale as Locale} news={headerNews} />}
               </GlassCard>
             </div>
 
@@ -928,7 +979,7 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
               locale={locale as Locale}
               parkSlug={parkSlug}
               attractionSlug={attractionSlug}
-              geoPath={`${continent}/${country}/${city}`}
+              geoPath={geoPath}
               attractionName={attractionName}
             />
 

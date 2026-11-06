@@ -40,12 +40,6 @@ interface ParkPageShellProps {
   countryName: string;
   breadcrumbs: Breadcrumb[];
   currentPage: string;
-  /**
-   * What the breadcrumb shows on a phone — see `BreadcrumbNav`'s `phone`. The park page passes
-   * "hidden" because its address line links the city, i.e. the level above it; the calendar and
-   * the record keep the default "back", which is the park.
-   */
-  phoneBreadcrumb?: 'back' | 'hidden';
   /** The title card's contents — the H1 and whatever belongs beside and under it. Every page of
    *  a park has a different one; the card around it is the same. */
   header: React.ReactNode;
@@ -60,19 +54,19 @@ interface ParkPageShellProps {
   /** This page's own content, between the header card and the shared tail. */
   children: React.ReactNode;
   /**
-   * Put the historical-statistics chapter directly under `children` instead of below the blog.
+   * Put the historical-statistics chapter and the outlook directly under `children` instead of
+   * below the neighbours.
    *
-   * Only the crowd calendar sets it, and only because that page's own subject is „when should I
-   * go" — the statistics are the same question at a finer grain. On the park page the subject is
-   * today's wait times and the statistics are a footnote, so they stay where they are.
+   * Only the crowd calendar sets it, because that page's own subject is „when should I go" — the
+   * statistics and the outlook are the same question at a finer grain.
    */
   statsAfterChildren?: boolean;
   /**
    * Leave the historical-statistics chapter out entirely.
    *
-   * One page sets it: the wait-time record, whose whole subject is that chapter. It renders the
-   * same `ParkStatsSection` itself, seeded from the server and split across its own headings, so
-   * the shell's client-fetched copy would be the same three tables a second time.
+   * The wait-time record sets it because it renders the same `ParkStatsSection` itself. The park
+   * page sets it because its subject is today: Google sends it „<park> wartezeiten (live|heute)",
+   * and the history lives one tap away on the calendar and the record, which the tile row links.
    */
   hideStats?: boolean;
   /**
@@ -98,13 +92,11 @@ interface ParkPageShellProps {
    */
   faqSection?: React.ReactNode;
   /**
-   * The park's long-range crowd outlook, rendered between the statistics and the seasons.
+   * The park's long-range crowd outlook, rendered right after the statistics.
    *
-   * A slot for the same reason as {@link blogSection}: one page of the park renders it, and what
-   * the shell imports at module scope, every route that uses it pays for in routed translations.
-   * Its place in the order is the argument the chapter makes — the statistics say what the park
-   * has been, the outlook what the forecast expects, and the seasons what is already on the
-   * calendar.
+   * A slot for the same reason as {@link blogSection}: one page of the park renders it (the crowd
+   * calendar), and what the shell imports at module scope, every route that uses it pays for in
+   * routed translations.
    */
   outlookSection?: React.ReactNode;
   /** Row counts for the statistics placeholder, from a page that read the aggregate on the
@@ -151,7 +143,6 @@ export async function ParkPageShell({
   countryName,
   breadcrumbs,
   currentPage,
-  phoneBreadcrumb,
   header,
   head,
   pagePath,
@@ -186,10 +177,23 @@ export async function ParkPageShell({
       skeletonShape={statsShape}
     />
   );
-  const statsSlot = (
+  /* The two „when should I go" chapters travel together: the record says what the park has been,
+     the outlook what the forecast expects. A mark only stands where its chapter can render, so a
+     page without them does not report them as read. */
+  const historySlot = (
     <>
-      <SectionMark section="stats" />
-      {stats}
+      {stats && (
+        <>
+          <SectionMark section="stats" />
+          {stats}
+        </>
+      )}
+      {outlookSection && (
+        <>
+          <SectionMark section="outlook" />
+          {outlookSection}
+        </>
+      )}
     </>
   );
 
@@ -217,11 +221,7 @@ export async function ParkPageShell({
           occupied 24px, the real nav 46px, so the whole article jumped 22px down the moment the
           boundary resolved — worth ~0.22 CLS on desktop and the reason this URL group failed Core
           Web Vitals. */}
-        <BreadcrumbNav
-          breadcrumbs={breadcrumbs}
-          currentPage={currentPage}
-          phone={phoneBreadcrumb}
-        />
+        <BreadcrumbNav breadcrumbs={breadcrumbs} currentPage={currentPage} />
 
         <article>
           <div className="mb-4">
@@ -234,12 +234,16 @@ export async function ParkPageShell({
             chapter begins whether or not this park has it, so the counts compare across parks. */}
           <SectionMark section="main_end" />
 
-          {/* On the crowd calendar the historical numbers belong directly under the grid: the
-            month-by-month and weekday tables answer the same question the calendar does, one
-            level of detail down, and pushing „Parks in deiner Nähe" and the blog between them makes
-            a reader scroll past two unrelated chapters to compare them. Everywhere else the
-            statistics keep their place further down. */}
-          {statsAfterChildren ? statsSlot : null}
+          {/* On the crowd calendar the history and the outlook belong directly under the grid:
+            they answer the same question the calendar does, one level of detail down, and pushing
+            „Parks in deiner Nähe" between them makes a reader scroll past an unrelated chapter to
+            compare them. */}
+          {statsAfterChildren ? historySlot : null}
+
+          {/* The park's guides come before its neighbours: they are the next layer of the same
+            park, the neighbours a different one. */}
+          <SectionMark section="blog" />
+          {blogSection}
 
           <SectionMark section="nearby" />
 
@@ -260,13 +264,7 @@ export async function ParkPageShell({
             />
           )}
 
-          <SectionMark section="blog" />
-          {blogSection}
-
-          {statsAfterChildren ? null : statsSlot}
-
-          <SectionMark section="outlook" />
-          {outlookSection}
+          {statsAfterChildren ? null : historySlot}
 
           {/* What is on at this park. Hand-researched, day-stable, and its own request rather than
             a field on the park: the park payload is re-polled every five minutes and a season

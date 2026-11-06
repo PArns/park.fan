@@ -3,7 +3,7 @@
 import { useRef, useState } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 import { useQueryClient } from '@tanstack/react-query';
-import { Plus, Repeat } from 'lucide-react';
+import { CalendarPlus, Repeat } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { usePlanner, usePlannedCount } from '@/lib/planner/use-planner';
 import { plannerStore } from '@/lib/planner/store';
@@ -233,32 +233,36 @@ export function AddToPlannerButton({
       aria-label={
         planned ? `${t('plannedTimes', { count: plannedCount })} — ${t('addAgain')}` : t('addRide')
       }
-      // Icon only on a phone: beside the star, a label leaves the h1 too narrow for the ride's
-      // name. The aria-label names the button there.
+      // The ride page's call to action, drawn like the park page's planner button: filled, full
+      // width on a phone. Planned, it turns the crowd scale's green.
       className={cn(
-        'inline-flex items-center gap-1.5 rounded-md px-2 py-1 text-xs font-medium transition-colors max-sm:size-9 max-sm:justify-center max-sm:p-0',
+        'inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2 text-sm font-medium shadow-md transition-colors max-sm:min-h-11 max-sm:w-full',
         planned
           ? 'bg-crowd-low/20 text-crowd-low hover:bg-crowd-low/30'
-          : 'bg-accent/60 text-foreground hover:bg-accent',
+          : 'bg-primary text-primary-foreground hover:bg-primary/90',
         className
       )}
     >
-      {planned ? <Repeat className="size-3.5" /> : <Plus className="size-3.5" />}
-      <span className="max-sm:hidden">{planned ? t('addAgain') : t('addRide')}</span>
+      {planned ? (
+        <Repeat className="size-4" aria-hidden="true" />
+      ) : (
+        <CalendarPlus className="size-4" aria-hidden="true" />
+      )}
+      <span>{planned ? t('addAgain') : t('addRide')}</span>
     </button>
   );
 
   if (!fit && !result) return button;
   const Assistant = fit?.Assistant;
   return (
-    <span className="relative inline-flex">
+    <span className="relative inline-flex max-sm:w-full">
       {button}
       {result && (
         // Below the button rather than in its header row, where a line would push the row apart.
         <span
           role="status"
           className={cn(
-            'bg-popover absolute top-full right-0 z-20 mt-1 flex w-max max-w-[min(18rem,calc(100vw-6rem))] items-center gap-2 rounded-md border px-2 py-1 text-xs shadow-sm transition-opacity starting:opacity-0',
+            'bg-popover absolute top-full left-0 z-20 mt-1 flex w-max max-w-[min(18rem,calc(100vw-6rem))] items-center gap-2 rounded-md border px-2 py-1 text-xs shadow-sm transition-opacity starting:opacity-0',
             result.alert
               ? 'border-crowd-high/40 text-crowd-high'
               : 'border-border text-muted-foreground'

@@ -21,7 +21,7 @@ import {
 import { ClosedParkPage } from '@/components/parks/closed-park-page';
 import type { ParkBase } from '@/lib/api/types';
 import { getParkStatsForPage, hasParkStatsPage } from '@/lib/api/stats';
-import { deriveParkBestDays, parkStatsShape } from '@/lib/parks/park-stats-derive';
+import { deriveParkBestDays } from '@/lib/parks/park-stats-derive';
 import { formatWeekdayList } from '@/lib/utils/day-runs';
 import { getBestDaysCalendarSeed } from '@/lib/api/integrated-calendar';
 import { catchNonFatal } from '@/lib/api/client';
@@ -47,8 +47,8 @@ import { ParkTodayPanel } from '@/components/parks/park-today-panel';
 import { ParkKidsLink } from '@/components/parks/park-kids-link';
 import { initialRiderHeightFromParam, kidsPageData } from '@/lib/parks/kids-page';
 import { ParkPurchasesCard } from '@/components/parks/park-purchases-card';
-import { ParkYearlyOutlookSection } from '@/components/parks/park-yearly-outlook-section';
-import { ParkYearlyOutlookSkeleton } from '@/components/parks/park-yearly-outlook-skeleton';
+import { ParkHeaderWindow, ParkNewsBand } from '@/components/parks/park-header-posts';
+import { freshNewsSince, getFreshNewsForPark, getGuideForPark } from '@/lib/blog/backlinks';
 import { NoLiveWaitTimesNotice } from '@/components/parks/no-live-wait-times-notice';
 import { noLiveWaitTimesReason } from '@/lib/utils/live-wait-times';
 import { groupAttractionsByLand, sortLandNames } from '@/lib/utils/park-utils';
@@ -301,19 +301,7 @@ export default async function ParkPage({ params, searchParams }: ParkPageProps) 
   // Dev/preview only, and a no-op with no `?state=` — see `lib/parks/park-simulation.ts` for why
   // this one fabricates data where `?sim=` refuses to.
   const park = parkLean ? applyParkSimulation(parkLean, simScenarios) : parkLean;
-  // The same request and Data Cache entry `hasParkStatsPage` reads (React `cache` dedupes it), so
-  // the header's quietest days and the stats placeholder's row counts cost no upstream call. Only
-  // those two projections reach the payload. Wrapped so `null` is a failed fetch, where the
-  // placeholder falls back to typical counts, and `{ stats: null }` the 404 that renders nothing.
-  const statsPromise = catchNonFatal(
-    getParkStatsForPage(continent, country, city, parkSlug).then((stats) => ({ stats }))
-  );
-  const [seasons, statsAvailable, statsRead] = await Promise.all([
-    seasonsPromise,
-    statsAvailablePromise,
-    statsPromise,
-  ]);
-  const statsShape = statsRead ? parkStatsShape(statsRead.stats) : undefined;
+  const [seasons, statsAvailable] = await Promise.all([seasonsPromise, statsAvailablePromise]);
 
   // The "with kids" page: whether this park has one (the gate reads the attractions the page
   // holds already, so it costs no fetch), and the `?height=` its steps link here with. The height
@@ -395,6 +383,14 @@ export default async function ParkPage({ params, searchParams }: ParkPageProps) 
   // Safe to read the server clock because this route is `force-dynamic` —
   // there is no ISR window for the value to be pinned in.
   const todayIso = parkDayOf(new Date(), park.timezone);
+
+  // The posts the title card offers: the visit guide for its window and the newest news of the
+  // last 30 days for the rail under it.
+  const geoPath = `${continent}/${country}/${city}`;
+  const headerGuide = getGuideForPark(locale as Locale, parkSlug, { geoPath });
+  const headerNews = getFreshNewsForPark(locale as Locale, parkSlug, freshNewsSince(todayIso), {
+    geoPath,
+  });
 
   const attractionsByLand = groupAttractionsByLand(
     park.attractions || [],
@@ -495,10 +491,9 @@ export default async function ParkPage({ params, searchParams }: ParkPageProps) 
         countryName={countryName}
         breadcrumbs={breadcrumbs}
         currentPage={parkCurrentPage}
-        // On a phone the address line's links are the way one level up — see `cityHref`.
-        phoneBreadcrumb="hidden"
         pagePath={`/parks/${continent}/${country}/${city}/${parkSlug}`}
-        statsShape={statsShape}
+        // Today is this page's subject; the history and the outlook are the crowd calendar's.
+        hideStats
         // The two chapters that belong to the PARK rather than to any one of its pages, handed in
         // rather than switched on: what the shell imports, every route that uses it pays for in
         // routed translations — see `blogSection`/`faqSection` there.
@@ -510,24 +505,6 @@ export default async function ParkPage({ params, searchParams }: ParkPageProps) 
             parkName={parkName}
             className={CHAPTER_GAP_COMPACT}
           />
-        }
-        /* How busy the next twelve months look — the one chapter that reaches past the rolling
-           90 days `/best-days` is capped at. Streamed in its own boundary: the forecast is a
-           day-cached read, but a cold one falls through to an ML rebuild, and this chapter sits
-           eight screens down. The placeholder is the same chapter over an empty frame, so it
-           reserves the real height rather than a typed-in number. */
-        outlookSection={
-          <Suspense fallback={<ParkYearlyOutlookSkeleton todayIso={todayIso} locale={locale} />}>
-            <ParkYearlyOutlookSection
-              continent={continent}
-              country={country}
-              city={city}
-              parkSlug={parkSlug}
-              coverageTo={park.scheduleCoverage?.to}
-              todayIso={todayIso}
-              locale={locale}
-            />
-          </Suspense>
         }
         faqSection={
           /* No `<Separator>` in front of it any more: the FAQ is a `ChapterPanel` now, so it
@@ -607,6 +584,12 @@ export default async function ParkPage({ params, searchParams }: ParkPageProps) 
               ...parkArgs(locale as Locale, parkName, park.nameArticleDe),
               city: cityName,
             })}
+            windowPane={
+              <ParkHeaderWindow guide={headerGuide} photo={getParkBackgroundImage(parkSlug)} />
+            }
+            note={
+              headerNews ? <ParkNewsBand locale={locale as Locale} news={headerNews} /> : undefined
+            }
           />
         }
       >
