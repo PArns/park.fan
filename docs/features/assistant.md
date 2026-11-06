@@ -427,7 +427,7 @@ The face works as without an outfit. Where an act and an outfit compete, one tab
 (`SETS_ASIDE`, read by `outfitFor`): the nightcap and the lit wheel send the season's hat away for
 their length; a ride and the dizziness after it fold the umbrella, and so does anything in his
 hands (reading, the clipboard, the book of a lookup, the magnifying glass, the snow globe, the
-snowman, the fan). A new act that uses his hands gets a row there.
+snowman, the fan, the clapping). A new act that uses his hands gets a row there.
 
 While a context holds, `showyPool` adds tickets to the showy pool and never takes one away: at
 Halloween a little ghost rises behind him (`ghost`), at Christmas he shakes a snow globe
@@ -435,7 +435,9 @@ Halloween a little ghost rises behind him (`ghost`), at Christmas he shakes a sn
 builds a snowman beside him (`snowman`: three snowballs, coal eyes and buttons, the carrot nose
 last, a tiny Ferris wheel for a hat, then it melts), in rain he twirls the umbrella (`brolly`), in
 the cold he shivers with chattering teeth (`shiver`), in heat he fans himself (`fan`) and the
-sunglasses get two more tickets. A scene that reaches beyond him (the snowman to the left, the
+sunglasses get two more tickets. While one of the page's park's shows is on (from its start for
+`SHOW_RUN_MIN`, 30 minutes, since the API sends no end; `showRunning`, set by `useParkyLive` through
+`setParkyShow` and checked again with every poll), `applause` gets two tickets. A scene that reaches beyond him (the snowman to the left, the
 fireworks above) only plays where it fits on screen (`sceneFits`), as a ride does. Without motion
 every piece stands still and each scene shows finished.
 
@@ -482,7 +484,7 @@ its corner offset. These lines go in it, from the `assistant` namespace:
   | Source       | When                                                                  | Lines                                                                                           |
   | ------------ | --------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
   | `entrance`   | first slot, after an entrance, a beat after landing                   | `entranceScurry`, `entranceDrop`, `entranceRoll`, `entrancePeek`, `entrancePop`                 |
-  | `live`       | a park's page, once a park a session, level with the weather          | `liveWalkOn1`–`3`, `liveQueue1`–`3`, `liveFull1`–`3`, `liveClosed1`–`3`                         |
+  | `live`       | a park's page, once a park a session, level with the weather          | `liveWalkOn1`–`3`, `liveQueue1`–`3`, `liveFull1`–`3`, `liveClosed1`–`3`, `liveShow1`–`3`        |
   | `clock`      | a park's page, once a park a session, in the clock's windows          | `clockRopeDrop1`–`3`, `clockClosing1`–`3`                                                       |
   | `holiday`    | first slot, on one of Parky's holidays                                | `holidayHalloween`, `holidayChristmas`, `holidayNewYear`                                        |
   | `fact`       | last slot, on a park's page or the homepage (`?parky=fact`: any slot) | `factLongest1`–`3`, `factGap1`–`2`, `factQuietest1`–`3`, `factBusiest1`–`3`, `factAverage1`–`3` |
@@ -492,7 +494,8 @@ its corner offset. These lines go in it, from the `assistant` namespace:
   A new kind of scheduled line goes into that list at its rank. One that falls due over another
   line, while Parky sleeps or while a search is open tries again 5 s later. `?parky=live`,
   `?parky=clock` and `?parky=fact` put their source first in whichever slot comes, past its
-  once-a-session rule. Forced, `live` counts any open queue as long and `clock` drops its windows,
+  once-a-session rule; `?parky=show` does the same for `live` and says the show line whenever the
+  park has a show still to start today, however far off. Forced, `live` counts any open queue as long and `clock` drops its windows,
   so an open park shows the line and it may overstate the moment; a park before opening has no live
   line even then. Two rules settle a tie: `live` comes before
   `clock` (what the queues say now is the more useful news, and the clock takes the next slot),
@@ -511,6 +514,13 @@ its corner offset. These lines go in it, from the `assistant` namespace:
   | a headliner open at 10 minutes or less              | `airtime`              | `liveWalkOn1`–`3` |
   | the park's crowd level is very high or extreme      | `squashed` mood, 2.4 s | `liveFull1`–`3`   |
   | the longest open queue is over 60 minutes           | `grumpy`               | `liveQueue1`–`3`  |
+  | a show starts in 15 to 30 minutes                   | `applause`             | `liveShow1`–`3`   |
+
+  The show times are today's showtimes in the live poll's `shows` (ISO instants with the park's
+  offset, kept across the polls that leave the block out), a show reading `CLOSED` left out;
+  `SHOW_SOON_MIN` holds the window. `liveShow3` points at the bell on the show for a reminder.
+  Clapping, Parky stands in a spotlight cone between the edges of a red curtain, with a few
+  sparkles (`ParkySpotlight`).
 
   While the page stays open, each poll is compared with the last (`liveChange`). A headliner that
   goes down gets a `startle` and `liveDown1`–`3`, which point at the bell on the ride for its

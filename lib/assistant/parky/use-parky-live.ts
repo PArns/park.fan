@@ -7,7 +7,8 @@ import type { LiveParkSnapshot } from '@/lib/api/parks';
 import { useLiveParkData } from '@/lib/hooks/use-live-park-data';
 import { pickRandom } from '@/lib/utils/pick-random';
 import { parkPageOf, parkPathOf } from './easter-eggs';
-import { LIVE_LINES, liveActDue, liveChange } from './live';
+import { LIVE_LINES, liveActDue, liveChange, showRunning } from './live';
+import { setParkyShow } from './use-parky-look';
 import type { ParkyPlay } from './acts';
 import {
   answeredWithLine,
@@ -29,7 +30,8 @@ type ParkTarget = NonNullable<ReturnType<typeof parkPageOf>>;
  * (`liveChange`), he plays its act, at most once every `LIVE_ACT_GAP_MS`. A headliner going down
  * or its queue dropping sharply also gets a line once a session each, never over another line:
  * the ride down points at the bell on its card. The lines count against the session's reactions
- * and stay away once lines were closed by hand.
+ * and stay away once lines were closed by hand. While one of the park's shows is on, he claps
+ * along more often (`setParkyShow`), checked again with every poll.
  */
 export function useParkyLive({
   entering,
@@ -53,6 +55,11 @@ export function useParkyLive({
   const path = target ? parkPathOf(pathname) : null;
   const { data } = useLiveParkData({ ...(target ?? noPark), enabled: false });
   const park = path ? (data as unknown as LiveParkSnapshot | undefined) : undefined;
+
+  useEffect(() => {
+    setParkyShow(!!park && showRunning(park, Date.now()));
+    return () => setParkyShow(false);
+  }, [park]);
 
   const latest = useRef({ entering, busy, say, act, headliners, target });
   useEffect(() => {

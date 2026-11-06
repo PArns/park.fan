@@ -5,10 +5,10 @@ import { stripNewPrefix } from '@/lib/utils';
 import type { ParkyPlay } from './acts';
 
 /**
- * What the live waits on a park's page give Parky to say once: a headliner is a walk-on, a queue
- * runs over an hour, the park is very full, or it is shut today.
+ * What the live data on a park's page gives Parky to say once: a headliner is a walk-on, a queue
+ * runs over an hour, the park is very full, it is shut today, or a show starts soon.
  */
-export type LiveMoment = 'walkOn' | 'queue' | 'full' | 'closed';
+export type LiveMoment = 'walkOn' | 'queue' | 'full' | 'closed' | 'show';
 
 /** What can happen between two live polls while the page is open, beside a {@link LiveMoment}. */
 export type LiveChange = 'down' | 'drop';
@@ -25,6 +25,15 @@ export const LIVE_LIMITS = { walkOn: 10, queue: 60, drop: 20 } as const;
  */
 const PREVIEW_LIMITS = { walkOn: LIVE_LIMITS.walkOn, queue: 0 } as const;
 
+/**
+ * A show starting this many minutes from now, both ends included, is worth a line: soon enough to
+ * matter, far enough off to get a seat.
+ */
+export const SHOW_SOON_MIN = { from: 15, to: 30 } as const;
+
+/** How long a show counts as running after its start; the API sends no end or duration. */
+export const SHOW_RUN_MIN = 30;
+
 const FULL: readonly CrowdLevel[] = ['very_high', 'extreme'];
 
 /**
@@ -35,9 +44,9 @@ export const LIVE_ACT_GAP_MS = 4 * 60_000;
 
 /**
  * What Parky says about each reading (`assistant` namespace, with `{park}`, `{ride}` and
- * `{wait}`), each with the act it goes with: airtime for a walk-on, grumpy at a long queue,
- * squashed in a full park, a nap or a book on a closed day, a startle when a ride goes down and a
- * hop when its queue drops. A change that newly brings a moment plays that moment's act, without
+ * `{wait}`, a show's with `{show}` and `{minutes}`), each with the act it goes with: airtime for a
+ * walk-on, grumpy at a long queue, squashed in a full park, a nap or a book on a closed day,
+ * applause before a show, a startle when a ride goes down and a hop when its queue drops. A change that newly brings a moment plays that moment's act, without
  * its line.
  */
 export const LIVE_LINES: Record<
@@ -55,6 +64,7 @@ export const LIVE_LINES: Record<
     { key: 'liveClosed2', act: 'read' },
     { key: 'liveClosed3', act: 'read' },
   ],
+  show: ['liveShow1', 'liveShow2', 'liveShow3'].map((key) => ({ key, act: 'applause' as const })),
   down: ['liveDown1', 'liveDown2', 'liveDown3'].map((key) => ({ key, act: 'startle' as const })),
   drop: ['liveDrop1', 'liveDrop2', 'liveDrop3'].map((key) => ({ key, act: 'hop' as const })),
 };
@@ -71,11 +81,51 @@ export function headlinersOf(
   return favourite ? [favourite, ...names] : names;
 }
 
-/** One reading of the live data: the moment or change, and the ride and wait it is about. */
+/**
+ * One reading of the live data: the moment or change, and the ride and wait or the show and the
+ * minutes until it starts that it is about.
+ */
 export interface LiveReading<K extends string = LiveMoment | LiveChange> {
   kind: K;
   ride?: string;
   wait?: number;
+  show?: string;
+  minutes?: number;
+}
+
+/** Every start of today's shows in the live data, in epoch ms, with the show's name. */
+function showStarts(park: LiveParkSnapshot): { show: string; at: number }[] {
+  return (park.shows ?? []).flatMap((show) =>
+    show.status === 'CLOSED'
+      ? []
+      : (show.showtimes ?? []).flatMap(({ startTime }) => {
+          const at = Date.parse(startTime);
+          return Number.isNaN(at) ? [] : [{ show: stripNewPrefix(show.name), at }];
+        })
+  );
+}
+
+/**
+ * The next show that starts within {@link SHOW_SOON_MIN} of `now`, or with `anyLater` (`?parky=show`)
+ * the next one still to start today; `null` when there is none.
+ */
+export function showSoon(
+  park: LiveParkSnapshot,
+  now: number,
+  anyLater = false
+): LiveReading<'show'> | null {
+  const next = showStarts(park)
+    .map(({ show, at }) => ({ show, minutes: Math.round((at - now) / 60_000) }))
+    .filter(({ minutes }) =>
+      anyLater ? minutes > 0 : minutes >= SHOW_SOON_MIN.from && minutes <= SHOW_SOON_MIN.to
+    )
+    .sort((a, b) => a.minutes - b.minutes)[0];
+  return next ? { kind: 'show', ...next } : null;
+}
+
+/** Whether one of the park's shows is on right now: started, and less than {@link SHOW_RUN_MIN} ago. */
+export function showRunning(park: LiveParkSnapshot, now: number): boolean {
+  return showStarts(park).some(({ at }) => at <= now && now < at + SHOW_RUN_MIN * 60_000);
 }
 
 interface Ride {
@@ -114,16 +164,23 @@ function longestQueue(rides: Ride[]): Ride | null {
 
 /**
  * The moment the park's live data gives right now, best first: shut today, a headliner that is a
- * walk-on, a very full park, a queue over an hour; `null` when none holds. `headliners` are ride
- * names (the park's favourite and its top attractions); `closedToday` comes from the opening hours.
- * `preview` (`?parky=live`) counts any open queue as long.
+ * walk-on, a very full park, a queue over an hour, a show starting soon; `null` when none holds.
+ * `headliners` are ride names (the park's favourite and its top attractions); `closedToday` comes
+ * from the opening hours. `preview` (`?parky=live`) counts any open queue as long. The shows count
+ * only with `shows`, the clock to read them at; its `preview` (`?parky=show`) takes any show still
+ * to start today, ahead of every other moment.
  */
 export function liveMoment(
   park: LiveParkSnapshot,
   headliners: readonly string[],
   closedToday: boolean,
-  preview = false
+  preview = false,
+  shows?: { now: number; preview?: boolean }
 ): LiveReading<LiveMoment> | null {
+  if (shows?.preview) {
+    const show = showSoon(park, shows.now, true);
+    if (show) return show;
+  }
   if (closedToday && park.status !== 'OPERATING') return { kind: 'closed' };
   if (park.status !== 'OPERATING') return null;
   const limits = preview ? PREVIEW_LIMITS : LIVE_LIMITS;
@@ -139,7 +196,7 @@ export function liveMoment(
   if (queue && queue.wait! > limits.queue) {
     return { kind: 'queue', ride: queue.name, wait: queue.wait! };
   }
-  return null;
+  return shows ? showSoon(park, shows.now) : null;
 }
 
 /**

@@ -3,12 +3,35 @@
 import { useEffect, useRef } from 'react';
 import { LOOP, REST, RIDE_MOTION, TURNTABLE, type ParkyRide } from '@/lib/assistant/parky/rides';
 import { animateParky } from '@/lib/assistant/parky/motion';
-import { GRIN, HAPPY_EYES, HEART, blue, frame, gold, heartRed, ink, pink, rail } from './drawing';
+import {
+  GRIN,
+  HAPPY_EYES,
+  HEART,
+  STAR,
+  blue,
+  frame,
+  gold,
+  heartRed,
+  ink,
+  pink,
+  rail,
+} from './drawing';
 
 const wood = 'oklch(0.6 0.1 60)';
 const water = 'oklch(0.72 0.12 230)';
 const spray = 'oklch(0.93 0.05 225)';
 const teacupPink = 'oklch(0.78 0.13 355)';
+const curtain = 'oklch(0.52 0.19 25)';
+const curtainFold = 'oklch(0.4 0.15 22)';
+
+/** The left curtain's edge, a drape with a wavy hem; the right one is its mirror image. */
+const CURTAIN = 'M-1-6H5q-2 7 0 14t0 14 0 14 0 14H-1Z';
+/** Where the sparkles round a show twinkle, as offsets from {@link STAR}'s own centre. */
+const SPARKLES = [
+  { x: 5, y: 3 },
+  { x: 43, y: 14 },
+  { x: 6, y: 27 },
+];
 
 /**
  * Where the drops of the flume's splash fly to from where the boat hits the water, out past both
@@ -190,6 +213,35 @@ function Chomp() {
 }
 
 /**
+ * The stage a show puts behind Parky for `applause`: a spotlight cone from above with its pool of
+ * light at his feet, a red curtain's edge on either side and a few sparkles. Drawn behind the
+ * body, so he stands in the light.
+ */
+export function ParkySpotlight() {
+  return (
+    <g className="parky-stage">
+      {[0, 1].map((side) => (
+        <g key={side} transform={side ? 'matrix(-1 0 0 1 48 0)' : undefined}>
+          <path d={CURTAIN} fill={curtain} />
+          <path d="M1.5-6v56M3.5-6v56" stroke={curtainFold} strokeWidth=".6" />
+        </g>
+      ))}
+      <path d="M20-8h8l18 58H2Z" fill={gold} fillOpacity=".38" />
+      <path d="M20-8 2 50M28-8l18 58" stroke={gold} strokeOpacity=".7" strokeWidth=".6" />
+      <ellipse cx="24" cy="48.5" rx="19" ry="2.6" fill={gold} fillOpacity=".45" />
+      <rect x="19.5" y="-11" width="9" height="4" rx="1.5" fill={ink} />
+      <g fill={gold} stroke="oklch(0.6 0.13 70)" strokeWidth=".4">
+        {SPARKLES.map((spot) => (
+          <g key={spot.x} transform={`translate(${spot.x - 17} ${spot.y - 3})`}>
+            <path className="parky-sparkle" d={STAR} />
+          </g>
+        ))}
+      </g>
+    </g>
+  );
+}
+
+/**
  * What Parky holds or wears for a moment of a park day, drawn over his face; `null` for an act
  * without one. The motion is the stylesheet's (`.parky-act-<act>`); under reduced motion the prop
  * simply shows for the act.
@@ -202,6 +254,8 @@ function Chomp() {
  * - `slurp`: a clear cup with a straw to his pursed mouth, the drink going down, bubbles rising.
  * - `grumpy`: arms crossed, brows down, a frown and a small cloud of steam.
  * - `airtime`: the open grin and streaks under him as he floats up for joy.
+ * - `applause`: two little white gloves clapping in front of him, a spark where they meet; the stage
+ *   behind him is {@link ParkySpotlight}.
  */
 export function ParkyMoment({ act }: { act: string | null }) {
   switch (act) {
@@ -464,6 +518,30 @@ export function ParkyMoment({ act }: { act: string | null }) {
             strokeWidth="1.4"
             strokeLinecap="round"
           />
+        </>
+      );
+    case 'applause':
+      return (
+        <>
+          {[0, 1].map((side) => (
+            <g key={side} transform={side ? 'matrix(-1 0 0 1 48 0)' : undefined}>
+              <g className="parky-clap">
+                <ellipse
+                  cx="21.3"
+                  cy="40"
+                  rx="2.7"
+                  ry="3.3"
+                  fill="white"
+                  stroke={ink}
+                  strokeWidth=".9"
+                />
+                <circle cx="19.5" cy="37.7" r="1.1" fill="white" stroke={ink} strokeWidth=".7" />
+              </g>
+            </g>
+          ))}
+          <g transform="translate(7 33.4)">
+            <path className="parky-clap-spark" d={STAR} fill={gold} />
+          </g>
         </>
       );
     default:

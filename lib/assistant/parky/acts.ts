@@ -56,6 +56,7 @@ export const ACT_MS = {
   slurp: 3600,
   airtime: 2200,
   grumpy: 3200,
+  applause: 3200,
 } as const satisfies Record<string, number> &
   Record<ParkyRide, number> &
   Record<ParkyReactionAct, number> &
@@ -120,7 +121,8 @@ export function actFor(act: ParkyAct | 'ride', box: DOMRect | undefined): ParkyA
  *   ticket: two for each of his tricks (a spin, a twirl, the sunglasses, the lit wheel, a dance, a
  *   quick nod-off …), one for each moment of a park day (cotton candy, a churro, a balloon, the
  *   map, a photo, a drink, airtime), and seven `ride`s, so about one showy act in five is a ride.
- *   `grumpy` is no ticket: it answers long queues.
+ *   `grumpy` is no ticket: it answers long queues; nor is `applause`, which comes before a show and
+ *   gets tickets while one is on (`showyPool`).
  * - `sleepy`: after a minute without anybody moving, until he falls asleep at a minute and a half.
  * - asleep he now and then dreams (`DREAMS`).
  */

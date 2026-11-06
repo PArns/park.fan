@@ -100,6 +100,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `ParkyRideTrack` _component_: The rails a ride runs on, drawn behind Parky so they stand while he moves: the loop's two rails with ties between them, the tower's mast, the flume's water channel with its splash, the teacups' turntable, or the track a ride's geometry …
 - `ParkyVehicle` _component_: What Parky rides in, its foot on the rail at the resting point: the red car, the flume's log boat or a pink teacup.
+- `ParkySpotlight` _component_: The stage a show puts behind Parky for `applause`: a spotlight cone from above with its pool of light at his feet, a red curtain's edge on either side and a few sparkles. Drawn behind the body, so he stands in the light.
 - `ParkyMoment` _component_: What Parky holds or wears for a moment of a park day, drawn over his face; `null` for an act without one. The motion is the stylesheet's (`.parky-act-<act>`); under reduced motion the prop simply shows for the act.
 
 ### [`parky/use-gaze.ts`](../../components/assistant/parky/use-gaze.ts)

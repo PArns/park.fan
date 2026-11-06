@@ -20,8 +20,8 @@ export interface LineSlot {
    */
   parkNews: boolean;
   /**
-   * `?parky=`, which forces a source to try it out: `fact`, `live`, `clock`, or `egg` for the park
-   * line.
+   * `?parky=`, which forces a source to try it out: `fact`, `live`, `clock`, `show` for the live
+   * line about a show, or `egg` for the park line.
    */
   forced: string | null;
 }
@@ -45,7 +45,7 @@ const LINE_PRIORITY: readonly { source: LineSource; when: (s: LineSlot) => boole
   { source: 'entrance', when: (s) => s.slot === 0 && s.arrival },
   {
     source: 'live',
-    when: (s) => s.page === 'park' && (s.forced === 'live' || !s.parkNews),
+    when: (s) => s.page === 'park' && (s.forced === 'live' || s.forced === 'show' || !s.parkNews),
   },
   { source: 'clock', when: (s) => s.page === 'park' },
   { source: 'holiday', when: (s) => s.slot === 0 && s.holiday },
@@ -64,6 +64,7 @@ const LINE_PRIORITY: readonly { source: LineSource; when: (s: LineSlot) => boole
  */
 export function lineSources(slot: LineSlot): LineSource[] {
   const sources = LINE_PRIORITY.filter((entry) => entry.when(slot)).map((entry) => entry.source);
-  const forced = sources.find((source) => source === slot.forced);
+  const asked = slot.forced === 'show' ? 'live' : slot.forced;
+  const forced = sources.find((source) => source === asked);
   return forced ? [forced, ...sources.filter((source) => source !== forced)] : sources;
 }

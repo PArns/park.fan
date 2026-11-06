@@ -109,6 +109,18 @@ assert.equal(winterSnow.filter((act) => act === 'snowman').length, 4);
 assert.ok(showyPool(base, { season: 'halloween', weather: null }).includes('ghost'));
 assert.ok(showyPool(base, { season: 'newyear', weather: 'rain' }).includes('fireworks'));
 assert.ok(showyPool(base, { season: 'newyear', weather: 'rain' }).includes('brolly'));
+const onStage = showyPool(base, { season: 'christmas', weather: null, show: true });
+assert.equal(onStage.filter((act) => act === 'applause').length, 2, 'a show on adds two applause');
+assert.equal(onStage.filter((act) => act === 'snowglobe').length, 2, 'beside the season');
+assert.ok(
+  !showyPool(base, { ...NO_LOOK, show: false }).includes('applause'),
+  'no show, no applause'
+);
+assert.equal(
+  outfitFor({ season: null, weather: 'rain' }, 'applause').umbrella,
+  false,
+  'clapping hands'
+);
 for (const weather of WEATHERS) assert.ok(WEATHER_ACT[weather], `${weather} has an act`);
 
 // A scene beside him needs the room.

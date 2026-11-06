@@ -50,7 +50,7 @@ import {
   pink,
 } from './drawing';
 import { DREAM_MS, ParkyDreamCloud } from './dreams';
-import { ParkyMoment, ParkyRideTrack, ParkyVehicle } from './props';
+import { ParkyMoment, ParkyRideTrack, ParkySpotlight, ParkyVehicle } from './props';
 import { useGaze } from './use-gaze';
 import { useIdleAct } from './use-idle-act';
 import { LENS_OUT_MS, PUZZLED_MS, useSearchAlong } from './use-search-along';
@@ -336,6 +336,7 @@ export function ParkyLogo({
         </g>
       )}
       {ride && <ParkyRideTrack ride={ride} />}
+      {act === 'applause' && <ParkySpotlight />}
       {act === 'startle' && (
         <g className="parky-alarm" fill={blue}>
           <path d="M7.5 0v5.2" stroke={blue} strokeWidth="2" strokeLinecap="round" />

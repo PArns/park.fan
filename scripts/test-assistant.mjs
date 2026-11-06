@@ -62,6 +62,10 @@ import {
   liveActDue,
   liveChange,
   liveMoment,
+  SHOW_RUN_MIN,
+  SHOW_SOON_MIN,
+  showRunning,
+  showSoon,
 } from '@/lib/assistant/parky/live.ts';
 import {
   CLOCK_PARK_KEYS,
@@ -775,6 +779,11 @@ check(topCoaster([]), null, 'no ranking, no ride');
     ['live', 'clock', 'invitation'],
     '?parky=live past the news already said'
   );
+  check(
+    lineSources({ ...slot, page: 'park', parkNews: true, forced: 'show' }),
+    ['live', 'clock', 'invitation'],
+    '?parky=show puts the live line first, past the news already said'
+  );
   check(lineSources({ ...slot, slot: 1, page: 'home' }), ['fact', 'invitation'], 'home: a fact');
   check(lineSources({ ...slot, slot: 1 }), ['invitation'], 'no fact on other pages');
   check(
@@ -875,6 +884,95 @@ check(topCoaster([]), null, 'no ranking, no ride');
     'Taron',
     'names without their "New" prefix'
   );
+
+  // Shows: the window before a start, the order among the moments, and a show on right now.
+  const now = Date.parse('2026-11-06T15:00:00+08:00');
+  const at = (minutes) => new Date(now + minutes * 60_000).toISOString();
+  const show = (name, minutes, status = 'OPERATING') => ({
+    id: name,
+    name,
+    status,
+    showtimes: minutes.map((m) => ({ startTime: at(m) })),
+  });
+  const quiet = (shows) => park([ride('Taron', 'OPERATING', 30)], { shows });
+  check(
+    showSoon(quiet([show('Parade', [SHOW_SOON_MIN.from])]), now),
+    { kind: 'show', show: 'Parade', minutes: 15 },
+    'a show 15 minutes off is soon'
+  );
+  check(showSoon(quiet([show('Parade', [SHOW_SOON_MIN.to])]), now)?.minutes, 30, 'and 30 still');
+  check(showSoon(quiet([show('Parade', [14, 31])]), now), null, 'outside the window, nothing');
+  check(
+    showSoon(quiet([show('Late', [25]), show('Early', [-60, 20])]), now),
+    { kind: 'show', show: 'Early', minutes: 20 },
+    'the next show of all, from any of its showtimes'
+  );
+  check(showSoon(quiet([show('Gone', [20], 'CLOSED')]), now), null, 'a closed show is no show');
+  check(
+    showSoon(quiet([show('Tonight', [240])]), now, true),
+    { kind: 'show', show: 'Tonight', minutes: 240 },
+    '?parky=show takes any show still to start'
+  );
+  check(showSoon(quiet([show('Earlier', [-5])]), now, true), null, 'but none that started');
+  check(
+    liveMoment(quiet([show('Parade', [20])]), heads, false, false, { now }),
+    { kind: 'show', show: 'Parade', minutes: 20 },
+    'a show soon when nothing else holds'
+  );
+  check(
+    liveMoment(quiet([show('Parade', [20])]), heads, false),
+    null,
+    'shows count only with a clock to read them at'
+  );
+  check(
+    liveMoment(
+      park([ride('Taron', 'OPERATING', 75)], { shows: [show('Parade', [20])] }),
+      heads,
+      false,
+      false,
+      { now }
+    )?.kind,
+    'queue',
+    'a long queue before a show'
+  );
+  check(
+    liveMoment(
+      park([ride('Taron', 'OPERATING', 5)], { shows: [show('Parade', [20])] }),
+      heads,
+      false,
+      false,
+      { now }
+    )?.kind,
+    'walkOn',
+    'a walk-on before a show'
+  );
+  check(
+    liveMoment(
+      park([ride('Taron', 'OPERATING', 5)], { shows: [show('Tonight', [240])] }),
+      heads,
+      false,
+      false,
+      { now, preview: true }
+    ),
+    { kind: 'show', show: 'Tonight', minutes: 240 },
+    '?parky=show ahead of every other moment'
+  );
+  check(
+    liveMoment(
+      park([], { status: 'CLOSED', shows: [show('Parade', [20], 'CLOSED')] }),
+      heads,
+      true,
+      false,
+      { now }
+    ),
+    { kind: 'closed' },
+    'a park shut today has no show line'
+  );
+  check(showRunning(quiet([show('Parade', [0])]), now), true, 'a show that starts now is on');
+  check(showRunning(quiet([show('Parade', [-SHOW_RUN_MIN + 1])]), now), true, 'and still on');
+  check(showRunning(quiet([show('Parade', [-SHOW_RUN_MIN])]), now), false, 'then over');
+  check(showRunning(quiet([show('Parade', [5])]), now), false, 'not on before it starts');
+  check(showRunning(park([]), now), false, 'no shows, none on');
 
   const before = park([ride('Taron', 'OPERATING', 60), ride('Black Mamba', 'OPERATING', 40)]);
   check(
