@@ -5,12 +5,9 @@ import { MessageCircle } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { assistantGate } from '@/lib/assistant/config';
 import { openParky } from '@/lib/assistant/open';
-import {
-  ParkyLogo,
-  actLength,
-  type ParkyAct,
-  type ParkyCue,
-} from '@/components/assistant/parky-logo';
+import { ParkyLogo } from '@/components/assistant/parky/parky-logo';
+import { actLength, type ParkyAct, type ParkyCue } from '@/lib/assistant/parky/acts';
+import { parkyStill } from '@/lib/assistant/parky/motion';
 import {
   SEASONS,
   showyPool,
@@ -18,8 +15,8 @@ import {
   WEATHERS,
   type ParkySeason,
   type ParkyWeather,
-} from '@/lib/assistant/parky-look';
-import { previewParkyLook, useParkyLook } from '@/lib/assistant/use-parky-look';
+} from '@/lib/assistant/parky/look';
+import { previewParkyLook, useParkyLook } from '@/lib/assistant/parky/use-parky-look';
 
 /**
  * Whether Parky shows here, inviting this visitor first: Parky's own page shows Parky to everybody
@@ -76,7 +73,7 @@ function useActLoop(tile: HTMLElement | null, acts: readonly ParkyAct[], delay: 
   const key = acts.join(' ');
   useEffect(() => {
     const queue = key ? (key.split(' ') as ParkyAct[]) : [];
-    if (!tile || !queue.length || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    if (!tile || !queue.length || parkyStill()) {
       return;
     }
     let timer: ReturnType<typeof setTimeout> | undefined;

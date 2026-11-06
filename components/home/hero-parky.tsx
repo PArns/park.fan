@@ -3,7 +3,7 @@
 import { useEffect, useLayoutEffect, useRef, useSyncExternalStore } from 'react';
 import { useTranslations } from 'next-intl';
 import { MessageCircle } from 'lucide-react';
-import { ParkyLogo } from '@/components/assistant/parky-logo';
+import { ParkyLogo } from '@/components/assistant/parky/parky-logo';
 import { assistantGate } from '@/lib/assistant/config';
 import { openParky } from '@/lib/assistant/open';
 import {

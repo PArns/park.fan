@@ -31,9 +31,9 @@ import {
 } from '@/lib/assistant/use-assistant-chat';
 import { useAssistantSession } from '@/lib/assistant/use-assistant-session';
 import { drawOpener, sessionOpener } from '@/lib/assistant/opener';
-import { parkPathOf } from '@/lib/assistant/easter-eggs';
+import { parkPathOf } from '@/lib/assistant/parky/easter-eggs';
 import { trackSiteEvent, type AssistantOpenSource } from '@/lib/analytics/site-analytics';
-import { ParkyLogo } from './parky-logo';
+import { ParkyLogo } from './parky/parky-logo';
 import { ASSISTANT_PHONE_QUERY, PARKY_LAYER } from './parky-layer';
 import { parkyJump } from '@/lib/assistant/parky-jump';
 import { AssistantMessageText } from './assistant-message-text';
@@ -45,7 +45,7 @@ import { usePushErrorMessage } from '@/components/push/use-push-error-message';
 import { AssistantCardView } from './assistant-card';
 import { useAssistantActions } from './use-assistant-actions';
 import type { AssistantActionChip } from '@/lib/assistant/actions';
-import type { ParkyReactionAct } from '@/lib/assistant/reactions';
+import type { ParkyReactionAct } from '@/lib/assistant/parky/reactions';
 
 const LOOKUP_KEY: Record<AssistantLookup, string> = {
   parks: 'lookupParks',

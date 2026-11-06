@@ -23,8 +23,8 @@ import {
   teasersShown,
   TEASER_SCHEDULE_MS,
 } from '@/lib/assistant/teaser-store';
-import { parkyBoredom } from '@/lib/assistant/parky-boredom';
-import { useParkyBoredom } from '@/lib/assistant/use-parky-boredom';
+import { parkyBoredom } from '@/lib/assistant/parky/boredom';
+import { useParkyBoredom } from '@/lib/assistant/parky/use-parky-boredom';
 import { useSearchOpen } from '@/lib/analytics/search-presence';
 import type { ParkyEntrance } from '@/lib/assistant/entrance';
 import {
@@ -38,15 +38,15 @@ import {
   parkySwitch,
   topCoaster,
   type ParkyHoliday,
-} from '@/lib/assistant/easter-eggs';
+} from '@/lib/assistant/parky/easter-eggs';
 import { parkStatsQuery, type ParkStatsTarget } from '@/lib/hooks/use-park-stats-queries';
 import { deriveParkStatsFindings } from '@/lib/parks/park-stats-derive';
-import { parkyFacts } from '@/lib/assistant/parky-facts';
-import { lineSources, type LineSource } from '@/lib/assistant/line-priority';
-import { reactionTo, type ParkyReaction } from '@/lib/assistant/reactions';
+import { parkyFacts } from '@/lib/assistant/parky/facts';
+import { lineSources, type LineSource } from '@/lib/assistant/parky/lines';
+import { reactionTo, type ParkyReaction } from '@/lib/assistant/parky/reactions';
 import { usePageLocked } from '@/lib/hooks/use-page-locked';
-import { useParkyWeather } from '@/lib/assistant/use-parky-weather';
-import type { ParkyCue } from './parky-logo';
+import { useParkyWeather } from '@/lib/assistant/parky/use-parky-weather';
+import type { ParkyCue } from '@/lib/assistant/parky/acts';
 import { PARKY_LAYER } from './parky-layer';
 import { PARKY_FALL_MS } from '@/lib/assistant/use-scroll-fling';
 import type { ParkyFling } from '@/lib/assistant/fling-tracker';

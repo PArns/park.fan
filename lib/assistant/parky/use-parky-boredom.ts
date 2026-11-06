@@ -1,7 +1,7 @@
 'use client';
 
 import { useSyncExternalStore } from 'react';
-import { parkyBoredom, type ParkyBoredom } from './parky-boredom';
+import { parkyBoredom, type ParkyBoredom } from './boredom';
 
 const noSubscription = () => () => {};
 const noBoredom = (): ParkyBoredom | null => null;

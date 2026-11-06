@@ -219,11 +219,25 @@ clock; the cards format their instants with the browser's own clock too.
 
 ## Parky's face
 
-`ParkyLogo` (`components/assistant/parky-logo.tsx`) draws Parky as an SVG; all its motion is CSS in
-`app/parky.css` (`.parky-*`) and runs only without `prefers-reduced-motion`. While the chat works
+Parky's code has two folders. What is drawn sits in `components/assistant/parky/`: `parky-logo.tsx`
+composes the face, `drawing.ts` holds the palette and shapes, `props.tsx`, `dreams.tsx` and
+`looks.tsx` the props, dreams and outfits, and the face's hooks are `use-gaze.ts`,
+`use-idle-act.ts` and `use-search-along.ts`. What decides sits in `lib/assistant/parky/`, free of
+React except for the `use-parky-*` hooks: `acts.ts` (every act, its length, the classes and their
+pauses), `rides.ts`, `look.ts`, `boredom.ts`, `facts.ts`, `lines.ts`, `reactions.ts`,
+`easter-eggs.ts` and `motion.ts`. The launcher, the window, the teaser and Parky's hops between
+them (`parky-jump.ts`, `parky-dock.ts`, `entrance.ts`, the fling) stay with the chat in
+`components/assistant/` and `lib/assistant/`.
+
+`ParkyLogo` (`components/assistant/parky/parky-logo.tsx`) draws Parky as an SVG; its motion is CSS
+in `app/parky.css` (`.parky-*`) and runs only without `prefers-reduced-motion`. The few motions
+that are web animations (a ride's path, the seat's airtime, the dream train) go through
+`animateParky` (`lib/assistant/parky/motion.ts`), which under reduced motion holds them at their
+finished pose, as the stylesheet leaves its own parts; `parkyStill()` there is the one
+reduced-motion check every Parky script asks. While the chat works
 it shows a mood: `thinking` with thought bubbles, `looking` into a book, `talking`. With nothing to
 do (the closed button, the open window between answers) it has a life of its own, paced by one
-store for the whole page, `parkyBoredom` (`lib/assistant/parky-boredom.ts`). Activity is a pointer
+store for the whole page, `parkyBoredom` (`lib/assistant/parky/boredom.ts`). Activity is a pointer
 move or press, a key, the mouse wheel or a touch.
 
 Its life of its own comes in classes, each with its own pace (`CLASS_ACTS`, `CLASS_PAUSE_MS`):
@@ -239,15 +253,15 @@ Its life of its own comes in classes, each with its own pace (`CLASS_ACTS`, `CLA
 | doing    | whenever something happens                | moods (`thinking`, `looking`, `talking`), searching along, and the cues that answer the visitor                                                                                                                                                                                               |
 
 The moments of a park day are props drawn over his face (`ParkyMoment` in
-`components/assistant/parky-props.tsx`): cotton candy at his right cheek with a bite gone at each
+`components/assistant/parky/props.tsx`): cotton candy at his right cheek with a bite gone at each
 chomp; a churro, two bites, a happy squint and a heart, because it is his favourite; a balloon that
 bobs, slips away and floats off while he watches it go; a three-panel park map unfolding with a dot
 pulsing where he is; a camera over his right eye, the left one shut, a click and a flash; a drink
 through a straw, the level dropping and bubbles rising. Airtime, his signature move, floats him up
 off the ground for joy, the hat a little higher still. `grumpy` (arms crossed, brows down, a frown,
 steam off the top of his head) is an act like the others but holds no ticket: it is meant for long
-queues on the page. The drawing's shared colours and shapes are in `parky-drawing.ts`, the dreams
-in `parky-dreams.tsx`.
+queues on the page. The drawing's shared colours and shapes are in `components/assistant/parky/drawing.ts`, the dreams
+in `dreams.tsx`.
 
 A showy act takes the place of the fidget that would come after it is due. That is the button in
 the corner. In the open window and in the homepage hero Parky is `calm`: awake he only blinks and
@@ -306,7 +320,7 @@ Airtime runs through the rides as a stop's `lift`: over the hills' crests, in th
 and over the flume's crest Parky floats up off his seat while the vehicle sinks back by as much and
 stays on the rail.
 
-The rides beyond the loop are worked out in `lib/assistant/parky-rides.ts`: one geometry gives both the rails
+The rides beyond the loop are worked out in `lib/assistant/parky/rides.ts`: one geometry gives both the rails
 drawn and the stops the car passes, played with the Web Animations API and turned about the wheels'
 resting point, so the two cannot drift apart. On the hills the car is slower near the top and
 faster low down. Eyes go wide and the mouth opens on every ride, and off every ride but the flume
@@ -385,8 +399,8 @@ motion the store answers `null` and Parky only shows its moods.
 ### Outfits
 
 Parky dresses for the time of year and, on a park's page, for the weather there
-(`lib/assistant/parky-look.ts`, drawn in `components/assistant/parky-looks.tsx`). Every Parky on
-the page reads the same look from `useParkyLook` (`lib/assistant/use-parky-look.ts`); the server
+(`lib/assistant/parky/look.ts`, drawn in `components/assistant/parky/looks.tsx`). Every Parky on
+the page reads the same look from `useParkyLook` (`lib/assistant/parky/use-parky-look.ts`); the server
 answers none, so the prerendered page and the first paint agree.
 
 | Season (`seasonOn`, browser calendar)  | Hat in the wheel's place                      |
@@ -459,7 +473,7 @@ its corner offset. These lines go in it, from the `assistant` namespace:
 
 - **The session's two slots**: 8 s after the button shows and again 90 s after that
   (`TEASER_SCHEDULE_MS`), two lines a session at most. Which line fills a slot is one list,
-  `lineSources` in `lib/assistant/line-priority.ts`, best first; the first source with a line for
+  `lineSources` in `lib/assistant/parky/lines.ts`, best first; the first source with a line for
   the page speaks, so a park whose statistics are too thin for a fact falls through to the next:
 
   | Source       | When                                                                  | Lines                                                                                           |
@@ -474,7 +488,7 @@ its corner offset. These lines go in it, from the `assistant` namespace:
   list at its rank. One that falls due over another line, while Parky sleeps or while a search is
   open tries again 5 s later.
 
-- **Facts** (`parkyFacts`, `lib/assistant/parky-facts.ts`): every sentence a park's two-year
+- **Facts** (`parkyFacts`, `lib/assistant/parky/facts.ts`): every sentence a park's two-year
   aggregate supports (`deriveParkStatsFindings`): the longest queue and its typical wait, how much
   longer it is than the park's typical queue (from 10 minutes), the quietest weekdays, the busiest
   months, the typical wait. Waits on the five-minute grid and never under five, days and months
@@ -485,7 +499,7 @@ its corner offset. These lines go in it, from the `assistant` namespace:
 - **Reactions**, read from the same `parkyBoredom`: a bored line (`teaserBored1`–`4`) after the
   first yawn, a woken line (`teaserWoke1`–`3`) once somebody wakes Parky. At most
   `REACTIONS_PER_SESSION` (3).
-- **Easter eggs** (`lib/assistant/easter-eggs.ts`): on Halloween, at Christmas and at New Year
+- **Easter eggs** (`lib/assistant/parky/easter-eggs.ts`): on Halloween, at Christmas and at New Year
   the first invitation is the day's own line (`holidayHalloween`, `holidayChristmas`,
   `holidayNewYear`, by the browser's calendar). On a park's own page, when its slot draws it, Parky
   says one of the park lines (with `{park}` and `{ride}`) and then plays the act it goes with: a
@@ -504,8 +518,8 @@ its corner offset. These lines go in it, from the `assistant` namespace:
   visitor's unit). It counts against `REACTIONS_PER_SESSION` and stays away once lines are muted.
   With a fine pointer, the pointer resting on Parky's nose (between and just under the eyes) makes
   it squint at it, both pupils turned in; circling it fast, two turns inside 1.5 s, makes it dizzy
-  (`useGaze` in `parky-logo.tsx`, the `dizzy` act through its own cue).
-- **Answers** (`lib/assistant/reactions.ts`): Parky answers what the visitor does, heard through
+  (`useGaze`, `components/assistant/parky/use-gaze.ts`, the `dizzy` act through its own cue).
+- **Answers** (`lib/assistant/parky/reactions.ts`): Parky answers what the visitor does, heard through
   `onSiteEvent`, which every `trackSiteEvent` call reaches whether or not the page counts, so no
   component is wired twice. Each answer is an act every time and a line once a session per kind
   (`answeredWithLine`, `countAnswer`):

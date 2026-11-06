@@ -1,19 +1,9 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
-import { LOOP, REST, RIDE_MOTION, TURNTABLE, type ParkyRide } from '@/lib/assistant/parky-rides';
-import {
-  GRIN,
-  HAPPY_EYES,
-  HEART,
-  blue,
-  frame,
-  gold,
-  heartRed,
-  ink,
-  pink,
-  rail,
-} from './parky-drawing';
+import { LOOP, REST, RIDE_MOTION, TURNTABLE, type ParkyRide } from '@/lib/assistant/parky/rides';
+import { animateParky } from '@/lib/assistant/parky/motion';
+import { GRIN, HAPPY_EYES, HEART, blue, frame, gold, heartRed, ink, pink, rail } from './drawing';
 
 const wood = 'oklch(0.6 0.1 60)';
 const water = 'oklch(0.72 0.12 230)';
@@ -38,7 +28,7 @@ const SPLASH_CROWN = 'M-27 0-25-11-21-4-18-17-14-6-10-14 0-4 10-14 14-6 18-17 21
 /**
  * The rails a ride runs on, drawn behind Parky so they stand while he moves: the loop's two rails
  * with ties between them, the tower's mast, the flume's water channel with its splash, the
- * teacups' turntable, or the track a ride's geometry gives (`lib/assistant/parky-rides.ts`).
+ * teacups' turntable, or the track a ride's geometry gives (`lib/assistant/parky/rides.ts`).
  */
 export function ParkyRideTrack({ ride }: { ride: ParkyRide }) {
   if (ride === 'coaster')
@@ -137,7 +127,8 @@ export function ParkyVehicle({ ride, ms }: { ride: ParkyRide; ms: number }) {
     if (ride === 'coaster' || !seat.current) return;
     const stops = RIDE_MOTION[ride].stops;
     if (!stops.some((stop) => stop.lift)) return;
-    const run = seat.current.animate(
+    const run = animateParky(
+      seat.current,
       stops.map((stop) => ({ offset: stop.at, transform: `translateY(${stop.lift ?? 0}px)` })),
       { duration: ms, fill: 'both' }
     );

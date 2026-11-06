@@ -41,7 +41,12 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `AssistantTeaser` _component_: A short line beside the closed Parky button ("Hey, ich bin Parky – klick mich an!"), at most twice a session and never once Parky was opened or a line was closed. A press on the line opens Parky.
 
-### [`parky-drawing.ts`](../../components/assistant/parky-drawing.ts)
+### [`parky-layer.ts`](../../components/assistant/parky-layer.ts)
+
+- `PARKY_LAYER` _const_: Parky's layer: button, speech bubble and window lie above everything else on the page, the header, the planner and the navigation bar's `z-[9999]` included. One class for all three.
+- `ASSISTANT_PHONE_QUERY` _const_: Below this width Parky's window takes the screen: the page behind it is locked, it stands in what the browser shows, and a step that leads elsewhere on the page closes it.
+
+### [`parky/drawing.ts`](../../components/assistant/parky/drawing.ts)
 
 - `ink` _const_: The ink of the pupils, the mouth and every outline drawn dark.
 - `blue` _const_: The brand's blue, where the bubble's gradient starts.
@@ -57,26 +62,27 @@ by hand: change the comment in the code and re-run the script. -->
 - `HEART` _const_: A heart about 10 units wide round the origin, for heart eyes and the ones floating up.
 - `GRIN` _const_: The open grin of a ride or a cheer, in place of the smile.
 - `HAPPY_EYES` _const_: A happy squint: both eyes turned up into arcs.
+- `EYES` _const_: The eyes' centres on the x axis, left and right.
+- `CABINS` _const_: The hat, a Ferris wheel set into Parky's head: the lowest cabin goes behind it, and the A-frame's right leg runs down the slope of the head, so the wheel stands in it rather than on top.
+- `SPOKES` _const_: The wheel's spokes, from each cabin across the hub to the one opposite.
+- `A_FRAME` _const_: The wheel's A-frame; the legs end inside the head, which is drawn over them.
+- `LENS` _const_: The magnifying glass Parky holds to its right eye while a search is open: the lens round the eye, the handle running off down to the right. It swings in from the handle's end.
+- `FERRULE` _const_: The metal band between the lens and the handle.
+- `HANDLE` _const_: The glass's wooden handle.
+- `HANDLE_END` _const_: The handle's far end, which the glass swings in from.
+- `CONFETTI` _const_: Confetti for a cheer: pieces shot up and out from behind the head, fanned from right to left, each with its own reach and spin, then falling away.
+- `FLOATERS` _const_: Where the two notes, or hearts, float up beside the right cheek.
+- `NIGHT_STARS` _const_: Where the night's two stars sit, as offsets of `STAR`: left of the moon, above the head.
+- `CHECKLIST_ROWS` _const_: The rows of the checklist Parky ticks off for a day plan.
 
-### [`parky-dreams.tsx`](../../components/assistant/parky-dreams.tsx)
+### [`parky/dreams.tsx`](../../components/assistant/parky/dreams.tsx)
 
 - `ParkyDreamCloud` _component_: Parky's dream in a cloud over his sleeping head, led to by three little puffs as his thoughts are (`DREAMS`).
 - `DREAMS` _const_: What Parky dreams of, in a cloud over his sleeping head: riding a coaster, cheering under confetti, a fairy-tale castle rising under a shooting star, fireworks over the castle, a log boat plunging into a splash, or a Ferris wheel at night …
 - `DREAM_MS` _const_: How long a dream lasts; the stylesheet reads it as `--parky-dream`.
 - Types: `ParkyDream`
 
-### [`parky-layer.ts`](../../components/assistant/parky-layer.ts)
-
-- `PARKY_LAYER` _const_: Parky's layer: button, speech bubble and window lie above everything else on the page, the header, the planner and the navigation bar's `z-[9999]` included. One class for all three.
-- `ASSISTANT_PHONE_QUERY` _const_: Below this width Parky's window takes the screen: the page behind it is locked, it stands in what the browser shows, and a step that leads elsewhere on the page closes it.
-
-### [`parky-logo.tsx`](../../components/assistant/parky-logo.tsx)
-
-- `ParkyLogo` _component_: Parky's face: a speech bubble in the brand's blue to green with big eyes that follow the mouse, rosy cheeks and a smile, and for a hat a Ferris wheel with coloured cabins on an A-frame.
-- `actLength` _function_: How long an act runs with the one that follows it, for a page that plays acts in turn.
-- Types: `ParkyAct`, `ParkyCue`, `ParkyMood`
-
-### [`parky-looks.tsx`](../../components/assistant/parky-looks.tsx)
+### [`parky/looks.tsx`](../../components/assistant/parky/looks.tsx)
 
 - `ParkyLookHat` _component_: The season's hat, drawn in the Ferris wheel's place and, like it, behind the head.
 - `ParkyLookWear` _component_: The pieces Parky wears under his face, drawn right after the bubble: the scarf, the woolly hat's brim, the umbrella, the sweat of a hot day.
@@ -85,11 +91,30 @@ by hand: change the comment in the code and re-run the script. -->
 - `ParkyLookHands` _component_: What Parky holds over his face during an act, drawn last in the body: the snow globe, the fan, the chattering teeth of a shiver.
 - `LOOK_GAZE` _const_: Where the pupils go during a scene: at the ghost, the fireworks, the snowman, the globe.
 
-### [`parky-props.tsx`](../../components/assistant/parky-props.tsx)
+### [`parky/parky-logo.tsx`](../../components/assistant/parky/parky-logo.tsx)
+
+- `ParkyLogo` _component_: Parky's face: a speech bubble in the brand's blue to green with big eyes that follow the mouse, rosy cheeks and a smile, and for a hat a Ferris wheel with coloured cabins on an A-frame.
+- Types: `ParkyMood`
+
+### [`parky/props.tsx`](../../components/assistant/parky/props.tsx)
 
 - `ParkyRideTrack` _component_: The rails a ride runs on, drawn behind Parky so they stand while he moves: the loop's two rails with ties between them, the tower's mast, the flume's water channel with its splash, the teacups' turntable, or the track a ride's geometry …
 - `ParkyVehicle` _component_: What Parky rides in, its foot on the rail at the resting point: the red car, the flume's log boat or a pink teacup.
 - `ParkyMoment` _component_: What Parky holds or wears for a moment of a park day, drawn over his face; `null` for an act without one. The motion is the stylesheet's (`.parky-act-<act>`); under reduced motion the prop simply shows for the act.
+
+### [`parky/use-gaze.ts`](../../components/assistant/parky/use-gaze.ts)
+
+- `useGaze` _hook_: The pupils' offset towards the pointer, so Parky looks at the mouse. Only for a fine pointer and without reduced motion; one frame at most per pointer move.
+
+### [`parky/use-idle-act.ts`](../../components/assistant/parky/use-idle-act.ts)
+
+- `useIdleAct` _hook_: Parky's life while nothing happens, from the page-wide `parkyBoredom`: a little act now and then with company, more and sleepier ones once bored, then eyes falling shut and sleep until somebody moves, which wakes it with a start.
+
+### [`parky/use-search-along.ts`](../../components/assistant/parky/use-search-along.ts)
+
+- `useSearchAlong` _hook_: Parky searching along while a search is open on the page (`useSearchOpen`): `searching` while one is, `done` for the moment the glass takes to go after it closed, `null` otherwise; `puzzled` for a moment after the search found nothing.
+- `LENS_OUT_MS` _const_: How long the glass takes to go once the search has closed; the stylesheet reads `--parky-act`.
+- `PUZZLED_MS` _const_: How long a question mark hangs over Parky after a search found nothing.
 
 ### [`use-assistant-actions.ts`](../../components/assistant/use-assistant-actions.ts)
 

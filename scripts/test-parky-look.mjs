@@ -1,5 +1,5 @@
 /**
- * Parky's outfits (`lib/assistant/parky-look.ts`): the season a date falls in, the look for the
+ * Parky's outfits (`lib/assistant/parky/look.ts`): the season a date falls in, the look for the
  * park's weather, what an act puts aside, the showy pool a look adds to, where a scene fits, and
  * the `?parky=` switch.
  *
@@ -16,7 +16,7 @@ import {
   WEATHER_ACT,
   weatherLook,
   WEATHERS,
-} from '@/lib/assistant/parky-look.ts';
+} from '@/lib/assistant/parky/look.ts';
 
 const on = (month, day) => new Date(2026, month - 1, day, 12);
 

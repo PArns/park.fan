@@ -1,5 +1,5 @@
 import { cn } from '@/lib/utils';
-import type { ParkyHat, ParkyOutfit, ParkyWeather } from '@/lib/assistant/parky-look';
+import type { ParkyHat, ParkyOutfit, ParkyWeather } from '@/lib/assistant/parky/look';
 
 /**
  * Parky's outfits and the acts that come with them, drawn in the 48-unit space of

@@ -1,5 +1,5 @@
 /*
- * Parky's face (`components/assistant/parky-logo.tsx`): a blink every few seconds, the Ferris-wheel
+ * Parky's face (`components/assistant/parky/parky-logo.tsx`): a blink every few seconds, the Ferris-wheel
  * hat turning while it writes, the mouth talking, and the closed button bobbing gently. The idle
  * acts last `--parky-act`, which the component sets from its own table, so a length lives there
  * only. With company Parky winks, looks around and tilts his head, and about every half minute
@@ -1147,7 +1147,7 @@
   transform-origin: left center;
   opacity: 0;
 }
-/* Where the pupils look (`useGaze`, a mood or an act), set by `parky-logo.tsx`. */
+/* Where the pupils look (`useGaze` in `use-gaze.ts`, a mood or an act), set by `parky-logo.tsx`. */
 .parky-gaze {
   transform: translate(var(--gaze-x, 0), var(--gaze-y, 0));
 }
@@ -1476,7 +1476,7 @@
     transform-origin: 24px 16px;
     animation: parky-coaster var(--parky-act) linear;
   }
-  /* The other rides are played from their geometry (`lib/assistant/parky-rides.ts`), turned
+  /* The other rides are played from their geometry (`lib/assistant/parky/rides.ts`), turned
      about the wheels' resting point. */
   .parky-act-launch,
   .parky-act-hills,
@@ -2028,7 +2028,7 @@
 }
 
 /*
- * Parky's outfits (`components/assistant/parky-looks.tsx`): the season's hat in the wheel's place,
+ * Parky's outfits (`components/assistant/parky/looks.tsx`): the season's hat in the wheel's place,
  * the scarf, the umbrella, the weather round him, and the acts that come with them. Every piece
  * stands finished without motion; the scenes only move with it.
  */
@@ -2344,7 +2344,7 @@
 }
 
 /*
- * Parky's park day (`components/assistant/parky-props.tsx`, `parky-dreams.tsx`): the log flume and
+ * Parky's park day (`components/assistant/parky/props.tsx`, `dreams.tsx`): the log flume and
  * the teacups, airtime on a ride and for joy, cotton candy, a churro, a balloon, the park map, a
  * photo, a drink, the grumpy face for long queues, and three more dreams. The tower's way up is
  * ridden with eyes shut. Without motion a prop simply shows for its act; what only makes sense

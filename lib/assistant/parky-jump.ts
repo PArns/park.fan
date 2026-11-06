@@ -1,4 +1,5 @@
 import { PARKY_TOP_CLEARANCE, parkyDock, type ParkySlotBox } from '@/lib/assistant/parky-dock';
+import { parkyStill } from '@/lib/assistant/parky/motion';
 
 /** How long Parky's hop between his corner and the chat window's top edge takes. */
 export const PARKY_JUMP_MS = 720;
@@ -48,7 +49,7 @@ const easeOut = (t: number) => 1 - (1 - t) * (1 - t);
 
 /** The hop's length for this browser: none with reduced motion. */
 export function parkyJumpMs(): number {
-  return window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : PARKY_JUMP_MS;
+  return parkyStill() ? 0 : PARKY_JUMP_MS;
 }
 
 /** The pose that puts an element measured at `rest` onto `target`, feet to feet. */

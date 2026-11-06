@@ -8,7 +8,7 @@ import { formatTempWithUnit } from '@/lib/utils/temperature';
 import { useTemperatureUnit } from '@/lib/contexts/temperature-unit-context';
 import { useWeatherNowcast } from '@/lib/hooks/use-weather-nowcast';
 import { parkPageOf, parkPathOf } from './easter-eggs';
-import { WEATHER_ACT, weatherLook, type ParkyWeather } from './parky-look';
+import { WEATHER_ACT, weatherLook, type ParkyWeather } from './look';
 import {
   answeredWithLine,
   countAnswer,
@@ -16,7 +16,7 @@ import {
   linesMuted,
   reactionsShown,
   REACTIONS_PER_SESSION,
-} from './teaser-store';
+} from '../teaser-store';
 import { setParkyWeather } from './use-parky-look';
 
 /** What Parky says about the park's weather, with `{park}` and, where it fits, `{temp}`. */

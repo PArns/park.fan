@@ -4,11 +4,11 @@
  * language switch leads (`lib/assistant/switch-locale.ts`, `open.ts`), the rollout gate
  * (`lib/assistant/config.ts`), the post
  * text it reads (`lib/assistant/post-text.ts`), how bored its face gets
- * (`lib/assistant/parky-boredom.ts`), how a chat opens (`lib/assistant/opener.ts`) and Parky's easter
- * eggs (`lib/assistant/easter-eggs.ts`, muting in `teaser-store.ts`), its rides
- * (`lib/assistant/parky-rides.ts`) and how it answers what the visitor does
- * (`lib/assistant/reactions.ts`, heard through `onSiteEvent`), its facts and which line fills a slot
- * (`lib/assistant/parky-facts.ts`, `line-priority.ts`), when a hard scroll throws it
+ * (`lib/assistant/parky/boredom.ts`), how a chat opens (`lib/assistant/opener.ts`) and Parky's easter
+ * eggs (`lib/assistant/parky/easter-eggs.ts`, muting in `teaser-store.ts`), its rides
+ * (`lib/assistant/parky/rides.ts`) and how it answers what the visitor does
+ * (`lib/assistant/parky/reactions.ts`, heard through `onSiteEvent`), its facts and which line fills a slot
+ * (`lib/assistant/parky/facts.ts`, `lines.ts`), when a hard scroll throws it
  * (`lib/assistant/fling-tracker.ts`), and the calendar, tiles and shows cards (`lib/assistant/cards.ts`).
  */
 
@@ -33,7 +33,7 @@ import {
   boredomAfter,
   nextBoredomInMs,
   parkyBoredom,
-} from '@/lib/assistant/parky-boredom.ts';
+} from '@/lib/assistant/parky/boredom.ts';
 import {
   drawOpener,
   GREETING_KEYS,
@@ -51,16 +51,16 @@ import {
   parkPageOf,
   parkPathOf,
   topCoaster,
-} from '@/lib/assistant/easter-eggs.ts';
-import { FACT_KEYS, parkyFacts } from '@/lib/assistant/parky-facts.ts';
-import { lineSources } from '@/lib/assistant/line-priority.ts';
+} from '@/lib/assistant/parky/easter-eggs.ts';
+import { FACT_KEYS, parkyFacts } from '@/lib/assistant/parky/facts.ts';
+import { lineSources } from '@/lib/assistant/parky/lines.ts';
 import {
   answeredWithLine,
   countAnswer,
   linesMuted,
   muteLines,
 } from '@/lib/assistant/teaser-store.ts';
-import { isReactionAct, REACTION_ACTS, reactionTo } from '@/lib/assistant/reactions.ts';
+import { isReactionAct, REACTION_ACTS, reactionTo } from '@/lib/assistant/parky/reactions.ts';
 import { onSiteEvent, trackSiteEvent } from '@/lib/analytics/site-analytics.ts';
 import { readFileSync } from 'node:fs';
 import {
@@ -70,7 +70,7 @@ import {
   RIDES,
   rideFits,
   rideKeyframe,
-} from '@/lib/assistant/parky-rides.ts';
+} from '@/lib/assistant/parky/rides.ts';
 import { FLING_HAND_MS, FlingTracker } from '@/lib/assistant/fling-tracker.ts';
 import {
   calendarWeeks,
