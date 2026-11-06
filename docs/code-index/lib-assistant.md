@@ -235,6 +235,12 @@ Where Parky stands while his chat window is shut: in his corner, or in a slot on
 
 - `useParkyBoredom` _hook_: How bored Parky is, from the page-wide `parkyBoredom`; `null` while `enabled` is false, on the server and under reduced motion, so a disabled reader takes no subscription.
 
+### [`parky/use-parky-dress.ts`](../../lib/assistant/parky/use-parky-dress.ts)
+
+- `useParkWeather` _hook_: The weather at the park whose page this is, from the nowcast the page has already loaded.
+- `useParkyWeatherLook` _hook_: Dresses every Parky for the weather at the park whose page this is (`setParkyWeather`). The launcher calls it, not the teaser: the teaser leaves while the chat window is open, and the scarf must not leave with it.
+- `useParkyShowLook` _hook_: Whether one of the shows of the park whose page this is is on (`setParkyShow`), checked again with every poll of the page. The launcher calls it, so the clapping stays while the chat window is open and the teaser is gone.
+
 ### [`parky/use-parky-live.ts`](../../lib/assistant/parky/use-parky-live.ts)
 
 - `useParkyLive` _hook_: Parky watches the live waits of the park whose page this is, from the poll the page runs anyway (React Query's cache, no request of its own).
@@ -248,7 +254,7 @@ Where Parky stands while his chat window is shut: in his corner, or in a slot on
 
 ### [`parky/use-parky-weather.ts`](../../lib/assistant/parky/use-parky-weather.ts)
 
-- `useParkyWeather` _hook_: Parky and the weather at the park whose page this is: he dresses for it while the page shows (`setParkyWeather`), and once a park per session, after the page has settled and never over another line, he plays a fitting act and says a …
+- `useParkyWeather` _hook_: Parky and the weather at the park whose page this is: once a park per session, after the page has settled and never over another line, he plays a fitting act and says a `weather` line.
 
 ### [`planner-context.ts`](../../lib/assistant/planner-context.ts)
 

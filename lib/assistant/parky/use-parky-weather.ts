@@ -2,13 +2,11 @@
 
 import { useEffect, useRef } from 'react';
 import { useTranslations } from 'next-intl';
-import { usePathname } from 'next/navigation';
 import { pickRandom } from '@/lib/utils/pick-random';
 import { formatTempWithUnit } from '@/lib/utils/temperature';
 import { useTemperatureUnit } from '@/lib/contexts/temperature-unit-context';
-import { useWeatherNowcast } from '@/lib/hooks/use-weather-nowcast';
-import { parkPageOf, parkPathOf } from './easter-eggs';
-import { WEATHER_ACT, weatherLook, type ParkyWeather } from './look';
+import { parkPathOf } from './easter-eggs';
+import { WEATHER_ACT, type ParkyWeather } from './look';
 import {
   answeredWithLine,
   countAnswer,
@@ -17,7 +15,7 @@ import {
   reactionsShown,
   REACTIONS_PER_SESSION,
 } from '../teaser-store';
-import { setParkyWeather } from './use-parky-look';
+import { useParkWeather } from './use-parky-dress';
 import { parkNewsKey } from './lines';
 
 /** What Parky says about the park's weather, with `{park}` and, where it fits, `{temp}`. */
@@ -36,11 +34,8 @@ const WEATHER_LINE_DELAY_MS = 12_000;
 /** Over another line, a sleeping Parky or an open search, it tries again this much later. */
 const RETRY_MS = 5_000;
 
-const noPark = { continent: '', country: '', city: '', parkSlug: '' };
-
 /**
- * Parky and the weather at the park whose page this is: he dresses for it while the page shows
- * (`setParkyWeather`), and once a park per session, after the page has settled and never over
+ * Parky and the weather at the park whose page this is: once a park per session, after the page has settled and never over
  * another line, he plays a fitting act and says a `weather` line. The weather is the nowcast the
  * page has already loaded, read from React Query's cache, so it costs no request of its own. The
  * line counts against the session's reactions and stays away once lines were closed by hand. It is
@@ -61,29 +56,13 @@ export function useParkyWeather({
 }): void {
   const t = useTranslations('assistant');
   const { unit } = useTemperatureUnit();
-  const pathname = usePathname();
-  const target = parkPageOf(pathname);
-  const { data } = useWeatherNowcast({ ...(target ?? noPark), enabled: false });
-  const nowcast = target ? data : null;
-  const weather = nowcast
-    ? weatherLook({
-        code: nowcast.currentWeatherCode,
-        temperatureC: nowcast.currentTemperatureC,
-        windKmh: nowcast.currentWindSpeedKmh,
-        gustsKmh: nowcast.currentWindGustsKmh,
-      })
-    : null;
-
-  useEffect(() => {
-    setParkyWeather(weather);
-    return () => setParkyWeather(null);
-  }, [weather]);
+  const { pathname, nowcast, weather } = useParkWeather();
 
   const latest = useRef({ busy, say, act });
   useEffect(() => {
     latest.current = { busy, say, act };
   });
-  const path = target ? parkPathOf(pathname) : null;
+  const path = nowcast ? parkPathOf(pathname) : null;
   const park = nowcast?.park.name ?? '';
   const temperature = nowcast?.currentTemperatureC ?? null;
   useEffect(() => {
