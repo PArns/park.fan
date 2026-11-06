@@ -953,7 +953,7 @@ export function ContentEN() {
             after three questions in 30 seconds it needs a short break.
           </P>
           <P>
-            We store your questions without an IP address and delete them after 90 days. There’s
+            We store your questions without an IP address and delete them after 7 days. There’s
             more about Parky, with example questions, on <A href="/parky">its own page</A>.
           </P>
         </ParkyShot>

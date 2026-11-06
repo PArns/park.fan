@@ -3166,7 +3166,7 @@
       "data": {
         "kicker": "Je gegevens",
         "title": "Wat er met je vragen gebeurt",
-        "body": "Parky antwoordt met het taalmodel Claude van Anthropic. Je vragen bewaren we zonder IP-adres en we verwijderen ze na 90 dagen. Je locatie ziet Parky alleen als je die in de chat deelt.",
+        "body": "Parky antwoordt met het taalmodel Claude van Anthropic. Je vragen bewaren we zonder IP-adres en we verwijderen ze na 7 dagen. Je locatie ziet Parky alleen als je die in de chat deelt.",
         "link": "De rest staat in de privacyverklaring."
       }
     },

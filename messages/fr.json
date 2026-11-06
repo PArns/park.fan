@@ -3166,7 +3166,7 @@
       "data": {
         "kicker": "Tes données",
         "title": "Ce que deviennent tes questions",
-        "body": "Parky répond avec le modèle de langage Claude d’Anthropic. Nous enregistrons tes questions sans adresse IP et les supprimons après 90 jours. Parky ne voit ta position que si tu la partages dans le chat.",
+        "body": "Parky répond avec le modèle de langage Claude d’Anthropic. Nous enregistrons tes questions sans adresse IP et les supprimons après 7 jours. Parky ne voit ta position que si tu la partages dans le chat.",
         "link": "Tout le reste se trouve dans la politique de confidentialité."
       }
     },

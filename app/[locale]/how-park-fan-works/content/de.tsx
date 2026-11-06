@@ -953,7 +953,7 @@ export function ContentDE() {
             und nach drei Fragen in 30 Sekunden braucht er eine kurze Pause.
           </P>
           <P>
-            Deine Fragen speichern wir ohne IP-Adresse und löschen sie nach 90 Tagen. Mehr über
+            Deine Fragen speichern wir ohne IP-Adresse und löschen sie nach 7 Tagen. Mehr über
             Parky, mit Beispielfragen, steht auf <A href="/parky">seiner eigenen Seite</A>.
           </P>
         </ParkyShot>

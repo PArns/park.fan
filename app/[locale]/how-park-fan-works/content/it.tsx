@@ -964,7 +964,7 @@ export function ContentIT() {
             internet, e dopo tre domande in 30 secondi ha bisogno di una breve pausa.
           </P>
           <P>
-            Salviamo le tue domande senza indirizzo IP e le cancelliamo dopo 90 giorni. Su Parky
+            Salviamo le tue domande senza indirizzo IP e le cancelliamo dopo 7 giorni. Su Parky
             trovi di più, con domande d’esempio, nella <A href="/parky">sua pagina</A>.
           </P>
         </ParkyShot>

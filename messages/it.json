@@ -3166,7 +3166,7 @@
       "data": {
         "kicker": "I tuoi dati",
         "title": "Cosa succede alle tue domande",
-        "body": "Parky risponde con il modello linguistico Claude di Anthropic. Salviamo le tue domande senza indirizzo IP e le cancelliamo dopo 90 giorni. Parky vede la tua posizione solo se la condividi nella chat.",
+        "body": "Parky risponde con il modello linguistico Claude di Anthropic. Salviamo le tue domande senza indirizzo IP e le cancelliamo dopo 7 giorni. Parky vede la tua posizione solo se la condividi nella chat.",
         "link": "Tutto il resto è nell’informativa sulla privacy."
       }
     },

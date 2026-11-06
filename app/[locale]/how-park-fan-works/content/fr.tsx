@@ -963,7 +963,7 @@ export function ContentFR() {
             besoin d’une courte pause.
           </P>
           <P>
-            Nous enregistrons vos questions sans adresse IP et les supprimons au bout de 90 jours.
+            Nous enregistrons vos questions sans adresse IP et les supprimons au bout de 7 jours.
             Vous trouverez plus d’informations sur Parky, avec des exemples de questions, sur{' '}
             <A href="/parky">sa propre page</A>.
           </P>

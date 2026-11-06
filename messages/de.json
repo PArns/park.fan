@@ -3166,7 +3166,7 @@
       "data": {
         "kicker": "Deine Daten",
         "title": "Was mit deinen Fragen passiert",
-        "body": "Parky antwortet mit dem Sprachmodell Claude von Anthropic. Deine Fragen speichern wir ohne IP-Adresse und löschen sie nach 90 Tagen. Deinen Standort sieht Parky nur, wenn du ihn im Chat teilst.",
+        "body": "Parky antwortet mit dem Sprachmodell Claude von Anthropic. Deine Fragen speichern wir ohne IP-Adresse und löschen sie nach 7 Tagen. Deinen Standort sieht Parky nur, wenn du ihn im Chat teilst.",
         "link": "Alles Weitere steht in der Datenschutzerklärung."
       }
     },

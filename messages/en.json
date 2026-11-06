@@ -3166,7 +3166,7 @@
       "data": {
         "kicker": "Your data",
         "title": "What happens to your questions",
-        "body": "Parky answers with the language model Claude by Anthropic. We store your questions without an IP address and delete them after 90 days. Parky only sees your location if you share it in the chat.",
+        "body": "Parky answers with the language model Claude by Anthropic. We store your questions without an IP address and delete them after 7 days. Parky only sees your location if you share it in the chat.",
         "link": "Everything else is in the privacy policy."
       }
     },

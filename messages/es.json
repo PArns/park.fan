@@ -3166,7 +3166,7 @@
       "data": {
         "kicker": "Tus datos",
         "title": "Qué pasa con tus preguntas",
-        "body": "Parky responde con el modelo de lenguaje Claude de Anthropic. Guardamos tus preguntas sin dirección IP y las borramos a los 90 días. Parky solo ve tu ubicación si la compartes en el chat.",
+        "body": "Parky responde con el modelo de lenguaje Claude de Anthropic. Guardamos tus preguntas sin dirección IP y las borramos a los 7 días. Parky solo ve tu ubicación si la compartes en el chat.",
         "link": "Todo lo demás está en la política de privacidad."
       }
     },
