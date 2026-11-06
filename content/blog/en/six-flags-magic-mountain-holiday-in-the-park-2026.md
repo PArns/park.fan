@@ -49,7 +49,7 @@ Six Flags promises musical productions, holiday performances and comedy, plus sh
 | Tinker's Toy Factory                              | Gear Works Theater    | a toy factory set to music                                     |
 | 'Twas: A Merry Mishap                             | Metropolis            | the Tinsel Town Players take a skewed run at a holiday classic |
 | The Yule Logs                                     | Metro Pub, Metropolis | live music                                                     |
-| The Mistletones                                   | Carousel Band Stage   | a vocal group singing classic Christmas songs                  |
+| The Mistletones                                   | Carousel Band Stage   | a band playing classic Christmas songs                         |
 | Midway Merriment                                  | all over the park     | music and characters roaming the park                          |
 
 At 'Twas: A Merry Mishap someone from the audience can end up with a part, so the stage fright works both sides of the footlights. Magic Mountain hasn't posted times for any of the shows on its show pages yet. Six Flags points to its app for those.
@@ -65,7 +65,7 @@ The park opens at 10:30 a.m. There's no holiday programme until 25 November. Aft
 - 1, 2, 8 and 9 December: closed
 - 4, 5 and 6 December: Holiday in the Park until 9, 10 and 8 p.m.
 - 11 to 31 December: Holiday in the Park every day
-- 3 January 2027: the last day of the event
+- 3 January 2027: the last day of the event; January hours aren't on the calendar yet
 
 On Christmas Eve the park closes at 6 p.m., and on Christmas Day it's open until 8 p.m. On New Year's Eve Magic Mountain sees the year out and doesn't close until 12:30 a.m., half an hour into 2027.
 
@@ -83,7 +83,7 @@ Your ticket gets you the shows, the lights, selected activities and most rides. 
 
 For kids, the Looney Tunes play No Biz Like Snow Biz in Bugs Bunny World. Mrs. Claus reads at Story Time, and there's the North Pole Craft Depot and Post Office and the Tree Lot Maze. For a photo with Santa, head to Santa's Cottage.
 
-Selected rides run on event days. The event page names just one, the family coaster [Road Runner Express](ref:six-flags-magic-mountain/road-runner-express). [X2](/news/x2-six-flags-magic-mountain-closed) won't be among them: Six Flags retired the coaster for good at the end of September.
+Selected rides run on event days. The event page names just one, the family coaster [Road Runner Express](ref:six-flags-magic-mountain/road-runner-express). [X2](/news/x2-six-flags-magic-mountain-closed) won't be among them: the coaster has stood still since July, and at the end of September Six Flags retired it for good.
 
 ## Tickets, passes and parking
 
@@ -103,6 +103,13 @@ Sources:
 [2026 winter events press release (Six Flags, PDF)](https://s204.q4cdn.com/155295784/files/doc_news/2026/Nov/04/SFEC-2026-Winter-Press-Release.pdf),
 [Holiday in the Park (Six Flags Magic Mountain)](https://www.sixflags.com/magicmountain/events/holiday-in-the-park),
 [Park hours and calendar](https://www.sixflags.com/magicmountain/park-hours),
-[Shows](https://www.sixflags.com/magicmountain/shows),
+[Tree Lighting Ceremony](https://www.sixflags.com/magicmountain/shows/tree-lighting-ceremony),
+[Cool Yule Christmas](https://www.sixflags.com/magicmountain/shows/cool-yule-christmas),
+[No Biz Like Snow Biz](https://www.sixflags.com/magicmountain/shows/no-biz-like-snow-biz),
+[Tinker's Toy Factory](https://www.sixflags.com/magicmountain/shows/tinker-s-toy-factory),
+['Twas: A Merry Mishap](https://www.sixflags.com/magicmountain/shows/twas-a-merry-mishap),
+[The Yule Logs](https://www.sixflags.com/magicmountain/shows/the-yule-logs),
+[The Mistletones](https://www.sixflags.com/magicmountain/shows/the-mistletones),
+[Midway Merriment](https://www.sixflags.com/magicmountain/shows/midway-merriment),
 [Tickets and Season Passes](https://www.sixflags.com/magicmountain/store/tickets),
 [Parking](https://www.sixflags.com/magicmountain/parking).

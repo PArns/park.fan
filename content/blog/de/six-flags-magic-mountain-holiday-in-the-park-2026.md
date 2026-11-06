@@ -49,7 +49,7 @@ Six Flags kündigt Musikproduktionen, Weihnachtsauftritte und Comedy an, dazu Pr
 | Tinker's Toy Factory                             | Gear Works Theater    | eine Spielzeugfabrik mit Musik                                         |
 | 'Twas: A Merry Mishap                            | Metropolis            | die Tinsel Town Players erzählen einen Weihnachtsklassiker schräg nach |
 | The Yule Logs                                    | Metro Pub, Metropolis | Livemusik                                                              |
-| The Mistletones                                  | Carousel Band Stage   | eine Gesangsgruppe mit klassischen Weihnachtsliedern                   |
+| The Mistletones                                  | Carousel Band Stage   | eine Musikgruppe mit klassischen Weihnachtsliedern                     |
 | Midway Merriment                                 | im ganzen Park        | Musik und Figuren, die durch den Park ziehen                           |
 
 Bei 'Twas: A Merry Mishap kann auch jemand aus dem Publikum eine Rolle bekommen, das Lampenfieber gibt es dort also auf beiden Seiten der Bühne. Spielzeiten hat Magic Mountain auf den Showseiten noch für keine Show veröffentlicht. Six Flags verweist dafür auf seine App.
@@ -65,7 +65,7 @@ Der Park öffnet um 10:30 Uhr. Bis zum 25. November gibt es kein Weihnachtsprogr
 - 1., 2., 8. und 9. Dezember: geschlossen
 - 4., 5. und 6. Dezember: Holiday in the Park bis 21, 22 und 20 Uhr
 - 11. bis 31. Dezember: Holiday in the Park an jedem Tag
-- 3. Januar 2027: der letzte Tag des Fests
+- 3. Januar 2027: der letzte Tag des Fests, die Öffnungszeiten für Januar stehen noch nicht im Kalender
 
 An Heiligabend schließt der Park um 18 Uhr, am ersten Weihnachtstag ist er bis 20 Uhr offen. An Silvester feiert Magic Mountain den Jahreswechsel und macht erst um 0:30 Uhr zu, eine halbe Stunde ins neue Jahr hinein.
 
@@ -83,7 +83,7 @@ Mit dem Ticket bekommst du die Shows, die Lichter, ausgewählte Aktivitäten und
 
 Für Kinder spielen die Looney Tunes in Bugs Bunny World ihre Show No Biz Like Snow Biz. Mrs. Claus liest bei der Story Time vor, außerdem gibt es das North Pole Craft Depot and Post Office und das Tree Lot Maze. Zum Foto mit dem Weihnachtsmann gehst du in Santa's Cottage.
 
-An den Eventtagen fahren ausgewählte Bahnen. Beim Namen nennt die Eventseite nur eine, die Familienbahn [Road Runner Express](ref:six-flags-magic-mountain/road-runner-express). [X2](/news/x2-six-flags-magic-mountain-geschlossen) ist nicht dabei, Six Flags hat die Achterbahn Ende September endgültig außer Betrieb genommen.
+An den Eventtagen fahren ausgewählte Bahnen. Beim Namen nennt die Eventseite nur eine, die Familienbahn [Road Runner Express](ref:six-flags-magic-mountain/road-runner-express). [X2](/news/x2-six-flags-magic-mountain-geschlossen) ist nicht dabei, sie steht seit Juli still, und Ende September hat Six Flags sie endgültig stillgelegt.
 
 ## Tickets, Pässe und Parken
 
@@ -103,6 +103,13 @@ Quellen:
 [Pressemitteilung zu den Winterevents 2026 (Six Flags, PDF)](https://s204.q4cdn.com/155295784/files/doc_news/2026/Nov/04/SFEC-2026-Winter-Press-Release.pdf),
 [Holiday in the Park (Six Flags Magic Mountain)](https://www.sixflags.com/magicmountain/events/holiday-in-the-park),
 [Öffnungszeiten und Kalender](https://www.sixflags.com/magicmountain/park-hours),
-[Shows](https://www.sixflags.com/magicmountain/shows),
+[Tree Lighting Ceremony](https://www.sixflags.com/magicmountain/shows/tree-lighting-ceremony),
+[Cool Yule Christmas](https://www.sixflags.com/magicmountain/shows/cool-yule-christmas),
+[No Biz Like Snow Biz](https://www.sixflags.com/magicmountain/shows/no-biz-like-snow-biz),
+[Tinker's Toy Factory](https://www.sixflags.com/magicmountain/shows/tinker-s-toy-factory),
+['Twas: A Merry Mishap](https://www.sixflags.com/magicmountain/shows/twas-a-merry-mishap),
+[The Yule Logs](https://www.sixflags.com/magicmountain/shows/the-yule-logs),
+[The Mistletones](https://www.sixflags.com/magicmountain/shows/the-mistletones),
+[Midway Merriment](https://www.sixflags.com/magicmountain/shows/midway-merriment),
 [Tickets und Season Passes](https://www.sixflags.com/magicmountain/store/tickets),
 [Parken](https://www.sixflags.com/magicmountain/parking).

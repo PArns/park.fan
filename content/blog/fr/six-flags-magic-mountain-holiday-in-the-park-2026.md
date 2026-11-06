@@ -23,7 +23,7 @@ rideLinks:
 seo:
   title: 'Magic Mountain Holiday in the Park 2026 : spectacles et horaires'
   description: >-
-    Holiday in the Park à Six Flags Magic Mountain dès le 26/11/2026 : sept nouveaux spectacles, horaires jusqu’au réveillon, billets dès 79 $, parking dès 42 $.
+    Holiday in the Park à Six Flags Magic Mountain dès le 26/11/2026 : sept nouveaux spectacles, horaires jusqu’au 31/12, billets dès 79 $, parking dès 42 $.
   keywords:
     - Six Flags Magic Mountain Holiday in the Park
     - Magic Mountain horaires
@@ -49,7 +49,7 @@ Six Flags annonce des productions musicales, des numéros de Noël et de la com�
 | Tinker’s Toy Factory                              | Gear Works Theater    | une fabrique de jouets en musique                                  |
 | ’Twas: A Merry Mishap                             | Metropolis            | les Tinsel Town Players revisitent de travers un classique de Noël |
 | The Yule Logs                                     | Metro Pub, Metropolis | musique live                                                       |
-| The Mistletones                                   | Carousel Band Stage   | un groupe vocal et ses chants de Noël classiques                   |
+| The Mistletones                                   | Carousel Band Stage   | un groupe de musique et ses chants de Noël classiques              |
 | Midway Merriment                                  | dans tout le parc     | musique et personnages qui sillonnent le parc                      |
 
 Dans ’Twas: A Merry Mishap, un spectateur peut se retrouver avec un rôle : le trac se partage donc des deux côtés de la scène. Magic Mountain n’a encore publié d’horaires pour aucun spectacle sur ses pages. Six Flags renvoie pour cela à son application.
@@ -65,7 +65,7 @@ Le parc ouvre à 10 h 30. Jusqu’au 25 novembre, il n’y a aucun programme de 
 - 1er, 2, 8 et 9 décembre : fermé
 - 4, 5 et 6 décembre : Holiday in the Park jusqu’à 21 h, 22 h et 20 h
 - du 11 au 31 décembre : Holiday in the Park tous les jours
-- 3 janvier 2027 : dernier jour de l’événement
+- 3 janvier 2027 : dernier jour de l’événement ; les horaires de janvier ne figurent pas encore au calendrier
 
 Le 24 décembre, le parc ferme à 18 h, et le jour de Noël il reste ouvert jusqu’à 20 h. Le 31 décembre, Magic Mountain fête le passage à la nouvelle année et ne ferme qu’à 0 h 30, une demi-heure après minuit.
 
@@ -83,7 +83,7 @@ Le billet donne accès aux spectacles, aux illuminations, à une sélection d’
 
 Pour les enfants, les Looney Tunes jouent No Biz Like Snow Biz dans Bugs Bunny World. Mrs. Claus lit des contes pendant la Story Time, et l’on trouve aussi le North Pole Craft Depot and Post Office et le Tree Lot Maze. La photo avec le père Noël se prend à Santa’s Cottage.
 
-Les jours d’événement, une sélection d’attractions fonctionne. La page de l’événement n’en nomme qu’une, le train familial [Road Runner Express](ref:six-flags-magic-mountain/road-runner-express). [X2](/news/x2-six-flags-magic-mountain-ferme) n’en fait pas partie : Six Flags a définitivement retiré ces montagnes russes fin septembre.
+Les jours d’événement, une sélection d’attractions fonctionne. La page de l’événement n’en nomme qu’une, le train familial [Road Runner Express](ref:six-flags-magic-mountain/road-runner-express). [X2](/news/x2-six-flags-magic-mountain-ferme) n’en fait pas partie : ces montagnes russes sont à l’arrêt depuis juillet, et Six Flags les a définitivement retirées fin septembre.
 
 ## Billets, pass et parking
 
@@ -103,6 +103,13 @@ Sources :
 [Communiqué sur les événements d’hiver 2026 (Six Flags, PDF)](https://s204.q4cdn.com/155295784/files/doc_news/2026/Nov/04/SFEC-2026-Winter-Press-Release.pdf),
 [Holiday in the Park (Six Flags Magic Mountain)](https://www.sixflags.com/magicmountain/events/holiday-in-the-park),
 [Horaires et calendrier](https://www.sixflags.com/magicmountain/park-hours),
-[Spectacles](https://www.sixflags.com/magicmountain/shows),
+[Tree Lighting Ceremony](https://www.sixflags.com/magicmountain/shows/tree-lighting-ceremony),
+[Cool Yule Christmas](https://www.sixflags.com/magicmountain/shows/cool-yule-christmas),
+[No Biz Like Snow Biz](https://www.sixflags.com/magicmountain/shows/no-biz-like-snow-biz),
+[Tinker's Toy Factory](https://www.sixflags.com/magicmountain/shows/tinker-s-toy-factory),
+['Twas: A Merry Mishap](https://www.sixflags.com/magicmountain/shows/twas-a-merry-mishap),
+[The Yule Logs](https://www.sixflags.com/magicmountain/shows/the-yule-logs),
+[The Mistletones](https://www.sixflags.com/magicmountain/shows/the-mistletones),
+[Midway Merriment](https://www.sixflags.com/magicmountain/shows/midway-merriment),
 [Billets et Season Passes](https://www.sixflags.com/magicmountain/store/tickets),
 [Parking](https://www.sixflags.com/magicmountain/parking).
