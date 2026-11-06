@@ -38,7 +38,8 @@ and when, and the admin pages. Open it before touching `lib/analytics/site-analy
   the referrer on the first view of a load: the external host without `www.`, read once and kept in
   memory. Without one, a `utm_source` that names an AI assistant's host (`AI_SOURCE_HOSTS`:
   `chatgpt.com`, `perplexity.ai` and the other hosts the API's `REFERRER_RULES` put in the `ai`
-  channel) stands in for it, since ChatGPT tags its links that way and often sends no referrer.
+  channel) goes as `source` instead, since ChatGPT tags its links that way and often sends no
+  referrer; the API classifies the visit by `source` when no `referrer` came.
   Any other `utm_source`, and the rest of the query string, is not read. An event
   adds its name, its properties and, where the call site holds one, the UUID of the park, ride,
   show or restaurant.

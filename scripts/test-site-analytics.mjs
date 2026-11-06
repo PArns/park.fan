@@ -179,7 +179,7 @@ await test('the referrer is the external host, once per load', async () => {
   assert.equal('referrer' in second, false);
 });
 
-await test('a utm_source that names no AI assistant sends no referrer, and the referrer host is left alone', async () => {
+await test('a utm_source that names no AI assistant sends no referrer or source, and the referrer host is left alone', async () => {
   for (const search of [
     '?utm_source=Newsletter',
     '?utm_source=news.example.com&utm_campaign=summer',
@@ -193,6 +193,7 @@ await test('a utm_source that names no AI assistant sends no referrer, and the r
     flushSiteAnalytics();
     const [hit] = await hits();
     assert.equal('referrer' in hit, false, search);
+    assert.equal('source' in hit, false, search);
     assert.equal('campaign' in hit, false, search);
   }
   browser({ search: '?utm_source=Newsletter', referrer: 'https://google.com/' });
@@ -202,7 +203,7 @@ await test('a utm_source that names no AI assistant sends no referrer, and the r
   assert.equal((await hits())[0].referrer, 'google.com');
 });
 
-await test("an AI assistant's utm_source stands in for a missing referrer, once per load", async () => {
+await test("an AI assistant's utm_source is sent as source without a referrer, once per load", async () => {
   for (const [search, referrer] of [
     ['?utm_source=chatgpt.com', ''],
     ['?utm_source=ChatGPT.com&utm_campaign=x', ''],
@@ -215,15 +216,18 @@ await test("an AI assistant's utm_source stands in for a missing referrer, once 
     trackSitePageview();
     flushSiteAnalytics();
     const [first, second] = await hits();
-    assert.match(first.referrer, /^(chatgpt\.com|perplexity\.ai)$/, search);
-    assert.equal('referrer' in second, false, `${search}: only the first view of a load`);
+    assert.match(first.source, /^(chatgpt\.com|perplexity\.ai)$/, search);
+    assert.equal('referrer' in first, false, `${search}: the AI host is not a referrer`);
+    assert.equal('source' in second, false, `${search}: only the first view of a load`);
     assert.equal('campaign' in first, false, search);
   }
   browser({ search: '?utm_source=chatgpt.com', referrer: 'https://www.google.de/' });
   const { trackSitePageview, flushSiteAnalytics } = await facade();
   trackSitePageview();
   flushSiteAnalytics();
-  assert.equal((await hits())[0].referrer, 'google.de', 'a real referrer wins');
+  const [hit] = await hits();
+  assert.equal(hit.referrer, 'google.de', 'a real referrer wins');
+  assert.equal('source' in hit, false, 'and no source goes with it');
 });
 
 await test('an internal or missing referrer sends none', async () => {

@@ -166,7 +166,8 @@ the rule is on the call site, and `trackSiteEvent` says it too.
 ### The pageview's extras
 
 A pageview is not an event, but three things beside the path answer questions the way one does.
-The first view of a load adds the referrer host, read once and kept in memory (`pageLoadOrigin`),
+The first view of a load adds the referrer host, or without one the AI assistant a `utm_source`
+names as `source`, read once and kept in memory (`pageLoadOrigin`),
 and the API derives the channel (search, ai, social, referral, direct), the device class and the
 country. A page the 404 page renders is counted as page type `not_found`, with the
 path asked for, which is how the admin lists dead ends with the pages that sent people there
