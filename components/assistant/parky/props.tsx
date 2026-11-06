@@ -226,7 +226,8 @@ export function ParkySpotlight() {
           <path d="M1.5-6v56M3.5-6v56" stroke={curtainFold} strokeWidth=".6" />
         </g>
       ))}
-      <path className="parky-spot" d="M20-8h8l18 58H2Z" fill={gold} fillOpacity=".3" />
+      <path d="M20-8h8l18 58H2Z" fill={gold} fillOpacity=".38" />
+      <path d="M20-8 2 50M28-8l18 58" stroke={gold} strokeOpacity=".7" strokeWidth=".6" />
       <ellipse cx="24" cy="48.5" rx="19" ry="2.6" fill={gold} fillOpacity=".45" />
       <rect x="19.5" y="-11" width="9" height="4" rx="1.5" fill={ink} />
       <g fill={gold} stroke="oklch(0.6 0.13 70)" strokeWidth=".4">
@@ -253,7 +254,7 @@ export function ParkySpotlight() {
  * - `slurp`: a clear cup with a straw to his pursed mouth, the drink going down, bubbles rising.
  * - `grumpy`: arms crossed, brows down, a frown and a small cloud of steam.
  * - `airtime`: the open grin and streaks under him as he floats up for joy.
- * - `applause`: two little hands clapping in front of him, a spark where they meet; the stage
+ * - `applause`: two little white gloves clapping in front of him, a spark where they meet; the stage
  *   behind him is {@link ParkySpotlight}.
  */
 export function ParkyMoment({ act }: { act: string | null }) {
@@ -526,19 +527,19 @@ export function ParkyMoment({ act }: { act: string | null }) {
             <g key={side} transform={side ? 'matrix(-1 0 0 1 48 0)' : undefined}>
               <g className="parky-clap">
                 <ellipse
-                  cx="21.4"
-                  cy="41"
-                  rx="2.6"
-                  ry="3.2"
-                  fill={frame}
+                  cx="21.3"
+                  cy="40"
+                  rx="2.7"
+                  ry="3.3"
+                  fill="white"
                   stroke={ink}
-                  strokeWidth=".8"
+                  strokeWidth=".9"
                 />
-                <circle cx="20" cy="38.6" r="1.1" fill={frame} stroke={ink} strokeWidth=".6" />
+                <circle cx="19.5" cy="37.7" r="1.1" fill="white" stroke={ink} strokeWidth=".7" />
               </g>
             </g>
           ))}
-          <g transform="translate(7 35.6)">
+          <g transform="translate(7 33.4)">
             <path className="parky-clap-spark" d={STAR} fill={gold} />
           </g>
         </>
