@@ -173,12 +173,16 @@ Where Parky stands while his chat window is shut: in his corner, or in a slot on
 ### [`parky/live.ts`](../../lib/assistant/parky/live.ts)
 
 - `headlinersOf` _function_: The rides Parky watches: the park's favourite (`PARK_FAVOURITES`) and its top attractions.
-- `liveMoment` _function_: The moment the park's live data gives right now, best first: shut today, a headliner that is a walk-on, a very full park, a queue over an hour; `null` when none holds.
+- `showSoon` _function_: The next show that starts within `SHOW_SOON_MIN` of `now`, or with `anyLater` (`?parky=show`) the next one still to start today; `null` when there is none.
+- `showRunning` _function_: Whether one of the park's shows is on right now: started, and less than `SHOW_RUN_MIN` ago.
+- `liveMoment` _function_: The moment the park's live data gives right now, best first: shut today, a headliner that is a walk-on, a very full park, a queue over an hour, a show starting soon; `null` when none holds.
 - `liveChange` _function_: What changed between two polls that Parky notices, the most notable first: a headliner went down, a headliner's wait dropped sharply, then a moment that newly holds (a walk-on, a queue over an hour, the park turning very full).
 - `liveActDue` _function_: Whether an act without a line may play now, the last one having played at `lastAt`.
 - `LIVE_LIMITS` _const_: The limits, in minutes: a walk-on, a queue that offends him, and a drop worth a whisper (at least this much and at least half the wait gone).
+- `SHOW_SOON_MIN` _const_: A show starting this many minutes from now, both ends included, is worth a line: soon enough to matter, far enough off to get a seat.
+- `SHOW_RUN_MIN` _const_: How long a show counts as running after its start; the API sends no end or duration.
 - `LIVE_ACT_GAP_MS` _const_: An act without a line, on a noticeable change of the live data, comes at most this often; a poll lands every five minutes, so this lets most changes play and keeps a flapping ride quiet.
-- `LIVE_LINES` _const_: What Parky says about each reading (`assistant` namespace, with `{park}`, `{ride}` and `{wait}`), each with the act it goes with: airtime for a walk-on, grumpy at a long queue, squashed in a full park, a nap or a book on a closed day, a …
+- `LIVE_LINES` _const_: What Parky says about each reading (`assistant` namespace, with `{park}`, `{ride}` and `{wait}`, a show's with `{show}` and `{minutes}`), each with the act it goes with: airtime for a walk-on, grumpy at a long queue, squashed in a full …
 - Types: `LiveMoment`, `LiveChange`, `LiveReading`
 
 ### [`parky/look.ts`](../../lib/assistant/parky/look.ts)
@@ -186,7 +190,7 @@ Where Parky stands while his chat window is shut: in his corner, or in a slot on
 - `seasonOn` _function_: The season a date falls in, in the browser's calendar: Halloween all October, Christmas 1 to 26 December, New Year 31 December and 1 January, winter from 2 January to the end of February.
 - `weatherLook` _function_: The look for the park's weather, the most striking state first: a storm, snow, rain, wind, fog, heat, cold; `null` for weather with nothing to dress for. The codes are grouped as the weather background groups them (`weatherCodeToScene`).
 - `outfitFor` _function_: The pieces of `look` drawn while `doing` (an act, a mood, `search`, or nothing) plays.
-- `showyPool` _function_: The showy pool for a look: every base act, plus the tickets its season and weather add.
+- `showyPool` _function_: The showy pool for a look: every base act, plus the tickets its season, weather and show add.
 - `sceneFits` _function_: Whether an act's scene stays on screen for a drawing whose box starts `left` and `top` pixels into the viewport and is `width` pixels wide; an act without a scene always does.
 - `lookSwitch` _function_: A look asked for in `?parky=`, for trying the outfits out: a season, a weather, or both with a comma (`?parky=christmas,rain`). Whatever else the switch says is left to the other switches.
 - `SEASONS` _const_: The times of year Parky dresses for, in the order the preview lists them.
@@ -237,8 +241,9 @@ Where Parky stands while his chat window is shut: in his corner, or in a slot on
 
 ### [`parky/use-parky-look.ts`](../../lib/assistant/parky/use-parky-look.ts)
 
-- `useParkyLook` _hook_: What every Parky on the page wears: the season from the browser's calendar and the park's weather on a park page, or what `?parky=` or the preview on Parky's page asks for.
+- `useParkyLook` _hook_: What every Parky on the page wears: the season from the browser's calendar and the park's weather on a park page, whether a show is on there, or what `?parky=` or the preview on Parky's page asks for.
 - `setParkyWeather` _function_: The park's weather look while a park page shows it (`useParkyWeather`), `null` elsewhere.
+- `setParkyShow` _function_: Whether a show is on at the park whose page this is (`useParkyLive`), `false` elsewhere.
 - `previewParkyLook` _function_: A look picked on Parky's page, in place of the date's and the park's; `null` lets them back.
 
 ### [`parky/use-parky-weather.ts`](../../lib/assistant/parky/use-parky-weather.ts)

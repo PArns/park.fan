@@ -299,10 +299,19 @@ export function AssistantTeaser({
           !!park.timezone &&
           park.hasOperatingSchedule !== false &&
           !opensToday(openingDaysOf(amusementParkIn(pageData())), park.timezone, Date.now());
-        const reading = liveMoment(park, await headliners(from.target), closedToday, preview);
+        const reading = liveMoment(park, await headliners(from.target), closedToday, preview, {
+          now: Date.now(),
+          preview: forced === 'show',
+        });
         if (!reading) return null;
         const { key, act } = pickRandom(LIVE_LINES[reading.kind]);
-        const values = { park: from.park, ride: reading.ride ?? '', wait: reading.wait ?? 0 };
+        const values = {
+          park: from.park,
+          ride: reading.ride ?? '',
+          wait: reading.wait ?? 0,
+          show: reading.show ?? '',
+          minutes: reading.minutes ?? 0,
+        };
         const once = parkNewsKey(Object.values(from.target).join('/'));
         return { text: t(key, values), kind: 'live', act, once };
       },

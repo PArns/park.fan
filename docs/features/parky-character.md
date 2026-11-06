@@ -52,6 +52,7 @@ What Parky shows follows what the page shows, never against it:
 | the park is closed today           | dozes, or reads up for the next visit         |
 | a ride goes down while you look    | startled, and points at the ride's bell       |
 | a queue drops sharply              | a hop and a whispered tip                     |
+| a show starts soon                 | applause under a spotlight                    |
 | before opening, park time          | rope-drop excitement                          |
 | closing time, park time            | fireworks                                     |
 | late evening, your time            | sleepy sooner                                 |

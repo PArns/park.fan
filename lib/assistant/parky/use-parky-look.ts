@@ -5,6 +5,7 @@ import { parkySwitch } from './easter-eggs';
 import { lookSwitch, NO_LOOK, seasonOn, type ParkyLook, type ParkyWeather } from './look';
 
 let parkWeather: ParkyWeather | null = null;
+let parkShow = false;
 let preview: ParkyLook | null = null;
 let current: ParkyLook | null = null;
 const listeners = new Set<() => void>();
@@ -27,6 +28,7 @@ function snapshot(): ParkyLook {
     current = preview ?? {
       season: asked.season ?? seasonOn(new Date()),
       weather: asked.weather ?? parkWeather,
+      show: parkShow,
     };
   }
   return current;
@@ -41,6 +43,13 @@ export function setParkyWeather(weather: ParkyWeather | null): void {
   changed();
 }
 
+/** Whether a show is on at the park whose page this is (`useParkyLive`), `false` elsewhere. */
+export function setParkyShow(on: boolean): void {
+  if (on === parkShow) return;
+  parkShow = on;
+  changed();
+}
+
 /** A look picked on Parky's page, in place of the date's and the park's; `null` lets them back. */
 export function previewParkyLook(look: ParkyLook | null): void {
   preview = look;
@@ -49,7 +58,7 @@ export function previewParkyLook(look: ParkyLook | null): void {
 
 /**
  * What every Parky on the page wears: the season from the browser's calendar and the park's
- * weather on a park page, or what `?parky=` or the preview on Parky's page asks for. Nothing on
+ * weather on a park page, whether a show is on there, or what `?parky=` or the preview on Parky's page asks for. Nothing on
  * the server, so the first paint matches the prerendered page.
  */
 export function useParkyLook(): ParkyLook {

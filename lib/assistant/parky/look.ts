@@ -18,10 +18,14 @@ export const WEATHERS = ['rain', 'storm', 'snow', 'cold', 'windy', 'fog', 'hot']
 /** One of {@link WEATHERS}. */
 export type ParkyWeather = (typeof WEATHERS)[number];
 
-/** What Parky wears right now: the season's piece and the park's weather, either or both. */
+/**
+ * What Parky wears right now: the season's piece and the park's weather, either or both; and
+ * whether a show is on at the page's park, which he dresses nothing for but claps along to.
+ */
 export interface ParkyLook {
   season: ParkySeason | null;
   weather: ParkyWeather | null;
+  show?: boolean;
 }
 
 /** Parky in his everyday look, the wheel and nothing else; also the server's answer. */
@@ -131,6 +135,7 @@ const SETS_ASIDE: Record<string, readonly ('hat' | 'umbrella')[]> = {
   snowglobe: ['umbrella'],
   snowman: ['umbrella'],
   fan: ['umbrella'],
+  applause: ['umbrella'],
 };
 
 /** The pieces of `look` drawn while `doing` (an act, a mood, `search`, or nothing) plays. */
@@ -158,11 +163,15 @@ export const LOOK_ACTS = [
 /** One of {@link LOOK_ACTS}. */
 export type ParkyLookAct = (typeof LOOK_ACTS)[number];
 
+/** An act a context adds to the showy pool that is no look act of its own. */
+type ContextAct = ParkyLookAct | 'shades' | 'applause';
+
 /**
- * The extra tickets a season or the weather adds to the showy pool while it holds; two tickets
- * make an act about as likely as a ride. The heat also brings the sunglasses out more.
+ * The extra tickets a season, the weather or a show on at the park adds to the showy pool while it
+ * holds; two tickets make an act about as likely as a ride. The heat also brings the sunglasses
+ * out more.
  */
-const CONTEXT_ACTS: Record<ParkySeason | ParkyWeather, readonly (ParkyLookAct | 'shades')[]> = {
+const CONTEXT_ACTS: Record<ParkySeason | ParkyWeather | 'show', readonly ContextAct[]> = {
   halloween: ['ghost', 'ghost'],
   christmas: ['snowglobe', 'snowglobe'],
   newyear: ['fireworks', 'fireworks'],
@@ -174,16 +183,16 @@ const CONTEXT_ACTS: Record<ParkySeason | ParkyWeather, readonly (ParkyLookAct | 
   hot: ['fan', 'fan', 'shades', 'shades'],
   windy: [],
   fog: [],
+  show: ['applause', 'applause'],
 };
 
-/** The showy pool for a look: every base act, plus the tickets its season and weather add. */
+/** The showy pool for a look: every base act, plus the tickets its season, weather and show add. */
 export function showyPool<T extends string>(
   base: readonly T[],
   look: ParkyLook
-): (T | ParkyLookAct | 'shades')[] {
-  const extra = [look.season, look.weather].flatMap((context) =>
-    context ? CONTEXT_ACTS[context] : []
-  );
+): (T | ContextAct)[] {
+  const contexts = [look.season, look.weather, look.show ? ('show' as const) : null];
+  const extra = contexts.flatMap((context) => (context ? CONTEXT_ACTS[context] : []));
   return [...base, ...extra];
 }
 
