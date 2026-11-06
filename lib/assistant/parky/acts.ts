@@ -93,6 +93,12 @@ export interface ParkyCue {
 }
 
 /**
+ * What the bubble asks the launcher to play: an act as a {@link ParkyCue}, or `squashed`, the
+ * mood a hard scroll up presses him into, held a moment for a very full park.
+ */
+export type ParkyPlay = ParkyCue['act'] | 'squashed';
+
+/**
  * An act by name, or for `ride` a random one of the rides that fit on screen round the drawing at
  * `box`; `null` when none does. A ride asked for by name plays wherever Parky is, as on its page's
  * stage. Without a box (nothing measured yet) everything fits.

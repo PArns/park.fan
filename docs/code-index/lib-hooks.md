@@ -118,6 +118,7 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`use-live-park-data.ts`](../../lib/hooks/use-live-park-data.ts)
 
 - `useLiveParkData` _hook_: Polls a park's live projection (`LiveParkSnapshot`) every five minutes and merges it onto the server-rendered park in `select`, per observer, so consumers read a complete `ParkWithAttractions`.
+- `parkLiveQueryKey` _function_: The live park query's key, for a reader of its cache (Parky) that must not start a request.
 
 ### [`use-live-parks-by-region.ts`](../../lib/hooks/use-live-parks-by-region.ts)
 

@@ -17,7 +17,7 @@ import { useLazyMessages } from '@/i18n/use-lazy-messages';
 import { RouteMessagesProvider } from '@/i18n/route-messages-provider';
 import dynamic from 'next/dynamic';
 import { ParkyLogo } from './parky/parky-logo';
-import type { ParkyCue } from '@/lib/assistant/parky/acts';
+import type { ParkyCue, ParkyPlay } from '@/lib/assistant/parky/acts';
 import { PARKY_LAYER } from './parky-layer';
 import { trackSiteEvent, type AssistantOpenSource } from '@/lib/analytics/site-analytics';
 import { stopTeasers } from '@/lib/assistant/teaser-store';
@@ -56,6 +56,9 @@ const AssistantTeaser = dynamic(
   () => import('./assistant-teaser').then((mod) => mod.AssistantTeaser),
   { ssr: false }
 );
+
+/** How long a very full park keeps Parky squashed. */
+const SQUASHED_MS = 2_400;
 
 /** An act asked for by `?parky=` waits for the longest entrance to end. */
 const ASKED_ACT_AFTER_MS = 2_600;
@@ -126,6 +129,7 @@ function LauncherButton({
   cue,
   away,
   fling,
+  squashed,
   hopping,
   onLanded,
 }: {
@@ -137,6 +141,8 @@ function LauncherButton({
   cue: ParkyCue | null;
   /** A fast scroll moving Parky: carried up or pressed flat. */
   fling: ParkyFling | null;
+  /** A very full park presses him flat for a moment, as a hard scroll up does. */
+  squashed: boolean;
   /** Parky is hopping between his corner and the page's slot: the glow waits in the corner. */
   hopping: boolean;
   /** Parky has dropped back from a fast scroll and hit the corner. */
@@ -232,7 +238,7 @@ function LauncherButton({
             <span className="parky-shake grid size-full">
               <ParkyLogo
                 idle
-                mood={fling === 'down' ? 'scared' : fling === 'up' ? 'squashed' : null}
+                mood={fling === 'down' ? 'scared' : fling === 'up' || squashed ? 'squashed' : null}
                 cue={cue}
                 className="size-full drop-shadow-[0_6px_14px_rgb(0_0_0/0.35)]"
               />
@@ -399,10 +405,16 @@ export function AssistantLauncher() {
     // eslint-disable-next-line react-hooks/set-state-in-effect -- session storage, read once the button shows
     if (shown && takeReopen()) openFrom('language');
   }, [shown, openFrom]);
-  const play = useCallback(
-    (act: ParkyCue['act']) => setCue((last) => ({ act, id: (last?.id ?? 0) + 1 })),
-    []
-  );
+  const [squashed, setSquashed] = useState(false);
+  const play = useCallback((act: ParkyPlay) => {
+    if (act === 'squashed') setSquashed(true);
+    else setCue((last) => ({ act, id: (last?.id ?? 0) + 1 }));
+  }, []);
+  useEffect(() => {
+    if (!squashed) return;
+    const timer = setTimeout(() => setSquashed(false), SQUASHED_MS);
+    return () => clearTimeout(timer);
+  }, [squashed]);
   // A hard landing from a fast scroll leaves him seeing stars.
   const landedDizzy = useCallback(() => play('dizzy'), [play]);
   // `?parky=<ride>` or `?parky=<reaction>` plays that act once Parky has arrived, for trying each.
@@ -427,6 +439,7 @@ export function AssistantLauncher() {
         cue={cue}
         away={away || inSlot || !shown}
         fling={fling}
+        squashed={squashed}
         hopping={hop !== null}
         onLanded={landedDizzy}
       />
