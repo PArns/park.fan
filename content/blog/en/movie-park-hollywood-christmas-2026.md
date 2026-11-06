@@ -7,7 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  From 27 November, Hollywood Christmas at Movie Park Germany in Bottrop has an ice slide you ride down on a tyre for the first time. The parade for the park's 30th anniversary comes back in a winter version. The event runs on 21 days until 5 January.
+  From 27 November, Hollywood Christmas at Movie Park Germany in Bottrop has its first ice slide, which you ride down on a tyre. The parade for the park's 30th anniversary comes back in a winter version. The event runs on 21 days until 5 January.
 tags:
   - news
   - movie-park
@@ -41,15 +41,15 @@ seo:
     - Movie Park wait times
 ---
 
-[Movie Park Germany](ref:movie-park-germany) in Bottrop-Kirchhellen opens its winter event, Movie Park's Hollywood Christmas, on Friday 27 November. New this year are an ice slide you ride down on a tyre and a winter version of the parade for the park's 30th anniversary. The event runs on 21 days until 5 January 2027. Before that, the Halloween Horror Festival ends on 8 November. Between the last chainsaw and the first fairy light, the park is shut for 18 days, from 9 to 26 November.
+[Movie Park Germany](ref:movie-park-germany) in Bottrop-Kirchhellen opens its winter event, Movie Park's Hollywood Christmas, on Friday 27 November. New this year are an ice slide from Ice-World, which you ride down on a tyre, and the 30th-anniversary parade in a winter version. The event runs on 21 days until 5 January 2027. Before that, the Halloween Horror Festival ends on 8 November. Between the last chainsaw and the first fairy light, the park is shut for 18 days, from 9 to 26 November.
 
 ## New this winter
 
-The ice slide comes to the park in partnership with Ice-World. The anniversary parade becomes Movie Park's Parade of Celebration – Winter Edition, with decorated floats that wind through the park and stop for shows with dancing and singing.
+In winter the anniversary parade runs as Movie Park's Parade of Celebration – Winter Edition and stops along the way for short shows.
 
-The Christmas Tree Celebration, which opens every event evening on Christmas Boulevard, has a new script. Alongside the elves Holly and Jolly, the nutcrackers and Santa Claus, it now features S.A.D., a grumpy film clapperboard who wants to stop the big Christmas tree from lighting up. One clapperboard against more than a million lights isn't a fair fight, and by the end of the show the tree and the streets are lit.
+The Christmas Tree Celebration, which opens every event evening on Christmas Boulevard, has a new script. S.A.D., a grumpy film clapperboard, now joins the elves Holly and Jolly, the nutcrackers and Santa Claus, and wants to stop the big Christmas tree from lighting up. One clapperboard against more than a million lights isn't a fair fight, and by the end of the show the tree and the streets are lit.
 
-In Van Helsing's Club, the new show Night of Wonder replaces last year's Christmas Sparkle. With live singing, dance and acrobatics, it tells the story of a girl who meets Santa Claus just before Christmas.
+In Van Helsing's Club, the new show Night of Wonder replaces last year's Christmas Sparkle. A girl meets Santa Claus just before Christmas, the songs are sung live, and there's acrobatics in between.
 
 The Santa Experience has moved out of the Time Riders building and into the event centre by the entrance. There, Santa's Enchanted Express takes children to the North Pole in three minutes, where Santa and his elves are waiting. In the same building, children decorate biscuits in the Kids Cookie & Christmas Factory, and there are craft sessions too.
 
@@ -82,19 +82,19 @@ The Santa Experience costs extra: €5 for adults, €3 for children aged 4 to 1
 
 ## Ice rink, shows and lights
 
-The lights hang in four areas, Christmas Boulevard USA, Nickelodeon HoHoHoliday Land, Rockefeller Plaza and Wild West Christmas; last year there were more than 800,000 of them. The covered 360-square-metre ice rink is back, along with curling, a mapping show and American food.
+The more than a million lights hang in four areas, Christmas Boulevard USA, Nickelodeon HoHoHoliday Land, Rockefeller Plaza and Wild West Christmas; last year there were just over 800,000. From last year, the covered 360-square-metre ice rink stays, and so do the curling, the mapping show and the American food.
 
-In Studio 7, Christian Farla performs The Great Christmas Magic Show up to three times a day. This year Santa Claus asks him for help, so that every wish is granted by Christmas. In the Western Saloon, Santa and his elves sing and dance in Meet Santa & Friends for the third time, with a new story. Neither show needs an extra ticket. On some days the gospel choir Leslie B. Harmonies also sings in the saloon.
+In Studio 7, Christian Farla performs The Great Christmas Magic Show up to three times a day, this year as stand-in help for a Santa who can't get every wish granted by Christmas on his own. In the Western Saloon, Santa and his elves sing and dance in Meet Santa & Friends for the third time, with a new story. Neither show needs an extra ticket. On some days the gospel choir Leslie B. Harmonies also sings in the saloon.
 
 The Roxy 4-D cinema is showing Scrooge 4D: A Christmas Carol again, and Nickelodeon HoHoHoliday Land has the Nickelodeon Dance Party Holiday Edition. Every evening ends with Hollywood Christmas Lights on Christmas Boulevard, a show of flames and lasers.
 
 ## The Coca-Cola Truck on 29 November
 
-On Sunday 29 November the Coca-Cola Xmas Truck is in the park, and you can have your photo taken with Santa Claus at the truck. If you've already been to the North Pole in the event centre, that's two Santa photos on your phone in one day. There's also a selfie platform and a digital prize wheel where you can win Coca-Cola merchandise.
+On Sunday 29 November the Coca-Cola Xmas Truck is in the park, and you can have your photo taken with Santa Claus at the truck. If you also take the train to the North Pole in the event centre that day, you'll meet Santa twice. There's also a selfie platform and a digital prize wheel where you can win Coca-Cola merchandise.
 
 ## Rides in winter
 
-Alongside the family rides, some of the roller coasters run too, and the weather on the day decides which. The water rides stay closed, which few people will mourn in December. [Van Helsing's Factory](ref:movie-park-germany/van-helsings-factory) and [Star Trek: Operation Enterprise](ref:movie-park-germany/star-trek-operation-enterprise) are at Rockefeller Plaza, [The Bandit](ref:movie-park-germany/the-bandit) is in Wild West Christmas. In winter the [Movie Park Studio Tour](ref:movie-park-germany/movie-park-studio-tour) belongs to Nickelodeon HoHoHoliday Land and runs as a Christmas Edition. Our [Movie Park guide](/blog/movie-park-germany-wait-times-tips) covers every ride with its story and the wait times we've measured.
+Alongside the family rides, some of the roller coasters run too; which ones depends on the weather on the day. The water rides stay closed. [Van Helsing's Factory](ref:movie-park-germany/van-helsings-factory) and [Star Trek: Operation Enterprise](ref:movie-park-germany/star-trek-operation-enterprise) are at Rockefeller Plaza, [The Bandit](ref:movie-park-germany/the-bandit) is in Wild West Christmas. In winter the [Movie Park Studio Tour](ref:movie-park-germany/movie-park-studio-tour) belongs to Nickelodeon HoHoHoliday Land and runs as a Christmas Edition. Our [Movie Park guide](/blog/movie-park-germany-wait-times-tips) covers every ride with its story and the wait times we've measured.
 
 ## Parking and paying
 
@@ -104,7 +104,7 @@ Some of the mulled wine huts and the restaurants only take cards.
 
 ## The fourth Hollywood Christmas
 
-The winter event has been running since the 2023/24 season, so this is its fourth. In the second year, according to the park, 20 per cent more guests came than at the premiere.
+The winter event has been running since the 2023/24 season. In the second year, according to the park, 20 per cent more guests came than at the premiere.
 
 [Movie Park Germany](ref:movie-park-germany?full)
 

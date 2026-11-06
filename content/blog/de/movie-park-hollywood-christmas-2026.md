@@ -7,7 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Zu Hollywood Christmas ab 27. November rodelst du im Movie Park Germany in Bottrop zum ersten Mal auf Reifen eine Eisrutsche hinunter. Die Parade zum 30. Parkjubiläum fährt dann in einer Winterfassung. Das Fest läuft an 21 Tagen bis zum 5. Januar.
+  Zu Hollywood Christmas ab 27. November hat der Movie Park Germany in Bottrop zum ersten Mal eine Eisrutsche, die du auf Reifen hinunterrodelst. Die Parade zum 30. Parkjubiläum fährt dann in einer Winterfassung. Das Fest läuft an 21 Tagen bis zum 5. Januar.
 tags:
   - news
   - movie-park
@@ -41,15 +41,15 @@ seo:
     - Movie Park Wartezeiten
 ---
 
-Der [Movie Park Germany](ref:movie-park-germany) in Bottrop-Kirchhellen startet am Freitag, 27. November, sein Winterfest Movie Park's Hollywood Christmas. Neu sind eine Eisrutsche, die du auf Reifen hinunterrodelst, und eine Winterfassung der Parade zum 30. Parkjubiläum. Das Fest läuft an 21 Tagen bis zum 5. Januar 2027. Vorher endet am 8. November das Halloween Horror Festival. Zwischen der letzten Kettensäge und dem ersten Lichterbaum hat der Park dann 18 Tage zu, vom 9. bis 26. November.
+Der [Movie Park Germany](ref:movie-park-germany) in Bottrop-Kirchhellen startet am Freitag, 27. November, sein Winterfest Movie Park's Hollywood Christmas. Neu sind eine Eisrutsche von Ice-World, auf der du auf Reifen hinunterrodelst, und die Parade zum 30. Parkjubiläum in einer Winterfassung. Das Fest läuft an 21 Tagen bis zum 5. Januar 2027. Vorher endet am 8. November das Halloween Horror Festival. Zwischen der letzten Kettensäge und dem ersten Lichterbaum hat der Park dann 18 Tage zu, vom 9. bis 26. November.
 
 ## Neu in diesem Winter
 
-Die Eisrutsche kommt in Zusammenarbeit mit Ice-World in den Park. Als Movie Park's Parade of Celebration – Winter Edition zieht die Jubiläumsparade mit geschmückten Wagen durch den Park und hält für Showstopps, an denen getanzt und gesungen wird.
+Im Winter fährt die Jubiläumsparade als Movie Park's Parade of Celebration – Winter Edition und hält unterwegs für Showstopps an.
 
 Die Christmas Tree Celebration, mit der jeder Eventabend am Christmas Boulevard beginnt, hat ein neues Drehbuch. Neben den Elfen Holly und Jolly, den Nussknackern und Santa Claus spielt darin die mürrische Filmklappe S.A.D. mit, die verhindern will, dass der große Weihnachtsbaum angeht. Gegen mehr als eine Million Lichter hat eine einzelne Filmklappe schlechte Karten, und am Ende der Show leuchten Baum und Straßen.
 
-Im Van Helsing's Club ersetzt die Show Night of Wonder das Programm Christmas Sparkle aus dem Vorjahr. Sie erzählt mit Live-Gesang, Tanz und Akrobatik von einem Mädchen, das kurz vor Weihnachten Santa Claus begegnet.
+Im Van Helsing's Club ersetzt die Show Night of Wonder das Programm Christmas Sparkle aus dem Vorjahr. Darin trifft ein Mädchen kurz vor Weihnachten Santa Claus, gesungen wird live, und zwischendurch gibt es Akrobatik.
 
 Die Santa Experience ist aus dem Gebäude von Time Riders ins Eventcenter am Eingang umgezogen. Dort bringt Santa's Enchanted Express Kinder in drei Minuten zum Nordpol, wo der Weihnachtsmann mit seinen Elfen wartet. Im selben Gebäude verzieren Kinder in der Kids Cookie & Christmas Factory Kekse, dazu gibt es Bastelaktionen.
 
@@ -82,19 +82,19 @@ Extra zahlst du für die Santa Experience: 5 € für Erwachsene, 3 € für Kin
 
 ## Eisbahn, Shows und Lichter
 
-Die Lichter hängen in den vier Bereichen Christmas Boulevard USA, Nickelodeon HoHoHoliday Land, Rockefeller Plaza und Wild West Christmas, im Vorjahr waren es über 800.000. Wieder da sind die überdachte Eisfläche mit 360 Quadratmetern, das Eisstockschießen, eine Mapping Show und amerikanisches Essen.
+Die mehr als eine Million Lichter hängen in den vier Bereichen Christmas Boulevard USA, Nickelodeon HoHoHoliday Land, Rockefeller Plaza und Wild West Christmas, im Vorjahr waren es über 800.000. Aus dem Vorjahr bleiben die überdachte Eisfläche mit 360 Quadratmetern, das Eisstockschießen, die Mapping Show und das amerikanische Essen.
 
-In Studio 7 tritt Christian Farla bis zu dreimal am Tag in The Great Christmas Magic Show auf, in diesem Jahr bittet ihn Santa Claus um Hilfe, damit bis Weihnachten alle Wünsche erfüllt sind. Im Western Saloon singen und tanzen Santa und seine Elfen zum dritten Mal bei Meet Santa & Friends, mit einer neuen Geschichte. Für beide Shows brauchst du kein Extra-Ticket. An einigen Tagen singt im Saloon außerdem der Gospelchor Leslie B. Harmonies.
+In Studio 7 zaubert Christian Farla bis zu dreimal am Tag in The Great Christmas Magic Show, diesmal als Aushilfe für Santa Claus, der allein nicht alle Wünsche bis Weihnachten erfüllt bekommt. Im Western Saloon singen und tanzen Santa und seine Elfen zum dritten Mal bei Meet Santa & Friends, mit einer neuen Geschichte. Für beide Shows brauchst du kein Extra-Ticket. An einigen Tagen singt im Saloon außerdem der Gospelchor Leslie B. Harmonies.
 
 Das Roxy 4-D Kino zeigt wieder Scrooge 4D: A Christmas Carol, und im Nickelodeon HoHoHoliday Land läuft die Nickelodeon Dance Party Holiday Edition. Den Abend beschließt jedes Mal Hollywood Christmas Lights am Christmas Boulevard, eine Show mit Flammen und Lasern.
 
 ## Der Coca-Cola Truck am 29. November
 
-Am Sonntag, 29. November, steht der Coca-Cola Xmas Truck im Park, und am Truck gibt es Fotos mit Santa Claus. Wer vorher schon am Nordpol im Eventcenter war, hat an diesem Tag also zwei Weihnachtsmann-Fotos im Handy. Dazu kommen ein Selfie-Podest und ein digitales Glücksrad, an dem du Coca-Cola-Artikel gewinnen kannst.
+Am Sonntag, 29. November, steht der Coca-Cola Xmas Truck im Park, und am Truck gibt es Fotos mit Santa Claus. Wer an diesem Tag auch mit dem Zug zum Nordpol im Eventcenter fährt, trifft den Weihnachtsmann zweimal. Dazu kommen ein Selfie-Podest und ein digitales Glücksrad, an dem du Coca-Cola-Artikel gewinnen kannst.
 
 ## Bahnen im Winter
 
-Neben den Familienfahrgeschäften fahren auch einige Achterbahnen, und welche, entscheidet am Tag das Wetter. Die Wasserbahnen bleiben zu, was im Dezember kaum jemand als Verlust verbuchen wird. [Van Helsing's Factory](ref:movie-park-germany/van-helsings-factory) und [Star Trek: Operation Enterprise](ref:movie-park-germany/star-trek-operation-enterprise) stehen an der Rockefeller Plaza, [The Bandit](ref:movie-park-germany/the-bandit) im Wild West Christmas. Die [Movie Park Studio Tour](ref:movie-park-germany/movie-park-studio-tour) gehört im Winter zum Nickelodeon HoHoHoliday Land und läuft als Christmas Edition. Unser [Movie-Park-Guide](/blog/movie-park-germany-wartezeiten-tipps) beschreibt jede Bahn mit ihrer Geschichte und den gemessenen Wartezeiten.
+Neben den Familienfahrgeschäften fahren auch einige Achterbahnen, welche genau, hängt am Tag vom Wetter ab. Die Wasserbahnen bleiben zu. [Van Helsing's Factory](ref:movie-park-germany/van-helsings-factory) und [Star Trek: Operation Enterprise](ref:movie-park-germany/star-trek-operation-enterprise) stehen an der Rockefeller Plaza, [The Bandit](ref:movie-park-germany/the-bandit) im Wild West Christmas. Die [Movie Park Studio Tour](ref:movie-park-germany/movie-park-studio-tour) gehört im Winter zum Nickelodeon HoHoHoliday Land und läuft als Christmas Edition. Unser [Movie-Park-Guide](/blog/movie-park-germany-wartezeiten-tipps) beschreibt jede Bahn mit ihrer Geschichte und den gemessenen Wartezeiten.
 
 ## Parken und Bezahlen
 
@@ -104,7 +104,7 @@ An einigen Glühweinhütten und in den Restaurants zahlst du nur mit Karte.
 
 ## Das vierte Hollywood Christmas
 
-Das Winterfest gibt es seit dem Winter 2023/24, dieses ist das vierte. Im zweiten Jahr kamen nach Angaben des Parks 20 Prozent mehr Gäste als bei der Premiere.
+Das Winterfest gibt es seit dem Winter 2023/24. Im zweiten Jahr kamen nach Angaben des Parks 20 Prozent mehr Gäste als bei der Premiere.
 
 [Movie Park Germany](ref:movie-park-germany?full)
 
