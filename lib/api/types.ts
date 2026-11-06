@@ -724,6 +724,8 @@ export interface ParkAttraction {
    * render and not the poll; it says nothing about today on its own (see {@link WorksPeriod}).
    */
   worksPeriod?: WorksPeriod | null;
+  /** Every curated works window of the ride, sorted; `worksPeriod` is the one that matters today. */
+  worksPeriods?: WorksPeriod[];
   /**
    * Reported-outage figures, or the reason there are none. Attraction detail response only: the
    * park page renders none of it, so the park list and the poll do not carry it.

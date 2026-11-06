@@ -5,16 +5,25 @@ import {
   ArrowLeftRight,
   ExternalLink,
   Loader2,
+  Plus,
   RotateCcw,
   Save,
   Sliders,
   Sparkles,
+  Trash2,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { isIsoDate } from '@/lib/utils/calendar-utils';
 import { adminFetch, useInvalidateAdmin } from '../_lib/api';
 import type { CuratedField, CurationResponse } from '../_lib/types';
+import {
+  MAX_WORKS_PERIODS,
+  isHiddenCuratedField,
+  sortWorksPeriods,
+  worksPeriodsError,
+  type WorksPeriodRow,
+} from '../_lib/works-periods';
 
 /** ⌘S on a Mac, Strg+S everywhere else. Read once, in the browser. */
 function saveShortcutLabel(): string {
@@ -78,15 +87,35 @@ function formatFieldValue(field: CuratedField, value: unknown): string {
     case 'decimal':
       return field.unit ? `${String(value)} ${field.unit}` : String(value);
     case 'date':
-      // Reformatted for reading, not reparsed: the value is already the park's
-      // calendar day, and `new Date('2026-01-16')` would drag a UTC midnight
-      // into it and print the 15th for anybody west of Greenwich.
-      return typeof value === 'string' && isIsoDate(value)
-        ? `${value.slice(8, 10)}.${value.slice(5, 7)}.${value.slice(0, 4)}`
-        : String(value);
+      return formatDay(value);
+    case 'periods':
+      return periodRows(value).length > 0
+        ? periodRows(value)
+            .map(
+              (period) =>
+                `${period.from ? formatDay(period.from) : '…'}–${period.to ? formatDay(period.to) : '…'}${period.toUncertain ? ' (geschätzt)' : ''}`
+            )
+            .join(', ')
+        : '—';
     default:
       return String(value);
   }
+}
+
+/**
+ * Reformatted for reading, not reparsed: the value is already the park's calendar day, and
+ * `new Date('2026-01-16')` would drag a UTC midnight into it and print the 15th for anybody west of
+ * Greenwich.
+ */
+function formatDay(value: unknown): string {
+  return typeof value === 'string' && isIsoDate(value)
+    ? `${value.slice(8, 10)}.${value.slice(5, 7)}.${value.slice(0, 4)}`
+    : String(value);
+}
+
+/** The value of a `periods` field as rows; anything else reads as no windows. */
+function periodRows(value: unknown): WorksPeriodRow[] {
+  return Array.isArray(value) ? (value as WorksPeriodRow[]) : [];
 }
 
 function sameValue(a: unknown, b: unknown): boolean {
@@ -106,7 +135,12 @@ function CuratedFieldRow({
 }) {
   const id = useFieldId(field.key);
   const dirty = !sameValue(value, field.curatedValue);
-  const hasCorrection = value !== null && value !== undefined && value !== '';
+  const hasCorrection =
+    value !== null &&
+    value !== undefined &&
+    value !== '' &&
+    !(Array.isArray(value) && value.length === 0);
+  const error = field.type === 'periods' && dirty ? worksPeriodsError(periodRows(value)) : null;
   const agreesWithUpstream =
     hasCorrection && !field.humanOnly && sameValue(value, field.syncedValue);
 
@@ -115,6 +149,7 @@ function CuratedFieldRow({
       label={field.label}
       htmlFor={id}
       hint={field.hint}
+      error={error}
       className={cn(
         'rounded-lg px-3 py-3 transition-colors',
         dirty ? 'bg-primary/[0.06] ring-primary/25 ring-1' : 'hover:bg-muted/20'
@@ -291,6 +326,17 @@ function FieldControl({
         />
       );
 
+    case 'periods':
+      return (
+        <PeriodsEditor
+          id={id}
+          label={field.label}
+          disabled={disabled}
+          value={periodRows(value)}
+          onChange={onChange}
+        />
+      );
+
     case 'months':
       return (
         <MonthPicker
@@ -312,6 +358,99 @@ function FieldControl({
         />
       );
   }
+}
+
+/**
+ * The rows of a `periods` field: „ab", „bis" and „Ende geschätzt" per window, plus adding and
+ * removing. Rows keep the order they were typed in; the save sorts them.
+ */
+function PeriodsEditor({
+  id,
+  label,
+  value,
+  onChange,
+  disabled,
+}: {
+  id: string;
+  label: string;
+  value: WorksPeriodRow[];
+  onChange: (value: unknown) => void;
+  disabled: boolean;
+}) {
+  const update = (index: number, patch: Partial<WorksPeriodRow>) =>
+    onChange(value.map((row, i) => (i === index ? { ...row, ...patch } : row)));
+  // An emptied list is null, the same "nothing curated" every other field withdraws to.
+  const remove = (index: number) => {
+    const next = value.filter((_, i) => i !== index);
+    onChange(next.length > 0 ? next : null);
+  };
+
+  return (
+    <div id={id} role="group" aria-label={label} className="space-y-2">
+      {value.length === 0 && (
+        <p className="text-muted-foreground text-xs">Keine Umbaupause eingetragen.</p>
+      )}
+      {value.map((row, index) => {
+        const name = `${label} ${index + 1}`;
+        return (
+          <div key={index} className="flex flex-wrap items-center gap-2">
+            <label className="text-muted-foreground flex items-center gap-1.5 text-xs">
+              ab
+              <TextInput
+                type="date"
+                disabled={disabled}
+                aria-label={`${name}: ab`}
+                value={row.from ?? ''}
+                onChange={(event) => update(index, { from: event.target.value || null })}
+                className="w-40"
+              />
+            </label>
+            <label className="text-muted-foreground flex items-center gap-1.5 text-xs">
+              bis
+              <TextInput
+                type="date"
+                disabled={disabled}
+                aria-label={`${name}: bis`}
+                value={row.to ?? ''}
+                onChange={(event) => update(index, { to: event.target.value || null })}
+                className="w-40"
+              />
+            </label>
+            <label className="flex items-center gap-1.5 text-xs">
+              <input
+                type="checkbox"
+                disabled={disabled}
+                checked={row.toUncertain}
+                onChange={(event) => update(index, { toUncertain: event.target.checked })}
+                className="accent-primary h-4 w-4"
+              />
+              Ende geschätzt
+            </label>
+            <button
+              type="button"
+              disabled={disabled}
+              onClick={() => remove(index)}
+              aria-label={`${name} entfernen`}
+              title="Zeile entfernen"
+              className="text-muted-foreground hover:text-destructive ml-auto rounded p-1.5 disabled:opacity-40"
+            >
+              <Trash2 className="h-3.5 w-3.5" aria-hidden="true" />
+            </button>
+          </div>
+        );
+      })}
+      <Button
+        type="button"
+        variant="ghost"
+        size="sm"
+        disabled={disabled || value.length >= MAX_WORKS_PERIODS}
+        onClick={() => onChange([...value, { from: null, to: null, toUncertain: false }])}
+      >
+        <Plus className="h-4 w-4" aria-hidden="true" />
+        Umbaupause hinzufügen
+      </Button>
+    </div>
+  );
 }
 
 /** Says what an empty field means, since emptying is how a correction is withdrawn. */
@@ -450,6 +589,7 @@ function CuratedFieldsEditor({
   const groups = useMemo(() => {
     const byGroup = new Map<string, CuratedField[]>();
     for (const field of fields) {
+      if (isHiddenCuratedField(field, fields)) continue;
       const list = byGroup.get(field.group) ?? [];
       list.push(field);
       byGroup.set(field.group, list);
@@ -464,10 +604,24 @@ function CuratedFieldsEditor({
 
   const dirty = form.dirtyKeys.length > 0;
   const dirtyKeySet = new Set(form.dirtyKeys);
+  const invalid = fields.some(
+    (field) =>
+      field.type === 'periods' &&
+      dirtyKeySet.has(field.key) &&
+      worksPeriodsError(periodRows(form.values[field.key])) !== null
+  );
 
   function handleSave() {
+    if (invalid) return;
     const changed: FieldValues = {};
-    for (const key of form.dirtyKeys) changed[key] = form.values[key];
+    for (const key of form.dirtyKeys) {
+      const value = form.values[key];
+      // A window list is replaced whole, so it goes out complete and in the stored order.
+      changed[key] =
+        fields.find((field) => field.key === key)?.type === 'periods'
+          ? sortWorksPeriods(periodRows(value))
+          : value;
+    }
     onSave({ fields: changed, reason: reason.trim(), sourceUrl: sourceUrl.trim() });
     setReason('');
     setSourceUrl('');
@@ -480,7 +634,7 @@ function CuratedFieldsEditor({
   // ⌘S / Strg+S, bound only while there is something to save, so it never swallows the
   // keystroke for nothing.
   useEffect(() => {
-    if (!dirty || saving || disabled) return;
+    if (!dirty || saving || disabled || invalid) return;
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key.toLowerCase() !== 's') return;
       if (!(event.metaKey || event.ctrlKey)) return;
@@ -489,7 +643,7 @@ function CuratedFieldsEditor({
     };
     window.addEventListener('keydown', onKeyDown);
     return () => window.removeEventListener('keydown', onKeyDown);
-  }, [dirty, saving, disabled]);
+  }, [dirty, saving, disabled, invalid]);
 
   return (
     // The marker the shell's `g`-chord looks for: unsaved corrections are not
@@ -622,7 +776,7 @@ function CuratedFieldsEditor({
             {saveError && <p className="text-destructive text-xs">{saveError}</p>}
 
             <div className="flex items-center gap-2">
-              <Button onClick={handleSave} disabled={saving || disabled} size="sm">
+              <Button onClick={handleSave} disabled={saving || disabled || invalid} size="sm">
                 {saving ? (
                   <Loader2 className="h-4 w-4 animate-spin" />
                 ) : (
@@ -673,7 +827,9 @@ export function CuratedFieldsPanel({
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const overridden = fields.filter((field) => field.overridden).length;
+  const overridden = fields.filter(
+    (field) => field.overridden && !isHiddenCuratedField(field, fields)
+  ).length;
 
   async function save(input: { fields: FieldValues; reason: string; sourceUrl: string }) {
     setSaving(true);

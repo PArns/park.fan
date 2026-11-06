@@ -360,6 +360,15 @@ The controls protect three distinctions:
 - **A URL is opened, not just typed.** Every `url` field has a button that opens it in a new tab;
   no validation can check that a link goes where it should.
 
+A ride's works windows (group „Umbaupause“) are one `periods` field, `curatedOutOfServicePeriods`:
+rows of „ab“, „bis“ and „Ende geschätzt“, added and removed in place. The list is saved whole and
+sorted. The editor runs the API's checks first (`app/admin/_lib/works-periods.ts`): a bound per
+row, „ab“ not after „bis“, „Ende geschätzt“ only with a „bis“, no overlap with both days inclusive,
+at most 20 rows. Until the list passes, the save stays disabled and the field shows the first
+problem in German; a 400 from the API shows in the save bar like every other save error. The old
+single-window fields (`curatedOutOfServiceFrom`, `…To`, `…ToUncertain`) are hidden: by a `legacy`
+or `hidden` flag on the descriptor, or by key when a `periods` field sits in the same group.
+
 On the public side the park facts arrive as one `info` object on the park detail payload and render
 in `ParkInfoCard` (`components/parks/park-info-card.tsx`), a Server Component that renders nothing
 for a park nobody has curated. The same values add street, postcode, telephone and `sameAs` to the
