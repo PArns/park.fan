@@ -2,7 +2,7 @@
 title: 'Sette nuovi spettacoli a Magic Mountain dal 26 novembre'
 translationKey: six-flags-magic-mountain-holiday-in-the-park-2026
 date: '2026-11-06'
-time: '08:30'
+time: '08:27'
 author: patrick
 mode: published
 featured: false
@@ -39,24 +39,24 @@ Il 26 novembre [Six Flags Magic Mountain](ref:six-flags-magic-mountain), a Valen
 
 ## Gli spettacoli e i loro palchi
 
-Oltre a musica, comicità e Looney Tunes, Six Flags annuncia anche gli elfi, ma nessuno spettacolo dice in quale compaiono. Six Flags non ha comunicato quali siano i sette nuovi. L'albero della Full Throttle Plaza si accendeva già negli inverni passati; la novità è Magic of the Holidays, uno spettacolo con ballerini e cantanti intorno all'albero.
+Oltre a musica, comicità e Looney Tunes, Six Flags annuncia anche gli elfi, senza dire in quale spettacolo compaiono. Degli otto appuntamenti in tabella, Six Flags non ha comunicato quali sette contino come novità. L'albero della Full Throttle Plaza si accendeva già negli inverni passati; la novità è Magic of the Holidays, uno spettacolo con ballerini e cantanti intorno all'albero.
 
-| Spettacolo                                       | Dove                  | Di cosa si tratta                                                 |
-| ------------------------------------------------ | --------------------- | ----------------------------------------------------------------- |
-| Tree Lighting Ceremony con Magic of the Holidays | Full Throttle Plaza   | accensione dell'albero con ballerini e cantanti                   |
-| Cool Yule Christmas                              | Full Throttle Plaza   | una produzione natalizia                                          |
-| No Biz Like Snow Biz                             | Bugs Bunny World      | spettacolo con i Looney Tunes                                     |
-| Tinker's Toy Factory                             | Gear Works Theater    | una fabbrica di giocattoli in musica                              |
-| 'Twas: A Merry Mishap                            | Metropolis            | i Tinsel Town Players rileggono a modo loro un classico natalizio |
-| The Yule Logs                                    | Metro Pub, Metropolis | musica dal vivo                                                   |
-| The Mistletones                                  | Carousel Band Stage   | un gruppo musicale con i canti di Natale classici                 |
-| Midway Merriment                                 | in tutto il parco     | musica e personaggi che girano per il parco                       |
+| Spettacolo                                       | Dove                  | Di cosa si tratta                                                      |
+| ------------------------------------------------ | --------------------- | ---------------------------------------------------------------------- |
+| Tree Lighting Ceremony con Magic of the Holidays | Full Throttle Plaza   | accensione dell'albero con ballerini e cantanti                        |
+| Cool Yule Christmas                              | Full Throttle Plaza   | il secondo spettacolo della piazza, accanto all'accensione dell'albero |
+| No Biz Like Snow Biz                             | Bugs Bunny World      | spettacolo con i Looney Tunes                                          |
+| Tinker's Toy Factory                             | Gear Works Theater    | una fabbrica di giocattoli in musica                                   |
+| 'Twas: A Merry Mishap                            | Metropolis            | i Tinsel Town Players rileggono a modo loro un classico natalizio      |
+| The Yule Logs                                    | Metro Pub, Metropolis | musica dal vivo                                                        |
+| The Mistletones                                  | Carousel Band Stage   | un gruppo musicale con i canti di Natale classici                      |
+| Midway Merriment                                 | in tutto il parco     | musica e personaggi che girano per il parco                            |
 
-In 'Twas: A Merry Mishap può toccare una parte anche a qualcuno del pubblico, quindi l'emozione da palcoscenico c'è da entrambi i lati del palco. Magic Mountain non ha ancora pubblicato gli orari di nessuno show, e per quelli Six Flags rimanda alla sua app.
+In 'Twas: A Merry Mishap può toccare una parte anche a qualcuno del pubblico, e allora la prima fila ha la stessa tremarella di chi sta sul palco. Per gli orari Six Flags rimanda alla sua app; sul sito non compare ancora quello di nessuno spettacolo.
 
 ## In quali giorni c'è l'evento
 
-Il parco apre alle 10:30. Fino al 10 dicembre il parco resta chiuso per quattro giorni e in altri quattro apre solo fino alle 18, senza programma natalizio.
+Il parco apre alle 10:30.
 
 - 26 e 27 novembre: Holiday in the Park fino alle 21
 - 28 novembre: Holiday in the Park fino alle 22
@@ -79,11 +79,11 @@ La vigilia di Natale il parco chiude alle 18, il giorno di Natale resta aperto f
 
 ## Cosa comprende il biglietto
 
-Con il biglietto hai gli spettacoli, le luci e la maggior parte delle attrazioni in funzione quel giorno, ma non tutte le attività. Si pagano a parte cibo, bevande, souvenir e alcune esperienze, tra cui la decorazione dei biscotti e i bracieri dove si preparano gli s'mores. La cioccolata calda arriva nel bicchiere da collezione, così il primo souvenir ce l'hai già in mano, e per gli adulti ci sono i cocktail.
+Con il biglietto hai gli spettacoli, le luci e la maggior parte delle attrazioni in funzione quel giorno. Si pagano a parte cibo, bevande, souvenir e alcune esperienze, tra cui la decorazione dei biscotti e i bracieri dove si preparano gli s'mores. La cioccolata calda arriva nel bicchiere da collezione, e per gli adulti ci sono anche i cocktail.
 
 Per i bambini Mrs. Claus legge le storie della Story Time, al North Pole Craft Depot and Post Office si fanno lavoretti, e chi ha ancora energia cerca l'uscita del Tree Lot Maze, un labirinto ispirato ai rivenditori di alberi di Natale. Per la foto con Babbo Natale si va a Santa's Cottage.
 
-Delle attrazioni in funzione nei giorni dell'evento, Six Flags ne ha indicata una sola, l'attrazione per famiglie [Road Runner Express](ref:six-flags-magic-mountain/road-runner-express). [X2](/news/x2-six-flags-magic-mountain-chiude) non ci sarà: è fermo da luglio e a fine settembre Six Flags l'ha messo fuori servizio per sempre.
+L'unica attrazione che Six Flags ha indicato finora per i giorni dell'evento è [Road Runner Express](ref:six-flags-magic-mountain/road-runner-express), pensata per le famiglie. [X2](/news/x2-six-flags-magic-mountain-chiude) non ci sarà: è fermo da luglio e a fine settembre Six Flags l'ha messo fuori servizio per sempre.
 
 ## Biglietti, pass e parcheggio
 
@@ -95,7 +95,7 @@ Il parcheggio parte da 42 dollari per il General Parking e da 62 dollari per il 
 
 ## Gli altri parchi Six Flags e Thrill Glider
 
-Quest'inverno Six Flags ha rinnovato Holiday in the Park a [Great Adventure](/news/six-flags-great-adventure-holiday-in-the-park-2026) e a [Over Georgia](/news/six-flags-over-georgia-holiday-in-the-park-2026). Knott's Berry Farm diventa [Knott's Merry Farm](/news/knotts-merry-farm-2026). A Magic Mountain la prossima grande novità è [Thrill Glider](/news/thrill-glider-six-flags-magic-mountain), montagne russe di Vekoma che dovrebbero aprire nel 2027.
+Quest'inverno Six Flags ha rinnovato Holiday in the Park a [Great Adventure](/news/six-flags-great-adventure-holiday-in-the-park-2026) e a [Over Georgia](/news/six-flags-over-georgia-holiday-in-the-park-2026). Knott's Berry Farm, dove vale anche il Gold Pass, diventa [Knott's Merry Farm](/news/knotts-merry-farm-2026). A Magic Mountain la prossima grande novità è [Thrill Glider](/news/thrill-glider-six-flags-magic-mountain), montagne russe di Vekoma che dovrebbero aprire nel 2027.
 
 [Six Flags Magic Mountain](ref:six-flags-magic-mountain?full)
 

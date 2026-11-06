@@ -2,7 +2,7 @@
 title: 'Magic Mountain begint 26 november met zeven nieuwe shows'
 translationKey: six-flags-magic-mountain-holiday-in-the-park-2026
 date: '2026-11-06'
-time: '08:30'
+time: '08:27'
 author: patrick
 mode: published
 featured: false
@@ -39,12 +39,12 @@ Op 26 november begint in [Six Flags Magic Mountain](ref:six-flags-magic-mountain
 
 ## De shows en waar ze spelen
 
-Naast muziek, comedy en de Looney Tunes belooft Six Flags ook elfen, alleen staat bij geen enkele show in welke ze meedoen. Welke shows de zeven nieuwe zijn, heeft Six Flags niet bekendgemaakt. De boom op de Full Throttle Plaza ging in vorige winters ook al aan; nieuw is Magic of the Holidays, een show met dansers en zangers rond die boom.
+Naast muziek, comedy en de Looney Tunes belooft Six Flags ook elfen, zonder te zeggen in welke show ze opduiken. Van de acht programmaonderdelen in de tabel heeft Six Flags niet bekendgemaakt welke zeven als nieuw gelden. De boom op de Full Throttle Plaza ging in vorige winters ook al aan; nieuw is Magic of the Holidays, een show met dansers en zangers rond die boom.
 
 | Show                                             | Plek                  | Wat er te zien is                                                  |
 | ------------------------------------------------ | --------------------- | ------------------------------------------------------------------ |
 | Tree Lighting Ceremony met Magic of the Holidays | Full Throttle Plaza   | boomverlichting met dansers en zangers                             |
-| Cool Yule Christmas                              | Full Throttle Plaza   | een kerstproductie                                                 |
+| Cool Yule Christmas                              | Full Throttle Plaza   | de tweede show op de plaza, naast de boomverlichting               |
 | No Biz Like Snow Biz                             | Bugs Bunny World      | show met de Looney Tunes                                           |
 | Tinker's Toy Factory                             | Gear Works Theater    | een speelgoedfabriek met muziek                                    |
 | 'Twas: A Merry Mishap                            | Metropolis            | de Tinsel Town Players vertellen een kerstklassieker op hun manier |
@@ -52,11 +52,11 @@ Naast muziek, comedy en de Looney Tunes belooft Six Flags ook elfen, alleen staa
 | The Mistletones                                  | Carousel Band Stage   | een muziekgroep met klassieke kerstliedjes                         |
 | Midway Merriment                                 | door het hele park    | muziek en figuren die door het park trekken                        |
 
-Bij 'Twas: A Merry Mishap kan ook iemand uit het publiek een rol krijgen, dus de plankenkoorts zit daar aan beide kanten van het podium. Speeltijden heeft Magic Mountain nog voor geen enkele show gepubliceerd, en Six Flags verwijst daarvoor naar zijn app.
+Bij 'Twas: A Merry Mishap kan ook iemand uit het publiek een rol krijgen, en dan heeft de eerste rij net zoveel plankenkoorts als het podium. Voor de speeltijden verwijst Six Flags naar zijn app; op de website staat nog bij geen enkele show een tijd.
 
 ## Op welke dagen het evenement loopt
 
-Het park gaat om 10.30 uur open. Tot en met 10 december is het park vier dagen dicht en op vier andere dagen alleen tot 18.00 uur open, zonder kerstprogramma.
+Het park gaat om 10.30 uur open.
 
 - 26 en 27 november: Holiday in the Park tot 21.00 uur
 - 28 november: Holiday in the Park tot 22.00 uur
@@ -79,11 +79,11 @@ Op kerstavond sluit het park om 18.00 uur, op eerste kerstdag is het tot 20.00 u
 
 ## Wat bij de toegang hoort
 
-Met je ticket krijg je de shows, de lichtjes en de meeste attracties die die dag draaien, maar niet alle activiteiten. Apart betaal je voor eten, drinken, souvenirs en sommige belevenissen, zoals koekjes versieren en de vuurplaatsen waar je s'mores maakt. De warme chocolademelk komt in een souvenirbeker, zo heb je het eerste souvenir meteen in handen, en volwassenen kunnen een cocktail bestellen.
+Met je ticket krijg je de shows, de lichtjes en de meeste attracties die die dag draaien. Apart betaal je voor eten, drinken, souvenirs en sommige belevenissen, zoals koekjes versieren en de vuurplaatsen waar je s'mores maakt. De warme chocolademelk krijg je in een souvenirbeker, en voor volwassenen zijn er ook cocktails.
 
 Voor kinderen leest Mrs. Claus voor bij de Story Time, in het North Pole Craft Depot and Post Office wordt geknutseld, en wie daarna nog energie over heeft, zoekt de uitgang van het Tree Lot Maze, een doolhof naar het voorbeeld van een kerstbomenverkoop. Op de foto met de kerstman ga je in Santa's Cottage.
 
-Welke attracties op de evenementdagen draaien, heeft Six Flags maar voor één bekendgemaakt: de familieattractie [Road Runner Express](ref:six-flags-magic-mountain/road-runner-express). [X2](/news/x2-six-flags-magic-mountain-gesloten) zit er niet bij, want die achtbaan staat sinds juli stil en eind september heeft Six Flags hem definitief buiten gebruik gesteld.
+De enige attractie die Six Flags tot nu toe voor de evenementdagen heeft genoemd, is de familieattractie [Road Runner Express](ref:six-flags-magic-mountain/road-runner-express). [X2](/news/x2-six-flags-magic-mountain-gesloten) zit er niet bij, want die achtbaan staat sinds juli stil en eind september heeft Six Flags hem definitief buiten gebruik gesteld.
 
 ## Tickets, passes en parkeren
 
@@ -95,7 +95,7 @@ Parkeren kost vanaf $42 op General Parking en vanaf $62 op Preferred Parking, te
 
 ## Andere Six Flags-parken en de Thrill Glider
 
-Six Flags heeft Holiday in the Park deze winter in [Great Adventure](/news/six-flags-great-adventure-holiday-in-the-park-2026) en in [Over Georgia](/news/six-flags-over-georgia-holiday-in-the-park-2026) vernieuwd. Knott's Berry Farm verandert in [Knott's Merry Farm](/news/knotts-merry-farm-2026). In Magic Mountain zelf is de volgende grote nieuwigheid de [Thrill Glider](/news/thrill-glider-six-flags-magic-mountain), een achtbaan van Vekoma die in 2027 open moet gaan.
+Six Flags heeft Holiday in the Park deze winter in [Great Adventure](/news/six-flags-great-adventure-holiday-in-the-park-2026) en in [Over Georgia](/news/six-flags-over-georgia-holiday-in-the-park-2026) vernieuwd. Knott's Berry Farm, waar de Gold Pass ook geldt, verandert in [Knott's Merry Farm](/news/knotts-merry-farm-2026). In Magic Mountain zelf is de volgende grote nieuwigheid de [Thrill Glider](/news/thrill-glider-six-flags-magic-mountain), een achtbaan van Vekoma die in 2027 open moet gaan.
 
 [Six Flags Magic Mountain](ref:six-flags-magic-mountain?full)
 

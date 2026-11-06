@@ -2,7 +2,7 @@
 title: 'Magic Mountain opens seven new shows on 26 November'
 translationKey: six-flags-magic-mountain-holiday-in-the-park-2026
 date: '2026-11-06'
-time: '08:30'
+time: '08:27'
 author: patrick
 mode: published
 featured: false
@@ -39,24 +39,24 @@ On 26 November [Six Flags Magic Mountain](ref:six-flags-magic-mountain) in Valen
 
 ## The shows and where they play
 
-Besides music, comedy and the Looney Tunes, Six Flags announces elves, though none of the shows says which one they appear in. Six Flags hasn't announced which of the shows are the seven new ones. The tree on Full Throttle Plaza has been switched on in earlier winters too; what's new is Magic of the Holidays, a show with dancers and singers around it.
+Besides music, comedy and the Looney Tunes, Six Flags announces elves without tying them to a show. Of the eight entries in the table, Six Flags hasn't announced which seven count as new. The tree on Full Throttle Plaza has been switched on in earlier winters too; what's new is Magic of the Holidays, a show with dancers and singers around it.
 
 | Show                                              | Location              | What's on                                                      |
 | ------------------------------------------------- | --------------------- | -------------------------------------------------------------- |
 | Tree Lighting Ceremony with Magic of the Holidays | Full Throttle Plaza   | tree lighting with dancers and singers                         |
-| Cool Yule Christmas                               | Full Throttle Plaza   | a Christmas production                                         |
+| Cool Yule Christmas                               | Full Throttle Plaza   | the plaza's second show, next to the tree lighting             |
 | No Biz Like Snow Biz                              | Bugs Bunny World      | a show with the Looney Tunes                                   |
-| Tinker's Toy Factory                              | Gear Works Theater    | a toy factory set to music                                     |
+| Tinker's Toy Factory                              | Gear Works Theater    | holiday music and surprises in a toy workshop                  |
 | 'Twas: A Merry Mishap                             | Metropolis            | the Tinsel Town Players take a skewed run at a holiday classic |
 | The Yule Logs                                     | Metro Pub, Metropolis | live music                                                     |
 | The Mistletones                                   | Carousel Band Stage   | a band playing classic Christmas songs                         |
 | Midway Merriment                                  | all over the park     | music and characters roaming the park                          |
 
-At 'Twas: A Merry Mishap someone from the audience can end up with a part, so the stage fright works both sides of the footlights. Magic Mountain hasn't posted times for any of the shows yet, and Six Flags points to its app for those.
+At 'Twas: A Merry Mishap someone from the audience can end up with a part, and then the front row gets stage fright too. For show times Six Flags points to its app; the website doesn't list any yet.
 
 ## Which days the event runs
 
-The park opens at 10:30 a.m. Up to 10 December the park is closed on four days and open until 6 p.m. on four more, with no holiday programme.
+The park opens at 10:30 a.m.
 
 - 26 and 27 November: Holiday in the Park until 9 p.m.
 - 28 November: Holiday in the Park until 10 p.m.
@@ -79,11 +79,11 @@ On Christmas Eve the park closes at 6 p.m., and on Christmas Day it's open until
 
 ## What admission covers
 
-Your ticket gets you the shows, the lights and most of the rides running that day, though not every activity. Food, drinks, souvenirs and some experiences cost extra, among them cookie decorating and the fire pits where you make s'mores. Hot cocoa comes in a souvenir mug, so your first souvenir is in your hand before the first show, and adults can get cocktails.
+Your ticket gets you the shows, the lights and most of the rides running that day. Food, drinks, souvenirs and some experiences cost extra, among them cookie decorating and the fire pits where you make s'mores. Hot cocoa comes in a souvenir mug, and adults can get cocktails.
 
-For kids, Mrs. Claus reads at Story Time, the North Pole Craft Depot and Post Office is for crafts, and anyone with energy left can hunt for the way out of the Tree Lot Maze, a maze modelled on a Christmas tree lot. For a photo with Santa, head to Santa's Cottage.
+For kids, Mrs. Claus reads at Story Time, there are crafts at the North Pole Craft Depot and Post Office, and anyone with energy left can find their way through the Tree Lot Maze, laid out like a Christmas tree lot. For a photo with Santa, head to Santa's Cottage.
 
-Six Flags has named only one of the rides running on event days, the family coaster [Road Runner Express](ref:six-flags-magic-mountain/road-runner-express). [X2](/news/x2-six-flags-magic-mountain-closed) won't be among them: the coaster has stood still since July, and at the end of September Six Flags retired it for good.
+The only ride Six Flags has named for event days so far is the family coaster [Road Runner Express](ref:six-flags-magic-mountain/road-runner-express). [X2](/news/x2-six-flags-magic-mountain-closed) won't be among them: the coaster has stood still since July, and at the end of September Six Flags retired it for good.
 
 ## Tickets, passes and parking
 
@@ -95,7 +95,7 @@ Parking starts at $42 for General Parking and $62 for Preferred Parking, each pl
 
 ## Other Six Flags parks and Thrill Glider
 
-This winter Six Flags has reworked Holiday in the Park at [Great Adventure](/news/six-flags-great-adventure-holiday-in-the-park-2026) and at [Over Georgia](/news/six-flags-over-georgia-holiday-in-the-park-2026). Knott's Berry Farm turns into [Knott's Merry Farm](/news/knotts-merry-farm-2026). At Magic Mountain itself, the next big addition is [Thrill Glider](/news/thrill-glider-six-flags-magic-mountain), a Vekoma coaster due to open in 2027.
+This winter Six Flags has reworked Holiday in the Park at [Great Adventure](/news/six-flags-great-adventure-holiday-in-the-park-2026) and at [Over Georgia](/news/six-flags-over-georgia-holiday-in-the-park-2026). Knott's Berry Farm, where the Gold Pass also works, turns into [Knott's Merry Farm](/news/knotts-merry-farm-2026). At Magic Mountain itself, the next big addition is [Thrill Glider](/news/thrill-glider-six-flags-magic-mountain), a Vekoma coaster due to open in 2027.
 
 [Six Flags Magic Mountain](ref:six-flags-magic-mountain?full)
 
