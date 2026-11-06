@@ -177,7 +177,9 @@ export type AssistantLineKind =
   | 'hello'
   | 'hang'
   | 'rough'
-  | 'weather';
+  | 'weather'
+  | 'live'
+  | 'clock';
 
 /** How one of Parky's answers ended. */
 export type AssistantAnswerResult =

@@ -252,6 +252,9 @@ Its life of its own comes in classes, each with its own pace (`CLASS_ACTS`, `CLA
 | dreams   | asleep, 15–25 s after the last one, 6.5 s | a cloud over his head (`ParkyDreamCloud`): a coaster car round a loop with him aboard, a little Parky cheering under confetti, a fairy-tale castle rising under a shooting star, fireworks over the castle, a log boat plunging into a splash, or a Ferris wheel at night with its cabins lit |
 | doing    | whenever something happens                | moods (`thinking`, `looking`, `talking`), searching along, and the cues that answer the visitor                                                                                                                                                                                               |
 
+Late in the visitor's evening, from 22:00 until 05:00 by the browser's clock, both quiet times are
+halved (`LATE_SLEEPY_FACTOR` in `boredomThresholds`): bored at 30 s, asleep at 45 s.
+
 The moments of a park day are props drawn over his face (`ParkyMoment` in
 `components/assistant/parky/props.tsx`): cotton candy at his right cheek with a bite gone at each
 chomp; a churro, two bites, a happy squint and a heart, because it is his favourite; a balloon that
@@ -479,14 +482,52 @@ its corner offset. These lines go in it, from the `assistant` namespace:
   | Source       | When                                                                  | Lines                                                                                           |
   | ------------ | --------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
   | `entrance`   | first slot, after an entrance, a beat after landing                   | `entranceScurry`, `entranceDrop`, `entranceRoll`, `entrancePeek`, `entrancePop`                 |
+  | `live`       | a park's page, once a park a session, level with the weather          | `liveWalkOn1`–`3`, `liveQueue1`–`3`, `liveFull1`–`3`, `liveClosed1`–`3`                         |
+  | `clock`      | a park's page, once a park a session, in the clock's windows          | `clockRopeDrop1`–`3`, `clockClosing1`–`3`                                                       |
   | `holiday`    | first slot, on one of Parky's holidays                                | `holidayHalloween`, `holidayChristmas`, `holidayNewYear`                                        |
   | `fact`       | last slot, on a park's page or the homepage (`?parky=fact`: any slot) | `factLongest1`–`3`, `factGap1`–`2`, `factQuietest1`–`3`, `factBusiest1`–`3`, `factAverage1`–`3` |
   | `park`       | a park's page, on `PARK_EGG_CHANCE` (40 %) or `?parky=egg`            | `parkLine1`–`6`, `parkQueue1`–`3`, `parkRopeDrop1`–`2`, `parkClosing1`–`2`, `parkFood1`–`2`     |
   | `invitation` | always                                                                | `teaser1`–`teaser13`                                                                            |
 
-  A new kind of scheduled line (live waits, the park's clock, a returning visitor) goes into that
-  list at its rank. One that falls due over another line, while Parky sleeps or while a search is
-  open tries again 5 s later.
+  A new kind of scheduled line goes into that list at its rank. One that falls due over another
+  line, while Parky sleeps or while a search is open tries again 5 s later. `?parky=live`,
+  `?parky=clock` and `?parky=fact` put their source first in whichever slot comes, past its
+  once-a-session rule. Forced, `live` counts any open queue as long and `clock` drops its windows,
+  so an open park shows the line and it may overstate the moment; a park before opening has no live
+  line even then. Two rules settle a tie: `live` comes before
+  `clock` (what the queues say now is the more useful news, and the clock takes the next slot),
+  and `live` is level with the weather's line: a park gets one line a session about how it is
+  right now (`parkNewsKey`, `news:<park path>` in `countAnswer`), from whichever comes first.
+
+- **Live waits** (`lib/assistant/parky/live.ts`, `useParkyLive`): read from the live poll the
+  park's page runs anyway (`parkLiveQueryKey`, React Query's cache, no request of its own). The
+  headliners are the park's favourite in `PARK_FAVOURITES` and the first five top attractions of
+  the `/stats` the page has loaded (`headlinersOf`). The slot's line is the first of these that
+  holds (`liveMoment`, limits in `LIVE_LIMITS`):
+
+  | The page says                                       | Act                    | Lines             |
+  | --------------------------------------------------- | ---------------------- | ----------------- |
+  | shut today (closed, no hours for today on the page) | `doze` or `read`       | `liveClosed1`–`3` |
+  | a headliner open at 10 minutes or less              | `airtime`              | `liveWalkOn1`–`3` |
+  | the park's crowd level is very high or extreme      | `squashed` mood, 2.4 s | `liveFull1`–`3`   |
+  | the longest open queue is over 60 minutes           | `grumpy`               | `liveQueue1`–`3`  |
+
+  While the page stays open, each poll is compared with the last (`liveChange`). A headliner that
+  goes down gets a `startle` and `liveDown1`–`3`, which point at the bell on the ride for its
+  reopen alert; a headliner's queue that drops by 20 minutes or more, to half or less, gets a
+  `hop` and `liveDrop1`–`3` ("Psst, Taron is down to 20 minutes."). Each of the two has its line
+  once a session, against `REACTIONS_PER_SESSION`, never over another line. A moment that newly
+  holds (a walk-on, a queue over an hour, a full park) plays its act without a line. An act without
+  its line plays at most every `LIVE_ACT_GAP_MS` (4 minutes). Without known headliners every ride
+  counts.
+
+- **The park's clock** (`lib/assistant/parky/clock.ts`): the park's hours are the page's
+  `AmusementPark` structured data (`openingHoursSpecification`, in park time), its zone that of the
+  live data. In the hour before today's opening Parky stretches or hops for rope drop
+  (`clockRopeDrop1`–`3`); in the last half hour before closing, also for a day that runs past
+  midnight, he lets off the `fireworks` (`clockClosing1`–`3`); `CLOCK_WINDOWS_MIN` holds both.
+  While the clock has its line for a park, the park line leaves out `parkRopeDrop1`–`2` and
+  `parkClosing1`–`2` (`CLOCK_PARK_KEYS`).
 
 - **Facts** (`parkyFacts`, `lib/assistant/parky/facts.ts`): every sentence a park's two-year
   aggregate supports (`deriveParkStatsFindings`): the longest queue and its typical wait, how much
@@ -511,7 +552,7 @@ its corner offset. These lines go in it, from the `assistant` namespace:
   own), else its top attraction (`topCoaster`). The Konami code typed anywhere buys a free ride
   with its own line (`secretKonami`).
 - **The park's weather** (`useParkyWeather`): on a park's page with a weather look, once per park
-  per session (`weather:<park path>` in `countAnswer`) and 12 s after the page settles, never over
+  per session (`parkNewsKey`, shared with the live line) and 12 s after the page settles, never over
   another line, Parky plays the weather's act (`WEATHER_ACT`) and says a `weather` line
   (`weatherRain1`–`3`, `weatherStorm1`–`2`, `weatherSnow1`–`3`, `weatherCold1`–`3`,
   `weatherWindy1`–`2`, `weatherFog1`–`2`, `weatherHot1`–`3`, with `{park}` and `{temp}` in the
@@ -573,7 +614,7 @@ Our own statistic (`trackSiteEvent`, labels in `lib/admin/site-analytics.ts`): `
 `assistant_opened` (with `source`: the button, a line, Parky's page, or `language` after his
 language switch), `assistant_line_shown`,
 `assistant_line_clicked` and `assistant_line_closed` (each with the line's kind as `line`: invitation,
-entrance, bored, woke, holiday, park, fact, secret, weather, or the answer's planner, plan, favourite, alert, theme
+entrance, bored, woke, holiday, park, fact, secret, weather, live, clock, or the answer's planner, plan, favourite, alert, theme
 or install), `assistant_closed` (questions while open), `assistant_question` (suggestion or typed, never the
 text), `assistant_answer` (result and number of lookups), `assistant_rated`,
 `assistant_feedback_sent` (whether with an e-mail, never the e-mail) and
@@ -586,9 +627,9 @@ the planner opening as `planner_opened` with source `assistant`.
 text and its sections for a question, the action checks (a link carried out as the path it was checked as, the planner's modes, zones
 and block lengths, only the six locales and nothing riding along with a switch), where a switch
 leads (the page's hreflang alternate, a respelled segment, never off the site or into a third
-language) and the reopen after it, the boredom stages on a fake clock, the opener's draw, and the
+language) and the reopen after it, the boredom stages on a fake clock and sooner late in the evening, the opener's draw, and the
 easter eggs:
-a page's park path and park page, the facts a park's findings support, which source fills a slot, the coaster picked from a ranking, the park's name from structured
+a page's park path and park page, the facts a park's findings support, which source fills a slot and how its ties fall, the live waits' moments and changes and the rate of their acts, the park's clock across zones and midnight, the coaster picked from a ranking, the park's name from structured
 data, the holidays, the Konami code and muting, and which scrolls throw Parky: a reading swipe, one
 late frame, a briskly turned wheel or one turned bit by bit, the scrollbar pulled slowly, the space
 bar, a jump and a scripted scroll do not; a hard flick, a wheel rolled hard, the scrollbar pulled

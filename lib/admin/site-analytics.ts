@@ -997,6 +997,8 @@ const PLANNER_VALUE_LABEL: Record<string, Record<string, string>> = {
     hang: 'Oben hängen (schnell gescrollt)',
     rough: 'Zu oft herumgeworfen',
     weather: 'Wetter im Park',
+    live: 'Wartezeiten im Park',
+    clock: 'Parkuhr (Öffnung, Schluss)',
   },
   entrance: {
     scurry: 'Huschen',

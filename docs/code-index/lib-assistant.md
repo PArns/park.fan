@@ -120,24 +120,37 @@ Where Parky stands while his chat window is shut: in his corner, or in a slot on
 - `CLASS_ACTS` _const_: Parky's life of its own comes in classes, and what he does is drawn from the one for the moment.
 - `WAKE_ACTS` _const_: How Parky wakes up when somebody moves, calm or not.
 - `CLASS_PAUSE_MS` _const_: The rest after an act before the class's next one, as the shortest wait and a random spread on top. A fidget lasts about a second and a half, so fidgets start 7 to 10 s apart; a dream comes 15 to 25 s after the last one ended.
-- Types: `ParkyAct`, `ParkyCue`
+- Types: `ParkyAct`, `ParkyCue`, `ParkyPlay`
 
 ### [`parky/boredom.ts`](../../lib/assistant/parky/boredom.ts)
 
-- `boredomAfter` _function_: How bored Parky is after `quietMs` without a pointer, key, wheel or touch on the page.
+- `boredomThresholds` _function_: The two quiet times at the visitor's `hour` (0–23).
+- `boredomAfter` _function_: How bored Parky is after `quietMs` without a pointer, key, wheel or touch on the page, at the visitor's `hour`.
 - `nextBoredomInMs` _function_: How long until the next stage after `quietMs` of quiet; `null` once asleep, which only activity ends.
 - `BORED_AFTER_MS` _const_: Quiet time on the page before Parky gets sleepy: two rounds of mischief first.
 - `ASLEEP_AFTER_MS` _const_: Quiet time on the page before Parky falls asleep: a minute and a half.
+- `LATE_SLEEPY_FACTOR` _const_: Late in the visitor's evening (from 22:00 until 05:00 by the browser's clock) Parky gets sleepy sooner: both quiet times are this share of the day's.
 - `parkyBoredom` _const_: One boredom for the whole page, for `useSyncExternalStore`: the first subscriber starts the listeners, the last one stops them. Without motion (`prefers-reduced-motion`) Parky has no idle life and the snapshot is `null`, as on the server.
 - Types: `ParkyBoredom`
+
+### [`parky/clock.ts`](../../lib/assistant/parky/clock.ts)
+
+- `openingDaysOf` _function_: The opening days in the page's `openingHoursSpecification` (`opens`, `closes`, `validFrom`), each a day the park opens; anything else in it is skipped.
+- `opensToday` _function_: Whether the park opens today at all, by its own calendar.
+- `clockMoment` _function_: Where the park's clock stands at `now`, in the park's own zone: within the hour before today's opening, rope drop; within the half hour before closing, the fireworks, also for a day that closes after midnight; else `null`.
+- `CLOCK_LINES` _const_: What Parky says on the park's clock (`assistant` namespace, with `{park}`), each with its act: a stretch or a hop before rope drop, the fireworks before closing.
+- `CLOCK_PARK_KEYS` _const_: The general park lines about opening and closing time (`PARK_LINES`): while the clock has its own line for this park, they stay out of the draw.
+- `CLOCK_WINDOWS_MIN` _const_: Minutes before opening that count as rope drop, and before closing as the fireworks.
+- Types: `OpeningDay`, `ClockMoment`
 
 ### [`parky/easter-eggs.ts`](../../lib/assistant/parky/easter-eggs.ts)
 
 - `parkPathOf` _function_: The geo path of the park a page belongs to (a park's page or one of its rides), or `null`.
 - `parkPageOf` _function_: The four segments of a park's own page, the only page its line is said on; `null` elsewhere.
 - `topCoaster` _function_: The ride a park's line names: its coaster with the longest waits, Parky being about to ride one, else its top attraction; `null` for a park without a ranking. The list comes ranked from `/stats`.
-- `parkNameIn` _function_: The park's name as the page's own structured data gives it (`AmusementPark`, a root node or one in `@graph`), so the line needs no request of its own; `null` where the page has none.
-- `parkySwitch` _function_: What `?parky=` asks for on this page, for trying the easter eggs out: `egg` for a park's line whatever the chance, or an entrance's name. Browser only.
+- `amusementParkIn` _function_: The page's own `AmusementPark` structured data (a root node or one in `@graph`), so Parky reads the park's name and opening hours with no request of its own; `null` where the page has none.
+- `parkNameIn` _function_: The park's name from `amusementParkIn`; `null` where the page names none.
+- `parkySwitch` _function_: What `?parky=` asks for on this page, for trying the easter eggs out: `egg` for a park's line whatever the chance, `fact`, `live` or `clock` for that line in any slot, or an entrance's, a ride's or a reaction's name. Browser only.
 - `holidayOn` _function_: The holiday a date falls on: 31 October, 24 to 26 December, 31 December and 1 January.
 - `konamiProgress` _function_: How far into the Konami code a key leaves somebody who had typed `progress` keys of it; the full length means it is done. A wrong key starts over, or counts as the first one if it is.
 - `PARK_FAVOURITES` _const_: Parks whose ride Parky names whatever the numbers say, keyed by the geo path of their page (two parks are called `disneyland-park`). Every other park gets its line from its own data (`topCoaster`). Each ride is one park.fan lists.
@@ -153,8 +166,20 @@ Where Parky stands while his chat window is shut: in his corner, or in a slot on
 
 ### [`parky/lines.ts`](../../lib/assistant/parky/lines.ts)
 
+- `parkNewsKey` _function_: The session's answered-kind key for a park's news (`countAnswer`).
 - `lineSources` _function_: The sources that may fill a slot, best first. The scheduler says the first that has a line: a park whose statistics are too thin for a fact falls through to the next one.
 - Types: `LineSource`, `LineSlot`
+
+### [`parky/live.ts`](../../lib/assistant/parky/live.ts)
+
+- `headlinersOf` _function_: The rides Parky watches: the park's favourite (`PARK_FAVOURITES`) and its top attractions.
+- `liveMoment` _function_: The moment the park's live data gives right now, best first: shut today, a headliner that is a walk-on, a very full park, a queue over an hour; `null` when none holds.
+- `liveChange` _function_: What changed between two polls that Parky notices, the most notable first: a headliner went down, a headliner's wait dropped sharply, then a moment that newly holds (a walk-on, a queue over an hour, the park turning very full).
+- `liveActDue` _function_: Whether an act without a line may play now, the last one having played at `lastAt`.
+- `LIVE_LIMITS` _const_: The limits, in minutes: a walk-on, a queue that offends him, and a drop worth a whisper (at least this much and at least half the wait gone).
+- `LIVE_ACT_GAP_MS` _const_: An act without a line, on a noticeable change of the live data, comes at most this often; a poll lands every five minutes, so this lets most changes play and keeps a flapping ride quiet.
+- `LIVE_LINES` _const_: What Parky says about each reading (`assistant` namespace, with `{park}`, `{ride}` and `{wait}`), each with the act it goes with: airtime for a walk-on, grumpy at a long queue, squashed in a full park, a nap or a book on a closed day, a …
+- Types: `LiveMoment`, `LiveChange`, `LiveReading`
 
 ### [`parky/look.ts`](../../lib/assistant/parky/look.ts)
 
@@ -205,6 +230,10 @@ Where Parky stands while his chat window is shut: in his corner, or in a slot on
 ### [`parky/use-parky-boredom.ts`](../../lib/assistant/parky/use-parky-boredom.ts)
 
 - `useParkyBoredom` _hook_: How bored Parky is, from the page-wide `parkyBoredom`; `null` while `enabled` is false, on the server and under reduced motion, so a disabled reader takes no subscription.
+
+### [`parky/use-parky-live.ts`](../../lib/assistant/parky/use-parky-live.ts)
+
+- `useParkyLive` _hook_: Parky watches the live waits of the park whose page this is, from the poll the page runs anyway (React Query's cache, no request of its own).
 
 ### [`parky/use-parky-look.ts`](../../lib/assistant/parky/use-parky-look.ts)
 

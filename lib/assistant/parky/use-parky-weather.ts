@@ -18,6 +18,7 @@ import {
   REACTIONS_PER_SESSION,
 } from '../teaser-store';
 import { setParkyWeather } from './use-parky-look';
+import { parkNewsKey } from './lines';
 
 /** What Parky says about the park's weather, with `{park}` and, where it fits, `{temp}`. */
 const WEATHER_LINE_KEYS: Record<ParkyWeather, readonly string[]> = {
@@ -42,7 +43,8 @@ const noPark = { continent: '', country: '', city: '', parkSlug: '' };
  * (`setParkyWeather`), and once a park per session, after the page has settled and never over
  * another line, he plays a fitting act and says a `weather` line. The weather is the nowcast the
  * page has already loaded, read from React Query's cache, so it costs no request of its own. The
- * line counts against the session's reactions and stays away once lines were closed by hand.
+ * line counts against the session's reactions and stays away once lines were closed by hand. It is
+ * level with the live waits' line: whichever comes first is the park's one (`parkNewsKey`).
  */
 export function useParkyWeather({
   entering,
@@ -86,7 +88,7 @@ export function useParkyWeather({
   const temperature = nowcast?.currentTemperatureC ?? null;
   useEffect(() => {
     if (!weather || !path || entering) return;
-    const kind = `weather:${path}`;
+    const kind = parkNewsKey(path);
     if (linesMuted() || answeredWithLine(kind)) return;
     let timer: ReturnType<typeof setTimeout>;
     const attempt = (wait: number) => {

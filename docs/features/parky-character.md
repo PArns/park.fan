@@ -50,8 +50,11 @@ What Parky shows follows what the page shows, never against it:
 | queues over an hour                | grumpy, arms crossed, a small cloud of steam  |
 | the park is very full              | squashed                                      |
 | the park is closed today           | dozes, or reads up for the next visit         |
+| a ride goes down while you look    | startled, and points at the ride's bell       |
+| a queue drops sharply              | a hop and a whispered tip                     |
 | before opening, park time          | rope-drop excitement                          |
 | closing time, park time            | fireworks                                     |
+| late evening, your time            | sleepy sooner                                 |
 | rain, snow, cold, heat at the park | the weather look and its acts                 |
 | the season                         | Halloween pumpkin, Christmas tree, snowman, … |
 

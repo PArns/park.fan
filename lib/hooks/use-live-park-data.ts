@@ -33,6 +33,22 @@ const DAILY_BLOCK_INTERVAL_MS = 30 * 60_000;
 const dailyBlockPolls = new Map<string, { lastFullAt: number; status?: string }>();
 
 /**
+ * The live park query's key, for a reader of its cache (Parky) that must not start a request.
+ * The dev/preview `?state=` scenario (`null` everywhere else, see `lib/parks/park-simulation.ts`)
+ * is part of it, so a simulated snapshot and the real one can never share a cache entry.
+ */
+export function parkLiveQueryKey(
+  continent: string,
+  country: string,
+  city: string,
+  parkSlug: string
+): readonly unknown[] {
+  const simState =
+    typeof window !== 'undefined' ? readParkSimulationParam(window.location.search) : null;
+  return ['park-live', continent, country, city, parkSlug, simState];
+}
+
+/**
  * Polls a park's live projection ({@link LiveParkSnapshot}) every five minutes and merges it onto
  * the server-rendered park in `select`, per observer, so consumers read a complete
  * `ParkWithAttractions`. Shows and restaurants are set for the day, so their full block (`?full=1`)
@@ -60,7 +76,7 @@ export function useLiveParkData({
     typeof window !== 'undefined' ? readParkSimulationParam(window.location.search) : null;
 
   const queryClient = useQueryClient();
-  const queryKey = ['park-live', continent, country, city, parkSlug, simState];
+  const queryKey = parkLiveQueryKey(continent, country, city, parkSlug);
   const pollKey = `${continent}/${country}/${city}/${parkSlug}/${simState ?? ''}`;
 
   return useQuery<LiveParkSnapshot, Error, ParkWithAttractions>({

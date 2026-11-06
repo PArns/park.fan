@@ -28,6 +28,7 @@ import { useParkyBoredom } from '@/lib/assistant/parky/use-parky-boredom';
 import { useSearchOpen } from '@/lib/analytics/search-presence';
 import type { ParkyEntrance } from '@/lib/assistant/entrance';
 import {
+  amusementParkIn,
   holidayOn,
   KONAMI_LENGTH,
   konamiProgress,
@@ -40,13 +41,24 @@ import {
   type ParkyHoliday,
 } from '@/lib/assistant/parky/easter-eggs';
 import { parkStatsQuery, type ParkStatsTarget } from '@/lib/hooks/use-park-stats-queries';
+import { parkLiveQueryKey } from '@/lib/hooks/use-live-park-data';
+import type { LiveParkSnapshot } from '@/lib/api/parks';
 import { deriveParkStatsFindings } from '@/lib/parks/park-stats-derive';
 import { parkyFacts } from '@/lib/assistant/parky/facts';
-import { lineSources, type LineSource } from '@/lib/assistant/parky/lines';
+import { lineSources, parkNewsKey, type LineSource } from '@/lib/assistant/parky/lines';
 import { reactionTo, type ParkyReaction } from '@/lib/assistant/parky/reactions';
 import { usePageLocked } from '@/lib/hooks/use-page-locked';
 import { useParkyWeather } from '@/lib/assistant/parky/use-parky-weather';
-import type { ParkyCue } from '@/lib/assistant/parky/acts';
+import { useParkyLive } from '@/lib/assistant/parky/use-parky-live';
+import { headlinersOf, LIVE_LINES, liveMoment } from '@/lib/assistant/parky/live';
+import {
+  CLOCK_LINES,
+  CLOCK_PARK_KEYS,
+  opensToday,
+  clockMoment,
+  openingDaysOf,
+} from '@/lib/assistant/parky/clock';
+import type { ParkyCue, ParkyPlay } from '@/lib/assistant/parky/acts';
 import { PARKY_LAYER } from './parky-layer';
 import { PARKY_FALL_MS } from '@/lib/assistant/use-scroll-fling';
 import type { ParkyFling } from '@/lib/assistant/fling-tracker';
@@ -141,16 +153,22 @@ interface Line {
   text: string;
   kind: AssistantLineKind;
   /** What Parky plays once the line has been read. */
-  act?: ParkyCue['act'];
+  act?: ParkyPlay;
+  /** Said once a session: the answered kind (`countAnswer`) the line takes when it shows. */
+  once?: string;
 }
+
+/** The page's structured data, where Parky reads the park's name and opening hours. */
+const pageData = () => document.querySelectorAll('script[type="application/ld+json"]');
 
 /**
  * A short line beside the closed Parky button ("Hey, ich bin Parky – klick mich an!"), at most
  * twice a session and never once Parky was opened or a line was closed. A press on the line opens
  * Parky. After its entrance Parky's first line fits how it arrived, and it also speaks up when it
  * gets bored or is woken from sleep, a few times a session. Which line fills one of the session's
- * two slots is {@link lineSources}: the entrance's, the holiday's, a fact from a park's statistics
- * in the last slot on a park's page or the homepage, now and then on a park's page a line about it
+ * two slots is {@link lineSources}: the entrance's, on a park's page what its live waits or its clock
+ * say, the holiday's, a fact from a park's statistics in the last slot on a park's page or the
+ * homepage, now and then on a park's page a line about it
  * with the act that goes with it, else an invitation. After the Konami code Parky rides a coaster.
  * It answers what the visitor does (the trip planner
  * opened, a plan finished, a favourite, an alert, the theme switched, the app installed) with an act
@@ -169,7 +187,7 @@ export function AssistantTeaser({
 }: {
   onOpen: () => void;
   /** Parky should play this act now: a ride, or its answer to something the visitor did. */
-  onAct: (act: ParkyCue['act']) => void;
+  onAct: (act: ParkyPlay) => void;
   /** An entrance is under way: no line until Parky has landed. */
   entering?: boolean;
   /** The entrance Parky has just made, whose line is then the session's first. */
@@ -216,11 +234,41 @@ export function AssistantTeaser({
   const parkOn = useCallback((path: string) => {
     const [continent, country, city, parkSlug] = path.split('/');
     const target: ParkStatsTarget = { continent, country, city, parkSlug };
-    const park =
-      PARK_FAVOURITES[path]?.park ??
-      parkNameIn(document.querySelectorAll('script[type="application/ld+json"]'));
+    const park = PARK_FAVOURITES[path]?.park ?? parkNameIn(pageData());
     return park ? { target, park } : null;
   }, []);
+  // The `/stats` a park's page has loaded anyway; on the homepage one CDN-cached request.
+  const statsOf = useCallback(
+    (target: ParkStatsTarget) =>
+      queryClient.fetchQuery(parkStatsQuery(target, 'default', true)).catch(() => null),
+    [queryClient]
+  );
+  const headliners = useCallback(
+    async (target: ParkStatsTarget) =>
+      headlinersOf(
+        PARK_FAVOURITES[Object.values(target).join('/')]?.ride,
+        (await statsOf(target))?.topAttractions ?? []
+      ),
+    [statsOf]
+  );
+  // The live poll's latest reading of the page's park, from the cache the page fills.
+  const liveOf = useCallback(
+    (target: ParkStatsTarget) =>
+      queryClient.getQueryData<LiveParkSnapshot>(
+        parkLiveQueryKey(target.continent, target.country, target.city, target.parkSlug)
+      ),
+    [queryClient]
+  );
+  // Where the park's clock stands, from the zone of its live data and the hours on the page.
+  const clockOf = useCallback(
+    (target: ParkStatsTarget, preview: boolean) => {
+      const zone = liveOf(target)?.timezone;
+      return zone
+        ? clockMoment(openingDaysOf(amusementParkIn(pageData())), zone, Date.now(), preview)
+        : null;
+    },
+    [liveOf]
+  );
 
   useEffect(() => {
     if (entering) return;
@@ -233,16 +281,42 @@ export function AssistantTeaser({
       text: t(pickRandom(keys)),
       kind,
     });
-    // The `/stats` a park's page has loaded anyway; on the homepage one CDN-cached request.
-    const statsOf = (target: ParkStatsTarget) =>
-      queryClient.fetchQuery(parkStatsQuery(target, 'default', true)).catch(() => null);
     const pageOf = (path: string) => {
       const page = parkPageOf(path);
       return page ? parkOn(Object.values(page).join('/')) : null;
     };
+    const forced = parkySwitch();
     // Each source's line, or `null` where it has none for this page.
     const sources: Record<LineSource, (path: string) => Promise<Line | null>> = {
       entrance: async () => (arrival ? said([ENTRANCE_KEYS[arrival]], 'entrance') : null),
+      // Once a park a session, level with the weather's line (`parkNewsKey`).
+      live: async (path) => {
+        const from = pageOf(path);
+        const park = from && liveOf(from.target);
+        if (!from || !park) return null;
+        const preview = forced === 'live';
+        const closedToday =
+          !!park.timezone &&
+          park.hasOperatingSchedule !== false &&
+          !opensToday(openingDaysOf(amusementParkIn(pageData())), park.timezone, Date.now());
+        const reading = liveMoment(park, await headliners(from.target), closedToday, preview);
+        if (!reading) return null;
+        const { key, act } = pickRandom(LIVE_LINES[reading.kind]);
+        const values = { park: from.park, ride: reading.ride ?? '', wait: reading.wait ?? 0 };
+        const once = parkNewsKey(Object.values(from.target).join('/'));
+        return { text: t(key, values), kind: 'live', act, once };
+      },
+      clock: async (path) => {
+        const from = pageOf(path);
+        if (!from) return null;
+        const once = `clock:${Object.values(from.target).join('/')}`;
+        const preview = forced === 'clock';
+        if (!preview && answeredWithLine(once)) return null;
+        const moment = clockOf(from.target, preview);
+        if (!moment) return null;
+        const { key, act } = pickRandom(CLOCK_LINES[moment]);
+        return { text: t(key, { park: from.park }), kind: 'clock', act, once };
+      },
       holiday: async () => (holiday ? said([HOLIDAY_KEYS[holiday]], 'holiday') : null),
       fact: async (path) => {
         const from = HOME_PAGE.test(path)
@@ -266,21 +340,27 @@ export function AssistantTeaser({
         const ride =
           favourite?.ride ?? topCoaster((await statsOf(from.target))?.topAttractions ?? []);
         if (!ride) return null;
-        const { key, act } = pickRandom(PARK_LINES);
+        // While the clock has its own line here, the general opening and closing lines stay out.
+        const lines = clockOf(from.target, false)
+          ? PARK_LINES.filter((line) => !CLOCK_PARK_KEYS.test(line.key))
+          : PARK_LINES;
+        const { key, act } = pickRandom(lines);
         return { text: t(key, { park: favourite?.park ?? from.park, ride }), kind: 'park', act };
       },
       invitation: async () => said(TEASER_KEYS, 'invitation'),
     };
     const pick = async (): Promise<Line | null> => {
       const path = window.location.pathname;
+      const page = parkPageOf(path);
       const candidates = lineSources({
         slot: shown,
         lastSlot: TEASER_SCHEDULE_MS.length - 1,
         arrival: arrival !== null,
         holiday: holiday !== null,
-        page: parkPageOf(path) ? 'park' : HOME_PAGE.test(path) ? 'home' : 'other',
+        page: page ? 'park' : HOME_PAGE.test(path) ? 'home' : 'other',
         parkLuck: Math.random() < PARK_EGG_CHANCE,
-        forced: parkySwitch(),
+        parkNews: !!page && answeredWithLine(parkNewsKey(Object.values(page).join('/'))),
+        forced,
       });
       for (const source of candidates) {
         const line = await sources[source](path);
@@ -300,6 +380,7 @@ export function AssistantTeaser({
         if (busy()) return next(RETRY_MS);
         shown += 1;
         setTeasersShown(shown);
+        if (line.once) countAnswer(line.once);
         setLine(line);
         const { act } = line;
         if (act) actTimer = setTimeout(() => latest.current.onAct(act), ACT_AFTER_MS);
@@ -313,7 +394,7 @@ export function AssistantTeaser({
       clearTimeout(timer);
       clearTimeout(actTimer);
     };
-  }, [t, tDays, locale, entering, arrival, queryClient, parkOn]);
+  }, [t, tDays, locale, entering, arrival, parkOn, statsOf, headliners, liveOf, clockOf]);
 
   useEffect(() => {
     const kind =
@@ -333,6 +414,13 @@ export function AssistantTeaser({
     busy,
     say: (text) => setLine({ text, kind: 'weather' }),
     act: onAct,
+  });
+  useParkyLive({
+    entering,
+    busy,
+    say: (text) => setLine({ text, kind: 'live' }),
+    act: onAct,
+    headliners,
   });
 
   // The Konami code buys a free ride, typed anywhere on the page.

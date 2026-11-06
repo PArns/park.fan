@@ -11,17 +11,34 @@ export const BORED_AFTER_MS = 60_000;
 /** Quiet time on the page before Parky falls asleep: a minute and a half. */
 export const ASLEEP_AFTER_MS = 90_000;
 
-/** How bored Parky is after `quietMs` without a pointer, key, wheel or touch on the page. */
-export function boredomAfter(quietMs: number): ParkyBoredom {
-  if (quietMs >= ASLEEP_AFTER_MS) return 'asleep';
-  if (quietMs >= BORED_AFTER_MS) return 'bored';
+/**
+ * Late in the visitor's evening (from 22:00 until 05:00 by the browser's clock) Parky gets sleepy
+ * sooner: both quiet times are this share of the day's.
+ */
+export const LATE_SLEEPY_FACTOR = 0.5;
+
+/** The two quiet times at the visitor's `hour` (0–23). */
+export function boredomThresholds(hour: number): { bored: number; asleep: number } {
+  const factor = hour >= 22 || hour < 5 ? LATE_SLEEPY_FACTOR : 1;
+  return { bored: BORED_AFTER_MS * factor, asleep: ASLEEP_AFTER_MS * factor };
+}
+
+/**
+ * How bored Parky is after `quietMs` without a pointer, key, wheel or touch on the page, at the
+ * visitor's `hour`.
+ */
+export function boredomAfter(quietMs: number, hour = 12): ParkyBoredom {
+  const { bored, asleep } = boredomThresholds(hour);
+  if (quietMs >= asleep) return 'asleep';
+  if (quietMs >= bored) return 'bored';
   return 'awake';
 }
 
 /** How long until the next stage after `quietMs` of quiet; `null` once asleep, which only activity ends. */
-export function nextBoredomInMs(quietMs: number): number | null {
-  if (quietMs < BORED_AFTER_MS) return BORED_AFTER_MS - quietMs;
-  if (quietMs < ASLEEP_AFTER_MS) return ASLEEP_AFTER_MS - quietMs;
+export function nextBoredomInMs(quietMs: number, hour = 12): number | null {
+  const { bored, asleep } = boredomThresholds(hour);
+  if (quietMs < bored) return bored - quietMs;
+  if (quietMs < asleep) return asleep - quietMs;
   return null;
 }
 
@@ -49,8 +66,9 @@ function settle(next: ParkyBoredom): void {
 function tick(): void {
   timer = undefined;
   const quiet = performance.now() - lastActive;
-  settle(boredomAfter(quiet));
-  const due = nextBoredomInMs(quiet);
+  const hour = new Date().getHours();
+  settle(boredomAfter(quiet, hour));
+  const due = nextBoredomInMs(quiet, hour);
   if (due !== null) timer = setTimeout(tick, due);
 }
 
