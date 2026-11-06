@@ -64,7 +64,7 @@ Freitags öffnet der Park um 14 Uhr, an allen anderen Eventtagen um 12 Uhr. Schl
 - 27. bis 31. Dezember, Silvester eingeschlossen
 - 2. bis 5. Januar 2027
 
-Im Advent bleibt der Park montags bis donnerstags zu, außerdem vom 21. bis 26. Dezember und an Neujahr. Im vergangenen Winter waren es noch 23 Eventtage.
+Im Advent bleibt der Park montags bis donnerstags zu, außerdem vom 21. bis 26. Dezember und an Neujahr. Welche Parks an diesen Tagen offen haben, steht im [Winter-Guide](/blog/winter-freizeitparks-2026). Im vergangenen Winter waren es noch 23 Eventtage.
 
 ```best-days-widget slug=movie-park-germany
 
@@ -86,7 +86,7 @@ Die Lichter hängen in den vier Bereichen Christmas Boulevard USA, Nickelodeon H
 
 In Studio 7 tritt Christian Farla bis zu dreimal am Tag in The Great Christmas Magic Show auf, in diesem Jahr bittet ihn Santa Claus um Hilfe, damit bis Weihnachten alle Wünsche erfüllt sind. Im Western Saloon singen und tanzen Santa und seine Elfen zum dritten Mal bei Meet Santa & Friends, mit einer neuen Geschichte. Für beide Shows brauchst du kein Extra-Ticket. An einigen Tagen singt im Saloon außerdem der Gospelchor Leslie B. Harmonies.
 
-Das Roxy 4-D Kino zeigt wieder Scrooge 4D: A Christmas Carol, und im Nickelodeon HoHoHoliday Land läuft die Nickelodeon Dance Party Holiday Edition. Den Abend beschließt jedes Mal Hollywood Christmas Lights am Christmas Boulevard, mit Feuer, Laser und Licht.
+Das Roxy 4-D Kino zeigt wieder Scrooge 4D: A Christmas Carol, und im Nickelodeon HoHoHoliday Land läuft die Nickelodeon Dance Party Holiday Edition. Den Abend beschließt jedes Mal Hollywood Christmas Lights am Christmas Boulevard, eine Show mit Flammen und Lasern.
 
 ## Der Coca-Cola Truck am 29. November
 
@@ -94,7 +94,7 @@ Am Sonntag, 29. November, steht der Coca-Cola Xmas Truck im Park, und am Truck g
 
 ## Bahnen im Winter
 
-Es fahren Familienfahrgeschäfte und einige Achterbahnen, je nachdem, was das Wetter zulässt. Die Wasserbahnen bleiben zu, was im Dezember kaum jemand als Verlust verbuchen wird, und auch sonst steht nicht das ganze Angebot des Sommers bereit. In den Weihnachtsbereichen stehen [Van Helsing's Factory](ref:movie-park-germany/van-helsings-factory) und [Star Trek: Operation Enterprise](ref:movie-park-germany/star-trek-operation-enterprise) an der Rockefeller Plaza und [The Bandit](ref:movie-park-germany/the-bandit) im Wild West Christmas. Die [Movie Park Studio Tour](ref:movie-park-germany/movie-park-studio-tour) gehört im Winter zum Nickelodeon HoHoHoliday Land und läuft als Christmas Edition. Unser [Movie-Park-Guide](/blog/movie-park-germany-wartezeiten-tipps) beschreibt jede Bahn mit ihrer Geschichte und den gemessenen Wartezeiten.
+Neben den Familienfahrgeschäften fahren auch einige Achterbahnen, und welche, entscheidet am Tag das Wetter. Die Wasserbahnen bleiben zu, was im Dezember kaum jemand als Verlust verbuchen wird. [Van Helsing's Factory](ref:movie-park-germany/van-helsings-factory) und [Star Trek: Operation Enterprise](ref:movie-park-germany/star-trek-operation-enterprise) stehen an der Rockefeller Plaza, [The Bandit](ref:movie-park-germany/the-bandit) im Wild West Christmas. Die [Movie Park Studio Tour](ref:movie-park-germany/movie-park-studio-tour) gehört im Winter zum Nickelodeon HoHoHoliday Land und läuft als Christmas Edition. Unser [Movie-Park-Guide](/blog/movie-park-germany-wartezeiten-tipps) beschreibt jede Bahn mit ihrer Geschichte und den gemessenen Wartezeiten.
 
 ## Parken und Bezahlen
 
@@ -104,7 +104,7 @@ An einigen Glühweinhütten und in den Restaurants zahlst du nur mit Karte.
 
 ## Das vierte Hollywood Christmas
 
-Das Winterfest gibt es seit dem Winter 2023/24, für Geschäftsführer Thorsten Backhaus ist 2026 das vierte Eventjahr. Im zweiten Jahr kamen nach Angaben des Parks 20 Prozent mehr Gäste als bei der Premiere. Wer im Winter noch andere Parks besuchen will, findet sie in unserem [Winter-Guide](/blog/winter-freizeitparks-2026).
+Das Winterfest gibt es seit dem Winter 2023/24, dieses ist das vierte. Im zweiten Jahr kamen nach Angaben des Parks 20 Prozent mehr Gäste als bei der Premiere.
 
 [Movie Park Germany](ref:movie-park-germany?full)
 

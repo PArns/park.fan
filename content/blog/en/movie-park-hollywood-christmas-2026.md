@@ -41,7 +41,7 @@ seo:
     - Movie Park wait times
 ---
 
-[Movie Park Germany](ref:movie-park-germany) in Bottrop-Kirchhellen opens its winter event, Movie Park's Hollywood Christmas, on Friday 27 November. New this year are an ice slide you ride down on a tyre and a winter version of the parade for the park's 30th anniversary. The event runs on 21 days until 5 January 2027. Before that, the Halloween Horror Festival ends on 8 November, and the park then shuts for 18 days, from 9 to 26 November, which is how long it takes to swap the chainsaws for fairy lights.
+[Movie Park Germany](ref:movie-park-germany) in Bottrop-Kirchhellen opens its winter event, Movie Park's Hollywood Christmas, on Friday 27 November. New this year are an ice slide you ride down on a tyre and a winter version of the parade for the park's 30th anniversary. The event runs on 21 days until 5 January 2027. Before that, the Halloween Horror Festival ends on 8 November. Between the last chainsaw and the first fairy light, the park is shut for 18 days, from 9 to 26 November.
 
 ## New this winter
 
@@ -64,7 +64,7 @@ On Fridays the park opens at 2 p.m., on every other event day at noon. It always
 - 27 to 31 December, New Year's Eve included
 - 2 to 5 January 2027
 
-During Advent the park stays closed Monday to Thursday, and it's also shut from 21 to 26 December and on New Year's Day. Last winter there were 23 event days.
+During Advent the park stays closed Monday to Thursday, and it's also shut from 21 to 26 December and on New Year's Day. The parks that are open on those days are in our [winter guide](/blog/winter-theme-parks-2026). Last winter there were 23 event days.
 
 ```best-days-widget slug=movie-park-germany
 
@@ -86,7 +86,7 @@ The lights hang in four areas, Christmas Boulevard USA, Nickelodeon HoHoHoliday 
 
 In Studio 7, Christian Farla performs The Great Christmas Magic Show up to three times a day. This year Santa Claus asks him for help, so that every wish is granted by Christmas. In the Western Saloon, Santa and his elves sing and dance in Meet Santa & Friends for the third time, with a new story. Neither show needs an extra ticket. On some days the gospel choir Leslie B. Harmonies also sings in the saloon.
 
-The Roxy 4-D cinema is showing Scrooge 4D: A Christmas Carol again, and Nickelodeon HoHoHoliday Land has the Nickelodeon Dance Party Holiday Edition. Every evening ends with Hollywood Christmas Lights on Christmas Boulevard, with fire, lasers and light.
+The Roxy 4-D cinema is showing Scrooge 4D: A Christmas Carol again, and Nickelodeon HoHoHoliday Land has the Nickelodeon Dance Party Holiday Edition. Every evening ends with Hollywood Christmas Lights on Christmas Boulevard, a show of flames and lasers.
 
 ## The Coca-Cola Truck on 29 November
 
@@ -94,7 +94,7 @@ On Sunday 29 November the Coca-Cola Xmas Truck is in the park, and you can have 
 
 ## Rides in winter
 
-Family rides and some of the roller coasters run, depending on the weather. The water rides stay closed, which few people will mourn in December, and the rest of the summer line-up isn't all available either. In the Christmas areas, [Van Helsing's Factory](ref:movie-park-germany/van-helsings-factory) and [Star Trek: Operation Enterprise](ref:movie-park-germany/star-trek-operation-enterprise) are at Rockefeller Plaza, and [The Bandit](ref:movie-park-germany/the-bandit) is in Wild West Christmas. In winter the [Movie Park Studio Tour](ref:movie-park-germany/movie-park-studio-tour) belongs to Nickelodeon HoHoHoliday Land and runs as a Christmas Edition. Our [Movie Park guide](/blog/movie-park-germany-wait-times-tips) covers every ride with its story and the wait times we've measured.
+Alongside the family rides, some of the roller coasters run too, and the weather on the day decides which. The water rides stay closed, which few people will mourn in December. [Van Helsing's Factory](ref:movie-park-germany/van-helsings-factory) and [Star Trek: Operation Enterprise](ref:movie-park-germany/star-trek-operation-enterprise) are at Rockefeller Plaza, [The Bandit](ref:movie-park-germany/the-bandit) is in Wild West Christmas. In winter the [Movie Park Studio Tour](ref:movie-park-germany/movie-park-studio-tour) belongs to Nickelodeon HoHoHoliday Land and runs as a Christmas Edition. Our [Movie Park guide](/blog/movie-park-germany-wait-times-tips) covers every ride with its story and the wait times we've measured.
 
 ## Parking and paying
 
@@ -104,7 +104,7 @@ Some of the mulled wine huts and the restaurants only take cards.
 
 ## The fourth Hollywood Christmas
 
-The winter event has been running since the 2023/24 season, and for managing director Thorsten Backhaus 2026 is its fourth year. In the second year, according to the park, 20 per cent more guests came than at the premiere. If you want to visit other parks this winter, they're in our [winter guide](/blog/winter-theme-parks-2026).
+The winter event has been running since the 2023/24 season, so this is its fourth. In the second year, according to the park, 20 per cent more guests came than at the premiere.
 
 [Movie Park Germany](ref:movie-park-germany?full)
 
