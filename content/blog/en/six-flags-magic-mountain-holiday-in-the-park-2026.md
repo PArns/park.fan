@@ -35,16 +35,16 @@ seo:
     - Six Flags Silver Pass 2027
 ---
 
-[Six Flags Magic Mountain](ref:six-flags-magic-mountain) in Valencia, California, opens Holiday in the Park on 26 November with seven new live shows and a tree lighting that gets a new programme. The event runs on selected days until 3 January 2027, and it's included in regular admission, whether you come on a day ticket, a season pass or a membership. Opening day is Thanksgiving, so anyone willing to push the turkey back has until 9 p.m.
+[Six Flags Magic Mountain](ref:six-flags-magic-mountain) in Valencia, California, opens Holiday in the Park on 26 November with seven new live shows. The event runs on selected days until 3 January 2027. A day ticket, a season pass and a membership all cover it. Opening day is Thanksgiving, so anyone willing to push the turkey back has until 9 p.m.
 
 ## The shows and where they play
 
-Six Flags promises musical productions, holiday performances and comedy, plus shows with the Looney Tunes and with elves. The press release doesn't say which of these are the seven new ones. The tree lighting on Full Throttle Plaza isn't new, it ran in earlier winters too. This year it comes with Magic of the Holidays, a new Christmas show with dancers, singers and a big Christmas tree.
+Six Flags promises musical productions, holiday performances and comedy, plus shows with the Looney Tunes and with elves. Six Flags hasn't announced which of the shows are the seven new ones. The tree lighting on Full Throttle Plaza ran in earlier winters too. This year it comes with Magic of the Holidays, a new Christmas show with dancers, singers and a big Christmas tree.
 
 | Show                                              | Location              | What's on                                                      |
 | ------------------------------------------------- | --------------------- | -------------------------------------------------------------- |
 | Tree Lighting Ceremony with Magic of the Holidays | Full Throttle Plaza   | tree lighting with dancers and singers                         |
-| Cool Yule Christmas                               | Full Throttle Plaza   | an upbeat Christmas production                                 |
+| Cool Yule Christmas                               | Full Throttle Plaza   | a Christmas production                                         |
 | No Biz Like Snow Biz                              | Bugs Bunny World      | a show with the Looney Tunes                                   |
 | Tinker's Toy Factory                              | Gear Works Theater    | a toy factory set to music                                     |
 | 'Twas: A Merry Mishap                             | Metropolis            | the Tinsel Town Players take a skewed run at a holiday classic |
@@ -52,11 +52,11 @@ Six Flags promises musical productions, holiday performances and comedy, plus sh
 | The Mistletones                                   | Carousel Band Stage   | a band playing classic Christmas songs                         |
 | Midway Merriment                                  | all over the park     | music and characters roaming the park                          |
 
-At 'Twas: A Merry Mishap someone from the audience can end up with a part, so the stage fright works both sides of the footlights. Magic Mountain hasn't posted times for any of the shows on its show pages yet. Six Flags points to its app for those.
+At 'Twas: A Merry Mishap someone from the audience can end up with a part, so the stage fright works both sides of the footlights. Magic Mountain hasn't posted times for any of the shows yet, and Six Flags points to its app for those.
 
 ## Which days the event runs
 
-The park opens at 10:30 a.m. There's no holiday programme until 25 November. After that, until mid-December, event days, regular days and closed days take turns.
+The park opens at 10:30 a.m. Until mid-December, event days, regular days and closed days take turns.
 
 - 26 and 27 November: Holiday in the Park until 9 p.m.
 - 28 November: Holiday in the Park until 10 p.m.
@@ -65,7 +65,7 @@ The park opens at 10:30 a.m. There's no holiday programme until 25 November. Aft
 - 1, 2, 8 and 9 December: closed
 - 4, 5 and 6 December: Holiday in the Park until 9, 10 and 8 p.m.
 - 11 to 31 December: Holiday in the Park every day
-- 3 January 2027: the last day of the event; January hours aren't on the calendar yet
+- 3 January 2027: the last day of the event; Six Flags hasn't published January hours yet
 
 On Christmas Eve the park closes at 6 p.m., and on Christmas Day it's open until 8 p.m. On New Year's Eve Magic Mountain sees the year out and doesn't close until 12:30 a.m., half an hour into 2027.
 
@@ -79,23 +79,23 @@ On Christmas Eve the park closes at 6 p.m., and on Christmas Day it's open until
 
 ## What admission covers
 
-Your ticket gets you the shows, the lights, selected activities and most rides. Food, drinks, souvenirs and some experiences cost extra, among them cookie decorating and the fire pits where you make s'mores. Hot cocoa comes in a souvenir mug, alongside seasonal dishes and cocktails for adults.
+Your ticket gets you the shows, the lights, selected activities and most of the rides running that day. Food, drinks, souvenirs and some experiences cost extra, among them cookie decorating and the fire pits where you make s'mores. Hot cocoa comes in a souvenir mug, alongside seasonal dishes and cocktails for adults.
 
-For kids, the Looney Tunes play No Biz Like Snow Biz in Bugs Bunny World. Mrs. Claus reads at Story Time, and there's the North Pole Craft Depot and Post Office and the Tree Lot Maze. For a photo with Santa, head to Santa's Cottage.
+For kids, Mrs. Claus reads at Story Time, and there's the North Pole Craft Depot and Post Office and the Tree Lot Maze. For a photo with Santa, head to Santa's Cottage.
 
-Selected rides run on event days. The event page names just one, the family coaster [Road Runner Express](ref:six-flags-magic-mountain/road-runner-express). [X2](/news/x2-six-flags-magic-mountain-closed) won't be among them: the coaster has stood still since July, and at the end of September Six Flags retired it for good.
+Selected rides run on event days. Six Flags names only one of them, the family coaster [Road Runner Express](ref:six-flags-magic-mountain/road-runner-express). [X2](/news/x2-six-flags-magic-mountain-closed) won't be among them: the coaster has stood still since July, and at the end of September Six Flags retired it for good.
 
 ## Tickets, passes and parking
 
-A Good Any Day ticket costs $79. Until 30 November, Six Flags sells the Silver Pass for the same price as a Black Friday deal. It's good for visits all through 2027, including the water park Hurricane Harbor Los Angeles, and General Parking is included. The pass comes with a free Bring-a-Friend ticket that has to be used by 31 December 2026, so your plus-one gets their visit in this year. With a dining plan, the package is called the Silver Bundle and costs $179 instead of $328.
+A Good Any Day ticket costs $79. As a Black Friday deal, Six Flags sells the Silver Pass for the same $79 until 30 November. It's good for visits all through 2027, including the water park Hurricane Harbor Los Angeles, and General Parking is included. The pass comes with a free Bring-a-Friend ticket that has to be used by 31 December 2026. With a dining plan, the package is called the Silver Bundle and costs $179 instead of $328.
 
 The Gold Pass costs $155 and covers 2026 and 2027 at every Six Flags park on the West Coast, Knott's Berry Farm included.
 
 Parking starts at $42 for General Parking and $62 for Preferred Parking, each plus tax. A spot by the main entrance (Front Gate) starts at $77, which is nearly what the day ticket costs. For the satnav, the address is 26101 Magic Mountain Pkwy, Valencia, CA 91355.
 
-## Christmas at other Six Flags parks
+## Other Six Flags parks and Thrill Glider
 
-This winter Six Flags has reworked Holiday in the Park at [Great Adventure](/news/six-flags-great-adventure-holiday-in-the-park-2026) and at [Over Georgia](/news/six-flags-over-georgia-holiday-in-the-park-2026). Knott's Berry Farm, which the Gold Pass also covers, celebrates [Knott's Merry Farm](/news/knotts-merry-farm-2026). At Magic Mountain itself, the next big addition is [Thrill Glider](/news/thrill-glider-six-flags-magic-mountain), a Vekoma coaster due to open in 2027.
+This winter Six Flags has reworked Holiday in the Park at [Great Adventure](/news/six-flags-great-adventure-holiday-in-the-park-2026) and at [Over Georgia](/news/six-flags-over-georgia-holiday-in-the-park-2026). Knott's Berry Farm celebrates [Knott's Merry Farm](/news/knotts-merry-farm-2026). At Magic Mountain itself, the next big addition is [Thrill Glider](/news/thrill-glider-six-flags-magic-mountain), a Vekoma coaster due to open in 2027.
 
 [Six Flags Magic Mountain](ref:six-flags-magic-mountain?full)
 

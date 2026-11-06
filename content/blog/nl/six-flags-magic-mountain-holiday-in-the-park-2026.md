@@ -21,7 +21,7 @@ parkLinks:
 rideLinks:
   - six-flags-magic-mountain/road-runner-express
 seo:
-  title: 'Magic Mountain Holiday in the Park 2026: shows en openingstijden'
+  title: 'Magic Mountain Holiday in the Park 2026: shows en tijden'
   description: >-
     Holiday in the Park in Six Flags Magic Mountain vanaf 26-11-2026: zeven nieuwe shows, open tot oudejaarsavond, tickets vanaf $79, parkeren vanaf $42.
   keywords:
@@ -35,16 +35,16 @@ seo:
     - Six Flags Silver Pass 2027
 ---
 
-Op 26 november begint [Six Flags Magic Mountain](ref:six-flags-magic-mountain) in Valencia, Californië, aan Holiday in the Park, met zeven nieuwe liveshows en een boomverlichting met een nieuw programma. Het evenement loopt op geselecteerde dagen tot en met 3 januari 2027 en zit bij de gewone toegang inbegrepen, of je nu een dagticket, een Season Pass of een membership hebt. De eerste dag valt op Thanksgiving. Wie de kalkoen die avond laat wachten, kan tot 21.00 uur in het park blijven.
+Op 26 november begint [Six Flags Magic Mountain](ref:six-flags-magic-mountain) in Valencia, Californië, aan Holiday in the Park met zeven nieuwe liveshows. Het evenement loopt op geselecteerde dagen tot en met 3 januari 2027. Het zit inbegrepen bij een dagticket, een Season Pass en een Membership. De eerste dag valt op Thanksgiving. Wie de kalkoen die avond laat wachten, kan tot 21.00 uur in het park blijven.
 
 ## De shows en waar ze spelen
 
-Six Flags belooft muziekproducties, kerstoptredens en comedy, plus programma met de Looney Tunes en met elfen. Welke onderdelen bij de zeven nieuwe horen, zet het persbericht niet apart op een rij. De boomverlichting op de Full Throttle Plaza bestond in vorige winters ook al. Dit jaar hoort er Magic of the Holidays bij, een nieuwe kerstshow met dansers, zangers en een grote kerstboom.
+Six Flags kondigt muziekproducties, kerstoptredens en comedy aan, plus programma met de Looney Tunes en met elfen. Welke shows de zeven nieuwe zijn, heeft Six Flags niet bekendgemaakt. De boomverlichting op de Full Throttle Plaza bestond in vorige winters ook al. Dit jaar hoort er Magic of the Holidays bij, een nieuwe kerstshow met dansers, zangers en een grote kerstboom.
 
 | Show                                             | Plek                  | Wat er te zien is                                                  |
 | ------------------------------------------------ | --------------------- | ------------------------------------------------------------------ |
 | Tree Lighting Ceremony met Magic of the Holidays | Full Throttle Plaza   | boomverlichting met dansers en zangers                             |
-| Cool Yule Christmas                              | Full Throttle Plaza   | een vrolijke kerstproductie                                        |
+| Cool Yule Christmas                              | Full Throttle Plaza   | een kerstproductie                                                 |
 | No Biz Like Snow Biz                             | Bugs Bunny World      | show met de Looney Tunes                                           |
 | Tinker's Toy Factory                             | Gear Works Theater    | een speelgoedfabriek met muziek                                    |
 | 'Twas: A Merry Mishap                            | Metropolis            | de Tinsel Town Players vertellen een kerstklassieker op hun manier |
@@ -52,11 +52,11 @@ Six Flags belooft muziekproducties, kerstoptredens en comedy, plus programma met
 | The Mistletones                                  | Carousel Band Stage   | een muziekgroep met klassieke kerstliedjes                         |
 | Midway Merriment                                 | door het hele park    | muziek en figuren die door het park trekken                        |
 
-Bij 'Twas: A Merry Mishap kan ook iemand uit het publiek een rol krijgen, dus de plankenkoorts zit daar aan beide kanten van het podium. Speeltijden staan voor geen enkele show al op de showpagina's van Magic Mountain. Daarvoor verwijst Six Flags naar zijn app.
+Bij 'Twas: A Merry Mishap kan ook iemand uit het publiek een rol krijgen, dus de plankenkoorts zit daar aan beide kanten van het podium. Speeltijden heeft Magic Mountain nog voor geen enkele show gepubliceerd, en Six Flags verwijst daarvoor naar zijn app.
 
 ## Op welke dagen het evenement loopt
 
-Het park gaat om 10.30 uur open. Tot en met 25 november is er geen kerstprogramma. Daarna wisselen evenementdagen, gewone dagen en sluitingsdagen elkaar tot half december af.
+Het park gaat om 10.30 uur open. Tot half december wisselen evenementdagen, gewone dagen en sluitingsdagen elkaar af.
 
 - 26 en 27 november: Holiday in the Park tot 21.00 uur
 - 28 november: Holiday in the Park tot 22.00 uur
@@ -65,7 +65,7 @@ Het park gaat om 10.30 uur open. Tot en met 25 november is er geen kerstprogramm
 - 1, 2, 8 en 9 december: gesloten
 - 4, 5 en 6 december: Holiday in the Park tot respectievelijk 21.00, 22.00 en 20.00 uur
 - 11 tot en met 31 december: elke dag Holiday in the Park
-- 3 januari 2027: de laatste dag van het evenement; de openingstijden voor januari staan nog niet in de kalender
+- 3 januari 2027: de laatste dag van het evenement; de openingstijden voor januari heeft Six Flags nog niet gepubliceerd
 
 Op kerstavond sluit het park om 18.00 uur, op eerste kerstdag is het tot 20.00 uur open. Op oudejaarsavond viert Magic Mountain de jaarwisseling en gaan de poorten pas om 0.30 uur dicht, een halfuur na middernacht.
 
@@ -79,23 +79,23 @@ Op kerstavond sluit het park om 18.00 uur, op eerste kerstdag is het tot 20.00 u
 
 ## Wat bij de toegang hoort
 
-Met je ticket krijg je de shows, de lichtjes, een aantal activiteiten en de meeste attracties. Apart betaal je voor eten, drinken, souvenirs en sommige belevenissen, zoals koekjes versieren en de vuurplaatsen waar je s'mores maakt. De warme chocolademelk komt in een souvenirbeker, er zijn seizoensgerechten, en volwassenen kunnen een cocktail bestellen.
+Met je ticket krijg je de shows, de lichtjes, een aantal activiteiten en de meeste attracties die die dag draaien. Apart betaal je voor eten, drinken, souvenirs en sommige belevenissen, zoals koekjes versieren en de vuurplaatsen waar je s'mores maakt. De warme chocolademelk komt in een souvenirbeker, er zijn seizoensgerechten, en volwassenen kunnen een cocktail bestellen.
 
-Voor kinderen spelen de Looney Tunes in Bugs Bunny World hun show No Biz Like Snow Biz. Mrs. Claus leest voor bij de Story Time, en verder zijn er het North Pole Craft Depot and Post Office en het Tree Lot Maze. Op de foto met de kerstman ga je in Santa's Cottage.
+Voor kinderen leest Mrs. Claus voor bij de Story Time, en verder zijn er het North Pole Craft Depot and Post Office en het Tree Lot Maze. Op de foto met de kerstman ga je in Santa's Cottage.
 
-Op de evenementdagen rijdt een selectie van de attracties. De evenementenpagina noemt er maar één bij naam: de familieachtbaan [Road Runner Express](ref:six-flags-magic-mountain/road-runner-express). [X2](/news/x2-six-flags-magic-mountain-gesloten) zit er niet bij, want die achtbaan staat sinds juli stil en eind september heeft Six Flags hem definitief buiten gebruik gesteld.
+Op de evenementdagen rijdt een selectie van de attracties. Six Flags noemt er maar één bij naam, de familieattractie [Road Runner Express](ref:six-flags-magic-mountain/road-runner-express). [X2](/news/x2-six-flags-magic-mountain-gesloten) zit er niet bij, want die achtbaan staat sinds juli stil en eind september heeft Six Flags hem definitief buiten gebruik gesteld.
 
 ## Tickets, passes en parkeren
 
-Een Good Any Day Ticket kost $79. Tot en met 30 november verkoopt Six Flags voor Black Friday de Silver Pass voor dezelfde prijs. Die geldt voor bezoeken in heel 2027, ook aan waterpark Hurricane Harbor Los Angeles, en General Parking zit erbij. Bij de pass krijg je gratis een Bring-a-Friend-ticket, dat uiterlijk op 31 december 2026 gebruikt moet zijn, dus je introducé komt nog dit jaar mee. Met een eet- en drinkplan erbij heet het pakket Silver Bundle en kost het $179 in plaats van $328.
+Een Good Any Day Ticket kost $79. Tot en met 30 november verkoopt Six Flags voor Black Friday de Silver Pass voor dezelfde prijs. Die geldt voor bezoeken in heel 2027, ook aan waterpark Hurricane Harbor Los Angeles, en General Parking zit erbij. Bij de pass krijg je gratis een Bring-a-Friend-ticket. Dat moet uiterlijk op 31 december 2026 gebruikt zijn. Met een eet- en drinkplan erbij heet het pakket Silver Bundle en kost het $179 in plaats van $328.
 
 De Gold Pass kost $155 en geldt in 2026 en 2027 in alle Six Flags-parken aan de westkust, Knott's Berry Farm inbegrepen.
 
 Parkeren kost vanaf $42 op General Parking en vanaf $62 op Preferred Parking, telkens plus belasting. Een plek bij de hoofdingang (Front Gate) kost vanaf $77, bijna net zoveel als het dagticket zelf. Het adres voor de navigatie is 26101 Magic Mountain Pkwy, Valencia, CA 91355.
 
-## Kerst in andere Six Flags-parken
+## Andere Six Flags-parken en de Thrill Glider
 
-Holiday in the Park is deze winter ook vernieuwd in [Great Adventure](/news/six-flags-great-adventure-holiday-in-the-park-2026) en in [Over Georgia](/news/six-flags-over-georgia-holiday-in-the-park-2026). Knott's Berry Farm, waar de Gold Pass ook geldt, viert zijn [Knott's Merry Farm](/news/knotts-merry-farm-2026). In Magic Mountain zelf is de volgende grote nieuwigheid de [Thrill Glider](/news/thrill-glider-six-flags-magic-mountain), een achtbaan van Vekoma die in 2027 open moet gaan.
+Six Flags heeft Holiday in the Park deze winter in [Great Adventure](/news/six-flags-great-adventure-holiday-in-the-park-2026) en in [Over Georgia](/news/six-flags-over-georgia-holiday-in-the-park-2026) vernieuwd. Knott's Berry Farm viert zijn [Knott's Merry Farm](/news/knotts-merry-farm-2026). In Magic Mountain zelf is de volgende grote nieuwigheid de [Thrill Glider](/news/thrill-glider-six-flags-magic-mountain), een achtbaan van Vekoma die in 2027 open moet gaan.
 
 [Six Flags Magic Mountain](ref:six-flags-magic-mountain?full)
 
