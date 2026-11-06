@@ -2,7 +2,7 @@
 
 Parky is one figure in three places: the chat (`src/assistant/system-prompt.ts` in the API repo),
 the speech-bubble lines (`messages/<locale>.json`, `assistant.*`) and the drawing
-(`components/assistant/parky-logo.tsx`). This page is what all three are measured against. A new
+(`components/assistant/parky/parky-logo.tsx`). This page is what all three are measured against. A new
 act, line or prompt rule that contradicts it is wrong, or this page changes first. The chat prompt
 keeps its own copy of the traits in "Who you are", because the model cannot read this repo; change
 both in the same release.

@@ -1,10 +1,10 @@
 import { weatherCodeToScene } from '@/components/parks/weather-scene';
-import { VIEW } from './parky-rides';
+import { VIEW } from './rides';
 
 /**
  * Parky's outfits: what he wears for the time of year and for the park's weather, what an act puts
  * aside while it plays, and the acts a season or the weather adds to his showy ones. Pure, so the
- * drawing (`components/assistant/parky-looks.tsx`), the speech bubble and the tests share one
+ * drawing (`components/assistant/parky/looks.tsx`), the speech bubble and the tests share one
  * answer.
  */
 
@@ -145,7 +145,7 @@ export function outfitFor(look: ParkyLook, doing: string | null): ParkyOutfit {
   };
 }
 
-/** The acts that belong to a season or the weather, drawn in `parky-looks.tsx`. */
+/** The acts that belong to a season or the weather, drawn in `components/assistant/parky/looks.tsx`. */
 export const LOOK_ACTS = [
   'ghost',
   'snowglobe',

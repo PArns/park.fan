@@ -1,3 +1,5 @@
+import { parkyStill } from './motion';
+
 /**
  * How bored Parky is: `awake` while somebody uses the page, `bored` after a quiet spell, `asleep`
  * after a long one.
@@ -59,7 +61,7 @@ function onActivity(): void {
 }
 
 function reducedMotion(): boolean {
-  still ??= window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  still ??= parkyStill();
   return still;
 }
 

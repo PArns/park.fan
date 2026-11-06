@@ -51,20 +51,6 @@ by hand: change the comment in the code and re-run the script. -->
 - `assistantGate` _const_: The gate as a store for `useSyncExternalStore`: hidden on the server and until the decision is made, which takes one cached request per session, so no page's HTML depends on it.
 - Types: `AssistantConfig`, `AssistantGateStatus`
 
-### [`easter-eggs.ts`](../../lib/assistant/easter-eggs.ts)
-
-- `parkPathOf` _function_: The geo path of the park a page belongs to (a park's page or one of its rides), or `null`.
-- `parkPageOf` _function_: The four segments of a park's own page, the only page its line is said on; `null` elsewhere.
-- `topCoaster` _function_: The ride a park's line names: its coaster with the longest waits, Parky being about to ride one, else its top attraction; `null` for a park without a ranking. The list comes ranked from `/stats`.
-- `parkNameIn` _function_: The park's name as the page's own structured data gives it (`AmusementPark`, a root node or one in `@graph`), so the line needs no request of its own; `null` where the page has none.
-- `parkySwitch` _function_: What `?parky=` asks for on this page, for trying the easter eggs out: `egg` for a park's line whatever the chance, or an entrance's name. Browser only.
-- `holidayOn` _function_: The holiday a date falls on: 31 October, 24 to 26 December, 31 December and 1 January.
-- `konamiProgress` _function_: How far into the Konami code a key leaves somebody who had typed `progress` keys of it; the full length means it is done. A wrong key starts over, or counts as the first one if it is.
-- `PARK_FAVOURITES` _const_: Parks whose ride Parky names whatever the numbers say, keyed by the geo path of their page (two parks are called `disneyland-park`). Every other park gets its line from its own data (`topCoaster`). Each ride is one park.fan lists.
-- `PARK_EGG_CHANCE` _const_: How often a park's page gets its line and the coaster ride: sometimes, not every visit.
-- `KONAMI_LENGTH` _const_: How many keys the Konami code has.
-- Types: `ParkEgg`, `ParkyHoliday`
-
 ### [`entrance.ts`](../../lib/assistant/entrance.ts)
 
 - `pageEntrance` _function_: This page load's entrance: a random one each time the page loads, `?parky=<entrance>` to see a given one, none without motion.
@@ -82,11 +68,6 @@ by hand: change the comment in the code and re-run the script. -->
 - `FLING_HAND_MS` _const_: A hand this recent means the visitor moves the page. It covers the momentum after the finger lifts; a link, a tab or a script scrolling the page on its own never throws him.
 - `SETTLE_MS` _const_: Once the page has moved slower than that for this long, he lets go: long enough to hold on through the gaps between a wheel's bursts or a finger's swipes, so he does not bounce about.
 - Types: `ParkyFling`, `FlingHand`, `FlingHandAt`, `FlingState`
-
-### [`line-priority.ts`](../../lib/assistant/line-priority.ts)
-
-- `lineSources` _function_: The sources that may fill a slot, best first. The scheduler says the first that has a line: a park whose statistics are too thin for a fact falls through to the next one.
-- Types: `LineSource`, `LineSlot`
 
 ### [`links.ts`](../../lib/assistant/links.ts)
 
@@ -109,15 +90,6 @@ by hand: change the comment in the code and re-run the script. -->
 - `SUGGESTIONS_SHOWN` _const_: How many suggestions a new chat offers.
 - Types: `AssistantOpener`
 
-### [`parky-boredom.ts`](../../lib/assistant/parky-boredom.ts)
-
-- `boredomAfter` _function_: How bored Parky is after `quietMs` without a pointer, key, wheel or touch on the page.
-- `nextBoredomInMs` _function_: How long until the next stage after `quietMs` of quiet; `null` once asleep, which only activity ends.
-- `BORED_AFTER_MS` _const_: Quiet time on the page before Parky gets sleepy: two rounds of mischief first.
-- `ASLEEP_AFTER_MS` _const_: Quiet time on the page before Parky falls asleep: a minute and a half.
-- `parkyBoredom` _const_: One boredom for the whole page, for `useSyncExternalStore`: the first subscriber starts the listeners, the last one stops them. Without motion (`prefers-reduced-motion`) Parky has no idle life and the snapshot is `null`, as on the server.
-- Types: `ParkyBoredom`
-
 ### [`parky-dock.ts`](../../lib/assistant/parky-dock.ts)
 
 Where Parky stands while his chat window is shut: in his corner, or in a slot on the page that holds him bigger (the homepage hero on a desktop, `HeroParky`) while that slot is on screen.
@@ -127,12 +99,6 @@ Where Parky stands while his chat window is shut: in his corner, or in a slot on
 - `parkyDock` _const_: The slot Parky may stand in: the element, while it is on screen.
 - `parkyInDock` _const_: Whether Parky stands in the slot right now, and how he got there (`ParkyArrival`), or null: in his window, on his way there or back, or still hopping in from the corner. The launcher sets it; the slot draws Parky only then.
 - Types: `ParkyArrival`, `ParkySlotBox`
-
-### [`parky-facts.ts`](../../lib/assistant/parky-facts.ts)
-
-- `parkyFacts` _function_: Every fact a park's two-year aggregate supports, each sentence of `FACT_KEYS` once: the longest queue, how far it beats the park's typical wait, the quietest weekdays, the busiest months and the typical wait.
-- `FACT_KEYS` _const_: The sentences for each finding, every one with `{park}`; a finding without its data has none.
-- Types: `ParkyFact`
 
 ### [`parky-jump.ts`](../../lib/assistant/parky-jump.ts)
 
@@ -144,7 +110,53 @@ Where Parky stands while his chat window is shut: in his corner, or in a slot on
 - `PARKY_CORNER_ATTR` _const_: Marks the drawing in the corner button, where the hop starts and lands.
 - `PARKY_LANDED_EVENT` _const_: Sent on `window` when a hop has landed. Parky's eyes aimed at the pointer from wherever he was mid-air (the page scrolls under a still pointer while he flies), so they aim again from where he stands now.
 
-### [`parky-look.ts`](../../lib/assistant/parky-look.ts)
+### [`parky/acts.ts`](../../lib/assistant/parky/acts.ts)
+
+- `actLength` _function_: How long an act runs with the one that follows it, for a page that plays acts in turn.
+- `actFor` _function_: An act by name, or for `ride` a random one of the rides that fit on screen round the drawing at `box`; `null` when none does. A ride asked for by name plays wherever Parky is, as on its page's stage.
+- `pauseOf` _function_: A wait drawn from a class's pause.
+- `ACT_MS` _const_: Parky's little acts and how long each runs. The stylesheet reads the length as `--parky-act`, so a duration is written here only.
+- `FOLLOW_UP` _const_: An act that always comes straight after another: off a ride Parky is dizzy, and out of the log flume he shakes the water off.
+- `CLASS_ACTS` _const_: Parky's life of its own comes in classes, and what he does is drawn from the one for the moment.
+- `WAKE_ACTS` _const_: How Parky wakes up when somebody moves, calm or not.
+- `CLASS_PAUSE_MS` _const_: The rest after an act before the class's next one, as the shortest wait and a random spread on top. A fidget lasts about a second and a half, so fidgets start 7 to 10 s apart; a dream comes 15 to 25 s after the last one ended.
+- Types: `ParkyAct`, `ParkyCue`
+
+### [`parky/boredom.ts`](../../lib/assistant/parky/boredom.ts)
+
+- `boredomAfter` _function_: How bored Parky is after `quietMs` without a pointer, key, wheel or touch on the page.
+- `nextBoredomInMs` _function_: How long until the next stage after `quietMs` of quiet; `null` once asleep, which only activity ends.
+- `BORED_AFTER_MS` _const_: Quiet time on the page before Parky gets sleepy: two rounds of mischief first.
+- `ASLEEP_AFTER_MS` _const_: Quiet time on the page before Parky falls asleep: a minute and a half.
+- `parkyBoredom` _const_: One boredom for the whole page, for `useSyncExternalStore`: the first subscriber starts the listeners, the last one stops them. Without motion (`prefers-reduced-motion`) Parky has no idle life and the snapshot is `null`, as on the server.
+- Types: `ParkyBoredom`
+
+### [`parky/easter-eggs.ts`](../../lib/assistant/parky/easter-eggs.ts)
+
+- `parkPathOf` _function_: The geo path of the park a page belongs to (a park's page or one of its rides), or `null`.
+- `parkPageOf` _function_: The four segments of a park's own page, the only page its line is said on; `null` elsewhere.
+- `topCoaster` _function_: The ride a park's line names: its coaster with the longest waits, Parky being about to ride one, else its top attraction; `null` for a park without a ranking. The list comes ranked from `/stats`.
+- `parkNameIn` _function_: The park's name as the page's own structured data gives it (`AmusementPark`, a root node or one in `@graph`), so the line needs no request of its own; `null` where the page has none.
+- `parkySwitch` _function_: What `?parky=` asks for on this page, for trying the easter eggs out: `egg` for a park's line whatever the chance, or an entrance's name. Browser only.
+- `holidayOn` _function_: The holiday a date falls on: 31 October, 24 to 26 December, 31 December and 1 January.
+- `konamiProgress` _function_: How far into the Konami code a key leaves somebody who had typed `progress` keys of it; the full length means it is done. A wrong key starts over, or counts as the first one if it is.
+- `PARK_FAVOURITES` _const_: Parks whose ride Parky names whatever the numbers say, keyed by the geo path of their page (two parks are called `disneyland-park`). Every other park gets its line from its own data (`topCoaster`). Each ride is one park.fan lists.
+- `PARK_EGG_CHANCE` _const_: How often a park's page gets its line and the coaster ride: sometimes, not every visit.
+- `KONAMI_LENGTH` _const_: How many keys the Konami code has.
+- Types: `ParkEgg`, `ParkyHoliday`
+
+### [`parky/facts.ts`](../../lib/assistant/parky/facts.ts)
+
+- `parkyFacts` _function_: Every fact a park's two-year aggregate supports, each sentence of `FACT_KEYS` once: the longest queue, how far it beats the park's typical wait, the quietest weekdays, the busiest months and the typical wait.
+- `FACT_KEYS` _const_: The sentences for each finding, every one with `{park}`; a finding without its data has none.
+- Types: `ParkyFact`
+
+### [`parky/lines.ts`](../../lib/assistant/parky/lines.ts)
+
+- `lineSources` _function_: The sources that may fill a slot, best first. The scheduler says the first that has a line: a park whose statistics are too thin for a fact falls through to the next one.
+- Types: `LineSource`, `LineSlot`
+
+### [`parky/look.ts`](../../lib/assistant/parky/look.ts)
 
 - `seasonOn` _function_: The season a date falls in, in the browser's calendar: Halloween all October, Christmas 1 to 26 December, New Year 31 December and 1 January, winter from 2 January to the end of February.
 - `weatherLook` _function_: The look for the park's weather, the most striking state first: a storm, snow, rain, wind, fog, heat, cold; `null` for weather with nothing to dress for. The codes are grouped as the weather background groups them (`weatherCodeToScene`).
@@ -159,11 +171,23 @@ Where Parky stands while his chat window is shut: in his corner, or in a slot on
 - `COLD_BELOW_C` _const_: Below this many °C Parky finds it cold.
 - `WINDY_GUSTS_KMH` _const_: Gusts this strong, in km/h, count as windy.
 - `WINDY_KMH` _const_: A steady wind this strong, in km/h, counts as windy.
-- `LOOK_ACTS` _const_: The acts that belong to a season or the weather, drawn in `parky-looks.tsx`.
+- `LOOK_ACTS` _const_: The acts that belong to a season or the weather, drawn in `components/assistant/parky/looks.tsx`.
 - `WEATHER_ACT` _const_: The act Parky answers the park's weather with, beside its line.
 - Types: `ParkySeason`, `ParkyWeather`, `ParkyLook`, `WeatherReading`, `ParkyHat`, `ParkyOutfit`, `ParkyLookAct`
 
-### [`parky-rides.ts`](../../lib/assistant/parky-rides.ts)
+### [`parky/motion.ts`](../../lib/assistant/parky/motion.ts)
+
+- `parkyStill` _function_: Whether the visitor asked for reduced motion, which keeps Parky still. Browser only.
+- `animateParky` _function_: A web animation on a piece of Parky. Under reduced motion it is held at the end of its first run instead of played, so the piece stands in its finished pose as the stylesheet's own parts do without their `@media (prefers-reduced-motion: …
+
+### [`parky/reactions.ts`](../../lib/assistant/parky/reactions.ts)
+
+- `isReactionAct` _function_: Whether a name is one of Parky's reaction acts.
+- `reactionTo` _function_: Parky's answer to a site event, or `null` for one it lets pass.
+- `REACTION_ACTS` _const_: The acts Parky plays in answer to something the visitor did; `parky-logo.tsx` draws each.
+- Types: `ParkyReactionAct`, `ParkyReaction`
+
+### [`parky/rides.ts`](../../lib/assistant/parky/rides.ts)
 
 - `isRide` _function_: Whether a name is one of Parky's rides.
 - `rideFits` _function_: Whether a ride keeps Parky and its rails on screen, for a drawing whose box (its `getBoundingClientRect`) starts `left` and `top` pixels into the viewport and is `width` pixels wide.
@@ -177,6 +201,20 @@ Where Parky stands while his chat window is shut: in his corner, or in a slot on
 - `TURNTABLE` _const_: The teacups' turntable, which the cup circles: its middle and the cup's way round it.
 - `RIDE_MOTION` _const_: The rides played from these stops; the loop is the stylesheet's.
 - Types: `ParkyRide`, `RideStop`, `RideReach`, `RideMotion`
+
+### [`parky/use-parky-boredom.ts`](../../lib/assistant/parky/use-parky-boredom.ts)
+
+- `useParkyBoredom` _hook_: How bored Parky is, from the page-wide `parkyBoredom`; `null` while `enabled` is false, on the server and under reduced motion, so a disabled reader takes no subscription.
+
+### [`parky/use-parky-look.ts`](../../lib/assistant/parky/use-parky-look.ts)
+
+- `useParkyLook` _hook_: What every Parky on the page wears: the season from the browser's calendar and the park's weather on a park page, or what `?parky=` or the preview on Parky's page asks for.
+- `setParkyWeather` _function_: The park's weather look while a park page shows it (`useParkyWeather`), `null` elsewhere.
+- `previewParkyLook` _function_: A look picked on Parky's page, in place of the date's and the park's; `null` lets them back.
+
+### [`parky/use-parky-weather.ts`](../../lib/assistant/parky/use-parky-weather.ts)
+
+- `useParkyWeather` _hook_: Parky and the weather at the park whose page this is: he dresses for it while the page shows (`setParkyWeather`), and once a park per session, after the page has settled and never over another line, he plays a fitting act and says a …
 
 ### [`planner-context.ts`](../../lib/assistant/planner-context.ts)
 
@@ -194,13 +232,6 @@ Where Parky stands while his chat window is shut: in his corner, or in a slot on
 - `postTextForQuery` _function_: A post's text for one question: the intro plus the sections that answer `query` best, in the post's order, within `POST_TEXT_LIMIT`.
 - `POST_TEXT_LIMIT` _const_: About 2,500 tokens: enough to answer from a post, cheap enough per question.
 - Types: `PostSection`
-
-### [`reactions.ts`](../../lib/assistant/reactions.ts)
-
-- `isReactionAct` _function_: Whether a name is one of Parky's reaction acts.
-- `reactionTo` _function_: Parky's answer to a site event, or `null` for one it lets pass.
-- `REACTION_ACTS` _const_: The acts Parky plays in answer to something the visitor did; `parky-logo.tsx` draws each.
-- Types: `ParkyReactionAct`, `ParkyReaction`
 
 ### [`sse.ts`](../../lib/assistant/sse.ts)
 
@@ -236,20 +267,6 @@ Where Parky stands while his chat window is shut: in his corner, or in a slot on
 
 - `useAssistantSession` _hook_: Parky's challenge-response from the browser's side: a solved Turnstile token is traded at the API for a session token, which every chat, rating and feedback carries.
 - Types: `AssistantSessionState`
-
-### [`use-parky-boredom.ts`](../../lib/assistant/use-parky-boredom.ts)
-
-- `useParkyBoredom` _hook_: How bored Parky is, from the page-wide `parkyBoredom`; `null` while `enabled` is false, on the server and under reduced motion, so a disabled reader takes no subscription.
-
-### [`use-parky-look.ts`](../../lib/assistant/use-parky-look.ts)
-
-- `useParkyLook` _hook_: What every Parky on the page wears: the season from the browser's calendar and the park's weather on a park page, or what `?parky=` or the preview on Parky's page asks for.
-- `setParkyWeather` _function_: The park's weather look while a park page shows it (`useParkyWeather`), `null` elsewhere.
-- `previewParkyLook` _function_: A look picked on Parky's page, in place of the date's and the park's; `null` lets them back.
-
-### [`use-parky-weather.ts`](../../lib/assistant/use-parky-weather.ts)
-
-- `useParkyWeather` _hook_: Parky and the weather at the park whose page this is: he dresses for it while the page shows (`setParkyWeather`), and once a park per session, after the page has settled and never over another line, he plays a fitting act and says a …
 
 ### [`use-scroll-fling.ts`](../../lib/assistant/use-scroll-fling.ts)
 

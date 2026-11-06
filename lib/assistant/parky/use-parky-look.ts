@@ -2,7 +2,7 @@
 
 import { useSyncExternalStore } from 'react';
 import { parkySwitch } from './easter-eggs';
-import { lookSwitch, NO_LOOK, seasonOn, type ParkyLook, type ParkyWeather } from './parky-look';
+import { lookSwitch, NO_LOOK, seasonOn, type ParkyLook, type ParkyWeather } from './look';
 
 let parkWeather: ParkyWeather | null = null;
 let preview: ParkyLook | null = null;

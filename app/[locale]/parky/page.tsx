@@ -34,7 +34,7 @@ import {
   P,
   SectionShell,
 } from '@/components/marketing/editorial-ui';
-import type { ParkyAct } from '@/components/assistant/parky-logo';
+import type { ParkyAct } from '@/lib/assistant/parky/acts';
 import { AskParkyButton, ParkyFigure, ParkyLookPicker, ParkyStage } from './_parky-ui';
 import { ShotRow } from '@/components/marketing/shot-row';
 

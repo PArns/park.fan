@@ -2,25 +2,19 @@
 
 import { useCallback, useEffect, useId, useMemo, useRef, useState } from 'react';
 import { cn } from '@/lib/utils';
-import { pickRandom } from '@/lib/utils/pick-random';
-import { parkyBoredom } from '@/lib/assistant/parky-boredom';
-import { useParkyBoredom } from '@/lib/assistant/use-parky-boredom';
-import { useSearchOpen } from '@/lib/analytics/search-presence';
-import { onSiteEvent } from '@/lib/analytics/site-analytics';
-import type { ParkyReactionAct } from '@/lib/assistant/reactions';
-import { PARKY_LANDED_EVENT } from '@/lib/assistant/parky-jump';
+import { ACT_MS, CLASS_ACTS, type ParkyCue } from '@/lib/assistant/parky/acts';
 import {
   HUB,
   RIDE_MOTION,
   RIDES,
   RIM,
   VIEW,
-  rideFits,
   rideKeyframe,
   type ParkyRide,
-} from '@/lib/assistant/parky-rides';
-import { outfitFor, sceneFits, showyPool, type ParkyLookAct } from '@/lib/assistant/parky-look';
-import { useParkyLook } from '@/lib/assistant/use-parky-look';
+} from '@/lib/assistant/parky/rides';
+import { outfitFor, showyPool } from '@/lib/assistant/parky/look';
+import { animateParky, parkyStill } from '@/lib/assistant/parky/motion';
+import { useParkyLook } from '@/lib/assistant/parky/use-parky-look';
 import {
   LOOK_GAZE,
   ParkyLookBack,
@@ -28,12 +22,24 @@ import {
   ParkyLookHands,
   ParkyLookHat,
   ParkyLookWear,
-} from './parky-looks';
+} from './looks';
 import {
+  A_FRAME,
+  CABINS,
   CABIN_COLOURS,
+  CHECKLIST_ROWS,
+  CONFETTI,
+  EYES,
+  FERRULE,
+  FLOATERS,
   GRIN,
+  HANDLE,
+  HANDLE_END,
   HAPPY_EYES,
   HEART,
+  LENS,
+  NIGHT_STARS,
+  SPOKES,
   STAR,
   blue,
   capBlue,
@@ -42,547 +48,12 @@ import {
   heartRed,
   ink,
   pink,
-} from './parky-drawing';
-import { DREAMS, DREAM_MS, ParkyDreamCloud, type ParkyDream } from './parky-dreams';
-import { ParkyMoment, ParkyRideTrack, ParkyVehicle } from './parky-props';
-
-/**
- * Parky's little acts and how long each runs. The stylesheet reads the length as `--parky-act`,
- * so a duration is written here only.
- */
-const ACT_MS = {
-  hop: 1400,
-  tilt: 1600,
-  look: 1800,
-  spin: 2200,
-  wink: 900,
-  wiggle: 1100,
-  yawn: 2600,
-  whistle: 3200,
-  gum: 3400,
-  roll: 1600,
-  twirl: 1400,
-  dance: 2400,
-  read: 4200,
-  nap: 5000,
-  doze: 2000,
-  startle: 900,
-  stretch: 1600,
-  groggy: 2000,
-  shakeoff: 1000,
-  coaster: 3600,
-  launch: 4400,
-  hills: 4800,
-  tower: 4200,
-  flume: 5200,
-  teacups: 4400,
-  dizzy: 2700,
-  plan: 4200,
-  cheer: 2400,
-  love: 2600,
-  bell: 2200,
-  shades: 3000,
-  lights: 3400,
-  nightcap: 3800,
-  ghost: 3600,
-  snowglobe: 4200,
-  fireworks: 3800,
-  snowman: 6500,
-  brolly: 2400,
-  shiver: 1600,
-  fan: 3000,
-  candy: 3200,
-  churro: 3400,
-  balloon: 3800,
-  map: 4200,
-  photo: 3000,
-  slurp: 3600,
-  airtime: 2200,
-  grumpy: 3200,
-} as const satisfies Record<string, number> &
-  Record<ParkyRide, number> &
-  Record<ParkyReactionAct, number> &
-  Record<ParkyLookAct, number>;
-/** One of Parky's acts by name, as {@link ParkyCue} asks for one. */
-export type ParkyAct = keyof typeof ACT_MS;
-
-/**
- * An act that always comes straight after another: off a ride Parky is dizzy, and out of the log
- * flume he shakes the water off.
- */
-const FOLLOW_UP: Partial<Record<ParkyAct, ParkyAct>> = {
-  coaster: 'dizzy',
-  launch: 'dizzy',
-  hills: 'dizzy',
-  tower: 'dizzy',
-  teacups: 'dizzy',
-  flume: 'shakeoff',
-};
-
-/** How long an act runs with the one that follows it, for a page that plays acts in turn. */
-export function actLength(act: ParkyAct): number {
-  const after = FOLLOW_UP[act];
-  return ACT_MS[act] + (after ? ACT_MS[after] : 0);
-}
-
-/**
- * An act asked for from outside, to play at once: the ride an easter egg ends with (`ride` for any
- * of them), Parky's answer to something the visitor did, or any act on Parky's own page. A new
- * `id` plays it again.
- */
-export interface ParkyCue {
-  act: ParkyAct | 'ride';
-  id: number;
-}
-
-/**
- * An act by name, or for `ride` a random one of the rides that fit on screen round the drawing;
- * `null` when none does. A ride asked for by name plays wherever Parky is, as on its page's stage.
- */
-function actFor(act: ParkyAct | 'ride', svg: SVGSVGElement | null): ParkyAct | null {
-  const box = svg?.getBoundingClientRect();
-  // A scene beside him (the snowman, the fireworks) passes its turn where it would be cut off.
-  if (act !== 'ride') return !box || sceneFits(act, box) ? act : null;
-  const room = box ? RIDES.filter((ride) => rideFits(ride, box)) : RIDES;
-  return room.length > 0 ? pickRandom(room) : null;
-}
-
-/**
- * Parky's life of its own comes in classes, and what he does is drawn from the one for the moment.
- * The blink runs underneath all of them, in CSS (`parky-blink`), and so do the acts that answer
- * what the visitor does (cues, moods, searching along).
- *
- * - `fidget`: small and easy to miss, starting 7 to 10 s apart while somebody is on the page.
- * - `showy`: something to notice, about every half minute in place of a fidget. Each entry is a
- *   ticket: two for each of his tricks (a spin, a twirl, the sunglasses, the lit wheel, a dance, a
- *   quick nod-off …), one for each moment of a park day (cotton candy, a churro, a balloon, the
- *   map, a photo, a drink, airtime), and seven `ride`s, so about one showy act in five is a ride.
- *   `grumpy` is no ticket: it answers long queues.
- * - `sleepy`: after a minute without anybody moving, until he falls asleep at a minute and a half.
- * - asleep he now and then dreams (`DREAMS`).
- */
-/** How Parky wakes up when somebody moves, calm or not. */
-const WAKE_ACTS = [
-  'startle',
-  'stretch',
-  'groggy',
-  'shakeoff',
-] as const satisfies readonly ParkyAct[];
-
-const CLASS_ACTS: Record<'fidget' | 'showy' | 'sleepy', readonly (ParkyAct | 'ride')[]> = {
-  fidget: ['wink', 'look', 'tilt', 'wiggle'],
-  showy: [
-    ...(['ride', 'ride', 'ride', 'ride', 'ride', 'ride', 'ride'] as const),
-    ...(
-      [
-        'hop',
-        'spin',
-        'roll',
-        'twirl',
-        'dance',
-        'shades',
-        'lights',
-        'whistle',
-        'gum',
-        'read',
-        'doze',
-      ] as const
-    ).flatMap((act) => [act, act]),
-    'candy',
-    'churro',
-    'balloon',
-    'map',
-    'photo',
-    'slurp',
-    'airtime',
-  ],
-  sleepy: ['yawn', 'nap', 'nightcap', 'doze'],
-};
-
-/**
- * The rest after an act before the class's next one, as the shortest wait and a random spread on
- * top. A fidget lasts about a second and a half, so fidgets start 7 to 10 s apart; a dream comes
- * 15 to 25 s after the last one ended.
- */
-const CLASS_PAUSE_MS: Record<keyof typeof CLASS_ACTS | 'dream', readonly [number, number]> = {
-  fidget: [5_500, 3_000],
-  showy: [27_000, 6_000],
-  sleepy: [8_000, 4_000],
-  dream: [15_000, 10_000],
-};
-
-/** A wait drawn from a class's pause. */
-function pauseOf(kind: keyof typeof CLASS_PAUSE_MS): number {
-  const [shortest, spread] = CLASS_PAUSE_MS[kind];
-  return shortest + Math.random() * spread;
-}
-
-/** The first yawn and the eyes falling shut wait a moment after the boredom sets in. */
-const SETTLE_MS = 1_500;
-
-/** How far a pupil may wander inside its eye, in the 48-unit drawing. */
-const PUPIL_REACH = 2.2;
-
-/** The eyes' centres on the x axis, left and right. */
-const EYES = [17, 31] as const;
-
-/**
- * The hat, a Ferris wheel set into Parky's head: the lowest cabin goes behind it, and the A-frame's
- * right leg runs down the slope of the head, so the wheel stands in it rather than on top. Cabins
- * are circles, so they need no turning back to hang straight while the wheel spins.
- */
-const CABINS = Array.from({ length: 8 }, (_, i) => ({
-  x: +(HUB.x + RIM * Math.sin((i * Math.PI) / 4)).toFixed(2),
-  y: +(HUB.y - RIM * Math.cos((i * Math.PI) / 4)).toFixed(2),
-}));
-const SPOKES = CABINS.slice(0, 4)
-  .map(({ x, y }) => `M${x} ${y}L${+(2 * HUB.x - x).toFixed(2)} ${+(2 * HUB.y - y).toFixed(2)}`)
-  .join('');
-// The legs end inside the head, which is drawn over them.
-const A_FRAME = `M${HUB.x} ${HUB.y}L25.5 13M${HUB.x} ${HUB.y}L41.5 20`;
-
-/**
- * The magnifying glass Parky holds to its right eye while a search is open: the lens round the eye,
- * the handle running off down to the right. It swings in from the handle's end.
- */
-const LENS = { x: EYES[1], y: 22.5, r: 7.6 };
-const onHandle = (distance: number) => ({
-  x: +(LENS.x + distance * Math.SQRT1_2).toFixed(2),
-  y: +(LENS.y + distance * Math.SQRT1_2).toFixed(2),
-});
-const handlePart = (from: number, to: number) =>
-  `M${onHandle(from).x} ${onHandle(from).y}L${onHandle(to).x} ${onHandle(to).y}`;
-const HANDLE_LENGTH = 10.5;
-const FERRULE = handlePart(LENS.r, LENS.r + 2.8);
-const HANDLE = handlePart(LENS.r + 2.8, LENS.r + HANDLE_LENGTH);
-const HANDLE_END = onHandle(LENS.r + HANDLE_LENGTH);
-/** How long the glass takes to go once the search has closed; the stylesheet reads `--parky-act`. */
-const LENS_OUT_MS = 400;
-/** How long a question mark hangs over Parky after a search found nothing. */
-const PUZZLED_MS = 1800;
-
-/**
- * Confetti for a cheer: pieces shot up and out from behind the head, fanned from right to left,
- * each with its own reach and spin, then falling away.
- */
-const CONFETTI = Array.from({ length: 14 }, (_, i) => {
-  const angle = Math.PI * (0.06 + (0.88 * i) / 13);
-  const reach = 14 + (i % 3) * 6;
-  return {
-    dx: +(Math.cos(angle) * reach).toFixed(1),
-    dy: +(-Math.sin(angle) * reach).toFixed(1),
-    spin: (i % 2 ? 1 : -1) * (200 + i * 35),
-    round: i % 3 === 0,
-  };
-});
-
-/** Where the two notes, or hearts, float up beside the right cheek. */
-const FLOATERS = [
-  { x: 42, y: 31, colour: blue },
-  { x: 45, y: 26, colour: green },
-];
-
-/** Where the night's two stars sit, as offsets of {@link STAR}: left of the moon, above the head. */
-const NIGHT_STARS = [
-  { x: -18.5, y: 6 },
-  { x: -2.5, y: -5.5 },
-];
-
-/** The rows of the checklist Parky ticks off for a day plan. */
-const CHECKLIST_ROWS = [35, 39, 43];
-
-/** The point between the eyes Parky squints at when the pointer rests on it, and how near counts. */
-const NOSE = { x: 24, y: 26, reach: 4 };
-/** Where each pupil goes in that squint: both in towards the nose. */
-const CROSS_GAZE = { x: 2, y: 1.4 };
-/** Two whole turns of the pointer round Parky within this long make it dizzy. */
-const CIRCLE_TURNS = 2;
-const CIRCLE_WINDOW_MS = 1_500;
-/** Circles wider than this, in px from its centre, are the visitor's business, not Parky's. */
-const CIRCLE_RADIUS = 160;
-
-/** Where the pointer was last seen, shared by every Parky on the page, so a new one looks at once. */
-let lastPointer: { x: number; y: number } | null = null;
-
-/**
- * The pupils' offset towards the pointer, so Parky looks at the mouse. Only for a fine pointer and
- * without reduced motion; one frame at most per pointer move. A Parky that appears looks where the
- * pointer was last seen, and `pointerover`, which the browser sends when the page moves under a
- * still pointer, aims him without waiting for the mouse to move, and so does a hop landing
- * (`PARKY_LANDED_EVENT`). Two easter eggs ride along: the
- * pointer on Parky's nose makes it squint at it (`cross`), and the pointer circling it fast, two
- * turns inside 1.5 s, calls `onDizzy`.
- */
-function useGaze(svg: React.RefObject<SVGSVGElement | null>, onDizzy?: () => void) {
-  const [gaze, setGaze] = useState({ x: 0, y: 0, cross: false });
-  const dizzy = useRef(onDizzy);
-  useEffect(() => {
-    dizzy.current = onDizzy;
-  }, [onDizzy]);
-  useEffect(() => {
-    const media = window.matchMedia('(pointer: fine) and (prefers-reduced-motion: no-preference)');
-    if (!media.matches) return;
-    let frame = 0;
-    // The turning so far: the last angle, and each step's signed change with its time.
-    let angle: number | null = null;
-    let steps: { at: number; turn: number }[] = [];
-    /** Turns the pupils towards a point; its distance from Parky's middle, or null unmeasured. */
-    const aim = (pointX: number, pointY: number): { dx: number; dy: number } | null => {
-      const box = svg.current?.getBoundingClientRect();
-      if (!box || box.width === 0) return null;
-      const dx = pointX - (box.left + box.width / 2);
-      const dy = pointY - (box.top + box.height / 2);
-      const distance = Math.hypot(dx, dy) || 1;
-      const unit = box.width / 48;
-      const nose = Math.hypot(
-        pointX - (box.left + NOSE.x * unit),
-        pointY - (box.top + NOSE.y * unit)
-      );
-      if (nose <= NOSE.reach * unit) {
-        setGaze({ ...CROSS_GAZE, cross: true });
-      } else {
-        const pull = Math.min(1, distance / 240);
-        setGaze({
-          x: (dx / distance) * PUPIL_REACH * pull,
-          y: (dy / distance) * PUPIL_REACH * pull,
-          cross: false,
-        });
-      }
-      return { dx, dy };
-    };
-    const seen = lastPointer;
-    if (seen)
-      frame = requestAnimationFrame(() => {
-        frame = 0;
-        aim(seen.x, seen.y);
-      });
-    // A hop moves Parky under a still pointer, and the page scrolling under it aims him mid-air:
-    // once he lands, he looks again from where he stands.
-    const onLanded = () => {
-      const pointer = lastPointer;
-      if (!pointer || frame) return;
-      frame = requestAnimationFrame(() => {
-        frame = 0;
-        aim(pointer.x, pointer.y);
-      });
-    };
-    const onOver = (event: PointerEvent) => {
-      lastPointer = { x: event.clientX, y: event.clientY };
-      if (frame) return;
-      frame = requestAnimationFrame(() => {
-        frame = 0;
-        aim(event.clientX, event.clientY);
-      });
-    };
-    const onMove = (event: PointerEvent) => {
-      lastPointer = { x: event.clientX, y: event.clientY };
-      if (frame) return;
-      frame = requestAnimationFrame(() => {
-        frame = 0;
-        const aimed = aim(event.clientX, event.clientY);
-        if (!aimed) return;
-        const { dx, dy } = aimed;
-        const distance = Math.hypot(dx, dy) || 1;
-
-        if (!dizzy.current || distance > CIRCLE_RADIUS) {
-          angle = null;
-          steps = [];
-          return;
-        }
-        const now = Date.now();
-        const next = Math.atan2(dy, dx);
-        if (angle !== null) {
-          // The shorter way round, so crossing ±π is a small step and not a whole turn back.
-          let turn = next - angle;
-          if (turn > Math.PI) turn -= 2 * Math.PI;
-          if (turn < -Math.PI) turn += 2 * Math.PI;
-          steps.push({ at: now, turn });
-        }
-        angle = next;
-        steps = steps.filter((step) => now - step.at <= CIRCLE_WINDOW_MS);
-        const turned = Math.abs(steps.reduce((sum, step) => sum + step.turn, 0));
-        if (turned >= CIRCLE_TURNS * 2 * Math.PI) {
-          steps = [];
-          dizzy.current();
-        }
-      });
-    };
-    window.addEventListener('pointermove', onMove, { passive: true });
-    window.addEventListener('pointerover', onOver, { passive: true });
-    window.addEventListener(PARKY_LANDED_EVENT, onLanded);
-    return () => {
-      window.removeEventListener('pointermove', onMove);
-      window.removeEventListener('pointerover', onOver);
-      window.removeEventListener(PARKY_LANDED_EVENT, onLanded);
-      cancelAnimationFrame(frame);
-    };
-  }, [svg]);
-  return gaze;
-}
-
-/**
- * Parky's life while nothing happens, from the page-wide {@link parkyBoredom}: a little act now and
- * then with company, more and sleepier ones once bored, then eyes falling shut and sleep until
- * somebody moves, which wakes it with a start. Each act runs once and clears, so the face rests
- * between them.
- */
-function useIdleAct(
-  enabled: boolean,
-  cue: ParkyCue | null,
-  svg: React.RefObject<SVGSVGElement | null>,
-  calm: boolean,
-  showy: readonly (ParkyAct | 'ride')[]
-) {
-  const boredom = useParkyBoredom(enabled);
-  const [act, setAct] = useState<ParkyAct | null>(null);
-  const [dream, setDream] = useState<ParkyDream | null>(null);
-  // A cue already there when the face mounts (the button back after the window closed) is old.
-  const played = useRef(cue?.id);
-  /**
-   * The act on stage and when it ends. A change of stage (bored, asleep, awake again) lets it play
-   * out: cut short, a ride stopped in mid-air and the next stage's yawn came on its heels.
-   */
-  const running = useRef<{ act: ParkyAct; endsAt: number } | null>(null);
-  useEffect(() => {
-    // One timer at a time, re-armed from its own callback, so cleanup always reaches it (and one
-    // more that ends a stale dream).
-    let timer: ReturnType<typeof setTimeout> | undefined;
-    if (!boredom) {
-      // No life of its own now (a mood, a search, a closed window): what played is over.
-      running.current = null;
-      timer = setTimeout(() => {
-        setAct(null);
-        setDream(null);
-      }, 0);
-      return () => clearTimeout(timer);
-    }
-    let lastDream: ParkyDream | null = null;
-    // Whatever was dreamt is over with a new stage, a cue or a new sleep; the next dream comes from
-    // the loop below.
-    const wake = setTimeout(() => setDream(null), 0);
-    const woke = parkyBoredom.wokeUp();
-    let previous: ParkyAct | null = running.current?.act ?? null;
-    const end = (done: ParkyAct, then: () => void) => {
-      running.current = null;
-      setAct(null);
-      const after = FOLLOW_UP[done];
-      if (after) play(0, after);
-      else then();
-    };
-    const play = (wait: number, asked: ParkyAct | 'ride') => {
-      timer = setTimeout(() => {
-        // A ride is chosen when it is due, from where Parky is then; with no room the turn passes.
-        const next = actFor(asked, svg.current);
-        if (!next) {
-          if (running.current) end(running.current.act, loop);
-          else loop();
-          return;
-        }
-        previous = next;
-        running.current = { act: next, endsAt: Date.now() + ACT_MS[next] };
-        setAct(next);
-        timer = setTimeout(() => end(next, loop), ACT_MS[next]);
-      }, wait);
-    };
-    // Asleep he dreams now and then, in his own rhythm: a dream is no act, the face sleeps on.
-    const dreamOn = () => {
-      timer = setTimeout(() => {
-        const next = pickRandom(DREAMS, lastDream);
-        lastDream = next;
-        setDream(next);
-        timer = setTimeout(() => {
-          setDream(null);
-          dreamOn();
-        }, DREAM_MS);
-      }, pauseOf('dream'));
-    };
-    // When the next showy act is due; a fidget that would come after it gives way to it.
-    let showyAt = Date.now() + pauseOf('showy');
-    const loop = () => {
-      // Asleep, the doze is the last act: the sleeping face takes over until somebody moves.
-      if (boredom === 'asleep') {
-        dreamOn();
-        return;
-      }
-      // Calm, awake or bored, he only blinks and follows the pointer with his eyes, then sleeps.
-      if (calm) return;
-      if (boredom === 'bored') {
-        play(pauseOf('sleepy'), pickRandom(CLASS_ACTS.sleepy, previous));
-        return;
-      }
-      const wait = pauseOf('fidget');
-      if (Date.now() + wait < showyAt) {
-        play(wait, pickRandom(CLASS_ACTS.fidget, previous));
-        return;
-      }
-      const due = Math.max(0, showyAt - Date.now());
-      showyAt = Date.now() + due + pauseOf('showy');
-      play(due, pickRandom(showy, previous));
-    };
-    const enter = () => {
-      if (boredom === 'asleep') play(SETTLE_MS, 'doze');
-      else if (woke) play(0, pickRandom(WAKE_ACTS));
-      else if (calm) loop();
-      else if (boredom === 'bored') play(SETTLE_MS, 'yawn');
-      else loop();
-    };
-    const onStage = running.current;
-    if (cue && cue.id !== played.current) {
-      // A cue answers the visitor, so it plays at once, over whatever is on stage.
-      played.current = cue.id;
-      play(0, cue.act);
-    } else if (onStage) {
-      timer = setTimeout(() => end(onStage.act, enter), Math.max(0, onStage.endsAt - Date.now()));
-    } else enter();
-    return () => {
-      clearTimeout(timer);
-      clearTimeout(wake);
-    };
-  }, [boredom, cue, svg, calm, showy]);
-  // Shown only while Parky has a life of its own, so a mood or a search never meets an act.
-  const shown = boredom ? act : null;
-  const asleep = boredom === 'asleep' && shown === null;
-  return { act: shown, asleep, dream: asleep ? dream : null };
-}
-
-/**
- * Parky searching along while a search is open on the page ({@link useSearchOpen}): `searching`
- * while one is, `done` for the moment the glass takes to go after it closed, `null` otherwise;
- * `puzzled` for a moment after the search found nothing.
- */
-function useSearchAlong(enabled: boolean) {
-  const open = useSearchOpen() && enabled;
-  const [puzzled, setPuzzled] = useState(false);
-  useEffect(() => {
-    if (!open) return;
-    let timer: ReturnType<typeof setTimeout>;
-    const stop = onSiteEvent((name) => {
-      if (name !== 'search_no_results') return;
-      clearTimeout(timer);
-      setPuzzled(true);
-      timer = setTimeout(() => setPuzzled(false), PUZZLED_MS);
-    });
-    return () => {
-      stop();
-      clearTimeout(timer);
-    };
-  }, [open]);
-  const [wasOpen, setWasOpen] = useState(open);
-  const [leaving, setLeaving] = useState(false);
-  if (wasOpen !== open) {
-    setWasOpen(open);
-    setLeaving(!open);
-  }
-  useEffect(() => {
-    if (!leaving) return;
-    const timer = setTimeout(() => setLeaving(false), LENS_OUT_MS);
-    return () => clearTimeout(timer);
-  }, [leaving]);
-  return {
-    search: open ? ('searching' as const) : leaving ? ('done' as const) : null,
-    puzzled: open && puzzled,
-  };
-}
+} from './drawing';
+import { DREAM_MS, ParkyDreamCloud } from './dreams';
+import { ParkyMoment, ParkyRideTrack, ParkyVehicle } from './props';
+import { useGaze } from './use-gaze';
+import { useIdleAct } from './use-idle-act';
+import { LENS_OUT_MS, PUZZLED_MS, useSearchAlong } from './use-search-along';
 
 /**
  * What Parky is busy with, each with its own look: `thinking` (waiting for the first word) gazes
@@ -697,20 +168,20 @@ export function ParkyLogo({
   useEffect(() => {
     if (!motion || !ride || !body.current) return;
     const timing = { duration: ACT_MS[ride], fill: 'both' as const };
-    const runs = [body.current.animate(motion.stops.map(rideKeyframe), timing)];
+    const runs = [animateParky(body.current, motion.stops.map(rideKeyframe), timing)];
     if (motion.hat && hat.current) {
       const lifts = motion.hat.map(({ at, lift }) => ({
         offset: at,
         transform: `translateY(${-lift}px)`,
       }));
-      runs.push(hat.current.animate(lifts, timing));
+      runs.push(animateParky(hat.current, lifts, timing));
     }
     return () => runs.forEach((run) => run.cancel());
   }, [motion, ride]);
   // Each keystroke in the search, Parky leans the glass in for a closer look.
   const lens = useRef<SVGGElement>(null);
   useEffect(() => {
-    if (!searching || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (!searching || parkyStill()) return;
     let run: Animation | undefined;
     const onInput = () => {
       run?.cancel();

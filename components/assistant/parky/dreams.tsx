@@ -2,7 +2,8 @@
 
 import { useEffect, useRef } from 'react';
 import { cn } from '@/lib/utils';
-import { CABIN_COLOURS, STAR, blue, capBlue, gold, ink, rail } from './parky-drawing';
+import { animateParky } from '@/lib/assistant/parky/motion';
+import { CABIN_COLOURS, STAR, blue, capBlue, gold, ink, rail } from './drawing';
 
 /**
  * What Parky dreams of, in a cloud over his sleeping head: riding a coaster, cheering under
@@ -129,7 +130,7 @@ export function ParkyDreamCloud({ dream, ground }: { dream: ParkyDream; ground: 
         transform: `translate(${here.x.toFixed(2)}px, ${here.y.toFixed(2)}px) rotate(${angle.toFixed(1)}deg)`,
       };
     });
-    const run = cars.animate(frames, { duration: TRAIN_LAP_MS, iterations: Infinity });
+    const run = animateParky(cars, frames, { duration: TRAIN_LAP_MS, iterations: Infinity });
     return () => run.cancel();
   }, [dream]);
   return (
