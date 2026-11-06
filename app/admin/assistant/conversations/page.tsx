@@ -38,12 +38,15 @@ const RATING_OPTIONS = [
 export default function AssistantConversationsPage() {
   const [rating, setRating] = useState<RatingFilter>('all');
   const [search, setSearch] = useState('');
+  const [version, setVersion] = useState('');
   const [page, setPage] = useState(1);
   const q = useDeferredValue(search.trim());
+  const promptVersion = useDeferredValue(version.trim());
 
   const params = new URLSearchParams({ page: String(page) });
   if (rating !== 'all') params.set('rating', rating === 'down' ? '-1' : '1');
   if (q.length >= 2) params.set('q', q);
+  if (/^[1-9]\d*$/.test(promptVersion)) params.set('promptVersion', promptVersion);
   const path = `${ASSISTANT_API}/conversations?${params}`;
   const { data, error, refetch } = useAdminQuery<Page<ConversationRow>>(adminKeys.raw(path), path);
   const pages = data ? Math.max(1, Math.ceil(data.total / data.pageSize)) : 1;
@@ -54,7 +57,7 @@ export default function AssistantConversationsPage() {
         <PanelHeader
           icon={MessagesSquare}
           title="Chats"
-          hint={data ? `${formatCount(data.total)} gespeichert, 90 Tage lang` : undefined}
+          hint={data ? `${formatCount(data.total)} gespeichert, 7 Tage lang` : undefined}
         />
         <Toolbar>
           <Segmented
@@ -76,6 +79,19 @@ export default function AssistantConversationsPage() {
             }}
             className="max-w-xs"
           />
+          <TextInput
+            type="number"
+            inputMode="numeric"
+            min={1}
+            placeholder="Prompt-Version"
+            aria-label="Nur Chats mit dieser Prompt-Version"
+            value={version}
+            onChange={(event) => {
+              setVersion(event.target.value);
+              setPage(1);
+            }}
+            className="w-36"
+          />
         </Toolbar>
         {error ? (
           <ErrorState message={error.message} onRetry={refetch} />
@@ -95,6 +111,9 @@ export default function AssistantConversationsPage() {
                     {formatDateTime(chat.createdAt)}
                   </span>
                   <Chip>{chat.locale}</Chip>
+                  {chat.promptVersion !== undefined && (
+                    <Chip className="tabular-nums">v{chat.promptVersion}</Chip>
+                  )}
                   <span className="min-w-0 flex-1 truncate">{chat.firstQuestion ?? '–'}</span>
                   <span className="text-muted-foreground max-w-56 truncate text-xs">
                     {chat.startPath}

@@ -32,6 +32,8 @@ export interface ConversationRow {
   totalTokens: number;
   costUsd: string;
   rating: number;
+  /** The prompt version of the chat's latest answer; absent for chats stored before it was kept. */
+  promptVersion?: number;
   createdAt: string;
   firstQuestion?: string;
 }
@@ -54,6 +56,8 @@ export interface ConversationMessage {
   cacheReadTokens: number;
   costUsd: string;
   rating?: number;
+  /** The prompt version an answer was written with; absent on questions and older answers. */
+  promptVersion?: number;
   createdAt: string;
 }
 
