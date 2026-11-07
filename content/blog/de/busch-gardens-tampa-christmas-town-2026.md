@@ -2,7 +2,7 @@
 title: 'Busch Gardens Tampa zeigt zu Weihnachten eine Drohnenshow'
 translationKey: busch-gardens-tampa-christmas-town-2026
 date: '2026-11-07'
-time: '18:00'
+time: '17:44'
 author: patrick
 mode: published
 featured: false

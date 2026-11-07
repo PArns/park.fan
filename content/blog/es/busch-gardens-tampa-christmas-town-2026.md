@@ -2,7 +2,7 @@
 title: 'Busch Gardens Tampa estrena un show de drones para Navidad'
 translationKey: busch-gardens-tampa-christmas-town-2026
 date: '2026-11-07'
-time: '18:00'
+time: '17:44'
 author: patrick
 mode: published
 featured: false
