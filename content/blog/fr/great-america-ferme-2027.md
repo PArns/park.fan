@@ -2,7 +2,7 @@
 title: 'California’s Great America ferme après la saison 2027'
 translationKey: great-america-schliesst-2027
 date: '2026-11-07'
-time: '08:30'
+time: '08:15'
 author: patrick
 mode: published
 featured: false
@@ -47,13 +47,13 @@ seo:
 
 ## Quand le parc ouvre en 2027
 
-Six Flags appelle cette dernière année la « Farewell Season ». Le jour d’ouverture en mars, les horaires 2027 et le programme des adieux ne seront annoncés que plus tard.
+Chez Six Flags, cette dernière année porte le nom de « Farewell Season ». Le jour d’ouverture en mars, les horaires 2027 et le programme des adieux ne seront annoncés que plus tard.
 
 Pour l’instant, le parc est fermé. Six Flags avait prolongé la saison 2026, la cinquantième, jusqu’au 1er novembre. Inutile donc de sauter dans la voiture en lisant la nouvelle : les grilles restent closes jusqu’en mars, et Santa Clara n’aura pas de WinterFest cet hiver. Les groupes, les fêtes d’entreprise et les sorties scolaires sont acceptés pour 2027 jusqu’au Labor Day.
 
 ## Pass, billets et remboursement
 
-Six Flags propose trois pass saison pour 2027, tous les prix s’entendent hors taxes :
+Trois pass saison sont proposés pour 2027, et la taxe s’ajoute à tous les prix :
 
 | Pass     | Prix                                      | Valable à                                                       | Avantages                                                                                          |
 | -------- | ----------------------------------------- | --------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
@@ -61,15 +61,15 @@ Six Flags propose trois pass saison pour 2027, tous les prix s’entendent hors 
 | Gold     | 89 $, renouvellement 79 $                 | tous les parcs Six Flags de Californie, d’Arizona et du Mexique | General Parking, 10 % sur la restauration et les souvenirs, billet moins cher pour un accompagnant |
 | Prestige | 169 $, renouvellement 159 $               | tous les parcs Six Flags                                        | Preferred Parking, soda à la pression à chaque visite, 15 %, deux billets Bring-a-Friend par an    |
 
-Le Silver Pass coûte autant qu’un seul billet Good Any Day pour 2027, et 159 $ au lieu de 243 $ avec le plan repas et boissons. Pour une dernière année à Santa Clara seulement, il suffit. Le Gold devient intéressant si tu vas aussi à [Six Flags Discovery Kingdom](ref:six-flags-discovery-kingdom), à Vallejo, ou à [Knott’s Berry Farm](ref:knotts-berry-farm). Pour un Gold ou un Prestige acheté d’ici au 30 novembre, Six Flags offre un billet Bring-a-Friend, à utiliser au plus tard le 31 mai 2027.
+À 65 $, le Silver Pass coûte autant qu’un seul billet Good Any Day pour 2027. En formule avec le plan repas et boissons pour toute la saison, il revient à 159 $ au lieu de 243 $ au tarif normal. Pour une dernière année à Santa Clara seulement, il suffit. Le Gold devient intéressant si tu vas aussi à [Six Flags Discovery Kingdom](ref:six-flags-discovery-kingdom), à Vallejo, ou à [Knott’s Berry Farm](ref:knotts-berry-farm). Pour un Gold ou un Prestige acheté d’ici au 30 novembre, Six Flags offre un billet Bring-a-Friend, à utiliser au plus tard le 31 mai 2027.
 
 Pour le Gold et le Prestige, Six Flags affiche le slogan « Visit All of 2026 & 2027 ». Pour la fin de 2026, cela ne concerne que les autres parcs. À Discovery Kingdom, le WinterFest a lieu certains jours du 27 novembre au 3 janvier. Cyle Perez, porte-parole de Six Flags, a expliqué à KTVU que les événements d’automne et d’hiver de ce parc sont compris dans le Gold Pass de Great America.
 
-Aucun remboursement n’est prévu. Les billets à la journée et les pass saison ne sont ni remboursables ni échangeables, même par mauvais temps. Si tu as déjà un pass pour 2027, tu peux l’utiliser selon ses conditions malgré la fermeture, et les plans repas et boissons seront encore proposés en 2027. Le Fast Lane coûte à partir de 79 $ pour une journée, et l’All Season Fast Lane 999 $, pour une saison qui n’aura pas de suite.
+Les billets à la journée et les pass saison ne sont ni remboursables ni échangeables, même par mauvais temps. Si tu as déjà un pass pour 2027, tu peux l’utiliser selon ses conditions malgré la fermeture, et les plans repas et boissons seront encore proposés en 2027. Le Fast Lane coûte à partir de 79 $ pour une journée, et l’All Season Fast Lane 999 $.
 
 ## Attractions et parc aquatique pendant la dernière saison
 
-Six Flags ne prévoit de rien supprimer en 2027 à cause de la fermeture : toutes les attractions doivent tourner jusqu’à la fin de la saison. South Bay Shores ouvre selon son calendrier habituel. Le parc aquatique est compris dans l’entrée, et un billet est nécessaire dès trois ans.
+Toutes les attractions doivent tourner jusqu’à la fin de la saison, et rien ne sera supprimé à cause de la fermeture. South Bay Shores ouvre selon son calendrier habituel. Le parc aquatique est compris dans l’entrée, et un billet est nécessaire dès trois ans.
 
 ## Les montagnes russes pour un dernier tour
 
@@ -83,11 +83,11 @@ Six Flags ne prévoit de rien supprimer en 2027 à cause de la fermeture : tout
 
 Le parc compte neuf montagnes russes. Outre les cinq du tableau, il y a Woodstock Express, Lucy’s Crabbie Cabbies, Psycho Mouse et [Grizzly](ref:great-america/grizzly?bare), en bois, de 1986 : 28 mètres de haut, 991 mètres de long et jusqu’à 89 km/h.
 
-RailBlazer est un prototype dont les wagons roulent sur un rail unique. Huit passagers s’assoient l’un derrière l’autre, le train plonge à la verticale et passe trois fois la tête en bas. Gold Striker parcourt ses 974 mètres de voie en bois en deux minutes et demie. Patriot se faisait debout à partir de 1991, sous le nom de Vortex, et depuis 2017 on y est assis dans des trains sans plancher.
+RailBlazer est un prototype dont les wagons roulent sur un rail unique. Huit passagers s’assoient l’un derrière l’autre, le train plonge à la verticale et passe trois fois la tête en bas. Un tour sur la voie en bois de Gold Striker dure deux minutes et demie. Sur Patriot, on roulait debout au début, et depuis 2017 on y est assis dans des trains sans plancher.
 
 Demon fait partie des premières attractions du parc. Elle a ouvert en mai 1976 sous le nom de Turn of the Century, et en 1980 elle a reçu deux loopings et, avec eux, un nom qui leur va mieux. Aujourd’hui, elle te fait passer quatre fois la tête en bas.
 
-À côté des montagnes russes se dresse depuis 1996 le [Drop Tower](ref:great-america/drop-tower) d’Intamin, haut de 69 mètres. La montée prend 35 secondes, la chute 3,5 secondes, jusqu’à 97 km/h. En 2007, Drop Zone: Stunt Tower est devenu Drop Tower, et Top Gun Flight Deck. Le Carousel Columbia, un carrousel à deux étages de Chance Rides avec plus de 100 chevaux, tourne depuis 1976 et mesure 31 mètres de haut.
+À côté des montagnes russes se dresse depuis 1996 le [Drop Tower](ref:great-america/drop-tower) d’Intamin, haut de 69 mètres. La montée prend 35 secondes, la chute 3,5 secondes, jusqu’à 97 km/h. Quand le parc a abandonné le nom Paramount en 2007, Drop Zone: Stunt Tower est devenu Drop Tower, et Top Gun Flight Deck. Le Carousel Columbia, un carrousel à deux étages de Chance Rides avec plus de 100 chevaux, tourne depuis 1976 et mesure 31 mètres de haut.
 
 ## Où l’attente est la plus longue
 
@@ -109,7 +109,7 @@ Le parc n’est pas sur son propre terrain. En 2019, Cedar Fair, l’exploitant 
 
 La Marriott Corporation a ouvert le parc le 20 mars 1976 sous le nom de Marriott’s Great America. En 1985, la ville de Santa Clara l’a acheté pour 93,5 millions de dollars et en a confié l’exploitation à Kings Entertainment. En 1989, Kings a racheté à la ville les attractions et les bâtiments, la ville gardant le terrain. Paramount Communications a repris Kings Entertainment en 1992, et de 1993 à 2006 le parc s’est appelé Paramount’s Great America.
 
-En mai 2006, Cedar Fair a annoncé le rachat des parcs Paramount. En 2007, le parc s’appelait simplement Great America, et depuis 2008 California’s Great America. En 2011, Cedar Fair a conclu avec les 49ers un accord sur le parking et la construction du stade. Le 1er juillet 2024, Cedar Fair et Six Flags ont fusionné, et depuis, la Six Flags Entertainment Corporation exploite le parc.
+En mai 2006, Cedar Fair a annoncé le rachat des parcs Paramount. En 2007, le parc s’appelait simplement Great America, et depuis 2008 California’s Great America. Pour construire le Levi’s Stadium voisin, Cedar Fair s’est entendu en 2011 avec les 49ers, y compris sur le parking. Le 1er juillet 2024, Cedar Fair et Six Flags ont fusionné, et depuis, la Six Flags Entertainment Corporation exploite le parc.
 
 ## Ce que deviennent les attractions et le terrain
 

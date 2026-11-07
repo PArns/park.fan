@@ -2,7 +2,7 @@
 title: "California's Great America closes after the 2027 season"
 translationKey: great-america-schliesst-2027
 date: '2026-11-07'
-time: '08:30'
+time: '08:15'
 author: patrick
 mode: published
 featured: false

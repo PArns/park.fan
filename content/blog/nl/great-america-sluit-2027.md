@@ -2,7 +2,7 @@
 title: "California's Great America sluit na het seizoen 2027"
 translationKey: great-america-schliesst-2027
 date: '2026-11-07'
-time: '08:30'
+time: '08:15'
 author: patrick
 mode: published
 featured: false
@@ -47,13 +47,13 @@ Op Labor Day, 6 september 2027, gaat [California's Great America](ref:great-amer
 
 ## Wanneer het park in 2027 opent
 
-Six Flags noemt het laatste jaar de “Farewell Season”. De startdatum in maart, de openingstijden voor 2027 en het afscheidsprogramma maakt het bedrijf pas later bekend.
+Het laatste jaar heet bij Six Flags de “Farewell Season”. De startdatum in maart, de openingstijden voor 2027 en het afscheidsprogramma maakt het bedrijf pas later bekend.
 
 Op dit moment is het park dicht. Six Flags had het seizoen 2026, het vijftigste, verlengd tot 1 november. Wie na dit bericht meteen de auto wil pakken, kan dus beter eerst de winter uitzitten: tot maart gebeurt er niets. Santa Clara krijgt deze winter geen WinterFest. Groepen, bedrijfsfeesten en schoolklassen kunnen voor 2027 nog tot Labor Day boeken.
 
 ## Passen, tickets en terugbetaling
 
-Six Flags verkoopt voor 2027 drie seizoenspassen, alle prijzen exclusief belasting:
+Voor 2027 zijn er drie seizoenspassen, en op alle prijzen komt nog belasting:
 
 | Pas      | Prijs                                     | Geldig in                                              | Inbegrepen                                                                                                       |
 | -------- | ----------------------------------------- | ------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------- |
@@ -61,15 +61,15 @@ Six Flags verkoopt voor 2027 drie seizoenspassen, alle prijzen exclusief belasti
 | Gold     | 89 dollar, verlenging 79 dollar           | alle Six Flags-parken in Californië, Arizona en Mexico | General Parking, 10 procent korting op eten en souvenirs, goedkoper ticket voor wie met je meegaat               |
 | Prestige | 169 dollar, verlenging 159 dollar         | alle Six Flags-parken                                  | Preferred Parking, frisdrank van de tap bij elk bezoek, 15 procent korting, twee Bring-a-Friend-tickets per jaar |
 
-De Silver Pass kost evenveel als één Good Any Day Ticket voor 2027, en met eet- en drinkplan 159 in plaats van 243 dollar. Ga je in dat laatste jaar alleen naar Santa Clara, dan heb je er genoeg aan. Gold loont als je ook naar [Six Flags Discovery Kingdom](ref:six-flags-discovery-kingdom) in Vallejo of naar [Knott's Berry Farm](ref:knotts-berry-farm) wilt. Wie Gold of Prestige uiterlijk 30 november koopt, krijgt er een Bring-a-Friend-ticket bij, dat je tot en met 31 mei 2027 moet inwisselen.
+Met 65 dollar kost de Silver Pass evenveel als één Good Any Day Ticket voor 2027. Als pakket met het eet- en drinkplan voor het hele seizoen kost hij 159 dollar in plaats van de gewone 243. Ga je in dat laatste jaar alleen naar Santa Clara, dan heb je er genoeg aan. Gold loont als je ook naar [Six Flags Discovery Kingdom](ref:six-flags-discovery-kingdom) in Vallejo of naar [Knott's Berry Farm](ref:knotts-berry-farm) wilt. Wie Gold of Prestige uiterlijk 30 november koopt, krijgt er een Bring-a-Friend-ticket bij, dat je tot en met 31 mei 2027 moet inwisselen.
 
 Bij Gold en Prestige adverteert Six Flags met “Visit All of 2026 & 2027”. Voor de rest van 2026 geldt dat alleen in de andere parken. In Discovery Kingdom loopt van 27 november tot 3 januari op geselecteerde dagen WinterFest. Six Flags-woordvoerder Cyle Perez zei tegen KTVU dat de herfst- en winterevenementen daar in de Gold Pass van Great America zitten.
 
-Geld terug is er niet. Dagtickets en seizoenspassen worden niet terugbetaald en niet omgeruild, ook niet bij slecht weer. Wie al een pas voor 2027 heeft, kan die ondanks de sluiting volgens de voorwaarden gewoon gebruiken, en de eet- en drinkplannen moeten er in 2027 ook weer zijn. Fast Lane kost voor één dag vanaf 79 dollar. De All Season Fast Lane kost 999 dollar, voor een seizoen waar geen volgend meer achteraan komt.
+Dagtickets en seizoenspassen worden niet terugbetaald en niet omgeruild, ook niet bij slecht weer. Wie al een pas voor 2027 heeft, kan die ondanks de sluiting volgens de voorwaarden gewoon gebruiken, en de eet- en drinkplannen moeten er in 2027 ook weer zijn. Fast Lane kost voor één dag vanaf 79 dollar, de All Season Fast Lane 999 dollar.
 
 ## Attracties en waterpark in het laatste seizoen
 
-Six Flags wil in 2027 niets schrappen omdat het park sluit; alle attracties moeten tot het einde van het seizoen blijven draaien. South Bay Shores gaat open volgens zijn gewone seizoensschema. Het waterpark zit bij de toegang inbegrepen, en iedereen vanaf drie jaar heeft een ticket nodig.
+Alle attracties moeten tot het einde van het seizoen blijven draaien; vanwege de sluiting wordt er niets geschrapt. South Bay Shores gaat open volgens zijn gewone seizoensschema. Het waterpark zit bij de toegang inbegrepen, en iedereen vanaf drie jaar heeft een ticket nodig.
 
 ## De achtbanen voor een laatste rit
 
@@ -83,11 +83,11 @@ Six Flags wil in 2027 niets schrappen omdat het park sluit; alle attracties moet
 
 Het park heeft negen achtbanen. Naast de vijf in de tabel zijn dat Woodstock Express, Lucy's Crabbie Cabbies, Psycho Mouse en de houten achtbaan [Grizzly](ref:great-america/grizzly?bare) uit 1986: 28 meter hoog, 991 meter lang en tot 89 km/h snel.
 
-RailBlazer is een prototype waarvan de wagens over één enkele rail rijden. Acht passagiers zitten achter elkaar, er is een loodrechte afdaling en je gaat drie keer over de kop. Over zijn 974 meter houten baan doet Gold Striker tweeënhalve minuut. Op Patriot stond je vanaf 1991 rechtop, toen nog onder de naam Vortex, en sinds 2017 zit je in treinen zonder vloer.
+RailBlazer is een prototype waarvan de wagens over één enkele rail rijden. Acht passagiers zitten achter elkaar, er is een loodrechte afdaling en je gaat drie keer over de kop. Een rit over de houten baan van Gold Striker duurt tweeënhalve minuut. Op Patriot stond je in het begin rechtop, sinds 2017 zit je in treinen zonder vloer.
 
 Demon is een van de eerste banen van het park en opende in mei 1976 als Turn of the Century. In 1980 kreeg de baan twee loopings, en meteen ook een naam die daar beter bij paste. Tegenwoordig draait hij je vier keer over de kop.
 
-Naast de achtbanen staat sinds 1996 de 69 meter hoge [Drop Tower](ref:great-america/drop-tower) van Intamin. De klim duurt 35 seconden, de val 3,5 seconden, met maximaal 97 km/h. In 2007 werd Drop Zone: Stunt Tower omgedoopt tot Drop Tower en Top Gun tot Flight Deck. Carousel Columbia, een dubbeldekkercarrousel van Chance Rides met meer dan 100 paarden, draait sinds 1976 en is 31 meter hoog.
+Naast de achtbanen staat sinds 1996 de 69 meter hoge [Drop Tower](ref:great-america/drop-tower) van Intamin. De klim duurt 35 seconden, de val 3,5 seconden, met maximaal 97 km/h. Toen het park in 2007 de naam Paramount liet vallen, werd Drop Zone: Stunt Tower omgedoopt tot Drop Tower en Top Gun tot Flight Deck. Carousel Columbia, een dubbeldekkercarrousel van Chance Rides met meer dan 100 paarden, draait sinds 1976 en is 31 meter hoog.
 
 ## Waar je het langst in de rij staat
 
@@ -109,7 +109,7 @@ Het park staat op grond van een ander. In 2019 kocht Cedar Fair, toen de exploit
 
 De Marriott Corporation opende het park op 20 maart 1976 als Marriott's Great America. In 1985 kocht de stad Santa Clara het voor 93,5 miljoen dollar, en Kings Entertainment exploiteerde het voor de stad. In 1989 kocht Kings de attracties en gebouwen van de stad over; de grond hield de stad zelf. Paramount Communications nam Kings Entertainment in 1992 over, en van 1993 tot 2006 heette het park Paramount's Great America.
 
-In mei 2006 kondigde Cedar Fair aan de Paramount-parken over te nemen. In 2007 heette het park gewoon Great America, sinds 2008 California's Great America. In 2011 sloot Cedar Fair met de 49ers een overeenkomst over de parkeerplaats en de bouw van het stadion. Op 1 juli 2024 fuseerden Cedar Fair en Six Flags, en sindsdien exploiteert de Six Flags Entertainment Corporation het park.
+In mei 2006 kondigde Cedar Fair aan de Paramount-parken over te nemen. In 2007 heette het park gewoon Great America, sinds 2008 California's Great America. Voor de bouw van het Levi's Stadium ernaast kwam Cedar Fair in 2011 tot een akkoord met de 49ers, ook over de parkeerplaats. Op 1 juli 2024 fuseerden Cedar Fair en Six Flags, en sindsdien exploiteert de Six Flags Entertainment Corporation het park.
 
 ## Wat er met de attracties en het terrein gebeurt
 
