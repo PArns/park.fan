@@ -7,7 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Busch Gardens Tampa Bay eröffnet am 13. November Christmas Town. Zum ersten Mal steigt dabei die Drohnenshow Lights of Wonder über dem Park auf. Das Weihnachtsevent läuft bis zum 4. Januar 2027 und kostet keinen Aufpreis.
+  Busch Gardens Tampa Bay eröffnet am 13. November Christmas Town. Neu ist in diesem Jahr die Drohnenshow Lights of Wonder über dem Park. Das Weihnachtsevent läuft bis zum 4. Januar 2027 und kostet keinen Aufpreis.
 tags:
   - news
   - busch-gardens-tampa
@@ -36,7 +36,7 @@ seo:
     - Tampa Weihnachten 2026
 ---
 
-Am Freitag, dem 13. November, beginnt in [Busch Gardens Tampa Bay](ref:busch-gardens-tampa) in Florida die Christmas Town, und zum ersten Mal gehört eine Drohnenshow dazu. Neu ist auch die Akrobatikshow A Very Merry Cirque. Das Weihnachtsevent läuft an ausgewählten Tagen bis zum 4. Januar 2027, jeweils von der Öffnung bis zum Parkschluss, und ist im normalen Eintritt enthalten.
+Am Freitag, dem 13. November, beginnt in [Busch Gardens Tampa Bay](ref:busch-gardens-tampa) in Florida die Christmas Town, in diesem Jahr mit einer neuen Drohnenshow. Neu ist auch die Akrobatikshow A Very Merry Cirque. Das Weihnachtsevent läuft an ausgewählten Tagen bis zum 4. Januar 2027, jeweils von der Öffnung bis zum Parkschluss, und ist im normalen Eintritt enthalten.
 
 ## Die zwei neuen Shows
 
@@ -63,7 +63,7 @@ Der Eröffnungsabend hat ein eigenes Programm auf der Cheetah Hunt Plaza. Von 17
 
 ```
 
-## Was wiederkommt
+## Was es sonst gibt
 
 Christmas on Ice läuft vom 13. November bis zum 4. Januar im Moroccan Palace Theater, mit Eiskunstläufern, was im Klima von Tampa schon für sich eine kleine Leistung ist. Die Plätze werden in der Reihenfolge vergeben, in der die Gäste eintreffen, und ist der Saal voll, können die Türen schon vor Showbeginn schließen. Für eine bestimmte Vorstellung kommst du also besser früh.
 
@@ -86,7 +86,7 @@ Das Welcome Center und die Stände mit dem Weihnachtsessen öffnen an den Eventa
 Das Rudolph & Friends Character Dine kostet 42,99 Dollar. Zwei VIP-Touren dauern je vier Stunden:
 
 - Holly VIP Tour, privat, 150 Dollar: Vortritt beim Weihnachtsmann, reservierte Plätze bei Christmas on Ice, Flamingofütterung und Essen
-- Jolly VIP Tour, mit Gruppe, 125 Dollar: Häppchen an den Hütten, Vortritt an ausgewählten Achterbahnen, Giraffenfütterung auf der Serengeti Safari und reservierte Plätze bei Christmas on Ice
+- Jolly VIP Tour, geführt, 125 Dollar: Häppchen an den Hütten, Vortritt an ausgewählten Achterbahnen, Giraffenfütterung auf der Serengeti Safari und reservierte Plätze bei Christmas on Ice
 
 ## Tickets und Parken
 
@@ -96,7 +96,7 @@ Im Black-Friday-Vorverkauf kostet ein Tagesticket ab 71,99 Dollar statt regulär
 
 ```
 
-Busch Gardens gehört wie SeaWorld Orlando zu SeaWorld Parks & Entertainment. Ein Zwei-Park-Ticket für beide kostet ab 93,99 Dollar zusammen, die beiden Besuche müssen innerhalb von sechs Monaten liegen. In SeaWorld Orlando kehrt zur [Christmas Celebration die Orca-Show Miracles zurück](/news/seaworld-orlando-christmas-celebration-2026). Busch Gardens liegt am 10165 N McKinley Drive in Tampa.
+Busch Gardens gehört zu SeaWorld Parks & Entertainment. Ein Zwei-Park-Ticket mit SeaWorld Orlando kostet ab 93,99 Dollar zusammen, beide Besuche müssen innerhalb von sechs Monaten nach dem Kauf liegen. In SeaWorld Orlando kehrt zur [Christmas Celebration die Orca-Show Miracles zurück](/news/seaworld-orlando-christmas-celebration-2026). Busch Gardens liegt am 10165 N McKinley Drive in Tampa.
 
 [Busch Gardens Tampa Bay](ref:busch-gardens-tampa?full)
 
