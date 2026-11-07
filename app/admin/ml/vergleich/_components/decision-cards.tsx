@@ -20,6 +20,7 @@ import { CheckDot, StateDot } from './state-dot';
 export type OpenCell = (ref: CellRef, trigger: HTMLElement) => void;
 
 const VISIBLE_DATES = 4;
+const VISIBLE_QUESTIONS = 3;
 
 /**
  * The three cards above the matrix, all derived from the report: what can be switched now, what
@@ -39,7 +40,7 @@ export function DecisionCards({
   return (
     <section
       aria-label="Entscheidungen"
-      className="grid gap-3 md:grid-cols-2 xl:grid-cols-[minmax(0,1.25fr)_minmax(0,1fr)_minmax(0,0.9fr)]"
+      className="grid items-start gap-3 md:grid-cols-2 xl:grid-cols-[minmax(0,1.25fr)_minmax(0,1fr)_minmax(0,0.9fr)]"
     >
       <Ready report={report} labels={labels} onOpen={onOpen} />
       <Near report={report} labels={labels} onOpen={onOpen} />
@@ -104,6 +105,7 @@ function Ready({
   onOpen: OpenCell;
 }) {
   const ready = readyDecisions(report);
+  const [all, setAll] = useState(false);
   const groupLabel = (id: string) => report.groups.find((group) => group.id === id)?.label ?? id;
   return (
     <Card title="Jetzt umstellbar" icon={<StateDot state="better" size="sm" />} tint="ready">
@@ -112,7 +114,7 @@ function Ready({
           Noch nichts.
         </Headline>
       ) : (
-        ready.map(({ question, options }) => (
+        (all ? ready : ready.slice(0, VISIBLE_QUESTIONS)).map(({ question, options }) => (
           <div key={question.id} className="space-y-2">
             <Headline
               sub={`${groupLabel(question.group)}, ${question.sub}. Heute zeigt die App „${labels.get(question.servedModel) ?? question.servedModel}“.`}
@@ -157,6 +159,15 @@ function Ready({
             ))}
           </div>
         ))
+      )}
+      {!all && ready.length > VISIBLE_QUESTIONS && (
+        <button
+          type="button"
+          onClick={() => setAll(true)}
+          className="text-primary-ink min-h-6 self-start text-xs hover:underline"
+        >
+          Alle {ready.length} zeigen
+        </button>
       )}
     </Card>
   );

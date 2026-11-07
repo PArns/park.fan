@@ -138,7 +138,7 @@ function Block({
               key={i}
               style={{ gridColumn: `span ${run.span}` }}
               className={cn(
-                'mx-1.5 truncate border-b border-white/[0.14] px-1.5 pb-1 text-center text-[11px]',
+                'mx-1.5 flex min-h-9 items-end justify-center border-b border-white/[0.14] px-1.5 pb-1 text-center text-[11px] leading-tight text-balance',
                 run.id === 'in_app' ? 'text-foreground font-semibold' : 'text-muted-foreground'
               )}
             >
