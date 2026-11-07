@@ -111,7 +111,7 @@ export default function AssistantConversationsPage() {
                     {formatDateTime(chat.createdAt)}
                   </span>
                   <Chip>{chat.locale}</Chip>
-                  {chat.promptVersion !== undefined && (
+                  {chat.promptVersion != null && (
                     <Chip className="tabular-nums">v{chat.promptVersion}</Chip>
                   )}
                   <span className="min-w-0 flex-1 truncate">{chat.firstQuestion ?? '–'}</span>
