@@ -47,13 +47,13 @@ seo:
 
 ## Wann der Park 2027 öffnet
 
-Six Flags nennt das letzte Jahr „Farewell Season“. Den Starttag im März, die Öffnungszeiten für 2027 und das Programm zum Abschied will das Unternehmen erst später bekannt geben.
+Das letzte Jahr heißt bei Six Flags „Farewell Season“. Den Starttag im März, die Öffnungszeiten für 2027 und das Programm zum Abschied will das Unternehmen erst später bekannt geben.
 
 Im Moment ist der Park zu. Six Flags hatte die Saison 2026, die fünfzigste, bis zum 1. November verlängert. Wer die Nachricht gelesen hat und schon den Autoschlüssel in der Hand hält, kann ihn bis März wieder an den Haken hängen. Ein WinterFest gibt es in Santa Clara in diesem Winter nicht. Gruppen, Firmenfeiern und Schulklassen nimmt der Park für 2027 bis zum Labor Day an.
 
 ## Pässe, Tickets und Erstattung
 
-Six Flags verkauft für 2027 drei Saisonpässe, die Preise gelten jeweils plus Steuer:
+Für 2027 gibt es drei Saisonpässe, auf alle Preise kommt noch die Steuer:
 
 | Pass     | Preis                                | gilt in                                                  | dazu                                                                                                        |
 | -------- | ------------------------------------ | -------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
@@ -61,15 +61,15 @@ Six Flags verkauft für 2027 drei Saisonpässe, die Preise gelten jeweils plus S
 | Gold     | 89 $, Verlängerung 79 $              | allen Six-Flags-Parks in Kalifornien, Arizona und Mexiko | General Parking, 10 Prozent auf Essen und Souvenirs, günstigeres Ticket für Begleitung                      |
 | Prestige | 169 $, Verlängerung 159 $            | allen Six-Flags-Parks                                    | Preferred Parking, Softdrink vom Zapfhahn bei jedem Besuch, 15 Prozent, zwei Bring-a-Friend-Tickets im Jahr |
 
-Der Silver Pass kostet so viel wie ein einziges Good Any Day Ticket für 2027, mit Ess- und Getränkeplan 159 statt 243 Dollar. Für ein letztes Jahr nur in Santa Clara reicht er. Gold lohnt sich, wenn du auch nach [Six Flags Discovery Kingdom](ref:six-flags-discovery-kingdom) in Vallejo oder zu [Knott's Berry Farm](ref:knotts-berry-farm) fährst. Wer Gold oder Prestige bis zum 30. November kauft, bekommt ein Bring-a-Friend-Ticket dazu, das bis zum 31. Mai 2027 eingelöst sein muss.
+Mit 65 Dollar kostet der Silver Pass so viel wie ein einziges Good Any Day Ticket für 2027. Als Paket mit dem Ess- und Getränkeplan für die ganze Saison kostet er 159 Dollar statt regulär 243. Für ein letztes Jahr nur in Santa Clara reicht er. Gold lohnt sich, wenn du auch nach [Six Flags Discovery Kingdom](ref:six-flags-discovery-kingdom) in Vallejo oder zu [Knott's Berry Farm](ref:knotts-berry-farm) fährst. Wer Gold oder Prestige bis zum 30. November kauft, bekommt ein Bring-a-Friend-Ticket dazu, das bis zum 31. Mai 2027 eingelöst sein muss.
 
 Für Gold und Prestige wirbt Six Flags mit „Visit All of 2026 & 2027“. Für den Rest von 2026 gilt das nur in den anderen Parks. In Discovery Kingdom läuft an ausgewählten Tagen vom 27. November bis zum 3. Januar das WinterFest. Die Herbst- und Winterevents dort sind laut Six-Flags-Sprecher Cyle Perez gegenüber KTVU im Gold Pass von Great America enthalten.
 
-Zurück gibt es kein Geld. Tageskarten und Saisonpässe sind nicht erstattbar und nicht umtauschbar, auch nicht bei schlechtem Wetter. Wer schon einen Pass für 2027 hat, kann ihn trotz der Schließung zu seinen Bedingungen nutzen, und die Ess- und Getränkepläne soll es auch 2027 geben. Fast Lane kostet für einen Tag ab 79 Dollar, als All Season Fast Lane 999 Dollar, für eine Saison, auf die keine mehr folgt.
+Tageskarten und Saisonpässe sind nicht erstattbar und nicht umtauschbar, auch nicht bei schlechtem Wetter. Wer schon einen Pass für 2027 hat, kann ihn trotz der Schließung zu seinen Bedingungen nutzen, und die Ess- und Getränkepläne soll es auch 2027 geben. Fast Lane kostet für einen Tag ab 79 Dollar, die All Season Fast Lane 999 Dollar.
 
 ## Bahnen und Wasserpark in der letzten Saison
 
-Six Flags will 2027 wegen der Schließung nichts streichen, alle Attraktionen sollen bis zum Saisonende laufen. South Bay Shores öffnet nach seinem üblichen Saisonplan. Der Wasserpark ist im Eintritt enthalten, ein Ticket braucht jeder ab drei Jahren.
+Alle Attraktionen sollen bis zum Saisonende laufen, gestrichen wird wegen der Schließung nichts. South Bay Shores öffnet nach seinem üblichen Saisonplan. Der Wasserpark ist im Eintritt enthalten, ein Ticket braucht jeder ab drei Jahren.
 
 ## Die Achterbahnen für eine letzte Fahrt
 
@@ -83,11 +83,11 @@ Six Flags will 2027 wegen der Schließung nichts streichen, alle Attraktionen so
 
 Neun Achterbahnen hat der Park. Außer den fünf in der Tabelle sind das Woodstock Express, Lucy's Crabbie Cabbies, Psycho Mouse und die Holzachterbahn [Grizzly](ref:great-america/grizzly?bare) von 1986, 28 Meter hoch, 991 Meter lang und bis zu 89 km/h schnell.
 
-RailBlazer ist ein Prototyp, bei dem die Wagen auf einer einzigen Schiene fahren. Acht Fahrgäste sitzen hintereinander, es geht senkrecht hinunter und dreimal über Kopf. Für ihre 974 Meter Holzstrecke braucht Gold Striker zweieinhalb Minuten. Auf Patriot fuhr man ab 1991 im Stehen, damals hieß die Bahn Vortex, seit 2017 sitzt man in Zügen ohne Boden.
+RailBlazer ist ein Prototyp, bei dem die Wagen auf einer einzigen Schiene fahren. Acht Fahrgäste sitzen hintereinander, es geht senkrecht hinunter und dreimal über Kopf. Eine Fahrt auf der Holzstrecke von Gold Striker dauert zweieinhalb Minuten. Auf Patriot fuhr man anfangs im Stehen, seit 2017 sitzt man in Zügen ohne Boden.
 
 Demon gehört zu den ersten Bahnen des Parks und eröffnete im Mai 1976, damals unter dem Namen Turn of the Century. 1980 bekam die Bahn zwei Loopings und einen Namen, der besser zu ihnen passt. Heute dreht sie dich viermal über Kopf.
 
-Neben den Achterbahnen steht seit 1996 der 69 Meter hohe [Drop Tower](ref:great-america/drop-tower) von Intamin. Der Aufstieg dauert 35 Sekunden, der Fall 3,5 Sekunden, bei bis zu 97 km/h. 2007 wurde aus Drop Zone: Stunt Tower der Drop Tower und aus Top Gun Flight Deck. Das Carousel Columbia, ein Doppelstock-Karussell von Chance Rides mit mehr als 100 Pferden, dreht sich seit 1976 und ist 31 Meter hoch.
+Neben den Achterbahnen steht seit 1996 der 69 Meter hohe [Drop Tower](ref:great-america/drop-tower) von Intamin. Der Aufstieg dauert 35 Sekunden, der Fall 3,5 Sekunden, bei bis zu 97 km/h. Als der Park 2007 den Namen Paramount ablegte, wurde aus Drop Zone: Stunt Tower der Drop Tower und aus Top Gun Flight Deck. Das Carousel Columbia, ein Doppelstock-Karussell von Chance Rides mit mehr als 100 Pferden, dreht sich seit 1976 und ist 31 Meter hoch.
 
 ## Wo man am längsten ansteht
 
@@ -109,7 +109,7 @@ Der Park steht auf fremdem Grund. 2019 hatte Cedar Fair, damals Betreiber, das G
 
 Die Marriott Corporation eröffnete den Park am 20. März 1976 als Marriott's Great America. 1985 kaufte die Stadt Santa Clara ihn für 93,5 Millionen Dollar, betrieben hat ihn für sie Kings Entertainment. 1989 kaufte Kings der Stadt Fahrgeschäfte und Gebäude ab, das Land behielt die Stadt. Paramount Communications übernahm Kings Entertainment 1992, von 1993 bis 2006 hieß der Park Paramount's Great America.
 
-Im Mai 2006 kündigte Cedar Fair an, die Paramount-Parks zu übernehmen, 2007 hieß der Park nur Great America, seit 2008 California's Great America. 2011 schloss Cedar Fair mit den 49ers eine Vereinbarung über den Parkplatz und den Bau des Stadions. Am 1. Juli 2024 fusionierten Cedar Fair und Six Flags, seitdem betreibt die Six Flags Entertainment Corporation den Park.
+Im Mai 2006 kündigte Cedar Fair an, die Paramount-Parks zu übernehmen, 2007 hieß der Park nur Great America, seit 2008 California's Great America. Für den Bau des Levi's Stadium nebenan einigte sich Cedar Fair 2011 mit den 49ers, auch über den Parkplatz. Am 1. Juli 2024 fusionierten Cedar Fair und Six Flags, seitdem betreibt die Six Flags Entertainment Corporation den Park.
 
 ## Was aus Bahnen und Gelände wird
 

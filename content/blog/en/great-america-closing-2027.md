@@ -47,13 +47,13 @@ seo:
 
 ## When the park opens in 2027
 
-Six Flags is calling the last year the "Farewell Season". The company will announce the March opening day, the 2027 hours and the farewell programme later.
+At Six Flags the last year goes by "Farewell Season". The company will announce the March opening day, the 2027 hours and the farewell programme later.
 
 Right now the park is closed. Six Flags had stretched the 2026 season, its fiftieth, to 1 November. If the news has you reaching for the car keys, you can put them back until March. There's no WinterFest in Santa Clara this winter. Groups, company outings and school trips can still book for 2027, up to Labor Day.
 
 ## Passes, tickets and refunds
 
-Six Flags sells three season passes for 2027, all prices plus tax.
+There are three season passes for 2027, and every price below is before tax.
 
 | Pass     | Price                                 | Valid at                                               | Includes                                                                                                   |
 | -------- | ------------------------------------- | ------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------- |
@@ -61,15 +61,15 @@ Six Flags sells three season passes for 2027, all prices plus tax.
 | Gold     | $89, renewal $79                      | every Six Flags park in California, Arizona and Mexico | general parking, 10 percent off food and merchandise, a cheaper ticket for someone coming along            |
 | Prestige | $169, renewal $159                    | every Six Flags park                                   | preferred parking, a fountain soft drink on every visit, 15 percent off, two Bring-a-Friend tickets a year |
 
-The Silver Pass costs the same as a single 2027 Good Any Day ticket, and $159 instead of $243 with the dining plan. For one last year in Santa Clara alone, it's all you need. Gold pays off if you're also heading to [Six Flags Discovery Kingdom](ref:six-flags-discovery-kingdom) in Vallejo or [Knott's Berry Farm](ref:knotts-berry-farm). Buy Gold or Prestige by 30 November and you get an extra Bring-a-Friend ticket, to be used by 31 May 2027.
+At $65, the Silver Pass costs the same as a single 2027 Good Any Day ticket. Bundled with the all-season dining and drink plan it's $159 instead of the regular $243. For one last year in Santa Clara alone, it's all you need. Gold pays off if you're also heading to [Six Flags Discovery Kingdom](ref:six-flags-discovery-kingdom) in Vallejo or [Knott's Berry Farm](ref:knotts-berry-farm). Buy Gold or Prestige by 30 November and you get an extra Bring-a-Friend ticket, to be used by 31 May 2027.
 
 Six Flags advertises Gold and Prestige with "Visit All of 2026 & 2027". For what's left of 2026, that only applies at the other parks. Discovery Kingdom runs WinterFest on selected days from 27 November to 3 January, and Six Flags spokesperson Cyle Perez told KTVU that its fall and winter events are included in the Great America Gold Pass.
 
-There's no money back. Day tickets and season passes can't be refunded or exchanged, bad weather included. If you already have a 2027 pass, you can still use it on its terms despite the closure, and the dining plans are meant to carry on in 2027. Fast Lane starts at $79 for a day, and the All Season Fast Lane is $999, for a season with no season after it.
+Day tickets and season passes can't be refunded or exchanged, bad weather included. If you already have a 2027 pass, you can still use it on its terms despite the closure, and the dining plans are meant to carry on in 2027. Fast Lane starts at $79 for a day, and the All Season Fast Lane is $999.
 
 ## Rides and the water park in the final season
 
-Six Flags doesn't plan to cut anything in 2027 because of the closure, and every attraction is meant to run until the season ends. South Bay Shores opens on its usual seasonal schedule. The water park is included in admission, and everyone aged three and over needs a ticket.
+Every attraction is meant to run until the season ends, with nothing cut because of the closure. South Bay Shores opens on its usual seasonal schedule. The water park is included in admission, and everyone aged three and over needs a ticket.
 
 ## The coasters for one last ride
 
@@ -83,11 +83,11 @@ Six Flags doesn't plan to cut anything in 2027 because of the closure, and every
 
 The park has nine roller coasters. Besides the five in the table, there are Woodstock Express, Lucy's Crabbie Cabbies, Psycho Mouse and [Grizzly](ref:great-america/grizzly?bare), a wooden coaster from 1986 that's 28 metres tall, 991 metres long and reaches 89 km/h.
 
-RailBlazer is a prototype whose cars run on a single rail. Eight riders sit one behind the other, there's a vertical drop and the train goes upside down three times. Gold Striker takes two and a half minutes to cover its 974 metres of wooden track. Patriot opened in 1991 as Vortex, a stand-up coaster, and since 2017 riders have sat in floorless trains.
+RailBlazer is a prototype whose cars run on a single rail. Eight riders sit one behind the other, there's a vertical drop and the train goes upside down three times. A ride on Gold Striker's wooden track takes two and a half minutes. Patriot started out as a stand-up coaster, and since 2017 riders have sat in floorless trains.
 
 Demon is one of the park's original rides. It opened in May 1976 as Turn of the Century, and in 1980 it got two loops and a name that suits them better. These days it turns you upside down four times.
 
-Next to the coasters stands the 69-metre [Drop Tower](ref:great-america/drop-tower) by Intamin, open since 1996. The climb takes 35 seconds and the fall 3.5, at up to 97 km/h. In 2007 Drop Zone: Stunt Tower became the Drop Tower, and Top Gun became Flight Deck. Carousel Columbia, a double-decker carousel by Chance Rides with more than 100 horses, has been turning since 1976 and stands 31 metres tall.
+Next to the coasters stands the 69-metre [Drop Tower](ref:great-america/drop-tower) by Intamin, open since 1996. The climb takes 35 seconds and the fall 3.5, at up to 97 km/h. When the park dropped the Paramount name in 2007, Drop Zone: Stunt Tower became the Drop Tower and Top Gun became Flight Deck. Carousel Columbia, a double-decker carousel by Chance Rides with more than 100 horses, has been turning since 1976 and stands 31 metres tall.
 
 ## Where the queues are longest
 
@@ -109,7 +109,7 @@ The park sits on land it doesn't own. In 2019 Cedar Fair, the operator at the ti
 
 The Marriott Corporation opened the park on 20 March 1976 as Marriott's Great America. In 1985 the City of Santa Clara bought it for $93.5 million, with Kings Entertainment running it on the city's behalf. In 1989 Kings bought the rides and buildings from the city, which kept the land. Paramount Communications took over Kings Entertainment in 1992, and from 1993 to 2006 the park was Paramount's Great America.
 
-In May 2006 Cedar Fair announced it would buy the Paramount parks. In 2007 the park was just Great America, and since 2008 it's been California's Great America. In 2011 Cedar Fair reached an agreement with the 49ers on the parking lot and the construction of the stadium. Cedar Fair and Six Flags merged on 1 July 2024, and the Six Flags Entertainment Corporation has run the park since.
+In May 2006 Cedar Fair announced it would buy the Paramount parks. In 2007 the park was just Great America, and since 2008 it's been California's Great America. To make way for Levi's Stadium next door, Cedar Fair agreed terms with the 49ers in 2011, the parking lot included. Cedar Fair and Six Flags merged on 1 July 2024, and the Six Flags Entertainment Corporation has run the park since.
 
 ## What happens to the rides and the site
 
