@@ -47,27 +47,31 @@ seo:
 
 ## Cuándo abre el parque en 2027
 
-Six Flags llama a este último año «Farewell Season». Todavía no se sabe qué día de marzo arranca. Los días de apertura y los horarios de 2027 se publicarán más adelante, y el programa de despedida tampoco está decidido.
+Six Flags llama a este último año «Farewell Season». El día de apertura en marzo, los horarios de 2027 y el programa de despedida los anunciará más adelante.
 
 Ahora mismo el parque está cerrado. Six Flags había alargado la temporada 2026, la número cincuenta, hasta el 1 de noviembre. Si al leer la noticia ya has cogido las llaves del coche, puedes dejarlas en el cajón hasta marzo. Este invierno no hay WinterFest en Santa Clara. Grupos, celebraciones de empresa y excursiones escolares se pueden reservar para 2027 hasta el Labor Day.
 
 ## Pases, entradas y reembolsos
 
-El Gold Pass 2027 cuesta 89 $ y la renovación 79 $, más impuestos en ambos casos. Vale en todos los parques Six Flags de California, Arizona y México, así que también en [Six Flags Discovery Kingdom](ref:six-flags-discovery-kingdom), en Vallejo, y en [Knott's Berry Farm](ref:knotts-berry-farm). Incluye el General Parking, un 10 % de descuento en comida y recuerdos y una entrada más barata para un acompañante. El Prestige Pass, de 169 $ (renovación a 159 $), vale en todos los parques Six Flags y añade Preferred Parking, un refresco de grifo en cada visita, un 15 % de descuento y dos entradas Bring-a-Friend al año. Quien compre uno de los dos antes del 30 de noviembre recibe una entrada Bring-a-Friend extra, que hay que usar a más tardar el 31 de mayo de 2027.
+Para 2027, Six Flags vende tres pases de temporada. A todos los precios hay que sumarles los impuestos:
 
-Más barato que el Gold y el Prestige sale el Silver Pass, que hasta el 30 de noviembre se vende por Black Friday a 65 $, lo mismo que una entrada Good Any Day de 2027. Solo vale en Great America y en el parque acuático South Bay Shores, pero con visitas ilimitadas y aparcamiento. Con plan de comida y bebida cuesta 159 $ en lugar de 243 $.
+| Pase     | Precio                                       | Dónde vale                                                  | Qué incluye                                                                                   |
+| -------- | -------------------------------------------- | ----------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| Silver   | 65 $ (Black Friday hasta el 30 de noviembre) | Great America y South Bay Shores                            | Aparcamiento                                                                                  |
+| Gold     | 89 $, renovación 79 $                        | Todos los parques Six Flags de California, Arizona y México | General Parking, 10 % en comida y recuerdos, entrada más barata para un acompañante           |
+| Prestige | 169 $, renovación 159 $                      | Todos los parques Six Flags                                 | Preferred Parking, refresco de grifo en cada visita, 15 %, dos entradas Bring-a-Friend al año |
 
-Para el Gold y el Prestige, Six Flags usa el lema «Visit All of 2026 & 2027». Lo que queda de 2026 solo se aprovecha en los otros parques. En Discovery Kingdom hay WinterFest en días concretos del 27 de noviembre al 3 de enero. Según contó a KTVU Cyle Perez, portavoz de Six Flags, los eventos de otoño e invierno de ese parque entran en el Gold Pass de Great America.
+El Silver Pass cuesta lo mismo que una sola entrada Good Any Day de 2027, y con plan de comida y bebida, 159 $ en lugar de 243 $. Para un último año solo en Santa Clara, basta con él. El Gold compensa si también vas a [Six Flags Discovery Kingdom](ref:six-flags-discovery-kingdom), en Vallejo, o a [Knott's Berry Farm](ref:knotts-berry-farm). Quien compre el Gold o el Prestige hasta el 30 de noviembre recibe una entrada Bring-a-Friend extra, que hay que usar a más tardar el 31 de mayo de 2027.
 
-No se devuelve dinero. Las entradas de un día y los pases de temporada no son reembolsables ni se pueden cambiar, tampoco si hace mal tiempo. El parque seguirá aceptando los pases válidos según sus condiciones, y los planes de comida y bebida seguirán existiendo en 2027. Fast Lane cuesta desde 79 $ por un día, y la All Season Fast Lane, 999 $ por una temporada que ya no tendrá siguiente.
+Para el Gold y el Prestige, Six Flags usa el lema «Visit All of 2026 & 2027». Lo que queda de 2026 solo se aprovecha en los otros parques. En Discovery Kingdom hay WinterFest en días concretos del 27 de noviembre al 3 de enero. Cyle Perez, portavoz de Six Flags, contó a KTVU que los eventos de otoño e invierno de ese parque entran en el Gold Pass de Great America.
+
+No se devuelve dinero. Las entradas de un día y los pases de temporada no son reembolsables ni se pueden cambiar, tampoco si hace mal tiempo. Quien ya tenga un pase para 2027 podrá usarlo en sus condiciones a pesar del cierre, y los planes de comida y bebida seguirán existiendo en 2027. Fast Lane cuesta desde 79 $ por un día, y la All Season Fast Lane, 999 $ por una temporada que ya no tendrá siguiente.
 
 ## Atracciones y parque acuático en la última temporada
 
-Six Flags no piensa recortar nada en 2027 por el cierre. Las atracciones funcionarán toda la temporada, salvo paradas por mantenimiento, por el tiempo o por otros motivos de operación. South Bay Shores abrirá según su calendario habitual. El parque acuático va incluido en la entrada, y la necesita todo el que tenga tres años o más.
+Six Flags no piensa recortar nada en 2027 por el cierre, y todas las atracciones deberían funcionar hasta el final de la temporada. South Bay Shores abrirá según su calendario habitual. El parque acuático va incluido en la entrada, y la necesita todo el que tenga tres años o más.
 
 ## Las montañas rusas para un último viaje
-
-De las nueve montañas rusas del parque, cinco están en la tabla.
 
 | Atracción                                           | Fabricante, tipo                       | Apertura | Altura | Longitud | Velocidad | Estatura        |
 | --------------------------------------------------- | -------------------------------------- | -------- | ------ | -------- | --------- | --------------- |
@@ -77,13 +81,13 @@ De las nueve montañas rusas del parque, cinco están en la tabla.
 | [Patriot](ref:great-america/patriot?bare)           | Bolliger & Mabillard, floorless        | 1991     | 28 m   | 585 m    | 72 km/h   | de 137 a 198 cm |
 | [Demon](ref:great-america/demon?bare)               | Arrow Dynamics, montaña rusa con loops | 1976     | 31 m   | 649 m    | 80 km/h   | desde 122 cm    |
 
-Las otras cuatro son Woodstock Express, Lucy's Crabbie Cabbies, Psycho Mouse y [Grizzly](ref:great-america/grizzly?bare), una montaña rusa de madera de 1986 con 28 metros de altura, 991 metros de recorrido y hasta 89 km/h.
+El parque tiene nueve montañas rusas. Además de las cinco de la tabla, son Woodstock Express, Lucy's Crabbie Cabbies, Psycho Mouse y [Grizzly](ref:great-america/grizzly?bare), una montaña rusa de madera de 1986 con 28 metros de altura, 991 metros de recorrido y hasta 89 km/h.
 
-RailBlazer es un prototipo cuyos vagones circulan sobre un solo raíl. Ocho pasajeros van sentados uno detrás de otro, con una caída vertical y tres inversiones. Un viaje en Gold Striker dura dos minutos y medio. En Flight Deck los trenes cuelgan bajo la vía; hasta 2007 se llamaba Top Gun. En Patriot se viajaba de pie desde 1991, cuando aún se llamaba Vortex, y desde 2017 se va sentado en trenes sin suelo.
+RailBlazer es un prototipo cuyos vagones circulan sobre un solo raíl. Ocho pasajeros van sentados uno detrás de otro, con una caída vertical y tres inversiones. Gold Striker tarda dos minutos y medio en recorrer sus 974 metros de vía de madera. En Patriot se viajaba de pie desde 1991, cuando aún se llamaba Vortex, y desde 2017 se va sentado en trenes sin suelo.
 
-Demon es una de las primeras atracciones del parque. Abrió en mayo de 1976 con el nombre de Turn of the Century, y en 1980 ganó dos loops y un nombre algo menos de época. Hoy te pone cabeza abajo cuatro veces.
+Demon es una de las primeras atracciones del parque. Abrió en mayo de 1976 con el nombre de Turn of the Century, y en 1980 ganó dos loops y, con ellos, un nombre que les pega más. Hoy te pone cabeza abajo cuatro veces.
 
-Además de las montañas rusas está, desde 1996, el [Drop Tower](ref:great-america/drop-tower) de Intamin, de 69 metros, que hasta 2007 se llamó Drop Zone: Stunt Tower. La subida dura 35 segundos y la caída 3,5, a hasta 97 km/h. El Carousel Columbia, un tiovivo de dos pisos de Chance Rides con más de 100 caballos y 31 metros de altura, gira desde 1976.
+Junto a las montañas rusas se alza desde 1996 el [Drop Tower](ref:great-america/drop-tower) de Intamin, de 69 metros. La subida dura 35 segundos y la caída 3,5, a un máximo de 97 km/h. En 2007, Drop Zone: Stunt Tower pasó a llamarse Drop Tower, y Top Gun, Flight Deck. El Carousel Columbia, un tiovivo de dos pisos de Chance Rides con más de 100 caballos y 31 metros de altura, gira desde 1976.
 
 ## Dónde más se espera
 
@@ -93,23 +97,23 @@ Además de las montañas rusas está, desde 1996, el [Drop Tower](ref:great-amer
 
 ## Cómo llegar a Santa Clara
 
-El parque está en 4701 Great America Parkway, Santa Clara, CA 95054, entre el Levi's Stadium y el Mission College. Desde San Francisco son unos 72 kilómetros hacia el sur por la US 101 hasta la salida Great America Parkway. Desde San José, unos cinco kilómetros hacia el norte por la misma US 101. El aparcamiento principal lo comparte el parque con el estadio de los San Francisco 49ers. Los servicios de VTC te dejan en 4911 Great America Parkway, justo pasada la entrada al aparcamiento.
+El parque está en 4701 Great America Parkway, Santa Clara, CA 95054, entre el Levi's Stadium y el Mission College. Desde San Francisco son unos 72 kilómetros hacia el sur por la US 101 hasta la salida Great America Parkway. Desde San José, unos cinco kilómetros hacia el norte por la misma US 101. El parque comparte el aparcamiento principal con el estadio de los San Francisco 49ers. Los servicios de VTC te dejan en 4911 Great America Parkway, justo pasada la entrada al aparcamiento.
 
 Sin coche se llega con el tren ligero y los autobuses de VTA. Los trenes de Amtrak Capitol Corridor y ACE paran en la estación Great America. Desde la estación de BART de Fremont salen los autobuses 140, 141 y 180 de VTA, y con Caltrain se hace transbordo al tren ligero de VTA en Mountain View.
 
 ## Por qué cierra el parque
 
-El parque está en un terreno ajeno. En 2019, Cedar Fair, que entonces lo gestionaba, le compró el suelo a la ciudad de Santa Clara. En 2022 vendió las 45 hectáreas a Prologis por 310 millones de dólares y se quedó como arrendatario. Desde entonces, Cedar Fair pagaba alquiler por un terreno que había sido suyo durante tres años. El contrato podía ampliarse cinco años más allá de junio de 2028, pero Six Flags no usará esa opción. Según KQED, Six Flags no ha dado ningún motivo.
+El parque está en un terreno ajeno. En 2019, Cedar Fair, que entonces lo gestionaba, le compró el suelo a la ciudad de Santa Clara. En 2022 vendió las 45 hectáreas a Prologis por 310 millones de dólares y se quedó como arrendatario. El contrato podía ampliarse cinco años más allá de junio de 2028, pero Six Flags no usará esa opción. Según KQED, Six Flags no ha dado ningún motivo.
 
 ## Cincuenta años en Santa Clara
 
-Marriott Corporation abrió el parque el 20 de marzo de 1976 como Marriott's Great America. En 1985 lo compró la ciudad de Santa Clara por 93,5 millones de dólares, y Kings Entertainment se encargó de gestionarlo. Un año después llegó Grizzly. En 1989, Kings le compró a la ciudad las atracciones y los edificios, y la ciudad se quedó con el terreno. Paramount Communications se hizo con Kings Entertainment en 1992, y de 1993 a 2006 el parque se llamó Paramount's Great America.
+Marriott Corporation abrió el parque el 20 de marzo de 1976 como Marriott's Great America. En 1985 lo compró la ciudad de Santa Clara por 93,5 millones de dólares, y Kings Entertainment lo gestionó para ella. En 1989, Kings le compró a la ciudad las atracciones y los edificios, y la ciudad se quedó con el terreno. Paramount Communications se hizo con Kings Entertainment en 1992, y de 1993 a 2006 el parque se llamó Paramount's Great America.
 
 En mayo de 2006, Cedar Fair anunció la compra de los parques de Paramount. En 2007 el parque se llamó solo Great America y desde 2008 California's Great America. En 2011, Cedar Fair firmó con los 49ers un acuerdo sobre el aparcamiento y la construcción del estadio. El 1 de julio de 2024 se fusionaron Cedar Fair y Six Flags, y desde entonces gestiona el parque Six Flags Entertainment Corporation.
 
 ## Qué pasará con las atracciones y el terreno
 
-Six Flags no ha anunciado todavía qué hará con las montañas rusas y las demás atracciones, ni si alguna se trasladará a otro parque. Prologis tampoco ha hecho públicos sus planes para el terreno. KQED menciona como posibilidades logística, centros de datos y producción industrial. Karen Hardy, concejala y alcaldesa electa, ha preguntado a Prologis si el parque acuático y el Carousel Columbia pueden conservarse. No se sabe si será así.
+Six Flags no ha anunciado todavía qué hará con las montañas rusas y las demás atracciones, ni si alguna se trasladará a otro parque. Prologis, por su parte, tampoco ha hecho públicos sus planes para el terreno. KQED menciona como posibilidades logística, centros de datos y producción industrial. Karen Hardy, concejala y alcaldesa electa, ha preguntado a Prologis si el parque acuático y el Carousel Columbia pueden conservarse.
 
 [California's Great America](ref:great-america?full)
 
