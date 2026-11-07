@@ -7,7 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Busch Gardens Tampa Bay eröffnet am 13. November Christmas Town. Neu ist in diesem Jahr die Drohnenshow Lights of Wonder über dem Park. Das Weihnachtsevent läuft bis zum 4. Januar 2027 und ist im normalen Eintritt enthalten.
+  Busch Gardens Tampa Bay eröffnet am 13. November Christmas Town, in diesem Jahr mit der neuen Drohnenshow Lights of Wonder über dem Park. Das Weihnachtsevent läuft bis zum 4. Januar 2027 und ist im normalen Eintritt enthalten.
 tags:
   - news
   - busch-gardens-tampa
@@ -36,17 +36,17 @@ seo:
     - Tampa Weihnachten 2026
 ---
 
-Am Freitag, dem 13. November, beginnt in [Busch Gardens Tampa Bay](ref:busch-gardens-tampa) in Florida Christmas Town, in diesem Jahr mit einer neuen Drohnenshow. Neu ist auch die Akrobatikshow A Very Merry Cirque. Das Weihnachtsevent läuft bis zum 4. Januar 2027, aber nicht täglich, und an den Eventtagen von der Öffnung bis zum Parkschluss. Es ist im normalen Eintritt enthalten.
+Am Freitag, dem 13. November, beginnt in [Busch Gardens Tampa Bay](ref:busch-gardens-tampa) in Florida Christmas Town, in diesem Jahr mit einer neuen Drohnenshow. Dazu kommt die Akrobatikshow A Very Merry Cirque. Das Weihnachtsevent läuft bis zum 4. Januar 2027, aber nicht täglich, und an den Eventtagen von der Öffnung bis zum Parkschluss. Es ist im normalen Eintritt enthalten.
 
 ## Neu in diesem Jahr
 
-Lights of Wonder heißt die Drohnenshow. Die Drohnen fliegen zu klassischen Weihnachtsliedern über dem Festival Field, den Eingang zur Wiese findest du in der Nähe der Pass Member Landing. Präsentiert wird die Show von GEICO, sie läuft an einem Teil der Eventtage bis zum 31. Dezember. An Silvester zeigt der Park ein neues Feuerwerk, am besten zu sehen ebenfalls vom Festival Field.
+Lights of Wonder heißt die Drohnenshow. Die Drohnen fliegen zu klassischen Weihnachtsliedern über dem Festival Field, den Eingang zur Wiese findest du in der Nähe der Pass Member Landing. Sie läuft bis zum 31. Dezember, aber nicht an jedem Eventtag. Sponsor ist GEICO. An Silvester zeigt der Park ein neues Feuerwerk, am besten zu sehen ebenfalls vom Festival Field.
 
-A Very Merry Cirque spielt an einzelnen Eventtagen zwischen November und Januar, auf einer Bühne, die Busch Gardens noch nicht genannt hat. Neu ist außerdem der Christmas Town Market zum Einkaufen.
+A Very Merry Cirque spielt an einzelnen Eventtagen zwischen November und Januar, auf einer Bühne, die Busch Gardens noch nicht genannt hat. Zum Einkaufen gibt es den Christmas Town Market.
 
 ## Eventtage und Öffnungszeiten im November
 
-Im November läuft Christmas Town an 14 Tagen. Geöffnet ist an diesen Tagen ab 10 Uhr:
+Nach dem Start am 13. pausiert Christmas Town vom 16. bis 18. und am 30. November. An den übrigen 14 Novembertagen öffnet der Park um 10 Uhr und schließt zu diesen Zeiten:
 
 - Freitag, 13., und Sonntag, 15. November: bis 21 Uhr
 - Samstag, 14. November: bis 22 Uhr
@@ -55,9 +55,7 @@ Im November läuft Christmas Town an 14 Tagen. Geöffnet ist an diesen Tagen ab 
 - Freitag, 27., und Samstag, 28. November: bis 22 Uhr
 - Sonntag, 29. November: bis 21 Uhr
 
-Vom 16. bis 18. November und am 30. November gibt es kein Weihnachtsprogramm.
-
-Am Eröffnungsabend sendet der Radiosender Mix 100.7 von 17 bis 19 Uhr live von der Cheetah Hunt Plaza, mit Miguel & Holly und Brian Fink, und um 19 Uhr geht dort der Weihnachtsbaum an.
+Am Eröffnungsabend geht um 19 Uhr der Weihnachtsbaum auf der Cheetah Hunt Plaza an. Davor sendet der Lokalsender Mix 100.7 von 17 bis 19 Uhr live von dort.
 
 ```best-days-widget slug=busch-gardens-tampa
 
@@ -67,21 +65,21 @@ Am Eröffnungsabend sendet der Radiosender Mix 100.7 von 17 bis 19 Uhr live von 
 
 Christmas on Ice läuft während des ganzen Events im Moroccan Palace Theater, mit Eiskunstläufern, was im Klima von Tampa schon für sich eine kleine Leistung ist. Die Plätze gehen an die, die zuerst da sind, und wer zu spät kommt, steht bei vollem Saal schon vor Showbeginn vor verschlossener Tür.
 
-Vor dem Serengeti Overlook Restaurant bewegen sich bei der Serengeti Light Show tausende Lichter zur Musik. Im ganzen Park hängen bei der Celebration of Lights fast 70 Meilen Lichterketten, rund 113 Kilometer, dazwischen sind Stelzenläufer unterwegs. Abends fährt am [Bahnhof Nairobi](ref:busch-gardens-tampa/serengeti-express-nairobi-station) der Holly Jolly Express ab, ein Zug mit Weihnachtsliedern und Blick über die 65 Acres (gut 26 Hektar) große Savanne, auf der Giraffen, Nashörner und Zebras leben.
+Bei der Serengeti Light Show bewegen sich vor dem Serengeti Overlook Restaurant tausende Lichter zur Musik. Im ganzen Park hängen bei der Celebration of Lights fast 70 Meilen Lichterketten, rund 113 Kilometer, dazwischen sind Stelzenläufer unterwegs. Der Holly Jolly Express, ein Zug mit Weihnachtsliedern, fährt abends am [Bahnhof Nairobi](ref:busch-gardens-tampa/serengeti-express-nairobi-station) ab, mit Blick über die 65 Acres (gut 26 Hektar) große Savanne, auf der Giraffen, Nashörner und Zebras leben.
 
-Auf der Jungala Plaza tanzen an einzelnen Abenden im November und Dezember die Ginja Ninjas Breakdance, wenn das Wetter mitspielt, zur Geschichte vom verschwundenen Keksrezept von Mrs. Claus.
+Die Ginja Ninjas tanzen an einzelnen Abenden im November und Dezember auf der Jungala Plaza Breakdance, wenn das Wetter mitspielt, zur Geschichte vom verschwundenen Keksrezept von Mrs. Claus.
 
-Die Three Kings Journey am Dragon Fire Grill läuft bis zum 4. Januar. Auf der Showseite des Parks beginnt sie am 21. November, auf der Eventseite erst am 21. Dezember. Vom 4. bis zum 12. Dezember werden zwischen dem Moroccan Palace und dem Gepardengehege jeden Abend um 18 Uhr die Lichter der Menora angezündet. Am 17. Dezember hält die Coca-Cola Holiday Caravan auf dem Festival Field, mit einer Gratisprobe, solange der Vorrat reicht.
+Die Three Kings Journey am Dragon Fire Grill läuft bis zum 4. Januar. Den Start nennt der Park zweimal verschieden, auf der Showseite den 21. November und auf der Eventseite den 21. Dezember. Vom 4. bis zum 12. Dezember werden zwischen dem Moroccan Palace und dem Gepardengehege jeden Abend um 18 Uhr die Lichter der Menora angezündet. Am 17. Dezember hält die Coca-Cola Holiday Caravan auf dem Festival Field, mit einer Gratisprobe, solange der Vorrat reicht.
 
 ## Für Kinder
 
 Elmo's Christmas Wish beginnt schon vor dem Event, am 6. November, und spielt bis zum 4. Januar im Sunny Day Theater in Sesame Street Safari of Fun. An manchen Tagen gibt es bei 123 Smile Fotos mit den Figuren aus der Sesamstraße.
 
-Am Festival Walkway stehen bis Heiligabend lebensgroße Szenen aus dem Bilderbuch von Rudolph the Red-Nosed Reindeer, dort triffst du Rudolph und Bumble, und genauso lange lässt sich der Weihnachtsmann bei Santa's North Pole Experience in seinem Arbeitszimmer mit Kindern fotografieren. Mrs. Claus liest bis zum letzten Eventtag an der Canopy vor, und die Prinzessinnen Ice, Sugar Plum und Poinsettia sind so lange im Park unterwegs.
+Am Festival Walkway stehen bis Heiligabend lebensgroße Szenen aus dem Bilderbuch von Rudolph the Red-Nosed Reindeer, dort triffst du Rudolph und Bumble. Auch der Weihnachtsmann lässt sich bei Santa's North Pole Experience nur bis zum 24. Dezember in seinem Arbeitszimmer mit Kindern fotografieren. Mrs. Claus, die an der Canopy vorliest, und die Prinzessinnen Ice, Sugar Plum und Poinsettia bleiben bis zum 4. Januar.
 
 ## Was extra kostet
 
-Das Welcome Center und die Stände mit dem Weihnachtsessen öffnen an den Eventabenden um 16 Uhr. Ein Sampler-Lanyard mit 5 oder 10 Probierportionen kostet ab 45 Dollar, Passinhaber bekommen 12 Portionen zum Preis von 10. Neu ist ein Dessert-Sampler für 35 Dollar, mit einer heißen Schokolade im Souvenirbecher und vier Desserts, gültig während des ganzen Events. In der Hütte Savory Sleigh gibt es zum Beispiel Braised Short Rib, Kürbissuppe und Eggnog Bread Pudding, bei Holiday Spice ein Beef Wellington.
+Das Welcome Center und die Stände mit dem Weihnachtsessen öffnen an den Eventabenden um 16 Uhr. Ein Sampler-Lanyard mit 5 oder 10 Probierportionen kostet ab 45 Dollar, Passinhaber bekommen 12 Portionen zum Preis von 10. Für 35 Dollar gibt es in diesem Jahr auch einen Dessert-Sampler mit vier Desserts und einer heißen Schokolade im Souvenirbecher, gültig während des ganzen Events. In der Hütte Savory Sleigh gibt es zum Beispiel Braised Short Rib, Kürbissuppe und Eggnog Bread Pudding, bei Holiday Spice ein Beef Wellington.
 
 Das Rudolph & Friends Character Dine kostet 42,99 Dollar. Zwei VIP-Touren dauern je vier Stunden:
 
@@ -90,13 +88,13 @@ Das Rudolph & Friends Character Dine kostet 42,99 Dollar. Zwei VIP-Touren dauern
 
 ## Tickets und Parken
 
-Im Black-Friday-Vorverkauf kostet ein Tagesticket ab 71,99 Dollar statt regulär 150,99 Dollar, mit All-Day Dining 111,99 Dollar. Im Ultimate Bundle steckt Quick Queue ohne Begrenzung, nur nicht für [Iron Gwazi](ref:busch-gardens-tampa/iron-gwazi) und [Phoenix Rising](ref:busch-gardens-tampa/phoenix-rising-now-open). Die Fun Card 2027 kostet 89,99 Dollar und gilt bis zum 31. Dezember 2027 unbegrenzt, Sperrtage ausgenommen, und der Rest von 2026 ist kostenlos dabei. Parken kostet ab 35 Dollar plus Steuer.
+Im Black-Friday-Vorverkauf kostet ein Tagesticket ab 71,99 Dollar statt regulär 150,99 Dollar, mit All-Day Dining 111,99 Dollar. Im Ultimate Bundle steckt Quick Queue ohne Begrenzung, nur nicht für [Iron Gwazi](ref:busch-gardens-tampa/iron-gwazi) und [Phoenix Rising](ref:busch-gardens-tampa/phoenix-rising-now-open). Die Fun Card 2027 kostet 89,99 Dollar und gilt bis zum 31. Dezember 2027 unbegrenzt, Sperrtage ausgenommen, und der Rest von 2026 ist kostenlos dabei. Parken an der 10165 N McKinley Drive in Tampa kostet ab 35 Dollar plus Steuer.
 
 ```hourly-profile-widget slug=busch-gardens-tampa top=6
 
 ```
 
-Busch Gardens gehört zu SeaWorld Parks & Entertainment. Mit SeaWorld Orlando gibt es ein Zwei-Park-Ticket ab 93,99 Dollar für beide Parks, wenn beide Besuche innerhalb von sechs Monaten nach dem Kauf liegen. In SeaWorld Orlando kehrt zur [Christmas Celebration die Orca-Show Miracles zurück](/news/seaworld-orlando-christmas-celebration-2026). Busch Gardens liegt in Tampa, 10165 N McKinley Drive.
+Ein Zwei-Park-Ticket für Busch Gardens und SeaWorld Orlando kostet ab 93,99 Dollar, wenn beide Besuche innerhalb von sechs Monaten nach dem Kauf liegen. In SeaWorld Orlando kehrt zur [Christmas Celebration die Orca-Show Miracles zurück](/news/seaworld-orlando-christmas-celebration-2026).
 
 [Busch Gardens Tampa Bay](ref:busch-gardens-tampa?full)
 
