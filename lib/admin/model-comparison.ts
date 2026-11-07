@@ -1,28 +1,40 @@
 import type {
   ComparisonModel,
+  ModelCell,
+  ModelCellLive,
   ModelCellState,
   ModelCheckState,
   ModelComparisonDay,
   ModelComparisonDayOptions,
+  ModelComparisonQuestion,
   ModelComparisonReport,
 } from '@/lib/api/admin-model-comparison';
-import { getNumberFormat } from '@/lib/utils/intl-format';
+import { getDateTimeFormat, getNumberFormat } from '@/lib/utils/intl-format';
 
 /**
  * The pure half of the admin model comparison (`app/admin/ml/vergleich`): wording, column order,
  * number formatting and chart geometry, kept apart from the page so they can be tested.
  */
 
-/** How each matrix state reads: the label in the legend and detail panel, the symbol in the circle. */
-export const CELL_STATE_META: Record<ModelCellState, { label: string; symbol: string }> = {
-  today: { label: 'Zeigen wir heute', symbol: '' },
-  better: { label: 'Besser als heute', symbol: '✓' },
-  worse: { label: 'Schlechter als heute', symbol: '✕' },
-  unclear: { label: 'Kein sicherer Unterschied', symbol: '≈' },
-  pending: { label: 'Messung läuft', symbol: '…' },
+/**
+ * How each matrix state reads: the label in the detail panel, the short one in the legend and the
+ * phone chips' order, the symbol in the circle (pending and unclear are drawn, not written).
+ */
+export const CELL_STATE_META: Record<
+  ModelCellState,
+  { label: string; short: string; symbol: string }
+> = {
+  today: { label: 'Heute in der App', short: 'heute in der App', symbol: 'App' },
+  better: { label: 'Besser als heute', short: 'besser', symbol: '✓' },
+  pending: { label: 'Messung läuft noch', short: 'läuft noch', symbol: '' },
+  worse: { label: 'Schlechter als heute', short: 'schlechter', symbol: '×' },
+  unclear: { label: 'Kein sicherer Unterschied', short: 'unklar', symbol: '' },
 };
 
-/** How each check state reads beside O, L and S. */
+/** The states in the order the legend lists them and a phone row shows its chips. */
+export const CELL_STATE_ORDER = Object.keys(CELL_STATE_META) as ModelCellState[];
+
+/** How each check state reads. */
 export const CHECK_STATE_META: Record<ModelCheckState, { label: string; symbol: string }> = {
   yes: { label: 'erfüllt', symbol: '✓' },
   no: { label: 'nicht erfüllt', symbol: '✕' },
@@ -117,9 +129,13 @@ export function whiskerGeometry(
   ciLow: number,
   ciHigh: number,
   width: number,
-  pad = 8
+  pad = 8,
+  alsoFit: number[] = []
 ): { zero: number; low: number; high: number; point: number } {
-  const extent = Math.max(Math.abs(ciLow), Math.abs(ciHigh), Math.abs(diff), 1e-6) * 1.15;
+  // `alsoFit` widens the scale, so two intervals drawn one above the other share one zero and unit.
+  const extent =
+    Math.max(Math.abs(ciLow), Math.abs(ciHigh), Math.abs(diff), ...alsoFit.map(Math.abs), 1e-6) *
+    1.15;
   const half = width / 2 - pad;
   const x = (value: number) => width / 2 + (value / extent) * half;
   return {
@@ -195,56 +211,87 @@ export function chartTop(values: Array<number | null>): number {
  * Stroke and swatch classes for a model's line. The models the matrix knows keep one colour
  * everywhere; any other model takes the next free fallback in the order it appears.
  */
-const MODEL_COLORS: Record<string, { stroke: string; swatch: string }> = {
-  served: { stroke: 'stroke-sky-500 dark:stroke-sky-400', swatch: 'bg-sky-500 dark:bg-sky-400' },
+const MODEL_COLORS: Record<string, { stroke: string; fill: string; swatch: string }> = {
+  served: {
+    stroke: 'stroke-sky-500 dark:stroke-sky-400',
+    fill: 'fill-sky-500 dark:fill-sky-400',
+    swatch: 'bg-sky-500 dark:bg-sky-400',
+  },
   h5: {
     stroke: 'stroke-emerald-600 dark:stroke-emerald-400',
+    fill: 'fill-emerald-600 dark:fill-emerald-400',
     swatch: 'bg-emerald-600 dark:bg-emerald-400',
   },
   tfth5: {
     stroke: 'stroke-violet-600 dark:stroke-violet-400',
+    fill: 'fill-violet-600 dark:fill-violet-400',
     swatch: 'bg-violet-600 dark:bg-violet-400',
   },
   peak: {
     stroke: 'stroke-amber-600 dark:stroke-amber-400',
+    fill: 'fill-amber-600 dark:fill-amber-400',
     swatch: 'bg-amber-600 dark:bg-amber-400',
   },
   chronos: {
     stroke: 'stroke-rose-600 dark:stroke-rose-400',
+    fill: 'fill-rose-600 dark:fill-rose-400',
     swatch: 'bg-rose-600 dark:bg-rose-400',
   },
-  pcn: { stroke: 'stroke-cyan-600 dark:stroke-cyan-400', swatch: 'bg-cyan-600 dark:bg-cyan-400' },
+  pcn: {
+    stroke: 'stroke-cyan-600 dark:stroke-cyan-400',
+    fill: 'fill-cyan-600 dark:fill-cyan-400',
+    swatch: 'bg-cyan-600 dark:bg-cyan-400',
+  },
   tft: {
     stroke: 'stroke-indigo-600 dark:stroke-indigo-400',
+    fill: 'fill-indigo-600 dark:fill-indigo-400',
     swatch: 'bg-indigo-600 dark:bg-indigo-400',
   },
   catboost: {
     stroke: 'stroke-orange-600 dark:stroke-orange-400',
+    fill: 'fill-orange-600 dark:fill-orange-400',
     swatch: 'bg-orange-600 dark:bg-orange-400',
   },
   wkd: {
     stroke: 'stroke-stone-500 dark:stroke-stone-400',
+    fill: 'fill-stone-500 dark:fill-stone-400',
     swatch: 'bg-stone-500 dark:bg-stone-400',
   },
   persist: {
     stroke: 'stroke-slate-500 dark:stroke-slate-300',
+    fill: 'fill-slate-500 dark:fill-slate-300',
     swatch: 'bg-slate-500 dark:bg-slate-300',
   },
 };
 
 const FALLBACK_COLORS = [
-  { stroke: 'stroke-pink-600 dark:stroke-pink-400', swatch: 'bg-pink-600 dark:bg-pink-400' },
-  { stroke: 'stroke-lime-600 dark:stroke-lime-400', swatch: 'bg-lime-600 dark:bg-lime-400' },
-  { stroke: 'stroke-teal-600 dark:stroke-teal-400', swatch: 'bg-teal-600 dark:bg-teal-400' },
+  {
+    stroke: 'stroke-pink-600 dark:stroke-pink-400',
+    fill: 'fill-pink-600 dark:fill-pink-400',
+    swatch: 'bg-pink-600 dark:bg-pink-400',
+  },
+  {
+    stroke: 'stroke-lime-600 dark:stroke-lime-400',
+    fill: 'fill-lime-600 dark:fill-lime-400',
+    swatch: 'bg-lime-600 dark:bg-lime-400',
+  },
+  {
+    stroke: 'stroke-teal-600 dark:stroke-teal-400',
+    fill: 'fill-teal-600 dark:fill-teal-400',
+    swatch: 'bg-teal-600 dark:bg-teal-400',
+  },
   {
     stroke: 'stroke-fuchsia-600 dark:stroke-fuchsia-400',
+    fill: 'fill-fuchsia-600 dark:fill-fuchsia-400',
     swatch: 'bg-fuchsia-600 dark:bg-fuchsia-400',
   },
 ];
 
 /** One colour per model id for the given ids, stable for known models and distinct for the rest. */
-export function modelColors(ids: string[]): Map<string, { stroke: string; swatch: string }> {
-  const colors = new Map<string, { stroke: string; swatch: string }>();
+export function modelColors(
+  ids: string[]
+): Map<string, { stroke: string; fill: string; swatch: string }> {
+  const colors = new Map<string, { stroke: string; fill: string; swatch: string }>();
   let fallback = 0;
   for (const id of ids) {
     if (colors.has(id)) continue;
@@ -352,4 +399,277 @@ export function resolveDaySelection(
 /** A park's rides with headliners first, otherwise in the order the backend sent them. */
 export function headlinersFirst(rides: DayRide[]): DayRide[] {
   return [...rides].sort((a, b) => Number(b.isHeadliner) - Number(a.isHeadliner));
+}
+
+// The admin reads the report on German time, so "today" and "Stand … Uhr" follow Berlin.
+const REPORT_ZONE = 'Europe/Berlin';
+
+/** The report's day (`YYYY-MM-DD`, Berlin): what "overdue" and "in N Tagen" count from. */
+export function reportDay(generatedAt: string): string {
+  return getDateTimeFormat('en-CA', {
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    timeZone: REPORT_ZONE,
+  }).format(new Date(generatedAt));
+}
+
+/** The report's time of day in Berlin, `10:04`. */
+export function reportTime(generatedAt: string): string {
+  return getDateTimeFormat('de-DE', {
+    hour: '2-digit',
+    minute: '2-digit',
+    timeZone: REPORT_ZONE,
+  }).format(new Date(generatedAt));
+}
+
+/** Calendar days from `from` to `to` (`YYYY-MM-DD`), negative when `to` lies before. */
+export function daysBetween(from: string, to: string): number {
+  return Math.round((Date.parse(`${to}T12:00:00Z`) - Date.parse(`${from}T12:00:00Z`)) / 86_400_000);
+}
+
+/** A day as `07.11.`, with the year only when it differs from `today`'s. */
+export function formatShortDay(date: string, today?: string): string {
+  const [year, month, day] = date.split('-');
+  return `${day}.${month}.${today && today.slice(0, 4) !== year ? year : ''}`;
+}
+
+/** A day as `Di, 22.12.`, with the year only when it differs from `today`'s. */
+export function formatWeekdayDay(date: string, today?: string): string {
+  const weekday = getDateTimeFormat('de-DE', { weekday: 'short', timeZone: 'UTC' })
+    .format(new Date(`${date}T12:00:00Z`))
+    .replace('.', '');
+  return `${weekday}, ${formatShortDay(date, today)}`;
+}
+
+/** „in 3 Tagen“, „morgen“, „heute“, „seit 2 Tagen“ for a day count from the report's day. */
+export function formatDaysAway(days: number): string {
+  if (days === 0) return 'heute';
+  if (days === 1) return 'morgen';
+  if (days > 1) return `in ${days} Tagen`;
+  return days === -1 ? 'seit gestern' : `seit ${-days} Tagen`;
+}
+
+/**
+ * Whether a result is late: the backend's `overdue` flag, or, from a backend without it, a date
+ * before the report's day.
+ */
+export function isOverdue(
+  expectedBy: NonNullable<ModelCell['expectedBy']>,
+  today: string
+): boolean {
+  return expectedBy.overdue === true || expectedBy.date < today;
+}
+
+/**
+ * A live difference as the decision cards say it: `0,4 Min. genauer`, `2,6 Pp. ungenauer`. Two
+ * decimals below 0.1, so a small gain does not read as zero.
+ */
+export function formatGain(diff: number, metric: ModelComparisonQuestion['metric']): string {
+  const size = Math.abs(diff);
+  const unit = metric.unit === 'rate' ? 'Pp.' : 'Min.';
+  const word = diffFavoursModel(diff, metric.lowerIsBetter) ? 'genauer' : 'ungenauer';
+  return `${formatFigure(size, size < 0.1 ? 2 : 1)} ${unit} ${word}`;
+}
+
+/** One model's cell in one question, as the decision cards and the detail panel pass it on. */
+export interface CellRef {
+  question: ModelComparisonQuestion;
+  modelId: string;
+  cell: ModelCell;
+}
+
+function cellRefs(questions: ModelComparisonQuestion[]): CellRef[] {
+  return questions.flatMap((question) =>
+    Object.entries(question.cells).map(([modelId, cell]) => ({ question, modelId, cell }))
+  );
+}
+
+/**
+ * „Jetzt umstellbar“: per question, in report order, the cells that are `better`, the largest
+ * live gain first and a cell without live figures last.
+ */
+export function readyDecisions(
+  report: ModelComparisonReport
+): { question: ModelComparisonQuestion; options: CellRef[] }[] {
+  return report.questions
+    .map((question) => {
+      const gain = ({ cell }: CellRef) =>
+        cell.live
+          ? question.metric.lowerIsBetter
+            ? cell.live.diff
+            : -cell.live.diff
+          : Number.POSITIVE_INFINITY;
+      const options = cellRefs([question])
+        .filter((ref) => ref.cell.state === 'better')
+        .sort((a, b) => gain(a) - gain(b));
+      return { question, options };
+    })
+    .filter((entry) => entry.options.length > 0);
+}
+
+/**
+ * „Fast so weit“: the cells still pending although live already confirmed them, grouped by model,
+ * the model with the most such questions first and ties in column order.
+ */
+export function nearDecisions(
+  report: ModelComparisonReport
+): { modelId: string; items: CellRef[] }[] {
+  const order = matrixColumns(report).map((model) => model.id);
+  const byModel = new Map<string, CellRef[]>();
+  for (const ref of cellRefs(report.questions)) {
+    if (ref.cell.state !== 'pending' || ref.cell.checks.live !== 'yes') continue;
+    byModel.set(ref.modelId, [...(byModel.get(ref.modelId) ?? []), ref]);
+  }
+  return [...byModel.entries()]
+    .map(([modelId, items]) => ({ modelId, items }))
+    .sort(
+      (a, b) =>
+        b.items.length - a.items.length || order.indexOf(a.modelId) - order.indexOf(b.modelId)
+    );
+}
+
+/** One date in „Nächste Ergebnisse“: which questions and models expect a result then. */
+export interface ResultDate {
+  date: string;
+  /** Days from the report's day; negative for an overdue date. */
+  days: number;
+  questions: string[];
+  models: string[];
+  refs: CellRef[];
+}
+
+/**
+ * „Nächste Ergebnisse“: every cell with an `expectedBy`, one entry per date. A cell live has
+ * confirmed stays in, since its date is then the offline run it waits for. Overdue dates (oldest
+ * first) are kept apart from the coming ones (soonest first).
+ */
+export function resultDates(
+  report: ModelComparisonReport,
+  today: string
+): { overdue: ResultDate[]; upcoming: ResultDate[] } {
+  const labels = new Map(matrixColumns(report).map((model) => [model.id, model.label]));
+  const overdue = new Map<string, CellRef[]>();
+  const upcoming = new Map<string, CellRef[]>();
+  for (const ref of cellRefs(report.questions)) {
+    const expected = ref.cell.expectedBy;
+    if (!expected) continue;
+    const target = isOverdue(expected, today) ? overdue : upcoming;
+    target.set(expected.date, [...(target.get(expected.date) ?? []), ref]);
+  }
+  const entries = (byDate: Map<string, CellRef[]>): ResultDate[] =>
+    [...byDate.entries()]
+      .sort(([a], [b]) => a.localeCompare(b))
+      .map(([date, refs]) => ({
+        date,
+        days: daysBetween(today, date),
+        questions: [...new Set(refs.map((ref) => ref.question.label))],
+        models: [...new Set(refs.map((ref) => labels.get(ref.modelId) ?? ref.modelId))],
+        refs,
+      }));
+  return { overdue: entries(overdue), upcoming: entries(upcoming) };
+}
+
+/**
+ * How the matrix is cut into blocks: the live and today rows share one, since the same models
+ * answer both. A group not named here gets a block of its own after these.
+ */
+export const MATRIX_BLOCKS: { id: string; label: string; groups: string[] }[] = [
+  { id: 'live-today', label: 'Live und heute', groups: ['live', 'today'] },
+  { id: 'planner', label: 'Tagesplaner', groups: ['planner'] },
+  { id: 'calendar', label: 'Kalender', groups: ['calendar'] },
+];
+
+/** A run of neighbouring columns of one family, for the header above them. */
+export interface FamilyRun {
+  id: string;
+  label: string;
+  span: number;
+}
+
+/** One block of the matrix: its questions by group, and only the models that answer one of them. */
+export interface MatrixBlock {
+  id: string;
+  label: string;
+  sections: { id: string; label: string; questions: ModelComparisonQuestion[] }[];
+  columns: ComparisonModel[];
+  /** Empty when the report names no families. */
+  families: FamilyRun[];
+}
+
+/**
+ * The models the app shows today: the `in_app` family, or, from a backend without families, every
+ * model some question serves.
+ */
+export function inAppModelIds(report: ModelComparisonReport): Set<string> {
+  if (report.families) {
+    return new Set(report.models.filter((m) => m.family === 'in_app').map((m) => m.id));
+  }
+  return new Set(report.questions.map((question) => question.servedModel));
+}
+
+/**
+ * The matrix blocks. Columns follow the report's family order and the report's model order within
+ * a family; without families the in-app models come first, then the report's order.
+ */
+export function matrixBlocks(report: ModelComparisonReport): MatrixBlock[] {
+  const all = matrixColumns(report);
+  const inApp = inAppModelIds(report);
+  const families = report.families;
+  const rank = (model: ComparisonModel) => {
+    if (!families) return inApp.has(model.id) ? 0 : 1;
+    const index = families.findIndex((family) => family.id === model.family);
+    return index === -1 ? families.length : index;
+  };
+  const groups = groupQuestions(report);
+  const named = new Set(MATRIX_BLOCKS.flatMap((block) => block.groups));
+  const blocks = [
+    ...MATRIX_BLOCKS,
+    ...groups
+      .filter((group) => !named.has(group.id))
+      .map((group) => ({ id: group.id, label: group.label, groups: [group.id] })),
+  ];
+
+  return blocks.flatMap((block) => {
+    const sections = groups.filter((group) => block.groups.includes(group.id));
+    const questions = sections.flatMap((section) => section.questions);
+    if (questions.length === 0) return [];
+    const columns = all
+      .map((model, index) => ({ model, index }))
+      .filter(({ model }) => questions.some((question) => question.cells[model.id]))
+      .sort((a, b) => rank(a.model) - rank(b.model) || a.index - b.index)
+      .map(({ model }) => model);
+    const runs: FamilyRun[] = [];
+    if (families) {
+      for (const model of columns) {
+        const id = model.family ?? '';
+        const last = runs.at(-1);
+        if (last && last.id === id) last.span++;
+        else {
+          const label = families.find((family) => family.id === id)?.label ?? 'Weitere';
+          runs.push({ id, label, span: 1 });
+        }
+      }
+    }
+    return [{ id: block.id, label: block.label, sections, columns, families: runs }];
+  });
+}
+
+/**
+ * How far a pending cell is toward the live rule, 0 to 1: the scarcer of days and parks, full once
+ * live has confirmed it.
+ */
+export function liveProgress(cell: ModelCell, rule: ModelComparisonReport['rule']): number {
+  if (cell.checks.live === 'yes') return 1;
+  if (!cell.live) return 0;
+  return Math.max(0, Math.min(1, cell.live.days / rule.minDays, cell.live.parks / rule.minParks));
+}
+
+/**
+ * The figure beside a progress bar: `5 von 14`, or, while measurements exist but the longest lead
+ * has none yet (so days and parks read 0), that sentence instead of a misleading zero.
+ */
+export function progressLabel(have: number, need: number, live: ModelCellLive): string {
+  if (have === 0 && live.n > 0) return 'längste Vorlaufzeit noch ohne Daten';
+  return `${getNumberFormat('de-DE').format(have)} von ${need}`;
 }

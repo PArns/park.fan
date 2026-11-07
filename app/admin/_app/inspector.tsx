@@ -1,6 +1,15 @@
 'use client';
 
-import { createContext, useCallback, useContext, useMemo, useState, type ReactNode } from 'react';
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  type ReactNode,
+} from 'react';
 import { PanelRightClose, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
@@ -19,16 +28,19 @@ export interface InspectorContent {
 interface InspectorContextValue {
   content: InspectorContent | null;
   open: boolean;
-  show: (content: InspectorContent) => void;
+  /** `trigger` gets the focus back on close; Safari does not focus a clicked button by itself. */
+  show: (content: InspectorContent, trigger?: HTMLElement | null) => void;
   close: () => void;
   toggle: () => void;
+  /** Drops the content, for a page that leaves, so the topbar toggle goes with it. */
+  clear: () => void;
 }
 
 const InspectorContext = createContext<InspectorContextValue | null>(null);
 
 /**
- * Returns the inspector slot: its current content and open state, plus `show`, `close` and
- * `toggle`. Throws outside `<InspectorProvider>`.
+ * Returns the inspector slot: its current content and open state, plus `show`, `close`,
+ * `toggle` and `clear`. Throws outside `<InspectorProvider>`.
  */
 export function useInspector(): InspectorContextValue {
   const context = useContext(InspectorContext);
@@ -40,10 +52,23 @@ export function useInspector(): InspectorContextValue {
 export function InspectorProvider({ children }: { children: ReactNode }) {
   const [content, setContent] = useState<InspectorContent | null>(null);
   const [open, setOpen] = useState(false);
+  const returnFocus = useRef<HTMLElement | null>(null);
 
-  const show = useCallback((next: InspectorContent) => {
+  const show = useCallback((next: InspectorContent, trigger?: HTMLElement | null) => {
+    returnFocus.current =
+      trigger ?? (document.activeElement instanceof HTMLElement ? document.activeElement : null);
     setContent(next);
     setOpen(true);
+  }, []);
+
+  const close = useCallback(() => {
+    setOpen(false);
+    returnFocus.current?.focus();
+  }, []);
+
+  const clear = useCallback(() => {
+    setOpen(false);
+    setContent(null);
   }, []);
 
   const value = useMemo<InspectorContextValue>(
@@ -51,10 +76,11 @@ export function InspectorProvider({ children }: { children: ReactNode }) {
       content,
       open,
       show,
-      close: () => setOpen(false),
+      close,
       toggle: () => setOpen((current) => !current),
+      clear,
     }),
-    [content, open, show]
+    [content, open, show, close, clear]
   );
 
   return <InspectorContext.Provider value={value}>{children}</InspectorContext.Provider>;
@@ -62,10 +88,15 @@ export function InspectorProvider({ children }: { children: ReactNode }) {
 
 /**
  * Right-hand inspector column showing what a page pushed with `show()`: docked beside the page
- * from `xl`, a sheet with a scrim below it. Renders nothing while closed or empty.
+ * from `xl`, a sheet with a scrim below it. Renders nothing while closed or empty. New content takes
+ * the focus, and Escape inside the panel closes it.
  */
 export function InspectorPanel() {
   const { content, open, close } = useInspector();
+  const closeButton = useRef<HTMLButtonElement>(null);
+  useEffect(() => {
+    if (open && content) closeButton.current?.focus();
+  }, [open, content]);
   if (!content || !open) return null;
 
   return (
@@ -80,6 +111,10 @@ export function InspectorPanel() {
         className="fixed inset-0 z-30 bg-black/40 backdrop-blur-[2px] xl:hidden"
       />
       <aside
+        aria-label={content.title}
+        onKeyDown={(event) => {
+          if (event.key === 'Escape') close();
+        }}
         className={cn(
           'border-border/60 bg-card/95 fixed inset-y-0 right-0 z-40 flex w-[min(24rem,100vw)] flex-col border-l backdrop-blur-md',
           'xl:bg-card/40 xl:sticky xl:top-0 xl:z-auto xl:h-[100dvh] xl:w-80 xl:shrink-0'
@@ -93,6 +128,7 @@ export function InspectorPanel() {
             )}
           </div>
           <button
+            ref={closeButton}
             type="button"
             onClick={close}
             aria-label="Schließen"
