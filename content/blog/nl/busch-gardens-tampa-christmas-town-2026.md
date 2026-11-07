@@ -7,7 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Busch Gardens Tampa Bay opent op 13 november Christmas Town, en nieuw is dit jaar de droneshow Lights of Wonder boven het park. Het kerstevenement loopt tot 4 januari 2027 en kost niets extra.
+  Busch Gardens Tampa Bay opent op 13 november Christmas Town. Nieuw is dit jaar de droneshow Lights of Wonder boven het park. Het kerstevenement loopt tot 4 januari 2027 en zit gewoon in de entree.
 tags:
   - nieuws
   - busch-gardens-tampa
@@ -36,13 +36,13 @@ seo:
     - Tampa kerst 2026
 ---
 
-Op vrijdag 13 november gaat in [Busch Gardens Tampa Bay](ref:busch-gardens-tampa) in Florida Christmas Town open, dit jaar met een nieuwe droneshow. Ook de acrobatiekshow A Very Merry Cirque is nieuw. Het kerstevenement loopt op bepaalde dagen tot 4 januari 2027, telkens van de opening tot sluitingstijd, en zit gewoon in de entree.
+Op vrijdag 13 november gaat in [Busch Gardens Tampa Bay](ref:busch-gardens-tampa) in Florida Christmas Town open, dit jaar met een nieuwe droneshow. Ook de acrobatiekshow A Very Merry Cirque is nieuw. Het kerstevenement loopt tot 4 januari 2027, maar niet elke dag, en op de evenementdagen van de opening tot sluitingstijd. Het zit gewoon in de entree.
 
-## Twee nieuwe shows
+## Nieuw dit jaar
 
-De droneshow heet Lights of Wonder. Op klassieke kerstliedjes vliegen de drones boven het Festival Field; de ingang van dat grasveld ligt bij de Pass Member Landing. GEICO presenteert de show, die op bepaalde dagen van 13 november tot 31 december te zien is. Op oudejaarsavond steekt het park bovendien een nieuw vuurwerk af, en ook dat bekijk je het best vanaf het Festival Field.
+De droneshow heet Lights of Wonder. Op klassieke kerstliedjes vliegen de drones boven het Festival Field, en de ingang van dat grasveld ligt bij de Pass Member Landing. GEICO presenteert de show, die tot 31 december op een deel van de evenementdagen te zien is. Op oudejaarsavond steekt het park een nieuw vuurwerk af, dat je ook het best vanaf het Festival Field ziet.
 
-A Very Merry Cirque is een acrobatiekshow die op bepaalde dagen van november tot januari speelt. Op welk podium, heeft Busch Gardens nog niet bekendgemaakt.
+A Very Merry Cirque speelt op losse evenementdagen tussen november en januari, op een podium dat Busch Gardens nog niet heeft genoemd. Verder is er een nieuwe Christmas Town Market om te winkelen.
 
 ## Evenementdagen en openingstijden in november
 
@@ -51,13 +51,13 @@ In november is Christmas Town er op 14 dagen. Op die dagen gaat het park om 10.0
 - vrijdag 13 en zondag 15 november: 21.00 uur
 - zaterdag 14 november: 22.00 uur
 - donderdag 19 november: 20.00 uur
-- vrijdag 20 tot en met donderdag 26 november (Thanksgiving): 21.00 uur
+- vrijdag 20 tot en met donderdag 26 november: 21.00 uur, met op Thanksgiving (26 november) ook een Thanksgiving Feast
 - vrijdag 27 en zaterdag 28 november: 22.00 uur
 - zondag 29 november: 21.00 uur
 
-Van 16 tot en met 18 november en op 30 november is er geen kerstprogramma. Op Thanksgiving staat in de kalender van het park ook nog een Thanksgiving Feast.
+Van 16 tot en met 18 november en op 30 november is er geen kerstprogramma.
 
-De openingsavond heeft een eigen programma op de Cheetah Hunt Plaza. Daar zendt radiozender Mix 100.7 van 17.00 tot 19.00 uur live uit, met Miguel & Holly en Brian Fink, en om 19.00 uur gaan de lichtjes in de kerstboom aan.
+Op de openingsavond zendt radiozender Mix 100.7 van 17.00 tot 19.00 uur live uit vanaf de Cheetah Hunt Plaza, met Miguel & Holly en Brian Fink. Om 19.00 uur gaan daar de lichtjes in de kerstboom aan.
 
 ```best-days-widget slug=busch-gardens-tampa
 
@@ -65,38 +65,38 @@ De openingsavond heeft een eigen programma op de Cheetah Hunt Plaza. Daar zendt 
 
 ## Wat er verder is
 
-Christmas on Ice speelt van 13 november tot 4 januari in het Moroccan Palace Theater, met kunstschaatsers, wat in het klimaat van Tampa op zich al een kleine prestatie is. Wie het eerst komt, krijgt de eerste plaatsen, en zit de zaal vol, dan kunnen de deuren al voor het begin dichtgaan. Wil je een bepaalde voorstelling zien, kom dan op tijd.
+Christmas on Ice speelt het hele evenement lang in het Moroccan Palace Theater, met kunstschaatsers, wat in het klimaat van Tampa op zich al een kleine prestatie is. Wie het eerst komt, krijgt de eerste plaatsen, en wie te laat is, kan bij een volle zaal al voor het begin van de show voor een dichte deur staan.
 
-Bij de Serengeti Light Show voor het Serengeti Overlook Restaurant bewegen duizenden lichtjes op muziek. Voor de Celebration of Lights hangt in het hele park bijna 70 mijl aan lichtsnoeren, zo'n 113 kilometer, en daartussen lopen steltlopers rond. 's Avonds vertrekt bij het [station Nairobi](ref:busch-gardens-tampa/serengeti-express-nairobi-station) de Holly Jolly Express, een trein met kerstliedjes die over de savanne van 65 acres (ruim 26 hectare) rijdt, waar giraffen, neushoorns en zebra's leven.
+Bij de Serengeti Light Show voor het Serengeti Overlook Restaurant bewegen duizenden lichtjes op muziek. Voor de Celebration of Lights hangt in het hele park bijna 70 mijl aan lichtsnoeren, zo'n 113 kilometer, en daartussen lopen steltlopers rond. 's Avonds vertrekt bij het [station Nairobi](ref:busch-gardens-tampa/serengeti-express-nairobi-station) de Holly Jolly Express, een trein met kerstliedjes en uitzicht over de savanne van 65 acres (ruim 26 hectare). Daar leven giraffen, neushoorns en zebra's.
 
-Op bepaalde avonden in november en december breakdancen de Ginja Ninjas op de Jungala Plaza. Het verhaal erachter: het koekjesrecept van Mrs. Claus is zoek. Of er gedanst wordt, hangt af van het weer.
+Op sommige avonden in november en december breakdancen de Ginja Ninjas op de Jungala Plaza, als het weer meezit, bij een verhaal over het verdwenen koekjesrecept van Mrs. Claus.
 
-Over de Three Kings Journey bij de Dragon Fire Grill is het park het niet met zichzelf eens: volgens de showpagina begint die op 21 november, volgens de evenementpagina pas op 21 december. Volgens allebei eindigt ze op 4 januari. Van 4 tot en met 12 december worden tussen het Moroccan Palace en het jachtluipaardenverblijf elke avond om 18.00 uur de lichtjes van de menora aangestoken. Op 17 december staat de Coca-Cola Holiday Caravan op het Festival Field, met een gratis proefje zolang de voorraad strekt. Om te winkelen is er dit jaar de nieuwe Christmas Town Market.
+De Three Kings Journey bij de Dragon Fire Grill loopt tot 4 januari. Volgens de showpagina van het park begint die op 21 november, volgens de evenementpagina pas op 21 december. Van 4 tot en met 12 december worden tussen het Moroccan Palace en het jachtluipaardenverblijf elke avond om 18.00 uur de lichtjes van de menora aangestoken. Op 17 december staat de Coca-Cola Holiday Caravan op het Festival Field, met een gratis proefje zolang de voorraad strekt.
 
 ## Voor kinderen
 
-Elmo's Christmas Wish begint al voor het evenement, op 6 november, en speelt tot 4 januari in het Sunny Day Theater in Sesame Street Safari of Fun. Op bepaalde dagen kun je bij 123 Smile op de foto met de figuren uit Sesamstraat.
+Elmo's Christmas Wish begint al voor het evenement, op 6 november, en speelt tot 4 januari in het Sunny Day Theater in Sesame Street Safari of Fun. Op sommige dagen kun je bij 123 Smile op de foto met de figuren uit Sesamstraat.
 
-Aan de Festival Walkway staan tot 24 december levensgrote taferelen uit het prentenboek van Rudolph the Red-Nosed Reindeer, en daar kom je Rudolph en Bumble tegen. Ook tot kerstavond zit de kerstman in zijn werkkamer bij Santa's North Pole Experience, waar hij met kinderen op de foto gaat. Tot 4 januari leest Mrs. Claus voor bij de Canopy, en de prinsessen Ice, Sugar Plum en Poinsettia lopen door het park.
+Aan de Festival Walkway staan tot kerstavond levensgrote taferelen uit het prentenboek van Rudolph the Red-Nosed Reindeer, en daar kom je Rudolph en Bumble tegen. Net zo lang gaat de kerstman bij Santa's North Pole Experience in zijn werkkamer met kinderen op de foto. Mrs. Claus leest tot de laatste evenementdag voor bij de Canopy, en zo lang lopen ook de prinsessen Ice, Sugar Plum en Poinsettia door het park.
 
 ## Wat extra kost
 
-Het Welcome Center en de kraampjes met het kerstmenu gaan op evenementavonden om 16.00 uur open. Een sampler-lanyard met 5 of 10 proefporties kost vanaf 45 dollar; Pass Members krijgen 12 porties voor de prijs van 10. Nieuw is een dessertsampler van 35 dollar met warme chocolademelk in een souvenirbeker en vier desserts, geldig van 13 november tot 4 januari. In het hutje Savory Sleigh staan onder meer braised short rib, pompoensoep en eggnog bread pudding op de kaart, bij Holiday Spice een beef wellington.
+Het Welcome Center en de kraampjes met het kerstmenu gaan op evenementavonden om 16.00 uur open. Een sampler-lanyard met 5 of 10 proefporties kost vanaf 45 dollar, en Pass Members krijgen 12 porties voor de prijs van 10. Nieuw is een dessertsampler van 35 dollar met warme chocolademelk in een souvenirbeker en vier desserts, geldig zolang het evenement duurt. In het hutje Savory Sleigh staan onder meer braised short rib, pompoensoep en eggnog bread pudding op de kaart, bij Holiday Spice een beef wellington.
 
 Het Rudolph & Friends Character Dine kost 42,99 dollar. Daarnaast zijn er twee VIP-tours van elk vier uur:
 
 - Holly VIP Tour, privé, 150 dollar: voorrang bij de kerstman, gereserveerde plaatsen bij Christmas on Ice, flamingo's voeren en eten
-- Jolly VIP Tour, met gids, 125 dollar: hapjes bij de kraampjes, voorrang bij bepaalde achtbanen, giraffen voeren tijdens de Serengeti Safari en gereserveerde plaatsen bij Christmas on Ice
+- Jolly VIP Tour, met gids, 125 dollar: hapjes bij de kraampjes, voorrang bij sommige achtbanen, giraffen voeren tijdens de Serengeti Safari en gereserveerde plaatsen bij Christmas on Ice
 
 ## Tickets en parkeren
 
-In de Black Friday-voorverkoop kost een dagticket vanaf 71,99 dollar in plaats van de gewone 150,99 dollar, met All-Day Dining 111,99 dollar. In de Ultimate Bundle zit Quick Queue zonder limiet, behalve voor [Iron Gwazi](ref:busch-gardens-tampa/iron-gwazi) en [Phoenix Rising](ref:busch-gardens-tampa/phoenix-rising-now-open). De Fun Card 2027 kost 89,99 dollar en geeft tot 31 december 2027 onbeperkt toegang, op de blokkadedata na; de rest van 2026 krijg je er gratis bij. Parkeren kost vanaf 35 dollar plus belasting.
+In de Black Friday-voorverkoop kost een dagticket vanaf 71,99 dollar in plaats van de gewone 150,99 dollar, met All-Day Dining 111,99 dollar. In de Ultimate Bundle zit Quick Queue zonder limiet, behalve voor [Iron Gwazi](ref:busch-gardens-tampa/iron-gwazi) en [Phoenix Rising](ref:busch-gardens-tampa/phoenix-rising-now-open). De Fun Card 2027 kost 89,99 dollar en geeft tot 31 december 2027 onbeperkt toegang, op de blokkadedata na. De rest van 2026 krijg je er gratis bij. Parkeren kost vanaf 35 dollar plus belasting.
 
 ```hourly-profile-widget slug=busch-gardens-tampa top=6
 
 ```
 
-Busch Gardens hoort bij SeaWorld Parks & Entertainment. Een ticket voor twee parken, samen met SeaWorld Orlando, kost vanaf 93,99 dollar, en beide bezoeken moeten binnen zes maanden na aankoop vallen. In SeaWorld Orlando keert voor de [Christmas Celebration de orkashow Miracles terug](/news/seaworld-orlando-christmas-celebration-2026). Busch Gardens ligt aan 10165 N McKinley Drive in Tampa.
+Busch Gardens hoort bij SeaWorld Parks & Entertainment. Met SeaWorld Orlando is er een ticket voor twee parken vanaf 93,99 dollar voor allebei, als beide bezoeken binnen zes maanden na aankoop vallen. In SeaWorld Orlando keert voor de [Christmas Celebration de orkashow Miracles terug](/news/seaworld-orlando-christmas-celebration-2026). Busch Gardens ligt aan 10165 N McKinley Drive in Tampa.
 
 [Busch Gardens Tampa Bay](ref:busch-gardens-tampa?full)
 

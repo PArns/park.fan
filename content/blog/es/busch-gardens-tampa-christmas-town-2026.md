@@ -1,5 +1,5 @@
 ---
-title: 'Busch Gardens Tampa estrena un espectáculo de drones'
+title: 'Busch Gardens Tampa estrena un show de drones para Navidad'
 translationKey: busch-gardens-tampa-christmas-town-2026
 date: '2026-11-07'
 time: '18:00'
@@ -7,7 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Busch Gardens Tampa Bay abre Christmas Town el 13 de noviembre. Este año, el evento estrena un espectáculo de drones, Lights of Wonder, sobre el parque. La temporada navideña dura hasta el 4 de enero de 2027 y no cuesta nada aparte de la entrada.
+  Busch Gardens Tampa Bay abre Christmas Town el 13 de noviembre. Este año, el evento estrena un espectáculo de drones, Lights of Wonder, sobre el parque. La temporada navideña dura hasta el 4 de enero de 2027 y está incluida en la entrada normal.
 tags:
   - news
   - busch-gardens-tampa
@@ -36,13 +36,13 @@ seo:
     - Navidad en Tampa 2026
 ---
 
-[Busch Gardens Tampa Bay](ref:busch-gardens-tampa), en Florida, abre su Christmas Town el viernes 13 de noviembre, y este año con un espectáculo de drones nuevo. También se estrena A Very Merry Cirque, un espectáculo de acrobacias. El evento navideño se celebra en días concretos hasta el 4 de enero de 2027, desde la apertura hasta el cierre del parque, y está incluido en la entrada normal.
+[Busch Gardens Tampa Bay](ref:busch-gardens-tampa), en Florida, abre su Christmas Town el viernes 13 de noviembre, y este año con un espectáculo de drones nuevo. También se estrena A Very Merry Cirque, un espectáculo de acrobacias. El evento navideño dura hasta el 4 de enero de 2027, aunque no todos los días, y los días de evento va desde la apertura hasta el cierre del parque. Está incluido en la entrada normal.
 
-## Los dos espectáculos nuevos
+## Novedades de este año
 
-El de drones se llama Lights of Wonder y lo patrocina GEICO. Los drones vuelan al son de villancicos clásicos sobre el Festival Field, una explanada a la que se entra cerca del Pass Member Landing. Se puede ver en días concretos del 13 de noviembre al 31 de diciembre. En Nochevieja el parque lanza además unos fuegos artificiales nuevos, y el mejor sitio para verlos vuelve a ser el Festival Field.
+El de drones se llama Lights of Wonder y lo presenta GEICO. Los drones vuelan al son de villancicos clásicos sobre el Festival Field, una explanada a la que se entra cerca del Pass Member Landing. Se puede ver algunos días del evento hasta el 31 de diciembre. En Nochevieja el parque lanza unos fuegos artificiales nuevos, y el mejor sitio para verlos vuelve a ser el Festival Field.
 
-A Very Merry Cirque, el espectáculo acrobático, se representa en días concretos de noviembre a enero. En qué escenario, Busch Gardens todavía no lo ha anunciado.
+A Very Merry Cirque se representa en fechas sueltas entre noviembre y enero, en un escenario que Busch Gardens aún no ha dado a conocer. Para ir de compras también se estrena el Christmas Town Market.
 
 ## Días del evento y horarios en noviembre
 
@@ -51,13 +51,13 @@ En noviembre hay 14 días de Christmas Town. Esos días el parque abre a las 10:
 - viernes 13 y domingo 15 de noviembre: a las 21:00
 - sábado 14 de noviembre: a las 22:00
 - jueves 19 de noviembre: a las 20:00
-- del viernes 20 al jueves 26 de noviembre (Acción de Gracias): a las 21:00
+- del viernes 20 al jueves 26 de noviembre: a las 21:00, y el día de Acción de Gracias (el 26) hay además un Thanksgiving Feast
 - viernes 27 y sábado 28 de noviembre: a las 22:00
 - domingo 29 de noviembre: a las 21:00
 
-Del 16 al 18 y el 30 de noviembre no hay programa navideño. Para el día de Acción de Gracias, el calendario del parque anuncia también un Thanksgiving Feast.
+Del 16 al 18 y el 30 de noviembre no hay programa navideño.
 
-La noche de apertura tiene programa propio en la Cheetah Hunt Plaza. De 17:00 a 19:00 la emisora Mix 100.7 transmite allí en directo con Miguel & Holly y Brian Fink, y a las 19:00 se enciende el árbol de Navidad.
+La noche de apertura, la emisora Mix 100.7 transmite en directo desde la Cheetah Hunt Plaza de 17:00 a 19:00 con Miguel & Holly y Brian Fink, y a las 19:00 se enciende allí el árbol de Navidad.
 
 ```best-days-widget slug=busch-gardens-tampa
 
@@ -65,32 +65,32 @@ La noche de apertura tiene programa propio en la Cheetah Hunt Plaza. De 17:00 a 
 
 ## El resto del programa
 
-Christmas on Ice se representa del 13 de noviembre al 4 de enero en el Moroccan Palace Theater. Hay patinadores sobre hielo, lo que con el clima de Tampa ya tiene su mérito. Los asientos se reparten por orden de llegada y, si la sala se llena, las puertas pueden cerrarse antes de que empiece la función. Si quieres ver una sesión en concreto, mejor ir con tiempo.
+Christmas on Ice se representa durante todo el evento en el Moroccan Palace Theater, con patinadores artísticos, lo que con el clima de Tampa ya tiene su mérito. Los asientos son para quien llega primero, y si la sala se llena, quien llega tarde puede encontrarse la puerta cerrada antes de que empiece la función.
 
-Delante del Serengeti Overlook Restaurant, la Serengeti Light Show pone a bailar miles de luces con la música. En total, la Celebration of Lights reparte por el parque casi 70 millas de guirnaldas luminosas, unos 113 kilómetros, y entre ellas pasean zancudos. Por la noche, desde la [estación de Nairobi](ref:busch-gardens-tampa/serengeti-express-nairobi-station) sale el Holly Jolly Express, un tren con villancicos que cruza la sabana de 65 acres (algo más de 26 hectáreas) donde viven jirafas, rinocerontes y cebras.
+Delante del Serengeti Overlook Restaurant, en el Serengeti Light Show se mueven miles de luces al ritmo de la música. Para la Celebration of Lights cuelgan por todo el parque casi 70 millas de guirnaldas luminosas, unos 113 kilómetros, y entre ellas pasean zancudos. Por la noche, desde la [estación de Nairobi](ref:busch-gardens-tampa/serengeti-express-nairobi-station) sale el Holly Jolly Express, un tren con villancicos y con vistas a la sabana de 65 acres (algo más de 26 hectáreas). En ella viven jirafas, rinocerontes y cebras.
 
-En la Jungala Plaza, los Ginja Ninjas bailan breakdance algunas noches de noviembre y diciembre. El argumento: la receta de galletas de Mrs. Claus ha desaparecido. Si hay baile o no, depende del tiempo.
+En la Jungala Plaza, los Ginja Ninjas bailan breakdance algunas noches de noviembre y diciembre, si el tiempo lo permite, con una historia en la que ha desaparecido la receta de galletas de Mrs. Claus.
 
-Para la Three Kings Journey en el Dragon Fire Grill el parque da dos fechas de inicio: el 21 de noviembre según la página de espectáculos y el 21 de diciembre según la del evento. Las dos coinciden en que termina el 4 de enero. Del 4 al 12 de diciembre, cada noche a las 18:00 se encienden las luces de la menorá entre el Moroccan Palace y el recinto de los guepardos. El 17 de diciembre la Coca-Cola Holiday Caravan para en el Festival Field y reparte una muestra gratis hasta agotar existencias. Para las compras, este año se estrena el Christmas Town Market.
+La Three Kings Journey en el Dragon Fire Grill dura hasta el 4 de enero. Según la página de espectáculos del parque empieza el 21 de noviembre, y según la del evento, no hasta el 21 de diciembre. Del 4 al 12 de diciembre, cada noche a las 18:00 se encienden las luces de la menorá entre el Moroccan Palace y el recinto de los guepardos. El 17 de diciembre la Coca-Cola Holiday Caravan para en el Festival Field y reparte una muestra gratis hasta agotar existencias.
 
 ## Para los niños
 
 Elmo's Christmas Wish empieza antes que el evento, el 6 de noviembre, y sigue hasta el 4 de enero en el Sunny Day Theater de Sesame Street Safari of Fun. Algunos días, en 123 Smile hay fotos con los personajes de Barrio Sésamo.
 
-Hasta el 24 de diciembre, el Festival Walkway monta escenas a tamaño real del libro ilustrado de Rudolph the Red-Nosed Reindeer, y allí te encuentras con Rudolph y Bumble. También hasta Nochebuena, Santa espera en su despacho en Santa's North Pole Experience para hacerse fotos con los niños. Hasta el 4 de enero, Mrs. Claus lee cuentos en el Canopy y las princesas Ice, Sugar Plum y Poinsettia se pasean por el parque.
+Hasta Nochebuena, el Festival Walkway monta escenas a tamaño real del libro ilustrado de Rudolph the Red-Nosed Reindeer, y allí te encuentras con Rudolph y Bumble. Hasta ese mismo día, Santa espera en su despacho de Santa's North Pole Experience para hacerse fotos con los niños. Mrs. Claus lee cuentos en el Canopy hasta el último día del evento, y las princesas Ice, Sugar Plum y Poinsettia se pasean por el parque durante todo ese tiempo.
 
 ## Lo que se paga aparte
 
-Las noches del evento, el Welcome Center y los puestos de comida navideña abren a las 16:00. Un Sampler Lanyard con 5 o 10 degustaciones cuesta desde 45 dólares, y quien tiene pase anual se lleva 12 por el precio de 10. Es nuevo el Dessert Sampler de 35 dólares, con un chocolate caliente en vaso de recuerdo y cuatro postres, válido del 13 de noviembre al 4 de enero. En la caseta Savory Sleigh hay, por ejemplo, Braised Short Rib, crema de calabaza y Eggnog Bread Pudding; en Holiday Spice, un Beef Wellington.
+Las noches del evento, el Welcome Center y los puestos de comida navideña abren a las 16:00. Un Sampler Lanyard con 5 o 10 degustaciones cuesta desde 45 dólares, y quien tiene un pase se lleva 12 por el precio de 10. Es nuevo el Dessert Sampler de 35 dólares, con un chocolate caliente en vaso de recuerdo y cuatro postres, válido durante todo el evento. En la caseta Savory Sleigh hay, por ejemplo, Braised Short Rib, crema de calabaza y Eggnog Bread Pudding, y en Holiday Spice, un Beef Wellington.
 
 El Rudolph & Friends Character Dine cuesta 42,99 dólares. Hay dos visitas VIP de cuatro horas cada una:
 
 - Holly VIP Tour, privada, 150 dólares: pasas antes a ver a Santa, tienes asiento reservado en Christmas on Ice, das de comer a los flamencos y está incluida la comida
-- Jolly VIP Tour, guiado, 125 dólares: aperitivos en las casetas, acceso preferente en algunas montañas rusas, comida para las jirafas en el Serengeti Safari y asiento reservado en Christmas on Ice
+- Jolly VIP Tour, guiada, 125 dólares: aperitivos en las casetas, acceso preferente en algunas montañas rusas, comida para las jirafas en el Serengeti Safari y asiento reservado en Christmas on Ice
 
 ## Entradas y aparcamiento
 
-En la preventa de Black Friday, la entrada de un día cuesta desde 71,99 dólares, frente a los 150,99 del precio normal; con All-Day Dining, 111,99 dólares. El Ultimate Bundle incluye Quick Queue sin límite, salvo en [Iron Gwazi](ref:busch-gardens-tampa/iron-gwazi) y [Phoenix Rising](ref:busch-gardens-tampa/phoenix-rising-now-open). La Fun Card 2027 cuesta 89,99 dólares y vale sin límite hasta el 31 de diciembre de 2027, salvo las fechas bloqueadas; lo que queda de 2026 va de regalo. Aparcar cuesta desde 35 dólares más impuestos.
+En la preventa de Black Friday, la entrada de un día cuesta desde 71,99 dólares, frente a los 150,99 del precio normal. Con All-Day Dining cuesta 111,99 dólares. El Ultimate Bundle incluye Quick Queue sin límite, salvo en [Iron Gwazi](ref:busch-gardens-tampa/iron-gwazi) y [Phoenix Rising](ref:busch-gardens-tampa/phoenix-rising-now-open). La Fun Card 2027 cuesta 89,99 dólares y vale sin límite hasta el 31 de diciembre de 2027, salvo las fechas bloqueadas. Lo que queda de 2026 va de regalo. Aparcar cuesta desde 35 dólares más impuestos.
 
 ```hourly-profile-widget slug=busch-gardens-tampa top=6
 
