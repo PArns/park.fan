@@ -534,18 +534,37 @@ order and bar width (`lib/admin/ml-overview.ts`, `pnpm test:ml-overview`).
 The page the decision about which model the app serves is made on, written for someone who does not
 know what `d5` means: every row is a question the app answers, in plain German with its forecast
 distance (`leadLabel`), every cell one circle. The verdicts come from the backend
-(`GET /v1/admin/model-comparison`); the page derives only columns for model ids the report forgot to
-list and the chart geometry (`lib/admin/model-comparison.ts`, `pnpm test:model-comparison`).
+(`GET /v1/admin/model-comparison`); the page derives the grouping, the order and the wording
+(`lib/admin/model-comparison.ts`, `pnpm test:model-comparison`).
 
+Top to bottom: three decision cards, one bar over every comparison, the matrix, one stored day, the
+models in one sentence and the switch rule.
+
+- **The decision cards** are „Jetzt umstellbar“ (`better` cells per question, the largest live gain
+  first, `readyDecisions`), „Fast so weit“ (`pending` cells live has confirmed, grouped by model,
+  `nearDecisions`) and „Nächste Ergebnisse“ (every `expectedBy` by date, `resultDates`). A date is
+  overdue when the backend sets `expectedBy.overdue`, or, from a backend without the flag, when it
+  lies before the report's day; overdue dates come first under „Überfällig“. "Today" is the
+  report's `generatedAt` in Berlin (`reportDay`), never the browser clock.
+- **The matrix comes in blocks** (`MATRIX_BLOCKS`: live and today together, planner, calendar), each
+  with only the models that answer one of its questions. Columns follow `families` from the report
+  with `in_app` first and tinted; from a backend without families the served models lead and no
+  family header is drawn (`matrixBlocks`). A pending ring fills with the scarcer of days and parks
+  toward the rule (`liveProgress`). Below 760 px of panel width (a container query, so the docked
+  inspector counts) each row becomes labelled chips, unclear ones hidden while dimmed.
+- **A click opens the cell in the inspector** (`useInspector().show`, `_app/inspector.tsx`): Escape
+  inside it closes it and the focus goes back to the cell; leaving the page clears it.
 - **`diff` is the model's error minus the reference's; negative favours the model.** Every question
   is `lowerIsBetter`. A `unit: 'rate'` (`cal_rank`) is the share of wrongly ordered day pairs in
   percentage points, so it reads `+2,6 pp` and a cell's own figure `31,2 %` (`formatDiff`,
-  `formatError`).
-- **Before 14 days of live data most cells are `pending` or `unclear`**, and the page says so above
-  the matrix, counting from `window.firstDate`.
+  `formatError`). While measurements exist but the longest lead has none, `live.days` and `parks`
+  are 0, and the progress bars say so instead of „0 von 14“ (`progressLabel`).
+- **The day view** draws the measured wait as the thick line and the in-app models dashed; its
+  legend is sorted by the day's error, hides a curve on click and reads the values under the
+  crosshair, which follows the pointer and the arrow keys.
 - **`?beispiel=1`** shows `lib/admin/model-comparison-fixture.ts`: the mockup's verdicts and real
-  Europa-Park archive rows of 2026-10-10; its two `live` blocks are invented to show the interval
-  drawing.
+  Europa-Park archive rows of 2026-10-10; its `live` blocks, the confirmed pending cell and the
+  overdue date are invented to show those states.
 
 ## The admin on a phone
 

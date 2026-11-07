@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useMemo, useState, type PointerEvent } from 'react';
+import { useCallback, useMemo, useState, type KeyboardEvent, type PointerEvent } from 'react';
 import { ChartLine } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import type {
@@ -33,7 +33,7 @@ const DAY_PATH = '/api/admin/model-comparison/day';
  * One stored day replayed: date, park, ride and forecast moment chosen from the options endpoint,
  * every model's curve against the measured wait, and each model's error on that day.
  */
-export function DayComparison({ fixture }: { fixture: boolean }) {
+export function DayComparison({ fixture, inApp }: { fixture: boolean; inApp: Set<string> }) {
   const [choice, setChoice] = useState<DayChoice>({ date: null, parkId: null, rideId: null });
   const [originId, setOriginId] = useState<string>('morning');
 
@@ -89,8 +89,8 @@ export function DayComparison({ fixture }: { fixture: boolean }) {
     <Panel>
       <PanelHeader
         icon={ChartLine}
-        title="Tagesvergleich"
-        hint="Ein gespeicherter Tag zum Nachsehen: alle Prognosen gegen die echte Wartezeit."
+        title="Ein Tag zum Nachsehen"
+        hint="Was jedes Modell für diesen Tag vorhergesagt hat, gegen die gemessene Wartezeit. Über die Kurven fahren oder mit den Pfeiltasten zeigt die Werte zur Uhrzeit."
       />
       {!fixture && !options && optionsQuery.isLoading ? (
         <LoadingState />
@@ -177,7 +177,7 @@ export function DayComparison({ fixture }: { fixture: boolean }) {
           ) : !fixture && dayQuery.error ? (
             <ErrorState message={dayQuery.error.message} onRetry={() => dayQuery.refetch()} />
           ) : day ? (
-            <DayView day={day} />
+            <DayView day={day} inApp={inApp} />
           ) : null}
         </>
       )}
@@ -218,13 +218,26 @@ function useRenderedWidth(): [
   return [ref, width];
 }
 
-function DayView({ day }: { day: ModelComparisonDay }) {
+function DayView({ day, inApp }: { day: ModelComparisonDay; inApp: Set<string> }) {
   const [hover, setHover] = useState<number | null>(null);
+  const [hidden, setHidden] = useState<Set<string>>(() => new Set());
   const [chartRef, renderedWidth] = useRenderedWidth();
   const W = Math.max(MIN_W, renderedWidth ?? DEFAULT_W);
   const count = day.slots.length;
   const colors = useMemo(() => modelColors(day.series.map((s) => s.model)), [day.series]);
-  const top = chartTop([...day.truth, ...day.series.flatMap((s) => s.values)]);
+  const scores = useMemo(() => new Map(day.scores.map((s) => [s.model, s])), [day.scores]);
+  // The legend reads best first; a series the day could not score goes last.
+  const series = useMemo(
+    () =>
+      [...day.series].sort(
+        (a, b) =>
+          (scores.get(a.model)?.mae ?? Number.POSITIVE_INFINITY) -
+          (scores.get(b.model)?.mae ?? Number.POSITIVE_INFINITY)
+      ),
+    [day.series, scores]
+  );
+  const visible = series.filter((s) => !hidden.has(s.model));
+  const top = chartTop([...day.truth, ...visible.flatMap((s) => s.values)]);
   const x = (index: number) =>
     PAD.left + (count > 1 ? index / (count - 1) : 0.5) * (W - PAD.left - PAD.right);
   const y = (value: number) => PAD.top + (1 - value / top) * (H - PAD.top - PAD.bottom);
@@ -232,6 +245,7 @@ function DayView({ day }: { day: ModelComparisonDay }) {
   const hasForecast = day.series.some((s) => s.values.some((v) => v !== null));
   const coverage = truthCoverage(day);
   const hasTruth = coverage > 0 && day.truth.some((v) => v !== null);
+  const truthAt = hover === null ? null : day.truth[hover];
 
   const pick = (event: PointerEvent<SVGSVGElement>) => {
     const box = event.currentTarget.getBoundingClientRect();
@@ -240,27 +254,61 @@ function DayView({ day }: { day: ModelComparisonDay }) {
     setHover(Math.max(0, Math.min(count - 1, Math.round(ratio * (count - 1)))));
   };
 
-  const worst = Math.max(...day.scores.map((s) => s.mae), 1e-6);
+  const step = (event: KeyboardEvent<HTMLDivElement>) => {
+    const moves: Record<string, (current: number | null) => number> = {
+      ArrowLeft: (current) => Math.max(0, (current ?? 1) - 1),
+      ArrowRight: (current) => Math.min(count - 1, (current ?? -1) + 1),
+      Home: () => 0,
+      End: () => count - 1,
+    };
+    const move = moves[event.key];
+    if (!move || count === 0) return;
+    event.preventDefault();
+    setHover(move);
+  };
+
+  const toggle = (model: string) =>
+    setHidden((current) => {
+      const next = new Set(current);
+      if (!next.delete(model)) next.add(model);
+      return next;
+    });
+
+  const minutes = (value: number | null | undefined) =>
+    value === null || value === undefined ? '–' : `${Math.round(value)} Min.`;
 
   return (
     <>
-      <div className="text-muted-foreground space-y-0.5 px-4 pt-3 text-xs">
-        <p>
+      <div className="text-muted-foreground flex flex-wrap gap-x-5 gap-y-1 px-4 pt-3 text-xs">
+        <span>
           <span className="text-foreground font-medium">
             {day.park.name}, {day.ride.name}
           </span>
           , {formatLongDate(day.date)}
-          {day.openingHours
-            ? `, geöffnet ${day.openingHours.open} bis ${day.openingHours.close} Uhr.`
-            : '.'}
-          {hasTruth &&
-            ' Die dicke Linie ist die echte Wartezeit, Lücken heißen: Fahrgeschäft war gestört.'}
-        </p>
+        </span>
+        {day.openingHours && (
+          <span>
+            Geöffnet{' '}
+            <b className="text-foreground font-medium tabular-nums">
+              {day.openingHours.open} bis {day.openingHours.close} Uhr
+            </b>
+          </span>
+        )}
         {day.origin.localLabel && (
-          <p>
-            Prognosen gespeichert am {day.origin.localLabel} (Ortszeit). Echte Werte: letzter
-            Messwert je Viertelstunde.
-          </p>
+          <span>
+            Prognose gespeichert am{' '}
+            <b className="text-foreground font-medium tabular-nums">{day.origin.localLabel}</b>{' '}
+            (Ortszeit)
+          </span>
+        )}
+        {hasTruth && (
+          <span>
+            Gemessen in{' '}
+            <b className="text-foreground font-medium tabular-nums">
+              {Math.round(coverage * 100)} %
+            </b>{' '}
+            der Viertelstunden
+          </span>
         )}
       </div>
 
@@ -277,15 +325,22 @@ function DayView({ day }: { day: ModelComparisonDay }) {
           description="Einen anderen Prognosezeitpunkt oder Tag wählen."
         />
       ) : (
-        <div className="grid lg:grid-cols-[minmax(0,1fr)_280px]">
-          <div className="min-w-0 px-2 pt-3">
+        <div className="grid lg:grid-cols-[minmax(0,1fr)_300px]">
+          <div className="min-w-0 px-2 pt-3 pb-3">
             {coverage < LOW_TRUTH_COVERAGE && (
               <p className="text-muted-foreground mx-2 mb-2 rounded-md border border-amber-500/30 bg-amber-500/10 px-3 py-1.5 text-xs">
                 Nur {Math.round(coverage * 100)} % der Viertelstunden haben einen Messwert. Der
                 Vergleich stützt sich an diesem Tag auf wenige Messungen.
               </p>
             )}
-            <div ref={chartRef}>
+            <div
+              ref={chartRef}
+              tabIndex={0}
+              role="group"
+              aria-label="Kurven des Tages, Pfeiltasten wählen die Uhrzeit"
+              onKeyDown={step}
+              className="focus-visible:ring-primary rounded-md outline-none focus-visible:ring-2"
+            >
               <svg
                 viewBox={`0 0 ${W} ${H}`}
                 width={W}
@@ -333,12 +388,13 @@ function DayView({ day }: { day: ModelComparisonDay }) {
                     {day.slots[index]}
                   </text>
                 ))}
-                {day.series.map((s) =>
+                {visible.map((s) =>
                   splitSegments(s.values).map((segment, i) => (
                     <polyline
                       key={`${s.model}-${i}`}
                       fill="none"
-                      strokeWidth={2}
+                      strokeWidth={inApp.has(s.model) ? 1.75 : 2}
+                      strokeDasharray={inApp.has(s.model) ? '5 4' : undefined}
                       strokeLinejoin="round"
                       className={colors.get(s.model)?.stroke}
                       points={segment.map(([i2, v]) => `${x(i2)},${y(v)}`).join(' ')}
@@ -366,119 +422,115 @@ function DayView({ day }: { day: ModelComparisonDay }) {
                   )
                 )}
                 {hover !== null && (
-                  <line
-                    x1={x(hover)}
-                    x2={x(hover)}
-                    y1={PAD.top}
-                    y2={H - PAD.bottom}
-                    className="stroke-muted-foreground"
-                    strokeDasharray="3 3"
-                  />
+                  <g>
+                    <line
+                      x1={x(hover)}
+                      x2={x(hover)}
+                      y1={PAD.top}
+                      y2={H - PAD.bottom}
+                      className="stroke-muted-foreground"
+                      strokeDasharray="3 3"
+                    />
+                    {visible.map((s) => {
+                      const value = s.values[hover];
+                      if (value === null || value === undefined) return null;
+                      return (
+                        <circle
+                          key={s.model}
+                          cx={x(hover)}
+                          cy={y(value)}
+                          r={3.5}
+                          strokeWidth={1.5}
+                          className={cn('stroke-card', colors.get(s.model)?.fill)}
+                        />
+                      );
+                    })}
+                    {truthAt !== null && truthAt !== undefined && (
+                      <circle
+                        cx={x(hover)}
+                        cy={y(truthAt)}
+                        r={4.5}
+                        strokeWidth={2}
+                        className="fill-foreground stroke-card"
+                      />
+                    )}
+                  </g>
                 )}
               </svg>
             </div>
-            <Readout day={day} index={hover} colors={colors} />
-            <div className="text-muted-foreground flex flex-wrap gap-x-4 gap-y-1.5 px-2 pt-2 pb-3 text-xs">
-              <span className="inline-flex items-center gap-1.5">
-                <span className="bg-foreground inline-block h-1 w-5 rounded" />
-                echte Wartezeit
-              </span>
-              {day.series.map((s) => (
-                <span key={s.model} className="inline-flex items-center gap-1.5">
-                  <span
-                    className={cn('inline-block h-0.5 w-5 rounded', colors.get(s.model)?.swatch)}
-                  />
-                  {s.label}
-                </span>
-              ))}
-            </div>
+            <p className="sr-only" aria-live="polite">
+              {hover === null
+                ? ''
+                : `${day.slots[hover]} Uhr, gemessen ${truthAt === null ? 'nichts' : minutes(truthAt)}`}
+            </p>
           </div>
 
-          <div className="border-border/50 space-y-3 border-t p-4 lg:border-t-0 lg:border-l">
-            <h3 className="text-sm font-semibold">Fehler an diesem Tag</h3>
-            <p className="text-muted-foreground text-xs">
-              Mittlere Abweichung in Minuten
-              {day.scores[0] ? `, über ${day.scores[0].n} Viertelstunden mit echtem Wert` : ''}.
-              Kürzer ist besser.
-            </p>
-            <ul className="space-y-2.5">
-              {day.scores.map((score, index) => (
-                <li key={score.model} className="space-y-1 text-sm">
-                  <div className="flex items-baseline justify-between gap-2">
-                    <span className={cn(index === 0 && 'font-semibold')}>
-                      {index === 0 ? 'Am besten: ' : ''}
-                      {score.label}
-                    </span>
-                    <span className="font-mono text-xs tabular-nums">
-                      {formatFigure(score.mae)} min
-                    </span>
-                  </div>
-                  <div className="bg-muted h-2.5 overflow-hidden rounded-full">
-                    <div
-                      className={cn(
-                        'h-full rounded-full',
-                        colors.get(score.model)?.swatch ?? 'bg-muted-foreground',
-                        index === 0 && 'ring-foreground ring-1'
-                      )}
-                      style={{ width: `${(score.mae / worst) * 100}%` }}
+          <div className="border-border/50 border-t py-3 lg:border-t-0 lg:border-l">
+            <div className="text-muted-foreground flex justify-between px-4 pb-1.5 text-xs">
+              <span>Modell</span>
+              <span className="tabular-nums">
+                {hover === null ? 'daneben im Schnitt' : `um ${day.slots[hover]} Uhr`}
+              </span>
+            </div>
+            <div className="grid min-h-10 grid-cols-[22px_minmax(0,1fr)_auto] items-center gap-2 px-4 py-1.5 text-sm">
+              <span className="bg-foreground h-1 w-[22px] rounded" aria-hidden="true" />
+              <span>Gemessen</span>
+              <span className="font-semibold tabular-nums">
+                {hover === null ? '' : minutes(truthAt)}
+              </span>
+            </div>
+            {series.map((s) => {
+              const score = scores.get(s.model);
+              const shown = !hidden.has(s.model);
+              return (
+                <button
+                  key={s.model}
+                  type="button"
+                  aria-pressed={shown}
+                  onClick={() => toggle(s.model)}
+                  className={cn(
+                    'grid min-h-10 w-full grid-cols-[22px_minmax(0,1fr)_auto] items-center gap-2 px-4 py-1.5 text-left text-sm transition hover:bg-white/[0.03]',
+                    !shown && 'opacity-40'
+                  )}
+                >
+                  <svg viewBox="0 0 22 4" className="h-1 w-[22px]" aria-hidden="true">
+                    <line
+                      x1={0}
+                      x2={22}
+                      y1={2}
+                      y2={2}
+                      strokeWidth={inApp.has(s.model) ? 2 : 3}
+                      strokeDasharray={inApp.has(s.model) ? '5 3' : undefined}
+                      className={colors.get(s.model)?.stroke}
                     />
-                  </div>
-                </li>
-              ))}
-            </ul>
-            <p className="text-muted-foreground text-xs">
-              Ein einzelner Tag entscheidet nichts. Er zeigt, wie die Zahlen in der Matrix zustande
-              kommen.
+                  </svg>
+                  <span className="min-w-0">
+                    {s.label}
+                    {inApp.has(s.model) && (
+                      <span className="text-muted-foreground block text-[11px]">
+                        heute in der App
+                      </span>
+                    )}
+                  </span>
+                  <span className="font-semibold whitespace-nowrap tabular-nums">
+                    {hover === null
+                      ? score
+                        ? `${formatFigure(score.mae)} Min.`
+                        : '–'
+                      : minutes(s.values[hover])}
+                  </span>
+                </button>
+              );
+            })}
+            <p className="text-muted-foreground px-4 pt-2 text-xs">
+              Mittlere Abweichung
+              {day.scores[0] ? ` über ${day.scores[0].n} Viertelstunden mit Messwert` : ''}. Ein
+              Klick blendet eine Kurve aus. Ein einzelner Tag entscheidet nichts, er zeigt, wie die
+              Zahlen in der Matrix zustande kommen.
             </p>
           </div>
         </div>
       )}
     </>
-  );
-}
-
-function Readout({
-  day,
-  index,
-  colors,
-}: {
-  day: ModelComparisonDay;
-  index: number | null;
-  colors: Map<string, { stroke: string; swatch: string }>;
-}) {
-  return (
-    <div
-      aria-live="polite"
-      className="border-border/60 mx-2 mt-2 flex min-h-10 flex-wrap items-center gap-x-4 gap-y-1 rounded-lg border px-3 py-2 text-xs"
-    >
-      {index === null ? (
-        <span className="text-muted-foreground">
-          Mit der Maus über die Kurve fahren oder tippen: Uhrzeit und alle Werte erscheinen hier.
-        </span>
-      ) : (
-        <>
-          <span className="font-mono font-semibold">{day.slots[index]} Uhr</span>
-          <span>
-            echt:{' '}
-            {day.truth[index] === null ? (
-              <span className="text-muted-foreground">gestört</span>
-            ) : (
-              <b className="font-mono">{Math.round(day.truth[index] ?? 0)} min</b>
-            )}
-          </span>
-          {day.series.map((s) => (
-            <span key={s.model} className="inline-flex items-center gap-1.5">
-              <span
-                className={cn('inline-block h-2 w-2 rounded-full', colors.get(s.model)?.swatch)}
-              />
-              {s.label}:{' '}
-              <b className="font-mono">
-                {s.values[index] === null ? '–' : `${Math.round(s.values[index] ?? 0)} min`}
-              </b>
-            </span>
-          ))}
-        </>
-      )}
-    </div>
   );
 }

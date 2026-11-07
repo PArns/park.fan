@@ -18,7 +18,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `InspectorProvider` _component_: Holds the inspector's content and open state, so any admin page can fill the right column.
 - `InspectorPanel` _component_: Right-hand inspector column showing what a page pushed with `show()`: docked beside the page from `xl`, a sheet with a scrim below it. Renders nothing while closed or empty.
-- `useInspector` _hook_: Returns the inspector slot: its current content and open state, plus `show`, `close` and `toggle`. Throws outside `<InspectorProvider>`.
+- `useInspector` _hook_: Returns the inspector slot: its current content and open state, plus `show`, `close`, `toggle` and `clear`. Throws outside `<InspectorProvider>`.
 - Types: `InspectorContent`
 
 ### [`_app/login-screen.tsx`](../../app/admin/_app/login-screen.tsx)
@@ -773,7 +773,7 @@ Route `/admin/media` (page).
 
 ### [`ml/_components/matrix-summary.tsx`](../../app/admin/ml/_components/matrix-summary.tsx)
 
-- `MatrixSummary` _component_: The model matrix in four counts: better than what the app shows today, still measuring, no reliable difference, worse. Shown above the matrix and on the ML overview, so both read alike.
+- `MatrixSummary` _component_: The model matrix in four counts: better than what the app shows today, still measuring, no reliable difference, worse, as the ML overview shows them.
 
 ### [`ml/_components/ml-details.tsx`](../../app/admin/ml/_components/ml-details.tsx)
 
@@ -785,20 +785,35 @@ Route `/admin/ml` (page).
 
 - `default (MlOverviewPage)` _component_: The ML-Zentrale: what is up for a decision, where which model is better, whether every model and job ran, and the troubleshooting folds below. `?beispiel=1` shows the sample data.
 
+### [`ml/vergleich/_components/cell-detail.tsx`](../../app/admin/ml/vergleich/_components/cell-detail.tsx)
+
+- `CellDetail` _component_: The inspector body for one cell: its state and sentence, when the result is due or how late it is, the live difference against what the app shows, the progress toward the rule, the three checks and the model in one sentence.
+
 ### [`ml/vergleich/_components/day-comparison.tsx`](../../app/admin/ml/vergleich/_components/day-comparison.tsx)
 
 - `DayComparison` _component_: One stored day replayed: date, park, ride and forecast moment chosen from the options endpoint, every model's curve against the measured wait, and each model's error on that day.
 
+### [`ml/vergleich/_components/decision-cards.tsx`](../../app/admin/ml/vergleich/_components/decision-cards.tsx)
+
+- `DecisionCards` _component_: The three cards above the matrix, all derived from the report: what can be switched now, what live has confirmed and only waits for the offline year, and when the next results are due.
+- Types: `OpenCell`
+
 ### [`ml/vergleich/_components/model-matrix.tsx`](../../app/admin/ml/vergleich/_components/model-matrix.tsx)
 
-- `MatrixLegend` _component_: The six circle meanings, above the matrix.
-- `ModelMatrix` _component_: Every question the app answers against every model, one circle per cell; a click opens the cell's sentence, its live and offline figures and the three checks below the table.
+- `ModelMatrix` _component_: The matrix in blocks (live and today, planner, calendar), each with only the models that answer one of its questions, under their family headers with what the app shows on the left. Below 760 px of panel width a row becomes labelled chips.
+
+### [`ml/vergleich/_components/state-dot.tsx`](../../app/admin/ml/vergleich/_components/state-dot.tsx)
+
+- `StateDot` _component_: One matrix circle: better a filled tick, worse a filled cross, pending a ring that fills with `progress` (0 to 1) toward the live rule, unclear a faint ring, today an outlined „App“.
+- `CheckDot` _component_: A small round mark for one of the three checks: tick, cross, running ring or open ring.
+- `STATE_FILL` _const_: The fill of each state where a bar draws it instead of a dot: the dot colours, unclear faint.
+- `STATE_TONE` _const_: The `Chip` tone a state's pill takes in the detail panel.
 
 ### [`ml/vergleich/page.tsx`](../../app/admin/ml/vergleich/page.tsx)
 
 Route `/admin/ml/vergleich` (page).
 
-- `default (ModelComparisonPage)` _component_: Which model answers which question in the app better than the one shown today, as one circle per cell, with one stored day to check the curves against. `?beispiel=1` shows the sample data.
+- `default (ModelComparisonPage)` _component_: Which model answers which question in the app better than the one shown today: the decisions up for the owner, one bar over every comparison, the matrix in blocks with each cell's detail in the inspector, and one stored day to check the …
 
 ### [`oauth/consent/page.tsx`](../../app/admin/oauth/consent/page.tsx)
 

@@ -123,7 +123,7 @@ function Message({ message }: { message: ConversationMessage }) {
             {formatCount(message.cacheReadTokens)} Cache · {formatUsd(message.costUsd)}
           </span>
         )}
-        {message.promptVersion !== undefined && (
+        {message.promptVersion != null && (
           <Chip className="tabular-nums">Prompt v{message.promptVersion}</Chip>
         )}
         {message.rating === -1 && <Chip tone="danger">👎</Chip>}

@@ -11,7 +11,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`admin-model-comparison.ts`](../../lib/api/admin-model-comparison.ts)
 
-- Types: `ModelCellState`, `ModelCheckState`, `ModelCellLive`, `ModelCellOffline`, `ModelComparisonPair`, `ModelCell`, `ModelComparisonQuestion`, `ComparisonModel`, `ModelComparisonReport`, `ForecastOrigin`, `ModelComparisonDayOptions`, `ModelComparisonDay`
+- Types: `ModelCellState`, `ModelCheckState`, `ModelCellLive`, `ModelCellOffline`, `ModelComparisonPair`, `ModelCell`, `ModelComparisonQuestion`, `ModelFamily`, `ComparisonModel`, `ModelComparisonReport`, `ForecastOrigin`, `ModelComparisonDayOptions`, `ModelComparisonDay`
 
 ### [`admin-search-console.ts`](../../lib/api/admin-search-console.ts)
 

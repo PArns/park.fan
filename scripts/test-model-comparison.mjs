@@ -8,6 +8,20 @@ import assert from 'node:assert/strict';
 import {
   chartTop,
   dayMae,
+  daysBetween,
+  formatDaysAway,
+  formatGain,
+  formatShortDay,
+  formatWeekdayDay,
+  inAppModelIds,
+  isOverdue,
+  liveProgress,
+  matrixBlocks,
+  nearDecisions,
+  progressLabel,
+  readyDecisions,
+  reportDay,
+  resultDates,
   diffFavoursModel,
   formatDiff,
   formatError,
@@ -333,6 +347,135 @@ test('the search reads town and country, and every word has to match', () => {
   assert.ok(matchesQuery(['Europa-Park', 'Rust', 'Deutschland'], 'europa deutsch'));
   assert.ok(!matchesQuery(['Europa-Park', 'Rust', 'Deutschland'], 'europa frankreich'));
   assert.ok(matchesQuery(['Europa-Park', null, undefined], '  '));
+});
+
+const blockReport = () => ({
+  ...FIXTURE_REPORT,
+  groups: [...FIXTURE_REPORT.groups, { id: 'new', label: 'Neu' }],
+  questions: [
+    ...FIXTURE_REPORT.questions,
+    {
+      ...FIXTURE_REPORT.questions[0],
+      id: 'new-q',
+      group: 'new',
+      cells: { pcn: FIXTURE_REPORT.questions[0].cells.pcn },
+    },
+  ],
+});
+
+test('blocks put live and today together and keep an unknown group as a block of its own', () => {
+  const blocks = matrixBlocks(blockReport());
+  assert.deepEqual(
+    blocks.map((block) => block.id),
+    ['live-today', 'planner', 'calendar', 'new']
+  );
+  assert.deepEqual(
+    blocks[0].sections.map((section) => section.id),
+    ['live', 'today']
+  );
+  assert.deepEqual(
+    blocks[3].columns.map((model) => model.id),
+    ['pcn']
+  );
+});
+
+test('a block lists only its models, families in report order, in-app first', () => {
+  const [live, planner, calendar] = matrixBlocks(FIXTURE_REPORT);
+  assert.deepEqual(
+    live.columns.map((model) => model.id),
+    ['pcn', 'persist', 'h5', 'tfth5', 'chronos', 'fm']
+  );
+  assert.deepEqual(
+    live.families.map((run) => [run.id, run.span]),
+    [
+      ['in_app', 1],
+      ['baseline', 1],
+      ['profile', 2],
+      ['foundation', 2],
+    ]
+  );
+  assert.equal(planner.columns[0].id, 'served');
+  assert.ok(!calendar.columns.some((model) => model.id === 'pcn'));
+});
+
+test('without families the served models lead and no family header is drawn', () => {
+  const report = {
+    ...FIXTURE_REPORT,
+    families: undefined,
+    models: FIXTURE_REPORT.models.map(({ family: _family, ...model }) => model),
+  };
+  const [live] = matrixBlocks(report);
+  assert.equal(live.columns[0].id, 'pcn');
+  assert.deepEqual(live.families, []);
+  assert.deepEqual([...inAppModelIds(report)].sort(), ['pcn', 'served', 'tft']);
+});
+
+test('ready decisions list the better cells per question, the biggest live gain first', () => {
+  const ready = readyDecisions(FIXTURE_REPORT);
+  assert.ok(ready.every(({ options }) => options.every((ref) => ref.cell.state === 'better')));
+  const planner = ready.find(({ question }) => question.id === 'planner-2-5d');
+  // h5 has live figures, wkd none: the one without goes last.
+  assert.deepEqual(
+    planner.options.map((ref) => ref.modelId),
+    ['h5', 'wkd']
+  );
+});
+
+test('near decisions are pending cells live has confirmed, grouped by model', () => {
+  const near = nearDecisions(FIXTURE_REPORT);
+  assert.equal(near[0].modelId, 'chronos');
+  assert.deepEqual(
+    near[0].items.map((ref) => ref.question.id),
+    ['today-2-8h']
+  );
+});
+
+test('result dates keep overdue ones apart, by the flag or by a past date', () => {
+  const today = reportDay(FIXTURE_REPORT.generatedAt);
+  assert.equal(today, '2026-10-11');
+  const { overdue, upcoming } = resultDates(FIXTURE_REPORT, today);
+  assert.deepEqual(
+    overdue.map((entry) => entry.date),
+    ['2026-10-09']
+  );
+  assert.equal(overdue[0].days, -2);
+  assert.deepEqual(
+    upcoming.map((entry) => entry.date),
+    ['2026-10-11', '2026-10-12', '2026-10-24', '2026-10-26']
+  );
+  assert.ok(isOverdue({ date: '2026-10-10', label: '' }, today));
+  assert.ok(isOverdue({ date: '2026-10-20', label: '', overdue: true }, today));
+  assert.ok(!isOverdue({ date: '2026-10-11', label: '' }, today));
+});
+
+test('gains and days read in German', () => {
+  assert.equal(formatGain(-0.41, { unit: 'min', lowerIsBetter: true }), '0,4 Min. genauer');
+  assert.equal(formatGain(0.05, { unit: 'min', lowerIsBetter: true }), '0,05 Min. ungenauer');
+  assert.equal(formatGain(-2.64, { unit: 'rate', lowerIsBetter: true }), '2,6 Pp. genauer');
+  assert.equal(formatWeekdayDay('2026-12-22', '2026-11-07'), 'Di, 22.12.');
+  assert.equal(formatShortDay('2027-01-05', '2026-11-07'), '05.01.2027');
+  assert.equal(formatDaysAway(45), 'in 45 Tagen');
+  assert.equal(formatDaysAway(-2), 'seit 2 Tagen');
+  assert.equal(daysBetween('2026-11-07', '2026-12-22'), 45);
+});
+
+test('live progress takes the scarcer of days and parks, full once live confirmed it', () => {
+  const rule = { minDays: 14, minParks: 10 };
+  const live = { diff: 0, ciLow: 0, ciHigh: 0, n: 10, modelMae: 1, referenceMae: 1, since: null };
+  const pending = { offline: 'running', live: 'open', visible: false };
+  const cell = (days, parks, checks = pending) => ({
+    state: 'pending',
+    note: '',
+    checks,
+    live: { ...live, days, parks },
+    offline: null,
+    expectedBy: null,
+  });
+  assert.equal(liveProgress(cell(7, 31), rule), 0.5);
+  assert.equal(liveProgress(cell(14, 5), rule), 0.5);
+  assert.equal(liveProgress(cell(0, 0, { ...pending, live: 'yes' }), rule), 1);
+  assert.equal(progressLabel(0, 14, { ...live, n: 3120 }), 'längste Vorlaufzeit noch ohne Daten');
+  assert.equal(progressLabel(5, 14, live), '5 von 14');
 });
 
 console.log(`\n${passed} assertions passed.`);
