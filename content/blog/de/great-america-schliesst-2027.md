@@ -43,31 +43,31 @@ seo:
     - Six Flags Discovery Kingdom
 ---
 
-[California's Great America](ref:great-america) in Santa Clara öffnet im März 2027 zu einer letzten Saison, am Labor Day, dem 6. September 2027, schließt der Park für immer. Das hat Six Flags am 6. November bekanntgegeben. Der Pachtvertrag für das Grundstück läuft im Juni 2028 aus, und Six Flags hat sich gegen eine Verlängerung entschieden. Damit endet nach 51 Sommern der Park, mit dem Marriott 1976 den 200. Geburtstag der USA gefeiert hat.
+[California's Great America](ref:great-america) in Santa Clara schließt am Labor Day, dem 6. September 2027, für immer. Vorher öffnet der Park im März noch zu einer letzten Saison. Das hat Six Flags am 6. November bekannt gegeben. Der Pachtvertrag für das Grundstück läuft im Juni 2028 aus, und Six Flags hat sich gegen eine Verlängerung entschieden. Damit endet nach 51 Sommern der Park, den Marriott 1976 zum 200. Geburtstag der USA eröffnet hat.
 
 ## Wann der Park 2027 öffnet
 
-Six Flags nennt das letzte Jahr „Farewell Season“. An welchem Tag im März es losgeht, steht noch nicht fest, die Betriebstage und Öffnungszeiten für 2027 will Six Flags später veröffentlichen. Auch das Programm zum Abschied ist noch nicht festgelegt.
+Six Flags nennt das letzte Jahr „Farewell Season“. An welchem Tag im März es losgeht, steht noch nicht fest. Die Betriebstage und Öffnungszeiten für 2027 will Six Flags später veröffentlichen. Auch das Programm zum Abschied hat Six Flags noch nicht festgelegt.
 
-Im Moment ist der Park zu. Die Saison 2026, die fünfzigste, wurde bis zum 1. November verlängert, und im Kalender für November steht kein einziger Betriebstag. Wer die Nachricht gelesen hat und schon den Autoschlüssel in der Hand hält, kann ihn bis März wieder an den Haken hängen. Ein WinterFest gibt es in Santa Clara in diesem Winter nicht. Gruppen, Firmenfeiern und Schulklassen nimmt der Park für 2027 bis zum Labor Day an.
+Im Moment ist der Park zu. Six Flags hatte die Saison 2026, die fünfzigste, bis zum 1. November verlängert. Wer die Nachricht gelesen hat und schon den Autoschlüssel in der Hand hält, kann ihn bis März wieder an den Haken hängen. Ein WinterFest gibt es in Santa Clara in diesem Winter nicht. Gruppen, Firmenfeiern und Schulklassen nimmt der Park für 2027 bis zum Labor Day an.
 
 ## Pässe, Tickets und Erstattung
 
-Den Gold Pass 2027 verkauft Six Flags für 89 Dollar, die Verlängerung für 79 Dollar, jeweils plus Steuer. Er gilt in allen Six-Flags-Parks in Kalifornien, Arizona und Mexiko, also auch in [Six Flags Discovery Kingdom](ref:six-flags-discovery-kingdom) in Vallejo und in [Knott's Berry Farm](ref:knotts-berry-farm), dazu kommen das General Parking, 10 Prozent Rabatt auf Essen und Souvenirs und ein günstigeres Ticket für eine Begleitung. Der Prestige Pass für 169 Dollar (Verlängerung 159 Dollar) gilt in allen Six-Flags-Parks und bringt Preferred Parking, bei jedem Besuch einen Softdrink vom Zapfhahn, 15 Prozent Rabatt und zwei Bring-a-Friend-Tickets im Jahr. Wer einen der beiden bis zum 30. November kauft, bekommt ein Bring-a-Friend-Ticket dazu, das bis zum 31. Mai 2027 eingelöst sein muss.
+Den Gold Pass 2027 verkauft Six Flags für 89 Dollar, die Verlängerung für 79 Dollar, jeweils plus Steuer. Er gilt in allen Six-Flags-Parks in Kalifornien, Arizona und Mexiko, also auch in [Six Flags Discovery Kingdom](ref:six-flags-discovery-kingdom) in Vallejo und in [Knott's Berry Farm](ref:knotts-berry-farm). Dazu gehören das General Parking, 10 Prozent Rabatt auf Essen und Souvenirs und ein günstigeres Ticket für eine Begleitung. Der Prestige Pass für 169 Dollar (Verlängerung 159 Dollar) gilt in allen Six-Flags-Parks und bringt Preferred Parking, bei jedem Besuch einen Softdrink vom Zapfhahn, 15 Prozent Rabatt und zwei Bring-a-Friend-Tickets im Jahr. Wer einen der beiden bis zum 30. November kauft, bekommt ein Bring-a-Friend-Ticket dazu, das bis zum 31. Mai 2027 eingelöst sein muss.
 
-In der Mitteilung empfiehlt Six Flags für die letzte Saison nur Gold und Prestige. Billiger kommt man mit dem Silver Pass weg, den es bis zum 30. November zum Black Friday für 65 Dollar gibt, so viel wie ein Good Any Day Ticket für 2027. Er gilt nur in Great America und im Wasserpark South Bay Shores, dafür beliebig oft und mit Parken. Mit Ess- und Getränkeplan kostet er 159 statt 243 Dollar.
+Billiger als Gold und Prestige kommt man mit dem Silver Pass weg, den es bis zum 30. November zum Black Friday für 65 Dollar gibt, so viel wie ein Good Any Day Ticket für 2027. Er gilt nur in Great America und im Wasserpark South Bay Shores, dafür beliebig oft und mit Parken. Mit Ess- und Getränkeplan kostet er 159 statt 243 Dollar.
 
-Für Gold und Prestige wirbt Six Flags mit „Visit All of 2026 & 2027“. In Santa Clara selbst gibt es 2026 keinen Betriebstag mehr, nutzen lässt sich der Rest des Jahres in den anderen Parks. Discovery Kingdom feiert WinterFest an ausgewählten Tagen vom 27. November bis zum 3. Januar, und laut Six-Flags-Sprecher Cyle Perez gegenüber KTVU sind die Herbst- und Winterevents dort im Gold Pass von Great America enthalten.
+Für Gold und Prestige wirbt Six Flags mit „Visit All of 2026 & 2027“. Für den Rest von 2026 gilt das nur in den anderen Parks. In Discovery Kingdom läuft an ausgewählten Tagen vom 27. November bis zum 3. Januar das WinterFest. Die Herbst- und Winterevents dort sind laut Six-Flags-Sprecher Cyle Perez gegenüber KTVU im Gold Pass von Great America enthalten.
 
 Zurück gibt es kein Geld. Tageskarten und Saisonpässe sind nicht erstattbar und nicht umtauschbar, auch nicht bei schlechtem Wetter. Gültige Pässe erkennt der Park nach ihren Bedingungen weiter an, und die Ess- und Getränkepläne soll es auch 2027 geben. Fast Lane kostet für einen Tag ab 79 Dollar, als All Season Fast Lane 999 Dollar, für eine Saison, auf die keine mehr folgt.
 
-## Bahnen und Wasserpark bis zum letzten Tag
+## Bahnen und Wasserpark in der letzten Saison
 
-Laut Six Flags fährt der Park 2027 kein abgespecktes Programm: Die Attraktionen laufen die ganze Saison, Ausfälle nennt Six Flags nur für Wartung und Wetter. South Bay Shores öffnet nach seinem üblichen Sommerplan. Der Wasserpark ist im Eintritt enthalten, ein Ticket braucht jeder ab drei Jahren.
+Six Flags will 2027 wegen der Schließung nichts streichen. Die Attraktionen laufen die ganze Saison, ausfallen kann eine Bahn wegen Wartung, Wetter oder aus anderen betrieblichen Gründen. South Bay Shores öffnet nach seinem üblichen Saisonplan. Der Wasserpark ist im Eintritt enthalten, ein Ticket braucht jeder ab drei Jahren.
 
 ## Die Achterbahnen für eine letzte Fahrt
 
-Neun Achterbahnen hat der Park. Die fünf großen:
+Von den neun Achterbahnen des Parks stehen fünf in der Tabelle.
 
 | Bahn                                                | Hersteller, Bauart                     | Eröffnet | Höhe | Länge | Tempo   | Körpergröße    |
 | --------------------------------------------------- | -------------------------------------- | -------- | ---- | ----- | ------- | -------------- |
@@ -77,13 +77,13 @@ Neun Achterbahnen hat der Park. Die fünf großen:
 | [Patriot](ref:great-america/patriot?bare)           | Bolliger & Mabillard, Floorless        | 1991     | 28 m | 585 m | 72 km/h | 137 bis 198 cm |
 | [Demon](ref:great-america/demon?bare)               | Arrow Dynamics, Looping-Achterbahn     | 1976     | 31 m | 649 m | 80 km/h | ab 122 cm      |
 
-Die übrigen vier sind Woodstock Express, Lucy's Crabbie Cabbies, Psycho Mouse und die Holzachterbahn Grizzly.
+Die übrigen vier sind Woodstock Express, Lucy's Crabbie Cabbies, Psycho Mouse und die Holzachterbahn [Grizzly](ref:great-america/grizzly?bare) von 1986, 28 Meter hoch, 991 Meter lang und bis zu 89 km/h schnell.
 
-RailBlazer ist ein Prototyp: Die Wagen fahren auf einer einzigen Schiene, acht Fahrgäste sitzen hintereinander, es geht senkrecht hinunter und dreimal über Kopf. Eine Fahrt auf Gold Striker dauert zweieinhalb Minuten. Flight Deck hängt unter der Schiene und hieß bis 2007 Top Gun. Patriot fuhr von 1991 an als Stand-up-Coaster Vortex, seit 2017 sitzt man in Zügen ohne Boden.
+RailBlazer ist ein Prototyp, bei dem die Wagen auf einer einzigen Schiene fahren. Acht Fahrgäste sitzen hintereinander, es geht senkrecht hinunter und dreimal über Kopf. Eine Fahrt auf Gold Striker dauert zweieinhalb Minuten. Bei Flight Deck hängen die Züge unter der Schiene, bis 2007 hieß die Bahn Top Gun. Auf Patriot fuhr man ab 1991 im Stehen, damals hieß die Bahn Vortex, seit 2017 sitzt man in Zügen ohne Boden.
 
-Demon stand schon 1976 am Eröffnungstag im Park, damals unter dem Namen Turn of the Century. 1980 bekam die Bahn zwei Loopings und einen Namen, der besser zu ihnen passt. Heute dreht sie dich viermal über Kopf.
+Demon gehört zu den ersten Bahnen des Parks und eröffnete im Mai 1976, damals unter dem Namen Turn of the Century. 1980 bekam die Bahn zwei Loopings und einen Namen, der besser zu ihnen passt. Heute dreht sie dich viermal über Kopf.
 
-Außer Achterbahnen: Der [Drop Tower](ref:great-america/drop-tower) von Intamin ist 69 Meter hoch, steht seit 1996 und hieß bis 2007 Drop Zone: Stunt Tower. Der Aufstieg dauert 35 Sekunden, der Fall 3,5 Sekunden, bei bis zu 97 km/h. Das Carousel Columbia, ein Doppelstock-Karussell von Chance Rides mit mehr als 100 Pferden, dreht sich seit 1976 und ist 31 Meter hoch.
+Neben den Achterbahnen steht seit 1996 der 69 Meter hohe [Drop Tower](ref:great-america/drop-tower) von Intamin, der bis 2007 Drop Zone: Stunt Tower hieß. Der Aufstieg dauert 35 Sekunden, der Fall 3,5 Sekunden, bei bis zu 97 km/h. Das Carousel Columbia, ein Doppelstock-Karussell von Chance Rides mit mehr als 100 Pferden, dreht sich seit 1976 und ist 31 Meter hoch.
 
 ## Wo man am längsten ansteht
 
@@ -93,19 +93,19 @@ Außer Achterbahnen: Der [Drop Tower](ref:great-america/drop-tower) von Intamin 
 
 ## Anreise nach Santa Clara
 
-Der Park liegt an der 4701 Great America Parkway in Santa Clara, CA 95054, zwischen dem Levi's Stadium und dem Mission College. Aus San Francisco fährst du rund 72 Kilometer über die US 101 nach Süden bis zur Ausfahrt Great America Parkway, aus San José sind es auf der US 101 nach Norden etwa fünf Kilometer. Den Hauptparkplatz teilt sich der Park mit dem Stadion der San Francisco 49ers. Fahrdienste setzen dich an der 4911 Great America Parkway ab, direkt hinter der Einfahrt zum Parkplatz.
+Der Park liegt an der 4701 Great America Parkway in Santa Clara, CA 95054, zwischen dem Levi's Stadium und dem Mission College. Aus San Francisco fährst du rund 72 Kilometer über die US 101 nach Süden bis zur Ausfahrt Great America Parkway. Aus San José sind es auf der US 101 nach Norden etwa fünf Kilometer. Den Hauptparkplatz teilt sich der Park mit dem Stadion der San Francisco 49ers. Fahrdienste setzen dich an der 4911 Great America Parkway ab, direkt hinter der Einfahrt zum Parkplatz.
 
 Ohne Auto bringen dich die Stadtbahn und die Busse der VTA hin. Die Züge von Amtrak Capitol Corridor und ACE halten am Bahnhof Great America. Von der BART-Station Fremont fahren die VTA-Busse 140, 141 und 180, mit Caltrain steigst du in Mountain View in die VTA-Stadtbahn um.
 
 ## Warum der Park schließt
 
-Der Park steht auf fremdem Grund. 2019 hatte Cedar Fair, damals Betreiber, das Grundstück der Stadt Santa Clara abgekauft, 2022 verkaufte das Unternehmen die 45 Hektar für 310 Millionen Dollar an Prologis und pachtete sie zurück. Seitdem war Cedar Fair Mieter auf dem Land, das ihm drei Jahre lang gehört hatte. Der Vertrag läuft bis Juni 2028, mit der Option auf fünf weitere Jahre. Diese Option zieht Six Flags nicht. Einen Grund dafür hat Six Flags laut KQED nicht genannt.
+Der Park steht auf fremdem Grund. 2019 hatte Cedar Fair, damals Betreiber, das Grundstück der Stadt Santa Clara abgekauft. 2022 verkaufte das Unternehmen die 45 Hektar für 310 Millionen Dollar an Prologis und pachtete sie zurück. Seitdem war Cedar Fair Mieter auf dem Land, das ihm drei Jahre lang gehört hatte. Der Vertrag hätte sich über Juni 2028 hinaus um fünf Jahre verlängern lassen, doch diese Option zieht Six Flags nicht. Einen Grund dafür hat Six Flags laut KQED nicht genannt.
 
 ## Fünfzig Jahre in Santa Clara
 
-Die Marriott Corporation eröffnete den Park am 20. März 1976 als Marriott's Great America. 1985 kaufte die Stadt Santa Clara ihn für 93,5 Millionen Dollar, ein Jahr später kam die Holzachterbahn [Grizzly](ref:great-america/grizzly?bare) dazu, 28 Meter hoch, 991 Meter lang und bis zu 89 km/h schnell. 1989 gab die Stadt den Betrieb an Kings Entertainment ab und behielt das Land. Paramount Communications übernahm Kings Entertainment 1992, von 1993 bis 2006 hieß der Park Paramount's Great America.
+Die Marriott Corporation eröffnete den Park am 20. März 1976 als Marriott's Great America. 1985 kaufte die Stadt Santa Clara ihn für 93,5 Millionen Dollar, betrieben hat ihn für sie Kings Entertainment. Ein Jahr später kam Grizzly dazu. 1989 kaufte Kings der Stadt Fahrgeschäfte und Gebäude ab, das Land behielt die Stadt. Paramount Communications übernahm Kings Entertainment 1992, von 1993 bis 2006 hieß der Park Paramount's Great America.
 
-Im Mai 2006 kündigte Cedar Fair an, die Paramount-Parks zu übernehmen, seit 2007 heißt der Park California's Great America. 2011 schloss Cedar Fair mit den 49ers eine Vereinbarung über den Parkplatz und den Bau des Stadions. Am 1. Juli 2024 fusionierten Cedar Fair und Six Flags, seitdem betreibt die Six Flags Entertainment Corporation den Park.
+Im Mai 2006 kündigte Cedar Fair an, die Paramount-Parks zu übernehmen, 2007 hieß der Park nur Great America, seit 2008 California's Great America. 2011 schloss Cedar Fair mit den 49ers eine Vereinbarung über den Parkplatz und den Bau des Stadions. Am 1. Juli 2024 fusionierten Cedar Fair und Six Flags, seitdem betreibt die Six Flags Entertainment Corporation den Park.
 
 ## Was aus Bahnen und Gelände wird
 
