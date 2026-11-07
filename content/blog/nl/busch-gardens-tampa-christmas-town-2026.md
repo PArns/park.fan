@@ -7,7 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Busch Gardens Tampa Bay opent op 13 november Christmas Town, en voor het eerst stijgt daarbij de droneshow Lights of Wonder boven het park op. Het kerstevenement loopt tot 4 januari 2027 en kost niets extra.
+  Busch Gardens Tampa Bay opent op 13 november Christmas Town, en nieuw is dit jaar de droneshow Lights of Wonder boven het park. Het kerstevenement loopt tot 4 januari 2027 en kost niets extra.
 tags:
   - nieuws
   - busch-gardens-tampa
@@ -36,7 +36,7 @@ seo:
     - Tampa kerst 2026
 ---
 
-Op vrijdag 13 november gaat in [Busch Gardens Tampa Bay](ref:busch-gardens-tampa) in Florida Christmas Town open, en dit jaar hoort er voor het eerst een droneshow bij. Ook de acrobatiekshow A Very Merry Cirque is nieuw. Het kerstevenement loopt op bepaalde dagen tot 4 januari 2027, telkens van de opening tot sluitingstijd, en zit gewoon in de entree.
+Op vrijdag 13 november gaat in [Busch Gardens Tampa Bay](ref:busch-gardens-tampa) in Florida Christmas Town open, dit jaar met een nieuwe droneshow. Ook de acrobatiekshow A Very Merry Cirque is nieuw. Het kerstevenement loopt op bepaalde dagen tot 4 januari 2027, telkens van de opening tot sluitingstijd, en zit gewoon in de entree.
 
 ## Twee nieuwe shows
 
@@ -63,7 +63,7 @@ De openingsavond heeft een eigen programma op de Cheetah Hunt Plaza. Daar zendt 
 
 ```
 
-## Wat terugkomt
+## Wat er verder is
 
 Christmas on Ice speelt van 13 november tot 4 januari in het Moroccan Palace Theater, met kunstschaatsers, wat in het klimaat van Tampa op zich al een kleine prestatie is. Wie het eerst komt, krijgt de eerste plaatsen, en zit de zaal vol, dan kunnen de deuren al voor het begin dichtgaan. Wil je een bepaalde voorstelling zien, kom dan op tijd.
 
@@ -86,7 +86,7 @@ Het Welcome Center en de kraampjes met het kerstmenu gaan op evenementavonden om
 Het Rudolph & Friends Character Dine kost 42,99 dollar. Daarnaast zijn er twee VIP-tours van elk vier uur:
 
 - Holly VIP Tour, privé, 150 dollar: voorrang bij de kerstman, gereserveerde plaatsen bij Christmas on Ice, flamingo's voeren en eten
-- Jolly VIP Tour, in een groep, 125 dollar: hapjes bij de kraampjes, voorrang bij bepaalde achtbanen, giraffen voeren tijdens de Serengeti Safari en gereserveerde plaatsen bij Christmas on Ice
+- Jolly VIP Tour, met gids, 125 dollar: hapjes bij de kraampjes, voorrang bij bepaalde achtbanen, giraffen voeren tijdens de Serengeti Safari en gereserveerde plaatsen bij Christmas on Ice
 
 ## Tickets en parkeren
 
@@ -96,7 +96,7 @@ In de Black Friday-voorverkoop kost een dagticket vanaf 71,99 dollar in plaats v
 
 ```
 
-Net als SeaWorld Orlando hoort Busch Gardens bij SeaWorld Parks & Entertainment. Een ticket voor beide parken kost samen vanaf 93,99 dollar, en de twee bezoeken moeten binnen zes maanden vallen. In SeaWorld Orlando keert voor de [Christmas Celebration de orkashow Miracles terug](/news/seaworld-orlando-christmas-celebration-2026). Busch Gardens ligt aan 10165 N McKinley Drive in Tampa.
+Busch Gardens hoort bij SeaWorld Parks & Entertainment. Een ticket voor twee parken, samen met SeaWorld Orlando, kost vanaf 93,99 dollar, en beide bezoeken moeten binnen zes maanden na aankoop vallen. In SeaWorld Orlando keert voor de [Christmas Celebration de orkashow Miracles terug](/news/seaworld-orlando-christmas-celebration-2026). Busch Gardens ligt aan 10165 N McKinley Drive in Tampa.
 
 [Busch Gardens Tampa Bay](ref:busch-gardens-tampa?full)
 

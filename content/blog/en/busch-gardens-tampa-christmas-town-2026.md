@@ -7,7 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Christmas Town opens at Busch Gardens Tampa Bay on November 13, and this year a drone show, Lights of Wonder, flies over the park for the first time. The event runs until January 4, 2027, at no extra charge.
+  Christmas Town opens at Busch Gardens Tampa Bay on November 13, and this year a new drone show, Lights of Wonder, flies over the park. The event runs until January 4, 2027, at no extra charge.
 tags:
   - news
   - busch-gardens-tampa
@@ -36,7 +36,7 @@ seo:
     - Tampa Christmas 2026
 ---
 
-Christmas Town opens at [Busch Gardens Tampa Bay](ref:busch-gardens-tampa) in Florida on Friday, November 13, and for the first time it comes with a drone show. The acrobatics show A Very Merry Cirque is new as well. The event runs on selected days until January 4, 2027, from opening to park close, and it's included with regular admission.
+Christmas Town opens at [Busch Gardens Tampa Bay](ref:busch-gardens-tampa) in Florida on Friday, November 13, and this year it comes with a new drone show. The acrobatics show A Very Merry Cirque is new as well. The event runs on selected days until January 4, 2027, from opening to park close, and it's included with regular admission.
 
 ## The two new shows
 
@@ -63,7 +63,7 @@ Opening night has a program of its own on Cheetah Hunt Plaza. Radio station Mix 
 
 ```
 
-## What's back
+## What else is on
 
 Christmas on Ice plays the Moroccan Palace Theater from November 13 to January 4, with figure skaters, which in Tampa's climate counts as a minor achievement all by itself. Seating is first come, first served, and once the theater is full the doors may close before the show starts. If you want a particular performance, get there early.
 
@@ -86,7 +86,7 @@ The Welcome Center and the holiday food stands open at 4 pm on event nights. A s
 The Rudolph & Friends Character Dine costs $42.99. Two VIP tours last four hours each:
 
 - Holly VIP Tour, private, $150: front-of-line access to Santa, reserved seats at Christmas on Ice, a flamingo feeding and a meal
-- Jolly VIP Tour, in a group, $125: bites at the huts, front-of-line access on selected coasters, a giraffe feeding on the Serengeti Safari and reserved seats at Christmas on Ice
+- Jolly VIP Tour, guided, $125: bites at the huts, front-of-line access on selected coasters, a giraffe feeding on the Serengeti Safari and reserved seats at Christmas on Ice
 
 ## Tickets and parking
 
@@ -96,7 +96,7 @@ In the Black Friday sale a day ticket starts at $71.99 instead of the regular $1
 
 ```
 
-Busch Gardens and SeaWorld Orlando both belong to SeaWorld Parks & Entertainment. A two-park ticket for both starts at $93.99 in total, and the two visits have to fall within six months. At SeaWorld Orlando, the [orca show Miracles returns for the Christmas Celebration](/news/seaworld-orlando-christmas-celebration-2026). Busch Gardens is at 10165 N McKinley Drive in Tampa.
+Busch Gardens belongs to SeaWorld Parks & Entertainment. A two-park ticket with SeaWorld Orlando starts at $93.99 in total, and both visits have to fall within six months of purchase. At SeaWorld Orlando, the [orca show Miracles returns for the Christmas Celebration](/news/seaworld-orlando-christmas-celebration-2026). Busch Gardens is at 10165 N McKinley Drive in Tampa.
 
 [Busch Gardens Tampa Bay](ref:busch-gardens-tampa?full)
 
