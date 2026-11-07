@@ -5,7 +5,7 @@ import { StatTile } from '../../_ui/primitives';
 
 /**
  * The model matrix in four counts: better than what the app shows today, still measuring, no
- * reliable difference, worse. Shown above the matrix and on the ML overview, so both read alike.
+ * reliable difference, worse, as the ML overview shows them.
  */
 export function MatrixSummary({ summary }: { summary: ModelComparisonReport['summary'] }) {
   return (

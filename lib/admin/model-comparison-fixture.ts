@@ -13,8 +13,8 @@ import { dayMae } from '@/lib/admin/model-comparison';
 /**
  * Sample payloads for the admin model comparison, opened with `?beispiel=1`. The verdicts and
  * notes are the offline benchmark from the approved mockup and the day curves are the real
- * archive rows for Europa-Park on 2026-10-10; the two `live` blocks are made up to show the
- * interval drawing before two weeks of live data exist, and the ride without measurements is made
+ * archive rows for Europa-Park on 2026-10-10; the `live` blocks, the confirmed
+ * pending cell and the overdue date are made up to show those states, and the ride without measurements is made
  * up to show the empty state.
  */
 
@@ -26,24 +26,28 @@ function cell(
   extra: {
     live?: ModelCellLive;
     offline?: ModelCellOffline;
-    expectedBy?: [string, string];
+    expectedBy?: [string, string] | [string, string, true];
     visible?: boolean;
+    checks?: ModelCell['checks'];
   } = {}
 ): ModelCell {
-  const checks: ModelCell['checks'] = {
-    today: { offline: 'open', live: 'open', visible: true },
-    better: { offline: 'yes', live: 'running', visible: extra.visible ?? true },
-    worse: { offline: 'no', live: 'open', visible: false },
-    unclear: { offline: 'no', live: 'open', visible: false },
-    pending: { offline: 'running', live: 'open', visible: false },
-  }[state] as ModelCell['checks'];
+  const [date, label, overdue] = extra.expectedBy ?? [];
+  const checks: ModelCell['checks'] =
+    extra.checks ??
+    ({
+      today: { offline: 'open', live: 'open', visible: true },
+      better: { offline: 'yes', live: 'running', visible: extra.visible ?? true },
+      worse: { offline: 'no', live: 'open', visible: false },
+      unclear: { offline: 'no', live: 'open', visible: false },
+      pending: { offline: 'running', live: 'open', visible: false },
+    }[state] as ModelCell['checks']);
   return {
     state,
     note,
     checks,
     live: extra.live ?? null,
     offline: extra.offline ?? null,
-    expectedBy: extra.expectedBy ? { date: extra.expectedBy[0], label: extra.expectedBy[1] } : null,
+    expectedBy: date && label ? { date, label, ...(overdue ? { overdue } : {}) } : null,
   };
 }
 
@@ -54,6 +58,11 @@ const SHADOW: [string, string] = [
   'Live-Bestätigung: Schatten läuft seit 10.10., frühestens ca. 24.10.',
 ];
 const ARCHIVE: [string, string] = ['2026-10-26', 'mit dem Live-Archiv, ca. 26.10.'];
+const OVERDUE: [string, string, true] = [
+  '2026-10-09',
+  'überfällig seit 09.10.: Offline-Lauf über das ganze Jahr',
+  true,
+];
 
 const MIN = { unit: 'min', lowerIsBetter: true } as const;
 const BENCHMARK = 'Offline-Benchmark';
@@ -130,10 +139,41 @@ const QUESTIONS: ModelComparisonQuestion[] = [
         'Im Herbst besser als die einfachen Werte (−0,3 Minuten), über das ganze Jahr noch nicht bestätigt.',
         { offline: { diff: -0.3, source: BENCHMARK, period: 'September bis Oktober 2026' } }
       ),
-      chronos: cell('pending', 'Für diesen Abstand noch nicht ausgewertet.', {
-        expectedBy: ARCHIVE,
+      chronos: cell(
+        'pending',
+        'Live sicher besser als PCN. Es fehlt nur noch die Messung über das ganze Jahr.',
+        {
+          live: {
+            diff: -0.61,
+            ciLow: -0.94,
+            ciHigh: -0.28,
+            days: 14,
+            parks: 31,
+            n: 52_300,
+            modelMae: 8.92,
+            referenceMae: 9.53,
+            since: '2026-09-27',
+            parkCiLow: -1.02,
+            parkCiHigh: -0.2,
+          },
+          expectedBy: OVERDUE,
+          checks: { offline: 'running', live: 'yes', visible: true },
+        }
+      ),
+      fm: cell('pending', 'Messung läuft heute.', {
+        expectedBy: TONIGHT,
+        live: {
+          diff: 0.12,
+          ciLow: -0.4,
+          ciHigh: 0.64,
+          days: 0,
+          parks: 0,
+          n: 3_120,
+          modelMae: 9.65,
+          referenceMae: 9.53,
+          since: '2026-10-10',
+        },
       }),
-      fm: cell('pending', 'Messung läuft heute.', { expectedBy: TONIGHT }),
     },
   },
   {
@@ -326,57 +366,74 @@ export const FIXTURE_REPORT: ModelComparisonReport = {
     {
       id: 'persist',
       label: 'Aktuelle Wartezeit',
+      family: 'baseline',
       oneLiner: 'Was gerade angezeigt wird, einfach weitergeschrieben.',
     },
     {
       id: 'pcn',
       label: 'PCN',
+      family: 'in_app',
       oneLiner: 'Unser Live-Modell für die nächsten 12 Stunden. Heute in der App.',
     },
     {
       id: 'served',
       label: 'Tagesplaner heute',
+      family: 'in_app',
       oneLiner:
         'Typischer Stundenverlauf, hochgerechnet auf das erwartete Tagesniveau. Heute in der App.',
     },
     {
       id: 'h5',
       label: 'H5-Profil',
+      family: 'profile',
       oneLiner:
         'Typischer Verlauf in 15-Minuten-Schritten, ausgerichtet an Öffnung und Schließung.',
     },
     {
       id: 'tfth5',
       label: 'H5 + TFT-Niveau',
+      family: 'profile',
       oneLiner: 'H5-Verlauf, aber bei vollen Fahrgeschäften auf die TFT-Tagesprognose skaliert.',
     },
     {
       id: 'chronos',
       label: 'Chronos-2',
+      family: 'foundation',
       oneLiner:
         'Fertig trainiertes KI-Modell von Amazon, bekommt Öffnungszeiten, Ferien und Feiertage.',
     },
     {
       id: 'tft',
       label: 'TFT',
+      family: 'in_app',
       oneLiner: 'Unser Tagesmodell für die nächsten 60 Tage. Heute im Kalender.',
     },
     {
       id: 'catboost',
       label: 'CatBoost',
+      family: 'in_app',
       oneLiner: 'Unser ältestes Modell, liefert Stundenwerte und das Tagesniveau ab Tag 61.',
     },
     {
       id: 'wkd',
       label: 'Wochentag-Durchschnitt',
+      family: 'baseline',
       oneLiner:
         'Was an diesem Wochentag in den letzten Wochen typisch war. Die Messlatte, die jedes Modell schlagen muss.',
     },
     {
       id: 'fm',
       label: 'Toto 2.0 / TiRex',
+      family: 'foundation',
       oneLiner: 'Zwei weitere fertig trainierte KI-Modelle. Messung läuft heute.',
     },
+  ],
+  families: [
+    { id: 'in_app', label: 'Heute in der App' },
+    { id: 'baseline', label: 'Messlatten' },
+    { id: 'profile', label: 'Profile' },
+    { id: 'daily_candidate', label: 'Neue Tagesmodelle' },
+    { id: 'foundation', label: 'Fertige KI-Modelle' },
   ],
   groups: [
     { id: 'live', label: 'Live in der App' },

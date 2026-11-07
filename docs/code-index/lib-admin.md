@@ -167,11 +167,28 @@ Unique roles move; they are never shared. `ride-card` and `park-background` name
 - `suggestedOptionsDate` _function_: The date the options must be fetched for before anything is picked: the suggested day when the backend suggests one other than the day it answered for, else none (the answer stands).
 - `resolveDaySelection` _function_: The day, park and ride the view shows. A pick that is still on offer stands; with nothing picked the backend's suggestion is used; otherwise the first park and its first ride.
 - `headlinersFirst` _function_: A park's rides with headliners first, otherwise in the order the backend sent them.
-- `CELL_STATE_META` _const_: How each matrix state reads: the label in the legend and detail panel, the symbol in the circle.
-- `CHECK_STATE_META` _const_: How each check state reads beside O, L and S.
+- `reportDay` _function_: The report's day (`YYYY-MM-DD`, Berlin): what "overdue" and "in N Tagen" count from.
+- `reportTime` _function_: The report's time of day in Berlin, `10:04`.
+- `daysBetween` _function_: Calendar days from `from` to `to` (`YYYY-MM-DD`), negative when `to` lies before.
+- `formatShortDay` _function_: A day as `07.11.`, with the year only when it differs from `today`'s.
+- `formatWeekdayDay` _function_: A day as `Di, 22.12.`, with the year only when it differs from `today`'s.
+- `formatDaysAway` _function_: „in 3 Tagen“, „morgen“, „heute“, „seit 2 Tagen“ for a day count from the report's day.
+- `isOverdue` _function_: Whether a result is late: the backend's `overdue` flag, or, from a backend without it, a date before the report's day.
+- `formatGain` _function_: A live difference as the decision cards say it: `0,4 Min. genauer`, `2,6 Pp. ungenauer`. Two decimals below 0.1, so a small gain does not read as zero.
+- `readyDecisions` _function_: „Jetzt umstellbar“: per question, in report order, the cells that are `better`, the largest live gain first and a cell without live figures last.
+- `nearDecisions` _function_: „Fast so weit“: the cells still pending although live already confirmed them, grouped by model, the model with the most such questions first and ties in column order.
+- `resultDates` _function_: „Nächste Ergebnisse“: every cell with an `expectedBy`, one entry per date. A cell live has confirmed stays in, since its date is then the offline run it waits for.
+- `inAppModelIds` _function_: The models the app shows today: the `in_app` family, or, from a backend without families, every model some question serves.
+- `matrixBlocks` _function_: The matrix blocks. Columns follow the report's family order and the report's model order within a family; without families the in-app models come first, then the report's order.
+- `liveProgress` _function_: How far a pending cell is toward the live rule, 0 to 1: the scarcer of days and parks, full once live has confirmed it.
+- `progressLabel` _function_: The figure beside a progress bar: `5 von 14`, or, while measurements exist but the longest lead has none yet (so days and parks read 0), that sentence instead of a misleading zero.
+- `CELL_STATE_META` _const_: How each matrix state reads: the label in the detail panel, the short one in the legend and the phone chips' order, the symbol in the circle (pending and unclear are drawn, not written).
+- `CELL_STATE_ORDER` _const_: The states in the order the legend lists them and a phone row shows its chips.
+- `CHECK_STATE_META` _const_: How each check state reads.
 - `HOUR_LABEL_MIN_SPACING` _const_: Centre-to-centre distance two hour labels need, in px: `00:00` in 11 px mono is about 34 px wide, and the rest keeps neighbours from reading as one string.
 - `LOW_TRUTH_COVERAGE` _const_: Below this coverage the day view says the comparison rests on few measurements.
-- Types: `DayChoice`
+- `MATRIX_BLOCKS` _const_: How the matrix is cut into blocks: the live and today rows share one, since the same models answer both. A group not named here gets a block of its own after these.
+- Types: `DayChoice`, `CellRef`, `ResultDate`, `FamilyRun`, `MatrixBlock`
 
 ### [`provenance.ts`](../../lib/admin/provenance.ts)
 

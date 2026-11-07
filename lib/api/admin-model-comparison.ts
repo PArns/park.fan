@@ -74,8 +74,11 @@ export interface ModelCell {
   checks: { offline: ModelCheckState; live: ModelCheckState; visible: boolean };
   live: ModelCellLive | null;
   offline: ModelCellOffline | null;
-  /** When a pending or unconfirmed result is due; `label` is already plain German. */
-  expectedBy: { date: string; label: string } | null;
+  /**
+   * When a pending or unconfirmed result is due; `label` is already plain German. `overdue` is set
+   * once the date has passed (a late offline run); older backends leave it out.
+   */
+  expectedBy: { date: string; label: string; overdue?: true } | null;
 }
 
 /** A row of the matrix: one question the app answers, and the model it serves for it today. */
@@ -97,11 +100,16 @@ export interface ModelComparisonQuestion {
   coverage?: { jointRows: number; cells: Record<string, number> };
 }
 
+/** The kind of model a column is, which places it under a family header in the matrix. */
+export type ModelFamily = 'in_app' | 'baseline' | 'profile' | 'daily_candidate' | 'foundation';
+
 /** A model the matrix has a column for. */
 export interface ComparisonModel {
   id: string;
   label: string;
   oneLiner: string;
+  /** Absent from older backends; an id this page does not know reads as one more family. */
+  family?: ModelFamily | string;
 }
 
 /** `GET /api/admin/model-comparison?days=28&region=ALL`. */
@@ -111,6 +119,8 @@ export interface ModelComparisonReport {
   rule: { minDays: number; minParks: number };
   models: ComparisonModel[];
   groups: { id: 'live' | 'today' | 'planner' | 'calendar' | string; label: string }[];
+  /** The families in column order, `in_app` first. Absent from older backends. */
+  families?: { id: ModelFamily | string; label: string }[];
   questions: ModelComparisonQuestion[];
   summary: { better: number; pending: number; unclear: number; worse: number };
 }
