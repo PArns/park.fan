@@ -71,7 +71,7 @@ Wisemen, 2025 noch im Il Teatro di San Marco, spielt 2026 nicht mehr.
 
 ## Shows und Lichter
 
-Christmas Town Live! A Holiday Special spielt drinnen in Das Festhaus im Bereich Oktoberfest, als Fernseh-Weihnachtsspecial aus den 1960er Jahren. Ein reservierter Platz kostet dort 9,99 Dollar. Ebenfalls unter Dach laufen Gloria!, die Weihnachtsgeschichte im Abbey Stone Theatre in Ireland, und das Musical Scrooge No More! im Globe Theatre in England. Zu Gloria! kommt niemand mehr hinein, sobald die Show begonnen hat. Für beide Shows kostet ein reservierter Platz 5,99 Dollar und eine Insider Tour 24,99 Dollar, mit einem Blick in die Theatergeschichte und einem Treffen mit den Darstellern.
+Christmas Town Live! A Holiday Special spielt drinnen in Das Festhaus im Bereich Oktoberfest, als Fernseh-Weihnachtsspecial aus den 1960er Jahren. Ein reservierter Platz kostet dort 9,99 Dollar. Ebenfalls unter Dach laufen Gloria!, die Weihnachtsgeschichte im Abbey Stone Theatre in Ireland, und das Musical Scrooge No More! im Globe Theatre in England. Zur Weihnachtsgeschichte im Abbey Stone Theatre kommt niemand mehr hinein, sobald die Show begonnen hat. Für beide Shows kostet ein reservierter Platz 5,99 Dollar und eine Insider Tour 24,99 Dollar, mit einem Blick in die Theatergeschichte und einem Treffen mit den Darstellern.
 
 Draußen auf der Bühne im Sesame Street Forest of Fun treten Elmo, Cookie Monster, Rosita, Grover und Zoe bei Elmo's Christmas Wish auf, montags und mittwochs in einer abgewandelten Fassung. Die Eisshow 'Twas That Night im Royal Palace Theatre in France, nach dem Gedicht „A Visit From St. Nicholas“, soll laut ihrer Showseite am 27. November starten. Im Tagesprogramm des Parks steht sie bis zum 3. Januar aber an keinem Tag.
 
@@ -142,8 +142,8 @@ Quellen:
 [Return to Corkscrew Hill](https://buschgardens.com/williamsburg/rides/corkscrew-hill/),
 [Pressemitteilungen](https://buschgardens.com/williamsburg/media-room/press-releases/),
 [Christmas-Shows](https://buschgardens.com/williamsburg/shows/christmas/),
-[Gloria!](https://buschgardens.com/williamsburg/shows/christmas/gloria),
-[Scrooge No More!](https://buschgardens.com/williamsburg/shows/christmas/scrooge-christmas-story),
+[Showseite Gloria](https://buschgardens.com/williamsburg/shows/christmas/gloria),
+[Showseite Scrooge No More](https://buschgardens.com/williamsburg/shows/christmas/scrooge-christmas-story),
 [Elmo's Christmas Wish](https://buschgardens.com/williamsburg/shows/christmas/sesame-street-kids-show),
 [Celebration of Lights](https://buschgardens.com/williamsburg/shows/christmas/o-tannenbaum-light-show),
 [InvadR](https://buschgardens.com/williamsburg/roller-coasters/invadr).
