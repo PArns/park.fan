@@ -65,7 +65,7 @@ Quien vaya en Acción de Gracias tiene hasta las tres de la tarde para dar cuent
 
 The Queens of Christmas son un trío que canta villancicos como «This Christmas» y «Santa Baby» en el escenario del Italy Pavilion. De lunes a jueves, hasta el 10 de diciembre, suelen actuar a las 17:00, las 19:00 y las 20:30. Desde el 14 de diciembre, de lunes a viernes salen cuatro veces a partir de las 16:00, y los sábados, como el 21 de noviembre, hasta cinco veces desde las 13:30. Los seis miércoles que van del 25 de noviembre al 30 de diciembre, el concierto no está en el programa. Un asiento reservado cuesta 5,99 dólares.
 
-Verbolten: Forbidden Turn abrió el 30 de mayo de 2026 como versión nueva de Verbolten, con historia propia, animatrónicos y efectos especiales. Ahora está cerrada temporalmente, y el parque todavía no ha anunciado cuándo volverá a funcionar.
+Verbolten: Forbidden Turn abrió el 30 de mayo de 2026 como versión nueva de Verbolten, con historia propia, animatrónicos y efectos especiales. El parque todavía no ha anunciado cuándo volverá a funcionar.
 
 Wisemen, que en 2025 aún se representaba en el Il Teatro di San Marco, desaparece del programa de 2026.
 
@@ -100,7 +100,7 @@ Aparcar cuesta desde 35 dólares al día comprando en línea, y el Multi-Day Par
 
 ## Quick Queue y comida
 
-La Winter Quick Queue, con un uso por atracción, cuesta desde 29,99 dólares y vale en Apollo's Chariot, Big Bad Wolf, Finnegan's Flyer y otras siete atracciones. La Unlimited Plus cuesta desde 49,99 dólares, vale sin límite en esas mismas diez y añade un uso en DarKoaster y otro en Verbolten. Mientras Verbolten siga cerrada, de ese extra solo queda el viaje en DarKoaster. El Christmas Town Scenic Pass, de 49,99 dólares, promete prioridad en el Skyride, el Christmas Town Express y el Rhine River Christmas Cruise, cuyo barco ahora mismo no navega.
+La Winter Quick Queue, con un uso por atracción, cuesta desde 29,99 dólares y vale en Apollo's Chariot, Big Bad Wolf, Finnegan's Flyer y otras siete atracciones. La Unlimited Plus cuesta desde 49,99 dólares, vale sin límite en esas mismas diez y añade un uso en DarKoaster y otro en Verbolten. Mientras Verbolten siga cerrada, de ese extra solo queda el viaje en DarKoaster. El Christmas Town Scenic Pass, de 49,99 dólares, promete prioridad en el Skyride, el Christmas Town Express y el Rhine River Christmas Cruise. Como el crucero está cerrado temporalmente, por ahora quedan dos de esas tres prioridades.
 
 ```ride-waits-widget
 rides: busch-gardens-williamsburg/apollos-chariot|Apollo's Chariot;busch-gardens-williamsburg/all-new-the-big-bad-wolf-the-wolfs-revenge|The Big Bad Wolf;busch-gardens-williamsburg/darkoaster|DarKoaster;busch-gardens-williamsburg/finnegans-flyer|Finnegan's Flyer;busch-gardens-williamsburg/verbolten|Verbolten: Forbidden Turn;busch-gardens-williamsburg/grovers-alpine-express|Grover's Alpine Express
@@ -115,7 +115,7 @@ El parque está en el 1 de Busch Gardens Boulevard, en Williamsburg; en coche se
 
 ## Verbolten y Corkscrew Hill
 
-La historia de la versión nueva: Black Forest Motor Tours tiene nuevos dueños en 2026, y en la Selva Negra aparecen de pronto señales donde no deberían estar. Forbidden Turn es una montaña rusa con drop track: alcanza hasta 85 km/h (53 mph) en más de 850 metros de recorrido y se lanza 27 metros hacia el Rhine River. Para 2027 el parque ya ha anunciado su próxima novedad, la atracción Return to Corkscrew Hill.
+En la versión nueva, Black Forest Motor Tours pasa en 2026 a manos de nuevos gestores, y a lo largo del recorrido por la Selva Negra empiezan a aparecer señales que no deberían estar ahí. Forbidden Turn es una montaña rusa con drop track: alcanza hasta 85 km/h (53 mph) en más de 850 metros de recorrido y cae 27 metros hacia el Rhine River. Verbolten no será por mucho tiempo la atracción más nueva del parque: para 2027 está anunciada Return to Corkscrew Hill.
 
 [Busch Gardens Williamsburg](ref:busch-gardens-williamsburg?full)
 

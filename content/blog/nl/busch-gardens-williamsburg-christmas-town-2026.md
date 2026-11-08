@@ -7,7 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Busch Gardens Williamsburg in Virginia begint op 13 november met Christmas Town, nieuw is het concert The Queens of Christmas. De omgebouwde achtbaan Verbolten: Forbidden Turn doet voor het eerst mee, maar staat op dit moment stil. Na drie previewdagen is het evenement vanaf 19 november elke dag open, tot 3 januari 2027.
+  Busch Gardens Williamsburg in Virginia begint op 13 november met Christmas Town, en nieuw dit jaar is het concert The Queens of Christmas. De omgebouwde achtbaan Verbolten: Forbidden Turn doet voor het eerst mee, maar staat op dit moment stil. Na drie previewdagen is het evenement vanaf 19 november elke dag open, tot 3 januari 2027.
 tags:
   - nieuws
   - busch-gardens-williamsburg
@@ -45,10 +45,10 @@ Op vrijdag 13 november begint in [Busch Gardens Williamsburg](ref:busch-gardens-
 
 ## Evenementdagen en openingstijden
 
-Van 9 tot en met 12 november is het park dicht. Na drie previewdagen volgt nog een pauze van 16 tot en met 18 november. Vanaf donderdag 19 november is Christmas Town dan elke dag open tot het einde, ook met Thanksgiving, Kerst en oudejaarsavond. Dat zijn 49 dagen, en alle tijden zijn lokale tijd:
+Van 9 tot en met 12 november is het park dicht. Na drie previewdagen volgt nog een pauze van 16 tot en met 18 november. Vanaf donderdag 19 november is Christmas Town dan elke dag open tot het einde, ook op Thanksgiving, eerste kerstdag en oudejaarsdag. Dat zijn 49 dagen, en alle tijden zijn lokale tijd:
 
 - preview op vrijdag 13 november: 17.00 tot 22.00 uur
-- preview op zaterdag 14 en zondag 15 november: van 12.00 en 14.00 uur tot 22.00 uur
+- preview op zaterdag 14 november van 12.00 en op zondag 15 november van 14.00 tot 22.00 uur
 - maandag tot en met donderdag van 19 november tot 10 december: 16.00 tot 21.00 uur, op 25 november vanaf 14.00 uur, op Thanksgiving (26 november) 15.00 tot 21.00 uur
 - vrijdag tot en met zondag tot 20 december: vrijdag 14.00 tot 22.00 uur (op 20 november vanaf 17.00 uur, op 27 november vanaf 12.00 uur), zaterdag 12.00 tot 22.00 uur, zondag 14.00 tot 22.00 uur
 - maandag 14 tot en met donderdag 17 december: 15.00 tot 22.00 uur
@@ -65,7 +65,7 @@ Op Thanksgiving gaat het park pas om 15.00 uur open, er is dus eerst nog tijd vo
 
 The Queens of Christmas zijn een trio dat op het podium bij het Italy Pavilion kerstliedjes zingt, zoals “This Christmas” en “Santa Baby”. Tot 10 december staan de drie van maandag tot en met donderdag meestal om 17.00, 19.00 en 20.30 uur op het podium. Vanaf 14 december treden ze doordeweeks vier keer op, de eerste keer om 16.00 uur, en op zaterdagen zoals 21 november tot vijf keer, vanaf 13.30 uur. Op de zes woensdagen van 25 november tot 30 december staat het concert niet op het programma. Een gereserveerde zitplaats kost 5,99 dollar.
 
-Verbolten: Forbidden Turn ging op 30 mei 2026 open, als nieuwe versie van Verbolten met een eigen verhaal, animatronics en speciale effecten. Op dit moment is de baan tijdelijk gesloten, en wanneer hij weer rijdt, heeft het park nog niet bekendgemaakt.
+Verbolten: Forbidden Turn ging op 30 mei 2026 open, als nieuwe versie van Verbolten met een eigen verhaal, animatronics en speciale effecten. Wanneer de baan weer rijdt, heeft het park nog niet bekendgemaakt.
 
 Wisemen, in 2025 nog te zien in Il Teatro di San Marco, speelt in 2026 niet meer.
 
@@ -92,7 +92,7 @@ Alpengeist, Griffon, InvadR, Loch Ness Monster, Pantheon en Tempesto ontbreken o
 
 ## Tickets en abonnementen
 
-Zonder abonnement koop je een gewoon dagticket voor een datum van Christmas Town. Aan de kassa kost dat op die dagen 91,99 dollar en op de andere dagen van het seizoen 121,99 dollar. Bij alle prijzen komen nog belasting en kosten. Het Christmas Town Any Day Ticket, geldig op een dag naar keuze tot 3 januari, kost 56,99 dollar, met All-Day Dining 101,99 dollar. Wie vaker komt, neemt de Christmas Town Fun Card van 89,99 dollar, die op alle evenementdagen geldt. Het Christmas Bounce Ticket combineert drie dagen Christmas Town met Colonial Williamsburg, parkeren inbegrepen. Vanaf 13 jaar kost het 112,05 dollar, voor kinderen van 6 tot en met 12 jaar 95,05 dollar, en tot vijf jaar betaal je niets.
+Zonder abonnement koop je een gewoon dagticket voor een datum van Christmas Town. Aan de kassa kost dat op die dagen 91,99 dollar en op de andere dagen van het seizoen 121,99 dollar. Bij alle prijzen komen nog belasting en kosten. Het Christmas Town Any Day Ticket, geldig op een dag naar keuze tot 3 januari, kost 56,99 dollar, met All-Day Dining 101,99 dollar. Wie vaker komt, neemt de Christmas Town Fun Card van 89,99 dollar, die op alle evenementdagen geldt. Het Christmas Bounce Ticket combineert drie dagen Christmas Town met Colonial Williamsburg, parkeren inbegrepen. Vanaf 13 jaar kost het 112,05 dollar, voor kinderen van 6 tot en met 12 jaar 95,05 dollar, en kinderen tot en met vijf jaar betalen niets.
 
 Actieve Basic-, Unlimited-, Premier- en Platinum-memberships geven toegang tot Christmas Town, net als de College Pass en de 2026 Military Pass. Met Unlimited, Premier en Platinum parkeer je gratis en heb je geen blokkadedata. Voor de Basic Membership gelden die wel: 21, 22, 28 en 29 november, 5, 6, 12 en 13 december en 19 tot en met 26 december. Dat zijn de meeste weekenden plus de hele kerstweek.
 
@@ -100,7 +100,7 @@ Parkeren kost online vanaf 35 dollar per dag, Multi-Day Parking 65 dollar.
 
 ## Quick Queue en eten
 
-Winter Quick Queue voor één rit per attractie kost vanaf 29,99 dollar en geldt bij Apollo's Chariot, Big Bad Wolf, Finnegan's Flyer en zeven andere attracties. Unlimited Plus kost vanaf 49,99 dollar, geldt zonder limiet bij dezelfde tien attracties en daarnaast één keer bij DarKoaster en Verbolten. Zolang Verbolten dicht is, blijft van die extra's alleen de rit in DarKoaster over. De Christmas Town Scenic Pass van 49,99 dollar belooft voorrang bij de Skyride, de Christmas Town Express en de Rhine River Christmas Cruise, waarvan de boot op dit moment niet vaart.
+Winter Quick Queue voor één rit per attractie kost vanaf 29,99 dollar en geldt bij Apollo's Chariot, Big Bad Wolf, Finnegan's Flyer en zeven andere attracties. Unlimited Plus kost vanaf 49,99 dollar, geldt zonder limiet bij dezelfde tien attracties en daarnaast één keer bij DarKoaster en Verbolten. Zolang Verbolten dicht is, blijft van die extra's alleen de rit in DarKoaster over. De Christmas Town Scenic Pass van 49,99 dollar belooft voorrang bij de Skyride, de Christmas Town Express en de Rhine River Christmas Cruise. Omdat de cruise tijdelijk dicht is, blijven daar voorlopig twee van over.
 
 ```ride-waits-widget
 rides: busch-gardens-williamsburg/apollos-chariot|Apollo's Chariot;busch-gardens-williamsburg/all-new-the-big-bad-wolf-the-wolfs-revenge|The Big Bad Wolf;busch-gardens-williamsburg/darkoaster|DarKoaster;busch-gardens-williamsburg/finnegans-flyer|Finnegan's Flyer;busch-gardens-williamsburg/verbolten|Verbolten: Forbidden Turn;busch-gardens-williamsburg/grovers-alpine-express|Grover's Alpine Express
@@ -115,7 +115,7 @@ Het park ligt aan 1 Busch Gardens Boulevard in Williamsburg. Met de auto neem je
 
 ## Verbolten en Corkscrew Hill
 
-Het verhaal van de nieuwe versie: Black Forest Motor Tours heeft in 2026 nieuwe eigenaren, en in het Zwarte Woud staan ineens borden waar ze niet horen. Forbidden Turn is een achtbaan met een drop track, haalt tot 85 km/u (53 mph) op een baan van meer dan 850 meter en valt 27 meter richting de Rhine River. Voor 2027 heeft het park de volgende nieuwe attractie aangekondigd, Return to Corkscrew Hill.
+In de nieuwe versie krijgt Black Forest Motor Tours in 2026 nieuwe uitbaters, en langs de route door het Zwarte Woud duiken borden op die daar niet zouden moeten staan. Forbidden Turn is een achtbaan met een drop track, haalt tot 85 km/u (53 mph) op een baan van meer dan 850 meter en valt 27 meter richting de Rhine River. Lang blijft Verbolten niet de nieuwste attractie van het park: voor 2027 is Return to Corkscrew Hill aangekondigd.
 
 [Busch Gardens Williamsburg](ref:busch-gardens-williamsburg?full)
 

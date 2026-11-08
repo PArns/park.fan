@@ -41,7 +41,7 @@ seo:
     - Williamsburg Virginia Natale 2026
 ---
 
-Venerdì 13 novembre [Busch Gardens Williamsburg](ref:busch-gardens-williamsburg), in Virginia, apre Christmas Town, il suo evento di Natale, e quest'anno in programma c'è un concerto nuovo, The Queens of Christmas. Per la prima volta ne fa parte anche [Verbolten: Forbidden Turn](ref:busch-gardens-williamsburg/verbolten), le montagne russe rifatte e riaperte in primavera, che però al momento sono chiuse. Christmas Town va avanti fino al 3 gennaio 2027 e nei giorni dell'evento dura dall'apertura alla chiusura del parco. Per l'occasione il parco appende più di dieci milioni di luci.
+Venerdì 13 novembre [Busch Gardens Williamsburg](ref:busch-gardens-williamsburg), in Virginia, apre Christmas Town, il suo evento di Natale, e quest'anno in programma c'è un concerto nuovo, The Queens of Christmas. Per la prima volta ne fa parte anche [Verbolten: Forbidden Turn](ref:busch-gardens-williamsburg/verbolten), le montagne russe rifatte in primavera, che però al momento è chiusa. Christmas Town va avanti fino al 3 gennaio 2027 e nei giorni dell'evento dura dall'apertura alla chiusura del parco. Per l'occasione il parco appende più di dieci milioni di luci.
 
 ## Giorni dell'evento e orari
 
@@ -65,7 +65,7 @@ Il giorno del Ringraziamento il tacchino di famiglia va quindi finito entro le 1
 
 Le Queens of Christmas sono un trio che sul palco dell'Italy Pavilion canta classici natalizi come «This Christmas» e «Santa Baby». Dal lunedì al giovedì, fino al 10 dicembre, salgono sul palco di solito alle 17, alle 19 e alle 20:30. Dal 14 dicembre, dal lunedì al venerdì, gli spettacoli diventano quattro a partire dalle 16, e di sabato, come il 21 novembre, si arriva fino a cinque a partire dalle 13:30. Nei sei mercoledì dal 25 novembre al 30 dicembre il concerto non è in programma. Un posto riservato costa 5,99 dollari.
 
-Verbolten: Forbidden Turn ha aperto il 30 maggio 2026 come nuova versione di Verbolten, con una storia tutta sua, animatronic ed effetti speciali. Adesso però è chiusa temporaneamente, e il parco non ha ancora comunicato quando tornerà a girare.
+Verbolten: Forbidden Turn ha aperto il 30 maggio 2026 come nuova versione di Verbolten, con una storia tutta sua, animatronic ed effetti speciali. Il parco non ha ancora comunicato quando tornerà a girare.
 
 Wisemen, che nel 2025 andava in scena a Il Teatro di San Marco, nel 2026 non c'è più.
 
@@ -73,7 +73,7 @@ Wisemen, che nel 2025 andava in scena a Il Teatro di San Marco, nel 2026 non c'�
 
 Christmas Town Live! A Holiday Special va in scena al coperto, nel Das Festhaus dell'area Oktoberfest, ed è costruito come uno speciale natalizio della televisione degli anni Sessanta. Lì un posto riservato costa 9,99 dollari. Al chiuso ci sono anche Gloria!, la storia della Natività all'Abbey Stone Theatre, in Ireland, e il musical Scrooge No More! al Globe Theatre, in England. All'Abbey Stone Theatre, una volta iniziato lo spettacolo, non entra più nessuno. Per entrambi gli show un posto riservato costa 5,99 dollari e un Insider Tour 24,99 dollari, con uno sguardo alla storia del teatro e un incontro con gli attori.
 
-All'aperto, sul palco del Sesame Street Forest of Fun, Elmo, Cookie Monster, Rosita, Grover e Zoe portano in scena Elmo's Christmas Wish, il lunedì e il mercoledì in una versione ridotta. Lo show sul ghiaccio 'Twas That Night al Royal Palace Theatre, in France, è tratto dalla poesia «A Visit From St. Nicholas» e secondo la sua pagina dovrebbe debuttare il 27 novembre. Nel programma giornaliero del parco, però, fino al 3 gennaio non compare in nessun giorno.
+All'aperto, sul palco del Sesame Street Forest of Fun, Elmo, Cookie Monster, Rosita, Grover e Zoe portano in scena Elmo's Christmas Wish, il lunedì e il mercoledì in una versione modificata. Lo show sul ghiaccio 'Twas That Night al Royal Palace Theatre, in France, è tratto dalla poesia «A Visit From St. Nicholas» e secondo la sua pagina dovrebbe debuttare il 27 novembre. Nel programma giornaliero del parco, però, fino al 3 gennaio non compare in nessun giorno.
 
 Nell'area Oktoberfest la Celebration of Lights accende un albero di Natale alto 15 metri, e al Polar Pathway: Spectacle of Lights più di un milione di LED lampeggiano a tempo di musica. In England cantano i Carolers, in France suonano i Merry Misfits, con voce, chitarra e cajón. Santa's Workshop si trova nell'area North Pole, nel Wilkommenhaus.
 
@@ -88,7 +88,7 @@ Durante Christmas Town sono aperte 25 attrazioni, tra cui cinque montagne russe 
 - Verbolten: Forbidden Turn, al momento chiusa: 122 cm (48 pollici)
 - [Grover's Alpine Express](ref:busch-gardens-williamsburg/grovers-alpine-express): 104 cm (41 pollici), accompagnati 97 cm (38 pollici)
 
-Alpengeist, Griffon, InvadR, Loch Ness Monster, Pantheon e Tempesto non sono nell'elenco di Christmas Town. Loch Ness Monster e Alpengeist chiudono dal 9 novembre, Tempesto e Pantheon sono chiuse temporaneamente. InvadR chiude il 30 novembre, e se fino ad allora le montagne russe in legno girino anche nelle sere di Christmas Town il parco non l'ha comunicato. Le attrazioni acquatiche Le Scoot, Roman Rapids ed Escape from Pompeii restano chiuse per la stagione, come Bert and Ernie's Loch Adventure e Chug a Tug, mentre la Rhine River Cruise è ferma temporaneamente.
+Alpengeist, Griffon, InvadR, Loch Ness Monster, Pantheon e Tempesto non sono nell'elenco di Christmas Town. Loch Ness Monster e Alpengeist chiudono dal 9 novembre, Tempesto e Pantheon sono chiuse temporaneamente. InvadR chiude il 30 novembre. Il parco non ha comunicato se fino ad allora le montagne russe in legno girano anche nelle sere di Christmas Town. Le attrazioni acquatiche Le Scoot, Roman Rapids ed Escape from Pompeii restano chiuse per la stagione, come Bert and Ernie's Loch Adventure e Chug a Tug, mentre la Rhine River Cruise è ferma temporaneamente.
 
 ## Biglietti e abbonamenti
 
@@ -100,14 +100,14 @@ Il parcheggio online costa da 35 dollari al giorno, il Multi-Day Parking 65 doll
 
 ## Quick Queue e cibo
 
-Il Winter Quick Queue per una corsa su ciascuna attrazione costa da 29,99 dollari e vale per Apollo's Chariot, Big Bad Wolf, Finnegan's Flyer e altre sette attrazioni. L'Unlimited Plus costa da 49,99 dollari, vale senza limiti sulle stesse dieci attrazioni e in più dà una corsa ciascuno su DarKoaster e Verbolten. Finché Verbolten resta chiusa, di questo extra rimane solo la corsa su DarKoaster. Il Christmas Town Scenic Pass da 49,99 dollari promette la precedenza su Skyride, Christmas Town Express e Rhine River Christmas Cruise, la cui barca al momento non naviga.
+Il Winter Quick Queue per una corsa su ciascuna attrazione costa da 29,99 dollari e vale per Apollo's Chariot, Big Bad Wolf, Finnegan's Flyer e altre sette attrazioni. L'Unlimited Plus costa da 49,99 dollari, vale senza limiti sulle stesse dieci attrazioni e in più dà una corsa su DarKoaster e una su Verbolten. Finché Verbolten resta chiusa, di questo extra rimane solo la corsa su DarKoaster. Il Christmas Town Scenic Pass da 49,99 dollari promette la precedenza su Skyride, Christmas Town Express e Rhine River Christmas Cruise. Visto che la crociera è chiusa temporaneamente, per ora di precedenze ne restano due.
 
 ```ride-waits-widget
 rides: busch-gardens-williamsburg/apollos-chariot|Apollo's Chariot;busch-gardens-williamsburg/all-new-the-big-bad-wolf-the-wolfs-revenge|The Big Bad Wolf;busch-gardens-williamsburg/darkoaster|DarKoaster;busch-gardens-williamsburg/finnegans-flyer|Finnegan's Flyer;busch-gardens-williamsburg/verbolten|Verbolten: Forbidden Turn;busch-gardens-williamsburg/grovers-alpine-express|Grover's Alpine Express
 columns: land,peak,days
 ```
 
-Il Santa's Fireside Feast, nell'area Killarney in Ireland, costa da 45 dollari e va prenotato. Si mangia a volontà, Babbo Natale legge una storia di Natale e passa a salutare Mrs. Claus. L'All-Day Dining costa 45 dollari in aggiunta al biglietto e permette un pasto ogni 90 minuti al Das Festhaus, al Marco Polo's Marketplace, al Trappers Smokehouse, a Les Frites o da German Pretzels and Beer. Das Festhaus serve un «German Christmas Dinner», e in un'area che si chiama Oktoberfest nessuno si aspettava il cenone di pesce. Solo durante Christmas Town ci sono cioccolate calde aromatizzate e deep-dish cookie.
+Il Santa's Fireside Feast, nell'area Killarney in Ireland, costa da 45 dollari e va prenotato. Si mangia a volontà, Babbo Natale legge una storia di Natale e Mrs. Claus passa a salutare. L'All-Day Dining costa 45 dollari in aggiunta al biglietto e permette un pasto ogni 90 minuti al Das Festhaus, al Marco Polo's Marketplace, al Trappers Smokehouse, a Les Frites o da German Pretzels and Beer. Das Festhaus serve un «German Christmas Dinner», e in un'area che si chiama Oktoberfest nessuno si aspettava il cenone di pesce. Solo durante Christmas Town ci sono cioccolate calde aromatizzate e deep-dish cookie.
 
 ## Come arrivare
 
@@ -115,7 +115,7 @@ Il parco si trova al 1 di Busch Gardens Boulevard, a Williamsburg, e in auto si 
 
 ## Verbolten e Corkscrew Hill
 
-La storia della nuova versione: nel 2026 la Black Forest Motor Tours ha nuovi gestori, e nella Foresta Nera spuntano all'improvviso cartelli dove non dovrebbero stare. Forbidden Turn sono montagne russe con un tratto di binario che sprofonda, arrivano a 85 km/h (53 mph) su più di 850 metri di percorso e scendono di 27 metri verso il Rhine River. Per il 2027 il parco ha già annunciato la prossima novità, l'attrazione Return to Corkscrew Hill.
+Nella nuova versione, nel 2026 la Black Forest Motor Tours passa a nuovi gestori, e lungo il percorso attraverso la Foresta Nera compaiono cartelli che lì non dovrebbero esserci. Forbidden Turn ha un tratto di binario che sprofonda, raggiunge 85 km/h (53 mph) su più di 850 metri di percorso e scende di 27 metri verso il Rhine River. Verbolten non resterà a lungo la novità più recente del parco: per il 2027 è annunciata Return to Corkscrew Hill.
 
 [Busch Gardens Williamsburg](ref:busch-gardens-williamsburg?full)
 
