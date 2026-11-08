@@ -2,7 +2,7 @@
 title: 'Busch Gardens Williamsburg invite les Queens of Christmas'
 translationKey: busch-gardens-williamsburg-christmas-town-2026
 date: '2026-11-08'
-time: '07:30'
+time: '08:19'
 author: patrick
 mode: published
 featured: false
@@ -41,7 +41,7 @@ seo:
     - Williamsburg Virginie Noël 2026
 ---
 
-Le vendredi 13 novembre, [Busch Gardens Williamsburg](ref:busch-gardens-williamsburg), en Virginie, ouvre Christmas Town, son événement de Noël, avec cette année un nouveau concert, The Queens of Christmas. Pour la première fois, la fête inclut aussi [Verbolten: Forbidden Turn](ref:busch-gardens-williamsburg/verbolten), la montagne russe transformée au printemps, même si elle est fermée en ce moment. Christmas Town dure jusqu’au 3 janvier 2027 et, les jours d’événement, de l’ouverture à la fermeture du parc. Pour l’occasion, plus de dix millions de lumières sont accrochées dans le parc.
+Le vendredi 13 novembre, [Busch Gardens Williamsburg](ref:busch-gardens-williamsburg), en Virginie, ouvre son événement de Noël, Christmas Town. Cette année, le programme compte un nouveau concert, The Queens of Christmas. Pour la première fois, la fête inclut aussi [Verbolten: Forbidden Turn](ref:busch-gardens-williamsburg/verbolten), la montagne russe transformée au printemps, même si elle est fermée en ce moment. Christmas Town dure jusqu’au 3 janvier 2027 et, les jours d’événement, de l’ouverture à la fermeture du parc. Pour l’occasion, plus de dix millions de lumières sont accrochées dans le parc.
 
 ## Jours de l’événement et horaires
 
@@ -63,15 +63,15 @@ Qui vient le jour de Thanksgiving a donc jusqu’à 15 h pour sa dinde. Les rest
 
 ## Les nouveautés
 
-The Queens of Christmas, c’est un trio qui chante des classiques de Noël comme « This Christmas » et « Santa Baby » sur la scène de l’Italy Pavilion. Du lundi au jeudi jusqu’au 10 décembre, le trio passe le plus souvent à 17 h, 19 h et 20 h 30. À partir du 14 décembre, il chante quatre fois par jour en semaine, à partir de 16 h, et les samedis comme le 21 novembre jusqu’à cinq fois, à partir de 13 h 30. Les six mercredis entre le 25 novembre et le 30 décembre, le concert ne figure pas au programme. Une place réservée coûte 5,99 $.
+The Queens of Christmas, c’est un trio qui chante des classiques de Noël comme « This Christmas » et « Santa Baby » sur la scène de l’Italy Pavilion. Du lundi au jeudi jusqu’au 10 décembre, le trio passe le plus souvent à 17 h, 19 h et 20 h 30. À partir du 14 décembre, il chante quatre fois par jour en semaine, dès 16 h. Le samedi, comme le 21 novembre, il monte jusqu’à cinq fois sur scène, dès 13 h 30. Les six mercredis entre le 25 novembre et le 30 décembre, le concert ne figure pas au programme. Une place réservée coûte 5,99 $.
 
-Verbolten: Forbidden Turn a ouvert le 30 mai 2026. C’est une nouvelle version de Verbolten, avec sa propre histoire, des animatroniques et des effets spéciaux. Le parc n’a pas encore annoncé quand elle rouvrira.
+Verbolten: Forbidden Turn a ouvert le 30 mai 2026. C’est une nouvelle version de Verbolten, avec des animatroniques et des effets spéciaux. Le parc n’a pas encore annoncé quand elle rouvrira.
 
 Wisemen, qui se jouait encore en 2025 à l’Il Teatro di San Marco, a disparu du programme 2026.
 
 ## Spectacles et lumières
 
-Christmas Town Live! A Holiday Special se joue en salle, à Das Festhaus, dans la zone Oktoberfest, à la façon d’une émission spéciale de Noël des années 1960 à la télévision. Une place réservée y coûte 9,99 $. Deux autres spectacles se jouent à l’abri : Gloria!, l’histoire de Noël à l’Abbey Stone Theatre, dans la zone Ireland, et la comédie musicale Scrooge No More! au Globe Theatre, dans la zone England. À l’Abbey Stone Theatre, plus personne n’entre une fois le spectacle commencé. Pour ces deux spectacles, une place réservée coûte 5,99 $, et une Insider Tour 24,99 $, avec un regard sur l’histoire du théâtre et une rencontre avec les comédiens.
+Christmas Town Live! A Holiday Special se joue en salle, à Das Festhaus, dans la zone Oktoberfest, à la façon d’une émission spéciale de Noël des années 1960 à la télévision. Une place réservée y coûte 9,99 $. Gloria!, l’histoire de Noël à l’Abbey Stone Theatre, dans la zone Ireland, se joue aussi en salle, tout comme la comédie musicale Scrooge No More! au Globe Theatre, dans la zone England. À l’Abbey Stone Theatre, plus personne n’entre une fois le spectacle commencé. Pour ces deux spectacles, une place réservée coûte 5,99 $, et une Insider Tour 24,99 $, avec un regard sur l’histoire du théâtre et une rencontre avec les comédiens.
 
 En plein air, sur la scène du Sesame Street Forest of Fun, Elmo, Cookie Monster, Rosita, Grover et Zoe jouent Elmo’s Christmas Wish, dans une version modifiée le lundi et le mercredi. Le spectacle sur glace ’Twas That Night, au Royal Palace Theatre, dans la zone France, s’inspire du poème « A Visit From St. Nicholas ». D’après sa page, il doit commencer le 27 novembre, mais le programme quotidien du parc ne l’affiche à aucune date jusqu’au 3 janvier.
 
@@ -92,15 +92,15 @@ Alpengeist, Griffon, InvadR, Loch Ness Monster, Pantheon et Tempesto ne sont pas
 
 ## Billets et abonnements
 
-Sans abonnement, on prend un billet d’une journée classique pour une date de Christmas Town. En caisse, il coûte 91,99 $ ces jours-là, contre 121,99 $ les autres jours de la saison. Tous les prix s’entendent hors taxes et frais. Le Christmas Town Any Day Ticket, valable un jour au choix jusqu’au 3 janvier, coûte 56,99 $, ou 101,99 $ avec l’All-Day Dining. Pour revenir plusieurs fois, la Christmas Town Fun Card à 89,99 $ est valable tous les jours de l’événement. Le Christmas Bounce Ticket réunit trois jours de Christmas Town et Colonial Williamsburg, parking compris. Il coûte 112,05 $ à partir de 13 ans et 95,05 $ de 6 à 12 ans, et les enfants de cinq ans et moins ne paient rien.
+Sans abonnement, on prend un billet d’une journée classique pour une date de Christmas Town. En caisse, il coûte 91,99 $ ces jours-là, contre 121,99 $ les autres jours de la saison. Tous les prix s’entendent hors taxes et frais. Le Christmas Town Any Day Ticket, valable un jour au choix jusqu’au 3 janvier, coûte 56,99 $, ou 101,99 $ avec l’All-Day Dining. Qui compte revenir prend la Christmas Town Fun Card à 89,99 $, valable tous les jours de l’événement. Le Christmas Bounce Ticket réunit trois jours de Christmas Town et Colonial Williamsburg, parking compris. Il coûte 112,05 $ à partir de 13 ans et 95,05 $ de 6 à 12 ans, et les enfants de cinq ans et moins ne paient rien.
 
-Les abonnements Basic, Unlimited, Premier et Platinum en cours de validité comprennent Christmas Town, tout comme le College Pass et le 2026 Military Pass. Avec Unlimited, Premier et Platinum, le parking est gratuit et il n’y a aucune date d’exclusion. La Basic Membership, elle, n’est pas valable les 21, 22, 28 et 29 novembre, les 5, 6, 12 et 13 décembre, ni du 19 au 26 décembre, c’est-à-dire la plupart des week-ends et toute la période de Noël.
+Les abonnements Basic, Unlimited, Premier et Platinum en cours de validité comprennent Christmas Town, tout comme le College Pass et le 2026 Military Pass. Avec Unlimited, Premier et Platinum, le parking est gratuit et il n’y a aucune date d’exclusion. La Basic Membership, elle, n’est pas valable les 21, 22, 28 et 29 novembre, les 5, 6, 12 et 13 décembre, ni du 19 au 26 décembre, c’est-à-dire la plupart des week-ends et les jours autour de Noël.
 
 En ligne, le parking coûte à partir de 35 $ par jour, et le Multi-Day Parking 65 $.
 
 ## Quick Queue et repas
 
-Le Winter Quick Queue, avec un passage par attraction, coûte à partir de 29,99 $ et vaut pour Apollo’s Chariot, Big Bad Wolf, Finnegan’s Flyer et sept autres attractions. L’Unlimited Plus, à partir de 49,99 $, est valable sans limite sur ces dix mêmes attractions, avec en plus un passage sur DarKoaster et un sur Verbolten. Tant que Verbolten reste fermée, ce bonus se réduit au tour de DarKoaster. Le Christmas Town Scenic Pass, à 49,99 $, promet la priorité au Skyride, au Christmas Town Express et à la Rhine River Christmas Cruise. Comme la croisière est fermée temporairement, il n’en reste pour l’instant que deux.
+Le Winter Quick Queue, avec un passage par attraction, coûte à partir de 29,99 $ et vaut pour Apollo’s Chariot, Big Bad Wolf, Finnegan’s Flyer et sept autres attractions. L’Unlimited Plus, à partir de 49,99 $, est valable sans limite sur ces dix mêmes attractions, avec en plus un passage sur DarKoaster et un sur Verbolten. Tant que Verbolten reste fermée, ce passage-là saute. Le Christmas Town Scenic Pass, à 49,99 $, promet la priorité au Skyride, au Christmas Town Express et à la Rhine River Christmas Cruise. La croisière est fermée temporairement, le pass ne vaut donc pour l’instant qu’au Skyride et au Christmas Town Express.
 
 ```ride-waits-widget
 rides: busch-gardens-williamsburg/apollos-chariot|Apollo's Chariot;busch-gardens-williamsburg/all-new-the-big-bad-wolf-the-wolfs-revenge|The Big Bad Wolf;busch-gardens-williamsburg/darkoaster|DarKoaster;busch-gardens-williamsburg/finnegans-flyer|Finnegan's Flyer;busch-gardens-williamsburg/verbolten|Verbolten: Forbidden Turn;busch-gardens-williamsburg/grovers-alpine-express|Grover's Alpine Express
@@ -115,7 +115,7 @@ Le parc se trouve au 1 Busch Gardens Boulevard, à Williamsburg. En voiture, on 
 
 ## Verbolten et Corkscrew Hill
 
-Dans la nouvelle version, Black Forest Motor Tours passe en 2026 aux mains de nouveaux exploitants, et le long du parcours à travers la Forêt-Noire apparaissent des panneaux qui ne devraient pas s’y trouver. Forbidden Turn est une montagne russe à drop track. Elle atteint 85 km/h (53 mph) sur plus de 850 mètres de parcours et plonge de 27 mètres vers la Rhine River. Verbolten ne restera pas longtemps la dernière nouveauté du parc : Return to Corkscrew Hill est annoncée pour 2027.
+Dans l’histoire de l’attraction, l’entreprise Black Forest Motor Tours a de nouveaux exploitants en 2026, et des panneaux qui n’ont rien à faire là se dressent soudain le long du parcours à travers la Forêt-Noire. Forbidden Turn est une montagne russe à drop track. Elle atteint 85 km/h (53 mph) sur plus de 850 mètres de parcours et plonge de 27 mètres vers la Rhine River. Pour 2027, le parc a annoncé l’attraction Return to Corkscrew Hill.
 
 [Busch Gardens Williamsburg](ref:busch-gardens-williamsburg?full)
 

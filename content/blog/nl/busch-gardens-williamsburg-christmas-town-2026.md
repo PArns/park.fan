@@ -2,7 +2,7 @@
 title: 'De Queens of Christmas zingen in Busch Gardens Williamsburg'
 translationKey: busch-gardens-williamsburg-christmas-town-2026
 date: '2026-11-08'
-time: '07:30'
+time: '08:19'
 author: patrick
 mode: published
 featured: false
@@ -48,14 +48,14 @@ Op vrijdag 13 november begint in [Busch Gardens Williamsburg](ref:busch-gardens-
 Van 9 tot en met 12 november is het park dicht. Na drie previewdagen volgt nog een pauze van 16 tot en met 18 november. Vanaf donderdag 19 november is Christmas Town dan elke dag open tot het einde, ook op Thanksgiving, eerste kerstdag en oudejaarsdag. Dat zijn 49 dagen, en alle tijden zijn lokale tijd:
 
 - preview op vrijdag 13 november: 17.00 tot 22.00 uur
-- preview op zaterdag 14 november van 12.00 en op zondag 15 november van 14.00 tot 22.00 uur
+- previews op zaterdag 14 en zondag 15 november: 12.00 en 14.00 tot 22.00 uur
 - maandag tot en met donderdag van 19 november tot 10 december: 16.00 tot 21.00 uur, op 25 november vanaf 14.00 uur, op Thanksgiving (26 november) 15.00 tot 21.00 uur
 - vrijdag tot en met zondag tot 20 december: vrijdag 14.00 tot 22.00 uur (op 20 november vanaf 17.00 uur, op 27 november vanaf 12.00 uur), zaterdag 12.00 tot 22.00 uur, zondag 14.00 tot 22.00 uur
 - maandag 14 tot en met donderdag 17 december: 15.00 tot 22.00 uur
 - van 21 december tot nieuwjaar: 14.00 tot 22.00 uur, op eerste kerstdag vanaf 15.00 uur, op 26 en 27 december vanaf 12.00 uur
 - zaterdag 2 en zondag 3 januari: 14.00 tot 21.00 uur
 
-Op Thanksgiving gaat het park pas om 15.00 uur open, er is dus eerst nog tijd voor de kalkoen. Ook op 25 december zijn de restaurants in het park open.
+Wie op Thanksgiving komt, heeft tot 15.00 uur de tijd voor de kalkoen. Ook op 25 december zijn de restaurants in het park open.
 
 ```best-days-widget slug=busch-gardens-williamsburg
 
@@ -63,9 +63,9 @@ Op Thanksgiving gaat het park pas om 15.00 uur open, er is dus eerst nog tijd vo
 
 ## Wat er nieuw is
 
-The Queens of Christmas zijn een trio dat op het podium bij het Italy Pavilion kerstliedjes zingt, zoals “This Christmas” en “Santa Baby”. Tot 10 december staan de drie van maandag tot en met donderdag meestal om 17.00, 19.00 en 20.30 uur op het podium. Vanaf 14 december treden ze doordeweeks vier keer op, de eerste keer om 16.00 uur, en op zaterdagen zoals 21 november tot vijf keer, vanaf 13.30 uur. Op de zes woensdagen van 25 november tot 30 december staat het concert niet op het programma. Een gereserveerde zitplaats kost 5,99 dollar.
+The Queens of Christmas zijn een trio dat op het podium bij het Italy Pavilion kerstliedjes zingt, zoals “This Christmas” en “Santa Baby”. Tot 10 december staan de drie van maandag tot en met donderdag meestal om 17.00, 19.00 en 20.30 uur op het podium. Vanaf 14 december treden ze doordeweeks vier keer op, vanaf 16.00 uur. Op zaterdagen, zoals 21 november, zijn het er tot vijf, vanaf 13.30 uur. Op de zes woensdagen van 25 november tot 30 december staat het concert niet op het programma. Een gereserveerde zitplaats kost 5,99 dollar.
 
-Verbolten: Forbidden Turn ging op 30 mei 2026 open, als nieuwe versie van Verbolten met een eigen verhaal, animatronics en speciale effecten. Wanneer de baan weer rijdt, heeft het park nog niet bekendgemaakt.
+Verbolten: Forbidden Turn ging op 30 mei 2026 open, als nieuwe versie van Verbolten met animatronics en speciale effecten. Wanneer de baan weer rijdt, heeft het park nog niet bekendgemaakt.
 
 Wisemen, in 2025 nog te zien in Il Teatro di San Marco, speelt in 2026 niet meer.
 
@@ -100,7 +100,7 @@ Parkeren kost online vanaf 35 dollar per dag, Multi-Day Parking 65 dollar.
 
 ## Quick Queue en eten
 
-Winter Quick Queue voor één rit per attractie kost vanaf 29,99 dollar en geldt bij Apollo's Chariot, Big Bad Wolf, Finnegan's Flyer en zeven andere attracties. Unlimited Plus kost vanaf 49,99 dollar, geldt zonder limiet bij dezelfde tien attracties en daarnaast één keer bij DarKoaster en Verbolten. Zolang Verbolten dicht is, blijft van die extra's alleen de rit in DarKoaster over. De Christmas Town Scenic Pass van 49,99 dollar belooft voorrang bij de Skyride, de Christmas Town Express en de Rhine River Christmas Cruise. Omdat de cruise tijdelijk dicht is, blijven daar voorlopig twee van over.
+Winter Quick Queue voor één rit per attractie kost vanaf 29,99 dollar en geldt bij Apollo's Chariot, Big Bad Wolf, Finnegan's Flyer en zeven andere attracties. Unlimited Plus kost vanaf 49,99 dollar, geldt zonder limiet bij dezelfde tien attracties en daarnaast één keer bij DarKoaster en Verbolten. Zolang Verbolten dicht is, vervalt die ene rit. De Christmas Town Scenic Pass van 49,99 dollar belooft voorrang bij de Skyride, de Christmas Town Express en de Rhine River Christmas Cruise. De cruise is tijdelijk dicht, dus voorlopig geldt de pass alleen bij de Skyride en de Christmas Town Express.
 
 ```ride-waits-widget
 rides: busch-gardens-williamsburg/apollos-chariot|Apollo's Chariot;busch-gardens-williamsburg/all-new-the-big-bad-wolf-the-wolfs-revenge|The Big Bad Wolf;busch-gardens-williamsburg/darkoaster|DarKoaster;busch-gardens-williamsburg/finnegans-flyer|Finnegan's Flyer;busch-gardens-williamsburg/verbolten|Verbolten: Forbidden Turn;busch-gardens-williamsburg/grovers-alpine-express|Grover's Alpine Express
@@ -115,7 +115,7 @@ Het park ligt aan 1 Busch Gardens Boulevard in Williamsburg. Met de auto neem je
 
 ## Verbolten en Corkscrew Hill
 
-In de nieuwe versie krijgt Black Forest Motor Tours in 2026 nieuwe uitbaters, en langs de route door het Zwarte Woud duiken borden op die daar niet zouden moeten staan. Forbidden Turn is een achtbaan met een drop track, haalt tot 85 km/u (53 mph) op een baan van meer dan 850 meter en valt 27 meter richting de Rhine River. Lang blijft Verbolten niet de nieuwste attractie van het park: voor 2027 is Return to Corkscrew Hill aangekondigd.
+In het verhaal van de baan heeft het bedrijf Black Forest Motor Tours in 2026 nieuwe uitbaters, en langs de route door het Zwarte Woud staan ineens borden die daar niet horen. Forbidden Turn is een achtbaan met een drop track, haalt tot 85 km/u (53 mph) op een baan van meer dan 850 meter en valt 27 meter richting de Rhine River. Voor 2027 heeft het park de attractie Return to Corkscrew Hill aangekondigd.
 
 [Busch Gardens Williamsburg](ref:busch-gardens-williamsburg?full)
 

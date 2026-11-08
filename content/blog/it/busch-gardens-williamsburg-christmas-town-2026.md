@@ -2,7 +2,7 @@
 title: 'Le Queens of Christmas cantano a Busch Gardens Williamsburg'
 translationKey: busch-gardens-williamsburg-christmas-town-2026
 date: '2026-11-08'
-time: '07:30'
+time: '08:19'
 author: patrick
 mode: published
 featured: false
@@ -41,14 +41,14 @@ seo:
     - Williamsburg Virginia Natale 2026
 ---
 
-Venerdì 13 novembre [Busch Gardens Williamsburg](ref:busch-gardens-williamsburg), in Virginia, apre Christmas Town, il suo evento di Natale, e quest'anno in programma c'è un concerto nuovo, The Queens of Christmas. Per la prima volta ne fa parte anche [Verbolten: Forbidden Turn](ref:busch-gardens-williamsburg/verbolten), le montagne russe rifatte in primavera, che però al momento è chiusa. Christmas Town va avanti fino al 3 gennaio 2027 e nei giorni dell'evento dura dall'apertura alla chiusura del parco. Per l'occasione il parco appende più di dieci milioni di luci.
+Venerdì 13 novembre [Busch Gardens Williamsburg](ref:busch-gardens-williamsburg), in Virginia, apre Christmas Town, il suo evento di Natale, e quest'anno in programma c'è un concerto nuovo, The Queens of Christmas. Per la prima volta ne fa parte anche [Verbolten: Forbidden Turn](ref:busch-gardens-williamsburg/verbolten), le montagne russe rifatte in primavera, che però al momento sono chiuse. Christmas Town va avanti fino al 3 gennaio 2027 e nei giorni dell'evento dura dall'apertura alla chiusura del parco. Per l'occasione il parco appende più di dieci milioni di luci.
 
 ## Giorni dell'evento e orari
 
 Dal 9 al 12 novembre il parco resta chiuso. Ai tre giorni di anteprima segue una seconda pausa, dal 16 al 18 novembre, poi da giovedì 19 novembre Christmas Town apre tutti i giorni fino alla fine, compresi il Ringraziamento, Natale e San Silvestro. In tutto sono 49 giorni, con questi orari locali:
 
 - anteprima di venerdì 13 novembre: dalle 17 alle 22
-- anteprima di sabato 14 e domenica 15 novembre: fino alle 22, il sabato dalle 12 e la domenica dalle 14
+- anteprime di sabato 14 e domenica 15 novembre: fino alle 22, il sabato dalle 12 e la domenica dalle 14
 - da lunedì a giovedì, dal 19 novembre al 10 dicembre: dalle 16 alle 21, il 25 novembre dalle 14, il giorno del Ringraziamento (26 novembre) dalle 15 alle 21
 - da venerdì a domenica, fino al 20 dicembre: il venerdì dalle 14 alle 22 (il 20 novembre dalle 17, il 27 novembre dalle 12), il sabato dalle 12 alle 22, la domenica dalle 14 alle 22
 - da lunedì 14 a giovedì 17 dicembre: dalle 15 alle 22
@@ -63,9 +63,9 @@ Il giorno del Ringraziamento il tacchino di famiglia va quindi finito entro le 1
 
 ## Le novità
 
-Le Queens of Christmas sono un trio che sul palco dell'Italy Pavilion canta classici natalizi come «This Christmas» e «Santa Baby». Dal lunedì al giovedì, fino al 10 dicembre, salgono sul palco di solito alle 17, alle 19 e alle 20:30. Dal 14 dicembre, dal lunedì al venerdì, gli spettacoli diventano quattro a partire dalle 16, e di sabato, come il 21 novembre, si arriva fino a cinque a partire dalle 13:30. Nei sei mercoledì dal 25 novembre al 30 dicembre il concerto non è in programma. Un posto riservato costa 5,99 dollari.
+Le Queens of Christmas sono un trio che sul palco dell'Italy Pavilion canta classici natalizi come «This Christmas» e «Santa Baby». Dal lunedì al giovedì, fino al 10 dicembre, salgono sul palco di solito alle 17, alle 19 e alle 20:30. Dal 14 dicembre, dal lunedì al venerdì, gli spettacoli diventano quattro, il primo alle 16. Di sabato, come il 21 novembre, si arriva fino a cinque, dalle 13:30. Nei sei mercoledì dal 25 novembre al 30 dicembre il concerto non è in programma. Un posto riservato costa 5,99 dollari.
 
-Verbolten: Forbidden Turn ha aperto il 30 maggio 2026 come nuova versione di Verbolten, con una storia tutta sua, animatronic ed effetti speciali. Il parco non ha ancora comunicato quando tornerà a girare.
+Verbolten: Forbidden Turn ha aperto il 30 maggio 2026 come nuova versione di Verbolten, con animatronic ed effetti speciali. Quando tornerà in funzione, il parco non l'ha ancora comunicato.
 
 Wisemen, che nel 2025 andava in scena a Il Teatro di San Marco, nel 2026 non c'è più.
 
@@ -100,7 +100,7 @@ Il parcheggio online costa da 35 dollari al giorno, il Multi-Day Parking 65 doll
 
 ## Quick Queue e cibo
 
-Il Winter Quick Queue per una corsa su ciascuna attrazione costa da 29,99 dollari e vale per Apollo's Chariot, Big Bad Wolf, Finnegan's Flyer e altre sette attrazioni. L'Unlimited Plus costa da 49,99 dollari, vale senza limiti sulle stesse dieci attrazioni e in più dà una corsa su DarKoaster e una su Verbolten. Finché Verbolten resta chiusa, di questo extra rimane solo la corsa su DarKoaster. Il Christmas Town Scenic Pass da 49,99 dollari promette la precedenza su Skyride, Christmas Town Express e Rhine River Christmas Cruise. Visto che la crociera è chiusa temporaneamente, per ora di precedenze ne restano due.
+Il Winter Quick Queue per una corsa su ciascuna attrazione costa da 29,99 dollari e vale per Apollo's Chariot, Big Bad Wolf, Finnegan's Flyer e altre sette attrazioni. L'Unlimited Plus costa da 49,99 dollari, vale senza limiti sulle stesse dieci attrazioni e in più dà una corsa su DarKoaster e una su Verbolten. Finché Verbolten resta chiusa, quella corsa salta. Il Christmas Town Scenic Pass da 49,99 dollari promette la precedenza su Skyride, Christmas Town Express e Rhine River Christmas Cruise. La crociera è chiusa temporaneamente, quindi per ora il pass vale solo su Skyride e Christmas Town Express.
 
 ```ride-waits-widget
 rides: busch-gardens-williamsburg/apollos-chariot|Apollo's Chariot;busch-gardens-williamsburg/all-new-the-big-bad-wolf-the-wolfs-revenge|The Big Bad Wolf;busch-gardens-williamsburg/darkoaster|DarKoaster;busch-gardens-williamsburg/finnegans-flyer|Finnegan's Flyer;busch-gardens-williamsburg/verbolten|Verbolten: Forbidden Turn;busch-gardens-williamsburg/grovers-alpine-express|Grover's Alpine Express
@@ -115,7 +115,7 @@ Il parco si trova al 1 di Busch Gardens Boulevard, a Williamsburg, e in auto si 
 
 ## Verbolten e Corkscrew Hill
 
-Nella nuova versione, nel 2026 la Black Forest Motor Tours passa a nuovi gestori, e lungo il percorso attraverso la Foresta Nera compaiono cartelli che lì non dovrebbero esserci. Forbidden Turn ha un tratto di binario che sprofonda, raggiunge 85 km/h (53 mph) su più di 850 metri di percorso e scende di 27 metri verso il Rhine River. Verbolten non resterà a lungo la novità più recente del parco: per il 2027 è annunciata Return to Corkscrew Hill.
+Nella trama dell'attrazione, nel 2026 l'azienda Black Forest Motor Tours ha nuovi gestori, e lungo il percorso attraverso la Foresta Nera spuntano all'improvviso cartelli che lì non c'entrano. Forbidden Turn ha un tratto di binario che sprofonda, raggiunge 85 km/h (53 mph) su più di 850 metri di percorso e scende di 27 metri verso il Rhine River. Per il 2027 il parco ha annunciato l'attrazione Return to Corkscrew Hill.
 
 [Busch Gardens Williamsburg](ref:busch-gardens-williamsburg?full)
 

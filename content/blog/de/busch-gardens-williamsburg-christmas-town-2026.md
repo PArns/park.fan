@@ -2,7 +2,7 @@
 title: 'In Busch Gardens Williamsburg singen die Queens of Christmas'
 translationKey: busch-gardens-williamsburg-christmas-town-2026
 date: '2026-11-08'
-time: '07:30'
+time: '08:19'
 author: patrick
 mode: published
 featured: false
@@ -65,7 +65,7 @@ Wer an Thanksgiving kommt, hat bis 15 Uhr Zeit für den Truthahn. Die Restaurant
 
 The Queens of Christmas sind ein Trio, das auf der Bühne am Italy Pavilion Weihnachtslieder wie „This Christmas“ und „Santa Baby“ singt. Montags bis donnerstags bis zum 10. Dezember treten die drei meist um 17, 19 und 20:30 Uhr auf, ab dem 14. Dezember werktags viermal ab 16 Uhr, an Samstagen wie dem 21. November bis zu fünfmal ab 13:30 Uhr. An den sechs Mittwochen vom 25. November bis 30. Dezember steht das Konzert nicht im Plan. Ein reservierter Sitzplatz kostet 5,99 Dollar.
 
-Verbolten: Forbidden Turn hat am 30. Mai 2026 eröffnet, als neue Fassung von Verbolten mit eigener Geschichte, Animatronics und Spezialeffekten. Wann sie wieder fährt, hat der Park bisher nicht bekannt gegeben.
+Verbolten: Forbidden Turn hat am 30. Mai 2026 eröffnet, als neue Fassung von Verbolten mit Animatronics und Spezialeffekten. Wann sie wieder fährt, hat der Park bisher nicht bekannt gegeben.
 
 Wisemen, 2025 noch im Il Teatro di San Marco, spielt 2026 nicht mehr.
 
@@ -100,7 +100,7 @@ Parken kostet online ab 35 Dollar am Tag, das Multi-Day Parking 65 Dollar.
 
 ## Quick Queue und Essen
 
-Winter Quick Queue für je eine Fahrt kostet ab 29,99 Dollar und gilt an Apollo's Chariot, Big Bad Wolf, Finnegan's Flyer und sieben weiteren Fahrgeschäften. Unlimited Plus kostet ab 49,99 Dollar, gilt an denselben zehn Fahrgeschäften ohne Begrenzung und dazu je einmal an DarKoaster und Verbolten. Solange Verbolten geschlossen ist, bleibt von diesem Extra nur die Fahrt auf DarKoaster. Der Christmas Town Scenic Pass für 49,99 Dollar verspricht Vorrang beim Skyride, beim Christmas Town Express und bei der Rhine River Christmas Cruise. Weil die Cruise vorübergehend geschlossen ist, bleiben davon zurzeit zwei Vorränge.
+Winter Quick Queue für je eine Fahrt kostet ab 29,99 Dollar und gilt an Apollo's Chariot, Big Bad Wolf, Finnegan's Flyer und sieben weiteren Fahrgeschäften. Unlimited Plus kostet ab 49,99 Dollar, gilt an denselben zehn Fahrgeschäften ohne Begrenzung und dazu je einmal an DarKoaster und Verbolten. Solange Verbolten geschlossen ist, fällt diese eine Fahrt weg. Der Christmas Town Scenic Pass für 49,99 Dollar verspricht Vorrang beim Skyride, beim Christmas Town Express und bei der Rhine River Christmas Cruise. Die Cruise ist vorübergehend geschlossen, der Pass gilt zurzeit also nur am Skyride und am Christmas Town Express.
 
 ```ride-waits-widget
 rides: busch-gardens-williamsburg/apollos-chariot|Apollo's Chariot;busch-gardens-williamsburg/all-new-the-big-bad-wolf-the-wolfs-revenge|The Big Bad Wolf;busch-gardens-williamsburg/darkoaster|DarKoaster;busch-gardens-williamsburg/finnegans-flyer|Finnegan's Flyer;busch-gardens-williamsburg/verbolten|Verbolten: Forbidden Turn;busch-gardens-williamsburg/grovers-alpine-express|Grover's Alpine Express
@@ -115,7 +115,7 @@ Der Park liegt am 1 Busch Gardens Boulevard in Williamsburg, mit dem Auto über 
 
 ## Verbolten und Corkscrew Hill
 
-In der neuen Fassung übernehmen 2026 neue Betreiber die Black Forest Motor Tours, und entlang der Strecke durch den Schwarzwald tauchen Schilder auf, die dort nicht stehen sollten. Forbidden Turn ist eine Drop-Track-Achterbahn, fährt bis zu 85 km/h (53 mph) auf mehr als 850 Metern Strecke und stürzt 27 Meter in Richtung Rhine River. Lange bleibt Verbolten nicht die neueste Attraktion im Park: Für 2027 ist Return to Corkscrew Hill angekündigt.
+In der Rahmenhandlung der Bahn hat das Unternehmen Black Forest Motor Tours 2026 neue Betreiber, und an der Strecke durch den Schwarzwald stehen auf einmal Schilder, die dort nicht hingehören. Forbidden Turn ist eine Drop-Track-Achterbahn, fährt bis zu 85 km/h (53 mph) auf mehr als 850 Metern Strecke und stürzt 27 Meter in Richtung Rhine River. Für 2027 hat der Park die Attraktion Return to Corkscrew Hill angekündigt.
 
 [Busch Gardens Williamsburg](ref:busch-gardens-williamsburg?full)
 
