@@ -20,9 +20,9 @@ parkLinks:
   - phantasialand
 rideLinks: false
 coverImage:
-  src: /media/phantasialand/raik-16x9.jpg
-  alt: 'Raik’s timber station buildings above a basalt wall.'
-  caption: 'Raik in Klugheim. The area has stood since 2016 where the Silver City western town stood until 2014.'
+  src: /media/phantasialand/pferdekarussell-16x9.jpg
+  alt: 'The Pferdekarussell under a black iron pavilion, with planters of red flowers in front.'
+  caption: 'The Pferdekarussell in Berlin, the Golden Twenties area right by the entrance.'
   credit: 'Patrick Arns'
 seo:
   title: 'Phantasialand expansion: 5,656 signatures handed in'

@@ -20,9 +20,9 @@ parkLinks:
   - phantasialand
 rideLinks: false
 coverImage:
-  src: /media/phantasialand/raik-16x9.jpg
-  alt: 'Die Holzgebäude der Station von Raik über einer Basaltmauer.'
-  caption: 'Raik in Klugheim. Der Themenbereich steht seit 2016 dort, wo bis 2014 die Westernstadt Silver City war.'
+  src: /media/phantasialand/pferdekarussell-16x9.jpg
+  alt: 'Das Pferdekarussell unter einem schwarzen Eisenpavillon, davor Kübel mit roten Blüten.'
+  caption: 'Das Pferdekarussell in Berlin, dem Themenbereich im Stil der Goldenen Zwanziger gleich am Eingang.'
   credit: 'Patrick Arns'
 seo:
   title: 'Phantasialand-Erweiterung: 5.656 Unterschriften abgegeben'

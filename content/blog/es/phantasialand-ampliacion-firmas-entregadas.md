@@ -20,9 +20,9 @@ parkLinks:
   - phantasialand
 rideLinks: false
 coverImage:
-  src: /media/phantasialand/raik-16x9.jpg
-  alt: 'Los edificios de madera de la estación de Raik sobre un muro de basalto.'
-  caption: 'Raik, en Klugheim. La zona ocupa desde 2016 el lugar donde hasta 2014 estaba el pueblo del oeste Silver City.'
+  src: /media/phantasialand/pferdekarussell-16x9.jpg
+  alt: 'El Pferdekarussell bajo un pabellón de hierro negro, con jardineras de flores rojas delante.'
+  caption: 'El Pferdekarussell en Berlin, la zona al estilo de los años veinte junto a la entrada.'
   credit: 'Patrick Arns'
 seo:
   title: 'Ampliación de Phantasialand: entregadas 5.656 firmas'

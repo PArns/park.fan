@@ -20,9 +20,9 @@ parkLinks:
   - phantasialand
 rideLinks: false
 coverImage:
-  src: /media/phantasialand/raik-16x9.jpg
-  alt: 'De houten stationsgebouwen van Raik boven een basaltmuur.'
-  caption: 'Raik in Klugheim. Het themagebied staat er sinds 2016, waar tot 2014 het westernstadje Silver City lag.'
+  src: /media/phantasialand/pferdekarussell-16x9.jpg
+  alt: 'Het Pferdekarussell onder een zwart ijzeren paviljoen, ervoor bakken met rode bloemen.'
+  caption: 'Het Pferdekarussell in Berlin, het themagebied in de stijl van de jaren twintig vlak bij de ingang.'
   credit: 'Patrick Arns'
 seo:
   title: 'Uitbreiding Phantasialand: 5.656 handtekeningen ingediend'

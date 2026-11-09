@@ -21,9 +21,9 @@ parkLinks:
   - phantasialand
 rideLinks: false
 coverImage:
-  src: /media/phantasialand/raik-16x9.jpg
-  alt: 'Les bâtiments en bois de la station de Raik au-dessus d’un mur de basalte.'
-  caption: 'Raik, à Klugheim. La zone occupe depuis 2016 l’emplacement de la ville western Silver City, fermée en 2014.'
+  src: /media/phantasialand/pferdekarussell-16x9.jpg
+  alt: 'Le Pferdekarussell sous un pavillon en fer noir, devant des bacs de fleurs rouges.'
+  caption: 'Le Pferdekarussell dans la zone Berlin, façon Années folles, juste à l’entrée.'
   credit: 'Patrick Arns'
 seo:
   title: 'Agrandissement de Phantasialand : 5 656 signatures déposées'
