@@ -2,7 +2,7 @@
 title: 'Baby Shark et une parade pour Noël à SeaWorld San Diego'
 translationKey: seaworld-san-diego-christmas-celebration-2026
 date: '2026-11-09'
-time: '07:30'
+time: '08:15'
 author: patrick
 mode: published
 featured: false
@@ -41,23 +41,23 @@ Le vendredi 13 novembre, [SeaWorld San Diego](ref:seaworld-san-diego) lance sa C
 
 ## Les nouveautés
 
-Dans Baby Shark’s Christmas Adventure, Baby Shark et ses amis partent pour le pôle Nord, et le public chante et danse avec eux. Les parents de jeunes enfants connaissent la chanson par cœur depuis longtemps, qu’ils l’aient voulu ou non ; ici, au moins, ils la chantent pour Noël. Il y a aussi une petite mission que les familles mènent ensemble.
+Dans Baby Shark’s Christmas Adventure, Baby Shark et ses amis partent pour le pôle Nord, et le public chante, danse et participe en chemin à une mission de Noël. Les parents de jeunes enfants connaissent la chanson par cœur depuis longtemps, qu’ils l’aient voulu ou non ; ici, au moins, ils la chantent pour Noël.
 
 Au Dolphin Stadium, Dolphin Island Christmas mêle Noël et musiques d’Hawaï et du Pacifique. Certaines chansons sont aussi chantées dans les langues des îles. Solstice, la plus jeune du groupe de dauphins, y fête son premier Noël au parc.
 
-Pour North Pole Storytime, Paige the Elf, bibliothécaire du pôle Nord, raconte la fois où le Père Noël est venu à SeaWorld San Diego. Elle fait participer des volontaires du public. DJ the Elf, lui, passe des chansons de Noël en remix pour une soirée dansante. La Rock the Holiday Christmas Parade traverse tout le parc avec ses chars, Mrs. Claus et ses lutins. En chemin surgissent des fabricants de jouets et des boulangers du pôle Nord.
+Pour North Pole Storytime, Paige the Elf, bibliothécaire du pôle Nord, raconte la fois où le Père Noël est venu à SeaWorld San Diego. Elle fait participer des volontaires du public. DJ the Elf, lui, passe des chansons de Noël en remix pour une soirée dansante. La Rock the Holiday Christmas Parade traverse tout le parc avec ses chars, Mrs. Claus, ses lutins et des fabricants de jouets et boulangers du pôle Nord.
 
 Autre nouveauté, la Coca-Cola Lane, une allée lumineuse en rouge et blanc, en musique. Au Twinkle Tree Café, la carte propose de nouveaux cocktails et des mocktails sans alcool. L’alcool n’y est servi qu’à partir de 21 ans.
 
 ## Ce qui revient
 
-Clyde et Seamore rejouent leur Christmas Special au Sea Lion Stadium, avec des otaries, des loutres et leurs soigneurs. Dans Toymaker Trouble with Mrs. Claus and the Elves, Sparky, le chef des fabricants de jouets, perd l’esprit de Noël juste avant la distribution des cadeaux, soit à peu près la pire semaine qu’un fabricant de jouets puisse choisir, et Mrs. Claus a besoin de trois lutins pour le lui rendre. Au Nautilus Amphitheater, on danse sur des chants de Noël pendant A Stocking Full of Soul. Une fois la nuit tombée, Donner and Blitzen’s Lazer Light Show se joue dans la partie avant du parc.
+Clyde et Seamore rejouent leur Christmas Special au Sea Lion Stadium, avec des otaries, des loutres et leurs soigneurs. Dans Toymaker Trouble with Mrs. Claus and the Elves, Sparky, le chef des fabricants de jouets, perd l’esprit de Noël juste avant la distribution des cadeaux, soit à peu près la pire semaine qu’un fabricant de jouets puisse choisir, et Mrs. Claus a besoin de trois lutins pour le lui rendre. A Stocking Full of Soul, au Nautilus Amphitheater, est un spectacle de danse sur des chants de Noël. Une fois la nuit tombée, Donner and Blitzen’s Lazer Light Show se joue dans la partie avant du parc.
 
 Sur la Holiday Plaza, le sapin d’environ neuf mètres (30 pieds) s’allume chaque soir. La SkyTower devient le Tree of Lights, haut d’environ 98 mètres (320 pieds), et les palmiers sont éclairés comme des sucres d’orge. On rencontre le Père Noël au Santa’s Cottage, sur la SkyTower Lawn ; deux de ses rennes se trouvent près de Rentals, et Rudolph au Holly Jolly Marketplace. Le feu d’artifice A Christmas Wish n’est tiré que deux fois, le samedi 12 décembre et le soir de la Saint-Sylvestre.
 
 ## Horaires en novembre
 
-Avec un abonnement annuel, on passe en premier, le vendredi 13 novembre, lors de l’avant-première Christmas Celebration Pass Member Preview. Le parc est alors ouvert de 10 h à 21 h. À partir du samedi 14 novembre, la Christmas Celebration suit les horaires normaux du parc, en heure locale :
+Le vendredi 13 novembre a lieu la Christmas Celebration Pass Member Preview, réservée aux titulaires d’un abonnement annuel. Le parc est alors ouvert de 10 h à 21 h. À partir du samedi 14 novembre, la Christmas Celebration suit les horaires normaux du parc, en heure locale :
 
 - samedi 14 et dimanche 15 novembre : de 9 h à 19 h
 - du lundi 16 au jeudi 19 novembre : de 10 h à 18 h
@@ -72,9 +72,15 @@ Avec un abonnement annuel, on passe en premier, le vendredi 13 novembre, lors de
 
 ## Billets, parking et options
 
-Pendant la prévente du Black Friday, un billet d’une journée à date fixe coûte, selon le jour, à partir de 59,99 $, contre 130,99 $ au tarif normal. Il y a un an, le même billet du Black Friday se vendait 49,99 $, si bien que même la promotion a augmenté. SeaWorld n’a pas annoncé la date de fin de la prévente. L’Any Day Ticket, valable un jour au choix jusqu’au 31 mars 2027, coûte 64,99 $. La Fun Card 2027, à 77,99 $, vaut dès maintenant et jusqu’à fin 2027, donc pour toute la Christmas Celebration. Les enfants de deux ans et moins entrent gratuitement. Un billet deux parcs avec Sesame Place San Diego coûte 104,99 $, et avec l’All-Day Dining, chaque billet coûte 40 $ de plus. Une place de parking réservée coûte à partir de 37 $ ; avec un abonnement annuel qui inclut l’avantage parking, le parking normal est compris.
+Pendant la prévente du Black Friday, un billet d’une journée à date fixe coûte, selon le jour, à partir de 59,99 $, contre 130,99 $ au tarif normal. Il y a un an, le même billet du Black Friday se vendait 49,99 $, si bien que même la promotion a augmenté. SeaWorld n’a pas annoncé la date de fin de la prévente. Pour une seule visite sans date fixée à l’avance, l’Any Day Ticket coûte 64,99 $ et reste valable jusqu’au 31 mars 2027. Pour deux visites, la Fun Card 2027 à 77,99 $ revient moins cher que deux billets du Black Friday, et elle vaut dès maintenant et jusqu’à fin 2027, donc pour toute la Christmas Celebration. Les enfants de deux ans et moins entrent gratuitement. Un billet deux parcs avec Sesame Place San Diego coûte 104,99 $, et avec l’All-Day Dining, chaque billet coûte 40 $ de plus. Une place de parking réservée coûte à partir de 37 $ ; avec un abonnement annuel qui inclut l’avantage parking, le parking normal est compris.
 
-Le Festive Food & Seasonal Sips Lanyard, avec 5 ou 10 dégustations, coûte à partir de 45 $. Dine with Orcas & Santa a lieu du 13 novembre au 24 décembre, à partir de 59,99 $ pour les adultes et de 39,99 $ pour les enfants. Le soir de la Saint-Sylvestre, deuxième soirée avec le feu d’artifice, le New Year’s Eve Family Bash coûte 74,99 $, et 39,99 $ pour les enfants. Pour la chasse au trésor Snowflake Seeker’s, on achète une carte à The Christmas Shoppe, et c’est là aussi qu’on l’échange, une fois remplie, contre un cadeau.
+Moyennant un supplément, on trouve :
+
+- Festive Food & Seasonal Sips Lanyard avec 5 ou 10 dégustations : à partir de 45 $
+- Dine with Orcas & Santa, du 13 novembre au 24 décembre : à partir de 59,99 $, enfants 39,99 $
+- New Year’s Eve Family Bash le soir de la Saint-Sylvestre, deuxième soirée de feu d’artifice : 74,99 $, enfants 39,99 $
+
+Pour la chasse au trésor Snowflake Seeker’s, on achète une carte à The Christmas Shoppe, et c’est là aussi qu’on l’échange, une fois remplie, contre un cadeau.
 
 ## Comment y aller
 

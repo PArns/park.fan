@@ -2,7 +2,7 @@
 title: 'SeaWorld San Diego adds Baby Shark and a Christmas parade'
 translationKey: seaworld-san-diego-christmas-celebration-2026
 date: '2026-11-09'
-time: '07:30'
+time: '08:15'
 author: patrick
 mode: published
 featured: false
@@ -41,23 +41,23 @@ The Christmas Celebration at [SeaWorld San Diego](ref:seaworld-san-diego) begins
 
 ## What's new
 
-Baby Shark's Christmas Adventure sends Baby Shark and friends to the North Pole, with the audience singing and dancing along. If you have small kids, you've known the song by heart for years whether you wanted to or not, so now at least it gets a Christmas outing. There's also a small mission that families solve together.
+Baby Shark's Christmas Adventure sends Baby Shark and friends to the North Pole, with the audience singing, dancing and helping out with a holiday mission along the way. If you have small kids, you've known the song by heart for years whether you wanted to or not, so now at least it gets a Christmas outing.
 
 Dolphin Island Christmas at Dolphin Stadium mixes Christmas with music from Hawaii and the Pacific. Some of it is sung in the islands' own languages. Solstice, the youngest dolphin in the pod, spends her first Christmas at the park.
 
-At North Pole Storytime, Paige the Elf, the North Pole's librarian, tells how Santa once came to SeaWorld San Diego. She brings in volunteers from the audience to help. DJ the Elf spins remixed Christmas songs at a dance party. The Rock the Holiday Christmas Parade winds through the whole park with floats, Mrs. Claus and her elves. North Pole toymakers and bakers turn up along the route.
+At North Pole Storytime, Paige the Elf, the North Pole's librarian, tells how Santa once came to SeaWorld San Diego. She brings in volunteers from the audience to help. DJ the Elf spins remixed Christmas songs at a dance party. The Rock the Holiday Christmas Parade winds through the whole park with floats, Mrs. Claus, her elves and North Pole toymakers and bakers.
 
 Coca-Cola Lane is new too, a red-and-white path of lights set to music. The Twinkle Tree Café pours new cocktails and mocktails; for the cocktails you have to be 21.
 
 ## What's back
 
-Clyde and Seamore return to Sea Lion Stadium with their Christmas Special, along with sea lions, otters and their trainers. In Toymaker Trouble with Mrs. Claus and the Elves, head toymaker Sparky loses his Christmas spirit just before the presents go out, which is about the worst week a toymaker could pick, and Mrs. Claus needs three elves to get it back. At the Nautilus Amphitheater, A Stocking Full of Soul is Christmas songs and dancing. Once it's dark, Donner and Blitzen's Lazer Light Show plays at the front of the park.
+Clyde and Seamore return to Sea Lion Stadium with their Christmas Special, along with sea lions, otters and their trainers. In Toymaker Trouble with Mrs. Claus and the Elves, head toymaker Sparky loses his Christmas spirit just before the presents go out, which is about the worst week a toymaker could pick, and Mrs. Claus needs three elves to get it back. A Stocking Full of Soul at the Nautilus Amphitheater is a dance show set to Christmas songs. Once it's dark, Donner and Blitzen's Lazer Light Show plays at the front of the park.
 
 On Holiday Plaza, a 30-foot (9-meter) Christmas tree lights up every evening. The SkyTower turns into the 320-foot (98-meter) Tree of Lights, and the palm trees are lit like candy canes. You'll find Santa at Santa's Cottage on the SkyTower Lawn; two of his reindeer stand by Rentals, and Rudolph is in the Holly Jolly Marketplace. The fireworks show A Christmas Wish happens only twice, on Saturday, December 12, and on New Year's Eve.
 
 ## Hours in November
 
-If you have an annual pass, you're first in on Friday, November 13, at the Christmas Celebration Pass Member Preview. The park is open from 10 am to 9 pm that day. From Saturday, November 14, the Christmas Celebration runs during regular park hours, local time:
+Friday, November 13, is the Christmas Celebration Pass Member Preview for annual pass holders. The park is open from 10 am to 9 pm that day. From Saturday, November 14, the Christmas Celebration runs during regular park hours, local time:
 
 - Saturday, November 14, and Sunday, November 15: 9 am to 7 pm
 - Monday, November 16, to Thursday, November 19: 10 am to 6 pm
@@ -72,9 +72,15 @@ If you have an annual pass, you're first in on Friday, November 13, at the Chris
 
 ## Tickets, parking and extras
 
-In the Black Friday sale, a date-specific day ticket starts at $59.99, depending on the day, instead of the regular $130.99. A year ago the same Black Friday ticket went for $49.99, so even the discount got pricier. SeaWorld hasn't announced when the sale ends. The Any Day Ticket, good for one day of your choice through March 31, 2027, costs $64.99. The 2027 Fun Card, at $77.99, is valid from now until the end of 2027, so it already covers the whole Christmas Celebration. Kids two and under get in free. A two-park ticket with Sesame Place San Diego costs $104.99, and All-Day Dining adds $40 to any ticket. Reserved parking starts at $37, and annual passes with the parking benefit include standard parking.
+In the Black Friday sale, a date-specific day ticket starts at $59.99, depending on the day, instead of the regular $130.99. A year ago the same Black Friday ticket went for $49.99, so even the discount got pricier. SeaWorld hasn't announced when the sale ends. If you're coming once and don't want to pick a date, the Any Day Ticket is $64.99 and good through March 31, 2027. If you're coming twice, the 2027 Fun Card at $77.99 beats two Black Friday tickets, and it's valid from now until the end of 2027, so it covers the whole Christmas Celebration. Kids two and under get in free. A two-park ticket with Sesame Place San Diego costs $104.99, and All-Day Dining adds $40 to any ticket. Reserved parking starts at $37, and annual passes with the parking benefit include standard parking.
 
-The Festive Food & Seasonal Sips Lanyard, with 5 or 10 tasting portions, starts at $45. Dine with Orcas & Santa runs from November 13 to Christmas Eve, from $59.99 for adults and $39.99 for kids. On New Year's Eve, the second fireworks night, the Family Bash costs $74.99, or $39.99 for kids. For the Snowflake Seeker's scavenger hunt, you buy a card at The Christmas Shoppe and hand it back there once it's filled in to collect a prize.
+At extra cost:
+
+- Festive Food & Seasonal Sips Lanyard with 5 or 10 tasting portions: from $45
+- Dine with Orcas & Santa, November 13 to Christmas Eve: from $59.99, kids $39.99
+- New Year's Eve Family Bash on December 31, the second fireworks night: $74.99, kids $39.99
+
+For the Snowflake Seeker's scavenger hunt, you buy a card at The Christmas Shoppe and hand it back there once it's filled in to collect a prize.
 
 ## Getting there
 
