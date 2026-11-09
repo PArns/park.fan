@@ -57,7 +57,7 @@ Sur la Holiday Plaza, le sapin de 30 pieds, environ neuf mètres, s’allume cha
 
 ## Horaires en novembre
 
-La page de l’événement donne le 13 novembre comme premier jour. Dans le calendrier du parc, ce vendredi s’appelle Christmas Celebration Pass Member Preview : c’est une avant-première pour les titulaires d’un abonnement annuel, et le parc est ouvert de 10 h à 21 h. À partir du samedi 14 novembre, le jour y porte le nom de Christmas Celebration. Le programme suit les horaires normaux du parc, en heure locale :
+La page de l’événement donne le 13 novembre comme premier jour. Dans le calendrier du parc, ce vendredi s’appelle Christmas Celebration Pass Member Preview : c’est une avant-première pour les titulaires d’un abonnement annuel, et le parc est ouvert de 10 h à 21 h. À partir du samedi 14 novembre, les jours y portent le nom de Christmas Celebration. Le programme suit les horaires normaux du parc, en heure locale :
 
 - samedi 14 et dimanche 15 novembre : de 9 h à 19 h
 - du lundi 16 au jeudi 19 novembre : de 10 h à 18 h
