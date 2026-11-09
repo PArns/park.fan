@@ -55,7 +55,7 @@ Geöffnet ist an 69 Tagen, jeweils von 11 bis 18 Uhr. Außerhalb der Ferien sind
 - Februar: 4. bis 14., 19. bis 21. und 26. bis 28.
 - März: 5. bis 7. und 12. bis 14.
 
-Heiligabend und am ersten Weihnachtstag bleibt das Tor zu, der Weihnachtsmann hat dann ohnehin anderswo zu tun, und am 26. Dezember geht es weiter. Am 27. November schließt Plopsa Indoor wegen einer privaten Veranstaltung schon um 16 Uhr.
+An Heiligabend und am ersten Weihnachtstag bleibt das Tor zu, der Weihnachtsmann hat dann ohnehin anderswo zu tun, und am 26. Dezember geht es weiter. Am 27. November schließt Plopsa Indoor wegen einer privaten Veranstaltung schon um 16 Uhr.
 
 ## Was der Eintritt kostet
 
@@ -86,7 +86,7 @@ Der Weihnachtsmann sitzt am 4. bis 6., 11. bis 13., 18. bis 23. und am 26. Dezem
 
 ## Was sich gegenüber dem letzten Winter ändert
 
-Im Winter 2025/26 hieß derselbe Teil des Parks noch Majaland Pfalz und hatte vom 7. November bis zum 22. März offen, mit Eintritt ab 20 €. Die Maja-Show und der erste Winterbetrieb der Schlümpfe Abenteuer waren damals die Neuheiten. In diesem Winter endet die Saison eine Woche früher, und der Freitag ist billiger geworden. Den Namen Holiday Park hat der Park Ende Juni 2025 abgelegt. Welche Bahnen im Sommer fahren und wann dort am wenigsten los ist, beschreibt unser [Guide zum Plopsaland Deutschland](/blog/plopsaland-deutschland-wartezeiten-tipps).
+Im Winter 2025/26 hieß derselbe Teil des Parks noch Majaland Pfalz und hatte vom 7. November bis zum 22. März offen, mit Eintritt ab 20 €. Die Maja-Show und der erste Winterbetrieb der Schlümpfe Abenteuer waren damals die Neuheiten. In diesem Winter endet die Saison eine Woche früher, und die günstigste Karte kostet weniger als damals. Den Namen Holiday Park hat der Park Ende Juni 2025 abgelegt. Welche Bahnen im Sommer fahren und wann dort am wenigsten los ist, beschreibt unser [Guide zum Plopsaland Deutschland](/blog/plopsaland-deutschland-wartezeiten-tipps).
 
 ## Anreise und Parken
 
