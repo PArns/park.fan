@@ -2,7 +2,7 @@
 title: 'Hong Kong Disneyland ouvre un marché d’hiver à Arendelle'
 translationKey: hong-kong-disneyland-a-disney-christmas-2026
 date: '2026-11-09'
-time: '08:30'
+time: '09:04'
 author: patrick
 mode: published
 featured: false
@@ -46,17 +46,17 @@ A Disney Christmas commence à [Hong Kong Disneyland](ref:hong-kong-disneyland-p
 
 ## Noël dans World of Frozen
 
-Olaf raconte dans World of Frozen ce qu’il aime à Noël, et Anna se promène dans le village. Dans Kristoff’s Sven-tastic Surprise, Kristoff sculpte une statue de glace pour Sven, son renne, et les visiteurs peuvent lui prêter main-forte. Si Sven préfère au fond une carotte, Kristoff devra s’en accommoder. Après le 25 décembre, il continue de neiger sur Arendelle, ce qui n’étonne personne là-bas, et le marché garde son air de Noël. Dans la même zone, [Frozen Ever After](ref:hong-kong-disneyland-park/frozen-ever-after-presented-by-blue-cross) emmène ses bateaux à travers le village et la forêt, jusqu’en haut de la Montagne du Nord.
+Olaf raconte dans World of Frozen ce qu’il aime à Noël, et Anna se promène dans le village. Dans Kristoff’s Sven-tastic Surprise, Kristoff sculpte une statue de glace pour Sven, son renne, et les visiteurs peuvent lui prêter main-forte. Si Sven préfère au fond une carotte, Kristoff devra s’en accommoder. Après Noël, la neige continue de tomber sur Arendelle, et le marché reste en place. Dans la même zone, [Frozen Ever After](ref:hong-kong-disneyland-park/frozen-ever-after-presented-by-blue-cross) emmène ses bateaux à travers le village et la forêt, jusqu’en haut de la Montagne du Nord.
 
 ## Main Street et le grand sapin
 
-Sur Main Street, U.S.A., des chanteurs passent sous les guirlandes lumineuses en entonnant des chants de Noël, et au grand sapin, c’est Santa Goofy qui actionne l’interrupteur, avec de la neige et des drones qui dessinent une chorégraphie au-dessus. L’illumination du sapin existait déjà en 2025, l’année des 20 ans du parc, sous le nom « A Holiday Wish-Come-True » et avec des projections en plus.
+Sur Main Street, U.S.A., Santa Goofy allume le grand sapin de Noël, la neige tombe et des drones dessinent une chorégraphie au-dessus. Sous les guirlandes lumineuses, des choristes chantent Noël. L’illumination du sapin existait déjà en 2025, l’année des 20 ans du parc, sous le nom « A Holiday Wish-Come-True » et avec des projections en plus.
 
 Dans le parc, on croise aussi Mickey et ses amis, Duffy et ses amis, les personnages de Toy Story et Winnie l’Ourson, tous en tenue de fête.
 
 ## Le concert devant le château
 
-« Disney Christmas Live in Concert » revient chaque année, le soir devant le Castle of Magical Dreams, et Mickey y amène Christmas Goofy et d’autres personnages Disney. Joyce Cheung est au piano les 21 et 22 novembre, Oscar Tao les 5 et 6 décembre, chacun avec le chœur d’enfants.
+« Disney Christmas Live in Concert » se joue le soir devant le Castle of Magical Dreams, et Mickey y amène Christmas Goofy et d’autres personnages Disney. Joyce Cheung est au piano les 21 et 22 novembre, Oscar Tao les 5 et 6 décembre.
 
 Jusqu’au 6 décembre, le parc vend des pass avec place assise pour les zones devant la scène :
 
@@ -95,7 +95,7 @@ columns: peak,days
 
 ## Billets et accès
 
-Le billet seul ne suffit pas : chaque visite demande en plus une réservation du parc valable pour le jour en question. Pour deux jours, il existe le Non-stop 2-Day Fun Ticket, qui coûte 100 HK$ de plus qu’un billet d’une journée ordinaire. Les adultes le paient à partir de 769 HK$, les enfants de 3 à 11 ans et les seniors de 60 ans et plus à partir de 599 HK$. Il est en vente jusqu’au 31 décembre 2026.
+En plus du billet, il faut pour chaque visite une réservation du parc pour ce jour précis. Pour deux jours, il existe le Non-stop 2-Day Fun Ticket, qui coûte 100 HK$ de plus qu’un billet d’une journée ordinaire. Les adultes le paient à partir de 769 HK$, les enfants de 3 à 11 ans et les seniors de 60 ans et plus à partir de 599 HK$. Il est en vente jusqu’au 31 décembre 2026.
 
 En MTR, on descend à Sunny Bay pour prendre la Disneyland Resort Line, qui va directement au resort. Depuis l’aéroport, depuis la station MTR de Kowloon ou depuis Hong Kong Station, le trajet dure ainsi une trentaine de minutes.
 

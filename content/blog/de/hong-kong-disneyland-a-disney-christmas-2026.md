@@ -2,7 +2,7 @@
 title: 'Hong Kong Disneyland öffnet einen Wintermarkt in Arendelle'
 translationKey: hong-kong-disneyland-a-disney-christmas-2026
 date: '2026-11-09'
-time: '08:30'
+time: '09:04'
 author: patrick
 mode: published
 featured: false
@@ -46,17 +46,17 @@ A Disney Christmas beginnt im [Hong Kong Disneyland](ref:hong-kong-disneyland-pa
 
 ## Weihnachten in World of Frozen
 
-In World of Frozen erzählt Olaf, was er an Weihnachten mag, und Anna ist im Dorf unterwegs. Bei Kristoff's Sven-tastic Surprise baut Kristoff eine Eisskulptur für sein Rentier Sven, und Gäste dürfen ihm dabei helfen. Ob Sven eine Skulptur lieber hätte als eine Karotte, ist Kristoffs Problem. Auch nach dem 25. Dezember schneit es in Arendelle weiter, was dort niemanden überrascht, und auf dem Markt bleibt es weihnachtlich. Im selben Bereich fährt [Frozen Ever After](ref:hong-kong-disneyland-park/frozen-ever-after-presented-by-blue-cross) mit Booten durch das Dorf und den Wald bis hinauf zum Nordberg.
+In World of Frozen erzählt Olaf, was er an Weihnachten mag, und Anna ist im Dorf unterwegs. Bei Kristoff's Sven-tastic Surprise baut Kristoff eine Eisskulptur für sein Rentier Sven, und Gäste dürfen ihm dabei helfen. Ob Sven eine Skulptur lieber hätte als eine Karotte, ist Kristoffs Problem. Auch nach Weihnachten fällt in Arendelle Schnee, und der Markt bleibt. Im selben Bereich fährt [Frozen Ever After](ref:hong-kong-disneyland-park/frozen-ever-after-presented-by-blue-cross) mit Booten durch das Dorf und den Wald bis hinauf zum Nordberg.
 
 ## Main Street und der Weihnachtsbaum
 
-Auf der Main Street, U.S.A. ziehen Sänger mit Weihnachtsliedern unter den Lichterketten durch, und am großen Weihnachtsbaum legt Santa Goofy den Schalter um, mit Schneefall und Drohnen, die darüber eine Choreografie fliegen. Die Baumbeleuchtung lief schon 2025, im Jahr des 20. Geburtstags, damals als „A Holiday Wish-Come-True“ und zusätzlich mit Projektionen.
+Am großen Weihnachtsbaum auf der Main Street, U.S.A. legt Santa Goofy den Schalter um, dann fällt Schnee, und darüber fliegen Drohnen eine Choreografie. Unter den Lichterketten singen Carolers. Die Baumbeleuchtung lief schon 2025, im Jahr des 20. Geburtstags, damals als „A Holiday Wish-Come-True“ und zusätzlich mit Projektionen.
 
 Im Park triffst du außerdem Mickey und seine Freunde, Duffy und seine Freunde, die Figuren aus Toy Story und Winnie Puuh, alle in Weihnachtskleidung.
 
 ## Das Konzert vor dem Schloss
 
-„Disney Christmas Live in Concert“ läuft jedes Jahr abends vor dem Castle of Magical Dreams, und Mickey bringt Christmas Goofy und weitere Disney-Figuren mit. Am 21. und 22. November spielt Joyce Cheung, am 5. und 6. Dezember Oscar Tao, beide zusammen mit dem Kinderchor.
+„Disney Christmas Live in Concert“ läuft abends vor dem Castle of Magical Dreams, Mickey bringt Christmas Goofy und weitere Disney-Figuren mit. Joyce Cheung sitzt am 21. und 22. November am Flügel, Oscar Tao am 5. und 6. Dezember.
 
 Für die Zonen vor der Bühne verkauft der Park bis zum 6. Dezember Sitzplatz-Pässe:
 
@@ -95,7 +95,7 @@ columns: peak,days
 
 ## Tickets und Anreise
 
-Ein Ticket allein reicht nicht, für jeden Besuch brauchst du zusätzlich eine gültige Parkreservierung für den Tag. Für zwei Tage gibt es das Non-stop 2-Day Fun Ticket, das HK$ 100 mehr kostet als ein normales Tagesticket. Erwachsene zahlen dafür ab HK$ 769, Kinder von 3 bis 11 Jahren und Senioren ab 60 ab HK$ 599. Verkauft wird es bis zum 31. Dezember 2026.
+Zum Ticket brauchst du für jeden Besuch eine Parkreservierung für genau diesen Tag. Für zwei Tage gibt es das Non-stop 2-Day Fun Ticket, das HK$ 100 mehr kostet als ein normales Tagesticket. Erwachsene zahlen dafür ab HK$ 769, Kinder von 3 bis 11 Jahren und Senioren ab 60 ab HK$ 599. Verkauft wird es bis zum 31. Dezember 2026.
 
 Mit der MTR fährst du bis Sunny Bay und steigst dort in die Disneyland Resort Line um, die direkt zum Resort fährt. Vom Flughafen, von der MTR-Station Kowloon und von der Hong Kong Station bist du so jeweils rund 30 Minuten unterwegs.
 

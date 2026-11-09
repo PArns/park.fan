@@ -2,7 +2,7 @@
 title: 'Hong Kong Disneyland opens a winter market in Arendelle'
 translationKey: hong-kong-disneyland-a-disney-christmas-2026
 date: '2026-11-09'
-time: '08:30'
+time: '09:04'
 author: patrick
 mode: published
 featured: false
@@ -46,17 +46,17 @@ A Disney Christmas starts at [Hong Kong Disneyland](ref:hong-kong-disneyland-par
 
 ## Christmas in World of Frozen
 
-In World of Frozen, Olaf talks about what he loves about Christmas, and Anna walks through the village. In Kristoff's Sven-tastic Surprise, Kristoff carves an ice sculpture for his reindeer Sven, and guests can lend a hand. Whether Sven would rather have a carrot is Kristoff's problem. Arendelle keeps getting snow after December 25, which nobody there finds unusual, and the market keeps its Christmas cheer. In the same land, [Frozen Ever After](ref:hong-kong-disneyland-park/frozen-ever-after-presented-by-blue-cross) takes boats through the village and the forest up to the North Mountain.
+In World of Frozen, Olaf talks about what he loves about Christmas, and Anna walks through the village. In Kristoff's Sven-tastic Surprise, Kristoff carves an ice sculpture for his reindeer Sven, and guests can lend a hand. Whether Sven would rather have a carrot is Kristoff's problem. Snow keeps falling in Arendelle after Christmas, and the market stays. In the same land, [Frozen Ever After](ref:hong-kong-disneyland-park/frozen-ever-after-presented-by-blue-cross) takes boats through the village and the forest up to the North Mountain.
 
 ## Main Street and the tree
 
-On Main Street, U.S.A., carolers walk up and down under the lights, and Santa Goofy switches on the big Christmas tree, with falling snow and drones flying a choreography above it. The tree lighting ran in 2025 too, the park's 20th-anniversary year, as "A Holiday Wish-Come-True" and with projections added.
+On Main Street, U.S.A., Santa Goofy switches on the big Christmas tree, snow falls and drones fly a choreography above it. Carolers sing under the lights. The tree lighting ran in 2025 too, the park's 20th-anniversary year, as "A Holiday Wish-Come-True" and with projections added.
 
 In the park you can also meet Mickey and friends, Duffy and friends, the Toy Story characters and Winnie the Pooh, all in their Christmas outfits.
 
 ## The concert in front of the castle
 
-"Disney Christmas Live in Concert" comes back every year, playing in the evening in front of the Castle of Magical Dreams, and Mickey brings Christmas Goofy and other Disney characters along. Joyce Cheung plays on November 21 and 22 and Oscar Tao on December 5 and 6, each with the children's choir.
+"Disney Christmas Live in Concert" plays in the evening in front of the Castle of Magical Dreams, and Mickey brings Christmas Goofy and other Disney characters along. Joyce Cheung is at the piano on November 21 and 22, Oscar Tao on December 5 and 6.
 
 Until December 6, the park sells seating passes for the zones in front of the stage:
 
@@ -95,7 +95,7 @@ columns: peak,days
 
 ## Tickets and getting there
 
-A ticket on its own won't get you in: every visit also needs a valid park reservation for that day. If you want two days, the Non-stop 2-Day Fun Ticket costs HK$100 more than a regular one-day ticket. Adults pay from HK$769, kids aged 3 to 11 and seniors 60 and over from HK$599. It's on sale until December 31, 2026.
+Along with your ticket, you need a park reservation for the exact day of each visit. If you want two days, the Non-stop 2-Day Fun Ticket costs HK$100 more than a regular one-day ticket. Adults pay from HK$769, kids aged 3 to 11 and seniors 60 and over from HK$599. It's on sale until December 31, 2026.
 
 On the MTR, you ride to Sunny Bay and change there to the Disneyland Resort Line, which runs straight to the resort. That gets you to the park in about 30 minutes from the airport, from Kowloon MTR station or from Hong Kong Station.
 

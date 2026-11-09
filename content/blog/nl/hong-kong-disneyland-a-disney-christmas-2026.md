@@ -2,7 +2,7 @@
 title: 'Hong Kong Disneyland krijgt een wintermarkt in Arendelle'
 translationKey: hong-kong-disneyland-a-disney-christmas-2026
 date: '2026-11-09'
-time: '08:30'
+time: '09:04'
 author: patrick
 mode: published
 featured: false
@@ -46,17 +46,17 @@ A Disney Christmas begint in [Hong Kong Disneyland](ref:hong-kong-disneyland-par
 
 ## Kerst in World of Frozen
 
-In World of Frozen vertelt Olaf wat hij zo leuk vindt aan kerst, en Anna loopt door het dorp. In Kristoff's Sven-tastic Surprise maakt Kristoff een ijssculptuur voor zijn rendier Sven, en bezoekers mogen een handje helpen. Of Sven niet gewoon liever een wortel had gehad, daar mag Kristoff zelf over piekeren. Ook na 25 december blijft het in Arendelle sneeuwen, wat daar niemand verbaast, en op de markt blijft de kerstsfeer hangen. In hetzelfde gebied vaart [Frozen Ever After](ref:hong-kong-disneyland-park/frozen-ever-after-presented-by-blue-cross) met bootjes door het dorp en het bos, helemaal omhoog naar de Noordberg.
+In World of Frozen vertelt Olaf wat hij zo leuk vindt aan kerst, en Anna loopt door het dorp. In Kristoff's Sven-tastic Surprise maakt Kristoff een ijssculptuur voor zijn rendier Sven, en bezoekers mogen een handje helpen. Of Sven niet gewoon liever een wortel had gehad, daar mag Kristoff zelf over piekeren. Ook na kerst blijft het in Arendelle sneeuwen, en de markt blijft staan. In hetzelfde gebied vaart [Frozen Ever After](ref:hong-kong-disneyland-park/frozen-ever-after-presented-by-blue-cross) met bootjes door het dorp en het bos, helemaal omhoog naar de Noordberg.
 
 ## Main Street en de kerstboom
 
-Op Main Street, U.S.A. lopen zangers met kerstliedjes onder de lichtjes door, en bij de grote kerstboom zet Santa Goofy de schakelaar om, met sneeuw en drones die erboven een choreografie vliegen. De boomverlichting was er in 2025 ook al, het jaar van de twintigste verjaardag, toen als “A Holiday Wish-Come-True” en met projecties erbij.
+Bij de grote kerstboom op Main Street, U.S.A. zet Santa Goofy de schakelaar om, dan valt er sneeuw en vliegen drones erboven een choreografie. Onder de lichtjes zingen kerstzangers. De boomverlichting was er in 2025 ook al, het jaar van de twintigste verjaardag, toen als “A Holiday Wish-Come-True” en met projecties erbij.
 
 In het park kom je ook Mickey en zijn vrienden tegen, Duffy en zijn vrienden, de figuren uit Toy Story en Winnie de Poeh, allemaal in kerstkleren.
 
 ## Het concert voor het kasteel
 
-“Disney Christmas Live in Concert” komt elk jaar terug, 's avonds voor het Castle of Magical Dreams, en Mickey neemt Christmas Goofy en nog meer Disney-figuren mee. Op 21 en 22 november speelt Joyce Cheung, op 5 en 6 december Oscar Tao, allebei met het kinderkoor.
+“Disney Christmas Live in Concert” speelt 's avonds voor het Castle of Magical Dreams, en Mickey neemt Christmas Goofy en nog meer Disney-figuren mee. Joyce Cheung zit op 21 en 22 november achter de vleugel, Oscar Tao op 5 en 6 december.
 
 Tot 6 december verkoopt het park zitplaatspassen voor de vakken voor het podium:
 
@@ -95,7 +95,7 @@ columns: peak,days
 
 ## Tickets en bereikbaarheid
 
-Met alleen een ticket kom je er niet in: voor elk bezoek heb je ook een geldige parkreservering voor die dag nodig. Wil je twee dagen gaan, dan is er het Non-stop 2-Day Fun Ticket, dat HK$ 100 meer kost dan een gewoon dagticket. Volwassenen betalen daarvoor vanaf HK$ 769, kinderen van 3 tot en met 11 jaar en 60-plussers vanaf HK$ 599. Het ticket is te koop tot 31 december 2026.
+Naast je ticket heb je voor elk bezoek een parkreservering nodig voor precies die dag. Wil je twee dagen gaan, dan is er het Non-stop 2-Day Fun Ticket, dat HK$ 100 meer kost dan een gewoon dagticket. Volwassenen betalen daarvoor vanaf HK$ 769, kinderen van 3 tot en met 11 jaar en 60-plussers vanaf HK$ 599. Het ticket is te koop tot 31 december 2026.
 
 Met de MTR rijd je naar Sunny Bay. Daar stap je over op de Disneyland Resort Line, die rechtstreeks naar het resort gaat. Vanaf het vliegveld, vanaf MTR-station Kowloon en vanaf Hong Kong Station ben je zo telkens ongeveer 30 minuten onderweg.
 

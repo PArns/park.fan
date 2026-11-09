@@ -2,7 +2,7 @@
 title: "Hong Kong Disneyland apre un mercato d'inverno ad Arendelle"
 translationKey: hong-kong-disneyland-a-disney-christmas-2026
 date: '2026-11-09'
-time: '08:30'
+time: '09:04'
 author: patrick
 mode: published
 featured: false
@@ -46,17 +46,17 @@ A Disney Christmas comincia a [Hong Kong Disneyland](ref:hong-kong-disneyland-pa
 
 ## Natale in World of Frozen
 
-In World of Frozen Olaf racconta che cosa gli piace del Natale, e Anna gira per il villaggio. In Kristoff's Sven-tastic Surprise Kristoff scolpisce una statua di ghiaccio per la sua renna Sven, e chi vuole può dargli una mano. Se Sven gradirà più la scultura o una carota, lo scoprirà Kristoff. Anche dopo il 25 dicembre ad Arendelle continua a nevicare, cosa che lì non stupisce nessuno, e al mercato resta l'aria di Natale. Nella stessa zona c'è [Frozen Ever After](ref:hong-kong-disneyland-park/frozen-ever-after-presented-by-blue-cross), un percorso in barca che attraversa il villaggio e il bosco e sale fino alla Montagna del Nord.
+In World of Frozen Olaf racconta che cosa gli piace del Natale, e Anna gira per il villaggio. In Kristoff's Sven-tastic Surprise Kristoff scolpisce una statua di ghiaccio per la sua renna Sven, e chi vuole può dargli una mano. Se Sven gradirà più la scultura o una carota, lo scoprirà Kristoff. Anche dopo Natale ad Arendelle continua a nevicare, e il mercato resta. Nella stessa zona c'è [Frozen Ever After](ref:hong-kong-disneyland-park/frozen-ever-after-presented-by-blue-cross), un percorso in barca che attraversa il villaggio e il bosco e sale fino alla Montagna del Nord.
 
 ## Main Street e l'albero di Natale
 
-Lungo Main Street, U.S.A. un gruppo di cantanti passa sotto le luci con i canti di Natale, e al grande albero Santa Goofy gira l'interruttore, con la neve che scende e i droni che sopra disegnano una coreografia. L'accensione dell'albero c'era già nel 2025, l'anno del ventesimo compleanno del parco, con il nome «A Holiday Wish-Come-True» e in più delle proiezioni.
+Su Main Street, U.S.A. Santa Goofy accende il grande albero di Natale, scende la neve e sopra i droni disegnano una coreografia. Sotto le luci alcuni cantanti intonano canti natalizi. L'accensione dell'albero c'era già nel 2025, l'anno del ventesimo compleanno del parco, con il nome «A Holiday Wish-Come-True» e in più delle proiezioni.
 
 Nel parco si incontrano anche Topolino e i suoi amici, Duffy e i suoi amici, i personaggi di Toy Story e Winnie the Pooh, tutti in abiti natalizi.
 
 ## Il concerto davanti al castello
 
-«Disney Christmas Live in Concert» torna ogni anno, la sera davanti al Castle of Magical Dreams, e Topolino porta con sé Christmas Goofy e altri personaggi Disney. Il 21 e il 22 novembre al pianoforte siede Joyce Cheung, il 5 e il 6 dicembre Oscar Tao, ogni volta con il coro di bambini.
+«Disney Christmas Live in Concert» va in scena la sera davanti al Castle of Magical Dreams, e Topolino porta con sé Christmas Goofy e altri personaggi Disney. Il 21 e il 22 novembre al pianoforte siede Joyce Cheung, il 5 e il 6 dicembre Oscar Tao.
 
 Per le zone davanti al palco il parco vende fino al 6 dicembre dei pass con posto a sedere:
 
@@ -95,7 +95,7 @@ columns: peak,days
 
 ## Biglietti e come arrivare
 
-Il biglietto da solo non basta: per ogni visita serve anche una prenotazione valida per quel giorno. Per due giorni c'è il Non-stop 2-Day Fun Ticket, che costa HK$ 100 in più di un normale biglietto giornaliero. Gli adulti pagano da HK$ 769, i bambini dai 3 agli 11 anni e gli over 60 da HK$ 599. Si può comprare fino al 31 dicembre 2026.
+Oltre al biglietto, per ogni visita serve una prenotazione del parco per quel giorno preciso. Per due giorni c'è il Non-stop 2-Day Fun Ticket, che costa HK$ 100 in più di un normale biglietto giornaliero. Gli adulti pagano da HK$ 769, i bambini dai 3 agli 11 anni e gli over 60 da HK$ 599. Si può comprare fino al 31 dicembre 2026.
 
 Con la MTR si va fino a Sunny Bay e lì si cambia per la Disneyland Resort Line, che porta direttamente al resort. Dall'aeroporto, dalla stazione MTR di Kowloon o dalla Hong Kong Station ci vogliono così circa 30 minuti.
 

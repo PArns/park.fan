@@ -2,7 +2,7 @@
 title: 'Hong Kong Disneyland monta un mercado invernal en Arendelle'
 translationKey: hong-kong-disneyland-a-disney-christmas-2026
 date: '2026-11-09'
-time: '08:30'
+time: '09:04'
 author: patrick
 mode: published
 featured: false
@@ -46,17 +46,17 @@ A Disney Christmas empieza en [Hong Kong Disneyland](ref:hong-kong-disneyland-pa
 
 ## La Navidad en World of Frozen
 
-En World of Frozen, Olaf cuenta lo que más le gusta de la Navidad y Anna se pasea por el pueblo. En Kristoff's Sven-tastic Surprise, Kristoff esculpe una figura de hielo para su reno Sven, y el público puede echarle una mano. Que Sven prefiera una escultura a una zanahoria ya es asunto de Kristoff. Pasado el 25 de diciembre, en Arendelle sigue nevando, cosa que allí no sorprende a nadie, y el mercado conserva el ambiente navideño. En la misma zona, [Frozen Ever After](ref:hong-kong-disneyland-park/frozen-ever-after-presented-by-blue-cross) lleva sus barcas por el pueblo y el bosque hasta la Montaña del Norte.
+En World of Frozen, Olaf cuenta lo que más le gusta de la Navidad y Anna se pasea por el pueblo. En Kristoff's Sven-tastic Surprise, Kristoff esculpe una figura de hielo para su reno Sven, y el público puede echarle una mano. Que Sven prefiera una escultura a una zanahoria ya es asunto de Kristoff. Pasada la Navidad, en Arendelle sigue nevando, y el mercado sigue ahí. En la misma zona, [Frozen Ever After](ref:hong-kong-disneyland-park/frozen-ever-after-presented-by-blue-cross) lleva sus barcas por el pueblo y el bosque hasta la Montaña del Norte.
 
 ## Main Street y el árbol de Navidad
 
-Por Main Street, U.S.A. pasan cantantes con villancicos bajo las luces, y en el gran árbol de Navidad Santa Goofy pulsa el interruptor, con nieve y drones que trazan una coreografía por encima. El encendido del árbol ya se hizo en 2025, el año del 20.º aniversario, con el nombre «A Holiday Wish-Come-True» y además con proyecciones.
+En Main Street, U.S.A., Santa Goofy enciende el gran árbol de Navidad, cae nieve y por encima vuelan drones en coreografía. Bajo las luces, varios cantantes entonan villancicos. El encendido del árbol ya se hizo en 2025, el año del 20.º aniversario, con el nombre «A Holiday Wish-Come-True» y además con proyecciones.
 
 En el parque te encuentras también a Mickey y sus amigos, a Duffy y sus amigos, a los personajes de Toy Story y a Winnie the Pooh, todos con ropa navideña.
 
 ## El concierto ante el castillo
 
-«Disney Christmas Live in Concert» vuelve cada año, de noche delante del Castle of Magical Dreams, y Mickey se trae a Christmas Goofy y a otros personajes Disney. Joyce Cheung toca el 21 y el 22 de noviembre, y Oscar Tao el 5 y el 6 de diciembre, en ambos casos junto al coro infantil.
+«Disney Christmas Live in Concert» se celebra de noche delante del Castle of Magical Dreams, y Mickey se trae a Christmas Goofy y a otros personajes Disney. Joyce Cheung toca el piano el 21 y el 22 de noviembre, y Oscar Tao el 5 y el 6 de diciembre.
 
 Hasta el 6 de diciembre, el parque vende pases con asiento para las zonas delante del escenario:
 
@@ -95,7 +95,7 @@ columns: peak,days
 
 ## Entradas y cómo llegar
 
-Con la entrada no basta: para cada visita necesitas además una reserva de parque válida para ese día. Para dos días está el Non-stop 2-Day Fun Ticket, que cuesta HK$ 100 más que una entrada normal de un día. Los adultos pagan desde HK$ 769, y los niños de 3 a 11 años y las personas de 60 años o más, desde HK$ 599. Se puede comprar hasta el 31 de diciembre de 2026.
+Además de la entrada, para cada visita necesitas una reserva de parque para ese día concreto. Para dos días está el Non-stop 2-Day Fun Ticket, que cuesta HK$ 100 más que una entrada normal de un día. Los adultos pagan desde HK$ 769, y los niños de 3 a 11 años y las personas de 60 años o más, desde HK$ 599. Se puede comprar hasta el 31 de diciembre de 2026.
 
 En MTR vas hasta Sunny Bay y allí cambias a la Disneyland Resort Line, que te deja en el mismo resort. Desde el aeropuerto, desde la estación de MTR de Kowloon o desde la Hong Kong Station, el trayecto ronda los 30 minutos.
 
