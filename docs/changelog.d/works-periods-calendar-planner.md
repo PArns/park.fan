@@ -34,6 +34,18 @@ bisher die angenommenen 5 Minuten, in die der Optimierer einen Halt legen konnte
 `missing: 'works'`, ohne Zahl, und seine zweite Zeile sagt „11:00 · In Wartung bis 25. März“ statt
 „11:00–11:00“. Scheitert der Park-Abruf, fehlt nur die Liste, nie der Plan.
 
+**Nicht einplanbar:** Eine Bahn in Wartung kommt an diesem Tag auf keinem Weg in den Plan. Die
+Bahnsuche des Planers listet sie ausgegraut hinter den planbaren Bahnen, mit „In Wartung bis 25.
+März“ und dem Grund im `title`, weder klick- noch ziehbar. Ein Drop auf die Zeitachse oder die
+flache Liste wird abgelehnt und sagt warum: „Droomvlucht ist an diesem Tag in Wartung (bis 25. März)
+und lässt sich nicht einplanen.“, als Hinweis über der Achse, der nach sechs Sekunden ausblendet.
+Der Knopf „In den Plan“ auf der Fahrgeschäftsseite ist deaktiviert und heißt „In Wartung bis 4.
+Dez.“, solange ein Fenster den Tag deckt, für den er einplant. Parkys `planner_add_rides` liest
+vorher den Tagesplan aus dem Cache des Planers und lässt die Bahn weg. `movableEntries` schließt
+einen Block aus, der vor dem Fenster geplant wurde: „Tag optimieren“, die Bewertung und der
+Fit-Assistent verschieben, zählen und berücksichtigen ihn nicht (3 neue Fälle in
+`pnpm test:planner-optimize`).
+
 **Ride-Karten und Fahrgeschäftsseite:** `WorksPeriodBadge` liest die ganze Liste. Läuft ein Fenster,
 steht „In Wartung bis 4. Dez.“ (mit geschätztem Ende „bis ca.“), liegt eines vor der Bahn,
 „Wartung ab 4. Jan.“ oder „Wartung am 8. Dez.“ in blasserem Orange. Hover oder Tippen listet das
@@ -50,5 +62,5 @@ Hilfen `worksPeriodsOf`, `worksPeriodOn`, `nextWorksPeriod`, `ridesInWorksOn`, `
 (Italienisch polstert CLDR den Tag im Zeitraum, „04 gennaio“; die Null fällt weg). Italienisch
 elidiert über ein ICU-`select` („dall’8“, „all’11“); der Planer-Chunk lädt `parks.worksPeriod`
 mit. Der Admin heißt das Feld weiter „Umbaupause“, weil die API die Gruppe so benennt. Tests: 10
-neue Fälle in `pnpm test:works-period`, 6 in `pnpm test:planner-estimate`, 2 in
-`pnpm test:calendar-park-projection`.
+neue Fälle in `pnpm test:works-period`, 6 in `pnpm test:planner-estimate`, 3 in
+`pnpm test:planner-optimize`, 2 in `pnpm test:calendar-park-projection`.

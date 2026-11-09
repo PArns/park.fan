@@ -500,7 +500,8 @@
       "upcoming": "Wartung ab {from}",
       "upcomingDay": "Wartung am {from}",
       "closedRidesTitle": "Wegen Wartung geschlossen",
-      "closedRidesCount": "{count, plural, =1 {1 Bahn in Wartung} other {# Bahnen in Wartung}}"
+      "closedRidesCount": "{count, plural, =1 {1 Bahn in Wartung} other {# Bahnen in Wartung}}",
+      "notPlannable": "{ride} ist an diesem Tag in Wartung ({until}) und lässt sich nicht einplanen."
     },
     "transportSystem": {
       "label": "Transportsystem",

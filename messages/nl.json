@@ -748,7 +748,8 @@
       "upcoming": "Onderhoud vanaf {from}",
       "upcomingDay": "Onderhoud op {from}",
       "closedRidesTitle": "Gesloten voor onderhoud",
-      "closedRidesCount": "{count, plural, =1 {1 attractie in onderhoud} other {# attracties in onderhoud}}"
+      "closedRidesCount": "{count, plural, =1 {1 attractie in onderhoud} other {# attracties in onderhoud}}",
+      "notPlannable": "{ride} is op deze dag in onderhoud ({until}) en kan niet worden ingepland."
     },
     "transportSystem": {
       "label": "Vervoer",

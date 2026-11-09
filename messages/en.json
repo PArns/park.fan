@@ -748,7 +748,8 @@
       "upcoming": "Maintenance from {from}",
       "upcomingDay": "Maintenance on {from}",
       "closedRidesTitle": "Closed for maintenance",
-      "closedRidesCount": "{count, plural, =1 {1 ride closed for maintenance} other {# rides closed for maintenance}}"
+      "closedRidesCount": "{count, plural, =1 {1 ride closed for maintenance} other {# rides closed for maintenance}}",
+      "notPlannable": "{ride} is closed for maintenance on this day ({until}) and can't be planned."
     },
     "transportSystem": {
       "label": "Transport",

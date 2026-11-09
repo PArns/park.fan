@@ -105,3 +105,18 @@ the five assumed minutes the optimiser could plan a stop into. The block's secon
 itself, and the wrench (`WorksIcon`) carries the same on a short block. The context band shows a chip
 with the count, and hover or tap (`TapTooltip`) lists the rides by name and until when.
 `pnpm test:planner-estimate` pins the state.
+
+Such a ride cannot be planned that day, whichever way in:
+
+- The ride search lists it after the plannable rides, greyed, with „In Wartung bis 25. März" and
+  the reason as its title, neither clickable nor draggable, so a search for it finds it instead of
+  „nichts gefunden".
+- A drop onto the axis or the flat list is refused with a note
+  ([drag and drop](drag-and-drop.md#a-ride-in-maintenance-is-refused-and-says-why)).
+- The ride page's `AddToPlannerButton` takes the ride's `worksPeriods`; while one covers the day it
+  would file under, it is disabled and reads „In Wartung bis 4. Dez.".
+- Parky's `planner_add_rides` reads the day's `/plan/day` from the planner's cache first and leaves
+  the ride out.
+- „Alle Headliner einplanen" and the missing-headliner chips read `day.rides`, which never holds
+  it. `movableEntries` leaves a block planned before the window was known where it is: no press
+  moves, scores or fits it (`pnpm test:planner-optimize`).

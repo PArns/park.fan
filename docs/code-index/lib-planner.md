@@ -230,7 +230,7 @@ The month grid the planner picks a day on. Pure, and reckoned at noon UTC throug
 
 ### [`optimize.ts`](../../lib/planner/optimize.ts)
 
-- `movableEntries` _function_: The entries a press may move: not ticked off, not a free block, a real ride, and not already under way.
+- `movableEntries` _function_: The entries a press may move: not ticked off, not a free block, a real ride, not already under way, and not shut for maintenance that day (`worksPeriodFor`): a ride that does not run is not planned, so no press places, scores or keeps it; …
 - `canOptimize` _function_: Whether ordering this day could mean anything.
 - `headlinersToAdd` _function_: The park's headliners that this day does not have and this party can ride.
 - `headlinersSkipped` _function_: Headliners this party cannot ride, so a caller can say how many were skipped.

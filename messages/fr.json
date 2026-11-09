@@ -748,7 +748,8 @@
       "upcoming": "Maintenance à partir du {from}",
       "upcomingDay": "Maintenance le {from}",
       "closedRidesTitle": "Fermées pour maintenance",
-      "closedRidesCount": "{count, plural, =1 {1 attraction en maintenance} other {# attractions en maintenance}}"
+      "closedRidesCount": "{count, plural, =1 {1 attraction en maintenance} other {# attractions en maintenance}}",
+      "notPlannable": "{ride} est en maintenance ce jour-là ({until}) et ne peut pas être ajoutée au planning."
     },
     "transportSystem": {
       "label": "Transport",

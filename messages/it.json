@@ -748,7 +748,8 @@
       "upcoming": "Manutenzione {fromVowel, select, yes {dall’{from}} other {dal {from}}}",
       "upcomingDay": "Manutenzione {fromVowel, select, yes {l’{from}} other {il {from}}}",
       "closedRidesTitle": "Chiuse per manutenzione",
-      "closedRidesCount": "{count, plural, =1 {1 attrazione in manutenzione} other {# attrazioni in manutenzione}}"
+      "closedRidesCount": "{count, plural, =1 {1 attrazione in manutenzione} other {# attrazioni in manutenzione}}",
+      "notPlannable": "{ride} è in manutenzione quel giorno ({until}) e non si può pianificare."
     },
     "transportSystem": {
       "label": "Trasporto",

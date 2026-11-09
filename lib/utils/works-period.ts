@@ -99,7 +99,8 @@ export type WorksPeriodKey =
   | 'runningUntil'
   | 'runningUntilUncertain'
   | 'upcoming'
-  | 'upcomingDay';
+  | 'upcomingDay'
+  | 'notPlannable';
 
 /** What `t` is handed: `useTranslations('parks.worksPeriod')` or its server twin. */
 type WorksT = (key: WorksPeriodKey, values?: Record<string, string>) => string;
@@ -187,4 +188,19 @@ export function worksUpcomingLabel(period: WorksPeriod, locale: string, t: Works
     from: formatParkDay(locale, from, SHORT_DAY),
     fromVowel: dayNumberElides(from),
   });
+}
+
+/**
+ * Why a ride cannot go into the plan on a day a window shuts it: „Droomvlucht ist an diesem Tag in
+ * Wartung (bis 25. März) und lässt sich nicht einplanen." Said wherever an add is refused, the
+ * planner's search, a drop on its axis and the ride page's button, so every refusal reads the same.
+ */
+export function worksNotPlannableLabel(
+  rideName: string,
+  period: WorksPeriod,
+  locale: string,
+  t: WorksT,
+  onDate?: string
+): string {
+  return t('notPlannable', { ride: rideName, until: worksEndLabel(period, locale, t, onDate) });
 }

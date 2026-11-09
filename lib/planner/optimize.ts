@@ -1,7 +1,7 @@
 import type { PlanDay, PlanDayRide } from '@/lib/api/types';
 import { hasReadableWaitTimes } from '@/lib/utils/live-wait-times';
 import { type DayGrid, RIDE_DURATION_MIN, SNAP_MIN_FINE, dayStartMin, rideFloor } from './day-grid';
-import { estimateFor, plannedMinutes } from './estimate';
+import { estimateFor, plannedMinutes, worksPeriodFor } from './estimate';
 import { SLOT_MIN } from './ride-series';
 import { entryPlace, isBlockEntry, transferBetween, type LegPlace } from './leg';
 import { partyFlags } from './party';
@@ -131,15 +131,25 @@ function hasStarted(entry: PlannerEntry, clock?: DayClock): boolean {
 }
 
 /**
- * The entries a press may move: not ticked off, not a free block, a real ride, and not already
- * under way.
+ * The entries a press may move: not ticked off, not a free block, a real ride, not already under
+ * way, and not shut for maintenance that day (`worksPeriodFor`): a ride that does not run is not
+ * planned, so no press places, scores or keeps it; its block stays where it is, marked.
  *
- * Exported so the search, `isExecutable`, {@link scoreCurrent} and the bar share one filter: every
- * bug this rule had was two copies of it disagreeing.
+ * Exported so the search, `isExecutable`, {@link scoreCurrent}, the fit assistant and the bar share
+ * one filter: every bug this rule had was two copies of it disagreeing.
  */
-export function movableEntries(entries: readonly PlannerEntry[], clock?: DayClock): PlannerEntry[] {
+export function movableEntries(
+  entries: readonly PlannerEntry[],
+  clock?: DayClock,
+  day?: PlanDay | null
+): PlannerEntry[] {
   return entries.filter(
-    (entry) => !entry.done && !entry.custom && entry.attractionSlug && !hasStarted(entry, clock)
+    (entry) =>
+      !entry.done &&
+      !entry.custom &&
+      entry.attractionSlug &&
+      !hasStarted(entry, clock) &&
+      !worksPeriodFor(day, entry.attractionSlug)
   );
 }
 
@@ -1064,7 +1074,7 @@ function buildContext(input: OptimizeInput): Context | null {
   // Filtered BEFORE the `MAX_STOPS` split below, deliberately: applied after
   // it, `capped` would report rides that were never going to be planned, and
   // `addKept` would refuse headliners the remaining minutes had room for.
-  const movable = movableEntries(entries, clock);
+  const movable = movableEntries(entries, clock, day);
 
   const rideOf = (slug: string) => day.rides.find((r) => r.attractionSlug === slug) ?? null;
 
@@ -1276,7 +1286,7 @@ function isExecutable(input: OptimizeInput, ctx: Context): boolean {
   // overlapping itself), and skipping the `MAX_STOPS` cut reaches entries that keep their old
   // minute under the new blocks; either way no day would ever read as executable.
   const seen = new Set(ctx.candidates.map((candidate) => candidate.entryId));
-  const stops = movableEntries(input.entries, input.clock)
+  const stops = movableEntries(input.entries, input.clock, day)
     .filter((entry) => seen.has(entry.id))
     .sort((a, b) => a.startMinute - b.startMinute);
 
@@ -1388,7 +1398,7 @@ export function scoreCurrent(input: OptimizeInput): Scored | null {
 
   // The clock decides which rides this covers, never where they sit: this scores the blocks where
   // they are. A before-figure over five rides against an after-figure over two is not a saving.
-  const movable = movableEntries(entries, clock).sort((a, b) => a.startMinute - b.startMinute);
+  const movable = movableEntries(entries, clock, day).sort((a, b) => a.startMinute - b.startMinute);
   if (movable.length === 0) return null;
 
   let totalWaitMinutes = 0;

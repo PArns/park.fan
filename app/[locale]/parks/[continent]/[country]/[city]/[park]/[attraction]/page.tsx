@@ -26,6 +26,7 @@ import { GlossaryTermLink } from '@/components/glossary/glossary-term-link';
 import { Badge } from '@/components/ui/badge';
 import { SeasonalBadge } from '@/components/parks/seasonal-badge';
 import { WorksPeriodBadge } from '@/components/parks/works-period-badge';
+import { worksPeriodsOf } from '@/lib/utils/works-period';
 import { TransportSystemBadge } from '@/components/parks/transport-system-badge';
 import { HalloweenMazeBadge } from '@/components/parks/halloween-maze-badge';
 import { WorksPeriodNote } from '@/components/parks/works-period-note';
@@ -772,6 +773,7 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
                         parkId={park.id}
                         attractionId={attraction.id}
                         timezone={park.timezone}
+                        worksPeriods={worksPeriodsOf(attraction)}
                       />
                     </div>
                   )}

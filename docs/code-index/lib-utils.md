@@ -596,6 +596,7 @@ One day's hours as the park payload carries them (`schedule[]`, `nextSchedule`).
 - `worksEndLabel` _function_: Until when a window keeps a ride shut, seen from one day: „bis 25. März", „voraussichtlich bis 25. März", „Ende offen".
 - `worksRunningLabel` _function_: A running window in a few words: „In Wartung bis 4. Dez.", „In Wartung bis ca. 4. Dez." for an estimated end, plain „Wartung" with no end on file.
 - `worksUpcomingLabel` _function_: A window that has not started, in a few words: „Wartung ab 16. Jan.", or „Wartung am 8. Dez." for a single day with a firm end. Only for a window with a start (`nextWorksPeriod`).
+- `worksNotPlannableLabel` _function_: Why a ride cannot go into the plan on a day a window shuts it: „Droomvlucht ist an diesem Tag in Wartung (bis 25.
 - Types: `WorksPeriodFields`, `RideInWorks`, `WorksPeriodKey`
 
 ### [`yearly-outlook-styles.ts`](../../lib/utils/yearly-outlook-styles.ts)

@@ -38,6 +38,7 @@ import {
   canOptimize,
   headlinersSkipped,
   headlinersToAdd,
+  movableEntries,
   optimizeDay,
   scoreCurrent,
   scoreOrder,
@@ -1830,6 +1831,40 @@ function benchInput(n) {
       (plain.stops[0]?.startMinute === 9 * 60 + 15 && plain.totalWaitMinutes === 40),
     JSON.stringify(plain?.stops)
   );
+}
+
+// ── A ride shut for maintenance is not planned ─────────────────────────────
+{
+  // `/plan/day` leaves the ride out and the proxy names it in `ridesInWorks`; a block the visitor
+  // planned before the window was known stays where it is, and no press moves or scores it.
+  const payload = {
+    ...day([ride('a', flat(20)), ride('b', flat(30))]),
+    ridesInWorks: [
+      {
+        attractionSlug: 'shut',
+        attractionName: 'shut',
+        worksPeriod: { from: '2026-09-01', to: '2026-09-30', toUncertain: false },
+      },
+    ],
+  };
+  const entries = [
+    entry('a-1', 'a', 15 * 60),
+    entry('shut-1', 'shut', 10 * 60),
+    entry('b-1', 'b', 11 * 60),
+  ];
+  check(
+    'Wartung: eine Bahn in Wartung ist nicht verschiebbar',
+    movableEntries(entries, undefined, payload)
+      .map((e) => e.id)
+      .join(',') === 'a-1,b-1'
+  );
+  const plan = optimizeDay({ day: payload, grid: grid(payload), entries });
+  check(
+    'Wartung: der Optimierer plant sie nicht ein',
+    plan !== null && plan.stops.every((stop) => stop.attractionSlug !== 'shut'),
+    JSON.stringify(plan?.stops)
+  );
+  check('Wartung: ohne Tag bleibt der Filter, wie er war', movableEntries(entries).length === 3);
 }
 
 console.log(`\n${passed}/${passed + failures.length} bestanden`);
