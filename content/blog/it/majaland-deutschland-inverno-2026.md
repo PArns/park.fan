@@ -2,7 +2,7 @@
 title: "Il Plopsaland Deutschland apre d'inverno come Majaland"
 translationKey: majaland-deutschland-winter-2026
 date: '2026-11-09'
-time: '17:30'
+time: '18:02'
 author: patrick
 mode: published
 featured: false
