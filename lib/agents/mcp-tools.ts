@@ -1,6 +1,15 @@
 import 'server-only';
 import { search } from '@/lib/api/search';
-import { getParkByGeoPathForAgents } from '@/lib/api/parks';
+import { getParkByGeoPath, getParkByGeoPathForAgents } from '@/lib/api/parks';
+import { catchNonFatal } from '@/lib/api/client';
+import { parkDayOf } from '@/lib/utils/park-day';
+import {
+  nextWorksPeriod,
+  ridesInWorksOn,
+  worksPeriodOn,
+  worksPeriodsOf,
+} from '@/lib/utils/works-period';
+import type { WorksPeriod } from '@/lib/api/types';
 import { getBestDaysCalendar } from '@/lib/api/integrated-calendar';
 import { convertApiUrlToFrontendUrl } from '@/lib/utils/url-utils';
 import { noLiveWaitTimesReason } from '@/lib/utils/live-wait-times';
@@ -48,6 +57,18 @@ async function resolvePark(query: string) {
   return segments ? { name: hit.name, path, segments } : null;
 }
 
+/**
+ * A maintenance window as an agent reads it: park-local days, both inclusive, and whether the end
+ * is park.fan's estimate rather than a date the park published. `null` bounds are open.
+ */
+function maintenanceWindow(period: WorksPeriod) {
+  return {
+    from: period.from ?? null,
+    until: period.to ?? null,
+    untilIsEstimate: period.toUncertain,
+  };
+}
+
 function localeOf(input: Record<string, unknown>): string {
   const locale = typeof input.locale === 'string' ? input.locale : 'en';
   return ['en', 'de', 'fr', 'it', 'nl', 'es'].includes(locale) ? locale : 'en';
@@ -93,13 +114,21 @@ const EXECUTORS: Record<string, McpTool['execute']> = {
     // `effectiveStatus` is the API's own verdict and already accounts for a ride that is out of
     // season — the raw `status` does not, and an ice rink in August would otherwise come back as
     // one of the park's open rides.
+    const today = parkDayOf(new Date(), data.timezone);
     const rides = (data.attractions ?? []).map((attraction) => {
       const standby = attraction.queues?.find((queue) => queue.queueType === 'STANDBY');
+      // A curated window says why a ride reads CLOSED and until when; the next one says when it
+      // will. Only where one exists, so a ride without says nothing rather than „none".
+      const windows = worksPeriodsOf(attraction);
+      const running = worksPeriodOn(windows, today);
+      const next = running ? null : nextWorksPeriod(windows, today);
       return {
         name: attraction.name,
         land: attraction.land,
         status: (attraction as { effectiveStatus?: string }).effectiveStatus ?? attraction.status,
         waitMinutes: standby && 'waitTime' in standby ? (standby.waitTime ?? null) : null,
+        ...(running && { maintenance: maintenanceWindow(running) }),
+        ...(next && { nextMaintenance: maintenanceWindow(next) }),
       };
     });
 
@@ -124,6 +153,8 @@ const EXECUTORS: Record<string, McpTool['execute']> = {
               data.analytics?.statistics?.avgWaitTime ?? data.currentLoad?.currentWaitTime,
             note: 'Wait times are what the park published, rounded to five minutes. A null wait is a ride with no published number, not a queue of zero.',
           }),
+      maintenanceNote:
+        'maintenance is a planned closure running today, nextMaintenance the next one: park-local days, both inclusive. A window can be one day or months; until null means no end is known yet, untilIsEstimate that the end is park.fan’s estimate.',
       ridesOpen: rides.filter((ride) => ride.status === 'OPERATING').length,
       ridesTotal: rides.length,
       // Longest queue first: the question behind this tool is almost always "what should I do
@@ -138,7 +169,13 @@ const EXECUTORS: Record<string, McpTool['execute']> = {
     if (!park) return { error: `No park on park.fan matches "${query}".` };
 
     const days = Math.min(Math.max(Number(input.days) || 30, 1), 90);
-    const snapshot = await getBestDaysCalendar(...park.segments);
+    // The rides come from the park's cached structure, the entry the park page reads; a failed
+    // read costs the days their maintenance list, never the days.
+    const [snapshot, structure] = await Promise.all([
+      getBestDaysCalendar(...park.segments),
+      catchNonFatal(getParkByGeoPath(...park.segments)),
+    ]);
+    const rides = structure?.attractions ?? [];
 
     return {
       park: park.name,
@@ -151,17 +188,23 @@ const EXECUTORS: Record<string, McpTool['execute']> = {
         from: snapshot.days?.[0]?.date,
         to: snapshot.days?.slice(0, days).at(-1)?.date,
       },
-      days: (snapshot.days ?? []).slice(0, days).map((day) => ({
-        date: day.date,
-        status: day.status,
-        // `crowdLevel` is overridden with the live reading on today only; `predictedCrowdLevel`
-        // is the forecast on every day including this one, which is what a date question wants.
-        crowdLevel: day.predictedCrowdLevel ?? day.crowdLevel,
-        isHoliday: day.isHoliday,
-        isSchoolVacation: day.isSchoolVacation,
-        isBridgeDay: day.isBridgeDay,
-      })),
-      note: 'A crowd level compares this park with itself, never one park with another. A closed day is a fact about the season, not a quiet day.',
+      days: (snapshot.days ?? []).slice(0, days).map((day) => {
+        // A closed day lists none: nothing runs on it anyway.
+        const inMaintenance =
+          day.status === 'CLOSED' ? [] : ridesInWorksOn(rides, day.date).map((ride) => ride.name);
+        return {
+          date: day.date,
+          status: day.status,
+          // `crowdLevel` is overridden with the live reading on today only; `predictedCrowdLevel`
+          // is the forecast on every day including this one, which is what a date question wants.
+          crowdLevel: day.predictedCrowdLevel ?? day.crowdLevel,
+          isHoliday: day.isHoliday,
+          isSchoolVacation: day.isSchoolVacation,
+          isBridgeDay: day.isBridgeDay,
+          ...(inMaintenance.length > 0 && { ridesInMaintenance: inMaintenance }),
+        };
+      }),
+      note: 'A crowd level compares this park with itself, never one park with another. A closed day is a fact about the season, not a quiet day. ridesInMaintenance names the rides a planned maintenance closure shuts that day.',
     };
   },
 };

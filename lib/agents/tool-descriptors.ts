@@ -40,7 +40,7 @@ export const TOOL_DESCRIPTORS: ToolDescriptor[] = [
     name: 'get_park_wait_times',
     title: 'Live wait times for a park',
     description:
-      'Current wait times for every ride in a theme park, with the park status and how busy it is right now. Takes a park name or slug.',
+      'Current wait times for every ride in a theme park, with the park status and how busy it is right now, and for a ride in planned maintenance the dates: running today (maintenance) or the next one (nextMaintenance). Takes a park name or slug.',
     inputSchema: {
       type: 'object',
       properties: {
@@ -55,7 +55,7 @@ export const TOOL_DESCRIPTORS: ToolDescriptor[] = [
     name: 'get_park_best_days',
     title: 'Crowd forecast per day',
     description:
-      'The crowd forecast for a park over the coming three months: one entry per day with the predicted crowd level, whether the park is open, and whether it is a holiday or school vacation. Use this to pick a date rather than to read a queue.',
+      'The crowd forecast for a park over the coming three months: one entry per day with the predicted crowd level, whether the park is open, whether it is a holiday or school vacation, and which rides planned maintenance shuts that day. Use this to pick a date rather than to read a queue.',
     inputSchema: {
       type: 'object',
       properties: {
