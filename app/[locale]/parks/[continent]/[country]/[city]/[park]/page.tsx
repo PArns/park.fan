@@ -47,7 +47,7 @@ import { ParkTodayPanel } from '@/components/parks/park-today-panel';
 import { ParkKidsLink } from '@/components/parks/park-kids-link';
 import { initialRiderHeightFromParam, kidsPageData } from '@/lib/parks/kids-page';
 import { ParkPurchasesCard } from '@/components/parks/park-purchases-card';
-import { ParkHeaderWindow, ParkNewsBand } from '@/components/parks/park-header-posts';
+import { ParkNewsBand } from '@/components/parks/park-header-posts';
 import { freshNewsSince, getFreshNewsForPark, getGuideForPark } from '@/lib/blog/backlinks';
 import { NoLiveWaitTimesNotice } from '@/components/parks/no-live-wait-times-notice';
 import { noLiveWaitTimesReason } from '@/lib/utils/live-wait-times';
@@ -584,9 +584,7 @@ export default async function ParkPage({ params, searchParams }: ParkPageProps) 
               ...parkArgs(locale as Locale, parkName, park.nameArticleDe),
               city: cityName,
             })}
-            windowPane={
-              <ParkHeaderWindow guide={headerGuide} photo={getParkBackgroundImage(parkSlug)} />
-            }
+            windowPane={{ guide: headerGuide, photo: getParkBackgroundImage(parkSlug) }}
             note={
               headerNews ? <ParkNewsBand locale={locale as Locale} news={headerNews} /> : undefined
             }

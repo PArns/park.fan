@@ -8,7 +8,7 @@ import { ParkFavoriteButton } from '@/components/parks/park-favorite-button';
 import { ParkLocationLine } from '@/components/parks/park-location-line';
 import { ParkPlannerLink } from '@/components/parks/park-planner-link';
 import { ParkLinksFlyout } from '@/components/parks/park-links-flyout';
-import { TitleCardWindowSplit } from '@/components/parks/park-header-posts';
+import { TitleCardWindowSplit, type TitleCardWindow } from '@/components/parks/park-header-posts';
 import { ParkMapsLink } from '@/components/parks/park-maps-link';
 import { parkMapsLinks } from '@/lib/parks/maps-links';
 import { hasQuickLinks, ParkOutboundLinks } from '@/components/parks/park-quick-links';
@@ -56,10 +56,11 @@ interface ParkTitleHeaderProps {
   /** Anything the page wants under the intro — a back link, for instance. */
   children?: React.ReactNode;
   /**
-   * „The window": a pane cut into the card's glass, edge to edge on the right from `lg` and full
-   * width under the weekdays below it. Without one the card keeps its single column.
+   * What „the window" shows: a pane cut into the card's glass, edge to edge on the right from `lg`
+   * and full width under the weekdays below it. With nothing to show the card keeps its single
+   * column (`TitleCardWindowSplit`).
    */
-  windowPane?: React.ReactNode;
+  windowPane?: TitleCardWindow;
   /** A rail along the card's bottom edge, under the window — the park's fresh news. */
   note?: React.ReactNode;
 }

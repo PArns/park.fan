@@ -83,11 +83,7 @@ import { RideProfileSection } from '@/components/parks/ride-profile-section';
 import { NoLiveWaitTimesNotice } from '@/components/parks/no-live-wait-times-notice';
 import { hasReadableWaitTimes, noLiveWaitTimesReason } from '@/lib/utils/live-wait-times';
 import { AttractionBlogPostsSection } from '@/components/parks/blog-posts-sections';
-import {
-  ParkHeaderWindow,
-  ParkNewsBand,
-  TitleCardWindowSplit,
-} from '@/components/parks/park-header-posts';
+import { ParkNewsBand, TitleCardWindowSplit } from '@/components/parks/park-header-posts';
 import {
   freshNewsSince,
   getFreshNewsAboutRide,
@@ -642,18 +638,12 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
               <GlassCard variant="tile">
                 <TitleCardWindowSplit
                   hasRail={Boolean(headerNews)}
-                  pane={
-                    headerPost || backgroundImage ? (
-                      <ParkHeaderWindow
-                        guide={headerPost}
-                        photo={backgroundImage}
-                        // The park guide keeps its own „Erster Besuch".
-                        label={
-                          ridePost ? t('blogPosts.title', { ride: attractionName }) : undefined
-                        }
-                      />
-                    ) : undefined
-                  }
+                  pane={{
+                    guide: headerPost,
+                    photo: backgroundImage,
+                    // The park guide keeps its own „Erster Besuch".
+                    label: ridePost ? t('blogPosts.title', { ride: attractionName }) : undefined,
+                  }}
                 >
                   <div className="min-w-0">
                     {/* The favourite star in front of the name, as on the park page: beside the
