@@ -137,9 +137,13 @@ function HistoryRow({
       )}
     >
       <div className="flex flex-wrap items-baseline gap-x-2 gap-y-1">
-        <span className="text-sm font-medium">{actionLabel(entry.action)}</span>
+        {/* An action the labels do not know shows raw, and some are a path with an id: it breaks
+            wherever it must rather than widen the row past a phone screen. */}
+        <span className="min-w-0 text-sm font-medium break-words">{actionLabel(entry.action)}</span>
         {showEntity && entry.entityLabel && (
-          <span className="text-muted-foreground truncate text-xs">{entry.entityLabel}</span>
+          <span className="text-muted-foreground max-w-full min-w-0 truncate text-xs">
+            {entry.entityLabel}
+          </span>
         )}
         {isVerification && <Chip>Prüfung</Chip>}
         {entry.revertedBy && <Chip>zurückgenommen</Chip>}
