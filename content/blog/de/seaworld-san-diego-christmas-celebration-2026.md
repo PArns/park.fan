@@ -1,5 +1,5 @@
 ---
-title: 'Baby Shark reist in SeaWorld San Diego zum Nordpol'
+title: 'Weihnachten in SeaWorld San Diego mit Baby Shark und Parade'
 translationKey: seaworld-san-diego-christmas-celebration-2026
 date: '2026-11-09'
 time: '07:30'
@@ -43,7 +43,7 @@ seo:
 
 In Baby Shark's Christmas Adventure reisen Baby Shark und seine Freunde zum Nordpol, und das Publikum singt und tanzt mit. Eltern kleiner Kinder können das Lied ohnehin längst auswendig, ob sie wollten oder nicht, hier dürfen sie es wenigstens zu Weihnachten singen. Die Show hat Mitmachstellen und eine kleine Mission, bei der die Familien zusammenhelfen.
 
-Dolphin Island Christmas im Dolphin Stadium mischt Weihnachten mit Musik aus Hawaii und dem Pazifikraum, gesungen wird auch in den Sprachen der Inseln. Mit dabei ist Solstice, der jüngste Delfin des Parks, und sie feiert ihr erstes Weihnachten.
+Dolphin Island Christmas im Dolphin Stadium mischt Weihnachten mit Musik aus Hawaii und dem Pazifikraum, gesungen wird auch in den Sprachen der Inseln. Solstice, das jüngste Mitglied der Delfingruppe, feiert dabei ihr erstes Weihnachten im Park.
 
 Bei North Pole Storytime erzählt Paige the Elf, die Bibliothekarin des Nordpols, wie der Weihnachtsmann einmal SeaWorld San Diego besucht hat, und holt sich dafür Freiwillige aus dem Publikum auf die Bühne. DJ the Elf legt zur Tanzparty Weihnachtslieder als Remix auf. Durch den ganzen Park zieht die Rock the Holiday Christmas Parade mit Festwagen, Mrs. Claus und ihren Elfen, unterwegs tauchen Spielzeugmacher und Bäcker vom Nordpol auf.
 
