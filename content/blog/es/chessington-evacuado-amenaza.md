@@ -2,7 +2,7 @@
 title: 'Chessington World of Adventures, evacuado tras una amenaza'
 translationKey: chessington-evacuated-threat
 date: '2026-11-09'
-time: '10:30'
+time: '08:45'
 author: patrick
 mode: published
 featured: false
@@ -31,9 +31,9 @@ seo:
     - Christmas at Chessington 2026
 ---
 
-El [Chessington World of Adventures Resort](ref:chessington-world-of-adventures?bare), al suroeste de Londres, fue evacuado el domingo 8 de noviembre tras una amenaza y permaneció cerrado el resto del día. La amenaza llegó por la mañana. Merlin Entertainments, propietaria del resort, cerró entonces el parque de atracciones, el zoo y el hotel, de acuerdo con la Metropolitan Police. Quien ya estaba dentro tuvo que salir, y a quien acababa de llegar lo mandaron de vuelta en la entrada. Lo contaron, entre otros, The Independent, el Mirror y el medio local London Now.
+El [Chessington World of Adventures Resort](ref:chessington-world-of-adventures?bare), al suroeste de Londres, fue evacuado el domingo 8 de noviembre tras una amenaza y permaneció cerrado el resto del día. La amenaza llegó por la mañana. Merlin Entertainments, propietaria del resort, cerró entonces el parque de atracciones, el zoo y el hotel, de acuerdo con la Metropolitan Police. A los visitantes que acababan de llegar los mandaron de vuelta ya en la entrada. Lo contaron, entre otros, The Independent, el Mirror y el medio local London Now.
 
-Ante la entrada, en Leatherhead Road, había policías con perros rastreadores y personal sanitario. La A243, la carretera junto a la que está el resort, estuvo cortada un rato por la tarde. Ni la policía ni Merlin han informado de heridos ni de detenciones.
+Ante la entrada, en Leatherhead Road, había personal sanitario y policías con perros rastreadores. La A243, la carretera junto a la que está el resort, estuvo cortada un rato por la tarde. Ni la policía ni Merlin han informado de heridos ni de detenciones.
 
 ## Lo que dice la policía
 
@@ -48,8 +48,6 @@ La policía no ha hecho público qué tipo de amenaza era ni cómo llegó al res
 
 ## Lo que dice el resort
 
-En su página de inicio, el resort explica el cierre en tres frases:
-
 > [!QUOTE]
 > Tras un incidente de seguridad ocurrido hoy más temprano, y en estrecha coordinación con la Metropolitan Police, aplicamos de inmediato nuestros procedimientos de seguridad, bien ensayados, y cerramos el resort como precaución. El incidente ya está resuelto. El hotel reabrirá mañana, lunes 9 de noviembre, y el resort reabrirá según lo previsto el sábado 14 de noviembre.
 >
@@ -59,15 +57,15 @@ En su página de inicio, el resort explica el cierre en tres frases:
 
 ## Las entradas del domingo
 
-Si habías reservado para el 8 de noviembre, el resort dice que puedes usar tu entrada en [LEGOLAND Windsor](ref:legoland-windsor), que también es de Merlin, o ponerte en contacto con atención al cliente. Merlin no ha anunciado hasta cuándo vale la entrada en Windsor ni si devuelve el importe a quien lo pida. LEGOLAND no vuelve a abrir hasta el 21 de noviembre, ya con su programa de Navidad. Cómo organizar el día allí lo cuenta nuestra [guía de LEGOLAND Windsor](/blog/legoland-windsor-consejos).
+Si habías reservado para el 8 de noviembre, el resort dice que puedes usar tu entrada en [LEGOLAND Windsor](ref:legoland-windsor), que también es de Merlin, o ponerte en contacto con atención al cliente. El aviso no menciona ningún reembolso, ni un plazo para usar la entrada en Windsor. LEGOLAND no vuelve a abrir hasta el 21 de noviembre, con LEGOLAND at Christmas, que se celebra en fechas seleccionadas hasta el 2 de enero. Nuestra [guía de LEGOLAND Windsor](/blog/legoland-windsor-consejos) recoge también las atracciones que allí están paradas desde el 9 de noviembre hasta febrero o marzo.
 
 ## Cuándo reabre Chessington
 
-Hasta el viernes el resort habría seguido cerrado de todos modos, porque en noviembre solo abre los fines de semana. Sobre la fecha siguiente, las fuentes no coinciden. Merlin escribe que el resort reabre según lo previsto el sábado 14 de noviembre. En el calendario de apertura tal como lo recogen el periódico local Kingston Wire y la web Theme Park Guide, en cambio, está cerrado del 9 al 20 de noviembre, y el siguiente día de apertura es el 21 de noviembre. Merlin no ha aclarado si el día 14 abre el parque de atracciones o solo algunas zonas, como el zoo. Si quieres ir ese fin de semana, pregunta antes a atención al cliente.
+Hasta el viernes el resort habría seguido cerrado de todos modos, porque en noviembre solo abre los fines de semana. El calendario de apertura que recogen el periódico local Kingston Wire y la web Theme Park Guide contradice la fecha del 14 de noviembre que da Merlin. Según ese calendario, el resort está cerrado del 9 al 20 de noviembre, y el siguiente día de apertura es el 21 de noviembre. Merlin no ha aclarado si el día 14 abre el parque de atracciones o solo algunas zonas, como el zoo, así que pregunta a atención al cliente antes de ir ese fin de semana.
 
 El 21 de noviembre empieza también Christmas at Chessington. Hasta el 24 de diciembre, el resort abre en fechas seleccionadas con un pueblo navideño y la gruta de Papá Noel, y la novedad de 2026 es una panto, el teatro navideño británico, sobre Cenicienta. La entrada al parque de atracciones cuesta desde 24 libras por persona, o 32 libras en línea con el pueblo navideño. El zoo y el SEA LIFE están incluidos en ambos casos. En Navidad, Tiger Rock, Vampire, River Rafts, Zufari, Barrel Bail Out!, Croc Drop y Seastorm están parados por mantenimiento. Del 27 de diciembre al 3 de enero, el parque vuelve a abrir en fechas seleccionadas, sin el pueblo navideño, desde 20 libras.
 
-Chessington es zoo y parque de atracciones a la vez y está a unos 19 kilómetros al suroeste del centro de Londres, en el distrito de Kingston upon Thames. El zoo existe desde 1931, y el Tussauds Group abrió el parque de atracciones a su lado en 1987. El resort pertenece a Merlin desde que Merlin compró el Tussauds Group en 2007.
+Chessington es zoo y parque de atracciones a la vez y está a unos 19 kilómetros al suroeste del centro de Londres, en el distrito de Kingston upon Thames. El zoo existe desde 1931, y el Tussauds Group abrió el parque de atracciones a su lado en 1987. En 2007, Merlin compró el Tussauds Group y, con él, Chessington.
 
 [Chessington World of Adventures](ref:chessington-world-of-adventures?full)
 

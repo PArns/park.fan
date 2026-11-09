@@ -2,7 +2,7 @@
 title: 'Chessington World of Adventures nach Drohung geräumt'
 translationKey: chessington-evacuated-threat
 date: '2026-11-09'
-time: '10:30'
+time: '08:45'
 author: patrick
 mode: published
 featured: false
@@ -31,9 +31,9 @@ seo:
     - Christmas at Chessington 2026
 ---
 
-Das [Chessington World of Adventures Resort](ref:chessington-world-of-adventures?bare) im Südwesten Londons ist am Sonntag, 8. November, nach einer Drohung geräumt und für den Rest des Tages geschlossen worden. Die Drohung ging am Vormittag ein. Merlin Entertainments, dem das Resort gehört, schloss daraufhin in Absprache mit der Metropolitan Police den Freizeitpark, den Zoo und das Hotel. Wer schon drin war, musste gehen, und wer gerade ankam, wurde am Eingang wieder weggeschickt. Berichtet haben darüber unter anderem The Independent, der Mirror und die Lokalseite London Now.
+Das [Chessington World of Adventures Resort](ref:chessington-world-of-adventures?bare) im Südwesten Londons ist am Sonntag, 8. November, nach einer Drohung geräumt und für den Rest des Tages geschlossen worden. Die Drohung ging am Vormittag ein. Merlin Entertainments, dem das Resort gehört, schloss daraufhin in Absprache mit der Metropolitan Police den Freizeitpark, den Zoo und das Hotel. Besucher, die gerade erst ankamen, wurden schon am Eingang wieder weggeschickt. Berichtet haben darüber unter anderem The Independent, der Mirror und die Lokalseite London Now.
 
-Vor dem Eingang an der Leatherhead Road waren Polizisten mit Spürhunden und Rettungskräfte im Einsatz. Die A243, an der das Resort liegt, war am Nachmittag zeitweise gesperrt. Verletzte oder Festnahmen haben weder die Polizei noch Merlin gemeldet.
+Vor dem Eingang an der Leatherhead Road waren Rettungskräfte und Polizisten mit Spürhunden im Einsatz. Die A243, an der das Resort liegt, war am Nachmittag zeitweise gesperrt. Verletzte oder Festnahmen haben weder die Polizei noch Merlin gemeldet.
 
 ## Was die Polizei sagt
 
@@ -44,11 +44,9 @@ Vor dem Eingang an der Leatherhead Road waren Polizisten mit Spürhunden und Ret
 >
 > Metropolitan Police in ihrer Mitteilung vom 8. November, zitiert vom [Mirror](https://www.aol.co.uk/articles/chessington-world-adventures-closed-evacuated-151328000.html) und von [The Independent](https://au.news.yahoo.com/chessington-world-adventures-evacuated-police-162902462.html), aus dem Englischen übersetzt
 
-Welche Art von Drohung es war und auf welchem Weg sie das Resort erreichte, hat die Polizei nicht bekannt gegeben. Sie bat darum, nicht zu spekulieren, solange sie noch ermittelt.
+Die Polizei hat nicht bekannt gegeben, welche Art von Drohung es war und wie sie das Resort erreichte. Sie bat darum, nicht zu spekulieren, solange sie noch ermittelt.
 
 ## Was das Resort sagt
-
-Auf seiner Startseite erklärt das Resort die Schließung in drei Sätzen:
 
 > [!QUOTE]
 > Nach einem Sicherheitsvorfall früher am Tag haben wir in enger Abstimmung mit der Metropolitan Police sofort unsere eingeübten Sicherheitsabläufe gestartet und das Resort vorsorglich geschlossen. Der Vorfall ist inzwischen beendet. Das Hotel öffnet morgen, Montag, 9. November, wieder, das Resort wie geplant am Samstag, 14. November.
@@ -59,15 +57,15 @@ Auf seiner Startseite erklärt das Resort die Schließung in drei Sätzen:
 
 ## Tickets vom Sonntag
 
-Wer für den 8. November gebucht hatte, kann sein Ticket nach Angaben des Resorts im [LEGOLAND Windsor](ref:legoland-windsor) einlösen, das ebenfalls zu Merlin gehört, oder sich beim Kundenservice melden. Bis wann das Ticket in Windsor gilt und ob Merlin den Preis auf Wunsch auch erstattet, hat das Unternehmen nicht bekannt gegeben. Als Nächstes öffnet das LEGOLAND am 21. November, dann schon mit dem Weihnachtsprogramm. Wie du den Tag dort planst, steht in unserem [Guide zum LEGOLAND Windsor](/blog/legoland-windsor-tipps).
+Wer für den 8. November gebucht hatte, kann sein Ticket nach Angaben des Resorts im [LEGOLAND Windsor](ref:legoland-windsor) einlösen, das ebenfalls zu Merlin gehört, oder sich beim Kundenservice melden. Eine Erstattung erwähnt der Hinweis nicht, ebenso wenig eine Frist, bis wann das Ticket in Windsor gilt. Als Nächstes öffnet das LEGOLAND am 21. November zu LEGOLAND at Christmas, das an ausgewählten Tagen bis zum 2. Januar läuft. Unser [Guide zum LEGOLAND Windsor](/blog/legoland-windsor-tipps) listet auch die Bahnen, die dort seit dem 9. November bis Februar oder März stillstehen.
 
 ## Wann Chessington wieder öffnet
 
-Bis Freitag wäre das Resort ohnehin geschlossen geblieben, denn im November öffnet es nur an Wochenenden. Beim nächsten Termin widersprechen sich die Angaben. Merlin schreibt, das Resort öffne wie geplant am Samstag, 14. November. Im Öffnungskalender, wie ihn die Lokalzeitung Kingston Wire und die Seite Theme Park Guide wiedergeben, ist es dagegen vom 9. bis zum 20. November zu, und der nächste Öffnungstag ist der 21. November. Ob am 14. November der Freizeitpark öffnet oder nur einzelne Bereiche wie der Zoo, hat Merlin offengelassen. Wer an diesem Wochenende hinfahren will, fragt vorher beim Kundenservice nach.
+Bis Freitag wäre das Resort ohnehin geschlossen geblieben, denn im November öffnet es nur an Wochenenden. Der Öffnungskalender, den die Lokalzeitung Kingston Wire und die Seite Theme Park Guide wiedergeben, widerspricht dem 14. November aus Merlins Hinweis. Darin ist das Resort vom 9. bis zum 20. November geschlossen, und der nächste Öffnungstag ist der 21. November. Merlin hat offengelassen, ob am 14. November der Freizeitpark öffnet oder nur einzelne Bereiche wie der Zoo. Frag deshalb vor einem Besuch an diesem Wochenende beim Kundenservice nach.
 
 Am 21. November beginnt auch Christmas at Chessington. Bis zum 24. Dezember öffnet das Resort an ausgewählten Tagen mit einem Weihnachtsdorf samt Grotte des Weihnachtsmanns, und neu ist 2026 eine Panto, das britische Weihnachtstheater, mit Cinderella. Der Eintritt in den Freizeitpark kostet ab 24 Pfund pro Person, mit dem Weihnachtsdorf online ab 32 Pfund. Zoo und SEA LIFE sind jeweils dabei. Über Weihnachten stehen Tiger Rock, Vampire, River Rafts, Zufari, Barrel Bail Out!, Croc Drop und Seastorm zur Wartung still. Vom 27. Dezember bis zum 3. Januar öffnet der Park noch einmal an ausgewählten Tagen, ohne das Weihnachtsdorf, ab 20 Pfund.
 
-Chessington ist Zoo und Freizeitpark in einem und liegt rund 19 Kilometer südwestlich der Londoner Innenstadt im Bezirk Kingston upon Thames. Den Zoo gibt es seit 1931, den Freizeitpark daneben hat die Tussauds Group 1987 eröffnet. Seit Merlin 2007 die Tussauds Group übernommen hat, gehört das Resort zu Merlin.
+Chessington ist Zoo und Freizeitpark in einem und liegt rund 19 Kilometer südwestlich der Londoner Innenstadt im Bezirk Kingston upon Thames. Den Zoo gibt es seit 1931, den Freizeitpark daneben hat die Tussauds Group 1987 eröffnet. 2007 hat Merlin die Tussauds Group übernommen und mit ihr Chessington.
 
 [Chessington World of Adventures](ref:chessington-world-of-adventures?full)
 

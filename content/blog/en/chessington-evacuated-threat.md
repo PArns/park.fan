@@ -2,7 +2,7 @@
 title: 'Chessington World of Adventures evacuated after a threat'
 translationKey: chessington-evacuated-threat
 date: '2026-11-09'
-time: '10:30'
+time: '08:45'
 author: patrick
 mode: published
 featured: false
@@ -31,9 +31,9 @@ seo:
     - Christmas at Chessington 2026
 ---
 
-[Chessington World of Adventures Resort](ref:chessington-world-of-adventures?bare) in south-west London was evacuated on Sunday, 8 November, after a threat, and stayed closed for the rest of the day. The threat came in that morning. Merlin Entertainments, which owns the resort, then closed the theme park, the zoo and the hotel in agreement with the Metropolitan Police. Anyone already inside had to leave, and people just arriving were turned away at the gate. The Independent, the Mirror and the local news site London Now were among those reporting it.
+[Chessington World of Adventures Resort](ref:chessington-world-of-adventures?bare) in south-west London was evacuated on Sunday, 8 November, after a threat, and stayed closed for the rest of the day. The threat was made that morning, and Merlin Entertainments, which owns the resort, closed the theme park, the zoo and the hotel in consultation with the Metropolitan Police. Visitors who were just arriving were turned away at the gate. The Independent, the Mirror and the local news site London Now were among those reporting it.
 
-Police officers with sniffer dogs and paramedics were at the entrance on Leatherhead Road. The A243, the road the resort sits on, was closed for a while in the afternoon. Neither the police nor Merlin have reported any injuries or arrests.
+Paramedics and police officers with sniffer dogs were at the entrance on Leatherhead Road. The A243, the road the resort sits on, was closed for a while in the afternoon. Neither the police nor Merlin have reported any injuries or arrests.
 
 ## What the police say
 
@@ -46,8 +46,6 @@ The police haven't disclosed what kind of threat it was or how it reached the re
 
 ## What the resort says
 
-The resort explains the closure on its homepage in three sentences:
-
 > [!QUOTE]
 > Following a security incident earlier today, and in close coordination with the Metropolitan Police, we immediately implemented our well-rehearsed safety procedures and closed the resort as a precaution. The incident has now been resolved. The hotel will reopen tomorrow, Monday 9 November, and the Resort will reopen as planned on Saturday 14 November.
 >
@@ -55,15 +53,15 @@ The resort explains the closure on its homepage in three sentences:
 
 ## Tickets for Sunday
 
-If you'd booked for 8 November, the resort says you can use your ticket at [LEGOLAND Windsor](ref:legoland-windsor), which Merlin also owns, or contact customer services. Merlin hasn't announced how long the tickets stay valid in Windsor or whether it'll refund them on request. LEGOLAND next opens on 21 November, already with its Christmas programme. Our [LEGOLAND Windsor guide](/blog/legoland-windsor-tips) covers how to plan a day there.
+If you'd booked for 8 November, the resort says you can use your ticket at [LEGOLAND Windsor](ref:legoland-windsor), which Merlin also owns, or contact customer services. The notice doesn't mention refunds, or a deadline for using the ticket in Windsor. LEGOLAND next opens on 21 November for LEGOLAND at Christmas, which runs on selected dates until 2 January. Our [LEGOLAND Windsor guide](/blog/legoland-windsor-tips) also lists the rides there that closed on 9 November and stay shut until February or March.
 
 ## When Chessington reopens
 
-The resort would've stayed shut until Friday anyway, since it only opens at weekends in November. For the next date, the sources disagree. Merlin says the resort reopens as planned on Saturday 14 November. The opening calendar as the local paper Kingston Wire and the site Theme Park Guide report it shows the resort closed from 9 to 20 November instead, with 21 November as the next open day. Merlin hasn't made clear whether the theme park opens on the 14th or only parts of the resort such as the zoo. If you're planning to go that weekend, check with customer services first.
+The resort would have been closed until Friday anyway, because in November it only opens at weekends. The opening calendar reproduced by the local paper Kingston Wire and by Theme Park Guide contradicts the 14 November date in Merlin's statement. It has the resort closed from 9 to 20 November, with 21 November as the next open day. Merlin hasn't made clear whether the theme park opens on the 14th or only parts of the resort such as the zoo, so ask customer services before you go that weekend.
 
 21 November is also when Christmas at Chessington starts. Until 24 December the resort opens on selected dates with a Christmas Village and Father Christmas's Grotto, and new for 2026 there's a panto, Cinderella. Theme park entry starts at £24 a person, or £32 online with the Christmas Village. The zoo and SEA LIFE are included either way. Over Christmas, Tiger Rock, Vampire, River Rafts, Zufari, Barrel Bail Out!, Croc Drop and Seastorm are closed for maintenance. From 27 December to 3 January the park opens again on selected dates, without the Christmas Village, from £20.
 
-Chessington is a zoo and a theme park in one, about 19 kilometres (12 miles) south-west of central London in the borough of Kingston upon Thames. The zoo has been there since 1931, and the Tussauds Group opened the theme park next to it in 1987. The resort has belonged to Merlin since Merlin took over the Tussauds Group in 2007.
+Chessington is a zoo and a theme park in one, about 19 kilometres (12 miles) south-west of central London in the borough of Kingston upon Thames. The zoo has been there since 1931, and the Tussauds Group opened the theme park next to it in 1987. In 2007 Merlin took over the Tussauds Group, and Chessington with it.
 
 [Chessington World of Adventures](ref:chessington-world-of-adventures?full)
 
