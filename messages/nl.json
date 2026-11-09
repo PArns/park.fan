@@ -737,7 +737,17 @@
       "sinceUntilUncertain": "Deze attractie is sinds {from} gesloten voor verbouwing, naar verwachting tot en met {to}.",
       "since": "Deze attractie is sinds {from} gesloten voor verbouwing. Er is nog geen einddatum.",
       "until": "Deze attractie is gesloten voor verbouwing tot en met {to}.",
-      "untilUncertain": "Deze attractie is gesloten voor verbouwing, naar verwachting tot en met {to}."
+      "untilUncertain": "Deze attractie is gesloten voor verbouwing, naar verwachting tot en met {to}.",
+      "window": "van {from} tot en met {to}",
+      "windowUncertain": "van {from}, naar verwachting tot en met {to}",
+      "windowDay": "op {from}",
+      "windowFrom": "vanaf {from}",
+      "windowTo": "tot en met {to}",
+      "windowToUncertain": "naar verwachting tot en met {to}",
+      "upcoming": "Verbouwing vanaf {from}",
+      "upcomingDay": "Verbouwing op {from}",
+      "closedRidesTitle": "Gesloten voor verbouwing",
+      "closedRidesCount": "{count, plural, =1 {1 attractie in verbouwing} other {# attracties in verbouwing}}"
     },
     "transportSystem": {
       "label": "Vervoer",

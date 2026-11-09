@@ -1,7 +1,7 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
-import { AlertTriangle, Droplets, Theater, X } from 'lucide-react';
+import { useLocale, useTranslations } from 'next-intl';
+import { AlertTriangle, Construction, Droplets, Theater, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import {
   CROWD_DOT_CLASS,
@@ -18,7 +18,9 @@ import type { PlannerEntry } from '@/lib/planner/types';
 import { actualVsEstimate, isAssumedWait, type PlannerEstimate } from '@/lib/planner/estimate';
 import { roundWaitTo5 } from '@/lib/utils/wait-time';
 import { backgroundPhotoUrl } from '@/lib/utils/image-loader';
-import type { PlanDayShowSource, PlanDayTier } from '@/lib/api/types';
+import type { PlanDayShowSource, PlanDayTier, WorksPeriod } from '@/lib/api/types';
+import { worksWindowLabel } from '@/lib/utils/works-period';
+import { WORKS_TONE_CLASS } from '@/components/parks/works-period-list';
 
 /**
  * The bordered div's border, doubled: the two pixels the resize edge's touch target may not count
@@ -81,6 +83,11 @@ interface PlannerBlockProps {
   /** The ride was down all of the previous operating day. */
   downYesterday?: boolean;
   /**
+   * The curated works window that closes this ride on the plan's day (`worksPeriodFor`). The
+   * strongest warning a block carries: the ride does not run at all that day.
+   */
+  worksPeriod?: WorksPeriod | null;
+  /**
    * The party asked to stay dry and this is a water ride (`partyFlags().wet`). Decided in
    * `party.ts`; the block only draws a mark, never hides anything.
    */
@@ -139,6 +146,7 @@ export function PlannerBlock({
   photo = null,
   closedNow = false,
   downYesterday = false,
+  worksPeriod = null,
   wet = false,
   selected = false,
   dragging = false,
@@ -155,6 +163,8 @@ export function PlannerBlock({
   keyboardStep,
 }: PlannerBlockProps) {
   const t = useTranslations('planner');
+  const tWorks = useTranslations('parks.worksPeriod');
+  const locale = useLocale();
   const done = Boolean(entry.done);
 
   // A free block's height is a duration the visitor set: no figure, no band, no crowd tint.
@@ -238,20 +248,34 @@ export function PlannerBlock({
         ? 'past'
         : 'maybe';
 
+  /** A works window closes this ride all day; a free block is never a ride. */
+  const works = custom ? null : worksPeriod;
+
   /**
-   * The one thing worth warning about on this block, worst first: closed now, then down all
-   * yesterday, then the hour.
+   * The one thing worth warning about on this block, worst first: closed for works all day, closed
+   * now, then down all yesterday, then the hour. The works line names the window, so its icon's
+   * hover says until when.
    */
-  const warnLabel = closedNow
-    ? t('warn.closedNow')
-    : downYesterday
-      ? t('warn.downYesterday')
-      : closeState === 'past'
-        ? t('warn.afterClose')
-        : closeState === 'maybe'
-          ? t('warn.maybeAfterClose')
-          : null;
-  const warnTone = closedNow ? 'text-destructive' : 'text-crowd-high';
+  const warnLabel = works
+    ? [tWorks('closedRidesTitle'), worksWindowLabel(works, locale, tWorks)]
+        .filter(Boolean)
+        .join(' · ')
+    : closedNow
+      ? t('warn.closedNow')
+      : downYesterday
+        ? t('warn.downYesterday')
+        : closeState === 'past'
+          ? t('warn.afterClose')
+          : closeState === 'maybe'
+            ? t('warn.maybeAfterClose')
+            : null;
+  const warnTone = works ? WORKS_TONE_CLASS : closedNow ? 'text-destructive' : 'text-crowd-high';
+  const WarnIcon = works ? Construction : AlertTriangle;
+  const warnMark = warnLabel && (
+    <span className="inline-flex shrink-0" title={warnLabel}>
+      <WarnIcon className={cn('size-3 shrink-0', warnTone)} aria-label={warnLabel} />
+    </span>
+  );
 
   /**
    * The water mark, beside the warning rather than in its slot: the warnings say this block is
@@ -268,15 +292,17 @@ export function PlannerBlock({
   const missingLabel =
     custom || estimate.missing === 'custom'
       ? null
-      : estimate.missing === 'outside-hours'
-        ? t('day.closed')
-        : estimate.missing === 'no-curve'
-          ? t('entry.noCurve')
-          : /* Not `no-curve`: this park's queues cannot be read at all, so no number is coming for
+      : estimate.missing === 'works'
+        ? tWorks('label')
+        : estimate.missing === 'outside-hours'
+          ? t('day.closed')
+          : estimate.missing === 'no-curve'
+            ? t('entry.noCurve')
+            : /* Not `no-curve`: this park's queues cannot be read at all, so no number is coming for
                any ride. */
-            estimate.missing === 'no-source'
-            ? t('entry.noSource')
-            : null;
+              estimate.missing === 'no-source'
+              ? t('entry.noSource')
+              : null;
 
   /**
    * How far the queue came in from the forecast, on a ticked-off block. A done block draws no `±`
@@ -548,9 +574,7 @@ export function PlannerBlock({
               {showLabel}
               {/* The warning rides on this row too, or a short block carries no sign that it lands
                   after closing. `shrink-0`, so the name gives way. */}
-              {warnLabel && (
-                <AlertTriangle className={cn('size-3 shrink-0', warnTone)} aria-label={warnLabel} />
-              )}
+              {warnMark}
               {showWet && (
                 <Droplets
                   className="text-crowd-moderate size-3 shrink-0"
@@ -594,12 +618,7 @@ export function PlannerBlock({
                   <span className="truncate">{custom ? custom.label : entry.attractionName}</span>
                 </span>
                 {boxPx < RANGE_MIN_PX && showLabel}
-                {warnLabel && (
-                  <AlertTriangle
-                    className={cn('size-3 shrink-0', warnTone)}
-                    aria-label={warnLabel}
-                  />
-                )}
+                {warnMark}
                 {showWet && (
                   <Droplets
                     className="text-crowd-moderate size-3 shrink-0"
@@ -663,10 +682,14 @@ export function PlannerBlock({
             <p className="text-muted-foreground truncate text-[10px]">{missingLabel}</p>
           )}
 
-          {/* The reason in full where there is room; the icon carries it on a short block. */}
-          {warnLabel && boxPx >= (boxPx >= 68 ? WARN_SENTENCE_WITH_LAND_PX : WARN_SENTENCE_PX) && (
-            <p className={cn('truncate text-[10px]', warnTone)}>{warnLabel}</p>
-          )}
+          {/* The reason in full where there is room; the icon carries it on a short block. Not
+              for works: the missing line already says „Umbaupause", and the dates are the icon's
+              hover. */}
+          {warnLabel &&
+            !works &&
+            boxPx >= (boxPx >= 68 ? WARN_SENTENCE_WITH_LAND_PX : WARN_SENTENCE_PX) && (
+              <p className={cn('truncate text-[10px]', warnTone)}>{warnLabel}</p>
+            )}
         </div>
 
         {/* Blocks past the lane budget, said out loud: `packLanes` stacks them in the last column,

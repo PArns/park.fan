@@ -134,6 +134,7 @@ Whether the drag gesture has been explained once: a store over `localStorage`, l
 ### [`estimate.ts`](../../lib/planner/estimate.ts)
 
 - `isAssumedWait` _function_: Whether the figure is an assumption rather than a forecast — `assumed` or `early-entry`. Every surface that withholds a crowd tint or prints a `~` asks this, so a new assumed state cannot be tinted by one of them and not another.
+- `worksPeriodFor` _function_: The works window that closes a ride on the plan's day, or null. Read from `PlanDay.ridesInWorks`, which the proxy route fills from the park payload.
 - `estimateFor` _function_: The expected wait for one planned entry.
 - `totalsFor` _function_: The day's totals. Expected and actual minutes are kept apart: a total mixing predicted and measured minutes would move for two reasons at once, and a visitor could not tell a busier day from a longer plan.
 - `actualVsEstimate` _function_: What a ticked-off entry actually cost against what was forecast for its hour.

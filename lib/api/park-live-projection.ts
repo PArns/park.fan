@@ -201,8 +201,8 @@ export function mergeLiveParkSnapshot(
 
 /**
  * Trim for the serialized park on the park SUB-pages (calendar, wait-time record), which render
- * no attraction cards: only `ParkTodayPanel`'s headliner rows and `useParkTileItems` read
- * `park.attractions`, and they need a dozen fields. The poll returns the rest and
+ * no attraction cards: only `ParkTodayPanel`'s headliner rows, `useParkTileItems` and the
+ * calendar's works marks read `park.attractions`, and they need a dozen fields. The poll returns the rest and
  * {@link mergeLiveParkSnapshot} lays it back, so nothing reachable is lost.
  *
  * An allow-list rather than a `delete` chain, so a field the API adds tomorrow stays out by
@@ -232,6 +232,10 @@ export function leanParkForCalendarShell(park: ParkWithAttractions): ParkWithAtt
         isSeasonal: a.isSeasonal,
         isCurrentlyInSeason: a.isCurrentlyInSeason,
       };
+      // The grid marks the days a curated window closes the ride. Absent on nearly every ride, so
+      // it travels only where the API sent it.
+      if (a.worksPeriods?.length) lean.worksPeriods = a.worksPeriods;
+      else if (a.worksPeriod) lean.worksPeriod = a.worksPeriod;
       // Not on `ParkAttraction`: the API adds it and consumers read it through an `in` check.
       const effectiveStatus = (a as { effectiveStatus?: ParkAttraction['status'] }).effectiveStatus;
       return effectiveStatus === undefined ? lean : { ...lean, effectiveStatus };

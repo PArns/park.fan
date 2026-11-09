@@ -737,7 +737,17 @@
       "sinceUntilUncertain": "Cette attraction est fermée pour travaux depuis le {from}, jusqu’au {to} selon les prévisions.",
       "since": "Cette attraction est fermée pour travaux depuis le {from}. La date de réouverture n’est pas encore connue.",
       "until": "Cette attraction est fermée pour travaux jusqu’au {to}.",
-      "untilUncertain": "Cette attraction est fermée pour travaux jusqu’au {to} selon les prévisions."
+      "untilUncertain": "Cette attraction est fermée pour travaux jusqu’au {to} selon les prévisions.",
+      "window": "du {from} au {to}",
+      "windowUncertain": "du {from} au {to} selon les prévisions",
+      "windowDay": "le {from}",
+      "windowFrom": "à partir du {from}",
+      "windowTo": "jusqu’au {to}",
+      "windowToUncertain": "jusqu’au {to} selon les prévisions",
+      "upcoming": "Travaux à partir du {from}",
+      "upcomingDay": "Travaux le {from}",
+      "closedRidesTitle": "Fermées pour travaux",
+      "closedRidesCount": "{count, plural, =1 {1 attraction fermée pour travaux} other {# attractions fermées pour travaux}}"
     },
     "transportSystem": {
       "label": "Transport",

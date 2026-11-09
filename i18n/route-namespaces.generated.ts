@@ -164,7 +164,7 @@ export const ROUTE_MESSAGE_NAMESPACES = {
   '/parks/universal': ['nearby', 'parkCard'],
   '/parky': [],
   '/search': [],
-  '/trip-planner': ['parks.weather', 'planner'],
+  '/trip-planner': ['parks.weather', 'parks.worksPeriod', 'planner'],
   '/trip-planner/shared': ['planner'],
   '/ui': [
     'attractions',

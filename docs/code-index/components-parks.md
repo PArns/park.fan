@@ -129,9 +129,8 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`crowd-level-scale-tooltip.tsx`](../../components/parks/crowd-level-scale-tooltip.tsx)
 
-- `CrowdScaleTooltip` _component_: The shell of every crowd-scale tooltip: the trigger, the tap handling and the six-row list.
+- `CrowdScaleTooltip` _component_: The shell of every crowd-scale tooltip: a `TapTooltip` (so a tap opens it on a phone) around the six-row list.
 - `CrowdLevelScaleTooltip` _component_: The whole crowd scale behind one park-level badge: six rows, the current one marked.
-- `CROWD_SCALE_TRIGGER_CLASS` _const_: The trigger's box. Exported because the ride card's stand-in button has to be the same box, or the badge would shift by a pixel the moment the real tooltip replaces it.
 
 ### [`daily-wait-time-chart-client.tsx`](../../components/parks/daily-wait-time-chart-client.tsx)
 
@@ -869,6 +868,13 @@ Client on purpose: the demo windows are Date.now()-relative — evaluated in the
 ### [`works-period-badge.tsx`](../../components/parks/works-period-badge.tsx)
 
 - `WorksPeriodBadge` _component_: „Umbaupause": the word that separates a ride being rebuilt from one that happens to be shut. Both read `CLOSED` and no feed tells them apart, so the window is curated.
+- `WORKS_BADGE_CLASS` _const_: The „Umbaupause" badge's surface without its fill, shared with the planner's works chip.
+
+### [`works-period-list.tsx`](../../components/parks/works-period-list.tsx)
+
+- `WorksPeriodList` _component_: Curated works windows as a short list: the ride (where the list spans several) and its dates, written by `worksWindowLabel` so no line claims anything about today.
+- `WORKS_TONE_CLASS` _const_: The colour of every works mark: the „Umbaupause" badge's orange, which no other badge on a ride card uses, on the calendar's day icon, the planner's block and band, and the ride page's note.
+- Types: `WorksPeriodListItem`
 
 ### [`works-period-note.tsx`](../../components/parks/works-period-note.tsx)
 

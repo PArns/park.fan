@@ -493,7 +493,9 @@ export function AttractionCard({
                 behind hoardings, and the status badge above says `CLOSED` for both. */}
             <WorksPeriodBadge
               worksPeriod={'worksPeriod' in attraction ? attraction.worksPeriod : null}
+              worksPeriods={'worksPeriods' in attraction ? attraction.worksPeriods : null}
               todayIso={todayIso}
+              insideLink
             />
             {'isSeasonal' in attraction && attraction.isSeasonal && (
               <SeasonalBadge

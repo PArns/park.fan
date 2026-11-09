@@ -737,7 +737,17 @@
       "sinceUntilUncertain": "Questa attrazione è chiusa per lavori dal {from}, presumibilmente fino al {to}.",
       "since": "Questa attrazione è chiusa per lavori dal {from}. Non c’è ancora una data di riapertura.",
       "until": "Questa attrazione è chiusa per lavori fino al {to}.",
-      "untilUncertain": "Questa attrazione è chiusa per lavori presumibilmente fino al {to}."
+      "untilUncertain": "Questa attrazione è chiusa per lavori presumibilmente fino al {to}.",
+      "window": "{fromVowel, select, yes {dall’{from}} other {dal {from}}} {toVowel, select, yes {all’{to}} other {al {to}}}",
+      "windowUncertain": "{fromVowel, select, yes {dall’{from}} other {dal {from}}}, presumibilmente fino {toVowel, select, yes {all’{to}} other {al {to}}}",
+      "windowDay": "{fromVowel, select, yes {l’{from}} other {il {from}}}",
+      "windowFrom": "{fromVowel, select, yes {dall’{from}} other {dal {from}}}",
+      "windowTo": "fino {toVowel, select, yes {all’{to}} other {al {to}}}",
+      "windowToUncertain": "presumibilmente fino {toVowel, select, yes {all’{to}} other {al {to}}}",
+      "upcoming": "Lavori {fromVowel, select, yes {dall’{from}} other {dal {from}}}",
+      "upcomingDay": "Lavori {fromVowel, select, yes {l’{from}} other {il {from}}}",
+      "closedRidesTitle": "Chiuse per lavori",
+      "closedRidesCount": "{count, plural, =1 {1 attrazione chiusa per lavori} other {# attrazioni chiuse per lavori}}"
     },
     "transportSystem": {
       "label": "Trasporto",

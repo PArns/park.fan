@@ -89,3 +89,18 @@ read through `hasReadableWaitTimes()`, which treats an absent field as available
 independently of the API). There the estimate is `missing: 'no-source'` with no figure, and the
 block says so; see [parks we cannot read](../../rules/parks-we-cannot-read.md).
 `pnpm test:planner-estimate` pins both directions.
+
+## A ride closed for works
+
+`/plan/day` leaves a ride out of a day a curated works window covers and does not say why. The
+proxy branch in `app/api/parks/[...path]/route.ts` reads the park payload beside the plan (the shell
+entry the park page reads, so usually a Data Cache hit) and adds `ridesInWorks`: the rides a window
+covers on `context.date` (`ridesInWorksOn`) that the plan does not list, each with its window. A ride
+the plan still lists is left out, because the plan is computed per request and the shell may be a day
+older. A failed park read costs the list, never the plan.
+
+`estimateFor` answers a planned ride in that list with `missing: 'works'` and no figure, rather than
+the five assumed minutes the optimiser could plan a stop into. The block says „Umbaupause" and
+carries a `Construction` mark whose hover names the window; the context band shows a chip with the
+count, and hover or tap (`TapTooltip`) lists the rides with their dates. `pnpm test:planner-estimate`
+pins the state.

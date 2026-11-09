@@ -707,8 +707,13 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
                         />
                       )}
                       {/* Beside the season badge and not instead of it — the two say different
-                          things about the same ride. The dates are in the note below. */}
-                      <WorksPeriodBadge worksPeriod={attraction.worksPeriod} todayIso={todayIso} />
+                          things about the same ride. A running window's sentence is in the note
+                          below; the badge's tooltip lists the windows still ahead. */}
+                      <WorksPeriodBadge
+                        worksPeriod={attraction.worksPeriod}
+                        worksPeriods={attraction.worksPeriods}
+                        todayIso={todayIso}
+                      />
                     </div>
                   </div>
 

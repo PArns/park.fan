@@ -42,6 +42,7 @@ export function PlannerEntryRow({
   onRemove,
 }: PlannerEntryRowProps) {
   const t = useTranslations('planner');
+  const tWorks = useTranslations('parks.worksPeriod');
   // `common` is in the layout's set on every route, so this costs no chunk.
   const tCommon = useTranslations('common');
   const done = Boolean(entry.done);
@@ -55,13 +56,15 @@ export function PlannerEntryRow({
       : null;
 
   const missingLabel =
-    estimate.missing === 'outside-hours'
-      ? t('day.closed')
-      : estimate.missing === 'no-curve'
-        ? t('entry.noCurve')
-        : estimate.missing === 'no-source'
-          ? t('entry.noSource')
-          : null;
+    estimate.missing === 'works'
+      ? tWorks('label')
+      : estimate.missing === 'outside-hours'
+        ? t('day.closed')
+        : estimate.missing === 'no-curve'
+          ? t('entry.noCurve')
+          : estimate.missing === 'no-source'
+            ? t('entry.noSource')
+            : null;
 
   // What the queue cost against the forecast. It shares the reason's line: a delta needs a figure,
   // and every `missingLabel` state has none.

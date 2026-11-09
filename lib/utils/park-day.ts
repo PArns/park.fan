@@ -27,3 +27,17 @@ export function daysBetween(from: string, to: string): number {
   const end = Date.parse(`${to}T12:00:00Z`);
   return Math.round((end - start) / 86_400_000);
 }
+
+/**
+ * A park-local `YYYY-MM-DD` as a written date in `locale`. Anchored at noon UTC and formatted in
+ * UTC, so no zone moves the day; long month and year unless `options` says otherwise.
+ */
+export function formatParkDay(
+  locale: string,
+  isoDay: string,
+  options: Intl.DateTimeFormatOptions = { day: 'numeric', month: 'long', year: 'numeric' }
+): string {
+  const day = new Date(`${isoDay}T12:00:00Z`);
+  if (Number.isNaN(day.getTime())) return isoDay;
+  return getDateTimeFormat(locale, { ...options, timeZone: 'UTC' }).format(day);
+}

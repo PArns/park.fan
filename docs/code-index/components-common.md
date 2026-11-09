@@ -261,6 +261,11 @@ These dots carry `will-change` because they animate forever inside cards with `b
 
 - `StatusInfoCard` _component_: Card with an icon in its title and free content (wait time, status, prediction accuracy).
 
+### [`tap-tooltip.tsx`](../../components/common/tap-tooltip.tsx)
+
+- `TapTooltip` _component_: A tooltip that a tap opens too: the crowd scale behind a badge, the works windows behind the „Umbaupause" marker.
+- `TAP_TOOLTIP_TRIGGER_CLASS` _const_: The trigger's box. Exported because a stand-in button that mounts the real tooltip on first contact (`RideCrowdScaleTooltip`) has to be the same box, or the badge would shift by a pixel the moment the real tooltip replaces it.
+
 ### [`temperature-unit-toggle.tsx`](../../components/common/temperature-unit-toggle.tsx)
 
 - `TemperatureUnitToggle` _component_: °C ⇄ °F as one button in the header beside the theme switch, the one row on every page. It shows the active unit and switches on click, because the 360 px bar has no room for a two-segment pill.

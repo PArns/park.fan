@@ -489,7 +489,17 @@
       "sinceUntilUncertain": "Diese Bahn ist seit dem {from} wegen Umbau geschlossen, voraussichtlich bis zum {to}.",
       "since": "Diese Bahn ist seit dem {from} wegen Umbau geschlossen. Ein Enddatum steht noch nicht fest.",
       "until": "Diese Bahn ist wegen Umbau geschlossen, bis zum {to}.",
-      "untilUncertain": "Diese Bahn ist wegen Umbau geschlossen, voraussichtlich bis zum {to}."
+      "untilUncertain": "Diese Bahn ist wegen Umbau geschlossen, voraussichtlich bis zum {to}.",
+      "window": "vom {from} bis {to}",
+      "windowUncertain": "vom {from} bis voraussichtlich {to}",
+      "windowDay": "am {from}",
+      "windowFrom": "ab {from}",
+      "windowTo": "bis {to}",
+      "windowToUncertain": "voraussichtlich bis {to}",
+      "upcoming": "Umbaupause ab {from}",
+      "upcomingDay": "Umbaupause am {from}",
+      "closedRidesTitle": "Wegen Umbau geschlossen",
+      "closedRidesCount": "{count, plural, =1 {1 Bahn in Umbaupause} other {# Bahnen in Umbaupause}}"
     },
     "transportSystem": {
       "label": "Transportsystem",

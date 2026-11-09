@@ -737,7 +737,17 @@
       "sinceUntilUncertain": "This ride has been closed for works since {from}, probably until {to}.",
       "since": "This ride has been closed for works since {from}. There is no end date yet.",
       "until": "This ride is closed for works until {to}.",
-      "untilUncertain": "This ride is closed for works, probably until {to}."
+      "untilUncertain": "This ride is closed for works, probably until {to}.",
+      "window": "{from} to {to}",
+      "windowUncertain": "{from}, probably until {to}",
+      "windowDay": "on {from}",
+      "windowFrom": "from {from}",
+      "windowTo": "until {to}",
+      "windowToUncertain": "probably until {to}",
+      "upcoming": "Refurbishment from {from}",
+      "upcomingDay": "Refurbishment on {from}",
+      "closedRidesTitle": "Closed for works",
+      "closedRidesCount": "{count, plural, =1 {1 ride closed for works} other {# rides closed for works}}"
     },
     "transportSystem": {
       "label": "Transport",

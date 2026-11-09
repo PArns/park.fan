@@ -81,6 +81,13 @@ It fetches the month through `useCalendarData` (`/api/parks/<geo>/<park>/calenda
 for an hour in the browser, previous month kept on screen while the next loads). "Today" is the
 park's date (`parkDayOf`).
 
+**Works windows.** A day on which a curated works window closes a ride (`worksPeriods` on the
+park's rides, kept by `leanParkForCalendarShell` only where the API sent one) carries an orange
+`Construction` icon beside the status word, with the rides and their dates on hover. The grid asks
+`ridesInWorksOn` (`lib/utils/works-period.ts`) once per day of the month in a memo, so a park with
+no window costs one filter; a day the park is shut draws no icon. The legend keys the icon only for
+a park that has a window, and the day dialog lists the same rides (`WorksPeriodList`).
+
 ## The day dialog
 
 `ParkCalendarDayDetail`, a Radix dialog, so it works on touch where a tooltip does not. It opens on
@@ -94,7 +101,8 @@ It shows the schedule (open, closed, not yet published; estimated hours marked),
 the crowd level with the headliner forecast or, for a past day, the actual waits, local and
 neighbouring-country holidays (names through `translateHolidayName`), the weather, an hour-by-hour
 crowd chart for today and tomorrow only (`useCalendarDayHourly`, asked only while the dialog is
-open), and "plan this day" for an open day from today on, which opens the trip planner.
+open), the rides closed for works that day, and "plan this day" for an open day from today on,
+which opens the trip planner.
 
 **Comparing two days.** With the comparison switch on, two picks open `ParkCalendarComparison`. The
 picks live in `dayComparisonStore` (`lib/parks/day-comparison-store.ts`), a module store keyed by

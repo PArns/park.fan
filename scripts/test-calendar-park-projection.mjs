@@ -19,6 +19,7 @@ import {
 } from '../lib/api/park-live-projection.ts';
 import { getStandbyWait, getAttractionDisplayStatus } from '../lib/utils/park-utils.ts';
 import { isInSeason } from '../lib/utils/season.ts';
+import { ridesInWorksOn } from '../lib/utils/works-period.ts';
 
 /** A park shaped like the API's answer, down to the fields nothing renders. */
 const PARK = {
@@ -88,6 +89,10 @@ const PARK = {
       queues: [],
       comparison: 'typical',
       baseline: 10,
+      worksPeriods: [
+        { from: '2026-09-07', to: '2026-09-11', toUncertain: false },
+        { from: '2027-01-11', toUncertain: false },
+      ],
     },
   ],
 };
@@ -137,6 +142,19 @@ const testCases = [
     name: 'the ride tile still counts every attraction',
     actual: () => cal.attractions.length,
     expected: 2,
+  },
+  {
+    name: 'the grid still finds the ride a works window closes, and only that one',
+    actual: () =>
+      ridesInWorksOn(cal.attractions, '2026-09-08')
+        .map((r) => r.slug)
+        .join(','),
+    expected: 'schlittschuhverleih',
+  },
+  {
+    name: 'a ride with no window carries no works field at all',
+    actual: () => 'worksPeriods' in calTaron || 'worksPeriod' in calTaron,
+    expected: false,
   },
   {
     name: 'name and slug survive (the rows link and label with them)',

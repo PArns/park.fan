@@ -2,10 +2,13 @@
 
 import type { ReactNode } from 'react';
 import { useTranslations } from 'next-intl';
-import { CalendarDays, CloudOff, Clock, Droplets, TreePalm } from 'lucide-react';
+import { CalendarDays, CloudOff, Clock, Construction, Droplets, TreePalm } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Badge } from '@/components/ui/badge';
 import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
+import { WorksPeriodList } from '@/components/parks/works-period-list';
+import { WORKS_BADGE_CLASS } from '@/components/parks/works-period-badge';
+import { TapTooltip } from '@/components/common/tap-tooltip';
 import { Precip, Temp } from '@/components/common/unit-display';
 import { getWeatherConfig } from '@/lib/utils/weather-utils';
 import { climatologyNote } from '@/lib/planner/climatology';
@@ -50,6 +53,7 @@ const WET_MM = 0.2;
 export function PlannerContextBand({ day, state, trailing }: PlannerContextBandProps) {
   const t = useTranslations('planner');
   const tWeather = useTranslations('parks.weather');
+  const tWorks = useTranslations('parks.worksPeriod');
 
   if (state === 'loading') {
     return (
@@ -200,6 +204,39 @@ export function PlannerContextBand({ day, state, trailing }: PlannerContextBandP
             <TreePalm className="planner-wide:hidden size-3" aria-hidden="true" />
             <span className="planner-phone:sr-only">{t('context.neighborHolidays')}</span>
           </Badge>
+        )}
+
+        {/* The rides `/plan/day` left out because a works window closes them that day: without
+            the chip a missing headliner reads as an omission. A number on a phone, for the reason
+            the palm gives; hover or tap names them with their dates. */}
+        {day.ridesInWorks && day.ridesInWorks.length > 0 && (
+          <TapTooltip
+            label={tWorks('closedRidesCount', { count: day.ridesInWorks.length })}
+            content={
+              <WorksPeriodList
+                title={tWorks('closedRidesTitle')}
+                items={day.ridesInWorks.map((ride) => ({
+                  key: ride.attractionSlug,
+                  name: ride.attractionName,
+                  period: ride.worksPeriod,
+                }))}
+              />
+            }
+          >
+            <Badge
+              variant="outline"
+              className={cn(WORKS_BADGE_CLASS, 'bg-orange-500/5 text-[11px]')}
+              data-planner-works=""
+            >
+              <Construction className="size-3" aria-hidden="true" />
+              <span className="planner-wide:hidden tabular-nums" aria-hidden="true">
+                {day.ridesInWorks.length}
+              </span>
+              <span className="planner-phone:sr-only">
+                {tWorks('closedRidesCount', { count: day.ridesInWorks.length })}
+              </span>
+            </Badge>
+          </TapTooltip>
         )}
 
         {/* Last on the chip row, not the prose row below, which already wraps at 448 px. */}
