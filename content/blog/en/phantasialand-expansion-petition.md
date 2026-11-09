@@ -43,6 +43,9 @@ seo:
     - Phantasialand Brühl zoning plan
 ---
 
+> [!UPDATE] 2026-11-09
+> The Netzwerk NSG Ententeich handed 5,656 signatures to the town administration on 9 November, RTL West and [Radio Erft](https://www.radioerft.de/artikel/bruehl-ueber-5000-unterschriften-gegen-freizeitpark-ausbau-2801949) report. The town is now checking how many are valid, and then the council decides whether the petition is admissible. [What happens after the handover](/news/phantasialand-expansion-signatures-submitted) is in our new post.
+
 Since Monday, 28 September, the Netzwerk NSG Ententeich, a network of local
 groups in Brühl, has been collecting signatures against the expansion of
 [Phantasialand](ref:phantasialand). The petition is called "Brühler

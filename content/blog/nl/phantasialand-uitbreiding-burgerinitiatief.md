@@ -42,6 +42,9 @@ seo:
     - Phantasialand bestemmingsplan Brühl
 ---
 
+> [!UPDATE] 2026-11-09
+> Het Netwerk NSG Ententeich heeft op 9 november 5.656 handtekeningen ingediend bij het stadsbestuur, melden RTL West en [Radio Erft](https://www.radioerft.de/artikel/bruehl-ueber-5000-unterschriften-gegen-freizeitpark-ausbau-2801949). De stad controleert nu hoeveel er geldig zijn, daarna beslist de raad of het burgerinitiatief toelaatbaar is. [Hoe het na de overhandiging verdergaat](/news/phantasialand-uitbreiding-handtekeningen-ingediend), staat in ons nieuwe bericht.
+
 Sinds maandag 28 september verzamelt het Netzwerk NSG Ententeich in Brühl
 handtekeningen tegen de uitbreiding van [Phantasialand](ref:phantasialand). Het
 burgerinitiatief heet “Brühler Waldentscheid” (het bosbesluit van Brühl) en

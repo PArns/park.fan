@@ -42,6 +42,9 @@ seo:
     - Phantasialand agrandissement autorisé
 ---
 
+> [!UPDATE] 2026-11-09
+> Le 9 novembre, le collectif Netzwerk NSG Ententeich a [déposé 5 656 signatures](/news/phantasialand-agrandissement-signatures-deposees) pour sa pétition. La pétition pour l’agrandissement court toujours jusqu’au 23 novembre. D’après les [statistiques d’openPetition](https://www.openpetition.de/petition/statistik/fuer-eine-verantwortungsvolle-erweiterung-des-phantasialands), 211 personnes l’ont signée jusqu’ici, dont 52 de Brühl. Il manque encore 688 signatures de Brühl pour le quorum.
+
 Depuis le 24 mai, une pétition sur openPetition s’oppose à l’initiative
 citoyenne censée arrêter l’agrandissement de
 [Phantasialand](ref:phantasialand). Elle a été mise en ligne cinq jours après

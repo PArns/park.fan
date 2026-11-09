@@ -42,6 +42,9 @@ seo:
     - Phantasialand uitbreiding goedgekeurd
 ---
 
+> [!UPDATE] 2026-11-09
+> Het Netwerk NSG Ententeich heeft op 9 november voor zijn burgerinitiatief [5.656 handtekeningen ingediend](/news/phantasialand-uitbreiding-handtekeningen-ingediend). De petitie voor de uitbreiding loopt door tot 23 november. Volgens de [statistieken op openPetition](https://www.openpetition.de/petition/statistik/fuer-eine-verantwortungsvolle-erweiterung-des-phantasialands) hebben tot nu toe 211 mensen getekend, 52 van hen uit Brühl. Voor het quorum zijn nog 688 handtekeningen uit Brühl nodig.
+
 Sinds 24 mei loopt op openPetition een petitie tegen het burgerinitiatief dat
 de uitbreiding van [Phantasialand](ref:phantasialand) moet stoppen. Ze ging
 online vijf dagen nadat het Netzwerk NSG Ententeich het burgerinitiatief had
