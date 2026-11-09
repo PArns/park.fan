@@ -266,19 +266,24 @@ function ParkCalendarDayComponent({
           </Tooltip>
         )}
         {/* Beside the star and like it a hover: a tap opens the day, whose detail lists the same
-            rides with their dates. */}
+            rides. A chip on the page's own surface, so it stands out on an orange „Hoch" tile as
+            on a green one, with the count because a winter month can shut several rides at once. */}
         {works && (
           <Tooltip>
             <TooltipTrigger asChild>
-              <Construction
-                className={cn('h-3 w-3 shrink-0', WORKS_TONE_CLASS)}
+              <span
+                className="bg-background/70 text-foreground inline-flex shrink-0 items-center gap-0.5 rounded-full px-1 py-px tracking-normal tabular-nums"
                 aria-label={worksHint ?? undefined}
                 data-calendar-works=""
-              />
+              >
+                <Construction className={cn('h-3 w-3', WORKS_TONE_CLASS)} aria-hidden="true" />
+                {works.length}
+              </span>
             </TooltipTrigger>
-            <TooltipContent className="max-w-64 p-3">
+            <TooltipContent className="w-64 max-w-[calc(100vw-2rem)] p-3">
               <WorksPeriodList
                 title={tWorks('closedRidesTitle')}
+                onDate={day.date}
                 items={works.map((ride) => ({
                   key: ride.slug,
                   name: ride.name,

@@ -872,7 +872,7 @@ Client on purpose: the demo windows are Date.now()-relative — evaluated in the
 
 ### [`works-period-list.tsx`](../../components/parks/works-period-list.tsx)
 
-- `WorksPeriodList` _component_: Curated works windows as a short list: the ride (where the list spans several) and its dates, written by `worksWindowLabel` so no line claims anything about today.
+- `WorksPeriodList` _component_: Curated works windows as a short list: the ride (where the list spans several) and its dates. One ride's windows are written whole (`worksWindowLabel`); the rides shut on one day say until when (`worksEndLabel`).
 - `WORKS_TONE_CLASS` _const_: The colour of every works mark: the „Umbaupause" badge's orange, which no other badge on a ride card uses, on the calendar's day icon, the planner's block and band, and the ride page's note.
 - Types: `WorksPeriodListItem`
 

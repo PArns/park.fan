@@ -19,7 +19,7 @@ import { actualVsEstimate, isAssumedWait, type PlannerEstimate } from '@/lib/pla
 import { roundWaitTo5 } from '@/lib/utils/wait-time';
 import { backgroundPhotoUrl } from '@/lib/utils/image-loader';
 import type { PlanDayShowSource, PlanDayTier, WorksPeriod } from '@/lib/api/types';
-import { worksWindowLabel } from '@/lib/utils/works-period';
+import { worksEndLabel, worksRunningLabel } from '@/lib/utils/works-period';
 import { WORKS_TONE_CLASS } from '@/components/parks/works-period-list';
 
 /**
@@ -257,9 +257,7 @@ export function PlannerBlock({
    * hover says until when.
    */
   const warnLabel = works
-    ? [tWorks('closedRidesTitle'), worksWindowLabel(works, locale, tWorks)]
-        .filter(Boolean)
-        .join(' · ')
+    ? `${tWorks('closedRidesTitle')} · ${worksEndLabel(works, locale, tWorks)}`
     : closedNow
       ? t('warn.closedNow')
       : downYesterday
@@ -292,8 +290,9 @@ export function PlannerBlock({
   const missingLabel =
     custom || estimate.missing === 'custom'
       ? null
-      : estimate.missing === 'works'
-        ? tWorks('label')
+      : /* The range line says it, with the end („Umbaupause bis 25. März"). */
+        estimate.missing === 'works'
+        ? null
         : estimate.missing === 'outside-hours'
           ? t('day.closed')
           : estimate.missing === 'no-curve'
@@ -656,7 +655,18 @@ export function PlannerBlock({
               {boxPx >= RANGE_MIN_PX && (
                 <p className="text-muted-foreground flex items-center gap-1.5 text-[10px] tabular-nums">
                   <span className="min-w-0 truncate">
-                    {range}
+                    {/* A ride shut for works has no queue to end, so its line says until when
+                        instead of a range from the start to itself. */}
+                    {works ? (
+                      <>
+                        {formatGridTime(entry.startMinute)} ·{' '}
+                        <span className={cn('font-medium', WORKS_TONE_CLASS)}>
+                          {worksRunningLabel(works, locale, tWorks)}
+                        </span>
+                      </>
+                    ) : (
+                      range
+                    )}
                     {typeof metresFromPrevious === 'number' && (
                       <span className="ml-1.5">↑ {formatDistance(metresFromPrevious)}</span>
                     )}
@@ -683,8 +693,7 @@ export function PlannerBlock({
           )}
 
           {/* The reason in full where there is room; the icon carries it on a short block. Not
-              for works: the missing line already says „Umbaupause", and the dates are the icon's
-              hover. */}
+              for works: the range line already says „Umbaupause bis …". */}
           {warnLabel &&
             !works &&
             boxPx >= (boxPx >= 68 ? WARN_SENTENCE_WITH_LAND_PX : WARN_SENTENCE_PX) && (

@@ -4,12 +4,12 @@ import { TapTooltip } from '@/components/common/tap-tooltip';
 import { cn } from '@/lib/utils';
 import { useLocale, useTranslations } from 'next-intl';
 import type { WorksPeriod } from '@/lib/api/types';
-import { formatParkDay } from '@/lib/utils/park-day';
 import {
-  dayNumberElides,
   nextWorksPeriod,
   worksPeriodOn,
   worksPeriodsOf,
+  worksRunningLabel,
+  worksUpcomingLabel,
 } from '@/lib/utils/works-period';
 import { WorksPeriodList } from './works-period-list';
 
@@ -21,8 +21,8 @@ interface WorksPeriodBadgeProps {
   /** The park's own day as `YYYY-MM-DD`, computed on the server. */
   todayIso?: string;
   /**
-   * Whether hovering or tapping the badge lists the windows. Off where the caller only knows that a
-   * window covers today and has no dates to show (Parky's ride card).
+   * Whether the badge names dates: the end in its label, the windows on hover or tap. Off where the
+   * caller only knows that a window covers today and has no dates to show (Parky's ride card).
    */
   showDates?: boolean;
   /** The badge sits inside a link (the ride card); see `TapTooltip`. */
@@ -40,8 +40,9 @@ export const WORKS_BADGE_CLASS =
  *
  * Its own badge beside `SeasonalBadge`, because "only opens in winter" and "being rebuilt" are
  * different facts that may both hold; orange because no other badge on these cards uses it. While
- * a window covers `todayIso` it says „Umbaupause"; before the next one starts it says „Umbaupause
- * ab 16. Jan." (or „am 8. Dez." for a single day) in a paler tint, because a visitor planning a trip wants to know before the day.
+ * a window covers `todayIso` it says until when („Umbaupause bis 4. Dez.", plain „Umbaupause" with
+ * no end on file); before the next one starts it says „Umbaupause ab 16. Jan." („am 8. Dez." for a
+ * single day) in a paler tint, because a visitor planning a trip wants to know before the day.
  * Hover or tap lists the running window and the ones after it with their dates. A window that is
  * over says nothing, and without the park's day neither form is drawn.
  */
@@ -66,12 +67,12 @@ export function WorksPeriodBadge({
       className={cn(WORKS_BADGE_CLASS, running ? 'bg-orange-500/15' : 'bg-orange-500/5', className)}
     >
       <Construction className="h-3 w-3 text-inherit" />
+      {/* No end where Parky only knows that a window runs today (`showDates` off). */}
       {running
-        ? t('label')
-        : t(next!.from === next!.to && !next!.toUncertain ? 'upcomingDay' : 'upcoming', {
-            from: formatParkDay(locale, next!.from!, { day: 'numeric', month: 'short' }),
-            fromVowel: dayNumberElides(next!.from),
-          })}
+        ? showDates
+          ? worksRunningLabel(running, locale, t)
+          : t('label')
+        : worksUpcomingLabel(next!, locale, t)}
     </Badge>
   );
   if (!showDates) return badge;

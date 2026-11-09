@@ -1,5 +1,5 @@
 import type { WorksPeriod } from '@/lib/api/types';
-import { formatParkDay } from '@/lib/utils/park-day';
+import { formatParkDay, formatParkDayRange } from '@/lib/utils/park-day';
 
 /**
  * Whether a curated rebuild window covers a given day. The twin of the backend's
@@ -63,30 +63,49 @@ export function nextWorksPeriod(
 
 /** A ride closed for works on one day, with the window that closes it. */
 export interface RideInWorks {
+  /** The ride's UUID where the source carries one, to match it against another list's rides. */
+  id?: string;
   slug: string;
   name: string;
   period: WorksPeriod;
 }
 
 /**
- * The rides a window closes on `onDate`, in the order given. The calendar asks it per day and the
- * plan-day route per planned day, so both name the same rides.
+ * The rides a window closes on `onDate`, by name. The calendar asks it per day and the plan-day
+ * route per planned day, so both name the same rides in the same order.
  */
 export function ridesInWorksOn(
-  rides: readonly (WorksPeriodFields & { slug: string; name: string })[],
+  rides: readonly (WorksPeriodFields & { id?: string; slug: string; name: string })[],
   onDate: string
 ): RideInWorks[] {
   const out: RideInWorks[] = [];
   for (const ride of rides) {
     const period = worksPeriodOn(worksPeriodsOf(ride), onDate);
-    if (period) out.push({ slug: ride.slug, name: ride.name, period });
+    if (period) {
+      out.push({ ...(ride.id && { id: ride.id }), slug: ride.slug, name: ride.name, period });
+    }
   }
-  return out;
+  return out.sort((a, b) => a.name.localeCompare(b.name));
 }
 
-/** The `parks.worksPeriod` keys a window's dates are written with. */
-export type WorksWindowKey =
-  'window' | 'windowUncertain' | 'windowDay' | 'windowFrom' | 'windowTo' | 'windowToUncertain';
+/** The `parks.worksPeriod` keys the helpers below write with. */
+export type WorksPeriodKey =
+  | 'label'
+  | 'windowUncertain'
+  | 'windowFrom'
+  | 'windowTo'
+  | 'windowToUncertain'
+  | 'windowOpenEnd'
+  | 'runningUntil'
+  | 'runningUntilUncertain'
+  | 'upcoming'
+  | 'upcomingDay';
+
+/** What `t` is handed: `useTranslations('parks.worksPeriod')` or its server twin. */
+type WorksT = (key: WorksPeriodKey, values?: Record<string, string>) => string;
+
+/** Day and short month, for a label that shares a row: „4. Dez.". */
+const SHORT_DAY: Intl.DateTimeFormatOptions = { day: 'numeric', month: 'short' };
 
 /**
  * Whether a day's number is spoken with a vowel first (8 „otto", 11 „undici"), as `yes` or `no` for
@@ -99,34 +118,73 @@ export function dayNumberElides(isoDay: string | null | undefined): 'yes' | 'no'
 }
 
 /**
- * A window as a short phrase that claims nothing about today: „vom 16. Januar 2027 bis 3. März
- * 2027", „am 8. Dezember 2026", „ab 16. Januar 2027", „voraussichtlich bis 3. März 2027". The
- * tooltips, the calendar's day detail and the planner list windows that may lie ahead, so the ride
- * page's „seit" sentences do not fit. A one-day window with a firm end is written as that day. Null
- * for a window with neither bound, which the API never sends.
- *
- * @param t `useTranslations('parks.worksPeriod')` or its server twin.
- * @param options How a day is written; long month and year by default (see `formatParkDay`).
+ * A window as a phrase that claims nothing about today, for a list of one ride's windows: „16.–27.
+ * November 2026", „4. Januar – 25. März 2027 (Ende geschätzt)", „ab 16. Januar 2027", „bis 3. März
+ * 2027". The range is `formatParkDayRange`, so a one-day window is that day. Null for a window
+ * with neither bound, which the API never sends.
  */
-export function worksWindowLabel(
+export function worksWindowLabel(period: WorksPeriod, locale: string, t: WorksT): string | null {
+  if (period.from && period.to) {
+    const range = formatParkDayRange(locale, period.from, period.to);
+    return period.toUncertain ? t('windowUncertain', { range }) : range;
+  }
+  if (period.from) {
+    return t('windowFrom', {
+      from: formatParkDay(locale, period.from),
+      fromVowel: dayNumberElides(period.from),
+    });
+  }
+  return period.to ? worksEndLabel(period, locale, t) : null;
+}
+
+/**
+ * Until when a window keeps a ride shut, seen from one day: „bis 25. März", „voraussichtlich bis
+ * 25. März", „Ende offen". On a given day the start is history and the reopening is the question,
+ * so the calendar's day and the planner list only this. The year is written where it differs from
+ * `onDate`'s, and always without `onDate`.
+ */
+export function worksEndLabel(
   period: WorksPeriod,
   locale: string,
-  t: (key: WorksWindowKey, values: Record<string, string>) => string,
-  options?: Intl.DateTimeFormatOptions
-): string | null {
-  const from = period.from ? formatParkDay(locale, period.from, options) : null;
-  const to = period.to ? formatParkDay(locale, period.to, options) : null;
-  const values = {
-    from: from ?? '',
-    to: to ?? '',
-    fromVowel: dayNumberElides(period.from),
+  t: WorksT,
+  onDate?: string
+): string {
+  if (!period.to) return t('windowOpenEnd');
+  const sameYear = onDate !== undefined && onDate.slice(0, 4) === period.to.slice(0, 4);
+  const to = formatParkDay(
+    locale,
+    period.to,
+    sameYear
+      ? { day: 'numeric', month: 'long' }
+      : { day: 'numeric', month: 'long', year: 'numeric' }
+  );
+  return t(period.toUncertain ? 'windowToUncertain' : 'windowTo', {
+    to,
     toVowel: dayNumberElides(period.to),
-  };
-  if (from && to) {
-    if (period.from === period.to && !period.toUncertain) return t('windowDay', values);
-    return t(period.toUncertain ? 'windowUncertain' : 'window', values);
-  }
-  if (from) return t('windowFrom', values);
-  if (to) return t(period.toUncertain ? 'windowToUncertain' : 'windowTo', values);
-  return null;
+  });
+}
+
+/**
+ * A running window in a few words: „Umbaupause bis 4. Dez.", „Umbaupause bis ca. 4. Dez." for an
+ * estimated end, plain „Umbaupause" with no end on file. The ride card's badge and the planner's
+ * block, where the reopening is the one date worth the room.
+ */
+export function worksRunningLabel(period: WorksPeriod, locale: string, t: WorksT): string {
+  if (!period.to) return t('label');
+  return t(period.toUncertain ? 'runningUntilUncertain' : 'runningUntil', {
+    to: formatParkDay(locale, period.to, SHORT_DAY),
+    toVowel: dayNumberElides(period.to),
+  });
+}
+
+/**
+ * A window that has not started, in a few words: „Umbaupause ab 16. Jan.", or „Umbaupause am 8.
+ * Dez." for a single day with a firm end. Only for a window with a start (`nextWorksPeriod`).
+ */
+export function worksUpcomingLabel(period: WorksPeriod, locale: string, t: WorksT): string {
+  const from = period.from ?? '';
+  return t(period.from === period.to && !period.toUncertain ? 'upcomingDay' : 'upcoming', {
+    from: formatParkDay(locale, from, SHORT_DAY),
+    fromVowel: dayNumberElides(from),
+  });
 }

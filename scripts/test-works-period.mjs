@@ -16,8 +16,11 @@ import {
   isWorksPeriodActive,
   nextWorksPeriod,
   ridesInWorksOn,
+  worksEndLabel,
   worksPeriodOn,
   worksPeriodsOf,
+  worksRunningLabel,
+  worksUpcomingLabel,
   worksWindowLabel,
 } from '../lib/utils/works-period.ts';
 
@@ -131,15 +134,15 @@ test('the next window starts after today; a running or a start-less one is not n
   assert.equal(nextWorksPeriod([one], undefined), null);
 });
 
-test('rides in works on a day keep their order and carry the window that closes them', () => {
+test('rides in works on a day come by name and carry the window that closes them', () => {
   const rides = [
     { slug: 'python', name: 'Python', worksPeriods: [closed('2026-01-05', '2026-03-20')] },
     { slug: 'baron', name: 'Baron 1898', worksPeriod: closed('2026-01-10', null) },
     { slug: 'joris', name: 'Joris en de Draak' },
   ];
   assert.deepEqual(ridesInWorksOn(rides, '2026-02-01'), [
-    { slug: 'python', name: 'Python', period: rides[0].worksPeriods[0] },
     { slug: 'baron', name: 'Baron 1898', period: rides[1].worksPeriod },
+    { slug: 'python', name: 'Python', period: rides[0].worksPeriods[0] },
   ]);
   assert.deepEqual(
     ridesInWorksOn(rides, '2026-01-07').map((r) => r.slug),
@@ -148,38 +151,80 @@ test('rides in works on a day keep their order and carry the window that closes 
   assert.deepEqual(ridesInWorksOn(rides, '2025-12-31'), []);
 });
 
-test('a window is written with the bounds it has, hedged where its end is an estimate', () => {
-  const t = (key, values) => `${key}:${[values.from, values.to].filter(Boolean).join('/')}`;
-  const day = { day: 'numeric', month: 'numeric', year: 'numeric' };
+/**
+ * A stand-in for `t`: the key, then the values it was handed. Intl spaces a range with thin and
+ * no-break spaces, which these expectations write as plain ones.
+ */
+const t = (key, values = {}) =>
+  [key, ...['range', 'from', 'to'].filter((k) => values[k]).map((k) => values[k])].join(':');
+const plain = (text) => text?.replace(/[\u2009\u202f\u00a0]/g, ' ') ?? null;
+const windowLabel = (...args) => plain(worksWindowLabel(...args));
+const endLabel = (...args) => plain(worksEndLabel(...args));
+const runningLabel = (...args) => plain(worksRunningLabel(...args));
+const upcomingLabel = (...args) => plain(worksUpcomingLabel(...args));
+
+test('a window with both ends is one range, written as the language shapes it', () => {
+  assert.equal(windowLabel(closed('2026-11-16', '2026-11-27'), 'de', t), '16.–27. November 2026');
   assert.equal(
-    worksWindowLabel(closed('2026-01-16', '2026-03-03'), 'de', t, day),
-    'window:16.1.2026/3.3.2026'
+    windowLabel(closed('2027-01-04', '2027-03-25'), 'de', t),
+    '4. Januar – 25. März 2027'
   );
+  assert.equal(windowLabel(closed('2026-12-08', '2026-12-08'), 'de', t), '8. Dezember 2026');
   assert.equal(
-    worksWindowLabel({ from: '2026-01-16', to: '2026-03-03', toUncertain: true }, 'de', t, day),
-    'windowUncertain:16.1.2026/3.3.2026'
+    windowLabel(closed('2026-12-20', '2027-01-10'), 'de', t),
+    '20. Dezember 2026 – 10. Januar 2027'
   );
-  assert.equal(worksWindowLabel(closed('2026-01-16', null), 'de', t, day), 'windowFrom:16.1.2026');
-  assert.equal(worksWindowLabel(closed(null, '2026-03-03'), 'de', t, day), 'windowTo:3.3.2026');
-  assert.equal(
-    worksWindowLabel({ from: null, to: '2026-03-03', toUncertain: true }, 'de', t, day),
-    'windowToUncertain:3.3.2026'
-  );
-  assert.equal(worksWindowLabel(closed(null, null), 'de', t, day), null);
 });
 
-test('a one-day window is written as that day, unless its end is an estimate', () => {
-  const t = (key, values) =>
-    `${key}:${key === 'windowDay' ? values.from : `${values.from}/${values.to}`}`;
-  const day = { day: 'numeric', month: 'numeric', year: 'numeric' };
+test('an estimated end is hedged, a half-open window says which end it has', () => {
   assert.equal(
-    worksWindowLabel(closed('2026-12-08', '2026-12-08'), 'de', t, day),
-    'windowDay:8.12.2026'
+    windowLabel({ from: '2027-01-04', to: '2027-03-25', toUncertain: true }, 'de', t),
+    'windowUncertain:4. Januar – 25. März 2027'
   );
+  assert.equal(windowLabel(closed('2026-01-16', null), 'de', t), 'windowFrom:16. Januar 2026');
+  assert.equal(windowLabel(closed(null, '2026-03-03'), 'de', t), 'windowTo:3. März 2026');
   assert.equal(
-    worksWindowLabel({ from: '2026-12-08', to: '2026-12-08', toUncertain: true }, 'de', t, day),
-    'windowUncertain:8.12.2026/8.12.2026'
+    windowLabel({ from: null, to: '2026-03-03', toUncertain: true }, 'de', t),
+    'windowToUncertain:3. März 2026'
   );
+  // On the wire a null bound is a stripped key.
+  assert.equal(
+    windowLabel({ from: '2026-01-16', toUncertain: false }, 'de', t),
+    'windowFrom:16. Januar 2026'
+  );
+  assert.equal(windowLabel(closed(null, null), 'de', t), null);
+});
+
+test('Italian ranges lose the padding CLDR gives their days', () => {
+  assert.equal(windowLabel(closed('2027-01-04', '2027-01-09'), 'it', t), '4–9 gennaio 2027');
+  assert.equal(
+    windowLabel(closed('2027-01-04', '2027-03-25'), 'it', t),
+    '4 gennaio – 25 marzo 2027'
+  );
+});
+
+test('seen from a day, a window says until when, with the year only where it changes', () => {
+  const period = closed('2027-01-04', '2027-03-25');
+  assert.equal(endLabel(period, 'de', t, '2027-01-08'), 'windowTo:25. März');
+  assert.equal(endLabel(period, 'de', t, '2026-12-30'), 'windowTo:25. März 2027');
+  assert.equal(endLabel(period, 'de', t), 'windowTo:25. März 2027');
+  assert.equal(
+    endLabel({ ...period, toUncertain: true }, 'de', t, '2027-01-08'),
+    'windowToUncertain:25. März'
+  );
+  assert.equal(endLabel(closed('2027-01-04', null), 'de', t, '2027-01-08'), 'windowOpenEnd');
+});
+
+test('the badge names the reopening of a running window and the start of the next', () => {
+  assert.equal(runningLabel(closed('2026-11-09', '2026-12-04'), 'de', t), 'runningUntil:4. Dez.');
+  assert.equal(
+    runningLabel({ from: '2026-11-09', to: '2026-12-04', toUncertain: true }, 'de', t),
+    'runningUntilUncertain:4. Dez.'
+  );
+  assert.equal(runningLabel(closed('2026-11-09', null), 'de', t), 'label');
+  assert.equal(upcomingLabel(closed('2027-01-04', '2027-03-25'), 'de', t), 'upcoming:4. Jan.');
+  assert.equal(upcomingLabel(closed('2026-12-08', '2026-12-08'), 'de', t), 'upcomingDay:8. Dez.');
+  assert.equal(upcomingLabel(closed('2027-01-04', null), 'de', t), 'upcoming:4. Jan.');
 });
 
 test('the 8th and the 11th are flagged for the Italian elision, and only they', () => {
@@ -188,15 +233,6 @@ test('the 8th and the 11th are flagged for the Italian elision, and only they', 
   assert.equal(dayNumberElides('2026-12-01'), 'no');
   assert.equal(dayNumberElides('2026-12-18'), 'no');
   assert.equal(dayNumberElides(null), 'no');
-});
-
-test('a window across New Year keeps the year of each end', () => {
-  const t = (_key, values) => `${values.from}/${values.to}`;
-  const day = { day: 'numeric', month: 'numeric', year: 'numeric' };
-  assert.equal(
-    worksWindowLabel(closed('2026-12-31', '2027-01-01'), 'de', t, day),
-    '31.12.2026/1.1.2027'
-  );
 });
 
 console.log(`\n${passed} assertions passed.`);

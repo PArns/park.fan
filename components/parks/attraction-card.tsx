@@ -31,6 +31,7 @@ import { isColoredCrowdLevel } from '@/lib/utils/crowd-level-styles';
 import { RopeDropBadge, RopeDropEveningBadge } from './rope-drop-badge';
 import { SeasonalBadge } from './seasonal-badge';
 import { WorksPeriodBadge } from './works-period-badge';
+import { worksPeriodOn, worksPeriodsOf } from '@/lib/utils/works-period';
 import { QueueTypeBadge } from './queue-type-badge';
 import { FastPassBadge } from '@/components/parks/fast-pass-badge';
 import { SingleRiderBadge } from '@/components/parks/single-rider-badge';
@@ -161,6 +162,14 @@ export function AttractionCard({
     parkStatus !== 'OPERATING' &&
     parkStatus !== 'UNKNOWN';
   const waitTime = isOperatingOrUnknown ? getStandbyWait(attraction) : null;
+  const worksPeriods = worksPeriodsOf({
+    worksPeriod: 'worksPeriod' in attraction ? attraction.worksPeriod : null,
+    worksPeriods: 'worksPeriods' in attraction ? attraction.worksPeriods : null,
+  });
+  // „In Wartung" beside „Umbaupause bis 4. Dez." says the same thing twice; the works badge says
+  // until when, so the feed's status gives way while a curated window runs.
+  const statusShownByWorks =
+    status === 'REFURBISHMENT' && worksPeriodOn(worksPeriods, todayIso) !== null;
   const effectiveTimezone =
     timezone ??
     ('park' in attraction && attraction.park?.timezone ? attraction.park.timezone : undefined);
@@ -452,7 +461,7 @@ export function AttractionCard({
                 'max-sm:mt-[6px] max-sm:min-h-[22px] max-sm:flex-nowrap max-sm:overflow-hidden max-sm:[mask-image:linear-gradient(to_right,black_85%,transparent)] max-sm:*:flex max-sm:*:shrink-0'
             )}
           >
-            {!parkClosed && (
+            {!parkClosed && !statusShownByWorks && (
               <ParkStatusBadge
                 status={status}
                 className={phoneRow && hasBottomPanel ? 'max-sm:hidden!' : undefined}
@@ -491,12 +500,7 @@ export function AttractionCard({
             )}
             {/* Beside the season badge, never instead of it: a ride can be out of season AND
                 behind hoardings, and the status badge above says `CLOSED` for both. */}
-            <WorksPeriodBadge
-              worksPeriod={'worksPeriod' in attraction ? attraction.worksPeriod : null}
-              worksPeriods={'worksPeriods' in attraction ? attraction.worksPeriods : null}
-              todayIso={todayIso}
-              insideLink
-            />
+            <WorksPeriodBadge worksPeriods={worksPeriods} todayIso={todayIso} insideLink />
             {'isSeasonal' in attraction && attraction.isSeasonal && (
               <SeasonalBadge
                 seasonMonths={'seasonMonths' in attraction ? attraction.seasonMonths : null}

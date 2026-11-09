@@ -178,6 +178,11 @@ export function ParkCalendarDayDetail({
 
   const forecast = day.headlinerForecast;
   const hasForecast = !!forecast && forecast.rides.length > 0;
+  // The day's forecast can still carry a headliner a works window shuts; that row says so instead
+  // of printing a queue the ride will not have.
+  const worksIds = new Set(
+    isClosed ? [] : (worksRides ?? []).flatMap((ride) => (ride.id ? [ride.id] : []))
+  );
 
   // `day.hourly` first: a caller that already holds a curve keeps it, and the fetch fills the gap
   // the grid's `includeHourly=none` leaves. `upcomingHourlyPredictions` turns the UTC `hour` into
@@ -502,6 +507,22 @@ export function ParkCalendarDayDetail({
                 {forecast!.rides.map((r) => {
                   const band = r.uncertaintyMinutes ?? null;
                   const hasBand = band !== null && Number.isFinite(band);
+                  if (worksIds.has(r.attractionId)) {
+                    return (
+                      <li key={r.attractionId} className="flex items-center justify-between gap-4">
+                        <span className="text-muted-foreground truncate text-sm">{r.name}</span>
+                        <span
+                          className={cn(
+                            'flex shrink-0 items-center gap-1 text-sm font-semibold',
+                            WORKS_TONE_CLASS
+                          )}
+                        >
+                          <Construction className="h-3.5 w-3.5" aria-hidden="true" />
+                          {tWorks('label')}
+                        </span>
+                      </li>
+                    );
+                  }
                   return (
                     <li key={r.attractionId} className="flex items-center justify-between gap-4">
                       <span className="truncate text-sm">{r.name}</span>
@@ -544,6 +565,7 @@ export function ParkCalendarDayDetail({
               <WorksPeriodList
                 title={null}
                 size="panel"
+                onDate={day.date}
                 items={worksRides.map((ride) => ({
                   key: ride.slug,
                   name: ride.name,

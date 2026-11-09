@@ -28,6 +28,14 @@ export function daysBetween(from: string, to: string): number {
   return Math.round((end - start) / 86_400_000);
 }
 
+/** A written day with month name and year, the default of {@link formatParkDay}. */
+const LONG_DAY: Intl.DateTimeFormatOptions = { day: 'numeric', month: 'long', year: 'numeric' };
+
+/** A park-local `YYYY-MM-DD` at noon UTC, the instant no zone moves to another day. */
+function parkDayInstant(isoDay: string): Date {
+  return new Date(`${isoDay}T12:00:00Z`);
+}
+
 /**
  * A park-local `YYYY-MM-DD` as a written date in `locale`. Anchored at noon UTC and formatted in
  * UTC, so no zone moves the day; long month and year unless `options` says otherwise.
@@ -35,9 +43,34 @@ export function daysBetween(from: string, to: string): number {
 export function formatParkDay(
   locale: string,
   isoDay: string,
-  options: Intl.DateTimeFormatOptions = { day: 'numeric', month: 'long', year: 'numeric' }
+  options: Intl.DateTimeFormatOptions = LONG_DAY
 ): string {
-  const day = new Date(`${isoDay}T12:00:00Z`);
+  const day = parkDayInstant(isoDay);
   if (Number.isNaN(day.getTime())) return isoDay;
   return getDateTimeFormat(locale, { ...options, timeZone: 'UTC' }).format(day);
+}
+
+/**
+ * Two park-local days as one range in `locale`'s own shape: „16.–27. November 2026", „4. Januar –
+ * 25. März 2027", one date where both are the same day. `formatRange` drops what the two ends
+ * share, which no hand-built „{from} – {to}" can do in six languages.
+ */
+export function formatParkDayRange(
+  locale: string,
+  fromIso: string,
+  toIso: string,
+  options: Intl.DateTimeFormatOptions = LONG_DAY
+): string {
+  const from = parkDayInstant(fromIso);
+  const to = parkDayInstant(toIso);
+  if (Number.isNaN(from.getTime()) || Number.isNaN(to.getTime()) || to < from) {
+    return `${formatParkDay(locale, fromIso, options)} – ${formatParkDay(locale, toIso, options)}`;
+  }
+  return (
+    getDateTimeFormat(locale, { ...options, timeZone: 'UTC' })
+      .formatRange(from, to)
+      // CLDR's Italian range pattern pads the day („04 gennaio") although `day: 'numeric'` asks
+      // for no padding, in Node and in Chromium alike.
+      .replace(/(^|\D)0(\d)/g, '$1$2')
+  );
 }

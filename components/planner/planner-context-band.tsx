@@ -215,6 +215,7 @@ export function PlannerContextBand({ day, state, trailing }: PlannerContextBandP
             content={
               <WorksPeriodList
                 title={tWorks('closedRidesTitle')}
+                onDate={context.date}
                 items={day.ridesInWorks.map((ride) => ({
                   key: ride.attractionSlug,
                   name: ride.attractionName,

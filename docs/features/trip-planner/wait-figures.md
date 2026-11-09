@@ -100,7 +100,8 @@ the plan still lists is left out, because the plan is computed per request and t
 older. A failed park read costs the list, never the plan.
 
 `estimateFor` answers a planned ride in that list with `missing: 'works'` and no figure, rather than
-the five assumed minutes the optimiser could plan a stop into. The block says „Umbaupause" and
-carries a `Construction` mark whose hover names the window; the context band shows a chip with the
-count, and hover or tap (`TapTooltip`) lists the rides with their dates. `pnpm test:planner-estimate`
-pins the state.
+the five assumed minutes the optimiser could plan a stop into. The block's second line reads
+„11:00 · Umbaupause bis 25. März" (`worksRunningLabel`) instead of a range from the start to
+itself, and a `Construction` mark carries the same on a short block. The context band shows a chip
+with the count, and hover or tap (`TapTooltip`) lists the rides by name and until when.
+`pnpm test:planner-estimate` pins the state.

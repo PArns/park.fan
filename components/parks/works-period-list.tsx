@@ -2,7 +2,7 @@ import { Construction } from 'lucide-react';
 import { useLocale, useTranslations } from 'next-intl';
 import type { WorksPeriod } from '@/lib/api/types';
 import { cn } from '@/lib/utils';
-import { worksWindowLabel } from '@/lib/utils/works-period';
+import { worksEndLabel, worksWindowLabel } from '@/lib/utils/works-period';
 
 /**
  * The colour of every works mark: the „Umbaupause" badge's orange, which no other badge on a ride
@@ -24,19 +24,25 @@ interface WorksPeriodListProps {
   title?: string | null;
   /** `tooltip` is the glass panel's small type, `panel` the day detail's body type. */
   size?: 'tooltip' | 'panel';
+  /**
+   * The park-local day the list is about. With it each line says until when the ride stays shut
+   * (`worksEndLabel`), since on a given day the start is history; without it, the whole window.
+   */
+  onDate?: string;
   className?: string;
 }
 
 /**
- * Curated works windows as a short list: the ride (where the list spans several) and its dates,
- * written by `worksWindowLabel` so no line claims anything about today. The body of every
- * „Umbaupause" tooltip and of the calendar's day detail, so a window reads the same wherever it is
- * named.
+ * Curated works windows as a short list: the ride (where the list spans several) and its dates.
+ * One ride's windows are written whole (`worksWindowLabel`); the rides shut on one day say until
+ * when (`worksEndLabel`). The body of every „Umbaupause" tooltip and of the calendar's day detail,
+ * so a window reads the same wherever it is named.
  */
 export function WorksPeriodList({
   items,
   title,
   size = 'tooltip',
+  onDate,
   className,
 }: WorksPeriodListProps) {
   const t = useTranslations('parks.worksPeriod');
@@ -66,7 +72,9 @@ export function WorksPeriodList({
             {item.name && <span className="font-semibold">{item.name}</span>}
             {item.name && <span aria-hidden="true"> · </span>}
             <span className={cn(item.name && 'text-muted-foreground')}>
-              {worksWindowLabel(item.period, locale, t)}
+              {onDate
+                ? worksEndLabel(item.period, locale, t, onDate)
+                : worksWindowLabel(item.period, locale, t)}
             </span>
           </li>
         ))}
