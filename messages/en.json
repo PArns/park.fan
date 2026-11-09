@@ -661,7 +661,7 @@
     "status": {
       "OPERATING": "Open",
       "CLOSED": "Closed",
-      "REFURBISHMENT": "Refurbishment",
+      "REFURBISHMENT": "Maintenance",
       "DOWN": "Down",
       "UNKNOWN": "Unknown",
       "RETIRED": "Closed permanently"
@@ -732,23 +732,23 @@
       "ride": "So there is no forecast for this ride either. Opening hours and weather are unaffected."
     },
     "worksPeriod": {
-      "label": "Refurbishment",
-      "sinceUntil": "This ride has been closed for works since {from}, until {to}.",
-      "sinceUntilUncertain": "This ride has been closed for works since {from}, probably until {to}.",
-      "since": "This ride has been closed for works since {from}. There is no end date yet.",
-      "until": "This ride is closed for works until {to}.",
-      "untilUncertain": "This ride is closed for works, probably until {to}.",
+      "label": "Maintenance",
+      "sinceUntil": "This ride has been closed for maintenance since {from}, until {to}.",
+      "sinceUntilUncertain": "This ride has been closed for maintenance since {from}, probably until {to}.",
+      "since": "This ride has been closed for maintenance since {from}. There is no end date yet.",
+      "until": "This ride is closed for maintenance until {to}.",
+      "untilUncertain": "This ride is closed for maintenance, probably until {to}.",
       "windowUncertain": "{range} (end estimated)",
       "windowFrom": "from {from}",
       "windowTo": "until {to}",
       "windowToUncertain": "probably until {to}",
       "windowOpenEnd": "no end date yet",
-      "runningUntil": "Refurbishment until {to}",
-      "runningUntilUncertain": "Refurbishment until about {to}",
-      "upcoming": "Refurbishment from {from}",
-      "upcomingDay": "Refurbishment on {from}",
-      "closedRidesTitle": "Closed for works",
-      "closedRidesCount": "{count, plural, =1 {1 ride closed for works} other {# rides closed for works}}"
+      "runningUntil": "Maintenance until {to}",
+      "runningUntilUncertain": "Maintenance until about {to}",
+      "upcoming": "Maintenance from {from}",
+      "upcomingDay": "Maintenance on {from}",
+      "closedRidesTitle": "Closed for maintenance",
+      "closedRidesCount": "{count, plural, =1 {1 ride closed for maintenance} other {# rides closed for maintenance}}"
     },
     "transportSystem": {
       "label": "Transport",
@@ -1181,7 +1181,7 @@
       "operating": "Operating",
       "down": "Temporarily Down",
       "closed": "Closed",
-      "refurbishment": "Under Refurbishment",
+      "refurbishment": "Under Maintenance",
       "unknown": "Unknown"
     },
     "label": {
@@ -1262,7 +1262,7 @@
         "FINISHED": "Finished",
         "OPERATING": "Open",
         "DOWN": "Down",
-        "REFURBISHMENT": "Refurb"
+        "REFURBISHMENT": "Maint."
       },
       "details": {
         "singleRider": "Single Rider: {time} min",
@@ -2473,7 +2473,7 @@
       "never_measured": "We have not received any wait times from this park yet, so there are no curves.",
       "feed_stale": "We haven't received any wait times from this park for {days, plural, one {# day} other {# days}}. The problem is on our end.",
       "feed_stale_unknown": "We aren't receiving any wait times from this park right now. The problem is on our end.",
-      "rides_cannot_open": "On this day every ride is out of season or closed for works. Try another day.",
+      "rides_cannot_open": "On this day every ride is out of season or closed for maintenance. Try another day.",
       "insufficient_history": "We don't have enough measured days for this park to draw curves yet. Try another day.",
       "no_hourly_shape": "This park's rides run on hours that differ too much to build one day shape from them yet.",
       "no_forecast": "The model has not produced a forecast for this day yet. Check back after the next model run.",

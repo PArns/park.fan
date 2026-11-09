@@ -1,13 +1,12 @@
 'use client';
 
-import { Construction } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 
 import { cn } from '@/lib/utils';
 import { CROWD_LEVEL_ORDER, CROWD_SCALE_CLASS } from '@/lib/utils/crowd-level-styles';
 import { DAY_SIGNAL_CLASS } from '@/lib/utils/day-signal-styles';
 import { DaySignalKey } from '@/components/parks/day-signal-key';
-import { WORKS_TONE_CLASS } from '@/components/parks/works-period-list';
+import { WORKS_TONE_CLASS, WorksIcon } from '@/components/parks/works-period-list';
 
 /**
  * What the colours in the month grid mean: the crowd scale, then the signal bar. The scale is one
@@ -79,7 +78,7 @@ export function ParkCalendarLegend({
         <DaySignalKey className={DAY_SIGNAL_CLASS.bridge} label={tLegend('bridgeDay')} />
         {showWorks && (
           <span className="flex items-center gap-1.5 whitespace-nowrap">
-            <Construction className={cn('h-3 w-3 shrink-0', WORKS_TONE_CLASS)} aria-hidden="true" />
+            <WorksIcon className={cn('h-3 w-3 shrink-0', WORKS_TONE_CLASS)} aria-hidden="true" />
             <span className="text-[11px]">{tWorks('closedRidesTitle')}</span>
           </span>
         )}

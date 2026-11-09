@@ -2,11 +2,11 @@
 
 import type { ReactNode } from 'react';
 import { useTranslations } from 'next-intl';
-import { CalendarDays, CloudOff, Clock, Construction, Droplets, TreePalm } from 'lucide-react';
+import { CalendarDays, CloudOff, Clock, Droplets, TreePalm } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Badge } from '@/components/ui/badge';
 import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
-import { WorksPeriodList } from '@/components/parks/works-period-list';
+import { WorksPeriodList, WorksIcon } from '@/components/parks/works-period-list';
 import { WORKS_BADGE_CLASS } from '@/components/parks/works-period-badge';
 import { TapTooltip } from '@/components/common/tap-tooltip';
 import { Precip, Temp } from '@/components/common/unit-display';
@@ -229,7 +229,7 @@ export function PlannerContextBand({ day, state, trailing }: PlannerContextBandP
               className={cn(WORKS_BADGE_CLASS, 'bg-orange-500/5 text-[11px]')}
               data-planner-works=""
             >
-              <Construction className="size-3" aria-hidden="true" />
+              <WorksIcon className="size-3" aria-hidden="true" />
               <span className="planner-wide:hidden tabular-nums" aria-hidden="true">
                 {day.ridesInWorks.length}
               </span>

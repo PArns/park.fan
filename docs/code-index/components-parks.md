@@ -867,15 +867,16 @@ Client on purpose: the demo windows are Date.now()-relative — evaluated in the
 
 ### [`works-period-badge.tsx`](../../components/parks/works-period-badge.tsx)
 
-- `WorksPeriodBadge` _component_: „Umbaupause": the word that separates a ride being rebuilt from one that happens to be shut. Both read `CLOSED` and no feed tells them apart, so the window is curated.
-- `WORKS_BADGE_CLASS` _const_: The „Umbaupause" badge's surface without its fill, shared with the planner's works chip.
+- `WorksPeriodBadge` _component_: „Wartung": the word that separates a ride shut on purpose, for a day of maintenance or a winter's rebuild, from one that happens to be shut. Both read `CLOSED` and no feed tells them apart, so the window is curated.
+- `WORKS_BADGE_CLASS` _const_: The „Wartung" badge's surface without its fill, shared with the planner's works chip.
 
 ### [`works-period-list.tsx`](../../components/parks/works-period-list.tsx)
 
 - `WorksPeriodList` _component_: Curated works windows as a short list: the ride (where the list spans several) and its dates. One ride's windows are written whole (`worksWindowLabel`); the rides shut on one day say until when (`worksEndLabel`).
-- `WORKS_TONE_CLASS` _const_: The colour of every works mark: the „Umbaupause" badge's orange, which no other badge on a ride card uses, on the calendar's day icon, the planner's block and band, and the ride page's note.
+- `WORKS_TONE_CLASS` _const_: The colour of every works mark: the „Wartung" badge's orange, which no other badge on a ride card uses, on the calendar's day icon, the planner's block and band, and the ride page's note.
+- `WorksIcon` _const_: The icon of every works mark: the wrench of the live „In Wartung" status, so the feed's word and the curated window look like one thing. A window may be a day of maintenance or a winter's rebuild, and the wrench claims neither.
 - Types: `WorksPeriodListItem`
 
 ### [`works-period-note.tsx`](../../components/parks/works-period-note.tsx)
 
-- `WorksPeriodNote` _component_: The ride page's sentence about a curated rebuild: since when and until when, the part a visitor can plan around. It sits where `NoLiveWaitTimesNotice` sits, above the chapters, because it answers the question the empty live panel raises.
+- `WorksPeriodNote` _component_: The ride page's sentence about a curated works window (maintenance or a rebuild): since when and until when, the part a visitor can plan around.

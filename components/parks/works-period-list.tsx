@@ -1,14 +1,21 @@
-import { Construction } from 'lucide-react';
+import { Wrench } from 'lucide-react';
 import { useLocale, useTranslations } from 'next-intl';
 import type { WorksPeriod } from '@/lib/api/types';
 import { cn } from '@/lib/utils';
 import { worksEndLabel, worksWindowLabel } from '@/lib/utils/works-period';
 
 /**
- * The colour of every works mark: the „Umbaupause" badge's orange, which no other badge on a ride
+ * The colour of every works mark: the „Wartung" badge's orange, which no other badge on a ride
  * card uses, on the calendar's day icon, the planner's block and band, and the ride page's note.
  */
 export const WORKS_TONE_CLASS = 'text-orange-600 dark:text-orange-400';
+
+/**
+ * The icon of every works mark: the wrench of the live „In Wartung" status, so the feed's word and
+ * the curated window look like one thing. A window may be a day of maintenance or a winter's
+ * rebuild, and the wrench claims neither.
+ */
+export const WorksIcon = Wrench;
 
 /** One line of a {@link WorksPeriodList}: a window, and the ride it closes where that varies. */
 export interface WorksPeriodListItem {
@@ -20,7 +27,7 @@ export interface WorksPeriodListItem {
 
 interface WorksPeriodListProps {
   items: readonly WorksPeriodListItem[];
-  /** The heading over the list; „Umbaupause" when absent, none for `null`. */
+  /** The heading over the list; „Wartung" when absent, none for `null`. */
   title?: string | null;
   /** `tooltip` is the glass panel's small type, `panel` the day detail's body type. */
   size?: 'tooltip' | 'panel';
@@ -35,7 +42,7 @@ interface WorksPeriodListProps {
 /**
  * Curated works windows as a short list: the ride (where the list spans several) and its dates.
  * One ride's windows are written whole (`worksWindowLabel`); the rides shut on one day say until
- * when (`worksEndLabel`). The body of every „Umbaupause" tooltip and of the calendar's day detail,
+ * when (`worksEndLabel`). The body of every „Wartung" tooltip and of the calendar's day detail,
  * so a window reads the same wherever it is named.
  */
 export function WorksPeriodList({
@@ -59,7 +66,7 @@ export function WorksPeriodList({
             small ? 'mb-2 text-[10px] tracking-widest uppercase' : 'mb-2 text-sm'
           )}
         >
-          <Construction
+          <WorksIcon
             className={cn('shrink-0', WORKS_TONE_CLASS, small ? 'size-3' : 'size-4')}
             aria-hidden="true"
           />

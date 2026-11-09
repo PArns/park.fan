@@ -1,7 +1,7 @@
 'use client';
 
 import { useLocale, useTranslations } from 'next-intl';
-import { AlertTriangle, Construction, Droplets, Theater, X } from 'lucide-react';
+import { AlertTriangle, Droplets, Theater, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import {
   CROWD_DOT_CLASS,
@@ -20,7 +20,7 @@ import { roundWaitTo5 } from '@/lib/utils/wait-time';
 import { backgroundPhotoUrl } from '@/lib/utils/image-loader';
 import type { PlanDayShowSource, PlanDayTier, WorksPeriod } from '@/lib/api/types';
 import { worksEndLabel, worksRunningLabel } from '@/lib/utils/works-period';
-import { WORKS_TONE_CLASS } from '@/components/parks/works-period-list';
+import { WORKS_TONE_CLASS, WorksIcon } from '@/components/parks/works-period-list';
 
 /**
  * The bordered div's border, doubled: the two pixels the resize edge's touch target may not count
@@ -268,7 +268,7 @@ export function PlannerBlock({
             ? t('warn.maybeAfterClose')
             : null;
   const warnTone = works ? WORKS_TONE_CLASS : closedNow ? 'text-destructive' : 'text-crowd-high';
-  const WarnIcon = works ? Construction : AlertTriangle;
+  const WarnIcon = works ? WorksIcon : AlertTriangle;
   const warnMark = warnLabel && (
     <span className="inline-flex shrink-0" title={warnLabel}>
       <WarnIcon className={cn('size-3 shrink-0', warnTone)} aria-label={warnLabel} />
@@ -290,7 +290,7 @@ export function PlannerBlock({
   const missingLabel =
     custom || estimate.missing === 'custom'
       ? null
-      : /* The range line says it, with the end („Umbaupause bis 25. März"). */
+      : /* The range line says it, with the end („In Wartung bis 25. März"). */
         estimate.missing === 'works'
         ? null
         : estimate.missing === 'outside-hours'
@@ -693,7 +693,7 @@ export function PlannerBlock({
           )}
 
           {/* The reason in full where there is room; the icon carries it on a short block. Not
-              for works: the range line already says „Umbaupause bis …". */}
+              for works: the range line already says „In Wartung bis …". */}
           {warnLabel &&
             !works &&
             boxPx >= (boxPx >= 68 ? WARN_SENTENCE_WITH_LAND_PX : WARN_SENTENCE_PX) && (

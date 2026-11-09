@@ -43,7 +43,7 @@ interface TapTooltipProps {
 
 /**
  * A tooltip that a tap opens too: the crowd scale behind a badge, the works windows behind the
- * „Umbaupause" marker.
+ * „Wartung" marker.
  *
  * **Opened by tap, not only by hover.** Radix's tooltip ignores touch moves, suppresses the
  * focus-open a tap would produce and closes on click, so on a phone nothing could open it. The

@@ -2,11 +2,11 @@ import type { WorksPeriod } from '@/lib/api/types';
 import { formatParkDay, formatParkDayRange } from '@/lib/utils/park-day';
 
 /**
- * Whether a curated rebuild window covers a given day. The twin of the backend's
- * `isCuratedOutOfService()` and must stay one, or the „Umbaupause" badge and the planner gate
+ * Whether a curated works window (maintenance or a rebuild) covers a given day. The twin of the backend's
+ * `isCuratedOutOfService()` and must stay one, or the „Wartung" badge and the planner gate
  * disagree. Compared as `YYYY-MM-DD` strings, never `Date`s, so no offset enters a question about
  * the park's own calendar. Both bounds are inclusive and either may be null (open-ended); both null
- * answers false, since „nothing claimed" must not read as „in a rebuild".
+ * answers false, since „nothing claimed" must not read as „in maintenance".
  *
  * @param onDate The PARK-local day, computed on the server (a client clock here is a hydration
  *   bug). Undefined answers false, so a listing that does not know the park's day says nothing.
@@ -165,8 +165,8 @@ export function worksEndLabel(
 }
 
 /**
- * A running window in a few words: „Umbaupause bis 4. Dez.", „Umbaupause bis ca. 4. Dez." for an
- * estimated end, plain „Umbaupause" with no end on file. The ride card's badge and the planner's
+ * A running window in a few words: „In Wartung bis 4. Dez.", „In Wartung bis ca. 4. Dez." for an
+ * estimated end, plain „Wartung" with no end on file. The ride card's badge and the planner's
  * block, where the reopening is the one date worth the room.
  */
 export function worksRunningLabel(period: WorksPeriod, locale: string, t: WorksT): string {
@@ -178,7 +178,7 @@ export function worksRunningLabel(period: WorksPeriod, locale: string, t: WorksT
 }
 
 /**
- * A window that has not started, in a few words: „Umbaupause ab 16. Jan.", or „Umbaupause am 8.
+ * A window that has not started, in a few words: „Wartung ab 16. Jan.", or „Wartung am 8.
  * Dez." for a single day with a firm end. Only for a window with a start (`nextWorksPeriod`).
  */
 export function worksUpcomingLabel(period: WorksPeriod, locale: string, t: WorksT): string {

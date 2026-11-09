@@ -1,8 +1,7 @@
-import { Construction } from 'lucide-react';
 import { useLocale, useTranslations } from 'next-intl';
 import { GlassNotice } from '@/components/parks/glass-notice';
 import { formatParkDay } from '@/lib/utils/park-day';
-import { WORKS_TONE_CLASS } from './works-period-list';
+import { WORKS_TONE_CLASS, WorksIcon } from './works-period-list';
 import type { WorksPeriod } from '@/lib/api/types';
 import { isWorksPeriodActive } from '@/lib/utils/works-period';
 
@@ -15,7 +14,7 @@ interface WorksPeriodNoteProps {
 }
 
 /**
- * The ride page's sentence about a curated rebuild: since when and until when, the part a visitor
+ * The ride page's sentence about a curated works window (maintenance or a rebuild): since when and until when, the part a visitor
  * can plan around. It sits where `NoLiveWaitTimesNotice` sits, above the chapters, because it
  * answers the question the empty live panel raises.
  *
@@ -50,7 +49,7 @@ export function WorksPeriodNote({ worksPeriod, todayIso, className }: WorksPerio
 
   return (
     <GlassNotice
-      icon={Construction}
+      icon={WorksIcon}
       title={t('label')}
       tintClassName="bg-orange-500/5 dark:bg-orange-500/10"
       iconClassName={WORKS_TONE_CLASS}

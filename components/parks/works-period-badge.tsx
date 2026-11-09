@@ -1,4 +1,3 @@
-import { Construction } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { TapTooltip } from '@/components/common/tap-tooltip';
 import { cn } from '@/lib/utils';
@@ -11,7 +10,7 @@ import {
   worksRunningLabel,
   worksUpcomingLabel,
 } from '@/lib/utils/works-period';
-import { WorksPeriodList } from './works-period-list';
+import { WorksPeriodList, WorksIcon } from './works-period-list';
 
 interface WorksPeriodBadgeProps {
   /** The curated window from the API. Renders nothing when absent. */
@@ -30,18 +29,19 @@ interface WorksPeriodBadgeProps {
   className?: string;
 }
 
-/** The „Umbaupause" badge's surface without its fill, shared with the planner's works chip. */
+/** The „Wartung" badge's surface without its fill, shared with the planner's works chip. */
 export const WORKS_BADGE_CLASS =
   'border border-orange-500/30 font-semibold text-orange-600 backdrop-blur-md dark:text-orange-300';
 
 /**
- * „Umbaupause": the word that separates a ride being rebuilt from one that happens to be shut. Both
+ * „Wartung": the word that separates a ride shut on purpose, for a day of maintenance or a winter's
+ * rebuild, from one that happens to be shut. Both
  * read `CLOSED` and no feed tells them apart, so the window is curated.
  *
  * Its own badge beside `SeasonalBadge`, because "only opens in winter" and "being rebuilt" are
  * different facts that may both hold; orange because no other badge on these cards uses it. While
- * a window covers `todayIso` it says until when („Umbaupause bis 4. Dez.", plain „Umbaupause" with
- * no end on file); before the next one starts it says „Umbaupause ab 16. Jan." („am 8. Dez." for a
+ * a window covers `todayIso` it says until when („In Wartung bis 4. Dez.", plain „Wartung" with
+ * no end on file); before the next one starts it says „Wartung ab 16. Jan." („am 8. Dez." for a
  * single day) in a paler tint, because a visitor planning a trip wants to know before the day.
  * Hover or tap lists the running window and the ones after it with their dates. A window that is
  * over says nothing, and without the park's day neither form is drawn.
@@ -66,7 +66,7 @@ export function WorksPeriodBadge({
     <Badge
       className={cn(WORKS_BADGE_CLASS, running ? 'bg-orange-500/15' : 'bg-orange-500/5', className)}
     >
-      <Construction className="h-3 w-3 text-inherit" />
+      <WorksIcon className="h-3 w-3 text-inherit" />
       {/* No end where Parky only knows that a window runs today (`showDates` off). */}
       {running
         ? showDates

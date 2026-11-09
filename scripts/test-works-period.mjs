@@ -1,6 +1,6 @@
 /**
  * Unit tests for `lib/utils/works-period.ts`: `isWorksPeriodActive`, the
- * predicate that decides whether the „Umbaupause" badge and the ride page's
+ * predicate that decides whether the „Wartung" badge and the ride page's
  * note say anything at all, and the list helpers the ride card, the calendar
  * and the planner read windows through.
  *

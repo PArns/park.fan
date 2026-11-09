@@ -285,7 +285,7 @@ const ride = (startMinute) => ({
       },
     ],
   });
-  test('eine Bahn in Umbaupause bekommt keine Annahme', estimateFor(day, python).missing, 'works');
+  test('eine Bahn in Wartung bekommt keine Annahme', estimateFor(day, python).missing, 'works');
   test('und keine Zahl', estimateFor(day, python).wait, null);
   test('der Tag wird trotzdem benannt', estimateFor(day, python).tier, 'measured');
   test('sie zählt als unbekannt, nicht als fünf Minuten', totalsFor(day, [python]).unknown, 1);

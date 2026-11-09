@@ -720,7 +720,7 @@ export interface ParkAttraction {
    */
   runsOnWeekdays?: number[];
   /**
-   * The curated rebuild window, absent for nearly every ride. Day-stable, so it rides the server
+   * The curated works window (maintenance or a rebuild), absent for nearly every ride. Day-stable, so it rides the server
    * render and not the poll; it says nothing about today on its own (see {@link WorksPeriod}).
    */
   worksPeriod?: WorksPeriod | null;

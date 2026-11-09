@@ -166,7 +166,7 @@ export function AttractionCard({
     worksPeriod: 'worksPeriod' in attraction ? attraction.worksPeriod : null,
     worksPeriods: 'worksPeriods' in attraction ? attraction.worksPeriods : null,
   });
-  // „In Wartung" beside „Umbaupause bis 4. Dez." says the same thing twice; the works badge says
+  // „In Wartung" beside „In Wartung bis 4. Dez." says the same thing twice; the works badge says
   // until when, so the feed's status gives way while a curated window runs.
   const statusShownByWorks =
     status === 'REFURBISHMENT' && worksPeriodOn(worksPeriods, todayIso) !== null;

@@ -263,7 +263,7 @@ These dots carry `will-change` because they animate forever inside cards with `b
 
 ### [`tap-tooltip.tsx`](../../components/common/tap-tooltip.tsx)
 
-- `TapTooltip` _component_: A tooltip that a tap opens too: the crowd scale behind a badge, the works windows behind the „Umbaupause" marker.
+- `TapTooltip` _component_: A tooltip that a tap opens too: the crowd scale behind a badge, the works windows behind the „Wartung" marker.
 - `TAP_TOOLTIP_TRIGGER_CLASS` _const_: The trigger's box. Exported because a stand-in button that mounts the real tooltip on first contact (`RideCrowdScaleTooltip`) has to be the same box, or the badge would shift by a pixel the moment the real tooltip replaces it.
 
 ### [`temperature-unit-toggle.tsx`](../../components/common/temperature-unit-toggle.tsx)

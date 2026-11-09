@@ -1,10 +1,10 @@
 'use client';
 
 import { createElement, memo } from 'react';
-import { Construction, Info, Star } from 'lucide-react';
+import { Info, Star } from 'lucide-react';
 import type { CalendarDay } from '@/lib/api/types';
 import type { RideInWorks } from '@/lib/utils/works-period';
-import { WORKS_TONE_CLASS, WorksPeriodList } from './works-period-list';
+import { WORKS_TONE_CLASS, WorksPeriodList, WorksIcon } from './works-period-list';
 import { Card } from '@/components/ui/card';
 import { useTranslations, useLocale } from 'next-intl';
 import { translateHolidayName } from '@/lib/utils/holiday-names';
@@ -276,7 +276,7 @@ function ParkCalendarDayComponent({
                 aria-label={worksHint ?? undefined}
                 data-calendar-works=""
               >
-                <Construction className={cn('h-3 w-3', WORKS_TONE_CLASS)} aria-hidden="true" />
+                <WorksIcon className={cn('h-3 w-3', WORKS_TONE_CLASS)} aria-hidden="true" />
                 {works.length}
               </span>
             </TooltipTrigger>

@@ -586,7 +586,7 @@ One day's hours as the park payload carries them (`schedule[]`, `nextSchedule`).
 
 ### [`works-period.ts`](../../lib/utils/works-period.ts)
 
-- `isWorksPeriodActive` _function_: Whether a curated rebuild window covers a given day. The twin of the backend's `isCuratedOutOfService()` and must stay one, or the „Umbaupause" badge and the planner gate disagree.
+- `isWorksPeriodActive` _function_: Whether a curated works window (maintenance or a rebuild) covers a given day. The twin of the backend's `isCuratedOutOfService()` and must stay one, or the „Wartung" badge and the planner gate disagree.
 - `worksPeriodsOf` _function_: Every curated window of a ride, sorted by start as the API sends them. Falls back to the single `worksPeriod` for a payload cached before the list existed, so no reader has to ask which of the two fields it got.
 - `worksPeriodOn` _function_: The window that covers `onDate`, or null. The API guarantees windows never overlap.
 - `nextWorksPeriod` _function_: The next window to start after `today`, or null. Only a window with a start can lie ahead: one without `from` was already running when somebody wrote it down.
@@ -594,8 +594,8 @@ One day's hours as the park payload carries them (`schedule[]`, `nextSchedule`).
 - `dayNumberElides` _function_: Whether a day's number is spoken with a vowel first (8 „otto", 11 „undici"), as `yes` or `no` for an ICU `select`: Italian writes „dall’8 dicembre", never „dal 8".
 - `worksWindowLabel` _function_: A window as a phrase that claims nothing about today, for a list of one ride's windows: „16.–27. November 2026", „4. Januar – 25. März 2027 (Ende geschätzt)", „ab 16. Januar 2027", „bis 3. März 2027".
 - `worksEndLabel` _function_: Until when a window keeps a ride shut, seen from one day: „bis 25. März", „voraussichtlich bis 25. März", „Ende offen".
-- `worksRunningLabel` _function_: A running window in a few words: „Umbaupause bis 4. Dez.", „Umbaupause bis ca. 4. Dez." for an estimated end, plain „Umbaupause" with no end on file.
-- `worksUpcomingLabel` _function_: A window that has not started, in a few words: „Umbaupause ab 16. Jan.", or „Umbaupause am 8. Dez." for a single day with a firm end. Only for a window with a start (`nextWorksPeriod`).
+- `worksRunningLabel` _function_: A running window in a few words: „In Wartung bis 4. Dez.", „In Wartung bis ca. 4. Dez." for an estimated end, plain „Wartung" with no end on file.
+- `worksUpcomingLabel` _function_: A window that has not started, in a few words: „Wartung ab 16. Jan.", or „Wartung am 8. Dez." for a single day with a firm end. Only for a window with a start (`nextWorksPeriod`).
 - Types: `WorksPeriodFields`, `RideInWorks`, `WorksPeriodKey`
 
 ### [`yearly-outlook-styles.ts`](../../lib/utils/yearly-outlook-styles.ts)

@@ -83,14 +83,14 @@ park's date (`parkDayOf`).
 
 **Works windows.** A day on which a curated works window closes a ride (`worksPeriods` on the
 park's rides, kept by `leanParkForCalendarShell` only where the API sent one) carries a chip beside
-the status word: the orange `Construction` icon and how many rides are shut, on the page's own
+the status word: the orange wrench (`WorksIcon`) and how many rides are shut, on the page's own
 surface so it reads on an orange tile as on a green one. Hover lists the rides by name and until
 when (`worksEndLabel`: „bis 25. März", the year only where it changes). The grid asks
 `ridesInWorksOn` (`lib/utils/works-period.ts`) once per day of the month in a memo, so a park with
 no window costs one filter; a day the park is shut draws no chip, and the chip stays in the status
 line so a cell never grows past the height `calendarGridReservation` reserved. The legend keys the
 icon only for a park that has a window. The day dialog lists the same rides (`WorksPeriodList`),
-and a headliner among them reads „Umbaupause" in the forecast list instead of a wait, since the
+and a headliner among them reads „Wartung" in the forecast list instead of a wait, since the
 API's day forecast still carries it.
 
 ## The day dialog

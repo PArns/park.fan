@@ -20,7 +20,6 @@ import {
   Droplets,
   Snowflake,
   Ticket,
-  Construction,
 } from 'lucide-react';
 import type { CalendarDay, CrowdLevel } from '@/lib/api/types';
 import { PlanDayButtonLazy } from '@/components/planner/plan-day-button-lazy';
@@ -49,7 +48,7 @@ import { upcomingHourlyPredictions } from '@/lib/utils/calendar-utils';
 import { useCalendarDayHourly } from '@/lib/hooks/use-calendar-day-hourly';
 import { useMinuteNowDate } from '@/lib/hooks/use-minute-now';
 import type { RideInWorks } from '@/lib/utils/works-period';
-import { WORKS_TONE_CLASS, WorksPeriodList } from './works-period-list';
+import { WORKS_TONE_CLASS, WorksPeriodList, WorksIcon } from './works-period-list';
 
 // Intl, not a date-fns pattern: a pattern fixes one language's word order for all six.
 const TITLE_FORMAT: Intl.DateTimeFormatOptions = {
@@ -517,7 +516,7 @@ export function ParkCalendarDayDetail({
                             WORKS_TONE_CLASS
                           )}
                         >
-                          <Construction className="h-3.5 w-3.5" aria-hidden="true" />
+                          <WorksIcon className="h-3.5 w-3.5" aria-hidden="true" />
                           {tWorks('label')}
                         </span>
                       </li>
@@ -559,7 +558,7 @@ export function ParkCalendarDayDetail({
           {!isClosed && worksRides && worksRides.length > 0 && (
             <section className="flex flex-col gap-2" data-calendar-day-works="">
               <h3 className="text-muted-foreground flex items-center gap-1.5 text-xs font-semibold tracking-[0.06em] uppercase">
-                <Construction className={cn('h-3.5 w-3.5', WORKS_TONE_CLASS)} aria-hidden="true" />
+                <WorksIcon className={cn('h-3.5 w-3.5', WORKS_TONE_CLASS)} aria-hidden="true" />
                 {tWorks('closedRidesTitle')}
               </h3>
               <WorksPeriodList
