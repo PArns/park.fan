@@ -179,7 +179,7 @@ export default async function CityPage({ params }: CityPageProps) {
           <LiveParkGrid
             regions={[`${continent}/${country}`]}
             parks={staticParks}
-            className="grid [grid-auto-rows:auto_1fr_auto] gap-4 max-sm:auto-rows-auto md:grid-cols-2"
+            className="grid [grid-auto-rows:auto_1fr_auto] grid-cols-1 gap-4 max-sm:auto-rows-auto md:grid-cols-2"
           />
         </section>
       </PageContainer>

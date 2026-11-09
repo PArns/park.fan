@@ -8,7 +8,7 @@ import {
   FavoritesHeading,
   type FavoritesHeadingVariant,
 } from '@/components/parks/favorites-empty-state';
-import { ParkCard } from '@/components/parks/park-card';
+import { PARK_CARD_GRID_CLASS, ParkCard } from '@/components/parks/park-card';
 import { FavoriteParkQuietestDay } from '@/components/parks/favorite-park-quietest-day';
 import { ParkCardNearbySkeleton } from '@/components/parks/park-card-nearby-skeleton';
 import { AttractionCard } from '@/components/parks/attraction-card';
@@ -258,11 +258,9 @@ export function FavoritesSection({
                 >
                   <div
                     className={cn(
-                      'grid gap-4 max-sm:auto-rows-auto sm:grid-cols-2 @min-[1024px]/page:grid-cols-3',
+                      PARK_CARD_GRID_CLASS,
                       // `/favorites` adds a fourth row per park for the quietest-day line.
-                      standalone
-                        ? '[grid-auto-rows:auto_1fr_auto_auto]'
-                        : '[grid-auto-rows:auto_1fr_auto]'
+                      standalone && '[grid-auto-rows:auto_1fr_auto_auto]'
                     )}
                   >
                     {sortedFavorites.parks.map((park) => {
