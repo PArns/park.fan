@@ -443,8 +443,8 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`park-header-posts.tsx`](../../components/parks/park-header-posts.tsx)
 
 - `TitleCardWindowSplit` _component_: A title card's two columns: the text on the left and „the window" on the right from `lg`, reaching through the card's padding (`p-6` on `GlassCard`) to its top, right and — without a rail under it — bottom edge; below `lg` the window spans …
-- `ParkHeaderWindow` _component_: „The window": a pane cut into the title card's glass, edge to edge. With a guide it shows the guide's cover with its title over it, as the blog's own cards do; without one, the park's photo sharp where the rest of the card blurs it.
 - `ParkNewsBand` _component_: The park's newest news of the last 30 days (`getFreshNewsForPark`) as a rail along the title card's bottom edge, under the window: one line, so its height never depends on the title.
+- Types: `TitleCardWindow`
 
 ### [`park-height-filter-context.tsx`](../../components/parks/park-height-filter-context.tsx)
 

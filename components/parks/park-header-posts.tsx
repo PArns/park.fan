@@ -22,55 +22,62 @@ import { cn } from '@/lib/utils';
 const WINDOW_EDGE_MASK =
   '[mask-image:linear-gradient(to_bottom,transparent,black_30%)] lg:[mask-image:linear-gradient(to_right,transparent,black_22%)]';
 
+/** What „the window" of a title card shows: the post it leads to, else a photo. */
+export interface TitleCardWindow {
+  /** The post the window leads to (the park's visit guide, a ride's article); without one it
+   *  shows `photo`. */
+  guide: BlogListItem | null;
+  /** The small line over the post's title; the park's „Erster Besuch" when absent. */
+  label?: string;
+  /** The page's own photo, the window's view when there is no guide. */
+  photo: string | null;
+}
+
 /**
  * A title card's two columns: the text on the left and „the window" on the right from `lg`,
  * reaching through the card's padding (`p-6` on `GlassCard`) to its top, right and — without a
- * rail under it — bottom edge; below `lg` the window spans the card under the text. Without a pane
- * the card stays one column. Shared by the park and the ride page.
+ * rail under it — bottom edge; below `lg` the window spans the card under the text. Shared by the
+ * park and the ride page.
+ *
+ * The split renders the window itself, so the column and its content answer the same question:
+ * with neither a guide nor a photo the card stays one column instead of keeping an empty pane, and
+ * a photo without a guide shows only from `lg`, where it stands beside the text. Under it on a phone
+ * it would push the ride list down for a picture the page's background already shows.
  */
 export function TitleCardWindowSplit({
   pane,
   hasRail = false,
   children,
 }: {
-  pane?: React.ReactNode;
+  pane?: TitleCardWindow;
   /** A rail (`ParkNewsBand`) follows the split, so the window must not round its bottom. */
   hasRail?: boolean;
   children: React.ReactNode;
 }) {
-  if (!pane) return <>{children}</>;
+  if (!pane?.guide && !pane?.photo) return <>{children}</>;
   return (
     <div className="lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(18rem,40%)]">
       <div className="min-w-0 lg:pr-8">{children}</div>
       <div
         className={cn(
-          '-mx-6 mt-6 -mb-6 flex overflow-hidden lg:-mt-6 lg:-mr-6 lg:ml-0 lg:rounded-tr-xl',
+          '-mx-6 mt-6 -mb-6 overflow-hidden lg:-mt-6 lg:-mr-6 lg:ml-0 lg:flex lg:rounded-tr-xl',
+          pane.guide ? 'flex' : 'hidden',
           !hasRail && 'rounded-b-xl lg:rounded-bl-none'
         )}
       >
-        {pane}
+        <ParkHeaderWindow {...pane} />
       </div>
     </div>
   );
 }
 
-interface ParkHeaderWindowProps {
-  /** The post the window leads to (the park's visit guide, a ride's article); without one it
-   *  shows `photo`. */
-  guide: BlogListItem | null;
-  /** The small line over the post's title; the park's „Erster Besuch" when absent. */
-  label?: string;
-  /** The park's own photo, the window's view when there is no guide. */
-  photo: string | null;
-}
-
 /**
  * „The window": a pane cut into the title card's glass, edge to edge. With a guide it shows the
- * guide's cover with its title over it, as the blog's own cards do; without one, the park's photo
- * sharp where the rest of the card blurs it. Its height is the grid row's, so nothing in it can
- * move the card.
+ * guide's cover with its title over it, as the blog's own cards do; without one, the photo sharp
+ * where the rest of the card blurs it. From `lg` its height is the grid row's, so nothing in it can
+ * move the card; under the text on a phone it is lower, because there it adds to the card's height.
  */
-export async function ParkHeaderWindow({ guide, photo, label }: ParkHeaderWindowProps) {
+async function ParkHeaderWindow({ guide, photo, label }: TitleCardWindow) {
   const [t, tBlog] = await Promise.all([
     getTranslations('parks.firstVisit'),
     getTranslations('blog'),
@@ -94,7 +101,7 @@ export async function ParkHeaderWindow({ guide, photo, label }: ParkHeaderWindow
         </div>
       )}
       {guide && (
-        <div className="p-6 pt-24 lg:pl-16">
+        <div className="p-6 pt-16 lg:pt-24 lg:pl-16">
           <span className="block text-xs font-medium tracking-wider text-white/70 uppercase">
             {label ?? t('label')}
           </span>
@@ -109,7 +116,7 @@ export async function ParkHeaderWindow({ guide, photo, label }: ParkHeaderWindow
       )}
     </>
   );
-  const frame = 'group relative isolate flex min-h-72 w-full flex-col justify-end';
+  const frame = 'group relative isolate flex min-h-48 w-full flex-col justify-end lg:min-h-72';
 
   // With a guide the whole pane is its link, photo included.
   return guide ? (
