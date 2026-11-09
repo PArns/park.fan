@@ -25,7 +25,7 @@ rideLinks:
 seo:
   title: 'SeaWorld San Diego, Noël 2026 : billets et horaires'
   description: >-
-    La Christmas Celebration de SeaWorld San Diego dure du 13/11/2026 au 3/1/2027, tous les jours, dans l’entrée. Nouveau : Baby Shark et une parade de Noël.
+    La Christmas Celebration de SeaWorld San Diego dure du 13/11/2026 au 3/1/2027, tous les jours, dans l’entrée. Nouveau : Baby Shark et une parade.
   keywords:
     - SeaWorld San Diego Christmas Celebration
     - SeaWorld San Diego Christmas Celebration 2026
@@ -57,7 +57,7 @@ Sur la Holiday Plaza, le sapin de 30 pieds, environ neuf mètres, s’allume cha
 
 ## Horaires en novembre
 
-La page de l’événement donne le 13 novembre comme premier jour. Dans le calendrier du parc, ce vendredi s’appelle Christmas Celebration Pass Member Preview : c’est une avant-première pour les titulaires d’un abonnement annuel, et le parc est ouvert de 10 h à 21 h. À partir du samedi 14 novembre, le calendrier indique Christmas Celebration. Le programme suit les horaires normaux du parc, en heure locale :
+La page de l’événement donne le 13 novembre comme premier jour. Dans le calendrier du parc, ce vendredi s’appelle Christmas Celebration Pass Member Preview : c’est une avant-première pour les titulaires d’un abonnement annuel, et le parc est ouvert de 10 h à 21 h. À partir du samedi 14 novembre, le jour y porte le nom de Christmas Celebration. Le programme suit les horaires normaux du parc, en heure locale :
 
 - samedi 14 et dimanche 15 novembre : de 9 h à 19 h
 - du lundi 16 au jeudi 19 novembre : de 10 h à 18 h

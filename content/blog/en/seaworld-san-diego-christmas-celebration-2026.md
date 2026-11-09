@@ -57,7 +57,7 @@ On Holiday Plaza, a 30-foot (9-meter) Christmas tree lights up each evening. The
 
 ## Hours in November
 
-The event page gives November 13 as the first day. The park calendar lists that Friday as the Christmas Celebration Pass Member Preview, an early look for annual pass holders, with the park open from 10 am to 9 pm. From Saturday, November 14, the calendar says Christmas Celebration. The program runs during regular park hours, local time:
+The event page gives November 13 as the first day. The park calendar lists that Friday as the Christmas Celebration Pass Member Preview, an early look for annual pass holders, with the park open from 10 am to 9 pm. From Saturday, November 14, the entry reads Christmas Celebration. The program runs during regular park hours, local time:
 
 - Saturday, November 14, and Sunday, November 15: 9 am to 7 pm
 - Monday, November 16, to Thursday, November 19: 10 am to 6 pm
@@ -72,7 +72,7 @@ The event page gives November 13 as the first day. The park calendar lists that 
 
 ## Tickets, parking and extras
 
-Prices depend on the day. In the Black Friday sale, a date-specific day ticket starts at $59.99 instead of the regular $130.99, and SeaWorld hasn't said when the sale ends. The Any Day Ticket, good for one day of your choice through March 31, 2027, costs $64.99. The 2027 Fun Card, at $77.99, is valid from now until the end of 2027, so it already covers the whole Christmas Celebration. Kids two and under get in free. A two-park ticket with Sesame Place San Diego costs $104.99, and All-Day Dining adds $40 to a ticket. Reserved parking starts at $37, and annual pass holders get standard parking included.
+Prices depend on the day. In the Black Friday sale, a date-specific day ticket starts at $59.99 instead of the regular $130.99. SeaWorld hasn't announced when the sale ends. The Any Day Ticket, good for one day of your choice through March 31, 2027, costs $64.99. The 2027 Fun Card, at $77.99, is valid from now until the end of 2027, so it already covers the whole Christmas Celebration. Kids two and under get in free. A two-park ticket with Sesame Place San Diego costs $104.99, and All-Day Dining adds $40 to a ticket. Reserved parking starts at $37, and annual pass holders get standard parking included.
 
 The Festive Food & Seasonal Sips Lanyard, with 5 or 10 tasting portions, starts at $45. Dine with Orcas & Santa runs from November 13 to Christmas Eve, from $59.99 for adults and $39.99 for kids. The New Year's Eve Family Bash costs $74.99, or $39.99 for kids. For the Snowflake Seeker's scavenger hunt, you buy a card at The Christmas Shoppe and hand it back there once it's filled in to collect a prize.
 
