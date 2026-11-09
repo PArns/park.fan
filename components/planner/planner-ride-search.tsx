@@ -18,6 +18,8 @@ import { startRideDrag } from '@/lib/planner/ride-drag';
 import { spansFor } from '@/lib/planner/estimate';
 import type { PlanDay, PlanDayRide } from '@/lib/api/types';
 import type { PlannerDayState } from './planner-context-band';
+import { WORKS_TONE_CLASS, WorksIcon } from '@/components/parks/works-period-list';
+import { worksNotPlannableLabel, worksRunningLabel } from '@/lib/utils/works-period';
 
 interface PlannerRideSearchProps {
   parkSlug: string;
@@ -87,6 +89,7 @@ export function PlannerRideSearch({
   inline = false,
 }: PlannerRideSearchProps) {
   const t = useTranslations('planner');
+  const tWorks = useTranslations('parks.worksPeriod');
   /** The axis' scale; see {@link usePlannerPxPerMin}. */
   const pxPerMin = usePlannerPxPerMin();
   const locale = useLocale();
@@ -151,6 +154,19 @@ export function PlannerRideSearch({
     if (needle.length === 0) return byName;
     return byName.filter((ride) => foldRideName(ride.attractionName).includes(needle));
   }, [byName, query]);
+
+  /**
+   * The rides a maintenance window shuts that day (`PlanDay.ridesInWorks`), under the same query.
+   * Listed after the plannable ones and greyed, never added: a search for Droomvlucht that answered
+   * „nichts gefunden" would read as a gap in the app rather than a ride in maintenance.
+   */
+  const closedMatches = useMemo(() => {
+    const closed = day?.ridesInWorks ?? [];
+    const needle = foldRideName(query);
+    return needle.length === 0
+      ? closed
+      : closed.filter((ride) => foldRideName(ride.attractionName).includes(needle));
+  }, [day, query]);
 
   return (
     /* Named so `check:planner` can ask whether this surface is on screen: the empty day's sentence
@@ -245,7 +261,7 @@ export function PlannerRideSearch({
         </button>
       )}
       {!resting && showPicker && <div className="mt-1">{showPicker}</div>}
-      {resting ? null : matches.length === 0 ? (
+      {resting ? null : matches.length === 0 && closedMatches.length === 0 ? (
         <p className="text-muted-foreground mt-2 px-1 text-xs">
           {/* Three silences that are not interchangeable: no match, no forecast, a failed request.
               The input never disappears: on a phone it is the only way into the plan. */}
@@ -371,6 +387,37 @@ export function PlannerRideSearch({
               </button>
             </li>
           ))}
+          {closedMatches.map((ride) => {
+            const reason = worksNotPlannableLabel(
+              ride.attractionName,
+              ride.worksPeriod,
+              locale,
+              tWorks,
+              date
+            );
+            return (
+              <li
+                key={`works-${ride.attractionSlug}`}
+                title={reason}
+                data-planner-search-works=""
+                className="planner-phone:py-2.5 flex w-full cursor-not-allowed items-center gap-2 rounded-md px-2 py-1.5"
+              >
+                <span
+                  className="bg-muted/60 flex size-8 shrink-0 items-center justify-center rounded"
+                  aria-hidden="true"
+                >
+                  <WorksIcon className={cn('size-4', WORKS_TONE_CLASS)} />
+                </span>
+                <span className="text-muted-foreground min-w-0 flex-1 truncate text-sm">
+                  {ride.attractionName}
+                </span>
+                <span className={cn('shrink-0 text-[11px] font-medium', WORKS_TONE_CLASS)}>
+                  {worksRunningLabel(ride.worksPeriod, locale, tWorks)}
+                </span>
+                <span className="sr-only">{reason}</span>
+              </li>
+            );
+          })}
         </ul>
       )}
     </div>

@@ -50,6 +50,17 @@ drags on), so the element has claimed the drop before the payload is seen. `onDr
 otherwise a dropped non-ride link fell through to the browser, which follows it and navigates away
 with the panel.
 
+## A ride in maintenance is refused, and says why
+
+A ride a maintenance window shuts on the column's day (`worksPeriodFor`, from
+`PlanDay.ridesInWorks`) is not filed by either drop handler: `fileDropped` in
+`planner-day-column.tsx` turns the drop into a note over the axis, „Droomvlucht ist an diesem Tag in
+Wartung (bis 25. März) und lässt sich nicht einplanen." (`worksNotPlannableLabel`). The note lies
+over the axis rather than in the column's flow, so it moves nothing the next drop measures, sits
+above the sticky show strip, and fades out after `REFUSAL_VISIBLE_MS` or on its ✕. The search, the
+ride page's button and Parky refuse the same ride the same way; see
+[wait figures](wait-figures.md#a-ride-closed-for-works).
+
 ## What an empty day says
 
 A sentence may only point at something that is on screen: earlier strings promised a ride search

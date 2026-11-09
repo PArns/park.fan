@@ -41,7 +41,12 @@ import {
   subscribeToNothing,
 } from '@/lib/planner/minute-tick';
 import { lineSource, type PlannerShowLine } from '@/lib/planner/shows';
-import { bandCarriesFigure, estimateFor, isAssumedWait } from '@/lib/planner/estimate';
+import {
+  bandCarriesFigure,
+  estimateFor,
+  isAssumedWait,
+  worksPeriodFor,
+} from '@/lib/planner/estimate';
 import { SLOT_MIN, hasSlots } from '@/lib/planner/ride-series';
 import { weatherRailSegments, withinWeatherHorizon } from '@/lib/planner/weather-rail';
 import {
@@ -1176,6 +1181,9 @@ export function PlannerDayGrid({
                       : false
                   }
                   downYesterday={row.ride?.downYesterday === true}
+                  worksPeriod={
+                    row.entry.attractionSlug ? worksPeriodFor(day, row.entry.attractionSlug) : null
+                  }
                   /* `{}` for a free block or a ride the payload lacks: `partyFlags` answers
                      `NONE`. */
                   wet={partyFlags(row.ride ?? {}, prefs).wet}

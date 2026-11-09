@@ -140,7 +140,7 @@ export function fitWishes(
   clock?: DayClock
 ): FitWish[] {
   const rideOf = (slug: string) => day.rides.find((ride) => ride.attractionSlug === slug) ?? null;
-  const own: FitWish[] = movableEntries(entries, clock).map((entry) => {
+  const own: FitWish[] = movableEntries(entries, clock, day).map((entry) => {
     const slug = entry.attractionSlug as string;
     const ride = rideOf(slug);
     return {

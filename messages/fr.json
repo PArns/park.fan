@@ -661,7 +661,7 @@
     "status": {
       "OPERATING": "Ouvert",
       "CLOSED": "Fermé",
-      "REFURBISHMENT": "Rénovation",
+      "REFURBISHMENT": "Maintenance",
       "DOWN": "Panne",
       "UNKNOWN": "Inconnu",
       "RETIRED": "Fermé définitivement"
@@ -732,12 +732,24 @@
       "ride": "Cette attraction n’a donc pas non plus de prévision. Les horaires et la météo restent disponibles."
     },
     "worksPeriod": {
-      "label": "Travaux",
-      "sinceUntil": "Cette attraction est fermée pour travaux depuis le {from}, jusqu’au {to}.",
-      "sinceUntilUncertain": "Cette attraction est fermée pour travaux depuis le {from}, jusqu’au {to} selon les prévisions.",
-      "since": "Cette attraction est fermée pour travaux depuis le {from}. La date de réouverture n’est pas encore connue.",
-      "until": "Cette attraction est fermée pour travaux jusqu’au {to}.",
-      "untilUncertain": "Cette attraction est fermée pour travaux jusqu’au {to} selon les prévisions."
+      "label": "Maintenance",
+      "sinceUntil": "Cette attraction est fermée pour maintenance depuis le {from}, jusqu’au {to}.",
+      "sinceUntilUncertain": "Cette attraction est fermée pour maintenance depuis le {from}, jusqu’au {to} selon les prévisions.",
+      "since": "Cette attraction est fermée pour maintenance depuis le {from}. La date de réouverture n’est pas encore connue.",
+      "until": "Cette attraction est fermée pour maintenance jusqu’au {to}.",
+      "untilUncertain": "Cette attraction est fermée pour maintenance jusqu’au {to} selon les prévisions.",
+      "windowUncertain": "{range} (fin estimée)",
+      "windowFrom": "à partir du {from}",
+      "windowTo": "jusqu’au {to}",
+      "windowToUncertain": "jusqu’au {to} selon les prévisions",
+      "windowOpenEnd": "date de fin pas encore connue",
+      "runningUntil": "Maintenance jusqu’au {to}",
+      "runningUntilUncertain": "Maintenance jusqu’au {to} environ",
+      "upcoming": "Maintenance à partir du {from}",
+      "upcomingDay": "Maintenance le {from}",
+      "closedRidesTitle": "Fermées pour maintenance",
+      "closedRidesCount": "{count, plural, =1 {1 attraction en maintenance} other {# attractions en maintenance}}",
+      "notPlannable": "{ride} est en maintenance ce jour-là ({until}) et ne peut pas être ajoutée au planning."
     },
     "transportSystem": {
       "label": "Transport",
@@ -1170,7 +1182,7 @@
       "operating": "Ouvert",
       "down": "Panne temporaire",
       "closed": "Fermé",
-      "refurbishment": "En rénovation",
+      "refurbishment": "En maintenance",
       "unknown": "Inconnu"
     },
     "label": {
@@ -1251,7 +1263,7 @@
         "FINISHED": "Terminé",
         "OPERATING": "Ouvert",
         "DOWN": "Panne",
-        "REFURBISHMENT": "Rénov"
+        "REFURBISHMENT": "Maint."
       },
       "details": {
         "singleRider": "Single Rider : {time} min",
@@ -2462,7 +2474,7 @@
       "never_measured": "Nous n’avons encore reçu aucun temps d’attente de ce parc, donc il n’y a pas encore de courbes.",
       "feed_stale": "Depuis {days, plural, one {# jour} other {# jours}}, les temps d’attente de ce parc ne nous parviennent plus. Le problème vient de chez nous.",
       "feed_stale_unknown": "En ce moment, les temps d’attente de ce parc ne nous parviennent pas. Le problème vient de chez nous.",
-      "rides_cannot_open": "Ce jour-là, chaque attraction est hors saison ou fermée pour travaux. Essaie un autre jour.",
+      "rides_cannot_open": "Ce jour-là, chaque attraction est hors saison ou en maintenance. Essaie un autre jour.",
       "insufficient_history": "Nous n’avons pas encore assez de jours mesurés pour ce parc pour tracer des courbes. Essaie un autre jour.",
       "no_hourly_shape": "Les attractions de ce parc ont des horaires trop différents pour en tirer déjà un profil de journée.",
       "no_forecast": "Le modèle n’a pas encore calculé de prévision pour ce jour. Repasse après le prochain calcul du modèle.",

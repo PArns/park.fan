@@ -89,3 +89,34 @@ read through `hasReadableWaitTimes()`, which treats an absent field as available
 independently of the API). There the estimate is `missing: 'no-source'` with no figure, and the
 block says so; see [parks we cannot read](../../rules/parks-we-cannot-read.md).
 `pnpm test:planner-estimate` pins both directions.
+
+## A ride closed for works
+
+`/plan/day` leaves a ride out of a day a curated works window covers and does not say why. The
+proxy branch in `app/api/parks/[...path]/route.ts` reads the park payload beside the plan (the shell
+entry the park page reads, so usually a Data Cache hit) and adds `ridesInWorks`: the rides a window
+covers on `context.date` (`ridesInWorksOn`) that the plan does not list, each with its window. A ride
+the plan still lists is left out, because the plan is computed per request and the shell may be a day
+older. A failed park read costs the list, never the plan.
+
+`estimateFor` answers a planned ride in that list with `missing: 'works'` and no figure, rather than
+the five assumed minutes the optimiser could plan a stop into. The block's second line reads
+„11:00 · In Wartung bis 25. März" (`worksRunningLabel`) instead of a range from the start to
+itself, and the wrench (`WorksIcon`) carries the same on a short block. The context band shows a chip
+with the count, and hover or tap (`TapTooltip`) lists the rides by name and until when.
+`pnpm test:planner-estimate` pins the state.
+
+Such a ride cannot be planned that day, whichever way in:
+
+- The ride search lists it after the plannable rides, greyed, with „In Wartung bis 25. März" and
+  the reason as its title, neither clickable nor draggable, so a search for it finds it instead of
+  „nichts gefunden".
+- A drop onto the axis or the flat list is refused with a note
+  ([drag and drop](drag-and-drop.md#a-ride-in-maintenance-is-refused-and-says-why)).
+- The ride page's `AddToPlannerButton` takes the ride's `worksPeriods`; while one covers the day it
+  would file under, it is disabled and reads „In Wartung bis 4. Dez.".
+- Parky's `planner_add_rides` reads the day's `/plan/day` from the planner's cache first and leaves
+  the ride out.
+- „Alle Headliner einplanen" and the missing-headliner chips read `day.rides`, which never holds
+  it. `movableEntries` leaves a block planned before the window was known where it is: no press
+  moves, scores or fits it (`pnpm test:planner-optimize`).

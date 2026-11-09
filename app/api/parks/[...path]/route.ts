@@ -30,6 +30,9 @@ import {
 } from '@/lib/parks/park-simulation';
 import { isSlugPath } from '@/lib/utils/servable-route';
 import { pickRideFigures } from '@/lib/api/ride-figures';
+import { catchNonFatal } from '@/lib/api/client';
+import { ridesInWorksOn } from '@/lib/utils/works-period';
+import type { PlanDay, PlanDayRideInWorks, ParkWithAttractions } from '@/lib/api/types';
 
 /**
  * A day for `/stats` and `/stats/hourly`, which the backend recomputes once a day and itself
@@ -506,7 +509,13 @@ export async function GET(
     const date = searchParams.get('date') ?? undefined;
 
     try {
-      const data = await getPlanDay(continent, country, city, park, date);
+      // The park payload beside the plan, for the works windows `/plan/day` acts on without
+      // naming. The shell entry the park page reads, so usually a Data Cache hit; a failure costs
+      // the list, never the plan.
+      const [data, parkData] = await Promise.all([
+        getPlanDay(continent, country, city, park, date),
+        catchNonFatal(getParkByGeoPath(continent, country, city, park)),
+      ]);
 
       if (!data) {
         return NextResponse.json(
@@ -527,6 +536,7 @@ export async function GET(
         parkBackgroundImage: getParkBackgroundImage(park),
         parkBackgroundPosition: getCardObjectPosition(park),
         rides: withImages.map(({ slug: _slug, park: _park, ...ride }) => ride),
+        ...ridesInWorksField(data, parkData),
       };
 
       return NextResponse.json(enriched, {
@@ -610,4 +620,26 @@ export async function GET(
     },
     { status: 400 }
   );
+}
+
+/**
+ * `{ ridesInWorks }` for a plan day, or nothing. A ride `/plan/day` still lists is left out: the
+ * plan is computed per request and the park shell may be a day older, so where the two disagree
+ * the plan's answer stands (a past day, or a window removed since the shell was cached).
+ */
+function ridesInWorksField(
+  day: PlanDay,
+  park: ParkWithAttractions | null
+): { ridesInWorks?: PlanDayRideInWorks[] } {
+  const date = day.context?.date;
+  if (!park?.attractions || !date) return {};
+  const planned = new Set(day.rides.map((ride) => ride.attractionSlug));
+  const ridesInWorks = ridesInWorksOn(park.attractions, date)
+    .filter((ride) => !planned.has(ride.slug))
+    .map((ride) => ({
+      attractionSlug: ride.slug,
+      attractionName: ride.name,
+      worksPeriod: ride.period,
+    }));
+  return ridesInWorks.length > 0 ? { ridesInWorks } : {};
 }

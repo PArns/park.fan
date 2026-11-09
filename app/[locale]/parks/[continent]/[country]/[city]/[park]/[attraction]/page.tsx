@@ -26,6 +26,7 @@ import { GlossaryTermLink } from '@/components/glossary/glossary-term-link';
 import { Badge } from '@/components/ui/badge';
 import { SeasonalBadge } from '@/components/parks/seasonal-badge';
 import { WorksPeriodBadge } from '@/components/parks/works-period-badge';
+import { worksPeriodsOf } from '@/lib/utils/works-period';
 import { TransportSystemBadge } from '@/components/parks/transport-system-badge';
 import { HalloweenMazeBadge } from '@/components/parks/halloween-maze-badge';
 import { WorksPeriodNote } from '@/components/parks/works-period-note';
@@ -707,8 +708,13 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
                         />
                       )}
                       {/* Beside the season badge and not instead of it — the two say different
-                          things about the same ride. The dates are in the note below. */}
-                      <WorksPeriodBadge worksPeriod={attraction.worksPeriod} todayIso={todayIso} />
+                          things about the same ride. A running window's sentence is in the note
+                          below; the badge's tooltip lists the windows still ahead. */}
+                      <WorksPeriodBadge
+                        worksPeriod={attraction.worksPeriod}
+                        worksPeriods={attraction.worksPeriods}
+                        todayIso={todayIso}
+                      />
                     </div>
                   </div>
 
@@ -767,6 +773,7 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
                         parkId={park.id}
                         attractionId={attraction.id}
                         timezone={park.timezone}
+                        worksPeriods={worksPeriodsOf(attraction)}
                       />
                     </div>
                   )}

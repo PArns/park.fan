@@ -27,6 +27,7 @@ import { ParkCalendarLegend } from '@/components/parks/park-calendar-legend';
 import { dayComparisonStore } from '@/lib/parks/day-comparison-store';
 import type { ParkWithAttractions } from '@/lib/api/types';
 import { parkArgs } from '@/lib/i18n/park-phrase';
+import { worksPeriodsOf } from '@/lib/utils/works-period';
 import { trackSiteEvent } from '@/lib/analytics/site-analytics';
 import type { Locale } from '@/i18n/config';
 
@@ -200,7 +201,9 @@ export function ParkCalendarPanel({
       >
         {/* The colour key, server-rendered on its own line above the grid: it needs no data, and
             inside the grid it made the two loading states differ by its own height. */}
-        <ParkCalendarLegend />
+        <ParkCalendarLegend
+          showWorks={(park.attractions ?? []).some((ride) => worksPeriodsOf(ride).length > 0)}
+        />
 
         {/* The reservation travels as three custom properties, not classes, because Tailwind cannot
             see a computed class name. Set on the month the grid will show, which on the hub is the

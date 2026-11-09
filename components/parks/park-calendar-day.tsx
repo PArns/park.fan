@@ -3,6 +3,8 @@
 import { createElement, memo } from 'react';
 import { Info, Star } from 'lucide-react';
 import type { CalendarDay } from '@/lib/api/types';
+import type { RideInWorks } from '@/lib/utils/works-period';
+import { WORKS_TONE_CLASS, WorksPeriodList, WorksIcon } from './works-period-list';
 import { Card } from '@/components/ui/card';
 import { useTranslations, useLocale } from 'next-intl';
 import { translateHolidayName } from '@/lib/utils/holiday-names';
@@ -41,6 +43,11 @@ export interface ParkCalendarDayProps {
    * the picks are not interchangeable: the comparison's left column is the first one chosen.
    */
   selectionIndex?: 1 | 2 | null;
+  /**
+   * The rides a curated works window closes on this day (`ridesInWorksOn`), or undefined for none.
+   * One array per day from the grid's month memo, so the `memo` holds.
+   */
+  worksRides?: readonly RideInWorks[];
 }
 
 /**
@@ -85,8 +92,10 @@ function ParkCalendarDayComponent({
   onSelect,
   selectable = false,
   selectionIndex = null,
+  worksRides,
 }: ParkCalendarDayProps) {
   const t = useTranslations('parks');
+  const tWorks = useTranslations('parks.worksPeriod');
   const tCommon = useTranslations('common');
   const tLegend = useTranslations('attractions.historyLegend');
   const locale = useLocale();
@@ -110,6 +119,11 @@ function ParkCalendarDayComponent({
       : null;
 
   const isBestDay = isBest ?? day.recommendation === 'highly_recommended';
+  // A ride shut for works on a day the park is shut too is no news.
+  const works = !isClosed && worksRides && worksRides.length > 0 ? worksRides : null;
+  const worksHint = works
+    ? `${tWorks('closedRidesTitle')}: ${works.map((ride) => ride.name).join(', ')}`
+    : null;
   const signals = daySignals(day, locale);
   const clickable = !!onSelect;
 
@@ -163,7 +177,9 @@ function ParkCalendarDayComponent({
             ...(selectable ? { 'aria-pressed': selectionIndex !== null } : {}),
             'aria-label': `${dayOfWeek} ${dayOfMonth}. ${month} — ${statusLabel}${
               signalHint ? ` · ${signalHint}` : ''
-            }${selectable ? ` · ${t('dayComparison.pickDay')}` : ''}`,
+            }${worksHint ? ` · ${worksHint}` : ''}${
+              selectable ? ` · ${t('dayComparison.pickDay')}` : ''
+            }`,
             onClick: () => onSelect?.(day.date),
             onKeyDown: (e: React.KeyboardEvent) => {
               if (e.key === 'Enter' || e.key === ' ') {
@@ -246,6 +262,34 @@ function ParkCalendarDayComponent({
             </TooltipTrigger>
             <TooltipContent>
               <p>{t('bestDay')}</p>
+            </TooltipContent>
+          </Tooltip>
+        )}
+        {/* Beside the star and like it a hover: a tap opens the day, whose detail lists the same
+            rides. A chip on the page's own surface, so it stands out on an orange „Hoch" tile as
+            on a green one, with the count because a winter month can shut several rides at once. */}
+        {works && (
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <span
+                className="bg-background/70 text-foreground inline-flex shrink-0 items-center gap-0.5 rounded-full px-1 py-px tracking-normal tabular-nums"
+                aria-label={worksHint ?? undefined}
+                data-calendar-works=""
+              >
+                <WorksIcon className={cn('h-3 w-3', WORKS_TONE_CLASS)} aria-hidden="true" />
+                {works.length}
+              </span>
+            </TooltipTrigger>
+            <TooltipContent className="w-64 max-w-[calc(100vw-2rem)] p-3">
+              <WorksPeriodList
+                title={tWorks('closedRidesTitle')}
+                onDate={day.date}
+                items={works.map((ride) => ({
+                  key: ride.slug,
+                  name: ride.name,
+                  period: ride.period,
+                }))}
+              />
             </TooltipContent>
           </Tooltip>
         )}

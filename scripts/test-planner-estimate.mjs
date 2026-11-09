@@ -272,6 +272,41 @@ const ride = (startMinute) => ({
   );
 }
 
+// ── A ride a works window closes ────────────────────────────────────────────
+{
+  // `/plan/day` drops a ride inside a curated works window; the proxy names it in `ridesInWorks`.
+  const python = { id: 'w', attractionSlug: 'python', attractionName: 'Python', startMinute: 600 };
+  const day = dayWith({
+    ridesInWorks: [
+      {
+        attractionSlug: 'python',
+        attractionName: 'Python',
+        worksPeriod: { from: '2026-09-01', to: '2026-09-30', toUncertain: false },
+      },
+    ],
+  });
+  test('eine Bahn in Wartung bekommt keine Annahme', estimateFor(day, python).missing, 'works');
+  test('und keine Zahl', estimateFor(day, python).wait, null);
+  test('der Tag wird trotzdem benannt', estimateFor(day, python).tier, 'measured');
+  test('sie zählt als unbekannt, nicht als fünf Minuten', totalsFor(day, [python]).unknown, 1);
+  test(
+    'vor der Öffnung bleibt es außerhalb der Zeiten',
+    estimateFor(day, { ...python, startMinute: 420 }).missing,
+    'outside-hours'
+  );
+  // The plan's own list wins: a ride it still carries is priced as usual.
+  const listed = dayWith({
+    ridesInWorks: [
+      {
+        attractionSlug: 'taron',
+        attractionName: 'Taron',
+        worksPeriod: { from: '2026-09-01', to: '2026-09-30', toUncertain: false },
+      },
+    ],
+  });
+  test('eine Bahn mit Kurve bleibt eine Bahn mit Kurve', estimateFor(listed, ride(600)).wait, 45);
+}
+
 // ── A day that ends after midnight ──────────────────────────────────────────
 // `closeHour` is a wall-clock hour, so a park running 16:00–01:00 reports
 // `closeHour: 1`, and `hour < openHour || hour > closeHour` is then true for

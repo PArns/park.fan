@@ -720,7 +720,7 @@ export interface ParkAttraction {
    */
   runsOnWeekdays?: number[];
   /**
-   * The curated rebuild window, absent for nearly every ride. Day-stable, so it rides the server
+   * The curated works window (maintenance or a rebuild), absent for nearly every ride. Day-stable, so it rides the server
    * render and not the poll; it says nothing about today on its own (see {@link WorksPeriod}).
    */
   worksPeriod?: WorksPeriod | null;
@@ -2404,7 +2404,21 @@ export interface PlanDay {
   rides: PlanDayRide[];
   /** Why `rides` is empty; absent whenever it is not. */
   ridesUnavailable?: PlanDayUnavailable;
+  /**
+   * The rides a curated works window closes on this day, added by the proxy route from the park
+   * payload: `/plan/day` leaves them out of `rides` and does not say why. None of them is in
+   * `rides`. Absent when there are none, or when the park payload could not be read.
+   */
+  ridesInWorks?: PlanDayRideInWorks[];
   shows: PlanDayShow[];
+}
+
+/** A ride a works window closes on the planned day, as {@link PlanDay.ridesInWorks} lists it. */
+export interface PlanDayRideInWorks {
+  attractionSlug: string;
+  attractionName: string;
+  /** The window that covers the day. */
+  worksPeriod: WorksPeriod;
 }
 
 /**

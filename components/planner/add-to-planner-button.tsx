@@ -17,6 +17,9 @@ import {
   trackPlannerUndo,
 } from '@/lib/analytics/planner-funnel';
 import { rememberParkId, rememberRideId } from '@/lib/planner/entity-ids';
+import type { WorksPeriod } from '@/lib/api/types';
+import { worksNotPlannableLabel, worksPeriodOn, worksRunningLabel } from '@/lib/utils/works-period';
+import { WORKS_TONE_CLASS, WorksIcon } from '@/components/parks/works-period-list';
 
 type FitAssistant = typeof import('./planner-fit-assistant').PlannerFitAssistant;
 
@@ -36,6 +39,12 @@ interface AddToPlannerButtonProps {
   timezone?: string;
   /** Park-local date. Defaults to today where the park is. */
   date?: string;
+  /**
+   * The ride's maintenance windows (`worksPeriodsOf`). While one covers the day this would file
+   * under, the button says until when and adds nothing: `/plan/day` has no curve for the ride
+   * then, and the planner would show a block for a ride that does not run.
+   */
+  worksPeriods?: readonly WorksPeriod[];
   className?: string;
 }
 
@@ -59,9 +68,11 @@ export function AddToPlannerButton({
   attractionId,
   timezone,
   date,
+  worksPeriods,
   className,
 }: AddToPlannerButtonProps) {
   const t = useTranslations('planner');
+  const tWorks = useTranslations('parks.worksPeriod');
   const locale = useLocale();
   const queryClient = useQueryClient();
   const { addRide, setActive, restoreDay, applyPlan } = usePlanner();
@@ -70,6 +81,7 @@ export function AddToPlannerButton({
   const targetDate = date ?? todayInZone(timezone);
   const plannedCount = usePlannedCount(parkSlug, targetDate, attractionSlug);
   const planned = plannedCount > 0;
+  const closedFor = worksPeriodOn(worksPeriods ?? [], targetDate);
 
   /**
    * The question a press raised, while somebody answers it, with the date it was asked for (where
@@ -225,6 +237,26 @@ export function AddToPlannerButton({
     trackPlannerUndo('add_button', parkSlug);
     setResult(null);
   };
+
+  if (closedFor) {
+    const reason = worksNotPlannableLabel(attractionName, closedFor, locale, tWorks, targetDate);
+    return (
+      <button
+        type="button"
+        disabled
+        title={reason}
+        aria-label={reason}
+        data-planner-add-works=""
+        className={cn(
+          'bg-muted/60 text-muted-foreground inline-flex cursor-not-allowed items-center justify-center gap-2 rounded-lg border border-orange-500/30 px-4 py-2 text-sm font-medium max-sm:min-h-11 max-sm:w-full',
+          className
+        )}
+      >
+        <WorksIcon className={cn('size-4', WORKS_TONE_CLASS)} aria-hidden="true" />
+        <span>{worksRunningLabel(closedFor, locale, tWorks)}</span>
+      </button>
+    );
+  }
 
   const button = (
     <button

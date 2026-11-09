@@ -6,15 +6,24 @@ import { cn } from '@/lib/utils';
 import { CROWD_LEVEL_ORDER, CROWD_SCALE_CLASS } from '@/lib/utils/crowd-level-styles';
 import { DAY_SIGNAL_CLASS } from '@/lib/utils/day-signal-styles';
 import { DaySignalKey } from '@/components/parks/day-signal-key';
+import { WORKS_TONE_CLASS, WorksIcon } from '@/components/parks/works-period-list';
 
 /**
  * What the colours in the month grid mean: the crowd scale, then the signal bar. The scale is one
  * strip of butted chips because it is a ruler; the four signal keys are independent facts and keep
  * their gaps. All six tiers are named even when a month shows four, so any colour the API sends can
- * be looked up.
+ * be looked up. The works icon is keyed only for a park that has a curated window, since on every
+ * other park the grid never draws it.
  */
-export function ParkCalendarLegend({ className }: { className?: string }) {
+export function ParkCalendarLegend({
+  showWorks = false,
+  className,
+}: {
+  showWorks?: boolean;
+  className?: string;
+}) {
   const tGroups = useTranslations('parks.calendarLegendGroups');
+  const tWorks = useTranslations('parks.worksPeriod');
   const tCrowd = useTranslations('parks.crowdLevels');
   const tHolidays = useTranslations('parks.holidayContext');
   const tLegend = useTranslations('attractions.historyLegend');
@@ -67,6 +76,12 @@ export function ParkCalendarLegend({ className }: { className?: string }) {
         />
         <DaySignalKey className={DAY_SIGNAL_CLASS.holiday} label={tLegend('holiday')} />
         <DaySignalKey className={DAY_SIGNAL_CLASS.bridge} label={tLegend('bridgeDay')} />
+        {showWorks && (
+          <span className="flex items-center gap-1.5 whitespace-nowrap">
+            <WorksIcon className={cn('h-3 w-3 shrink-0', WORKS_TONE_CLASS)} aria-hidden="true" />
+            <span className="text-[11px]">{tWorks('closedRidesTitle')}</span>
+          </span>
+        )}
       </div>
     </div>
   );

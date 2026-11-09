@@ -484,7 +484,9 @@ function RideExtras({ card }: { card: Extract<AssistantCard, { kind: 'ride' }> }
       <SingleRiderBadge hasSingleRider={card.singleRider} insideLink />
       <VirtualLineBadge hasVirtualLine={card.virtualLine} insideLink />
       {card.paidExpress && <FastPassBadge fastPass={{ name: t('cardPaidExpress') }} insideLink />}
-      {card.worksPeriod && <WorksPeriodBadge worksPeriod={WORKS_NOW} todayIso={WORKS_FROM} />}
+      {card.worksPeriod && (
+        <WorksPeriodBadge worksPeriod={WORKS_NOW} todayIso={WORKS_FROM} showDates={false} />
+      )}
       {card.outOfSeason && <SeasonalBadge isCurrentlyInSeason={false} />}
     </div>
   );

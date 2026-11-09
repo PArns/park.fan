@@ -203,7 +203,7 @@ export function PlannerOptimizeActions({
     if (nowTick < 0 || !grid || !day || !canOptimize(day, grid)) return null;
     const now = dayClock(date, resolveTimeZone(timezone));
     if (now.phase === 'past') return null;
-    const movableNow = movableEntries(deferredEntries, now);
+    const movableNow = movableEntries(deferredEntries, now, day);
     if (movableNow.length < 2) return null;
     const input = { day, grid, entries: deferredEntries, clock: now };
     const before = scoreCurrent(input);
@@ -233,7 +233,7 @@ export function PlannerOptimizeActions({
   const missing = headlinersToAdd(day, entries, prefs);
   const skipped = headlinersSkipped(day, entries, prefs);
   // The engine's own set; the bare filter would offer "Tag optimieren" for rides already behind us.
-  const movable = movableEntries(entries, clock);
+  const movable = movableEntries(entries, clock, day);
 
   const canSort = movable.length >= 2;
   if (!canSort && missing.length === 0) return bare;

@@ -22,6 +22,7 @@ import {
 } from '@/lib/planner/actions';
 import { entriesFor, hasAnyPlan, type PlannerState } from '@/lib/planner/types';
 import { planDayQuery } from '@/lib/hooks/use-plan-day';
+import { worksPeriodFor } from '@/lib/planner/estimate';
 import { showDayHours, showLinesFor } from '@/lib/planner/shows';
 import { formatGridTime } from '@/lib/planner/park-time';
 import { trackPlannerDayCleared } from '@/lib/analytics/planner-funnel';
@@ -162,10 +163,18 @@ export function useAssistantActions(closeWindow: () => void) {
         case 'planner_open_day':
           showDay(action.park, action.date);
           return 'planned';
-        case 'planner_add_rides':
+        case 'planner_add_rides': {
+          // A ride a maintenance window shuts that day stays out, as it does for every other way
+          // into the plan; the day's band names it. A failed read files the rides as before.
+          const planDay = await queryClient
+            .fetchQuery(
+              planDayQuery({ ...action.park.geo, parkSlug: action.park.slug, date: action.date })
+            )
+            .catch(() => null);
+          const rides = action.rides.filter((ride) => !worksPeriodFor(planDay, ride.slug));
           withUndo(action.park, action.date, () => {
             plannerStore.update((state) => openDay(state, action.park, action.date));
-            for (const ride of action.rides) {
+            for (const ride of rides) {
               addRide(
                 {
                   ...base(action.park, action.date),
@@ -178,6 +187,7 @@ export function useAssistantActions(closeWindow: () => void) {
           });
           showDay(action.park, action.date);
           return 'planned';
+        }
         case 'planner_add_block':
           withUndo(action.park, action.date, () => {
             plannerStore.update((state) => openDay(state, action.park, action.date));

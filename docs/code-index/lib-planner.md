@@ -134,6 +134,7 @@ Whether the drag gesture has been explained once: a store over `localStorage`, l
 ### [`estimate.ts`](../../lib/planner/estimate.ts)
 
 - `isAssumedWait` _function_: Whether the figure is an assumption rather than a forecast — `assumed` or `early-entry`. Every surface that withholds a crowd tint or prints a `~` asks this, so a new assumed state cannot be tinted by one of them and not another.
+- `worksPeriodFor` _function_: The works window that closes a ride on the plan's day, or null. Read from `PlanDay.ridesInWorks`, which the proxy route fills from the park payload.
 - `estimateFor` _function_: The expected wait for one planned entry.
 - `totalsFor` _function_: The day's totals. Expected and actual minutes are kept apart: a total mixing predicted and measured minutes would move for two reasons at once, and a visitor could not tell a busier day from a longer plan.
 - `actualVsEstimate` _function_: What a ticked-off entry actually cost against what was forecast for its hour.
@@ -229,7 +230,7 @@ The month grid the planner picks a day on. Pure, and reckoned at noon UTC throug
 
 ### [`optimize.ts`](../../lib/planner/optimize.ts)
 
-- `movableEntries` _function_: The entries a press may move: not ticked off, not a free block, a real ride, and not already under way.
+- `movableEntries` _function_: The entries a press may move: not ticked off, not a free block, a real ride, not already under way, and not shut for maintenance that day (`worksPeriodFor`): a ride that does not run is not planned, so no press places, scores or keeps it; …
 - `canOptimize` _function_: Whether ordering this day could mean anything.
 - `headlinersToAdd` _function_: The park's headliners that this day does not have and this party can ride.
 - `headlinersSkipped` _function_: Headliners this party cannot ride, so a caller can say how many were skipped.

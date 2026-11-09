@@ -47,6 +47,8 @@ import { getWeatherConfig } from '@/lib/utils/weather-utils';
 import { upcomingHourlyPredictions } from '@/lib/utils/calendar-utils';
 import { useCalendarDayHourly } from '@/lib/hooks/use-calendar-day-hourly';
 import { useMinuteNowDate } from '@/lib/hooks/use-minute-now';
+import type { RideInWorks } from '@/lib/utils/works-period';
+import { WORKS_TONE_CLASS, WorksPeriodList, WorksIcon } from './works-period-list';
 
 // Intl, not a date-fns pattern: a pattern fixes one language's word order for all six.
 const TITLE_FORMAT: Intl.DateTimeFormatOptions = {
@@ -87,6 +89,8 @@ export interface ParkCalendarDayDetailProps {
    * `CalendarDay` names no park.
    */
   planner?: { parkSlug: string; parkName: string; geo: PlannerGeo };
+  /** The rides a curated works window closes on this day (`ridesInWorksOn`). */
+  worksRides?: readonly RideInWorks[];
 }
 
 /**
@@ -100,11 +104,13 @@ export function ParkCalendarDayDetail({
   onOpenChange,
   onNavigate,
   planner,
+  worksRides,
 }: ParkCalendarDayDetailProps) {
   // "Today" in the park's timezone, not the reader's: a visit cannot be planned for a day that is
   // already over where the park is.
   const todayInPark = parkDayOf(new Date(), parkTimezone);
   const t = useTranslations('parks');
+  const tWorks = useTranslations('parks.worksPeriod');
   const tCommon = useTranslations('common');
   const locale = useLocale();
 
@@ -171,6 +177,11 @@ export function ParkCalendarDayDetail({
 
   const forecast = day.headlinerForecast;
   const hasForecast = !!forecast && forecast.rides.length > 0;
+  // The API leaves a ride a works window shuts out of the day's forecast, except where it could not
+  // read the windows; such a row says so instead of printing a queue the ride will not have.
+  const worksIds = new Set(
+    isClosed ? [] : (worksRides ?? []).flatMap((ride) => (ride.id ? [ride.id] : []))
+  );
 
   // `day.hourly` first: a caller that already holds a curve keeps it, and the fetch fills the gap
   // the grid's `includeHourly=none` leaves. `upcomingHourlyPredictions` turns the UTC `hour` into
@@ -495,6 +506,22 @@ export function ParkCalendarDayDetail({
                 {forecast!.rides.map((r) => {
                   const band = r.uncertaintyMinutes ?? null;
                   const hasBand = band !== null && Number.isFinite(band);
+                  if (worksIds.has(r.attractionId)) {
+                    return (
+                      <li key={r.attractionId} className="flex items-center justify-between gap-4">
+                        <span className="text-muted-foreground truncate text-sm">{r.name}</span>
+                        <span
+                          className={cn(
+                            'flex shrink-0 items-center gap-1 text-sm font-semibold',
+                            WORKS_TONE_CLASS
+                          )}
+                        >
+                          <WorksIcon className="h-3.5 w-3.5" aria-hidden="true" />
+                          {tWorks('label')}
+                        </span>
+                      </li>
+                    );
+                  }
                   return (
                     <li key={r.attractionId} className="flex items-center justify-between gap-4">
                       <span className="truncate text-sm">{r.name}</span>
@@ -523,6 +550,27 @@ export function ParkCalendarDayDetail({
                   {t('avgWaitTime')}: Ø {roundWaitTo5(forecast!.avgWait)} {tCommon('min')}
                 </p>
               )}
+            </section>
+          )}
+
+          {/* Under the headliner waits, because it answers the question a missing headliner
+              raises: which rides will not run that day, and until when. */}
+          {!isClosed && worksRides && worksRides.length > 0 && (
+            <section className="flex flex-col gap-2" data-calendar-day-works="">
+              <h3 className="text-muted-foreground flex items-center gap-1.5 text-xs font-semibold tracking-[0.06em] uppercase">
+                <WorksIcon className={cn('h-3.5 w-3.5', WORKS_TONE_CLASS)} aria-hidden="true" />
+                {tWorks('closedRidesTitle')}
+              </h3>
+              <WorksPeriodList
+                title={null}
+                size="panel"
+                onDate={day.date}
+                items={worksRides.map((ride) => ({
+                  key: ride.slug,
+                  name: ride.name,
+                  period: ride.period,
+                }))}
+              />
             </section>
           )}
 

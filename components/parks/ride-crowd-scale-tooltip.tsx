@@ -6,7 +6,8 @@ import { useTranslations } from 'next-intl';
 import { CROWD_LEVEL_ORDER, type ColoredCrowdLevel } from '@/lib/utils/crowd-level-styles';
 import { rideCrowdMinuteRanges } from '@/lib/utils/ride-crowd-scale';
 import { roundWaitTo5 } from '@/lib/utils/wait-time';
-import { CROWD_SCALE_TRIGGER_CLASS, CrowdScaleTooltip } from './crowd-level-scale-tooltip';
+import { TAP_TOOLTIP_TRIGGER_CLASS } from '@/components/common/tap-tooltip';
+import { CrowdScaleTooltip } from './crowd-level-scale-tooltip';
 
 interface RideCrowdScaleTooltipProps {
   /** The level the wrapped badge shows; it is the row that gets highlighted. */
@@ -42,7 +43,7 @@ export function RideCrowdScaleTooltip({ level, baseline, children }: RideCrowdSc
     return (
       <button
         type="button"
-        className={CROWD_SCALE_TRIGGER_CLASS}
+        className={TAP_TOOLTIP_TRIGGER_CLASS}
         onPointerEnter={(event) => {
           if (event.pointerType === 'mouse') setArmed('open');
         }}

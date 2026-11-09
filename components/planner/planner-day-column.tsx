@@ -1,8 +1,8 @@
 'use client';
 
 import { useEffect, useMemo, useRef, useState, useSyncExternalStore } from 'react';
-import { useTranslations } from 'next-intl';
-import { CalendarPlus } from 'lucide-react';
+import { useLocale, useTranslations } from 'next-intl';
+import { CalendarPlus, X } from 'lucide-react';
 import { PlannerColumnHead } from './planner-column-head';
 import { PlannerContextBand, type PlannerDayState } from './planner-context-band';
 import { PlannerPartyChips } from './planner-party-chips';
@@ -32,7 +32,9 @@ import {
 } from '@/lib/planner/day-grid';
 import { unavailableNote } from '@/lib/planner/unavailable';
 import { usePlannerPxPerMin } from '@/lib/planner/use-grid-scale';
-import { spansFor } from '@/lib/planner/estimate';
+import { spansFor, worksPeriodFor } from '@/lib/planner/estimate';
+import { worksNotPlannableLabel } from '@/lib/utils/works-period';
+import { WORKS_TONE_CLASS, WorksIcon } from '@/components/parks/works-period-list';
 import { closedNowFor, liveWaitsFor } from '@/lib/planner/live';
 import { dayClock, parkToday, resolveTimeZone } from '@/lib/planner/park-time';
 import { showDayHours, showLinesFor } from '@/lib/planner/shows';
@@ -51,6 +53,9 @@ const SELF_ACTING =
 const REVEAL_GAP_PX = 8;
 /** How far below the scroller's top a revealed block's head must stay: the sticky show strip. */
 const REVEAL_TOP_PX = 44;
+
+/** How long a refused drop says why before it fades: long enough to read two lines. */
+const REFUSAL_VISIBLE_MS = 6000;
 
 interface PlannerDayColumnProps {
   parkSlug: string | null;
@@ -130,6 +135,10 @@ export function PlannerDayColumn({
   className,
 }: PlannerDayColumnProps) {
   const t = useTranslations('planner');
+  const tWorks = useTranslations('parks.worksPeriod');
+  // `common` is in the layout's set on every route, so this costs no chunk.
+  const tCommon = useTranslations('common');
+  const locale = useLocale();
   /** The axis' scale; see {@link usePlannerPxPerMin}. */
   const pxPerMin = usePlannerPxPerMin();
   const {
@@ -158,6 +167,22 @@ export function PlannerDayColumn({
    */
   const [dragging, setDragging] = useState(false);
   const [flatDropActive, setFlatDropActive] = useState(false);
+  /**
+   * The last drop refused because a maintenance window shuts the ride that day, with the day it was
+   * refused on so another day never shows it. Kept after it closes, so it fades out (see
+   * docs/rules/a-fade-is-animated-never-a-cut.md).
+   */
+  const [refusal, setRefusal] = useState<{ text: string; date: string; open: boolean } | null>(
+    null
+  );
+  useEffect(() => {
+    if (!refusal?.open) return;
+    const timer = window.setTimeout(
+      () => setRefusal((current) => (current ? { ...current, open: false } : current)),
+      REFUSAL_VISIBLE_MS
+    );
+    return () => window.clearTimeout(timer);
+  }, [refusal]);
   const scrollerRef = useRef<HTMLDivElement>(null);
   /**
    * The action bar's height, and a request to bring the selected block clear of it. While a block
@@ -216,6 +241,38 @@ export function PlannerDayColumn({
   // on the folded object.
   const earlyEntry = prefs?.earlyEntry;
   const day = useMemo(() => withEarlyEntry(fetchedDay, earlyEntry), [fetchedDay, earlyEntry]);
+
+  /**
+   * A ride dropped from the page behind the panel, unless a maintenance window shuts it that day:
+   * the search does not offer it and a drop may not slip it in either, so the drop is refused and
+   * says why.
+   */
+  const fileDropped = (attractionSlug: string, attractionName: string, startMinute?: number) => {
+    if (!park || !date) return;
+    const works = worksPeriodFor(day, attractionSlug);
+    if (works) {
+      setRefusal({
+        text: worksNotPlannableLabel(attractionName, works, locale, tWorks, date),
+        date,
+        open: true,
+      });
+      return;
+    }
+    setRefusal((current) => (current?.open ? { ...current, open: false } : current));
+    addRide(
+      {
+        parkSlug: park.slug,
+        parkName: park.name,
+        geo: park.geo,
+        timezone: day?.timezone ?? park.timezone,
+        date,
+        attractionSlug,
+        attractionName,
+        startMinute,
+      },
+      'drag'
+    );
+  };
 
   // `isFetching`, not `isPending`: a disabled query is pending for ever.
   const dayState: PlannerDayState = isError
@@ -421,6 +478,33 @@ export function PlannerDayColumn({
             of the window, and the landscape row already gives the axis more than 200 px. See
             docs/features/trip-planner/phone.md#a-landscape-phone-is-a-row. */}
         <div ref={barBoxRef} className="relative flex min-h-0 flex-1 flex-col max-sm:min-h-[200px]">
+          {/* Over the axis rather than in the column's flow, so saying no to a drop moves nothing
+              the next drop measures; above the sticky show strip (`z-40`), which it would
+              otherwise hide under. */}
+          {refusal && refusal.date === date && (
+            <div
+              role="status"
+              data-planner-works-refusal=""
+              className={cn(
+                'bg-popover absolute inset-x-2 top-2 z-50 flex items-start gap-2 rounded-md border border-orange-500/40 px-2.5 py-2 text-xs shadow-md transition-[opacity,visibility] duration-200 starting:opacity-0',
+                !refusal.open && 'invisible opacity-0'
+              )}
+            >
+              <WorksIcon
+                className={cn('mt-px size-3.5 shrink-0', WORKS_TONE_CLASS)}
+                aria-hidden="true"
+              />
+              <span className="min-w-0 flex-1">{refusal.text}</span>
+              <button
+                type="button"
+                onClick={() => setRefusal({ ...refusal, open: false })}
+                aria-label={tCommon('close')}
+                className="text-muted-foreground hover:text-foreground -m-1 shrink-0 p-1"
+              >
+                <X className="size-3.5" aria-hidden="true" />
+              </button>
+            </div>
+          )}
           <div
             ref={scrollerRef}
             className={cn(
@@ -458,18 +542,7 @@ export function PlannerDayColumn({
               if (grid || !park || !date) return;
               const dragged = parseRideDrag(event.dataTransfer.getData(PLANNER_RIDE_MIME));
               if (!dragged || dragged.parkSlug !== park.slug) return;
-              addRide(
-                {
-                  parkSlug: park.slug,
-                  parkName: park.name,
-                  geo: park.geo,
-                  timezone: day?.timezone ?? park.timezone,
-                  date,
-                  attractionSlug: dragged.attractionSlug,
-                  attractionName: dragged.attractionName,
-                },
-                'drag'
-              );
+              fileDropped(dragged.attractionSlug, dragged.attractionName);
             }}
           >
             {grid && (
@@ -495,22 +568,7 @@ export function PlannerDayColumn({
                 closedNow={closedNow}
                 prefs={prefs}
                 parkSlug={park?.slug}
-                onDropRide={(attractionSlug, attractionName, startMinute) => {
-                  if (!park || !date) return;
-                  addRide(
-                    {
-                      parkSlug: park.slug,
-                      parkName: park.name,
-                      geo: park.geo,
-                      timezone: day?.timezone ?? park.timezone,
-                      date,
-                      attractionSlug,
-                      attractionName,
-                      startMinute,
-                    },
-                    'drag'
-                  );
-                }}
+                onDropRide={fileDropped}
                 onResize={(entryId, durationMinutes) => {
                   if (parkSlug && date) editCustom(parkSlug, date, entryId, { durationMinutes });
                 }}

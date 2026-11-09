@@ -223,6 +223,24 @@ check(
   unreadable?.note
 );
 
+// Efteling's maintenance calendar is synced weekly, so it nearly always has a window running or
+// ahead. Its shape is what is asserted, never whether one exists today.
+const maintenanceDay = /^\d{4}-\d{2}-\d{2}$/;
+const efteling = await call('get_park_wait_times', { park: 'Efteling' });
+const windows = (efteling?.rides ?? [])
+  .flatMap((ride) => [ride.maintenance, ride.nextMaintenance])
+  .filter(Boolean);
+check(
+  'a maintenance window names park-local days and whether its end is an estimate',
+  windows.every(
+    (window) =>
+      (window.from === null || maintenanceDay.test(window.from)) &&
+      (window.until === null || maintenanceDay.test(window.until)) &&
+      typeof window.untilIsEstimate === 'boolean'
+  ),
+  `${windows.length} window(s)`
+);
+
 const bestDays = await call('get_park_best_days', { park: 'Europa-Park', days: 5 });
 check(
   'get_park_best_days returns a dated forecast',

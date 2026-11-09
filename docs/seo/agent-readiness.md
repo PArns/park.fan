@@ -110,11 +110,11 @@ never written down beside it. There is deliberately no skill about the admin UI.
 returns capabilities only). `GET` answers 405, because it would open a server-to-client stream
 this server never writes to. The tools are read-only:
 
-| Tool                  | Answers                                              |
-| --------------------- | ---------------------------------------------------- |
-| `search_theme_parks`  | a name → the park, ride or city, with its page URL   |
-| `get_park_wait_times` | every ride's current queue and status, longest first |
-| `get_park_best_days`  | the crowd forecast per day, for picking a date       |
+| Tool                  | Answers                                                                                              |
+| --------------------- | ---------------------------------------------------------------------------------------------------- |
+| `search_theme_parks`  | a name → the park, ride or city, with its page URL                                                   |
+| `get_park_wait_times` | every ride's current queue and status, longest first; a planned maintenance window today or next     |
+| `get_park_best_days`  | the crowd forecast per day, for picking a date; the rides planned maintenance shuts on each open day |
 
 `components/agents/webmcp-tools.tsx` registers the same three through `navigator.modelContext` and
 executes them by calling `/api/mcp`, plus `open_park_fan_page`, which navigates the tab.
@@ -128,6 +128,11 @@ data:
   wait times is added to that assertion.
 - **A ride out of season** is reported by `effectiveStatus`, never the raw `status`
   ([a ride out of season is closed](../rules/a-ride-out-of-season-is-closed-and-is-not-one-of-the-parks.md)).
+- **A ride in planned maintenance** carries its window (`maintenance` today, `nextMaintenance`
+  ahead; `ridesInMaintenance` per day), read through `lib/utils/works-period.ts` like every page,
+  so an agent hears „closed for maintenance until 4 December" rather than a bare `CLOSED`.
+  `pnpm check:agent-ready` asserts the window's shape against Efteling's payload, never that one
+  exists.
 
 ## Checking it
 

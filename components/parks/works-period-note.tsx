@@ -1,7 +1,7 @@
-import { Construction } from 'lucide-react';
 import { useLocale, useTranslations } from 'next-intl';
 import { GlassNotice } from '@/components/parks/glass-notice';
-import { getDateTimeFormat } from '@/lib/utils/intl-format';
+import { formatParkDay } from '@/lib/utils/park-day';
+import { WORKS_TONE_CLASS, WorksIcon } from './works-period-list';
 import type { WorksPeriod } from '@/lib/api/types';
 import { isWorksPeriodActive } from '@/lib/utils/works-period';
 
@@ -14,7 +14,7 @@ interface WorksPeriodNoteProps {
 }
 
 /**
- * The ride page's sentence about a curated rebuild: since when and until when, the part a visitor
+ * The ride page's sentence about a curated works window (maintenance or a rebuild): since when and until when, the part a visitor
  * can plan around. It sits where `NoLiveWaitTimesNotice` sits, above the chapters, because it
  * answers the question the empty live panel raises.
  *
@@ -30,8 +30,8 @@ export function WorksPeriodNote({ worksPeriod, todayIso, className }: WorksPerio
   if (!worksPeriod || !isWorksPeriodActive(worksPeriod, todayIso)) return null;
 
   const { from, to, toUncertain } = worksPeriod;
-  const fromLabel = from ? formatDay(locale, from) : null;
-  const toLabel = to ? formatDay(locale, to) : null;
+  const fromLabel = from ? formatParkDay(locale, from) : null;
+  const toLabel = to ? formatParkDay(locale, to) : null;
 
   // A half-open window is the normal case while work is running, so all three
   // shapes are real. The fourth — neither bound — cannot be active and has
@@ -49,26 +49,13 @@ export function WorksPeriodNote({ worksPeriod, todayIso, className }: WorksPerio
 
   return (
     <GlassNotice
-      icon={Construction}
+      icon={WorksIcon}
       title={t('label')}
       tintClassName="bg-orange-500/5 dark:bg-orange-500/10"
-      iconClassName="text-orange-600 dark:text-orange-400"
+      iconClassName={WORKS_TONE_CLASS}
       className={className}
     >
       {body}
     </GlassNotice>
   );
-}
-
-/** A park-local `YYYY-MM-DD` as a written date, with no timezone able to shift it. */
-function formatDay(locale: string, isoDay: string): string {
-  const day = new Date(`${isoDay}T12:00:00Z`);
-  if (Number.isNaN(day.getTime())) return isoDay;
-
-  return getDateTimeFormat(locale, {
-    day: 'numeric',
-    month: 'long',
-    year: 'numeric',
-    timeZone: 'UTC',
-  }).format(day);
 }

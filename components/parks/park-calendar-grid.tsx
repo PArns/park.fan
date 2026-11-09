@@ -21,6 +21,7 @@ import { extremeCandidates, rankOf } from '@/lib/parks/calendar-month-summary';
 import type { CalendarDay } from '@/lib/api/types';
 import { CROWD_LEVEL_ORDER } from '@/lib/utils/crowd-level-styles';
 import { parkDayOf } from '@/lib/utils/park-day';
+import { ridesInWorksOn, worksPeriodsOf, type RideInWorks } from '@/lib/utils/works-period';
 import { dateFnsLocale } from '@/lib/utils/date-fns-locale';
 import {
   parkCalendarDayFromHash,
@@ -257,6 +258,24 @@ export function ParkCalendarGrid({
   }, [calendarData]);
 
   /**
+   * The rides a curated works window closes, per day of the month. Only rides that carry a window
+   * are walked, so a park without any costs one filter. A day nothing closes has no entry, and
+   * each list keeps its identity until the month or the park changes, which the memoised tiles
+   * rely on.
+   */
+  const worksByDate = useMemo(() => {
+    const map = new Map<string, RideInWorks[]>();
+    const rides = (park.attractions ?? []).filter((ride) => worksPeriodsOf(ride).length > 0);
+    if (rides.length === 0) return map;
+    for (const day of listDays) {
+      const date = format(day, 'yyyy-MM-dd');
+      const closed = ridesInWorksOn(rides, date);
+      if (closed.length > 0) map.set(date, closed);
+    }
+    return map;
+  }, [park.attractions, listDays]);
+
+  /**
    * One handler for a press on a day tile: it picks in comparison mode and opens the detail dialog
    * otherwise. The tile is memoised and takes one `onSelect(date)`, so the decision is made here
    * instead of in a closure per cell.
@@ -418,6 +437,7 @@ export function ParkCalendarGrid({
                         onSelect={handleDayPress}
                         selectable={comparing}
                         selectionIndex={selectionIndexOf(pickedDates, dateStr)}
+                        worksRides={worksByDate.get(dateStr)}
                       />
                     );
                   })}
@@ -451,6 +471,7 @@ export function ParkCalendarGrid({
                             onSelect={handleDayPress}
                             selectable={comparing}
                             selectionIndex={selectionIndexOf(pickedDates, dateStr)}
+                            worksRides={worksByDate.get(dateStr)}
                           />
                         );
                       })}
@@ -484,6 +505,7 @@ export function ParkCalendarGrid({
         }}
         onNavigate={handleDayNavigate}
         planner={{ parkSlug, parkName: park.name, geo: { continent, country, city } }}
+        worksRides={openDate ? worksByDate.get(openDate) : undefined}
       />
 
       {/* Opens on the second pick and closes to the grid with both days still lit, so the reader

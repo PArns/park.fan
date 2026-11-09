@@ -1,4 +1,4 @@
-import type { PlanDay, PlanDayRide, PlanDayTier } from '@/lib/api/types';
+import type { PlanDay, PlanDayRide, PlanDayTier, WorksPeriod } from '@/lib/api/types';
 import type { PlannerEntry } from './types';
 import {
   DEFAULT_OCCUPIED_MINUTES,
@@ -42,7 +42,8 @@ export interface PlannerEstimate {
   tier: PlanDayTier | null;
   /**
    * Why there is no number, when there is none. `outside-hours` ("not while the park is shut") and
-   * `no-curve` ("never measured") are different things to tell a visitor.
+   * `no-curve` ("never measured") are different things to tell a visitor; `works` is a ride a
+   * curated works window closes all day (`PlanDay.ridesInWorks`), which has no queue to price.
    *
    * `assumed` and `early-entry` come with a figure, {@link ASSUMED_WAIT_MIN}, kept as their own
    * states so no surface tints an assumption like a forecast. Read both through
@@ -56,6 +57,7 @@ export interface PlannerEstimate {
     | 'no-curve'
     | 'no-source'
     | 'outside-hours'
+    | 'works'
     | 'custom';
 }
 
@@ -121,6 +123,14 @@ function rideOf(day: PlanDay, slug: string): PlanDayRide | undefined {
   return day.rides.find((r) => r.attractionSlug === slug);
 }
 
+/**
+ * The works window that closes a ride on the plan's day, or null. Read from
+ * `PlanDay.ridesInWorks`, which the proxy route fills from the park payload.
+ */
+export function worksPeriodFor(day: PlanDay | null | undefined, slug: string): WorksPeriod | null {
+  return day?.ridesInWorks?.find((ride) => ride.attractionSlug === slug)?.worksPeriod ?? null;
+}
+
 /** The expected wait for one planned entry. */
 export function estimateFor(day: PlanDay | null | undefined, entry: PlannerEntry): PlannerEstimate {
   if (!day) return UNKNOWN;
@@ -183,9 +193,20 @@ export function estimateFor(day: PlanDay | null | undefined, entry: PlannerEntry
 
   const ride = entry.attractionSlug ? rideOf(day, entry.attractionSlug) : undefined;
   // A ride the API omitted, or an hour it has no point for, gets the assumption (see
-  // `ASSUMED_WAIT_MIN`), except where the park has no readable source at all. See `noSource`.
+  // `ASSUMED_WAIT_MIN`), except where the park has no readable source at all (see `noSource`) or
+  // a works window closes it that day: five minutes for a ride behind hoardings would be a queue
+  // the optimiser plans a stop into.
   const readable = hasReadableWaitTimes(day.context);
 
+  if (!ride && entry.attractionSlug && worksPeriodFor(day, entry.attractionSlug)) {
+    return {
+      wait: null,
+      uncertaintyMinutes: null,
+      expectedError: null,
+      tier: day.tier ?? null,
+      missing: 'works',
+    };
+  }
   if (!ride) return readable ? assumed(day) : noSource(day);
 
   // Past midnight the series is unfolded (24 is midnight, 25 is 01:00), the axis the grid uses,
