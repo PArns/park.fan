@@ -7,7 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Das Plopsaland Deutschland in Haßloch öffnet am 13. November als Majaland Deutschland und bleibt bis zum 14. März offen. Freitags kostet die Karte mit Datum online 16 €. Die großen Achterbahnen fahren erst wieder ab dem 19. März.
+  Das Plopsaland Deutschland in Haßloch hat seit dem 6. November als Majaland Deutschland geöffnet, bis zum 14. März 2027. An fast jedem Freitag kostet die Karte mit Datum online 16 €. Die großen Achterbahnen fahren erst wieder ab dem 19. März.
 tags:
   - news
   - plopsaland-deutschland
@@ -43,13 +43,13 @@ seo:
     - Plopsaland Auslastung
 ---
 
-Das [Plopsaland Deutschland](ref:plopsaland-deutschland) in Haßloch öffnet am Freitag, 13. November, für den Winter, unter dem Namen Majaland Deutschland. Bis zum 14. März 2027 sind dann nur das Majaland mit seinen Kinderbahnen rund um Biene Maja, die Halle Plopsa Indoor und die Themenfahrt [Die Schlümpfe Abenteuer](ref:plopsaland-deutschland/the-smurfs-adventure) offen. Freitags kostet die Karte mit festem Datum online 16 €. Plopsa hat das Programm am 9. November vorgestellt.
+Das [Plopsaland Deutschland](ref:plopsaland-deutschland) in Haßloch hat seit Freitag, 6. November, als Majaland Deutschland für den Winter geöffnet. Bis zum 14. März 2027 sind nur das Majaland mit seinen Kinderbahnen rund um Biene Maja, die Halle Plopsa Indoor und die Themenfahrt [Die Schlümpfe Abenteuer](ref:plopsaland-deutschland/the-smurfs-adventure) offen. Freitags kostet die Karte mit festem Datum online 16 €. Plopsa hat das Programm am 9. November vorgestellt.
 
 ## Öffnungstage und Uhrzeiten
 
-Geöffnet ist an 69 Tagen, jeweils von 11 bis 18 Uhr. Außerhalb der Ferien sind es die Wochenenden von Freitag bis Sonntag:
+Geöffnet ist an 72 Tagen, jeweils von 11 bis 18 Uhr. Außerhalb der Ferien sind es die Wochenenden von Freitag bis Sonntag:
 
-- November: 13. bis 15., 20. bis 22. und 27. bis 29.
+- November: 6. bis 8., 13. bis 15., 20. bis 22. und 27. bis 29.
 - Dezember: 4. bis 6., 11. bis 13., 18. bis 23. und 26. bis 31.
 - Januar: 1. bis 10., 15. bis 17., 22. bis 24. und 29. bis 31.
 - Februar: 4. bis 14., 19. bis 21. und 26. bis 28.
