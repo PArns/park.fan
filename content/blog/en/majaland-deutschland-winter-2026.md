@@ -68,7 +68,7 @@ Online, a dated ticket costs €16 on Fridays, €27 or €29 on Saturdays and �
 >
 > Bernd Beitz, Managing Director of Plopsaland Deutschland, in the [press release of 9 November 2026](https://www.plopsanews.com/de/pressemitteilungen/das-majaland-deutschland-laedt-zum-familienspass-im-winter-ein), translated from German
 
-These prices apply from one metre in height. Children under 85 centimetres get in free. Children between 85 and 99 centimetres pay from €19 with a date and €22 without, and visitors aged 70 and over pay €22. The family ticket has no fixed date and is valid until 14 March: €75 for three people, €95 for four, €115 for five and €130 for six. For four people over one metre, single tickets work out cheaper on a Friday; on a Sunday the family ticket is the better deal. The annual pass costs €150 and covers a year of both Plopsaland and Majaland. Which other parks open in winter, and what they charge, is in our [winter overview](/blog/winter-theme-parks-2026).
+These prices apply from one metre in height. Children under 85 centimetres get in free. Children between 85 and 99 centimetres pay from €19 with a date and €22 without, and visitors aged 70 and over pay €22. The family ticket has no fixed date and is valid until 14 March: €75 for three people, €95 for four, €115 for five and €130 for six. For four people over one metre, single tickets work out cheaper on a Friday; on a Sunday the family ticket is the better deal. The annual pass costs €150 and covers a year of both Plopsaland and Majaland. Our [winter overview](/blog/winter-theme-parks-2026) lists the other parks that open in winter and their prices.
 
 ```best-days-widget slug=plopsaland-deutschland
 
@@ -88,7 +88,7 @@ Father Christmas sits in the Indoor Theater on 4 to 6, 11 to 13, 18 to 23 and 26
 
 ## What's different from last winter
 
-In winter 2025/26 the same part of the park was called Majaland Pfalz. It was open from 7 November to 22 March, with tickets from €20, and the Maya show and the first winter run of The Smurfs' Adventure were that season's new additions. This winter, the season ends a week earlier and the cheapest ticket costs less than it did then. The park dropped the name Holiday Park at the end of June 2025. Which rides run in summer, and when it's quietest, is in our [guide to Plopsaland Deutschland](/blog/plopsaland-deutschland-wait-times-tips).
+In winter 2025/26 the same part of the park was called Majaland Pfalz. It was open from 7 November to 22 March, with tickets from €20, and the Maya show and the first winter run of The Smurfs' Adventure were that season's new additions. This winter, the season ends a week earlier and the cheapest ticket costs less than it did then. The park dropped the name Holiday Park at the end of June 2025. Our [guide to Plopsaland Deutschland](/blog/plopsaland-deutschland-wait-times-tips) covers the summer rides and the quietest days.
 
 ## Getting there and parking
 

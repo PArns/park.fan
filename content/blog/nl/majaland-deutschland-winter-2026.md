@@ -23,7 +23,7 @@ rideLinks:
   - plopsaland-deutschland/the-smurfs-adventure
   - plopsaland-deutschland/tabalugas-rollercoaster
 seo:
-  title: 'Plopsaland Deutschland in winter 2026/27: Majaland vanaf € 16'
+  title: 'Plopsaland Deutschland winter 2026/27: Majaland vanaf € 16'
   description: >-
     Plopsaland Deutschland in Haßloch is tot 14 maart 2027 open als Majaland Deutschland, van 11 tot 18 uur. Op vrijdag kost een ticket online € 16.
   keywords:
@@ -78,7 +78,7 @@ Die prijzen gelden vanaf een meter lengte. Kinderen kleiner dan 85 centimeter mo
 
 Buiten staan in het Majaland twaalf attracties, waaronder de Bienchenwirbel en de Blumenturm. In de verwarmde hal Plopsa Indoor zijn er nog zeven, naast glijbanen en klimtoestellen. Een daarvan is [Tabaluga's Rollercoaster](ref:plopsaland-deutschland/tabalugas-rollercoaster): 444 meter baan, 9 meter hoog en 40 km/u snel. Je mag mee vanaf 100 centimeter, en onder 120 centimeter alleen onder begeleiding. De Smurfen Avontuur zit in de vroegere Burg Falkenstein. Een rit duurt vijf minuten, en kinderen onder 120 centimeter gaan mee met een volwassene.
 
-Maja de Bij viert in 2026 haar vijftigste verjaardag als tekenfilmfiguur. In het Indoor Theater speelt elke openingsdag om 13.00 en 16.00 uur haar show “Der Ball der Bienenkönigin” (het bal van de bijenkoningin). Maja, Willy en Flip bereiden zich daarin voor op een gekostumeerd bal, maar maar één van hen mag met de bijenkoningin mee. Meezingen mag uitdrukkelijk, ook voor ouders bij wie het titelliedje al sinds hun eigen jeugd in het hoofd zit. Een apart kaartje heb je voor de show niet nodig. Om 13.45 en 15.15 uur kun je Maja en haar vrienden ontmoeten. Ook Heidi en Peter, Holly, Tabaluga en de Smurfen lopen door het park. Restaurant Pfalzgraf in het Palts-dorp is op zaterdag en zondag open.
+Maja de Bij viert in 2026 haar vijftigste verjaardag als tekenfilmfiguur. In het Indoor Theater speelt elke openingsdag om 13.00 en 16.00 uur haar show “Der Ball der Bienenkönigin” (het bal van de bijenkoningin). Maja, Willy en Flip bereiden zich daarin voor op een gekostumeerd bal, maar slechts één van hen mag met de bijenkoningin mee. Meezingen mag uitdrukkelijk, ook voor ouders bij wie het titelliedje al sinds hun eigen jeugd in het hoofd zit. Een apart kaartje heb je voor de show niet nodig. Om 13.45 en 15.15 uur kun je Maja en haar vrienden ontmoeten. Ook Heidi en Peter, Holly, Tabaluga en de Smurfen lopen door het park. Restaurant Pfalzgraf in het Palts-dorp is op zaterdag en zondag open.
 
 Expedition GeForce, Sky Scream en de andere grote attracties rijden in de winter niet. Die wachten op het zomerseizoen, dat op 19 maart 2027 begint.
 

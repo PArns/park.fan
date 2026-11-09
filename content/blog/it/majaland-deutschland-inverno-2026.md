@@ -59,7 +59,7 @@ La vigilia e il giorno di Natale i cancelli restano chiusi, del resto Babbo Nata
 
 ## Quanto costa l'ingresso
 
-Online il biglietto con data fissa costa 16 € il venerdì, 27 o 29 € il sabato e 29 € la domenica. Nei giorni feriali delle vacanze il prezzo va da 16 a 29 €. In due venerdì il calendario dei biglietti non segue il prezzo annunciato nel comunicato stampa: a Capodanno si pagano 24 €, il 5 febbraio 22 €. Senza data fissa il biglietto costa 32 €, quanto alla cassa.
+Online il biglietto con data fissa costa 16 € il venerdì, 27 o 29 € il sabato e 29 € la domenica. Nei giorni di vacanza dal lunedì al venerdì il prezzo va da 16 a 29 €. In due venerdì il calendario dei biglietti non segue il prezzo annunciato nel comunicato stampa: a Capodanno si pagano 24 €, il 5 febbraio 22 €. Senza data fissa il biglietto costa 32 €, quanto alla cassa.
 
 > [!QUOTE]
 > Con l'offerta del venerdì vogliamo fare un regalo soprattutto alle famiglie. Con un risparmio fino al 50 per cento ringraziamo anche per il grande interesse verso il Majaland Deutschland.

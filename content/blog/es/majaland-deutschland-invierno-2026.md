@@ -59,7 +59,7 @@ El 24 y el 25 de diciembre está cerrado, que Papá Noel esos días tiene otros 
 
 ## Cuánto cuesta la entrada
 
-En la web, la entrada con fecha fija cuesta 16 € los viernes, 27 o 29 € los sábados y 29 € los domingos. Los días laborables de vacaciones, el precio va de 16 a 29 €. En dos viernes, el calendario de entradas no coincide con el precio que anuncia la nota de prensa: el día de Año Nuevo la entrada cuesta 24 € y el 5 de febrero, 22 €. Sin fecha fija se pagan 32 €, lo mismo que en taquilla.
+En la web, la entrada con fecha fija cuesta 16 € los viernes, 27 o 29 € los sábados y 29 € los domingos. Entre semana, en vacaciones, el precio va de 16 a 29 €. En dos viernes, el calendario de entradas no coincide con el precio que anuncia la nota de prensa: el día de Año Nuevo la entrada cuesta 24 € y el 5 de febrero, 22 €. Sin fecha fija se pagan 32 €, lo mismo que en taquilla.
 
 > [!QUOTE]
 > Con la oferta de los viernes queremos dar una alegría sobre todo a las familias. Con un ahorro de hasta el 50 por ciento, damos también las gracias por el gran interés en el Majaland Deutschland.
