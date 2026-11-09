@@ -7,9 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Het Netwerk NSG Ententeich heeft op 9 november 5.656 handtekeningen tegen de
-  uitbreiding van Phantasialand ingediend bij de stad Brühl. Nodig zijn er 2.536
-  geldige. Of er een referendum komt, beslist nu de gemeenteraad.
+  Sinds 9 november liggen er bij de stad Brühl 5.656 handtekeningen tegen de uitbreiding van Phantasialand, ruim twee keer zoveel als nodig. Of Brühl gaat stemmen, hangt af van de gemeenteraad en van de vraag of een burgerinitiatief een planningsbesluit wel mag laten intrekken.
 tags:
   - news
   - phantasialand
@@ -39,69 +37,27 @@ seo:
     - Phantasialand uitbreiding tegenpetitie
 ---
 
-Het Netwerk NSG Ententeich heeft maandag 9 november 5.656 handtekeningen voor
-zijn burgerinitiatief tegen de uitbreiding van
-[Phantasialand](ref:phantasialand) ingediend bij het stadsbestuur van Brühl. Dat
-melden RTL West en Radio Erft. Nodig zijn 2.536 geldige handtekeningen van
-kiesgerechtigden uit Brühl, en het netwerk verzamelde sinds 28 september. Hoe
-het [burgerinitiatief tegen de uitbreiding](/news/phantasialand-uitbreiding-burgerinitiatief)
-tot stand kwam en wat het park bij de Ententeich wil bouwen, staat in ons
-bericht van 1 oktober.
+Het Netwerk NSG Ententeich heeft maandag 9 november 5.656 handtekeningen voor zijn burgerinitiatief tegen de uitbreiding van [Phantasialand](ref:phantasialand) ingediend bij het stadsbestuur van Brühl. Dat melden RTL West en Radio Erft. Nodig zijn 2.536 geldige handtekeningen van kiesgerechtigden uit Brühl, en het netwerk verzamelde sinds 28 september. De plannen van het park voor de grond en de voorgeschiedenis van de ruzie staan in ons [bericht over de start van het burgerinitiatief](/news/phantasialand-uitbreiding-burgerinitiatief).
 
-Voor een bezoek aan het park verandert er niets. Phantasialand kan pas op de
-grond bouwen als er een bestemmingsplan geldt, en daar werkt de stad nog aan.
+In het park zelf merk je niets van de ruzie over de Ententeich, want Phantasialand kan pas op de grond bouwen als er een bestemmingsplan geldt, en daar werkt de stad nog aan.
 
-## Hoe het nu verdergaat
+## Wat de gemeenteraad nu moet beslissen
 
-Eerst controleert de stad hoeveel handtekeningen geldig zijn. Daarna stelt de
-gemeenteraad vast of het initiatief toelaatbaar is, en dat staat niet vast.
-Volgens de gemeentewet van Noordrijn-Westfalen kan het opstellen, wijzigen of
-intrekken van bestemmingsplannen geen onderwerp van een burgerinitiatief zijn.
-Alleen over het besluit om zo’n procedure te starten mag het wel gaan. Het
-netwerk wil de besluiten van 9 juli laten intrekken waarmee de
-planningscommissie de procedure voor bestemmingsplan 06.01 is begonnen. Of de
-uitzondering ook daarvoor geldt, laat het netwerk op zijn website zelf open.
+Eerst controleert de stad hoeveel handtekeningen geldig zijn. Daarna stelt de gemeenteraad vast of het initiatief toelaatbaar is. De gemeentewet van Noordrijn-Westfalen sluit bestemmingsplannen uit van burgerinitiatieven. Alleen tegen het besluit om een planprocedure te starten mag er een komen. Het netwerk wil de besluiten van 9 juli laten intrekken waarmee de planningscommissie de procedure voor bestemmingsplan 06.01 is begonnen. Of een burgerinitiatief zo’n intrekking mag eisen, laat het netwerk op zijn website zelf open.
 
-Is het initiatief toelaatbaar, dan mag de stad tot het referendum niets meer
-besluiten of uitvoeren wat ertegenin gaat. Neemt de raad de eis over, dan stopt
-de procedure. Wijst hij hem af, dan moet Brühl binnen drie maanden stemmen. In
-juli stemden CDU, SPD en FDP/Volt in de commissie voor de procedure, De Groenen
-en Die Linke tegen. Wanneer de raad het initiatief bespreekt, heeft de stad nog
-niet bekendgemaakt.
+Zodra de raad het initiatief toelaatbaar heeft verklaard, mag de stad tot het referendum niets meer besluiten of uitvoeren wat ertegenin gaat. De raad kan de eis dan zelf overnemen, en dan zou de procedure stoppen. Wijst hij hem af, dan moet Brühl binnen drie maanden stemmen. In de planningscommissie stemden op 9 juli CDU, SPD en FDP/Volt voor de procedure, De Groenen en Die Linke tegen. Dezelfde fracties beslissen nu in de raad. Een datum voor de vergadering heeft de stad nog niet bekendgemaakt.
 
 ## Wat een referendum nodig heeft
 
-Bij het referendum is een meerderheid alleen niet genoeg. De ja-stemmen moeten
-ook samen minstens 20 procent van alle kiesgerechtigden zijn. Bij de 36.227
-kiesgerechtigden waarmee het netwerk rekent, zijn dat 7.246 stemmen, bijna 1.600
-meer dan het nu aan handtekeningen heeft ingediend.
+Bij het referendum telt een meerderheid voor alleen als daar minstens 20 procent van alle kiesgerechtigden achter staat. Bij de 36.227 kiesgerechtigden waarmee het netwerk rekent, zijn dat 7.246 stemmen, bijna 1.600 meer dan het nu aan handtekeningen heeft ingediend.
 
-Slaagt het referendum, dan werkt het als een raadsbesluit. In de eerste twee jaar
-kan alleen een nieuw referendum het nog veranderen, en dat moet de raad
-uitschrijven. De procedure voor de uitbreiding zou dan voorbij zijn. De
-onderzoeken die Phantasialand ervoor betaalt, zijn nog niet gepubliceerd. Ze
-gaan over zeven vakgebieden, van soortenbescherming en geluid tot de
-waterhuishouding, en bij het water ook over wat er met de Ententeich zou
-gebeuren. Ik had die uitkomsten graag gezien voordat Brühl over de grond stemt.
+Slaagt het referendum, dan is de procedure voor de uitbreiding voorbij. De uitslag werkt als een raadsbesluit, en in de eerste twee jaar kan alleen een nieuw referendum dat de raad uitschrijft, hem nog veranderen. De onderzoeken die Phantasialand voor de procedure betaalt, zijn nog niet gepubliceerd. Ze gaan over zeven vakgebieden, waaronder soortenbescherming, geluid en de waterhuishouding, en het wateronderzoek kijkt ook naar wat er met de Ententeich zou gebeuren. Ik had die uitkomsten graag gezien voordat Brühl over de grond stemt.
 
 ## Wat het park en de voorstanders zeggen
 
-Op zijn persoagina heeft Phantasialand nog niets over de overhandiging
-gepubliceerd. Op zijn pagina
-[“Standortsicherung”](https://www.phantasialand.de/de/rechtliches/standortsicherung/)
-onderbouwt het de uitbreiding met gasten die er een paar dagen vakantie willen
-houden. Om meer gasten te laten overnachten heeft het park naar eigen zeggen
-aanbod voor langere verblijven nodig, en daarvoor is op zijn ongeveer 28 hectare
-geen plaats. Met de ongeveer 15
-hectare die het regionale plan sinds 2013 voor het park reserveert, komt
-Phantasialand op ruim 40 hectare. [Movie Park Germany](ref:movie-park-germany)
-in Bottrop is volgens eigen opgave nu ongeveer 45 hectare groot.
+Op zijn pagina [“Standortsicherung”](https://www.phantasialand.de/de/rechtliches/standortsicherung/) onderbouwt het park de uitbreiding met gasten die er een paar dagen vakantie willen houden. Om meer gasten te laten overnachten heeft het naar eigen zeggen aanbod voor langere verblijven nodig, en daarvoor is op zijn ongeveer 28 hectare geen plaats. Met de ongeveer 15 hectare die het regionale plan sinds 2013 voor het park reserveert, komt Phantasialand op ruim 40 hectare. Daarmee zou het nog altijd iets kleiner zijn dan [Movie Park Germany](ref:movie-park-germany) in Bottrop, dat volgens eigen opgave ongeveer 45 hectare groot is.
 
-Voor de uitbreiding pleit sinds mei een
-[tegenpetitie](/news/phantasialand-uitbreiding-online-petitie) op openPetition.
-Die loopt nog tot 23 november. Begin november hadden 211 mensen getekend, 52
-van hen uit Brühl. Komen er 740 handtekeningen uit Brühl bij elkaar, dan vraagt
-openPetition de raadsleden om een standpunt.
+Voor de uitbreiding pleit sinds mei een [tegenpetitie](/news/phantasialand-uitbreiding-online-petitie) op openPetition. Die loopt nog tot 23 november. Begin november hadden 211 mensen getekend, 52 van hen uit Brühl. Pas vanaf 740 handtekeningen uit Brühl vraagt openPetition de raadsleden om een standpunt.
 
 [Phantasialand](ref:phantasialand?full)
 
@@ -112,6 +68,5 @@ Bronnen:
 [Toelaatbaarheid, blokkade, termijn en binding (artikel 26 gemeentewet NRW)](https://lexmea.de/de/gesetz/go-nrw/26),
 [Stemming in de commissie (FreizeitparkNEWS)](https://www.freizeitparknews.de/phantasialand/erweiterung-pruefverfahren/),
 [Onderbouwing, grond en onderzoeken (Phantasialand)](https://www.phantasialand.de/de/rechtliches/standortsicherung/),
-[Persberichten (Phantasialand)](https://www.phantasialand.de/de/presse/medieninformationen/),
 [Handtekeningen van de tegenpetitie (openPetition)](https://www.openpetition.de/petition/statistik/fuer-eine-verantwortungsvolle-erweiterung-des-phantasialands),
 [Oppervlakte van Movie Park Germany (persbericht, pdf)](https://www.movieparkgermany.de/content/dam/mpg/presse/22-06-21/PM_Er%C3%B6ffnung%20Movie%20Park%20Studio%20Tour.pdf).

@@ -7,10 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Le 9 novembre, le collectif Netzwerk NSG Ententeich a déposé 5 656 signatures
-  contre l’agrandissement de Phantasialand auprès de la ville de Brühl. Il en
-  faut 2 536 valides. C’est maintenant au conseil municipal de dire s’il y aura
-  un référendum local.
+  Depuis le 9 novembre, la ville de Brühl a reçu 5 656 signatures contre l’agrandissement de Phantasialand, plus du double du nécessaire. Un vote à Brühl dépend du conseil municipal, et de la question de savoir si une pétition peut seulement faire annuler une décision d’urbanisme.
 tags:
   - news
   - phantasialand
@@ -40,70 +37,27 @@ seo:
     - contre-pétition Phantasialand
 ---
 
-Le lundi 9 novembre, le collectif Netzwerk NSG Ententeich a déposé 5 656
-signatures pour sa pétition contre l’agrandissement de
-[Phantasialand](ref:phantasialand) auprès de l’administration municipale de
-Brühl, rapportent RTL West et Radio Erft. Il faut 2 536 signatures valides
-d’électeurs de Brühl, et le collectif les recueillait depuis le 28 septembre.
-Notre article du 1er octobre raconte d’où vient la
-[pétition contre l’agrandissement](/news/phantasialand-agrandissement-petition)
-et ce que le parc veut construire près de l’Ententeich.
+Le lundi 9 novembre, le collectif Netzwerk NSG Ententeich a déposé 5 656 signatures pour sa pétition contre l’agrandissement de [Phantasialand](ref:phantasialand) auprès de l’administration municipale de Brühl, rapportent RTL West et Radio Erft. Il faut 2 536 signatures valides d’électeurs de Brühl, et le collectif les recueillait depuis le 28 septembre. Les projets du parc pour le terrain et l’historique du conflit figurent dans notre [article sur le lancement de la pétition](/news/phantasialand-agrandissement-petition).
 
-Pour une visite au parc, rien ne change. Phantasialand ne pourra construire sur
-le terrain qu’une fois un plan d’urbanisme en vigueur, et la ville y travaille
-encore.
+Dans le parc, le conflit autour de l’Ententeich ne se remarque pas, car Phantasialand ne pourra construire sur le terrain qu’une fois un plan d’urbanisme en vigueur, et la ville y travaille encore.
 
-## Ce qui se passe maintenant
+## Ce que le conseil doit trancher
 
-La ville vérifie d’abord combien de signatures sont valides. Le conseil
-municipal décide ensuite si la pétition est recevable, ce qui n’a rien d’acquis.
-Le code des communes de Rhénanie-du-Nord-Westphalie interdit qu’une pétition
-citoyenne porte sur l’élaboration, la modification ou l’abrogation d’un plan
-d’urbanisme. Seule la décision de lancer une telle procédure fait exception. Le
-collectif veut faire annuler les décisions du 9 juillet par lesquelles la
-commission d’urbanisme a lancé la procédure du plan 06.01. Si l’exception couvre
-aussi ce cas, le collectif lui-même le laisse ouvert sur son site.
+La ville vérifie d’abord combien de signatures sont valides. Le conseil municipal décide ensuite si la pétition est recevable. Le code des communes de Rhénanie-du-Nord-Westphalie exclut les plans d’urbanisme des pétitions citoyennes. Une pétition n’est admise que contre la décision de lancer une procédure d’urbanisme. Le collectif veut faire annuler les décisions du 9 juillet par lesquelles la commission d’urbanisme a lancé la procédure du plan 06.01. Sur son site, le collectif lui-même laisse ouvert le point de savoir si une pétition peut exiger une telle annulation.
 
-Si la pétition est recevable, la ville ne peut plus rien décider ni exécuter
-qui aille à son encontre jusqu’au référendum. Si le conseil reprend la demande,
-la procédure s’arrête. S’il la rejette, Brühl doit voter dans les trois mois. En
-juillet, la CDU, le SPD et FDP/Volt avaient voté pour la procédure en
-commission, les Verts et Die Linke contre. La ville n’a pas encore annoncé quand
-le conseil examinera la pétition.
+Dès que le conseil a déclaré la pétition recevable, la ville ne peut plus rien décider ni exécuter qui aille à son encontre jusqu’au référendum. Le conseil peut alors reprendre lui-même la demande, et la procédure s’arrêterait. S’il la rejette, Brühl doit voter dans les trois mois. En commission d’urbanisme, le 9 juillet, la CDU, le SPD et FDP/Volt avaient voté pour la procédure, les Verts et Die Linke contre. Ce sont les mêmes groupes qui décident maintenant au conseil. La ville n’a pas encore annoncé de date pour la séance.
 
 ## Ce qu’il faut pour un référendum
 
-Au référendum, la majorité ne suffit pas. Les oui doivent aussi représenter au
-moins 20 pour cent de tous les électeurs inscrits. Avec les 36 227 électeurs sur
-lesquels compte le collectif, cela fait 7 246 voix, près de 1 600 de plus que
-les signatures qu’il vient de déposer.
+Au référendum, une majorité de oui ne compte que si elle représente au moins 20 pour cent de tous les électeurs inscrits. Avec les 36 227 électeurs sur lesquels compte le collectif, cela fait 7 246 voix, près de 1 600 de plus que les signatures qu’il vient de déposer.
 
-S’il est adopté, le référendum a l’effet d’une décision du conseil. Pendant deux
-ans, seul un nouveau référendum peut le modifier, et c’est au conseil de le
-convoquer. La procédure d’agrandissement serait terminée. Les expertises que
-Phantasialand finance ne sont pas encore publiées. Elles couvrent sept domaines,
-de la protection des espèces au bruit et au régime des eaux, et, pour l’eau,
-aussi ce que deviendrait l’Ententeich. J’aurais aimé voir ces résultats avant
-que Brühl vote sur le terrain.
+Si le référendum est adopté, la procédure d’agrandissement est terminée. Le résultat a l’effet d’une décision du conseil, et pendant les deux premières années, seul un nouveau référendum convoqué par le conseil peut le modifier. Les expertises que Phantasialand finance pour la procédure ne sont pas encore publiées. Elles couvrent sept domaines, dont la protection des espèces, le bruit et le régime des eaux, et l’expertise sur l’eau examine aussi ce que deviendrait l’Ententeich. J’aurais aimé voir ces résultats avant que Brühl vote sur le terrain.
 
 ## Ce que disent le parc et les partisans
 
-Sur sa page presse, Phantasialand n’a encore rien publié sur le dépôt des
-signatures. Sur sa page
-[« Standortsicherung »](https://www.phantasialand.de/de/rechtliches/standortsicherung/),
-il justifie l’agrandissement par les courts séjours. Pour garder plus de
-visiteurs pour la nuit, le parc dit avoir besoin d’offres pour des séjours plus
-longs, et ses quelque 28 hectares n’ont plus de place pour elles. Avec les
-quelque 15 hectares que le plan régional lui réserve depuis 2013, Phantasialand
-passerait à un peu plus de 40 hectares. Le
-[Movie Park Germany](ref:movie-park-germany), à Bottrop, indique aujourd’hui une
-superficie d’environ 45 hectares.
+Le parc justifie l’agrandissement par les courts séjours, sur sa page [« Standortsicherung »](https://www.phantasialand.de/de/rechtliches/standortsicherung/). Pour garder plus de visiteurs pour la nuit, il dit avoir besoin d’offres pour des séjours plus longs, et ses quelque 28 hectares n’ont plus de place pour elles. Avec les quelque 15 hectares que le plan régional lui réserve depuis 2013, Phantasialand passerait à un peu plus de 40 hectares. Il resterait ainsi un peu plus petit que le [Movie Park Germany](ref:movie-park-germany), à Bottrop, qui indique une superficie d’environ 45 hectares.
 
-Une [contre-pétition](/news/phantasialand-agrandissement-petition-en-ligne) sur
-openPetition plaide depuis mai pour l’agrandissement. Elle court jusqu’au 23
-novembre. Début novembre, 211 personnes l’avaient signée, dont 52 de Brühl. Si
-740 signatures de Brühl sont réunies, openPetition demande aux membres du
-conseil de prendre position.
+Une [contre-pétition](/news/phantasialand-agrandissement-petition-en-ligne) sur openPetition plaide depuis mai pour l’agrandissement. Elle court jusqu’au 23 novembre. Début novembre, 211 personnes l’avaient signée, dont 52 de Brühl. Ce n’est qu’à partir de 740 signatures de Brühl qu’openPetition demande aux membres du conseil de prendre position.
 
 [Phantasialand](ref:phantasialand?full)
 
@@ -114,6 +68,5 @@ Sources :
 [Recevabilité, effet suspensif, délai et portée (article 26 du code des communes de NRW)](https://lexmea.de/de/gesetz/go-nrw/26),
 [Vote en commission (FreizeitparkNEWS)](https://www.freizeitparknews.de/phantasialand/erweiterung-pruefverfahren/),
 [Justification, terrain et expertises (Phantasialand)](https://www.phantasialand.de/de/rechtliches/standortsicherung/),
-[Communiqués de presse (Phantasialand)](https://www.phantasialand.de/de/presse/medieninformationen/),
 [Signatures de la contre-pétition (openPetition)](https://www.openpetition.de/petition/statistik/fuer-eine-verantwortungsvolle-erweiterung-des-phantasialands),
 [Superficie du Movie Park Germany (communiqué, PDF)](https://www.movieparkgermany.de/content/dam/mpg/presse/22-06-21/PM_Er%C3%B6ffnung%20Movie%20Park%20Studio%20Tour.pdf).
