@@ -576,6 +576,10 @@ models in one sentence and the switch rule.
   and season count folded into one meta line. One markup, not a phone-only copy that would drift.
 - The dense tables („Läuft alles?", `system`) scroll sideways inside their card; they are read at a
   desk.
+- **A grid that has columns only from a breakpoint needs `grid-cols-1` below it.** Without it the
+  phone gets one implicit `auto` column, as wide as its longest unbroken line: the start page's
+  „Zuletzt geändert“ list made it 481 px wide at 390 (measured with test data). `grid-cols-1` is
+  `minmax(0, 1fr)`; the traffic views get the same from `[&>*]:min-w-0`.
 
 ## Things that will bite
 

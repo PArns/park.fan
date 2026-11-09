@@ -106,7 +106,7 @@ export default function AdminDashboard() {
         <CatalogFigures overview={overview.data} />
       </section>
 
-      <div className="grid gap-4 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-4 lg:grid-cols-3">
         <Panel className="lg:col-span-2">
           <PanelHeader
             icon={History}

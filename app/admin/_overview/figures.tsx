@@ -88,7 +88,7 @@ export function TodayFigures({
   const pendingPhotos = pending.reduce((sum, s) => sum + s.photos, 0);
 
   return (
-    <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+    <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-4">
       <StatCard
         href="/admin/traffic"
         icon={TrendingUp}
@@ -350,7 +350,7 @@ export function CatalogFigures({ overview }: { overview: AdminOverview | undefin
   const rides = overview?.attractions;
 
   return (
-    <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+    <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-4">
       <StatCard
         href="/admin/history"
         icon={History}
