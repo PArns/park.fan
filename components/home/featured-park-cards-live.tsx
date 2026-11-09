@@ -1,7 +1,7 @@
 'use client';
 
 import { useMemo } from 'react';
-import { ParkCard } from '@/components/parks/park-card';
+import { PARK_CARD_GRID_CLASS, ParkCard } from '@/components/parks/park-card';
 import { useLiveParksByRegion, type LiveParkFields } from '@/lib/hooks/use-live-parks-by-region';
 
 /** Static, day-stable card fields resolved on the server (translation + fs background lookup). */
@@ -58,7 +58,7 @@ export function FeaturedParkCardsLive({ parks }: { parks: FeaturedCardStatic[] }
   const { liveByParkId } = useLiveParksByRegion(regions);
 
   return (
-    <div className="grid [grid-auto-rows:auto_1fr_auto] gap-4 max-sm:auto-rows-auto sm:grid-cols-2 @min-[1024px]/page:grid-cols-3">
+    <div className={PARK_CARD_GRID_CLASS}>
       {parks.map((park) => (
         <FeaturedLiveCard key={park.slug} park={park} live={liveByParkId?.[park.parkId]} />
       ))}

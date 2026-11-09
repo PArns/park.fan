@@ -14,7 +14,7 @@ import { orderCountryParks, type CountryParkSort } from '@/lib/utils/country-par
 export const OPEN_ONLY_MIN_PARKS = 6;
 
 const GROUP_GRID_CLASS =
-  'grid [grid-auto-rows:auto_1fr_auto] gap-4 max-sm:auto-rows-auto sm:grid-cols-2 lg:grid-cols-3';
+  'grid grid-cols-1 [grid-auto-rows:auto_1fr_auto] gap-4 max-sm:auto-rows-auto sm:grid-cols-2 lg:grid-cols-3';
 
 interface CountryParkGroup {
   key: string;

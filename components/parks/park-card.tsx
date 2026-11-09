@@ -28,6 +28,15 @@ const ROW_THUMB_SIZES = '64px';
  */
 const CARD_PHOTO_SIZES = '(max-width: 640px) 64px, (max-width: 1024px) 50vw, 33vw';
 
+/**
+ * The grid a list of `ParkCard`s sits in: one column on a phone, two from `sm`, three from a
+ * 1024 px page. `grid-cols-1` is `minmax(0, 1fr)`; the implicit `auto` column would grow to the
+ * phone row's unwrapped width (a long name, „Kasterlee, Belgien · 51.0 km“) and widen the page.
+ * The rows are the card's three subgrid tracks (docs/design/cards-and-heroes.md).
+ */
+export const PARK_CARD_GRID_CLASS =
+  'grid grid-cols-1 [grid-auto-rows:auto_1fr_auto] gap-4 max-sm:auto-rows-auto sm:grid-cols-2 @min-[1024px]/page:grid-cols-3';
+
 interface ParkCardProps {
   name: string;
   slug: string;
@@ -182,7 +191,9 @@ export function ParkCard({
     <Link
       href={effectiveHref as '/europe/germany/rust/europa-park'}
       prefetch={false}
-      className={cn('row-span-3 grid [grid-template-rows:subgrid]', className)}
+      // `min-w-0 grid-cols-1`: every caller wraps the card in a grid of its own (an `<li>`, a
+      // subgrid), and through each `auto` column the phone row's unwrapped text set the minimum.
+      className={cn('row-span-3 grid min-w-0 grid-cols-1 [grid-template-rows:subgrid]', className)}
     >
       {/* Phones get a row, `sm` and up the panelled card, the same split as `BlogPostRow`
           (docs/rules/a-blog-card-is-a-row-on-phones.md). Two markups, because the glass is a block

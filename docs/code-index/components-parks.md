@@ -405,6 +405,7 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`park-card.tsx`](../../components/parks/park-card.tsx)
 
 - `ParkCard` _component_: Link card for a park: photo, name, city and distance, status and crowd badges, an opening or closing countdown and a favorite star. Below `sm` it renders a four-line row instead (`data-park-card-row`).
+- `PARK_CARD_GRID_CLASS` _const_: The grid a list of `ParkCard`s sits in: one column on a phone, two from `sm`, three from a 1024 px page.
 
 ### [`park-comparison-card.tsx`](../../components/parks/park-comparison-card.tsx)
 

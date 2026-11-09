@@ -98,6 +98,12 @@ lives.
   up and switch to `max-sm:auto-rows-auto` below (as the ride list in `LandSection` does): in one
   column a `1fr` track sizes every row to the tallest, so one park with a third badge gave every
   row 40 px of empty space.
+- **A phone column is `minmax(0, 1fr)`.** Without `grid-cols-1` a grid has one implicit `auto`
+  column, and that column takes the min-content of its widest item. The phone row's name and
+  location line do not wrap, so a card for Bobbejaanland („Kasterlee, Belgien · 51.0 km“) made
+  the Efteling page 425 px wide at 390. `PARK_CARD_GRID_CLASS` carries it for the park lists, and
+  `ParkCard`'s own link is `min-w-0 grid-cols-1`, because every caller nests the card in one more
+  grid (`<li>`, a subgrid wrapper) with its own `auto` column.
 
 ## Full-bleed heroes on a phone
 
