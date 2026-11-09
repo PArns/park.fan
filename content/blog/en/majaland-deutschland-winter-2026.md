@@ -68,7 +68,7 @@ Online, a dated ticket costs €16 on Fridays, €27 or €29 on Saturdays and �
 >
 > Bernd Beitz, Managing Director of Plopsaland Deutschland, in the [press release of 9 November 2026](https://www.plopsanews.com/de/pressemitteilungen/das-majaland-deutschland-laedt-zum-familienspass-im-winter-ein), translated from German
 
-These prices apply from one metre in height. Children under 85 centimetres get in free. Children between 85 and 99 centimetres pay from €19 with a date and €22 without, and visitors aged 70 and over pay €22. The family ticket has no fixed date and is valid until 14 March: €75 for three people, €95 for four, €115 for five and €130 for six. For four people over one metre, single tickets work out cheaper on a Friday; on a Sunday the family ticket is the better deal. The annual pass costs €150 and covers a year of both Plopsaland and Majaland. Our [winter overview](/blog/winter-theme-parks-2026) lists the other parks that open in winter and their prices.
+These prices apply from one metre in height. Children under 85 centimetres get in free. Children between 85 and 99 centimetres pay from €19 with a date and €22 without, and visitors aged 70 and over pay €22. The family ticket has no fixed date and is valid until 14 March: €75 for three people, €95 for four, €115 for five and €130 for six. For four people over one metre, single tickets work out cheaper on a Friday; on a Sunday the family ticket is the better deal. The annual pass costs €150 and covers a year of both Plopsaland and Majaland. For the other parks open this winter and their prices, see our [winter overview](/blog/winter-theme-parks-2026).
 
 ```best-days-widget slug=plopsaland-deutschland
 
