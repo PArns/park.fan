@@ -177,8 +177,8 @@ export function ParkCalendarDayDetail({
 
   const forecast = day.headlinerForecast;
   const hasForecast = !!forecast && forecast.rides.length > 0;
-  // The day's forecast can still carry a headliner a works window shuts; that row says so instead
-  // of printing a queue the ride will not have.
+  // The API leaves a ride a works window shuts out of the day's forecast, except where it could not
+  // read the windows; such a row says so instead of printing a queue the ride will not have.
   const worksIds = new Set(
     isClosed ? [] : (worksRides ?? []).flatMap((ride) => (ride.id ? [ride.id] : []))
   );

@@ -90,8 +90,9 @@ when (`worksEndLabel`: „bis 25. März", the year only where it changes). The g
 no window costs one filter; a day the park is shut draws no chip, and the chip stays in the status
 line so a cell never grows past the height `calendarGridReservation` reserved. The legend keys the
 icon only for a park that has a window. The day dialog lists the same rides (`WorksPeriodList`),
-and a headliner among them reads „Wartung" in the forecast list instead of a wait, since the
-API's day forecast still carries it.
+and a headliner among them reads „Wartung" in the forecast list instead of a wait. The API leaves
+such a ride out of the day's average, level and headliner list (PAR-1255), so that row appears only
+where it could not read the windows and served the day without them.
 
 ## The day dialog
 
