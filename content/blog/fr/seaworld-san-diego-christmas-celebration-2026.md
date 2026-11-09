@@ -72,7 +72,7 @@ La page de l’événement donne le 13 novembre comme premier jour. Dans le cale
 
 ## Billets, parking et options
 
-Le prix dépend du jour. Pendant la prévente du Black Friday, un billet d’une journée à date fixe coûte à partir de 59,99 $, contre 130,99 $ au tarif normal. SeaWorld n’a pas annoncé la date de fin de la prévente. L’Any Day Ticket, valable un jour au choix jusqu’au 31 mars 2027, coûte 64,99 $. La Fun Card 2027, à 77,99 $, vaut dès maintenant et jusqu’à fin 2027, donc pour toute la Christmas Celebration. Les enfants de deux ans et moins entrent gratuitement. Un billet deux parcs avec Sesame Place San Diego coûte 104,99 $, et l’All-Day Dining ajoute 40 $ au prix du billet. Une place de parking réservée coûte à partir de 37 $ ; avec un abonnement annuel, le parking normal est compris.
+Le prix dépend du jour. Pendant la prévente du Black Friday, un billet d’une journée à date fixe coûte à partir de 59,99 $, contre 130,99 $ au tarif normal. SeaWorld n’a pas annoncé la date de fin de la prévente. L’Any Day Ticket, valable un jour au choix jusqu’au 31 mars 2027, coûte 64,99 $. La Fun Card 2027, à 77,99 $, vaut dès maintenant et jusqu’à fin 2027, donc pour toute la Christmas Celebration. Les enfants de deux ans et moins entrent gratuitement. Un billet deux parcs avec Sesame Place San Diego coûte 104,99 $, et l’All-Day Dining ajoute 40 $ au prix du billet. Une place de parking réservée coûte à partir de 37 $ ; avec un abonnement annuel qui inclut l’avantage parking, le parking normal est compris.
 
 Le Festive Food & Seasonal Sips Lanyard, avec 5 ou 10 dégustations, coûte à partir de 45 $. Dine with Orcas & Santa a lieu du 13 novembre au 24 décembre, à partir de 59,99 $ pour les adultes et de 39,99 $ pour les enfants. Le New Year’s Eve Family Bash coûte 74,99 $, et 39,99 $ pour les enfants. Pour la chasse au trésor Snowflake Seeker’s, on achète une carte à The Christmas Shoppe, et c’est là aussi qu’on l’échange, une fois remplie, contre un cadeau.
 
@@ -84,7 +84,7 @@ SeaWorld San Diego se trouve au 500 Sea World Drive, à San Diego. Sans voiture,
 
 En 2025, la nouveauté de l’événement de Noël s’appelait SeaWorld San Diego Sea Lion Christmas, et le billet de l’offre Black Friday coûtait alors 49,99 $.
 
-Entre deux spectacles et les illuminations, quatre montagnes russes attendent ceux qui veulent rouler :
+Entre deux spectacles et les illuminations, ceux qui veulent rouler trouvent entre autres ces quatre montagnes russes :
 
 - [Emperor](ref:seaworld-san-diego/emperor), dive coaster sans plancher avec une chute à 90 degrés et jusqu’à 97 km/h (60 mph) : 132 cm (52 pouces), 198 cm (78 pouces) au maximum
 - [Manta](ref:seaworld-san-diego/manta), montagne russe à lancement : 122 cm (48 pouces)

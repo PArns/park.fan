@@ -72,7 +72,7 @@ De evenementpagina noemt 13 november als eerste dag. In de parkkalender heet die
 
 ## Tickets, parkeren en extra's
 
-De prijs hangt af van de dag. In de Black Friday-voorverkoop kost een dagticket met vaste datum vanaf 59,99 dollar, normaal 130,99 dollar. Wanneer die voorverkoop stopt, heeft SeaWorld niet bekendgemaakt. Het Any Day Ticket, voor een dag naar keuze tot 31 maart 2027, kost 64,99 dollar. De Fun Card 2027 van 77,99 dollar geldt vanaf nu tot eind 2027, dus ook al voor de hele Christmas Celebration. Kinderen tot en met twee jaar mogen gratis naar binnen. Een ticket voor twee parken, samen met Sesame Place San Diego, kost 104,99 dollar, en All-Day Dining komt voor 40 dollar bij het ticket. Een gereserveerde parkeerplaats kost vanaf 37 dollar; met een jaarkaart is gewoon parkeren inbegrepen.
+De prijs hangt af van de dag. In de Black Friday-voorverkoop kost een dagticket met vaste datum vanaf 59,99 dollar, normaal 130,99 dollar. Wanneer die voorverkoop stopt, heeft SeaWorld niet bekendgemaakt. Het Any Day Ticket, voor een dag naar keuze tot 31 maart 2027, kost 64,99 dollar. De Fun Card 2027 van 77,99 dollar geldt vanaf nu tot eind 2027, dus ook al voor de hele Christmas Celebration. Kinderen tot en met twee jaar mogen gratis naar binnen. Een ticket voor twee parken, samen met Sesame Place San Diego, kost 104,99 dollar, en All-Day Dining komt voor 40 dollar bij het ticket. Een gereserveerde parkeerplaats kost vanaf 37 dollar; bij jaarkaarten met parkeervoordeel is gewoon parkeren inbegrepen.
 
 Het Festive Food & Seasonal Sips Lanyard met 5 of 10 proeverijtjes kost vanaf 45 dollar. Dine with Orcas & Santa is er van 13 november tot kerstavond, vanaf 59,99 dollar voor volwassenen en 39,99 dollar voor kinderen. De New Year's Eve Family Bash kost 74,99 dollar, voor kinderen 39,99 dollar. Voor de speurtocht Snowflake Seeker's koop je een kaart in The Christmas Shoppe, en daar lever je de ingevulde kaart ook weer in voor een prijs.
 
@@ -84,7 +84,7 @@ SeaWorld San Diego ligt aan 500 Sea World Drive in San Diego. Zonder auto kom je
 
 In 2025 was SeaWorld San Diego Sea Lion Christmas de nieuwkomer van het kerstevenement, en in de Black Friday-actie kostte een ticket toen 49,99 dollar.
 
-Wie tussen de shows en de lichtjes door wil rijden, kan kiezen uit vier achtbanen:
+Wie tussen de shows en de lichtjes door wil rijden, vindt onder meer deze vier achtbanen:
 
 - [Emperor](ref:seaworld-san-diego/emperor), een floorless dive coaster met een val van 90 graden en tot 97 km/u (60 mph): 132 cm (52 inch), hoogstens 198 cm (78 inch)
 - [Manta](ref:seaworld-san-diego/manta), een launch coaster: 122 cm (48 inch)

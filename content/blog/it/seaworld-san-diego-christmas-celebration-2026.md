@@ -72,7 +72,7 @@ La pagina dell'evento indica il 13 novembre come primo giorno. Nel calendario de
 
 ## Biglietti, parcheggio ed extra
 
-Il prezzo cambia da un giorno all'altro. Nella prevendita del Black Friday il biglietto giornaliero con data fissa parte da 59,99 dollari, contro i 130,99 del prezzo pieno. Fino a quando duri la prevendita, SeaWorld non l'ha comunicato. L'Any Day Ticket, valido in un giorno a scelta fino al 31 marzo 2027, costa 64,99 dollari. La Fun Card 2027 da 77,99 dollari vale da subito fino alla fine del 2027, e quindi copre già tutta la Christmas Celebration. I bambini fino a due anni entrano gratis. Il biglietto per due parchi insieme al Sesame Place San Diego costa 104,99 dollari, e l'All-Day Dining aggiunge 40 dollari al biglietto. Un posto auto prenotato costa da 37 dollari; con l'abbonamento annuale il parcheggio normale è compreso.
+Il prezzo cambia da un giorno all'altro. Nella prevendita del Black Friday il biglietto giornaliero con data fissa parte da 59,99 dollari, contro i 130,99 del prezzo pieno. Fino a quando duri la prevendita, SeaWorld non l'ha comunicato. L'Any Day Ticket, valido in un giorno a scelta fino al 31 marzo 2027, costa 64,99 dollari. La Fun Card 2027 da 77,99 dollari vale da subito fino alla fine del 2027, e quindi copre già tutta la Christmas Celebration. I bambini fino a due anni entrano gratis. Il biglietto per due parchi insieme al Sesame Place San Diego costa 104,99 dollari, e l'All-Day Dining aggiunge 40 dollari al biglietto. Un posto auto prenotato costa da 37 dollari; con gli abbonamenti annuali che prevedono il parcheggio, quello normale è compreso.
 
 Il Festive Food & Seasonal Sips Lanyard, con 5 o 10 assaggi, costa da 45 dollari. Dine with Orcas & Santa si tiene dal 13 novembre alla Vigilia, da 59,99 dollari per gli adulti e 39,99 per i bambini. Il New Year's Eve Family Bash costa 74,99 dollari, 39,99 per i bambini. Per la caccia al tesoro Snowflake Seeker's si compra una scheda a The Christmas Shoppe, e lì stesso la scheda completata vale un premio.
 
@@ -84,7 +84,7 @@ SeaWorld San Diego si trova al 500 di Sea World Drive, a San Diego. Senza auto c
 
 Nel 2025 la novità dell'evento di Natale era SeaWorld San Diego Sea Lion Christmas, e con l'offerta del Black Friday il biglietto costava 49,99 dollari.
 
-Chi tra uno show e una passeggiata fra le luci vuole anche salire su qualcosa ha a disposizione quattro montagne russe, con queste altezze minime:
+Chi tra uno show e una passeggiata fra le luci vuole anche salire su qualcosa trova tra le altre queste quattro montagne russe, con le loro altezze minime:
 
 - [Emperor](ref:seaworld-san-diego/emperor), floorless dive coaster con una caduta a 90 gradi e fino a 97 km/h (60 mph): 132 cm (52 pollici), al massimo 198 cm (78 pollici)
 - [Manta](ref:seaworld-san-diego/manta), launch coaster: 122 cm (48 pollici)

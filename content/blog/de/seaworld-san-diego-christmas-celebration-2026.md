@@ -72,7 +72,7 @@ Die Eventseite nennt den 13. November als ersten Tag. Im Parkkalender heißt die
 
 ## Tickets, Parken und Extras
 
-Die Preise hängen vom Tag ab. Im Black-Friday-Vorverkauf kostet ein Tagesticket mit festem Datum ab 59,99 Dollar statt regulär 130,99 Dollar. Wann der Vorverkauf endet, hat SeaWorld nicht bekannt gegeben. Das Any Day Ticket für einen beliebigen Tag bis zum 31. März 2027 kostet 64,99 Dollar, die Fun Card 2027 für 77,99 Dollar gilt ab sofort bis Ende 2027 und damit schon für die ganze Christmas Celebration. Kinder bis zwei Jahre kommen umsonst hinein. Ein Zwei-Park-Ticket mit dem Sesame Place San Diego kostet 104,99 Dollar, All-Day Dining zum Ticket 40 Dollar mehr. Ein reservierter Parkplatz kostet ab 37 Dollar, mit Jahreskarte ist das normale Parken inklusive.
+Die Preise hängen vom Tag ab. Im Black-Friday-Vorverkauf kostet ein Tagesticket mit festem Datum ab 59,99 Dollar statt regulär 130,99 Dollar. Wann der Vorverkauf endet, hat SeaWorld nicht bekannt gegeben. Das Any Day Ticket für einen beliebigen Tag bis zum 31. März 2027 kostet 64,99 Dollar, die Fun Card 2027 für 77,99 Dollar gilt ab sofort bis Ende 2027 und damit schon für die ganze Christmas Celebration. Kinder bis zwei Jahre kommen umsonst hinein. Ein Zwei-Park-Ticket mit dem Sesame Place San Diego kostet 104,99 Dollar, All-Day Dining zum Ticket 40 Dollar mehr. Ein reservierter Parkplatz kostet ab 37 Dollar, bei Jahreskarten mit Parkvorteil ist das normale Parken inklusive.
 
 Das Festive Food & Seasonal Sips Lanyard mit 5 oder 10 Probierportionen kostet ab 45 Dollar. Dine with Orcas & Santa gibt es vom 13. November bis Heiligabend, ab 59,99 Dollar für Erwachsene und 39,99 Dollar für Kinder. Der New Year's Eve Family Bash kostet 74,99 Dollar, für Kinder 39,99 Dollar. Für die Schnitzeljagd Snowflake Seeker's kaufst du eine Karte in The Christmas Shoppe und bekommst dort für die ausgefüllte Karte einen Preis.
 
@@ -84,7 +84,7 @@ SeaWorld San Diego liegt am 500 Sea World Drive in San Diego. Ohne Auto kommst d
 
 2025 war die Neuheit des Weihnachtsevents eine SeaWorld San Diego Sea Lion Christmas, und im Black-Friday-Angebot kostete das Ticket damals 49,99 Dollar.
 
-Wer zwischen Shows und Lichtern fahren will, hat vier Achterbahnen zur Wahl:
+Wer zwischen Shows und Lichtern fahren will, findet unter anderem diese vier Achterbahnen:
 
 - [Emperor](ref:seaworld-san-diego/emperor), Floorless Dive Coaster mit 90-Grad-Fall und bis zu 97 km/h (60 mph): 132 cm (52 Zoll), höchstens 198 cm (78 Zoll)
 - [Manta](ref:seaworld-san-diego/manta), Launch Coaster: 122 cm (48 Zoll)
