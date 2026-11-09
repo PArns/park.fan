@@ -31,7 +31,7 @@ seo:
     - Christmas at Chessington 2026
 ---
 
-[Chessington World of Adventures Resort](ref:chessington-world-of-adventures?bare) in south-west London was evacuated on Sunday, 8 November, after a threat, and stayed closed for the rest of the day. The threat was made that morning, and Merlin Entertainments, which owns the resort, closed the theme park, the zoo and the hotel in consultation with the Metropolitan Police. Visitors who were just arriving were turned away at the gate. The Independent, the Mirror and the local news site London Now were among those reporting it.
+[Chessington World of Adventures Resort](ref:chessington-world-of-adventures?bare) in south-west London was evacuated on Sunday, 8 November, after a threat, and stayed closed for the rest of the day. The threat was made that morning, and Merlin Entertainments, which owns the resort, closed the theme park, the zoo and the hotel in consultation with the Metropolitan Police. Visitors who were just arriving were turned away at the gate. The Independent, the Mirror and London Now, a local news site, all reported the evacuation.
 
 Paramedics and police officers with sniffer dogs were at the entrance on Leatherhead Road. The A243, the road the resort sits on, was closed for a while in the afternoon. Neither the police nor Merlin have reported any injuries or arrests.
 
@@ -53,15 +53,15 @@ The police haven't disclosed what kind of threat it was or how it reached the re
 
 ## Tickets for Sunday
 
-If you'd booked for 8 November, the resort says you can use your ticket at [LEGOLAND Windsor](ref:legoland-windsor), which Merlin also owns, or contact customer services. The notice doesn't mention refunds, or a deadline for using the ticket in Windsor. LEGOLAND next opens on 21 November for LEGOLAND at Christmas, which runs on selected dates until 2 January. Our [LEGOLAND Windsor guide](/blog/legoland-windsor-tips) also lists the rides there that closed on 9 November and stay shut until February or March.
+If you'd booked for 8 November, the resort says you can use your ticket at [LEGOLAND Windsor](ref:legoland-windsor), which Merlin also owns, or contact customer services. There's nothing in the notice about refunds or about how long the ticket stays valid at Windsor. LEGOLAND is closed until 20 November. LEGOLAND at Christmas starts there on the 21st and runs on some days until 2 January, and several rides are shut from 9 November until February or March ([list in our LEGOLAND Windsor guide](/blog/legoland-windsor-tips)).
 
 ## When Chessington reopens
 
-The resort would have been closed until Friday anyway, because in November it only opens at weekends. The opening calendar reproduced by the local paper Kingston Wire and by Theme Park Guide contradicts the 14 November date in Merlin's statement. It has the resort closed from 9 to 20 November, with 21 November as the next open day. Merlin hasn't made clear whether the theme park opens on the 14th or only parts of the resort such as the zoo, so ask customer services before you go that weekend.
+The resort would have been closed until Friday anyway, because in November it only opens at weekends. In the opening calendar printed by the local paper Kingston Wire and the site Theme Park Guide, though, it stays shut over the weekend of 14 November as well and doesn't reopen until 21 November. Merlin hasn't made clear whether the theme park opens on the 14th or only parts of the resort such as the zoo, so ask customer services before you go that weekend.
 
-21 November is also when Christmas at Chessington starts. Until 24 December the resort opens on selected dates with a Christmas Village and Father Christmas's Grotto, and new for 2026 there's a panto, Cinderella. Theme park entry starts at £24 a person, or £32 online with the Christmas Village. The zoo and SEA LIFE are included either way. Over Christmas, Tiger Rock, Vampire, River Rafts, Zufari, Barrel Bail Out!, Croc Drop and Seastorm are closed for maintenance. From 27 December to 3 January the park opens again on selected dates, without the Christmas Village, from £20.
+21 November is also when Christmas at Chessington starts. Until 24 December the resort opens on 18 days with a Christmas Village and Father Christmas's Grotto, and this year's pantomime is Cinderella. Theme park entry starts at £24 a person, or £32 online with the Christmas Village. The zoo and SEA LIFE are included either way. Tiger Rock, Vampire, River Rafts, Zufari, Barrel Bail Out!, Croc Drop and Seastorm are closed for maintenance over Christmas. The park opens again on a few days between 27 December and 3 January, with tickets from £20 but no Christmas Village.
 
-Chessington is a zoo and a theme park in one, about 19 kilometres (12 miles) south-west of central London in the borough of Kingston upon Thames. The zoo has been there since 1931, and the Tussauds Group opened the theme park next to it in 1987. In 2007 Merlin took over the Tussauds Group, and Chessington with it.
+The resort is in the borough of Kingston upon Thames, about 19 kilometres (12 miles) south-west of central London. The zoo has been there since 1931, and the theme park next to it was opened in 1987 by the Tussauds Group, which Merlin took over in 2007.
 
 [Chessington World of Adventures](ref:chessington-world-of-adventures?full)
 
