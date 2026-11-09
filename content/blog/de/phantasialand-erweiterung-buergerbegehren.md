@@ -43,7 +43,7 @@ seo:
 ---
 
 > [!UPDATE] 2026-11-09
-> Das Netzwerk NSG Ententeich hat am 9. November 5.656 Unterschriften bei der Stadtverwaltung abgegeben, berichten RTL West und [Radio Erft](https://www.radioerft.de/artikel/bruehl-ueber-5000-unterschriften-gegen-freizeitpark-ausbau-2801949). Die Stadt prüft jetzt, wie viele gültig sind, danach entscheidet der Rat, ob das Bürgerbegehren zulässig ist. [Wie es nach der Übergabe weitergeht](/news/phantasialand-erweiterung-unterschriften-abgegeben), steht in unserem neuen Beitrag.
+> Das Netzwerk NSG Ententeich hat am 9. November 5.656 Unterschriften bei der Stadtverwaltung abgegeben, berichten der [WDR](https://www1.wdr.de/nrw/rheinland/rhein-erft-kreis/buergerbegehren-phantasialand-eingereicht-100.html) und [Radio Erft](https://www.radioerft.de/artikel/bruehl-ueber-5000-unterschriften-gegen-freizeitpark-ausbau-2801949). Die Stadt prüft jetzt, wie viele gültig sind, danach entscheidet der Rat, ob das Bürgerbegehren zulässig ist. Das Phantasialand will, dass das Verfahren weitergeht, bis die Gutachten vorliegen. [Wie es nach der Übergabe weitergeht](/news/phantasialand-erweiterung-unterschriften-abgegeben), steht in unserem neuen Beitrag.
 
 Seit Montag, dem 28. September, sammelt das Netzwerk NSG Ententeich in Brühl
 Unterschriften gegen die Erweiterung des [Phantasialands](ref:phantasialand).

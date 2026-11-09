@@ -7,7 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Desde el 9 de noviembre, el ayuntamiento de Brühl tiene 5.656 firmas contra la ampliación de Phantasialand, más del doble de las necesarias. Que Brühl vote depende del pleno municipal y de si una iniciativa ciudadana puede siquiera anular un acuerdo urbanístico.
+  Desde el 9 de noviembre, el ayuntamiento de Brühl tiene 5.656 firmas contra la ampliación de Phantasialand, más del doble de las necesarias. Que Brühl vote depende del pleno municipal y de si una iniciativa ciudadana puede siquiera anular un acuerdo urbanístico. El parque quiere que el procedimiento siga hasta que estén los estudios.
 tags:
   - news
   - phantasialand
@@ -37,7 +37,7 @@ seo:
     - contrapetición Phantasialand
 ---
 
-El lunes 9 de noviembre, el Netzwerk NSG Ententeich entregó en el ayuntamiento de Brühl 5.656 firmas para su iniciativa ciudadana contra la ampliación de [Phantasialand](ref:phantasialand), según informan RTL West y Radio Erft. Hacen falta 2.536 firmas válidas de electores de Brühl, y la red las recogía desde el 28 de septiembre. Los planes del parque para el terreno y los antecedentes del conflicto están en nuestro [artículo sobre el inicio de la recogida de firmas](/news/phantasialand-ampliacion-recogida-de-firmas).
+El lunes 9 de noviembre, el Netzwerk NSG Ententeich entregó en el ayuntamiento de Brühl 5.656 firmas para su iniciativa ciudadana contra la ampliación de [Phantasialand](ref:phantasialand), según informan la WDR y Radio Erft. Hacen falta 2.536 firmas válidas de electores de Brühl, y la red las recogía desde el 28 de septiembre. Los planes del parque para el terreno y los antecedentes del conflicto están en nuestro [artículo sobre el inicio de la recogida de firmas](/news/phantasialand-ampliacion-recogida-de-firmas).
 
 Dentro del parque no se nota nada del conflicto por el Ententeich, porque Phantasialand solo puede construir en el terreno cuando esté en vigor un plan urbanístico, y la ciudad todavía trabaja en él.
 
@@ -45,24 +45,35 @@ Dentro del parque no se nota nada del conflicto por el Ententeich, porque Phanta
 
 Primero la ciudad comprueba cuántas firmas son válidas. Después el pleno municipal decide si la iniciativa es admisible. El código municipal de Renania del Norte-Westfalia excluye los planes urbanísticos de las iniciativas ciudadanas. Solo se admite una contra el acuerdo de iniciar un procedimiento urbanístico. La red quiere anular los acuerdos del 9 de julio con los que la comisión de urbanismo inició el procedimiento del plan 06.01. Si una iniciativa puede exigir una anulación así, la propia red lo deja abierto en su web.
 
-En cuanto el pleno declare admisible la iniciativa, la ciudad no podrá decidir ni ejecutar nada que vaya en su contra hasta el referéndum. El pleno puede entonces asumir la petición, y el procedimiento se acabaría. Si la rechaza, Brühl tiene que votar en un plazo de tres meses. En la comisión de urbanismo, el 9 de julio, la CDU, el SPD y FDP/Volt votaron a favor del procedimiento, y Los Verdes y Die Linke en contra. Los mismos grupos deciden ahora en el pleno. La ciudad aún no ha anunciado una fecha para la sesión.
+En cuanto el pleno declare admisible la iniciativa, la ciudad no podrá decidir ni ejecutar nada que vaya en su contra hasta el referéndum. El pleno puede entonces asumir la petición, y el procedimiento se acabaría. La propia red no cuenta con ello. Si el pleno la rechaza, Brühl tiene que votar en un plazo de tres meses. En la comisión de urbanismo, el 9 de julio, la CDU, el SPD y FDP/Volt votaron a favor del procedimiento, y Los Verdes y Die Linke en contra. Los mismos grupos deciden ahora en el pleno. La ciudad aún no ha anunciado una fecha para la sesión.
 
 ## Qué necesita un referéndum
 
-En el referéndum, una mayoría del sí solo cuenta si equivale al menos al 20 por ciento de todo el censo. Con los 36.227 electores con los que cuenta la red, son 7.246 votos, casi 1.600 más que las firmas que acaba de entregar.
+En el referéndum, una mayoría del sí solo cuenta si equivale al menos al 20 por ciento de todo el censo. Con los 36.227 electores con los que cuenta la red, son 7.246 votos, casi 1.600 más que las firmas que acaba de entregar. Christine Hölzmann, de la red, dijo a la WDR que eso «ya no está tan lejos» y que son «bastante optimistas».
 
-Si el referéndum prospera, el procedimiento de la ampliación se acaba. El resultado tiene el efecto de un acuerdo del pleno, y durante los dos primeros años solo puede cambiarlo un nuevo referéndum convocado por el pleno. Los estudios que paga Phantasialand para el procedimiento aún no se han publicado. Abarcan siete campos, entre ellos la protección de especies, el ruido y el régimen hídrico, y el estudio del agua analiza también qué pasaría con el Ententeich. Me habría gustado ver esos resultados antes de que Brühl vote sobre el terreno.
+Si el referéndum prospera, el procedimiento de la ampliación se acaba. El resultado tiene el efecto de un acuerdo del pleno, y durante los dos primeros años solo puede cambiarlo un nuevo referéndum convocado por el pleno.
 
 ## Qué dicen el parque y los partidarios
 
-El parque justifica la ampliación con las escapadas cortas en su página [«Standortsicherung»](https://www.phantasialand.de/de/rechtliches/standortsicherung/). Para que más visitantes pasen la noche, dice que necesita una oferta para estancias más largas, y en sus unas 28 hectáreas no le queda sitio. Con las unas 15 hectáreas que el plan regional le reserva desde 2013, Phantasialand pasaría a algo más de 40 hectáreas. Aun así seguiría siendo algo más pequeño que [Movie Park Germany](ref:movie-park-germany), en Bottrop, que da una superficie propia de unas 45 hectáreas.
+El lunes también reaccionó Phantasialand. Un portavoz dijo a la WDR:
+
+> [!QUOTE]
+> Queremos que el procedimiento del plan urbanístico siga adelante. Porque para nosotros, primero los hechos y después la decisión.
+>
+> [de] Wir wollen, dass das Bebauungsplanverfahren weitergeht. Denn für uns gilt: Erst die Fakten, dann die Entscheidung.
+>
+> Un portavoz de Phantasialand a la [WDR el 9 de noviembre de 2026](https://www1.wdr.de/nrw/rheinland/rhein-erft-kreis/buergerbegehren-phantasialand-eingereicht-100.html), traducido del alemán
+
+Si el procedimiento se detuviera ahora, argumenta el parque, no estarían sobre la mesa todos los hechos para una valoración seria. Los estudios que paga abarcan siete campos, entre ellos la protección de especies, el ruido y el régimen hídrico, y el estudio del agua analiza también qué pasaría con el Ententeich. La ciudad los revisa en el procedimiento y publica después los resultados. Me habría gustado verlos antes de que Brühl vote sobre el terreno.
+
+En la misma declaración, el parque habla de los empleos. Se trata de «los unos 1.800 empleados que Phantasialand tiene hoy y los unos 2.600 que tendrá, y de la gente de nuestros proveedores». En su página [«Standortsicherung»](https://www.phantasialand.de/de/rechtliches/standortsicherung/) justifica la ampliación con las escapadas cortas. Para que más visitantes pasen la noche, dice que necesita una oferta para estancias más largas, y en sus unas 28 hectáreas no le queda sitio. Con las unas 15 hectáreas que el plan regional le reserva desde 2013, Phantasialand pasaría a algo más de 40 hectáreas. Aun así seguiría siendo algo más pequeño que [Movie Park Germany](ref:movie-park-germany), en Bottrop, que da una superficie propia de unas 45 hectáreas.
 
 Desde mayo, una [contrapetición](/news/phantasialand-ampliacion-peticion-online) en openPetition defiende la ampliación. Sigue abierta hasta el 23 de noviembre. A principios de noviembre la habían firmado 211 personas, 52 de ellas de Brühl. Solo a partir de 740 firmas de Brühl pide openPetition a los concejales que se posicionen.
 
 [Phantasialand](ref:phantasialand?full)
 
 Fuentes:
-[Entrega y número de firmas (RTL West en Instagram)](https://www.instagram.com/rtlwest/),
+[Entrega, número de firmas, reacción del parque y Christine Hölzmann (WDR, en alemán)](https://www1.wdr.de/nrw/rheinland/rhein-erft-kreis/buergerbegehren-phantasialand-eingereicht-100.html),
 [Más de 5.000 firmas contra la ampliación (Radio Erft, en alemán)](https://www.radioerft.de/artikel/bruehl-ueber-5000-unterschriften-gegen-freizeitpark-ausbau-2801949),
 [Quórum, electores y admisibilidad (Netzwerk NSG Ententeich)](https://nsg-ententeich.de/buegerbegehren.html),
 [Admisibilidad, efecto suspensivo, plazo y vinculación (artículo 26 del código municipal de NRW)](https://lexmea.de/de/gesetz/go-nrw/26),

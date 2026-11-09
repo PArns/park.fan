@@ -44,7 +44,7 @@ seo:
 ---
 
 > [!UPDATE] 2026-11-09
-> Il 9 novembre il Netzwerk NSG Ententeich ha consegnato 5.656 firme all’amministrazione comunale, riferiscono RTL West e [Radio Erft](https://www.radioerft.de/artikel/bruehl-ueber-5000-unterschriften-gegen-freizeitpark-ausbau-2801949). Ora il comune verifica quante sono valide, poi il consiglio decide se l’iniziativa è ammissibile. [Che cosa succede dopo la consegna](/news/phantasialand-ampliamento-firme-consegnate) lo trovi nel nostro nuovo articolo.
+> Il 9 novembre il Netzwerk NSG Ententeich ha consegnato 5.656 firme all’amministrazione comunale, riferiscono la [WDR](https://www1.wdr.de/nrw/rheinland/rhein-erft-kreis/buergerbegehren-phantasialand-eingereicht-100.html) e [Radio Erft](https://www.radioerft.de/artikel/bruehl-ueber-5000-unterschriften-gegen-freizeitpark-ausbau-2801949). Ora il comune verifica quante sono valide, poi il consiglio decide se l’iniziativa è ammissibile. Phantasialand vuole che la procedura vada avanti finché non ci sono gli studi. [Che cosa succede dopo la consegna](/news/phantasialand-ampliamento-firme-consegnate) lo trovi nel nostro nuovo articolo.
 
 Da lunedì 28 settembre il Netzwerk NSG Ententeich, una rete di gruppi locali di
 Brühl, raccoglie firme contro l’ampliamento di
