@@ -360,7 +360,7 @@ The controls protect three distinctions:
 - **A URL is opened, not just typed.** Every `url` field has a button that opens it in a new tab;
   no validation can check that a link goes where it should.
 
-A ride's works windows (group „Umbaupause“) are one `periods` field, `curatedOutOfServicePeriods`:
+A ride's works windows (group „Wartung“) are one `periods` field, `curatedOutOfServicePeriods`:
 rows of „ab“, „bis“ and „Ende geschätzt“, added and removed in place. The list is saved whole and
 sorted. The editor runs the API's checks first (`app/admin/_lib/works-periods.ts`): a bound per
 row, „ab“ not after „bis“, „Ende geschätzt“ only with a „bis“, no overlap with both days inclusive,
