@@ -51,15 +51,13 @@ Ook nieuw is Coca-Cola Lane, een lichtjespad in rood en wit met muziek. Het Twin
 
 ## Wat terugkomt
 
-Clyde en Seamore spelen in het Sea Lion Stadium weer hun Christmas Special, met zeeleeuwen, otters en hun trainers. In Toymaker Trouble with Mrs. Claus and the Elves is de kerststemming van Sparky, de hoofdspeelgoedmaker, vlak voor de cadeaus weg. Mrs. Claus haalt die met drie elfen terug. A Stocking Full of Soul brengt kerstliedjes en dans naar het Nautilus Amphitheater. Vooraan in het park speelt elke avond Donner and Blitzen's Lazer Light Show.
+Clyde en Seamore spelen in het Sea Lion Stadium weer hun Christmas Special, met zeeleeuwen, otters en hun trainers. In Toymaker Trouble with Mrs. Claus and the Elves raakt hoofdspeelgoedmaker Sparky zijn kerststemming kwijt vlak voordat de cadeaus rondgaan, wat voor een speelgoedmaker zo ongeveer de slechtst denkbare week is, en Mrs. Claus heeft drie elfen nodig om die terug te halen. In het Nautilus Amphitheater wordt bij A Stocking Full of Soul gedanst op kerstliedjes. Als het donker is, speelt vooraan in het park Donner and Blitzen's Lazer Light Show.
 
 Op de Holiday Plaza gaat elke avond de ongeveer negen meter (30 voet) hoge kerstboom aan. De SkyTower wordt de zo'n 98 meter (320 voet) hoge Tree of Lights, en de palmbomen zijn verlicht als zuurstokken. De kerstman vind je in Santa's Cottage op de SkyTower Lawn. Twee van zijn rendieren staan bij Rentals, Rudolph in de Holly Jolly Marketplace. Het vuurwerk A Christmas Wish is er maar twee keer: op zaterdag 12 december en op oudejaarsavond.
 
-In 2025 was SeaWorld San Diego Sea Lion Christmas de nieuwkomer van het kerstevenement.
-
 ## Openingstijden in november
 
-De eerste dag, vrijdag 13 november, is in de parkkalender een voorpremière voor wie een jaarkaart heeft (Christmas Celebration Pass Member Preview). Het park is dan open van 10.00 tot 21.00 uur. Vanaf zaterdag 14 november loopt de Christmas Celebration tijdens de gewone openingstijden, in lokale tijd:
+Wie een jaarkaart heeft, is op vrijdag 13 november als eerste aan de beurt, bij de voorpremière Christmas Celebration Pass Member Preview. Het park is dan open van 10.00 tot 21.00 uur. Vanaf zaterdag 14 november loopt de Christmas Celebration tijdens de gewone openingstijden, in lokale tijd:
 
 - zaterdag 14 en zondag 15 november: 9.00 tot 19.00 uur
 - maandag 16 tot en met donderdag 19 november: 10.00 tot 18.00 uur
@@ -74,9 +72,9 @@ De eerste dag, vrijdag 13 november, is in de parkkalender een voorpremière voor
 
 ## Tickets, parkeren en extra's
 
-In de Black Friday-voorverkoop kost een dagticket met vaste datum afhankelijk van de dag vanaf 59,99 dollar, normaal 130,99 dollar. In de Black Friday-actie van 2025 kostte het ticket 49,99 dollar. Wanneer die voorverkoop stopt, heeft SeaWorld niet bekendgemaakt. Het Any Day Ticket, voor een dag naar keuze tot 31 maart 2027, kost 64,99 dollar. De Fun Card 2027 van 77,99 dollar geldt vanaf nu tot eind 2027, dus ook al voor de hele Christmas Celebration. Kinderen tot en met twee jaar mogen gratis naar binnen. Een ticket voor twee parken, samen met Sesame Place San Diego, kost 104,99 dollar, en All-Day Dining komt voor 40 dollar bij het ticket. Een gereserveerde parkeerplaats kost vanaf 37 dollar; bij jaarkaarten met parkeervoordeel is gewoon parkeren inbegrepen.
+In de Black Friday-voorverkoop kost een dagticket met vaste datum afhankelijk van de dag vanaf 59,99 dollar, normaal 130,99 dollar. Een jaar geleden ging hetzelfde ticket in de Black Friday-actie nog voor 49,99 dollar weg, dus ook de korting is duurder geworden. Wanneer die voorverkoop stopt, heeft SeaWorld niet bekendgemaakt. Het Any Day Ticket, voor een dag naar keuze tot 31 maart 2027, kost 64,99 dollar. De Fun Card 2027 van 77,99 dollar geldt vanaf nu tot eind 2027, dus ook al voor de hele Christmas Celebration. Kinderen tot en met twee jaar mogen gratis naar binnen. Een ticket voor twee parken, samen met Sesame Place San Diego, kost 104,99 dollar, en met All-Day Dining wordt elk ticket 40 dollar duurder. Een gereserveerde parkeerplaats kost vanaf 37 dollar; bij jaarkaarten met parkeervoordeel is gewoon parkeren inbegrepen.
 
-Het Festive Food & Seasonal Sips Lanyard met 5 of 10 proeverijtjes kost vanaf 45 dollar. Dine with Orcas & Santa is er van 13 november tot kerstavond, vanaf 59,99 dollar voor volwassenen en 39,99 dollar voor kinderen. De New Year's Eve Family Bash kost 74,99 dollar, voor kinderen 39,99 dollar. Voor de speurtocht Snowflake Seeker's koop je een kaart in The Christmas Shoppe, en daar lever je de ingevulde kaart ook weer in voor een prijs.
+Het Festive Food & Seasonal Sips Lanyard met 5 of 10 proeverijtjes kost vanaf 45 dollar. Dine with Orcas & Santa is er van 13 november tot kerstavond, vanaf 59,99 dollar voor volwassenen en 39,99 dollar voor kinderen. Op oudejaarsavond, de tweede avond met vuurwerk, kost de New Year's Eve Family Bash 74,99 dollar, voor kinderen 39,99 dollar. Voor de speurtocht Snowflake Seeker's koop je een kaart in The Christmas Shoppe, en daar lever je de ingevulde kaart ook weer in voor een prijs.
 
 ## Bereikbaarheid
 
@@ -84,7 +82,7 @@ SeaWorld San Diego ligt aan 500 Sea World Drive in San Diego. Zonder auto kom je
 
 ## Achtbanen
 
-Wie tussen de shows en de lichtjes door wil rijden, vindt onder meer deze vier achtbanen:
+Wie even genoeg heeft van Baby Shark, kan onder meer in deze vier achtbanen terecht:
 
 - [Emperor](ref:seaworld-san-diego/emperor), een floorless dive coaster met een val van 90 graden en tot 97 km/u (60 mph): minimumlengte 132 cm (52 inch), maximaal 198 cm (78 inch)
 - [Manta](ref:seaworld-san-diego/manta), een launch coaster: minimumlengte 122 cm (48 inch)

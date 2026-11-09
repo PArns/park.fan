@@ -51,15 +51,13 @@ Nuova è anche la Coca-Cola Lane, un percorso di luci rosse e bianche con la mus
 
 ## Cosa torna
 
-Al Sea Lion Stadium Clyde e Seamore ripropongono il loro Christmas Special, con leoni marini, lontre e addestratori. In Toymaker Trouble with Mrs. Claus and the Elves Sparky, il capo dei giocattolai, perde lo spirito natalizio poco prima della consegna dei regali. Tocca a Mrs. Claus e a tre elfi farglielo ritrovare. A Stocking Full of Soul porta canti di Natale e danza al Nautilus Amphitheater. Ogni sera, nella parte anteriore del parco, c'è Donner and Blitzen's Lazer Light Show.
+Al Sea Lion Stadium Clyde e Seamore ripropongono il loro Christmas Special, con leoni marini, lontre e addestratori. In Toymaker Trouble with Mrs. Claus and the Elves Sparky, il capo dei giocattolai, perde lo spirito natalizio poco prima della consegna dei regali, cioè proprio nell'unica settimana in cui un giocattolaio non può permettersi distrazioni, e a Mrs. Claus servono tre elfi per farglielo ritrovare. Al Nautilus Amphitheater, con A Stocking Full of Soul, si balla sui canti di Natale. Quando fa buio, nella parte anteriore del parco parte Donner and Blitzen's Lazer Light Show.
 
 Sulla Holiday Plaza ogni sera si accende l'albero di Natale alto circa nove metri (30 piedi). Lo SkyTower diventa il Tree of Lights, alto circa 98 metri (320 piedi), e le palme sono illuminate come bastoncini di zucchero. Babbo Natale si incontra nella Santa's Cottage sul SkyTower Lawn; due delle sue renne stanno da Rentals, Rudolph nell'Holly Jolly Marketplace. I fuochi d'artificio A Christmas Wish ci sono soltanto due volte, sabato 12 dicembre e a San Silvestro.
 
-Nel 2025 la novità dell'evento di Natale era SeaWorld San Diego Sea Lion Christmas.
-
 ## Orari di novembre
 
-Il primo giorno, venerdì 13 novembre, nel calendario del parco è un'anteprima per chi ha l'abbonamento annuale, la Christmas Celebration Pass Member Preview. Quel giorno il parco è aperto dalle 10 alle 21. Da sabato 14 novembre la Christmas Celebration segue i normali orari di apertura, in ora locale:
+Chi ha l'abbonamento annuale entra per primo venerdì 13 novembre, all'anteprima Christmas Celebration Pass Member Preview. Quel giorno il parco è aperto dalle 10 alle 21. Da sabato 14 novembre la Christmas Celebration segue i normali orari di apertura, in ora locale:
 
 - sabato 14 e domenica 15 novembre: dalle 9 alle 19
 - da lunedì 16 a giovedì 19 novembre: dalle 10 alle 18
@@ -74,9 +72,9 @@ Il primo giorno, venerdì 13 novembre, nel calendario del parco è un'anteprima 
 
 ## Biglietti, parcheggio ed extra
 
-Nella prevendita del Black Friday il biglietto giornaliero con data fissa parte, a seconda del giorno, da 59,99 dollari, contro i 130,99 del prezzo pieno. Con l'offerta del Black Friday 2025 il biglietto costava 49,99 dollari. Fino a quando duri la prevendita, SeaWorld non l'ha comunicato. L'Any Day Ticket, valido in un giorno a scelta fino al 31 marzo 2027, costa 64,99 dollari. La Fun Card 2027 da 77,99 dollari vale da subito fino alla fine del 2027, e quindi copre già tutta la Christmas Celebration. I bambini fino a due anni entrano gratis. Il biglietto per due parchi insieme al Sesame Place San Diego costa 104,99 dollari, e l'All-Day Dining aggiunge 40 dollari al biglietto. Un posto auto prenotato costa da 37 dollari; con gli abbonamenti annuali che hanno il vantaggio parcheggio, il parcheggio normale è compreso.
+Nella prevendita del Black Friday il biglietto giornaliero con data fissa parte, a seconda del giorno, da 59,99 dollari, contro i 130,99 del prezzo pieno. Un anno fa lo stesso biglietto del Black Friday costava 49,99 dollari, quindi è rincarato perfino lo sconto. Fino a quando duri la prevendita, SeaWorld non l'ha comunicato. L'Any Day Ticket, valido in un giorno a scelta fino al 31 marzo 2027, costa 64,99 dollari. La Fun Card 2027 da 77,99 dollari vale da subito fino alla fine del 2027, e quindi copre già tutta la Christmas Celebration. I bambini fino a due anni entrano gratis. Il biglietto per due parchi insieme al Sesame Place San Diego costa 104,99 dollari, e con l'All-Day Dining ogni biglietto costa 40 dollari in più. Un posto auto prenotato costa da 37 dollari; con gli abbonamenti annuali che hanno il vantaggio parcheggio, il parcheggio normale è compreso.
 
-Il Festive Food & Seasonal Sips Lanyard, con 5 o 10 assaggi, costa da 45 dollari. Dine with Orcas & Santa si tiene dal 13 novembre alla Vigilia, da 59,99 dollari per gli adulti e 39,99 per i bambini. Il New Year's Eve Family Bash costa 74,99 dollari, 39,99 per i bambini. Per la caccia al tesoro Snowflake Seeker's si compra una scheda a The Christmas Shoppe, e lì stesso la scheda completata vale un premio.
+Il Festive Food & Seasonal Sips Lanyard, con 5 o 10 assaggi, costa da 45 dollari. Dine with Orcas & Santa si tiene dal 13 novembre alla Vigilia, da 59,99 dollari per gli adulti e 39,99 per i bambini. A San Silvestro, la seconda sera con i fuochi d'artificio, il New Year's Eve Family Bash costa 74,99 dollari, 39,99 per i bambini. Per la caccia al tesoro Snowflake Seeker's si compra una scheda a The Christmas Shoppe, e lì stesso la scheda completata vale un premio.
 
 ## Come arrivare
 
@@ -84,7 +82,7 @@ SeaWorld San Diego si trova al 500 di Sea World Drive, a San Diego. Senza auto c
 
 ## Le montagne russe
 
-Chi tra uno show e una passeggiata fra le luci vuole anche salire su qualcosa trova tra le altre queste quattro montagne russe:
+Per una pausa da Baby Shark, ecco quattro delle montagne russe del parco:
 
 - [Emperor](ref:seaworld-san-diego/emperor), floorless dive coaster con una caduta a 90 gradi e fino a 97 km/h (60 mph): altezza minima 132 cm (52 pollici), massima 198 cm (78 pollici)
 - [Manta](ref:seaworld-san-diego/manta), launch coaster: altezza minima 122 cm (48 pollici)

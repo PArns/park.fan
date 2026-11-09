@@ -51,15 +51,13 @@ Coca-Cola Lane is new too, a red-and-white path of lights set to music. The Twin
 
 ## What's back
 
-Clyde and Seamore return to Sea Lion Stadium with their Christmas Special, along with sea lions, otters and their trainers. In Toymaker Trouble with Mrs. Claus and the Elves, head toymaker Sparky loses his Christmas spirit just before the presents go out. Mrs. Claus and three elves have to get it back for him. A Stocking Full of Soul brings Christmas songs and dancing to the Nautilus Amphitheater. Donner and Blitzen's Lazer Light Show plays at the front of the park every night.
+Clyde and Seamore return to Sea Lion Stadium with their Christmas Special, along with sea lions, otters and their trainers. In Toymaker Trouble with Mrs. Claus and the Elves, head toymaker Sparky loses his Christmas spirit just before the presents go out, which is about the worst week a toymaker could pick, and Mrs. Claus needs three elves to get it back. At the Nautilus Amphitheater, A Stocking Full of Soul is Christmas songs and dancing. Once it's dark, Donner and Blitzen's Lazer Light Show plays at the front of the park.
 
-On Holiday Plaza, a 30-foot (9-meter) Christmas tree lights up each evening. The SkyTower turns into the 320-foot (98-meter) Tree of Lights, and the palm trees are lit like candy canes. You'll find Santa at Santa's Cottage on the SkyTower Lawn; two of his reindeer stand by Rentals, and Rudolph is in the Holly Jolly Marketplace. The fireworks show A Christmas Wish happens only twice, on Saturday, December 12, and on New Year's Eve.
-
-In 2025, the new addition to the Christmas event was a SeaWorld San Diego Sea Lion Christmas.
+On Holiday Plaza, a 30-foot (9-meter) Christmas tree lights up every evening. The SkyTower turns into the 320-foot (98-meter) Tree of Lights, and the palm trees are lit like candy canes. You'll find Santa at Santa's Cottage on the SkyTower Lawn; two of his reindeer stand by Rentals, and Rudolph is in the Holly Jolly Marketplace. The fireworks show A Christmas Wish happens only twice, on Saturday, December 12, and on New Year's Eve.
 
 ## Hours in November
 
-The first day, Friday, November 13, is a preview for annual pass holders in the park calendar, the Christmas Celebration Pass Member Preview. The park is open from 10 am to 9 pm that day. From Saturday, November 14, the Christmas Celebration runs during regular park hours, local time:
+If you have an annual pass, you're first in on Friday, November 13, at the Christmas Celebration Pass Member Preview. The park is open from 10 am to 9 pm that day. From Saturday, November 14, the Christmas Celebration runs during regular park hours, local time:
 
 - Saturday, November 14, and Sunday, November 15: 9 am to 7 pm
 - Monday, November 16, to Thursday, November 19: 10 am to 6 pm
@@ -74,9 +72,9 @@ The first day, Friday, November 13, is a preview for annual pass holders in the 
 
 ## Tickets, parking and extras
 
-In the Black Friday sale, a date-specific day ticket starts at $59.99, depending on the day, instead of the regular $130.99. In the 2025 Black Friday deal, the ticket cost $49.99. SeaWorld hasn't announced when the sale ends. The Any Day Ticket, good for one day of your choice through March 31, 2027, costs $64.99. The 2027 Fun Card, at $77.99, is valid from now until the end of 2027, so it already covers the whole Christmas Celebration. Kids two and under get in free. A two-park ticket with Sesame Place San Diego costs $104.99, and All-Day Dining adds $40 to a ticket. Reserved parking starts at $37, and annual passes with the parking benefit include standard parking.
+In the Black Friday sale, a date-specific day ticket starts at $59.99, depending on the day, instead of the regular $130.99. A year ago the same Black Friday ticket went for $49.99, so even the discount got pricier. SeaWorld hasn't announced when the sale ends. The Any Day Ticket, good for one day of your choice through March 31, 2027, costs $64.99. The 2027 Fun Card, at $77.99, is valid from now until the end of 2027, so it already covers the whole Christmas Celebration. Kids two and under get in free. A two-park ticket with Sesame Place San Diego costs $104.99, and All-Day Dining adds $40 to any ticket. Reserved parking starts at $37, and annual passes with the parking benefit include standard parking.
 
-The Festive Food & Seasonal Sips Lanyard, with 5 or 10 tasting portions, starts at $45. Dine with Orcas & Santa runs from November 13 to Christmas Eve, from $59.99 for adults and $39.99 for kids. The New Year's Eve Family Bash costs $74.99, or $39.99 for kids. For the Snowflake Seeker's scavenger hunt, you buy a card at The Christmas Shoppe and hand it back there once it's filled in to collect a prize.
+The Festive Food & Seasonal Sips Lanyard, with 5 or 10 tasting portions, starts at $45. Dine with Orcas & Santa runs from November 13 to Christmas Eve, from $59.99 for adults and $39.99 for kids. On New Year's Eve, the second fireworks night, the Family Bash costs $74.99, or $39.99 for kids. For the Snowflake Seeker's scavenger hunt, you buy a card at The Christmas Shoppe and hand it back there once it's filled in to collect a prize.
 
 ## Getting there
 
@@ -84,7 +82,7 @@ SeaWorld San Diego is at 500 Sea World Drive in San Diego. Without a car you can
 
 ## Coasters
 
-If you want a ride between the shows and the lights, these four coasters are among the options:
+For a break from Baby Shark, these are four of the park's coasters:
 
 - [Emperor](ref:seaworld-san-diego/emperor), a floorless dive coaster with a 90-degree drop and a top speed of 60 mph (97 km/h): minimum height 52 inches (132 cm), maximum 78 inches (198 cm)
 - [Manta](ref:seaworld-san-diego/manta), a launch coaster: minimum height 48 inches (122 cm)
