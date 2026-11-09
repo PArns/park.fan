@@ -2,7 +2,7 @@
 title: 'Chessington World of Adventures, evacuado tras una amenaza'
 translationKey: chessington-evacuated-threat
 date: '2026-11-09'
-time: '08:45'
+time: '09:03'
 author: patrick
 mode: published
 featured: false
