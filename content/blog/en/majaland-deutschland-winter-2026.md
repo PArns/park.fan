@@ -88,7 +88,7 @@ Father Christmas sits in the Indoor Theater on 4 to 6, 11 to 13, 18 to 23 and 26
 
 ## What's different from last winter
 
-In winter 2025/26 the same part of the park was called Majaland Pfalz. It was open from 7 November to 22 March, with tickets from €20, and the Maya show and the first winter run of The Smurfs' Adventure were that season's new additions. This winter, the season ends a week earlier and the cheapest ticket costs less than it did then. The park dropped the name Holiday Park at the end of June 2025. Our [guide to Plopsaland Deutschland](/blog/plopsaland-deutschland-wait-times-tips) covers the summer rides and the quietest days.
+In winter 2025/26 the same part of the park was called Majaland Pfalz. It was open from 7 November to 22 March, with tickets from €20, and the Maya show and the first winter run of The Smurfs' Adventure were that season's new additions. This winter, the season ends a week earlier and the cheapest ticket costs less than it did then. Our [guide to Plopsaland Deutschland](/blog/plopsaland-deutschland-wait-times-tips) covers the summer rides and the quietest days. The park dropped the name Holiday Park at the end of June 2025.
 
 ## Getting there and parking
 
