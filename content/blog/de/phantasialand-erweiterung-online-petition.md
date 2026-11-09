@@ -43,6 +43,9 @@ seo:
     - Naturschutzgebiet Ententeich Brühl
 ---
 
+> [!UPDATE] 2026-11-09
+> Das Netzwerk NSG Ententeich hat für sein Bürgerbegehren am 9. November [5.656 Unterschriften abgegeben](/news/phantasialand-erweiterung-unterschriften-abgegeben). Die Petition für die Erweiterung läuft weiter bis zum 23. November. Laut der [Statistik auf openPetition](https://www.openpetition.de/petition/statistik/fuer-eine-verantwortungsvolle-erweiterung-des-phantasialands) haben sie bisher 211 Menschen unterschrieben, 52 davon aus Brühl. Für das Quorum fehlen noch 688 Unterschriften aus Brühl.
+
 Seit dem 24. Mai läuft auf openPetition eine Petition gegen das Bürgerbegehren,
 das die Erweiterung des [Phantasialands](ref:phantasialand) stoppen soll. Online
 ging sie fünf Tage, nachdem das Netzwerk NSG Ententeich das Bürgerbegehren

@@ -42,6 +42,9 @@ seo:
     - Phantasialand plan d’urbanisme Brühl
 ---
 
+> [!UPDATE] 2026-11-09
+> Le collectif Netzwerk NSG Ententeich a déposé 5 656 signatures auprès de l’administration municipale le 9 novembre, rapportent la [WDR](https://www1.wdr.de/nrw/rheinland/rhein-erft-kreis/buergerbegehren-phantasialand-eingereicht-100.html) et [Radio Erft](https://www.radioerft.de/artikel/bruehl-ueber-5000-unterschriften-gegen-freizeitpark-ausbau-2801949). La ville vérifie maintenant combien sont valides, puis le conseil décidera si la pétition est recevable. Phantasialand veut que la procédure continue jusqu’aux résultats des expertises. La suite après le dépôt est dans [notre nouvel article](/news/phantasialand-agrandissement-signatures-deposees).
+
 Depuis le lundi 28 septembre, le collectif Netzwerk NSG Ententeich recueille à
 Brühl des signatures contre l’agrandissement de
 [Phantasialand](ref:phantasialand). La pétition s’appelle « Brühler
