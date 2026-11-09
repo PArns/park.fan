@@ -7,7 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  A Disney Christmas runs at Hong Kong Disneyland from November 17, 2026, to January 3, 2027. The new part is a winter market in World of Frozen. On two weekends, Hong Kong pianists play in front of the castle with the Hong Kong Children's Choir.
+  A Disney Christmas runs at Hong Kong Disneyland from November 17, 2026, to January 3, 2027. A winter market in World of Frozen is new this year. On two weekends, two Hong Kong pianists play in front of the castle with the Hong Kong Children's Choir.
 tags:
   - news
   - hong-kong-disneyland
@@ -42,19 +42,21 @@ seo:
     - Hong Kong Christmas 2026
 ---
 
-A Disney Christmas is on at [Hong Kong Disneyland](ref:hong-kong-disneyland-park) from November 17, 2026, to January 3, 2027, and this year it brings a winter market to World of Frozen. The stalls stand in the middle of Arendelle and sell treats and handmade goods. The Christmas concert in front of the castle is back for four evenings in November and December, this time with two Hong Kong pianists and more than a hundred kids from the Hong Kong Children's Choir.
+A Disney Christmas starts at [Hong Kong Disneyland](ref:hong-kong-disneyland-park) on November 17, 2026, and ends on January 3, 2027. New this year is a winter market in World of Frozen, in Arendelle, with treats and handmade goods. The Christmas concert in front of the castle is back for four evenings in November and December. This time two Hong Kong pianists play, and more than a hundred kids from the Hong Kong Children's Choir sing.
 
-## What's new in World of Frozen
+## Christmas in World of Frozen
 
-Apart from the New Year's Eve countdown, the market is the only part of the Christmas program the park calls new. Around it, Olaf talks about what he loves about Christmas and Anna walks through the village. In Kristoff's Sven-tastic Surprise, Kristoff carves an ice sculpture for his reindeer Sven, and guests can lend a hand. Whether Sven wouldn't rather have a carrot is something Kristoff will have to find out for himself. Snow keeps falling in Arendelle after Christmas, and the market stays open. In the same land, [Frozen Ever After](ref:hong-kong-disneyland-park/frozen-ever-after-presented-by-blue-cross) takes boats through the village and the forest up to the North Mountain.
+In World of Frozen, Olaf talks about what he loves about Christmas, and Anna walks through the village. In Kristoff's Sven-tastic Surprise, Kristoff carves an ice sculpture for his reindeer Sven, and guests can lend a hand. Whether Sven would rather have a carrot is Kristoff's problem. Snow keeps falling in Arendelle after Christmas, and the market stays where it is. In the same land, [Frozen Ever After](ref:hong-kong-disneyland-park/frozen-ever-after-presented-by-blue-cross) takes boats through the village and the forest up to the North Mountain.
 
 ## Main Street and the tree
 
-Main Street, U.S.A. gets lights and decorations, carolers walk up and down the street, and the big Christmas tree stands at the end of it. Santa Goofy switches it on, with falling snow and a drone choreography in the sky, the same as in 2025: in the park's 20th-anniversary year, the tree lit up as "A Holiday Wish-Come-True" with snow, projections and drones. You can meet Mickey and friends, Duffy and friends, the Toy Story characters and Winnie the Pooh, all in their Christmas outfits.
+Main Street, U.S.A. gets lights and decorations, carolers walk up and down the street, and the big Christmas tree stands there. Santa Goofy switches it on, with falling snow and drones flying a choreography in the sky. That happened in 2025 as well, the park's 20th-anniversary year, under the name "A Holiday Wish-Come-True" and with projections on top.
+
+In the park you can also meet Mickey and friends, Duffy and friends, the Toy Story characters and Winnie the Pooh, all in their Christmas outfits.
 
 ## The concert in front of the castle
 
-"Disney Christmas Live in Concert" is a yearly tradition at Hong Kong Disneyland; in 2025 it started on November 22. It plays in the evening in front of the Castle of Magical Dreams, and Mickey turns up with Christmas Goofy and other Disney characters. Pianist Joyce Cheung plays on November 21 and 22, pianist Oscar Tao on December 5 and 6, each with the children's choir. The park can change the line-up and the program without notice.
+"Disney Christmas Live in Concert" comes back to Hong Kong Disneyland every year; in 2025 it started on November 22. It plays in the evening in front of the Castle of Magical Dreams. Mickey turns up with Christmas Goofy and other Disney characters. Joyce Cheung plays on November 21 and 22 and Oscar Tao on December 5 and 6, each with the children's choir. The park can change the line-up and the program without notice.
 
 Until December 6, the park sells seating passes for the zones in front of the stage. Prices are in Hong Kong dollars:
 
@@ -67,9 +69,20 @@ The VIP zones are right by the stage. A pass is good only on the day you picked 
 
 ## New Year's Eve in the park
 
-On December 31, the castle show Momentous plays at 9 pm. After it, a DJ takes over at the castle, Goofy and Max join the party, and for the countdown Mickey and friends put on a performance the park bills as brand new.
+On December 31, the nighttime show Momentous plays at 9 pm. After it, a DJ takes over at the castle, Goofy and Max join the party, and for the countdown Mickey and friends put on a new performance. Along with the winter market, it's the only new item in the Christmas program.
 
-For that one night there's Disney Premier Access NYE Edition from HK$659, again without park admission. It covers eight attractions ([Big Grizzly Mountain Runaway Mine Cars](ref:hong-kong-disneyland-park/big-grizzly-mountain-runaway-mine-cars), [Ant-Man and The Wasp: Nano Battle](ref:hong-kong-disneyland-park/ant-man-and-the-wasp-nano-battle), [Mystic Manor](ref:hong-kong-disneyland-park/mystic-manor), [Iron Man Experience](ref:hong-kong-disneyland-park/iron-man-experience-presented-by-aia), "it's a small world", Frozen Ever After, [Hyperspace Mountain](ref:hong-kong-disneyland-park/hyperspace-mountain) and Mickey's PhilharMagic), the show Mickey and the Wondrous Book, and a viewing area each for the castle show, Momentous and the countdown. The Explorer's Club Restaurant, which serves a dinner buffet over Christmas, also has a package that includes a spot with a view of Momentous.
+For that one night there's the New Year's Eve Edition of Disney Premier Access, from HK$659 and again without park admission. The pass covers the show Mickey and the Wondrous Book, a viewing area each for the daytime show on the castle stage, for Momentous and for the countdown, and eight attractions:
+
+- [Big Grizzly Mountain Runaway Mine Cars](ref:hong-kong-disneyland-park/big-grizzly-mountain-runaway-mine-cars)
+- [Ant-Man and The Wasp: Nano Battle](ref:hong-kong-disneyland-park/ant-man-and-the-wasp-nano-battle)
+- [Mystic Manor](ref:hong-kong-disneyland-park/mystic-manor)
+- [Iron Man Experience](ref:hong-kong-disneyland-park/iron-man-experience-presented-by-aia)
+- "it's a small world"
+- Frozen Ever After
+- [Hyperspace Mountain](ref:hong-kong-disneyland-park/hyperspace-mountain)
+- Mickey's PhilharMagic
+
+The Explorer's Club Restaurant, which serves a dinner buffet over Christmas, also has a package that includes a spot with a view of Momentous.
 
 ```ride-waits-widget
 rides: hong-kong-disneyland-park/big-grizzly-mountain-runaway-mine-cars|Big Grizzly Mountain Runaway Mine Cars;hong-kong-disneyland-park/mystic-manor|Mystic Manor;hong-kong-disneyland-park/hyperspace-mountain|Hyperspace Mountain;hong-kong-disneyland-park/iron-man-experience-presented-by-aia|Iron Man Experience;hong-kong-disneyland-park/ant-man-and-the-wasp-nano-battle|Ant-Man and The Wasp: Nano Battle;hong-kong-disneyland-park/frozen-ever-after-presented-by-blue-cross|Frozen Ever After
@@ -82,9 +95,9 @@ columns: peak,days
 
 ## Tickets and getting there
 
-A ticket on its own won't get you in: every visit also needs a valid park reservation for that day. If you want two days, the Non-stop 2-Day Fun Ticket costs HK$100 more than a regular one-day ticket. It starts at HK$769 for adults and HK$599 for kids aged 3 to 11 and seniors 60 and over, and it's on sale until December 31, 2026.
+A ticket on its own won't get you in: every visit also needs a valid park reservation for that day. If you want two days, the Non-stop 2-Day Fun Ticket costs HK$100 more than a regular one-day ticket. Adults pay from HK$769, kids aged 3 to 11 and seniors 60 and over from HK$599. It's on sale until December 31, 2026.
 
-On the MTR, you ride to Sunny Bay and change there to the Disneyland Resort Line, which runs straight to the resort. That gets you to the park in about 30 minutes from the airport, from Kowloon or from Hong Kong Station.
+On the MTR, you ride to Sunny Bay and change there to the Disneyland Resort Line, which runs straight to the resort. That gets you to the park in about 30 minutes from the airport, from Kowloon MTR station or from Hong Kong Station.
 
 ```best-days-widget slug=hong-kong-disneyland-park
 
@@ -95,7 +108,7 @@ On the MTR, you ride to Sunny Bay and change there to the Disneyland Resort Line
 Sources:
 [A Disney Christmas (Hong Kong Disneyland)](https://www.hongkongdisneyland.com/hkdl/disney-christmas-intl/),
 [Disney Christmas Live in Concert (Hong Kong Disneyland)](https://www.hongkongdisneyland.com/offers-discounts/disney-christmas-live-in-concert/),
-[Disney Premier Access NYE Edition (Hong Kong Disneyland)](https://www.hongkongdisneyland.com/offers-discounts/disney-premier-access-nye-countdown/),
+[Disney Premier Access New Year's Eve Edition (Hong Kong Disneyland)](https://www.hongkongdisneyland.com/offers-discounts/disney-premier-access-nye-countdown/),
 [Frozen Ever After (Hong Kong Disneyland)](https://www.hongkongdisneyland.com/attractions/frozen-ever-after/),
 [Non-stop 2-Day Fun Ticket (Hong Kong Disneyland)](https://www.hongkongdisneyland.com/offers-discounts/non-stop-2-day-fun-ticket/),
 [MTR Disneyland Resort Line (Hong Kong Disneyland)](https://www.hongkongdisneyland.com/guest-services/mtr-disneyland-resort-line/),
