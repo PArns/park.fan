@@ -55,7 +55,7 @@ Il parco apre in 72 giornate, sempre dalle 11 alle 18. Fuori dalle vacanze scola
 - Febbraio: dal 4 al 14, dal 19 al 21 e dal 26 al 28.
 - Marzo: dal 5 al 7 e dal 12 al 14.
 
-La vigilia e il giorno di Natale i cancelli restano chiusi, del resto Babbo Natale quelle sere ha già il suo bel daffare con le consegne. Si riapre il 26 dicembre. Il 27 novembre il Plopsa Indoor chiude già alle 16 per un evento privato.
+La vigilia e il giorno di Natale i cancelli restano chiusi, del resto Babbo Natale quelle sere ha già il suo bel daffare con le consegne. Il 26 dicembre è di nuovo nell'Indoor Theater, per l'ultima volta quest'inverno. Il 27 novembre il Plopsa Indoor chiude già alle 16 per un evento privato.
 
 ## Quanto costa l'ingresso
 
@@ -80,15 +80,15 @@ All'aperto il Majaland ha dodici attrazioni, tra cui il Bienchenwirbel e il Blum
 
 Nel 2026 l'Ape Maia compie 50 anni come personaggio dei cartoni animati. Nell'Indoor Theater va in scena ogni giorno di apertura, alle 13 e alle 16, il suo spettacolo «Der Ball der Bienenkönigin», il ballo della regina delle api. Maia, Willy e Flip si preparano a una festa in maschera, ma solo uno di loro potrà accompagnare la regina. Cantare è espressamente permesso, anche ai genitori che la sigla non se la sono più tolta dalla testa dai tempi dell'asilo. Lo spettacolo è compreso nel biglietto d'ingresso. Alle 13:45 e alle 15:15 si possono incontrare Maia e i suoi amici. Nel parco girano anche Heidi e Peter, Holly, Tabaluga e i Puffi. Il ristorante Pfalzgraf nel villaggio palatino è aperto il sabato e la domenica.
 
-Expedition GeForce, Sky Scream e le altre grandi attrazioni d'inverno restano ferme. Ripartono solo con l'inizio della stagione, il 19 marzo 2027. Per l'estate c'è la nostra [guida al Plopsaland Deutschland](/blog/plopsaland-deutschland-tempi-di-attesa-consigli) con tutte le attrazioni e i giorni più tranquilli.
+Expedition GeForce, Sky Scream e le altre grandi attrazioni della nostra [guida al Plopsaland Deutschland](/blog/plopsaland-deutschland-tempi-di-attesa-consigli) d'inverno restano ferme e ripartono solo con l'inizio della stagione, il 19 marzo 2027.
 
 ## Babbo Natale, corsa di San Nicola e Carnevale
 
-Dal 4 al 26 dicembre Babbo Natale riceve i bambini nell'Indoor Theater in ogni giorno di apertura. Gli si può consegnare la letterina, e ogni bambino riceve una cioccolata della cioccolateria Wawi. Sabato 5 dicembre, al Platz der Fontänen, si corre per la seconda volta il Plopsa Nikolauslauf, con percorsi per bambini e adulti. Il parco aprirà le iscrizioni a breve. Dal 4 al 10 febbraio 2027 il Plopsa Indoor festeggia il Carnevale con una discoteca per bambini. Chi compie gli anni d'inverno può prenotare il pacchetto «Majas Geburtstagszauber», con una visita di Maia compresa nel prezzo.
+Dal 4 dicembre Babbo Natale riceve i bambini nell'Indoor Theater in ogni giorno di apertura. Gli si può consegnare la letterina, e ogni bambino riceve una cioccolata della cioccolateria Wawi. Sabato 5 dicembre, al Platz der Fontänen, si corre per la seconda volta il Plopsa Nikolauslauf, con percorsi per bambini e adulti. Il parco aprirà le iscrizioni a breve. Dal 4 al 10 febbraio 2027 il Plopsa Indoor festeggia il Carnevale con una discoteca per bambini. Chi compie gli anni d'inverno può prenotare il pacchetto «Majas Geburtstagszauber», con una visita di Maia compresa nel prezzo.
 
 ## Cosa cambia rispetto all'inverno scorso
 
-Nell'inverno 2025/26 questa parte del parco si chiamava ancora Majaland Pfalz ed era aperta dal 7 novembre al 22 marzo, con ingresso da 20 €. Il nome Holiday Park il parco l'aveva già abbandonato a fine giugno 2025. Le novità di allora erano lo spettacolo di Maia e la prima stagione invernale de L'Avventura dei Puffi.
+Nell'inverno 2025/26 questa parte del parco si chiamava ancora Majaland Pfalz. Allora era aperta dal 7 novembre al 22 marzo, quest'anno invece si chiude già il 14 marzo, e il biglietto più economico costava 20 € contro i 16 € di adesso. Il nome Holiday Park il parco l'aveva già abbandonato a fine giugno 2025. Le novità di allora erano lo spettacolo di Maia e la prima stagione invernale de L'Avventura dei Puffi.
 
 ## Come arrivare e parcheggio
 

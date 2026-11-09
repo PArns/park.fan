@@ -55,7 +55,7 @@ Le parc ouvre 72 jours, toujours de 11 h à 18 h. Hors vacances scolaires, ce so
 - février : du 4 au 14, du 19 au 21 et du 26 au 28
 - mars : du 5 au 7 et du 12 au 14
 
-Le 24 et le 25 décembre, les grilles restent fermées, le père Noël ayant ces soirs-là une tournée plus urgente. Le parc rouvre le 26. Le 27 novembre, Plopsa Indoor ferme dès 16 h pour un événement privé.
+Le 24 et le 25 décembre, les grilles restent fermées, le père Noël ayant ces soirs-là une tournée plus urgente. Dès le 26, il retrouve son fauteuil à l’Indoor Theater, pour la dernière fois de l’hiver. Le 27 novembre, Plopsa Indoor ferme dès 16 h pour un événement privé.
 
 ## Le prix d’entrée
 
@@ -80,15 +80,15 @@ Le Majaland compte douze attractions en plein air, dont le Bienchenwirbel et le 
 
 En 2026, Maya l’abeille fête ses 50 ans en dessin animé. Chaque jour d’ouverture, à 13 h et à 16 h, l’Indoor Theater joue son spectacle « Der Ball der Bienenkönigin », le bal de la reine des abeilles. Maya, Willy et Flip s’y préparent pour un bal costumé, mais un seul d’entre eux pourra accompagner la reine. Le public a le droit de chanter, y compris les parents qui ont encore le générique de leur enfance en tête. Le spectacle est compris dans l’entrée. À 13 h 45 et à 15 h 15, vous pouvez rencontrer Maya et ses amis. Heidi et Peter, Holly, Tabaluga et les Schtroumpfs se promènent aussi dans le parc. Le restaurant Pfalzgraf, dans le Pfälzer Dorf, ouvre le samedi et le dimanche.
 
-Expedition GeForce, Sky Scream et les autres grandes attractions ne tournent pas en hiver. Elles ne repartent qu’au début de la saison, le 19 mars 2027. Pour l’été, notre [guide du Plopsaland Deutschland](/blog/plopsaland-deutschland-temps-d-attente-conseils) présente toutes les attractions et les jours les plus calmes.
+Expedition GeForce, Sky Scream et les autres grandes attractions présentées dans notre [guide du Plopsaland Deutschland](/blog/plopsaland-deutschland-temps-d-attente-conseils) ne tournent pas en hiver et ne repartent qu’au début de la saison, le 19 mars 2027.
 
 ## Père Noël, course de la Saint-Nicolas et carnaval
 
-Du 4 au 26 décembre, le père Noël s’installe à l’Indoor Theater chaque jour d’ouverture. Les enfants peuvent lui remettre leur liste, et chacun reçoit un chocolat de la chocolaterie Wawi. Le samedi 5 décembre, la place des Fontaines accueille la deuxième édition du Plopsa Nikolauslauf, une course de la Saint-Nicolas avec des parcours pour enfants et pour adultes. Le parc ouvrira les inscriptions sous peu. Du 4 au 10 février 2027, Plopsa Indoor fête le carnaval avec une disco pour enfants. Pour un anniversaire en hiver, la formule « Majas Geburtstagszauber » comprend une visite de Maya.
+À partir du 4 décembre, le père Noël s’installe à l’Indoor Theater chaque jour d’ouverture. Les enfants peuvent lui remettre leur liste, et chacun reçoit un chocolat de la chocolaterie Wawi. Le samedi 5 décembre, la place des Fontaines accueille la deuxième édition du Plopsa Nikolauslauf, une course de la Saint-Nicolas avec des parcours pour enfants et pour adultes. Le parc ouvrira les inscriptions sous peu. Du 4 au 10 février 2027, Plopsa Indoor fête le carnaval avec une disco pour enfants. Pour un anniversaire en hiver, la formule « Majas Geburtstagszauber » comprend une visite de Maya.
 
 ## Ce qui change par rapport à l’hiver dernier
 
-L’hiver 2025/26, cette partie du parc s’appelait encore Majaland Pfalz et ouvrait du 7 novembre au 22 mars, avec une entrée à partir de 20 €. Le parc avait déjà abandonné le nom de Holiday Park, fin juin 2025. Les nouveautés étaient alors le spectacle de Maya et le premier hiver de Die Schlümpfe Abenteuer.
+L’hiver 2025/26, cette partie du parc s’appelait encore Majaland Pfalz. Elle ouvrait à l’époque du 7 novembre au 22 mars, tandis que cette saison s’arrête dès le 14 mars, et le billet le moins cher coûtait 20 €, contre 16 € aujourd’hui. Le parc avait abandonné le nom de Holiday Park dès la fin juin 2025. Les nouveautés étaient alors le spectacle de Maya et le premier hiver de Die Schlümpfe Abenteuer.
 
 ## Accès et parking
 

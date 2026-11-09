@@ -55,7 +55,7 @@ The park opens on 72 days, always from 11 a.m. to 6 p.m. Outside the school holi
 - February: 4 to 14, 19 to 21 and 26 to 28
 - March: 5 to 7 and 12 to 14
 
-The gates stay shut on Christmas Eve and Christmas Day, when Father Christmas has a busier round to make anyway. The park reopens on 26 December. On 27 November, Plopsa Indoor closes at 4 p.m. for a private event.
+The gates stay shut on Christmas Eve and Christmas Day, when Father Christmas has a busier round to make anyway. By 26 December he's back in the Indoor Theater for his last day of the season. On 27 November, Plopsa Indoor closes at 4 p.m. for a private event.
 
 ## What a ticket costs
 
@@ -80,15 +80,15 @@ Majaland has twelve outdoor attractions, among them the Bienchenwirbel and the B
 
 Maya the Bee turns 50 as a cartoon character in 2026. Her show "Der Ball der Bienenkönigin" (The Queen Bee's Ball) plays in the Indoor Theater at 1 p.m. and 4 p.m. on every opening day. Maya, Willy and Flip get ready for a costume ball, but only one of them can go with the queen. Singing along is explicitly allowed, and that includes parents who haven't got the theme tune out of their heads since they were kids. The show is included in admission. At 1:45 p.m. and 3:15 p.m. you can meet Maya and her friends. Heidi and Peter, Holly, Tabaluga and the Smurfs are out in the park too. The Pfalzgraf restaurant in the Palatine Village is open on Saturdays and Sundays.
 
-Expedition GeForce, Sky Scream and the other big rides stand still in winter. They run again from the start of the season on 19 March 2027. For the summer, our [guide to Plopsaland Deutschland](/blog/plopsaland-deutschland-wait-times-tips) covers every ride and the quietest days.
+Expedition GeForce, Sky Scream and the other big rides from our [guide to Plopsaland Deutschland](/blog/plopsaland-deutschland-wait-times-tips) stand still in winter and run again from the start of the season on 19 March 2027.
 
 ## Father Christmas, the St Nicholas run and carnival
 
-From 4 to 26 December, Father Christmas sits in the Indoor Theater on every opening day. Children can hand him their wish lists, and every child gets a chocolate from the Wawi chocolate factory. On Saturday, 5 December, the second Plopsa Nikolauslauf, a St Nicholas run with courses for children and adults, starts at the Platz der Fontänen. Registration will open shortly. From 4 to 10 February 2027, Plopsa Indoor celebrates carnival with a kids' disco. If your child's birthday falls in winter, you can book the "Majas Geburtstagszauber" package, and a visit from Maya is included in the price.
+From 4 December, Father Christmas sits in the Indoor Theater on every opening day. Children can hand him their wish lists, and every child gets a chocolate from the Wawi chocolate factory. On Saturday, 5 December, the second Plopsa Nikolauslauf, a St Nicholas run with courses for children and adults, starts at the Platz der Fontänen. Registration will open shortly. From 4 to 10 February 2027, Plopsa Indoor celebrates carnival with a kids' disco. If your child's birthday falls in winter, you can book the "Majas Geburtstagszauber" package, and a visit from Maya is included in the price.
 
 ## What's different from last winter
 
-In winter 2025/26 the same part of the park was called Majaland Pfalz and was open from 7 November to 22 March, with tickets from €20. By then the park had already dropped the name Holiday Park, at the end of June 2025. The Maya show and the first winter run of The Smurfs' Adventure were that season's new additions.
+In winter 2025/26 the same part of the park was called Majaland Pfalz. It was open from 7 November to 22 March then, while this season ends on 14 March, and the cheapest ticket was €20 against €16 now. The park had already dropped the name Holiday Park at the end of June 2025. The Maya show and the first winter run of The Smurfs' Adventure were that season's new additions.
 
 ## Getting there and parking
 

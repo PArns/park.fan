@@ -55,7 +55,7 @@ Geöffnet ist an 72 Tagen, jeweils von 11 bis 18 Uhr. Außerhalb der Ferien sind
 - Februar: 4. bis 14., 19. bis 21. und 26. bis 28.
 - März: 5. bis 7. und 12. bis 14.
 
-An Heiligabend und am ersten Weihnachtstag bleibt das Tor zu, der Weihnachtsmann hat dann ohnehin anderswo zu tun. Am 26. Dezember geht es weiter. Am 27. November schließt Plopsa Indoor wegen einer privaten Veranstaltung schon um 16 Uhr.
+An Heiligabend und am ersten Weihnachtstag bleibt das Tor zu, der Weihnachtsmann hat dann ohnehin anderswo zu tun. Am 26. Dezember sitzt er schon wieder im Indoor Theater, zum letzten Mal in diesem Winter. Am 27. November schließt Plopsa Indoor wegen einer privaten Veranstaltung schon um 16 Uhr.
 
 ## Was der Eintritt kostet
 
@@ -78,15 +78,15 @@ Das Majaland hat zwölf Attraktionen im Freien, darunter den Bienchenwirbel und 
 
 Biene Maja feiert 2026 ihren 50. Geburtstag als Zeichentrickfigur. Im Indoor Theater läuft an jedem Öffnungstag um 13 und um 16 Uhr ihre Show „Der Ball der Bienenkönigin“. Maja, Willi und Flip bereiten sich darin auf einen Kostümball vor, aber nur einer darf die Bienenkönigin begleiten. Mitsingen ist ausdrücklich erlaubt, auch für Eltern, die das Titellied seit ihrer eigenen Kindheit nicht mehr aus dem Kopf bekommen. Die Show ist im Eintritt enthalten. Um 13:45 und 15:15 Uhr kannst du Maja und ihre Freunde treffen. Auch Heidi und Peter, Holly, Tabaluga und die Schlümpfe sind im Park unterwegs. Das Restaurant Pfalzgraf im Pfälzer Dorf hat samstags und sonntags offen.
 
-Expedition GeForce, Sky Scream und die übrigen großen Bahnen stehen im Winter still. Sie fahren erst wieder ab dem Saisonstart am 19. März 2027. Für den Sommer gibt es unseren [Guide zum Plopsaland Deutschland](/blog/plopsaland-deutschland-wartezeiten-tipps) mit allen Bahnen und den ruhigsten Tagen.
+Expedition GeForce, Sky Scream und die übrigen großen Bahnen aus unserem [Guide zum Plopsaland Deutschland](/blog/plopsaland-deutschland-wartezeiten-tipps) stehen im Winter still und fahren erst wieder ab dem Saisonstart am 19. März 2027.
 
 ## Weihnachtsmann, Nikolauslauf und Fasching
 
-Vom 4. bis zum 26. Dezember sitzt der Weihnachtsmann an jedem Öffnungstag im Indoor Theater. Kinder können ihm ihren Wunschzettel geben, und jedes Kind bekommt eine Schokolade der Schokoladenmanufaktur Wawi. Am Samstag, 5. Dezember, läuft am Platz der Fontänen zum zweiten Mal der Plopsa Nikolauslauf, mit Strecken für Kinder und Erwachsene. Die Anmeldung schaltet der Park in Kürze frei. Vom 4. bis 10. Februar 2027 feiert Plopsa Indoor Fasching mit Kinderdisco. Wer im Winter Geburtstag hat, kann das Paket „Majas Geburtstagszauber“ buchen, ein Besuch von Maja ist im Preis enthalten.
+Vom 4. Dezember an sitzt der Weihnachtsmann an jedem Öffnungstag im Indoor Theater. Kinder können ihm ihren Wunschzettel geben, und jedes Kind bekommt eine Schokolade der Schokoladenmanufaktur Wawi. Am Samstag, 5. Dezember, läuft am Platz der Fontänen zum zweiten Mal der Plopsa Nikolauslauf, mit Strecken für Kinder und Erwachsene. Die Anmeldung schaltet der Park in Kürze frei. Vom 4. bis 10. Februar 2027 feiert Plopsa Indoor Fasching mit Kinderdisco. Wer im Winter Geburtstag hat, kann das Paket „Majas Geburtstagszauber“ buchen, ein Besuch von Maja ist im Preis enthalten.
 
 ## Was sich gegenüber dem letzten Winter ändert
 
-Im Winter 2025/26 hieß derselbe Teil des Parks noch Majaland Pfalz und hatte vom 7. November bis zum 22. März offen, mit Eintritt ab 20 €. Den Namen Holiday Park hatte der Park da schon abgelegt, Ende Juni 2025. Die Maja-Show und der erste Winterbetrieb der Schlümpfe Abenteuer waren damals die Neuheiten.
+Im Winter 2025/26 hieß derselbe Teil des Parks noch Majaland Pfalz. Damals war vom 7. November bis zum 22. März offen, diesmal ist schon am 14. März Schluss, und die günstigste Karte kostete 20 € statt jetzt 16 €. Den Namen Holiday Park hatte der Park schon Ende Juni 2025 abgelegt. Die Maja-Show und der erste Winterbetrieb der Schlümpfe Abenteuer waren damals die Neuheiten.
 
 ## Anreise und Parken
 

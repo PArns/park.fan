@@ -55,7 +55,7 @@ Het park is 72 dagen open, steeds van 11 tot 18 uur. Buiten de schoolvakanties z
 - Februari: 4 t/m 14, 19 t/m 21 en 26 t/m 28.
 - Maart: 5 t/m 7 en 12 t/m 14.
 
-Op kerstavond en eerste kerstdag blijft de poort dicht. Op 26 december gaat het park weer open. Op 27 november sluit Plopsa Indoor al om 16 uur, vanwege een besloten evenement.
+Op kerstavond en eerste kerstdag blijft de poort dicht, de Kerstman heeft het dan toch al druk genoeg met zijn eigen ronde. Op 26 december zit hij alweer in het Indoor Theater, voor de laatste keer deze winter. Op 27 november sluit Plopsa Indoor al om 16 uur, vanwege een besloten evenement.
 
 ## Wat een kaartje kost
 
@@ -80,15 +80,15 @@ Buiten staan in het Majaland twaalf attracties, waaronder de Bienchenwirbel en d
 
 Maja de Bij viert in 2026 haar vijftigste verjaardag als tekenfilmfiguur. In het Indoor Theater speelt elke openingsdag om 13.00 en 16.00 uur haar show “Der Ball der Bienenkönigin” (het bal van de bijenkoningin). Maja, Willy en Flip bereiden zich daarin voor op een gekostumeerd bal, maar slechts één van hen mag met de bijenkoningin mee. Meezingen mag uitdrukkelijk, ook voor ouders bij wie het titelliedje al sinds hun eigen jeugd in het hoofd zit. De show zit bij de toegangsprijs inbegrepen. Om 13.45 en 15.15 uur kun je Maja en haar vrienden ontmoeten. Ook Heidi en Peter, Holly, Tabaluga en de Smurfen lopen door het park. Restaurant Pfalzgraf in het Palts-dorp is op zaterdag en zondag open.
 
-Expedition GeForce, Sky Scream en de andere grote attracties staan in de winter stil. Ze rijden pas weer vanaf de seizoensstart op 19 maart 2027. Voor de zomer is er onze [gids voor Plopsaland Deutschland](/blog/plopsaland-deutschland-wachttijden-tips) met alle attracties en de rustigste dagen.
+Expedition GeForce, Sky Scream en de andere grote attracties uit onze [gids voor Plopsaland Deutschland](/blog/plopsaland-deutschland-wachttijden-tips) staan in de winter stil en rijden pas weer vanaf de seizoensstart op 19 maart 2027.
 
 ## Kerstman, Nikolauslauf en carnaval
 
-Van 4 tot en met 26 december zit de Kerstman op elke openingsdag in het Indoor Theater. Kinderen kunnen hem hun verlanglijstje geven en krijgen allemaal een stuk chocolade van chocolatier Wawi. Op zaterdag 5 december is op het Platz der Fontänen voor de tweede keer de Plopsa Nikolauslauf, een hardloopwedstrijd met afstanden voor kinderen en volwassenen. Het park opent de inschrijving binnenkort. Van 4 tot en met 10 februari 2027 viert Plopsa Indoor carnaval, met een kinderdisco. Wie in de winter jarig is, kan het pakket “Majas Geburtstagszauber” boeken, met een bezoek van Maja bij de prijs inbegrepen.
+Vanaf 4 december zit de Kerstman op elke openingsdag in het Indoor Theater. Kinderen kunnen hem hun verlanglijstje geven en krijgen allemaal een stuk chocolade van chocolatier Wawi. Op zaterdag 5 december is op het Platz der Fontänen voor de tweede keer de Plopsa Nikolauslauf, een hardloopwedstrijd met afstanden voor kinderen en volwassenen. Het park opent de inschrijving binnenkort. Van 4 tot en met 10 februari 2027 viert Plopsa Indoor carnaval, met een kinderdisco. Wie in de winter jarig is, kan het pakket “Majas Geburtstagszauber” boeken, met een bezoek van Maja bij de prijs inbegrepen.
 
 ## Wat er verandert ten opzichte van vorige winter
 
-In de winter van 2025/26 heette hetzelfde deel van het park nog Majaland Pfalz en was het open van 7 november tot 22 maart, met kaartjes vanaf € 20. De naam Holiday Park had het park toen al laten vallen, eind juni 2025. Nieuw waren destijds de Maja-show en het eerste winterseizoen van De Smurfen Avontuur.
+In de winter van 2025/26 heette hetzelfde deel van het park nog Majaland Pfalz. Toen was het open van 7 november tot 22 maart, dit keer is het al op 14 maart afgelopen, en het goedkoopste kaartje kostte € 20 tegen nu € 16. De naam Holiday Park had het park al eind juni 2025 laten vallen. Nieuw waren destijds de Maja-show en het eerste winterseizoen van De Smurfen Avontuur.
 
 ## Bereikbaarheid en parkeren
 
