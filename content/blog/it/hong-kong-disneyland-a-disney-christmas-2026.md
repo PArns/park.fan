@@ -42,7 +42,7 @@ seo:
     - Hong Kong Natale 2026
 ---
 
-Dal 17 novembre 2026 al 3 gennaio 2027 [Hong Kong Disneyland](ref:hong-kong-disneyland-park) festeggia A Disney Christmas, e quest'anno c'è una novità: un mercato d'inverno in World of Frozen. Sta nel cuore di Arendelle e vende golosità e oggetti fatti a mano. Torna anche il concerto di Natale davanti al castello, quattro sere tra novembre e dicembre, questa volta con due pianisti di Hong Kong e più di cento bambini dell'Hong Kong Children's Choir.
+Dal 17 novembre 2026 al 3 gennaio 2027 [Hong Kong Disneyland](ref:hong-kong-disneyland-park) festeggia A Disney Christmas, e quest'anno c'è una novità: un mercato d'inverno in World of Frozen. Sta in mezzo ad Arendelle e vende golosità e oggetti fatti a mano. Torna anche il concerto di Natale davanti al castello, quattro sere tra novembre e dicembre, questa volta con due pianisti di Hong Kong e più di cento bambini dell'Hong Kong Children's Choir.
 
 ## La novità in World of Frozen
 
