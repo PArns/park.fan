@@ -5489,11 +5489,15 @@ step: {
   check('und nennt Park und Tag', /Phantasialand/.test(said), said);
 
   await ask.keyboard.press('Escape');
-  await ask.waitForTimeout(500);
+  // Waited out, not paused: a closing dialog stays in the DOM through its exit animation
+  // (`data-state="closed"`), which late in a full run against `next dev` outlasts a fixed pause,
+  // and a dialog on its way out is not an open one.
+  await question.waitFor({ state: 'detached', timeout: 10_000 }).catch(() => {});
+  const leftOpen = await question.count();
   check(
     'Escape öffnet nichts',
-    (await question.count()) === 0 && (await openSheets()) === 0,
-    `Frage ${await question.count()} · offene Sheets ${await openSheets()}`
+    leftOpen === 0 && (await openSheets()) === 0,
+    `Frage ${leftOpen}${leftOpen ? ` (${await question.first().getAttribute('data-state')})` : ''} · offene Sheets ${await openSheets()}`
   );
 
   if (!(await pressLauncher())) {

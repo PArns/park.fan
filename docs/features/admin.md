@@ -360,7 +360,7 @@ The controls protect three distinctions:
 - **A URL is opened, not just typed.** Every `url` field has a button that opens it in a new tab;
   no validation can check that a link goes where it should.
 
-A ride's works windows (group „Umbaupause“) are one `periods` field, `curatedOutOfServicePeriods`:
+A ride's works windows (group „Wartung“) are one `periods` field, `curatedOutOfServicePeriods`:
 rows of „ab“, „bis“ and „Ende geschätzt“, added and removed in place. The list is saved whole and
 sorted. The editor runs the API's checks first (`app/admin/_lib/works-periods.ts`): a bound per
 row, „ab“ not after „bis“, „Ende geschätzt“ only with a „bis“, no overlap with both days inclusive,
@@ -576,6 +576,10 @@ models in one sentence and the switch rule.
   and season count folded into one meta line. One markup, not a phone-only copy that would drift.
 - The dense tables („Läuft alles?", `system`) scroll sideways inside their card; they are read at a
   desk.
+- **A grid that has columns only from a breakpoint needs `grid-cols-1` below it.** Without it the
+  phone gets one implicit `auto` column, as wide as its longest unbroken line: the start page's
+  „Zuletzt geändert“ list made it 481 px wide at 390 (measured with test data). `grid-cols-1` is
+  `minmax(0, 1fr)`; the traffic views get the same from `[&>*]:min-w-0`.
 
 ## Things that will bite
 

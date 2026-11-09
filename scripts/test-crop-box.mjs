@@ -20,7 +20,12 @@
  */
 
 import { existsSync } from 'node:fs';
-import { cropBox, cropDimensionsForPath, cropSuffixForPath } from '../lib/media/crop-box.mjs';
+import {
+  cropBox,
+  cropDimensionsForPath,
+  cropSuffixForPath,
+  paintedSize,
+} from '../lib/media/crop-box.mjs';
 import { MEDIA_IMAGES } from '../lib/media/manifest.ts';
 
 let failures = 0;
@@ -47,6 +52,21 @@ check('portrait → 1:1', cropBox(768, 1024, 1, 1), { w: 768, h: 768 });
 
 // Never upscales: a source already wider than the target keeps its full height.
 check('panorama → 16:9', cropBox(3000, 1000, 16, 9), { w: 1778, h: 1000 });
+
+// ── Painted size ────────────────────────────────────────────────────────────
+// A phone stores a portrait photo landscape and says so in EXIF; 5-8 swap the axes, 1-4 do not.
+check('orientation 6 swaps', paintedSize({ width: 4032, height: 3024, orientation: 6 }), {
+  width: 3024,
+  height: 4032,
+});
+check('orientation 3 keeps', paintedSize({ width: 4032, height: 3024, orientation: 3 }), {
+  width: 4032,
+  height: 3024,
+});
+check('no orientation keeps', paintedSize({ width: 4032, height: 3024 }), {
+  width: 4032,
+  height: 3024,
+});
 
 // ── Path parsing ────────────────────────────────────────────────────────────
 check('suffix of a crop', cropSuffixForPath('/media/x/taron-16x9.jpg'), '16x9');

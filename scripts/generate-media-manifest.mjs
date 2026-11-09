@@ -51,6 +51,7 @@ import {
   normalizeSidecar,
 } from '../lib/media/sidecar.mjs';
 import { foldText, tokenize } from '../lib/media/tokenize.mjs';
+import { paintedSize } from '../lib/media/crop-box.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.join(__dirname, '..');
@@ -140,12 +141,8 @@ async function probeFile(abs) {
   }
   if (!meta.width || !meta.height) return empty;
 
-  // EXIF orientations 5-8 swap the axes; the browser applies that rotation, so
-  // the manifest has to report the size as painted, not as stored.
-  const swap = Boolean(meta.orientation && meta.orientation >= 5);
-  const size = swap
-    ? { width: meta.height, height: meta.width }
-    : { width: meta.width, height: meta.height };
+  // The size as painted, not as stored: the browser applies the EXIF rotation.
+  const size = paintedSize(meta);
 
   let gps = null;
   let exifShotAt = null;

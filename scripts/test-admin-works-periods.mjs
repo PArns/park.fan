@@ -89,7 +89,7 @@ test('sorting: by start, an open start first, and it does not mutate', () => {
 });
 
 test('legacy fields hide by flag, or by key next to a periods field in the same group', () => {
-  const field = (key, extra = {}) => ({ key, type: 'date', group: 'Umbaupause', ...extra });
+  const field = (key, extra = {}) => ({ key, type: 'date', group: 'Wartung', ...extra });
   const periods = field('curatedOutOfServicePeriods', { type: 'periods' });
   const from = field('curatedOutOfServiceFrom');
   assert.equal(isHiddenCuratedField(from, [from, periods]), true);

@@ -388,7 +388,7 @@ function PeriodsEditor({
   return (
     <div id={id} role="group" aria-label={label} className="space-y-2">
       {value.length === 0 && (
-        <p className="text-muted-foreground text-xs">Keine Umbaupause eingetragen.</p>
+        <p className="text-muted-foreground text-xs">Kein Wartungsfenster eingetragen.</p>
       )}
       {value.map((row, index) => {
         const name = `${label} ${index + 1}`;
@@ -447,7 +447,7 @@ function PeriodsEditor({
         onClick={() => onChange([...value, { from: null, to: null, toUncertain: false }])}
       >
         <Plus className="h-4 w-4" aria-hidden="true" />
-        Umbaupause hinzufügen
+        Wartungsfenster hinzufügen
       </Button>
     </div>
   );

@@ -142,7 +142,7 @@ function AreaRow({ area }: { area: HealthArea }) {
       </div>
 
       {open && openable && (
-        <ul className="grid gap-x-8 gap-y-1.5 border-t border-white/[0.04] bg-black/15 px-4 py-3 pl-[4.75rem] text-[13px] sm:grid-cols-2 xl:grid-cols-3">
+        <ul className="grid grid-cols-1 gap-x-8 gap-y-1.5 border-t border-white/[0.04] bg-black/15 px-4 py-3 pl-[4.75rem] text-[13px] sm:grid-cols-2 xl:grid-cols-3">
           {area.checks.map((check) => (
             <li key={check.id} className="flex min-w-0 items-center gap-2.5">
               <span

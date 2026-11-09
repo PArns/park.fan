@@ -47,7 +47,7 @@ export function sortWorksPeriods(periods: WorksPeriodRow[]): WorksPeriodRow[] {
  */
 export function worksPeriodsError(periods: WorksPeriodRow[]): string | null {
   if (periods.length > MAX_WORKS_PERIODS) {
-    return `Höchstens ${MAX_WORKS_PERIODS} Umbaupausen pro Attraktion.`;
+    return `Höchstens ${MAX_WORKS_PERIODS} Wartungsfenster pro Attraktion.`;
   }
   for (const [index, period] of periods.entries()) {
     const row = `Zeile ${index + 1}`;
@@ -65,7 +65,7 @@ export function worksPeriodsError(periods: WorksPeriodRow[]): string | null {
   let previous: WorksPeriodRow | null = null;
   for (const period of sortWorksPeriods(periods)) {
     if (previous && furthestEnd !== null && (period.from ?? '') <= furthestEnd) {
-      return `Umbaupausen überschneiden sich (${label(previous)} und ${label(period)}).`;
+      return `Wartungsfenster überschneiden sich (${label(previous)} und ${label(period)}).`;
     }
     const end = period.to ?? OPEN_END;
     if (furthestEnd === null || end > furthestEnd) furthestEnd = end;

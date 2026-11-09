@@ -68,7 +68,12 @@ import os from 'os';
 import { fileURLToPath } from 'url';
 
 import { normalizeSidecar } from '../lib/media/sidecar.mjs';
-import { ASPECT_SUFFIX_RE, CROP_ASPECTS as ASPECTS, cropBox } from '../lib/media/crop-box.mjs';
+import {
+  ASPECT_SUFFIX_RE,
+  CROP_ASPECTS as ASPECTS,
+  cropBox,
+  paintedSize,
+} from '../lib/media/crop-box.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -92,7 +97,7 @@ const CACHE_DIR = path.join(__dirname, '../.next/cache/image-crops');
  * the same inputs produce different bytes without any input changing. The
  * sharp/libvips version is already part of the key, so an upgrade needs no bump.
  */
-const CACHE_VERSION = 1;
+const CACHE_VERSION = 2;
 
 /** Encoder settings, in one place so the cache key can name them. */
 const JPEG_OPTIONS = { quality: 82, mozjpeg: true };
@@ -247,7 +252,10 @@ async function cropOne(sourcePath, seen) {
       if (!meta.width || !meta.height) return { written, restored, skipped };
     }
 
-    const box = cropBox(meta.width, meta.height, entry.aspect.w, entry.aspect.h);
+    // `.rotate()` below turns the pixels upright first, so the box and the focal point are
+    // measured on the painted size, never on the stored one.
+    const { width, height } = paintedSize(meta);
+    const box = cropBox(width, height, entry.aspect.w, entry.aspect.h);
     try {
       const pipeline = sharp(sourceBytes).rotate(); // honour EXIF orientation first
       if (focus) {
@@ -255,8 +263,8 @@ async function cropOne(sourcePath, seen) {
         // is a guess about what matters, and on a photo like the Troy horse it
         // guesses the bright sky and cuts the head off. Extract the box around the
         // focal point instead, clamped so it stays inside the image.
-        const left = clamp(Math.round(focus.x * meta.width - box.w / 2), 0, meta.width - box.w);
-        const top = clamp(Math.round(focus.y * meta.height - box.h / 2), 0, meta.height - box.h);
+        const left = clamp(Math.round(focus.x * width - box.w / 2), 0, width - box.w);
+        const top = clamp(Math.round(focus.y * height - box.h / 2), 0, height - box.h);
         pipeline.extract({ left, top, width: box.w, height: box.h });
       } else {
         pipeline.resize(box.w, box.h, { fit: 'cover', position: 'attention' });
