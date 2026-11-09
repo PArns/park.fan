@@ -42,23 +42,23 @@ seo:
     - Hongkong Weihnachten 2026
 ---
 
-A Disney Christmas beginnt im [Hong Kong Disneyland](ref:hong-kong-disneyland-park) am 17. November 2026 und endet am 3. Januar 2027. Neu ist ein Wintermarkt in World of Frozen, in Arendelle, mit Leckereien und handgemachten Waren. Das Weihnachtskonzert vor dem Schloss gibt es wieder, an vier Abenden im November und Dezember. Diesmal spielen zwei Pianisten aus Hongkong, und mehr als hundert Kinder des Hong Kong Children's Choir singen dazu.
+A Disney Christmas beginnt im [Hong Kong Disneyland](ref:hong-kong-disneyland-park) am 17. November 2026 und endet am 3. Januar 2027. Neu sind ein Wintermarkt in World of Frozen, in Arendelle, mit Leckereien und handgemachten Waren, und zum Silvester-Countdown eine Darbietung von Mickey und seinen Freunden. Das Weihnachtskonzert vor dem Schloss gibt es wieder, an vier Abenden im November und Dezember. Diesmal spielen die Hongkonger Pianisten Joyce Cheung und Oscar Tao, und mehr als hundert Kinder des Hong Kong Children's Choir singen dazu.
 
 ## Weihnachten in World of Frozen
 
-In World of Frozen erzählt Olaf, was er an Weihnachten mag, und Anna ist im Dorf unterwegs. Bei Kristoff's Sven-tastic Surprise baut Kristoff eine Eisskulptur für sein Rentier Sven, und Gäste dürfen ihm dabei helfen. Ob Sven eine Skulptur lieber hätte als eine Karotte, ist Kristoffs Problem. Nach Weihnachten fällt in Arendelle weiter Schnee, und der Markt bleibt stehen. Im selben Bereich fährt [Frozen Ever After](ref:hong-kong-disneyland-park/frozen-ever-after-presented-by-blue-cross) mit Booten durch das Dorf und den Wald bis hinauf zum Nordberg.
+In World of Frozen erzählt Olaf, was er an Weihnachten mag, und Anna ist im Dorf unterwegs. Bei Kristoff's Sven-tastic Surprise baut Kristoff eine Eisskulptur für sein Rentier Sven, und Gäste dürfen ihm dabei helfen. Ob Sven eine Skulptur lieber hätte als eine Karotte, ist Kristoffs Problem. Auch nach dem 25. Dezember schneit es in Arendelle weiter, was dort niemanden überrascht, und auf dem Markt bleibt es weihnachtlich. Im selben Bereich fährt [Frozen Ever After](ref:hong-kong-disneyland-park/frozen-ever-after-presented-by-blue-cross) mit Booten durch das Dorf und den Wald bis hinauf zum Nordberg.
 
 ## Main Street und der Weihnachtsbaum
 
-Auf der Main Street, U.S.A. hängen Lichter und Dekoration, Sänger ziehen mit Weihnachtsliedern durch die Straße, und dort steht der große Weihnachtsbaum. Den schaltet Santa Goofy an, mit Schneefall und Drohnen, die am Himmel eine Choreografie fliegen. Das gab es schon 2025, im Jahr des 20. Geburtstags, damals unter dem Namen „A Holiday Wish-Come-True“ und mit Projektionen dazu.
+Auf der Main Street, U.S.A. ziehen Sänger mit Weihnachtsliedern unter den Lichterketten durch, und am großen Weihnachtsbaum legt Santa Goofy den Schalter um, mit Schneefall und Drohnen, die darüber eine Choreografie fliegen. Die Baumbeleuchtung lief schon 2025, im Jahr des 20. Geburtstags, damals als „A Holiday Wish-Come-True“ und zusätzlich mit Projektionen.
 
 Im Park triffst du außerdem Mickey und seine Freunde, Duffy und seine Freunde, die Figuren aus Toy Story und Winnie Puuh, alle in Weihnachtskleidung.
 
 ## Das Konzert vor dem Schloss
 
-„Disney Christmas Live in Concert“ gibt es im Hong Kong Disneyland jedes Jahr, 2025 ging es am 22. November los. Gespielt wird abends vor dem Castle of Magical Dreams. Mickey kommt mit Christmas Goofy und weiteren Disney-Figuren. Am 21. und 22. November spielt Joyce Cheung, am 5. und 6. Dezember Oscar Tao, beide zusammen mit dem Kinderchor. Besetzung und Programm kann der Park ohne Ankündigung ändern.
+„Disney Christmas Live in Concert“ läuft jedes Jahr abends vor dem Castle of Magical Dreams, und Mickey bringt Christmas Goofy und weitere Disney-Figuren mit. Am 21. und 22. November spielt Joyce Cheung, am 5. und 6. Dezember Oscar Tao, beide zusammen mit dem Kinderchor.
 
-Für die Zonen vor der Bühne verkauft der Park bis zum 6. Dezember Sitzplatz-Pässe, Preise in Hongkong-Dollar:
+Für die Zonen vor der Bühne verkauft der Park bis zum 6. Dezember Sitzplatz-Pässe:
 
 - Standard: HK$ 299
 - VIP 2 mit einer Waffel: HK$ 369
@@ -69,7 +69,7 @@ Die VIP-Zonen liegen direkt an der Bühne. Ein Pass gilt nur am gewählten Tag u
 
 ## Silvester im Park
 
-Am 31. Dezember läuft um 21 Uhr die Nachtshow Momentous. Danach legt ein DJ am Schloss auf, Goofy und Max feiern mit, und zum Countdown zeigen Mickey und seine Freunde eine neue Darbietung. Neben dem Wintermarkt ist das die einzige Neuheit im Weihnachtsprogramm.
+Am 31. Dezember läuft um 21 Uhr die Nachtshow Momentous. Danach legt ein DJ am Schloss auf, Goofy und Max feiern mit, und zum Countdown zeigen Mickey und seine Freunde eine neue Darbietung.
 
 Für diesen einen Abend gibt es den Disney Premier Access in der New Year's Eve Edition ab HK$ 659, ebenfalls ohne Parkeintritt. Der Pass gilt für die Show Mickey and the Wondrous Book, für je einen Sichtbereich bei der Tagesshow auf der Schlossbühne, bei Momentous und beim Countdown und für acht Attraktionen:
 

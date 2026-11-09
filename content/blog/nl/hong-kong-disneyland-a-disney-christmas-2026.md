@@ -42,23 +42,23 @@ seo:
     - Hongkong kerst 2026
 ---
 
-A Disney Christmas begint in [Hong Kong Disneyland](ref:hong-kong-disneyland-park) op 17 november 2026 en eindigt op 3 januari 2027. Nieuw dit jaar is een wintermarkt in World of Frozen, in Arendelle, met lekkernijen en handgemaakte spullen. Het kerstconcert voor het kasteel komt terug, op vier avonden in november en december. Deze keer spelen er twee pianisten uit Hongkong. Ruim honderd kinderen van het Hong Kong Children's Choir zingen mee.
+A Disney Christmas begint in [Hong Kong Disneyland](ref:hong-kong-disneyland-park) op 17 november 2026 en eindigt op 3 januari 2027. Nieuw dit jaar zijn een wintermarkt in World of Frozen, in Arendelle, met lekkernijen en handgemaakte spullen, en bij de countdown op oudejaarsavond een optreden van Mickey en zijn vrienden. Het kerstconcert voor het kasteel komt terug, op vier avonden in november en december. Deze keer spelen de Hongkongse pianisten Joyce Cheung en Oscar Tao, en ruim honderd kinderen van het Hong Kong Children's Choir zingen mee.
 
 ## Kerst in World of Frozen
 
-In World of Frozen vertelt Olaf wat hij zo leuk vindt aan kerst, en Anna loopt door het dorp. In Kristoff's Sven-tastic Surprise maakt Kristoff een ijssculptuur voor zijn rendier Sven, en bezoekers mogen een handje helpen. Of Sven niet gewoon liever een wortel had gehad, daar mag Kristoff zelf over piekeren. Ook na kerst blijft het in Arendelle sneeuwen, en de markt blijft gewoon staan. In hetzelfde gebied vaart [Frozen Ever After](ref:hong-kong-disneyland-park/frozen-ever-after-presented-by-blue-cross) met bootjes door het dorp en het bos, helemaal omhoog naar de Noordberg.
+In World of Frozen vertelt Olaf wat hij zo leuk vindt aan kerst, en Anna loopt door het dorp. In Kristoff's Sven-tastic Surprise maakt Kristoff een ijssculptuur voor zijn rendier Sven, en bezoekers mogen een handje helpen. Of Sven niet gewoon liever een wortel had gehad, daar mag Kristoff zelf over piekeren. Ook na 25 december blijft het in Arendelle sneeuwen, wat daar niemand verbaast, en op de markt blijft de kerstsfeer hangen. In hetzelfde gebied vaart [Frozen Ever After](ref:hong-kong-disneyland-park/frozen-ever-after-presented-by-blue-cross) met bootjes door het dorp en het bos, helemaal omhoog naar de Noordberg.
 
 ## Main Street en de kerstboom
 
-Main Street, U.S.A. hangt vol lichtjes en versiering, en zangers lopen met kerstliedjes door de straat. Daar staat ook de grote kerstboom. Santa Goofy zet hem aan, met sneeuw en drones die een choreografie in de lucht vliegen. Dat was in 2025 ook al zo, het jaar van de twintigste verjaardag. Toen heette het “A Holiday Wish-Come-True” en kwamen er nog projecties bij.
+Op Main Street, U.S.A. lopen zangers met kerstliedjes onder de lichtjes door, en bij de grote kerstboom zet Santa Goofy de schakelaar om, met sneeuw en drones die erboven een choreografie vliegen. De boomverlichting was er in 2025 ook al, het jaar van de twintigste verjaardag, toen als “A Holiday Wish-Come-True” en met projecties erbij.
 
 In het park kom je ook Mickey en zijn vrienden tegen, Duffy en zijn vrienden, de figuren uit Toy Story en Winnie de Poeh, allemaal in kerstkleren.
 
 ## Het concert voor het kasteel
 
-“Disney Christmas Live in Concert” is er in Hong Kong Disneyland elk jaar; in 2025 was de eerste avond op 22 november. Het concert is 's avonds voor het Castle of Magical Dreams. Mickey komt langs met Christmas Goofy en nog meer Disney-figuren. Op 21 en 22 november speelt Joyce Cheung, op 5 en 6 december Oscar Tao, allebei met het kinderkoor. Bezetting en programma mag het park zonder aankondiging veranderen.
+“Disney Christmas Live in Concert” komt elk jaar terug, 's avonds voor het Castle of Magical Dreams, en Mickey neemt Christmas Goofy en nog meer Disney-figuren mee. Op 21 en 22 november speelt Joyce Cheung, op 5 en 6 december Oscar Tao, allebei met het kinderkoor.
 
-Tot 6 december verkoopt het park zitplaatspassen voor de vakken voor het podium. De prijzen zijn in Hongkongse dollar:
+Tot 6 december verkoopt het park zitplaatspassen voor de vakken voor het podium:
 
 - Standard: HK$ 299
 - VIP 2 met een wafel: HK$ 369
@@ -69,7 +69,7 @@ De VIP-vakken liggen direct aan het podium. Een pas geldt alleen op de gekozen d
 
 ## Oudejaarsavond in het park
 
-Op 31 december begint om 21.00 uur de avondshow Momentous. Daarna draait er een dj bij het kasteel, Goofy en Max vieren mee, en bij de countdown brengen Mickey en zijn vrienden een nieuw optreden. Naast de wintermarkt is dat de enige nieuwigheid in het kerstprogramma.
+Op 31 december begint om 21.00 uur de avondshow Momentous. Daarna draait er een dj bij het kasteel, Goofy en Max vieren mee, en bij de countdown brengen Mickey en zijn vrienden een nieuw optreden.
 
 Speciaal voor die ene avond is er de New Year's Eve Edition van Disney Premier Access, vanaf HK$ 659 en ook zonder parkentree. De pas geldt voor de show Mickey and the Wondrous Book, voor een kijkvak bij de dagshow op het kasteelpodium, bij Momentous en bij de countdown, en voor acht attracties:
 
