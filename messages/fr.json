@@ -2973,7 +2973,7 @@
     "rateUp": "Utile",
     "rateDown": "Pas utile",
     "rated": "Merci.",
-    "disclaimer": "Parky est un assistant IA et se trompe parfois.",
+    "disclaimer": "Parky est un assistant IA. Ses réponses peuvent contenir des erreurs et sont fournies sans garantie.",
     "feedbackIntro": "Il manque quelque chose, un truc coince ou tu adores un détail ? Écris-nous, on lit tout.",
     "feedbackLabel": "Ton avis",
     "feedbackPlaceholder": "Qu’est-ce qu’on doit savoir ?",
