@@ -337,7 +337,7 @@ Schreib mir, die E-Mail steht im [Impressum](/impressum).
 Und weil es einfach sein musste, gibt es jetzt sogar einen **park.fan-Song**.
 Ja, im Ernst:
 
-[Mehr Loopings, weniger Stehen, die offizielle park.fan-Hymne](https://suno.com/song/5a74e65f-460f-48c2-a7b0-864509043a3d)
+[Mehr Loopings, weniger Stehen, die inoffizielle park.fan-Hymne](https://suno.com/song/1b686ccc-85d3-465c-b69a-7eac1dbd5acb)
 
 Das hier ist mein Dankeschön an einen Park am Märchensee und an zwei Eltern, die
 einen kleinen Jungen immer wieder dorthin mitgenommen haben.

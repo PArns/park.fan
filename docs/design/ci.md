@@ -86,11 +86,11 @@ Parky is the brand's face: on the site, in the chat and on every social channel.
 - **Claim:** "Mehr Loopings, weniger Stehen." It is the title of the park.fan song. Hashtag:
   `#MehrLoopingsWenigerStehen`.
 - **Song:** "Mehr Loopings, weniger Stehen" by parnzival, made with Suno on a Pro plan, which
-  allows commercial use. The remastered version is the one in use; its page is
-  [suno.com/song/5a74e65f-460f-48c2-a7b0-864509043a3d](https://suno.com/song/5a74e65f-460f-48c2-a7b0-864509043a3d);
-  a post embeds it with `BlogSunoEmbed`. The audio files are not in this repository. Under a Reel
-  runs a stretch of the chorus, and a post with it carries Meta's AI label, since the vocals are
-  generated.
+  allows commercial use. The remastered version is the one in use, on social and under every Reel:
+  [suno.com/song/5a74e65f-460f-48c2-a7b0-864509043a3d](https://suno.com/song/5a74e65f-460f-48c2-a7b0-864509043a3d).
+  The welcome post keeps the first version on purpose. A post embeds a Suno song with
+  `BlogSunoEmbed`. The audio files are not in this repository. Under a Reel runs a stretch of the
+  chorus, and a post with it carries Meta's AI label, since the vocals are generated.
 
 ## Social profiles
 

@@ -332,7 +332,7 @@ dirección está en el [aviso legal](/impressum).
 Y porque no había más remedio, ahora hay hasta una **canción de park.fan**. Sí,
 en serio:
 
-[Más loopings, menos estar de pie: el himno oficial de park.fan](https://suno.com/song/5a74e65f-460f-48c2-a7b0-864509043a3d)
+[Más loopings, menos estar de pie: el himno no oficial de park.fan](https://suno.com/song/1b686ccc-85d3-465c-b69a-7eac1dbd5acb)
 
 Esta es mi manera de dar las gracias a un parque junto a un lago de cuentos y a
 unos padres que llevaron allí una y otra vez a un niño pequeño.
