@@ -332,7 +332,7 @@ frulla in testa? Scrivimi, l’indirizzo sta nelle [note legali](/impressum).
 E poiché proprio ci voleva, adesso esiste perfino una **canzone di park.fan**.
 Sì, sul serio:
 
-[Più loop, meno stare in piedi: l’inno non ufficiale di park.fan](https://suno.com/song/1b686ccc-85d3-465c-b69a-7eac1dbd5acb)
+[Più loop, meno stare in piedi: l’inno ufficiale di park.fan](https://suno.com/song/5a74e65f-460f-48c2-a7b0-864509043a3d)
 
 Questo è il mio grazie a un parco in riva a un lago delle fiabe e a due
 genitori che ci hanno portato un bambino piccolo ancora e ancora.

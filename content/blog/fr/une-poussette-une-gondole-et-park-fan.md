@@ -342,7 +342,7 @@ figure dans les [mentions légales](/impressum).
 Et parce qu’il le fallait bien, il existe maintenant même une **chanson
 park.fan**. Oui, sérieusement :
 
-[Plus de loopings, moins de piétinement, l’hymne non officiel de park.fan](https://suno.com/song/1b686ccc-85d3-465c-b69a-7eac1dbd5acb)
+[Plus de loopings, moins de piétinement, l’hymne officiel de park.fan](https://suno.com/song/5a74e65f-460f-48c2-a7b0-864509043a3d)
 
 Tout ça, c’est mon merci à un parc au bord d’un lac aux contes, et à deux
 parents qui y ont emmené encore et encore un petit garçon.
