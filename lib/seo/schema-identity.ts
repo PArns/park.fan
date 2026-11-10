@@ -33,7 +33,7 @@ export type SocialNetwork = 'instagram' | 'facebook';
  */
 export const ORGANIZATION_PROFILES: readonly { network: SocialNetwork; url: string }[] = [
   { network: 'instagram', url: 'https://www.instagram.com/part_82/' },
-  { network: 'facebook', url: 'https://www.facebook.com/61579541384315' },
+  { network: 'facebook', url: 'https://www.facebook.com/park.fan.coasters' },
 ];
 
 /**

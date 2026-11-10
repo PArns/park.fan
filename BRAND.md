@@ -32,7 +32,7 @@
 - Homepage: https://park.fan
 - Logo: `public/logo-big.svg` (dark theme: `public/logo-big-dark.svg`), square mark `public/icon.svg`
 - sameAs profiles: Instagram https://www.instagram.com/part_82/ and Facebook
-  https://www.facebook.com/61579541384315, in that order, from `ORGANIZATION_PROFILES` in
+  https://www.facebook.com/park.fan.coasters, in that order, from `ORGANIZATION_PROFILES` in
   `lib/seo/schema-identity.ts`, which the footer's follow row reads too. Author: https://arns.dev,
   https://github.com/PArns
 - Wikidata Q-ID: none
