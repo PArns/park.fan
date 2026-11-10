@@ -191,7 +191,7 @@ export function DatenschutzEN() {
           what is said about Cloudflare above applies.
         </p>
 
-        <LegalH3>Parky, the chat assistant</LegalH3>
+        <LegalH3 id="parky">Parky, the chat assistant</LegalH3>
         <p>
           Parky answers questions about parks, wait times, forecasts and our posts in a chat window
           at the bottom right. Whether Parky appears in your browser is decided by a random number

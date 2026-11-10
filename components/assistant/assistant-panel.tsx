@@ -5,6 +5,7 @@ import { useMediaQuery } from '@/lib/hooks/use-media-query';
 import { useSheetViewport } from '@/lib/hooks/use-sheet-viewport';
 import { useLocale, useTranslations } from 'next-intl';
 import { usePathname } from 'next/navigation';
+import NextLink from 'next/link';
 import {
   CalendarCheck,
   CalendarX2,
@@ -24,6 +25,7 @@ import {
   X,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { localizedPath } from '@/lib/i18n/localized-path';
 import {
   useAssistantChat,
   type AssistantChatMessage,
@@ -554,7 +556,15 @@ export function AssistantPanel({
                   </button>
                 </div>
                 <p className="text-muted-foreground mt-1.5 text-center text-[11px]">
-                  {t('disclaimer')}
+                  {t('disclaimer')}{' '}
+                  {/* On a phone the window covers the page, so it closes for the policy to be read. */}
+                  <NextLink
+                    href={localizedPath('/datenschutz#parky', locale)}
+                    onClick={phone ? onClose : undefined}
+                    className="decoration-muted-foreground/40 hover:text-foreground underline underline-offset-2"
+                  >
+                    {t('privacy')}
+                  </NextLink>
                 </p>
               </form>
             )}

@@ -2,6 +2,7 @@
 title: 'Parky beantwortet jetzt deine Fragen zum Parktag'
 translationKey: parky-chat-assistant
 date: '2026-11-02'
+updatedAt: '2026-11-10'
 time: '23:00'
 author: patrick
 mode: published
@@ -130,13 +131,13 @@ Wird er dir zu gesprächig, tipp in einer seiner Sprechblasen auf das ✕, dann
 schweigt er bis zum Ende deines Besuchs. Ist in deinem System „Bewegung
 reduzieren“ eingeschaltet, bleiben seine Animationen aus.
 
-## Wenn Parky sich verrechnet
+## Wenn Parky sich vertut
 
 Parky antwortet mit dem Sprachmodell Claude von Anthropic, und ein Sprachmodell
 vertut sich manchmal. Darum steht unter dem Eingabefeld „Parky ist ein
-KI-Assistent und verrechnet sich manchmal.“ Die Zahlen auf den Karten im Chat
-kommen direkt von park.fan und nicht aus dem Modell, im Zweifel glaubst du also
-der Karte.
+KI-Assistent. Seine Antworten können Fehler enthalten und sind ohne Gewähr.“
+Die Zahlen auf den Karten im Chat kommen direkt von park.fan und nicht aus dem
+Modell, im Zweifel glaubst du also der Karte.
 
 Wirkt eine Antwort komisch, gib ihr den Daumen nach unten, dann schauen
 wir sie uns an. Was dir fehlt oder hakt, schreibst du im Reiter „Feedback“,
@@ -144,7 +145,7 @@ mit E-Mail-Adresse, wenn du eine Antwort möchtest. Und wer sehr viele Fragen
 kurz hintereinander stellt, bekommt irgendwann „Puh, das waren viele Fragen.
 Gönn mir eine kurze Pause und frag gleich noch mal.“ zu lesen und muss einen Moment warten.
 
-Deine Fragen speichern wir ohne IP-Adresse und löschen sie nach 90 Tagen.
+Deine Fragen speichern wir ohne IP-Adresse und löschen sie nach 7 Tagen.
 Alles Weitere
 steht in der [Datenschutzerklärung](/datenschutz). Parky spricht alle sechs
 Sprachen von park.fan und antwortet in der Sprache der Seite, auf der du gerade

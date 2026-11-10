@@ -2,6 +2,7 @@
 title: 'Parky now answers your questions about a park day'
 translationKey: parky-chat-assistant
 date: '2026-11-02'
+updatedAt: '2026-11-10'
 time: '23:00'
 author: patrick
 mode: published
@@ -130,9 +131,9 @@ system, his animations stay off.
 
 Parky answers with Anthropic's language model Claude, and a language model gets
 things wrong now and then. That's why the line under the input field reads
-"Parky is an AI assistant and sometimes gets it wrong." The figures on the
-cards in the chat come straight from park.fan and not from the model, so when
-in doubt, believe the card.
+"Parky is an AI assistant. Its answers may contain errors and are provided
+without warranty." The figures on the cards in the chat come straight from
+park.fan and not from the model, so when in doubt, believe the card.
 
 If an answer seems off, give it a thumbs down and we'll take a look. What's
 missing or not working goes into the "Feedback" tab, with your email address if
@@ -140,7 +141,7 @@ you'd like a reply. And anyone who fires off a lot of questions in a short time
 will at some point read "Phew, that was a lot of questions. Give me a short
 break and ask again in a moment." and has to wait a little.
 
-We store your questions without your IP address and delete them after 90 days.
+We store your questions without your IP address and delete them after 7 days.
 Everything else is in the [privacy policy](/datenschutz). Parky speaks all six
 languages of park.fan and answers in the language of the page you're on.
 

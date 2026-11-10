@@ -2,6 +2,7 @@
 title: 'Parky beantwoordt nu je vragen over je parkdag'
 translationKey: parky-chat-assistant
 date: '2026-11-02'
+updatedAt: '2026-11-10'
 time: '23:00'
 author: patrick
 mode: published
@@ -129,13 +130,13 @@ Wordt hij je te spraakzaam, tik dan in een van zijn tekstballonnen op het ✕,
 dan zwijgt hij tot het einde van je bezoek. Staat in je systeem “Verminder
 beweging” aan, dan blijven zijn animaties uit.
 
-## Als Parky zich misrekent
+## Als Parky zich vergist
 
 Parky antwoordt met het taalmodel Claude van Anthropic, en een taalmodel
 vergist zich soms. Daarom staat onder het invoerveld “Parky is een
-AI-assistent en rekent zich soms een keer mis.” De cijfers op de kaarten in de
-chat komen rechtstreeks van park.fan en niet uit het model, dus bij twijfel
-geloof je de kaart.
+AI-assistent. Zijn antwoorden kunnen fouten bevatten en worden zonder garantie
+gegeven.” De cijfers op de kaarten in de chat komen rechtstreeks van park.fan en
+niet uit het model, dus bij twijfel geloof je de kaart.
 
 Lijkt een antwoord vreemd, geef het dan een duim omlaag, dan kijken we ernaar.
 Wat je mist of wat hapert, schrijf je in het tabblad “Feedback”, met je
@@ -143,7 +144,7 @@ e-mailadres als je een antwoord wilt. En wie heel veel vragen kort na elkaar
 stelt, krijgt op een gegeven moment “Pff, dat waren veel vragen. Gun me even een
 pauze en vraag het zo nog eens.” te lezen en moet even wachten.
 
-Je vragen bewaren we zonder IP-adres en we verwijderen ze na 90 dagen. De rest
+Je vragen bewaren we zonder IP-adres en we verwijderen ze na 7 dagen. De rest
 staat in de [privacyverklaring](/datenschutz). Parky spreekt alle zes talen van
 park.fan en antwoordt in de taal van de pagina waar je op dat moment bent.
 

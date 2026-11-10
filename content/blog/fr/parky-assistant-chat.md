@@ -2,6 +2,7 @@
 title: 'Parky répond à tes questions sur ta journée au parc'
 translationKey: parky-chat-assistant
 date: '2026-11-02'
+updatedAt: '2026-11-10'
 time: '23:00'
 author: patrick
 mode: published
@@ -135,9 +136,9 @@ système, ses animations restent éteintes.
 
 Parky répond avec le modèle de langage Claude d’Anthropic, et un modèle de
 langage se trompe de temps en temps. C’est pour ça que sous le champ de saisie,
-on lit « Parky est un assistant IA et se trompe parfois. » Les chiffres des
-cartes dans le chat viennent directement de park.fan et pas du modèle, donc en
-cas de doute, crois la carte.
+on lit « Parky est un assistant IA. Ses réponses peuvent contenir des erreurs
+et sont fournies sans garantie. » Les chiffres des cartes dans le chat viennent
+directement de park.fan et pas du modèle, donc en cas de doute, crois la carte.
 
 Si une réponse te paraît bizarre, mets-lui un pouce vers le bas et nous y
 jetterons un œil. Ce qui manque ou coince, tu l’écris dans l’onglet « Avis »,
@@ -147,7 +148,7 @@ questions. Laisse-moi souffler un instant et redemande-moi. » et il faut
 patienter un peu.
 
 Nous enregistrons tes questions sans adresse IP et les supprimons au bout de
-90 jours. Tout le reste figure dans la
+7 jours. Tout le reste figure dans la
 [politique de confidentialité](/datenschutz). Parky parle les six langues de
 park.fan et répond dans la langue de la page sur laquelle tu te trouves.
 
