@@ -89,7 +89,7 @@ The API takes any event name, so the list below is what the site sends today, no
 carries the page's path, page type and language beside the event, and the first pageview of a load
 the referrer, so none of those is a property. The window width and the address's query string are
 not read: the API takes the device class from the User-Agent, and a link's `utm_` parameters are not
-collected. `entity` is the
+collected, apart from a `utm_source` on a fixed list ([the pageview's extras](#the-pageviews-extras)). `entity` is the
 UUID of the park, ride, show or restaurant an event is about, sent only where the call site holds it.
 `SiteEventMap` in `lib/analytics/site-analytics.ts` types these events, so a call with a value outside
 a list does not compile; an event outside the map is accepted untyped and shows up in the admin with
@@ -167,8 +167,9 @@ the rule is on the call site, and `trackSiteEvent` says it too.
 ### The pageview's extras
 
 A pageview is not an event, but three things beside the path answer questions the way one does.
-The first view of a load adds the referrer host, or without one the AI assistant a `utm_source`
-names as `source`, read once and kept in memory (`pageLoadOrigin`),
+The first view of a load adds the referrer host, or without one the AI assistant, Instagram or
+Facebook a `utm_source` names as `source` (`instagram.com`, `facebook.com`), read once and kept in
+memory (`pageLoadOrigin`),
 and the API derives the channel (search, ai, social, referral, direct), the device class and the
 country. A page the 404 page renders is counted as page type `not_found`, with the
 path asked for, which is how the admin lists dead ends with the pages that sent people there

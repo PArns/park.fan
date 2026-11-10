@@ -39,7 +39,11 @@ and when, and the admin pages. Open it before touching `lib/analytics/site-analy
   memory. Without one, a `utm_source` that names an AI assistant's host (`AI_SOURCE_HOSTS`:
   `chatgpt.com`, `perplexity.ai` and the other hosts the API's `REFERRER_RULES` put in the `ai`
   channel) goes as `source` instead, since ChatGPT tags its links that way and often sends no
-  referrer; the API classifies the visit by `source` when no `referrer` came.
+  referrer. So does the `utm_source` of park.fan's own Instagram and Facebook links
+  (`SOCIAL_SOURCE_HOSTS`: `instagram` or `facebook`, the host, `l.instagram.com`, `m.facebook.com`),
+  sent as `instagram.com` or `facebook.com`, because Instagram's in-app browser sends no referrer.
+  The API classifies the visit by `source` when no `referrer` came, and keeps a `source` only when
+  its own list names it, so the two lists change together.
   Any other `utm_source`, and the rest of the query string, is not read. An event
   adds its name, its properties and, where the call site holds one, the UUID of the park, ride,
   show or restaurant.
@@ -424,8 +428,9 @@ pages).
   with the first browser that sent the new hit: older periods have none, which reads as a dash.
 - **The channel comes from the referrer on the API**: search, ai, social, referral or direct. A
   visit without a referrer is direct, and so is one from a browser that strips it, unless its
-  `utm_source` names an AI assistant. Other `utm_` values are not read, so a newsletter or an ad is
-  a referral under its own host, or direct.
+  `utm_source` names an AI assistant (ai) or park.fan's Instagram or Facebook links (social).
+  Other `utm_` values are not read, so a newsletter or an ad is a referral under its own host, or
+  direct.
 - **Visits begin when the page is first on screen**, so a background tab closed unseen and a
   prerendered page nobody opened are not visits. Days before the change (PAR-1224) still count
   them and a forged phone, mostly as one-page direct visits of zero seconds, so a window across it
