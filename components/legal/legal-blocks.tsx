@@ -9,9 +9,13 @@ export function LegalH2({ children }: { children: ReactNode }) {
   );
 }
 
-/** A section heading inside a chapter of a legal page. */
-export function LegalH3({ children }: { children: ReactNode }) {
-  return <h3 className="mt-8 mb-4 text-2xl font-semibold">{children}</h3>;
+/** A section heading inside a chapter of a legal page; `id` makes it a link target that clears the sticky header. */
+export function LegalH3({ children, id }: { children: ReactNode; id?: string }) {
+  return (
+    <h3 id={id} className="mt-8 mb-4 scroll-mt-20 text-2xl font-semibold">
+      {children}
+    </h3>
+  );
 }
 
 /** A bulleted list on a legal page. */

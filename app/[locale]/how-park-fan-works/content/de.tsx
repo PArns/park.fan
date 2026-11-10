@@ -947,8 +947,8 @@ export function ContentDE() {
             drückst, und er behält ihn nicht.
           </P>
           <P>
-            Die Antworten schreibt ein Sprachmodell, und das verrechnet sich manchmal. Die Zahlen
-            auf den Karten im Chat kommen direkt von park.fan; was Parky dazu schreibt, prüfst du im
+            Die Antworten schreibt ein Sprachmodell, und das vertut sich manchmal. Die Zahlen auf
+            den Karten im Chat kommen direkt von park.fan; was Parky dazu schreibt, prüfst du im
             Zweifel auf der Seite der Bahn. Er bleibt bei Parks und Bahnen, sucht nicht im Internet,
             und nach drei Fragen in 30 Sekunden braucht er eine kurze Pause.
           </P>

@@ -199,7 +199,7 @@ export function DatenschutzDE() {
           lit. f DSGVO). Zur Übermittlung in die USA gilt das oben zu Cloudflare Gesagte.
         </p>
 
-        <LegalH3>Parky, der Chat-Assistent</LegalH3>
+        <LegalH3 id="parky">Parky, der Chat-Assistent</LegalH3>
         <p>
           Parky beantwortet in einem Chatfenster unten rechts Fragen zu Parks, Wartezeiten,
           Prognosen und unseren Beiträgen. Ob Parky in Ihrem Browser erscheint, entscheidet eine

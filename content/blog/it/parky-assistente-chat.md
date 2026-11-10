@@ -2,6 +2,7 @@
 title: 'Parky ora risponde alle tue domande sulla giornata al parco'
 translationKey: parky-chat-assistant
 date: '2026-11-02'
+updatedAt: '2026-11-10'
 time: '23:00'
 author: patrick
 mode: published
@@ -133,9 +134,9 @@ movimento», le sue animazioni restano spente.
 
 Parky risponde con il modello linguistico Claude di Anthropic, e un modello
 linguistico ogni tanto sbaglia. Per questo sotto il campo di testo c’è scritto
-«Parky è un assistente IA e a volte sbaglia.» I numeri sulle schede nella chat
-arrivano direttamente da park.fan e non dal modello, quindi nel dubbio credi
-alla scheda.
+«Parky è un assistente IA. Le sue risposte possono contenere errori e sono
+fornite senza garanzia.» I numeri sulle schede nella chat arrivano direttamente
+da park.fan e non dal modello, quindi nel dubbio credi alla scheda.
 
 Se una risposta ti sembra strana, dalle un pollice verso e la controlliamo.
 Quello che manca o non funziona lo scrivi nella scheda «Feedback», con il tuo
@@ -143,7 +144,7 @@ indirizzo e-mail se vuoi una risposta. E chi fa moltissime domande di fila
 prima o poi legge «Uff, quante domande. Lasciami prendere fiato e chiedimi di
 nuovo tra poco.» e deve aspettare un momento.
 
-Salviamo le tue domande senza indirizzo IP e le cancelliamo dopo 90 giorni.
+Salviamo le tue domande senza indirizzo IP e le cancelliamo dopo 7 giorni.
 Tutto il resto è nell’[informativa sulla privacy](/datenschutz). Parky parla
 tutte e sei le lingue di park.fan e risponde nella lingua della pagina in cui ti
 trovi.

@@ -8,6 +8,6 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`legal-blocks.tsx`](../../components/legal/legal-blocks.tsx)
 
 - `LegalH2` _component_: A chapter heading on the legal pages, with the rule beneath it.
-- `LegalH3` _component_: A section heading inside a chapter of a legal page.
+- `LegalH3` _component_: A section heading inside a chapter of a legal page; `id` makes it a link target that clears the sticky header.
 - `LegalList` _component_: A bulleted list on a legal page.
 - `LegalLink` _component_: A link to another site from a legal page; opens in a new tab and shows the target as written.
