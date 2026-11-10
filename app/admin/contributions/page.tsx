@@ -32,6 +32,7 @@ import {
   PanelHeader,
 } from '../_ui/primitives';
 import { useToast } from '../_ui/toast';
+import { sitePageUrl } from '../assistant/_lib/assistant';
 
 interface ListResponse {
   submissions: SubmissionRecord[];
@@ -328,9 +329,9 @@ function SubmissionCard({ submission }: { submission: SubmissionRecord }) {
             </Chip>
             <Chip className="capitalize">{submission.entity.type}</Chip>
             <span className="font-semibold">{submission.entity.name}</span>
-            {submission.entity.url && (
+            {submission.entity.url && sitePageUrl(submission.entity.url) && (
               <a
-                href={submission.entity.url}
+                href={sitePageUrl(submission.entity.url) ?? undefined}
                 target="_blank"
                 rel="noreferrer"
                 className="text-primary inline-flex items-center gap-1 text-xs hover:underline"

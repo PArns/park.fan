@@ -142,6 +142,13 @@ check(safeAssistantHref('https://www.park.fan/en'), '/en', 'accepts www');
 check(safeAssistantHref('javascript:alert(1)'), null, 'refuses javascript:');
 check(safeAssistantHref('//evil.example/x'), null, 'refuses protocol-relative');
 check(
+  safeAssistantHref('https://park.fan//evil.example/x'),
+  null,
+  'refuses a site URL whose path starts with two slashes'
+);
+check(safeAssistantHref('/.//evil.example'), null, 'refuses a dot path that collapses to //');
+check(safeAssistantHref('https://park.fan/\\evil.example'), null, 'refuses a backslash path');
+check(
   safeAssistantHref('/\\evil.example/x'),
   null,
   'refuses a backslash path that leaves the site'

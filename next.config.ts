@@ -874,10 +874,17 @@ const nextConfig: NextConfig = {
         source: '/:file.png',
         headers: [{ key: 'Cache-Control', value: 'public, max-age=31536000, immutable' }],
       },
-      // Static SVGs served from /public — cache for 1 year (immutable via content hash)
+      // Static SVGs served from /public — cache for 1 year (immutable via content hash). An SVG
+      // opened on its own is a document on this origin, the admin's too, so it runs no script.
       {
         source: '/:file*.svg',
-        headers: [{ key: 'Cache-Control', value: 'public, max-age=31536000, immutable' }],
+        headers: [
+          { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' },
+          {
+            key: 'Content-Security-Policy',
+            value: "default-src 'none'; style-src 'unsafe-inline'; sandbox",
+          },
+        ],
       },
       // Only disable cache for API and search; let Next.js handle page caching (ISR/static)
       {

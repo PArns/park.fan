@@ -15,6 +15,7 @@ import {
 } from './types';
 import { clampRiderHeight } from './party';
 import { isUuid } from '@/lib/utils';
+import { isSlug } from '@/lib/utils/servable-route';
 
 /**
  * The planner's storage, as an external store over localStorage alone; a multi-park trip is a few
@@ -153,7 +154,17 @@ function toPlannerState(parsed: unknown): PlannerState {
       if (typeof value !== 'object' || value === null) continue;
       const park = value as Record<string, unknown>;
       const geo = park.geo as PlannerGeo | undefined;
-      if (!geo || typeof geo.continent !== 'string') continue;
+      // Slug and geo become path segments of the planner's API calls; a shared plan carrying `..`
+      // would send them elsewhere on the site, so a park that is not all slugs is dropped.
+      if (
+        !geo ||
+        !isSlug(slug) ||
+        ![geo.continent, geo.country, geo.city].every(
+          (part) => typeof part === 'string' && isSlug(part)
+        )
+      ) {
+        continue;
+      }
 
       const days: PlannerPark['days'] = {};
       if (typeof park.days === 'object' && park.days !== null) {
