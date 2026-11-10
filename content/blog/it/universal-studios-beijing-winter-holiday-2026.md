@@ -38,33 +38,31 @@ seo:
     - Pechino Natale 2026
 ---
 
-A [Universal Studios Beijing](ref:universal-studios-beijing), a Pechino, l'evento di Natale Winter Holiday va dal 20 novembre 2026 al 3 gennaio 2027. In fondo all'Hollywood Boulevard per l'occasione c'è un nuovo albero di Natale alto 22 metri. Hogsmeade, nel Wizarding World of Harry Potter, torna a festeggiare il Natale. Per i cinque anni del resort, Universal ha distribuito nove eventi a tema lungo tutto il 2026, e Winter Holiday è l'ultimo.
+A [Universal Studios Beijing](ref:universal-studios-beijing), a Pechino, l'evento di Natale Winter Holiday va dal 20 novembre 2026 al 3 gennaio 2027. In fondo all'Hollywood Boulevard per l'occasione c'è un nuovo albero di Natale alto 22 metri. Hogsmeade, nel Wizarding World of Harry Potter, festeggia il Natale per la seconda volta. Per i cinque anni del resort, Universal ha distribuito nove eventi a tema lungo tutto il 2026, e Winter Holiday è l'ultimo.
 
 ## Il nuovo albero sull'Hollywood Boulevard
 
-Lo Spectacular Christmas Tree è addobbato in oro rosa, argento e blu, che per Universal sono i colori della Hollywood classica. In un anno non è cresciuto di un centimetro, perché anche l'albero del 2025 arrivava a 22 metri. La sera, attorno all'albero, va in scena lo Sparkling Christmas Tree Spectacular, con luci e musica.
-
-Tra aiuole fiorite e lampioni con ghirlande e campanelle, la Fata Madrina, il Principe Azzurro, Shrek e Fiona passeggiano lungo il viale in costume invernale.
+Lo Spectacular Christmas Tree è addobbato in oro rosa, argento e blu, che per Universal sono i colori della Hollywood classica. In un anno non è cresciuto di un centimetro, perché anche l'albero del 2025 arrivava a 22 metri. La sera, attorno all'albero, va in scena lo Sparkling Christmas Tree Spectacular, con luci e musica. La Fata Madrina, il Principe Azzurro, Shrek e Fiona passeggiano lungo il viale in costume invernale, tra aiuole fiorite e lampioni con ghirlande e campanelle.
 
 ## Babbo Natale, gli show e il cibo
 
-Nello Spectacular Santa's Village si incontra Babbo Natale e ci si fa fotografare con lui. Nel villaggio ci sono anche gli elfi, Mrs. Claus e il Postmaster del paese. Il palco del villaggio è nell'Hollywood Amphitheatre, dove torna in scena Gift of the Season. Rientra in programma anche lo spettacolo musicale Universal Pop: Winter Holiday, con gli artisti in costume invernale.
+Nello Spectacular Santa's Village si incontra Babbo Natale e ci si fa fotografare con lui. Babbo Natale ha con sé gli elfi, Mrs. Claus e il Postmaster del paese. Il palco del villaggio è nell'Hollywood Amphitheatre, dove torna in scena Gift of the Season. Universal Pop: Winter Holiday è di nuovo in programma, con il cast in costume invernale come i personaggi del viale.
 
 Da mangiare, nel villaggio, ci sono un hot dog con formaggio e ragù di carne, una quesadilla con tacchino e verdure e un hamburger di manzo con ananas e formaggio. In Italia l'ananas sulla pizza è quasi un reato, e a Pechino si può controllare se in un hamburger dà meno fastidio. Da bere ci sono vin brûlé e una cioccolata calda al toffee di fragola. Piatti di Winter Holiday si trovano anche al Sunset Grill, a Hollywood, e da Hammond's, in Jurassic World Isla Nublar. Chi dopo il parco cena al CityWalk trova una coscia di tacchino arrosto o l'apple pie con gelato al cookie, e chi ha più fame un Winter Platter.
 
 ## Natale a Hogsmeade
 
-Hogsmeade si riempie di ghirlande e rami di abete, e sotto i tetti innevati brillano le vetrine. L'Enchanted Christmas Tree si attiva con la propria bacchetta: le luci si accendono e le decorazioni si mettono a fluttuare. Torna anche l'Holiday Frog Choir, che canta canzoni di Natale. Ai Three Broomsticks c'è un menu invernale.
+Per Winter Holiday le case di Hogsmeade si riempiono di ghirlande e rami di abete, e sotto i tetti innevati brillano le vetrine. L'Enchanted Christmas Tree si attiva con la propria bacchetta: le luci si accendono e le decorazioni si mettono a fluttuare. D'inverno il Frog Choir diventa l'Holiday Frog Choir e canta canzoni di Natale. Ai Three Broomsticks c'è un menu invernale.
 
-La sera Universal proietta sul castello The Magic of Christmas at Hogwarts Castle, con un coro di fantasmi, il Ballo del Ceppo, i gufi che portano i regali e un albero di Natale. Le attrazioni di quest'area sono [Harry Potter and the Forbidden Journey](ref:universal-studios-beijing/harry-potter-and-the-forbidden-journey) e [Flight of the Hippogriff](ref:universal-studios-beijing/flight-of-the-hippogriff).
+La sera Universal proietta sul castello The Magic of Christmas at Hogwarts Castle, con un coro di fantasmi, il Ballo del Ceppo, i gufi che portano i regali e un albero di Natale. Chi vuole fare un giro prima della proiezione sul castello può scegliere tra [Harry Potter and the Forbidden Journey](ref:universal-studios-beijing/harry-potter-and-the-forbidden-journey) e [Flight of the Hippogriff](ref:universal-studios-beijing/flight-of-the-hippogriff).
 
 ## Winter Holiday 2025
 
-L'anno scorso Winter Holiday è andato dal 14 novembre 2025 al 4 gennaio 2026. Il Natale a Hogsmeade era una prima volta, con l'albero da accendere con la bacchetta e la proiezione sul castello. Nel 2025 era nuovo anche Gift of the Season, su un palco che imitava una fabbrica di giocattoli degli elfi, con il Gatto con gli Stivali, Kitty Zampe di Velluto, Po, Zhen, Zenzy e Xile.
+L'anno scorso Winter Holiday è andato dal 14 novembre 2025 al 4 gennaio 2026. Il Natale a Hogsmeade era una prima volta, con l'albero da accendere con la bacchetta e la proiezione sul castello. Gift of the Season è arrivato nel 2025, su un palco che imitava una fabbrica di giocattoli degli elfi, con il Gatto con gli Stivali, Kitty Zampe di Velluto, Po, Zhen, Zenzy e Xile.
 
 ## Orari e biglietti
 
-Universal Beijing non ha ancora pubblicato gli orari dal 16 novembre in poi né i prezzi dei biglietti per dicembre e gennaio. Fino al 15 novembre il parco è aperto tutti i giorni dalle 9 alle 20. Secondo le FAQ del resort, il biglietto dà accesso a tutte le aree a tema e a tutte le attrazioni, con eccezioni che Universal non elenca. Universal Beijing non ha comunicato se show, accensione dell'albero e proiezione sul castello siano compresi nell'ingresso.
+Universal Beijing non ha ancora pubblicato gli orari dal 16 novembre in poi né i prezzi dei biglietti per dicembre e gennaio. Fino al 15 novembre il parco è aperto tutti i giorni dalle 9 alle 20. Secondo le FAQ del resort, il biglietto vale per tutte le aree a tema e per tutte le attrazioni, salvo eccezioni che lì non sono elencate. Universal Beijing non ha comunicato se show, accensione dell'albero e proiezione sul castello rientrino in queste eccezioni.
 
 Nei giorni dell'evento a novembre l'One-Day Dated Ticket costa 418 yuan dal lunedì al venerdì e 473 yuan il sabato e la domenica. Il 20 novembre un giorno e mezzo costa 625 yuan (1.5-Day Dated Ticket) e due giorni 705 yuan (2-Day Flex Ticket). I bambini dai 3 agli 11 anni e gli over 65 pagano circa un quarto in meno.
 
@@ -72,9 +70,9 @@ Ogni biglietto è nominativo e vale solo con un documento d'identità. Fino alla
 
 ## Come arrivare e dove dormire
 
-Il resort si trova nel distretto pechinese di Tongzhou, sulla East 6th Ring Road. Alla Universal Resort Station fermano la linea 7 della metropolitana e la Batong Line, e dalle uscite B, C e D ci vogliono circa sette minuti a piedi fino ai controlli di sicurezza dell'Universal CityWalk Beijing. Al resort arrivano anche gli autobus 589 e T116. In auto, un parcheggio normale costa 100 yuan se si entra entro le 14, 50 yuan entro le 18 e 25 yuan dopo, nei giorni senza Scares @ Universal.
+Il resort si trova nel distretto pechinese di Tongzhou, sulla East 6th Ring Road. Alla Universal Resort Station fermano la linea 7 della metropolitana e la Batong Line, e dalle uscite B, C e D ci vogliono circa sette minuti a piedi fino ai controlli di sicurezza dell'Universal CityWalk Beijing. In autobus ci si arriva con le linee 589 e T116. In auto, un parcheggio normale costa 100 yuan se si entra entro le 14, 50 yuan entro le 18 e 25 yuan dopo, nei giorni senza Scares @ Universal.
 
-L'Universal Studios Grand Hotel è proprio all'ingresso del parco, mentre dal NUO Resort Hotel all'ingresso ci sono cinque minuti a piedi. Gli ospiti dei due hotel, con un biglietto valido, entrano in alcune aree del parco fino a un'ora prima dell'apertura. D'inverno il NUO serve un afternoon tea nel bar della lobby. Per la Vigilia e San Silvestro entrambi gli hotel hanno qualcosa in programma: il NUO una cena di Natale e una festa nel bar della lobby, il Grand un buffet di Capodanno.
+L'Universal Studios Grand Hotel è proprio all'ingresso del parco, mentre dal NUO Resort Hotel all'ingresso ci sono cinque minuti a piedi. Gli ospiti dei due hotel, con un biglietto valido, entrano in alcune aree del parco fino a un'ora prima dell'apertura. D'inverno il NUO serve un afternoon tea nel bar della lobby. Il NUO prepara una cena di Natale per la Vigilia e una festa di San Silvestro nel bar della lobby, il Grand un buffet di fine anno.
 
 ## Quando c'è meno gente
 
