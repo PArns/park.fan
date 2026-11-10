@@ -7,7 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  LEGOLAND Florida viert van 21 november 2026 tot 3 januari 2027 op 26 dagen Christmas Bricktacular. Nieuw is een droneshow met LEGO Santa op 14 avonden in december. Het kerstevenement zit in de gewone entree.
+  Christmas Bricktacular in LEGOLAND Florida loopt op 26 dagen, van 21 november 2026 tot 3 januari 2027. Nieuw is een droneshow met LEGO Santa op 14 avonden in december. Het kerstevenement zit in de gewone entree.
 tags:
   - nieuws
   - legoland-florida
@@ -43,7 +43,7 @@ seo:
     - Winter Haven kerst
 ---
 
-[LEGOLAND Florida](ref:legoland-florida) in Winter Haven viert op 26 dagen tussen 21 november 2026 en 3 januari 2027 Christmas Bricktacular. Nieuw is dit jaar een droneshow met LEGO Santa, die op 14 avonden in december boven het park hangt. Voor het kerstevenement heb je genoeg aan een gewoon ticket.
+[LEGOLAND Florida](ref:legoland-florida) in Winter Haven houdt Christmas Bricktacular op 26 dagen tussen 21 november 2026 en 3 januari 2027. Nieuw is dit jaar een droneshow met LEGO Santa, die op 14 avonden in december boven het park hangt. Voor het kerstevenement heb je genoeg aan een gewoon ticket.
 
 ## De droneshow
 
@@ -61,7 +61,7 @@ In november en tot half december is Christmas Bricktacular er alleen in het week
 
 Op evenementdagen is het themapark open van 10.00 tot 19.00 uur, op de laatste dag, 3 januari, tot 18.00 uur. Op dagen zonder evenement sluit het meestal om 17.00 uur, van 23 tot en met 26 november om 18.00 uur. Helemaal dicht is het park op woensdag 18 november en op de woensdagen 2, 9 en 16 december.
 
-Al op de avond voor de start, op 20 november, gaat om 18.00 uur de LEGO-kerstboom aan. Hij is meer dan 30 voet hoog, ruim negen meter, en gebouwd uit honderdduizenden LEGO-steentjes. Het aansteken van de boom zit in de gewone entree en in een aantal jaarkaarten. Volgens de openingskalender gaat het themapark die dag wel al om 17.00 uur dicht.
+De LEGO-kerstboom gaat al de avond voor de start aan, op 20 november om 18.00 uur. Hij is meer dan 30 voet hoog, ruim negen meter, en gebouwd uit honderdduizenden LEGO-steentjes. Het aansteken van de boom zit in de gewone entree en in een aantal jaarkaarten. Volgens de openingskalender gaat het themapark die dag wel al om 17.00 uur dicht.
 
 ## Tickets en jaarkaarten
 
@@ -69,7 +69,7 @@ Een dagticket kost online vanaf 69 dollar per persoon en aan de kassa 129 dollar
 
 Er zijn drie jaarkaarten: Standard voor 179 dollar, Preferred voor 249 en Premium voor 299 dollar. Preferred en Premium hebben geen blokkadedata. De Standard-kaart geldt op alle evenementdagen behalve van 27 december tot en met 2 januari, en heeft dus net de week tussen kerst en oud en nieuw vrij.
 
-Parkeren zit niet in de entree. Vooraf online betaal je minder dan bij de inrit, en met de Preferred- of Premium-jaarkaart parkeer je gewoon gratis.
+Parkeren zit niet in de entree. Vooraf online betaal je minder dan bij de inrit, en met de Preferred- of Premium-jaarkaart is het gewone parkeren gratis.
 
 ## Wat er nieuw is
 
@@ -79,11 +79,11 @@ Ook de rendieren hebben een Merry Meter. Bij Reindeer Refuel voeren kinderen ze 
 
 De [Galacticoaster](ref:legoland-florida/galacticoaster-is-coming-in-2026), de eerste indoorachtbaan van het park sinds de opening in 2011, rijdt met kerst als Holiday Spaceship, met nieuwe elementen die je zelf samenstelt. Ook nieuw is een yeti waarmee je op de foto kunt. Bij Yeti's Home bouwen kinderen een sneeuwvlok voor hem, zodat zijn poolhuis koel blijft. In Florida kan hij elke vlok gebruiken.
 
-## LEGO Santa, figuren en meedoen
+## LEGO Santa, figuren en activiteiten
 
 LEGO Santa zit in zijn slee, en je mag erbij komen zitten. Verder kom je de notenkraker, de peperkoekman, elfje Ivy, het rendiermeisje en de sneeuwpop tegen, allemaal van LEGO. Bij de North Pole Postal Service schrijven kinderen tot kerstavond brieven aan LEGO Santa. In DUPLO Valley loopt een speurtocht naar kerstsymbolen, en wie ze allemaal vindt, krijgt een prijsje zolang de voorraad strekt.
 
-In de [Dream Creation Station](ref:legoland-florida/lego-dreamzzz-the-dream-creation-station) kunnen bezoekers van 20 november tot 3 januari bij de Build to Give Workshop LEGO-sets bouwen die naar kinderen gaan. [MINILAND USA](ref:legoland-florida/miniland-usa) staat in kerstsfeer. Op evenementdagen is er in de LEGO Shop een speldje met LEGO Santa en in de King's Market een met de yeti, één per persoon.
+In de [Dream Creation Station](ref:legoland-florida/lego-dreamzzz-the-dream-creation-station) kunnen bezoekers van 20 november tot 3 januari bij de Build to Give Workshop LEGO-sets bouwen die aan kinderen worden geschonken. [MINILAND USA](ref:legoland-florida/miniland-usa) staat in kerstsfeer. Op evenementdagen is er in de LEGO Shop een speldje met LEGO Santa en in de King's Market een met de yeti, één per persoon.
 
 ## Oudejaarsavond
 
@@ -93,7 +93,7 @@ Op 31 december viert het park Kids' New Year's Eve, met livemuziek, aftellen en 
 
 Het LEGOLAND Hotel en het Pirate Island Hotel liggen op een paar passen van de ingang. Het derde, LEGOLAND Beach Retreat, is alleen in het seizoen open en ligt aan het meer aan de overkant van de weg, met een gratis shuttle. Gasten van de twee hotels bij de ingang mogen 30 minuten voor de gewone opening al in een paar delen van het park.
 
-Alleen voor hotelgasten is op evenementdagen van 8.30 tot 10.00 uur in de lobby van het LEGOLAND Hotel LEGO Santa's Workshop open, waar kinderen kerstballen versieren. Voor hen zijn er ook een pyjamafeest met dansen en ontmoetingen met de kerstfiguren. Wie tot 17 november boekt en uiterlijk 9 januari 2027 blijft, krijgt in een pakket met hotel kindertickets vanaf 39 dollar per dag. Het pakket begint bij 162 dollar per persoon per nacht.
+Op evenementdagen is LEGO Santa's Workshop van 8.30 tot 10.00 uur open in de lobby van het LEGOLAND Hotel, alleen voor hotelgasten. Kinderen maken er kersthangers. Voor hen zijn er ook een pyjamafeest met dansen en ontmoetingen met de kerstfiguren. Wie tot 17 november boekt en uiterlijk 9 januari 2027 blijft, krijgt kindertickets vanaf 39 dollar per dag in een pakket met hotel. Het pakket begint bij 162 dollar per persoon per nacht.
 
 ## Zo kom je er
 

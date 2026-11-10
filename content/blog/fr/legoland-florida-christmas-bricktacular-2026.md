@@ -65,9 +65,9 @@ Le sapin de Noël en LEGO s’allume dès la veille du lancement, le 20 novembre
 
 ## Billets et abonnements annuels
 
-Le billet d’une journée coûte à partir de 69 $ par personne en ligne et 129 $ au guichet, avec SEA LIFE Florida compris dans les deux cas. Ce sont des prix par personne : LEGOLAND n’affiche pas de tarif séparé pour les enfants et les adultes. Les moins de deux ans entrent gratuitement.
+Le billet d’une journée coûte à partir de 69 $ par personne en ligne et 129 $ au guichet, avec SEA LIFE Florida compris dans les deux cas. LEGOLAND n’affiche pas de tarif séparé pour les enfants et les adultes. Les moins de deux ans entrent gratuitement.
 
-Il existe trois abonnements annuels : Standard à 179 $, Preferred à 249 $ et Premium à 299 $. Preferred et Premium n’ont aucune date d’exclusion. Le Standard vaut pour tous les jours de l’événement sauf du 27 décembre au 2 janvier, ce qui revient à prendre ses congés pile entre Noël et le jour de l’An.
+Il existe trois abonnements annuels : Standard à 179 $, Preferred à 249 $ et Premium à 299 $. Preferred et Premium n’ont aucune date d’exclusion. Le Standard vaut pour tous les jours de l’événement sauf du 27 décembre au 2 janvier. Il prend donc ses congés pile entre Noël et le jour de l’An.
 
 Le parking n’est pas compris dans l’entrée. Réservé en ligne à l’avance, il coûte moins cher qu’à la barrière, et avec l’abonnement Preferred ou Premium, le parking standard est gratuit.
 
@@ -81,9 +81,9 @@ La [Galacticoaster](ref:legoland-florida/galacticoaster-is-coming-in-2026), prem
 
 ## LEGO Santa, personnages et animations
 
-LEGO Santa est assis dans son traîneau, et tu peux prendre place à côté de lui. Tu croiseras aussi le Casse-Noisette, le bonhomme en pain d’épices, la lutine Ivy, la fille renne et le bonhomme de neige, tous en LEGO. Au North Pole Postal Service, les enfants écrivent à LEGO Santa jusqu’au réveillon de Noël. Dans DUPLO Valley, une chasse au trésor fait chercher des symboles de Noël, et qui les trouve tous reçoit un prix, dans la limite des stocks.
+LEGO Santa est assis dans son traîneau, et tu peux prendre place à côté de lui. Tu croiseras aussi le Casse-Noisette, le bonhomme en pain d’épices, la lutine Ivy, la fille renne et le bonhomme de neige, tous en LEGO. Au North Pole Postal Service, les enfants écrivent à LEGO Santa jusqu’au réveillon de Noël. Dans DUPLO Valley, les enfants partent à la chasse aux symboles de Noël, et qui les trouve tous reçoit un prix, dans la limite des stocks.
 
-À la [Dream Creation Station](ref:legoland-florida/lego-dreamzzz-the-dream-creation-station), l’atelier Build to Give permet aux visiteurs, du 20 novembre au 3 janvier, de monter des sets LEGO qui seront donnés à des enfants. [MINILAND USA](ref:legoland-florida/miniland-usa) est décoré pour Noël. Les jours de l’événement, le LEGO Shop distribue un pin’s LEGO Santa et le King’s Market un pin’s yéti, un par personne.
+À la [Dream Creation Station](ref:legoland-florida/lego-dreamzzz-the-dream-creation-station), du 20 novembre au 3 janvier, les visiteurs montent à l’atelier Build to Give des sets LEGO qui seront donnés à des enfants. [MINILAND USA](ref:legoland-florida/miniland-usa) est décoré pour Noël. Les jours de l’événement, le LEGO Shop distribue un pin’s LEGO Santa et le King’s Market un pin’s yéti, un par personne.
 
 ## Saint-Sylvestre
 
@@ -93,7 +93,7 @@ Le 31 décembre, le parc organise Kids’ New Year’s Eve, avec de la musique l
 
 Le LEGOLAND Hotel et le Pirate Island Hotel se trouvent à quelques pas de l’entrée. Le troisième, le LEGOLAND Beach Retreat, n’ouvre qu’en saison ; il est au bord du lac, de l’autre côté de la route, et une navette gratuite le relie au parc. Les clients des deux hôtels proches de l’entrée accèdent à certaines zones du parc 30 minutes avant l’ouverture normale.
 
-Réservé aux clients des hôtels, LEGO Santa’s Workshop ouvre les jours de l’événement de 8 h 30 à 10 h dans le hall du LEGOLAND Hotel, et les enfants y décorent des boules de sapin. Ils ont aussi droit à une soirée pyjama avec danse et rencontres avec les personnages de Noël. Pour une réservation faite jusqu’au 17 novembre et un séjour jusqu’au 9 janvier 2027, le forfait avec hôtel comprend des billets enfant à partir de 39 $ par jour. Il commence à 162 $ par personne et par nuit.
+Les jours de l’événement, LEGO Santa’s Workshop ouvre de 8 h 30 à 10 h dans le hall du LEGOLAND Hotel, pour les clients des hôtels seulement. Les enfants y fabriquent des décorations de sapin. Ils ont aussi droit à une soirée pyjama avec danse et rencontres avec les personnages de Noël. Si tu réserves d’ici le 17 novembre pour un séjour jusqu’au 9 janvier 2027, le forfait avec hôtel comprend des billets enfant à partir de 39 $ par jour. Il commence à 162 $ par personne et par nuit.
 
 ## Comment y aller
 

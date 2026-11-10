@@ -77,13 +77,13 @@ Il parco è pensato per bambini dai 2 ai 12 anni. Nel (W)rap Masters Show, la pr
 
 Un Merry Meter da riempire ce l'hanno anche le renne. A Reindeer Refuel i bambini le nutrono con carote di LEGO, così possono decollare, e almeno qui nessuno deve spazzare via le briciole. Nella Gingerbread Kitchen si mescola seguendo una ricetta e intanto si balla, mentre al LEGO Elf Bell Orchestra si compone musica di Natale su una struttura musicale LEGO tutta colorata.
 
-Il [Galacticoaster](ref:legoland-florida/galacticoaster-is-coming-in-2026), le prime montagne russe al coperto del parco dall'apertura nel 2011, a Natale diventa la Holiday Spaceship, con elementi nuovi che scegli tu. Nuovo è anche lo Yeti, con cui ci si può fare una foto. A Yeti's Home i bambini gli costruiscono un fiocco di neve, così la sua casa artica resta fresca. Con il clima della Florida gliene servono parecchi.
+Il [Galacticoaster](ref:legoland-florida/galacticoaster-is-coming-in-2026), le prime montagne russe al coperto del parco dall'apertura nel 2011, a Natale diventa la Holiday Spaceship, con elementi nuovi che scegli tu. C'è anche uno yeti nuovo, con cui ci si può fare una foto. A Yeti's Home i bambini gli costruiscono un fiocco di neve, così la sua casa artica resta fresca. Con il clima della Florida gliene servono parecchi.
 
 ## LEGO Santa, personaggi e attività
 
 LEGO Santa siede sulla sua slitta e ti puoi sedere accanto a lui. Poi incontri lo Schiaccianoci, l'Omino di pan di zenzero, l'elfa Ivy, la ragazza renna e il pupazzo di neve, tutti di LEGO. Al North Pole Postal Service i bambini possono scrivere lettere a LEGO Santa fino alla Vigilia. In DUPLO Valley c'è una caccia ai simboli di Natale, e chi li trova tutti riceve un premio fino a esaurimento.
 
-Nella [Dream Creation Station](ref:legoland-florida/lego-dreamzzz-the-dream-creation-station), con il Build to Give Workshop, dal 20 novembre al 3 gennaio si costruiscono set LEGO che vengono poi donati ai bambini. [MINILAND USA](ref:legoland-florida/miniland-usa) è addobbata per le feste. Nei giorni dell'evento c'è una spilla con LEGO Santa al LEGO Shop e una con lo Yeti al King's Market, una a persona.
+Dal 20 novembre al 3 gennaio, al Build to Give Workshop della [Dream Creation Station](ref:legoland-florida/lego-dreamzzz-the-dream-creation-station), si costruiscono set LEGO che poi vengono donati a bambini. [MINILAND USA](ref:legoland-florida/miniland-usa) è addobbata per le feste. Nei giorni dell'evento c'è una spilla con LEGO Santa al LEGO Shop e una con lo Yeti al King's Market, una a persona.
 
 ## San Silvestro
 
@@ -93,7 +93,7 @@ Il 31 dicembre il parco festeggia il Kids' New Year's Eve con musica dal vivo, c
 
 Il LEGOLAND Hotel e il Pirate Island Hotel sono a pochi passi dall'ingresso. Il terzo, il LEGOLAND Beach Retreat, apre solo in alcune stagioni e sta sul lago dall'altra parte della strada, con navetta gratuita. Chi dorme nei due hotel vicino all'ingresso entra in alcune aree del parco 30 minuti prima dell'apertura normale.
 
-Solo per gli ospiti degli hotel, nei giorni dell'evento dalle 8:30 alle 10, nella hall del LEGOLAND Hotel apre LEGO Santa's Workshop, dove i bambini decorano palline per l'albero. Per loro ci sono anche un pigiama party con balli e incontri con i personaggi di Natale. Chi prenota entro il 17 novembre e resta fino al 9 gennaio 2027 trova nel pacchetto con hotel i biglietti per bambini da 39 dollari al giorno. Il pacchetto parte da 162 dollari a persona a notte.
+Nei giorni dell'evento, dalle 8:30 alle 10, LEGO Santa's Workshop apre nella hall del LEGOLAND Hotel solo per gli ospiti degli hotel. I bambini ci creano decorazioni per l'albero. Per loro ci sono anche un pigiama party con balli e incontri con i personaggi di Natale. Chi prenota entro il 17 novembre e resta fino al 9 gennaio 2027 trova nel pacchetto con hotel i biglietti per bambini da 39 dollari al giorno. Il pacchetto parte da 162 dollari a persona a notte.
 
 ## Come arrivare
 

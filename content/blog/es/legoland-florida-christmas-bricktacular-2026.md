@@ -61,11 +61,11 @@ En noviembre y hasta mediados de diciembre, Christmas Bricktacular solo se celeb
 
 Los días de evento, el parque temático abre de 10:00 a 19:00, salvo el último, el 3 de enero, que cierra a las 18:00. Los días sin evento suele cerrar a las 17:00, y del 23 al 26 de noviembre, a las 18:00. No abre en absoluto el miércoles 18 de noviembre ni los miércoles 2, 9 y 16 de diciembre.
 
-La víspera del arranque, el 20 de noviembre, se enciende a las 18:00 el árbol de Navidad de LEGO. Mide más de 30 pies, algo más de nueve metros, y está hecho con cientos de miles de piezas de LEGO. El encendido entra en la entrada normal y en algunos pases anuales. Eso sí, según el calendario de apertura, ese día el parque temático cierra a las 17:00.
+La víspera del arranque, el 20 de noviembre, se enciende a las 18:00 el árbol de Navidad de LEGO. Mide más de 30 pies, algo más de nueve metros, y está hecho con cientos de miles de piezas de LEGO. El encendido está incluido en la entrada normal y en algunos pases anuales. Eso sí, según el calendario de apertura, ese día el parque temático cierra a las 17:00.
 
 ## Entradas y pases anuales
 
-La entrada de un día cuesta desde 69 dólares por persona comprada en línea y 129 dólares en taquilla, y en los dos casos incluye SEA LIFE Florida. Son precios por persona, y LEGOLAND no publica uno aparte para niños. Los menores de dos años entran gratis.
+La entrada de un día cuesta desde 69 dólares por persona comprada en línea y 129 dólares en taquilla, y en los dos casos incluye SEA LIFE Florida. LEGOLAND no publica un precio aparte para niños y adultos. Los menores de dos años entran gratis.
 
 Hay tres pases anuales: el Standard cuesta 179 dólares, el Preferred 249 y el Premium 299. Preferred y Premium no tienen fechas bloqueadas. El Standard vale todos los días del evento salvo del 27 de diciembre al 2 de enero, así que se coge vacaciones justo la semana entre Navidad y Año Nuevo.
 
@@ -93,7 +93,7 @@ El 31 de diciembre, el parque celebra Kids' New Year's Eve con música en direct
 
 El LEGOLAND Hotel y el Pirate Island Hotel están a pocos pasos de la entrada. El tercero, el LEGOLAND Beach Retreat, solo abre por temporadas y está junto al lago, al otro lado de la carretera, con lanzadera gratis. Quien se aloja en los dos hoteles de la entrada puede pasar a algunas zonas del parque 30 minutos antes de la apertura normal.
 
-Los días de evento, de 8:30 a 10:00, el vestíbulo del LEGOLAND Hotel acoge LEGO Santa's Workshop, solo para huéspedes, donde los niños decoran adornos para el árbol. Para ellos hay también una fiesta de pijamas con baile y encuentros con los personajes navideños. Quien reserva hasta el 17 de noviembre y se aloja hasta el 9 de enero de 2027 consigue, en el paquete con hotel, entradas infantiles desde 39 dólares al día. El paquete empieza en 162 dólares por persona y noche.
+Los días de evento, LEGO Santa's Workshop abre de 8:30 a 10:00 en el vestíbulo del LEGOLAND Hotel, solo para huéspedes. Allí los niños decoran adornos para el árbol. Para ellos hay también una fiesta de pijamas con baile y encuentros con los personajes navideños. Quien reserva hasta el 17 de noviembre y se aloja hasta el 9 de enero de 2027 consigue, en el paquete con hotel, entradas infantiles desde 39 dólares al día. El paquete empieza en 162 dólares por persona y noche.
 
 ## Cómo llegar
 
@@ -109,7 +109,7 @@ El parque está en One LEGOLAND Way, en Winter Haven, a unos 45 minutos de los p
 
 ## De Cypress Gardens a LEGOLAND
 
-LEGOLAND Florida abrió el 15 de octubre de 2011 en el terreno de Cypress Gardens, un parque de atracciones que había cerrado en 2009. Su jardín botánico sigue ahí y hoy forma parte del parque temático como [Cypress Gardens](ref:legoland-florida/cypress-gardens). En 150 acres, unas 60 hectáreas, hay más de 50 atracciones, espectáculos y actividades. Al resort de Merlin Entertainments pertenecen además el Peppa Pig Theme Park Florida, SEA LIFE Florida y el LEGOLAND Water Park.
+LEGOLAND Florida abrió el 15 de octubre de 2011 en el terreno de Cypress Gardens, un parque de atracciones que había cerrado en 2009. Su jardín botánico sigue ahí y hoy forma parte del parque temático como [Cypress Gardens](ref:legoland-florida/cypress-gardens). En 150 acres, algo más de 60 hectáreas, hay más de 50 atracciones, espectáculos y actividades. Al resort de Merlin Entertainments pertenecen además el Peppa Pig Theme Park Florida, SEA LIFE Florida y el LEGOLAND Water Park.
 
 [LEGOLAND Florida](ref:legoland-florida?full)
 
