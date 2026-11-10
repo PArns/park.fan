@@ -224,9 +224,12 @@ for, and quotes them.
 ## Chips and times
 
 Every wait an answer names ("30 Min.", "30 minutes" …) is drawn as the site's `LiveWaitPill`
-(`splitWaits`, `lib/assistant/wait-chips.ts`), and the cards use it for their waits. The chat
-sends the browser's time zone, so every time the API hands the model is already in the reader's
-clock; the cards format their instants with the browser's own clock too.
+(`splitWaits`, `lib/assistant/wait-chips.ts`), and the cards use it for their waits. Every time
+is park time, as on the planner, the showtimes and the park pages: the API gives the model each
+time on the clock of the park it is about, and the cards read the park's clock off the offset the
+API writes on every card time (`clock` in `assistant-card.tsx`), never the browser's. The chat
+still sends the browser's time zone, for the visitor's own "now" and so Parky can say "park time"
+when the two differ.
 
 ## Parky's face
 

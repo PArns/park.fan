@@ -80,13 +80,20 @@ function photoFor(map: CardImageMap | null, url: string | null): [string, string
   return Object.hasOwn(table, key) ? table[key] : null;
 }
 
-/** An instant as "HH:MM" in the reader's own clock, the one every time in Parky is given in. */
+/**
+ * An instant as "HH:MM" on the park's clock, the one every time in Parky is given in: the API
+ * writes each card time with the park's own offset, so the wall clock is read off the string and
+ * never moved into the reader's zone.
+ */
 function clock(iso: string | null, locale: string): string | null {
-  if (!iso) return null;
-  const at = new Date(iso);
-  return Number.isNaN(at.getTime())
-    ? null
-    : at.toLocaleTimeString(locale, { hour: '2-digit', minute: '2-digit' });
+  if (!iso || Number.isNaN(Date.parse(iso))) return null;
+  const wall = /T(\d{2}):(\d{2})/.exec(iso);
+  if (!wall) return null;
+  return formatTime(Date.UTC(2000, 0, 1, Number(wall[1]), Number(wall[2])), locale, {
+    hour: '2-digit',
+    minute: '2-digit',
+    timeZone: 'UTC',
+  });
 }
 
 /** A link to a park.fan page in the reader's language, or its children unlinked. */
