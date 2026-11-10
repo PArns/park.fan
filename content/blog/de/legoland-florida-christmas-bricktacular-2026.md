@@ -49,7 +49,7 @@ Das [LEGOLAND Florida](ref:legoland-florida) in Winter Haven feiert an 26 Tagen 
 
 LEGO Santa's Holiday Light Spectacular heißt die Show. Sie startet am Samstag, dem 5. Dezember, läuft eine Woche später am 12. Dezember und dann jeden Abend vom 19. bis zum 30. Dezember. Im November, an Silvester und im Januar bleiben die Drohnen am Boden.
 
-Los geht es, wenn es dunkel wird. Die genaue Startzeit hat LEGOLAND noch nicht bekannt gegeben, auch nicht, von wo man am besten zuschaut. Die Showzeiten können sich noch ändern. Länger offen hat der Park an den Showabenden nicht.
+Los geht es, wenn es dunkel wird. Startzeit und besten Platz zum Zuschauen hat LEGOLAND noch nicht genannt, und auch die Showtermine stehen unter Vorbehalt. An Showabenden schließt der Park wie an jedem Eventtag um 19 Uhr, die Show muss also zwischen Einbruch der Dunkelheit und Parkschluss passen.
 
 ## Eventtage und Öffnungszeiten
 
@@ -61,11 +61,11 @@ Christmas Bricktacular läuft im November und bis Mitte Dezember nur an Wochenen
 
 An Eventtagen hat der Theme Park von 10 bis 19 Uhr geöffnet, am letzten Tag, dem 3. Januar, bis 18 Uhr. An Tagen ohne Event schließt er meist um 17 Uhr, vom 23. bis zum 26. November um 18 Uhr. Ganz zu bleibt der Park am Mittwoch, dem 18. November, und an den Mittwochen 2., 9. und 16. Dezember.
 
-Schon am Abend vor dem Start, am 20. November, geht um 18 Uhr der LEGO-Weihnachtsbaum an. Er ist mehr als 30 Fuß hoch, gut neun Meter, und aus Hunderttausenden LEGO-Steinen gebaut. Die Baumbeleuchtung ist im normalen Eintritt und bei ausgewählten Jahreskarten enthalten. Laut Öffnungskalender schließt der Theme Park an diesem Tag allerdings schon um 17 Uhr.
+Schon am Abend vor dem Start, am 20. November, geht um 18 Uhr der LEGO-Weihnachtsbaum an. Er ist mehr als 30 Fuß hoch, gut neun Meter, und aus Hunderttausenden LEGO-Steinen gebaut. Die Baumbeleuchtung ist im normalen Eintritt und bei ausgewählten Jahreskarten enthalten. Laut Öffnungskalender schließt der Theme Park an diesem Tag aber schon um 17 Uhr, eine Stunde bevor der Baum angeht. Wie Tagesgäste zur Beleuchtung kommen, schreibt LEGOLAND nicht dazu.
 
 ## Tickets und Jahreskarten
 
-Ein Tagesticket kostet online ab 69 Dollar pro Person, an der Kasse 129 Dollar, und SEA LIFE Florida ist jeweils dabei. Die Preise gelten pro Person, getrennte Preise für Kinder und Erwachsene nennt LEGOLAND nicht. Kinder unter zwei Jahren kommen kostenlos in den Park.
+Ein Tagesticket kostet online ab 69 Dollar pro Person, an der Kasse 129 Dollar, und SEA LIFE Florida ist jeweils dabei. Einen Kinderpreis gibt es nicht: Eine Siebenjährige zahlt dasselbe wie ihr Vater, frei sind nur Kinder unter zwei Jahren.
 
 Von den drei Jahreskarten kostet die Standard-Karte 179 Dollar, Preferred 249 und Premium 299 Dollar. Preferred und Premium haben keine Sperrtage. Die Standard-Karte gilt an allen Eventtagen außer vom 27. Dezember bis zum 2. Januar und nimmt sich damit ausgerechnet die Woche zwischen den Jahren frei.
 
@@ -73,27 +73,27 @@ Parken ist im Eintritt nicht enthalten. Online im Voraus kostet es weniger als a
 
 ## Was neu ist
 
-Der Park richtet sich an Kinder von 2 bis 12 Jahren. In der (W)rap Masters Show, der ersten Rap-Battle-Show des Resorts, treten die Elfen von LEGO Santa gegeneinander an. Light Up LEGOLAND ist ein neuer Lichterpfad, an dem Kinder mit LEGO-Steinen bauen und dabei ein „Merry Meter“ füllen, bis der Park leuchtet.
+Gebaut ist das Programm für Kinder von 2 bis 12, an die sich der ganze Park richtet. Am lautesten wird es in der (W)rap Masters Show, in der die Elfen von LEGO Santa gegeneinander rappen. Eine Rap-Battle-Show hatte das Resort bisher nicht. Light Up LEGOLAND ist ein neuer Lichterpfad, an dem Kinder mit LEGO-Steinen bauen und dabei ein „Merry Meter“ füllen, bis der Park leuchtet.
 
-Ein Merry Meter füllen auch die Rentiere. Bei Reindeer Refuel füttern Kinder sie mit Karotten aus LEGO, damit sie abheben können. Krümel gibt es dabei keine. In der Gingerbread Kitchen wird nach Rezept gemixt und dazu getanzt, und beim LEGO Elf Bell Orchestra steckt man an einem bunten LEGO-Musikgestell Weihnachtsmusik zusammen.
+Ein Merry Meter steht auch bei Reindeer Refuel. Dort füttern Kinder die Rentiere mit Karotten aus LEGO, bis sie genug Energie zum Abheben haben. In der Gingerbread Kitchen mischen Kinder nach Rezept die richtigen Zutaten und lernen die passenden Tanzschritte dazu. Wer lieber Musik macht, steckt am LEGO Elf Bell Orchestra auf einem bunten LEGO-Musikgestell Weihnachtsmusik zusammen.
 
-Die [Galacticoaster](ref:legoland-florida/galacticoaster-is-coming-in-2026), die erste Indoor-Achterbahn im Park seit der Eröffnung 2011, fährt zu Weihnachten als Holiday Spaceship mit neuen Elementen, die du selbst zusammenstellst. Neu ist auch ein Yeti, mit dem man sich fotografieren lassen kann. Bei Yeti's Home bauen Kinder ihm eine Schneeflocke, damit sein arktisches Zuhause kühl bleibt. In Florida kann er jede einzelne brauchen.
+Die [Galacticoaster](ref:legoland-florida/galacticoaster-is-coming-in-2026), die erste Indoor-Achterbahn im Park seit der Eröffnung 2011, fährt zu Weihnachten als Holiday Spaceship mit neuen weihnachtlichen Bauteilen für das Raumschiff, die du selbst zusammenstellst. Zum ersten Mal dabei ist ein Yeti, der für Fotos bereitsteht. Für Yeti's Home bauen Kinder ihm eine Schneeflocke, damit sein arktisches Zuhause kühl bleibt. In Florida kann er jede einzelne brauchen.
 
 ## LEGO Santa, Figuren und Mitmachaktionen
 
-LEGO Santa sitzt in seinem Schlitten, und du kannst dich dazusetzen. Außerdem triffst du den Nussknacker, den Lebkuchenmann, die Elfe Ivy, das Rentiermädchen und den Schneemann, alle aus LEGO. Beim North Pole Postal Service schreiben Kinder bis Heiligabend Briefe an LEGO Santa. In DUPLO Valley läuft eine Schnitzeljagd nach Weihnachtssymbolen, und wer alle findet, bekommt einen Preis, solange der Vorrat reicht.
+LEGO Santa sitzt in seinem Schlitten, und du kannst dich dazusetzen. Außerdem triffst du den Nussknacker, den Lebkuchenmann, die Elfe Ivy, das Rentiermädchen und den Schneemann, alle aus LEGO. Briefe an LEGO Santa nimmt bis Heiligabend der North Pole Postal Service an. Durch DUPLO Valley führt eine Schnitzeljagd nach Weihnachtssymbolen, und wer alle findet, bekommt einen Preis, solange der Vorrat reicht.
 
-In der [Dream Creation Station](ref:legoland-florida/lego-dreamzzz-the-dream-creation-station) können Gäste beim Build to Give Workshop vom 20. November bis zum 3. Januar LEGO-Sets bauen, die an Kinder gespendet werden. [MINILAND USA](ref:legoland-florida/miniland-usa) ist weihnachtlich dekoriert. An Eventtagen gibt es im LEGO Shop einen Anstecker mit LEGO Santa und im King's Market einen mit dem Yeti, einen pro Person.
+Vom 20. November bis zum 3. Januar bauen Gäste beim Build to Give Workshop in der [Dream Creation Station](ref:legoland-florida/lego-dreamzzz-the-dream-creation-station) LEGO-Sets, die an Kinder gespendet werden. [MINILAND USA](ref:legoland-florida/miniland-usa) ist weihnachtlich dekoriert. An Eventtagen gibt es im LEGO Shop einen Anstecker mit LEGO Santa und im King's Market einen mit dem Yeti, einen pro Person.
 
 ## Silvester
 
-Am 31. Dezember feiert der Park Kids' New Year's Eve mit Live-Musik, Countdown und einem frühen Feuerwerk für 2027. Mitternacht kommt in Winter Haven früh, denn der Theme Park schließt an Silvester um 19 Uhr. Auch mit einem Urlaubspaket bist du dabei.
+Am 31. Dezember feiert der Park Kids' New Year's Eve mit Live-Musik, Countdown und einem frühen Feuerwerk für 2027. Mitternacht kommt in Winter Haven früh, denn der Theme Park schließt an Silvester um 19 Uhr. Der Abend ist ein normaler Eventtag, der Eintritt deckt ihn ab, ebenso die Tickets aus einem Urlaubspaket.
 
 ## Hotels
 
 Das LEGOLAND Hotel und das Pirate Island Hotel liegen wenige Schritte vom Eingang. Das dritte, das LEGOLAND Beach Retreat, hat nur saisonal geöffnet und liegt am See auf der anderen Straßenseite, mit kostenlosem Shuttle. Gäste der beiden Hotels am Eingang kommen 30 Minuten vor der regulären Öffnung in ausgewählte Bereiche des Parks.
 
-Nur für Hotelgäste öffnet an Eventtagen von 8:30 bis 10 Uhr in der Lobby des LEGOLAND Hotels LEGO Santa's Workshop, in dem Kinder Christbaumanhänger gestalten. Dazu kommen für sie eine Pyjama-Party mit Tanz und Treffen mit den Weihnachtsfiguren. Wer bis zum 17. November bucht und bis zum 9. Januar 2027 bleibt, bekommt im Paket mit Hotel Kindertickets ab 39 Dollar pro Tag. Das Paket beginnt bei 162 Dollar pro Person und Nacht.
+An Eventtagen öffnet LEGO Santa's Workshop von 8:30 bis 10 Uhr in der Lobby des LEGOLAND Hotels, nur für Hotelgäste. Dort gestalten Kinder Christbaumanhänger. Dazu kommen für Hotelgäste eine Pyjama-Party mit Tanz und Treffen mit den Weihnachtsfiguren. Wer bis zum 17. November bucht und bis zum 9. Januar 2027 bleibt, bekommt im Paket mit Hotel Kindertickets ab 39 Dollar pro Tag. Das Paket beginnt bei 162 Dollar pro Person und Nacht.
 
 ## Anreise
 

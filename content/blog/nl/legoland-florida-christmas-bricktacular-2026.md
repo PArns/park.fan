@@ -49,7 +49,7 @@ seo:
 
 De show heet LEGO Santa's Holiday Light Spectacular. De eerste is op zaterdag 5 december, de tweede een week later op 12 december, en van 19 tot en met 30 december vliegen de drones elke avond. In november, op oudejaarsavond en in januari blijven ze aan de grond.
 
-De show begint als het donker wordt. Hoe laat precies, heeft LEGOLAND nog niet bekendgemaakt, en ook niet waar je het best kunt kijken. De tijden kunnen nog veranderen. Op de showavonden blijft het park niet langer open dan anders.
+De show begint als het donker wordt. Hoe laat precies en waar je het best staat, heeft LEGOLAND nog niet bekendgemaakt, en ook de showdata zijn onder voorbehoud. Op showavonden gaat het park net als op elke evenementdag om 19.00 uur dicht, dus de show moet passen tussen het donker worden en sluitingstijd.
 
 ## Evenementdagen en openingstijden
 
@@ -61,11 +61,11 @@ In november en tot half december is Christmas Bricktacular er alleen in het week
 
 Op evenementdagen is het themapark open van 10.00 tot 19.00 uur, op de laatste dag, 3 januari, tot 18.00 uur. Op dagen zonder evenement sluit het meestal om 17.00 uur, van 23 tot en met 26 november om 18.00 uur. Helemaal dicht is het park op woensdag 18 november en op de woensdagen 2, 9 en 16 december.
 
-De LEGO-kerstboom gaat al de avond voor de start aan, op 20 november om 18.00 uur. Hij is meer dan 30 voet hoog, ruim negen meter, en gebouwd uit honderdduizenden LEGO-steentjes. Het aansteken van de boom zit in de gewone entree en in een aantal jaarkaarten. Volgens de openingskalender gaat het themapark die dag wel al om 17.00 uur dicht.
+De LEGO-kerstboom gaat al de avond voor de start aan, op 20 november om 18.00 uur. Hij is meer dan 30 voet hoog, ruim negen meter, en gebouwd uit honderdduizenden LEGO-steentjes. Het aansteken van de boom zit in de gewone entree en in een aantal jaarkaarten. Volgens de openingskalender gaat het themapark die dag wel al om 17.00 uur dicht, een uur voordat de boom aangaat. Hoe dagbezoekers bij het aansteken komen, vermeldt LEGOLAND niet.
 
 ## Tickets en jaarkaarten
 
-Een dagticket kost online vanaf 69 dollar per persoon en aan de kassa 129 dollar, in beide gevallen met SEA LIFE Florida erbij. Aparte prijzen voor kinderen en volwassenen geeft LEGOLAND niet. Kinderen onder de twee mogen gratis het park in.
+Een dagticket kost online vanaf 69 dollar per persoon en aan de kassa 129 dollar, in beide gevallen met SEA LIFE Florida erbij. Een kinderprijs bestaat niet: een meisje van zeven betaalt evenveel als haar vader, en alleen wie jonger is dan twee komt er gratis in.
 
 Er zijn drie jaarkaarten: Standard voor 179 dollar, Preferred voor 249 en Premium voor 299 dollar. Preferred en Premium hebben geen blokkadedata. De Standard-kaart geldt op alle evenementdagen behalve van 27 december tot en met 2 januari, en heeft dus net de week tussen kerst en oud en nieuw vrij.
 
@@ -73,21 +73,21 @@ Parkeren zit niet in de entree. Vooraf online betaal je minder dan bij de inrit,
 
 ## Wat er nieuw is
 
-Het park mikt op kinderen van 2 tot 12 jaar. In de (W)rap Masters Show, de eerste rapbattle van het resort, nemen de elfen van LEGO Santa het tegen elkaar op. Light Up LEGOLAND is een nieuw lichtjespad waar kinderen met LEGO-steentjes bouwen en zo een “Merry Meter” vullen tot het park oplicht.
+Het hele programma is gemaakt voor kinderen van 2 tot 12, de leeftijd waarop het park zich richt. Het luidst wordt het bij de (W)rap Masters Show, waar de elfen van LEGO Santa tegen elkaar rappen. Een rapbattle had het resort nog nooit. Light Up LEGOLAND is een nieuw lichtjespad waar kinderen met LEGO-steentjes bouwen en zo een “Merry Meter” vullen tot het park oplicht.
 
-Ook de rendieren hebben een Merry Meter. Bij Reindeer Refuel voeren kinderen ze wortels van LEGO, zodat ze kunnen opstijgen. Kruimels blijven er niet achter. In de Gingerbread Kitchen meng je volgens recept en dans je erbij, en bij het LEGO Elf Bell Orchestra klik je aan een bont LEGO-muziekrek kerstmuziek in elkaar.
+Een Merry Meter staat ook bij Reindeer Refuel. Kinderen voeren de rendieren daar wortels van LEGO tot ze genoeg energie hebben om op te stijgen. In de Gingerbread Kitchen mengen kinderen volgens recept de juiste ingrediënten en leren ze de danspasjes die erbij horen. Wie liever muziek maakt, klikt bij het LEGO Elf Bell Orchestra aan een bont LEGO-muziekrek kerstmuziek in elkaar.
 
-De [Galacticoaster](ref:legoland-florida/galacticoaster-is-coming-in-2026), de eerste indoorachtbaan van het park sinds de opening in 2011, rijdt met kerst als Holiday Spaceship, met nieuwe elementen die je zelf samenstelt. Ook nieuw is een yeti waarmee je op de foto kunt. Bij Yeti's Home bouwen kinderen een sneeuwvlok voor hem, zodat zijn poolhuis koel blijft. In Florida kan hij elke vlok gebruiken.
+De [Galacticoaster](ref:legoland-florida/galacticoaster-is-coming-in-2026), de eerste indoorachtbaan van het park sinds de opening in 2011, rijdt met kerst als Holiday Spaceship, met nieuwe kerstonderdelen voor het ruimteschip die je zelf samenstelt. Voor het eerst staat er een yeti klaar om mee op de foto te gaan. Voor Yeti's Home bouwen kinderen een sneeuwvlok voor hem, zodat zijn poolhuis koel blijft. In Florida kan hij elke vlok gebruiken.
 
 ## LEGO Santa, figuren en activiteiten
 
-LEGO Santa zit in zijn slee, en je mag erbij komen zitten. Verder kom je de notenkraker, de peperkoekman, elfje Ivy, het rendiermeisje en de sneeuwpop tegen, allemaal van LEGO. Bij de North Pole Postal Service schrijven kinderen tot kerstavond brieven aan LEGO Santa. In DUPLO Valley loopt een speurtocht naar kerstsymbolen, en wie ze allemaal vindt, krijgt een prijsje zolang de voorraad strekt.
+LEGO Santa zit in zijn slee, en je mag erbij komen zitten. Verder kom je de notenkraker, de peperkoekman, elfje Ivy, het rendiermeisje en de sneeuwpop tegen, allemaal van LEGO. Brieven aan LEGO Santa neemt de North Pole Postal Service tot kerstavond aan. Door DUPLO Valley loopt een speurtocht naar kerstsymbolen, en wie ze allemaal vindt, krijgt een prijsje zolang de voorraad strekt.
 
-In de [Dream Creation Station](ref:legoland-florida/lego-dreamzzz-the-dream-creation-station) kunnen bezoekers van 20 november tot 3 januari bij de Build to Give Workshop LEGO-sets bouwen die aan kinderen worden geschonken. [MINILAND USA](ref:legoland-florida/miniland-usa) staat in kerstsfeer. Op evenementdagen is er in de LEGO Shop een speldje met LEGO Santa en in de King's Market een met de yeti, één per persoon.
+Van 20 november tot 3 januari bouwen bezoekers bij de Build to Give Workshop in de [Dream Creation Station](ref:legoland-florida/lego-dreamzzz-the-dream-creation-station) LEGO-sets die aan kinderen worden geschonken. [MINILAND USA](ref:legoland-florida/miniland-usa) staat in kerstsfeer. Op evenementdagen is er in de LEGO Shop een speldje met LEGO Santa en in de King's Market een met de yeti, één per persoon.
 
 ## Oudejaarsavond
 
-Op 31 december viert het park Kids' New Year's Eve, met livemuziek, aftellen en een vroeg vuurwerk voor 2027. Middernacht valt in Winter Haven vroeg, want het themapark sluit op oudejaarsavond om 19.00 uur. Ook met een vakantiepakket kun je erbij zijn.
+Op 31 december viert het park Kids' New Year's Eve, met livemuziek, aftellen en een vroeg vuurwerk voor 2027. Middernacht valt in Winter Haven vroeg, want het themapark sluit op oudejaarsavond om 19.00 uur. Die avond is een gewone evenementdag, dus de entree dekt hem, net als de tickets uit een vakantiepakket.
 
 ## Hotels
 

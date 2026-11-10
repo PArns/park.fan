@@ -49,7 +49,7 @@ seo:
 
 The show is called LEGO Santa's Holiday Light Spectacular. It premieres on Saturday, December 5, flies again a week later on December 12, and then runs every night from December 19 to 30. In November, on New Year's Eve and in January the drones stay on the ground.
 
-It starts once it's dark. LEGOLAND hasn't announced an exact time yet, or where you'll get the best view, and show times may still change. The park doesn't stay open any later on show nights.
+It starts once it's dark. LEGOLAND hasn't said when it starts or where to watch from, and even the show dates are subject to change. On show nights the park closes at 7 pm like on any other event day, so the show has to fit between nightfall and closing time.
 
 ## Event days and hours
 
@@ -61,11 +61,11 @@ In November and until mid-December, Christmas Bricktacular runs on weekends only
 
 On event days the theme park is open from 10 am to 7 pm, except on the last day, January 3, when it closes at 6 pm. On days without the event it usually closes at 5 pm, and at 6 pm from November 23 to 26. It's closed altogether on Wednesday, November 18, and on the Wednesdays of December 2, 9 and 16.
 
-The LEGO Christmas tree lights up the evening before the start, on November 20 at 6 pm. It's more than 30 feet (just over 9 m) tall and built from hundreds of thousands of LEGO bricks. The tree lighting is included with regular admission and with selected annual passes. According to the park's hours calendar, though, the theme park closes at 5 pm that day.
+The LEGO Christmas tree lights up the evening before the start, on November 20 at 6 pm. It's more than 30 feet (just over 9 m) tall and built from hundreds of thousands of LEGO bricks. The tree lighting is included with regular admission and with selected annual passes. According to the park's hours calendar, though, the theme park closes at 5 pm that day, an hour before the tree goes on. LEGOLAND doesn't say how day guests are supposed to get to the lighting.
 
 ## Tickets and annual passes
 
-A day ticket starts at $69 per person online and costs $129 at the gate, and both include SEA LIFE Florida. Prices are per person; LEGOLAND doesn't list separate prices for kids and adults. Children under two get in free.
+A day ticket starts at $69 per person online and costs $129 at the gate, and both include SEA LIFE Florida. There's no kids' price: a seven-year-old pays the same as her dad, and only children under two get in free.
 
 There are three annual passes: Standard for $179, Preferred for $249 and Premium for $299. Preferred and Premium have no blockout dates. The Standard pass works on every event day except December 27 to January 2, so the cheapest pass takes its own vacation in exactly the week between Christmas and New Year's.
 
@@ -73,21 +73,21 @@ Parking isn't included in admission. It's cheaper booked online in advance than 
 
 ## What's new
 
-The park is aimed at kids aged 2 to 12. In the (W)rap Masters Show, the resort's first rap battle show, LEGO Santa's elves go head to head. Light Up LEGOLAND is a new light trail where kids build with LEGO bricks and fill up a "Merry Meter" until the park lights up.
+The whole program is built for kids aged 2 to 12, the age group the entire park is aimed at. It gets loudest at the (W)rap Masters Show, where LEGO Santa's elves rap against each other. The resort has never had a rap battle show before. Light Up LEGOLAND is a new light trail where kids build with LEGO bricks and fill up a "Merry Meter" until the park lights up.
 
-The reindeer have a Merry Meter too. At Reindeer Refuel, kids feed them LEGO carrots so they can take off, and nobody has to sweep up after them. In the Gingerbread Kitchen you mix to a recipe and dance along, and at the LEGO Elf Bell Orchestra you snap Christmas music together on a colorful LEGO music frame.
+Reindeer Refuel has a Merry Meter too. Kids feed the reindeer LEGO carrots there until they've got enough energy for takeoff. In the Gingerbread Kitchen, kids follow a recipe, mix the right ingredients and learn the dance moves that go with it. If music's more your thing, you can snap Christmas tunes together on a colorful LEGO music frame at the LEGO Elf Bell Orchestra.
 
-The [Galacticoaster](ref:legoland-florida/galacticoaster-is-coming-in-2026), the park's first indoor coaster since it opened in 2011, runs as the Holiday Spaceship for Christmas, with new elements you put together yourself. Also new is a yeti you can have your photo taken with. At Yeti's Home, kids build him a snowflake to keep his arctic home cool, and in Florida he'll take every one he can get.
+The [Galacticoaster](ref:legoland-florida/galacticoaster-is-coming-in-2026), the park's first indoor coaster since it opened in 2011, runs as the Holiday Spaceship for Christmas, with new holiday parts for the spaceship that you put together yourself. Making his debut is a yeti who's there for photos. For Yeti's Home, kids build him a snowflake to keep his arctic home cool, and in Florida he'll take every one he can get.
 
 ## LEGO Santa, characters and activities
 
-LEGO Santa sits in his sleigh, and you can take the seat next to him. You'll also meet the Nutcracker, the Gingerbread Man, Ivy the elf, the reindeer girl and the snowman, all built from LEGO. At the North Pole Postal Service kids can write letters to LEGO Santa until Christmas Eve. DUPLO Valley has a scavenger hunt for Christmas symbols, and anyone who finds them all gets a prize while supplies last.
+LEGO Santa sits in his sleigh, and you can take the seat next to him. You'll also meet the Nutcracker, the Gingerbread Man, Ivy the elf, the reindeer girl and the snowman, all built from LEGO. Letters to LEGO Santa go to the North Pole Postal Service, which takes them until Christmas Eve. A scavenger hunt for Christmas symbols runs through DUPLO Valley, and anyone who finds them all gets a prize while supplies last.
 
 From November 20 to January 3, guests at the [Dream Creation Station](ref:legoland-florida/lego-dreamzzz-the-dream-creation-station) can build LEGO sets at the Build to Give Workshop, and the sets are donated to kids. [MINILAND USA](ref:legoland-florida/miniland-usa) is decorated for Christmas. On event days the LEGO Shop hands out a LEGO Santa pin and King's Market one with the yeti, one per person.
 
 ## New Year's Eve
 
-On December 31 the park celebrates Kids' New Year's Eve with live music, a countdown and early fireworks for 2027. Midnight comes early in Winter Haven, since the theme park closes at 7 pm on New Year's Eve. You can also go as part of a vacation package.
+On December 31 the park celebrates Kids' New Year's Eve with live music, a countdown and early fireworks for 2027. Midnight comes early in Winter Haven, since the theme park closes at 7 pm on New Year's Eve. The evening is a normal event day, so admission covers it, and so do the tickets in a vacation package.
 
 ## Hotels
 
