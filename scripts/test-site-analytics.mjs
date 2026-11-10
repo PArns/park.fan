@@ -179,13 +179,16 @@ await test('the referrer is the external host, once per load', async () => {
   assert.equal('referrer' in second, false);
 });
 
-await test('a utm_source that names no AI assistant sends no referrer or source, and the referrer host is left alone', async () => {
+await test('a utm_source that names no AI assistant or social network sends no referrer or source, and the referrer host is left alone', async () => {
   for (const search of [
     '?utm_source=Newsletter',
     '?utm_source=news.example.com&utm_campaign=summer',
     '?utm_source=chatgpt.com.example.net',
     '?utm_source=chatgpt',
     '?utm_medium=chatgpt.com',
+    '?utm_source=instagram.com.example.net',
+    '?utm_source=insta',
+    '?utm_medium=instagram&utm_campaign=bio',
   ]) {
     browser({ search });
     const { trackSitePageview, flushSiteAnalytics } = await facade();
@@ -227,6 +230,40 @@ await test("an AI assistant's utm_source is sent as source without a referrer, o
   flushSiteAnalytics();
   const [hit] = await hits();
   assert.equal(hit.referrer, 'google.de', 'a real referrer wins');
+  assert.equal('source' in hit, false, 'and no source goes with it');
+});
+
+await test("an Instagram or Facebook utm_source is sent as the network's host, once per load", async () => {
+  for (const [search, host] of [
+    ['?utm_source=instagram&utm_medium=social&utm_campaign=bio', 'instagram.com'],
+    ['?utm_source=Instagram', 'instagram.com'],
+    ['?utm_source=instagram.com', 'instagram.com'],
+    ['?utm_source=www.instagram.com', 'instagram.com'],
+    ['?utm_source=l.instagram.com', 'instagram.com'],
+    ['?utm_source=facebook&utm_medium=social&utm_campaign=launch', 'facebook.com'],
+    ['?utm_source=facebook.com', 'facebook.com'],
+    ['?utm_source=www.facebook.com', 'facebook.com'],
+    ['?utm_source=m.facebook.com', 'facebook.com'],
+  ]) {
+    browser({ search });
+    const { trackSitePageview, flushSiteAnalytics } = await facade();
+    trackSitePageview();
+    trackSitePageview();
+    flushSiteAnalytics();
+    const [first, second] = await hits();
+    assert.equal(first.source, host, search);
+    assert.equal('referrer' in first, false, search);
+    assert.equal('source' in second, false, `${search}: only the first view of a load`);
+    for (const field of ['campaign', 'medium']) {
+      assert.equal(field in first, false, `${search}: no ${field}`);
+    }
+  }
+  browser({ search: '?utm_source=instagram', referrer: 'https://l.instagram.com/' });
+  const { trackSitePageview, flushSiteAnalytics } = await facade();
+  trackSitePageview();
+  flushSiteAnalytics();
+  const [hit] = await hits();
+  assert.equal(hit.referrer, 'l.instagram.com', 'a real referrer wins');
   assert.equal('source' in hit, false, 'and no source goes with it');
 });
 

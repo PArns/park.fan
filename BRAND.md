@@ -31,8 +31,9 @@
 - Official entity name: park.fan
 - Homepage: https://park.fan
 - Logo: `public/logo-big.svg` (dark theme: `public/logo-big-dark.svg`), square mark `public/icon.svg`
-- sameAs profiles: none for the organisation yet (`ORGANIZATION_SAME_AS` in
-  `components/seo/structured-data.tsx` is empty on purpose). Author: https://arns.dev,
+- sameAs profiles: Instagram https://www.instagram.com/part_82/ and Facebook
+  https://www.facebook.com/park.fan.coasters, in that order, from `ORGANIZATION_PROFILES` in
+  `lib/seo/schema-identity.ts`, which the footer's follow row reads too. Author: https://arns.dev,
   https://github.com/PArns
 - Wikidata Q-ID: none
 - Mission: live wait times and crowd forecasts, so a day in the park goes to rides instead of

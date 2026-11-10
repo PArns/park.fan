@@ -2,12 +2,14 @@
 
 import { useState } from 'react';
 import { useTranslations } from 'next-intl';
-import { Check, Link2 } from 'lucide-react';
+import { Check, Link2, Share2 } from 'lucide-react';
 import { FacebookIcon, WhatsAppIcon, XIcon } from '@/components/common/brand-icons';
 import { trackSiteEvent } from '@/lib/analytics/site-analytics';
 import { cn } from '@/lib/utils';
 import { TILE_GLASS } from '@/components/common/glass-card';
 import { PHONE_HIT_AREA } from '@/lib/utils/touch-target';
+import { useMediaQuery } from '@/lib/hooks/use-media-query';
+import { canShareNatively, shareNatively } from '@/lib/utils/native-share';
 
 interface ShareButtonsProps {
   /** Absolute canonical URL to share. */
@@ -17,16 +19,20 @@ interface ShareButtonsProps {
 }
 
 /**
- * Social share row reused across blog posts, parks and rides: deep links to the
- * major networks (WhatsApp, Facebook, X) plus a copy-to-clipboard fallback with
- * a brief confirmation state. Reads the top-level `share` translation namespace.
+ * Social share row reused across blog posts, parks and rides: on a touch screen the system share
+ * sheet first, where the browser has one, then deep links to the major networks (WhatsApp,
+ * Facebook, X) and a copy-to-clipboard fallback with a brief confirmation state. Reads the
+ * top-level `share` translation namespace.
  */
 export function ShareButtons({ url, title, className }: ShareButtonsProps) {
   const t = useTranslations('share');
   const [copied, setCopied] = useState(false);
+  // The sheet reaches the apps installed on the phone (Instagram, Messenger, Telegram), which no
+  // link in this row can. The query is false on the server and while hydrating, so the button
+  // comes after hydration; every page puts the row after its content, below the first screen.
+  const sheet = useMediaQuery('(pointer: coarse)') && canShareNatively();
 
-  const copy = async () => {
-    trackSiteEvent('share_clicked', { target: 'link' });
+  const copyLink = async () => {
     try {
       await navigator.clipboard.writeText(url);
       setCopied(true);
@@ -34,6 +40,16 @@ export function ShareButtons({ url, title, className }: ShareButtonsProps) {
     } catch {
       // Clipboard blocked (insecure context / permissions) — nothing to do.
     }
+  };
+
+  const copy = () => {
+    trackSiteEvent('share_clicked', { target: 'link' });
+    void copyLink();
+  };
+
+  const openSheet = async () => {
+    trackSiteEvent('share_clicked', { target: 'native' });
+    if ((await shareNatively({ title, url })) === 'unavailable') await copyLink();
   };
 
   const encUrl = encodeURIComponent(url);
@@ -79,6 +95,16 @@ export function ShareButtons({ url, title, className }: ShareButtonsProps) {
       <span className="text-muted-foreground mr-1 text-xs font-semibold tracking-wider uppercase">
         {t('title')}
       </span>
+      {sheet && (
+        <button
+          type="button"
+          onClick={() => void openSheet()}
+          className={cn(cls, 'transition duration-200 starting:opacity-0')}
+        >
+          <Share2 className="h-3.5 w-3.5" aria-hidden="true" />
+          {t('native')}
+        </button>
+      )}
       {targets.map(({ name, target, href, Icon }) => (
         <a
           key={name}

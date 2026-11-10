@@ -263,6 +263,12 @@ Cached `Intl` formatter factories. Constructing a formatter costs far more than 
 - `MAX_TITLE_LENGTH` _const_: Google truncates the SERP title around 60 characters, and a keyword past that disappears behind an ellipsis. Templates fit typical names; a long name pushes them over on its own.
 - `MAX_DESCRIPTION_LENGTH` _const_: Google's snippet length, past which the description is cut.
 
+### [`native-share.ts`](../../lib/utils/native-share.ts)
+
+- `canShareNatively` _function_: Whether this browser has a system share sheet.
+- `shareNatively` _function_: Opens the system share sheet with `data` and says how it ended.
+- Types: `NativeShareResult`
+
 ### [`nowcast-conditions.ts`](../../lib/utils/nowcast-conditions.ts)
 
 - `upcomingNowcastSteps` _function_: The steps whose slot has not fully passed. Step times are naive park-local strings, so the cutoff is compared in the park timezone, against `observedAt` (stable across SSR) as "now".

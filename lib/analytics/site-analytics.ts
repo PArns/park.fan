@@ -307,8 +307,11 @@ export interface SiteEventMap {
   calendar_month_changed: { direction: 'previous' | 'next' | 'current' };
   push_permission: { result: 'granted' | 'denied' | 'dismissed' };
   error_shown: { boundary: 'page' | 'maintenance' | 'global' };
-  /** A share button pressed: the planner's link, or a network or the copy button of a share row. */
-  share_clicked: { target: 'trip_plan' | 'whatsapp' | 'facebook' | 'x' | 'link' };
+  /**
+   * A share button pressed: the planner's link, or the system share sheet, a network or the copy
+   * button of a share row.
+   */
+  share_clicked: { target: 'trip_plan' | 'native' | 'whatsapp' | 'facebook' | 'x' | 'link' };
   /**
    * A link to another page of the site opened from a marked block (`lib/analytics/internal-link.ts`):
    * the block, the kind of page it leads to and its place among the block's destinations. The
@@ -364,7 +367,8 @@ const REFERRER_PATTERN = /^[a-z0-9][a-z0-9.-]{0,99}$/;
  * The `utm_source` values sent as `source` when no referrer came: the hosts of the AI assistants the
  * API's `REFERRER_RULES` (`src/site-analytics/referrer.util.ts`) put in the `ai` channel. ChatGPT
  * tags its links `utm_source=chatgpt.com` and often sends no referrer, so those visits counted as
- * direct. A value outside this list, and every other part of the query string, is never read.
+ * direct. A value outside this list and {@link SOCIAL_SOURCE_HOSTS}, and every other part of the
+ * query string, is never read.
  */
 const AI_SOURCE_HOSTS: ReadonlySet<string> = new Set([
   'chatgpt.com',
@@ -379,6 +383,20 @@ const AI_SOURCE_HOSTS: ReadonlySet<string> = new Set([
   'chat.mistral.ai',
   'you.com',
   'phind.com',
+]);
+/**
+ * The `utm_source` spellings park.fan's own Instagram and Facebook links carry, each with the host
+ * sent as `source`, one the API's `REFERRER_RULES` put in the `social` channel. Instagram's in-app
+ * browser, and the apps a story or bio link opens in, send no referrer, so without the tag those
+ * visits count as direct.
+ */
+const SOCIAL_SOURCE_HOSTS: ReadonlyMap<string, string> = new Map([
+  ['instagram', 'instagram.com'],
+  ['instagram.com', 'instagram.com'],
+  ['l.instagram.com', 'instagram.com'],
+  ['facebook', 'facebook.com'],
+  ['facebook.com', 'facebook.com'],
+  ['m.facebook.com', 'facebook.com'],
 ]);
 /**
  * Phone systems a User-Agent names, with the platform the engine itself reports for them in
@@ -538,15 +556,15 @@ function currentBase(): HitBase | null {
 
 /**
  * The host of the page that linked here as `referrer`, when it is another site, else the AI
- * assistant the link's `utm_source` names as `source`. Read once per load, since later pageviews
- * of the tab are internal.
+ * assistant or social network the link's `utm_source` names as `source`. Read once per load, since
+ * later pageviews of the tab are internal.
  */
 function pageLoadOrigin(): { referrer?: string; source?: string } {
   if (referrerSent) return {};
   referrerSent = true;
   const host = externalReferrerHost();
   if (host) return REFERRER_PATTERN.test(host) ? { referrer: host } : {};
-  const source = aiSourceHost();
+  const source = utmSourceHost();
   return source ? { source } : {};
 }
 
@@ -560,14 +578,17 @@ function externalReferrerHost(): string {
   }
 }
 
-/** The `utm_source` of the address when it is one of {@link AI_SOURCE_HOSTS}, else ''. */
-function aiSourceHost(): string {
-  const source = new URLSearchParams(location.search).get('utm_source') ?? '';
-  const host = source
+/**
+ * The host the address's `utm_source` names: itself when it is one of {@link AI_SOURCE_HOSTS}, the
+ * network's host for a spelling in {@link SOCIAL_SOURCE_HOSTS}, else ''.
+ */
+function utmSourceHost(): string {
+  const value = (new URLSearchParams(location.search).get('utm_source') ?? '')
     .trim()
     .toLowerCase()
     .replace(/^www\./, '');
-  return AI_SOURCE_HOSTS.has(host) ? host : '';
+  if (AI_SOURCE_HOSTS.has(value)) return value;
+  return SOCIAL_SOURCE_HOSTS.get(value) ?? '';
 }
 
 function send(hits: CollectHit[], viaBeacon: boolean) {

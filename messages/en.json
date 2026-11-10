@@ -5,6 +5,7 @@
   },
   "share": {
     "title": "Share",
+    "native": "Share via app",
     "on": "Share on {platform}",
     "copy": "Copy link",
     "copied": "Copied"
@@ -238,6 +239,10 @@
   "footer": {
     "siteSections": "Site sections",
     "opensInNewTab": "opens in a new tab",
+    "follow": {
+      "label": "park.fan on social media",
+      "on": "Follow park.fan on {platform}"
+    },
     "description": "Live wait times and AI-powered crowd predictions for 200+ theme parks worldwide. Plan your park visit with real-time data and in-park navigation.",
     "keywords": "theme park wait times, live wait times, wait times today, crowd calendar, AI crowd forecast, queue times, crowd predictions, opening hours, amusement park, roller coaster, Disney wait times, Universal Studios, Europa-Park, Phantasialand, best time to visit",
     "sections": {

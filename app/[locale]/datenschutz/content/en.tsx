@@ -9,7 +9,7 @@ export function DatenschutzEN() {
   return (
     <>
       <h1 className="mb-2 text-4xl font-bold">Privacy Policy</h1>
-      <p className="text-muted-foreground mb-8 text-sm">Last updated: 6 November 2026</p>
+      <p className="text-muted-foreground mb-8 text-sm">Last updated: 10 November 2026</p>
 
       <div className="space-y-4 text-base leading-7">
         <LegalH2>1. Controller</LegalH2>
@@ -274,11 +274,11 @@ export function DatenschutzEN() {
           attraction or post) and the language. It does not read the size of your window. On the
           first page view after the website is opened, it also reads the origin: the domain name of
           the website you came from. If your browser passes on no origin, it takes the{' '}
-          <code>utm_source</code> value from the address instead, but only when it names an AI
-          assistant on a fixed list (for example chatgpt.com). It reads no other value of the
-          address. The server works out the kind of origin (for example search engine or social
-          network) from that. The path of an address that does not exist is counted too, so that we
-          can find broken links.
+          <code>utm_source</code> value from the address instead, but only when it names an entry on
+          a fixed list: an AI assistant (for example chatgpt.com), or Instagram or Facebook, where
+          we tag our own links that way. It reads no other value of the address. The server works
+          out the kind of origin (for example search engine or social network) from that. The path
+          of an address that does not exist is counted too, so that we can find broken links.
         </p>
         <p>
           For certain actions your browser also sends an event. We set its name and values in the

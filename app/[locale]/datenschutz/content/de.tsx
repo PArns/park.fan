@@ -8,7 +8,7 @@ export function DatenschutzDE() {
   return (
     <>
       <h1 className="mb-2 text-4xl font-bold">Datenschutzerklärung</h1>
-      <p className="text-muted-foreground mb-8 text-sm">Stand: 6. November 2026</p>
+      <p className="text-muted-foreground mb-8 text-sm">Stand: 10. November 2026</p>
 
       <div className="space-y-4 text-base leading-7">
         <LegalH2>1. Verantwortlicher</LegalH2>
@@ -288,10 +288,12 @@ export function DatenschutzDE() {
           Ihres Fensters liest es nicht aus. Beim ersten Aufruf nach dem Öffnen der Website liest es
           zusätzlich die Herkunft aus: den Domainnamen der Website, von der Sie kommen. Gibt Ihr
           Browser keine Herkunft weiter, nimmt es stattdessen den Wert <code>utm_source</code> aus
-          der Adresse, aber nur, wenn er einen KI-Assistenten aus einer festen Liste nennt (zum
-          Beispiel chatgpt.com). Andere Werte der Adresse liest es nicht. Die Art der Herkunft (zum
-          Beispiel Suchmaschine oder soziales Netzwerk) leitet der Server daraus ab. Auch der Pfad
-          einer Adresse, die es nicht gibt, wird gezählt, damit wir kaputte Links finden.
+          der Adresse, aber nur, wenn er einen Eintrag aus einer festen Liste nennt: einen
+          KI-Assistenten (zum Beispiel chatgpt.com) oder Instagram und Facebook, wo wir unsere
+          eigenen Links so kennzeichnen. Andere Werte der Adresse liest es nicht. Die Art der
+          Herkunft (zum Beispiel Suchmaschine oder soziales Netzwerk) leitet der Server daraus ab.
+          Auch der Pfad einer Adresse, die es nicht gibt, wird gezählt, damit wir kaputte Links
+          finden.
         </p>
         <p>
           Bei bestimmten Handlungen sendet Ihr Browser außerdem ein Ereignis. Name und Werte legen
