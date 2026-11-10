@@ -31,6 +31,7 @@ import { PARK_CALENDAR_CANONICAL_SEGMENT } from '@/lib/parks/calendar-segments';
 import { CROWD_CHIP_CLASS, isColoredCrowdLevel } from '@/lib/utils/crowd-level-styles';
 import { DAY_SIGNAL_CLASS } from '@/lib/utils/day-signal-styles';
 import {
+  formatClockTime,
   formatTime,
   getDateTimeFormat,
   weekdayName,
@@ -40,6 +41,7 @@ import { roundWaitTo5 } from '@/lib/utils/wait-time';
 import { getWeatherConfig } from '@/lib/utils/weather-utils';
 import { parkChapterUrl } from '@/lib/utils/url-utils';
 import { useMinuteNow } from '@/lib/hooks/use-minute-now';
+import { useBrowserTimezone } from '@/lib/hooks/use-mounted';
 import type { WorksPeriod } from '@/lib/api/types';
 import { Temp } from '@/components/common/unit-display';
 import { RopeDropBadge } from '@/components/parks/rope-drop-badge';
@@ -87,19 +89,14 @@ function photoFor(map: CardImageMap | null, url: string | null): [string, string
 }
 
 /**
- * An instant as "HH:MM" on the park's clock, the one every time in Parky is given in: the API
- * writes each card time with the park's own offset, so the wall clock is read off the string and
- * never moved into the reader's zone.
+ * A park card's opening or closing time on the park's clock: the API writes each with the park's
+ * own offset, which `parkClock` reads off the string. A `Z` time comes only from an answer stored
+ * before it did, and shows in the reader's clock as it did then; null until that clock is known.
  */
-function clock(iso: string | null, locale: string): string | null {
+function clock(iso: string | null, locale: string, readerZone: string | null): string | null {
   if (!iso || Number.isNaN(Date.parse(iso))) return null;
-  const wall = /T(\d{2}):(\d{2})/.exec(iso);
-  if (!wall) return null;
-  return formatTime(Date.UTC(2000, 0, 1, Number(wall[1]), Number(wall[2])), locale, {
-    hour: '2-digit',
-    minute: '2-digit',
-    timeZone: 'UTC',
-  });
+  if (!iso.endsWith('Z')) return parkClock(iso, locale);
+  return readerZone ? formatClockTime(iso, locale, readerZone) : null;
 }
 
 /** A link to a park.fan page in the reader's language, or its children unlinked. */
@@ -612,6 +609,7 @@ function LiveCard({
 }) {
   const locale = useLocale();
   const map = useCardImageMap();
+  const readerZone = useBrowserTimezone();
 
   if (card.kind === 'parks') {
     return (
@@ -676,8 +674,8 @@ function LiveCard({
     );
   }
 
-  const opens = card.kind === 'park' ? clock(card.opens, locale) : null;
-  const closes = card.kind === 'park' ? clock(card.closes, locale) : null;
+  const opens = card.kind === 'park' ? clock(card.opens, locale, readerZone) : null;
+  const closes = card.kind === 'park' ? clock(card.closes, locale, readerZone) : null;
   const subtitle = card.kind === 'park' ? card.place : card.park;
   const photo = photoFor(map, card.url);
 
