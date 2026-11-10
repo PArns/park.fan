@@ -49,7 +49,7 @@ seo:
 
 Il s’appelle LEGO Santa’s Holiday Light Spectacular. La première a lieu le samedi 5 décembre, la deuxième une semaine plus tard, le 12, puis les drones volent tous les soirs du 19 au 30 décembre. En novembre, le soir de la Saint-Sylvestre et en janvier, ils restent au sol.
 
-Le spectacle commence à la tombée de la nuit. LEGOLAND n’a pas encore donné d’heure précise, ni dit d’où on le voit le mieux, et les horaires peuvent encore changer. Les soirs de spectacle, le parc ne ferme pas plus tard que d’habitude.
+Le spectacle commence à la tombée de la nuit. L’heure de départ et le meilleur endroit pour regarder, LEGOLAND ne les a pas encore communiqués, et même les dates du spectacle restent sous réserve. Les soirs de drones, le parc ferme à 19 h comme tous les jours de l’événement, si bien que le spectacle doit se caser entre l’obscurité et l’heure de fermeture.
 
 ## Jours de l’événement et horaires
 
@@ -61,11 +61,11 @@ En novembre et jusqu’à la mi-décembre, Christmas Bricktacular n’a lieu que
 
 Les jours de l’événement, le parc à thème ouvre de 10 h à 19 h, et jusqu’à 18 h le dernier jour, le 3 janvier. Les autres jours, il ferme en général à 17 h, et à 18 h du 23 au 26 novembre. Il reste entièrement fermé le mercredi 18 novembre et les mercredis 2, 9 et 16 décembre.
 
-Le sapin de Noël en LEGO s’allume dès la veille du lancement, le 20 novembre à 18 h. Il mesure plus de 30 pieds, un peu plus de neuf mètres, et il est fait de centaines de milliers de briques LEGO. L’illumination est comprise dans le billet normal et dans certains abonnements annuels. D’après le calendrier d’ouverture, le parc à thème ferme pourtant à 17 h ce jour-là.
+Le sapin de Noël en LEGO s’allume dès la veille du lancement, le 20 novembre à 18 h. Il mesure plus de 30 pieds, un peu plus de neuf mètres, et il est fait de centaines de milliers de briques LEGO. L’illumination est comprise dans le billet normal et dans certains abonnements annuels. D’après le calendrier d’ouverture, le parc à thème ferme pourtant à 17 h ce jour-là, une heure avant que le sapin ne s’allume. Comment les visiteurs à la journée assistent à l’illumination, LEGOLAND ne le précise pas.
 
 ## Billets et abonnements annuels
 
-Le billet d’une journée coûte à partir de 69 $ par personne en ligne et 129 $ au guichet, avec SEA LIFE Florida compris dans les deux cas. LEGOLAND n’affiche pas de tarif séparé pour les enfants et les adultes. Les moins de deux ans entrent gratuitement.
+Le billet d’une journée coûte à partir de 69 $ par personne en ligne et 129 $ au guichet, avec SEA LIFE Florida compris dans les deux cas. Il n’y a pas de tarif enfant : une fillette de sept ans paie autant que son père, et seuls les moins de deux ans entrent gratuitement.
 
 Il existe trois abonnements annuels : Standard à 179 $, Preferred à 249 $ et Premium à 299 $. Preferred et Premium n’ont aucune date d’exclusion. Le Standard vaut pour tous les jours de l’événement sauf du 27 décembre au 2 janvier. Il prend donc ses congés pile entre Noël et le jour de l’An.
 
@@ -73,21 +73,21 @@ Le parking n’est pas compris dans l’entrée. Réservé en ligne à l’avanc
 
 ## Les nouveautés
 
-Le parc vise les enfants de 2 à 12 ans. Dans le (W)rap Masters Show, premier spectacle de battle de rap du resort, les lutins de LEGO Santa s’affrontent au micro. Light Up LEGOLAND est un nouveau parcours lumineux où les enfants construisent avec des briques LEGO pour remplir un « Merry Meter », jusqu’à ce que le parc s’illumine.
+Tout le programme est conçu pour les 2 à 12 ans, la tranche d’âge que vise l’ensemble du parc. C’est au (W)rap Masters Show que ça fait le plus de bruit, quand les lutins de LEGO Santa s’affrontent en rappant. Jamais encore le resort n’avait monté de battle de rap. Light Up LEGOLAND est un nouveau parcours lumineux où les enfants construisent avec des briques LEGO pour remplir un « Merry Meter », jusqu’à ce que le parc s’illumine.
 
-Les rennes ont eux aussi leur Merry Meter. À Reindeer Refuel, les enfants les nourrissent de carottes en LEGO pour qu’ils puissent décoller, et personne n’a à ramasser les épluchures. Dans la Gingerbread Kitchen, on suit une recette en dansant, et au LEGO Elf Bell Orchestra, on assemble de la musique de Noël sur un support musical LEGO multicolore.
+Reindeer Refuel a lui aussi son Merry Meter. Les enfants y nourrissent les rennes de carottes en LEGO jusqu’à ce qu’ils aient assez d’énergie pour décoller. Dans la Gingerbread Kitchen, les enfants suivent la recette, mélangent les bons ingrédients et apprennent les pas de danse qui vont avec. Côté musique, on assemble au LEGO Elf Bell Orchestra des airs de Noël sur un support musical LEGO multicolore.
 
-La [Galacticoaster](ref:legoland-florida/galacticoaster-is-coming-in-2026), première montagne russe en intérieur du parc depuis son ouverture en 2011, devient pour Noël le Holiday Spaceship, avec de nouveaux éléments que tu choisis toi-même. Autre nouveauté, un yéti avec qui l’on peut se faire photographier. À Yeti’s Home, les enfants lui fabriquent un flocon de neige pour que sa maison arctique reste fraîche. En Floride, il n’en aura jamais trop.
+La [Galacticoaster](ref:legoland-florida/galacticoaster-is-coming-in-2026), première montagne russe en intérieur du parc depuis son ouverture en 2011, devient pour Noël le Holiday Spaceship, avec de nouvelles pièces de Noël pour le vaisseau, que tu assembles toi-même. Un yéti fait cette année ses débuts, prêt pour les photos. Pour Yeti’s Home, les enfants lui fabriquent un flocon de neige pour que sa maison arctique reste fraîche. En Floride, il n’en aura jamais trop.
 
 ## LEGO Santa, personnages et animations
 
-LEGO Santa est assis dans son traîneau, et tu peux prendre place à côté de lui. Tu croiseras aussi le Casse-Noisette, le bonhomme en pain d’épices, la lutine Ivy, la fille renne et le bonhomme de neige, tous en LEGO. Au North Pole Postal Service, les enfants écrivent à LEGO Santa jusqu’au réveillon de Noël. Dans DUPLO Valley, les enfants partent à la chasse aux symboles de Noël, et qui les trouve tous reçoit un prix, dans la limite des stocks.
+LEGO Santa est assis dans son traîneau, et tu peux prendre place à côté de lui. Tu croiseras aussi le Casse-Noisette, le bonhomme en pain d’épices, la lutine Ivy, la fille renne et le bonhomme de neige, tous en LEGO. Les lettres des enfants à LEGO Santa, c’est le North Pole Postal Service qui les reçoit, jusqu’au réveillon de Noël. Une chasse aux symboles de Noël traverse DUPLO Valley, et qui les trouve tous reçoit un prix, dans la limite des stocks.
 
-À la [Dream Creation Station](ref:legoland-florida/lego-dreamzzz-the-dream-creation-station), du 20 novembre au 3 janvier, les visiteurs montent à l’atelier Build to Give des sets LEGO qui seront donnés à des enfants. [MINILAND USA](ref:legoland-florida/miniland-usa) est décoré pour Noël. Les jours de l’événement, le LEGO Shop distribue un pin’s LEGO Santa et le King’s Market un pin’s yéti, un par personne.
+Du 20 novembre au 3 janvier, les visiteurs montent à l’atelier Build to Give de la [Dream Creation Station](ref:legoland-florida/lego-dreamzzz-the-dream-creation-station) des sets LEGO qui seront donnés à des enfants. [MINILAND USA](ref:legoland-florida/miniland-usa) est décoré pour Noël. Les jours de l’événement, le LEGO Shop distribue un pin’s LEGO Santa et le King’s Market un pin’s yéti, un par personne.
 
 ## Saint-Sylvestre
 
-Le 31 décembre, le parc organise Kids’ New Year’s Eve, avec de la musique live, un compte à rebours et un feu d’artifice avancé pour 2027. À Winter Haven, minuit sonne tôt : le parc à thème ferme à 19 h le soir de la Saint-Sylvestre. Un séjour forfaitaire donne aussi accès à la fête.
+Le 31 décembre, le parc organise Kids’ New Year’s Eve, avec de la musique live, un compte à rebours et un feu d’artifice avancé pour 2027. À Winter Haven, minuit sonne tôt : le parc à thème ferme à 19 h le soir de la Saint-Sylvestre. La soirée est un jour d’événement comme les autres, couvert par le billet d’entrée comme par les billets d’un séjour forfaitaire.
 
 ## Hôtels
 

@@ -49,7 +49,7 @@ seo:
 
 The show is called LEGO Santa's Holiday Light Spectacular. It premieres on Saturday, December 5, flies again a week later on December 12, and then runs every night from December 19 to 30. In November, on New Year's Eve and in January the drones stay on the ground.
 
-It starts once it's dark. LEGOLAND hasn't said when it starts or where to watch from, and even the show dates are subject to change. On show nights the park closes at 7 pm like on any other event day, so the show has to fit between nightfall and closing time.
+It starts once it's dark. LEGOLAND hasn't announced a start time or the best place to watch from yet, and even the show dates are subject to change. On show nights the park closes at 7 pm like on any other event day, so the show has to fit between nightfall and closing time.
 
 ## Event days and hours
 
