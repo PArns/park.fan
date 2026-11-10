@@ -2,7 +2,7 @@
 title: 'LEGO Santa gets a drone show at LEGOLAND Florida'
 translationKey: legoland-florida-christmas-bricktacular-2026
 date: '2026-11-10'
-time: '17:30'
+time: '18:11'
 author: patrick
 mode: published
 featured: false
@@ -61,23 +61,23 @@ In November and until mid-December, Christmas Bricktacular runs on weekends only
 
 On event days the theme park is open from 10 am to 7 pm, except on the last day, January 3, when it closes at 6 pm. On days without the event it usually closes at 5 pm, and at 6 pm from November 23 to 26. It's closed altogether on Wednesday, November 18, and on the Wednesdays of December 2, 9 and 16.
 
-The LEGO Christmas tree lights up the evening before the start, on November 20 at 6 pm. It's more than 30 feet (just over 9 m) tall and built from hundreds of thousands of LEGO bricks. The tree lighting is included with regular admission and with selected annual passes. According to the park's hours calendar, though, the theme park closes at 5 pm that day, an hour before the tree goes on. LEGOLAND doesn't say how day guests are supposed to get to the lighting.
+The LEGO Christmas tree lights up the evening before the start, on November 20 at 6 pm. It's more than 30 feet (just over 9 m) tall and built from hundreds of thousands of LEGO bricks. The tree lighting is included with regular admission and with selected annual passes. According to the park's hours calendar, though, the theme park closes at 5 pm that day, an hour before the tree goes on. LEGOLAND hasn't explained how day guests are meant to get to the lighting.
 
 ## Tickets and annual passes
 
 A day ticket starts at $69 per person online and costs $129 at the gate, and both include SEA LIFE Florida. There's no kids' price: a seven-year-old pays the same as her dad, and only children under two get in free.
 
-There are three annual passes: Standard for $179, Preferred for $249 and Premium for $299. Preferred and Premium have no blockout dates. The Standard pass works on every event day except December 27 to January 2, so the cheapest pass takes its own vacation in exactly the week between Christmas and New Year's.
+There are three annual passes: Standard for $179, Preferred for $249 and Premium for $299. Preferred and Premium have no blockout dates. The Standard pass is blocked out from December 27 to January 2, right between Christmas and New Year's, and works on every other event day.
 
 Parking isn't included in admission. It's cheaper booked online in advance than paid at the entrance, and regular parking is free with the Preferred or Premium pass.
 
 ## What's new
 
-The whole program is built for kids aged 2 to 12, the age group the entire park is aimed at. It gets loudest at the (W)rap Masters Show, where LEGO Santa's elves rap against each other. The resort has never had a rap battle show before. Light Up LEGOLAND is a new light trail where kids build with LEGO bricks and fill up a "Merry Meter" until the park lights up.
+Like the rest of the park, the new additions are built for kids aged 2 to 12. The loudest is the (W)rap Masters Show, where LEGO Santa's elves rap against each other. Light Up LEGOLAND is a new light trail where kids build with LEGO bricks and fill up a "Merry Meter" until the park lights up.
 
-Reindeer Refuel has a Merry Meter too. Kids feed the reindeer LEGO carrots there until they've got enough energy for takeoff. In the Gingerbread Kitchen, kids follow a recipe, mix the right ingredients and learn the dance moves that go with it. If music's more your thing, you can snap Christmas tunes together on a colorful LEGO music frame at the LEGO Elf Bell Orchestra.
+Reindeer Refuel has a Merry Meter too. Kids feed the reindeer LEGO carrots there until they've got enough energy for takeoff. The recipe in the Gingerbread Kitchen comes with ingredients and a few dance moves. If music's more your thing, you can snap Christmas tunes together on a colorful LEGO music frame at the LEGO Elf Bell Orchestra.
 
-The [Galacticoaster](ref:legoland-florida/galacticoaster-is-coming-in-2026), the park's first indoor coaster since it opened in 2011, runs as the Holiday Spaceship for Christmas, with new holiday parts for the spaceship that you put together yourself. Making his debut is a yeti who's there for photos. For Yeti's Home, kids build him a snowflake to keep his arctic home cool, and in Florida he'll take every one he can get.
+The [Galacticoaster](ref:legoland-florida/galacticoaster-is-coming-in-2026), the park's first indoor coaster since it opened in 2011, runs as the Holiday Spaceship for Christmas, with new holiday parts for the spaceship that you put together yourself. A yeti joins the line-up this year and poses for photos. For Yeti's Home, kids build him a snowflake to keep his arctic home cool, and in Florida he'll take every one he can get.
 
 ## LEGO Santa, characters and activities
 
@@ -87,7 +87,7 @@ From November 20 to January 3, guests at the [Dream Creation Station](ref:legola
 
 ## New Year's Eve
 
-On December 31 the park celebrates Kids' New Year's Eve with live music, a countdown and early fireworks for 2027. Midnight comes early in Winter Haven, since the theme park closes at 7 pm on New Year's Eve. The evening is a normal event day, so admission covers it, and so do the tickets in a vacation package.
+On December 31 the park celebrates Kids' New Year's Eve with live music, a countdown and early fireworks for 2027. Midnight comes early in Winter Haven, since the theme park closes at 7 pm on New Year's Eve. You don't pay extra for the evening, and tickets from a vacation package count too.
 
 ## Hotels
 
@@ -109,7 +109,7 @@ The park is at One LEGOLAND Way in Winter Haven, about 45 minutes from the Orlan
 
 ## From Cypress Gardens to LEGOLAND
 
-LEGOLAND Florida opened on October 15, 2011, on the grounds of the Cypress Gardens theme park, which had closed in 2009. Its botanical garden stayed and is now [Cypress Gardens](ref:legoland-florida/cypress-gardens) inside the theme park. The 150 acres (just over 60 hectares) hold more than 50 rides, shows and attractions. The Merlin Entertainments resort also includes Peppa Pig Theme Park Florida, SEA LIFE Florida and the LEGOLAND Water Park.
+LEGOLAND Florida opened on October 15, 2011, on the grounds of the Cypress Gardens theme park, which had closed in 2009. Its botanical garden stayed and is now [Cypress Gardens](ref:legoland-florida/cypress-gardens) inside the theme park. The park counts more than 50 attractions, rides and shows included, on its 150 acres (just over 60 hectares). The Merlin Entertainments resort also includes Peppa Pig Theme Park Florida, SEA LIFE Florida and the LEGOLAND Water Park.
 
 [LEGOLAND Florida](ref:legoland-florida?full)
 

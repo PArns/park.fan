@@ -2,7 +2,7 @@
 title: 'LEGO Santa krijgt een droneshow in LEGOLAND Florida'
 translationKey: legoland-florida-christmas-bricktacular-2026
 date: '2026-11-10'
-time: '17:30'
+time: '18:11'
 author: patrick
 mode: published
 featured: false
@@ -61,23 +61,23 @@ In november en tot half december is Christmas Bricktacular er alleen in het week
 
 Op evenementdagen is het themapark open van 10.00 tot 19.00 uur, op de laatste dag, 3 januari, tot 18.00 uur. Op dagen zonder evenement sluit het meestal om 17.00 uur, van 23 tot en met 26 november om 18.00 uur. Helemaal dicht is het park op woensdag 18 november en op de woensdagen 2, 9 en 16 december.
 
-De LEGO-kerstboom gaat al de avond voor de start aan, op 20 november om 18.00 uur. Hij is meer dan 30 voet hoog, ruim negen meter, en gebouwd uit honderdduizenden LEGO-steentjes. Het aansteken van de boom zit in de gewone entree en in een aantal jaarkaarten. Volgens de openingskalender gaat het themapark die dag wel al om 17.00 uur dicht, een uur voordat de boom aangaat. Hoe dagbezoekers bij het aansteken komen, vermeldt LEGOLAND niet.
+De LEGO-kerstboom gaat al de avond voor de start aan, op 20 november om 18.00 uur. Hij is meer dan 30 voet hoog, ruim negen meter, en gebouwd uit honderdduizenden LEGO-steentjes. Het aansteken van de boom zit in de gewone entree en in een aantal jaarkaarten. Volgens de openingskalender gaat het themapark die dag wel al om 17.00 uur dicht, een uur voordat de boom aangaat. Hoe dagbezoekers bij het aansteken kunnen zijn, heeft LEGOLAND niet uitgelegd.
 
 ## Tickets en jaarkaarten
 
 Een dagticket kost online vanaf 69 dollar per persoon en aan de kassa 129 dollar, in beide gevallen met SEA LIFE Florida erbij. Een kinderprijs bestaat niet: een meisje van zeven betaalt evenveel als haar vader, en alleen wie jonger is dan twee komt er gratis in.
 
-Er zijn drie jaarkaarten: Standard voor 179 dollar, Preferred voor 249 en Premium voor 299 dollar. Preferred en Premium hebben geen blokkadedata. De Standard-kaart geldt op alle evenementdagen behalve van 27 december tot en met 2 januari, en heeft dus net de week tussen kerst en oud en nieuw vrij.
+Er zijn drie jaarkaarten: Standard voor 179 dollar, Preferred voor 249 en Premium voor 299 dollar. Preferred en Premium hebben geen blokkadedata. Juist tussen kerst en oud en nieuw, van 27 december tot en met 2 januari, is de Standard-kaart geblokkeerd. Op alle andere evenementdagen kun je er gewoon mee naar binnen.
 
 Parkeren zit niet in de entree. Vooraf online betaal je minder dan bij de inrit, en met de Preferred- of Premium-jaarkaart is het gewone parkeren gratis.
 
 ## Wat er nieuw is
 
-Het hele programma is gemaakt voor kinderen van 2 tot 12, de leeftijd waarop het park zich richt. Het luidst wordt het bij de (W)rap Masters Show, waar de elfen van LEGO Santa tegen elkaar rappen. Een rapbattle had het resort nog nooit. Light Up LEGOLAND is een nieuw lichtjespad waar kinderen met LEGO-steentjes bouwen en zo een “Merry Meter” vullen tot het park oplicht.
+De nieuwe onderdelen zijn, net als de rest van het park, bedoeld voor kinderen van 2 tot 12. Het luidst is de (W)rap Masters Show, waar de elfen van LEGO Santa tegen elkaar rappen. Light Up LEGOLAND is een nieuw lichtjespad waar kinderen met LEGO-steentjes bouwen en zo een “Merry Meter” vullen tot het park oplicht.
 
-Een Merry Meter staat ook bij Reindeer Refuel. Kinderen voeren de rendieren daar wortels van LEGO tot ze genoeg energie hebben om op te stijgen. In de Gingerbread Kitchen mengen kinderen volgens recept de juiste ingrediënten en leren ze de danspasjes die erbij horen. Wie liever muziek maakt, klikt bij het LEGO Elf Bell Orchestra aan een bont LEGO-muziekrek kerstmuziek in elkaar.
+Een Merry Meter staat ook bij Reindeer Refuel. Kinderen voeren de rendieren daar wortels van LEGO tot ze genoeg energie hebben om op te stijgen. In de Gingerbread Kitchen staan in het recept naast ingrediënten ook een paar danspasjes. Wie liever muziek maakt, klikt bij het LEGO Elf Bell Orchestra aan een bont LEGO-muziekrek kerstmuziek in elkaar.
 
-De [Galacticoaster](ref:legoland-florida/galacticoaster-is-coming-in-2026), de eerste indoorachtbaan van het park sinds de opening in 2011, rijdt met kerst als Holiday Spaceship, met nieuwe kerstonderdelen voor het ruimteschip die je zelf samenstelt. Voor het eerst staat er een yeti klaar om mee op de foto te gaan. Voor Yeti's Home bouwen kinderen een sneeuwvlok voor hem, zodat zijn poolhuis koel blijft. In Florida kan hij elke vlok gebruiken.
+De [Galacticoaster](ref:legoland-florida/galacticoaster-is-coming-in-2026), de eerste indoorachtbaan van het park sinds de opening in 2011, rijdt met kerst als Holiday Spaceship, met nieuwe kerstonderdelen voor het ruimteschip die je zelf samenstelt. Dit jaar is er ook een yeti bij, die poseert voor foto's. Voor Yeti's Home bouwen kinderen een sneeuwvlok voor hem, zodat zijn poolhuis koel blijft. In Florida kan hij elke vlok gebruiken.
 
 ## LEGO Santa, figuren en activiteiten
 
@@ -87,7 +87,7 @@ Van 20 november tot 3 januari bouwen bezoekers bij de Build to Give Workshop in 
 
 ## Oudejaarsavond
 
-Op 31 december viert het park Kids' New Year's Eve, met livemuziek, aftellen en een vroeg vuurwerk voor 2027. Middernacht valt in Winter Haven vroeg, want het themapark sluit op oudejaarsavond om 19.00 uur. Die avond is een gewone evenementdag, dus de entree dekt hem, net als de tickets uit een vakantiepakket.
+Op 31 december viert het park Kids' New Year's Eve, met livemuziek, aftellen en een vroeg vuurwerk voor 2027. Middernacht valt in Winter Haven vroeg, want het themapark sluit op oudejaarsavond om 19.00 uur. Je betaalt niets extra voor die avond, en tickets uit een vakantiepakket gelden ook.
 
 ## Hotels
 
@@ -109,7 +109,7 @@ Het park ligt aan One LEGOLAND Way in Winter Haven, zo'n 45 minuten van de pretp
 
 ## Van Cypress Gardens naar LEGOLAND
 
-LEGOLAND Florida ging open op 15 oktober 2011, op het terrein van pretpark Cypress Gardens, dat in 2009 was gesloten. De botanische tuin daarvan is gebleven en ligt nu als [Cypress Gardens](ref:legoland-florida/cypress-gardens) in het themapark. Op 150 acres, ruim 60 hectare, staan meer dan 50 attracties, shows en andere bezienswaardigheden. Bij het resort van Merlin Entertainments horen verder Peppa Pig Theme Park Florida, SEA LIFE Florida en LEGOLAND Water Park.
+LEGOLAND Florida ging open op 15 oktober 2011, op het terrein van pretpark Cypress Gardens, dat in 2009 was gesloten. De botanische tuin daarvan is gebleven en ligt nu als [Cypress Gardens](ref:legoland-florida/cypress-gardens) in het themapark. Op 150 acres, ruim 60 hectare, telt het park meer dan 50 attracties, de shows meegerekend. Bij het resort van Merlin Entertainments horen verder Peppa Pig Theme Park Florida, SEA LIFE Florida en LEGOLAND Water Park.
 
 [LEGOLAND Florida](ref:legoland-florida?full)
 

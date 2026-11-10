@@ -2,7 +2,7 @@
 title: 'LEGO Santa vola con i droni sopra LEGOLAND Florida'
 translationKey: legoland-florida-christmas-bricktacular-2026
 date: '2026-11-10'
-time: '17:30'
+time: '18:11'
 author: patrick
 mode: published
 featured: false
@@ -61,23 +61,23 @@ A novembre e fino a metà dicembre Christmas Bricktacular c'è solo nei fine set
 
 Nei giorni dell'evento il Theme Park apre dalle 10 alle 19, e l'ultimo giorno, il 3 gennaio, chiude alle 18. Negli altri giorni di solito chiude alle 17, e dal 23 al 26 novembre alle 18. Resta chiuso del tutto mercoledì 18 novembre e i mercoledì 2, 9 e 16 dicembre.
 
-Già la sera prima dell'inizio, il 20 novembre alle 18, si accende l'albero di Natale LEGO. È alto più di 30 piedi, cioè più di nove metri, ed è costruito con centinaia di migliaia di mattoncini. L'accensione è compresa nel normale biglietto e in alcuni abbonamenti annuali. Secondo il calendario di apertura, però, quel giorno il Theme Park chiude già alle 17, un'ora prima che l'albero si accenda. LEGOLAND non spiega come possano assistere all'accensione i visitatori giornalieri.
+Già la sera prima dell'inizio, il 20 novembre alle 18, si accende l'albero di Natale LEGO. È alto più di 30 piedi, cioè più di nove metri, ed è costruito con centinaia di migliaia di mattoncini. L'accensione è compresa nel normale biglietto e in alcuni abbonamenti annuali. Secondo il calendario di apertura, però, quel giorno il Theme Park chiude già alle 17, un'ora prima che l'albero si accenda. LEGOLAND non ha chiarito come i visitatori giornalieri possano assistere all'accensione.
 
 ## Biglietti e abbonamenti annuali
 
 Il biglietto giornaliero costa online da 69 dollari a persona, alla cassa 129, e in entrambi i casi comprende SEA LIFE Florida. Un prezzo ridotto per bambini non c'è: una bambina di sette anni paga quanto suo padre, e gratis entrano solo i bambini sotto i due anni.
 
-Gli abbonamenti annuali sono tre: lo Standard costa 179 dollari, il Preferred 249 e il Premium 299. Preferred e Premium non hanno date di blackout. Lo Standard vale in tutti i giorni dell'evento tranne dal 27 dicembre al 2 gennaio, e così si prende le ferie proprio tra Natale e Capodanno.
+Gli abbonamenti annuali sono tre: lo Standard costa 179 dollari, il Preferred 249 e il Premium 299. Preferred e Premium non hanno date di blackout. Proprio tra Natale e Capodanno, dal 27 dicembre al 2 gennaio, lo Standard è bloccato. Negli altri giorni dell'evento vale.
 
 Il parcheggio non è compreso. Prenotato online costa meno che all'ingresso, e con l'abbonamento Preferred o Premium il parcheggio normale è gratuito.
 
 ## Le novità
 
-Tutto il programma è costruito per i bambini dai 2 ai 12 anni, l'età a cui si rivolge l'intero parco. Il momento più rumoroso è il (W)rap Masters Show, dove gli elfi di LEGO Santa si sfidano a colpi di rime. Una sfida rap il resort non l'aveva mai avuta. Light Up LEGOLAND è un nuovo percorso di luci dove i bambini costruiscono con i mattoncini e riempiono un “Merry Meter” finché il parco non si illumina.
+Come tutto il parco, le novità sono pensate per bambini dai 2 ai 12 anni. Quella più rumorosa è il (W)rap Masters Show, dove gli elfi di LEGO Santa si sfidano a colpi di rime. Light Up LEGOLAND è un nuovo percorso di luci dove i bambini costruiscono con i mattoncini e riempiono un “Merry Meter” finché il parco non si illumina.
 
-Anche Reindeer Refuel ha il suo Merry Meter. Qui i bambini danno alle renne carote di LEGO finché non hanno abbastanza energia per decollare. Nella Gingerbread Kitchen i bambini seguono la ricetta, mescolano gli ingredienti giusti e imparano i passi di danza adatti. Chi preferisce la musica compone al LEGO Elf Bell Orchestra canzoni di Natale su una struttura musicale LEGO tutta colorata.
+Anche Reindeer Refuel ha il suo Merry Meter. Qui i bambini danno alle renne carote di LEGO finché non hanno abbastanza energia per decollare. Nella Gingerbread Kitchen la ricetta prevede gli ingredienti e anche qualche passo di danza. Chi preferisce la musica compone al LEGO Elf Bell Orchestra canzoni di Natale su una struttura musicale LEGO tutta colorata.
 
-Il [Galacticoaster](ref:legoland-florida/galacticoaster-is-coming-in-2026), le prime montagne russe al coperto del parco dall'apertura nel 2011, a Natale diventa la Holiday Spaceship, con nuovi pezzi natalizi per l'astronave che personalizzi tu. Fa il suo esordio uno yeti, pronto per le foto. Per Yeti's Home i bambini gli costruiscono un fiocco di neve, così la sua casa artica resta fresca. Con il clima della Florida gliene servono parecchi.
+Il [Galacticoaster](ref:legoland-florida/galacticoaster-is-coming-in-2026), le prime montagne russe al coperto del parco dall'apertura nel 2011, a Natale diventa la Holiday Spaceship, con nuovi pezzi natalizi per l'astronave che personalizzi tu. Quest'anno arriva anche uno yeti, che posa per le foto. Per Yeti's Home i bambini gli costruiscono un fiocco di neve, così la sua casa artica resta fresca. Con il clima della Florida gliene servono parecchi.
 
 ## LEGO Santa, personaggi e attività
 
@@ -87,7 +87,7 @@ Dal 20 novembre al 3 gennaio, al Build to Give Workshop della [Dream Creation St
 
 ## San Silvestro
 
-Il 31 dicembre il parco festeggia il Kids' New Year's Eve con musica dal vivo, conto alla rovescia e fuochi d'artificio anticipati per il 2027. A Winter Haven la mezzanotte arriva presto: a San Silvestro il Theme Park chiude alle 19. La serata è un normale giorno dell'evento, quindi la copre il biglietto d'ingresso, e lo stesso vale per i biglietti di un pacchetto vacanza.
+Il 31 dicembre il parco festeggia il Kids' New Year's Eve con musica dal vivo, conto alla rovescia e fuochi d'artificio anticipati per il 2027. A Winter Haven la mezzanotte arriva presto: a San Silvestro il Theme Park chiude alle 19. Per la serata non si paga nulla in più, e valgono anche i biglietti di un pacchetto vacanza.
 
 ## Hotel
 
@@ -109,7 +109,7 @@ Il parco è al One LEGOLAND Way di Winter Haven, a circa 45 minuti dai parchi di
 
 ## Da Cypress Gardens a LEGOLAND
 
-LEGOLAND Florida ha aperto il 15 ottobre 2011 sull'area di Cypress Gardens, il parco divertimenti chiuso nel 2009. Il suo giardino botanico è rimasto e oggi si trova dentro il Theme Park con il nome di [Cypress Gardens](ref:legoland-florida/cypress-gardens). Su 150 acri, poco più di 60 ettari, ci sono oltre 50 attrazioni, show e giostre. Del resort di Merlin Entertainments fanno parte anche il Peppa Pig Theme Park Florida, SEA LIFE Florida e il LEGOLAND Water Park.
+LEGOLAND Florida ha aperto il 15 ottobre 2011 sull'area di Cypress Gardens, il parco divertimenti chiuso nel 2009. Il suo giardino botanico è rimasto e oggi si trova dentro il Theme Park con il nome di [Cypress Gardens](ref:legoland-florida/cypress-gardens). Su 150 acri, poco più di 60 ettari, il parco conta oltre 50 attrazioni, giostre e show compresi. Del resort di Merlin Entertainments fanno parte anche il Peppa Pig Theme Park Florida, SEA LIFE Florida e il LEGOLAND Water Park.
 
 [LEGOLAND Florida](ref:legoland-florida?full)
 
