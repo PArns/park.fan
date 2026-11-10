@@ -5,6 +5,7 @@
   },
   "share": {
     "title": "Delen",
+    "native": "Delen via app",
     "on": "Delen op {platform}",
     "copy": "Link kopiëren",
     "copied": "Gekopieerd"

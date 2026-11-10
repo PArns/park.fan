@@ -5,6 +5,7 @@
   },
   "share": {
     "title": "Teilen",
+    "native": "Per App teilen",
     "on": "Teilen auf {platform}",
     "copy": "Link kopieren",
     "copied": "Kopiert"

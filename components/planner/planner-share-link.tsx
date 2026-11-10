@@ -7,12 +7,13 @@ import { cn } from '@/lib/utils';
 import { trackSiteEvent } from '@/lib/analytics/site-analytics';
 import { getTripId } from '@/lib/planner/trip-sync';
 import { sharedTripUrl } from '@/lib/planner/trip-share';
+import { shareNatively } from '@/lib/utils/native-share';
 
 /**
  * "Link zum Plan teilen", under the push switch and only while it is on: the link points at the
- * server's copy, which exists only then. `navigator.share` where there is one, the clipboard
- * otherwise; not `ShareButtons`, since this URL lets anybody who has it read and edit the plan. The
- * id is read at the press, because `syncTrip` can replace it.
+ * server's copy, which exists only then. The system share sheet where there is one
+ * (`shareNatively`), the clipboard otherwise; not `ShareButtons`, since this URL lets anybody who
+ * has it read and edit the plan. The id is read at the press, because `syncTrip` can replace it.
  */
 export function PlannerShareLink() {
   const t = useTranslations('planner.push');
@@ -27,16 +28,7 @@ export function PlannerShareLink() {
     const url = sharedTripUrl(window.location.origin, locale, id);
     trackSiteEvent('share_clicked', { target: 'trip_plan' });
 
-    if (typeof navigator.share === 'function') {
-      try {
-        await navigator.share({ title: t('shareTitle'), url });
-        return;
-      } catch (error) {
-        // The visitor closed the share sheet.
-        if (error instanceof DOMException && error.name === 'AbortError') return;
-        // Anything else falls through to the clipboard.
-      }
-    }
+    if ((await shareNatively({ title: t('shareTitle'), url })) !== 'unavailable') return;
 
     try {
       await navigator.clipboard.writeText(url);

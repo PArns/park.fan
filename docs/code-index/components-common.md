@@ -241,7 +241,7 @@ These dots carry `will-change` because they animate forever inside cards with `b
 
 ### [`share-buttons.tsx`](../../components/common/share-buttons.tsx)
 
-- `ShareButtons` _component_: Social share row reused across blog posts, parks and rides: deep links to the major networks (WhatsApp, Facebook, X) plus a copy-to-clipboard fallback with a brief confirmation state. Reads the top-level `share` translation namespace.
+- `ShareButtons` _component_: Social share row reused across blog posts, parks and rides: on a touch screen the system share sheet first, where the browser has one, then deep links to the major networks (WhatsApp, Facebook, X) and a copy-to-clipboard fallback with a …
 
 ### [`sidebar-card.tsx`](../../components/common/sidebar-card.tsx)
 

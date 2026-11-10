@@ -307,8 +307,11 @@ export interface SiteEventMap {
   calendar_month_changed: { direction: 'previous' | 'next' | 'current' };
   push_permission: { result: 'granted' | 'denied' | 'dismissed' };
   error_shown: { boundary: 'page' | 'maintenance' | 'global' };
-  /** A share button pressed: the planner's link, or a network or the copy button of a share row. */
-  share_clicked: { target: 'trip_plan' | 'whatsapp' | 'facebook' | 'x' | 'link' };
+  /**
+   * A share button pressed: the planner's link, or the system share sheet, a network or the copy
+   * button of a share row.
+   */
+  share_clicked: { target: 'trip_plan' | 'native' | 'whatsapp' | 'facebook' | 'x' | 'link' };
   /**
    * A link to another page of the site opened from a marked block (`lib/analytics/internal-link.ts`):
    * the block, the kind of page it leads to and its place among the block's destinations. The
