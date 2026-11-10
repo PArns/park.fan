@@ -3,6 +3,17 @@ import type { Locale } from '@/i18n/config';
 import { locales, SITE_URL } from '@/i18n/config';
 import { buildGlossaryTermHref } from '@/lib/glossary/segments';
 
+/** Below this many characters a query is not looked for in the long definitions. */
+const DEFINITION_MIN_CHARS = 5;
+
+/** Where `word` first starts a word in `text`, or -1: "bremse" is not found inside "Blockbremse". */
+function wordStartIn(text: string, word: string): number {
+  for (let at = text.indexOf(word); at !== -1; at = text.indexOf(word, at + 1)) {
+    if (at === 0 || !/[\p{L}\p{N}]/u.test(text[at - 1])) return at;
+  }
+  return -1;
+}
+
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const q = searchParams.get('q') ?? '';
@@ -40,7 +51,8 @@ export async function GET(request: Request) {
         return { term: t, score: 95 };
       }
 
-      if (t.aliases?.some((alias) => alias.toLowerCase() === lowerQuery)) {
+      const otherNames = [...(t.aliases ?? []), ...(t.alternateNames ?? [])];
+      if (otherNames.some((name) => name.toLowerCase() === lowerQuery)) {
         return { term: t, score: 90 };
       }
 
@@ -56,6 +68,14 @@ export async function GET(request: Request) {
 
       if (t.shortDefinition.toLowerCase().includes(lowerQuery)) {
         return { term: t, score: 20 };
+      }
+
+      // Many terms keep their English name in every language ("Block Brake"), and the reader's
+      // own word sits only in the long text ("Eine Blockbremse teilt …"): the lowest rank, the
+      // term that names it earliest first. Short queries would match half the glossary.
+      if (lowerQuery.length >= DEFINITION_MIN_CHARS) {
+        const at = wordStartIn(t.definition.toLowerCase(), lowerQuery);
+        if (at >= 0) return { term: t, score: 10 - Math.min(at, 5000) / 1000 };
       }
 
       return null;
