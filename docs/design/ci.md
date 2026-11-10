@@ -35,7 +35,8 @@ bar are owned by [header](header.md) and [the 48 px header rule](../rules/the-he
   the logo.
 - **Light files on light grounds, `-dark` files on dark grounds.** On the blue-to-green brand
   gradient the blue "fan" and the ring lose their contrast, so there the light lockup sits on a
-  white plate, a pill with even padding on all four sides.
+  white plate: a pill, padded a quarter of the pin's height above and below and half of it left
+  and right, where the ends round off.
 - **Whole pixels.** Width, height and position of the pin and the wordmark land on whole pixels,
   and the wordmark's height is even, so it centres exactly against the pin and inside a plate. A
   layout that centres with `top: 50%` and `translateY(-50%)` puts a logo on half a pixel; give
