@@ -65,7 +65,7 @@ La víspera del arranque, el 20 de noviembre, se enciende a las 18:00 el árbol 
 
 ## Entradas y pases anuales
 
-La entrada de un día cuesta desde 69 dólares por persona comprada en línea y 129 dólares en taquilla, y en los dos casos incluye SEA LIFE Florida. Son precios por persona, igual para niños que para adultos, según LEGOLAND. Los menores de dos años entran gratis.
+La entrada de un día cuesta desde 69 dólares por persona comprada en línea y 129 dólares en taquilla, y en los dos casos incluye SEA LIFE Florida. Son precios por persona, y LEGOLAND no publica uno aparte para niños. Los menores de dos años entran gratis.
 
 Hay tres pases anuales: el Standard cuesta 179 dólares, el Preferred 249 y el Premium 299. Preferred y Premium no tienen fechas bloqueadas. El Standard vale todos los días del evento salvo del 27 de diciembre al 2 de enero, así que se coge vacaciones justo la semana entre Navidad y Año Nuevo.
 
