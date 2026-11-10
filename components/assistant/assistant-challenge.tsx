@@ -41,7 +41,12 @@ export function AssistantChallenge({
             failed ? 'opacity-0' : 'animate-pulse opacity-100 motion-reduce:animate-none'
           )}
         />
-        <ParkyLogo className="relative size-16 drop-shadow-lg" talking={!failed} />
+        {/* The pulsing glow would make Safari composite the drawing on its own, and Safari clips a
+            composited SVG with a filter to its box, the hat with it. As its own stacking context
+            the wrapper is the layer that gets composited, as the corner's bob is. */}
+        <span className="relative isolate grid size-16">
+          <ParkyLogo className="size-full drop-shadow-lg" talking={!failed} />
+        </span>
       </div>
 
       <div className="space-y-1" role="status" aria-live="polite">
