@@ -24,6 +24,18 @@ export const PUBLISHER_ORGANIZATION = {
   },
 } as const;
 
+/** A network park.fan has a profile on; the footer draws each with its own mark. */
+export type SocialNetwork = 'instagram' | 'facebook';
+
+/**
+ * park.fan's own profiles, in the order the footer lists them. The Organization's `sameAs` and the
+ * footer's follow row both read this list, so a new profile is one line here.
+ */
+export const ORGANIZATION_PROFILES: readonly { network: SocialNetwork; url: string }[] = [
+  { network: 'instagram', url: 'https://www.instagram.com/part_82/' },
+  { network: 'facebook', url: 'https://www.facebook.com/61579541384315' },
+];
+
 /**
  * The author of the pages that are not blog posts (the guide, the best-time hub, the fancast).
  * park.fan is one person's project with no organisation behind it, so these name him too.

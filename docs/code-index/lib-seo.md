@@ -58,7 +58,9 @@ by hand: change the comment in the code and re-run the script. -->
 - `authorPersonNode` _function_: The `Person` node for an article's author: one `@id` per registry author across every post, guide and locale.
 - `absoluteUrl` _function_: A site-relative path made absolute on park.fan; an absolute URL passes through.
 - `PUBLISHER_ORGANIZATION` _const_: The publisher of every article, blog post and guide page alike. The logo is the PNG, not the SVG: Google wants `publisher.logo` in a format Google Images supports, and SVG is not one.
+- `ORGANIZATION_PROFILES` _const_: park.fan's own profiles, in the order the footer lists them. The Organization's `sameAs` and the footer's follow row both read this list, so a new profile is one line here.
 - `SITE_AUTHOR_KEY` _const_: The author of the pages that are not blog posts (the guide, the best-time hub, the fancast). park.fan is one person's project with no organisation behind it, so these name him too.
+- Types: `SocialNetwork`
 
 ### [`sitemap-xml.ts`](../../lib/seo/sitemap-xml.ts)
 

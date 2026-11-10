@@ -23,6 +23,7 @@ import { buildWaitTimeObservations } from '@/lib/utils/wait-time-observations';
 import { SITE_URL, type Locale } from '@/i18n/config';
 import { resolveAuthor } from '@/lib/blog/authors';
 import {
+  ORGANIZATION_PROFILES,
   PUBLISHER_ORGANIZATION,
   SITE_AUTHOR_KEY,
   authorPersonNode,
@@ -39,7 +40,7 @@ const ORGANIZATION_ID = `${SITE_URL}/#organization`;
  * `sameAs: []` claims no presence anywhere. Organisation profiles only: Patrick's accounts belong
  * on the author's `Person` node in the blog's structured data.
  */
-const ORGANIZATION_SAME_AS: readonly string[] = [];
+const ORGANIZATION_SAME_AS = ORGANIZATION_PROFILES.map((profile) => profile.url);
 const websiteId = (locale: string) => `${SITE_URL}/${locale}/#website`;
 
 /*
@@ -179,7 +180,7 @@ export function OrganizationStructuredData({
     description:
       description ||
       'Real-time theme park wait times, crowd predictions, and schedules. Plan your perfect visit with ML-powered forecasts for 200+ theme parks worldwide.',
-    ...(ORGANIZATION_SAME_AS.length > 0 && { sameAs: [...ORGANIZATION_SAME_AS] }),
+    ...(ORGANIZATION_SAME_AS.length > 0 && { sameAs: ORGANIZATION_SAME_AS }),
     contactPoint: {
       '@type': 'ContactPoint',
       contactType: 'Customer Service',

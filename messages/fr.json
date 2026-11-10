@@ -238,6 +238,10 @@
   "footer": {
     "siteSections": "Rubriques du site",
     "opensInNewTab": "s'ouvre dans un nouvel onglet",
+    "follow": {
+      "label": "park.fan sur les réseaux sociaux",
+      "on": "Suivre park.fan sur {platform}"
+    },
     "description": "Temps d’attente en direct et prévisions d’affluence par IA pour plus de 200 parcs d’attractions dans le monde. Préparez votre visite avec des données en temps réel et la navigation dans le parc.",
     "keywords": "temps d’attente parc attraction, temps d’attente en direct, temps d’attente aujourd’hui, calendrier d’affluence, prévision IA, file d’attente, prévisions affluence, horaires ouverture, parc d’attractions, montagnes russes, Disney temps d’attente, Universal Studios, Europa-Park, Phantasialand, meilleur moment visite",
     "sections": {

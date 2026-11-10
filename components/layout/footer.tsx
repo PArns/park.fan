@@ -2,11 +2,12 @@ import { getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
 import { ExternalLink, Rss } from 'lucide-react';
 import Image from 'next/image';
-import type { ReactNode } from 'react';
+import type { ComponentType, ReactNode } from 'react';
 import { Separator } from '@/components/ui/separator';
 import { MenuSectionHeading } from '@/components/layout/menu-section-heading';
 import { FooterLinkGroup } from '@/components/layout/footer-link-group';
 import { BuildInfo } from '@/components/common/build-info';
+import { FacebookIcon, InstagramIcon } from '@/components/common/brand-icons';
 import { PreferredSourceButton } from '@/components/common/preferred-source-button';
 import { InstallAppButton } from '@/components/common/install-app-button';
 import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
@@ -20,6 +21,7 @@ import { rankedFirst } from '@/lib/parks/viewed-parks';
 import { viewedParksSeed } from '@/lib/parks/viewed-parks-seed';
 import type { Locale } from '@/i18n/config';
 import { linkBlockAttributes } from '@/lib/analytics/internal-link';
+import { ORGANIZATION_PROFILES, type SocialNetwork } from '@/lib/seo/schema-identity';
 
 /** The wait-time sources the footer credits, in the order the imprint lists them. */
 const DATA_SOURCES: { href: string; label: string; prefix?: string }[] = [
@@ -29,6 +31,15 @@ const DATA_SOURCES: { href: string; label: string; prefix?: string }[] = [
 ];
 
 const SOURCE_LINK_PROPS = { target: '_blank', rel: 'noopener noreferrer' } as const;
+
+/** The name and the mark the follow row draws for a profile on each network. */
+const NETWORK_MARKS: Record<
+  SocialNetwork,
+  { name: string; Icon: ComponentType<{ className?: string }> }
+> = {
+  instagram: { name: 'Instagram', Icon: InstagramIcon },
+  facebook: { name: 'Facebook', Icon: FacebookIcon },
+};
 
 interface FooterProps {
   locale: string;
@@ -282,6 +293,29 @@ export async function Footer({ locale, showBlog = true, newsLabel }: FooterProps
             <p className="text-muted-foreground text-base leading-normal sm:leading-relaxed">
               {t('description')}
             </p>
+            {/* In the brand column and not a link group: below `sm` the groups fold into rows,
+                and the profiles stay in sight. Links to other sites, so a list and no `<nav>`. */}
+            <ul
+              className="text-muted-foreground flex flex-wrap items-center gap-x-4"
+              aria-label={t('follow.label')}
+            >
+              {ORGANIZATION_PROFILES.map(({ network, url }) => {
+                const { name, Icon } = NETWORK_MARKS[network];
+                return (
+                  <li key={network}>
+                    <a
+                      href={url}
+                      {...SOURCE_LINK_PROPS}
+                      aria-label={`${t('follow.on', { platform: name })} (${t('opensInNewTab')})`}
+                      className={footerLinkClass}
+                    >
+                      <Icon className="size-4 shrink-0" />
+                      {name}
+                    </a>
+                  </li>
+                );
+              })}
+            </ul>
             <PreferredSourceButton />
             <InstallAppButton />
             {/* Where the column is narrower than 20rem the links stack and the bullets go: a
