@@ -2,7 +2,7 @@
 title: 'Universal Beijing krijgt een nieuwe kerstboom van 22 meter'
 translationKey: universal-studios-beijing-winter-holiday-2026
 date: '2026-11-10'
-time: '17:35'
+time: '18:17'
 author: patrick
 mode: published
 featured: false
