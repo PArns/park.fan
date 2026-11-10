@@ -78,6 +78,7 @@ The frontend side of each API surface; the contract itself is linked from each p
 ## Design
 
 - [design-system](design/design-system.md) — Index of the design docs: stack (Tailwind 4, oklch tokens, shadcn/ui, glass) and one page per subject
+- [ci](design/ci.md) — Corporate identity: the name, every logo file and how to use it, colours, type, Parky, voice, claim and song, social profiles; links to the page that owns each
 
 ## Development
 

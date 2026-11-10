@@ -18,6 +18,8 @@ This file is a router. Read the rules for your area first, then the background y
   [rules](docs/rules/README.md#data-and-api) · [API and backend](docs/README.md#api-and-backend)
 - **Trip planner, header menu, admin, weather chart, guide page, glossary, blog/news, most read** →
   [rules](docs/rules/README.md#features) · [features](docs/README.md#features)
+- **The brand: the logo, colours, type, Parky's look, claim and song, social profiles, anything
+  made for outside the site** → [corporate identity](docs/design/ci.md)
 - **Layout, a component, a breakpoint, the header, a card, an animation, three.js, a new page** →
   [rules](docs/rules/README.md#design-and-layout) · [design](docs/README.md#design)
 - **Sitemaps, feeds, favicon, robots and agents, analytics, semantic markup** →
