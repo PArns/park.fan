@@ -1,6 +1,7 @@
 import { getGlossaryTerms } from '@/lib/glossary/translations';
 import type { Locale } from '@/i18n/config';
-import { locales } from '@/i18n/config';
+import { locales, SITE_URL } from '@/i18n/config';
+import { buildGlossaryTermHref } from '@/lib/glossary/segments';
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
@@ -70,6 +71,8 @@ export async function GET(request: Request) {
       slug: t.slug,
       shortDefinition: t.shortDefinition,
       category: t.category,
+      // The canonical page, so a link from Parky lands without the `/glossary/` redirect.
+      url: `${SITE_URL}${buildGlossaryTermHref(locale, t.slug)}`,
     })),
   });
 }

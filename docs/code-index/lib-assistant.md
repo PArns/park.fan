@@ -30,7 +30,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `parkClock` _function_: One time in the park's own clock, read off its offset like `parkHours`; null if unreadable.
 - `showTimes` _function_: A show's times split at `now`: those before it are past, the first one after is next. Without a clock (the server render and hydration) none is either, so both renders agree.
 - `presentTiles` _function_: The tiles a card has a value for, in the order they are drawn; a missing value has no tile.
-- Types: `AssistantCalendarCard`, `AssistantTilesCard`, `AssistantShowsCard`, `AssistantRestaurantsCard`, `ShowTime`, `AssistantTile`
+- Types: `AssistantCalendarCard`, `AssistantTilesCard`, `AssistantShowsCard`, `AssistantRestaurantsCard`, `AssistantPostsCard`, `AssistantGlossaryCard`, `ShowTime`, `AssistantTile`
 
 ### [`chat-end.ts`](../../lib/assistant/chat-end.ts)
 

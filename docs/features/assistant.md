@@ -113,7 +113,7 @@ through the site's own paths:
 
 | Action                 | What the widget does                                                                 | Chip        |
 | ---------------------- | ------------------------------------------------------------------------------------ | ----------- |
-| `card`                 | draws a park or ride card with `ParkStatusBadge` and `CrowdLevelBadge`               |             |
+| `card`                 | draws a card (`AssistantCardView`): see the kinds below                              |             |
 | `navigate`             | `router.push` to the park.fan path in the reader's locale                            | Seite       |
 | `planner_open_day`     | `openDay` in the planner store, `plannerUi.requestOpen('assistant')`                 | Tagesplaner |
 | `planner_add_rides`    | `addRide(…, 'assistant')` per ride, then opens the day                               | Tagesplaner |
@@ -132,6 +132,18 @@ through the site's own paths:
 | `request_location`     | shows the share card under the answer                                                |             |
 | `switch_locale`        | once the answer is complete, the same page in that language, window open             | Sprache     |
 | `feedback_sent`        | nothing; the API stored the visitor's feedback                                       | Team        |
+
+A card (`components/assistant/assistant-card.tsx`) is a park or ride with `ParkStatusBadge` and
+`CrowdLevelBadge`, a park's rides, a few parks, its calendar, its day in tiles, its shows or its
+restaurants, all from live data; or one to three of park.fan's own posts, each as the guides
+menu's row (`MenuPostRow`: cover, category, title, teaser, date and reading time), or one to three
+glossary terms with their category's icon and short definition. The API reads the posts from
+`/api/assistant-posts` (with `slugs=a,b` for exact posts, and the row's cover, crop, category and
+reading time) and the terms from `/api/glossary-search`, which names each term's canonical page
+(`buildGlossaryTermHref`). A post's url keeps its locale, since its slug belongs to it; the card
+links it with the site's prefix and drops a post in another language than the page. A row without
+a title or name, or with a link off the site, refuses the card; a cover from another host is
+dropped, not the post.
 
 Every planner change keeps the day as it was before and as it was right after
 (`rememberParkyChange`, `lib/assistant/planner-context.ts`), one level per park and day for the

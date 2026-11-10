@@ -19,6 +19,9 @@ export function usePostMetaLine(): (post: BlogMenuPost) => string {
       year: 'numeric',
     });
     const day = post.updated ? t('updatedOn', { date }) : date;
-    return `${day} · ${t('readingTime', { minutes: post.readingTimeMinutes })}`;
+    // Parky's posts card may not know a reading time; the line then gives the day alone.
+    return post.readingTimeMinutes > 0
+      ? `${day} · ${t('readingTime', { minutes: post.readingTimeMinutes })}`
+      : day;
   };
 }
