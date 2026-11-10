@@ -21,7 +21,8 @@ import { readPushState } from './alert-writes';
 import type { PushWriteError } from '@/lib/push/push-follows';
 import { listRideAlertsLocal, listShowFollowsLocal } from '@/lib/push/push-follows-store';
 import { getFavoritesFromCookies } from '@/lib/utils/favorites';
-import { assistantFavoritesSnapshot } from './favorites-context';
+import { getRiddenSnapshot } from '@/lib/utils/ridden-rides';
+import { assistantFavoritesSnapshot, assistantRiddenSnapshot } from './favorites-context';
 import {
   breakMinutesFrom,
   breakStorage,
@@ -226,6 +227,8 @@ export function useAssistantChat(
             planner: assistantPlannerSnapshot(plannerStore.getSnapshot()),
             alerts,
             favorites: assistantFavoritesSnapshot(getFavoritesFromCookies()),
+            // "What haven't I ridden yet" is answered from the marks this browser keeps.
+            ridden: assistantRiddenSnapshot(getRiddenSnapshot()),
           }),
         });
         if (response.status === 401) {

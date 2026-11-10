@@ -60,7 +60,9 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`favorites-context.ts`](../../lib/assistant/favorites-context.ts)
 
 - `assistantFavoritesSnapshot` _function_: The `favorites` field of a chat request: the cookie's ids as stored, so Parky can tell what is starred; only UUIDs, which is all the API takes. `undefined` where nothing is.
+- `assistantRiddenSnapshot` _function_: The `ridden` field of a chat request: the rides this browser marked as ridden, UUIDs only, the newest marks when there are more than the API takes (a mark lands at the end of the store). `undefined` where none is marked.
 - `FAVORITES_SNAPSHOT_MAX` _const_: The most ids of each kind a question carries.
+- `RIDDEN_SNAPSHOT_MAX` _const_: The most ridden rides a question carries: the API's `RIDDEN_SNAPSHOT_MAX`.
 
 ### [`fling-tracker.ts`](../../lib/assistant/fling-tracker.ts)
 

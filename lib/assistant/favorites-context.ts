@@ -18,3 +18,16 @@ export function assistantFavoritesSnapshot(data: FavoritesData): FavoritesData |
   };
   return Object.values(snapshot).some((ids) => ids.length > 0) ? snapshot : undefined;
 }
+
+/** The most ridden rides a question carries: the API's `RIDDEN_SNAPSHOT_MAX`. */
+export const RIDDEN_SNAPSHOT_MAX = 300;
+
+/**
+ * The `ridden` field of a chat request: the rides this browser marked as ridden, UUIDs only, the
+ * newest marks when there are more than the API takes (a mark lands at the end of the store).
+ * `undefined` where none is marked.
+ */
+export function assistantRiddenSnapshot(ridden: ReadonlySet<string>): string[] | undefined {
+  const ids = [...ridden].filter(isUuid);
+  return ids.length > 0 ? ids.slice(-RIDDEN_SNAPSHOT_MAX) : undefined;
+}

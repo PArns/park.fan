@@ -174,6 +174,12 @@ Parky's `love`, through the same `favorite_add` a star sends. The `favorites` fi
 question is the cookie's ids as stored, UUIDs only (all the API takes), at most 50 of each kind, left out when there are none
 (`assistantFavoritesSnapshot`).
 
+The rides the visitor ticked off as ridden (`lib/utils/ridden-rides.ts`, the „x von y gefahren“
+counter) go along as `ridden`: the ids from this browser's store, UUIDs only, the newest
+`RIDDEN_SNAPSHOT_MAX` (300, what the API takes), left out when none is marked
+(`assistantRiddenSnapshot`). Parky's ride lists mark them, so "which headliners haven't I done
+yet?" has an answer.
+
 `plannerUi.requestOptimize` is held until the day's `PlannerOptimizeActions` is on screen with its
 data, which then presses its own button (`RunOnce`), fit assistant and undo included. On a phone
 Parky's window closes after a page change or a planner action, so the result is visible.
