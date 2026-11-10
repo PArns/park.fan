@@ -4,7 +4,7 @@ import { useEffect, useId, useState, type ReactNode } from 'react';
 import Image from 'next/image';
 import NextLink from 'next/link';
 import { useLocale, useTranslations } from 'next-intl';
-import { ChevronRight, Clock } from 'lucide-react';
+import { BookOpen, ChevronRight, Clock } from 'lucide-react';
 import { ParkStatusBadge } from '@/components/parks/park-status-badge';
 import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
 import { LiveWaitPill } from '@/components/parks/live-wait-pill';
@@ -20,6 +20,8 @@ import {
   presentTiles,
   showTimes,
   type AssistantCalendarCard,
+  type AssistantGlossaryCard,
+  type AssistantPostsCard,
   type AssistantRestaurantsCard,
   type AssistantShowsCard,
   type AssistantTile,
@@ -29,6 +31,7 @@ import { PARK_CALENDAR_CANONICAL_SEGMENT } from '@/lib/parks/calendar-segments';
 import { CROWD_CHIP_CLASS, isColoredCrowdLevel } from '@/lib/utils/crowd-level-styles';
 import { DAY_SIGNAL_CLASS } from '@/lib/utils/day-signal-styles';
 import {
+  formatClockTime,
   formatTime,
   getDateTimeFormat,
   weekdayName,
@@ -38,6 +41,7 @@ import { roundWaitTo5 } from '@/lib/utils/wait-time';
 import { getWeatherConfig } from '@/lib/utils/weather-utils';
 import { parkChapterUrl } from '@/lib/utils/url-utils';
 import { useMinuteNow } from '@/lib/hooks/use-minute-now';
+import { useBrowserTimezone } from '@/lib/hooks/use-mounted';
 import type { WorksPeriod } from '@/lib/api/types';
 import { Temp } from '@/components/common/unit-display';
 import { RopeDropBadge } from '@/components/parks/rope-drop-badge';
@@ -47,6 +51,10 @@ import { FastPassBadge } from '@/components/parks/fast-pass-badge';
 import { WorksPeriodBadge } from '@/components/parks/works-period-badge';
 import { SeasonalBadge } from '@/components/parks/seasonal-badge';
 import { ReservationBadge } from '@/components/parks/reservation-badge';
+import { MenuPostRow } from '@/components/layout/menu-post-row';
+import { GLOSSARY_CATEGORY_ICONS } from '@/components/glossary/glossary-category-icons';
+import type { GlossaryCategory } from '@/lib/glossary/types';
+import { usePostMetaLine } from '@/lib/hooks/use-post-meta-line';
 
 /** The park and ride slugs of a park.fan page path: `/parks/<c>/<c>/<c>/<park>[/<ride>]`. */
 function slugsOf(url: string | null): { park: string; ride?: string } | null {
@@ -80,13 +88,15 @@ function photoFor(map: CardImageMap | null, url: string | null): [string, string
   return Object.hasOwn(table, key) ? table[key] : null;
 }
 
-/** An instant as "HH:MM" in the reader's own clock, the one every time in Parky is given in. */
-function clock(iso: string | null, locale: string): string | null {
-  if (!iso) return null;
-  const at = new Date(iso);
-  return Number.isNaN(at.getTime())
-    ? null
-    : at.toLocaleTimeString(locale, { hour: '2-digit', minute: '2-digit' });
+/**
+ * A park card's opening or closing time on the park's clock: the API writes each with the park's
+ * own offset, which `parkClock` reads off the string. A `Z` time comes only from an answer stored
+ * before it did, and shows in the reader's clock as it did then; null until that clock is known.
+ */
+function clock(iso: string | null, locale: string, readerZone: string | null): string | null {
+  if (!iso || Number.isNaN(Date.parse(iso))) return null;
+  if (!iso.endsWith('Z')) return parkClock(iso, locale);
+  return readerZone ? formatClockTime(iso, locale, readerZone) : null;
 }
 
 /** A link to a park.fan page in the reader's language, or its children unlinked. */
@@ -458,6 +468,74 @@ function RestaurantsCard({ card }: { card: AssistantRestaurantsCard }) {
   );
 }
 
+/**
+ * park.fan's own posts, each as the guides menu's row: cover, category, title, teaser, date and
+ * reading time. The row links with the site's locale prefix, so the card drops a post whose page
+ * is in another language than the one the reader is on.
+ */
+function PostsCard({ card }: { card: AssistantPostsCard }) {
+  const locale = useLocale();
+  const metaOf = usePostMetaLine();
+  const prefix = `/${locale}/`;
+  const rows = card.posts.flatMap((post) =>
+    post.url.startsWith(prefix)
+      ? [
+          {
+            path: post.url.slice(prefix.length - 1),
+            title: post.title,
+            date: post.date,
+            updated: post.updated,
+            readingTimeMinutes: post.readingTimeMinutes ?? 0,
+            excerpt: post.excerpt ?? undefined,
+            category: post.category ?? undefined,
+            image: post.image ?? undefined,
+            imagePosition: post.imagePosition ?? undefined,
+          },
+        ]
+      : []
+  );
+  if (rows.length === 0) return null;
+  return (
+    <ul className={cn(FRAME, 'space-y-0.5 px-3 py-1')}>
+      {rows.map((row) => (
+        <li key={row.path}>
+          <MenuPostRow post={row} meta={metaOf(row)} />
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+/** Glossary terms: the category's icon, the term and its short definition, each linking its page. */
+function GlossaryCard({ card }: { card: AssistantGlossaryCard }) {
+  return (
+    <ul className={cn(FRAME, 'divide-border/50 divide-y px-3 py-1')}>
+      {card.terms.map((term) => {
+        const Icon =
+          term.category && Object.hasOwn(GLOSSARY_CATEGORY_ICONS, term.category)
+            ? GLOSSARY_CATEGORY_ICONS[term.category as GlossaryCategory]
+            : BookOpen;
+        return (
+          <li key={term.url} className="py-1.5">
+            <MaybeLink
+              url={term.url}
+              className="group hover:bg-muted/60 -mx-1.5 flex items-start gap-2 rounded-md px-1.5 py-1"
+            >
+              <Icon className="text-primary mt-0.5 size-4 shrink-0" aria-hidden="true" />
+              <span className="min-w-0">
+                <span className="group-hover:text-primary block text-sm font-semibold">
+                  {term.name}
+                </span>
+                <span className="text-muted-foreground line-clamp-3">{term.definition}</span>
+              </span>
+            </MaybeLink>
+          </li>
+        );
+      })}
+    </ul>
+  );
+}
+
 // The API decided the works window covers today; the badge only needs a window that does.
 const WORKS_FROM = '0000-01-01';
 const WORKS_NOW: WorksPeriod = { from: WORKS_FROM, to: null, toUncertain: false };
@@ -501,14 +579,16 @@ const KNOWN_KINDS = new Set([
   'tiles',
   'shows',
   'restaurants',
+  'posts',
+  'glossary',
 ]);
 
 /**
- * A park, a ride, a park's rides, a few parks, a park's next days, its day in stat tiles, its shows
- * or its restaurants as a card in Parky's chat: the site's own status, crowd and wait chips and
- * photos on live data. A single park or ride is one link; in a list every row links its own page.
- * The API builds the data; nothing here is model text. A kind this widget does not know draws
- * nothing.
+ * A park, a ride, a park's rides, a few parks, a park's next days, its day in stat tiles, its
+ * shows, its restaurants, park.fan posts or glossary terms as a card in Parky's chat: the site's own
+ * status, crowd and wait chips and photos on live data, the guides menu's post rows. A single park
+ * or ride is one link; in a list every row links its own page. The API builds the data; nothing
+ * here is model text. A kind this widget does not know draws nothing.
  */
 export function AssistantCardView({ card }: { card: AssistantCard }) {
   if (!KNOWN_KINDS.has(card.kind)) return null;
@@ -516,6 +596,8 @@ export function AssistantCardView({ card }: { card: AssistantCard }) {
   if (card.kind === 'tiles') return <TilesCard card={card} />;
   if (card.kind === 'shows') return <ShowsCard card={card} />;
   if (card.kind === 'restaurants') return <RestaurantsCard card={card} />;
+  if (card.kind === 'posts') return <PostsCard card={card} />;
+  if (card.kind === 'glossary') return <GlossaryCard card={card} />;
   return <LiveCard card={card} />;
 }
 
@@ -527,6 +609,7 @@ function LiveCard({
 }) {
   const locale = useLocale();
   const map = useCardImageMap();
+  const readerZone = useBrowserTimezone();
 
   if (card.kind === 'parks') {
     return (
@@ -591,8 +674,8 @@ function LiveCard({
     );
   }
 
-  const opens = card.kind === 'park' ? clock(card.opens, locale) : null;
-  const closes = card.kind === 'park' ? clock(card.closes, locale) : null;
+  const opens = card.kind === 'park' ? clock(card.opens, locale, readerZone) : null;
+  const closes = card.kind === 'park' ? clock(card.closes, locale, readerZone) : null;
   const subtitle = card.kind === 'park' ? card.place : card.park;
   const photo = photoFor(map, card.url);
 

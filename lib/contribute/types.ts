@@ -11,8 +11,15 @@ export const assignedEntitySchema = z.object({
   id: z.string().min(1),
   name: z.string().min(1),
   slug: z.string().min(1),
-  /** Canonical page path on park.fan, e.g. `/parks/.../phantasialand`. */
-  url: z.string().optional(),
+  /**
+   * Canonical page path on park.fan, e.g. `/parks/.../phantasialand`. A path of slugs only: the
+   * moderation queue links it, and a visitor writes it.
+   */
+  url: z
+    .string()
+    .max(300)
+    .regex(/^\/[a-z0-9-][a-z0-9\-/]*$/)
+    .optional(),
   country: z.string().optional(),
   /** For attractions: the park they belong to (helps moderators disambiguate). */
   parentParkName: z.string().optional(),

@@ -13,6 +13,12 @@ export type AssistantShowsCard = Extract<AssistantCard, { kind: 'shows' }>;
 /** A restaurants card as the API sends it. */
 export type AssistantRestaurantsCard = Extract<AssistantCard, { kind: 'restaurants' }>;
 
+/** A posts card as the API sends it. */
+export type AssistantPostsCard = Extract<AssistantCard, { kind: 'posts' }>;
+
+/** A glossary card as the API sends it. */
+export type AssistantGlossaryCard = Extract<AssistantCard, { kind: 'glossary' }>;
+
 const DAY_MS = 86_400_000;
 const OFFSET = /(?:Z|([+-])(\d{2}):?(\d{2}))$/;
 

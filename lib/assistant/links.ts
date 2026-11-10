@@ -24,7 +24,10 @@ export function safeAssistantHref(href: string | undefined): string | null {
   if (!href) return null;
   try {
     const url = new URL(href, SITE);
-    return ORIGINS.has(url.origin) ? `${url.pathname}${url.search}${url.hash}` : null;
+    // `https://park.fan//evil.example` and `/\evil.example` resolve on the site with a path that
+    // starts `//`, which a link then reads as another host.
+    if (!ORIGINS.has(url.origin) || url.pathname.startsWith('//')) return null;
+    return `${url.pathname}${url.search}${url.hash}`;
   } catch {
     return null;
   }

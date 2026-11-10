@@ -93,7 +93,16 @@ count; `extractGlossaryRefs` in `lib/blog/derive.mjs`) and renders nothing for t
 
 `GET /api/glossary-search?q=…&locale=…` (at least 3 characters, at most 5 results). The search
 palette sends it as a query of its own beside the park and ride search and shows a glossary group;
-see [site search](site-search.md#in-the-palette).
+see [site search](site-search.md#in-the-palette). Parky reads it too, and each hit carries its
+canonical page as `url` (`buildGlossaryTermHref`).
+
+The ranking: the name exactly, the English name, an alias or alternate name exactly, then the name
+or the English name containing the query (a prefix higher), then the short definition. Last, only
+with `deep=1`, which Parky sends and the palette does not (there "Phantasialand" would bring up
+every term whose text names the park), and from five characters on, a word the long definition
+starts: many terms keep their English name in every
+language ("Block Brake"), and the reader's own word stands only in the text ("Eine Blockbremse
+teilt …"), so the term naming it earliest comes first.
 
 ## SEO
 

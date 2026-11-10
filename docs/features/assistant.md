@@ -113,7 +113,7 @@ through the site's own paths:
 
 | Action                 | What the widget does                                                                 | Chip        |
 | ---------------------- | ------------------------------------------------------------------------------------ | ----------- |
-| `card`                 | draws a park or ride card with `ParkStatusBadge` and `CrowdLevelBadge`               |             |
+| `card`                 | draws a card (`AssistantCardView`): see the kinds below                              |             |
 | `navigate`             | `router.push` to the park.fan path in the reader's locale                            | Seite       |
 | `planner_open_day`     | `openDay` in the planner store, `plannerUi.requestOpen('assistant')`                 | Tagesplaner |
 | `planner_add_rides`    | `addRide(…, 'assistant')` per ride, then opens the day                               | Tagesplaner |
@@ -132,6 +132,18 @@ through the site's own paths:
 | `request_location`     | shows the share card under the answer                                                |             |
 | `switch_locale`        | once the answer is complete, the same page in that language, window open             | Sprache     |
 | `feedback_sent`        | nothing; the API stored the visitor's feedback                                       | Team        |
+
+A card (`components/assistant/assistant-card.tsx`) is a park or ride with `ParkStatusBadge` and
+`CrowdLevelBadge`, a park's rides, a few parks, its calendar, its day in tiles, its shows or its
+restaurants, all from live data; or one to three of park.fan's own posts, each as the guides
+menu's row (`MenuPostRow`: cover, category, title, teaser, date and reading time), or one to three
+glossary terms with their category's icon and short definition. The API reads the posts from
+`/api/assistant-posts` (with `slugs=a,b` for exact posts, and the row's cover, crop, category and
+reading time) and the terms from `/api/glossary-search`, which names each term's canonical page
+(`buildGlossaryTermHref`). A post's url keeps its locale, since its slug belongs to it; the card
+links it with the site's prefix and drops a post in another language than the page. A row without
+a title or name, or with a link off the site, refuses the card; a cover from another host is
+dropped, not the post.
 
 Every planner change keeps the day as it was before and as it was right after
 (`rememberParkyChange`, `lib/assistant/planner-context.ts`), one level per park and day for the
@@ -173,6 +185,12 @@ names the favourite's type `entity` (`type` is the action's) and an id the cooki
 Parky's `love`, through the same `favorite_add` a star sends. The `favorites` field of every
 question is the cookie's ids as stored, UUIDs only (all the API takes), at most 50 of each kind, left out when there are none
 (`assistantFavoritesSnapshot`).
+
+The rides the visitor ticked off as ridden (`lib/utils/ridden-rides.ts`, the „x von y gefahren“
+counter) go along as `ridden`: the ids from this browser's store, UUIDs only, the newest
+`RIDDEN_SNAPSHOT_MAX` (300, what the API takes), left out when none is marked
+(`assistantRiddenSnapshot`). Parky's ride lists mark them, so "which headliners haven't I done
+yet?" has an answer.
 
 `plannerUi.requestOptimize` is held until the day's `PlannerOptimizeActions` is on screen with its
 data, which then presses its own button (`RunOnce`), fit assistant and undo included. On a phone
@@ -218,9 +236,14 @@ for, and quotes them.
 ## Chips and times
 
 Every wait an answer names ("30 Min.", "30 minutes" …) is drawn as the site's `LiveWaitPill`
-(`splitWaits`, `lib/assistant/wait-chips.ts`), and the cards use it for their waits. The chat
-sends the browser's time zone, so every time the API hands the model is already in the reader's
-clock; the cards format their instants with the browser's own clock too.
+(`splitWaits`, `lib/assistant/wait-chips.ts`), and the cards use it for their waits. Every time
+is park time, as on the planner, the showtimes and the park pages: the API gives the model each
+time on the clock of the park it is about, and the cards read the park's clock off the offset the
+API writes on every card time (`parkClock`, `lib/assistant/cards.ts`), never the browser's. A park
+card stored in the chat before the API wrote offsets carries `Z` times; `clock` in
+`assistant-card.tsx` shows those in the browser's clock, as they were shown then. The chat
+still sends the browser's time zone, for the visitor's own "now" and so Parky can say "park time"
+when the two differ.
 
 ## Parky's face
 

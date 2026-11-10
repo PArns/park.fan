@@ -17,7 +17,10 @@ export interface AssistantPlannerPark {
   timezone: string;
 }
 
-/** A card from live data (parks, rides, days, stats, shows, restaurants); mirrors the API's `AssistantCard`. */
+/**
+ * A card from live data (parks, rides, days, stats, shows, restaurants) or from park.fan's own
+ * posts and glossary; mirrors the API's `AssistantCard`.
+ */
 export type AssistantCard =
   | {
       kind: 'park';
@@ -128,6 +131,27 @@ export type AssistantCard =
         cuisine: string | null;
         requiresReservation: boolean | null;
       }>;
+    }
+  | {
+      kind: 'posts';
+      /** One to three posts, as the guides menu lists them; `url` keeps the post's locale. */
+      posts: Array<{
+        title: string;
+        url: string;
+        date: string;
+        updated: boolean;
+        news: boolean;
+        readingTimeMinutes: number | null;
+        excerpt: string | null;
+        category: string | null;
+        image: string | null;
+        imagePosition: string | null;
+      }>;
+    }
+  | {
+      kind: 'glossary';
+      /** One to three terms; `url` is the canonical page, `/de/glossar/…`. */
+      terms: Array<{ name: string; definition: string; category: string | null; url: string }>;
     };
 
 /** What Parky may ask the widget to do; mirrors the API's `ClientAction`. */
@@ -420,8 +444,58 @@ function readRideExtras(card: Extract<AssistantCard, { kind: 'ride' }>): void {
   }
 }
 
+const MAX_POST_CARD = 3;
+/** A title or name with something in it: a row reads as nothing without one. */
+const filled = (value: unknown, max: number) =>
+  short(value, max) && (value as string).trim() !== '';
+/** A cover on park.fan itself, optionally versioned (`/media/…/cover.webp?v=3`). */
+const SITE_IMAGE = /^\/[A-Za-z0-9._\-/]{1,250}(?:\?[A-Za-z0-9=&._-]{0,60})?$/;
+/** A CSS `object-position` in percent, as the covers carry it. */
+const OBJECT_POSITION = /^\d{1,3}(?:\.\d+)?% \d{1,3}(?:\.\d+)?%$/;
+
+/**
+ * Posts and glossary terms: a row without a title or name, or with a link off the site, refuses
+ * the card; a cover, crop or count it cannot draw is dropped.
+ */
+function isPostsOrTerms(card: AssistantCard): boolean {
+  if (card.kind === 'posts') {
+    const posts = card.posts;
+    if (!Array.isArray(posts) || posts.length === 0 || posts.length > MAX_POST_CARD) return false;
+    for (const post of posts) {
+      const url = sitePath(post?.url);
+      if (!filled(post?.title, 200) || !url || !DAY.test(post.date)) return false;
+      post.url = url;
+      post.updated = post.updated === true;
+      post.news = post.news === true;
+      post.readingTimeMinutes = number(post.readingTimeMinutes);
+      post.excerpt = short(post.excerpt, 400) ? post.excerpt : null;
+      post.category = short(post.category, 60) ? post.category : null;
+      post.image =
+        typeof post.image === 'string' && SITE_IMAGE.test(post.image) ? post.image : null;
+      post.imagePosition =
+        post.image &&
+        typeof post.imagePosition === 'string' &&
+        OBJECT_POSITION.test(post.imagePosition)
+          ? post.imagePosition
+          : null;
+    }
+    return true;
+  }
+  if (card.kind !== 'glossary') return false;
+  const terms = card.terms;
+  if (!Array.isArray(terms) || terms.length === 0 || terms.length > MAX_POST_CARD) return false;
+  for (const term of terms) {
+    const url = sitePath(term?.url);
+    if (!filled(term?.name, 120) || !filled(term.definition, 600) || !url) return false;
+    term.url = url;
+    term.category = short(term.category, 40) ? term.category : null;
+  }
+  return true;
+}
+
 function isCard(card: AssistantCard | undefined): card is AssistantCard {
   if (!card) return false;
+  if (card.kind === 'posts' || card.kind === 'glossary') return isPostsOrTerms(card);
   if (card.kind === 'parks') {
     if (!isParkList(card.parks)) return false;
     // A status or level without a badge here is dropped, not the card.

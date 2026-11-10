@@ -30,7 +30,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `parkClock` _function_: One time in the park's own clock, read off its offset like `parkHours`; null if unreadable.
 - `showTimes` _function_: A show's times split at `now`: those before it are past, the first one after is next. Without a clock (the server render and hydration) none is either, so both renders agree.
 - `presentTiles` _function_: The tiles a card has a value for, in the order they are drawn; a missing value has no tile.
-- Types: `AssistantCalendarCard`, `AssistantTilesCard`, `AssistantShowsCard`, `AssistantRestaurantsCard`, `ShowTime`, `AssistantTile`
+- Types: `AssistantCalendarCard`, `AssistantTilesCard`, `AssistantShowsCard`, `AssistantRestaurantsCard`, `AssistantPostsCard`, `AssistantGlossaryCard`, `ShowTime`, `AssistantTile`
 
 ### [`chat-end.ts`](../../lib/assistant/chat-end.ts)
 
@@ -60,7 +60,9 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`favorites-context.ts`](../../lib/assistant/favorites-context.ts)
 
 - `assistantFavoritesSnapshot` _function_: The `favorites` field of a chat request: the cookie's ids as stored, so Parky can tell what is starred; only UUIDs, which is all the API takes. `undefined` where nothing is.
+- `assistantRiddenSnapshot` _function_: The `ridden` field of a chat request: the rides this browser marked as ridden, UUIDs only, the newest marks when there are more than the API takes (a mark lands at the end of the store). `undefined` where none is marked.
 - `FAVORITES_SNAPSHOT_MAX` _const_: The most ids of each kind a question carries.
+- `RIDDEN_SNAPSHOT_MAX` _const_: The most ridden rides a question carries: the API's `RIDDEN_SNAPSHOT_MAX`.
 
 ### [`fling-tracker.ts`](../../lib/assistant/fling-tracker.ts)
 

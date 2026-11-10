@@ -87,6 +87,10 @@ by hand: change the comment in the code and re-run the script. -->
 - `MenuBand` _component_: The full-bleed glass band the header's menus open into, one surface whichever trigger opened it.
 - `useMenuBandOpen` _hook_: Whether the band this component sits in is open. The band is never unmounted (crawlers read its links while it is `hidden`), so a column whose data is fetched, not rendered into every page, asks this before it fetches.
 
+### [`menu-post-row.tsx`](../../components/layout/menu-post-row.tsx)
+
+- `MenuPostRow` _component_: A post as a row of the guides panel, the same for the newest posts and for search results, and of Parky's posts card in the chat: a small cover, the category, the title, one line of teaser, and the two facts that decide a click, how old …
+
 ### [`menu-section-heading.tsx`](../../components/layout/menu-section-heading.tsx)
 
 - `MenuSectionHeading` _component_: The rule above a column in one of the header's menu bands, in one definition so the bands read as one surface. `href` and `count` are optional: not every column has a hub or a number.

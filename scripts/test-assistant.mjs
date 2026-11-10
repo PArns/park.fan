@@ -9,7 +9,8 @@
  * (`lib/assistant/parky/rides.ts`) and how it answers what the visitor does
  * (`lib/assistant/parky/reactions.ts`, heard through `onSiteEvent`), its facts and which line fills a slot
  * (`lib/assistant/parky/facts.ts`, `lines.ts`), when a hard scroll throws it
- * (`lib/assistant/fling-tracker.ts`), and the calendar, tiles and shows cards (`lib/assistant/cards.ts`).
+ * (`lib/assistant/fling-tracker.ts`), the calendar, tiles and shows cards (`lib/assistant/cards.ts`)
+ * and the posts and glossary cards' checks.
  */
 
 import assert from 'node:assert/strict';
@@ -140,6 +141,13 @@ check(
 check(safeAssistantHref('https://www.park.fan/en'), '/en', 'accepts www');
 check(safeAssistantHref('javascript:alert(1)'), null, 'refuses javascript:');
 check(safeAssistantHref('//evil.example/x'), null, 'refuses protocol-relative');
+check(
+  safeAssistantHref('https://park.fan//evil.example/x'),
+  null,
+  'refuses a site URL whose path starts with two slashes'
+);
+check(safeAssistantHref('/.//evil.example'), null, 'refuses a dot path that collapses to //');
+check(safeAssistantHref('https://park.fan/\\evil.example'), null, 'refuses a backslash path');
 check(
   safeAssistantHref('/\\evil.example/x'),
   null,
@@ -431,6 +439,54 @@ check(
   '/de/parks/europe/germany/bruehl/phantasialand/taron',
   'a card links the path it was checked as'
 );
+{
+  const post = {
+    title: 'Im Phantasialand lohnt der Quick Pass nur an vollen Tagen',
+    url: '/de/blog/phantasialand-tipps',
+    date: '2026-10-14',
+    updated: true,
+    news: false,
+    readingTimeMinutes: 14,
+    excerpt: 'Den Quick Pass brauchst du nur an vollen Tagen.',
+    category: 'Parkguides',
+    image: '/media/blog/phantasialand-tipps/cover.webp?v=3',
+    imagePosition: '50% 40%',
+  };
+  const read = (card) => readAssistantAction({ type: 'card', card: structuredClone(card) })?.card;
+  check(read({ kind: 'posts', posts: [post] })?.posts[0], post, 'takes a posts card as sent');
+  check(
+    read({ kind: 'posts', posts: [{ ...post, image: 'https://evil.example/x.jpg' }] })?.posts[0],
+    { ...post, image: null, imagePosition: null },
+    'a cover from another host is dropped, not the post'
+  );
+  check(
+    read({ kind: 'posts', posts: [{ ...post, url: 'https://evil.example/blog/x' }] }),
+    undefined,
+    'refuses a post linking off site'
+  );
+  check(
+    read({ kind: 'posts', posts: [post, post, post, post] }),
+    undefined,
+    'refuses more than three posts'
+  );
+  check(read({ kind: 'posts', posts: [] }), undefined, 'refuses an empty posts card');
+  const term = {
+    name: 'Blockbremse',
+    definition: 'Eine Bremse, die einen Zug anhält.',
+    category: 'coasters',
+    url: 'https://park.fan/de/glossar/blockbremse',
+  };
+  check(
+    read({ kind: 'glossary', terms: [term] })?.terms[0],
+    { ...term, url: '/de/glossar/blockbremse' },
+    'takes a glossary card and links the path it checked'
+  );
+  check(
+    read({ kind: 'glossary', terms: [{ ...term, name: '' }] }),
+    undefined,
+    'refuses a glossary term without a name'
+  );
+}
 check(
   readAssistantAction({ type: 'planner_optimize', park, date: '2026-11-02', mode: 'drop' }),
   null,

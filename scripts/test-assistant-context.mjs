@@ -43,7 +43,9 @@ import {
 } from '@/lib/assistant/chat-end.ts';
 import {
   assistantFavoritesSnapshot,
+  assistantRiddenSnapshot,
   FAVORITES_SNAPSHOT_MAX,
+  RIDDEN_SNAPSHOT_MAX,
 } from '@/lib/assistant/favorites-context.ts';
 
 let passed = 0;
@@ -532,6 +534,18 @@ check(
   FAVORITES_SNAPSHOT_MAX,
   'at most fifty of a kind'
 );
+check(assistantRiddenSnapshot(new Set()), undefined, 'no ridden rides, no field');
+check(
+  assistantRiddenSnapshot(new Set([uuid, 'taron'])),
+  [uuid],
+  'ridden rides as UUIDs, anything else dropped'
+);
+{
+  const many = new Set(Array.from({ length: RIDDEN_SNAPSHOT_MAX + 20 }, (_, i) => uuidN(i)));
+  const sent = assistantRiddenSnapshot(many);
+  check(sent.length, RIDDEN_SNAPSHOT_MAX, 'at most as many ridden rides as the API takes');
+  check(sent.at(-1), uuidN(RIDDEN_SNAPSHOT_MAX + 19), 'the newest marks kept');
+}
 const favorite = { type: 'favorite_set', entity: 'attraction', id: uuid, name: 'Taron', on: true };
 check(readAssistantAction({ ...favorite, x: 1 }), favorite, 'favourite, nothing rides along');
 check(

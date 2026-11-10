@@ -197,7 +197,7 @@ Route `/api/assistant-post` (route).
 
 Route `/api/assistant-posts` (route).
 
-- `GET` _function_: Answers `?locale=&q=&kind=news|article|any` with up to six matches, best first.
+- `GET` _function_: Answers `?locale=&q=&kind=news|article|any` with up to six matches, best first, or `?locale=&slugs=a,b` with exactly those posts, in that order, whatever their kind.
 
 ### [`blog-latest/[locale]/route.ts`](../../app/api/blog-latest/%5Blocale%5D/route.ts)
 

@@ -157,6 +157,19 @@ await test('reads the payload of a GET /api/trips/<id> body', () => {
   assert.equal(parsed.version, 17);
 });
 
+await test('a shared park whose slug or geo is not all slugs is dropped', () => {
+  const shared = plan('phantasialand', [entry('a', 'taron', 600)]);
+  shared.parks['..'] = { ...shared.parks.phantasialand, slug: '..' };
+  shared.parks.bad = {
+    ...shared.parks.phantasialand,
+    slug: 'bad',
+    geo: { continent: '..', country: 'admin', city: 'x?' },
+  };
+  const parsed = parsePlannerPayload(JSON.stringify({ id: SENDER_ID, payload: shared }));
+  assert.ok(parsed);
+  assert.deepEqual(Object.keys(parsed.parks), ['phantasialand']);
+});
+
 await test('a body that is not JSON, or not an object, is null', () => {
   assert.equal(parsePlannerPayload('not json'), null);
   assert.equal(parsePlannerPayload('null'), null);
