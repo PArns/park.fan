@@ -213,8 +213,8 @@ export function ImpressumEN({ story }: { story: ImpressumStory | null }) {
         <p className="mb-4">
           Anyone may use what park.fan publishes, on its pages and through the API at api.park.fan,
           free of charge for non-commercial purposes: in their own app, on a fan site without
-          advertising, in a research project or a school assignment. Name park.fan as the source and
-          link the page the figures came from. No API key or sign-up is needed.
+          advertising, in a research project or a school assignment. Credit park.fan and link to the
+          park or ride page you used. No API key or sign-up is needed.
         </p>
 
         <h3 className="mt-8 mb-4 text-2xl font-semibold">

@@ -216,8 +216,8 @@ export function ImpressumDE({ story }: { story: ImpressumStory | null }) {
         <p className="mb-4">
           Was park.fan auf den Seiten und über die API unter api.park.fan veröffentlicht, darf jeder
           kostenlos für nicht-kommerzielle Zwecke verwenden: in einer eigenen App, auf einer
-          Fanseite ohne Werbung, in einem Forschungsprojekt oder einer Schularbeit. Wer das tut,
-          nennt park.fan als Quelle und verlinkt die Seite, von der die Zahlen stammen. Einen
+          Fanseite ohne Werbung, in einem Forschungsprojekt oder einer Schularbeit. Bedingung ist
+          ein Quellenhinweis auf park.fan mit Link zur jeweiligen Park- oder Attraktionsseite. Einen
           API-Key oder eine Anmeldung braucht es nicht.
         </p>
 
