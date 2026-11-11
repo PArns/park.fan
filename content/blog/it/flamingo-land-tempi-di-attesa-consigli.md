@@ -39,7 +39,7 @@ rideLinks:
 seo:
   title: 'Flamingo Land: tempi di attesa, affluenza, consigli, biglietti e Natale 2026'
   description: >-
-    Flamingo Land: tempi di attesa live, affluenza, consigli per l’apertura, biglietti, VIP Ride Pass e Natale 2026 a 18 sterline nel parco con zoo nello Yorkshire.
+    Flamingo Land: tempi di attesa live, affluenza, consigli, biglietti, VIP Ride Pass e Natale 2026 a 18 sterline nel parco con zoo nello Yorkshire.
   keywords:
     - Flamingo Land
     - Flamingo Land tempi di attesa
