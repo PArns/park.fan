@@ -244,9 +244,9 @@ export function ImpressumDE({ story }: { story: ImpressumStory | null }) {
         </h3>
         <p className="mb-4">
           Wartezeiten und Öffnungszeiten kommen von den Plattformen unter „Datenquellen“, das Wetter
-          von Open-Meteo. park.fan gibt sie nur für nicht-kommerzielle Zwecke weiter und räumt an
-          ihnen keine Rechte ein. Wer sie kommerziell nutzen will, braucht eine Vereinbarung mit der
-          jeweiligen Quelle.
+          von Open-Meteo. park.fan gibt sie für nicht-kommerzielle Zwecke weiter, zu den Bedingungen
+          oben. Eigene Rechte an diesen Daten hat park.fan nicht und kann eine kommerzielle Nutzung
+          deshalb auch nicht erlauben: Dafür braucht es eine Vereinbarung mit der jeweiligen Quelle.
         </p>
 
         <h3 className="mt-8 mb-4 text-2xl font-semibold">Kein Training von KI-Modellen</h3>

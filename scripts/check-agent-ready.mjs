@@ -272,6 +272,21 @@ check(
   refused?.content?.[0]?.text?.slice(0, 80)
 );
 
+// A made-up key reaches the API with the read and is refused there; the MCP server holds no
+// verdict of its own that a revoked key could outlive.
+const madeUp = (
+  await rpc(
+    'tools/call',
+    { name: 'get_park_best_days', arguments: { park: 'Europa-Park', days: 5 } },
+    { 'X-API-Key': `pfk_${'A'.repeat(43)}` }
+  )
+)?.result?.structuredContent;
+check(
+  'get_park_best_days with a made-up key returns the API refusal, no days',
+  typeof madeUp?.error === 'string' && madeUp.days === undefined,
+  madeUp?.error?.slice(0, 80)
+);
+
 const DATA_KEY = process.env.PARKFAN_DATA_KEY;
 if (DATA_KEY) {
   const bestDays = (

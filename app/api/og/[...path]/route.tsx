@@ -46,8 +46,7 @@ const HEIGHT = 630;
 /** Trailing filenames this endpoint answers to — the current one plus the legacy `.png`. */
 const OG_IMAGE_FILENAMES = new Set([OG_IMAGE_FILENAME, 'og.png']);
 
-// Both keys, or the `/api/og/:path*` rule's thirty-day `CDN-Cache-Control` would still apply to a 4xx.
-const NOT_CACHED = { headers: cdnCacheHeaders(NO_STORE['Cache-Control']) };
+const NOT_CACHED = { headers: NO_STORE };
 
 // Flag mapping
 const FLAGS: Record<string, React.ComponentType<React.ComponentProps<'svg'>>> = {

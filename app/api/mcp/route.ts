@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import { MCP_TOOLS } from '@/lib/agents/mcp-tools';
-import { FORECAST_TOOLS, forecastGrant, type ForecastGrant } from '@/lib/agents/forecast-access';
+import { FORECAST_TOOLS, forecastGrant } from '@/lib/agents/forecast-access';
 import { DATA_TERMS_URL } from '@/lib/agents/licensing';
 import { MCP_PROTOCOL_VERSION, MCP_SERVER_INFO } from '@/lib/agents/mcp-server-card';
 
@@ -45,10 +45,7 @@ function failure(id: JsonRpcId, code: number, message: string, status = 200) {
   );
 }
 
-async function handle(
-  request: JsonRpcRequest,
-  forecastAccess: () => Promise<ForecastGrant | null>
-): Promise<NextResponse | null> {
+async function handle(request: JsonRpcRequest, http: Request): Promise<NextResponse | null> {
   const id = request.id ?? null;
 
   switch (request.method) {
@@ -80,7 +77,7 @@ async function handle(
       const tool = MCP_TOOLS.find((candidate) => candidate.name === params.name);
       if (!tool) return failure(id, -32602, `Unknown tool: ${params.name}`);
 
-      const grant = FORECAST_TOOLS.has(tool.name) ? await forecastAccess() : null;
+      const grant = FORECAST_TOOLS.has(tool.name) ? forecastGrant(http) : null;
       if (FORECAST_TOOLS.has(tool.name) && !grant) {
         return result(id, {
           content: [
@@ -128,11 +125,6 @@ async function handle(
 }
 
 export async function POST(request: Request): Promise<NextResponse | Response> {
-  // Asked once per HTTP request and only when a forecast tool is called: the check may cost a
-  // round trip to the API.
-  let access: Promise<ForecastGrant | null> | null = null;
-  const forecastAccess = () => (access ??= forecastGrant(request));
-
   let body: unknown;
   try {
     body = await request.json();
@@ -148,7 +140,7 @@ export async function POST(request: Request): Promise<NextResponse | Response> {
     }
     const responses: (NextResponse | null)[] = [];
     for (const entry of body) {
-      responses.push(await handle(entry as JsonRpcRequest, forecastAccess));
+      responses.push(await handle(entry as JsonRpcRequest, request));
     }
     const answered = await Promise.all(
       responses
@@ -159,7 +151,7 @@ export async function POST(request: Request): Promise<NextResponse | Response> {
     return NextResponse.json(answered, { headers: CORS_HEADERS });
   }
 
-  const response = await handle(body as JsonRpcRequest, forecastAccess);
+  const response = await handle(body as JsonRpcRequest, request);
   return response ?? new Response(null, { status: 202, headers: CORS_HEADERS });
 }
 

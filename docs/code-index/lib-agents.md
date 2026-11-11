@@ -23,7 +23,7 @@ What park.fan tells machines about its API: the catalog document served at /.wel
 ### [`forecast-access.ts`](../../lib/agents/forecast-access.ts)
 
 - `presentedApiKey` _function_: The data key an MCP request presents, from `X-API-Key` or `Authorization: Bearer pfk_…`.
-- `forecastGrant` _function_: Whether an MCP request may call a forecast tool, and for which parks: a park.fan page's own WebMCP call reads every park, a client with an active data key reads the parks its key covers. Null when neither.
+- `forecastGrant` _function_: Whether an MCP request may call a forecast tool, and how; null when it may not.
 - `FORECAST_TOOLS` _const_: See `FORECAST_TOOL_NAMES`.
 - Types: `ForecastGrant`
 

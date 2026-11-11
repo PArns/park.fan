@@ -5,7 +5,7 @@ import { Octokit } from '@octokit/rest';
 import { adminGithubToken, adminRepo } from '@/lib/admin/github';
 import { readSessionJson, resolveSession, sessionFiles } from '@/lib/admin/media-session';
 import { denyUnlessAdmin } from '@/lib/admin/session';
-import { getParkByGeoPathFresh } from '@/lib/api/parks';
+import { getParkByGeoPathFreshWithoutForecasts } from '@/lib/api/parks';
 import { getParkHistoricalStats } from '@/lib/api/stats';
 import { getParkImages, getRideImages } from '@/lib/media';
 import { buildBacklog, type BacklogRide } from '@/lib/media/photo-backlog';
@@ -103,7 +103,7 @@ export async function GET(request: Request) {
   // do not wait on each other.
   const pending = sessionPhotos(parkSlug).catch(() => null);
 
-  const park = await getParkByGeoPathFresh(continent, country, city, parkSlug);
+  const park = await getParkByGeoPathFreshWithoutForecasts(continent, country, city, parkSlug);
   if (!park) return NextResponse.json({ error: 'Park not found' }, { status: 404 });
 
   // Sequential rather than in parallel with the park: losing this costs one layer

@@ -943,7 +943,10 @@ async function tapBlock(page, locator, name, options = {}) {
 // ── Is the backend endpoint live? ────────────────────────────────────────────
 let planStatus;
 try {
-  planStatus = (await fetch(`${BASE}${PLAN_PATH}`)).status;
+  // The day-plan relay answers park.fan's own pages only.
+  planStatus = (
+    await fetch(`${BASE}${PLAN_PATH}`, { headers: { 'Sec-Fetch-Site': 'same-origin' } })
+  ).status;
 } catch (error) {
   console.error(`Could not reach ${BASE} — is the site running? (${error.message})`);
   // Nine static assertions have already run at this point, so this exit owes a

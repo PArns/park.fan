@@ -160,8 +160,8 @@ Windows with a reason worth knowing:
   would have shown a ten-minute-old wait under "live".
 - **Region cards, nearby status, analytics, search** (`/api/parks/live`, `/api/parks/near`,
   `/api/analytics/*`, `/api/search`): 60 s; the same answer for everybody asking the same thing.
-- **Errors** answer `NO_STORE` (`lib/api/cdn-cache-headers.ts`), or they would inherit the route's
-  shared window ([the rule](../rules/an-api-route-passes-only-slugs-upstream.md)).
+- **Errors** answer `NO_STORE` (`lib/api/cdn-cache-headers.ts`, both `Cache-Control` and
+  `CDN-Cache-Control`), or they would inherit the route's shared window ([the rule](../rules/an-api-route-passes-only-slugs-upstream.md)).
 
 ## A deploy purges Cloudflare
 

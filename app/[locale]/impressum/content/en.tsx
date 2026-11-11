@@ -238,9 +238,9 @@ export function ImpressumEN({ story }: { story: ImpressumStory | null }) {
         <h3 className="mt-8 mb-4 text-2xl font-semibold">Live data for non-commercial use only</h3>
         <p className="mb-4">
           Wait times and opening hours come from the platforms listed under Data Sources, the
-          weather from Open-Meteo. park.fan passes them on for non-commercial use only and grants no
-          rights to them. Anyone who wants to use them commercially needs an agreement with the
-          source itself.
+          weather from Open-Meteo. park.fan passes them on for non-commercial use, on the terms
+          above. It holds no rights of its own in this data and so cannot permit commercial use of
+          it: that takes an agreement with the source itself.
         </p>
 
         <h3 className="mt-8 mb-4 text-2xl font-semibold">No training of AI models</h3>

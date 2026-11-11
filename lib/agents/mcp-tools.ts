@@ -11,7 +11,7 @@ import {
   worksPeriodsOf,
 } from '@/lib/utils/works-period';
 import type { WorksPeriod } from '@/lib/api/types';
-import { getBestDaysCalendar } from '@/lib/api/integrated-calendar';
+import { getBestDaysCalendar, getBestDaysForApiKey } from '@/lib/api/integrated-calendar';
 import { convertApiUrlToFrontendUrl } from '@/lib/utils/url-utils';
 import { noLiveWaitTimesReason } from '@/lib/utils/live-wait-times';
 import {
@@ -31,7 +31,7 @@ import type { SearchResultItem } from '@/lib/api/types';
 
 /** What the server knows about the caller when it runs a tool. */
 export interface McpToolContext {
-  /** Set for a forecast tool: the parks the caller may read. */
+  /** Set for a forecast tool: whether it reads like a page or with the caller's own key. */
   forecastGrant?: ForecastGrant;
 }
 
@@ -174,17 +174,18 @@ const EXECUTORS: Record<string, McpTool['execute']> = {
     const query = String(input.park ?? '');
     const park = await resolvePark(query);
     if (!park) return { error: `No park on park.fan matches "${query}".` };
-    if (context?.forecastGrant && !(await context.forecastGrant.readsPark(park.segments))) {
-      return { error: `This API key does not cover ${park.name}.` };
-    }
+    const grant = context?.forecastGrant;
 
     const days = Math.min(Math.max(Number(input.days) || 30, 1), 90);
     // The rides come from the park's cached structure, the entry the park page reads; a failed
     // read costs the days their maintenance list, never the days.
     const [snapshot, structure] = await Promise.all([
-      getBestDaysCalendar(...park.segments),
+      grant?.via === 'key'
+        ? getBestDaysForApiKey(...park.segments, grant.apiKey)
+        : getBestDaysCalendar(...park.segments),
       catchNonFatal(getParkByGeoPath(...park.segments)),
     ]);
+    if ('refused' in snapshot) return { error: snapshot.message };
     const rides = structure?.attractions ?? [];
 
     return {

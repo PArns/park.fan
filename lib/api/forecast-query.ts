@@ -7,7 +7,18 @@
  */
 export const FORECAST_QUERY = 'forecast=true';
 
-/** `path` with the forecast flag added to its query string. */
+/**
+ * Whether this server holds a key the API takes for forecasts: its data key (`API_DATA_KEY`), or the
+ * throttle bypass key (`API_AUTH_KEY`) until the API stops accepting it there. Without either,
+ * `forecast=true` turns a page's read into a 401; leaving the flag off renders the page without its
+ * forecast fields instead, which is what a preview or a local checkout without secrets gets.
+ */
+export function serverHoldsForecastKey(): boolean {
+  return Boolean(process.env.API_DATA_KEY || process.env.API_AUTH_KEY);
+}
+
+/** `path` with the forecast flag added to its query string, when the server can open it. */
 export function withForecast(path: string): string {
+  if (!serverHoldsForecastKey()) return path;
   return `${path}${path.includes('?') ? '&' : '?'}${FORECAST_QUERY}`;
 }

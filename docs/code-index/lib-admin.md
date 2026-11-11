@@ -7,13 +7,14 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`api-keys.ts`](../../lib/admin/api-keys.ts)
 
-- `parseRequestsPerHour` _function_: The hourly allowance typed into a field: a whole number from 1, or empty for no per-key limit. `undefined` for anything else, so the dialog can refuse it before the API does.
+- `parseRequestsPerHour` _function_: The hourly allowance typed into a field: a whole number from 1, written plain or with German thousands points or spaces (`1.000`, `1 000`), or empty for no per-key limit.
 - `formatHourlyUsage` _function_: „12 von 1.000 in dieser Stunde“, or „ohne eigenes Limit“.
 - `formatAllowedParks` _function_: „Alle Parks“, or the parks by name, as one line.
 - `createDataApiKeyBody` _function_: The body of a create: empty optional fields are left out rather than sent as empty strings.
 - `dataApiKeyCurlExample` _function_: How a client sends the key, for the dialog to show next to it.
 - `DATA_API_KEY_USAGE_LABELS` _const_: The labels the page uses for a key's usage.
 - `DEFAULT_REQUESTS_PER_HOUR` _const_: What a new key is allowed per hour unless the dialog says otherwise; the backend's default too.
+- `MAX_REQUESTS_PER_HOUR` _const_: The most a key may be allowed per hour; the backend's `MAX_REQUESTS_PER_HOUR`.
 - `DATA_API_KEYS_PATH` _const_: The proxy path of the backend's key endpoints.
 - `DATA_API_KEYS_QUERY_KEY` _const_: The React Query key of the list.
 - Types: `DataApiKeyUsage`, `DataApiKey`, `CreatedDataApiKey`

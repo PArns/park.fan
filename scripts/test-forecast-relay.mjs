@@ -7,6 +7,26 @@ import { withForecast } from '../lib/api/forecast-query.ts';
 const park = ['north-america', 'united-states', 'orlando', 'magic-kingdom-park'];
 const request = (headers) => new Request('https://park.fan/api/parks/x', { headers });
 
+/** Runs `read` with the server's keys set as given, then puts the environment back. */
+function withEnv(values, read) {
+  const saved = Object.fromEntries(Object.keys(values).map((name) => [name, process.env[name]]));
+  for (const [name, value] of Object.entries(values)) {
+    if (value === undefined) delete process.env[name];
+    else process.env[name] = value;
+  }
+  try {
+    return read();
+  } finally {
+    for (const [name, value] of Object.entries(saved)) {
+      if (value === undefined) delete process.env[name];
+      else process.env[name] = value;
+    }
+  }
+}
+const withServerKey = (read) => withEnv({ API_DATA_KEY: 'pfk_test' }, read);
+const withoutServerKeys = (read) =>
+  withEnv({ API_DATA_KEY: undefined, API_AUTH_KEY: undefined }, read);
+
 const testCases = [
   {
     name: 'the live poll is a forecast path',
@@ -65,13 +85,18 @@ const testCases = [
   },
   {
     name: 'the flag opens a query string',
-    actual: () => withForecast('/v1/parks/a/b/c/d'),
+    actual: () => withServerKey(() => withForecast('/v1/parks/a/b/c/d')),
     expected: '/v1/parks/a/b/c/d?forecast=true',
   },
   {
     name: 'the flag joins an existing query string',
-    actual: () => withForecast('/v1/parks/a/b/c/d/stats/day?attraction=x'),
+    actual: () => withServerKey(() => withForecast('/v1/parks/a/b/c/d/stats/day?attraction=x')),
     expected: '/v1/parks/a/b/c/d/stats/day?attraction=x&forecast=true',
+  },
+  {
+    name: 'a server without a key leaves the flag off rather than draw a 401',
+    actual: () => withoutServerKeys(() => withForecast('/v1/parks/a/b/c/d')),
+    expected: '/v1/parks/a/b/c/d',
   },
 ];
 

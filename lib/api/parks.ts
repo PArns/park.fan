@@ -306,6 +306,20 @@ export async function getParkByGeoPathFresh(
 }
 
 /**
+ * {@link getParkByGeoPathFresh} without the forecast fields, for a server-side reader that never
+ * shows them (the content-changes crawl, the admin's media backlog). Without the flag the API's
+ * answer is public, so Cloudflare collapses these reads with every other one.
+ */
+export async function getParkByGeoPathFreshWithoutForecasts(
+  continent: string,
+  country: string,
+  city: string,
+  parkSlug: string
+): Promise<ParkWithAttractions | null> {
+  return fetchParkByGeoPath(continent, country, city, parkSlug, true, false);
+}
+
+/**
  * The live projection of {@link getParkByGeoPathFresh}, held in the Data Cache for
  * {@link CACHE_TTL.agentPark} and tagged like the shell. For the MCP server, whose callers poll.
  */

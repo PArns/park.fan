@@ -45,16 +45,20 @@ export const DATA_API_KEY_USAGE_LABELS: Record<DataApiKeyUsage, string> = {
 /** What a new key is allowed per hour unless the dialog says otherwise; the backend's default too. */
 export const DEFAULT_REQUESTS_PER_HOUR = 1000;
 
+/** The most a key may be allowed per hour; the backend's `MAX_REQUESTS_PER_HOUR`. */
+export const MAX_REQUESTS_PER_HOUR = 1_000_000;
+
 /**
- * The hourly allowance typed into a field: a whole number from 1, or empty for no per-key limit.
- * `undefined` for anything else, so the dialog can refuse it before the API does.
+ * The hourly allowance typed into a field: a whole number from 1, written plain or with German
+ * thousands points or spaces (`1.000`, `1 000`), or empty for no per-key limit. `undefined` for
+ * anything else, a decimal like `2.5` included, so the dialog can refuse it before the API does.
  */
 export function parseRequestsPerHour(text: string): number | null | undefined {
-  const trimmed = text.trim().replace(/[.\s]/g, '');
-  if (trimmed === '') return null;
-  if (!/^\d+$/.test(trimmed)) return undefined;
-  const value = Number(trimmed);
-  return value >= 1 && value <= 1_000_000 ? value : undefined;
+  const compact = text.replace(/\s/g, '');
+  if (compact === '') return null;
+  if (!/^(\d+|\d{1,3}(\.\d{3})+)$/.test(compact)) return undefined;
+  const value = Number(compact.replace(/\./g, ''));
+  return value >= 1 && value <= MAX_REQUESTS_PER_HOUR ? value : undefined;
 }
 
 /** „12 von 1.000 in dieser Stunde“, or „ohne eigenes Limit“. */

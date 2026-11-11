@@ -21,6 +21,7 @@ import {
   dataApiKeyCurlExample,
   formatAllowedParks,
   formatHourlyUsage,
+  MAX_REQUESTS_PER_HOUR,
   parseRequestsPerHour,
   type CreatedDataApiKey,
   type DataApiKey,
@@ -129,7 +130,7 @@ function KeyList({ items }: { items: DataApiKey[] }) {
       <EmptyState
         icon={KeySquare}
         title="Noch keine Keys"
-        description="Ohne Key liefert die API keine Prognosen. park.fan selbst braucht keinen."
+        description="Ohne Key liefert die API keine Prognosen, auch park.fan selbst nicht. Für die Seite einen Key mit der Nutzung „park.fan selbst“ anlegen und in Vercel als API_DATA_KEY setzen."
       />
     );
   }
@@ -250,6 +251,8 @@ function CreateKeyDialog({ onClose }: { onClose: () => void }) {
     contact: useFieldId('api-key-contact'),
     note: useFieldId('api-key-note'),
     limit: useFieldId('api-key-limit'),
+    usage: useFieldId('api-key-usage'),
+    parks: useFieldId('api-key-parks'),
   };
   const requestsPerHour = parseRequestsPerHour(limit);
   const complete = name.trim().length > 0 && requestsPerHour !== undefined;
@@ -283,17 +286,18 @@ function CreateKeyDialog({ onClose }: { onClose: () => void }) {
     }
   }
 
-  // The key exists only in this response, so the overlay and Escape do not dismiss it: only the
-  // button does, after the person has seen the warning.
-  const holdsSecret = created !== null;
+  // The key exists only in this response, so the overlay and Escape do not dismiss it, nor while
+  // the request that returns it is still running: only the button does, after the person has seen
+  // the warning.
+  const locked = busy || created !== null;
 
   return (
-    <Dialog open onOpenChange={(open) => !open && onClose()}>
+    <Dialog open onOpenChange={(open) => !open && !locked && onClose()}>
       <DialogContent
         className="sm:max-w-xl"
-        showCloseButton={!holdsSecret}
-        onInteractOutside={(event) => holdsSecret && event.preventDefault()}
-        onEscapeKeyDown={(event) => holdsSecret && event.preventDefault()}
+        showCloseButton={!locked}
+        onInteractOutside={(event) => locked && event.preventDefault()}
+        onEscapeKeyDown={(event) => locked && event.preventDefault()}
       >
         {created ? (
           <>
@@ -356,9 +360,11 @@ function CreateKeyDialog({ onClose }: { onClose: () => void }) {
             </Field>
             <Field
               label="Nutzung"
+              htmlFor={ids.usage}
               hint="Kommerziell nur mit schriftlicher Vereinbarung, so steht es in den Nutzungsbedingungen."
             >
               <Select
+                id={ids.usage}
                 value={usage}
                 allowEmpty={false}
                 onValueChange={(value) => setUsage((value as DataApiKeyUsage | null) ?? usage)}
@@ -366,7 +372,7 @@ function CreateKeyDialog({ onClose }: { onClose: () => void }) {
               />
             </Field>
             <LimitField id={ids.limit} value={limit} onChange={setLimit} />
-            <ParksField value={parkIds} onChange={setParkIds} />
+            <ParksField id={ids.parks} value={parkIds} onChange={setParkIds} />
             <Field label="Notiz" htmlFor={ids.note} hint="Optional, nur für dich.">
               <TextInput
                 id={ids.note}
@@ -414,6 +420,11 @@ function LimitField({
       label="Anfragen pro Stunde"
       htmlFor={id}
       hint="Gezählt ab jeder vollen Stunde, zusätzlich zum allgemeinen Limit der API. Leer lassen für kein eigenes Limit."
+      error={
+        invalid
+          ? `Eine ganze Zahl von 1 bis ${MAX_REQUESTS_PER_HOUR.toLocaleString('de-DE')}, oder leer.`
+          : null
+      }
     >
       <TextInput
         id={id}
@@ -429,7 +440,15 @@ function LimitField({
 }
 
 /** Adds parks one at a time through the admin's park search; a chosen park is a chip to remove. */
-function ParksField({ value, onChange }: { value: string[]; onChange: (ids: string[]) => void }) {
+function ParksField({
+  id,
+  value,
+  onChange,
+}: {
+  id: string;
+  value: string[];
+  onChange: (ids: string[]) => void;
+}) {
   // The query the parks page already holds, so opening the dialog there costs no request.
   const parks = useAdminQuery<{ total: number; parks: AdminParkListItem[] }>(
     adminKeys.parks({ params: 'limit=500' }),
@@ -450,7 +469,9 @@ function ParksField({ value, onChange }: { value: string[]; onChange: (ids: stri
   return (
     <Field
       label="Parks"
+      htmlFor={id}
       hint="Leer für alle Parks. Mit einer Auswahl liefert der Key Prognosen nur für diese Parks."
+      error={parks.isError ? 'Die Parkliste ließ sich nicht laden.' : null}
     >
       <div className="grid gap-2">
         {value.length > 0 && (
@@ -471,6 +492,7 @@ function ParksField({ value, onChange }: { value: string[]; onChange: (ids: stri
           </ul>
         )}
         <SearchSelect
+          id={id}
           value={null}
           onValueChange={(id) => onChange([...value, id])}
           options={options}
@@ -494,6 +516,7 @@ function EditKeyDialog({ apiKey, onClose }: { apiKey: DataApiKey; onClose: () =>
   const [parkIds, setParkIds] = useState<string[]>(apiKey.allowedParkIds ?? []);
   const [busy, setBusy] = useState(false);
   const fieldId = useFieldId('api-key-limit-edit');
+  const parksId = useFieldId('api-key-parks-edit');
   const requestsPerHour = parseRequestsPerHour(limit);
 
   async function save(event: FormEvent) {
@@ -533,7 +556,7 @@ function EditKeyDialog({ apiKey, onClose }: { apiKey: DataApiKey; onClose: () =>
             </DialogDescription>
           </DialogHeader>
           <LimitField id={fieldId} value={limit} onChange={setLimit} />
-          <ParksField value={parkIds} onChange={setParkIds} />
+          <ParksField id={parksId} value={parkIds} onChange={setParkIds} />
           <DialogFooter>
             <Button type="button" variant="ghost" onClick={onClose} disabled={busy}>
               Abbrechen

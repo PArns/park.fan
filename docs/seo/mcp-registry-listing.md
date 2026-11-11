@@ -42,7 +42,8 @@ as the `Organization` schema does.
 worth more than three forms. `server.json` in the repository root describes the server
 (`fan.park/park-fan`, streamable HTTP at `https://park.fan/api/mcp`) and validates against the
 schema it names. Its `version` is the **server's**: bump it when a tool is added, removed or its
-arguments change, not per deploy.
+arguments or credentials change, not per deploy. 1.1.0 added the optional `X-API-Key` header the
+forecast tool reads; the registry shows it only after the next publish.
 
 The namespace `fan.park` is the reverse-DNS form of the domain, which domain-authenticated
 publishing requires (a GitHub-authenticated publish would be `io.github.parns/…` and name a person).
@@ -71,7 +72,7 @@ TXT record**: a stale one is tried first and fails verification.
 TypeScript/JavaScript, `☁️` cloud service.
 
 ```markdown
-- [PArns/park.fan](https://github.com/PArns/park.fan) 📇 ☁️ - Live wait times, ride status and crowd forecasts for 200+ theme parks, plus a glossary of coaster and park terminology. Hosted at https://park.fan/api/mcp (Streamable HTTP, no auth).
+- [PArns/park.fan](https://github.com/PArns/park.fan) 📇 ☁️ - Live wait times, ride status and crowd forecasts for 200+ theme parks, plus a glossary of coaster and park terminology. Hosted at https://park.fan/api/mcp (Streamable HTTP; the live tools need no auth, the forecast tool a free data key).
 ```
 
 The repository's fast path for agent-opened PRs is `🤖🤖🤖` at the end of the PR title; use it

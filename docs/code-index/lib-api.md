@@ -47,7 +47,7 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`cdn-cache-headers.ts`](../../lib/api/cdn-cache-headers.ts)
 
 - `cdnCacheHeaders` _function_: Cache headers for an API route meant to sit in a shared cache.
-- `NO_STORE` _const_: `Cache-Control` for an error response from a route under a shared rule in `next.config.ts`. A response without a header of its own takes that rule's window, so a failure would be shared.
+- `NO_STORE` _const_: The headers for an error response from a route under a shared rule in `next.config.ts`.
 
 ### [`client.ts`](../../lib/api/client.ts)
 
@@ -93,7 +93,8 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`forecast-query.ts`](../../lib/api/forecast-query.ts)
 
-- `withForecast` _function_: `path` with the forecast flag added to its query string.
+- `serverHoldsForecastKey` _function_: Whether this server holds a key the API takes for forecasts: its data key (`API_DATA_KEY`), or the throttle bypass key (`API_AUTH_KEY`) until the API stops accepting it there.
+- `withForecast` _function_: `path` with the forecast flag added to its query string, when the server can open it.
 - `FORECAST_QUERY` _const_: The API leaves the forecast fields of a mixed route (park detail, ride detail, `/stats/day`, `/favorites`) out unless the request carries `forecast=true` and a key; the server's `x-auth-key` counts as one.
 
 ### [`forecast-relay.ts`](../../lib/api/forecast-relay.ts)
@@ -112,11 +113,12 @@ by hand: change the comment in the code and re-run the script. -->
 - `getIntegratedCalendar` _function_: Fetch a park's integrated calendar (hours, weather, holidays per day) in one uncached call. `from` defaults to today and `to` to 30 days later on the API side.
 - `getBestDaysCalendar` _function_: Best-days snapshot for the SSR seed, data-cached and tagged so repeat renders never touch the backend. Feeds the best-days section and the crowd FAQ and its FAQPage JSON-LD.
 - `getBestDaysSnapshotFresh` _function_: Live (no-store) best-days snapshot for the `/api/parks/.../best-days` client-poll proxy, so it reflects the backend's latest snapshot. Mirrors `getParkByGeoPathFresh`.
+- `getBestDaysForApiKey` _function_: The best-days snapshot read with a caller's own data key and nothing of the server's, so the API applies that key's revocation, parks and hourly allowance to this read.
 - `getBestDaysCalendarSeed` _function_: Timeout-bounded `getBestDaysCalendar` for the park page's streamed SEO seed.
 - `getCalendarMonthSeed` _function_: Timeout-bounded month fetch for the calendar page's streamed summary, like `getBestDaysCalendarSeed`: a timeout drops only the summary card.
 - `BEST_DAYS_REVALIDATE` _const_: Data-cache window for the SSR best-days snapshot. Only the fallback cadence: the backend fires `revalidateTag('best-days:<slug>')` after every forecast warmup, and `analyzeBestDays` re-filters against a fresh „today" on every render.
 - `CALENDAR_MONTH_REVALIDATE` _const_: How long a month page's server-rendered summary may be reused: a day, since what it says (open days, quietest and busiest days, usual hours) does not change within one.
-- Types: `CalendarHourlyMode`, `BestDaysByDayOfWeek`, `BestDaysSnapshot`
+- Types: `CalendarHourlyMode`, `BestDaysByDayOfWeek`, `BestDaysSnapshot`, `ApiKeyRefusal`
 
 ### [`kids-page.ts`](../../lib/api/kids-page.ts)
 
@@ -142,6 +144,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `getParkSeasons` _function_: A park's named seasons and events, for the public page.
 - `getParkByGeoPath` _function_: Get parks by geographic path. Cached in the Vercel Data Cache via `fetch` `next: { revalidate }` (stale-while-revalidate, 1-day window): the per-request `force-dynamic` park/attraction render reads this shared snapshot (keyed by the …
 - `getParkByGeoPathFresh` _function_: Live (no-store) variant of `getParkByGeoPath` for the client poll path.
+- `getParkByGeoPathFreshWithoutForecasts` _function_: `getParkByGeoPathFresh` without the forecast fields, for a server-side reader that never shows them (the content-changes crawl, the admin's media backlog).
 - `getParkByGeoPathForAgents` _function_: The live projection of `getParkByGeoPathFresh`, held in the Data Cache for `CACHE_TTL.agentPark` and tagged like the shell. For the MCP server, whose callers poll.
 - `getAttractionByGeoPath` _function_: Get a specific attraction by geographic path with full data including history. Cached in the Vercel Data Cache via `fetch` `next: { revalidate }`; live wait times are refreshed client-side.
 - `getAttractionByGeoPathFresh` _function_: Live (no-store) variant of `getAttractionByGeoPath` for the client detail fetch.

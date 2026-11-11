@@ -4,6 +4,7 @@ import { favoritesForCards } from '@/lib/api/favorites';
 import { getCardImageMap } from '@/lib/utils/park-assets';
 import { getForwardedForHeaders } from '@/lib/utils/request-ip';
 import { foreignForecastRequest, isSameOriginRequest } from '@/lib/api/forecast-relay';
+import { withForecast } from '@/lib/api/forecast-query';
 
 // The answer depends on cookies and optionally the IP, so it is never cached. With
 // NEXT_PUBLIC_API_DIRECT on, the browser asks the API itself (`getFavorites`).
@@ -41,13 +42,12 @@ export async function GET(request: NextRequest) {
     if (lng) {
       apiUrl.searchParams.set('lng', lng);
     }
-    // The cards show each ride's best visit times, a forecast field; the server key unlocks it.
-    apiUrl.searchParams.set('forecast', 'true');
 
     const favoritesCookie = request.cookies.get('favorites');
     const forwardedHeaders = getForwardedForHeaders(request);
 
-    const response = await fetch(apiUrl.toString(), {
+    // The cards show each ride's best visit times, a forecast field; the server key unlocks it.
+    const response = await fetch(withForecast(apiUrl.toString()), {
       headers: {
         'Content-Type': 'application/json',
         ...(favoritesCookie ? { Cookie: `${favoritesCookie.name}=${favoritesCookie.value}` } : {}),

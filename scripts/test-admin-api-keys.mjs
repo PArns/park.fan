@@ -29,6 +29,11 @@ const testCases = [
     expected: undefined,
   },
   {
+    name: 'a decimal point is not a thousands point',
+    actual: () => parseRequestsPerHour('2.5'),
+    expected: undefined,
+  },
+  {
     name: 'more than a million is refused',
     actual: () => parseRequestsPerHour('1000001'),
     expected: undefined,
