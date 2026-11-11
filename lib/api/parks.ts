@@ -1,7 +1,7 @@
 import { cache } from 'react';
 
 import { api, ApiError } from './client';
-import { withForecast } from './forecast-query';
+import { readWithForecast } from './forecast-query';
 import { CACHE_TTL } from './cache-config';
 import { getGeoStructure } from './discovery';
 import {
@@ -346,10 +346,10 @@ async function fetchParkByGeoPath(
   const revalidate = fresh ? liveRevalidate : PARK_REVALIDATE;
   const path = `/v1/parks/${continent}/${country}/${city}/${parkSlug}`;
   try {
-    const park = await api.get<ParkWithAttractions>(
-      forecasts ? withForecast(path) : path,
-      revalidate === undefined ? { cache: 'no-store' } : { next: { revalidate, tags } }
-    );
+    const init =
+      revalidate === undefined ? { cache: 'no-store' as const } : { next: { revalidate, tags } };
+    const read = (url: string) => api.get<ParkWithAttractions>(url, init);
+    const park = await (forecasts ? readWithForecast(path, read) : read(path));
     // The ISR shell gets the aggressive trim (drops statistics.history — the biggest size-weighted
     // ISR-write chunk); the live no-store poll keeps the full per-attraction data for the cards.
     // Both also parse the coordinates, which this endpoint sends as decimal STRINGS while the type
@@ -437,11 +437,12 @@ export async function getAttractionByGeoPath(
 ): Promise<AttractionResponse | null> {
   try {
     const attraction = withAttractionCoordinates(
-      await api.get<AttractionResponse>(
-        withForecast(
-          `/v1/parks/${continent}/${country}/${city}/${parkSlug}/attractions/${attractionSlug}`
-        ),
-        { next: { revalidate: ATTRACTION_REVALIDATE, tags: ['attractions'] } }
+      await readWithForecast(
+        `/v1/parks/${continent}/${country}/${city}/${parkSlug}/attractions/${attractionSlug}`,
+        (url) =>
+          api.get<AttractionResponse>(url, {
+            next: { revalidate: ATTRACTION_REVALIDATE, tags: ['attractions'] },
+          })
       )
     );
     return leanAttractionForDetail(attraction);
@@ -472,11 +473,9 @@ export async function getAttractionByGeoPathFresh(
 ): Promise<AttractionResponse | null> {
   try {
     const attraction = withAttractionCoordinates(
-      await api.get<AttractionResponse>(
-        withForecast(
-          `/v1/parks/${continent}/${country}/${city}/${parkSlug}/attractions/${attractionSlug}`
-        ),
-        { cache: 'no-store' }
+      await readWithForecast(
+        `/v1/parks/${continent}/${country}/${city}/${parkSlug}/attractions/${attractionSlug}`,
+        (url) => api.get<AttractionResponse>(url, { cache: 'no-store' })
       )
     );
     return leanAttractionForDetail(attraction);

@@ -87,8 +87,8 @@ behind Cloudflare. All park data comes from the [park.fan API](https://github.co
 ## License
 
 The code is source-available under the [PolyForm Noncommercial License 1.0.0](LICENSE.md): free
-for any noncommercial purpose, commercial use only under a written agreement. Texts, photos, the
-name park.fan and its logos are not covered ([NOTICE.md](NOTICE.md)). What may be done with the
+for any non-commercial purpose, commercial use only under a written agreement with Patrick Arns.
+Texts, photos, the name park.fan, its logos and Parky are not covered ([NOTICE.md](NOTICE.md)). What may be done with the
 data is set out at [park.fan/en/impressum#data-use](https://park.fan/en/impressum#data-use).
 
 ---

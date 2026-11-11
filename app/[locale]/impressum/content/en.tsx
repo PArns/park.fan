@@ -211,18 +211,19 @@ export function ImpressumEN({ story }: { story: ImpressumStory | null }) {
           Using the data
         </h2>
         <p className="mb-4">
-          Anyone may use what park.fan publishes, on its pages and through the API at api.park.fan,
-          free of charge for non-commercial purposes: in their own app, on a fan site without
-          advertising, in a research project or a school assignment. Credit park.fan and link to the
-          park or ride page you used.
+          Anyone may use the data park.fan publishes on its pages and through the API at
+          api.park.fan (wait times, opening hours, statistics and forecasts) free of charge for
+          non-commercial purposes: in their own app, on a fan site without advertising, in a
+          research project or a school assignment. Credit park.fan and link to the page of the park
+          or ride the data is about. Texts and photos are not included.
         </p>
 
         <h3 className="mt-8 mb-4 text-2xl font-semibold">Forecasts need an API key</h3>
         <p className="mb-4">
-          park.fan calculates its forecasts with its own models: the crowd calendar, the expected
-          crowds per day and per hour, predicted wait times, the best days to visit and the plans of
-          the trip planner. The API hands them out only against an API key. A key for non-commercial
-          use is free; ask for one at{' '}
+          Forecasts are everything park.fan predicts with its own models, including the crowd
+          calendar, the expected crowds per day and per hour, predicted wait times, the best days to
+          visit, the yearly predictions and the plans of the trip planner. The API returns them only
+          with an API key. A key for non-commercial use is free; ask for one at{' '}
           <ObfuscatedEmail local="hello" domain="park.fan" displayText="hello [at] park.fan" />.
         </p>
 
@@ -230,9 +231,9 @@ export function ImpressumEN({ story }: { story: ImpressumStory | null }) {
         <p className="mb-4">
           Commercial means, for example, a paid app, an app with subscriptions, in-app purchases or
           advertising, a website with advertising or affiliate links, and any product a company
-          offers. Using the forecasts commercially requires a written agreement with park.fan.
-          Without one, they may not be shown, stored or passed on for such purposes, whether they
-          come from the pages, the API or the MCP server.
+          offers. Using park.fan's forecasts and statistics commercially requires a written
+          agreement with Patrick Arns (park.fan). Without one, they may not be shown, stored or
+          passed on for such purposes, whether they come from the pages, the API or the MCP server.
         </p>
 
         <h3 className="mt-8 mb-4 text-2xl font-semibold">Live data for non-commercial use only</h3>
@@ -245,8 +246,9 @@ export function ImpressumEN({ story }: { story: ImpressumStory | null }) {
 
         <h3 className="mt-8 mb-4 text-2xl font-semibold">No training of AI models</h3>
         <p className="mb-4">
-          The pages may not be used to train or fine-tune AI models. An assistant may read a page to
-          answer someone's question. The machine-readable form of these rules is in{' '}
+          Neither the pages nor the forecasts from the API may be used to train or fine-tune AI
+          models or other forecasting models. An assistant may read a page to answer someone's
+          question. For the pages, the machine-readable form of these rules is in{' '}
           <a href="/robots.txt" className="text-primary hover:text-primary/80 underline">
             robots.txt
           </a>{' '}
@@ -287,7 +289,8 @@ export function ImpressumEN({ story }: { story: ImpressumStory | null }) {
             PolyForm Noncommercial License 1.0.0
           </a>
           : anyone may use, change and share it for non-commercial purposes; commercial use needs a
-          written agreement. Texts, photos, the name park.fan and its logos are not covered.
+          written agreement with Patrick Arns. Not covered are texts, photos, the name park.fan, its
+          logos and Parky, and in the API's repository the data taken from the sources.
         </p>
 
         <h2 className="border-border mt-12 mb-6 border-b pb-3 text-3xl font-bold">Image Credits</h2>

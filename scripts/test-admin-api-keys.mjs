@@ -3,8 +3,14 @@ import {
   createDataApiKeyBody,
   formatAllowedParks,
   formatHourlyUsage,
+  formatKeyExpiry,
+  keyExpiryDay,
+  keyExpiryFrom,
   parseRequestsPerHour,
 } from '../lib/admin/api-keys.ts';
+
+// 11 November 2026, 10:00 in Berlin (UTC+1).
+const NOW = Date.parse('2026-11-11T09:00:00Z');
 
 const testCases = [
   {
@@ -58,9 +64,42 @@ const testCases = [
         note: '',
         requestsPerHour: null,
         allowedParkIds: [],
+        expiresAt: null,
       }),
     expected:
       '{"name":"Club","usage":"non-commercial","requestsPerHour":null,"allowedParkIds":null}',
+  },
+  {
+    name: 'a chosen day ends at midnight in Berlin, summer time included',
+    actual: () => [
+      keyExpiryFrom('date', '2027-06-30', NOW),
+      keyExpiryFrom('date', '2026-12-31', NOW),
+    ],
+    expected: ['2027-06-30T21:59:59.999Z', '2026-12-31T22:59:59.999Z'],
+  },
+  {
+    name: 'today still counts, yesterday and a half-typed day do not',
+    actual: () => [
+      keyExpiryFrom('date', '2026-11-11', NOW) !== undefined,
+      keyExpiryFrom('date', '2026-11-10', NOW),
+      keyExpiryFrom('date', '2026-11', NOW),
+    ],
+    expected: [true, undefined, undefined],
+  },
+  {
+    name: 'a lifetime counts from now, never is null',
+    actual: () => [keyExpiryFrom('90', '', NOW), keyExpiryFrom('never', '', NOW)],
+    expected: ['2027-02-09T09:00:00.000Z', null],
+  },
+  {
+    name: 'the end date reads as a Berlin day, before and after it passes',
+    actual: () => [
+      keyExpiryDay('2027-06-30T21:59:59.999Z'),
+      formatKeyExpiry('2027-06-30T21:59:59.999Z', NOW),
+      formatKeyExpiry('2026-01-31T22:59:59.999Z', NOW),
+      formatKeyExpiry(null, NOW),
+    ],
+    expected: ['2027-06-30', 'gültig bis 30.06.2027', 'abgelaufen am 31.01.2026', 'unbefristet'],
   },
   {
     name: 'a key limited to parks names them',
@@ -72,7 +111,7 @@ const testCases = [
           { id: 'b', name: 'EPCOT' },
         ],
       }),
-    expected: 'Magic Kingdom Park, EPCOT',
+    expected: 'nur Magic Kingdom Park, EPCOT',
   },
   {
     name: 'a key without parks covers all of them',
@@ -91,7 +130,7 @@ for (const testCase of testCases) {
   } catch (error) {
     result = `threw: ${error instanceof Error ? error.message : String(error)}`;
   }
-  if (result === testCase.expected) {
+  if (JSON.stringify(result) === JSON.stringify(testCase.expected)) {
     passed++;
     console.log(`  ✓ ${testCase.name}`);
   } else {

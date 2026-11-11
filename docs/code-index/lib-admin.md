@@ -7,17 +7,24 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`api-keys.ts`](../../lib/admin/api-keys.ts)
 
+The data API keys of `/admin/api-keys`: the keys that unlock park.fan's forecasts on api.park.fan for one consumer each. The backend owns them (`/v1/admin/api-keys`, owner only); this module holds what the page and its dialog share.
+
 - `parseRequestsPerHour` _function_: The hourly allowance typed into a field: a whole number from 1, written plain or with German thousands points or spaces (`1.000`, `1 000`), or empty for no per-key limit.
-- `formatHourlyUsage` _function_: „12 von 1.000 in dieser Stunde“, or „ohne eigenes Limit“.
-- `formatAllowedParks` _function_: „Alle Parks“, or the parks by name, as one line.
+- `formatHourlyUsage` _function_: „12 von 1.000 in dieser Stunde“, or „12 in dieser Stunde, ohne eigenes Limit“.
+- `formatAllowedParks` _function_: „alle Parks“, or „nur“ and the parks by name, as one line.
+- `keyExpiryFrom` _function_: The end date a choice stands for, as the API takes it: a lifetime counted from `nowMs`, the end of the chosen day in Berlin, or null for never.
+- `keyExpiryDay` _function_: The Berlin day an end date falls on, `YYYY-MM-DD`, as a date field takes it.
+- `formatKeyExpiry` _function_: „gültig bis 30.06.2027“, „abgelaufen am 31.01.2026“, or „unbefristet“.
 - `createDataApiKeyBody` _function_: The body of a create: empty optional fields are left out rather than sent as empty strings.
 - `dataApiKeyCurlExample` _function_: How a client sends the key, for the dialog to show next to it.
 - `DATA_API_KEY_USAGE_LABELS` _const_: The labels the page uses for a key's usage.
 - `DEFAULT_REQUESTS_PER_HOUR` _const_: What a new key is allowed per hour unless the dialog says otherwise; the backend's default too.
 - `MAX_REQUESTS_PER_HOUR` _const_: The most a key may be allowed per hour; the backend's `MAX_REQUESTS_PER_HOUR`.
+- `KEY_EXPIRY_TIME_ZONE` _const_: The time zone a key's end date is chosen and shown in: the admin's, Patrick's.
+- `KEY_EXPIRY_CHOICES` _const_: The select's options, in the order the token dialog shows its lifetimes.
 - `DATA_API_KEYS_PATH` _const_: The proxy path of the backend's key endpoints.
 - `DATA_API_KEYS_QUERY_KEY` _const_: The React Query key of the list.
-- Types: `DataApiKeyUsage`, `DataApiKey`, `CreatedDataApiKey`
+- Types: `DataApiKeyUsage`, `DataApiKey`, `CreatedDataApiKey`, `KeyExpiryChoice`
 
 ### [`blog-image-sidecar.ts`](../../lib/admin/blog-image-sidecar.ts)
 

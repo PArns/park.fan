@@ -44,12 +44,14 @@ The endpoints that answer most questions:
 | `/v1/discovery/nearby?lat=&lng=`                | parks around a point                                        |
 | `/v1/health`                                    | whether the above is up                                     |
 
-¹ Its forecast field, each ride's `bestVisitTimes`, comes only with `?forecast=true` and a key; the
-same holds for a ride's `hourlyForecast` and for `/stats/day`. `/calendar`, `/predictions/yearly`
+¹ Its forecast field, each ride's `bestVisitTimes`, comes only with `?forecast=true` and a key;
+`?forecast=true` without a key is a 401 for the whole request. The same holds for a ride's
+`hourlyForecast` and for `/stats/day`. `/calendar`, `/predictions/yearly`
 and `/plan/day` need a key outright. Without one they answer 401 with the terms URL. A key has an
 hourly allowance, counted from each full hour and reported in `X-API-Key-Hourly-Limit`,
 `-Remaining` and `-Reset`; past it the answer is 429 with `Retry-After`. A key
-limited to some parks gets 403 for any other park.
+limited to some parks gets 403 for any other park. Without a key, reads are limited to 60 a minute
+and 1,000 an hour per address; a data key lifts that.
 
 `https://park.fan/sitemap.xml` and `/sitemap-attractions.xml` list the pages; `/llms.txt` is the
 short version of this file for a model that arrived with nothing.
@@ -67,9 +69,11 @@ short version of this file for a model that arrived with nothing.
 ## Terms of use
 
 - Free for non-commercial use, with the credit above.
-- The forecasts (crowd calendar, expected crowds, predicted wait times, best days, day plans) are
-  park.fan's own model output and need a data key. Commercial use, whether read from a page, the
-  API or MCP, requires a written agreement with park.fan (contact: https://park.fan/en/impressum).
+- The forecasts (everything park.fan's models predict: crowd calendar, expected crowds, predicted
+  wait times, best days, yearly predictions, day plans) need a data key. Commercial use of the
+  forecasts or park.fan's statistics, whether read from a page, the API or MCP, requires a written
+  agreement with Patrick Arns (park.fan) (contact: https://park.fan/en/impressum).
+- Neither the pages nor the forecasts may be used to train or fine-tune a model.
 - Live wait times, opening hours and weather come from park.fan's sources and are passed on for
   non-commercial use only; commercial use needs an agreement with the source.
 - The full terms, with what counts as commercial: https://park.fan/en/impressum#data-use

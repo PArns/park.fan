@@ -340,20 +340,28 @@ The section „API-Zugriff / MCP“ (`account/mcp-access.tsx`) has the address w
 
 The keys that unlock park.fan's forecasts on api.park.fan for one consumer each
 ([a forecast leaves park.fan only with a key](../rules/a-forecast-leaves-only-with-a-key.md)).
-Owner only, in the nav and on the API (`/v1/admin/api-keys`, audited as `api-key.create` and
-`api-key.revoke`), because a key decides who uses the forecasts. Helpers in `lib/admin/api-keys.ts`.
+Owner only, in the nav and on the API (`/v1/admin/api-keys`, audited as `api-key.create`,
+`api-key.update` and `api-key.revoke`), because a key decides who uses the forecasts. Helpers in `lib/admin/api-keys.ts`.
 
 - **The list** shows every key, active ones first: name, usage (nicht-kommerziell, or kommerziell
   for a holder with a written agreement), prefix, contact, created, last used, when it was
-  revoked, and for an active key its requests in the current clock hour against its hourly
-  allowance (`formatHourlyUsage`) and its parks (`formatAllowedParks`, „alle Parks“ without a
-  list). An active row has an edit button (allowance and parks, `PATCH`, from the next request on)
-  and its revoke button behind a `ConfirmDialog`; a revoked one stays listed, dimmed.
+  revoked, and for an active key its requests in the current clock hour and its hourly allowance
+  (`formatHourlyUsage`), its end date (`formatKeyExpiry`) and its parks (`formatAllowedParks`,
+  „alle Parks“ without a list). An active row has an edit button (allowance, parks and end date,
+  `PATCH`, from the next request on) and its revoke button behind a `ConfirmDialog`, which warns
+  that revoking the `internal` key takes the forecasts off the site. A revoked or expired key stays
+  listed with its text dimmed; an expired one keeps its edit button, because a new date brings it
+  back. On a phone the buttons sit on the name's line and the details take the card's width.
 - **Parks** are added one at a time through `SearchSelect` with the park search, from the query
   the parks page already holds (`/api/admin/content/parks?limit=500`); a chosen park is a chip
   that removes itself. No park means every park.
+- **The end date** („Gültig“) offers the MCP tokens' lifetimes (`TOKEN_EXPIRY_OPTIONS`: 30 days,
+  90 days, a year, never) and „Bis zu einem Datum“, a date field whose day lasts until midnight in
+  Berlin (`keyExpiryFrom`, `KEY_EXPIRY_TIME_ZONE`). An edit sends the date only when it changed
+  (`useKeyExpiry`'s `unchanged`), so an expired key's past date is not sent back to be refused.
 - **Create** takes a name, an optional contact, the usage, the hourly allowance (1,000 unless
-  changed, empty for no per-key limit, `parseRequestsPerHour`), the parks and an optional note,
+  changed, empty for no per-key limit, `parseRequestsPerHour`), the parks, the end date and an
+  optional note,
   and needs no password: a data key opens forecasts, never the admin. The key is in the answer once and lives in
   the dialog's state only, as a token does above; Escape and the overlay do not close the dialog
   while it is shown. The dialog adds a `curl` line with the key in `X-API-Key`.
@@ -598,6 +606,10 @@ models in one sentence and the switch rule.
   and season count folded into one meta line. One markup, not a phone-only copy that would drift.
 - The dense tables („Läuft alles?", `system`) scroll sideways inside their card; they are read at a
   desk.
+- **A dialog with a long form scrolls inside the screen** (`SCROLLING_DIALOG` on its
+  `DialogContent`): without it a phone cuts off its title and buttons, and the dialog grows to the
+  width of its longest unbroken line, a key or a `curl` command, which pushed the copy buttons off
+  the screen. Measured on `/admin/api-keys` at 390 px with test data.
 - **A grid that has columns only from a breakpoint needs `grid-cols-1` below it.** Without it the
   phone gets one implicit `auto` column, as wide as its longest unbroken line: the start page's
   „Zuletzt geändert“ list made it 481 px wide at 390 (measured with test data). `grid-cols-1` is

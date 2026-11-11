@@ -4,7 +4,7 @@ import {
   getApiBaseUrl,
   getServerApiHeaders,
 } from '@/lib/api/client';
-import { withForecast } from '@/lib/api/forecast-query';
+import { fetchWithForecast } from '@/lib/api/forecast-query';
 import {
   loadCardImageMap,
   withParkCardImage,
@@ -268,7 +268,7 @@ export async function getFavorites(
       apiUrl.searchParams.set(key, value);
     });
 
-    const response = await fetch(withForecast(apiUrl.toString()), {
+    const response = await fetchWithForecast(apiUrl.toString(), {
       headers: {
         'Content-Type': 'application/json',
         ...getServerApiHeaders(),

@@ -25,7 +25,8 @@ open. No API key, no OAuth client, no sign-up, no registration endpoint.
 Crowd calendars, best days, day plans, yearly predictions and predicted wait times need a key in
 the \`X-API-Key\` header (\`pfk_…\`). \`/calendar\`, \`/best-days\`, \`/predictions/yearly\` and
 \`/plan/day\` answer 401 without one; park detail, ride detail, \`/stats/day\` and \`/favorites\` add
-their forecast fields only with \`?forecast=true\` and a key. The MCP tool \`get_park_best_days\`
+their forecast fields only with \`?forecast=true\` and a key, and \`?forecast=true\` without a key
+is a 401 for the whole request. The MCP tool \`get_park_best_days\`
 reads the same header. A key for non-commercial use is free and issued by hand: ask through
 ${SITE_URL}/en/impressum. Never put it in a URL.
 
@@ -33,15 +34,17 @@ ${SITE_URL}/en/impressum. Never put it in a URL.
 - API catalog (RFC 9727): ${SITE_URL}/.well-known/api-catalog
 - Usage notes and etiquette: ${SITE_URL}/.well-known/agent-skills/park-fan-data/SKILL.md
 
-Identify yourself in \`User-Agent\` with your project's name and a way to reach you. That is
-courtesy rather than authentication, and it is what gets a shared rate limit raised for you
-instead of lowered.
+Without a key, the API allows 60 reads a minute and 1,000 an hour per address; a data key lifts
+that, and comes with an hourly allowance of its own. Identify yourself in \`User-Agent\` with your
+project's name and a way to reach you. That is courtesy rather than authentication, and it is
+how we can reach you before a limit does.
 
 ## Terms of use
 
 The data is free for non-commercial use with a credit to park.fan. Commercial use of park.fan's
-forecasts requires a written agreement. The live data of park.fan's sources may not be used
-commercially through park.fan at all; that takes an agreement with the source.
+forecasts or statistics requires a written agreement with Patrick Arns (park.fan). The live data
+of park.fan's sources may not be used commercially through park.fan at all; that takes an
+agreement with the source.
 The full terms: ${DATA_TERMS_URL}
 
 ## No agent registration

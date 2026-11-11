@@ -1,16 +1,19 @@
 # A forecast leaves park.fan only with a key (REQUIREMENT)
 
 park.fan's forecasts (crowd calendar, best days, day plans, yearly predictions, predicted waits,
-`bestVisitTimes`) leave the API only to the holder of a data key in `X-API-Key`. This site's
-server is one: `API_DATA_KEY`, usage „park.fan selbst“, sent by `getServerApiHeaders`. The terms say so (Impressum, `#data-use`);
-the API enforces it ([backend `docs/frontend/api-keys.md`](https://github.com/PArns/v4.api.park.fan/blob/main/docs/frontend/api-keys.md)).
+`bestVisitTimes`) leave the API only to the holder of a data key in `X-API-Key`. The terms say so
+(Impressum, `#data-use`); the API enforces it
+([backend `docs/frontend/api-keys.md`](https://github.com/PArns/v4.api.park.fan/blob/main/docs/frontend/api-keys.md)).
+This site's server holds one too: `API_DATA_KEY`, usage `internal`, sent by `getServerApiHeaders`.
 Live and historical data stay open.
 
 ## What follows for this repo
 
 - **A server fetch of a mixed route asks for the forecast fields.** Park detail, ride detail,
   `/stats/day` and `/favorites` leave them out unless the URL carries `forecast=true`:
-  `withForecast()` in `lib/api/forecast-query.ts`. Without the flag the API answers the copy
+  `withForecast()` in `lib/api/forecast-query.ts`, through `readWithForecast()` or
+  `fetchWithForecast()`, which read once more without the flag when the API refuses the site's key
+  (401 or 403): a revoked or expired `API_DATA_KEY` costs the pages their forecasts, not the pages. Without the flag the API answers the copy
   Cloudflare cached for a keyless caller, and `bestVisitTimes` silently vanishes from the cards.
   A fetch that shows no forecast leaves the flag off and stays in the shared cache
   (`getParkByGeoPathForAgents`, `getParkByGeoPathFreshWithoutForecasts`). A server with neither

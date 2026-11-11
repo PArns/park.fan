@@ -95,6 +95,8 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `serverHoldsForecastKey` _function_: Whether this server holds a key the API takes for forecasts: its data key (`API_DATA_KEY`), or the throttle bypass key (`API_AUTH_KEY`) until the API stops accepting it there.
 - `withForecast` _function_: `path` with the forecast flag added to its query string, when the server can open it.
+- `readWithForecast` _function_: Reads `path` with the forecast flag, and once more without it when the API refuses the server's key. A revoked, expired or park-limited site key then costs a page its forecast fields instead of the page; the log says so once per process.
+- `fetchWithForecast` _function_: `readWithForecast` for a plain `fetch`, which answers a refusal rather than throwing.
 - `FORECAST_QUERY` _const_: The API leaves the forecast fields of a mixed route (park detail, ride detail, `/stats/day`, `/favorites`) out unless the request carries `forecast=true` and a key; the server's `x-auth-key` counts as one.
 
 ### [`forecast-relay.ts`](../../lib/api/forecast-relay.ts)

@@ -277,6 +277,7 @@ Crash protection for the curated-fields editor: a draft in localStorage survives
 - `severityTone` _function_: The chip tone for an alert or anomaly severity (`low` to `critical`); muted for anything else.
 - `statusTone` _function_: The chip tone for a service status word: success for healthy, ok, online and the like, warning for degraded, pending or a warning, danger for anything else.
 - `crowdChipClass` _function_: A `Chip` class in the public site's crowd palette, so `moderate` reads as the green "Normal" it is there; undefined (a muted chip) for a level without a colour.
+- `SCROLLING_DIALOG` _const_: For a `DialogContent` whose form can be taller than a phone's screen: it scrolls inside the screen instead of running off it, where its title and buttons cannot be reached.
 - Types: `ChipTone`
 
 ### [`_ui/retirement.ts`](../../app/admin/_ui/retirement.ts)

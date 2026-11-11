@@ -3,6 +3,8 @@
  * api.park.fan for one consumer each. The backend owns them (`/v1/admin/api-keys`, owner only);
  * this module holds what the page and its dialog share.
  */
+import { formatInTimeZone, fromZonedTime } from 'date-fns-tz';
+import { TOKEN_EXPIRY_OPTIONS, hasPassed } from './mcp';
 
 /** What a key was issued for, as the backend stores it. */
 export type DataApiKeyUsage = 'non-commercial' | 'commercial' | 'internal';
@@ -24,6 +26,8 @@ export interface DataApiKey {
   allowedParkIds: string[] | null;
   /** The same parks with their names, as the list returns them. */
   allowedParks?: { id: string; name: string }[] | null;
+  /** When the key stops working; null means never. An expired key can be extended. */
+  expiresAt: string | null;
   createdAt: string;
   lastUsedAt: string | null;
   revokedAt: string | null;
@@ -61,7 +65,7 @@ export function parseRequestsPerHour(text: string): number | null | undefined {
   return value >= 1 && value <= MAX_REQUESTS_PER_HOUR ? value : undefined;
 }
 
-/** „12 von 1.000 in dieser Stunde“, or „ohne eigenes Limit“. */
+/** „12 von 1.000 in dieser Stunde“, or „12 in dieser Stunde, ohne eigenes Limit“. */
 export function formatHourlyUsage(
   key: Pick<DataApiKey, 'requestsPerHour' | 'requestsThisHour'>
 ): string {
@@ -71,13 +75,59 @@ export function formatHourlyUsage(
     : `${used} von ${key.requestsPerHour.toLocaleString('de-DE')} in dieser Stunde`;
 }
 
-/** „Alle Parks“, or the parks by name, as one line. */
+/** „alle Parks“, or „nur“ and the parks by name, as one line. */
 export function formatAllowedParks(
   key: Pick<DataApiKey, 'allowedParks' | 'allowedParkIds'>
 ): string {
   if (!key.allowedParkIds || key.allowedParkIds.length === 0) return 'alle Parks';
   const names = key.allowedParks?.map((park) => park.name) ?? key.allowedParkIds;
-  return names.join(', ');
+  return `nur ${names.join(', ')}`;
+}
+
+/** The time zone a key's end date is chosen and shown in: the admin's, Patrick's. */
+export const KEY_EXPIRY_TIME_ZONE = 'Europe/Berlin';
+
+/** What the end-date select offers: the MCP tokens' lifetimes, or a day of one's choosing. */
+export type KeyExpiryChoice = 'never' | 'date' | `${number}`;
+
+/** The select's options, in the order the token dialog shows its lifetimes. */
+export const KEY_EXPIRY_CHOICES: ReadonlyArray<{ value: KeyExpiryChoice; label: string }> = [
+  ...TOKEN_EXPIRY_OPTIONS.map((option) => ({
+    value: (option.days === null ? 'never' : `${option.days}`) as KeyExpiryChoice,
+    label: option.label,
+  })),
+  { value: 'date', label: 'Bis zu einem Datum' },
+];
+
+/**
+ * The end date a choice stands for, as the API takes it: a lifetime counted from `nowMs`, the end
+ * of the chosen day in Berlin, or null for never. `undefined` for a day that is missing, malformed
+ * or already over, so the dialog can refuse it before the API does.
+ */
+export function keyExpiryFrom(
+  choice: KeyExpiryChoice,
+  day: string,
+  nowMs: number
+): string | null | undefined {
+  if (choice === 'never') return null;
+  if (choice === 'date') {
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(day)) return undefined;
+    const end = fromZonedTime(`${day}T23:59:59.999`, KEY_EXPIRY_TIME_ZONE);
+    return Number.isFinite(end.getTime()) && end.getTime() > nowMs ? end.toISOString() : undefined;
+  }
+  return new Date(nowMs + Number(choice) * 86_400_000).toISOString();
+}
+
+/** The Berlin day an end date falls on, `YYYY-MM-DD`, as a date field takes it. */
+export function keyExpiryDay(iso: string): string {
+  return formatInTimeZone(iso, KEY_EXPIRY_TIME_ZONE, 'yyyy-MM-dd');
+}
+
+/** „gültig bis 30.06.2027“, „abgelaufen am 31.01.2026“, or „unbefristet“. */
+export function formatKeyExpiry(expiresAt: string | null, nowMs: number): string {
+  if (!expiresAt) return 'unbefristet';
+  const day = formatInTimeZone(expiresAt, KEY_EXPIRY_TIME_ZONE, 'dd.MM.yyyy');
+  return hasPassed(expiresAt, nowMs) ? `abgelaufen am ${day}` : `gültig bis ${day}`;
 }
 
 /** The proxy path of the backend's key endpoints. */
@@ -95,6 +145,8 @@ export function createDataApiKeyBody(input: {
   requestsPerHour: number | null;
   /** Empty for every park. */
   allowedParkIds: readonly string[];
+  /** ISO 8601; null for a key that does not expire. */
+  expiresAt: string | null;
 }): string {
   const contact = input.contact.trim();
   const note = input.note.trim();
@@ -103,6 +155,7 @@ export function createDataApiKeyBody(input: {
     usage: input.usage,
     requestsPerHour: input.requestsPerHour,
     allowedParkIds: input.allowedParkIds.length > 0 ? [...input.allowedParkIds] : null,
+    ...(input.expiresAt && { expiresAt: input.expiresAt }),
     ...(contact && { contact }),
     ...(note && { note }),
   });

@@ -214,18 +214,21 @@ export function ImpressumDE({ story }: { story: ImpressumStory | null }) {
           Nutzung der Daten
         </h2>
         <p className="mb-4">
-          Was park.fan auf den Seiten und über die API unter api.park.fan veröffentlicht, darf jeder
-          kostenlos für nicht-kommerzielle Zwecke verwenden: in einer eigenen App, auf einer
-          Fanseite ohne Werbung, in einem Forschungsprojekt oder einer Schularbeit. Bedingung ist
-          ein Quellenhinweis auf park.fan mit Link zur jeweiligen Park- oder Attraktionsseite.
+          Die Daten, die park.fan auf den Seiten und über die API unter api.park.fan veröffentlicht
+          (Wartezeiten, Öffnungszeiten, Statistiken und Prognosen), darf jeder kostenlos für
+          nicht-kommerzielle Zwecke verwenden: in einer eigenen App, auf einer Fanseite ohne
+          Werbung, in einem Forschungsprojekt oder einer Schularbeit. Bedingung ist ein
+          Quellenhinweis auf park.fan mit Link zur Seite des Parks oder der Attraktion, um die es
+          geht. Texte und Fotos gehören nicht dazu.
         </p>
 
         <h3 className="mt-8 mb-4 text-2xl font-semibold">Prognosen nur mit API-Key</h3>
         <p className="mb-4">
-          Die Prognosen berechnet park.fan mit eigenen Modellen: den Crowd-Kalender, den erwarteten
-          Andrang pro Tag und pro Stunde, vorhergesagte Wartezeiten, die besten Besuchstage und die
-          Pläne des Tagesplaners. Die API gibt sie nur gegen einen API-Key heraus. Für eine
-          nicht-kommerzielle Nutzung ist der Key kostenlos, Anfragen an{' '}
+          Prognosen sind alles, was park.fan mit eigenen Modellen vorhersagt, darunter der
+          Crowd-Kalender, der erwartete Andrang pro Tag und pro Stunde, vorhergesagte Wartezeiten,
+          die besten Besuchstage, die Jahresprognosen und die Pläne des Tagesplaners. Die API gibt
+          sie nur mit einem API-Key heraus. Für nicht-kommerzielle Zwecke ist der Key kostenlos; es
+          gibt ihn auf Anfrage an{' '}
           <ObfuscatedEmail local="hello" domain="park.fan" displayText="hello [at] park.fan" />.
         </p>
 
@@ -233,10 +236,10 @@ export function ImpressumDE({ story }: { story: ImpressumStory | null }) {
         <p className="mb-4">
           Kommerziell sind zum Beispiel eine kostenpflichtige App, eine App mit Abo, In-App-Käufen
           oder Werbung, eine Website mit Werbung oder Affiliate-Links und jedes Produkt, das ein
-          Unternehmen anbietet. Für eine kommerzielle Nutzung der Prognosen braucht es eine
-          schriftliche Vereinbarung mit park.fan. Ohne sie dürfen die Prognosen für solche Zwecke
-          weder gezeigt noch gespeichert oder weitergegeben werden, gleich ob sie von den Seiten,
-          aus der API oder vom MCP-Server stammen.
+          Unternehmen anbietet. Für eine kommerzielle Nutzung der Prognosen und Statistiken von
+          park.fan braucht es eine schriftliche Vereinbarung mit Patrick Arns (park.fan). Ohne sie
+          dürfen sie für solche Zwecke weder gezeigt noch gespeichert noch weitergegeben werden,
+          gleich ob sie von den Seiten, aus der API oder vom MCP-Server stammen.
         </p>
 
         <h3 className="mt-8 mb-4 text-2xl font-semibold">
@@ -251,9 +254,10 @@ export function ImpressumDE({ story }: { story: ImpressumStory | null }) {
 
         <h3 className="mt-8 mb-4 text-2xl font-semibold">Kein Training von KI-Modellen</h3>
         <p className="mb-4">
-          Die Seiten dürfen nicht zum Training oder Fine-Tuning von KI-Modellen verwendet werden.
-          Ein Assistent darf eine Seite lesen, um jemandem eine Frage zu beantworten.
-          Maschinenlesbar stehen diese Regeln in{' '}
+          Weder die Seiten noch die Prognosen aus der API dürfen zum Training oder Fine-Tuning von
+          KI-Modellen oder anderen Prognosemodellen verwendet werden. Ein Assistent darf eine Seite
+          lesen, um jemandem eine Frage zu beantworten. Für die Seiten stehen diese Regeln
+          maschinenlesbar in{' '}
           <a href="/robots.txt" className="text-primary hover:text-primary/80 underline">
             robots.txt
           </a>{' '}
@@ -293,9 +297,10 @@ export function ImpressumDE({ story }: { story: ImpressumStory | null }) {
           >
             PolyForm Noncommercial License 1.0.0
           </a>
-          : Für nicht-kommerzielle Zwecke darf ihn jeder nutzen, ändern und weitergeben, kommerziell
-          nur mit schriftlicher Vereinbarung. Texte, Fotos, der Name park.fan und die Logos fallen
-          nicht darunter.
+          : Für nicht-kommerzielle Zwecke darf ihn jeder nutzen, ändern und weitergeben; für
+          kommerzielle braucht es eine schriftliche Vereinbarung mit Patrick Arns. Nicht darunter
+          fallen Texte, Fotos, der Name park.fan, die Logos und Parky, im Repository der API auch
+          die Daten aus den Quellen.
         </p>
 
         <h2 className="border-border mt-12 mb-6 border-b pb-3 text-3xl font-bold">Bildnachweise</h2>

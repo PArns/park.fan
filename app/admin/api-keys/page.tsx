@@ -21,12 +21,19 @@ import {
   dataApiKeyCurlExample,
   formatAllowedParks,
   formatHourlyUsage,
+  formatKeyExpiry,
+  KEY_EXPIRY_CHOICES,
+  keyExpiryDay,
+  keyExpiryFrom,
   MAX_REQUESTS_PER_HOUR,
   parseRequestsPerHour,
   type CreatedDataApiKey,
   type DataApiKey,
   type DataApiKeyUsage,
+  type KeyExpiryChoice,
 } from '@/lib/admin/api-keys';
+import { hasPassed } from '@/lib/admin/mcp';
+import { useMinuteNow } from '@/lib/hooks/use-minute-now';
 import { adminFetch, adminKeys, useAdminQuery, useInvalidateAdmin } from '../_lib/api';
 import type { AdminParkListItem } from '../_lib/types';
 import { formatAgo } from '../_lib/format';
@@ -43,6 +50,7 @@ import {
   Panel,
   PanelBody,
   PanelHeader,
+  SCROLLING_DIALOG,
   SkeletonRows,
   Tile,
 } from '../_ui/primitives';
@@ -67,7 +75,7 @@ export default function ApiKeysPage() {
       <EmptyState
         icon={ShieldCheck}
         title="Nur für Inhaber"
-        description="API-Keys vergibt die Rolle „Inhaber“."
+        description="API-Keys vergibt nur, wer die Rolle „Inhaber“ hat."
       />
     );
   }
@@ -108,6 +116,7 @@ function KeyList({ items }: { items: DataApiKey[] }) {
   const [pending, setPending] = useState<DataApiKey | null>(null);
   const [confirming, setConfirming] = useState(false);
   const [editing, setEditing] = useState<DataApiKey | null>(null);
+  const now = useMinuteNow();
 
   async function revoke(key: DataApiKey) {
     try {
@@ -118,7 +127,7 @@ function KeyList({ items }: { items: DataApiKey[] }) {
       toast.push({ title: 'Key widerrufen', tone: 'success' });
     } catch (err) {
       toast.push({
-        title: 'Widerrufen fehlgeschlagen',
+        title: 'Widerruf fehlgeschlagen',
         description: err instanceof Error ? err.message : undefined,
         tone: 'error',
       });
@@ -130,7 +139,7 @@ function KeyList({ items }: { items: DataApiKey[] }) {
       <EmptyState
         icon={KeySquare}
         title="Noch keine Keys"
-        description="Ohne Key liefert die API keine Prognosen, auch park.fan selbst nicht. Für die Seite einen Key mit der Nutzung „park.fan selbst“ anlegen und in Vercel als API_DATA_KEY setzen."
+        description="Ohne Key liefert die API keine Prognosen. Leg für die Website einen Key mit der Nutzung „park.fan selbst“ an und setz ihn in Vercel als API_DATA_KEY; bis die API mit FORECAST_BYPASS_KEY=off läuft, öffnet ihr auch der Bypass-Key die Prognosen."
       />
     );
   }
@@ -142,6 +151,7 @@ function KeyList({ items }: { items: DataApiKey[] }) {
           <KeyRow
             key={key.id}
             apiKey={key}
+            now={now}
             onEdit={() => setEditing(key)}
             onRevoke={() => {
               setPending(key);
@@ -157,7 +167,11 @@ function KeyList({ items }: { items: DataApiKey[] }) {
         icon={Trash2}
         tone="destructive"
         title={`Key „${pending?.name ?? ''}“ widerrufen?`}
-        description="Wer diesen Key nutzt, bekommt sofort keine Prognosen mehr. Das lässt sich nicht rückgängig machen."
+        description={
+          pending?.usage === 'internal'
+            ? 'Das ist der Key der Website: park.fan zeigt dann keine Prognosen mehr, bis ein neuer Key in Vercel als API_DATA_KEY steht. Das lässt sich nicht rückgängig machen.'
+            : 'Wer diesen Key nutzt, bekommt sofort keine Prognosen mehr. Das lässt sich nicht rückgängig machen.'
+        }
         confirmLabel="Widerrufen"
         cancelLabel="Abbrechen"
         onConfirm={() => pending && void revoke(pending)}
@@ -170,28 +184,62 @@ function KeyList({ items }: { items: DataApiKey[] }) {
 
 function KeyRow({
   apiKey,
+  now,
   onEdit,
   onRevoke,
 }: {
   apiKey: DataApiKey;
+  /** Null until the clock is known, so the server and the first render agree. */
+  now: number | null;
   onEdit: () => void;
   onRevoke: () => void;
 }) {
   const revoked = apiKey.revokedAt !== null;
+  const expired = !revoked && now !== null && hasPassed(apiKey.expiresAt, now);
+  // Only the text dims: an expired key is extended through its edit button, which stays as is.
+  const dimmed = revoked || expired ? 'opacity-60' : '';
   return (
-    <li
-      className={`border-border/60 bg-card/40 flex items-start gap-3 rounded-lg border px-3 py-2.5 ${revoked ? 'opacity-60' : ''}`}
-    >
-      <KeySquare className="text-muted-foreground mt-0.5 h-4 w-4 shrink-0" aria-hidden />
-      <div className="min-w-0 flex-1 space-y-1">
-        <p className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm">
+    <li className="border-border/60 bg-card/40 rounded-lg border px-3 py-2.5">
+      {/* The buttons share the first line with the name, so on a phone the details below get the
+          card's whole width instead of a column beside two buttons. */}
+      <div className="flex items-start gap-3">
+        <KeySquare
+          className={`text-muted-foreground mt-0.5 h-4 w-4 shrink-0 ${dimmed}`}
+          aria-hidden
+        />
+        <p
+          className={`flex min-w-0 flex-1 flex-wrap items-center gap-x-2 gap-y-1 text-sm ${dimmed}`}
+        >
           <span className="min-w-0 truncate font-medium">{apiKey.name}</span>
           <Chip tone={apiKey.usage === 'commercial' ? 'primary' : 'muted'}>
             {DATA_API_KEY_USAGE_LABELS[apiKey.usage]}
           </Chip>
           {revoked && <Chip tone="danger">widerrufen</Chip>}
+          {expired && <Chip tone="danger">abgelaufen</Chip>}
         </p>
-        <p className="text-muted-foreground flex flex-wrap gap-x-3 gap-y-0.5 text-xs">
+        {!revoked && (
+          <div className="-my-1 -mr-1 flex shrink-0">
+            <button
+              type="button"
+              onClick={onEdit}
+              aria-label={`${apiKey.name} bearbeiten`}
+              className="text-muted-foreground hover:text-foreground rounded p-1.5 max-sm:p-3"
+            >
+              <Pencil className="h-3.5 w-3.5" />
+            </button>
+            <button
+              type="button"
+              onClick={onRevoke}
+              aria-label={`${apiKey.name} widerrufen`}
+              className="text-muted-foreground hover:text-destructive rounded p-1.5 max-sm:p-3"
+            >
+              <Trash2 className="h-3.5 w-3.5" />
+            </button>
+          </div>
+        )}
+      </div>
+      <div className={`text-muted-foreground mt-1 space-y-1 text-xs sm:pl-7 ${dimmed}`}>
+        <p className="flex flex-wrap gap-x-3 gap-y-0.5">
           <code className={SYSTEM_MONO}>{apiKey.prefix}…</code>
           {apiKey.contact && <span className="break-all">{apiKey.contact}</span>}
           <span>erstellt {formatAgo(apiKey.createdAt)}</span>
@@ -201,32 +249,16 @@ function KeyRow({
           {apiKey.revokedAt && <span>widerrufen {formatAgo(apiKey.revokedAt)}</span>}
         </p>
         {!revoked && (
-          <p className="text-muted-foreground text-xs">
-            {formatHourlyUsage(apiKey)} · {formatAllowedParks(apiKey)}
-          </p>
+          <>
+            <p className="flex flex-wrap gap-x-3 gap-y-0.5">
+              <span>{formatHourlyUsage(apiKey)}</span>
+              {now !== null && <span>{formatKeyExpiry(apiKey.expiresAt, now)}</span>}
+            </p>
+            <p>{formatAllowedParks(apiKey)}</p>
+          </>
         )}
-        {apiKey.note && <p className="text-muted-foreground text-xs">{apiKey.note}</p>}
+        {apiKey.note && <p>{apiKey.note}</p>}
       </div>
-      {!revoked && (
-        <button
-          type="button"
-          onClick={onEdit}
-          aria-label={`${apiKey.name} bearbeiten`}
-          className="text-muted-foreground hover:text-foreground shrink-0 rounded p-1.5 max-sm:p-3"
-        >
-          <Pencil className="h-3.5 w-3.5" />
-        </button>
-      )}
-      {!revoked && (
-        <button
-          type="button"
-          onClick={onRevoke}
-          aria-label={`${apiKey.name} widerrufen`}
-          className="text-muted-foreground hover:text-destructive -mr-1 shrink-0 rounded p-1.5 max-sm:p-3"
-        >
-          <Trash2 className="h-3.5 w-3.5" />
-        </button>
-      )}
     </li>
   );
 }
@@ -240,6 +272,7 @@ function CreateKeyDialog({ onClose }: { onClose: () => void }) {
   const [note, setNote] = useState('');
   const [limit, setLimit] = useState(String(DEFAULT_REQUESTS_PER_HOUR));
   const [parkIds, setParkIds] = useState<string[]>([]);
+  const expiry = useKeyExpiry(null);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
   // The key lives in this state and nowhere else, and goes when the dialog does.
@@ -253,13 +286,22 @@ function CreateKeyDialog({ onClose }: { onClose: () => void }) {
     limit: useFieldId('api-key-limit'),
     usage: useFieldId('api-key-usage'),
     parks: useFieldId('api-key-parks'),
+    expiry: useFieldId('api-key-expiry'),
   };
   const requestsPerHour = parseRequestsPerHour(limit);
-  const complete = name.trim().length > 0 && requestsPerHour !== undefined;
+  const complete =
+    name.trim().length > 0 && requestsPerHour !== undefined && expiry.expiresAt !== undefined;
 
   async function create(event: FormEvent) {
     event.preventDefault();
-    if (submitting.current || !complete || requestsPerHour === undefined) return;
+    if (
+      submitting.current ||
+      !complete ||
+      requestsPerHour === undefined ||
+      expiry.expiresAt === undefined
+    ) {
+      return;
+    }
     submitting.current = true;
     setBusy(true);
     setError(null);
@@ -273,6 +315,7 @@ function CreateKeyDialog({ onClose }: { onClose: () => void }) {
           note,
           requestsPerHour,
           allowedParkIds: parkIds,
+          expiresAt: expiry.expiresAt,
         }),
       });
       setCreated(result);
@@ -294,7 +337,7 @@ function CreateKeyDialog({ onClose }: { onClose: () => void }) {
   return (
     <Dialog open onOpenChange={(open) => !open && !locked && onClose()}>
       <DialogContent
-        className="sm:max-w-xl"
+        className={`${SCROLLING_DIALOG} sm:max-w-xl`}
         showCloseButton={!locked}
         onInteractOutside={(event) => locked && event.preventDefault()}
         onEscapeKeyDown={(event) => locked && event.preventDefault()}
@@ -334,8 +377,8 @@ function CreateKeyDialog({ onClose }: { onClose: () => void }) {
             <DialogHeader>
               <DialogTitle>Key erstellen</DialogTitle>
               <DialogDescription>
-                Ein Key gibt die Prognosen auf api.park.fan frei. Live-Daten braucht niemand einen
-                Key.
+                Ein Key gibt die Prognosen auf api.park.fan frei. Für Live-Daten braucht niemand
+                einen Key; mit einem fallen aber die Grenzen für Abrufe ohne Key weg.
               </DialogDescription>
             </DialogHeader>
 
@@ -345,7 +388,7 @@ function CreateKeyDialog({ onClose }: { onClose: () => void }) {
                 value={name}
                 onChange={(event) => setName(event.target.value)}
                 maxLength={80}
-                placeholder="z. B. Coaster-Club Website"
+                placeholder="z. B. Coaster-Club-Website"
                 autoComplete="off"
               />
             </Field>
@@ -361,7 +404,7 @@ function CreateKeyDialog({ onClose }: { onClose: () => void }) {
             <Field
               label="Nutzung"
               htmlFor={ids.usage}
-              hint="Kommerziell nur mit schriftlicher Vereinbarung, so steht es in den Nutzungsbedingungen."
+              hint="Kommerziell nur mit schriftlicher Vereinbarung (Impressum, „Nutzung der Daten“)."
             >
               <Select
                 id={ids.usage}
@@ -373,6 +416,7 @@ function CreateKeyDialog({ onClose }: { onClose: () => void }) {
             </Field>
             <LimitField id={ids.limit} value={limit} onChange={setLimit} />
             <ParksField id={ids.parks} value={parkIds} onChange={setParkIds} />
+            <ExpiryField id={ids.expiry} expiry={expiry} />
             <Field label="Notiz" htmlFor={ids.note} hint="Optional, nur für dich.">
               <TextInput
                 id={ids.note}
@@ -419,10 +463,10 @@ function LimitField({
     <Field
       label="Anfragen pro Stunde"
       htmlFor={id}
-      hint="Gezählt ab jeder vollen Stunde, zusätzlich zum allgemeinen Limit der API. Leer lassen für kein eigenes Limit."
+      hint="Gezählt ab jeder vollen Stunde, zusätzlich zum allgemeinen Limit der API. Leer lassen, wenn der Key kein eigenes Limit haben soll."
       error={
         invalid
-          ? `Eine ganze Zahl von 1 bis ${MAX_REQUESTS_PER_HOUR.toLocaleString('de-DE')}, oder leer.`
+          ? `Eine ganze Zahl von 1 bis ${MAX_REQUESTS_PER_HOUR.toLocaleString('de-DE')} oder leer.`
           : null
       }
     >
@@ -470,7 +514,7 @@ function ParksField({
     <Field
       label="Parks"
       htmlFor={id}
-      hint="Leer für alle Parks. Mit einer Auswahl liefert der Key Prognosen nur für diese Parks."
+      hint="Leer für alle Parks. Mit einer Auswahl öffnet der Key die Prognosen nur für diese Parks."
       error={parks.isError ? 'Die Parkliste ließ sich nicht laden.' : null}
     >
       <div className="grid gap-2">
@@ -506,7 +550,59 @@ function ParksField({
   );
 }
 
-/** Changes a key's hourly allowance and parks; the key itself, its name and usage stay. */
+/**
+ * The end-date field's state: a lifetime, a day or never, and the date that stands for once the
+ * clock is known. `unchanged` while it still says what `initial` said, so an edit can leave an
+ * expired key's past date alone instead of sending it back to be refused.
+ */
+function useKeyExpiry(initial: string | null) {
+  const [choice, setChoice] = useState<KeyExpiryChoice>(initial ? 'date' : 'never');
+  const [day, setDay] = useState(initial ? keyExpiryDay(initial) : '');
+  const now = useMinuteNow();
+  const unchanged =
+    initial === null ? choice === 'never' : choice === 'date' && day === keyExpiryDay(initial);
+  const expiresAt = unchanged
+    ? initial
+    : now === null
+      ? undefined
+      : keyExpiryFrom(choice, day, now);
+  return { choice, setChoice, day, setDay, unchanged, expiresAt };
+}
+
+function ExpiryField({ id, expiry }: { id: string; expiry: ReturnType<typeof useKeyExpiry> }) {
+  const past = expiry.choice === 'date' && expiry.day !== '' && expiry.expiresAt === undefined;
+  return (
+    <Field
+      label="Gültig"
+      htmlFor={id}
+      hint="Ein Datum gilt einschließlich, bis Mitternacht deutscher Zeit. Ist der Key abgelaufen, verlängerst du ihn hier mit einem neuen Datum."
+      error={past ? 'Dieser Tag ist schon vorbei.' : null}
+    >
+      <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
+        <Select
+          id={id}
+          value={expiry.choice}
+          allowEmpty={false}
+          onValueChange={(value) =>
+            expiry.setChoice((value as KeyExpiryChoice | null) ?? expiry.choice)
+          }
+          options={[...KEY_EXPIRY_CHOICES]}
+        />
+        {expiry.choice === 'date' && (
+          <TextInput
+            type="date"
+            value={expiry.day}
+            onChange={(event) => expiry.setDay(event.target.value)}
+            aria-label="Gültig bis einschließlich"
+            aria-invalid={past || undefined}
+          />
+        )}
+      </div>
+    </Field>
+  );
+}
+
+/** Changes a key's hourly allowance, parks and end date; the key itself, its name and usage stay. */
 function EditKeyDialog({ apiKey, onClose }: { apiKey: DataApiKey; onClose: () => void }) {
   const toast = useToast();
   const invalidate = useInvalidateAdmin();
@@ -515,13 +611,16 @@ function EditKeyDialog({ apiKey, onClose }: { apiKey: DataApiKey; onClose: () =>
   );
   const [parkIds, setParkIds] = useState<string[]>(apiKey.allowedParkIds ?? []);
   const [busy, setBusy] = useState(false);
+  const expiry = useKeyExpiry(apiKey.expiresAt);
   const fieldId = useFieldId('api-key-limit-edit');
   const parksId = useFieldId('api-key-parks-edit');
+  const expiryId = useFieldId('api-key-expiry-edit');
   const requestsPerHour = parseRequestsPerHour(limit);
+  const ready = requestsPerHour !== undefined && expiry.expiresAt !== undefined;
 
   async function save(event: FormEvent) {
     event.preventDefault();
-    if (busy || requestsPerHour === undefined) return;
+    if (busy || !ready) return;
     setBusy(true);
     try {
       await adminFetch(`${DATA_API_KEYS_PATH}/${encodeURIComponent(apiKey.id)}`, {
@@ -529,6 +628,8 @@ function EditKeyDialog({ apiKey, onClose }: { apiKey: DataApiKey; onClose: () =>
         body: JSON.stringify({
           requestsPerHour,
           allowedParkIds: parkIds.length > 0 ? parkIds : null,
+          // Only when it changed: an expired key's old date would be refused as past.
+          ...(!expiry.unchanged && { expiresAt: expiry.expiresAt }),
         }),
       });
       invalidate(DATA_API_KEYS_QUERY_KEY);
@@ -547,7 +648,7 @@ function EditKeyDialog({ apiKey, onClose }: { apiKey: DataApiKey; onClose: () =>
 
   return (
     <Dialog open onOpenChange={(open) => !open && onClose()}>
-      <DialogContent className="sm:max-w-lg">
+      <DialogContent className={`${SCROLLING_DIALOG} sm:max-w-lg`}>
         <form onSubmit={(event) => void save(event)} className="grid gap-4">
           <DialogHeader>
             <DialogTitle>{apiKey.name} bearbeiten</DialogTitle>
@@ -557,11 +658,12 @@ function EditKeyDialog({ apiKey, onClose }: { apiKey: DataApiKey; onClose: () =>
           </DialogHeader>
           <LimitField id={fieldId} value={limit} onChange={setLimit} />
           <ParksField id={parksId} value={parkIds} onChange={setParkIds} />
+          <ExpiryField id={expiryId} expiry={expiry} />
           <DialogFooter>
             <Button type="button" variant="ghost" onClick={onClose} disabled={busy}>
               Abbrechen
             </Button>
-            <Button type="submit" disabled={busy || requestsPerHour === undefined}>
+            <Button type="submit" disabled={busy || !ready}>
               {busy && <Loader2 className="h-4 w-4 animate-spin" />}
               Speichern
             </Button>
