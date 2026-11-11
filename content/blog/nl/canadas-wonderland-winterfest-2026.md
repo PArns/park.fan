@@ -83,7 +83,7 @@ Waterpark Splash Works blijft de hele winter dicht.
 
 Een parkticket met WinterFest kost vanaf 39 Canadese dollar, plus maximaal 9,99 dollar administratiekosten en belasting. 's Winters is er geen kassa bij de ingang; je koopt alleen online. Kinderen onder de drie hebben geen ticket nodig.
 
-De Silver Pass 2027 kost 89 dollar, of 75 dollar per stuk als je tot en met 30 november in één online bestelling vier of meer passen koopt. Je kunt er tot Labour Day 2027 mee naar Canada's Wonderland en Splash Works, en tijdelijk zit het WinterFest 2026 er als bonus bij. Wie tot en met 30 november een pass voor 2027 koopt of verlengt, krijgt er een gratis Bring-a-Friend-ticket bij, te gebruiken tot 3 januari. De Gold Pass kost 115 dollar en geldt ook in de Six Flags-parken in het Midwesten, Cedar Point inbegrepen. Daarmee kom je alleen op enkele dagen op het WinterFest, en die dagen staan nog niet vast.
+De Silver Pass 2027 kost 89 dollar, of 75 dollar per stuk als je tot en met 30 november in één online bestelling vier of meer passen koopt. Je kunt er tot Labour Day 2027 mee naar Canada's Wonderland en Splash Works, en tijdelijk zit het WinterFest 2026 er als bonus bij. Wie tot en met 30 november een pass voor 2027 koopt of verlengt, krijgt er een gratis Bring-a-Friend-ticket bij, te gebruiken tot 3 januari. De Gold Pass kost 115 dollar en geldt ook in de Six Flags-parken in het Midwesten, Cedar Point inbegrepen. Daarmee kom je alleen op enkele dagen op het WinterFest, maar welke dat zijn, is nog niet bekend.
 
 ## Waar je apart voor betaalt
 
