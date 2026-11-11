@@ -9,6 +9,21 @@ import { TOKEN_EXPIRY_OPTIONS, hasPassed } from './mcp';
 /** What a key was issued for, as the backend stores it. */
 export type DataApiKeyUsage = 'non-commercial' | 'commercial' | 'internal';
 
+/** One UTC day of a key's use: its requests, and how many of them its allowance refused. */
+export interface DataApiKeyDay {
+  /** `YYYY-MM-DD`, UTC. */
+  date: string;
+  requests: number;
+  limited: number;
+}
+
+/** A key's use as the list returns it: the last 30 days and the last 12 months, oldest first. */
+export interface DataApiKeyStats {
+  days: DataApiKeyDay[];
+  /** `month` is `YYYY-MM`, UTC. */
+  months: { month: string; requests: number }[];
+}
+
 /** One key as the list shows it; the key itself is never in it. */
 export interface DataApiKey {
   id: string;
@@ -22,6 +37,8 @@ export interface DataApiKey {
   requestsPerHour: number | null;
   /** Requests counted in the current clock hour. */
   requestsThisHour?: number;
+  /** Its use per day and month; absent from an API without the counters. */
+  stats?: DataApiKeyStats;
   /** The parks the key may read forecasts for; null means every park. */
   allowedParkIds: string[] | null;
   /** The same parks with their names, as the list returns them. */
@@ -73,6 +90,37 @@ export function formatHourlyUsage(
   return key.requestsPerHour === null
     ? `${used} in dieser Stunde, ohne eigenes Limit`
     : `${used} von ${key.requestsPerHour.toLocaleString('de-DE')} in dieser Stunde`;
+}
+
+/**
+ * „heute 120 · 30 Tage 3.456“, and „· 40 über dem Limit abgelehnt“ when the allowance refused any
+ * of them. „Heute“ is the UTC day the counters run on.
+ */
+export function formatKeyUsage(stats: DataApiKeyStats): string {
+  const count = (value: number) => value.toLocaleString('de-DE');
+  const today = stats.days.at(-1)?.requests ?? 0;
+  const total = stats.days.reduce((sum, day) => sum + day.requests, 0);
+  const limited = stats.days.reduce((sum, day) => sum + day.limited, 0);
+  const refused = limited > 0 ? ` · ${count(limited)} über dem Limit abgelehnt` : '';
+  return `heute ${count(today)} · 30 Tage ${count(total)}${refused}`;
+}
+
+/**
+ * The months worth a row, newest first: from the first with any request on, since a key's earlier
+ * months are zeros it could not have earned. At least the current month.
+ */
+export function usedMonths(stats: DataApiKeyStats): DataApiKeyStats['months'] {
+  const first = stats.months.findIndex((month) => month.requests > 0);
+  return stats.months.slice(first === -1 ? -1 : first).reverse();
+}
+
+/** „November 2026“ for `2026-11`. */
+export function formatUsageMonth(month: string): string {
+  return new Intl.DateTimeFormat('de-DE', {
+    month: 'long',
+    year: 'numeric',
+    timeZone: 'UTC',
+  }).format(new Date(`${month}-01T00:00:00Z`));
 }
 
 /** „alle Parks“, or „nur“ and the parks by name, as one line. */

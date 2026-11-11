@@ -1,7 +1,7 @@
 'use client';
 
 import { useRef, useState, type FormEvent } from 'react';
-import { KeySquare, Loader2, Pencil, Plus, ShieldCheck, Trash2, X } from 'lucide-react';
+import { BarChart3, KeySquare, Loader2, Pencil, Plus, ShieldCheck, Trash2, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { ConfirmDialog } from '@/components/ui/confirm-dialog';
 import {
@@ -22,7 +22,10 @@ import {
   formatAllowedParks,
   formatHourlyUsage,
   formatKeyExpiry,
+  formatKeyUsage,
+  formatUsageMonth,
   KEY_EXPIRY_CHOICES,
+  usedMonths,
   keyExpiryDay,
   keyExpiryFrom,
   MAX_REQUESTS_PER_HOUR,
@@ -38,6 +41,7 @@ import { adminFetch, adminKeys, useAdminQuery, useInvalidateAdmin } from '../_li
 import type { AdminParkListItem } from '../_lib/types';
 import { formatAgo } from '../_lib/format';
 import { useSession } from '../_app/session';
+import { BarList, CATEGORICAL, SeriesChart, Sparkline } from '../_ui/charts';
 import { CodeBlock, SYSTEM_MONO } from '../_ui/code-block';
 import { CopyButton } from '../_ui/copy-button';
 import { Field, SearchSelect, Select, TextInput, useFieldId } from '../_ui/controls';
@@ -116,6 +120,7 @@ function KeyList({ items }: { items: DataApiKey[] }) {
   const [pending, setPending] = useState<DataApiKey | null>(null);
   const [confirming, setConfirming] = useState(false);
   const [editing, setEditing] = useState<DataApiKey | null>(null);
+  const [viewing, setViewing] = useState<DataApiKey | null>(null);
   const now = useMinuteNow();
 
   async function revoke(key: DataApiKey) {
@@ -152,6 +157,7 @@ function KeyList({ items }: { items: DataApiKey[] }) {
             key={key.id}
             apiKey={key}
             now={now}
+            onStats={() => setViewing(key)}
             onEdit={() => setEditing(key)}
             onRevoke={() => {
               setPending(key);
@@ -178,6 +184,7 @@ function KeyList({ items }: { items: DataApiKey[] }) {
       />
 
       {editing && <EditKeyDialog apiKey={editing} onClose={() => setEditing(null)} />}
+      {viewing && <StatsDialog apiKey={viewing} onClose={() => setViewing(null)} />}
     </>
   );
 }
@@ -185,12 +192,14 @@ function KeyList({ items }: { items: DataApiKey[] }) {
 function KeyRow({
   apiKey,
   now,
+  onStats,
   onEdit,
   onRevoke,
 }: {
   apiKey: DataApiKey;
   /** Null until the clock is known, so the server and the first render agree. */
   now: number | null;
+  onStats: () => void;
   onEdit: () => void;
   onRevoke: () => void;
 }) {
@@ -217,8 +226,18 @@ function KeyRow({
           {revoked && <Chip tone="danger">widerrufen</Chip>}
           {expired && <Chip tone="danger">abgelaufen</Chip>}
         </p>
-        {!revoked && (
-          <div className="-my-1 -mr-1 flex shrink-0">
+        <div className="-my-1 -mr-1 flex shrink-0">
+          {apiKey.stats && (
+            <button
+              type="button"
+              onClick={onStats}
+              aria-label={`Aufrufe von ${apiKey.name}`}
+              className="text-muted-foreground hover:text-foreground rounded p-1.5 max-sm:p-3"
+            >
+              <BarChart3 className="h-3.5 w-3.5" />
+            </button>
+          )}
+          {!revoked && (
             <button
               type="button"
               onClick={onEdit}
@@ -227,6 +246,8 @@ function KeyRow({
             >
               <Pencil className="h-3.5 w-3.5" />
             </button>
+          )}
+          {!revoked && (
             <button
               type="button"
               onClick={onRevoke}
@@ -235,8 +256,8 @@ function KeyRow({
             >
               <Trash2 className="h-3.5 w-3.5" />
             </button>
-          </div>
-        )}
+          )}
+        </div>
       </div>
       <div className={`text-muted-foreground mt-1 space-y-1 text-xs sm:pl-7 ${dimmed}`}>
         <p className="flex flex-wrap gap-x-3 gap-y-0.5">
@@ -256,6 +277,12 @@ function KeyRow({
             </p>
             <p>{formatAllowedParks(apiKey)}</p>
           </>
+        )}
+        {apiKey.stats && (
+          <p className="flex items-center gap-2">
+            <Sparkline values={apiKey.stats.days.map((day) => day.requests)} className="h-4 w-16" />
+            <span>{formatKeyUsage(apiKey.stats)}</span>
+          </p>
         )}
         {apiKey.note && <p>{apiKey.note}</p>}
       </div>
@@ -547,6 +574,73 @@ function ParksField({
         />
       </div>
     </Field>
+  );
+}
+
+/**
+ * A key's use: its requests per UTC day for the last 30 days, with the ones its allowance refused
+ * when there were any, and its requests per month for the last 12, newest first.
+ */
+function StatsDialog({ apiKey, onClose }: { apiKey: DataApiKey; onClose: () => void }) {
+  const stats = apiKey.stats;
+  const refused = stats?.days.some((day) => day.limited > 0) ?? false;
+  return (
+    <Dialog open onOpenChange={(open) => !open && onClose()}>
+      <DialogContent className={`${SCROLLING_DIALOG} sm:max-w-2xl`}>
+        <DialogHeader>
+          <DialogTitle>Aufrufe von {apiKey.name}</DialogTitle>
+          <DialogDescription>
+            Jede Anfrage, die mit diesem Key durchkam, gezählt nach Tagen in UTC; der heutige Tag
+            läuft noch.
+          </DialogDescription>
+        </DialogHeader>
+        {stats && (
+          <>
+            <SeriesChart
+              label={`Aufrufe von ${apiKey.name} pro Tag`}
+              days={stats.days.map((day) => day.date)}
+              partial={stats.days.map((_, index) => index === stats.days.length - 1)}
+              height={200}
+              series={[
+                {
+                  key: 'requests',
+                  label: 'Anfragen',
+                  color: CATEGORICAL[0],
+                  values: stats.days.map((day) => day.requests),
+                },
+                ...(refused
+                  ? [
+                      {
+                        key: 'limited',
+                        label: 'davon über dem Limit abgelehnt',
+                        color: CATEGORICAL[1],
+                        values: stats.days.map((day) => day.limited),
+                      },
+                    ]
+                  : []),
+              ]}
+            />
+            <div className="space-y-2">
+              <h3 className="text-foreground/80 text-xs font-medium tracking-wide">Pro Monat</h3>
+              <BarList
+                unit="Anfragen"
+                limit={6}
+                rows={usedMonths(stats).map((month) => ({
+                  key: month.month,
+                  label: formatUsageMonth(month.month),
+                  value: month.requests,
+                }))}
+              />
+            </div>
+          </>
+        )}
+        <DialogFooter>
+          <Button type="button" onClick={onClose}>
+            Schließen
+          </Button>
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
   );
 }
 

@@ -11,6 +11,9 @@ The data API keys of `/admin/api-keys`: the keys that unlock park.fan's forecast
 
 - `parseRequestsPerHour` _function_: The hourly allowance typed into a field: a whole number from 1, written plain or with German thousands points or spaces (`1.000`, `1 000`), or empty for no per-key limit.
 - `formatHourlyUsage` _function_: „12 von 1.000 in dieser Stunde“, or „12 in dieser Stunde, ohne eigenes Limit“.
+- `formatKeyUsage` _function_: „heute 120 · 30 Tage 3.456“, and „· 40 über dem Limit abgelehnt“ when the allowance refused any of them. „Heute“ is the UTC day the counters run on.
+- `usedMonths` _function_: The months worth a row, newest first: from the first with any request on, since a key's earlier months are zeros it could not have earned. At least the current month.
+- `formatUsageMonth` _function_: „November 2026“ for `2026-11`.
 - `formatAllowedParks` _function_: „alle Parks“, or „nur“ and the parks by name, as one line.
 - `keyExpiryFrom` _function_: The end date a choice stands for, as the API takes it: a lifetime counted from `nowMs`, the end of the chosen day in Berlin, or null for never.
 - `keyExpiryDay` _function_: The Berlin day an end date falls on, `YYYY-MM-DD`, as a date field takes it.
@@ -24,7 +27,7 @@ The data API keys of `/admin/api-keys`: the keys that unlock park.fan's forecast
 - `KEY_EXPIRY_CHOICES` _const_: The select's options, in the order the token dialog shows its lifetimes.
 - `DATA_API_KEYS_PATH` _const_: The proxy path of the backend's key endpoints.
 - `DATA_API_KEYS_QUERY_KEY` _const_: The React Query key of the list.
-- Types: `DataApiKeyUsage`, `DataApiKey`, `CreatedDataApiKey`, `KeyExpiryChoice`
+- Types: `DataApiKeyUsage`, `DataApiKeyDay`, `DataApiKeyStats`, `DataApiKey`, `CreatedDataApiKey`, `KeyExpiryChoice`
 
 ### [`blog-image-sidecar.ts`](../../lib/admin/blog-image-sidecar.ts)
 

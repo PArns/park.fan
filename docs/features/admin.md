@@ -347,7 +347,11 @@ Owner only, in the nav and on the API (`/v1/admin/api-keys`, audited as `api-key
   for a holder with a written agreement), prefix, contact, created, last used, when it was
   revoked, and for an active key its requests in the current clock hour and its hourly allowance
   (`formatHourlyUsage`), its end date (`formatKeyExpiry`) and its parks (`formatAllowedParks`,
-  „alle Parks“ without a list). An active row has an edit button (allowance, parks and end date,
+  „alle Parks“ without a list), and its use: a sparkline of the last 30 days and „heute … · 30 Tage …“
+  with the requests its allowance refused (`formatKeyUsage`). The chart button opens the use per
+  UTC day for 30 days (`SeriesChart`, refusals as a second line when there were any) and per month
+  for the last 12, from the first month with a request on (`usedMonths`); the API counts every key,
+  the `internal` one included. An active row has an edit button (allowance, parks and end date,
   `PATCH`, from the next request on) and its revoke button behind a `ConfirmDialog`, which warns
   that revoking the `internal` key takes the forecasts off the site. A revoked or expired key stays
   listed with its text dimmed; an expired one keeps its edit button, because a new date brings it

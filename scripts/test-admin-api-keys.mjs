@@ -4,9 +4,12 @@ import {
   formatAllowedParks,
   formatHourlyUsage,
   formatKeyExpiry,
+  formatKeyUsage,
+  formatUsageMonth,
   keyExpiryDay,
   keyExpiryFrom,
   parseRequestsPerHour,
+  usedMonths,
 } from '../lib/admin/api-keys.ts';
 
 // 11 November 2026, 10:00 in Berlin (UTC+1).
@@ -68,6 +71,46 @@ const testCases = [
       }),
     expected:
       '{"name":"Club","usage":"non-commercial","requestsPerHour":null,"allowedParkIds":null}',
+  },
+  {
+    name: 'use reads as today, 30 days and the refusals, if any',
+    actual: () => [
+      formatKeyUsage({
+        days: [
+          { date: '2026-11-10', requests: 3000, limited: 0 },
+          { date: '2026-11-11', requests: 120, limited: 0 },
+        ],
+        months: [],
+      }),
+      formatKeyUsage({
+        days: [{ date: '2026-11-11', requests: 1040, limited: 40 }],
+        months: [],
+      }),
+    ],
+    expected: [
+      'heute 120 · 30 Tage 3.120',
+      'heute 1.040 · 30 Tage 1.040 · 40 über dem Limit abgelehnt',
+    ],
+  },
+  {
+    name: 'months before the first request are left out, newest first',
+    actual: () => [
+      usedMonths({
+        days: [],
+        months: [
+          { month: '2026-09', requests: 0 },
+          { month: '2026-10', requests: 40 },
+          { month: '2026-11', requests: 0 },
+        ],
+      }).map((month) => month.month),
+      usedMonths({ days: [], months: [{ month: '2026-11', requests: 0 }] }).length,
+    ],
+    expected: [['2026-11', '2026-10'], 1],
+  },
+  {
+    name: 'a month reads in German',
+    actual: () => formatUsageMonth('2026-11'),
+    expected: 'November 2026',
   },
   {
     name: 'a chosen day ends at midnight in Berlin, summer time included',
