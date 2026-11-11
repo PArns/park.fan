@@ -222,14 +222,14 @@ verrät den Namen ausgerechnet in seiner Rabattaktion Black November für Jahres
 dass man 2027 „Nickelodeon Land en 3 gloednieuwe attracties“ kennenlernt, also Nickelodeon Land und
 drei brandneue Attraktionen.
 
-Parkchef Yves Peeters hat VRT NWS am 12. September 2026 mehr erzählt. Die drei Familienattraktionen
-öffnen ab April 2027 gleich hinter dem Eingang, mit Figuren wie Garfield und SpongeBob. Sie kosten
-rund 15 Millionen Euro, und Peeters stellt das neben die Achterbahn Fury von 2019 als eine der
-größten Investitionen des Parks. Die Riesenschaukel schwingt 18 Gäste bis auf 12 Meter Höhe, der
-Freifallturm misst 15 Meter. Die Wasserattraktion Big Wavez hebt Gäste auf über 20 Meter, und nach
-dem Fall rollt eine 10 Meter hohe Welle los, die laut Peeters auch die Umstehenden erwischt. Einen
-Hersteller gibt es zu keiner der drei. Wer mit dem Elektroauto kommt, merkt die Baustelle schon
-jetzt: Die Ladesäulen am Parkplatz sind wegen der Arbeiten an der neuen Zone außer Betrieb.
+Am 12. September 2026 hat Parkchef Yves Peeters dem Sender VRT NWS gesagt, dass die drei
+Familienattraktionen ab April 2027 gleich hinter dem Eingang öffnen, mit Figuren wie Garfield und
+SpongeBob. Sie kosten rund 15 Millionen Euro, und Peeters stellt das neben die Achterbahn Fury von
+2019 als eine der größten Investitionen des Parks. Die Riesenschaukel schwingt 18 Gäste bis auf 12
+Meter Höhe, der Freifallturm misst 15 Meter. Die Wasserattraktion Big Wavez hebt Gäste auf über 20
+Meter, und nach dem Fall rollt eine 10 Meter hohe Welle los, die laut Peeters auch die Umstehenden
+erwischt. Einen Hersteller hat Bobbejaanland für keine der drei genannt. Die Ladesäulen am Parkplatz
+sind wegen der Arbeiten an der neuen Zone schon jetzt außer Betrieb.
 
 ## Frankreich
 
@@ -416,20 +416,21 @@ Gelände tätig war. Mack Rides hat für den Park schon den Time Traveler gebaut
 
 ### Midnight Showdown in Kentucky Kingdom
 
-[Kentucky Kingdom](ref:kentucky-kingdom) in Louisville baut für das Frühjahr 2027
-[Midnight Showdown](/news/kentucky-kingdom-midnight-showdown), eine Holzachterbahn für Familien, die
-in einer Halle fährt. Einen Eröffnungstag gibt es noch nicht. Der Park nennt sie „The World's Largest
-Indoor Wooden Roller Coaster“, ohne zu sagen, woran „largest“ gemessen wird. Die Holzstrecke ist
-1.130 Fuß lang, rund 344 Meter, und die Bahn ragt mehr als drei Stockwerke hoch. Es fahren zwei Züge
-mit je zehn Plätzen, auf der Strecke liegen elf Momente mit Airtime. Gebaut wird sie von The Gravity
-Group aus Cincinnati. Das Thema ist ein Pferderennen im Dunkeln, und los geht es zu Hufgetrappel und
-dem Ruf „And they're off!“.
+[Kentucky Kingdom](ref:kentucky-kingdom) in Louisville baut für das Frühjahr 2027 [Midnight
+Showdown](/news/kentucky-kingdom-midnight-showdown), eine Holzachterbahn für Familien, die in einer
+Halle fährt. Der Park nennt sie „The World's Largest Indoor Wooden Roller Coaster“ und gibt nicht
+an, ob „largest“ Länge, Höhe oder Grundfläche meint. Die Holzstrecke ist 1.130 Fuß lang, rund 344
+Meter, und die Bahn ragt mehr als drei Stockwerke hoch. Es fahren zwei Züge mit je zehn Plätzen, und
+elfmal hebt dich die Bahn dabei aus dem Sitz. Gebaut wird sie von The Gravity Group aus Cincinnati.
+Das Thema ist ein Pferderennen im Dunkeln, und los geht es zu Hufgetrappel und dem Ruf „And they're
+off!“.
 
-Die Bahn steht im neuen Bereich Bluegrass Downs, in dem fünf bestehende Fahrgeschäfte ein neues Thema
-bekommen. Im zweiten neuen Bereich, Happy Valley Farm, sind es acht, dazu steht dort Flying Fox, die
-hängende Familienachterbahn vom Mai 2026. Midnight Showdown wird die siebte Achterbahn des Parks.
-Seit der Übernahme 2021 hat Herschend nach eigenen Angaben fast 50 Millionen Dollar in Kentucky
-Kingdom gesteckt. Mit Midnight Showdown und den beiden Bereichen soll der Umbau 2027 fertig sein.
+Die Bahn steht im neuen Bereich Bluegrass Downs, in dem fünf bestehende Fahrgeschäfte ein neues
+Thema bekommen. Im zweiten neuen Bereich, Happy Valley Farm, sind es acht, dazu steht dort Flying
+Fox, die hängende Familienachterbahn vom Mai 2026. Midnight Showdown wird die siebte Achterbahn des
+Parks. Seit der Übernahme 2021 hat Herschend nach eigenen Angaben fast 50 Millionen Dollar in
+Kentucky Kingdom gesteckt. Mit Midnight Showdown und den beiden Bereichen soll der Umbau 2027 fertig
+sein.
 
 ### Camp Timber Trail in Six Flags Great America
 
