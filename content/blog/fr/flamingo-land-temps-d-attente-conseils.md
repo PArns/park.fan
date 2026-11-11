@@ -158,7 +158,7 @@ Avec un plâtre, la plupart des attractions te sont fermées, et toutes les mont
 
 ## Le zoo
 
-Plus de 140 espèces de reptiles, de mammifères et d’oiseaux vivent au zoo. La liste des animaux sur le site du parc en compte 70, dont le lion d’Afrique, le rhinocéros blanc, le rhinocéros noir, l’hippopotame, la girafe de Rothschild, le tigre de Sumatra, l’otarie à fourrure du Cap et le mangabey. Le zoo est membre des associations de zoos BIAZA et EAZA et soutient un projet de protection de la nature dans la forêt d’Udzungwa, en Tanzanie.
+Plus de 140 espèces de reptiles, de mammifères et d’oiseaux vivent au zoo, dont le lion d’Afrique, le rhinocéros blanc, le rhinocéros noir, l’hippopotame, la girafe de Rothschild, le tigre de Sumatra, l’otarie à fourrure du Cap et le mangabey. Le zoo est membre des associations de zoos BIAZA et EAZA et soutient un projet de protection de la nature dans la forêt d’Udzungwa, en Tanzanie.
 
 L’installation la plus récente est Lion Coast, avec les otaries à fourrure. Les manchots vivent à Penguin Coast, où le Keeper Talk a lieu à 15 h, et le zoo compte aussi le Treetop Walkway, Lily Bobtail Nature Discovery et le Peter Rabbit Adventure. La Zoo Monorail passe au-dessus des babouins, des suricates, des lémuriens et des émeus. Pour approcher de plus près lémuriens et manchots, il y a la Lemur Encounter et la Penguin Encounter, toutes deux en supplément.
 

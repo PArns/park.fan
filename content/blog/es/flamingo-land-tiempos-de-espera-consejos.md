@@ -159,7 +159,7 @@ Con una escayola no puedes subir a la mayoría de las atracciones, y a las monta
 
 ## El zoo
 
-En el zoo viven más de 140 especies de reptiles, mamíferos y aves. La lista de animales de la web recoge 70, entre ellos el león africano, el rinoceronte blanco, el rinoceronte negro, el hipopótamo, la jirafa de Rothschild, el tigre de Sumatra, el lobo marino del Cabo y el mangabey. El zoo es miembro de las asociaciones de zoológicos BIAZA y EAZA y apoya un proyecto de conservación en el bosque de Udzungwa, en Tanzania.
+En el zoo viven más de 140 especies de reptiles, mamíferos y aves, entre ellas el león africano, el rinoceronte blanco, el rinoceronte negro, el hipopótamo, la jirafa de Rothschild, el tigre de Sumatra, el lobo marino del Cabo y el mangabey. El zoo es miembro de las asociaciones de zoológicos BIAZA y EAZA y apoya un proyecto de conservación en el bosque de Udzungwa, en Tanzania.
 
 El recinto más nuevo es Lion Coast, con los lobos marinos. Los pingüinos viven en Penguin Coast, donde a las 15:00 hay Keeper Talk; el zoo tiene además el Treetop Walkway, Lily Bobtail Nature Discovery y el Peter Rabbit Adventure. La Zoo Monorail pasa por encima de babuinos, suricatas, lémures y emús. A los lémures y a los pingüinos te acercas en el Lemur Encounter y el Penguin Encounter, que se pagan aparte.
 

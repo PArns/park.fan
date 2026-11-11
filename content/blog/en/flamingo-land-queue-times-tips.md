@@ -6,7 +6,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  One day ticket at Flamingo Land in North Yorkshire covers the zoo and the theme park. Hero is the one ride where the first half hour after opening makes a real difference. Over Christmas 2026, a day costs £18.
+  One day ticket at Flamingo Land in North Yorkshire covers the zoo and the theme park. Hero is the one ride worth heading to first at opening. Over Christmas 2026, a day costs £18.
 tags:
   - flamingo-land
   - wait-times
@@ -73,7 +73,7 @@ The park map splits Flamingo Land into nine areas: The Lost Kingdom, Dino-Stone 
 
 ### Metropolis
 
-The park's newest coaster, and at 875 metres its longest, is in Metropolis. [Sik](ref:flamingo-land/sik?bare) opened on 2 July 2022, an Intamin multi-inversion coaster. A cable lift pulls the train up to 33 metres, the first drop is 31 metres, and at the bottom you're doing 87 km/h. After that the train goes upside down ten times: a loop, a cobra roll, a double corkscrew, four heartline rolls back to back and a fifth one. A ride takes 1 minute 5 seconds, and with two trains of 24 seats Sik is designed for 1,250 riders an hour. You need to be 1.40 metres to ride, and anyone over 1.95 metres stays on the ground.
+[Sik](ref:flamingo-land/sik?bare) in Metropolis is the park's newest coaster and, at 875 metres, its longest. It opened on 2 July 2022, an Intamin multi-inversion coaster. A cable lift pulls the train up to 33 metres, the first drop is 31 metres, and at the bottom you're doing 87 km/h. After that the train goes upside down ten times: a loop, a cobra roll, a double corkscrew, four heartline rolls back to back and a fifth one. A ride takes 1 minute 5 seconds, and with two trains of 24 seats Sik is designed for 1,250 riders an hour. You need to be 1.40 metres to ride, and anyone over 1.95 metres stays on the ground.
 
 ```glossary-widget slug=heartline-roll
 
@@ -105,13 +105,13 @@ Voodoo, a swinging ship by HUSS, has been rocking back and forth in the Lost Kin
 
 ```
 
-On Zamperla's [Navigator](ref:flamingo-land/navigator?bare), up to 40 riders sit on a disc that swings more than 18 metres high on a 32-metre half-pipe. A small version of it is the Vortex, which you can ride alone from 1.07 metres and with an adult below that.
+On Zamperla's [Navigator](ref:flamingo-land/navigator?bare), up to 40 riders sit on a disc that swings more than 18 metres high on a 32-metre half-pipe. A small version of it is the Vortex.
 
-On [Flamingo 1](ref:flamingo-land/flamingo-1?bare), the ride the area is named after, you drive an electric car yourself round a 380-metre figure-of-eight track. There are three lanes, the cars do about 16 km/h, and the track runs straight through a building called The Hub. Pink Elephants is here as well, and for the smallest there's the Frog Hopper from 0.90 metres and HMS Bouncy, an indoor climbing frame that only takes children up to 1.24 metres. The People Mover runs between Flamingo 1 and Muddy Duck Farm, alone from 1.07 metres.
+On [Flamingo 1](ref:flamingo-land/flamingo-1?bare), the ride the area is named after, you drive an electric car yourself round a 380-metre figure-of-eight track. There are three lanes, the cars do about 16 km/h, and the track runs straight through a building called The Hub. Pink Elephants is here as well, and for the smallest there's the Frog Hopper from 0.90 metres and HMS Bouncy, an indoor climbing frame that only takes children up to 1.24 metres. The People Mover runs between Flamingo 1 and Muddy Duck Farm.
 
 ### Riverside 1
 
-[Cliff Hanger](ref:flamingo-land/cliff-hanger?bare) is the only S&S Combo Tower in Britain, two rides on one tower. On one you're shot upwards, on the other you free-fall down. The tower came to the park in 2002, and the minimum height is 1.32 metres. Riverside 1 also has the Entertainment Stage and the Balloon Race, which children can ride alone from 1.07 metres.
+[Cliff Hanger](ref:flamingo-land/cliff-hanger?bare) is the only S&S Combo Tower in Britain, two rides on one tower. On one you're shot upwards, on the other you free-fall down. The tower came to the park in 2002, and the minimum height is 1.32 metres. Riverside 1 also has the Entertainment Stage and the Balloon Race.
 
 ```glossary-widget slug=drop-tower
 
@@ -119,7 +119,7 @@ On [Flamingo 1](ref:flamingo-land/flamingo-1?bare), the ride the area is named a
 
 ### Splosh
 
-[Splash Battle](ref:flamingo-land/splash-battle?bare) came to Splosh in 2007, an area it shares with the Splish Splosh water play area, Crazy Combat Laser Battle and Swoosh Air. You ride in a submarine and fire water cannons at the other boats and at people standing along the edge. Preston & Barbieri built it, and you can ride from just 0.91 metres.
+[Splash Battle](ref:flamingo-land/splash-battle?bare) came to Splosh in 2007, an area it shares with the Splish Splosh water play area, Crazy Combat Laser Battle and Swoosh Air. You ride in a submarine and fire water cannons at the other boats and at people standing along the edge. The boats come from Preston & Barbieri and take riders from just 0.91 metres.
 
 [Zooom!](ref:flamingo-land/zooom?bare) is a Zamperla Air Force from 2 July 2011, a suspended family coaster and the only coaster in Splosh. Tyres rather than a lift hill push its train up to 9.8 metres, and the track is 172 metres long. Children ride alone from 1.07 metres, and with an adult below that.
 
@@ -127,7 +127,7 @@ On [Flamingo 1](ref:flamingo-land/flamingo-1?bare), the ride the area is named a
 
 [Pterodactyl](ref:flamingo-land/pterodactyl?bare), from 2012, is a swing tower that lifts its seats up to 46 metres while they reach 40 km/h.
 
-[Twistosaurus](ref:flamingo-land/twistosaurus?bare) is a small Zamperla spinning coaster that opened on 25 May 2013, with one train of four spinning cars that seat four each. The track is 175 metres long and 8 metres high, the top speed is 28 km/h, and the minimum height is 1.05 metres. The area also has animatronic dinosaurs, a dig site called Dino Dig and the Cyclosoar pedal-powered flyers.
+The spinning coaster [Twistosaurus](ref:flamingo-land/twistosaurus?bare) arrived on 25 May 2013, a small Zamperla model with one train of four spinning cars that seat four each. The track is 175 metres long and 8 metres high, the top speed is 28 km/h, and the minimum height is 1.05 metres. The area also has animatronic dinosaurs, a dig site called Dino Dig and the Cyclosoar pedal-powered flyers.
 
 ```glossary-widget slug=spinning-coaster
 
@@ -160,9 +160,9 @@ With a plaster cast you can't go on most rides, and on the coasters not at all.
 
 ## The zoo
 
-More than 140 species of reptiles, mammals and birds live in the zoo. The animal list on the website names 70 animals, among them the African lion, the white rhino, the black rhino, the hippo, the Rothschild's giraffe, the Sumatran tiger, the Cape fur seal and the mangabey. The zoo is a member of the zoo associations BIAZA and EAZA and supports a conservation project in the Udzungwa forest in Tanzania.
+More than 140 species of reptiles, mammals and birds live in the zoo, among them the African lion, the white rhino, the black rhino, the hippo, the Rothschild's giraffe, the Sumatran tiger, the Cape fur seal and the mangabey. The zoo is a member of the zoo associations BIAZA and EAZA and supports a conservation project in the Udzungwa forest in Tanzania.
 
-The newest enclosure is Lion Coast, home to the fur seals. The penguins live in Penguin Coast, where the keeper talk is at 3pm; the zoo also has the Treetop Walkway, Lily Bobtail Nature Discovery and the Peter Rabbit Adventure. The Zoo Monorail runs over baboons, meerkats, lemurs and emus. You can get closer to lemurs and penguins at the Lemur Encounter and the Penguin Encounter, both at extra cost.
+The newest enclosure is Lion Coast, home to the fur seals. The penguins live in Penguin Coast; the zoo also has the Treetop Walkway, Lily Bobtail Nature Discovery and the Peter Rabbit Adventure. The Zoo Monorail runs over baboons, meerkats, lemurs and emus. You can get closer to lemurs and penguins at the Lemur Encounter and the Penguin Encounter, both at extra cost.
 
 In season the keepers talk about their animals at the enclosures at these times:
 
@@ -177,7 +177,7 @@ In season the keepers talk about their animals at the enclosures at these times:
 - 3pm penguins
 - 3:30pm Meet a Creature
 
-Dogs on a lead are allowed in the theme park, but not in the zoo, Children's Planet or the Splish Splosh water play area, an arrangement the lions presumably don't mind either. Assistance dogs can go everywhere. On selected days between early December and March you can visit just the zoo, at a reduced price.
+Dogs on a lead are allowed in the theme park, but not in the zoo, Children's Planet or the Splish Splosh water play area, which spares a terrier its introduction to the lions. Assistance dogs can go everywhere. On selected days between early December and March you can visit just the zoo, at a reduced price.
 
 ## How busy it gets
 
@@ -211,13 +211,13 @@ In October 2026 only the weekdays up to the 9th were sold at the low season pric
 
 ```
 
-Flamingo Land hasn't announced an opening day for 2027 yet. It's already selling seasonal pitches on the campsite for 12 February to 1 November 2027, at £4,000 with six Resort Passes.
+Flamingo Land hasn't announced an opening day for 2027 yet. The only 2027 dates so far belong to the campsite, whose seasonal pitches run from 12 February to 1 November 2027, at £4,000 with six Resort Passes.
 
 ```best-days-widget slug=flamingo-land
 
 ```
 
-On 17 and 18 July 2027 it's Queen of the Jungle, and on 11 and 12 September King of the Jungle, both strength competitions run with the organiser Strength Circus. 2026 brought the first Flamingo Fest, with the big party on 23 May, a Country Fest on 25 July and Ibiza in Sunset on 29 August. A day ticket or an annual pass included the festival, and an evening ticket from 3pm cost £15.
+On 17 and 18 July 2027 it's Queen of the Jungle, and on 11 and 12 September King of the Jungle, both strength competitions run with the organiser Strength Circus. Flamingo Fest ran for the first time in 2026, with the big party on 23 May, a Country Fest on 25 July and Ibiza in Sunset on 29 August. A day ticket or an annual pass included the festival, and an evening ticket from 3pm cost £15.
 
 ## Christmas at Flamingo Land 2026
 
@@ -227,7 +227,7 @@ Santa only appears on the Christmas Experience Days, and between Christmas and N
 - Winter Opening: 29 December 2026 to 3 January 2027, 10am to 4pm
 - closed: 25 to 28 December
 
-On every one of these dates a day costs £18 with the "Winter at Flamingo Land" ticket. Disabled visitors also pay £18, their carer gets in at no extra charge, and children up to three go free. Whether that price covers the visit to Santa and the present isn't stated. Annual pass holders need a separate Christmas Passport for the Christmas activities.
+On every one of these dates a day costs £18 with the "Winter at Flamingo Land" ticket. Disabled visitors also pay £18, their carer gets in at no extra charge, and children up to three go free. The ticket page doesn't say whether the £18 also pays for the visit to Santa and the present. Annual pass holders need a separate Christmas Passport for the Christmas activities.
 
 On the Christmas Experience Days the programme centres on the Christmas tree in Muddy Duck Square. A Peter Rabbit show starts there at 4:30pm, and the lights go on at 4:45pm. On Christmas Eve the park closes at 4pm, so before the switch-on. In Santa's Grotto, Santa sees 15 children at a time, from different families too, which makes it more school assembly than private audience. Afterwards the children pick a present in Santa's Magical Toy Shop. The programme also includes:
 
@@ -240,7 +240,7 @@ On the Christmas Experience Days the programme centres on the Christmas tree in 
 
 No roller coasters run in December, so anyone who came for Mumbo Jumbo will have to make do with a steam train, a monorail and a ghost train. The Christmas page lists the Daktari Express, the Gallopers, the Helitoys, the Jungle Carousel, the Zoo Monorail, Mischief Mansion and the Muddy Duck Tractors, and says the list may change. With children under 1.07 metres you ride along on most of them.
 
-In December the Muddy Duck Cafe and the Spud Stop are open from 10am to 5:30pm, and there are doughnuts and Crumble Heaven too. The Coach House opens on Fridays from 4pm to 9pm, on Saturdays from 12pm to 9pm and on Sundays from 12pm to 6pm, and it now does fish & chips to take away. The Street Food Kitchen is open from 6pm to 11pm. The Club, for resort guests only, opens on Fridays and Saturdays from 4pm to 11pm.
+In December the Muddy Duck Cafe and the Spud Stop are open from 10am to 5:30pm, and there are doughnuts and Crumble Heaven too. The Coach House opens on Fridays from 4pm to 9pm, on Saturdays from 12pm to 9pm and on Sundays from 12pm to 6pm. It now does fish & chips to take away. The Street Food Kitchen is open from 6pm to 11pm. The Club, for resort guests only, opens on Fridays and Saturdays from 4pm to 11pm.
 
 Over Christmas you can stay in cottages and lodges from Friday to Sunday. Santa calls in person at the Lifestyle Lodge, the Mulberry Lodge, The Gatehouse and the Riverside Cottage. The package includes the zoo, the small children's rides on Muddy Duck Farm, the Splash Zone on Saturday and Sunday, and the Christmas Passport with the "PolarCoaster Express".
 
@@ -253,7 +253,7 @@ The VIP Ride Pass gets you one ride each on six rides, through the exit instead 
 
 You buy it on the day, at the VIP pass kiosk or the Queue Buster Outlet on the Plaza. It costs £50 per person. The VIP Ride Passes page gives no separate price for the Junior Package. You can ride in any order, but there has to be an hour between two rides, so all six take at least five hours. At busy times you may wait a little at the exit as well. The pass isn't transferable, and the park won't replace a lost or damaged card.
 
-If a ride is closed all day, you can take a second VIP ride on another ride from the list once you've told the team. Kumali is closed for maintenance at the moment, so you take your Kumali ride on a different one from the list. The annual pass gives no discount on the VIP Ride Pass.
+If a ride on the list is closed all day, as Kumali is for maintenance at the moment, you get your ride on another one from the list once you've told the team. The annual pass gives no discount on the VIP Ride Pass.
 
 Disabled visitors get a free Queue Pass with wristbands: orange for you, purple for your carer and up to four yellow ones for the family. That also takes you to the ride through the exit.
 
@@ -275,7 +275,7 @@ Say you're at the entrance at 10am on a peak season Saturday, with no VIP Ride P
 
 On Saturdays and Sundays Pirates of Zanzibar also plays at 3pm; on weekdays it's only at 11am. Peter Rabbit meets children at 11:40am and 1:45pm in Plaza Square. I'd leave the zoo until last, because on some days it stays open longer than the rides.
 
-You can't bring alcohol into the park, it's taken off you at the entrance, and knives, weapons and fireworks are banned too. There may be bag checks and sniffer dogs at the entrance. The terms of admission don't mention bringing your own food, and the park has three picnic areas.
+You can't bring alcohol into the park, it's taken off you at the entrance, and knives, weapons and fireworks are banned too. There may be bag checks and sniffer dogs at the entrance. The terms of admission say nothing about bringing your own food.
 
 ## Tickets and prices
 
@@ -367,7 +367,7 @@ The current queue time for every ride is on the [Flamingo Land park page](ref:fl
 
 ### How busy is Flamingo Land today and tomorrow?
 
-The theme park is closed until 4 December 2026. After that it's open on the Christmas Experience Days on 5, 6, 12 and 13 December and every day from 19 to 24 December, then again from 29 December to 3 January. No roller coasters run on those days.
+Until 4 December nobody queues, because the park is closed. After that it's open on the Christmas Experience Days on 5, 6, 12 and 13 December and every day from 19 to 24 December, then again from 29 December to 3 January. No roller coasters run on those days. From 5 December the [Flamingo Land park page](ref:flamingo-land) shows live queue times.
 
 ### Is there a crowd calendar for Flamingo Land?
 

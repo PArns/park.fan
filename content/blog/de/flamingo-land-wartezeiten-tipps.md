@@ -157,7 +157,7 @@ Mit einem Gipsverband darfst du auf die meisten Bahnen nicht, auf die Achterbahn
 
 ## Der Zoo
 
-Mehr als 140 Arten von Reptilien, Säugetieren und Vögeln leben im Zoo. Auf der Tierliste der Website stehen 70 Tiere, darunter Afrikanischer Löwe, Breitmaulnashorn, Spitzmaulnashorn, Flusspferd, Rothschild-Giraffe, Sumatra-Tiger, Kap-Seebär und Mangabe. Der Zoo ist Mitglied in den Zooverbänden BIAZA und EAZA und unterstützt ein Naturschutzprojekt im Udzungwa-Wald in Tansania.
+Mehr als 140 Arten von Reptilien, Säugetieren und Vögeln leben im Zoo, darunter Afrikanischer Löwe, Breitmaulnashorn, Spitzmaulnashorn, Flusspferd, Rothschild-Giraffe, Sumatra-Tiger, Kap-Seebär und Mangabe. Der Zoo ist Mitglied in den Zooverbänden BIAZA und EAZA und unterstützt ein Naturschutzprojekt im Udzungwa-Wald in Tansania.
 
 Die neueste Anlage ist Lion Coast mit den Seebären. Die Pinguine leben in Penguin Coast, wo um 15 Uhr der Keeper Talk ist; zum Zoo gehören außerdem der Treetop Walkway, Lily Bobtail Nature Discovery und das Peter Rabbit Adventure. Die Zoo Monorail fährt über Paviane, Erdmännchen, Lemuren und Emus hinweg. Lemuren und Pinguinen kommst du bei der Lemur Encounter und der Penguin Encounter näher, beides kostet extra.
 

@@ -157,7 +157,7 @@ Con un’ingessatura non puoi salire sulla maggior parte delle attrazioni, e sul
 
 ## Lo zoo
 
-Nello zoo vivono più di 140 specie di rettili, mammiferi e uccelli. L’elenco degli animali sul sito ne conta 70, tra cui leone africano, rinoceronte bianco, rinoceronte nero, ippopotamo, giraffa di Rothschild, tigre di Sumatra, otaria orsina del Capo e cercocebo. Lo zoo fa parte delle associazioni BIAZA ed EAZA e sostiene un progetto di tutela nella foresta di Udzungwa, in Tanzania.
+Nello zoo vivono più di 140 specie di rettili, mammiferi e uccelli, tra cui leone africano, rinoceronte bianco, rinoceronte nero, ippopotamo, giraffa di Rothschild, tigre di Sumatra, otaria orsina del Capo e cercocebo. Lo zoo fa parte delle associazioni BIAZA ed EAZA e sostiene un progetto di tutela nella foresta di Udzungwa, in Tanzania.
 
 Il recinto più nuovo è Lion Coast, con le otarie. I pinguini vivono a Penguin Coast, dove alle 15 c’è il Keeper Talk; dello zoo fanno parte anche il Treetop Walkway, Lily Bobtail Nature Discovery e il Peter Rabbit Adventure. La Zoo Monorail passa sopra babbuini, suricati, lemuri ed emù. A lemuri e pinguini ti avvicini al Lemur Encounter e al Penguin Encounter, tutti e due a pagamento.
 

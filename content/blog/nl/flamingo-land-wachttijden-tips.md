@@ -157,7 +157,7 @@ Met gips mag je in de meeste attracties niet, in de achtbanen helemaal niet.
 
 ## De dierentuin
 
-In de dierentuin leven meer dan 140 soorten reptielen, zoogdieren en vogels. Op de dierenlijst van de website staan 70 dieren, onder meer de Afrikaanse leeuw, de witte en de zwarte neushoorn, het nijlpaard, de Rothschildgiraffe, de Sumatraanse tijger, de Kaapse pelsrob en de mangabey. De dierentuin is lid van de dierentuinverenigingen BIAZA en EAZA en steunt een natuurbeschermingsproject in het Udzungwa-woud in Tanzania.
+In de dierentuin leven meer dan 140 soorten reptielen, zoogdieren en vogels, onder meer de Afrikaanse leeuw, de witte en de zwarte neushoorn, het nijlpaard, de Rothschildgiraffe, de Sumatraanse tijger, de Kaapse pelsrob en de mangabey. De dierentuin is lid van de dierentuinverenigingen BIAZA en EAZA en steunt een natuurbeschermingsproject in het Udzungwa-woud in Tanzania.
 
 Het nieuwste verblijf is Lion Coast, met de pelsrobben. De pinguïns wonen in Penguin Coast, waar om 15.00 uur de Keeper Talk is; verder horen de Treetop Walkway, Lily Bobtail Nature Discovery en het Peter Rabbit Adventure bij de dierentuin. De Zoo Monorail rijdt over bavianen, stokstaartjes, lemuren en emoes heen. Bij de Lemur Encounter en de Penguin Encounter kom je dichter bij de lemuren en de pinguïns, en voor allebei betaal je extra.
 
