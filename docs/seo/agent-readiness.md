@@ -145,7 +145,7 @@ this server never writes to. The tools are read-only:
 executes them by calling `/api/mcp`, plus `open_park_fan_page`, which navigates the tab.
 Descriptions and schemas come from `lib/agents/tool-descriptors.ts` for both surfaces. The tab's
 calls are same-origin, so the forecast tool answers them without a key, as the page itself would
-(`mayReadForecasts`, `lib/agents/forecast-access.ts`). The browser
+(`forecastGrant`, `lib/agents/forecast-access.ts`). The browser
 tools call the server rather than the API because two answers depend on rules that sit with the
 data:
 

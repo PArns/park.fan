@@ -1,3 +1,4 @@
+import type { ForecastGrant } from './forecast-access';
 import 'server-only';
 import { search } from '@/lib/api/search';
 import { getParkByGeoPath, getParkByGeoPathForAgents } from '@/lib/api/parks';
@@ -28,8 +29,14 @@ import type { SearchResultItem } from '@/lib/api/types';
  * read-only, and nothing here reaches `/admin`.
  */
 
+/** What the server knows about the caller when it runs a tool. */
+export interface McpToolContext {
+  /** Set for a forecast tool: the parks the caller may read. */
+  forecastGrant?: ForecastGrant;
+}
+
 export type McpTool = ToolDescriptor & {
-  execute: (input: Record<string, unknown>) => Promise<unknown>;
+  execute: (input: Record<string, unknown>, context?: McpToolContext) => Promise<unknown>;
 };
 
 /** The site page for a search hit, or undefined when the hit resolves to no route. */
@@ -163,10 +170,13 @@ const EXECUTORS: Record<string, McpTool['execute']> = {
     };
   },
 
-  async get_park_best_days(input) {
+  async get_park_best_days(input, context) {
     const query = String(input.park ?? '');
     const park = await resolvePark(query);
     if (!park) return { error: `No park on park.fan matches "${query}".` };
+    if (context?.forecastGrant && !(await context.forecastGrant.readsPark(park.segments))) {
+      return { error: `This API key does not cover ${park.name}.` };
+    }
 
     const days = Math.min(Math.max(Number(input.days) || 30, 1), 90);
     // The rides come from the park's cached structure, the entry the park page reads; a failed

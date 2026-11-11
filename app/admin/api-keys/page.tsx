@@ -1,7 +1,7 @@
 'use client';
 
 import { useRef, useState, type FormEvent } from 'react';
-import { Gauge, KeySquare, Loader2, Plus, ShieldCheck, Trash2 } from 'lucide-react';
+import { KeySquare, Loader2, Pencil, Plus, ShieldCheck, Trash2, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { ConfirmDialog } from '@/components/ui/confirm-dialog';
 import {
@@ -19,18 +19,20 @@ import {
   DEFAULT_REQUESTS_PER_HOUR,
   createDataApiKeyBody,
   dataApiKeyCurlExample,
+  formatAllowedParks,
   formatHourlyUsage,
   parseRequestsPerHour,
   type CreatedDataApiKey,
   type DataApiKey,
   type DataApiKeyUsage,
 } from '@/lib/admin/api-keys';
-import { adminFetch, useAdminQuery, useInvalidateAdmin } from '../_lib/api';
+import { adminFetch, adminKeys, useAdminQuery, useInvalidateAdmin } from '../_lib/api';
+import type { AdminParkListItem } from '../_lib/types';
 import { formatAgo } from '../_lib/format';
 import { useSession } from '../_app/session';
 import { CodeBlock, SYSTEM_MONO } from '../_ui/code-block';
 import { CopyButton } from '../_ui/copy-button';
-import { Field, Select, TextInput, useFieldId } from '../_ui/controls';
+import { Field, SearchSelect, Select, TextInput, useFieldId } from '../_ui/controls';
 import {
   AdminPage,
   Chip,
@@ -139,7 +141,7 @@ function KeyList({ items }: { items: DataApiKey[] }) {
           <KeyRow
             key={key.id}
             apiKey={key}
-            onEditLimit={() => setEditing(key)}
+            onEdit={() => setEditing(key)}
             onRevoke={() => {
               setPending(key);
               setConfirming(true);
@@ -160,18 +162,18 @@ function KeyList({ items }: { items: DataApiKey[] }) {
         onConfirm={() => pending && void revoke(pending)}
       />
 
-      {editing && <LimitDialog apiKey={editing} onClose={() => setEditing(null)} />}
+      {editing && <EditKeyDialog apiKey={editing} onClose={() => setEditing(null)} />}
     </>
   );
 }
 
 function KeyRow({
   apiKey,
-  onEditLimit,
+  onEdit,
   onRevoke,
 }: {
   apiKey: DataApiKey;
-  onEditLimit: () => void;
+  onEdit: () => void;
   onRevoke: () => void;
 }) {
   const revoked = apiKey.revokedAt !== null;
@@ -197,17 +199,21 @@ function KeyRow({
           </span>
           {apiKey.revokedAt && <span>widerrufen {formatAgo(apiKey.revokedAt)}</span>}
         </p>
-        {!revoked && <p className="text-muted-foreground text-xs">{formatHourlyUsage(apiKey)}</p>}
+        {!revoked && (
+          <p className="text-muted-foreground text-xs">
+            {formatHourlyUsage(apiKey)} · {formatAllowedParks(apiKey)}
+          </p>
+        )}
         {apiKey.note && <p className="text-muted-foreground text-xs">{apiKey.note}</p>}
       </div>
       {!revoked && (
         <button
           type="button"
-          onClick={onEditLimit}
-          aria-label={`Stundenlimit von ${apiKey.name} ändern`}
+          onClick={onEdit}
+          aria-label={`${apiKey.name} bearbeiten`}
           className="text-muted-foreground hover:text-foreground shrink-0 rounded p-1.5 max-sm:p-3"
         >
-          <Gauge className="h-3.5 w-3.5" />
+          <Pencil className="h-3.5 w-3.5" />
         </button>
       )}
       {!revoked && (
@@ -232,6 +238,7 @@ function CreateKeyDialog({ onClose }: { onClose: () => void }) {
   const [usage, setUsage] = useState<DataApiKeyUsage>('non-commercial');
   const [note, setNote] = useState('');
   const [limit, setLimit] = useState(String(DEFAULT_REQUESTS_PER_HOUR));
+  const [parkIds, setParkIds] = useState<string[]>([]);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
   // The key lives in this state and nowhere else, and goes when the dialog does.
@@ -256,7 +263,14 @@ function CreateKeyDialog({ onClose }: { onClose: () => void }) {
     try {
       const result = await adminFetch<CreatedDataApiKey>(DATA_API_KEYS_PATH, {
         method: 'POST',
-        body: createDataApiKeyBody({ name, contact, usage, note, requestsPerHour }),
+        body: createDataApiKeyBody({
+          name,
+          contact,
+          usage,
+          note,
+          requestsPerHour,
+          allowedParkIds: parkIds,
+        }),
       });
       setCreated(result);
       invalidate(DATA_API_KEYS_QUERY_KEY);
@@ -352,6 +366,7 @@ function CreateKeyDialog({ onClose }: { onClose: () => void }) {
               />
             </Field>
             <LimitField id={ids.limit} value={limit} onChange={setLimit} />
+            <ParksField value={parkIds} onChange={setParkIds} />
             <Field label="Notiz" htmlFor={ids.note} hint="Optional, nur für dich.">
               <TextInput
                 id={ids.note}
@@ -413,12 +428,70 @@ function LimitField({
   );
 }
 
-function LimitDialog({ apiKey, onClose }: { apiKey: DataApiKey; onClose: () => void }) {
+/** Adds parks one at a time through the admin's park search; a chosen park is a chip to remove. */
+function ParksField({ value, onChange }: { value: string[]; onChange: (ids: string[]) => void }) {
+  // The query the parks page already holds, so opening the dialog there costs no request.
+  const parks = useAdminQuery<{ total: number; parks: AdminParkListItem[] }>(
+    adminKeys.parks({ params: 'limit=500' }),
+    '/api/admin/content/parks?limit=500',
+    { staleTime: 10 * 60_000 }
+  );
+  const all = parks.data?.parks ?? [];
+  const byId = new Map(all.map((park) => [park.id, park]));
+  const options = all
+    .filter((park) => !value.includes(park.id))
+    .map((park) => ({
+      value: park.id,
+      label: park.name,
+      hint: park.city ?? undefined,
+      keywords: [park.slug, park.city ?? '', park.country ?? ''],
+    }));
+
+  return (
+    <Field
+      label="Parks"
+      hint="Leer für alle Parks. Mit einer Auswahl liefert der Key Prognosen nur für diese Parks."
+    >
+      <div className="grid gap-2">
+        {value.length > 0 && (
+          <ul className="flex flex-wrap gap-1.5">
+            {value.map((id) => (
+              <li key={id}>
+                <button
+                  type="button"
+                  onClick={() => onChange(value.filter((other) => other !== id))}
+                  aria-label={`${byId.get(id)?.name ?? id} entfernen`}
+                  className="border-border bg-muted/60 hover:bg-muted inline-flex items-center gap-1 rounded-full border px-2.5 py-1 text-xs"
+                >
+                  {byId.get(id)?.name ?? id}
+                  <X className="h-3 w-3" aria-hidden />
+                </button>
+              </li>
+            ))}
+          </ul>
+        )}
+        <SearchSelect
+          value={null}
+          onValueChange={(id) => onChange([...value, id])}
+          options={options}
+          placeholder={parks.isLoading ? 'Parks werden geladen…' : 'Park hinzufügen'}
+          searchPlaceholder="Park suchen…"
+          disabled={parks.isLoading || parks.isError}
+          fuzzy="park"
+        />
+      </div>
+    </Field>
+  );
+}
+
+/** Changes a key's hourly allowance and parks; the key itself, its name and usage stay. */
+function EditKeyDialog({ apiKey, onClose }: { apiKey: DataApiKey; onClose: () => void }) {
   const toast = useToast();
   const invalidate = useInvalidateAdmin();
   const [limit, setLimit] = useState(
     apiKey.requestsPerHour === null ? '' : String(apiKey.requestsPerHour)
   );
+  const [parkIds, setParkIds] = useState<string[]>(apiKey.allowedParkIds ?? []);
   const [busy, setBusy] = useState(false);
   const fieldId = useFieldId('api-key-limit-edit');
   const requestsPerHour = parseRequestsPerHour(limit);
@@ -430,10 +503,13 @@ function LimitDialog({ apiKey, onClose }: { apiKey: DataApiKey; onClose: () => v
     try {
       await adminFetch(`${DATA_API_KEYS_PATH}/${encodeURIComponent(apiKey.id)}`, {
         method: 'PATCH',
-        body: JSON.stringify({ requestsPerHour }),
+        body: JSON.stringify({
+          requestsPerHour,
+          allowedParkIds: parkIds.length > 0 ? parkIds : null,
+        }),
       });
       invalidate(DATA_API_KEYS_QUERY_KEY);
-      toast.push({ title: 'Stundenlimit gespeichert', tone: 'success' });
+      toast.push({ title: 'Key gespeichert', tone: 'success' });
       onClose();
     } catch (err) {
       toast.push({
@@ -448,15 +524,16 @@ function LimitDialog({ apiKey, onClose }: { apiKey: DataApiKey; onClose: () => v
 
   return (
     <Dialog open onOpenChange={(open) => !open && onClose()}>
-      <DialogContent className="sm:max-w-md">
+      <DialogContent className="sm:max-w-lg">
         <form onSubmit={(event) => void save(event)} className="grid gap-4">
           <DialogHeader>
-            <DialogTitle>Stundenlimit für {apiKey.name}</DialogTitle>
+            <DialogTitle>{apiKey.name} bearbeiten</DialogTitle>
             <DialogDescription>
               Gilt ab der nächsten Anfrage. {formatHourlyUsage(apiKey)}.
             </DialogDescription>
           </DialogHeader>
           <LimitField id={fieldId} value={limit} onChange={setLimit} />
+          <ParksField value={parkIds} onChange={setParkIds} />
           <DialogFooter>
             <Button type="button" variant="ghost" onClick={onClose} disabled={busy}>
               Abbrechen

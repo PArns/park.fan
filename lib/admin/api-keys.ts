@@ -20,6 +20,10 @@ export interface DataApiKey {
   requestsPerHour: number | null;
   /** Requests counted in the current clock hour. */
   requestsThisHour?: number;
+  /** The parks the key may read forecasts for; null means every park. */
+  allowedParkIds: string[] | null;
+  /** The same parks with their names, as the list returns them. */
+  allowedParks?: { id: string; name: string }[] | null;
   createdAt: string;
   lastUsedAt: string | null;
   revokedAt: string | null;
@@ -63,6 +67,15 @@ export function formatHourlyUsage(
     : `${used} von ${key.requestsPerHour.toLocaleString('de-DE')} in dieser Stunde`;
 }
 
+/** „Alle Parks“, or the parks by name, as one line. */
+export function formatAllowedParks(
+  key: Pick<DataApiKey, 'allowedParks' | 'allowedParkIds'>
+): string {
+  if (!key.allowedParkIds || key.allowedParkIds.length === 0) return 'alle Parks';
+  const names = key.allowedParks?.map((park) => park.name) ?? key.allowedParkIds;
+  return names.join(', ');
+}
+
 /** The proxy path of the backend's key endpoints. */
 export const DATA_API_KEYS_PATH = '/api/admin/api-keys';
 
@@ -76,6 +89,8 @@ export function createDataApiKeyBody(input: {
   usage: DataApiKeyUsage;
   note: string;
   requestsPerHour: number | null;
+  /** Empty for every park. */
+  allowedParkIds: readonly string[];
 }): string {
   const contact = input.contact.trim();
   const note = input.note.trim();
@@ -83,6 +98,7 @@ export function createDataApiKeyBody(input: {
     name: input.name.trim(),
     usage: input.usage,
     requestsPerHour: input.requestsPerHour,
+    allowedParkIds: input.allowedParkIds.length > 0 ? [...input.allowedParkIds] : null,
     ...(contact && { contact }),
     ...(note && { note }),
   });

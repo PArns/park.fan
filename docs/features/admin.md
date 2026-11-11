@@ -346,12 +346,15 @@ Owner only, in the nav and on the API (`/v1/admin/api-keys`, audited as `api-key
 - **The list** shows every key, active ones first: name, usage (nicht-kommerziell, or kommerziell
   for a holder with a written agreement), prefix, contact, created, last used, when it was
   revoked, and for an active key its requests in the current clock hour against its hourly
-  allowance (`formatHourlyUsage`). An active row has a button that changes the allowance
-  (`PATCH`, from the next request on) and its revoke button behind a `ConfirmDialog`; a revoked
-  one stays listed, dimmed.
+  allowance (`formatHourlyUsage`) and its parks (`formatAllowedParks`, „alle Parks“ without a
+  list). An active row has an edit button (allowance and parks, `PATCH`, from the next request on)
+  and its revoke button behind a `ConfirmDialog`; a revoked one stays listed, dimmed.
+- **Parks** are added one at a time through `SearchSelect` with the park search, from the query
+  the parks page already holds (`/api/admin/content/parks?limit=500`); a chosen park is a chip
+  that removes itself. No park means every park.
 - **Create** takes a name, an optional contact, the usage, the hourly allowance (1,000 unless
-  changed, empty for no per-key limit, `parseRequestsPerHour`) and an optional note, and needs no
-  password: a data key opens forecasts, never the admin. The key is in the answer once and lives in
+  changed, empty for no per-key limit, `parseRequestsPerHour`), the parks and an optional note,
+  and needs no password: a data key opens forecasts, never the admin. The key is in the answer once and lives in
   the dialog's state only, as a token does above; Escape and the overlay do not close the dialog
   while it is shown. The dialog adds a `curl` line with the key in `X-API-Key`.
 

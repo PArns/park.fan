@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import { MCP_TOOLS } from '@/lib/agents/mcp-tools';
-import { FORECAST_TOOLS, mayReadForecasts } from '@/lib/agents/forecast-access';
+import { FORECAST_TOOLS, forecastGrant, type ForecastGrant } from '@/lib/agents/forecast-access';
 import { DATA_TERMS_URL } from '@/lib/agents/licensing';
 import { MCP_PROTOCOL_VERSION, MCP_SERVER_INFO } from '@/lib/agents/mcp-server-card';
 
@@ -47,7 +47,7 @@ function failure(id: JsonRpcId, code: number, message: string, status = 200) {
 
 async function handle(
   request: JsonRpcRequest,
-  forecastAccess: () => Promise<boolean>
+  forecastAccess: () => Promise<ForecastGrant | null>
 ): Promise<NextResponse | null> {
   const id = request.id ?? null;
 
@@ -80,7 +80,8 @@ async function handle(
       const tool = MCP_TOOLS.find((candidate) => candidate.name === params.name);
       if (!tool) return failure(id, -32602, `Unknown tool: ${params.name}`);
 
-      if (FORECAST_TOOLS.has(tool.name) && !(await forecastAccess())) {
+      const grant = FORECAST_TOOLS.has(tool.name) ? await forecastAccess() : null;
+      if (FORECAST_TOOLS.has(tool.name) && !grant) {
         return result(id, {
           content: [
             {
@@ -93,7 +94,9 @@ async function handle(
       }
 
       try {
-        const output = await tool.execute((params.arguments ?? {}) as Record<string, unknown>);
+        const output = await tool.execute((params.arguments ?? {}) as Record<string, unknown>, {
+          forecastGrant: grant ?? undefined,
+        });
         return result(id, {
           // Both shapes on purpose: `content` is what every client can read, `structuredContent`
           // is the same object for the ones that would otherwise re-parse the text block.
@@ -127,8 +130,8 @@ async function handle(
 export async function POST(request: Request): Promise<NextResponse | Response> {
   // Asked once per HTTP request and only when a forecast tool is called: the check may cost a
   // round trip to the API.
-  let access: Promise<boolean> | null = null;
-  const forecastAccess = () => (access ??= mayReadForecasts(request));
+  let access: Promise<ForecastGrant | null> | null = null;
+  const forecastAccess = () => (access ??= forecastGrant(request));
 
   let body: unknown;
   try {

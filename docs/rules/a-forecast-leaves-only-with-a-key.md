@@ -20,7 +20,7 @@ Live and historical data stay open.
   returns a forecast joins `isForecastRelayPath()`. A script that calls one sends
   `Sec-Fetch-Site: same-origin`, as `check-planner.mjs` does.
 - **A forecast MCP tool needs a key, except from this site's own pages.** `FORECAST_TOOL_NAMES`
-  (`lib/agents/tool-descriptors.ts`); `mayReadForecasts()` checks the key against
+  (`lib/agents/tool-descriptors.ts`); `forecastGrant()` checks the key, and the requested park, against
   `/v1/api-keys/verify` without the server's own key, which the API would accept for anything.
 - **The two server keys stay apart.** `API_AUTH_KEY` (`x-auth-key`) lifts the API's rate limits
   and makes it believe `X-Forwarded-For`; `API_DATA_KEY` opens the forecasts. Neither reaches a

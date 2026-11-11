@@ -18,31 +18,41 @@ export function presentedApiKey(request: Request): string | null {
 }
 
 /**
- * Asks the API whether a key is active. Sent with the caller's key alone, never with the server's
- * own `x-auth-key` or `API_DATA_KEY`: either would make the API confirm any key at all.
+ * Asks the API whether a key is active, and with `park` whether it covers that park
+ * (`continent/country/city/park`). Sent with the caller's key alone, never with the server's own
+ * `x-auth-key` or `API_DATA_KEY`: either would make the API confirm any key at all.
  */
-async function isActiveApiKey(key: string): Promise<boolean> {
-  const until = verified.get(key);
+async function isActiveApiKey(key: string, park?: string): Promise<boolean> {
+  const cacheKey = park ? `${key}|${park}` : key;
+  const until = verified.get(cacheKey);
   if (until && until > Date.now()) return true;
   try {
-    const response = await fetch(`${getApiBaseUrl()}/v1/api-keys/verify`, {
+    const query = park ? `?park=${encodeURIComponent(park)}` : '';
+    const response = await fetch(`${getApiBaseUrl()}/v1/api-keys/verify${query}`, {
       headers: { 'x-api-key': key, 'User-Agent': 'park.fan-mcp' },
       cache: 'no-store',
     });
     if (!response.ok) return false;
-    verified.set(key, Date.now() + VERIFIED_FOR_MS);
+    verified.set(cacheKey, Date.now() + VERIFIED_FOR_MS);
     return true;
   } catch {
     return false;
   }
 }
 
+/** What a request may read: any park, or each park the API confirms for its key. */
+export interface ForecastGrant {
+  readsPark(segments: readonly string[]): Promise<boolean>;
+}
+
 /**
- * Whether an MCP request may call a forecast tool: a park.fan page's own WebMCP call, or a client
- * that sends an active data key. The tool then reads through the server's key like a page does.
+ * Whether an MCP request may call a forecast tool, and for which parks: a park.fan page's own
+ * WebMCP call reads every park, a client with an active data key reads the parks its key covers.
+ * Null when neither. The tool then reads through the server's key like a page does.
  */
-export async function mayReadForecasts(request: Request): Promise<boolean> {
-  if (isSameOriginRequest(request)) return true;
+export async function forecastGrant(request: Request): Promise<ForecastGrant | null> {
+  if (isSameOriginRequest(request)) return { readsPark: async () => true };
   const key = presentedApiKey(request);
-  return key ? isActiveApiKey(key) : false;
+  if (!key || !(await isActiveApiKey(key))) return null;
+  return { readsPark: (segments) => isActiveApiKey(key, segments.join('/')) };
 }

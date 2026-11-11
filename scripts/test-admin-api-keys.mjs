@@ -1,6 +1,7 @@
 // The admin's data API key page: what the hourly-limit field accepts and how a key's usage reads.
 import {
   createDataApiKeyBody,
+  formatAllowedParks,
   formatHourlyUsage,
   parseRequestsPerHour,
 } from '../lib/admin/api-keys.ts';
@@ -51,8 +52,27 @@ const testCases = [
         usage: 'non-commercial',
         note: '',
         requestsPerHour: null,
+        allowedParkIds: [],
       }),
-    expected: '{"name":"Club","usage":"non-commercial","requestsPerHour":null}',
+    expected:
+      '{"name":"Club","usage":"non-commercial","requestsPerHour":null,"allowedParkIds":null}',
+  },
+  {
+    name: 'a key limited to parks names them',
+    actual: () =>
+      formatAllowedParks({
+        allowedParkIds: ['a', 'b'],
+        allowedParks: [
+          { id: 'a', name: 'Magic Kingdom Park' },
+          { id: 'b', name: 'EPCOT' },
+        ],
+      }),
+    expected: 'Magic Kingdom Park, EPCOT',
+  },
+  {
+    name: 'a key without parks covers all of them',
+    actual: () => formatAllowedParks({ allowedParkIds: null }),
+    expected: 'alle Parks',
   },
 ];
 
