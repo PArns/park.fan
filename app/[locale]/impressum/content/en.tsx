@@ -214,29 +214,33 @@ export function ImpressumEN({ story }: { story: ImpressumStory | null }) {
           Anyone may use what park.fan publishes, on its pages and through the API at api.park.fan,
           free of charge for non-commercial purposes: in their own app, on a fan site without
           advertising, in a research project or a school assignment. Credit park.fan and link to the
-          park or ride page you used. No API key or sign-up is needed.
+          park or ride page you used.
         </p>
 
-        <h3 className="mt-8 mb-4 text-2xl font-semibold">Commercial use of the forecasts</h3>
+        <h3 className="mt-8 mb-4 text-2xl font-semibold">Forecasts need an API key</h3>
         <p className="mb-4">
           park.fan calculates its forecasts with its own models: the crowd calendar, the expected
           crowds per day and per hour, predicted wait times, the best days to visit and the plans of
-          the trip planner. Using them commercially requires a written agreement with park.fan. That
-          applies to the pages, the API and the MCP server alike.
-        </p>
-        <p className="mb-4">
-          Commercial means, for example, a paid app, an app with subscriptions, in-app purchases or
-          advertising, a website with advertising or affiliate links, and any product a company
-          offers. Without an agreement, the forecasts may not be shown, stored or passed on for such
-          purposes. Requests go to{' '}
+          the trip planner. The API hands them out only against an API key. A key for non-commercial
+          use is free; ask for one at{' '}
           <ObfuscatedEmail local="hello" domain="park.fan" displayText="hello [at] park.fan" />.
         </p>
 
-        <h3 className="mt-8 mb-4 text-2xl font-semibold">Live data belongs to its sources</h3>
+        <h3 className="mt-8 mb-4 text-2xl font-semibold">Commercial use</h3>
+        <p className="mb-4">
+          Commercial means, for example, a paid app, an app with subscriptions, in-app purchases or
+          advertising, a website with advertising or affiliate links, and any product a company
+          offers. Using the forecasts commercially requires a written agreement with park.fan.
+          Without one, they may not be shown, stored or passed on for such purposes, whether they
+          come from the pages, the API or the MCP server.
+        </p>
+
+        <h3 className="mt-8 mb-4 text-2xl font-semibold">Live data for non-commercial use only</h3>
         <p className="mb-4">
           Wait times and opening hours come from the platforms listed under Data Sources, the
-          weather from Open-Meteo. park.fan grants no rights to this data. Anyone reusing it follows
-          the terms of the source it came from.
+          weather from Open-Meteo. park.fan passes them on for non-commercial use only and grants no
+          rights to them. Anyone who wants to use them commercially needs an agreement with the
+          source itself.
         </p>
 
         <h3 className="mt-8 mb-4 text-2xl font-semibold">No training of AI models</h3>

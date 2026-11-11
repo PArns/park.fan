@@ -217,31 +217,36 @@ export function ImpressumDE({ story }: { story: ImpressumStory | null }) {
           Was park.fan auf den Seiten und über die API unter api.park.fan veröffentlicht, darf jeder
           kostenlos für nicht-kommerzielle Zwecke verwenden: in einer eigenen App, auf einer
           Fanseite ohne Werbung, in einem Forschungsprojekt oder einer Schularbeit. Bedingung ist
-          ein Quellenhinweis auf park.fan mit Link zur jeweiligen Park- oder Attraktionsseite. Einen
-          API-Key oder eine Anmeldung braucht es nicht.
+          ein Quellenhinweis auf park.fan mit Link zur jeweiligen Park- oder Attraktionsseite.
         </p>
 
-        <h3 className="mt-8 mb-4 text-2xl font-semibold">Kommerzielle Nutzung der Prognosen</h3>
+        <h3 className="mt-8 mb-4 text-2xl font-semibold">Prognosen nur mit API-Key</h3>
         <p className="mb-4">
           Die Prognosen berechnet park.fan mit eigenen Modellen: den Crowd-Kalender, den erwarteten
           Andrang pro Tag und pro Stunde, vorhergesagte Wartezeiten, die besten Besuchstage und die
-          Pläne des Tagesplaners. Für eine kommerzielle Nutzung braucht es eine schriftliche
-          Vereinbarung mit park.fan. Das gilt für die Seiten, die API und den MCP-Server
-          gleichermaßen.
-        </p>
-        <p className="mb-4">
-          Kommerziell sind zum Beispiel eine kostenpflichtige App, eine App mit Abo, In-App-Käufen
-          oder Werbung, eine Website mit Werbung oder Affiliate-Links und jedes Produkt, das ein
-          Unternehmen anbietet. Ohne Vereinbarung dürfen die Prognosen für solche Zwecke weder
-          gezeigt noch gespeichert oder weitergegeben werden. Anfragen an{' '}
+          Pläne des Tagesplaners. Die API gibt sie nur gegen einen API-Key heraus. Für eine
+          nicht-kommerzielle Nutzung ist der Key kostenlos, Anfragen an{' '}
           <ObfuscatedEmail local="hello" domain="park.fan" displayText="hello [at] park.fan" />.
         </p>
 
-        <h3 className="mt-8 mb-4 text-2xl font-semibold">Live-Daten gehören ihren Quellen</h3>
+        <h3 className="mt-8 mb-4 text-2xl font-semibold">Kommerzielle Nutzung</h3>
+        <p className="mb-4">
+          Kommerziell sind zum Beispiel eine kostenpflichtige App, eine App mit Abo, In-App-Käufen
+          oder Werbung, eine Website mit Werbung oder Affiliate-Links und jedes Produkt, das ein
+          Unternehmen anbietet. Für eine kommerzielle Nutzung der Prognosen braucht es eine
+          schriftliche Vereinbarung mit park.fan. Ohne sie dürfen die Prognosen für solche Zwecke
+          weder gezeigt noch gespeichert oder weitergegeben werden, gleich ob sie von den Seiten,
+          aus der API oder vom MCP-Server stammen.
+        </p>
+
+        <h3 className="mt-8 mb-4 text-2xl font-semibold">
+          Live-Daten nur für nicht-kommerzielle Zwecke
+        </h3>
         <p className="mb-4">
           Wartezeiten und Öffnungszeiten kommen von den Plattformen unter „Datenquellen“, das Wetter
-          von Open-Meteo. An diesen Daten räumt park.fan keine Rechte ein. Wer sie weiterverwendet,
-          richtet sich nach den Bedingungen der jeweiligen Quelle.
+          von Open-Meteo. park.fan gibt sie nur für nicht-kommerzielle Zwecke weiter und räumt an
+          ihnen keine Rechte ein. Wer sie kommerziell nutzen will, braucht eine Vereinbarung mit der
+          jeweiligen Quelle.
         </p>
 
         <h3 className="mt-8 mb-4 text-2xl font-semibold">Kein Training von KI-Modellen</h3>
