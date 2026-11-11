@@ -6,3 +6,6 @@ pnpm-lock.yaml
 # Generated and committed: written by scripts/generate-media-manifest.mjs on every
 # build, so formatting it here would just fail the next check:format run.
 lib/media/manifest-parks.ts
+
+# The licence is kept verbatim, as published at polyformproject.org.
+LICENSE.md

@@ -43,6 +43,7 @@ _Open when you work on wait times, seasons, closed rides, a park with no source,
 - [A ride that closed for good keeps its page](a-closed-ride-keeps-its-page.md) — `retiredKind === 'closed'`, `closedAttractions`, `lib/parks/closed-ride.ts`; `pnpm test:closed-ride`
 - [An API route passes only slugs upstream, and says a failure is one](an-api-route-passes-only-slugs-upstream.md) — `isSlugPath()`, `cronUnauthorized`, non-200 without cache headers
 - [A request no cache can share goes to the API directly](a-request-no-cache-can-share-goes-to-the-api-directly.md) — `browserApiUrl()`, `NEXT_PUBLIC_API_DIRECT`; `pnpm test:direct-api`
+- [A forecast leaves park.fan only with a key](a-forecast-leaves-only-with-a-key.md) — `withForecast()`, `isSameOriginRequest()` on forecast relays, `FORECAST_TOOL_NAMES`; `pnpm test:forecast-relay`
 
 ## Features
 

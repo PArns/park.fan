@@ -47,7 +47,8 @@ with `Accept: text/markdown`) sit the parts that answer a date:
 
 ## As data
 
-Every one of these has an endpoint on the public API: `/best-days`, `/calendar`, `/schedule`,
-`/stats`, `/stats/hourly`, `/predictions/yearly`, `/weather` under
-`https://api.park.fan/v1/parks/{continent}/{country}/{city}/{park}`. See the `park-fan-data`
-skill for the catalog and the OpenAPI description.
+Every one of these has an endpoint on the public API under
+`https://api.park.fan/v1/parks/{continent}/{country}/{city}/{park}`: `/schedule`, `/stats`,
+`/stats/hourly` and `/weather` without a key; `/best-days`, `/calendar` and `/predictions/yearly`
+with a data key in `X-API-Key`, because they are forecasts. See the `park-fan-data` skill for the
+catalog, the key and the OpenAPI description.

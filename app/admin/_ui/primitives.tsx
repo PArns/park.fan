@@ -11,6 +11,15 @@ import { CROWD_CHIP_CLASS, isColoredCrowdLevel } from '@/lib/utils/crowd-level-s
  */
 
 /**
+ * For a `DialogContent` whose form can be taller than a phone's screen: it scrolls inside the
+ * screen instead of running off it, where its title and buttons cannot be reached. `grid-cols-1`
+ * because the dialog is a grid: without a column it grows to its longest unbroken line, a key or
+ * a `curl` command. Not on the shared dialog itself, whose public-site uses (gallery, planner) lay
+ * themselves out.
+ */
+export const SCROLLING_DIALOG = 'max-h-[calc(100dvh-2rem)] grid-cols-1 overflow-y-auto';
+
+/**
  * One admin page's column and spacing, in three widths named for what they hold: `wide` for
  * boards and tables, the default for entity editors, `narrow` for a single form column. The
  * full-height list pages (parks, history) size themselves against the viewport and stay out.

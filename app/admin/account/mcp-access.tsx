@@ -28,7 +28,7 @@ import { ApiTokenList } from '../_ui/api-token-list';
 import { Field, OtpInput, Select, TextInput, useFieldId } from '../_ui/controls';
 import { CodeBlock } from '../_ui/code-block';
 import { CopyButton } from '../_ui/copy-button';
-import { Notice, Panel, PanelBody, PanelHeader, Tile } from '../_ui/primitives';
+import { Notice, Panel, PanelBody, PanelHeader, SCROLLING_DIALOG, Tile } from '../_ui/primitives';
 import { useToast } from '../_ui/toast';
 import { useSession } from '../_app/session';
 
@@ -170,7 +170,7 @@ function CreateTokenDialog({ onClose }: { onClose: () => void }) {
   return (
     <Dialog open onOpenChange={(open) => !open && onClose()}>
       <DialogContent
-        className="sm:max-w-xl"
+        className={`${SCROLLING_DIALOG} sm:max-w-xl`}
         showCloseButton={!holdsSecret}
         onInteractOutside={(event) => holdsSecret && event.preventDefault()}
         onEscapeKeyDown={(event) => holdsSecret && event.preventDefault()}

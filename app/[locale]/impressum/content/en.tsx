@@ -3,6 +3,7 @@ import { Link } from '@/i18n/navigation';
 import { ObfuscatedEmail } from '@/components/common/obfuscated-email';
 import { ObfuscatedPhone } from '@/components/common/obfuscated-phone';
 import { ExternalLink } from 'lucide-react';
+import { DATA_TERMS_ANCHOR, RSL_LICENSE_PATH } from '@/lib/agents/licensing';
 import type { ImpressumStory } from './story';
 
 /** The legal notice (Impressum) in English, shown on every locale but `de`. */
@@ -199,6 +200,61 @@ export function ImpressumEN({ story }: { story: ImpressumStory | null }) {
             className="text-primary hover:text-primary/80 underline"
           >
             CC BY 4.0
+          </a>
+          .
+        </p>
+
+        <h2
+          id={DATA_TERMS_ANCHOR}
+          className="border-border mt-12 mb-6 scroll-mt-20 border-b pb-3 text-3xl font-bold"
+        >
+          Using the data
+        </h2>
+        <p className="mb-4">
+          Anyone may use the data park.fan publishes on its pages and through the API at
+          api.park.fan (wait times, opening hours, statistics and forecasts) free of charge for
+          non-commercial purposes: in their own app, on a fan site without advertising, in a
+          research project or a school assignment. Credit park.fan and link to the page of the park
+          or ride the data is about. Texts and photos are not included.
+        </p>
+
+        <h3 className="mt-8 mb-4 text-2xl font-semibold">Forecasts need an API key</h3>
+        <p className="mb-4">
+          Forecasts are everything park.fan predicts with its own models, including the crowd
+          calendar, the expected crowds per day and per hour, predicted wait times, the best days to
+          visit, the yearly predictions and the plans of the trip planner. The API returns them only
+          with an API key. A key for non-commercial use is free; ask for one at{' '}
+          <ObfuscatedEmail local="hello" domain="park.fan" displayText="hello [at] park.fan" />.
+        </p>
+
+        <h3 className="mt-8 mb-4 text-2xl font-semibold">Commercial use</h3>
+        <p className="mb-4">
+          Commercial means, for example, a paid app, an app with subscriptions, in-app purchases or
+          advertising, a website with advertising or affiliate links, and any product a company
+          offers. Using park.fan's forecasts and statistics commercially requires a written
+          agreement with Patrick Arns (park.fan). Without one, they may not be shown, stored or
+          passed on for such purposes, whether they come from the pages, the API or the MCP server.
+        </p>
+
+        <h3 className="mt-8 mb-4 text-2xl font-semibold">Live data for non-commercial use only</h3>
+        <p className="mb-4">
+          Wait times and opening hours come from the platforms listed under Data Sources, the
+          weather from Open-Meteo. park.fan passes them on for non-commercial use, on the terms
+          above. It holds no rights of its own in this data and so cannot permit commercial use of
+          it: that takes an agreement with the source itself.
+        </p>
+
+        <h3 className="mt-8 mb-4 text-2xl font-semibold">No training of AI models</h3>
+        <p className="mb-4">
+          Neither the pages nor the forecasts from the API may be used to train or fine-tune AI
+          models or other forecasting models. An assistant may read a page to answer someone's
+          question. For the pages, the machine-readable form of these rules is in{' '}
+          <a href="/robots.txt" className="text-primary hover:text-primary/80 underline">
+            robots.txt
+          </a>{' '}
+          and{' '}
+          <a href={RSL_LICENSE_PATH} className="text-primary hover:text-primary/80 underline">
+            license.xml
           </a>
           .
         </p>

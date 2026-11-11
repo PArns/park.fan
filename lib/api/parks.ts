@@ -1,6 +1,7 @@
 import { cache } from 'react';
 
 import { api, ApiError } from './client';
+import { readWithForecast } from './forecast-query';
 import { CACHE_TTL } from './cache-config';
 import { getGeoStructure } from './discovery';
 import {
@@ -283,7 +284,7 @@ export const getParkByGeoPath = cache(
     city: string,
     parkSlug: string
   ): Promise<ParkWithAttractions | null> =>
-    fetchParkByGeoPath(continent, country, city, parkSlug, false)
+    fetchParkByGeoPath(continent, country, city, parkSlug, false, true)
 );
 
 /**
@@ -301,7 +302,21 @@ export async function getParkByGeoPathFresh(
   city: string,
   parkSlug: string
 ): Promise<ParkWithAttractions | null> {
-  return fetchParkByGeoPath(continent, country, city, parkSlug, true);
+  return fetchParkByGeoPath(continent, country, city, parkSlug, true, true);
+}
+
+/**
+ * {@link getParkByGeoPathFresh} without the forecast fields, for a server-side reader that never
+ * shows them (the content-changes crawl, the admin's media backlog). Without the flag the API's
+ * answer is public, so Cloudflare collapses these reads with every other one.
+ */
+export async function getParkByGeoPathFreshWithoutForecasts(
+  continent: string,
+  country: string,
+  city: string,
+  parkSlug: string
+): Promise<ParkWithAttractions | null> {
+  return fetchParkByGeoPath(continent, country, city, parkSlug, true, false);
 }
 
 /**
@@ -314,7 +329,8 @@ export async function getParkByGeoPathForAgents(
   city: string,
   parkSlug: string
 ): Promise<ParkWithAttractions | null> {
-  return fetchParkByGeoPath(continent, country, city, parkSlug, true, CACHE_TTL.agentPark);
+  // Live data only: without the forecast flag the API answer stays in Cloudflare's shared cache.
+  return fetchParkByGeoPath(continent, country, city, parkSlug, true, false, CACHE_TTL.agentPark);
 }
 
 async function fetchParkByGeoPath(
@@ -323,15 +339,17 @@ async function fetchParkByGeoPath(
   city: string,
   parkSlug: string,
   fresh: boolean,
+  forecasts: boolean,
   liveRevalidate?: number
 ): Promise<ParkWithAttractions | null> {
   const tags = ['parks', parkCacheTag(continent, country, city, parkSlug)];
   const revalidate = fresh ? liveRevalidate : PARK_REVALIDATE;
+  const path = `/v1/parks/${continent}/${country}/${city}/${parkSlug}`;
   try {
-    const park = await api.get<ParkWithAttractions>(
-      `/v1/parks/${continent}/${country}/${city}/${parkSlug}`,
-      revalidate === undefined ? { cache: 'no-store' } : { next: { revalidate, tags } }
-    );
+    const init =
+      revalidate === undefined ? { cache: 'no-store' as const } : { next: { revalidate, tags } };
+    const read = (url: string) => api.get<ParkWithAttractions>(url, init);
+    const park = await (forecasts ? readWithForecast(path, read) : read(path));
     // The ISR shell gets the aggressive trim (drops statistics.history — the biggest size-weighted
     // ISR-write chunk); the live no-store poll keeps the full per-attraction data for the cards.
     // Both also parse the coordinates, which this endpoint sends as decimal STRINGS while the type
@@ -419,9 +437,12 @@ export async function getAttractionByGeoPath(
 ): Promise<AttractionResponse | null> {
   try {
     const attraction = withAttractionCoordinates(
-      await api.get<AttractionResponse>(
+      await readWithForecast(
         `/v1/parks/${continent}/${country}/${city}/${parkSlug}/attractions/${attractionSlug}`,
-        { next: { revalidate: ATTRACTION_REVALIDATE, tags: ['attractions'] } }
+        (url) =>
+          api.get<AttractionResponse>(url, {
+            next: { revalidate: ATTRACTION_REVALIDATE, tags: ['attractions'] },
+          })
       )
     );
     return leanAttractionForDetail(attraction);
@@ -452,9 +473,9 @@ export async function getAttractionByGeoPathFresh(
 ): Promise<AttractionResponse | null> {
   try {
     const attraction = withAttractionCoordinates(
-      await api.get<AttractionResponse>(
+      await readWithForecast(
         `/v1/parks/${continent}/${country}/${city}/${parkSlug}/attractions/${attractionSlug}`,
-        { cache: 'no-store' }
+        (url) => api.get<AttractionResponse>(url, { cache: 'no-store' })
       )
     );
     return leanAttractionForDetail(attraction);

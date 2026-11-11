@@ -4,6 +4,7 @@ import {
   getApiBaseUrl,
   getServerApiHeaders,
 } from '@/lib/api/client';
+import { fetchWithForecast } from '@/lib/api/forecast-query';
 import {
   loadCardImageMap,
   withParkCardImage,
@@ -267,7 +268,7 @@ export async function getFavorites(
       apiUrl.searchParams.set(key, value);
     });
 
-    const response = await fetch(apiUrl.toString(), {
+    const response = await fetchWithForecast(apiUrl.toString(), {
       headers: {
         'Content-Type': 'application/json',
         ...getServerApiHeaders(),
@@ -282,6 +283,8 @@ export async function getFavorites(
     return response.json() as Promise<FavoritesResponse>;
   }
 
+  // Straight to the API the request carries no key, so the cards come without best visit times;
+  // through the relay the server adds them.
   const url = new URL(browserApiUrl('/v1/favorites'), window.location.origin);
 
   Object.entries(params).forEach(([key, value]) => {

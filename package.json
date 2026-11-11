@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "packageManager": "pnpm@11.16.0",
-  "license": "GPL-3.0-only",
+  "license": "PolyForm-Noncommercial-1.0.0",
   "author": "Patrick Arns",
   "engines": {
     "node": "26.x"
@@ -146,6 +146,8 @@
     "test:admin-search-console": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-admin-search-console.mjs",
     "test:admin-mcp": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-admin-mcp.mjs",
     "test:admin-proxy-path": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-admin-proxy-path.mjs",
+    "test:forecast-relay": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-forecast-relay.mjs",
+    "test:admin-api-keys": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-admin-api-keys.mjs",
     "test:calendar-park-projection": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-calendar-park-projection.mjs",
     "test:maze-grouping": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-maze-grouping.mjs",
     "test:localized-path": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-localized-path.mjs",

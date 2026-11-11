@@ -3,7 +3,7 @@
   "name": "fan.park/park-fan",
   "title": "park.fan",
   "description": "Live theme-park wait times, ride status and crowd forecasts for 200+ parks.",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "websiteUrl": "https://park.fan/en/how-park-fan-works",
   "repository": {
     "url": "https://github.com/PArns/park.fan",
@@ -12,7 +12,15 @@
   "remotes": [
     {
       "type": "streamable-http",
-      "url": "https://park.fan/api/mcp"
+      "url": "https://park.fan/api/mcp",
+      "headers": [
+        {
+          "name": "X-API-Key",
+          "description": "park.fan data key (pfk_…). Only the forecast tool get_park_best_days needs it; free for non-commercial use on request through https://park.fan/en/impressum#data-use.",
+          "isRequired": false,
+          "isSecret": true
+        }
+      ]
     }
   ]
 }

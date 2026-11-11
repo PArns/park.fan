@@ -20,8 +20,10 @@ reading order. This is the cheapest way to answer one question about one park.
 
 ## 2. The public API
 
-`https://api.park.fan/v1`. No key, no OAuth, no sign-up: the data is public and served as public
-data. The catalog describes the API in machine-readable form:
+`https://api.park.fan/v1`. Live and historical data are open to anyone, without a key, OAuth or
+sign-up. Forecasts need a data key in the `X-API-Key` header (`pfk_…`), free for non-commercial
+use on request through https://park.fan/en/impressum. The catalog describes the API in
+machine-readable form:
 
 ```bash
 curl https://park.fan/.well-known/api-catalog        # RFC 9727 linkset
@@ -34,13 +36,22 @@ The endpoints that answer most questions:
 | Endpoint                                        | Answers                                                     |
 | ----------------------------------------------- | ----------------------------------------------------------- |
 | `/v1/search?q=`                                 | slugs and URLs for a park, ride or city by name             |
-| `/v1/parks/{continent}/{country}/{city}/{park}` | the park with all its attractions and current waits         |
+| `/v1/parks/{continent}/{country}/{city}/{park}` | the park with all its attractions and current waits ¹       |
 | `/v1/parks/…/{park}/wait-times`                 | just the queues                                             |
-| `/v1/parks/…/{park}/best-days`                  | the crowd projection per day                                |
+| `/v1/parks/…/{park}/best-days`                  | the crowd projection per day (key)                          |
 | `/v1/parks/…/{park}/stats`, `/stats/hourly`     | historical waits by month, weekday, hour                    |
 | `/v1/discovery/geo`                             | every continent, country, city and park, i.e. all the slugs |
 | `/v1/discovery/nearby?lat=&lng=`                | parks around a point                                        |
 | `/v1/health`                                    | whether the above is up                                     |
+
+¹ Its forecast field, each ride's `bestVisitTimes`, comes only with `?forecast=true` and a key;
+`?forecast=true` without a key is a 401 for the whole request. The same holds for a ride's
+`hourlyForecast` and for `/stats/day`. `/calendar`, `/predictions/yearly`
+and `/plan/day` need a key outright. Without one they answer 401 with the terms URL. A key has an
+hourly allowance, counted from each full hour and reported in `X-API-Key-Hourly-Limit`,
+`-Remaining` and `-Reset`; past it the answer is 429 with `Retry-After`. A key
+limited to some parks gets 403 for any other park. Without a key, reads are limited to 60 a minute
+and 1,000 an hour per address; a data key lifts that.
 
 `https://park.fan/sitemap.xml` and `/sitemap-attractions.xml` list the pages; `/llms.txt` is the
 short version of this file for a model that arrived with nothing.
@@ -52,10 +63,22 @@ short version of this file for a model that arrived with nothing.
 - Cache what does not move: slugs, ride facts, opening hours. Re-fetch the queues.
 - Send a `User-Agent` that names your project and a way to reach you.
 - Attribute park.fan and link the page you took a number from. Numbers here are hours old by
-  lunchtime; a link is what lets a reader check. That credit is the licence's only price:
-  `https://park.fan/license.xml` (RSL 1.0) permits search and answering, prohibits training.
+  lunchtime; a link is what lets a reader check. `https://park.fan/license.xml` (RSL 1.0)
+  permits search and answering, prohibits training.
 
-## What is not open
+## Terms of use
+
+- Free for non-commercial use, with the credit above.
+- The forecasts (everything park.fan's models predict: crowd calendar, expected crowds, predicted
+  wait times, best days, yearly predictions, day plans) need a data key. Commercial use of the
+  forecasts or park.fan's statistics, whether read from a page, the API or MCP, requires a written
+  agreement with Patrick Arns (park.fan) (contact: https://park.fan/en/impressum).
+- Neither the pages nor the forecasts may be used to train or fine-tune a model.
+- Live wait times, opening hours and weather come from park.fan's sources and are passed on for
+  non-commercial use only; commercial use needs an agreement with the source.
+- The full terms, with what counts as commercial: https://park.fan/en/impressum#data-use
+
+## What stays closed
 
 - `park.fan/api/*` is this site's own internal proxy, not a public interface. It is disallowed
   in `robots.txt` and its shape changes without notice. Use `api.park.fan`.

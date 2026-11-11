@@ -14,7 +14,8 @@ export function cdnCacheHeaders(value: string): Record<string, string> {
 }
 
 /**
- * `Cache-Control` for an error response from a route under a shared rule in `next.config.ts`. A
- * response without a header of its own takes that rule's window, so a failure would be shared.
+ * The headers for an error response from a route under a shared rule in `next.config.ts`. Both
+ * keys: a response without a header of its own takes that rule's window, and Cloudflare reads the
+ * rule's `CDN-Cache-Control` ahead of the handler's `Cache-Control`, so a failure would be shared.
  */
-export const NO_STORE = { 'Cache-Control': 'no-store, must-revalidate' };
+export const NO_STORE = cdnCacheHeaders('no-store, must-revalidate');

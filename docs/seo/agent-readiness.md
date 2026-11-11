@@ -52,7 +52,7 @@ Training split; enforcement lives in Cloudflare AI Crawl Control, not in this re
 from one module, `lib/agents/licensing.ts`, so the licence cannot contradict itself:
 `<permits type="usage">search ai-input</permits>`, `<prohibits type="usage">ai-train</prohibits>`,
 `<payment type="attribution" />` (the price is a credit: name park.fan and link the page the
-number came from).
+number came from), and `<terms>` (RSL 1.0 §3.17) pointing at the terms of use below.
 
 - **The preamble above the first `Content-Signal` is Cloudflare's Content Signals Policy, copied
   verbatim**, including the sentence that makes a restriction an express reservation of rights
@@ -64,6 +64,31 @@ number came from).
   licence is the crawler that skipped robots.txt. On the homepage the value carries the catalog
   links **and** the licence in one string, because Next resolves a repeated header key
   last-match-wins and the homepage rules come last.
+
+## Terms of use: forecasts need a key, commercial use needs an agreement
+
+The terms are prose, in the Impressum under `#data-use` (de and en): free for non-commercial use
+with a credit; park.fan's forecasts (crowd calendar, expected crowds per day and hour, predicted
+waits, best days, day plans) through the API only against a data key, free for non-commercial use
+on request, and commercially only under a written agreement; the live data of park.fan's sources
+for non-commercial use only, because park.fan holds no rights to it. The URL is `DATA_TERMS_URL`
+in `lib/agents/licensing.ts`, and every machine document links it:
+
+- `license.xml` with `<terms>`, the API catalog with `terms-of-service` (RFC 6903);
+- `llms.txt` and `auth.md` with a paragraph; the `park-fan-data` skill types the URL out,
+  because it is a static file served byte for byte.
+
+`pnpm check:agent-ready` fetches the page the licence names and fails when the anchor is gone, and
+fails when the catalog links a different URL.
+
+- **No `<prohibits type="user">commercial</prohibits>`.** RSL licenses a whole page, so the
+  element would also forbid a commercial assistant from reading a page to answer somebody, which
+  `ai-input=yes` allows on purpose. The terms cover values inside a page, and only prose can say
+  that.
+- **The key is the mechanism; the rate limit is not.** A commercial app that caches four parks
+  once a day stays far below any limit, so a limit could not tell it from a fan site. The API
+  refuses forecasts without a key instead, and the rules that follow for this repo are in
+  [a forecast leaves park.fan only with a key](../rules/a-forecast-leaves-only-with-a-key.md).
 
 ## The back office is not part of the offer
 
@@ -110,15 +135,18 @@ never written down beside it. There is deliberately no skill about the admin UI.
 returns capabilities only). `GET` answers 405, because it would open a server-to-client stream
 this server never writes to. The tools are read-only:
 
-| Tool                  | Answers                                                                                              |
-| --------------------- | ---------------------------------------------------------------------------------------------------- |
-| `search_theme_parks`  | a name → the park, ride or city, with its page URL                                                   |
-| `get_park_wait_times` | every ride's current queue and status, longest first; a planned maintenance window today or next     |
-| `get_park_best_days`  | the crowd forecast per day, for picking a date; the rides planned maintenance shuts on each open day |
+| Tool                  | Answers                                                                                                                               |
+| --------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
+| `search_theme_parks`  | a name → the park, ride or city, with its page URL                                                                                    |
+| `get_park_wait_times` | every ride's current queue and status, longest first; a planned maintenance window today or next                                      |
+| `get_park_best_days`  | the crowd forecast per day, for picking a date; the rides planned maintenance shuts on each open day. Needs a data key in `X-API-Key` |
 
 `components/agents/webmcp-tools.tsx` registers the same three through `navigator.modelContext` and
 executes them by calling `/api/mcp`, plus `open_park_fan_page`, which navigates the tab.
-Descriptions and schemas come from `lib/agents/tool-descriptors.ts` for both surfaces. The browser
+Descriptions and schemas come from `lib/agents/tool-descriptors.ts` for both surfaces. The tab's
+calls are same-origin, so the forecast tool answers them without a key, as the page itself would
+(`forecastGrant`, `lib/agents/forecast-access.ts`); any other client's key goes to the API with the
+read itself, so revocation, parks and the hourly allowance apply as on api.park.fan. The browser
 tools call the server rather than the API because two answers depend on rules that sit with the
 data:
 

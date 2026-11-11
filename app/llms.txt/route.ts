@@ -5,6 +5,7 @@ import { AGENT_SKILLS_INDEX_PATH, skillArtifactPath, AGENT_SKILLS } from '@/lib/
 import { API_CATALOG_PATH } from '@/lib/agents/api-catalog';
 import { AI_CATALOG_PATH } from '@/lib/agents/catalog';
 import { agentDocumentHeaders } from '@/lib/agents/http';
+import { DATA_TERMS_URL } from '@/lib/agents/licensing';
 import { SITE_URL } from '@/i18n/config';
 import { blogFeedUrl } from '@/lib/blog/feed';
 
@@ -75,7 +76,11 @@ wait per hour and per weekday.
 
 ${[
   line('API catalog', `${SITE_URL}${API_CATALOG_PATH}`, 'RFC 9727 linkset for the public API'),
-  line('OpenAPI', 'https://api.park.fan/api-json', 'the description; the API needs no key'),
+  line(
+    'OpenAPI',
+    'https://api.park.fan/api-json',
+    'the description; live data needs no key, forecasts need X-API-Key'
+  ),
   line('API reference', 'https://api.park.fan/api', 'the same, for people'),
   line(
     'Capability manifest',
@@ -116,8 +121,18 @@ ${AGENT_SKILLS.map((skill) => line(skill.name, `${SITE_URL}${skillArtifactPath(s
   api.park.fan.
 - Training on these pages is declined (\`Content-Signal: ai-train=no\` in robots.txt). Reading a
   page to answer a question is what the site is for (\`ai-input=yes\`). The same terms in
-  machine-readable form: \`${SITE_URL}/license.xml\` (RSL 1.0). The price is a credit: name
-  park.fan and link the page a number came from.
+  machine-readable form: \`${SITE_URL}/license.xml\` (RSL 1.0).
+
+## Reusing the data
+
+Free for non-commercial use: name park.fan and link the page a number came from. The forecasts
+(everything park.fan's own models predict: crowd calendar, expected crowds per day and hour,
+predicted wait times, best days, yearly predictions, day plans) come from the API and the MCP
+forecast tool only with a data key in \`X-API-Key\`, free for non-commercial use on request
+(${EN}/impressum). Using the forecasts or park.fan's statistics commercially requires a written
+agreement with Patrick Arns (park.fan). Live wait times and opening hours come from park.fan's
+sources and are passed on for non-commercial use only. Without a key, the API allows 60 reads a
+minute and 1,000 an hour per address. The full terms: ${DATA_TERMS_URL}
 
 ## Contact
 

@@ -7,6 +7,8 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`api-catalog.ts`](../../lib/agents/api-catalog.ts)
 
+What park.fan tells machines about its API: the catalog document served at /.well-known/api-catalog (RFC 9727) and the `Link` header the homepage answers with (RFC 8288, RFC 9727 §3).
+
 - `API_CATALOG_PATH` _const_: Where the catalog lives. Fixed by RFC 9727 §2 — agents try this path, not a link.
 - `API_CATALOG_CONTENT_TYPE` _const_: RFC 9727 §4.2: the Linkset media type, plus the profile parameter that says the linkset is an API catalog rather than any other set of links. Only a SHOULD, but it is what tells a client that stumbled on the document what it is holding.
 - `apiCatalog` _const_: The catalog document itself — RFC 9264 Linkset, serialized as-is by the route handler.
@@ -18,6 +20,13 @@ by hand: change the comment in the code and re-run the script. -->
 - `aiCatalog` _function_: Builds the ARD capability manifest served at `/.well-known/ai-catalog.json`: one entry for the API catalog and one per agent skill.
 - `AI_CATALOG_PATH` _const_: The ARD capability manifest (agenticresourcediscovery.org): what park.fan can do for an agent. Every entry points at a document served elsewhere in this repository, so it cannot drift.
 
+### [`forecast-access.ts`](../../lib/agents/forecast-access.ts)
+
+- `presentedApiKey` _function_: The data key an MCP request presents, from `X-API-Key` or `Authorization: Bearer pfk_…`.
+- `forecastGrant` _function_: Whether an MCP request may call a forecast tool, and how; null when it may not.
+- `FORECAST_TOOLS` _const_: See `FORECAST_TOOL_NAMES`.
+- Types: `ForecastGrant`
+
 ### [`http.ts`](../../lib/agents/http.ts)
 
 - `agentDocumentHeaders` _function_: Response headers for a machine-readable document: the given content type, `AGENT_DOC_CACHE_CONTROL` and open CORS, since these exist to be read from other origins.
@@ -28,6 +37,8 @@ by hand: change the comment in the code and re-run the script. -->
 Literal rather than an env var, for the same reason the API catalog is: a preview deployment should hand out the document production hands out, not one about itself.
 
 - `RSL_LICENSE_PATH` _const_
+- `DATA_TERMS_ANCHOR` _const_: The `id` of the terms section in both Impressum languages, so one link reaches either.
+- `DATA_TERMS_URL` _const_: The human-readable terms for reusing park.fan's data: free for non-commercial use, commercial use of the forecasts only under a written agreement, the live data under its sources' terms.
 - `RSL_CONTENT_TYPE` _const_: RSL 1.0 §3. Served as `application/rsl+xml`.
 - `RSL_DOCUMENT` _const_: The licence itself. `payment type="attribution"` is RSL's way of saying the price is a credit: name park.fan and link the page the number came from.
 - `LICENSE_LINK_HEADER` _const_: RSL 1.0 §4.5: the licence, associated with the asset being served.
@@ -46,7 +57,7 @@ Literal rather than an env var, for the same reason the API catalog is: a previe
 ### [`mcp-tools.ts`](../../lib/agents/mcp-tools.ts)
 
 - `MCP_TOOLS` _const_
-- Types: `McpTool`
+- Types: `McpToolContext`, `McpTool`
 
 ### [`skills.ts`](../../lib/agents/skills.ts)
 
@@ -62,4 +73,5 @@ Literal rather than an env var, for the same reason the API catalog is: a previe
 
 - `toolDescriptor` _function_: Returns the agent tool descriptor with the given name from `TOOL_DESCRIPTORS`, and throws when there is none.
 - `TOOL_DESCRIPTORS` _const_
+- `FORECAST_TOOL_NAMES` _const_: The tools whose answer is a forecast. Like the API's forecast routes they need a data key, unless the call comes from a park.fan page (`lib/agents/forecast-access.ts`).
 - Types: `ToolDescriptor`

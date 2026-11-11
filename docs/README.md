@@ -107,7 +107,7 @@ The frontend side of each API surface; the contract itself is linked from each p
 - [brand-pages](seo/brand-pages.md) — The Six Flags and Universal pages: membership by name, grouping, live status, links from the park pages, sitemap and lastmod
 - [blog-feeds](seo/blog-feeds.md) — The six RSS feeds: autodiscovery per route, what an item carries, why excerpts, WebSub ping
 - [favicon](seo/favicon.md) — The generated icon set: sources, files, where declared, regenerating, caching and stable URLs
-- [agent-readiness](seo/agent-readiness.md) — Robots AI policy, RSL licence, llms.txt, API catalog, skills, MCP and WebMCP: how each is built and checked
+- [agent-readiness](seo/agent-readiness.md) — Robots AI policy, RSL licence, terms of use, llms.txt, API catalog, skills, MCP and WebMCP: how each is built and checked
 - [mcp-registry-listing](seo/mcp-registry-listing.md) — How to list the MCP server and API: MCP Registry server.json and DNS auth, awesome-mcp-servers, public-apis
 
 ## Product

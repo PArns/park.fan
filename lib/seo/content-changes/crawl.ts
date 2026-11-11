@@ -1,7 +1,7 @@
 import 'server-only';
 import { getGeoStructure } from '@/lib/api/discovery';
 import { CACHE_TTL } from '@/lib/api/cache-config';
-import { getParkByGeoPathFresh } from '@/lib/api/parks';
+import { getParkByGeoPathFreshWithoutForecasts } from '@/lib/api/parks';
 import { getAttractionPaths } from '@/lib/content-urls';
 import { getParkImages, getRideImages } from '@/lib/media';
 import { getPostsForPark, getPostsForRide } from '@/lib/blog/backlinks';
@@ -15,8 +15,9 @@ import { brandParksByCountry, PARK_BRANDS } from '@/lib/parks/park-brands';
 
 /**
  * One daily pass over the catalog (`/api/cron/content-changes`), producing the fingerprint of
- * every URL a sitemap gives a `<lastmod>`. It reads `getParkByGeoPathFresh`, because the cached
- * variant would report its own lag as tomorrow's change. A park that does not answer is named in
+ * every URL a sitemap gives a `<lastmod>`. It reads `getParkByGeoPathFreshWithoutForecasts`,
+ * because the cached variant would report its own lag as tomorrow's change, and the fingerprint
+ * leaves the forecast fields out anyway. A park that does not answer is named in
  * `failedParkPaths`, so `diffSnapshot` holds its existing dates instead of reading a timeout as a
  * deletion. Which rides count is decided by `getAttractionPaths()`, the sitemap's own list, so the
  * crawl covers exactly the URLs a sitemap lists. See
@@ -138,7 +139,7 @@ export async function crawlContentFingerprints(): Promise<CrawlResult> {
       const target = targets[cursor++];
       let park;
       try {
-        park = await getParkByGeoPathFresh(
+        park = await getParkByGeoPathFreshWithoutForecasts(
           target.continent,
           target.country,
           target.city,

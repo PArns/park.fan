@@ -1,3 +1,4 @@
+import type { ForecastGrant } from './forecast-access';
 import 'server-only';
 import { search } from '@/lib/api/search';
 import { getParkByGeoPath, getParkByGeoPathForAgents } from '@/lib/api/parks';
@@ -10,7 +11,7 @@ import {
   worksPeriodsOf,
 } from '@/lib/utils/works-period';
 import type { WorksPeriod } from '@/lib/api/types';
-import { getBestDaysCalendar } from '@/lib/api/integrated-calendar';
+import { getBestDaysCalendar, getBestDaysForApiKey } from '@/lib/api/integrated-calendar';
 import { convertApiUrlToFrontendUrl } from '@/lib/utils/url-utils';
 import { noLiveWaitTimesReason } from '@/lib/utils/live-wait-times';
 import {
@@ -28,8 +29,14 @@ import type { SearchResultItem } from '@/lib/api/types';
  * read-only, and nothing here reaches `/admin`.
  */
 
+/** What the server knows about the caller when it runs a tool. */
+export interface McpToolContext {
+  /** Set for a forecast tool: whether it reads like a page or with the caller's own key. */
+  forecastGrant?: ForecastGrant;
+}
+
 export type McpTool = ToolDescriptor & {
-  execute: (input: Record<string, unknown>) => Promise<unknown>;
+  execute: (input: Record<string, unknown>, context?: McpToolContext) => Promise<unknown>;
 };
 
 /** The site page for a search hit, or undefined when the hit resolves to no route. */
@@ -163,18 +170,22 @@ const EXECUTORS: Record<string, McpTool['execute']> = {
     };
   },
 
-  async get_park_best_days(input) {
+  async get_park_best_days(input, context) {
     const query = String(input.park ?? '');
     const park = await resolvePark(query);
     if (!park) return { error: `No park on park.fan matches "${query}".` };
+    const grant = context?.forecastGrant;
 
     const days = Math.min(Math.max(Number(input.days) || 30, 1), 90);
     // The rides come from the park's cached structure, the entry the park page reads; a failed
     // read costs the days their maintenance list, never the days.
     const [snapshot, structure] = await Promise.all([
-      getBestDaysCalendar(...park.segments),
+      grant?.via === 'key'
+        ? getBestDaysForApiKey(...park.segments, grant.apiKey)
+        : getBestDaysCalendar(...park.segments),
       catchNonFatal(getParkByGeoPath(...park.segments)),
     ]);
+    if ('refused' in snapshot) return { error: snapshot.message };
     const rides = structure?.attractions ?? [];
 
     return {

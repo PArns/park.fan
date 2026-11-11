@@ -2,6 +2,7 @@ import { Link } from '@/i18n/navigation';
 import { ObfuscatedEmail } from '@/components/common/obfuscated-email';
 import { ObfuscatedPhone } from '@/components/common/obfuscated-phone';
 import { ExternalLink } from 'lucide-react';
+import { DATA_TERMS_ANCHOR, RSL_LICENSE_PATH } from '@/lib/agents/licensing';
 import type { ImpressumStory } from './story';
 
 /** The legal notice (Impressum) in German, shown on the `de` locale. */
@@ -202,6 +203,67 @@ export function ImpressumDE({ story }: { story: ImpressumStory | null }) {
             className="text-primary hover:text-primary/80 underline"
           >
             CC BY 4.0
+          </a>
+          .
+        </p>
+
+        <h2
+          id={DATA_TERMS_ANCHOR}
+          className="border-border mt-12 mb-6 scroll-mt-20 border-b pb-3 text-3xl font-bold"
+        >
+          Nutzung der Daten
+        </h2>
+        <p className="mb-4">
+          Die Daten, die park.fan auf den Seiten und über die API unter api.park.fan veröffentlicht
+          (Wartezeiten, Öffnungszeiten, Statistiken und Prognosen), darf jeder kostenlos für
+          nicht-kommerzielle Zwecke verwenden: in einer eigenen App, auf einer Fanseite ohne
+          Werbung, in einem Forschungsprojekt oder einer Schularbeit. Bedingung ist ein
+          Quellenhinweis auf park.fan mit Link zur Seite des Parks oder der Attraktion, um die es
+          geht. Texte und Fotos gehören nicht dazu.
+        </p>
+
+        <h3 className="mt-8 mb-4 text-2xl font-semibold">Prognosen nur mit API-Key</h3>
+        <p className="mb-4">
+          Prognosen sind alles, was park.fan mit eigenen Modellen vorhersagt, darunter der
+          Crowd-Kalender, der erwartete Andrang pro Tag und pro Stunde, vorhergesagte Wartezeiten,
+          die besten Besuchstage, die Jahresprognosen und die Pläne des Tagesplaners. Die API gibt
+          sie nur mit einem API-Key heraus. Für nicht-kommerzielle Zwecke ist der Key kostenlos; es
+          gibt ihn auf Anfrage an{' '}
+          <ObfuscatedEmail local="hello" domain="park.fan" displayText="hello [at] park.fan" />.
+        </p>
+
+        <h3 className="mt-8 mb-4 text-2xl font-semibold">Kommerzielle Nutzung</h3>
+        <p className="mb-4">
+          Kommerziell sind zum Beispiel eine kostenpflichtige App, eine App mit Abo, In-App-Käufen
+          oder Werbung, eine Website mit Werbung oder Affiliate-Links und jedes Produkt, das ein
+          Unternehmen anbietet. Für eine kommerzielle Nutzung der Prognosen und Statistiken von
+          park.fan braucht es eine schriftliche Vereinbarung mit Patrick Arns (park.fan). Ohne sie
+          dürfen sie für solche Zwecke weder gezeigt noch gespeichert noch weitergegeben werden,
+          gleich ob sie von den Seiten, aus der API oder vom MCP-Server stammen.
+        </p>
+
+        <h3 className="mt-8 mb-4 text-2xl font-semibold">
+          Live-Daten nur für nicht-kommerzielle Zwecke
+        </h3>
+        <p className="mb-4">
+          Wartezeiten und Öffnungszeiten kommen von den Plattformen unter „Datenquellen“, das Wetter
+          von Open-Meteo. park.fan gibt sie für nicht-kommerzielle Zwecke weiter, zu den Bedingungen
+          oben. Eigene Rechte an diesen Daten hat park.fan nicht und kann eine kommerzielle Nutzung
+          deshalb auch nicht erlauben: Dafür braucht es eine Vereinbarung mit der jeweiligen Quelle.
+        </p>
+
+        <h3 className="mt-8 mb-4 text-2xl font-semibold">Kein Training von KI-Modellen</h3>
+        <p className="mb-4">
+          Weder die Seiten noch die Prognosen aus der API dürfen zum Training oder Fine-Tuning von
+          KI-Modellen oder anderen Prognosemodellen verwendet werden. Ein Assistent darf eine Seite
+          lesen, um jemandem eine Frage zu beantworten. Für die Seiten stehen diese Regeln
+          maschinenlesbar in{' '}
+          <a href="/robots.txt" className="text-primary hover:text-primary/80 underline">
+            robots.txt
+          </a>{' '}
+          und{' '}
+          <a href={RSL_LICENSE_PATH} className="text-primary hover:text-primary/80 underline">
+            license.xml
           </a>
           .
         </p>
