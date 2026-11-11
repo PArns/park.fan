@@ -32,7 +32,11 @@ export class AdminApiError extends Error {
 
 interface RequestOptions {
   method?: 'GET' | 'POST' | 'PATCH' | 'PUT' | 'DELETE';
-  body?: unknown;
+  /**
+   * The value to send; serialized here. An object or array, never a string: a string that is
+   * already JSON would be encoded a second time, and the API refuses a quoted string as a body.
+   */
+  body?: object;
   signal?: AbortSignal;
 }
 
