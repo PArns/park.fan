@@ -77,14 +77,14 @@ inset's margin and border); a page that fills the viewport subtracts it, as the 
 
 **The sidebar is sorted by what a person does**, not by which API serves a page (`_app/nav.ts`):
 
-| Group        | Entries                                                                     |
-| ------------ | --------------------------------------------------------------------------- |
-| (top)        | Übersicht                                                                   |
-| Kuratieren   | Parks, Saisons, Datenqualität, Duplikate, Stilllegungen, Änderungen         |
-| Inhalte      | Blog, Medien, Vor Ort, Einsendungen                                         |
-| Publikum     | Traffic (Live, SEO, Suche, Wege, Tagesplaner, Beliebtheit), Parky (3 pages) |
-| Betrieb      | System, Queues, ML-Zentrale (Modellvergleich), Parks live, Wartung          |
-| Konto (foot) | Mein Konto, Konten: in the account menu at the sidebar's foot, and in `/`   |
+| Group        | Entries                                                                             |
+| ------------ | ----------------------------------------------------------------------------------- |
+| (top)        | Übersicht                                                                           |
+| Kuratieren   | Parks, Saisons, Datenqualität, Duplikate, Stilllegungen, Änderungen                 |
+| Inhalte      | Blog, Medien, Vor Ort, Einsendungen                                                 |
+| Publikum     | Traffic (Live, SEO, Suche, Wege, Tagesplaner, Beliebtheit), Parky (3 pages)         |
+| Betrieb      | System, Queues, ML-Zentrale (Modellvergleich), Parks live, Wartung                  |
+| Konto (foot) | Mein Konto, Konten, API-Keys: in the account menu at the sidebar's foot, and in `/` |
 
 Datenqualität sits with the editors because its cards ask curation questions (season or gone?).
 `NavGroup.placement` puts a group on top without a heading (`top`) or behind the account button
@@ -335,6 +335,22 @@ The section „API-Zugriff / MCP“ (`account/mcp-access.tsx`) has the address w
 - **An owner sees another account's tokens** under „API-Zugriff“ on that account's row in
   `/admin/users` (`?userId=` on the same endpoint), with the same revoke button. Creating a token for
   somebody else is not offered.
+
+### Data API keys: `/admin/api-keys`
+
+The keys that unlock park.fan's forecasts on api.park.fan for one consumer each
+([a forecast leaves park.fan only with a key](../rules/a-forecast-leaves-only-with-a-key.md)).
+Owner only, in the nav and on the API (`/v1/admin/api-keys`, audited as `api-key.create` and
+`api-key.revoke`), because a key decides who uses the forecasts. Helpers in `lib/admin/api-keys.ts`.
+
+- **The list** shows every key, active ones first: name, usage (nicht-kommerziell, or kommerziell
+  for a holder with a written agreement), prefix, contact, created, last used, and when it was
+  revoked. An active row has its revoke button behind a `ConfirmDialog`; a revoked one stays
+  listed, dimmed.
+- **Create** takes a name, an optional contact, the usage and an optional note, and needs no
+  password: a data key opens forecasts, never the admin. The key is in the answer once and lives in
+  the dialog's state only, as a token does above; Escape and the overlay do not close the dialog
+  while it is shown. The dialog adds a `curl` line with the key in `X-API-Key`.
 
 ## Curated fields
 

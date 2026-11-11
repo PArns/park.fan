@@ -321,6 +321,12 @@ Route `/admin/analytics` (page).
 
 - `default (AnalyticsPage)` _component_
 
+### [`api-keys/page.tsx`](../../app/admin/api-keys/page.tsx)
+
+Route `/admin/api-keys` (page).
+
+- `default (ApiKeysPage)` _component_: The data API keys: who may read park.fan's forecasts on api.park.fan. Owner only, because a key decides who uses the forecasts, which is a licensing decision rather than an editorial one; the backend enforces the same.
+
 ### [`assistant/_lib/assistant.ts`](../../app/admin/assistant/_lib/assistant.ts)
 
 - `sitePageUrl` _function_: Where a page a chat or a feedback names opens on the site, or null for anything but a path of slugs. The API stores only those; checked again because the path is glued to the origin, where `@host` or `//host` would lead off the site.

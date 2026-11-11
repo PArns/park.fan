@@ -91,6 +91,17 @@ by hand: change the comment in the code and re-run the script. -->
 - `getFavorites` _function_: Get favorites with full details: the API directly on the server, and in the browser either the API too (`NEXT_PUBLIC_API_DIRECT`) or the `/api/favorites` relay.
 - Types: `FavoritePark`, `FavoriteAttraction`, `FavoriteShow`, `FavoriteRestaurant`, `FavoritesResponse`
 
+### [`forecast-query.ts`](../../lib/api/forecast-query.ts)
+
+- `withForecast` _function_: `path` with the forecast flag added to its query string.
+- `FORECAST_QUERY` _const_: The API leaves the forecast fields of a mixed route (park detail, ride detail, `/stats/day`, `/favorites`) out unless the request carries `forecast=true` and a key; the server's `x-auth-key` counts as one.
+
+### [`forecast-relay.ts`](../../lib/api/forecast-relay.ts)
+
+- `isForecastRelayPath` _function_: Whether a relay path under `/api/parks/*` answers with forecast data: the live poll (it carries `bestVisitTimes`), the calendar, best days, the day plan, a ride's detail and its day curve.
+- `isSameOriginRequest` _function_: Whether a relay request comes from a park.fan page. Browsers send `Sec-Fetch-Site: same-origin` on a page's own fetches, and a page on another site cannot make them say so.
+- `foreignForecastRequest` _function_: The answer a forecast relay gives a caller that is not a park.fan page. Never cached.
+
 ### [`glossary-rides.ts`](../../lib/api/glossary-rides.ts)
 
 - `getAttractionsForTerm` _function_: Rides whose track figures, ride type or manufacturer match `termId`. An empty list rather than a throw, so a glossary page still renders when the API is down.

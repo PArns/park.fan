@@ -76,7 +76,11 @@ wait per hour and per weekday.
 
 ${[
   line('API catalog', `${SITE_URL}${API_CATALOG_PATH}`, 'RFC 9727 linkset for the public API'),
-  line('OpenAPI', 'https://api.park.fan/api-json', 'the description; the API needs no key'),
+  line(
+    'OpenAPI',
+    'https://api.park.fan/api-json',
+    'the description; live data needs no key, forecasts need X-API-Key'
+  ),
   line('API reference', 'https://api.park.fan/api', 'the same, for people'),
   line(
     'Capability manifest',
@@ -123,9 +127,10 @@ ${AGENT_SKILLS.map((skill) => line(skill.name, `${SITE_URL}${skillArtifactPath(s
 
 Free for non-commercial use: name park.fan and link the page a number came from. The forecasts
 (crowd calendar, expected crowds per day and hour, predicted wait times, best days, day plans)
-come from park.fan's own models. Using them commercially, from the pages, the API or MCP,
-requires a written agreement with park.fan (contact: ${EN}/impressum). Live wait times and opening hours belong
-to the sources park.fan reads them from, under those sources' terms. The full terms:
+come from park.fan's own models; the API and the MCP forecast tool hand them out only against a
+data key in \`X-API-Key\`, free for non-commercial use on request (${EN}/impressum). Using them
+commercially requires a written agreement with park.fan. Live wait times and opening hours come
+from park.fan's sources and are passed on for non-commercial use only. The full terms:
 ${DATA_TERMS_URL}
 
 ## Contact

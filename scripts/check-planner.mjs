@@ -7136,8 +7136,10 @@ step: {
   // rather than written down: this park shuts at 18:00 today and the assertion
   // below is about the RULE, not about that number, so a hard-coded 1140 would
   // stop testing anything the season the hours move.
+  // The relay answers only the site's own pages (`isSameOriginRequest`), as a browser would ask.
   const context = await fetch(
-    `${BASE}/api/parks/europe/germany/bruehl/phantasialand/plan/day?date=${DATE}`
+    `${BASE}/api/parks/europe/germany/bruehl/phantasialand/plan/day?date=${DATE}`,
+    { headers: { 'Sec-Fetch-Site': 'same-origin' } }
   )
     .then((response) => (response.ok ? response.json() : null))
     .catch(() => null);

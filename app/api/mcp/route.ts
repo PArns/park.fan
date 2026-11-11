@@ -1,13 +1,16 @@
 import { NextResponse } from 'next/server';
 import { MCP_TOOLS } from '@/lib/agents/mcp-tools';
+import { FORECAST_TOOLS, mayReadForecasts } from '@/lib/agents/forecast-access';
+import { DATA_TERMS_URL } from '@/lib/agents/licensing';
 import { MCP_PROTOCOL_VERSION, MCP_SERVER_INFO } from '@/lib/agents/mcp-server-card';
 
 /**
  * park.fan's MCP server: Streamable HTTP, stateless, read-only. Written out rather than taken from
  * the SDK, whose session store and SSE transport it does not need, so a cold start stays fast.
  * Stateless means no session id, so `initialize` returns capabilities only (within spec). GET is
- * 405 because it would open a server-to-client stream this server never writes to. The tools are
- * public and take no credential (`lib/agents/mcp-tools.ts`).
+ * 405 because it would open a server-to-client stream this server never writes to. The live tools
+ * take no credential; a forecast tool needs a data key in `X-API-Key`, like the API's forecast
+ * routes, unless the call comes from a park.fan page (`lib/agents/forecast-access.ts`).
  */
 
 // Live wait times: never cached, never prerendered.
@@ -19,7 +22,8 @@ type JsonRpcRequest = { jsonrpc: '2.0'; id?: JsonRpcId; method: string; params?:
 const CORS_HEADERS = {
   'Access-Control-Allow-Origin': '*',
   'Access-Control-Allow-Methods': 'POST, OPTIONS',
-  'Access-Control-Allow-Headers': 'Content-Type, MCP-Protocol-Version, Accept',
+  'Access-Control-Allow-Headers':
+    'Content-Type, MCP-Protocol-Version, Accept, X-API-Key, Authorization',
   'Access-Control-Max-Age': '86400',
 };
 
@@ -41,7 +45,10 @@ function failure(id: JsonRpcId, code: number, message: string, status = 200) {
   );
 }
 
-async function handle(request: JsonRpcRequest): Promise<NextResponse | null> {
+async function handle(
+  request: JsonRpcRequest,
+  forecastAccess: () => Promise<boolean>
+): Promise<NextResponse | null> {
   const id = request.id ?? null;
 
   switch (request.method) {
@@ -72,6 +79,18 @@ async function handle(request: JsonRpcRequest): Promise<NextResponse | null> {
       const params = (request.params ?? {}) as { name?: string; arguments?: unknown };
       const tool = MCP_TOOLS.find((candidate) => candidate.name === params.name);
       if (!tool) return failure(id, -32602, `Unknown tool: ${params.name}`);
+
+      if (FORECAST_TOOLS.has(tool.name) && !(await forecastAccess())) {
+        return result(id, {
+          content: [
+            {
+              type: 'text',
+              text: `${tool.name} returns park.fan's crowd forecasts, which need a park.fan data API key in the X-API-Key header. Keys for non-commercial use are free on request. Terms: ${DATA_TERMS_URL}`,
+            },
+          ],
+          isError: true,
+        });
+      }
 
       try {
         const output = await tool.execute((params.arguments ?? {}) as Record<string, unknown>);
@@ -106,6 +125,11 @@ async function handle(request: JsonRpcRequest): Promise<NextResponse | null> {
 }
 
 export async function POST(request: Request): Promise<NextResponse | Response> {
+  // Asked once per HTTP request and only when a forecast tool is called: the check may cost a
+  // round trip to the API.
+  let access: Promise<boolean> | null = null;
+  const forecastAccess = () => (access ??= mayReadForecasts(request));
+
   let body: unknown;
   try {
     body = await request.json();
@@ -120,7 +144,9 @@ export async function POST(request: Request): Promise<NextResponse | Response> {
       return failure(null, -32600, `Batch too large: at most ${MAX_BATCH} entries`, 400);
     }
     const responses: (NextResponse | null)[] = [];
-    for (const entry of body) responses.push(await handle(entry as JsonRpcRequest));
+    for (const entry of body) {
+      responses.push(await handle(entry as JsonRpcRequest, forecastAccess));
+    }
     const answered = await Promise.all(
       responses
         .filter((response): response is NextResponse => response !== null)
@@ -130,7 +156,7 @@ export async function POST(request: Request): Promise<NextResponse | Response> {
     return NextResponse.json(answered, { headers: CORS_HEADERS });
   }
 
-  const response = await handle(body as JsonRpcRequest);
+  const response = await handle(body as JsonRpcRequest, forecastAccess);
   return response ?? new Response(null, { status: 202, headers: CORS_HEADERS });
 }
 

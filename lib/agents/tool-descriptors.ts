@@ -55,7 +55,7 @@ export const TOOL_DESCRIPTORS: ToolDescriptor[] = [
     name: 'get_park_best_days',
     title: 'Crowd forecast per day',
     description:
-      'The crowd forecast for a park over the coming three months: one entry per day with the predicted crowd level, whether the park is open, whether it is a holiday or school vacation, and which rides planned maintenance shuts that day. Use this to pick a date rather than to read a queue.',
+      'The crowd forecast for a park over the coming three months: one entry per day with the predicted crowd level, whether the park is open, whether it is a holiday or school vacation, and which rides planned maintenance shuts that day. Use this to pick a date rather than to read a queue. Needs a park.fan data API key in the X-API-Key header, free for non-commercial use on request.',
     inputSchema: {
       type: 'object',
       properties: {
@@ -83,3 +83,9 @@ export function toolDescriptor(name: string): ToolDescriptor {
   if (!descriptor) throw new Error(`No tool descriptor named ${name}`);
   return descriptor;
 }
+
+/**
+ * The tools whose answer is a forecast. Like the API's forecast routes they need a data key, unless
+ * the call comes from a park.fan page (`lib/agents/forecast-access.ts`).
+ */
+export const FORECAST_TOOL_NAMES: readonly string[] = ['get_park_best_days'];

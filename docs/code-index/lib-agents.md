@@ -20,6 +20,12 @@ What park.fan tells machines about its API: the catalog document served at /.wel
 - `aiCatalog` _function_: Builds the ARD capability manifest served at `/.well-known/ai-catalog.json`: one entry for the API catalog and one per agent skill.
 - `AI_CATALOG_PATH` _const_: The ARD capability manifest (agenticresourcediscovery.org): what park.fan can do for an agent. Every entry points at a document served elsewhere in this repository, so it cannot drift.
 
+### [`forecast-access.ts`](../../lib/agents/forecast-access.ts)
+
+- `presentedApiKey` _function_: The data key an MCP request presents, from `X-API-Key` or `Authorization: Bearer pfk_…`.
+- `mayReadForecasts` _function_: Whether an MCP request may call a forecast tool: a park.fan page's own WebMCP call, or a client that sends an active data key. The tool then reads through the server's key like a page does.
+- `FORECAST_TOOLS` _const_: See `FORECAST_TOOL_NAMES`.
+
 ### [`http.ts`](../../lib/agents/http.ts)
 
 - `agentDocumentHeaders` _function_: Response headers for a machine-readable document: the given content type, `AGENT_DOC_CACHE_CONTROL` and open CORS, since these exist to be read from other origins.
@@ -66,4 +72,5 @@ Literal rather than an env var, for the same reason the API catalog is: a previe
 
 - `toolDescriptor` _function_: Returns the agent tool descriptor with the given name from `TOOL_DESCRIPTORS`, and throws when there is none.
 - `TOOL_DESCRIPTORS` _const_
+- `FORECAST_TOOL_NAMES` _const_: The tools whose answer is a forecast. Like the API's forecast routes they need a data key, unless the call comes from a park.fan page (`lib/agents/forecast-access.ts`).
 - Types: `ToolDescriptor`

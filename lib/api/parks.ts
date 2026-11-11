@@ -1,6 +1,7 @@
 import { cache } from 'react';
 
 import { api, ApiError } from './client';
+import { withForecast } from './forecast-query';
 import { CACHE_TTL } from './cache-config';
 import { getGeoStructure } from './discovery';
 import {
@@ -283,7 +284,7 @@ export const getParkByGeoPath = cache(
     city: string,
     parkSlug: string
   ): Promise<ParkWithAttractions | null> =>
-    fetchParkByGeoPath(continent, country, city, parkSlug, false)
+    fetchParkByGeoPath(continent, country, city, parkSlug, false, true)
 );
 
 /**
@@ -301,7 +302,7 @@ export async function getParkByGeoPathFresh(
   city: string,
   parkSlug: string
 ): Promise<ParkWithAttractions | null> {
-  return fetchParkByGeoPath(continent, country, city, parkSlug, true);
+  return fetchParkByGeoPath(continent, country, city, parkSlug, true, true);
 }
 
 /**
@@ -314,7 +315,8 @@ export async function getParkByGeoPathForAgents(
   city: string,
   parkSlug: string
 ): Promise<ParkWithAttractions | null> {
-  return fetchParkByGeoPath(continent, country, city, parkSlug, true, CACHE_TTL.agentPark);
+  // Live data only: without the forecast flag the API answer stays in Cloudflare's shared cache.
+  return fetchParkByGeoPath(continent, country, city, parkSlug, true, false, CACHE_TTL.agentPark);
 }
 
 async function fetchParkByGeoPath(
@@ -323,13 +325,15 @@ async function fetchParkByGeoPath(
   city: string,
   parkSlug: string,
   fresh: boolean,
+  forecasts: boolean,
   liveRevalidate?: number
 ): Promise<ParkWithAttractions | null> {
   const tags = ['parks', parkCacheTag(continent, country, city, parkSlug)];
   const revalidate = fresh ? liveRevalidate : PARK_REVALIDATE;
+  const path = `/v1/parks/${continent}/${country}/${city}/${parkSlug}`;
   try {
     const park = await api.get<ParkWithAttractions>(
-      `/v1/parks/${continent}/${country}/${city}/${parkSlug}`,
+      forecasts ? withForecast(path) : path,
       revalidate === undefined ? { cache: 'no-store' } : { next: { revalidate, tags } }
     );
     // The ISR shell gets the aggressive trim (drops statistics.history — the biggest size-weighted
@@ -420,7 +424,9 @@ export async function getAttractionByGeoPath(
   try {
     const attraction = withAttractionCoordinates(
       await api.get<AttractionResponse>(
-        `/v1/parks/${continent}/${country}/${city}/${parkSlug}/attractions/${attractionSlug}`,
+        withForecast(
+          `/v1/parks/${continent}/${country}/${city}/${parkSlug}/attractions/${attractionSlug}`
+        ),
         { next: { revalidate: ATTRACTION_REVALIDATE, tags: ['attractions'] } }
       )
     );
@@ -453,7 +459,9 @@ export async function getAttractionByGeoPathFresh(
   try {
     const attraction = withAttractionCoordinates(
       await api.get<AttractionResponse>(
-        `/v1/parks/${continent}/${country}/${city}/${parkSlug}/attractions/${attractionSlug}`,
+        withForecast(
+          `/v1/parks/${continent}/${country}/${city}/${parkSlug}/attractions/${attractionSlug}`
+        ),
         { cache: 'no-store' }
       )
     );

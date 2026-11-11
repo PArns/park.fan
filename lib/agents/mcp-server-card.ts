@@ -1,4 +1,5 @@
 import { SITE_URL } from '@/i18n/config';
+import { FORECAST_TOOL_NAMES } from './tool-descriptors';
 
 /**
  * What park.fan's MCP server says about itself — the server card (SEP-1649) and the two
@@ -33,7 +34,7 @@ export function mcpServerCard(toolNames: string[]) {
   return {
     serverInfo: MCP_SERVER_INFO,
     description:
-      'Live wait times, ride status and crowd forecasts for around 200 theme parks and 7,000 attractions worldwide. Read-only and public: no API key, no account, no authentication.',
+      'Live wait times, ride status and crowd forecasts for around 200 theme parks and 7,000 attractions worldwide. Read-only. The live tools need no key; the forecast tool needs a park.fan data API key in the X-API-Key header.',
     protocolVersion: MCP_PROTOCOL_VERSION,
     // Streamable HTTP, POST only — this server sends nothing a client did not ask for, so it
     // opens no SSE stream (see app/api/mcp/route.ts).
@@ -42,8 +43,14 @@ export function mcpServerCard(toolNames: string[]) {
     capabilities: { tools: { listChanged: false } },
     tools: toolNames,
     // Said out loud because the alternative is a client guessing: there is no authorization
-    // server, no token endpoint and nothing to register. See /auth.md.
-    authentication: { type: 'none' },
+    // server, no token endpoint and nothing to register; a forecast tool reads a static key from a
+    // header. See /auth.md.
+    authentication: {
+      type: 'api-key',
+      in: 'header',
+      name: 'X-API-Key',
+      requiredFor: [...FORECAST_TOOL_NAMES],
+    },
     documentation: `${SITE_URL}/.well-known/agent-skills/park-fan-data/SKILL.md`,
   };
 }

@@ -2,6 +2,7 @@ import { cache } from 'react';
 import { getApiBaseUrl, getServerApiHeaders } from '@/lib/api/client';
 import { CACHE_TTL } from '@/lib/api/cache-config';
 import { withSeedTimeout } from '@/lib/api/seed-timeout';
+import { withForecast } from './forecast-query';
 import type {
   HourlyProfileRange,
   ParkHistoricalStats,
@@ -163,7 +164,9 @@ export async function getRideDayCurve(
   attraction?: string
 ): Promise<RideDayCurve | null> {
   const query = attraction ? `?attraction=${encodeURIComponent(attraction)}` : '';
-  const url = `${getApiBaseUrl()}/v1/parks/${continent}/${country}/${city}/${parkSlug}/stats/day${query}`;
+  const url = withForecast(
+    `${getApiBaseUrl()}/v1/parks/${continent}/${country}/${city}/${parkSlug}/stats/day${query}`
+  );
 
   const res = await fetch(url, { headers: getServerApiHeaders() });
   if (res.status === 404) return null;

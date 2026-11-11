@@ -2,6 +2,11 @@ import geomagnetism from 'geomagnetism';
 import { NextRequest, NextResponse } from 'next/server';
 import { getIntegratedCalendar, getBestDaysSnapshotFresh } from '@/lib/api/integrated-calendar';
 import {
+  foreignForecastRequest,
+  isForecastRelayPath,
+  isSameOriginRequest,
+} from '@/lib/api/forecast-relay';
+import {
   getParkByGeoPath,
   getParkByGeoPathFresh,
   getAttractionByGeoPathFresh,
@@ -86,6 +91,11 @@ export async function GET(
   // Before any segment reaches a backend URL: see `isSlugPath`.
   if (!path || !isSlugPath(path)) {
     return NextResponse.json({ error: 'Invalid path' }, { status: 400 });
+  }
+
+  // The forecast branches answer only park.fan's own pages; see `isSameOriginRequest`.
+  if (isForecastRelayPath(path) && !isSameOriginRequest(request)) {
+    return foreignForecastRequest();
   }
 
   // The park page's live poll.

@@ -5,6 +5,15 @@ by hand: change the comment in the code and re-run the script. -->
 
 [All pages](README.md).
 
+### [`api-keys.ts`](../../lib/admin/api-keys.ts)
+
+- `createDataApiKeyBody` _function_: The body of a create: empty optional fields are left out rather than sent as empty strings.
+- `dataApiKeyCurlExample` _function_: How a client sends the key, for the dialog to show next to it.
+- `DATA_API_KEY_USAGE_LABELS` _const_: The labels the page uses for a key's usage.
+- `DATA_API_KEYS_PATH` _const_: The proxy path of the backend's key endpoints.
+- `DATA_API_KEYS_QUERY_KEY` _const_: The React Query key of the list.
+- Types: `DataApiKeyUsage`, `DataApiKey`, `CreatedDataApiKey`
+
 ### [`blog-image-sidecar.ts`](../../lib/admin/blog-image-sidecar.ts)
 
 - `textFromDrafts` _function_: `![alt | caption | …](path)` for one image, across every filled locale.

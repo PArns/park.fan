@@ -16,12 +16,14 @@
  *   - a licence or API catalog whose terms link has no section to land on;
  *   - an MCP server card promising a tool the server does not list;
  *   - the MCP endpoint failing its own handshake, or a tool that no longer answers;
+ *   - a forecast tool answering a caller without a data key;
  *   - a park with no wait-time source being reported as a park with no queues.
  *
  * Needs a running site (`pnpm dev`, or `pnpm start` after a build):
  *
  *     pnpm check:agent-ready
  *     BASE=http://localhost:3000 pnpm check:agent-ready
+ *     PARKFAN_DATA_KEY=pfk_… pnpm check:agent-ready   # also calls the forecast tool with a key
  */
 
 import { createHash } from 'node:crypto';
@@ -49,10 +51,10 @@ async function get(path, headers = {}) {
   };
 }
 
-async function rpc(method, params) {
+async function rpc(method, params, headers = {}) {
   const response = await fetch(`${BASE}/api/mcp`, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers: { 'Content-Type': 'application/json', ...headers },
     body: JSON.stringify({ jsonrpc: '2.0', id: 1, method, params }),
   });
   return response.status === 202 ? null : await response.json();
@@ -256,12 +258,37 @@ check(
   `${windows.length} window(s)`
 );
 
-const bestDays = await call('get_park_best_days', { park: 'Europa-Park', days: 5 });
+// A forecast tool needs a data key like the API's forecast routes. Without one it has to say so
+// rather than answer; with one (PARKFAN_DATA_KEY, a pfk_ key) it has to answer.
+const refused = (
+  await rpc('tools/call', {
+    name: 'get_park_best_days',
+    arguments: { park: 'Europa-Park', days: 5 },
+  })
+)?.result;
 check(
-  'get_park_best_days returns a dated forecast',
-  (bestDays?.days ?? []).length === 5 &&
-    bestDays.days.every((d) => /^\d{4}-\d{2}-\d{2}$/.test(d.date))
+  'get_park_best_days without a key refuses and names the header',
+  refused?.isError === true && /X-API-Key/.test(refused?.content?.[0]?.text ?? ''),
+  refused?.content?.[0]?.text?.slice(0, 80)
 );
+
+const DATA_KEY = process.env.PARKFAN_DATA_KEY;
+if (DATA_KEY) {
+  const bestDays = (
+    await rpc(
+      'tools/call',
+      { name: 'get_park_best_days', arguments: { park: 'Europa-Park', days: 5 } },
+      { 'X-API-Key': DATA_KEY }
+    )
+  )?.result?.structuredContent;
+  check(
+    'get_park_best_days with a key returns a dated forecast',
+    (bestDays?.days ?? []).length === 5 &&
+      bestDays.days.every((d) => /^\d{4}-\d{2}-\d{2}$/.test(d.date))
+  );
+} else {
+  console.log('➖ get_park_best_days with a key: skipped, PARKFAN_DATA_KEY is not set');
+}
 
 // ── the blog feed ───────────────────────────────────────────────────────────
 // A feed has no reader inside the site either. Nothing on park.fan renders it, so it can lose
