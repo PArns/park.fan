@@ -257,6 +257,39 @@ export function ImpressumEN({ story }: { story: ImpressumStory | null }) {
           .
         </p>
 
+        <h3 className="mt-8 mb-4 text-2xl font-semibold">Source code</h3>
+        <p className="mb-4">
+          park.fan's source code is public on GitHub, for the{' '}
+          <a
+            href="https://github.com/PArns/park.fan"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-primary hover:text-primary/80 underline"
+          >
+            website
+          </a>{' '}
+          and the{' '}
+          <a
+            href="https://github.com/PArns/v4.api.park.fan"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-primary hover:text-primary/80 underline"
+          >
+            API
+          </a>
+          . It is licensed under the{' '}
+          <a
+            href="https://polyformproject.org/licenses/noncommercial/1.0.0/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-primary hover:text-primary/80 underline"
+          >
+            PolyForm Noncommercial License 1.0.0
+          </a>
+          : anyone may use, change and share it for non-commercial purposes; commercial use needs a
+          written agreement. Texts, photos, the name park.fan and its logos are not covered.
+        </p>
+
         <h2 className="border-border mt-12 mb-6 border-b pb-3 text-3xl font-bold">Image Credits</h2>
         <p className="mb-4">Many thanks to everyone who contributed to the look of park.fan:</p>
         <ul className="divide-border mb-4 divide-y">

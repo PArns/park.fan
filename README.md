@@ -84,6 +84,13 @@ behind Cloudflare. All park data comes from the [park.fan API](https://github.co
 | [docs/rules/README.md](docs/rules/README.md)  | The standing rules, one line each                                        |
 | [docs/code-index/](docs/code-index/README.md) | Every exported component, hook and helper (generated)                    |
 
+## License
+
+The code is source-available under the [PolyForm Noncommercial License 1.0.0](LICENSE.md): free
+for any noncommercial purpose, commercial use only under a written agreement. Texts, photos, the
+name park.fan and its logos are not covered ([NOTICE.md](NOTICE.md)). What may be done with the
+data is set out at [park.fan/en/impressum#data-use](https://park.fan/en/impressum#data-use).
+
 ---
 
 <div align="center">

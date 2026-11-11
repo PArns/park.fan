@@ -264,6 +264,40 @@ export function ImpressumDE({ story }: { story: ImpressumStory | null }) {
           .
         </p>
 
+        <h3 className="mt-8 mb-4 text-2xl font-semibold">Quellcode</h3>
+        <p className="mb-4">
+          Der Quellcode von park.fan liegt öffentlich auf GitHub, für die{' '}
+          <a
+            href="https://github.com/PArns/park.fan"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-primary hover:text-primary/80 underline"
+          >
+            Website
+          </a>{' '}
+          und die{' '}
+          <a
+            href="https://github.com/PArns/v4.api.park.fan"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-primary hover:text-primary/80 underline"
+          >
+            API
+          </a>
+          . Er steht unter der{' '}
+          <a
+            href="https://polyformproject.org/licenses/noncommercial/1.0.0/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-primary hover:text-primary/80 underline"
+          >
+            PolyForm Noncommercial License 1.0.0
+          </a>
+          : Für nicht-kommerzielle Zwecke darf ihn jeder nutzen, ändern und weitergeben, kommerziell
+          nur mit schriftlicher Vereinbarung. Texte, Fotos, der Name park.fan und die Logos fallen
+          nicht darunter.
+        </p>
+
         <h2 className="border-border mt-12 mb-6 border-b pb-3 text-3xl font-bold">Bildnachweise</h2>
         <p className="mb-4">
           Herzlichen Dank an alle, die zum Erscheinungsbild von park.fan beigetragen haben:

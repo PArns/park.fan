@@ -110,6 +110,9 @@ public/media/**/*-1x1.jpg
 # Read by the blog skills from the repo root, so every checkout needs them.
 !/BRAND.md
 !/VOICE.md
+# The code licence and what it leaves out.
+!/LICENSE.md
+!/NOTICE.md
 # The media database's authoring contract lives next to the files it describes.
 !/public/media/README.md
 
