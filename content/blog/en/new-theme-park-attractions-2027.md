@@ -217,14 +217,14 @@ lets the name slip in, of all places, its Black November discount on annual pass
 that in 2027 you'll get to know "Nickelodeon Land en 3 gloednieuwe attracties", Nickelodeon Land
 and three brand-new rides.
 
-On 12 September 2026, park CEO Yves Peeters told the broadcaster VRT NWS that the three family
-rides open just inside the entrance from April 2027, with characters such as Garfield and
-SpongeBob. They cost around 15 million euros, and Peeters puts that next to the Fury coaster of
-2019 as one of the biggest investments the park has ever made. The giant swing takes 18 riders up
-to 12 metres, and the drop tower is 15 metres tall. The water ride Big Wavez lifts riders above 20
-metres, and after the drop it sets off a 10-metre wave that, Peeters says, catches anyone standing
-nearby as well. Bobbejaanland hasn't named a manufacturer for any of the three. The charging points
-in the car park are already out of service because of the work on the new area.
+On 12 September 2026, park CEO Yves Peeters told the broadcaster VRT NWS that the three family rides
+open just inside the entrance from April 2027, with characters such as Garfield and SpongeBob. They
+cost around 15 million euros, and Peeters puts that next to the Fury coaster of 2019 as one of the
+biggest investments the park has ever made. None of the three has a published manufacturer so far.
+The giant swing takes 18 riders up to 12 metres, and the drop tower is 15 metres tall. The water
+ride Big Wavez lifts riders above 20 metres, and after the drop it sets off a 10-metre wave that,
+Peeters says, catches anyone standing nearby as well. The charging points in the car park are
+already out of service because of the work on the new area.
 
 ## France
 
@@ -404,18 +404,18 @@ park, too.
 [Kentucky Kingdom](ref:kentucky-kingdom) in Louisville is building [Midnight
 Showdown](/news/kentucky-kingdom-midnight-showdown) for spring 2027, a wooden family coaster that
 runs inside a building. The park's tagline for it is "The World's Largest Indoor Wooden Roller
-Coaster", and nowhere does it say whether "largest" means length, height or footprint. The wooden track is 1,130 feet
-(344 m) long, and the ride stands more than three storeys tall. Eleven times it lifts you out of
-your seat. Two trains run, with ten seats each, and The Gravity Group from Cincinnati is building
-it. The theme is a horse race in the dark, and each ride starts to the sound of hooves and the call
-"And they're off!".
+Coaster", and nowhere does it say whether "largest" means length, height or footprint. The wooden
+track is 1,130 feet (344 m) long, and the ride stands more than three storeys tall. On the way round
+you come off the seat eleven times. Two trains run, with ten seats each, and The Gravity Group from
+Cincinnati is building it. The theme is a horse race in the dark, and each ride starts to the sound
+of hooves and the call "And they're off!".
 
-The coaster stands in Bluegrass Downs, a new area where five existing rides get a new theme. In
-the second new area, Happy Valley Farm, it's eight, plus Flying Fox, the suspended family coaster
-that opened in May 2026. Midnight Showdown is the park's second new coaster within a year, after
-Flying Fox, and its seventh in all. Herschend says it has put almost $50 million into Kentucky
-Kingdom since taking it over in 2021, and Midnight Showdown and the two areas are meant to finish
-the rebuild in 2027.
+The coaster stands in Bluegrass Downs, a new area where five existing rides get a new theme. In the
+second new area, Happy Valley Farm, eight existing rides get a new theme, and Flying Fox is there
+too, the suspended family coaster that opened in May 2026, so Midnight Showdown will be the park's
+second new coaster in a year and its seventh coaster overall. Herschend says it has put almost $50
+million into Kentucky Kingdom since taking it over in 2021, and Midnight Showdown and the two areas
+are meant to finish the rebuild in 2027.
 
 ### Camp Timber Trail at Six Flags Great America
 
