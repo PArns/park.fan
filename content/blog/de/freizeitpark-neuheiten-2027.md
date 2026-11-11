@@ -420,17 +420,17 @@ Gelände tätig war. Mack Rides hat für den Park schon den Time Traveler gebaut
 Showdown](/news/kentucky-kingdom-midnight-showdown), eine Holzachterbahn für Familien, die in einer
 Halle fährt. Der Park nennt sie „The World's Largest Indoor Wooden Roller Coaster“ und gibt nicht
 an, ob „largest“ Länge, Höhe oder Grundfläche meint. Die Holzstrecke ist 1.130 Fuß lang, rund 344
-Meter, und die Bahn ragt mehr als drei Stockwerke hoch. Es fahren zwei Züge mit je zehn Plätzen, und
-elfmal hebt dich die Bahn dabei aus dem Sitz. Gebaut wird sie von The Gravity Group aus Cincinnati.
-Das Thema ist ein Pferderennen im Dunkeln, und los geht es zu Hufgetrappel und dem Ruf „And they're
+Meter, und die Bahn ragt mehr als drei Stockwerke hoch. Elfmal hebt dich die Bahn aus dem Sitz. Es
+fahren zwei Züge mit je zehn Plätzen. Gebaut wird sie von The Gravity Group aus Cincinnati. Das
+Thema ist ein Pferderennen im Dunkeln, und los geht es zu Hufgetrappel und dem Ruf „And they're
 off!“.
 
 Die Bahn steht im neuen Bereich Bluegrass Downs, in dem fünf bestehende Fahrgeschäfte ein neues
 Thema bekommen. Im zweiten neuen Bereich, Happy Valley Farm, sind es acht, dazu steht dort Flying
-Fox, die hängende Familienachterbahn vom Mai 2026. Midnight Showdown wird die siebte Achterbahn des
-Parks. Seit der Übernahme 2021 hat Herschend nach eigenen Angaben fast 50 Millionen Dollar in
-Kentucky Kingdom gesteckt. Mit Midnight Showdown und den beiden Bereichen soll der Umbau 2027 fertig
-sein.
+Fox, die hängende Familienachterbahn vom Mai 2026. Nach Flying Fox ist Midnight Showdown die zweite
+neue Achterbahn binnen eines Jahres und die siebte im Park. Seit der Übernahme 2021 hat Herschend
+nach eigenen Angaben fast 50 Millionen Dollar in Kentucky Kingdom gesteckt. Mit Midnight Showdown
+und den beiden Bereichen soll der Umbau 2027 fertig sein.
 
 ### Camp Timber Trail in Six Flags Great America
 
