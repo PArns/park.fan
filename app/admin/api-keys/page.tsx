@@ -719,12 +719,12 @@ function EditKeyDialog({ apiKey, onClose }: { apiKey: DataApiKey; onClose: () =>
     try {
       await adminFetch(`${DATA_API_KEYS_PATH}/${encodeURIComponent(apiKey.id)}`, {
         method: 'PATCH',
-        body: JSON.stringify({
+        body: {
           requestsPerHour,
           allowedParkIds: parkIds.length > 0 ? parkIds : null,
           // Only when it changed: an expired key's old date would be refused as past.
           ...(!expiry.unchanged && { expiresAt: expiry.expiresAt }),
-        }),
+        },
       });
       invalidate(DATA_API_KEYS_QUERY_KEY);
       toast.push({ title: 'Key gespeichert', tone: 'success' });

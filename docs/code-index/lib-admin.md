@@ -18,7 +18,7 @@ The data API keys of `/admin/api-keys`: the keys that unlock park.fan's forecast
 - `keyExpiryFrom` _function_: The end date a choice stands for, as the API takes it: a lifetime counted from `nowMs`, the end of the chosen day in Berlin, or null for never.
 - `keyExpiryDay` _function_: The Berlin day an end date falls on, `YYYY-MM-DD`, as a date field takes it.
 - `formatKeyExpiry` _function_: „gültig bis 30.06.2027“, „abgelaufen am 31.01.2026“, or „unbefristet“.
-- `createDataApiKeyBody` _function_: The body of a create: empty optional fields are left out rather than sent as empty strings.
+- `createDataApiKeyBody` _function_: The body of a create, as an object for `adminFetch` to serialize.
 - `dataApiKeyCurlExample` _function_: How a client sends the key, for the dialog to show next to it.
 - `DATA_API_KEY_USAGE_LABELS` _const_: The labels the page uses for a key's usage.
 - `DEFAULT_REQUESTS_PER_HOUR` _const_: What a new key is allowed per hour unless the dialog says otherwise; the backend's default too.
@@ -27,7 +27,7 @@ The data API keys of `/admin/api-keys`: the keys that unlock park.fan's forecast
 - `KEY_EXPIRY_CHOICES` _const_: The select's options, in the order the token dialog shows its lifetimes.
 - `DATA_API_KEYS_PATH` _const_: The proxy path of the backend's key endpoints.
 - `DATA_API_KEYS_QUERY_KEY` _const_: The React Query key of the list.
-- Types: `DataApiKeyUsage`, `DataApiKeyDay`, `DataApiKeyStats`, `DataApiKey`, `CreatedDataApiKey`, `KeyExpiryChoice`
+- Types: `DataApiKeyUsage`, `DataApiKeyDay`, `DataApiKeyStats`, `DataApiKey`, `CreatedDataApiKey`, `KeyExpiryChoice`, `CreateDataApiKeyBody`
 
 ### [`blog-image-sidecar.ts`](../../lib/admin/blog-image-sidecar.ts)
 

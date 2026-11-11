@@ -69,8 +69,28 @@ const testCases = [
         allowedParkIds: [],
         expiresAt: null,
       }),
-    expected:
-      '{"name":"Club","usage":"non-commercial","requestsPerHour":null,"allowedParkIds":null}',
+    expected: {
+      name: 'Club',
+      usage: 'non-commercial',
+      requestsPerHour: null,
+      allowedParkIds: null,
+    },
+  },
+  {
+    // adminFetch serializes the body itself; a string here reached the API encoded twice, as a
+    // quoted string the API refused ("… is not valid JSON").
+    name: 'the create body is an object, not JSON text',
+    actual: () =>
+      typeof createDataApiKeyBody({
+        name: 'Club',
+        contact: 'a@b.c',
+        usage: 'internal',
+        note: '',
+        requestsPerHour: null,
+        allowedParkIds: [],
+        expiresAt: '2027-06-30T21:59:59.999Z',
+      }),
+    expected: 'object',
   },
   {
     name: 'use reads as today, 30 days and the refusals, if any',

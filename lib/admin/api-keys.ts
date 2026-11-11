@@ -184,7 +184,19 @@ export const DATA_API_KEYS_PATH = '/api/admin/api-keys';
 /** The React Query key of the list. */
 export const DATA_API_KEYS_QUERY_KEY = ['admin', 'api-keys'] as const;
 
-/** The body of a create: empty optional fields are left out rather than sent as empty strings. */
+/** What a create sends: the dialog's fields, empty optional ones left out rather than sent empty. */
+export interface CreateDataApiKeyBody {
+  name: string;
+  usage: DataApiKeyUsage;
+  requestsPerHour: number | null;
+  /** Null for every park. */
+  allowedParkIds: string[] | null;
+  expiresAt?: string;
+  contact?: string;
+  note?: string;
+}
+
+/** The body of a create, as an object for `adminFetch` to serialize. */
 export function createDataApiKeyBody(input: {
   name: string;
   contact: string;
@@ -195,10 +207,10 @@ export function createDataApiKeyBody(input: {
   allowedParkIds: readonly string[];
   /** ISO 8601; null for a key that does not expire. */
   expiresAt: string | null;
-}): string {
+}): CreateDataApiKeyBody {
   const contact = input.contact.trim();
   const note = input.note.trim();
-  return JSON.stringify({
+  return {
     name: input.name.trim(),
     usage: input.usage,
     requestsPerHour: input.requestsPerHour,
@@ -206,7 +218,7 @@ export function createDataApiKeyBody(input: {
     ...(input.expiresAt && { expiresAt: input.expiresAt }),
     ...(contact && { contact }),
     ...(note && { note }),
-  });
+  };
 }
 
 /** How a client sends the key, for the dialog to show next to it. */
