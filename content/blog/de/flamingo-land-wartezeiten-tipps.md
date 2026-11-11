@@ -60,69 +60,65 @@ seo:
     - Flamingo Land Anreise
 ---
 
-[Flamingo Land](ref:flamingo-land) liegt in Kirby Misperton, einem kleinen Dorf zwischen Malton und Pickering in North Yorkshire. Auf 375 Acres, gut 150 Hektar, teilen sich dort ein Zoo, ein Freizeitpark und ein Ferienresort das Gelände. Zoo und Bahnen gehen so ineinander über, dass der Park in der Hauptsaison gar kein Ticket nur für den Zoo verkauft. Die Hängeachterbahn Kumali hat ihren Namen vom Löwen, der im Zoo das Rudel anführt, eine Ehre, die einem Achterbahnfan selten zuteilwird.
+[Flamingo Land](ref:flamingo-land) liegt in Kirby Misperton, einem kleinen Dorf zwischen Malton und Pickering in North Yorkshire. Auf 375 Acres, gut 150 Hektar, teilen sich dort ein Zoo, ein Freizeitpark und ein Ferienresort das Gelände. Zoo und Bahnen gehen so ineinander über, dass der Park in der Hauptsaison gar kein Ticket nur für den Zoo verkauft. Die Hängeachterbahn Kumali hat ihren Namen vom Löwen, der im Zoo das Rudel anführt.
 
-Der Park gehört der Familie Gibb, General Manager ist Gordon Gibb, und der Slogan lautet „Wild Animals, Wilder Rides“. Acht Achterbahnen sind in Betrieb, vier davon mit Inversionen. Dazu kommen ein Fallturm, ein Kettenflieger-Turm und ein Zoo mit Löwen, Nashörnern und Pinguinen.
+Der Park gehört der Familie Gibb, General Manager ist Gordon Gibb, und der Slogan lautet „Wild Animals, Wilder Rides“. Acht Achterbahnen sind in Betrieb, vier davon mit Inversionen. Dazu kommen der 54,9 Meter hohe Fallturm Cliff Hanger und der Kettenflieger-Turm Pterodactyl, und zwischen den Bahnen leben die Tiere des Zoos.
 
 ## Die Bahnen nach Bereichen
 
-Auf seinem Parkplan teilt Flamingo Land das Gelände in neun Bereiche: The Lost Kingdom, Dino-Stone Park, Flamingo 1, Metropolis, Splosh, Riverside 1, Children’s Planet, Muddy Duck Farm und den Zoo. Die Website zählt 33 Fahrgeschäfte und Attraktionen, acht davon Thrill Rides, elf Familienbahnen und sechs für Kinder.
+Auf seinem Parkplan teilt Flamingo Land das Gelände in neun Bereiche: The Lost Kingdom, Dino-Stone Park, Flamingo 1, Metropolis, Splosh, Riverside 1, Children’s Planet, Muddy Duck Farm und den Zoo. Die großen Bahnen stehen in sechs davon, die Muddy Duck Farm und Children’s Planet gehören den Kleinen, und der Zoo bekommt weiter unten ein eigenes Kapitel.
 
 ### Metropolis
 
-Die jüngste und mit 875 Metern längste Achterbahn des Parks steht in Metropolis. [Sik](ref:flamingo-land/sik?bare) hat am 2. Juli 2022 eröffnet, ein Multi Inversion Coaster von Intamin. Ein Seillift zieht den Zug auf 33 Meter, die erste Abfahrt geht 31 Meter tief, und unten fährst du 87 km/h. Danach dreht sich der Zug zehnmal über Kopf, in einem Looping, einer Cobra Roll, einem doppelten Korkenzieher, vier Heartline Rolls direkt hintereinander und einer fünften. Die Fahrt dauert 1:05 Minuten, und mit zwei Zügen zu je 24 Plätzen ist Sik für 1.250 Fahrgäste in der Stunde ausgelegt. Die Kräfte erreichen 3 g, und mitfahren darfst du ab 1,40 Meter und bis 1,95 Meter.
+Die jüngste und mit 875 Metern längste Achterbahn des Parks steht in Metropolis. [Sik](ref:flamingo-land/sik?bare) hat am 2. Juli 2022 eröffnet, ein Multi Inversion Coaster von Intamin. Ein Seillift zieht den Zug auf 33 Meter, die erste Abfahrt geht 31 Meter tief, und unten fährst du 87 km/h. Danach dreht sich der Zug zehnmal über Kopf, in einem Looping, einer Cobra Roll, einem doppelten Korkenzieher, vier Heartline Rolls direkt hintereinander und einer fünften. Die Fahrt dauert 1:05 Minuten, und mit zwei Zügen zu je 24 Plätzen ist Sik für 1.250 Fahrgäste in der Stunde ausgelegt. Mitfahren darfst du ab 1,40 Meter, und wer größer als 1,95 Meter ist, bleibt unten.
 
 ```glossary-widget slug=heartline-roll
 
 ```
 
-Bestellt hatte die Bahn 2011 der brasilianische Park Hopi Hari. Aufgebaut wurde sie dort nie, und die Teile lagen jahrelang ungenutzt. Über Hopi Hari und Movie Animation Park Studios kam sie nach Yorkshire, wo die RCS GmbH sie aufgestellt hat. Ihren Namen hat Sik von SikSilk, einer Modemarke aus Scarborough, deren Gründer mit Gordon Gibb befreundet sind. Den passenden Laden, den Sik Shop, gibt es im selben Bereich.
+Bestellt hatte die Bahn 2011 der brasilianische Park Hopi Hari. Aufgebaut wurde sie dort nie, und die Teile lagen jahrelang ungenutzt. Über Hopi Hari und Movie Animation Park Studios kam sie nach Yorkshire, wo die RCS GmbH sie aufgestellt hat. Ihren Namen hat Sik von SikSilk, einer Modemarke aus Scarborough, deren Gründer mit Gordon Gibb befreundet sind. Mit dem Sik Shop hat die Bahn in Metropolis auch einen eigenen Laden.
 
-Der [Runaway Train](ref:flamingo-land/runaway-train?bare) ist schon mehrfach umgezogen. Bevor die Familienachterbahn von Zamperla 2007 nach Flamingo Land kam, fuhr sie in American Adventure als Mini Mine Rush und in Gulliver’s World. Bis 2019 stand sie an einer anderen Stelle im Park, die sie für Sik räumen musste, und 2020 kam sie nach Metropolis. Sie ist 4 Meter hoch und 80 Meter lang, ein Zug hat zwölf Plätze, und die Mindestgröße liegt bei 1,04 Meter.
-
-Daneben drehen sich die Gallopers, ein Karussell, das früher bei Butlin’s in Filey stand. Zum Essen gibt es in Metropolis die Pitchers Sports Bar, den Zanzibar Food Market und die Metropolis Bar and Grill.
+Der [Runaway Train](ref:flamingo-land/runaway-train?bare) ist schon mehrfach umgezogen, und auch das Karussell Gallopers in Metropolis stand früher woanders, bei Butlin’s in Filey. Bevor die Familienachterbahn von Zamperla 2007 nach Flamingo Land kam, fuhr sie in American Adventure als Mini Mine Rush und in Gulliver’s World. Bis 2019 stand sie an einer anderen Stelle im Park, die sie für Sik räumen musste, und 2020 kam sie nach Metropolis. Sie ist 4 Meter hoch und 80 Meter lang, ein Zug hat zwölf Plätze, und die Mindestgröße liegt bei 1,04 Meter.
 
 ### The Lost Kingdom
 
-Mit 35,9 Metern ist [Kumali](ref:flamingo-land/kumali?bare) die höchste Achterbahn im Park. Vekoma hat sie als Suspended Looping Coaster gebaut, Designer war Stefan Holtman, und eröffnet wurde sie am 1. April 2006. Die erste Abfahrt misst 34,1 Meter, und die Höchstgeschwindigkeit liegt bei 88 km/h. Auf 671 Metern hängst du viermal kopfüber, in einem Looping, einer Cobra Roll und einer Zero-G-Roll, bei bis zu 4,7 g. Eine Fahrt dauert 1:32 Minuten, und zwei Züge mit je 20 Plätzen schaffen 1.125 Fahrgäste in der Stunde. Mindestgröße ist 1,30 Meter. Derzeit ist Kumali wegen Wartung geschlossen. Ihr Namensgeber wohnt übrigens nicht weit weg, denn die Löwen gehören zum Lost Kingdom.
+Mit 35,9 Metern ist [Kumali](ref:flamingo-land/kumali?bare) die höchste Achterbahn im Park. Vekoma hat sie als Suspended Looping Coaster gebaut, Designer war Stefan Holtman, und eröffnet wurde sie am 1. April 2006. Die erste Abfahrt misst 34,1 Meter, und die Höchstgeschwindigkeit liegt bei 88 km/h. Auf 671 Metern hängst du viermal kopfüber, in einem Looping, einer Cobra Roll und einer Zero-G-Roll, bei bis zu 4,7 g. Zwei Züge mit je 20 Plätzen sind jeweils 1:32 Minuten unterwegs, das reicht für 1.125 Fahrgäste in der Stunde. Mitfahren darfst du ab 1,30 Meter, nur ist Kumali derzeit wegen Wartung geschlossen. Ihr Namensgeber wohnt übrigens nicht weit weg, denn die Löwen gehören zum Lost Kingdom.
 
 ```glossary-widget slug=slc
 
 ```
 
-Nach dem 30 Meter hohen Lifthill fällt [Mumbo Jumbo](ref:flamingo-land/mumbo-jumbo?bare) mit 112 Grad ab und kippt dabei 22 Grad über die Senkrechte hinaus nach innen. Als die Bahn am 4. Juli 2009 eröffnete, war sie damit die steilste Stahlachterbahn der Welt, bis im Juli 2011 in Fraispertuis City Timber Drop mit 113,1 Grad dazukam. Gebaut hat sie S&S Worldwide als El Loco, nach einem Entwurf von Alan Schilke. Nach der Abfahrt folgen ein Dive Loop und ein In-Line Twist bei bis zu 4 g. Gefahren wird in einzelnen Wagen mit je vier Plätzen, und mitfahren darfst du ab 1,22 Meter.
+Nach dem 30 Meter hohen Lifthill fällt [Mumbo Jumbo](ref:flamingo-land/mumbo-jumbo?bare) mit 112 Grad ab und kippt dabei 22 Grad über die Senkrechte hinaus nach innen. Als die Bahn am 4. Juli 2009 eröffnete, war sie damit die steilste Stahlachterbahn der Welt, bis im Juli 2011 in Fraispertuis City Timber Drop mit 113,1 Grad dazukam. Alan Schilke hat sie entworfen, und S&S Worldwide hat sie als El Loco gebaut. Nach der Abfahrt folgen ein Dive Loop und ein In-Line Twist. Ab 1,22 Meter darfst du mit, zu viert in einem einzelnen Wagen.
 
-Im selben Bereich schwingt seit 2003 Voodoo, ein Schiff von HUSS. Der Magombera Monkey Forest und die Giraffe Encounter gehören ebenfalls zum Lost Kingdom, und an der Station bei Kumali hält der [Daktari Express](ref:flamingo-land/daktari-express?bare). Der Zug ist ein Schmalspur-Nachbau einer amerikanischen Dampflok und umrundet die Tieranlage des Lost Kingdom in 20 Minuten. Er hält an drei Stationen, bei Kumali, an der Plaza und im Zoo, und unterwegs siehst du Giraffen, Flusspferde, Zebras und Strauße.
+Das Schiff Voodoo von HUSS schwingt im Lost Kingdom seit 2003. Die Tiere des Bereichs siehst du im Magombera Monkey Forest, bei der Giraffe Encounter und vom [Daktari Express](ref:flamingo-land/daktari-express?bare) aus. Der Zug ist ein Schmalspur-Nachbau einer amerikanischen Dampflok und umrundet die Tieranlage des Lost Kingdom in 20 Minuten. Er hält an drei Stationen, bei Kumali, an der Plaza und im Zoo, und unterwegs siehst du Giraffen, Flusspferde, Zebras und Strauße.
 
 ### Flamingo 1
 
-Auf [Velocity](ref:flamingo-land/velocity?bare) sitzt du rittlings wie auf einem Motorrad, und ein hydraulischer Abschuss bringt dich in 2,8 Sekunden von 0 auf 97 km/h. Vekoma hat den Motorbike Coaster nach einem Entwurf von Peter Clerx gebaut, und am 2. Juli 2005 ging er in Betrieb. Die Strecke ist 643 Meter lang und 17,4 Meter hoch, Inversionen gibt es keine. Ein Zug mit 16 Plätzen schafft 518 Fahrgäste in der Stunde. Neben der Mindestgröße von 1,40 Meter gilt eine Höchstgröße von 1,98 Meter, und Flamingo Land nennt Velocity den ersten und einzigen Motorbike Launch Coaster in Großbritannien.
+[Velocity](ref:flamingo-land/velocity?bare) ist der einzige Motorbike Launch Coaster in Großbritannien. Du sitzt rittlings wie auf einem Motorrad, und ein hydraulischer Abschuss bringt dich in 2,8 Sekunden von 0 auf 97 km/h. Vekoma hat den Motorbike Coaster nach einem Entwurf von Peter Clerx gebaut, und am 2. Juli 2005 ging er in Betrieb. Die Strecke ist 643 Meter lang und 17,4 Meter hoch, Inversionen gibt es keine. Velocity fährt nur einen Zug mit 16 Plätzen und schafft damit 518 Fahrgäste in der Stunde, nicht einmal halb so viele wie Sik. Mitfahren darfst du ab 1,40 Meter und bis 1,98 Meter.
 
-Im selben Bereich fliegt [Hero](ref:flamingo-land/hero?bare), seit dem 16. Juli 2013. Zamperla hat den Flying Coaster vom Typ Volare gebaut, den Entwurf hat Werner Stengel geliefert. In jedem Wagen fahren vier Personen, ein Spirallift bringt sie auf 15,2 Meter, und auf 391 Metern geht es mit bis zu 41 km/h zweimal durch eine Heartline Roll, bei bis zu 3,3 g. Mindestgröße ist 1,27 Meter.
+Seit dem 16. Juli 2013 fliegt [Hero](ref:flamingo-land/hero?bare), ein Flying Coaster vom Typ Volare, den Zamperla nach einem Entwurf von Werner Stengel gebaut hat. In jedem Wagen fahren vier Personen, ein Spirallift bringt sie auf 15,2 Meter, und auf 391 Metern geht es mit bis zu 41 km/h zweimal durch eine Heartline Roll. Mindestgröße ist 1,27 Meter.
 
 ```glossary-widget slug=flying-coaster
 
 ```
 
-Der [Navigator](ref:flamingo-land/navigator?bare) von Zamperla war nach Angaben von Flamingo Land die erste Megadisk-O der Welt. Bis zu 40 Fahrgäste sitzen auf einer Scheibe, die auf einer 32 Meter langen Halfpipe mehr als 18 Meter hoch schwingt. Auch der Navigator ist derzeit geschlossen. In Flamingo 1 steht außerdem der Vortex, ein Rockin’ Tug von Zamperla.
+Beim [Navigator](ref:flamingo-land/navigator?bare) von Zamperla sitzen bis zu 40 Fahrgäste auf einer Scheibe, die auf einer 32 Meter langen Halfpipe mehr als 18 Meter hoch schwingt. Auch der Navigator ist derzeit geschlossen. In Flamingo 1 steht außerdem der Vortex, ein Rockin’ Tug von Zamperla.
 
-Bei [Flamingo 1](ref:flamingo-land/flamingo-1?bare), der Bahn, nach der der Bereich heißt, steuerst du selbst ein Elektroauto über eine 380 Meter lange Strecke in Form einer Acht. Gefahren wird auf drei Spuren mit rund 16 km/h, mitten durch das Gebäude The Hub. Für die Kleinsten gibt es den Frog Hopper und das Indoor-Klettergerüst HMS Bouncy, in das nur Kinder dürfen, und auch Pink Elephants steht hier. Zwischen Flamingo 1 und der Muddy Duck Farm pendelt der People Mover, der derzeit ebenfalls geschlossen ist. Zum Essen gibt es in Flamingo 1 The Diner, Fabrizio’s Pizzeria and Ristorante, das Upper Deck und den Spud Stop.
+Bei [Flamingo 1](ref:flamingo-land/flamingo-1?bare), der Bahn, nach der der Bereich heißt, steuerst du selbst ein Elektroauto über eine 380 Meter lange Strecke in Form einer Acht. Gefahren wird auf drei Spuren mit rund 16 km/h, mitten durch das Gebäude The Hub. Für die Kleinsten gibt es den Frog Hopper und das Indoor-Klettergerüst HMS Bouncy, in das nur Kinder dürfen, und auch Pink Elephants steht hier. Zwischen Flamingo 1 und der Muddy Duck Farm pendelt der People Mover, der derzeit ebenfalls geschlossen ist.
 
 ### Riverside 1
 
-Der [Cliff Hanger](ref:flamingo-land/cliff-hanger?bare) von S&S ist 54,9 Meter hoch und kombiniert zwei Fahrten an einem Turm. Einmal wirst du nach oben geschossen, einmal fällst du frei nach unten. Der Turm kam 2002 in den Park, und nach Angaben von Flamingo Land ist er der einzige Combo Tower von S&S in Großbritannien. Mitfahren darfst du ab 1,32 Meter.
+Der [Cliff Hanger](ref:flamingo-land/cliff-hanger?bare) ist der einzige Combo Tower von S&S in Großbritannien, zwei Fahrten an einem Turm. Einmal wirst du nach oben geschossen, einmal fällst du frei nach unten. Der Turm kam 2002 in den Park, und mitfahren darfst du ab 1,32 Meter. Außer ihm hat Riverside 1 das Balloon Race und die Entertainment Stage.
 
 ```glossary-widget slug=drop-tower
 
 ```
 
-Das Balloon Race und die Entertainment Stage gehören ebenfalls zu Riverside 1. Dazu kommen The Club mit Zoo Bar und Street Food Kitchen, die R1 Bar und ein Stand für Pizza und Kebab.
-
 ### Splosh
 
-[Splash Battle](ref:flamingo-land/splash-battle?bare) kam 2007 dazu, und Flamingo Land nennt die Bahn „the UK’s first truly interactive water ride“. Du fährst in einem U-Boot und spritzt mit Wasserkanonen auf andere Boote und auf Leute am Rand. Gebaut hat die Anlage Preston & Barbieri. Die Mindestgröße liegt bei 0,91 Meter, nass werden darf man also schon sehr jung.
+[Splash Battle](ref:flamingo-land/splash-battle?bare) kam 2007 dazu. Du fährst in einem U-Boot und spritzt mit Wasserkanonen auf andere Boote und auf Leute am Rand. Gebaut hat die Anlage Preston & Barbieri. Die Mindestgröße liegt bei 0,91 Meter, nass werden darf man also schon sehr jung. Ohne Boot geht das im Wasserspielplatz Splish Splosh.
 
-Ohne Lifthill kommt [Zooom!](ref:flamingo-land/zooom?bare) aus, eine hängende Familienachterbahn vom Typ Air Force, die Zamperla gebaut hat und die am 2. Juli 2011 eröffnet wurde. Reifen ziehen den Zug auf 9,8 Meter, und die Strecke ist 172 Meter lang. Ab 1,07 Meter fährst du allein, darunter mit einem Erwachsenen. Zu Splosh gehören noch der Wasserspielplatz Splish Splosh, Crazy Combat Laser Battle und Swoosh Air.
+Ohne Lifthill kommt [Zooom!](ref:flamingo-land/zooom?bare) aus, die einzige Achterbahn in Splosh, wo außerdem Crazy Combat Laser Battle und Swoosh Air stehen. Zamperla hat die hängende Familienachterbahn vom Typ Air Force gebaut, eröffnet wurde sie am 2. Juli 2011. Reifen ziehen den Zug auf 9,8 Meter, und die Strecke ist 172 Meter lang. Ab 1,07 Meter fährst du allein, darunter mit einem Erwachsenen.
 
 ### Dino-Stone Park
 
@@ -136,7 +132,7 @@ Der [Pterodactyl](ref:flamingo-land/pterodactyl?bare) von 2012 ist ein Kettenfli
 
 ### Muddy Duck Farm und Children’s Planet
 
-In der Geisterbahn [Mischief Mansion](ref:flamingo-land/mischief-mansion?bare) wohnen seit 2001 die Little Monsters Mummy, Drac und Yeti, und beim Yeti hat sich bei der Namenswahl niemand überanstrengt. Bei Little Monsters Wacky Races fahren Nachbauten des Ford Model T, die Bahn ist aber derzeit geschlossen. Für Kinder gibt es auf der Farm eine Traktorfahrt, die Helitoys, das Jungle Carousel mit Elefanten und Teetassen und ein Piratenschiff zum Klettern. Essen kannst du im Coach House Country Pub und im Muddy Duck Cafe, und Fragen beantwortet das Information Centre.
+Auf der Muddy Duck Farm, wo auch das Information Centre Fragen beantwortet, wohnen in der Geisterbahn [Mischief Mansion](ref:flamingo-land/mischief-mansion?bare) seit 2001 die Little Monsters Mummy, Drac und Yeti, und beim Yeti hat sich bei der Namenswahl niemand überanstrengt. Bei Little Monsters Wacky Races fahren Nachbauten des Ford Model T, die Bahn ist aber derzeit geschlossen. Für Kinder gibt es auf der Farm eine Traktorfahrt, die Helitoys, das Jungle Carousel mit Elefanten und Teetassen und ein Piratenschiff zum Klettern.
 
 Children’s Planet hat einen Spielplatz, eine Sandfläche, die Meerkat Encounter und den Picknickplatz Picnic Planet.
 
@@ -161,9 +157,9 @@ Mit einem Gipsverband darfst du auf die meisten Bahnen nicht, auf die Achterbahn
 
 ## Der Zoo
 
-Mehr als 140 Arten von Reptilien, Säugetieren und Vögeln leben nach Angaben des Parks im Zoo. Auf der Tierliste der Website stehen 70 Tiere, darunter Afrikanischer Löwe, Breitmaulnashorn, Spitzmaulnashorn, Flusspferd, Rothschild-Giraffe, Sumatra-Tiger, Kap-Seebär und Mangabe. Der Zoo ist Mitglied in den Zooverbänden BIAZA und EAZA und unterstützt ein Naturschutzprojekt im Udzungwa-Wald in Tansania.
+Mehr als 140 Arten von Reptilien, Säugetieren und Vögeln leben im Zoo. Auf der Tierliste der Website stehen 70 Tiere, darunter Afrikanischer Löwe, Breitmaulnashorn, Spitzmaulnashorn, Flusspferd, Rothschild-Giraffe, Sumatra-Tiger, Kap-Seebär und Mangabe. Der Zoo ist Mitglied in den Zooverbänden BIAZA und EAZA und unterstützt ein Naturschutzprojekt im Udzungwa-Wald in Tansania.
 
-Die neueste Anlage ist Lion Coast, in der die Seebären leben. Daneben gibt es Penguin Coast, den Treetop Walkway, Lily Bobtail Nature Discovery und das Peter Rabbit Adventure. Die Zoo Monorail fährt über Paviane, Erdmännchen, Lemuren und Emus hinweg. Lemuren und Pinguinen kommst du bei der Lemur Encounter und der Penguin Encounter näher, beides kostet extra. Im Zoo essen kannst du im Boma Café und im Mansion House mit seinen Tea Rooms.
+Die neueste Anlage ist Lion Coast, in der die Seebären leben. Daneben gibt es Penguin Coast, den Treetop Walkway, Lily Bobtail Nature Discovery und das Peter Rabbit Adventure. Die Zoo Monorail fährt über Paviane, Erdmännchen, Lemuren und Emus hinweg. Lemuren und Pinguinen kommst du bei der Lemur Encounter und der Penguin Encounter näher, beides kostet extra.
 
 Die Tierpfleger erzählen über den Tag verteilt an den Gehegen, nach dem Stand der Website zu diesen Zeiten:
 
@@ -186,7 +182,7 @@ Ein Hund darf an der Leine mit in den Freizeitpark, aber nicht in den Zoo, nach 
 
 ```
 
-Live stehen die Wartezeiten jeder Bahn auf der [Parkseite von Flamingo Land](ref:flamingo-land), solange der Park geöffnet hat. Zur Öffnung würde ich zuerst zu Hero gehen. Nach unseren Messungen ist Hero die einzige Bahn im Park, an der sich der Weg gleich am Morgen spürbar auszahlt, am besten in der ersten halben Stunde nach der Öffnung. Gleich danach würde ich Mumbo Jumbo fahren, deren Warteschlange direkt zur Öffnung am kürzesten ist. An Sik, Velocity und Kumali bringt ein früher Start wenig, und Sik kannst du gut auf den frühen Nachmittag legen.
+Bis zum 4. Dezember hat der Park geschlossen. Ab dem 5. Dezember stehen auf der [Parkseite von Flamingo Land](ref:flamingo-land) live die Wartezeiten der Bahnen, die im Winter fahren. In der Saison würde ich zur Öffnung zuerst zu Hero gehen. Nach unseren Messungen ist Hero die einzige Bahn im Park, an der sich der frühe Weg lohnt, am besten in der ersten halben Stunde nach der Öffnung. Gleich danach würde ich Mumbo Jumbo fahren, deren Warteschlange direkt zur Öffnung am kürzesten ist. An Sik, Velocity und Kumali bringt ein früher Start wenig, und Sik kannst du gut auf den frühen Nachmittag legen.
 
 ```glossary-widget slug=rope-drop
 
@@ -206,19 +202,19 @@ Am Wochenende ist der Vorsprung, den du an Hero mit einem frühen Start herausho
 
 Die Saison 2026 endete am Sonntag, dem 1. November. Einlass ist ab 10 Uhr, und die Bahnen schließen je nach Jahreszeit um 17 oder 18 Uhr.
 
-Im Oktober 2026 galt die günstigere Low Season am 1. und 2. sowie vom 5. bis zum 9. Oktober, also an den Tagen unter der Woche zu Monatsbeginn. Das Wochenende am 3. und 4. Oktober und alle Tage ab dem 10. Oktober kosteten Hauptsaisonpreis.
+Im Oktober 2026 kosteten nur die Tage unter der Woche bis zum 9. den Low-Season-Preis, Wochenenden und alles ab dem 10. kosteten Hauptsaisonpreis. Ich würde einen Tag unter der Woche in der Low Season nehmen: Er kostet 30 statt 46 Pfund, und nach unseren Messungen wachsen die Warteschlangen unter der Woche langsamer als am Wochenende.
 
 ```stats-widget slug=flamingo-land show=weekdays
 
 ```
 
-Für 2027 hat Flamingo Land noch keine Öffnungstage veröffentlicht. Saison-Stellplätze auf dem Campingplatz verkauft der Park für die Zeit vom 12. Februar bis zum 1. November 2027, für 4.000 Pfund mit sechs Resort Passes. Ob der Freizeitpark schon im Februar öffnet, hat er noch nicht bekannt gegeben. Die Saisonjobs für 2027 beginnen im März.
+Für 2027 hat Flamingo Land noch keinen Öffnungstag des Freizeitparks genannt, nur Daten rundherum: Die Saisonjobs beginnen im März, und Saison-Stellplätze auf dem Campingplatz verkauft der Park für die Zeit vom 12. Februar bis zum 1. November 2027, für 4.000 Pfund mit sechs Resort Passes.
 
 ```best-days-widget slug=flamingo-land
 
 ```
 
-Zwei Termine für 2027 stehen schon fest. Am 17. und 18. Juli läuft Queen of the Jungle, am 11. und 12. September King of the Jungle, beides Kraftsport-Wettkämpfe mit dem Veranstalter Strength Circus. 2026 gab es zum ersten Mal Flamingo Fest, mit der großen Party am 23. Mai, einem Country Fest am 25. Juli und Ibiza in Sunset am 29. August. Mit Tagesticket oder Jahreskarte war das Fest inklusive, ein Abendticket ab 15 Uhr kostete 15 Pfund.
+Am 17. und 18. Juli 2027 läuft Queen of the Jungle, am 11. und 12. September King of the Jungle, beides Kraftsport-Wettkämpfe mit dem Veranstalter Strength Circus. 2026 gab es zum ersten Mal Flamingo Fest, mit der großen Party am 23. Mai, einem Country Fest am 25. Juli und Ibiza in Sunset am 29. August. Mit Tagesticket oder Jahreskarte war das Fest inklusive, ein Abendticket ab 15 Uhr kostete 15 Pfund.
 
 ## Weihnachten in Flamingo Land 2026
 
@@ -239,7 +235,7 @@ An den Christmas Experience Days steht das Programm um den Weihnachtsbaum auf de
 - die Decoration Station und der Wishing Well
 - Treffen mit Peter Rabbit
 
-Achterbahnen fahren im Dezember keine. Auf der Weihnachtsseite stehen der Daktari Express, die Gallopers, die Helitoys, das Jungle Carousel, die Zoo Monorail, Mischief Mansion und die Muddy Duck Tractors, mit dem Hinweis, dass sich die Liste ändern kann. Mit Kindern unter 1,07 Meter fährst du bei den meisten davon mit, und für Fans von Mumbo Jumbo besteht der Dezember aus Dampfzug, Monorail und Geisterbahn.
+Achterbahnen fahren im Dezember keine, für Fans von Mumbo Jumbo bleiben Dampfzug, Monorail und Geisterbahn. Auf der Weihnachtsseite stehen der Daktari Express, die Gallopers, die Helitoys, das Jungle Carousel, die Zoo Monorail, Mischief Mansion und die Muddy Duck Tractors, mit dem Hinweis, dass sich die Liste ändern kann. Mit Kindern unter 1,07 Meter fährst du bei den meisten davon mit.
 
 Im Dezember haben das Muddy Duck Cafe und der Spud Stop von 10 bis 17:30 Uhr geöffnet, dazu gibt es Donuts und Crumble Heaven. The Coach House hat freitags von 16 bis 21 Uhr, samstags von 12 bis 21 Uhr und sonntags von 12 bis 18 Uhr geöffnet und verkauft neu Fish & Chips zum Mitnehmen. Die Street Food Kitchen ist von 18 bis 23 Uhr offen, für Gäste des Resorts auch The Club, freitags und samstags von 16 bis 23 Uhr.
 
@@ -258,7 +254,7 @@ Fällt eine Bahn den ganzen Tag aus, darfst du eine zweite VIP-Fahrt auf einer a
 
 Mit Behinderung bekommst du einen kostenlosen Queue Pass mit Armbändern, orange für dich, lila für die Begleitperson und bis zu vier gelbe für die Familie. Auch damit geht es über den Ausgang zur Bahn.
 
-Ich würde den Pass erst kaufen, wenn ich am Vormittag Hero und Mumbo Jumbo gefahren bin und sehe, wie lang die Warteschlangen an Sik und Velocity am Mittag sind. Am Wochenende in der Hauptsaison lohnt er sich eher als an einem Tag der Low Season.
+In der Low Season kostet der Pass mit 50 Pfund mehr als der Eintritt mit 30 Pfund. Ich würde ihn nur an einem Samstag oder Sonntag in der Hauptsaison kaufen, und auch dann erst, wenn ich am Vormittag Hero und Mumbo Jumbo gefahren bin und sehe, wie lang die Warteschlangen an Sik und Velocity am Mittag sind.
 
 ## Ein Tag im Park
 
@@ -280,26 +276,26 @@ In den Park darfst du keinen Alkohol mitbringen, er wird am Eingang abgenommen, 
 
 ## Tickets und Preise
 
-Die Preise richten sich nach dem Tag und danach, wie früh du buchst. Mehr als sieben Tage vor dem Besuch zahlst du am wenigsten, zwei bis sieben Tage vorher etwas mehr und in den letzten beiden Tagen am meisten. 2026 galten diese Preise in Pfund:
+Die Preise richten sich nach dem Tag und danach, wie früh du buchst. Am Vortag gekauft kostet ein Tag in der Hauptsaison 58 statt 46 Pfund. 2026 galten diese Preise in Pfund:
 
-| Saison und Ticket              | über 7 Tage | 2–7 Tage | unter 2 Tagen |
-| ------------------------------ | ----------- | -------- | ------------- |
-| Hauptsaison, Standard          | 46,00       | 51,50    | 58,00         |
-| Hauptsaison, Familienticket    | 168         | 194      | 224           |
-| Hauptsaison, ab 65 Jahren      | 36,75       | 40,00    | 45,25         |
-| Hauptsaison, mit Behinderung   | 46,00       | 51,50    | 58,00         |
-| Stufe ab 43,50, Standard       | 43,50       | 47,50    | 49,99         |
-| Stufe ab 43,50, Familienticket | 159         | 179      | 196           |
-| Stufe ab 43,50, ab 65 Jahren   | 32,20       | 35,00    | 39,60         |
-| Low Season, Standard           | 30,00       | 33,50    | 38,50         |
-| Low Season, Familienticket     | 114         | 128      | 148           |
-| Low Season, ab 65 Jahren       | 23,00       | 26,00    | 30,00         |
+| Saison und Ticket             | über 7 Tage | 2–7 Tage | unter 2 Tagen |
+| ----------------------------- | ----------- | -------- | ------------- |
+| Hauptsaison, Standard         | 46,00       | 51,50    | 58,00         |
+| Hauptsaison, Familienticket   | 168         | 194      | 224           |
+| Hauptsaison, ab 65 Jahren     | 36,75       | 40,00    | 45,25         |
+| Hauptsaison, mit Behinderung  | 46,00       | 51,50    | 58,00         |
+| weitere Stufe, Standard       | 43,50       | 47,50    | 49,99         |
+| weitere Stufe, Familienticket | 159         | 179      | 196           |
+| weitere Stufe, ab 65 Jahren   | 32,20       | 35,00    | 39,60         |
+| Low Season, Standard          | 30,00       | 33,50    | 38,50         |
+| Low Season, Familienticket    | 114         | 128      | 148           |
+| Low Season, ab 65 Jahren      | 23,00       | 26,00    | 30,00         |
 
-Das Familienticket gilt für bis zu vier Personen ab vier Jahren, und mit Behinderung kommt die Begleitperson umsonst mit. In einer weiteren Preisstufe kostet der Tag pauschal 29 Pfund, das Familienticket 112 Pfund und das Ticket ab 65 Jahren 22,63 Pfund. An den Wintertagen im Dezember und Januar zahlst du 18 Pfund.
+Das Familienticket gilt für bis zu vier Personen ab vier Jahren, und mit Behinderung kommt die Begleitperson umsonst mit. Daneben gibt es einen Pauschalpreis von 29 Pfund, für das Familienticket von 112 Pfund und ab 65 Jahren von 22,63 Pfund.
 
 Kinder bis einschließlich drei Jahre kommen umsonst hinein, ab vier zahlen sie den vollen Preis, eine Kinderermäßigung gibt es nicht. Mit zwei Kindern ist das Familienticket also der Kinderrabatt. Gruppen ab 25 Personen und Schulklassen ab zehn Kindern bekommen auf Anfrage Rabatt. Online gekaufte Tickets landen in der App „Flamingo Land Resort“, ausdrucken musst du nichts.
 
-Das Tagesticket gilt für den Freizeitpark und den Zoo, nicht aber für das Abendprogramm und den Leisure Complex des Resorts. Preise für 2027 hat Flamingo Land noch nicht veröffentlicht.
+Abendprogramm und Leisure Complex des Resorts sind im Tagesticket nicht enthalten. Preise für 2027 hat Flamingo Land noch nicht veröffentlicht.
 
 Für Getränke gibt es den Becher Refill & Refresh, der sich den ganzen Tag nachfüllen lässt. Einer kostet 19 Pfund, ab zwei sind es 15 Pfund pro Stück und ab drei 13 Pfund, die Verlängerung kostet 10 Pfund pro Tag. Wasserflaschen füllen dir die Bars und Restaurants kostenlos auf.
 
@@ -309,27 +305,26 @@ Die Jahreskarte, der Annual Pass, kostet 199 Pfund und gilt 365 Tage ab dem Kauf
 
 ## Parken
 
-Parken ist bei jedem Ticket inklusive, für Autos, Kleinbusse und Reisebusse. Nach Angaben des Parks liegt jeder Parkplatz höchstens fünf Minuten zu Fuß vom Eingang entfernt. Ladesäulen für Elektroautos stehen auf dem Hauptparkplatz, Plätze für Menschen mit Behinderung direkt am Eingang. Gehst du zwischendurch zum Auto, kommst du mit einem Stempel auf der Hand wieder hinein. Busfahrer vorgebuchter Gruppen haben freien Eintritt.
+Parken ist bei jedem Ticket inklusive, für Autos, Kleinbusse und Reisebusse. Jeder Parkplatz liegt höchstens fünf Minuten zu Fuß vom Eingang entfernt. Ladesäulen für Elektroautos stehen auf dem Hauptparkplatz, Plätze für Menschen mit Behinderung direkt am Eingang. Gehst du zwischendurch zum Auto, kommst du mit einem Stempel auf der Hand wieder hinein. Busfahrer vorgebuchter Gruppen haben freien Eintritt.
 
 ## Anreise
 
 Fürs Navi ist die Postleitzahl YO17 6UX, die Adresse Flamingo Land Ltd., Kirby Misperton, Malton, North Yorkshire. Der Park liegt an der A169 zwischen Malton und Pickering, und du erreichst ihn über die A64 oder die A170.
 
-Der nächste Bahnhof ist Malton. Mit dem Fernbus fährt National Express bis York, und vom Bahnhof York bringt dich der Yorkshire Coastliner ohne Umsteigen bis Flamingo Land. Busreisen aus der Gegend bieten nach Angaben des Parks Family Outings aus Teesside und Cleveland, Acklams Coaches aus Hull und East Yorkshire und Caledonian Breaks an. Telefonisch erreichst du Flamingo Land unter 0800 40 888 40.
+Der nächste Bahnhof ist Malton. Mit dem Fernbus fährt National Express bis York, und vom Bahnhof York bringt dich der Yorkshire Coastliner ohne Umsteigen bis Flamingo Land. Busreisen aus der Gegend bieten Family Outings aus Teesside und Cleveland, Acklams Coaches aus Hull und East Yorkshire und Caledonian Breaks an. Telefonisch erreichst du Flamingo Land unter 0800 40 888 40.
 
 ## Essen
 
-Für sieben Lokale nennt Flamingo Land die Zeiten in der Saison:
+Die Lokale verteilen sich auf fünf Bereiche und das Resort. Für sieben davon nennt Flamingo Land die Zeiten in der Saison, sie stehen in Klammern dabei:
 
-- Spud Stop, 11 bis 17 Uhr, Ofenkartoffeln
-- Pizza & Kebab, 15 bis 23 Uhr
-- Dewars Restaurant im Holiday Resort, 12 bis 22 Uhr
-- Muddy Duck Cafe, 10 bis 17 Uhr, mit Kaffee von Costa
-- Street Food Kitchen, 9:30 bis 23 Uhr, Burger und Fried Chicken
-- Zoo Bar, 12 bis 23 Uhr
-- The Diner, 9:30 bis 20 Uhr, Frühstück, Burger und Pancakes
+- Flamingo 1: The Diner (9:30 bis 20 Uhr, Frühstück, Burger und Pancakes), Fabrizio’s Pizzeria and Ristorante, das Upper Deck und der Spud Stop (11 bis 17 Uhr, Ofenkartoffeln)
+- Metropolis: Pitchers Sports Bar, Zanzibar Food Market und Metropolis Bar and Grill
+- Riverside 1: The Club mit Zoo Bar (12 bis 23 Uhr) und Street Food Kitchen (9:30 bis 23 Uhr, Burger und Fried Chicken), die R1 Bar und ein Stand für Pizza & Kebab (15 bis 23 Uhr)
+- Muddy Duck Farm: The Coach House Country Pub und das Muddy Duck Cafe (10 bis 17 Uhr, mit Kaffee von Costa)
+- Zoo: Boma Café und das Mansion House mit seinen Tea Rooms
+- Holiday Resort: Dewars Restaurant (12 bis 22 Uhr)
 
-Vegetarisch isst du an sechs dieser sieben, vegan an fünf und glutenfrei an vier. Auf dem Parkplan steht außerdem Mom’s Fabulous Hot Dogs. Picknickplätze gibt es drei, einen allgemeinen, einen in Children’s Planet und einen am Coach House Pub.
+Vegetarisch isst du an sechs der sieben Lokale mit Zeiten, vegan an fünf und glutenfrei an vier. Auf dem Parkplan steht außerdem Mom’s Fabulous Hot Dogs. Picknickplätze gibt es drei, einen allgemeinen, einen in Children’s Planet und einen am Coach House Pub.
 
 ## Übernachten im Resort
 
@@ -341,15 +336,15 @@ Bei der Buchung zahlst du 100 Pfund an für ein Holiday Home und 200 Pfund für 
 
 ## Was neu ist und was geschlossen hat
 
-Eine neue Bahn für 2027 hat Flamingo Land bisher nicht angekündigt, die jüngsten Neuheiten sind Lion Coast im Zoo und Flamingo Fest. Kumali, der Navigator, Little Monsters Wacky Races und der People Mover sind derzeit geschlossen.
+Die jüngsten Neuheiten sind Lion Coast im Zoo und das Flamingo Fest, das es 2026 zum ersten Mal gab.
 
 Die Wasserbahn Lost River Ride von Bear aus dem Jahr 2004 steht nicht mehr als Bahn auf dem Parkplan, nur der Laden Lost River Gifts. Laut Wikipedia baut der Park sie selbst um, mit einer kleineren Abfahrt.
 
-Abgebaut sind die Achterbahnen Go Gator und Dino Roller. Flip Flop und Rotataur fehlen ebenfalls auf dem Parkplan, und die Tea Cups fuhren bis 2023. Im Dino-Stone Park stehen nur noch Pterodactyl, Dino Dig, Cyclosoar und Twistosaurus.
+Abgebaut sind die Achterbahnen Go Gator und Dino Roller. Flip Flop und Rotataur fehlen ebenfalls auf dem Parkplan, und die Tea Cups fuhren bis 2023.
 
 ## Geschichte
 
-1959 verkaufte der Kinounternehmer Edwin Pentland Hick seine Kinokette und kaufte in Kirby Misperton einen bankrotten Country Club, um dort einen Zoo zu eröffnen. The Yorkshire Zoological Gardens waren anfangs 9 Acres groß, rund 3,6 Hektar, und eine Flamingokolonie gehörte zu den ersten Tieren. Die Flamingos waren also vor den Achterbahnen da.
+1959 verkaufte der Kinounternehmer Edwin Pentland Hick seine Kinokette und kaufte in Kirby Misperton einen bankrotten Country Club, um dort einen Zoo zu eröffnen. The Yorkshire Zoological Gardens waren anfangs 9 Acres groß, rund 3,6 Hektar, und eine Flamingokolonie gehörte zu den ersten Tieren.
 
 1963 kamen Große Tümmler nach Kirby Misperton, einer von ihnen hieß Sooty. In den 1960er-Jahren kam ein kleiner Rummel dazu, 1965 ging das Unternehmen als Associated Pleasure Parks an die Börse, und 1968 bekam der Zoo den Namen Flamingo Park Zoo. Im selben Jahr kaufte er in Seattle den Orca Cuddles und gab ihn 1971 an den Dudley Zoo ab.
 
@@ -365,7 +360,7 @@ Zehn Achterbahnen hat Flamingo Land im Lauf der Jahre abgebaut, neben der Corksc
 
 ### Wo sehe ich die Flamingo Land Wartezeiten live?
 
-Die aktuellen Wartezeiten jeder Bahn stehen auf der [Parkseite von Flamingo Land](ref:flamingo-land) bei park.fan, dazu für jede Bahn, ob sie gerade fährt. Alle acht Achterbahnen sind dabei, von Sik bis zum Runaway Train.
+Die aktuellen Wartezeiten jeder Bahn stehen auf der [Parkseite von Flamingo Land](ref:flamingo-land) bei park.fan, dazu für jede Bahn, ob sie gerade fährt. Alle acht Achterbahnen sind dabei.
 
 ### Wie voll ist Flamingo Land heute und morgen?
 
@@ -393,7 +388,7 @@ Am meisten bringt ein früher Start an Hero, am besten in der ersten halben Stun
 
 ### Was kostet der VIP Ride Pass?
 
-Flamingo Land nennt 50 Pfund pro Person. Der Pass gilt für je eine Fahrt über den Ausgang an Mumbo Jumbo, Hero, Velocity, Kumali, Cliff Hanger und Sik, mit einer Stunde Abstand zwischen zwei Fahrten. Das Junior Package umfasst sechs Bahnen, vom Pterodactyl bis zu Flamingo 1.
+Flamingo Land nennt 50 Pfund pro Person. Der Pass gilt für je eine Fahrt über den Ausgang an Mumbo Jumbo, Hero, Velocity, Kumali, Cliff Hanger und Sik, mit einer Stunde Abstand zwischen zwei Fahrten. Das Junior Package umfasst Pterodactyl, Voodoo, Twistosaurus, Splash Battle, Zooom! und Flamingo 1.
 
 ### Hat Flamingo Land im Winter geöffnet?
 
