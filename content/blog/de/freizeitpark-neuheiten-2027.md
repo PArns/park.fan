@@ -219,7 +219,8 @@ der Ravenring von Vekoma, für zusammen 20 Millionen Euro. Die nächste Achterba
 
 Der neue Themenbereich in [Bobbejaanland](ref:bobbejaanland) heißt Nickelodeon Land. Der Park
 verrät den Namen ausgerechnet in seiner Rabattaktion Black November für Jahreskarten, mit dem Satz,
-dass man 2027 „Nickelodeon Land en 3 gloednieuwe attracties“ kennenlernt.
+dass man 2027 „Nickelodeon Land en 3 gloednieuwe attracties“ kennenlernt, also Nickelodeon Land und
+drei brandneue Attraktionen.
 
 Parkchef Yves Peeters hat VRT NWS am 12. September 2026 mehr erzählt. Die drei Familienattraktionen
 öffnen ab April 2027 gleich hinter dem Eingang, mit Figuren wie Garfield und SpongeBob. Sie kosten
@@ -417,12 +418,12 @@ Gelände tätig war. Mack Rides hat für den Park schon den Time Traveler gebaut
 
 [Kentucky Kingdom](ref:kentucky-kingdom) in Louisville baut für das Frühjahr 2027
 [Midnight Showdown](/news/kentucky-kingdom-midnight-showdown), eine Holzachterbahn für Familien, die
-in einer Halle fährt. Einen Eröffnungstag gibt es noch nicht. Der Park nennt sie „The World’s Largest
+in einer Halle fährt. Einen Eröffnungstag gibt es noch nicht. Der Park nennt sie „The World's Largest
 Indoor Wooden Roller Coaster“, ohne zu sagen, woran „largest“ gemessen wird. Die Holzstrecke ist
 1.130 Fuß lang, rund 344 Meter, und die Bahn ragt mehr als drei Stockwerke hoch. Es fahren zwei Züge
 mit je zehn Plätzen, auf der Strecke liegen elf Momente mit Airtime. Gebaut wird sie von The Gravity
 Group aus Cincinnati. Das Thema ist ein Pferderennen im Dunkeln, und los geht es zu Hufgetrappel und
-dem Ruf „And they’re off!“.
+dem Ruf „And they're off!“.
 
 Die Bahn steht im neuen Bereich Bluegrass Downs, in dem fünf bestehende Fahrgeschäfte ein neues Thema
 bekommen. Im zweiten neuen Bereich, Happy Valley Farm, sind es acht, dazu steht dort Flying Fox, die
