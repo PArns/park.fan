@@ -5,6 +5,7 @@ import { AGENT_SKILLS_INDEX_PATH, skillArtifactPath, AGENT_SKILLS } from '@/lib/
 import { API_CATALOG_PATH } from '@/lib/agents/api-catalog';
 import { AI_CATALOG_PATH } from '@/lib/agents/catalog';
 import { agentDocumentHeaders } from '@/lib/agents/http';
+import { DATA_TERMS_URL } from '@/lib/agents/licensing';
 import { SITE_URL } from '@/i18n/config';
 import { blogFeedUrl } from '@/lib/blog/feed';
 
@@ -116,8 +117,16 @@ ${AGENT_SKILLS.map((skill) => line(skill.name, `${SITE_URL}${skillArtifactPath(s
   api.park.fan.
 - Training on these pages is declined (\`Content-Signal: ai-train=no\` in robots.txt). Reading a
   page to answer a question is what the site is for (\`ai-input=yes\`). The same terms in
-  machine-readable form: \`${SITE_URL}/license.xml\` (RSL 1.0). The price is a credit: name
-  park.fan and link the page a number came from.
+  machine-readable form: \`${SITE_URL}/license.xml\` (RSL 1.0).
+
+## Reusing the data
+
+Free for non-commercial use: name park.fan and link the page a number came from. The forecasts
+(crowd calendar, expected crowds per day and hour, predicted wait times, best days, day plans)
+come from park.fan's own models and are for non-commercial use only, on the pages, through the
+API and through MCP; commercial licences are unavailable. Live wait times and opening hours belong
+to the sources park.fan reads them from, under those sources' terms. The full terms:
+${DATA_TERMS_URL}
 
 ## Contact
 

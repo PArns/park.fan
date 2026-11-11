@@ -1,5 +1,6 @@
 import { agentDocumentHeaders } from '@/lib/agents/http';
 import { SITE_URL } from '@/i18n/config';
+import { DATA_TERMS_URL } from '@/lib/agents/licensing';
 
 /**
  * `/auth.md`: where an agent looks for how to get credentials. The public API needs none and the
@@ -24,6 +25,12 @@ client, no sign-up, no registration endpoint. Send a request, get an answer.
 Identify yourself in \`User-Agent\` with your project's name and a way to reach you. That is
 courtesy rather than authentication, and it is what gets a shared rate limit raised for you
 instead of lowered.
+
+## Terms of use
+
+The data is free for non-commercial use with a credit to park.fan. park.fan's forecasts may not
+be used commercially, and live wait times stay under the terms of the sources they come from.
+The full terms: ${DATA_TERMS_URL}
 
 ## No agent registration
 

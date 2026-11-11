@@ -13,6 +13,7 @@
  *   - a skill whose published SHA-256 no longer matches the bytes served (the index is a supply
  *     chain: an agent is entitled to check the digest and throw the skill away);
  *   - a robots.txt that lost its Content-Signal line, or that stopped disallowing /admin;
+ *   - a licence or API catalog whose terms link has no section to land on;
  *   - an MCP server card promising a tool the server does not list;
  *   - the MCP endpoint failing its own handshake, or a tool that no longer answers;
  *   - a park with no wait-time source being reported as a park with no queues.
@@ -107,6 +108,16 @@ check(
   /<permits type="usage">search ai-input<\/permits>/.test(license.text) &&
     /<prohibits type="usage">ai-train<\/prohibits>/.test(license.text)
 );
+// The commercial ban on the forecasts lives only in the human-readable terms, so a licence that
+// points at a renamed page or a dropped anchor would leave a client with no terms at all.
+const termsUrl = license.text.match(/<terms>([^<]+)<\/terms>/)?.[1] ?? '';
+const [termsPage, termsAnchor] = termsUrl.split('#');
+const terms = termsPage ? await get(termsPage.replace(SITE, '')) : { status: 0, text: '' };
+check(
+  'the licence links terms that exist',
+  terms.status === 200 && Boolean(termsAnchor) && terms.text.includes(`id="${termsAnchor}"`),
+  termsUrl || 'no <terms> element'
+);
 
 // ── the well-known documents ────────────────────────────────────────────────
 const catalog = await get('/.well-known/api-catalog');
@@ -115,6 +126,10 @@ check(
   catalog.status === 200 && catalog.type.includes('linkset+json')
 );
 check('api-catalog names one API', JSON.parse(catalog.text).linkset?.length === 1);
+check(
+  'api-catalog links the same terms as the licence',
+  JSON.parse(catalog.text).linkset?.[0]?.['terms-of-service']?.[0]?.href === termsUrl
+);
 
 const skillsIndex = await get('/.well-known/agent-skills/index.json');
 check('agent-skills index serves', skillsIndex.status === 200);

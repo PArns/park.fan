@@ -2,6 +2,7 @@ import { Link } from '@/i18n/navigation';
 import { ObfuscatedEmail } from '@/components/common/obfuscated-email';
 import { ObfuscatedPhone } from '@/components/common/obfuscated-phone';
 import { ExternalLink } from 'lucide-react';
+import { DATA_TERMS_ANCHOR, RSL_LICENSE_PATH } from '@/lib/agents/licensing';
 import type { ImpressumStory } from './story';
 
 /** The legal notice (Impressum) in German, shown on the `de` locale. */
@@ -202,6 +203,59 @@ export function ImpressumDE({ story }: { story: ImpressumStory | null }) {
             className="text-primary hover:text-primary/80 underline"
           >
             CC BY 4.0
+          </a>
+          .
+        </p>
+
+        <h2
+          id={DATA_TERMS_ANCHOR}
+          className="border-border mt-12 mb-6 scroll-mt-20 border-b pb-3 text-3xl font-bold"
+        >
+          Nutzung der Daten
+        </h2>
+        <p className="mb-4">
+          Was park.fan auf den Seiten und über die API unter api.park.fan veröffentlicht, darf jeder
+          kostenlos für nicht-kommerzielle Zwecke verwenden: in einer eigenen App, auf einer
+          Fanseite ohne Werbung, in einem Forschungsprojekt oder einer Schularbeit. Wer das tut,
+          nennt park.fan als Quelle und verlinkt die Seite, von der die Zahlen stammen. Einen
+          API-Key oder eine Anmeldung braucht es nicht.
+        </p>
+
+        <h3 className="mt-8 mb-4 text-2xl font-semibold">
+          Prognosen nur für nicht-kommerzielle Zwecke
+        </h3>
+        <p className="mb-4">
+          Die Prognosen berechnet park.fan mit eigenen Modellen: den Crowd-Kalender, den erwarteten
+          Andrang pro Tag und pro Stunde, vorhergesagte Wartezeiten, die besten Besuchstage und die
+          Pläne des Tagesplaners. Sie dürfen nicht kommerziell genutzt werden. Das gilt für die
+          Seiten, die API und den MCP-Server gleichermaßen.
+        </p>
+        <p className="mb-4">
+          Kommerziell sind zum Beispiel eine kostenpflichtige App, eine App mit Abo, In-App-Käufen
+          oder Werbung, eine Website mit Werbung oder Affiliate-Links und jedes Produkt, das ein
+          Unternehmen anbietet. Für solche Zwecke dürfen die Prognosen weder gezeigt noch
+          gespeichert oder weitergegeben werden. Lizenzen für eine kommerzielle Nutzung vergibt
+          park.fan nicht.
+        </p>
+
+        <h3 className="mt-8 mb-4 text-2xl font-semibold">Live-Daten gehören ihren Quellen</h3>
+        <p className="mb-4">
+          Wartezeiten und Öffnungszeiten kommen von den Plattformen unter „Datenquellen“, das Wetter
+          von Open-Meteo. An diesen Daten räumt park.fan keine Rechte ein. Wer sie weiterverwendet,
+          richtet sich nach den Bedingungen der jeweiligen Quelle.
+        </p>
+
+        <h3 className="mt-8 mb-4 text-2xl font-semibold">Kein Training von KI-Modellen</h3>
+        <p className="mb-4">
+          Die Seiten dürfen nicht zum Training oder Fine-Tuning von KI-Modellen verwendet werden.
+          Ein Assistent darf eine Seite lesen, um jemandem eine Frage zu beantworten.
+          Maschinenlesbar stehen diese Regeln in{' '}
+          <a href="/robots.txt" className="text-primary hover:text-primary/80 underline">
+            robots.txt
+          </a>{' '}
+          und{' '}
+          <a href={RSL_LICENSE_PATH} className="text-primary hover:text-primary/80 underline">
+            license.xml
           </a>
           .
         </p>

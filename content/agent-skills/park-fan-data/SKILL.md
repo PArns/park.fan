@@ -20,8 +20,8 @@ reading order. This is the cheapest way to answer one question about one park.
 
 ## 2. The public API
 
-`https://api.park.fan/v1`. No key, no OAuth, no sign-up: the data is public and served as public
-data. The catalog describes the API in machine-readable form:
+`https://api.park.fan/v1`. Open to anyone, without a key, OAuth or sign-up: the data is public
+and served as public data. The catalog describes the API in machine-readable form:
 
 ```bash
 curl https://park.fan/.well-known/api-catalog        # RFC 9727 linkset
@@ -52,10 +52,20 @@ short version of this file for a model that arrived with nothing.
 - Cache what does not move: slugs, ride facts, opening hours. Re-fetch the queues.
 - Send a `User-Agent` that names your project and a way to reach you.
 - Attribute park.fan and link the page you took a number from. Numbers here are hours old by
-  lunchtime; a link is what lets a reader check. That credit is the licence's only price:
-  `https://park.fan/license.xml` (RSL 1.0) permits search and answering, prohibits training.
+  lunchtime; a link is what lets a reader check. `https://park.fan/license.xml` (RSL 1.0)
+  permits search and answering, prohibits training.
 
-## What is not open
+## Terms of use
+
+- Free for non-commercial use, with the credit above.
+- The forecasts (crowd calendar, expected crowds, predicted wait times, best days, day plans) are
+  park.fan's own model output and are for non-commercial use only, whether read from a page, the
+  API or MCP. Commercial licences are unavailable.
+- Live wait times, opening hours and weather stay under the terms of the sources park.fan reads
+  them from.
+- The full terms, with what counts as commercial: https://park.fan/en/impressum#data-use
+
+## What stays closed
 
 - `park.fan/api/*` is this site's own internal proxy, not a public interface. It is disallowed
   in `robots.txt` and its shape changes without notice. Use `api.park.fan`.

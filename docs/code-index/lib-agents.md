@@ -7,6 +7,8 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`api-catalog.ts`](../../lib/agents/api-catalog.ts)
 
+What park.fan tells machines about its API: the catalog document served at /.well-known/api-catalog (RFC 9727) and the `Link` header the homepage answers with (RFC 8288, RFC 9727 §3).
+
 - `API_CATALOG_PATH` _const_: Where the catalog lives. Fixed by RFC 9727 §2 — agents try this path, not a link.
 - `API_CATALOG_CONTENT_TYPE` _const_: RFC 9727 §4.2: the Linkset media type, plus the profile parameter that says the linkset is an API catalog rather than any other set of links. Only a SHOULD, but it is what tells a client that stumbled on the document what it is holding.
 - `apiCatalog` _const_: The catalog document itself — RFC 9264 Linkset, serialized as-is by the route handler.
@@ -28,6 +30,8 @@ by hand: change the comment in the code and re-run the script. -->
 Literal rather than an env var, for the same reason the API catalog is: a preview deployment should hand out the document production hands out, not one about itself.
 
 - `RSL_LICENSE_PATH` _const_
+- `DATA_TERMS_ANCHOR` _const_: The `id` of the terms section in both Impressum languages, so one link reaches either.
+- `DATA_TERMS_URL` _const_: The human-readable terms for reusing park.fan's data: free for non-commercial use, the forecasts never for commercial use, the live data under its sources' own terms.
 - `RSL_CONTENT_TYPE` _const_: RSL 1.0 §3. Served as `application/rsl+xml`.
 - `RSL_DOCUMENT` _const_: The licence itself. `payment type="attribution"` is RSL's way of saying the price is a credit: name park.fan and link the page the number came from.
 - `LICENSE_LINK_HEADER` _const_: RSL 1.0 §4.5: the licence, associated with the asset being served.

@@ -15,6 +15,16 @@ const SITE = 'https://park.fan';
 
 export const RSL_LICENSE_PATH = '/license.xml';
 
+/** The `id` of the terms section in both Impressum languages, so one link reaches either. */
+export const DATA_TERMS_ANCHOR = 'data-use';
+
+/**
+ * The human-readable terms for reusing park.fan's data: free for non-commercial use, the
+ * forecasts never for commercial use, the live data under its sources' own terms. English,
+ * because the reader it is handed to is a developer or a licensing tool, not a park visitor.
+ */
+export const DATA_TERMS_URL = `${SITE}/en/impressum#${DATA_TERMS_ANCHOR}`;
+
 /** RSL 1.0 §3. Served as `application/rsl+xml`. */
 export const RSL_CONTENT_TYPE = 'application/rsl+xml; charset=utf-8';
 
@@ -22,6 +32,11 @@ export const RSL_CONTENT_TYPE = 'application/rsl+xml; charset=utf-8';
  * The licence itself. `payment type="attribution"` is RSL's way of saying the price is a credit:
  * name park.fan and link the page the number came from. That is not a formality here — a wait
  * time is only checkable if the reader can get back to where it was published.
+ *
+ * The commercial ban on the forecasts stays in the `<terms>` text (RSL 1.0 §3.17) rather than a
+ * `<prohibits type="user">commercial</prohibits>`: RSL licenses a whole page, and that element
+ * would also forbid a commercial assistant from reading a page to answer someone, which
+ * `ai-input` allows on purpose.
  */
 export const RSL_DOCUMENT = `<?xml version="1.0" encoding="UTF-8"?>
 <rsl xmlns="https://rslstandard.org/rsl">
@@ -31,6 +46,7 @@ export const RSL_DOCUMENT = `<?xml version="1.0" encoding="UTF-8"?>
       <prohibits type="usage">ai-train</prohibits>
       <payment type="attribution" />
     </license>
+    <terms>${DATA_TERMS_URL}</terms>
   </content>
 </rsl>
 `;

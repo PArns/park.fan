@@ -4,9 +4,12 @@
  * (RFC 8288, RFC 9727 §3). Both are built from `PARK_FAN_API`, because a `Link` header rots
  * unseen and a URL fixed in only one of them would point agents at a 404.
  *
- * Keep this file import-free: next.config.ts reads `HOMEPAGE_LINK_HEADER` from here and is
- * loaded outside the app's module graph.
+ * Keep this file free of `@/` imports and dependencies: next.config.ts reads
+ * `HOMEPAGE_LINK_HEADER` from here and is loaded outside the app's module graph. The one import,
+ * `./licensing`, is import-free for the same reason.
  */
+
+import { DATA_TERMS_URL } from './licensing';
 
 /** Where the catalog lives. Fixed by RFC 9727 §2 — agents try this path, not a link. */
 export const API_CATALOG_PATH = '/.well-known/api-catalog';
@@ -32,12 +35,16 @@ const API_ORIGIN = 'https://api.park.fan';
  */
 type CatalogLink = { href: string; type: string; title: string };
 
-/** One API, described by the RFC 8631 relations RFC 9727 §4 builds a catalog out of. */
+/**
+ * One API, described by the RFC 8631 relations RFC 9727 §4 builds a catalog out of, plus
+ * `terms-of-service` (RFC 6903), the relation a client looks for before it builds on the data.
+ */
 type CatalogEntry = {
   anchor: string;
   'service-desc': CatalogLink[];
   'service-doc': CatalogLink[];
   status: CatalogLink[];
+  'terms-of-service': CatalogLink[];
 };
 
 /**
@@ -58,6 +65,13 @@ const PARK_FAN_API: CatalogEntry = {
   ],
   status: [
     { href: `${API_ORIGIN}/v1/health`, type: 'application/json', title: 'park.fan API health' },
+  ],
+  'terms-of-service': [
+    {
+      href: DATA_TERMS_URL,
+      type: 'text/html',
+      title: 'Terms of use: non-commercial, forecasts never for commercial use',
+    },
   ],
 };
 
