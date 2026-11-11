@@ -59,9 +59,9 @@ Neu ist in diesem Winter der Countdown to Christmas Square, präsentiert von Hal
 
 ## Shows, Lichter und der Weihnachtsmann
 
-Jeden Abend werden auf der International Street zwei rund 15 Meter hohe Weihnachtsbäume beleuchtet. Im Park hängen sieben Millionen Lichter. Nach ein paar Jahren Pause fährt wieder der Holly Jolly Trolley. Im Canterbury Theatre läuft Tinker's Toy Factory mit Musik und Akrobatik, bei Four Drummers Drumming trommeln Spielzeugsoldaten. In It's Christmas, Charlie Brown! stehen Charlie Brown, Snoopy und die übrigen PEANUTS auf der Bühne. Außerdem spielen Polar Party with the Tannenbaums, The MistleTones, Cool Yule Christmas und Livebands. Spielzeiten hat der Park noch nicht veröffentlicht.
+Jeden Abend werden auf der International Street zwei rund 15 Meter hohe Weihnachtsbäume beleuchtet, und drumherum hängen im Park sieben Millionen Lichter. Nach ein paar Jahren Pause fährt wieder der Holly Jolly Trolley. Im Canterbury Theatre läuft Tinker's Toy Factory mit Musik und Akrobatik, bei Four Drummers Drumming trommeln Spielzeugsoldaten. In It's Christmas, Charlie Brown! stehen Charlie Brown, Snoopy und die übrigen PEANUTS auf der Bühne. Drei weitere Shows, Polar Party with the Tannenbaums, The MistleTones und Cool Yule Christmas, stehen mit Livebands im Programm, Spielzeiten gibt es für keine davon bisher.
 
-Auf dem Christmas Market verkaufen Kunsthandwerker aus der Region. Den Weihnachtsmann triffst du bei St. Nick's Pics, das Fotopaket kostet extra. Briefe an ihn nimmt das North Pole Post Office bis zum 23. Dezember an. Dazu kommen die Dancing Lights, Charlie Brown's Christmas Tree Lot und ein Fotomotiv mit dem Elf on the Shelf.
+Auf dem Christmas Market verkaufen Kunsthandwerker aus der Region. Den Weihnachtsmann triffst du bei St. Nick's Pics, das Fotopaket kostet extra. Briefe an ihn nimmt das North Pole Post Office bis zum 23. Dezember an. Wer ein Bild ohne Fotopaket will, stellt sich vor das Fotomotiv mit dem Elf on the Shelf, zwischen den Dancing Lights und Charlie Brown's Christmas Tree Lot.
 
 ## Termine und Öffnungszeiten
 
@@ -83,11 +83,11 @@ Der Wasserpark Splash Works bleibt den ganzen Winter zu.
 
 Ein Parkticket mit WinterFest kostet ab 39 kanadische Dollar, dazu kommen eine Bearbeitungsgebühr von bis zu 9,99 Dollar und Steuern. Eine Tageskasse gibt es im Winter nicht, verkauft wird nur online. Kinder unter drei Jahren brauchen kein Ticket.
 
-Der Silver Pass 2027 kostet 89 Dollar. Wer bis zum 30. November vier oder mehr Pässe in einem Kauf online bestellt, zahlt 75 Dollar pro Pass. Er gilt in Canada's Wonderland und in Splash Works bis Labour Day 2027. Das WinterFest 2026 ist als Bonus für begrenzte Zeit enthalten. Wer einen Pass für 2027 bis zum 30. November kauft oder verlängert, bekommt ein Bring-a-Friend-Ticket gratis, einzulösen bis zum 3. Januar. Der Gold Pass kostet 115 Dollar und gilt auch in den Six-Flags-Parks im Mittleren Westen, Cedar Point eingeschlossen. Mit ihm kommst du nur an ausgewählten Tagen zum WinterFest, und welche das sind, hat der Park noch nicht veröffentlicht.
+Der Silver Pass 2027 kostet 89 Dollar. Wer bis zum 30. November vier oder mehr Pässe in einem Kauf online bestellt, zahlt 75 Dollar pro Pass. Er gilt in Canada's Wonderland und in Splash Works bis Labour Day 2027, und obwohl er 2027 im Namen trägt, bringt er dich schon zum WinterFest 2026. Bis zum selben Stichtag legt der Park jedem gekauften oder verlängerten Pass für 2027 ein Bring-a-Friend-Ticket bei, das bis zum 3. Januar gilt. Der Gold Pass kostet 115 Dollar und gilt auch in den Six-Flags-Parks im Mittleren Westen, Cedar Point eingeschlossen. Fürs WinterFest bringt der teurere Pass damit weniger, denn er gilt dort nur an ausgewählten Tagen, und die hat der Park noch nicht genannt.
 
 ## Was extra kostet
 
-Schlittschuhlaufen auf dem [Snow Flake Lake](ref:canadas-wonderland/snow-flake-lake) vor Wonder Mountain zahlst du gesondert und reservierst es vorher online, Leihschlittschuhe gibt es vor Ort. In Kanada wäre ein Winterfest ohne Eisbahn auch schwer zu erklären. Ebenfalls extra kosten das Plätzchenverzieren in Mrs. Claus' Kitchen und Essen und Getränke in den Iglus von Jack Frost's Igloo Village. In Mrs. Claus' Kitchen gibt es in diesem Jahr ein neues Rezept mit Zutaten aus der Region. Ein Schließfach kostet 17 bis 30 Dollar am Tag, ein Kinderwagen 17 Dollar, ein Doppelwagen 26 Dollar plus Steuer. Elektromobile gibt es während des WinterFest nicht.
+Schlittschuhlaufen auf dem [Snow Flake Lake](ref:canadas-wonderland/snow-flake-lake) vor Wonder Mountain zahlst du gesondert und reservierst es vorher online, Leihschlittschuhe gibt es vor Ort. Ausgerechnet das Kanadischste am ganzen WinterFest ist also nicht im Ticket. Ebenfalls extra kosten das Plätzchenverzieren in Mrs. Claus' Kitchen, in diesem Jahr nach einem neuen Rezept mit Zutaten aus der Region, und Essen und Getränke in den Iglus von Jack Frost's Igloo Village. Ein Schließfach kostet 17 bis 30 Dollar am Tag, ein Kinderwagen 17 Dollar, ein Doppelwagen 26 Dollar plus Steuer. Elektromobile gibt es während des WinterFest nicht.
 
 ## Freier Eintritt ab 65
 
@@ -97,17 +97,17 @@ Wer am oder vor dem 31. Dezember 1961 geboren ist, kommt bis zum 3. Januar 2027 
 
 Zum WinterFest fahren 25 Bahnen, mit [Psyclone](ref:canadas-wonderland/psyclone) und [Sledge Hammer](ref:canadas-wonderland/sledge-hammer) auch zwei Thrill Rides. Für Kinder fahren unter anderem [Snoopy's Space Race](ref:canadas-wonderland/snoopys-space-race), die [Woodstock Whirlybirds](ref:canadas-wonderland/woodstock-whirlybirds) und das [Character Carrousel](ref:canadas-wonderland/character-carrousel). [Guardian](ref:canadas-wonderland/wonder-mountains-guardian) und [Snoopy's Racing Railway](ref:canadas-wonderland/snoopys-racing-railway) laufen nur bis zum 29. November und nur bei passendem Wetter.
 
-Leviathan, Yukon Striker und Behemoth fahren im Winter nicht, den Fahrtwind übernimmt im Dezember ohnehin das Wetter. [Leviathan](ref:canadas-wonderland/leviathan) ist ein Hyper Coaster von Bolliger & Mabillard aus dem Jahr 2012, 93 Meter hoch und 148 km/h schnell. [Yukon Striker](ref:canadas-wonderland/yukon-striker), ein Dive Coaster von B&M aus dem Jahr 2019, fällt 75 Meter senkrecht und fährt vier Überschläge. [Behemoth](ref:canadas-wonderland/behemoth) von 2008 ist 70 Meter hoch und erreicht 124 km/h.
+Die drei größten der 18 Achterbahnen des Parks fahren im Winter nicht, den Fahrtwind übernimmt im Dezember ohnehin das Wetter. Wer für [Leviathan](ref:canadas-wonderland/leviathan) kommt, den 93 Meter hohen Hyper Coaster von Bolliger & Mabillard aus dem Jahr 2012 mit 148 km/h, wartet bis zur Sommersaison. Das gilt auch für [Yukon Striker](ref:canadas-wonderland/yukon-striker), den Dive Coaster von B&M aus dem Jahr 2019 mit 75 Metern senkrechtem Fall und vier Überschlägen, und für [Behemoth](ref:canadas-wonderland/behemoth) von 2008, 70 Meter hoch und 124 km/h schnell.
 
 ## Anreise
 
-Die Adresse ist 1 Canada's Wonderland Drive, Vaughan, ON L6A 1S6. Mit dem Auto fährst du auf dem Highway 400 bis zur Ausfahrt 33, Rutherford Road, und dann nach Norden auf den Canada's Wonderland Drive. Einen Preis fürs Parken hat der Park nicht veröffentlicht.
+Die Adresse ist 1 Canada's Wonderland Drive, Vaughan, ON L6A 1S6. Mit dem Auto fährst du auf dem Highway 400 bis zur Ausfahrt 33, Rutherford Road, und dann nach Norden auf den Canada's Wonderland Drive. Was der Parkplatz kostet, steht nirgends beim Park, und für den freien Eintritt ab 65 ist er ausdrücklich nicht dabei.
 
 Ohne Auto nimmst du die U-Bahn-Linie 1 der TTC bis Vaughan Metropolitan Centre und steigst am SmartCentres Place Bus Terminal in einen Bus der YRT, der auf der Jane Street nach Norden fährt. An der Haltestelle Jane St/Norwood Av steigst du aus, von dort sind es fünf Minuten zu Fuß. Seit dem 1. November richten sich die Fahrpläne der YRT-Linien 320 und 360 nach den Öffnungszeiten des Parks. Die 360 aus Richtung Finch GO Bus Terminal und Richmond Hill Centre fährt während des WinterFest zusätzlich freitags. Die GO-Busse 47W und 52X fuhren nur vom 25. April bis 30. August bis zum Park. Vom Flughafen Pearson bringt dich der UP Express in 28 Minuten zur Union Station, von dort geht es mit der TTC weiter.
 
 ## Canada's Wonderland seit 1981
 
-Taft Broadcasting und die Great-West Life Assurance Company haben Canada's Wonderland am 23. Mai 1981 eröffnet. Von 1994 bis 2006 hieß er Paramount Canada's Wonderland, 2006 übernahm ihn Cedar Fair. Seit der Fusion von Cedar Fair und Six Flags am 1. Juli 2024 gehört er zur Six Flags Entertainment Corporation. Im Park stehen 18 Achterbahnen. Das WinterFest feiert Six Flags in diesem Winter außerdem in Carowinds, Six Flags Discovery Kingdom und Kings Island.
+Taft Broadcasting und die Great-West Life Assurance Company haben Canada's Wonderland am 23. Mai 1981 eröffnet. Von 1994 bis 2006 hieß er Paramount Canada's Wonderland, 2006 übernahm ihn Cedar Fair. Seit der Fusion von Cedar Fair und Six Flags am 1. Juli 2024 gehört er zur Six Flags Entertainment Corporation. Das WinterFest feiert Six Flags in diesem Winter außerdem in Carowinds, Six Flags Discovery Kingdom und Kings Island.
 
 [Canada's Wonderland](ref:canadas-wonderland?full)
 
