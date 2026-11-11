@@ -2,7 +2,7 @@
 title: "Canada's Wonderland celebra Nochevieja por primera vez"
 translationKey: canadas-wonderland-winterfest-2026
 date: '2026-11-11'
-time: '17:30'
+time: '18:25'
 author: patrick
 mode: published
 featured: false
@@ -59,7 +59,7 @@ Este invierno se estrena Countdown to Christmas Square, patrocinada por Hallmark
 
 ## Espectáculos, luces y Papá Noel
 
-Cada noche se encienden en International Street dos árboles de Navidad de unos 15 metros, y a su alrededor cuelgan por el parque siete millones de luces. Tras unos años de pausa vuelve el Holly Jolly Trolley. En el Canterbury Theatre se representa Tinker's Toy Factory, con música y acrobacias, y en Four Drummers Drumming tocan el tambor unos soldaditos de juguete. Charlie Brown, Snoopy y el resto de los PEANUTS salen a escena en It's Christmas, Charlie Brown! Otros tres espectáculos, Polar Party with the Tannenbaums, The MistleTones y Cool Yule Christmas, están en el programa junto con grupos en directo, pero ninguno tiene todavía horario.
+Cada noche se encienden en International Street dos árboles de Navidad de unos 15 metros, y a su alrededor cuelgan por el parque siete millones de luces. Tras unos años de pausa vuelve el Holly Jolly Trolley. En el Canterbury Theatre se representa Tinker's Toy Factory, con música y acrobacias, y en Four Drummers Drumming tocan el tambor unos soldaditos de juguete. Charlie Brown, Snoopy y el resto de los PEANUTS salen a escena en It's Christmas, Charlie Brown! Ningún espectáculo tiene todavía horario. En el programa figuran además Polar Party with the Tannenbaums, The MistleTones y Cool Yule Christmas, y tocan grupos en directo.
 
 En el Christmas Market venden artesanos de la zona. A Papá Noel se le encuentra en St. Nick's Pics, y el paquete de fotos se paga aparte. El North Pole Post Office recoge cartas para él hasta el 23 de diciembre. Quien quiera una foto sin pagar el paquete puede ponerse ante el decorado del Elf on the Shelf, entre las Dancing Lights y el Charlie Brown's Christmas Tree Lot.
 
@@ -87,7 +87,7 @@ El Silver Pass 2027 cuesta 89 dólares, o 75 por pase si hasta el 30 de noviembr
 
 ## Lo que se paga aparte
 
-Patinar en el [Snow Flake Lake](ref:canadas-wonderland/snow-flake-lake), delante de Wonder Mountain, se paga aparte y hay que reservarlo antes por internet; los patines se alquilan allí mismo. Lo más canadiense de todo el WinterFest es, precisamente, lo que la entrada no cubre. También cuestan dinero decorar galletas en Mrs. Claus' Kitchen, que este año estrena una receta con ingredientes de la región, y la comida y la bebida en los iglús del Jack Frost's Igloo Village. Una taquilla cuesta entre 17 y 30 dólares al día, un cochecito 17 dólares y uno doble 26, más impuestos. Durante el WinterFest no se alquilan scooters de movilidad reducida.
+Patinar en el [Snow Flake Lake](ref:canadas-wonderland/snow-flake-lake), delante de Wonder Mountain, que es justo lo más canadiense de todo el WinterFest, se paga aparte y hay que reservarlo antes por internet. Los patines se alquilan allí mismo. Mrs. Claus' Kitchen hornea este año con una receta nueva e ingredientes de la región. Decorar las galletas se paga aparte, igual que la comida y la bebida en los iglús del Jack Frost's Igloo Village. Una taquilla cuesta entre 17 y 30 dólares al día, un cochecito 17 dólares y uno doble 26, más impuestos. Durante el WinterFest no se alquilan scooters de movilidad reducida.
 
 ## Entrada gratis desde los 65 años
 
@@ -97,11 +97,11 @@ Quien haya nacido el 31 de diciembre de 1961 o antes entra gratis al WinterFest 
 
 Durante el WinterFest funcionan 25 atracciones, entre ellas dos de las fuertes: [Psyclone](ref:canadas-wonderland/psyclone) y [Sledge Hammer](ref:canadas-wonderland/sledge-hammer). Para los niños están, por ejemplo, [Snoopy's Space Race](ref:canadas-wonderland/snoopys-space-race), los [Woodstock Whirlybirds](ref:canadas-wonderland/woodstock-whirlybirds) y el [Character Carrousel](ref:canadas-wonderland/character-carrousel). [Guardian](ref:canadas-wonderland/wonder-mountains-guardian) y [Snoopy's Racing Railway](ref:canadas-wonderland/snoopys-racing-railway) solo abren hasta el 29 de noviembre y si el tiempo lo permite.
 
-Las tres más grandes de las 18 montañas rusas del parque no funcionan en invierno; el viento helado de diciembre en Ontario ya corre gratis. Quien venga por [Leviathan](ref:canadas-wonderland/leviathan), la hiper montaña rusa de Bolliger & Mabillard de 2012, con 93 metros de altura y 148 km/h, tendrá que esperar a la temporada de verano. Lo mismo vale para [Yukon Striker](ref:canadas-wonderland/yukon-striker), la dive coaster de B&M de 2019 que cae 75 metros en vertical y da cuatro inversiones, y para [Behemoth](ref:canadas-wonderland/behemoth), de 2008, que mide 70 metros y llega a 124 km/h.
+Las tres más grandes de las 18 montañas rusas del parque no funcionan en invierno; el viento helado de diciembre en Ontario ya corre gratis. Hasta la temporada de verano esperan [Leviathan](ref:canadas-wonderland/leviathan), la hiper montaña rusa de Bolliger & Mabillard de 2012, con 93 metros de altura y 148 km/h, [Yukon Striker](ref:canadas-wonderland/yukon-striker), una dive coaster de B&M de 2019 con una caída vertical de 75 metros y cuatro inversiones, y [Behemoth](ref:canadas-wonderland/behemoth), de 2008, con 70 metros y 124 km/h.
 
 ## Cómo llegar
 
-La dirección es 1 Canada's Wonderland Drive, Vaughan, ON L6A 1S6. En coche se va por la Highway 400 hasta la salida 33, Rutherford Road, y luego hacia el norte por Canada's Wonderland Drive. El parque no dice en ningún sitio lo que cuesta el aparcamiento, y la entrada gratuita desde los 65 años lo deja fuera expresamente.
+La dirección es 1 Canada's Wonderland Drive, Vaughan, ON L6A 1S6. En coche se va por la Highway 400 hasta la salida 33, Rutherford Road, y luego hacia el norte por Canada's Wonderland Drive. El parque no dice en ningún sitio lo que cuesta el aparcamiento.
 
 Sin coche, se toma la línea 1 del metro de la TTC hasta Vaughan Metropolitan Centre y, en el SmartCentres Place Bus Terminal, un autobús de YRT que sube por Jane Street. Hay que bajarse en la parada Jane St/Norwood Av, a cinco minutos a pie del parque. Desde el 1 de noviembre, los horarios de las líneas 320 y 360 de YRT se ajustan a los del parque. Durante el WinterFest, la 360, que viene de Finch GO Bus Terminal y de Richmond Hill Centre, circula también los viernes. Los autobuses GO 47W y 52X solo llegaron al parque del 25 de abril al 30 de agosto. Desde el aeropuerto Pearson, el UP Express tarda 28 minutos hasta Union Station, y desde allí se sigue en TTC.
 

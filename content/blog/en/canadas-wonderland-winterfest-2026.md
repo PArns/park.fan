@@ -2,7 +2,7 @@
 title: "Canada's Wonderland holds its first New Year's Eve party"
 translationKey: canadas-wonderland-winterfest-2026
 date: '2026-11-11'
-time: '17:30'
+time: '18:25'
 author: patrick
 mode: published
 featured: false

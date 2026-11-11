@@ -2,7 +2,7 @@
 title: "Canada's Wonderland fête le Nouvel An pour la première fois"
 translationKey: canadas-wonderland-winterfest-2026
 date: '2026-11-11'
-time: '17:30'
+time: '18:25'
 author: patrick
 mode: published
 featured: false
@@ -34,7 +34,7 @@ rideLinks:
 seo:
   title: "Canada's Wonderland WinterFest 2026 : Nouvel An, dates, prix"
   description: >-
-    WinterFest à Canada's Wonderland du 21/11/2026 au 3/1/2027, avec un premier compte à rebours du Nouvel An à 20 h. Billets dès 39 CAD, uniquement en ligne.
+    WinterFest à Canada's Wonderland du 21/11/2026 au 3/1/2027. Premier compte à rebours du Nouvel An à 20 h, avec feu d’artifice. Dès 39 CAD, en ligne.
   keywords:
     - Canada's Wonderland WinterFest
     - Canada's Wonderland WinterFest 2026
@@ -59,7 +59,7 @@ La nouveauté de cet hiver s’appelle Countdown to Christmas Square, présenté
 
 ## Spectacles, lumières et père Noël
 
-Chaque soir, deux sapins d’une quinzaine de mètres s’illuminent sur International Street, et sept millions de lumières décorent le parc. Après quelques années d’absence, le Holly Jolly Trolley reprend du service. Au Canterbury Theatre, Tinker's Toy Factory mêle musique et acrobaties, et dans Four Drummers Drumming, ce sont des soldats de plomb qui tiennent les baguettes. It's Christmas, Charlie Brown! réunit sur scène Charlie Brown, Snoopy et le reste des PEANUTS. Trois autres spectacles, Polar Party with the Tannenbaums, The MistleTones et Cool Yule Christmas, figurent au programme avec des groupes live, mais aucun n’a encore d’horaire.
+Chaque soir, deux sapins d’une quinzaine de mètres s’illuminent sur International Street, et sept millions de lumières décorent le parc. Après quelques années d’absence, le Holly Jolly Trolley reprend du service. Au Canterbury Theatre, Tinker's Toy Factory mêle musique et acrobaties, et dans Four Drummers Drumming, ce sont des soldats de plomb qui tiennent les baguettes. It's Christmas, Charlie Brown! réunit sur scène Charlie Brown, Snoopy et le reste des PEANUTS. Aucun spectacle n’a encore d’horaire. Le programme compte aussi Polar Party with the Tannenbaums, The MistleTones et Cool Yule Christmas, et des groupes jouent en live.
 
 Au Christmas Market, des artisans de la région vendent leurs créations. Le père Noël vous attend à St. Nick's Pics, où le forfait photo est payant. Jusqu’au 23 décembre, le North Pole Post Office reçoit les lettres pour le père Noël. Pour une photo sans forfait, il reste le décor de l’Elf on the Shelf, entre les Dancing Lights et le Charlie Brown's Christmas Tree Lot.
 
@@ -87,7 +87,7 @@ Le Silver Pass 2027 coûte 89 dollars, ou 75 dollars par pass pour une commande 
 
 ## Ce qui se paie à part
 
-Le patin à glace sur le [Snow Flake Lake](ref:canadas-wonderland/snow-flake-lake), devant Wonder Mountain, est payant et se réserve en ligne à l’avance. Des patins se louent sur place. Ce qu’il y a de plus canadien au WinterFest est donc justement ce que le billet ne couvre pas. Sont également payants la décoration de biscuits dans Mrs. Claus' Kitchen, cette année avec une nouvelle recette à base d’ingrédients de la région, ainsi que les repas et boissons dans les igloos de Jack Frost's Igloo Village. Un casier coûte de 17 à 30 dollars par jour, une poussette 17 dollars et une poussette double 26 dollars, taxes en sus. Pendant le WinterFest, le parc ne loue pas de scooters de mobilité.
+Le patin à glace sur le [Snow Flake Lake](ref:canadas-wonderland/snow-flake-lake), devant Wonder Mountain, soit ce qu’il y a de plus canadien au WinterFest, est payant et se réserve en ligne à l’avance. Des patins se louent sur place. Cette année, Mrs. Claus' Kitchen suit une nouvelle recette, avec des ingrédients de la région. La décoration des biscuits est payante, tout comme les repas et boissons dans les igloos de Jack Frost's Igloo Village. Un casier coûte de 17 à 30 dollars par jour, une poussette 17 dollars et une poussette double 26 dollars, taxes en sus. Pendant le WinterFest, le parc ne loue pas de scooters de mobilité.
 
 ## Entrée gratuite dès 65 ans
 
@@ -97,11 +97,11 @@ Les personnes nées le 31 décembre 1961 ou avant entrent gratuitement au Winter
 
 Pendant le WinterFest, 25 attractions tournent, dont deux sensations fortes, [Psyclone](ref:canadas-wonderland/psyclone) et [Sledge Hammer](ref:canadas-wonderland/sledge-hammer). Pour les enfants, il y a entre autres [Snoopy's Space Race](ref:canadas-wonderland/snoopys-space-race), les [Woodstock Whirlybirds](ref:canadas-wonderland/woodstock-whirlybirds) et le [Character Carrousel](ref:canadas-wonderland/character-carrousel). [Guardian](ref:canadas-wonderland/wonder-mountains-guardian) et [Snoopy's Racing Railway](ref:canadas-wonderland/snoopys-racing-railway) ne fonctionnent que jusqu’au 29 novembre, et seulement si la météo le permet.
 
-Les trois plus grandes des 18 montagnes russes du parc restent à l’arrêt l’hiver. En décembre, pour avoir les joues gelées, l’attente au vent suffit. Qui vient pour [Leviathan](ref:canadas-wonderland/leviathan), l’hyper coaster de Bolliger & Mabillard ouvert en 2012, haut de 93 mètres et qui atteint 148 km/h, devra attendre la saison d’été. Même chose pour [Yukon Striker](ref:canadas-wonderland/yukon-striker), le dive coaster de B&M de 2019, avec sa chute verticale de 75 mètres et ses quatre inversions, et pour [Behemoth](ref:canadas-wonderland/behemoth), de 2008, qui culmine à 70 mètres et monte à 124 km/h.
+Les trois plus grandes des 18 montagnes russes du parc restent à l’arrêt l’hiver. En décembre, pour avoir les joues gelées, l’attente au vent suffit. Attendront la saison d’été [Leviathan](ref:canadas-wonderland/leviathan), l’hyper coaster de Bolliger & Mabillard de 2012, haut de 93 mètres et lancé à 148 km/h, [Yukon Striker](ref:canadas-wonderland/yukon-striker), un dive coaster de B&M de 2019 avec une chute verticale de 75 mètres et quatre inversions, et [Behemoth](ref:canadas-wonderland/behemoth), de 2008, avec 70 mètres et 124 km/h.
 
 ## Accès
 
-L’adresse est 1 Canada's Wonderland Drive, Vaughan, ON L6A 1S6. En voiture, prenez l’autoroute 400 jusqu’à la sortie 33, Rutherford Road, puis remontez vers le nord par Canada's Wonderland Drive. Le parc n’indique nulle part le prix du parking, et l’entrée gratuite dès 65 ans l’exclut expressément.
+L’adresse est 1 Canada's Wonderland Drive, Vaughan, ON L6A 1S6. En voiture, prenez l’autoroute 400 jusqu’à la sortie 33, Rutherford Road, puis remontez vers le nord par Canada's Wonderland Drive. Le parc n’indique nulle part le prix du parking.
 
 Sans voiture, prenez la ligne 1 du métro de la TTC jusqu’à Vaughan Metropolitan Centre, puis, au SmartCentres Place Bus Terminal, un bus YRT qui remonte Jane Street vers le nord. Descendez à l’arrêt Jane St/Norwood Av, à cinq minutes à pied du parc. Depuis le 1er novembre, les horaires des lignes YRT 320 et 360 suivent ceux du parc. Pendant le WinterFest, la 360, qui vient de Finch GO Bus Terminal et de Richmond Hill Centre, circule aussi le vendredi. Les bus GO 47W et 52X ne desservaient le parc que du 25 avril au 30 août. Depuis l’aéroport Pearson, l’UP Express rejoint Union Station en 28 minutes, et la TTC prend le relais.
 

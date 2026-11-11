@@ -2,7 +2,7 @@
 title: "Canada's Wonderland viert voor het eerst oud en nieuw"
 translationKey: canadas-wonderland-winterfest-2026
 date: '2026-11-11'
-time: '17:30'
+time: '18:25'
 author: patrick
 mode: published
 featured: false
@@ -59,7 +59,7 @@ Deze winter komt er een nieuw plein bij, de Countdown to Christmas Square, gepre
 
 ## Shows, lichtjes en de kerstman
 
-Elke avond gaan op de International Street de lichten aan in twee kerstbomen van zo'n 15 meter hoog, en daaromheen hangen in het park zeven miljoen lampjes. Na een paar jaar afwezigheid rijdt de Holly Jolly Trolley weer. In het Canterbury Theatre speelt Tinker's Toy Factory, met muziek en acrobatiek, en bij Four Drummers Drumming slaan speelgoedsoldaten op de trom. Charlie Brown, Snoopy en de andere PEANUTS staan op het podium in It's Christmas, Charlie Brown! Drie andere shows, Polar Party with the Tannenbaums, The MistleTones en Cool Yule Christmas, staan met liveoptredens van bands op het programma, maar voor geen van de drie zijn er al speeltijden.
+Elke avond gaan op de International Street de lichten aan in twee kerstbomen van zo'n 15 meter hoog, en daaromheen hangen in het park zeven miljoen lampjes. Na een paar jaar afwezigheid rijdt de Holly Jolly Trolley weer. In het Canterbury Theatre speelt Tinker's Toy Factory, met muziek en acrobatiek, en bij Four Drummers Drumming slaan speelgoedsoldaten op de trom. Charlie Brown, Snoopy en de andere PEANUTS staan op het podium in It's Christmas, Charlie Brown! Speeltijden zijn er nog voor geen enkele show. Verder staan Polar Party with the Tannenbaums, The MistleTones en Cool Yule Christmas op het programma, en er spelen livebands.
 
 Op de Christmas Market verkopen ambachtslieden uit de streek hun werk. De kerstman zie je bij St. Nick's Pics, waar het fotopakket apart betaald wordt. Brieven aan hem kun je tot 23 december posten bij het North Pole Post Office. Wil je een foto zonder fotopakket, ga dan bij de fotoplek met de Elf on the Shelf staan, tussen de Dancing Lights en Charlie Brown's Christmas Tree Lot.
 
@@ -87,7 +87,7 @@ De Silver Pass 2027 kost 89 dollar, of 75 dollar per stuk als je tot en met 30 n
 
 ## Waar je apart voor betaalt
 
-Schaatsen op [Snow Flake Lake](ref:canadas-wonderland/snow-flake-lake) voor Wonder Mountain betaal je apart en reserveer je vooraf online; schaatsen huren kan ter plekke. Het meest Canadese aan het hele WinterFest valt dus net buiten je ticket. Eveneens apart betaal je voor koekjes versieren in Mrs. Claus' Kitchen, dit jaar volgens een nieuw recept met ingrediënten uit de streek, en voor eten en drinken in de iglo's van Jack Frost's Igloo Village. Een kluisje kost 17 tot 30 dollar per dag, een kinderwagen 17 dollar en een dubbele 26 dollar, plus belasting. Scootmobielen worden tijdens het WinterFest niet verhuurd.
+Schaatsen op [Snow Flake Lake](ref:canadas-wonderland/snow-flake-lake) voor Wonder Mountain, uitgerekend het meest Canadese van het hele WinterFest, betaal je apart en reserveer je vooraf online. Schaatsen huren kan ter plekke. In Mrs. Claus' Kitchen wordt dit jaar gebakken volgens een nieuw recept, met ingrediënten uit de streek. Voor het versieren van de koekjes betaal je apart, net als voor eten en drinken in de iglo's van Jack Frost's Igloo Village. Een kluisje kost 17 tot 30 dollar per dag, een kinderwagen 17 dollar en een dubbele 26 dollar, plus belasting. Scootmobielen worden tijdens het WinterFest niet verhuurd.
 
 ## Gratis vanaf 65
 
@@ -97,11 +97,11 @@ Ben je op of vóór 31 december 1961 geboren, dan kom je tot en met 3 januari 20
 
 Tijdens het WinterFest draaien 25 attracties, waaronder twee thrill rides: [Psyclone](ref:canadas-wonderland/psyclone) en [Sledge Hammer](ref:canadas-wonderland/sledge-hammer). Voor kinderen zijn er onder meer [Snoopy's Space Race](ref:canadas-wonderland/snoopys-space-race), de [Woodstock Whirlybirds](ref:canadas-wonderland/woodstock-whirlybirds) en de [Character Carrousel](ref:canadas-wonderland/character-carrousel). [Guardian](ref:canadas-wonderland/wonder-mountains-guardian) en [Snoopy's Racing Railway](ref:canadas-wonderland/snoopys-racing-railway) rijden alleen tot 29 november en alleen als het weer het toelaat.
 
-De drie grootste van de 18 achtbanen in het park staan 's winters stil. IJskoude wind in je gezicht krijg je in december in Ontario ook zonder achtbaan. Kom je voor [Leviathan](ref:canadas-wonderland/leviathan), de 93 meter hoge hyper coaster van Bolliger & Mabillard uit 2012 die 148 km/u haalt, dan moet je wachten tot het zomerseizoen. Dat geldt ook voor [Yukon Striker](ref:canadas-wonderland/yukon-striker), de dive coaster van B&M uit 2019 die 75 meter loodrecht valt en vier keer over de kop gaat, en voor [Behemoth](ref:canadas-wonderland/behemoth) uit 2008, 70 meter hoog en 124 km/u snel.
+De drie grootste van de 18 achtbanen in het park staan 's winters stil. IJskoude wind in je gezicht krijg je in december in Ontario ook zonder achtbaan. Tot het zomerseizoen wachten [Leviathan](ref:canadas-wonderland/leviathan), de 93 meter hoge hyper coaster van Bolliger & Mabillard uit 2012 die 148 km/u haalt, [Yukon Striker](ref:canadas-wonderland/yukon-striker), een dive coaster van B&M uit 2019 met een loodrechte val van 75 meter en vier inversies, en [Behemoth](ref:canadas-wonderland/behemoth) uit 2008, met 70 meter en 124 km/u.
 
 ## Bereikbaarheid
 
-Het adres is 1 Canada's Wonderland Drive, Vaughan, ON L6A 1S6. Met de auto neem je Highway 400 tot afrit 33, Rutherford Road, en rijd je daarna noordwaarts de Canada's Wonderland Drive op. Wat parkeren kost, vermeldt het park nergens, en bij de gratis toegang vanaf 65 hoort het er uitdrukkelijk niet bij.
+Het adres is 1 Canada's Wonderland Drive, Vaughan, ON L6A 1S6. Met de auto neem je Highway 400 tot afrit 33, Rutherford Road, en rijd je daarna noordwaarts de Canada's Wonderland Drive op. Wat parkeren kost, vermeldt het park nergens.
 
 Zonder auto neem je metrolijn 1 van de TTC tot Vaughan Metropolitan Centre en stap je bij het SmartCentres Place Bus Terminal over op een bus van YRT die over de Jane Street naar het noorden rijdt. Bij de halte Jane St/Norwood Av stap je uit, en dan is het nog vijf minuten lopen. Sinds 1 november volgen de dienstregelingen van de YRT-lijnen 320 en 360 de openingstijden van het park. Lijn 360, vanaf Finch GO Bus Terminal en Richmond Hill Centre, rijdt tijdens het WinterFest ook op vrijdag. De GO-bussen 47W en 52X reden alleen van 25 april tot 30 augustus tot aan het park. Vanaf luchthaven Pearson brengt de UP Express je in 28 minuten naar Union Station, waar je overstapt op de TTC.
 
