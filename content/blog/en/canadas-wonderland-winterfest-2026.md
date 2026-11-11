@@ -59,7 +59,7 @@ New this winter is Countdown to Christmas Square, presented by Hallmark Channel,
 
 ## Shows, lights and Santa
 
-Every evening two Christmas trees about 15 metres tall light up on International Street, and seven million lights hang around the park. After a few years away, the Holly Jolly Trolley is running again. Tinker's Toy Factory brings music and acrobatics to the Canterbury Theatre, and toy soldiers bang the drums in Four Drummers Drumming. Charlie Brown, Snoopy and the rest of the PEANUTS take the stage in It's Christmas, Charlie Brown! Three more shows, Polar Party with the Tannenbaums, The MistleTones and Cool Yule Christmas, are on the bill along with live bands, though none of them has a show time yet.
+Every evening two Christmas trees about 15 metres tall light up on International Street, and seven million lights hang around the park. After a few years away, the Holly Jolly Trolley is running again. Tinker's Toy Factory brings music and acrobatics to the Canterbury Theatre, and toy soldiers bang the drums in Four Drummers Drumming. Charlie Brown, Snoopy and the rest of the PEANUTS take the stage in It's Christmas, Charlie Brown! None of the shows has a show time yet. Also on the bill are Polar Party with the Tannenbaums, The MistleTones and Cool Yule Christmas, plus live bands.
 
 Local makers sell their work at the Christmas Market. You'll find Santa at St. Nick's Pics, where the photo package costs extra, and the North Pole Post Office takes letters to him until 23 December. If you want a picture without the photo package, there's an Elf on the Shelf photo spot between the Dancing Lights and Charlie Brown's Christmas Tree Lot.
 
@@ -87,7 +87,7 @@ The 2027 Silver Pass costs $89, or $75 a pass if you order four or more online i
 
 ## What costs extra
 
-Skating on [Snow Flake Lake](ref:canadas-wonderland/snow-flake-lake) in front of Wonder Mountain is paid separately and booked online in advance; skates can be rented on site. So the most Canadian thing at WinterFest is the one thing your ticket doesn't cover. Cookie decorating in Mrs. Claus' Kitchen, with a new recipe this year made from local ingredients, and food and drinks in the igloos of Jack Frost's Igloo Village cost extra as well. A locker costs $17 to $30 a day, a stroller $17 and a double stroller $26, plus tax. Mobility scooters aren't available during WinterFest.
+Skating on [Snow Flake Lake](ref:canadas-wonderland/snow-flake-lake) in front of Wonder Mountain, the most Canadian thing at WinterFest, is paid separately and booked online in advance. Skates can be rented on site. Mrs. Claus' Kitchen bakes to a new recipe with local ingredients this year. Decorating the cookies costs extra, and so do food and drinks in the igloos of Jack Frost's Igloo Village. A locker costs $17 to $30 a day, a stroller $17 and a double stroller $26, plus tax. Mobility scooters aren't available during WinterFest.
 
 ## Free entry from 65
 
@@ -97,11 +97,11 @@ Anyone born on or before 31 December 1961 gets into WinterFest for free until 3 
 
 25 rides operate during WinterFest, two of them thrill rides: [Psyclone](ref:canadas-wonderland/psyclone) and [Sledge Hammer](ref:canadas-wonderland/sledge-hammer). For kids there's [Snoopy's Space Race](ref:canadas-wonderland/snoopys-space-race), the [Woodstock Whirlybirds](ref:canadas-wonderland/woodstock-whirlybirds) and the [Character Carrousel](ref:canadas-wonderland/character-carrousel), among others. [Guardian](ref:canadas-wonderland/wonder-mountains-guardian) and [Snoopy's Racing Railway](ref:canadas-wonderland/snoopys-racing-railway) only run until 29 November, and only when the weather allows.
 
-The three biggest of the park's 18 roller coasters sit out the winter, and in an Ontario December the wind in your face comes free anyway. If you're coming for [Leviathan](ref:canadas-wonderland/leviathan), the 93-metre Bolliger & Mabillard hyper coaster from 2012 that hits 148 km/h, you'll have to wait for the summer season. The same goes for [Yukon Striker](ref:canadas-wonderland/yukon-striker), B&M's 2019 dive coaster with a 75-metre vertical drop and four inversions, and for [Behemoth](ref:canadas-wonderland/behemoth) from 2008, 70 metres tall and 124 km/h fast.
+The three biggest of the park's 18 roller coasters sit out the winter, and in an Ontario December the wind in your face comes free anyway. Waiting for the summer season are [Leviathan](ref:canadas-wonderland/leviathan), the 93-metre Bolliger & Mabillard hyper coaster from 2012 that hits 148 km/h, [Yukon Striker](ref:canadas-wonderland/yukon-striker), a 2019 B&M dive coaster with a 75-metre vertical drop and four inversions, and [Behemoth](ref:canadas-wonderland/behemoth) from 2008, at 70 metres and 124 km/h.
 
 ## Getting there
 
-The address is 1 Canada's Wonderland Drive, Vaughan, ON L6A 1S6. By car, take Highway 400 to exit 33, Rutherford Road, then head north onto Canada's Wonderland Drive. The park doesn't say anywhere what parking costs, and the free admission for over-65s explicitly leaves it out.
+The address is 1 Canada's Wonderland Drive, Vaughan, ON L6A 1S6. By car, take Highway 400 to exit 33, Rutherford Road, then head north onto Canada's Wonderland Drive. The park doesn't say anywhere what parking costs.
 
 Without a car, ride TTC subway Line 1 to Vaughan Metropolitan Centre and change at the SmartCentres Place Bus Terminal to a YRT bus heading north on Jane Street. Get off at Jane St/Norwood Av; from there it's a five-minute walk. Since 1 November, YRT routes 320 and 360 have run to timetables built around the park's hours. During WinterFest the 360 from Finch GO Bus Terminal and Richmond Hill Centre also runs on Fridays. GO buses 47W and 52X only went to the park from 25 April to 30 August. From Pearson Airport, the UP Express gets you to Union Station in 28 minutes, and the TTC takes you on from there.
 

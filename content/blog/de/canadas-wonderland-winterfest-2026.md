@@ -59,7 +59,7 @@ Neu ist in diesem Winter der Countdown to Christmas Square, präsentiert von Hal
 
 ## Shows, Lichter und der Weihnachtsmann
 
-Jeden Abend werden auf der International Street zwei rund 15 Meter hohe Weihnachtsbäume beleuchtet, und drumherum hängen im Park sieben Millionen Lichter. Nach ein paar Jahren Pause fährt wieder der Holly Jolly Trolley. Im Canterbury Theatre läuft Tinker's Toy Factory mit Musik und Akrobatik, bei Four Drummers Drumming trommeln Spielzeugsoldaten. In It's Christmas, Charlie Brown! stehen Charlie Brown, Snoopy und die übrigen PEANUTS auf der Bühne. Drei weitere Shows, Polar Party with the Tannenbaums, The MistleTones und Cool Yule Christmas, stehen mit Livebands im Programm, Spielzeiten gibt es für keine davon bisher.
+Jeden Abend werden auf der International Street zwei rund 15 Meter hohe Weihnachtsbäume beleuchtet, und drumherum hängen im Park sieben Millionen Lichter. Nach ein paar Jahren Pause fährt wieder der Holly Jolly Trolley. Im Canterbury Theatre läuft Tinker's Toy Factory mit Musik und Akrobatik, bei Four Drummers Drumming trommeln Spielzeugsoldaten. In It's Christmas, Charlie Brown! stehen Charlie Brown, Snoopy und die übrigen PEANUTS auf der Bühne. Für keine der Shows gibt es bisher Spielzeiten. Im Programm stehen außerdem Polar Party with the Tannenbaums, The MistleTones und Cool Yule Christmas, dazu spielen Livebands.
 
 Auf dem Christmas Market verkaufen Kunsthandwerker aus der Region. Den Weihnachtsmann triffst du bei St. Nick's Pics, das Fotopaket kostet extra. Briefe an ihn nimmt das North Pole Post Office bis zum 23. Dezember an. Wer ein Bild ohne Fotopaket will, stellt sich vor das Fotomotiv mit dem Elf on the Shelf, zwischen den Dancing Lights und Charlie Brown's Christmas Tree Lot.
 
@@ -87,7 +87,7 @@ Der Silver Pass 2027 kostet 89 Dollar. Wer bis zum 30. November vier oder mehr P
 
 ## Was extra kostet
 
-Schlittschuhlaufen auf dem [Snow Flake Lake](ref:canadas-wonderland/snow-flake-lake) vor Wonder Mountain zahlst du gesondert und reservierst es vorher online, Leihschlittschuhe gibt es vor Ort. Ausgerechnet das Kanadischste am ganzen WinterFest ist also nicht im Ticket. Ebenfalls extra kosten das Plätzchenverzieren in Mrs. Claus' Kitchen, in diesem Jahr nach einem neuen Rezept mit Zutaten aus der Region, und Essen und Getränke in den Iglus von Jack Frost's Igloo Village. Ein Schließfach kostet 17 bis 30 Dollar am Tag, ein Kinderwagen 17 Dollar, ein Doppelwagen 26 Dollar plus Steuer. Elektromobile gibt es während des WinterFest nicht.
+Schlittschuhlaufen auf dem [Snow Flake Lake](ref:canadas-wonderland/snow-flake-lake) vor Wonder Mountain, ausgerechnet das Kanadischste am ganzen WinterFest, zahlst du gesondert und reservierst es vorher online. Leihschlittschuhe gibt es vor Ort. Mrs. Claus' Kitchen backt in diesem Jahr nach einem neuen Rezept mit Zutaten aus der Region. Das Verzieren der Plätzchen kostet extra, genau wie Essen und Getränke in den Iglus von Jack Frost's Igloo Village. Ein Schließfach kostet 17 bis 30 Dollar am Tag, ein Kinderwagen 17 Dollar, ein Doppelwagen 26 Dollar plus Steuer. Elektromobile gibt es während des WinterFest nicht.
 
 ## Freier Eintritt ab 65
 
@@ -97,11 +97,11 @@ Wer am oder vor dem 31. Dezember 1961 geboren ist, kommt bis zum 3. Januar 2027 
 
 Zum WinterFest fahren 25 Bahnen, mit [Psyclone](ref:canadas-wonderland/psyclone) und [Sledge Hammer](ref:canadas-wonderland/sledge-hammer) auch zwei Thrill Rides. Für Kinder fahren unter anderem [Snoopy's Space Race](ref:canadas-wonderland/snoopys-space-race), die [Woodstock Whirlybirds](ref:canadas-wonderland/woodstock-whirlybirds) und das [Character Carrousel](ref:canadas-wonderland/character-carrousel). [Guardian](ref:canadas-wonderland/wonder-mountains-guardian) und [Snoopy's Racing Railway](ref:canadas-wonderland/snoopys-racing-railway) laufen nur bis zum 29. November und nur bei passendem Wetter.
 
-Die drei größten der 18 Achterbahnen des Parks fahren im Winter nicht, den Fahrtwind übernimmt im Dezember ohnehin das Wetter. Wer für [Leviathan](ref:canadas-wonderland/leviathan) kommt, den 93 Meter hohen Hyper Coaster von Bolliger & Mabillard aus dem Jahr 2012 mit 148 km/h, wartet bis zur Sommersaison. Das gilt auch für [Yukon Striker](ref:canadas-wonderland/yukon-striker), den Dive Coaster von B&M aus dem Jahr 2019 mit 75 Metern senkrechtem Fall und vier Überschlägen, und für [Behemoth](ref:canadas-wonderland/behemoth) von 2008, 70 Meter hoch und 124 km/h schnell.
+Die drei größten der 18 Achterbahnen des Parks fahren im Winter nicht, den Fahrtwind übernimmt im Dezember ohnehin das Wetter. Bis zur Sommersaison warten [Leviathan](ref:canadas-wonderland/leviathan), der 93 Meter hohe Hyper Coaster von Bolliger & Mabillard von 2012 mit 148 km/h, [Yukon Striker](ref:canadas-wonderland/yukon-striker), ein Dive Coaster von B&M von 2019 mit 75 Metern senkrechtem Fall und vier Überschlägen, und [Behemoth](ref:canadas-wonderland/behemoth) von 2008 mit 70 Metern und 124 km/h.
 
 ## Anreise
 
-Die Adresse ist 1 Canada's Wonderland Drive, Vaughan, ON L6A 1S6. Mit dem Auto fährst du auf dem Highway 400 bis zur Ausfahrt 33, Rutherford Road, und dann nach Norden auf den Canada's Wonderland Drive. Was der Parkplatz kostet, steht nirgends beim Park, und für den freien Eintritt ab 65 ist er ausdrücklich nicht dabei.
+Die Adresse ist 1 Canada's Wonderland Drive, Vaughan, ON L6A 1S6. Mit dem Auto fährst du auf dem Highway 400 bis zur Ausfahrt 33, Rutherford Road, und dann nach Norden auf den Canada's Wonderland Drive. Was der Parkplatz kostet, nennt der Park nirgends.
 
 Ohne Auto nimmst du die U-Bahn-Linie 1 der TTC bis Vaughan Metropolitan Centre und steigst am SmartCentres Place Bus Terminal in einen Bus der YRT, der auf der Jane Street nach Norden fährt. An der Haltestelle Jane St/Norwood Av steigst du aus, von dort sind es fünf Minuten zu Fuß. Seit dem 1. November richten sich die Fahrpläne der YRT-Linien 320 und 360 nach den Öffnungszeiten des Parks. Die 360 aus Richtung Finch GO Bus Terminal und Richmond Hill Centre fährt während des WinterFest zusätzlich freitags. Die GO-Busse 47W und 52X fuhren nur vom 25. April bis 30. August bis zum Park. Vom Flughafen Pearson bringt dich der UP Express in 28 Minuten zur Union Station, von dort geht es mit der TTC weiter.
 

@@ -47,21 +47,21 @@ seo:
     - Canada's Wonderland bereikbaarheid
 ---
 
-Op donderdag 31 december viert [Canada's Wonderland](ref:canadas-wonderland) in Vaughan, Ontario, voor het eerst oud en nieuw. Om 20.00 uur tellen de PEANUTS en de figuren van het WinterFest op de International Street af, waarna boven Wonder Mountain vuurwerk de lucht in gaat. Het WinterFest zelf duurt 23 dagen, van zaterdag 21 november tot 3 januari 2027.
+Op donderdag 31 december viert [Canada's Wonderland](ref:canadas-wonderland) in Vaughan, Ontario, voor het eerst oud en nieuw. Om 20.00 uur tellen de PEANUTS en de figuren van het WinterFest op de International Street af, waarna boven Wonder Mountain vuurwerk de lucht in gaat. Het WinterFest is op 23 dagen open, van zaterdag 21 november tot 3 januari 2027.
 
 ## Oudejaarsavond om 20.00 uur
 
 Op oudejaarsdag is het park open van 12.00 tot 20.00 uur en na het feest gaat het dicht. Het vuurwerk is dus vier uur vóór middernacht voorbij, vroeg genoeg voor kinderen die het anders steevast verslapen. Het park organiseert de avond samen met Tourism Vaughan. Een gewoon WinterFest-ticket geeft toegang, net als de Season Passes voor 2027. Wie meer wil, kan bijbetalen voor een VIP-pakket met eten en gereserveerde plaatsen voor het vuurwerk; wat dat kost, heeft het park nog niet bekendgemaakt.
 
-## Nieuw: de Countdown to Christmas Square
+## De nieuwe Countdown to Christmas Square
 
 Deze winter komt er een nieuw plein bij, de Countdown to Christmas Square, gepresenteerd door Hallmark Channel, W Network en STACKTV. De Wonderland Players spelen er Small Town Snowmance, een voorstelling waarin het publiek meedoet. Wie weleens een kerstfilm van Hallmark heeft gezien, raadt het plot waarschijnlijk al bij de titel. Op het plein staan vuurplaatsen met Muskoka-stoelen, er zijn fotodecors en warme chocolademelk, en voor bij het vuur koop je een setje Campfire S'Mores.
 
 ## Shows, lichtjes en de kerstman
 
-Elke avond gaan op de International Street de lichten aan in twee kerstbomen van zo'n 15 meter hoog. In het hele park hangen zeven miljoen lampjes. Na een paar jaar afwezigheid rijdt de Holly Jolly Trolley weer. In het Canterbury Theatre speelt Tinker's Toy Factory, met muziek en acrobatiek, en bij Four Drummers Drumming slaan speelgoedsoldaten op de trom. Charlie Brown, Snoopy en de andere PEANUTS staan op het podium in It's Christmas, Charlie Brown! Verder zijn er Polar Party with the Tannenbaums, The MistleTones, Cool Yule Christmas en liveoptredens van bands. De speeltijden heeft het park nog niet gepubliceerd.
+Elke avond gaan op de International Street de lichten aan in twee kerstbomen van zo'n 15 meter hoog, en daaromheen hangen in het park zeven miljoen lampjes. Na een paar jaar afwezigheid rijdt de Holly Jolly Trolley weer. In het Canterbury Theatre speelt Tinker's Toy Factory, met muziek en acrobatiek, en bij Four Drummers Drumming slaan speelgoedsoldaten op de trom. Charlie Brown, Snoopy en de andere PEANUTS staan op het podium in It's Christmas, Charlie Brown! Drie andere shows, Polar Party with the Tannenbaums, The MistleTones en Cool Yule Christmas, staan met liveoptredens van bands op het programma, maar voor geen van de drie zijn er al speeltijden.
 
-Op de Christmas Market verkopen ambachtslieden uit de streek hun werk. De kerstman zie je bij St. Nick's Pics, waar het fotopakket apart betaald wordt. Brieven aan hem kun je tot 23 december posten bij het North Pole Post Office. Daarnaast zijn er de Dancing Lights, Charlie Brown's Christmas Tree Lot en een fotoplek met de Elf on the Shelf.
+Op de Christmas Market verkopen ambachtslieden uit de streek hun werk. De kerstman zie je bij St. Nick's Pics, waar het fotopakket apart betaald wordt. Brieven aan hem kun je tot 23 december posten bij het North Pole Post Office. Wil je een foto zonder fotopakket, ga dan bij de fotoplek met de Elf on the Shelf staan, tussen de Dancing Lights en Charlie Brown's Christmas Tree Lot.
 
 ## Data en openingstijden
 
@@ -83,11 +83,11 @@ Waterpark Splash Works blijft de hele winter dicht.
 
 Een parkticket met WinterFest kost vanaf 39 Canadese dollar, plus maximaal 9,99 dollar administratiekosten en belasting. 's Winters is er geen kassa bij de ingang; je koopt alleen online. Kinderen onder de drie hebben geen ticket nodig.
 
-De Silver Pass 2027 kost 89 dollar, of 75 dollar per stuk als je tot en met 30 november in één online bestelling vier of meer passen koopt. Je kunt er tot Labour Day 2027 mee naar Canada's Wonderland en Splash Works, en tijdelijk zit het WinterFest 2026 er als bonus bij. Wie tot en met 30 november een pass voor 2027 koopt of verlengt, krijgt er een gratis Bring-a-Friend-ticket bij, te gebruiken tot 3 januari. De Gold Pass kost 115 dollar en geldt ook in de Six Flags-parken in het Midwesten, Cedar Point inbegrepen. Daarmee kom je alleen op enkele dagen op het WinterFest, maar welke dat zijn, is nog niet bekend.
+De Silver Pass 2027 kost 89 dollar, of 75 dollar per stuk als je tot en met 30 november in één online bestelling vier of meer passen koopt. Je kunt er tot Labour Day 2027 mee naar Canada's Wonderland en Splash Works, en al staat er 2027 op, hij brengt je ook al naar het WinterFest 2026. Tot en met diezelfde 30 november krijgt elke pass voor 2027 die je koopt of verlengt een gratis Bring-a-Friend-ticket mee, te gebruiken tot 3 januari. De Gold Pass kost 115 dollar en geldt ook in de Six Flags-parken in het Midwesten, Cedar Point inbegrepen. Op het WinterFest heb je aan de duurdere pass dus minder: hij geldt daar alleen op bepaalde dagen, en die heeft het park nog niet genoemd.
 
 ## Waar je apart voor betaalt
 
-Schaatsen op [Snow Flake Lake](ref:canadas-wonderland/snow-flake-lake) voor Wonder Mountain betaal je apart en reserveer je vooraf online; schaatsen huren kan ter plekke. Een Canadees winterfeest zonder ijsbaan zou ook wel erg vreemd zijn. Eveneens apart betaal je voor koekjes versieren in Mrs. Claus' Kitchen en voor eten en drinken in de iglo's van Jack Frost's Igloo Village. Mrs. Claus' Kitchen heeft dit jaar een nieuw recept, met ingrediënten uit de streek. Een kluisje kost 17 tot 30 dollar per dag, een kinderwagen 17 dollar en een dubbele 26 dollar, plus belasting. Scootmobielen worden tijdens het WinterFest niet verhuurd.
+Schaatsen op [Snow Flake Lake](ref:canadas-wonderland/snow-flake-lake) voor Wonder Mountain betaal je apart en reserveer je vooraf online; schaatsen huren kan ter plekke. Het meest Canadese aan het hele WinterFest valt dus net buiten je ticket. Eveneens apart betaal je voor koekjes versieren in Mrs. Claus' Kitchen, dit jaar volgens een nieuw recept met ingrediënten uit de streek, en voor eten en drinken in de iglo's van Jack Frost's Igloo Village. Een kluisje kost 17 tot 30 dollar per dag, een kinderwagen 17 dollar en een dubbele 26 dollar, plus belasting. Scootmobielen worden tijdens het WinterFest niet verhuurd.
 
 ## Gratis vanaf 65
 
@@ -97,17 +97,17 @@ Ben je op of vóór 31 december 1961 geboren, dan kom je tot en met 3 januari 20
 
 Tijdens het WinterFest draaien 25 attracties, waaronder twee thrill rides: [Psyclone](ref:canadas-wonderland/psyclone) en [Sledge Hammer](ref:canadas-wonderland/sledge-hammer). Voor kinderen zijn er onder meer [Snoopy's Space Race](ref:canadas-wonderland/snoopys-space-race), de [Woodstock Whirlybirds](ref:canadas-wonderland/woodstock-whirlybirds) en de [Character Carrousel](ref:canadas-wonderland/character-carrousel). [Guardian](ref:canadas-wonderland/wonder-mountains-guardian) en [Snoopy's Racing Railway](ref:canadas-wonderland/snoopys-racing-railway) rijden alleen tot 29 november en alleen als het weer het toelaat.
 
-Leviathan, Yukon Striker en Behemoth staan 's winters stil. IJskoude wind in je gezicht krijg je in december in Ontario ook zonder achtbaan. [Leviathan](ref:canadas-wonderland/leviathan) is een hyper coaster van Bolliger & Mabillard uit 2012, 93 meter hoog en 148 km/u snel. [Yukon Striker](ref:canadas-wonderland/yukon-striker), een dive coaster van B&M uit 2019, valt 75 meter loodrecht naar beneden en gaat vier keer over de kop. [Behemoth](ref:canadas-wonderland/behemoth) uit 2008 is 70 meter hoog en haalt 124 km/u.
+De drie grootste van de 18 achtbanen in het park staan 's winters stil. IJskoude wind in je gezicht krijg je in december in Ontario ook zonder achtbaan. Kom je voor [Leviathan](ref:canadas-wonderland/leviathan), de 93 meter hoge hyper coaster van Bolliger & Mabillard uit 2012 die 148 km/u haalt, dan moet je wachten tot het zomerseizoen. Dat geldt ook voor [Yukon Striker](ref:canadas-wonderland/yukon-striker), de dive coaster van B&M uit 2019 die 75 meter loodrecht valt en vier keer over de kop gaat, en voor [Behemoth](ref:canadas-wonderland/behemoth) uit 2008, 70 meter hoog en 124 km/u snel.
 
 ## Bereikbaarheid
 
-Het adres is 1 Canada's Wonderland Drive, Vaughan, ON L6A 1S6. Met de auto neem je Highway 400 tot afrit 33, Rutherford Road, en rijd je daarna noordwaarts de Canada's Wonderland Drive op. Wat parkeren kost, heeft het park niet bekendgemaakt.
+Het adres is 1 Canada's Wonderland Drive, Vaughan, ON L6A 1S6. Met de auto neem je Highway 400 tot afrit 33, Rutherford Road, en rijd je daarna noordwaarts de Canada's Wonderland Drive op. Wat parkeren kost, vermeldt het park nergens, en bij de gratis toegang vanaf 65 hoort het er uitdrukkelijk niet bij.
 
 Zonder auto neem je metrolijn 1 van de TTC tot Vaughan Metropolitan Centre en stap je bij het SmartCentres Place Bus Terminal over op een bus van YRT die over de Jane Street naar het noorden rijdt. Bij de halte Jane St/Norwood Av stap je uit, en dan is het nog vijf minuten lopen. Sinds 1 november volgen de dienstregelingen van de YRT-lijnen 320 en 360 de openingstijden van het park. Lijn 360, vanaf Finch GO Bus Terminal en Richmond Hill Centre, rijdt tijdens het WinterFest ook op vrijdag. De GO-bussen 47W en 52X reden alleen van 25 april tot 30 augustus tot aan het park. Vanaf luchthaven Pearson brengt de UP Express je in 28 minuten naar Union Station, waar je overstapt op de TTC.
 
 ## Canada's Wonderland sinds 1981
 
-Taft Broadcasting en de Great-West Life Assurance Company openden Canada's Wonderland op 23 mei 1981. Van 1994 tot 2006 heette het park Paramount Canada's Wonderland, en in 2006 nam Cedar Fair het over. Sinds Cedar Fair en Six Flags op 1 juli 2024 fuseerden, is het eigendom van de Six Flags Entertainment Corporation. Het park telt 18 achtbanen. Behalve hier viert Six Flags deze winter het WinterFest ook in Carowinds, Six Flags Discovery Kingdom en Kings Island.
+Taft Broadcasting en de Great-West Life Assurance Company openden Canada's Wonderland op 23 mei 1981. Van 1994 tot 2006 heette het park Paramount Canada's Wonderland, en in 2006 nam Cedar Fair het over. Sinds Cedar Fair en Six Flags op 1 juli 2024 fuseerden, is het eigendom van de Six Flags Entertainment Corporation. Behalve hier viert Six Flags deze winter het WinterFest ook in Carowinds, Six Flags Discovery Kingdom en Kings Island.
 
 [Canada's Wonderland](ref:canadas-wonderland?full)
 
