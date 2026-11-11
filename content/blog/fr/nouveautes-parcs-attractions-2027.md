@@ -2,7 +2,7 @@
 title: 'Nouveautés 2027 des parcs d’attractions : ce que parcs et constructeurs ont confirmé'
 translationKey: park-novelties-2027
 date: '2026-10-04'
-updatedAt: '2026-11-04'
+updatedAt: '2026-11-11'
 author: patrick
 mode: published
 featured: false
@@ -73,36 +73,37 @@ et arrondi les pieds, les miles et les pouces en mètres, en kilomètres-heure e
 
 ## Toutes les nouveautés d’un coup d’œil
 
-| Parc                                                                  | Nouveauté                         | Type                                         | Quand                             |
-| --------------------------------------------------------------------- | --------------------------------- | -------------------------------------------- | --------------------------------- |
-| [Hansa-Park](ref:hansa-park?bare)                                     | Buddenbrook-Turm                  | tour dans le Hansa-Garten                    | dans le courant de la saison 2027 |
-| [Europa-Park](ref:europa-park?bare)                                   | Wild Swing XL                     | balançoire géante au Portugal                | 2027                              |
-| [Europa-Park](ref:europa-park?bare)                                   | Tour que l’on pilote soi-même     | tour en Islande                              | 2027                              |
-| [Europa-Park](ref:europa-park?bare)                                   | Enzo's Piccolo Mondo              | balade en gondole, remise à neuf             | 2027                              |
-| [Rulantica](ref:rulantica?bare)                                       | Nørd Havn                         | restaurant et espaces de détente             | fin 2027                          |
-| [Plopsaland Belgium](ref:plopsaland-belgium?bare)                     | Flying Cinema                     | flying theatre, Mack Rides                   | 13 mars 2027                      |
-| [Efteling](ref:efteling?bare)                                         | Bibliothèque des contes           | 32e conte de la forêt des contes             | à partir de 2027                  |
-| [Bobbejaanland](ref:bobbejaanland?bare)                               | zone Nickelodeon                  | trois attractions familiales                 | à partir d’avril 2027             |
-| [Disney Adventure World](ref:disney-adventure-world?bare)             | Wilderness Explorers Sky Swings   | chaises volantes sur le thème de « Là-haut » | 2027                              |
-| [Parc Astérix](ref:parc-asterix?bare)                                 | agrandissement de la zone grecque | deux attractions familiales, restaurant      | printemps 2027                    |
-| [Nigloland](ref:nigloland?bare)                                       | Supersonic 1887                   | montagne russe lancée, Mack Rides            | 2027                              |
-| [Chessington](ref:chessington-world-of-adventures?bare)               | Minecraft World                   | zone thématique avec montagne russe          | 2027                              |
-| [Paultons Park](ref:paultons-park?bare)                               | Serpent's Curse                   | montagne russe aquatique, Mack Rides         | 2027                              |
-| [Djurs Sommerland](ref:djurs-sommerland?bare)                         | Midgårdsormen                     | Hot Racer, Intamin                           | 2027                              |
-| [Gröna Lund](ref:grona-lund?bare)                                     | SCORE!                            | dark ride interactif, Vekoma                 | 2027                              |
-| [Liseberg](ref:liseberg?bare)                                         | Oceana                            | parc aquatique                               | début 2027                        |
-| [Six Flags Great Adventure](ref:six-flags-great-adventure?bare)       | Bakunawa                          | spinning coaster lancé, Mack                 | 2027                              |
-| [Six Flags Magic Mountain](ref:six-flags-magic-mountain?bare)         | Thrill Glider                     | Thrillglider, Vekoma                         | 2027                              |
-| [Universal Studios Florida](ref:universal-studios-florida?bare)       | Fast & Furious: Hollywood Drift   | montagne russe lancée                        | 2027                              |
-| [Six Flags Fiesta Texas](ref:six-flags-fiesta-texas?bare)             | Werewolf Gorge                    | family launch coaster, Vekoma                | 2027                              |
-| [Silver Dollar City](ref:silver-dollar-city?bare)                     | Miner's Mountain Express          | montagne russe familiale, Mack Rides         | printemps 2027                    |
-| [Six Flags Great America](ref:six-flags-great-america?bare)           | Camp Timber Trail                 | zone familiale avec Sky Hawk                 | 2027                              |
-| [Carowinds](ref:carowinds?bare)                                       | Rip Roarin' Falls                 | super flume, WhiteWater                      | 2027                              |
-| [Disney's Hollywood Studios](ref:disneys-hollywood-studios?bare)      | Monstropolis, première partie     | spectacle, restaurants, boutique             | en partie en 2027                 |
-| [Disney's Animal Kingdom](ref:disneys-animal-kingdom-theme-park?bare) | Tropical Americas                 | zone thématique, deux parcours scéniques     | 2027                              |
-| [Knott's Soak City](ref:knotts-soak-city?bare)                        | Coral Craze et Kelp Kraze         | deux toboggans                               | 2027                              |
-| [Busch Gardens Williamsburg](ref:busch-gardens-williamsburg?bare)     | Return to Corkscrew Hill          | attraction dans la partie irlandaise         | 2027                              |
-| [Fuji-Q Highland](ref:fuji-q-highland?bare)                           | sans nom pour l’instant           | montagne russe aquatique lancée              | été 2027                          |
+| Parc                                                                  | Nouveauté                         | Type                                           | Quand                             |
+| --------------------------------------------------------------------- | --------------------------------- | ---------------------------------------------- | --------------------------------- |
+| [Hansa-Park](ref:hansa-park?bare)                                     | Buddenbrook-Turm                  | tour dans le Hansa-Garten                      | dans le courant de la saison 2027 |
+| [Europa-Park](ref:europa-park?bare)                                   | Wild Swing XL                     | balançoire géante au Portugal                  | 2027                              |
+| [Europa-Park](ref:europa-park?bare)                                   | Tour que l’on pilote soi-même     | tour en Islande                                | 2027                              |
+| [Europa-Park](ref:europa-park?bare)                                   | Enzo's Piccolo Mondo              | balade en gondole, remise à neuf               | 2027                              |
+| [Rulantica](ref:rulantica?bare)                                       | Nørd Havn                         | restaurant et espaces de détente               | fin 2027                          |
+| [Plopsaland Belgium](ref:plopsaland-belgium?bare)                     | Flying Cinema                     | flying theatre, Mack Rides                     | 13 mars 2027                      |
+| [Efteling](ref:efteling?bare)                                         | Bibliothèque des contes           | 32e conte de la forêt des contes               | à partir de 2027                  |
+| [Bobbejaanland](ref:bobbejaanland?bare)                               | Nickelodeon Land                  | trois attractions familiales                   | à partir d’avril 2027             |
+| [Disney Adventure World](ref:disney-adventure-world?bare)             | Wilderness Explorers Sky Swings   | chaises volantes sur le thème de « Là-haut »   | 2027                              |
+| [Parc Astérix](ref:parc-asterix?bare)                                 | agrandissement de la zone grecque | deux attractions familiales, restaurant        | printemps 2027                    |
+| [Nigloland](ref:nigloland?bare)                                       | Supersonic 1887                   | montagne russe lancée, Mack Rides              | 2027                              |
+| [Chessington](ref:chessington-world-of-adventures?bare)               | Minecraft World                   | zone thématique avec montagne russe            | 2027                              |
+| [Paultons Park](ref:paultons-park?bare)                               | Serpent's Curse                   | montagne russe aquatique, Mack Rides           | 2027                              |
+| [Djurs Sommerland](ref:djurs-sommerland?bare)                         | Midgårdsormen                     | Hot Racer, Intamin                             | 2027                              |
+| [Gröna Lund](ref:grona-lund?bare)                                     | SCORE!                            | dark ride interactif, Vekoma                   | 2027                              |
+| [Liseberg](ref:liseberg?bare)                                         | Oceana                            | parc aquatique                                 | début 2027                        |
+| [Six Flags Great Adventure](ref:six-flags-great-adventure?bare)       | Bakunawa                          | spinning coaster lancé, Mack                   | 2027                              |
+| [Six Flags Magic Mountain](ref:six-flags-magic-mountain?bare)         | Thrill Glider                     | Thrillglider, Vekoma                           | 2027                              |
+| [Universal Studios Florida](ref:universal-studios-florida?bare)       | Fast & Furious: Hollywood Drift   | montagne russe lancée                          | 2027                              |
+| [Six Flags Fiesta Texas](ref:six-flags-fiesta-texas?bare)             | Werewolf Gorge                    | family launch coaster, Vekoma                  | 2027                              |
+| [Silver Dollar City](ref:silver-dollar-city?bare)                     | Miner's Mountain Express          | montagne russe familiale, Mack Rides           | printemps 2027                    |
+| [Kentucky Kingdom](ref:kentucky-kingdom?bare)                         | Midnight Showdown                 | montagne russe en bois couverte, Gravity Group | printemps 2027                    |
+| [Six Flags Great America](ref:six-flags-great-america?bare)           | Camp Timber Trail                 | zone familiale avec Sky Hawk                   | 2027                              |
+| [Carowinds](ref:carowinds?bare)                                       | Rip Roarin' Falls                 | super flume, WhiteWater                        | 2027                              |
+| [Disney's Hollywood Studios](ref:disneys-hollywood-studios?bare)      | Monstropolis, première partie     | spectacle, restaurants, boutique               | en partie en 2027                 |
+| [Disney's Animal Kingdom](ref:disneys-animal-kingdom-theme-park?bare) | Tropical Americas                 | zone thématique, deux parcours scéniques       | 2027                              |
+| [Knott's Soak City](ref:knotts-soak-city?bare)                        | Coral Craze et Kelp Kraze         | deux toboggans                                 | 2027                              |
+| [Busch Gardens Williamsburg](ref:busch-gardens-williamsburg?bare)     | Return to Corkscrew Hill          | attraction dans la partie irlandaise           | 2027                              |
+| [Fuji-Q Highland](ref:fuji-q-highland?bare)                           | sans nom pour l’instant           | montagne russe aquatique lancée                | été 2027                          |
 
 Deux chantiers de rénovation s’achèvent aussi en 2027, celui du Carousel of Progress au Magic
 Kingdom et celui de la gare du sooperDooperLooper à Hersheypark.
@@ -210,18 +211,22 @@ de travaux, avec un spectacle de cascades conçu avec le Puy du Fou et le Ravenr
 20 millions d’euros au total. La prochaine montagne russe de l’[Efteling](/blog/efteling-le-disney-des-pays-bas) n’arrivera qu’en
 2029, Missie Luminar, son premier suspended launch coaster.
 
-### Une nouvelle zone à Bobbejaanland
+### Nickelodeon Land à Bobbejaanland
 
-[Bobbejaanland](ref:bobbejaanland) prépare une nouvelle zone thématique pour 2027. Selon son
-directeur, Yves Peeters, interrogé par VRT NWS (12 septembre 2026), trois attractions familiales
-avec des personnages de Nickelodeon comme Garfield et Bob l’éponge ouvrent juste derrière l’entrée
-à partir d’avril 2027, pour environ 15 millions d’euros. Yves Peeters cite une balançoire géante qui
-emporte 18 personnes jusqu’à 12 mètres de haut, une tour de chute de 15 mètres et une attraction
-aquatique qui hisse les visiteurs à plus de 20 mètres avant une chute qui soulève une vague de
-10 mètres. Sur le site du
-parc, il n’en est question pour l’instant que dans un avis aux automobilistes, selon lequel les
-bornes de recharge du parking sont hors service à cause des travaux de la « nieuwe zone van 2027 »,
-la nouvelle zone de 2027. Comme Movie Park, Bobbejaanland appartient à [Parques Reunidos](/blog/parques-reunidos-a-vendre-movie-park).
+La nouvelle zone thématique de [Bobbejaanland](ref:bobbejaanland) s’appelle Nickelodeon Land. C’est
+une promotion sur les abonnements annuels, le Black November, qui a vendu la mèche, avec une phrase
+promettant de découvrir en 2027 « Nickelodeon Land en 3 gloednieuwe attracties », c’est-à-dire
+Nickelodeon Land et trois attractions toutes neuves.
+
+Le 12 septembre 2026, le directeur du parc, Yves Peeters, a expliqué à VRT NWS que les trois
+attractions familiales ouvriront à partir d’avril 2027 juste derrière l’entrée, avec des personnages
+comme Garfield et Bob l’éponge. Elles coûtent environ 15 millions d’euros, et Yves Peeters les place
+à côté de la montagne russe Fury, ouverte en 2019, parmi les plus gros investissements du parc. La
+balançoire géante emporte 18 personnes jusqu’à 12 mètres de haut, et la tour de chute libre mesure
+15 mètres. L’attraction aquatique Big Wavez hisse les visiteurs à plus de 20 mètres, puis la chute
+lance une vague de 10 mètres qui, d’après Yves Peeters, arrose aussi les spectateurs restés au bord.
+Bobbejaanland n’a donné le constructeur d’aucune des trois. Les bornes de recharge du parking sont
+déjà hors service à cause des travaux de la nouvelle zone.
 
 ## France
 
@@ -412,6 +417,25 @@ Au-dessus d’elle se dresse un chevalement de quinze étages issu d’une véri
 scénario s’inspire de la Marble Cave Mining Company, qui exploitait le site dans les années 1880.
 Mack Rides a déjà construit Time Traveler pour ce parc.
 
+### Midnight Showdown à Kentucky Kingdom
+
+À Louisville, [Kentucky Kingdom](ref:kentucky-kingdom) construit pour le printemps 2027 [Midnight
+Showdown](/news/kentucky-kingdom-midnight-showdown), une montagne russe en bois pour les familles,
+qui roule à l’intérieur d’un bâtiment. Le parc la présente comme « The World's Largest Indoor Wooden
+Roller Coaster », sans préciser si « largest » se rapporte à la longueur, à la hauteur ou à la
+surface au sol. Le circuit en bois mesure 1 130 pieds, soit environ 344 mètres, et la structure
+dépasse trois étages. Pendant le trajet, on décolle onze fois de son siège. Deux trains de dix
+places chacun se relaient. Elle est construite par The Gravity Group, une entreprise de Cincinnati.
+Le thème est une course de chevaux dans le noir, et le départ se donne au bruit des sabots, sur le
+cri « And they're off! ».
+
+Midnight Showdown prend place dans Bluegrass Downs, une nouvelle zone où cinq attractions déjà en
+service changent de thème. Dans l’autre nouvelle zone, Happy Valley Farm, elles sont huit, et on y
+trouve aussi Flying Fox, la montagne russe familiale suspendue ouverte en mai 2026. Après Flying
+Fox, Midnight Showdown est la deuxième nouvelle montagne russe en un an et la septième du parc.
+Herschend, qui a repris Kentucky Kingdom en 2021, dit y avoir investi depuis près de 50 millions de
+dollars. Avec Midnight Showdown et les deux zones, ce réaménagement doit être terminé en 2027.
+
 ### Camp Timber Trail à Six Flags Great America
 
 À [Six Flags Great America](ref:six-flags-great-america), près de Chicago, la zone Yukon Territory,
@@ -503,11 +527,11 @@ Dans les deux tableaux figurent les parcs avec une nouvelle montagne russe ou
 une nouvelle zone pour lesquels nous mesurons les temps d’attente, chacun avec le jour de la semaine
 où l’attente y est la plus courte. La nouveauté elle-même n’entre pas encore dans ces valeurs.
 
-```park-comparison-widget slugs=chessington-world-of-adventures,parc-asterix,disney-adventure-world,plopsaland-belgium,nigloland,djurs-sommerland,paultons-park show=quietest
+```park-comparison-widget slugs=chessington-world-of-adventures,parc-asterix,disney-adventure-world,plopsaland-belgium,bobbejaanland,nigloland,djurs-sommerland,paultons-park show=quietest
 
 ```
 
-```park-comparison-widget slugs=six-flags-great-adventure,six-flags-magic-mountain,universal-studios-florida,six-flags-fiesta-texas,silver-dollar-city,six-flags-great-america,carowinds,disneys-hollywood-studios show=quietest
+```park-comparison-widget slugs=six-flags-great-adventure,six-flags-magic-mountain,universal-studios-florida,six-flags-fiesta-texas,silver-dollar-city,kentucky-kingdom,six-flags-great-america,carowinds,disneys-hollywood-studios show=quietest
 
 ```
 
@@ -634,7 +658,7 @@ l’exposition se tient du 17 au 20 novembre 2026. Les parcs Six Flags ont prés
 - Europa-Park, trois attractions familiales, 14 mètres, plus de 40 ans, date de l’annonce : [Europa-Park kündigt drei neue Familienattraktionen an (MACK Group, 8 octobre 2026)](https://mack.group/de/presse-medien/pressemitteilungen/europa-park-kuendigt-drei-neue-familienattraktionen-an), Atlantica SuperSplash : [Atlantica SuperSplash (Europa-Park)](https://www.europapark.de/en/theme-park/attractions/atlantica-supersplash), Piccolo Mondo : [Piccolo Mondo (Europa-Park)](https://www.europapark.de/en/theme-park/attractions/piccolo-mondo)
 - Plopsaland Belgium : [communiqué du 3 août 2026 (Plopsa)](https://www.plopsanews.com/en/press-releases/vliegende-cinema-opent-op-13-maart-2027-als-blikvanger-van-grootste-investering-ooit-in-plopsaland-belgium), [Flying Cinema (Plopsa)](https://www.plopsa.com/en/plopsaland-belgium/attractions/flying-cinema), [Plopsaland Plaza (Plopsa)](https://www.plopsa.com/en/plopsaland-belgium/plopsaland-plaza), Mack Rides : [communiqué du 30 septembre 2025 (Plopsa)](https://plopsanews.com/nl/persberichten/plopsaland-vliegt-naar-de-toekomst-een-recordinvestering-met-vliegende-cinema-als-blikvanger)
 - Efteling : [Nouveau à l’Efteling](https://www.efteling.com/en/new-in-efteling), [communiqué du 22 juillet 2026 sur la Bibliothèque des contes](https://www.efteling.com/en/press/first-look-at-eftelings-32nd-fairytale-the-fairytale-library/), [blog sur le Rossignol chinois](https://www.efteling.com/en/blog/nieuws/nieuws-over-de-sprookjesbibliotheek-en-de-chinese-nachtegaal)
-- Bobbejaanland : [page d’accueil (Bobbejaanland)](https://www.bobbejaanland.be/), zone Nickelodeon : [« Bobbejaanland start werken voor nieuwe themazone met 3 familieattracties » (VRT NWS, 12 septembre 2026)](https://www.vrt.be/vrtnws/nl/2026/09/02/bobbejaanland-investeringen/)
+- Bobbejaanland : Nickelodeon Land : [Black November 2026 (Bobbejaanland)](https://www.bobbejaanland.be/plan-je-bezoek/promoties-en-kortingen/black-november-2026), bornes de recharge : [Diensten (Bobbejaanland)](https://www.bobbejaanland.be/het-park/diensten), trois attractions, hauteurs, 15 millions d’euros : [« Bobbejaanland start werken voor nieuwe themazone met 3 familieattracties: “Een van de grootste investeringen ooit” » (VRT NWS, 12 septembre 2026)](https://www.vrt.be/vrtnws/nl/2026/09/02/bobbejaanland-investeringen/)
 - Disney Adventure World : [Our Transformation (Disneyland Paris)](https://news.disneylandparis.com/en/our-transformation/)
 - Parc Astérix : [projets et développement (Parc Astérix)](https://newsroom.parcasterix.fr/entreprise/projets-et-developpement/)
 - Parc Astérix : [communiqué sur la Grèce 2027 (Parc Astérix)](https://newsroom.parcasterix.fr/actualites/en-2027-au-parc-asterix-la-grece-en-grand/?lang=fr)
@@ -651,6 +675,7 @@ l’exposition se tient du 17 au 20 novembre 2026. Les parcs Six Flags ont prés
 - Hollywood Drift à Orlando : [communiqué du 20 janvier 2026 (Universal Orlando)](https://media.universalparksusa.com/press-releases/fast-furious-hollywood-drift-a-high-speed-roller-coaster-coming-to-universal-studios-florida-in-2027/)
 - Werewolf Gorge : [communiqué du 30 mai 2026](https://www.prnewswire.com/news-releases/six-flags-fiesta-texas-unleashes-werewolf-gorge-the-worlds-longest-family-launch-roller-coaster-302786342.html), [New in 2027 (Six Flags Fiesta Texas)](https://www.sixflags.com/fiestatexas/new-in-2027), [Werewolf Gorge (Vekoma)](https://www.vekoma.com/news/worlds-longest-family-launch-coaster-coming-to-six-flags-fiesta-texas)
 - Miner's Mountain Express : [communiqué (Silver Dollar City)](https://www.silverdollarcity.com/press/miners-mountain-express/)
+- Midnight Showdown : [communiqué du 5 novembre 2026 (Kentucky Kingdom)](https://www.kentuckykingdom.com/media-room/and-theyre-off/), [Midnight Showdown (Kentucky Kingdom)](https://www.kentuckykingdom.com/explore-the-park/attractions/kentucky-kingdom/midnight-showdown/)
 - Camp Timber Trail : [communiqué du 6 août 2026](https://www.prnewswire.com/news-releases/six-flags-great-america-announces-camp-timber-trail-an-all-new-family-adventure-for-2027-302844445.html)
 - Rip Roarin' Falls : [communiqué du 8 juin 2026](https://www.prnewswire.com/news-releases/carowinds-announces-100-foot-super-flume-ride-set-to-break-three-world-records-302794334.html), [New in 2027 (Carowinds)](https://www.sixflags.com/carowinds/new-in-2027)
 - Monstropolis : [Disney Parks Blog du 16 août 2026](https://disneyparksblog.com/wdw/monsters-inc-land-monstropolis-walt-disney-world/), Grand Avenue : [Disney Parks Blog du 24 janvier 2025](https://disneyparksblog.com/wdw/monsters-inc-the-muppets-hollywood-studios/), montagne russe : [Disney Parks Blog du 8 mars 2025](https://disneyparksblog.com/wdw/sxsw-2025-monsters-coaster-hollywood-studios/)
