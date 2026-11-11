@@ -62,7 +62,7 @@ seo:
 
 [Flamingo Land](ref:flamingo-land) liegt in Kirby Misperton, einem kleinen Dorf zwischen Malton und Pickering in North Yorkshire. Auf 375 Acres, gut 150 Hektar, teilen sich dort ein Zoo, ein Freizeitpark und ein Ferienresort das Gelände. Zoo und Bahnen gehen so ineinander über, dass der Park in der Hauptsaison gar kein Ticket nur für den Zoo verkauft. Die Hängeachterbahn Kumali hat ihren Namen vom Löwen, der im Zoo das Rudel anführt.
 
-Der Park gehört der Familie Gibb, General Manager ist Gordon Gibb, und der Slogan lautet „Wild Animals, Wilder Rides“. Acht Achterbahnen sind in Betrieb, vier davon mit Inversionen. Dazu kommen der 54,9 Meter hohe Fallturm Cliff Hanger und der Kettenflieger-Turm Pterodactyl.
+Der Park gehört der Familie Gibb, General Manager ist Gordon Gibb, und der Slogan lautet „Wild Animals, Wilder Rides“. Acht Achterbahnen hat der Park, vier davon mit Inversionen. Dazu kommen der 54,9 Meter hohe Fallturm Cliff Hanger und der Kettenflieger-Turm Pterodactyl.
 
 ## Die Bahnen nach Bereichen
 
@@ -237,7 +237,7 @@ An den Christmas Experience Days steht das Programm um den Weihnachtsbaum auf de
 
 Achterbahnen fahren im Dezember keine, für Fans von Mumbo Jumbo bleiben Dampfzug, Monorail und Geisterbahn. Auf der Weihnachtsseite stehen der Daktari Express, die Gallopers, die Helitoys, das Jungle Carousel, die Zoo Monorail, Mischief Mansion und die Muddy Duck Tractors, mit dem Hinweis, dass sich die Liste ändern kann. Mit Kindern unter 1,07 Meter fährst du bei den meisten davon mit.
 
-Im Dezember haben das Muddy Duck Cafe und der Spud Stop von 10 bis 17:30 Uhr geöffnet, dazu gibt es Donuts und Crumble Heaven. The Coach House hat freitags von 16 bis 21 Uhr, samstags von 12 bis 21 Uhr und sonntags von 12 bis 18 Uhr geöffnet und verkauft neu Fish & Chips zum Mitnehmen. Die Street Food Kitchen ist von 18 bis 23 Uhr offen, für Gäste des Resorts auch The Club, freitags und samstags von 16 bis 23 Uhr.
+Im Dezember haben das Muddy Duck Cafe und der Spud Stop von 10 bis 17:30 Uhr geöffnet, dazu gibt es Donuts und Crumble Heaven. The Coach House hat freitags von 16 bis 21 Uhr, samstags von 12 bis 21 Uhr und sonntags von 12 bis 18 Uhr geöffnet und verkauft neu Fish & Chips zum Mitnehmen. Die Street Food Kitchen ist von 18 bis 23 Uhr offen. The Club, nur für Gäste des Resorts, öffnet freitags und samstags von 16 bis 23 Uhr.
 
 Übernachten kannst du über Weihnachten in Cottages und Lodges von Freitag bis Sonntag. In der Lifestyle Lodge, der Mulberry Lodge, The Gatehouse und dem Riverside Cottage schaut Santa persönlich vorbei. Im Paket sind der Zoo, die kleinen Kinderbahnen auf der Muddy Duck Farm, die Splash Zone am Samstag und Sonntag und der Christmas Passport mit dem „PolarCoaster Express“ enthalten.
 
@@ -250,7 +250,7 @@ Mit dem VIP Ride Pass fährst du sechs Bahnen je einmal, und zwar über den Ausg
 
 Gekauft wird am Tag selbst, am VIP-Pass-Kiosk beziehungsweise am Queue Buster Outlet auf der Plaza. Der Pass kostet 50 Pfund pro Person. Für das Junior Package nennt die Seite der VIP Ride Passes keinen eigenen Preis. Die Reihenfolge ist frei, aber zwischen zwei Fahrten muss eine Stunde liegen, für alle sechs brauchst du also mindestens fünf Stunden. Zu Stoßzeiten kann es auch am Ausgang kurz dauern. Der Pass ist nicht übertragbar, und eine verlorene oder beschädigte Karte ersetzt der Park nicht.
 
-Fällt eine Bahn den ganzen Tag aus, darfst du eine zweite VIP-Fahrt auf einer anderen Bahn der Liste machen, wenn du dem Team Bescheid sagst. Solange Kumali in Wartung ist, betrifft das eine der sechs Bahnen. Die Jahreskarte gibt auf den VIP Ride Pass keinen Rabatt.
+Fällt eine Bahn den ganzen Tag aus, darfst du eine zweite VIP-Fahrt auf einer anderen Bahn der Liste machen, wenn du dem Team Bescheid sagst. Kumali ist gerade wegen Wartung geschlossen, deine VIP-Fahrt dafür geht also auf eine andere Bahn der Liste. Die Jahreskarte gibt auf den VIP Ride Pass keinen Rabatt.
 
 Mit Behinderung bekommst du einen kostenlosen Queue Pass mit Armbändern, orange für dich, lila für die Begleitperson und bis zu vier gelbe für die Familie. Auch damit geht es über den Ausgang zur Bahn.
 
@@ -295,7 +295,7 @@ Das Familienticket gilt für bis zu vier Personen ab vier Jahren, und mit Behind
 
 Kinder bis einschließlich drei Jahre kommen umsonst hinein, ab vier zahlen sie den vollen Preis, eine Kinderermäßigung gibt es nicht. Mit zwei Kindern ist das Familienticket also der Kinderrabatt. Gruppen ab 25 Personen und Schulklassen ab zehn Kindern bekommen auf Anfrage Rabatt. Online gekaufte Tickets landen in der App „Flamingo Land Resort“, ausdrucken musst du nichts.
 
-Abendprogramm und Leisure Complex des Resorts sind im Tagesticket nicht enthalten. Preise für 2027 hat Flamingo Land noch nicht veröffentlicht.
+Abendprogramm und Leisure Complex des Resorts sind im Tagesticket nicht enthalten.
 
 Für Getränke gibt es den Becher Refill & Refresh, der sich den ganzen Tag nachfüllen lässt. Einer kostet 19 Pfund, ab zwei sind es 15 Pfund pro Stück und ab drei 13 Pfund, die Verlängerung kostet 10 Pfund pro Tag. Wasserflaschen füllen dir die Bars und Restaurants kostenlos auf.
 
@@ -340,7 +340,7 @@ Als vorübergehend geschlossen führt Flamingo Land derzeit Kumali, den Navigato
 
 Die Wasserbahn Lost River Ride von Bear aus dem Jahr 2004 steht nicht mehr als Bahn auf dem Parkplan, nur der Laden Lost River Gifts. Laut Wikipedia baut der Park sie selbst um, mit einer kleineren Abfahrt.
 
-Abgebaut sind die Achterbahnen Go Gator und Dino Roller. Flip Flop und Rotataur fehlen ebenfalls auf dem Parkplan, und die Tea Cups fuhren bis 2023.
+Flip Flop und Rotataur fehlen ebenfalls auf dem Parkplan, und die Tea Cups fuhren bis 2023.
 
 ## Geschichte
 

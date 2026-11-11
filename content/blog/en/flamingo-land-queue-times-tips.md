@@ -6,7 +6,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  One day ticket at Flamingo Land in North Yorkshire covers the zoo and the theme park. At opening, Hero is the ride where getting there early pays off most. Over Christmas 2026, a day costs £18.
+  One day ticket at Flamingo Land in North Yorkshire covers the zoo and the theme park. Hero is the one ride where the first half hour after opening makes a real difference. Over Christmas 2026, a day costs £18.
 tags:
   - flamingo-land
   - wait-times
@@ -65,7 +65,7 @@ seo:
 
 [Flamingo Land](ref:flamingo-land) is in Kirby Misperton, a small village between Malton and Pickering in North Yorkshire. A zoo, a theme park and a holiday resort share its 375 acres, a little over 150 hectares. The zoo and the rides run into each other so completely that in high season the park doesn't sell a zoo-only ticket at all. The suspended coaster Kumali is named after the lion who leads the pride in the zoo.
 
-The Gibb family owns the park, Gordon Gibb is its general manager, and the slogan is "Wild Animals, Wilder Rides". Eight roller coasters are running, four of them with inversions. On top of those there's Cliff Hanger, a 54.9-metre drop tower, and Pterodactyl, a tower with swinging chairs.
+The Gibb family owns the park, Gordon Gibb is its general manager, and the slogan is "Wild Animals, Wilder Rides". Flamingo Land has eight roller coasters, four of them with inversions. On top of those there's Cliff Hanger, a 54.9-metre drop tower, and Pterodactyl, a tower with swinging chairs.
 
 ## The rides by area
 
@@ -85,7 +85,7 @@ The [Runaway Train](ref:flamingo-land/runaway-train?bare) has moved house severa
 
 ### The Lost Kingdom
 
-At 35.9 metres, [Kumali](ref:flamingo-land/kumali?bare) is the tallest coaster in the park. Vekoma built it as a Suspended Looping Coaster to a design by Stefan Holtman, and it opened on 1 April 2006. The first drop measures 34.1 metres and the top speed is 88 km/h. Over 671 metres you hang upside down four times, in a loop, a cobra roll and a zero-g roll, at up to 4.7 g. Two trains of 20 seats each take 1 minute 32 seconds per ride, enough for 1,125 riders an hour. To ride you need to be at least 1.30 metres tall.
+At 35.9 metres, [Kumali](ref:flamingo-land/kumali?bare) is the tallest coaster in the park. Vekoma built it as a Suspended Looping Coaster to a design by Stefan Holtman, and it opened on 1 April 2006. The first drop measures 34.1 metres and the top speed is 88 km/h. Anyone from 1.30 metres can ride, and over 671 metres you hang upside down four times, in a loop, a cobra roll and a zero-g roll, at up to 4.7 g. Two trains of 20 seats each take 1 minute 32 seconds per ride, enough for 1,125 riders an hour.
 
 ```glossary-widget slug=slc
 
@@ -97,9 +97,9 @@ Voodoo, a swinging ship by HUSS, has been rocking back and forth in the Lost Kin
 
 ### Flamingo 1
 
-[Velocity](ref:flamingo-land/velocity?bare) is the only motorbike launch coaster in Britain. You sit astride it like a motorbike, and a hydraulic launch takes you from 0 to 97 km/h in 2.8 seconds. Vekoma built the Motorbike Coaster to a design by Peter Clerx, and it started running on 2 July 2005. The track is 643 metres long and 17.4 metres high, with no inversions. Velocity runs a single train of 16 seats, which gets 518 riders an hour through, not even half of what Sik manages. You need to be between 1.40 and 1.98 metres.
+[Velocity](ref:flamingo-land/velocity?bare) is the only motorbike launch coaster in Britain. You sit astride it like a motorbike if you're between 1.40 and 1.98 metres tall, and a hydraulic launch takes you from 0 to 97 km/h in 2.8 seconds. It's one of Vekoma's Motorbike Coasters, drawn by Peter Clerx, and it opened on 2 July 2005. The track is 643 metres long and 17.4 metres high, with no inversions. Velocity runs a single train of 16 seats, which gets 518 riders an hour through, not even half of what Sik manages.
 
-[Hero](ref:flamingo-land/hero?bare) has been flying since 16 July 2013, a Volare flying coaster that Zamperla built to a design by Werner Stengel. Each car holds four people, a spiral lift takes them up to 15.2 metres, and over 391 metres of track they go through two heartline rolls at up to 41 km/h. The minimum height is 1.27 metres.
+[Hero](ref:flamingo-land/hero?bare) is a Zamperla Volare flying coaster designed by Werner Stengel, and it opened on 16 July 2013. Each car holds four riders of at least 1.27 metres, a spiral lift takes them up to 15.2 metres, and over 391 metres of track they go through two heartline rolls at up to 41 km/h.
 
 ```glossary-widget slug=flying-coaster
 
@@ -121,7 +121,7 @@ On [Flamingo 1](ref:flamingo-land/flamingo-1?bare), the ride the area is named a
 
 [Splash Battle](ref:flamingo-land/splash-battle?bare) came to Splosh in 2007, an area it shares with the Splish Splosh water play area, Crazy Combat Laser Battle and Swoosh Air. You ride in a submarine and fire water cannons at the other boats and at people standing along the edge. Preston & Barbieri built it, and you can ride from just 0.91 metres.
 
-[Zooom!](ref:flamingo-land/zooom?bare) does without a lift hill, and it's the only coaster in Splosh. Zamperla built the suspended family coaster as an Air Force model, and it opened on 2 July 2011. Tyres push the train up to 9.8 metres, and the track is 172 metres long. Children ride alone from 1.07 metres, and with an adult below that.
+[Zooom!](ref:flamingo-land/zooom?bare) is a Zamperla Air Force from 2 July 2011, a suspended family coaster and the only coaster in Splosh. Tyres rather than a lift hill push its train up to 9.8 metres, and the track is 172 metres long. Children ride alone from 1.07 metres, and with an adult below that.
 
 ### Dino-Stone Park
 
@@ -135,7 +135,7 @@ On [Flamingo 1](ref:flamingo-land/flamingo-1?bare), the ride the area is named a
 
 ### Muddy Duck Farm and Children's Planet
 
-Muddy Duck Farm is where the Information Centre answers questions, and since 2001 it's also where the Little Monsters Mummy, Drac and Yeti have lived in the ghost train [Mischief Mansion](ref:flamingo-land/mischief-mansion?bare), a cast list that took about as long to name as it takes to read. Little Monsters Wacky Races uses replicas of the Ford Model T. For children the farm has a tractor ride, the Helitoys, the Jungle Carousel with elephants and teacups, and a pirate ship to climb on.
+The Information Centre is on Muddy Duck Farm, and since 2001 three Little Monsters, Mummy, Drac and Yeti, have haunted the ghost train [Mischief Mansion](ref:flamingo-land/mischief-mansion?bare) there. Little Monsters Wacky Races uses replicas of the Ford Model T. For children the farm has a tractor ride, the Helitoys, the Jungle Carousel with elephants and teacups, and a pirate ship to climb on.
 
 Children's Planet has a playground, a sand area, the Meerkat Encounter and the Picnic Planet picnic area.
 
@@ -164,7 +164,7 @@ More than 140 species of reptiles, mammals and birds live in the zoo. The animal
 
 The newest enclosure is Lion Coast, home to the fur seals. The penguins live in Penguin Coast, where the keeper talk is at 3pm; the zoo also has the Treetop Walkway, Lily Bobtail Nature Discovery and the Peter Rabbit Adventure. The Zoo Monorail runs over baboons, meerkats, lemurs and emus. You can get closer to lemurs and penguins at the Lemur Encounter and the Penguin Encounter, both at extra cost.
 
-At the keeper talks, the keepers tell you about their animals at the enclosures. In season they run at these times:
+In season the keepers talk about their animals at the enclosures at these times:
 
 - 11am Magombera monkeys
 - 11:30am flamingos
@@ -195,7 +195,7 @@ The park is closed until 4 December. From 5 December, the [Flamingo Land park pa
 
 ```
 
-At weekends the head start you get on Hero by arriving early is more than twice what it is on a weekday. The electric cars of Flamingo 1 show an even bigger gap. They fill up mainly on Saturdays and Sundays, and on those days I'd drive them before lunch.
+At weekends the head start you get on Hero by arriving early is more than twice what it is on a weekday. On the Flamingo 1 electric cars the weekend gap is bigger still. They fill up mainly on Saturdays and Sundays, and on those days I'd drive them before lunch.
 
 ## When to go
 
@@ -227,9 +227,9 @@ Santa only appears on the Christmas Experience Days, and between Christmas and N
 - Winter Opening: 29 December 2026 to 3 January 2027, 10am to 4pm
 - closed: 25 to 28 December
 
-On every one of these dates a day costs £18 with the "Winter at Flamingo Land" ticket. Disabled visitors also pay £18, their carer gets in at no extra charge, and children up to three go free. The park doesn't say whether the visit to Santa and the present are included in that price. Annual pass holders need a separate Christmas Passport for the Christmas activities.
+On every one of these dates a day costs £18 with the "Winter at Flamingo Land" ticket. Disabled visitors also pay £18, their carer gets in at no extra charge, and children up to three go free. Whether that price covers the visit to Santa and the present isn't stated. Annual pass holders need a separate Christmas Passport for the Christmas activities.
 
-On the Christmas Experience Days the programme centres on the Christmas tree in Muddy Duck Square. A Peter Rabbit show starts there at 4:30pm, and the lights go on at 4:45pm. On Christmas Eve the park closes at 4pm, so before the switch-on. In Santa's Grotto, Santa sees 15 children at a time, from different families too, so Santa works in batches here. Afterwards the children pick a present in Santa's Magical Toy Shop. The programme also includes:
+On the Christmas Experience Days the programme centres on the Christmas tree in Muddy Duck Square. A Peter Rabbit show starts there at 4:30pm, and the lights go on at 4:45pm. On Christmas Eve the park closes at 4pm, so before the switch-on. In Santa's Grotto, Santa sees 15 children at a time, from different families too, which makes it more school assembly than private audience. Afterwards the children pick a present in Santa's Magical Toy Shop. The programme also includes:
 
 - gingerbread baking with Mrs Claus
 - the Elf Hunt, a search for elves around the park
@@ -240,7 +240,7 @@ On the Christmas Experience Days the programme centres on the Christmas tree in 
 
 No roller coasters run in December, so anyone who came for Mumbo Jumbo will have to make do with a steam train, a monorail and a ghost train. The Christmas page lists the Daktari Express, the Gallopers, the Helitoys, the Jungle Carousel, the Zoo Monorail, Mischief Mansion and the Muddy Duck Tractors, and says the list may change. With children under 1.07 metres you ride along on most of them.
 
-In December the Muddy Duck Cafe and the Spud Stop are open from 10am to 5:30pm, and there are doughnuts and Crumble Heaven too. The Coach House opens on Fridays from 4pm to 9pm, on Saturdays from 12pm to 9pm and on Sundays from 12pm to 6pm, and it now does fish & chips to take away. The Street Food Kitchen is open from 6pm to 11pm, and so is The Club for resort guests, on Fridays and Saturdays from 4pm to 11pm.
+In December the Muddy Duck Cafe and the Spud Stop are open from 10am to 5:30pm, and there are doughnuts and Crumble Heaven too. The Coach House opens on Fridays from 4pm to 9pm, on Saturdays from 12pm to 9pm and on Sundays from 12pm to 6pm, and it now does fish & chips to take away. The Street Food Kitchen is open from 6pm to 11pm. The Club, for resort guests only, opens on Fridays and Saturdays from 4pm to 11pm.
 
 Over Christmas you can stay in cottages and lodges from Friday to Sunday. Santa calls in person at the Lifestyle Lodge, the Mulberry Lodge, The Gatehouse and the Riverside Cottage. The package includes the zoo, the small children's rides on Muddy Duck Farm, the Splash Zone on Saturday and Sunday, and the Christmas Passport with the "PolarCoaster Express".
 
@@ -253,7 +253,7 @@ The VIP Ride Pass gets you one ride each on six rides, through the exit instead 
 
 You buy it on the day, at the VIP pass kiosk or the Queue Buster Outlet on the Plaza. It costs £50 per person. The VIP Ride Passes page gives no separate price for the Junior Package. You can ride in any order, but there has to be an hour between two rides, so all six take at least five hours. At busy times you may wait a little at the exit as well. The pass isn't transferable, and the park won't replace a lost or damaged card.
 
-If a ride is closed all day, you can take a second VIP ride on another ride from the list once you've told the team. While Kumali is down for maintenance, that applies to one of the six. The annual pass gives no discount on the VIP Ride Pass.
+If a ride is closed all day, you can take a second VIP ride on another ride from the list once you've told the team. Kumali is closed for maintenance at the moment, so you take your Kumali ride on a different one from the list. The annual pass gives no discount on the VIP Ride Pass.
 
 Disabled visitors get a free Queue Pass with wristbands: orange for you, purple for your carer and up to four yellow ones for the family. That also takes you to the ride through the exit.
 
@@ -275,7 +275,7 @@ Say you're at the entrance at 10am on a peak season Saturday, with no VIP Ride P
 
 On Saturdays and Sundays Pirates of Zanzibar also plays at 3pm; on weekdays it's only at 11am. Peter Rabbit meets children at 11:40am and 1:45pm in Plaza Square. I'd leave the zoo until last, because on some days it stays open longer than the rides.
 
-You can't bring alcohol into the park, it's taken off you at the entrance, and knives, weapons and fireworks are banned too. There may be bag checks and sniffer dogs at the entrance. The terms of admission say nothing about bringing your own food.
+You can't bring alcohol into the park, it's taken off you at the entrance, and knives, weapons and fireworks are banned too. There may be bag checks and sniffer dogs at the entrance. The terms of admission don't mention bringing your own food, and the park has three picnic areas.
 
 ## Tickets and prices
 
@@ -298,7 +298,7 @@ The family ticket covers up to four people aged four and over, and disabled visi
 
 Children up to and including three get in free, and from four they pay the full price; there's no child rate. With two children, the family ticket is the closest thing to a child discount. Groups of 25 or more and school groups of ten children or more get a discount on request. Tickets bought online go into the "Flamingo Land Resort" app, so there's nothing to print.
 
-The resort's evening entertainment and Leisure Complex aren't included in the day ticket. Flamingo Land hasn't published prices for 2027 yet.
+The resort's evening entertainment and Leisure Complex aren't included in the day ticket.
 
 For drinks there's the Refill & Refresh cup, which you can refill all day. One costs £19, from two they're £15 each and from three £13, and extending it costs £10 a day. Bars and restaurants refill water bottles for free.
 
@@ -318,7 +318,7 @@ The nearest railway station is Malton. National Express coaches go as far as Yor
 
 ## Food
 
-The places to eat by area, with their seasonal opening times where Flamingo Land gives them:
+The times in brackets apply in season:
 
 - Flamingo 1: The Diner (9:30am to 8pm, breakfast, burgers and pancakes), Fabrizio's Pizzeria and Ristorante, the Upper Deck and the Spud Stop (11am to 5pm, jacket potatoes)
 - Metropolis: Pitchers Sports Bar, Zanzibar Food Market and Metropolis Bar and Grill
@@ -341,9 +341,9 @@ When you book you pay a £100 deposit for a Holiday Home and £200 for lodges an
 
 Flamingo Land currently lists Kumali, the Navigator, the People Mover and Little Monsters Wacky Races as temporarily closed.
 
-Bear's Lost River Ride, the log flume from 2004, is no longer on the park map as a ride; only the Lost River Gifts shop is. According to Wikipedia, the park is rebuilding it itself, with a smaller drop.
+Bear's Lost River Ride, the water ride from 2004, is no longer on the park map as a ride; only the Lost River Gifts shop is. According to Wikipedia, the park is rebuilding it itself, with a smaller drop.
 
-The coasters Go Gator and Dino Roller have been taken down. Flip Flop and Rotataur are missing from the park map too, and the Tea Cups ran until 2023.
+Flip Flop and Rotataur are missing from the park map too, and the Tea Cups ran until 2023.
 
 ## History
 

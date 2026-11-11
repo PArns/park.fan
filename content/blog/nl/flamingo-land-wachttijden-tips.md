@@ -62,7 +62,7 @@ seo:
 
 [Flamingo Land](ref:flamingo-land) ligt in Kirby Misperton, een klein dorp tussen Malton en Pickering in North Yorkshire. Op 375 acres, ruim 150 hectare, delen een dierentuin, een pretpark en een vakantieresort er het terrein. Dierentuin en attracties lopen zo in elkaar over dat het park in het hoogseizoen helemaal geen ticket voor alleen de dierentuin verkoopt. De hangende achtbaan Kumali is vernoemd naar de leeuw die in de dierentuin de troep aanvoert.
 
-Het park is van de familie Gibb, algemeen directeur is Gordon Gibb, en de slogan luidt “Wild Animals, Wilder Rides”. Er zijn acht achtbanen in bedrijf, en vier daarvan hebben inversies. Daarbij komen de 54,9 meter hoge valtoren Cliff Hanger en de zweefmolentoren Pterodactyl.
+Het park is van de familie Gibb, algemeen directeur is Gordon Gibb, en de slogan luidt “Wild Animals, Wilder Rides”. Het park heeft acht achtbanen, en vier daarvan hebben inversies. Daarbij komen de 54,9 meter hoge valtoren Cliff Hanger en de zweefmolentoren Pterodactyl.
 
 ## De attracties per themagebied
 
@@ -237,7 +237,7 @@ Op de Christmas Experience Days draait het programma om de kerstboom op het Mudd
 
 In december rijden er geen achtbanen, en fans van Mumbo Jumbo moeten het doen met stoomtrein, monorail en spookhuis. Op de kerstpagina staan de Daktari Express, de Gallopers, de Helitoys, de Jungle Carousel, de Zoo Monorail, Mischief Mansion en de Muddy Duck Tractors, met de opmerking dat de lijst kan veranderen. Bij de meeste daarvan rijd je mee met kinderen onder 1,07 meter.
 
-In december zijn het Muddy Duck Cafe en de Spud Stop open van 10.00 tot 17.30 uur, en er zijn donuts en Crumble Heaven. The Coach House is open op vrijdag van 16.00 tot 21.00 uur, op zaterdag van 12.00 tot 21.00 uur en op zondag van 12.00 tot 18.00 uur, en verkoopt nu voor het eerst fish & chips om mee te nemen. De Street Food Kitchen is open van 18.00 tot 23.00 uur, en voor gasten van het resort ook The Club, op vrijdag en zaterdag van 16.00 tot 23.00 uur.
+In december zijn het Muddy Duck Cafe en de Spud Stop open van 10.00 tot 17.30 uur, en er zijn donuts en Crumble Heaven. The Coach House is open op vrijdag van 16.00 tot 21.00 uur, op zaterdag van 12.00 tot 21.00 uur en op zondag van 12.00 tot 18.00 uur, en verkoopt nu voor het eerst fish & chips om mee te nemen. De Street Food Kitchen is open van 18.00 tot 23.00 uur. The Club, alleen voor gasten van het resort, is open op vrijdag en zaterdag van 16.00 tot 23.00 uur.
 
 Overnachten kan met kerst in cottages en lodges, van vrijdag tot zondag. In de Lifestyle Lodge, de Mulberry Lodge, The Gatehouse en het Riverside Cottage komt Santa persoonlijk langs. In het pakket zitten de dierentuin, de kleine kinderattracties op de Muddy Duck Farm, de Splash Zone op zaterdag en zondag en de Christmas Passport met de “PolarCoaster Express”.
 
@@ -250,7 +250,7 @@ Met de VIP Ride Pass rijd je zes attracties elk één keer, en wel via de uitgan
 
 Je koopt hem op de dag zelf, bij de VIP-Pass-kiosk, ook wel het Queue Buster Outlet op de Plaza. De pass kost 50 pond per persoon. Voor het Junior Package noemt de pagina van de VIP Ride Passes geen eigen prijs. De volgorde kies je zelf, maar tussen twee ritten moet een uur zitten, dus voor alle zes heb je minstens vijf uur nodig. Op drukke momenten kan het ook bij de uitgang even duren. De pass is niet overdraagbaar, en een verloren of beschadigde kaart vervangt het park niet.
 
-Valt een attractie de hele dag uit, dan mag je een tweede VIP-rit maken in een andere attractie van de lijst, als je het team inlicht. Zolang Kumali in onderhoud is, geldt dat voor een van de zes. Met de jaarkaart krijg je geen korting op de VIP Ride Pass.
+Valt een attractie de hele dag uit, dan mag je een tweede VIP-rit maken in een andere attractie van de lijst, als je het team inlicht. Kumali is nu dicht voor onderhoud, dus je VIP-rit in Kumali maak je in een andere attractie van de lijst. Met de jaarkaart krijg je geen korting op de VIP Ride Pass.
 
 Met een beperking krijg je een gratis Queue Pass met polsbandjes: oranje voor jou, paars voor je begeleider en tot vier gele voor het gezin. Ook daarmee ga je via de uitgang naar de attractie.
 
@@ -295,7 +295,7 @@ Het gezinsticket geldt voor maximaal vier personen vanaf vier jaar, en met een b
 
 Kinderen tot en met drie jaar mogen gratis naar binnen, vanaf vier betalen ze de volle prijs; kinderkorting bestaat niet. Met twee kinderen is het gezinsticket dus je kinderkorting. Groepen vanaf 25 personen en schoolklassen vanaf tien kinderen krijgen op aanvraag korting. Online gekochte tickets komen in de app “Flamingo Land Resort”, en printen hoeft niet.
 
-Het avondprogramma en het Leisure Complex van het resort zitten niet in het dagticket. Prijzen voor 2027 heeft Flamingo Land nog niet gepubliceerd.
+Het avondprogramma en het Leisure Complex van het resort zitten niet in het dagticket.
 
 Voor drankjes is er de beker Refill & Refresh, die je de hele dag laat bijvullen. Eén beker kost 19 pond, vanaf twee is het 15 pond per stuk en vanaf drie 13 pond, en verlengen kost 10 pond per dag. Waterflessen vullen de bars en restaurants gratis voor je bij.
 
@@ -340,7 +340,7 @@ Als tijdelijk gesloten vermeldt Flamingo Land op dit moment Kumali, de Navigator
 
 De waterbaan Lost River Ride van Bear uit 2004 staat niet meer als attractie op de parkkaart, alleen de winkel Lost River Gifts nog. Volgens Wikipedia bouwt het park hem zelf om, met een kleinere afdaling.
 
-Afgebroken zijn de achtbanen Go Gator en Dino Roller. Flip Flop en Rotataur ontbreken ook op de parkkaart, en de Tea Cups draaiden tot 2023.
+Flip Flop en Rotataur ontbreken ook op de parkkaart, en de Tea Cups draaiden tot 2023.
 
 ## Geschiedenis
 
