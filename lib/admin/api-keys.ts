@@ -5,7 +5,7 @@
  */
 
 /** What a key was issued for, as the backend stores it. */
-export type DataApiKeyUsage = 'non-commercial' | 'commercial';
+export type DataApiKeyUsage = 'non-commercial' | 'commercial' | 'internal';
 
 /** One key as the list shows it; the key itself is never in it. */
 export interface DataApiKey {
@@ -35,6 +35,7 @@ export interface CreatedDataApiKey {
 export const DATA_API_KEY_USAGE_LABELS: Record<DataApiKeyUsage, string> = {
   'non-commercial': 'nicht-kommerziell',
   commercial: 'kommerziell (mit Vereinbarung)',
+  internal: 'park.fan selbst',
 };
 
 /** What a new key is allowed per hour unless the dialog says otherwise; the backend's default too. */

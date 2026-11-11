@@ -18,8 +18,8 @@ export function presentedApiKey(request: Request): string | null {
 }
 
 /**
- * Asks the API whether a key is active. Sent without the server's own `x-auth-key`: the API
- * admits that one everywhere, so a request carrying it would confirm any key at all.
+ * Asks the API whether a key is active. Sent with the caller's key alone, never with the server's
+ * own `x-auth-key` or `API_DATA_KEY`: either would make the API confirm any key at all.
  */
 async function isActiveApiKey(key: string): Promise<boolean> {
   const until = verified.get(key);

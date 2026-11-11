@@ -53,7 +53,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `getApiBaseUrl` _function_: Where a backend request starts: the API itself on the server, this app's own proxy routes in a browser.
 - `browserApiUrl` _function_: Where a browser sends one of those requests: `apiPath` (with its query) on the API when calls go direct, else the relay route, which mirrors the API path under `/api/` unless `relayPath` says otherwise.
-- `getServerApiHeaders` _function_: Headers every request that targets the backend directly should carry: the identifying User-Agent and, when configured, the server-only `API_AUTH_KEY`. Empty in the browser.
+- `getServerApiHeaders` _function_: Headers every request that targets the backend directly should carry: the identifying User-Agent and, when configured, the two server-only keys.
 - `apiFetch` _function_: Fetches a park.fan API endpoint with query params and the server API headers. During a build a 429, 502, 503, 504 or network failure is retried until the API has been silent for `BUILD_RETRY_WINDOW_MS`; a non-OK answer throws an `ApiError`.
 - `nullOnNotFound` _function_: `null` for the API's own 404, and a throw for everything else.
 - `catchNonFatal` _function_: Like `.catch(() => null)` but re-throws maintenance errors so the error boundary can render the maintenance page.

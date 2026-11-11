@@ -46,7 +46,10 @@ function serverUserAgent(): string {
 
 /**
  * Headers every request that targets the backend directly should carry: the identifying
- * User-Agent and, when configured, the server-only `API_AUTH_KEY`. Empty in the browser.
+ * User-Agent and, when configured, the two server-only keys. `API_AUTH_KEY` goes as `x-auth-key`
+ * and lifts the API's rate limits; `API_DATA_KEY` goes as `X-API-Key` and opens the forecasts,
+ * like any data consumer's key. Two keys because they grant different things and are revoked
+ * for different reasons. Empty in the browser.
  *
  * Scripts spread this too rather than inventing their own User-Agent: an unknown client name is
  * blocked at the edge. The module imports nothing, so `node`'s type stripping loads it from
@@ -55,9 +58,11 @@ function serverUserAgent(): string {
 export function getServerApiHeaders(): Record<string, string> {
   if (typeof window !== 'undefined') return {};
   const key = process.env.API_AUTH_KEY;
+  const dataKey = process.env.API_DATA_KEY;
   return {
     'User-Agent': serverUserAgent(),
     ...(key ? { 'x-auth-key': key } : {}),
+    ...(dataKey ? { 'X-API-Key': dataKey } : {}),
   };
 }
 

@@ -63,13 +63,14 @@ and this table only names it.
 
 **API and site**
 
-| Variable                 | Default                | Kind   | Read by                                                                                                                                                                  |
-| ------------------------ | ---------------------- | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `NEXT_PUBLIC_API_URL`    | `https://api.park.fan` | public | `lib/api/client.ts`: the server's API base and `API_ORIGIN`                                                                                                              |
-| `API_AUTH_KEY`           | unset                  | secret | `getServerApiHeaders` (`lib/api/client.ts`), sent as `x-auth-key` on every server request; set it in the build environment too, or the build is rate-limited             |
-| `NEXT_PUBLIC_API_DIRECT` | off                    | public | `lib/api/client.ts`; `1` sends the per-visitor requests past Vercel ([flags](flags-and-debug.md#build-time-flags))                                                       |
-| `NEXT_PUBLIC_BASE_URL`   | `https://park.fan`     | public | OG image URLs and the OG renderer's absolute fallbacks ([OG images](../features/og-images.md)); every other absolute URL uses the constant `SITE_URL` (`i18n/config.ts`) |
-| `PREWARM_BASE_URL`       | `SITE_URL`             | server | `app/api/cron/prewarm/route.ts`, the host the prewarm cron requests                                                                                                      |
+| Variable                 | Default                | Kind   | Read by                                                                                                                                                                                                                                                               |
+| ------------------------ | ---------------------- | ------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `NEXT_PUBLIC_API_URL`    | `https://api.park.fan` | public | `lib/api/client.ts`: the server's API base and `API_ORIGIN`                                                                                                                                                                                                           |
+| `API_AUTH_KEY`           | unset                  | secret | `getServerApiHeaders` (`lib/api/client.ts`), sent as `x-auth-key` on every server request; set it in the build environment too, or the build is rate-limited                                                                                                          |
+| `API_DATA_KEY`           | unset                  | secret | `getServerApiHeaders`, sent as `X-API-Key` on every server request; the site's own data key from `/admin/api-keys` (usage „park.fan selbst“), which opens the forecasts ([a forecast leaves park.fan only with a key](../rules/a-forecast-leaves-only-with-a-key.md)) |
+| `NEXT_PUBLIC_API_DIRECT` | off                    | public | `lib/api/client.ts`; `1` sends the per-visitor requests past Vercel ([flags](flags-and-debug.md#build-time-flags))                                                                                                                                                    |
+| `NEXT_PUBLIC_BASE_URL`   | `https://park.fan`     | public | OG image URLs and the OG renderer's absolute fallbacks ([OG images](../features/og-images.md)); every other absolute URL uses the constant `SITE_URL` (`i18n/config.ts`)                                                                                              |
+| `PREWARM_BASE_URL`       | `SITE_URL`             | server | `app/api/cron/prewarm/route.ts`, the host the prewarm cron requests                                                                                                                                                                                                   |
 
 **Analytics, maps, bot protection**
 
