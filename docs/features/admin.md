@@ -344,10 +344,13 @@ Owner only, in the nav and on the API (`/v1/admin/api-keys`, audited as `api-key
 `api-key.revoke`), because a key decides who uses the forecasts. Helpers in `lib/admin/api-keys.ts`.
 
 - **The list** shows every key, active ones first: name, usage (nicht-kommerziell, or kommerziell
-  for a holder with a written agreement), prefix, contact, created, last used, and when it was
-  revoked. An active row has its revoke button behind a `ConfirmDialog`; a revoked one stays
-  listed, dimmed.
-- **Create** takes a name, an optional contact, the usage and an optional note, and needs no
+  for a holder with a written agreement), prefix, contact, created, last used, when it was
+  revoked, and for an active key its requests in the current clock hour against its hourly
+  allowance (`formatHourlyUsage`). An active row has a button that changes the allowance
+  (`PATCH`, from the next request on) and its revoke button behind a `ConfirmDialog`; a revoked
+  one stays listed, dimmed.
+- **Create** takes a name, an optional contact, the usage, the hourly allowance (1,000 unless
+  changed, empty for no per-key limit, `parseRequestsPerHour`) and an optional note, and needs no
   password: a data key opens forecasts, never the admin. The key is in the answer once and lives in
   the dialog's state only, as a token does above; Escape and the overlay do not close the dialog
   while it is shown. The dialog adds a `curl` line with the key in `X-API-Key`.

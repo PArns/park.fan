@@ -46,7 +46,9 @@ The endpoints that answer most questions:
 
 ¹ Its forecast field, each ride's `bestVisitTimes`, comes only with `?forecast=true` and a key; the
 same holds for a ride's `hourlyForecast` and for `/stats/day`. `/calendar`, `/predictions/yearly`
-and `/plan/day` need a key outright. Without one they answer 401 with the terms URL.
+and `/plan/day` need a key outright. Without one they answer 401 with the terms URL. A key has an
+hourly allowance, counted from each full hour and reported in `X-API-Key-Hourly-Limit`,
+`-Remaining` and `-Reset`; past it the answer is 429 with `Retry-After`.
 
 `https://park.fan/sitemap.xml` and `/sitemap-attractions.xml` list the pages; `/llms.txt` is the
 short version of this file for a model that arrived with nothing.

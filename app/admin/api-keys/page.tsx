@@ -1,7 +1,7 @@
 'use client';
 
 import { useRef, useState, type FormEvent } from 'react';
-import { KeySquare, Loader2, Plus, ShieldCheck, Trash2 } from 'lucide-react';
+import { Gauge, KeySquare, Loader2, Plus, ShieldCheck, Trash2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { ConfirmDialog } from '@/components/ui/confirm-dialog';
 import {
@@ -16,8 +16,11 @@ import {
   DATA_API_KEYS_PATH,
   DATA_API_KEYS_QUERY_KEY,
   DATA_API_KEY_USAGE_LABELS,
+  DEFAULT_REQUESTS_PER_HOUR,
   createDataApiKeyBody,
   dataApiKeyCurlExample,
+  formatHourlyUsage,
+  parseRequestsPerHour,
   type CreatedDataApiKey,
   type DataApiKey,
   type DataApiKeyUsage,
@@ -101,6 +104,7 @@ function KeyList({ items }: { items: DataApiKey[] }) {
   // Kept after the dialog closes, so its text does not change while it fades out.
   const [pending, setPending] = useState<DataApiKey | null>(null);
   const [confirming, setConfirming] = useState(false);
+  const [editing, setEditing] = useState<DataApiKey | null>(null);
 
   async function revoke(key: DataApiKey) {
     try {
@@ -135,6 +139,7 @@ function KeyList({ items }: { items: DataApiKey[] }) {
           <KeyRow
             key={key.id}
             apiKey={key}
+            onEditLimit={() => setEditing(key)}
             onRevoke={() => {
               setPending(key);
               setConfirming(true);
@@ -154,11 +159,21 @@ function KeyList({ items }: { items: DataApiKey[] }) {
         cancelLabel="Abbrechen"
         onConfirm={() => pending && void revoke(pending)}
       />
+
+      {editing && <LimitDialog apiKey={editing} onClose={() => setEditing(null)} />}
     </>
   );
 }
 
-function KeyRow({ apiKey, onRevoke }: { apiKey: DataApiKey; onRevoke: () => void }) {
+function KeyRow({
+  apiKey,
+  onEditLimit,
+  onRevoke,
+}: {
+  apiKey: DataApiKey;
+  onEditLimit: () => void;
+  onRevoke: () => void;
+}) {
   const revoked = apiKey.revokedAt !== null;
   return (
     <li
@@ -182,8 +197,19 @@ function KeyRow({ apiKey, onRevoke }: { apiKey: DataApiKey; onRevoke: () => void
           </span>
           {apiKey.revokedAt && <span>widerrufen {formatAgo(apiKey.revokedAt)}</span>}
         </p>
+        {!revoked && <p className="text-muted-foreground text-xs">{formatHourlyUsage(apiKey)}</p>}
         {apiKey.note && <p className="text-muted-foreground text-xs">{apiKey.note}</p>}
       </div>
+      {!revoked && (
+        <button
+          type="button"
+          onClick={onEditLimit}
+          aria-label={`Stundenlimit von ${apiKey.name} ändern`}
+          className="text-muted-foreground hover:text-foreground shrink-0 rounded p-1.5 max-sm:p-3"
+        >
+          <Gauge className="h-3.5 w-3.5" />
+        </button>
+      )}
       {!revoked && (
         <button
           type="button"
@@ -205,6 +231,7 @@ function CreateKeyDialog({ onClose }: { onClose: () => void }) {
   const [contact, setContact] = useState('');
   const [usage, setUsage] = useState<DataApiKeyUsage>('non-commercial');
   const [note, setNote] = useState('');
+  const [limit, setLimit] = useState(String(DEFAULT_REQUESTS_PER_HOUR));
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
   // The key lives in this state and nowhere else, and goes when the dialog does.
@@ -215,18 +242,21 @@ function CreateKeyDialog({ onClose }: { onClose: () => void }) {
     name: useFieldId('api-key-name'),
     contact: useFieldId('api-key-contact'),
     note: useFieldId('api-key-note'),
+    limit: useFieldId('api-key-limit'),
   };
+  const requestsPerHour = parseRequestsPerHour(limit);
+  const complete = name.trim().length > 0 && requestsPerHour !== undefined;
 
   async function create(event: FormEvent) {
     event.preventDefault();
-    if (submitting.current || !name.trim()) return;
+    if (submitting.current || !complete || requestsPerHour === undefined) return;
     submitting.current = true;
     setBusy(true);
     setError(null);
     try {
       const result = await adminFetch<CreatedDataApiKey>(DATA_API_KEYS_PATH, {
         method: 'POST',
-        body: createDataApiKeyBody({ name, contact, usage, note }),
+        body: createDataApiKeyBody({ name, contact, usage, note, requestsPerHour }),
       });
       setCreated(result);
       invalidate(DATA_API_KEYS_QUERY_KEY);
@@ -321,6 +351,7 @@ function CreateKeyDialog({ onClose }: { onClose: () => void }) {
                 options={USAGE_OPTIONS}
               />
             </Field>
+            <LimitField id={ids.limit} value={limit} onChange={setLimit} />
             <Field label="Notiz" htmlFor={ids.note} hint="Optional, nur für dich.">
               <TextInput
                 id={ids.note}
@@ -341,13 +372,101 @@ function CreateKeyDialog({ onClose }: { onClose: () => void }) {
               <Button type="button" variant="ghost" onClick={onClose} disabled={busy}>
                 Abbrechen
               </Button>
-              <Button type="submit" disabled={busy || !name.trim()}>
+              <Button type="submit" disabled={busy || !complete}>
                 {busy && <Loader2 className="h-4 w-4 animate-spin" />}
                 Erstellen
               </Button>
             </DialogFooter>
           </form>
         )}
+      </DialogContent>
+    </Dialog>
+  );
+}
+
+function LimitField({
+  id,
+  value,
+  onChange,
+}: {
+  id: string;
+  value: string;
+  onChange: (value: string) => void;
+}) {
+  const invalid = parseRequestsPerHour(value) === undefined;
+  return (
+    <Field
+      label="Anfragen pro Stunde"
+      htmlFor={id}
+      hint="Gezählt ab jeder vollen Stunde, zusätzlich zum allgemeinen Limit der API. Leer lassen für kein eigenes Limit."
+    >
+      <TextInput
+        id={id}
+        inputMode="numeric"
+        value={value}
+        onChange={(event) => onChange(event.target.value)}
+        placeholder="kein eigenes Limit"
+        autoComplete="off"
+        aria-invalid={invalid || undefined}
+      />
+    </Field>
+  );
+}
+
+function LimitDialog({ apiKey, onClose }: { apiKey: DataApiKey; onClose: () => void }) {
+  const toast = useToast();
+  const invalidate = useInvalidateAdmin();
+  const [limit, setLimit] = useState(
+    apiKey.requestsPerHour === null ? '' : String(apiKey.requestsPerHour)
+  );
+  const [busy, setBusy] = useState(false);
+  const fieldId = useFieldId('api-key-limit-edit');
+  const requestsPerHour = parseRequestsPerHour(limit);
+
+  async function save(event: FormEvent) {
+    event.preventDefault();
+    if (busy || requestsPerHour === undefined) return;
+    setBusy(true);
+    try {
+      await adminFetch(`${DATA_API_KEYS_PATH}/${encodeURIComponent(apiKey.id)}`, {
+        method: 'PATCH',
+        body: JSON.stringify({ requestsPerHour }),
+      });
+      invalidate(DATA_API_KEYS_QUERY_KEY);
+      toast.push({ title: 'Stundenlimit gespeichert', tone: 'success' });
+      onClose();
+    } catch (err) {
+      toast.push({
+        title: 'Speichern fehlgeschlagen',
+        description: err instanceof Error ? err.message : undefined,
+        tone: 'error',
+      });
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  return (
+    <Dialog open onOpenChange={(open) => !open && onClose()}>
+      <DialogContent className="sm:max-w-md">
+        <form onSubmit={(event) => void save(event)} className="grid gap-4">
+          <DialogHeader>
+            <DialogTitle>Stundenlimit für {apiKey.name}</DialogTitle>
+            <DialogDescription>
+              Gilt ab der nächsten Anfrage. {formatHourlyUsage(apiKey)}.
+            </DialogDescription>
+          </DialogHeader>
+          <LimitField id={fieldId} value={limit} onChange={setLimit} />
+          <DialogFooter>
+            <Button type="button" variant="ghost" onClick={onClose} disabled={busy}>
+              Abbrechen
+            </Button>
+            <Button type="submit" disabled={busy || requestsPerHour === undefined}>
+              {busy && <Loader2 className="h-4 w-4 animate-spin" />}
+              Speichern
+            </Button>
+          </DialogFooter>
+        </form>
       </DialogContent>
     </Dialog>
   );
