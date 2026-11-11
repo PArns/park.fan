@@ -217,20 +217,19 @@ export function ImpressumEN({ story }: { story: ImpressumStory | null }) {
           park or ride page you used. No API key or sign-up is needed.
         </p>
 
-        <h3 className="mt-8 mb-4 text-2xl font-semibold">
-          Forecasts are for non-commercial use only
-        </h3>
+        <h3 className="mt-8 mb-4 text-2xl font-semibold">Commercial use of the forecasts</h3>
         <p className="mb-4">
           park.fan calculates its forecasts with its own models: the crowd calendar, the expected
           crowds per day and per hour, predicted wait times, the best days to visit and the plans of
-          the trip planner. They may not be used commercially. That applies to the pages, the API
-          and the MCP server alike.
+          the trip planner. Using them commercially requires a written agreement with park.fan. That
+          applies to the pages, the API and the MCP server alike.
         </p>
         <p className="mb-4">
           Commercial means, for example, a paid app, an app with subscriptions, in-app purchases or
           advertising, a website with advertising or affiliate links, and any product a company
-          offers. For such purposes the forecasts may not be shown, stored or passed on. park.fan
-          does not grant licences for commercial use.
+          offers. Without an agreement, the forecasts may not be shown, stored or passed on for such
+          purposes. Requests go to{' '}
+          <ObfuscatedEmail local="hello" domain="park.fan" displayText="hello [at] park.fan" />.
         </p>
 
         <h3 className="mt-8 mb-4 text-2xl font-semibold">Live data belongs to its sources</h3>

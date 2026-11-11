@@ -59,8 +59,8 @@ short version of this file for a model that arrived with nothing.
 
 - Free for non-commercial use, with the credit above.
 - The forecasts (crowd calendar, expected crowds, predicted wait times, best days, day plans) are
-  park.fan's own model output and are for non-commercial use only, whether read from a page, the
-  API or MCP. Commercial licences are unavailable.
+  park.fan's own model output. Commercial use, whether read from a page, the API or MCP, requires a
+  written agreement with park.fan (contact: https://park.fan/en/impressum).
 - Live wait times, opening hours and weather stay under the terms of the sources park.fan reads
   them from.
 - The full terms, with what counts as commercial: https://park.fan/en/impressum#data-use

@@ -19,8 +19,8 @@ export const RSL_LICENSE_PATH = '/license.xml';
 export const DATA_TERMS_ANCHOR = 'data-use';
 
 /**
- * The human-readable terms for reusing park.fan's data: free for non-commercial use, the
- * forecasts never for commercial use, the live data under its sources' own terms. English,
+ * The human-readable terms for reusing park.fan's data: free for non-commercial use, commercial
+ * use of the forecasts only under a written agreement, the live data under its sources' terms. English,
  * because the reader it is handed to is a developer or a licensing tool, not a park visitor.
  */
 export const DATA_TERMS_URL = `${SITE}/en/impressum#${DATA_TERMS_ANCHOR}`;
@@ -33,7 +33,7 @@ export const RSL_CONTENT_TYPE = 'application/rsl+xml; charset=utf-8';
  * name park.fan and link the page the number came from. That is not a formality here — a wait
  * time is only checkable if the reader can get back to where it was published.
  *
- * The commercial ban on the forecasts stays in the `<terms>` text (RSL 1.0 §3.17) rather than a
+ * The commercial terms for the forecasts stay in the `<terms>` text (RSL 1.0 §3.17) rather than a
  * `<prohibits type="user">commercial</prohibits>`: RSL licenses a whole page, and that element
  * would also forbid a commercial assistant from reading a page to answer someone, which
  * `ai-input` allows on purpose.

@@ -31,7 +31,7 @@ Literal rather than an env var, for the same reason the API catalog is: a previe
 
 - `RSL_LICENSE_PATH` _const_
 - `DATA_TERMS_ANCHOR` _const_: The `id` of the terms section in both Impressum languages, so one link reaches either.
-- `DATA_TERMS_URL` _const_: The human-readable terms for reusing park.fan's data: free for non-commercial use, the forecasts never for commercial use, the live data under its sources' own terms.
+- `DATA_TERMS_URL` _const_: The human-readable terms for reusing park.fan's data: free for non-commercial use, commercial use of the forecasts only under a written agreement, the live data under its sources' terms.
 - `RSL_CONTENT_TYPE` _const_: RSL 1.0 §3. Served as `application/rsl+xml`.
 - `RSL_DOCUMENT` _const_: The licence itself. `payment type="attribution"` is RSL's way of saying the price is a credit: name park.fan and link the page the number came from.
 - `LICENSE_LINK_HEADER` _const_: RSL 1.0 §4.5: the licence, associated with the asset being served.

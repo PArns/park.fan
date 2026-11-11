@@ -28,8 +28,9 @@ instead of lowered.
 
 ## Terms of use
 
-The data is free for non-commercial use with a credit to park.fan. park.fan's forecasts may not
-be used commercially, and live wait times stay under the terms of the sources they come from.
+The data is free for non-commercial use with a credit to park.fan. Commercial use of park.fan's
+forecasts requires a written agreement, and live wait times stay under the terms of the sources
+they come from.
 The full terms: ${DATA_TERMS_URL}
 
 ## No agent registration

@@ -108,7 +108,7 @@ check(
   /<permits type="usage">search ai-input<\/permits>/.test(license.text) &&
     /<prohibits type="usage">ai-train<\/prohibits>/.test(license.text)
 );
-// The commercial ban on the forecasts lives only in the human-readable terms, so a licence that
+// The commercial terms for the forecasts live only in the human-readable terms, so a licence that
 // points at a renamed page or a dropped anchor would leave a client with no terms at all.
 const termsUrl = license.text.match(/<terms>([^<]+)<\/terms>/)?.[1] ?? '';
 const [termsPage, termsAnchor] = termsUrl.split('#');

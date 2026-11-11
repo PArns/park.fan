@@ -70,7 +70,7 @@ const PARK_FAN_API: CatalogEntry = {
     {
       href: DATA_TERMS_URL,
       type: 'text/html',
-      title: 'Terms of use: non-commercial, forecasts never for commercial use',
+      title: 'Terms of use: free for non-commercial use, commercial use by agreement',
     },
   ],
 };

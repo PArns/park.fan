@@ -221,21 +221,20 @@ export function ImpressumDE({ story }: { story: ImpressumStory | null }) {
           API-Key oder eine Anmeldung braucht es nicht.
         </p>
 
-        <h3 className="mt-8 mb-4 text-2xl font-semibold">
-          Prognosen nur für nicht-kommerzielle Zwecke
-        </h3>
+        <h3 className="mt-8 mb-4 text-2xl font-semibold">Kommerzielle Nutzung der Prognosen</h3>
         <p className="mb-4">
           Die Prognosen berechnet park.fan mit eigenen Modellen: den Crowd-Kalender, den erwarteten
           Andrang pro Tag und pro Stunde, vorhergesagte Wartezeiten, die besten Besuchstage und die
-          Pläne des Tagesplaners. Sie dürfen nicht kommerziell genutzt werden. Das gilt für die
-          Seiten, die API und den MCP-Server gleichermaßen.
+          Pläne des Tagesplaners. Für eine kommerzielle Nutzung braucht es eine schriftliche
+          Vereinbarung mit park.fan. Das gilt für die Seiten, die API und den MCP-Server
+          gleichermaßen.
         </p>
         <p className="mb-4">
           Kommerziell sind zum Beispiel eine kostenpflichtige App, eine App mit Abo, In-App-Käufen
           oder Werbung, eine Website mit Werbung oder Affiliate-Links und jedes Produkt, das ein
-          Unternehmen anbietet. Für solche Zwecke dürfen die Prognosen weder gezeigt noch
-          gespeichert oder weitergegeben werden. Lizenzen für eine kommerzielle Nutzung vergibt
-          park.fan nicht.
+          Unternehmen anbietet. Ohne Vereinbarung dürfen die Prognosen für solche Zwecke weder
+          gezeigt noch gespeichert oder weitergegeben werden. Anfragen an{' '}
+          <ObfuscatedEmail local="hello" domain="park.fan" displayText="hello [at] park.fan" />.
         </p>
 
         <h3 className="mt-8 mb-4 text-2xl font-semibold">Live-Daten gehören ihren Quellen</h3>

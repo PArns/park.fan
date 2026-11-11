@@ -123,8 +123,8 @@ ${AGENT_SKILLS.map((skill) => line(skill.name, `${SITE_URL}${skillArtifactPath(s
 
 Free for non-commercial use: name park.fan and link the page a number came from. The forecasts
 (crowd calendar, expected crowds per day and hour, predicted wait times, best days, day plans)
-come from park.fan's own models and are for non-commercial use only, on the pages, through the
-API and through MCP; commercial licences are unavailable. Live wait times and opening hours belong
+come from park.fan's own models. Using them commercially, from the pages, the API or MCP,
+requires a written agreement with park.fan (contact: ${EN}/impressum). Live wait times and opening hours belong
 to the sources park.fan reads them from, under those sources' terms. The full terms:
 ${DATA_TERMS_URL}
 
