@@ -81,6 +81,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `formatDateRange` _function_: Two dates as one short range in the reader's language ("Jan 12 – 21", "12.–21. Jan.", "27 Apr – 6 May"): `Intl`'s own range format, which knows each locale's order and what to leave out.
 - `formatWindow` _function_: A trip window's dates as one short range (`formatDateRange`).
 - `majorityYear` _function_: The year most of a range lies in, for "best time to visit Orlando in 2027".
+- `orlandoWhenRange` _function_: The range the best-time teaser asks `/when` for: the calendar year most of the next twelve months lie in, from today at the earliest and a year from today at the latest, so its windows belong to the year its heading names ("Best time to …
 - `HUB_FIRST_DAYS` _const_: How many days the first answer covers: the server-rendered week.
 - `HUB_WINDOW_DAYS` _const_: How far the hub's calendar reaches past today: the API's default window.
 - Types: `RegionGroup`, `RankedPark`, `ShortestLine`, `HubBasis`, `EventLane`, `ResortMonthSummary`

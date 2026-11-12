@@ -18,14 +18,11 @@ import { parkGeoKey, parksWithStatsPage, type ParkGeoPath } from '@/lib/api/stat
 import { categoryPath, NEWS_INDEX_PATH, postPath } from '@/lib/blog/paths';
 import { brandParksByCountry, PARK_BRANDS } from '@/lib/parks/park-brands';
 import type { GlossaryTerm } from '@/lib/glossary/types';
-import { catchNonFatal } from '@/lib/api/client';
-import { getOrlandoBestDays } from '@/lib/orlando/api';
 import {
   currentOrlandoMonth,
   isSameMonth,
-  orlandoMonthRange,
-  orlandoMonths,
   orlandoBestTimePath,
+  orlandoMonths,
   orlandoPath,
 } from '@/lib/orlando/paths';
 import { ORLANDO_BEST_TIME_RESORTS } from '@/lib/orlando/best-time';
@@ -149,27 +146,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }
 
   // The Orlando hub and its eleven month pages; the current month's URL canonicals to the hub and
-  // is not listed. A month's `<lastmod>` is when the API computed its best days, the figures the
-  // page renders; a month whose read fails is listed without one.
+  // is not listed. No `<lastmod>`: the figures are rebuilt for every month at once by each forecast
+  // warmup, which is a stamp, not an observed change (docs/rules/a-lastmod-is-observed-never-stamped.md).
   const orlandoNow = currentOrlandoMonth();
-  const orlandoEntries = await Promise.all(
-    orlandoMonths(orlandoNow).map(async (month) => {
-      const isHub = isSameMonth(month, orlandoNow);
-      const path = orlandoPath(isHub ? null : month);
-      const bestDays = await catchNonFatal(
-        getOrlandoBestDays(isHub ? {} : orlandoMonthRange(month))
-      );
-      const computed = bestDays?.meta.computedAt;
-      return {
-        path,
-        lastModified: computed ? new Date(computed) : undefined,
-        alternates: buildAlternates(() => path),
-      };
-    })
-  );
-  for (const locale of locales) {
-    for (const { path, lastModified, alternates } of orlandoEntries) {
-      routes.push({ url: `${BASE_URL}/${locale}${path}`, lastModified, alternates });
+  for (const month of orlandoMonths(orlandoNow)) {
+    const path = orlandoPath(isSameMonth(month, orlandoNow) ? null : month);
+    const alternates = buildAlternates(() => path);
+    for (const locale of locales) {
+      routes.push({ url: `${BASE_URL}/${locale}${path}`, alternates });
     }
   }
 

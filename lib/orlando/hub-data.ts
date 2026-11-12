@@ -552,3 +552,16 @@ export function majorityYear(from: string, to: string): number {
     ? a.getUTCFullYear()
     : b.getUTCFullYear();
 }
+
+/**
+ * The range the best-time teaser asks `/when` for: the calendar year most of the next twelve
+ * months lie in, from today at the earliest and a year from today at the latest, so its windows
+ * belong to the year its heading names ("Best time to visit Orlando in 2027").
+ */
+export function orlandoWhenRange(todayIso: string): { from: string; to: string; year: number } {
+  const last = addDays(todayIso, 365);
+  const year = majorityYear(todayIso, last);
+  const from = `${year}-01-01` > todayIso ? `${year}-01-01` : todayIso;
+  const to = `${year}-12-31` < last ? `${year}-12-31` : last;
+  return { from, to, year };
+}

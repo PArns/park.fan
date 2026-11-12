@@ -10,6 +10,11 @@ interface ParkCalendarMonthIndexChipProps {
   href: string;
   active: boolean;
   children: React.ReactNode;
+  /**
+   * For the host's sizing: the Orlando hub's twelve chips take the 44 px phone height
+   * (`max-sm:min-h-11`), which the park calendar's 25 would turn into a wall.
+   */
+  className?: string;
 }
 
 /**
@@ -21,6 +26,7 @@ export function ParkCalendarMonthIndexChip({
   href,
   active,
   children,
+  className,
 }: ParkCalendarMonthIndexChipProps) {
   const locale = useLocale();
   return (
@@ -38,7 +44,8 @@ export function ParkCalendarMonthIndexChip({
         'inline-flex min-h-9 items-center rounded-md border px-2.5 py-1 text-xs font-medium tabular-nums transition-colors',
         active
           ? 'border-primary/40 bg-primary/15 text-primary'
-          : 'border-border/60 bg-muted/40 text-foreground/80 hover:border-border hover:bg-accent hover:text-accent-foreground'
+          : 'border-border/60 bg-muted/40 text-foreground/80 hover:border-border hover:bg-accent hover:text-accent-foreground',
+        className
       )}
     >
       {children}

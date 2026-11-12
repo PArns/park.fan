@@ -30,12 +30,15 @@ export async function HubMonthIndex({
       <p className="text-muted-foreground mb-3 text-xs font-medium tracking-wide uppercase">
         {t('monthIndexLabel')}
       </p>
-      <ul className="flex flex-wrap gap-1.5">
+      <ul className="flex flex-wrap gap-1.5 max-sm:gap-2">
         {orlandoMonths(current).map((month) => (
           <li key={`${month.year}-${month.month}`}>
             <ParkCalendarMonthIndexChip
               href={orlandoMonthHref(month, current)}
               active={active ? isSameMonth(month, active) : isSameMonth(month, current)}
+              // Twelve chips may take the phone's 44 px: the box is this list's own, so it grows
+              // rather than borrowing a pseudo-element that would overlap the next row.
+              className="max-sm:min-h-11 max-sm:px-3"
             >
               {format.format(new Date(Date.UTC(month.year, month.month - 1, 1)))}
             </ParkCalendarMonthIndexChip>
