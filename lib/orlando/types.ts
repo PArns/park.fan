@@ -203,6 +203,8 @@ export interface TripCalendarDay {
   best?: Record<string, string>;
   /** Per resort, why its pick won: a park with a shorter wait may close early for day guests. */
   bestWhy?: Record<string, TripBestWhy>;
+  /** The day's picks were made on waits alone: no park has published its hours for it yet. */
+  bestHoursUnpublished?: true;
 }
 
 /** A curated season (`park_seasons`) in the public shape, with the park it belongs to. */
