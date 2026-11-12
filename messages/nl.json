@@ -2404,8 +2404,8 @@
         "hours": "Openingstijden"
       },
       "none": "geen",
-      "climate": "{high} °C overdag, {rain} mm regen",
-      "climateNote": "Het gemiddelde van {period}, geen voorspelling. 's Nachts ongeveer {low} °C.",
+      "climate": "<high></high> overdag, <rain></rain> regen",
+      "climateNote": "Het gemiddelde van {period}, geen voorspelling. 's Nachts ongeveer <low></low>.",
       "hours": {
         "long": "Lange dagen, ongeveer {hours} uur",
         "short": "Korte dagen, ongeveer {hours} uur",

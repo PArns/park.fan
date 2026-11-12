@@ -2404,8 +2404,8 @@
         "hours": "Opening hours"
       },
       "none": "none",
-      "climate": "{high} °C by day, {rain} mm of rain",
-      "climateNote": "The average for {period}, not a forecast. Nights about {low} °C.",
+      "climate": "<high></high> by day, <rain></rain> of rain",
+      "climateNote": "The average for {period}, not a forecast. Nights about <low></low>.",
       "hours": {
         "long": "Long days, about {hours} h",
         "short": "Short days, about {hours} h",

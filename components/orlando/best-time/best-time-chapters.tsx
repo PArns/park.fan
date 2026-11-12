@@ -8,6 +8,8 @@ import { CROWD_BADGE_CLASS, CROWD_DOT_CLASS } from '@/lib/utils/crowd-level-styl
 import { getDateTimeFormat, getNumberFormat } from '@/lib/utils/intl-format';
 import { formatParkDay } from '@/lib/utils/park-day';
 import { translateHolidayName } from '@/lib/utils/holiday-names';
+import { PHONE_HIT_AREA } from '@/lib/utils/touch-target';
+import { Precip, Temp } from '@/components/common/unit-display';
 import { formatWindow } from '@/lib/orlando/hub-data';
 import { orlandoMonthHref, isOrlandoMonthInRange } from '@/lib/orlando/paths';
 import { orlandoPlannerHref } from '@/lib/orlando/plan-query';
@@ -126,7 +128,7 @@ export async function WindowCards({
               )}
               {(details.length > 1 || events.length > 0) && (
                 <details className="text-sm">
-                  <summary className="text-primary-ink cursor-pointer font-medium">
+                  <summary className="text-primary-ink flex min-h-11 cursor-pointer items-center font-medium sm:min-h-0">
                     {t('why')}
                   </summary>
                   <ul className="text-muted-foreground mt-2 list-disc space-y-1 ps-5">
@@ -243,7 +245,7 @@ export async function YearStrip({
         </div>
       </div>
       <details className="group">
-        <summary className="text-primary-ink cursor-pointer text-sm font-medium">
+        <summary className="text-primary-ink flex min-h-11 cursor-pointer items-center text-sm font-medium sm:min-h-0">
           {t('table')}
         </summary>
         <div className="mt-3 max-h-[28rem] overflow-y-auto rounded-lg border">
@@ -338,7 +340,10 @@ export async function MonthRows({
               <Link
                 href={orlandoMonthHref(row.month, current)}
                 prefetch={false}
-                className="text-primary-ink underline-offset-4 hover:underline"
+                className={cn(
+                  'text-primary-ink underline-offset-4 hover:underline',
+                  PHONE_HIT_AREA
+                )}
               >
                 {name}
               </Link>
@@ -410,55 +415,57 @@ export async function MonthRows({
                   </span>
                 )}
               </p>
-              <dl className="grid gap-x-6 gap-y-2 text-sm sm:grid-cols-2">
-                <div>
-                  <dt className="text-muted-foreground text-xs">{t('label.events')}</dt>
-                  <dd>
-                    {shownSeasons.length
-                      ? shownSeasons
-                          .map((s) => `${seasonLabel(s)} (${seasonStatus(s)})`)
-                          .join(' · ')
-                      : t('none')}
-                    {seasons.length > 3 ? ` · +${seasons.length - 3}` : ''}
-                  </dd>
-                </div>
-                <div>
-                  <dt className="text-muted-foreground text-xs">{t('label.usBreaks')}</dt>
-                  <dd>
-                    {breaks.length
-                      ? breaks
-                          .map(
-                            (b) =>
-                              `${translateHolidayName(b.name, locale)} ${formatWindow(b, locale)}`
-                          )
-                          .join(' · ')
-                      : t('none')}
-                  </dd>
-                </div>
-                <div>
-                  <dt className="text-muted-foreground text-xs">{t('label.euBreaks')}</dt>
-                  <dd>{euText || t('none')}</dd>
-                </div>
-                <div>
-                  <dt className="text-muted-foreground text-xs">{t('label.weather')}</dt>
-                  <dd>
-                    {climate
-                      ? t('climate', {
-                          high: Math.round(climate.tempMax),
-                          rain: Math.round(climate.precipitationMm),
-                        })
-                      : t('none')}
-                  </dd>
-                </div>
-                <div>
-                  <dt className="text-muted-foreground text-xs">{t('label.hours')}</dt>
-                  <dd>{hours}</dd>
-                </div>
-              </dl>
+              {/* One line per month in the list; events, breaks, weather and hours open on request,
+                  so twelve months do not stand as a wall of facts on a phone. */}
               <details className="text-sm">
-                <summary className="text-primary-ink cursor-pointer font-medium">
+                <summary className="text-primary-ink flex min-h-11 cursor-pointer items-center font-medium sm:min-h-0">
                   {t('details')}
                 </summary>
+                <dl className="mt-2 grid gap-x-6 gap-y-2 text-sm sm:grid-cols-2">
+                  <div>
+                    <dt className="text-muted-foreground text-xs">{t('label.events')}</dt>
+                    <dd>
+                      {shownSeasons.length
+                        ? shownSeasons
+                            .map((s) => `${seasonLabel(s)} (${seasonStatus(s)})`)
+                            .join(' · ')
+                        : t('none')}
+                      {seasons.length > 3 ? ` · +${seasons.length - 3}` : ''}
+                    </dd>
+                  </div>
+                  <div>
+                    <dt className="text-muted-foreground text-xs">{t('label.usBreaks')}</dt>
+                    <dd>
+                      {breaks.length
+                        ? breaks
+                            .map(
+                              (b) =>
+                                `${translateHolidayName(b.name, locale)} ${formatWindow(b, locale)}`
+                            )
+                            .join(' · ')
+                        : t('none')}
+                    </dd>
+                  </div>
+                  <div>
+                    <dt className="text-muted-foreground text-xs">{t('label.euBreaks')}</dt>
+                    <dd>{euText || t('none')}</dd>
+                  </div>
+                  <div>
+                    <dt className="text-muted-foreground text-xs">{t('label.weather')}</dt>
+                    <dd>
+                      {climate
+                        ? t.rich('climate', {
+                            high: () => <Temp celsius={climate.tempMax} withUnit />,
+                            rain: () => <Precip mm={climate.precipitationMm} />,
+                          })
+                        : t('none')}
+                    </dd>
+                  </div>
+                  <div>
+                    <dt className="text-muted-foreground text-xs">{t('label.hours')}</dt>
+                    <dd>{hours}</dd>
+                  </div>
+                </dl>
                 <div className="text-muted-foreground mt-2 space-y-2">
                   {seasons.length > 0 && (
                     <ul className="list-disc space-y-1 ps-5">
@@ -490,9 +497,9 @@ export async function MonthRows({
                   )}
                   {climate && (
                     <p>
-                      {t('climateNote', {
+                      {t.rich('climateNote', {
                         period: climate.period,
-                        low: Math.round(climate.tempMin),
+                        low: () => <Temp celsius={climate.tempMin} withUnit />,
                       })}
                     </p>
                   )}
@@ -600,7 +607,7 @@ export async function SchoolHolidayLinks({
             open={country === openCountry}
             className="rounded-xl border p-4 [&_summary]:cursor-pointer"
           >
-            <summary className="text-lg font-semibold">
+            <summary className="flex min-h-11 items-center text-lg font-semibold">
               <h3 className="inline">{countryName.of(country) ?? country}</h3>
             </summary>
             <ul className="mt-3 divide-y">

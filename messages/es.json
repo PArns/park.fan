@@ -2404,8 +2404,8 @@
         "hours": "Horarios"
       },
       "none": "ninguno",
-      "climate": "{high} °C de día, {rain} mm de lluvia",
-      "climateNote": "La media de {period}, no una previsión. De noche, unos {low} °C.",
+      "climate": "<high></high> de día, <rain></rain> de lluvia",
+      "climateNote": "La media de {period}, no una previsión. De noche, unos <low></low>.",
       "hours": {
         "long": "Días largos, unas {hours} h",
         "short": "Días cortos, unas {hours} h",

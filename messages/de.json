@@ -2404,8 +2404,8 @@
         "hours": "Öffnungszeiten"
       },
       "none": "keine",
-      "climate": "{high} °C am Tag, {rain} mm Regen",
-      "climateNote": "Der Schnitt von {period}, keine Vorhersage. Nachts etwa {low} °C.",
+      "climate": "<high></high> am Tag, <rain></rain> Regen",
+      "climateNote": "Der Schnitt von {period}, keine Vorhersage. Nachts etwa <low></low>.",
       "hours": {
         "long": "Lange Tage, etwa {hours} Std.",
         "short": "Kurze Tage, etwa {hours} Std.",
