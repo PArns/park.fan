@@ -150,7 +150,7 @@ export function PlanSetup({
       {/* Desk: the panels. */}
       <div className="hidden flex-col gap-4 lg:flex">
         <div className="grid grid-cols-2 gap-4">
-          <SetupPanel title={t('setup.dates')}>
+          <SetupPanel title={t('setup.dates')} dates>
             <PlanDatesStep defaultMonth={defaultMonth} />
           </SetupPanel>
           <SetupPanel title={t('setup.parks')}>
@@ -273,11 +273,22 @@ function SetupRow({
   );
 }
 
-function SetupPanel({ title, children }: { title: string; children: ReactNode }) {
+function SetupPanel({
+  title,
+  dates = false,
+  children,
+}: {
+  title: string;
+  /** The dates panel, which the hub's hero action scrolls to (`orlandoPlannerUi`). */
+  dates?: boolean;
+  children: ReactNode;
+}) {
   const id = useId();
   return (
     <section
       aria-labelledby={id}
+      data-plan-dates-panel={dates ? '' : undefined}
+      tabIndex={dates ? -1 : undefined}
       className="border-border/60 bg-muted/30 flex flex-col gap-3 rounded-2xl border p-4"
     >
       <h3 id={id} className="text-base font-semibold">
