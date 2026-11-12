@@ -1,10 +1,12 @@
 'use client';
 
-import { Suspense, useCallback, useMemo, useRef, useState, type RefObject } from 'react';
+import { Suspense, useCallback, useEffect, useMemo, useRef, useState, type RefObject } from 'react';
 import { useBrowserNow } from '@/lib/hooks/use-mounted';
 import { parkToday } from '@/lib/planner/park-time';
 import { DEFAULT_PLAN_STATE, type OrlandoPlanState } from '@/lib/orlando/plan';
 import { ORLANDO_PLANNER_ID } from '@/lib/orlando/paths';
+import { orlandoPlannerUi } from '@/lib/orlando/planner-ui';
+import { PLAN_WIDE_QUERY } from './plan-setup';
 import type { TripRegion } from '@/lib/orlando/types';
 import { PlanContextProvider, type PlanContextValue, type PlanParkPhoto } from './plan-context';
 import { PlanSetup, type PlanSheetStep } from './plan-setup';
@@ -117,6 +119,28 @@ function PlannerFrame({
       live,
     };
   }, [region, locale, state, update, today, photos, live]);
+
+  // The hub's hero asks through `orlandoPlannerUi`: a phone gets the Dates sheet, a desk the panel.
+  useEffect(() => {
+    if (!live) return;
+    const answer = () => {
+      if (!orlandoPlannerUi.take()) return;
+      if (!window.matchMedia(PLAN_WIDE_QUERY).matches) {
+        setSheet('dates');
+        return;
+      }
+      const panel = document.querySelector<HTMLElement>('[data-plan-dates-panel]');
+      const smooth = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      panel?.scrollIntoView({ block: 'start', behavior: smooth ? 'smooth' : 'auto' });
+      panel
+        ?.querySelector<HTMLElement>(
+          '[role=radio][aria-checked=true], [data-plan-date][tabindex="0"]'
+        )
+        ?.focus({ preventScroll: true });
+    };
+    answer();
+    return orlandoPlannerUi.subscribe(answer);
+  }, [live]);
 
   // "Plan" on the last sheet: the answer, at the top of the screen, which on a phone is the first
   // thing to read after the sheets.
