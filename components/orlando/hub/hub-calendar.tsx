@@ -109,6 +109,12 @@ export function HubCalendar({ region, initial, window, todayIso, locale }: HubCa
   // its own commit).
   const deferredOnly = useDeferredValue(only);
   const [openDate, setOpenDate] = useState<string | null>(null);
+  // The control that opened the sheet, so closing it puts focus back where the reader was.
+  const opener = useRef<HTMLElement | null>(null);
+  const openDay = useCallback((date: string) => {
+    opener.current = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+    setOpenDate(date);
+  }, []);
   useEffect(() => clearOrlandoPagePark, []);
 
   const { data, isError, isFetching } = useQuery<TripCalendar>({
@@ -128,7 +134,7 @@ export function HubCalendar({ region, initial, window, todayIso, locale }: HubCa
     [groups, deferredOnly]
   );
   const listDays = expanded && data ? data.days : initial.days;
-  const openDay = calendar.days.find((d) => d.date === openDate) ?? null;
+  const sheetDay = calendar.days.find((d) => d.date === openDate) ?? null;
 
   return (
     <div className="space-y-4">
@@ -154,7 +160,7 @@ export function HubCalendar({ region, initial, window, todayIso, locale }: HubCa
           groups={visibleGroups}
           todayIso={todayIso}
           locale={locale}
-          onOpen={setOpenDate}
+          onOpen={openDay}
         />
         {calendar.days.length > initial.days.length || !data ? (
           <button
@@ -184,7 +190,7 @@ export function HubCalendar({ region, initial, window, todayIso, locale }: HubCa
           groups={visibleGroups}
           todayIso={todayIso}
           locale={locale}
-          onOpen={setOpenDate}
+          onOpen={openDay}
         />
         {isDesktop && isFetching && !data && (
           <p className="text-muted-foreground mt-2 text-xs" role="status">
@@ -201,7 +207,8 @@ export function HubCalendar({ region, initial, window, todayIso, locale }: HubCa
       <EventLanes calendar={calendar} region={region} locale={locale} />
 
       <HubDaySheet
-        day={openDay}
+        day={sheetDay}
+        returnFocus={opener}
         region={region}
         calendar={calendar}
         locale={locale}
@@ -270,11 +277,14 @@ function useCellLabel(locale: string) {
   );
 }
 
-/** The resort a park is the day's pick of, or `null`. */
+/**
+ * The resort a park is the day's pick of, or `null`. A resort with one park that has a figure that
+ * day (SeaWorld beside two parks nobody queues at) has nothing to choose between and gets no ring.
+ */
 function bestAtResort(day: TripCalendarDay, group: RegionGroup, slug: string): string | null {
-  return group.kind === 'resort' && day.best?.[group.key] === slug
-    ? shortGroupName(group.name)
-    : null;
+  if (group.kind !== 'resort' || day.best?.[group.key] !== slug) return null;
+  const choices = group.parks.filter((p) => isRankable(day.parks[p.slug])).length;
+  return choices > 1 ? shortGroupName(group.name) : null;
 }
 
 /**

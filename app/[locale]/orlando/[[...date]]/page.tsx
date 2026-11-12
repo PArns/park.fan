@@ -73,9 +73,16 @@ function canonicalMonth(month: OrlandoMonth | null, current: OrlandoMonth) {
   return month && !isSameMonth(month, current) ? month : null;
 }
 
+/** A resort as a search snippet names it: "Disney", "Universal", "SeaWorld". */
+function resortWord(key: string, name: string): string {
+  return (
+    { 'walt-disney-world': 'Disney', 'universal-orlando': 'Universal' }[key] ?? shortGroupName(name)
+  );
+}
+
 /**
- * The verdict the description carries: each resort's quietest date in the window, "Walt Disney
- * World Tue 8 Dec, Universal Orlando Wed 9 Dec". Empty when `/best-days` has none.
+ * The verdict the description carries: each resort's quietest date in the window, "Disney Tue 8
+ * Dec and Universal Wed 9 Dec". Empty when `/best-days` has none.
  */
 function verdict(region: TripRegion | null, bestDays: TripBestDays | null, locale: string) {
   if (!region || !bestDays) return '';
@@ -84,7 +91,7 @@ function verdict(region: TripRegion | null, bestDays: TripBestDays | null, local
       const group = region.groups.find((x) => x.key === g.key);
       const first = g.quiet[0];
       return group && first
-        ? `${shortGroupName(group.name)} ${formatHubDate(first.date, locale)}`
+        ? `${resortWord(group.key, group.name)} ${formatHubDate(first.date, locale)}`
         : null;
     })
     .filter((p): p is string => p !== null)

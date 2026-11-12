@@ -532,7 +532,10 @@ export function slimRegion(region: TripRegion): TripRegion {
 export function formatDateRange(from: string, to: string, locale: string): string {
   const format = getDateTimeFormat(locale, { day: 'numeric', month: 'short', timeZone: 'UTC' });
   const a = new Date(`${from}T12:00:00Z`);
-  return from === to ? format.format(a) : format.formatRange(a, new Date(`${to}T12:00:00Z`));
+  const text = from === to ? format.format(a) : format.formatRange(a, new Date(`${to}T12:00:00Z`));
+  // Node's ICU puts thin spaces around the dash and a browser's plain ones; the server-rendered
+  // text has to be the one the browser renders, or hydration fails.
+  return text.replace(/[\u2009\u202f]/g, ' ');
 }
 
 /** A trip window's dates as one short range ({@link formatDateRange}). */

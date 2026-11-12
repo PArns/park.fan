@@ -57,9 +57,12 @@ export function HubDaySheet({
   calendar,
   locale,
   todayIso,
+  returnFocus,
   onClose,
 }: {
   day: TripCalendarDay | null;
+  /** The control that opened the sheet; focus goes back to it when the sheet closes. */
+  returnFocus?: { current: HTMLElement | null };
   region: TripRegion;
   calendar: TripCalendar;
   locale: string;
@@ -76,6 +79,11 @@ export function HubDaySheet({
     <Sheet open={day !== null} onOpenChange={(open) => !open && onClose()}>
       <SheetContent
         side={isDesktop ? 'right' : 'bottom'}
+        onCloseAutoFocus={(event) => {
+          if (!returnFocus?.current?.isConnected) return;
+          event.preventDefault();
+          returnFocus.current.focus();
+        }}
         className={cn(
           'gap-0 p-0',
           isDesktop ? 'w-full sm:max-w-md' : 'max-h-[88dvh] rounded-t-2xl'
