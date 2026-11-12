@@ -15,8 +15,8 @@ hard/soft split `rideFloor` makes at the other end of the day.
   to impose.
 
 **Which headliner falls out is decided, not left over.** A fourth overflow tier,
-`Candidate.dropWeight` (ranks, not minutes, in `lib/planner/optimize.ts`), decides it:
-`OptimizeInput.priority`, the visitor's own order, beats everything, and the day's expected queues
+the drop weight (ranks, not minutes, in the API's `src/planner/day-optimizer/optimize.ts`), decides
+it: the priority, the visitor's own order, beats everything, and the day's expected queues
 rank the rest. The weight is **per entry, never per slug**, so a second go on a ride is given up
 before any first ride. The beam cannot decide this alone (overflow appears only on the last stop, so
 every prefix scores zero overflow and is pruned on cost), so `peeled()` sets the least important
@@ -44,5 +44,5 @@ Fear and Raik.
 
 ## Check
 
-`pnpm test:planner-fit` pins the model. Background:
+The API's `optimize.vectors.spec.ts` and `fit.vectors.spec.ts` pin the model. Background:
 [trip planner → the optimizer](../features/trip-planner/optimizer.md).

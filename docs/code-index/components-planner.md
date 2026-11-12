@@ -87,7 +87,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`planner-fit-list.tsx`](../../components/planner/planner-fit-list.tsx)
 
-- `PlannerFitList` _component_: The rides the day is being decided over, in the order they are given up in. The checkbox says whether a ride is wanted at all; the pin moves it up the order the engine reads as `OptimizeInput.priority`.
+- `PlannerFitList` _component_: The rides the day is being decided over, in the order they are given up in. The checkbox says whether a ride is wanted at all; the pin moves it up the order the engine reads as its priority.
 
 ### [`planner-flyout.tsx`](../../components/planner/planner-flyout.tsx)
 
@@ -135,7 +135,11 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`planner-optimize-actions.tsx`](../../components/planner/planner-optimize-actions.tsx)
 
-- `PlannerOptimizeActions` _component_: The two buttons that let the day sort itself: one adds the park's headliners first, the other only re-orders. One engine (`lib/planner/optimize.ts`), two buttons, because "fill my day" and "is this the best order" are different questions.
+- `PlannerOptimizeActions` _component_: The two buttons that let the day sort itself: one adds the park's headliners first, the other only re-orders.
+
+### [`planner-optimize-failure.tsx`](../../components/planner/planner-optimize-failure.tsx)
+
+- `PlannerOptimizeFailure` _component_: The line a planner surface draws where the optimizer could not answer: what happened, and a retry. The plan is left as it was, so the line promises nothing else. Shared by the optimise row, the fit assistant and the wizard's last step.
 
 ### [`planner-overview.tsx`](../../components/planner/planner-overview.tsx)
 

@@ -4,7 +4,8 @@ import { NO_STORE } from '@/lib/api/cdn-cache-headers';
 
 /**
  * Whether a relay path under `/api/parks/*` answers with forecast data: the live poll (it carries
- * `bestVisitTimes`), the calendar, best days, the day plan, a ride's detail and its day curve.
+ * `bestVisitTimes`), the calendar, best days, the day plan and its optimizer, a ride's detail and
+ * its day curve.
  */
 export function isForecastRelayPath(path: readonly string[]): boolean {
   if (path.length === 4) return true;
@@ -14,6 +15,7 @@ export function isForecastRelayPath(path: readonly string[]): boolean {
     rest === 'calendar/hourly' ||
     rest === 'best-days' ||
     rest === 'plan/day' ||
+    rest === 'plan/optimize' ||
     rest === 'stats/day' ||
     (path.length === 6 && path[4] === 'attractions')
   );

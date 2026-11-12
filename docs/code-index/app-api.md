@@ -366,6 +366,7 @@ Route `/api/og/[...path]` (route).
 Route `/api/parks/[...path]` (route).
 
 - `GET` _function_
+- `POST` _function_: The trip planner's day optimizer (`…/plan/optimize`), relayed with the server's data key: the API plans against its own `/plan/day`, so the browser sends its plan and no forecast.
 
 ### [`parks/backgrounds/route.ts`](../../app/api/parks/backgrounds/route.ts)
 

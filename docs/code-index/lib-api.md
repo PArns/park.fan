@@ -101,7 +101,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`forecast-relay.ts`](../../lib/api/forecast-relay.ts)
 
-- `isForecastRelayPath` _function_: Whether a relay path under `/api/parks/*` answers with forecast data: the live poll (it carries `bestVisitTimes`), the calendar, best days, the day plan, a ride's detail and its day curve.
+- `isForecastRelayPath` _function_: Whether a relay path under `/api/parks/*` answers with forecast data: the live poll (it carries `bestVisitTimes`), the calendar, best days, the day plan and its optimizer, a ride's detail and its day curve.
 - `isSameOriginRequest` _function_: Whether a relay request comes from a park.fan page. Browsers send `Sec-Fetch-Site: same-origin` on a page's own fetches, and a page on another site cannot make them say so.
 - `foreignForecastRequest` _function_: The answer a forecast relay gives a caller that is not a park.fan page. Never cached.
 

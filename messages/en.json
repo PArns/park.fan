@@ -2563,6 +2563,7 @@
       "headlinersShort": "Plan headliners",
       "run": "Optimise the day",
       "running": "Sorting …",
+      "failed": "The day could not be optimised. Your plan is unchanged.",
       "hint": "Orders the rides by their hourly curves, the walk between them and when they open. Breaks and rides you have ticked off stay where they are.",
       "saved": "{minutes} min less queueing",
       "already": "Already in the right order",

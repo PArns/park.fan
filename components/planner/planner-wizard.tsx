@@ -37,26 +37,24 @@ import { formatGridTime, longDate, todayInZone } from '@/lib/planner/park-time';
 import { RIDER_HEIGHT_CHOICES, RIDER_HEIGHT_DEFAULT_CM, partyFlags } from '@/lib/planner/party';
 import { buildDayGrid, earlyEntryOpenMin, withEarlyEntry } from '@/lib/planner/day-grid';
 import { usePlannerPxPerMin } from '@/lib/planner/use-grid-scale';
-import { headlinersSkipped, headlinersToAdd } from '@/lib/planner/optimize';
+import { canOptimize, headlinersSkipped, headlinersToAdd } from '@/lib/planner/optimize';
 import {
-  evaluateFit,
-  fitBlocks,
   fitChoiceAll,
-  fitLeverView,
   fitOrder,
-  fitWishes,
   togglePin,
   toggleLever,
   toggleWish,
   type FitChoice,
-  type FitInput,
 } from '@/lib/planner/fit';
+import { fitQuestion, wishesWithRides } from '@/lib/planner/optimize-remote';
+import { leverViewOf, useFitAnswer } from '@/lib/planner/use-optimize-remote';
 import type { CalendarDay, PlanDay } from '@/lib/api/types';
 import { isPlannedDay, type PlannerDayPrefs } from '@/lib/planner/types';
 import { PlannerParkSearch, type PlannerParkPick } from './planner-park-search';
 import { PlannerMonthCalendar } from './planner-month-calendar';
 import { PlannerFitLevers } from './planner-fit-levers';
 import { PlannerFitList } from './planner-fit-list';
+import { PlannerOptimizeFailure } from './planner-optimize-failure';
 import { PlannerStepRail, STEP_MOTION } from './planner-step-rail';
 
 /**
@@ -104,7 +102,7 @@ const LUNCH_MINUTES = 60;
 
 /**
  * The id the probe files its lunch block under. It never reaches the store, but the fit step reads
- * the block back out of `evaluateFit`'s answer by it, so both halves must use the same string.
+ * the block back out of the optimizer's answer by it, so both halves must use the same string.
  */
 const LUNCH_ENTRY_ID = 'wizard-lunch';
 
@@ -278,51 +276,59 @@ export function PlannerWizard({
   );
 
   /**
-   * The last step's whole subject: which big rides, against which day.
+   * The last step's whole subject: which big rides, against which day, asked of the API's engine.
    *
    * `null` where there is nothing to decide — no payload, no axis, or a park
    * with no headliners the day is missing. Everything below reads it and does
    * the same, so the step draws one sentence instead of a dead control.
    */
-  const fitInput = useMemo<FitInput | null>(() => {
-    if (!probeDay || !wizardGrid || headliners.length === 0) return null;
-    return {
-      day: probeDay,
-      grid: wizardGrid,
-      entries: lunchEntries,
-      wishes: fitWishes(probeDay, lunchEntries, headliners),
-      blocks: fitBlocks(lunchEntries),
-    };
-  }, [probeDay, wizardGrid, headliners, lunchEntries]);
+  const question = useMemo(() => {
+    if (!park || !date || !canOptimize(probeDay, wizardGrid) || headliners.length === 0) {
+      return null;
+    }
+    return fitQuestion(
+      { geo: park.geo, parkSlug: park.slug, date, timezone: facts.timezone ?? park.timezone },
+      lunchEntries,
+      { earlyEntry: earlyEntryAnswer },
+      headliners.map((ride) => ride.attractionSlug)
+    );
+  }, [
+    park,
+    date,
+    probeDay,
+    wizardGrid,
+    headliners,
+    lunchEntries,
+    earlyEntryAnswer,
+    facts.timezone,
+  ]);
 
   /**
-   * The search, only on the step that reads it: it costs several beam searches per change.
-   * `finish` is only reachable from the last step, so it always finds the outcome computed.
+   * The answer, asked only on the step that reads it: it costs the API several searches per
+   * change. While the next answer is on its way the last one stays drawn.
    */
   const onFitStep = step === 'headliners';
-  const fitOutcome = useMemo(
-    () => (fitInput && onFitStep ? evaluateFit(fitInput, fitChoice) : null),
-    [fitInput, fitChoice, onFitStep]
+  const fitQuery = useFitAnswer(question, fitChoice, {
+    levers: planHeadliners,
+    enabled: onFitStep,
+  });
+  const fitAnswer = question ? fitQuery.data : undefined;
+  const fitSettled = fitAnswer !== undefined && !fitQuery.isPlaceholderData;
+  const fitWishes = useMemo(
+    () => wishesWithRides(fitAnswer?.wishes ?? [], dayPayload),
+    [fitAnswer, dayPayload]
   );
   const fitLevers = useMemo(
-    () =>
-      fitInput && fitOutcome && planHeadliners
-        ? fitLeverView(fitInput, fitChoice, fitOutcome)
-        : null,
-    [fitInput, fitChoice, fitOutcome, planHeadliners]
+    () => (fitAnswer && planHeadliners ? leverViewOf(fitAnswer) : null),
+    [fitAnswer, planHeadliners]
   );
-  const fitWishOrder = useMemo(
-    () => (fitInput ? fitOrder(fitInput, fitChoice) : []),
-    [fitInput, fitChoice]
-  );
-  const fitMissed = useMemo(() => new Set(fitOutcome?.missed ?? []), [fitOutcome]);
+  const fitWishOrder = useMemo(() => fitOrder(fitWishes, fitChoice), [fitWishes, fitChoice]);
+  const fitMissed = useMemo(() => new Set(fitAnswer?.missed ?? []), [fitAnswer]);
   const fitPinned = useMemo(() => new Set(fitChoice.priority), [fitChoice]);
 
   /** How many of the big rides are wanted, and how many the day holds. */
-  const wantedHeadliners = fitInput
-    ? fitInput.wishes.filter((wish) => !fitChoice.dropped.has(wish.key)).length
-    : 0;
-  const headlinerFit = fitOutcome ? fitOutcome.fitted.length : null;
+  const wantedHeadliners = fitWishes.filter((wish) => !fitChoice.dropped.has(wish.key)).length;
+  const headlinerFit = fitAnswer ? fitAnswer.fitted.length : null;
   const headlinerConflict = headlinerFit !== null && headlinerFit < wantedHeadliners;
   /**
    * Whether the visitor has answered anything about this day yet, which keeps the fit block on
@@ -377,11 +383,12 @@ export function PlannerWizard({
       setDayPrefs(park.slug, date, dayPrefs);
     }
     /**
-     * The break, as the last step left it: read back out of `evaluateFit`, so the block filed is
-     * the one the probe planned around (gone, shortened or an hour). Only where the headliners are
-     * being planned; a lever pulled and then abandoned is not an answer about lunch.
+     * The break, as the last step left it: read back out of the answer, so the block filed is the
+     * one the plan was made around (gone, shortened or an hour). Only where the headliners are
+     * being planned, and only from the answer to the choice on screen; a lever pulled and then
+     * abandoned is not an answer about lunch.
      */
-    const plannedFit = planHeadliners ? fitOutcome : null;
+    const plannedFit = planHeadliners && fitSettled ? fitAnswer : null;
     const lunchBlock = plannedFit
       ? (plannedFit.entries.find((entry) => entry.id === LUNCH_ENTRY_ID) ?? null)
       : (lunchEntries[0] ?? null);
@@ -447,7 +454,11 @@ export function PlannerWizard({
       : step === 'headliners'
         ? // Deliberately not gated on `dayPending`: the step already says it is loading, and a
           // `/plan/day` that hangs without failing would otherwise leave no way out of the wizard.
-          { run: finish, enabled: Boolean(park && date) }
+          // It waits for an answer on its way, since finishing would file the one before it.
+          {
+            run: finish,
+            enabled: Boolean(park && date) && !(planHeadliners && question && fitQuery.isFetching),
+          }
         : { run: () => goTo(steps[Math.min(steps.length - 1, index + 1)]), enabled: Boolean(date) };
 
   /**
@@ -652,10 +663,18 @@ export function PlannerWizard({
                       })}
                     </span>
                   </p>
-                ) : headliners.length === 0 || headlinerFit === null || !fitInput ? (
+                ) : headliners.length === 0 || !question ? (
                   <p className="text-muted-foreground text-xs leading-relaxed">
                     {t('wizard.headliners.none')}
                   </p>
+                ) : headlinerFit === null ? (
+                  fitQuery.isError ? (
+                    <PlannerOptimizeFailure onRetry={() => void fitQuery.refetch()} />
+                  ) : (
+                    <p className="text-muted-foreground text-xs leading-relaxed">
+                      {t('optimize.running')}
+                    </p>
+                  )
                 ) : (
                   <>
                     <WizardToggle
@@ -708,12 +727,18 @@ export function PlannerWizard({
                             : t('wizard.headliners.resolved', { count: headlinerFit })}
                         </p>
 
+                        {fitQuery.isError && !fitSettled && (
+                          <PlannerOptimizeFailure onRetry={() => void fitQuery.refetch()} />
+                        )}
+
                         {fitLevers.levers.length > 0 && (
                           <PlannerFitLevers
                             levers={fitLevers.levers}
                             applied={fitLevers.applied}
                             onToggle={(lever) =>
-                              setFitChoice((current) => toggleLever(fitInput, current, lever))
+                              setFitChoice((current) =>
+                                toggleLever(fitAnswer?.blocks ?? [], current, lever)
+                              )
                             }
                           />
                         )}

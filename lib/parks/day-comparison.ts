@@ -7,7 +7,7 @@ import { CROWD_LEVEL_ORDER, type ColoredCrowdLevel } from '@/lib/utils/crowd-lev
  * `pnpm test:day-comparison` can pin the refusals without a DOM.
  *
  * Reasons carry a key and numbers, never text; the caller looks up an ICU message, as
- * `planner-fit-assistant.tsx` does with `fitLevers()`. The ranking is the calendar's own `rankOf`,
+ * `planner-fit-assistant.tsx` does with the optimizer's levers. The ranking is the calendar's own `rankOf`,
  * fed the same `CROWD_LEVEL_ORDER` index as `park-calendar-grid.tsx`, so the comparison cannot
  * contradict the grid it was opened from.
  */

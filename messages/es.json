@@ -2563,6 +2563,7 @@
       "headlinersShort": "Atracciones estrella",
       "run": "Optimizar el día",
       "running": "Ordenando …",
+      "failed": "No se pudo optimizar el plan. Tu plan sigue igual.",
       "hint": "Ordena las atracciones por sus curvas horarias, el trayecto entre ellas y su hora de apertura. Las pausas y lo ya marcado se quedan donde están.",
       "saved": "{minutes} min menos de cola",
       "already": "Ya está en el orden bueno",

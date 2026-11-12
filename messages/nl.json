@@ -2563,6 +2563,7 @@
       "headlinersShort": "Headliners plannen",
       "run": "Dag optimaliseren",
       "running": "Sorteren …",
+      "failed": "De optimalisatie kon niet draaien. Je plan is niet veranderd.",
       "hint": "Zet de attracties op volgorde van hun uurcurves, de loopafstand ertussen en hun openingstijd. Pauzes en afgevinkte attracties blijven staan.",
       "saved": "{minutes} min. minder wachten",
       "already": "Staat al goed",

@@ -95,6 +95,6 @@ duration, and the curated `durationSeconds` covered 22 of 173 rides in three sam
 
 It is spent in two places and drawn in none: inside the transfer, so the search's clock, the chip's
 verdict and `fits = start < closeMin` read the same minutes; and once more after the last stop
-(`endMinute` in `scoreCurrent` and the search). A block's height stays the queue, and the chip's
+(`endMinute` in the optimizer's scores and its search). A block's height stays the queue, and the chip's
 title already calls the transfer estimated (`transfer.allowance`). A day that fitted by under two
 minutes per leg can stop fitting, and the fit assistant names it like any other cause.
