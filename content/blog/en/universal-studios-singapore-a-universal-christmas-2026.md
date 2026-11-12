@@ -2,7 +2,7 @@
 title: 'Universal Studios Singapore adds a new Christmas show'
 translationKey: universal-studios-singapore-a-universal-christmas-2026
 date: '2026-11-12'
-time: '18:00'
+time: '18:38'
 author: patrick
 mode: published
 featured: false

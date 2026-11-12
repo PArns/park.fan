@@ -2,7 +2,7 @@
 title: 'Nuovo spettacolo di Natale a Universal Studios Singapore'
 translationKey: universal-studios-singapore-a-universal-christmas-2026
 date: '2026-11-12'
-time: '18:00'
+time: '18:38'
 author: patrick
 mode: published
 featured: false
@@ -47,11 +47,11 @@ Per Natale [Universal Studios Singapore](ref:universal-studios-singapore) presen
 
 Nell'area New York lo spazio natalizio si chiama The North Pole Jingle Jam: le scenografie ricordano il palco di un concerto, e gli ospiti possono salirci. Lo spettacolo che va in scena lì ha quasi lo stesso nome, Universal Jingle Jam. Chi si dà appuntamento lì farà bene a precisare se intende il posto o lo spettacolo. I personaggi si esibiscono con un gruppo di cantanti e il pubblico canta con loro. Nello spettacolo ci sono anche la neve e gli incontri con i personaggi.
 
-Un anno prima, nello stesso punto, il programma prevedeva Santa's Rockmas, con Babbo Natale, Shrek, i pinguini di Madagascar e Sesame Street; nel 2024 toccava a Wicked. Da un anno all'altro, Sesame Street è riuscita a restare in cartellone.
+Un anno prima, nello stesso punto, il programma prevedeva Santa's Rockmas, con Babbo Natale, Shrek, i pinguini di Madagascar e Sesame Street; nel 2024 toccava a Wicked. Di quel cast è rimasta solo Sesame Street, mentre Babbo Natale, Shrek e i pinguini hanno lasciato il posto a Poppy e ai Minions.
 
 ## Dolci giganti sull'Hollywood Boulevard
 
-Resorts World Sentosa trasforma l'Hollywood Boulevard nei Dazzling Dessert Studios, un set cinematografico pieno di dolciumi fuori scala. Qui c'è un albero di Natale alto 10 metri che sembra fatto di confetti, e puoi farti fotografare con Babbo Natale e Mrs. Claus. L'anno scorso un albero di 10 metri stava a WEAVE, fuori dal parco, e quest'inverno lì ce n'è uno di 8 metri.
+Resorts World Sentosa trasforma l'Hollywood Boulevard nei Dazzling Dessert Studios, un set cinematografico pieno di dolciumi fuori scala. Qui c'è un albero di Natale alto 10 metri che sembra fatto di confetti, e puoi farti fotografare con Babbo Natale e Mrs. Claus. Davanti al parco, a WEAVE, quest'inverno c'è un albero di 8 metri, l'anno scorso lì ce n'era uno di 10.
 
 A differenza del 2025, lungo la strada passeggiano anche Hello Kitty e Kuromi di Sanrio, e alla Superstar Boutique puoi farti fotografare con loro.
 
@@ -67,7 +67,7 @@ I fuochi partono alle 20 e vanno a tempo con la musica dei BTS. Resorts World Se
 
 ## I BTS nel parco
 
-Quest'anno la Season of Joy punta sul K-pop, e la sera del 21 dicembre nel parco entrano solo i fan dei BTS con un biglietto apposito. Quel giorno Universal Studios Singapore chiude già alle 19, e dalle 20 all'una di notte c'è BTS THE CITY ARIRANG Night Out. Serve un biglietto a parte, che costa 58 dollari di Singapore a persona.
+Il 21 dicembre Universal Studios Singapore chiude già alle 19, e dalle 20 all'una di notte lì si tiene BTS THE CITY ARIRANG Night Out. L'ingresso costa 58 dollari di Singapore a persona.
 
 Dal 4 dicembre al 3 gennaio, ogni sera dalle 19.30, la facciata di [Revenge of the Mummy](ref:universal-studios-singapore/revenge-of-the-mummy) si accende con la proiezione Lightscape, a motivi BTS. Dal 16 al 22 dicembre, con il biglietto di un'attrazione di Resorts World Sentosa entri anche gratis al BTS THE CITY ARIRANG Fan Village, nel Resorts World Convention Centre.
 
@@ -95,7 +95,12 @@ Dal 4 dicembre al 3 gennaio, ogni sera dalle 19.30, la facciata di [Revenge of t
 
 Per una visita a novembre il biglietto giornaliero costa 76 dollari di Singapore per gli adulti dai 13 anni in su e 69 per i bambini dai 4 ai 12. Riduzioni per gli anziani sul biglietto giornaliero non ce ne sono. Universal Express parte da 80 dollari di Singapore e Universal Express 3 da 60; entrambi si comprano solo insieme a un biglietto d'ingresso.
 
-Per la Season of Joy Resorts World Sentosa vende un 2-Park Pass valido per Universal Studios Singapore e per il Singapore Oceanarium. A novembre costa 115 dollari di Singapore per gli adulti dai 13 ai 59 anni e 108 per bambini e anziani dai 60 anni, a dicembre 120 e 108. Hai sette giorni per visitare una volta ciascun parco, ma una volta uscito non puoi rientrare lo stesso giorno.
+Per la Season of Joy Resorts World Sentosa vende un 2-Park Pass valido per Universal Studios Singapore e per il Singapore Oceanarium. Costa:
+
+- a novembre 115 dollari di Singapore per gli adulti dai 13 ai 59 anni, 108 per bambini e anziani dai 60 anni
+- a dicembre 120 dollari di Singapore per gli adulti, 108 per bambini e anziani
+
+Hai sette giorni per visitare una volta ciascun parco, ma una volta uscito non puoi rientrare lo stesso giorno.
 
 Il 2-Park Pass with Festive Perks costa 168 dollari di Singapore per gli adulti e 148 per i bambini. Comprende:
 
@@ -112,7 +117,7 @@ Resorts World Sentosa si trova sull'isola di Sentosa, all'indirizzo 8 Sentosa Ga
 
 ## Universal Studios Singapore
 
-Universal Studios Singapore è stato il primo parco Universal del Sud-est asiatico, e ancora oggi è l'unico. Dopo una fase di prova iniziata il 18 marzo 2010, è aperto regolarmente dal 28 maggio 2011. Sui suoi 25 ettari ci sono sette aree: Hollywood, New York, Sci-Fi City, Ancient Egypt, The Lost World, Far Far Away e Illumination's Minion Land. La più giovane, Illumination's Minion Land, ha aperto il 14 febbraio 2025, tra l'altro con la giostra [Buggie Boogie](ref:universal-studios-singapore/buggie-boogie). Da allora i Minions, che ora cantano nello spettacolo di Natale, hanno nel parco un'area tutta loro. Il parco fa parte di Resorts World Sentosa, un resort di 49 ettari di proprietà di Genting Singapore.
+Universal Studios Singapore è stato il primo parco Universal del Sud-est asiatico, e ancora oggi è l'unico. Dopo una fase di prova iniziata il 18 marzo 2010, è aperto regolarmente dal 28 maggio 2011. Sui suoi 25 ettari ci sono sette aree: Hollywood, New York, Sci-Fi City, Ancient Egypt, The Lost World, Far Far Away e Illumination's Minion Land. La più giovane, Illumination's Minion Land, ha aperto il 14 febbraio 2025, tra l'altro con la giostra [Buggie Boogie](ref:universal-studios-singapore/buggie-boogie). Il parco fa parte di Resorts World Sentosa, un resort di 49 ettari di proprietà di Genting Singapore.
 
 [Universal Studios Singapore](ref:universal-studios-singapore?full)
 

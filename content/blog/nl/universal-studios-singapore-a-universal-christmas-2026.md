@@ -2,7 +2,7 @@
 title: 'Nieuwe kerstshow in Universal Studios Singapore'
 translationKey: universal-studios-singapore-a-universal-christmas-2026
 date: '2026-11-12'
-time: '18:00'
+time: '18:38'
 author: patrick
 mode: published
 featured: false
@@ -47,11 +47,11 @@ Met kerst speelt [Universal Studios Singapore](ref:universal-studios-singapore) 
 
 Het kerstgebied in de zone New York heet The North Pole Jingle Jam. Het decor ziet eruit als een concertpodium, en bezoekers mogen er zelf op. De show die er speelt heet bijna hetzelfde: Universal Jingle Jam. Spreek je daar met iemand af, zeg er dan bij of je het gebied of de show bedoelt. De figuren staan er met een groep zangers op het podium, en het publiek zingt mee. Bij de show horen sneeuw en ontmoetingen met de figuren.
 
-Een jaar eerder stond op dezelfde plek Santa's Rockmas op het programma, met de Kerstman, Shrek, de pinguïns uit Madagascar en Sesamstraat. In 2024 was het Wicked. Sesamstraat mocht dus blijven.
+Een jaar eerder stond op dezelfde plek Santa's Rockmas op het programma, met de Kerstman, Shrek, de pinguïns uit Madagascar en Sesamstraat. In 2024 was het Wicked. Van die bezetting is alleen Sesamstraat gebleven. De Kerstman, Shrek en de pinguïns hebben hun plaats afgestaan aan Poppy en de Minions.
 
 ## Snoep op de Hollywood Boulevard
 
-Resorts World Sentosa maakt van de Hollywood Boulevard de Dazzling Dessert Studios, een filmset vol reusachtig snoepgoed. Daar staat een kerstboom van 10 meter die eruitziet als een stuk banket, en je kunt met de Kerstman en Mrs. Claus op de foto. Vorig jaar stond er in WEAVE, buiten het park, nog een boom van 10 meter. Deze winter staat daar een van 8 meter.
+Resorts World Sentosa maakt van de Hollywood Boulevard de Dazzling Dessert Studios, een filmset vol reusachtig snoepgoed. Daar staat een kerstboom van 10 meter die eruitziet als een stuk banket, en je kunt met de Kerstman en Mrs. Claus op de foto. Voor het park, in WEAVE, staat deze winter een boom van 8 meter. Vorig jaar stond daar een van 10 meter.
 
 Anders dan in 2025 lopen op straat ook Hello Kitty en Kuromi van Sanrio rond, en bij de Superstar Boutique kun je met hen op de foto.
 
@@ -67,7 +67,7 @@ Het vuurwerk begint om 20.00 uur en gaat af op muziek van BTS. Resorts World Sen
 
 ## BTS in het park
 
-Dit jaar ligt bij de Season of Joy de nadruk op K-pop, en op de avond van 21 december komen alleen BTS-fans met een eigen ticket het park in. Universal Studios Singapore sluit die dag al om 19.00 uur, en van 20.00 tot 1.00 uur 's nachts loopt BTS THE CITY ARIRANG Night Out. Daarvoor heb je een apart ticket nodig, dat 58 Singaporese dollar per persoon kost.
+Op 21 december sluit Universal Studios Singapore al om 19.00 uur, en van 20.00 tot 1.00 uur 's nachts loopt daar BTS THE CITY ARIRANG Night Out. De toegang kost 58 Singaporese dollar per persoon.
 
 Van 4 december tot en met 3 januari wordt elke avond vanaf 19.30 uur de projectie Lightscape op de gevel van [Revenge of the Mummy](ref:universal-studios-singapore/revenge-of-the-mummy) getoond, met BTS-beelden. Van 16 tot en met 22 december kom je met een ticket voor een attractie van Resorts World Sentosa bovendien gratis in het BTS THE CITY ARIRANG Fan Village in het Resorts World Convention Centre.
 
@@ -95,7 +95,12 @@ Van 4 december tot en met 3 januari wordt elke avond vanaf 19.30 uur de projecti
 
 Een dagticket voor een bezoek in november kost 76 Singaporese dollar voor volwassenen vanaf 13 jaar en 69 voor kinderen van 4 tot en met 12. Een seniorenprijs heeft het dagticket niet. Universal Express kost vanaf 80 Singaporese dollar en Universal Express 3 vanaf 60, allebei alleen samen met een parkticket.
 
-Voor de Season of Joy verkoopt Resorts World Sentosa een 2-Park Pass voor Universal Studios Singapore en het Singapore Oceanarium. In november kost die 115 Singaporese dollar voor volwassenen van 13 tot en met 59 en 108 voor kinderen en 60-plussers, in december 120 en 108. Je hebt zeven dagen om beide parken één keer te bezoeken, maar je kunt een park niet verlaten en op dezelfde dag weer naar binnen.
+Voor de Season of Joy verkoopt Resorts World Sentosa een 2-Park Pass voor Universal Studios Singapore en het Singapore Oceanarium. Die kost:
+
+- in november 115 Singaporese dollar voor volwassenen van 13 tot en met 59, 108 voor kinderen en 60-plussers
+- in december 120 Singaporese dollar voor volwassenen, 108 voor kinderen en 60-plussers
+
+Je hebt zeven dagen om beide parken één keer te bezoeken, maar je kunt een park niet verlaten en op dezelfde dag weer naar binnen.
 
 De 2-Park Pass with Festive Perks kost 168 Singaporese dollar voor volwassenen en 148 voor kinderen. Daarbij krijg je:
 
@@ -112,7 +117,7 @@ Resorts World Sentosa ligt op het eiland Sentosa, op 8 Sentosa Gateway. Met de M
 
 ## Universal Studios Singapore
 
-Universal Studios Singapore is het eerste en tot nu toe enige Universal-park in Zuidoost-Azië. Na een proefperiode vanaf 18 maart 2010 is het sinds 28 mei 2011 gewoon open. De 25 hectare zijn verdeeld over zeven zones: Hollywood, New York, Sci-Fi City, Ancient Egypt, The Lost World, Far Far Away en Illumination's Minion Land. De jongste, Illumination's Minion Land, ging op 14 februari 2025 open, onder meer met de draaimolen [Buggie Boogie](ref:universal-studios-singapore/buggie-boogie). Sindsdien hebben de Minions, die nu in de kerstshow meezingen, een eigen land in het park. Het park hoort bij Resorts World Sentosa, een resort van 49 hectare dat eigendom is van Genting Singapore.
+Universal Studios Singapore is het eerste en tot nu toe enige Universal-park in Zuidoost-Azië. Na een proefperiode vanaf 18 maart 2010 is het sinds 28 mei 2011 gewoon open. De 25 hectare zijn verdeeld over zeven zones: Hollywood, New York, Sci-Fi City, Ancient Egypt, The Lost World, Far Far Away en Illumination's Minion Land. De jongste, Illumination's Minion Land, ging op 14 februari 2025 open, onder meer met de draaimolen [Buggie Boogie](ref:universal-studios-singapore/buggie-boogie). Het park hoort bij Resorts World Sentosa, een resort van 49 hectare dat eigendom is van Genting Singapore.
 
 [Universal Studios Singapore](ref:universal-studios-singapore?full)
 
