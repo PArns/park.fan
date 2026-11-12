@@ -9,6 +9,7 @@ import { getMediaImageBySrc, getParkBackground, getRideImage } from '@/lib/media
 import { focusToObjectPosition, variantFor, versioned } from '@/lib/media/focus';
 import type { MediaImage } from '@/lib/media/types';
 import { getGlossaryMenu, type GlossaryMenu } from '@/lib/navigation/glossary-menu';
+import { orlandoPath } from '@/lib/orlando/paths';
 
 /**
  * Everything the header's "more" band draws, resolved on the server: three hubs side by side (the
@@ -45,6 +46,8 @@ export interface MoreMenu {
   bestTime: MoreMenuHub & { chapters: MoreMenuChapter[] };
   /** The forecasting model's page, drawn as a card under the best-time chapters. */
   fancast: MoreMenuHub;
+  /** The Orlando hub, drawn as the band's one wide tile. */
+  orlando: MoreMenuHub;
 }
 
 /**
@@ -57,6 +60,7 @@ const PHOTOS = {
   howto: () => getParkBackground('phantasialand'),
   bestTime: () => getParkBackground('efteling'),
   fancast: () => getMediaImageBySrc('/media/europa-park/voltron-nevera-powered-by-rimac.jpg'),
+  orlando: () => getMediaImageBySrc('/media/disney-animal-kingdom/kunst-des-wartens-cover.jpg'),
 } satisfies Record<string, () => MediaImage | null>;
 
 /** The pre-cut 16:9 crop where there is one — it was cut around the focal point already. */
@@ -100,6 +104,7 @@ function staticPart(locale: Locale): StaticPart {
         chapters: chaptersOf(bestTimePath, BEST_TIME_CHAPTERS[locale]),
       },
       fancast: { href: '/fancast', photo: photoOf(PHOTOS.fancast()) },
+      orlando: { href: orlandoPath(), photo: photoOf(PHOTOS.orlando()) },
     };
     STATIC_PART.set(locale, part);
   }

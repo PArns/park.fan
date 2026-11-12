@@ -3,11 +3,20 @@
 import { memo } from 'react';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
-import { BookOpen, CalendarRange, Compass, LineChart, type LucideIcon } from 'lucide-react';
+import {
+  ArrowRight,
+  BookOpen,
+  CalendarDays,
+  CalendarRange,
+  Compass,
+  LineChart,
+  type LucideIcon,
+} from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import { MoreMenuLinks } from '@/components/layout/more-menu-links';
 import { PhotoCredit, TILE_CREDIT_POSITION } from '@/components/media/photo-credit';
 import type { MoreMenu, MoreMenuChapter, MoreMenuPhoto } from '@/lib/navigation/more-menu';
+import { orlandoPath } from '@/lib/orlando/paths';
 
 /**
  * The "more" band: the reading material that has no place of its own in the bar. Named "more"
@@ -136,6 +145,7 @@ export const MoreMenuPanel = memo(function MoreMenuPanel({
   // as on the homepage's `BlogChapter`, `Compass` as in the bar and the phone sheet.
   return (
     <div className="flex flex-col gap-5">
+      <OrlandoTile photo={menu?.orlando.photo ?? null} />
       <div className="grid grid-cols-3 gap-x-8 gap-y-5">
         {/* The dictionary: its categories, each an anchor on the overview rather than a filtered
             view, because the overview's filter is client state with no URL of its own. The label
@@ -239,6 +249,45 @@ function FancastCard({ photo }: { photo: MoreMenuPhoto | null }) {
         <span className="text-muted-foreground mt-0.5 line-clamp-2 block text-xs leading-snug">
           {t('fancastHint')}
         </span>
+      </span>
+    </Link>
+  );
+}
+
+/**
+ * The Orlando hub, one wide tile over the three columns: a destination rather than a topic, so it
+ * does not take a column of its own. A strip of the Tree of Life with the name and one line on it,
+ * all of it the hub's link.
+ */
+function OrlandoTile({ photo }: { photo: MoreMenuPhoto | null }) {
+  const t = useTranslations('navigation');
+  return (
+    <Link
+      href={orlandoPath()}
+      prefetch={false}
+      data-menu-stagger
+      className="group focus-visible:ring-ring relative block h-16 overflow-hidden rounded-xl bg-neutral-800 focus-visible:ring-2 focus-visible:outline-none"
+    >
+      {photo && (
+        <Image
+          src={photo.src}
+          alt=""
+          width={960}
+          height={128}
+          style={photo.position ? { objectPosition: photo.position } : undefined}
+          className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+        />
+      )}
+      <span
+        aria-hidden="true"
+        className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/70 to-black/30"
+      />
+      <PhotoCredit src={photo?.src} className={TILE_CREDIT_POSITION} />
+      <span className="absolute inset-y-0 left-4 flex items-center gap-3 pr-24 text-white">
+        <CalendarDays className="size-4 shrink-0" aria-hidden="true" />
+        <span className="text-[15px] font-semibold">{t('orlando')}</span>
+        <span className="hidden truncate text-xs text-white/85 sm:inline">{t('orlandoHint')}</span>
+        <ArrowRight className="size-4 shrink-0" aria-hidden="true" />
       </span>
     </Link>
   );
