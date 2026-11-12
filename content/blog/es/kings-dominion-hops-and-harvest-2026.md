@@ -2,7 +2,7 @@
 title: 'Kings Dominion cierra la temporada con Hops & Harvest'
 translationKey: kings-dominion-hops-and-harvest-2026
 date: '2026-11-12'
-time: '17:30'
+time: '18:13'
 author: patrick
 mode: published
 featured: false
@@ -58,7 +58,7 @@ La mayor parte de la carta de otoño sale de la Grain and Grill International Ki
 
 La calabaza también llega a la pizza blanca del Pizza Parlor, como calabaza moscada con prosciutto, base de alfredo y rúcula, y al pretzel gigante del Biergarten, en forma de pumpkin spice. La Funnel Cake Kitchen se queda con las láminas de manzana, la canela y el caramelo. Con un Season Pass o una Membership de Kings Dominion, el segundo plato principal sale a mitad de precio una vez, en Grain and Grill o en Firehouse BBQ. El descuento normal del pase se aplica además.
 
-Las Adult Beverage Tastings se reparten por varios puntos alrededor de la fuente de la International Street. Solo pueden probar los mayores de 21 años, y cada persona tiene que enseñar un documento oficial de identidad o el carné de conducir en vigor. Se bebe únicamente en las zonas señaladas. El parque no ha publicado los precios de las catas ni de los platos, ni la lista de productores. En todo el recinto se paga sin efectivo, con tarjeta, Apple Pay o Google Pay. Si solo llevas billetes, los cambias por una tarjeta en una de las máquinas Cash-to-Card.
+Las Adult Beverage Tastings se reparten por varios puntos alrededor de la fuente de la International Street. Puede probar quien tenga 21 años o más y enseñe un documento oficial de identidad o el carné de conducir en vigor, y se bebe únicamente en las zonas señaladas. El parque no ha publicado los precios de las catas ni de los platos, ni la lista de productores. En todo el recinto se paga sin efectivo, con tarjeta, Apple Pay o Google Pay. Si solo llevas billetes, los cambias por una tarjeta en una de las máquinas Cash-to-Card.
 
 Músicos de la zona tocan en dos puntos, los siete días y siempre a las mismas horas:
 
@@ -87,9 +87,9 @@ A eso se suman una tasa de gestión de hasta 9,99 dólares y los impuestos. En t
 
 ## Mayores, veteranos y el Silver Pass
 
-Si tienes 65 años o más, entras gratis hasta el 29 de noviembre. Antes hay que registrarse por internet, y la primera visita tiene que ser antes del final de la temporada. En la entrada enseñas cada vez un documento con la fecha de nacimiento.
+Si tienes 65 años o más, entras gratis hasta el 29 de noviembre. Antes te registras por internet, y en la entrada enseñas cada vez un documento con la fecha de nacimiento.
 
-Los militares estadounidenses en activo, los exmilitares y los veteranos reciben por el Veterans Day una entrada de un día gratis si muestran en la puerta su identificación militar o un justificante de veterano. Lo seguro es el sábado 14 de noviembre: Kings Dominion lo menciona en la página del evento, en el calendario y en la de descuentos militares, y el domingo solo en las dos primeras.
+Los militares estadounidenses en activo, los exmilitares y los veteranos reciben por el Veterans Day una entrada de un día gratis si muestran en la puerta su identificación militar o un justificante de veterano. Lo seguro es el sábado 14 de noviembre. Kings Dominion menciona el domingo en la página del evento y en el calendario, pero no en la de descuentos militares, así que para la entrada gratis mejor ve el sábado.
 
 Hasta el 30 de noviembre, Kings Dominion vende el Silver Pass 2027 por 69 dólares, menos de lo que cuesta un solo día en taquilla. Vale hasta el Labor Day de 2027, también en Soak City, con el aparcamiento incluido. Cada pase nuevo o renovado trae una entrada Bring-A-Friend, que hay que usar como muy tarde el 31 de mayo de 2027.
 
@@ -97,13 +97,13 @@ Hasta el 30 de noviembre, Kings Dominion vende el Silver Pass 2027 por 69 dólar
 
 Con 13 montañas rusas, Kings Dominion dice tener más que ningún otro parque de Virginia. Durante la fiesta funcionan nueve: [Pantherian](ref:kings-dominion/pantherian), [Rapterra](ref:kings-dominion/rapterra), [Dominator](ref:kings-dominion/dominator), [Backlot Stunt Coaster](ref:kings-dominion/backlot-stunt-coaster), [Tumbili](ref:kings-dominion/tumbili), [Reptilian](ref:kings-dominion/reptilian), [Racer 75](ref:kings-dominion/racer-75-south), [Great Pumpkin Coaster](ref:kings-dominion/great-pumpkin-coaster) y [Woodstock Express](ref:kings-dominion/woodstock-express).
 
-Pantherian mide 93 metros y cae 91 con una inclinación de 85 grados. Rapterra es una wing coaster lanzada de Bolliger & Mabillard que llegó en 2025, cuando el parque cumplió 50 años. De Racer 75 solo funciona el lado sur, así que la carrera la gana siempre el mismo tren. Esta montaña rusa de madera de dos trenes es ACE Landmark desde 2003, y en 1977 se rodó en ella la película «Rollercoaster».
+Pantherian mide 93 metros y cae 91 con una inclinación de 85 grados. Rapterra es una wing coaster lanzada de Bolliger & Mabillard que llegó en 2025, cuando el parque cumplió 50 años. De Racer 75 solo funciona el lado sur, así que la carrera la gana siempre el mismo tren. En realidad Racer 75 tiene dos trenes, es ACE Landmark desde 2003 y en 1977 se rodó allí la película «Rollercoaster».
 
 ```ride-waits-widget rides=kings-dominion/pantherian;kings-dominion/rapterra;kings-dominion/dominator;kings-dominion/backlot-stunt-coaster;kings-dominion/tumbili;kings-dominion/reptilian;kings-dominion/racer-75-south|Racer 75 South;kings-dominion/great-pumpkin-coaster;kings-dominion/woodstock-express columns=peak,days
 
 ```
 
-Están cerradas [Flight of Fear](ref:kings-dominion/flight-of-fear) y [Grizzly](ref:kings-dominion/grizzly), toda la zona de Old Virginia y la parte de Candy Apple Grove con [WindSeeker](ref:kings-dominion/windseeker), [Twisted Timbers](ref:kings-dominion/twisted-timbers) y [Apple Zapple](ref:kings-dominion/apple-zapple). Quien venga por Twisted Timbers, que en 2018 pasó de ser la montaña rusa de madera Hurler a una híbrida de madera y acero, o por Grizzly, montaña rusa de madera de 1982 con 964 metros de recorrido, de los que unos 317 se cambiaron en 2023, tendrá que esperar a la próxima temporada. Flight of Fear abrió en 1996 como The Outer Limits: Flight of Fear y sus motores lineales la llevan a 87 km/h en cuatro segundos. Como va a oscuras de todos modos, que en noviembre anochezca pronto no le habría importado, pero está cerrada igual.
+Están cerradas [Flight of Fear](ref:kings-dominion/flight-of-fear) y [Grizzly](ref:kings-dominion/grizzly), toda la zona de Old Virginia y la parte de Candy Apple Grove con [WindSeeker](ref:kings-dominion/windseeker), [Twisted Timbers](ref:kings-dominion/twisted-timbers) y [Apple Zapple](ref:kings-dominion/apple-zapple). Twisted Timbers pasó en 2018 de ser la montaña rusa de madera Hurler a una híbrida de madera y acero. Grizzly es una montaña rusa de madera de 1982 con 964 metros de recorrido, y unos 317 de ellos tienen vía nueva desde 2023. Flight of Fear va completamente a oscuras, abrió en 1996 como The Outer Limits: Flight of Fear y sus motores lineales la llevan a 87 km/h en cuatro segundos.
 
 También cerradas:
 

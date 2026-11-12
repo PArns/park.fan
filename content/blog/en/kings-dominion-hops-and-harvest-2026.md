@@ -2,7 +2,7 @@
 title: 'Kings Dominion ends its season with Hops & Harvest'
 translationKey: kings-dominion-hops-and-harvest-2026
 date: '2026-11-12'
-time: '17:30'
+time: '18:13'
 author: patrick
 mode: published
 featured: false

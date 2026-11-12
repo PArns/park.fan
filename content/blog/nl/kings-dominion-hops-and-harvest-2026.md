@@ -2,7 +2,7 @@
 title: 'Kings Dominion sluit het seizoen af met Hops & Harvest'
 translationKey: kings-dominion-hops-and-harvest-2026
 date: '2026-11-12'
-time: '17:30'
+time: '18:13'
 author: patrick
 mode: published
 featured: false
@@ -58,7 +58,7 @@ De meeste herfstgerechten komen uit de Grain and Grill International Kitchen. Da
 
 Pompoen zit ook op de witte pizza van de Pizza Parlor, als flespompoen met prosciutto, een alfredobasis en rucola, en als pumpkin spice op de reuzenpretzel in de Biergarten. De Funnel Cake Kitchen houdt het bij appelschijfjes, kaneel en karamel. Wie een Season Pass of membership van Kings Dominion heeft, krijgt bij Grain and Grill of Firehouse BBQ één keer een tweede hoofdgerecht voor de halve prijs, bovenop de gewone korting voor passhouders.
 
-De Adult Beverage Tastings staan verspreid rond de fontein van de International Street. Proeven mag pas vanaf 21 jaar, en iedereen laat daarvoor een geldig officieel identiteitsbewijs of rijbewijs zien. Drinken mag alleen in de aangewezen zones. Wat de proeverijen en de gerechten kosten en welke producenten meedoen, heeft het park niet bekendgemaakt. In het hele park betaal je zonder contant geld, met een pinpas of creditcard, Apple Pay of Google Pay. Heb je alleen briefgeld bij je, dan wissel je dat bij een Cash-to-Card-automaat om voor een kaart.
+De Adult Beverage Tastings staan verspreid rond de fontein van de International Street. Proeven mag wie 21 of ouder is en een geldig officieel identiteitsbewijs of rijbewijs laat zien, en drinken doe je alleen in de aangewezen zones. Wat de proeverijen en de gerechten kosten en welke producenten meedoen, heeft het park niet bekendgemaakt. In het hele park betaal je zonder contant geld, met een pinpas of creditcard, Apple Pay of Google Pay. Heb je alleen briefgeld bij je, dan wissel je dat bij een Cash-to-Card-automaat om voor een kaart.
 
 Muzikanten uit de buurt spelen op twee plekken, op alle zeven dagen op dezelfde tijden:
 
@@ -87,9 +87,9 @@ Daar komen nog tot 9,99 dollar servicekosten en belasting bij. Aan de kassa beta
 
 ## Senioren, veteranen en de Silver Pass
 
-Ben je 65 of ouder, dan mag je tot en met 29 november gratis naar binnen. Je meldt je daarvoor vooraf online aan, en je eerste bezoek moet voor het einde van het seizoen vallen. Bij de ingang laat je elke keer een identiteitsbewijs met je geboortedatum zien.
+Ben je 65 of ouder, dan mag je tot en met 29 november gratis naar binnen. Je meldt je daarvoor vooraf online aan en laat bij de ingang elke keer een identiteitsbewijs met je geboortedatum zien.
 
-Voor Veterans Day krijgen actieve en voormalige Amerikaanse militairen en veteranen een gratis dagticket, als ze bij de ingang hun militaire pas of een veteranenbewijs tonen. Op zaterdag 14 november geldt het aanbod in elk geval: die dag noemt Kings Dominion op de evenementpagina, in de kalender en op de pagina met militaire kortingen, de zondag alleen op de eerste twee.
+Voor Veterans Day krijgen actieve en voormalige Amerikaanse militairen en veteranen een gratis dagticket, als ze bij de ingang hun militaire pas of een veteranenbewijs tonen. Op zaterdag 14 november geldt het aanbod in elk geval. De zondag noemt Kings Dominion op de evenementpagina en in de kalender, maar niet bij de militaire kortingen, dus kies je voor het gratis ticket beter de zaterdag.
 
 Tot en met 30 november verkoopt Kings Dominion de Silver Pass 2027 voor 69 dollar, minder dan één dag aan de kassa kost. De pas geldt tot Labor Day 2027, ook in Soak City, en parkeren is inbegrepen. Bij elke nieuwe of verlengde pas hoort een Bring-A-Friend-ticket, dat uiterlijk 31 mei 2027 gebruikt moet zijn.
 
@@ -97,13 +97,13 @@ Tot en met 30 november verkoopt Kings Dominion de Silver Pass 2027 voor 69 dolla
 
 Kings Dominion heeft naar eigen zeggen met 13 achtbanen de meeste van Virginia. Negen daarvan rijden tijdens het feest: [Pantherian](ref:kings-dominion/pantherian), [Rapterra](ref:kings-dominion/rapterra), [Dominator](ref:kings-dominion/dominator), [Backlot Stunt Coaster](ref:kings-dominion/backlot-stunt-coaster), [Tumbili](ref:kings-dominion/tumbili), [Reptilian](ref:kings-dominion/reptilian), [Racer 75](ref:kings-dominion/racer-75-south), [Great Pumpkin Coaster](ref:kings-dominion/great-pumpkin-coaster) en [Woodstock Express](ref:kings-dominion/woodstock-express).
 
-Pantherian is 93 meter hoog en duikt onder een hoek van 85 graden 91 meter naar beneden. Rapterra, een gelanceerde wing coaster van Bolliger & Mabillard, kwam er in 2025 bij, toen het park 50 jaar bestond. Van de Racer 75 rijdt alleen de zuidkant, dus wordt er deze weken niet geracet. De houten achtbaan met twee treinen is sinds 2003 een ACE Landmark, en in 1977 werd er de film “Rollercoaster” op gedraaid.
+Pantherian is 93 meter hoog en duikt onder een hoek van 85 graden 91 meter naar beneden. Rapterra, een gelanceerde wing coaster van Bolliger & Mabillard, kwam er in 2025 bij, toen het park 50 jaar bestond. Van de Racer 75 rijdt alleen de zuidkant, dus wordt er deze weken niet geracet. Eigenlijk heeft de Racer 75 twee treinen, sinds 2003 is hij een ACE Landmark, en in 1977 werd er de film “Rollercoaster” op gedraaid.
 
 ```ride-waits-widget rides=kings-dominion/pantherian;kings-dominion/rapterra;kings-dominion/dominator;kings-dominion/backlot-stunt-coaster;kings-dominion/tumbili;kings-dominion/reptilian;kings-dominion/racer-75-south|Racer 75 South;kings-dominion/great-pumpkin-coaster;kings-dominion/woodstock-express columns=peak,days
 
 ```
 
-Dicht zijn [Flight of Fear](ref:kings-dominion/flight-of-fear) en [Grizzly](ref:kings-dominion/grizzly), heel Old Virginia en het deel van Candy Apple Grove met [WindSeeker](ref:kings-dominion/windseeker), [Twisted Timbers](ref:kings-dominion/twisted-timbers) en [Apple Zapple](ref:kings-dominion/apple-zapple). Wie voor Twisted Timbers komt, de houten achtbaan Hurler die in 2018 werd omgebouwd tot hybride van hout en staal, of voor Grizzly, een houten achtbaan uit 1982 met 964 meter baan waarvan in 2023 zo'n 317 meter opnieuw is gelegd, moet wachten tot volgend seizoen. Flight of Fear opende in 1996 als The Outer Limits: Flight of Fear en gaat met lineaire motoren in vier seconden naar 87 km/u. De hele rit gaat door volledige duisternis.
+Dicht zijn [Flight of Fear](ref:kings-dominion/flight-of-fear) en [Grizzly](ref:kings-dominion/grizzly), heel Old Virginia en het deel van Candy Apple Grove met [WindSeeker](ref:kings-dominion/windseeker), [Twisted Timbers](ref:kings-dominion/twisted-timbers) en [Apple Zapple](ref:kings-dominion/apple-zapple). Twisted Timbers werd in 2018 omgebouwd van de houten achtbaan Hurler tot een hybride van hout en staal. Grizzly is een houten achtbaan uit 1982 met 964 meter baan, en op zo'n 317 meter daarvan ligt sinds 2023 nieuw spoor. Flight of Fear rijdt in volledige duisternis, opende in 1996 als The Outer Limits: Flight of Fear en gaat met lineaire motoren in vier seconden naar 87 km/u.
 
 Ook dicht:
 
