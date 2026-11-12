@@ -86,3 +86,38 @@ export function getOrlandoWhen(
     limit: limit === undefined ? undefined : String(limit),
   });
 }
+
+/*
+ * The open `/school-breaks` read, for the best-time pages. One block at the end, so the hub's
+ * reads above merge without touching it.
+ */
+
+/** School calendars move once a year, and the API asks the edge for a day. */
+const SCHOOL_BREAKS_REVALIDATE = 86400;
+
+/**
+ * The school-holiday regions the holiday data knows in `countries` (`DE,NL,GB`), each with its
+ * breaks in the range and the day its data ends. Open: the data key stays home.
+ */
+export async function getOrlandoSchoolBreaks(query: {
+  from: string;
+  to: string;
+  countries: readonly string[];
+}): Promise<TripSchoolBreaks> {
+  const params = new URLSearchParams({
+    from: query.from,
+    to: query.to,
+    countries: query.countries.join(','),
+  });
+  const { 'X-API-Key': _dataKey, ...headers } = getServerApiHeaders();
+  void _dataKey;
+  const url = `${getApiBaseUrl()}/v1/trip-regions/${ORLANDO_REGION}/school-breaks?${params}`;
+  const response = await fetch(url, {
+    next: { revalidate: SCHOOL_BREAKS_REVALIDATE, tags: [TRIP_REGION_CACHE_TAG] },
+    headers: { 'Content-Type': 'application/json', ...headers },
+  });
+  if (!response.ok) {
+    throw new Error(`Trip region /school-breaks ${response.status}: ${response.statusText}`);
+  }
+  return (await response.json()) as TripSchoolBreaks;
+}

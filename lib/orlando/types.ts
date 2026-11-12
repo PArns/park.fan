@@ -361,3 +361,70 @@ export interface OrlandoMonth {
   year: number;
   month: number;
 }
+
+/*
+ * `/when`'s month rows and the open `/school-breaks` route, for the best-time pages
+ * (`app/[locale]/orlando/best-time-to-visit`). Kept as one block at the end so the hub's own
+ * types above and this block merge without touching each other.
+ */
+
+/**
+ * The climate normal of a month at the region's reference park (Magic Kingdom): the long-run
+ * mean of the calendar month, never a forecast. Shown as "usually", with its period.
+ */
+export interface TripMonthClimate {
+  /** Mean daily high, °C. */
+  tempMax: number;
+  /** Mean daily low, °C. */
+  tempMin: number;
+  /** Rain over the month, mm. */
+  precipitationMm: number;
+  /** Days with rain in a usual month, where the API counts them. */
+  rainDays?: number;
+  basis: 'climate_normal';
+  /** The years averaged, `2015-2024`. */
+  period: string;
+}
+
+/** One month of `/when`'s range: the same day pricing as `weeks`, plus what the month holds. */
+export interface TripWhenMonth {
+  /** `YYYY-MM`, region-local. */
+  month: string;
+  /** The chosen parks' mean best-park cost over the month's days, as in `weeks`; minutes. */
+  headlinerWait?: number;
+  basis: 'forecast' | 'mixed' | 'last_year' | 'none';
+  climate?: TripMonthClimate;
+  /** The region's school-break days in the month (Orange County for Orlando), by name. */
+  usSchoolBreakDays: Array<{ date: string; name: string }>;
+  /** Ids into {@link TripWhen.seasons}: the chosen parks' seasons that run in the month. */
+  seasons: string[];
+  /** Park days of the chosen parks that close early for day guests for a ticketed event. */
+  partyNights: number;
+  /** Mean day-guest hours over the open days of the chosen parks, one decimal; absent unpublished. */
+  dayGuestHours?: number;
+  /** June to November: a fact about the season, not a forecast. */
+  hurricaneSeason: boolean;
+}
+
+/** `/when` with its month rows; `TripWhen.seasons` holds every season a window or a month names. */
+export interface TripWhenWithMonths extends TripWhen {
+  months: TripWhenMonth[];
+}
+
+/** One school-holiday region the holiday data knows, with its breaks in the asked range. */
+export interface TripSchoolBreakRegion {
+  /** The code `within` accepts, exactly as the holiday table stores it (`DE-NW`, `GB-ENG`). */
+  code: string;
+  name: string;
+  /** ISO 3166 alpha-2. */
+  country: string;
+  /** The last day the stored school calendar covers: a later break is unknown, not absent. */
+  through: string;
+  /** Each break with the weekends around it. */
+  periods: Array<{ from: string; to: string; name: string }>;
+}
+
+/** `GET /v1/trip-regions/orlando/school-breaks?from=&to=&countries=`: open, a day at the edge. */
+export interface TripSchoolBreaks {
+  regions: TripSchoolBreakRegion[];
+}
