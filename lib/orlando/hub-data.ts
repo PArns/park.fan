@@ -444,6 +444,28 @@ export function resortMonthSummaries(
             : null;
         })
         .filter((entry): entry is NonNullable<typeof entry> => entry !== null);
+      // A month past the forecast has no picks (`best` stays off last year's days), so it names
+      // each headliner park's quietest day of last year instead, as a record and labelled so.
+      const recorded =
+        quiet.length > 0 || !bestDays
+          ? quiet
+          : group.parks
+              .filter((p) => p.headliner)
+              .flatMap((park) =>
+                (bestDays.parks.find((b) => b.slug === park.slug)?.quiet ?? [])
+                  .slice(0, 1)
+                  .map((q) => ({
+                    date: q.date,
+                    park,
+                    wait: q.headlinerWait ?? null,
+                    basis: q.basis,
+                  }))
+              )
+              .sort(
+                (a, b) =>
+                  (a.wait ?? Infinity) - (b.wait ?? Infinity) || a.date.localeCompare(b.date)
+              )
+              .slice(0, 3);
       const means = calendar.days
         .map((day) => {
           const ranked = group.parks.map((p) => day.parks[p.slug]).filter(isRankable);
@@ -461,7 +483,7 @@ export function resortMonthSummaries(
         .sort((a, b) => b.wait - a.wait || a.date.localeCompare(b.date))
         .slice(0, 2)
         .sort((a, b) => a.date.localeCompare(b.date));
-      return { group, quiet, busy };
+      return { group, quiet: recorded, busy };
     })
     .filter((summary) => summary.quiet.length > 0 || summary.busy.length > 0);
 }

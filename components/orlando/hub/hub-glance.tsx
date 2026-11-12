@@ -137,25 +137,39 @@ export async function MonthGlance({
           : t('monthTitle', { month: monthLabel })}
       </p>
       <ul className="mt-2 space-y-1.5">
-        {rows.map(({ group, quiet }) => (
-          <li key={group.key} className="text-base">
-            <span className="text-muted-foreground">{shortGroupName(group.name)}: </span>
-            {quiet.map((q, i) => (
-              <span key={q.date}>
-                {i > 0 && ' · '}
-                <time dateTime={q.date} className="font-semibold">
-                  {formatHubDate(q.date, locale)}
-                </time>
-              </span>
-            ))}{' '}
-            <span className="text-muted-foreground text-sm">
-              {t('quietPark', {
-                park: shortParkName(quiet[0].park.name),
-                minutes: quiet[0].wait ?? 0,
-              })}
-            </span>
-          </li>
-        ))}
+        {rows.map(({ group, quiet }) => {
+          // One park for every date: say it once; several parks (last year's records): each date
+          // names its own.
+          const onePark = quiet.every((q) => q.park.slug === quiet[0].park.slug);
+          return (
+            <li key={group.key} className="text-base">
+              <span className="text-muted-foreground">{shortGroupName(group.name)}: </span>
+              {quiet.map((q, i) => (
+                <span key={q.date}>
+                  {i > 0 && ' · '}
+                  <time dateTime={q.date} className="font-semibold">
+                    {formatHubDate(q.date, locale)}
+                  </time>
+                  {!onePark && (
+                    <span className="text-muted-foreground text-sm">
+                      {' '}
+                      {t('quietPark', { park: shortParkName(q.park.name), minutes: q.wait ?? 0 })}
+                    </span>
+                  )}
+                </span>
+              ))}
+              {onePark && (
+                <span className="text-muted-foreground text-sm">
+                  {' '}
+                  {t('quietPark', {
+                    park: shortParkName(quiet[0].park.name),
+                    minutes: quiet[0].wait ?? 0,
+                  })}
+                </span>
+              )}
+            </li>
+          );
+        })}
       </ul>
     </div>
   );
