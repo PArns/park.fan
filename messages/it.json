@@ -2563,6 +2563,7 @@
       "headlinersShort": "Attrazioni di punta",
       "run": "Ottimizza la giornata",
       "running": "Riordino …",
+      "failed": "Non è stato possibile ottimizzare il piano. Il tuo piano non è cambiato.",
       "hint": "Mette in fila le attrazioni secondo le curve orarie, il tragitto fra una e l’altra e l’ora in cui aprono. Pause e attrazioni già fatte restano dove sono.",
       "saved": "{minutes} min di coda in meno",
       "already": "L’ordine va già bene",

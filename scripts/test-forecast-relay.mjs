@@ -55,13 +55,14 @@ const testCases = [
     expected: true,
   },
   {
-    name: 'calendar, best days, the day plan and the day curve are forecast paths',
+    name: 'calendar, best days, the day plan, its optimizer and the day curve are forecast paths',
     actual: () =>
       [
         ['calendar'],
         ['calendar', 'hourly'],
         ['best-days'],
         ['plan', 'day'],
+        ['plan', 'optimize'],
         ['stats', 'day'],
       ].every((rest) => isForecastRelayPath([...park, ...rest])),
     expected: true,

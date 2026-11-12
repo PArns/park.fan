@@ -11,8 +11,8 @@ pnpm test:planner-assignment   # which park on which day, and the `reserved` fie
 pnpm test:planner-estimate     # what a block is expected to cost, and from which regime
 pnpm test:planner-grid         # minutes → pixels, the axis, both scales
 pnpm test:planner-leg          # the transfer verdict and the chip's placement
-pnpm test:planner-optimize     # the engine, against brute force
-pnpm test:planner-fit          # the fit assistant's model
+pnpm test:planner-optimize     # the buttons' gates and the request to the API's optimizer
+pnpm test:planner-fit          # the fit assistant's order, toggles and the „In den Plan" question
 pnpm test:planner-shows        # show window, projection clip, listing exemption
 pnpm test:planner-park-time    # the zone rules
 pnpm test:planner-weather-rail # the band down the edge of the day

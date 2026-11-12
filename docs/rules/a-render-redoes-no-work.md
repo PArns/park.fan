@@ -27,10 +27,10 @@ more than once in the 2026-09-28 audit:
    subscriber and re-arm the trip sync. A parse of a persisted value is cached by its raw string
    (`lib/nearby/nearby-cache.ts`), because `placeholderData` calls the reader on every render.
 4. **A search runs where its answer is read, once, on the inputs it reads.** The planner wizard ran
-   `evaluateFit` (up to five beam searches) three times per change on steps that never draw it. Gate
-   the computation on the step, pass in a result the caller already holds (the `base` argument of
-   `fitLevers` and `fitLeverView`), and key a search on what it reads (`searchKeyOf`: slug, start,
-   duration, done), not on an object that changes for other reasons.
+   the fit search (up to five beam searches) three times per change on steps that never draw it.
+   Gate the request on the step, pass in an answer the caller already holds (the `initial` answer
+   of `useFitAnswer`), and key a request on what it reads (`optimizeKeyOf`: slug, start, duration,
+   done), not on an object that changes for other reasons.
 
 **And the opposite:** a `useMemo` whose dependency list leaves out a prop that changes is a stale
 value, not a saving. `DailyWaitTimeChartClient` memoised on mount behind an `eslint-disable` while

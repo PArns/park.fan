@@ -50,7 +50,7 @@ _Open when you work on wait times, seasons, closed rides, a park with no source,
 _Open when you work on the trip planner, the header menu, the admin, the weather chart, the guide page, the glossary, blog and news, most read, or location._
 
 - [The planner's day ends when the park closes, and a headliner is not a residual](the-planners-day-ends-when-the-park-closes-and-a-headliner-is.md) — `closeMin`, `closeSlackMin`, `fits = start < closeMin`, `dropWeight`
-- [A day that does not fit opens an assistant, not a footnote](a-day-that-does-not-fit-opens-an-assistant-not-a-footnote.md) — `needsFitHelp`, `PlannerFitAssistant`, `fitLevers`; `pnpm test:planner-fit`, `pnpm check:planner`
+- [A day that does not fit opens an assistant, not a footnote](a-day-that-does-not-fit-opens-an-assistant-not-a-footnote.md) — `needs-fit` from the API, `PlannerFitAssistant`, its levers; `pnpm test:planner-fit`, `pnpm check:planner`
 - [Weather day chart is built around the park's hours](weather-day-chart-is-built-around-the-parks-hours.md) — geometry in `lib/utils/weather-chart-axis.ts`; the chart owes the card 143 px
 - [The admin holds no credential](the-admin-holds-no-credential.md) — httpOnly cookie, `app/api/admin/[...path]`, Turnstile action + hostname; `pnpm check:admin-login-form`
 - [An admin list without an action is unfinished](an-admin-list-without-an-action-is-unfinished.md) — every problem card answers with a button; `useAdminQuery` invalidated so the card goes

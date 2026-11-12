@@ -6563,7 +6563,7 @@ step: {
       JSON.stringify(after)
     );
     // The sentence covers the rides that were re-planned and nothing else, so
-    // it has to say something. Two ways it did not: `scoreCurrent` counting the
+    // it has to say something. Two ways it did not: the before-score counting the
     // morning made the guard around the saving fail and the status line render
     // empty, and an elapsed test of `<=` made the ride just filed AT 14:00
     // elapsed on the spot, which took `movable` under two and unmounted the
@@ -6982,8 +6982,8 @@ step: {
 }
 
 // ── The day sorts itself ────────────────────────────────────────────────────
-// Two buttons over one engine (`lib/planner/optimize.ts`), whose maths is pinned
-// by `pnpm test:planner-optimize` against a brute force over every permutation.
+// Two buttons over one engine (the API's `POST …/plan/optimize`), whose maths is
+// pinned there against a brute force over every permutation.
 // What THIS has to prove is the half a unit test cannot see: that pressing them
 // writes the plan, that the sentence underneath says what happened, that the
 // undo puts it back byte for byte, and that a lunch break survives all of it.
@@ -7539,7 +7539,7 @@ step: {
        * its presence.
        *
        * Which lever comes first is a property of the day, not of the fixture:
-       * `fitLevers` puts a solving lever at the top, and on a busy forecast
+       * the levers put a solving lever at the top, and on a busy forecast
        * that is „ohne Lange Pause" while on a quieter one half an hour is
        * already enough — so the block is gone on some days and 30 minutes long
        * on others. Asserting it is absent was asserting tomorrow's crowd level.

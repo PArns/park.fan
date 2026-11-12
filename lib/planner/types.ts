@@ -212,7 +212,7 @@ export function countAll(state: PlannerState): number {
 
 /**
  * The latest minute a planned stop may carry. A plan is not bounded by the park's hours:
- * `optimizeDay` files an entry it cannot fit past the gate, in sequence, and a clamp at the drag's
+ * the optimizer files an entry it cannot fit past the gate, in sequence, and a clamp at the drag's
  * 25:00 would stack those again. 48:00, because past the end of the next day a minute is not a
  * reading of the park's clock on any axis this app draws.
  */

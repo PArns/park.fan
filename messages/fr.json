@@ -2563,6 +2563,7 @@
       "headlinersShort": "Attractions phares",
       "run": "Optimiser la journée",
       "running": "Tri en cours …",
+      "failed": "L’optimisation n’a pas pu se faire. Votre plan n’a pas changé.",
       "hint": "Classe les attractions selon leurs courbes horaires, les trajets entre elles et leurs horaires d’ouverture. Les pauses et les attractions déjà faites ne bougent pas.",
       "saved": "{minutes} min d’attente en moins",
       "already": "L’ordre est déjà le bon",

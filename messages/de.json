@@ -2563,6 +2563,7 @@
       "headlinersShort": "Headliner planen",
       "run": "Tag optimieren",
       "running": "Sortiert …",
+      "failed": "Die Optimierung konnte nicht laufen. Dein Plan ist unverändert.",
       "hint": "Sortiert die Bahnen nach ihren Stundenkurven, den Laufwegen und den Öffnungszeiten. Mittagspausen und abgehakte Bahnen bleiben, wo sie sind.",
       "saved": "{minutes} Min. weniger Warten",
       "already": "Passt schon so",
