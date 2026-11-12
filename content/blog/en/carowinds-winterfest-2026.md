@@ -41,13 +41,13 @@ seo:
     - Six Flags free admission 65 and over
 ---
 
-[Carowinds](ref:carowinds) in Charlotte opens WinterFest on Friday, 27 November, with three new shows, and on New Year's Eve the park stays open until 1 a.m. The event runs on 22 days until 3 January 2027. Shows, lights and most of the rides are included in a regular park ticket.
+[Carowinds](ref:carowinds) in Charlotte opens WinterFest on Friday, 27 November, with three new shows. On New Year's Eve the park stays open until 1 a.m. The event runs on 22 days until 3 January 2027. Shows, lights and most of the rides are included in a regular park ticket.
 
-## The three new shows
+## What's on at WinterFest
 
-'Twas a Merry Mishap: Radio Show plays in Harmony Hall, and Trolley Tales: A Christmas Comedy on Stateline Plaza. So far Carowinds hasn't published anything about either show beyond its title and venue.
+'Twas a Merry Mishap: Radio Show plays in Harmony Hall, and Trolley Tales: A Christmas Comedy on Stateline Plaza.
 
-Carolers of the Carolinas has singers leading Christmas carols while the audience joins in. Carowinds doesn't say where in the park they'll be. The name fits, though: the park sits right on the state line between North and South Carolina, with part of the grounds in York County, South Carolina, so the carolers can cover both Carolinas without ever leaving the park.
+Carolers of the Carolinas has singers leading Christmas carols while the audience joins in. Carowinds hasn't published where in the park they'll sing. The name fits, though: the park sits right on the state line between North and South Carolina, and part of the grounds belongs to York County, South Carolina. The carolers can cover both Carolinas without ever leaving the park.
 
 Tinker's Toy Factory is back in the Carowinds Theater, a Christmas musical with Santa, Tinker and the elves. Show times for all of them are only in the Carowinds app.
 
@@ -72,25 +72,25 @@ The park is closed on the days in between, and the Carolina Harbor water park do
 
 ```
 
-## New Year's Eve until 1 a.m.
+## New Year's Eve countdowns and fireworks
 
-On 31 December the park opens at 3 p.m. and closes at 1 a.m. At midnight Carowinds counts in the new year with fireworks, and families get several earlier countdowns in the evening. Midnight in Charlotte is 6 a.m. on New Year's Day in Germany, so anyone watching from there is setting an alarm rather than staying up late. Carowinds hasn't said yet whether the evening is included in the regular park ticket or needs a ticket of its own, and it hasn't published the times of the early countdowns either.
+At midnight Carowinds counts in the new year with fireworks, and families get several earlier countdowns in the evening. Midnight in Charlotte is 6 a.m. on New Year's Day in Germany, so anyone watching from there is setting an alarm rather than staying up late. Carowinds hasn't announced yet whether the evening is included in the regular park ticket or needs a ticket of its own. It hasn't published the times of the early countdowns either.
 
-This winter Six Flags is also announcing New Year's Eve parties at Kings Island, Knott's Berry Farm, Six Flags Fiesta Texas and [Six Flags Magic Mountain](/news/six-flags-magic-mountain-holiday-in-the-park-2026).
+Six Flags has also announced New Year's Eve parties this winter at Kings Island, Knott's Berry Farm, Six Flags Fiesta Texas and [Six Flags Magic Mountain](/news/six-flags-magic-mountain-holiday-in-the-park-2026).
 
 ## What the ticket covers and what costs extra
 
-Some activities are included in admission too. Food, drinks, souvenirs and some of the holiday extras cost extra, cookie decorating among them. Photos with Santa are taken at St. Nick's Pics. Buy a Santa photo there at the regular price and the digital pictures go into your FunPix account. FunPix discounts don't apply to the Santa photo. FunPix on its own costs $19.99 for one day, plus a fee. Carowinds hasn't published prices for the Santa photo or the cookie decorating.
+Besides the shows and most of the rides, some activities are included in admission as well. Food, drinks, souvenirs and some of the holiday extras cost extra, cookie decorating among them. Photos with Santa are taken at St. Nick's Pics. Buy a Santa photo there at the regular price and the digital pictures go into your FunPix account. FunPix discounts don't apply to the Santa photo. FunPix on its own costs $19.99 for one day, plus a fee. Carowinds hasn't published prices for the Santa photo or the cookie decorating.
 
 ## Tickets and the Silver Pass
 
-A park ticket for a set date starts at $50 online, and the Good Any Day Ticket for any day costs $69. Add a processing fee of up to $9.99 and tax. You don't need a reservation, and children aged two and under don't need a ticket. Tickets aren't refunded, even if the park closes because of the weather, and Carowinds doesn't hand out rain checks. With a senior ticket, parking costs extra, at a price Carowinds hasn't published. With a season pass it's free.
+A park ticket for a set date starts at $50 online, and the Good Any Day Ticket for any day costs $69. Add a processing fee of up to $9.99 and tax. You don't need a reservation, and children aged two and under don't need a ticket. Tickets aren't refunded, even if the park closes because of the weather, and Carowinds doesn't hand out rain checks. With a season pass, parking is free.
 
-Until 30 November Carowinds sells the 2027 Silver Pass for $69, the price of a Good Any Day Ticket. It covers the park and Carolina Harbor until Labor Day 2027, parking included. Buy it by 30 November and you get a Bring-A-Friend ticket with it, to be used by 3 January 2027. Bundled with a dining plan it costs $159 instead of $287. It already works for the rest of 2026, WinterFest included, so a visit on the weekend before Christmas comes with summer 2027 thrown in. The Gold Pass costs $105 and covers all the Six Flags parks on the East Coast in 2026 and 2027.
+Until 30 November Carowinds sells the 2027 Silver Pass for $69, the price of a Good Any Day Ticket. It covers the park and Carolina Harbor until Labor Day 2027, parking included. It comes with a Bring-A-Friend ticket, to be used by 3 January 2027. Bundled with a dining plan it costs $159 instead of $287. It already works for the rest of 2026, WinterFest included, so a visit on the weekend before Christmas comes with summer 2027 thrown in. The Gold Pass costs $105 and covers all the Six Flags parks on the East Coast in 2026 and 2027.
 
 ## Free entry from 65
 
-Anyone born on or before 31 December 1961 gets into Carowinds for free until 3 January 2027. You can only register online, not at the park, and the free entry is activated on your first visit. At the gate you show ID with your date of birth every time. The offer only applies at the park you registered for, not at the water parks. Parking, discounts, Bring-A-Friend tickets and season pass perks aren't included, and anyone coming with you needs their own ticket. This is the first winter Six Flags has offered free entry.
+Anyone born on or before 31 December 1961 gets into Carowinds for free until 3 January 2027. You can only register online, not at the park, and the free entry is activated on your first visit. At the gate you show ID with your date of birth every time. The offer only applies at the park you registered for, not at the water parks. Parking costs extra, at a price Carowinds hasn't published, and discounts, Bring-A-Friend tickets and season pass perks aren't included. Anyone coming with you needs their own ticket. This is the first winter Six Flags has offered free entry.
 
 ## Which rides are running
 
