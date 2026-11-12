@@ -53,7 +53,7 @@ export function parkCalendarHref(park: TripRegionPark, locale: string): string {
 }
 
 /**
- * Chapter 03's body: per park its quiet days as three chips, from `/best-days`, which ranks them
+ * The best-days chapter's body: per park its quiet days as three chips, from `/best-days`, which ranks them
  * on the unrounded figure and weighs a short day by its hours, so the chips are a set and a short
  * day never stands without its close time. "More" opens why each day is there and the busiest days.
  * Last year's days say so and are never offered as picks. Each card ends with the park's own crowd

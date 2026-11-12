@@ -9,7 +9,7 @@ import { formatHubDate } from '@/lib/orlando/hub-data';
 const PARTS = ['sources', 'minutes', 'horizon', 'error', 'travel'] as const;
 
 /**
- * Chapter 04's body: how the forecast works, as a short summary with each part under its own
+ * The method chapter's body: how the forecast works, as a short summary with each part under its own
  * `<details>`, so the text is in the served HTML and a reader opens only what they ask about. Ends
  * with Fancast and the guide.
  */

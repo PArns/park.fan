@@ -12,7 +12,7 @@ import type { TripWhen } from '@/lib/orlando/types';
 const WINDOWS_SHOWN = 3;
 
 /**
- * Chapter 02's body, the teaser of Orlando's best-time pages: the three quietest trip windows for
+ * The best-time chapter's body, the teaser of Orlando's best-time pages: the three quietest trip windows for
  * the headliner parks as one sentence and three cards, each with "Plan these dates", which opens
  * the planner on that window (`?from=&to=#planner`, the query Parky builds). A window past the
  * forecast is last year's measured crowds and says so. The year strip, the weeks and their

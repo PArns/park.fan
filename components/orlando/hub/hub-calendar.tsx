@@ -92,7 +92,7 @@ export interface HubCalendarProps {
 }
 
 /**
- * Chapter 01's body: which park on which day, at the depth a visitor asks for. A phone gets a list
+ * The calendar chapter's body: which park on which day, at the depth a visitor asks for. A phone gets a list
  * of days with each resort's shortest line and "+n more"; a desktop gets the matrix, parks by
  * resort down the side and the days across, with only the minutes in each square. Both are
  * server-rendered for the first seven days; the rest of the window loads through the relay once a
