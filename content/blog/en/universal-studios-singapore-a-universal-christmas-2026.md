@@ -41,19 +41,19 @@ seo:
     - Jurassic Park Rapids Adventure closed
 ---
 
-[Universal Studios Singapore](ref:universal-studios-singapore) has a new Christmas show this year, Universal Jingle Jam. It's part of A Universal Christmas, the park's program for the Season of Joy. Resorts World Sentosa runs the Season of Joy from November 27, 2026, to January 3, 2027. Poppy from DreamWorks' Trolls films, characters from Sesame Street and the Minions share the stage. A regular park ticket covers the Christmas program. Resorts World Sentosa hasn't announced separate start and end dates for the park.
+[Universal Studios Singapore](ref:universal-studios-singapore) has a new Christmas show this year, Universal Jingle Jam. It's part of A Universal Christmas, the park's program for the Season of Joy. Resorts World Sentosa runs the Season of Joy from November 27, 2026, to January 3, 2027. Poppy from DreamWorks' Trolls films, characters from Sesame Street and the Minions share the stage. A regular park ticket covers the Christmas program.
 
 ## The new show in New York
 
 The Christmas area in the New York zone is called The North Pole Jingle Jam. It's built to look like a concert stage, and guests are allowed up on it. The show inside goes by almost the same name, Universal Jingle Jam. If you arrange to meet someone there, say whether you mean the area or the show. The characters perform with a group of singers, and the audience sings along. Snowfall and character meet-and-greets are part of the show.
 
-In 2025 the New York zone had Santa's Rockmas, with Santa, Shrek, the penguins from Madagascar and Sesame Street. In 2024 it was Wicked. Sesame Street, in other words, has survived the change of cast.
+A year earlier the same spot had Santa's Rockmas, with Santa, Shrek, the penguins from Madagascar and Sesame Street. In 2024 it was Wicked. Sesame Street, in other words, has survived the change of cast.
 
 ## Sweets on Hollywood Boulevard
 
-Resorts World Sentosa turns Hollywood Boulevard into Dazzling Dessert Studios, a film set full of oversized sweets. There's a 10-meter (33-foot) Christmas tree done up as confectionery, and you can have your photo taken with Santa and Mrs. Claus. Last year a tree that tall stood in WEAVE, outside the park. This winter WEAVE has to make do with 8 meters.
+Resorts World Sentosa turns Hollywood Boulevard into Dazzling Dessert Studios, a film set full of oversized sweets. There's a 10-meter (33-foot) Christmas tree done up as confectionery, and you can have your photo taken with Santa and Mrs. Claus. Last year a 10-meter tree stood in WEAVE, outside the park; this winter the one there is 8 meters (26 feet) tall.
 
-Hello Kitty and Kuromi from Sanrio are also out on the street, with photo spots at the Superstar Boutique. Neither was part of last winter's event.
+Unlike in 2025, Hello Kitty and Kuromi from Sanrio are out on the street too, with photo spots at the Superstar Boutique.
 
 ## Fireworks on 15 nights
 
@@ -63,11 +63,11 @@ Hello Kitty and Kuromi from Sanrio are also out on the street, with photo spots 
 - Tuesday, December 22, through Friday, December 25
 - Friday, January 1, and Saturday, January 2
 
-The fireworks start at 8 pm and are set to music by BTS; Resorts World Sentosa calls them BTS THE CITY ARIRANG Fireworks. It hasn't announced where in the park they go up. In 2025 they were launched over Lake Hollywood. On Monday, December 21, there are no fireworks during regular park hours. A reserved viewing spot comes only with the 2-Park Pass with Festive Perks; with a regular ticket you find your own.
+The fireworks start at 8 pm and are set to music by BTS; Resorts World Sentosa calls them BTS THE CITY ARIRANG Fireworks. It hasn't announced where in the park they go up. In 2025 they were launched over Lake Hollywood. On Monday, December 21, only guests with a ticket for the BTS night get to see them. A reserved viewing spot comes only with the 2-Park Pass with Festive Perks; with a regular ticket you find your own.
 
 ## BTS in the park
 
-This year's Season of Joy theme is Christmas meets K-wave, and on December 21 the park belongs to BTS in the evening. Universal Studios Singapore closes at 7 pm that day, and BTS THE CITY ARIRANG Night Out runs from 8 pm to 1 am. It needs its own ticket, S$58 per person. That night there are fireworks only at the Night Out.
+This year's Season of Joy leans on K-pop, and on the evening of December 21 the park is open only to BTS fans with a separate ticket. Universal Studios Singapore closes at 7 pm that day, and BTS THE CITY ARIRANG Night Out runs from 8 pm to 1 am. It needs its own ticket, S$58 per person.
 
 From December 4 to January 3, Lightscape, a projection with BTS motifs, runs every evening from 7:30 pm on the facade of [Revenge of the Mummy](ref:universal-studios-singapore/revenge-of-the-mummy). From December 16 to 22, a ticket for any Resorts World Sentosa attraction also gets you into the BTS THE CITY ARIRANG Fan Village at the Resorts World Convention Centre for free.
 
@@ -112,7 +112,7 @@ Resorts World Sentosa is at 8 Sentosa Gateway on Sentosa Island. Take the MRT to
 
 ## Universal Studios Singapore
 
-Universal Studios Singapore was the first Universal park in Southeast Asia and is still the only one. After a trial period that began on March 18, 2010, it has been in regular operation since May 28, 2011. Its 25 hectares (62 acres) hold seven zones: Hollywood, New York, Sci-Fi City, Ancient Egypt, The Lost World, Far Far Away and Illumination's Minion Land. The newest of them opened on February 14, 2025, with rides including the carousel [Buggie Boogie](ref:universal-studios-singapore/buggie-boogie), and is now heading into its second Christmas. The park is part of Resorts World Sentosa, a 49-hectare (121-acre) resort owned by Genting Singapore.
+Universal Studios Singapore was the first Universal park in Southeast Asia and is still the only one. After a trial period that began on March 18, 2010, it has been in regular operation since May 28, 2011. Its 25 hectares (62 acres) hold seven zones: Hollywood, New York, Sci-Fi City, Ancient Egypt, The Lost World, Far Far Away and Illumination's Minion Land. The newest, Illumination's Minion Land, opened on February 14, 2025, with rides including the carousel [Buggie Boogie](ref:universal-studios-singapore/buggie-boogie), so the Minions singing in this year's Christmas show have had a land of their own in the park since then. The park is part of Resorts World Sentosa, a 49-hectare (121-acre) resort owned by Genting Singapore.
 
 [Universal Studios Singapore](ref:universal-studios-singapore?full)
 
