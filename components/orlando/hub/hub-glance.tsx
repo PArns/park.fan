@@ -145,7 +145,7 @@ export async function MonthGlance({
             <li key={group.key} className="text-base">
               <span className="text-muted-foreground">{shortGroupName(group.name)}: </span>
               {quiet.map((q, i) => (
-                <span key={q.date}>
+                <span key={`${q.date}-${q.park.slug}`}>
                   {i > 0 && ' · '}
                   <time dateTime={q.date} className="font-semibold">
                     {formatHubDate(q.date, locale)}
