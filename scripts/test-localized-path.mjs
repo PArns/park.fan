@@ -52,6 +52,11 @@ test('query and hash survive', () => {
   );
   assert.equal(localizedPath('/best-time-to-visit#germany', 'de'), '/de/beste-reisezeit#germany');
   assert.equal(localizedPath('/?q=taron', 'en'), '/en?q=taron');
+  assert.equal(
+    localizedPath('/orlando?from=2027-03-03&parks=epcot:1#planner', 'it'),
+    '/it/orlando?from=2027-03-03&parks=epcot:1#planner',
+    'the Orlando hub is the same word in every language'
+  );
 });
 
 test('a path that names its locale, a file, the API, an anchor or another host stays', () => {
