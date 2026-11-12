@@ -234,6 +234,12 @@
       "label": "Wartezeiten und Andrang-Kalender beliebter Parks",
       "waits": "Wartezeiten",
       "calendar": "Andrang-Kalender"
+    },
+    "orlando": {
+      "kicker": "Orlando",
+      "title": "Orlando: welcher Park an welchem Tag",
+      "lead": "Sechzehn Parks rund um Orlando in einem Kalender, mit dem Park, in dem du in Disney World und bei Universal jeden Tag am kürzesten anstehst, und einem Planer für deine Reise.",
+      "link": "Orlando Besucherkalender"
     }
   },
   "footer": {
@@ -372,7 +378,253 @@
     "nearby": "In deiner Nähe",
     "preferences": "Einstellungen",
     "assistantOpen": "Parky fragen",
-    "assistantClose": "Parky schließen"
+    "assistantClose": "Parky schließen",
+    "orlando": "Orlando Besucherkalender",
+    "orlandoHint": "Welcher Park an welchem Tag, und ein Planer für die ganze Reise."
+  },
+  "orlando": {
+    "title": "Orlando Besucherkalender",
+    "monthTitle": "Orlando Besucherkalender {month}",
+    "metaTitle": "Orlando Besucherkalender & Reiseplaner",
+    "metaTitleMonth": "Orlando Besucherkalender {month}: Disney & Universal",
+    "metaTitleMonthShort": "Orlando Besucherkalender {month}",
+    "metaDescription": "Welcher Park in Orlando an welchem Tag, mit Epic Universe, und ein Planer für deine Reise. Am kürzesten anstehen in den nächsten 30 Tagen: {verdict}.",
+    "metaDescriptionPlain": "Welcher Park an welchem Tag in Walt Disney World, bei Universal mit Epic Universe und in SeaWorld, und ein Planer, der deine Parks auf deine Tage legt.",
+    "metaDescriptionMonth": "Die ruhigsten Tage in Orlando im {month}: {verdict}. Tag für Tag für Disney World, Universal mit Epic Universe und SeaWorld.",
+    "metaDescriptionMonthPlain": "Orlando im {month}, Tag für Tag: wo du in Disney World, bei Universal mit Epic Universe, in SeaWorld und bei den Tagesausflügen am kürzesten anstehst.",
+    "lead": "Walt Disney World, Universal mit Epic Universe, SeaWorld und die Tagesausflüge, Tag für Tag, und ein Planer, der deine Parks auf deine Reisetage legt.",
+    "leadMonth": "In welchem Park du an welchem Tag im {month} am kürzesten anstehst: Walt Disney World, Universal mit Epic Universe, SeaWorld und die Tagesausflüge.",
+    "scroll": "Zum Kalender",
+    "introLabel": "So liest du den Kalender",
+    "intro": "Jedes Kästchen ist ein Park an einem Tag. Die Zahl ist die übliche Wartezeit an den großen Attraktionen dieses Parks zur vollsten Tageszeit, und an ihr vergleichst du die Parks. Die Farbe sagt, wie der Tag im Vergleich zu einem normalen Tag desselben Parks ausfällt.",
+    "nextDays": "Nächste 30 Tage",
+    "lastYearBanner": "Unsere Prognose reicht bis {date}. Die Tage danach zeigen denselben Wochentag im Vorjahr, so wie wir ihn gemessen haben, und tragen den Hinweis „Vorjahr“.",
+    "lastYearBannerNoDate": "Einige dieser Tage liegen hinter unserer Prognose. Sie zeigen denselben Wochentag im Vorjahr, so wie wir ihn gemessen haben, und tragen den Hinweis „Vorjahr“.",
+    "monthIndexLabel": "Orlando nach Monaten",
+    "glance": {
+      "title": "Am kürzesten anstehen am <time>{date}</time>, Ortszeit Orlando",
+      "minutes": "etwa {minutes} Min.",
+      "closesEarly": "schließt um {time} für ein Abend-Event",
+      "earlyElsewhere": "({park} schließt um {time} für ein Abend-Event)",
+      "none": "Für {date} gibt es noch keine Prognose.",
+      "noneAtAll": "Die Prognose konnte nicht geladen werden. Der Kalender weiter unten versucht es noch einmal.",
+      "noneMonth": "Für {month} gibt es noch keine Prognose.",
+      "monthTitle": "Die ruhigsten Tage im {month}",
+      "monthTitleLastYear": "Die ruhigsten Tage im {month} im Vorjahr",
+      "quietPark": "{park}, etwa {minutes} Min."
+    },
+    "legend": {
+      "minutes": "Minuten: die großen Attraktionen zur vollsten Zeit",
+      "ring": "Ring: am kürzesten anstehen im Resort",
+      "early": "Ecke: schließt früher für Tagesgäste",
+      "closed": "Geschlossen",
+      "unknown": "Noch keine Öffnungszeiten",
+      "lastYear": "Vorjahr",
+      "howTo": "So liest du den Kalender",
+      "minutesLong": "Die Zahl im Kästchen ist die Wartezeit, die wir an den großen Attraktionen des Parks erwarten, jede zu ihrer vollsten Tageszeit, gemittelt über diese Attraktionen. Sie gilt nicht für jede Stunde: morgens und abends sind die Warteschlangen kürzer. Parks vergleichst du an dieser Zahl.",
+      "colourLong": "Die Farbe vergleicht einen Tag mit einem normalen Tag desselben Parks. Deshalb sind ein grünes Magic Kingdom mit 40 Minuten und ein grünes EPCOT mit 60 Minuten beides gute Tage, jeweils für den eigenen Park. Der Ring markiert den Park, in dem du an diesem Tag im Resort am kürzesten anstehst. Ein Park, der für Tagesgäste früher schließt, verliert den Ring an einen vollen Tag mit ähnlicher Wartezeit.",
+      "horizonLong": "Die Prognose reicht 60 Tage weit. Danach läuft unsere Vorschau bis {date} weiter, mit größerem Fehler. Tage dahinter zeigen denselben Wochentag im Vorjahr, so wie wir ihn gemessen haben.",
+      "horizonLongNoDate": "Die Prognose reicht 60 Tage weit. Danach läuft unsere Vorschau mit größerem Fehler weiter, und Tage dahinter zeigen denselben Wochentag im Vorjahr, so wie wir ihn gemessen haben.",
+      "statesLong": "Ein schraffiertes Kästchen ist geschlossen, so wie der Park es veröffentlicht hat. Ein leeres Kästchen heißt, dass der Park für diesen Tag noch keine Öffnungszeiten veröffentlicht hat; dann können wir nichts dazu sagen. Ein Strich heißt: geöffnet, aber ohne Warteschlangen, die eine Prognose lohnen, wie in den meisten Wasserparks."
+    },
+    "calendar": {
+      "kicker": "{from} – {to}",
+      "title": "Welcher Park an welchem Tag",
+      "hint": "Tippe auf einen Tag für Öffnungszeiten, Events, Fahrzeiten und die großen Attraktionen.",
+      "unavailable": "Der Kalender konnte nicht geladen werden. Versuch es in ein paar Minuten noch einmal.",
+      "sources": "Wartezeiten und Andrang: park.fan-Prognose vom {date}. Öffnungszeiten, wie die Parks sie veröffentlichen. Fahrzeiten: {attribution}, ohne Verkehr.",
+      "dayPlanner": "Einen Parktag im Tagesplaner planen",
+      "caption": "Orlandos Parks vom {from} bis {to}: Wartezeit der großen Attraktionen zur vollsten Zeit, in Minuten",
+      "parkColumn": "Park",
+      "filterLabel": "Angezeigte Parks",
+      "filterAll": "Alle Parks",
+      "listLabel": "Am kürzesten anstehen, Tag für Tag",
+      "more": "+{count} weitere",
+      "showAll": "Alle Tage zeigen",
+      "showWeek": "Nur die ersten 7 Tage zeigen",
+      "loading": "Die übrigen Tage werden geladen …",
+      "failed": "Die übrigen Tage konnten nicht geladen werden.",
+      "openDay": "{date}: alle Parks zeigen",
+      "today": "Heute",
+      "outlook": "Vorschau",
+      "lastYear": "Vorjahr",
+      "cell": "{park}, {date}: etwa {minutes} Min., {level}",
+      "cellClosed": "{park}, {date}: geschlossen",
+      "cellUnknown": "{park}, {date}: noch keine Öffnungszeiten",
+      "cellOpen": "{park}, {date}: geöffnet, keine Prognose",
+      "cellBest": "am kürzesten anstehen im Resort {resort}",
+      "cellEarly": "schließt {time}",
+      "stateClosed": "Saisonpause",
+      "stateUnknown": "Noch keine Öffnungszeiten",
+      "stateOpen": "Geöffnet, keine Prognose"
+    },
+    "lanes": {
+      "summaryLabel": "Events",
+      "nights": "{name}: {count, plural, =1 {# Abend} other {# Abende}}",
+      "break": "{name} {dates}",
+      "expected": "Termine erwartet",
+      "unnamedBreak": "Schulferien",
+      "none": "In diesen Tagen gibt es keine Events und keine Schulferien.",
+      "allDays": "jeden Tag"
+    },
+    "sheet": {
+      "kicker": "Orlando · ein Tag",
+      "intro": "In jedem Resort zuerst der Park, in dem du am kürzesten anstehst. Minuten: die großen Attraktionen zur vollsten Zeit.",
+      "stayingAt": "Du wohnst in",
+      "minutes": "{minutes} Min.",
+      "noForecast": "geöffnet, keine Prognose",
+      "noHours": "Noch keine Öffnungszeiten",
+      "closedFor": "Geschlossen: {name}",
+      "lastYear": "Gemessener Tag aus dem Vorjahr; die Prognose reicht noch nicht bis hierher.",
+      "outlook": "Vorschau: mit größerem Fehler als die Prognose.",
+      "earlyEntry": "Early Entry ab {time} für Gäste der Disney-Hotels",
+      "earlyAdmission": "Early Park Admission ab {time} für Gäste der Universal-Hotels",
+      "ticketedEvening": "{name} ab {time}: Tagesgäste gehen um {leave}",
+      "eveningEvent": "Abend-Event",
+      "shorterDay": "Kürzerer Tag: Tagesgäste gehen um {leave}",
+      "extendedEvening": "Extended Evening Hours bis {time} für Gäste der Deluxe-Hotels",
+      "expected": "Termine erwartet",
+      "travel": "Ab {area}: etwa {minutes} Min. mit dem Auto, ohne Verkehr",
+      "travelTransfer": "Ab {area}: etwa {minutes} Min. mit dem Auto zum Parkplatz, dann etwa {transfer} Min. mit Monorail oder Fähre, zusammen {total} Min., ohne Verkehr",
+      "bigRides": "Die großen Attraktionen",
+      "ridesLoading": "Die Attraktionen werden geladen …",
+      "ridesNone": "Für diesen Tag gibt es keine Werte für einzelne Attraktionen.",
+      "ridesHint": "Jede Attraktion zu ihrer vollsten Tageszeit.",
+      "planDay": "Diesen Tag planen"
+    },
+    "when": {
+      "kicker": "Disney World und Universal",
+      "title": "Beste Reisezeit für Orlando {year}",
+      "titleNoYear": "Beste Reisezeit für Orlando",
+      "hint": "Die zehntägigen Reisen, bei denen du in den sieben großen Parks von Walt Disney World und Universal am kürzesten anstehst.",
+      "pageLink": "Beste Reisezeit für Orlando {year}",
+      "pageLinkNoYear": "Beste Reisezeit für Orlando",
+      "none": "Die ruhigsten Reisen des Jahres konnten nicht geladen werden.",
+      "sentence": "Die ruhigsten {days}-Tage-Reisen für Disney und Universal: {windows}.",
+      "lastYearNote": "Termine hinter unserer Prognose sind mit dem gemessenen Andrang des Vorjahres geplant.",
+      "rank": "Nr. {rank}",
+      "figure": "Große Attraktionen: etwa {minutes} Min.",
+      "average": "Übers Jahr: etwa {minutes} Min.",
+      "basisLastYear": "Gemessener Andrang des Vorjahres",
+      "basisMixed": "Teils gemessener Andrang des Vorjahres",
+      "plan": "Diese Tage planen"
+    },
+    "planner": {
+      "kicker": "Deine Reisetage",
+      "title": "Deine Reise planen",
+      "hint": "Deine Tage, deine Parks: Der Planer legt jeden Park auf den Tag, an dem du dort am kürzesten anstehst.",
+      "placeholder": "Wähle, wann du ankommst und abreist und welche Parks du besuchen willst. Vorher ist nichts ausgefüllt."
+    },
+    "bestDays": {
+      "title": "Die besten Tage für jeden Park",
+      "hint": "Die ruhigen Tage jedes Parks als Gruppe. Innerhalb von fünf Minuten gelten Tage als gleich.",
+      "none": "Für diese Tage gibt es noch keine besten Tage.",
+      "quiet": "Die ruhigsten Tage",
+      "quietLastYear": "Die ruhigsten Tage im Vorjahr",
+      "flat": "Kein Tag sticht heraus: {min} bis {max} Min.",
+      "minutes": "etwa {minutes} Min.",
+      "closes": "schließt {time}",
+      "more": "Warum diese Tage, und die vollsten",
+      "busy": "Am vollsten: {days}",
+      "calendarLink": "{park} Besucherkalender"
+    },
+    "reasons": {
+      "quietest_in_window": "am kürzesten anstehen in diesem Zeitraum",
+      "weekday": "Wochentag",
+      "holiday_ends": "nach den Feiertagen",
+      "school_break": "in den Schulferien",
+      "closes_early": "Tagesgäste gehen um {time}",
+      "extended_evening": "Extended Evening Hours",
+      "early_entry": "Early Entry für Hotelgäste",
+      "long_range": "Vorschau, größerer Fehler",
+      "estimate_last_year": "gemessener Tag aus dem Vorjahr"
+    },
+    "summary": {
+      "quietDay": "{date} ({park}, etwa {minutes} Min.)",
+      "quiet": "hat die kürzesten Warteschlangen am {days}.",
+      "quietLastYear": "hatte im Vorjahr die kürzesten Warteschlangen am {days}.",
+      "busy": "Am vollsten wird es am {days}, mit mindestens {minutes} Min. selbst im ruhigsten Park.",
+      "busyLastYear": "Am vollsten war es im Vorjahr am {days}, mit mindestens {minutes} Min. selbst im ruhigsten Park.",
+      "eventsLabel": "Events:",
+      "eventNights": "{name} ({count, plural, =1 {# Abend} other {# Abende}})",
+      "eventExpected": "{name} (Termine erwartet)"
+    },
+    "method": {
+      "title": "So entsteht die Prognose",
+      "summary": "Jede Zahl hier stammt aus den Wartezeiten, die park.fan alle fünf Minuten misst, aus einer Prognose auf dieser Grundlage und aus den Öffnungszeiten der Parks. Öffne eine Frage für die Einzelheiten.",
+      "sources": {
+        "title": "Woher kommen die Zahlen?",
+        "body": "park.fan speichert alle fünf Minuten die angezeigte Wartezeit jeder Attraktion. Unsere Prognosemodelle lernen aus diesen Messungen, den Öffnungszeiten, den Schulferien und dem Wetter. Öffnungszeiten, Early Entry und Abend-Events kommen aus den Kalendern der Parks; Saisons und Partys prüfen wir von Hand."
+      },
+      "minutes": {
+        "title": "Was bedeuten die Minuten?",
+        "body": "Für jeden Park sagen wir die Wartezeit an seinen großen Attraktionen voraus, jede zu ihrer vollsten Tageszeit, und bilden den Mittelwert. An dieser einen Zahl vergleichen wir die Parks. Morgens und abends sind die Warteschlangen kürzer, sie gilt also nicht für jede Stunde."
+      },
+      "horizon": {
+        "title": "Wie weit reicht sie?",
+        "body": "Die Prognose reicht 60 Tage weit. Danach läuft die Vorschau bis {date}, mit größerem Fehler. Dahinter zeigt ein Tag denselben Wochentag im Vorjahr, so wie wir ihn gemessen haben, mit dem Hinweis „Vorjahr“.",
+        "bodyNoDate": "Die Prognose reicht 60 Tage weit. Danach läuft die Vorschau mit größerem Fehler weiter. Dahinter zeigt ein Tag denselben Wochentag im Vorjahr, so wie wir ihn gemessen haben, mit dem Hinweis „Vorjahr“."
+      },
+      "error": {
+        "title": "Wie genau ist sie?",
+        "body": "Für eine Attraktion an einem Tag liegt die Prognose oft 5 bis 10 Minuten daneben. Tage, die weniger als 5 Minuten auseinanderliegen, behandeln wir deshalb als gleich, und die besten Tage sind eine Gruppe, keine Rangliste. Am Tag darauf wird jede Prognose mit der gemessenen Wartezeit verglichen."
+      },
+      "travel": {
+        "title": "Wie werden die Fahrzeiten berechnet?",
+        "body": "Die Fahrzeiten sind eine Autofahrt ohne Verkehr nach Daten von {attribution}, bis zum Parkplatz. Der Parkplatz des Magic Kingdom ist das Transportation and Ticket Center; mit Monorail oder Fähre dauert es von dort noch etwa 15 Minuten bis zum Eingang."
+      },
+      "links": "Das Modell dahinter: <fancast>Fancast</fancast>. Alles andere: <howto>So funktioniert park.fan</howto>."
+    },
+    "faq": {
+      "title": "Fragen zum Andrang in Orlando",
+      "quietest": {
+        "q": "Wann ist es in Orlando in den nächsten Wochen am leersten?",
+        "qMonth": "Wann ist es in Orlando im {month} am leersten?",
+        "resort": "In {resort} stehst du am kürzesten an am {days}.",
+        "day": "{date} im {park}, etwa {minutes} Min.",
+        "note": "Der Kalender oben zeigt jeden Tag, mit dem Park, in dem du im jeweiligen Resort am kürzesten anstehst."
+      },
+      "party": {
+        "q": "Welcher Park an einem Party-Abend im Magic Kingdom?",
+        "a": "An {count, plural, =1 {# Abend} other {# Abenden}} in diesem Zeitraum schließt das Magic Kingdom für Tagesgäste um {time}, wegen {name}. An diesen Tagen sind die Warteschlangen kürzer, etwa {on} Min. gegen {off} Min. an den übrigen Tagen, aber der Tag ist kürzer und Tagesgäste verpassen den Abend. Für einen vollen Tag nimm an diesem Tag EPCOT, die Hollywood Studios oder Animal Kingdom, oder komm mit einem Party-Ticket."
+      },
+      "epic": {
+        "q": "Ist Epic Universe am Wochenende voller?",
+        "a": "{verdict, select, busier {Ja.} same {Nein.} other {Nur wenig.}} In diesem Zeitraum liegen seine großen Attraktionen zur vollsten Zeit samstags und sonntags bei etwa {weekend} Min. und an Wochentagen bei etwa {weekday} Min."
+      },
+      "distance": {
+        "q": "Wie weit ist Universal von Walt Disney World entfernt?",
+        "a": "Mit dem Auto und ohne Verkehr etwa {epcot} Min. von den Universal Studios bis EPCOT und etwa {magic} Min. bis zum Parkplatz des Magic Kingdom, dazu etwa {transfer} Min. mit Monorail oder Fähre bis zum Eingang ({total} Min. zusammen). Fahrzeiten: {attribution}."
+      },
+      "early": {
+        "q": "Brauche ich Early Entry?",
+        "a": "Nein, aber an vollen Tagen hilft es. Gäste der Disney-eigenen Hotels kommen {disney} Minuten vor allen anderen in die Disney-Themenparks, Gäste der Universal-Hotels {universal} Minuten früher in die Themenparks von Universal. Der Reiseplaner rechnet das ein, wenn du so ein Hotel wählst."
+      },
+      "green": {
+        "q": "Warum kann ein Park mit längeren Warteschlangen grün sein?",
+        "a": "Die Farbe vergleicht einen Tag mit einem normalen Tag desselben Parks, nicht mit anderen Parks. EPCOT mit 60 Minuten kann für EPCOT ein ruhiger Tag sein und das Magic Kingdom mit 50 Minuten ein voller. Um zwei Parks zu vergleichen, lies die Minuten."
+      },
+      "lastYear": {
+        "q": "Was bedeutet „Vorjahr“ an einem Tag?",
+        "a": "Unsere Prognose reicht noch nicht bis zu diesem Tag. Bis sie es tut, zeigt der Tag denselben Wochentag im Vorjahr, so wie wir ihn gemessen haben. Lies ihn als Hinweis, wie voll diese Zeit des Jahres war, nicht als Prognose."
+      }
+    },
+    "next": {
+      "title": "Mehrere Tage in Orlando?",
+      "body": "Gib dem Planer deine Reisetage und deine Parks, und er legt jeden Park auf den Tag, an dem du dort am kürzesten anstehst.",
+      "parkCalendar": "{park} Besucherkalender"
+    },
+    "dataset": {
+      "name": "Besucherkalender der Freizeitparks in Orlando, {period}",
+      "description": "Je Park und Tag in Walt Disney World, Universal Orlando, SeaWorld und bei den Tagesausflügen: die erwartete Wartezeit an den großen Attraktionen zur vollsten Zeit, der Andrang im Vergleich zu einem normalen Tag des Parks und die Öffnungszeiten, {period}.",
+      "varWait": "Erwartete Wartezeit an den großen Attraktionen",
+      "varCrowd": "Andrang",
+      "varHours": "Öffnungszeiten"
+    },
+    "band": {
+      "title": "Mehrere Tage in Orlando?",
+      "link": "Welcher Park an welchem Tag"
+    }
   },
   "theme": {
     "light": "Hell",
@@ -2895,6 +3147,10 @@
     "parky": {
       "kicker": "park.fan · Chat-Assistent",
       "action": "Parky fragen"
+    },
+    "orlando": {
+      "kicker": "park.fan · Orlando",
+      "action": "Meine Orlando-Reise planen"
     }
   },
   "compare": {

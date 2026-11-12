@@ -60,6 +60,14 @@ const ROUTES = {
     url: (l) => `/${l}/${PARK}/${PARK_STATS_SEGMENTS[l]}`,
     rule: (source, l) => source.endsWith(`/:park/${PARK_STATS_SEGMENTS[l]}`),
   },
+  orlando: {
+    url: (l) => `/${l}/orlando`,
+    rule: (source) => source.endsWith('/orlando'),
+  },
+  'orlando/[year]/[month]': {
+    url: (l) => `/${l}/orlando/2026/12`,
+    rule: (source) => source.endsWith('/orlando/:year(\\d{4})/:month(\\d{1,2})'),
+  },
   'with-kids': {
     url: (l) => `/${l}/${PARK}/${PARK_KIDS_SEGMENTS[l]}`,
     rule: (source, l) => source.endsWith(`/:park/${PARK_KIDS_SEGMENTS[l]}`),
@@ -102,5 +110,15 @@ for (const [route, { url, rule }] of Object.entries(ROUTES)) {
   }
   console.log(`  ✓ ${route}: ${[...windows].join(' | ')} in all ${locales.length} locales`);
 }
+
+// The best-time pages under `/orlando/<segment>/<resort>` are two segments after `/orlando` too,
+// and must not take the month pages' window.
+for (const locale of locales) {
+  const path = `/${locale}/orlando/beste-reisezeit/disney-world`;
+  const { source } = headerFor(path, 'cdn-cache-control');
+  assert.ok(!source?.includes('/orlando/:year'), `${path} matched the Orlando month rule`);
+  passed++;
+}
+console.log('  ✓ a best-time path under /orlando is not an Orlando month');
 
 console.log(`\n${passed} passed`);

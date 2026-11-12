@@ -173,6 +173,7 @@ export async function GET(
       parky: { namespace: 'parkyPage', key: 'metaTitle' },
       'best-time-to-visit': { namespace: 'bestTime', key: 'title' },
       'trip-planner': { namespace: 'planner.page', key: 'title' },
+      orlando: { namespace: 'orlando', key: 'title' },
       contribute: { namespace: 'contribute.meta', key: 'title' },
       ...glossaryEntries,
     };
