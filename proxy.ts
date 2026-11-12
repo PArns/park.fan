@@ -4,6 +4,7 @@ import { routing } from './i18n/routing';
 import { parkCalendarRedirect } from './lib/parks/calendar-redirects';
 import { newsRedirect } from './lib/blog/news-redirects-rule';
 import { unprefixedPathRedirect } from './lib/i18n/unprefixed-redirect';
+import { orlandoRedirect } from './lib/orlando/redirects';
 
 const handleI18nRouting = createMiddleware(routing);
 
@@ -17,6 +18,12 @@ export default function proxy(request: NextRequest) {
   const calendarTarget = parkCalendarRedirect(request.nextUrl.pathname);
   if (calendarTarget) {
     return NextResponse.redirect(new URL(calendarTarget, request.url), 308);
+  }
+
+  // An Orlando month outside the hub's twelve, or spelled with a padded month.
+  const orlandoTarget = orlandoRedirect(request.nextUrl.pathname);
+  if (orlandoTarget) {
+    return NextResponse.redirect(new URL(orlandoTarget, request.url), 308);
   }
 
   // Old `/blog/` news URLs to `/news/`, for the same reason as the calendar above.
@@ -33,7 +40,8 @@ export default function proxy(request: NextRequest) {
     request.headers.has('accept-language')
   );
   if (prefixed) {
-    const onward = parkCalendarRedirect(prefixed) ?? newsRedirect(prefixed);
+    const onward =
+      parkCalendarRedirect(prefixed) ?? orlandoRedirect(prefixed) ?? newsRedirect(prefixed);
     const target = new URL(onward ?? `${prefixed}${request.nextUrl.search}`, request.url);
     const redirect = NextResponse.redirect(target, 308);
     redirect.headers.set('Vary', 'Accept-Language');

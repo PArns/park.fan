@@ -234,6 +234,12 @@
       "label": "Wait times and crowd calendars of popular parks",
       "waits": "Wait times",
       "calendar": "Crowd calendar"
+    },
+    "orlando": {
+      "kicker": "Orlando",
+      "title": "Orlando: which park on which day",
+      "lead": "Sixteen parks around Orlando in one calendar, with the shortest lines at Disney World and Universal for every day, and a planner for your trip.",
+      "link": "Orlando Crowd Calendar"
     }
   },
   "footer": {
@@ -372,7 +378,253 @@
     "nearby": "Near you",
     "preferences": "Settings",
     "assistantOpen": "Ask Parky",
-    "assistantClose": "Close Parky"
+    "assistantClose": "Close Parky",
+    "orlando": "Orlando Crowd Calendar",
+    "orlandoHint": "Which park on which day, and a planner for your whole trip."
+  },
+  "orlando": {
+    "title": "Orlando Crowd Calendar",
+    "monthTitle": "Orlando Crowd Calendar {month}",
+    "metaTitle": "Orlando Crowd Calendar & Trip Planner",
+    "metaTitleMonth": "Orlando Crowd Calendar {month}: Disney & Universal",
+    "metaTitleMonthShort": "Orlando Crowd Calendar {month}",
+    "metaDescription": "Which Orlando park on which day, Epic Universe included. Quietest in the next 30 days: {verdict}.",
+    "metaDescriptionPlain": "Which park on which day at Walt Disney World, Universal with Epic Universe and SeaWorld, and a planner that puts your parks on your dates.",
+    "metaDescriptionMonth": "Quietest Orlando days in {month}: {verdict}. Every park day by day, Epic Universe included.",
+    "metaDescriptionMonthPlain": "Orlando in {month}, day by day: the shortest lines at Disney World, Universal with Epic Universe, SeaWorld and the day trips.",
+    "lead": "Walt Disney World, Universal with Epic Universe, SeaWorld and the day trips, day by day, and a planner that puts your parks on your dates.",
+    "leadMonth": "Which park has the shortest lines on which day of {month}, at Walt Disney World, Universal with Epic Universe, SeaWorld and the day trips.",
+    "scroll": "To the calendar",
+    "introLabel": "How to read the calendar",
+    "intro": "Each square is one park on one day. The number is the typical wait at that park's big rides at the busiest time of day, and it is what you compare parks by. The colour says how that day compares with the same park's typical day.",
+    "nextDays": "Next 30 days",
+    "lastYearBanner": "Our forecast reaches {date}. The days after it show the same weekday last year as we measured it, marked “last year”.",
+    "lastYearBannerNoDate": "Some of these days are past our forecast. They show the same weekday last year as we measured it, marked “last year”.",
+    "monthIndexLabel": "Orlando by month",
+    "glance": {
+      "title": "Shortest lines on <time>{date}</time>, Orlando time",
+      "minutes": "about {minutes} min",
+      "closesEarly": "closes at {time} for an evening event",
+      "earlyElsewhere": "({park} closes at {time} for an evening event)",
+      "none": "No forecast for {date} yet.",
+      "noneAtAll": "The forecast could not be loaded. The calendar below tries again.",
+      "noneMonth": "No forecast for {month} yet.",
+      "monthTitle": "Quietest days in {month}",
+      "monthTitleLastYear": "Quietest days in {month} last year",
+      "quietPark": "({park}, about {minutes} min)"
+    },
+    "legend": {
+      "minutes": "Minutes: the big rides at their busiest",
+      "ring": "Ring: shortest lines at the resort",
+      "early": "Corner: closes early for day guests",
+      "closed": "Closed",
+      "unknown": "No hours yet",
+      "lastYear": "Last year",
+      "howTo": "How to read this",
+      "minutesLong": "The number in a square is the wait we expect at that park's big rides, each at its busiest time of day, averaged over those rides. It is not the wait at every hour: in the morning and the evening the lines are shorter. Compare parks by this number.",
+      "colourLong": "The colour compares a day with the same park's typical day. That is why a green Magic Kingdom at 40 minutes and a green EPCOT at 60 are both good days, each for its own park. The ring marks the park with the shortest lines at each resort that day. A park that closes early for day guests can lose the ring to a full day with a similar wait.",
+      "horizonLong": "The forecast covers the next 60 days. After that our outlook runs to {date}, with a wider error. Days past it show the same weekday last year, as we measured it.",
+      "horizonLongNoDate": "The forecast covers the next 60 days. After that our outlook runs on with a wider error, and days past it show the same weekday last year, as we measured it.",
+      "statesLong": "A hatched square is closed, as the park published it. An empty square means the park has not published its hours for that day yet, so we cannot say anything about it. A dash means the park is open but has no queues worth forecasting, as at most water parks."
+    },
+    "calendar": {
+      "kicker": "{from} – {to}",
+      "title": "Which park on which day",
+      "hint": "Tap a day for hours, events, travel times and the big rides.",
+      "unavailable": "The calendar could not be loaded. Try again in a few minutes.",
+      "sources": "Waits and levels: park.fan forecast of {date}. Hours as the parks publish them. Drive times: {attribution}, without traffic.",
+      "dayPlanner": "Plan one park day in the day planner",
+      "caption": "Orlando's parks, {from} to {to}: the big rides' wait at their busiest, in minutes",
+      "parkColumn": "Park",
+      "filterLabel": "Parks shown",
+      "filterAll": "All parks",
+      "listLabel": "Shortest lines per day",
+      "more": "+{count} more",
+      "showAll": "Show every day",
+      "showWeek": "Show the first 7 days",
+      "loading": "Loading the other days …",
+      "failed": "The other days could not be loaded.",
+      "openDay": "{date}: show all parks",
+      "today": "Today",
+      "outlook": "outlook",
+      "lastYear": "last year",
+      "cell": "{park}, {date}: about {minutes} min, {level}",
+      "cellClosed": "{park}, {date}: closed",
+      "cellUnknown": "{park}, {date}: no hours published yet",
+      "cellOpen": "{park}, {date}: open, no forecast",
+      "cellBest": "shortest lines at {resort}",
+      "cellEarly": "closes {time}",
+      "stateClosed": "Closed for the season",
+      "stateUnknown": "No hours published yet",
+      "stateOpen": "Open, no forecast"
+    },
+    "lanes": {
+      "summaryLabel": "Events",
+      "nights": "{name}: {count, plural, =1 {# night} other {# nights}}",
+      "break": "{name} {dates}",
+      "expected": "dates expected",
+      "unnamedBreak": "School break",
+      "none": "No events or school breaks in these days.",
+      "allDays": "every day"
+    },
+    "sheet": {
+      "kicker": "Orlando · one day",
+      "intro": "Shortest lines first at each resort. Minutes: the big rides at their busiest.",
+      "stayingAt": "Staying at",
+      "minutes": "{minutes} min",
+      "noForecast": "open, no forecast",
+      "noHours": "No hours published yet",
+      "closedFor": "Closed: {name}",
+      "lastYear": "Last year's measured day; the forecast does not reach this date yet.",
+      "outlook": "Outlook: a wider error than the forecast.",
+      "earlyEntry": "Early Entry from {time} for Disney hotel guests",
+      "earlyAdmission": "Early Park Admission from {time} for Universal hotel guests",
+      "ticketedEvening": "{name} from {time}: day guests leave at {leave}",
+      "eveningEvent": "Evening event",
+      "shorterDay": "Shorter day: day guests leave at {leave}",
+      "extendedEvening": "Extended Evening Hours until {time} for deluxe hotel guests",
+      "expected": "dates expected",
+      "travel": "From {area}: about {minutes} min by car, without traffic",
+      "travelTransfer": "From {area}: about {minutes} min by car to the car park, then about {transfer} min by monorail or ferry, {total} min in all, without traffic",
+      "bigRides": "The big rides",
+      "ridesLoading": "Loading the rides …",
+      "ridesNone": "No ride figures for this day.",
+      "ridesHint": "Each ride at its busiest time of day.",
+      "planDay": "Plan this day"
+    },
+    "when": {
+      "kicker": "Disney World and Universal",
+      "title": "Best time to visit Orlando in {year}",
+      "titleNoYear": "Best time to visit Orlando",
+      "hint": "The 10-day trips with the shortest lines at the seven big parks of Walt Disney World and Universal.",
+      "pageLink": "Best time to visit Orlando in {year}",
+      "pageLinkNoYear": "Best time to visit Orlando",
+      "none": "The quietest trips of the year could not be loaded.",
+      "sentence": "Quietest {days}-day trips for Disney and Universal: {windows}.",
+      "lastYearNote": "Dates past our forecast are planned on last year's measured crowds.",
+      "rank": "No. {rank}",
+      "figure": "Big rides: about {minutes} min",
+      "average": "Across the year: about {minutes} min",
+      "basisLastYear": "Last year's measured crowds",
+      "basisMixed": "Partly last year's measured crowds",
+      "plan": "Plan these dates"
+    },
+    "planner": {
+      "kicker": "Your dates",
+      "title": "Plan your trip",
+      "hint": "Your dates, your parks: the planner puts each park on the day its lines are shortest.",
+      "placeholder": "Choose when you arrive and leave, and which parks you want. Nothing is filled in until you do."
+    },
+    "bestDays": {
+      "title": "Best days for each park",
+      "hint": "The quiet days of each park as a set. Within five minutes, days count as equal.",
+      "none": "No best days for these dates yet.",
+      "quiet": "Quietest days",
+      "quietLastYear": "Quietest days last year",
+      "flat": "No day stands out: {min} to {max} min.",
+      "minutes": "about {minutes} min",
+      "closes": "closes {time}",
+      "more": "Why these days, and the busiest",
+      "busy": "Busiest: {days}",
+      "calendarLink": "{park} Crowd Calendar"
+    },
+    "reasons": {
+      "quietest_in_window": "the shortest lines of the period",
+      "weekday": "weekday",
+      "holiday_ends": "after the holidays",
+      "school_break": "during a school break",
+      "closes_early": "day guests leave at {time}",
+      "extended_evening": "Extended Evening Hours",
+      "early_entry": "Early Entry for hotel guests",
+      "long_range": "outlook, wider error",
+      "estimate_last_year": "last year's measured day"
+    },
+    "summary": {
+      "quietDay": "{date} ({park}, about {minutes} min)",
+      "quiet": "has the shortest lines on {days}.",
+      "quietLastYear": "had the shortest lines last year on {days}.",
+      "busy": "The busiest days are {days}, with at least {minutes} min even at the quietest park.",
+      "busyLastYear": "The busiest last year were {days}, with at least {minutes} min even at the quietest park.",
+      "eventsLabel": "Events:",
+      "eventNights": "{name} ({count, plural, =1 {# night} other {# nights}})",
+      "eventExpected": "{name} (dates expected)"
+    },
+    "method": {
+      "title": "How the forecast works",
+      "summary": "Every figure here comes from wait times park.fan measures every five minutes, a forecast built on them, and the hours the parks publish. Open a question for the details.",
+      "sources": {
+        "title": "Where do the numbers come from?",
+        "body": "park.fan records the posted wait of every ride every five minutes. Our forecast models learn from those measurements, the parks' hours, school holidays and the weather. Opening hours, Early Entry and evening events come from the parks' own calendars; seasons and parties are checked by hand."
+      },
+      "minutes": {
+        "title": "What do the minutes mean?",
+        "body": "For each park we forecast the wait at its big rides, each at its busiest time of day, and average them. It is the one number we compare parks by. In the morning and the evening lines are shorter, so it is no promise for every hour."
+      },
+      "horizon": {
+        "title": "How far ahead does it reach?",
+        "body": "The forecast covers the next 60 days. After that the outlook runs to {date} with a wider error. Past it, a day shows the same weekday last year as we measured it, and says “last year”.",
+        "bodyNoDate": "The forecast covers the next 60 days. After that the outlook runs on with a wider error. Past it, a day shows the same weekday last year as we measured it, and says “last year”."
+      },
+      "error": {
+        "title": "How close does it get?",
+        "body": "For one ride on one day the forecast is often off by 5 to 10 minutes. Days within 5 minutes of each other are therefore equal to us, and the best days are a set, not a ranking. Each forecast is compared with the measured wait the next day."
+      },
+      "travel": {
+        "title": "How are the drive times measured?",
+        "body": "Drive times are a drive without traffic from {attribution}, to the car park. Magic Kingdom's car park is the Transportation and Ticket Center; the monorail or the ferry takes about another 15 minutes to the gate."
+      },
+      "links": "The model behind it: <fancast>Fancast</fancast>. Everything else: <howto>how park.fan works</howto>."
+    },
+    "faq": {
+      "title": "Questions about Orlando crowds",
+      "quietest": {
+        "q": "When is Orlando least crowded in the next few weeks?",
+        "resort": "At {resort} the shortest lines are on {days}.",
+        "day": "{date} at {park}, about {minutes} min",
+        "note": "The calendar above shows every day, with the park that has the shortest lines at each resort.",
+        "qMonth": "When is Orlando least crowded in {month}?"
+      },
+      "party": {
+        "q": "Which park should I visit on a Magic Kingdom party night?",
+        "a": "On {count, plural, =1 {# night} other {# nights}} in this period Magic Kingdom closes to day guests at {time} for {name}. The lines on those days are shorter, about {on} min against {off} min on its other days, but the day is shorter and day guests miss the evening. For a full day pick EPCOT, Hollywood Studios or Animal Kingdom that day, or come with a party ticket."
+      },
+      "epic": {
+        "q": "Is Epic Universe busier on weekends?",
+        "a": "{verdict, select, busier {Yes.} same {No.} other {Only a little.}} In this period its big rides average about {weekend} min at their busiest on Saturdays and Sundays and about {weekday} min on weekdays."
+      },
+      "distance": {
+        "q": "How far is Universal from Walt Disney World?",
+        "a": "By car and without traffic, about {epcot} min from Universal Studios to EPCOT, and about {magic} min to Magic Kingdom's car park, plus about {transfer} min by monorail or ferry to the gate ({total} min in all). Drive times: {attribution}."
+      },
+      "early": {
+        "q": "Do I need Early Entry?",
+        "a": "No, but it helps on busy days. Guests of Disney's own hotels get into the Disney theme parks {disney} minutes before everybody else, and guests of Universal's hotels {universal} minutes early at Universal's theme parks. The trip planner counts it when you choose such a hotel."
+      },
+      "green": {
+        "q": "Why can a park with longer lines be green?",
+        "a": "The colour compares a day with the same park's typical day, not with other parks. EPCOT at 60 minutes can be a quiet day for EPCOT, and Magic Kingdom at 50 a busy one for Magic Kingdom. To compare two parks, read the minutes."
+      },
+      "lastYear": {
+        "q": "What does “last year” mean on a day?",
+        "a": "Our forecast does not reach that day yet. Until it does, the day shows the same weekday last year as we measured it. Read it as a sign of how busy that time of year was, not as a forecast."
+      }
+    },
+    "next": {
+      "title": "Several days in Orlando?",
+      "body": "Give the planner your dates and parks, and it puts each park on the day its lines are shortest.",
+      "parkCalendar": "{park} Crowd Calendar"
+    },
+    "dataset": {
+      "name": "Orlando theme park crowd calendar, {period}",
+      "description": "Per park and day at Walt Disney World, Universal Orlando, SeaWorld and the day trips: the expected wait at the big rides at their busiest, the crowd level against the park's typical day, and the opening hours, {period}.",
+      "varWait": "Expected wait at the big rides",
+      "varCrowd": "Crowd level",
+      "varHours": "Opening hours"
+    },
+    "band": {
+      "title": "Several days in Orlando?",
+      "link": "Which park on which day"
+    }
   },
   "theme": {
     "light": "Light",
@@ -2895,6 +3147,10 @@
     "parky": {
       "kicker": "park.fan · Chat assistant",
       "action": "Ask Parky"
+    },
+    "orlando": {
+      "kicker": "park.fan · Orlando",
+      "action": "Plan my Orlando trip"
     }
   },
   "compare": {

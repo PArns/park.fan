@@ -50,6 +50,7 @@
     "test:guards": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-guards.mjs",
     "test:calendar": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-calendar-utils.mjs",
     "test:calendar-month": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-calendar-month.mjs",
+    "test:orlando-hub": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-orlando-hub.mjs",
     "test:day-comparison": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-day-comparison.mjs",
     "test:attraction-history-geometry": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-attraction-history-geometry.mjs",
     "test:holiday-names": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-holiday-names.mjs",

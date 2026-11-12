@@ -59,6 +59,7 @@ import {
 } from '@/components/parks/park-calendar-month-summary';
 import { ParkCalendarMonthIndex } from '@/components/parks/park-calendar-month-index';
 import { ParkPageShell } from '@/components/parks/park-page-shell';
+import { OrlandoParkBand } from '@/components/orlando/orlando-park-band';
 import { ParkYearlyOutlookSection } from '@/components/parks/park-yearly-outlook-section';
 import { ParkYearlyOutlookSkeleton } from '@/components/parks/park-yearly-outlook-skeleton';
 import { parkDayOf } from '@/lib/utils/park-day';
@@ -495,6 +496,9 @@ export default async function ParkCalendarPage({ params }: ParkCalendarPageProps
             />
           }
         />
+
+        {/* An Orlando park's way to the hub, which has every park of the region side by side. */}
+        <OrlandoParkBand parkPath={parkPath} className="mb-4" />
 
         {/* One chapter, one stream: „Beste Reisezeit" and the month's own sentences answer the
           same question at two grains, so they arrive as one box behind one boundary. */}

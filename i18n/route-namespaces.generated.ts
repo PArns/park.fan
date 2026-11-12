@@ -88,6 +88,7 @@ export const ROUTE_MESSAGE_NAMESPACES = {
     'share',
   ],
   '/news/page/[n]': ['nearby', 'parkCard'],
+  '/orlando/[[...date]]': ['orlando.calendar', 'orlando.lanes', 'orlando.sheet'],
   '/parks': ['explore', 'nearby'],
   '/parks/[continent]': ['explore', 'nearby'],
   '/parks/[continent]/[country]': ['nearby', 'parkCard'],

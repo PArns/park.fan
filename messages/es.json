@@ -234,6 +234,12 @@
       "label": "Tiempos de espera y calendarios de afluencia de parques populares",
       "waits": "Tiempos de espera",
       "calendar": "Calendario de afluencia"
+    },
+    "orlando": {
+      "kicker": "Orlando",
+      "title": "Orlando: qué parque qué día",
+      "lead": "Dieciséis parques alrededor de Orlando en un solo calendario, con el parque de colas más cortas en Disney World y Universal para cada día, y un planificador para tu viaje.",
+      "link": "Calendario de afluencia de Orlando"
     }
   },
   "footer": {
@@ -372,7 +378,253 @@
     "nearby": "Cerca de ti",
     "preferences": "Ajustes",
     "assistantOpen": "Preguntar a Parky",
-    "assistantClose": "Cerrar Parky"
+    "assistantClose": "Cerrar Parky",
+    "orlando": "Calendario de afluencia de Orlando",
+    "orlandoHint": "Qué parque qué día, y un planificador para todo el viaje."
+  },
+  "orlando": {
+    "title": "Calendario de afluencia de Orlando",
+    "monthTitle": "Calendario de afluencia de Orlando {month}",
+    "metaTitle": "Calendario de afluencia de Orlando y planificador",
+    "metaTitleMonth": "Calendario de afluencia de Orlando {month}",
+    "metaTitleMonthShort": "Afluencia en Orlando {month}",
+    "metaDescription": "Qué parque de Orlando qué día, con Epic Universe. Lo más tranquilo en los próximos 30 días: {verdict}.",
+    "metaDescriptionPlain": "Qué parque qué día en Walt Disney World, en Universal con Epic Universe y en SeaWorld, y un planificador que pone tus parques en tus fechas.",
+    "metaDescriptionMonth": "Los días más tranquilos de Orlando en {month}: {verdict}. Cada parque día a día, con Epic Universe.",
+    "metaDescriptionMonthPlain": "Orlando en {month}, día a día: dónde son más cortas las colas en Disney World, en Universal con Epic Universe, en SeaWorld y en las excursiones.",
+    "lead": "Walt Disney World, Universal con Epic Universe, SeaWorld y las excursiones, día a día, y un planificador que pone tus parques en tus fechas.",
+    "leadMonth": "Qué parque tiene las colas más cortas qué día de {month}: Walt Disney World, Universal con Epic Universe, SeaWorld y las excursiones.",
+    "scroll": "Al calendario",
+    "introLabel": "Cómo leer el calendario",
+    "intro": "Cada casilla es un parque en un día. El número es la espera habitual en las grandes atracciones de ese parque a la hora de más gente, y es con él con lo que comparas los parques. El color dice cómo es ese día frente a un día normal del mismo parque.",
+    "nextDays": "Próximos 30 días",
+    "lastYearBanner": "Nuestra previsión llega hasta el {date}. Los días siguientes muestran el mismo día de la semana del año pasado, tal como lo medimos, con la nota «año pasado».",
+    "lastYearBannerNoDate": "Algunos de estos días quedan más allá de nuestra previsión. Muestran el mismo día de la semana del año pasado, tal como lo medimos, con la nota «año pasado».",
+    "monthIndexLabel": "Orlando mes a mes",
+    "glance": {
+      "title": "Colas más cortas el <time>{date}</time>, hora de Orlando",
+      "minutes": "unos {minutes} min",
+      "closesEarly": "cierra a las {time} por un evento nocturno",
+      "earlyElsewhere": "({park} cierra a las {time} por un evento nocturno)",
+      "none": "Aún no hay previsión para el {date}.",
+      "noneAtAll": "No se pudo cargar la previsión. El calendario de abajo lo vuelve a intentar.",
+      "noneMonth": "Aún no hay previsión para {month}.",
+      "monthTitle": "Los días más tranquilos de {month}",
+      "monthTitleLastYear": "Los días más tranquilos de {month} el año pasado",
+      "quietPark": "({park}, unos {minutes} min)"
+    },
+    "legend": {
+      "minutes": "Minutos: las grandes atracciones en su peor momento",
+      "ring": "Anillo: colas más cortas del resort",
+      "early": "Esquina: cierra antes para los visitantes de día",
+      "closed": "Cerrado",
+      "unknown": "Aún sin horario",
+      "lastYear": "Año pasado",
+      "howTo": "Cómo leer esto",
+      "minutesLong": "El número de una casilla es la espera que prevemos en las grandes atracciones del parque, cada una a su hora de más gente, como media entre ellas. No vale para cada hora: por la mañana y por la noche las colas son más cortas. Los parques se comparan por este número.",
+      "colourLong": "El color compara un día con un día normal del mismo parque. Por eso un Magic Kingdom verde con 40 minutos y un EPCOT verde con 60 son buenos días, cada uno para su parque. El anillo marca el parque con las colas más cortas del resort ese día. Un parque que cierra antes para los visitantes de día puede perder el anillo frente a un día completo con una espera parecida.",
+      "horizonLong": "La previsión cubre los próximos 60 días. Después nuestra tendencia llega hasta el {date}, con un margen de error mayor. Más allá, un día muestra el mismo día de la semana del año pasado, tal como lo medimos.",
+      "horizonLongNoDate": "La previsión cubre los próximos 60 días. Después nuestra tendencia sigue con un margen de error mayor, y más allá un día muestra el mismo día de la semana del año pasado, tal como lo medimos.",
+      "statesLong": "Una casilla rayada está cerrada, tal como lo publicó el parque. Una casilla vacía significa que el parque aún no ha publicado su horario para ese día, así que no podemos decir nada. Un guion significa abierto, pero sin colas que merezcan una previsión, como en la mayoría de los parques acuáticos."
+    },
+    "calendar": {
+      "kicker": "{from} – {to}",
+      "title": "Qué parque qué día",
+      "hint": "Toca un día para ver horarios, eventos, trayectos y las grandes atracciones.",
+      "unavailable": "No se pudo cargar el calendario. Vuelve a intentarlo en unos minutos.",
+      "sources": "Esperas y afluencia: previsión de park.fan del {date}. Horarios tal como los publican los parques. Trayectos: {attribution}, sin tráfico.",
+      "dayPlanner": "Planificar un día de parque en el planificador",
+      "caption": "Los parques de Orlando del {from} al {to}: espera en las grandes atracciones a la hora de más gente, en minutos",
+      "parkColumn": "Parque",
+      "filterLabel": "Parques mostrados",
+      "filterAll": "Todos los parques",
+      "listLabel": "Colas más cortas, día a día",
+      "more": "+{count} más",
+      "showAll": "Mostrar todos los días",
+      "showWeek": "Mostrar los 7 primeros días",
+      "loading": "Cargando los demás días …",
+      "failed": "No se pudieron cargar los demás días.",
+      "openDay": "{date}: ver todos los parques",
+      "today": "Hoy",
+      "outlook": "tendencia",
+      "lastYear": "año pasado",
+      "cell": "{park}, {date}: unos {minutes} min, {level}",
+      "cellClosed": "{park}, {date}: cerrado",
+      "cellUnknown": "{park}, {date}: aún sin horario",
+      "cellOpen": "{park}, {date}: abierto, sin previsión",
+      "cellBest": "colas más cortas de {resort}",
+      "cellEarly": "cierra a las {time}",
+      "stateClosed": "Cerrado por temporada",
+      "stateUnknown": "Aún sin horario",
+      "stateOpen": "Abierto, sin previsión"
+    },
+    "lanes": {
+      "summaryLabel": "Eventos",
+      "nights": "{name}: {count, plural, =1 {# noche} other {# noches}}",
+      "break": "{name} {dates}",
+      "expected": "fechas previstas",
+      "unnamedBreak": "Vacaciones escolares",
+      "none": "No hay eventos ni vacaciones escolares en estos días.",
+      "allDays": "todos los días"
+    },
+    "sheet": {
+      "kicker": "Orlando · un día",
+      "intro": "En cada resort, primero el parque con las colas más cortas. Minutos: las grandes atracciones a la hora de más gente.",
+      "stayingAt": "Te alojas en",
+      "minutes": "{minutes} min",
+      "noForecast": "abierto, sin previsión",
+      "noHours": "Aún sin horario",
+      "closedFor": "Cerrado: {name}",
+      "lastYear": "Día medido el año pasado; la previsión aún no llega a esta fecha.",
+      "outlook": "Tendencia: un margen de error mayor que la previsión.",
+      "earlyEntry": "Early Entry desde las {time} para huéspedes de los hoteles Disney",
+      "earlyAdmission": "Early Park Admission desde las {time} para huéspedes de los hoteles Universal",
+      "ticketedEvening": "{name} desde las {time}: los visitantes de día salen a las {leave}",
+      "eveningEvent": "Evento nocturno",
+      "shorterDay": "Día más corto: los visitantes de día salen a las {leave}",
+      "extendedEvening": "Extended Evening Hours hasta las {time} para huéspedes de los hoteles deluxe",
+      "expected": "fechas previstas",
+      "travel": "Desde {area}: unos {minutes} min en coche, sin tráfico",
+      "travelTransfer": "Desde {area}: unos {minutes} min en coche hasta el aparcamiento, luego unos {transfer} min en monorraíl o ferri, {total} min en total, sin tráfico",
+      "bigRides": "Las grandes atracciones",
+      "ridesLoading": "Cargando las atracciones …",
+      "ridesNone": "No hay cifras por atracción para este día.",
+      "ridesHint": "Cada atracción a su hora de más gente.",
+      "planDay": "Planificar este día"
+    },
+    "when": {
+      "kicker": "Disney World y Universal",
+      "title": "Mejor época para visitar Orlando en {year}",
+      "titleNoYear": "Mejor época para visitar Orlando",
+      "hint": "Los viajes de diez días con las colas más cortas en los siete grandes parques de Walt Disney World y Universal.",
+      "pageLink": "Mejor época para visitar Orlando en {year}",
+      "pageLinkNoYear": "Mejor época para visitar Orlando",
+      "none": "No se pudieron cargar los viajes más tranquilos del año.",
+      "sentence": "Los viajes de {days} días más tranquilos para Disney y Universal: {windows}.",
+      "lastYearNote": "Las fechas más allá de nuestra previsión se planifican con la afluencia medida el año pasado.",
+      "rank": "N.º {rank}",
+      "figure": "Grandes atracciones: unos {minutes} min",
+      "average": "En el año: unos {minutes} min",
+      "basisLastYear": "Afluencia medida el año pasado",
+      "basisMixed": "En parte, afluencia medida el año pasado",
+      "plan": "Planificar estas fechas"
+    },
+    "planner": {
+      "kicker": "Tus fechas",
+      "title": "Planifica tu viaje",
+      "hint": "Tus fechas, tus parques: el planificador pone cada parque en el día en que sus colas son más cortas.",
+      "placeholder": "Elige cuándo llegas y te vas, y qué parques quieres ver. Hasta entonces no hay nada rellenado."
+    },
+    "bestDays": {
+      "title": "Los mejores días de cada parque",
+      "hint": "Los días tranquilos de cada parque, como grupo. Con menos de cinco minutos de diferencia, los días cuentan como iguales.",
+      "none": "Aún no hay mejores días para estas fechas.",
+      "quiet": "Los días más tranquilos",
+      "quietLastYear": "Los días más tranquilos el año pasado",
+      "flat": "Ningún día destaca: de {min} a {max} min.",
+      "minutes": "unos {minutes} min",
+      "closes": "cierra a las {time}",
+      "more": "Por qué estos días, y los de más gente",
+      "busy": "Los de más gente: {days}",
+      "calendarLink": "Calendario de afluencia de {park}"
+    },
+    "reasons": {
+      "quietest_in_window": "las colas más cortas del periodo",
+      "weekday": "entre semana",
+      "holiday_ends": "después de las fiestas",
+      "school_break": "durante unas vacaciones escolares",
+      "closes_early": "los visitantes de día salen a las {time}",
+      "extended_evening": "Extended Evening Hours",
+      "early_entry": "Early Entry para huéspedes de hotel",
+      "long_range": "tendencia, error mayor",
+      "estimate_last_year": "día medido el año pasado"
+    },
+    "summary": {
+      "quietDay": "{date} ({park}, unos {minutes} min)",
+      "quiet": "tiene las colas más cortas el {days}.",
+      "quietLastYear": "tuvo el año pasado las colas más cortas el {days}.",
+      "busy": "Los días de más gente son el {days}, con al menos {minutes} min incluso en el parque más tranquilo.",
+      "busyLastYear": "Los de más gente el año pasado fueron el {days}, con al menos {minutes} min incluso en el parque más tranquilo.",
+      "eventsLabel": "Eventos:",
+      "eventNights": "{name} ({count, plural, =1 {# noche} other {# noches}})",
+      "eventExpected": "{name} (fechas previstas)"
+    },
+    "method": {
+      "title": "Cómo se hace la previsión",
+      "summary": "Cada cifra de esta página sale de los tiempos de espera que park.fan mide cada cinco minutos, de una previsión basada en ellos y de los horarios que publican los parques. Abre una pregunta para ver los detalles.",
+      "sources": {
+        "title": "¿De dónde salen las cifras?",
+        "body": "park.fan guarda cada cinco minutos la espera anunciada de cada atracción. Nuestros modelos de previsión aprenden de esas mediciones, de los horarios, de las vacaciones escolares y del tiempo. Los horarios, el Early Entry y los eventos nocturnos vienen de los calendarios de los parques; las temporadas y las fiestas se revisan a mano."
+      },
+      "minutes": {
+        "title": "¿Qué significan los minutos?",
+        "body": "Para cada parque prevemos la espera en sus grandes atracciones, cada una a su hora de más gente, y sacamos la media. Es la única cifra con la que comparamos los parques. Por la mañana y por la noche las colas son más cortas, así que no vale para cada hora."
+      },
+      "horizon": {
+        "title": "¿Hasta dónde llega?",
+        "body": "La previsión cubre los próximos 60 días. Después la tendencia llega hasta el {date}, con un error mayor. Más allá, un día muestra el mismo día de la semana del año pasado, tal como lo medimos, con la nota «año pasado».",
+        "bodyNoDate": "La previsión cubre los próximos 60 días. Después la tendencia sigue con un error mayor. Más allá, un día muestra el mismo día de la semana del año pasado, tal como lo medimos, con la nota «año pasado»."
+      },
+      "error": {
+        "title": "¿Cuánto acierta?",
+        "body": "Para una atracción en un día, la previsión suele fallar entre 5 y 10 minutos. Por eso, días con menos de 5 minutos de diferencia son iguales para nosotros, y los mejores días son un grupo, no una clasificación. Cada previsión se compara al día siguiente con la espera medida."
+      },
+      "travel": {
+        "title": "¿Cómo se calculan los trayectos?",
+        "body": "Los trayectos son un recorrido en coche sin tráfico según {attribution}, hasta el aparcamiento. El aparcamiento de Magic Kingdom es el Transportation and Ticket Center; desde allí, en monorraíl o en ferri, quedan unos 15 minutos hasta la entrada."
+      },
+      "links": "El modelo que hay detrás: <fancast>Fancast</fancast>. Todo lo demás: <howto>cómo funciona park.fan</howto>."
+    },
+    "faq": {
+      "title": "Preguntas sobre la afluencia en Orlando",
+      "quietest": {
+        "q": "¿Cuándo hay menos gente en Orlando en las próximas semanas?",
+        "qMonth": "¿Cuándo hay menos gente en Orlando en {month}?",
+        "resort": "En {resort} las colas más cortas son el {days}.",
+        "day": "{date} en {park}, unos {minutes} min",
+        "note": "El calendario de arriba muestra cada día, con el parque de colas más cortas de cada resort."
+      },
+      "party": {
+        "q": "¿Qué parque elegir una noche de fiesta en Magic Kingdom?",
+        "a": "En {count, plural, =1 {# noche} other {# noches}} de este periodo, Magic Kingdom cierra a los visitantes de día a las {time} por {name}. Esos días las colas son más cortas, unos {on} min frente a {off} min el resto de días, pero el día es más corto y los visitantes de día se pierden la noche. Para un día completo, elige ese día EPCOT, Hollywood Studios o Animal Kingdom, o ve con entrada para la fiesta."
+      },
+      "epic": {
+        "q": "¿Hay más gente en Epic Universe los fines de semana?",
+        "a": "{verdict, select, busier {Sí.} same {No.} other {Solo un poco.}} En este periodo sus grandes atracciones rondan los {weekend} min a la hora de más gente los sábados y domingos, y los {weekday} min entre semana."
+      },
+      "distance": {
+        "q": "¿A qué distancia está Universal de Walt Disney World?",
+        "a": "En coche y sin tráfico, unos {epcot} min de Universal Studios a EPCOT, y unos {magic} min hasta el aparcamiento de Magic Kingdom, más unos {transfer} min en monorraíl o ferri hasta la entrada ({total} min en total). Trayectos: {attribution}."
+      },
+      "early": {
+        "q": "¿Necesito Early Entry?",
+        "a": "No, pero ayuda los días de mucha gente. Los huéspedes de los hoteles propios de Disney entran en los parques temáticos de Disney {disney} minutos antes que nadie, y los de los hoteles de Universal {universal} minutos antes en los parques temáticos de Universal. El planificador lo tiene en cuenta si eliges un hotel así."
+      },
+      "green": {
+        "q": "¿Por qué un parque con colas más largas puede estar en verde?",
+        "a": "El color compara un día con un día normal del mismo parque, no con otros parques. EPCOT con 60 minutos puede ser un día tranquilo para EPCOT, y Magic Kingdom con 50 uno de mucha gente para Magic Kingdom. Para comparar dos parques, lee los minutos."
+      },
+      "lastYear": {
+        "q": "¿Qué significa «año pasado» en un día?",
+        "a": "Nuestra previsión aún no llega a ese día. Hasta que llegue, el día muestra el mismo día de la semana del año pasado, tal como lo medimos. Léelo como una pista de cuánta gente hubo en esa época del año, no como una previsión."
+      }
+    },
+    "next": {
+      "title": "¿Varios días en Orlando?",
+      "body": "Dale al planificador tus fechas y tus parques, y pondrá cada parque en el día en que sus colas son más cortas.",
+      "parkCalendar": "Calendario de afluencia de {park}"
+    },
+    "dataset": {
+      "name": "Calendario de afluencia de los parques de Orlando, {period}",
+      "description": "Por parque y día en Walt Disney World, Universal Orlando, SeaWorld y las excursiones: la espera prevista en las grandes atracciones a la hora de más gente, la afluencia frente a un día normal del parque y los horarios, {period}.",
+      "varWait": "Espera prevista en las grandes atracciones",
+      "varCrowd": "Afluencia",
+      "varHours": "Horarios"
+    },
+    "band": {
+      "title": "¿Varios días en Orlando?",
+      "link": "Qué parque qué día"
+    }
   },
   "theme": {
     "light": "Claro",
@@ -2895,6 +3147,10 @@
     "parky": {
       "kicker": "park.fan · Asistente de chat",
       "action": "Preguntar a Parky"
+    },
+    "orlando": {
+      "kicker": "park.fan · Orlando",
+      "action": "Planificar mi viaje a Orlando"
     }
   },
   "compare": {

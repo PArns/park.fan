@@ -64,6 +64,7 @@ The frontend side of each API surface; the contract itself is linked from each p
 - [media-database](features/media-database.md) — Media database read side: @/lib/media modules, manifests, ?v= caching, /api/media, native-app R2 export
 - [most-read](features/most-read.md) — Most read: page-view beacon, rankings, build snapshot, surfaces, leader badge, popular parks, admin view
 - [new-posts-toast](features/new-posts-toast.md) — New-posts toast for returning visitors: when it asks, what counts as new, labels, layout, manual testing
+- [orlando-hub](features/orlando-hub.md) — The Orlando hub and month pages: URLs and redirects, data and relay, the four levels, chapters, SEO, ways in
 - [og-images](features/og-images.md) — OG image route: which card a path gets, og-assets/, JPEG re-encode, cache windows, pnpm og:preview
 - [park-compass](features/park-compass.md) — In-park compass (homepage, park page): when it may appear, dial, bar, list, heading, pocket return, data
 - [park-map](features/park-map.md) — The Leaflet park map: map tab and blog widget mounting, markers, #map-show deep link, following the visitor
