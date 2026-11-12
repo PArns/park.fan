@@ -17,10 +17,10 @@ import {
 } from '@/components/seo/structured-data';
 import { BestTimePage } from '@/components/orlando/best-time/best-time-page';
 import { getOrlandoRegion, getOrlandoSchoolBreaks, getOrlandoWhen } from '@/lib/orlando/api';
+import { WHEN_HOLIDAY_COUNTRIES } from '@/lib/orlando/plan-when';
 import { orlandoToday } from '@/lib/orlando/hub-data';
 import { currentOrlandoMonth, orlandoBestTimePath, orlandoPath } from '@/lib/orlando/paths';
 import {
-  BEST_TIME_HOLIDAY_COUNTRIES,
   BEST_TIME_TRIP_DAYS,
   BEST_TIME_WINDOWS,
   bestTimeParks,
@@ -135,7 +135,7 @@ export default async function OrlandoBestTimeRoute({ params }: BestTimeRouteProp
   const { todayIso, year, range } = resolve();
   const [{ region, parks, when }, schoolBreaks] = await Promise.all([
     loadWhen(page, range),
-    catchNonFatal(getOrlandoSchoolBreaks({ ...range, countries: BEST_TIME_HOLIDAY_COUNTRIES })),
+    catchNonFatal(getOrlandoSchoolBreaks({ ...range, countries: WHEN_HOLIDAY_COUNTRIES })),
   ]);
   const [t, tNav, tHub] = await Promise.all([
     getTranslations({ locale, namespace: 'orlandoBestTime' }),

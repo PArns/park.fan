@@ -44,9 +44,6 @@ export const BEST_TIME_TRIP_DAYS = DEFAULT_FIND_DAYS;
 /** The windows the first answer names. */
 export const BEST_TIME_WINDOWS = 3;
 
-/** The countries whose school calendars chapter 04 and the month rows read. */
-export const BEST_TIME_HOLIDAY_COUNTRIES = ['DE', 'NL', 'GB'] as const;
-
 /**
  * A European break counts in a month only when it runs at least this many days, weekends
  * included: a bridge day (Maundy Thursday, Ascension) is not a family's trip.

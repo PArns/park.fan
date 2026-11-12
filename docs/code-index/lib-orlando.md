@@ -43,7 +43,6 @@ by hand: change the comment in the code and re-run the script. -->
 - `BEST_TIME_PAGE_GROUPS` _const_: The region groups whose headliner parks each page plans.
 - `BEST_TIME_TRIP_DAYS` _const_: The trip length every page ranks, the planner's own default.
 - `BEST_TIME_WINDOWS` _const_: The windows the first answer names.
-- `BEST_TIME_HOLIDAY_COUNTRIES` _const_: The countries whose school calendars chapter 04 and the month rows read.
 - `EUROPEAN_BREAK_MIN_DAYS` _const_: A European break counts in a month only when it runs at least this many days, weekends included: a bridge day (Maundy Thursday, Ascension) is not a family's trip.
 - Types: `OrlandoBestTimePage`, `MonthHours`, `BestTimeMonthRow`, `BreakRun`, `CountryBreaks`, `WeekFacts`
 

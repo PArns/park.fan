@@ -30,7 +30,6 @@ import { holidayRegionsFor, percentBelowAverage } from '@/lib/orlando/plan-when'
 import { orlandoPlannerHref, type PlanSearchRange } from '@/lib/orlando/plan-query';
 import { orlandoBestTimePath, orlandoPath } from '@/lib/orlando/paths';
 import {
-  BEST_TIME_HOLIDAY_COUNTRIES,
   BEST_TIME_TRIP_DAYS,
   ORLANDO_BEST_TIME_RESORTS,
   bestTimeResort,
@@ -128,9 +127,9 @@ export async function BestTimePage(props: BestTimePageProps) {
   const lastYearShown = windows.some((w) => w.basis !== 'forecast');
   const rows = monthRows(when, todayIso);
   const regions = props.schoolBreaks?.regions ?? [];
-  const countryOrder = holidayRegionsFor(locale)
-    .map((g) => g.country)
-    .filter((c) => (BEST_TIME_HOLIDAY_COUNTRIES as readonly string[]).includes(c));
+  const countryOrder = holidayRegionsFor(props.schoolBreaks ?? undefined, locale).map(
+    (c) => c.country
+  );
   const faq = buildFaq({ ...props, t, parkName, labels, lastYearNote: tHub('when.lastYearNote') });
 
   const calendarPark = RESORT_CALENDAR_PARK[page];
