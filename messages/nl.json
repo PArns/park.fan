@@ -3055,6 +3055,359 @@
       "open": "Planner openen"
     }
   },
+  "orlandoPlanner": {
+    "setup": {
+      "dates": "Reisdata",
+      "datesEmpty": "Kies aankomst en vertrek",
+      "parks": "Parken",
+      "parksCount": "{count, plural, =1 {1 park} other {# parken}}",
+      "splitOn": "de planner verdeelt de dagen",
+      "visitCount": "{count, plural, =1 {1 parkdag} other {# parkdagen}}",
+      "fineTune": "Verfijnen",
+      "findSummary": "De beste {days} dagen, {range}",
+      "nextParks": "Verder naar de parken",
+      "plan": "Plannen",
+      "find": "Data zoeken",
+      "done": "Klaar",
+      "start": "Orlando-reis plannen",
+      "close": "Sluiten",
+      "sheetHint": "Je keuze verandert het plan eronder."
+    },
+    "dates": {
+      "prevMonth": "Vorige maand",
+      "nextMonth": "Volgende maand",
+      "gridLabel": "Aankomst- en vertrekdag",
+      "wait": "kortste wachttijd bij de grote attracties ongeveer {minutes} min.",
+      "waitLastYear": "vorig jaar ongeveer {minutes} min. bij de grote attracties",
+      "legend": "Onder elke datum staat de kortste wachttijd bij de grote attracties, in minuten, in het park met de kortste rijen.",
+      "legendLastYear": "Cijfers in cursief zijn gemeten dagen van vorig jaar.",
+      "pickArrival": "Tik op je aankomstdag.",
+      "pickDeparture": "Nu je vertrekdag.",
+      "dayCount": "{count, plural, =1 {1 dag} other {# dagen}}",
+      "arrivalPark": "Park op de aankomstdag",
+      "arrivalParkHint": "Bij een vroege vlucht; anders blijft de dag vrij.",
+      "departurePark": "Park op de vertrekdag",
+      "departureParkHint": "Bij een avondvlucht.",
+      "maxLength": "Een reis duurt hoogstens {days} dagen."
+    },
+    "find": {
+      "modeLabel": "Hoe je je reisdata kiest",
+      "modeKnown": "Ik weet mijn data",
+      "modeFind": "Beste data zoeken",
+      "period": "Wanneer zou je kunnen reizen?",
+      "periods": {
+        "next12": "Komende 12 maanden",
+        "year": "{year}",
+        "spring": "Voorjaar {year}",
+        "summer": "Zomer {year}",
+        "autumn": "Najaar {year}",
+        "custom": "Eigen periode"
+      },
+      "customFrom": "Op zijn vroegst aankomen",
+      "customTo": "Op zijn laatst vertrekken",
+      "length": "Reisduur",
+      "lengthValue": "{days} dagen",
+      "shorter": "Een dag korter",
+      "longer": "Een dag langer",
+      "holidays": "Alleen in onze schoolvakanties",
+      "holidaysHint": "Alleen periodes die helemaal in de schoolvakantie van je regio vallen.",
+      "country": "Land",
+      "region": "Regio",
+      "through": "De schoolvakantiegegevens lopen tot {date}.",
+      "holidaysUnavailable": "De schoolvakantiegegevens konden niet worden geladen."
+    },
+    "parks": {
+      "split": "Verdeel mijn dagen",
+      "splitHint": "Parken met “auto” krijgen een tweede dag als de reis daar ruimte voor heeft.",
+      "auto": "auto",
+      "fewer": "{park}: een dag minder",
+      "more": "{park}: een dag meer",
+      "moreParks": "Meer parken",
+      "moreHint": "Waterparken, SeaWorld en dagtochten",
+      "moreChosen": "{count, plural, =1 {1 gekozen} other {# gekozen}}",
+      "drive": "Ongeveer {minutes} min. met de auto",
+      "closed": "Gesloten op je data",
+      "closedSeason": "Gesloten op je data ({season})",
+      "noHours": "Voor je data nog geen openingstijden",
+      "driveSource": "Rijtijden zonder verkeer, {source}",
+      "budget": "Minstens {visits, plural, =1 {1 parkdag} other {# parkdagen}}, {days, plural, =1 {1 dag} other {# dagen}} vrij voor parken"
+    },
+    "options": {
+      "hotel": "Waar je overnacht",
+      "hotelLabel": {
+        "disney": "Disney-hotel",
+        "disney_deluxe": "Disney-deluxehotel",
+        "universal": "Universal-hotel",
+        "universal_premier": "Universal Premier-hotel",
+        "offsite": "Ergens anders"
+      },
+      "hotelHint": {
+        "disney": "Early Entry in de Disney-parken, 30 minuten voor de opening",
+        "disney_deluxe": "Early Entry, en op sommige avonden Extended Evening Hours",
+        "universal": "Early Park Admission, een uur voor de opening",
+        "universal_premier": "Early Park Admission, plus Express in Universal Studios en Islands of Adventure",
+        "offsite": "Geen vroege toegang"
+      },
+      "hotelShort": {
+        "disney": "Disney-hotel",
+        "disney_deluxe": "Disney-deluxehotel",
+        "universal": "Universal-hotel",
+        "universal_premier": "Universal Premier",
+        "offsite": "hotel elders"
+      },
+      "area": "Hotelbuurt, voor de rijtijden",
+      "areaNone": "Niet opgegeven",
+      "areaNoneHint": "Het plan toont dan geen rijtijden.",
+      "fromArea": "vanaf {area}",
+      "fireworks": "Wil je het vuurwerk in Magic Kingdom zien?",
+      "fireworksWant": "Ja",
+      "fireworksWantHint": "Je dagen in Magic Kingdom mijden feestavonden, waarop dagbezoekers vroeger weg moeten.",
+      "fireworksAny": "Maakt niet uit",
+      "fireworksAnyHint": "Een feestavond kan een Magic Kingdom-dag worden als de kortere rijen de kortere dag goedmaken.",
+      "fireworksWantShort": "vuurwerk in Magic Kingdom",
+      "blocks": "Disney-dagen en Universal-dagen bij elkaar houden",
+      "blocksHint": "De dagen van een resort achter elkaar, zodat je minder tussen de resorts rijdt.",
+      "blocksOn": "resorts achter elkaar",
+      "blocksOff": "resorts door elkaar",
+      "rest": "Rustdagen",
+      "restAutoLabel": "Automatisch",
+      "restAutoHint": "Hoogstens vier parkdagen achter elkaar; de rustdagen vallen op de drukste dagen.",
+      "restMaxLabel": "Eigen grens",
+      "restMax": "Hoogstens {n, plural, =1 {1 parkdag} other {# parkdagen}} achter elkaar",
+      "restNoneLabel": "Geen rustdagen",
+      "restAuto": "rustdagen op drukke dagen",
+      "restMaxShort": "hoogstens {n} parkdagen achter elkaar",
+      "restNone": "geen rustdagen",
+      "restFewer": "Een dag minder",
+      "restMore": "Een dag meer",
+      "hop": "Parkhoppen",
+      "hopHint": "Twee parken van één resort op één dag, als de reis minder dagen dan parkbezoeken heeft.",
+      "hopOn": "parkhoppen"
+    },
+    "result": {
+      "label": "Je plan",
+      "empty": "Kies aankomst en vertrek, of laat de planner de beste data zoeken. Het plan verschijnt dan hier.",
+      "chooseDates": "Data kiezen",
+      "loading": "Je dagen worden gepland …",
+      "invalid": "Deze keuzes passen niet bij elkaar. Kijk de data en de dagen per park na.",
+      "failed": "Het plan kon niet worden geladen.",
+      "retry": "Opnieuw proberen"
+    },
+    "problem": {
+      "no_dates": "Kies je reisdata.",
+      "too_long": "Een reis duurt hoogstens {days} dagen. Kies een korter verblijf.",
+      "no_parks": "Kies minstens één park.",
+      "too_many_visits": "Meer parkdagen dan dagen voor parken. Haal bij een park een dag weg, sta parkhoppen toe of laat een reisdag een park bevatten.",
+      "over_max_visits": "Een plan bevat hoogstens {max} parkdagen.",
+      "no_park_day": "Je reis heeft geen dag vrij voor een park. Sta een park toe op de aankomst- of vertrekdag."
+    },
+    "answer": {
+      "counts": "{parkDays, plural, =1 {1 parkdag} other {# parkdagen}}, {restDays, plural, =0 {geen rustdag} =1 {1 rustdag} other {# rustdagen}}",
+      "yourDays": "Grote attracties op je dagen: ongeveer {minutes} min. per rit.",
+      "averageDay": "Dezelfde parken op een gemiddelde dag van je reis: {minutes} min.",
+      "saved": "Ongeveer {minutes} min. minder per rit.",
+      "error": "Een voorspelling voor één attractie op één dag kan ongeveer {minutes} min. ernaast zitten.",
+      "orderBarelyMatters": "Je dagen zijn ongeveer even druk, dus op deze data maakt de volgorde weinig uit.",
+      "lastYear": "Deze data plannen we met de gemeten drukte van vorig jaar. De voorspelling bereikt ze rond {date}.",
+      "about": "ongeveer {minutes} min.",
+      "daysLabel": "Je dagen",
+      "split": "{visits, plural, =2 {We hebben {park} een tweede dag gegeven.} other {We hebben {park} # dagen gegeven.}}"
+    },
+    "day": {
+      "arrival": "Aankomst",
+      "departure": "Vertrek",
+      "rest": "Rustdag",
+      "park": "Parkdag",
+      "hop": "Twee parken"
+    },
+    "marker": {
+      "closesAt": "sluit {time}",
+      "closesEarly": "sluit vroeger",
+      "earlyEntry": "Early Entry",
+      "earlyPark": "Early Park Admission",
+      "rest": "Rustdag",
+      "evening": "Extended Evening Hours",
+      "last_year": "vorig jaar"
+    },
+    "views": {
+      "label": "Weergave",
+      "agenda": "Lijst",
+      "week": "Week",
+      "month": "Maand"
+    },
+    "week": {
+      "previous": "Eerdere dagen",
+      "next": "Latere dagen",
+      "minutes": "{minutes} min.",
+      "noFigure": "geen cijfer",
+      "noHours": "nog geen tijden",
+      "early": "Vroege toegang voor je hotel",
+      "extendedEvening": "Extended Evening Hours voor je hotel",
+      "party": "Feestavond",
+      "partyNamed": "{name}, apart ticket",
+      "leg": {
+        "drive": "{minutes} min. auto",
+        "walk": "{minutes} min. lopen",
+        "bus": "{minutes} min. shuttle"
+      }
+    },
+    "month": {
+      "legend": "Twee letters per park, gekleurd naar hoe druk de dag voor dat park is; het getal is de wachttijd bij de grote attracties in minuten."
+    },
+    "details": {
+      "minutesCaption": "De wachttijd bij de grote attracties op het drukste moment; daarmee vergelijkt het plan de dagen. De kleur vergelijkt de dag met een gewone dag in dit park.",
+      "hours": "Open {range}",
+      "noHours": "Voor deze dag zijn nog geen openingstijden gepubliceerd.",
+      "earlyYours": {
+        "early_entry": "Early Entry voor jou vanaf {time}",
+        "early_park_admission": "Early Park Admission voor jou vanaf {time}"
+      },
+      "earlyOthers": {
+        "early_entry": "Early Entry vanaf {time} voor gasten van de Disney-hotels",
+        "early_park_admission": "Early Park Admission vanaf {time} voor gasten van de Universal-hotels"
+      },
+      "eveningYours": "Extended Evening Hours voor jou tot {time}",
+      "eveningOthers": "Extended Evening Hours tot {time} voor gasten van de Disney-deluxehotels",
+      "partyTicket": "{name}, met apart ticket",
+      "party": "{name}",
+      "shortDay": "Een kortere dag voor dagbezoekers",
+      "leaveAt": "Dagbezoekers gaan om {time} weg.",
+      "hoursLess": "Dat is ongeveer {hours, plural, =1 {een uur} other {# uur}} minder dan op een gewone dag hier.",
+      "runnerUp": "Op een na beste dag: {date}, ongeveer {minutes} min., {delta} min. langer per rit.",
+      "runnerUpSame": "Op een na beste dag: {date}, ongeveer {minutes} min., even lang wachten.",
+      "runnerUpLess": "Een andere dag: {date}, ongeveer {minutes} min., {delta} min. korter, maar zo komt de rest van het plan beter uit.",
+      "travel": {
+        "drive": "Ongeveer {minutes} min. met de auto vanaf {area}, zonder verkeer.",
+        "walk": "Ongeveer {minutes} min. lopen vanaf {area}.",
+        "bus": "Ongeveer {minutes} min. met de shuttle vanaf {area}."
+      },
+      "transferTtc": "Daarna ongeveer {minutes} min. met de monorail of de veerboot vanaf het Transportation and Ticket Center.",
+      "transfer": "Daarna ongeveer {minutes} min. van de parkeerplaats naar de ingang.",
+      "between": {
+        "drive": "Tussen de parken: ongeveer {minutes} min. met de auto.",
+        "walk": "Tussen de parken: ongeveer {minutes} min. lopen.",
+        "bus": "Tussen de parken: ongeveer {minutes} min. met de shuttle."
+      },
+      "pin": "Dag vastzetten",
+      "unpin": "Losmaken",
+      "swap": "Ruilen",
+      "planDay": "Deze dag plannen",
+      "planPark": "{park} plannen",
+      "loading": "De dag wordt geladen …",
+      "rain": "{mm} mm regen",
+      "noWeather": "Voor deze datum is er nog geen weersverwachting; die reikt ongeveer twee weken vooruit.",
+      "rides": "De grote attracties die dag",
+      "ridesCaption": "De attracties achter het cijfer; de dagplanner toont voor elke attractie de wachttijd per uur."
+    },
+    "reason": {
+      "locked": "Deze dag heb je vastgezet.",
+      "quietest_in_window": "De rustigste van je dagen voor {park}.",
+      "runner_up_close": "Een andere dag van je reis zit minder dan 5 minuten hoger; deze past beter bij de rest van het plan.",
+      "party_night": "Een feestavond.",
+      "express_included": "Express zit hier bij je hotel inbegrepen, dus de rijen tellen minder.",
+      "extended_evening": "Je hotel heeft deze dag Extended Evening Hours.",
+      "early_park_admission": "Je hotel heeft deze dag Early Park Admission.",
+      "early_entry": "Je hotel heeft deze dag Early Entry.",
+      "holiday_ends": "De vakantie is op deze dag voorbij.",
+      "water_park_weather": "Warm en droog, een dag voor een waterpark.",
+      "weekday": "Een doordeweekse dag.",
+      "busiest_day_spared": "De drukste dag van je reis, dus de vrije dag.",
+      "rest_after_streak": "Een pauze na een paar parkdagen achter elkaar."
+    },
+    "warning": {
+      "party_night_short_hours": "Feestavond: dagbezoekers moeten vroeger weg.",
+      "closes_early": "Dagbezoekers gaan vroeger weg dan normaal.",
+      "hours_not_published": "Voor deze dag zijn nog geen openingstijden gepubliceerd.",
+      "no_forecast": "Voor de grote attracties van dit park is er deze dag geen voorspelling.",
+      "estimate_last_year": "Gebaseerd op de gemeten dag van vorig jaar, niet op een voorspelling.",
+      "long_range": "Een vooruitblik zo ver vooruit; die wordt preciezer naarmate de dag dichterbij komt.",
+      "repeat_back_to_back": "Je tweede dag hier volgt meteen, omdat geen andere volgorde paste.",
+      "adjacent_repeat": "Je tweede dag hier volgt meteen, omdat geen andere volgorde paste.",
+      "long_streak": "Meer parkdagen achter elkaar dan de rustdagregel toelaat; je parkkeuze liet geen ruimte voor een pauze."
+    },
+    "relaxed": {
+      "blocks_relaxed": "Disney-dagen en Universal-dagen konden op deze data niet helemaal bij elkaar blijven.",
+      "streak_relaxed": "Je parken hebben meer dagen achter elkaar nodig dan de rustdagregel toelaat."
+    },
+    "unplaced": {
+      "no_open_day": "{park} is gesloten op je data en staat niet in het plan.",
+      "no_day_left": "Voor {park} bleef geen dag over."
+    },
+    "ignoredLock": {
+      "outside_trip": "{what} op {date}: die dag hoort niet bij je reis.",
+      "closed": "{what} op {date}: het park is die dag gesloten.",
+      "day_taken": "{what} op {date}: die dag staat al vast.",
+      "no_visit_left": "{what} op {date}: meer vastgezette dagen dan dagen voor dit park."
+    },
+    "edit": {
+      "pinned": "Je vastgezette dagen blijven waar ze zijn.",
+      "cost": "Je vastgezette dagen kosten ongeveer {delta} min. per rit: {current} min. tegen {best} in de beste volgorde.",
+      "noCost": "Je vastgezette dagen kosten niets: het plan is even snel als de beste volgorde.",
+      "undo": "Ongedaan maken",
+      "release": "Alles losmaken"
+    },
+    "swap": {
+      "hint": "Ruil deze dag met een andere. Het cijfer is de verandering in de wachttijd bij de grote attracties van beide parken; de rest van het plan kan meeschuiven.",
+      "closed": "{park} is dan gesloten",
+      "noFigure": "geen cijfer",
+      "same": "even lang wachten",
+      "more": "+{minutes} min.",
+      "less": "−{minutes} min.",
+      "short": "{park} op een korte dag, ongeveer {hours, plural, =1 {een uur} other {# uur}} minder"
+    },
+    "keep": {
+      "addAll": "Alle dagen in mijn planner",
+      "ics": "In de agenda (.ics)",
+      "copy": "Link kopiëren",
+      "copied": "Link gekopieerd",
+      "added": "{count, plural, =1 {1 dag staat} other {# dagen staan}} nu in je planner.",
+      "openPlanner": "Planner openen",
+      "manual": "Kopieer de link met de hand:"
+    },
+    "ics": {
+      "calendarName": "Orlando-reis {range}",
+      "wait": "Grote attracties ongeveer {minutes} min.",
+      "link": "Plan: {url}"
+    },
+    "when": {
+      "loading": "De beste data worden gezocht …",
+      "none": "In deze periode past geen reis van {days} dagen. Kies een langere periode of een kortere reis.",
+      "noneWithin": "Geen schoolvakantie van {region} in deze periode duurt lang genoeg voor {days} dagen.",
+      "bestTitle": "De beste data voor je parken",
+      "rank": "Voorstel {rank}",
+      "wait": "Grote attracties ongeveer {minutes} min.",
+      "below": "{percent}% onder het gemiddelde van de periode",
+      "average": "Gemiddelde over de periode: {minutes} min.",
+      "details": "Details",
+      "plan": "Deze data plannen",
+      "reason": {
+        "no_school_break": "Geen schoolvakanties op deze dagen.",
+        "after_holidays": "Meteen na de feestdagen.",
+        "before_spring_break": "Voor de drukte van de voorjaarsvakantie.",
+        "festival": "Op deze dagen loopt een festival.",
+        "long_days": "Lange openingstijden.",
+        "mild_weather": "Meestal mild weer."
+      },
+      "warning": {
+        "party_nights": "{count, plural, =1 {1 feestavond} other {# feestavonden}}: dagbezoekers moeten dan vroeger weg.",
+        "school_break": "Valt in een schoolvakantie.",
+        "water_park_closed": "Een gekozen waterpark is in deze tijd gesloten.",
+        "hurricane_season": "Orkaanseizoen (juni tot november).",
+        "hours_not_published": "Nog niet alle openingstijden zijn gepubliceerd.",
+        "estimate_last_year": "Deels berekend met de drukte van vorig jaar."
+      },
+      "basis": {
+        "mixed": "Deels berekend met de drukte van vorig jaar",
+        "last_year": "Berekend met de drukte van vorig jaar"
+      },
+      "stripTitle": "Elke week van de periode",
+      "stripWeek": "Week van {date}: ongeveer {minutes} min.",
+      "stripWeekNone": "Week van {date}: geen cijfer",
+      "stripWindow": "voorstel {rank}",
+      "stripLegend": "Hoogte: de wachttijd bij de grote attracties van je parken die week. Kleur: hoe de week zich verhoudt tot de rest van de periode. De streepjes eronder tonen je voorstellen.",
+      "sketch": "Dag voor dag"
+    }
+  },
   "news": {
     "metaTitle": "Pretparknieuws: evenementen en nieuwe attracties",
     "metaDescription": "Korte berichten uit de pretparken: nieuwe attracties, evenementen, jubilea en verkopen, telkens met datum en een link naar het park.",

@@ -72,6 +72,145 @@ by hand: change the comment in the code and re-run the script. -->
 - `ORLANDO_MONTH_COUNT` _const_: How many months the hub serves: the current month (the hub itself) and the eleven after it, in Orlando time. Past `forecastUntil` a month reads last year's measured days with a banner.
 - Types: `OrlandoBestTimeResort`, `OrlandoRelayRoute`
 
+### [`plan-copy.ts`](../../lib/orlando/plan-copy.ts)
+
+- `primaryReason` _function_: The one-line reason of a day: the first code of `PLAN_REASON_ORDER` or `REST_REASON_ORDER` it carries.
+- `dayWarnings` _function_: A day's warnings this client can say, in order, the two spellings of a back-to-back repeat folded into one.
+- `closesEarly` _function_: Whether the day guests leave early that day: the API's flag, or one of its two codes.
+- `dayMarker` _function_: The one marker of a day in the overview, or `null`.
+- `relaxedRules` _function_: Rules the plan loosened, as `orlandoPlanner.relaxed.*` keys; unknown ones are dropped.
+- `unplacedParks` _function_: A park the plan could not place, with a reason this client can say.
+- `ignoredLocks` _function_: Pins the plan could not keep, with a reason this client can say.
+- `planSavings` _function_: The savings sentence's figures, or `null` where the totals carry none.
+- `lastYearReach` _function_: When the forecast should reach the trip's first `last_year` day: the horizon (today to `forecastUntil`) moves forward a day a day, so it reaches that day as many days before it as the horizon is long. Never before tomorrow.
+- `runnerUp` _function_: The runner-up of a park's visit on `date`: the best alternative day, with how many minutes more (or fewer) its headliners wait. `null` without one or without both figures.
+- `earlyPerk` _function_: The early slot a day's hotel gets, if any.
+- `editCost` _function_: The edit bar's figure: what the visitor's pins cost against the best order the plan had before them, per ride, in whole minutes. `null` without both means; 0 reads as "no cost".
+- `autoSplit` _function_: The parks the split gave a second (or third) day, for the answer's "we added a second day at Magic Kingdom Park". Only entries the API marks `auto` with more than one visit; anything else in `meta.split` is ignored.
+- `PLAN_REASON_ORDER` _const_: The reasons a park day can carry, most telling first: the one-line reason is the first present.
+- `REST_REASON_ORDER` _const_: A rest day's reasons, most telling first.
+- `PLAN_WARNING_ORDER` _const_: The warnings, most consequential first. `repeat_back_to_back` and `adjacent_repeat` say the same thing (two visits of one park on consecutive days, because nothing else fitted); the API names it either way depending on its version, so both …
+- Types: `PlanReasonCode`, `RestReasonCode`, `PlanWarningCode`, `DayMarker`, `PlanSavings`
+
+### [`plan-fetch.ts`](../../lib/orlando/plan-fetch.ts)
+
+- `retryPlanRequest` _function_: Whether a failed request is worth asking again.
+- `planQueryKey` _function_: The plan's cache key: its request query, in the order the URL writes it.
+- `calendarQueryKey` _function_: A calendar window's cache key, shared by the date sheet and the result.
+- `fetchTripPlan` _function_: `GET …/plan` through the relay. Throws a `PlanRequestError`.
+- `fetchTripCalendar` _function_: `GET …/calendar` through the relay, for a window of at most 92 days.
+- `whenQueryKey` _function_: The When search's cache key: its request query.
+- `fetchTripWhen` _function_: `GET …/when` through the relay. Throws a `PlanRequestError`.
+- `fetchSchoolBreaks` _function_: `GET …/school-breaks` through the relay, for the countries the When mode's picker offers.
+- `PlanRequestError` _class_: A request the planner could not complete. `invalid` is the API's 400: the trip as asked cannot be planned, and asking again changes nothing, so it is not retried. `failed` is anything else (the network, a 5xx, the relay's 502) and is.
+- `PLAN_DEBOUNCE_MS` _const_: How long the planner waits for the controls to settle before it asks for a plan.
+- `SCHOOL_BREAKS_QUERY_KEY` _const_: The school-holiday regions' cache key.
+
+### [`plan-ics.ts`](../../lib/orlando/plan-ics.ts)
+
+- `icsEscape` _function_: Text as a property value: backslash, semicolon, comma and line breaks escaped.
+- `icsFold` _function_: A content line folded at 75 octets, continuation lines opening with a space. Folded by bytes, never inside a multi-byte character, because the limit is in octets and a park name may carry an accent.
+- `icsLocalDateTime` _function_: `YYYYMMDDTHHMMSS` of an instant on the wall clock of `timeZone`.
+- `buildTripIcs` _function_: The calendar file for a trip. `now` stamps every event (`DTSTAMP`); it is a parameter so the file is a function of its input. CRLF line ends, as the format requires.
+- `TRIP_ICS_TZID` _const_: The zone the file names; the planner only builds Orlando trips.
+- Types: `TripIcsEvent`
+
+### [`plan-photos.ts`](../../lib/orlando/plan-photos.ts)
+
+- `orlandoPlannerPhotos` _function_: The region parks' photos for the planner's Week view, one per park that has a park background in the media database.
+
+### [`plan-query.ts`](../../lib/orlando/plan-query.ts)
+
+- `isPlanDate` _function_: A real `YYYY-MM-DD` day, not `2026-02-31`.
+- `planRegionKeys` _function_: The slugs and hotel areas a link may name, from the region the page rendered.
+- `readPlanQuery` _function_: The state a URL describes. Lenient by design: a link from Parky, an old copy or a hand edit opens what can be read and drops the rest, one parameter at a time, so a single bad value never costs the visitor the whole plan.
+- `normalizePlanState` _function_: The state with what cannot hold dropped: a pin outside the trip, on a park not chosen (the API answers either with a 400), or the second pin of a day. Called after every change, so the URL and the request never carry one.
+- `planQueryEntries` _function_: The state as `/plan` query pairs, in `PLAN_QUERY_NAMES` order, with each value that is the API's default left out so a link stays short.
+- `writePlanQuery` _function_: The query string for the address bar, `''` for the untouched state. Commas, colons and `@` stay readable: `URLSearchParams` would encode them, and a link Parky prints should look like the one the page writes.
+- `planHref` _function_: The address of this plan on `pathname` (the hub or a month page), opening on the planner, which "Copy link" shares and `history.replaceState` writes after each change.
+- `orlandoPlannerHref` _function_: The locale-relative address that opens the planner on a state, for `Link` from `@/i18n/navigation`: `/orlando?from=…&to=…&parks=…#planner`, or in the When mode `/orlando?when=<from>_<to>&days=10&within=DE-NW&parks=…#planner`.
+- `PLAN_HOTELS` _const_: The plan's `hotel=`: which resort's perks count.
+- `MAX_TRIP_DAYS` _const_: A trip runs at most three weeks, arrival and departure included.
+- `MAX_VISITS_PER_PARK` _const_: A park takes at most this many visits.
+- `MAX_PLAN_VISITS` _const_: A plan places at most this many visits, repeats included.
+- `MAX_REST_STREAK` _const_: `rest=max:n` takes n from 1 to this.
+- `MAX_DAYS_AHEAD` _const_: A plan reaches at most a year ahead.
+- `MIN_FIND_DAYS` _const_: The When mode's shortest trip.
+- `DEFAULT_FIND_DAYS` _const_: The When mode's trip length before the visitor sets one.
+- `DEFAULT_PLAN_STATE` _const_: The state before the visitor has chosen anything: the API's defaults, no dates.
+- `PLAN_QUERY_NAMES` _const_: The query names in the order a URL is written in, the `/plan` route's own. `parties` is not one of them: it is read from older links (see `readPlanQuery`) and never written.
+- Types: `PlanHotel`, `PlanRest`, `PlanLock`, `PlanParkPick`, `PlanSearchRange`, `OrlandoPlanState`, `PlanRegionKeys`, `QueryReader`, `OrlandoPlannerHrefInput`
+
+### [`plan-view.ts`](../../lib/orlando/plan-view.ts)
+
+- `PLAN_VIEWS` _const_: The result's three views.
+- `orlandoPlanView` _const_: The chosen view as an external store.
+- Types: `PlanView`
+
+### [`plan-week.ts`](../../lib/orlando/plan-week.ts)
+
+- `parkMinuteOf` _function_: Minutes since the trip day's midnight in `timeZone`, for a park-local ISO instant: past midnight runs on (25:00 is 01:00 the next morning), so a close after midnight stays below the opening.
+- `calendarCell` _function_: The calendar cell of a park on a date, if the calendar has it.
+- `tripDaySpans` _function_: Each trip day's pieces, read off the plan and the calendar. A park day whose hours the calendar does not carry gets no block: the honest answer is the day planner's, no axis rather than an invented one.
+- `tripCanvas` _function_: The shared canvas, from the earliest piece of any day to the latest, on whole hours and padded by the planner's own `PRE_PAD_MIN` and `POST_PAD_MIN`. `null` when no day has hours.
+- `tripColumnGrid` _function_: A column's axis: the day planner's `DayGrid` for that day's hours, stretched onto the shared canvas. Real minutes, not the API's rounded hours, so there is no closing slack to hatch.
+- `weekPages` _function_: The trip's dates in pages of `perPage`, from the first day: page by week, not by calendar week.
+- `tripMonthWeeks` _function_: The Month view's rows: whole weeks, Monday first, from the week the trip starts in to the week it ends in, so the trip sits in its calendar and a two-month trip reads as one run of weeks.
+- `parkInitials` _function_: The two-letter mark of a park for the Month view's chips, from the words that name the park: Magic Kingdom MK, Hollywood Studios HS, Epic Universe EU, SeaWorld SW, EPCOT EP, and Universal Studios Florida US, where "Studios" alone would say …
+- `daySeasons` _function_: The curated seasons a park's day lists (its cell's `seasons`), cancelled ones and closures left out: what the day sheet names as the day's events.
+- `partySeason` _function_: The separately ticketed season behind a day's evening event, if the calendar names one.
+- `dayGuestHours` _function_: Hours a day guest has on a park's day, from the calendar's open to its day-guest close.
+- `hoursLessThanUsual` _function_: How many hours shorter a park's day is for a day guest than the park's usual day in the calendar window (its median), rounded to whole hours: the figure "about 4 hours less than a usual day here" says.
+- `swapPreview` _function_: The change in big-ride minutes if the park of day `a` traded places with day `b`'s park (or day off): the two parks' waits on their new days less those on their old ones.
+- `TRIP_WEEK_PX_PER_MIN` _const_: The trip overview's scale: half the day planner's, on a phone and off it, so a whole park day fits a screen while a phone keeps the planner's larger step.
+- `TRIP_WEEK_PX_PER_MIN_COARSE` _const_: `TRIP_WEEK_PX_PER_MIN` on a phone.
+- `WEEK_COLUMNS_WIDE` _const_: Days per page of the Week view: a week on a wide screen, three on a phone.
+- `WEEK_COLUMNS_PHONE` _const_: `WEEK_COLUMNS_WIDE` on a phone.
+- Types: `TripBlockSpan`, `TripDaySpan`, `TripCanvas`, `TripMonthCell`, `SwapPreview`
+
+### [`plan-when.ts`](../../lib/orlando/plan-when.ts)
+
+- `whenPeriods` _function_: The ranges behind the period chips, in park time: the next twelve months, the next calendar year, and its spring (March–May), summer (June–August) and autumn (September–November).
+- `whenPeriodOf` _function_: Which chip a search range is: one of `whenPeriods`, else `custom`.
+- `whenRequestQuery` _function_: The `/when` request's query: the search, the length, the holiday region, the three windows the cards show, and the trip options `/plan` takes, pins aside. `null` outside the When mode.
+- `windowReasons` _function_: A window's reasons this client can say, in order.
+- `windowWarnings` _function_: A window's warnings this client can say, in order.
+- `percentBelowAverage` _function_: How far a window lies below the range's average, in whole percent: "27 % below the period's average". `null` where it is not below or a figure is missing; a window above average is never sold as a saving.
+- `weekTiers` _function_: The year strip's tint per week: where the week's figure falls among the range's weeks, in five equal shares from the quietest to the busiest.
+- `weekInWindow` _function_: Whether a week overlaps a window, for marking the window on the strip.
+- `holidayRegionsFor` _function_: The holiday data's regions grouped by country, the locale's own country first, each country's regions in the order the data lists them. Only what the data has: a region it lacks is not offered.
+- `WHEN_LIMIT` _const_: Windows the result asks for: the three cards of Level 0.
+- `WHEN_REASON_ORDER` _const_: The reasons a window can carry, most telling first; the card shows the first.
+- `WHEN_WARNING_ORDER` _const_: The warnings a window can carry, most consequential first.
+- `WHEN_HOLIDAY_COUNTRIES` _const_: The countries the picker asks the holiday data for: where most of park.fan's visitors live.
+- Types: `WhenPeriodKey`, `WhenPeriod`, `WhenReasonCode`, `WhenWarningCode`, `WhenSchoolBreaks`, `WhenHolidayCountry`
+
+### [`plan.ts`](../../lib/orlando/plan.ts)
+
+- `planRequestQuery` _function_: The `/plan` request's query, or `null` while the plan cannot be asked for: no dates yet, or a problem `planProblem` names, which the API would answer with a 400.
+- `tripDates` _function_: Every date of the trip, both ends included; empty without both dates.
+- `parkDaysAvailable` _function_: Days a park can go on: the trip, less a free arrival and a free departure day.
+- `effectiveParks` _function_: The parks the plan is asked for: the visitor's picks, or the headliners while untouched.
+- `minimumVisits` _function_: The fewest visits the choice asks for: a count that is left to the split counts as one.
+- `planProblem` _function_: The first reason the plan cannot be asked for, or `null`. These are the 400s the API would answer, caught before the request so each gets a sentence and a way out instead of an error.
+- `stepVisits` _function_: The next count of a park's stepper. With the split on, an untouched park reads "auto", which sits between one and two: minus pins it to one, plus to two. Minus from one removes the park (`0`). With the split off, "auto" is simply one.
+- `setParkVisits` _function_: Set one park's count: `0` removes it, `null` leaves it to the split. The first edit turns the untouched default (the headliners) into an explicit list, kept in the region's order.
+- `setSplit` _function_: Turn the split on or off. Off, a count left to the split becomes one, so the stepper keeps showing what will be planned.
+- `effectiveHotel` _function_: The hotel the API plans with: the chosen one, else the area's usual hotel, else off-site.
+- `chooseHotel` _function_: Choose a hotel. Where no area is set yet, the hotel's own area follows, so drive times appear without a second question; an area the visitor chose stays.
+- `setTripDates` _function_: Set the trip's dates; pins outside them go.
+- `lockOn` _function_: Whether a day carries a pin, and which.
+- `toggleLock` _function_: Pin a day to what it holds now (a park or a rest day), or release its pin.
+- `dayLockTarget` _function_: What a pin of this day names: its park, `rest`, or nothing for a travel or hop day.
+- `swapLocks` _function_: The pins after trading two days' contents: what was on `a` goes to `b` and the other way round, both pinned, so the re-plan keeps the trade and moves only the rest. Pins elsewhere stay.
+- `plannerParkOf` _function_: The region park as the day planner stores it, or `null` where its path names no geography.
+- `reserveTripDays` _function_: Every park day of the plan as `reserveDays` takes it, a hop day's two parks on one date, each park and date once, in trip order.
+- `findLeg` _function_: The leg between two points of the region (park slugs or `hotel:<key>`). The matrix stores each pair once, both directions averaged, so either order finds it.
+- `setFindMode` _function_: Switch between the two ways in: the visitor knows the dates, or the planner finds them. Finding starts on `range` with the length of the dates chosen so far (or `DEFAULT_FIND_DAYS`); knowing drops the search.
+- `planWindow` _function_: Level 3 of the When mode: plan a found window, which leaves the search for the plan itself.
+- Types: `PlanDayKind`, `PlanTravel`, `PlanParkVisit`, `PlanDay`, `PlanAlternative`, `PlanParkSummary`, `PlanTotals`, `PlanMeta`, `TripPlan`, `PlanProblem`, `PlanReservePark`
+- Re-exports: `./plan-query`
+
 ### [`redirects.ts`](../../lib/orlando/redirects.ts)
 
 - `orlandoRedirect` _function_: The Orlando month pages' redirects, decided from the URL alone so `proxy.ts` answers them before anything renders (a redirect thrown from a render carries the layout as its body).

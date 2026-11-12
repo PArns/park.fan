@@ -73,3 +73,98 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`orlando-park-band.tsx`](../../components/orlando/orlando-park-band.tsx)
 
 - `OrlandoParkBand` _component_: The way from an Orlando park's page and its crowd calendar to the hub: "Several days in Orlando? Which park on which day".
+
+### [`planner/orlando-planner.tsx`](../../components/orlando/planner/orlando-planner.tsx)
+
+- `OrlandoPlanner` _component_: Chapter 02 of the Orlando hub: which park on which day of a trip, from the API's `/plan`.
+- Types: `OrlandoPlannerProps`
+
+### [`planner/plan-agenda-view.tsx`](../../components/orlando/planner/plan-agenda-view.tsx)
+
+- `PlanAgendaView` _component_: The Agenda view: one card per day, at Level 1, which is three facts at most: the park, its minutes and one marker (an early close, a rest day, the hotel's early slot). Everything else is one press away in the day's sheet.
+
+### [`planner/plan-context.tsx`](../../components/orlando/planner/plan-context.tsx)
+
+- `usePlanContext` _hook_: The planner's shared values; only inside `OrlandoPlanner`.
+- `PlanContextProvider` _const_: Provides `PlanContextValue` to the planner's parts.
+- Types: `PlanParkPhoto`, `PlanContextValue`
+
+### [`planner/plan-controls.tsx`](../../components/orlando/planner/plan-controls.tsx)
+
+- `PlanCheckRow` _component_: A checkbox with its label and an optional line under it, the whole row the target: at least 44 px on a phone, as the planner's sheet requires of every target (docs/features/trip-planner/phone.md).
+- `PlanRadioGroup` _component_: One choice of several, as radio rows: a `fieldset` with its question as the legend, each option a 44 px row with an optional line under it.
+- `PlanStepper` _component_: − value +, with 44 px buttons on a phone and 32 px at a desk. The value is an `<output>`, so a screen reader hears the new count after a press.
+- `PLAN_FOCUS` _const_: The planner's focus ring, one string for every control it draws.
+
+### [`planner/plan-dates.tsx`](../../components/orlando/planner/plan-dates.tsx)
+
+- `PlanDates` _component_: The trip's dates: a month at a time (`lib/planner/month-grid.ts`, the day planner's own grid), the first press the arrival and the second the departure, at most `MAX_TRIP_DAYS` days.
+
+### [`planner/plan-day-bits.tsx`](../../components/orlando/planner/plan-day-bits.tsx)
+
+- `PlanDayMarker` _component_: The one marker a day wears in the overview: an icon with words, never colour alone. `compact` keeps the icon and moves the words into a tooltip, for the Month view's cells, whose own label carries them.
+- `useDayParks` _hook_: The park or parks of a day, as one label ("Universal Studios Florida + Islands of Adventure").
+- `useDayMarkerText` _hook_: The words of a day's one overview marker (`dayMarker`): "closes 6 pm", rest day, the hotel's early slot, its extended evening, or "last year"; `null` for none. For a label that has to carry them where the marker is only an icon.
+- `dayGuestClose` _function_: When the day guests leave a park day: the plan's own figure, else the calendar's close.
+
+### [`planner/plan-day-sheet.tsx`](../../components/orlando/planner/plan-day-sheet.tsx)
+
+- `PlanDaySheet` _component_: Level 2: everything about one day, on a press in any view. A bottom sheet on a phone, a panel at the right edge at a desk.
+
+### [`planner/plan-find.tsx`](../../components/orlando/planner/plan-find.tsx)
+
+- `PlanDatesStep` _component_: Step 1, the dates, as a two-way choice: "I know my dates" (the range calendar) or "Find the best dates" (a period, a trip length, and if wanted only the school holidays of a region).
+- `PlanFind` _component_: The When mode's inputs: the period chips (the next twelve months, next year and its seasons, or a range of the visitor's own), the trip length (3–21 days, 10 to start), and "only in our school holidays" with a region in the holiday data's …
+- `defaultSearchRange` _function_: The search the When mode opens on: the next twelve months.
+
+### [`planner/plan-keep.tsx`](../../components/orlando/planner/plan-keep.tsx)
+
+- `PlanKeep` _component_: Keeping the plan: every park day into the day planner as a reserved day in one write (the store's `reserveDays`, which Parky's trip action uses too; a day that already holds a plan stays as it is), the trip as an `.ics` file built here in …
+
+### [`planner/plan-month-view.tsx`](../../components/orlando/planner/plan-month-view.tsx)
+
+- `PlanMonthView` _component_: The Month view: the trip in its calendar, whole weeks from Monday.
+
+### [`planner/plan-options.tsx`](../../components/orlando/planner/plan-options.tsx)
+
+- `PlanOptions` _component_: Fine-tune: everything the plan can be told beyond dates and parks, each with the default the API plans with already chosen, so nothing here is required.
+- `usePlanOptionsSummary` _hook_: The options' one-line summary ("Disney hotel · resorts together · rest days on busy days"), the defaults included, so the line under "Fine-tune" says what the plan assumes without opening it.
+
+### [`planner/plan-parks.tsx`](../../components/orlando/planner/plan-parks.tsx)
+
+- `PlanParks` _component_: Which parks, and how many days each: the headliners by resort, each with a 0–3 stepper, and the water parks, SeaWorld's parks and the day trips behind "More parks" with the drive from the hotel area and what their days hold.
+
+### [`planner/plan-result.tsx`](../../components/orlando/planner/plan-result.tsx)
+
+- `PlanResult` _component_: The planner's answer, below the setup. Empty, and saying so, until dates are chosen (or a search is set); then the plan from simple to detailed: the answer in sentences (Level 0), the Agenda, Week or Month view (Level 1), a day's sheet …
+
+### [`planner/plan-setup.tsx`](../../components/orlando/planner/plan-setup.tsx)
+
+- `PlanSetup` _component_: Dates, Parks and Fine-tune. On a phone, three summary rows that open one bottom sheet, walked Dates → Parks → Plan, with Fine-tune a row of its own nobody has to open.
+- `PLAN_WIDE_QUERY` _const_: `lg`, where the setup is drawn inline; below it the same panels are sheets.
+- Types: `PlanSheetStep`
+
+### [`planner/plan-week-view.tsx`](../../components/orlando/planner/plan-week-view.tsx)
+
+- `PlanWeekView` _component_: The Week view, the Outlook view of the trip: one column per day, up to a week a page (three on a phone, by swipe or the arrows), on one hour axis from the earliest early slot to the latest close.
+
+### [`planner/plan-when-result.tsx`](../../components/orlando/planner/plan-when-result.tsx)
+
+- `PlanWhenResult` _component_: The When mode's answer, simple first. Level 0: the three best windows as cards, each with its dates, the big rides' wait, how far below the period's average it lies and one reason; a window on last year's days says so.
+
+### [`planner/use-day-facts.ts`](../../components/orlando/planner/use-day-facts.ts)
+
+- `useSeasonName` _hook_: A season's name as a visitor reads it: the park's own brand name, never translated, or the label of its kind where nobody curated one (`parks.seasons.kind`, the park page's own labels).
+- `usePartyName` _hook_: The name of a park day's party night ("Mickey's Very Merry Christmas Party"), for the hatched evening of the Week view and the day sheet; `null` where the day's last park has none.
+
+### [`planner/use-plan-state.ts`](../../components/orlando/planner/use-plan-state.ts)
+
+- `usePlanState` _hook_: The planner's state, which is the address bar's query: no copy of it lives anywhere else, so a reload, "Copy link" and Parky's links open the same plan.
+
+### [`planner/use-trip-plan.ts`](../../components/orlando/planner/use-trip-plan.ts)
+
+- `useTripPlan` _hook_: The plan for a request query, asked once the controls have been still for `PLAN_DEBOUNCE_MS`.
+- `useUnpinnedPlan` _hook_: The plan without the visitor's pins, for the edit bar's "best order" figure: the same query minus `lock`, which is usually the plan the visitor started from and still in the cache.
+- `useTripCalendar` _hook_: A window of the region calendar (at most 92 days) through the relay: the hours, slots, seasons and per-day figures the plan does not carry. `null` dates leave it idle.
+- `useTripWhen` _hook_: The When search for a request query, debounced like the plan; the previous answer stays on screen while the next is asked. The API keeps an answer six hours, the planner a quarter.
+- `useSchoolBreaks` _hook_: The school-holiday regions the When mode's picker offers, read once when the picker is shown. The data changes a few times a year; the relay keeps it a day.

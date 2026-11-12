@@ -32,13 +32,13 @@ export async function GET(
   }
   if (target.forecast && !isSameOriginRequest(request)) return foreignForecastRequest();
 
-  const cached = target.route === 'calendar' || target.route === 'best-days' || target.route === '';
+  const cached = target.route !== 'plan' && target.route !== 'when';
   try {
     const response = await fetch(`${getApiBaseUrl()}${target.apiPath}`, {
       ...(cached
         ? {
             next: {
-              revalidate: target.route ? CACHE_TTL.tripRegionData : CACHE_TTL.tripRegion,
+              revalidate: target.forecast ? CACHE_TTL.tripRegionData : CACHE_TTL.tripRegion,
               tags: [TRIP_REGION_CACHE_TAG],
             },
           }

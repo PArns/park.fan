@@ -13,11 +13,11 @@ import { formatGridTime } from '@/lib/planner/park-time';
 import { drawnBoxPx, heightFor, laneBox, yFor, type DayGrid } from '@/lib/planner/day-grid';
 import { formatDistance } from '@/lib/utils/distance-utils';
 import { PLANNER_BLOCK_ICON_COMPONENTS } from './planner-block-icons';
+import { PlannerBlockBar, PlannerBlockPhoto } from './planner-block-ink';
 import type { LanePlacement } from '@/lib/planner/day-grid';
 import type { PlannerEntry } from '@/lib/planner/types';
 import { actualVsEstimate, isAssumedWait, type PlannerEstimate } from '@/lib/planner/estimate';
 import { roundWaitTo5 } from '@/lib/utils/wait-time';
-import { backgroundPhotoUrl } from '@/lib/utils/image-loader';
 import type { PlanDayShowSource, PlanDayTier, WorksPeriod } from '@/lib/api/types';
 import { worksEndLabel, worksRunningLabel } from '@/lib/utils/works-period';
 import { WORKS_TONE_CLASS, WorksIcon } from '@/components/parks/works-period-list';
@@ -28,12 +28,6 @@ import { WORKS_TONE_CLASS, WorksIcon } from '@/components/parks/works-period-lis
  * the full height would reach one pixel into the neighbour.
  */
 const BLOCK_BORDER_PX = 2;
-
-/**
- * How much of the photo shows through. Every ride block gets one, whatever its height, so the
- * photo is the column's texture rather than an accent, and 0.2 keeps it quieter than the numbers.
- */
-const PHOTO_OPACITY = 'opacity-[0.2]';
 
 /**
  * The box a block needs before it can print its own times: two lines of 14 px and 13 px inside
@@ -415,18 +409,8 @@ export function PlannerBlock({
           className="pointer-events-none absolute inset-0 overflow-hidden rounded-[inherit]"
           aria-hidden="true"
         >
-          {/* The ride's photo, on every block that has one. `background-image`, not `next/image`:
-              the block's size changes with the plan and the crop is already right. */}
-          {photo && (
-            <div
-              className={cn('absolute inset-0', PHOTO_OPACITY)}
-              style={{
-                backgroundImage: `url(${backgroundPhotoUrl(photo.src)})`,
-                backgroundSize: 'cover',
-                backgroundPosition: photo.position,
-              }}
-            />
-          )}
+          {/* The ride's photo, on every block that has one. */}
+          {photo && <PlannerBlockPhoto src={photo.src} position={photo.position} />}
 
           {/* The fill, masked by the tier, separate from the box so a taller box does not claim
               extra ink. */}
@@ -441,11 +425,10 @@ export function PlannerBlock({
           )}
 
           {/* Outlook's category bar. */}
-          <div
-            className={cn(
-              'absolute inset-y-0 left-0 w-[3px] rounded-l',
+          <PlannerBlockBar
+            className={
               done ? 'bg-foreground/40' : tone ? CROWD_DOT_CLASS[tone] : 'bg-muted-foreground/40'
-            )}
+            }
           />
         </div>
 
