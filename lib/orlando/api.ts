@@ -55,22 +55,6 @@ export function getOrlandoRegion(): Promise<TripRegion> {
   return readTripRegion<TripRegion>('', CACHE_TTL.tripRegion);
 }
 
-/** Every park's days side by side, with the seasons that run on them; at most 92 days. */
-export function getOrlandoCalendar(window: TripWindow = {}): Promise<TripCalendar> {
-  return readTripRegion<TripCalendar>('/calendar', CACHE_TTL.tripRegionData, { ...window });
-}
-
-/** Each park's quiet and busy days in a window, as sets, and each resort's best dates. */
-export function getOrlandoBestDays(
-  window: TripWindow & { limit?: number } = {}
-): Promise<TripBestDays> {
-  const { limit, ...range } = window;
-  return readTripRegion<TripBestDays>('/best-days', CACHE_TTL.tripRegionData, {
-    ...range,
-    limit: limit === undefined ? undefined : String(limit),
-  });
-}
-
 /**
  * The best trip windows of a length in a range, planned for the headliner parks unless `parks`
  * says otherwise (`/when`). The API keeps an answer six hours by its query; the hub asks one per
@@ -83,6 +67,22 @@ export function getOrlandoWhen(
   return readTripRegion<TripWhen>('/when', CACHE_TTL.tripRegionData, {
     ...rest,
     days: days === undefined ? undefined : String(days),
+    limit: limit === undefined ? undefined : String(limit),
+  });
+}
+
+/** Every park's days side by side, with the seasons that run on them; at most 92 days. */
+export function getOrlandoCalendar(window: TripWindow = {}): Promise<TripCalendar> {
+  return readTripRegion<TripCalendar>('/calendar', CACHE_TTL.tripRegionData, { ...window });
+}
+
+/** Each park's quiet and busy days in a window, as sets, and each resort's best dates. */
+export function getOrlandoBestDays(
+  window: TripWindow & { limit?: number } = {}
+): Promise<TripBestDays> {
+  const { limit, ...range } = window;
+  return readTripRegion<TripBestDays>('/best-days', CACHE_TTL.tripRegionData, {
+    ...range,
     limit: limit === undefined ? undefined : String(limit),
   });
 }
