@@ -47,11 +47,11 @@ seo:
 
 In der Zone New York heißt der Weihnachtsbereich The North Pole Jingle Jam. Die Kulissen sehen aus wie eine Konzertbühne, und Gäste dürfen selbst hinauf. Die Show darin heißt fast genauso, Universal Jingle Jam. Wer sich dort verabredet, sagt besser dazu, ob der Bereich oder die Show gemeint ist. Auf der Bühne stehen sie mit einer Gruppe Sänger, das Publikum singt mit. Zur Show gehören Schneefall und Treffen mit den Figuren.
 
-Ein Jahr zuvor stand an derselben Stelle Santa's Rockmas mit dem Weihnachtsmann, Shrek, den Pinguinen aus Madagascar und der Sesamstraße auf dem Programm, 2024 war es Wicked. Die Sesamstraße hat den Wechsel also überstanden.
+Ein Jahr zuvor stand an derselben Stelle Santa's Rockmas mit dem Weihnachtsmann, Shrek, den Pinguinen aus Madagascar und der Sesamstraße auf dem Programm, 2024 war es Wicked. Von dieser Besetzung ist nur die Sesamstraße geblieben, der Weihnachtsmann, Shrek und die Pinguine haben ihre Plätze an Poppy und die Minions abgegeben.
 
 ## Süßigkeiten am Hollywood Boulevard
 
-Den Hollywood Boulevard macht Resorts World Sentosa zu den Dazzling Dessert Studios, einem Filmset mit übergroßen Süßigkeiten. Dort steht ein 10 Meter hoher Weihnachtsbaum im Konfekt-Look, und du kannst dich mit dem Weihnachtsmann und Mrs. Claus fotografieren lassen. Ein 10-Meter-Baum stand im vergangenen Jahr noch in WEAVE außerhalb des Parks, dort steht in diesem Winter einer mit 8 Metern.
+Den Hollywood Boulevard macht Resorts World Sentosa zu den Dazzling Dessert Studios, einem Filmset mit übergroßen Süßigkeiten. Dort steht ein 10 Meter hoher Weihnachtsbaum im Konfekt-Look, und du kannst dich mit dem Weihnachtsmann und Mrs. Claus fotografieren lassen. Vor dem Park, in WEAVE, steht in diesem Winter ein 8 Meter hoher Baum, im vergangenen Jahr waren es dort 10 Meter.
 
 Anders als 2025 sind auf der Straße auch Hello Kitty und Kuromi von Sanrio unterwegs, Fotos mit ihnen gibt es an der Superstar Boutique.
 
@@ -67,7 +67,7 @@ Das Feuerwerk beginnt um 20 Uhr und läuft zu Musik von BTS, Resorts World Sento
 
 ## BTS im Park
 
-In diesem Jahr hat die Season of Joy einen K-Pop-Schwerpunkt, und am Abend des 21. Dezember kommen nur BTS-Fans mit eigenem Ticket in den Park. An diesem Tag schließt Universal Studios Singapore schon um 19 Uhr, ab 20 Uhr läuft bis 1 Uhr nachts BTS THE CITY ARIRANG Night Out. Dafür brauchst du ein eigenes Ticket, für eine Person 58 Singapur-Dollar.
+Am 21. Dezember schließt Universal Studios Singapore schon um 19 Uhr, von 20 bis 1 Uhr nachts läuft dort BTS THE CITY ARIRANG Night Out. Der Eintritt kostet 58 Singapur-Dollar pro Person.
 
 Vom 4. Dezember bis zum 3. Januar läuft ab 19.30 Uhr jeden Abend die Projektion Lightscape auf der Fassade von [Revenge of the Mummy](ref:universal-studios-singapore/revenge-of-the-mummy), mit BTS-Motiven. Vom 16. bis 22. Dezember kommst du mit dem Ticket für eine Attraktion von Resorts World Sentosa außerdem kostenlos ins BTS THE CITY ARIRANG Fan Village im Resorts World Convention Centre.
 
@@ -95,7 +95,12 @@ Vom 4. Dezember bis zum 3. Januar läuft ab 19.30 Uhr jeden Abend die Projektion
 
 Ein Tagesticket für einen Besuch im November kostet 76 Singapur-Dollar für Erwachsene ab 13 Jahren und 69 für Kinder von 4 bis 12. Einen Seniorenpreis gibt es beim Tagesticket nicht. Universal Express kostet ab 80 Singapur-Dollar, Universal Express 3 ab 60, beides nur zusammen mit einem Parkticket.
 
-Zur Season of Joy verkauft Resorts World Sentosa einen 2-Park Pass für Universal Studios Singapore und das Singapore Oceanarium. Im November kostet er 115 Singapur-Dollar für Erwachsene von 13 bis 59 und 108 für Kinder und Senioren ab 60, im Dezember 120 und 108. Du hast sieben Tage Zeit, beide Parks je einmal zu besuchen, kannst den Park aber nicht verlassen und am selben Tag wieder hinein.
+Zur Season of Joy verkauft Resorts World Sentosa einen 2-Park Pass für Universal Studios Singapore und das Singapore Oceanarium. Er kostet:
+
+- im November 115 Singapur-Dollar für Erwachsene von 13 bis 59, 108 für Kinder und Senioren ab 60
+- im Dezember 120 Singapur-Dollar für Erwachsene, 108 für Kinder und Senioren
+
+Du hast sieben Tage Zeit, beide Parks je einmal zu besuchen, kannst den Park aber nicht verlassen und am selben Tag wieder hinein.
 
 Der 2-Park Pass with Festive Perks kostet 168 Singapur-Dollar für Erwachsene und 148 für Kinder. Dazu gehören:
 
@@ -112,7 +117,7 @@ Resorts World Sentosa hat die Adresse 8 Sentosa Gateway und liegt auf der Insel 
 
 ## Universal Studios Singapore
 
-Universal Studios Singapore ist der erste und bis heute einzige Universal-Park in Südostasien. Nach einer Probephase ab dem 18. März 2010 läuft er seit dem 28. Mai 2011 regulär. Auf 25 Hektar verteilen sich sieben Zonen: Hollywood, New York, Sci-Fi City, Ancient Egypt, The Lost World, Far Far Away und Illumination's Minion Land. Die jüngste davon, Illumination's Minion Land, hat am 14. Februar 2025 eröffnet, unter anderem mit dem Karussell [Buggie Boogie](ref:universal-studios-singapore/buggie-boogie). Seitdem haben die Minions, die jetzt in der Weihnachtsshow mitsingen, im Park ein eigenes Land. Der Park ist Teil von Resorts World Sentosa, einem Resort von 49 Hektar, das Genting Singapore gehört.
+Universal Studios Singapore ist der erste und bis heute einzige Universal-Park in Südostasien. Nach einer Probephase ab dem 18. März 2010 läuft er seit dem 28. Mai 2011 regulär. Auf 25 Hektar verteilen sich sieben Zonen: Hollywood, New York, Sci-Fi City, Ancient Egypt, The Lost World, Far Far Away und Illumination's Minion Land. Die jüngste davon, Illumination's Minion Land, hat am 14. Februar 2025 eröffnet, unter anderem mit dem Karussell [Buggie Boogie](ref:universal-studios-singapore/buggie-boogie). Der Park ist Teil von Resorts World Sentosa, einem Resort von 49 Hektar, das Genting Singapore gehört.
 
 [Universal Studios Singapore](ref:universal-studios-singapore?full)
 

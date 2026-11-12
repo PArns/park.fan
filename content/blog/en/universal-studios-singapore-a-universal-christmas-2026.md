@@ -47,11 +47,11 @@ seo:
 
 The Christmas area in the New York zone is called The North Pole Jingle Jam. It's built to look like a concert stage, and guests are allowed up on it. The show inside goes by almost the same name, Universal Jingle Jam. If you arrange to meet someone there, say whether you mean the area or the show. The characters perform with a group of singers, and the audience sings along. Snowfall and character meet-and-greets are part of the show.
 
-A year earlier the same spot had Santa's Rockmas, with Santa, Shrek, the penguins from Madagascar and Sesame Street. In 2024 it was Wicked. Sesame Street, in other words, has survived the change of cast.
+A year earlier the same spot had Santa's Rockmas, with Santa, Shrek, the penguins from Madagascar and Sesame Street. In 2024 it was Wicked. Of that cast, only Sesame Street is back; Santa, Shrek and the penguins have made way for Poppy and the Minions.
 
 ## Sweets on Hollywood Boulevard
 
-Resorts World Sentosa turns Hollywood Boulevard into Dazzling Dessert Studios, a film set full of oversized sweets. There's a 10-meter (33-foot) Christmas tree done up as confectionery, and you can have your photo taken with Santa and Mrs. Claus. Last year a 10-meter tree stood in WEAVE, outside the park; this winter the one there is 8 meters (26 feet) tall.
+Resorts World Sentosa turns Hollywood Boulevard into Dazzling Dessert Studios, a film set full of oversized sweets. There's a 10-meter (33-foot) Christmas tree done up as confectionery, and you can have your photo taken with Santa and Mrs. Claus. Outside the park, the tree in WEAVE is 8 meters (26 feet) tall this winter, down from 10 meters last year.
 
 Unlike in 2025, Hello Kitty and Kuromi from Sanrio are out on the street too, with photo spots at the Superstar Boutique.
 
@@ -67,7 +67,7 @@ The fireworks start at 8 pm and are set to music by BTS; Resorts World Sentosa c
 
 ## BTS in the park
 
-This year's Season of Joy leans on K-pop, and on the evening of December 21 the park is open only to BTS fans with a separate ticket. Universal Studios Singapore closes at 7 pm that day, and BTS THE CITY ARIRANG Night Out runs from 8 pm to 1 am. It needs its own ticket, S$58 per person.
+On December 21 Universal Studios Singapore closes at 7 pm, and BTS THE CITY ARIRANG Night Out runs there from 8 pm to 1 am. Entry is S$58 per person.
 
 From December 4 to January 3, Lightscape, a projection with BTS motifs, runs every evening from 7:30 pm on the facade of [Revenge of the Mummy](ref:universal-studios-singapore/revenge-of-the-mummy). From December 16 to 22, a ticket for any Resorts World Sentosa attraction also gets you into the BTS THE CITY ARIRANG Fan Village at the Resorts World Convention Centre for free.
 
@@ -95,7 +95,12 @@ From December 4 to January 3, Lightscape, a projection with BTS motifs, runs eve
 
 A one-day ticket for a November visit costs S$76 for adults aged 13 and up and S$69 for children aged 4 to 12. There's no senior price for the one-day ticket. Universal Express starts at S$80 and Universal Express 3 at S$60, both only together with a park ticket.
 
-For the Season of Joy, Resorts World Sentosa sells a 2-Park Pass for Universal Studios Singapore and the Singapore Oceanarium. In November it costs S$115 for adults aged 13 to 59 and S$108 for children and seniors 60 and over; in December it's S$120 and S$108. You have seven days to visit each park once, but you can't leave the park and come back in on the same day.
+For the Season of Joy, Resorts World Sentosa sells a 2-Park Pass for Universal Studios Singapore and the Singapore Oceanarium. It costs:
+
+- in November, S$115 for adults aged 13 to 59 and S$108 for children and seniors 60 and over
+- in December, S$120 for adults and S$108 for children and seniors
+
+You have seven days to visit each park once, but you can't leave the park and come back in on the same day.
 
 The 2-Park Pass with Festive Perks costs S$168 for adults and S$148 for children. It includes:
 
@@ -112,7 +117,7 @@ Resorts World Sentosa is at 8 Sentosa Gateway on Sentosa Island. Take the MRT to
 
 ## Universal Studios Singapore
 
-Universal Studios Singapore was the first Universal park in Southeast Asia and is still the only one. After a trial period that began on March 18, 2010, it has been in regular operation since May 28, 2011. Its 25 hectares (62 acres) hold seven zones: Hollywood, New York, Sci-Fi City, Ancient Egypt, The Lost World, Far Far Away and Illumination's Minion Land. The newest, Illumination's Minion Land, opened on February 14, 2025, with rides including the carousel [Buggie Boogie](ref:universal-studios-singapore/buggie-boogie), so the Minions singing in this year's Christmas show have had a land of their own in the park since then. The park is part of Resorts World Sentosa, a 49-hectare (121-acre) resort owned by Genting Singapore.
+Universal Studios Singapore was the first Universal park in Southeast Asia and is still the only one. After a trial period that began on March 18, 2010, it has been in regular operation since May 28, 2011. Its 25 hectares (62 acres) hold seven zones: Hollywood, New York, Sci-Fi City, Ancient Egypt, The Lost World, Far Far Away and Illumination's Minion Land. The newest, Illumination's Minion Land, opened on February 14, 2025, with rides including the carousel [Buggie Boogie](ref:universal-studios-singapore/buggie-boogie). The park is part of Resorts World Sentosa, a 49-hectare (121-acre) resort owned by Genting Singapore.
 
 [Universal Studios Singapore](ref:universal-studios-singapore?full)
 
