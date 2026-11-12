@@ -27,11 +27,30 @@ const RELAY_QUERY: Record<string, readonly string[]> = {
     'split',
     'lock',
   ],
+  when: [
+    'from',
+    'to',
+    'days',
+    'parks',
+    'hotel',
+    'area',
+    'arrival',
+    'departure',
+    'blocks',
+    'fireworks',
+    'rest',
+    'hop',
+    'split',
+    'within',
+    'limit',
+    'gap',
+  ],
 };
 
 /**
  * A value the relay passes on: dates, slugs with `:n`, pins with `@`, `max:3`. Anything else is a
- * 400 here, before a percent-decoded character can reach the upstream URL.
+ * 400 here, before a percent-decoded character can reach the upstream URL. A `within` code is
+ * a region code such as `DE-NW` or `NL-north`, which the same characters cover.
  */
 const RELAY_VALUE = /^[a-z0-9_:,@.-]{1,1000}$/i;
 
@@ -49,7 +68,7 @@ export const TRIP_REGION_DATA_CACHE_CONTROL =
 /** One request the relay will make upstream. */
 export interface TripRegionRelayTarget {
   /** `''` for the region itself, else the keyed route. */
-  route: '' | 'calendar' | 'best-days' | 'plan';
+  route: '' | 'calendar' | 'best-days' | 'plan' | 'when';
   /** The API path with its filtered query, `/v1/trip-regions/orlando/plan?from=…`. */
   apiPath: string;
   /** Whether the answer carries forecasts, so only this site's own pages may ask. */

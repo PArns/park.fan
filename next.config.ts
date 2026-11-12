@@ -975,7 +975,7 @@ const nextConfig: NextConfig = {
         headers: sharedCache('public, max-age=3600, s-maxage=86400, stale-while-revalidate=86400'),
       },
       {
-        source: '/api/trip-regions/:region/:route(calendar|best-days|plan)',
+        source: '/api/trip-regions/:region/:route(calendar|best-days|plan|when)',
         headers: sharedCache('public, max-age=3600, s-maxage=3600, stale-while-revalidate=86400'),
       },
       {
