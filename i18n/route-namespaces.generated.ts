@@ -95,6 +95,7 @@ export const ROUTE_MESSAGE_NAMESPACES = {
     'orlandoPlanner',
     'parks.seasons',
   ],
+  '/orlando/best-time-to-visit/[[...resort]]': [],
   '/parks': ['explore', 'nearby'],
   '/parks/[continent]': ['explore', 'nearby'],
   '/parks/[continent]/[country]': ['nearby', 'parkCard'],

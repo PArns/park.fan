@@ -84,6 +84,8 @@ const PAGES = [
   '/de/glossar',
   '/de/glossar/rope-drop',
   '/de/beste-reisezeit',
+  '/de/orlando/beste-reisezeit',
+  '/de/orlando/beste-reisezeit/universal-orlando',
   '/de/tagesplaner',
   '/de/orlando',
   ORLANDO_MONTH,

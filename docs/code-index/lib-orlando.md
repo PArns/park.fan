@@ -11,8 +11,40 @@ by hand: change the comment in the code and re-run the script. -->
 - `getOrlandoWhen` _function_: The best trip windows of a length in a range, planned for the headliner parks unless `parks` says otherwise (`/when`).
 - `getOrlandoCalendar` _function_: Every park's days side by side, with the seasons that run on them; at most 92 days.
 - `getOrlandoBestDays` _function_: Each park's quiet and busy days in a window, as sets, and each resort's best dates.
+- `getOrlandoSchoolBreaks` _function_: The school-holiday regions the holiday data knows in `countries` (`DE,NL,GB`), each with its breaks in the range and the day its data ends. Open: the data key stays home.
 - `TRIP_REGION_CACHE_TAG` _const_: The Data Cache tag on every trip-region read, for the API's revalidation webhook.
 - Types: `TripWindow`
+
+### [`best-time.ts`](../../lib/orlando/best-time.ts)
+
+- `parseBestTimePage` _function_: The page a `[[...resort]]` segment list asks for, or `null` for a 404.
+- `bestTimeResort` _function_: The resort a page sits under in `orlandoBestTimePath`, `undefined` for the Orlando page.
+- `bestTimeYear` _function_: The year in the title: the coming year from September on, else the current one, so the page answers the trip people are booking.
+- `bestTimeRange` _function_: The range `/when` and `/school-breaks` are asked for: the title's year, from today at the earliest and never past the year ahead both routes accept.
+- `bestTimeParks` _function_: The headliner parks a page plans, in the region's order.
+- `monthKey` _function_: `YYYY-MM` of a month.
+- `monthRows` _function_: The month table: every month of the title's year from the current one on, each with `/when`'s figures where its range reaches, a tier among the months that have a figure, and its day guests' hours against the year's mean.
+- `cleanBreakName` _function_: A school break's name without the district and the day's other holidays: "Spring break (Orange County Public Schools)" → "Spring break", "Winter break (…), New Year's Day" → "Winter break".
+- `breakRuns` _function_: Consecutive break days as runs: the weekends `/when` lists without a name join the break they border, so "13–15 Feb" reads as Presidents' Day, not as two blanks and a holiday.
+- `europeanBreaks` _function_: Each country's regions with a real break in a month, in `countries`' order.
+- `tripLongBreaks` _function_: A region's breaks long enough for a trip of `days`, cut to `range`: what chapter 04 links the planner's When mode to.
+- `isWholeWeek` _function_: Whether a week lies wholly inside a range, so its figure is a whole week's.
+- `bestAndWorstWeeks` _function_: The quietest and busiest whole weeks, `count` each, quietest and busiest first.
+- `seasonsOn` _function_: The seasons that run on a day range, one per name, cancelled and closures left out.
+- `weekFacts` _function_: A week's school breaks (from the months' break days) and the seasons running in it.
+- `lastYearFrom` _function_: The first day `/when` reads last year's crowds: its `forecastUntil` + 1, else the strip's turn.
+- `holidayWeek` _function_: The week the page answers "Is Christmas busy?" with: Christmas week where the range holds it, else New Year's, else none.
+- `meanWeekWait` _function_: The mean of the weeks' figures: the year's average a week is compared with.
+- `partySeasons` _function_: The party nights a page's parks hold: separately ticketed Halloween and Christmas evenings.
+- `wettestMonths` _function_: The wettest months by their climate normal, wettest first.
+- `planOrder` _function_: The order a window's plan visits the page's parks in: each park's first day, earliest first. The honest answer to "Disney or Universal first?": the plan puts each park on its quietest day.
+- `windowList` _function_: Windows as one phrase in the reader's language, "16–25 Feb, 1–10 Mar and 6–15 Apr", for the first answer's sentence and the meta description.
+- `ORLANDO_BEST_TIME_RESORTS` _const_: The resorts with a page of their own, in the order the pages list them.
+- `BEST_TIME_PAGE_GROUPS` _const_: The region groups whose headliner parks each page plans.
+- `BEST_TIME_TRIP_DAYS` _const_: The trip length every page ranks, the planner's own default.
+- `BEST_TIME_WINDOWS` _const_: The windows the first answer names.
+- `EUROPEAN_BREAK_MIN_DAYS` _const_: A European break counts in a month only when it runs at least this many days, weekends included: a bridge day (Maundy Thursday, Ascension) is not a family's trip.
+- Types: `OrlandoBestTimePage`, `MonthHours`, `BestTimeMonthRow`, `BreakRun`, `CountryBreaks`, `WeekFacts`
 
 ### [`hub-data.ts`](../../lib/orlando/hub-data.ts)
 
@@ -226,4 +258,4 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `ORLANDO_REGION` _const_: The one region the API curates.
 - `ORLANDO_TIMEZONE` _const_: Orlando's zone, which every park in the region runs on and every "today" is read in.
-- Types: `TripParkType`, `TripRegionGroup`, `TripRegionPark`, `TripPerk`, `TripHotelArea`, `TripTransportAlternative`, `TripLeg`, `TripTravel`, `TripRegion`, `TripDayStatus`, `TripBasis`, `TripCrowdLevel`, `TripSlot`, `TripEarlyKind`, `TripEveningKind`, `TripParkDay`, `TripBestWhy`, `TripCalendarDay`, `TripSeason`, `TripCalendarMeta`, `TripCalendar`, `TripBestDayReason`, `TripBestDay`, `TripParkBestDays`, `TripGroupBestDays`, `TripBestDays`, `TripWhenReason`, `TripWhenWarning`, `TripWhenWindow`, `TripWhenWeek`, `TripWhen`, `OrlandoMonth`
+- Types: `TripParkType`, `TripRegionGroup`, `TripRegionPark`, `TripPerk`, `TripHotelArea`, `TripTransportAlternative`, `TripLeg`, `TripTravel`, `TripRegion`, `TripDayStatus`, `TripBasis`, `TripCrowdLevel`, `TripSlot`, `TripEarlyKind`, `TripEveningKind`, `TripParkDay`, `TripBestWhy`, `TripCalendarDay`, `TripSeason`, `TripCalendarMeta`, `TripCalendar`, `TripBestDayReason`, `TripBestDay`, `TripParkBestDays`, `TripGroupBestDays`, `TripBestDays`, `TripWhenReason`, `TripWhenWarning`, `TripWhenWindow`, `TripWhenWeek`, `TripWhen`, `OrlandoMonth`, `TripMonthClimate`, `TripWhenMonth`, `TripWhenWithMonths`, `TripSchoolBreakRegion`, `TripSchoolBreaks`

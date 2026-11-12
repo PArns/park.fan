@@ -2328,6 +2328,138 @@
       "guidesLead": "Onze gidsen voor deze parken:"
     }
   },
+  "orlandoBestTime": {
+    "title": {
+      "orlando": "Beste reistijd voor Orlando in {year}",
+      "disney-world": "Beste reistijd voor Disney World in {year}",
+      "universal-orlando": "Beste reistijd voor Universal Orlando in {year}"
+    },
+    "name": {
+      "orlando": "Beste reistijd voor Orlando",
+      "disney-world": "Beste reistijd voor Disney World",
+      "universal-orlando": "Beste reistijd voor Universal Orlando"
+    },
+    "resort": {
+      "orlando": "Disney en Universal",
+      "disney-world": "Walt Disney World",
+      "universal-orlando": "Universal Orlando"
+    },
+    "switcher": "Beste reistijd per resort",
+    "metaDescription": "De rustigste reizen van {days} dagen in {year}: {windows}. Daarna elke maand met wachttijden, evenementen, schoolvakanties en het gewone weer.",
+    "metaDescriptionShort": "De rustigste reizen van {days} dagen in {year} bij {parks}: {windows}.",
+    "metaDescriptionPlain": "De rustigste reizen van {days} dagen in {year} bij {parks}, met per maand de wachttijden, evenementen, schoolvakanties en het gewone weer.",
+    "answer": {
+      "sentence": "De kortste rijen op een reis van {days} dagen in {year}: {windows}.",
+      "below": "{percent}% onder het gemiddelde van {year}",
+      "none": "Voor {year} zijn er nog geen cijfers voor een reis van {days} dagen.",
+      "why": "Waarom deze dagen",
+      "events": "Evenementen: {list}"
+    },
+    "intro": {
+      "lead": "Elk cijfer hier is de wachttijd van de grote attracties op het drukste moment: de dagpiek van elke topattractie, gemiddeld over de parken van de reis.",
+      "body": "Een reis wordt berekend zoals de reisplanner dat doet, met elk park op zijn beste dag, en een dag waarop dagbezoekers eerder weg moeten telt als een slechtere dag. De voorspelling loopt tot {date}; daarna toont de pagina dezelfde weken vorig jaar zoals wij ze gemeten hebben, gemarkeerd met ‘vorig jaar’.",
+      "bodyForecast": "Een reis wordt berekend zoals de reisplanner dat doet, met elk park op zijn beste dag, en een dag waarop dagbezoekers eerder weg moeten telt als een slechtere dag. Elk cijfer op deze pagina is onze voorspelling."
+    },
+    "strip": {
+      "title": "Het jaar in één oogopslag",
+      "lead": "Eén balk per week: hoe hoger, hoe langer de wachttijd van de grote attracties bij {parks}. De kleur vergelijkt de week met de rest van {year}.",
+      "caption": "Wachttijd van de grote attracties per week in {year} bij {parks}",
+      "table": "De weken als tabel",
+      "colWeek": "Week vanaf",
+      "colWait": "Grote attracties",
+      "colBasis": "Gebaseerd op",
+      "basis": {
+        "forecast": "voorspelling",
+        "last_year": "vorig jaar",
+        "mixed": "deels vorig jaar",
+        "none": "geen cijfer"
+      },
+      "minutes": "{minutes} min",
+      "quieter": "rustiger",
+      "busier": "drukker"
+    },
+    "months": {
+      "title": "Maand voor maand",
+      "lead": "Elke maand van {year} met de wachttijd van de grote attracties, evenementen, schoolvakanties, het gewone weer en de openingstijden. De naam van de maand opent de kalender per dag.",
+      "tier": {
+        "very_low": "Rustigst",
+        "low": "Rustig",
+        "moderate": "Gemiddeld",
+        "high": "Druk",
+        "very_high": "Drukst"
+      },
+      "noFigure": "Nog geen cijfer",
+      "beyond": "Onze cijfers stoppen op {date}.",
+      "wait": "Grote attracties ongeveer {minutes} min",
+      "label": {
+        "events": "Evenementen",
+        "usBreaks": "Schoolvakanties in Orlando",
+        "euBreaks": "Schoolvakanties in Europa",
+        "weather": "Gewone weer",
+        "hours": "Openingstijden"
+      },
+      "none": "geen",
+      "climate": "{high} °C overdag, {rain} mm regen",
+      "climateNote": "Het gemiddelde van {period}, geen voorspelling. 's Nachts ongeveer {low} °C.",
+      "hours": {
+        "long": "Lange dagen, ongeveer {hours} uur",
+        "short": "Korte dagen, ongeveer {hours} uur",
+        "usual": "Gewone dagen, ongeveer {hours} uur",
+        "unknown": "Nog niet gepubliceerd"
+      },
+      "partyNights": "{count, plural, =1 {1 feestavond} other {# feestavonden}} met vroege sluiting",
+      "hurricane": "Orkaanseizoen",
+      "statesOf": "{count} van {total} Duitse deelstaten",
+      "euUnknown": "nog niet bekend",
+      "details": "Data en evenementen"
+    },
+    "weeks": {
+      "title": "Beste en slechtste weken",
+      "lead": "De drie rustigste en de drie drukste hele weken van {year}, met wat er die week te doen is.",
+      "best": "Rustigste weken",
+      "worst": "Drukste weken",
+      "week": "Week van {date}",
+      "noBreak": "Geen schoolvakantie in Orlando."
+    },
+    "holidays": {
+      "title": "Alleen in de schoolvakantie?",
+      "lead": "Bepaalt de school wanneer je gaat, dan zoekt de planner alleen binnen de vakantie van jouw regio en kiest daar de rustigste {days} dagen. Kies je regio en de vakantie.",
+      "note": "Alleen vakanties van {days} dagen of langer staan erbij, weekenden meegeteld.",
+      "through": "De schoolkalenders lopen tot {date}. Een latere vakantie staat nog niet in de gegevens.",
+      "none": "Geen vakantie van {days} dagen of langer in {year}."
+    },
+    "faq": {
+      "title": "Vragen over de beste reistijd",
+      "quietQ": {
+        "orlando": "Wanneer is het in {year} het rustigst in Orlando?",
+        "disney-world": "Wanneer is het in {year} het rustigst in Disney World?",
+        "universal-orlando": "Wanneer is het in {year} het rustigst in Universal Orlando?"
+      },
+      "quietA": "De reis van {days} dagen vanaf {date} heeft de kortste rijen: de grote attracties ongeveer {minutes} min op het drukste moment, {percent}% onder het gemiddelde van {year}. Daarna volgen {others}.",
+      "christmasQ": "Is het druk met kerst?",
+      "christmasA": "{busy, select, yes {Ja.} other {Minder dan je zou denken.}} De kerstweek ({date}) zit op ongeveer {minutes} min bij de grote attracties, tegen gemiddeld {average} min in {year}.",
+      "newYearA": "{busy, select, yes {Ja, voor zover onze cijfers gaan.} other {Minder dan je zou denken, voor zover onze cijfers gaan.}} Ze beginnen met de week rond Nieuwjaar ({date}) op ongeveer {minutes} min bij de grote attracties, tegen gemiddeld {average} min in {year}. De kerstweek zelf valt daarvoor.",
+      "partyQ": "Wanneer zijn de feestavonden?",
+      "partyA": "{list}. Op die avonden sluit het park eerder voor dagbezoekers; daarom zet de reisplanner je volle parkdagen er niet op.",
+      "partyItem": "{name} ({park}): {dates}, {status}",
+      "hurricaneQ": "Hoe zit het met het orkaanseizoen?",
+      "hurricaneA": "Het loopt van 1 juni tot 30 november. Dat is een feit over het seizoen, geen voorspelling: een storm krijgt dagen van tevoren een naam, geen maanden. In een gewoon jaar valt de meeste regen in {months}, ongeveer {rain} mm per maand (het gemiddelde van {period}).",
+      "firstQ": {
+        "orlando": "Eerst Disney of eerst Universal?",
+        "disney-world": "Welk Disney-park eerst?",
+        "universal-orlando": "Welk Universal-park eerst?"
+      },
+      "firstA": "Dat hangt van de data af: de planner zet elk park op zijn rustigste dag van de reis. Voor de reis vanaf {date} is dat {order}.",
+      "firstItem": "{park} op {date}"
+    },
+    "dataset": {
+      "name": "Wachttijden van de grote attracties per week en maand bij {parks}, {year}",
+      "description": "De wachttijd van de grote attracties op het drukste moment voor elke week en maand van {year} bij {parks}, uit onze voorspelling en de gemeten dagen van vorig jaar, met het gewone weer per maand.",
+      "varWait": "Wachttijd grote attracties (minuten)",
+      "varHigh": "Gewone dagtemperatuur (°C)",
+      "varRain": "Gewone regen (mm per maand)"
+    }
+  },
   "howto": {
     "title": "Zo werkt park.fan",
     "description": "70 minuten bij Taron: veel of normaal? Hoe je een wachttijd plaatst, wanneer een attractie het rustigst is en waar de cijfers vandaan komen."

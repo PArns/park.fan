@@ -5,6 +5,21 @@ by hand: change the comment in the code and re-run the script. -->
 
 [All pages](README.md).
 
+### [`best-time/best-time-chapters.tsx`](../../components/orlando/best-time/best-time-chapters.tsx)
+
+- `WindowCards` _component_: Level 0: the three windows as cards, each with its details and a link into the planner.
+- `YearStrip` _component_: Chapter 01: a bar per week over a real `<table>`. The bars are a picture of the table, hidden from assistive technology; the table, with its caption, is what a crawler and a screen reader read, folded under the bars.
+- `MonthRows` _component_: Chapter 02: a row per month, each with its facts and a fold with the dates.
+- `BestWorstWeeks` _component_: Chapter 03: the three quietest and busiest whole weeks, each with one line on why.
+- `SchoolHolidayLinks` _component_: Chapter 04: each school-holiday region the API knows, with every break a trip of `days` fits into, linked to the planner's When mode inside that break. The locale's own country opens.
+- `bestTimeLabels` _function_: The labels every chapter needs, read once by the page.
+- `climatePeriod` _function_: The climate normal's years as a range, `2015–2024`; the API spells them with a hyphen.
+
+### [`best-time/best-time-page.tsx`](../../components/orlando/best-time/best-time-page.tsx)
+
+- `BestTimePage` _component_: Orlando's best-time page body (`/orlando/<best-time segment>[/<resort>]`), a hub by the landing anatomy: head with the answer, intro, four chapters, FAQ, next steps. See docs/features/orlando-best-time.md.
+- Types: `BestTimePageProps`
+
 ### [`hub/hub-best-days.tsx`](../../components/orlando/hub/hub-best-days.tsx)
 
 - `HubBestDays` _component_: The best-days chapter's body: per park its quiet days as three chips, from `/best-days`, which ranks them on the unrounded figure and weighs a short day by its hours, so the chips are a set and a short day never stands without its close …

@@ -2328,6 +2328,138 @@
       "guidesLead": "Our visit guides to these parks:"
     }
   },
+  "orlandoBestTime": {
+    "title": {
+      "orlando": "Best time to visit Orlando in {year}",
+      "disney-world": "Best time to visit Disney World in {year}",
+      "universal-orlando": "Best time to visit Universal Orlando in {year}"
+    },
+    "name": {
+      "orlando": "Best time to visit Orlando",
+      "disney-world": "Best time to visit Disney World",
+      "universal-orlando": "Best time to visit Universal Orlando"
+    },
+    "resort": {
+      "orlando": "Disney and Universal",
+      "disney-world": "Walt Disney World",
+      "universal-orlando": "Universal Orlando"
+    },
+    "switcher": "Best time by resort",
+    "metaDescription": "Quietest {days}-day trips in {year}: {windows}. Then each month's big-ride waits, events, school breaks and usual weather.",
+    "metaDescriptionShort": "Quietest {days}-day trips in {year} at {parks}: {windows}.",
+    "metaDescriptionPlain": "The quietest {days}-day trips of {year} at {parks}, with each month's big-ride waits, events, school breaks and usual weather.",
+    "answer": {
+      "sentence": "Shortest lines on a {days}-day trip in {year}: {windows}.",
+      "below": "{percent}% below the {year} average",
+      "none": "No {days}-day trip in {year} has figures yet.",
+      "why": "Why these dates",
+      "events": "Events: {list}"
+    },
+    "intro": {
+      "lead": "Every figure here is the big rides' wait at their busiest: each headliner's peak of the day, averaged over the parks of the trip.",
+      "body": "A trip is priced the way the trip planner prices it, with each park on its best day, and a day that closes early for day guests counts as a worse one. The forecast runs to {date}; after that the page shows the same weeks last year as we measured them, marked “last year”.",
+      "bodyForecast": "A trip is priced the way the trip planner prices it, with each park on its best day, and a day that closes early for day guests counts as a worse one. Every figure on this page is our forecast."
+    },
+    "strip": {
+      "title": "The year at a glance",
+      "lead": "One bar per week: the taller, the longer the big rides' wait at {parks}. The colour compares the week with the rest of {year}.",
+      "caption": "Big rides' wait per week in {year} at {parks}",
+      "table": "The weeks as a table",
+      "colWeek": "Week from",
+      "colWait": "Big rides",
+      "colBasis": "Based on",
+      "basis": {
+        "forecast": "forecast",
+        "last_year": "last year",
+        "mixed": "partly last year",
+        "none": "no figure"
+      },
+      "minutes": "{minutes} min",
+      "quieter": "quieter",
+      "busier": "busier"
+    },
+    "months": {
+      "title": "Month by month",
+      "lead": "Each month of {year} with its big-ride wait, events, school breaks, usual weather and opening hours. The month's name opens its calendar day by day.",
+      "tier": {
+        "very_low": "Quietest",
+        "low": "Quiet",
+        "moderate": "Average",
+        "high": "Busy",
+        "very_high": "Busiest"
+      },
+      "noFigure": "No figure yet",
+      "beyond": "Our figures end on {date}.",
+      "wait": "Big rides about {minutes} min",
+      "label": {
+        "events": "Events",
+        "usBreaks": "Orlando school breaks",
+        "euBreaks": "European school holidays",
+        "weather": "Usual weather",
+        "hours": "Opening hours"
+      },
+      "none": "none",
+      "climate": "{high} °C by day, {rain} mm of rain",
+      "climateNote": "The average for {period}, not a forecast. Nights about {low} °C.",
+      "hours": {
+        "long": "Long days, about {hours} h",
+        "short": "Short days, about {hours} h",
+        "usual": "Usual days, about {hours} h",
+        "unknown": "Not published yet"
+      },
+      "partyNights": "{count, plural, =1 {1 party night} other {# party nights}} with an early close",
+      "hurricane": "Hurricane season",
+      "statesOf": "{count} of {total} German states",
+      "euUnknown": "not known yet",
+      "details": "Dates and events"
+    },
+    "weeks": {
+      "title": "Best and worst weeks",
+      "lead": "The three quietest and the three busiest whole weeks of {year}, with what is on in each.",
+      "best": "Quietest weeks",
+      "worst": "Busiest weeks",
+      "week": "Week of {date}",
+      "noBreak": "No school break in Orlando."
+    },
+    "holidays": {
+      "title": "Travelling in school holidays?",
+      "lead": "If school decides when you travel, the planner searches only inside your region's holidays and picks the quietest {days} days there. Choose your region and the break.",
+      "note": "Only breaks of {days} days or more are listed, weekends included.",
+      "through": "The school calendars run to {date}. A later break is not in the data yet.",
+      "none": "No break of {days} days or more in {year}."
+    },
+    "faq": {
+      "title": "Questions about when to go",
+      "quietQ": {
+        "orlando": "When is Orlando least crowded in {year}?",
+        "disney-world": "When is Disney World least crowded in {year}?",
+        "universal-orlando": "When is Universal Orlando least crowded in {year}?"
+      },
+      "quietA": "The {days}-day trip from {date} has the shortest lines: the big rides about {minutes} min at their busiest, {percent}% below the {year} average. Next come {others}.",
+      "christmasQ": "Is Christmas busy?",
+      "christmasA": "{busy, select, yes {Yes.} other {Less than you might expect.}} Christmas week ({date}) runs at about {minutes} min at the big rides, against {average} min across {year}.",
+      "newYearA": "{busy, select, yes {Yes, as far as our figures go.} other {Less than you might expect, as far as our figures go.}} They start with the week around New Year ({date}) at about {minutes} min at the big rides, against {average} min across {year}. Christmas week itself comes before that.",
+      "partyQ": "When are the party nights?",
+      "partyA": "{list}. On those evenings the park closes early for day guests, which is why the trip planner keeps your full park days off them.",
+      "partyItem": "{name} ({park}): {dates}, {status}",
+      "hurricaneQ": "What about hurricane season?",
+      "hurricaneA": "It runs from 1 June to 30 November. That is a fact about the season, not a forecast: a storm gets named days ahead, not months. In a usual year the most rain falls in {months}, about {rain} mm a month (the average for {period}).",
+      "firstQ": {
+        "orlando": "Disney or Universal first?",
+        "disney-world": "Which Disney park should come first?",
+        "universal-orlando": "Which Universal park should come first?"
+      },
+      "firstA": "It depends on the dates: the planner puts each park on its quietest day of the trip. For the trip from {date} that is {order}.",
+      "firstItem": "{park} on {date}"
+    },
+    "dataset": {
+      "name": "Big-ride waits per week and month at {parks}, {year}",
+      "description": "The big rides' wait at their busiest for each week and month of {year} at {parks}, from our forecast and last year's measured days, with the usual weather per month.",
+      "varWait": "Big rides' wait (minutes)",
+      "varHigh": "Usual daily high (°C)",
+      "varRain": "Usual rain (mm per month)"
+    }
+  },
   "howto": {
     "title": "How park.fan works",
     "description": "70 minutes at Taron: a lot or normal? How to place a wait time, when a ride is at its quietest and where the numbers come from."

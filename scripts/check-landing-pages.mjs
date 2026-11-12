@@ -68,6 +68,9 @@ const ORLANDO_MONTH = (() => {
 /** [path, kind, primary action expected in the hero] — docs/product/landing-pages.md §1 and §4. */
 const PAGES = [
   ['/de/beste-reisezeit', 'hub', true],
+  ['/de/orlando/beste-reisezeit', 'hub', true],
+  ['/de/orlando/beste-reisezeit/disney-world', 'hub', true],
+  ['/de/orlando/beste-reisezeit/universal-orlando', 'hub', true],
   ['/de/tagesplaner', 'hub', true],
   ['/de/so-funktioniert-park-fan', 'hub', true],
   ['/de/fancast', 'hub', true],
@@ -75,6 +78,7 @@ const PAGES = [
   ['/de/blog', 'hub', false],
   ['/de/orlando', 'hub', true],
   ['/en/best-time-to-visit', 'hub', true],
+  ['/en/orlando/best-time-to-visit', 'hub', true],
   ['/en/trip-planner', 'hub', true],
   ['/en/how-park-fan-works', 'hub', true],
   ['/en/fancast', 'hub', true],

@@ -76,6 +76,7 @@ async function heroPages(browser) {
     ['home', `/${LOCALE}`],
     ['fancast', `/${LOCALE}/fancast`],
     ['best-time', `/${LOCALE}/best-time-to-visit`],
+    ['orlando-best-time', `/${LOCALE}/orlando/best-time-to-visit`],
     ['guide', `/${LOCALE}/how-park-fan-works`],
     ['blog', `/${LOCALE}/blog`],
     ['article', post.split(/[?#]/)[0]],

@@ -18,7 +18,14 @@ import { parkGeoKey, parksWithStatsPage, type ParkGeoPath } from '@/lib/api/stat
 import { categoryPath, NEWS_INDEX_PATH, postPath } from '@/lib/blog/paths';
 import { brandParksByCountry, PARK_BRANDS } from '@/lib/parks/park-brands';
 import type { GlossaryTerm } from '@/lib/glossary/types';
-import { currentOrlandoMonth, isSameMonth, orlandoMonths, orlandoPath } from '@/lib/orlando/paths';
+import {
+  currentOrlandoMonth,
+  isSameMonth,
+  orlandoBestTimePath,
+  orlandoMonths,
+  orlandoPath,
+} from '@/lib/orlando/paths';
+import { ORLANDO_BEST_TIME_RESORTS } from '@/lib/orlando/best-time';
 
 const BASE_URL = SITE_URL;
 
@@ -147,6 +154,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const alternates = buildAlternates(() => path);
     for (const locale of locales) {
       routes.push({ url: `${BASE_URL}/${locale}${path}`, alternates });
+    }
+  }
+
+  // Orlando's best-time pages, undated: their figures are recomputed for all three at once, and
+  // one stamp across a class is what gets `<lastmod>` discounted (docs/seo/sitemaps.md).
+  for (const resort of [undefined, ...ORLANDO_BEST_TIME_RESORTS]) {
+    const alternates = buildAlternates((l) => orlandoBestTimePath(l, resort));
+    for (const locale of locales) {
+      routes.push({
+        url: `${BASE_URL}/${locale}${orlandoBestTimePath(locale, resort)}`,
+        alternates,
+      });
     }
   }
 
