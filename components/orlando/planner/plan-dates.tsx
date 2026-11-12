@@ -15,7 +15,6 @@ import { getDateTimeFormat } from '@/lib/utils/intl-format';
 import { addDays, formatParkDayRange } from '@/lib/utils/park-day';
 import { MAX_DAYS_AHEAD, MAX_TRIP_DAYS, setTripDates, tripDates } from '@/lib/orlando/plan';
 import { dateFigure } from '@/lib/orlando/plan-week';
-import type { TripCalendarDay } from '@/lib/orlando/types';
 import { usePlanContext } from './plan-context';
 import { useTripCalendar } from './use-trip-plan';
 import { PlanCheckRow } from './plan-controls';

@@ -801,6 +801,31 @@ const keys = { parks: new Set(ORDER), areas: new Set(['disney', 'universal']) };
   globalThis.fetch = original;
 }
 
+// ── 8. Seasons and evenings ─────────────────────────────────────────────────
+{
+  test(
+    'season chips: heat, and the hurricane season folded into its peak',
+    [
+      climateChips(['extreme_heat', 'hurricane_season', 'hurricane_peak']),
+      climateChips(['hurricane_season']),
+    ],
+    [['extreme_heat', 'hurricane_peak'], ['hurricane_season']]
+  );
+  test(
+    'an evening says its most telling reason first',
+    eveningReasons({ reasons: ['short_transfer', 'nope', 'park_closes_early'] }),
+    ['park_closes_early', 'short_transfer']
+  );
+  test(
+    'ranked lower names the season’s terms the ranking added',
+    [
+      rankedLower({ warnings: ['hurricane_peak'], penalties: { hurricane: 6.4, heat: 1.2 } }),
+      rankedLower({ warnings: [] }),
+    ],
+    [['hurricane_peak', 'extreme_heat'], []]
+  );
+}
+
 // ── Report ───────────────────────────────────────────────────────────────────
 let failed = 0;
 for (const { name, actual, expected } of cases) {
