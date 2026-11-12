@@ -52,19 +52,20 @@ is an accepted cost ([crawl budget](crawl-budget.md)). The span decides the file
 
 ## What `/sitemap.xml` holds
 
-| URLs                                                                                    | `lastModified`                         |
-| --------------------------------------------------------------------------------------- | -------------------------------------- |
-| `/{locale}` home, `/fancast`, `/contribute`, the guide, the planner, best time to visit | none (code, not content)               |
-| `/en/changelog` (English only, no alternates)                                           | newest entry's date                    |
-| `/{locale}/parks`, continent, country and **multi-park** city hubs                      | observed                               |
-| `/{locale}/parks/six-flags` and `/universal`, the [brand pages](brand-pages.md)         | observed                               |
-| `/{locale}/parks/…/{park}` (with the park's photos as image entries)                    | observed                               |
-| `/{locale}/parks/…/{park}/{calendar-segment}` (the calendar hub)                        | none                                   |
-| `/{locale}/parks/…/{park}/{stats-segment}`, **displayable parks only**                  | none                                   |
-| `/{locale}/parks/…/{park}/{kids-segment}`, **gated parks only**                         | none                                   |
-| glossary index and terms                                                                | `GLOSSARY_CONTENT_DATE`                |
-| `/{locale}/blog`, `/{locale}/news`, categories, authors, indexable tags (page 1)        | newest post in the list                |
-| blog and news posts, **real translations only**                                         | observed, at least `updatedAt ?? date` |
+| URLs                                                                                    | `lastModified`                          |
+| --------------------------------------------------------------------------------------- | --------------------------------------- |
+| `/{locale}` home, `/fancast`, `/contribute`, the guide, the planner, best time to visit | none (code, not content)                |
+| `/en/changelog` (English only, no alternates)                                           | newest entry's date                     |
+| `/{locale}/orlando/{best-time segment}` and its `/disney-world`, `/universal-orlando`   | none (recomputed for all three at once) |
+| `/{locale}/parks`, continent, country and **multi-park** city hubs                      | observed                                |
+| `/{locale}/parks/six-flags` and `/universal`, the [brand pages](brand-pages.md)         | observed                                |
+| `/{locale}/parks/…/{park}` (with the park's photos as image entries)                    | observed                                |
+| `/{locale}/parks/…/{park}/{calendar-segment}` (the calendar hub)                        | none                                    |
+| `/{locale}/parks/…/{park}/{stats-segment}`, **displayable parks only**                  | none                                    |
+| `/{locale}/parks/…/{park}/{kids-segment}`, **gated parks only**                         | none                                    |
+| glossary index and terms                                                                | `GLOSSARY_CONTENT_DATE`                 |
+| `/{locale}/blog`, `/{locale}/news`, categories, authors, indexable tags (page 1)        | newest post in the list                 |
+| blog and news posts, **real translations only**                                         | observed, at least `updatedAt ?? date`  |
 
 - **The two gated classes** are listed only for parks that have the page, decided by the same
   probe the route 404s on (`parksWithStatsPage()`, `parksWithKidsPage()`); a park whose probe

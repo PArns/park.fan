@@ -10,6 +10,7 @@ import { heroImageSrcs } from '@/lib/media/hero';
 import { ParkAttraction, GeoStructure } from '@/lib/api/types';
 import { isValidLocale, type Locale } from '@/i18n/config';
 import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
+import { BEST_TIME_SEGMENTS } from '@/lib/best-time/segments';
 import { OgBrandLockup } from '@/lib/og/brand-mark';
 import { ogBackgroundSrc } from '@/lib/og/background-photo';
 import { ogAsJpeg } from '@/lib/og/jpeg';
@@ -174,11 +175,27 @@ export async function GET(
       'best-time-to-visit': { namespace: 'bestTime', key: 'title' },
       'trip-planner': { namespace: 'planner.page', key: 'title' },
       orlando: { namespace: 'orlando', key: 'title' },
+      // Orlando's best-time pages (`<locale>/orlando/best-time-to-visit[/<resort>]`), keyed below by
+      // `orlandoBestTimeCard`, so they get their own headline rather than the hub's.
+      'orlando/best-time-to-visit': { namespace: 'orlandoBestTime', key: 'name.orlando' },
+      'orlando/best-time-to-visit/disney-world': {
+        namespace: 'orlandoBestTime',
+        key: 'name.disney-world',
+      },
+      'orlando/best-time-to-visit/universal-orlando': {
+        namespace: 'orlandoBestTime',
+        key: 'name.universal-orlando',
+      },
       contribute: { namespace: 'contribute.meta', key: 'title' },
       ...glossaryEntries,
     };
 
-    const [localeParam, secondSegment] = path;
+    const [localeParam, pathSecond] = path;
+    // An Orlando best-time page names its card by the whole path after the locale; every other
+    // generic page by its second segment.
+    const orlandoBestTimeCard =
+      path[1] === 'orlando' && path[2] === BEST_TIME_SEGMENTS.en ? path.slice(1).join('/') : null;
+    const secondSegment = orlandoBestTimeCard ?? pathSecond;
     const locale = isValidLocale(localeParam) ? localeParam : 'en';
     const isGeneric = secondSegment && Object.keys(genericPages).includes(secondSegment);
 

@@ -438,6 +438,14 @@ Route `/[locale]/orlando/[[...date]]` (page).
 - `generateMetadata` _function_
 - `dynamic` _const_: Rendered per request behind its edge window (`next.config.ts`), like the park calendar: the page names Orlando's today, and its figures come from the Data Cache, an hour at most.
 
+### [`orlando/best-time-to-visit/[[...resort]]/page.tsx`](../../app/%5Blocale%5D/orlando/best-time-to-visit/%5B%5B...resort%5D%5D/page.tsx)
+
+Route `/[locale]/orlando/best-time-to-visit/[[...resort]]` (page).
+
+- `default (OrlandoBestTimeRoute)` _component_: Orlando's best-time pages: when to go to Disney and Universal together (`/orlando/<best-time segment>`), to Walt Disney World or to Universal Orlando (`…/disney-world`, `…/universal-orlando`).
+- `generateMetadata` _function_
+- `dynamic` _const_: Rendered per request behind its hour at the edge (`next.config.ts`): the page names the year Orlando's today decides, and its figures come from the Data Cache, an hour old at most.
+
 ### [`page.tsx`](../../app/%5Blocale%5D/page.tsx)
 
 Route `/[locale]` (page).

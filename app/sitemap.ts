@@ -25,8 +25,10 @@ import {
   isSameMonth,
   orlandoMonthRange,
   orlandoMonths,
+  orlandoBestTimePath,
   orlandoPath,
 } from '@/lib/orlando/paths';
+import { ORLANDO_BEST_TIME_RESORTS } from '@/lib/orlando/best-time';
 
 const BASE_URL = SITE_URL;
 
@@ -168,6 +170,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   for (const locale of locales) {
     for (const { path, lastModified, alternates } of orlandoEntries) {
       routes.push({ url: `${BASE_URL}/${locale}${path}`, lastModified, alternates });
+    }
+  }
+
+  // Orlando's best-time pages, undated: their figures are recomputed for all three at once, and
+  // one stamp across a class is what gets `<lastmod>` discounted (docs/seo/sitemaps.md).
+  for (const resort of [undefined, ...ORLANDO_BEST_TIME_RESORTS]) {
+    const alternates = buildAlternates((l) => orlandoBestTimePath(l, resort));
+    for (const locale of locales) {
+      routes.push({
+        url: `${BASE_URL}/${locale}${orlandoBestTimePath(locale, resort)}`,
+        alternates,
+      });
     }
   }
 

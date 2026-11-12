@@ -19,6 +19,7 @@ import { GLOSSARY_SEGMENTS } from '../lib/glossary/segments.ts';
 import { PARK_CALENDAR_SEGMENTS } from '../lib/parks/calendar-segments.ts';
 import { PARK_STATS_SEGMENTS } from '../lib/parks/stats-segments.ts';
 import { PARK_KIDS_SEGMENTS } from '../lib/parks/kids-segments.ts';
+import { BEST_TIME_SEGMENTS } from '../lib/best-time/segments.ts';
 
 const PARK = 'parks/europe/germany/rust/europa-park';
 
@@ -67,6 +68,14 @@ const ROUTES = {
   'orlando/[year]/[month]': {
     url: (l) => `/${l}/orlando/2026/12`,
     rule: (source) => source.endsWith('/orlando/:year(\\d{4})/:month(\\d{1,2})'),
+  },
+  'orlando/best-time-to-visit': {
+    url: (l) => `/${l}/orlando/${BEST_TIME_SEGMENTS[l]}`,
+    rule: (source, l) => source.endsWith(`/orlando/${BEST_TIME_SEGMENTS[l]}`),
+  },
+  'orlando/best-time-to-visit/[resort]': {
+    url: (l) => `/${l}/orlando/${BEST_TIME_SEGMENTS[l]}/universal-orlando`,
+    rule: (source, l) => source.includes(`/orlando/${BEST_TIME_SEGMENTS[l]}/:resort`),
   },
   'with-kids': {
     url: (l) => `/${l}/${PARK}/${PARK_KIDS_SEGMENTS[l]}`,

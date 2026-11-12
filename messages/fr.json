@@ -2329,6 +2329,138 @@
       "guidesLead": "Nos guides pour ces parcs :"
     }
   },
+  "orlandoBestTime": {
+    "title": {
+      "orlando": "Meilleure période pour aller à Orlando en {year}",
+      "disney-world": "Meilleure période pour aller à Disney World en {year}",
+      "universal-orlando": "Meilleure période pour aller à Universal Orlando en {year}"
+    },
+    "name": {
+      "orlando": "Meilleure période pour aller à Orlando",
+      "disney-world": "Meilleure période pour aller à Disney World",
+      "universal-orlando": "Meilleure période pour aller à Universal Orlando"
+    },
+    "resort": {
+      "orlando": "Disney et Universal",
+      "disney-world": "Walt Disney World",
+      "universal-orlando": "Universal Orlando"
+    },
+    "switcher": "Meilleure période par resort",
+    "metaDescription": "Les séjours de {days} jours les plus calmes en {year} : {windows}. Puis chaque mois avec attentes, événements, vacances scolaires et météo habituelle.",
+    "metaDescriptionShort": "Les séjours de {days} jours les plus calmes en {year} à {parks} : {windows}.",
+    "metaDescriptionPlain": "Les séjours de {days} jours les plus calmes en {year} à {parks}, avec pour chaque mois les attentes, les événements, les vacances scolaires et la météo habituelle.",
+    "answer": {
+      "sentence": "Les files les plus courtes pour un séjour de {days} jours en {year} : {windows}.",
+      "below": "{percent} % sous la moyenne de {year}",
+      "none": "Aucun séjour de {days} jours en {year} n’a encore de chiffres.",
+      "why": "Pourquoi ces dates",
+      "events": "Événements : {list}"
+    },
+    "intro": {
+      "lead": "Chaque chiffre ici est l’attente des grandes attractions au moment le plus chargé : le pic du jour de chaque attraction phare, en moyenne sur les parcs du séjour.",
+      "body": "Un séjour est calculé comme dans le planificateur de voyage, chaque parc à son meilleur jour, et un jour où les visiteurs à la journée doivent partir plus tôt compte comme un jour moins bon. La prévision va jusqu’au {date} ; au-delà, la page montre les mêmes semaines de l’an dernier telles que nous les avons mesurées, marquées « l’an dernier ».",
+      "bodyForecast": "Un séjour est calculé comme dans le planificateur de voyage, chaque parc à son meilleur jour, et un jour où les visiteurs à la journée doivent partir plus tôt compte comme un jour moins bon. Chaque chiffre de cette page est notre prévision."
+    },
+    "strip": {
+      "title": "L’année d’un coup d’œil",
+      "lead": "Une barre par semaine : plus elle est haute, plus l’attente des grandes attractions est longue à {parks}. La couleur compare la semaine au reste de {year}.",
+      "caption": "Attente des grandes attractions par semaine en {year} à {parks}",
+      "table": "Les semaines en tableau",
+      "colWeek": "Semaine du",
+      "colWait": "Grandes attractions",
+      "colBasis": "Source",
+      "basis": {
+        "forecast": "prévision",
+        "last_year": "l’an dernier",
+        "mixed": "en partie l’an dernier",
+        "none": "pas de chiffre"
+      },
+      "minutes": "{minutes} min",
+      "quieter": "plus calme",
+      "busier": "plus chargé"
+    },
+    "months": {
+      "title": "Mois par mois",
+      "lead": "Chaque mois de {year} avec l’attente des grandes attractions, les événements, les vacances scolaires, la météo habituelle et les horaires. Le nom du mois ouvre son calendrier jour par jour.",
+      "tier": {
+        "very_low": "Le plus calme",
+        "low": "Calme",
+        "moderate": "Moyen",
+        "high": "Chargé",
+        "very_high": "Le plus chargé"
+      },
+      "noFigure": "Pas encore de chiffre",
+      "beyond": "Nos chiffres s’arrêtent au {date}.",
+      "wait": "Grandes attractions env. {minutes} min",
+      "label": {
+        "events": "Événements",
+        "usBreaks": "Vacances scolaires à Orlando",
+        "euBreaks": "Vacances scolaires en Europe",
+        "weather": "Météo habituelle",
+        "hours": "Horaires"
+      },
+      "none": "aucun",
+      "climate": "{high} °C le jour, {rain} mm de pluie",
+      "climateNote": "La moyenne de {period}, pas une prévision. La nuit, env. {low} °C.",
+      "hours": {
+        "long": "Longues journées, env. {hours} h",
+        "short": "Journées courtes, env. {hours} h",
+        "usual": "Journées habituelles, env. {hours} h",
+        "unknown": "Pas encore publiés"
+      },
+      "partyNights": "{count, plural, =1 {1 soirée spéciale} other {# soirées spéciales}} avec fermeture anticipée",
+      "hurricane": "Saison des ouragans",
+      "statesOf": "{count} Länder allemands sur {total}",
+      "euUnknown": "pas encore connu",
+      "details": "Dates et événements"
+    },
+    "weeks": {
+      "title": "Meilleures et pires semaines",
+      "lead": "Les trois semaines complètes les plus calmes et les trois plus chargées de {year}, avec ce qui s’y passe.",
+      "best": "Semaines les plus calmes",
+      "worst": "Semaines les plus chargées",
+      "week": "Semaine du {date}",
+      "noBreak": "Pas de vacances scolaires à Orlando."
+    },
+    "holidays": {
+      "title": "Seulement pendant les vacances scolaires ?",
+      "lead": "Si l’école décide de vos dates, le planificateur cherche uniquement dans les vacances de votre région et y prend les {days} jours les plus calmes. Choisissez votre région et les vacances.",
+      "note": "Seules les vacances de {days} jours ou plus sont proposées, week-ends compris.",
+      "through": "Les calendriers scolaires vont jusqu’au {date}. Des vacances plus tardives ne sont pas encore dans les données.",
+      "none": "Pas de vacances de {days} jours ou plus en {year}."
+    },
+    "faq": {
+      "title": "Questions sur la meilleure période",
+      "quietQ": {
+        "orlando": "Quand Orlando est-il le moins fréquenté en {year} ?",
+        "disney-world": "Quand Disney World est-il le moins fréquenté en {year} ?",
+        "universal-orlando": "Quand Universal Orlando est-il le moins fréquenté en {year} ?"
+      },
+      "quietA": "Le séjour de {days} jours à partir du {date} a les files les plus courtes : environ {minutes} min aux grandes attractions au moment le plus chargé, {percent} % sous la moyenne de {year}. Viennent ensuite {others}.",
+      "christmasQ": "Y a-t-il du monde à Noël ?",
+      "christmasA": "{busy, select, yes {Oui.} other {Moins qu’on ne le pense.}} La semaine de Noël ({date}) tourne autour de {minutes} min aux grandes attractions, contre {average} min en moyenne sur {year}.",
+      "newYearA": "{busy, select, yes {Oui, aussi loin que vont nos chiffres.} other {Moins qu’on ne le pense, aussi loin que vont nos chiffres.}} Ils commencent avec la semaine du Nouvel An ({date}), autour de {minutes} min aux grandes attractions, contre {average} min en moyenne sur {year}. La semaine de Noël elle-même tombe avant.",
+      "partyQ": "Quand ont lieu les soirées spéciales ?",
+      "partyA": "{list}. Ces soirs-là, le parc ferme plus tôt pour les visiteurs à la journée ; c’est pourquoi le planificateur n’y place pas vos journées complètes.",
+      "partyItem": "{name} ({park}) : {dates}, {status}",
+      "hurricaneQ": "Et la saison des ouragans ?",
+      "hurricaneA": "Elle va du 1er juin au 30 novembre. C’est un fait sur la saison, pas une prévision : une tempête reçoit son nom quelques jours avant, pas des mois. Une année habituelle, il pleut le plus en {months}, environ {rain} mm par mois (la moyenne de {period}).",
+      "firstQ": {
+        "orlando": "D’abord Disney ou d’abord Universal ?",
+        "disney-world": "Quel parc Disney en premier ?",
+        "universal-orlando": "Quel parc Universal en premier ?"
+      },
+      "firstA": "Cela dépend des dates : le planificateur place chaque parc à son jour le plus calme du séjour. Pour le séjour à partir du {date}, cela donne {order}.",
+      "firstItem": "{park} le {date}"
+    },
+    "dataset": {
+      "name": "Attente des grandes attractions par semaine et par mois à {parks}, {year}",
+      "description": "L’attente des grandes attractions au moment le plus chargé pour chaque semaine et chaque mois de {year} à {parks}, d’après notre prévision et les jours mesurés l’an dernier, avec la météo habituelle par mois.",
+      "varWait": "Attente des grandes attractions (minutes)",
+      "varHigh": "Maximale habituelle (°C)",
+      "varRain": "Pluie habituelle (mm par mois)"
+    }
+  },
   "howto": {
     "title": "Comment fonctionne park.fan",
     "description": "70 minutes à Taron : beaucoup ou normal ? Comment situer un temps d’attente, quand une attraction est au plus calme et d’où viennent les chiffres."

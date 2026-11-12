@@ -22,7 +22,8 @@ product meets the need and no page addresses it) and
 ## 1. Three kinds of landing page
 
 **Hub** (a topic or audience across all parks: best time to visit, trip planner, how park.fan
-works, Fancast, Parky, blog index, and the Orlando hub with its month pages), **tool page** (the page is a tool, a list or a form: contribute, news
+works, Fancast, Parky, blog index, the Orlando hub with its month pages, and Orlando's three
+best-time pages), **tool page** (the page is a tool, a list or a form: contribute, news
 index, compare, glossary index, changelog) and **park audience page** (one audience × one park,
 under the park's URL: with kids, average wait times). The table of pages and heads is in the
 [rule](../rules/a-landing-page-has-one-anatomy.md); the head components are
@@ -68,6 +69,7 @@ once in its head (`LandingHero action`) and again as the first entry of `Landing
 | best time to visit    | P1, P2, P4, P5 (scenario S-A)                   | the trip planner                         |
 | trip planner          | P1 (S-B)                                        | start a plan (the tool on the same page) |
 | Orlando hub           | P1, P2, P4, P6                                  | plan my Orlando trip (chapter 03)        |
+| Orlando best time     | P1, P4, P5                                      | the planner on the quietest window       |
 | how park.fan works    | P4                                              | open a park                              |
 | Fancast               | P2                                              | a park's crowd calendar                  |
 | blog index            | readers                                         | none: the list is the action             |

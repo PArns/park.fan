@@ -2329,6 +2329,138 @@
       "guidesLead": "Unsere Guides zu diesen Parks:"
     }
   },
+  "orlandoBestTime": {
+    "title": {
+      "orlando": "Beste Reisezeit für Orlando {year}",
+      "disney-world": "Beste Reisezeit für Disney World {year}",
+      "universal-orlando": "Beste Reisezeit für Universal Orlando {year}"
+    },
+    "name": {
+      "orlando": "Beste Reisezeit für Orlando",
+      "disney-world": "Beste Reisezeit für Disney World",
+      "universal-orlando": "Beste Reisezeit für Universal Orlando"
+    },
+    "resort": {
+      "orlando": "Disney und Universal",
+      "disney-world": "Walt Disney World",
+      "universal-orlando": "Universal Orlando"
+    },
+    "switcher": "Beste Reisezeit nach Resort",
+    "metaDescription": "Die ruhigsten {days}-Tage-Reisen {year}: {windows}. Dazu jeder Monat mit Wartezeiten, Events, Schulferien und üblichem Wetter.",
+    "metaDescriptionShort": "Die ruhigsten {days}-Tage-Reisen {year} bei {parks}: {windows}.",
+    "metaDescriptionPlain": "Die ruhigsten {days}-Tage-Reisen {year} bei {parks}, dazu jeder Monat mit Wartezeiten, Events, Schulferien und üblichem Wetter.",
+    "answer": {
+      "sentence": "Die kürzesten Warteschlangen auf einer {days}-Tage-Reise {year}: {windows}.",
+      "below": "{percent} % unter dem Schnitt von {year}",
+      "none": "Für {year} gibt es noch keine Zahlen zu einer {days}-Tage-Reise.",
+      "why": "Warum diese Tage",
+      "events": "Events: {list}"
+    },
+    "intro": {
+      "lead": "Jede Zahl hier ist die Wartezeit der großen Bahnen zur vollsten Zeit: die Tagesspitze jedes Headliners, gemittelt über die Parks der Reise.",
+      "body": "Eine Reise wird so gerechnet wie im Reiseplaner, jeder Park an seinem besten Tag, und ein Tag, an dem Tagesgäste früher gehen müssen, zählt als schlechterer Tag. Die Prognose reicht bis {date}; danach zeigt die Seite dieselben Wochen im Vorjahr, wie wir sie gemessen haben, markiert mit „Vorjahr“.",
+      "bodyForecast": "Eine Reise wird so gerechnet wie im Reiseplaner, jeder Park an seinem besten Tag, und ein Tag, an dem Tagesgäste früher gehen müssen, zählt als schlechterer Tag. Jede Zahl auf dieser Seite ist unsere Prognose."
+    },
+    "strip": {
+      "title": "Das Jahr auf einen Blick",
+      "lead": "Ein Balken pro Woche: je höher, desto länger warten die großen Bahnen bei {parks}. Die Farbe vergleicht die Woche mit dem Rest von {year}.",
+      "caption": "Wartezeit der großen Bahnen pro Woche {year} bei {parks}",
+      "table": "Die Wochen als Tabelle",
+      "colWeek": "Woche ab",
+      "colWait": "Große Bahnen",
+      "colBasis": "Grundlage",
+      "basis": {
+        "forecast": "Prognose",
+        "last_year": "Vorjahr",
+        "mixed": "teils Vorjahr",
+        "none": "keine Zahl"
+      },
+      "minutes": "{minutes} Min.",
+      "quieter": "ruhiger",
+      "busier": "voller"
+    },
+    "months": {
+      "title": "Monat für Monat",
+      "lead": "Jeder Monat {year} mit Wartezeit der großen Bahnen, Events, Schulferien, üblichem Wetter und Öffnungszeiten. Der Monatsname öffnet seinen Kalender Tag für Tag.",
+      "tier": {
+        "very_low": "Am ruhigsten",
+        "low": "Ruhig",
+        "moderate": "Mittel",
+        "high": "Voll",
+        "very_high": "Am vollsten"
+      },
+      "noFigure": "Noch keine Zahl",
+      "beyond": "Unsere Zahlen enden am {date}.",
+      "wait": "Große Bahnen etwa {minutes} Min.",
+      "label": {
+        "events": "Events",
+        "usBreaks": "Schulferien in Orlando",
+        "euBreaks": "Schulferien in Europa",
+        "weather": "Übliches Wetter",
+        "hours": "Öffnungszeiten"
+      },
+      "none": "keine",
+      "climate": "{high} °C am Tag, {rain} mm Regen",
+      "climateNote": "Der Schnitt von {period}, keine Vorhersage. Nachts etwa {low} °C.",
+      "hours": {
+        "long": "Lange Tage, etwa {hours} Std.",
+        "short": "Kurze Tage, etwa {hours} Std.",
+        "usual": "Übliche Tage, etwa {hours} Std.",
+        "unknown": "Noch nicht veröffentlicht"
+      },
+      "partyNights": "{count, plural, =1 {1 Partyabend} other {# Partyabende}} mit frühem Schluss",
+      "hurricane": "Hurrikansaison",
+      "statesOf": "{count} von {total} Bundesländern",
+      "euUnknown": "noch nicht bekannt",
+      "details": "Termine und Events"
+    },
+    "weeks": {
+      "title": "Die besten und schlechtesten Wochen",
+      "lead": "Die drei ruhigsten und die drei vollsten ganzen Wochen {year}, jeweils mit dem, was in der Woche läuft.",
+      "best": "Ruhigste Wochen",
+      "worst": "Vollste Wochen",
+      "week": "Woche ab {date}",
+      "noBreak": "Keine Schulferien in Orlando."
+    },
+    "holidays": {
+      "title": "Nur in den Schulferien?",
+      "lead": "Wenn die Schule bestimmt, wann du fährst, sucht der Planer nur in den Ferien deines Bundeslands oder deiner Region und nimmt dort die ruhigsten {days} Tage. Wähle Region und Ferien.",
+      "note": "Aufgeführt sind nur Ferien ab {days} Tagen, Wochenenden mitgezählt.",
+      "through": "Die Ferienkalender reichen bis {date}. Spätere Ferien sind noch nicht in den Daten.",
+      "none": "{year} keine Ferien mit {days} oder mehr Tagen."
+    },
+    "faq": {
+      "title": "Fragen zur besten Reisezeit",
+      "quietQ": {
+        "orlando": "Wann ist in Orlando {year} am wenigsten los?",
+        "disney-world": "Wann ist in Disney World {year} am wenigsten los?",
+        "universal-orlando": "Wann ist in Universal Orlando {year} am wenigsten los?"
+      },
+      "quietA": "Die kürzesten Warteschlangen hat die {days}-Tage-Reise ab {date}: die großen Bahnen etwa {minutes} Min. zur vollsten Zeit, {percent} % unter dem Schnitt von {year}. Danach folgen {others}.",
+      "christmasQ": "Ist an Weihnachten viel los?",
+      "christmasA": "{busy, select, yes {Ja.} other {Weniger, als viele denken.}} Die Weihnachtswoche ({date}) liegt bei etwa {minutes} Min. an den großen Bahnen, im Schnitt von {year} sind es {average} Min.",
+      "newYearA": "{busy, select, yes {Ja, soweit unsere Zahlen reichen.} other {Weniger, als viele denken, soweit unsere Zahlen reichen.}} Sie beginnen mit der Woche um Neujahr ({date}) bei etwa {minutes} Min. an den großen Bahnen, im Schnitt von {year} sind es {average} Min. Die Weihnachtswoche selbst liegt davor.",
+      "partyQ": "Wann sind die Partyabende?",
+      "partyA": "{list}. An diesen Abenden schließt der Park für Tagesgäste früher, deshalb legt der Reiseplaner deine vollen Parktage nicht darauf.",
+      "partyItem": "{name} ({park}): {dates}, {status}",
+      "hurricaneQ": "Was ist mit der Hurrikansaison?",
+      "hurricaneA": "Sie läuft vom 1. Juni bis 30. November. Das ist eine Tatsache über die Jahreszeit, keine Vorhersage: Ein Sturm bekommt seinen Namen Tage vorher, nicht Monate. In einem üblichen Jahr fällt der meiste Regen im {months}, etwa {rain} mm im Monat (der Schnitt von {period}).",
+      "firstQ": {
+        "orlando": "Erst Disney oder erst Universal?",
+        "disney-world": "Welcher Disney-Park zuerst?",
+        "universal-orlando": "Welcher Universal-Park zuerst?"
+      },
+      "firstA": "Das hängt von den Tagen ab: Der Planer legt jeden Park auf seinen ruhigsten Tag der Reise. Für die Reise ab {date} heißt das {order}.",
+      "firstItem": "{park} am {date}"
+    },
+    "dataset": {
+      "name": "Wartezeiten der großen Bahnen pro Woche und Monat bei {parks}, {year}",
+      "description": "Die Wartezeit der großen Bahnen zur vollsten Zeit für jede Woche und jeden Monat {year} bei {parks}, aus unserer Prognose und den gemessenen Tagen des Vorjahres, mit dem üblichen Wetter pro Monat.",
+      "varWait": "Wartezeit der großen Bahnen (Minuten)",
+      "varHigh": "Übliche Tageshöchsttemperatur (°C)",
+      "varRain": "Üblicher Regen (mm pro Monat)"
+    }
+  },
   "howto": {
     "title": "So funktioniert park.fan",
     "description": "70 Minuten bei Taron: viel oder normal? Wie du eine Wartezeit einordnest, wann eine Bahn am ruhigsten ist und woher die Zahlen kommen."
