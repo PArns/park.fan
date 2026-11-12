@@ -50,13 +50,13 @@ seo:
     - Six Flags free admission 65 and over
 ---
 
-[Kings Dominion](ref:kings-dominion) in Doswell, Virginia, holds its new autumn festival, Hops & Harvest, on seven days from Saturday, 14 November. The last of them, 29 November, is also the last day of the season. There's no WinterFest this year, and the park doesn't open on a single day in December. The festival takes over International Street with autumn food, tastings of craft drinks from the region, live music and things to do for families.
+[Kings Dominion](ref:kings-dominion) in Doswell, Virginia, holds its new autumn festival, Hops & Harvest, on seven days from Saturday, 14 November. The last of them, 29 November, is also the last day of the season. There's no WinterFest this year, and the park doesn't open on a single day in December. The festival is on International Street, where the pumpkin pizza and turkey legs are, with tastings of craft drinks from the region around the fountain.
 
 ## What's on at Hops & Harvest
 
 Most of the autumn dishes come out of the Grain and Grill International Kitchen: pork sliders with Korean BBQ sauce and a raspberry drizzle, brisket mac and cheese, and a bacon cheddar potato keg with sour cream and spring onions. Dessert is cinnamon donut holes with a pumpkin spice drizzle. Firehouse BBQ sells turkey legs, sweet potato fries with cinnamon and hot honey, and chili with beans and cheddar. The turkey legs are on the menu on the Friday after Thanksgiving too, for anyone whose fridge didn't survive Thursday.
 
-The Pizza Parlor puts butternut squash and prosciutto on a white pizza with an Alfredo base and rocket. The Funnel Cake Kitchen makes a funnel cake with apple slices, cinnamon and caramel, and the Biergarten has a giant pumpkin spice pretzel. If you have a Kings Dominion season pass or membership, you get one second entrée at half price at Grain and Grill or Firehouse BBQ. The usual pass discount applies on top.
+Pumpkin also turns up on the white pizza at the Pizza Parlor, as butternut squash with prosciutto, an Alfredo base and rocket, and as pumpkin spice on the Biergarten's giant pretzel. The Funnel Cake Kitchen sticks to apple slices, cinnamon and caramel. If you have a Kings Dominion season pass or membership, you get one second entrée at half price at Grain and Grill or Firehouse BBQ. The usual pass discount applies on top.
 
 The Adult Beverage Tastings are set up at several spots around the fountain on International Street. You have to be 21 or older, and everyone shows a valid government ID or driving licence. Drinks stay in the marked areas. The park hasn't published what the tastings and the dishes cost or which producers are taking part. The whole park is cashless, so you pay by card, Apple Pay or Google Pay. If you only have notes on you, one of the Cash-to-Card machines turns them into a card.
 
@@ -65,7 +65,7 @@ Local musicians play in two places, at the same times on all seven days:
 - Hops and Harvest Band at the Grand Band Stand: 12:30, 2, 3:30 and 5:30 p.m.
 - Sounds of the Biergarten in the Biergarten: noon, 1:30, 2:30, 4 and 5 p.m.
 
-There are also food trucks, games and a craft station. The Singing Mushrooms & Frog Pianist are on the programme as well, but Kings Dominion doesn't give times for them.
+There are food trucks, games and a craft station too, plus singing mushrooms and a frog at the piano, the Singing Mushrooms & Frog Pianist, for whom Kings Dominion gives no times.
 
 ## Dates, hours and prices
 
@@ -89,7 +89,7 @@ Add a processing fee of up to $9.99 and tax. At the ticket booth, the same day c
 
 If you're 65 or older, you get into the park for free until 29 November. You register online first, and your first visit has to be before the season ends. At the gate you show ID with your date of birth every time.
 
-For Veterans Day, active and former members of the US military and veterans get a free day ticket when they show a military ID or proof of veteran status at the gate. Kings Dominion gives 14 and 15 November for this on the event page and in the calendar, and only the 14th on its military discounts page.
+For Veterans Day, active and former members of the US military and veterans get a free day ticket when they show a military ID or proof of veteran status at the gate. The safe day is Saturday 14 November: Kings Dominion lists it on the event page, in the calendar and on its military discounts page, and the Sunday only on the first two.
 
 Until 30 November Kings Dominion sells the 2027 Silver Pass for $69, less than a single day costs at the booth. It's valid until Labor Day 2027, Soak City included, and parking comes with it. Every new or renewed pass includes a Bring-A-Friend ticket, which has to be used by 31 May 2027.
 
@@ -103,7 +103,7 @@ Pantherian is 93 metres tall and drops 91 metres at 85 degrees. Rapterra, a laun
 
 ```
 
-[Flight of Fear](ref:kings-dominion/flight-of-fear) and [Grizzly](ref:kings-dominion/grizzly) are closed, along with the whole of Old Virginia and the part of Candy Apple Grove with [WindSeeker](ref:kings-dominion/windseeker), [Twisted Timbers](ref:kings-dominion/twisted-timbers) and [Apple Zapple](ref:kings-dominion/apple-zapple). In 2018 Kings Dominion rebuilt the wooden coaster Hurler as Twisted Timbers, a hybrid of wood and steel. Grizzly is a wooden coaster from 1982 with 964 metres of track, about 317 metres of which were relaid in 2023. Flight of Fear opened in 1996 as The Outer Limits: Flight of Fear, and its linear motors take it to 87 km/h in four seconds. It runs in total darkness anyway, so the short November days wouldn't have bothered it.
+[Flight of Fear](ref:kings-dominion/flight-of-fear) and [Grizzly](ref:kings-dominion/grizzly) are closed, along with the whole of Old Virginia and the part of Candy Apple Grove with [WindSeeker](ref:kings-dominion/windseeker), [Twisted Timbers](ref:kings-dominion/twisted-timbers) and [Apple Zapple](ref:kings-dominion/apple-zapple). If you came for Twisted Timbers, rebuilt from the wooden coaster Hurler as a wood-and-steel hybrid in 2018, or for Grizzly, the 1982 woodie with 964 metres of track, about 317 of them relaid in 2023, you'll have to wait for next season. Flight of Fear opened in 1996 as The Outer Limits: Flight of Fear, and its linear motors take it to 87 km/h in four seconds. It runs in total darkness anyway, so the short November days wouldn't have bothered it.
 
 Also closed:
 
