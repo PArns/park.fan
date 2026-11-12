@@ -64,7 +64,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`hub/planner-chapter-slot.tsx`](../../components/orlando/hub/planner-chapter-slot.tsx)
 
-- `PlannerChapterSlot` _component_: The "Plan your trip" chapter: the place the trip planner mounts (`OrlandoPlanner`, `components/orlando/planner/orlando-planner.tsx`, with the same props).
+- `PlannerChapterSlot` _component_: The "Plan your trip" chapter around the trip planner (`OrlandoPlanner`). The heading belongs to the page, so the planner draws none of its own; the anchor is the hero action's and Parky's (`#planner`).
 
 ### [`orlando-home-stop.tsx`](../../components/orlando/orlando-home-stop.tsx)
 

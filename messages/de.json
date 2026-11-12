@@ -512,8 +512,7 @@
     "planner": {
       "kicker": "Deine Reisetage",
       "title": "Deine Reise planen",
-      "hint": "Deine Tage, deine Parks: Der Planer legt jeden Park auf den Tag, an dem du dort am kürzesten anstehst.",
-      "placeholder": "Wähle, wann du ankommst und abreist und welche Parks du besuchen willst. Vorher ist nichts ausgefüllt."
+      "hint": "Deine Tage, deine Parks: Der Planer legt jeden Park auf den Tag, an dem du dort am kürzesten anstehst."
     },
     "bestDays": {
       "title": "Die besten Tage für jeden Park",

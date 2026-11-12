@@ -512,8 +512,7 @@
     "planner": {
       "kicker": "Tus fechas",
       "title": "Planifica tu viaje",
-      "hint": "Tus fechas, tus parques: el planificador pone cada parque en el día en que sus colas son más cortas.",
-      "placeholder": "Elige cuándo llegas y te vas, y qué parques quieres ver. Hasta entonces no hay nada rellenado."
+      "hint": "Tus fechas, tus parques: el planificador pone cada parque en el día en que sus colas son más cortas."
     },
     "bestDays": {
       "title": "Los mejores días de cada parque",

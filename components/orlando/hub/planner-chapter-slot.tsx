@@ -1,14 +1,16 @@
 import { getTranslations } from 'next-intl/server';
 import { Route } from 'lucide-react';
 import { ChapterHeading } from '@/components/common/chapter-heading';
+import { OrlandoPlanner } from '@/components/orlando/planner/orlando-planner';
 import { ORLANDO_PLANNER_ID } from '@/lib/orlando/paths';
+import { orlandoPlannerPhotos } from '@/lib/orlando/plan-photos';
 import type { TripRegion } from '@/lib/orlando/types';
 
 /**
- * The "Plan your trip" chapter: the place the trip planner mounts (`OrlandoPlanner`,
- * `components/orlando/planner/orlando-planner.tsx`, with the same props). Until it does, the
- * chapter says what it will do and shows no trip: a sample presented as "your trip" is a stranger's
- * dates. The anchor is the hero action's and Parky's (`#planner`).
+ * The "Plan your trip" chapter around the trip planner (`OrlandoPlanner`). The heading belongs to
+ * the page, so the planner draws none of its own; the anchor is the hero action's and Parky's
+ * (`#planner`). The park photos are resolved here because the planner is a Client Component and
+ * may not import the media database.
  */
 export async function PlannerChapterSlot({
   index,
@@ -40,7 +42,12 @@ export async function PlannerChapterSlot({
         title={t('title')}
         hint={t('hint')}
       />
-      <p className="text-muted-foreground max-w-2xl">{t('placeholder')}</p>
+      <OrlandoPlanner
+        region={region}
+        locale={locale}
+        defaultMonth={defaultMonth}
+        photos={orlandoPlannerPhotos(region)}
+      />
     </section>
   );
 }

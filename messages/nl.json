@@ -512,8 +512,7 @@
     "planner": {
       "kicker": "Jouw reisdagen",
       "title": "Plan je reis",
-      "hint": "Jouw dagen, jouw parken: de planner zet elk park op de dag waarop de rijen er het kortst zijn.",
-      "placeholder": "Kies wanneer je aankomt en vertrekt en welke parken je wilt bezoeken. Tot dan is er niets ingevuld."
+      "hint": "Jouw dagen, jouw parken: de planner zet elk park op de dag waarop de rijen er het kortst zijn."
     },
     "bestDays": {
       "title": "De beste dagen per park",

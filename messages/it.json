@@ -512,8 +512,7 @@
     "planner": {
       "kicker": "Le tue date",
       "title": "Pianifica il tuo viaggio",
-      "hint": "Le tue date, i tuoi parchi: il pianificatore mette ogni parco nel giorno in cui le sue code sono più corte.",
-      "placeholder": "Scegli quando arrivi e quando riparti e quali parchi vuoi vedere. Fino ad allora non c’è nulla di compilato."
+      "hint": "Le tue date, i tuoi parchi: il pianificatore mette ogni parco nel giorno in cui le sue code sono più corte."
     },
     "bestDays": {
       "title": "I giorni migliori per ogni parco",

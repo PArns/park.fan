@@ -512,8 +512,7 @@
     "planner": {
       "kicker": "Your dates",
       "title": "Plan your trip",
-      "hint": "Your dates, your parks: the planner puts each park on the day its lines are shortest.",
-      "placeholder": "Choose when you arrive and leave, and which parks you want. Nothing is filled in until you do."
+      "hint": "Your dates, your parks: the planner puts each park on the day its lines are shortest."
     },
     "bestDays": {
       "title": "Best days for each park",
