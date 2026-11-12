@@ -50,13 +50,13 @@ seo:
     - Six Flags ingresso gratuito over 65
 ---
 
-Da sabato 14 novembre [Kings Dominion](ref:kings-dominion), a Doswell in Virginia, ospita in sette giornate Hops & Harvest, la sua nuova festa d'autunno. Il 29 novembre, ultimo giorno della festa, il parco chiude la stagione. Quest'anno non c'è nessun WinterFest e a dicembre il parco non apre nemmeno un giorno. La festa si tiene sulla International Street, con piatti autunnali, assaggi di bevande artigianali della zona, musica dal vivo e attività per le famiglie.
+Da sabato 14 novembre [Kings Dominion](ref:kings-dominion), a Doswell in Virginia, ospita in sette giornate Hops & Harvest, la sua nuova festa d'autunno. Il 29 novembre, ultimo giorno della festa, il parco chiude la stagione. Quest'anno non c'è nessun WinterFest e a dicembre il parco non apre nemmeno un giorno. La festa si tiene sulla International Street, dove ci sono pizza alla zucca e cosce di tacchino e, intorno alla fontana, bevande artigianali della zona da assaggiare.
 
 ## Cosa offre Hops & Harvest
 
 Gran parte dei piatti autunnali esce dalla cucina del Grain and Grill International Kitchen: pork slider con salsa barbecue coreana e un filo di lampone, brisket mac and cheese, cioè maccheroni al formaggio con petto di manzo, e un Bacon Cheddar Potato Keg con panna acida e cipollotto. Per dessert ci sono i Cinnamon Donut Holes con una glassa al pumpkin spice. Firehouse BBQ vende cosce di tacchino, patatine di patata dolce con cannella e hot honey e chili con fagioli e cheddar. Le cosce di tacchino ci sono anche il venerdì dopo il Thanksgiving, per chi il giorno prima a casa ha finito tutto.
 
-Al Pizza Parlor la zucca butternut e il prosciutto crudo finiscono su una pizza bianca con base Alfredo e rucola. La Funnel Cake Kitchen prepara un funnel cake con fette di mela, cannella e caramello, e nel Biergarten c'è un brezel gigante al pumpkin spice. Chi ha un Season Pass o una Membership di Kings Dominion paga a metà prezzo un secondo piatto principale da Grain and Grill o da Firehouse BBQ, una volta sola. Lo sconto abituale del pass si aggiunge.
+La zucca finisce anche sulla pizza bianca del Pizza Parlor, come zucca butternut con prosciutto crudo, base Alfredo e rucola, e come pumpkin spice sul brezel gigante del Biergarten. La Funnel Cake Kitchen resta fedele a fette di mela, cannella e caramello. Chi ha un Season Pass o una Membership di Kings Dominion paga a metà prezzo un secondo piatto principale da Grain and Grill o da Firehouse BBQ, una volta sola. Lo sconto abituale del pass si aggiunge.
 
 Gli Adult Beverage Tastings si svolgono in più punti intorno alla fontana della International Street. Possono assaggiare solo i maggiori di 21 anni, e ognuno mostra un documento d'identità ufficiale valido o la patente. Si beve soltanto nelle aree indicate. Il parco non ha pubblicato quanto costino assaggi e piatti né quali produttori partecipino. In tutto il parco si paga senza contanti, con carta, Apple Pay o Google Pay. Chi ha solo banconote le cambia in una carta a uno dei distributori Cash-to-Card.
 
@@ -65,7 +65,7 @@ Musicisti della zona suonano in due punti, in tutti e sette i giorni agli stessi
 - Hops and Harvest Band al Grand Band Stand: 12.30, 14, 15.30 e 17.30
 - Sounds of the Biergarten nel Biergarten: 12, 13.30, 14.30, 16 e 17
 
-Ci sono poi food truck, giochi e un banco per i lavoretti. In programma anche Singing Mushrooms & Frog Pianist, per cui Kings Dominion non indica orari.
+Ci sono anche food truck, giochi e un banco per i lavoretti, oltre a funghi che cantano e una rana al pianoforte, i Singing Mushrooms & Frog Pianist, per cui Kings Dominion non indica orari.
 
 ## Date, orari e prezzi
 
@@ -89,7 +89,7 @@ A questi si aggiungono una commissione fino a 9,99 dollari e le tasse. Alla cass
 
 Chi ha 65 anni o più entra gratis fino al 29 novembre. Bisogna registrarsi prima online, e la prima visita deve avvenire entro la fine della stagione. All'ingresso si mostra ogni volta un documento con la data di nascita.
 
-Militari in servizio e in congedo delle forze armate statunitensi e veterani ricevono per il Veterans Day un biglietto giornaliero gratuito, se all'ingresso mostrano il tesserino militare o un documento che attesti lo status di veterano. Nella pagina dell'evento e nel calendario Kings Dominion indica il 14 e il 15 novembre, nella pagina degli sconti per i militari solo il 14.
+Militari in servizio e in congedo delle forze armate statunitensi e veterani ricevono per il Veterans Day un biglietto giornaliero gratuito, se all'ingresso mostrano il tesserino militare o un documento che attesti lo status di veterano. Di sicuro l'offerta vale sabato 14 novembre: quel giorno compare nella pagina dell'evento, nel calendario e in quella degli sconti per i militari, la domenica solo nelle prime due.
 
 Fino al 30 novembre Kings Dominion vende il Silver Pass 2027 a 69 dollari, meno di quanto costa un solo giorno alla cassa. Vale fino al Labor Day 2027, anche a Soak City, e include il parcheggio. Con ogni pass nuovo o rinnovato arriva un biglietto Bring-A-Friend da usare entro il 31 maggio 2027.
 
@@ -103,7 +103,7 @@ Pantherian è alta 93 metri e scende di 91 metri con un'inclinazione di 85 gradi
 
 ```
 
-Restano chiuse [Flight of Fear](ref:kings-dominion/flight-of-fear) e [Grizzly](ref:kings-dominion/grizzly), tutta l'area Old Virginia e la parte di Candy Apple Grove con [WindSeeker](ref:kings-dominion/windseeker), [Twisted Timbers](ref:kings-dominion/twisted-timbers) e [Apple Zapple](ref:kings-dominion/apple-zapple). Twisted Timbers è nata nel 2018 dalla trasformazione delle montagne russe in legno Hurler in un ibrido di legno e acciaio. Grizzly è un coaster in legno del 1982 con 964 metri di percorso, di cui circa 317 rifatti nel 2023. Flight of Fear aprì nel 1996 come The Outer Limits: Flight of Fear e con motori lineari arriva a 87 km/h in quattro secondi. Viaggia comunque al buio completo, ma a novembre neanche questo la tiene aperta.
+Restano chiuse [Flight of Fear](ref:kings-dominion/flight-of-fear) e [Grizzly](ref:kings-dominion/grizzly), tutta l'area Old Virginia e la parte di Candy Apple Grove con [WindSeeker](ref:kings-dominion/windseeker), [Twisted Timbers](ref:kings-dominion/twisted-timbers) e [Apple Zapple](ref:kings-dominion/apple-zapple). Chi viene per Twisted Timbers, nata nel 2018 dalla trasformazione delle montagne russe in legno Hurler in un ibrido di legno e acciaio, o per Grizzly, coaster in legno del 1982 con 964 metri di percorso, di cui circa 317 rifatti nel 2023, dovrà aspettare la prossima stagione. Flight of Fear aprì nel 1996 come The Outer Limits: Flight of Fear e con motori lineari arriva a 87 km/h in quattro secondi. Visto che corre comunque nel buio completo, le sere di novembre che arrivano presto non le avrebbero dato fastidio, ma è chiusa lo stesso.
 
 Chiudono anche:
 

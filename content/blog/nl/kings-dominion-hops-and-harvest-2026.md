@@ -50,13 +50,13 @@ seo:
     - Six Flags gratis toegang vanaf 65
 ---
 
-Op zaterdag 14 november begint in [Kings Dominion](ref:kings-dominion) in Doswell, Virginia, het nieuwe herfstfeest Hops & Harvest, verspreid over zeven dagen. De laatste feestdag, 29 november, is ook de laatste dag van het seizoen. Een WinterFest komt er dit jaar niet: in december gaat het park geen enkele dag open. Het feest speelt zich af op de International Street, met herfstgerechten, proeverijen van ambachtelijke dranken uit de regio, livemuziek en activiteiten voor kinderen en ouders.
+Op zaterdag 14 november begint in [Kings Dominion](ref:kings-dominion) in Doswell, Virginia, het nieuwe herfstfeest Hops & Harvest, verspreid over zeven dagen. De laatste feestdag, 29 november, is ook de laatste dag van het seizoen. Een WinterFest komt er dit jaar niet: in december gaat het park geen enkele dag open. Het feest speelt zich af op de International Street, waar je pompoenpizza en kalkoenpoten haalt en rond de fontein ambachtelijke dranken uit de regio kunt proeven.
 
 ## Wat er bij Hops & Harvest te doen is
 
 De meeste herfstgerechten komen uit de Grain and Grill International Kitchen. Daar maken ze pork sliders met Koreaanse barbecuesaus en een frambozensaus, brisket mac and cheese (macaroni met kaas en runderborst), en een Bacon Cheddar Potato Keg met zure room en lente-ui. Als toetje zijn er Cinnamon Donut Holes met een saus van pumpkin spice. Firehouse BBQ verkoopt kalkoenpoten, zoete-aardappelfrietjes met kaneel en hot honey, en chili met bonen en cheddar. Die kalkoenpoten liggen er ook op de vrijdag na Thanksgiving.
 
-In de Pizza Parlor liggen flespompoen en prosciutto op een witte pizza met een alfredobasis en rucola. De Funnel Cake Kitchen bakt een funnel cake met appelschijfjes, kaneel en karamel, en in de Biergarten ligt een reuzenpretzel met pumpkin spice klaar. Wie een Season Pass of membership van Kings Dominion heeft, krijgt bij Grain and Grill of Firehouse BBQ één keer een tweede hoofdgerecht voor de halve prijs, bovenop de gewone korting voor passhouders.
+Pompoen zit ook op de witte pizza van de Pizza Parlor, als flespompoen met prosciutto, een alfredobasis en rucola, en als pumpkin spice op de reuzenpretzel in de Biergarten. De Funnel Cake Kitchen houdt het bij appelschijfjes, kaneel en karamel. Wie een Season Pass of membership van Kings Dominion heeft, krijgt bij Grain and Grill of Firehouse BBQ één keer een tweede hoofdgerecht voor de halve prijs, bovenop de gewone korting voor passhouders.
 
 De Adult Beverage Tastings staan verspreid rond de fontein van de International Street. Proeven mag pas vanaf 21 jaar, en iedereen laat daarvoor een geldig officieel identiteitsbewijs of rijbewijs zien. Drinken mag alleen in de aangewezen zones. Wat de proeverijen en de gerechten kosten en welke producenten meedoen, heeft het park niet bekendgemaakt. In het hele park betaal je zonder contant geld, met een pinpas of creditcard, Apple Pay of Google Pay. Heb je alleen briefgeld bij je, dan wissel je dat bij een Cash-to-Card-automaat om voor een kaart.
 
@@ -65,7 +65,7 @@ Muzikanten uit de buurt spelen op twee plekken, op alle zeven dagen op dezelfde 
 - Hops and Harvest Band op de Grand Band Stand: 12.30, 14.00, 15.30 en 17.30 uur
 - Sounds of the Biergarten in de Biergarten: 12.00, 13.30, 14.30, 16.00 en 17.00 uur
 
-Verder zijn er foodtrucks, spelletjes en een knutselkraam. De Singing Mushrooms & Frog Pianist staan ook op het programma, maar daarvoor noemt Kings Dominion geen tijden.
+Er zijn ook foodtrucks, spelletjes en een knutselkraam, en daarnaast zingende paddenstoelen en een kikker aan de piano, de Singing Mushrooms & Frog Pianist, waarvoor Kings Dominion geen tijden noemt.
 
 ## Data, openingstijden en prijzen
 
@@ -89,7 +89,7 @@ Daar komen nog tot 9,99 dollar servicekosten en belasting bij. Aan de kassa beta
 
 Ben je 65 of ouder, dan mag je tot en met 29 november gratis naar binnen. Je meldt je daarvoor vooraf online aan, en je eerste bezoek moet voor het einde van het seizoen vallen. Bij de ingang laat je elke keer een identiteitsbewijs met je geboortedatum zien.
 
-Voor Veterans Day krijgen actieve en voormalige Amerikaanse militairen en veteranen een gratis dagticket, als ze bij de ingang hun militaire pas of een veteranenbewijs tonen. Op de evenementpagina en in de kalender noemt Kings Dominion daarvoor 14 en 15 november, op de pagina met militaire kortingen alleen de 14e.
+Voor Veterans Day krijgen actieve en voormalige Amerikaanse militairen en veteranen een gratis dagticket, als ze bij de ingang hun militaire pas of een veteranenbewijs tonen. Op zaterdag 14 november geldt het aanbod in elk geval: die dag noemt Kings Dominion op de evenementpagina, in de kalender en op de pagina met militaire kortingen, de zondag alleen op de eerste twee.
 
 Tot en met 30 november verkoopt Kings Dominion de Silver Pass 2027 voor 69 dollar, minder dan één dag aan de kassa kost. De pas geldt tot Labor Day 2027, ook in Soak City, en parkeren is inbegrepen. Bij elke nieuwe of verlengde pas hoort een Bring-A-Friend-ticket, dat uiterlijk 31 mei 2027 gebruikt moet zijn.
 
@@ -103,7 +103,7 @@ Pantherian is 93 meter hoog en duikt onder een hoek van 85 graden 91 meter naar 
 
 ```
 
-Dicht zijn [Flight of Fear](ref:kings-dominion/flight-of-fear) en [Grizzly](ref:kings-dominion/grizzly), heel Old Virginia en het deel van Candy Apple Grove met [WindSeeker](ref:kings-dominion/windseeker), [Twisted Timbers](ref:kings-dominion/twisted-timbers) en [Apple Zapple](ref:kings-dominion/apple-zapple). In 2018 bouwde Kings Dominion de houten achtbaan Hurler om tot Twisted Timbers, een hybride van hout en staal. Grizzly is een houten achtbaan uit 1982 met een baan van 964 meter, waarvan in 2023 zo'n 317 meter opnieuw is gelegd. Flight of Fear opende in 1996 als The Outer Limits: Flight of Fear en gaat met lineaire motoren in vier seconden naar 87 km/u. De hele rit gaat door volledige duisternis.
+Dicht zijn [Flight of Fear](ref:kings-dominion/flight-of-fear) en [Grizzly](ref:kings-dominion/grizzly), heel Old Virginia en het deel van Candy Apple Grove met [WindSeeker](ref:kings-dominion/windseeker), [Twisted Timbers](ref:kings-dominion/twisted-timbers) en [Apple Zapple](ref:kings-dominion/apple-zapple). Wie voor Twisted Timbers komt, de houten achtbaan Hurler die in 2018 werd omgebouwd tot hybride van hout en staal, of voor Grizzly, een houten achtbaan uit 1982 met 964 meter baan waarvan in 2023 zo'n 317 meter opnieuw is gelegd, moet wachten tot volgend seizoen. Flight of Fear opende in 1996 als The Outer Limits: Flight of Fear en gaat met lineaire motoren in vier seconden naar 87 km/u. De hele rit gaat door volledige duisternis.
 
 Ook dicht:
 
