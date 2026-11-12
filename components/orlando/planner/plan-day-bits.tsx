@@ -12,8 +12,8 @@ import { usePlanContext } from './plan-context';
 
 /** The park or parks of a day, as one label ("Universal Studios Florida + Islands of Adventure"). */
 export function useDayParks(): (day: PlanDay) => string {
-  const { parkBySlug } = usePlanContext();
-  return (day) => day.parks.map((p) => parkBySlug.get(p.slug)?.name ?? p.slug).join(' + ');
+  const { parkName } = usePlanContext();
+  return (day) => day.parks.map((p) => parkName(p.slug)).join(' + ');
 }
 
 /** When the day guests leave a park day: the plan's own figure, else the calendar's close. */
@@ -97,6 +97,41 @@ export function PlanDayMarker({
     >
       <Icon className="size-3.5 shrink-0" aria-hidden="true" />
       {!compact && <span className="truncate">{text}</span>}
+    </span>
+  );
+}
+
+/**
+ * The name of a day's evening: the second park's (short) name or the venue's; `null` without an
+ * evening or for a venue the region does not list.
+ */
+export function useEveningName(): (day: PlanDay) => string | null {
+  const { parkName, venueByKey } = usePlanContext();
+  return (day) => {
+    const evening = day.evening;
+    if (!evening) return null;
+    if (evening.kind === 'hop') return evening.park ? parkName(evening.park) : null;
+    return evening.venue ? (venueByKey.get(evening.venue)?.name ?? null) : null;
+  };
+}
+
+/**
+ * The season's facts as short chips ("hot", "hurricane season", "peak hurricane season"), shared by
+ * the day sheet and the When mode's cards.
+ */
+export function ClimateChips({ codes }: { codes: readonly string[] }) {
+  const t = useTranslations('orlandoPlanner.climate');
+  if (codes.length === 0) return null;
+  return (
+    <span className="flex flex-wrap gap-1">
+      {codes.map((code) => (
+        <span
+          key={code}
+          className="border-crowd-high/40 text-crowd-ink-high rounded-full border px-2 py-0.5 text-xs"
+        >
+          {t(code)}
+        </span>
+      ))}
     </span>
   );
 }

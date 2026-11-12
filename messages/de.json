@@ -3217,7 +3217,7 @@
       "gridLabel": "An- und Abreisetag",
       "wait": "kürzeste Wartezeit an den großen Bahnen etwa {minutes} Min.",
       "waitLastYear": "im letzten Jahr etwa {minutes} Min. an den großen Bahnen",
-      "legend": "Unter jedem Datum steht die kürzeste Wartezeit an den großen Bahnen, in Minuten, im Park mit den kürzesten Warteschlangen.",
+      "legend": "Unter jedem Datum steht die kürzeste Wartezeit an den großen Bahnen, in Minuten, im Park mit den kürzesten Warteschlangen. Früh schließende Parks zählen nicht.",
       "legendLastYear": "Kursive Zahlen sind gemessene Tage aus dem letzten Jahr.",
       "pickArrival": "Tippe auf deinen Anreisetag.",
       "pickDeparture": "Jetzt den Abreisetag.",
@@ -3320,7 +3320,15 @@
       "restMore": "Einen Tag mehr",
       "hop": "Park-Hopping",
       "hopHint": "Zwei Parks eines Resorts an einem Tag, wenn die Reise weniger Tage als Parkbesuche hat.",
-      "hopOn": "Park-Hopping"
+      "hopOn": "Park-Hopping",
+      "ticket": "Hast du ein Park-Hopper-Ticket (Park zu Park)?",
+      "ticketHopper": "Ja, Park Hopper",
+      "ticketHopperHint": "Erst damit sind zwei Parks an einem Tag und ein Abend in einem zweiten Park möglich.",
+      "ticketBase": "Nein, ein Park pro Tag",
+      "ticketShort": "Park Hopper",
+      "evenings": "Abende planen",
+      "eveningsHint": "Schließt ein Park früher, schlägt der Plan für den Abend einen zweiten Park oder Disney Springs und CityWalk vor.",
+      "eveningsOff": "keine Abende"
     },
     "result": {
       "label": "Dein Plan",
@@ -3349,7 +3357,8 @@
       "lastYear": "Diese Tage planen wir mit den gemessenen Wartezeiten des letzten Jahres. Die Prognose erreicht sie etwa am {date}.",
       "about": "etwa {minutes} Min.",
       "daysLabel": "Deine Tage",
-      "split": "{visits, plural, =2 {Wir haben {park} einen zweiten Tag gegeben.} other {Wir haben {park} # Tage gegeben.}}"
+      "split": "{visits, plural, =2 {Wir haben {park} einen zweiten Tag gegeben.} other {Wir haben {park} # Tage gegeben.}}",
+      "hopNeedsHopper": "Park-Hopping zählt nur mit einem Park-Hopper-Ticket; wähle es unter „Feinabstimmung“."
     },
     "day": {
       "arrival": "Anreise",
@@ -3519,7 +3528,7 @@
       "details": "Details",
       "plan": "Diese Daten planen",
       "reason": {
-        "no_school_break": "Keine US-Schulferien in diesen Tagen.",
+        "no_school_break": "Keine US-Schulferien.",
         "after_holidays": "Direkt nach den Feiertagen.",
         "before_spring_break": "Vor dem Andrang der US-Frühjahrsferien.",
         "festival": "In diesen Tagen läuft ein Festival.",
@@ -3528,7 +3537,7 @@
       },
       "warning": {
         "party_nights": "{count, plural, =1 {1 Party-Abend} other {# Party-Abende}}: Tagesgäste müssen dann früher gehen.",
-        "school_break": "Fällt in US-Schulferien.",
+        "school_break": "US-Schulferien.",
         "water_park_closed": "Ein gewählter Wasserpark hat in dieser Zeit geschlossen.",
         "hurricane_season": "Hurrikansaison (Juni bis November).",
         "hours_not_published": "Noch nicht alle Öffnungszeiten sind veröffentlicht.",
@@ -3543,7 +3552,36 @@
       "stripWeekNone": "Woche ab {date}: keine Zahl",
       "stripWindow": "Vorschlag {rank}",
       "stripLegend": "Höhe: die Wartezeit an den großen Bahnen deiner Parks in dieser Woche. Farbe: wie die Woche im Vergleich zum übrigen Zeitraum liegt. Die Marken darunter zeigen deine Vorschläge.",
-      "sketch": "Tag für Tag"
+      "sketch": "Tag für Tag",
+      "rankedLower": "weiter hinten eingeordnet: {reasons}"
+    },
+    "evening": {
+      "plus": "+ Abend: {name}",
+      "title": "Abend",
+      "leg": "{minutes} Min.",
+      "travel": "Etwa {minutes} Min. bis dorthin.",
+      "alternatives": "Auch möglich: {names}",
+      "officialSite": "Offizielle Seite von {name}",
+      "reason": {
+        "park_closes_early": "Der Park schließt für Tagesgäste früher, der Abend bleibt frei.",
+        "night_show": "Dort läuft am Abend eine Show.",
+        "fireworks_view": "Von dort sieht man das Feuerwerk.",
+        "open_later": "Dort ist länger geöffnet.",
+        "free_entry": "Der Eintritt ist frei.",
+        "short_transfer": "Der Weg dorthin ist kurz."
+      },
+      "highlight": {
+        "night_show": "Abendshow",
+        "fireworks": "Feuerwerk",
+        "fireworks_view": "Blick auf das Feuerwerk",
+        "dining": "Essen",
+        "shopping": "Einkaufen"
+      }
+    },
+    "climate": {
+      "extreme_heat": "heiß",
+      "hurricane_season": "Hurrikansaison",
+      "hurricane_peak": "Hochphase der Hurrikansaison"
     }
   },
   "news": {

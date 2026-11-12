@@ -50,7 +50,8 @@ function tripState(
  */
 export function PlanParks() {
   const t = useTranslations('orlandoPlanner');
-  const { region, state, update, headliners, regionOrder, groupByKey, live } = usePlanContext();
+  const { region, state, update, headliners, regionOrder, groupByKey, live, parkName } =
+    usePlanContext();
   const [moreOpen, setMoreOpen] = useState(false);
   const moreId = useId();
 
@@ -103,7 +104,7 @@ export function PlanParks() {
           <span
             className={cn('text-sm leading-5 font-medium', count === 0 && 'text-muted-foreground')}
           >
-            {park.name}
+            {parkName(park.slug)}
           </span>
           {line.length > 0 && (
             <span className="text-muted-foreground text-xs leading-snug">{line.join(' · ')}</span>
@@ -116,8 +117,8 @@ export function PlanParks() {
           canIncrement={count === null || count < MAX_VISITS_PER_PARK}
           onDecrement={() => set(-1)}
           onIncrement={() => set(1)}
-          decrementLabel={t('parks.fewer', { park: park.name })}
-          incrementLabel={t('parks.more', { park: park.name })}
+          decrementLabel={t('parks.fewer', { park: parkName(park.slug) })}
+          incrementLabel={t('parks.more', { park: parkName(park.slug) })}
         />
       </li>
     );

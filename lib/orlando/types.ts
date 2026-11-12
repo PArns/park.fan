@@ -91,6 +91,23 @@ export interface TripTravel {
   legs: TripLeg[];
 }
 
+/** A place for an evening that is not a park: Disney Springs, CityWalk, ICON Park. */
+export interface TripVenue {
+  key: string;
+  name: string;
+  /** A {@link TripRegionGroup} key. */
+  group: string;
+  kind: string;
+  latitude: number;
+  longitude: number;
+  typicalHours?: string;
+  /** No ticket needed. */
+  free: boolean;
+  /** The venue's official page. */
+  url: string;
+  notes?: string;
+}
+
 /** `GET /v1/trip-regions/orlando`: open, a day at the edge. */
 export interface TripRegion {
   slug: string;
@@ -100,6 +117,8 @@ export interface TripRegion {
   parks: TripRegionPark[];
   hotelAreas: TripHotelArea[];
   travel: TripTravel;
+  /** Evening places that are not parks; absent from an API that does not plan evenings yet. */
+  venues?: TripVenue[];
 }
 
 /** A park's status on a day. `UNKNOWN` past its published hours, never `CLOSED`. */

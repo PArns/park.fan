@@ -38,7 +38,9 @@ export function usePlanOptionsSummary(state: OrlandoPlanState): string {
         ? t('restMaxShort', { n: streak })
         : t('restAuto'),
     state.fireworks === 'want' ? t('fireworksWantShort') : null,
+    state.ticket === 'hopper' ? t('ticketShort') : null,
     state.hop ? t('hopOn') : null,
+    state.evenings ? null : t('eveningsOff'),
   ]
     .filter(Boolean)
     .join(' · ');
@@ -91,6 +93,17 @@ export function PlanOptions({ className }: { className?: string }) {
         ]}
       />
 
+      <PlanRadioGroup<OrlandoPlanState['ticket']>
+        legend={t('ticket')}
+        value={state.ticket}
+        disabled={!live}
+        onChange={(ticket) => update((s) => ({ ...s, ticket, hop: ticket === 'hopper' && s.hop }))}
+        options={[
+          { value: 'hopper', label: t('ticketHopper'), hint: t('ticketHopperHint') },
+          { value: 'base', label: t('ticketBase') },
+        ]}
+      />
+
       <div className="flex flex-col">
         <PlanCheckRow
           checked={state.blocks}
@@ -99,12 +112,21 @@ export function PlanOptions({ className }: { className?: string }) {
           label={t('blocks')}
           hint={t('blocksHint')}
         />
+        {state.ticket === 'hopper' && (
+          <PlanCheckRow
+            checked={state.hop}
+            disabled={!live}
+            onChange={(hop) => update((s) => ({ ...s, hop }))}
+            label={t('hop')}
+            hint={t('hopHint')}
+          />
+        )}
         <PlanCheckRow
-          checked={state.hop}
+          checked={state.evenings}
           disabled={!live}
-          onChange={(hop) => update((s) => ({ ...s, hop }))}
-          label={t('hop')}
-          hint={t('hopHint')}
+          onChange={(evenings) => update((s) => ({ ...s, evenings }))}
+          label={t('evenings')}
+          hint={t('eveningsHint')}
         />
       </div>
 

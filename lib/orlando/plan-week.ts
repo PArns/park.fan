@@ -9,8 +9,15 @@ import {
 import { getDateTimeFormat } from '@/lib/utils/intl-format';
 import { addDays, daysBetween } from '@/lib/utils/park-day';
 import { earlyPerk } from './plan-copy';
+import { closesEarly } from './hub-data';
 import type { PlanDay, PlanDayKind } from './plan';
-import type { TripCalendar, TripEveningKind, TripParkDay, TripSeason } from './types';
+import type {
+  TripCalendar,
+  TripCalendarDay,
+  TripEveningKind,
+  TripParkDay,
+  TripSeason,
+} from './types';
 
 /**
  * The geometry of the result's Week and Month views. Pure, and built on the day planner's own axis
@@ -76,6 +83,26 @@ export interface TripDaySpan {
   evening: { kind: TripEveningKind; startMin: number; endMin: number } | null;
   /** A hop day's move, between its two blocks. */
   hopAt: number | null;
+  /** The plan's evening after the park: a second park or a venue, and the move to it. */
+  night: {
+    kind: 'hop' | 'venue';
+    /** The park slug or the venue key. */
+    target: string;
+    startMin: number;
+    endMin: number;
+    travelMinutes: number | null;
+  } | null;
+}
+
+/**
+ * Minutes since the trip day's midnight for a time the plan gives as park-local ISO or as `HH:MM`;
+ * an `HH:MM` before 05:00 is after midnight.
+ */
+export function planTimeMinute(value: string, date: string, timeZone: string): number | null {
+  const clock = /^(\d{2}):(\d{2})$/.exec(value);
+  if (!clock) return parkMinuteOf(value, date, timeZone);
+  const minute = Number(clock[1]) * 60 + Number(clock[2]);
+  return minute < 5 * 60 ? minute + 1440 : minute;
 }
 
 /** The calendar cell of a park on a date, if the calendar has it. */
@@ -105,6 +132,7 @@ export function tripDaySpans(
       early: null,
       evening: null,
       hopAt: null,
+      night: null,
     };
     if (day.kind !== 'park' && day.kind !== 'hop') return span;
     const cells = day.parks.map((p) => ({
@@ -156,6 +184,21 @@ export function tripDaySpans(
         span.evening = { kind: evening.kind, startMin: Math.max(start, last.close), endMin: end };
       }
     }
+    const night = day.evening;
+    const target = night?.kind === 'hop' ? night.park : night?.venue;
+    if (night && target) {
+      const start = planTimeMinute(night.from, day.date, timeZone);
+      const end = planTimeMinute(night.to, day.date, timeZone);
+      if (start !== null && end !== null && end > start) {
+        span.night = {
+          kind: night.kind,
+          target,
+          startMin: start,
+          endMin: end,
+          travelMinutes: night.travel?.minutes ?? null,
+        };
+      }
+    }
     return span;
   });
 }
@@ -180,6 +223,7 @@ export function tripCanvas(spans: readonly TripDaySpan[]): TripCanvas | null {
     }
     if (span.early) start = Math.min(start, span.early.startMin);
     if (span.evening) end = Math.max(end, span.evening.endMin);
+    if (span.night) end = Math.max(end, span.night.endMin);
   }
   if (!Number.isFinite(start) || !Number.isFinite(end)) return null;
   return {
@@ -379,4 +423,27 @@ export function swapPreview(
     if (less !== null && (short === null || less > short.hours)) short = { slug, hours: less };
   }
   return { kind: 'minutes', delta, short };
+}
+
+/**
+ * The figure under a date: the lower of the day's picks per resort (`best`, the API's shortest
+ * lines with early closings counted), so a party night that closes at 6 pm never makes a date look
+ * quiet. Where the API names no pick (a last-year day, no hours yet), the lowest headliner that is
+ * open, has a figure and does not close early. `null` where none has one.
+ */
+export function dateFigure(
+  day: TripCalendarDay | undefined,
+  headliners: readonly string[]
+): number | null {
+  if (!day) return null;
+  const picks = Object.values(day.best ?? {});
+  const candidates = picks.length > 0 ? picks : headliners;
+  let best: number | null = null;
+  for (const slug of candidates) {
+    const cell = day.parks[slug];
+    if (!cell || cell.status === 'CLOSED' || cell.headlinerWait == null) continue;
+    if (picks.length === 0 && closesEarly(cell)) continue;
+    if (best === null || cell.headlinerWait < best) best = cell.headlinerWait;
+  }
+  return best;
 }

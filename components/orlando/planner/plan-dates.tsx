@@ -14,29 +14,10 @@ import {
 import { getDateTimeFormat } from '@/lib/utils/intl-format';
 import { addDays, formatParkDayRange } from '@/lib/utils/park-day';
 import { MAX_DAYS_AHEAD, MAX_TRIP_DAYS, setTripDates, tripDates } from '@/lib/orlando/plan';
-import type { TripCalendarDay } from '@/lib/orlando/types';
+import { dateFigure } from '@/lib/orlando/plan-week';
 import { usePlanContext } from './plan-context';
 import { useTripCalendar } from './use-trip-plan';
 import { PlanCheckRow } from './plan-controls';
-
-/**
- * The shortest big-ride wait of a day among the parks that are the day's pick per resort, the
- * figure under each date: one number a visitor can compare dates by. `null` where no park of the
- * day has one.
- */
-function shortestWait(
-  day: TripCalendarDay | undefined,
-  headliners: readonly string[]
-): number | null {
-  if (!day) return null;
-  let best: number | null = null;
-  for (const slug of headliners) {
-    const cell = day.parks[slug];
-    if (cell?.status !== 'OPERATING' || cell.headlinerWait == null) continue;
-    if (best === null || cell.headlinerWait < best) best = cell.headlinerWait;
-  }
-  return best;
-}
 
 /**
  * The trip's dates: a month at a time (`lib/planner/month-grid.ts`, the day planner's own grid),
@@ -168,7 +149,7 @@ export function PlanDates({ defaultMonth }: { defaultMonth?: string }) {
         {cells.map((cell) => {
           const enabled = live && cell.inMonth && selectable(cell.date);
           const day = byDate.get(cell.date);
-          const wait = shortestWait(day, headliners);
+          const wait = dateFigure(day, headliners);
           const lastYear = headliners.some((s) => day?.parks[s]?.basis === 'last_year');
           const isStart = cell.date === start;
           const isEnd = cell.date === end;

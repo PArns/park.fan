@@ -3217,7 +3217,7 @@
       "gridLabel": "Aankomst- en vertrekdag",
       "wait": "kortste wachttijd bij de grote attracties ongeveer {minutes} min.",
       "waitLastYear": "vorig jaar ongeveer {minutes} min. bij de grote attracties",
-      "legend": "Onder elke datum staat de kortste wachttijd bij de grote attracties, in minuten, in het park met de kortste rijen.",
+      "legend": "Onder elke datum staat de kortste wachttijd bij de grote attracties, in minuten, in het park met de kortste rijen. Parken die vroeg sluiten tellen niet mee.",
       "legendLastYear": "Cijfers in cursief zijn gemeten dagen van vorig jaar.",
       "pickArrival": "Tik op je aankomstdag.",
       "pickDeparture": "Nu je vertrekdag.",
@@ -3320,7 +3320,15 @@
       "restMore": "Een dag meer",
       "hop": "Parkhoppen",
       "hopHint": "Twee parken van één resort op één dag, als de reis minder dagen dan parkbezoeken heeft.",
-      "hopOn": "parkhoppen"
+      "hopOn": "parkhoppen",
+      "ticket": "Heb je een Park Hopper-ticket (park naar park)?",
+      "ticketHopper": "Ja, Park Hopper",
+      "ticketHopperHint": "Alleen daarmee kan een dag twee parken bevatten, of een avond in een tweede park.",
+      "ticketBase": "Nee, één park per dag",
+      "ticketShort": "Park Hopper",
+      "evenings": "Avonden plannen",
+      "eveningsHint": "Sluit een park vroeg, dan stelt het plan voor de avond een tweede park of Disney Springs en CityWalk voor.",
+      "eveningsOff": "geen avonden"
     },
     "result": {
       "label": "Je plan",
@@ -3349,7 +3357,8 @@
       "lastYear": "Deze data plannen we met de gemeten drukte van vorig jaar. De voorspelling bereikt ze rond {date}.",
       "about": "ongeveer {minutes} min.",
       "daysLabel": "Je dagen",
-      "split": "{visits, plural, =2 {We hebben {park} een tweede dag gegeven.} other {We hebben {park} # dagen gegeven.}}"
+      "split": "{visits, plural, =2 {We hebben {park} een tweede dag gegeven.} other {We hebben {park} # dagen gegeven.}}",
+      "hopNeedsHopper": "Parkhoppen telt alleen met een Park Hopper-ticket; kies het onder “Verfijnen”."
     },
     "day": {
       "arrival": "Aankomst",
@@ -3519,7 +3528,7 @@
       "details": "Details",
       "plan": "Deze data plannen",
       "reason": {
-        "no_school_break": "Geen Amerikaanse schoolvakanties op deze dagen.",
+        "no_school_break": "Geen Amerikaanse schoolvakanties.",
         "after_holidays": "Meteen na de feestdagen.",
         "before_spring_break": "Voor de drukte van de Amerikaanse voorjaarsvakantie.",
         "festival": "Op deze dagen loopt een festival.",
@@ -3528,7 +3537,7 @@
       },
       "warning": {
         "party_nights": "{count, plural, =1 {1 feestavond} other {# feestavonden}}: dagbezoekers moeten dan vroeger weg.",
-        "school_break": "Valt in een Amerikaanse schoolvakantie.",
+        "school_break": "Amerikaanse schoolvakanties.",
         "water_park_closed": "Een gekozen waterpark is in deze tijd gesloten.",
         "hurricane_season": "Orkaanseizoen (juni tot november).",
         "hours_not_published": "Nog niet alle openingstijden zijn gepubliceerd.",
@@ -3543,7 +3552,36 @@
       "stripWeekNone": "Week van {date}: geen cijfer",
       "stripWindow": "voorstel {rank}",
       "stripLegend": "Hoogte: de wachttijd bij de grote attracties van je parken die week. Kleur: hoe de week zich verhoudt tot de rest van de periode. De streepjes eronder tonen je voorstellen.",
-      "sketch": "Dag voor dag"
+      "sketch": "Dag voor dag",
+      "rankedLower": "lager gerangschikt: {reasons}"
+    },
+    "evening": {
+      "plus": "+ avond: {name}",
+      "title": "Avond",
+      "leg": "{minutes} min.",
+      "travel": "Ongeveer {minutes} min. om er te komen.",
+      "alternatives": "Ook mogelijk: {names}",
+      "officialSite": "Officiële site van {name}",
+      "reason": {
+        "park_closes_early": "Het park sluit vroeg voor dagbezoekers, dus de avond is vrij.",
+        "night_show": "Daar is ’s avonds een show.",
+        "fireworks_view": "Van daar zie je het vuurwerk.",
+        "open_later": "Het blijft daar langer open.",
+        "free_entry": "De toegang is gratis.",
+        "short_transfer": "Het is maar een kort stuk."
+      },
+      "highlight": {
+        "night_show": "Avondshow",
+        "fireworks": "Vuurwerk",
+        "fireworks_view": "Zicht op het vuurwerk",
+        "dining": "Eten",
+        "shopping": "Winkelen"
+      }
+    },
+    "climate": {
+      "extreme_heat": "heet",
+      "hurricane_season": "orkaanseizoen",
+      "hurricane_peak": "piek van het orkaanseizoen"
     }
   },
   "news": {

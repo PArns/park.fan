@@ -3217,7 +3217,7 @@
       "gridLabel": "Arrival and departure day",
       "wait": "shortest big-ride wait about {minutes} min",
       "waitLastYear": "last year about {minutes} min at the big rides",
-      "legend": "Under each date: the shortest wait at the big rides that day, in minutes, at the park with the shortest lines.",
+      "legend": "Under each date: the shortest wait at the big rides that day, in minutes, at the park with the shortest lines. Parks that close early don’t count.",
       "legendLastYear": "Figures in italics are last year’s measured days.",
       "pickArrival": "Tap your arrival day.",
       "pickDeparture": "Now your departure day.",
@@ -3320,7 +3320,15 @@
       "restMore": "One day more",
       "hop": "Park hopping",
       "hopHint": "Two parks of one resort on one day, when the trip has fewer days than park visits.",
-      "hopOn": "park hopping"
+      "hopOn": "park hopping",
+      "ticket": "Do you have a Park Hopper (park-to-park) ticket?",
+      "ticketHopper": "Yes, Park Hopper",
+      "ticketHopperHint": "Only with it can a day hold two parks, or an evening at a second park.",
+      "ticketBase": "No, one park a day",
+      "ticketShort": "Park Hopper",
+      "evenings": "Plan evenings",
+      "eveningsHint": "Where a park closes early, the plan suggests a second park or Disney Springs and CityWalk for the evening.",
+      "eveningsOff": "no evenings"
     },
     "result": {
       "label": "Your plan",
@@ -3349,7 +3357,8 @@
       "lastYear": "We plan these dates on last year’s measured crowds. The forecast reaches them around {date}.",
       "about": "about {minutes} min",
       "daysLabel": "Your days",
-      "split": "{visits, plural, =2 {We added a second day at {park}.} other {We gave {park} # days.}}"
+      "split": "{visits, plural, =2 {We added a second day at {park}.} other {We gave {park} # days.}}",
+      "hopNeedsHopper": "Park hopping only counts with a Park Hopper ticket; choose it under “Fine-tune”."
     },
     "day": {
       "arrival": "Arrival",
@@ -3519,7 +3528,7 @@
       "details": "Details",
       "plan": "Plan these dates",
       "reason": {
-        "no_school_break": "No US school holidays on these days.",
+        "no_school_break": "No US school holidays.",
         "after_holidays": "Right after the holidays.",
         "before_spring_break": "Before the US spring break crowds.",
         "festival": "A festival runs on these days.",
@@ -3528,7 +3537,7 @@
       },
       "warning": {
         "party_nights": "{count, plural, =1 {1 party night} other {# party nights}}: day guests have to leave early then.",
-        "school_break": "Falls in US school holidays.",
+        "school_break": "US school holidays.",
         "water_park_closed": "A water park you chose is closed for its season.",
         "hurricane_season": "Hurricane season (June to November).",
         "hours_not_published": "Not all hours are published yet.",
@@ -3543,7 +3552,36 @@
       "stripWeekNone": "Week of {date}: no figure",
       "stripWindow": "option {rank}",
       "stripLegend": "Height: the big rides’ wait for your parks that week. Colour: how the week compares with the rest of the period. The marks underneath show your options.",
-      "sketch": "Day by day"
+      "sketch": "Day by day",
+      "rankedLower": "ranked lower: {reasons}"
+    },
+    "evening": {
+      "plus": "+ evening: {name}",
+      "title": "Evening",
+      "leg": "{minutes} min",
+      "travel": "About {minutes} min to get there.",
+      "alternatives": "Also possible: {names}",
+      "officialSite": "{name}’s official site",
+      "reason": {
+        "park_closes_early": "The park closes early for day guests, so the evening is free.",
+        "night_show": "There’s an evening show there.",
+        "fireworks_view": "You can see the fireworks from there.",
+        "open_later": "It stays open later.",
+        "free_entry": "Entry is free.",
+        "short_transfer": "It’s a short trip there."
+      },
+      "highlight": {
+        "night_show": "Evening show",
+        "fireworks": "Fireworks",
+        "fireworks_view": "Fireworks view",
+        "dining": "Dinner",
+        "shopping": "Shopping"
+      }
+    },
+    "climate": {
+      "extreme_heat": "hot",
+      "hurricane_season": "hurricane season",
+      "hurricane_peak": "peak hurricane season"
     }
   },
   "news": {

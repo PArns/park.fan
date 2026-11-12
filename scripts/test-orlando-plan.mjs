@@ -31,6 +31,8 @@ import {
 } from '../lib/orlando/plan.ts';
 import {
   autoSplit,
+  climateChips,
+  eveningReasons,
   dayMarker,
   dayWarnings,
   editCost,
@@ -42,6 +44,7 @@ import {
 } from '../lib/orlando/plan-copy.ts';
 import { buildTripIcs, icsEscape, icsFold, icsLocalDateTime } from '../lib/orlando/plan-ics.ts';
 import {
+  dateFigure,
   hoursLessThanUsual,
   parkInitials,
   parkMinuteOf,
@@ -55,6 +58,7 @@ import {
 import {
   holidayRegionsFor,
   percentBelowAverage,
+  rankedLower,
   weekTiers,
   whenPeriodOf,
   whenPeriods,
@@ -602,6 +606,49 @@ const keys = { parks: new Set(ORDER), areas: new Set(['disney', 'universal']) };
     'Busch Gardens Tampa Bay': 'BG',
     'Discovery Cove Orlando': 'DC',
   };
+  const d19 = {
+    date: '2026-11-19',
+    parks: {
+      'magic-kingdom-park': {
+        status: 'OPERATING',
+        headlinerWait: 35,
+        closesEarly: true,
+        crowdLevel: 'low',
+        basis: 'forecast',
+      },
+      'disneys-animal-kingdom-theme-park': {
+        status: 'OPERATING',
+        headlinerWait: 45,
+        crowdLevel: 'low',
+        basis: 'forecast',
+      },
+      'universal-islands-of-adventure': {
+        status: 'OPERATING',
+        headlinerWait: 40,
+        crowdLevel: 'low',
+        basis: 'forecast',
+      },
+    },
+  };
+  test(
+    'the date figure is the lower of the day’s picks, not a party night',
+    dateFigure(
+      {
+        ...d19,
+        best: {
+          'walt-disney-world': 'disneys-animal-kingdom-theme-park',
+          'universal-orlando': 'universal-islands-of-adventure',
+        },
+      },
+      []
+    ),
+    40
+  );
+  test(
+    'without picks, an early close does not count',
+    dateFigure(d19, ['magic-kingdom-park', 'disneys-animal-kingdom-theme-park']),
+    45
+  );
   test('two letters per park', Object.keys(names).map(parkInitials), Object.values(names));
 }
 
@@ -637,12 +684,20 @@ const keys = { parks: new Set(ORDER), areas: new Set(['disney', 'universal']) };
     locks: [{ target: 'epcot', date: '2027-01-02' }],
   };
   test(
-    'the /when request: range, length, region, three windows, the trip options, no pins',
+    'a length other than the API’s default is sent',
+    whenRequestQuery({
+      ...DEFAULT_PLAN_STATE,
+      when: { from: '2027-01-01', to: '2027-02-01' },
+      days: 12,
+    }).days,
+    '12'
+  );
+  test(
+    'the /when request: range, region, three windows, the trip options, no pins, the default length left out',
     whenRequestQuery(state),
     {
       from: '2027-01-01',
       to: '2027-11-12',
-      days: '10',
       within: 'DE-NW',
       limit: '3',
       parks: 'epcot:2',
@@ -744,6 +799,31 @@ const keys = { parks: new Set(ORDER), areas: new Set(['disney', 'universal']) };
     '/api/trip-regions/orlando/plan?from=2026-11-28&to=x'
   );
   globalThis.fetch = original;
+}
+
+// ── 8. Seasons and evenings ─────────────────────────────────────────────────
+{
+  test(
+    'season chips: heat, and the hurricane season folded into its peak',
+    [
+      climateChips(['extreme_heat', 'hurricane_season', 'hurricane_peak']),
+      climateChips(['hurricane_season']),
+    ],
+    [['extreme_heat', 'hurricane_peak'], ['hurricane_season']]
+  );
+  test(
+    'an evening says its most telling reason first',
+    eveningReasons({ reasons: ['short_transfer', 'nope', 'park_closes_early'] }),
+    ['park_closes_early', 'short_transfer']
+  );
+  test(
+    'ranked lower names the season’s terms the ranking added',
+    [
+      rankedLower({ warnings: ['hurricane_peak'], penalties: { hurricane: 6.4, heat: 1.2 } }),
+      rankedLower({ warnings: [] }),
+    ],
+    [['hurricane_peak', 'extreme_heat'], []]
+  );
 }
 
 // ── Report ───────────────────────────────────────────────────────────────────

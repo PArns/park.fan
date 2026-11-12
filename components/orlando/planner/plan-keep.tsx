@@ -31,7 +31,7 @@ export function PlanKeep({
   calendar: TripCalendar | undefined;
 }) {
   const t = useTranslations('orlandoPlanner');
-  const { region, state, locale, parkBySlug } = usePlanContext();
+  const { region, state, locale, parkName } = usePlanContext();
   const parksOf = useDayParks();
   const [added, setAdded] = useState<number | null>(null);
   const [link, setLink] = useState<'idle' | 'copied' | { manual: string }>('idle');
@@ -63,7 +63,7 @@ export function PlanKeep({
             day.headlinerWait != null ? t('ics.wait', { minutes: day.headlinerWait }) : null,
             reason
               ? t(`reason.${reason}`, {
-                  park: first ? (parkBySlug.get(first.slug)?.name ?? '') : '',
+                  park: first ? parkName(first.slug) : '',
                 })
               : null,
             t('ics.link', { url }),

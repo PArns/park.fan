@@ -35,6 +35,7 @@ import { PlannerBlockBar, PlannerBlockPhoto } from '@/components/planner/planner
 import { usePlanContext } from './plan-context';
 import { PLAN_FOCUS } from './plan-controls';
 import { usePartyName } from './use-day-facts';
+import { useEveningName } from './plan-day-bits';
 
 /** A canvas for a trip whose calendar has no hours yet: a plain day, only so rest days have a column. */
 const FALLBACK_CANVAS: TripCanvas = { startMin: 8 * 60, endMin: 22 * 60 };
@@ -184,12 +185,13 @@ function WeekColumn({
   onOpen: () => void;
 }) {
   const t = useTranslations('orlandoPlanner');
-  const { locale, parkBySlug, photos } = usePlanContext();
+  const { locale, parkName, photos } = usePlanContext();
   const grid = tripColumnGrid(span, canvas, pxPerMin);
   const partyName = usePartyName(calendar, day);
+  const eveningOf = useEveningName();
+  const eveningName = day ? eveningOf(day) : null;
   const weekday = formatParkDay(locale, span.date, { weekday: 'short' });
   const date = formatParkDay(locale, span.date, { day: 'numeric', month: 'short' });
-  const parkName = (slug: string) => parkBySlug.get(slug)?.name ?? slug;
 
   const isPark = span.kind === 'park' || span.kind === 'hop';
   const fullDay = (label: string, icon: React.ReactNode, tone: 'rest' | 'travel') => (
@@ -330,6 +332,45 @@ function WeekColumn({
               {t(`week.leg.${day.between.mode}`, { minutes: day.between.minutes })}
             </span>
           </div>
+        )}
+
+        {span.night && (
+          <>
+            {/* The evening after the park: a second park in the park's colours, a venue calm and
+                dashed. It sits to the right, so a party night's hatch stays readable beside it. */}
+            <button
+              type="button"
+              onClick={onOpen}
+              data-plan-night={span.night.kind}
+              aria-label={`${weekday} ${date}: ${t('evening.plus', { name: eveningName ?? '' })}`}
+              className={cn(
+                'absolute right-0.5 left-1/3 z-10 overflow-hidden rounded-md border px-1 py-0.5 text-left text-[10px] leading-tight transition-colors',
+                span.night.kind === 'hop'
+                  ? 'border-primary/40 bg-primary/15 hover:bg-primary/25'
+                  : 'border-border bg-muted/70 hover:bg-muted border-dashed',
+                PLAN_FOCUS
+              )}
+              style={{
+                top: yFor(grid, span.night.startMin),
+                height: heightFor(grid, span.night.endMin - span.night.startMin),
+              }}
+            >
+              <span className="line-clamp-3 font-semibold">
+                {eveningName ?? t('evening.title')}
+              </span>
+            </button>
+            {span.night.travelMinutes !== null && (
+              <span
+                className={cn(
+                  'pointer-events-none absolute left-1/3 z-20 inline-flex -translate-y-full items-center rounded-full border px-1 text-[10px] whitespace-nowrap tabular-nums',
+                  TRANSFER_CHIP_CLASS.unknown
+                )}
+                style={{ top: yFor(grid, span.night.startMin) }}
+              >
+                {t('evening.leg', { minutes: span.night.travelMinutes })}
+              </span>
+            )}
+          </>
         )}
 
         {span.evening && (

@@ -2,7 +2,7 @@
 
 import { createContext, useContext } from 'react';
 import type { OrlandoPlanState } from '@/lib/orlando/plan';
-import type { TripRegion, TripRegionGroup, TripRegionPark } from '@/lib/orlando/types';
+import type { TripRegion, TripRegionGroup, TripRegionPark, TripVenue } from '@/lib/orlando/types';
 
 /** A park's photo for the blocks of the Week view, resolved on the server (`plan-photos.ts`). */
 export interface PlanParkPhoto {
@@ -17,6 +17,10 @@ export interface PlanContextValue {
   /** The region's zone, which every date and time of the plan is in. */
   timeZone: string;
   parkBySlug: ReadonlyMap<string, TripRegionPark>;
+  /** A park's name as visitors say it ("Animal Kingdom"), the hub's `shortParkName`. */
+  parkName: (slug: string) => string;
+  /** The region's evening venues by key. */
+  venueByKey: ReadonlyMap<string, TripVenue>;
   groupByKey: ReadonlyMap<string, TripRegionGroup>;
   /** The default pick, the region's headliners, in the region's order. */
   headliners: readonly string[];

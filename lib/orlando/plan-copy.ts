@@ -47,6 +47,38 @@ export const PLAN_WARNING_ORDER = [
   'adjacent_repeat',
   'long_streak',
 ] as const;
+
+/**
+ * The season's facts a day or a window can carry, said as short chips ("hot", "hurricane season",
+ * "peak hurricane season"), never as sentences. The peak says the season already.
+ */
+export type ClimateChip = 'extreme_heat' | 'hurricane_peak' | 'hurricane_season';
+
+/** The climate chips of a day's or a window's warnings, in order, the season folded into its peak. */
+export function climateChips(warnings: readonly string[]): ClimateChip[] {
+  const chips: ClimateChip[] = [];
+  if (warnings.includes('extreme_heat')) chips.push('extreme_heat');
+  if (warnings.includes('hurricane_peak')) chips.push('hurricane_peak');
+  else if (warnings.includes('hurricane_season')) chips.push('hurricane_season');
+  return chips;
+}
+
+/** Why an evening after the park is worth it, most telling first; the sheet says the first. */
+export const EVENING_REASON_ORDER = [
+  'park_closes_early',
+  'night_show',
+  'fireworks_view',
+  'open_later',
+  'free_entry',
+  'short_transfer',
+] as const;
+/** An evening reason this client can say. */
+export type EveningReasonCode = (typeof EVENING_REASON_ORDER)[number];
+
+/** An evening's reasons this client can say, in order. */
+export function eveningReasons(evening: { reasons: readonly string[] }): EveningReasonCode[] {
+  return EVENING_REASON_ORDER.filter((code) => evening.reasons.includes(code));
+}
 /** A warning this client can say. */
 export type PlanWarningCode = (typeof PLAN_WARNING_ORDER)[number];
 

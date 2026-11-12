@@ -52,7 +52,13 @@ range with different spaces, which cost the planner its hydration once.
 
 ## From simple to detailed
 
-The owner's rule for the whole chapter: a visitor is never buried in numbers.
+The owner's rule for the whole chapter: a visitor is never buried in numbers. The hub's hero action
+calls `orlandoPlannerUi.openDates()` (`lib/orlando/planner-ui.ts`): the Dates sheet on a phone, the
+dates panel scrolled to and focused at a desk.
+
+The figure under each date in the picker is the lower of the day's picks per resort (`best`, early
+closings counted), else the lowest headliner that is open and does not close early, so a party
+night never makes a date look quiet (`dateFigure`).
 
 - **Setup.** Dates and parks are the only steps. Hotel (Universal Premier includes Express at
   Universal Studios and Islands of Adventure), hotel area, "Do you want to see Magic Kingdom's
@@ -91,6 +97,22 @@ The owner's rule for the whole chapter: a visitor is never buried in numbers.
 - **Level 3, the day planner.** "Plan this day" publishes the park (`plannerPagePark` and a
   `PlannerPageParkBeacon`), leaves the date in `plannerPageDay` and asks for the wizard with
   `plannerUi.requestOpen('orlando-hub', 'page-park-wizard')`, as the homepage hero does.
+
+## Evenings, tickets and the season
+
+- **Tickets.** "Do you have a Park Hopper (park-to-park) ticket?" is `ticket=hopper`. Park hopping
+  (`hop`) is offered only with it, and a link that asks for hopping without one gets a sentence
+  saying it does not count (the API's `hop_needs_hopper`).
+- **Evenings** (`evenings=1`, the default): after a park that closes early the plan may add an
+  evening at a second park or a venue (`region.venues`: Disney Springs, CityWalk). It is "+ evening:
+  EPCOT" in the answer and the Agenda, a block after the park block in the Week view (a second park
+  in the park colours, a venue calm and dashed, the move as a leg chip), and in the day's sheet a
+  section with the reason, the highlight and its time, the way there, the alternatives and the
+  venue's official page.
+- **Heat and the hurricane season** are short chips ("hot", "hurricane season", "peak hurricane
+  season") in the day's sheet and on the When mode's cards. A card whose ranking the season's terms
+  pushed down says "ranked lower: hurricane season" beside its unchanged minutes.
+- **School breaks** are named for whose they are: "No US school holidays", "US school holidays".
 
 ## Editing a plan
 

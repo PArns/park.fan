@@ -107,6 +107,8 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`plan-copy.ts`](../../lib/orlando/plan-copy.ts)
 
+- `climateChips` _function_: The climate chips of a day's or a window's warnings, in order, the season folded into its peak.
+- `eveningReasons` _function_: An evening's reasons this client can say, in order.
 - `primaryReason` _function_: The one-line reason of a day: the first code of `PLAN_REASON_ORDER` or `REST_REASON_ORDER` it carries.
 - `dayWarnings` _function_: A day's warnings this client can say, in order, the two spellings of a back-to-back repeat folded into one.
 - `closesEarly` _function_: Whether the day guests leave early that day: the API's flag, or one of its two codes.
@@ -123,7 +125,8 @@ by hand: change the comment in the code and re-run the script. -->
 - `PLAN_REASON_ORDER` _const_: The reasons a park day can carry, most telling first: the one-line reason is the first present.
 - `REST_REASON_ORDER` _const_: A rest day's reasons, most telling first.
 - `PLAN_WARNING_ORDER` _const_: The warnings, most consequential first. `repeat_back_to_back` and `adjacent_repeat` say the same thing (two visits of one park on consecutive days, because nothing else fitted); the API names it either way depending on its version, so both …
-- Types: `PlanReasonCode`, `RestReasonCode`, `PlanWarningCode`, `DayMarker`, `PlanSavings`
+- `EVENING_REASON_ORDER` _const_: Why an evening after the park is worth it, most telling first; the sheet says the first.
+- Types: `PlanReasonCode`, `RestReasonCode`, `ClimateChip`, `EveningReasonCode`, `PlanWarningCode`, `DayMarker`, `PlanSavings`
 
 ### [`plan-fetch.ts`](../../lib/orlando/plan-fetch.ts)
 
@@ -183,6 +186,7 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`plan-week.ts`](../../lib/orlando/plan-week.ts)
 
 - `parkMinuteOf` _function_: Minutes since the trip day's midnight in `timeZone`, for a park-local ISO instant: past midnight runs on (25:00 is 01:00 the next morning), so a close after midnight stays below the opening.
+- `planTimeMinute` _function_: Minutes since the trip day's midnight for a time the plan gives as park-local ISO or as `HH:MM`; an `HH:MM` before 05:00 is after midnight.
 - `calendarCell` _function_: The calendar cell of a park on a date, if the calendar has it.
 - `tripDaySpans` _function_: Each trip day's pieces, read off the plan and the calendar. A park day whose hours the calendar does not carry gets no block: the honest answer is the day planner's, no axis rather than an invented one.
 - `tripCanvas` _function_: The shared canvas, from the earliest piece of any day to the latest, on whole hours and padded by the planner's own `PRE_PAD_MIN` and `POST_PAD_MIN`. `null` when no day has hours.
@@ -195,6 +199,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `dayGuestHours` _function_: Hours a day guest has on a park's day, from the calendar's open to its day-guest close.
 - `hoursLessThanUsual` _function_: How many hours shorter a park's day is for a day guest than the park's usual day in the calendar window (its median), rounded to whole hours: the figure "about 4 hours less than a usual day here" says.
 - `swapPreview` _function_: The change in big-ride minutes if the park of day `a` traded places with day `b`'s park (or day off): the two parks' waits on their new days less those on their old ones.
+- `dateFigure` _function_: The figure under a date: the lower of the day's picks per resort (`best`, the API's shortest lines with early closings counted), so a party night that closes at 6 pm never makes a date look quiet.
 - `TRIP_WEEK_PX_PER_MIN` _const_: The trip overview's scale: half the day planner's, on a phone and off it, so a whole park day fits a screen while a phone keeps the planner's larger step.
 - `TRIP_WEEK_PX_PER_MIN_COARSE` _const_: `TRIP_WEEK_PX_PER_MIN` on a phone.
 - `WEEK_COLUMNS_WIDE` _const_: Days per page of the Week view: a week on a wide screen, three on a phone.
@@ -212,6 +217,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `weekTiers` _function_: The year strip's tint per week: where the week's figure falls among the range's weeks, in five equal shares from the quietest to the busiest.
 - `weekInWindow` _function_: Whether a week overlaps a window, for marking the window on the strip.
 - `holidayRegionsFor` _function_: The holiday data's regions grouped by country, the locale's own country first, each country's regions in the order the data lists them. Only what the data has: a region it lacks is not offered.
+- `rankedLower` _function_: Why a window ranks lower than its plain minutes say: the season terms `/when` added (`penalties`, minutes per park day). "ranked lower: hurricane season" beside an unchanged figure.
 - `WHEN_LIMIT` _const_: Windows the result asks for: the three cards of Level 0.
 - `WHEN_REASON_ORDER` _const_: The reasons a window can carry, most telling first; the card shows the first.
 - `WHEN_WARNING_ORDER` _const_: The warnings a window can carry, most consequential first.
@@ -241,7 +247,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `findLeg` _function_: The leg between two points of the region (park slugs or `hotel:<key>`). The matrix stores each pair once, both directions averaged, so either order finds it.
 - `setFindMode` _function_: Switch between the two ways in: the visitor knows the dates, or the planner finds them. Finding starts on `range` with the length of the dates chosen so far (or `DEFAULT_FIND_DAYS`); knowing drops the search.
 - `planWindow` _function_: Level 3 of the When mode: plan a found window, which leaves the search for the plan itself.
-- Types: `PlanDayKind`, `PlanTravel`, `PlanParkVisit`, `PlanDay`, `PlanAlternative`, `PlanParkSummary`, `PlanTotals`, `PlanMeta`, `TripPlan`, `PlanProblem`, `PlanReservePark`
+- Types: `PlanDayKind`, `PlanTravel`, `PlanParkVisit`, `PlanDay`, `PlanEveningHighlight`, `PlanEvening`, `PlanAlternative`, `PlanParkSummary`, `PlanTotals`, `PlanMeta`, `TripPlan`, `PlanProblem`, `PlanReservePark`
 - Re-exports: `./plan-query`
 
 ### [`planner-ui.ts`](../../lib/orlando/planner-ui.ts)
@@ -265,4 +271,4 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `ORLANDO_REGION` _const_: The one region the API curates.
 - `ORLANDO_TIMEZONE` _const_: Orlando's zone, which every park in the region runs on and every "today" is read in.
-- Types: `TripParkType`, `TripRegionGroup`, `TripRegionPark`, `TripPerk`, `TripHotelArea`, `TripTransportAlternative`, `TripLeg`, `TripTravel`, `TripRegion`, `TripDayStatus`, `TripBasis`, `TripCrowdLevel`, `TripSlot`, `TripEarlyKind`, `TripEveningKind`, `TripParkDay`, `TripBestWhy`, `TripCalendarDay`, `TripSeason`, `TripCalendarMeta`, `TripCalendar`, `TripBestDayReason`, `TripBestDay`, `TripParkBestDays`, `TripGroupBestDays`, `TripBestDays`, `TripWhenReason`, `TripWhenWarning`, `TripWhenWindow`, `TripWhenWeek`, `TripWhen`, `OrlandoMonth`, `TripMonthClimate`, `TripWhenMonth`, `TripWhenWithMonths`, `TripSchoolBreakRegion`, `TripSchoolBreaks`
+- Types: `TripParkType`, `TripRegionGroup`, `TripRegionPark`, `TripPerk`, `TripHotelArea`, `TripTransportAlternative`, `TripLeg`, `TripTravel`, `TripVenue`, `TripRegion`, `TripDayStatus`, `TripBasis`, `TripCrowdLevel`, `TripSlot`, `TripEarlyKind`, `TripEveningKind`, `TripParkDay`, `TripBestWhy`, `TripCalendarDay`, `TripSeason`, `TripCalendarMeta`, `TripCalendar`, `TripBestDayReason`, `TripBestDay`, `TripParkBestDays`, `TripGroupBestDays`, `TripBestDays`, `TripWhenReason`, `TripWhenWarning`, `TripWhenWindow`, `TripWhenWeek`, `TripWhen`, `OrlandoMonth`, `TripMonthClimate`, `TripWhenMonth`, `TripWhenWithMonths`, `TripSchoolBreakRegion`, `TripSchoolBreaks`

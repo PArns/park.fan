@@ -8,8 +8,10 @@ import { useMediaQuery } from '@/lib/hooks/use-media-query';
 import { CROWD_DOT_CLASS } from '@/lib/utils/crowd-level-styles';
 import { formatParkDay, formatParkDayRange } from '@/lib/utils/park-day';
 import { planWindow, type OrlandoPlanState } from '@/lib/orlando/plan';
+import { climateChips } from '@/lib/orlando/plan-copy';
 import {
   percentBelowAverage,
+  rankedLower,
   weekInWindow,
   weekTiers,
   windowReasons,
@@ -22,6 +24,7 @@ import { usePlanContext } from './plan-context';
 import { PLAN_FOCUS } from './plan-controls';
 import { PLAN_WIDE_QUERY } from './plan-setup';
 import { useSeasonName } from './use-day-facts';
+import { ClimateChips } from './plan-day-bits';
 
 /**
  * The When mode's answer, simple first. Level 0: the three best windows as cards, each with its
@@ -128,6 +131,8 @@ function WindowCard({
   const t = useTranslations('orlandoPlanner.when');
   const below = percentBelowAverage(window);
   const reason = windowReasons(window)[0];
+  const tClimate = useTranslations('orlandoPlanner.climate');
+  const lower = rankedLower(window);
   return (
     <li className="border-border/60 bg-muted/30 flex flex-col gap-2 rounded-2xl border p-4">
       <span className="text-muted-foreground text-xs font-semibold">
@@ -141,6 +146,12 @@ function WindowCard({
         </span>
       )}
       {reason && <span className="text-muted-foreground text-sm">{t(`reason.${reason}`)}</span>}
+      <ClimateChips codes={climateChips(window.warnings)} />
+      {lower.length > 0 && (
+        <span className="text-muted-foreground text-xs">
+          {t('rankedLower', { reasons: lower.map((c) => tClimate(c)).join(', ') })}
+        </span>
+      )}
       {window.basis !== 'forecast' && (
         <span className="text-muted-foreground text-xs italic">{t(`basis.${window.basis}`)}</span>
       )}
@@ -240,7 +251,7 @@ function WindowSheet({
   returnFocus: () => void;
 }) {
   const t = useTranslations('orlandoPlanner');
-  const { locale, parkBySlug } = usePlanContext();
+  const { locale, parkName } = usePlanContext();
   const wide = useMediaQuery(PLAN_WIDE_QUERY);
   const seasonName = useSeasonName();
   const tSeasons = useTranslations('parks.seasons');
@@ -333,7 +344,7 @@ function WindowSheet({
                       </span>
                       <span className="min-w-0 truncate">
                         {day.parks.length > 0
-                          ? day.parks.map((s) => parkBySlug.get(s)?.name ?? s).join(' + ')
+                          ? day.parks.map((s) => parkName(s)).join(' + ')
                           : ['arrival', 'departure', 'rest'].includes(day.kind)
                             ? t(`day.${day.kind as 'arrival' | 'departure' | 'rest'}`)
                             : ''}

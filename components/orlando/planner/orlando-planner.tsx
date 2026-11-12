@@ -6,6 +6,7 @@ import { parkToday } from '@/lib/planner/park-time';
 import { DEFAULT_PLAN_STATE, type OrlandoPlanState } from '@/lib/orlando/plan';
 import { ORLANDO_PLANNER_ID } from '@/lib/orlando/paths';
 import { orlandoPlannerUi } from '@/lib/orlando/planner-ui';
+import { shortParkName } from '@/lib/orlando/hub-data';
 import { PLAN_WIDE_QUERY } from './plan-setup';
 import type { TripRegion } from '@/lib/orlando/types';
 import { PlanContextProvider, type PlanContextValue, type PlanParkPhoto } from './plan-context';
@@ -108,6 +109,11 @@ function PlannerFrame({
       locale,
       timeZone: region.timezone,
       parkBySlug,
+      parkName: (slug: string) => {
+        const name = parkBySlug.get(slug)?.name;
+        return name ? shortParkName(name) : slug;
+      },
+      venueByKey: new Map((region.venues ?? []).map((v) => [v.key, v])),
       groupByKey: new Map(region.groups.map((g) => [g.key, g])),
       headliners: region.parks.filter((p) => p.headliner).map((p) => p.slug),
       regionOrder: region.parks.map((p) => p.slug),
