@@ -4,6 +4,8 @@ import {
   parseParkCalendarMonthSpelling,
   shiftParkCalendarMonth,
 } from '@/lib/parks/calendar-segments';
+import { BEST_TIME_SEGMENTS } from '@/lib/best-time/segments';
+import type { Locale } from '@/i18n/config';
 import { ORLANDO_REGION, ORLANDO_TIMEZONE, type OrlandoMonth } from './types';
 
 /**
@@ -17,6 +19,23 @@ export const ORLANDO_SEGMENT = 'orlando';
 
 /** The anchor of chapter 02, the trip planner, which the hero's action and Parky's links open. */
 export const ORLANDO_PLANNER_ID = 'planner';
+
+/** The resorts with a best-time page of their own under `/orlando/<best-time segment>/`. */
+export type OrlandoBestTimeResort = 'disney-world' | 'universal-orlando';
+
+/**
+ * The locale-relative path of Orlando's "best time to visit" pages: Disney and Universal together
+ * (`/orlando/beste-reisezeit`), or one resort (`/orlando/best-time-to-visit/disney-world`). The
+ * segment is the best-time hub's own word per locale (`BEST_TIME_SEGMENTS`), the query people use;
+ * "orlando" and the resort slugs are the same in every language.
+ */
+export function orlandoBestTimePath(
+  locale: Locale | string,
+  resort?: OrlandoBestTimeResort
+): string {
+  const segment = BEST_TIME_SEGMENTS[locale as Locale] ?? BEST_TIME_SEGMENTS.en;
+  return `/${ORLANDO_SEGMENT}/${segment}${resort ? `/${resort}` : ''}`;
+}
 
 /** The anchor of chapter 01, the calendar, for the park bands and the homepage teaser. */
 export const ORLANDO_CALENDAR_ID = 'calendar';
@@ -96,7 +115,7 @@ export function monthOfDate(date: string): OrlandoMonth {
 }
 
 /** The trip-region routes a browser may ask through this site's relay. */
-export type OrlandoRelayRoute = 'calendar' | 'best-days' | 'plan';
+export type OrlandoRelayRoute = 'calendar' | 'best-days' | 'plan' | 'when';
 
 /**
  * Where a page asks for one of the keyed trip-region routes: the same-origin relay

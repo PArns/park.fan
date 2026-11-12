@@ -154,7 +154,14 @@ export interface TripParkDay {
   seasons?: string[];
   /** The curated closure season behind a `CLOSED` day. */
   closedBy?: string;
+  /** The day is shorter for the day guest than the park's usual day (a party night, a short day). */
+  closesEarly?: true;
+  /** When the day guests leave on such a day, park-local ISO with offset. */
+  dayGuestCloseAt?: string;
 }
+
+/** Why a resort's pick is the pick: the shortest wait, or the shorter waits close early. */
+export type TripBestWhy = 'shortest_wait' | 'closes_early_elsewhere';
 
 /** One day of the region calendar, every park side by side. */
 export interface TripCalendarDay {
@@ -169,11 +176,14 @@ export interface TripCalendarDay {
   /** Keyed by park slug, one entry per region park. */
   parks: Record<string, TripParkDay>;
   /**
-   * The day's shortest lines per resort: group key → the slug of the open park with the lowest
-   * `headlinerWait`, ties to the park open longer for day guests. No entry for the day trips, for a
+   * The day's pick per resort: group key → the slug of the open park with the lowest cost, which
+   * is `headlinerWait` weighted by the day guest's hours, so a park that closes early loses to a
+   * full day with a similar wait. No entry for the day trips, for a
    * resort with no figure that day, or on a `last_year` day.
    */
   best?: Record<string, string>;
+  /** Per resort, why its pick won: a park with a shorter wait may close early for day guests. */
+  bestWhy?: Record<string, TripBestWhy>;
 }
 
 /** A curated season (`park_seasons`) in the public shape, with the park it belongs to. */
@@ -231,7 +241,8 @@ export type TripBestDayReason =
   | 'extended_evening'
   | 'early_entry'
   | 'long_range'
-  | 'estimate_last_year';
+  | 'estimate_last_year'
+  | 'closes_early';
 
 /** One day in a park's quiet or busy set. */
 export interface TripBestDay {
@@ -276,6 +287,73 @@ export interface TripBestDays {
   };
   parks: TripParkBestDays[];
   groups: TripGroupBestDays[];
+}
+
+/** Why a window is a good one, as codes the hub translates; an unknown one is skipped. */
+export type TripWhenReason =
+  | 'no_school_break'
+  | 'after_holidays'
+  | 'before_spring_break'
+  | 'festival'
+  | 'long_days'
+  | 'mild_weather';
+
+/** What to know before booking a window, as codes; an unknown one is skipped. */
+export type TripWhenWarning =
+  | 'school_break'
+  | 'hurricane_season'
+  | 'party_nights'
+  | 'hours_not_published'
+  | 'estimate_last_year'
+  | 'water_park_closed';
+
+/** One trip window `/when` ranks: its dates, its plan's figure and why. */
+export interface TripWhenWindow {
+  rank: number;
+  /** Arrival and departure, both included. */
+  from: string;
+  to: string;
+  /** The window's plan: the mean over its park days, in minutes. */
+  headlinerWait: number;
+  /** The same parks' plan averaged over every window in the range. */
+  rangeAverageWait: number;
+  /** `last_year` when every park day is last year's measured day, `mixed` when some are. */
+  basis: 'forecast' | 'mixed' | 'last_year';
+  reasons: string[];
+  warnings: string[];
+  /** Ids into {@link TripWhen.seasons}. */
+  seasons: string[];
+  /** Park days of the plan that close early for day guests. */
+  closesEarlyDays: number;
+  plan?: { days: Array<{ date: string; kind: string; parks: string[] }> };
+}
+
+/** One ISO week of the year strip: the chosen parks' mean best-park cost. */
+export interface TripWhenWeek {
+  /** The Monday. */
+  start: string;
+  headlinerWait?: number;
+  basis: 'forecast' | 'mixed' | 'last_year' | 'none';
+}
+
+/** `GET /v1/trip-regions/orlando/when`: data key; the best windows of a length in a range. */
+export interface TripWhen {
+  meta: {
+    region: string;
+    from: string;
+    to: string;
+    days: number;
+    computedAt: string;
+    forecastUntil?: string;
+    within?: {
+      code: string;
+      name: string;
+      periods: Array<{ from: string; to: string; name: string }>;
+    };
+  };
+  windows: TripWhenWindow[];
+  weeks: TripWhenWeek[];
+  seasons: TripSeason[];
 }
 
 /** A month of the hub, 1-based, the way the month URLs spell it (`/orlando/2026/12`). */

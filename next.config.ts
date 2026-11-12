@@ -975,7 +975,7 @@ const nextConfig: NextConfig = {
         headers: sharedCache('public, max-age=3600, s-maxage=86400, stale-while-revalidate=86400'),
       },
       {
-        source: '/api/trip-regions/:region/:route(calendar|best-days|plan)',
+        source: '/api/trip-regions/:region/:route(calendar|best-days|plan|when)',
         headers: sharedCache('public, max-age=3600, s-maxage=3600, stale-while-revalidate=86400'),
       },
       {
@@ -1204,6 +1204,19 @@ const nextConfig: NextConfig = {
         source: `/:locale/${segment}`,
         headers: edgeCache(CONTENT_WINDOW),
       })),
+      {
+        // The Orlando hub. An hour, like the park calendar's hub: it names Orlando's today in its
+        // first answer, and its figures come from the Data Cache at most an hour old.
+        source: `/:locale(${locales.join('|')})/orlando`,
+        headers: edgeCache('public, s-maxage=3600, stale-while-revalidate=3600'),
+      },
+      {
+        // An Orlando month page. Twelve hours: it renders its month's figures on the server, and the
+        // forecast behind them is rebuilt twice a day. The year and month are digits, so the
+        // best-time pages under `/orlando/<segment>/<resort>` keep their own rule.
+        source: `/:locale(${locales.join('|')})/orlando/:year(\\d{4})/:month(\\d{1,2})`,
+        headers: edgeCache('public, s-maxage=43200, stale-while-revalidate=3600'),
+      },
       {
         // Legal pages. A day fresh — they change once a year, and when they do, being an hour
         // late is not the risk; being a week late is.

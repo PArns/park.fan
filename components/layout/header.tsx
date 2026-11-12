@@ -10,6 +10,7 @@ import { PLANNER_SEGMENTS } from '@/lib/planner/segments';
 import type { Locale } from '@/i18n/config';
 import {
   BookOpen,
+  CalendarDays,
   CalendarPlus,
   CalendarRange,
   ChevronDown,
@@ -28,6 +29,7 @@ import { BrandLockup } from '@/components/layout/brand-lockup';
 import { NavMenu, NavEntryLabel, headerNavInk } from '@/components/layout/nav-menu';
 import { ParksMenuPanel } from '@/components/layout/parks-menu-panel';
 import { MoreMenuLinks } from '@/components/layout/more-menu-links';
+import { orlandoPath } from '@/lib/orlando/paths';
 import { MoreMenuPanel } from '@/components/layout/more-menu-panel';
 import { BlogMenuPanel } from '@/components/layout/blog-menu-panel';
 import { NewsMenuPanel } from '@/components/layout/news-menu-panel';
@@ -748,6 +750,9 @@ export function Header({
                     )}
                     <SheetNavLink href={plannerPath} icon={CalendarPlus}>
                       {t('planner')}
+                    </SheetNavLink>
+                    <SheetNavLink href={orlandoPath()} icon={CalendarDays}>
+                      {t('orlando')}
                     </SheetNavLink>
                   </div>
                   {/* The same row as the foot of the "Mehr" panel, from one definition, smaller

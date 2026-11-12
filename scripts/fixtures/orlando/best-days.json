@@ -1,0 +1,679 @@
+{
+  "meta": {
+    "region": "orlando",
+    "timezone": "America/New_York",
+    "from": "2026-11-12",
+    "to": "2026-12-12",
+    "computedAt": "2026-11-12T12:49:18.925Z"
+  },
+  "parks": [
+    {
+      "slug": "magic-kingdom-park",
+      "basis": "forecast",
+      "quiet": [
+        {
+          "date": "2026-11-26",
+          "headlinerWait": 35,
+          "crowdLevel": "low",
+          "basis": "forecast",
+          "reasons": ["school_break", "early_entry", "quietest_in_window"]
+        },
+        {
+          "date": "2026-11-16",
+          "headlinerWait": 40,
+          "crowdLevel": "low",
+          "basis": "forecast",
+          "reasons": ["weekday", "early_entry"]
+        },
+        {
+          "date": "2026-11-22",
+          "headlinerWait": 40,
+          "crowdLevel": "low",
+          "basis": "forecast",
+          "reasons": ["school_break", "early_entry"]
+        },
+        {
+          "date": "2026-11-18",
+          "headlinerWait": 40,
+          "crowdLevel": "low",
+          "basis": "forecast",
+          "reasons": ["weekday", "early_entry"]
+        },
+        {
+          "date": "2026-11-30",
+          "headlinerWait": 40,
+          "crowdLevel": "low",
+          "basis": "forecast",
+          "reasons": ["weekday", "holiday_ends", "early_entry"]
+        }
+      ],
+      "busy": [
+        {
+          "date": "2026-11-14",
+          "headlinerWait": 45,
+          "crowdLevel": "low",
+          "basis": "forecast",
+          "reasons": ["early_entry"]
+        },
+        {
+          "date": "2026-11-21",
+          "headlinerWait": 45,
+          "crowdLevel": "low",
+          "basis": "forecast",
+          "reasons": ["school_break", "early_entry"]
+        }
+      ]
+    },
+    {
+      "slug": "epcot",
+      "basis": "forecast",
+      "quiet": [
+        {
+          "date": "2026-11-24",
+          "headlinerWait": 55,
+          "crowdLevel": "low",
+          "basis": "forecast",
+          "reasons": ["weekday", "school_break", "early_entry", "quietest_in_window"]
+        },
+        {
+          "date": "2026-11-25",
+          "headlinerWait": 55,
+          "crowdLevel": "low",
+          "basis": "forecast",
+          "reasons": ["weekday", "school_break", "early_entry"]
+        },
+        {
+          "date": "2026-11-16",
+          "headlinerWait": 60,
+          "crowdLevel": "moderate",
+          "basis": "forecast",
+          "reasons": ["weekday", "extended_evening"]
+        },
+        {
+          "date": "2026-11-17",
+          "headlinerWait": 60,
+          "crowdLevel": "low",
+          "basis": "forecast",
+          "reasons": ["weekday", "early_entry"]
+        },
+        {
+          "date": "2026-11-30",
+          "headlinerWait": 60,
+          "crowdLevel": "moderate",
+          "basis": "forecast",
+          "reasons": ["weekday", "holiday_ends", "extended_evening"]
+        }
+      ],
+      "busy": [
+        {
+          "date": "2026-11-14",
+          "headlinerWait": 75,
+          "crowdLevel": "high",
+          "basis": "forecast",
+          "reasons": ["early_entry"]
+        },
+        {
+          "date": "2026-11-28",
+          "headlinerWait": 75,
+          "crowdLevel": "high",
+          "basis": "forecast",
+          "reasons": ["school_break", "early_entry"]
+        }
+      ]
+    },
+    {
+      "slug": "disneys-hollywood-studios",
+      "basis": "forecast",
+      "quiet": [
+        {
+          "date": "2026-11-26",
+          "headlinerWait": 45,
+          "crowdLevel": "low",
+          "basis": "forecast",
+          "reasons": ["school_break", "early_entry", "quietest_in_window"]
+        },
+        {
+          "date": "2026-11-24",
+          "headlinerWait": 55,
+          "crowdLevel": "low",
+          "basis": "forecast",
+          "reasons": ["weekday", "school_break", "early_entry"]
+        },
+        {
+          "date": "2026-11-17",
+          "headlinerWait": 55,
+          "crowdLevel": "moderate",
+          "basis": "forecast",
+          "reasons": ["weekday", "early_entry"]
+        },
+        {
+          "date": "2026-11-29",
+          "headlinerWait": 55,
+          "crowdLevel": "moderate",
+          "basis": "forecast",
+          "reasons": ["school_break", "early_entry"]
+        },
+        {
+          "date": "2026-11-15",
+          "headlinerWait": 60,
+          "crowdLevel": "moderate",
+          "basis": "forecast",
+          "reasons": ["early_entry"]
+        }
+      ],
+      "busy": [
+        {
+          "date": "2026-12-08",
+          "headlinerWait": 70,
+          "crowdLevel": "high",
+          "basis": "forecast",
+          "reasons": ["weekday", "early_entry"]
+        },
+        {
+          "date": "2026-12-10",
+          "headlinerWait": 70,
+          "crowdLevel": "high",
+          "basis": "forecast",
+          "reasons": ["weekday", "early_entry"]
+        }
+      ]
+    },
+    {
+      "slug": "disneys-animal-kingdom-theme-park",
+      "basis": "forecast",
+      "quiet": [
+        {
+          "date": "2026-11-16",
+          "headlinerWait": 30,
+          "crowdLevel": "very_low",
+          "basis": "forecast",
+          "reasons": ["weekday", "early_entry", "quietest_in_window"]
+        },
+        {
+          "date": "2026-11-15",
+          "headlinerWait": 35,
+          "crowdLevel": "low",
+          "basis": "forecast",
+          "reasons": ["early_entry"]
+        },
+        {
+          "date": "2026-11-22",
+          "headlinerWait": 40,
+          "crowdLevel": "low",
+          "basis": "forecast",
+          "reasons": ["school_break", "early_entry"]
+        },
+        {
+          "date": "2026-11-12",
+          "headlinerWait": 40,
+          "crowdLevel": "low",
+          "basis": "forecast",
+          "reasons": ["weekday", "early_entry"]
+        },
+        {
+          "date": "2026-11-17",
+          "headlinerWait": 40,
+          "crowdLevel": "low",
+          "basis": "forecast",
+          "reasons": ["weekday", "early_entry"]
+        }
+      ],
+      "busy": [
+        {
+          "date": "2026-11-27",
+          "headlinerWait": 55,
+          "crowdLevel": "moderate",
+          "basis": "forecast",
+          "reasons": ["weekday", "school_break", "early_entry"]
+        },
+        {
+          "date": "2026-11-28",
+          "headlinerWait": 55,
+          "crowdLevel": "moderate",
+          "basis": "forecast",
+          "reasons": ["school_break", "early_entry"]
+        }
+      ]
+    },
+    {
+      "slug": "disneys-typhoon-lagoon-water-park",
+      "basis": "none",
+      "quiet": [],
+      "busy": []
+    },
+    {
+      "slug": "disneys-blizzard-beach-water-park",
+      "basis": "none",
+      "quiet": [],
+      "busy": []
+    },
+    {
+      "slug": "universal-studios-florida",
+      "basis": "forecast",
+      "quiet": [
+        {
+          "date": "2026-11-24",
+          "headlinerWait": 35,
+          "crowdLevel": "low",
+          "basis": "forecast",
+          "reasons": ["weekday", "school_break", "quietest_in_window"]
+        },
+        {
+          "date": "2026-11-25",
+          "headlinerWait": 35,
+          "crowdLevel": "low",
+          "basis": "forecast",
+          "reasons": ["weekday", "school_break"]
+        },
+        {
+          "date": "2026-11-17",
+          "headlinerWait": 35,
+          "crowdLevel": "low",
+          "basis": "forecast",
+          "reasons": ["weekday"]
+        },
+        {
+          "date": "2026-11-16",
+          "headlinerWait": 40,
+          "crowdLevel": "moderate",
+          "basis": "forecast",
+          "reasons": ["weekday"]
+        },
+        {
+          "date": "2026-12-01",
+          "headlinerWait": 40,
+          "crowdLevel": "moderate",
+          "basis": "forecast",
+          "reasons": ["weekday"]
+        }
+      ],
+      "busy": [
+        {
+          "date": "2026-12-05",
+          "headlinerWait": 55,
+          "crowdLevel": "high",
+          "basis": "forecast",
+          "reasons": []
+        },
+        {
+          "date": "2026-12-12",
+          "headlinerWait": 55,
+          "crowdLevel": "high",
+          "basis": "forecast",
+          "reasons": []
+        }
+      ]
+    },
+    {
+      "slug": "universal-islands-of-adventure",
+      "basis": "forecast",
+      "quiet": [
+        {
+          "date": "2026-11-16",
+          "headlinerWait": 30,
+          "crowdLevel": "very_low",
+          "basis": "forecast",
+          "reasons": ["weekday", "early_park_admission", "quietest_in_window"]
+        },
+        {
+          "date": "2026-11-15",
+          "headlinerWait": 30,
+          "crowdLevel": "low",
+          "basis": "forecast",
+          "reasons": ["early_park_admission"]
+        },
+        {
+          "date": "2026-11-22",
+          "headlinerWait": 35,
+          "crowdLevel": "low",
+          "basis": "forecast",
+          "reasons": ["school_break", "early_park_admission"]
+        },
+        {
+          "date": "2026-11-29",
+          "headlinerWait": 35,
+          "crowdLevel": "low",
+          "basis": "forecast",
+          "reasons": ["school_break", "early_park_admission"]
+        },
+        {
+          "date": "2026-12-03",
+          "headlinerWait": 35,
+          "crowdLevel": "low",
+          "basis": "forecast",
+          "reasons": ["weekday", "early_park_admission"]
+        }
+      ],
+      "busy": [
+        {
+          "date": "2026-11-27",
+          "headlinerWait": 50,
+          "crowdLevel": "moderate",
+          "basis": "forecast",
+          "reasons": ["weekday", "school_break", "early_park_admission"]
+        },
+        {
+          "date": "2026-11-28",
+          "headlinerWait": 50,
+          "crowdLevel": "moderate",
+          "basis": "forecast",
+          "reasons": ["school_break", "early_park_admission"]
+        }
+      ]
+    },
+    {
+      "slug": "universal-epic-universe",
+      "basis": "forecast",
+      "quiet": [
+        {
+          "date": "2026-11-26",
+          "headlinerWait": 45,
+          "crowdLevel": "low",
+          "basis": "forecast",
+          "reasons": ["school_break", "early_park_admission", "quietest_in_window"]
+        },
+        {
+          "date": "2026-11-19",
+          "headlinerWait": 45,
+          "crowdLevel": "low",
+          "basis": "forecast",
+          "reasons": ["weekday", "early_park_admission"]
+        },
+        {
+          "date": "2026-11-12",
+          "headlinerWait": 50,
+          "crowdLevel": "low",
+          "basis": "forecast",
+          "reasons": ["weekday", "early_park_admission"]
+        },
+        {
+          "date": "2026-11-18",
+          "headlinerWait": 50,
+          "crowdLevel": "low",
+          "basis": "forecast",
+          "reasons": ["weekday", "early_park_admission"]
+        },
+        {
+          "date": "2026-11-30",
+          "headlinerWait": 50,
+          "crowdLevel": "low",
+          "basis": "forecast",
+          "reasons": ["weekday", "holiday_ends", "early_park_admission"]
+        }
+      ],
+      "busy": [
+        {
+          "date": "2026-11-27",
+          "headlinerWait": 70,
+          "crowdLevel": "moderate",
+          "basis": "forecast",
+          "reasons": ["weekday", "school_break", "early_park_admission"]
+        },
+        {
+          "date": "2026-12-05",
+          "headlinerWait": 70,
+          "crowdLevel": "moderate",
+          "basis": "forecast",
+          "reasons": ["early_park_admission"]
+        }
+      ]
+    },
+    {
+      "slug": "universal-volcano-bay",
+      "basis": "none",
+      "quiet": [],
+      "busy": []
+    },
+    {
+      "slug": "seaworld-orlando",
+      "basis": "forecast",
+      "quiet": [
+        {
+          "date": "2026-11-24",
+          "headlinerWait": 15,
+          "crowdLevel": "very_low",
+          "basis": "forecast",
+          "reasons": ["weekday", "school_break", "quietest_in_window"]
+        },
+        {
+          "date": "2026-11-25",
+          "headlinerWait": 15,
+          "crowdLevel": "very_low",
+          "basis": "forecast",
+          "reasons": ["weekday", "school_break"]
+        },
+        {
+          "date": "2026-11-26",
+          "headlinerWait": 15,
+          "crowdLevel": "very_low",
+          "basis": "forecast",
+          "reasons": ["school_break"]
+        },
+        {
+          "date": "2026-11-12",
+          "headlinerWait": 15,
+          "crowdLevel": "very_low",
+          "basis": "forecast",
+          "reasons": ["weekday"]
+        },
+        {
+          "date": "2026-11-16",
+          "headlinerWait": 15,
+          "crowdLevel": "very_low",
+          "basis": "forecast",
+          "reasons": ["weekday"]
+        }
+      ],
+      "busy": [
+        {
+          "date": "2026-12-05",
+          "headlinerWait": 40,
+          "crowdLevel": "moderate",
+          "basis": "forecast",
+          "reasons": []
+        },
+        {
+          "date": "2026-11-27",
+          "headlinerWait": 35,
+          "crowdLevel": "low",
+          "basis": "forecast",
+          "reasons": ["weekday", "school_break"]
+        }
+      ]
+    },
+    {
+      "slug": "aquatica-orlando",
+      "basis": "none",
+      "quiet": [],
+      "busy": []
+    },
+    {
+      "slug": "discovery-cove-orlando",
+      "basis": "none",
+      "quiet": [],
+      "busy": []
+    },
+    {
+      "slug": "legoland-florida",
+      "basis": "forecast",
+      "quiet": [
+        {
+          "date": "2026-11-24",
+          "headlinerWait": 10,
+          "crowdLevel": "very_low",
+          "basis": "forecast",
+          "reasons": ["weekday", "school_break", "quietest_in_window"]
+        },
+        {
+          "date": "2026-11-25",
+          "headlinerWait": 10,
+          "crowdLevel": "very_low",
+          "basis": "forecast",
+          "reasons": ["weekday", "school_break"]
+        },
+        {
+          "date": "2026-11-16",
+          "headlinerWait": 10,
+          "crowdLevel": "very_low",
+          "basis": "forecast",
+          "reasons": ["weekday"]
+        },
+        {
+          "date": "2026-11-17",
+          "headlinerWait": 10,
+          "crowdLevel": "very_low",
+          "basis": "forecast",
+          "reasons": ["weekday"]
+        },
+        {
+          "date": "2026-11-30",
+          "headlinerWait": 10,
+          "crowdLevel": "very_low",
+          "basis": "forecast",
+          "reasons": ["weekday", "holiday_ends"]
+        }
+      ],
+      "busy": [
+        {
+          "date": "2026-11-14",
+          "headlinerWait": 30,
+          "crowdLevel": "high",
+          "basis": "forecast",
+          "reasons": []
+        },
+        {
+          "date": "2026-11-21",
+          "headlinerWait": 30,
+          "crowdLevel": "high",
+          "basis": "forecast",
+          "reasons": ["school_break"]
+        }
+      ]
+    },
+    {
+      "slug": "busch-gardens-tampa",
+      "basis": "forecast",
+      "quiet": [
+        {
+          "date": "2026-11-26",
+          "headlinerWait": 10,
+          "crowdLevel": "very_low",
+          "basis": "forecast",
+          "reasons": ["school_break", "quietest_in_window"]
+        },
+        {
+          "date": "2026-11-19",
+          "headlinerWait": 10,
+          "crowdLevel": "very_low",
+          "basis": "forecast",
+          "reasons": ["weekday"]
+        },
+        {
+          "date": "2026-11-16",
+          "headlinerWait": 10,
+          "crowdLevel": "very_low",
+          "basis": "forecast",
+          "reasons": ["weekday"]
+        },
+        {
+          "date": "2026-11-17",
+          "headlinerWait": 10,
+          "crowdLevel": "very_low",
+          "basis": "forecast",
+          "reasons": ["weekday"]
+        },
+        {
+          "date": "2026-11-18",
+          "headlinerWait": 10,
+          "crowdLevel": "very_low",
+          "basis": "forecast",
+          "reasons": ["weekday"]
+        }
+      ],
+      "busy": [
+        {
+          "date": "2026-11-27",
+          "headlinerWait": 25,
+          "crowdLevel": "low",
+          "basis": "forecast",
+          "reasons": ["weekday", "school_break"]
+        },
+        {
+          "date": "2026-12-05",
+          "headlinerWait": 25,
+          "crowdLevel": "low",
+          "basis": "forecast",
+          "reasons": []
+        }
+      ]
+    },
+    {
+      "slug": "adventure-island-tampa",
+      "basis": "none",
+      "quiet": [],
+      "busy": []
+    }
+  ],
+  "groups": [
+    {
+      "key": "walt-disney-world",
+      "quiet": [
+        {
+          "date": "2026-11-16",
+          "slug": "disneys-animal-kingdom-theme-park",
+          "headlinerWait": 30
+        },
+        {
+          "date": "2026-11-15",
+          "slug": "disneys-animal-kingdom-theme-park",
+          "headlinerWait": 35
+        },
+        {
+          "date": "2026-11-19",
+          "slug": "magic-kingdom-park",
+          "headlinerWait": 35
+        }
+      ]
+    },
+    {
+      "key": "universal-orlando",
+      "quiet": [
+        {
+          "date": "2026-11-15",
+          "slug": "universal-islands-of-adventure",
+          "headlinerWait": 30
+        },
+        {
+          "date": "2026-11-16",
+          "slug": "universal-islands-of-adventure",
+          "headlinerWait": 30
+        },
+        {
+          "date": "2026-11-17",
+          "slug": "universal-studios-florida",
+          "headlinerWait": 35
+        }
+      ]
+    },
+    {
+      "key": "seaworld-orlando",
+      "quiet": [
+        {
+          "date": "2026-11-12",
+          "slug": "seaworld-orlando",
+          "headlinerWait": 15
+        },
+        {
+          "date": "2026-11-16",
+          "slug": "seaworld-orlando",
+          "headlinerWait": 15
+        },
+        {
+          "date": "2026-11-17",
+          "slug": "seaworld-orlando",
+          "headlinerWait": 15
+        }
+      ]
+    }
+  ]
+}

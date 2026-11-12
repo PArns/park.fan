@@ -976,6 +976,7 @@ const PLANNER_OPENED_SOURCE_LABEL: Record<PlannerOpenedSource | 'none', string> 
   'shared-link': 'Geteilter Plan',
   'home-hero': '„Heute planen“ auf der Startseite',
   'kids-page': 'Seite „Mit Kindern“',
+  'orlando-hub': 'Orlando-Hub, „Diesen Tag planen“',
   assistant: 'Parky, der Chat-Assistent',
   none: 'Planer zu',
 };

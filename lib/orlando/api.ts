@@ -2,7 +2,13 @@ import 'server-only';
 
 import { getApiBaseUrl, getServerApiHeaders } from '@/lib/api/client';
 import { CACHE_TTL } from '@/lib/api/cache-config';
-import { ORLANDO_REGION, type TripBestDays, type TripCalendar, type TripRegion } from './types';
+import {
+  ORLANDO_REGION,
+  type TripBestDays,
+  type TripCalendar,
+  type TripRegion,
+  type TripWhen,
+} from './types';
 
 /**
  * The Orlando hub's server reads of the trip-region routes. SERVER ONLY: the keyed routes leave
@@ -47,6 +53,22 @@ async function readTripRegion<T>(
 /** The region: its parks, groups, hotel areas and travel legs. Open, curated in code. */
 export function getOrlandoRegion(): Promise<TripRegion> {
   return readTripRegion<TripRegion>('', CACHE_TTL.tripRegion);
+}
+
+/**
+ * The best trip windows of a length in a range, planned for the headliner parks unless `parks`
+ * says otherwise (`/when`). The API keeps an answer six hours by its query; the hub asks one per
+ * range, so the Data Cache holds it the API's hour like the other keyed reads.
+ */
+export function getOrlandoWhen(
+  query: TripWindow & { days?: number; limit?: number; parks?: string } = {}
+): Promise<TripWhen> {
+  const { days, limit, ...rest } = query;
+  return readTripRegion<TripWhen>('/when', CACHE_TTL.tripRegionData, {
+    ...rest,
+    days: days === undefined ? undefined : String(days),
+    limit: limit === undefined ? undefined : String(limit),
+  });
 }
 
 /** Every park's days side by side, with the seasons that run on them; at most 92 days. */
