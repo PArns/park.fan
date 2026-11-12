@@ -530,7 +530,7 @@
     },
     "reasons": {
       "quietest_in_window": "le code più corte del periodo",
-      "weekday": "giorno feriale",
+      "weekday": "lun–ven",
       "holiday_ends": "dopo le feste",
       "school_break": "durante le vacanze scolastiche",
       "closes_early": "i visitatori giornalieri escono alle {time}",
@@ -590,7 +590,7 @@
       },
       "epic": {
         "q": "Epic Universe è più affollato nel fine settimana?",
-        "a": "{verdict, select, busier {Sì.} same {No.} other {Solo un po’.}} In questo periodo le sue grandi attrazioni sono a circa {weekend} min nell’ora di punta il sabato e la domenica, e a circa {weekday} min nei giorni feriali."
+        "a": "{verdict, select, busier {Sì.} same {No.} other {Solo un po’.}} In questo periodo le sue grandi attrazioni sono a circa {weekend} min nell’ora di punta il sabato e la domenica, e a circa {weekday} min dal lunedì al venerdì."
       },
       "distance": {
         "q": "Quanto dista Universal da Walt Disney World?",

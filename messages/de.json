@@ -530,7 +530,7 @@
     },
     "reasons": {
       "quietest_in_window": "am kürzesten anstehen in diesem Zeitraum",
-      "weekday": "Wochentag",
+      "weekday": "Mo–Fr",
       "holiday_ends": "nach den Feiertagen",
       "school_break": "in den Schulferien",
       "closes_early": "Tagesgäste gehen um {time}",
@@ -590,7 +590,7 @@
       },
       "epic": {
         "q": "Ist Epic Universe am Wochenende voller?",
-        "a": "{verdict, select, busier {Ja.} same {Nein.} other {Nur wenig.}} In diesem Zeitraum liegen seine großen Attraktionen zur vollsten Zeit samstags und sonntags bei etwa {weekend} Min. und an Wochentagen bei etwa {weekday} Min."
+        "a": "{verdict, select, busier {Ja.} same {Nein.} other {Nur wenig.}} In diesem Zeitraum liegen seine großen Attraktionen zur vollsten Zeit samstags und sonntags bei etwa {weekend} Min. und montags bis freitags bei etwa {weekday} Min."
       },
       "distance": {
         "q": "Wie weit ist Universal von Walt Disney World entfernt?",
