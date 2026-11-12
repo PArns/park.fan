@@ -2,7 +2,7 @@
 title: 'Carowinds reste ouvert jusqu’à 1 h du matin le 31 décembre'
 translationKey: carowinds-winterfest-2026
 date: '2026-11-12'
-time: '09:00'
+time: '08:28'
 author: patrick
 mode: published
 featured: false
@@ -41,7 +41,7 @@ seo:
     - Six Flags entrée gratuite 65 ans
 ---
 
-Le vendredi 27 novembre, [Carowinds](ref:carowinds), à Charlotte, ouvre son WinterFest avec trois nouveaux spectacles. Le 31 décembre, le parc n’ouvre qu’à 15 h et ferme après le feu d’artifice, à 1 h du matin. La fête se tient sur 22 jours, jusqu’au 3 janvier 2027. Le billet d’entrée normal comprend les spectacles, les illuminations et la plupart des attractions.
+À partir du vendredi 27 novembre, [Carowinds](ref:carowinds), à Charlotte, fête le WinterFest, et trois des spectacles sont nouveaux cette année. Le 31 décembre, le parc n’ouvre qu’à 15 h et ferme après le feu d’artifice, à 1 h du matin. La fête se tient sur 22 jours, jusqu’au 3 janvier 2027. Le billet d’entrée normal comprend les spectacles, les illuminations et la plupart des attractions.
 
 ## Le programme du WinterFest
 
@@ -80,25 +80,25 @@ Cet hiver, Six Flags annonce aussi des soirées du Nouvel An à Kings Island, Kn
 
 ## Ce que comprend le billet, et ce qui se paie
 
-Les repas, les boissons, les souvenirs et une partie des extras de Noël sont payants, la décoration de biscuits par exemple. Les photos avec le père Noël se font à St. Nick's Pics, toujours au prix normal, même avec FunPix (19,99 dollars pour une journée, frais en sus). Les images numériques arrivent en revanche sur votre compte FunPix.
+La décoration de biscuits et d’autres activités de Noël sont payantes, tout comme les repas, les boissons et les souvenirs. Les photos avec le père Noël se font à St. Nick's Pics, toujours au prix normal, même avec FunPix (19,99 dollars pour une journée, frais en sus). Les images numériques arrivent en revanche sur votre compte FunPix.
 
 ## Billets et Silver Pass
 
 Un billet pour une date fixe coûte à partir de 50 dollars en ligne. Le Good Any Day Ticket, valable le jour de votre choix, coûte 69 dollars. S’y ajoutent des frais de traitement pouvant aller jusqu’à 9,99 dollars et les taxes. Pas besoin de réserver, et les enfants de deux ans et moins entrent sans billet. Les billets ne sont pas remboursés, même si le parc ferme à cause de la météo, et Carowinds ne donne pas de billet de remplacement les jours de pluie. Avec un Season Pass, le parking est gratuit.
 
-Jusqu’au 30 novembre, Carowinds vend le Silver Pass 2027 à 69 dollars, soit le prix d’un Good Any Day Ticket. Il donne accès au parc et à Carolina Harbor jusqu’au Labor Day 2027, parking compris. Il est accompagné d’un billet Bring-A-Friend, à utiliser au plus tard le 3 janvier 2027. En formule avec un plan repas et boissons, il coûte 159 dollars au lieu de 287. Il vaut déjà pour la fin de 2026, donc pour le WinterFest : qui vient le week-end avant Noël avec ce pass a l’été 2027 offert en prime. Le Gold Pass, à 105 dollars, vaut en 2026 et 2027 dans tous les parcs Six Flags de la côte Est.
+Jusqu’au 30 novembre, Carowinds vend le Silver Pass 2027 à 69 dollars, soit le prix d’un Good Any Day Ticket. Il donne accès au parc et à Carolina Harbor jusqu’au Labor Day 2027, parking compris. Il est accompagné d’un billet Bring-A-Friend, à utiliser au plus tard le 3 janvier 2027. Avec un plan repas et boissons, il coûte 159 dollars ; Carowinds indique 287 dollars comme prix normal. Il vaut déjà pour la fin de 2026, donc pour le WinterFest : qui vient le week-end avant Noël avec ce pass a l’été 2027 offert en prime. Le Gold Pass, à 105 dollars, vaut en 2026 et 2027 dans tous les parcs Six Flags de la côte Est.
 
 ## Entrée gratuite dès 65 ans
 
-Les personnes nées le 31 décembre 1961 ou avant entrent gratuitement à Carowinds jusqu’au 3 janvier 2027. L’inscription se fait uniquement en ligne, pas au parc, et l’entrée est activée lors de la première visite. À chaque passage, on montre à l’entrée une pièce d’identité avec la date de naissance. L’offre ne vaut que dans le parc choisi à l’inscription, et pas dans les parcs aquatiques. Le parking reste à votre charge. L’entrée gratuite ne donne droit ni aux réductions, ni aux billets Bring-A-Friend, ni aux avantages d’un Season Pass, et les accompagnants paient leur propre billet, soit au moins 50 dollars pour une date fixe réservée sur Internet. Six Flags propose cette gratuité pour la première fois cet hiver.
+Les personnes nées le 31 décembre 1961 ou avant entrent gratuitement à Carowinds jusqu’au 3 janvier 2027. L’inscription se fait uniquement en ligne, pas au parc, et l’entrée est activée lors de la première visite. À chaque passage, on montre à l’entrée une pièce d’identité avec la date de naissance. L’offre ne vaut que dans le parc choisi à l’inscription, et pas dans les parcs aquatiques. Le parking reste à votre charge. L’entrée gratuite ne donne droit ni aux réductions, ni aux billets Bring-A-Friend, ni aux avantages d’un Season Pass, et les accompagnants ont besoin d’un billet d’entrée normal. Six Flags propose cette gratuité pour la première fois cet hiver.
 
 ## Les attractions ouvertes
 
-Carowinds n’a pas publié de liste des attractions ouvertes pendant le WinterFest. En revanche, chaque grande attraction a une température minimale fixée par le parc, et une journée de décembre à Charlotte passe vite en dessous. [Fury 325](ref:carowinds/fury-325) et [Thunder Striker](ref:carowinds/thunder-striker) s’arrêtent sous 40 degrés Fahrenheit, environ 4 °C, [Copperhead Strike](ref:carowinds/copperhead-strike) sous 41 degrés (5 °C). Le Carolina Goldrusher abandonne dès 50 degrés, soit 10 °C, ce qui passe à Paris pour une journée de décembre plutôt douce. Sling Shot et WindSeeker tiennent jusqu’à moins 5 °C. Sous 4 °C environ, d’autres attractions peuvent fermer, et selon Carowinds, le froid peut aussi toucher les spectacles.
+Chaque grande attraction a une température minimale fixée par le parc, et une journée de décembre à Charlotte passe vite en dessous. Carowinds n’a pas publié la liste des attractions prévues pendant le WinterFest. [Fury 325](ref:carowinds/fury-325) et [Thunder Striker](ref:carowinds/thunder-striker) s’arrêtent sous 40 degrés Fahrenheit, environ 4 °C, [Copperhead Strike](ref:carowinds/copperhead-strike) sous 41 degrés (5 °C). Le Carolina Goldrusher ne roule pas sous 50 degrés Fahrenheit (10 °C). Sling Shot et WindSeeker roulent jusqu’à moins 5 °C. Sous 4 °C environ, d’autres attractions peuvent fermer, et selon Carowinds, le froid peut aussi toucher les spectacles.
 
 [Snoopy's Racing Railway](ref:carowinds/snoopys-racing-railway?full)
 
-Parmi les attractions familiales, la page de l’événement cite [Snoopy's Racing Railway](ref:carowinds/snoopys-racing-railway) et la présente comme « all-new ». Toute neuve, elle ne l’est pas, puisqu’elle roule depuis le 24 mai 2025 à Camp Snoopy, qui s’appelait Planet Snoopy jusqu’en 2018, et y a remplacé Snoopy's Junction. Ce sont des montagnes russes familiales à lancement, construites par ART Engineering. Des pneus motorisés propulsent le train au départ, puis le relancent une seconde fois en route, jusqu’à 50 km/h. Le parcours mesure 245 mètres de long pour 12 mètres de haut, sans inversion. Un train de sept wagons emporte 14 personnes. On monte seul à partir de 122 centimètres, accompagné dès 91 centimètres, et plus du tout au-delà de 196 centimètres. Dans l’histoire de l’attraction, Snoopy livre de la root beer et des pizzas au Mess Hall de Camp Snoopy, et un soir de décembre, la pizza a nettement l’avantage. Une attraction du même nom roule depuis 2023 à [Canada's Wonderland](/news/canadas-wonderland-winterfest-2026), où Six Flags organise aussi un WinterFest.
+Parmi les attractions familiales, la page de l’événement cite [Snoopy's Racing Railway](ref:carowinds/snoopys-racing-railway) et la présente comme « all-new ». Toute neuve, elle ne l’est pas, puisqu’elle roule depuis le 24 mai 2025 à Camp Snoopy, qui s’appelait Planet Snoopy jusqu’en 2018, et y a remplacé Snoopy's Junction. Ce sont des montagnes russes familiales à lancement, construites par ART Engineering. Des pneus motorisés propulsent le train au départ, puis le relancent une seconde fois en route, jusqu’à 50 km/h. Le parcours mesure 245 mètres de long pour 12 mètres de haut, sans inversion. On monte seul à partir de 122 centimètres, accompagné dès 91 centimètres, et plus du tout au-delà de 196 centimètres. Un train compte sept wagons de deux places chacun. Dans l’histoire de l’attraction, Snoopy livre de la root beer et des pizzas au Mess Hall de Camp Snoopy, et un soir de décembre, la pizza a nettement l’avantage. Une attraction du même nom roule depuis 2023 à [Canada's Wonderland](/news/canadas-wonderland-winterfest-2026), où Six Flags organise aussi un WinterFest.
 
 ## Accès et hébergement
 
@@ -106,7 +106,7 @@ L’adresse est 14523 Carowinds Blvd, Charlotte, NC 28273. Le parc se trouve dir
 
 ## Carowinds et son WinterFest
 
-Carowinds a ouvert le 31 mars 1973 et a coûté 70 millions de dollars. Earl Patterson Hall en a dirigé la conception. Après Taft Broadcasting à partir de 1975, Paramount Parks au début des années 1990, qui l’a rebaptisé Paramount's Carowinds, et Cedar Fair à partir du 30 juin 2006, le parc appartient depuis la fusion du 1er juillet 2024 à Six Flags Entertainment Corporation. Le groupe a son siège à Charlotte, à environ huit kilomètres au nord-est, et n’a pas loin à aller pour son propre réveillon. Le domaine s’étend sur 165 hectares.
+Carowinds a ouvert le 31 mars 1973 sur 165 hectares et a coûté 70 millions de dollars. Earl Patterson Hall en a dirigé la conception. Après Taft Broadcasting à partir de 1975, Paramount Parks au début des années 1990, qui l’a rebaptisé Paramount's Carowinds, et Cedar Fair à partir du 30 juin 2006, le parc appartient depuis la fusion du 1er juillet 2024 à Six Flags Entertainment Corporation. Le groupe a son siège à Charlotte, à environ huit kilomètres au nord-est, et n’a pas loin à aller pour son propre réveillon.
 
 Carowinds avait déjà un WinterFest en 2005, sous Paramount, et l’événement est revenu en 2017. En 2020, la saison normale a été annulée, et du 21 novembre au 20 décembre, le parc a organisé à la place un événement de Noël, Taste of the Season.
 

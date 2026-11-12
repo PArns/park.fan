@@ -2,7 +2,7 @@
 title: "A Capodanno Carowinds resta aperto fino all'una di notte"
 translationKey: carowinds-winterfest-2026
 date: '2026-11-12'
-time: '09:00'
+time: '08:28'
 author: patrick
 mode: published
 featured: false
@@ -41,7 +41,7 @@ seo:
     - Six Flags ingresso gratuito over 65
 ---
 
-Venerdì 27 novembre [Carowinds](ref:carowinds), a Charlotte, apre il suo WinterFest con tre spettacoli nuovi. Il 31 dicembre apre solo alle 15 e chiude dopo i fuochi d'artificio, all'una di notte. La festa si svolge in 22 giorni e finisce il 3 gennaio 2027. Spettacoli, luci e la maggior parte delle attrazioni sono compresi nel normale biglietto del parco.
+Da venerdì 27 novembre [Carowinds](ref:carowinds), a Charlotte, festeggia il WinterFest, e tre degli spettacoli sono nuovi quest'anno. Il 31 dicembre apre solo alle 15 e chiude dopo i fuochi d'artificio, all'una di notte. La festa si svolge in 22 giorni e finisce il 3 gennaio 2027. Spettacoli, luci e la maggior parte delle attrazioni sono compresi nel normale biglietto del parco.
 
 ## Il programma del WinterFest
 
@@ -80,25 +80,25 @@ Quest'inverno Six Flags annuncia serate di Capodanno anche a Kings Island, Knott
 
 ## Cosa comprende il biglietto e cosa si paga a parte
 
-Cibo, bevande, souvenir e alcuni extra natalizi si pagano a parte, per esempio la decorazione dei biscotti. La foto con Babbo Natale si fa da St. Nick's Pics e si paga sempre a prezzo pieno, anche con FunPix (19,99 dollari per un giorno, più una commissione). In compenso le immagini digitali finiscono nel proprio account FunPix.
+La decorazione dei biscotti e altre attività natalizie si pagano a parte, come cibo, bevande e souvenir. La foto con Babbo Natale si fa da St. Nick's Pics e si paga sempre a prezzo pieno, anche con FunPix (19,99 dollari per un giorno, più una commissione). In compenso le immagini digitali finiscono nel proprio account FunPix.
 
 ## Biglietti e Silver Pass
 
 Online un biglietto per un giorno fisso costa da 50 dollari. Il Good Any Day Ticket, valido in un giorno a scelta, costa 69 dollari. Si aggiungono una commissione fino a 9,99 dollari e le tasse. Non serve prenotare, e i bambini fino a due anni entrano senza biglietto. I biglietti non si rimborsano nemmeno se il parco chiude per maltempo, e Carowinds non dà biglietti sostitutivi per i giorni di pioggia. Con il Season Pass il parcheggio è gratis.
 
-Fino al 30 novembre Carowinds vende il Silver Pass 2027 a 69 dollari, quanto un Good Any Day Ticket. Vale nel parco e a Carolina Harbor fino al Labor Day 2027, parcheggio compreso. In più c'è un biglietto Bring-A-Friend da usare entro il 3 gennaio 2027. In pacchetto con il piano pasti e bevande costa 159 dollari invece di 287. Vale però già per il resto del 2026, quindi anche al WinterFest: chi viene nel fine settimana prima di Natale si porta a casa l'estate 2027 senza spendere altro. Il Gold Pass da 105 dollari vale nel 2026 e nel 2027 in tutti i parchi Six Flags della costa orientale.
+Fino al 30 novembre Carowinds vende il Silver Pass 2027 a 69 dollari, quanto un Good Any Day Ticket. Vale nel parco e a Carolina Harbor fino al Labor Day 2027, parcheggio compreso. In più c'è un biglietto Bring-A-Friend da usare entro il 3 gennaio 2027. Con il piano pasti e bevande costa 159 dollari; come prezzo normale Carowinds indica 287 dollari. Vale però già per il resto del 2026, quindi anche al WinterFest: chi viene nel fine settimana prima di Natale si porta a casa l'estate 2027 senza spendere altro. Il Gold Pass da 105 dollari vale nel 2026 e nel 2027 in tutti i parchi Six Flags della costa orientale.
 
 ## Ingresso gratuito dai 65 anni
 
-Chi è nato il 31 dicembre 1961 o prima entra gratis a Carowinds fino al 3 gennaio 2027. Ci si registra solo online, non al parco, e l'ingresso si attiva alla prima visita. All'entrata si mostra ogni volta un documento con la data di nascita. L'offerta vale solo nel parco per cui ci si è registrati e non nei parchi acquatici. Il parcheggio si paga a parte. L'ingresso gratuito non dà diritto a sconti, biglietti Bring-A-Friend o vantaggi del Season Pass, e chi accompagna paga il suo biglietto, online da 50 dollari per un giorno fisso. È il primo inverno in cui Six Flags offre l'ingresso gratuito.
+Chi è nato il 31 dicembre 1961 o prima entra gratis a Carowinds fino al 3 gennaio 2027. Ci si registra solo online, non al parco, e l'ingresso si attiva alla prima visita. All'entrata si mostra ogni volta un documento con la data di nascita. L'offerta vale solo nel parco per cui ci si è registrati e non nei parchi acquatici. Il parcheggio si paga a parte. L'ingresso gratuito non dà diritto a sconti, biglietti Bring-A-Friend o vantaggi del Season Pass, e chi accompagna ha bisogno di un normale biglietto del parco. È il primo inverno in cui Six Flags offre l'ingresso gratuito.
 
 ## Quali attrazioni funzionano
 
-Carowinds non ha pubblicato una lista delle attrazioni aperte durante il WinterFest. Per ogni grande attrazione ha però fissato una temperatura minima, e una giornata di dicembre a Charlotte ci scende sotto in fretta. [Fury 325](ref:carowinds/fury-325) e [Thunder Striker](ref:carowinds/thunder-striker) si fermano sotto i 40 gradi Fahrenheit, circa 4 °C, [Copperhead Strike](ref:carowinds/copperhead-strike) sotto i 41 (5 °C). Il Carolina Goldrusher si arrende già sotto i 50 gradi, cioè 10 °C, una giornata di dicembre che in buona parte d'Italia nessuno chiamerebbe fredda. Sling Shot e WindSeeker resistono fino a meno 5 °C. Sotto i 4 °C circa possono chiudere altre attrazioni, e secondo Carowinds con il freddo possono risentirne anche gli spettacoli.
+Per ogni grande attrazione Carowinds ha fissato una temperatura minima, e una giornata di dicembre a Charlotte ci scende sotto in fretta. Quali attrazioni siano previste durante il WinterFest, Carowinds non l'ha pubblicato. [Fury 325](ref:carowinds/fury-325) e [Thunder Striker](ref:carowinds/thunder-striker) si fermano sotto i 40 gradi Fahrenheit, circa 4 °C, [Copperhead Strike](ref:carowinds/copperhead-strike) sotto i 41 (5 °C). Il Carolina Goldrusher non funziona sotto i 50 gradi Fahrenheit (10 °C). Sling Shot e WindSeeker funzionano fino a meno 5 °C. Sotto i 4 °C circa possono chiudere altre attrazioni, e secondo Carowinds con il freddo possono risentirne anche gli spettacoli.
 
 [Snoopy's Racing Railway](ref:carowinds/snoopys-racing-railway?full)
 
-Tra le attrazioni per famiglie la pagina dell'evento cita [Snoopy's Racing Railway](ref:carowinds/snoopys-racing-railway) e la definisce «all-new». Tanto nuova non è, perché gira dal 24 maggio 2025 a Camp Snoopy, che fino al 2018 si chiamava Planet Snoopy, e lì ha preso il posto di Snoopy's Junction. È una montagna russa per famiglie a lancio di ART Engineering. Ruote motorizzate lanciano il treno alla partenza e lo spingono una seconda volta lungo il percorso, fino a 50 km/h. Il tracciato è lungo 245 metri e alto 12, senza inversioni. Un treno da sette vagoni porta 14 persone. Da soli si sale con almeno 122 centimetri di altezza, accompagnati da 91 centimetri; oltre i 196 centimetri non si sale. Nella storia dell'attrazione Snoopy consegna root beer e pizza alla Mess Hall di Camp Snoopy, e a dicembre una pizza calda ha più senso di un gelato. Un'attrazione con lo stesso nome gira dal 2023 a [Canada's Wonderland](/news/canadas-wonderland-winterfest-2026), dove Six Flags organizza a sua volta un WinterFest.
+Tra le attrazioni per famiglie la pagina dell'evento cita [Snoopy's Racing Railway](ref:carowinds/snoopys-racing-railway) e la definisce «all-new». Tanto nuova non è, perché gira dal 24 maggio 2025 a Camp Snoopy, che fino al 2018 si chiamava Planet Snoopy, e lì ha preso il posto di Snoopy's Junction. È una montagna russa per famiglie a lancio di ART Engineering. Ruote motorizzate lanciano il treno alla partenza e lo spingono una seconda volta lungo il percorso, fino a 50 km/h. Il tracciato è lungo 245 metri e alto 12, senza inversioni. Da soli si sale con almeno 122 centimetri di altezza, accompagnati da 91 centimetri; oltre i 196 centimetri non si sale. Un treno ha sette vagoni con due posti ciascuno. Nella storia dell'attrazione Snoopy consegna root beer e pizza alla Mess Hall di Camp Snoopy, e a dicembre una pizza calda ha più senso di un gelato. Un'attrazione con lo stesso nome gira dal 2023 a [Canada's Wonderland](/news/canadas-wonderland-winterfest-2026), dove Six Flags organizza a sua volta un WinterFest.
 
 ## Come arrivare e dove dormire
 
@@ -106,7 +106,7 @@ L'indirizzo è 14523 Carowinds Blvd, Charlotte, NC 28273, e il parco si trova pr
 
 ## Carowinds e il suo WinterFest
 
-Carowinds ha aperto il 31 marzo 1973, è costato 70 milioni di dollari e il progetto lo ha guidato Earl Patterson Hall. Dopo Taft Broadcasting dal 1975, Paramount Parks dall'inizio degli anni Novanta, che lo ha chiamato Paramount's Carowinds, e Cedar Fair dal 30 giugno 2006, dalla fusione del 1° luglio 2024 fa parte della Six Flags Entertainment Corporation. Il gruppo ha sede a Charlotte, a circa otto chilometri a nord-est, e per il proprio Capodanno non deve andare lontano. L'area misura 165 ettari.
+Carowinds ha aperto il 31 marzo 1973 su 165 ettari, è costato 70 milioni di dollari e il progetto lo ha guidato Earl Patterson Hall. Dopo Taft Broadcasting dal 1975, Paramount Parks dall'inizio degli anni Novanta, che lo ha chiamato Paramount's Carowinds, e Cedar Fair dal 30 giugno 2006, dalla fusione del 1° luglio 2024 fa parte della Six Flags Entertainment Corporation. Il gruppo ha sede a Charlotte, a circa otto chilometri a nord-est, e per il proprio Capodanno non deve andare lontano.
 
 Carowinds aveva già un WinterFest nel 2005, ai tempi di Paramount, e nel 2017 è tornato. Nel 2020 la stagione normale è saltata e dal 21 novembre al 20 dicembre si è tenuto al suo posto l'evento natalizio Taste of the Season.
 
