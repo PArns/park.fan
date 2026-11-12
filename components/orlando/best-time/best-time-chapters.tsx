@@ -98,12 +98,11 @@ export async function WindowCards({
         const below = percentBelowAverage(window);
         const [reason] = windowReasons(window);
         const events = seasons.filter((s) => window.seasons.includes(s.id)).map(seasonLabel);
-        const details = [
-          ...windowReasons(window).map((code) => tWhen(`reason.${code}`)),
-          ...windowWarnings(window).map((code) =>
-            tWhen(`warning.${code}`, { count: window.closesEarlyDays })
-          ),
-        ];
+        const details = windowReasons(window).map((code) => tWhen(`reason.${code}`));
+        // What speaks against the dates stands apart from why they were picked.
+        const cautions = windowWarnings(window).map((code) =>
+          tWhen(`warning.${code}`, { count: window.closesEarlyDays })
+        );
         return (
           <li key={window.from} className="flex">
             <Card className="flex w-full flex-col gap-2 p-4">
@@ -126,7 +125,7 @@ export async function WindowCards({
               {window.basis !== 'forecast' && (
                 <p className="text-muted-foreground text-xs">{tWhen(`basis.${window.basis}`)}</p>
               )}
-              {(details.length > 1 || events.length > 0) && (
+              {(details.length > 1 || events.length > 0 || cautions.length > 0) && (
                 <details className="text-sm">
                   <summary className="text-primary-ink flex min-h-11 cursor-pointer items-center font-medium sm:min-h-0">
                     {t('why')}
@@ -139,6 +138,16 @@ export async function WindowCards({
                       <li>{t('events', { list: [...new Set(events)].join(', ') })}</li>
                     )}
                   </ul>
+                  {cautions.length > 0 && (
+                    <>
+                      <p className="mt-2 font-medium">{t('cautions')}</p>
+                      <ul className="text-muted-foreground mt-1 list-disc space-y-1 ps-5">
+                        {cautions.map((line) => (
+                          <li key={line}>{line}</li>
+                        ))}
+                      </ul>
+                    </>
+                  )}
                 </details>
               )}
               <Link

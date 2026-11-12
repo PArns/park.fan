@@ -62,13 +62,14 @@ export function getOrlandoRegion(): Promise<TripRegion> {
  * range, so the Data Cache holds it the API's hour like the other keyed reads.
  */
 export function getOrlandoWhen(
-  query: TripWindow & { days?: number; limit?: number; parks?: string } = {}
+  query: TripWindow & { days?: number; limit?: number; gap?: number; parks?: string } = {}
 ): Promise<TripWhen> {
-  const { days, limit, ...rest } = query;
+  const { days, limit, gap, ...rest } = query;
   return readTripRegion<TripWhen>('/when', CACHE_TTL.tripRegionData, {
     ...rest,
     days: days === undefined ? undefined : String(days),
     limit: limit === undefined ? undefined : String(limit),
+    gap: gap === undefined ? undefined : String(gap),
   });
 }
 

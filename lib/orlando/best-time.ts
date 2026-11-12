@@ -92,6 +92,26 @@ export function bestTimeParks(region: TripRegion, page: OrlandoBestTimePage): st
   return region.parks.filter((p) => p.headliner && groups.includes(p.group)).map((p) => p.slug);
 }
 
+/**
+ * The one `/when` query a best-time page and the hub's teaser send for the same parks, so both
+ * read one cached answer and never print two figures for one window. The gap is the trip's
+ * length: the windows named side by side never overlap.
+ */
+export function bestTimeWhenQuery(
+  region: TripRegion,
+  page: OrlandoBestTimePage,
+  range: PlanSearchRange
+): { from: string; to: string; days: number; limit: number; gap: number; parks: string } {
+  return {
+    from: range.from,
+    to: range.to,
+    days: BEST_TIME_TRIP_DAYS,
+    limit: BEST_TIME_WINDOWS,
+    gap: BEST_TIME_TRIP_DAYS,
+    parks: bestTimeParks(region, page).join(','),
+  };
+}
+
 /** `YYYY-MM` of a month. */
 export function monthKey({ year, month }: OrlandoMonth): string {
   return `${year}-${String(month).padStart(2, '0')}`;

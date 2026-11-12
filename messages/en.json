@@ -2358,7 +2358,8 @@
       "below": "{percent}% below the {year} average",
       "none": "No {days}-day trip in {year} has figures yet.",
       "why": "Why these dates",
-      "events": "Events: {list}"
+      "events": "Events: {list}",
+      "cautions": "Worth knowing"
     },
     "intro": {
       "lead": "Every figure here is the big rides' wait at their busiest: each headliner's peak of the day, averaged over the parks of the trip.",

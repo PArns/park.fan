@@ -2358,7 +2358,8 @@
       "below": "{percent} % unter dem Schnitt von {year}",
       "none": "Für {year} gibt es noch keine Zahlen zu einer {days}-Tage-Reise.",
       "why": "Warum diese Tage",
-      "events": "Events: {list}"
+      "events": "Events: {list}",
+      "cautions": "Gut zu wissen"
     },
     "intro": {
       "lead": "Jede Zahl hier ist die Wartezeit der großen Bahnen zur vollsten Zeit: die Tagesspitze jedes Headliners, gemittelt über die Parks der Reise.",

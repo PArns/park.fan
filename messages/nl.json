@@ -2358,7 +2358,8 @@
       "below": "{percent}% onder het gemiddelde van {year}",
       "none": "Voor {year} zijn er nog geen cijfers voor een reis van {days} dagen.",
       "why": "Waarom deze dagen",
-      "events": "Evenementen: {list}"
+      "events": "Evenementen: {list}",
+      "cautions": "Goed om te weten"
     },
     "intro": {
       "lead": "Elk cijfer hier is de wachttijd van de grote attracties op het drukste moment: de dagpiek van elke topattractie, gemiddeld over de parken van de reis.",

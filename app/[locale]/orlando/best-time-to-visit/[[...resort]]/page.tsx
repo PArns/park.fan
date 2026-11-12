@@ -25,6 +25,7 @@ import {
   BEST_TIME_WINDOWS,
   bestTimeParks,
   bestTimeRange,
+  bestTimeWhenQuery,
   bestTimeResort,
   bestTimeYear,
   parseBestTimePage,
@@ -56,12 +57,9 @@ function resolve() {
 async function loadWhen(page: OrlandoBestTimePage, range: { from: string; to: string }) {
   const region = await getOrlandoRegion();
   const parks = bestTimeParks(region, page);
-  const answer: Partial<TripWhenWithMonths> & TripWhen = await getOrlandoWhen({
-    ...range,
-    days: BEST_TIME_TRIP_DAYS,
-    limit: BEST_TIME_WINDOWS,
-    parks: parks.join(','),
-  });
+  const answer: Partial<TripWhenWithMonths> & TripWhen = await getOrlandoWhen(
+    bestTimeWhenQuery(region, page, range)
+  );
   const when: TripWhenWithMonths = { ...answer, months: answer.months ?? [] };
   return { region, parks, when };
 }

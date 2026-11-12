@@ -2358,7 +2358,8 @@
       "below": "{percent}% sotto la media del {year}",
       "none": "Per un viaggio di {days} giorni nel {year} non ci sono ancora cifre.",
       "why": "Perché queste date",
-      "events": "Eventi: {list}"
+      "events": "Eventi: {list}",
+      "cautions": "Da sapere"
     },
     "intro": {
       "lead": "Ogni cifra qui è l’attesa delle grandi attrazioni nel momento di punta: il picco del giorno di ogni attrazione principale, in media sui parchi del viaggio.",

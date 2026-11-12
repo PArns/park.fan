@@ -30,7 +30,7 @@ import {
   orlandoToday,
   shortGroupName,
 } from '@/lib/orlando/hub-data';
-import { bestTimeRange } from '@/lib/orlando/best-time';
+import { bestTimeRange, bestTimeWhenQuery } from '@/lib/orlando/best-time';
 import {
   currentOrlandoMonth,
   isSameMonth,
@@ -42,9 +42,6 @@ import type { OrlandoMonth, TripBestDays, TripRegion } from '@/lib/orlando/types
 
 /** Orlando's middle, for the Dataset's `spatialCoverage`: between the two resorts. */
 const ORLANDO_CENTRE = { latitude: 28.42, longitude: -81.51 };
-
-/** How many windows the best-time teaser asks `/when` for. */
-const WHEN_WINDOWS = 3;
 
 interface OrlandoPageProps {
   params: Promise<{ locale: string; date?: string[] }>;
@@ -174,15 +171,16 @@ export default async function OrlandoPage({ params }: OrlandoPageProps) {
   const resolved = resolve(date);
   if (!resolved) notFound();
   const { nowMs, todayIso, current, month, window } = resolved;
-  const { from: whenFrom, to: whenTo } = bestTimeRange(todayIso);
-  const whenRange = { from: whenFrom, to: whenTo };
 
-  const [region, calendar, bestDays, when] = await Promise.all([
+  const [region, calendar, bestDays] = await Promise.all([
     getOrlandoRegion(),
     catchNonFatal(getOrlandoCalendar(window)),
     catchNonFatal(getOrlandoBestDays(window)),
-    catchNonFatal(getOrlandoWhen({ ...whenRange, limit: WHEN_WINDOWS })),
   ]);
+  // The best-time page's own query for Disney and Universal, so the teaser shows its figures.
+  const when = await catchNonFatal(
+    getOrlandoWhen(bestTimeWhenQuery(region, 'orlando', bestTimeRange(todayIso)))
+  );
 
   const t = await getTranslations('orlando');
   const tNav = await getTranslations('navigation');
