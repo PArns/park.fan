@@ -41,11 +41,11 @@ seo:
     - Jurassic Park Rapids Adventure cerrada
 ---
 
-[Universal Studios Singapore](ref:universal-studios-singapore) estrena esta Navidad el espectáculo Universal Jingle Jam. Forma parte de A Universal Christmas, el programa del parque para la Season of Joy, que Resorts World Sentosa celebra del 27 de noviembre de 2026 al 3 de enero de 2027. En el escenario coinciden Poppy, de las películas Trolls de DreamWorks, personajes de Barrio Sésamo y los Minions. Para el programa navideño basta con la entrada normal. Resorts World Sentosa no ha dado fechas propias de inicio y fin para el parque.
+[Universal Studios Singapore](ref:universal-studios-singapore) estrena esta Navidad el espectáculo Universal Jingle Jam. Forma parte de A Universal Christmas, el programa del parque para la Season of Joy. Resorts World Sentosa la celebra del 27 de noviembre de 2026 al 3 de enero de 2027. En el escenario coinciden Poppy, de las películas Trolls de DreamWorks, personajes de Barrio Sésamo y los Minions. Para el programa navideño basta con la entrada normal. Resorts World Sentosa no ha dado fechas propias de inicio y fin para el parque.
 
 ## El espectáculo nuevo, en New York
 
-En la zona de New York, el área navideña se llama The North Pole Jingle Jam. El decorado imita un escenario de concierto y los visitantes pueden subirse a él. El espectáculo que se representa allí se llama casi igual, Universal Jingle Jam, así que, si quedas con alguien, aclara si hablas del área o del espectáculo. Los personajes actúan con un grupo de cantantes y el público canta con ellos. Hay nevada y encuentros con los personajes.
+En la zona de New York, el área navideña se llama The North Pole Jingle Jam. El decorado imita un escenario de concierto y los visitantes pueden subirse a él. El espectáculo que se representa allí se llama casi igual, Universal Jingle Jam. Si quedas con alguien, aclara si hablas del área o del espectáculo. Los personajes actúan con un grupo de cantantes y el público canta con ellos. Hay nevada y encuentros con los personajes.
 
 En 2025, la zona de New York tuvo Santa's Rockmas, con Papá Noel, Shrek, los pingüinos de Madagascar y Barrio Sésamo; en 2024 le tocó a Wicked. Barrio Sésamo, por lo visto, ha sobrevivido al relevo.
 

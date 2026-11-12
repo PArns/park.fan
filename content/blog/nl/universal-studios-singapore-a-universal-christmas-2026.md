@@ -41,11 +41,11 @@ seo:
     - Jurassic Park Rapids Adventure gesloten
 ---
 
-Met kerst speelt [Universal Studios Singapore](ref:universal-studios-singapore) de nieuwe show Universal Jingle Jam. Die hoort bij A Universal Christmas, het parkprogramma van de Season of Joy, die Resorts World Sentosa van 27 november 2026 tot en met 3 januari 2027 viert. Poppy uit de Trolls-films van DreamWorks, figuren uit Sesamstraat en de Minions staan er samen op het podium. Voor het kerstprogramma heb je genoeg aan een gewoon parkticket. Aparte begin- en einddata voor het park heeft Resorts World Sentosa niet bekendgemaakt.
+Met kerst speelt [Universal Studios Singapore](ref:universal-studios-singapore) de nieuwe show Universal Jingle Jam. Die hoort bij A Universal Christmas, het parkprogramma van de Season of Joy. Resorts World Sentosa viert de Season of Joy van 27 november 2026 tot en met 3 januari 2027. Poppy uit de Trolls-films van DreamWorks, figuren uit Sesamstraat en de Minions staan er samen op het podium. Voor het kerstprogramma heb je genoeg aan een gewoon parkticket. Aparte begin- en einddata voor het park heeft Resorts World Sentosa niet bekendgemaakt.
 
 ## De nieuwe show in New York
 
-Het kerstgebied in de zone New York heet The North Pole Jingle Jam. Het decor ziet eruit als een concertpodium, en bezoekers mogen er zelf op. De show die er speelt heet bijna hetzelfde: Universal Jingle Jam. Spreek je daar met iemand af, zeg er dan bij of je het gebied of de show bedoelt. Poppy, Sesamstraat en de Minions staan op het podium met een groep zangers, en het publiek zingt mee. Bij de show horen sneeuw en ontmoetingen met de figuren.
+Het kerstgebied in de zone New York heet The North Pole Jingle Jam. Het decor ziet eruit als een concertpodium, en bezoekers mogen er zelf op. De show die er speelt heet bijna hetzelfde: Universal Jingle Jam. Spreek je daar met iemand af, zeg er dan bij of je het gebied of de show bedoelt. De figuren staan er met een groep zangers op het podium, en het publiek zingt mee. Bij de show horen sneeuw en ontmoetingen met de figuren.
 
 In 2025 speelde in New York nog Santa's Rockmas, met de Kerstman, Shrek, de pinguïns uit Madagascar en Sesamstraat. In 2024 was het Wicked. Sesamstraat mocht dus blijven.
 
@@ -67,7 +67,7 @@ Het vuurwerk begint om 20.00 uur en gaat af op muziek van BTS. Resorts World Sen
 
 ## BTS in het park
 
-Het thema van de Season of Joy is dit jaar kerst ontmoet K-Wave, en op de avond van 21 december is het park van BTS. Universal Studios Singapore sluit die dag al om 19.00 uur, en van 20.00 tot 1.00 uur 's nachts loopt BTS THE CITY ARIRANG Night Out. Daarvoor heb je een apart ticket nodig, dat 58 Singaporese dollar per persoon kost. Vuurwerk is er die avond alleen bij de Night Out.
+De Season of Joy staat dit jaar in het teken van kerst en de K-Wave, en op de avond van 21 december is het park van BTS. Universal Studios Singapore sluit die dag al om 19.00 uur, en van 20.00 tot 1.00 uur 's nachts loopt BTS THE CITY ARIRANG Night Out. Daarvoor heb je een apart ticket nodig, dat 58 Singaporese dollar per persoon kost. Vuurwerk is er die avond alleen bij de Night Out.
 
 Van 4 december tot en met 3 januari wordt elke avond vanaf 19.30 uur de projectie Lightscape op de gevel van [Revenge of the Mummy](ref:universal-studios-singapore/revenge-of-the-mummy) getoond, met BTS-beelden. Van 16 tot en met 22 december kom je met een ticket voor een attractie van Resorts World Sentosa bovendien gratis in het BTS THE CITY ARIRANG Fan Village in het Resorts World Convention Centre.
 

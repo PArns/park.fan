@@ -7,7 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Pour la Season of Joy, à partir du 27 novembre, Universal Studios Singapore présente Universal Jingle Jam, un nouveau spectacle de Noël avec Poppy, Sesame Street et les Minions. Feux d’artifice 15 soirs jusqu’au 2 janvier. Jurassic Park Rapids Adventure ferme le 1er décembre.
+  Pour la Season of Joy, à partir du 27 novembre, Universal Studios Singapore présente Universal Jingle Jam, un nouveau spectacle de Noël avec Poppy, Sesame Street et les Minions. Le feu d’artifice est tiré 15 soirs, jusqu’au 2 janvier. Jurassic Park Rapids Adventure ferme le 1er décembre.
 tags:
   - actualites
   - universal-studios-singapore
@@ -41,11 +41,11 @@ seo:
     - Jurassic Park Rapids Adventure fermé
 ---
 
-Pour Noël, [Universal Studios Singapore](ref:universal-studios-singapore) lance un nouveau spectacle, Universal Jingle Jam. Il fait partie d’A Universal Christmas, le programme du parc pendant la Season of Joy que Resorts World Sentosa organise du 27 novembre 2026 au 3 janvier 2027. Sur scène, Poppy, l’héroïne des films Les Trolls de DreamWorks, partage l’affiche avec les personnages de Sesame Street et les Minions. Un billet d’entrée classique suffit pour en profiter. Resorts World Sentosa n’a pas communiqué de dates propres au parc.
+Pour Noël, [Universal Studios Singapore](ref:universal-studios-singapore) lance un nouveau spectacle, Universal Jingle Jam. Il fait partie d’A Universal Christmas, le programme du parc pendant la Season of Joy. Resorts World Sentosa la célèbre du 27 novembre 2026 au 3 janvier 2027. Sur scène, Poppy, l’héroïne des films Les Trolls de DreamWorks, partage l’affiche avec les personnages de Sesame Street et les Minions. Un billet d’entrée classique suffit pour en profiter. Resorts World Sentosa n’a pas communiqué de dates propres au parc.
 
 ## Le nouveau spectacle, côté New York
 
-Dans la zone New York, l’espace de Noël s’appelle The North Pole Jingle Jam. Le décor imite une scène de concert, et les visiteurs ont le droit d’y monter. Le spectacle qui s’y joue porte presque le même nom, Universal Jingle Jam : pour se donner rendez-vous, mieux vaut préciser si l’on parle du lieu ou du show. Les personnages chantent avec une troupe de chanteurs et le public reprend avec eux. Neige artificielle et rencontres avec les personnages complètent le programme.
+Dans la zone New York, l’espace de Noël s’appelle The North Pole Jingle Jam. Le décor imite une scène de concert, et les visiteurs ont le droit d’y monter. Le spectacle qui s’y joue porte presque le même nom, Universal Jingle Jam. Pour se donner rendez-vous, mieux vaut préciser si l’on parle du lieu ou du spectacle. Les personnages chantent avec une troupe de chanteurs et le public reprend avec eux. Le spectacle comprend aussi de la neige artificielle et des rencontres avec les personnages.
 
 En 2025, la zone New York accueillait Santa’s Rockmas, avec le Père Noël, Shrek, les pingouins de Madagascar et Sesame Street. En 2024, c’était Wicked. De la troupe de l’an dernier, seule Sesame Street a gardé sa place.
 
@@ -63,7 +63,7 @@ Hello Kitty et Kuromi, de Sanrio, se promènent aussi dans la rue, avec des poin
 - du mardi 22 au vendredi 25 décembre
 - vendredi 1er et samedi 2 janvier
 
-Le feu d’artifice démarre à 20 h sur une musique de BTS. Resorts World Sentosa l’appelle BTS THE CITY ARIRANG Fireworks. L’endroit exact dans le parc n’a pas été annoncé ; en 2025, il était tiré au-dessus du Lake Hollywood. Le lundi 21 décembre, il n’y en a pas pendant l’ouverture normale du parc. Seul le 2-Park Pass with Festive Perks donne droit à une place réservée pour le regarder ; avec un billet classique, à toi de trouver ton coin.
+Le feu d’artifice démarre à 20 h sur une musique de BTS. Resorts World Sentosa l’appelle BTS THE CITY ARIRANG Fireworks, sans préciser l’endroit exact dans le parc. En 2025, il était tiré au-dessus du Lake Hollywood. Le lundi 21 décembre, il n’y en a pas pendant l’ouverture normale du parc. Seul le 2-Park Pass with Festive Perks donne droit à une place réservée pour le regarder. Avec un billet classique, à toi de trouver ton coin.
 
 ## BTS dans le parc
 
@@ -95,7 +95,7 @@ Du 4 décembre au 3 janvier, chaque soir à partir de 19 h 30, la projection Lig
 
 Pour une visite en novembre, le billet d’une journée coûte 76 dollars de Singapour pour les adultes à partir de 13 ans et 69 pour les enfants de 4 à 12 ans. Ce billet n’a pas de tarif senior. Universal Express démarre à 80 dollars de Singapour et Universal Express 3 à 60, uniquement en complément d’un billet d’entrée.
 
-Pour la Season of Joy, Resorts World Sentosa propose un 2-Park Pass valable à Universal Studios Singapore et au Singapore Oceanarium. En novembre, il coûte 115 dollars de Singapour pour les adultes de 13 à 59 ans et 108 pour les enfants et les seniors à partir de 60 ans ; en décembre, 120 et 108. Tu as sept jours pour visiter chacun des deux parcs une fois, sans pouvoir sortir puis revenir le même jour.
+Pour la Season of Joy, Resorts World Sentosa propose un 2-Park Pass valable à Universal Studios Singapore et au Singapore Oceanarium. En novembre, il coûte 115 dollars de Singapour pour les adultes de 13 à 59 ans et 108 pour les enfants et les seniors à partir de 60 ans, et en décembre 120 et 108. Tu as sept jours pour visiter chacun des deux parcs une fois, sans pouvoir sortir puis revenir le même jour.
 
 Le 2-Park Pass with Festive Perks coûte 168 dollars de Singapour pour les adultes et 148 pour les enfants. Il comprend :
 
@@ -104,7 +104,7 @@ Le 2-Park Pass with Festive Perks coûte 168 dollars de Singapour pour les adult
 - un accès prioritaire à Trolls Hug Time Jubilee, Donkey LIVE, [Shrek 4-D Adventure](ref:universal-studios-singapore/shrek-4-d-adventure) et WaterWorld
 - un espace réservé pour Universal Jingle Jam
 
-Le forfait hôtel de la Season of Joy, trois jours et deux nuits au Hotel Ora ou à l’Equarius, démarre à 858,48 dollars de Singapour, avec deux billets d’une journée pour Universal Studios Singapore et deux pour l’Oceanarium.
+Le forfait hôtel de la Season of Joy, trois jours et deux nuits à l'Hotel Ora ou à l’Equarius, démarre à 858,48 dollars de Singapour, avec deux billets d’une journée pour Universal Studios Singapore et deux pour l’Oceanarium.
 
 ## Accès
 

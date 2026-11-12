@@ -41,11 +41,11 @@ seo:
     - Jurassic Park Rapids Adventure chiusa
 ---
 
-Per Natale [Universal Studios Singapore](ref:universal-studios-singapore) presenta un nuovo spettacolo, Universal Jingle Jam. Fa parte di A Universal Christmas, il programma del parco per la Season of Joy che Resorts World Sentosa festeggia dal 27 novembre 2026 al 3 gennaio 2027. Sul palco salgono insieme Poppy dei film Trolls di DreamWorks, i personaggi di Sesame Street e i Minions. Per il programma natalizio basta il normale biglietto del parco. Date di inizio e fine riservate al solo parco, Resorts World Sentosa non le ha comunicate.
+Per Natale [Universal Studios Singapore](ref:universal-studios-singapore) presenta un nuovo spettacolo, Universal Jingle Jam. Fa parte di A Universal Christmas, il programma del parco per la Season of Joy. Resorts World Sentosa la festeggia dal 27 novembre 2026 al 3 gennaio 2027. Sul palco salgono insieme Poppy dei film Trolls di DreamWorks, i personaggi di Sesame Street e i Minions. Per il programma natalizio basta il normale biglietto del parco. Resorts World Sentosa non ha comunicato date di inizio e fine riservate al solo parco.
 
 ## Il nuovo spettacolo a New York
 
-Nell'area New York lo spazio natalizio si chiama The North Pole Jingle Jam: le scenografie ricordano il palco di un concerto, e gli ospiti possono salirci. Lo spettacolo che va in scena lì ha quasi lo stesso nome, Universal Jingle Jam, per cui chi si dà appuntamento farà bene a precisare se intende il posto o lo show. I personaggi si esibiscono con un gruppo di cantanti e il pubblico canta con loro. Nello spettacolo ci sono anche la neve e gli incontri con i personaggi.
+Nell'area New York lo spazio natalizio si chiama The North Pole Jingle Jam: le scenografie ricordano il palco di un concerto, e gli ospiti possono salirci. Lo spettacolo che va in scena lì ha quasi lo stesso nome, Universal Jingle Jam. Chi si dà appuntamento lì farà bene a precisare se intende il posto o lo spettacolo. I personaggi si esibiscono con un gruppo di cantanti e il pubblico canta con loro. Nello spettacolo ci sono anche la neve e gli incontri con i personaggi.
 
 Nel 2025 a New York andava in scena Santa's Rockmas, con Babbo Natale, Shrek, i pinguini di Madagascar e Sesame Street; nel 2024 toccava a Wicked. Da un anno all'altro, Sesame Street è riuscita a restare in cartellone.
 
@@ -63,7 +63,7 @@ Lungo la strada passeggiano anche Hello Kitty e Kuromi di Sanrio, con punti foto
 - da martedì 22 a venerdì 25 dicembre
 - venerdì 1° e sabato 2 gennaio
 
-I fuochi partono alle 20 e vanno a tempo con la musica dei BTS: Resorts World Sentosa li chiama BTS THE CITY ARIRANG Fireworks. Il punto preciso del parco non è stato indicato; nel 2025 i fuochi si sono alzati sopra il Lake Hollywood. Lunedì 21 dicembre, con il parco in orario normale, non ci sono. Un posto riservato per guardarli lo ottieni solo con il 2-Park Pass with Festive Perks; con il biglietto normale te lo cerchi da solo.
+I fuochi partono alle 20 e vanno a tempo con la musica dei BTS. Resorts World Sentosa li chiama BTS THE CITY ARIRANG Fireworks, ma non ha indicato da quale punto del parco vengono lanciati. Nel 2025 si sono alzati sopra il Lake Hollywood. Lunedì 21 dicembre, con il parco in orario normale, non ci sono. Un posto riservato per guardarli lo ottieni solo con il 2-Park Pass with Festive Perks; con il biglietto normale te lo cerchi da solo.
 
 ## I BTS nel parco
 
@@ -104,7 +104,7 @@ Il 2-Park Pass with Festive Perks costa 168 dollari di Singapore per gli adulti 
 - accesso prioritario a Trolls Hug Time Jubilee, Donkey LIVE, [Shrek 4-D Adventure](ref:universal-studios-singapore/shrek-4-d-adventure) e WaterWorld
 - un'area riservata a Universal Jingle Jam
 
-Il pacchetto hotel della Season of Joy, tre giorni e due notti all'Hotel Ora o all'Equarius, parte da 858,48 dollari di Singapore e include due biglietti giornalieri a testa per Universal Studios Singapore e per l'Oceanarium.
+Il pacchetto hotel della Season of Joy, tre giorni e due notti all'Hotel Ora o all'Equarius, parte da 858,48 dollari di Singapore e include due biglietti giornalieri per Universal Studios Singapore e due per l'Oceanarium.
 
 ## Come arrivare
 
