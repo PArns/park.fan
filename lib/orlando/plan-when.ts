@@ -6,7 +6,7 @@ import {
   type OrlandoPlanState,
   type PlanSearchRange,
 } from './plan';
-import type { TripWhenWeek, TripWhenWindow } from './types';
+import type { TripSchoolBreaks, TripWhenWeek, TripWhenWindow } from './types';
 
 /**
  * The When mode: which dates to go, for parks and a trip length the visitor knows, from the API's
@@ -171,19 +171,6 @@ export function weekInWindow(
   return weekStart <= window.to && addDays(weekStart, 6) >= window.from;
 }
 
-/** `GET /v1/trip-regions/orlando/school-breaks`: the holiday data's regions, open, no key. */
-export interface WhenSchoolBreaks {
-  regions: Array<{
-    /** The code `/when`'s `within` takes: `DE-NW`, `NL-GR`, `GB-ENG`. */
-    code: string;
-    name: string;
-    country: string;
-    /** The last day the stored school holidays reach. */
-    through: string;
-    periods: Array<{ from: string; to: string; name: string }>;
-  }>;
-}
-
 /** The countries the picker asks the holiday data for: where most of park.fan's visitors live. */
 export const WHEN_HOLIDAY_COUNTRIES = ['DE', 'NL', 'GB'] as const;
 
@@ -202,7 +189,7 @@ export interface WhenHolidayCountry {
  * offered.
  */
 export function holidayRegionsFor(
-  answer: WhenSchoolBreaks | undefined,
+  answer: TripSchoolBreaks | undefined,
   locale: string
 ): WhenHolidayCountry[] {
   const byCountry = new Map<string, WhenHolidayCountry>();

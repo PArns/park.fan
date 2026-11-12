@@ -1,7 +1,7 @@
 import { orlandoRelayUrl, type OrlandoRelayRoute } from './paths';
 import type { TripPlan } from './plan';
-import { WHEN_HOLIDAY_COUNTRIES, type WhenSchoolBreaks } from './plan-when';
-import type { TripCalendar, TripWhen } from './types';
+import { WHEN_HOLIDAY_COUNTRIES } from './plan-when';
+import type { TripCalendar, TripSchoolBreaks, TripWhen } from './types';
 
 /**
  * How the planner asks for a plan and a calendar window: through the same-origin relay
@@ -115,8 +115,8 @@ export function fetchTripWhen(
 export const SCHOOL_BREAKS_QUERY_KEY = ['orlando-school-breaks'] as const;
 
 /** `GET …/school-breaks` through the relay, for the countries the When mode's picker offers. */
-export function fetchSchoolBreaks(signal?: AbortSignal): Promise<WhenSchoolBreaks> {
-  return relayGet<WhenSchoolBreaks>(
+export function fetchSchoolBreaks(signal?: AbortSignal): Promise<TripSchoolBreaks> {
+  return relayGet<TripSchoolBreaks>(
     'school-breaks',
     { countries: WHEN_HOLIDAY_COUNTRIES.join(',') },
     signal

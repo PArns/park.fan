@@ -14,8 +14,6 @@ import {
   formatWindow,
   glanceDay,
   glanceLines,
-  majorityYear,
-  orlandoWhenRange,
   rankGroupParks,
   regionResorts,
   resortMonthSummaries,
@@ -187,7 +185,7 @@ test('the client gets only the legs from a hotel', () => {
   );
 });
 
-test('a trip window prints as one short range, and a range is named by its main year', () => {
+test('a trip window prints as one short range', () => {
   // `Intl` puts thin spaces around the dash; compare the words.
   const plain = (s) => s.replace(/\s+/gu, ' ');
   assert.equal(plain(formatWindow({ from: '2027-01-12', to: '2027-01-21' }, 'en')), 'Jan 12 – 21');
@@ -199,21 +197,6 @@ test('a trip window prints as one short range, and a range is named by its main 
     formatWindow({ from: '2027-01-12', to: '2027-01-21' }, 'de'),
     /^12\.\s?[–-]\s?21\. Jan/
   );
-  assert.equal(majorityYear('2026-11-12', '2027-11-12'), 2027);
-  assert.equal(majorityYear('2026-01-05', '2026-12-31'), 2026);
-});
-
-test('the best-time teaser asks for the year most of the next twelve months lie in', () => {
-  assert.deepEqual(orlandoWhenRange('2026-11-12'), {
-    from: '2027-01-01',
-    to: '2027-11-12',
-    year: 2027,
-  });
-  assert.deepEqual(orlandoWhenRange('2027-03-10'), {
-    from: '2027-03-10',
-    to: '2027-12-31',
-    year: 2027,
-  });
 });
 
 console.log(`\n${passed} passed`);

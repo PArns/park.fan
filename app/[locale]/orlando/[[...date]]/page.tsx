@@ -28,9 +28,9 @@ import {
   formatHubMonth,
   hubWindow,
   orlandoToday,
-  orlandoWhenRange,
   shortGroupName,
 } from '@/lib/orlando/hub-data';
+import { bestTimeRange } from '@/lib/orlando/best-time';
 import {
   currentOrlandoMonth,
   isSameMonth,
@@ -170,7 +170,7 @@ export default async function OrlandoPage({ params }: OrlandoPageProps) {
   const resolved = resolve(date);
   if (!resolved) notFound();
   const { nowMs, todayIso, current, month, window } = resolved;
-  const { from: whenFrom, to: whenTo } = orlandoWhenRange(todayIso);
+  const { from: whenFrom, to: whenTo } = bestTimeRange(todayIso);
   const whenRange = { from: whenFrom, to: whenTo };
 
   const [region, calendar, bestDays, when] = await Promise.all([

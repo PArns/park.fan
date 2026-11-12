@@ -542,26 +542,3 @@ export function formatDateRange(from: string, to: string, locale: string): strin
 export function formatWindow(window: { from: string; to: string }, locale: string): string {
   return formatDateRange(window.from, window.to, locale);
 }
-
-/** The year most of a range lies in, for "best time to visit Orlando in 2027". */
-export function majorityYear(from: string, to: string): number {
-  const a = new Date(`${from}T12:00:00Z`);
-  const b = new Date(`${to}T12:00:00Z`);
-  const end = new Date(Date.UTC(a.getUTCFullYear(), 11, 31, 12));
-  return end.getTime() - a.getTime() >= b.getTime() - end.getTime()
-    ? a.getUTCFullYear()
-    : b.getUTCFullYear();
-}
-
-/**
- * The range the best-time teaser asks `/when` for: the calendar year most of the next twelve
- * months lie in, from today at the earliest and a year from today at the latest, so its windows
- * belong to the year its heading names ("Best time to visit Orlando in 2027").
- */
-export function orlandoWhenRange(todayIso: string): { from: string; to: string; year: number } {
-  const last = addDays(todayIso, 365);
-  const year = majorityYear(todayIso, last);
-  const from = `${year}-01-01` > todayIso ? `${year}-01-01` : todayIso;
-  const to = `${year}-12-31` < last ? `${year}-12-31` : last;
-  return { from, to, year };
-}

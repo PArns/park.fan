@@ -28,12 +28,12 @@ import {
   formatHubDate,
   formatHubMonth,
   glanceDay,
-  majorityYear,
   resortMonthSummaries,
   sliceCalendar,
   slimRegion,
   shortParkName,
 } from '@/lib/orlando/hub-data';
+import { bestTimeYear } from '@/lib/orlando/best-time';
 import {
   ORLANDO_CALENDAR_ID,
   ORLANDO_PLANNER_ID,
@@ -148,7 +148,7 @@ export async function OrlandoHubPage({
   const tagline = monthLabel ? t('leadMonth', { month: monthLabel }) : t('lead');
   const epic = region.parks.find((p) => p.slug === NEXT_STEP_PARK);
   const periodLabel = monthLabel ?? t('nextDays');
-  const whenYear = when ? majorityYear(when.meta.from, when.meta.to) : null;
+  const whenYear = when ? bestTimeYear(when.meta.from) : null;
   const bestTimeLabel = whenYear
     ? t('when.pageLink', { year: whenYear })
     : t('when.pageLinkNoYear');

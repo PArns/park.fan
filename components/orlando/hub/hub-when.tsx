@@ -4,7 +4,8 @@ import { Link } from '@/i18n/navigation';
 import { Card } from '@/components/ui/card';
 import { buttonLinkProps } from '@/components/ui/button';
 import { getListFormat } from '@/lib/utils/intl-format';
-import { formatWindow, majorityYear } from '@/lib/orlando/hub-data';
+import { bestTimeYear } from '@/lib/orlando/best-time';
+import { formatWindow } from '@/lib/orlando/hub-data';
 import { ORLANDO_PLANNER_ID, orlandoBestTimePath } from '@/lib/orlando/paths';
 import type { TripWhen } from '@/lib/orlando/types';
 
@@ -30,7 +31,7 @@ export async function HubWhen({
 }) {
   const t = await getTranslations('orlando.when');
   const windows = (when?.windows ?? []).slice(0, WINDOWS_SHOWN);
-  const year = when ? majorityYear(when.meta.from, when.meta.to) : null;
+  const year = when ? bestTimeYear(when.meta.from) : null;
   const bestTimeLink = (
     <Link
       href={orlandoBestTimePath(locale)}
