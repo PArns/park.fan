@@ -399,11 +399,10 @@ function DayList({
                           {look.noHours && <span aria-hidden className={NO_HOURS_DOT} />}
                         </span>
                       )}
-                      {others > 0 && (
-                        <span className="text-muted-foreground w-14 shrink-0 pt-1 text-right text-xs">
-                          {t('more', { count: others })}
-                        </span>
-                      )}
+                      {/* The column stays when it is empty, so every chip stands in one line. */}
+                      <span className="text-muted-foreground w-14 shrink-0 pt-1 text-right text-xs">
+                        {others > 0 ? t('more', { count: others }) : null}
+                      </span>
                     </span>
                   );
                 })}
