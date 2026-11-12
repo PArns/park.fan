@@ -41,19 +41,19 @@ seo:
     - Jurassic Park Rapids Adventure gesloten
 ---
 
-Met kerst speelt [Universal Studios Singapore](ref:universal-studios-singapore) de nieuwe show Universal Jingle Jam. Die hoort bij A Universal Christmas, het parkprogramma van de Season of Joy. Resorts World Sentosa viert de Season of Joy van 27 november 2026 tot en met 3 januari 2027. Poppy uit de Trolls-films van DreamWorks, figuren uit Sesamstraat en de Minions staan er samen op het podium. Voor het kerstprogramma heb je genoeg aan een gewoon parkticket. Aparte begin- en einddata voor het park heeft Resorts World Sentosa niet bekendgemaakt.
+Met kerst speelt [Universal Studios Singapore](ref:universal-studios-singapore) de nieuwe show Universal Jingle Jam. Die hoort bij A Universal Christmas, het parkprogramma van de Season of Joy. Resorts World Sentosa viert de Season of Joy van 27 november 2026 tot en met 3 januari 2027. Poppy uit de Trolls-films van DreamWorks, figuren uit Sesamstraat en de Minions staan er samen op het podium. Voor het kerstprogramma heb je genoeg aan een gewoon parkticket.
 
 ## De nieuwe show in New York
 
 Het kerstgebied in de zone New York heet The North Pole Jingle Jam. Het decor ziet eruit als een concertpodium, en bezoekers mogen er zelf op. De show die er speelt heet bijna hetzelfde: Universal Jingle Jam. Spreek je daar met iemand af, zeg er dan bij of je het gebied of de show bedoelt. De figuren staan er met een groep zangers op het podium, en het publiek zingt mee. Bij de show horen sneeuw en ontmoetingen met de figuren.
 
-In 2025 speelde in New York nog Santa's Rockmas, met de Kerstman, Shrek, de pinguïns uit Madagascar en Sesamstraat. In 2024 was het Wicked. Sesamstraat mocht dus blijven.
+Een jaar eerder stond op dezelfde plek Santa's Rockmas op het programma, met de Kerstman, Shrek, de pinguïns uit Madagascar en Sesamstraat. In 2024 was het Wicked. Sesamstraat mocht dus blijven.
 
 ## Snoep op de Hollywood Boulevard
 
-Resorts World Sentosa maakt van de Hollywood Boulevard de Dazzling Dessert Studios, een filmset vol reusachtig snoepgoed. Daar staat een kerstboom van 10 meter die eruitziet als een stuk banket, en je kunt met de Kerstman en Mrs. Claus op de foto. Vorig jaar stond een boom van die hoogte nog in WEAVE, buiten het park. WEAVE moet het deze winter met 8 meter doen.
+Resorts World Sentosa maakt van de Hollywood Boulevard de Dazzling Dessert Studios, een filmset vol reusachtig snoepgoed. Daar staat een kerstboom van 10 meter die eruitziet als een stuk banket, en je kunt met de Kerstman en Mrs. Claus op de foto. Vorig jaar stond er in WEAVE, buiten het park, nog een boom van 10 meter. Deze winter staat daar een van 8 meter.
 
-Op straat lopen ook Hello Kitty en Kuromi van Sanrio rond, en bij de Superstar Boutique zijn fotoplekken. Vorige winter waren die twee er niet bij.
+Anders dan in 2025 lopen op straat ook Hello Kitty en Kuromi van Sanrio rond, en bij de Superstar Boutique kun je met hen op de foto.
 
 ## Vuurwerk op 15 avonden
 
@@ -63,11 +63,11 @@ Op straat lopen ook Hello Kitty en Kuromi van Sanrio rond, en bij de Superstar B
 - dinsdag 22 tot en met vrijdag 25 december
 - vrijdag 1 en zaterdag 2 januari
 
-Het vuurwerk begint om 20.00 uur en gaat af op muziek van BTS. Resorts World Sentosa noemt het BTS THE CITY ARIRANG Fireworks. Waar in het park het precies te zien is, heeft Resorts World Sentosa niet bekendgemaakt; in 2025 ging het vuurwerk de lucht in boven Lake Hollywood. Op maandag 21 december is er tijdens de gewone openingsuren geen vuurwerk. Een gereserveerde kijkplek krijg je alleen met de 2-Park Pass with Festive Perks; met een gewoon ticket zoek je zelf een plek.
+Het vuurwerk begint om 20.00 uur en gaat af op muziek van BTS. Resorts World Sentosa noemt het BTS THE CITY ARIRANG Fireworks. Waar in het park het precies te zien is, heeft Resorts World Sentosa niet bekendgemaakt; in 2025 ging het vuurwerk de lucht in boven Lake Hollywood. Op maandag 21 december zien alleen bezoekers met een ticket voor de BTS-avond het vuurwerk. Een gereserveerde kijkplek krijg je alleen met de 2-Park Pass with Festive Perks; met een gewoon ticket zoek je zelf een plek.
 
 ## BTS in het park
 
-De Season of Joy staat dit jaar in het teken van kerst en de K-Wave, en op de avond van 21 december is het park van BTS. Universal Studios Singapore sluit die dag al om 19.00 uur, en van 20.00 tot 1.00 uur 's nachts loopt BTS THE CITY ARIRANG Night Out. Daarvoor heb je een apart ticket nodig, dat 58 Singaporese dollar per persoon kost. Vuurwerk is er die avond alleen bij de Night Out.
+Dit jaar ligt bij de Season of Joy de nadruk op K-pop, en op de avond van 21 december komen alleen BTS-fans met een eigen ticket het park in. Universal Studios Singapore sluit die dag al om 19.00 uur, en van 20.00 tot 1.00 uur 's nachts loopt BTS THE CITY ARIRANG Night Out. Daarvoor heb je een apart ticket nodig, dat 58 Singaporese dollar per persoon kost.
 
 Van 4 december tot en met 3 januari wordt elke avond vanaf 19.30 uur de projectie Lightscape op de gevel van [Revenge of the Mummy](ref:universal-studios-singapore/revenge-of-the-mummy) getoond, met BTS-beelden. Van 16 tot en met 22 december kom je met een ticket voor een attractie van Resorts World Sentosa bovendien gratis in het BTS THE CITY ARIRANG Fan Village in het Resorts World Convention Centre.
 
@@ -112,7 +112,7 @@ Resorts World Sentosa ligt op het eiland Sentosa, op 8 Sentosa Gateway. Met de M
 
 ## Universal Studios Singapore
 
-Universal Studios Singapore is het eerste en tot nu toe enige Universal-park in Zuidoost-Azië. Na een proefperiode vanaf 18 maart 2010 is het sinds 28 mei 2011 gewoon open. De 25 hectare zijn verdeeld over zeven zones: Hollywood, New York, Sci-Fi City, Ancient Egypt, The Lost World, Far Far Away en Illumination's Minion Land. De jongste zone ging op 14 februari 2025 open, onder meer met de draaimolen [Buggie Boogie](ref:universal-studios-singapore/buggie-boogie), en beleeft nu haar tweede kerst. Het park hoort bij Resorts World Sentosa, een resort van 49 hectare dat eigendom is van Genting Singapore.
+Universal Studios Singapore is het eerste en tot nu toe enige Universal-park in Zuidoost-Azië. Na een proefperiode vanaf 18 maart 2010 is het sinds 28 mei 2011 gewoon open. De 25 hectare zijn verdeeld over zeven zones: Hollywood, New York, Sci-Fi City, Ancient Egypt, The Lost World, Far Far Away en Illumination's Minion Land. De jongste, Illumination's Minion Land, ging op 14 februari 2025 open, onder meer met de draaimolen [Buggie Boogie](ref:universal-studios-singapore/buggie-boogie). Sindsdien hebben de Minions, die nu in de kerstshow meezingen, een eigen land in het park. Het park hoort bij Resorts World Sentosa, een resort van 49 hectare dat eigendom is van Genting Singapore.
 
 [Universal Studios Singapore](ref:universal-studios-singapore?full)
 

@@ -41,19 +41,19 @@ seo:
     - Jurassic Park Rapids Adventure chiusa
 ---
 
-Per Natale [Universal Studios Singapore](ref:universal-studios-singapore) presenta un nuovo spettacolo, Universal Jingle Jam. Fa parte di A Universal Christmas, il programma del parco per la Season of Joy. Resorts World Sentosa la festeggia dal 27 novembre 2026 al 3 gennaio 2027. Sul palco salgono insieme Poppy dei film Trolls di DreamWorks, i personaggi di Sesame Street e i Minions. Per il programma natalizio basta il normale biglietto del parco. Resorts World Sentosa non ha comunicato date di inizio e fine riservate al solo parco.
+Per Natale [Universal Studios Singapore](ref:universal-studios-singapore) presenta un nuovo spettacolo, Universal Jingle Jam. Fa parte di A Universal Christmas, il programma del parco per la Season of Joy. Resorts World Sentosa la festeggia dal 27 novembre 2026 al 3 gennaio 2027. Sul palco salgono insieme Poppy dei film Trolls di DreamWorks, i personaggi di Sesame Street e i Minions. Per il programma natalizio basta il normale biglietto del parco.
 
 ## Il nuovo spettacolo a New York
 
 Nell'area New York lo spazio natalizio si chiama The North Pole Jingle Jam: le scenografie ricordano il palco di un concerto, e gli ospiti possono salirci. Lo spettacolo che va in scena lì ha quasi lo stesso nome, Universal Jingle Jam. Chi si dà appuntamento lì farà bene a precisare se intende il posto o lo spettacolo. I personaggi si esibiscono con un gruppo di cantanti e il pubblico canta con loro. Nello spettacolo ci sono anche la neve e gli incontri con i personaggi.
 
-Nel 2025 a New York andava in scena Santa's Rockmas, con Babbo Natale, Shrek, i pinguini di Madagascar e Sesame Street; nel 2024 toccava a Wicked. Da un anno all'altro, Sesame Street è riuscita a restare in cartellone.
+Un anno prima, nello stesso punto, il programma prevedeva Santa's Rockmas, con Babbo Natale, Shrek, i pinguini di Madagascar e Sesame Street; nel 2024 toccava a Wicked. Da un anno all'altro, Sesame Street è riuscita a restare in cartellone.
 
 ## Dolci giganti sull'Hollywood Boulevard
 
-Resorts World Sentosa trasforma l'Hollywood Boulevard nei Dazzling Dessert Studios, un set cinematografico pieno di dolciumi fuori scala. Qui c'è un albero di Natale alto 10 metri che sembra fatto di confetti, e puoi farti fotografare con Babbo Natale e Mrs. Claus. L'anno scorso un albero di quell'altezza stava ancora a WEAVE, fuori dal parco. Quest'inverno a WEAVE ne resta uno di 8 metri.
+Resorts World Sentosa trasforma l'Hollywood Boulevard nei Dazzling Dessert Studios, un set cinematografico pieno di dolciumi fuori scala. Qui c'è un albero di Natale alto 10 metri che sembra fatto di confetti, e puoi farti fotografare con Babbo Natale e Mrs. Claus. L'anno scorso un albero di 10 metri stava a WEAVE, fuori dal parco, e quest'inverno lì ce n'è uno di 8 metri.
 
-Lungo la strada passeggiano anche Hello Kitty e Kuromi di Sanrio, con punti foto alla Superstar Boutique. Lo scorso inverno non c'erano.
+A differenza del 2025, lungo la strada passeggiano anche Hello Kitty e Kuromi di Sanrio, e alla Superstar Boutique puoi farti fotografare con loro.
 
 ## Fuochi d'artificio per 15 sere
 
@@ -63,11 +63,11 @@ Lungo la strada passeggiano anche Hello Kitty e Kuromi di Sanrio, con punti foto
 - da martedì 22 a venerdì 25 dicembre
 - venerdì 1° e sabato 2 gennaio
 
-I fuochi partono alle 20 e vanno a tempo con la musica dei BTS. Resorts World Sentosa li chiama BTS THE CITY ARIRANG Fireworks, ma non ha indicato da quale punto del parco vengono lanciati. Nel 2025 si sono alzati sopra il Lake Hollywood. Lunedì 21 dicembre, con il parco in orario normale, non ci sono. Un posto riservato per guardarli lo ottieni solo con il 2-Park Pass with Festive Perks; con il biglietto normale te lo cerchi da solo.
+I fuochi partono alle 20 e vanno a tempo con la musica dei BTS. Resorts World Sentosa li chiama BTS THE CITY ARIRANG Fireworks, ma non ha indicato da quale punto del parco vengono lanciati. Nel 2025 si sono alzati sopra il Lake Hollywood. Lunedì 21 dicembre li vede solo chi ha il biglietto per la serata BTS. Un posto riservato per guardarli lo ottieni solo con il 2-Park Pass with Festive Perks; con il biglietto normale te lo cerchi da solo.
 
 ## I BTS nel parco
 
-Il tema della Season of Joy di quest'anno è il Natale che incontra la K-wave, e la sera del 21 dicembre il parco è tutto dei BTS. Quel giorno Universal Studios Singapore chiude già alle 19, e dalle 20 all'una di notte c'è BTS THE CITY ARIRANG Night Out. Serve un biglietto a parte, che costa 58 dollari di Singapore a persona. Quella sera i fuochi d'artificio ci sono solo per il Night Out.
+Quest'anno la Season of Joy punta sul K-pop, e la sera del 21 dicembre nel parco entrano solo i fan dei BTS con un biglietto apposito. Quel giorno Universal Studios Singapore chiude già alle 19, e dalle 20 all'una di notte c'è BTS THE CITY ARIRANG Night Out. Serve un biglietto a parte, che costa 58 dollari di Singapore a persona.
 
 Dal 4 dicembre al 3 gennaio, ogni sera dalle 19.30, la facciata di [Revenge of the Mummy](ref:universal-studios-singapore/revenge-of-the-mummy) si accende con la proiezione Lightscape, a motivi BTS. Dal 16 al 22 dicembre, con il biglietto di un'attrazione di Resorts World Sentosa entri anche gratis al BTS THE CITY ARIRANG Fan Village, nel Resorts World Convention Centre.
 
@@ -112,7 +112,7 @@ Resorts World Sentosa si trova sull'isola di Sentosa, all'indirizzo 8 Sentosa Ga
 
 ## Universal Studios Singapore
 
-Universal Studios Singapore è stato il primo parco Universal del Sud-est asiatico, e ancora oggi è l'unico. Dopo una fase di prova iniziata il 18 marzo 2010, è aperto regolarmente dal 28 maggio 2011. Sui suoi 25 ettari ci sono sette aree: Hollywood, New York, Sci-Fi City, Ancient Egypt, The Lost World, Far Far Away e Illumination's Minion Land. La più giovane ha aperto il 14 febbraio 2025, tra l'altro con la giostra [Buggie Boogie](ref:universal-studios-singapore/buggie-boogie), e quest'anno vive il suo secondo Natale. Il parco fa parte di Resorts World Sentosa, un resort di 49 ettari di proprietà di Genting Singapore.
+Universal Studios Singapore è stato il primo parco Universal del Sud-est asiatico, e ancora oggi è l'unico. Dopo una fase di prova iniziata il 18 marzo 2010, è aperto regolarmente dal 28 maggio 2011. Sui suoi 25 ettari ci sono sette aree: Hollywood, New York, Sci-Fi City, Ancient Egypt, The Lost World, Far Far Away e Illumination's Minion Land. La più giovane, Illumination's Minion Land, ha aperto il 14 febbraio 2025, tra l'altro con la giostra [Buggie Boogie](ref:universal-studios-singapore/buggie-boogie). Da allora i Minions, che ora cantano nello spettacolo di Natale, hanno nel parco un'area tutta loro. Il parco fa parte di Resorts World Sentosa, un resort di 49 ettari di proprietà di Genting Singapore.
 
 [Universal Studios Singapore](ref:universal-studios-singapore?full)
 
