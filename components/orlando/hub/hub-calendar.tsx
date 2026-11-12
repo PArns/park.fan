@@ -20,6 +20,7 @@ import {
   dayGuestClose,
   eventLanes,
   formatHubDate,
+  HUB_FIRST_DAYS,
   isRankable,
   rankGroupParks,
   regionGroups,
@@ -142,6 +143,8 @@ export function HubCalendar({ region, initial, window, todayIso, locale }: HubCa
   }, []);
   useEffect(() => clearOrlandoPagePark, []);
 
+  // A month page hands over its whole window; only the hub's first week needs the rest.
+  const complete = (initial.days[initial.days.length - 1]?.date ?? '') >= window.to;
   const { data, isError, isFetching } = useQuery<TripCalendar>({
     queryKey: ['orlando-calendar', window.from, window.to],
     queryFn: async () => {
@@ -149,7 +152,7 @@ export function HubCalendar({ region, initial, window, todayIso, locale }: HubCa
       if (!response.ok) throw new Error(`Orlando calendar ${response.status}`);
       return response.json();
     },
-    enabled: isDesktop || expanded,
+    enabled: !complete && (isDesktop || expanded),
     staleTime: CALENDAR_STALE_MS,
     retry: 1,
   });
@@ -158,7 +161,7 @@ export function HubCalendar({ region, initial, window, todayIso, locale }: HubCa
     () => (deferredOnly ? groups.filter((g) => g.key === deferredOnly) : groups),
     [groups, deferredOnly]
   );
-  const listDays = expanded && data ? data.days : initial.days;
+  const listDays = expanded ? calendar.days : calendar.days.slice(0, HUB_FIRST_DAYS);
   const sheetDay = calendar.days.find((d) => d.date === openDate) ?? null;
 
   return (
@@ -187,21 +190,21 @@ export function HubCalendar({ region, initial, window, todayIso, locale }: HubCa
           locale={locale}
           onOpen={openDay}
         />
-        {calendar.days.length > initial.days.length || !data ? (
+        {calendar.days.length > HUB_FIRST_DAYS || !complete ? (
           <button
             type="button"
             onClick={() => setExpanded((v) => !v)}
             className="border-border/60 hover:bg-muted/50 text-foreground mt-3 flex min-h-11 w-full items-center justify-center gap-1.5 rounded-lg border text-sm font-medium"
             aria-expanded={expanded}
           >
-            {expanded && data ? t('showWeek') : t('showAll')}
+            {expanded && (data || complete) ? t('showWeek') : t('showAll')}
             <ChevronDown
               aria-hidden
               className={cn('size-4 transition-transform', expanded && 'rotate-180')}
             />
           </button>
         ) : null}
-        {expanded && !data && (
+        {expanded && !data && !complete && (
           <p className="text-muted-foreground mt-2 text-sm" role="status">
             {isError ? t('failed') : t('loading')}
           </p>

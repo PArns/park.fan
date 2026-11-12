@@ -87,7 +87,9 @@ function resortWord(key: string, name: string): string {
  */
 function verdict(region: TripRegion | null, bestDays: TripBestDays | null, locale: string) {
   if (!region || !bestDays) return '';
+  // The resorts with headliner parks: SeaWorld's one park with a figure is no verdict on Orlando.
   const parts = bestDays.groups
+    .filter((g) => region.parks.some((p) => p.group === g.key && p.headliner))
     .map((g) => {
       const group = region.groups.find((x) => x.key === g.key);
       const first = g.quiet[0];
@@ -123,7 +125,7 @@ export async function generateMetadata({
         t('metaTitleMonthShort', { month: monthLabel })
       )
     : t('metaTitle');
-  const description = fitWithin(
+  let description = fitWithin(
     MAX_DESCRIPTION_LENGTH,
     ...(monthLabel
       ? [
@@ -134,6 +136,8 @@ export async function generateMetadata({
   );
   const canonicalPath = orlandoPath(canonicalMonth(month, current));
   const canonical = `${SITE_URL}/${locale}${canonicalPath}`;
+  // A German or Dutch date ends in a full stop ("16. Nov."), and so does the sentence around it.
+  description = description.replace(/\.\./g, '.');
   // A planner link (`?from=…#planner`) is somebody's trip: the page answers it, an index does not.
   const hasQuery = Object.keys(await searchParams).length > 0;
   return {

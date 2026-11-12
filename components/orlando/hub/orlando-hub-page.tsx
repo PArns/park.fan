@@ -228,7 +228,12 @@ export async function OrlandoHubPage({
             {calendar && week.length > 0 ? (
               <HubCalendar
                 region={slimRegion(region)}
-                initial={sliceCalendar(calendar, week)}
+                // A month page serves its whole month, the table that URL exists for; the hub its
+                // first week, the rest through the relay.
+                initial={sliceCalendar(
+                  calendar,
+                  month ? calendar.days.filter((d) => d.date >= firstFrom) : week
+                )}
                 window={{ from: firstFrom, to: calendar.meta.to }}
                 todayIso={todayIso}
                 locale={locale}
