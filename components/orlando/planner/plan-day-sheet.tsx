@@ -25,7 +25,9 @@ import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetDescription, SheetTitle } from '@/components/ui/sheet';
 import { parkGeoFromUrl } from '@/lib/planner/park-url';
 import {
+  climateChips,
   closesEarly,
+  eveningReasons,
   dayWarnings,
   earlyPerk,
   primaryReason,
@@ -38,7 +40,15 @@ import {
   partySeason,
   swapPreview,
 } from '@/lib/orlando/plan-week';
-import { dayLockTarget, lockOn, type PlanDay, type TripPlan } from '@/lib/orlando/plan';
+import {
+  dayLockTarget,
+  lockOn,
+  type PlanDay,
+  type PlanEvening,
+  type TripPlan,
+} from '@/lib/orlando/plan';
+import { planTimeMinute } from '@/lib/orlando/plan-week';
+import { formatGridTime } from '@/lib/planner/park-time';
 import type { TripCalendar } from '@/lib/orlando/types';
 import { usePlanContext } from './plan-context';
 import { PLAN_FOCUS } from './plan-controls';
@@ -174,8 +184,18 @@ function DayDetails({
   const short = (date: string) =>
     formatParkDay(locale, date, { weekday: 'short', day: 'numeric', month: 'short' });
   const time = (iso: string) => formatClockTime(iso, locale, timeZone);
-  const reason = primaryReason(day);
   const first = day.parks[0];
+  const runner =
+    isPark && day.kind === 'park' && first
+      ? runnerUp(
+          plan.parks.find((p) => p.slug === first.slug),
+          day.headlinerWait
+        )
+      : null;
+  // The runner-up line says the same as `runner_up_close`, with its numbers; one of the two.
+  const reason = primaryReason(
+    runner ? { ...day, reasons: day.reasons.filter((r) => r !== 'runner_up_close') } : day
+  );
   const lock = lockOn(state, day.date);
   const canPin = dayLockTarget(day) !== null;
 
@@ -309,13 +329,7 @@ function DayDetails({
     }
   }
 
-  const runner =
-    isPark && day.kind === 'park' && first
-      ? runnerUp(
-          plan.parks.find((p) => p.slug === first.slug),
-          day.headlinerWait
-        )
-      : null;
+  const chips = climateChips(day.warnings);
   const warnings = dayWarnings(day).filter(
     (w) => w !== 'party_night_short_hours' && w !== 'closes_early'
   );
@@ -337,6 +351,7 @@ function DayDetails({
             </span>
           )}
           <CrowdLevelBadge level={day.crowdLevel ?? null} />
+          <ClimateChips codes={chips} />
           <span className="text-muted-foreground w-full text-xs">
             {t('details.minutesCaption')}
           </span>
@@ -367,6 +382,8 @@ function DayDetails({
       )}
 
       {facts.length > 0 && <ul className="flex flex-col gap-3">{facts}</ul>}
+
+      {day.evening && <EveningSection evening={day.evening} date={day.date} />}
 
       {isPark && first && <DayRides slug={first.slug} date={day.date} />}
 
@@ -508,5 +525,82 @@ function DayRides({ slug, date }: { slug: string; date: string }) {
         </div>
       )}
     </div>
+  );
+}
+
+/**
+ * The season's facts as short chips ("hot", "hurricane season", "peak hurricane season"), shared by
+ * the day sheet and the When mode's cards.
+ */
+export function ClimateChips({ codes }: { codes: readonly string[] }) {
+  const t = useTranslations('orlandoPlanner.climate');
+  if (codes.length === 0) return null;
+  return (
+    <span className="flex flex-wrap gap-1">
+      {codes.map((code) => (
+        <span
+          key={code}
+          className="border-crowd-high/40 text-crowd-ink-high rounded-full border px-2 py-0.5 text-xs"
+        >
+          {t(code)}
+        </span>
+      ))}
+    </span>
+  );
+}
+
+/**
+ * The evening after the park: where, from when to when, why, its highlight, how to get there, what
+ * else would do, and the venue's own page.
+ */
+function EveningSection({ evening, date }: { evening: PlanEvening; date: string }) {
+  const t = useTranslations('orlandoPlanner.evening');
+  const { parkName, venueByKey, timeZone } = usePlanContext();
+  const venue = evening.venue ? venueByKey.get(evening.venue) : undefined;
+  const name = evening.kind === 'hop' && evening.park ? parkName(evening.park) : venue?.name;
+  const clock = (value: string) => {
+    const minute = planTimeMinute(value, date, timeZone);
+    return minute === null ? value : formatGridTime(minute);
+  };
+  const reason = eveningReasons(evening)[0];
+  const highlight = evening.highlights?.find((h) => h.at) ?? evening.highlights?.[0];
+  const others = (evening.alternatives ?? [])
+    .map((a) => (a.park ? parkName(a.park) : a.venue ? venueByKey.get(a.venue)?.name : null))
+    .filter((n): n is string => Boolean(n));
+
+  return (
+    <section className="border-border/60 flex flex-col gap-1.5 rounded-xl border p-3 text-sm">
+      <h3 className="font-semibold">
+        {t('title')}
+        {name ? `: ${name}` : ''}
+        <span className="text-muted-foreground font-normal tabular-nums">
+          {' '}
+          · {clock(evening.from)}–{clock(evening.to)}
+        </span>
+      </h3>
+      {reason && <p>{t(`reason.${reason}`)}</p>}
+      {highlight && (
+        <p>
+          {highlight.name ?? t(`highlight.${highlight.kind}`)}
+          {highlight.at ? ` · ${clock(highlight.at)}` : ''}
+        </p>
+      )}
+      {evening.travel && (
+        <p className="text-muted-foreground">{t('travel', { minutes: evening.travel.minutes })}</p>
+      )}
+      {others.length > 0 && (
+        <p className="text-muted-foreground">{t('alternatives', { names: others.join(', ') })}</p>
+      )}
+      {venue?.url && (
+        <a
+          href={venue.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-primary-ink min-h-11 self-start py-2 font-medium underline-offset-4 hover:underline"
+        >
+          {t('officialSite', { name: venue.name })}
+        </a>
+      )}
+    </section>
   );
 }

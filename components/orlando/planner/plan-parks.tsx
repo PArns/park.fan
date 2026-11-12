@@ -50,7 +50,8 @@ function tripState(
  */
 export function PlanParks() {
   const t = useTranslations('orlandoPlanner');
-  const { region, state, update, headliners, regionOrder, groupByKey, live, parkName } = usePlanContext();
+  const { region, state, update, headliners, regionOrder, groupByKey, live, parkName } =
+    usePlanContext();
   const [moreOpen, setMoreOpen] = useState(false);
   const moreId = useId();
 

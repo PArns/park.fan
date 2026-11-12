@@ -13,7 +13,7 @@ import type { TripPlan } from '@/lib/orlando/plan';
 import type { TripCalendar } from '@/lib/orlando/types';
 import { usePlanContext } from './plan-context';
 import { PLAN_FOCUS } from './plan-controls';
-import { PlanDayMarker, useDayMarkerText, useDayParks } from './plan-day-bits';
+import { PlanDayMarker, useDayMarkerText, useDayParks, useEveningName } from './plan-day-bits';
 
 /**
  * The Agenda view: one card per day, at Level 1, which is three facts at most: the park, its
@@ -34,6 +34,7 @@ export function PlanAgendaView({
   const { locale } = usePlanContext();
   const parksOf = useDayParks();
   const markerText = useDayMarkerText();
+  const eveningOf = useEveningName();
 
   return (
     <ol data-plan-view="agenda" className="flex flex-col gap-2">
@@ -52,7 +53,15 @@ export function PlanAgendaView({
         const minutes =
           day.headlinerWait != null ? t('week.minutes', { minutes: day.headlinerWait }) : null;
         const marker = markerText(day, calendar);
-        const label = [full, title, minutes, tone ? tLevel(tone) : null, marker]
+        const evening = eveningOf(day);
+        const label = [
+          full,
+          title,
+          minutes,
+          tone ? tLevel(tone) : null,
+          marker,
+          evening ? t('evening.plus', { name: evening }) : null,
+        ]
           .filter(Boolean)
           .join(', ');
 
@@ -105,6 +114,11 @@ export function PlanAgendaView({
               </span>
               <span className="flex min-w-0 flex-1 flex-col gap-0.5" aria-hidden="true">
                 <span className="truncate text-sm font-semibold">{title}</span>
+                {evening && (
+                  <span className="text-muted-foreground truncate text-xs">
+                    {t('evening.plus', { name: evening })}
+                  </span>
+                )}
                 <PlanDayMarker day={day} calendar={calendar} />
               </span>
               {minutes && (

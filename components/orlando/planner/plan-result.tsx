@@ -39,7 +39,7 @@ import { usePlanContext } from './plan-context';
 import { PLAN_FOCUS } from './plan-controls';
 import { PlanAgendaView } from './plan-agenda-view';
 import { PlanDaySheet } from './plan-day-sheet';
-import { PlanDayMarker, useDayParks } from './plan-day-bits';
+import { PlanDayMarker, useDayParks, useEveningName } from './plan-day-bits';
 import { PlanKeep } from './plan-keep';
 import { PlanMonthView } from './plan-month-view';
 import { PLAN_WIDE_QUERY } from './plan-setup';
@@ -266,18 +266,21 @@ function PlanAnswer({
   onOpenDay: (date: string) => void;
 }) {
   const t = useTranslations('orlandoPlanner');
-  const { locale, today, parkName } = usePlanContext();
+  const { locale, today, parkName, state } = usePlanContext();
   const parksOf = useDayParks();
+  const eveningOf = useEveningName();
   const savings = planSavings(plan.totals);
   const reach = today ? lastYearReach(plan.days, calendar?.meta.forecastUntil, today) : null;
   const added = autoSplit(plan.meta).map((e) =>
     t('answer.split', { park: parkName(e.slug), visits: e.visits })
   );
+  const hopWithoutHopper =
+    (state.hop && state.ticket !== 'hopper') ||
+    plan.days.some((d) => d.warnings.includes('hop_needs_hopper'));
   const notes = [
+    ...(hopWithoutHopper ? [t('answer.hopNeedsHopper')] : []),
     ...relaxedRules(plan.meta).map((r) => t(`relaxed.${r}`)),
-    ...unplacedParks(plan).map((u) =>
-      t(`unplaced.${u.reason}`, { park: parkName(u.slug) })
-    ),
+    ...unplacedParks(plan).map((u) => t(`unplaced.${u.reason}`, { park: parkName(u.slug) })),
     ...ignoredLocks(plan).map((l) =>
       t(`ignoredLock.${l.reason}`, {
         what: l.target === 'rest' ? t('day.rest') : parkName(l.target),
@@ -363,6 +366,12 @@ function PlanAnswer({
               </span>
               <span className="min-w-0 flex-1 truncate">
                 {day.kind === 'park' || day.kind === 'hop' ? parksOf(day) : t(`day.${day.kind}`)}
+                {eveningOf(day) && (
+                  <span className="text-muted-foreground">
+                    {' '}
+                    {t('evening.plus', { name: eveningOf(day) ?? '' })}
+                  </span>
+                )}
               </span>
               {day.headlinerWait != null && (
                 <span className="text-muted-foreground shrink-0 tabular-nums">

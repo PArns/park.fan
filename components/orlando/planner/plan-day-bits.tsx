@@ -100,3 +100,17 @@ export function PlanDayMarker({
     </span>
   );
 }
+
+/**
+ * The name of a day's evening: the second park's (short) name or the venue's; `null` without an
+ * evening or for a venue the region does not list.
+ */
+export function useEveningName(): (day: PlanDay) => string | null {
+  const { parkName, venueByKey } = usePlanContext();
+  return (day) => {
+    const evening = day.evening;
+    if (!evening) return null;
+    if (evening.kind === 'hop') return evening.park ? parkName(evening.park) : null;
+    return evening.venue ? (venueByKey.get(evening.venue)?.name ?? null) : null;
+  };
+}
