@@ -58,7 +58,7 @@ Die meisten Herbstgerichte kocht die Grain and Grill International Kitchen: Pork
 
 Der Kürbis landet auch auf der weißen Pizza im Pizza Parlor, als Butternut-Kürbis mit Prosciutto, Alfredo-Basis und Rucola, und als Pumpkin Spice auf der Riesenbrezel im Biergarten. Die Funnel Cake Kitchen bleibt bei Apfelscheiben, Zimt und Karamell. Wer einen Season Pass oder eine Membership für Kings Dominion hat, bekommt bei Grain and Grill oder Firehouse BBQ einmal ein zweites Hauptgericht zum halben Preis. Der normale Passrabatt gilt zusätzlich.
 
-Die Adult Beverage Tastings finden an mehreren Stellen rund um den Brunnen der International Street statt. Probieren darf nur, wer mindestens 21 ist. Jede Person zeigt dafür einen gültigen amtlichen Ausweis oder Führerschein. Getrunken wird nur in den ausgewiesenen Bereichen. Was die Kostproben und die Gerichte kosten und welche Hersteller dabei sind, hat der Park nicht veröffentlicht. Bezahlt wird im ganzen Park bargeldlos, mit Karte, Apple Pay oder Google Pay. Wer nur Scheine dabeihat, tauscht sie an einem der Cash-to-Card-Automaten gegen eine Karte.
+Die Adult Beverage Tastings finden an mehreren Stellen rund um den Brunnen der International Street statt. Probieren darf, wer mindestens 21 ist und einen gültigen amtlichen Ausweis oder Führerschein zeigt, getrunken wird nur in den ausgewiesenen Bereichen. Was die Kostproben und die Gerichte kosten und welche Hersteller dabei sind, hat der Park nicht veröffentlicht. Bezahlt wird im ganzen Park bargeldlos, mit Karte, Apple Pay oder Google Pay. Wer nur Scheine dabeihat, tauscht sie an einem der Cash-to-Card-Automaten gegen eine Karte.
 
 Lokale Musiker spielen an zwei Stellen, und das an allen sieben Tagen zu denselben Zeiten:
 
@@ -87,9 +87,9 @@ Dazu kommen eine Bearbeitungsgebühr von bis zu 9,99 Dollar und Steuern. An der 
 
 ## Senioren, Veteranen und der Silver Pass
 
-Wer 65 oder älter ist, kommt bis zum 29. November kostenlos in den Park. Dafür meldest du dich vorher online an, und der erste Besuch muss bis zum Saisonende stattfinden. Am Eingang zeigst du jedes Mal einen Ausweis mit Geburtsdatum.
+Wer 65 oder älter ist, kommt bis zum 29. November kostenlos in den Park. Dafür meldest du dich vorher online an und zeigst am Eingang jedes Mal einen Ausweis mit Geburtsdatum.
 
-Aktive und ehemalige Angehörige des US-Militärs und Veteranen erhalten zum Veterans Day ein kostenloses Tagesticket, wenn sie am Eingang ihren Militärausweis oder einen Veteranennachweis zeigen. Sicher gilt das Angebot am Samstag, dem 14. November: Den nennt Kings Dominion auf der Eventseite, im Kalender und auf der Seite mit den Militärrabatten, den Sonntag nur auf den ersten beiden.
+Aktive und ehemalige Angehörige des US-Militärs und Veteranen erhalten zum Veterans Day ein kostenloses Tagesticket, wenn sie am Eingang ihren Militärausweis oder einen Veteranennachweis zeigen. Sicher gilt das Angebot am Samstag, dem 14. November. Den Sonntag nennt Kings Dominion auf der Eventseite und im Kalender, bei den Militärrabatten aber nicht, also nimmst du für das Freiticket besser den Samstag.
 
 Bis zum 30. November verkauft Kings Dominion den Silver Pass 2027 für 69 Dollar, also für weniger, als ein einziger Tag an der Kasse kostet. Er gilt bis Labor Day 2027, auch in Soak City, und das Parken ist inklusive. Zu jedem neuen oder verlängerten Pass gibt es ein Bring-A-Friend-Ticket, das bis zum 31. Mai 2027 eingelöst sein muss.
 
@@ -97,13 +97,13 @@ Bis zum 30. November verkauft Kings Dominion den Silver Pass 2027 für 69 Dollar
 
 Mit 13 Achterbahnen hat Kings Dominion nach eigener Angabe die meisten in Virginia. Neun davon fahren während des Festes: [Pantherian](ref:kings-dominion/pantherian), [Rapterra](ref:kings-dominion/rapterra), [Dominator](ref:kings-dominion/dominator), [Backlot Stunt Coaster](ref:kings-dominion/backlot-stunt-coaster), [Tumbili](ref:kings-dominion/tumbili), [Reptilian](ref:kings-dominion/reptilian), [Racer 75](ref:kings-dominion/racer-75-south), [Great Pumpkin Coaster](ref:kings-dominion/great-pumpkin-coaster) und [Woodstock Express](ref:kings-dominion/woodstock-express).
 
-Pantherian ist 93 Meter hoch und fällt mit 85 Grad 91 Meter tief. Rapterra ist ein Wing Coaster mit Abschuss von Bolliger & Mabillard und kam 2025 zum 50. Geburtstag des Parks dazu. Beim Racer 75 fährt nur die Südseite, und eine Rennbahn mit einem Zug hat das Rennen schon vor dem Start gewonnen. Die Holzachterbahn mit zwei Zügen ist seit 2003 ein ACE Landmark, 1977 wurde auf ihr der Film „Rollercoaster“ gedreht.
+Pantherian ist 93 Meter hoch und fällt mit 85 Grad 91 Meter tief. Rapterra ist ein Wing Coaster mit Abschuss von Bolliger & Mabillard und kam 2025 zum 50. Geburtstag des Parks dazu. Beim Racer 75 fährt nur die Südseite, und eine Rennbahn mit einem Zug hat das Rennen schon vor dem Start gewonnen. Eigentlich hat Racer 75 zwei Züge, seit 2003 ist er ein ACE Landmark, und 1977 wurde auf ihm der Film „Rollercoaster“ gedreht.
 
 ```ride-waits-widget rides=kings-dominion/pantherian;kings-dominion/rapterra;kings-dominion/dominator;kings-dominion/backlot-stunt-coaster;kings-dominion/tumbili;kings-dominion/reptilian;kings-dominion/racer-75-south|Racer 75 South;kings-dominion/great-pumpkin-coaster;kings-dominion/woodstock-express columns=peak,days
 
 ```
 
-Geschlossen sind [Flight of Fear](ref:kings-dominion/flight-of-fear) und [Grizzly](ref:kings-dominion/grizzly), der ganze Bereich Old Virginia und der Teil von Candy Apple Grove mit [WindSeeker](ref:kings-dominion/windseeker), [Twisted Timbers](ref:kings-dominion/twisted-timbers) und [Apple Zapple](ref:kings-dominion/apple-zapple). Wer wegen Twisted Timbers kommt, 2018 aus der Holzachterbahn Hurler zur Hybridbahn aus Holz und Stahl umgebaut, oder wegen Grizzly, der Holzachterbahn von 1982 mit 964 Metern Strecke, von denen 2023 rund 317 Meter neu verlegt wurden, muss bis zur nächsten Saison warten. Flight of Fear eröffnete 1996 als The Outer Limits: Flight of Fear und beschleunigt mit Linearmotoren in vier Sekunden auf 87 km/h. Weil sie ohnehin in völliger Dunkelheit fährt, hätten ihr die frühen Novemberabende nichts ausgemacht, geschlossen ist sie trotzdem.
+Geschlossen sind [Flight of Fear](ref:kings-dominion/flight-of-fear) und [Grizzly](ref:kings-dominion/grizzly), der ganze Bereich Old Virginia und der Teil von Candy Apple Grove mit [WindSeeker](ref:kings-dominion/windseeker), [Twisted Timbers](ref:kings-dominion/twisted-timbers) und [Apple Zapple](ref:kings-dominion/apple-zapple). Twisted Timbers wurde 2018 aus der Holzachterbahn Hurler zur Hybridbahn aus Holz und Stahl umgebaut. Grizzly ist eine Holzachterbahn von 1982 mit 964 Metern Strecke, auf rund 317 Metern davon liegt seit 2023 neues Gleis. Flight of Fear fährt in völliger Dunkelheit, eröffnete 1996 als The Outer Limits: Flight of Fear und beschleunigt mit Linearmotoren in vier Sekunden auf 87 km/h.
 
 Ebenfalls geschlossen:
 
