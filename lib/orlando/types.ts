@@ -1,0 +1,285 @@
+import type { ParkSeasonKind, ParkSeasonStatus } from '@/lib/api/types';
+
+/**
+ * The shapes of the API's trip-region routes (`/v1/trip-regions/:region`, `/calendar`,
+ * `/best-days`), as the Orlando hub and its planner read them. The contract and every rule behind
+ * a field: the API's `docs/frontend/trip-regions.md`. The plan's own shapes live beside the
+ * planner in `lib/orlando/plan.ts`. No runtime code here, so a Client Component can import it.
+ */
+
+/** The one region the API curates. */
+export const ORLANDO_REGION = 'orlando';
+
+/** Orlando's zone, which every park in the region runs on and every "today" is read in. */
+export const ORLANDO_TIMEZONE = 'America/New_York';
+
+/** A park's kind inside a region: water parks and Discovery Cove are priced flat by the plan. */
+export type TripParkType = 'theme_park' | 'water_park' | 'reservation_park';
+
+/** A group of parks: a resort, or the day trips that share no resort. */
+export interface TripRegionGroup {
+  /** `walt-disney-world`, `universal-orlando`, `seaworld-orlando`, `day-trips`. */
+  key: string;
+  name: string;
+  kind: 'resort' | 'day_trip';
+}
+
+/** One park of the region. */
+export interface TripRegionPark {
+  id: string;
+  slug: string;
+  name: string;
+  /** The park's page on park.fan, locale-free: `/parks/north-america/united-states/orlando/epcot`. */
+  path: string;
+  /** A {@link TripRegionGroup} key. */
+  group: string;
+  type: TripParkType;
+  /** One of the region's headliner parks, the plan's default pick. */
+  headliner: boolean;
+  latitude: number;
+  longitude: number;
+  timezone: string;
+}
+
+/** A hotel perk, as the plan's `perks` and `reasons` name it. */
+export type TripPerk =
+  'early_entry' | 'early_park_admission' | 'extended_evening' | 'express_included';
+
+/** Where a visitor sleeps, for drive times and the perks a stay there usually means. */
+export interface TripHotelArea {
+  /** `disney`, `universal`, `international_drive`, `lake_buena_vista`, `kissimmee`. */
+  key: string;
+  name: string;
+  latitude: number;
+  longitude: number;
+  perks: TripPerk[];
+}
+
+/** The resort's own transport beside a drive: curated estimates, waiting included. */
+export interface TripTransportAlternative {
+  mode: 'monorail' | 'skyliner' | 'boat' | 'bus' | 'walk' | 'train';
+  /** Absent for the buses, whose waits vary too much to name one. */
+  minutes?: number;
+  via?: string;
+  name?: string;
+  ticket?: 'park_to_park';
+}
+
+/**
+ * One leg between two parks or a hotel area and a park, both ways. A drive ends at the car park
+ * (`via`), and `transferMinutes` is the curated rest of the way to the gate.
+ */
+export interface TripLeg {
+  /** A park slug or `hotel:<area key>`. */
+  from: string;
+  to: string;
+  km?: number;
+  minutes: number;
+  mode: 'drive' | 'walk' | 'bus';
+  via?: 'ttc' | 'garage_shuttle' | string;
+  transferMinutes?: number;
+  alternatives?: TripTransportAlternative[];
+}
+
+/** The travel matrix: a drive without traffic, read from OpenStreetMap through OSRM. */
+export interface TripTravel {
+  source: 'osrm';
+  computedOn: string;
+  /** "© OpenStreetMap contributors"; shown wherever a drive time is. */
+  attribution: string;
+  basis: 'free_flow';
+  legs: TripLeg[];
+}
+
+/** `GET /v1/trip-regions/orlando`: open, a day at the edge. */
+export interface TripRegion {
+  slug: string;
+  name: string;
+  timezone: string;
+  groups: TripRegionGroup[];
+  parks: TripRegionPark[];
+  hotelAreas: TripHotelArea[];
+  travel: TripTravel;
+}
+
+/** A park's status on a day. `UNKNOWN` past its published hours, never `CLOSED`. */
+export type TripDayStatus = 'OPERATING' | 'CLOSED' | 'UNKNOWN';
+
+/**
+ * Where a day's figures come from: the forecast (about 60 days), the long-range outlook (to
+ * `forecastUntil`, a wider error), the same weekday a year earlier, or nothing.
+ */
+export type TripBasis = 'forecast' | 'long_range' | 'last_year' | 'none';
+
+/**
+ * A day's level against that park's own typical day. Two parks' levels say how each compares with
+ * itself, never with each other: compare parks by `headlinerWait`.
+ */
+export type TripCrowdLevel =
+  'very_low' | 'low' | 'moderate' | 'high' | 'very_high' | 'extreme' | 'unknown' | 'closed';
+
+/** A slot beside the day guests' hours: before opening, or after their close. */
+export interface TripSlot<K extends string = string> {
+  kind: K;
+  /** Park-local ISO with offset. */
+  opensAt: string;
+  closesAt: string;
+  /** `season`: the feed lost the evening row and a curated season supplies it. */
+  source?: 'season';
+}
+
+/** The early slot only some hotels' guests get. */
+export type TripEarlyKind = 'early_entry' | 'early_park_admission';
+/** The evening after the day guests' close: an extension, or a separately ticketed event. */
+export type TripEveningKind = 'extended_evening' | 'ticketed_event';
+
+/** One park on one day of the region calendar. */
+export interface TripParkDay {
+  status: TripDayStatus;
+  hoursPublished: boolean;
+  /** Park-local ISO with offset. */
+  opensAt?: string;
+  /** The day guests' close, so a party night shows the early close. */
+  closesAt?: string;
+  early?: TripSlot<TripEarlyKind>;
+  evening?: TripSlot<TripEveningKind>;
+  crowdLevel: TripCrowdLevel;
+  /**
+   * The big rides' wait at their busiest: each headliner's day peak, meaned over the park's
+   * headliners, rounded to five minutes. The one figure parks are compared by. Absent when unknown.
+   */
+  headlinerWait?: number;
+  basis: TripBasis;
+  /** Ids into {@link TripCalendar.seasons}. */
+  seasons?: string[];
+  /** The curated closure season behind a `CLOSED` day. */
+  closedBy?: string;
+}
+
+/** One day of the region calendar, every park side by side. */
+export interface TripCalendarDay {
+  /** Region-local `YYYY-MM-DD`. */
+  date: string;
+  isHoliday: boolean;
+  isSchoolVacation: boolean;
+  /** Past the last stored school calendar. */
+  schoolVacationUnknown?: boolean;
+  /** The day's local holidays and school breaks, by name. */
+  holidays?: string[];
+  /** Keyed by park slug, one entry per region park. */
+  parks: Record<string, TripParkDay>;
+  /**
+   * The day's shortest lines per resort: group key → the slug of the open park with the lowest
+   * `headlinerWait`, ties to the park open longer for day guests. No entry for the day trips, for a
+   * resort with no figure that day, or on a `last_year` day.
+   */
+  best?: Record<string, string>;
+}
+
+/** A curated season (`park_seasons`) in the public shape, with the park it belongs to. */
+export interface TripSeason {
+  id: string;
+  parkSlug: string;
+  kind: ParkSeasonKind;
+  /** The park's own brand name, never translated; absent → the label for `kind`. */
+  name?: string | null;
+  startDate: string;
+  endDate: string;
+  /** The single dates, or `null` when it runs every day of the range. */
+  dates?: string[] | null;
+  /** `expected` is last year's pattern, not an announcement. */
+  status: ParkSeasonStatus;
+  separateTicket?: boolean;
+  /** `HH:MM`, park-local. */
+  opensAt?: string | null;
+  closesAt?: string | null;
+  url?: string | null;
+}
+
+/** The calendar's frame: the window, its forecast horizon and each park's published hours. */
+export interface TripCalendarMeta {
+  region: string;
+  timezone: string;
+  from: string;
+  to: string;
+  computedAt: string;
+  /** The last day any region park carries a forecast; absent until the warmup has run once. */
+  forecastUntil?: string;
+  /** Per park slug, its last published operating day (`null`: none). */
+  publishedHoursUntil: Record<string, string | null>;
+}
+
+/** `GET /v1/trip-regions/orlando/calendar?from=&to=`: data key, at most 92 days. */
+export interface TripCalendar {
+  meta: TripCalendarMeta;
+  /** The region's park slugs, in the region's order. */
+  parks: string[];
+  days: TripCalendarDay[];
+  seasons: TripSeason[];
+}
+
+/**
+ * Why a day is in a park's quiet or busy set, as codes the hub translates. The API may add codes;
+ * one the hub does not know is skipped, never shown raw.
+ */
+export type TripBestDayReason =
+  | 'quietest_in_window'
+  | 'weekday'
+  | 'holiday_ends'
+  | 'school_break'
+  | 'party_night_short_hours'
+  | 'extended_evening'
+  | 'early_entry'
+  | 'long_range'
+  | 'estimate_last_year';
+
+/** One day in a park's quiet or busy set. */
+export interface TripBestDay {
+  date: string;
+  headlinerWait?: number;
+  crowdLevel: TripCrowdLevel;
+  /** A `last_year` day is last year's measured day, labelled so and never presented as a pick. */
+  basis: TripBasis;
+  reasons: string[];
+}
+
+/**
+ * One park's best days in the window: the quiet end of its days, ranked on the unrounded figure and
+ * hours-weighted (a party night only behind full days), so a set and never a ranking; and its two
+ * busiest. A park whose days spread less than ten minutes carries `flat` instead.
+ */
+export interface TripParkBestDays {
+  slug: string;
+  /** The basis of most of the park's days in the window. */
+  basis: TripBasis;
+  quiet: TripBestDay[];
+  busy: TripBestDay[];
+  /** No day stands out: the range the park's figures stay inside. */
+  flat?: { min: number; max: number };
+}
+
+/** A resort's three best dates in the window, each with the park that has the shortest lines. */
+export interface TripGroupBestDays {
+  key: string;
+  quiet: Array<{ date: string; slug: string; headlinerWait?: number }>;
+}
+
+/** `GET /v1/trip-regions/orlando/best-days?from=&to=&limit=`: data key, at most 92 days. */
+export interface TripBestDays {
+  meta: {
+    region: string;
+    timezone: string;
+    from: string;
+    to: string;
+    computedAt: string;
+    forecastUntil?: string;
+  };
+  parks: TripParkBestDays[];
+  groups: TripGroupBestDays[];
+}
+
+/** A month of the hub, 1-based, the way the month URLs spell it (`/orlando/2026/12`). */
+export interface OrlandoMonth {
+  year: number;
+  month: number;
+}

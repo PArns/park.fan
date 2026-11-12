@@ -969,6 +969,16 @@ const nextConfig: NextConfig = {
         headers: sharedCache('public, s-maxage=3600, stale-while-revalidate=86400'),
       },
       {
+        // The Orlando hub's relay: the region a day, its keyed routes the API's hour. The
+        // handler's own values (`lib/orlando/relay.ts`), kept identical.
+        source: '/api/trip-regions/:region',
+        headers: sharedCache('public, max-age=3600, s-maxage=86400, stale-while-revalidate=86400'),
+      },
+      {
+        source: '/api/trip-regions/:region/:route(calendar|best-days|plan)',
+        headers: sharedCache('public, max-age=3600, s-maxage=3600, stale-while-revalidate=86400'),
+      },
+      {
         // The homepage compass's ride coordinates and the park's magnetic declination: both move
         // when somebody re-surveys a park or a year passes, never between two visits. The
         // handler's own value; `next dev` answered `no-store` from the blanket rule until this
