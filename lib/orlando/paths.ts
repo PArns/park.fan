@@ -115,7 +115,7 @@ export function monthOfDate(date: string): OrlandoMonth {
 }
 
 /** The trip-region routes a browser may ask through this site's relay. */
-export type OrlandoRelayRoute = 'calendar' | 'best-days' | 'plan' | 'when';
+export type OrlandoRelayRoute = 'calendar' | 'best-days' | 'plan' | 'when' | 'school-breaks';
 
 /**
  * Where a page asks for one of the keyed trip-region routes: the same-origin relay

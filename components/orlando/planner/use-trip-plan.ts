@@ -7,6 +7,8 @@ import {
   fetchTripCalendar,
   fetchTripPlan,
   fetchTripWhen,
+  fetchSchoolBreaks,
+  SCHOOL_BREAKS_QUERY_KEY,
   PLAN_DEBOUNCE_MS,
   planQueryKey,
   retryPlanRequest,
@@ -100,4 +102,20 @@ export function useTripWhen(query: Record<string, string> | null) {
     refetchOnWindowFocus: false,
   });
   return { ...result, waiting: search !== null && (search !== settled || result.isFetching) };
+}
+
+/**
+ * The school-holiday regions the When mode's picker offers, read once when the picker is shown.
+ * The data changes a few times a year; the relay keeps it a day.
+ */
+export function useSchoolBreaks(enabled: boolean) {
+  return useQuery({
+    queryKey: SCHOOL_BREAKS_QUERY_KEY,
+    queryFn: ({ signal }) => fetchSchoolBreaks(signal),
+    enabled,
+    staleTime: 24 * 60 * 60_000,
+    gcTime: 24 * 60 * 60_000,
+    retry: retryPlanRequest,
+    refetchOnWindowFocus: false,
+  });
 }

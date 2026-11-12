@@ -3112,7 +3112,9 @@
       "holidays": "Only in our school holidays",
       "holidaysHint": "Only dates that lie completely inside your region’s school holidays.",
       "country": "Country",
-      "region": "Region"
+      "region": "Region",
+      "through": "School holiday data runs to {date}.",
+      "holidaysUnavailable": "The school holiday data couldn’t be loaded."
     },
     "parks": {
       "split": "Split my days for me",
@@ -3208,7 +3210,8 @@
       "orderBarelyMatters": "Your days are about equally busy, so the order barely matters on these dates.",
       "lastYear": "We plan these dates on last year’s measured crowds. The forecast reaches them around {date}.",
       "about": "about {minutes} min",
-      "daysLabel": "Your days"
+      "daysLabel": "Your days",
+      "split": "{visits, plural, =2 {We added a second day at {park}.} other {We gave {park} # days.}}"
     },
     "day": {
       "arrival": "Arrival",

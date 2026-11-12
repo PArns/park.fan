@@ -3112,7 +3112,9 @@
       "holidays": "Alleen in onze schoolvakanties",
       "holidaysHint": "Alleen periodes die helemaal in de schoolvakantie van je regio vallen.",
       "country": "Land",
-      "region": "Regio"
+      "region": "Regio",
+      "through": "De schoolvakantiegegevens lopen tot {date}.",
+      "holidaysUnavailable": "De schoolvakantiegegevens konden niet worden geladen."
     },
     "parks": {
       "split": "Verdeel mijn dagen",
@@ -3208,7 +3210,8 @@
       "orderBarelyMatters": "Je dagen zijn ongeveer even druk, dus op deze data maakt de volgorde weinig uit.",
       "lastYear": "Deze data plannen we met de gemeten drukte van vorig jaar. De voorspelling bereikt ze rond {date}.",
       "about": "ongeveer {minutes} min.",
-      "daysLabel": "Je dagen"
+      "daysLabel": "Je dagen",
+      "split": "{visits, plural, =2 {We hebben {park} een tweede dag gegeven.} other {We hebben {park} # dagen gegeven.}}"
     },
     "day": {
       "arrival": "Aankomst",

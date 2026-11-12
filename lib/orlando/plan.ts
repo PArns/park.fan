@@ -120,8 +120,8 @@ export interface PlanMeta {
   objective: string;
   exact: boolean;
   relaxed?: string[];
-  /** How the visits were split, as the API reports it; read only through the plan's `parks`. */
-  split?: unknown;
+  /** The parks `split=auto` gave more than one visit, and how many. */
+  split?: Array<{ slug: string; visits: number; auto?: boolean }>;
 }
 
 /** `GET /v1/trip-regions/orlando/plan`: one entry per trip day, arrival and departure included. */

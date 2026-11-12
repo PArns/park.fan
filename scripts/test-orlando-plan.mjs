@@ -30,6 +30,7 @@ import {
   effectiveHotel,
 } from '../lib/orlando/plan.ts';
 import {
+  autoSplit,
   dayMarker,
   dayWarnings,
   editCost,
@@ -667,14 +668,39 @@ const keys = { parks: new Set(ORDER), areas: new Set(['disney', 'universal']) };
     ]),
     ['very_low', 'very_low', 'high', null, 'very_high']
   );
-  test(
-    'the reader’s country first',
-    [
-      holidayRegionsFor('de')[0].country,
-      holidayRegionsFor('nl')[0].country,
-      holidayRegionsFor('en')[0].country,
+  const breaks = {
+    regions: [
+      {
+        code: 'DE-NW',
+        name: 'Nordrhein-Westfalen',
+        country: 'DE',
+        through: '2028-11-04',
+        periods: [],
+      },
+      { code: 'NL-GR', name: 'Regio Noord', country: 'NL', through: '2028-10-29', periods: [] },
+      { code: 'GB-ENG', name: 'England', country: 'GB', through: '2029-08-31', periods: [] },
     ],
-    ['DE', 'NL', 'GB']
+  };
+  test(
+    'the holiday picker offers what the data has, the reader’s country first',
+    [
+      holidayRegionsFor(breaks, 'de')[0].country,
+      holidayRegionsFor(breaks, 'nl')[0].regions,
+      holidayRegionsFor(breaks, 'en')[0].country,
+      holidayRegionsFor(undefined, 'de'),
+    ],
+    ['DE', [{ code: 'NL-GR', name: 'Regio Noord', through: '2028-10-29' }], 'GB', []]
+  );
+  test(
+    'meta.split: only auto parks with more than one day',
+    autoSplit({
+      split: [
+        { slug: 'magic-kingdom-park', visits: 2, auto: true },
+        { slug: 'epcot', visits: 1, auto: true },
+        { slug: 'x', visits: 3 },
+      ],
+    }),
+    [{ slug: 'magic-kingdom-park', visits: 2 }]
   );
   test(
     'an unknown window reason is not said',

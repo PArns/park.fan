@@ -3,7 +3,7 @@
 import { useId, useMemo, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { cn } from '@/lib/utils';
-import { addDays } from '@/lib/utils/park-day';
+import { addDays, formatParkDay } from '@/lib/utils/park-day';
 import {
   MAX_DAYS_AHEAD,
   MAX_TRIP_DAYS,
@@ -12,7 +12,6 @@ import {
   type PlanSearchRange,
 } from '@/lib/orlando/plan';
 import {
-  countryOfRegion,
   holidayRegionsFor,
   whenPeriodOf,
   whenPeriods,
@@ -21,6 +20,7 @@ import {
 import { usePlanContext } from './plan-context';
 import { PLAN_FOCUS, PlanCheckRow, PlanStepper } from './plan-controls';
 import { PlanDates } from './plan-dates';
+import { useSchoolBreaks } from './use-trip-plan';
 
 /** The search the When mode opens on: the next twelve months. */
 export function defaultSearchRange(today: string): PlanSearchRange {
@@ -85,7 +85,8 @@ export function PlanFind() {
   const [custom, setCustom] = useState(false);
   const chosen: WhenPeriodKey = custom ? 'custom' : whenPeriodOf(state.when, periods);
   const last = today ? addDays(today, MAX_DAYS_AHEAD) : undefined;
-  const countries = useMemo(() => holidayRegionsFor(locale), [locale]);
+  const breaks = useSchoolBreaks(live);
+  const countries = useMemo(() => holidayRegionsFor(breaks.data, locale), [breaks.data, locale]);
   const countryName = useMemo(() => {
     try {
       return new Intl.DisplayNames([locale], { type: 'region' });
@@ -93,9 +94,11 @@ export function PlanFind() {
       return null;
     }
   }, [locale]);
-  const withinCountry = state.within
-    ? countryOfRegion(state.within)
-    : (countries[0]?.country ?? 'DE');
+  const withinRegion = countries.flatMap((c) => c.regions).find((r) => r.code === state.within);
+  const withinCountry =
+    countries.find((c) => c.regions.some((r) => r.code === state.within))?.country ??
+    countries[0]?.country ??
+    null;
 
   const setRange = (range: PlanSearchRange) => update((s) => ({ ...s, when: range }));
 
@@ -179,7 +182,7 @@ export function PlanFind() {
       <div className="flex flex-col gap-2">
         <PlanCheckRow
           checked={state.within !== null}
-          disabled={!live}
+          disabled={!live || (countries.length === 0 && state.within === null)}
           onChange={(on) =>
             update((s) => ({
               ...s,
@@ -189,14 +192,16 @@ export function PlanFind() {
             }))
           }
           label={t('holidays')}
-          hint={t('holidaysHint')}
+          hint={
+            countries.length === 0 && breaks.isError ? t('holidaysUnavailable') : t('holidaysHint')
+          }
         />
         {state.within && (
           <div id={regionsId} className="grid grid-cols-2 gap-2 pl-9">
             <label className="flex flex-col gap-1 text-xs">
               {t('country')}
               <select
-                value={withinCountry}
+                value={withinCountry ?? ''}
                 disabled={!live}
                 onChange={(e) => {
                   const country = countries.find((c) => c.country === e.currentTarget.value);
@@ -237,6 +242,17 @@ export function PlanFind() {
                   ))}
               </select>
             </label>
+            {withinRegion && today && (
+              <p className="text-muted-foreground col-span-2 text-xs">
+                {t('through', {
+                  date: formatParkDay(locale, withinRegion.through, {
+                    day: 'numeric',
+                    month: 'short',
+                    year: 'numeric',
+                  }),
+                })}
+              </p>
+            )}
           </div>
         )}
       </div>

@@ -3112,7 +3112,9 @@
       "holidays": "Nur in unseren Schulferien",
       "holidaysHint": "Nur Zeiträume, die ganz in den Schulferien deiner Region liegen.",
       "country": "Land",
-      "region": "Bundesland oder Region"
+      "region": "Bundesland oder Region",
+      "through": "Die Schulferiendaten reichen bis {date}.",
+      "holidaysUnavailable": "Die Schulferiendaten konnten nicht geladen werden."
     },
     "parks": {
       "split": "Tage für mich aufteilen",
@@ -3208,7 +3210,8 @@
       "orderBarelyMatters": "Deine Tage sind etwa gleich voll, an diesen Daten macht die Reihenfolge kaum einen Unterschied.",
       "lastYear": "Diese Tage planen wir mit den gemessenen Besucherzahlen des letzten Jahres. Die Prognose erreicht sie etwa am {date}.",
       "about": "etwa {minutes} Min.",
-      "daysLabel": "Deine Tage"
+      "daysLabel": "Deine Tage",
+      "split": "{visits, plural, =2 {Wir haben {park} einen zweiten Tag gegeben.} other {Wir haben {park} # Tage gegeben.}}"
     },
     "day": {
       "arrival": "Anreise",
