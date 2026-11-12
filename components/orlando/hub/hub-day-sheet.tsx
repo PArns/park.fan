@@ -24,6 +24,7 @@ import {
   parkGeo,
   rankGroupParks,
   regionGroups,
+  shortestLines,
   shortParkName,
   tintLevel,
 } from '@/lib/orlando/hub-data';
@@ -73,6 +74,7 @@ export function HubDaySheet({
   const isDesktop = useMediaQuery('(min-width: 1024px)');
   const [area, setArea] = useState(DEFAULT_AREA);
   const groups = regionGroups(region);
+  const lines = day ? shortestLines(day, region) : [];
   const areaName = region.hotelAreas.find((a) => a.key === area)?.name ?? '';
 
   return (
@@ -133,6 +135,11 @@ export function HubDaySheet({
                         <SheetPark
                           key={park.slug}
                           rank={isRankable(parkDay) ? index + 1 : null}
+                          ahead={
+                            index === 0
+                              ? lines.find((l) => l.group.key === group.key)?.earlyElsewhere
+                              : undefined
+                          }
                           park={park}
                           parkDay={parkDay}
                           date={day.date}
@@ -165,6 +172,7 @@ export function HubDaySheet({
 /** One park on the day: the square's figure and everything that is too much for a square. */
 function SheetPark({
   rank,
+  ahead,
   park,
   parkDay,
   date,
@@ -177,6 +185,8 @@ function SheetPark({
   onPlan,
 }: {
   rank: number | null;
+  /** The park with a shorter wait this one is ahead of, because that one closes early. */
+  ahead?: { park: TripRegionPark; day: TripParkDay };
   park: TripRegionPark;
   parkDay: TripParkDay | undefined;
   date: string;
@@ -203,7 +213,9 @@ function SheetPark({
 
   const status =
     !parkDay || parkDay.status === 'UNKNOWN'
-      ? t('noHours')
+      ? isRankable(parkDay)
+        ? t('noHoursFigure')
+        : t('noHours')
       : parkDay.status === 'CLOSED'
         ? closure?.name
           ? t('closedFor', { name: closure.name })
@@ -239,6 +251,14 @@ function SheetPark({
             ) : null}
           </div>
           <p className="text-muted-foreground mt-0.5 text-sm tabular-nums">{status}</p>
+          {ahead && dayGuestClose(ahead.day) && (
+            <p className="mt-0.5 text-sm">
+              {t('ahead', {
+                park: shortParkName(ahead.park.name),
+                time: clock(dayGuestClose(ahead.day)!),
+              })}
+            </p>
+          )}
           {parkDay?.basis === 'last_year' && (
             <p className="text-muted-foreground text-xs">{t('lastYear')}</p>
           )}

@@ -542,8 +542,8 @@
       "quietDay": "{date} ({park}, ongeveer {minutes} min)",
       "quiet": "heeft de kortste rijen op {days}.",
       "quietLastYear": "had vorig jaar de kortste rijen op {days}.",
-      "busy": "Het drukst wordt het op {days}, met minstens {minutes} min, zelfs in het rustigste park.",
-      "busyLastYear": "Het drukst was het vorig jaar op {days}, met minstens {minutes} min, zelfs in het rustigste park.",
+      "busy": "Het drukst wordt het op {days}, gemiddeld ongeveer {minutes} min over de parken.",
+      "busyLastYear": "Het drukst was het vorig jaar op {days}, gemiddeld ongeveer {minutes} min over de parken.",
       "eventsLabel": "Evenementen:",
       "eventNights": "{name} ({count, plural, =1 {# avond} other {# avonden}})",
       "eventExpected": "{name} (data verwacht)"

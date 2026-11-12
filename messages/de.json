@@ -542,8 +542,8 @@
       "quietDay": "{date} ({park}, etwa {minutes} Min.)",
       "quiet": "hat die kürzesten Warteschlangen am {days}.",
       "quietLastYear": "hatte im Vorjahr die kürzesten Warteschlangen am {days}.",
-      "busy": "Am vollsten wird es am {days}, mit mindestens {minutes} Min. selbst im ruhigsten Park.",
-      "busyLastYear": "Am vollsten war es im Vorjahr am {days}, mit mindestens {minutes} Min. selbst im ruhigsten Park.",
+      "busy": "Am vollsten wird es am {days}, mit etwa {minutes} Min. im Schnitt über seine Parks.",
+      "busyLastYear": "Am vollsten war es im Vorjahr am {days}, mit etwa {minutes} Min. im Schnitt über seine Parks.",
       "eventsLabel": "Events:",
       "eventNights": "{name} ({count, plural, =1 {# Abend} other {# Abende}})",
       "eventExpected": "{name} (Termine erwartet)"

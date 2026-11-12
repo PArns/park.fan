@@ -542,8 +542,8 @@
       "quietDay": "{date} ({park}, about {minutes} min)",
       "quiet": "has the shortest lines on {days}.",
       "quietLastYear": "had the shortest lines last year on {days}.",
-      "busy": "The busiest days are {days}, with at least {minutes} min even at the quietest park.",
-      "busyLastYear": "The busiest last year were {days}, with at least {minutes} min even at the quietest park.",
+      "busy": "The busiest days are {days}, about {minutes} min on average across its parks.",
+      "busyLastYear": "The busiest last year were {days}, about {minutes} min on average across its parks.",
       "eventsLabel": "Events:",
       "eventNights": "{name} ({count, plural, =1 {# night} other {# nights}})",
       "eventExpected": "{name} (dates expected)"

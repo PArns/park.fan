@@ -3,6 +3,7 @@ import { getListFormat } from '@/lib/utils/intl-format';
 import {
   eventLanes,
   formatHubDate,
+  meanWait,
   shortGroupName,
   shortParkName,
   type ResortMonthSummary,
@@ -49,7 +50,7 @@ export async function HubMonthSummary({
           )
         );
         const busyText = list.format(busy.map((b) => formatHubDate(b.date, locale)));
-        const busyMinutes = busy.length ? Math.min(...busy.map((b) => b.wait)) : 0;
+        const busyMinutes = meanWait(busy.map((b) => b.wait)) ?? 0;
         return (
           <p key={group.key}>
             <strong>{shortGroupName(group.name)}</strong>{' '}

@@ -14,6 +14,7 @@ import {
   closesEarly,
   dayBasis,
   formatDateRange,
+  hoursUnpublished,
   dayGuestClose,
   eventLanes,
   formatHubDate,
@@ -29,7 +30,13 @@ import {
 import { orlandoRelayUrl } from '@/lib/orlando/paths';
 import { ORLANDO_TIMEZONE } from '@/lib/orlando/types';
 import type { TripCalendar, TripCalendarDay, TripParkDay, TripRegion } from '@/lib/orlando/types';
-import { EARLY_CLOSE_CORNER, HUB_CELL, HUB_CELL_BEST, HUB_CELL_LAST_YEAR } from './hub-cell-styles';
+import {
+  EARLY_CLOSE_CORNER,
+  HUB_CELL,
+  HUB_CELL_BEST,
+  HUB_CELL_LAST_YEAR,
+  NO_HOURS_DOT,
+} from './hub-cell-styles';
 import { clearOrlandoPagePark, HubDaySheet } from './hub-day-sheet';
 
 /** How long a window stays fresh in the browser: the API's hour. */
@@ -44,29 +51,44 @@ interface CellLook {
   className: string;
   hatch: boolean;
   early: boolean;
+  /** A figure without published hours: the dot the legend names. */
+  noHours: boolean;
 }
 
 /**
  * The square for a park on a day: the minutes in the level's tint, hatching for closed, a muted
- * box for no hours, a dash for open without a forecast, a dashed edge for last year. Nothing else:
- * hours, events and icons are the day sheet's.
+ * box for no figure, a dash for open without a forecast, a dashed edge for last year, and a small
+ * dot where the figure stands without published hours. Nothing else: hours, events and icons are
+ * the day sheet's.
  */
 function cellLook(day: TripParkDay | undefined, best: boolean): CellLook {
-  if (!day || day.status === 'UNKNOWN') {
-    return { text: '', className: 'bg-muted/20 border-border/40', hatch: false, early: false };
-  }
-  if (day.status === 'CLOSED') {
-    return { text: '', className: 'bg-muted/10 border-border/40', hatch: true, early: false };
-  }
-  const level = tintLevel(day.crowdLevel);
-  if (!isRankable(day)) {
+  if (day?.status === 'CLOSED') {
     return {
-      text: '–',
-      className: 'bg-muted/40 border-border/60 text-muted-foreground',
-      hatch: false,
+      text: '',
+      className: 'bg-muted/10 border-border/40',
+      hatch: true,
       early: false,
+      noHours: false,
     };
   }
+  if (!isRankable(day)) {
+    return day?.status === 'OPERATING'
+      ? {
+          text: '–',
+          className: 'bg-muted/40 border-border/60 text-muted-foreground',
+          hatch: false,
+          early: false,
+          noHours: false,
+        }
+      : {
+          text: '',
+          className: 'bg-muted/20 border-border/40',
+          hatch: false,
+          early: false,
+          noHours: false,
+        };
+  }
+  const level = tintLevel(day.crowdLevel);
   return {
     text: String(day.headlinerWait),
     className: cn(
@@ -76,6 +98,7 @@ function cellLook(day: TripParkDay | undefined, best: boolean): CellLook {
     ),
     hatch: false,
     early: closesEarly(day),
+    noHours: hoursUnpublished(day),
   };
 }
 
@@ -253,9 +276,12 @@ function useCellLabel(locale: string) {
   return useCallback(
     (parkName: string, date: string, day: TripParkDay | undefined, bestAt: string | null) => {
       const when = formatHubDate(date, locale);
-      if (!day || day.status === 'UNKNOWN') return t('cellUnknown', { park: parkName, date: when });
-      if (day.status === 'CLOSED') return t('cellClosed', { park: parkName, date: when });
-      if (!isRankable(day)) return t('cellOpen', { park: parkName, date: when });
+      if (day?.status === 'CLOSED') return t('cellClosed', { park: parkName, date: when });
+      if (!isRankable(day)) {
+        return day?.status === 'OPERATING'
+          ? t('cellOpen', { park: parkName, date: when })
+          : t('cellUnknown', { park: parkName, date: when });
+      }
       const level = tintLevel(day.crowdLevel);
       const parts = [
         t('cell', {
@@ -270,6 +296,7 @@ function useCellLabel(locale: string) {
       if (closesEarly(day) && close) {
         parts.push(t('cellEarly', { time: formatClockTime(close, locale, ORLANDO_TIMEZONE) }));
       }
+      if (hoursUnpublished(day)) parts.push(t('cellNoHours'));
       if (day.basis === 'last_year') parts.push(t('lastYear'));
       return parts.join(', ');
     },
@@ -334,31 +361,41 @@ function DayList({
                 {groups.map((group) => {
                   const ranked = rankGroupParks(day, group.parks, group.key);
                   const top = ranked[0];
-                  const others = ranked
-                    .slice(1)
-                    .filter((r) => r.day?.status === 'OPERATING').length;
+                  const others = ranked.slice(1).filter((r) => isRankable(r.day)).length;
                   if (!top) return null;
                   const look = cellLook(top.day, false);
+                  const early = day.bestWhy?.[group.key] === 'closes_early_elsewhere';
                   return (
-                    <span key={group.key} className="flex items-center gap-2 text-sm">
-                      <span className="text-muted-foreground w-[4.5rem] shrink-0 truncate text-xs">
-                        {shortGroupName(group.name)}
-                      </span>
-                      <span className="min-w-0 flex-1 truncate font-medium">
-                        {top.day?.status === 'OPERATING'
+                    <span key={group.key} className="flex items-start gap-2 text-sm">
+                      {/* The park says which resort it is; its short name wraps rather than
+                          truncating. */}
+                      <span className="min-w-0 flex-1 font-medium break-words">
+                        {isRankable(top.day) || top.day?.status === 'OPERATING'
                           ? shortParkName(top.park.name)
                           : top.day?.status === 'CLOSED'
                             ? t('stateClosed')
                             : t('stateUnknown')}
+                        {early && (
+                          <span className="text-muted-foreground block text-xs font-normal">
+                            {t('earlyElsewhere')}
+                          </span>
+                        )}
                       </span>
                       {look.text && (
-                        <span className={cn(HUB_CELL, 'relative h-7 w-10 text-sm', look.className)}>
+                        <span
+                          className={cn(
+                            HUB_CELL,
+                            'relative h-7 w-10 shrink-0 text-sm',
+                            look.className
+                          )}
+                        >
                           {look.text}
                           {look.early && <span aria-hidden className={EARLY_CLOSE_CORNER} />}
+                          {look.noHours && <span aria-hidden className={NO_HOURS_DOT} />}
                         </span>
                       )}
                       {others > 0 && (
-                        <span className="text-muted-foreground w-14 shrink-0 text-right text-xs">
+                        <span className="text-muted-foreground w-14 shrink-0 pt-1 text-right text-xs">
                           {t('more', { count: others })}
                         </span>
                       )}
@@ -552,6 +589,7 @@ function Matrix({
                         >
                           {look.text}
                           {look.early && <span aria-hidden className={EARLY_CLOSE_CORNER} />}
+                          {look.noHours && <span aria-hidden className={NO_HOURS_DOT} />}
                         </button>
                       </td>
                     );
@@ -578,7 +616,7 @@ function parkState(
   const all = (test: (d: TripParkDay | undefined) => boolean) =>
     days.every((day) => test(day.parks[slug]));
   if (all((d) => d?.status === 'CLOSED')) return 'stateClosed';
-  if (all((d) => !d || d.status === 'UNKNOWN')) return 'stateUnknown';
+  if (all((d) => !isRankable(d) && (!d || d.status === 'UNKNOWN'))) return 'stateUnknown';
   if (all((d) => d?.status === 'OPERATING' && !isRankable(d))) return 'stateOpen';
   return null;
 }

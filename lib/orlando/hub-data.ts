@@ -74,11 +74,20 @@ export function dayGuestClose(day: TripParkDay | undefined): string | undefined 
   return day?.dayGuestCloseAt ?? day?.closesAt;
 }
 
-/** Whether a park can be ranked on a day: open, with a figure. */
+/**
+ * Whether a park can be ranked on a day: not closed, with a figure. A day whose hours are not
+ * published yet is `UNKNOWN` but still carries the forecast or last year's figure, and that figure
+ * counts; only a closed day or one without a figure drops out.
+ */
 export function isRankable(day: TripParkDay | undefined): day is TripParkDay & {
   headlinerWait: number;
 } {
-  return day?.status === 'OPERATING' && typeof day.headlinerWait === 'number';
+  return !!day && day.status !== 'CLOSED' && typeof day.headlinerWait === 'number';
+}
+
+/** Whether a day has a figure but no published hours yet: drawn with its mark, said in words. */
+export function hoursUnpublished(day: TripParkDay | undefined): boolean {
+  return !!day && day.status === 'UNKNOWN' && !day.hoursPublished;
 }
 
 /** The day guest's hours in minutes, for the tie on equal waits. Unknown hours count as none. */
@@ -403,14 +412,15 @@ export interface ResortMonthSummary {
   group: RegionGroup;
   /** The resort's best dates, each with the park that has the shortest lines that day. */
   quiet: Array<{ date: string; park: TripRegionPark; wait: number | null; basis: TripBasis }>;
-  /** The days on which even the resort's shortest line is longest. */
-  busy: Array<{ date: string; park: TripRegionPark; wait: number; basis: TripBasis }>;
+  /** The resort's busiest days: the highest mean over its parks with a figure that day. */
+  busy: Array<{ date: string; wait: number; basis: TripBasis }>;
 }
 
 /**
  * Each resort's month: the best dates from `/best-days` (the API ranks them on the unrounded
- * figures), the two days whose shortest line is the longest from the calendar. A resort with no
- * figure in the window is left out.
+ * figures), and from the calendar the two days with the highest mean over the resort's parks that
+ * have a figure, so a day most of its parks call quiet is never one of its busiest. A resort with
+ * no figure in the window is left out.
  */
 export function resortMonthSummaries(
   region: TripRegion,
@@ -434,20 +444,20 @@ export function resortMonthSummaries(
             : null;
         })
         .filter((entry): entry is NonNullable<typeof entry> => entry !== null);
-      const picks = calendar.days
+      const means = calendar.days
         .map((day) => {
-          const line = rankGroupParks(day, group.parks, group.key)[0];
-          return line && isRankable(line.day)
-            ? {
+          const ranked = group.parks.map((p) => day.parks[p.slug]).filter(isRankable);
+          const wait = meanWait(ranked.map((d) => d.headlinerWait));
+          return wait === null
+            ? null
+            : {
                 date: day.date,
-                park: line.park,
-                wait: line.day.headlinerWait,
-                basis: line.day.basis,
-              }
-            : null;
+                wait,
+                basis: ranked.some((d) => d.basis === 'last_year') ? 'last_year' : ranked[0].basis,
+              };
         })
         .filter((entry): entry is NonNullable<typeof entry> => entry !== null);
-      const busy = [...picks]
+      const busy = [...means]
         .sort((a, b) => b.wait - a.wait || a.date.localeCompare(b.date))
         .slice(0, 2)
         .sort((a, b) => a.date.localeCompare(b.date));

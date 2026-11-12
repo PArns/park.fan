@@ -21,3 +21,10 @@ export const HUB_CELL_LAST_YEAR = 'border-dashed border-foreground/45';
  */
 export const EARLY_CLOSE_CORNER =
   'bg-foreground/60 pointer-events-none absolute top-0 right-0 size-2 rounded-tr-md [clip-path:polygon(0_0,100%_0,100%_100%)]';
+
+/**
+ * The mark of a figure that stands without published hours: a small dot, bottom left, so the
+ * number still reads and the legend and the day sheet say what it means.
+ */
+export const NO_HOURS_DOT =
+  'bg-foreground/55 pointer-events-none absolute bottom-0.5 left-0.5 size-1.5 rounded-full';
