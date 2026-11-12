@@ -9,8 +9,15 @@ import {
 import { getDateTimeFormat } from '@/lib/utils/intl-format';
 import { addDays, daysBetween } from '@/lib/utils/park-day';
 import { earlyPerk } from './plan-copy';
+import { closesEarly } from './hub-data';
 import type { PlanDay, PlanDayKind } from './plan';
-import type { TripCalendar, TripEveningKind, TripParkDay, TripSeason } from './types';
+import type {
+  TripCalendar,
+  TripCalendarDay,
+  TripEveningKind,
+  TripParkDay,
+  TripSeason,
+} from './types';
 
 /**
  * The geometry of the result's Week and Month views. Pure, and built on the day planner's own axis
@@ -416,4 +423,27 @@ export function swapPreview(
     if (less !== null && (short === null || less > short.hours)) short = { slug, hours: less };
   }
   return { kind: 'minutes', delta, short };
+}
+
+/**
+ * The figure under a date: the lower of the day's picks per resort (`best`, the API's shortest
+ * lines with early closings counted), so a party night that closes at 6 pm never makes a date look
+ * quiet. Where the API names no pick (a last-year day, no hours yet), the lowest headliner that is
+ * open, has a figure and does not close early. `null` where none has one.
+ */
+export function dateFigure(
+  day: TripCalendarDay | undefined,
+  headliners: readonly string[]
+): number | null {
+  if (!day) return null;
+  const picks = Object.values(day.best ?? {});
+  const candidates = picks.length > 0 ? picks : headliners;
+  let best: number | null = null;
+  for (const slug of candidates) {
+    const cell = day.parks[slug];
+    if (!cell || cell.status === 'CLOSED' || cell.headlinerWait == null) continue;
+    if (picks.length === 0 && closesEarly(cell)) continue;
+    if (best === null || cell.headlinerWait < best) best = cell.headlinerWait;
+  }
+  return best;
 }

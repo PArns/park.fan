@@ -52,7 +52,7 @@ import { formatGridTime } from '@/lib/planner/park-time';
 import type { TripCalendar } from '@/lib/orlando/types';
 import { usePlanContext } from './plan-context';
 import { PLAN_FOCUS } from './plan-controls';
-import { dayGuestClose, useDayParks } from './plan-day-bits';
+import { ClimateChips, dayGuestClose, useDayParks } from './plan-day-bits';
 import { useSeasonName } from './use-day-facts';
 import { PLAN_WIDE_QUERY } from './plan-setup';
 
@@ -525,27 +525,6 @@ function DayRides({ slug, date }: { slug: string; date: string }) {
         </div>
       )}
     </div>
-  );
-}
-
-/**
- * The season's facts as short chips ("hot", "hurricane season", "peak hurricane season"), shared by
- * the day sheet and the When mode's cards.
- */
-export function ClimateChips({ codes }: { codes: readonly string[] }) {
-  const t = useTranslations('orlandoPlanner.climate');
-  if (codes.length === 0) return null;
-  return (
-    <span className="flex flex-wrap gap-1">
-      {codes.map((code) => (
-        <span
-          key={code}
-          className="border-crowd-high/40 text-crowd-ink-high rounded-full border px-2 py-0.5 text-xs"
-        >
-          {t(code)}
-        </span>
-      ))}
-    </span>
   );
 }
 

@@ -3210,7 +3210,7 @@
       "gridLabel": "Giorno di arrivo e di partenza",
       "wait": "attesa più breve alle grandi attrazioni circa {minutes} min",
       "waitLastYear": "l’anno scorso circa {minutes} min alle grandi attrazioni",
-      "legend": "Sotto ogni data: l’attesa più breve alle grandi attrazioni quel giorno, in minuti, nel parco con le code più corte.",
+      "legend": "Sotto ogni data: l’attesa più breve alle grandi attrazioni quel giorno, in minuti, nel parco con le code più corte. I parchi che chiudono prima non contano.",
       "legendLastYear": "Le cifre in corsivo sono giorni misurati l’anno scorso.",
       "pickArrival": "Tocca il giorno di arrivo.",
       "pickDeparture": "Ora il giorno di partenza.",
@@ -3313,7 +3313,15 @@
       "restMore": "Un giorno in più",
       "hop": "Park hopping",
       "hopHint": "Due parchi dello stesso resort in un giorno, quando il viaggio ha meno giorni che visite.",
-      "hopOn": "park hopping"
+      "hopOn": "park hopping",
+      "ticket": "Hai un biglietto Park Hopper (da parco a parco)?",
+      "ticketHopper": "Sì, Park Hopper",
+      "ticketHopperHint": "Solo con questo un giorno può avere due parchi, o una serata in un secondo parco.",
+      "ticketBase": "No, un parco al giorno",
+      "ticketShort": "Park Hopper",
+      "evenings": "Pianifica le serate",
+      "eveningsHint": "Quando un parco chiude prima, il piano propone per la sera un secondo parco o Disney Springs e CityWalk.",
+      "eveningsOff": "niente serate"
     },
     "result": {
       "label": "Il tuo piano",
@@ -3342,7 +3350,8 @@
       "lastYear": "Pianifichiamo queste date con l’affluenza misurata l’anno scorso. La previsione le raggiungerà verso il {date}.",
       "about": "circa {minutes} min",
       "daysLabel": "I tuoi giorni",
-      "split": "{visits, plural, =2 {Abbiamo aggiunto un secondo giorno a {park}.} other {Abbiamo dato # giorni a {park}.}}"
+      "split": "{visits, plural, =2 {Abbiamo aggiunto un secondo giorno a {park}.} other {Abbiamo dato # giorni a {park}.}}",
+      "hopNeedsHopper": "Il park hopping conta solo con un biglietto Park Hopper; sceglilo in «Regolazioni»."
     },
     "day": {
       "arrival": "Arrivo",
@@ -3512,7 +3521,7 @@
       "details": "Dettagli",
       "plan": "Pianifica queste date",
       "reason": {
-        "no_school_break": "Nessuna vacanza scolastica in quei giorni.",
+        "no_school_break": "Nessuna vacanza scolastica negli USA.",
         "after_holidays": "Subito dopo le feste.",
         "before_spring_break": "Prima della ressa delle vacanze di primavera.",
         "festival": "In quei giorni c’è un festival.",
@@ -3521,7 +3530,7 @@
       },
       "warning": {
         "party_nights": "{count, plural, =1 {1 serata di festa} other {# serate di festa}}: i visitatori giornalieri devono uscire prima.",
-        "school_break": "Cade durante le vacanze scolastiche.",
+        "school_break": "Vacanze scolastiche negli USA.",
         "water_park_closed": "Un parco acquatico scelto è chiuso per la stagione.",
         "hurricane_season": "Stagione degli uragani (da giugno a novembre).",
         "hours_not_published": "Non tutti gli orari sono ancora pubblicati.",
@@ -3536,7 +3545,36 @@
       "stripWeekNone": "Settimana del {date}: nessuna cifra",
       "stripWindow": "proposta {rank}",
       "stripLegend": "Altezza: l’attesa alle grandi attrazioni dei tuoi parchi quella settimana. Colore: come si colloca la settimana rispetto al resto del periodo. I segni sotto indicano le tue proposte.",
-      "sketch": "Giorno per giorno"
+      "sketch": "Giorno per giorno",
+      "rankedLower": "classificato più in basso: {reasons}"
+    },
+    "evening": {
+      "plus": "+ serata: {name}",
+      "title": "Serata",
+      "leg": "{minutes} min",
+      "travel": "Circa {minutes} min per arrivarci.",
+      "alternatives": "Possibile anche: {names}",
+      "officialSite": "Sito ufficiale di {name}",
+      "reason": {
+        "park_closes_early": "Il parco chiude prima per i visitatori giornalieri, quindi la sera è libera.",
+        "night_show": "Lì c’è uno spettacolo serale.",
+        "fireworks_view": "Da lì si vedono i fuochi d’artificio.",
+        "open_later": "Resta aperto più a lungo.",
+        "free_entry": "L’ingresso è gratuito.",
+        "short_transfer": "Il tragitto è breve."
+      },
+      "highlight": {
+        "night_show": "Spettacolo serale",
+        "fireworks": "Fuochi d’artificio",
+        "fireworks_view": "Vista sui fuochi",
+        "dining": "Cena",
+        "shopping": "Shopping"
+      }
+    },
+    "climate": {
+      "extreme_heat": "caldo",
+      "hurricane_season": "stagione degli uragani",
+      "hurricane_peak": "picco della stagione degli uragani"
     }
   },
   "news": {

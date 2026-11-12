@@ -3210,7 +3210,7 @@
       "gridLabel": "Jour d’arrivée et de départ",
       "wait": "attente la plus courte aux grandes attractions environ {minutes} min",
       "waitLastYear": "l’an dernier environ {minutes} min aux grandes attractions",
-      "legend": "Sous chaque date : l’attente la plus courte aux grandes attractions ce jour-là, en minutes, dans le parc où les files sont les plus courtes.",
+      "legend": "Sous chaque date : l’attente la plus courte aux grandes attractions ce jour-là, en minutes, dans le parc où les files sont les plus courtes. Les parcs qui ferment tôt ne comptent pas.",
       "legendLastYear": "Les chiffres en italique sont des journées mesurées l’an dernier.",
       "pickArrival": "Touche ton jour d’arrivée.",
       "pickDeparture": "Puis ton jour de départ.",
@@ -3313,7 +3313,15 @@
       "restMore": "Un jour de plus",
       "hop": "Park hopping",
       "hopHint": "Deux parcs d’un même resort dans la journée, quand le voyage compte moins de jours que de visites.",
-      "hopOn": "park hopping"
+      "hopOn": "park hopping",
+      "ticket": "As-tu un billet Park Hopper (de parc à parc) ?",
+      "ticketHopper": "Oui, Park Hopper",
+      "ticketHopperHint": "Lui seul permet deux parcs dans la journée, ou une soirée dans un deuxième parc.",
+      "ticketBase": "Non, un parc par jour",
+      "ticketShort": "Park Hopper",
+      "evenings": "Planifier les soirées",
+      "eveningsHint": "Quand un parc ferme tôt, le plan propose pour la soirée un deuxième parc ou Disney Springs et CityWalk.",
+      "eveningsOff": "pas de soirées"
     },
     "result": {
       "label": "Ton plan",
@@ -3342,7 +3350,8 @@
       "lastYear": "Nous planifions ces dates avec l’affluence mesurée l’an dernier. La prévision les atteindra vers le {date}.",
       "about": "environ {minutes} min",
       "daysLabel": "Tes journées",
-      "split": "{visits, plural, =2 {Nous avons ajouté un deuxième jour à {park}.} other {Nous avons donné # jours à {park}.}}"
+      "split": "{visits, plural, =2 {Nous avons ajouté un deuxième jour à {park}.} other {Nous avons donné # jours à {park}.}}",
+      "hopNeedsHopper": "Le park hopping ne compte qu’avec un billet Park Hopper ; choisis-le dans « Réglages »."
     },
     "day": {
       "arrival": "Arrivée",
@@ -3512,7 +3521,7 @@
       "details": "Détails",
       "plan": "Planifier ces dates",
       "reason": {
-        "no_school_break": "Pas de vacances scolaires ces jours-là.",
+        "no_school_break": "Pas de vacances scolaires américaines.",
         "after_holidays": "Juste après les fêtes.",
         "before_spring_break": "Avant l’affluence des vacances de printemps.",
         "festival": "Un festival a lieu ces jours-là.",
@@ -3521,7 +3530,7 @@
       },
       "warning": {
         "party_nights": "{count, plural, =1 {1 soirée de fête} other {# soirées de fête}} : les visiteurs à la journée doivent alors partir plus tôt.",
-        "school_break": "Tombe pendant des vacances scolaires.",
+        "school_break": "Vacances scolaires américaines.",
         "water_park_closed": "Un parc aquatique choisi est fermé pour la saison.",
         "hurricane_season": "Saison des ouragans (de juin à novembre).",
         "hours_not_published": "Tous les horaires ne sont pas encore publiés.",
@@ -3536,7 +3545,36 @@
       "stripWeekNone": "Semaine du {date} : pas de chiffre",
       "stripWindow": "proposition {rank}",
       "stripLegend": "Hauteur : l’attente aux grandes attractions de tes parcs cette semaine-là. Couleur : la semaine comparée au reste de la période. Les repères dessous montrent tes propositions.",
-      "sketch": "Jour par jour"
+      "sketch": "Jour par jour",
+      "rankedLower": "classé plus bas : {reasons}"
+    },
+    "evening": {
+      "plus": "+ soirée : {name}",
+      "title": "Soirée",
+      "leg": "{minutes} min",
+      "travel": "Environ {minutes} min pour y aller.",
+      "alternatives": "Aussi possible : {names}",
+      "officialSite": "Site officiel de {name}",
+      "reason": {
+        "park_closes_early": "Le parc ferme tôt pour les visiteurs à la journée, la soirée est donc libre.",
+        "night_show": "Un spectacle du soir y a lieu.",
+        "fireworks_view": "On y voit le feu d’artifice.",
+        "open_later": "C’est ouvert plus tard.",
+        "free_entry": "L’entrée est gratuite.",
+        "short_transfer": "Le trajet est court."
+      },
+      "highlight": {
+        "night_show": "Spectacle du soir",
+        "fireworks": "Feu d’artifice",
+        "fireworks_view": "Vue sur le feu d’artifice",
+        "dining": "Dîner",
+        "shopping": "Shopping"
+      }
+    },
+    "climate": {
+      "extreme_heat": "chaud",
+      "hurricane_season": "saison des ouragans",
+      "hurricane_peak": "pic de la saison des ouragans"
     }
   },
   "news": {

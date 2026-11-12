@@ -114,3 +114,24 @@ export function useEveningName(): (day: PlanDay) => string | null {
     return evening.venue ? (venueByKey.get(evening.venue)?.name ?? null) : null;
   };
 }
+
+/**
+ * The season's facts as short chips ("hot", "hurricane season", "peak hurricane season"), shared by
+ * the day sheet and the When mode's cards.
+ */
+export function ClimateChips({ codes }: { codes: readonly string[] }) {
+  const t = useTranslations('orlandoPlanner.climate');
+  if (codes.length === 0) return null;
+  return (
+    <span className="flex flex-wrap gap-1">
+      {codes.map((code) => (
+        <span
+          key={code}
+          className="border-crowd-high/40 text-crowd-ink-high rounded-full border px-2 py-0.5 text-xs"
+        >
+          {t(code)}
+        </span>
+      ))}
+    </span>
+  );
+}

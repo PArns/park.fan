@@ -14,34 +14,11 @@ import {
 import { getDateTimeFormat } from '@/lib/utils/intl-format';
 import { addDays, formatParkDayRange } from '@/lib/utils/park-day';
 import { MAX_DAYS_AHEAD, MAX_TRIP_DAYS, setTripDates, tripDates } from '@/lib/orlando/plan';
-import { closesEarly } from '@/lib/orlando/hub-data';
+import { dateFigure } from '@/lib/orlando/plan-week';
 import type { TripCalendarDay } from '@/lib/orlando/types';
 import { usePlanContext } from './plan-context';
 import { useTripCalendar } from './use-trip-plan';
 import { PlanCheckRow } from './plan-controls';
-
-/**
- * The figure under a date: the lower of the day's picks per resort (`best`, the API's shortest
- * lines with early closings counted), so a party night that closes at 6 pm never makes a date look
- * quiet. Where the API names no pick (a last-year day, no hours yet), the lowest headliner that is
- * open, has a figure and does not close early. `null` where none has one.
- */
-function shortestWait(
-  day: TripCalendarDay | undefined,
-  headliners: readonly string[]
-): number | null {
-  if (!day) return null;
-  const picks = Object.values(day.best ?? {});
-  const candidates = picks.length > 0 ? picks : headliners;
-  let best: number | null = null;
-  for (const slug of candidates) {
-    const cell = day.parks[slug];
-    if (!cell || cell.status === 'CLOSED' || cell.headlinerWait == null) continue;
-    if (picks.length === 0 && closesEarly(cell)) continue;
-    if (best === null || cell.headlinerWait < best) best = cell.headlinerWait;
-  }
-  return best;
-}
 
 /**
  * The trip's dates: a month at a time (`lib/planner/month-grid.ts`, the day planner's own grid),
@@ -173,7 +150,7 @@ export function PlanDates({ defaultMonth }: { defaultMonth?: string }) {
         {cells.map((cell) => {
           const enabled = live && cell.inMonth && selectable(cell.date);
           const day = byDate.get(cell.date);
-          const wait = shortestWait(day, headliners);
+          const wait = dateFigure(day, headliners);
           const lastYear = headliners.some((s) => day?.parks[s]?.basis === 'last_year');
           const isStart = cell.date === start;
           const isEnd = cell.date === end;
