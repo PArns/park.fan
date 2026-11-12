@@ -13,6 +13,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `BestWorstWeeks` _component_: Chapter 03: the three quietest and busiest whole weeks, each with one line on why.
 - `SchoolHolidayLinks` _component_: Chapter 04: each school-holiday region the API knows, with every break a trip of `days` fits into, linked to the planner's When mode inside that break. The locale's own country opens.
 - `bestTimeLabels` _function_: The labels every chapter needs, read once by the page.
+- `climatePeriod` _function_: The climate normal's years as a range, `2015–2024`; the API spells them with a hyphen.
 
 ### [`best-time/best-time-page.tsx`](../../components/orlando/best-time/best-time-page.tsx)
 

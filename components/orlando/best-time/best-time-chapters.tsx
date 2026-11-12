@@ -5,7 +5,7 @@ import { Card } from '@/components/ui/card';
 import { buttonLinkProps } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { CROWD_BADGE_CLASS, CROWD_DOT_CLASS } from '@/lib/utils/crowd-level-styles';
-import { getDateTimeFormat } from '@/lib/utils/intl-format';
+import { getDateTimeFormat, getNumberFormat } from '@/lib/utils/intl-format';
 import { formatParkDay } from '@/lib/utils/park-day';
 import { translateHolidayName } from '@/lib/utils/holiday-names';
 import { formatWindow } from '@/lib/orlando/hub-data';
@@ -56,6 +56,16 @@ export async function bestTimeLabels(locale: string) {
   return { seasonLabel, seasonStatus };
 }
 
+/** A ticketed evening that leaves the day guests' hours alone, as Disney After Hours does. */
+function isAfterHours(season: TripSeason): boolean {
+  return season.kind === 'special_event' && season.separateTicket === true && !!season.opensAt;
+}
+
+/** The climate normal's years as a range, `2015–2024`; the API spells them with a hyphen. */
+export function climatePeriod(period: string): string {
+  return period.replace('-', '–');
+}
+
 const day = (locale: string, date: string) =>
   formatParkDay(locale, date, { day: 'numeric', month: 'long' });
 
@@ -98,9 +108,10 @@ export async function WindowCards({
               <p className="text-muted-foreground text-xs font-semibold tracking-wider uppercase">
                 {tHub('rank', { rank: window.rank })}
               </p>
-              <h3 className="text-xl font-bold">
+              {/* An h2: the cards follow the h1 directly, before the first chapter. */}
+              <h2 className="text-xl font-bold">
                 <time dateTime={window.from}>{formatWindow(window, locale)}</time>
-              </h3>
+              </h2>
               <p className="text-sm font-semibold tabular-nums">
                 {tWhen('wait', { minutes: window.headlinerWait })}
               </p>
@@ -314,6 +325,7 @@ export async function MonthRows({
   const tStrip = await getTranslations({ locale, namespace: 'orlandoBestTime.strip' });
   const monthName = getDateTimeFormat(locale, { month: 'long', timeZone: 'UTC' });
   const statesOf = (count: number, total: number) => t('statesOf', { count, total });
+  const hourFormat = getNumberFormat(locale, { maximumFractionDigits: 1 });
   return (
     <ol className="divide-border/70 divide-y border-y">
       {rows.map((row) => {
@@ -345,21 +357,25 @@ export async function MonthRows({
             </li>
           );
         }
-        const seasons = seasonsOn(when.seasons, {
-          from: `${row.key}-01`,
-          to: `${row.key}-31`,
-        }).filter((s) => data.seasons.includes(s.id));
+        const seasons = seasonsOn(
+          when.seasons.filter((s) => data.seasons.includes(s.id)),
+          { from: `${row.key}-01`, to: `${row.key}-31` }
+        );
         const breaks = breakRuns(data.usSchoolBreakDays);
         const eu = europeanBreaks(regions, row.key, countries);
         const euText = europeanCell(eu, statesOf, t('euUnknown'));
         const climate = data.climate;
         const hours = [
           row.hours && data.dayGuestHours != null
-            ? t(`hours.${row.hours}`, { hours: data.dayGuestHours })
+            ? t(`hours.${row.hours}`, { hours: hourFormat.format(data.dayGuestHours) })
             : t('hours.unknown'),
           ...(data.partyNights > 0 ? [t('partyNights', { count: data.partyNights })] : []),
         ].join(' · ');
-        const shownSeasons = seasons.slice(0, 3);
+        // A separately ticketed evening after a normal close (Disney After Hours) runs most of the
+        // year; the festivals and parties that set a month apart are named first.
+        const shownSeasons = [...seasons]
+          .sort((a, b) => Number(isAfterHours(a)) - Number(isAfterHours(b)))
+          .slice(0, 3);
         return (
           <li
             key={row.key}

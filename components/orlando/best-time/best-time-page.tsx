@@ -32,6 +32,7 @@ import { orlandoBestTimePath, orlandoPath } from '@/lib/orlando/paths';
 import {
   BEST_TIME_HOLIDAY_COUNTRIES,
   BEST_TIME_TRIP_DAYS,
+  ORLANDO_BEST_TIME_RESORTS,
   bestTimeResort,
   holidayWeek,
   lastYearFrom,
@@ -57,6 +58,7 @@ import {
   WindowCards,
   YearStrip,
   bestTimeLabels,
+  climatePeriod,
 } from './best-time-chapters';
 
 /** The hero photo per page, by media id; the credit and alt come from the media database. */
@@ -123,12 +125,13 @@ export async function BestTimePage(props: BestTimePageProps) {
         icon: CalendarPlus,
       };
   const turn = lastYearFrom(when);
+  const lastYearShown = windows.some((w) => w.basis !== 'forecast');
   const rows = monthRows(when, todayIso);
   const regions = props.schoolBreaks?.regions ?? [];
   const countryOrder = holidayRegionsFor(locale)
     .map((g) => g.country)
     .filter((c) => (BEST_TIME_HOLIDAY_COUNTRIES as readonly string[]).includes(c));
-  const faq = buildFaq({ ...props, t, parkName, labels });
+  const faq = buildFaq({ ...props, t, parkName, labels, lastYearNote: tHub('when.lastYearNote') });
 
   const calendarPark = RESORT_CALENDAR_PARK[page];
   const calendarParkRow = calendarPark && region.parks.find((p) => p.slug === calendarPark);
@@ -153,14 +156,16 @@ export async function BestTimePage(props: BestTimePageProps) {
         title={t(`title.${page}`, { year })}
         tagline={
           windows.length
-            ? t('answer.sentence', { days, year, windows: windowList(windows, locale) })
+            ? `${t('answer.sentence', { days, year, windows: windowList(windows, locale) })}${
+                lastYearShown ? ` ${tHub('when.lastYearNote')}` : ''
+              }`
             : t('answer.none', { days, year })
         }
         imageSrc={
           image ? versionedSrc(image) : '/media/disney-hollywood-studios/fantasmic-crowd.jpg'
         }
         imageAlt={getMediaAlt(HERO_IMAGE[page], locale) ?? ''}
-        scrollLabel={tHub('scroll')}
+        scrollLabel={tLanding('scroll')}
         action={action}
         flowInto
       />
@@ -191,7 +196,7 @@ export async function BestTimePage(props: BestTimePageProps) {
           </P>
           <nav aria-label={t('switcher')}>
             <ul className="flex flex-wrap gap-2">
-              {(['orlando', 'disney-world', 'universal-orlando'] as const).map((p) => (
+              {(['orlando', ...ORLANDO_BEST_TIME_RESORTS] as const).map((p) => (
                 <li key={p}>
                   <Link
                     href={orlandoBestTimePath(locale, bestTimeResort(p))}
@@ -311,7 +316,9 @@ function buildFaq({
   t,
   parkName,
   labels,
+  lastYearNote,
 }: BestTimePageProps & {
+  lastYearNote: string;
   t: Awaited<ReturnType<typeof getTranslations<'orlandoBestTime'>>>;
   parkName: (slug: string) => string;
   labels: Awaited<ReturnType<typeof bestTimeLabels>>;
@@ -326,14 +333,15 @@ function buildFaq({
   if (first && below !== null) {
     items.push({
       question: t(`faq.quietQ.${page}`, { year }),
-      answer: t('faq.quietA', {
-        days,
-        date: longDay(first.from),
-        minutes: first.headlinerWait,
-        percent: below,
-        year,
-        others: list(others.map((w) => formatWindow(w, locale))),
-      }),
+      answer:
+        t('faq.quietA', {
+          days,
+          date: longDay(first.from),
+          minutes: first.headlinerWait,
+          percent: below,
+          year,
+          others: list(others.map((w) => formatWindow(w, locale))),
+        }) + (first.basis !== 'forecast' ? ` ${lastYearNote}` : ''),
     });
   }
 
@@ -381,7 +389,7 @@ function buildFaq({
       answer: t('faq.hurricaneA', {
         months: list(wettest.map((m) => monthName(m.month))),
         rain: Math.round(wettest[0].climate!.precipitationMm),
-        period: wettest[0].climate!.period,
+        period: climatePeriod(wettest[0].climate!.period),
       }),
     });
   }
