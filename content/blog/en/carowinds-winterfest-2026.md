@@ -41,13 +41,13 @@ seo:
     - Six Flags free admission 65 and over
 ---
 
-[Carowinds](ref:carowinds) in Charlotte opens WinterFest on Friday, 27 November, with three new shows. On New Year's Eve the park stays open until 1 a.m. The event runs on 22 days until 3 January 2027. Shows, lights and most of the rides are included in a regular park ticket.
+[Carowinds](ref:carowinds) in Charlotte opens WinterFest on Friday, 27 November, with three new shows. On New Year's Eve it doesn't open until 3 p.m. and closes after the fireworks at 1 a.m. The event runs on 22 days until 3 January 2027. Shows, lights and most of the rides are included in a regular park ticket.
 
 ## What's on at WinterFest
 
 'Twas a Merry Mishap: Radio Show plays in Harmony Hall, and Trolley Tales: A Christmas Comedy on Stateline Plaza.
 
-Carolers of the Carolinas has singers leading Christmas carols while the audience joins in. Carowinds hasn't published where in the park they'll sing. The name fits, though: the park sits right on the state line between North and South Carolina, and part of the grounds belongs to York County, South Carolina. The carolers can cover both Carolinas without ever leaving the park.
+Carolers of the Carolinas has singers leading Christmas carols while the audience joins in. The name fits, because the park sits right on the state line between North and South Carolina, part of the grounds belongs to York County, South Carolina, and a few steps between two carols can take you into the other state.
 
 Tinker's Toy Factory is back in the Carowinds Theater, a Christmas musical with Santa, Tinker and the elves. Show times for all of them are only in the Carowinds app.
 
@@ -74,13 +74,13 @@ The park is closed on the days in between, and the Carolina Harbor water park do
 
 ## New Year's Eve countdowns and fireworks
 
-At midnight Carowinds counts in the new year with fireworks, and families get several earlier countdowns in the evening. Midnight in Charlotte is 6 a.m. on New Year's Day in Germany, so anyone watching from there is setting an alarm rather than staying up late. Carowinds hasn't announced yet whether the evening is included in the regular park ticket or needs a ticket of its own. It hasn't published the times of the early countdowns either.
+At midnight Carowinds counts in the new year with fireworks, and families get several earlier countdowns in the evening. By then it's 6 a.m. on New Year's Day in Germany and 5 a.m. in the UK, when the only people out are the first dog walkers. Carowinds hasn't announced yet whether the evening is included in the regular park ticket or needs a ticket of its own, or when the early countdowns start.
 
 Six Flags has also announced New Year's Eve parties this winter at Kings Island, Knott's Berry Farm, Six Flags Fiesta Texas and [Six Flags Magic Mountain](/news/six-flags-magic-mountain-holiday-in-the-park-2026).
 
 ## What the ticket covers and what costs extra
 
-Besides the shows and most of the rides, some activities are included in admission as well. Food, drinks, souvenirs and some of the holiday extras cost extra, cookie decorating among them. Photos with Santa are taken at St. Nick's Pics. Buy a Santa photo there at the regular price and the digital pictures go into your FunPix account. FunPix discounts don't apply to the Santa photo. FunPix on its own costs $19.99 for one day, plus a fee. Carowinds hasn't published prices for the Santa photo or the cookie decorating.
+Food, drinks, souvenirs and some of the holiday extras cost extra, cookie decorating among them. Photos with Santa are taken at St. Nick's Pics, always at the regular price, even if you have FunPix ($19.99 for one day, plus a fee). The digital pictures do go into your FunPix account, though.
 
 ## Tickets and the Silver Pass
 
@@ -90,15 +90,15 @@ Until 30 November Carowinds sells the 2027 Silver Pass for $69, the price of a G
 
 ## Free entry from 65
 
-Anyone born on or before 31 December 1961 gets into Carowinds for free until 3 January 2027. You can only register online, not at the park, and the free entry is activated on your first visit. At the gate you show ID with your date of birth every time. The offer only applies at the park you registered for, not at the water parks. Parking costs extra, at a price Carowinds hasn't published, and discounts, Bring-A-Friend tickets and season pass perks aren't included. Anyone coming with you needs their own ticket. This is the first winter Six Flags has offered free entry.
+Anyone born on or before 31 December 1961 gets into Carowinds for free until 3 January 2027. You can only register online, not at the park, and the free entry is activated on your first visit. At the gate you show ID with your date of birth every time. The offer only applies at the park you registered for, not at the water parks. You pay for parking yourself, and free entry doesn't come with discounts, Bring-A-Friend tickets or season pass perks. Anyone coming with you needs their own ticket, from $50 online for a set date. This is the first winter Six Flags has offered free entry.
 
 ## Which rides are running
 
-Carowinds hasn't published a list of the rides running during WinterFest. In December, whether a ride runs mostly comes down to the thermometer. [Fury 325](ref:carowinds/fury-325) and [Thunder Striker](ref:carowinds/thunder-striker) close below 40 °F (about 4 °C), [Copperhead Strike](ref:carowinds/copperhead-strike) below 41 °F (5 °C). The Carolina Goldrusher gives up below 50 °F already, which is 10 °C and in Germany counts as a mild December day. Sling Shot and WindSeeker keep going down to −5 °C. Below about 4 °C more attractions may close, and Carowinds says cold weather can affect the shows as well.
+Carowinds hasn't published a list of the rides running during WinterFest. What it has set is a minimum temperature for each of the big rides, and a December day in Charlotte easily drops below it. [Fury 325](ref:carowinds/fury-325) and [Thunder Striker](ref:carowinds/thunder-striker) close below 40 °F (about 4 °C), [Copperhead Strike](ref:carowinds/copperhead-strike) below 41 °F (5 °C). The Carolina Goldrusher gives up below 50 °F already, which is 10 °C and in Germany counts as a mild December day. Sling Shot and WindSeeker keep going down to −5 °C. Below about 4 °C more attractions may close, and Carowinds says cold weather can affect the shows as well.
 
 [Snoopy's Racing Railway](ref:carowinds/snoopys-racing-railway?full)
 
-Among the family rides, the event page lists [Snoopy's Racing Railway](ref:carowinds/snoopys-racing-railway) and calls it "all-new". That's a stretch: the ride has been running in Camp Snoopy since 24 May 2025, where it replaced Snoopy's Junction. It's a launched family coaster from ART Engineering. Powered tyres launch the train at the start and push it a second time along the way, up to 50 km/h. The track is 245 metres long and 12 metres high, with no inversions. A train of seven cars carries 14 riders. You can ride alone from 122 centimetres, or from 91 centimetres with a companion, and the limit is 196 centimetres. In the ride's backstory Snoopy delivers root beer and pizza to the Camp Snoopy Mess Hall, which on a December evening is a better order than ice cream. A ride with the same name has run since 2023 at [Canada's Wonderland](/news/canadas-wonderland-winterfest-2026), where Six Flags holds a WinterFest as well.
+Among the family rides, the event page lists [Snoopy's Racing Railway](ref:carowinds/snoopys-racing-railway) and calls it "all-new", though the ride has been running since 24 May 2025 in Camp Snoopy, called Planet Snoopy until 2018, where it replaced Snoopy's Junction. It's a launched family coaster from ART Engineering. Powered tyres launch the train at the start and push it a second time along the way, up to 50 km/h. The track is 245 metres long and 12 metres high, with no inversions. A train of seven cars carries 14 riders. You can ride alone from 122 centimetres, or from 91 centimetres with a companion, and the limit is 196 centimetres. In the ride's backstory Snoopy delivers root beer and pizza to the Camp Snoopy Mess Hall, which on a December evening is a better order than ice cream. A ride with the same name has run since 2023 at [Canada's Wonderland](/news/canadas-wonderland-winterfest-2026), where Six Flags holds a WinterFest as well.
 
 ## Getting there and staying over
 
@@ -106,9 +106,9 @@ The address is 14523 Carowinds Blvd, Charlotte, NC 28273, right off Interstate 7
 
 ## Carowinds and its WinterFest
 
-Carowinds opened on 31 March 1973 at a cost of $70 million, with Earl Patterson Hall in charge of the planning. From 1975 it belonged to Taft Broadcasting. In the early 1990s Paramount Parks took it over and renamed it Paramount's Carowinds, and on 30 June 2006 it went to Cedar Fair. Since the merger with Six Flags on 1 July 2024 it has belonged to Six Flags Entertainment Corporation, whose headquarters in Charlotte are only about eight kilometres north-east of the park. The grounds cover 165 hectares.
+Carowinds opened on 31 March 1973 at a cost of $70 million, with Earl Patterson Hall in charge of the planning. After Taft Broadcasting from 1975, Paramount Parks from the early 1990s, which renamed it Paramount's Carowinds, and Cedar Fair from 30 June 2006, the park has belonged to Six Flags Entertainment Corporation since the merger on 1 July 2024. The company's headquarters are about eight kilometres north-east in Charlotte, a short trip to its own New Year's party. The grounds cover 165 hectares.
 
-Carowinds first held a WinterFest in 2005 under Paramount, and the event came back in 2017. In 2020 the regular season was cancelled, and the Christmas event Taste of the Season ran from 21 November to 20 December instead. Camp Snoopy, the area that's home to Snoopy's Racing Railway, was created out of Planet Snoopy in 2018.
+Carowinds first held a WinterFest in 2005 under Paramount, and the event came back in 2017. In 2020 the regular season was cancelled, and the Christmas event Taste of the Season ran from 21 November to 20 December instead.
 
 [Carowinds](ref:carowinds?full)
 

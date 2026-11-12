@@ -41,13 +41,13 @@ seo:
     - Six Flags gratis toegang vanaf 65
 ---
 
-Op vrijdag 27 november begint [Carowinds](ref:carowinds) in Charlotte aan zijn WinterFest, met drie nieuwe shows. Op oudejaarsavond gaat het park pas om 1.00 uur 's nachts dicht. Het feest loopt op 22 dagen, tot en met 3 januari 2027. Shows, lichtjes en de meeste attracties zitten bij het gewone parkticket inbegrepen.
+Op vrijdag 27 november begint [Carowinds](ref:carowinds) in Charlotte aan zijn WinterFest, met drie nieuwe shows. Op oudejaarsavond gaat het park pas om 15.00 uur open, en na het vuurwerk om 1.00 uur 's nachts weer dicht. Het feest loopt op 22 dagen, tot en met 3 januari 2027. Shows, lichtjes en de meeste attracties zitten bij het gewone parkticket inbegrepen.
 
 ## Het programma van het WinterFest
 
 In de Harmony Hall speelt ’Twas a Merry Mishap: Radio Show, op de Stateline Plaza Trolley Tales: A Christmas Comedy.
 
-Bij Carolers of the Carolinas zingen koorzangers kerstliederen en zingt het publiek mee. Waar in het park ze zingen, heeft Carowinds niet gepubliceerd. De naam klopt in elk geval: Carowinds ligt pal op de grens tussen North en South Carolina. Een deel van het terrein hoort bij York County in South Carolina. De zangers kunnen dus in allebei de Carolina's optreden zonder het park uit te gaan.
+Bij Carolers of the Carolinas zingen koorzangers kerstliederen en zingt het publiek mee. De naam klopt, want Carowinds ligt pal op de grens tussen North en South Carolina, een deel van het terrein hoort bij York County in South Carolina, en wie tussen twee liedjes een paar passen loopt, staat in een andere staat.
 
 Tinker's Toy Factory in het Carowinds Theater komt terug, een kerstmusical met de kerstman, Tinker en de elfjes. De speeltijden van alle shows staan alleen in de app van Carowinds.
 
@@ -74,13 +74,13 @@ Op de dagen daartussen blijft het park dicht, en waterpark Carolina Harbor gaat 
 
 ## Aftellen en vuurwerk op oudejaarsavond
 
-Om middernacht telt Carowinds het nieuwe jaar af met vuurwerk, en voor gezinnen zijn er in de vroege avond al een paar aftelmomenten. Is het middernacht in Charlotte, dan is het in Nederland en België 6.00 uur op nieuwjaarsochtend. Wie het Amerikaanse vuurwerk vanaf hier wil zien, gaat na de eigen oliebollen dus beter slapen en zet de wekker. Of de avond bij het gewone parkticket hoort of een eigen ticket vraagt, en hoe laat de vroege aftelmomenten zijn, heeft Carowinds nog niet bekendgemaakt.
+Om middernacht telt Carowinds het nieuwe jaar af met vuurwerk, en voor gezinnen zijn er in de vroege avond al een paar aftelmomenten. In Nederland en België is het dan 6.00 uur op nieuwjaarsochtend, en lopen alleen de eerste hondenbezitters al tussen de resten van het eigen vuurwerk. Of de avond bij het gewone parkticket hoort of een eigen ticket vraagt, en hoe laat de vroege aftelmomenten zijn, heeft Carowinds nog niet bekendgemaakt.
 
 Six Flags viert deze winter ook oudejaarsavond in Kings Island, Knott's Berry Farm, Six Flags Fiesta Texas en [Six Flags Magic Mountain](/news/six-flags-magic-mountain-holiday-in-the-park-2026).
 
 ## Wat bij het ticket hoort en wat je bijbetaalt
 
-Naast de shows en de meeste attracties zit ook een deel van de activiteiten bij de toegang inbegrepen. Eten, drinken, souvenirs en een paar van de kerstextra's betaal je apart, koekjes versieren bijvoorbeeld. Een foto met de kerstman laat je maken bij St. Nick's Pics. Koop je daar een Santa-foto tegen de normale prijs, dan komen de digitale foto's in je FunPix-account. FunPix-kortingen gelden niet voor de Santa-foto. FunPix los kost 19,99 dollar voor één dag, plus kosten. Wat de Santa-foto en het koekjes versieren kosten, heeft Carowinds niet gepubliceerd.
+Eten, drinken, souvenirs en een paar van de kerstextra's betaal je apart, koekjes versieren bijvoorbeeld. Een foto met de kerstman laat je maken bij St. Nick's Pics, altijd tegen de normale prijs, ook als je FunPix hebt (19,99 dollar voor één dag, plus kosten). De digitale foto's komen daarna wel in je FunPix-account.
 
 ## Tickets en Silver Pass
 
@@ -90,15 +90,15 @@ Tot en met 30 november verkoopt Carowinds de Silver Pass 2027 voor 69 dollar, ev
 
 ## Gratis vanaf 65
 
-Ben je op of vóór 31 december 1961 geboren, dan kom je tot en met 3 januari 2027 gratis in Carowinds. Aanmelden kan alleen online en niet bij het park, en de toegang wordt bij je eerste bezoek geactiveerd. Bij de ingang laat je elke keer een identiteitsbewijs met je geboortedatum zien. Het aanbod geldt alleen in het park waarvoor je je hebt aangemeld en niet in de waterparken. Parkeren betaal je apart; hoeveel, heeft Carowinds niet gepubliceerd. Kortingen, Bring-A-Friend-tickets en de voordelen van een Season Pass horen er niet bij, en wie met je meegaat, heeft een eigen ticket nodig. Six Flags biedt de gratis toegang deze winter voor het eerst aan.
+Ben je op of vóór 31 december 1961 geboren, dan kom je tot en met 3 januari 2027 gratis in Carowinds. Aanmelden kan alleen online en niet bij het park, en de toegang wordt bij je eerste bezoek geactiveerd. Bij de ingang laat je elke keer een identiteitsbewijs met je geboortedatum zien. Het aanbod geldt alleen in het park waarvoor je je hebt aangemeld en niet in de waterparken. Parkeren betaal je zelf. Kortingen, Bring-A-Friend-tickets en Season Pass-voordelen krijg je bij de gratis toegang niet, en wie met je meegaat, koopt een eigen ticket, voor een vaste dag online vanaf 50 dollar. Six Flags biedt de gratis toegang deze winter voor het eerst aan.
 
 ## Welke attracties draaien
 
-Een lijst met attracties voor het WinterFest heeft Carowinds niet gepubliceerd. Of een baan rijdt, hangt in december vooral af van de thermometer. [Fury 325](ref:carowinds/fury-325) en [Thunder Striker](ref:carowinds/thunder-striker) gaan dicht onder 40 graden Fahrenheit, ongeveer 4 °C, [Copperhead Strike](ref:carowinds/copperhead-strike) onder 41 graden (5 °C). De Carolina Goldrusher houdt er al onder 50 graden mee op, 10 °C dus, in Nederland een zachte decemberdag. Sling Shot en WindSeeker houden het vol tot min 5 °C. Onder ongeveer 4 °C kunnen meer attracties sluiten, en volgens Carowinds kan de kou ook gevolgen hebben voor de shows.
+Een lijst met attracties voor het WinterFest heeft Carowinds niet gepubliceerd. Wel heeft Carowinds voor elke grote baan een minimumtemperatuur vastgelegd, en daar zakt een decemberdag in Charlotte makkelijk onder. [Fury 325](ref:carowinds/fury-325) en [Thunder Striker](ref:carowinds/thunder-striker) gaan dicht onder 40 graden Fahrenheit, ongeveer 4 °C, [Copperhead Strike](ref:carowinds/copperhead-strike) onder 41 graden (5 °C). De Carolina Goldrusher houdt er al onder 50 graden mee op, 10 °C dus, in Nederland een zachte decemberdag. Sling Shot en WindSeeker houden het vol tot min 5 °C. Onder ongeveer 4 °C kunnen meer attracties sluiten, en volgens Carowinds kan de kou ook gevolgen hebben voor de shows.
 
 [Snoopy's Racing Railway](ref:carowinds/snoopys-racing-railway?full)
 
-Bij de familieattracties noemt de evenementpagina [Snoopy's Racing Railway](ref:carowinds/snoopys-racing-railway), en ze noemt hem “all-new”. Zo nieuw is hij niet: de baan rijdt sinds 24 mei 2025 in Camp Snoopy, waar hij Snoopy's Junction verving. Het is een gelanceerde familieachtbaan van ART Engineering. Aangedreven banden schieten de trein bij de start weg en geven hem onderweg een tweede duw, tot 50 km/u. Het parcours is 245 meter lang en 12 meter hoog, zonder inversies. Een trein van zeven wagentjes neemt 14 mensen mee. Zonder begeleiding mag je mee vanaf 122 centimeter, onder begeleiding vanaf 91 centimeter. Boven 196 centimeter houdt het op. In het verhaal achter de baan bezorgt Snoopy root beer en pizza bij de Mess Hall van Camp Snoopy, en op een decemberavond klinkt dat allebei verstandiger dan een ijsje. Een baan met dezelfde naam rijdt sinds 2023 in [Canada's Wonderland](/news/canadas-wonderland-winterfest-2026), waar Six Flags ook een WinterFest houdt.
+Bij de familieattracties noemt de evenementpagina [Snoopy's Racing Railway](ref:carowinds/snoopys-racing-railway), en ze noemt hem “all-new”. Zo nieuw is hij niet, want de baan rijdt sinds 24 mei 2025 in Camp Snoopy, dat tot 2018 Planet Snoopy heette, en verving daar Snoopy's Junction. Het is een gelanceerde familieachtbaan van ART Engineering. Aangedreven banden schieten de trein bij de start weg en geven hem onderweg een tweede duw, tot 50 km/u. Het parcours is 245 meter lang en 12 meter hoog, zonder inversies. Een trein van zeven wagentjes neemt 14 mensen mee. Zonder begeleiding mag je mee vanaf 122 centimeter, onder begeleiding vanaf 91 centimeter. Boven 196 centimeter houdt het op. In het verhaal achter de baan bezorgt Snoopy root beer en pizza bij de Mess Hall van Camp Snoopy, en op een decemberavond klinkt dat allebei verstandiger dan een ijsje. Een baan met dezelfde naam rijdt sinds 2023 in [Canada's Wonderland](/news/canadas-wonderland-winterfest-2026), waar Six Flags ook een WinterFest houdt.
 
 ## Bereikbaarheid en overnachten
 
@@ -106,9 +106,9 @@ Het adres is 14523 Carowinds Blvd, Charlotte, NC 28273. Het park ligt direct aan
 
 ## Carowinds en zijn WinterFest
 
-Carowinds ging op 31 maart 1973 open en kostte 70 miljoen dollar; Earl Patterson Hall leidde de planning. Vanaf 1975 was het park van Taft Broadcasting. Begin jaren negentig nam Paramount Parks het over en doopte het om tot Paramount's Carowinds, en op 30 juni 2006 ging het naar Cedar Fair. Sinds de fusie met Six Flags op 1 juli 2024 hoort het bij de Six Flags Entertainment Corporation. Het hoofdkantoor daarvan staat in Charlotte, zo'n acht kilometer ten noordoosten van het park. Het terrein is 165 hectare groot.
+Carowinds ging op 31 maart 1973 open en kostte 70 miljoen dollar; Earl Patterson Hall leidde de planning. Na Taft Broadcasting vanaf 1975, Paramount Parks vanaf begin jaren negentig, dat er Paramount's Carowinds van maakte, en Cedar Fair vanaf 30 juni 2006 hoort het park sinds de fusie op 1 juli 2024 bij de Six Flags Entertainment Corporation. Dat concern heeft zijn hoofdkantoor zo'n acht kilometer ten noordoosten van het park in Charlotte en heeft het voor zijn eigen oudejaarsfeest niet ver. Het terrein is 165 hectare groot.
 
-Carowinds had al in 2005, onder Paramount, een WinterFest, en in 2017 kwam het terug. In 2020 ging het gewone seizoen niet door; van 21 november tot 20 december liep in plaats daarvan het kerstevenement Taste of the Season. Camp Snoopy, het themagebied van Snoopy's Racing Railway, is in 2018 ontstaan uit Planet Snoopy.
+Carowinds had al in 2005, onder Paramount, een WinterFest, en in 2017 kwam het terug. In 2020 ging het gewone seizoen niet door; van 21 november tot 20 december liep in plaats daarvan het kerstevenement Taste of the Season.
 
 [Carowinds](ref:carowinds?full)
 
