@@ -36,7 +36,7 @@ rideLinks:
 seo:
   title: 'Hops & Harvest in Kings Dominion: data, prijzen, attracties'
   description: >-
-    Hops & Harvest in Kings Dominion op zeven dagen van 14 tot 29-11-2026, telkens van 11.00 tot 19.00 uur. Tickets online vanaf 45 dollar, geen WinterFest.
+    Hops & Harvest in Kings Dominion op zeven dagen van 14 tot 29-11-2026, van 11 tot 19 uur. Tickets online vanaf 45 dollar, in december geen WinterFest.
   keywords:
     - Kings Dominion Hops and Harvest
     - Kings Dominion Hops & Harvest Festival
@@ -50,13 +50,13 @@ seo:
     - Six Flags gratis toegang vanaf 65
 ---
 
-Op zaterdag 14 november begint in [Kings Dominion](ref:kings-dominion) in Doswell, Virginia, het nieuwe herfstfeest Hops & Harvest, dat zeven dagen duurt. De laatste feestdag, 29 november, is ook de laatste dag van het seizoen. Een WinterFest komt er dit jaar niet: in december gaat het park geen enkele dag open. Het feest speelt zich af op de International Street, met herfstgerechten, proeverijen van ambachtelijke dranken uit de regio, livemuziek en activiteiten voor kinderen en ouders.
+Op zaterdag 14 november begint in [Kings Dominion](ref:kings-dominion) in Doswell, Virginia, het nieuwe herfstfeest Hops & Harvest, verspreid over zeven dagen. De laatste feestdag, 29 november, is ook de laatste dag van het seizoen. Een WinterFest komt er dit jaar niet: in december gaat het park geen enkele dag open. Het feest speelt zich af op de International Street, met herfstgerechten, proeverijen van ambachtelijke dranken uit de regio, livemuziek en activiteiten voor kinderen en ouders.
 
 ## Wat er bij Hops & Harvest te doen is
 
-De meeste herfstgerechten komen uit de Grain and Grill International Kitchen. Daar maken ze pork sliders met Koreaanse barbecuesaus en een frambozensaus, brisket mac and cheese (macaroni met kaas en runderborst), een Bacon Cheddar Potato Keg met zure room en lente-ui, en als toetje Cinnamon Donut Holes met een saus van pumpkin spice. Firehouse BBQ verkoopt kalkoenpoten, zoete-aardappelfrietjes met kaneel en hot honey, en chili met bonen en cheddar. Die kalkoenpoten liggen er ook op de vrijdag na Thanksgiving.
+De meeste herfstgerechten komen uit de Grain and Grill International Kitchen. Daar maken ze pork sliders met Koreaanse barbecuesaus en een frambozensaus, brisket mac and cheese (macaroni met kaas en runderborst), en een Bacon Cheddar Potato Keg met zure room en lente-ui. Als toetje zijn er Cinnamon Donut Holes met een saus van pumpkin spice. Firehouse BBQ verkoopt kalkoenpoten, zoete-aardappelfrietjes met kaneel en hot honey, en chili met bonen en cheddar. Die kalkoenpoten liggen er ook op de vrijdag na Thanksgiving.
 
-In de Pizza Parlor gaat er flespompoen en prosciutto op een witte pizza met een alfredobasis en rucola. De Funnel Cake Kitchen bakt een funnel cake met appelschijfjes, kaneel en karamel, en in de Biergarten ligt een reuzenpretzel met pumpkin spice klaar. Wie een Season Pass of membership van Kings Dominion heeft, krijgt bij Grain and Grill of Firehouse BBQ één keer een tweede hoofdgerecht voor de halve prijs, bovenop de gewone korting voor passhouders.
+In de Pizza Parlor liggen flespompoen en prosciutto op een witte pizza met een alfredobasis en rucola. De Funnel Cake Kitchen bakt een funnel cake met appelschijfjes, kaneel en karamel, en in de Biergarten ligt een reuzenpretzel met pumpkin spice klaar. Wie een Season Pass of membership van Kings Dominion heeft, krijgt bij Grain and Grill of Firehouse BBQ één keer een tweede hoofdgerecht voor de halve prijs, bovenop de gewone korting voor passhouders.
 
 De Adult Beverage Tastings staan verspreid rond de fontein van de International Street. Proeven mag pas vanaf 21 jaar, en iedereen laat daarvoor een geldig officieel identiteitsbewijs of rijbewijs zien. Drinken mag alleen in de aangewezen zones. Wat de proeverijen en de gerechten kosten en welke producenten meedoen, heeft het park niet bekendgemaakt. In het hele park betaal je zonder contant geld, met een pinpas of creditcard, Apple Pay of Google Pay. Heb je alleen briefgeld bij je, dan wissel je dat bij een Cash-to-Card-automaat om voor een kaart.
 
@@ -103,7 +103,7 @@ Pantherian is 93 meter hoog en duikt onder een hoek van 85 graden 91 meter naar 
 
 ```
 
-Dicht zijn [Flight of Fear](ref:kings-dominion/flight-of-fear) en [Grizzly](ref:kings-dominion/grizzly), heel Old Virginia en het deel van Candy Apple Grove met [WindSeeker](ref:kings-dominion/windseeker), [Twisted Timbers](ref:kings-dominion/twisted-timbers) en [Apple Zapple](ref:kings-dominion/apple-zapple). Twisted Timbers bouwde Kings Dominion in 2018 om uit de houten achtbaan Hurler, tot een hybride van hout en staal. Grizzly is een houten achtbaan uit 1982 met een baan van 964 meter, waarvan in 2023 zo'n 317 meter opnieuw is gelegd. Flight of Fear opende in 1996 als The Outer Limits: Flight of Fear en gaat met lineaire motoren in vier seconden naar 87 km/u. De hele rit gaat door volledige duisternis.
+Dicht zijn [Flight of Fear](ref:kings-dominion/flight-of-fear) en [Grizzly](ref:kings-dominion/grizzly), heel Old Virginia en het deel van Candy Apple Grove met [WindSeeker](ref:kings-dominion/windseeker), [Twisted Timbers](ref:kings-dominion/twisted-timbers) en [Apple Zapple](ref:kings-dominion/apple-zapple). In 2018 bouwde Kings Dominion de houten achtbaan Hurler om tot Twisted Timbers, een hybride van hout en staal. Grizzly is een houten achtbaan uit 1982 met een baan van 964 meter, waarvan in 2023 zo'n 317 meter opnieuw is gelegd. Flight of Fear opende in 1996 als The Outer Limits: Flight of Fear en gaat met lineaire motoren in vier seconden naar 87 km/u. De hele rit gaat door volledige duisternis.
 
 Ook dicht:
 

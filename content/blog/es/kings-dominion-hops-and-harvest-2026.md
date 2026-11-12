@@ -50,11 +50,11 @@ seo:
     - Six Flags entrada gratis mayores de 65
 ---
 
-Desde el sábado 14 de noviembre, [Kings Dominion](ref:kings-dominion), en Doswell (Virginia), celebra Hops & Harvest, su nueva fiesta de otoño, durante siete días. El último es el 29 de noviembre, y con él el parque cierra la temporada. Este año no habrá WinterFest: en diciembre Kings Dominion no abre ni un solo día. La fiesta ocupa la International Street, con platos de otoño, catas de bebidas artesanales de la región, música en directo y actividades para familias.
+[Kings Dominion](ref:kings-dominion), en Doswell (Virginia), estrena el sábado 14 de noviembre Hops & Harvest, una fiesta de otoño repartida en siete días. El último es el 29 de noviembre, y con él el parque cierra la temporada. Este año no habrá WinterFest: en diciembre Kings Dominion no abre ni un solo día. La fiesta ocupa la International Street, con platos de otoño, catas de bebidas artesanales de la región, música en directo y actividades para familias.
 
 ## Qué hay en Hops & Harvest
 
-La mayor parte de la carta de otoño sale de la Grain and Grill International Kitchen: Pork Sliders, minihamburguesas de cerdo con salsa barbacoa coreana y un hilo de frambuesa; Brisket Mac and Cheese, macarrones con queso y pecho de ternera; un Bacon Cheddar Potato Keg con nata agria y cebolleta; y, de postre, Cinnamon Donut Holes, bolitas de dónut con canela y un hilo de pumpkin spice. Firehouse BBQ vende muslos de pavo, boniato frito con canela y hot honey, y chili con judías y cheddar. Los muslos de pavo siguen en la carta el viernes después de Acción de Gracias, por si en casa no quedó ni un hueso.
+La mayor parte de la carta de otoño sale de la Grain and Grill International Kitchen: Pork Sliders, minihamburguesas de cerdo con salsa barbacoa coreana y un hilo de frambuesa; Brisket Mac and Cheese, macarrones con queso y pecho de ternera; y un Bacon Cheddar Potato Keg con nata agria y cebolleta. De postre hay Cinnamon Donut Holes, bolitas de dónut con canela y un hilo de pumpkin spice. Firehouse BBQ vende muslos de pavo, boniato frito con canela y hot honey, y chili con judías y cheddar. Los muslos de pavo siguen en la carta el viernes después de Acción de Gracias, por si en casa no quedó ni un hueso.
 
 En el Pizza Parlor hay una pizza blanca con base de alfredo, calabaza moscada, prosciutto y rúcula. La Funnel Cake Kitchen prepara un funnel cake con láminas de manzana, canela y caramelo, y en el Biergarten sirven un pretzel gigante de pumpkin spice. Con un Season Pass o una Membership de Kings Dominion, el segundo plato principal sale a mitad de precio una vez, en Grain and Grill o en Firehouse BBQ. El descuento normal del pase se aplica además.
 
@@ -79,7 +79,7 @@ Los siete días el parque abre de 11:00 a 19:00. Lo que cuesta la entrada de un 
 - sábado 28 de noviembre: 55 dólares
 - domingo 29 de noviembre: 45 dólares
 
-A eso se suman una tasa de gestión de hasta 9,99 dólares y los impuestos. En taquilla, el mismo día cuesta 90 dólares. La fiesta va incluida en la entrada normal, y los niños de hasta dos años entran sin entrada. El aparcamiento cuesta 39 dólares por internet, o 49 en el Preferred Parking. El parque acuático Soak City está cerrado en noviembre.
+A eso se suman una tasa de gestión de hasta 9,99 dólares y los impuestos. En taquilla, el mismo día cuesta 90 dólares. La fiesta va incluida en la entrada normal, y los niños de hasta dos años no necesitan entrada. El aparcamiento cuesta 39 dólares por internet, o 49 en el Preferred Parking. El parque acuático Soak City está cerrado en noviembre.
 
 ```best-days-widget slug=kings-dominion
 
@@ -91,7 +91,7 @@ Si tienes 65 años o más, entras gratis hasta el 29 de noviembre. Antes hay que
 
 Los militares estadounidenses en activo, los exmilitares y los veteranos reciben por el Veterans Day una entrada de un día gratis si muestran en la puerta su identificación militar o un justificante de veterano. En la página del evento y en el calendario, Kings Dominion da como fechas el 14 y el 15 de noviembre; en la página de descuentos militares, solo el 14.
 
-Hasta el 30 de noviembre, Kings Dominion vende el Silver Pass 2027 por 69 dólares, menos de lo que cuesta un solo día en taquilla. Vale hasta el Labor Day de 2027, también en Soak City, con el aparcamiento incluido. Cada pase nuevo o renovado trae una entrada Bring-A-Friend, que hay que usar antes del 31 de mayo de 2027.
+Hasta el 30 de noviembre, Kings Dominion vende el Silver Pass 2027 por 69 dólares, menos de lo que cuesta un solo día en taquilla. Vale hasta el Labor Day de 2027, también en Soak City, con el aparcamiento incluido. Cada pase nuevo o renovado trae una entrada Bring-A-Friend, que hay que usar como muy tarde el 31 de mayo de 2027.
 
 ## Qué montañas rusas funcionan y cuáles no
 

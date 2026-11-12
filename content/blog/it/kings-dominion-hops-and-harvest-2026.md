@@ -7,7 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Dal 14 novembre Kings Dominion, in Virginia, festeggia per sette giorni la nuova festa d'autunno Hops & Harvest. Il 29 novembre il parco chiude la stagione e a dicembre non apre nemmeno un giorno. Online il biglietto giornaliero costa da 45 dollari.
+  Dal 14 novembre Kings Dominion, in Virginia, ospita in sette giornate la sua nuova festa d'autunno, Hops & Harvest. Il 29 novembre il parco chiude la stagione e a dicembre non apre nemmeno un giorno. Online il biglietto giornaliero costa da 45 dollari.
 tags:
   - notizie
   - kings-dominion
@@ -50,11 +50,11 @@ seo:
     - Six Flags ingresso gratuito over 65
 ---
 
-Da sabato 14 novembre [Kings Dominion](ref:kings-dominion), a Doswell in Virginia, festeggia per sette giorni Hops & Harvest, la sua nuova festa d'autunno. Il 29 novembre, ultimo giorno della festa, il parco chiude la stagione. Quest'anno non c'è nessun WinterFest e a dicembre il parco non apre nemmeno un giorno. La festa si tiene sulla International Street, con piatti autunnali, assaggi di bevande artigianali della zona, musica dal vivo e attività per le famiglie.
+Da sabato 14 novembre [Kings Dominion](ref:kings-dominion), a Doswell in Virginia, ospita in sette giornate Hops & Harvest, la sua nuova festa d'autunno. Il 29 novembre, ultimo giorno della festa, il parco chiude la stagione. Quest'anno non c'è nessun WinterFest e a dicembre il parco non apre nemmeno un giorno. La festa si tiene sulla International Street, con piatti autunnali, assaggi di bevande artigianali della zona, musica dal vivo e attività per le famiglie.
 
 ## Cosa offre Hops & Harvest
 
-Gran parte dei piatti autunnali esce dalla cucina del Grain and Grill International Kitchen: pork slider con salsa barbecue coreana e un filo di lampone, brisket mac and cheese, cioè maccheroni al formaggio con petto di manzo, un Bacon Cheddar Potato Keg con panna acida e cipollotto e, per dessert, Cinnamon Donut Holes con una glassa al pumpkin spice. Firehouse BBQ vende cosce di tacchino, patatine di patata dolce con cannella e hot honey e chili con fagioli e cheddar. Le cosce di tacchino ci sono anche il venerdì dopo il Thanksgiving, per chi il giorno prima a casa ha finito tutto.
+Gran parte dei piatti autunnali esce dalla cucina del Grain and Grill International Kitchen: pork slider con salsa barbecue coreana e un filo di lampone, brisket mac and cheese, cioè maccheroni al formaggio con petto di manzo, e un Bacon Cheddar Potato Keg con panna acida e cipollotto. Per dessert ci sono i Cinnamon Donut Holes con una glassa al pumpkin spice. Firehouse BBQ vende cosce di tacchino, patatine di patata dolce con cannella e hot honey e chili con fagioli e cheddar. Le cosce di tacchino ci sono anche il venerdì dopo il Thanksgiving, per chi il giorno prima a casa ha finito tutto.
 
 Al Pizza Parlor la zucca butternut e il prosciutto crudo finiscono su una pizza bianca con base Alfredo e rucola. La Funnel Cake Kitchen prepara un funnel cake con fette di mela, cannella e caramello, e nel Biergarten c'è un brezel gigante al pumpkin spice. Chi ha un Season Pass o una Membership di Kings Dominion paga a metà prezzo un secondo piatto principale da Grain and Grill o da Firehouse BBQ, una volta sola. Lo sconto abituale del pass si aggiunge.
 
@@ -69,7 +69,7 @@ Ci sono poi food truck, giochi e un banco per i lavoretti. In programma anche Si
 
 ## Date, orari e prezzi
 
-In tutti e sette i giorni il parco apre dalle 11 alle 19, ora locale. Il prezzo del biglietto giornaliero online cambia con la data:
+In tutti e sette i giorni il parco apre dalle 11 alle 19. Il prezzo del biglietto giornaliero online cambia con la data:
 
 - sabato 14 novembre: 55 dollari
 - domenica 15 novembre: 45 dollari
@@ -97,7 +97,7 @@ Fino al 30 novembre Kings Dominion vende il Silver Pass 2027 a 69 dollari, meno 
 
 Con 13 montagne russe Kings Dominion dice di averne più di qualunque altro parco della Virginia. Durante la festa ne funzionano nove: [Pantherian](ref:kings-dominion/pantherian), [Rapterra](ref:kings-dominion/rapterra), [Dominator](ref:kings-dominion/dominator), [Backlot Stunt Coaster](ref:kings-dominion/backlot-stunt-coaster), [Tumbili](ref:kings-dominion/tumbili), [Reptilian](ref:kings-dominion/reptilian), [Racer 75](ref:kings-dominion/racer-75-south), [Great Pumpkin Coaster](ref:kings-dominion/great-pumpkin-coaster) e [Woodstock Express](ref:kings-dominion/woodstock-express).
 
-Pantherian è alta 93 metri e scende di 91 metri con un'inclinazione di 85 gradi. Rapterra è un wing coaster a lancio di Bolliger & Mabillard, arrivato nel 2025 per i 50 anni del parco. Del Racer 75 gira solo il lato sud, quindi la gara quest'autunno la vince sempre lo stesso treno. Le montagne russe in legno a due treni sono un ACE Landmark dal 2003, e nel 1977 ci fu girato il film «Rollercoaster».
+Pantherian è alta 93 metri e scende di 91 metri con un'inclinazione di 85 gradi. Rapterra è un wing coaster a lancio di Bolliger & Mabillard, arrivato nel 2025 per i 50 anni del parco. Del Racer 75 gira solo il lato sud, quindi la gara quest'autunno la vince sempre lo stesso treno. Questo coaster in legno a due treni è un ACE Landmark dal 2003, e nel 1977 ci fu girato il film «Rollercoaster».
 
 ```ride-waits-widget rides=kings-dominion/pantherian;kings-dominion/rapterra;kings-dominion/dominator;kings-dominion/backlot-stunt-coaster;kings-dominion/tumbili;kings-dominion/reptilian;kings-dominion/racer-75-south|Racer 75 South;kings-dominion/great-pumpkin-coaster;kings-dominion/woodstock-express columns=peak,days
 

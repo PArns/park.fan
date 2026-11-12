@@ -7,7 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Kings Dominion, en Virginie, organise sa nouvelle fête d’automne, Hops & Harvest, pendant sept jours à partir du 14 novembre. Le 29 novembre, le parc ferme pour la saison et n’ouvre pas un seul jour en décembre. Le billet à la journée coûte à partir de 45 dollars en ligne.
+  Kings Dominion, en Virginie, organise sa nouvelle fête d’automne, Hops & Harvest, sur sept jours à partir du 14 novembre. Le 29 novembre, le parc ferme pour la saison et n’ouvre pas un seul jour en décembre. Le billet à la journée coûte à partir de 45 dollars en ligne.
 tags:
   - actualites
   - kings-dominion
@@ -50,11 +50,11 @@ seo:
     - Six Flags entrée gratuite 65 ans
 ---
 
-À partir du samedi 14 novembre, [Kings Dominion](ref:kings-dominion), à Doswell en Virginie, accueille pendant sept jours sa nouvelle fête d’automne, Hops & Harvest. Le 29 novembre, dernier jour de la fête, le parc ferme pour la saison. Pas de WinterFest cette année : en décembre, le parc n’ouvre pas un seul jour. Tout se passe sur l’International Street, avec des plats d’automne, des dégustations de boissons artisanales de la région, de la musique live et des animations pour les familles.
+À partir du samedi 14 novembre, [Kings Dominion](ref:kings-dominion), à Doswell en Virginie, accueille sur sept jours sa nouvelle fête d’automne, Hops & Harvest. Le 29 novembre, dernier jour de la fête, le parc ferme pour la saison. Pas de WinterFest cette année : en décembre, le parc n’ouvre pas un seul jour. Tout se passe sur l’International Street, avec des plats d’automne, des dégustations de boissons artisanales de la région, de la musique live et des animations pour les familles.
 
 ## Au menu de Hops & Harvest
 
-La plupart des plats d’automne sortent de la cuisine du Grain and Grill International Kitchen : des Pork Sliders à la sauce barbecue coréenne avec un filet de coulis de framboise, un Brisket Mac and Cheese, c’est-à-dire des macaronis au fromage avec de la poitrine de bœuf, un Bacon Cheddar Potato Keg à la crème aigre et à la ciboule, et en dessert des Cinnamon Donut Holes nappés d’un filet pumpkin spice. Firehouse BBQ vend des cuisses de dinde, des frites de patate douce à la cannelle et au miel pimenté, et un chili aux haricots et au cheddar. Les cuisses de dinde sont encore là le vendredi qui suit Thanksgiving, pour ceux dont le frigo s’est vidé dès le jeudi soir.
+La plupart des plats d’automne sortent de la cuisine du Grain and Grill International Kitchen : des Pork Sliders à la sauce barbecue coréenne avec un filet de coulis de framboise, un Brisket Mac and Cheese, c’est-à-dire des macaronis au fromage avec de la poitrine de bœuf, et un Bacon Cheddar Potato Keg à la crème aigre et à la ciboule. Pour le dessert, la cuisine nappe des Cinnamon Donut Holes d’un filet pumpkin spice. Firehouse BBQ vend des cuisses de dinde, des frites de patate douce à la cannelle et au miel pimenté, et un chili aux haricots et au cheddar. Les cuisses de dinde sont encore là le vendredi qui suit Thanksgiving, pour ceux dont le frigo s’est vidé dès le jeudi soir.
 
 Au Pizza Parlor, une pizza blanche à base d’alfredo est garnie de courge butternut, de prosciutto et de roquette. La Funnel Cake Kitchen prépare un funnel cake aux tranches de pomme, à la cannelle et au caramel, et le Biergarten sert un bretzel géant pumpkin spice. Avec un Season Pass ou une Membership de Kings Dominion, vous avez droit une fois à un deuxième plat principal à moitié prix au Grain and Grill ou au Firehouse BBQ, en plus de la réduction habituelle du pass.
 
