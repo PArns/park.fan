@@ -3055,6 +3055,357 @@
       "open": "Ouvrir le planificateur"
     }
   },
+  "orlandoPlanner": {
+    "setup": {
+      "dates": "Dates",
+      "datesEmpty": "Choisir l’arrivée et le départ",
+      "parks": "Parcs",
+      "parksCount": "{count, plural, =1 {1 parc} other {# parcs}}",
+      "splitOn": "jours répartis par le planificateur",
+      "visitCount": "{count, plural, =1 {1 jour de parc} other {# jours de parc}}",
+      "fineTune": "Réglages",
+      "findSummary": "Les {days} meilleurs jours, {range}",
+      "nextParks": "Suite : les parcs",
+      "plan": "Planifier",
+      "find": "Chercher des dates",
+      "done": "Terminé",
+      "start": "Planifier mon voyage à Orlando",
+      "close": "Fermer",
+      "sheetHint": "Ton choix modifie le plan affiché dessous."
+    },
+    "dates": {
+      "prevMonth": "Mois précédent",
+      "nextMonth": "Mois suivant",
+      "gridLabel": "Jour d’arrivée et de départ",
+      "wait": "attente la plus courte aux grandes attractions environ {minutes} min",
+      "waitLastYear": "l’an dernier environ {minutes} min aux grandes attractions",
+      "legend": "Sous chaque date : l’attente la plus courte aux grandes attractions ce jour-là, en minutes, dans le parc où les files sont les plus courtes.",
+      "legendLastYear": "Les chiffres en italique sont des journées mesurées l’an dernier.",
+      "pickArrival": "Touche ton jour d’arrivée.",
+      "pickDeparture": "Puis ton jour de départ.",
+      "dayCount": "{count, plural, =1 {1 jour} other {# jours}}",
+      "arrivalPark": "Parc le jour d’arrivée",
+      "arrivalParkHint": "Pour un vol tôt le matin ; sinon la journée reste libre.",
+      "departurePark": "Parc le jour du départ",
+      "departureParkHint": "Pour un vol le soir.",
+      "maxLength": "Un voyage dure au plus {days} jours."
+    },
+    "find": {
+      "modeLabel": "Comment tu choisis tes dates",
+      "modeKnown": "Je connais mes dates",
+      "modeFind": "Trouver les meilleures dates",
+      "period": "Quand pourrais-tu partir ?",
+      "periods": {
+        "next12": "12 prochains mois",
+        "year": "{year}",
+        "spring": "Printemps {year}",
+        "summer": "Été {year}",
+        "autumn": "Automne {year}",
+        "custom": "Période libre"
+      },
+      "customFrom": "Arrivée au plus tôt",
+      "customTo": "Départ au plus tard",
+      "length": "Durée du voyage",
+      "lengthValue": "{days} jours",
+      "shorter": "Un jour de moins",
+      "longer": "Un jour de plus",
+      "holidays": "Seulement pendant nos vacances scolaires",
+      "holidaysHint": "Seulement des périodes entièrement comprises dans les vacances scolaires de ta région.",
+      "country": "Pays",
+      "region": "Région"
+    },
+    "parks": {
+      "split": "Répartir mes jours pour moi",
+      "splitHint": "Les parcs marqués « auto » reçoivent un deuxième jour si le voyage le permet.",
+      "auto": "auto",
+      "fewer": "{park} : un jour de moins",
+      "more": "{park} : un jour de plus",
+      "moreParks": "Autres parcs",
+      "moreHint": "Parcs aquatiques, SeaWorld et excursions",
+      "moreChosen": "{count, plural, =1 {1 choisi} other {# choisis}}",
+      "drive": "Environ {minutes} min en voiture",
+      "closed": "Fermé à tes dates",
+      "closedSeason": "Fermé à tes dates ({season})",
+      "noHours": "Pas encore d’horaires pour tes dates",
+      "driveSource": "Temps de trajet sans circulation, {source}",
+      "budget": "Au moins {visits, plural, =1 {1 jour de parc} other {# jours de parc}}, {days, plural, =1 {1 jour libre} other {# jours libres}} pour les parcs"
+    },
+    "options": {
+      "hotel": "Où tu dors",
+      "hotelLabel": {
+        "disney": "Hôtel Disney",
+        "disney_deluxe": "Hôtel Disney Deluxe",
+        "universal": "Hôtel Universal",
+        "universal_premier": "Hôtel Universal Premier",
+        "offsite": "Ailleurs"
+      },
+      "hotelHint": {
+        "disney": "Early Entry dans les parcs Disney, 30 minutes avant l’ouverture",
+        "disney_deluxe": "Early Entry, et certains soirs Extended Evening Hours",
+        "universal": "Early Park Admission, une heure avant l’ouverture",
+        "universal_premier": "Early Park Admission, plus Express à Universal Studios et Islands of Adventure",
+        "offsite": "Pas d’entrée anticipée"
+      },
+      "hotelShort": {
+        "disney": "Hôtel Disney",
+        "disney_deluxe": "Hôtel Disney Deluxe",
+        "universal": "Hôtel Universal",
+        "universal_premier": "Universal Premier",
+        "offsite": "hôtel ailleurs"
+      },
+      "area": "Quartier de l’hôtel, pour les trajets",
+      "areaNone": "Non précisé",
+      "areaNoneHint": "Le plan n’indique alors pas de trajets.",
+      "fromArea": "depuis {area}",
+      "fireworks": "Veux-tu voir le feu d’artifice de Magic Kingdom ?",
+      "fireworksWant": "Oui",
+      "fireworksWantHint": "Tes jours à Magic Kingdom évitent les soirées de fête, où les visiteurs à la journée doivent partir plus tôt.",
+      "fireworksAny": "Peu importe",
+      "fireworksAnyHint": "Une soirée de fête peut devenir un jour à Magic Kingdom si les files plus courtes compensent la journée plus courte.",
+      "fireworksWantShort": "feu d’artifice de Magic Kingdom",
+      "blocks": "Garder ensemble les jours Disney et les jours Universal",
+      "blocksHint": "Les jours d’un même resort à la suite, pour moins rouler entre les resorts.",
+      "blocksOn": "resorts à la suite",
+      "blocksOff": "resorts mélangés",
+      "rest": "Jours de repos",
+      "restAutoLabel": "Automatique",
+      "restAutoHint": "Au plus quatre jours de parc d’affilée ; les jours de repos tombent sur les jours les plus chargés.",
+      "restMaxLabel": "Ma propre limite",
+      "restMax": "Au plus {n, plural, =1 {1 jour de parc} other {# jours de parc}} d’affilée",
+      "restNoneLabel": "Pas de jour de repos",
+      "restAuto": "repos les jours chargés",
+      "restMaxShort": "au plus {n} jours de parc d’affilée",
+      "restNone": "pas de jour de repos",
+      "restFewer": "Un jour de moins",
+      "restMore": "Un jour de plus",
+      "hop": "Park hopping",
+      "hopHint": "Deux parcs d’un même resort dans la journée, quand le voyage compte moins de jours que de visites.",
+      "hopOn": "park hopping"
+    },
+    "result": {
+      "label": "Ton plan",
+      "empty": "Choisis l’arrivée et le départ, ou laisse le planificateur trouver les meilleures dates. Le plan s’affichera ici.",
+      "chooseDates": "Choisir les dates",
+      "loading": "Planification de tes journées …",
+      "invalid": "Ces choix ne vont pas ensemble. Vérifie les dates et le nombre de jours par parc.",
+      "failed": "Le plan n’a pas pu être chargé.",
+      "retry": "Réessayer"
+    },
+    "problem": {
+      "no_dates": "Choisis tes dates.",
+      "too_long": "Un voyage dure au plus {days} jours. Choisis un séjour plus court.",
+      "no_parks": "Choisis au moins un parc.",
+      "too_many_visits": "Plus de jours de parc que de jours disponibles. Retire un jour à un parc, autorise le park hopping ou utilise un jour de voyage.",
+      "over_max_visits": "Un plan compte au plus {max} jours de parc.",
+      "no_park_day": "Ton voyage n’a aucun jour libre pour un parc. Autorise un parc le jour d’arrivée ou de départ."
+    },
+    "answer": {
+      "counts": "{parkDays, plural, =1 {1 jour de parc} other {# jours de parc}}, {restDays, plural, =0 {aucun jour de repos} =1 {1 jour de repos} other {# jours de repos}}",
+      "yourDays": "Grandes attractions à tes dates : environ {minutes} min par attraction.",
+      "averageDay": "Les mêmes parcs un jour moyen de ton voyage : {minutes} min.",
+      "saved": "Environ {minutes} min de moins par attraction.",
+      "error": "Une prévision pour une attraction un jour donné peut se tromper d’environ {minutes} min.",
+      "orderBarelyMatters": "Tes journées sont à peu près aussi chargées, l’ordre change donc peu de chose à ces dates.",
+      "lastYear": "Nous planifions ces dates avec l’affluence mesurée l’an dernier. La prévision les atteindra vers le {date}.",
+      "about": "environ {minutes} min",
+      "daysLabel": "Tes journées"
+    },
+    "day": {
+      "arrival": "Arrivée",
+      "departure": "Départ",
+      "rest": "Jour de repos",
+      "park": "Jour de parc",
+      "hop": "Deux parcs"
+    },
+    "marker": {
+      "closesAt": "ferme à {time}",
+      "closesEarly": "ferme plus tôt",
+      "earlyEntry": "Early Entry",
+      "earlyPark": "Early Park Admission",
+      "rest": "Jour de repos",
+      "evening": "Extended Evening Hours",
+      "last_year": "l’an dernier"
+    },
+    "views": {
+      "label": "Affichage",
+      "agenda": "Liste",
+      "week": "Semaine",
+      "month": "Mois"
+    },
+    "week": {
+      "previous": "Jours précédents",
+      "next": "Jours suivants",
+      "minutes": "{minutes} min",
+      "noFigure": "pas de chiffre",
+      "noHours": "pas encore d’horaires",
+      "early": "Entrée anticipée pour ton hôtel",
+      "extendedEvening": "Extended Evening Hours pour ton hôtel",
+      "party": "Soirée de fête",
+      "partyNamed": "{name}, billet séparé",
+      "leg": {
+        "drive": "{minutes} min en voiture",
+        "walk": "{minutes} min à pied",
+        "bus": "{minutes} min en navette"
+      }
+    },
+    "month": {
+      "legend": "Deux lettres par parc, colorées selon l’affluence du jour pour ce parc ; le nombre est l’attente aux grandes attractions en minutes."
+    },
+    "details": {
+      "minutesCaption": "L’attente aux grandes attractions au moment le plus chargé, le chiffre avec lequel le plan compare les jours. La couleur compare le jour avec un jour habituel de ce parc.",
+      "hours": "Ouvert {range}",
+      "noHours": "Aucun horaire publié pour ce jour pour l’instant.",
+      "earlyYours": {
+        "early_entry": "Early Entry pour toi dès {time}",
+        "early_park_admission": "Early Park Admission pour toi dès {time}"
+      },
+      "earlyOthers": {
+        "early_entry": "Early Entry dès {time} pour les clients des hôtels Disney",
+        "early_park_admission": "Early Park Admission dès {time} pour les clients des hôtels Universal"
+      },
+      "eveningYours": "Extended Evening Hours pour toi jusqu’à {time}",
+      "eveningOthers": "Extended Evening Hours jusqu’à {time} pour les clients des hôtels Disney Deluxe",
+      "partyTicket": "{name}, avec billet séparé",
+      "party": "{name}",
+      "shortDay": "Une journée plus courte pour les visiteurs à la journée",
+      "leaveAt": "Les visiteurs à la journée partent à {time}.",
+      "hoursLess": "Cela fait environ {hours, plural, =1 {une heure} other {# heures}} de moins qu’un jour habituel ici.",
+      "runnerUp": "Deuxième meilleur jour : {date}, environ {minutes} min, soit {delta} min de plus par attraction.",
+      "runnerUpSame": "Deuxième meilleur jour : {date}, environ {minutes} min, la même attente.",
+      "runnerUpLess": "Un autre jour : {date}, environ {minutes} min, soit {delta} min de moins, mais le reste du plan s’en sort mieux ainsi.",
+      "travel": {
+        "drive": "Environ {minutes} min en voiture depuis {area}, sans circulation.",
+        "walk": "Environ {minutes} min à pied depuis {area}.",
+        "bus": "Environ {minutes} min en navette depuis {area}."
+      },
+      "transferTtc": "Puis environ {minutes} min en monorail ou en ferry depuis le Transportation and Ticket Center.",
+      "transfer": "Puis environ {minutes} min du parking à l’entrée.",
+      "between": {
+        "drive": "Entre les parcs : environ {minutes} min en voiture.",
+        "walk": "Entre les parcs : environ {minutes} min à pied.",
+        "bus": "Entre les parcs : environ {minutes} min en navette."
+      },
+      "pin": "Fixer ce jour",
+      "unpin": "Libérer",
+      "swap": "Échanger",
+      "planDay": "Planifier ce jour",
+      "planPark": "Planifier {park}",
+      "loading": "Chargement de la journée …",
+      "rain": "{mm} mm de pluie",
+      "noWeather": "Pas encore de prévision météo pour cette date ; elle porte sur environ deux semaines.",
+      "rides": "Les grandes attractions ce jour-là",
+      "rideMinutes": "environ {minutes} min",
+      "ridesCaption": "Chacune au moment le plus chargé, d’après la prévision du planificateur de journée."
+    },
+    "reason": {
+      "locked": "Tu as fixé ce jour.",
+      "quietest_in_window": "Le plus calme de tes jours pour {park}.",
+      "runner_up_close": "Un autre de tes jours est à moins de 5 minutes ; celui-ci s’accorde mieux avec le reste du plan.",
+      "party_night": "Une soirée de fête.",
+      "express_included": "Express est inclus avec ton hôtel ici, les files comptent donc moins.",
+      "extended_evening": "Ton hôtel a des Extended Evening Hours ce jour-là.",
+      "early_park_admission": "Ton hôtel a l’Early Park Admission ce jour-là.",
+      "early_entry": "Ton hôtel a l’Early Entry ce jour-là.",
+      "holiday_ends": "Les vacances sont finies ce jour-là.",
+      "water_park_weather": "Chaud et sec, un jour pour un parc aquatique.",
+      "weekday": "Un jour de semaine.",
+      "busiest_day_spared": "Le jour le plus chargé de ton voyage, c’est donc le jour de repos.",
+      "rest_after_streak": "Une pause après plusieurs jours de parc d’affilée."
+    },
+    "warning": {
+      "party_night_short_hours": "Soirée de fête : les visiteurs à la journée doivent partir plus tôt.",
+      "closes_early": "Les visiteurs à la journée partent plus tôt que d’habitude.",
+      "hours_not_published": "Aucun horaire publié pour ce jour pour l’instant.",
+      "no_forecast": "Pas de prévision pour les grandes attractions de ce parc ce jour-là.",
+      "estimate_last_year": "D’après la journée mesurée l’an dernier, pas une prévision.",
+      "long_range": "Une perspective à si long terme ; elle se précise à mesure que la date approche.",
+      "repeat_back_to_back": "Ton deuxième jour ici suit directement, aucun autre ordre ne convenait.",
+      "adjacent_repeat": "Ton deuxième jour ici suit directement, aucun autre ordre ne convenait.",
+      "long_streak": "Plus de jours de parc d’affilée que la règle de repos n’en permet ; ton choix de parcs ne laissait pas de place pour une pause."
+    },
+    "relaxed": {
+      "blocks_relaxed": "Les jours Disney et Universal n’ont pas pu rester tous ensemble à ces dates.",
+      "streak_relaxed": "Tes parcs demandent plus de jours d’affilée que la règle de repos n’en permet."
+    },
+    "unplaced": {
+      "no_open_day": "{park} est fermé à tes dates et ne figure pas dans le plan.",
+      "no_day_left": "Il ne restait aucun jour pour {park}."
+    },
+    "ignoredLock": {
+      "outside_trip": "{what} le {date} : ce jour ne fait pas partie de ton voyage.",
+      "closed": "{what} le {date} : le parc est fermé ce jour-là.",
+      "day_taken": "{what} le {date} : ce jour est déjà fixé.",
+      "no_visit_left": "{what} le {date} : plus de jours fixés que de jours pour ce parc."
+    },
+    "edit": {
+      "pinned": "Tes jours fixés restent à leur place.",
+      "cost": "Tes jours fixés coûtent environ {delta} min par attraction : {current} min contre {best} dans le meilleur ordre.",
+      "noCost": "Tes jours fixés ne coûtent rien : le plan est aussi rapide que le meilleur ordre.",
+      "undo": "Annuler",
+      "release": "Tout libérer"
+    },
+    "swap": {
+      "hint": "Échange ce jour avec un autre. Le chiffre est la variation de l’attente aux grandes attractions des deux parcs ; le reste du plan peut bouger aussi.",
+      "closed": "{park} est fermé ce jour-là",
+      "noFigure": "pas de chiffre",
+      "same": "même attente",
+      "more": "+{minutes} min",
+      "less": "−{minutes} min",
+      "short": "{park} un jour court, environ {hours, plural, =1 {une heure} other {# heures}} de moins"
+    },
+    "keep": {
+      "addAll": "Tous les jours dans mon planificateur",
+      "ics": "Ajouter au calendrier (.ics)",
+      "copy": "Copier le lien",
+      "copied": "Lien copié",
+      "added": "{count, plural, =1 {1 jour est} other {# jours sont}} maintenant dans ton planificateur.",
+      "openPlanner": "Ouvrir le planificateur",
+      "manual": "Copie le lien à la main :"
+    },
+    "ics": {
+      "calendarName": "Voyage à Orlando {range}",
+      "wait": "Grandes attractions environ {minutes} min",
+      "link": "Plan : {url}"
+    },
+    "when": {
+      "loading": "Recherche des meilleures dates …",
+      "none": "Aucun voyage de {days} jours ne tient dans cette période. Choisis une période plus longue ou un voyage plus court.",
+      "noneWithin": "Aucunes vacances scolaires de {region} dans cette période ne durent assez pour {days} jours.",
+      "bestTitle": "Les meilleures dates pour tes parcs",
+      "rank": "Proposition {rank}",
+      "wait": "Grandes attractions environ {minutes} min",
+      "below": "{percent} % sous la moyenne de la période",
+      "average": "Moyenne de la période : {minutes} min",
+      "details": "Détails",
+      "plan": "Planifier ces dates",
+      "reason": {
+        "no_school_break": "Pas de vacances scolaires ces jours-là.",
+        "after_holidays": "Juste après les fêtes.",
+        "before_spring_break": "Avant l’affluence des vacances de printemps.",
+        "festival": "Un festival a lieu ces jours-là.",
+        "long_days": "De longues heures d’ouverture.",
+        "mild_weather": "Un temps généralement doux."
+      },
+      "warning": {
+        "party_nights": "{count, plural, =1 {1 soirée de fête} other {# soirées de fête}} : les visiteurs à la journée doivent alors partir plus tôt.",
+        "school_break": "Tombe pendant des vacances scolaires.",
+        "water_park_closed": "Un parc aquatique choisi est fermé pour la saison.",
+        "hurricane_season": "Saison des ouragans (de juin à novembre).",
+        "hours_not_published": "Tous les horaires ne sont pas encore publiés.",
+        "estimate_last_year": "Calculé en partie avec l’affluence de l’an dernier."
+      },
+      "basis": {
+        "mixed": "Calculé en partie avec l’affluence de l’an dernier",
+        "last_year": "Calculé avec l’affluence de l’an dernier"
+      },
+      "stripTitle": "Chaque semaine de la période",
+      "stripWeek": "Semaine du {date} : environ {minutes} min",
+      "stripWeekNone": "Semaine du {date} : pas de chiffre",
+      "stripWindow": "proposition {rank}",
+      "stripLegend": "Hauteur : l’attente aux grandes attractions de tes parcs cette semaine-là. Couleur : la semaine comparée au reste de la période. Les repères dessous montrent tes propositions.",
+      "sketch": "Jour par jour"
+    }
+  },
   "news": {
     "metaTitle": "Actualités des parcs : événements et nouveautés",
     "metaDescription": "Brèves des parcs d’attractions : nouvelles attractions, événements, anniversaires et ventes, chacune datée et reliée au parc concerné.",
