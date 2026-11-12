@@ -2359,7 +2359,8 @@
       "none": "Todavía no hay cifras para un viaje de {days} días en {year}.",
       "why": "Por qué estas fechas",
       "events": "Eventos: {list}",
-      "cautions": "Conviene saber"
+      "cautions": "Conviene saber",
+      "flat": "Del {from} al {to} ninguna semana destaca: unos {minutes} min todo el tiempo."
     },
     "intro": {
       "lead": "Cada cifra es la espera de las grandes atracciones en su momento de más gente: el pico del día de cada atracción estrella, en media sobre los parques del viaje.",

@@ -25,7 +25,7 @@ import { versionedSrc } from '@/lib/media/focus';
 import { getListFormat } from '@/lib/utils/intl-format';
 import { formatParkDay } from '@/lib/utils/park-day';
 import { PARK_CALENDAR_SEGMENTS } from '@/lib/parks/calendar-segments';
-import { formatWindow, shortParkName } from '@/lib/orlando/hub-data';
+import { formatHubDate, formatWindow, shortParkName } from '@/lib/orlando/hub-data';
 import { holidayRegionsFor, percentBelowAverage } from '@/lib/orlando/plan-when';
 import { orlandoPlannerHref, type PlanSearchRange } from '@/lib/orlando/plan-query';
 import { orlandoBestTimePath, orlandoPath } from '@/lib/orlando/paths';
@@ -33,6 +33,7 @@ import {
   BEST_TIME_TRIP_DAYS,
   ORLANDO_BEST_TIME_RESORTS,
   bestTimeResort,
+  flatStretch,
   holidayWeek,
   lastYearFrom,
   meanWeekWait,
@@ -148,6 +149,8 @@ export async function BestTimePage(props: BestTimePageProps) {
       : []),
   ];
 
+  // Where the year is flat around the first window, say so rather than rank a tie.
+  const flat = windows[0] ? flatStretch(when.weeks, windows[0].from) : null;
   return (
     <>
       <LandingHero
@@ -156,8 +159,14 @@ export async function BestTimePage(props: BestTimePageProps) {
         tagline={
           windows.length
             ? `${t('answer.sentence', { days, year, windows: windowList(windows, locale) })}${
-                lastYearShown ? ` ${tHub('when.lastYearNote')}` : ''
-              }`
+                flat
+                  ? ` ${t('answer.flat', {
+                      from: formatHubDate(flat.from, locale, 'dayMonth'),
+                      to: formatHubDate(flat.to, locale, 'dayMonth'),
+                      minutes: flat.minutes,
+                    })}`
+                  : ''
+              }${lastYearShown ? ` ${tHub('when.lastYearNote')}` : ''}`
             : t('answer.none', { days, year })
         }
         imageSrc={

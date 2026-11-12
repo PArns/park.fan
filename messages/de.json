@@ -2359,7 +2359,8 @@
       "none": "Für {year} gibt es noch keine Zahlen zu einer {days}-Tage-Reise.",
       "why": "Warum diese Tage",
       "events": "Events: {list}",
-      "cautions": "Gut zu wissen"
+      "cautions": "Gut zu wissen",
+      "flat": "Vom {from} bis {to} sticht keine Woche heraus: durchgehend etwa {minutes} Min."
     },
     "intro": {
       "lead": "Jede Zahl hier ist die Wartezeit der großen Bahnen zur vollsten Zeit: die Tagesspitze jedes Headliners, gemittelt über die Parks der Reise.",

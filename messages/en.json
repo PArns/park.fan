@@ -2359,7 +2359,8 @@
       "none": "No {days}-day trip in {year} has figures yet.",
       "why": "Why these dates",
       "events": "Events: {list}",
-      "cautions": "Worth knowing"
+      "cautions": "Worth knowing",
+      "flat": "No week stands out from {from} to {to}: about {minutes} min throughout."
     },
     "intro": {
       "lead": "Every figure here is the big rides' wait at their busiest: each headliner's peak of the day, averaged over the parks of the trip.",

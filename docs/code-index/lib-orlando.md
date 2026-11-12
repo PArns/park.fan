@@ -22,6 +22,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `bestTimeYear` _function_: The year in the title: the coming year from September on, else the current one, so the page answers the trip people are booking.
 - `bestTimeRange` _function_: The range `/when` and `/school-breaks` are asked for: the title's year, from today at the earliest and never past the year ahead both routes accept.
 - `bestTimeParks` _function_: The headliner parks a page plans, in the region's order.
+- `bestTimeWhenQuery` _function_: The one `/when` query a best-time page and the hub's teaser send for the same parks, so both read one cached answer and never print two figures for one window. The gap is the trip's length: the windows named side by side never overlap.
 - `monthKey` _function_: `YYYY-MM` of a month.
 - `monthRows` _function_: The month table: every month of the title's year from the current one on, each with `/when`'s figures where its range reaches, a tier among the months that have a figure, and its day guests' hours against the year's mean.
 - `cleanBreakName` _function_: A school break's name without the district and the day's other holidays: "Spring break (Orange County Public Schools)" → "Spring break", "Winter break (…), New Year's Day" → "Winter break".
@@ -39,6 +40,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `wettestMonths` _function_: The wettest months by their climate normal, wettest first.
 - `planOrder` _function_: The order a window's plan visits the page's parks in: each park's first day, earliest first. The honest answer to "Disney or Universal first?": the plan puts each park on its quietest day.
 - `windowList` _function_: Windows as one phrase in the reader's language, "16–25 Feb, 1–10 Mar and 6–15 Apr", for the first answer's sentence and the meta description.
+- `flatStretch` _function_: A flat stretch around the first window: the run of weeks whose figure stays within a couple of minutes of the quietest week, when it is long enough that naming one window would rank a tie. `null` when the year has a real low.
 - `ORLANDO_BEST_TIME_RESORTS` _const_: The resorts with a page of their own, in the order the pages list them.
 - `BEST_TIME_PAGE_GROUPS` _const_: The region groups whose headliner parks each page plans.
 - `BEST_TIME_TRIP_DAYS` _const_: The trip length every page ranks, the planner's own default.
@@ -53,7 +55,8 @@ by hand: change the comment in the code and re-run the script. -->
 - `shortParkName` _function_: The words a park's name carries that every visitor drops: the operator's prefix, "Park", "Theme Park", the city.
 - `closesEarly` _function_: Whether a day closes early for the day guest: the API says so (`closesEarly`), or a separately ticketed evening follows, which sends the day guests out before it starts.
 - `dayGuestClose` _function_: When the day guests leave: the API's `dayGuestCloseAt`, else the day's own close.
-- `isRankable` _function_: Whether a park can be ranked on a day: open, with a figure.
+- `isRankable` _function_: Whether a park can be ranked on a day: not closed, with a figure.
+- `hoursUnpublished` _function_: Whether a day has a figure but no published hours yet: drawn with its mark, said in words.
 - `rankGroupParks` _function_: A group's parks on a day: the API's pick first where the group has one (its cost weighs the day guest's hours, so it can be a full day over a slightly shorter wait that closes early), then the open parks with a figure by `headlinerWait`, …
 - `shortestLines` _function_: Each resort's shortest line on a day, from the API's `best` map. A resort without an entry (a last-year day, no figure) is left out rather than guessed, and so is a pick the region does not know.
 - `glanceDay` _function_: The day the first answer is about: today in Orlando, or tomorrow once every resort's pick has closed to day guests, since nobody plans the rest of a day that is over. A day without picks counts as open.
@@ -68,7 +71,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `meanWait` _function_: The mean of some waits, rounded to five like every wait the site prints; `null` for none.
 - `weekendAgainstWeekday` _function_: A park's figures on weekends against weekdays across the window, last-year days left out.
 - `ticketedEvenings` _function_: A park's ticketed evenings in the window: how many, when the day guests leave, how busy.
-- `resortMonthSummaries` _function_: Each resort's month: the best dates from `/best-days` (the API ranks them on the unrounded figures), the two days whose shortest line is the longest from the calendar. A resort with no figure in the window is left out.
+- `resortMonthSummaries` _function_: Each resort's month: the best dates from `/best-days` (the API ranks them on the unrounded figures), and from the calendar the two days with the highest mean over the resort's parks that have a figure, so a day most of its parks call quiet …
 - `tintLevel` _function_: The crowd levels a cell may be tinted by: the six of the scale, never closed or unknown.
 - `hubWindow` _function_: The hub's window for a page: the 30 days from today on the hub, the month on a month page.
 - `orlandoToday` _function_: Orlando's today, never the server's or the browser's.
@@ -240,6 +243,12 @@ by hand: change the comment in the code and re-run the script. -->
 - `planWindow` _function_: Level 3 of the When mode: plan a found window, which leaves the search for the plan itself.
 - Types: `PlanDayKind`, `PlanTravel`, `PlanParkVisit`, `PlanDay`, `PlanAlternative`, `PlanParkSummary`, `PlanTotals`, `PlanMeta`, `TripPlan`, `PlanProblem`, `PlanReservePark`
 - Re-exports: `./plan-query`
+
+### [`planner-ui.ts`](../../lib/orlando/planner-ui.ts)
+
+"Open the planner's dates", as a signal from outside the planner: the hub's hero action asks, the mounted `OrlandoPlanner` answers (a phone opens the Dates sheet, a desk scrolls to the dates panel and focuses it).
+
+- `orlandoPlannerUi` _const_: The Orlando planner's open signal.
 
 ### [`redirects.ts`](../../lib/orlando/redirects.ts)
 

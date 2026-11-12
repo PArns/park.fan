@@ -49,6 +49,15 @@ pages only and forwards each route's own query names (`lib/orlando/relay.ts`). T
 - **An early close is never silent.** `closesEarly` (or a ticketed evening) draws the folded corner
   on a square, puts "closes 6 pm" in its accessible name, and the best-days chips carry the close
   time.
+- **A figure without published hours counts.** Past a park's published schedule a day is `UNKNOWN`
+  but carries the forecast or last year's figure. It is ranked (`isRankable`: not closed, has a
+  figure), drawn with a small dot (`NO_HOURS_DOT`), and the sheet says "No hours published yet; the
+  figure is the forecast, hours are not counted". Only a closed day or one without a figure is
+  empty, so the month pages past Disney's and Universal's schedules keep their content.
+- **A resort's busiest days** are the highest mean over its parks with a figure, never the
+  hours-weighted pick, so a day most of its parks call quiet is never one of its busiest.
+- **School holidays are US ones, and say so.** Lanes, reasons and the best-time pages name "US
+  school holidays"; break names go through `translateHolidayName(cleanBreakName(…))`.
 - **Three bases.** `forecast` plain, `long_range` labelled "outlook", `last_year` dashed and
   labelled "last year", with a banner where a window has such days. A last-year day is never offered
   as a pick.
@@ -71,14 +80,15 @@ pick has closed it is about tomorrow (`glanceDay`). A resort with one park that 
 
 1. **01 Which park on which day** (`HubCalendar`, client). A phone gets a list of days, per resort
    the top park and "+n more"; from `lg` a `<table role="grid">` with a caption, `scope`d headers,
-   one tab stop and arrow keys. Both are server-rendered for the first seven days; the rest of the
-   window loads through the relay once the matrix shows or a phone asks for every day. Rows never
+   one tab stop and arrow keys. On the hub both are server-rendered for the first seven days and the rest
+   of the window loads through the relay; a month page server-renders its whole month. Rows never
    change with the data, so the box is the rendered one. The resort filter is urgent, the grid
    follows through `useDeferredValue`. The events sit under it as one closed `<details>` row. A tap
    opens `HubDaySheet` (bottom sheet on a phone, side panel on a desktop). The month index
    (`HubMonthIndex`, a labelled `<nav>` with the park calendar's chips) links all twelve months.
-2. **02 Best time to visit Orlando in <year>** (`HubWhen`): a teaser of the best-time pages. The
-   three quietest 10-day windows for the seven headliner parks from `/when`, as a sentence and three
+2. **02 Best time to visit Orlando in <year>** (`HubWhen`): a teaser of the best-time pages. It sends
+   the best-time page's own query (`bestTimeWhenQuery`: same range, days, parks, limit and a gap of
+   the trip's length), so both read one cached answer. The three quietest 10-day windows for the seven headliner parks from `/when`, as a sentence and three
    cards with "Plan these dates" (`?from=&to=#planner`, `rel="nofollow"`), and the link to
    `orlandoBestTimePath(locale)`. The year strip, the weeks and their questions are the best-time
    pages', so the two do not compete for one query.

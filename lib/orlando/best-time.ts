@@ -417,3 +417,31 @@ export function windowList(
     windows.map((w) => formatWindow(w, locale))
   );
 }
+
+/**
+ * A flat stretch around the first window: the run of weeks whose figure stays within a couple of
+ * minutes of the quietest week, when it is long enough that naming one window would rank a tie.
+ * `null` when the year has a real low.
+ */
+export function flatStretch(
+  weeks: ReadonlyArray<{ start: string; headlinerWait?: number }>,
+  firstWindowFrom: string,
+  minWeeks = 6
+): { from: string; to: string; minutes: number } | null {
+  const figures = weeks.filter((w) => typeof w.headlinerWait === 'number');
+  if (figures.length === 0) return null;
+  const low = Math.min(...figures.map((w) => w.headlinerWait!));
+  const near = (w: { headlinerWait?: number }) =>
+    typeof w.headlinerWait === 'number' && w.headlinerWait <= low + 2;
+  const at = weeks.findIndex((w, i) => {
+    const next = weeks[i + 1]?.start;
+    return w.start <= firstWindowFrom && (!next || next > firstWindowFrom);
+  });
+  if (at === -1 || !near(weeks[at])) return null;
+  let a = at;
+  let b = at;
+  while (a > 0 && near(weeks[a - 1])) a -= 1;
+  while (b < weeks.length - 1 && near(weeks[b + 1])) b += 1;
+  if (b - a + 1 < minWeeks) return null;
+  return { from: weeks[a].start, to: addDays(weeks[b].start, 6), minutes: low };
+}

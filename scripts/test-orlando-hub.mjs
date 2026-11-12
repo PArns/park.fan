@@ -12,6 +12,8 @@ import {
   closesEarly,
   eventLanes,
   formatWindow,
+  hoursUnpublished,
+  isRankable,
   glanceDay,
   glanceLines,
   rankGroupParks,
@@ -31,6 +33,7 @@ import {
   parseOrlandoMonth,
 } from '../lib/orlando/paths.ts';
 import { orlandoRedirect } from '../lib/orlando/redirects.ts';
+import { flatStretch } from '../lib/orlando/best-time.ts';
 import { tripRegionRelayTarget } from '../lib/orlando/relay.ts';
 
 const fixture = (name) =>
@@ -196,6 +199,45 @@ test('a trip window prints as one short range', () => {
   assert.match(
     formatWindow({ from: '2027-01-12', to: '2027-01-21' }, 'de'),
     /^12\.\s?[–-]\s?21\. Jan/
+  );
+});
+
+test('a day without published hours keeps its figure and its mark; a closed day has none', () => {
+  const unknown = {
+    status: 'UNKNOWN',
+    hoursPublished: false,
+    crowdLevel: 'low',
+    basis: 'long_range',
+    headlinerWait: 40,
+  };
+  assert.equal(isRankable(unknown), true);
+  assert.equal(hoursUnpublished(unknown), true);
+  assert.equal(isRankable({ ...unknown, status: 'CLOSED' }), false);
+  assert.equal(isRankable({ ...unknown, headlinerWait: undefined }), false);
+});
+
+test('a flat year is said, a real low is not', () => {
+  const week = (start, w) => ({ start, headlinerWait: w, basis: 'forecast' });
+  const flat = [
+    '2027-01-04',
+    '2027-01-11',
+    '2027-01-18',
+    '2027-01-25',
+    '2027-02-01',
+    '2027-02-08',
+    '2027-02-15',
+  ].map((d) => week(d, 32));
+  assert.deepEqual(flatStretch([...flat, week('2027-02-22', 45)], '2027-01-11'), {
+    from: '2027-01-04',
+    to: '2027-02-21',
+    minutes: 32,
+  });
+  assert.equal(
+    flatStretch(
+      [week('2027-01-04', 45), week('2027-01-11', 32), week('2027-01-18', 45)],
+      '2027-01-11'
+    ),
+    null
   );
 });
 

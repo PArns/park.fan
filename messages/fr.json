@@ -2359,7 +2359,8 @@
       "none": "Aucun séjour de {days} jours en {year} n’a encore de chiffres.",
       "why": "Pourquoi ces dates",
       "events": "Événements : {list}",
-      "cautions": "À savoir"
+      "cautions": "À savoir",
+      "flat": "Du {from} au {to}, aucune semaine ne se détache : environ {minutes} min tout du long."
     },
     "intro": {
       "lead": "Chaque chiffre ici est l’attente des grandes attractions au moment le plus chargé : le pic du jour de chaque attraction phare, en moyenne sur les parcs du séjour.",
