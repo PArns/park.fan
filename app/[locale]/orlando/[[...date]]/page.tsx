@@ -28,6 +28,7 @@ import {
   formatHubMonth,
   hubWindow,
   orlandoToday,
+  orlandoWhenRange,
   shortGroupName,
 } from '@/lib/orlando/hub-data';
 import {
@@ -169,12 +170,14 @@ export default async function OrlandoPage({ params }: OrlandoPageProps) {
   const resolved = resolve(date);
   if (!resolved) notFound();
   const { nowMs, todayIso, current, month, window } = resolved;
+  const { from: whenFrom, to: whenTo } = orlandoWhenRange(todayIso);
+  const whenRange = { from: whenFrom, to: whenTo };
 
   const [region, calendar, bestDays, when] = await Promise.all([
     getOrlandoRegion(),
     catchNonFatal(getOrlandoCalendar(window)),
     catchNonFatal(getOrlandoBestDays(window)),
-    catchNonFatal(getOrlandoWhen({ limit: WHEN_WINDOWS })),
+    catchNonFatal(getOrlandoWhen({ ...whenRange, limit: WHEN_WINDOWS })),
   ]);
 
   const t = await getTranslations('orlando');

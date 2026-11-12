@@ -104,7 +104,9 @@ park, the busiest, the events. It is what makes one month's HTML differ from the
   events without offers, and an `expected` season is no announcement
   ([analysis](../seo/analysis.md#no-event-from-the-show-list)).
 - Everything below the answer that is "more" is a `<details>` or a hidden tab panel, so it is in the
-  served HTML. Month pages are in `app/sitemap.ts` with `lastmod` from `/best-days`' `computedAt`.
+  served HTML. The hub and the month pages are in `app/sitemap.ts` with hreflang and no `lastmod`: each forecast
+  warmup rebuilds every month at once, a stamp rather than an observed change
+  ([a lastmod is observed](../rules/a-lastmod-is-observed-never-stamped.md)).
 - Internal links: hub → each park's crowd calendar ("<park> Crowd Calendar") and park page; park
   pages and calendars → hub (the band); month ↔ month; hub → day planner and best-time pages.
 
