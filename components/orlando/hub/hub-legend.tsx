@@ -4,7 +4,13 @@ import { CROWD_TILE_CLASS, CROWD_TEXT_CLASS } from '@/lib/utils/crowd-level-styl
 import { UNUSABLE_HATCH_IMAGE } from '@/lib/utils/hatch';
 import { cn } from '@/lib/utils';
 import { formatHubDate } from '@/lib/orlando/hub-data';
-import { EARLY_CLOSE_CORNER, HUB_CELL, HUB_CELL_BEST, HUB_CELL_LAST_YEAR } from './hub-cell-styles';
+import {
+  EARLY_CLOSE_CORNER,
+  HUB_CELL,
+  HUB_CELL_BEST,
+  HUB_CELL_LAST_YEAR,
+  NO_HOURS_DOT,
+} from './hub-cell-styles';
 
 /** One key of the one-line legend: a small cell drawn the way the matrix draws it, and its word. */
 function Key({ swatch, label }: { swatch: React.ReactNode; label: string }) {
@@ -84,6 +90,23 @@ export async function HubLegend({
             />
           }
           label={t('closed')}
+        />
+        <Key
+          swatch={
+            <span
+              className={cn(
+                HUB_CELL,
+                swatch,
+                'relative',
+                CROWD_TILE_CLASS.low,
+                CROWD_TEXT_CLASS.low
+              )}
+            >
+              45
+              <span aria-hidden className={NO_HOURS_DOT} />
+            </span>
+          }
+          label={t('noHours')}
         />
         <Key
           swatch={<span className={cn(HUB_CELL, swatch, 'bg-muted/20')} />}

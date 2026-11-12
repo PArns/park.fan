@@ -425,7 +425,8 @@
       "colourLong": "Die Farbe vergleicht einen Tag mit einem normalen Tag desselben Parks. Deshalb sind ein grünes Magic Kingdom mit 40 Minuten und ein grünes EPCOT mit 60 Minuten beides gute Tage, jeweils für den eigenen Park. Der Ring markiert den Park, in dem du an diesem Tag im Resort am kürzesten anstehst. Ein Park, der für Tagesgäste früher schließt, verliert den Ring an einen vollen Tag mit ähnlicher Wartezeit.",
       "horizonLong": "Die Prognose reicht 60 Tage weit. Danach läuft unsere Vorschau bis {date} weiter, mit größerem Fehler. Tage dahinter zeigen denselben Wochentag im Vorjahr, so wie wir ihn gemessen haben.",
       "horizonLongNoDate": "Die Prognose reicht 60 Tage weit. Danach läuft unsere Vorschau mit größerem Fehler weiter, und Tage dahinter zeigen denselben Wochentag im Vorjahr, so wie wir ihn gemessen haben.",
-      "statesLong": "Ein schraffiertes Kästchen ist geschlossen, so wie der Park es veröffentlicht hat. Ein leeres Kästchen heißt, dass der Park für diesen Tag noch keine Öffnungszeiten veröffentlicht hat; dann können wir nichts dazu sagen. Ein Strich heißt: geöffnet, aber ohne Warteschlangen, die eine Prognose lohnen, wie in den meisten Wasserparks."
+      "statesLong": "Ein schraffiertes Kästchen ist geschlossen, so wie der Park es veröffentlicht hat. Ein Kästchen mit Punkt trägt die Prognose oder den Wert des Vorjahres, aber der Park hat seine Öffnungszeiten für diesen Tag noch nicht veröffentlicht; sie zählen deshalb nicht mit. Ein leeres Kästchen hat keinen Wert. Ein Strich heißt: geöffnet, aber ohne Warteschlangen, die eine Prognose lohnen, wie in den meisten Wasserparks.",
+      "noHours": "Punkt: Öffnungszeiten noch nicht veröffentlicht"
     },
     "calendar": {
       "kicker": "{from} – {to}",
@@ -456,20 +457,22 @@
       "cellEarly": "schließt {time}",
       "stateClosed": "Saisonpause",
       "stateUnknown": "Noch keine Öffnungszeiten",
-      "stateOpen": "Geöffnet, keine Prognose"
+      "stateOpen": "Geöffnet, keine Prognose",
+      "cellNoHours": "Öffnungszeiten noch nicht veröffentlicht",
+      "earlyElsewhere": "vor einem Park, der früher schließt"
     },
     "lanes": {
       "summaryLabel": "Events",
       "nights": "{name}: {count, plural, =1 {# Abend} other {# Abende}}",
-      "break": "{name} {dates}",
+      "break": "US-Schulferien: {name}, {dates}",
       "expected": "Termine erwartet",
-      "unnamedBreak": "Schulferien",
-      "none": "In diesen Tagen gibt es keine Events und keine Schulferien.",
+      "unnamedBreak": "US-Schulferien",
+      "none": "In diesen Tagen gibt es keine Events und keine US-Schulferien.",
       "allDays": "jeden Tag"
     },
     "sheet": {
       "kicker": "Orlando · ein Tag",
-      "intro": "In jedem Resort zuerst der Park, in dem du am kürzesten anstehst. Minuten: die großen Attraktionen zur vollsten Zeit.",
+      "intro": "In jedem Resort zuerst der beste Tag: kürzeste Warteschlangen, frühe Schließzeiten eingerechnet. Minuten: die großen Attraktionen zur vollsten Zeit.",
       "stayingAt": "Du wohnst in",
       "minutes": "{minutes} Min.",
       "noForecast": "geöffnet, keine Prognose",
@@ -490,7 +493,9 @@
       "ridesLoading": "Die Attraktionen werden geladen …",
       "ridesNone": "Für diesen Tag gibt es keine Werte für einzelne Attraktionen.",
       "ridesHint": "Jede Attraktion zu ihrer vollsten Tageszeit.",
-      "planDay": "Diesen Tag planen"
+      "planDay": "Diesen Tag planen",
+      "noHoursFigure": "Noch keine Öffnungszeiten. Der Wert ist die Prognose; die Öffnungszeiten zählen nicht mit.",
+      "ahead": "Vor {park}, wo Tagesgäste um {time} gehen"
     },
     "when": {
       "kicker": "Disney World und Universal",
@@ -531,7 +536,7 @@
       "quietest_in_window": "am kürzesten anstehen in diesem Zeitraum",
       "weekday": "Mo–Fr",
       "holiday_ends": "nach den Feiertagen",
-      "school_break": "in den Schulferien",
+      "school_break": "in den US-Schulferien",
       "closes_early": "Tagesgäste gehen um {time}",
       "extended_evening": "Extended Evening Hours",
       "early_entry": "Early Entry für Hotelgäste",
@@ -566,7 +571,7 @@
       },
       "error": {
         "title": "Wie genau ist sie?",
-        "body": "Für eine Attraktion an einem Tag liegt die Prognose oft 5 bis 10 Minuten daneben. Tage, die weniger als 5 Minuten auseinanderliegen, behandeln wir deshalb als gleich, und die besten Tage sind eine Gruppe, keine Rangliste. Am Tag darauf wird jede Prognose mit der gemessenen Wartezeit verglichen."
+        "body": "Wie weit eine Prognose danebenliegen kann, hängt davon ab, wie weit der Tag entfernt ist. Mit einem Plan steht es beim Planer neben deinen Tagen: „Die Prognose für eine Bahn an einem Tag kann um etwa … Min. danebenliegen.“ Wartezeiten sind auf fünf Minuten gerundet, deshalb gelten Tage innerhalb von fünf Minuten hier als gleich, und die besten Tage eines Parks sind eine Gruppe, keine Rangliste."
       },
       "travel": {
         "title": "Wie werden die Fahrzeiten berechnet?",
@@ -2393,7 +2398,7 @@
       "wait": "Große Bahnen etwa {minutes} Min.",
       "label": {
         "events": "Events",
-        "usBreaks": "Schulferien in Orlando",
+        "usBreaks": "US-Schulferien (Orlando)",
         "euBreaks": "Schulferien in Europa",
         "weather": "Übliches Wetter",
         "hours": "Öffnungszeiten"
@@ -2419,7 +2424,7 @@
       "best": "Ruhigste Wochen",
       "worst": "Vollste Wochen",
       "week": "Woche ab {date}",
-      "noBreak": "Keine Schulferien in Orlando."
+      "noBreak": "Keine US-Schulferien in Orlando."
     },
     "holidays": {
       "title": "Nur in den Schulferien?",
@@ -3339,7 +3344,7 @@
       "saved": "Etwa {minutes} Min. weniger pro Fahrt.",
       "error": "Die Prognose für eine Bahn an einem Tag kann um etwa {minutes} Min. danebenliegen.",
       "orderBarelyMatters": "Deine Tage sind etwa gleich voll, an diesen Daten macht die Reihenfolge kaum einen Unterschied.",
-      "lastYear": "Diese Tage planen wir mit den gemessenen Besucherzahlen des letzten Jahres. Die Prognose erreicht sie etwa am {date}.",
+      "lastYear": "Diese Tage planen wir mit den gemessenen Wartezeiten des letzten Jahres. Die Prognose erreicht sie etwa am {date}.",
       "about": "etwa {minutes} Min.",
       "daysLabel": "Deine Tage",
       "split": "{visits, plural, =2 {Wir haben {park} einen zweiten Tag gegeben.} other {Wir haben {park} # Tage gegeben.}}"
@@ -3512,24 +3517,24 @@
       "details": "Details",
       "plan": "Diese Daten planen",
       "reason": {
-        "no_school_break": "Keine Schulferien in diesen Tagen.",
+        "no_school_break": "Keine US-Schulferien in diesen Tagen.",
         "after_holidays": "Direkt nach den Feiertagen.",
-        "before_spring_break": "Vor den Frühjahrsferien.",
+        "before_spring_break": "Vor dem Andrang der US-Frühjahrsferien.",
         "festival": "In diesen Tagen läuft ein Festival.",
         "long_days": "Lange Öffnungszeiten.",
         "mild_weather": "Meist mildes Wetter."
       },
       "warning": {
         "party_nights": "{count, plural, =1 {1 Party-Abend} other {# Party-Abende}}: Tagesgäste müssen dann früher gehen.",
-        "school_break": "Fällt in Schulferien.",
+        "school_break": "Fällt in US-Schulferien.",
         "water_park_closed": "Ein gewählter Wasserpark hat in dieser Zeit geschlossen.",
         "hurricane_season": "Hurrikansaison (Juni bis November).",
         "hours_not_published": "Noch nicht alle Öffnungszeiten sind veröffentlicht.",
-        "estimate_last_year": "Teils mit den Besucherzahlen des letzten Jahres gerechnet."
+        "estimate_last_year": "Teils mit den gemessenen Wartezeiten des letzten Jahres gerechnet."
       },
       "basis": {
-        "mixed": "Teils mit den Besucherzahlen des letzten Jahres gerechnet",
-        "last_year": "Mit den Besucherzahlen des letzten Jahres gerechnet"
+        "mixed": "Teils mit den gemessenen Wartezeiten des letzten Jahres gerechnet",
+        "last_year": "Mit den gemessenen Wartezeiten des letzten Jahres gerechnet"
       },
       "stripTitle": "Jede Woche des Zeitraums",
       "stripWeek": "Woche ab {date}: etwa {minutes} Min.",

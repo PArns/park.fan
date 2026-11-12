@@ -425,7 +425,8 @@
       "colourLong": "De kleur vergelijkt een dag met een gewone dag in hetzelfde park. Daarom zijn een groen Magic Kingdom met 40 minuten en een groen EPCOT met 60 minuten allebei goede dagen, elk voor het eigen park. De ring markeert het park met de kortste rijen in het resort die dag. Een park dat eerder sluit voor dagbezoekers, verliest de ring aan een volle dag met een vergelijkbare wachttijd.",
       "horizonLong": "De voorspelling loopt 60 dagen vooruit. Daarna loopt onze vooruitblik tot {date}, met een grotere afwijking. Dagen daarna tonen dezelfde weekdag vorig jaar, zoals wij die gemeten hebben.",
       "horizonLongNoDate": "De voorspelling loopt 60 dagen vooruit. Daarna loopt onze vooruitblik door met een grotere afwijking, en dagen daarna tonen dezelfde weekdag vorig jaar, zoals wij die gemeten hebben.",
-      "statesLong": "Een gearceerd vakje is gesloten, zoals het park het heeft gepubliceerd. Een leeg vakje betekent dat het park voor die dag nog geen openingstijden heeft gepubliceerd; dan kunnen we er niets over zeggen. Een streepje betekent: open, maar zonder rijen die een voorspelling waard zijn, zoals in de meeste waterparken."
+      "statesLong": "Een gearceerd vakje is gesloten, zoals het park het heeft gepubliceerd. Een vakje met een stip toont de voorspelling of het cijfer van vorig jaar, maar het park heeft de openingstijden voor die dag nog niet gepubliceerd; die tellen dus niet mee. Een leeg vakje heeft geen cijfer. Een streepje betekent: open, maar zonder rijen die een voorspelling waard zijn, zoals in de meeste waterparken.",
+      "noHours": "Stip: openingstijden nog niet gepubliceerd"
     },
     "calendar": {
       "kicker": "{from} – {to}",
@@ -456,20 +457,22 @@
       "cellEarly": "sluit {time}",
       "stateClosed": "Gesloten voor het seizoen",
       "stateUnknown": "Nog geen openingstijden",
-      "stateOpen": "Open, geen voorspelling"
+      "stateOpen": "Open, geen voorspelling",
+      "cellNoHours": "openingstijden nog niet gepubliceerd",
+      "earlyElsewhere": "voor een park dat eerder sluit"
     },
     "lanes": {
       "summaryLabel": "Evenementen",
       "nights": "{name}: {count, plural, =1 {# avond} other {# avonden}}",
-      "break": "{name} {dates}",
+      "break": "Amerikaanse schoolvakantie: {name}, {dates}",
       "expected": "data verwacht",
-      "unnamedBreak": "Schoolvakantie",
-      "none": "Geen evenementen of schoolvakanties in deze dagen.",
+      "unnamedBreak": "Amerikaanse schoolvakantie",
+      "none": "Geen evenementen of Amerikaanse schoolvakanties in deze dagen.",
       "allDays": "elke dag"
     },
     "sheet": {
       "kicker": "Orlando · één dag",
-      "intro": "Per resort eerst het park met de kortste rijen. Minuten: de grote attracties op het drukste moment.",
+      "intro": "Per resort eerst de beste dag: kortste rijen, vroege sluitingen meegeteld. Minuten: de grote attracties op het drukste moment.",
       "stayingAt": "Je verblijft in",
       "minutes": "{minutes} min",
       "noForecast": "open, geen voorspelling",
@@ -490,7 +493,9 @@
       "ridesLoading": "De attracties worden geladen …",
       "ridesNone": "Geen cijfers per attractie voor deze dag.",
       "ridesHint": "Elke attractie op haar drukste moment van de dag.",
-      "planDay": "Plan deze dag"
+      "planDay": "Plan deze dag",
+      "noHoursFigure": "Nog geen openingstijden. Het cijfer is de voorspelling; openingstijden tellen niet mee.",
+      "ahead": "Voor {park}, waar dagbezoekers om {time} vertrekken"
     },
     "when": {
       "kicker": "Disney World en Universal",
@@ -531,7 +536,7 @@
       "quietest_in_window": "de kortste rijen van deze periode",
       "weekday": "doordeweeks",
       "holiday_ends": "na de feestdagen",
-      "school_break": "in een schoolvakantie",
+      "school_break": "in een Amerikaanse schoolvakantie",
       "closes_early": "dagbezoekers vertrekken om {time}",
       "extended_evening": "Extended Evening Hours",
       "early_entry": "Early Entry voor hotelgasten",
@@ -566,7 +571,7 @@
       },
       "error": {
         "title": "Hoe nauwkeurig is het?",
-        "body": "Voor één attractie op één dag zit de voorspelling er vaak 5 tot 10 minuten naast. Dagen die minder dan 5 minuten uit elkaar liggen, zijn voor ons daarom gelijk, en de beste dagen zijn een groep, geen ranglijst. Elke voorspelling wordt de dag erna vergeleken met de gemeten wachttijd."
+        "body": "Hoeveel een voorspelling ernaast kan zitten, hangt af van hoe ver de dag nog weg is. Met een plan zet de planner het naast je dagen: “Een voorspelling voor één attractie op één dag kan ongeveer … min. ernaast zitten.” Wachttijden zijn afgerond op vijf minuten, dus dagen binnen vijf minuten tellen hier als gelijk, en de beste dagen van een park zijn een groep, geen ranglijst."
       },
       "travel": {
         "title": "Hoe worden de reistijden berekend?",
@@ -2393,7 +2398,7 @@
       "wait": "Grote attracties ongeveer {minutes} min",
       "label": {
         "events": "Evenementen",
-        "usBreaks": "Schoolvakanties in Orlando",
+        "usBreaks": "Amerikaanse schoolvakanties (Orlando)",
         "euBreaks": "Schoolvakanties in Europa",
         "weather": "Gewone weer",
         "hours": "Openingstijden"
@@ -2419,7 +2424,7 @@
       "best": "Rustigste weken",
       "worst": "Drukste weken",
       "week": "Week van {date}",
-      "noBreak": "Geen schoolvakantie in Orlando."
+      "noBreak": "Geen Amerikaanse schoolvakantie in Orlando."
     },
     "holidays": {
       "title": "Alleen in de schoolvakantie?",
@@ -3512,16 +3517,16 @@
       "details": "Details",
       "plan": "Deze data plannen",
       "reason": {
-        "no_school_break": "Geen schoolvakanties op deze dagen.",
+        "no_school_break": "Geen Amerikaanse schoolvakanties op deze dagen.",
         "after_holidays": "Meteen na de feestdagen.",
-        "before_spring_break": "Voor de drukte van de voorjaarsvakantie.",
+        "before_spring_break": "Voor de drukte van de Amerikaanse voorjaarsvakantie.",
         "festival": "Op deze dagen loopt een festival.",
         "long_days": "Lange openingstijden.",
         "mild_weather": "Meestal mild weer."
       },
       "warning": {
         "party_nights": "{count, plural, =1 {1 feestavond} other {# feestavonden}}: dagbezoekers moeten dan vroeger weg.",
-        "school_break": "Valt in een schoolvakantie.",
+        "school_break": "Valt in een Amerikaanse schoolvakantie.",
         "water_park_closed": "Een gekozen waterpark is in deze tijd gesloten.",
         "hurricane_season": "Orkaanseizoen (juni tot november).",
         "hours_not_published": "Nog niet alle openingstijden zijn gepubliceerd.",

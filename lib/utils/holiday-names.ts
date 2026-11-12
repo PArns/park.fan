@@ -52,6 +52,23 @@ const SEASONS: Record<string, Names> = {
     'vacaciones de invierno',
     'vacanze invernali',
   ],
+  thanksgiving: [
+    'Thanksgiving-Ferien',
+    'Thanksgiving break',
+    'Thanksgivingvakantie',
+    'vacances de Thanksgiving',
+    'vacaciones de Acción de Gracias',
+    'vacanze del Ringraziamento',
+  ],
+  // Orlando's school calendar marks single days off as "Student holiday".
+  student: [
+    'Unterrichtsfreier Tag',
+    'Student holiday',
+    'Vrije schooldag',
+    'Journée sans école',
+    'Día sin clases',
+    'Giorno senza scuola',
+  ],
   spring: [
     'Frühjahrsferien',
     'Spring holidays',

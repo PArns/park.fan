@@ -65,6 +65,11 @@ interface LandingHeroShared {
   answer?: React.ReactNode;
   /** Exactly one primary button, under the tagline. A link styled by `buttonLinkProps`. */
   action?: LandingAction;
+  /**
+   * The primary action as a ready element, for one that does more than follow a link (the Orlando
+   * hub's opens the planner's dates). It must carry `data-landing-action` itself. Wins over `action`.
+   */
+  actionElement?: React.ReactNode;
 }
 
 type LandingHeroProps =
@@ -109,7 +114,7 @@ const TITLE_CLASS = {
  * and clears it with `pt-32`; the compact head stays in flow below it.
  */
 export function LandingHero(props: LandingHeroProps) {
-  const { kicker, title, tagline, titleClassName, aside, answer, action } = props;
+  const { kicker, title, tagline, titleClassName, aside, answer, action, actionElement } = props;
   const variant = props.variant ?? 'hub';
   const compact = variant === 'compact';
 
@@ -129,7 +134,10 @@ export function LandingHero(props: LandingHeroProps) {
           </p>
         )}
         {answer && <div className={compact ? 'mt-4' : 'mt-6'}>{answer}</div>}
-        {action && (
+        {actionElement && (
+          <div className={compact ? 'mt-5' : answer ? 'mt-6' : 'mt-8'}>{actionElement}</div>
+        )}
+        {action && !actionElement && (
           <div className={compact ? 'mt-5' : answer ? 'mt-6' : 'mt-8'}>
             <Link
               href={action.href}

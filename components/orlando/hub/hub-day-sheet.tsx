@@ -29,6 +29,8 @@ import {
   tintLevel,
 } from '@/lib/orlando/hub-data';
 import { ORLANDO_TIMEZONE } from '@/lib/orlando/types';
+import { cleanBreakName } from '@/lib/orlando/best-time';
+import { translateHolidayName } from '@/lib/utils/holiday-names';
 import type {
   TripCalendar,
   TripCalendarDay,
@@ -102,7 +104,13 @@ export function HubDaySheet({
               </SheetTitle>
               <SheetDescription className="mt-1">{t('intro')}</SheetDescription>
               {(day.holidays?.length ?? 0) > 0 && (
-                <p className="mt-2 text-sm">{day.holidays!.join(' · ')}</p>
+                <p className="mt-2 text-sm">
+                  {[
+                    ...new Set(
+                      day.holidays!.map((h) => translateHolidayName(cleanBreakName(h), locale))
+                    ),
+                  ].join(' · ')}
+                </p>
               )}
               <label className="mt-3 flex items-center gap-2 text-sm">
                 <span className="text-muted-foreground shrink-0">{t('stayingAt')}</span>

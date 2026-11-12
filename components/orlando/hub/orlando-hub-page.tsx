@@ -57,6 +57,7 @@ import { HubMonthIndex } from './hub-month-index';
 import { HubMonthSummary } from './hub-month-summary';
 import { PlannerChapterSlot } from './planner-chapter-slot';
 import { HubWhen } from './hub-when';
+import { HubHeroAction } from './hub-hero-action';
 
 /**
  * The hero photo: the Tree of Life at Animal Kingdom, then VelociCoaster at Islands of Adventure if
@@ -144,6 +145,7 @@ export async function OrlandoHubPage({
       locale={locale}
     />
   );
+  const heroAction = <HubHeroAction href={action.href} label={action.label} />;
   const title = monthLabel ? t('monthTitle', { month: monthLabel }) : t('title');
   const tagline = monthLabel ? t('leadMonth', { month: monthLabel }) : t('lead');
   const epic = region.parks.find((p) => p.slug === NEXT_STEP_PARK);
@@ -161,10 +163,10 @@ export async function OrlandoHubPage({
           title={title}
           tagline={tagline}
           answer={answer}
+          actionElement={heroAction}
           imageSrc={hero.src}
           imageAlt={hero.alt}
           scrollLabel={t('scroll')}
-          action={action}
           flowInto
         />
       ) : (
@@ -174,7 +176,7 @@ export async function OrlandoHubPage({
           title={title}
           tagline={tagline}
           answer={answer}
-          action={action}
+          actionElement={heroAction}
         />
       )}
 

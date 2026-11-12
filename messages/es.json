@@ -425,7 +425,8 @@
       "colourLong": "El color compara un día con un día normal del mismo parque. Por eso un Magic Kingdom verde con 40 minutos y un EPCOT verde con 60 son buenos días, cada uno para su parque. El anillo marca el parque con las colas más cortas del resort ese día. Un parque que cierra antes para los visitantes de día puede perder el anillo frente a un día completo con una espera parecida.",
       "horizonLong": "La previsión cubre los próximos 60 días. Después nuestra tendencia llega hasta el {date}, con un margen de error mayor. Más allá, un día muestra el mismo día de la semana del año pasado, tal como lo medimos.",
       "horizonLongNoDate": "La previsión cubre los próximos 60 días. Después nuestra tendencia sigue con un margen de error mayor, y más allá un día muestra el mismo día de la semana del año pasado, tal como lo medimos.",
-      "statesLong": "Una casilla rayada está cerrada, tal como lo publicó el parque. Una casilla vacía significa que el parque aún no ha publicado su horario para ese día, así que no podemos decir nada. Un guion significa abierto, pero sin colas que merezcan una previsión, como en la mayoría de los parques acuáticos."
+      "statesLong": "Una casilla rayada está cerrada, tal como lo publicó el parque. Una casilla con un punto lleva la previsión o la cifra del año pasado, pero el parque aún no ha publicado su horario para ese día, así que el horario no cuenta. Una casilla vacía no tiene cifra. Un guion significa abierto, pero sin colas que merezcan una previsión, como en la mayoría de los parques acuáticos.",
+      "noHours": "Punto: horario aún sin publicar"
     },
     "calendar": {
       "kicker": "{from} – {to}",
@@ -456,20 +457,22 @@
       "cellEarly": "cierra a las {time}",
       "stateClosed": "Cerrado por temporada",
       "stateUnknown": "Aún sin horario",
-      "stateOpen": "Abierto, sin previsión"
+      "stateOpen": "Abierto, sin previsión",
+      "cellNoHours": "horario aún sin publicar",
+      "earlyElsewhere": "por delante de un parque que cierra antes"
     },
     "lanes": {
       "summaryLabel": "Eventos",
       "nights": "{name}: {count, plural, =1 {# noche} other {# noches}}",
-      "break": "{name} {dates}",
+      "break": "Vacaciones escolares de EE. UU.: {name}, {dates}",
       "expected": "fechas previstas",
-      "unnamedBreak": "Vacaciones escolares",
-      "none": "No hay eventos ni vacaciones escolares en estos días.",
+      "unnamedBreak": "Vacaciones escolares de EE. UU.",
+      "none": "No hay eventos ni vacaciones escolares de EE. UU. en estos días.",
       "allDays": "todos los días"
     },
     "sheet": {
       "kicker": "Orlando · un día",
-      "intro": "En cada resort, primero el parque con las colas más cortas. Minutos: las grandes atracciones a la hora de más gente.",
+      "intro": "En cada resort, primero el mejor día: colas más cortas, cierres anticipados incluidos. Minutos: las grandes atracciones a la hora de más gente.",
       "stayingAt": "Te alojas en",
       "minutes": "{minutes} min",
       "noForecast": "abierto, sin previsión",
@@ -490,7 +493,9 @@
       "ridesLoading": "Cargando las atracciones …",
       "ridesNone": "No hay cifras por atracción para este día.",
       "ridesHint": "Cada atracción a su hora de más gente.",
-      "planDay": "Planificar este día"
+      "planDay": "Planificar este día",
+      "noHoursFigure": "Aún sin horario. La cifra es la previsión; el horario no cuenta.",
+      "ahead": "Por delante de {park}, donde los visitantes de día salen a las {time}"
     },
     "when": {
       "kicker": "Disney World y Universal",
@@ -531,7 +536,7 @@
       "quietest_in_window": "las colas más cortas del periodo",
       "weekday": "entre semana",
       "holiday_ends": "después de las fiestas",
-      "school_break": "durante unas vacaciones escolares",
+      "school_break": "durante vacaciones escolares de EE. UU.",
       "closes_early": "los visitantes de día salen a las {time}",
       "extended_evening": "Extended Evening Hours",
       "early_entry": "Early Entry para huéspedes de hotel",
@@ -566,7 +571,7 @@
       },
       "error": {
         "title": "¿Cuánto acierta?",
-        "body": "Para una atracción en un día, la previsión suele fallar entre 5 y 10 minutos. Por eso, días con menos de 5 minutos de diferencia son iguales para nosotros, y los mejores días son un grupo, no una clasificación. Cada previsión se compara al día siguiente con la espera medida."
+        "body": "Cuánto puede fallar una previsión depende de lo lejos que esté el día. Con un plan, el planificador lo indica junto a tus días: «Una previsión para una atracción en un día puede fallar en unos … min.» Las esperas se redondean a cinco minutos, así que aquí los días con menos de cinco minutos de diferencia cuentan como iguales, y los mejores días de un parque son un grupo, no una clasificación."
       },
       "travel": {
         "title": "¿Cómo se calculan los trayectos?",
@@ -2393,7 +2398,7 @@
       "wait": "Grandes atracciones unos {minutes} min",
       "label": {
         "events": "Eventos",
-        "usBreaks": "Vacaciones escolares en Orlando",
+        "usBreaks": "Vacaciones escolares de EE. UU. (Orlando)",
         "euBreaks": "Vacaciones escolares en Europa",
         "weather": "Tiempo habitual",
         "hours": "Horarios"
@@ -2419,7 +2424,7 @@
       "best": "Semanas más tranquilas",
       "worst": "Semanas más llenas",
       "week": "Semana del {date}",
-      "noBreak": "Sin vacaciones escolares en Orlando."
+      "noBreak": "Sin vacaciones escolares de EE. UU. en Orlando."
     },
     "holidays": {
       "title": "¿Solo en vacaciones escolares?",
@@ -3512,16 +3517,16 @@
       "details": "Detalles",
       "plan": "Planificar estas fechas",
       "reason": {
-        "no_school_break": "Sin vacaciones escolares esos días.",
+        "no_school_break": "Sin vacaciones escolares de EE. UU. esos días.",
         "after_holidays": "Justo después de las fiestas.",
-        "before_spring_break": "Antes de la afluencia de las vacaciones de primavera.",
+        "before_spring_break": "Antes de la afluencia del spring break de EE. UU.",
         "festival": "Esos días hay un festival.",
         "long_days": "Horarios largos.",
         "mild_weather": "Tiempo normalmente suave."
       },
       "warning": {
         "party_nights": "{count, plural, =1 {1 noche de fiesta} other {# noches de fiesta}}: los visitantes de día tienen que salir antes.",
-        "school_break": "Coincide con vacaciones escolares.",
+        "school_break": "Coincide con vacaciones escolares de EE. UU.",
         "water_park_closed": "Un parque acuático elegido está cerrado por temporada.",
         "hurricane_season": "Temporada de huracanes (de junio a noviembre).",
         "hours_not_published": "Aún no están publicados todos los horarios.",

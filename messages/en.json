@@ -425,7 +425,8 @@
       "colourLong": "The colour compares a day with the same park's typical day. That is why a green Magic Kingdom at 40 minutes and a green EPCOT at 60 are both good days, each for its own park. The ring marks the park with the shortest lines at each resort that day. A park that closes early for day guests can lose the ring to a full day with a similar wait.",
       "horizonLong": "The forecast covers the next 60 days. After that our outlook runs to {date}, with a wider error. Days past it show the same weekday last year, as we measured it.",
       "horizonLongNoDate": "The forecast covers the next 60 days. After that our outlook runs on with a wider error, and days past it show the same weekday last year, as we measured it.",
-      "statesLong": "A hatched square is closed, as the park published it. An empty square means the park has not published its hours for that day yet, so we cannot say anything about it. A dash means the park is open but has no queues worth forecasting, as at most water parks."
+      "statesLong": "A hatched square is closed, as the park published it. A square with a dot carries the forecast or last year's figure, but the park has not published its hours for that day yet, so the hours are not counted. An empty square has no figure. A dash means the park is open but has no queues worth forecasting, as at most water parks.",
+      "noHours": "Dot: hours not published yet"
     },
     "calendar": {
       "kicker": "{from} – {to}",
@@ -456,20 +457,22 @@
       "cellEarly": "closes {time}",
       "stateClosed": "Closed for the season",
       "stateUnknown": "No hours published yet",
-      "stateOpen": "Open, no forecast"
+      "stateOpen": "Open, no forecast",
+      "cellNoHours": "hours not published yet",
+      "earlyElsewhere": "ahead of a park that closes early"
     },
     "lanes": {
       "summaryLabel": "Events",
       "nights": "{name}: {count, plural, =1 {# night} other {# nights}}",
-      "break": "{name} {dates}",
+      "break": "US school holidays: {name}, {dates}",
       "expected": "dates expected",
-      "unnamedBreak": "School break",
-      "none": "No events or school breaks in these days.",
+      "unnamedBreak": "US school holidays",
+      "none": "No events or US school holidays in these days.",
       "allDays": "every day"
     },
     "sheet": {
       "kicker": "Orlando · one day",
-      "intro": "Shortest lines first at each resort. Minutes: the big rides at their busiest.",
+      "intro": "Best day first at each resort: shortest lines, early closings counted. Minutes: the big rides at their busiest.",
       "stayingAt": "Staying at",
       "minutes": "{minutes} min",
       "noForecast": "open, no forecast",
@@ -490,7 +493,9 @@
       "ridesLoading": "Loading the rides …",
       "ridesNone": "No ride figures for this day.",
       "ridesHint": "Each ride at its busiest time of day.",
-      "planDay": "Plan this day"
+      "planDay": "Plan this day",
+      "noHoursFigure": "No hours published yet. The figure is the forecast; hours are not counted.",
+      "ahead": "Ahead of {park}, which closes at {time} for day guests"
     },
     "when": {
       "kicker": "Disney World and Universal",
@@ -531,7 +536,7 @@
       "quietest_in_window": "the shortest lines of the period",
       "weekday": "weekday",
       "holiday_ends": "after the holidays",
-      "school_break": "during a school break",
+      "school_break": "during US school holidays",
       "closes_early": "day guests leave at {time}",
       "extended_evening": "Extended Evening Hours",
       "early_entry": "Early Entry for hotel guests",
@@ -566,7 +571,7 @@
       },
       "error": {
         "title": "How close does it get?",
-        "body": "For one ride on one day the forecast is often off by 5 to 10 minutes. Days within 5 minutes of each other are therefore equal to us, and the best days are a set, not a ranking. Each forecast is compared with the measured wait the next day."
+        "body": "How far a forecast can be off depends on how far ahead the day is. With a plan, the planner says it beside your days: \"A forecast for one ride on one day can be off by about … min.\" Waits are rounded to five minutes, so days within five minutes count as equal here, and each park's best days are a set, not a ranking."
       },
       "travel": {
         "title": "How are the drive times measured?",
@@ -2393,7 +2398,7 @@
       "wait": "Big rides about {minutes} min",
       "label": {
         "events": "Events",
-        "usBreaks": "Orlando school breaks",
+        "usBreaks": "US school holidays (Orlando)",
         "euBreaks": "European school holidays",
         "weather": "Usual weather",
         "hours": "Opening hours"
@@ -2419,7 +2424,7 @@
       "best": "Quietest weeks",
       "worst": "Busiest weeks",
       "week": "Week of {date}",
-      "noBreak": "No school break in Orlando."
+      "noBreak": "No US school holidays in Orlando."
     },
     "holidays": {
       "title": "Travelling in school holidays?",
@@ -3512,16 +3517,16 @@
       "details": "Details",
       "plan": "Plan these dates",
       "reason": {
-        "no_school_break": "No school holidays on these days.",
+        "no_school_break": "No US school holidays on these days.",
         "after_holidays": "Right after the holidays.",
-        "before_spring_break": "Before the spring break crowds.",
+        "before_spring_break": "Before the US spring break crowds.",
         "festival": "A festival runs on these days.",
         "long_days": "Long opening hours.",
         "mild_weather": "Usually mild weather."
       },
       "warning": {
         "party_nights": "{count, plural, =1 {1 party night} other {# party nights}}: day guests have to leave early then.",
-        "school_break": "Falls in a school break.",
+        "school_break": "Falls in US school holidays.",
         "water_park_closed": "A water park you chose is closed for its season.",
         "hurricane_season": "Hurricane season (June to November).",
         "hours_not_published": "Not all hours are published yet.",

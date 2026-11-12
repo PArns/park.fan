@@ -10,6 +10,8 @@ import { CROWD_TEXT_CLASS, CROWD_TILE_CLASS } from '@/lib/utils/crowd-level-styl
 import { UNUSABLE_HATCH_IMAGE } from '@/lib/utils/hatch';
 import { formatClockTime } from '@/lib/utils/intl-format';
 import { addDays } from '@/lib/utils/park-day';
+import { translateHolidayName } from '@/lib/utils/holiday-names';
+import { cleanBreakName } from '@/lib/orlando/best-time';
 import {
   closesEarly,
   dayBasis,
@@ -644,7 +646,12 @@ function EventLanes({
       ),
     [calendar, region]
   );
-  const nameOf = (lane: EventLane) => lane.name ?? (lane.kind === 'break' ? t('unnamedBreak') : '');
+  const nameOf = (lane: EventLane) =>
+    lane.kind === 'break'
+      ? lane.name
+        ? translateHolidayName(cleanBreakName(lane.name), locale)
+        : t('unnamedBreak')
+      : (lane.name ?? '');
   const parkNames = (lane: EventLane) =>
     lane.parkSlugs
       .map((slug) => region.parks.find((p) => p.slug === slug))
