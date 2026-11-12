@@ -1,6 +1,7 @@
 import { addDays } from '@/lib/utils/park-day';
 import type { ColoredCrowdLevel } from '@/lib/utils/crowd-level-styles';
 import {
+  DEFAULT_FIND_DAYS,
   MAX_DAYS_AHEAD,
   planQueryEntries,
   type OrlandoPlanState,
@@ -76,6 +77,8 @@ export function whenRequestQuery(state: OrlandoPlanState): Record<string, string
     to: state.when.to,
     days: String(state.days),
   };
+  // The API's default length is left out, so the hub's own `/when` and this one are one query.
+  if (query.days === String(DEFAULT_FIND_DAYS)) delete query.days;
   if (state.within) query.within = state.within;
   query.limit = String(WHEN_LIMIT);
   for (const [key, value] of planQueryEntries({ ...state, when: null, locks: [] })) {
@@ -101,7 +104,6 @@ export const WHEN_WARNING_ORDER = [
   'party_nights',
   'school_break',
   'water_park_closed',
-  'hurricane_season',
   'hours_not_published',
   'estimate_last_year',
 ] as const;
@@ -202,4 +204,22 @@ export function holidayRegionsFor(
   return [...byCountry.values()].sort(
     (a, b) => Number(b.country === first) - Number(a.country === first)
   );
+}
+
+/**
+ * Why a window ranks lower than its plain minutes say: the season terms `/when` added
+ * (`penalties`, minutes per park day). "ranked lower: hurricane season" beside an unchanged figure.
+ * The hurricane term is named for its peak where the window touches it.
+ */
+export function rankedLower(
+  window: Pick<TripWhenWindow, 'warnings'> & { penalties?: { heat?: number; hurricane?: number } }
+): Array<'extreme_heat' | 'hurricane_peak' | 'hurricane_season'> {
+  const p = window.penalties;
+  if (!p) return [];
+  const out: Array<'extreme_heat' | 'hurricane_peak' | 'hurricane_season'> = [];
+  if ((p.hurricane ?? 0) > 0) {
+    out.push(window.warnings.includes('hurricane_peak') ? 'hurricane_peak' : 'hurricane_season');
+  }
+  if ((p.heat ?? 0) > 0) out.push('extreme_heat');
+  return out;
 }

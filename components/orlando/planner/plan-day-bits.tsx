@@ -12,8 +12,8 @@ import { usePlanContext } from './plan-context';
 
 /** The park or parks of a day, as one label ("Universal Studios Florida + Islands of Adventure"). */
 export function useDayParks(): (day: PlanDay) => string {
-  const { parkBySlug } = usePlanContext();
-  return (day) => day.parks.map((p) => parkBySlug.get(p.slug)?.name ?? p.slug).join(' + ');
+  const { parkName } = usePlanContext();
+  return (day) => day.parks.map((p) => parkName(p.slug)).join(' + ');
 }
 
 /** When the day guests leave a park day: the plan's own figure, else the calendar's close. */

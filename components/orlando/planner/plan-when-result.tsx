@@ -240,7 +240,7 @@ function WindowSheet({
   returnFocus: () => void;
 }) {
   const t = useTranslations('orlandoPlanner');
-  const { locale, parkBySlug } = usePlanContext();
+  const { locale, parkName } = usePlanContext();
   const wide = useMediaQuery(PLAN_WIDE_QUERY);
   const seasonName = useSeasonName();
   const tSeasons = useTranslations('parks.seasons');
@@ -333,7 +333,7 @@ function WindowSheet({
                       </span>
                       <span className="min-w-0 truncate">
                         {day.parks.length > 0
-                          ? day.parks.map((s) => parkBySlug.get(s)?.name ?? s).join(' + ')
+                          ? day.parks.map((s) => parkName(s)).join(' + ')
                           : ['arrival', 'departure', 'rest'].includes(day.kind)
                             ? t(`day.${day.kind as 'arrival' | 'departure' | 'rest'}`)
                             : ''}

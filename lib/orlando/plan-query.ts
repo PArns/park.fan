@@ -65,6 +65,10 @@ export interface OrlandoPlanState {
   fireworks: 'want' | 'any';
   rest: PlanRest;
   hop: boolean;
+  /** `ticket=`: a Park Hopper (park-to-park) ticket, without which `hop` does nothing. */
+  ticket: 'base' | 'hopper';
+  /** `evenings=`: an evening at a second park or a venue after a park that closes early. */
+  evenings: boolean;
   split: 'auto' | 'fixed';
   locks: PlanLock[];
 }
@@ -100,6 +104,8 @@ export const DEFAULT_PLAN_STATE: OrlandoPlanState = {
   fireworks: 'any',
   rest: 'auto',
   hop: false,
+  ticket: 'base',
+  evenings: true,
   split: 'auto',
   locks: [],
 };
@@ -123,6 +129,8 @@ export const PLAN_QUERY_NAMES = [
   'fireworks',
   'rest',
   'hop',
+  'ticket',
+  'evenings',
   'split',
   'lock',
 ] as const;
@@ -221,6 +229,8 @@ export function readPlanQuery(query: QueryReader, keys?: PlanRegionKeys): Orland
   if (query.get('departure') === 'park') state.departure = 'park';
   state.blocks = flag(query.get('blocks')) ?? DEFAULT_PLAN_STATE.blocks;
   state.hop = flag(query.get('hop')) ?? DEFAULT_PLAN_STATE.hop;
+  if (query.get('ticket') === 'hopper') state.ticket = 'hopper';
+  state.evenings = flag(query.get('evenings')) ?? DEFAULT_PLAN_STATE.evenings;
 
   const fireworks = query.get('fireworks');
   state.fireworks = fireworks === 'want' ? 'want' : 'any';
@@ -295,6 +305,8 @@ export function planQueryEntries(state: OrlandoPlanState): Array<[string, string
   const rest = restValue(state.rest);
   if (rest) out.push(['rest', rest]);
   if (state.hop) out.push(['hop', '1']);
+  if (state.ticket === 'hopper') out.push(['ticket', 'hopper']);
+  if (!state.evenings) out.push(['evenings', '0']);
   if (state.split === 'fixed') out.push(['split', 'fixed']);
   if (state.locks.length > 0 && !state.when) {
     out.push(['lock', state.locks.map((l) => `${l.target}@${l.date}`).join(',')]);

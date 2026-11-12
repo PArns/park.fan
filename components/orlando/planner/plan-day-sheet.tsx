@@ -164,13 +164,13 @@ function DayDetails({
 }) {
   const t = useTranslations('orlandoPlanner');
   const tSeasons = useTranslations('parks.seasons');
-  const { locale, timeZone, parkBySlug, region, state } = usePlanContext();
+  const { locale, timeZone, parkName, region, state } = usePlanContext();
   const seasonName = useSeasonName();
   const [swapOpen, setSwapOpen] = useState(false);
   const swapId = useId();
 
   const isPark = day.kind === 'park' || day.kind === 'hop';
-  const name = (slug: string) => parkBySlug.get(slug)?.name ?? slug;
+  const name = parkName;
   const short = (date: string) =>
     formatParkDay(locale, date, { weekday: 'short', day: 'numeric', month: 'short' });
   const time = (iso: string) => formatClockTime(iso, locale, timeZone);

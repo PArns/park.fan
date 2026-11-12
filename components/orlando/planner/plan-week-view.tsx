@@ -184,12 +184,11 @@ function WeekColumn({
   onOpen: () => void;
 }) {
   const t = useTranslations('orlandoPlanner');
-  const { locale, parkBySlug, photos } = usePlanContext();
+  const { locale, parkName, photos } = usePlanContext();
   const grid = tripColumnGrid(span, canvas, pxPerMin);
   const partyName = usePartyName(calendar, day);
   const weekday = formatParkDay(locale, span.date, { weekday: 'short' });
   const date = formatParkDay(locale, span.date, { day: 'numeric', month: 'short' });
-  const parkName = (slug: string) => parkBySlug.get(slug)?.name ?? slug;
 
   const isPark = span.kind === 'park' || span.kind === 'hop';
   const fullDay = (label: string, icon: React.ReactNode, tone: 'rest' | 'travel') => (

@@ -77,8 +77,38 @@ export interface PlanDay {
    */
   closesEarly?: boolean;
   dayGuestCloseAt?: string;
+  /** An evening after the park, with `evenings=1` and a park that closes early. */
+  evening?: PlanEvening;
   reasons: string[];
   warnings: string[];
+}
+
+/** A highlight of an evening, as the plan names it. */
+export interface PlanEveningHighlight {
+  kind: 'night_show' | 'fireworks' | 'fireworks_view' | 'dining' | 'shopping';
+  name?: string;
+  /** Park-local ISO or `HH:MM`. */
+  at?: string;
+}
+
+/**
+ * After a park that closes early for day guests: an evening at a second park (`hop`, with a hopper
+ * ticket) or at a venue (Disney Springs, CityWalk), with why and how to get there.
+ */
+export interface PlanEvening {
+  kind: 'hop' | 'venue';
+  /** The park slug of a `hop` evening. */
+  park?: string;
+  /** The venue key of a `venue` evening (`region.venues`). */
+  venue?: string;
+  /** Park-local ISO or `HH:MM`. */
+  from: string;
+  to: string;
+  travel?: { minutes: number; mode: string; via?: string };
+  highlights?: PlanEveningHighlight[];
+  reasons: string[];
+  /** Other evenings that would do. */
+  alternatives?: Array<{ kind?: 'hop' | 'venue'; park?: string; venue?: string }>;
 }
 
 /** Another day of the trip a park could have had, best first. */
@@ -106,6 +136,8 @@ export interface PlanTotals {
   savedMinutesPerRide?: number;
   expectedError?: number;
   orderMatters?: boolean;
+  /** What heat and the hurricane season added to the ranking, minutes per park day. */
+  penalties?: { heat?: number; hurricane?: number };
   parkDays: number;
   restDays: number;
   visits: number;

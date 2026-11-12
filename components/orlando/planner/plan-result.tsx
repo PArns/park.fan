@@ -266,21 +266,21 @@ function PlanAnswer({
   onOpenDay: (date: string) => void;
 }) {
   const t = useTranslations('orlandoPlanner');
-  const { locale, today, parkBySlug } = usePlanContext();
+  const { locale, today, parkName } = usePlanContext();
   const parksOf = useDayParks();
   const savings = planSavings(plan.totals);
   const reach = today ? lastYearReach(plan.days, calendar?.meta.forecastUntil, today) : null;
   const added = autoSplit(plan.meta).map((e) =>
-    t('answer.split', { park: parkBySlug.get(e.slug)?.name ?? e.slug, visits: e.visits })
+    t('answer.split', { park: parkName(e.slug), visits: e.visits })
   );
   const notes = [
     ...relaxedRules(plan.meta).map((r) => t(`relaxed.${r}`)),
     ...unplacedParks(plan).map((u) =>
-      t(`unplaced.${u.reason}`, { park: parkBySlug.get(u.slug)?.name ?? u.slug })
+      t(`unplaced.${u.reason}`, { park: parkName(u.slug) })
     ),
     ...ignoredLocks(plan).map((l) =>
       t(`ignoredLock.${l.reason}`, {
-        what: l.target === 'rest' ? t('day.rest') : (parkBySlug.get(l.target)?.name ?? l.target),
+        what: l.target === 'rest' ? t('day.rest') : parkName(l.target),
         date: formatParkDay(locale, l.date, { weekday: 'short', day: 'numeric', month: 'short' }),
       })
     ),
