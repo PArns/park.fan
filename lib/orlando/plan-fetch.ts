@@ -1,5 +1,6 @@
 import { orlandoRelayUrl, type OrlandoRelayRoute } from './paths';
 import type { TripPlan } from './plan';
+import { WHEN_HOLIDAY_COUNTRIES, type WhenSchoolBreaks } from './plan-when';
 import type { TripCalendar, TripWhen } from './types';
 
 /**
@@ -108,4 +109,16 @@ export function fetchTripWhen(
   signal?: AbortSignal
 ): Promise<TripWhen> {
   return relayGet<TripWhen>('when', query, signal);
+}
+
+/** The school-holiday regions' cache key. */
+export const SCHOOL_BREAKS_QUERY_KEY = ['orlando-school-breaks'] as const;
+
+/** `GET …/school-breaks` through the relay, for the countries the When mode's picker offers. */
+export function fetchSchoolBreaks(signal?: AbortSignal): Promise<WhenSchoolBreaks> {
+  return relayGet<WhenSchoolBreaks>(
+    'school-breaks',
+    { countries: WHEN_HOLIDAY_COUNTRIES.join(',') },
+    signal
+  );
 }

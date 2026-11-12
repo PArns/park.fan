@@ -23,6 +23,7 @@ import {
   type TripPlan,
 } from '@/lib/orlando/plan';
 import {
+  autoSplit,
   editCost,
   ignoredLocks,
   lastYearReach,
@@ -269,6 +270,9 @@ function PlanAnswer({
   const parksOf = useDayParks();
   const savings = planSavings(plan.totals);
   const reach = today ? lastYearReach(plan.days, calendar?.meta.forecastUntil, today) : null;
+  const added = autoSplit(plan.meta).map((e) =>
+    t('answer.split', { park: parkBySlug.get(e.slug)?.name ?? e.slug, visits: e.visits })
+  );
   const notes = [
     ...relaxedRules(plan.meta).map((r) => t(`relaxed.${r}`)),
     ...unplacedParks(plan).map((u) =>
@@ -325,6 +329,13 @@ function PlanAnswer({
             date: formatParkDay(locale, reach.reach, { day: 'numeric', month: 'long' }),
           })}
         </p>
+      )}
+      {added.length > 0 && (
+        <ul className="flex flex-col gap-1 text-sm">
+          {added.map((line) => (
+            <li key={line}>{line}</li>
+          ))}
+        </ul>
       )}
       {notes.length > 0 && (
         <ul className="flex flex-col gap-1 text-sm">

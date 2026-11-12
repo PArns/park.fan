@@ -63,7 +63,8 @@ The owner's rule for the whole chapter: a visitor is never buried in numbers.
 - **Level 0, the answer.** The saving in minutes per ride ("Big rides on your days: about 41 min a
   ride. The same parks on an average day of your trip: 47 min."), the forecast's error where the API
   names it, or "the order barely matters" when `orderMatters` is false; no hours total. Then the
-  rules the plan had to loosen, the parks it could not place, and one line per day. On a phone this
+  parks `split=auto` gave a second day (`meta.split`: "We added a second day at Magic Kingdom
+  Park"), the rules the plan had to loosen, the parks it could not place, and one line per day. On a phone this
   is the first thing after "Plan".
 - **Level 1, the views,** behind Agenda | Week | Month. The choice is the browser's; before one,
   the Week at `lg` and the Agenda below. At most three facts per element: the park, its minutes and
@@ -109,8 +110,10 @@ day guest really gets; the planner shows it everywhere a day is: the Week block'
 Step 1 is a choice: "I know my dates" or "Find the best dates". Finding takes a period (the next
 twelve months, next year, its spring, summer or autumn, or a range of one's own, each clipped to the
 year the API looks ahead), a trip length of 3–21 days (10 to start) and, if wanted, only the school
-holidays of a region in the holiday data's codes, the reader's own country first (Germany's states
-for `de`, the Dutch regions for `nl`, England for `en`). Parks and Fine-tune stay as they are.
+holidays of a region. The regions are exactly those the holiday data has, read from the open route
+`/school-breaks` through the relay (`useSchoolBreaks`), grouped by country with the reader's own
+first; nothing is hard-coded, and the picker says how far the stored holidays reach ("School holiday
+data runs to 3 Jul 2027"). Parks and Fine-tune stay as they are.
 
 - **Level 0:** the three best windows as cards: the dates, "Big rides about 38 min", how far below
   the period's average, one reason, and "based on last year's crowds" where that is what it is.

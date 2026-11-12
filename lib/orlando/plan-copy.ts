@@ -221,3 +221,17 @@ export function editCost(
   const c = Math.round(current.headlinerWait);
   return { best: b, current: c, delta: c - b };
 }
+
+/**
+ * The parks the split gave a second (or third) day, for the answer's "we added a second day at
+ * Magic Kingdom Park". Only entries the API marks `auto` with more than one visit; anything else
+ * in `meta.split` is ignored.
+ */
+export function autoSplit(meta: Pick<PlanMeta, 'split'>): Array<{ slug: string; visits: number }> {
+  if (!Array.isArray(meta.split)) return [];
+  return meta.split.flatMap((e) =>
+    e && e.auto === true && typeof e.slug === 'string' && Number.isInteger(e.visits) && e.visits > 1
+      ? [{ slug: e.slug, visits: e.visits }]
+      : []
+  );
+}

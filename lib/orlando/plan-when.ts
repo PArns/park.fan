@@ -171,66 +171,48 @@ export function weekInWindow(
   return weekStart <= window.to && addDays(weekStart, 6) >= window.from;
 }
 
-/**
- * The school-holiday regions the picker offers, in the codes the API's holiday data uses: the
- * countries most of park.fan's visitors come from, each with its regions. The names are the
- * regions' own; the countries are named by `Intl.DisplayNames`.
- */
-export const WHEN_HOLIDAY_REGIONS: ReadonlyArray<{
-  country: string;
-  regions: ReadonlyArray<{ code: string; name: string }>;
-}> = [
-  {
-    country: 'DE',
-    regions: [
-      { code: 'DE-BW', name: 'Baden-Württemberg' },
-      { code: 'DE-BY', name: 'Bayern' },
-      { code: 'DE-BE', name: 'Berlin' },
-      { code: 'DE-BB', name: 'Brandenburg' },
-      { code: 'DE-HB', name: 'Bremen' },
-      { code: 'DE-HH', name: 'Hamburg' },
-      { code: 'DE-HE', name: 'Hessen' },
-      { code: 'DE-MV', name: 'Mecklenburg-Vorpommern' },
-      { code: 'DE-NI', name: 'Niedersachsen' },
-      { code: 'DE-NW', name: 'Nordrhein-Westfalen' },
-      { code: 'DE-RP', name: 'Rheinland-Pfalz' },
-      { code: 'DE-SL', name: 'Saarland' },
-      { code: 'DE-SN', name: 'Sachsen' },
-      { code: 'DE-ST', name: 'Sachsen-Anhalt' },
-      { code: 'DE-SH', name: 'Schleswig-Holstein' },
-      { code: 'DE-TH', name: 'Thüringen' },
-    ],
-  },
-  {
-    country: 'NL',
-    regions: [
-      { code: 'NL-north', name: 'Regio noord' },
-      { code: 'NL-middle', name: 'Regio midden' },
-      { code: 'NL-south', name: 'Regio zuid' },
-    ],
-  },
-  {
-    country: 'GB',
-    regions: [
-      { code: 'GB-ENG', name: 'England' },
-      { code: 'GB-SCT', name: 'Scotland' },
-      { code: 'GB-WLS', name: 'Wales' },
-    ],
-  },
-];
+/** `GET /v1/trip-regions/orlando/school-breaks`: the holiday data's regions, open, no key. */
+export interface WhenSchoolBreaks {
+  regions: Array<{
+    /** The code `/when`'s `within` takes: `DE-NW`, `NL-GR`, `GB-ENG`. */
+    code: string;
+    name: string;
+    country: string;
+    /** The last day the stored school holidays reach. */
+    through: string;
+    periods: Array<{ from: string; to: string; name: string }>;
+  }>;
+}
+
+/** The countries the picker asks the holiday data for: where most of park.fan's visitors live. */
+export const WHEN_HOLIDAY_COUNTRIES = ['DE', 'NL', 'GB'] as const;
 
 /** The country a locale's visitors most likely come from, offered first in the holiday picker. */
 const LOCALE_COUNTRY: Record<string, string> = { de: 'DE', nl: 'NL', en: 'GB' };
 
-/** {@link WHEN_HOLIDAY_REGIONS} with the locale's own country first. */
-export function holidayRegionsFor(locale: string): typeof WHEN_HOLIDAY_REGIONS {
-  const first = LOCALE_COUNTRY[locale];
-  return [...WHEN_HOLIDAY_REGIONS].sort(
-    (a, b) => Number(b.country === first) - Number(a.country === first)
-  );
+/** A country of the picker with its regions, in the holiday data's own codes and names. */
+export interface WhenHolidayCountry {
+  country: string;
+  regions: Array<{ code: string; name: string; through: string }>;
 }
 
-/** The country of a region code (`DE-NW` → `DE`). */
-export function countryOfRegion(code: string): string {
-  return code.slice(0, 2);
+/**
+ * The holiday data's regions grouped by country, the locale's own country first, each country's
+ * regions in the order the data lists them. Only what the data has: a region it lacks is not
+ * offered.
+ */
+export function holidayRegionsFor(
+  answer: WhenSchoolBreaks | undefined,
+  locale: string
+): WhenHolidayCountry[] {
+  const byCountry = new Map<string, WhenHolidayCountry>();
+  for (const r of answer?.regions ?? []) {
+    const entry = byCountry.get(r.country) ?? { country: r.country, regions: [] };
+    entry.regions.push({ code: r.code, name: r.name, through: r.through });
+    byCountry.set(r.country, entry);
+  }
+  const first = LOCALE_COUNTRY[locale];
+  return [...byCountry.values()].sort(
+    (a, b) => Number(b.country === first) - Number(a.country === first)
+  );
 }

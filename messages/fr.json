@@ -3244,7 +3244,9 @@
       "holidays": "Seulement pendant nos vacances scolaires",
       "holidaysHint": "Seulement des périodes entièrement comprises dans les vacances scolaires de ta région.",
       "country": "Pays",
-      "region": "Région"
+      "region": "Région",
+      "through": "Les données de vacances scolaires vont jusqu’au {date}.",
+      "holidaysUnavailable": "Les données de vacances scolaires n’ont pas pu être chargées."
     },
     "parks": {
       "split": "Répartir mes jours pour moi",
@@ -3340,7 +3342,8 @@
       "orderBarelyMatters": "Tes journées sont à peu près aussi chargées, l’ordre change donc peu de chose à ces dates.",
       "lastYear": "Nous planifions ces dates avec l’affluence mesurée l’an dernier. La prévision les atteindra vers le {date}.",
       "about": "environ {minutes} min",
-      "daysLabel": "Tes journées"
+      "daysLabel": "Tes journées",
+      "split": "{visits, plural, =2 {Nous avons ajouté un deuxième jour à {park}.} other {Nous avons donné # jours à {park}.}}"
     },
     "day": {
       "arrival": "Arrivée",

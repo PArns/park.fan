@@ -27,6 +27,7 @@ const RELAY_QUERY: Record<string, readonly string[]> = {
     'split',
     'lock',
   ],
+  'school-breaks': ['from', 'to', 'countries'],
   when: [
     'from',
     'to',
@@ -50,7 +51,7 @@ const RELAY_QUERY: Record<string, readonly string[]> = {
 /**
  * A value the relay passes on: dates, slugs with `:n`, pins with `@`, `max:3`. Anything else is a
  * 400 here, before a percent-decoded character can reach the upstream URL. A `within` code is
- * a region code such as `DE-NW` or `NL-north`, which the same characters cover.
+ * a region code such as `DE-NW` or `NL-GR`, which the same characters cover.
  */
 const RELAY_VALUE = /^[a-z0-9_:,@.-]{1,1000}$/i;
 
@@ -68,7 +69,7 @@ export const TRIP_REGION_DATA_CACHE_CONTROL =
 /** One request the relay will make upstream. */
 export interface TripRegionRelayTarget {
   /** `''` for the region itself, else the keyed route. */
-  route: '' | 'calendar' | 'best-days' | 'plan' | 'when';
+  route: '' | 'calendar' | 'best-days' | 'plan' | 'when' | 'school-breaks';
   /** The API path with its filtered query, `/v1/trip-regions/orlando/plan?from=…`. */
   apiPath: string;
   /** Whether the answer carries forecasts, so only this site's own pages may ask. */
@@ -98,7 +99,11 @@ export function tripRegionRelayTarget(
   return {
     route,
     apiPath: `/v1/trip-regions/${ORLANDO_REGION}${route ? `/${route}` : ''}${qs ? `?${qs}` : ''}`,
-    forecast: route !== '',
-    cacheControl: route ? TRIP_REGION_DATA_CACHE_CONTROL : TRIP_REGION_CACHE_CONTROL,
+    // The region and the school breaks carry no forecast: open routes, cached a day like the API's.
+    forecast: route !== '' && route !== 'school-breaks',
+    cacheControl:
+      route && route !== 'school-breaks'
+        ? TRIP_REGION_DATA_CACHE_CONTROL
+        : TRIP_REGION_CACHE_CONTROL,
   };
 }

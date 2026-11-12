@@ -119,6 +119,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `runnerUp` _function_: The runner-up of a park's visit on `date`: the best alternative day, with how many minutes more (or fewer) its headliners wait. `null` without one or without both figures.
 - `earlyPerk` _function_: The early slot a day's hotel gets, if any.
 - `editCost` _function_: The edit bar's figure: what the visitor's pins cost against the best order the plan had before them, per ride, in whole minutes. `null` without both means; 0 reads as "no cost".
+- `autoSplit` _function_: The parks the split gave a second (or third) day, for the answer's "we added a second day at Magic Kingdom Park". Only entries the API marks `auto` with more than one visit; anything else in `meta.split` is ignored.
 - `PLAN_REASON_ORDER` _const_: The reasons a park day can carry, most telling first: the one-line reason is the first present.
 - `REST_REASON_ORDER` _const_: A rest day's reasons, most telling first.
 - `PLAN_WARNING_ORDER` _const_: The warnings, most consequential first. `repeat_back_to_back` and `adjacent_repeat` say the same thing (two visits of one park on consecutive days, because nothing else fitted); the API names it either way depending on its version, so both …
@@ -133,8 +134,10 @@ by hand: change the comment in the code and re-run the script. -->
 - `fetchTripCalendar` _function_: `GET …/calendar` through the relay, for a window of at most 92 days.
 - `whenQueryKey` _function_: The When search's cache key: its request query.
 - `fetchTripWhen` _function_: `GET …/when` through the relay. Throws a `PlanRequestError`.
+- `fetchSchoolBreaks` _function_: `GET …/school-breaks` through the relay, for the countries the When mode's picker offers.
 - `PlanRequestError` _class_: A request the planner could not complete. `invalid` is the API's 400: the trip as asked cannot be planned, and asking again changes nothing, so it is not retried. `failed` is anything else (the network, a 5xx, the relay's 502) and is.
 - `PLAN_DEBOUNCE_MS` _const_: How long the planner waits for the controls to settle before it asks for a plan.
+- `SCHOOL_BREAKS_QUERY_KEY` _const_: The school-holiday regions' cache key.
 
 ### [`plan-ics.ts`](../../lib/orlando/plan-ics.ts)
 
@@ -208,13 +211,12 @@ by hand: change the comment in the code and re-run the script. -->
 - `percentBelowAverage` _function_: How far a window lies below the range's average, in whole percent: "27 % below the period's average". `null` where it is not below or a figure is missing; a window above average is never sold as a saving.
 - `weekTiers` _function_: The year strip's tint per week: where the week's figure falls among the range's weeks, in five equal shares from the quietest to the busiest.
 - `weekInWindow` _function_: Whether a week overlaps a window, for marking the window on the strip.
-- `holidayRegionsFor` _function_: `WHEN_HOLIDAY_REGIONS` with the locale's own country first.
-- `countryOfRegion` _function_: The country of a region code (`DE-NW` → `DE`).
+- `holidayRegionsFor` _function_: The holiday data's regions grouped by country, the locale's own country first, each country's regions in the order the data lists them. Only what the data has: a region it lacks is not offered.
 - `WHEN_LIMIT` _const_: Windows the result asks for: the three cards of Level 0.
 - `WHEN_REASON_ORDER` _const_: The reasons a window can carry, most telling first; the card shows the first.
 - `WHEN_WARNING_ORDER` _const_: The warnings a window can carry, most consequential first.
-- `WHEN_HOLIDAY_REGIONS` _const_: The school-holiday regions the picker offers, in the codes the API's holiday data uses: the countries most of park.fan's visitors come from, each with its regions.
-- Types: `WhenPeriodKey`, `WhenPeriod`, `WhenReasonCode`, `WhenWarningCode`
+- `WHEN_HOLIDAY_COUNTRIES` _const_: The countries the picker asks the holiday data for: where most of park.fan's visitors live.
+- Types: `WhenPeriodKey`, `WhenPeriod`, `WhenReasonCode`, `WhenWarningCode`, `WhenSchoolBreaks`, `WhenHolidayCountry`
 
 ### [`plan.ts`](../../lib/orlando/plan.ts)
 

@@ -182,3 +182,4 @@ by hand: change the comment in the code and re-run the script. -->
 - `useUnpinnedPlan` _hook_: The plan without the visitor's pins, for the edit bar's "best order" figure: the same query minus `lock`, which is usually the plan the visitor started from and still in the cache.
 - `useTripCalendar` _hook_: A window of the region calendar (at most 92 days) through the relay: the hours, slots, seasons and per-day figures the plan does not carry. `null` dates leave it idle.
 - `useTripWhen` _hook_: The When search for a request query, debounced like the plan; the previous answer stays on screen while the next is asked. The API keeps an answer six hours, the planner a quarter.
+- `useSchoolBreaks` _hook_: The school-holiday regions the When mode's picker offers, read once when the picker is shown. The data changes a few times a year; the relay keeps it a day.
