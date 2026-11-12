@@ -1,6 +1,6 @@
 'use client';
 
-import { useId, useState, type ReactNode } from 'react';
+import { useId, useRef, useState, type ReactNode } from 'react';
 import { useTranslations } from 'next-intl';
 import {
   CalendarDays,
@@ -50,6 +50,14 @@ export function PlanSetup({
   const { state, locale, headliners, live, today } = usePlanContext();
   const wide = useMediaQuery(PLAN_WIDE_QUERY);
   const [fineTuneOpen, setFineTuneOpen] = useState(false);
+  const opener = useRef<HTMLElement | null>(null);
+  const open = (step: PlanSheetStep) => {
+    if (sheet === null) {
+      opener.current =
+        document.activeElement instanceof HTMLElement ? document.activeElement : null;
+    }
+    onSheet(step);
+  };
   const fineTuneId = useId();
   const summary = usePlanOptionsSummary(state);
 
@@ -79,7 +87,7 @@ export function PlanSetup({
       title: t('setup.dates'),
       body: <PlanDatesStep defaultMonth={defaultMonth} />,
       next: (
-        <Button className="w-full" disabled={!ready} onClick={() => onSheet('parks')}>
+        <Button className="w-full" disabled={!ready} onClick={() => open('parks')}>
           {t('setup.nextParks')}
         </Button>
       ),
@@ -115,14 +123,14 @@ export function PlanSetup({
           value={datesValue}
           empty={!ready}
           disabled={!live}
-          onClick={() => onSheet('dates')}
+          onClick={() => open('dates')}
         />
         <SetupRow
           icon={<MapPinned className="size-5" aria-hidden="true" />}
           label={t('setup.parks')}
           value={parksValue}
           disabled={!live}
-          onClick={() => onSheet('parks')}
+          onClick={() => open('parks')}
         />
         <SetupRow
           icon={<SlidersHorizontal className="size-5" aria-hidden="true" />}
@@ -130,10 +138,10 @@ export function PlanSetup({
           value={summary}
           quiet
           disabled={!live}
-          onClick={() => onSheet('options')}
+          onClick={() => open('options')}
         />
         {!ready && (
-          <Button className="mt-1 w-full" disabled={!live} onClick={() => onSheet('dates')}>
+          <Button className="mt-1 w-full" disabled={!live} onClick={() => open('dates')}>
             {t('setup.start')}
           </Button>
         )}
@@ -191,7 +199,11 @@ export function PlanSetup({
             side="bottom"
             hideClose
             className="max-h-[90svh] gap-0 rounded-t-2xl p-0"
-            aria-describedby={undefined}
+            onCloseAutoFocus={(event) => {
+              // "Plan" moves the focus to the result itself; a plain close goes back to the row.
+              event.preventDefault();
+              if (document.activeElement === document.body) opener.current?.focus();
+            }}
           >
             <div className="border-border/60 flex items-center gap-2 border-b px-4 py-1.5">
               <SheetTitle className="min-w-0 flex-1 text-base">{step.title}</SheetTitle>

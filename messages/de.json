@@ -3294,8 +3294,7 @@
       "rain": "{mm} mm Regen",
       "noWeather": "Für dieses Datum gibt es noch keine Wettervorhersage; sie reicht etwa zwei Wochen voraus.",
       "rides": "Die großen Bahnen an diesem Tag",
-      "rideMinutes": "etwa {minutes} Min.",
-      "ridesCaption": "Jede zu ihrer vollsten Zeit, aus der Prognose des Tagesplaners."
+      "ridesCaption": "Die Bahnen hinter der Zahl; der Tagesplaner zeigt jede mit ihrer Wartezeit Stunde für Stunde."
     },
     "reason": {
       "locked": "Diesen Tag hast du festgehalten.",

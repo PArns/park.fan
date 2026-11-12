@@ -3294,8 +3294,7 @@
       "rain": "{mm} mm di pioggia",
       "noWeather": "Per questa data non c’è ancora una previsione meteo; arriva a circa due settimane.",
       "rides": "Le grandi attrazioni quel giorno",
-      "rideMinutes": "circa {minutes} min",
-      "ridesCaption": "Ognuna nel momento più affollato, dalla previsione del pianificatore del giorno."
+      "ridesCaption": "Le attrazioni dietro la cifra; il pianificatore del giorno mostra l’attesa di ciascuna ora per ora."
     },
     "reason": {
       "locked": "Hai fissato questo giorno.",

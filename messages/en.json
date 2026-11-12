@@ -3294,8 +3294,7 @@
       "rain": "{mm} mm rain",
       "noWeather": "No weather forecast for this date yet; forecasts reach about two weeks ahead.",
       "rides": "The big rides that day",
-      "rideMinutes": "about {minutes} min",
-      "ridesCaption": "Each at its busiest, from the day planner’s forecast."
+      "ridesCaption": "The rides behind the figure; the day planner shows each one’s wait hour by hour."
     },
     "reason": {
       "locked": "You pinned this day.",

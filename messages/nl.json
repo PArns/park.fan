@@ -3294,8 +3294,7 @@
       "rain": "{mm} mm regen",
       "noWeather": "Voor deze datum is er nog geen weersverwachting; die reikt ongeveer twee weken vooruit.",
       "rides": "De grote attracties die dag",
-      "rideMinutes": "ongeveer {minutes} min.",
-      "ridesCaption": "Elk op het drukste moment, uit de voorspelling van de dagplanner."
+      "ridesCaption": "De attracties achter het cijfer; de dagplanner toont voor elke attractie de wachttijd per uur."
     },
     "reason": {
       "locked": "Deze dag heb je vastgezet.",

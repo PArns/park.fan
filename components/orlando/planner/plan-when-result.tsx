@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo, useState } from 'react';
+import { useMemo, useRef, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { CalendarCheck, Info, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -41,9 +41,19 @@ export function PlanWhenResult({
   const t = useTranslations('orlandoPlanner.when');
   const { locale } = usePlanContext();
   const [open, setOpen] = useState<TripWhenWindow | null>(null);
+  const opener = useRef<HTMLElement | null>(null);
+  const details = (window: TripWhenWindow) => {
+    opener.current = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+    setOpen(window);
+  };
   const windows = answer.windows;
   const range = (from: string, to: string) =>
-    formatParkDayRange(locale, from, to, { weekday: 'short', day: 'numeric', month: 'short' });
+    formatParkDayRange(locale, from, to, {
+      weekday: 'short',
+      day: 'numeric',
+      month: 'short',
+      year: 'numeric',
+    });
 
   const plan = (window: TripWhenWindow) => {
     setOpen(null);
@@ -83,7 +93,7 @@ export function PlanWhenResult({
               key={window.from}
               window={window}
               label={range(window.from, window.to)}
-              onDetails={() => setOpen(window)}
+              onDetails={() => details(window)}
               onPlan={() => plan(window)}
             />
           ))}
@@ -98,6 +108,7 @@ export function PlanWhenResult({
         label={open ? range(open.from, open.to) : ''}
         onClose={() => setOpen(null)}
         onPlan={plan}
+        returnFocus={() => opener.current?.isConnected && opener.current.focus()}
       />
     </div>
   );
@@ -219,12 +230,14 @@ function WindowSheet({
   label,
   onClose,
   onPlan,
+  returnFocus,
 }: {
   window: TripWhenWindow | null;
   answer: TripWhen;
   label: string;
   onClose: () => void;
   onPlan: (window: TripWhenWindow) => void;
+  returnFocus: () => void;
 }) {
   const t = useTranslations('orlandoPlanner');
   const { locale, parkBySlug } = usePlanContext();
@@ -238,6 +251,10 @@ function WindowSheet({
         <SheetContent
           side={wide ? 'right' : 'bottom'}
           hideClose
+          onCloseAutoFocus={(event) => {
+            event.preventDefault();
+            returnFocus();
+          }}
           className={cn('gap-0 p-0', wide ? 'w-full sm:max-w-md' : 'max-h-[90svh] rounded-t-2xl')}
         >
           <div className="border-border/60 flex items-start gap-2 border-b px-4 py-2">

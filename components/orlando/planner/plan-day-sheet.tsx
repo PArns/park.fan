@@ -66,6 +66,7 @@ export function PlanDaySheet({
   onToggleLock,
   onSwap,
   onPlanDay,
+  returnFocus,
 }: {
   day: PlanDay | null;
   plan: TripPlan;
@@ -74,6 +75,8 @@ export function PlanDaySheet({
   onToggleLock: (day: PlanDay) => void;
   onSwap: (day: PlanDay, other: PlanDay) => void;
   onPlanDay: (slug: string, date: string) => void;
+  /** Where the focus goes back to when the sheet closes: the day the visitor pressed. */
+  returnFocus?: () => void;
 }) {
   const t = useTranslations('orlandoPlanner');
   const { locale } = usePlanContext();
@@ -86,6 +89,11 @@ export function PlanDaySheet({
         <SheetContent
           side={wide ? 'right' : 'bottom'}
           hideClose
+          onCloseAutoFocus={(event) => {
+            if (!returnFocus) return;
+            event.preventDefault();
+            returnFocus();
+          }}
           className={cn('gap-0 p-0', wide ? 'w-full sm:max-w-md' : 'max-h-[90svh] rounded-t-2xl')}
         >
           <div className="border-border/60 flex items-start gap-2 border-b px-4 py-2">
@@ -328,7 +336,7 @@ function DayDetails({
               {t('week.minutes', { minutes: day.headlinerWait })}
             </span>
           )}
-          <CrowdLevelBadge level={day.crowdLevel ?? null} withScale />
+          <CrowdLevelBadge level={day.crowdLevel ?? null} />
           <span className="text-muted-foreground w-full text-xs">
             {t('details.minutesCaption')}
           </span>
@@ -407,23 +415,21 @@ function DayDetails({
                     disabled={preview.kind === 'closed'}
                     onClick={() => onSwap(day, other)}
                     className={cn(
-                      'hover:bg-accent/50 flex min-h-11 w-full items-center gap-3 rounded-md px-2 py-2 text-left text-sm transition-colors disabled:opacity-50',
+                      'hover:bg-accent/50 flex min-h-11 w-full flex-wrap items-center gap-x-3 gap-y-0.5 rounded-md px-2 py-2 text-left text-sm transition-colors disabled:opacity-50',
                       PLAN_FOCUS
                     )}
                   >
                     <span className="w-24 shrink-0 tabular-nums">{short(other.date)}</span>
                     <span className="min-w-0 flex-1 truncate">{what}</span>
-                    <span className="flex shrink-0 flex-col items-end text-right">
-                      <span className="font-medium tabular-nums">{cost}</span>
-                      {preview.kind === 'minutes' && preview.short && (
-                        <span className="text-crowd-ink-high text-xs">
-                          {t('swap.short', {
-                            park: name(preview.short.slug),
-                            hours: preview.short.hours,
-                          })}
-                        </span>
-                      )}
-                    </span>
+                    <span className="shrink-0 font-medium tabular-nums">{cost}</span>
+                    {preview.kind === 'minutes' && preview.short && (
+                      <span className="text-crowd-ink-high w-full pl-27 text-xs">
+                        {t('swap.short', {
+                          park: name(preview.short.slug),
+                          hours: preview.short.hours,
+                        })}
+                      </span>
+                    )}
                   </button>
                 </li>
               );
@@ -445,8 +451,9 @@ function DayDetails({
 }
 
 /**
- * The big rides of the day and the weather, from the day planner's `/plan/day` for that park and
- * date, asked only when the sheet is open; the planner's own cache entry, so "Plan this day" then
+ * The big rides of the day, by name only, and the weather, from the day planner's `/plan/day` for
+ * that park and date, asked only when the sheet is open. No per-ride minutes: they come from
+ * another model than the day's figure, and two numbers for one wait on one sheet read as one wrong; the planner's own cache entry, so "Plan this day" then
  * opens on an answer already there.
  */
 function DayRides({ slug, date }: { slug: string; date: string }) {
@@ -490,13 +497,10 @@ function DayRides({ slug, date }: { slug: string; date: string }) {
       {rides.length > 0 && (
         <div>
           <h3 className="mb-1 text-sm font-semibold">{t('rides')}</h3>
-          <ol className="flex flex-col gap-0.5 text-sm">
+          <ol className="flex list-decimal flex-col gap-0.5 pl-5 text-sm">
             {rides.map((ride) => (
-              <li key={ride.attractionSlug} className="flex justify-between gap-3">
-                <span className="min-w-0 truncate">{ride.attractionName}</span>
-                <span className="text-muted-foreground shrink-0 tabular-nums">
-                  {t('rideMinutes', { minutes: ride.dayPeak })}
-                </span>
+              <li key={ride.attractionSlug} className="truncate">
+                {ride.attractionName}
               </li>
             ))}
           </ol>

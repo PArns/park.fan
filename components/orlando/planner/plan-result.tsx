@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useState, useSyncExternalStore, type Ref } from 'react';
+import { useCallback, useRef, useState, useSyncExternalStore, type Ref } from 'react';
 import { useTranslations } from 'next-intl';
 import { CalendarDays, LayoutList, Rows3, Undo2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -149,6 +149,11 @@ function PlanAnswerSection() {
   const calendar = useTripCalendar(state.from, state.to);
 
   const [openDate, setOpenDate] = useState<string | null>(null);
+  const opener = useRef<HTMLElement | null>(null);
+  const openDay = useCallback((date: string) => {
+    opener.current = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+    setOpenDate(date);
+  }, []);
   const [history, setHistory] = useState<PlanLock[][]>([]);
   const [beacon, setBeacon] = useState<PlannerPagePark | null>(null);
 
@@ -205,7 +210,7 @@ function PlanAnswerSection() {
       {beacon && <PlannerPageParkBeacon {...beacon} />}
       {plan.isError && <Failure error={plan.error} onRetry={() => void plan.refetch()} />}
 
-      <PlanAnswer plan={data} calendar={calendar.data} onOpenDay={setOpenDate} />
+      <PlanAnswer plan={data} calendar={calendar.data} onOpenDay={openDay} />
 
       {state.locks.length > 0 && (
         <EditBar
@@ -221,7 +226,7 @@ function PlanAnswerSection() {
         />
       )}
 
-      <PlanViews plan={data} calendar={calendar.data} onOpenDay={setOpenDate} />
+      <PlanViews plan={data} calendar={calendar.data} onOpenDay={openDay} />
 
       <PlanKeep plan={data} calendar={calendar.data} />
 
@@ -239,6 +244,7 @@ function PlanAnswerSection() {
           });
         }}
         onPlanDay={planDay}
+        returnFocus={() => opener.current?.isConnected && opener.current.focus()}
       />
     </div>
   );
@@ -330,7 +336,7 @@ function PlanAnswer({
         </ul>
       )}
 
-      <ol className="flex flex-col" aria-label={t('answer.daysLabel')}>
+      <ol className="flex flex-col lg:max-w-2xl" aria-label={t('answer.daysLabel')}>
         {plan.days.map((day) => (
           <li key={day.date}>
             <button
@@ -346,13 +352,12 @@ function PlanAnswer({
               </span>
               <span className="min-w-0 flex-1 truncate">
                 {day.kind === 'park' || day.kind === 'hop' ? parksOf(day) : t(`day.${day.kind}`)}
-                {day.headlinerWait != null && (
-                  <span className="text-muted-foreground">
-                    {' '}
-                    · {t('answer.about', { minutes: day.headlinerWait })}
-                  </span>
-                )}
               </span>
+              {day.headlinerWait != null && (
+                <span className="text-muted-foreground shrink-0 tabular-nums">
+                  {t('answer.about', { minutes: day.headlinerWait })}
+                </span>
+              )}
               <PlanDayMarker
                 day={day}
                 calendar={calendar}

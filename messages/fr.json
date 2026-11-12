@@ -3294,8 +3294,7 @@
       "rain": "{mm} mm de pluie",
       "noWeather": "Pas encore de prévision météo pour cette date ; elle porte sur environ deux semaines.",
       "rides": "Les grandes attractions ce jour-là",
-      "rideMinutes": "environ {minutes} min",
-      "ridesCaption": "Chacune au moment le plus chargé, d’après la prévision du planificateur de journée."
+      "ridesCaption": "Les attractions derrière le chiffre ; le planificateur de journée donne l’attente de chacune heure par heure."
     },
     "reason": {
       "locked": "Tu as fixé ce jour.",
