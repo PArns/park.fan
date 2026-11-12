@@ -27,7 +27,7 @@ rideLinks:
 seo:
   title: 'Universal Studios Singapore Weihnachten 2026 mit Feuerwerk'
   description: >-
-    A Universal Christmas in Universal Studios Singapore ab 27.11.2026: neue Show mit den Minions, Feuerwerk an 15 Abenden um 20 Uhr, Tagesticket ab 76 Singapur-Dollar.
+    A Universal Christmas in Universal Studios Singapore ab 27.11.2026: neue Show mit den Minions, Feuerwerk an 15 Abenden um 20 Uhr, Tagesticket ab 76 S$.
   keywords:
     - Universal Studios Singapore Weihnachten
     - Universal Studios Singapore Christmas 2026
