@@ -26,6 +26,11 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `PLANNER_BLOCK_ICON_COMPONENTS` _const_: The icons a free block may carry, mapped in one place, because the plan stores the key and not the component; `store.ts` falls back on an unknown key rather than dropping the block.
 
+### [`planner-block-ink.tsx`](../../components/planner/planner-block-ink.tsx)
+
+- `PlannerBlockPhoto` _component_: A block's photo, inside its clipped ink layer: the day planner's ride blocks and the Orlando trip's park blocks draw the same texture.
+- `PlannerBlockBar` _component_: Outlook's category bar down a block's left edge, in the colour the caller names.
+
 ### [`planner-block.tsx`](../../components/planner/planner-block.tsx)
 
 - `PlannerBlock` _component_: One planned ride, as a block in the day grid.
