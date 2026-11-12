@@ -35,7 +35,7 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`hub/hub-glance.tsx`](../../components/orlando/hub/hub-glance.tsx)
 
 - `HubGlance` _component_: The hub's first answer: on one day, Orlando time, each resort's shortest line with its minutes and its level, and the early close where a ticketed evening follows.
-- `MonthGlance` _component_: A month page's first answer: each resort's quietest dates that month with the park that has the shortest lines on them. On a month past the forecast the dates are last year's, said so in the title and never offered as picks.
+- `MonthGlance` _component_: A month page's first answer: each resort's quietest dates that month, and the park with the shortest lines on the first of them. On a month past the forecast the dates are last year's, said so in the title and never offered as picks.
 
 ### [`hub/hub-legend.tsx`](../../components/orlando/hub/hub-legend.tsx)
 

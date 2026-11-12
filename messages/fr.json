@@ -411,7 +411,7 @@
       "noneMonth": "Pas encore de prévision pour {month}.",
       "monthTitle": "Les jours les plus calmes en {month}",
       "monthTitleLastYear": "Les jours les plus calmes en {month} l’an dernier",
-      "quietPark": "{park}, environ {minutes} min"
+      "quietPark": "({park}, environ {minutes} min)"
     },
     "legend": {
       "minutes": "Minutes : les grandes attractions au plus chargé",

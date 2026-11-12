@@ -411,7 +411,7 @@
       "noneMonth": "No forecast for {month} yet.",
       "monthTitle": "Quietest days in {month}",
       "monthTitleLastYear": "Quietest days in {month} last year",
-      "quietPark": "{park}, about {minutes} min"
+      "quietPark": "({park}, about {minutes} min)"
     },
     "legend": {
       "minutes": "Minutes: the big rides at their busiest",

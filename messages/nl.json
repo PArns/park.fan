@@ -411,7 +411,7 @@
       "noneMonth": "Voor {month} is er nog geen voorspelling.",
       "monthTitle": "De rustigste dagen in {month}",
       "monthTitleLastYear": "De rustigste dagen in {month} vorig jaar",
-      "quietPark": "{park}, ongeveer {minutes} min"
+      "quietPark": "({park}, ongeveer {minutes} min)"
     },
     "legend": {
       "minutes": "Minuten: de grote attracties op het drukste moment",

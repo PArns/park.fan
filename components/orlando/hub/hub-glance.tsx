@@ -102,8 +102,8 @@ export async function HubGlance({
 }
 
 /**
- * A month page's first answer: each resort's quietest dates that month with the park that has the
- * shortest lines on them. On a month past the forecast the dates are last year's, said so in the
+ * A month page's first answer: each resort's quietest dates that month, and the park with the
+ * shortest lines on the first of them. On a month past the forecast the dates are last year's, said so in the
  * title and never offered as picks.
  */
 export async function MonthGlance({
@@ -118,7 +118,10 @@ export async function MonthGlance({
   locale: string;
 }) {
   const t = await getTranslations('orlando.glance');
-  const rows = summaries.filter((s) => s.quiet.length > 0);
+  // The resorts with headliner parks: SeaWorld's one park with a figure has nothing to choose between.
+  const rows = summaries.filter(
+    (s) => s.quiet.length > 0 && s.group.parks.some((p) => p.headliner)
+  );
   if (rows.length === 0) {
     return (
       <p className={cn(GLANCE_BOX, 'text-muted-foreground text-sm')}>
@@ -142,15 +145,15 @@ export async function MonthGlance({
                 {i > 0 && ' · '}
                 <time dateTime={q.date} className="font-semibold">
                   {formatHubDate(q.date, locale)}
-                </time>{' '}
-                <span className="text-muted-foreground">
-                  {t('quietPark', {
-                    park: shortParkName(q.park.name),
-                    minutes: q.wait ?? 0,
-                  })}
-                </span>
+                </time>
               </span>
-            ))}
+            ))}{' '}
+            <span className="text-muted-foreground text-sm">
+              {t('quietPark', {
+                park: shortParkName(quiet[0].park.name),
+                minutes: quiet[0].wait ?? 0,
+              })}
+            </span>
           </li>
         ))}
       </ul>
