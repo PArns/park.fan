@@ -19,6 +19,11 @@ parkLinks:
   - /parks/europe/france/paris/disneyland-park
 rideLinks:
   - /parks/europe/france/paris/disneyland-park/*
+coverImage:
+  src: /media/disneyland-park/background.jpg
+  alt: 'Il castello della Bella Addormentata, rosa e blu, sul basamento roccioso, con prato e alberi potati davanti.'
+  caption: 'Il castello della Bella Addormentata nel Disneyland Park. La rosa dei venti sul ponte davanti ha i colori delle tre fate buone.'
+  credit: 'Patrick Arns'
 seo:
   title: 'Ponte del castello rinnovato a Disneyland Paris'
   description: >-

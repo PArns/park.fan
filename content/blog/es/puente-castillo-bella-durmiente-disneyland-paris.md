@@ -19,6 +19,11 @@ parkLinks:
   - /parks/europe/france/paris/disneyland-park
 rideLinks:
   - /parks/europe/france/paris/disneyland-park/*
+coverImage:
+  src: /media/disneyland-park/background.jpg
+  alt: 'El castillo de la Bella Durmiente, rosa y azul, sobre su base de roca, con césped y árboles podados delante.'
+  caption: 'El castillo de la Bella Durmiente, en Disneyland Park. La rosa de los vientos del puente de delante lleva los colores de las tres hadas buenas.'
+  credit: 'Patrick Arns'
 seo:
   title: 'Puente renovado en el castillo de Disneyland Paris'
   description: >-

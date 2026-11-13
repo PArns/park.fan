@@ -18,6 +18,11 @@ category: news
 parkLinks:
   - /parks/europe/france/paris/disneyland-park
   - disney-adventure-world
+coverImage:
+  src: /media/disneyland-park/background.jpg
+  alt: 'Het roze-blauwe Doornroosjekasteel op een rotssokkel, met gras en gesnoeide bomen ervoor.'
+  caption: 'Het Doornroosjekasteel in het Disneyland Park. Het Rainforest Café staat buiten de parken, in het Disney Village, waarvoor je geen parkticket nodig hebt.'
+  credit: 'Patrick Arns'
 seo:
   title: 'Rainforest Café Disneyland Paris sluit op 15 november 2026'
   description: >-
