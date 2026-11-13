@@ -1034,7 +1034,7 @@ export const NAV_MENU_LABEL: Record<NavMenuId, string> = {
   parks: 'Parks entdecken',
   more: 'Mehr',
   favorites: 'Favoriten',
-  planner: 'Planer',
+  planner: 'Planen',
   sheet: 'Handy-Menü',
 };
 

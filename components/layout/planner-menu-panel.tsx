@@ -5,6 +5,7 @@ import { useLocale, useTranslations } from 'next-intl';
 import { ArrowRight, CalendarClock, CalendarDays, CalendarPlus } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import { BlogCoverFallback } from '@/components/blog/blog-cover-fallback';
+import { useMenuBandOpened } from '@/components/layout/menu-band';
 import { MenuSectionHeading } from '@/components/layout/menu-section-heading';
 import { PlannerRegionArt } from '@/components/layout/planner-region-art';
 import { translateCountry } from '@/lib/i18n/helpers';
@@ -143,8 +144,9 @@ function RegionCard({ region, compact }: { region: PlannerMenuRegion; compact: b
         aria-hidden="true"
         className="from-background/95 via-background/70 absolute inset-y-0 left-0 -z-10 w-[64%] bg-gradient-to-r via-55% to-transparent"
       />
-      <div className="flex h-full w-[48%] flex-col justify-center gap-1.5 pl-6">
-        <span className="text-primary text-[11px] font-semibold tracking-widest uppercase">
+      <div className="ml-6 flex h-full w-[48%] flex-col justify-center gap-1.5">
+        {/* `primary-ink`, not `primary`: the brand blue misses AA as 11 px text on the light fade. */}
+        <span className="text-primary-ink text-[11px] font-semibold tracking-widest uppercase">
           {region.area}
         </span>
         <span className="text-foreground text-4xl leading-none font-bold tracking-tight">
@@ -239,7 +241,7 @@ function DayPlannerCard({ href }: { href: string }) {
         <>
           <div className="flex items-baseline justify-between gap-3">
             <div className="min-w-0">
-              <div className="text-primary text-[11px] font-semibold tracking-wide uppercase">
+              <div className="text-primary-ink text-[11px] font-semibold tracking-wide uppercase">
                 {t('yourPlan')}
               </div>
               <div className="text-foreground mt-0.5 truncate text-sm font-semibold">
@@ -317,20 +319,24 @@ const BLOCK_INK = {
 /**
  * A day drawn the way the planner draws one: rides on an hour axis, coloured by how busy the hour
  * is, a dot for each walk between them. A picture of the tool, not anybody's plan, so it is
- * hidden from assistive technology. The hours follow the reader's clock (1, 2 … in English).
+ * hidden from assistive technology. The hours follow the reader's clock (1, 2 … in English). Drawn
+ * from the band's first opening on: its two dozen boxes would ride in every page's HTML for
+ * nobody, while the box it fills holds its height from the start.
  */
 function DrawnDay({ locale }: { locale: string }) {
+  const opened = useMenuBandOpened();
   const hour = getDateTimeFormat(locale, { hour: 'numeric', timeZone: 'UTC' });
   const label = (h: number) =>
     hour.formatToParts(Date.UTC(2026, 0, 1, h)).find((part) => part.type === 'hour')?.value ?? '';
+  if (!opened) return <div className="mt-3 h-14" aria-hidden="true" />;
   return (
-    <div className="relative mt-3 h-14 opacity-80" aria-hidden="true">
+    <div className="relative mt-3 h-14" aria-hidden="true">
       {DRAWN_HOURS.map((h, i) => {
         const left = `${(i + 1) * 10}%`;
         return (
           <span key={h}>
             <span
-              className="text-muted-foreground/70 absolute top-0 -translate-x-1/2 text-[10px] tabular-nums"
+              className="text-muted-foreground absolute top-0 -translate-x-1/2 text-[10px] tabular-nums"
               style={{ left }}
             >
               {label(h)}

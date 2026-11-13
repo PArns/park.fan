@@ -1,8 +1,8 @@
 'use client';
 
-import { lazy, Suspense, useState, type ComponentType, type LazyExoticComponent } from 'react';
+import { lazy, Suspense, type ComponentType, type LazyExoticComponent } from 'react';
 import { HubBannerPhoto } from '@/components/layout/hub-banner';
-import { useMenuBandOpen } from '@/components/layout/menu-band';
+import { useMenuBandOpened } from '@/components/layout/menu-band';
 import { PhotoCredit, TILE_CREDIT_POSITION } from '@/components/media/photo-credit';
 import { TRIP_REGIONS } from '@/lib/navigation/trip-regions';
 import type { MoreMenuPhoto } from '@/lib/navigation/more-menu';
@@ -59,11 +59,7 @@ export function PlannerRegionArt({
   regionId: string;
   photo: MoreMenuPhoto | null;
 }) {
-  const open = useMenuBandOpen();
-  // Armed on the first opening and never disarmed, adjusted during render: a closed band keeps its
-  // scene rather than loading it again.
-  const [armed, setArmed] = useState(false);
-  if (open && !armed) setArmed(true);
+  const armed = useMenuBandOpened();
 
   const photoArt = (
     <>
