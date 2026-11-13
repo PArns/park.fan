@@ -108,7 +108,8 @@ A query that names a trip region gets the region's planner as the first row unde
 every group and in no tab: "Reiseplaner für Orlando", the hub's bare `#planner` chapter
 (`TripPlannerResultItem`). The names are the region's and its resorts' without "Resort", from the
 API's region route through `/api/nav/trip-regions` (`useTripRegionLinks`, asked with the post list
-at the first typed letter, an hour fresh; a few hundred bytes against the region answer's 8 KB).
+at the first typed letter, an hour fresh; 0.9 KB brotli against the region answer's 8.5 KB on
+2026-11-13).
 `matchTripRegion` (`lib/orlando/trip-links.ts`) decides on the debounced query:
 
 - a word that is the region's name, the last word also as a prefix of three letters or more:

@@ -353,7 +353,7 @@ Route `/api/nav/posts/[locale]` (route).
 
 Route `/api/nav/trip-regions` (route).
 
-- `GET` _function_: The trip regions as the browser links into them (`TripRegionLinks`): their names for the search palette's first row and their parks for the day planner's plan list.
+- `GET` _function_: The trip regions as the browser links into them (`TripRegionLinks`): their names for the search palette's first row and their parks for the day planner's plan list: the region route's answer without its travel matrix, hotel areas and …
 
 ### [`nearby/route.ts`](../../app/api/nearby/route.ts)
 
