@@ -269,7 +269,7 @@
     "api": "API Documentation",
     "impressum": "Imprint",
     "howto": "Understanding wait times",
-    "planner": "Trip planner",
+    "planner": "Day planner",
     "fancast": "Fancast",
     "parky": "Parky",
     "bestTime": "Best time to visit",
@@ -298,7 +298,8 @@
     "legalLinks": "Legal",
     "disclaimer": "park.fan is a private hobby project. All information provided without warranty. The displayed wait times and status information are automatically provided and may differ from the actual situation on site.",
     "dataSources": "Data sources",
-    "weatherSource": "Weather"
+    "weatherSource": "Weather",
+    "tripPlanner": "Trip planner"
   },
   "explore": {
     "title": "Theme Park Wait Times in {location}",

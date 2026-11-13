@@ -298,7 +298,8 @@
     "legalLinks": "Légal",
     "disclaimer": "park.fan est un projet amateur privé. Toutes les informations sont fournies sans garantie. Les temps d’attente et statuts affichés sont fournis automatiquement et peuvent différer de la situation réelle sur place.",
     "dataSources": "Sources des données",
-    "weatherSource": "Météo"
+    "weatherSource": "Météo",
+    "tripPlanner": "Planificateur de voyage"
   },
   "explore": {
     "title": "Temps d’attente des Parcs d’attractions à {location}",

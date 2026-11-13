@@ -298,7 +298,8 @@
     "legalLinks": "Juridisch",
     "disclaimer": "park.fan is een privé-hobbyproject. Alle informatie wordt verstrekt zonder garantie. De getoonde wachttijden en statusinformatie worden automatisch verstrekt en kunnen afwijken van de actuele situatie ter plaatse.",
     "dataSources": "Databronnen",
-    "weatherSource": "Weer"
+    "weatherSource": "Weer",
+    "tripPlanner": "Reisplanner"
   },
   "explore": {
     "title": "Attractiepark Wachttijden in {location}",

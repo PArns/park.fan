@@ -124,8 +124,8 @@ trips), and the minutes are the API's travel matrix without traffic, the Magic K
   warmup rebuilds every month at once, a stamp rather than an observed change
   ([a lastmod is observed](../rules/a-lastmod-is-observed-never-stamped.md)).
 - Internal links: hub → each park's crowd calendar ("<park> Crowd Calendar") and park page; park
-  pages and calendars → the planner (the band, `rel="nofollow"` since it carries a plan); month ↔
-  month; hub → day planner and best-time pages.
+  pages and calendars → the planner (the band, `rel="nofollow"` since it carries a plan); every
+  page → `/orlando#planner` (the footer); month ↔ month; hub → day planner and best-time pages.
 
 ## Ways in
 
@@ -148,6 +148,9 @@ trips), and the minutes are the API's travel matrix without traffic, the Magic K
   the ten-day trip). A link that carries a plan is `rel="nofollow"` and not prefetched, as the hub's
   own "Plan these dates" links are.
 
+- The footer's tools: „Reiseplaner" (en "Trip planner") beside the day planner, which the English
+  footer now calls "Day planner" as the panel does. The bare `/orlando#planner`, built without a
+  region read, since the footer is on every page.
 - `OrlandoHomeStop` on the homepage, data-free beyond the region's park list, because the homepage
   keeps a day at the edge.
 - Parky's `plan_vacation` links `/orlando?from=…&to=…&parks=…#planner`.

@@ -298,7 +298,8 @@
     "legalLinks": "Legal",
     "disclaimer": "park.fan es un proyecto personal hecho por afición. Toda la información se proporciona sin garantía. Los tiempos de espera y estados mostrados se proporcionan automáticamente y pueden diferir de la situación real en el lugar.",
     "dataSources": "Fuentes de datos",
-    "weatherSource": "Tiempo"
+    "weatherSource": "Tiempo",
+    "tripPlanner": "Planificador de viajes"
   },
   "explore": {
     "title": "Tiempos de espera de Parques Temáticos en {location}",
