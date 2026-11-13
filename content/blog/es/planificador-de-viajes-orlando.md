@@ -6,10 +6,10 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  En el nuevo planificador de viajes para Orlando, cada uno de tus parques cae en el día del viaje en
-  que sus grandes atracciones tienen menos gente. Un día en que Magic Kingdom cierra a las 18:00 por
-  una fiesta cuenta como un día corto. Si ya tienes entradas, cada día de parque queda dentro de su
-  validez, y si no, recibes una propuesta de cuáles comprar.
+  El 8 de diciembre hay poca gente en Magic Kingdom, y aun así es el día equivocado: con una entrada
+  normal tienes que salir a las 18:00, antes de los fuegos artificiales. Con el nuevo planificador
+  de viajes para Orlando vas el día anterior, cuando el parque abre hasta las 22:00, y así cada uno
+  de tus parques tiene el día que merece la pena.
 tags:
   - park-fan
   - orlando
@@ -26,7 +26,8 @@ coverImage:
 seo:
   title: 'Planificador de viajes a Orlando: ¿qué parque qué día?'
   description: >-
-    Cada uno de tus parques de Orlando en su día de colas más cortas. Un día con noche de fiesta, en que hay que salir a las 18:00, cuenta como día corto.
+    El 8 de diciembre hay poca gente en Magic Kingdom, pero con entrada de día sales a las 18:00. El
+    planificador busca a cada parque de Orlando un día mejor.
   keywords:
     - planificador de viajes Orlando
     - qué parque de Orlando qué día

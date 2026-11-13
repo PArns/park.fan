@@ -6,10 +6,10 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  In de nieuwe reisplanner voor Orlando komt elk van je parken op de reisdag waarop het bij de grote
-  attracties het rustigst is. Een dag waarop Magic Kingdom om 18 uur sluit voor een feest, telt
-  daarbij als een korte dag. Heb je al tickets, dan blijft elke parkdag binnen hun geldigheid, en
-  anders krijg je een voorstel voor de tickets die passen.
+  Op 8 december is het weinig druk in Magic Kingdom, en toch is het de verkeerde dag: met een gewoon
+  ticket moet je om 18 uur het park uit, nog voor het vuurwerk. Met de nieuwe reisplanner voor
+  Orlando ga je er de dag ervoor heen, als het park tot 22 uur open is, en zo krijgt elk van je
+  parken de dag die de moeite waard is.
 tags:
   - park-fan
   - orlando
@@ -26,7 +26,8 @@ coverImage:
 seo:
   title: 'Reisplanner Orlando: welk park op welke dag?'
   description: >-
-    Elk van je parken in Orlando op de dag met de kortste rijen. Een dag waarop dagbezoekers om 18 uur weg moeten voor een feest, telt als korte dag.
+    Op 8 december is het weinig druk in Magic Kingdom, maar dagbezoekers moeten om 18 uur weg. De
+    reisplanner zoekt je parken in Orlando een betere dag.
   keywords:
     - reisplanner Orlando
     - welk park in Orlando op welke dag

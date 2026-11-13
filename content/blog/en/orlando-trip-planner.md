@@ -6,10 +6,10 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  In the new trip planner for Orlando, each of your parks goes on the day of your trip when its big
-  rides are least busy. A day when Magic Kingdom closes at 6 pm for a party counts as a short day.
-  If you already hold tickets, every park day stays inside their dates, and if you don't, you get a
-  suggestion for which to buy.
+  On 8 December the crowds at Magic Kingdom are low, and it's still the wrong day to go: on an
+  ordinary ticket you're out at 6 pm, before the fireworks. With the new Orlando trip planner you go
+  the day before instead, when the park stays open until 10 pm, and every park on your list gets a
+  day like that.
 tags:
   - park-fan
   - orlando
@@ -26,8 +26,8 @@ coverImage:
 seo:
   title: 'Orlando trip planner: which park on which day?'
   description: >-
-    Each of your Orlando parks on the day with the shortest queues. A party day, when day guests
-    have to leave at 6 pm, counts as a short day.
+    Crowds at Magic Kingdom are low on 8 December, but day guests are out at 6 pm. The Orlando trip
+    planner finds each of your parks a better day.
   keywords:
     - Orlando trip planner
     - which Orlando park on which day

@@ -6,10 +6,10 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Im neuen Reiseplaner für Orlando kommt jeder deiner Parks an den Reisetag, an dem an seinen
-  großen Bahnen am wenigsten los ist. Ein Tag, an dem das Magic Kingdom um 18 Uhr für eine Party
-  schließt, zählt dabei als kurzer Tag. Hast du schon Tickets, bleibt jeder Parktag in ihrer
-  Gültigkeit, und sonst bekommst du passende vorgeschlagen.
+  Am 8. Dezember ist im Magic Kingdom wenig los, und trotzdem ist es der falsche Tag: Mit normalem
+  Ticket musst du um 18 Uhr raus, noch vor dem Feuerwerk. Mit dem neuen Reiseplaner für Orlando
+  gehst du stattdessen am Tag davor hin, wenn der Park bis 22 Uhr offen hat, und jeder deiner Parks
+  bekommt so den Tag, der sich lohnt.
 tags:
   - park-fan
   - orlando
@@ -26,8 +26,8 @@ coverImage:
 seo:
   title: 'Orlando-Reiseplaner: Welcher Park an welchem Tag?'
   description: >-
-    Jeder deiner Orlando-Parks am Tag mit den kürzesten Warteschlangen. Ein Partytag, an dem
-    Tagesgäste um 18 Uhr gehen müssen, zählt als kurzer Tag.
+    Am 8. Dezember ist im Magic Kingdom wenig los, doch Tagesgäste müssen um 18 Uhr raus. Der
+    Reiseplaner sucht jedem deiner Orlando-Parks einen besseren Tag.
   keywords:
     - Orlando Reiseplaner
     - Orlando welcher Park an welchem Tag

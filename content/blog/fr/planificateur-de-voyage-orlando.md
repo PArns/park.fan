@@ -6,10 +6,10 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Dans le nouveau planificateur de voyage pour Orlando, chacun de tes parcs tombe le jour du séjour
-  où ses grandes attractions sont le moins chargées. Un jour où Magic Kingdom ferme à 18 h pour une
-  soirée spéciale compte comme une journée courte. Si tu as déjà tes billets, chaque journée au parc
-  reste dans leurs dates de validité, sinon tu reçois une proposition de billets.
+  Le 8 décembre, il y a peu de monde à Magic Kingdom, et pourtant c’est le mauvais jour : avec un
+  billet normal, tu dois sortir à 18 h, avant le feu d’artifice. Avec le nouveau planificateur de
+  voyage pour Orlando, tu y vas plutôt la veille, quand le parc reste ouvert jusqu’à 22 h, et chacun
+  de tes parcs a ainsi le jour qui vaut le coup.
 tags:
   - park-fan
   - orlando
@@ -26,7 +26,8 @@ coverImage:
 seo:
   title: 'Planificateur de voyage Orlando : quel parc, quel jour ?'
   description: >-
-    Chacun de tes parcs d’Orlando le jour aux files les plus courtes. Un jour de soirée spéciale, où il faut partir à 18 h, compte comme journée courte.
+    Le 8 décembre, peu de monde à Magic Kingdom, mais avec un billet normal tu sors à 18 h. Le
+    planificateur trouve à tes parcs d’Orlando un meilleur jour.
   keywords:
     - planificateur de voyage Orlando
     - quel parc d’Orlando quel jour
