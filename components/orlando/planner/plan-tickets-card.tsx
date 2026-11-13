@@ -564,7 +564,7 @@ function SuggestionResort({
       ))}
       {s.hopper && (
         <div className="flex flex-col gap-1.5 pt-1">
-          <Verdict verdict={s.hopper} resort={s.resort} on={on} />
+          <Verdict verdict={s.hopper} resort={s.resort} />
           {(gains.length > 0 || on) && (
             <Button
               variant="outline"
@@ -600,17 +600,10 @@ function SuggestionResort({
 
 /**
  * What the hopper adds, from the fields the API sends: a pill only where the API recommends it,
- * then each gain as a line, or that it adds nothing.
+ * then each gain as a line, or that it adds nothing. With the hopper on, the API compares against
+ * the plan without it, so the same words hold.
  */
-function Verdict({
-  verdict,
-  resort,
-  on = false,
-}: {
-  verdict: PlanHopperVerdict;
-  resort: string;
-  on?: boolean;
-}) {
+function Verdict({ verdict, resort }: { verdict: PlanHopperVerdict; resort: string }) {
   const t = useTranslations('orlandoPlanner.tickets.hopper');
   const { parkName, locale } = usePlanContext();
   const hopperWord = useHopperWord();
@@ -645,10 +638,10 @@ function Verdict({
         </Badge>
       )}
       {gains.length === 0 ? (
-        <p className="text-foreground/75">{t(on ? 'nothingOn' : 'nothing', { hopper })}</p>
+        <p className="text-foreground/75">{t('nothing', { hopper })}</p>
       ) : (
         <>
-          <p className="text-foreground/75">{t(on ? 'addsOn' : 'adds', { hopper })}</p>
+          <p className="text-foreground/75">{t('adds', { hopper })}</p>
           <ul className="flex list-disc flex-col gap-0.5 pl-5">
             {gains.map((gain, i) => (
               <li key={i}>{line(gain)}</li>

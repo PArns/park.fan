@@ -32,6 +32,7 @@
  *
  *     pnpm check:planner
  *     BASE=http://localhost:3000 pnpm check:planner
+ *     pnpm check:planner --orlando   # the Orlando trip planner's tickets alone
  */
 
 import { existsSync, readdirSync, readFileSync } from 'node:fs';
@@ -40,6 +41,7 @@ import sharp from 'sharp';
 // The rendered chip heights are asserted below, so the numbers come from the
 // module that states them rather than from a copy that can drift (PAR-180).
 import { LEG_CHIP_COMPACT_PX, LEG_CHIP_PX } from '../lib/planner/leg-chip.ts';
+import { checkOrlandoTickets } from './check-planner-orlando.mjs';
 
 const BASE = process.env.BASE ?? 'http://localhost:3000';
 // Same rule as scripts/check-card-framing.mjs: prefer a Chromium the image
@@ -938,6 +940,18 @@ async function tapBlock(page, locator, name, options = {}) {
     resolved && green,
     `Satz ${resolved ? 'da' : 'fehlt'}, Grün ${green ? 'da' : 'fehlt'}`
   );
+}
+
+// ── `--orlando`: the Orlando trip planner's tickets alone ────────────────────
+// The rest of this file is the day planner's; the Orlando part needs the trip-region API (the
+// API's `pnpm trip-regions:dev`) and none of `/plan/day`, so it can run without it.
+if (process.argv.includes('--orlando')) {
+  const browser = await chromium.launch(
+    existsSync(PREINSTALLED) ? { executablePath: PREINSTALLED } : {}
+  );
+  await checkOrlandoTickets({ browser, base: BASE, check });
+  await browser.close();
+  await exitAfterFlush(printBalance() === 0 ? 0 : 1);
 }
 
 // ── Is the backend endpoint live? ────────────────────────────────────────────
@@ -9379,6 +9393,9 @@ check(
   consoleErrors.length === 0,
   consoleErrors.slice(0, 3).join(' | ')
 );
+
+// ── The Orlando trip planner's tickets ───────────────────────────────────────
+await checkOrlandoTickets({ browser, base: BASE, check });
 
 await browser.close();
 
