@@ -6,7 +6,9 @@
  * share, pure so `pnpm test:admin-tickets` can pin it.
  */
 import { locales, type Locale } from '@/i18n/config';
+import type { SiteEventMap } from '@/lib/analytics/site-analytics';
 import type { CrosstabResponse } from '@/lib/api/admin-site-analytics';
+import { hostProp, sellerProp } from '@/lib/orlando/plan-analytics';
 import { getDateTimeFormat } from '@/lib/utils/intl-format';
 import { CROSSTAB_REST } from './site-analytics';
 
@@ -879,11 +881,10 @@ export function groupTicketsByResort<T extends Pick<AdminTicketProduct, 'resort'
 /* ------------------------------------------------------------------ clicks */
 
 /**
- * The event the planner sends for a click on a ticket link, with `product`, `seller`, `host`,
- * `official`, `sponsored`, `position` and `surface`. Its words live in `SiteEventMap`; the admin
- * only reads it.
+ * The event the planner sends for a click on a ticket link, with the product, the seller and the
+ * host among its properties (`SiteEventMap`); the admin only reads it.
  */
-export const TICKET_LINK_EVENT = 'ticket_link_clicked';
+export const TICKET_LINK_EVENT = 'ticket_link_clicked' satisfies keyof SiteEventMap;
 
 /** The window the ticket admin counts clicks in, in UTC days with today. */
 export const TICKET_CLICK_DAYS = 30;
@@ -900,13 +901,13 @@ export type TicketClickTable = Pick<CrosstabResponse, 'rows' | 'cols' | 'cells'>
 /** A crosstab with nothing in it, for an event that has never been sent. */
 export const EMPTY_TICKET_CLICKS: TicketClickTable = { rows: [], cols: [], cells: [] };
 
-/** The host a click names its link by: lower case, without `www.`, or null for no url. */
-export function ticketLinkHost(url: string): string | null {
-  try {
-    return new URL(url.trim()).hostname.toLowerCase().replace(/^www\./, '') || null;
-  } catch {
-    return null;
-  }
+/**
+ * The host and the seller a click names its link by, spelled as the planner sends them; the host
+ * is null for an address that is none yet.
+ */
+function clickKeys(link: TicketLink): { host: string | null; seller: string } {
+  const host = hostProp(link.url.trim());
+  return { host: host === 'unknown' ? null : host, seller: sellerProp(link.seller) };
 }
 
 /** A product's clicks in the window: its total and each link's, `null` where they cannot be told. */
@@ -944,8 +945,9 @@ export function ticketClicks(
   const total = byHost.cells
     .filter((cell) => cell.row === product.slug)
     .reduce((sum, cell) => sum + cell.count, 0);
-  const hosts = product.links.map((link) => ticketLinkHost(link.url));
-  const sellers = product.links.map((link) => link.seller.trim());
+  const keys = product.links.map(clickKeys);
+  const hosts = keys.map((key) => key.host);
+  const sellers = keys.map((key) => key.seller);
   const links = product.links.map((_, index) => {
     const host = hosts[index];
     if (host === null) return null;
@@ -968,6 +970,6 @@ export function ticketClicks(
 
 /** Whether a product has two links on one host, which only the seller tells apart. */
 export function sharesTicketLinkHost(product: Pick<AdminTicketProduct, 'links'>): boolean {
-  const hosts = product.links.map((link) => ticketLinkHost(link.url)).filter(Boolean);
+  const hosts = product.links.map((link) => clickKeys(link).host).filter(Boolean);
   return new Set(hosts).size < hosts.length;
 }

@@ -25,7 +25,6 @@ import {
   ticketBody,
   ticketCatalogPath,
   ticketClicks,
-  ticketLinkHost,
   ticketLinkProblems,
   ticketOrderAfterMove,
   ticketPatch,
@@ -542,9 +541,42 @@ const bySeller = {
   ],
 };
 
-test('the host a click names a link by drops www and case', () => {
-  assert.equal(ticketLinkHost('https://WWW.AttractionTickets.com/x'), 'attractiontickets.com');
-  assert.equal(ticketLinkHost('not a url'), null);
+test('a link is matched by its host as the planner sends it, without www', () => {
+  const upper = product({ links: [{ ...SHOP, url: 'https://WWW.DisneyWorld.Disney.go.com/x' }] });
+  const table = {
+    rows: ['wdw-date-based'],
+    cols: ['disneyworld.disney.go.com'],
+    cells: [{ row: 'wdw-date-based', col: 'disneyworld.disney.go.com', count: 3 }],
+  };
+  assert.deepEqual(ticketClicks(upper, table, null).links, [3]);
+});
+
+test('a seller is matched as the planner spells it, without the characters it drops', () => {
+  const shared = product({
+    links: [
+      { seller: "Disney's Store", url: 'https://shop.example/a', official: true, sponsored: false },
+      { seller: 'Other', url: 'https://shop.example/b', sponsored: false },
+    ],
+  });
+  const host = {
+    rows: ['wdw-date-based'],
+    cols: ['shop.example'],
+    cells: [{ row: 'wdw-date-based', col: 'shop.example', count: 5 }],
+  };
+  const seller = {
+    rows: ['wdw-date-based'],
+    cols: ['Disneys Store', 'Other'],
+    cells: [
+      { row: 'wdw-date-based', col: 'Disneys Store', count: 4 },
+      { row: 'wdw-date-based', col: 'Other', count: 1 },
+    ],
+  };
+  assert.deepEqual(ticketClicks(shared, host, seller), { total: 5, links: [4, 1] });
+});
+
+test('a link without an address yet has no figure', () => {
+  const typed = product({ links: [SHOP, { seller: 'New', url: '', sponsored: false }] });
+  assert.deepEqual(ticketClicks(typed, EMPTY_TICKET_CLICKS, null).links, [0, null]);
 });
 
 test("a link with its own host takes the host's count; two on one host take the seller's", () => {

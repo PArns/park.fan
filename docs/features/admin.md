@@ -495,12 +495,15 @@ within 15 minutes (`TICKET_PUBLISH_DELAY`). The pure half is `lib/admin/tickets.
   links it `rel="sponsored"`. The links the catalog started with lead to the cheapest authorized
   seller and the official shop and are never partner links; the switch is for the ones added
   later. Markets and languages limit a link; none means everyone.
-- **Clicks** are the planner's `ticket_link_clicked` event (`TICKET_LINK_EVENT`), read as the event
-  crosstab of the last 30 days, product against host, and against seller where two links of a
-  product share a host (`useTicketClicks`, `ticketClicks`). A figure leads to the event's page,
-  opened on the same table. An event nobody has sent is 0; a read that failed, or a product the
-  table folded into „Übrige“ (30 values per side), is a dash, never 0. The admin's analytics reads
-  cannot filter an event by a property, so the figures depend on the 30-value cut.
+- **Clicks** are the planner's `ticket_link_clicked` event (`TICKET_LINK_EVENT`, typed against
+  `SiteEventMap`), read as the event crosstab of the last 30 days, product against host, and
+  against seller where two links of a product share a host (`useTicketClicks`, `ticketClicks`). A
+  link is matched by its host and seller as the planner spells them (`hostProp`, `sellerProp` in
+  `lib/orlando/plan-analytics.ts`), so a seller with an apostrophe still finds its clicks. A figure
+  leads to the event's page, opened on the same table. An event nobody has sent is 0; a read that
+  failed, or a product the table folded into „Übrige“ (30 values per side), is a dash, never 0.
+  The admin's analytics reads cannot filter an event by a property, so the figures depend on the
+  30-value cut.
 - **On a phone** the form is one column in `SCROLLING_DIALOG` with a sticky footer, whose height
   is the dialog's scroll padding, so a focused field scrolls above it. A row's buttons take a line
   of their own below the details. Unsaved edits survive a tap beside the dialog and Escape; only

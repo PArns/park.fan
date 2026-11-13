@@ -424,7 +424,6 @@ The ticket catalog of a trip region as `/admin/tickets` edits it: every product 
 - `sortTicketProducts` _function_: The products in the admin's order, `sortOrder` first and the API's order after that.
 - `ticketOrderAfterMove` _function_: The whole region's order after moving one product up (`-1`) or down (`1`) inside its resort, as `PUT …/order` takes it: it swaps places with the nearest product of the same resort, wherever the others sit. Null at the end of its resort.
 - `groupTicketsByResort` _function_: The products grouped by resort, the region's groups in the region's order and a resort the region does not know after them under its key, each group in the admin's order.
-- `ticketLinkHost` _function_: The host a click names its link by: lower case, without `www.`, or null for no url.
 - `ticketClicks` _function_: A product's clicks, from the event counted by product against host and, for links of one product that share a host, by product against seller.
 - `sharesTicketLinkHost` _function_: Whether a product has two links on one host, which only the seller tells apart.
 - `TICKET_MARKETS` _const_: The markets in the order the form lists them.
@@ -442,7 +441,7 @@ The ticket catalog of a trip region as `/admin/tickets` edits it: every product 
 - `MAX_TICKET_SELLER_LENGTH` _const_: Characters of a seller's name.
 - `TICKET_PUBLISH_DELAY` _const_: How soon a saved edit is seen, as the API publishes it: plans drop the old catalog within 30 seconds (every instance lets go of its copy by then), the open catalog route and the site's ticket list within 15 minutes, its edge window.
 - `TICKETS_QUERY_KEY` _const_: The query key every ticket read sits under, so one invalidation drops all of them.
-- `TICKET_LINK_EVENT` _const_: The event the planner sends for a click on a ticket link, with `product`, `seller`, `host`, `official`, `sponsored`, `position` and `surface`. Its words live in `SiteEventMap`; the admin only reads it.
+- `TICKET_LINK_EVENT` _const_: The event the planner sends for a click on a ticket link, with the product, the seller and the host among its properties (`SiteEventMap`); the admin only reads it.
 - `TICKET_CLICK_DAYS` _const_: The window the ticket admin counts clicks in, in UTC days with today.
 - `TICKET_CLICKS_HREF` _const_: The event's own page in the admin, opened on its days and on product against host, the table the figures here are read from.
 - `EMPTY_TICKET_CLICKS` _const_: A crosstab with nothing in it, for an event that has never been sent.
