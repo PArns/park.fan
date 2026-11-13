@@ -35,27 +35,27 @@ seo:
     - The Nutcracker with Elmo & Tango
 ---
 
-A Very Furry Christmas arranca el sábado 14 de noviembre en [Sesame Place Philadelphia](ref:sesame-place-langhorne), en Langhorne. Este año estrena un espectáculo del Cascanueces con Elmo y su perro Tango, un entrenamiento de elfos con Big Bird y Snuffy y un salón para entrar en calor en Elmo's Pizza Kitchen. El evento navideño se celebra en 30 días hasta el 3 de enero de 2027 y va incluido en la entrada del parque. Por todo el recinto cuelgan millones de luces.
+A Very Furry Christmas arranca el sábado 14 de noviembre en [Sesame Place Philadelphia](ref:sesame-place-langhorne), en Langhorne. Este año estrena un espectáculo del Cascanueces con Elmo y su perro Tango, un entrenamiento de elfos con Big Bird y Snuffy y un salón para entrar en calor en Elmo's Pizza Kitchen. El evento navideño se celebra en 30 días hasta el 3 de enero de 2027 y va incluido en la entrada del parque. El parque habla de "millones" de luces, sin dar una cifra más precisa.
 
 ## Qué hay de nuevo
 
-The Nutcracker with Elmo & Tango, en el Elmo's Studio Theater, cuenta la primera Navidad de Tango en Sesame Street. Tango es el perro de Elmo, y en sueños los dos recorren el "Land of Sweets" para recuperar el cascanueces de juguete de Tango. Quien tiene perro conoce bien esa búsqueda del juguete favorito, solo que en casa suele terminar debajo del sofá y no en un reino de caramelo.
+The Nutcracker with Elmo & Tango, en el Elmo's Studio Theater, cuenta la primera Navidad de Tango en Sesame Street. En sueños, Elmo y Tango recorren el "Land of Sweets" para recuperar el cascanueces de juguete de Tango. Quien tiene perro conoce bien esa búsqueda del juguete favorito, solo que en casa suele terminar debajo del sofá y no en un reino de caramelo.
 
-En el Elf Training with Big Bird & Snuffy, en el Birthday Party Room, el elfo Sparklewrap les enseña a los dos qué hace un elfo en el taller de Papá Noel. Los niños del público pueden participar y cantar, y al final hay ocasión de hacerse una foto con Big Bird y Snuffy.
+En el Elf Training with Big Bird & Snuffy, en el Birthday Party Room, el elfo Sparklewrap les enseña a los dos qué hace un elfo en el taller de Papá Noel. Los niños del público pueden participar y cantar, y al final pueden hacerse una foto con Big Bird y Snuffy.
 
-La Winter Warm-Up Lounge está en Elmo's Pizza Kitchen. Hay música, aperitivos de temporada y bebidas calientes como chocolate caliente. Los niños juegan en sus propias estaciones de juego, la familia entera a juegos como Giant Jenga y Connect Four, y los personajes de Sesame Street pasan a hacerse fotos. En la planta de arriba, a Cookie Monster le ha tocado nada menos que la mesa de las galletas: en Cookies & Cocoa with Cookie Monster los niños decoran una galleta de jengibre, toman chocolate caliente y se fotografían con él.
+La Winter Warm-Up Lounge está en Elmo's Pizza Kitchen. Si quieres entrar en calor entre dos espectáculos, allí tienes música, chocolate caliente y aperitivos de temporada. Los niños tienen sus propias estaciones de juego, para toda la familia hay Giant Jenga y Connect Four, y de vez en cuando pasa algún personaje de Sesame Street para hacerse fotos. En la planta de arriba, a Cookie Monster le ha tocado nada menos que la mesa de las galletas: en Cookies & Cocoa with Cookie Monster los niños decoran una galleta de jengibre, toman chocolate caliente y se fotografían con él.
 
 ## Desfile, espectáculos y Papá Noel
 
-La Sesame Street Christmas Parade recorre el parque con carrozas y tres números de espectáculo. Desfilan nueve personajes, de Elmo y Big Bird a Bert y Ernie. Entre otras canciones suenan "Sleigh Ride" y "Jingle Bells", y Elmo rapea "Santa Claus Is Coming to Town".
+La Sesame Street Christmas Parade recorre el parque con carrozas y tres números de espectáculo. En las carrozas van nueve personajes, entre ellos Elmo, Big Bird, Bert y Ernie. Entre otras canciones suenan "Sleigh Ride" y "Jingle Bells", y Elmo rapea "Santa Claus Is Coming to Town".
 
-Junto al Oscar's Wacky Taxi Stage se alza el 1-2-3 Christmas Tree, de algo más de nueve metros (30 pies). En su espectáculo de luces, imágenes y luces van al ritmo de la música, y en el mismo escenario se celebra la Furry Friends Holiday Dance Party. En el Sesame Street Theater, Elmo, Cookie Monster, Grover, Zoe, Rosita y Murray representan Elmo's Christmas Wish, y en el Abby's Paradise Theater se canta A Very Merry Sesame Street Sing-Along. Los horarios de todos los espectáculos aparecen en el programa del día, que el parque actualiza a la hora de apertura.
+Junto al Oscar's Wacky Taxi Stage se alza el 1-2-3 Christmas Tree, de algo más de nueve metros (30 pies). El árbol se ilumina y muestra imágenes al ritmo de la música, y en el mismo escenario se celebra también la Furry Friends Holiday Dance Party. En el Sesame Street Theater, Elmo, Cookie Monster, Grover, Zoe, Rosita y Murray representan Elmo's Christmas Wish, y en el Abby's Paradise Theater se canta A Very Merry Sesame Street Sing-Along. Los horarios de todos los espectáculos aparecen en el programa del día, que el parque actualiza a la hora de apertura.
 
-A Papá Noel lo encuentras en Santa's Furry Workshop, al lado del Sesame Street Theater. La novedad es una cola virtual: te apuntas en la Tinsel Tent, delante del taller, recibes un SMS cuando os toca y tienes 20 minutos para llegar. Las cartas a Papá Noel las escriben los niños en Letters to Santa, en Mr. Hooper's Gift Shop. Nochebuena es el último día con Papá Noel, y ese día la cola virtual cierra a las 14:00. Del 26 de diciembre al 3 de enero, en el taller se sienta Santa Cookie Monster.
+A Papá Noel lo encuentras en Santa's Furry Workshop, al lado del Sesame Street Theater. Este año ya no hace falta hacer cola allí. Te apuntas en la Tinsel Tent, delante del taller, recibes un SMS cuando os toca y tienes 20 minutos para llegar. Las cartas a Papá Noel las escriben los niños en Letters to Santa, en Mr. Hooper's Gift Shop. Nochebuena es el último día con Papá Noel, y ese día la cola virtual cierra a las 14:00. Del 26 de diciembre al 3 de enero, en el taller se sienta Santa Cookie Monster.
 
 ## Días y horarios de apertura
 
-El parque abre 30 días, normalmente los viernes de 16:00 a 20:00, los sábados de 11:00 a 19:00 y los domingos de 13:00 a 18:00, hora local. De lunes a jueves permanece cerrado hasta el 17 de diciembre, también el día de Acción de Gracias, el 26 de noviembre. Hay estas excepciones:
+El parque abre normalmente los viernes de 16:00 a 20:00, los sábados de 11:00 a 19:00 y los domingos de 13:00 a 18:00, hora local. De lunes a jueves permanece cerrado hasta el 17 de diciembre, también el día de Acción de Gracias, el 26 de noviembre. Hay estas excepciones:
 
 - viernes 27 de noviembre: de 11:00 a 19:00
 - domingo 29 de noviembre: desde las 13:00, y para los titulares de un Season Pass ya desde las 11:00
@@ -78,11 +78,9 @@ La noche de la inauguración, a las 17:00, Papá Noel enciende por primera vez l
 
 La Hanukkah Celebration tiene lugar los días de apertura entre el 4 y el 12 de diciembre. A las 16:30, un cantor enciende la menorá junto a Baby Bear en el Abby's Paradise Theater. En el Monster Clubhouse hay dreidel y manualidades todo el día, y en la Hanukkah Storytime con Baby Bear, en el Elmo's Studio Theater, caben como mucho 120 personas.
 
-La Santa's 'Twas the Night Before Christmas Celebration empieza en Nochebuena a las 17:00 en el Sesame Street Neighborhood. Del 26 de diciembre a Año Nuevo el parque celebra la Kwanzaa Celebration, en la que se enciende la kinara en el Abby's Paradise Theater, con plazas limitadas. Para Nochevieja están previstos a las 18:00 los fuegos artificiales "C…is for Celebrate!" con Elmo, Abby Cadabby, Cookie Monster y Count von Count. Solo se lanzan esa noche, y la hora aún puede cambiar.
+La Santa's 'Twas the Night Before Christmas Celebration empieza en Nochebuena a las 17:00 en el Sesame Street Neighborhood. Del 26 de diciembre a Año Nuevo el parque celebra la Kwanzaa Celebration, en la que se enciende la kinara en el Abby's Paradise Theater, con plazas limitadas. Para Nochevieja están previstos a las 18:00 los fuegos artificiales "C…is for Celebrate!" con Elmo, Abby Cadabby, Cookie Monster y Count von Count, aunque la hora aún puede cambiar.
 
 ## Lo que se paga aparte
-
-Con coste adicional hay:
 
 - Cookies & Cocoa with Cookie Monster: 20 dólares
 - sitio reservado junto al recorrido del desfile: 24 dólares por persona
@@ -103,9 +101,9 @@ El Season Pass 2027 vale desde el momento de la compra, así que también cubre 
 - Gold: 193,50 dólares, también en nueve plazos
 - Platinum: 247,50 dólares, válido en once parques, entre ellos los de SeaWorld y Busch Gardens
 
-Así, el Bronze cuesta menos que una entrada de un día en taquilla. El Transferable Pass de 193,50 dólares solo se vende junto con un Season Pass: vale hasta el 2 de enero de 2028 para una visita al día, siempre acompañado del titular del pase, e incluye A Very Furry Christmas sin días bloqueados.
+El Transferable Pass de 193,50 dólares solo se vende junto con un Season Pass: vale hasta el 2 de enero de 2028 para una visita al día, siempre acompañado del titular del pase, e incluye A Very Furry Christmas sin días bloqueados.
 
-## Atracciones en invierno y accesibilidad
+## Atracciones en invierno y certificación de autismo
 
 Durante el evento navideño funcionan, entre otras, Oscar's Wacky Taxi, Captain Cookie's High C's Adventure, Flyin' Fish y Big Bird's Tour Bus. Para la montaña rusa Oscar's Wacky Taxi Coaster, los niños tienen que medir al menos 102 centímetros (40 pulgadas). En 2018, Sesame Place fue el primer parque temático del mundo en recibir del IBCCES la certificación Certified Autism Center, y en 2024 se volvieron a certificar los dos parques Sesame Place.
 

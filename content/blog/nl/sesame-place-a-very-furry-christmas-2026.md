@@ -35,27 +35,27 @@ seo:
     - The Nutcracker with Elmo & Tango
 ---
 
-A Very Furry Christmas begint op zaterdag 14 november in [Sesame Place Philadelphia](ref:sesame-place-langhorne) in Langhorne. Nieuw zijn dit jaar een notenkrakershow met Elmo en zijn hond Tango, een elfentraining met Big Bird en Snuffy en een lounge om op te warmen in Elmo's Pizza Kitchen. Het kerstevenement loopt op 30 dagen tot 3 januari 2027 en zit bij de entree inbegrepen. In het park hangen ook miljoenen lichtjes.
+A Very Furry Christmas begint op zaterdag 14 november in [Sesame Place Philadelphia](ref:sesame-place-langhorne) in Langhorne. Nieuw zijn dit jaar een notenkrakershow met Elmo en zijn hond Tango, een elfentraining met Big Bird en Snuffy en een lounge om op te warmen in Elmo's Pizza Kitchen. Het kerstevenement loopt op 30 dagen tot 3 januari 2027 en zit bij de entree inbegrepen. Het park spreekt van “miljoenen” lichtjes, een preciezer aantal noemt het niet.
 
 ## Wat er nieuw is
 
-The Nutcracker with Elmo & Tango in het Elmo's Studio Theater vertelt over Tango's eerste kerst in Sesame Street. Tango is de hond van Elmo, en samen reizen ze in een droom door het “Land of Sweets” op zoek naar Tango's speelgoednotenkraker. Hondenbezitters kennen die zoektocht ook, alleen eindigt die thuis meestal onder de bank.
+The Nutcracker with Elmo & Tango in het Elmo's Studio Theater vertelt over Tango's eerste kerst in Sesame Street. In een droom reizen Elmo en Tango door het “Land of Sweets” op zoek naar Tango's speelgoednotenkraker. Hondenbezitters kennen die zoektocht ook, alleen eindigt die thuis meestal onder de bank.
 
-Bij Elf Training with Big Bird & Snuffy in de Birthday Party Room leert de elf Sparklewrap de twee wat een elf in de werkplaats van de kerstman allemaal moet doen. Kinderen in het publiek mogen meedoen en meezingen, en na afloop kun je met Big Bird en Snuffy op de foto.
+Bij Elf Training with Big Bird & Snuffy in de Birthday Party Room leert de elf Sparklewrap de twee wat een elf in de werkplaats van de kerstman allemaal moet doen. Kinderen in het publiek mogen meedoen en meezingen, en na afloop kunnen ze met Big Bird en Snuffy op de foto.
 
-De Winter Warm-Up Lounge zit in Elmo's Pizza Kitchen. Er is muziek, er zijn seizoenssnacks en warme drankjes zoals warme chocolademelk, kinderen hebben hun eigen speelhoeken, en met het hele gezin speel je spellen als Giant Jenga en Connect Four. Figuren uit Sesame Street komen langs voor foto's. Boven in de lounge hebben ze juist Cookie Monster bij de koekjes gezet: bij Cookies & Cocoa with Cookie Monster versieren kinderen een peperkoek, drinken ze warme chocolademelk en gaan ze met hem op de foto.
+De Winter Warm-Up Lounge zit in Elmo's Pizza Kitchen. Wie tussen twee shows wil opwarmen, vindt er muziek, warme chocolademelk en seizoenssnacks. Kinderen hebben hun eigen speelhoeken, voor het hele gezin staan Giant Jenga en Connect Four klaar, en af en toe komt er een figuur uit Sesame Street langs voor foto's. Boven in de lounge hebben ze juist Cookie Monster bij de koekjes gezet: bij Cookies & Cocoa with Cookie Monster versieren kinderen een peperkoek, drinken ze warme chocolademelk en gaan ze met hem op de foto.
 
 ## Parade, shows en de kerstman
 
-De Sesame Street Christmas Parade trekt met praalwagens en drie optredens onderweg door het park. Negen figuren lopen mee, van Elmo en Big Bird tot Bert en Ernie. Er wordt onder meer “Sleigh Ride” en “Jingle Bells” gezongen, en Elmo rapt op “Santa Claus Is Coming to Town”.
+De Sesame Street Christmas Parade trekt met praalwagens en drie optredens onderweg door het park. Op de wagens rijden negen figuren mee, onder wie Elmo, Big Bird, Bert en Ernie. Er wordt onder meer “Sleigh Ride” en “Jingle Bells” gezongen, en Elmo rapt op “Santa Claus Is Coming to Town”.
 
-Bij de Oscar's Wacky Taxi Stage staat de 1-2-3 Christmas Tree, ruim negen meter (30 voet) hoog. In de lichtshow bewegen beelden en lichtjes op de maat van de muziek, en op hetzelfde podium is de Furry Friends Holiday Dance Party. In het Sesame Street Theater spelen Elmo, Cookie Monster, Grover, Zoe, Rosita en Murray Elmo's Christmas Wish, en in het Abby's Paradise Theater is A Very Merry Sesame Street Sing-Along. Hoe laat de shows beginnen, staat in het dagprogramma dat het park bij de opening bijwerkt.
+Bij de Oscar's Wacky Taxi Stage staat de 1-2-3 Christmas Tree, ruim negen meter (30 voet) hoog. De boom licht op en toont beelden op de maat van de muziek, en op hetzelfde podium is ook de Furry Friends Holiday Dance Party. In het Sesame Street Theater spelen Elmo, Cookie Monster, Grover, Zoe, Rosita en Murray Elmo's Christmas Wish, en in het Abby's Paradise Theater is A Very Merry Sesame Street Sing-Along. Hoe laat de shows beginnen, staat in het dagprogramma dat het park bij de opening bijwerkt.
 
-De kerstman vind je in Santa's Furry Workshop naast het Sesame Street Theater. Nieuw is daar een virtuele wachtrij: je meldt je aan bij de Tinsel Tent voor de werkplaats, krijgt een sms als jullie aan de beurt zijn en hebt dan 20 minuten om er te komen. Kinderen schrijven brieven aan de kerstman bij Letters to Santa in Mr. Hooper's Gift Shop. Kerstavond is de laatste dag met de kerstman, en de virtuele wachtrij sluit dan om 14.00 uur. Van 26 december tot 3 januari zit Santa Cookie Monster in de werkplaats.
+De kerstman vind je in Santa's Furry Workshop naast het Sesame Street Theater. In de rij staan hoeft daar dit jaar niet meer. Je meldt je aan bij de Tinsel Tent voor de werkplaats, krijgt een sms als jullie aan de beurt zijn en hebt dan 20 minuten om er te komen. Kinderen schrijven brieven aan de kerstman bij Letters to Santa in Mr. Hooper's Gift Shop. Kerstavond is de laatste dag met de kerstman, en de virtuele wachtrij sluit dan om 14.00 uur. Van 26 december tot 3 januari zit Santa Cookie Monster in de werkplaats.
 
 ## Openingsdagen en openingstijden
 
-Het park is 30 dagen open, meestal op vrijdag van 16.00 tot 20.00 uur, op zaterdag van 11.00 tot 19.00 uur en op zondag van 13.00 tot 18.00 uur, in lokale tijd. Van maandag tot en met donderdag blijft het tot 17 december dicht, ook op Thanksgiving, 26 november. Afwijkend zijn:
+Het park is meestal open op vrijdag van 16.00 tot 20.00 uur, op zaterdag van 11.00 tot 19.00 uur en op zondag van 13.00 tot 18.00 uur, in lokale tijd. Van maandag tot en met donderdag blijft het tot 17 december dicht, ook op Thanksgiving, 26 november. Afwijkend zijn:
 
 - vrijdag 27 november: 11.00 tot 19.00 uur
 - zondag 29 november: vanaf 13.00 uur, voor wie een Season Pass heeft al vanaf 11.00 uur
@@ -78,11 +78,9 @@ Op de openingsavond doet de kerstman om 17.00 uur bij Santa's Grand Illumination
 
 De Hanukkah Celebration is er op de openingsdagen van 4 tot en met 12 december. Om 16.30 uur steekt een cantor samen met Baby Bear in het Abby's Paradise Theater de menora aan. In het Monster Clubhouse kun je de hele dag dreidelen en knutselen, en bij de Hanukkah Storytime met Baby Bear in het Elmo's Studio Theater kunnen hooguit 120 gasten zitten.
 
-Santa's 'Twas the Night Before Christmas Celebration begint op kerstavond om 17.00 uur in de Sesame Street Neighborhood. Van 26 december tot nieuwjaarsdag viert het park de Kwanzaa Celebration, waarbij in het Abby's Paradise Theater de kinara wordt aangestoken; de plaatsen zijn beperkt. Op oudejaarsavond staat om 18.00 uur het vuurwerk “C…is for Celebrate!” gepland, met Elmo, Abby Cadabby, Cookie Monster en Count von Count. Het is er alleen die ene avond, en het tijdstip kan nog veranderen.
+Santa's 'Twas the Night Before Christmas Celebration begint op kerstavond om 17.00 uur in de Sesame Street Neighborhood. Van 26 december tot nieuwjaarsdag viert het park de Kwanzaa Celebration, waarbij in het Abby's Paradise Theater de kinara wordt aangestoken; de plaatsen zijn beperkt. Op oudejaarsavond staat om 18.00 uur het vuurwerk “C…is for Celebrate!” gepland, met Elmo, Abby Cadabby, Cookie Monster en Count von Count. Het tijdstip kan nog veranderen.
 
 ## Wat extra kost
-
-Tegen betaling zijn er:
 
 - Cookies & Cocoa with Cookie Monster: 20 dollar
 - een gereserveerde plek langs de paraderoute: 24 dollar per persoon
@@ -103,9 +101,9 @@ De Season Pass 2027 geldt meteen vanaf de aankoop, dus ook voor A Very Furry Chr
 - Gold: 193,50 dollar, ook in negen termijnen
 - Platinum: 247,50 dollar, geldig in elf parken, waaronder die van SeaWorld en Busch Gardens
 
-Bronze is daarmee goedkoper dan een dagticket aan de kassa. De Transferable Pass van 193,50 dollar koop je alleen samen met een Season Pass. Hij geldt tot 2 januari 2028 voor één bezoek per dag, samen met de passhouder, en A Very Furry Christmas zit er zonder blokkadedagen bij.
+De Transferable Pass van 193,50 dollar koop je alleen samen met een Season Pass. Hij geldt tot 2 januari 2028 voor één bezoek per dag, samen met de passhouder, en A Very Furry Christmas zit er zonder blokkadedagen bij.
 
-## Attracties in de winter en toegankelijkheid
+## Attracties in de winter en het autismecertificaat
 
 Tijdens het kerstevenement draaien onder meer Oscar's Wacky Taxi, Captain Cookie's High C's Adventure, Flyin' Fish en Big Bird's Tour Bus. Voor de achtbaan Oscar's Wacky Taxi Coaster moet een kind minstens 102 centimeter (40 inch) lang zijn. Sesame Place kreeg in 2018 als eerste pretpark ter wereld van het IBCCES de certificering als Certified Autism Center, en in 2024 zijn beide Sesame Place-parken opnieuw gecertificeerd.
 
