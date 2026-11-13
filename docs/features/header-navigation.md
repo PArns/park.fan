@@ -228,7 +228,13 @@ The panel is only the look; the data and the click behaviour live in the modules
 - **Analytics** as for the other bands: `nav_menu_opened` with `menu=planner`, clicks as
   `internal_link_clicked` with `header` or `menu_sheet`, and `planner_opened` with `menu-plan` or
   `menu-park`.
-- **Cost**: MEASURED_COST
+- **Cost**: +0.99 KB brotli per page against the plain link it replaces (15.6 KB raw; median over
+  the six locales on `/parks/europe/germany`, 1.04 KB on `/blog` and the homepage; production build,
+  the served document against the same document with the old entry, the band's props and its keys
+  taken out). The scene is a 2.8 KB brotli chunk (10.3 KB raw) fetched on the first opening;
+  inlined, its markup would add 3.3 KB brotli (19.3 KB raw) to every page. The drawn day renders
+  from the first opening for the same reason. Links in the main `<nav>`: the planner page, the
+  Orlando planner and calendar, six park pages the rail and the sitemap already carry.
 
 ## The favorites band
 

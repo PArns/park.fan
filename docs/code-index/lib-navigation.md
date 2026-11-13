@@ -49,7 +49,8 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`planner-menu.ts`](../../lib/navigation/planner-menu.ts)
 
 - `getPlannerMenu` _function_: The planner band for a locale, memoised per process like `getFeaturedParksMenu`: it reads only modules of this repo, and the layout asks on every page. Callers share the object and must not mutate it.
-- Types: `PlannerMenuRegion`, `PlannerMenu`
+- `PLANNER_MENU_PARKS` _const_: How many parks the band offers: two columns of three.
+- Types: `PlannerMenuRegion`, `PlannerMenuPark`, `PlannerMenu`
 
 ### [`post-search.ts`](../../lib/navigation/post-search.ts)
 
@@ -63,7 +64,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`trip-regions.ts`](../../lib/navigation/trip-regions.ts)
 
-- `tripRegionName` _function_: A region's name in a locale, English where a per-locale name lacks one.
+- `tripRegionText` _function_: A region's name or place in a locale, English where a per-locale text lacks one.
 - `tripRegion` _function_: A region by its id.
 - `TRIP_REGIONS` _const_: Every region with a trip planner, one entry each.
-- Types: `TripRegionSceneProps`, `TripRegionSceneLoader`, `TripRegion`
+- Types: `TripRegionSceneProps`, `TripRegionSceneLoader`, `TripRegionText`, `TripRegion`

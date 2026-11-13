@@ -91,6 +91,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `MenuBand` _component_: The full-bleed glass band the header's menus open into, one surface whichever trigger opened it.
 - `useMenuBandOpen` _hook_: Whether the band this component sits in is open. The band is never unmounted (crawlers read its links while it is `hidden`), so a column whose data is fetched, not rendered into every page, asks this before it fetches.
+- `useMenuBandOpened` _hook_: Whether the band this component sits in has been open at least once: for what only a reader of the open band sees (a picture, a drawing), which then stays rather than going on every close.
 
 ### [`menu-post-row.tsx`](../../components/layout/menu-post-row.tsx)
 
@@ -132,11 +133,14 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`planner-menu-panel.tsx`](../../components/layout/planner-menu-panel.tsx)
 
-- `PlannerMenuPanel` _component_: The planner band: the trip planner per region, the day planner, and the locale's popular parks as quick starts into the day planner.
+- `PlannerMenuPanel` _component_: The planner band: the trip planner per region (a card each, its Parky scene behind it), the day planner, and the locale's popular parks as quick starts into the day planner.
+- `usePlanSummary` _hook_: This browser's plan, summed up; nothing on the server, where the plan is never known.
+- `planSummary` _function_: The plan the band reports: the active day where it is a planned one, else the first.
+- `formatPlanDay` _function_: A planned day as `YYYY-MM-DD`, written short in the reader's language: „Sa., 21. Nov.".
 
 ### [`planner-region-art.tsx`](../../components/layout/planner-region-art.tsx)
 
-- `PlannerRegionArt` _component_: The picture of a region's tile in the planner band: its Parky scene where `TRIP_REGIONS` gives it one, else the hub's photo.
+- `PlannerRegionArt` _component_: The picture of a region's card in the planner band: its Parky scene where `TRIP_REGIONS` gives it one, else the hub's photo.
 
 ### [`scroll-lock-gutter.tsx`](../../components/layout/scroll-lock-gutter.tsx)
 

@@ -324,10 +324,9 @@ Which kinds of notification this browser wants: a narrowing of the deploy's own 
 
 ### [`quick-start.ts`](../../lib/planner/quick-start.ts)
 
-- `plannerQuickStarts` _function_: The quick starts for a locale: the parks menu's rail (the parks this locale's readers opened most, topped up from the curated list), in its order. A card whose link carries no geography is dropped, since the planner files a day under it.
+- `plannerQuickStarts` _function_: The quick starts, in the band's order. A park whose link carries no geography is dropped, since the planner files a day under it.
 - `startPlannerAt` _function_: Names the park to the planner and asks for its wizard on it.
 - `quickStartClick` _function_: The `onClick` of a quick-start link: a plain primary click starts the planner on the park and lets the navigation to the park's page go on; any other click is the browser's.
-- `QUICK_START_LIMIT` _const_: How many parks the band offers, at most.
 - Types: `PlannerQuickStart`
 
 ### [`ride-drag.ts`](../../lib/planner/ride-drag.ts)
