@@ -19,6 +19,11 @@ parkLinks:
   - /parks/europe/france/paris/disneyland-park
   - disney-adventure-world
 rideLinks: false
+coverImage:
+  src: /media/disneyland-park/background.jpg
+  alt: 'The pink and blue Sleeping Beauty castle on its rock base, lawn and clipped trees in front.'
+  caption: 'Sleeping Beauty Castle in Disneyland Park. On 11 November there were a good few more people in front of it than in this photo.'
+  credit: 'Patrick Arns'
 seo:
   title: 'Disneyland Paris full: which tickets still get you in'
   description: >-

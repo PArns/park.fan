@@ -19,6 +19,11 @@ parkLinks:
   - /parks/europe/france/paris/disneyland-park
   - disney-adventure-world
 rideLinks: false
+coverImage:
+  src: /media/disneyland-park/background.jpg
+  alt: 'Le château de la Belle au bois dormant, rose et bleu, sur son socle rocheux, pelouse et arbres taillés devant.'
+  caption: 'Le château de la Belle au bois dormant, au Parc Disneyland. Le 11 novembre, il y avait nettement plus de monde devant que sur cette photo.'
+  credit: 'Patrick Arns'
 seo:
   title: 'Disneyland Paris complet : avec quel billet entrer'
   description: >-

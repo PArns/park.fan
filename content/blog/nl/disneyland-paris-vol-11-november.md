@@ -19,6 +19,11 @@ parkLinks:
   - /parks/europe/france/paris/disneyland-park
   - disney-adventure-world
 rideLinks: false
+coverImage:
+  src: /media/disneyland-park/background.jpg
+  alt: 'Het roze-blauwe Doornroosjekasteel op een rotssokkel, met gras en gesnoeide bomen ervoor.'
+  caption: 'Het Doornroosjekasteel in het Disneyland Park. Op 11 november stonden er heel wat meer mensen voor dan op deze foto.'
+  credit: 'Patrick Arns'
 seo:
   title: 'Disneyland Paris vol: met welk ticket je nog binnenkomt'
   description: >-

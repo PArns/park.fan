@@ -19,6 +19,11 @@ parkLinks:
   - /parks/europe/france/paris/disneyland-park
   - disney-adventure-world
 rideLinks: false
+coverImage:
+  src: /media/disneyland-park/background.jpg
+  alt: 'El castillo de la Bella Durmiente, rosa y azul, sobre su base de roca, con césped y árboles podados delante.'
+  caption: 'El castillo de la Bella Durmiente, en Disneyland Park. El 11 de noviembre había bastante más gente delante que en esta foto.'
+  credit: 'Patrick Arns'
 seo:
   title: 'Disneyland Paris lleno: con qué entrada puedes pasar'
   description: >-

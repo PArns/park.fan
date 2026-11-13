@@ -19,6 +19,11 @@ parkLinks:
   - /parks/europe/france/paris/disneyland-park
   - disney-adventure-world
 rideLinks: false
+coverImage:
+  src: /media/disneyland-park/background.jpg
+  alt: 'Das rosa-blaue Dornröschenschloss auf einem Felssockel, davor Wiese und beschnittene Bäume.'
+  caption: 'Das Dornröschenschloss im Disneyland Park. Am 11. November standen davor deutlich mehr Leute als auf diesem Foto.'
+  credit: 'Patrick Arns'
 seo:
   title: 'Disneyland Paris voll: Mit welchem Ticket du noch reinkommst'
   description: >-

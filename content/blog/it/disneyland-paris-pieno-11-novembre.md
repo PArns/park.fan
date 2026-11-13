@@ -19,6 +19,11 @@ parkLinks:
   - /parks/europe/france/paris/disneyland-park
   - disney-adventure-world
 rideLinks: false
+coverImage:
+  src: /media/disneyland-park/background.jpg
+  alt: 'Il castello della Bella Addormentata, rosa e blu, sul basamento roccioso, con prato e alberi potati davanti.'
+  caption: 'Il castello della Bella Addormentata nel Disneyland Park. L’11 novembre davanti c’era parecchia più gente che in questa foto.'
+  credit: 'Patrick Arns'
 seo:
   title: 'Disneyland Paris pieno: con quale biglietto entri ancora'
   description: >-
