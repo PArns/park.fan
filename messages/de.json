@@ -2365,12 +2365,12 @@
     },
     "intro": {
       "lead": "Jede Zahl hier ist die Wartezeit der großen Bahnen zur vollsten Zeit: die Tagesspitze jedes Headliners, gemittelt über die Parks der Reise.",
-      "body": "Eine Reise wird so gerechnet wie im Reiseplaner, jeder Park an seinem besten Tag, und ein Tag, an dem Tagesgäste früher gehen müssen, zählt als schlechterer Tag. Die Prognose reicht bis {date}; danach zeigt die Seite dieselben Wochen im Vorjahr, wie wir sie gemessen haben, markiert mit „Vorjahr“.",
-      "bodyForecast": "Eine Reise wird so gerechnet wie im Reiseplaner, jeder Park an seinem besten Tag, und ein Tag, an dem Tagesgäste früher gehen müssen, zählt als schlechterer Tag. Jede Zahl auf dieser Seite ist unsere Prognose."
+      "body": "Wir rechnen eine Reise wie der Reiseplaner, jeder Park an seinem besten Tag, und ein Tag, an dem Tagesgäste früher gehen müssen, zählt als schlechterer Tag. Die Prognose reicht bis {date}. Danach zeigt die Seite dieselben Wochen im Vorjahr, wie wir sie gemessen haben, markiert mit „Vorjahr“.",
+      "bodyForecast": "Wir rechnen eine Reise wie der Reiseplaner, jeder Park an seinem besten Tag, und ein Tag, an dem Tagesgäste früher gehen müssen, zählt als schlechterer Tag. Jede Zahl auf dieser Seite ist unsere Prognose."
     },
     "strip": {
       "title": "Das Jahr auf einen Blick",
-      "lead": "Ein Balken pro Woche: je höher, desto länger warten die großen Bahnen bei {parks}. Die Farbe vergleicht die Woche mit dem Rest von {year}.",
+      "lead": "Ein Balken pro Woche: je höher, desto länger stehst du an den großen Bahnen bei {parks} an. Die Farbe vergleicht die Woche mit dem Rest von {year}.",
       "caption": "Wartezeit der großen Bahnen pro Woche {year} bei {parks}",
       "table": "Die Wochen als Tabelle",
       "colWeek": "Woche ab",
@@ -2433,7 +2433,7 @@
       "title": "Nur in den Schulferien?",
       "lead": "Wenn die Schule bestimmt, wann du fährst, sucht der Planer nur in den Ferien deines Bundeslands oder deiner Region und nimmt dort die ruhigsten {days} Tage. Wähle Region und Ferien.",
       "note": "Aufgeführt sind nur Ferien ab {days} Tagen, Wochenenden mitgezählt.",
-      "through": "Die Ferienkalender reichen bis {date}. Spätere Ferien sind noch nicht in den Daten.",
+      "through": "Die Ferienkalender reichen bis {date}, spätere Ferien fehlen noch.",
       "none": "{year} keine Ferien mit {days} oder mehr Tagen."
     },
     "faq": {
@@ -2445,13 +2445,13 @@
       },
       "quietA": "Die kürzesten Warteschlangen hat die {days}-Tage-Reise ab {date}: die großen Bahnen etwa {minutes} Min. zur vollsten Zeit, {percent} % unter dem Schnitt von {year}. Danach folgen {others}.",
       "christmasQ": "Ist an Weihnachten viel los?",
-      "christmasA": "{busy, select, yes {Ja.} other {Weniger, als viele denken.}} Die Weihnachtswoche ({date}) liegt bei etwa {minutes} Min. an den großen Bahnen, im Schnitt von {year} sind es {average} Min.",
-      "newYearA": "{busy, select, yes {Ja, soweit unsere Zahlen reichen.} other {Weniger, als viele denken, soweit unsere Zahlen reichen.}} Sie beginnen mit der Woche um Neujahr ({date}) bei etwa {minutes} Min. an den großen Bahnen, im Schnitt von {year} sind es {average} Min. Die Weihnachtswoche selbst liegt davor.",
+      "christmasA": "{busy, select, yes {Ja.} other {Kaum mehr als sonst.}} Die Weihnachtswoche ({date}) liegt bei etwa {minutes} Min. an den großen Bahnen, im Schnitt von {year} sind es {average} Min.",
+      "newYearA": "{busy, select, yes {Ja, soweit unsere Zahlen reichen.} other {Kaum mehr als sonst, soweit unsere Zahlen reichen.}} Sie beginnen mit der Woche um Neujahr ({date}) bei etwa {minutes} Min. an den großen Bahnen, im Schnitt von {year} sind es {average} Min. Die Weihnachtswoche selbst liegt davor.",
       "partyQ": "Wann sind die Partyabende?",
       "partyA": "{list}. An diesen Abenden schließt der Park für Tagesgäste früher, deshalb legt der Reiseplaner deine vollen Parktage nicht darauf.",
       "partyItem": "{name} ({park}): {dates}, {status}",
       "hurricaneQ": "Was ist mit der Hurrikansaison?",
-      "hurricaneA": "Sie läuft vom 1. Juni bis 30. November. Das ist eine Tatsache über die Jahreszeit, keine Vorhersage: Ein Sturm bekommt seinen Namen Tage vorher, nicht Monate. In einem üblichen Jahr fällt der meiste Regen im {months}, etwa {rain} mm im Monat (der Schnitt von {period}).",
+      "hurricaneA": "Sie läuft vom 1. Juni bis 30. November. Ob ein Sturm in deine Reise fällt, lässt sich erst wenige Tage vorher sagen, wenn er sich gebildet und einen Namen bekommen hat. In einem üblichen Jahr fällt der meiste Regen im {months}, etwa {rain} mm im Monat (der Schnitt von {period}).",
       "firstQ": {
         "orlando": "Erst Disney oder erst Universal?",
         "disney-world": "Welcher Disney-Park zuerst?",

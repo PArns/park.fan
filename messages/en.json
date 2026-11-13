@@ -2365,8 +2365,8 @@
     },
     "intro": {
       "lead": "Every figure here is the big rides' wait at their busiest: each headliner's peak of the day, averaged over the parks of the trip.",
-      "body": "A trip is priced the way the trip planner prices it, with each park on its best day, and a day that closes early for day guests counts as a worse one. The forecast runs to {date}; after that the page shows the same weeks last year as we measured them, marked “last year”.",
-      "bodyForecast": "A trip is priced the way the trip planner prices it, with each park on its best day, and a day that closes early for day guests counts as a worse one. Every figure on this page is our forecast."
+      "body": "We score a trip the way the trip planner does, with each park on its best day, and a day that closes early for day guests counts as a worse one. The forecast runs to {date}. After that the page shows the same weeks last year as we measured them, marked “last year”.",
+      "bodyForecast": "We score a trip the way the trip planner does, with each park on its best day, and a day that closes early for day guests counts as a worse one. Every figure on this page is our forecast."
     },
     "strip": {
       "title": "The year at a glance",
@@ -2433,7 +2433,7 @@
       "title": "Travelling in school holidays?",
       "lead": "If school decides when you travel, the planner searches only inside your region's holidays and picks the quietest {days} days there. Choose your region and the break.",
       "note": "Only breaks of {days} days or more are listed, weekends included.",
-      "through": "The school calendars run to {date}. A later break is not in the data yet.",
+      "through": "The school calendars run to {date}. Later breaks aren't in yet.",
       "none": "No break of {days} days or more in {year}."
     },
     "faq": {
@@ -2445,13 +2445,13 @@
       },
       "quietA": "The {days}-day trip from {date} has the shortest lines: the big rides about {minutes} min at their busiest, {percent}% below the {year} average. Next come {others}.",
       "christmasQ": "Is Christmas busy?",
-      "christmasA": "{busy, select, yes {Yes.} other {Less than you might expect.}} Christmas week ({date}) runs at about {minutes} min at the big rides, against {average} min across {year}.",
-      "newYearA": "{busy, select, yes {Yes, as far as our figures go.} other {Less than you might expect, as far as our figures go.}} They start with the week around New Year ({date}) at about {minutes} min at the big rides, against {average} min across {year}. Christmas week itself comes before that.",
+      "christmasA": "{busy, select, yes {Yes.} other {Not much more than usual.}} Christmas week ({date}) runs at about {minutes} min at the big rides, against {average} min across {year}.",
+      "newYearA": "{busy, select, yes {Yes, as far as our figures go.} other {Not much more than usual, as far as our figures go.}} They start with the week around New Year ({date}) at about {minutes} min at the big rides, against {average} min across {year}. Christmas week itself comes before that.",
       "partyQ": "When are the party nights?",
       "partyA": "{list}. On those evenings the park closes early for day guests, which is why the trip planner keeps your full park days off them.",
       "partyItem": "{name} ({park}): {dates}, {status}",
       "hurricaneQ": "What about hurricane season?",
-      "hurricaneA": "It runs from 1 June to 30 November. That is a fact about the season, not a forecast: a storm gets named days ahead, not months. In a usual year the most rain falls in {months}, about {rain} mm a month (the average for {period}).",
+      "hurricaneA": "It runs from 1 June to 30 November. Whether a storm hits your trip can only be told a few days ahead, once it has formed and been named. In a usual year the most rain falls in {months}, about {rain} mm a month (the average for {period}).",
       "firstQ": {
         "orlando": "Disney or Universal first?",
         "disney-world": "Which Disney park should come first?",

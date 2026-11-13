@@ -2365,8 +2365,8 @@
     },
     "intro": {
       "lead": "Elk cijfer hier is de wachttijd van de grote attracties op het drukste moment: de dagpiek van elke topattractie, gemiddeld over de parken van de reis.",
-      "body": "Een reis wordt berekend zoals de reisplanner dat doet, met elk park op zijn beste dag, en een dag waarop dagbezoekers eerder weg moeten telt als een slechtere dag. De voorspelling loopt tot {date}; daarna toont de pagina dezelfde weken vorig jaar zoals wij ze gemeten hebben, gemarkeerd met ‘vorig jaar’.",
-      "bodyForecast": "Een reis wordt berekend zoals de reisplanner dat doet, met elk park op zijn beste dag, en een dag waarop dagbezoekers eerder weg moeten telt als een slechtere dag. Elk cijfer op deze pagina is onze voorspelling."
+      "body": "We rekenen een reis zoals de reisplanner dat doet, met elk park op zijn beste dag, en een dag waarop dagbezoekers eerder weg moeten telt als een slechtere dag. De voorspelling loopt tot {date}. Daarna toont de pagina dezelfde weken vorig jaar zoals wij ze gemeten hebben, gemarkeerd met ‘vorig jaar’.",
+      "bodyForecast": "We rekenen een reis zoals de reisplanner dat doet, met elk park op zijn beste dag, en een dag waarop dagbezoekers eerder weg moeten telt als een slechtere dag. Elk cijfer op deze pagina is onze voorspelling."
     },
     "strip": {
       "title": "Het jaar in één oogopslag",
@@ -2433,7 +2433,7 @@
       "title": "Alleen in de schoolvakantie?",
       "lead": "Bepaalt de school wanneer je gaat, dan zoekt de planner alleen binnen de vakantie van jouw regio en kiest daar de rustigste {days} dagen. Kies je regio en de vakantie.",
       "note": "Alleen vakanties van {days} dagen of langer staan erbij, weekenden meegeteld.",
-      "through": "De schoolkalenders lopen tot {date}. Een latere vakantie staat nog niet in de gegevens.",
+      "through": "De schoolkalenders lopen tot {date}, latere vakanties ontbreken nog.",
       "none": "Geen vakantie van {days} dagen of langer in {year}."
     },
     "faq": {
@@ -2445,13 +2445,13 @@
       },
       "quietA": "De reis van {days} dagen vanaf {date} heeft de kortste rijen: de grote attracties ongeveer {minutes} min op het drukste moment, {percent}% onder het gemiddelde van {year}. Daarna volgen {others}.",
       "christmasQ": "Is het druk met kerst?",
-      "christmasA": "{busy, select, yes {Ja.} other {Minder dan je zou denken.}} De kerstweek ({date}) zit op ongeveer {minutes} min bij de grote attracties, tegen gemiddeld {average} min in {year}.",
-      "newYearA": "{busy, select, yes {Ja, voor zover onze cijfers gaan.} other {Minder dan je zou denken, voor zover onze cijfers gaan.}} Ze beginnen met de week rond Nieuwjaar ({date}) op ongeveer {minutes} min bij de grote attracties, tegen gemiddeld {average} min in {year}. De kerstweek zelf valt daarvoor.",
+      "christmasA": "{busy, select, yes {Ja.} other {Niet veel drukker dan normaal.}} De kerstweek ({date}) zit op ongeveer {minutes} min bij de grote attracties, tegen gemiddeld {average} min in {year}.",
+      "newYearA": "{busy, select, yes {Ja, voor zover onze cijfers gaan.} other {Niet veel drukker dan normaal, voor zover onze cijfers gaan.}} Ze beginnen met de week rond Nieuwjaar ({date}) op ongeveer {minutes} min bij de grote attracties, tegen gemiddeld {average} min in {year}. De kerstweek zelf valt daarvoor.",
       "partyQ": "Wanneer zijn de feestavonden?",
       "partyA": "{list}. Op die avonden sluit het park eerder voor dagbezoekers; daarom zet de reisplanner je volle parkdagen er niet op.",
       "partyItem": "{name} ({park}): {dates}, {status}",
       "hurricaneQ": "Hoe zit het met het orkaanseizoen?",
-      "hurricaneA": "Het loopt van 1 juni tot 30 november. Dat is een feit over het seizoen, geen voorspelling: een storm krijgt dagen van tevoren een naam, geen maanden. In een gewoon jaar valt de meeste regen in {months}, ongeveer {rain} mm per maand (het gemiddelde van {period}).",
+      "hurricaneA": "Het loopt van 1 juni tot 30 november. Of er een storm in je reis valt, weet je pas een paar dagen van tevoren, als hij zich gevormd heeft en een naam heeft gekregen. In een gewoon jaar valt de meeste regen in {months}, ongeveer {rain} mm per maand (het gemiddelde van {period}).",
       "firstQ": {
         "orlando": "Eerst Disney of eerst Universal?",
         "disney-world": "Welk Disney-park eerst?",
