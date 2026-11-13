@@ -64,6 +64,8 @@ const ALLOWED = new Set([
   // The operators' product names, which the planner never translates (docs/features/orlando-planner.md).
   'orlandoPlanner.tickets.entry.sw-three-park.title',
   'orlandoPlanner.tickets.variant.uor-2-day-p2p-plus-epic',
+  // The seller's product name (attractiontickets.com), never translated.
+  'orlandoPlanner.tickets.combo.title',
 ]);
 
 function flatten(value, prefix = '', out = new Map()) {

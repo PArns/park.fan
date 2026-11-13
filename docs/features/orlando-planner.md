@@ -132,18 +132,22 @@ contract: the API's
 Without a catalog the step and the card are not drawn, plan first works as before, and a link's
 `tickets` still plans: the plan route validates them.
 
-- **The question.** "Not yet, just plan" answers in one press and moves on to Dates; "Next: dates"
+- **The question.** Two 48 px chips (`PlanChip`) under one shared line. "Not yet, just plan" answers
+  in one press and moves on to Dates; "Next: dates"
   without an answer counts as the same. "Yes, I have tickets" opens the four resorts. The answer is
   this browser's (`parkfan_orlando_tickets_asked`, `lib/orlando/ticket-answer.ts`); "Not yet" leaves
   no `tickets` in the URL, and tickets entered before it stay in the step until the page is left.
-- **The products.** Each resort lists the operators' tickets by name, with their rule in one line
-  and a tag where only some may buy them ("UK & Ireland only", "Sold outside the US"); fields appear
-  only where a product varies (days, the hopper as Yes / No / Not sure, water parks or Volcano Bay,
-  the first day). Universal's two UK 14-day tickets are one entry that the first day resolves
-  (`onSale`); "Not sure which" plans the strictest product of its length; the UK combo fills in
-  Disney's and Universal's 14-day tickets at once. Under the fields, the window in dates. Only a
-  complete ticket is written to `tickets=`; a first day the product is not sold for is said in the
-  field and never written.
+- **The products.** Each resort lists the operators' tickets by name, with their rule in one line;
+  every product whose catalog `markets` lack `us` is tagged "Sold outside the US". The tag reads
+  "not us" on purpose: the sellers' pages state no residency rule, so no tag claims one (the API's
+  `markets` for the Magic Tickets list only `uk`, a follow-up there). Fields appear only where a
+  product varies (days, the hopper as Yes / No / Not sure, water parks or Volcano Bay, the first
+  day). Universal's two UK 14-day tickets are one entry that the first day resolves (`onSale`);
+  "Not sure which" plans the strictest product of its length; the Disney and Universal Combo
+  Ticket, as attractiontickets.com sells it, fills in both 14-day tickets at once, and a first day
+  picked for one half is the other's too. Under the fields, the window in dates. Only a complete
+  ticket is written to `tickets=`; a first day the product is not sold for is said in the field and
+  never written.
 - **The trip.** Tickets with first days give empty trip dates their range (earliest first day to
   the latest window's end, at most 21 days); the Dates grid draws each window as a bar with a key.
   "Find the best dates" is off while a first day is fixed. A ticket the dates miss holds the
@@ -154,7 +158,7 @@ Without a catalog the step and the card are not drawn, plan first works as befor
   verdict's lists; "Worth adding" only where the API recommends it), the Hogwarts Express line where
   both Universal parks are planned, "Show the plan with Park Hopper" (`hopper=<resort>`), the shop
   link and "Use these as your tickets" (written with `blocks=1`, so the days stay). On a trip of ten
-  days or more, a line offers the UK 14-day tickets ("Plan with these").
+  days or more, a line offers the 14-day tickets sold outside the US ("Plan with these").
 - **Owned** ("Your tickets"): each ticket's window, the days the plan uses ("8 of 14 days", or
   "used on 5 of its 14 days" for an every-day ticket), why days stay unused, whether Disney and
   Universal days mix (`meta.mixing`), a day outside the window with "Leave this visit out" and

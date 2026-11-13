@@ -181,13 +181,13 @@ export function entryOfProduct(product: string): TicketEntry | null {
 }
 
 /**
- * Who may buy an entry's ticket, as its tag: `uk` for UK and Ireland residents only, `intl` for a
- * ticket sold only outside the US; nothing for one anybody can buy.
+ * Whether an entry's ticket is sold outside the US only, which its tag says ("Sold outside the US").
+ * The catalog's `markets` lack `us` for those; no residency rule is claimed, since the sellers'
+ * pages state none.
  */
-export function entryMarket(entry: TicketEntry, catalog: TicketCatalog): 'uk' | 'intl' | null {
+export function entryMarket(entry: TicketEntry, catalog: TicketCatalog): 'intl' | null {
   const markets = catalog.get(entry.products[0])?.markets ?? [];
-  if (markets.includes('us')) return null;
-  return markets.includes('uk') && !markets.includes('intl') ? 'uk' : 'intl';
+  return markets.includes('us') ? null : 'intl';
 }
 
 // ── A product's rules ─────────────────────────────────────────────────────────
@@ -277,6 +277,8 @@ export interface TicketDraft {
   /** The entry's checkbox: water parks, or Volcano Bay. */
   addon: boolean;
   start: string | null;
+  /** The other half of a Combo Ticket, which shares this one's first day. */
+  link?: number;
 }
 
 /** The lengths "Not sure which" offers: every date-based length, and the UK ticket's 14. */

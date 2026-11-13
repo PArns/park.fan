@@ -178,14 +178,19 @@ export async function checkOrlandoTickets({ browser, base, check }) {
     await page.locator(`${SHEET} [data-ticket-combo]`).click();
     const cards = page.locator(`${SHEET} [data-ticket-card]`);
     check(
-      'Orlando · das UK-Kombiticket trägt beide Tickets mit einem Druck ein',
+      'Orlando · das Combo Ticket trägt beide Tickets mit einem Druck ein',
       (await cards.count()) === 2 &&
         (await cards.nth(0).innerText()).includes('14-Day Magic Ticket') &&
         (await cards.nth(1).innerText()).includes('14-day ticket')
     );
     const sheet = page.locator(SHEET);
     await pickStart(sheet, 0, '2027-02-07');
-    await pickStart(sheet, 1, '2027-02-07');
+    const shared = await cards.nth(1).locator('[data-ticket-start]').innerText();
+    check(
+      'Orlando · beide Hälften des Combo Tickets beginnen am selben ersten Tag',
+      shared.includes('Sun, Feb 7, 2027'),
+      shared
+    );
     const disney = await sheet.locator('[data-ticket-window]').nth(0).innerText();
     const universal = await sheet.locator('[data-ticket-window]').nth(1).innerText();
     check(

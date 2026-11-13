@@ -3595,8 +3595,9 @@
       "nextDates": "Next: dates",
       "yours": "Your tickets",
       "combo": {
-        "title": "Disney and Universal combo, 14 days each",
-        "hint": "Disney & Universal Combo or Orlando Freedom Ticket from a UK tour operator: fills in both tickets."
+        "title": "Disney and Universal Combo Ticket",
+        "hint": "One package, two tickets: Disney 14 park days within 18 days, Universal 14 days in a row, both from the day you chose.",
+        "lite": "For arrivals from {from} to {to} it is the Lite version, without Volcano Bay."
       },
       "resort": {
         "walt-disney-world": "Walt Disney World",
@@ -3626,7 +3627,6 @@
       "max": "{count} tickets at most.",
       "mixNote": "Each ticket keeps its own dates. Where both are valid, the plan mixes Disney and Universal days only where that saves at least 3 min a ride.",
       "market": {
-        "uk": "UK & Ireland only",
         "intl": "Sold outside the US"
       },
       "entry": {
@@ -3839,9 +3839,9 @@
       "newTab": "(opens in a new tab)",
       "adopt": "Use these as your tickets",
       "longStay": {
-        "line": "If you live in the UK or Ireland, you can buy 14-day tickets instead.",
+        "line": "Outside the US there are 14-day tickets for Disney and Universal, also as a Combo Ticket.",
         "plan": "Plan with these",
-        "detail": "The 14-day tickets in the operators’ UK shops:"
+        "detail": "The 14-day tickets in the operators’ shops outside the US:"
       },
       "owned": {
         "valid": "Valid {from} to {to}",

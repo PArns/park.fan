@@ -192,7 +192,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `leanTicketCatalog` _function_: The catalog as the browser needs it: the operators' notes and the rules only the optimizer reads (`hopSets`, `caps`, `confidence`) stay on the server, which keeps the planner's payload small.
 - `ticketEntries` _function_: A resort's product list, keeping only the products the catalog has; an entry with none left goes, so a product the API drops leaves the list without a dead button.
 - `entryOfProduct` _function_: The entry a written ticket belongs to: the first that lists its product and is no "not sure".
-- `entryMarket` _function_: Who may buy an entry's ticket, as its tag: `uk` for UK and Ireland residents only, `intl` for a ticket sold only outside the US; nothing for one anybody can buy.
+- `entryMarket` _function_: Whether an entry's ticket is sold outside the US only, which its tag says ("Sold outside the US"). The catalog's `markets` lack `us` for those; no residency rule is claimed, since the sellers' pages state none.
 - `soldLengths` _function_: The lengths a product sells, or `null` for a pass or a product with only a window.
 - `windowLength` _function_: The calendar days a ticket may be used in, from its start: the window of its length, or the product's own window; `null` for a pass.
 - `ticketLength` _function_: The days a ticket of this product has to count off, `null` for a pass or a window-only product.

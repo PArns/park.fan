@@ -144,18 +144,34 @@ export function useTicketStep(): TicketStep {
     addCombo: () => {
       const id = nextId();
       const added = [
-        blank(id, 'walt-disney-world', 'wdw-uk-14'),
-        blank(id + 1, 'universal-orlando', 'uor-uk-14'),
-      ].slice(0, MAX_TICKETS - drafts.length);
-      if (added.length === 0) return;
+        { ...blank(id, 'walt-disney-world', 'wdw-uk-14'), link: id + 1 },
+        { ...blank(id + 1, 'universal-orlando', 'uor-uk-14'), link: id },
+      ];
+      if (drafts.length + added.length > MAX_TICKETS) return;
       write([...drafts, ...added], true);
       setFocus({ draft: id, field: 'start' });
     },
-    change: (id, patch) =>
+    change: (id, patch) => {
+      const changed = drafts.find((d) => d.id === id);
+      // A Combo Ticket's two halves start on the day chosen at booking; the other half follows
+      // until the visitor gives it a day of its own.
+      const partner =
+        patch.start !== undefined && changed?.link !== undefined
+          ? drafts.find(
+              (d) => d.id === changed.link && (d.start === null || d.start === changed.start)
+            )
+          : undefined;
       write(
-        drafts.map((d) => (d.id === id ? { ...d, ...patch } : d)),
+        drafts.map((d) =>
+          d.id === id
+            ? { ...d, ...patch }
+            : d === partner
+              ? { ...d, start: patch.start ?? null }
+              : d
+        ),
         true
-      ),
+      );
+    },
     remove: (id) => {
       const gone = drafts.find((d) => d.id === id);
       write(
@@ -198,7 +214,7 @@ export function PlanTickets({
   wide?: boolean;
 }) {
   const t = useTranslations('orlandoPlanner.tickets');
-  const { live, tickets: catalog } = usePlanContext();
+  const { live, locale, today, tickets: catalog } = usePlanContext();
   const rootRef = useRef<HTMLDivElement>(null);
   const listId = useId();
   const { answer, drafts, focus, clearFocus } = step;
@@ -220,6 +236,15 @@ export function PlanTickets({
   const both =
     drafts.some((d) => d.resort === 'walt-disney-world') &&
     drafts.some((d) => d.resort === 'universal-orlando');
+  // The Combo Ticket's Universal half is the Lite version, without Volcano Bay, for the arrivals
+  // Three Park Adventure is sold for.
+  const liteSale = catalog.get(UNIVERSAL_UK_14[0])?.onSale?.find((r) => r.from && r.to);
+  const saleDay = (d: string) =>
+    formatParkDay(locale, d, { day: 'numeric', month: 'short', year: 'numeric' });
+  const lite =
+    liteSale?.from && liteSale.to && today
+      ? { from: saleDay(liteSale.from), to: saleDay(liteSale.to) }
+      : null;
   const hasCombo =
     catalog.has(DISNEY_UK_14) &&
     UNIVERSAL_UK_14.some((id) => catalog.has(id)) &&
@@ -268,8 +293,14 @@ export function PlanTickets({
           >
             <Ticket className="text-primary-ink size-5 shrink-0" aria-hidden="true" />
             <span className="flex min-w-0 flex-1 flex-col">
-              <span className="text-sm font-semibold">{t('combo.title')}</span>
-              <span className="text-foreground/75 text-xs leading-snug">{t('combo.hint')}</span>
+              <span className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm font-semibold">
+                {t('combo.title')}
+                <MarketTag market="intl" />
+              </span>
+              <span className="text-foreground/75 text-xs leading-snug">
+                {t('combo.hint')}
+                {lite && ` ${oneStop(t('combo.lite', lite))}`}
+              </span>
             </span>
             <Plus className="text-primary-ink size-4 shrink-0" aria-hidden="true" />
           </button>
@@ -461,7 +492,7 @@ function EntryButton({
   chosen,
 }: {
   entry: TicketEntry;
-  market: 'uk' | 'intl' | null;
+  market: 'intl' | null;
   disabled: boolean;
   onClick: () => void;
   focusKey?: number;
@@ -495,7 +526,7 @@ function EntryButton({
   );
 }
 
-function MarketTag({ market }: { market: 'uk' | 'intl' }) {
+function MarketTag({ market }: { market: 'intl' }) {
   const t = useTranslations('orlandoPlanner.tickets');
   return (
     <Badge variant="outline" className="border-primary/50 text-primary-ink font-medium">
@@ -582,9 +613,7 @@ function TicketFields({
         <span className="flex min-w-0 flex-1 flex-col gap-0.5">
           <span className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm font-semibold">
             {t(`entry.${entry.key}.title`)}
-            {entryMarket(entry, catalog) && (
-              <MarketTag market={entryMarket(entry, catalog) as 'uk' | 'intl'} />
-            )}
+            {entryMarket(entry, catalog) && <MarketTag market="intl" />}
           </span>
           <EntryHint entry={entry} />
         </span>

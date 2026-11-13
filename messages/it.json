@@ -3595,8 +3595,9 @@
       "nextDates": "Avanti: le date",
       "yours": "I tuoi biglietti",
       "combo": {
-        "title": "Combinato Disney e Universal, 14 giorni ciascuno",
-        "hint": "Disney & Universal Combo o Orlando Freedom Ticket di un tour operator britannico: compila entrambi i biglietti."
+        "title": "Disney and Universal Combo Ticket",
+        "hint": "Un pacchetto, due biglietti: Disney 14 giorni di parco entro 18 giorni, Universal 14 giorni di fila, entrambi dal giorno che hai scelto.",
+        "lite": "Con arrivo dal {from} al {to} è la versione Lite, senza Volcano Bay."
       },
       "resort": {
         "walt-disney-world": "Walt Disney World",
@@ -3626,7 +3627,6 @@
       "max": "Al massimo {count} biglietti.",
       "mixNote": "Ogni biglietto tiene le sue date. Dove valgono entrambi, il piano mescola giorni Disney e Universal solo se fa risparmiare almeno 3 min per attrazione.",
       "market": {
-        "uk": "Solo Regno Unito e Irlanda",
         "intl": "Venduto fuori dagli USA"
       },
       "entry": {
@@ -3839,9 +3839,9 @@
       "newTab": "(si apre in una nuova scheda)",
       "adopt": "Usali come tuoi biglietti",
       "longStay": {
-        "line": "Se vivi nel Regno Unito o in Irlanda puoi comprare invece i biglietti da 14 giorni.",
+        "line": "Fuori dagli USA ci sono biglietti da 14 giorni per Disney e Universal, anche come Combo Ticket.",
         "plan": "Pianifica con questi",
-        "detail": "I biglietti da 14 giorni nei negozi britannici dei parchi:"
+        "detail": "I biglietti da 14 giorni nei negozi dei parchi fuori dagli USA:"
       },
       "owned": {
         "valid": "Valido dal {from} al {to}",

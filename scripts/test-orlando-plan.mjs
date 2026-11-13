@@ -1094,13 +1094,13 @@ const keys = { parks: new Set(ORDER), areas: new Set(['disney', 'universal']) };
     ]
   );
   test(
-    'the step’s tags: UK and Ireland only, sold outside the US, or none',
+    'the step’s tag reads “not us”: sold outside the US, or none',
     [
       entryMarket(ticketEntries('walt-disney-world', CATALOG)[1], CATALOG),
       entryMarket(ticketEntries('universal-orlando', CATALOG)[1], CATALOG),
       entryMarket(ticketEntries('walt-disney-world', CATALOG)[0], CATALOG),
     ],
-    ['uk', 'intl', null]
+    ['intl', 'intl', null]
   );
   test(
     'the lists keep only what the catalog has',

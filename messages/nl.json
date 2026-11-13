@@ -3595,8 +3595,9 @@
       "nextDates": "Verder naar de reisdata",
       "yours": "Jouw tickets",
       "combo": {
-        "title": "Combiticket Disney en Universal, elk 14 dagen",
-        "hint": "Disney & Universal Combo of Orlando Freedom Ticket van een Britse reisorganisatie: vult beide tickets in."
+        "title": "Disney and Universal Combo Ticket",
+        "hint": "Eén pakket, twee tickets: Disney 14 parkdagen binnen 18 dagen, Universal 14 dagen achter elkaar, allebei vanaf de dag die je hebt gekozen.",
+        "lite": "Bij aankomst van {from} tot {to} als Lite, zonder Volcano Bay."
       },
       "resort": {
         "walt-disney-world": "Walt Disney World",
@@ -3626,7 +3627,6 @@
       "max": "Hoogstens {count} tickets.",
       "mixNote": "Elk ticket houdt zijn eigen data. Waar beide geldig zijn, mengt het plan Disney- en Universal-dagen alleen als dat minstens 3 min per attractie scheelt.",
       "market": {
-        "uk": "Alleen VK & Ierland",
         "intl": "Verkocht buiten de VS"
       },
       "entry": {
@@ -3839,9 +3839,9 @@
       "newTab": "(opent in een nieuw tabblad)",
       "adopt": "Als jouw tickets gebruiken",
       "longStay": {
-        "line": "Wie in het VK of Ierland woont, kan in plaats daarvan tickets voor 14 dagen kopen.",
+        "line": "Buiten de VS zijn er tickets voor 14 dagen voor Disney en Universal, ook als Combo Ticket.",
         "plan": "Daarmee plannen",
-        "detail": "De tickets voor 14 dagen in de Britse winkels van de parken:"
+        "detail": "De tickets voor 14 dagen in de winkels van de parken buiten de VS:"
       },
       "owned": {
         "valid": "Geldig van {from} tot {to}",
