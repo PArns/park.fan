@@ -20,6 +20,7 @@ import {
   ParkyLookHands,
   ParkyLookHat,
   ParkyLookWear,
+  ParkyShades,
 } from './looks';
 import {
   BUBBLE,
@@ -54,6 +55,7 @@ import {
 import { DREAM_MS, ParkyDreamCloud } from './dreams';
 import { ParkyMoment, ParkyRideTrack, ParkySpotlight, ParkyVehicle } from './props';
 import { ParkyWheel } from './wheel';
+import { ParkyEyeWhite, ParkyPupil } from './eyes';
 import { useGaze } from './use-gaze';
 import { useIdleAct } from './use-idle-act';
 import { LENS_OUT_MS, PUZZLED_MS, useSearchAlong } from './use-search-along';
@@ -398,7 +400,7 @@ export function ParkyLogo({
           <g className="parky-eyes">
             {EYES.map((x) => (
               <g key={x} className="parky-eye">
-                <ellipse cx={x} cy="22.5" rx="5.4" ry="6.2" fill="white" />
+                <ParkyEyeWhite x={x} />
                 {/* Properties, not the attribute, so the pupils ease to a new place and an act
                     that moves them itself can draw the gaze back to the middle. */}
                 <g
@@ -412,8 +414,7 @@ export function ParkyLogo({
                   }
                 >
                   <g className="parky-pupils">
-                    <circle cx={x} cy="23" r="3" fill={ink} />
-                    <circle cx={x + 1.1} cy="21.7" r="1.05" fill="white" />
+                    <ParkyPupil x={x} />
                   </g>
                 </g>
               </g>
@@ -463,18 +464,7 @@ export function ParkyLogo({
         )}
         {act === 'shades' && (
           // Sunglasses, slid down from the hat onto the eyes.
-          <g className="parky-shades">
-            <path d="M10 17h28" stroke={ink} strokeWidth="1.6" strokeLinecap="round" />
-            <path d="M10.6 17H23v6.2c0 3.2-2.6 5.4-6.2 5.4s-6.2-2.2-6.2-5.4Z" fill={ink} />
-            <path d="M25 17h12.4v6.2c0 3.2-2.6 5.4-6.2 5.4S25 26.4 25 23.2Z" fill={ink} />
-            <path
-              d="M13 19.4h3.2M27.4 19.4h3.2"
-              stroke="white"
-              strokeOpacity=".55"
-              strokeWidth=".9"
-              strokeLinecap="round"
-            />
-          </g>
+          <ParkyShades className="parky-shades" />
         )}
         {act === 'nightcap' && (
           // A nightcap in place of the wheel: a white brim round the top of the head, the cap

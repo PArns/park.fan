@@ -58,11 +58,13 @@ export function PlannerLauncher() {
   /**
    * Something outside the panel asked for it. An effect, because the request is another component's
    * event and a second request after a close must reopen it, hence comparing against the last
-   * counter seen. The header button names no day, so it is treated like the tab. A callback rather
-   * than a branch in the effect, which `react-hooks/set-state-in-effect` refuses.
+   * counter seen. The header button and the planner band's „Meinen Plan öffnen" name no day, so
+   * they are treated like the tab. A callback rather than a branch in the effect, which
+   * `react-hooks/set-state-in-effect` refuses.
    */
   const answerRequest = useCallback(() => {
-    if (plannerUi.getOpenSource() === 'header') openOrAsk();
+    const source = plannerUi.getOpenSource();
+    if (source === 'header' || source === 'menu-plan') openOrAsk();
     else setOpen(true);
   }, [openOrAsk]);
   const lastSeen = useRef(0);

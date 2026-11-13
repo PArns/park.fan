@@ -424,7 +424,7 @@ The [crowd calendar](ref:walibi-holland?calendar) shows for each day:
 Tap a day and you’ll see everything about that one day, with an hour-by-hour chart for today and
 tomorrow. The compare button puts two days side by side, say a Saturday in May against a Sunday in
 the same week. And from an open day in the calendar you can plan an order for your rides with the
-[trip planner](/blog/trip-planner).
+[day planner](/blog/trip-planner).
 
 After 1 November the calendar shows Walibi Holland as closed until the park announces its 2027
 opening days. As soon as they’re out, the model calculates a forecast for those days too.

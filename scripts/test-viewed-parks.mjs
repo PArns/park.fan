@@ -2,7 +2,8 @@
  * Pins how the popular-parks surfaces use the page-view counter (docs/features/most-read.md):
  *
  *   - a park ranking (UUIDs) resolves against the geo structure; unknown ids and parks under
- *     VIEWED_PARK_MIN_VIEWS drop out, the order stays
+ *     VIEWED_PARK_MIN_VIEWS drop out, the order stays; each park says whether it had published
+ *     hours ahead (`hasHoursAhead`, which the planner band's quick starts read)
  *   - `rankedFirst` puts the counted parks ahead of a hand-picked list, without doubles, at its
  *     length
  *   - the homepage's featured parks are the hand-picked ones where nothing was counted, and a
@@ -107,6 +108,39 @@ await check(() => {
   );
   assert.equal(resolved[0].href, '/parks/europe/germany/rust/other-park', 'with its page path');
   assert.equal(resolved[0].views, 40, 'and its views');
+});
+
+await check(() => {
+  // Whether a counted park has a day to plan: open today, or a next opening published.
+  const scheduled = (extra) =>
+    resolveViewedParks([{ key: 'id-s', views: 9 }], {
+      ...geo,
+      continents: [
+        {
+          ...geo.continents[0],
+          countries: [
+            {
+              ...geo.continents[0].countries[0],
+              cities: [city('rust', [park('id-s', 'scheduled', extra)])],
+            },
+          ],
+        },
+      ],
+    })[0].hasHoursAhead;
+  assert.equal(scheduled({ todaySchedule: { scheduleType: 'OPERATING' } }), true, 'open today');
+  assert.equal(
+    scheduled({
+      todaySchedule: { scheduleType: 'CLOSED' },
+      nextSchedule: { scheduleType: 'OPERATING' },
+    }),
+    true,
+    'shut today, a next opening published'
+  );
+  assert.equal(
+    scheduled({ todaySchedule: { scheduleType: 'UNKNOWN' } }),
+    false,
+    'a run that is over, or a season with no dates out'
+  );
 });
 
 await check(() => {

@@ -5,6 +5,7 @@ import { Link } from '@/i18n/navigation';
 import { plannerPath } from '@/lib/planner/segments';
 import { plannerUi } from '@/lib/planner/ui-store';
 import { cn } from '@/lib/utils';
+import { isPlainPrimaryClick } from '@/lib/utils/plain-click';
 import type { buttonLinkProps } from '@/components/ui/button';
 import type { Locale } from '@/i18n/config';
 
@@ -55,11 +56,8 @@ export function ParkPlannerLink({
       {...look}
       onClick={(event) => {
         // Everything but a plain primary click is left alone: a modified click asks for the
-        // planner's own page in a window of its own. The middle button fires `auxclick` and never
-        // arrives here.
-        if (event.defaultPrevented) return;
-        if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
-        if (event.button !== 0) return;
+        // planner's own page in a window of its own.
+        if (!isPlainPrimaryClick(event)) return;
         event.preventDefault();
         plannerUi.requestOpen('park-header', 'page-park-wizard');
       }}

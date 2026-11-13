@@ -7,6 +7,7 @@ import { plannerPageHeight } from '@/lib/planner/page-height';
 import { riderHeightChoiceFor } from '@/lib/planner/party';
 import { plannerUi } from '@/lib/planner/ui-store';
 import { cn } from '@/lib/utils';
+import { isPlainPrimaryClick } from '@/lib/utils/plain-click';
 import type { Locale } from '@/i18n/config';
 
 /**
@@ -41,9 +42,7 @@ export function KidsPlannerButton({
       href={plannerPath(locale) as '/trip-planner'}
       prefetch={false}
       onClick={(event) => {
-        if (event.defaultPrevented) return;
-        if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
-        if (event.button !== 0) return;
+        if (!isPlainPrimaryClick(event)) return;
         event.preventDefault();
         // Below the wizard's lowest chip there is nothing safe to hand over, so nothing is: the
         // wizard asks the question itself.
