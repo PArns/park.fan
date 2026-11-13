@@ -312,6 +312,9 @@ function SheetPark({
                       area: areaName,
                       minutes: leg.minutes,
                       transfer: leg.transferMinutes,
+                      // Magic Kingdom's rest of the way is the monorail or ferry from the TTC,
+                      // Volcano Bay's the shuttle from Universal's garages.
+                      via: leg.via === 'ttc' ? 'ttc' : 'other',
                       total: legMinutes(leg),
                     })
                   : t('travel', { area: areaName, minutes: leg.minutes })}

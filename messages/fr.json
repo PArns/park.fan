@@ -434,7 +434,7 @@
       "title": "Quel parc quel jour",
       "hint": "Touche un jour pour les horaires, les événements, les trajets et les grandes attractions.",
       "unavailable": "Le calendrier n’a pas pu être chargé. Réessaie dans quelques minutes.",
-      "sources": "Attentes et affluence : prévision park.fan du {date}. Horaires tels que les parcs les publient. Trajets : {attribution}, sans trafic.",
+      "sources": "Attentes et affluence : prévision park.fan du {date}. Horaires tels que les parcs les publient. Trajets sans trafic, données cartographiques : {attribution}.",
       "dayPlanner": "Planifier une journée de parc dans le planificateur",
       "caption": "Les parcs d’Orlando du {from} au {to} : attente aux grandes attractions au plus chargé, en minutes",
       "parkColumn": "Parc",
@@ -489,7 +489,7 @@
       "extendedEvening": "Extended Evening Hours jusqu’à {time} pour les clients des hôtels deluxe",
       "expected": "dates attendues",
       "travel": "Depuis {area} : environ {minutes} min en voiture, sans trafic",
-      "travelTransfer": "Depuis {area} : environ {minutes} min en voiture jusqu’au parking, puis environ {transfer} min en monorail ou en ferry, {total} min en tout, sans trafic",
+      "travelTransfer": "Depuis {area} : environ {minutes} min en voiture jusqu’au parking, puis environ {transfer} min {via, select, ttc {en monorail ou en ferry} other {en navette}}, {total} min en tout, sans trafic",
       "bigRides": "Les grandes attractions",
       "ridesLoading": "Chargement des attractions …",
       "ridesNone": "Pas de chiffres par attraction pour ce jour.",
@@ -576,7 +576,7 @@
       },
       "travel": {
         "title": "Comment les trajets sont-ils calculés ?",
-        "body": "Les trajets sont un parcours en voiture sans trafic selon {attribution}, jusqu’au parking. Le parking de Magic Kingdom est le Transportation and Ticket Center ; en monorail ou en ferry, il faut encore environ 15 minutes jusqu’à l’entrée."
+        "body": "Chaque trajet est un parcours en voiture sans trafic jusqu’au parking. Le parking du Magic Kingdom est le Transportation and Ticket Center, d’où le monorail ou le ferry met encore environ 15 minutes jusqu’à l’entrée. Pour Volcano Bay, tu te gares dans les parkings couverts d’Universal et tu prends la navette, environ 15 minutes de plus. Données cartographiques : {attribution}."
       },
       "links": "Le modèle derrière : <fancast>Fancast</fancast>. Tout le reste : <howto>comment fonctionne park.fan</howto>."
     },
@@ -599,7 +599,7 @@
       },
       "distance": {
         "q": "À quelle distance Universal est-il de Walt Disney World ?",
-        "a": "En voiture et sans trafic, environ {epcot} min d’Universal Studios à EPCOT, et environ {magic} min jusqu’au parking du Magic Kingdom, plus environ {transfer} min en monorail ou en ferry jusqu’à l’entrée ({total} min en tout). Trajets : {attribution}."
+        "a": "D’Universal Studios à EPCOT, il faut environ {epcot} minutes en voiture sans trafic, et environ {magic} jusqu’au parking du Magic Kingdom. De là, le monorail ou le ferry met encore environ {transfer} minutes jusqu’à l’entrée, soit {total} minutes en tout. Données cartographiques : {attribution}."
       },
       "early": {
         "q": "Ai-je besoin de l’Early Entry ?",

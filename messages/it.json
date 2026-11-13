@@ -434,7 +434,7 @@
       "title": "Quale parco in quale giorno",
       "hint": "Tocca un giorno per orari, eventi, tempi di viaggio e le grandi attrazioni.",
       "unavailable": "Non è stato possibile caricare il calendario. Riprova tra qualche minuto.",
-      "sources": "Attese e affluenza: previsione park.fan del {date}. Orari come li pubblicano i parchi. Tempi di viaggio: {attribution}, senza traffico.",
+      "sources": "Attese e affluenza: previsione park.fan del {date}. Orari come li pubblicano i parchi. Tempi di viaggio senza traffico, dati cartografici: {attribution}.",
       "dayPlanner": "Pianifica una giornata al parco nel pianificatore",
       "caption": "I parchi di Orlando dal {from} al {to}: attesa alle grandi attrazioni nell’ora di punta, in minuti",
       "parkColumn": "Parco",
@@ -489,7 +489,7 @@
       "extendedEvening": "Extended Evening Hours fino alle {time} per gli ospiti degli hotel deluxe",
       "expected": "date previste",
       "travel": "Da {area}: circa {minutes} min in auto, senza traffico",
-      "travelTransfer": "Da {area}: circa {minutes} min in auto fino al parcheggio, poi circa {transfer} min in monorotaia o traghetto, {total} min in tutto, senza traffico",
+      "travelTransfer": "Da {area}: circa {minutes} min in auto fino al parcheggio, poi circa {transfer} min {via, select, ttc {in monorotaia o traghetto} other {in navetta}}, {total} min in tutto, senza traffico",
       "bigRides": "Le grandi attrazioni",
       "ridesLoading": "Caricamento delle attrazioni …",
       "ridesNone": "Nessun dato per attrazione per questo giorno.",
@@ -576,7 +576,7 @@
       },
       "travel": {
         "title": "Come si calcolano i tempi di viaggio?",
-        "body": "I tempi di viaggio sono un tragitto in auto senza traffico secondo {attribution}, fino al parcheggio. Il parcheggio del Magic Kingdom è il Transportation and Ticket Center; da lì, in monorotaia o in traghetto, servono ancora circa 15 minuti fino all’ingresso."
+        "body": "Ogni tempo di viaggio è un tragitto in auto senza traffico fino al parcheggio. Il parcheggio del Magic Kingdom è il Transportation and Ticket Center, e da lì monorotaia o traghetto impiegano ancora circa 15 minuti fino all’ingresso. Per Volcano Bay parcheggi nei garage di Universal e prendi la navetta, circa 15 minuti in più. Dati cartografici: {attribution}."
       },
       "links": "Il modello dietro: <fancast>Fancast</fancast>. Tutto il resto: <howto>come funziona park.fan</howto>."
     },
@@ -599,7 +599,7 @@
       },
       "distance": {
         "q": "Quanto dista Universal da Walt Disney World?",
-        "a": "In auto e senza traffico, circa {epcot} min da Universal Studios a EPCOT, e circa {magic} min fino al parcheggio del Magic Kingdom, più circa {transfer} min in monorotaia o traghetto fino all’ingresso ({total} min in tutto). Tempi di viaggio: {attribution}."
+        "a": "Da Universal Studios a EPCOT sono circa {epcot} minuti in auto senza traffico, e circa {magic} fino al parcheggio del Magic Kingdom. Da lì monorotaia o traghetto impiegano ancora circa {transfer} minuti fino all’ingresso, {total} minuti in tutto. Dati cartografici: {attribution}."
       },
       "early": {
         "q": "Mi serve l’Early Entry?",

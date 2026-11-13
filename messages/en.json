@@ -434,7 +434,7 @@
       "title": "Which park on which day",
       "hint": "Tap a day for hours, events, travel times and the big rides.",
       "unavailable": "The calendar could not be loaded. Try again in a few minutes.",
-      "sources": "Waits and levels: park.fan forecast of {date}. Hours as the parks publish them. Drive times: {attribution}, without traffic.",
+      "sources": "Waits and levels: park.fan forecast of {date}. Hours as the parks publish them. Drive times without traffic, map data: {attribution}.",
       "dayPlanner": "Plan one park day in the day planner",
       "caption": "Orlando's parks, {from} to {to}: the big rides' wait at their busiest, in minutes",
       "parkColumn": "Park",
@@ -489,7 +489,7 @@
       "extendedEvening": "Extended Evening Hours until {time} for deluxe hotel guests",
       "expected": "dates expected",
       "travel": "From {area}: about {minutes} min by car, without traffic",
-      "travelTransfer": "From {area}: about {minutes} min by car to the car park, then about {transfer} min by monorail or ferry, {total} min in all, without traffic",
+      "travelTransfer": "From {area}: about {minutes} min by car to the car park, then about {transfer} min {via, select, ttc {by monorail or ferry} other {by shuttle}}, {total} min in all, without traffic",
       "bigRides": "The big rides",
       "ridesLoading": "Loading the rides …",
       "ridesNone": "No ride figures for this day.",
@@ -575,8 +575,8 @@
         "body": "How far a forecast can be off depends on how far ahead the day is. With a plan, the planner says it beside your days: \"A forecast for one ride on one day can be off by about … min.\" Waits are rounded to five minutes, so days within five minutes count as equal here, and each park's best days are a set, not a ranking."
       },
       "travel": {
-        "title": "How are the drive times measured?",
-        "body": "Drive times are a drive without traffic from {attribution}, to the car park. Magic Kingdom's car park is the Transportation and Ticket Center; the monorail or the ferry takes about another 15 minutes to the gate."
+        "title": "How are the drive times calculated?",
+        "body": "Each drive time is a drive without traffic to the car park. Magic Kingdom's car park is the Transportation and Ticket Center, and the monorail or the ferry takes about another 15 minutes to the gate. For Volcano Bay you park in Universal's garages and take the shuttle, about another 15 minutes. Map data: {attribution}."
       },
       "links": "The model behind it: <fancast>Fancast</fancast>. Everything else: <howto>how park.fan works</howto>."
     },
@@ -599,7 +599,7 @@
       },
       "distance": {
         "q": "How far is Universal from Walt Disney World?",
-        "a": "By car and without traffic, about {epcot} min from Universal Studios to EPCOT, and about {magic} min to Magic Kingdom's car park, plus about {transfer} min by monorail or ferry to the gate ({total} min in all). Drive times: {attribution}."
+        "a": "Universal Studios to EPCOT is about {epcot} minutes by car without traffic, and to Magic Kingdom's car park about {magic}. From there the monorail or the ferry takes about {transfer} minutes to the gate, {total} minutes in all. Map data: {attribution}."
       },
       "early": {
         "q": "Do I need Early Entry?",

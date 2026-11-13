@@ -434,7 +434,7 @@
       "title": "Welk park op welke dag",
       "hint": "Tik op een dag voor openingstijden, evenementen, reistijden en de grote attracties.",
       "unavailable": "De kalender kon niet worden geladen. Probeer het over een paar minuten opnieuw.",
-      "sources": "Wachttijden en drukte: park.fan-voorspelling van {date}. Openingstijden zoals de parken ze publiceren. Reistijden: {attribution}, zonder verkeer.",
+      "sources": "Wachttijden en drukte: park.fan-voorspelling van {date}. Openingstijden zoals de parken ze publiceren. Reistijden zonder verkeer, kaartgegevens: {attribution}.",
       "dayPlanner": "Plan één parkdag in de dagplanner",
       "caption": "De parken van Orlando van {from} tot {to}: wachttijd bij de grote attracties op het drukste moment, in minuten",
       "parkColumn": "Park",
@@ -489,7 +489,7 @@
       "extendedEvening": "Extended Evening Hours tot {time} voor gasten van de deluxe hotels",
       "expected": "data verwacht",
       "travel": "Vanaf {area}: ongeveer {minutes} min met de auto, zonder verkeer",
-      "travelTransfer": "Vanaf {area}: ongeveer {minutes} min met de auto naar de parkeerplaats, dan ongeveer {transfer} min met monorail of veerboot, samen {total} min, zonder verkeer",
+      "travelTransfer": "Vanaf {area}: ongeveer {minutes} min met de auto naar de parkeerplaats, dan ongeveer {transfer} min {via, select, ttc {met monorail of veerboot} other {met de pendelbus}}, samen {total} min, zonder verkeer",
       "bigRides": "De grote attracties",
       "ridesLoading": "De attracties worden geladen …",
       "ridesNone": "Geen cijfers per attractie voor deze dag.",
@@ -576,7 +576,7 @@
       },
       "travel": {
         "title": "Hoe worden de reistijden berekend?",
-        "body": "De reistijden zijn een autorit zonder verkeer volgens {attribution}, tot de parkeerplaats. De parkeerplaats van Magic Kingdom is het Transportation and Ticket Center; met de monorail of de veerboot ben je dan nog ongeveer 15 minuten onderweg naar de ingang."
+        "body": "Elke reistijd is een autorit zonder verkeer tot de parkeerplaats. De parkeerplaats van Magic Kingdom is het Transportation and Ticket Center, en van daar ben je met de monorail of de veerboot nog ongeveer 15 minuten onderweg naar de ingang. Voor Volcano Bay parkeer je in de parkeergarages van Universal en neem je nog ongeveer 15 minuten de pendelbus. Kaartgegevens: {attribution}."
       },
       "links": "Het model erachter: <fancast>Fancast</fancast>. De rest: <howto>zo werkt park.fan</howto>."
     },
@@ -599,7 +599,7 @@
       },
       "distance": {
         "q": "Hoe ver ligt Universal van Walt Disney World?",
-        "a": "Met de auto en zonder verkeer ongeveer {epcot} min van Universal Studios naar EPCOT, en ongeveer {magic} min naar de parkeerplaats van Magic Kingdom, plus ongeveer {transfer} min met monorail of veerboot naar de ingang ({total} min samen). Reistijden: {attribution}."
+        "a": "Van Universal Studios naar EPCOT rijd je zonder verkeer ongeveer {epcot} minuten, naar de parkeerplaats van Magic Kingdom ongeveer {magic}. Van daar ben je met de monorail of de veerboot nog ongeveer {transfer} minuten onderweg naar de ingang, samen {total} minuten. Kaartgegevens: {attribution}."
       },
       "early": {
         "q": "Heb ik Early Entry nodig?",

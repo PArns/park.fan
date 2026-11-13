@@ -434,7 +434,7 @@
       "title": "Qué parque qué día",
       "hint": "Toca un día para ver horarios, eventos, trayectos y las grandes atracciones.",
       "unavailable": "No se pudo cargar el calendario. Vuelve a intentarlo en unos minutos.",
-      "sources": "Esperas y afluencia: previsión de park.fan del {date}. Horarios tal como los publican los parques. Trayectos: {attribution}, sin tráfico.",
+      "sources": "Esperas y afluencia: previsión de park.fan del {date}. Horarios tal como los publican los parques. Trayectos sin tráfico, datos del mapa: {attribution}.",
       "dayPlanner": "Planificar un día de parque en el planificador",
       "caption": "Los parques de Orlando del {from} al {to}: espera en las grandes atracciones a la hora de más gente, en minutos",
       "parkColumn": "Parque",
@@ -489,7 +489,7 @@
       "extendedEvening": "Extended Evening Hours hasta las {time} para huéspedes de los hoteles deluxe",
       "expected": "fechas previstas",
       "travel": "Desde {area}: unos {minutes} min en coche, sin tráfico",
-      "travelTransfer": "Desde {area}: unos {minutes} min en coche hasta el aparcamiento, luego unos {transfer} min en monorraíl o ferri, {total} min en total, sin tráfico",
+      "travelTransfer": "Desde {area}: unos {minutes} min en coche hasta el aparcamiento, luego unos {transfer} min {via, select, ttc {en monorraíl o ferri} other {en lanzadera}}, {total} min en total, sin tráfico",
       "bigRides": "Las grandes atracciones",
       "ridesLoading": "Cargando las atracciones …",
       "ridesNone": "No hay cifras por atracción para este día.",
@@ -576,7 +576,7 @@
       },
       "travel": {
         "title": "¿Cómo se calculan los trayectos?",
-        "body": "Los trayectos son un recorrido en coche sin tráfico según {attribution}, hasta el aparcamiento. El aparcamiento de Magic Kingdom es el Transportation and Ticket Center; desde allí, en monorraíl o en ferri, quedan unos 15 minutos hasta la entrada."
+        "body": "Cada trayecto es un recorrido en coche sin tráfico hasta el aparcamiento. El aparcamiento de Magic Kingdom es el Transportation and Ticket Center, y desde allí el monorraíl o el ferri tardan unos 15 minutos más hasta la entrada. Para Volcano Bay aparcas en los aparcamientos de Universal y tomas la lanzadera, unos 15 minutos más. Datos del mapa: {attribution}."
       },
       "links": "El modelo que hay detrás: <fancast>Fancast</fancast>. Todo lo demás: <howto>cómo funciona park.fan</howto>."
     },
@@ -599,7 +599,7 @@
       },
       "distance": {
         "q": "¿A qué distancia está Universal de Walt Disney World?",
-        "a": "En coche y sin tráfico, unos {epcot} min de Universal Studios a EPCOT, y unos {magic} min hasta el aparcamiento de Magic Kingdom, más unos {transfer} min en monorraíl o ferri hasta la entrada ({total} min en total). Trayectos: {attribution}."
+        "a": "De Universal Studios a EPCOT hay unos {epcot} minutos en coche sin tráfico, y unos {magic} hasta el aparcamiento de Magic Kingdom. Desde allí, el monorraíl o el ferri tardan unos {transfer} minutos más hasta la entrada, {total} minutos en total. Datos del mapa: {attribution}."
       },
       "early": {
         "q": "¿Necesito Early Entry?",
