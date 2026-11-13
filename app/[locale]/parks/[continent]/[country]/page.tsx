@@ -22,6 +22,7 @@ import { getGuideForCountry } from '@/lib/blog/country-guide';
 import type { Locale } from '@/i18n/config';
 import type { Metadata } from 'next';
 import { RouteMessages } from '@/i18n/route-messages';
+import { TripPlannerBand } from '@/components/orlando/trip-planner-band';
 
 interface CountryPageProps {
   params: Promise<{ locale: string; continent: string; country: string }>;
@@ -173,6 +174,14 @@ export default async function CountryPage({ params }: CountryPageProps) {
             <BlogPostCard post={countryGuide} variant="compact" />
           </div>
         )}
+
+        {/* A country with parks of a trip region: one band into its planner, above the cities,
+            so sorting and filtering the cards never move it. */}
+        <TripPlannerBand
+          variant="place"
+          parks={cityParks.flatMap(({ parks }) => parks.map((park) => park.id))}
+          className="mb-8"
+        />
 
         {/* Status-free shell; live status is overlaid client-side, and all cities on the page
             share one /api/parks/live call (React Query dedupe). */}
