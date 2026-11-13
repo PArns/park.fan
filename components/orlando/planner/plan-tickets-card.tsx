@@ -130,7 +130,13 @@ function OwnedTickets({
   edit: PlanEdit;
 }) {
   const t = useTranslations('orlandoPlanner.tickets');
-  const mixing = plan.meta.mixing;
+  const { tickets: catalog } = usePlanContext();
+  const resorts = new Set(owned.map((o) => catalog.get(o.product)?.resort));
+  // The API reports mixing for any owned ticket; it is news only where Disney and Universal meet.
+  const mixing =
+    resorts.has('walt-disney-world') && resorts.has('universal-orlando')
+      ? plan.meta.mixing
+      : undefined;
   return (
     <>
       <ul className="divide-border/60 flex flex-col divide-y">

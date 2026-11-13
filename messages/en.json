@@ -3824,7 +3824,7 @@
       "hopper": {
         "worth": "Worth adding: {hopper}",
         "adds": "With {hopper}:",
-        "nothing": "{hopper} adds nothing to these days.",
+        "nothing": "These days gain nothing from {hopper}.",
         "evening": "an evening at {park} on {date}",
         "evenings": "{count} evenings at a second park",
         "hopDay": "{parks} on one day, {date}",
@@ -3887,7 +3887,7 @@
         "changeDates": "Change dates",
         "changeTicket": "Change ticket"
       },
-      "split": "{visits, plural, =2 {We added a second day at {park} to use your ticket’s days.} other {We gave {park} # days to use your ticket’s days.}}",
+      "split": "{visits, plural, =2 {We added a second day at {park}, so your ticket days get used.} other {We gave {park} # days, so your ticket days get used.}}",
       "unplaced": "{park} didn’t fit: your {resort} ticket has no day left for it.",
       "linkDropped": "{count, plural, =1 {One ticket in this link isn’t one we know; it was left out.} other {# tickets in this link aren’t ones we know; they were left out.}}",
       "hopNeedsHopper": "Park hopping only counts with Park Hopper or park-to-park. Enter your ticket under Tickets.",

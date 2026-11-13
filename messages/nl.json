@@ -3824,7 +3824,7 @@
       "hopper": {
         "worth": "Aanbevolen: {hopper}",
         "adds": "Met {hopper}:",
-        "nothing": "{hopper} voegt op deze dagen niets toe.",
+        "nothing": "Deze dagen winnen niets met {hopper}.",
         "evening": "een avond in {park} op {date}",
         "evenings": "{count} avonden in een tweede park",
         "hopDay": "{parks} op één dag, {date}",
@@ -3887,7 +3887,7 @@
         "changeDates": "Reisdata wijzigen",
         "changeTicket": "Ticket wijzigen"
       },
-      "split": "{visits, plural, =2 {We hebben {park} een tweede dag gegeven, zodat de dagen van je ticket gebruikt worden.} other {We hebben {park} # dagen gegeven, zodat de dagen van je ticket gebruikt worden.}}",
+      "split": "{visits, plural, =2 {We hebben {park} een tweede dag gegeven, zodat je ticketdagen gebruikt worden.} other {We hebben {park} # dagen gegeven, zodat je ticketdagen gebruikt worden.}}",
       "unplaced": "{park} paste niet: op je {resort}-ticket was geen dag meer vrij.",
       "linkDropped": "{count, plural, =1 {Eén ticket in deze link kennen we niet; het is weggelaten.} other {# tickets in deze link kennen we niet; ze zijn weggelaten.}}",
       "hopNeedsHopper": "Parkhoppen telt alleen met Park Hopper of park-to-park. Vul je ticket in onder Tickets.",

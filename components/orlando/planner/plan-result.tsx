@@ -10,6 +10,7 @@ import { plannerPagePark, type PlannerPagePark } from '@/lib/planner/page-park';
 import { plannerPageDay } from '@/lib/planner/page-day';
 import { plannerUi } from '@/lib/planner/ui-store';
 import { formatParkDay, formatParkDayRange } from '@/lib/utils/park-day';
+import { getListFormat } from '@/lib/utils/intl-format';
 import { PlannerPageParkBeacon } from '@/components/planner/planner-page-park-beacon';
 import { Button } from '@/components/ui/button';
 import {
@@ -281,9 +282,28 @@ function PlanAnswer({
   const eveningOf = useEveningName();
   const savings = planSavings(plan.totals);
   const reach = today ? lastYearReach(plan.days, calendar?.meta.forecastUntil, today) : null;
-  const added = autoSplit(plan.meta).map((e) =>
-    t(e.ticket ? 'tickets.split' : 'answer.split', { park: parkName(e.slug), visits: e.visits })
-  );
+  const splits = autoSplit(plan.meta);
+  // The second days owned tickets asked for read as one sentence, however many parks got one.
+  const ticketSeconds = splits
+    .filter((e) => e.ticket && e.visits === 2)
+    .map((e) => parkName(e.slug));
+  const added = [
+    ...splits
+      .filter((e) => !(e.ticket && e.visits === 2))
+      .map((e) =>
+        t(e.ticket ? 'tickets.split' : 'answer.split', { park: parkName(e.slug), visits: e.visits })
+      ),
+    ...(ticketSeconds.length > 0
+      ? [
+          t('tickets.split', {
+            park: getListFormat(locale, { style: 'long', type: 'conjunction' }).format(
+              ticketSeconds
+            ),
+            visits: 2,
+          }),
+        ]
+      : []),
+  ];
   const anyHopper =
     state.ticket === 'hopper' ||
     state.hopper.length > 0 ||

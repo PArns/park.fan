@@ -217,7 +217,10 @@ export function PlanTickets({
   const both =
     drafts.some((d) => d.resort === 'walt-disney-world') &&
     drafts.some((d) => d.resort === 'universal-orlando');
-  const hasCombo = catalog.has(DISNEY_UK_14) && UNIVERSAL_UK_14.some((id) => catalog.has(id));
+  const hasCombo =
+    catalog.has(DISNEY_UK_14) &&
+    UNIVERSAL_UK_14.some((id) => catalog.has(id)) &&
+    !(drafts.some((d) => d.entry === 'wdw-uk-14') && drafts.some((d) => d.entry === 'uor-uk-14'));
 
   return (
     <div ref={rootRef} className="flex flex-col gap-4" data-plan-tickets="">

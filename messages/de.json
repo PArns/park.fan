@@ -3824,7 +3824,7 @@
       "hopper": {
         "worth": "Empfohlen: {hopper}",
         "adds": "Mit {hopper}:",
-        "nothing": "{hopper} bringt an diesen Tagen nichts dazu.",
+        "nothing": "An diesen Tagen bringt {hopper} nichts dazu.",
         "evening": "ein Abend in {park} am {date}",
         "evenings": "{count} Abende in einem zweiten Park",
         "hopDay": "{parks} an einem Tag, {date}",
@@ -3887,7 +3887,7 @@
         "changeDates": "Reisedaten ändern",
         "changeTicket": "Ticket ändern"
       },
-      "split": "{visits, plural, =2 {Wir haben {park} einen zweiten Tag gegeben, damit die Tage deines Tickets genutzt werden.} other {Wir haben {park} # Tage gegeben, damit die Tage deines Tickets genutzt werden.}}",
+      "split": "{visits, plural, =2 {Wir haben {park} einen zweiten Tag gegeben, damit deine Ticket-Tage genutzt werden.} other {Wir haben {park} # Tage gegeben, damit deine Ticket-Tage genutzt werden.}}",
       "unplaced": "{park} hat nicht gepasst: Auf deinem {resort}-Ticket war kein Tag mehr frei.",
       "linkDropped": "{count, plural, =1 {Ein Ticket in diesem Link kennen wir nicht; es wurde weggelassen.} other {# Tickets in diesem Link kennen wir nicht; sie wurden weggelassen.}}",
       "hopNeedsHopper": "Park-Hopping zählt nur mit Park Hopper oder Park-to-Park. Trag dein Ticket unter „Tickets“ ein.",
