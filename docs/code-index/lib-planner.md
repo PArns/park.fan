@@ -280,6 +280,7 @@ How wide the desktop panel is, as an external store rather than component state:
 
 ### [`park-url.ts`](../../lib/planner/park-url.ts)
 
+- `plannerParkPath` _function_: A planned park's own page, locale-free: `/parks/<continent>/<country>/<city>/<park>`.
 - `parkGeoFromUrl` _function_: The four slugs a plan is filed under, read out of a park's URL.
 
 ### [`party.ts`](../../lib/planner/party.ts)

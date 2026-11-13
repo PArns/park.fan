@@ -153,6 +153,9 @@ trips), and the minutes are the API's travel matrix without traffic, the Magic K
   region read, since the footer is on every page.
 - The search palette's first row and the top of `/search`, for a query that names the region or a
   resort ([site search](site-search.md#a-trip-regions-planner-comes-first)).
+- The day planner's plan list (its overview and the planner page), once the plan holds a day at a
+  region park: one line per plan with those parks chosen
+  ([trip planner](trip-planner/README.md#a-plan-in-a-trip-region-leads-to-the-trip-planner)).
 - `OrlandoHomeStop` on the homepage, data-free beyond the region's park list, because the homepage
   keeps a day at the edge.
 - Parky's `plan_vacation` links `/orlando?from=…&to=…&parks=…#planner`.

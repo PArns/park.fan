@@ -222,6 +222,10 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `PlannerTripAssistant` _component_: Which park on which day, proposed from the crowd forecast. Like the fit assistant: the visitor sets the window and parks, reads a proposal, and nothing is written until "annehmen", as a whole.
 
+### [`planner-trip-region-link.tsx`](../../components/planner/planner-trip-region-link.tsx)
+
+- `PlannerTripRegionLink` _component_: One quiet line under a plan that holds a day at a trip region's park: "Several days in Orlando? Open the trip planner", with the plan's parks of that region chosen.
+
 ### [`planner-weather-rail.tsx`](../../components/planner/planner-weather-rail.tsx)
 
 - `PlannerWeatherRail` _component_: The band down the edge of the day, and what it says when you point at it.

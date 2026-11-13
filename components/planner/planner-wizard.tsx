@@ -26,6 +26,7 @@ import { getWeatherConfig } from '@/lib/utils/weather-utils';
 import { getCountryName } from '@/lib/utils/region-names';
 import { cn } from '@/lib/utils';
 import { usePlanner } from '@/lib/planner/use-planner';
+import { plannerParkPath } from '@/lib/planner/park-url';
 import { usePlannerDayFacts } from '@/lib/planner/use-day-facts';
 import { usePlanDay } from '@/lib/hooks/use-plan-day';
 import { plannerUi } from '@/lib/planner/ui-store';
@@ -438,9 +439,7 @@ export function PlannerWizard({
     onOpenChange(false);
     // The park's own page, via the localized router. `#attractions` lets the page's own
     // `useTabHashRouting` select the ride cards and scroll them under the header.
-    router.push(
-      `/parks/${park.geo.continent}/${park.geo.country}/${park.geo.city}/${park.slug}#attractions` as '/europe/germany/rust/europa-park'
-    );
+    router.push(`${plannerParkPath(park)}#attractions` as '/europe/germany/rust/europa-park');
   };
 
   /**
