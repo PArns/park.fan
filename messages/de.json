@@ -3358,7 +3358,7 @@
       "lastYear": "Diese Tage planen wir mit den gemessenen Wartezeiten des letzten Jahres. Die Prognose erreicht sie etwa am {date}.",
       "about": "etwa {minutes} Min.",
       "daysLabel": "Deine Tage",
-      "split": "{visits, plural, =2 {Wir haben {park} einen zweiten Tag gegeben.} other {Wir haben {park} # Tage gegeben.}}",
+      "split": "{parks} {count, plural, =1 {bekommt} other {bekommen}} {visits, plural, =2 {einen zweiten Tag} other {# Tage}}.",
       "hopNeedsHopper": "Park-Hopping zählt nur mit einem Park-Hopper-Ticket; wähle es unter „Feinabstimmung“."
     },
     "day": {
@@ -3888,7 +3888,7 @@
         "changeDates": "Reisedaten ändern",
         "changeTicket": "Ticket ändern"
       },
-      "split": "{visits, plural, =2 {Wir haben {park} einen zweiten Tag gegeben, damit deine Ticket-Tage genutzt werden.} other {Wir haben {park} # Tage gegeben, damit deine Ticket-Tage genutzt werden.}}",
+      "split": "{parks} {count, plural, =1 {bekommt} other {bekommen}} {visits, plural, =2 {einen zweiten Tag} other {# Tage}}, damit deine Ticket-Tage genutzt werden.",
       "unplaced": "{park} hat nicht gepasst: Auf deinem {resort}-Ticket war kein Tag mehr frei.",
       "linkDropped": "{count, plural, =1 {Ein Ticket in diesem Link kennen wir nicht; es wurde weggelassen.} other {# Tickets in diesem Link kennen wir nicht; sie wurden weggelassen.}}",
       "hopNeedsHopper": "Park-Hopping zählt nur mit Park Hopper oder Park-to-Park. Trag dein Ticket unter „Tickets“ ein.",

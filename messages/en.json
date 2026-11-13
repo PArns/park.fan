@@ -3358,7 +3358,7 @@
       "lastYear": "We plan these dates on last year’s measured crowds. The forecast reaches them around {date}.",
       "about": "about {minutes} min",
       "daysLabel": "Your days",
-      "split": "{visits, plural, =2 {We added a second day at {park}.} other {We gave {park} # days.}}",
+      "split": "{count, plural, =1 {{parks} gets} other {{parks} get}} {visits, plural, =2 {a second day} other {# days}}.",
       "hopNeedsHopper": "Park hopping only counts with a Park Hopper ticket; choose it under “Fine-tune”."
     },
     "day": {
@@ -3888,7 +3888,7 @@
         "changeDates": "Change dates",
         "changeTicket": "Change ticket"
       },
-      "split": "{visits, plural, =2 {We added a second day at {park}, so your ticket days get used.} other {We gave {park} # days, so your ticket days get used.}}",
+      "split": "{count, plural, =1 {{parks} gets} other {{parks} get}} {visits, plural, =2 {a second day} other {# days}}, so your ticket days get used.",
       "unplaced": "{park} didn’t fit: your {resort} ticket has no day left for it.",
       "linkDropped": "{count, plural, =1 {One ticket in this link isn’t one we know; it was left out.} other {# tickets in this link aren’t ones we know; they were left out.}}",
       "hopNeedsHopper": "Park hopping only counts with Park Hopper or park-to-park. Enter your ticket under Tickets.",

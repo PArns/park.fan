@@ -3358,7 +3358,7 @@
       "lastYear": "Planificamos estas fechas con la afluencia medida el año pasado. La previsión llegará a ellas hacia el {date}.",
       "about": "unos {minutes} min",
       "daysLabel": "Tus días",
-      "split": "{visits, plural, =2 {Hemos añadido un segundo día en {park}.} other {Hemos dado # días a {park}.}}",
+      "split": "{parks} {count, plural, =1 {tiene} other {tienen}} {visits, plural, =2 {un segundo día} other {# días}}.",
       "hopNeedsHopper": "El park hopping solo cuenta con una entrada Park Hopper; elígela en «Ajustes»."
     },
     "day": {
@@ -3888,7 +3888,7 @@
         "changeDates": "Cambiar fechas",
         "changeTicket": "Cambiar entrada"
       },
-      "split": "{visits, plural, =2 {Hemos añadido un segundo día en {park} para aprovechar los días de tus entradas.} other {Hemos dado # días a {park} para aprovechar los días de tus entradas.}}",
+      "split": "{parks} {count, plural, =1 {tiene} other {tienen}} {visits, plural, =2 {un segundo día} other {# días}}, para aprovechar los días de tus entradas.",
       "unplaced": "{park} no ha cabido: a tu entrada de {resort} no le queda ningún día.",
       "linkDropped": "{count, plural, =1 {Una entrada de este enlace no la conocemos; se ha quitado.} other {# entradas de este enlace no las conocemos; se han quitado.}}",
       "hopNeedsHopper": "El park hopping solo cuenta con Park Hopper o park-to-park. Añade tu entrada en Entradas.",

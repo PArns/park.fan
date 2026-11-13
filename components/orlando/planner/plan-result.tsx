@@ -282,28 +282,27 @@ function PlanAnswer({
   const eveningOf = useEveningName();
   const savings = planSavings(plan.totals);
   const reach = today ? lastYearReach(plan.days, calendar?.meta.forecastUntil, today) : null;
-  const splits = autoSplit(plan.meta);
-  // The second days owned tickets asked for read as one sentence, however many parks got one.
-  const ticketSeconds = splits
-    .filter((e) => e.ticket && e.visits === 2)
-    .map((e) => parkName(e.slug));
-  const added = [
-    ...splits
-      .filter((e) => !(e.ticket && e.visits === 2))
-      .map((e) =>
-        t(e.ticket ? 'tickets.split' : 'answer.split', { park: parkName(e.slug), visits: e.visits })
-      ),
-    ...(ticketSeconds.length > 0
-      ? [
-          t('tickets.split', {
-            park: getListFormat(locale, { style: 'long', type: 'conjunction' }).format(
-              ticketSeconds
-            ),
-            visits: 2,
-          }),
-        ]
-      : []),
-  ];
+  // One sentence per kind of split, the parks as a list: "EPCOT, Magic Kingdom and Epic Universe
+  // get a second day." A split an owned ticket asked for says why.
+  const splitGroups = new Map<string, { visits: number; ticket: boolean; parks: string[] }>();
+  for (const e of autoSplit(plan.meta)) {
+    const key = `${e.visits}:${e.ticket ? 't' : ''}`;
+    const group = splitGroups.get(key) ?? {
+      visits: e.visits,
+      ticket: Boolean(e.ticket),
+      parks: [],
+    };
+    group.parks.push(parkName(e.slug));
+    splitGroups.set(key, group);
+  }
+  const list = getListFormat(locale, { style: 'long', type: 'conjunction' });
+  const added = [...splitGroups.values()].map((g) =>
+    t(g.ticket ? 'tickets.split' : 'answer.split', {
+      parks: list.format(g.parks),
+      count: g.parks.length,
+      visits: g.visits,
+    })
+  );
   const anyHopper =
     state.ticket === 'hopper' ||
     state.hopper.length > 0 ||

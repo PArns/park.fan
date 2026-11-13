@@ -3358,7 +3358,7 @@
       "lastYear": "Deze data plannen we met de gemeten drukte van vorig jaar. De voorspelling bereikt ze rond {date}.",
       "about": "ongeveer {minutes} min.",
       "daysLabel": "Je dagen",
-      "split": "{visits, plural, =2 {We hebben {park} een tweede dag gegeven.} other {We hebben {park} # dagen gegeven.}}",
+      "split": "{parks} {count, plural, =1 {krijgt} other {krijgen}} {visits, plural, =2 {een tweede dag} other {# dagen}}.",
       "hopNeedsHopper": "Parkhoppen telt alleen met een Park Hopper-ticket; kies het onder “Verfijnen”."
     },
     "day": {
@@ -3888,7 +3888,7 @@
         "changeDates": "Reisdata wijzigen",
         "changeTicket": "Ticket wijzigen"
       },
-      "split": "{visits, plural, =2 {We hebben {park} een tweede dag gegeven, zodat je ticketdagen gebruikt worden.} other {We hebben {park} # dagen gegeven, zodat je ticketdagen gebruikt worden.}}",
+      "split": "{parks} {count, plural, =1 {krijgt} other {krijgen}} {visits, plural, =2 {een tweede dag} other {# dagen}}, zodat je ticketdagen gebruikt worden.",
       "unplaced": "{park} paste niet: op je {resort}-ticket was geen dag meer vrij.",
       "linkDropped": "{count, plural, =1 {Eén ticket in deze link kennen we niet; het is weggelaten.} other {# tickets in deze link kennen we niet; ze zijn weggelaten.}}",
       "hopNeedsHopper": "Parkhoppen telt alleen met Park Hopper of park-to-park. Vul je ticket in onder Tickets.",
