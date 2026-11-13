@@ -1,12 +1,17 @@
 /**
  * Unit tests for the header's planner band: the trip-planner regions (`lib/navigation/trip-regions.ts`),
- * the quick starts into the day planner (`lib/planner/quick-start.ts`) and the plain-click rule
- * they share with the park header's planner link (`lib/utils/plain-click.ts`).
+ * the band's data (`lib/navigation/planner-menu.ts`), the quick starts into the day planner
+ * (`lib/planner/quick-start.ts`) and the plain-click rule they share with the park header's planner
+ * link (`lib/utils/plain-click.ts`).
  *
  * The regions are a list a new region joins in one entry, and three readers take it on trust: the
- * band, the phone sheet and `pnpm check:header-links`. A quick start is a link to a park's page
- * whose plain click also names the park to the planner and asks for its wizard; a modified click
- * must stay the browser's, or "open in a new tab" would start the planner in this one.
+ * band, the phone sheet and `pnpm check:header-links`. The parks are the locale's most opened,
+ * without an entry that had no published hours ahead when the build read the geo structure
+ * (Traumatica once its Halloween run is over). A quick start is a link to a park's page whose plain
+ * click also names the park to the planner and asks for its wizard; a modified click must stay the
+ * browser's, or "open in a new tab" would start the planner in this one.
+ *
+ * Needs the generated manifests and seed (`pnpm test:unit` writes them).
  *
  * Run: pnpm test:planner-menu
  */
@@ -14,16 +19,14 @@
 import { existsSync } from 'node:fs';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { TRIP_REGIONS, tripRegion, tripRegionName } from '../lib/navigation/trip-regions.ts';
-import {
-  QUICK_START_LIMIT,
-  plannerQuickStarts,
-  quickStartClick,
-  startPlannerAt,
-} from '../lib/planner/quick-start.ts';
+import { TRIP_REGIONS, tripRegion, tripRegionText } from '../lib/navigation/trip-regions.ts';
+import { PLANNER_MENU_PARKS, getPlannerMenu } from '../lib/navigation/planner-menu.ts';
+import { MOST_READ_SEED } from '../lib/blog/most-read-seed.generated.ts';
+import { plannerQuickStarts, quickStartClick, startPlannerAt } from '../lib/planner/quick-start.ts';
 import { plannerPagePark } from '../lib/planner/page-park.ts';
 import { plannerUi } from '../lib/planner/ui-store.ts';
 import { isPlainPrimaryClick } from '../lib/utils/plain-click.ts';
+import { locales } from '../i18n/config.ts';
 
 const root = fileURLToPath(new URL('..', import.meta.url));
 let failures = 0;
@@ -44,88 +47,83 @@ test('at least one region', TRIP_REGIONS.length > 0, true);
 test('region ids are unique', new Set(TRIP_REGIONS.map((r) => r.id)).size, TRIP_REGIONS.length);
 for (const region of TRIP_REGIONS) {
   // Locale-relative: the i18n `Link` adds the prefix, and check:header-links adds it too.
-  test(
-    `${region.id}: href is locale-relative`,
-    /^\/(?!(de|en|fr|it|nl|es)\/)/.test(region.href),
-    true
-  );
+  const relative = (href) => /^\/(?!(de|en|fr|it|nl|es)\/)/.test(href);
+  test(`${region.id}: the planner link is locale-relative`, relative(region.href), true);
+  test(`${region.id}: the calendar link is locale-relative`, relative(region.calendarHref), true);
   test(
     `${region.id}: the photo is in public/`,
     existsSync(join(root, 'public', region.photo.replace(/^\//, ''))),
     true
   );
   test(`${region.id}: found by id`, tripRegion(region.id) === region, true);
+  test(`${region.id}: its facts are counts`, region.parkCount > 0 && region.maxDays > 0, true);
 }
 test(
   'Orlando opens its hub on the planner chapter',
   tripRegion('orlando')?.href,
   '/orlando#planner'
 );
-test('Orlando is Orlando in Dutch', tripRegionName(tripRegion('orlando'), 'nl'), 'Orlando');
-const japan = {
-  id: 'japan',
-  name: { en: 'Japan', de: 'Japan', fr: 'Japon', it: 'Giappone', nl: 'Japan', es: 'Japón' },
-  href: '/japan',
-  photo: '',
-};
-test('a per-locale name is the locale’s', tripRegionName(japan, 'it'), 'Giappone');
-test('an unknown locale reads English', tripRegionName(japan, 'pt'), 'Japan');
+test('Orlando is Floride in French', tripRegionText(tripRegion('orlando').area, 'fr'), 'Floride');
+test('one name for every language', tripRegionText('Orlando', 'nl'), 'Orlando');
+const japan = { en: 'Japan', de: 'Japan', fr: 'Japon', it: 'Giappone', nl: 'Japan', es: 'Japón' };
+test('a per-locale name is the locale’s', tripRegionText(japan, 'it'), 'Giappone');
+test('an unknown locale reads English', tripRegionText(japan, 'pt'), 'Japan');
+
+// ── The band's parks ─────────────────────────────────────────────────────────
+for (const locale of locales) {
+  const { parks, regions } = getPlannerMenu(locale);
+  const ended = new Set(
+    (MOST_READ_SEED.parks?.[locale] ?? [])
+      .filter((park) => park.hasHoursAhead === false)
+      .map((park) => park.href)
+  );
+  test(`${locale}: one card per region`, regions.length, TRIP_REGIONS.length);
+  test(
+    `${locale}: the region's photo resolves`,
+    regions.every((r) => r.photo !== null),
+    true
+  );
+  test(`${locale}: at most ${PLANNER_MENU_PARKS} parks`, parks.length <= PLANNER_MENU_PARKS, true);
+  test(`${locale}: some parks`, parks.length > 0, true);
+  test(
+    `${locale}: park pages only`,
+    parks.every((p) => p.href.startsWith('/parks/')),
+    true
+  );
+  test(`${locale}: no park twice`, new Set(parks.map((p) => p.href)).size, parks.length);
+  test(
+    `${locale}: nothing without hours ahead`,
+    parks.filter((p) => ended.has(p.href)).map((p) => p.slug),
+    []
+  );
+}
 
 // ── The quick starts ─────────────────────────────────────────────────────────
-const card = (slug, href, extra = {}) => ({
-  slug,
-  name: slug,
-  href,
-  city: 'City',
-  countrySlug: 'germany',
-  ...extra,
-});
-const rail = [
-  card('phantasialand', '/parks/europe/germany/bruehl/phantasialand', {
-    image: '/media/phantasialand/background-16x9.jpg?v=1',
-  }),
+const card = (slug, href) => ({ slug, name: slug, href, city: 'City', countrySlug: 'germany' });
+const starts = plannerQuickStarts([
+  card('phantasialand', '/parks/europe/germany/bruehl/phantasialand'),
   card('broken', '/parks/europe/germany'),
-  card('europa-park', '/parks/europe/germany/rust/europa-park', {
-    image: '/media/europa-park/x.jpg',
-    imagePosition: '50% 40%',
-  }),
-  ...Array.from({ length: 8 }, (_, i) =>
-    card(`park-${i}`, `/parks/europe/germany/city-${i}/park-${i}`)
-  ),
-];
-const starts = plannerQuickStarts(rail);
+  card('europa-park', '/parks/europe/germany/rust/europa-park'),
+]);
 test(
-  'the rail keeps its order',
-  starts.slice(0, 2).map((s) => s.slug),
+  'the band keeps its order',
+  starts.map((s) => s.slug),
   ['phantasialand', 'europa-park']
 );
-test(
-  'a card without geography is dropped',
-  starts.some((s) => s.slug === 'broken'),
-  false
-);
-test('at most the limit', starts.length, QUICK_START_LIMIT);
-test('a smaller limit holds', plannerQuickStarts(rail, 2).length, 2);
+test('a card without geography is dropped', starts.length, 2);
 test('the geography is the path’s', starts[0].geo, {
   continent: 'europe',
   country: 'germany',
   city: 'bruehl',
 });
-test('no photo, no image field', 'image' in starts[2], false);
-test(
-  'a photo travels with its position',
-  [starts[1].image, starts[1].imagePosition],
-  ['/media/europa-park/x.jpg', '50% 40%']
-);
-test('an empty rail starts nothing', plannerQuickStarts([]), []);
+test('an empty list starts nothing', plannerQuickStarts([]), []);
 
 // ── The open signal ──────────────────────────────────────────────────────────
 const before = plannerUi.getWizardSnapshot();
 startPlannerAt(starts[0], 'menu-park');
 test('the park is named to the planner', plannerPagePark.getSnapshot()?.slug, 'phantasialand');
-test('its photo goes along', plannerPagePark.getSnapshot()?.backgroundImage, starts[0].image);
 test('the wizard is asked for', plannerUi.getWizardSnapshot(), before + 1);
-test('the way in is the menu\u2019s park', plannerUi.getOpenSource(), 'menu-park');
+test('the way in is the menu’s park', plannerUi.getOpenSource(), 'menu-park');
 
 const click = (over = {}) => ({
   defaultPrevented: false,
