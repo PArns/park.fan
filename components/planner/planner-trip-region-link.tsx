@@ -9,12 +9,16 @@ import { linkBlockAttributes } from '@/lib/analytics/internal-link';
 import { useTripRegionLinks } from '@/lib/hooks/use-trip-region-links';
 import { findTripRegion, tripPlannerHref } from '@/lib/orlando/trip-links';
 import { plannerParkPath } from '@/lib/planner/park-url';
+import { isPlainPrimaryClick } from '@/lib/utils/plain-click';
 import type { PlannerGeo } from '@/lib/planner/types';
 
 interface PlannerTripRegionLinkProps {
   /** The plan's parks that hold a planned day (`plannedParks`). */
   parks: ReadonlyArray<{ slug: string; geo: PlannerGeo }>;
-  /** Runs on the press, before the hub opens: the phone sheet closes, which would cover it. */
+  /**
+   * Runs on a plain press, before the hub opens: the phone sheet closes, which would cover it. A
+   * press that opens a new tab leaves the sheet as it is.
+   */
   onNavigate?: () => void;
   className?: string;
 }
@@ -52,7 +56,9 @@ export function PlannerTripRegionLink({
         href={tripPlannerHref(found.region, { parks: found.parks.map((park) => park.slug) })}
         rel="nofollow"
         prefetch={false}
-        onClick={onNavigate}
+        onClick={(event) => {
+          if (isPlainPrimaryClick(event)) onNavigate?.();
+        }}
         className="text-primary-ink planner-phone:min-h-11 inline-flex items-center gap-1 font-semibold underline-offset-4 hover:underline"
       >
         {t('open')}

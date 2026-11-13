@@ -345,7 +345,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`trip-links.ts`](../../lib/orlando/trip-links.ts)
 
-- `tripRegionHubPath` _function_: The hub a region's planner lives on, or `null` for a region that has no hub yet, whose links would lead nowhere.
+- `tripRegionHubPath` _function_: The hub a region's planner lives on, from the list of regions with a planner (`TRIP_REGIONS`), or `null` for a region the API curates before its planner exists, whose links would lead nowhere.
 - `tripRegionLinks` _function_: A region answer reduced to its links, or `null` while the region has no hub.
 - `regionParksOf` _function_: The region's parks among `keys`, each a park's UUID or its locale-free path, in the region's order and each once.
 - `findTripRegion` _function_: The first region that holds one of `keys`, with the parks it holds, or `null`.

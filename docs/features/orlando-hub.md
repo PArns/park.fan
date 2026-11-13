@@ -133,7 +133,8 @@ trips), and the minutes are the API's travel matrix without traffic, the Magic K
   `components/layout/more-menu-panel.tsx`, `components/layout/header.tsx`).
 - `TripPlannerBand` (`components/orlando/trip-planner-band.tsx`), from every page about the
   region's parks into the planner. Which parks: the region route's `parks[]`, reduced by
-  `tripRegionLinks` (`lib/orlando/trip-links.ts`) and read by `getTripRegionLinks` with a 1.5 s
+  `tripRegionLinks` (`lib/orlando/trip-links.ts`, which takes the hub from `TRIP_REGIONS`, so a
+  region the API curates before its planner exists gets no links) and read by `getTripRegionLinks` with a 1.5 s
   bound, so a slow read costs the band and never the page; no slug list here. Its variants:
 
   | Variant  | Where                                       | The link                                                                                 |
@@ -148,9 +149,9 @@ trips), and the minutes are the API's travel matrix without traffic, the Magic K
   the ten-day trip). A link that carries a plan is `rel="nofollow"` and not prefetched, as the hub's
   own "Plan these dates" links are.
 
-- The footer's tools: „Reiseplaner" (en "Trip planner") beside the day planner, which the English
-  footer now calls "Day planner" as the panel does. The bare `/orlando#planner`, built without a
-  region read, since the footer is on every page.
+- The footer's tools: „Reiseplaner" (en "Trip planner") beside „Tagesplaner" ("Day planner"), the
+  first region's `href` from `TRIP_REGIONS` (`lib/navigation/trip-regions.ts`), so the footer on
+  every page spends no region read.
 - The search palette's first row and the top of `/search`, for a query that names the region or a
   resort ([site search](site-search.md#a-trip-regions-planner-comes-first)).
 - The day planner's plan list (its overview and the planner page), once the plan holds a day at a

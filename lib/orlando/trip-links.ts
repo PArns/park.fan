@@ -1,8 +1,8 @@
+import { tripRegion } from '@/lib/navigation/trip-regions';
 import { foldText } from '@/lib/utils/text-fold';
 import { shortGroupName } from './hub-data';
-import { orlandoPath } from './paths';
 import { orlandoPlannerHref, type OrlandoPlannerHrefInput } from './plan-query';
-import { ORLANDO_REGION, type TripRegion } from './types';
+import type { TripRegion } from './types';
 
 /**
  * What a page outside a trip region's hub needs to link into its planner: the region's parks, the
@@ -32,11 +32,11 @@ export interface TripRegionLinks {
 }
 
 /**
- * The hub a region's planner lives on, or `null` for a region that has no hub yet, whose links
- * would lead nowhere.
+ * The hub a region's planner lives on, from the list of regions with a planner (`TRIP_REGIONS`),
+ * or `null` for a region the API curates before its planner exists, whose links would lead nowhere.
  */
 export function tripRegionHubPath(slug: string): string | null {
-  return slug === ORLANDO_REGION ? orlandoPath() : null;
+  return tripRegion(slug)?.calendarHref ?? null;
 }
 
 /** A region answer reduced to its links, or `null` while the region has no hub. */
