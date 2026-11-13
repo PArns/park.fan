@@ -111,7 +111,7 @@ export function DatenschutzEN() {
         <p>
           In your browser's local storage we keep settings such as the color scheme, your day plan,
           your notifications, your choices on location access and on statistics, and cached results.
-          This data stays on your device. The sections on the trip planner and on push notifications
+          This data stays on your device. The sections on the day planner and on push notifications
           say which parts of it go to our server.
         </p>
         <p>
@@ -137,7 +137,7 @@ export function DatenschutzEN() {
           GDPR).
         </p>
 
-        <LegalH3>Trip planner</LegalH3>
+        <LegalH3>Day planner</LegalH3>
         <p>
           Your day plan is kept in your browser's local storage. It reaches our API server only
           while you have push notifications switched on for the plan, because the server has to know
@@ -213,7 +213,7 @@ export function DatenschutzEN() {
           (see "Sending photos"). Your browser then receives a session key from our API server,
           valid for two hours. With every question it sends api.park.fan your text, the language,
           the path of the page you are on, your time zone and the chat's ID. It also sends what you
-          have planned in the trip planner (parks, days, entries and what you entered about your
+          have planned in the day planner (parks, days, entries and what you entered about your
           group, such as the height of its shortest rider), the reminders you have set and the IDs
           of your favourites. These otherwise stay in your browser; Parky needs them to read your
           plan, reminders and favourites and to change them when you ask. It sends your location

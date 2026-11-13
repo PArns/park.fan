@@ -31,7 +31,11 @@ import { ParksMenuPanel } from '@/components/layout/parks-menu-panel';
 import { MoreMenuLinks } from '@/components/layout/more-menu-links';
 import { ORLANDO_SEGMENT, orlandoPath } from '@/lib/orlando/paths';
 import { MoreMenuPanel } from '@/components/layout/more-menu-panel';
-import { PlannerMenuPanel } from '@/components/layout/planner-menu-panel';
+import {
+  PlannerMenuPanel,
+  usePlanSummary,
+  formatPlanDay,
+} from '@/components/layout/planner-menu-panel';
 import { BlogMenuPanel } from '@/components/layout/blog-menu-panel';
 import { NewsMenuPanel } from '@/components/layout/news-menu-panel';
 import { LatestNewsCard, latestNewsFrom } from '@/components/blog/latest-news-card';
@@ -52,12 +56,16 @@ import type { NewsMenu } from '@/lib/navigation/news-menu';
 import type { MoreMenu } from '@/lib/navigation/more-menu';
 import type { PlannerMenu } from '@/lib/navigation/planner-menu';
 import { plannerQuickStarts, quickStartClick } from '@/lib/planner/quick-start';
+import { plannerUi } from '@/lib/planner/ui-store';
 import { linkBlockAttributes } from '@/lib/analytics/internal-link';
 import { trackSiteEvent } from '@/lib/analytics/site-analytics';
 
 /** Stable fallbacks, so a missing list does not defeat a panel's memo. */
 const NO_FEATURED_PARKS: FeaturedParkCard[] = [];
-const NO_PLANNER_MENU: PlannerMenu = { regions: [] };
+const NO_PLANNER_MENU: PlannerMenu = { regions: [], parks: [] };
+
+/** The quick starts the phone sheet lists, the band's first four: the sheet is a phone's column. */
+const SHEET_QUICK_STARTS = 4;
 
 /**
  * Where a transparent hero bar turns solid, and where it turns back: a band rather than one line,
@@ -109,8 +117,8 @@ interface HeaderProps {
    */
   featuredParks?: FeaturedParkCard[];
   /**
-   * The trip-planner regions of the planner menu, with names and photos resolved in the layout. Its
-   * popular parks are `featuredParks`, already here. See `lib/navigation/planner-menu.ts`.
+   * The planner menu's trip-planner regions and the parks it offers as quick starts, resolved in
+   * the layout. See `lib/navigation/planner-menu.ts`.
    */
   plannerMenu?: PlannerMenu;
 }
@@ -242,12 +250,10 @@ export function Header({
   const bestTimePath = '/' + BEST_TIME_SEGMENTS[locale as Locale];
   const howtoPath = '/' + HOWTO_SEGMENTS[locale as Locale];
   const plannerPath = '/' + PLANNER_SEGMENTS[locale as Locale];
-  // The planner menu's label, its own key so the menu can be named apart from the day planner.
+  // The planner menu's label, a verb over both planners, its own key apart from the day planner's.
   const plannerMenuLabel = t('plannerMenu');
-  const quickStarts = useMemo(
-    () => plannerQuickStarts(featuredParks ?? NO_FEATURED_PARKS),
-    [featuredParks]
-  );
+  const quickStarts = useMemo(() => plannerQuickStarts(plannerMenu.parks), [plannerMenu.parks]);
+  const plan = usePlanSummary(locale);
   // The footer's logo says the same, so the two links to the homepage have one name.
   const homeLabel = `park.fan: ${t('home')}`;
   const pathname = usePathname();
@@ -580,12 +586,12 @@ export function Header({
                 />
               </NavMenu>
             </li>
-            {/* The planner, last before the favourites, as in the phone menu: the day planner's page
-              as the trigger's link (NavMenu rule 2), and a band with the trip planner per region,
-              the day planner and the popular parks as quick starts into it. */}
+            {/* The planner, last before the favourites, as in the phone menu: a band with the trip
+              planner per region, the day planner and the popular parks as quick starts into it.
+              No `href`, like „Mehr": the entry covers two tools and has no page of its own; the
+              band carries both planners' links (NavMenu rule 2). */}
             <li>
               <NavMenu
-                href={plannerPath}
                 label={plannerMenuLabel}
                 menu="planner"
                 icon={CalendarPlus}
@@ -801,26 +807,48 @@ export function Header({
                         {t('howto')}
                       </SheetNavLink>
                     )}
-                    {/* The planner band's rows, in its order: the day planner's page first, as each
-                      hub's own page opens its disclosure, then the regions and the quick starts. */}
+                    {/* The planner band's rows: the day planner's page first, as each hub's own page
+                      opens its disclosure, this browser's plan where there is one, the quick starts,
+                      then the regions' trip planners. */}
                     <SheetDisclosure icon={CalendarPlus} label={plannerMenuLabel}>
                       <SheetSubLink href={plannerPath}>{t('dayPlanner')}</SheetSubLink>
-                      {plannerMenu.regions.length > 0 && (
-                        <SheetCaption>{t('tripPlanner')}</SheetCaption>
+                      {plan && (
+                        <button
+                          type="button"
+                          onClick={() => {
+                            setMobileMenuOpen(false);
+                            plannerUi.requestOpen('menu-plan');
+                          }}
+                          className="text-muted-foreground hover:text-foreground flex cursor-pointer items-baseline gap-2 text-left text-sm transition-colors"
+                        >
+                          <span
+                            aria-hidden="true"
+                            className="bg-primary size-1.5 shrink-0 -translate-y-0.5 rounded-full"
+                          />
+                          <span className="min-w-0 flex-1 text-pretty">
+                            {t('yourPlanAt', {
+                              park: plan.park,
+                              date: formatPlanDay(plan.date, locale),
+                            })}
+                          </span>
+                        </button>
                       )}
-                      {plannerMenu.regions.map((region) => (
-                        <SheetSubLink key={region.id} href={region.href}>
-                          {region.name}
-                        </SheetSubLink>
-                      ))}
-                      {quickStarts.length > 0 && <SheetCaption>{t('popularParks')}</SheetCaption>}
-                      {quickStarts.map((park) => (
+                      {quickStarts.length > 0 && <SheetCaption>{t('planDayIn')}</SheetCaption>}
+                      {quickStarts.slice(0, SHEET_QUICK_STARTS).map((park) => (
                         <SheetSubLink
                           key={park.href}
                           href={park.href}
                           onClick={quickStartClick(park, 'menu-park')}
                         >
                           {park.name}
+                        </SheetSubLink>
+                      ))}
+                      {plannerMenu.regions.length > 0 && (
+                        <SheetCaption>{t('tripPlanner')}</SheetCaption>
+                      )}
+                      {plannerMenu.regions.map((region) => (
+                        <SheetSubLink key={region.id} href={region.href}>
+                          {region.name}
                         </SheetSubLink>
                       ))}
                     </SheetDisclosure>

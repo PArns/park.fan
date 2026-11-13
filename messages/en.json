@@ -224,7 +224,7 @@
       "ride": {
         "kicker": "Forecast",
         "title": "Forecast: the best hour for every ride",
-        "text": "Silver Star at 10 am is a different ride from Silver Star at 2 pm. Every ride’s page has its wait as a curve through the day, measured and forecast, and the trip planner puts your rides into the hours when the lines are shortest.",
+        "text": "Silver Star at 10 am is a different ride from Silver Star at 2 pm. Every ride’s page has its wait as a curve through the day, measured and forecast, and the day planner puts your rides into the hours when the lines are shortest.",
         "link": "Plan a day",
         "alt": "The Silver Star page on a phone: the day’s measured and forecast wait times and the best times."
       }
@@ -269,7 +269,7 @@
     "api": "API Documentation",
     "impressum": "Imprint",
     "howto": "Understanding wait times",
-    "planner": "Trip planner",
+    "planner": "Day planner",
     "fancast": "Fancast",
     "parky": "Parky",
     "bestTime": "Best time to visit",
@@ -346,14 +346,24 @@
     "nearbyPark": "Nearby: {parkName}",
     "howto": "How it works",
     "howtoHint": "How to read a wait time, and where the numbers come from.",
-    "planner": "Trip planner",
-    "plannerMenu": "Trip planner",
+    "planner": "Day planner",
+    "plannerMenu": "Plan",
     "tripPlanner": "Trip planner",
-    "tripPlannerHint": "Which park on which day of your trip.",
+    "tripPlannerHint": "Which park on which day",
+    "tripParks": "{count, plural, =1 {# park} other {# parks}}",
+    "tripMaxDays": "Trips up to {days} days",
+    "planTrip": "Plan a trip",
+    "crowdCalendar": "Crowd calendar",
     "dayPlanner": "Day planner",
-    "dayPlannerHint": "Pick the rides you want and see whether they all fit in before the park closes.",
+    "dayPlannerTitle": "Plan your park day ride by ride",
+    "dayPlannerHint": "Rides on a timeline, with the forecast waits.",
+    "planDay": "Plan a day",
+    "yourPlan": "Your plan",
+    "yourPlanAt": "Your plan: {park}, {date}",
+    "plannedDays": "{count, plural, =1 {# planned day} other {# planned days}}",
     "openMyPlan": "Open my plan",
-    "quickStartHint": "Starts the day planner at the park you pick.",
+    "newDay": "New day",
+    "planDayIn": "Plan a day at",
     "glossary": "Dictionary",
     "glossaryHint": "Queue and roller coaster terms, explained.",
     "blog": "Guides",
@@ -1429,7 +1439,7 @@
       "blockerPast": "This day is in the past.",
       "blockerNoForecast": "There is no forecast for this day yet.",
       "resultUnavailable": "Neither of these two days can be compared.",
-      "beyondPlanner": "The trip planner does not reach this day yet."
+      "beyondPlanner": "The day planner does not reach this day yet."
     },
     "overview": {
       "minutesUnit": "min"
@@ -3093,7 +3103,7 @@
     },
     "page": {
       "title": "Plan your park day ride by ride",
-      "lead": "Say which rides you want. With the forecast waits in place, you’ll see whether they all fit in before the park closes. The trip planner is free, stays in your browser and needs no account.",
+      "lead": "Say which rides you want. With the forecast waits in place, you’ll see whether they all fit in before the park closes. The day planner is free, stays in your browser and needs no account.",
       "metaTitle": "Theme park day planner: plan around wait times | park.fan",
       "metaDescription": "Plan a theme park day against the forecast wait times: rides on a timeline, shows and breaks in between, and a flag on every ride your child is too short for.",
       "yourPlans": "{count, plural, one {One planned day} other {# planned days}}",
@@ -3203,7 +3213,7 @@
     "shared": {
       "metaTitle": "Shared plan | park.fan",
       "title": "Shared plan",
-      "subtitle": "Someone sent you a plan from the trip planner.",
+      "subtitle": "Someone sent you a plan from the day planner.",
       "loading": "Loading the plan…",
       "missing": "There is no plan behind this link. It may have been copied incompletely or have expired, or the sender turned notifications off, which deletes the plan.",
       "failed": "The plan couldn’t be loaded just now.",
@@ -4000,10 +4010,10 @@
           "label": "recalculated"
         }
       },
-      "action": "Open the trip planner",
+      "action": "Open the day planner",
       "next": {
         "title": "Found your day?",
-        "body": "In the trip planner you pick the rides you want, and the forecast waits show whether they all fit in before the park closes. How well the crowd calendar’s forecasts did over the last 30 days is on the Fancast page."
+        "body": "In the day planner you pick the rides you want, and the forecast waits show whether they all fit in before the park closes. How well the crowd calendar’s forecasts did over the last 30 days is on the Fancast page."
       }
     },
     "contribute": {
@@ -4016,7 +4026,7 @@
       "kicker": "park.fan · glossary"
     },
     "planner": {
-      "kicker": "park.fan · trip planner",
+      "kicker": "park.fan · day planner",
       "action": "Plan a day",
       "next": {
         "title": "No date yet?",
@@ -4418,7 +4428,7 @@
       "title": "What next?",
       "ask": "Ask Parky",
       "askDescription": "At the bottom right, right here on this page.",
-      "planner": "Go to the trip planner",
+      "planner": "Go to the day planner",
       "plannerDescription": "Plan your park day yourself, ride by ride.",
       "parks": "All parks",
       "parksDescription": "Wait times and forecasts for every park."
