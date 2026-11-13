@@ -26,8 +26,7 @@ coverImage:
 seo:
   title: 'Planificador de viajes a Orlando: ¿qué parque qué día?'
   description: >-
-    Cada uno de tus parques de Orlando en el día con las colas más cortas. Un día con noche de
-    fiesta, en que hay que salir a las 18:00, cuenta como un día corto.
+    Cada uno de tus parques de Orlando en su día de colas más cortas. Un día con noche de fiesta, en que hay que salir a las 18:00, cuenta como día corto.
   keywords:
     - planificador de viajes Orlando
     - qué parque de Orlando qué día

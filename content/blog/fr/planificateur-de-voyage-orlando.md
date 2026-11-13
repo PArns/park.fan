@@ -26,8 +26,7 @@ coverImage:
 seo:
   title: 'Planificateur de voyage Orlando : quel parc, quel jour ?'
   description: >-
-    Chacun de tes parcs d’Orlando le jour où les files sont les plus courtes. Un jour de soirée
-    spéciale, où il faut partir à 18 h, compte comme une journée courte.
+    Chacun de tes parcs d’Orlando le jour aux files les plus courtes. Un jour de soirée spéciale, où il faut partir à 18 h, compte comme journée courte.
   keywords:
     - planificateur de voyage Orlando
     - quel parc d’Orlando quel jour

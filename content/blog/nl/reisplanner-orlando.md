@@ -26,8 +26,7 @@ coverImage:
 seo:
   title: 'Reisplanner Orlando: welk park op welke dag?'
   description: >-
-    Elk van je parken in Orlando op de dag met de kortste wachtrijen. Een dag met een feestavond,
-    waarop dagbezoekers om 18 uur weg moeten, telt als een korte dag.
+    Elk van je parken in Orlando op de dag met de kortste rijen. Een dag waarop dagbezoekers om 18 uur weg moeten voor een feest, telt als korte dag.
   keywords:
     - reisplanner Orlando
     - welk park in Orlando op welke dag
