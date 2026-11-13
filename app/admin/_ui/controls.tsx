@@ -1,7 +1,7 @@
 'use client';
 
 import { useId, useState, type ComponentProps, type ReactNode } from 'react';
-import { Check, ChevronDown } from 'lucide-react';
+import { ArrowDown, ArrowUp, Check, ChevronDown, ExternalLink } from 'lucide-react';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import {
   Command,
@@ -113,6 +113,150 @@ export function OtpInput({
       onChange={(event) => onValueChange(normalizeTotpCode(event.target.value))}
       {...props}
     />
+  );
+}
+
+/**
+ * A url field with a button that opens the address in a new tab, for the one check a form cannot
+ * do: whether the address is the right one. A link nobody opened is how a page ends up pointing at
+ * a parked domain.
+ */
+export function UrlInput({
+  value,
+  className,
+  ...props
+}: Omit<ComponentProps<'input'>, 'value' | 'type'> & { value: string }) {
+  const href = /^https?:\/\//i.test(value.trim()) ? value.trim() : null;
+  return (
+    <div className={cn('flex items-center gap-2', className)}>
+      <TextInput type="url" value={value} {...props} />
+      <a
+        href={href ?? undefined}
+        target="_blank"
+        rel="noreferrer noopener"
+        aria-disabled={href ? undefined : true}
+        className={cn(
+          'text-muted-foreground hover:text-foreground shrink-0 rounded-md border p-1.5 transition-colors max-sm:p-3',
+          !href && 'pointer-events-none opacity-30'
+        )}
+        title="Adresse öffnen"
+      >
+        <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
+        <span className="sr-only">Adresse öffnen</span>
+      </a>
+    </div>
+  );
+}
+
+/**
+ * Several values picked from a short list, each a chip that is pressed or not: a product's parks,
+ * its markets, a link's languages. A picked value the list does not offer stays as a red chip to
+ * take off, so a choice that became invalid is seen rather than dropped.
+ */
+export function ToggleChips<T extends string>({
+  label,
+  options,
+  value,
+  onChange,
+  disabled,
+}: {
+  /** Names the group for a screen reader. */
+  label: string;
+  options: readonly { value: T; label: string; title?: string }[];
+  value: readonly T[];
+  onChange: (value: T[]) => void;
+  disabled?: boolean;
+}) {
+  const offered = new Set(options.map((option) => option.value));
+  const stray = value.filter((picked) => !offered.has(picked));
+  const toggle = (picked: T) =>
+    onChange(
+      value.includes(picked)
+        ? value.filter((other) => other !== picked)
+        : // In the list's order, so the saved value does not depend on the order of the clicks.
+          options.map((option) => option.value).filter((v) => v === picked || value.includes(v))
+    );
+  return (
+    <div role="group" aria-label={label} className="flex flex-wrap gap-1.5">
+      {options.map((option) => {
+        const pressed = value.includes(option.value);
+        return (
+          <button
+            key={option.value}
+            type="button"
+            aria-pressed={pressed}
+            title={option.title}
+            disabled={disabled}
+            onClick={() => toggle(option.value)}
+            className={cn(
+              'min-h-9 rounded-lg border px-2.5 text-xs font-medium transition-colors disabled:opacity-50 sm:min-h-7',
+              pressed
+                ? 'border-primary/40 bg-primary/15 text-primary'
+                : 'text-muted-foreground hover:text-foreground border-white/[0.09]'
+            )}
+          >
+            {option.label}
+          </button>
+        );
+      })}
+      {stray.map((picked) => (
+        <button
+          key={picked}
+          type="button"
+          aria-pressed
+          disabled={disabled}
+          onClick={() => onChange(value.filter((other) => other !== picked))}
+          title="Nicht mehr in der Auswahl: zum Entfernen drücken"
+          className="border-destructive/40 bg-destructive/10 text-destructive min-h-9 rounded-lg border px-2.5 text-xs font-medium line-through disabled:opacity-50 sm:min-h-7"
+        >
+          {picked}
+        </button>
+      ))}
+    </div>
+  );
+}
+
+/**
+ * Up and down for one entry of an ordered list, each named after the entry for a screen reader.
+ * A disabled direction stays in place, so the buttons of the next row line up.
+ */
+export function MoveButtons({
+  name,
+  onUp,
+  onDown,
+  disabled,
+}: {
+  /** What moves, as a screen reader names the buttons: „{name} nach oben“. */
+  name: string;
+  /** Null at the top of the list. */
+  onUp: (() => void) | null;
+  /** Null at the end of the list. */
+  onDown: (() => void) | null;
+  disabled?: boolean;
+}) {
+  const button =
+    'text-muted-foreground hover:text-foreground rounded p-1.5 disabled:opacity-30 max-sm:p-3';
+  return (
+    <>
+      <button
+        type="button"
+        onClick={onUp ?? undefined}
+        disabled={disabled || !onUp}
+        aria-label={`${name} nach oben`}
+        className={button}
+      >
+        <ArrowUp className="h-3.5 w-3.5" aria-hidden />
+      </button>
+      <button
+        type="button"
+        onClick={onDown ?? undefined}
+        disabled={disabled || !onDown}
+        aria-label={`${name} nach unten`}
+        className={button}
+      >
+        <ArrowDown className="h-3.5 w-3.5" aria-hidden />
+      </button>
+    </>
   );
 }
 

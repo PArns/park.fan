@@ -118,6 +118,11 @@ by hand: change the comment in the code and re-run the script. -->
 - `hostProp` _function_: A link's host without `www.`, or `unknown` for a url that is none.
 - `ticketModeOf` _function_: Which tickets a plan was made with, from the plan's own tickets and suggestions.
 - `ticketLinkClickProps` _function_: `ticket_link_clicked` for one link of the list a visitor saw, `index` 0-based in that list.
+- `tripDaysBucket` _function_: A trip's length as a bucket, arrival and departure included.
+- `tripPlanRequestProps` _function_: `trip_plan_requested` from the request's own query, the API's names: what the visitor decided, never the dates themselves. `parks` 0 is the headliners, the API's default.
+- `tripPlanShownProps` _function_: `trip_plan_shown` for a plan on screen: ok, or relaxed with the rule, and what it left out.
+- `tripWhenShownProps` _function_: `trip_plan_shown` for a search's answer, with the windows it found.
+- `tripPlanFailedProps` _function_: `trip_plan_shown` for a request that failed, with its status (0: no answer at all).
 
 ### [`plan-copy.ts`](../../lib/orlando/plan-copy.ts)
 

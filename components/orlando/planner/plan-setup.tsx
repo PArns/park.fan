@@ -132,7 +132,7 @@ export function PlanSetup({
         <Button
           className="w-full"
           onClick={() => {
-            if (ticketStep.answer === 'unasked') ticketStep.answerNo();
+            if (ticketStep.answer === 'unasked') ticketStep.answerNo(true);
             open('dates');
           }}
         >

@@ -2,9 +2,13 @@ import type {
   TicketLinkKind,
   TicketLinkSurface,
   TicketMode,
+  TripDaysBucket,
   SiteEventMap,
 } from '@/lib/analytics/site-analytics';
-import type { TicketLink } from './types';
+import { daysBetween } from '@/lib/utils/park-day';
+import { DEFAULT_FIND_DAYS } from './plan-query';
+import type { TripPlan } from './plan';
+import type { TicketLink, TripWhen } from './types';
 
 /**
  * The Orlando planner's events as our own statistic counts them: the properties each event
@@ -61,4 +65,75 @@ export function ticketLinkClickProps(input: {
     surface: input.surface,
     ticket_mode: input.ticketMode,
   };
+}
+
+/** A trip's length as a bucket, arrival and departure included. */
+export function tripDaysBucket(days: number): TripDaysBucket {
+  if (days <= 4) return '1-4';
+  if (days <= 7) return '5-7';
+  if (days <= 10) return '8-10';
+  return days <= 14 ? '11-14' : '15-21';
+}
+
+/**
+ * `trip_plan_requested` from the request's own query, the API's names: what the visitor decided,
+ * never the dates themselves. `parks` 0 is the headliners, the API's default.
+ */
+export function tripPlanRequestProps(
+  query: Readonly<Record<string, string>>,
+  mode: 'dates' | 'when'
+): SiteEventMap['trip_plan_requested'] {
+  const days =
+    mode === 'when'
+      ? Number(query.days ?? DEFAULT_FIND_DAYS)
+      : query.from && query.to
+        ? daysBetween(query.from, query.to) + 1
+        : 0;
+  const hopper = query.ticket === 'hopper' ? ['all'] : (query.hopper ?? '').split(',');
+  const disney = hopper.includes('all') || hopper.includes('walt-disney-world');
+  const universal = hopper.includes('all') || hopper.includes('universal-orlando');
+  return {
+    mode,
+    days: tripDaysBucket(days),
+    parks: query.parks ? query.parks.split(',').length : 0,
+    tickets: query.tickets ? 'owned' : 'none',
+    hopper: disney && universal ? 'both' : disney ? 'disney' : universal ? 'universal' : 'none',
+    blocks: query.blocks === '1' ? 'on' : query.blocks === '0' ? 'off' : 'default',
+    rest: query.rest === 'none' ? 'none' : query.rest?.startsWith('max:') ? 'max' : 'auto',
+  };
+}
+
+/** The rules a plan loosened, the one that weighs most first: a day outside its ticket. */
+const RELAXED: ReadonlyArray<[string, 'ticket_window' | 'blocks' | 'streak']> = [
+  ['ticket_window_relaxed', 'ticket_window'],
+  ['blocks_relaxed', 'blocks'],
+  ['streak_relaxed', 'streak'],
+];
+
+/** `trip_plan_shown` for a plan on screen: ok, or relaxed with the rule, and what it left out. */
+export function tripPlanShownProps(
+  plan: Pick<TripPlan, 'meta' | 'unplaced'>
+): SiteEventMap['trip_plan_shown'] {
+  const relaxed = RELAXED.find(([code]) => plan.meta.relaxed?.includes(code))?.[1];
+  return {
+    mode: 'dates',
+    outcome: relaxed ? 'relaxed' : 'ok',
+    ...(relaxed && { relaxed }),
+    unplaced: plan.unplaced.length,
+  };
+}
+
+/** `trip_plan_shown` for a search's answer, with the windows it found. */
+export function tripWhenShownProps(
+  when: Pick<TripWhen, 'windows'>
+): SiteEventMap['trip_plan_shown'] {
+  return { mode: 'when', outcome: 'ok', windows: when.windows.length };
+}
+
+/** `trip_plan_shown` for a request that failed, with its status (0: no answer at all). */
+export function tripPlanFailedProps(
+  status: number | undefined,
+  mode: 'dates' | 'when'
+): SiteEventMap['trip_plan_shown'] {
+  return { mode, outcome: 'error', status: status ?? 0 };
 }

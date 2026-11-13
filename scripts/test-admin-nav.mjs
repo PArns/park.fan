@@ -36,6 +36,13 @@ test('the longest match still wins, and covers place foreign routes', () => {
   assert.equal(activeNavItem('/admin')?.href, '/admin');
 });
 
+test('the ticket catalog sits with the editors, after the seasons, for every role', () => {
+  const curate = visibleGroups('viewer').find((group) => group.label === 'Kuratieren');
+  const hrefs = curate.items.map((item) => item.href);
+  assert.equal(hrefs.indexOf('/admin/tickets'), hrefs.indexOf('/admin/seasons') + 1);
+  assert.equal(activeNavItem('/admin/tickets')?.label, 'Tickets');
+});
+
 test('the role filter hides entries at every depth', () => {
   const viewer = hrefs(visibleGroups('viewer'));
   assert.ok(!viewer.includes('/admin/actions'));

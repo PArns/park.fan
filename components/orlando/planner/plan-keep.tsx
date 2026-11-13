@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { CalendarArrowDown, CalendarPlus, Check, Link2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { trackSiteEvent } from '@/lib/analytics/site-analytics';
 import { plannerStore } from '@/lib/planner/store';
 import { reserveDays } from '@/lib/planner/actions';
 import { plannerUi } from '@/lib/planner/ui-store';
@@ -40,6 +41,7 @@ export function PlanKeep({
     const days = reserveTripDays(plan, region.parks);
     if (days.length === 0) return;
     plannerStore.update((s) => reserveDays(s, days));
+    trackSiteEvent('trip_days_saved', { days: days.length });
     setAdded(days.length);
   };
 
@@ -72,6 +74,7 @@ export function PlanKeep({
           url,
         };
       });
+    trackSiteEvent('trip_ics_exported', { days: events.length });
     const file = buildTripIcs(events, {
       now: Date.now(),
       calendarName: t('ics.calendarName', {
@@ -91,6 +94,7 @@ export function PlanKeep({
 
   const copy = async () => {
     const url = shareUrl();
+    trackSiteEvent('trip_link_copied');
     try {
       await navigator.clipboard.writeText(url);
       setLink('copied');
