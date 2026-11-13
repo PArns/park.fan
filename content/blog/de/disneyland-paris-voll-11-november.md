@@ -7,7 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Am Feiertag, dem 11. November, waren beide Parks von Disneyland Paris voll. Hinein kam nur, wer ein Ticket und für den Tag eine Reservierung hatte. In den Warteschlangen war es nach unseren Messungen so voll wie an den Herbstferientagen Ende Oktober.
+  Am Feiertag, dem 11. November, waren beide Parks von Disneyland Paris voll. Hinein kam nur, wer schon ein Ticket für den Tag oder eine Reservierung hatte. An den Bahnen stand man nach unseren Messungen ähnlich lange an wie an den Herbstferientagen Ende Oktober.
 tags:
   - news
   - disneyland-paris
@@ -35,15 +35,15 @@ seo:
     - Disneyland Paris Silvester Ticket
 ---
 
-Am Mittwoch, dem 11. November, waren beide Parks von Disneyland Paris voll, der [Disneyland Park](ref:/parks/europe/france/paris/disneyland-park) und die [Disney Adventure World](ref:disney-adventure-world). Der Waffenstillstandstag ist in Frankreich ein Feiertag, in Belgien auch, und offenbar hatten viele Familien dieselbe Idee. Am Eingang stand auf Französisch und Englisch „Parcs complets – sauf avec billet et réservation“, also kein Einlass mehr ohne Ticket und Reservierung. Ein Foto davon hat die Fanseite DLP Report am Mittwoch auf X veröffentlicht. Geschlossen waren die Parks deshalb nicht, beide hatten bis 22 Uhr geöffnet, eine Stunde länger als am Dienstag und am Donnerstag. Wie viele Gäste am Eingang umkehren mussten, hat Disneyland Paris nicht bekannt gegeben.
+Am Mittwoch, dem 11. November, waren beide Parks von Disneyland Paris voll, der [Disneyland Park](ref:/parks/europe/france/paris/disneyland-park) und die [Disney Adventure World](ref:disney-adventure-world). Der Waffenstillstandstag ist in Frankreich ein Feiertag, in Belgien auch, und so hatten Familien aus zwei Ländern mitten in der Woche frei. Am Eingang stand auf Französisch und Englisch „Parcs complets – sauf avec billet et réservation“, also kein Einlass mehr ohne Ticket und Reservierung. Ein Foto davon hat die Fanseite DLP Report am Mittwoch auf X veröffentlicht. Geöffnet hatten beide Parks bis 22 Uhr, eine Stunde länger als am Dienstag und am Donnerstag. Wie viele Gäste am Eingang umkehren mussten, hat Disneyland Paris nicht bekannt gegeben.
 
 ## Wie voll die erste Weihnachtswoche war
 
 Die Weihnachtssaison hat am Samstag, dem 7. November, begonnen, und einen vollen Park hat DLP Report nur für den Feiertag gemeldet. In unserem Kalender steht der Disneyland Park in dieser ersten Woche an zwei Tagen auf „Hoch“, am Eröffnungssamstag und am Feiertag. Am Montag und Dienstag dazwischen lag er auf „Niedrig“.
 
-„Hoch“ heißt bei uns, dass an den großen Bahnen spürbar länger angestanden wird als an einem typischen Tag des Parks. Darüber gibt es noch „Sehr hoch“ und „Extrem“, und dort stand der Disneyland Park in diesem Jahr an keinem einzigen Tag. Von Januar bis zum 12. November sind es 68 Tage auf „Hoch“, und der Feiertag ist einer davon, genau wie die fünf Tage vom 27. bis 31. Oktober in den französischen Herbstferien. Die Disney Adventure World lag am Feiertag sogar auf „Normal“.
+„Hoch“ heißt bei uns, dass an den großen Bahnen spürbar länger angestanden wird als an einem typischen Tag des Parks. Darüber gibt es noch „Sehr hoch“ und „Extrem“, und dort stand der Disneyland Park in diesem Jahr an keinem einzigen Tag. Von Januar bis zum 12. November kommt er auf 68 Tage mit „Hoch“, darunter die fünf Tage vom 27. bis 31. Oktober in den französischen Herbstferien. An den Bahnen war der Feiertag damit ungefähr so besonders wie der Mittwoch in den Herbstferien zwei Wochen davor. Die Disney Adventure World lag am Feiertag nur auf „Normal“, obwohl auch sie niemanden ohne Ticket und Reservierung mehr hineinließ.
 
-Für mich heißt das: An so einem Tag entscheidet sich am Eingang, wie dein Besuch läuft. Wer drin ist, steht ungefähr so lange an wie in den Herbstferien.
+An so einem Tag würde ich mir deshalb weniger Sorgen um die Warteschlangen machen als um das eigene Ticket. Mit dem falschen kam man am 11. November gar nicht erst bis zu den Bahnen.
 
 ## Mit welchem Ticket du an vollen Tagen hineinkommst
 
@@ -55,13 +55,13 @@ Ohne Reservierung kommst du an einem vollen Tag hinein mit
 
 Ein undatiertes Ticket gilt ein Jahr ab Kauf, aber nie am 14. Juli, am 31. Oktober und am 31. Dezember. Den Besuchstag registrierst du online, solange es für ihn noch Plätze gibt. Bis 10 Uhr am Besuchstag kannst du die Reservierung stornieren und einen anderen Tag nehmen. Mit dem Disneyland Pass, der Jahreskarte, registrierst du deine Besuchstage genauso, bis zu drei gleichzeitig.
 
-An der Kasse am Eingang verkauft Disneyland Paris nur noch in Ausnahmen, gegen Bargeld, Chèques-Vacances oder Geschenkkarten, und nur, solange der Park nicht ausgelastet ist. Sobald am 11. November die Parks voll waren, gab es dort also nichts mehr zu kaufen.
+An der Kasse am Eingang verkauft Disneyland Paris nur noch in Ausnahmen, gegen Bargeld, Chèques-Vacances oder Geschenkkarten, und nur, solange der Park nicht ausgelastet ist. Wer am 11. November erst am Eingang ein Ticket kaufen wollte, hatte ab dem Moment, in dem die Parks voll waren, keine Chance mehr.
 
 ## Weihnachten und Silvester
 
-Die Weihnachtssaison läuft bis zum 6. Januar. Parade, Weihnachtsbaum und das erste Weihnachten in World of Frozen beschreiben wir in unserem Beitrag zu [Weihnachten und Silvester in Paris und Orlando](/blog/weihnachten-silvester-orlando-paris-2026). Die nächsten Feiertage in Frankreich sind Freitag, der 25. Dezember, und Freitag, der 1. Januar. Die französischen Weihnachtsferien beginnen am Samstag, dem 19. Dezember, und die Schule fängt am Montag, dem 4. Januar, wieder an. An Silvester haben beide Parks bis 1 Uhr nachts geöffnet. Ein undatiertes Ticket gilt an diesem Tag gar nicht, da hilft auch kein Wecker um sechs.
+Die Weihnachtssaison läuft bis zum 6. Januar. Parade, Weihnachtsbaum und das erste Weihnachten in World of Frozen beschreiben wir in unserem Beitrag zu [Weihnachten und Silvester in Paris und Orlando](/blog/weihnachten-silvester-orlando-paris-2026). Die nächsten Feiertage in Frankreich sind Freitag, der 25. Dezember, und Freitag, der 1. Januar. Die französischen Weihnachtsferien beginnen am Samstag, dem 19. Dezember, und die Schule fängt am Montag, dem 4. Januar, wieder an. An Silvester haben beide Parks bis 1 Uhr nachts geöffnet, für ein undatiertes Ticket aber keine Minute davon.
 
-Willst du mit einem undatierten Ticket oder der Jahreskarte in den Ferien kommen, registriere den Tag jetzt. Hast du noch kein Ticket, nimm für einen Ferientag ein datiertes, dann ist der Einlass mit dem Kauf erledigt.
+Mit undatiertem Ticket oder Jahreskarte würde ich den Ferientag jetzt registrieren, solange es noch Plätze gibt. Ohne Ticket nimmst du für die Ferien am besten gleich ein datiertes, dann ist der Einlass mit dem Kauf erledigt.
 
 ```best-days-widget slug=/parks/europe/france/paris/disneyland-park
 
