@@ -1432,6 +1432,13 @@
       "since": "desde {month}"
     }
   },
+  "winterBreak": {
+    "label": "Cierre invernal",
+    "reopensPark": "Reabre el <date>{day}</date>",
+    "reopensRide": "El parque reabre el <date>{day}</date>",
+    "park": "Hasta entonces, todas las atracciones siguen cerradas y Parky hiberna.",
+    "ride": "Hasta entonces, {ride} tampoco funciona y Parky hiberna."
+  },
   "attractions": {
     "blogPosts": {
       "title": "{ride} en el blog",

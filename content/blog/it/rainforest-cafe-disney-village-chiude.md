@@ -18,6 +18,11 @@ category: news
 parkLinks:
   - /parks/europe/france/paris/disneyland-park
   - disney-adventure-world
+coverImage:
+  src: /media/disneyland-park/background.jpg
+  alt: 'Il castello della Bella Addormentata, rosa e blu, sul basamento roccioso, con prato e alberi potati davanti.'
+  caption: 'Il castello della Bella Addormentata nel Disneyland Park. Il Rainforest Café è fuori dai parchi, nel Disney Village, dove non serve il biglietto.'
+  credit: 'Patrick Arns'
 seo:
   title: 'Rainforest Café di Disneyland Paris chiude il 15 novembre'
   description: >-

@@ -20,6 +20,11 @@ parkLinks:
   - /parks/europe/france/paris/disneyland-park
 rideLinks:
   - /parks/europe/france/paris/disneyland-park/indiana-jones-and-the-temple-of-peril
+coverImage:
+  src: /media/disneyland-park/background.jpg
+  alt: 'Il castello della Bella Addormentata, rosa e blu, sul basamento roccioso, con prato e alberi potati davanti.'
+  caption: 'Il castello della Bella Addormentata nel Disneyland Park. Le montagne russe di Indiana Jones, in Adventureland, chiudono per diversi mesi dal 4 gennaio.'
+  credit: 'Patrick Arns'
 seo:
   title: 'Disneyland Paris rinnova Indiana Jones da gennaio 2027'
   description: >-

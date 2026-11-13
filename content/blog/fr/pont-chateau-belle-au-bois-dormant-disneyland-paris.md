@@ -19,6 +19,11 @@ parkLinks:
   - /parks/europe/france/paris/disneyland-park
 rideLinks:
   - /parks/europe/france/paris/disneyland-park/*
+coverImage:
+  src: /media/disneyland-park/background.jpg
+  alt: 'Le château de la Belle au bois dormant, rose et bleu, sur son socle rocheux, pelouse et arbres taillés devant.'
+  caption: 'Le château de la Belle au bois dormant, au Parc Disneyland. La rose des vents du pont, devant, reprend les couleurs des trois bonnes fées.'
+  credit: 'Patrick Arns'
 seo:
   title: 'Pont du Château de la Belle au Bois Dormant rénové'
   description: >-

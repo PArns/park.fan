@@ -20,6 +20,11 @@ parkLinks:
   - /parks/europe/france/paris/disneyland-park
 rideLinks:
   - /parks/europe/france/paris/disneyland-park/indiana-jones-and-the-temple-of-peril
+coverImage:
+  src: /media/disneyland-park/background.jpg
+  alt: 'Das rosa-blaue Dornröschenschloss auf einem Felssockel, davor Wiese und beschnittene Bäume.'
+  caption: 'Das Dornröschenschloss im Disneyland Park. Die Achterbahn Indiana Jones in Adventureland schließt ab dem 4. Januar für mehrere Monate.'
+  credit: 'Patrick Arns'
 seo:
   title: 'Disneyland Paris renoviert Indiana Jones ab Januar 2027'
   description: >-

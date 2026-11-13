@@ -58,6 +58,13 @@ by hand: change the comment in the code and re-run the script. -->
 - `heartRed` _const_: The red of a heart.
 - `gold` _const_: Warm gold for stars, sparkles and lit windows.
 - `CABIN_COLOURS` _const_: The Ferris wheel's cabins in turn, and confetti in the same colours.
+- `BUBBLE` _const_: Parky's body: a round speech bubble with its tail at the lower left.
+- `SHUT_EYES` _const_: Both eyes shut, two arcs bowed down: asleep, or in a nap.
+- `SMILE` _const_: The smile Parky wears whenever nothing else takes the mouth.
+- `ZED` _const_: One Z of his sleep, over the bubble's top left.
+- `CHEEKS` _const_: The rosy cheeks' centres on the x axis; both sit at y 31.
+- `blush` _const_: The cheeks' blush.
+- `MOON` _const_: A crescent moon about 9 units across, over the top left: the lights at night, a winter's nap.
 - `STAR` _const_: A four-pointed star at the centre of the orbit dizzy stars run round, above the left eye.
 - `HEART` _const_: A heart about 10 units wide round the origin, for heart eyes and the ones floating up.
 - `GRIN` _const_: The open grin of a ride or a cheer, in place of the smile.
@@ -84,12 +91,15 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`parky/looks.tsx`](../../components/assistant/parky/looks.tsx)
 
-- `ParkyLookHat` _component_: The season's hat, drawn in the Ferris wheel's place and, like it, behind the head.
+- `ParkyLookHat` _component_: The season's hat, drawn in the Ferris wheel's place and, like it, behind the head. `still` keeps the pompom from bobbing, for a drawing inside a glass panel, which no endless animation may run in.
 - `ParkyLookWear` _component_: The pieces Parky wears under his face, drawn right after the bubble: the scarf, the woolly hat's brim, the umbrella, the sweat of a hot day.
 - `ParkyLookFog` _component_: Fog drifting in front of Parky's lower half, below the mouth.
+- `ParkySnowman` _component_: The snowman Parky builds beside him: three snowballs stacked, coal eyes and buttons, the carrot nose last and a tiny Ferris wheel for a hat, then he melts away. `still` draws him finished and keeps him, for a picture rather than an act.
 - `ParkyLookBack` _component_: What stands behind Parky: the weather round him and the scenes of the acts that go beyond him (the ghost, the fireworks, the snowman). Drawn first, so every act and mood paints over it.
 - `ParkyLookHands` _component_: What Parky holds over his face during an act, drawn last in the body: the snow globe, the fan, the chattering teeth of a shiver.
+- `ice` _const_: An icy outline, so white snow still shows on a white page.
 - `LOOK_GAZE` _const_: Where the pupils go during a scene: at the ghost, the fireworks, the snowman, the globe.
+- `FLAKE` _const_: A six-armed snowflake about four units across, round the origin.
 
 ### [`parky/parky-logo.tsx`](../../components/assistant/parky/parky-logo.tsx)
 
@@ -116,6 +126,10 @@ by hand: change the comment in the code and re-run the script. -->
 - `useSearchAlong` _hook_: Parky searching along while a search is open on the page (`useSearchOpen`): `searching` while one is, `done` for the moment the glass takes to go after it closed, `null` otherwise; `puzzled` for a moment after the search found nothing.
 - `LENS_OUT_MS` _const_: How long the glass takes to go once the search has closed; the stylesheet reads `--parky-act`.
 - `PUZZLED_MS` _const_: How long a question mark hangs over Parky after a search found nothing.
+
+### [`parky/winter-nap.tsx`](../../components/assistant/parky/winter-nap.tsx)
+
+- `ParkyWinterNap` _component_: Parky's winter nap, the picture on the winter-break panel: he has nodded off in his sled in his bobble hat and scarf, the snowman he built beside it, the park's Ferris wheel snowed in behind the hills under the moon.
 
 ### [`use-assistant-actions.ts`](../../components/assistant/use-assistant-actions.ts)
 

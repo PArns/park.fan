@@ -53,8 +53,10 @@ its panel is `display: none`. The selectors are attribute selectors, never `:has
 ## The hue
 
 `coverFallbackHue(slug)` hashes the slug (FNV-1a) into `blue`, `green` or `cyan`, which swaps the four
-lights, so two coverless news items side by side are not the same picture twice (which the
-[media database rule](../rules/media-database.md) counts as worse than none). Lists carry the slug;
+lights, so two coverless posts side by side do not look identical. A news post gets the fallback
+only when its park has no photo at all
+([the rule](../rules/news-is-set-apart-from-the-articles.md#a-news-post-reuses-a-photo-rather-than-going-without)).
+Lists carry the slug;
 menus and the toast carry the post's path, and `slugFromPostPath` takes its last segment. A post
 therefore has one hue across the banner, lists and menus of a locale; across locales the slug, and so
 the hue, may differ. The ground is the same in both themes, as a photo would be.

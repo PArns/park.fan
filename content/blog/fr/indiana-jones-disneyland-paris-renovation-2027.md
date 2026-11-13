@@ -20,6 +20,11 @@ parkLinks:
   - /parks/europe/france/paris/disneyland-park
 rideLinks:
   - /parks/europe/france/paris/disneyland-park/indiana-jones-and-the-temple-of-peril
+coverImage:
+  src: /media/disneyland-park/background.jpg
+  alt: 'Le château de la Belle au bois dormant, rose et bleu, sur son socle rocheux, pelouse et arbres taillés devant.'
+  caption: 'Le château de la Belle au bois dormant, au Parc Disneyland. Le grand huit Indiana Jones, à Adventureland, ferme plusieurs mois à partir du 4 janvier.'
+  credit: 'Patrick Arns'
 seo:
   title: 'Disneyland Paris rénove Indiana Jones dès janvier 2027'
   description: >-
