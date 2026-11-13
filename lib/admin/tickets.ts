@@ -183,6 +183,22 @@ export interface TicketDryRun {
   note?: string;
 }
 
+/** What each dry-run plan is called in the admin. */
+export const TICKET_DRY_RUN_LABELS: Record<keyof Omit<TicketDryRun, 'note'>, string> = {
+  owned: 'Als eigenes Ticket',
+  planFirst: 'Im Vorschlag ohne Tickets',
+};
+
+/** How each dry-run outcome reads, and the chip tone it takes. */
+export const TICKET_DRY_RUN_RESULTS: Record<
+  TicketDryRunResult,
+  { label: string; tone: 'success' | 'danger' | 'muted' }
+> = {
+  ok: { label: 'geplant', tone: 'success' },
+  failed: { label: 'gescheitert', tone: 'danger' },
+  skipped: { label: 'übersprungen', tone: 'muted' },
+};
+
 /** `POST …/tickets/validate`: the checks and the dry run, nothing saved. */
 export interface TicketValidation {
   ok: boolean;
@@ -733,19 +749,25 @@ export function ticketProblemsAt(problems: readonly TicketProblem[], path: strin
   return problems.filter((problem) => problem.path === path).map((problem) => problem.message);
 }
 
+function isUnder(problemPath: string, path: string): boolean {
+  return (
+    problemPath === path || problemPath.startsWith(`${path}.`) || problemPath.startsWith(`${path}[`)
+  );
+}
+
 /**
  * The problems at `path` and below it (`days`, `days.min`; `links[1]`, `links[1].url`), for a row
- * or a field that shows its parts together. `links[1]` does not take `links[10]`.
+ * or a field that shows its parts together, without those under `except`, which fields of their
+ * own show. `links[1]` does not take `links[10]`.
  */
 export function ticketProblemsUnder(
   problems: readonly TicketProblem[],
-  path: string
+  path: string,
+  except: readonly string[] = []
 ): TicketProblem[] {
   return problems.filter(
     (problem) =>
-      problem.path === path ||
-      problem.path.startsWith(`${path}.`) ||
-      problem.path.startsWith(`${path}[`)
+      isUnder(problem.path, path) && !except.some((shown) => isUnder(problem.path, shown))
   );
 }
 

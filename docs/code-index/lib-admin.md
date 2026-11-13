@@ -418,7 +418,7 @@ The ticket catalog of a trip region as `/admin/tickets` edits it: every product 
 - `ticketProblemsOf` _function_: The problem list of a refused write or a `validate` answer (`{ problems: [{ path, message }] }`), or an empty list when the payload carries none.
 - `ticketProblemField` _function_: The product field a problem's path is about: `windowTable[2].window` → `windowTable`.
 - `ticketProblemsAt` _function_: The messages of the problems at exactly `path`, for the field that owns it.
-- `ticketProblemsUnder` _function_: The problems at `path` and below it (`days`, `days.min`; `links[1]`, `links[1].url`), for a row or a field that shows its parts together. `links[1]` does not take `links[10]`.
+- `ticketProblemsUnder` _function_: The problems at `path` and below it (`days`, `days.min`; `links[1]`, `links[1].url`), for a row or a field that shows its parts together, without those under `except`, which fields of their own show. `links[1]` does not take `links[10]`.
 - `strayTicketProblems` _function_: The problems no field of the form shows: a path outside `fields`, the dry run's (`dryRun.owned`) or none at all. The form lists them on their own, so a check the API adds first is never lost.
 - `mergeTicketProblems` _function_: Two problem lists as one, each path and message once.
 - `sortTicketProducts` _function_: The products in the admin's order, `sortOrder` first and the API's order after that.
@@ -433,6 +433,8 @@ The ticket catalog of a trip region as `/admin/tickets` edits it: every product 
 - `TICKET_CONFIDENCE_LABELS` _const_: What each confidence is called in the admin.
 - `TICKET_ANCHOR_LABELS` _const_: What each anchor is called in the admin.
 - `TICKET_HOPPING_LABELS` _const_: What each hopping kind is called in the admin.
+- `TICKET_DRY_RUN_LABELS` _const_: What each dry-run plan is called in the admin.
+- `TICKET_DRY_RUN_RESULTS` _const_: How each dry-run outcome reads, and the chip tone it takes.
 - `MAX_TICKET_DAYS` _const_: The backend's limits, repeated where the form checks before it asks.
 - `MAX_TICKET_WINDOW` _const_: The longest window a length may have.
 - `MAX_TICKET_LINKS` _const_: Links per product.

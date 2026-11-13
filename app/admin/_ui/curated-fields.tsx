@@ -3,7 +3,6 @@
 import { useEffect, useEffectEvent, useMemo, useState } from 'react';
 import {
   ArrowLeftRight,
-  ExternalLink,
   Loader2,
   Plus,
   RotateCcw,
@@ -46,6 +45,7 @@ import {
   TextArea,
   TextInput,
   TriSwitch,
+  UrlInput,
   useFieldId,
 } from './controls';
 
@@ -258,38 +258,17 @@ function FieldControl({
         </div>
       );
 
-    case 'url': {
-      const href = typeof value === 'string' && /^https?:\/\//i.test(value) ? value : null;
+    case 'url':
       return (
-        <div className="flex items-center gap-2">
-          <TextInput
-            id={id}
-            type="url"
-            disabled={disabled}
-            maxLength={field.maxLength}
-            value={typeof value === 'string' ? value : ''}
-            placeholder={placeholderFor(field)}
-            onChange={(event) => onChange(event.target.value || null)}
-          />
-          {/* The one check a form cannot do: whether the address is the right
-              one. Opening it is one click, and a curated link nobody opened is
-              how a park page ends up pointing at a parked domain. */}
-          <a
-            href={href ?? undefined}
-            target="_blank"
-            rel="noreferrer noopener"
-            aria-disabled={href ? undefined : true}
-            className={cn(
-              'text-muted-foreground hover:text-foreground shrink-0 rounded-md border p-1.5 transition-colors',
-              !href && 'pointer-events-none opacity-30'
-            )}
-            title="Adresse öffnen"
-          >
-            <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
-          </a>
-        </div>
+        <UrlInput
+          id={id}
+          disabled={disabled}
+          maxLength={field.maxLength}
+          value={typeof value === 'string' ? value : ''}
+          placeholder={placeholderFor(field)}
+          onChange={(event) => onChange(event.target.value || null)}
+        />
       );
-    }
 
     case 'boolean':
       return (

@@ -354,6 +354,18 @@ test('a field takes its own path, a row takes everything under it', () => {
   );
 });
 
+test('a row leaves out what its own fields show', () => {
+  const row = [
+    { path: 'links[0]', message: 'duplicate' },
+    { path: 'links[0].url', message: 'must be https' },
+    { path: 'links[0].markets[1]', message: 'unknown market' },
+  ];
+  assert.deepEqual(
+    ticketProblemsUnder(row, 'links[0]', ['links[0].url']).map((problem) => problem.path),
+    ['links[0]', 'links[0].markets[1]']
+  );
+});
+
 test('a problem no field shows is listed apart, not lost', () => {
   assert.deepEqual(
     strayTicketProblems(problems, ['links', 'days']).map((problem) => problem.path),
