@@ -31,8 +31,9 @@ surfaces are in [5-site-copy.md](5-site-copy.md) (§5.1 to §5.3, §5.5 to §5.8
   on the template.
 - **The core of the story fits one sentence a visitor would say to a friend**, with the park's name
   in it. Title and excerpt are written from that sentence, not from the ticket's title.
-- **No cover image twice among news posts**; the check and the fallback are in
-  [news is set apart from the articles](../rules/news-is-set-apart-from-the-articles.md#a-news-cover-image-is-used-once).
+- **Every news post about a park gets a photo of it**, reused from another post when every motif
+  is taken; the order and the fallback are in
+  [news is set apart from the articles](../rules/news-is-set-apart-from-the-articles.md#a-news-post-reuses-a-photo-rather-than-going-without).
 
 **The body**
 
