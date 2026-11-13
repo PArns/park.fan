@@ -334,6 +334,12 @@ When the nowcast says it is time to go under a roof: the trigger for the covered
 - `enrichAttractionsWithImages` _function_: Same for attractions, with only the ride's own photo (see `withRideCardImage`).
 - `getCardObjectPosition` _function_: `object-position` for a park or ride card photo, resolved server-side from the same image the card paints, so the ride branch stops at the ride just as the photo does.
 
+### [`park-break.ts`](../../lib/utils/park-break.ts)
+
+- `parkBreakOf` _function_: Whether the park is in a break on `todayIso`, and until when: shut today by the schedule, the next opening known and at least `OFFSEASON_MIN_DAYS` away.
+- `WINTER_BREAK_MIN_DAYS` _const_: How many days of a closure have to fall in the park's winter before it is the winter break.
+- Types: `ParkBreakScene`, `ParkBreak`, `ParkBreakFields`
+
 ### [`park-day-over.ts`](../../lib/utils/park-day-over.ts)
 
 - `isParkDayOver` _function_: Whether the park's day is over at `atMs`: no operation today, or today's last window has closed. `null` when the schedule cannot say.
@@ -343,7 +349,7 @@ When the nowcast says it is time to go under a roof: the trigger for the covered
 - `parkDayOf` _function_: The calendar day an instant falls on in the park's zone, as `YYYY-MM-DD` (what `ScheduleItem.date` and `CalendarDay.date` carry, and what compares correctly as a string).
 - `addDays` _function_: `YYYY-MM-DD` plus `days`, calendar-safe: noon UTC on a plain date, so no zone or DST moves it.
 - `daysBetween` _function_: Whole calendar days from `from` to `to`, negative where `to` is earlier: a count of nights, from noon UTC on both sides, so the difference is whole by construction.
-- `weeksUntil` _function_: Whole weeks to a moment `days` away, rounded up: „in 19 Wochen" in „Heute im Park" and on the winter-break panel under it, which must not name two numbers for one date.
+- `weeksUntil` _function_: Whole weeks to a moment `days` away, rounded up: „in 19 Wochen" in „Heute im Park" and on the break panel under it, which must not name two numbers for one date.
 - `formatParkDay` _function_: A park-local `YYYY-MM-DD` as a written date in `locale`. Anchored at noon UTC and formatted in UTC, so no zone moves the day; long month and year unless `options` says otherwise.
 - `formatParkDayRange` _function_: Two park-local days as one range in `locale`'s own shape: „16.–27. November 2026", „4. Januar – 25. März 2027", one date where both are the same day.
 
@@ -591,12 +597,6 @@ One day's hours as the park payload carries them (`schedule[]`, `nextSchedule`).
 - `getDayWeatherWarning` _function_: Classify a forecast day as severe weather, or `null`. The WMO weather code comes first, then the daily totals, so a day that piles up rain, snow or wind without a „heavy" code still counts. Priority: thunderstorm, snow, rain, wind.
 - `getWeatherConfig` _function_: Icon, label key and colour for a WMO weather code (https://open-meteo.com/en/docs).
 - Types: `WeatherWarning`
-
-### [`winter-break.ts`](../../lib/utils/winter-break.ts)
-
-- `winterBreakOf` _function_: Whether the park is in its winter break on `todayIso`, and until when.
-- `WINTER_BREAK_MIN_DAYS` _const_: How many days of a closure have to fall in the park's winter before it counts as the winter break.
-- Types: `WinterBreak`, `WinterBreakFields`
 
 ### [`works-period.ts`](../../lib/utils/works-period.ts)
 

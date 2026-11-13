@@ -4,10 +4,8 @@ import { useCallback, useEffect, useId, useMemo, useRef, useState } from 'react'
 import { cn } from '@/lib/utils';
 import { ACT_MS, CLASS_ACTS, type ParkyCue } from '@/lib/assistant/parky/acts';
 import {
-  HUB,
   RIDE_MOTION,
   RIDES,
-  RIM,
   VIEW,
   rideKeyframe,
   type ParkyRide,
@@ -24,7 +22,6 @@ import {
   ParkyLookWear,
 } from './looks';
 import {
-  A_FRAME,
   BUBBLE,
   CABINS,
   CABIN_COLOURS,
@@ -44,13 +41,11 @@ import {
   NIGHT_STARS,
   SHUT_EYES,
   SMILE,
-  SPOKES,
   STAR,
   ZED,
   blue,
   blush,
   capBlue,
-  frame,
   green,
   heartRed,
   ink,
@@ -58,6 +53,7 @@ import {
 } from './drawing';
 import { DREAM_MS, ParkyDreamCloud } from './dreams';
 import { ParkyMoment, ParkyRideTrack, ParkySpotlight, ParkyVehicle } from './props';
+import { ParkyWheel } from './wheel';
 import { useGaze } from './use-gaze';
 import { useIdleAct } from './use-idle-act';
 import { LENS_OUT_MS, PUZZLED_MS, useSearchAlong } from './use-search-along';
@@ -364,7 +360,7 @@ export function ParkyLogo({
         {/* The hat: a Ferris wheel standing on Parky's head. */}
         <g ref={hat} className={cn('parky-hat', outfit.hat && 'parky-hat--dressed')}>
           {outfit.hat && <ParkyLookHat hat={outfit.hat} />}
-          <g
+          <ParkyWheel
             className={cn(
               'parky-wheel',
               (state === 'talking' ||
@@ -378,20 +374,8 @@ export function ParkyLogo({
                 searching) &&
                 'parky-wheel--turning'
             )}
-          >
-            {/* A light edge under the rim keeps the wheel legible on any page. */}
-            <circle
-              cx={HUB.x}
-              cy={HUB.y}
-              r={RIM}
-              fill="none"
-              stroke="white"
-              strokeOpacity=".8"
-              strokeWidth="2.6"
-            />
-            <circle cx={HUB.x} cy={HUB.y} r={RIM} fill="none" stroke={blue} strokeWidth="1.3" />
-            <path d={SPOKES} stroke={blue} strokeOpacity=".75" strokeWidth=".55" />
-            {act === 'lights' &&
+            glow={
+              act === 'lights' &&
               // Lit up for the night: a glow round every cabin, twinkling one after another.
               CABINS.map((cabin, i) => (
                 <circle
@@ -403,21 +387,9 @@ export function ParkyLogo({
                   fill="oklch(0.92 0.16 95)"
                   style={{ animationDelay: `${(-i * 0.15).toFixed(2)}s` }}
                 />
-              ))}
-            {CABINS.map((cabin, i) => (
-              <circle
-                key={`${cabin.x} ${cabin.y}`}
-                cx={cabin.x}
-                cy={cabin.y}
-                r="1.45"
-                fill={CABIN_COLOURS[i % CABIN_COLOURS.length]}
-                stroke="white"
-                strokeWidth=".5"
-              />
-            ))}
-          </g>
-          <path d={A_FRAME} stroke={frame} strokeWidth="1.5" strokeLinecap="round" />
-          <circle cx={HUB.x} cy={HUB.y} r="1.3" fill="white" stroke={frame} strokeWidth=".8" />
+              ))
+            }
+          />
         </g>
         <path d={BUBBLE} fill={`url(#${ground})`} />
         <ParkyLookWear outfit={outfit} ground={ground} />

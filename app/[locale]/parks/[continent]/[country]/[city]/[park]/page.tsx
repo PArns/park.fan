@@ -45,8 +45,7 @@ import { ParkPageShell } from '@/components/parks/park-page-shell';
 import { OrlandoParkBand } from '@/components/orlando/orlando-park-band';
 import { ParkTitleHeader } from '@/components/parks/park-title-header';
 import { ParkTodayPanel } from '@/components/parks/park-today-panel';
-import { WinterBreakPanel } from '@/components/parks/winter-break-panel';
-import { winterBreakOf } from '@/lib/utils/winter-break';
+import { ParkBreakPanel } from '@/components/parks/park-break-panel';
 import { ParkKidsLink } from '@/components/parks/park-kids-link';
 import { initialRiderHeightFromParam, kidsPageData } from '@/lib/parks/kids-page';
 import { ParkPurchasesCard } from '@/components/parks/park-purchases-card';
@@ -602,14 +601,10 @@ export default async function ParkPage({ params, searchParams }: ParkPageProps) 
           className="mb-4 sm:mb-8"
         />
 
-        {/* The winter break: the day the park opens again, before anything that reads as a
-          live day. Decided here from the park's own day, so it is in the first HTML at its
-          height. Renders nothing outside a winter break. */}
-        <WinterBreakPanel
-          winterBreak={winterBreakOf(park, todayIso)}
-          scope="park"
-          className="mb-8"
-        />
+        {/* A winter break or a break of two weeks or more: the day the park opens again, before
+          anything that reads as a live day. Decided on the server from the park's own day, so
+          it is in the first HTML at its height. Renders nothing otherwise. */}
+        <ParkBreakPanel park={park} todayIso={todayIso} scope="park" className="mb-8" />
 
         {/* Parks that publish wait times only inside their own app (Hansa-Park). Server-rendered,
           not streamed: `liveWaitTimes` is day-stable, so it arrives with the structure fetch and

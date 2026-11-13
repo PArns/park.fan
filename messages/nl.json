@@ -1432,12 +1432,20 @@
       "since": "sinds {month}"
     }
   },
-  "winterBreak": {
-    "label": "Winterpauze",
+  "parkBreak": {
+    "label": {
+      "winter": "Winterpauze",
+      "season": "Seizoenspauze"
+    },
     "reopensPark": "Weer open op <date>{day}</date>",
     "reopensRide": "Het park gaat weer open op <date>{day}</date>",
-    "park": "Tot dan blijven alle attracties dicht en houdt Parky een winterslaap.",
-    "ride": "Tot dan blijft ook {ride} dicht en houdt Parky een winterslaap."
+    "park": "Tot dan blijven alle attracties dicht.",
+    "ride": "Tot dan blijft ook {ride} dicht.",
+    "parky": {
+      "winter": "Parky houdt zolang een winterslaap.",
+      "autumn": "Parky slaapt zolang in de bladeren.",
+      "spring": "Parky doezelt zolang tussen de tulpen."
+    }
   },
   "attractions": {
     "blogPosts": {

@@ -30,7 +30,7 @@ export function daysBetween(from: string, to: string): number {
 
 /**
  * Whole weeks to a moment `days` away, rounded up: „in 19 Wochen" in „Heute im Park" and on the
- * winter-break panel under it, which must not name two numbers for one date.
+ * break panel under it, which must not name two numbers for one date.
  */
 export function weeksUntil(days: number): number {
   return Math.ceil(days / 7);

@@ -1432,12 +1432,20 @@
       "since": "dal {month}"
     }
   },
-  "winterBreak": {
-    "label": "Chiusura invernale",
+  "parkBreak": {
+    "label": {
+      "winter": "Chiusura invernale",
+      "season": "Pausa tra due stagioni"
+    },
     "reopensPark": "Riapre <date>{day}</date>",
     "reopensRide": "Il parco riapre <date>{day}</date>",
-    "park": "Fino ad allora tutte le attrazioni restano chiuse e Parky va in letargo.",
-    "ride": "Fino ad allora nemmeno {ride} è in funzione e Parky va in letargo."
+    "park": "Fino ad allora tutte le attrazioni restano chiuse.",
+    "ride": "Fino ad allora nemmeno {ride} è in funzione.",
+    "parky": {
+      "winter": "Nel frattempo Parky va in letargo.",
+      "autumn": "Nel frattempo Parky dorme tra le foglie.",
+      "spring": "Nel frattempo Parky sonnecchia tra i tulipani."
+    }
   },
   "attractions": {
     "blogPosts": {

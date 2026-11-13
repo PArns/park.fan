@@ -50,7 +50,7 @@ What Parky shows follows what the page shows, never against it:
 | queues over an hour                | grumpy, arms crossed, a small cloud of steam  |
 | the park is very full              | squashed                                      |
 | the park is closed today           | dozes, or reads up for the next visit         |
-| the park is in its winter break    | asleep in his sled, bobble hat and scarf      |
+| the park is on a break for weeks   | asleep: sled, leaves or tulips by the season  |
 | a ride goes down while you look    | startled, and points at the ride's bell       |
 | a queue drops sharply              | a hop and a whispered tip                     |
 | a show starts soon                 | applause under a spotlight                    |
