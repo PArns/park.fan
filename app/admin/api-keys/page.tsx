@@ -1,7 +1,17 @@
 'use client';
 
-import { useRef, useState, type FormEvent } from 'react';
-import { BarChart3, KeySquare, Loader2, Pencil, Plus, ShieldCheck, Trash2, X } from 'lucide-react';
+import { useEffect, useRef, useState, type FormEvent } from 'react';
+import {
+  BarChart3,
+  KeySquare,
+  Loader2,
+  Pencil,
+  Plus,
+  RotateCw,
+  ShieldCheck,
+  Trash2,
+  X,
+} from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { ConfirmDialog } from '@/components/ui/confirm-dialog';
 import {
@@ -17,12 +27,18 @@ import {
   DATA_API_KEYS_QUERY_KEY,
   DATA_API_KEY_USAGE_LABELS,
   DEFAULT_REQUESTS_PER_HOUR,
+  DEFAULT_ROTATION_GRACE_HOURS,
+  ROTATION_GRACE_CHOICES,
   createDataApiKeyBody,
   dataApiKeyCurlExample,
+  dataApiKeyPath,
+  describeRotationGrace,
   formatAllowedParks,
   formatHourlyUsage,
   formatKeyExpiry,
+  formatKeyMoment,
   formatKeyUsage,
+  formatPreviousKeyStatus,
   formatUsageMonth,
   KEY_EXPIRY_CHOICES,
   usedMonths,
@@ -30,10 +46,12 @@ import {
   keyExpiryFrom,
   MAX_REQUESTS_PER_HOUR,
   parseRequestsPerHour,
+  previousKeyValidUntil,
   type CreatedDataApiKey,
   type DataApiKey,
   type DataApiKeyUsage,
   type KeyExpiryChoice,
+  type RotationGraceHours,
 } from '@/lib/admin/api-keys';
 import { hasPassed } from '@/lib/admin/mcp';
 import { useMinuteNow } from '@/lib/hooks/use-minute-now';
@@ -121,18 +139,34 @@ function KeyList({ items }: { items: DataApiKey[] }) {
   const [confirming, setConfirming] = useState(false);
   const [editing, setEditing] = useState<DataApiKey | null>(null);
   const [viewing, setViewing] = useState<DataApiKey | null>(null);
+  const [rotating, setRotating] = useState<DataApiKey | null>(null);
+  // Kept after the dialog closes, like `pending`.
+  const [ending, setEnding] = useState<DataApiKey | null>(null);
+  const [confirmingEnd, setConfirmingEnd] = useState(false);
   const now = useMinuteNow();
 
   async function revoke(key: DataApiKey) {
     try {
-      await adminFetch(`${DATA_API_KEYS_PATH}/${encodeURIComponent(key.id)}`, {
-        method: 'DELETE',
-      });
+      await adminFetch(dataApiKeyPath(key.id), { method: 'DELETE' });
       invalidate(DATA_API_KEYS_QUERY_KEY);
       toast.push({ title: 'Key widerrufen', tone: 'success' });
     } catch (err) {
       toast.push({
         title: 'Widerruf fehlgeschlagen',
+        description: err instanceof Error ? err.message : undefined,
+        tone: 'error',
+      });
+    }
+  }
+
+  async function endGrace(key: DataApiKey) {
+    try {
+      await adminFetch(dataApiKeyPath(key.id, 'previous'), { method: 'DELETE' });
+      invalidate(DATA_API_KEYS_QUERY_KEY);
+      toast.push({ title: 'Alter Key gesperrt', tone: 'success' });
+    } catch (err) {
+      toast.push({
+        title: 'Sperren fehlgeschlagen',
         description: err instanceof Error ? err.message : undefined,
         tone: 'error',
       });
@@ -159,6 +193,11 @@ function KeyList({ items }: { items: DataApiKey[] }) {
             now={now}
             onStats={() => setViewing(key)}
             onEdit={() => setEditing(key)}
+            onRotate={() => setRotating(key)}
+            onEndGrace={() => {
+              setEnding(key);
+              setConfirmingEnd(true);
+            }}
             onRevoke={() => {
               setPending(key);
               setConfirming(true);
@@ -183,7 +222,24 @@ function KeyList({ items }: { items: DataApiKey[] }) {
         onConfirm={() => pending && void revoke(pending)}
       />
 
+      <ConfirmDialog
+        open={confirmingEnd}
+        onOpenChange={setConfirmingEnd}
+        icon={Trash2}
+        tone="destructive"
+        title={`Alten Key von „${ending?.name ?? ''}“ jetzt sperren?`}
+        description={
+          ending?.usage === 'internal'
+            ? 'Das ist der Key der Website: Steht der neue Key noch nicht in Vercel als API_DATA_KEY, zeigt park.fan ab der nächsten Anfrage keine Prognosen mehr. Der neue Key gilt weiter.'
+            : 'Wer noch den alten Key sendet, bekommt ab der nächsten Anfrage keine Prognosen mehr. Der neue Key gilt weiter.'
+        }
+        confirmLabel="Alten Key sperren"
+        cancelLabel="Abbrechen"
+        onConfirm={() => ending && void endGrace(ending)}
+      />
+
       {editing && <EditKeyDialog apiKey={editing} onClose={() => setEditing(null)} />}
+      {rotating && <RotateKeyDialog apiKey={rotating} onClose={() => setRotating(null)} />}
       {viewing && <StatsDialog apiKey={viewing} onClose={() => setViewing(null)} />}
     </>
   );
@@ -194,6 +250,8 @@ function KeyRow({
   now,
   onStats,
   onEdit,
+  onRotate,
+  onEndGrace,
   onRevoke,
 }: {
   apiKey: DataApiKey;
@@ -201,10 +259,15 @@ function KeyRow({
   now: number | null;
   onStats: () => void;
   onEdit: () => void;
+  onRotate: () => void;
+  onEndGrace: () => void;
   onRevoke: () => void;
 }) {
   const revoked = apiKey.revokedAt !== null;
   const expired = !revoked && now !== null && hasPassed(apiKey.expiresAt, now);
+  // An expired key is refused a rotation: its new secret would open nothing until it is extended.
+  const rotatable = !revoked && now !== null && !expired;
+  const previousUntil = rotatable ? previousKeyValidUntil(apiKey, now) : null;
   // Only the text dims: an expired key is extended through its edit button, which stays as is.
   const dimmed = revoked || expired ? 'opacity-60' : '';
   return (
@@ -247,6 +310,17 @@ function KeyRow({
               <Pencil className="h-3.5 w-3.5" />
             </button>
           )}
+          {rotatable && (
+            <button
+              type="button"
+              onClick={onRotate}
+              aria-label={`${apiKey.name} rotieren`}
+              title="Rotieren"
+              className="text-muted-foreground hover:text-foreground rounded p-1.5 max-sm:p-3"
+            >
+              <RotateCw className="h-3.5 w-3.5" />
+            </button>
+          )}
           {!revoked && (
             <button
               type="button"
@@ -267,6 +341,7 @@ function KeyRow({
           <span>
             {apiKey.lastUsedAt ? `zuletzt genutzt ${formatAgo(apiKey.lastUsedAt)}` : 'nie genutzt'}
           </span>
+          {apiKey.rotatedAt && <span>rotiert {formatAgo(apiKey.rotatedAt)}</span>}
           {apiKey.revokedAt && <span>widerrufen {formatAgo(apiKey.revokedAt)}</span>}
         </p>
         {!revoked && (
@@ -277,6 +352,19 @@ function KeyRow({
             </p>
             <p>{formatAllowedParks(apiKey)}</p>
           </>
+        )}
+        {previousUntil && (
+          <div className="text-foreground/80 flex flex-wrap items-center gap-x-3 gap-y-1.5 pt-0.5">
+            <span>
+              {formatPreviousKeyStatus(
+                previousUntil,
+                apiKey.previousLastUsedAt ? formatAgo(apiKey.previousLastUsedAt) : null
+              )}
+            </span>
+            <Button type="button" size="sm" variant="outline" onClick={onEndGrace}>
+              Alten Key jetzt sperren
+            </Button>
+          </div>
         )}
         {apiKey.stats && (
           <p className="flex items-center gap-2">
@@ -378,22 +466,10 @@ function CreateKeyDialog({ onClose }: { onClose: () => void }) {
               </DialogDescription>
             </DialogHeader>
 
-            <Notice role="alert">
-              Der Key wird nur jetzt angezeigt. Danach lässt er sich nicht mehr abrufen. Geht er
-              verloren, widerrufst du ihn und erstellst einen neuen.
-            </Notice>
-
-            <Tile title="Key" action={<CopyButton value={created.key} />}>
-              <CodeBlock breakAnywhere>{created.key}</CodeBlock>
-            </Tile>
-
-            <Tile
-              title="So wird er gesendet"
-              hint="Im Header X-API-Key, nie in der URL."
-              action={<CopyButton value={dataApiKeyCurlExample(created.key)} />}
-            >
-              <CodeBlock>{dataApiKeyCurlExample(created.key)}</CodeBlock>
-            </Tile>
+            <OneTimeKey
+              apiKey={created.key}
+              ifLost="Geht er verloren, widerrufst du ihn und erstellst einen neuen."
+            />
 
             <DialogFooter>
               <Button onClick={onClose}>Fertig</Button>
@@ -467,6 +543,172 @@ function CreateKeyDialog({ onClose }: { onClose: () => void }) {
               <Button type="submit" disabled={busy || !complete}>
                 {busy && <Loader2 className="h-4 w-4 animate-spin" />}
                 Erstellen
+              </Button>
+            </DialogFooter>
+          </form>
+        )}
+      </DialogContent>
+    </Dialog>
+  );
+}
+
+/**
+ * A key in clear, the one time the API answers it: the warning, the key and how it is sent, each
+ * with a copy button. The key's copy button takes the focus, because the button that asked for the
+ * key is gone.
+ */
+function OneTimeKey({ apiKey, ifLost }: { apiKey: string; ifLost: string }) {
+  const tiles = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    tiles.current?.querySelector('button')?.focus();
+  }, []);
+  return (
+    <>
+      <Notice role="alert">
+        Speichere den Key jetzt: Er wird nur dieses eine Mal angezeigt und lässt sich danach nicht
+        mehr abrufen. {ifLost}
+      </Notice>
+
+      <div ref={tiles} className="grid gap-4">
+        <Tile title="Key" action={<CopyButton value={apiKey} />}>
+          <CodeBlock breakAnywhere>{apiKey}</CodeBlock>
+        </Tile>
+
+        <Tile
+          title="So wird er gesendet"
+          hint="Im Header X-API-Key, nie in der URL."
+          action={<CopyButton value={dataApiKeyCurlExample(apiKey)} />}
+        >
+          <CodeBlock>{dataApiKeyCurlExample(apiKey)}</CodeBlock>
+        </Tile>
+      </div>
+    </>
+  );
+}
+
+/**
+ * Gives a key a new secret; name, usage, limits, parks and statistics stay. The old secret can keep
+ * working for a grace period, so the holder switches without an outage. The new key is shown once,
+ * as on create.
+ */
+function RotateKeyDialog({ apiKey, onClose }: { apiKey: DataApiKey; onClose: () => void }) {
+  const toast = useToast();
+  const invalidate = useInvalidateAdmin();
+  const [grace, setGrace] = useState<RotationGraceHours>(DEFAULT_ROTATION_GRACE_HOURS);
+  const [busy, setBusy] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  // The key lives in this state and nowhere else, and goes when the dialog does.
+  const [rotated, setRotated] = useState<CreatedDataApiKey | null>(null);
+  const submitting = useRef(false);
+  const graceId = useFieldId('api-key-grace');
+
+  async function rotate(event: FormEvent) {
+    event.preventDefault();
+    if (submitting.current) return;
+    submitting.current = true;
+    setBusy(true);
+    setError(null);
+    try {
+      const result = await adminFetch<CreatedDataApiKey>(dataApiKeyPath(apiKey.id, 'rotate'), {
+        method: 'POST',
+        body: { graceHours: grace },
+      });
+      setRotated(result);
+      invalidate(DATA_API_KEYS_QUERY_KEY);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Rotieren fehlgeschlagen');
+      toast.push({ title: 'Key nicht rotiert', tone: 'error' });
+    } finally {
+      submitting.current = false;
+      setBusy(false);
+    }
+  }
+
+  // As on create: while the request runs and while the key is shown, only the button closes it.
+  const locked = busy || rotated !== null;
+  // Seen from the rotation itself, which the answer dates; the key's own end date can come first.
+  const previousUntil = rotated
+    ? previousKeyValidUntil(rotated.item, Date.parse(rotated.item.rotatedAt ?? ''))
+    : null;
+
+  return (
+    <Dialog open onOpenChange={(open) => !open && !locked && onClose()}>
+      <DialogContent
+        className={`${SCROLLING_DIALOG} sm:max-w-xl`}
+        showCloseButton={!locked}
+        onInteractOutside={(event) => locked && event.preventDefault()}
+        onEscapeKeyDown={(event) => locked && event.preventDefault()}
+      >
+        {rotated ? (
+          <>
+            <DialogHeader>
+              <DialogTitle>Neuer Key für {rotated.item.name}</DialogTitle>
+              <DialogDescription>
+                {previousUntil
+                  ? `Der alte Key gilt bis ${formatKeyMoment(previousUntil)}.`
+                  : 'Der alte Key ist gesperrt.'}
+              </DialogDescription>
+            </DialogHeader>
+
+            <OneTimeKey
+              apiKey={rotated.key}
+              ifLost="Geht er verloren, rotierst du den Key noch einmal."
+            />
+
+            <DialogFooter>
+              <Button onClick={onClose}>Fertig</Button>
+            </DialogFooter>
+          </>
+        ) : (
+          <form onSubmit={(event) => void rotate(event)} className="grid gap-4">
+            <DialogHeader>
+              <DialogTitle>{apiKey.name} rotieren</DialogTitle>
+              <DialogDescription>
+                Der Key bekommt ein neues Geheimnis. Name, Nutzung, Limits, Parks und Statistik
+                bleiben.
+              </DialogDescription>
+            </DialogHeader>
+
+            {apiKey.usage === 'internal' && (
+              <Notice>
+                Das ist der Key der Website: Trag den neuen Key in Vercel als API_DATA_KEY ein,
+                bevor der alte gesperrt wird.
+              </Notice>
+            )}
+
+            <Field
+              label="Übergangszeit"
+              htmlFor={graceId}
+              // Read out when the choice changes, since it says what the choice does.
+              hint={<span aria-live="polite">{describeRotationGrace(grace)}</span>}
+            >
+              <Select
+                id={graceId}
+                value={String(grace)}
+                allowEmpty={false}
+                onValueChange={(value) =>
+                  setGrace(value === null ? grace : (Number(value) as RotationGraceHours))
+                }
+                options={ROTATION_GRACE_CHOICES.map((choice) => ({
+                  value: String(choice.value),
+                  label: choice.label,
+                }))}
+              />
+            </Field>
+
+            {error && (
+              <p role="alert" className="text-destructive text-xs">
+                {error}
+              </p>
+            )}
+
+            <DialogFooter>
+              <Button type="button" variant="ghost" onClick={onClose} disabled={busy}>
+                Abbrechen
+              </Button>
+              <Button type="submit" disabled={busy}>
+                {busy && <Loader2 className="h-4 w-4 animate-spin" />}
+                Rotieren
               </Button>
             </DialogFooter>
           </form>
@@ -717,7 +959,7 @@ function EditKeyDialog({ apiKey, onClose }: { apiKey: DataApiKey; onClose: () =>
     if (busy || !ready) return;
     setBusy(true);
     try {
-      await adminFetch(`${DATA_API_KEYS_PATH}/${encodeURIComponent(apiKey.id)}`, {
+      await adminFetch(dataApiKeyPath(apiKey.id), {
         method: 'PATCH',
         body: {
           requestsPerHour,
