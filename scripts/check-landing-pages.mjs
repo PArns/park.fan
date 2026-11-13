@@ -53,20 +53,39 @@ const SETTLE_MS = Number(flag('settle', '1500'));
 
 const PARK = '/de/parks/europe/germany/bruehl/phantasialand';
 
+/**
+ * An Orlando month page: next month, so it is in the hub's window whenever the check runs. The
+ * current month's own URL canonicals to the hub and is not a page of its own.
+ */
+const ORLANDO_MONTH = (() => {
+  const [y, m] = new Intl.DateTimeFormat('en-CA', { timeZone: 'America/New_York' })
+    .format(new Date())
+    .split('-')
+    .map(Number);
+  return m === 12 ? `/de/orlando/${y + 1}/1` : `/de/orlando/${y}/${m + 1}`;
+})();
+
 /** [path, kind, primary action expected in the hero] — docs/product/landing-pages.md §1 and §4. */
 const PAGES = [
   ['/de/beste-reisezeit', 'hub', true],
+  ['/de/orlando/beste-reisezeit', 'hub', true],
+  ['/de/orlando/beste-reisezeit/disney-world', 'hub', true],
+  ['/de/orlando/beste-reisezeit/universal-orlando', 'hub', true],
   ['/de/tagesplaner', 'hub', true],
   ['/de/so-funktioniert-park-fan', 'hub', true],
   ['/de/fancast', 'hub', true],
   ['/de/parky', 'hub', true],
   ['/de/blog', 'hub', false],
+  ['/de/orlando', 'hub', true],
   ['/en/best-time-to-visit', 'hub', true],
+  ['/en/orlando/best-time-to-visit', 'hub', true],
   ['/en/trip-planner', 'hub', true],
   ['/en/how-park-fan-works', 'hub', true],
   ['/en/fancast', 'hub', true],
   ['/en/parky', 'hub', true],
   ['/en/blog', 'hub', false],
+  ['/en/orlando', 'hub', true],
+  [ORLANDO_MONTH, 'hub', true],
   ['/de/contribute', 'tool'],
   ['/de/news', 'tool'],
   ['/de/compare', 'tool'],

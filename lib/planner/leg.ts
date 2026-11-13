@@ -119,8 +119,8 @@ export function entryPlace(
 /**
  * Which ends of a transfer are not rides: a show or a free block. Leaving one costs nothing (no
  * station, no ride); arriving at one from a ride still costs `EXIT_MIN` plus the ride. A block with
- * no position has no walk on either side. The optimiser, `clashCount()` and the chip read the same
- * numbers.
+ * no position has no walk on either side. The optimiser (in the API, with its clash count) and the chip read
+ * the same numbers.
  */
 export interface TransferEnds {
   fromBlock?: boolean;

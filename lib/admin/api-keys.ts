@@ -46,11 +46,21 @@ export interface DataApiKey {
   /** When the key stops working; null means never. An expired key can be extended. */
   expiresAt: string | null;
   createdAt: string;
+  /** When the current secret was last sent; a rotation starts it over. */
   lastUsedAt: string | null;
   revokedAt: string | null;
+  /** When the key last got a new secret; absent from an API without rotation. */
+  rotatedAt?: string | null;
+  /**
+   * Until when the secret the last rotation replaced still works; null without one, in the past
+   * once its grace period has run out.
+   */
+  previousExpiresAt?: string | null;
+  /** When that replaced secret was last sent. */
+  previousLastUsedAt?: string | null;
 }
 
-/** The answer to a create: the key in clear, this once, and the row it became. */
+/** The answer to a create or a rotation: the key in clear, this once, and the row it became. */
 export interface CreatedDataApiKey {
   key: string;
   item: DataApiKey;
@@ -180,6 +190,72 @@ export function formatKeyExpiry(expiresAt: string | null, nowMs: number): string
 
 /** The proxy path of the backend's key endpoints. */
 export const DATA_API_KEYS_PATH = '/api/admin/api-keys';
+
+/**
+ * The path of one key, or of its rotation (`rotate`) or the secret its last rotation kept
+ * (`previous`).
+ */
+export function dataApiKeyPath(id: string, part?: 'rotate' | 'previous'): string {
+  const path = `${DATA_API_KEYS_PATH}/${encodeURIComponent(id)}`;
+  return part ? `${path}/${part}` : path;
+}
+
+/** How long a rotation keeps the old secret working beside the new one, in hours. */
+export type RotationGraceHours = 0 | 1 | 24 | 168;
+
+/** The grace periods the rotate dialog offers, shortest first. */
+export const ROTATION_GRACE_CHOICES: ReadonlyArray<{ value: RotationGraceHours; label: string }> = [
+  { value: 0, label: 'Keine, sofort sperren' },
+  { value: 1, label: '1 Stunde' },
+  { value: 24, label: '24 Stunden' },
+  { value: 168, label: '7 Tage' },
+];
+
+/** The grace period the dialog starts with: a day, time for a holder to deploy the new key. */
+export const DEFAULT_ROTATION_GRACE_HOURS: RotationGraceHours = 24;
+
+/** What a rotation with this grace period does to the old key, in one sentence. */
+export function describeRotationGrace(hours: RotationGraceHours): string {
+  if (hours === 0) {
+    return 'Der alte Key wird sofort gesperrt: Wer ihn noch sendet, bekommt ab der nächsten Anfrage keine Prognosen mehr.';
+  }
+  const label = ROTATION_GRACE_CHOICES.find((choice) => choice.value === hours)?.label;
+  return `Der alte Key gilt noch ${label} neben dem neuen, damit der Inhaber umstellen kann, und wird dann gesperrt.`;
+}
+
+/**
+ * Until when the secret a key's last rotation replaced still works, seen from `nowMs`: the end of
+ * its grace period, or the key's own end date when that comes first, as the API decides it. Null
+ * when there is none, it has run out, or the key is revoked.
+ */
+export function previousKeyValidUntil(
+  key: Pick<DataApiKey, 'previousExpiresAt' | 'expiresAt' | 'revokedAt'>,
+  nowMs: number
+): string | null {
+  if (key.revokedAt || !key.previousExpiresAt) return null;
+  const until =
+    key.expiresAt && Date.parse(key.expiresAt) < Date.parse(key.previousExpiresAt)
+      ? key.expiresAt
+      : key.previousExpiresAt;
+  return hasPassed(until, nowMs) ? null : until;
+}
+
+/** „14.11.2026, 10:00“: a moment as the admin reads it, in Berlin. */
+export function formatKeyMoment(iso: string): string {
+  return formatInTimeZone(iso, KEY_EXPIRY_TIME_ZONE, 'dd.MM.yyyy, HH:mm');
+}
+
+/**
+ * „Alter Key gültig bis 14.11.2026, 10:00, zuletzt genutzt vor 5 Minuten“; `lastUsed` is the
+ * last use as the page words it, null for never.
+ */
+export function formatPreviousKeyStatus(
+  previousExpiresAt: string,
+  lastUsed: string | null
+): string {
+  const used = lastUsed ? `zuletzt genutzt ${lastUsed}` : 'nie genutzt';
+  return `Alter Key gültig bis ${formatKeyMoment(previousExpiresAt)}, ${used}`;
+}
 
 /** The React Query key of the list. */
 export const DATA_API_KEYS_QUERY_KEY = ['admin', 'api-keys'] as const;

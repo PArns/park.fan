@@ -149,20 +149,13 @@ Whether the drag gesture has been explained once: a store over `localStorage`, l
 
 - `entryWishKey` _function_: The wish key for an entry the visitor already has.
 - `addWishKey` _function_: The wish key for a ride being added.
-- `fitWishes` _function_: Everything the visitor is being asked about, in the order it is offered: their own rides first, then the additions, which is also the default priority. Only the movable entries, read through the engine's own `movableEntries`.
-- `fitBlocks` _function_: The free blocks a lever may act on. A ticked-off block is a record of an hour that happened, so it is not on offer.
 - `fitChoiceAll` _function_: Everything ticked, nothing shortened, nothing pinned: how the question opens. `priority` starts empty, meaning the visitor has not spoken, so a pre-filled list does not make every ride look pinned.
-- `fitOrder` _function_: The wishes in the order the day is decided in, which is what the list draws: pinned first, then the rest as offered. Exported so the list is never a sort of its own and its bottom is what the engine gives up first.
-- `evaluateFit` _function_: The plan for one choice, and what it leaves out. Where `optimizeDay` answers `null`, the day as it stands is the plan, so it is scored through `scoreCurrent`; otherwise a list that already fits would show an empty result.
-- `fitLevers` _function_: The changes worth offering, best first, each the whole engine run again against the current choice, so the levers move as rides are unticked.
+- `fitOrder` _function_: The wishes in the order the day is decided in, which is what the list draws: pinned first, then the rest as offered, and a second go on a ride behind every first one, because the engine gives a lap up first and "gestrichen wird von unten" …
 - `leverKey` _function_: A lever's identity, so a caller can hold a set of the ones already pulled.
-- `fitLeverView` _function_: `fitLevers`, plus the ones the visitor has already pulled, folded back in at the end with current counts, so a pressed lever does not vanish and pressing it again undoes it.
 - `toggleLever` _function_: One lever pressed, as a new choice. Two levers on one block are alternatives, so taking one sets the other down, and every press is its own inverse.
 - `toggleWish` _function_: One wish ticked or unticked. A ride nobody plans is not a ride anybody pinned.
 - `togglePin` _function_: One wish pinned to the top of the order, or unpinned.
-- `needsFitHelp` _function_: Whether this day is worth asking about at all: only where something the visitor asked for does not fit. A day that holds everything never sees the assistant.
-- `SHORT_BLOCK_MIN` _const_: What a shortened free block is cut to. Half an hour is still a meal.
-- Types: `FitWish`, `FitBlock`, `FitInput`, `FitChoice`, `FitOutcome`, `FitLeverKind`, `FitLever`, `FitLeverView`
+- Types: `FitWish`, `FitBlock`, `FitChoice`, `FitLeverKind`, `FitLever`, `FitLeverView`
 
 ### [`leg-chip.ts`](../../lib/planner/leg-chip.ts)
 
@@ -228,21 +221,22 @@ The month grid the planner picks a day on. Pure, and reckoned at noon UTC throug
 - `NEXT_RIDE_LIMIT` _const_: The most suggestions shown at once.
 - Types: `NextRideCandidate`, `NextRideInput`, `NextRideSuggestion`
 
+### [`optimize-remote.ts`](../../lib/planner/optimize-remote.ts)
+
+- `fitQuestion` _function_: A fit question about `entries` with `add` on top, with the clock read once, now.
+- `requestOptimize` _function_: Asks the optimizer one question about one day. On today's date the park-local minute goes along, so the plan starts where the visitor's now line is.
+- `requestFit` _function_: The fit assistant's answer for one choice. A refusal is an error here: the question was asked about a day the optimizer could plan, so a refusal means the day changed under it.
+- `wishesWithRides` _function_: The wishes of an answer with the day's own ride rows joined back on, which the list draws a photo and a peak from. A ride the payload does not hold draws without them.
+- `optimizeKeyOf` _function_: What a planned day looks like to the optimizer: which ride or how long a block, where it sits, and whether it has been walked. A free block's label and icon are left out, so typing one is not a new question.
+- `OptimizeError` _class_: The optimizer answered with an error status, or could not be reached (`status` 0).
+- Types: `OptimizeMode`, `OptimizeStop`, `PlanScore`, `FitAnswer`, `OptimizeAnswer`, `OptimizeTarget`, `FitQuestion`, `OptimizeAsk`
+
 ### [`optimize.ts`](../../lib/planner/optimize.ts)
 
-- `movableEntries` _function_: The entries a press may move: not ticked off, not a free block, a real ride, not already under way, and not shut for maintenance that day (`worksPeriodFor`): a ride that does not run is not planned, so no press places, scores or keeps it; …
+- `movableEntries` _function_: The entries a press may move: not ticked off, not a free block, a real ride, not already under way, and not shut for maintenance that day (`worksPeriodFor`).
 - `canOptimize` _function_: Whether ordering this day could mean anything.
 - `headlinersToAdd` _function_: The park's headliners that this day does not have and this party can ride.
 - `headlinersSkipped` _function_: Headliners this party cannot ride, so a caller can say how many were skipped.
-- `optimizeDay` _function_: Orders the day for the least queueing, or `null` where there is nothing to order: no day, no axis, no readable wait times, no ride to arrange, or a day already as good as this can make it.
-- `scoreOrder` _function_: What one named sequence would cost, scheduled by the same rules. The brute force in `scripts/test-planner-optimize.mjs` scores every permutation through it, so the search is never checked against itself.
-- `clashCount` _function_: How many times, in the part of the day still ahead, the next thing starts before the one before it is over and walked away from.
-- `scoreCurrent` _function_: The same day scored as it stands, for a before-and-after a caller can print.
-- `MAX_DELAY_MIN` _const_: How long the optimiser may leave somebody standing about to let a queue fall.
-- `IDLE_WEIGHT` _const_: What a minute of standing about costs, in minutes of queueing: a free minute is still worth something to the visitor, and less than one spent in a queue.
-- `BEAM_WIDTH` _const_: How many partial plans the search carries forward at each step.
-- `MAX_STOPS` _const_: Stops past this are dropped. No park has this many headliners.
-- Types: `OptimizeStop`, `OptimizedPlan`, `OptimizeInput`
 
 ### [`page-day.ts`](../../lib/planner/page-day.ts)
 
@@ -455,6 +449,12 @@ The link that hands a stored plan to somebody else, and how it is read back.
 - `usePlannerPxPerMin` _hook_: How many pixels one minute of the day is worth, here and now: one hook, so every axis in the panel reads the same day at the same scale.
 - `PLANNER_PHONE_QUERY` _const_: What the planner means by "phone", as a media query: the JS half of the one switch, whose CSS half is `planner-phone:` / `planner-wide:` in `app/globals.css`, kept side by side there.
 - `PLANNER_LANDSCAPE_QUERY` _const_: A landscape phone, as a media query: the one size the sheet draws in two columns. A refinement of `PLANNER_PHONE_QUERY`, so everything matching it is also a phone; it adds room for the day's chrome beside the axis.
+
+### [`use-optimize-remote.ts`](../../lib/planner/use-optimize-remote.ts)
+
+- `useOptimizePreview` _hook_: What a press of „Tag optimieren" would bring, asked before anybody presses it so the button can promise exactly what the press then reports.
+- `useFitAnswer` _hook_: The fit assistant's answer for one choice. The answer to the previous choice stays on screen while the next is asked (`isPlaceholderData`), so a tap does not blank the dialog.
+- `leverViewOf` _function_: The levers of an answer as the list draws them, or none where levers were not asked for.
 
 ### [`use-planner.ts`](../../lib/planner/use-planner.ts)
 

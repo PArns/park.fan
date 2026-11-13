@@ -9,7 +9,7 @@ import { rideSeries } from './ride-series';
  * "What now?" for a visitor standing in a park without a plan. Not the shortest queue: the ride to
  * walk to now is the one whose queue is short now and forecast to be long soon, so every suggestion
  * is a measured difference between the live wait and the day's forecast for the next two hours,
- * per quarter hour where `/plan/day` sends slots and per hour where it does not, like `fitLevers`. Pure: the caller passes the park-local minute.
+ * per quarter hour where `/plan/day` sends slots and per hour where it does not, like the optimizer. Pure: the caller passes the park-local minute.
  */
 
 /** How far ahead "later" reaches. */

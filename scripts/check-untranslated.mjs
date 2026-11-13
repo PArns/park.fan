@@ -59,8 +59,14 @@ const GERMAN_MARKERS = new Set(
 /** A German string of this many words is untranslated even without a marker word. */
 const LONG_ENOUGH = 5;
 
-/** Keys whose value is legitimately the German one and trips the rule anyway. Empty on purpose. */
-const ALLOWED = new Set();
+/** Keys whose value is legitimately the German one and trips the rule anyway. */
+const ALLOWED = new Set([
+  // The operators' product names, which the planner never translates (docs/features/orlando-planner.md).
+  'orlandoPlanner.tickets.entry.sw-three-park.title',
+  'orlandoPlanner.tickets.variant.uor-2-day-p2p-plus-epic',
+  // The seller's product name (attractiontickets.com), never translated.
+  'orlandoPlanner.tickets.combo.title',
+]);
 
 function flatten(value, prefix = '', out = new Map()) {
   for (const [key, child] of Object.entries(value)) {

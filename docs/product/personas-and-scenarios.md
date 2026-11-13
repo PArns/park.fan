@@ -36,16 +36,16 @@ real-time and proactive signals, P4 guidance and i18n, P6 landing speed and conv
 
 ### S-B · Planning, weeks to months ahead (P1, P2, P4, P5)
 
-| Need                       | State | Notes                                                                                                                                                                       |
-| -------------------------- | ----- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Crowd calendar, 365 days   | ✅    | calendar with ML yearly predictions and holiday overlays incl. cross-border catchments (`influencingRegions`)                                                               |
-| Best days, weekday pattern | ✅    | `ParkBestDaysSection`, park statistics (month, weekday, rides P50/P90)                                                                                                      |
-| Seasons and special events | ✅    | `ParkSeasonsCard` from hand-researched `ParkSeason` records (status, dates, separate-ticket price); backend `TICKETED_EVENT` schedule entries are not used                  |
-| Ticket prices and links    | 🟡    | paid skip-the-line prices from `schedule[].purchases` (`ParkPurchasesCard`; Disney US parks only, Universal and EU deliver none); no admission prices anywhere              |
-| Day plan                   | ✅    | the trip planner: wizard, timeline against forecast waits, `lib/planner/optimize.ts` orders the day; it knows the shortest rider and who stays dry (`lib/planner/party.ts`) |
-| Save a planned trip        | 🟡    | kept in `localStorage` (`lib/planner/store.ts`), one device                                                                                                                 |
-| Cross-device continuity    | 🟡    | a plan can be handed over by link (`/trip-planner/shared#<trip id>`, `lib/planner/trip-share.ts`; the id is the credential); favorites stay in cookies. No accounts (G2)    |
-| Accommodation, travel      | ❌    | out of scope; only nearby parks                                                                                                                                             |
+| Need                       | State | Notes                                                                                                                                                                    |
+| -------------------------- | ----- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Crowd calendar, 365 days   | ✅    | calendar with ML yearly predictions and holiday overlays incl. cross-border catchments (`influencingRegions`)                                                            |
+| Best days, weekday pattern | ✅    | `ParkBestDaysSection`, park statistics (month, weekday, rides P50/P90)                                                                                                   |
+| Seasons and special events | ✅    | `ParkSeasonsCard` from hand-researched `ParkSeason` records (status, dates, separate-ticket price); backend `TICKETED_EVENT` schedule entries are not used               |
+| Ticket prices and links    | 🟡    | paid skip-the-line prices from `schedule[].purchases` (`ParkPurchasesCard`; Disney US parks only, Universal and EU deliver none); no admission prices anywhere           |
+| Day plan                   | ✅    | the trip planner: wizard, timeline against forecast waits, the API's optimizer orders the day; it knows the shortest rider and who stays dry (`lib/planner/party.ts`)    |
+| Save a planned trip        | 🟡    | kept in `localStorage` (`lib/planner/store.ts`), one device                                                                                                              |
+| Cross-device continuity    | 🟡    | a plan can be handed over by link (`/trip-planner/shared#<trip id>`, `lib/planner/trip-share.ts`; the id is the credential); favorites stay in cookies. No accounts (G2) |
+| Accommodation, travel      | ❌    | out of scope; only nearby parks                                                                                                                                          |
 
 ### S-C · The final week (P1, P3, P5)
 

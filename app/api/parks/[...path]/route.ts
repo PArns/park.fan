@@ -36,6 +36,7 @@ import {
 import { isSlugPath } from '@/lib/utils/servable-route';
 import { pickRideFigures } from '@/lib/api/ride-figures';
 import { catchNonFatal } from '@/lib/api/client';
+import { relayJsonWrite } from '@/lib/api/relay';
 import { ridesInWorksOn } from '@/lib/utils/works-period';
 import type { PlanDay, PlanDayRideInWorks, ParkWithAttractions } from '@/lib/api/types';
 
@@ -630,6 +631,32 @@ export async function GET(
     },
     { status: 400 }
   );
+}
+
+/**
+ * The trip planner's day optimizer (`…/plan/optimize`), relayed with the server's data key: the
+ * API plans against its own `/plan/day`, so the browser sends its plan and no forecast. Only this
+ * site's pages may ask, like every forecast relay, and the answer is one visitor's plan, so it is
+ * never cached (`relayJsonWrite` answers `no-store`).
+ */
+export async function POST(
+  request: NextRequest,
+  { params }: { params: Promise<{ path: string[] }> }
+) {
+  const { path } = await params;
+  if (
+    !path ||
+    !isSlugPath(path) ||
+    path.length !== 6 ||
+    path.slice(4).join('/') !== 'plan/optimize'
+  ) {
+    return NextResponse.json({ error: 'Not found' }, { status: 404, headers: NO_STORE });
+  }
+  if (!isSameOriginRequest(request)) return foreignForecastRequest();
+  return relayJsonWrite(request, `/v1/parks/${path.join('/')}`, {
+    method: 'POST',
+    unreachable: 'Optimizer unreachable',
+  });
 }
 
 /**

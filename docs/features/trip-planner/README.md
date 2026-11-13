@@ -40,7 +40,7 @@ and [a day that does not fit opens an assistant](../../rules/a-day-that-does-not
 | The wizard                             | `components/planner/planner-wizard.tsx`                                                                                                       |
 | The panel (side sheet / bottom sheet)  | `components/planner/planner-flyout.tsx`, one day column `planner-day-column.tsx`                                                              |
 | The day grid                           | `components/planner/planner-day-grid.tsx`, `planner-block.tsx`                                                                                |
-| The optimizer and the fit assistant    | `lib/planner/optimize.ts`, `lib/planner/fit.ts`, `components/planner/planner-fit-assistant.tsx`                                               |
+| The optimizer and the fit assistant    | the API's `…/plan/optimize`, `lib/planner/optimize-remote.ts`, `lib/planner/fit.ts`, `components/planner/planner-fit-assistant.tsx`           |
 | Parky reading and editing the plan     | `lib/assistant/planner-context.ts`, `components/assistant/use-assistant-actions.ts` ([Parky](../assistant.md#actions-cards-and-the-position)) |
 | The page's article, fixtures and demos | `app/[locale]/trip-planner/content/<locale>.tsx`, `_fixtures.ts`, `_demos.tsx`                                                                |
 

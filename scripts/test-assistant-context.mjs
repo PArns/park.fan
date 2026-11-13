@@ -341,6 +341,63 @@ check(
   null,
   'reserve days: none'
 );
+const epcot = {
+  slug: 'epcot',
+  name: 'EPCOT',
+  geo: { continent: 'north-america', country: 'united-states', city: 'orlando' },
+  timezone: 'America/New_York',
+};
+check(
+  readAssistantAction({
+    type: 'planner_reserve_trip',
+    days: [
+      { park: epcot, date: '2027-03-04', extra: 1 },
+      { park, date: '2027-03-05' },
+      { park: epcot, date: '2027-03-04' },
+      { park: { ...epcot, timezone: 'Mars/Base' }, date: '2027-03-06' },
+      { park: epcot, date: 'soon' },
+    ],
+    url: 'https://evil.example',
+  }),
+  {
+    type: 'planner_reserve_trip',
+    days: [
+      { park: epcot, date: '2027-03-04' },
+      { park, date: '2027-03-05' },
+    ],
+  },
+  'reserve trip: each park checked, each park and day once, nothing riding along'
+);
+check(
+  readAssistantAction({ type: 'planner_reserve_trip', days: [{ park: epcot, date: 'x' }] }),
+  null,
+  'reserve trip: none left'
+);
+check(
+  readAssistantAction({
+    type: 'planner_reserve_trip',
+    days: Array.from({ length: 20 }, (_, i) => ({
+      park: epcot,
+      date: `2027-03-${String(i + 1).padStart(2, '0')}`,
+    })),
+  })?.days.length,
+  16,
+  'reserve trip: at most the visits a plan places'
+);
+{
+  const trip = reserveDays(EMPTY_PLANNER_STATE, [
+    { park: epcot, date: '2027-03-04' },
+    { park, date: '2027-03-05' },
+  ]);
+  check(
+    [
+      trip.parks.epcot?.days['2027-03-04']?.reserved,
+      trip.parks.phantasialand?.days['2027-03-05']?.reserved,
+    ],
+    [true, true],
+    'reserve trip: one write files the days of several parks'
+  );
+}
 check(
   readAssistantAction({ type: 'planner_share', url: 'https://evil.example' }),
   { type: 'planner_share' },

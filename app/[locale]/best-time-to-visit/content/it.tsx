@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from '@/i18n/navigation';
+import { orlandoBestTimePath } from '@/lib/orlando/paths';
 import { HOWTO_SEGMENTS } from '@/lib/howto/segments';
 import { PopularParksGrid } from '@/components/home/featured-parks-slot';
 import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
@@ -17,6 +18,7 @@ import {
   Sun,
 } from 'lucide-react';
 import {
+  A,
   Lead,
   P,
   PG,
@@ -286,6 +288,14 @@ export function ContentIT() {
         </SplitFigure>
         <P>Qualche parco popolare per iniziare subito:</P>
         <PopularParksGrid />
+        <P>
+          Vai a Orlando?{' '}
+          <A href={orlandoBestTimePath('it')}>Periodo migliore per andare a Orlando</A> mette in
+          fila i viaggi con le code più corte dell’anno per Disney e Universal insieme, e mese per
+          mese. Per un solo resort:{' '}
+          <A href={orlandoBestTimePath('it', 'disney-world')}>Walt Disney World</A>,{' '}
+          <A href={orlandoBestTimePath('it', 'universal-orlando')}>Universal Orlando</A>.
+        </P>
       </SectionShell>
 
       <SectionShell

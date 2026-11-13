@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from '@/i18n/navigation';
+import { orlandoBestTimePath } from '@/lib/orlando/paths';
 import { HOWTO_SEGMENTS } from '@/lib/howto/segments';
 import { PopularParksGrid } from '@/components/home/featured-parks-slot';
 import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
@@ -17,6 +18,7 @@ import {
   Sun,
 } from 'lucide-react';
 import {
+  A,
   Lead,
   P,
   PG,
@@ -288,6 +290,13 @@ export function ContentNL() {
         </SplitFigure>
         <P>Een paar populaire parken om meteen in te duiken:</P>
         <PopularParksGrid />
+        <P>
+          Ga je naar Orlando? <A href={orlandoBestTimePath('nl')}>Beste reistijd voor Orlando</A>{' '}
+          zet de reizen met de kortste rijen van het jaar op een rij voor Disney en Universal samen,
+          en per maand. Voor één resort:{' '}
+          <A href={orlandoBestTimePath('nl', 'disney-world')}>Walt Disney World</A>,{' '}
+          <A href={orlandoBestTimePath('nl', 'universal-orlando')}>Universal Orlando</A>.
+        </P>
       </SectionShell>
 
       <SectionShell

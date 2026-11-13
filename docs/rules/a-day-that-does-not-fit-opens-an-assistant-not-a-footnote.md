@@ -1,18 +1,19 @@
 # A day that does not fit opens an assistant, not a footnote (REQUIREMENT)
 
-Both optimise presses probe first with `needsFitHelp` (`lib/planner/fit.ts`) and, where anything
-would be left out, open `PlannerFitAssistant`, which writes nothing until its last step.
+Both optimise presses ask the API's optimizer, which asks first whether the day holds everything
+and answers `needs-fit` where anything would be left out; the press then opens
+`PlannerFitAssistant`, which writes nothing until its last step.
 
-- **Every hint is a measured difference between two plans, never advice.** `fitLevers` re-runs the
-  whole optimiser once per free block without it and once with it cut to `SHORT_BLOCK_MIN` (30), and
-  offers only what buys a ride. Shortening is offered before dropping, and dropping not at all where
+- **Every hint is a measured difference between two plans, never advice.** The API's levers re-run
+  the whole optimiser once per free block without it and once with it cut to 30 minutes, and offer
+  only what buys a ride. Shortening is offered before dropping, and dropping not at all where
   half an hour already solved it. A lever is a toggle: pressing it again puts the break back.
 - **The list is `fitOrder`, never a sort of its own**, so what stands at the bottom is what the
-  engine gives up first. Each row has a tick (wanted at all) and a pin (`OptimizeInput.priority`),
-  both recomputed against the same search the press will run.
+  engine gives up first. Each row has a tick (wanted at all) and a pin (the engine's priority), and
+  every tap asks the same search the press will run again.
 - **A ticked wish is re-planned, not parked past the gate**: every ride with a payload row goes to
-  the engine as an ADD. `optimizeDay` alone may never delete somebody's entry; this list, where the
-  ride is named, is the one place that is relaxed.
+  the engine as an ADD. The optimiser alone may never delete somebody's entry; this list, where
+  the ride is named, is the one place that is relaxed.
 - **The visitor's order beats the park's curation**: `isWanted` counts a ride named in `priority` as
   one somebody is there for, so a pinned filler no longer goes before an unpinned headliner.
 - **Solving it may not take the screen away.** The dialog's band and the wizard's block carry a
@@ -21,18 +22,18 @@ would be left out, open `PlannerFitAssistant`, which writes nothing until its la
   has been answered (`fitChoiceTouched`, derived, never latched, so a change of park or date resets
   it).
 - **The wizard asks the same question on its own step** (`park → date → setup → headliners`), and
-  `finish` reads the lunch block back out of `evaluateFit`'s answer, so the day filed is the day
-  shown.
+  `finish` reads the lunch block back out of the answer to the choice on screen, so the day filed
+  is the day shown.
 - **A block past closing says so in two shapes**, because the API reports a closing hour: past
   `closeMin + closeSlackMin` „Liegt nach Parkschluss", inside the hatched hour „Kann schon nach
   Parkschluss liegen", and nothing on a free block. The result line is a bordered warning with an
   „Anpassen" button back into the assistant.
 - **The ride page's „In den Plan" is the third press that asks.** `noRoomForRide`
-  (`lib/planner/add-ride-fit.ts`) builds the same `FitInput` from `fitWishes` and `fitBlocks`; where
+  (`lib/planner/add-ride-fit.ts`) asks the API the same question about the day plus this ride; where
   the day has no room nothing is written, and the assistant opens with the ride in its title
   (`fit.titleFor`) and pinned (`requestedRideChoice`), so the proposed plan cannot give up exactly
-  the ride that was asked for. No payload, a walked day, an unlisted ride or a park without readable
-  waits file as before.
+  the ride that was asked for. A refusal (a walked day, an unlisted ride, a park without readable
+  waits) or a failed request files as before.
 
 ## Why
 
@@ -46,6 +47,8 @@ blindly: eight presses at 20:10 gave `20:15 · 21:15 · 22:15 · 23:15 · 24:15 
 
 ## Check
 
-`pnpm test:planner-fit` pins the model (sections 12 and 13 cover the ride-page press);
-`pnpm check:planner` walks the three steps against a seeded day that cannot fit. Background:
+The model is pinned in the API (`fit.vectors.spec.ts`, the vectors this repo's
+`test:planner-fit` held, and `browser-parity.spec.ts`); `pnpm test:planner-fit` pins the list order,
+the toggles and the ride-page question; `pnpm check:planner` walks the three steps against a seeded
+day that cannot fit. Background:
 [trip planner → the fit assistant](../features/trip-planner/optimizer.md#the-fit-assistant).

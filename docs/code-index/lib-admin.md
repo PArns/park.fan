@@ -18,6 +18,11 @@ The data API keys of `/admin/api-keys`: the keys that unlock park.fan's forecast
 - `keyExpiryFrom` _function_: The end date a choice stands for, as the API takes it: a lifetime counted from `nowMs`, the end of the chosen day in Berlin, or null for never.
 - `keyExpiryDay` _function_: The Berlin day an end date falls on, `YYYY-MM-DD`, as a date field takes it.
 - `formatKeyExpiry` _function_: „gültig bis 30.06.2027“, „abgelaufen am 31.01.2026“, or „unbefristet“.
+- `dataApiKeyPath` _function_: The path of one key, or of its rotation (`rotate`) or the secret its last rotation kept (`previous`).
+- `describeRotationGrace` _function_: What a rotation with this grace period does to the old key, in one sentence.
+- `previousKeyValidUntil` _function_: Until when the secret a key's last rotation replaced still works, seen from `nowMs`: the end of its grace period, or the key's own end date when that comes first, as the API decides it.
+- `formatKeyMoment` _function_: „14.11.2026, 10:00“: a moment as the admin reads it, in Berlin.
+- `formatPreviousKeyStatus` _function_: „Alter Key gültig bis 14.11.2026, 10:00, zuletzt genutzt vor 5 Minuten“; `lastUsed` is the last use as the page words it, null for never.
 - `createDataApiKeyBody` _function_: The body of a create, as an object for `adminFetch` to serialize.
 - `dataApiKeyCurlExample` _function_: How a client sends the key, for the dialog to show next to it.
 - `DATA_API_KEY_USAGE_LABELS` _const_: The labels the page uses for a key's usage.
@@ -26,8 +31,10 @@ The data API keys of `/admin/api-keys`: the keys that unlock park.fan's forecast
 - `KEY_EXPIRY_TIME_ZONE` _const_: The time zone a key's end date is chosen and shown in: the admin's, Patrick's.
 - `KEY_EXPIRY_CHOICES` _const_: The select's options, in the order the token dialog shows its lifetimes.
 - `DATA_API_KEYS_PATH` _const_: The proxy path of the backend's key endpoints.
+- `ROTATION_GRACE_CHOICES` _const_: The grace periods the rotate dialog offers, shortest first.
+- `DEFAULT_ROTATION_GRACE_HOURS` _const_: The grace period the dialog starts with: a day, time for a holder to deploy the new key.
 - `DATA_API_KEYS_QUERY_KEY` _const_: The React Query key of the list.
-- Types: `DataApiKeyUsage`, `DataApiKeyDay`, `DataApiKeyStats`, `DataApiKey`, `CreatedDataApiKey`, `KeyExpiryChoice`, `CreateDataApiKeyBody`
+- Types: `DataApiKeyUsage`, `DataApiKeyDay`, `DataApiKeyStats`, `DataApiKey`, `CreatedDataApiKey`, `KeyExpiryChoice`, `RotationGraceHours`, `CreateDataApiKeyBody`
 
 ### [`blog-image-sidecar.ts`](../../lib/admin/blog-image-sidecar.ts)
 

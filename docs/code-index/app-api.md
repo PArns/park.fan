@@ -366,6 +366,7 @@ Route `/api/og/[...path]` (route).
 Route `/api/parks/[...path]` (route).
 
 - `GET` _function_
+- `POST` _function_: The trip planner's day optimizer (`…/plan/optimize`), relayed with the server's data key: the API plans against its own `/plan/day`, so the browser sends its plan and no forecast.
 
 ### [`parks/backgrounds/route.ts`](../../app/api/parks/backgrounds/route.ts)
 
@@ -431,6 +432,12 @@ Route `/api/revalidate` (route).
 Route `/api/search` (route).
 
 - `GET` _function_
+
+### [`trip-regions/[...path]/route.ts`](../../app/api/trip-regions/%5B...path%5D/route.ts)
+
+Route `/api/trip-regions/[...path]` (route).
+
+- `GET` _function_: The Orlando hub's relay to `/v1/trip-regions/orlando{,/calendar,/best-days,/plan}`: the planner asks `/plan` on every change and the calendar asks other windows than the page rendered, and the keyed routes need the site's data key, which …
 
 ### [`trips/[id]/route.ts`](../../app/api/trips/%5Bid%5D/route.ts)
 

@@ -10,6 +10,7 @@ import { PLANNER_SEGMENTS } from '@/lib/planner/segments';
 import type { Locale } from '@/i18n/config';
 import {
   BookOpen,
+  CalendarDays,
   CalendarPlus,
   CalendarRange,
   ChevronDown,
@@ -28,6 +29,7 @@ import { BrandLockup } from '@/components/layout/brand-lockup';
 import { NavMenu, NavEntryLabel, headerNavInk } from '@/components/layout/nav-menu';
 import { ParksMenuPanel } from '@/components/layout/parks-menu-panel';
 import { MoreMenuLinks } from '@/components/layout/more-menu-links';
+import { ORLANDO_SEGMENT, orlandoPath } from '@/lib/orlando/paths';
 import { MoreMenuPanel } from '@/components/layout/more-menu-panel';
 import { BlogMenuPanel } from '@/components/layout/blog-menu-panel';
 import { NewsMenuPanel } from '@/components/layout/news-menu-panel';
@@ -225,6 +227,11 @@ export function Header({
   // The hub uses localized slugs (usePathname is locale-stripped but keeps the
   // localized segment), so match against all of them.
   const isBestTime = Object.values(BEST_TIME_SEGMENTS).some((s) => pathname === '/' + s);
+  // Orlando's best-time pages open on the same hero, under the hub's own `orlando` segment.
+  const isOrlandoBestTime = Object.values(BEST_TIME_SEGMENTS).some((s) => {
+    const base = `/${ORLANDO_SEGMENT}/${s}`;
+    return pathname === base || pathname.startsWith(`${base}/`);
+  });
   // Same for the guide, which also opens on a full-bleed hero.
   const isHowto = Object.values(HOWTO_SEGMENTS).some((s) => pathname === '/' + s);
   // The blog index (not its sub-pages) opens with the same full-bleed hero.
@@ -241,7 +248,14 @@ export function Header({
   // Pages that open with a full-bleed hero the header floats over: transparent at the top, solid on
   // scroll. Their heroes show the photo in natural colours under a glass panel, so the floating
   // logo follows the theme (`darkHero` stays off).
-  const isHeroPage = isHomePage || isFancast || isBestTime || isHowto || isBlogIndex || isBlogPost;
+  const isHeroPage =
+    isHomePage ||
+    isFancast ||
+    isBestTime ||
+    isOrlandoBestTime ||
+    isHowto ||
+    isBlogIndex ||
+    isBlogPost;
   const darkHero = false;
   const [scrolled, setScrolled] = useState(false);
   const rafRef = useRef<number | null>(null);
@@ -748,6 +762,9 @@ export function Header({
                     )}
                     <SheetNavLink href={plannerPath} icon={CalendarPlus}>
                       {t('planner')}
+                    </SheetNavLink>
+                    <SheetNavLink href={orlandoPath()} icon={CalendarDays}>
+                      {t('orlando')}
                     </SheetNavLink>
                   </div>
                   {/* The same row as the foot of the "Mehr" panel, from one definition, smaller

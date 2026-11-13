@@ -224,6 +224,8 @@ export type AssistantAction =
     }
   | { type: 'planner_clear_day'; park: AssistantPlannerPark; date: string }
   | { type: 'planner_reserve_days'; park: AssistantPlannerPark; dates: string[] }
+  /** A trip across parks, as the API's `plan_vacation` placed it; a hop day names two parks. */
+  | { type: 'planner_reserve_trip'; days: Array<{ park: AssistantPlannerPark; date: string }> }
   | { type: 'planner_undo'; park: AssistantPlannerPark; date: string }
   | { type: 'planner_share' }
   | {
@@ -283,6 +285,8 @@ const CLOCK = /^(?:[01]\d|2[0-3]):[0-5]\d$/;
 const ENTRY_ID = /^[a-z0-9-]{1,100}$/;
 const MAX_PLAN_ENTRIES = 40;
 const MAX_RESERVED_DAYS = 14;
+/** The API's plan places at most this many park visits. */
+const MAX_RESERVED_TRIP_DAYS = 16;
 
 /** A zone the browser's `Intl` knows: the planner formats every time of the park in it. */
 function isTimeZone(value: unknown): boolean {
@@ -537,6 +541,26 @@ function isCard(card: AssistantCard | undefined): card is AssistantCard {
   return card.kind === 'park' && orNull(card.place, short) && isRideList(card.waits);
 }
 
+/**
+ * A trip's days, each park checked and each park and date once, rebuilt so nothing rides along; a
+ * day that fails its check is dropped, and a trip with none left refuses the action.
+ */
+function readTrip(value: unknown): AssistantAction | null {
+  if (!Array.isArray(value)) return null;
+  const seen = new Set<string>();
+  const days: Array<{ park: AssistantPlannerPark; date: string }> = [];
+  for (const day of value) {
+    if (!isPark(day?.park) || typeof day.date !== 'string' || !DAY.test(day.date)) continue;
+    const key = `${day.park.slug}@${day.date}`;
+    if (seen.has(key)) continue;
+    seen.add(key);
+    days.push({ park: day.park, date: day.date });
+  }
+  return days.length > 0
+    ? { type: 'planner_reserve_trip', days: days.slice(0, MAX_RESERVED_TRIP_DAYS) }
+    : null;
+}
+
 /** The entry ids that look like ids, at most a day's worth, one each; null where none is left. */
 function entryIds(value: unknown): string[] | null {
   if (!Array.isArray(value)) return null;
@@ -742,6 +766,8 @@ export function readAssistantAction(raw: unknown): AssistantAction | null {
         : null;
     case 'planner_share':
       return { type: 'planner_share' };
+    case 'planner_reserve_trip':
+      return readTrip(action.days);
     case 'planner_remove':
     case 'planner_move':
     case 'planner_update_block':

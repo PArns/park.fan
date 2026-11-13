@@ -1,85 +1,45 @@
-import type { PlanDay } from '@/lib/api/types';
-import { buildDayGrid, earlyEntryOpenMin, growGridForSpans, withEarlyEntry } from './day-grid';
-import { spansFor } from './estimate';
+import { addWishKey, fitChoiceAll, togglePin, type FitChoice } from './fit';
 import {
-  addWishKey,
-  fitBlocks,
-  fitChoiceAll,
-  fitWishes,
-  needsFitHelp,
-  togglePin,
-  type FitChoice,
-  type FitInput,
-} from './fit';
-import { canOptimize } from './optimize';
-import type { DayClock } from './park-time';
+  fitQuestion,
+  requestOptimize,
+  type FitAnswer,
+  type FitQuestion,
+  type OptimizeTarget,
+} from './optimize-remote';
 import type { PlannerEntry } from './types';
 
 /**
  * The question a press on „In den Plan" raises, or `null` where it raises none.
  *
  * The button files without a minute, so `addEntry` puts the ride an hour after the last entry, and
- * late in the day presses run past closing and stack on the 25:00 ceiling. So it asks what the
- * optimise buttons ask (`fitWishes`, `fitBlocks`, `needsFitHelp`): the day plus this ride, and
- * whether every wish gets a slot before `closeMin`. Where not, the answer is the `FitInput` the
- * assistant opens on, and nothing has been written.
+ * late in the day presses run past closing and stack on the 25:00 ceiling. So it asks the API's
+ * optimizer what the optimise buttons ask: the day plus this ride, and whether every wish gets a
+ * slot before closing. Where not, the answer is the question the assistant opens on, with the
+ * answer for everything ticked, and nothing has been written.
  *
- * `null` (file as before) wherever the question cannot be asked honestly: no payload, no hours, no
- * readable waits (`canOptimize`), a walked day, or a ride the payload does not list. A second go on
- * a planned ride is appended under its `a:<slug>` key, since `fitWishes` drops repeats. See
+ * `null` (file as before) wherever the API refuses the question: no hours, no readable waits, a
+ * walked day, or a ride `/plan/day` does not list. A second go on a planned ride is asked about
+ * under its `a:<slug>` key. A failed request throws; the caller files as before. See
  * docs/rules/a-day-that-does-not-fit-opens-an-assistant-not-a-footnote.md.
  */
-export function noRoomForRide(params: {
-  day: PlanDay | null | undefined;
+export async function noRoomForRide(params: {
+  target: OptimizeTarget;
   entries: readonly PlannerEntry[];
   attractionSlug: string;
-  clock: DayClock;
-  /**
-   * The visitor's early-entry answer for this day, folded in with `withEarlyEntry` as the day
-   * column does, so both ask about the same opening.
-   */
+  /** The visitor's early-entry answer for this day, as the day column folds it in. */
   earlyEntry?: boolean;
-}): FitInput | null {
-  const { entries, attractionSlug, clock } = params;
-  const day = withEarlyEntry(params.day, params.earlyEntry);
-  if (!day || clock.phase === 'past') return null;
-  const ride = day.rides.find((candidate) => candidate.attractionSlug === attractionSlug);
-  if (!ride) return null;
-
-  // The same grown axis the panel builds, so the assistant gets the grid the flyout would give it.
-  const grid = growGridForSpans(
-    buildDayGrid(
-      day.context.openHour,
-      day.context.closeHour,
-      undefined,
-      earlyEntryOpenMin(day.context)
-    ),
-    spansFor(day, entries)
-  );
-  if (!grid || !canOptimize(day, grid)) return null;
-
-  const wishes = fitWishes(day, entries, [ride], clock);
-  const key = addWishKey(attractionSlug);
-  if (!wishes.some((wish) => wish.key === key)) {
-    wishes.push({
-      key,
-      entryId: null,
-      attractionSlug,
-      attractionName: ride.attractionName,
-      ride,
-      headliner: Boolean(ride.isHeadliner),
-    });
-  }
-
-  const input: FitInput = {
-    day,
-    grid,
+}): Promise<{ question: FitQuestion; answer: FitAnswer } | null> {
+  const { target, entries, attractionSlug, earlyEntry } = params;
+  const question = fitQuestion(target, entries, { earlyEntry }, [attractionSlug]);
+  const answer = await requestOptimize(target, {
+    mode: 'fit',
     entries,
-    wishes,
-    blocks: fitBlocks(entries),
-    clock,
-  };
-  return needsFitHelp(input, fitChoiceAll()) ? input : null;
+    prefs: question.prefs,
+    add: question.add,
+    nowMinute: question.nowMinute,
+  });
+  if (answer.status !== 'fit' || !answer.fit) return null;
+  return answer.fit.fitted.length < answer.fit.wanted ? { question, answer: answer.fit } : null;
 }
 
 /**
