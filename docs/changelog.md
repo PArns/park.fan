@@ -15,6 +15,14 @@ heading, and the same pull request writes the public entry in `content/changelog
 
 Geschnitten am 2026-11-13 aus 53 Fragmenten in `docs/changelog.d/`. Der öffentliche Eintrag ist `content/changelog/2.20.0.md`. Neueste Abschnitte zuerst.
 
+### `check:prose` warnt vor einer Bildschirmtour mit „steht“
+
+Neue Warnung #114 `place-stands-tour` (Deutsch und Englisch, [§2.20](writing/2-20-check-patterns.md)): Ein Absatz, in dem dreimal eine Ortsangabe vor „steht“ oder „sits“ kommt („Unter den Tickets steht … Daneben steht … dabei steht nur …“), führt durch den Bildschirm, statt zu sagen, was der Besucher davon hat. Ein Nebensatz, dessen Subjekt nach der Ortsangabe kommt („in der die Party steht“), zählt nicht. Der Kritiker hat das Muster im Beitrag zum Reiseplaner gefunden. Über `content/blog/` schlägt die Regel einmal an, im deutschen Tagesplaner-Beitrag.
+
+### Der Orlando-Kalender nennt die Tagesausflüge in der Sprache des Lesers
+
+Die API nennt die Gruppe der Tagesausflüge auf Englisch, der deutsche Kalender, das Tagesblatt und der Planer zeigten deshalb „Day trips“. Die Hub-Seite setzt den Namen jetzt aus den Übersetzungen (`orlando.dayTripsGroup`, `withGroupNames` in `lib/orlando/hub-data.ts`), bevor die Region an die Seite geht; die Namen der Resorts bleiben die der Betreiber.
+
 ### Der Menüpunkt „Tagesplaner“ wird „Planen“, ein Band mit beiden Planern, und der Reiseplaner ist überall verlinkt
 
 Der Eintrag in der Kopfleiste heißt „Planen“ (Plan, Plannen, Planifier, Planificar, Pianifica) und hat wie „Mehr“ keine eigene Seite; sein Band (`PlannerMenuPanel`) zeigt links den Reiseplaner je Region als Kachel, für Orlando mit Parky im Urlaub (`OrlandoScene` aus Parkys Zeichenteilen, im hellen Design Tag, im dunklen Abend mit Feuerwerk, mit reduzierter Bewegung still, geladen beim ersten Öffnen), rechts den Tagesplaner mit dem nächsten geplanten Tag des Besuchers („8 Bahnen · 10:00–17:44 Uhr“ und seiner Zeitleiste) und „Einen Tag planen im“ mit den sechs meistgeöffneten Parks der Sprache ohne Events (`lib/parks/event-parks.ts`). Neue Regionen kommen mit einem Eintrag in `TRIP_REGIONS`; ab zwei Regionen werden die Kacheln eine Reihe. Das Burger-Menü hat dasselbe als Aufklapper. Etwa 1 KB Brotli mehr HTML je Seite; die Leiste hat bei 1024 px in allen sechs Sprachen Platz, Französisch mit dem knappsten Rest ([Header-Navigation](features/header-navigation.md)). Auf Englisch heißt der Tagesplaner jetzt überall „Day planner“ (Navigation, Footer, Landingpage, „So funktioniert park.fan“, Impressum, Datenschutz, Glossar, sieben Beiträge), „Trip planner“ ist der Reiseplaner; das Glossar trägt deshalb das Datum 13. November.

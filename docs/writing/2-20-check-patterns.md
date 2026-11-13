@@ -135,6 +135,7 @@ Two more named warnings live with the rule they enforce: `news-outlet-attributio
 - **#111 `heading-question-anaphora`** (4 headings; all six). Four `##` headings open on the same question word (`Was`, `What`, `Wat`, `Ce que`, `Qué`, `Cosa` …) and end without a question mark. `## Was über den Abend bekannt ist` A heading ending in `?` is the reader's question and never counts; at three headings the rule fired on 33 posts, because three indirect questions are often the visitor's questions §5.0 asks for.
 - **#112 `neither-nor-refrain`** (2 paragraphs, or 1 pair; all six). Paragraphs that close on `weder … noch` / `neither … nor`, or two sentences in a row that open on `Weder` / `Neither`. `wissen … weder Omroep Flevoland noch NOS oder VRT.`
 - **#113 `distancing-formula`** (1 sentence; de en nl fr). A press office's formula under a person's byline. `Von Gewalt distanzieren wir uns` Spanish and Italian are left to the critic: the plain sentence (`nehmen wir klar Abstand davon`) translates with the same verb.
+- **#114 `place-stands-tour`** (1 paragraph with 3; de en). A place, then `steht` / `sits`, three times in one paragraph: the text tours the screen (`Unter den Tickets steht … Daneben steht … dabei steht nur …`). Say what the thing does for the visitor and let the screenshot show where it is. A clause whose subject follows the place (`in der die Party steht`, `In the week view each day sits`) does not count.
 
 ## Where a rule gives way to a template
 
