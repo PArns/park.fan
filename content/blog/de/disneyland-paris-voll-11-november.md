@@ -2,7 +2,7 @@
 title: 'Disneyland Paris war am 11. November voll'
 translationKey: disneyland-paris-full-11-november
 date: '2026-11-13'
-time: '09:00'
+time: '07:42'
 author: patrick
 mode: published
 featured: false
