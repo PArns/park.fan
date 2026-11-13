@@ -604,13 +604,7 @@ export default async function ParkPage({ params, searchParams }: ParkPageProps) 
         {/* A winter break or a break of two weeks or more: the day the park opens again, before
           anything that reads as a live day. Decided on the server from the park's own day, so
           it is in the first HTML at its height. Renders nothing otherwise. */}
-        <ParkBreakPanel
-          park={park}
-          todayIso={todayIso}
-          geo={{ continent, country, city, parkSlug }}
-          scope="park"
-          className="mb-8"
-        />
+        <ParkBreakPanel park={park} todayIso={todayIso} scope="park" className="mb-8" />
 
         {/* Parks that publish wait times only inside their own app (Hansa-Park). Server-rendered,
           not streamed: `liveWaitTimes` is day-stable, so it arrives with the structure fetch and

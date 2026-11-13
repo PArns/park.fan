@@ -278,30 +278,3 @@ export async function getCalendarMonthSeed(
     CALENDAR_MONTH_SEED_TIMEOUT_MS
   );
 }
-
-/**
- * How long a park or ride page waits for the past days a break needs. Short, because the page
- * awaits them before its first byte: on a timeout the break panel stays out for this request, and
- * `after()` fills the cache for the next.
- */
-const BREAK_LOOKBACK_TIMEOUT_MS = 1500;
-
-/**
- * A few past days of `/calendar`, for how long a park has been shut already
- * (`parkBreakLookback`, `closedDaysBefore` in `lib/utils/park-break.ts`). Data-cached for a day
- * like a month summary; the range ends yesterday, so its URL changes once a day and the park page
- * and its ride pages share it. `null` on a timeout or an error, which the caller reads as no
- * closed days.
- */
-export async function getBreakLookbackSeed(
-  continent: string,
-  country: string,
-  city: string,
-  parkSlug: string,
-  { from, to }: { from: string; to: string }
-): Promise<IntegratedCalendarResponse | null> {
-  return withSeedTimeout(
-    fetchCalendarMonth(continent, country, city, parkSlug, from, to).catch(() => null),
-    BREAK_LOOKBACK_TIMEOUT_MS
-  );
-}

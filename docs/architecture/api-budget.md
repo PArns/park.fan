@@ -71,13 +71,6 @@ park and the park's early-entry line; the ride page asks for it only for a close
 once per page view, not polled. Against [the byte budget](../rules/a-day-in-the-park-has-a-byte-budget.md)
 the first visit grows from about 847 to 850 KB, at its ceiling.
 
-The server render asks for one more thing, and only for a park shut with one to two weeks to go:
-`getBreakLookbackSeed` (`lib/api/integrated-calendar.ts`) reads up to 7 past days of `/calendar`
-(`includeHourly=none`) so the break panel knows how long the park has been shut
-([park-break-panel](../features/park-break-panel.md)). It is data-cached for a day, shared by the
-park page and its ride pages, and bounded at 1.5 s; on 13 November 2026 four of 209 parks needed
-it. Nothing of it reaches the browser.
-
 Merging these requests is tempting and wrong:
 
 - **`best-days` and `stats` stay separate.** `stats` is a cold-compute aggregate on the backend

@@ -1,17 +1,10 @@
 import { getLocale, getTranslations } from 'next-intl/server';
 import { Leaf, Snowflake, Sprout } from 'lucide-react';
 import { ParkyBreakScene } from '@/components/assistant/parky/break-scene';
-import { getBreakLookbackSeed } from '@/lib/api/integrated-calendar';
 import { cn } from '@/lib/utils';
 import { getRelativeTimeFormat } from '@/lib/utils/intl-format';
 import { formatParkDay, weeksUntil } from '@/lib/utils/park-day';
-import {
-  closedDaysBefore,
-  parkBreakLookback,
-  parkBreakOf,
-  type ParkBreakFields,
-  type ParkBreakScene,
-} from '@/lib/utils/park-break';
+import { parkBreakOf, type ParkBreakFields, type ParkBreakScene } from '@/lib/utils/park-break';
 
 /** The reopening as the headline writes it: weekday, day, month and year. */
 const REOPENING_DAY: Intl.DateTimeFormatOptions = {
@@ -32,8 +25,6 @@ interface ParkBreakPanelProps {
   park: ParkBreakFields;
   /** The park's own day as `YYYY-MM-DD`, computed on the server. */
   todayIso: string;
-  /** The park's path, for the calendar days a short closure is measured with. */
-  geo: { continent: string; country: string; city: string; parkSlug: string };
   /** Which page is asking: the park page speaks of every ride, a ride page of its own. */
   scope: 'park' | 'ride';
   /** The ride's name, on a ride page. */
@@ -45,14 +36,12 @@ interface ParkBreakPanelProps {
  * The yellow glass panel for a park in a break: the day it opens again, how many weeks that is
  * away, and Parky asleep in a picture of the season, in his sled in winter, in the leaves in
  * autumn, among the tulips in spring. „Winterpause" for the winter break, „Saisonpause" for any
- * other closure of two weeks or more (`parkBreakOf`). It sits where
+ * other closure with its reopening a week or more away (`parkBreakOf`). It sits where
  * `NoLiveWaitTimesNotice` sits, because it answers the question the empty live panel raises.
  *
  * A server component with no client code: the break is decided on the server from the park's own
  * day, so the panel is in the first HTML at its full height and never moves the page, and its
- * strings live in their own namespace that never reaches the browser (`parks` does). A closure
- * with under two weeks to go asks the calendar how long it has run already; only then does the
- * panel fetch, from a day-long cache.
+ * strings live in their own namespace that never reaches the browser (`parks` does).
  *
  * Below `sm` the picture is a framed banner over the text; from `sm` it reaches the panel's top,
  * right and bottom edge and fades into the glass to its left, like the guide in a title card
@@ -61,16 +50,11 @@ interface ParkBreakPanelProps {
 export async function ParkBreakPanel({
   park,
   todayIso,
-  geo,
   scope,
   rideName,
   className,
 }: ParkBreakPanelProps) {
-  const lookback = parkBreakLookback(park, todayIso);
-  const past = lookback
-    ? await getBreakLookbackSeed(geo.continent, geo.country, geo.city, geo.parkSlug, lookback)
-    : null;
-  const parkBreak = parkBreakOf(park, todayIso, closedDaysBefore(past?.days, todayIso));
+  const parkBreak = parkBreakOf(park, todayIso);
   if (!parkBreak) return null;
 
   const [t, locale] = await Promise.all([getTranslations('parkBreak'), getLocale()]);

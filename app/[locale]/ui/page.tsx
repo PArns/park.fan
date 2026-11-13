@@ -1916,12 +1916,6 @@ export default async function UiStyleGuidePage({ params }: UiPageProps) {
                       key={todayIso + reopensOn}
                       park={breakDemoPark(todayIso, reopensOn)}
                       todayIso={todayIso}
-                      geo={{
-                        continent: 'europe',
-                        country: 'germany',
-                        city: 'demo',
-                        parkSlug: 'demo',
-                      }}
                       scope="park"
                     />
                   ))}

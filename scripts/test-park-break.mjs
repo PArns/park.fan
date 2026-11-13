@@ -1,20 +1,14 @@
 /**
  * Unit tests for `lib/utils/park-break.ts`, which decides whether the park and ride pages show the
  * yellow break panel, which label it carries and which picture. The cases are closures the
- * schedule and the calendar actually show: Hansa-Park shut until spring, Movie Park shut for two and
- * a half weeks between its Halloween and its Christmas season, a park open only at weekends, and
+ * schedule actually shows: Hansa-Park shut until spring, Movie Park shut for two
+ * weeks between its Halloween and its Christmas season, a park open only at weekends, and
  * parks with no winter at all.
  *
  * Run: `pnpm test:park-break`
  */
 import assert from 'node:assert/strict';
-import {
-  BREAK_MIN_DAYS,
-  WINTER_BREAK_MIN_DAYS,
-  closedDaysBefore,
-  parkBreakLookback,
-  parkBreakOf,
-} from '../lib/utils/park-break.ts';
+import { WINTER_BREAK_MIN_DAYS, parkBreakOf } from '../lib/utils/park-break.ts';
 import { OFFSEASON_MIN_DAYS } from '../lib/utils/schedule-utils.ts';
 
 let passed = 0;
@@ -92,16 +86,9 @@ test('Movie Park, shut until 27 November with two weeks to go, gets a season bre
   });
 });
 
-test('a day later it needs the day before: shut since 9 November, it still counts', () => {
-  const at = '2026-11-14';
-  assert.equal(parkBreakOf(park('2026-11-27', at), at), null);
-  assert.equal(parkBreakOf(park('2026-11-27', at), at, 5)?.scene, 'autumn');
-});
-
-test(`${BREAK_MIN_DAYS} days in all is the line: 13 is no break`, () => {
-  const at = '2026-11-14';
-  assert.equal(parkBreakOf(park('2026-11-27', at), at, 0), null);
-  assert.ok(parkBreakOf(park('2026-11-27', at), at, 1));
+test('a week before it opens it is still a season break, however long it has run', () => {
+  const at = '2026-11-20';
+  assert.equal(parkBreakOf(park('2026-11-27', at), at)?.scene, 'autumn');
 });
 
 test('shut until a Christmas season on 19 December is a season break, not the winter break', () => {
@@ -129,15 +116,14 @@ test('a park in the tropics has no winter break, but a long break is still one',
 
 // What keeps the panel away
 
-test('a park open only at weekends never gets the panel, whatever the past says', () => {
+test('a park open only at weekends never gets the panel, not even in February', () => {
   const at = '2027-02-08';
-  assert.equal(parkBreakOf(park('2027-02-13', at), at, 30), null);
-  assert.equal(parkBreakLookback(park('2027-02-13', at), at), null);
+  assert.equal(parkBreakOf(park('2027-02-13', at), at), null);
 });
 
 test(`the park cards' offseason line holds: ${OFFSEASON_MIN_DAYS - 1} days to go is no break`, () => {
   const at = '2027-02-01';
-  assert.equal(parkBreakOf(park('2027-02-07', at), at, 30), null);
+  assert.equal(parkBreakOf(park('2027-02-07', at), at), null);
   assert.ok(parkBreakOf(park('2027-02-08', at), at));
 });
 
@@ -195,44 +181,6 @@ test('a `date` on the next schedule wins over the opening instant', () => {
     parkBreakOf(park(null, '2026-11-13', { nextSchedule }), '2026-11-13')?.reopensOn,
     '2027-03-26'
   );
-});
-
-// Looking back
-
-test('the lookback asks for exactly the days the break is short of', () => {
-  assert.deepEqual(parkBreakLookback(park('2026-11-27', '2026-11-14'), '2026-11-14'), {
-    from: '2026-11-13',
-    to: '2026-11-13',
-  });
-  assert.deepEqual(parkBreakLookback(park('2026-11-27', '2026-11-20'), '2026-11-20'), {
-    from: '2026-11-13',
-    to: '2026-11-19',
-  });
-});
-
-test('no lookback for a break long enough ahead, or for none at all', () => {
-  assert.equal(parkBreakLookback(park('2026-11-27'), '2026-11-13'), null);
-  assert.equal(parkBreakLookback(park(null), '2026-11-13'), null);
-});
-
-test('closed days are counted back from yesterday until an operating day', () => {
-  const days = [
-    { date: '2026-11-08', status: 'OPERATING' },
-    { date: '2026-11-09', status: 'CLOSED' },
-    { date: '2026-11-10', status: 'CLOSED' },
-    { date: '2026-11-11', status: 'UNKNOWN' },
-    { date: '2026-11-12', status: 'CLOSED' },
-  ];
-  assert.equal(closedDaysBefore(days, '2026-11-13'), 4);
-});
-
-test('a day missing from the calendar ends the count, and no calendar counts nothing', () => {
-  const days = [
-    { date: '2026-11-10', status: 'CLOSED' },
-    { date: '2026-11-12', status: 'CLOSED' },
-  ];
-  assert.equal(closedDaysBefore(days, '2026-11-13'), 1);
-  assert.equal(closedDaysBefore(null, '2026-11-13'), 0);
 });
 
 console.log(`\n${passed} passed`);

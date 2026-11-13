@@ -17,7 +17,7 @@ Geschnitten am 2026-11-13 aus 53 Fragmenten in `docs/changelog.d/`. Der öffentl
 
 ### Parks in einer Pause zeigen ein gelbes Panel mit dem Tag der Wiedereröffnung und Parky in der Jahreszeit
 
-Park- und Ride-Seite zeigen für einen Park in einer längeren Pause ein gelbes Glas-Panel
+Park- und Ride-Seite zeigen für einen Park, der mindestens eine Woche zu ist, ein gelbes Glas-Panel
 (`ParkBreakPanel`): „Winterpause" oder „Saisonpause", „Öffnet wieder am Donnerstag, 25. März 2027",
 „in 19 Wochen", dazu ein Bild (`ParkyBreakScene`) der Jahreszeit: im Winter schläft Parky mit
 Pudelmütze und Schal auf seinem Holzschlitten neben dem Schneemann, im Herbst in einem Laubhaufen
@@ -30,14 +30,12 @@ Die Regel (`parkBreakOf`, `lib/utils/park-break.ts`): heute kein Betrieb laut Fa
 nächste Öffnung bekannt und mindestens `OFFSEASON_MIN_DAYS` (7) Tage entfernt. Das ist die Grenze,
 ab der Parkkarten (`getScheduleMessage`) und „Heute im Park" (`useTodaySchedule`) „Nebensaison"
 sagen; sie stand dort zweimal als `7` und steht jetzt einmal in `lib/utils/schedule-utils.ts`. Ein
-Park, der nur am Wochenende öffnet, bekommt das Panel also nie. Dazu entweder die Winterpause
-(mindestens 7 Tage in Januar bis März, südlich des Äquators Juli bis September, außerhalb der
-Tropen) oder eine Pause von insgesamt mindestens 14 Tagen. Für die Gesamtlänge liest das Panel bei
-weniger als 14 Tagen bis zur Öffnung die fehlenden Vortage aus `/calendar`
-(`getBreakLookbackSeed`, höchstens 7 Tage, einen Tag im Data Cache, 1,5 s Timeout). Am 13. November traf das 20 von 209 Parks: Hansa-Park und vier Wasser- und Saisonparks mit
-Winterpause, 15 mit Saisonpause, darunter Movie Park (9. bis 26. November) und Canada's
-Wonderland über den Rückblick; Chessington und Legoland Windsor (12 Tage zu) nicht.
-`pnpm test:park-break` mit 24 Fällen; alle vier Formen stehen auf `/ui`.
+Park, der nur am Wochenende öffnet, bekommt das Panel also nie. „Winterpause" heißt es, wenn
+mindestens 7 Tage davon in Januar bis März fallen (südlich des Äquators Juli bis September,
+außerhalb der Tropen), sonst „Saisonpause". Am 13. November traf das 22 von 209 Parks: Hansa-Park
+und vier Wasser- und Saisonparks mit Winterpause, 17 mit Saisonpause, darunter Movie Park (zu bis
+zum 27. November) und Parc Astérix (bis zum 19. Dezember). `pnpm test:park-break` mit 19 Fällen;
+alle vier Formen stehen auf `/ui`.
 
 Server-gerendert und ohne Client-Code, also ohne Layout-Sprung. Die Texte liegen im eigenen
 Namespace `parkBreak`, weil die Parkseite `parks` komplett an den Browser schickt. Die Parky-Formen

@@ -76,7 +76,7 @@ The frontend side of each API surface; the contract itself is linked from each p
 - [site-analytics](features/site-analytics.md) — Our own cookieless counter: the client facade and beacon, any event, page types, gates, reads, marked markup (links, places, FAQ), the admin Traffic (filters, map), event, SEO, Search and Wege pages
 - [site-search](features/site-search.md) — Post search (palette, /search, header panel, /blog and /news): index, matching, tabs, ranking, height ease
 - [weather-day-chart](features/weather-day-chart.md) — Weather card day chart: warped time axis, linear fallbacks, DST index, 143 px axis row, ticks, labels, rain
-- [park-break-panel](features/park-break-panel.md) — The yellow panel for a park in its winter break or a break of two weeks or more, on the park and ride pages: the rule, the lookback, the season's picture, why it is server-only
+- [park-break-panel](features/park-break-panel.md) — The yellow panel for a park shut until a reopening a week or more away, on the park and ride pages: the rule, the season's picture, why it is server-only
 - [trip-planner/](features/trip-planner/README.md) — Trip planner entry: file map, storage, park-local time, how /plan/day is read, index of the parts
 
 ## Design

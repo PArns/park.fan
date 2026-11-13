@@ -2,15 +2,16 @@
 
 The yellow glass panel a park shows on its park page and on every ride page while it is shut for a
 while: the day it opens again, how many weeks that is away, and Parky asleep in a picture of the
-season. „Winterpause" for the winter break, „Saisonpause" for any other break of two weeks or more.
+season. „Winterpause" for the winter break, „Saisonpause" for any other closure whose reopening is a
+week or more away.
 The panel is `ParkBreakPanel` (`components/parks/park-break-panel.tsx`), the rule is `parkBreakOf`
 (`lib/utils/park-break.ts`) and the picture is `ParkyBreakScene`
 (`components/assistant/parky/break-scene.tsx`). `/ui` shows all four forms.
 
 ## When a park gets the panel
 
-`parkBreakOf(park, todayIso, closedBefore)` answers from the schedule and the calendar, never from
-the live status, which reads `CLOSED` every night. First the closure ahead has to hold:
+`parkBreakOf(park, todayIso)` answers from the schedule alone, never from the live status, which
+reads `CLOSED` every night:
 
 - the park has an operating schedule and today's entry is not `OPERATING`;
 - `nextSchedule` names the next opening; its `date`, else the park-local day of its `openingTime`;
@@ -19,27 +20,15 @@ the live status, which reads `CLOSED` every night. First the closure ahead has t
   park shut for a few days, which they name the weekday of, and one between seasons, which they
   call „Nebensaison". A park open only at weekends never gets the panel, not even in February.
 
-Then one of two:
+The label is „Winterpause" when at least `WINTER_BREAK_MIN_DAYS` (7) of the days from today to the
+reopening fall in January, February or March (July to September south of the equator) and the park
+lies outside the tropics (|latitude| ≥ 23.44°), „Saisonpause" otherwise. December does not count:
+parks shut into it are mostly waiting for their Christmas season after their Halloween one.
 
-- **the winter break:** at least `WINTER_BREAK_MIN_DAYS` (7) of the days from today to the
-  reopening fall in January, February or March (July to September south of the equator), and the
-  park lies outside the tropics (|latitude| ≥ 23.44°). December does not count: parks shut into it
-  are mostly waiting for their Christmas season after their Halloween one;
-- **a long break:** at least `BREAK_MIN_DAYS` (14) in all, from the day after the last operating
-  day to the day before the reopening.
-
-The second needs the past when fewer than 14 days are left. `parkBreakLookback` names the days the
-break is short of, at most 7 back to yesterday; `ParkBreakPanel` reads them with
-`getBreakLookbackSeed` and counts them with `closedDaysBefore`, which stops at the first operating
-day and at a day the calendar does not have. The calendar is a forecast route, so the fetch needs
-`API_DATA_KEY`; without it, or after its 1.5 s timeout, the count is 0 and only a break with two
-weeks still ahead shows. What that costs: [API budget](../architecture/api-budget.md#the-park-page-request-by-request).
-
-On 13 November 2026, 20 of the 209 parks got the panel: Hansa-Park and four water and seasonal
-parks for their winter break, and 15 for a break between seasons, among them Movie Park (shut from
-9 to 26 November), Parc Astérix (until 19 December) and Canada's Wonderland, which had already
-been shut six days with eight to go. Chessington and Legoland Windsor, shut for 12 days, got none,
-nor did Heide Park, whose reopening the API did not know: the panel exists to name the date.
+On 13 November 2026, 22 of the 209 parks got the panel: Hansa-Park and four water and seasonal
+parks with „Winterpause", and 17 with „Saisonpause", among them Movie Park (until 27 November),
+Parc Astérix (until 19 December) and Chessington (until 21 November). Heide Park got none: the API
+did not know its reopening, and the panel exists to name the date.
 
 `pnpm test:park-break` holds the cases.
 

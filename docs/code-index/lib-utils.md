@@ -336,10 +336,7 @@ When the nowcast says it is time to go under a roof: the trigger for the covered
 
 ### [`park-break.ts`](../../lib/utils/park-break.ts)
 
-- `parkBreakLookback` _function_: The past days to look up before `parkBreakOf` can answer, as an inclusive `YYYY-MM-DD` range ending yesterday, or null when none are needed.
-- `closedDaysBefore` _function_: How many days in a row the park was shut right before `todayIso`, read from calendar days (`CalendarDay.date` and `.status`). A day missing from the list ends the run, so a gap in the data never lengthens a break.
-- `parkBreakOf` _function_: Whether the park is in a break on `todayIso` worth its own panel, and until when.
-- `BREAK_MIN_DAYS` _const_: How long a break has to last in all, from the day after the last operating day to the day before the reopening, before it gets its panel outside winter.
+- `parkBreakOf` _function_: Whether the park is in a break on `todayIso`, and until when: shut today by the schedule, the next opening known and at least `OFFSEASON_MIN_DAYS` away.
 - `WINTER_BREAK_MIN_DAYS` _const_: How many days of a closure have to fall in the park's winter before it is the winter break.
 - Types: `ParkBreakScene`, `ParkBreak`, `ParkBreakFields`
 

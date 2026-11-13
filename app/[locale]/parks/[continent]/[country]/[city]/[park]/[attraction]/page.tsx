@@ -814,7 +814,6 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
             <ParkBreakPanel
               park={park}
               todayIso={todayIso}
-              geo={{ continent, country, city, parkSlug }}
               scope="ride"
               rideName={attractionName}
               className="mt-4 mb-8"
