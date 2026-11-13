@@ -106,11 +106,14 @@ export function tripDaysBucket(days: number): TripDaysBucket {
 
 /**
  * `trip_plan_requested` from the request's own query, the API's names: what the visitor decided,
- * never the dates themselves. `parks` 0 is the headliners, the API's default.
+ * never the dates themselves. `parks` 0 is the headliners, the API's default. `hopperResorts` are
+ * the region's resorts that sell a hopper (`hopperResorts` in plan-tickets), so `hopper` says
+ * none, some or all of them without naming a resort of any one region.
  */
 export function tripPlanRequestProps(
   query: Readonly<Record<string, string>>,
-  mode: 'dates' | 'when'
+  mode: 'dates' | 'when',
+  hopperResorts: readonly string[]
 ): TripEventProps<'trip_plan_requested'> {
   const days =
     mode === 'when'
@@ -118,15 +121,16 @@ export function tripPlanRequestProps(
       : query.from && query.to
         ? daysBetween(query.from, query.to) + 1
         : 0;
-  const hopper = query.ticket === 'hopper' ? ['all'] : (query.hopper ?? '').split(',');
-  const disney = hopper.includes('all') || hopper.includes('walt-disney-world');
-  const universal = hopper.includes('all') || hopper.includes('universal-orlando');
+  const chosen = (query.hopper ?? '').split(',').filter(Boolean);
+  const every =
+    query.ticket === 'hopper' ||
+    (hopperResorts.length > 0 && hopperResorts.every((r) => chosen.includes(r)));
   return {
     mode,
     days: tripDaysBucket(days),
     parks: query.parks ? query.parks.split(',').length : 0,
     tickets: query.tickets ? 'owned' : 'none',
-    hopper: disney && universal ? 'both' : disney ? 'disney' : universal ? 'universal' : 'none',
+    hopper: every ? 'all' : chosen.length > 0 ? 'some' : 'none',
     blocks: query.blocks === '1' ? 'on' : query.blocks === '0' ? 'off' : 'default',
     rest: query.rest === 'none' ? 'none' : query.rest?.startsWith('max:') ? 'max' : 'auto',
   };

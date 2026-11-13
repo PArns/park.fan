@@ -847,7 +847,7 @@ export const EVENT_INFO: Record<SiteEventName, EventInfo> = {
   },
   trip_plan_requested: {
     label: 'Reiseplan angefragt',
-    when: 'Ein Plan oder eine Datumssuche, sobald die Eingaben ruhen; mit Modus, Reiselänge, Parks, Tickets, Hopper, Blöcken und Ruhetagen.',
+    when: 'Ein Plan oder eine Datumssuche, sobald die Eingaben ruhen; mit Modus, Reiselänge, Parks, Tickets, Hopper (bei keinem, einigen oder allen Resorts der Region), Blöcken und Ruhetagen.',
   },
   trip_plan_shown: {
     label: 'Reiseplan gezeigt',

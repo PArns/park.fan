@@ -37,6 +37,13 @@ export const TICKET_RESORTS = [
 /** One of {@link TICKET_RESORTS}. */
 export type TicketResort = (typeof TICKET_RESORTS)[number];
 
+/** The resorts whose catalog sells a hopper as an option: where plan first's `hopper=` can name one. */
+export function hopperResorts(catalog: TicketCatalog): string[] {
+  return [
+    ...new Set([...catalog.values()].filter((p) => p.hopping === 'optional').map((p) => p.resort)),
+  ];
+}
+
 /** The catalog keyed by id; empty without one. */
 export function ticketCatalog(products: readonly TicketProduct[] | undefined): TicketCatalog {
   return new Map((products ?? []).map((p) => [p.id, p]));

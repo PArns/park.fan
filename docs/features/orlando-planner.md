@@ -206,12 +206,12 @@ room to spare.
 
 The funnel, in the order a visitor meets it:
 
-| Event                   | Properties                                                                                                     | Fires                                                                                                                   |
-| ----------------------- | -------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
-| `trip_planner_started`  | `source`: hero, button, link                                                                                   | the hub's hero, the planner's own button, or a link that carries a plan or a search (a shared one, Parky's)             |
-| `trip_tickets_answered` | `answer`: not_yet, yes, skipped                                                                                | the ticket question answered; `skipped` is "Next: dates" without an answer                                              |
-| `trip_plan_requested`   | `mode` (dates, when), `days` (1-4 … 15-21), `parks` (0: the headliners), `tickets`, `hopper`, `blocks`, `rest` | every distinct request once the controls are still, a pin or a swap included                                            |
-| `trip_plan_shown`       | `mode`, `outcome` (ok, relaxed, error), `relaxed`, `status`, `unplaced`, `windows`                             | the answer to that request on screen, once; `relaxed` names the loosened rule that weighs most, `status` 0 is no answer |
+| Event                   | Properties                                                                                                                                                        | Fires                                                                                                                   |
+| ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| `trip_planner_started`  | `source`: hero, button, link                                                                                                                                      | the hub's hero, the planner's own button, or a link that carries a plan or a search (a shared one, Parky's)             |
+| `trip_tickets_answered` | `answer`: not_yet, yes, skipped                                                                                                                                   | the ticket question answered; `skipped` is "Next: dates" without an answer                                              |
+| `trip_plan_requested`   | `mode` (dates, when), `days` (1-4 … 15-21), `parks` (0: the headliners), `tickets`, `hopper` (none, some or all of the region's hopper resorts), `blocks`, `rest` | every distinct request once the controls are still, a pin or a swap included                                            |
+| `trip_plan_shown`       | `mode`, `outcome` (ok, relaxed, error), `relaxed`, `status`, `unplaced`, `windows`                                                                                | the answer to that request on screen, once; `relaxed` names the loosened rule that weighs most, `status` 0 is no answer |
 
 And the decisions along the way:
 

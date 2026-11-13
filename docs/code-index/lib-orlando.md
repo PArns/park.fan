@@ -204,6 +204,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`plan-tickets.ts`](../../lib/orlando/plan-tickets.ts)
 
+- `hopperResorts` _function_: The resorts whose catalog sells a hopper as an option: where plan first's `hopper=` can name one.
 - `ticketCatalog` _function_: The catalog keyed by id; empty without one.
 - `leanTicketCatalog` _function_: The catalog as the browser needs it: the operators' notes and the rules only the optimizer reads (`hopSets`, `caps`, `confidence`) stay on the server, which keeps the planner's payload small.
 - `ticketEntries` _function_: A resort's product list, keeping only the products the catalog has; an entry with none left goes, so a product the API drops leaves the list without a dead button.

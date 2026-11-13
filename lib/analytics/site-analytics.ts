@@ -338,15 +338,16 @@ export interface SiteEventMap {
   trip_ticket_start: TripEvent<{ entry: string; resort: string; start: 'set' | 'open' }>;
   /**
    * A plan or a search for dates asked for, once the controls are still: the mode, the trip's
-   * length as a bucket, how many parks (0: the headliners), owned tickets or none, plan first's
-   * hopper per resort, resort blocks and the rest rule. With the region that is eight, the limit.
+   * length as a bucket, how many parks (0: the headliners), owned tickets or none, how many of the
+   * region's resorts plan first gives a hopper (none, some, all), resort blocks and the rest rule.
+   * With the region that is eight, the limit.
    */
   trip_plan_requested: TripEvent<{
     mode: 'dates' | 'when';
     days: TripDaysBucket;
     parks: number;
     tickets: 'none' | 'owned';
-    hopper: 'none' | 'disney' | 'universal' | 'both';
+    hopper: 'none' | 'some' | 'all';
     blocks: 'default' | 'on' | 'off';
     rest: 'auto' | 'none' | 'max';
   }>;

@@ -38,6 +38,7 @@ import { PlanRequestError } from '@/lib/orlando/plan-fetch';
 import { whenRequestQuery } from '@/lib/orlando/plan-when';
 import { readTickets } from '@/lib/orlando/plan-query';
 import {
+  hopperResorts,
   hopperTicketResorts,
   ticketProblem,
   ticketWindow,
@@ -657,14 +658,19 @@ function usePlanEvents(
   const requested = useRef<string | null>(null);
   const answered = useRef<string | null>(null);
   const track = useTripEvents();
+  const { tickets: catalog } = usePlanContext();
   useEffect(() => {
     if (!asked || requested.current === asked) return;
     requested.current = asked;
     track(
       'trip_plan_requested',
-      tripPlanRequestProps(Object.fromEntries(new URLSearchParams(asked)), mode)
+      tripPlanRequestProps(
+        Object.fromEntries(new URLSearchParams(asked)),
+        mode,
+        hopperResorts(catalog)
+      )
     );
-  }, [asked, mode, track]);
+  }, [asked, mode, track, catalog]);
   const key = shown ? JSON.stringify(shown) : null;
   useEffect(() => {
     if (!asked || !key || answered.current === asked) return;
