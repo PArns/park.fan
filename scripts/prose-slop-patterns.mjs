@@ -1474,6 +1474,32 @@ const DISTANCING = {
   fr: /(?<!\p{L})nous\s+(?:nous\s+)?(?:désolidaris|dissoci|distanci)\p{L}*/iu,
 };
 
+/*
+ * A place, then the verb that only says something is there: `Unter dem Plan steht …`, `Daneben
+ * steht …`, `dabei steht nur …`. Once is a description; three in one paragraph walk the reader
+ * through the screen. German puts the verb second, so the place opens the clause; English needs
+ * the inversion (`Below the plan sits …`), and `in`, `on` and `at` count only with `sits` or
+ * `stands`, since `In March it is hot` is no place. An article or pronoun after the place's first
+ * word starts the subject (`In the week view each day sits`, `in der die Party steht`), so the
+ * clause is an ordinary one and does not count.
+ */
+const PLACE_GAP = (subject) =>
+  `(?:\\s+[^\\s,.!?;:]+(?:\\s+(?!(?:${subject})(?!\\p{L}))[^\\s,.!?;:]+){0,4}?)`;
+const DE_SUBJECT =
+  'der|die|das|den|dem|des|ein|eine|einen|einem|einer|eines|er|sie|es|man|ich|du|wir|ihr|jeder|jede|jedes';
+const EN_SUBJECT =
+  'the|a|an|each|every|this|that|these|those|its|their|your|our|my|his|her|it|there|they|we|you|he|she|i';
+const PLACE_STANDS = {
+  de: new RegExp(
+    `(?:^|[,;:–—]\\s+)(?:(?:ganz|gleich|direkt|rechts|links)\\s+)?(?:(?:darunter|darüber|daneben|dahinter|davor|dazwischen|darin|darauf|dabei|dort|hier|oben|unten|links|rechts)${PLACE_GAP(DE_SUBJECT)}?|(?:unter|über|neben|hinter|vor|in|im|auf|am|an|bei|beim|zwischen|unterhalb|oberhalb)${PLACE_GAP(DE_SUBJECT)})\\s+(?:steht|stehen)(?!\\p{L})`,
+    'giu'
+  ),
+  en: new RegExp(
+    `(?:^|[,;:–—]\\s+)(?:(?:right|just|directly)\\s+)?(?:(?:below|above|under|underneath|beneath|beside|next\\s+to|behind|on\\s+top\\s+of|at\\s+the\\s+(?:top|bottom)\\s+of)${PLACE_GAP(EN_SUBJECT)}?\\s+(?:sits|sit|stands|stand|appears|appear|is|are)|(?:in|on|at)${PLACE_GAP(EN_SUBJECT)}\\s+(?:sits|sit|stands|stand))(?!\\p{L})`,
+    'giu'
+  ),
+};
+
 /**
  * One entry per pattern. `run(ctx)` returns the matching passages, `min` is how many a post may
  * carry before the warning fires. `ctx` is `{ bs, locale, fields, raw }`: the blocks of the post,
@@ -3697,6 +3723,23 @@ export const SLOP_RULES = [
       return running(bs).flatMap((b) =>
         splitSentences(b.text).filter((s) => DISTANCING[locale].test(s))
       );
+    },
+  },
+  {
+    id: 'place-stands-tour',
+    section: '§2.20 #114',
+    // `Unter den Tickets steht … Daneben steht … dabei steht nur …`: the paragraph tours the
+    // screen instead of saying what the reader gets. Three in one paragraph fire; say what the
+    // thing does for the visitor and let the screenshot show where it is. German and English.
+    locales: ['de', 'en'],
+    min: 1,
+    run({ bs, locale }) {
+      return paragraphs(bs).flatMap((b) => {
+        const hits = splitSentences(b.text).flatMap((sentence) =>
+          [...sentence.matchAll(PLACE_STANDS[locale])].map((m) => m[0].replace(/^[,;:–—]\s+/, ''))
+        );
+        return hits.length >= 3 ? [`${hits.join(' / ')} ×${hits.length}`] : [];
+      });
     },
   },
   {
