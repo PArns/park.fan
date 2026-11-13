@@ -242,6 +242,37 @@ export function ParkySpotlight() {
 }
 
 /**
+ * A park map held low in front of Parky: three panels, the middle one with a lake and a dot where
+ * he is. In the `map` moment the side panels unfold and the dot pulses; `still` draws it unfolded
+ * and quiet, for a picture rather than an act.
+ */
+export function ParkyMap({ still = false }: { still?: boolean }) {
+  return (
+    <g className={still ? undefined : 'parky-book parky-map'}>
+      <g className={still ? undefined : 'parky-map-left'}>
+        <path d="M17.6 29 5 30.6v16l12.6-1.6Z" fill="oklch(0.93 0.04 95)" />
+        <circle cx="9.5" cy="36" r="2" fill="oklch(0.72 0.14 146)" />
+        <circle cx="12.6" cy="40.6" r="1.6" fill="oklch(0.72 0.14 146)" />
+        <path d="M5.5 43.6q5-2.6 12.1-3" fill="none" stroke={rail} strokeWidth=".8" />
+      </g>
+      <g>
+        <path d="M17.6 29h12.8v16H17.6Z" fill="oklch(0.97 0.03 95)" />
+        <ellipse cx="24" cy="34" rx="3.6" ry="2" fill={water} />
+        <path d="M17.6 40.6q4-.8 6.4 0t6.4-2" fill="none" stroke={rail} strokeWidth=".8" />
+        {!still && <circle className="parky-here-ring" cx="24" cy="40.6" r="1.8" fill={heartRed} />}
+        <circle cx="24" cy="40.6" r="1.3" fill={heartRed} stroke="white" strokeWidth=".5" />
+      </g>
+      <g className={still ? undefined : 'parky-map-right'}>
+        <path d="M30.4 29 43 30.6v16l-12.6-1.6Z" fill="oklch(0.93 0.04 95)" />
+        <circle cx="36.8" cy="36.2" r="3" fill="none" stroke={rail} strokeWidth="1" />
+        <path d="M30.4 38.6q3.6-.4 6.4 0.6" fill="none" stroke={rail} strokeWidth=".8" />
+      </g>
+      <path d="M17.6 29v16M30.4 29v16" stroke={ink} strokeOpacity=".15" strokeWidth=".5" />
+    </g>
+  );
+}
+
+/**
  * What Parky holds or wears for a moment of a park day, drawn over his face; `null` for an act
  * without one. The motion is the stylesheet's (`.parky-act-<act>`); under reduced motion the prop
  * simply shows for the act.
@@ -349,29 +380,7 @@ export function ParkyMoment({ act }: { act: string | null }) {
         </>
       );
     case 'map':
-      return (
-        <g className="parky-book parky-map">
-          <g className="parky-map-left">
-            <path d="M17.6 29 5 30.6v16l12.6-1.6Z" fill="oklch(0.93 0.04 95)" />
-            <circle cx="9.5" cy="36" r="2" fill="oklch(0.72 0.14 146)" />
-            <circle cx="12.6" cy="40.6" r="1.6" fill="oklch(0.72 0.14 146)" />
-            <path d="M5.5 43.6q5-2.6 12.1-3" fill="none" stroke={rail} strokeWidth=".8" />
-          </g>
-          <g>
-            <path d="M17.6 29h12.8v16H17.6Z" fill="oklch(0.97 0.03 95)" />
-            <ellipse cx="24" cy="34" rx="3.6" ry="2" fill={water} />
-            <path d="M17.6 40.6q4-.8 6.4 0t6.4-2" fill="none" stroke={rail} strokeWidth=".8" />
-            <circle className="parky-here-ring" cx="24" cy="40.6" r="1.8" fill={heartRed} />
-            <circle cx="24" cy="40.6" r="1.3" fill={heartRed} stroke="white" strokeWidth=".5" />
-          </g>
-          <g className="parky-map-right">
-            <path d="M30.4 29 43 30.6v16l-12.6-1.6Z" fill="oklch(0.93 0.04 95)" />
-            <circle cx="36.8" cy="36.2" r="3" fill="none" stroke={rail} strokeWidth="1" />
-            <path d="M30.4 38.6q3.6-.4 6.4 0.6" fill="none" stroke={rail} strokeWidth=".8" />
-          </g>
-          <path d="M17.6 29v16M30.4 29v16" stroke={ink} strokeOpacity=".15" strokeWidth=".5" />
-        </g>
-      );
+      return <ParkyMap />;
     case 'photo':
       return (
         <>

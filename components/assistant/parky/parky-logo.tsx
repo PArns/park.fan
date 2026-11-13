@@ -20,6 +20,7 @@ import {
   ParkyLookHands,
   ParkyLookHat,
   ParkyLookWear,
+  ParkyShades,
 } from './looks';
 import {
   BUBBLE,
@@ -463,18 +464,7 @@ export function ParkyLogo({
         )}
         {act === 'shades' && (
           // Sunglasses, slid down from the hat onto the eyes.
-          <g className="parky-shades">
-            <path d="M10 17h28" stroke={ink} strokeWidth="1.6" strokeLinecap="round" />
-            <path d="M10.6 17H23v6.2c0 3.2-2.6 5.4-6.2 5.4s-6.2-2.2-6.2-5.4Z" fill={ink} />
-            <path d="M25 17h12.4v6.2c0 3.2-2.6 5.4-6.2 5.4S25 26.4 25 23.2Z" fill={ink} />
-            <path
-              d="M13 19.4h3.2M27.4 19.4h3.2"
-              stroke="white"
-              strokeOpacity=".55"
-              strokeWidth=".9"
-              strokeLinecap="round"
-            />
-          </g>
+          <ParkyShades className="parky-shades" />
         )}
         {act === 'nightcap' && (
           // A nightcap in place of the wheel: a white brim round the top of the head, the cap

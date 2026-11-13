@@ -3233,3 +3233,55 @@
     animation-delay: -0.8s;
   }
 }
+
+/*
+ * Parky on holiday in Orlando (`components/assistant/parky/orlando-scene.tsx`), the picture of the
+ * header's planner band: the launch draws its trail and the evening's bursts open, once each time
+ * the band shows. Nothing repeats, since the band is glass. Without motion the picture stands
+ * finished.
+ */
+.parky-orlando-burst {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .parky-orlando-burst {
+    animation: parky-orlando-burst 1.2s cubic-bezier(0.2, 0.7, 0.3, 1) both;
+  }
+  .parky-orlando-trail {
+    stroke-dasharray: 1;
+    animation: parky-orlando-trail 1.6s ease-out both;
+  }
+  .parky-orlando-rocket {
+    animation: parky-orlando-rise 1.6s ease-out both;
+  }
+}
+@keyframes parky-orlando-burst {
+  from {
+    opacity: 0;
+    transform: scale(0.25);
+  }
+  60% {
+    opacity: 1;
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+@keyframes parky-orlando-trail {
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes parky-orlando-rise {
+  from {
+    opacity: 0;
+  }
+  40% {
+    opacity: 1;
+  }
+}
