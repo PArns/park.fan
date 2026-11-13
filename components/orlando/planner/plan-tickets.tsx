@@ -35,7 +35,7 @@ import { Badge } from '@/components/ui/badge';
 import { usePlanContext } from './plan-context';
 import { PLAN_FOCUS, PlanCheckRow, PlanChip } from './plan-controls';
 import { PlanMonthGrid } from './plan-month-grid';
-import { productName, useHopperWord, useResortWord } from './plan-ticket-words';
+import { oneStop, productName, useHopperWord, useResortWord } from './plan-ticket-words';
 
 /** Whether the ticket question was answered, and how. */
 export type TicketAnswer = 'unasked' | 'yes' | 'no';
@@ -738,10 +738,12 @@ function TicketFields({
 
       {issue?.kind === 'not_on_sale' && (
         <p className="text-crowd-ink-high text-sm" role="status">
-          {t('fields.notOnSale', {
-            name: productName(catalog, issue.product),
-            ranges: saleRanges(catalog.get(issue.product), locale, t),
-          })}
+          {oneStop(
+            t('fields.notOnSale', {
+              name: productName(catalog, issue.product),
+              ranges: saleRanges(catalog.get(issue.product), locale, t),
+            })
+          )}
         </p>
       )}
 
@@ -955,7 +957,7 @@ function WindowLine({
   return (
     <p className="flex gap-2 text-sm" aria-live="polite" data-ticket-window={draft.id}>
       <Check className="text-crowd-ink-low mt-0.5 size-4 shrink-0" aria-hidden="true" />
-      <span>{lines.join(' ')}</span>
+      <span>{oneStop(lines.join(' '))}</span>
     </p>
   );
 }

@@ -81,6 +81,14 @@ export function PlanSetup({
   };
   const summary = usePlanOptionsSummary(state);
   const ticketSummary = useTicketSummary(ticketStep);
+  // The desk's panel is open while the question is; a "Yes" keeps it open for the tickets.
+  const deskStep: TicketStep = {
+    ...ticketStep,
+    answerYes: () => {
+      onTicketsOpen(true);
+      ticketStep.answerYes();
+    },
+  };
   const notYet = () => {
     ticketStep.answerNo();
     if (wide) {
@@ -237,7 +245,7 @@ export function PlanSetup({
             panelKey="tickets"
           >
             <div className="flex flex-col gap-4">
-              <PlanTickets step={ticketStep} onNotYet={notYet} defaultMonth={defaultMonth} wide />
+              <PlanTickets step={deskStep} onNotYet={notYet} defaultMonth={defaultMonth} wide />
               {ticketStep.answer !== 'unasked' && (
                 <Button variant="outline" className="self-end" onClick={() => onTicketsOpen(false)}>
                   {t('setup.done')}

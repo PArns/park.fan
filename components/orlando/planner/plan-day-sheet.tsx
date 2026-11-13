@@ -57,7 +57,7 @@ import { usePlanContext } from './plan-context';
 import { PLAN_FOCUS } from './plan-controls';
 import { ClimateChips, dayGuestClose, useDayParks } from './plan-day-bits';
 import { useSeasonName } from './use-day-facts';
-import { useHopperWord, useResortWord } from './plan-ticket-words';
+import { oneStop, useHopperWord, useResortWord } from './plan-ticket-words';
 import { PLAN_WIDE_QUERY } from './plan-setup';
 
 /** How many of a park's headliners the sheet names: the five a day is usually judged by. */
@@ -368,7 +368,7 @@ function DayDetails({
     if (ticketFacts.length > 0) {
       facts.push(
         <Fact key="ticket" icon={<Ticket className="size-4" aria-hidden="true" />}>
-          <span data-plan-sheet-ticket="">{ticketFacts.join(' ')}</span>
+          <span data-plan-sheet-ticket="">{oneStop(ticketFacts.join(' '))}</span>
         </Fact>
       );
     }

@@ -32,7 +32,13 @@ import { Sheet, SheetContent, SheetDescription, SheetTitle } from '@/components/
 import { usePlanContext } from './plan-context';
 import { PLAN_FOCUS } from './plan-controls';
 import { PLAN_WIDE_QUERY } from './plan-setup';
-import { productName, useHopperWord, useResortWord, useTicketName } from './plan-ticket-words';
+import {
+  oneStop,
+  productName,
+  useHopperWord,
+  useResortWord,
+  useTicketName,
+} from './plan-ticket-words';
 
 /** The result's ways back into the setup. */
 export interface PlanEdit {
@@ -204,7 +210,9 @@ function OwnedRow({
             {use.kind === 'pass' || !ticket.start
               ? t('owned.noLimit')
               : ticket.startChosen
-                ? t('owned.startChosen', { start: day(ticket.start), end: day(ticket.end ?? '') })
+                ? oneStop(
+                    t('owned.startChosen', { start: day(ticket.start), end: day(ticket.end ?? '') })
+                  )
                 : t('owned.valid', { from: day(ticket.start), to: day(ticket.end ?? '') })}
           </span>
         </div>
@@ -240,11 +248,13 @@ function OwnedRow({
         return (
           <Warning key={d.date} data-plan-outside={d.date}>
             <p>
-              {t(before ? 'outside.before' : 'outside.after', {
-                park: parkName(slug),
-                date: day(d.date),
-                edge: day((before ? ticket.start : ticket.end) ?? d.date),
-              })}
+              {oneStop(
+                t(before ? 'outside.before' : 'outside.after', {
+                  park: parkName(slug),
+                  date: day(d.date),
+                  edge: day((before ? ticket.start : ticket.end) ?? d.date),
+                })
+              )}
             </p>
             <div className="flex flex-wrap gap-2">
               <Button
@@ -354,7 +364,7 @@ function SuggestedTickets({
         })
       : t('suggest.part', { days: s.days, resort: resortWord(s.resort), date: day(s.start) })
   );
-  const sentence = `${parts.join(t('suggest.then'))}.`;
+  const sentence = oneStop(`${parts.join(t('suggest.then'))}.`);
   const details = <SuggestionDetails plan={plan} suggested={suggested} edit={edit} />;
 
   return (

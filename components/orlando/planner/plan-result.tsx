@@ -56,7 +56,7 @@ import { PlanWeekView } from './plan-week-view';
 import { PlanWhenResult } from './plan-when-result';
 import { useTripCalendar, useTripPlan, useTripWhen, useUnpinnedPlan } from './use-trip-plan';
 import { PlanTicketsCard, type PlanEdit } from './plan-tickets-card';
-import { useResortWord, useTicketName } from './plan-ticket-words';
+import { oneStop, useResortWord, useTicketName } from './plan-ticket-words';
 
 const VIEW_ICON = { agenda: LayoutList, week: Rows3, month: CalendarDays } as const;
 
@@ -571,13 +571,15 @@ function TicketProblemBox({ problem, edit }: { problem: TicketProblem; edit: Pla
       data-plan-ticket-problem={problem.kind}
     >
       <p className="text-sm">
-        {t(`tickets.problem.${problem.kind}`, {
-          ticket: ticket ? name(ticket) : problem.product,
-          start: ticket?.start ? day(ticket.start) : '',
-          end: window ? day(window.to) : '',
-          from: state.from ? day(state.from) : '',
-          to: state.to ? day(state.to) : '',
-        })}
+        {oneStop(
+          t(`tickets.problem.${problem.kind}`, {
+            ticket: ticket ? name(ticket) : problem.product,
+            start: ticket?.start ? day(ticket.start) : '',
+            end: window ? day(window.to) : '',
+            from: state.from ? day(state.from) : '',
+            to: state.to ? day(state.to) : '',
+          })
+        )}
       </p>
       <div className="flex flex-wrap gap-2">
         <Button variant="outline" onClick={edit.dates}>

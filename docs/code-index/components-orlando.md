@@ -184,6 +184,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `useHopperWord` _hook_: A resort's hopper by its operator's name: Disney's Park Hopper, Universal's park-to-park.
 - `useTicketName` _hook_: A ticket by what is on it: "Disney 4-day ticket with Park Hopper" for a date-based ticket, the operator's name for the rest. `short` drops the word "ticket" for the Tickets row: "Disney 4 days + Park Hopper".
 - `productName` _function_: The operator's product name without the versions in brackets the catalog lists.
+- `oneStop` _function_: A sentence whose last word is a short date, with the stop it ends on once: German and French abbreviate the month with a period ("20. Feb."), and the message's own stop would double it.
 
 ### [`planner/plan-tickets-card.tsx`](../../components/orlando/planner/plan-tickets-card.tsx)
 
