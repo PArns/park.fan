@@ -16,6 +16,7 @@ import {
   HERO_FLOW_INTO_PULL,
   LandingHero,
   LandingNextSteps,
+  Lead,
 } from '@/components/marketing/editorial-ui';
 import { getMediaImageBySrc } from '@/lib/media';
 import { getMediaAlt } from '@/lib/media/text';
@@ -199,6 +200,13 @@ export async function OrlandoHubPage({
                   ? t('lastYearBanner', { date: formatHubDate(forecastUntil, locale, 'long') })
                   : t('lastYearBannerNoDate')}
               </p>
+            )}
+            {!month && (
+              // The hub's opening is about Orlando, not a month: a month page's own lead and
+              // summary say what differs, and twelve copies of one paragraph would not.
+              <div className="max-w-3xl">
+                <Lead>{t('opening')}</Lead>
+              </div>
             )}
             <p className="text-muted-foreground max-w-3xl leading-relaxed">{t('intro')}</p>
             <HubMonthSummary
