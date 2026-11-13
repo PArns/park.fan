@@ -1972,7 +1972,11 @@
     },
     "avgWait": "{minutes} min in media",
     "avgWaitShort": "Ø {minutes} min",
-    "heroHint": "Inizia a digitare: parchi, attrazioni, spettacoli e ristoranti"
+    "heroHint": "Inizia a digitare: parchi, attrazioni, spettacoli e ristoranti",
+    "trip": {
+      "title": "Pianificatore di viaggio per {region}",
+      "hint": "Quale parco in quale giorno del tuo viaggio"
+    }
   },
   "searchPage": {
     "types": {

@@ -349,6 +349,12 @@ Route `/api/nav/posts/[locale]` (route).
 - `GET` _function_
 - `dynamic` _const_: Every post of one locale, articles and news, for the site search: the guides panel, the fields on `/blog` and `/news` and the search palette.
 
+### [`nav/trip-regions/route.ts`](../../app/api/nav/trip-regions/route.ts)
+
+Route `/api/nav/trip-regions` (route).
+
+- `GET` _function_: The trip regions as the browser links into them (`TripRegionLinks`): their names for the search palette's first row and their parks for the day planner's plan list.
+
 ### [`nearby/route.ts`](../../app/api/nearby/route.ts)
 
 Route `/api/nearby` (route).

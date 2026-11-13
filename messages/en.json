@@ -1972,7 +1972,11 @@
     },
     "avgWait": "{minutes} min avg",
     "avgWaitShort": "Ø {minutes} min",
-    "heroHint": "Start typing to search parks, attractions, shows and restaurants"
+    "heroHint": "Start typing to search parks, attractions, shows and restaurants",
+    "trip": {
+      "title": "{region} trip planner",
+      "hint": "Which park on which day of your trip"
+    }
   },
   "searchPage": {
     "types": {

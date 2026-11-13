@@ -1972,7 +1972,11 @@
     },
     "avgWait": "Ø {minutes} Min.",
     "avgWaitShort": "Ø {minutes} Min.",
-    "heroHint": "Tippe los, wir suchen Parks, Attraktionen, Shows und Restaurants"
+    "heroHint": "Tippe los, wir suchen Parks, Attraktionen, Shows und Restaurants",
+    "trip": {
+      "title": "Reiseplaner für {region}",
+      "hint": "Welcher Park an welchem Tag deiner Reise"
+    }
   },
   "searchPage": {
     "types": {

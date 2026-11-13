@@ -49,8 +49,13 @@ export default function SearchDialog({
 
   // Shared analytics + routing for picking a result (same behavior as the hero's inline list).
   // Closing just notifies the trigger, which owns the open state and clears the query.
-  const { handleSelect, handleBrowseSelect, handleGlossarySelect, handlePostSelect } =
-    useSearchNavigation(session, () => onOpenChange(false));
+  const {
+    handleSelect,
+    handleBrowseSelect,
+    handleGlossarySelect,
+    handlePostSelect,
+    handleTripSelect,
+  } = useSearchNavigation(session, () => onOpenChange(false));
 
   const isMobile = useMediaQuery('(max-width: 639px)');
 
@@ -78,6 +83,7 @@ export default function SearchDialog({
           onBrowseSelect={handleBrowseSelect}
           onGlossarySelect={handleGlossarySelect}
           onPostSelect={handlePostSelect}
+          onTripSelect={handleTripSelect}
           onNavigate={() => onOpenChange(false)}
           listClassName={LIST_HEIGHT_CLASS}
           restingFooter={null}

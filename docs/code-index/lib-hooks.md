@@ -290,7 +290,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`use-search-results.ts`](../../lib/hooks/use-search-results.ts)
 
-- `useSearchResults` _hook_: Data layer for the search palette: debounces the query and runs the three live queries (main search, glossary search, nearby parks), searches the guides and news in the browser, and scores the matches used to order categories.
+- `useSearchResults` _hook_: Data layer for the search palette: debounces the query and runs the three live queries (main search, glossary search, nearby parks), searches the guides and news in the browser, finds a trip region the query names, and scores the matches …
 - Types: `GlossarySearchItem`, `UseSearchResultsReturn`
 
 ### [`use-search-session.ts`](../../lib/hooks/use-search-session.ts)
@@ -327,6 +327,10 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `useTodaySchedule` _hook_: Derives today's schedule facts (opening hours, open/closed status, "closes in X" countdown, current park-local time, offseason reopening, holiday context) from the day-stable park schedule + the browser clock in the park's timezone.
 - Types: `UseTodayScheduleParams`, `TodayScheduleResult`
+
+### [`use-trip-region-links.ts`](../../lib/hooks/use-trip-region-links.ts)
+
+- `useTripRegionLinks` _hook_: The trip regions' names and parks from `/api/nav/trip-regions`, once `enabled`: what the search palette matches a query against and the day planner checks its parks against.
 
 ### [`use-wait-in-tab-title.ts`](../../lib/hooks/use-wait-in-tab-title.ts)
 

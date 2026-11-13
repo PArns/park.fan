@@ -102,6 +102,26 @@ A ride that does not match the query (every Disney Fantasyland ride under "phant
 the API's typo tolerance and is fixed there, not filtered here: the search payload does not carry a
 ride's land, which is what matched.
 
+## A trip region's planner comes first
+
+A query that names a trip region gets the region's planner as the first row under "All", before
+every group and in no tab: "Reiseplaner für Orlando", the hub's bare `#planner` chapter
+(`TripPlannerResultItem`). The names are the region's and its resorts' without "Resort", from the
+API's region route through `/api/nav/trip-regions` (`useTripRegionLinks`, asked with the post list
+at the first typed letter, an hour fresh; a few hundred bytes against the region answer's 8 KB).
+`matchTripRegion` (`lib/orlando/trip-links.ts`) decides on the debounced query:
+
+- a word that is the region's name, the last word also as a prefix of three letters or more:
+  "orlando", "orl", "seaworld orlando";
+- two words or more running along a resort's name: "disney world", "walt disney world",
+  "universal orlando";
+- never one word of a resort alone: "universal" and "disney" are Japan's and Paris's as much.
+
+No API change: the row is built here. The skeleton covers the regions' first fetch as it covers the
+post list's, so the row never appears above results already on screen. A pick sends
+`search_result_clicked` with `result` `trip_planner`. `/search` puts `TripPlannerBand`'s `search`
+variant above its results for the same match, marked as its first result.
+
 ## The list's height eases
 
 The palette and the hero's list change height on every query (browse list → skeleton → results,

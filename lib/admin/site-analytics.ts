@@ -430,6 +430,7 @@ export const RESULT_KIND_LABEL: Record<SearchResultKind, string> = {
   glossary: 'Glossar',
   guide: 'Guide',
   news: 'News',
+  trip_planner: 'Reiseplaner',
 };
 
 /** A result kind as it reads in a list; one the site sends later stays as sent. */

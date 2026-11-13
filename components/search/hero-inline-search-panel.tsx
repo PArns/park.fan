@@ -87,8 +87,13 @@ export default function HeroInlineSearchPanel({
   const withStatusLabels = useHeroStatusLabels();
   const fieldFocus = searchFieldFocusProps(session);
   const search = useSearchResults(query);
-  const { handleSelect, handleBrowseSelect, handleGlossarySelect, handlePostSelect } =
-    useSearchNavigation(session);
+  const {
+    handleSelect,
+    handleBrowseSelect,
+    handleGlossarySelect,
+    handlePostSelect,
+    handleTripSelect,
+  } = useSearchNavigation(session);
 
   useEffect(() => onTextTaken?.(), [onTextTaken]);
 
@@ -264,6 +269,7 @@ export default function HeroInlineSearchPanel({
               onBrowseSelect={handleBrowseSelect}
               onGlossarySelect={handleGlossarySelect}
               onPostSelect={handlePostSelect}
+              onTripSelect={handleTripSelect}
               browseItems={withStatusLabels(heroBrowseRows(search.browse))}
               labelFavorites={withStatusLabels}
               browseHeader={<HeroBrowseHeader browse={search.browse} />}

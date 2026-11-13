@@ -151,6 +151,8 @@ trips), and the minutes are the API's travel matrix without traffic, the Magic K
 - The footer's tools: „Reiseplaner" (en "Trip planner") beside the day planner, which the English
   footer now calls "Day planner" as the panel does. The bare `/orlando#planner`, built without a
   region read, since the footer is on every page.
+- The search palette's first row and the top of `/search`, for a query that names the region or a
+  resort ([site search](site-search.md#a-trip-regions-planner-comes-first)).
 - `OrlandoHomeStop` on the homepage, data-free beyond the region's park list, because the homepage
   keeps a day at the edge.
 - Parky's `plan_vacation` links `/orlando?from=…&to=…&parks=…#planner`.

@@ -6,8 +6,10 @@ import {
   SearchResultRow,
   GlossaryResultItem,
   PostResultItem,
+  TripPlannerResultItem,
 } from '@/components/search/search-result-items';
 import type { SearchResult, SearchResultItem } from '@/lib/api/types';
+import type { TripRegionLinks } from '@/lib/orlando/trip-links';
 import type { GlossarySearchItem, UseSearchResultsReturn } from '@/lib/hooks/use-search-results';
 import type { PostSearchEntry } from '@/lib/navigation/blog-menu';
 
@@ -126,29 +128,45 @@ interface SearchResultGroupsProps {
   groups: SearchGroup[];
   /** One category: all its rows, no heading, since its tab names it. `all`: every group, cut short. */
   tab: SearchTab;
+  /**
+   * The trip region the query names: its planner is the first row under "All", before every
+   * group, and is in no tab, since it is one row of no category.
+   */
+  trip?: TripRegionLinks | null;
   onSelect: (result: SearchResultItem, position?: number) => void;
   onGlossarySelect: (item: GlossarySearchItem, position: number) => void;
   onPostSelect: (post: PostSearchEntry, position: number) => void;
+  onTripSelect: (region: TripRegionLinks) => void;
 }
 
 /**
  * The groups of a search result set (parks/attractions/shows/restaurants/locations, glossary,
- * guides and news), all of them or one category's. Shared by the search palette and the hero's
- * in-place result list so both surfaces group and rank identically.
+ * guides and news), all of them or one category's, after a trip region's planner where the query
+ * names one. Shared by the search palette and the hero's in-place result list so both surfaces
+ * group and rank identically.
  */
 export function SearchResultGroups({
   groups,
   tab,
+  trip,
   onSelect,
   onGlossarySelect,
   onPostSelect,
+  onTripSelect,
 }: SearchResultGroupsProps) {
   const tSearch = useTranslations('search');
 
   const single = tab === 'all' ? undefined : groups.find((group) => group.key === tab);
   const shown = single ? [single] : rankForAll(groups);
 
-  return shown.map((group) => {
+  const tripGroup =
+    trip && !single ? (
+      <CommandGroup key="trip">
+        <TripPlannerResultItem region={trip} onSelect={onTripSelect} />
+      </CommandGroup>
+    ) : null;
+
+  const listed = shown.map((group) => {
     const heading = single ? undefined : tSearch(`headings.${group.key}`, { count: group.count });
     return (
       <CommandGroup key={group.key} heading={heading}>
@@ -172,4 +190,5 @@ export function SearchResultGroups({
       </CommandGroup>
     );
   });
+  return tripGroup ? [tripGroup, ...listed] : listed;
 }

@@ -60,7 +60,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`search-result-groups.tsx`](../../components/search/search-result-groups.tsx)
 
-- `SearchResultGroups` _component_: The groups of a search result set (parks/attractions/shows/restaurants/locations, glossary, guides and news), all of them or one category's.
+- `SearchResultGroups` _component_: The groups of a search result set (parks/attractions/shows/restaurants/locations, glossary, guides and news), all of them or one category's, after a trip region's planner where the query names one.
 - `buildSearchGroups` _function_: Every category that found something, in tab order: places and parks, rides, shows and restaurants, then the guides, the news and the glossary.
 - Types: `SearchCategory`, `SearchTab`, `SearchGroup`
 
@@ -68,6 +68,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `SearchResultRow` _component_: A single park/attraction/show/restaurant/location result row.
 - `GlossaryResultItem` _component_: A single glossary term result row (shared by the glossary-only and mixed-results branches).
+- `TripPlannerResultItem` _component_: The trip planner of a region the query names, drawn like the glossary's row.
 - `PostResultItem` _component_: A guide or news post as a result row: its cover, its title, and under it the category and date of a guide or the age of a news post (`NewsAge`), the line each carries in its own listing.
 
 ### [`search-result-row-body.tsx`](../../components/search/search-result-row-body.tsx)
