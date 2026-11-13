@@ -430,6 +430,7 @@ export const RESULT_KIND_LABEL: Record<SearchResultKind, string> = {
   glossary: 'Glossar',
   guide: 'Guide',
   news: 'News',
+  trip_planner: 'Reiseplaner',
 };
 
 /** A result kind as it reads in a list; one the site sends later stays as sent. */
@@ -828,6 +829,86 @@ export const EVENT_INFO: Record<SiteEventName, EventInfo> = {
     label: 'Fehlerseite gezeigt',
     when: 'Eine Fehlerseite wird angezeigt; ohne Text der Meldung.',
   },
+  trip_planner_started: {
+    label: 'Reiseplaner gestartet',
+    when: 'Über den Knopf im Hub-Kopf, den Startknopf des Planers oder einen Link mit einem Plan; wie jedes Ereignis des Reiseplaners mit der Region („orlando“).',
+  },
+  trip_tickets_answered: {
+    label: 'Ticket-Frage beantwortet',
+    when: '„Noch nicht“, „Ja“ oder übersprungen („Weiter zu den Reisedaten“ ohne Antwort).',
+  },
+  trip_ticket_added: {
+    label: 'Ticket eingetragen',
+    when: 'Ein Ticket im Schritt gewählt; mit Eintrag, Resort und Weg (Liste oder Combo Ticket).',
+  },
+  trip_ticket_removed: { label: 'Ticket entfernt', when: 'Ein Ticket aus dem Schritt genommen.' },
+  trip_ticket_start: {
+    label: 'Erster Ticket-Tag',
+    when: 'Der erste Tag eines Tickets gewählt oder offen gelassen.',
+  },
+  trip_plan_requested: {
+    label: 'Reiseplan angefragt',
+    when: 'Ein Plan oder eine Datumssuche, sobald die Eingaben ruhen; mit Modus, Reiselänge, Parks, Tickets, Hopper (bei keinem, einigen oder allen Resorts der Region), Blöcken und Ruhetagen.',
+  },
+  trip_plan_shown: {
+    label: 'Reiseplan gezeigt',
+    when: 'Die Antwort ist da: ok, gelockert (mit der Regel) oder Fehler (mit Status).',
+  },
+  trip_window_planned: {
+    label: 'Reisezeitraum geplant',
+    when: '„Diese Daten planen“ auf einem gefundenen Zeitraum; mit seinem Rang.',
+  },
+  trip_ticket_details_opened: {
+    label: 'Ticket-Details geöffnet',
+    when: 'Die Details zu den vorgeschlagenen Tickets; als Sheet oder an Ort und Stelle.',
+  },
+  trip_hopper_toggled: {
+    label: 'Plan mit Park Hopper',
+    when: '„Plan mit Park Hopper zeigen“ für ein Resort, oder zurück.',
+  },
+  trip_tickets_adopted: {
+    label: 'Vorschläge übernommen',
+    when: '„Als deine Tickets übernehmen“; mit der Zahl der Tickets.',
+  },
+  trip_long_stay_used: {
+    label: '14-Tage-Tickets geplant',
+    when: '„Damit planen“ bei den 14-Tage-Tickets einer langen Reise.',
+  },
+  trip_view_changed: {
+    label: 'Ansicht gewechselt',
+    when: 'Liste, Woche oder Monat im Ergebnis des Reiseplaners.',
+  },
+  trip_day_opened: {
+    label: 'Reisetag geöffnet',
+    when: 'Das Blatt eines Tages; mit der Art des Tages und der Ansicht, aus der es kam.',
+  },
+  trip_day_pinned: { label: 'Reisetag festgesteckt', when: 'Ein Tag festgesteckt oder gelöst.' },
+  trip_day_swapped: { label: 'Reisetage getauscht', when: 'Zwei Tage getauscht.' },
+  trip_day_sent: {
+    label: 'Tag an den Tagesplaner',
+    when: '„Diesen Tag planen“ im Blatt eines Reisetags.',
+  },
+  trip_days_saved: {
+    label: 'Reise in den Planer',
+    when: '„Alle Tage in meinen Planer“; mit der Zahl der Parktage.',
+  },
+  trip_ics_exported: {
+    label: 'Reise als Kalender',
+    when: 'Die .ics-Datei der Reise; mit der Zahl der Parktage.',
+  },
+  trip_link_copied: { label: 'Reise-Link kopiert', when: '„Link kopieren“ unter dem Plan.' },
+  trip_evening_link_clicked: {
+    label: 'Abend-Ort geöffnet',
+    when: 'Die offizielle Seite eines Abend-Orts aus dem Blatt eines Reisetags.',
+  },
+  trip_outside_ticket_action: {
+    label: 'Tag außerhalb des Tickets',
+    when: 'Ein Ausweg gewählt: den Besuch weglassen oder das Ticket ändern.',
+  },
+  ticket_link_clicked: {
+    label: 'Ticket-Link geklickt',
+    when: 'Ein Kauf-Link im Reiseplaner; mit Produkt, Verkäufer, Host, Art (offiziell, Partner, andere), Platz in der Liste, Sprach- oder Markt-Treffer, Ort und Ticket-Modus. Ohne Region: Das Produkt gehört zum Katalog genau einer Region, und mehr als acht Werte nimmt die Statistik nicht.',
+  },
   share_clicked: {
     label: 'Teilen gedrückt',
     when: 'Ein Teilen-Knopf unter einem Beitrag, Park oder Fahrgeschäft oder der Link des Plans; mit dem Weg, nicht dem Inhalt.',
@@ -921,6 +1002,7 @@ export const LINK_BLOCK_LABEL: Record<LinkBlock, string> = {
   posts: 'Beiträge zum Park oder Fahrgeschäft',
   guide_band: 'Guide-Band im Parkkopf',
   news_band: 'News-Band im Parkkopf',
+  trip_band: 'Reiseplaner-Band',
   nav: 'Vorheriger, nächster Beitrag',
   related: 'Weiterlesen',
   most_read: 'Meistgelesen',
@@ -954,6 +1036,7 @@ export const NAV_MENU_LABEL: Record<NavMenuId, string> = {
   parks: 'Parks entdecken',
   more: 'Mehr',
   favorites: 'Favoriten',
+  planner: 'Planen',
   sheet: 'Handy-Menü',
 };
 
@@ -976,6 +1059,9 @@ const PLANNER_OPENED_SOURCE_LABEL: Record<PlannerOpenedSource | 'none', string> 
   'shared-link': 'Geteilter Plan',
   'home-hero': '„Heute planen“ auf der Startseite',
   'kids-page': 'Seite „Mit Kindern“',
+  'orlando-hub': 'Orlando-Hub, „Diesen Tag planen“',
+  'menu-plan': 'Planer-Menü im Header, „Meinen Plan öffnen“',
+  'menu-park': 'Planer-Menü im Header, ein beliebter Park',
   assistant: 'Parky, der Chat-Assistent',
   none: 'Planer zu',
 };
@@ -1221,7 +1307,7 @@ export function defaultCrosstab(detail: Pick<EventDetailResponse, 'props'>): {
  * What the API puts in the place of the values past the 30 biggest of a crosstab side. It is a
  * value nothing real can be: `other` is a real page type.
  */
-const CROSSTAB_REST = '__rest__';
+export const CROSSTAB_REST = '__rest__';
 
 /** What the API puts where a crosstab dimension has no value. */
 const CROSSTAB_NONE = '(none)';

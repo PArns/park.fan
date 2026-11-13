@@ -40,7 +40,7 @@ and [a day that does not fit opens an assistant](../../rules/a-day-that-does-not
 | The wizard                             | `components/planner/planner-wizard.tsx`                                                                                                       |
 | The panel (side sheet / bottom sheet)  | `components/planner/planner-flyout.tsx`, one day column `planner-day-column.tsx`                                                              |
 | The day grid                           | `components/planner/planner-day-grid.tsx`, `planner-block.tsx`                                                                                |
-| The optimizer and the fit assistant    | `lib/planner/optimize.ts`, `lib/planner/fit.ts`, `components/planner/planner-fit-assistant.tsx`                                               |
+| The optimizer and the fit assistant    | the API's `…/plan/optimize`, `lib/planner/optimize-remote.ts`, `lib/planner/fit.ts`, `components/planner/planner-fit-assistant.tsx`           |
 | Parky reading and editing the plan     | `lib/assistant/planner-context.ts`, `components/assistant/use-assistant-actions.ts` ([Parky](../assistant.md#actions-cards-and-the-position)) |
 | The page's article, fixtures and demos | `app/[locale]/trip-planner/content/<locale>.tsx`, `_fixtures.ts`, `_demos.tsx`                                                                |
 
@@ -64,6 +64,19 @@ just offered to plan, read once).
 `isPlannedDay()` (entries, or `reserved` from the [day assignment](planner-page.md#which-park-on-which-day))
 is what the lists, the countdown, the share link and the sync count; an empty day left by
 `openDay` stays invisible.
+
+## A plan in a trip region leads to the trip planner
+
+Once the plan holds a planned day at a park of a trip region (Orlando's sixteen, from the API's
+region route through `/api/nav/trip-regions`), the list of its days ends on one quiet line,
+„Mehrere Tage in Orlando? Reiseplaner öffnen", that opens the region's
+[trip planner](../orlando-planner.md) with the plan's parks of that region chosen
+(`PlannerTripRegionLink`). One per plan, never per day: under the panel's overview and under the
+planner page's list, so the day view and its phone sheet stay as they are. The regions are asked
+for only once such a plan exists. On a phone the press closes the sheet, which would cover the hub.
+The words are the park band's (`orlando.band`, in the planner's lazy chunk). The day planner counts
+no link out of itself, so the press is the site's `internal_link_clicked` with the block
+`trip_band`, and the arrival the trip planner's `trip_planner_started` with `source: link`.
 
 ## Everything is park-local
 

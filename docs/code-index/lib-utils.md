@@ -334,6 +334,12 @@ When the nowcast says it is time to go under a roof: the trigger for the covered
 - `enrichAttractionsWithImages` _function_: Same for attractions, with only the ride's own photo (see `withRideCardImage`).
 - `getCardObjectPosition` _function_: `object-position` for a park or ride card photo, resolved server-side from the same image the card paints, so the ride branch stops at the ride just as the photo does.
 
+### [`park-break.ts`](../../lib/utils/park-break.ts)
+
+- `parkBreakOf` _function_: Whether the park is in a break on `todayIso`, and until when: shut today by the schedule, the next opening known and at least `OFFSEASON_MIN_DAYS` away.
+- `WINTER_BREAK_MIN_DAYS` _const_: How many days of a closure have to fall in the park's winter before it is the winter break.
+- Types: `ParkBreakScene`, `ParkBreak`, `ParkBreakFields`
+
 ### [`park-day-over.ts`](../../lib/utils/park-day-over.ts)
 
 - `isParkDayOver` _function_: Whether the park's day is over at `atMs`: no operation today, or today's last window has closed. `null` when the schedule cannot say.
@@ -343,6 +349,7 @@ When the nowcast says it is time to go under a roof: the trigger for the covered
 - `parkDayOf` _function_: The calendar day an instant falls on in the park's zone, as `YYYY-MM-DD` (what `ScheduleItem.date` and `CalendarDay.date` carry, and what compares correctly as a string).
 - `addDays` _function_: `YYYY-MM-DD` plus `days`, calendar-safe: noon UTC on a plain date, so no zone or DST moves it.
 - `daysBetween` _function_: Whole calendar days from `from` to `to`, negative where `to` is earlier: a count of nights, from noon UTC on both sides, so the difference is whole by construction.
+- `weeksUntil` _function_: Whole weeks to a moment `days` away, rounded up: „in 19 Wochen" in „Heute im Park" and on the break panel under it, which must not name two numbers for one date.
 - `formatParkDay` _function_: A park-local `YYYY-MM-DD` as a written date in `locale`. Anchored at noon UTC and formatted in UTC, so no zone moves the day; long month and year unless `options` says otherwise.
 - `formatParkDayRange` _function_: Two park-local days as one range in `locale`'s own shape: „16.–27. November 2026", „4. Januar – 25. März 2027", one date where both are the same day.
 
@@ -360,6 +367,12 @@ When the nowcast says it is time to go under a roof: the trigger for the covered
 
 - `pickRandom` _function_: A random item of `list`, never `except` while there is another to take.
 - `pickSome` _function_: `count` different items of `list` in random order; all of them when it has fewer.
+
+### [`plain-click.ts`](../../lib/utils/plain-click.ts)
+
+The parts of a click event that say whether the browser would open a new tab or window.
+
+- `isPlainPrimaryClick` _function_: Whether a click on a link is the plain primary click a page may take over. A modified click asks for the link's own `href` in a tab or window of its own and is left alone, and the middle button fires `auxclick`, which never arrives here.
 
 ### [`quietest-day.ts`](../../lib/utils/quietest-day.ts)
 
@@ -438,6 +451,7 @@ Route guards for the `/[locale]/...` tree.
 - `formatParkOpening` _function_: `nextParkOpening` in words: „Öffnet um 09:00 Uhr" today, „Öffnet am 15. März" on a later day. `opensAt` is `parks.opensAt` with the clock time filled in, `opensOn` the `parks.opensOn` string.
 - `formatParkOpeningCountdown` _function_: How far off `nextParkOpening` is: „in 1:30 Stunden" for an opening today, „in 45 Minuten" inside the last hour, „morgen" (`inDays(1)`), the weekday („Samstag") within the coming week and „in 9 Tagen" beyond it.
 - `getScheduleMessage` _function_: The schedule line for a park card (opening soon, closing at, off season), drawn by `ParkCardScheduleFooter`.
+- `OFFSEASON_MIN_DAYS` _const_: How far off a closed park's next opening has to be before it is between seasons rather than shut for a few days.
 - Types: `ScheduleSummary`, `ParkOpening`, `ParkOpeningCountdownStrings`
 
 ### [`scroll-when-settled.ts`](../../lib/utils/scroll-when-settled.ts)

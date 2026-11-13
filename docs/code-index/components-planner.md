@@ -26,6 +26,11 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `PLANNER_BLOCK_ICON_COMPONENTS` _const_: The icons a free block may carry, mapped in one place, because the plan stores the key and not the component; `store.ts` falls back on an unknown key rather than dropping the block.
 
+### [`planner-block-ink.tsx`](../../components/planner/planner-block-ink.tsx)
+
+- `PlannerBlockPhoto` _component_: A block's photo, inside its clipped ink layer: the day planner's ride blocks and the Orlando trip's park blocks draw the same texture.
+- `PlannerBlockBar` _component_: Outlook's category bar down a block's left edge, in the colour the caller names.
+
 ### [`planner-block.tsx`](../../components/planner/planner-block.tsx)
 
 - `PlannerBlock` _component_: One planned ride, as a block in the day grid.
@@ -87,7 +92,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`planner-fit-list.tsx`](../../components/planner/planner-fit-list.tsx)
 
-- `PlannerFitList` _component_: The rides the day is being decided over, in the order they are given up in. The checkbox says whether a ride is wanted at all; the pin moves it up the order the engine reads as `OptimizeInput.priority`.
+- `PlannerFitList` _component_: The rides the day is being decided over, in the order they are given up in. The checkbox says whether a ride is wanted at all; the pin moves it up the order the engine reads as its priority.
 
 ### [`planner-flyout.tsx`](../../components/planner/planner-flyout.tsx)
 
@@ -135,7 +140,11 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`planner-optimize-actions.tsx`](../../components/planner/planner-optimize-actions.tsx)
 
-- `PlannerOptimizeActions` _component_: The two buttons that let the day sort itself: one adds the park's headliners first, the other only re-orders. One engine (`lib/planner/optimize.ts`), two buttons, because "fill my day" and "is this the best order" are different questions.
+- `PlannerOptimizeActions` _component_: The two buttons that let the day sort itself: one adds the park's headliners first, the other only re-orders.
+
+### [`planner-optimize-failure.tsx`](../../components/planner/planner-optimize-failure.tsx)
+
+- `PlannerOptimizeFailure` _component_: The line a planner surface draws where the optimizer could not answer: what happened, and a retry. The plan is left as it was, so the line promises nothing else. Shared by the optimise row, the fit assistant and the wizard's last step.
 
 ### [`planner-overview.tsx`](../../components/planner/planner-overview.tsx)
 
@@ -212,6 +221,10 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`planner-trip-assistant.tsx`](../../components/planner/planner-trip-assistant.tsx)
 
 - `PlannerTripAssistant` _component_: Which park on which day, proposed from the crowd forecast. Like the fit assistant: the visitor sets the window and parks, reads a proposal, and nothing is written until "annehmen", as a whole.
+
+### [`planner-trip-region-link.tsx`](../../components/planner/planner-trip-region-link.tsx)
+
+- `PlannerTripRegionLink` _component_: One quiet line under a plan that holds a day at a trip region's park: "Several days in Orlando? Open the trip planner", with the plan's parks of that region chosen.
 
 ### [`planner-weather-rail.tsx`](../../components/planner/planner-weather-rail.tsx)
 

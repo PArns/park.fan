@@ -430,6 +430,22 @@ Route `/[locale]` (not-found).
 - `default (LocaleNotFound)` _component_: Locale-scoped 404: renders inside the [locale] layout, so visitors keep the full site chrome (header, search, footer) and crawlers get internal links instead of a dead end.
 - `generateMetadata` _function_: Its own head instead of the layout's homepage title and canonical; see `notFoundMetadata`.
 
+### [`orlando/[[...date]]/page.tsx`](../../app/%5Blocale%5D/orlando/%5B%5B...date%5D%5D/page.tsx)
+
+Route `/[locale]/orlando/[[...date]]` (page).
+
+- `default (OrlandoPage)` _component_: The Orlando hub (`/orlando`) and its twelve month pages (`/orlando/2026/12`): which park on which day at Walt Disney World, Universal, SeaWorld and the day trips, the best time to go, a planner for the whole trip, and each park's best days.
+- `generateMetadata` _function_
+- `dynamic` _const_: Rendered per request behind its edge window (`next.config.ts`), like the park calendar: the page names Orlando's today, and its figures come from the Data Cache, an hour at most.
+
+### [`orlando/best-time-to-visit/[[...resort]]/page.tsx`](../../app/%5Blocale%5D/orlando/best-time-to-visit/%5B%5B...resort%5D%5D/page.tsx)
+
+Route `/[locale]/orlando/best-time-to-visit/[[...resort]]` (page).
+
+- `default (OrlandoBestTimeRoute)` _component_: Orlando's best-time pages: when to go to Disney and Universal together (`/orlando/<best-time segment>`), to Walt Disney World or to Universal Orlando (`…/disney-world`, `…/universal-orlando`).
+- `generateMetadata` _function_
+- `dynamic` _const_: Rendered per request behind its hour at the edge (`next.config.ts`): the page names the year Orlando's today decides, and its figures come from the Data Cache, an hour old at most.
+
 ### [`page.tsx`](../../app/%5Blocale%5D/page.tsx)
 
 Route `/[locale]` (page).

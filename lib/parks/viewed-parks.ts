@@ -34,6 +34,13 @@ export interface ViewedPark {
   countryCode: string;
   continentSlug: string;
   continentName: string;
+  /**
+   * Whether the park had published hours today or a next opening when the geo structure was read
+   * (`todaySchedule` operating, or a `nextSchedule`). False for an event whose run is over
+   * (Traumatica after Halloween) and a park shut for the season with no dates out yet: neither has
+   * a day the planner could plan. Absent in a seed written before the field existed.
+   */
+  hasHoursAhead?: boolean;
   views: number;
 }
 
@@ -58,6 +65,8 @@ export function geoParks(geo: GeoStructure): Map<string, Omit<ViewedPark, 'views
             countryCode: country.code,
             continentSlug: continent.slug,
             continentName: continent.name,
+            hasHoursAhead:
+              park.todaySchedule?.scheduleType === 'OPERATING' || park.nextSchedule != null,
           });
         }
       }

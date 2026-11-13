@@ -4,6 +4,7 @@ import { useLocale } from 'next-intl';
 import { useRouter } from '@/i18n/navigation';
 import { searchResultHref } from '@/lib/utils/url-utils';
 import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
+import { tripPlannerHref, type TripRegionLinks } from '@/lib/orlando/trip-links';
 import type { SearchSession } from '@/lib/analytics/search-session';
 import type { SearchBrowseItem } from '@/lib/analytics/site-analytics';
 import type { SearchResultItem } from '@/lib/api/types';
@@ -75,6 +76,13 @@ export function useSearchNavigation(session: SearchSession, onNavigate?: () => v
     router.push(post.path as '/parks/europe');
   };
 
+  /** The planner of the trip region the query names, the row before every group. */
+  const handleTripSelect = (region: Pick<TripRegionLinks, 'hubPath'>) => {
+    session.resultClicked('trip_planner', 0);
+    onNavigate?.();
+    router.push(tripPlannerHref(region) as '/parks/europe');
+  };
+
   /** One of the posts the hero lists before anything is typed. */
   const handleBrowsePostSelect = (
     post: { path: string },
@@ -91,6 +99,7 @@ export function useSearchNavigation(session: SearchSession, onNavigate?: () => v
     handleBrowseSelect,
     handleGlossarySelect,
     handlePostSelect,
+    handleTripSelect,
     handleBrowsePostSelect,
   };
 }

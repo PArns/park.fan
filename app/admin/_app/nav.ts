@@ -26,6 +26,7 @@ import {
   Route,
   Search,
   Server,
+  Ticket,
   TrendingUp,
   UserRound,
   Users,
@@ -101,6 +102,13 @@ const NAV_GROUPS: NavGroup[] = [
         icon: CalendarRange,
         description: 'Halloween, Winterschließung, Wartungsfenster',
         keywords: ['halloween', 'weihnachten', 'events', 'termine'],
+      },
+      {
+        href: '/admin/tickets',
+        label: 'Tickets',
+        icon: Ticket,
+        description: 'Ticketkatalog des Reiseplaners: Produkte, Regeln, Links',
+        keywords: ['orlando', 'planer', 'katalog', 'disney', 'universal', 'partnerlink', 'shop'],
       },
       {
         href: '/admin/data-quality',

@@ -9,7 +9,7 @@ export function DatenschutzEN() {
   return (
     <>
       <h1 className="mb-2 text-4xl font-bold">Privacy Policy</h1>
-      <p className="text-muted-foreground mb-8 text-sm">Last updated: 10 November 2026</p>
+      <p className="text-muted-foreground mb-8 text-sm">Last updated: 13 November 2026</p>
 
       <div className="space-y-4 text-base leading-7">
         <LegalH2>1. Controller</LegalH2>
@@ -26,7 +26,7 @@ export function DatenschutzEN() {
         <p>
           You can use park.fan without an account. Which data is processed depends on which features
           you use. The sections below list each one. We show no ads and do not pass on data for
-          advertising.
+          advertising. Ticket links in the trip planner can be partner links; see below.
         </p>
 
         <LegalH2>2. Hosting and delivery</LegalH2>
@@ -111,7 +111,7 @@ export function DatenschutzEN() {
         <p>
           In your browser's local storage we keep settings such as the color scheme, your day plan,
           your notifications, your choices on location access and on statistics, and cached results.
-          This data stays on your device. The sections on the trip planner and on push notifications
+          This data stays on your device. The sections on the day planner and on push notifications
           say which parts of it go to our server.
         </p>
         <p>
@@ -137,7 +137,7 @@ export function DatenschutzEN() {
           GDPR).
         </p>
 
-        <LegalH3>Trip planner</LegalH3>
+        <LegalH3>Day planner</LegalH3>
         <p>
           Your day plan is kept in your browser's local storage. It reaches our API server only
           while you have push notifications switched on for the plan, because the server has to know
@@ -145,6 +145,16 @@ export function DatenschutzEN() {
           with no details about you. Anyone who has a shared link can open the plan. If you switch
           the notifications off, we delete the copy on the server. The legal basis is providing the
           feature you asked for (Art. 6(1)(b) GDPR).
+        </p>
+
+        <LegalH3>Ticket links in the trip planner</LegalH3>
+        <p>
+          The trip planner links to ticket sellers and to the parks&apos; own shops. When you follow
+          one of these links, your browser tells the seller that you came from park.fan: it sends
+          the address https://park.fan/, not the page with your trip. Some of them can be partner
+          links; they are labelled &quot;Partner link&quot;. If you buy a ticket through one,
+          park.fan earns a commission from the seller; the price is the same for you. What the
+          seller processes after the click is governed by its own privacy policy.
         </p>
 
         <LegalH3>Push notifications</LegalH3>
@@ -203,7 +213,7 @@ export function DatenschutzEN() {
           (see "Sending photos"). Your browser then receives a session key from our API server,
           valid for two hours. With every question it sends api.park.fan your text, the language,
           the path of the page you are on, your time zone and the chat's ID. It also sends what you
-          have planned in the trip planner (parks, days, entries and what you entered about your
+          have planned in the day planner (parks, days, entries and what you entered about your
           group, such as the height of its shortest rider), the reminders you have set and the IDs
           of your favourites. These otherwise stay in your browser; Parky needs them to read your
           plan, reminders and favourites and to change them when you ask. It sends your location
@@ -285,19 +295,20 @@ export function DatenschutzEN() {
           program code. They are short words and numbers, never text you have written. Examples are
           which search field was opened and what kind of result you clicked, which tab you opened on
           a park page, whether you added or removed a favorite, which language you chose, whether
-          you set a wait-time alert or a show reminder, how you opened the day planner, that you
-          clicked a link to a park's website or ticket shop or shared a page, whether Parky appeared
-          and whether you clicked it or one of its lines, whether a question to Parky was a
-          suggestion or typed and how the answer ended, how you answered the question about
-          notifications, or that an error page was shown. If a post, a park or an attraction is in
-          the foreground for five seconds, that counts as a read. For posts we also note whether you
-          read a quarter, half, three quarters or all of it. If an event belongs to a park, an
-          attraction, a show or a restaurant, its ID is included, and for a post its name from the
-          address. What you type into a search field, your location and your input are not sent to
-          our counter. We do not measure loading times here. We do measure how long a page was
-          visible in the foreground of your browser: your browser counts the seconds and reports
-          them when you move to the next page or leave the tab. It sends no time of day with them,
-          and at most 30 minutes count for one page view.
+          you set a wait-time alert or a show reminder, how you opened the day planner, which steps
+          you used in the trip planner, whether you entered tickets there and which ticket link you
+          clicked (without your travel dates), that you clicked a link to a park's website or ticket
+          shop or shared a page, whether Parky appeared and whether you clicked it or one of its
+          lines, whether a question to Parky was a suggestion or typed and how the answer ended, how
+          you answered the question about notifications, or that an error page was shown. If a post,
+          a park or an attraction is in the foreground for five seconds, that counts as a read. For
+          posts we also note whether you read a quarter, half, three quarters or all of it. If an
+          event belongs to a park, an attraction, a show or a restaurant, its ID is included, and
+          for a post its name from the address. What you type into a search field, your location and
+          your input are not sent to our counter. We do not measure loading times here. We do
+          measure how long a page was visible in the foreground of your browser: your browser counts
+          the seconds and reports them when you move to the next page or leave the tab. It sends no
+          time of day with them, and at most 30 minutes count for one page view.
         </p>
         <p>
           As with every request, the server also receives your IP address, the details of your

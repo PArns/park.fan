@@ -350,6 +350,10 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `ParkBestDaysSummary` _component_: The park header's answer to „when is it quiet": seven weekday cells tiered against the park's own other days, Monday to Friday and the weekend as two bands, and from `sm` up the quietest and busiest weekdays and months below them (beside …
 
+### [`park-break-panel.tsx`](../../components/parks/park-break-panel.tsx)
+
+- `ParkBreakPanel` _component_: The yellow glass panel for a park in a break: the day it opens again, how many weeks that is away, and Parky asleep in a picture of the season, in his sled in winter, in the leaves in autumn, among the tulips in spring.
+
 ### [`park-calendar-comparison.tsx`](../../components/parks/park-calendar-comparison.tsx)
 
 - `ParkCalendarComparison` _component_: Two calendar days side by side, with the verdict on top. The arithmetic lives in `lib/parks/day-comparison.ts`; this file turns its keys and numbers into ICU messages.

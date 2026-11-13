@@ -7,6 +7,7 @@ import { useRouter } from '@/i18n/navigation';
 import { ArrowRight, CalendarPlus } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { usePlanner } from '@/lib/planner/use-planner';
+import { plannerParkPath } from '@/lib/planner/park-url';
 import { plannerUi } from '@/lib/planner/ui-store';
 import { plannerPageDay } from '@/lib/planner/page-day';
 import type { PlannerGeo } from '@/lib/planner/types';
@@ -75,7 +76,7 @@ export function PlanDayButton({
           plannerUi.requestOpen('calendar-day');
           // The park's own page, where the ride cards are, via the localized router.
           router.push(
-            `/parks/${geo.continent}/${geo.country}/${geo.city}/${parkSlug}` as '/europe/germany/rust/europa-park'
+            plannerParkPath({ slug: parkSlug, geo }) as '/europe/germany/rust/europa-park'
           );
         };
         if (onPlanned) requestAnimationFrame(() => requestAnimationFrame(rest));

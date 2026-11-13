@@ -1,7 +1,8 @@
 'use client';
 
 import Image from 'next/image';
-import { BookOpen, Megaphone, Newspaper } from 'lucide-react';
+import { useTranslations } from 'next-intl';
+import { BookOpen, CalendarDays, Megaphone, Newspaper } from 'lucide-react';
 import { CommandItem } from '@/components/ui/command';
 import { NewsAge } from '@/components/blog/news-age';
 import { SearchResultRowBody } from '@/components/search/search-result-row-body';
@@ -12,6 +13,7 @@ import type { SearchResultItem } from '@/lib/api/types';
 import type { GlossarySearchItem } from '@/lib/hooks/use-search-results';
 import type { PostSearchEntry } from '@/lib/navigation/blog-menu';
 import type { NearbySearchExtras } from '@/lib/hooks/use-hero-browse-parks';
+import type { TripRegionLinks } from '@/lib/orlando/trip-links';
 
 interface SearchResultRowProps {
   result: SearchResultItem & NearbySearchExtras;
@@ -59,6 +61,34 @@ export function GlossaryResultItem({ item, position, onSelect }: GlossaryResultI
         <span className={cn(SEARCH_SECONDARY_TEXT_CLASS, 'truncate text-xs')}>
           {item.shortDefinition}
         </span>
+      </div>
+    </CommandItem>
+  );
+}
+
+interface TripPlannerResultItemProps {
+  region: TripRegionLinks;
+  onSelect: (region: TripRegionLinks) => void;
+}
+
+/** The trip planner of a region the query names, drawn like the glossary's row. */
+export function TripPlannerResultItem({ region, onSelect }: TripPlannerResultItemProps) {
+  const t = useTranslations('search.trip');
+  return (
+    <CommandItem
+      value={`${region.name} trip planner ${region.slug}`}
+      onSelect={() => onSelect(region)}
+      data-search-trip={region.slug}
+      className="flex cursor-pointer items-center gap-2.5 sm:gap-4"
+    >
+      <div className="bg-primary/15 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg sm:h-11 sm:w-11 sm:rounded-xl">
+        <CalendarDays className="text-primary h-4 w-4 sm:h-5 sm:w-5" />
+      </div>
+      <div className="flex min-w-0 flex-1 flex-col gap-1 sm:gap-1.5">
+        <span className="truncate text-sm leading-none font-semibold sm:text-[15px]">
+          {t('title', { region: region.name })}
+        </span>
+        <span className={cn(SEARCH_SECONDARY_TEXT_CLASS, 'truncate text-xs')}>{t('hint')}</span>
       </div>
     </CommandItem>
   );

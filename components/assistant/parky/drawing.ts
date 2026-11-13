@@ -26,12 +26,46 @@ export const gold = 'oklch(0.86 0.15 90)';
 /** The Ferris wheel's cabins in turn, and confetti in the same colours. */
 export const CABIN_COLOURS = ['oklch(0.72 0.17 355)', gold, green, 'oklch(0.76 0.16 55)'];
 
+/** Parky's body: a round speech bubble with its tail at the lower left. */
+export const BUBBLE =
+  'M24 7c11 0 20 8.1 20 18.2S35 43.4 24 43.4c-2.5 0-4.9-.4-7.1-1.1L7.5 46l2.3-8C6.1 34.7 4 30.2 4 25.2 4 15.1 13 7 24 7Z';
+
+/** Both eyes shut, two arcs bowed down: asleep, or in a nap. */
+export const SHUT_EYES = 'M12.4 23.2q4.6 3.4 9.2 0M26.4 23.2q4.6 3.4 9.2 0';
+
+/** The smile Parky wears whenever nothing else takes the mouth. */
+export const SMILE = 'M20.5 32.5q3.5 3.2 7 0';
+
+/** One Z of his sleep, over the bubble's top left. */
+export const ZED = 'M6.5 6.5h3.4l-3.4 3.8h3.4';
+
+/** The rosy cheeks' centres on the x axis; both sit at y 31. */
+export const CHEEKS = [10.8, 37.2] as const;
+
+/** The cheeks' blush. */
+export const blush = 'oklch(0.78 0.12 15)';
+
+/** A crescent moon about 9 units across, over the top left: the lights at night, a winter's nap. */
+export const MOON = 'M6 -2a4 4 0 1 0 4.2 5.3 3.2 3.2 0 1 1-4.2-5.3Z';
+
 /** A four-pointed star at the centre of the orbit dizzy stars run round, above the left eye. */
 export const STAR = 'M17 .2l.8 2 2 .8-2 .8-.8 2-.8-2-2-.8 2-.8Z';
 
 /** A heart about 10 units wide round the origin, for heart eyes and the ones floating up. */
 export const HEART =
   'M0 4C-1.4 2.9-5 .6-5-2.3-5-4.2-3.6-5.3-2.2-5.2-1.2-5.1-.4-4.4 0-3.6.4-4.4 1.2-5.1 2.2-5.2 3.6-5.3 5-4.2 5-2.3 5 .6 1.4 2.9 0 4Z';
+
+/** A firework's burst round the origin: eight rays, five units out, with a gap at the centre. */
+export const BURST =
+  'M0-2v-3M0 2v3M-2 0h-3M2 0h3M-1.4-1.4-3.5-3.5M1.4 1.4l2.1 2.1M-1.4 1.4-3.5 3.5M1.4-1.4l2.1-2.1';
+
+/** Sunglasses over the eyes: the bridge, the two lenses and a glint on each. */
+export const SHADES = {
+  bridge: 'M10 17h28',
+  left: 'M10.6 17H23v6.2c0 3.2-2.6 5.4-6.2 5.4s-6.2-2.2-6.2-5.4Z',
+  right: 'M25 17h12.4v6.2c0 3.2-2.6 5.4-6.2 5.4S25 26.4 25 23.2Z',
+  glint: 'M13 19.4h3.2M27.4 19.4h3.2',
+} as const;
 
 /** The open grin of a ride or a cheer, in place of the smile. */
 export const GRIN = 'M20 31.5h8q0 5.5-4 5.5t-4-5.5Z';

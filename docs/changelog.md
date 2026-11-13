@@ -11,6 +11,768 @@ heading, and the same pull request writes the public entry in `content/changelog
 
 ---
 
+## 2.20.0 (2026-11-13) – Orlando: Besucherkalender, Reiseplaner und beste Reisezeit
+
+Geschnitten am 2026-11-13 aus 53 Fragmenten in `docs/changelog.d/`. Der öffentliche Eintrag ist `content/changelog/2.20.0.md`. Neueste Abschnitte zuerst.
+
+### `check:prose` warnt vor einer Bildschirmtour mit „steht“
+
+Neue Warnung #114 `place-stands-tour` (Deutsch und Englisch, [§2.20](writing/2-20-check-patterns.md)): Ein Absatz, in dem dreimal eine Ortsangabe vor „steht“ oder „sits“ kommt („Unter den Tickets steht … Daneben steht … dabei steht nur …“), führt durch den Bildschirm, statt zu sagen, was der Besucher davon hat. Ein Nebensatz, dessen Subjekt nach der Ortsangabe kommt („in der die Party steht“), zählt nicht. Der Kritiker hat das Muster im Beitrag zum Reiseplaner gefunden. Über `content/blog/` schlägt die Regel einmal an, im deutschen Tagesplaner-Beitrag.
+
+### Der Orlando-Kalender nennt die Tagesausflüge in der Sprache des Lesers
+
+Die API nennt die Gruppe der Tagesausflüge auf Englisch, der deutsche Kalender, das Tagesblatt und der Planer zeigten deshalb „Day trips“. Die Hub-Seite setzt den Namen jetzt aus den Übersetzungen (`orlando.dayTripsGroup`, `withGroupNames` in `lib/orlando/hub-data.ts`), bevor die Region an die Seite geht; die Namen der Resorts bleiben die der Betreiber.
+
+### Der Menüpunkt „Tagesplaner“ wird „Planen“, ein Band mit beiden Planern, und der Reiseplaner ist überall verlinkt
+
+Der Eintrag in der Kopfleiste heißt „Planen“ (Plan, Plannen, Planifier, Planificar, Pianifica) und hat wie „Mehr“ keine eigene Seite; sein Band (`PlannerMenuPanel`) zeigt links den Reiseplaner je Region als Kachel, für Orlando mit Parky im Urlaub (`OrlandoScene` aus Parkys Zeichenteilen, im hellen Design Tag, im dunklen Abend mit Feuerwerk, mit reduzierter Bewegung still, geladen beim ersten Öffnen), rechts den Tagesplaner mit dem nächsten geplanten Tag des Besuchers („8 Bahnen · 10:00–17:44 Uhr“ und seiner Zeitleiste) und „Einen Tag planen im“ mit den sechs meistgeöffneten Parks der Sprache ohne Events (`lib/parks/event-parks.ts`). Neue Regionen kommen mit einem Eintrag in `TRIP_REGIONS`; ab zwei Regionen werden die Kacheln eine Reihe. Das Burger-Menü hat dasselbe als Aufklapper. Etwa 1 KB Brotli mehr HTML je Seite; die Leiste hat bei 1024 px in allen sechs Sprachen Platz, Französisch mit dem knappsten Rest ([Header-Navigation](features/header-navigation.md)). Auf Englisch heißt der Tagesplaner jetzt überall „Day planner“ (Navigation, Footer, Landingpage, „So funktioniert park.fan“, Impressum, Datenschutz, Glossar, sieben Beiträge), „Trip planner“ ist der Reiseplaner; das Glossar trägt deshalb das Datum 13. November.
+
+Der Reiseplaner ist von überall verlinkt, was eine Region kennt (`TripPlannerBand`, `lib/orlando/trip-links.ts`): die Parkseite und der Besucherkalender eines der 16 Parks planen den Park ein (`/orlando?parks=<slug>#planner`, ein Kalendermonat zusätzlich als `when`), die Stadt- und Länderseiten mit Parks einer Region, die Guides über einen solchen Park (die Karte kommt aus den Parks, die der Beitrag ohnehin nennt), der Footer neben dem Tagesplaner, die Suche bei „Orlando“, „Disney World“ oder „Universal Orlando“ als erste Zeile (`/api/nav/trip-regions`, 0,9 KB), und ein Tagesplan in einem Orlando-Park bietet ihn einmal je Plan an. Klicks zählen als `internal_link_clicked` mit Block `trip_band` und `search_result_clicked` mit Art `trip_planner`.
+
+### Der Reiseplaner liest den Ticketkatalog aus der Verwaltung, zeigt Kauflinks und zählt seine Schritte
+
+Der Planer holt den Katalog von `GET /v1/trip-regions/orlando/tickets` (Tag `trip-tickets:orlando`, 300 s, die API revalidiert ihn nach jeder Änderung in `/admin/tickets`); ohne Antwort nimmt er die `tickets` der Regions-Route und ohne beide bleibt der Ticket-Schritt weg ([Reiseplaner](features/orlando-planner.md)). Unter „Details zu den Tickets“ und bei eigenen Tickets stehen die Kauflinks des Produkts in der Reihenfolge der Verwaltung, Links für die Sprache oder den Markt des Lesers zuerst. Jeder Link geht mit `referrerPolicy="origin"` und ohne `noreferrer` hinaus, damit der Verkäufer park.fan als Herkunft sieht, obwohl die Seite selbst `same-origin` sendet; ein Partnerlink trägt `rel="sponsored nofollow noopener"` und das Etikett „Partnerlink“ mit Erklärung. Ein archiviertes Produkt in einem geteilten Link zeigt `product_archived`. Das Combo-Ticket heißt wie bei Attraction Tickets „Disney and Universal Combo Ticket“, und Produkte ohne `us` als Markt tragen „Außerhalb der USA verkauft“ statt „Nur UK & Irland“.
+
+Die Statistik zählt jeden Klick auf einen Kauflink als `ticket_link_clicked` (Produkt, Verkäufer, Host, Art, Position, Sprachtreffer, Ort, Ticketmodus) und den Planer von `trip_planner_started` über `trip_tickets_answered`, `trip_plan_requested` und `trip_plan_shown` bis zu `trip_days_saved`, `trip_ics_exported` und `trip_link_copied`, jedes mit der Region (`region`, vorerst `orlando`) und ohne Daten, Text oder Entität ([Analytics](features/orlando-planner.md#analytics)). Impressum und Datenschutz sagen, dass Ticket-Links Partnerlinks sein können und der Verkäufer park.fan als Herkunft sieht; die Liste der Statistik-Ereignisse nennt den Reiseplaner. Das Werkzeug heißt überall Reiseplaner (englisch trip planner), weil nach Orlando weitere Regionen folgen; Texte über die Orlando-Reise bleiben. Die zwei Antworten auf „Hast du schon Tickets?“ sind zwei gleich hohe Chips, und die Parks mit einem zweiten Tag stehen in einem Satz.
+
+### Der Ticketkatalog des Reiseplaners wird in der Verwaltung gepflegt
+
+Neue Seite `/admin/tickets` unter „Kuratieren“ nach „Saisons“ ([Verwaltung: Ticketkatalog](features/admin.md#the-ticket-catalog-admintickets)): jedes Produkt, mit dem der Planer rechnet, mit Name, Beschreibung, Kauflinks, Verkaufszeitraum und allen Regeln, ohne Deploy. Die Liste ordnet nach Resort, verschiebt mit Pfeilen innerhalb eines Resorts (`PUT …/order`), archiviert nach Rückfrage mit Grund fürs Änderungsprotokoll und nimmt Archiviertes wieder auf. Jede Zeile sagt „4 Tage in 7“ oder „1–10 Tage in 1–14“, den Verkaufszeitraum, die Links mit ihren Partnerlinks, den Vorschlagsrang und die Klicks der letzten 30 Tage.
+
+Das Formular prüft 700 ms nach der letzten Änderung über `validate` der API und zeigt jedes Problem an dem Feld, das sein Pfad nennt (`windowTable[2].window` unter der dritten Zeile); darüber steht die Probereise, einmal als eigenes Ticket und einmal im Vorschlag ohne Tickets, und Speichern wartet darauf. Ein Bearbeiten schickt nur die geänderten Felder, ein geleertes als `null`. Die Reihenfolge der Links ist die auf der Website, der erste steht vorn; „Partnerlink“ ist `sponsored`. Die Klicks liest die Seite aus `ticket_link_clicked`, nach Produkt und Host (bei zwei Links auf einem Host nach Verkäufer); ein nie gesendetes Ereignis zählt 0, eine fehlgeschlagene Abfrage zeigt einen Strich. Lesen darf jede Rolle, schreiben `editor`. Neu im Baukasten: `ToggleChips`, `MoveButtons` und `UrlInput`, das Feld mit dem Öffnen-Knopf, das jetzt auch die kuratierten Felder nutzen. `pnpm test:admin-tickets` prüft Zusammenfassung, Fenstertabelle, PATCH, Probleme je Feld, Links, Reihenfolge und Klicks (44 Fälle); gegen eine nachgebaute API lief die Seite bei 390 px ohne seitliches Scrollen.
+
+### News bekommen ein wiederverwendetes Foto statt der Ersatzgrafik
+
+Die Regel „ein Titelbild nur auf einer News“ in
+[News is set apart from the articles](rules/news-is-set-apart-from-the-articles.md#a-news-post-reuses-a-photo-rather-than-going-without)
+ist ersetzt. Eine News über einen Park nimmt zuerst ein noch unbenutztes Motiv aus der Sammlung des
+Parks, dann eine passende Saison-Sammlung, dann ein Foto des Parks, das schon auf anderen Beiträgen
+steht, und zwar das, dessen letzte Nutzung in einer News am längsten zurückliegt. `BlogCoverFallback`
+gibt es nur noch für einen Park ohne ein einziges Foto in der Mediendatenbank. Ein wiederverwendetes
+Foto übernimmt `alt` aus dem Sidecar und bekommt eine eigene Bildunterschrift.
+
+Anlass: Für Disneyland Paris gibt es ein Foto, und die drei Paris-News nach der Halloween-News liefen
+deshalb mit der Ersatzgrafik. `docs/writing/5-posts-and-news.md` und
+`docs/features/blog-cover-fallback.md` verweisen auf die neue Regel.
+
+### Parks in einer Pause zeigen ein gelbes Panel mit dem Tag der Wiedereröffnung und Parky in der Jahreszeit
+
+Park- und Ride-Seite zeigen für einen Park, der mindestens eine Woche zu ist, ein gelbes Glas-Panel
+(`ParkBreakPanel`): „Winterpause" oder „Saisonpause", „Öffnet wieder am Donnerstag, 25. März 2027",
+„in 19 Wochen", dazu ein Bild (`ParkyBreakScene`) der Jahreszeit: im Winter schläft Parky mit
+Pudelmütze und Schal auf seinem Holzschlitten neben dem Schneemann, im Herbst in einem Laubhaufen
+unter einem roten Baum, im Frühling zwischen Tulpen unter einem blühenden Baum. Auf der Ride-Seite
+heißt es „Der Park öffnet wieder am …". Ab `sm` reicht das Bild bis an den Rand und blendet per
+`mask-image` nach links ins Glas aus wie der Guide in der Titelkarte; auf dem Phone bleibt es ein
+gerahmtes Banner. Bisher stand der Termin nur als kleine Zeile in „Heute im Park".
+
+Die Regel (`parkBreakOf`, `lib/utils/park-break.ts`): heute kein Betrieb laut Fahrplan, die
+nächste Öffnung bekannt und mindestens `OFFSEASON_MIN_DAYS` (7) Tage entfernt. Das ist die Grenze,
+ab der Parkkarten (`getScheduleMessage`) und „Heute im Park" (`useTodaySchedule`) „Nebensaison"
+sagen; sie stand dort zweimal als `7` und steht jetzt einmal in `lib/utils/schedule-utils.ts`. Ein
+Park, der nur am Wochenende öffnet, bekommt das Panel also nie. „Winterpause" heißt es, wenn
+mindestens 7 Tage davon in Januar bis März fallen (südlich des Äquators Juli bis September,
+außerhalb der Tropen), sonst „Saisonpause". Am 13. November traf das 22 von 209 Parks: Hansa-Park
+und vier Wasser- und Saisonparks mit Winterpause, 17 mit Saisonpause, darunter Movie Park (zu bis
+zum 27. November) und Parc Astérix (bis zum 19. Dezember). `pnpm test:park-break` mit 19 Fällen;
+alle vier Formen stehen auf `/ui`.
+
+Server-gerendert und ohne Client-Code, also ohne Layout-Sprung. Die Texte liegen im eigenen
+Namespace `parkBreak`, weil die Parkseite `parks` komplett an den Browser schickt. Die Parky-Formen
+(`BUBBLE`, `SHUT_EYES`, `SMILE`, `CHEEKS`, `ZED`, `MOON`) stehen jetzt in `drawing.ts`, der
+Riesenrad-Hut ist `ParkyWheel` (`wheel.tsx`) und wird auch von `ParkyLogo` gezeichnet,
+`ParkyLookHat` und `ParkySnowman` haben `still`, und `weeksUntil` rundet die Wochen für „Heute im
+Park" und das Panel gleich.
+
+### Der Reiseplaner kennt Tickets: ein Schritt fragt danach, ohne Tickets schlägt der Plan welche vor
+
+Der Planer fragt vor Reisedaten und Parks „Hast du schon Tickets?“ ([Reiseplaner](features/orlando-planner.md)). „Noch nicht, einfach planen“ geht direkt zu den Reisedaten; „Ja“ öffnet je Resort (Disney, Universal, SeaWorld mit Busch Gardens, LEGOLAND) die Produkte des Katalogs der API unter ihrem offiziellen Namen, mit Tagen, Hopper (ja, nein, weiß nicht) und erstem Tag, darunter die Gültigkeit als Datum. Eine UK-Kombi füllt Disneys 14-Day Magic Ticket und Universals 14-Tage-Ticket in einem Schritt; die Reisedaten füllen sich aus den Fenstern der Tickets. Die Auswahl steht als `tickets=`, `hopper=` und dreiwertiges `blocks=` in der Adresse ([API: Tickets](https://github.com/PArns/v4.api.park.fan/blob/main/docs/frontend/trip-regions.md#tickets)) und danach als Zeile über dem Planer.
+
+Mit Tickets liegt jeder Besuch im Fenster seines Tickets; die Wochenansicht und das Tagesblatt sagen „Disney-Tag 2 von 4“, bei Tickets, die jeden Tag gelten, der Tag im Fenster. „Deine Tickets“ nennt die genutzten Tage und warum Tage frei bleiben; ein Tag außerhalb seines Tickets bietet „Diesen Besuch weglassen“ und „Ticket ändern“. Ohne Tickets nennt ein Satz, welche Tickets ab wann passen („6 Tage Disney ab So., 7. Feb., dann 4 Tage Universal ab Di., 16. Feb.“); „Details zu den Tickets“ zeigt je Resort, was ein Park Hopper bringt (mit Datum), den Hinweis zum Hogwarts Express, die Shops, „Plan mit Park Hopper zeigen“ je Resort und „Als meine Tickets übernehmen“. Fehlt der Katalog in einer veralteten Antwort der Regions-Route, bleibt der Schritt weg, und ein geteilter Link mit `tickets=` plant trotzdem. `pnpm check:planner --orlando` fährt Schritt, UK-Kombi, Vorschlag, Hopper je Resort, „Tag 2 von 4“ und einen Tag außerhalb des Fensters.
+
+### Orlando-Texte: der Hub beginnt mit seinen Parks und den Fahrten dazwischen
+
+Der Hub beginnt mit „Mit einem Hotelzimmer in Orlando hast du acht Themenparks und vier Wasserparks vor der Tür“ und einem Absatz mit den Fahrzeiten aus der Fahrzeitmatrix der API (EPCOT bis Universal Studios 25 Minuten ohne Verkehr, jeder Themenpark von Lake Buena Vista in unter einer halben Stunde, LEGOLAND knapp eine Stunde, Tampa rund anderthalb), in allen sechs Sprachen. Hub, Tagesblatt, FAQ, Methode, die Seiten zur besten Reisezeit und die Station auf der Startseite gingen durch den Review-Pass und einen Kritiker ([Schreibregeln §7.2](writing/7-review.md)): Volcano Bay erreicht man vom Parkhaus mit dem Shuttle, nicht mit Monorail oder Fähre; „Weniger, als viele denken“ zu Weihnachten und Silvester wurde „Nein.“, weil die Antwort auch unter dem Jahresschnitt gilt; der Hub sagt „große Bahnen“ wie der Planer; das Französische duzt durchgehend.
+
+### Beste Reisezeit für Orlando, Disney World und Universal Orlando
+
+Drei neue Hub-Seiten unter `/orlando/<best-time-Segment>` (alle sieben Headliner-Parks) und
+`…/disney-world`, `…/universal-orlando`, serverseitig gerendert aus `/v1/trip-regions/orlando/when`
+und `/school-breaks`. Oben die drei ruhigsten 10-Tage-Reisen des Titeljahres mit „Diese Tage
+planen“ in den Reiseplaner, darunter eine Wochenleiste mit echter `<table>`, zwölf Monatszeilen
+(Wartezeit, Events mit Status, Schulferien in Orlando und Europa, Klimanormal, Öffnungszeiten,
+Partyabende, Hurrikansaison), die besten und schlechtesten Wochen und Links in den Planer innerhalb
+der Ferien jedes Bundeslands, Noords und Englands. Das Jahr im Titel springt im September um.
+Sitemap ohne `<lastmod>`, eine Stunde Edge-Fenster, eigene OG-Karte; die globale Seite „Beste
+Reisezeit“ verlinkt die drei ([Orlando best time](features/orlando-best-time.md)). `pnpm test:orlando-best-time`
+prüft Zeitraum, Monatszeilen, Ferienläufe und Wochen.
+
+### Der Reiseplaner verteilt die Parks einer Orlando-Reise auf die Reisetage und findet die besten Reisedaten
+
+Kapitel 03 des [Orlando-Hubs](features/orlando-planner.md) fragt die API (`/plan`) nach dem Plan für bis zu 21 Tage und sechzehn Parks, oder (`/when`) nach den drei besten Reisezeiträumen für eine Reisedauer, wahlweise nur in den Schulferien einer Region. Pflicht sind nur Reisedaten und Parks; Hotel (mit Universal Premier und Express), Hotelgegend, die Feuerwerksfrage, Resorts am Stück, Ruhetage und Park-Hopping stehen unter „Feinabstimmung“ mit den Vorgaben der API. Die Auswahl ist die Adresse selbst, in den Parameternamen der API, sodass „Link kopieren“ und Parkys Links denselben Plan öffnen. Die Antwort geht vom Satz (Ersparnis in Minuten pro Fahrt, mit dem Prognosefehler, oder dass die Reihenfolge kaum zählt) über die Ansichten Liste, Woche und Monat zum Tagesblatt und von dort in den Tagesplaner. Die Wochenansicht steht auf der Achse und dem Untergrund des Tagesplaners; ein früher Schluss kürzt den Block, ein Party-Abend ist danach schraffiert. Tage lassen sich festhalten und tauschen, jeder Tausch vorher mit seinen Minuten bepreist. Alle Tage gehen in einem Schritt in den Planer, die Reise als `.ics` in Orlando-Zeit. 72 Prüfungen in `pnpm test:orlando-plan`.
+
+Dazu: ein Park-Hopper-Ticket (`ticket=hopper`), ohne das Park-Hopping nicht zählt; Abende nach einem früh schließenden Park in einem zweiten Park oder in Disney Springs und CityWalk (`evenings`), in der Wochenansicht als eigener Block; Hitze und Hurrikansaison als kurze Hinweise, bei den Reisezeiträumen mit „weiter hinten eingeordnet“. Die Zahl unter jedem Datum der Datumsauswahl ist jetzt die kürzeste Wartezeit unter den Tagesfavoriten der Resorts, früh schließende Parks zählen nicht mehr.
+
+### Orlando hat einen Besucherkalender: welcher Park an welchem Tag, und ein Planer für die ganze Reise
+
+`/orlando` (in allen sechs Sprachen dasselbe Wort) und elf Monatsseiten `/orlando/<jahr>/<monat>` zeigen für die sechzehn Parks von Walt Disney World, Universal mit Epic Universe, SeaWorld und den Tagesausflügen, wo man an welchem Tag am kürzesten ansteht. Ganz oben steht die Antwort für einen benannten Tag in Ortszeit Orlando, je Resort der Park mit den kürzesten Warteschlangen (die Wahl der API, die einen früh schließenden Partytag gegen einen vollen Tag abwägt, mit dem Hinweis darauf). Darunter der Kalender: auf dem Handy eine Tagesliste, ab `lg` eine Tabelle mit nur den Minuten, die erste Woche im ausgelieferten HTML, der Rest über das Relay `/api/trip-regions/*`. Ein Tipp öffnet das Tagesblatt mit Öffnungszeiten, Early Entry, Abend-Events, Saisons, Fahrzeit vom Hotel, den fünf großen Attraktionen und „Diesen Tag planen“. Es folgen der Ausblick auf die beste Reisezeit (`/when`), der Platz für den Reiseplaner, die besten Tage je Park, die Methode und die Fragen. Mehr-Menü, Parkseiten, Besucherkalender der Parks und Startseite führen hin. Die Logik prüft `pnpm test:orlando-hub`; Details: [Orlando-Hub](features/orlando-hub.md).
+
+### Parky legt eine Orlando-Reise in den Tagesplaner und öffnet den Orlando-Hub
+
+Die API plant mit Parky jetzt Orlando-Reisen (`plan_vacation`, Prompt-Version 48). Sagt der Besucher danach „pack das in meinen Planer“, schickt sie `planner_reserve_trip`: alle Tage der Reise mit ihrem Park, an einem Hop-Tag zwei Parks auf einem Datum. `readAssistantAction` (`lib/assistant/actions.ts`) prüft jeden Park wie bei den anderen Planer-Aktionen, nimmt jeden Park und Tag nur einmal und höchstens 16 Tage, so viele Besuche wie ein Plan der API setzt; ein Tag, der die Prüfung nicht besteht, fällt weg. `useAssistantActions` legt die Tage mit `reserveDays` in einem Schreibvorgang an, den es jetzt mit `planner_reserve_days` teilt (`reserve`): jeder angelegte Tag lässt sich einzeln mit `planner_undo` zurücknehmen, ein Tag mit Plan bleibt, wie er ist. Den Hub öffnet Parky über das bestehende `navigate`, mit `/orlando?from=…&to=…&parks=…#planner`; Query und Anker bleiben erhalten, und „orlando“ heißt in allen sechs Sprachen gleich. Neue Texte im Widget gibt es nicht: der Chip „Im Tagesplaner" und „Seite geöffnet" passen. `pnpm test:assistant-context`, `pnpm test:assistant` und `pnpm test:localized-path` prüfen die Fälle.
+
+### Der Tagesoptimierer rechnet in der API, Website und Parky teilen ihn
+
+„Tag optimieren“, „Alle Headliner einplanen“, der Fit-Assistent, der Wizard und „In den Plan“
+haben die Strahlsuche bisher im Browser gerechnet, gegen die Prognosen aus `/plan/day`. Jetzt
+fragen sie `POST …/plan/optimize` in der API, über das Relais in `app/api/parks/[...path]/route.ts`
+mit dem Datenschlüssel des Servers; der Browser schickt seinen Tag und bekommt den Plan zurück, und
+Parkys „optimiere meinen Tag“ läuft über denselben Knopf. Die Suche ist unverändert umgezogen: die
+187 Prüfungen aus `test:planner-optimize` und `test:planner-fit` laufen in der API als Jest-Specs,
+und 66 aufgezeichnete Antworten der Browser-Suche kommen dort mit denselben Reihenfolgen,
+Startminuten, Summen und Stellschrauben heraus.
+
+Neu ist das Warten: Der gedrückte Knopf dreht sich und zeigt „Sortiert …“, eine Antwort für einen
+inzwischen geänderten Tag wird verworfen, und wo die API nicht antwortet, sagt
+`PlannerOptimizeFailure` „Die Optimierung konnte nicht laufen. Dein Plan ist unverändert.“ mit
+„Erneut versuchen“. Der Fit-Assistent lässt die letzte Antwort stehen, bis die nächste da ist, und
+„Plan übernehmen“ wartet auf sie. Die Vorschau auf dem Knopf fragt pro Änderung und am heutigen Tag
+höchstens einmal pro Viertelstunde. Der Wizard plant den heutigen Tag jetzt ab der aktuellen Uhrzeit.
+`lib/planner/optimize.ts` behält nur, was die Knöpfe zum Zeichnen brauchen; Hintergrund:
+[der Optimierer](features/trip-planner/optimizer.md).
+
+### Prognosen nur mit API-Key, Nutzungsbedingungen, Admin-Seite für Keys
+
+**Die Bedingungen.** Das Impressum (de und en) hat einen Abschnitt „Nutzung der Daten“ / „Using the data“ mit dem Anker `#data-use`, direkt nach „Datenquellen“. Die Daten, die park.fan veröffentlicht, sind kostenlos für nicht-kommerzielle Zwecke, mit Quellenhinweis und Link zur Seite des Parks oder der Attraktion; Texte und Fotos gehören nicht dazu. Die Prognosen (alles, was die Modelle vorhersagen, darunter Crowd-Kalender, erwarteter Andrang pro Tag und Stunde, vorhergesagte Wartezeiten, beste Besuchstage, Jahresprognosen und Pläne des Tagesplaners) gibt die API nur mit einem API-Key heraus, für nicht-kommerzielle Nutzung kostenlos auf Anfrage. Für eine kommerzielle Nutzung der Prognosen und Statistiken braucht es eine schriftliche Vereinbarung mit Patrick Arns. Weder die Seiten noch die Prognosen dürfen zum Training von Modellen dienen. Die Live-Daten der Quellen gibt park.fan nur für nicht-kommerzielle Zwecke weiter. Eigene Rechte an den Live-Daten hat park.fan nicht und kann deren kommerzielle Nutzung deshalb nicht erlauben. Bisher stand nirgends eine Bedingung, und der Skill `park-fan-data` nannte die Quellenangabe „the licence's only price“, also auch für eine kommerzielle App.
+
+**Was das Frontend dafür tut.** Die API (v4.api.park.fan#652) verlangt den Key auf `/calendar`, `/best-days`, `/predictions/yearly` und `/plan/day` und lässt auf Park-Detail, Ride-Detail, `/stats/day` und `/favorites` die Prognosefelder weg, solange `forecast=true` fehlt; mit `forecast=true` ohne Key antwortet sie 401. Der `x-auth-key` des Servers zählt als Key. `withForecast()` (`lib/api/forecast-query.ts`) hängt das Flag an `getParkByGeoPath`, die Fresh-Variante, beide Ride-Fetcher, `getRideDayCurve` und den Favoriten-Relay; `getParkByGeoPathForAgents` zeigt keine Prognose und bleibt ohne Flag im Cloudflare-Cache. Die Prognose-Zweige von `/api/parks/*` (Live-Poll, Kalender, Stundenkalender, Best Days, Tagesplan, Ride-Detail, Tageskurve) und `/api/favorites` antworten nur noch Anfragen von Seiten auf park.fan (`isSameOriginRequest`: `Sec-Fetch-Site: same-origin`, ohne den Header ein `Referer` vom selben Origin), sonst 403 mit Verweis auf api.park.fan. Das MCP-Tool `get_park_best_days` verlangt einen Key in `X-API-Key` und liest die Best Days mit genau diesem Key, ohne den eigenen Server-Key (`getBestDaysForApiKey`); so prüft die API bei jedem Aufruf Widerruf, Parkliste und Stundenlimit, und das Frontend merkt sich kein Urteil. WebMCP-Aufrufe aus dem Tab sind same-origin und lesen wie die Seite. Ein Server ohne Key lässt `forecast=true` weg (`serverHoldsForecastKey`), damit eine Preview ohne Secrets die Seiten ohne Prognosen zeigt statt mit einem 401 abzustürzen. Crawl und Medien-Backlog im Admin lesen den Park ohne Prognosefelder (`getParkByGeoPathFreshWithoutForecasts`) und bleiben im Cloudflare-Cache. `NO_STORE` setzt jetzt auch `CDN-Cache-Control`, sonst hätte Cloudflare die 403 eines Relays nach der Regel in `next.config.ts` gecacht und den eigenen Seiten von park.fan ausgeliefert. Im Direktmodus (`NEXT_PUBLIC_API_DIRECT`) zeigen die Favoriten-Karten keine besten Besuchszeiten, weil der Browser keinen Key hat. Server-Card, Tool-Beschreibung, `auth.md`, `llms.txt` und beide Daten-Skills sagen dasselbe. `pnpm test:forecast-relay` prüft Pfade, Herkunft und Flag, `pnpm check:agent-ready` prüft, dass das Tool ohne Key ablehnt, und mit `PARKFAN_DATA_KEY` auch die Antwort. Die Regel: [eine Prognose verlässt park.fan nur mit Key](rules/a-forecast-leaves-only-with-a-key.md).
+
+**Die Admin-Seite.** `/admin/api-keys` (nur Inhaber, Gruppe Konto) listet die Keys mit Nutzung, Präfix, Kontakt, Erstellung, letzter Nutzung, Widerruf und den Anfragen der laufenden Stunde und das Stundenlimit, ändert das Limit in einem eigenen Dialog, widerruft hinter einem `ConfirmDialog` und erstellt einen Key mit Name, Kontakt, Nutzung, Stundenlimit (1.000, leer für keins) und Notiz. Ein Key lässt sich auf einzelne Parks beschränken (Auswahl über die Parksuche, ohne Auswahl alle Parks); die Liste nennt die Parks, „bearbeiten“ ändert Limit und Parks. Der Key steht einmal im Dialog, nur in dessen State, mit einer `curl`-Zeile; solange die Anfrage läuft, lässt sich der Dialog nicht schließen, damit der Key nicht verloren geht. Das Stundenlimit nimmt `1.000` und `1 000`, aber keine Dezimalzahl wie `2.5`. `pnpm test:admin-api-keys` prüft die Eingabe des Limits, die Anzeige, die Parkliste und das Enddatum (16 Fälle).
+
+**Ein eigener Key fürs Frontend.** `getServerApiHeaders` schickt neben `x-auth-key` (`API_AUTH_KEY`, hebt die Rate-Limits auf) jetzt `X-API-Key` aus `API_DATA_KEY`: ein Daten-Key mit der Nutzung „park.fan selbst“ (`internal`) ohne Stundenlimit, angelegt unter `/admin/api-keys`. Damit öffnet ein widerrufbarer Key die Prognosen und nicht mehr der Drossel-Bypass; sobald er in Vercel gesetzt ist, schaltet `FORECAST_BYPASS_KEY=off` in der API den alten Weg ab.
+
+**Die Maschinen-Dokumente.** Die Adresse der Bedingungen steht einmal, als `DATA_TERMS_URL` in `lib/agents/licensing.ts`. `license.xml` verweist mit `<terms>` (RSL 1.0 §3.17) darauf, `/.well-known/api-catalog` mit der Relation `terms-of-service` (RFC 6903). Ein `<prohibits type="user">commercial</prohibits>` gibt es bewusst nicht: RSL lizenziert eine ganze Seite, und das Element würde einem kommerziellen Assistenten auch das Lesen einer Seite für eine Antwort verbieten (`ai-input=yes` bleibt). `pnpm check:agent-ready` lädt die Seite, die `<terms>` nennt, prüft den Anker und vergleicht die Adresse im API-Katalog. Hintergrund: [Agent readiness](seo/agent-readiness.md#terms-of-use-forecasts-need-a-key-commercial-use-needs-an-agreement).
+
+**Lizenz des Quellcodes.** Website und API stehen jetzt unter der PolyForm Noncommercial License 1.0.0 (`LICENSE.md`, wörtlich): nicht-kommerziell frei, kommerziell nur mit schriftlicher Vereinbarung. `NOTICE.md` trägt den Pflichthinweis und nimmt die Texte (`content/`, `messages/`, die Seitentexte unter `app/[locale]/*/content/`), die Fotos in `public/media/`, den Namen park.fan, die Logos und Parky aus. Bisher stand in `package.json` „GPL-3.0-only“, ohne LICENSE-Datei; danach hätte jeder die API samt ML-Pipeline kommerziell betreiben dürfen, was den Bedingungen für die Daten widersprach. Die README nennt sie im Abschnitt „License“; das Impressum verweist bewusst nicht auf die Repositories.
+
+**Befristete Keys.** Ein Key kann ein Enddatum haben, für eine Testphase oder einen Vertrag bis Saisonende. Die API meldet es in `X-API-Key-Expires` und lehnt den Key danach mit 401 `api-key-expired` ab; ein neues Datum unter „bearbeiten“ macht ihn wieder gültig. Im Dialog wählt „Gültig“ dieselben Laufzeiten wie bei den MCP-Tokens (30 Tage, 90 Tage, 1 Jahr, läuft nie ab) oder einen Tag, der bis Mitternacht deutscher Zeit gilt. Die Liste zeigt „gültig bis …“ oder „abgelaufen am …“ mit Chip.
+
+**Admin auf dem Handy.** Erstellen- und Bearbeiten-Dialog waren auf einem Telefon höher als der Bildschirm: Titel und Buttons ließen sich nicht erreichen, und nach dem Erstellen schob die lange `curl`-Zeile die Kopieren-Buttons aus dem Bild. `SCROLLING_DIALOG` lässt sie im Bildschirm scrollen und begrenzt ihre Breite, der MCP-Token-Dialog bekommt dasselbe. In der Liste stehen die Buttons jetzt in der Zeile mit dem Namen, die Details nutzen die ganze Breite. Widerrufen des Keys „park.fan selbst“ warnt, dass die Seite dann keine Prognosen mehr zeigt.
+
+**Wenn der Key der Website abgelehnt wird.** Ist `API_DATA_KEY` widerrufen, abgelaufen oder auf Parks beschränkt, antwortet die API auf `forecast=true` mit 401 oder 403. `readWithForecast` und `fetchWithForecast` (`lib/api/forecast-query.ts`) lesen dann einmal ohne das Flag, die Seite erscheint ohne Prognosen statt mit einem Fehler, und das Log sagt es einmal pro Prozess. `pnpm test:forecast-relay` prüft das (15 Fälle).
+
+**Aufrufe pro Key.** Die API zählt jeden Aufruf eines Keys pro Tag (UTC, 30 Tage) und pro Monat (12 Monate), auch beim Key der Website, dazu die Aufrufe, die das Stundenlimit abgelehnt hat. In der Liste steht unter jedem Key eine Sparkline mit „heute … · 30 Tage …“; der Diagramm-Button öffnet den Verlauf pro Tag und die Summen pro Monat, ab dem ersten Monat mit Aufrufen (`formatKeyUsage`, `usedMonths`).
+
+**Keys rotieren.** `/admin/api-keys` hat pro aktivem Key einen Rotieren-Button. Der Dialog fragt nach der Übergangszeit (sofort sperren, 1 Stunde, 24 Stunden als Vorgabe oder 7 Tage) und sagt in einem Satz, was mit dem alten Key passiert; beim Key der Website erinnert er daran, den neuen Key in Vercel als `API_DATA_KEY` einzutragen. Die API (`POST /v1/admin/api-keys/:id/rotate`) gibt dem Key ein neues Geheimnis, Name, Nutzung, Limits, Parks und Statistik bleiben. Den neuen Key zeigt der Dialog einmal, mit Kopier-Button und der Warnung, ihn jetzt zu speichern, über dieselbe Anzeige wie beim Erstellen (`OneTimeKey`), die jetzt auch den Fokus auf den Kopier-Button legt. Solange die Übergangszeit läuft, steht in der Liste „Alter Key gültig bis …, zuletzt genutzt …“ (`formatPreviousKeyStatus`, `previousKeyValidUntil`) mit dem Button „Alten Key jetzt sperren“ hinter einer Rückfrage (`DELETE …/previous`); „zuletzt genutzt“ in der Zeile gilt nach einer Rotation dem neuen Key, dazu „rotiert vor …“. Die Pfade baut `dataApiKeyPath`. `pnpm test:admin-api-keys` prüft die Auswahl, die Sätze und die Statuszeile.
+
+### Parkys Riesenrad-Hut ist beim Verbindungscheck wieder ganz zu sehen
+
+In `AssistantChallenge` lag das Parky-SVG mit `drop-shadow-lg` direkt über dem pulsierenden
+Leuchten. Safari legte das SVG deshalb auf eine eigene Compositing-Ebene und schnitt es an seiner
+Box ab, und die obere Hälfte des Riesenrads ragt über diese Box hinaus. Jetzt steckt Parky in einem
+eigenen Stacking Context (`isolate`), wie im Launcher, und Safari setzt diesen Wrapper auf die
+Ebene statt des SVGs.
+
+### Parkys Hinweis unter dem Eingabefeld: KI-Assistent, Antworten ohne Gewähr, Link zum Datenschutz
+
+`assistant.disclaimer` sagte „Parky ist ein KI-Assistent und verrechnet sich manchmal.“ Das
+Sprachmodell rechnet nicht, es kann aber falsche Antworten schreiben, und für die übernimmt park.fan
+keine Haftung. Der Hinweis lautet jetzt in allen sechs Sprachen: KI-Assistent, Antworten können
+Fehler enthalten, ohne Gewähr. Dahinter steht ein unterstrichener Link `assistant.privacy` auf
+`/datenschutz#parky`, den Abschnitt zu Parky in der Datenschutzerklärung; `LegalH3` nimmt dafür eine
+`id`. Auf dem Handy schließt der Link das Chatfenster, sonst läge es über der Seite.
+
+Die Parky-Blogposts zitieren den neuen Hinweis und nennen 7 statt 90 Tage bis zum Löschen der Chats,
+wie die Datenschutzerklärung seit dem 6. November; `updatedAt` steht in allen sechs auf
+`2026-11-10`. Auf „So funktioniert park.fan“ vertut sich das Sprachmodell jetzt, statt sich zu
+verrechnen.
+
+### Instagram und Facebook: Kampagnenlinks zählen als Social, der Footer verlinkt die Profile, das Handy teilt über sein eigenes Menü
+
+**Herkunft aus `utm_source`.** In den letzten 90 Tagen kamen 20 von 14.700 Besuchen aus sozialen Netzwerken (12 von Facebook), 58 % zählten als direkt. Instagrams In-App-Browser und die Apps, in denen ein Bio- oder Story-Link aufgeht, schicken keinen Referrer, ein Besuch aus einem eigenen Post landete also unter „direkt“. `pageLoadOrigin` in `lib/analytics/site-analytics.ts` schickt deshalb ohne externen Referrer jetzt auch `utm_source=instagram` oder `facebook` (auch als Host, mit `www.`, `l.instagram.com`, `m.facebook.com`) als `source` mit, normalisiert auf `instagram.com` oder `facebook.com`. Beide Hosts legen die `REFERRER_RULES` der API in den Kanal `social`. Die Schreibweisen stehen in `SOCIAL_SOURCE_HOSTS` neben `AI_SOURCE_HOSTS`, eine Funktion (`utmSourceHost`) liest beide. `utm_medium` und `utm_campaign` bleiben ungelesen. Die API nahm `source` bisher nur aus ihrer eigenen Liste `AI_SOURCE_HOSTS` an; mit PAR-1286 (v4.api.park.fan#651) nimmt sie auch die beiden Social-Hosts. Ohne den API-Teil wird der Wert verworfen und der Aufruf zählt weiter als direkt. Die Datenschutzerklärung (Abschnitt 4, de und en) nennt Instagram und Facebook. `pnpm test:site-analytics` prüft neun Schreibweisen und drei Werte, die nichts schicken dürfen.
+
+**Profile.** `ORGANIZATION_PROFILES` in `lib/seo/schema-identity.ts` hält die eigenen Profile, Instagram (`@part_82`) vor der Facebook-Seite (`facebook.com/park.fan.coasters`). Das `Organization`-JSON-LD (`components/seo/structured-data.tsx`) nimmt die beiden Adressen als `sameAs`, das bisher leer war. Der Footer listet sie in der Markenspalte unter der Beschreibung mit `InstagramIcon` und `FacebookIcon` und der Klasse der Footer-Links, also 44 px hoch unter `sm`; die Linkgruppen klappen auf dem Handy zu, die Markenspalte nicht. Der Name jedes Links ist „Folge park.fan auf Instagram“ (`footer.follow.on`) mit dem Hinweis auf den neuen Tab. Ein weiteres Netzwerk ist eine Zeile in der Liste und ein Zeichen in `NETWORK_MARKS`. `BRAND.md` nennt beide Profile.
+
+**Teilen auf dem Handy.** `ShareButtons` beginnt auf einem Touchscreen, dessen Browser `navigator.share` hat, mit „Per App teilen“ (`share.native`): Das Systemmenü erreicht Instagram, Messenger, Telegram und jede andere installierte App, die die Zeile nicht verlinken kann. Der Knopf erscheint nach der Hydration (`useMediaQuery('(pointer: coarse)')` ist auf dem Server falsch), blendet mit `starting:opacity-0` ein und zählt als `share_clicked` mit `target: native`. Lehnt der Browser das Menü ab, wird der Link kopiert. Der Aufruf von `navigator.share` stand bisher in `PlannerShareLink`; er liegt jetzt in `lib/utils/native-share.ts` (`canShareNatively`, `shareNatively`) und wird von beiden benutzt. `pnpm test:native-share` deckt die drei Ausgänge ab (`shared`, `dismissed`, `unavailable`).
+
+### Sicherheit: SVG ohne Skript, keine Links über `//`, saubere Beitrags-Links und geteilte Pläne
+
+Zwei Audits auf SQL- und JS-Injection fanden keinen direkten Weg zur Skriptausführung für
+Besucher, API oder Parky, aber vier kleinere Lücken:
+
+- Ein SVG unter `/media`, direkt geöffnet, ist ein Dokument auf park.fan und damit auf dem
+  Origin des Admin. Ein Konto mit der Rolle `author` hätte über Medien-Commit oder Blog-Editor eins
+  mit Skript einreichen können. Jedes SVG kommt jetzt mit
+  `Content-Security-Policy: default-src 'none'; style-src 'unsafe-inline'; sandbox`; als Bild
+  eingebunden zeichnet es wie bisher.
+- Parkys Link-Prüfung (`safeAssistantHref`) ließ `https://park.fan//evil.example` und
+  `/\evil.example` durch, weil der Pfad mit `//` beginnt und ein Link das als anderen Host liest.
+- Die `url` eines Foto-Beitrags war beliebiger Text und stand in der Moderation als Link. Sie muss
+  jetzt ein Slug-Pfad sein, und der Link geht über `sitePageUrl`.
+- Ein geteilter Plan mit `..` in Park-Slug oder Geo hätte die Anfragen des Planers auf andere Pfade
+  der Seite gelenkt. Solche Parks fallen beim Einlesen weg (`isSlug`).
+
+### Parkys Charakter: Sarkasmus und der Wunsch nach schlichten Antworten
+
+`docs/features/parky-character.md` sagt jetzt, wie Parky auf Sarkasmus reagiert (mit einem
+Grinsen und dem nächsten guten Schritt, nie mit Sarkasmus zurück) und dass er auf Wunsch schlicht
+antwortet und trotzdem er selbst bleibt. Der Chat-Prompt der API hat dieselben Regeln (PAR-1281 im
+Release `release/2026-11-10-parky`).
+
+### Parky zeigt Posts und Glossarbegriffe als Karte
+
+Bisher konnte Parky einen Guide oder eine News nur im Text verlinken oder die Seite wechseln, und
+für einen Glossarbegriff gab es nur einen Link, der über eine Weiterleitung lief. Jetzt zeichnet
+das Widget zwei neue Karten:
+
+- **Posts:** ein bis drei Beiträge als Zeile aus dem Guides-Menü, mit Cover, Kategorie, Titel,
+  Teaser, Datum und Lesezeit. Die Zeile liegt dafür als `MenuPostRow` in einer eigenen Datei, das
+  Menü und der Chat nutzen dieselbe.
+- **Glossar:** ein bis drei Begriffe mit dem Icon ihrer Kategorie und der Kurzdefinition.
+
+`/api/assistant-posts` liefert dafür Cover, Bildausschnitt, Kategorie und Lesezeit und nimmt
+`slugs` für genau diese Beiträge; `/api/glossary-search` nennt die kanonische Seite jedes Begriffs
+(`/de/glossar/…`). Die API schickt die Karten mit PAR-1279 im Release `release/2026-11-10-parky`,
+der zuerst live geht: Dieser Stand schickt `ridden` mit (PAR-1270), das eine ältere API ablehnt.
+Bis dieser Stand nachzieht, verwirft das alte Widget die neuen Karten still; der Antworttext bleibt.
+Eine Parkkarte aus einer Antwort, die vor dem Release gespeichert wurde, trägt Zeiten mit `Z` und
+zeigt sie weiter in der Uhr des Lesers.
+
+Die Glossarsuche findet einen Begriff jetzt auch über seine alternativen Namen und, für Parky
+(`deep=1`) ab fünf Zeichen, über ein Wort aus der langen Definition. Viele Begriffe heißen in allen Sprachen englisch
+(„Block Brake“), und das deutsche Wort steht nur im Text: „Was ist eine Blockbremse?“ fand bisher
+nichts, jetzt „Block Brake“ zuerst. Die Suchpalette sucht nicht in den Definitionen, sonst brächte
+„Phantasialand“ jeden Begriff, dessen Text den Park nennt.
+
+### Parky nennt Zeiten in Parkzeit, auch auf seinen Karten
+
+Die Karten im Chat haben Uhrzeiten bisher in der Uhr des Browsers gezeigt. Wer aus London einen
+Tag in Orlando plant, sah dort Londoner Zeit, während Tagesplaner, Showzeiten und Parkseiten
+Parkzeit zeigen. Jetzt liest `clock` in `components/assistant/assistant-card.tsx` die Uhrzeit vom
+Offset des Parks, den die API jeder Kartenzeit mitgibt. Die API nennt Parky alle Zeiten ebenfalls
+in Parkzeit (PAR-1277 im Release `release/2026-11-10-parky`).
+
+### Parky weiß, welche Bahnen schon gefahren sind
+
+Wer auf park.fan Bahnen als gefahren abhakt, schickt sie jetzt mit jeder Frage an Parky mit
+(`assistantRiddenSnapshot` in `lib/assistant/favorites-context.ts`): nur UUIDs, die jüngsten 300,
+so viele wie die API nimmt. Parkys Fahrtlisten markieren sie, damit „Welche Headliner fehlen mir
+noch?“ eine Antwort bekommt. Das Gegenstück in der API ist PAR-1270 im Release
+`release/2026-11-10-parky`.
+
+### `check:planner` wartet nach Escape, bis die Frage zum vergangenen Tag wirklich weg ist
+
+Im vollen Lauf gegen `next dev` scheiterte „Escape öffnet nichts“ (402 von 403): „Frage 1 · offene
+Sheets 0“. Die App schließt die Frage richtig. Einzeln bestand der Schritt dreimal, und ein Nachbau
+zeigt den Dialog 50 ms nach Escape auf `data-state="closed"` und nach 300 ms aus dem DOM. Der Check
+wartete aber fest 500 ms und zählte dann, und ein Dialog in seiner Schließ-Animation zählte mit;
+spät im vollen Lauf dauert sie länger. Jetzt wartet er bis zu 10 s auf `detached`, und bleibt der
+Dialog stehen, nennt die Meldung seinen `data-state`. Der Foto-404 aus einem früheren Lauf kam von
+lokal fehlenden Bild-Zuschnitten (gitignoriert, beim Build erzeugt) und braucht keinen Fix.
+
+### Bild-Zuschnitte eines hochkant gespeicherten Fotos werden nicht mehr hochskaliert
+
+`scripts/generate-image-crops.mjs` berechnete den Ausschnitt aus den gespeicherten Maßen
+(`sharp().metadata()`), drehte das Bild aber vorher mit `.rotate()` aufrecht. Bei EXIF-Orientierung
+5 bis 8 vertauscht das die Achsen. `walibi-belgium/park-2.jpg` (Orientierung 6, aufrecht 3024 × 4032) bekam für 16:9 und 4:3 Zuschnitte von 4032 px Breite, hochskaliert aus 3024. Die Seite
+reserviert dafür 3024 px (`cropDimensionsForPath` mit den Manifest-Maßen); mit Fokuspunkt wäre auch
+der Ausschnitt verschoben gewesen. `pnpm test:crop-box` fand das lokal; in der CI liegen keine
+Zuschnitte, dort wird der Abgleich übersprungen.
+
+`paintedSize()` in `lib/media/crop-box.mjs` liefert die Maße, wie der Browser sie malt. Der
+Manifest-Generator hatte die Regel schon inline und nutzt jetzt diese Funktion, der Zuschnitt-Generator
+misst Kasten und Fokuspunkt darauf. `CACHE_VERSION` steht auf 2, damit der Vercel-Cache die alten
+Zuschnitte nicht zurückholt. Danach: 780 von 780 Zuschnitten haben die Maße, die die Seite für sie
+reserviert (vorher 778), Walibis 16:9 ist 3024 × 1701 statt 4032 × 2268.
+
+### Die Admin-Startseite lässt sich auf dem Handy nicht mehr seitlich verschieben
+
+`/admin` war auf dem Handy breiter als der Bildschirm: mit Testdaten 481 px bei 390 und 360 px
+Breite. Das Grid mit „Zuletzt geändert“ und „Läuft gerade“ (`grid gap-4 lg:grid-cols-3`) hatte
+unter `lg` keine eigene Spalte, und die implizite `auto`-Spalte wurde so breit wie die längste
+nicht umbrechende Zeile der Änderungsliste.
+
+Das Grid hat jetzt `grid-cols-1` (`minmax(0, 1fr)`), ebenso die beiden Kennzahlen-Grids
+(`app/admin/_overview/figures.tsx`) und die aufgeklappten Prüfungen eines Bereichs
+(`area-table.tsx`), die mit längeren Werten genauso kippen würden. Gemessen: 390 px bei 390, 360
+bei 360. Ab `sm`, `lg` und `xl` bleiben die Spalten wie bisher. `docs/features/admin.md` nennt die
+Regel unter „The admin on a phone“.
+
+Eine Zeile der Änderungsliste konnte auch selbst zu breit werden: Eine Aktion ohne eigenen Namen
+steht roh da, und manche sind ein Pfad mit ID (`/v1/admin/assistant/conversations/<uuid>`). In
+`app/admin/_ui/history-list.tsx` bricht die Aktion jetzt notfalls mitten im Wort um
+(`break-words`), und der Name des Objekts daneben kürzt sich mit „…“ (`min-w-0 max-w-full`
+zu `truncate`). Ohne Bindestrich im Pfad war die Seite mit dem Grid-Fix allein noch 541 px breit,
+jetzt 390. Das gilt auch für die volle Liste unter `/admin/history`.
+
+### `next dev` lädt eine Seite nach dem Start nicht mehr endlos neu: Next 16.4.5
+
+Nach einem frischen `pnpm dev` lud eine Seite manchmal in einer Schleife neu, 6 bis 28 Mal in 12
+Sekunden. Turbopack meldete `restart` für die Chunk-Liste von Next' eigenem Einstieg, der Server
+antwortete mit `reloadPage` („HMR hash mismatch“), und `sync` nannte die installierte Version
+veraltet (`stale-patch`, 16.4.3, erwartet 16.4.5). Produktion war nie betroffen, `check:planner`
+aber läuft gegen `next dev`.
+
+`next` und `eslint-config-next` stehen jetzt auf 16.4.5, `@next/bundle-analyzer` auf `^16.4.5`. In
+vier Kaltstarts mit Kalender- und Parkseite von Efteling kam keine `reloadPage`- oder
+`restart`-Meldung mehr und kein Neuladen in 15 Sekunden nach dem Laden; `sync` meldet `fresh`.
+
+### Im Admin heißen die Fenster einer Bahn jetzt Wartung statt Umbaupause
+
+Die Gruppe im Admin hieß „Umbaupause“, obwohl ein Fenster genauso oft ein einzelner Wartungstag
+ist (Baron 1898 am 8. Dezember) wie ein Umbau über den Winter. Die Seite und Parky sagen schon
+„Wartung“. Gruppe und Feld liefert die API („Wartung“, „Wartungsfenster“, PArns/v4.api.park.fan);
+hier ändern sich die Texte des Editors: „Wartungsfenster hinzufügen“, „Kein Wartungsfenster
+eingetragen.“ und die beiden Fehlermeldungen in `app/admin/_lib/works-periods.ts`.
+
+### Das Fenster der Titelkarte bleibt ohne Guide weg und ist auf dem Handy niedriger
+
+Die Parkseite gab `ParkHeaderWindow` immer an die Titelkarte, auch ohne Guide und ohne Parkfoto.
+Das traf 176 von 209 Parks (Aqua Rabia Qiddiya City zum Beispiel): auf dem Handy 288 px leere
+Fläche unter „Tag im … planen", am Desktop eine leere rechte Spalte mit 40 % der Breite. Die
+Ride-Seite prüfte das selbst, die Parkseite nicht.
+
+`TitleCardWindowSplit` (`components/parks/park-header-posts.tsx`) bekommt jetzt die Daten des
+Fensters (`TitleCardWindow`: Guide, Foto, Zeile über dem Titel) statt eines fertigen Elements und
+rendert das Fenster selbst. Ohne Guide und Foto bleibt die Karte einspaltig. Ein Foto ohne Guide
+steht nur noch ab `lg` neben dem Text; auf dem Handy schob es die Ride-Liste für ein Bild nach
+unten, das der Seitenhintergrund schon zeigt (Bobbejaanland), und das ausgeblendete Bild lädt dort
+nicht (`loading="lazy"`). Unter `lg` ist das Fenster mit Guide 192 statt 288 px hoch
+(`min-h-48`, Text ab `pt-16`), mit dreizeiligem Titel etwas mehr; ab `lg` bestimmt weiter die Zeile
+die Höhe.
+
+### Park-Karten machen eine Seite auf dem Handy nicht mehr breiter als den Bildschirm
+
+Auf der Efteling-Parkseite war das Dokument bei 390 px Bildschirmbreite 425 px breit und ließ sich
+seitlich verschieben; der Tagesplaner wirkte dadurch rechts abgeschnitten. Die Karten „Bobbejaanland“
+und „Attractiepark Toverland“ unter „Parks in der Nähe“ endeten bei 423 px.
+
+Ursache waren drei ineinander liegende Grids mit je einer impliziten `auto`-Spalte: die Liste, das
+`<li>` und der Link der `ParkCard`. Eine `auto`-Spalte nimmt die Mindestbreite ihres breitesten
+Inhalts an, und die Handy-Zeile der Karte bricht Name, Ort und Öffnungszeit nicht um.
+
+- `ParkCard`s Link ist jetzt `min-w-0 grid-cols-1`. Das gilt für jede Liste, die die Karte in ein
+  eigenes `<li>` oder einen Subgrid-Wrapper legt.
+- `PARK_CARD_GRID_CLASS` (`components/parks/park-card.tsx`) ist das Grid der Park-Listen mit
+  `grid-cols-1` (`minmax(0, 1fr)`) für Handys. Es ersetzt dieselbe Klassenkette in „Parks in der
+  Nähe“ auf der Parkseite (`LiveNearbyParks`) und auf der Startseite (`NearbyParksListView`), in den
+  Startseiten-Parks (`FeaturedParkCardsLive`) und in den Favoriten.
+- Länder- und Stadtseiten behalten ihre eigenen Breakpoints und bekommen ebenfalls `grid-cols-1`.
+- Ab `sm` ändert sich nichts: `sm:grid-cols-2` und die drei Spalten ab 1024 px Seitenbreite bleiben.
+
+### Wartungsfenster im Wartezeiten-Kalender, im Tagesplaner und auf den Ride-Karten, und sie heißen „Wartung“
+
+Die gepflegten Fenster, in denen eine Bahn planmäßig zu ist (`worksPeriods`, bei Efteling
+wöchentlich aus dem Wartungskalender des Parks), standen bisher nur als Badge „Umbaupause“ an einer
+Bahn, die heute in einem Fenster liegt. Jetzt erscheinen sie an drei weiteren Stellen, auch wenn
+mehrere Bahnen gleichzeitig zu sind (bei Efteling vom 4. Januar 2027 an vier).
+
+**Der Begriff ist jetzt Wartung.** Ein Fenster kann ein Tag Wartung sein (Baron 1898 am 8. Dezember)
+oder ein Winter Umbau; „Umbaupause“ behauptete für jeden Tag einen Umbau. `parks.worksPeriod` sagt
+in allen sechs Sprachen Wartung (Maintenance, Onderhoud, Maintenance, Mantenimiento,
+Manutenzione), dasselbe Wort wie der Live-Status `REFURBISHMENT`. Der hieß auf Englisch noch
+„Refurbishment“ und auf Französisch „Rénovation“ und heißt dort jetzt wie in den anderen vier
+Sprachen „Maintenance“ (`parks.status`, `attractions.status`, Kurzform `attractions.queue.status`
+„Maint.“). Die Fenster tragen den Schraubenschlüssel des Live-Status in Orange (`WorksIcon`) statt
+des Baustellen-Schilds. Der Planer-Satz für einen Tag ohne fahrende Bahn sagt „in Wartung“ statt
+„im Umbau“.
+
+**Wartezeiten-Kalender:** Ein Tag, an dem ein Fenster Bahnen schließt, trägt neben dem Status einen
+Chip mit Schraubenschlüssel und Anzahl, auf dem Grund der Seite, damit er auf einer orangen
+„Hoch“-Kachel so gut lesbar ist wie auf einer grünen. Der Hover nennt die Bahnen nach Namen und bis
+wann („Piraña · bis 25. März“, das Jahr nur, wo es wechselt). Der Chip steht in der Statuszeile,
+damit keine Zelle höher wird, als `calendarGridReservation` vorhält. Der Tagesdialog listet dieselben
+Bahnen unter „Wegen Wartung geschlossen“. Die Kalender-API nimmt so eine Bahn aus der Prognose des
+Tages (PAR-1255); konnte sie die Fenster nicht lesen und schickt die Bahn doch, steht dort „Wartung“
+statt einer Wartezeit. An einem geschlossenen Tag gibt es
+keinen Chip; die Legende führt das Icon nur bei einem Park mit Fenster. `leanParkForCalendarShell`
+behält `worksPeriods` nur an den Bahnen, an denen die API das Feld schickt (bei Efteling 9 von 37).
+
+**Tagesplaner:** `/plan/day` lässt eine Bahn in einem Fenster weg und sagt nicht, warum. Die
+Proxy-Route liest jetzt parallel den Park-Payload (denselben Data-Cache-Eintrag wie die Parkseite)
+und hängt `ridesInWorks` an: die Bahnen, die ein Fenster am geplanten Tag schließt und die der Plan
+nicht führt. Das Kontextband zeigt einen Chip „4 Bahnen in Wartung“ (auf dem Handy nur Icon und
+Zahl), Hover oder Tippen listet Bahnen und Enddatum. Ein geplanter Block für eine solche Bahn bekam
+bisher die angenommenen 5 Minuten, in die der Optimierer einen Halt legen konnte; jetzt ist er
+`missing: 'works'`, ohne Zahl, und seine zweite Zeile sagt „11:00 · In Wartung bis 25. März“ statt
+„11:00–11:00“. Scheitert der Park-Abruf, fehlt nur die Liste, nie der Plan.
+
+**Nicht einplanbar:** Eine Bahn in Wartung kommt an diesem Tag auf keinem Weg in den Plan. Die
+Bahnsuche des Planers listet sie ausgegraut hinter den planbaren Bahnen, mit „In Wartung bis 25.
+März“ und dem Grund im `title`, weder klick- noch ziehbar. Ein Drop auf die Zeitachse oder die
+flache Liste wird abgelehnt und sagt warum: „Droomvlucht ist an diesem Tag in Wartung (bis 25. März)
+und lässt sich nicht einplanen.“, als Hinweis über der Achse, der nach sechs Sekunden ausblendet.
+Der Knopf „In den Plan“ auf der Fahrgeschäftsseite ist deaktiviert und heißt „In Wartung bis 4.
+Dez.“, solange ein Fenster den Tag deckt, für den er einplant. Parkys `planner_add_rides` liest
+vorher den Tagesplan aus dem Cache des Planers und lässt die Bahn weg. `movableEntries` schließt
+einen Block aus, der vor dem Fenster geplant wurde: „Tag optimieren“, die Bewertung und der
+Fit-Assistent verschieben, zählen und berücksichtigen ihn nicht (3 neue Fälle in
+`pnpm test:planner-optimize`).
+
+**Öffentlicher MCP (`/api/mcp`, auch über `navigator.modelContext`):** `get_park_wait_times` gibt
+einer Bahn mit Wartungsfenster `maintenance` (läuft heute) oder `nextMaintenance` (das nächste) mit
+`from`, `until` und `untilIsEstimate`, dazu einen Satz, wie die Tage zu lesen sind.
+`get_park_best_days` nennt je geöffnetem Tag `ridesInMaintenance`; die Bahnen kommen aus dem
+gecachten Park-Payload der Parkseite, ein Fehler dort kostet nur die Liste. `pnpm check:agent-ready`
+prüft die Form der Fenster an Efteling. Parky und der Admin-MCP kennen die Fenster über PAR-1253.
+
+**Ride-Karten und Fahrgeschäftsseite:** `WorksPeriodBadge` liest die ganze Liste. Läuft ein Fenster,
+steht „In Wartung bis 4. Dez.“ (mit geschätztem Ende „bis ca.“), liegt eines vor der Bahn,
+„Wartung ab 4. Jan.“ oder „Wartung am 8. Dez.“ in blasserem Orange. Hover oder Tippen listet das
+laufende und alle folgenden Fenster als Zeitraum („16.–27. November 2026“, über `formatRange`).
+Läuft ein Fenster und meldet der Feed `REFURBISHMENT`, entfällt das Status-Badge „In Wartung“ auf
+der Karte, weil das Wartungs-Badge dasselbe mit Enddatum sagt. Auf der Karte führt das Tippen auf
+das Badge nicht auf die Fahrgeschäftsseite.
+
+Die Tipp-Logik des Auslastungs-Tooltips steckt jetzt in `TapTooltip`
+(`components/common/tap-tooltip.tsx`), das `CrowdScaleTooltip` und die neuen Tooltips teilen. Die
+Hilfen `worksPeriodsOf`, `worksPeriodOn`, `nextWorksPeriod`, `ridesInWorksOn`, `worksWindowLabel`,
+`worksEndLabel`, `worksRunningLabel` und `worksUpcomingLabel` liegen in
+`lib/utils/works-period.ts`, `formatParkDay` und `formatParkDayRange` in `lib/utils/park-day.ts`
+(Italienisch polstert CLDR den Tag im Zeitraum, „04 gennaio“; die Null fällt weg). Italienisch
+elidiert über ein ICU-`select` („dall’8“, „all’11“); der Planer-Chunk lädt `parks.worksPeriod`
+mit. Der Admin heißt das Feld weiter „Umbaupause“, weil die API die Gruppe so benennt. Tests: 10
+neue Fälle in `pnpm test:works-period`, 6 in `pnpm test:planner-estimate`, 3 in
+`pnpm test:planner-optimize`, 2 in `pnpm test:calendar-park-projection`.
+
+### Der Modellvergleich beginnt mit den Entscheidungen und zeigt die Matrix in drei Blöcken
+
+`/admin/ml/vergleich` zeigt oben drei Karten aus dem Bericht: „Jetzt umstellbar“ (Zellen `better` je Frage, größter Live-Gewinn zuerst, mit den drei Prüfungen), „Fast so weit“ (live bestätigt, wartet auf die Jahresmessung, nach Modell gruppiert) und „Nächste Ergebnisse“ (Termine aus `expectedBy`, überfällige zuerst). Überfällig ist ein Termin mit `expectedBy.overdue` oder, bei einem Backend ohne das Feld, mit einem Datum vor dem Berichtstag. Die vier Zählkacheln ersetzt auf dieser Seite ein Balken über alle Vergleiche (`ShareBar`); die ML-Zentrale behält `MatrixSummary`.
+
+Die Matrix steht in drei Blöcken (Live und heute, Tagesplaner, Kalender), jeder nur mit den Modellen, die dort antworten, unter Familienköpfen aus `families` mit „Heute in der App“ links. Ein Kreis „läuft noch“ füllt sich mit Tagen und Parks bis zur Regel, unklare Kreise sind abgeblendet. Unter 760 px Panelbreite wird jede Zeile zu beschrifteten Chips, ohne seitliches Scrollen bei 375 px. Ein Klick öffnet die Zelle im Inspektor, der jetzt mit Escape schließt, den Fokus an die Zelle zurückgibt und beim Verlassen der Seite geleert wird.
+
+Im Tagesvergleich ist die gemessene Wartezeit die dicke Linie, die Modelle der App sind gestrichelt, die Legende ist nach Fehler sortiert, blendet Kurven aus und zeigt die Werte unter dem Fadenkreuz, das auch den Pfeiltasten folgt. Die Seite läuft ohne `families` weiter (die Modelle der App zuerst, ohne Familienköpfe). Logik in `lib/admin/model-comparison.ts`, `pnpm test:model-comparison` (32 Fälle).
+
+### Der Parky-Admin zeigt, mit welcher Prompt-Version eine Antwort geschrieben wurde
+
+In der Chat-Ansicht trägt jede Antwort die Prompt-Version (`Prompt v26`), die Chat-Liste zeigt die
+Version der letzten Antwort und filtert über das neue Feld „Prompt-Version“. Bisher stand nur die
+gerade laufende Version in den Einstellungen, und an einem gespeicherten Chat war nicht zu sehen, ob
+er vor oder nach einem Prompt-Fix lief. Chats von vor der Änderung und die Fragen der Besucher
+zeigen keine Version (vorher stand dort ein leeres „Prompt v“). Die Liste nennt außerdem die
+richtige Aufbewahrung: 7 Tage statt der alten 90.
+
+Liest `promptVersion` aus PAR-1251 in `v4.api.park.fan`; ohne das Backend bleibt das Feld leer.
+
+### Park- und Ride-Seite in Ebenen: ein Fenster für den Guide, eine News-Schiene, ein Knopf zum Planen
+
+Auf Parkseiten kommen laut `section_seen` nur rund 13 % der Aufrufe über die Ride-Liste hinaus, und
+88 % der internen Klicks gehen auf Ride-Zeilen. Statistik und Jahresausblick standen trotzdem auf
+der Parkseite, die Guides weit darunter. Google schickt die Leute für „Wartezeiten live", nicht für
+die Reisezeit.
+
+#### Parkseite
+
+Statistik und 12-Monats-Ausblick ziehen auf den Wartezeiten-Kalender, direkt unter das Raster
+(`ParkPageShell` setzt `hideStats`, der Kalender bekommt `outlookSection`). Die Beiträge stehen
+jetzt vor „Parks in deiner Nähe"; `SEEN_SECTIONS` folgt der Reihenfolge.
+
+Die Titelkarte bekommt rechts „das Fenster" (`ParkHeaderWindow`, `TitleCardWindowSplit` in
+`components/parks/park-header-posts.tsx`): das Cover des Park-Guides randlos bis an die
+Kartenkante, als Ganzes ein Link; ohne Guide das Parkfoto. Darunter läuft eine News-Schiene mit der
+neuesten News des Parks aus 30 Tagen (`getFreshNewsForPark`, `freshNewsSince`). Der Stern steht vor
+dem Namen. „Tag im … planen" ist der eine gefüllte Knopf der Karte, über ihn kamen 179 von 282
+Planer-Öffnungen im Oktober. Website, Tickets, Wikipedia und Social stecken in „Mehr"
+(`ParkLinksFlyout`), das beim Darüberfahren nach rechts ausfährt und erst beim Verlassen der Karte
+schließt. Stadt und Pin öffnen die Route in Apple Maps auf Apple-Geräten, sonst in Google Maps
+(`ParkMapsLink`); dafür zeigt das Handy die Brotkrume zur Stadt wieder.
+
+#### Ride-Seite
+
+Gleicher Aufbau: Stern vorn, Fenster mit dem Beitrag über die Bahn (`getPostAboutRide`, nur
+verknüpft, getaggt oder einsortiert, nie eine Erwähnung im Text), sonst dem Park-Guide, sonst dem
+Foto der Bahn; News-Schiene mit News zur Bahn, sonst zum Park. „In den Plan" ist ein gefüllter
+Knopf. Die Fakten sind zwei Ebenen: Chips für den Besuch (Größe, Single Rider, Quick Pass), darunter
+eine Kennzahlen-Leiste mit Topspeed, Inversionen, Bahntyp, Hersteller und Eröffnung; RCDB und
+Fahrfiguren sind Knöpfe (`GLASS_BUTTON`).
+
+#### Fehler
+
+- Der Jahresausblick zeigte Phantasialand von Februar bis Mai 2027 als „Geschlossen". Nach dem
+  Saisonkalender (`scheduleCoverage.to`, 24.01.2027) ist ein `closed` des Modells geraten, bei rund
+  50 % Konfidenz; `withoutGuessedClosures` macht daraus „Keine Prognose". „Geschlossen" steht auf
+  dem Monat nur noch, wenn jeder verbleibende Tag geschlossen ist.
+- „Beste Reisezeit für das das Phantasialand": `localizedParkName` setzte den Artikel ein zweites
+  Mal. Entfernt.
+- Amtliche Warnungen außerhalb der Öffnungszeiten (Frost von 22 bis 9 Uhr) erscheinen nicht mehr,
+  auch nicht auf der Wetter-Kachel (`warningsInOpeningHours`).
+- „Kürzeste Wartezeit" sortiert jetzt auch die Headliner; vorher blieb der ganze erste Bildschirm
+  gleich.
+- Die Wochentags- und Ausblick-Kästen nehmen die Maus auf und schließen 200 ms nach dem Verlassen.
+- Teilen-Leiste und „Stand" waren auf hellen Parkfotos nicht lesbar: Die Leiste steht auf Glas,
+  „Stand" im Kopf von „Attraktionen eingrenzen".
+- Stern, Glocken und der „Gefahren"-Schalter zeigen den Fokusrahmen nur noch per Tastatur
+  (`ICON_TOGGLE_FOCUS`).
+
+Neues Tracking: Link-Blöcke `guide_band` und `news_band`, Event `park_links_opened`.
+
+### Eine Attraktion kann mehrere Umbaupausen haben, und der Admin pflegt sie als Liste
+
+Der Kuratierungs-Editor kennt den neuen Feldtyp `periods`: Das Feld „Umbaupausen“ (`curatedOutOfServicePeriods`) zeigt pro Fenster eine Zeile mit „ab“, „bis“ und „Ende geschätzt“, dazu „Umbaupause hinzufügen“ und einen Löschknopf je Zeile. Gespeichert wird immer die ganze Liste, nach Beginn sortiert.
+
+Vor dem Speichern prüft `worksPeriodsError` (`app/admin/_lib/works-periods.ts`) dasselbe wie die API: eine Grenze pro Zeile, „ab“ nicht nach „bis“, „Ende geschätzt“ nur mit „bis“, keine Überschneidung bei inklusiven Tagen, höchstens 20 Fenster. Solange die Liste das nicht erfüllt, steht die Meldung am Feld und Speichern ist gesperrt; eine 400 der API erscheint wie bisher in der Speicherleiste.
+
+Die drei alten Einzelfelder (`curatedOutOfServiceFrom`, `…To`, `…ToUncertain`) blendet der Editor aus, über `legacy` oder `hidden` am Deskriptor oder, ohne Flag, sobald in derselben Gruppe ein `periods`-Feld steht. Sie zählen auch nicht mehr in die Zahl der Korrekturen. Die öffentlichen Typen tragen neben `worksPeriod` jetzt `worksPeriods`. 10 Checks in `pnpm test:admin-works-periods`.
+
+### „Kurze Anstellzeiten in deiner Nähe“ lädt auf offener Startseite neu, auch ohne GPS
+
+`useNearbyParks` (`lib/hooks/use-nearby-parks.ts`) fragte nur mit Koordinaten alle 5 Minuten neu
+an. Mit der GeoIP-Antwort blieb die Anfrage nach dem ersten Laden stehen, und die Karten in
+`HeroRail` zeigten die Rides und Wartezeiten vom Seitenaufruf, so lange die Seite offen war. Jetzt
+fragt der Hook in beiden Fällen alle `CACHE_MAX_AGE_MS` (5 Minuten) neu an, solange der Tab sichtbar
+ist.
+
+### Statistik: Ein KI-Assistent aus `utm_source` geht als `source`, nicht mehr als `referrer`
+
+`pageLoadOrigin` in `lib/analytics/site-analytics.ts` schickte den Host eines KI-Assistenten aus `utm_source` (`AI_SOURCE_HOSTS`, etwa `chatgpt.com`) im Feld `referrer` an `POST /v1/analytics/collect`. Die API liest dafür jetzt das eigene Feld `source` (PAR-1158) und nimmt die alte Form nur noch eine Version lang an. Der erste Pageview einer Ladung trägt deshalb `referrer` nur noch für einen echten externen Referrer und sonst `source` mit dem KI-Host; ein echter Referrer gewinnt weiter, und `source` geht dann nicht mit. Alles andere am Beacon bleibt gleich. `pnpm test:site-analytics` prüft `source` und dass der KI-Host nicht mehr in `referrer` steht.
+
+### Parky wird eine Figur mit Charakter, reagiert auf Saison, Wetter und Live-Daten und bedient im Chat Planer, Erinnerungen und Favoriten
+
+Ein Steckbrief, `docs/features/parky-character.md`, legt fest, wer Parky ist: Airtime als
+Erkennungsmove, Churros, Höhenangst trotz Freifallturm-Liebe, genervt ab einer Stunde Wartezeit.
+Button, Sprechblasen und Chat-Prompt richten sich danach.
+
+#### Figur und Struktur
+
+Parky liegt jetzt in zwei Ordnern: Gezeichnetes in `components/assistant/parky/` (`parky-logo.tsx`
+setzt nur noch zusammen, 742 statt 1271 Zeilen; `drawing.ts`, `props.tsx`, `dreams.tsx`,
+`looks.tsx`, `use-gaze.ts`, `use-idle-act.ts`, `use-search-along.ts`), Logik ohne React in
+`lib/assistant/parky/` (`acts.ts`, `rides.ts`, `look.ts`, `live.ts`, `clock.ts`, `facts.ts`,
+`lines.ts`, `boredom.ts`, `reactions.ts`, `easter-eggs.ts`, `motion.ts`). Seine 2000 Zeilen CSS
+stehen in `app/parky.css` statt in `globals.css`. `animateParky` und `parkyStill` in `motion.ts`
+lassen auch die per Web Animation gefahrenen Fahrten und den Traumzug bei reduzierter Bewegung in
+der Ruhepose stehen; bisher fuhren sie weiter, wenn die Einstellung nach dem Laden kam.
+
+Der Traum-Coaster flackert im Looping nicht mehr: `atan2` springt kopfüber von 180° auf −180°, und
+die Animation drehte den Wagen dazwischen einmal herum. Jeder Winkel bleibt jetzt innerhalb einer
+halben Drehung vom vorigen.
+
+#### Neue Nummern, Fahrten und Träume
+
+`airtime` (auch als Abheben vom Sitz auf Hügeln, Turm und Wildwasserbahn), `candy`, `churro`,
+`balloon`, `map`, `photo`, `slurp`, `grumpy`, `applause`; Fahrten `flume` und `teacups` in
+`RIDE_MOTION`; Träume Feuerwerk, Wildwasser und Riesenrad bei Nacht. Der Pool der auffälligen
+Nummern hat 36 Lose, Fahrten bleiben mit 7 bei rund 19 % (vorher 3 von 14).
+
+#### Saison, Wetter und Kontext-Nummern
+
+`seasonOn` und `weatherLook` in `look.ts`: Kürbis (Oktober), Weihnachtsbaum (1. bis 26. Dezember),
+Partyhut (31. Dezember, 1. Januar), Wollmütze und Schal (2. Januar bis Ende Februar); auf Parkseiten
+Schirm mit Tropfen, Gewitterwolke, Flocken, Böen, Nebel, Sonne oder Schal aus dem Nowcast der Seite,
+ohne eigene Anfrage. `SETS_ASIDE` ist die eine Tabelle, die regelt, was eine Nummer ablegt.
+`showyPool` gibt Geist, Schneekugel, Feuerwerk, Schneemann, Schirmdrehen, Zittern und Fächeln
+Extra-Lose, solange ihr Kontext gilt. Vorschau unter „Try on an outfit“ auf `/parky` und mit
+`?parky=christmas,rain`.
+
+#### Sprechblasen
+
+Eine Rangliste füllt die zwei Plätze eines Besuchs (`LINE_PRIORITY`): Ankunft, Live, Parkuhr,
+Feiertag, Fakt, Park-Spruch, Einladung. Neue Arten `fact`, `weather`, `live`, `clock`. Fakten kommen
+aus `deriveParkStatsFindings` (14 Vorlagen); Live aus dem `park-live`-Cache der Seite: Walk-on bis
+10 Minuten, Schlange über 60, voller Park, geschlossener Park, Ausfall, Einbruch um mindestens
+20 Minuten, Show in 15 bis 30 Minuten. Die Parkuhr spricht in der Stunde vor Öffnung und der letzten
+halben Stunde vor Schließung; zwischen 22 und 5 Uhr wird Parky doppelt so schnell müde. Wetter und
+Live teilen sich einen Spruch pro Park und Besuch. Der Park-Spruch belegt jetzt einen der zwei
+Plätze statt einen dritten.
+
+#### Im Chat
+
+Mit jeder Frage gehen der Tagesplan (`planner-context.ts`, höchstens 6 Tage und 40 Einträge), die
+gesetzten Erinnerungen (`alerts-context.ts`) und die Favoriten-IDs (`favorites-context.ts`) mit.
+Neue Aktionen in `lib/assistant/actions.ts`: `planner_remove`, `planner_move`,
+`planner_update_block`, `planner_add_show`, `planner_set_prefs`, `planner_mark_done`,
+`planner_clear_day`, `planner_reserve_days`, `planner_undo` (stellt nur zurück, solange der Tag seit
+Parkys Änderung unverändert ist), `planner_share`, `alert_ride_set`, `alert_show_set`,
+`alert_remove`, `favorite_set` und `chat_end`. Ohne Push-Erlaubnis zeigt `AssistantAlertAsk` eine
+Karte, deren Knopf die Erlaubnis aus einem echten Tippen erfragt. `chat_end` schließt das Fenster
+für 15 Minuten, auch über ein Neuladen (`lib/assistant/chat-end.ts`, Code `chat_ended`).
+`/api/assistant-post` nimmt `q` und liefert die Einleitung plus die zur Frage passenden Abschnitte
+(`postTextForQuery`), dazu `sections` und `omitted`; im Europa-Park-Guide erreicht die
+Single-Rider-Stelle das Modell jetzt, vorher endete der Text nach 8.822 Zeichen davor.
+
+#### Datenschutz
+
+Chats werden nach 7 statt 90 Tagen gelöscht; Parkys Hinweis, „So funktioniert park.fan“ und die
+Datenschutzerklärung sagen das, und die Datenschutzerklärung nennt Plan, Erinnerungen und Favoriten
+als neue Daten jeder Frage.
+
+Braucht das Backend aus PAR-1240 (`v4.api.park.fan`) zuerst: Das alte lehnt die neuen Felder ab.
+
+### Das Admin sucht Parks und Fahrgeschäfte so tippfehlertolerant wie die Seite
+
+Die `/`-Palette, die Parkliste, die Fahrgeschäfte eines Parks, die Weiterleitung aus der
+404-Liste und der Tagesvergleich unter `/admin/ml/vergleich` suchten nur nach der getippten
+Zeichenfolge, als `ILIKE` im Backend oder als Teilstring über die geladene Liste. „phantsialand“
+fand dort nichts. Jetzt fragen sie zusätzlich die Suche der Seite (`/api/search`, also
+`/v1/search`) und ordnen nach denselben Punkten wie die öffentliche Palette. Die eigenen
+Admin-Abfragen bleiben daneben, weil sie den kuratierten Namen vor dem nächsten Index-Neubau, den
+Slug und stillgelegte Fahrgeschäfte kennen. In der Palette öffnet eine eingefügte Park- oder
+Fahrgeschäft-ID direkt den Editor, eine kopierte Adresse führt über `/admin/go`.
+
+Die Rangfolge (`rankByMatch`, `lib/utils/search-ranking.ts`), die Abfrage (`useSiteSearch`) und das
+Entprellen (`useDebouncedValue`) liegen jetzt an einer Stelle und werden von `useSearchResults`
+und dem Admin geteilt (`useFuzzyHits`, `mergeSearchHits`, `withFuzzyMatches`). `SearchSelect`
+bekommt dafür `fuzzy="park"` oder `fuzzy="attraction"`. `pnpm test:search-hits`.
+
+### Review-Fixes zum Release vom 5. November
+
+- **Wartungsseite:** Der Wiederanlauf-Check fragt `/v1/health/ready` statt `/v1/health/ping`. `ready`
+  prüft auch Postgres und Redis, die ein Deploy nach der API neu startet; vorher sprang die Seite
+  zu früh auf die Startseite und landete auf der Fehlerseite.
+- **Jahresprognose:** Eine Antwort mit `isDegraded` (ML-Dienst nicht erreichbar) wird einmal am Data
+  Cache vorbei neu gefragt. Der Data Cache liest das `no-store` der API nicht und hätte den leeren
+  Ausblick sonst einen Tag gehalten.
+- **CSV-Export:** Zahlen mit Dezimalkomma, damit deutsches Excel `7,3` nicht als Datum liest;
+  Umlaute im Dateinamen werden ausgeschrieben (`geraete` statt `ger-te`).
+- **Bot-Anteil:** Die Kachel steht da, sobald die API Bots zählt, und sagt „Nicht gezählt“, solange
+  der Zeitraum einen nicht voll gezählten Tag enthält, statt kommentarlos zu fehlen.
+- **Weiterleiten:** Die Aktion erscheint nur bei Pfaden, die die API annehmen kann (Park oder Bahn,
+  Kleinbuchstaben), nicht bei einem Kalendermonat.
+- **Blog-Editor:** Eine neue Übersetzung übernimmt die Bildunterschrift der Quellsprache nicht mehr.
+
+### Parky zeigt Kalender, Tageskacheln, Shows und Restaurants als Karten, und eine Ride-Karte trägt die Ride-Badges
+
+Vier neue Kartenarten im Chat und zwei erweiterte, passend zu den Formen aus API-PR #625.
+
+`calendar`: 7 bis 42 Tage als Wochenraster ab Montag (`calendarWeeks` in `lib/assistant/cards.ts`), jeder Tag in den Farben von `CROWD_CHIP_CLASS`, geschlossene Tage grau, Feiertage mit dem roten Strich aus `DAY_SIGNAL_CLASS`. Jeder Tag ist ein Button; Tippen, Hover oder Fokus schreibt Öffnungszeiten und `CrowdLevelBadge` unter das Raster, darunter der Link auf den Wartezeiten-Kalender des Parks in der Schreibweise der Sprache (`localizedPath`).
+
+`tiles`: Auslastung, Ø Wartezeit, Spitze, offene Attraktionen, Öffnungszeiten und Wetter als Kacheln; `presentTiles` lässt jede Kachel ohne Wert weg. Eine Prognose steht als „Prognose für Sa., 7. Nov." da, Klimawerte jenseits der Wettervorhersage als „Wetter im Mittel der Jahreszeit". Mit `weatherCode` zeigt die Wetterkachel Icon und Bezeichnung aus `getWeatherConfig`, sonst den Text der API.
+
+`shows`: jede Show mit ihren Zeiten als kleine Chips. `showTimes` dimmt vergangene Zeiten und hebt die nächste hervor, erst nach dem Mount (`useMinuteNow`), damit Server und Hydration gleich rendern. Der Link führt auf `#shows` der Parkseite (`parkChapterUrl`). `restaurants`: Name, Bereich und Küche, Status und, nur bei `requiresReservation === true`, das Reservierungs-Badge, jetzt als `ReservationBadge` aus `RestaurantCard` herausgezogen. Der Link führt auf `#restaurants`.
+
+Die Ride-Karte zeigt Rope Drop, Single Rider, virtuelle Warteschlange, Express gegen Aufpreis, Umbaupause und Außer Saison mit den Badges der Seite. Eine Zeile der Rides-Karte ohne Wartezeit zeigt ihr `ParkStatusBadge`; gespeicherte Antworten ohne `status` gehen weiter. Parkys Fenster lädt dafür zusätzlich `parks.seasonal`, `parks.weather`, `parks.worksPeriod`, `attractions.meta` und `attractions.ropeDrop`. Der Download wächst nicht, weil der eine Lazy-Chunk `parks` und `attractions` schon ganz enthält.
+
+Alle Zeiten liest `parkHours`/`parkClock` aus dem Offset der Instants, also in der Uhr des Parks. `readAssistantAction` prüft jede Form: falsche Einzelwerte werden zu `null` oder fallen weg, ein Link fremder Seiten, ein fehlender Name oder Tage außer der Reihe verwerfen die Karte. Eine unbekannte Kartenart zeichnet `AssistantCardView` nicht. 40 neue Checks in `pnpm test:assistant`.
+
+### `requiresReservation` darf fehlen: der Typ folgt der API
+
+Die API setzt `requiresReservation` nicht mehr fest auf `false`, sondern lässt das Feld weg, wenn
+keine Quelle etwas dazu sagt (API PR #625). `ParkRestaurant.requiresReservation` in
+`lib/api/types.ts` ist deshalb `boolean | null` und optional. `RestaurantCard` zeigt das Badge wie
+bisher nur bei `true`; ein fehlender Wert gilt nie als „ohne Reservierung“.
+
+### Fahrgeschäftsseite: keine Anfrage mehr nach einer Tageskurve, die es nicht gibt
+
+Das Tagesdiagramm einer Fahrt fragte für sein P25–P90-Band immer `/stats/day?attraction=<slug>`, und für die meisten Fahrten kam ein 404 zurück (in einer Stichprobe der API hatten 34 von 454 eine Kurve). Das Fahrt-Detail der API trägt jetzt `hasDayCurve`. `useRideDayCurve` fragt bei `false` nicht mehr, bei `true` und bei fehlendem Feld (die API wusste es nicht) wie bisher. Das Diagramm bekommt den Wert aus der Detail-Abfrage, die es schon hat, über `corridor.hasDayCurve`; die Ride-Shell aus dem Park-Payload trägt ihn nicht. Bis die API das Feld ausliefert, ändert sich nichts.
+
+### Gemerkte Shows und Restaurants verlinken die Parkseite
+
+`/v1/favorites` schickte für Shows und Restaurants `/v1/shows/<id>` und `/v1/restaurants/<id>`, Routen, die es nie gab; jetzt kommt der API-Pfad des Parks. `parkChapterUrl` (`lib/utils/url-utils.ts`) nimmt dafür die Geo-Slugs des Favoriten (`park`) über `buildParkUrl` und fällt auf `url` zurück, so führen die Favoriten im Header-Menü und auf der Favoritenseite mit der alten wie mit der neuen Antwort auf den Show- bzw. Restaurant-Tab des Parks. Nennt keins von beiden einen Park, ist die Show-Karte auf der Favoritenseite kein Link mehr statt eines Links auf `#` (`ShowCard` mit optionalem `href`, wie `RestaurantCard`); im Menü bleibt der Weg auf `/favorites`.
+
+### Im Park: der Kompass nennt die nächste Show
+
+Wer im Park steht, sieht unter der Rideliste des Kompasses jetzt die nächste Show des Tages: Name, Uhrzeit in der Zeitzone des Parks (`ParkTime`) und Entfernung, verlinkt auf den Show-Tab der Parkseite. `/v1/discovery/nearby` liefert im Fall `in_park` dafür `data.shows[]` mit den heutigen Vorstellungen; `nextShow` (`lib/utils/compass.ts`, `pnpm test:compass`) nimmt die erste Vorstellung nach jetzt über alle Shows, bei gleicher Zeit die nähere. Die Zeile kommt mit derselben Antwort wie die Rides und verschiebt daher nichts; nach der letzten Vorstellung des Tages verschwindet sie mit der Minutenuhr (`useMinuteNow`). Ohne `shows` in der Antwort, also bis die API ausgerollt ist, fehlt die Zeile einfach. `/api/nearby` reicht das Feld unverändert durch. Neuer Schlüssel `nearby.compass.nextShow` in allen sechs Sprachen.
+
+### SEO: Weiterleitung direkt aus der 404-Liste
+
+In der Liste „Nicht gefunden (404)“ unter `/admin/traffic/seo` hat jede Zeile, deren Pfad ein Park oder eine Bahn sein könnte, den Knopf „Weiterleiten“, für Redaktion und höher. Er öffnet unter der Zeile eine Auswahl: Ein toter Park-Pfad bekommt einen Park, ein toter Bahn-Pfad eine Bahn des Parks, der im Pfad steht. Mehr nimmt die API nicht an (`POST /v1/admin/redirects`, PAR-1233). Nach dem Anlegen fragt die Liste neu und die Zeile verschwindet, weil die API Pfade mit Weiterleitung nicht mehr liefert. Die Meldung nennt `von → nach` und bietet „Rückgängig“ (`DELETE /v1/admin/redirects?fromPath=`). Gab es die Weiterleitung schon (`200`), fehlt das Rückgängig, damit niemand eine fremde löscht. Abgelehnte Anfragen sagen kurz, warum: Ziel passt nicht (`400`), Ziel gibt es nicht (`404`), Adresse ist belegt (`409`).
+
+`adminRequest` in `app/admin/_lib/api.ts` liefert den Status neben der Antwort; `adminFetch` ruft es auf und bleibt, wie es war.
+
+### Statistik: jeder Traffic-Bericht als CSV, Planer-Ereignisse mit Park, Suche mit Reiter und Länge
+
+Jeder Bericht unter `/admin/traffic` hat jetzt ein Download-Symbol, das als CSV speichert, was das Panel gerade zeigt: Übersicht und Ereignisse, jede Aufschlüsselung (bis zu 50 Zeilen, wie geladen), Länder, Kreuztabellen, Lesetiefe, Suche, Tagesplaner, die Ereignis-Seite, Einstiege aus Suche und KI, steigende und fallende Seiten, 404, Seiten ohne Suchbesuch und die beiden Google-Tabellen. Die Datei entsteht im Browser aus der Antwort, die die Seite schon hat (`reportCsv` in `lib/admin/report-csv.ts`, Knopf `CsvButton` in `app/admin/_ui/csv-button.tsx`), ohne eigene Abfrage. Oben stehen Zeitraum, Sprache, Filter und Rechenzentren-Schalter, darunter jede Liste der Antwort mit ihrem Pfad in der Spalte `Tabelle`. UTF-8 mit BOM, damit Excel die Umlaute liest; ein Text, der mit `=`, `+`, `-` oder `@` beginnt, bekommt ein `'` davor, weil Pfade und Herkunft von Besuchern kommen. `pnpm test:report-csv`.
+
+`plan_day_started` und `plan_optimized` schickten keinen Park, wenn ein Plan aus einem früheren Besuch auf einer Seite weiterbearbeitet wurde, die den Park nicht nennt: Der Plan kennt nur Slugs, die UUIDs lagen nur im Speicher des Tabs. Jetzt schreibt jede Änderung an einem Park dessen UUID in den Plan (`PlannerPark.parkId`, nur eine echte UUID wird gelesen), und `parkIdOf` liest erst den Tab, dann den Plan. Die API speichert das Feld im geteilten Plan unverändert mit.
+
+`search_result_clicked` trägt aus Palette und Startseiten-Suche den Reiter, unter dem der Treffer stand (`tab`: `all` oder die Kategorie), `search_no_results` die Länge der Eingabe als Klasse (`length`: `1-4`, `5-8`, `9-15`, `16+`), nie die Eingabe selbst. Beides zeigt die Ereignis-Seite im Admin; der Suchbericht der API wertet es noch nicht aus.
+
+`RowLink` und die Seiten-Links standen doppelt (`breakdown-panel.tsx` und `list-parts.tsx`, die Live-Ansicht baute sie ein drittes Mal nach); `PublicLink` und `PageLinks` liegen jetzt einmal in `app/admin/_ui/row-links.tsx`.
+
+Die Übersicht unter `/admin/traffic` zeigt den Bot-Anteil als eigene Kachel: Bot-Anfragen gegen Bot-Anfragen plus Aufrufe, aus `bots.hits` der Übersicht. Bots zählen jede Anfrage, nicht nur Seitenaufrufe, deshalb steht ein `≤` davor. Unter einer Sprache oder einem Filter schickt die API `null`, und ohne das Feld (API vor PAR-1234) fehlt die Kachel. Die CSV der Übersicht enthält `bots.hits` ohne eigenen Code.
+
+### Parkseite: „Stand" zeigt, wann die API die Daten gelesen hat
+
+Die Zeile „Stand 14:35" über der Fahrgeschäftsliste las bisher die neueste `queues[].lastUpdated` aller Fahrten (vor der ersten Abfrage) oder die Ankunftszeit der Abfrage im Browser. Beides lag daneben: Ein geschlossener Park meldet die ganze Nacht seinen Ladenschluss, und eine Antwort aus dem Cache kann fünf Minuten älter sein als ihre Ankunft. Die API schickt jetzt `dataTimestamp`, die Zeit, zu der sie den Park-Payload gebaut hat. `liveDataAsOf` in `lib/utils/live-data-freshness.ts` liest das Feld aus der letzten Abfrage, vor der ersten aus dem Server-Render, und `leanParkForLivePoll` gibt es bei jeder Abfrage mit. Fehlt das Feld, weil die API es noch nicht ausliefert, gilt das alte Verfahren; ein `shortcut:`-Kommentar markiert, dass der Rückgriff auf die Warteschlangen nach dem Deploy wegfallen kann. Die Warnung „nicht aktuell" misst weiter an der Ankunft der Abfrage. `pnpm test:live-data-freshness` deckt die fünf Fälle ab.
+
+### Suche: Favoriten in der Liste vor dem Tippen
+
+Unter den Parks in der Nähe, im Park oder den beliebten Parks zeigt die Liste der Suche jetzt die gemerkten Parks des Besuchers unter „Favoriten“, höchstens vier, im Hero wie in der Palette (`useFavoriteParkRows` in `lib/hooks/use-hero-browse-parks.ts`, gezeichnet von `SearchResultsPanel`). Ein Park, der oben schon steht, fehlt dort. Die Zeilen kommen aus der Abfrage von `useFavorites`, die das Favoriten-Band der Startseite ohnehin stellt, also ohne eigene Anfrage, und ohne Polling. Im Hero tragen sie dieselben Statuslabels wie die anderen Zeilen („Öffnet am 6. November (morgen)“). Ein Klick zählt als `search_browse_clicked` mit `item: favorite_park`, im Admin „Favorisierter Park“. Die Überschrift ist der vorhandene Schlüssel `favorites.title`.
+
+Die Fotos der beliebten Parks liefert `/api/parks/popular` schon seit dem neuen Hero (`enrichParksWithImages`). „Zuletzt angesehen“ fehlt, weil nichts speichert, welche Seiten ein Besucher geöffnet hat. Beiträge in der Liste auf dem Handy kommen nicht zurück: Die ruhende Liste unter dem Feld, für die 360 × 740 auf Französisch zu eng war, gibt es nicht mehr, auf dem Handy öffnet das Feld die Palette, und die News stehen direkt unter dem Hero.
+
+### Startseite im Park: Kompass unter 1024 px unter den News, Parkblock unter der Kartenreihe
+
+Unter 1024 px steht der Kompass jetzt unter den News statt direkt unter dem Hero. Auf Handy und Tablet hochkant endet der Hero im ersten Bildschirm (882 px bei 390 × 844, 922 px bei 768 × 1024), und der Kompass schob den Anschnitt der News-Überschrift aus dem Bild: CLS 0,0855 bei 768 × 1024, 0,0397 bei 430 × 932. Unter den News kommt er einen Bildschirm tiefer und kostet 0. Die Seite rendert zwei Slots (`ParkCompassSlot placement="hero" | "news"`), `useMediaQuery` macht einen davon aktiv, nur der lädt das Modul und meldet `useCompassPresent`. „Zum Kompass ↓" in der Kartenreihe findet ihn an beiden Stellen.
+
+Ab `md` stand für Besucher im oder neben einem Park unter der Überschrift „Herzlich willkommen im …" mit dem Parkblock (`HeroParkActions`). Die Variante kam nach dem Laden und verschob das Suchfeld: 73 px nach oben im Park, 6 px nach unten neben einem Park ab 1024 px, 142 px bei 800 px. Gemessen mit um 3 s verzögerter Nearby-Antwort: CLS 0,018 im Park bei 1024 px, 0,030 neben einem Park bei 1440 px auf Französisch, 0,10 bei 800 px. Jetzt bleibt der Text des Heros für alle gleich (`HeroWithNearby`), und der Parkblock steht wie auf dem Handy unter der Kartenreihe, ab `md` in einer Zeile mit vier Feldern. Ab 1024 px endet die Kartenreihe unter dem ersten Bildschirm, gemessen sind 0,005 oder weniger, der Rest kommt von der Bildunterschrift und dem Header. `parks.heroWelcome` und `parks.heroNearPark` entfallen in allen sechs Sprachen.
+
+Auf dem Handy im Park bleibt der Parkblock unter der Kartenreihe als Quelle: Er schiebt den Anschnitt des nächsten Kapitels, 0,010 bis 0,054 von 360 bis 430 px. `docs/features/park-compass.md` und `docs/features/homepage-hero.md` sind nachgezogen.
+
+### OG-Karten für Tagesplaner, Fotos und Autoren, und die Wartungsseite fragt eine ungecachte Route
+
+`app/api/og/[...path]/route.tsx`: `trip-planner` und `contribute` fehlten in `genericPages` und wurden als Kontinent gelesen, mit leerer Überschrift über „0 Parks". Jetzt tragen sie ihren Seitentitel. `blog/author/<key>` landete in `renderBlogOg` als Post-Slug und hieß „author"; die Karte zeigt jetzt Name und Kurzbio aus `content/blog/authors`, ein unbekannter Schlüssel bekommt die Karte des Blog-Index. Die 400er und 404er der Route setzen `no-store` (auch als `CDN-Cache-Control`) statt die 30 Tage der Regel in `next.config.ts` zu erben, und ein Fehler beim Park- oder Fahrgeschäftsabruf ist nicht mehr „Park not found" mit 30 Tagen, sondern der 500er der Route mit fünf Minuten. Nur die echte 404 der API gilt als unbekannt.
+
+Die Wartungsseite prüfte die Rückkehr der API über `/api/parks/popular?limit=1`, das 30 Minuten im Data Cache liegt: ein Treffer aus der Zeit vor dem Ausfall schickte die Seite nach `/` und von dort zurück nach `/maintenance`. Sie fragt jetzt `/api/health`, das `/v1/health/ping` ungecacht abfragt und 200 oder 503 mit `no-store` antwortet. Das Fenster von `getPopularParks` steht als `CACHE_TTL.popularParks` statt als Zahl im Aufruf.
+
+`GET /api/push` antwortete bei jedem Upstream-Fehler `200 { available: false }`, und die Glocke meldete einen Ausfall als „nicht eingerichtet". Die Route reicht jetzt über `relayToApi` den Status der API durch und antwortet 502, wenn die API nicht erreichbar ist; alle drei Aufrufer behandeln eine Antwort ohne `ok` schon.
+
+PAR-1125: `app/api/webhooks/vercel-deploy/route.ts` schreibt nach einem erfolgreichen Cloudflare-Purge eine Zeile mit Host und Deployment-ID ins Runtime-Log. Ob ein echter Promote sie schreibt, ist noch nach dem nächsten Promote zu prüfen.
+
+### Blog-Editor: Speichern eines bestehenden Posts behält jedes Frontmatter-Feld
+
+`toFrontmatter` (`app/admin/blog-editor/_lib/types.ts`) baute das Frontmatter nur aus den Formularfeldern, und `POST /api/admin/blog-editor/save` schrieb die Datei daraus neu. Beim Bearbeiten verschwanden so `time` (jede News), `parkLinks`, `rideLinks`, `coverImage.caption`, `gallery`, `seo.ogImage`, `seo.canonical`, `seo.noindex`, `relatedParks` und `relatedAttractions`. Jetzt legt `fromFrontmatter` das geladene Frontmatter als `raw` in den Entwurf, und `toFrontmatter` setzt die Formularfelder darauf, in der Reihenfolge der Datei; ein geleertes Formularfeld fällt heraus. `pnpm test:blog-editor-frontmatter` lädt und speichert alle 726 Post-Dateien und vergleicht das Frontmatter: 726 unverändert. Ein neuer Post bekommt den Slug der Quellsprache als `translationKey` in jeder Sprache, statt sechs unverbundene Posts zu werden. Der Branch trägt die Uhrzeit bis zur Sekunde (`blog/<slug>-2026-11-05T140322`), damit ein zweites Speichern am selben Tag nicht an `createRef` scheitert. `posts/[key]` liest die Widget-Namen aus dem Katalog in `_lib/widgets.ts` statt aus einer eigenen Liste, der `cta-widget` fehlte; dessen Attribute im Info-String gingen beim Laden verloren.
+
+### Fahrgeschäftsseite: `parks`-Übersetzungen nur noch als Unterbereiche, Startdaten als Allow-List
+
+Die Fahrgeschäftsseite lud den ganzen `parks`-Namespace (28–31 KB je Sprache) für eine Handvoll Schlüssel. Die sechs `seasonal*`-Schlüssel stehen jetzt unter `parks.seasonal.*`, `influencingHolidays` unter `parks.holidayContext`, `localTime` unter `parks.clock`, in allen sechs Sprachen; `RideNavTiles` holt seine vier Layout-Helfer aus `components/common/entry-tile.tsx` statt aus `park-entry-tiles.tsx`, das sonst den ganzen Namespace mitzog. Die Route schickt nun zwölf Unterbereiche mit 3,2–3,5 KB, brotli (Stufe 4) 9,4–10,5 → 1,0–1,2 KB je Sprache. Die eine Fahrt in `initialPark` ist eine Allow-List der sechzehn Felder, die die Client-Bäume lesen (`leanParkForAttractionShell`, nach `lib/api/park-live-projection.ts` verschoben): Ride-Profil, Rope-Drop, Badges und FAQ rendert der Server aus der vollen Fahrt, 0,12–0,19 KB brotli je Seite. Kalender, Rekord- und Familienseite schicken von den Restaurants nur noch die Pflichtfelder und `status`; `operatingHours` fällt weg, 0,02–0,44 KB je Seite. Die dünnen Tag-Archive und die Ein-Park-Städte bleiben vorerst On-Demand-ISR: `dynamic` gilt je Route, nicht je Pfad, Begründung in `docs/optimization/decisions.md`.
+
+### Aufräumen: die Segmente der Anleitung an einer Stelle, ungenutzte Glas-Klassen und Benchmarks weg, Links aus Fragmenten stimmen nach dem Schnitt
+
+`next.config.ts` hielt die sechs Segmente der Seite „So funktioniert park.fan“ (`how-park-fan-works`, `so-funktioniert-park-fan` …) dreimal selbst vor, für Redirects, Rewrites und das Edge-Fenster, neben `lib/howto/segments.ts`. Jetzt liest es `HOWTO_SEGMENTS` von dort; das Modul importiert nur einen Typ, der beim Übersetzen wegfällt, also lädt die Konfiguration es auch ohne die `@/`-Aliase. Rewrites, Redirects und Header sind vor und nach der Änderung Zeichen für Zeichen gleich (beide Konfigurationen geladen und verglichen).
+
+Aus `app/globals.css` sind `.glass`, `.glass-strong`, `.glass-heavy`, `.glass-card-light`, `.glass-card-strong`, `.glass-header` und `.touch-target` raus: kein Klassen-String in `app/`, `components/`, `content/` oder `lib/` nennt sie, auch kein zusammengesetzter wie `glass-${…}`. `.glass-light` (Tagesplaner) und `.glass-card` (Breadcrumb als Pille) bleiben, sie sind in Gebrauch. Die vier `scripts/benchmark-search-*.mjs` liefen in keinem `pnpm`-Skript und keiner CI und sind gelöscht. `FEEDBACK_OPENED` hatte schon PAR-1151 aus `lib/analytics/umami.ts` entfernt.
+
+`pnpm release:cut` übernahm Links aus Fragmenten unverändert nach `docs/changelog.md`. Ein Fragment verlinkt relativ zu `docs/changelog.d/` (`../rules/…`), eine Ebene höher zeigt das ins Leere. `renderRelease` schreibt die Links jetzt beim Schnitt um (`rebaseLinks` in `scripts/lib/changelog-fragments.mjs`: `../rules/x.md` wird `rules/x.md`, ein Geschwister `README.md` wird `changelog.d/README.md`), Anker und URLs bleiben; `pnpm test:changelog-fragments` prüft es.
+
+### Cache-Fenster: die Startseite steht eine Woche, die Glossar-IDs einmal je Deploy, neun tote Einträge aus `CACHE_TTL`
+
+Die Startseite setzt `revalidate = 604800`, und die Woche ist gewollt: jede Zahl darauf ist ein Startwert, den eine Abfrage im Browser beim Laden ersetzt. `docs/architecture/caching-strategy.md` führte sie noch mit einem Tag, weil `MLStatsSection` (`getMLDashboard`) und `hasParkKidsPage` (`getParkByGeoPath`) dort mit 86400 s abfragten. Beide Kapitel sind seit PAR-1215 nicht mehr auf der Startseite; was sie noch abfragt (`getGlobalStats`, `getGeoStructure`, im Layout `getGeoMenu`), ist eine Woche gecacht. Die Zeile und der Kommentar an `getMLDashboard` sagen das jetzt. Nach `pnpm build` steht in `.next/prerender-manifest.json` für alle sechs Sprachen der Startseite `initialRevalidateSeconds: 604800`.
+
+`/api/glossary-term-ids` regenerierte stündlich (`revalidate = 3600`), obwohl die IDs aus dem Build stammen und sich nur mit einem Deploy ändern. Die Route ist jetzt `force-static`, einmal je Deploy gerendert (im Manifest `initialRevalidateSeconds: false` statt stündlich). Die Stunde im `CDN-Cache-Control` bleibt: Cloudflare wird beim Deploy nicht geleert, und eine Stunde ist, wie lange die API dort die Liste des vorigen Deploys lesen kann. Der Kommentar in `next.config.ts` sagte „unveränderlich bis zum nächsten Deploy“ und sagt jetzt das.
+
+Aus `CACHE_TTL` (`lib/api/cache-config.ts`) sind `search`, `nearby`, `realtime`, `parks`, `parkDetail`, `waitTimes`, `calendar`, `weather` und `holidays` raus. Kein Fetch las sie: die Live-Abfragen laufen `no-store`, Park, Attraktion, Kalender und beliebte Parks nennen ihre Fenster in `lib/api/parks.ts` und `lib/api/integrated-calendar.ts`.
+
+### Planer: eine Show nach Mitternacht steht am Ende des Tages, nicht vor der Öffnung
+
+Seit PAR-51 legt die API eine Vorstellung unter das Vortagsdatum, solange dessen Öffnungszeit sie noch abdeckt; gemessen waren das 20 Spielzeiten, alle um 00:00 (Disneyland Park Anaheim, Magic Kingdom). `showLinesFor` in `lib/planner/shows.ts` las 00:00 an einem Tag mit `closeHour < openHour` als Minute 0, die letzte Show stand also vor der Öffnung, eine Projektion fiel aus dem Fenster. Eine Zeit vor der Öffnung wird an so einem Tag jetzt wie die Achse um 1440 Minuten verschoben und steht hinter der letzten Abendshow. Ein Park ohne Mitternachtsgrenze bleibt, wie er ist. `pnpm test:planner-shows` deckt den Fall ab.
+
+### Planer: ein abgehakter Ride zeigt, wie weit die Schätzung daneben lag, und die Tagessumme nennt den Fußweg
+
+Ein abgehakter Block druckt neben der eingetragenen Wartezeit jetzt die Abweichung von der Schätzung mit Vorzeichen (`+10`, `−5`, `±0`, über `actualVsEstimate` und `roundWaitDeltaTo5`), den Satz dazu im `title` und für Screenreader. Bisher stand der Satz nur in der dritten Zeile des Blocks, die erst ab 68 px gezeichnet wird; eine kurze gemessene Schlange erreicht die Höhe nicht, also stand die Abweichung fast nie da. Ohne Schätzung gibt es keine Abweichung. Die Tagessumme im Fuß (`PlannerDayFoot`) nennt neben Wartezeit und Fahrten jetzt den Fußweg: `dayWalkMinutes` in `lib/planner/leg.ts` summiert den Gehanteil jeder Strecke aus demselben `transferBetween`, das die Chips zwischen den Blöcken zeichnet (`Transfer.walkMinutes`). `pnpm test:planner-leg` deckt die Summe ab.
+
+### Startseite: Parky im Hero ruhiger, Parkkarten mit Countdown, `/` und Esc in der Suche verlässlich
+
+Die Karten „Parks in deiner Nähe“ zeigen für einen geschlossenen Park, wie weit die nächste Öffnung weg ist („Öffnet morgen“, „Öffnet Freitag“, „Öffnet in 2:33 Stunden“), statt des Datums; Uhrzeit oder Datum stehen im Tooltip (`BrowseCard` in `components/home/hero-rail.tsx`, mit dem schon vorhandenen `formatParkOpeningCountdown`).
+
+Parky in der Ecke flackerte am Ende seines Auftritts: `LauncherButton` merkte sich beim Mount, ob er mit einem Auftritt kam, und war da noch ohne, also lief nach dem Auftritt `animate-in fade-in` ein zweites Mal. Jetzt merkt er es sich beim ersten Render mit Auftritt, und bis der Button gezeigt wird (`SHOW_DELAY_MS`), bleibt er unsichtbar statt 150 ms in der Ecke zu stehen. Beim Sprung zwischen Hero und Ecke ist der Leuchtkreis hinter ihm aus, der vorher als Schatten vorauslag; der Sprung dauert 650 statt 1100 ms (`PARKY_DOCK_HOP_MS`). Navigiert man von der Startseite weg, etwa aus der Suche, springt er jetzt aus dem Hero in die Ecke: `HeroParky` misst seinen Platz in der Cleanup eines Layout-Effects, solange er noch im DOM steht (`parkyDock.leave`), vorher war das Element schon weg und es gab keinen Sprung. Schließt sich die globale Suche, taucht er nicht mehr kurz ab: Die Scroll-Sperre von Radix hält bis zum Ende der Schließ-Animation, die Suche meldet sich vorher ab, und eine Sperre, die mit der Suche begann, zählt nicht mehr als Dialog.
+
+Parky im Hero (`calm`) blinzelt, schaut und schläft nur noch: kein Gähnen, keine Schlafmütze, kein Schwindel beim Umkreisen. Aufwachen kann jeder Parky jetzt auf vier Arten, zufällig: erschrecken wie bisher, strecken, verschlafen blinzeln, abschütteln (`WAKE_ACTS`, `.parky-act-stretch`, `-groggy`, `-shakeoff`). Hero-Parky und Sprechblase haben den Klick-Cursor, die Blase zwei Zeilen („Hey, ich bin Parky!“ über der Frage, neuer Schlüssel `home.hero.parkyHello` in allen sechs Sprachen), die Zeile ist dafür 128 statt 112 px hoch. Die Überschrift im Hero ist eine Stufe kleiner: 36, 48 und 60 px statt 40, 60 und 68 px.
+
+`/` fokussierte das Hero-Suchfeld, sobald ein Pixel davon im Fenster lag, auch unter dem Sticky-Header; jetzt muss es ganz zwischen Header und unterem Rand stehen, sonst öffnet `/` die globale Suche (`searchShortcutTarget`). Getippte Buchstaben gehen aus demselben Grund nicht mehr in das weggescrollte Feld. Esc im Hero-Feld leert die Eingabe, schließt die Liste und nimmt den Fokus in einem Druck.
+
+`HeroEntranceGate` ist eine Client-Komponente: Beim Laden bleibt das Inline-Script im HTML, nach einer Client-Navigation schließt ein Effect das Fenster der Einblendung. Vorher legte React das Script im Browser an, führte es nicht aus und meldete „Encountered a script tag while rendering React component“.
+
+Die Karten „Beliebte Parks“ zeigen jetzt dasselbe wie die in der Nähe: offen die Ø-Wartezeit und den Andrang, geschlossen „Öffnet in 8:48 Stunden“ oder „Öffnet morgen“; vorher stand dort nur „Wartezeiten ansehen“, weil das Ranking keine Live-Daten trägt. `useHeroBrowseParks` holt sie mit `useLiveParksByRegion` für die Länder der beliebten Parks nach, in einer Abfrage. Der Intro-Satz im Hero sagt zuerst, wofür die Seite da ist („Finde den Park mit den kürzesten Warteschlangen: …“), in allen sechs Sprachen, und hat ab 1024 px 8 px mehr Abstand zu Parky. Die Textspalte reserviert ihre Höhe jetzt je Sprache (`.hero-text-reserve`, `:lang()`): eine Höhe für alle ließ unter dem deutschen Suchfeld 58 bis 64 px leer, jetzt liegen zwischen Suchfeld und Kartenreihe bei 1440 px 36 statt etwa 95 px.
+
+### Parky: auf dem Handy scrollt bei offenem Chat nur noch der Chat, auch mit Tastatur
+
+War Parkys Chatfenster auf dem Handy offen, scrollte die Seite dahinter mit, vor allem mit eingeblendeter Tastatur: die Sperre setzte nur `overflow: hidden` auf `<body>`, und iOS Safari zeigt mit Tastatur weniger als den Layout-Viewport und lässt den Rest unter dem Finger verschieben. Jetzt wird `<body>` bei offenem Fenster festgesetzt (`position: fixed`, um den bisherigen Scroll nach oben versetzt) und beim Schließen zurückgesetzt; das Fenster steht in dem, was der Browser zeigt, bis knapp über die Tastatur (`useSheetViewport`, vom Tagesplaner nach `lib/hooks/` gezogen und um ein Präfix ergänzt); und ein Ziehen, das kein Scrollbereich im Fenster aufnehmen kann, wird abgebrochen (`scrollsWithin`), ein Pinch zoomt weiter. Die Abfrage für das Handy steht einmal als `ASSISTANT_PHONE_QUERY`. In der iPhone-Emulation mit echten Touch-Ereignissen nachgeprüft: Ziehen auf dem Fensterkopf und über dem Fenster abgebrochen, ein Scrollbereich im Fenster scrollte von 0 auf 185 px, die Seite blieb bei 1200 px stehen und stand nach dem Schließen wieder dort.
+
+### Parky: sein Eigenleben in Klassen, Schlaf nach 1,5 Minuten mit Träumen, im Chat und im Hero nur Blinzeln, Schlaf und was er gerade tut
+
+Parkys Eigenleben mischte pro Stufe alles in einem Topf: wach alle 12 bis 20 s Kleinigkeiten, Tricks und Fahrten durcheinander, im Chat und im Hero schaute er sich um, zwinkerte und neigte den Kopf, und er schlief nach 75 s. Jetzt kommt es in Klassen (`CLASS_ACTS`, `CLASS_PAUSE_MS` in `components/assistant/parky-logo.tsx`): Blinzeln immer, alle 7 bis 8 s (`parky-blink`, drei Lidschläge in 22,5 s statt zwei in 24 s); wach Kleinigkeiten (zwinkern, umschauen, Kopf neigen, wackeln), 7 bis 10 s auseinander; etwa alle 30 s etwas Auffälliges an Stelle einer Kleinigkeit, am häufigsten eine Achterbahn oder eine andere Fahrt (drei von vierzehn Losen), dazu Rollen, Drehen, Sonnenbrille, Lichter, Tanzen, kurz wegnicken. Nach einer Minute ohne Bewegung wird er müde (gähnen, Nickerchen, Schlafmütze), nach 1,5 Minuten schläft er (`BORED_AFTER_MS` 60 s, `ASLEEP_AFTER_MS` 90 s). Im Schlaf träumt er alle 15 bis 25 s für 6,5 s in einer Wolke über dem Kopf (`ParkyDreamCloud`): ein Wagen mit ihm drin fährt einen Looping, ein kleiner Parky jubelt unter Konfetti, oder ein Märchenschloss wächst unter einer Sternschnuppe. Was er für den Besucher tut, Stimmungen, Mitsuchen und Antworten, läuft wie bisher. Im Chatfenster und im Hero der Startseite (`calm`) blinzelt er wach nur und folgt der Maus, schläft und träumt aber wie überall. Im Browser über 70 s gemessen (vor dem Umbau auf 7 bis 10 s und 60/90 s): in der Ecke Auffälliges 28,7 s auseinander, im Hero wach keine Bewegung außer dem Blinzeln; die drei Träume per vorgespulter Uhr im Hero und in der Ecke aufgenommen.
+
+### Startseite: auf dem Handy lässt sich die Seite nicht mehr seitlich verschieben
+
+Mit geladenen Karten war die Startseite auf einem 390 px breiten Handy 1026 px breit und ließ sich seitlich verschieben. Die Beschriftung „Top:“ am Stern einer Karte ist `sr-only`, also absolut positioniert, und hing an einem Vorfahren außerhalb der seitlich scrollenden Kartenreihe, die sie deshalb nicht abschnitt. Die Reihe (`RAIL_LIST_CLASS` in `components/home/hero-rail.tsx`) ist jetzt `relative`; in Produktion nachgemessen, 1026 px vorher, 390 px danach.
+
+### Startseite: Parky springt ruhig zwischen Hero und Ecke, die Kartenfotos und die News sind gleich da
+
+Parkys Sprung zwischen Hero und Ecke (`parkyDockHop`) wird jetzt Bild für Bild gezeichnet: Nach oben zielt er auf den Platz, wo er beim Scrollen gerade steht, statt auf den beim Absprung, und kein Bogen steigt mehr über den Header (vorher bis 63 px über den Fensterrand). Er dauert 1,1 s statt 0,72 s. Erstes und letztes Bild des Sprungs und der Wechsel zur Figur im Hero liegen im selben Paint (Layout-Effekte, `fill`), dort blendet er nicht mehr ein; in 229 aufgezeichneten Bildern zweier Sprünge war Parky kein Mal doppelt oder gar nicht zu sehen. Nach der Landung zielen die Augen neu auf die Maus (`PARKY_LANDED_EVENT`). Der Hero-Platz zählt erst, wenn er ganz unter dem Header liegt (`PARKY_TOP_CLEARANCE`), und misst sich beim Einbauen sofort. Der Hero-Text rendert jetzt mit seinen Zahlen statt in einem `<Suspense>`, Parkys Knopf kommt 150 ms nach der Seite, also steht er beim Laden und Reload oben gleich im Hero, statt erst in der Ecke aufzutreten und hochzuspringen. Die offene Zahl gleicht `useGlobalStats` weiter alle fünf Minuten ab, weil die Seite eine Woche gecacht wird.
+
+Die Karten mit kurzen Anstellzeiten zeigten nach dem Release keine Fotos, solange die gespeicherte Nearby-Antwort der alten Version galt, die keine Ride-Fotos trug; der Cache heißt jetzt `nearby-parks-v3`. Die News-Sektion blieb unsichtbar, bis man scrollte: `Reveal` blendete erst ab 5 % der Sektion oberhalb der unteren 8 % des Fensters ein und jetzt ab dem ersten sichtbaren Pixel. Auf dem Handy steht der Hero-Text 69 px höher, das Foto ist so hoch wie der Text, und die Karten ragen hinein. Der Chip „Parks gerade offen“ hat einen starken Blur (`backdrop-blur-xl`).
+
 ## 2.19.0 (2026-11-04) – Parky, der Chat-Assistent, eine neue Startseite mit kurzen Anstellzeiten und die Suche auf /
 
 Geschnitten am 2026-11-04 aus 82 Fragmenten in `docs/changelog.d/`. Der öffentliche Eintrag ist `content/changelog/2.19.0.md`. Neueste Abschnitte zuerst.

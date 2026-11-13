@@ -1,0 +1,2859 @@
+{
+  "meta": {
+    "region": "orlando",
+    "timezone": "America/New_York",
+    "from": "2026-11-12",
+    "to": "2026-11-25",
+    "computedAt": "2026-11-12T12:49:18.851Z",
+    "publishedHoursUntil": {
+      "magic-kingdom-park": "2027-01-20",
+      "epcot": "2027-01-20",
+      "disneys-hollywood-studios": "2027-01-20",
+      "disneys-animal-kingdom-theme-park": "2027-01-20",
+      "universal-studios-florida": "2026-12-29",
+      "universal-islands-of-adventure": "2026-12-29",
+      "universal-epic-universe": "2026-12-29",
+      "universal-volcano-bay": "2026-10-24",
+      "seaworld-orlando": "2027-10-30",
+      "aquatica-orlando": "2027-10-30",
+      "discovery-cove-orlando": "2026-11-11",
+      "legoland-florida": "2027-04-29",
+      "busch-gardens-tampa": "2027-10-30",
+      "adventure-island-tampa": "2026-11-11"
+    }
+  },
+  "parks": [
+    "magic-kingdom-park",
+    "epcot",
+    "disneys-hollywood-studios",
+    "disneys-animal-kingdom-theme-park",
+    "disneys-typhoon-lagoon-water-park",
+    "disneys-blizzard-beach-water-park",
+    "universal-studios-florida",
+    "universal-islands-of-adventure",
+    "universal-epic-universe",
+    "universal-volcano-bay",
+    "seaworld-orlando",
+    "aquatica-orlando",
+    "discovery-cove-orlando",
+    "legoland-florida",
+    "busch-gardens-tampa",
+    "adventure-island-tampa"
+  ],
+  "days": [
+    {
+      "date": "2026-11-12",
+      "isHoliday": false,
+      "isSchoolVacation": false,
+      "best": {
+        "walt-disney-world": "disneys-animal-kingdom-theme-park",
+        "universal-orlando": "universal-islands-of-adventure",
+        "seaworld-orlando": "seaworld-orlando"
+      },
+      "parks": {
+        "magic-kingdom-park": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "low",
+          "basis": "forecast",
+          "seasons": ["dev-season-1"],
+          "opensAt": "2026-11-12T09:00:00-05:00",
+          "closesAt": "2026-11-12T18:00:00-05:00",
+          "evening": {
+            "kind": "ticketed_event",
+            "opensAt": "2026-11-12T19:00:00-05:00",
+            "closesAt": "2026-11-13T00:00:00-05:00"
+          },
+          "headlinerWait": 40
+        },
+        "epcot": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "moderate",
+          "basis": "forecast",
+          "seasons": ["dev-season-7"],
+          "opensAt": "2026-11-12T09:00:00-05:00",
+          "closesAt": "2026-11-12T21:00:00-05:00",
+          "early": {
+            "kind": "early_entry",
+            "opensAt": "2026-11-12T08:30:00-05:00",
+            "closesAt": "2026-11-12T09:00:00-05:00"
+          },
+          "headlinerWait": 65
+        },
+        "disneys-hollywood-studios": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "moderate",
+          "basis": "forecast",
+          "opensAt": "2026-11-12T09:00:00-05:00",
+          "closesAt": "2026-11-12T21:00:00-05:00",
+          "early": {
+            "kind": "early_entry",
+            "opensAt": "2026-11-12T08:30:00-05:00",
+            "closesAt": "2026-11-12T09:00:00-05:00"
+          },
+          "headlinerWait": 65
+        },
+        "disneys-animal-kingdom-theme-park": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "low",
+          "basis": "forecast",
+          "opensAt": "2026-11-12T08:00:00-05:00",
+          "closesAt": "2026-11-12T18:00:00-05:00",
+          "early": {
+            "kind": "early_entry",
+            "opensAt": "2026-11-12T07:30:00-05:00",
+            "closesAt": "2026-11-12T08:00:00-05:00"
+          },
+          "headlinerWait": 40
+        },
+        "disneys-typhoon-lagoon-water-park": {
+          "status": "CLOSED",
+          "hoursPublished": false,
+          "crowdLevel": "closed",
+          "basis": "none",
+          "seasons": ["dev-season-26"],
+          "closedBy": "dev-season-26"
+        },
+        "disneys-blizzard-beach-water-park": {
+          "status": "UNKNOWN",
+          "hoursPublished": false,
+          "crowdLevel": "unknown",
+          "basis": "none"
+        },
+        "universal-studios-florida": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "moderate",
+          "basis": "forecast",
+          "opensAt": "2026-11-12T10:00:00-05:00",
+          "closesAt": "2026-11-12T18:00:00-05:00",
+          "headlinerWait": 45
+        },
+        "universal-islands-of-adventure": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "low",
+          "basis": "forecast",
+          "opensAt": "2026-11-12T09:00:00-05:00",
+          "closesAt": "2026-11-12T19:00:00-05:00",
+          "early": {
+            "kind": "early_park_admission",
+            "opensAt": "2026-11-12T08:00:00-05:00",
+            "closesAt": "2026-11-12T09:00:00-05:00"
+          },
+          "headlinerWait": 40
+        },
+        "universal-epic-universe": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "low",
+          "basis": "forecast",
+          "opensAt": "2026-11-12T10:00:00-05:00",
+          "closesAt": "2026-11-12T20:00:00-05:00",
+          "early": {
+            "kind": "early_park_admission",
+            "opensAt": "2026-11-12T09:00:00-05:00",
+            "closesAt": "2026-11-12T10:00:00-05:00"
+          },
+          "headlinerWait": 50
+        },
+        "universal-volcano-bay": {
+          "status": "CLOSED",
+          "hoursPublished": false,
+          "crowdLevel": "closed",
+          "basis": "none",
+          "seasons": ["dev-season-34"],
+          "closedBy": "dev-season-34"
+        },
+        "seaworld-orlando": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "very_low",
+          "basis": "forecast",
+          "opensAt": "2026-11-12T10:00:00-05:00",
+          "closesAt": "2026-11-12T18:00:00-05:00",
+          "headlinerWait": 15
+        },
+        "aquatica-orlando": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "unknown",
+          "basis": "none",
+          "opensAt": "2026-11-12T10:30:00-05:00",
+          "closesAt": "2026-11-12T17:00:00-05:00"
+        },
+        "discovery-cove-orlando": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "unknown",
+          "basis": "none",
+          "opensAt": "2026-11-12T07:00:00-05:00",
+          "closesAt": "2026-11-12T17:00:00-05:00"
+        },
+        "legoland-florida": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "very_low",
+          "basis": "forecast",
+          "opensAt": "2026-11-12T10:00:00-05:00",
+          "closesAt": "2026-11-12T17:00:00-05:00",
+          "headlinerWait": 15
+        },
+        "busch-gardens-tampa": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "very_low",
+          "basis": "forecast",
+          "opensAt": "2026-11-12T10:00:00-05:00",
+          "closesAt": "2026-11-12T17:00:00-05:00",
+          "headlinerWait": 10
+        },
+        "adventure-island-tampa": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "unknown",
+          "basis": "none",
+          "opensAt": "2026-11-12T09:00:00-05:00",
+          "closesAt": "2026-11-12T19:00:00-05:00"
+        }
+      }
+    },
+    {
+      "date": "2026-11-13",
+      "isHoliday": false,
+      "isSchoolVacation": false,
+      "best": {
+        "walt-disney-world": "magic-kingdom-park",
+        "universal-orlando": "universal-islands-of-adventure",
+        "seaworld-orlando": "seaworld-orlando"
+      },
+      "parks": {
+        "magic-kingdom-park": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "low",
+          "basis": "forecast",
+          "seasons": ["dev-season-1", "dev-season-2"],
+          "opensAt": "2026-11-13T08:00:00-05:00",
+          "closesAt": "2026-11-13T18:00:00-05:00",
+          "evening": {
+            "kind": "ticketed_event",
+            "opensAt": "2026-11-13T19:00:00-05:00",
+            "closesAt": "2026-11-14T00:00:00-05:00"
+          },
+          "headlinerWait": 40
+        },
+        "epcot": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "moderate",
+          "basis": "forecast",
+          "seasons": ["dev-season-7"],
+          "opensAt": "2026-11-13T09:00:00-05:00",
+          "closesAt": "2026-11-13T21:00:00-05:00",
+          "early": {
+            "kind": "early_entry",
+            "opensAt": "2026-11-13T08:30:00-05:00",
+            "closesAt": "2026-11-13T09:00:00-05:00"
+          },
+          "headlinerWait": 65
+        },
+        "disneys-hollywood-studios": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "moderate",
+          "basis": "forecast",
+          "seasons": ["dev-season-21"],
+          "opensAt": "2026-11-13T09:00:00-05:00",
+          "closesAt": "2026-11-13T21:00:00-05:00",
+          "early": {
+            "kind": "early_entry",
+            "opensAt": "2026-11-13T08:30:00-05:00",
+            "closesAt": "2026-11-13T09:00:00-05:00"
+          },
+          "headlinerWait": 65
+        },
+        "disneys-animal-kingdom-theme-park": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "low",
+          "basis": "forecast",
+          "seasons": ["dev-season-25"],
+          "opensAt": "2026-11-13T08:00:00-05:00",
+          "closesAt": "2026-11-13T19:00:00-05:00",
+          "early": {
+            "kind": "early_entry",
+            "opensAt": "2026-11-13T07:30:00-05:00",
+            "closesAt": "2026-11-13T08:00:00-05:00"
+          },
+          "headlinerWait": 45
+        },
+        "disneys-typhoon-lagoon-water-park": {
+          "status": "CLOSED",
+          "hoursPublished": false,
+          "crowdLevel": "closed",
+          "basis": "none",
+          "seasons": ["dev-season-26"],
+          "closedBy": "dev-season-26"
+        },
+        "disneys-blizzard-beach-water-park": {
+          "status": "UNKNOWN",
+          "hoursPublished": false,
+          "crowdLevel": "unknown",
+          "basis": "none"
+        },
+        "universal-studios-florida": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "moderate",
+          "basis": "forecast",
+          "opensAt": "2026-11-13T10:00:00-05:00",
+          "closesAt": "2026-11-13T19:00:00-05:00",
+          "headlinerWait": 45
+        },
+        "universal-islands-of-adventure": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "low",
+          "basis": "forecast",
+          "opensAt": "2026-11-13T09:00:00-05:00",
+          "closesAt": "2026-11-13T18:00:00-05:00",
+          "early": {
+            "kind": "early_park_admission",
+            "opensAt": "2026-11-13T08:00:00-05:00",
+            "closesAt": "2026-11-13T09:00:00-05:00"
+          },
+          "headlinerWait": 45
+        },
+        "universal-epic-universe": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "low",
+          "basis": "forecast",
+          "opensAt": "2026-11-13T10:00:00-05:00",
+          "closesAt": "2026-11-13T20:00:00-05:00",
+          "early": {
+            "kind": "early_park_admission",
+            "opensAt": "2026-11-13T09:00:00-05:00",
+            "closesAt": "2026-11-13T10:00:00-05:00"
+          },
+          "headlinerWait": 55
+        },
+        "universal-volcano-bay": {
+          "status": "CLOSED",
+          "hoursPublished": false,
+          "crowdLevel": "closed",
+          "basis": "none",
+          "seasons": ["dev-season-34"],
+          "closedBy": "dev-season-34"
+        },
+        "seaworld-orlando": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "very_low",
+          "basis": "forecast",
+          "seasons": ["dev-season-40"],
+          "opensAt": "2026-11-13T10:00:00-05:00",
+          "closesAt": "2026-11-13T21:00:00-05:00",
+          "headlinerWait": 20
+        },
+        "aquatica-orlando": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "unknown",
+          "basis": "none",
+          "opensAt": "2026-11-13T10:30:00-05:00",
+          "closesAt": "2026-11-13T17:00:00-05:00"
+        },
+        "discovery-cove-orlando": {
+          "status": "UNKNOWN",
+          "hoursPublished": false,
+          "crowdLevel": "unknown",
+          "basis": "none"
+        },
+        "legoland-florida": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "low",
+          "basis": "forecast",
+          "opensAt": "2026-11-13T10:00:00-05:00",
+          "closesAt": "2026-11-13T17:00:00-05:00",
+          "headlinerWait": 20
+        },
+        "busch-gardens-tampa": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "very_low",
+          "basis": "forecast",
+          "opensAt": "2026-11-13T10:00:00-05:00",
+          "closesAt": "2026-11-13T21:00:00-05:00",
+          "headlinerWait": 15
+        },
+        "adventure-island-tampa": {
+          "status": "UNKNOWN",
+          "hoursPublished": false,
+          "crowdLevel": "unknown",
+          "basis": "none"
+        }
+      }
+    },
+    {
+      "date": "2026-11-14",
+      "isHoliday": false,
+      "isSchoolVacation": false,
+      "best": {
+        "walt-disney-world": "magic-kingdom-park",
+        "universal-orlando": "universal-islands-of-adventure",
+        "seaworld-orlando": "seaworld-orlando"
+      },
+      "parks": {
+        "magic-kingdom-park": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "low",
+          "basis": "forecast",
+          "seasons": ["dev-season-2"],
+          "opensAt": "2026-11-14T08:00:00-05:00",
+          "closesAt": "2026-11-14T23:00:00-05:00",
+          "early": {
+            "kind": "early_entry",
+            "opensAt": "2026-11-14T07:30:00-05:00",
+            "closesAt": "2026-11-14T08:00:00-05:00"
+          },
+          "headlinerWait": 45
+        },
+        "epcot": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "high",
+          "basis": "forecast",
+          "seasons": ["dev-season-7"],
+          "opensAt": "2026-11-14T09:00:00-05:00",
+          "closesAt": "2026-11-14T21:00:00-05:00",
+          "early": {
+            "kind": "early_entry",
+            "opensAt": "2026-11-14T08:30:00-05:00",
+            "closesAt": "2026-11-14T09:00:00-05:00"
+          },
+          "headlinerWait": 75
+        },
+        "disneys-hollywood-studios": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "moderate",
+          "basis": "forecast",
+          "seasons": ["dev-season-20", "dev-season-21"],
+          "opensAt": "2026-11-14T08:30:00-05:00",
+          "closesAt": "2026-11-14T19:00:00-05:00",
+          "evening": {
+            "kind": "ticketed_event",
+            "opensAt": "2026-11-14T19:30:00-05:00",
+            "closesAt": "2026-11-15T00:30:00-05:00"
+          },
+          "headlinerWait": 65
+        },
+        "disneys-animal-kingdom-theme-park": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "low",
+          "basis": "forecast",
+          "seasons": ["dev-season-25"],
+          "opensAt": "2026-11-14T08:00:00-05:00",
+          "closesAt": "2026-11-14T20:00:00-05:00",
+          "early": {
+            "kind": "early_entry",
+            "opensAt": "2026-11-14T07:30:00-05:00",
+            "closesAt": "2026-11-14T08:00:00-05:00"
+          },
+          "headlinerWait": 50
+        },
+        "disneys-typhoon-lagoon-water-park": {
+          "status": "CLOSED",
+          "hoursPublished": false,
+          "crowdLevel": "closed",
+          "basis": "none",
+          "seasons": ["dev-season-26"],
+          "closedBy": "dev-season-26"
+        },
+        "disneys-blizzard-beach-water-park": {
+          "status": "UNKNOWN",
+          "hoursPublished": false,
+          "crowdLevel": "unknown",
+          "basis": "none"
+        },
+        "universal-studios-florida": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "high",
+          "basis": "forecast",
+          "seasons": ["dev-season-28"],
+          "opensAt": "2026-11-14T10:00:00-05:00",
+          "closesAt": "2026-11-14T19:00:00-05:00",
+          "headlinerWait": 50
+        },
+        "universal-islands-of-adventure": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "low",
+          "basis": "forecast",
+          "seasons": ["dev-season-29"],
+          "opensAt": "2026-11-14T09:00:00-05:00",
+          "closesAt": "2026-11-14T19:00:00-05:00",
+          "early": {
+            "kind": "early_park_admission",
+            "opensAt": "2026-11-14T08:00:00-05:00",
+            "closesAt": "2026-11-14T09:00:00-05:00"
+          },
+          "headlinerWait": 45
+        },
+        "universal-epic-universe": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "low",
+          "basis": "forecast",
+          "seasons": ["dev-season-30"],
+          "opensAt": "2026-11-14T10:00:00-05:00",
+          "closesAt": "2026-11-14T20:00:00-05:00",
+          "early": {
+            "kind": "early_park_admission",
+            "opensAt": "2026-11-14T09:00:00-05:00",
+            "closesAt": "2026-11-14T10:00:00-05:00"
+          },
+          "headlinerWait": 65
+        },
+        "universal-volcano-bay": {
+          "status": "CLOSED",
+          "hoursPublished": false,
+          "crowdLevel": "closed",
+          "basis": "none",
+          "seasons": ["dev-season-34"],
+          "closedBy": "dev-season-34"
+        },
+        "seaworld-orlando": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "low",
+          "basis": "forecast",
+          "seasons": ["dev-season-40"],
+          "opensAt": "2026-11-14T09:00:00-05:00",
+          "closesAt": "2026-11-14T22:00:00-05:00",
+          "headlinerWait": 30
+        },
+        "aquatica-orlando": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "unknown",
+          "basis": "none",
+          "opensAt": "2026-11-14T10:30:00-05:00",
+          "closesAt": "2026-11-14T17:00:00-05:00"
+        },
+        "discovery-cove-orlando": {
+          "status": "UNKNOWN",
+          "hoursPublished": false,
+          "crowdLevel": "unknown",
+          "basis": "none"
+        },
+        "legoland-florida": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "high",
+          "basis": "forecast",
+          "opensAt": "2026-11-14T10:00:00-05:00",
+          "closesAt": "2026-11-14T18:00:00-05:00",
+          "headlinerWait": 30
+        },
+        "busch-gardens-tampa": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "very_low",
+          "basis": "forecast",
+          "opensAt": "2026-11-14T10:00:00-05:00",
+          "closesAt": "2026-11-14T22:00:00-05:00",
+          "headlinerWait": 20
+        },
+        "adventure-island-tampa": {
+          "status": "UNKNOWN",
+          "hoursPublished": false,
+          "crowdLevel": "unknown",
+          "basis": "none"
+        }
+      }
+    },
+    {
+      "date": "2026-11-15",
+      "isHoliday": false,
+      "isSchoolVacation": false,
+      "best": {
+        "walt-disney-world": "disneys-animal-kingdom-theme-park",
+        "universal-orlando": "universal-islands-of-adventure",
+        "seaworld-orlando": "seaworld-orlando"
+      },
+      "parks": {
+        "magic-kingdom-park": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "low",
+          "basis": "forecast",
+          "seasons": ["dev-season-1", "dev-season-2"],
+          "opensAt": "2026-11-15T08:00:00-05:00",
+          "closesAt": "2026-11-15T18:00:00-05:00",
+          "evening": {
+            "kind": "ticketed_event",
+            "opensAt": "2026-11-15T19:00:00-05:00",
+            "closesAt": "2026-11-16T00:00:00-05:00"
+          },
+          "headlinerWait": 40
+        },
+        "epcot": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "moderate",
+          "basis": "forecast",
+          "seasons": ["dev-season-7"],
+          "opensAt": "2026-11-15T09:00:00-05:00",
+          "closesAt": "2026-11-15T21:00:00-05:00",
+          "early": {
+            "kind": "early_entry",
+            "opensAt": "2026-11-15T08:30:00-05:00",
+            "closesAt": "2026-11-15T09:00:00-05:00"
+          },
+          "headlinerWait": 65
+        },
+        "disneys-hollywood-studios": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "moderate",
+          "basis": "forecast",
+          "seasons": ["dev-season-21"],
+          "opensAt": "2026-11-15T09:00:00-05:00",
+          "closesAt": "2026-11-15T21:00:00-05:00",
+          "early": {
+            "kind": "early_entry",
+            "opensAt": "2026-11-15T08:30:00-05:00",
+            "closesAt": "2026-11-15T09:00:00-05:00"
+          },
+          "headlinerWait": 60
+        },
+        "disneys-animal-kingdom-theme-park": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "low",
+          "basis": "forecast",
+          "seasons": ["dev-season-25"],
+          "opensAt": "2026-11-15T09:00:00-05:00",
+          "closesAt": "2026-11-15T20:00:00-05:00",
+          "early": {
+            "kind": "early_entry",
+            "opensAt": "2026-11-15T08:30:00-05:00",
+            "closesAt": "2026-11-15T09:00:00-05:00"
+          },
+          "headlinerWait": 35
+        },
+        "disneys-typhoon-lagoon-water-park": {
+          "status": "CLOSED",
+          "hoursPublished": false,
+          "crowdLevel": "closed",
+          "basis": "none",
+          "seasons": ["dev-season-26"],
+          "closedBy": "dev-season-26"
+        },
+        "disneys-blizzard-beach-water-park": {
+          "status": "UNKNOWN",
+          "hoursPublished": false,
+          "crowdLevel": "unknown",
+          "basis": "none"
+        },
+        "universal-studios-florida": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "moderate",
+          "basis": "forecast",
+          "seasons": ["dev-season-28"],
+          "opensAt": "2026-11-15T10:00:00-05:00",
+          "closesAt": "2026-11-15T19:00:00-05:00",
+          "headlinerWait": 45
+        },
+        "universal-islands-of-adventure": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "low",
+          "basis": "forecast",
+          "seasons": ["dev-season-29"],
+          "opensAt": "2026-11-15T09:00:00-05:00",
+          "closesAt": "2026-11-15T18:00:00-05:00",
+          "early": {
+            "kind": "early_park_admission",
+            "opensAt": "2026-11-15T08:00:00-05:00",
+            "closesAt": "2026-11-15T09:00:00-05:00"
+          },
+          "headlinerWait": 30
+        },
+        "universal-epic-universe": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "low",
+          "basis": "forecast",
+          "seasons": ["dev-season-30"],
+          "opensAt": "2026-11-15T10:00:00-05:00",
+          "closesAt": "2026-11-15T20:00:00-05:00",
+          "early": {
+            "kind": "early_park_admission",
+            "opensAt": "2026-11-15T09:00:00-05:00",
+            "closesAt": "2026-11-15T10:00:00-05:00"
+          },
+          "headlinerWait": 55
+        },
+        "universal-volcano-bay": {
+          "status": "CLOSED",
+          "hoursPublished": false,
+          "crowdLevel": "closed",
+          "basis": "none",
+          "seasons": ["dev-season-34"],
+          "closedBy": "dev-season-34"
+        },
+        "seaworld-orlando": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "very_low",
+          "basis": "forecast",
+          "seasons": ["dev-season-40"],
+          "opensAt": "2026-11-15T09:00:00-05:00",
+          "closesAt": "2026-11-15T21:00:00-05:00",
+          "headlinerWait": 20
+        },
+        "aquatica-orlando": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "unknown",
+          "basis": "none",
+          "opensAt": "2026-11-15T10:30:00-05:00",
+          "closesAt": "2026-11-15T17:00:00-05:00"
+        },
+        "discovery-cove-orlando": {
+          "status": "UNKNOWN",
+          "hoursPublished": false,
+          "crowdLevel": "unknown",
+          "basis": "none"
+        },
+        "legoland-florida": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "low",
+          "basis": "forecast",
+          "opensAt": "2026-11-15T10:00:00-05:00",
+          "closesAt": "2026-11-15T17:00:00-05:00",
+          "headlinerWait": 25
+        },
+        "busch-gardens-tampa": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "very_low",
+          "basis": "forecast",
+          "opensAt": "2026-11-15T10:00:00-05:00",
+          "closesAt": "2026-11-15T21:00:00-05:00",
+          "headlinerWait": 15
+        },
+        "adventure-island-tampa": {
+          "status": "UNKNOWN",
+          "hoursPublished": false,
+          "crowdLevel": "unknown",
+          "basis": "none"
+        }
+      }
+    },
+    {
+      "date": "2026-11-16",
+      "isHoliday": false,
+      "isSchoolVacation": false,
+      "best": {
+        "walt-disney-world": "disneys-animal-kingdom-theme-park",
+        "universal-orlando": "universal-islands-of-adventure",
+        "seaworld-orlando": "seaworld-orlando"
+      },
+      "parks": {
+        "magic-kingdom-park": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "low",
+          "basis": "forecast",
+          "seasons": ["dev-season-2"],
+          "opensAt": "2026-11-16T09:00:00-05:00",
+          "closesAt": "2026-11-16T23:00:00-05:00",
+          "early": {
+            "kind": "early_entry",
+            "opensAt": "2026-11-16T08:30:00-05:00",
+            "closesAt": "2026-11-16T09:00:00-05:00"
+          },
+          "headlinerWait": 40
+        },
+        "epcot": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "moderate",
+          "basis": "forecast",
+          "seasons": ["dev-season-7"],
+          "opensAt": "2026-11-16T09:00:00-05:00",
+          "closesAt": "2026-11-16T21:00:00-05:00",
+          "evening": {
+            "kind": "extended_evening",
+            "opensAt": "2026-11-16T21:00:00-05:00",
+            "closesAt": "2026-11-16T23:00:00-05:00"
+          },
+          "headlinerWait": 60
+        },
+        "disneys-hollywood-studios": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "moderate",
+          "basis": "forecast",
+          "seasons": ["dev-season-20", "dev-season-21"],
+          "opensAt": "2026-11-16T09:00:00-05:00",
+          "closesAt": "2026-11-16T19:00:00-05:00",
+          "evening": {
+            "kind": "ticketed_event",
+            "opensAt": "2026-11-16T19:30:00-05:00",
+            "closesAt": "2026-11-17T00:30:00-05:00"
+          },
+          "headlinerWait": 60
+        },
+        "disneys-animal-kingdom-theme-park": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "very_low",
+          "basis": "forecast",
+          "seasons": ["dev-season-25"],
+          "opensAt": "2026-11-16T08:00:00-05:00",
+          "closesAt": "2026-11-16T18:00:00-05:00",
+          "early": {
+            "kind": "early_entry",
+            "opensAt": "2026-11-16T07:30:00-05:00",
+            "closesAt": "2026-11-16T08:00:00-05:00"
+          },
+          "headlinerWait": 30
+        },
+        "disneys-typhoon-lagoon-water-park": {
+          "status": "CLOSED",
+          "hoursPublished": false,
+          "crowdLevel": "closed",
+          "basis": "none",
+          "seasons": ["dev-season-26"],
+          "closedBy": "dev-season-26"
+        },
+        "disneys-blizzard-beach-water-park": {
+          "status": "UNKNOWN",
+          "hoursPublished": false,
+          "crowdLevel": "unknown",
+          "basis": "none"
+        },
+        "universal-studios-florida": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "moderate",
+          "basis": "forecast",
+          "seasons": ["dev-season-28"],
+          "opensAt": "2026-11-16T10:00:00-05:00",
+          "closesAt": "2026-11-16T19:00:00-05:00",
+          "headlinerWait": 40
+        },
+        "universal-islands-of-adventure": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "very_low",
+          "basis": "forecast",
+          "seasons": ["dev-season-29"],
+          "opensAt": "2026-11-16T09:00:00-05:00",
+          "closesAt": "2026-11-16T19:00:00-05:00",
+          "early": {
+            "kind": "early_park_admission",
+            "opensAt": "2026-11-16T08:00:00-05:00",
+            "closesAt": "2026-11-16T09:00:00-05:00"
+          },
+          "headlinerWait": 30
+        },
+        "universal-epic-universe": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "low",
+          "basis": "forecast",
+          "seasons": ["dev-season-30"],
+          "opensAt": "2026-11-16T10:00:00-05:00",
+          "closesAt": "2026-11-16T20:00:00-05:00",
+          "early": {
+            "kind": "early_park_admission",
+            "opensAt": "2026-11-16T09:00:00-05:00",
+            "closesAt": "2026-11-16T10:00:00-05:00"
+          },
+          "headlinerWait": 55
+        },
+        "universal-volcano-bay": {
+          "status": "CLOSED",
+          "hoursPublished": false,
+          "crowdLevel": "closed",
+          "basis": "none",
+          "seasons": ["dev-season-34"],
+          "closedBy": "dev-season-34"
+        },
+        "seaworld-orlando": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "very_low",
+          "basis": "forecast",
+          "opensAt": "2026-11-16T10:00:00-05:00",
+          "closesAt": "2026-11-16T18:00:00-05:00",
+          "headlinerWait": 15
+        },
+        "aquatica-orlando": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "unknown",
+          "basis": "none",
+          "opensAt": "2026-11-16T10:30:00-05:00",
+          "closesAt": "2026-11-16T17:00:00-05:00"
+        },
+        "discovery-cove-orlando": {
+          "status": "UNKNOWN",
+          "hoursPublished": false,
+          "crowdLevel": "unknown",
+          "basis": "none"
+        },
+        "legoland-florida": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "very_low",
+          "basis": "forecast",
+          "opensAt": "2026-11-16T10:00:00-05:00",
+          "closesAt": "2026-11-16T17:00:00-05:00",
+          "headlinerWait": 10
+        },
+        "busch-gardens-tampa": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "very_low",
+          "basis": "forecast",
+          "opensAt": "2026-11-16T10:00:00-05:00",
+          "closesAt": "2026-11-16T19:00:00-05:00",
+          "headlinerWait": 10
+        },
+        "adventure-island-tampa": {
+          "status": "UNKNOWN",
+          "hoursPublished": false,
+          "crowdLevel": "unknown",
+          "basis": "none"
+        }
+      }
+    },
+    {
+      "date": "2026-11-17",
+      "isHoliday": false,
+      "isSchoolVacation": false,
+      "best": {
+        "walt-disney-world": "disneys-animal-kingdom-theme-park",
+        "universal-orlando": "universal-studios-florida",
+        "seaworld-orlando": "seaworld-orlando"
+      },
+      "parks": {
+        "magic-kingdom-park": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "low",
+          "basis": "forecast",
+          "seasons": ["dev-season-1", "dev-season-2"],
+          "opensAt": "2026-11-17T09:00:00-05:00",
+          "closesAt": "2026-11-17T18:00:00-05:00",
+          "evening": {
+            "kind": "ticketed_event",
+            "opensAt": "2026-11-17T19:00:00-05:00",
+            "closesAt": "2026-11-18T00:00:00-05:00"
+          },
+          "headlinerWait": 40
+        },
+        "epcot": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "low",
+          "basis": "forecast",
+          "seasons": ["dev-season-7"],
+          "opensAt": "2026-11-17T09:00:00-05:00",
+          "closesAt": "2026-11-17T21:00:00-05:00",
+          "early": {
+            "kind": "early_entry",
+            "opensAt": "2026-11-17T08:30:00-05:00",
+            "closesAt": "2026-11-17T09:00:00-05:00"
+          },
+          "headlinerWait": 60
+        },
+        "disneys-hollywood-studios": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "moderate",
+          "basis": "forecast",
+          "seasons": ["dev-season-21"],
+          "opensAt": "2026-11-17T09:00:00-05:00",
+          "closesAt": "2026-11-17T21:00:00-05:00",
+          "early": {
+            "kind": "early_entry",
+            "opensAt": "2026-11-17T08:30:00-05:00",
+            "closesAt": "2026-11-17T09:00:00-05:00"
+          },
+          "headlinerWait": 55
+        },
+        "disneys-animal-kingdom-theme-park": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "low",
+          "basis": "forecast",
+          "seasons": ["dev-season-25"],
+          "opensAt": "2026-11-17T08:00:00-05:00",
+          "closesAt": "2026-11-17T18:00:00-05:00",
+          "early": {
+            "kind": "early_entry",
+            "opensAt": "2026-11-17T07:30:00-05:00",
+            "closesAt": "2026-11-17T08:00:00-05:00"
+          },
+          "headlinerWait": 40
+        },
+        "disneys-typhoon-lagoon-water-park": {
+          "status": "CLOSED",
+          "hoursPublished": false,
+          "crowdLevel": "closed",
+          "basis": "none",
+          "seasons": ["dev-season-26"],
+          "closedBy": "dev-season-26"
+        },
+        "disneys-blizzard-beach-water-park": {
+          "status": "UNKNOWN",
+          "hoursPublished": false,
+          "crowdLevel": "unknown",
+          "basis": "none"
+        },
+        "universal-studios-florida": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "low",
+          "basis": "forecast",
+          "seasons": ["dev-season-28"],
+          "opensAt": "2026-11-17T10:00:00-05:00",
+          "closesAt": "2026-11-17T19:00:00-05:00",
+          "headlinerWait": 35
+        },
+        "universal-islands-of-adventure": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "low",
+          "basis": "forecast",
+          "seasons": ["dev-season-29"],
+          "opensAt": "2026-11-17T09:00:00-05:00",
+          "closesAt": "2026-11-17T18:00:00-05:00",
+          "early": {
+            "kind": "early_park_admission",
+            "opensAt": "2026-11-17T08:00:00-05:00",
+            "closesAt": "2026-11-17T09:00:00-05:00"
+          },
+          "headlinerWait": 40
+        },
+        "universal-epic-universe": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "low",
+          "basis": "forecast",
+          "seasons": ["dev-season-30"],
+          "opensAt": "2026-11-17T10:00:00-05:00",
+          "closesAt": "2026-11-17T19:00:00-05:00",
+          "early": {
+            "kind": "early_park_admission",
+            "opensAt": "2026-11-17T09:00:00-05:00",
+            "closesAt": "2026-11-17T10:00:00-05:00"
+          },
+          "headlinerWait": 50
+        },
+        "universal-volcano-bay": {
+          "status": "CLOSED",
+          "hoursPublished": false,
+          "crowdLevel": "closed",
+          "basis": "none",
+          "seasons": ["dev-season-34"],
+          "closedBy": "dev-season-34"
+        },
+        "seaworld-orlando": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "very_low",
+          "basis": "forecast",
+          "opensAt": "2026-11-17T10:00:00-05:00",
+          "closesAt": "2026-11-17T18:00:00-05:00",
+          "headlinerWait": 15
+        },
+        "aquatica-orlando": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "unknown",
+          "basis": "none",
+          "opensAt": "2026-11-17T10:30:00-05:00",
+          "closesAt": "2026-11-17T17:00:00-05:00"
+        },
+        "discovery-cove-orlando": {
+          "status": "UNKNOWN",
+          "hoursPublished": false,
+          "crowdLevel": "unknown",
+          "basis": "none"
+        },
+        "legoland-florida": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "very_low",
+          "basis": "forecast",
+          "opensAt": "2026-11-17T10:00:00-05:00",
+          "closesAt": "2026-11-17T17:00:00-05:00",
+          "headlinerWait": 10
+        },
+        "busch-gardens-tampa": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "very_low",
+          "basis": "forecast",
+          "opensAt": "2026-11-17T10:00:00-05:00",
+          "closesAt": "2026-11-17T19:00:00-05:00",
+          "headlinerWait": 10
+        },
+        "adventure-island-tampa": {
+          "status": "UNKNOWN",
+          "hoursPublished": false,
+          "crowdLevel": "unknown",
+          "basis": "none"
+        }
+      }
+    },
+    {
+      "date": "2026-11-18",
+      "isHoliday": false,
+      "isSchoolVacation": false,
+      "best": {
+        "walt-disney-world": "magic-kingdom-park",
+        "universal-orlando": "universal-islands-of-adventure",
+        "seaworld-orlando": "seaworld-orlando"
+      },
+      "parks": {
+        "magic-kingdom-park": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "low",
+          "basis": "forecast",
+          "seasons": ["dev-season-2"],
+          "opensAt": "2026-11-18T09:00:00-05:00",
+          "closesAt": "2026-11-18T22:00:00-05:00",
+          "early": {
+            "kind": "early_entry",
+            "opensAt": "2026-11-18T08:30:00-05:00",
+            "closesAt": "2026-11-18T09:00:00-05:00"
+          },
+          "headlinerWait": 40
+        },
+        "epcot": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "moderate",
+          "basis": "forecast",
+          "seasons": ["dev-season-7"],
+          "opensAt": "2026-11-18T09:00:00-05:00",
+          "closesAt": "2026-11-18T21:00:00-05:00",
+          "early": {
+            "kind": "early_entry",
+            "opensAt": "2026-11-18T08:30:00-05:00",
+            "closesAt": "2026-11-18T09:00:00-05:00"
+          },
+          "headlinerWait": 65
+        },
+        "disneys-hollywood-studios": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "moderate",
+          "basis": "forecast",
+          "seasons": ["dev-season-21"],
+          "opensAt": "2026-11-18T09:00:00-05:00",
+          "closesAt": "2026-11-18T21:00:00-05:00",
+          "early": {
+            "kind": "early_entry",
+            "opensAt": "2026-11-18T08:30:00-05:00",
+            "closesAt": "2026-11-18T09:00:00-05:00"
+          },
+          "headlinerWait": 65
+        },
+        "disneys-animal-kingdom-theme-park": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "low",
+          "basis": "forecast",
+          "seasons": ["dev-season-25"],
+          "opensAt": "2026-11-18T08:00:00-05:00",
+          "closesAt": "2026-11-18T18:00:00-05:00",
+          "early": {
+            "kind": "early_entry",
+            "opensAt": "2026-11-18T07:30:00-05:00",
+            "closesAt": "2026-11-18T08:00:00-05:00"
+          },
+          "headlinerWait": 45
+        },
+        "disneys-typhoon-lagoon-water-park": {
+          "status": "CLOSED",
+          "hoursPublished": false,
+          "crowdLevel": "closed",
+          "basis": "none",
+          "seasons": ["dev-season-26"],
+          "closedBy": "dev-season-26"
+        },
+        "disneys-blizzard-beach-water-park": {
+          "status": "UNKNOWN",
+          "hoursPublished": false,
+          "crowdLevel": "unknown",
+          "basis": "none"
+        },
+        "universal-studios-florida": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "moderate",
+          "basis": "forecast",
+          "seasons": ["dev-season-28"],
+          "opensAt": "2026-11-18T10:00:00-05:00",
+          "closesAt": "2026-11-18T19:00:00-05:00",
+          "headlinerWait": 45
+        },
+        "universal-islands-of-adventure": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "low",
+          "basis": "forecast",
+          "seasons": ["dev-season-29"],
+          "opensAt": "2026-11-18T09:00:00-05:00",
+          "closesAt": "2026-11-18T19:00:00-05:00",
+          "early": {
+            "kind": "early_park_admission",
+            "opensAt": "2026-11-18T08:00:00-05:00",
+            "closesAt": "2026-11-18T09:00:00-05:00"
+          },
+          "headlinerWait": 40
+        },
+        "universal-epic-universe": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "low",
+          "basis": "forecast",
+          "seasons": ["dev-season-30"],
+          "opensAt": "2026-11-18T10:00:00-05:00",
+          "closesAt": "2026-11-18T20:00:00-05:00",
+          "early": {
+            "kind": "early_park_admission",
+            "opensAt": "2026-11-18T09:00:00-05:00",
+            "closesAt": "2026-11-18T10:00:00-05:00"
+          },
+          "headlinerWait": 50
+        },
+        "universal-volcano-bay": {
+          "status": "CLOSED",
+          "hoursPublished": false,
+          "crowdLevel": "closed",
+          "basis": "none",
+          "seasons": ["dev-season-34"],
+          "closedBy": "dev-season-34"
+        },
+        "seaworld-orlando": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "very_low",
+          "basis": "forecast",
+          "opensAt": "2026-11-18T10:00:00-05:00",
+          "closesAt": "2026-11-18T18:00:00-05:00",
+          "headlinerWait": 20
+        },
+        "aquatica-orlando": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "unknown",
+          "basis": "none",
+          "opensAt": "2026-11-18T10:30:00-05:00",
+          "closesAt": "2026-11-18T17:00:00-05:00"
+        },
+        "discovery-cove-orlando": {
+          "status": "UNKNOWN",
+          "hoursPublished": false,
+          "crowdLevel": "unknown",
+          "basis": "none"
+        },
+        "legoland-florida": {
+          "status": "CLOSED",
+          "hoursPublished": true,
+          "crowdLevel": "closed",
+          "basis": "none"
+        },
+        "busch-gardens-tampa": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "very_low",
+          "basis": "forecast",
+          "opensAt": "2026-11-18T10:00:00-05:00",
+          "closesAt": "2026-11-18T19:00:00-05:00",
+          "headlinerWait": 10
+        },
+        "adventure-island-tampa": {
+          "status": "UNKNOWN",
+          "hoursPublished": false,
+          "crowdLevel": "unknown",
+          "basis": "none"
+        }
+      }
+    },
+    {
+      "date": "2026-11-19",
+      "isHoliday": false,
+      "isSchoolVacation": false,
+      "best": {
+        "walt-disney-world": "magic-kingdom-park",
+        "universal-orlando": "universal-islands-of-adventure",
+        "seaworld-orlando": "seaworld-orlando"
+      },
+      "parks": {
+        "magic-kingdom-park": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "low",
+          "basis": "forecast",
+          "seasons": ["dev-season-1", "dev-season-2"],
+          "opensAt": "2026-11-19T09:00:00-05:00",
+          "closesAt": "2026-11-19T18:00:00-05:00",
+          "evening": {
+            "kind": "ticketed_event",
+            "opensAt": "2026-11-19T19:00:00-05:00",
+            "closesAt": "2026-11-20T00:00:00-05:00"
+          },
+          "headlinerWait": 35
+        },
+        "epcot": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "moderate",
+          "basis": "forecast",
+          "seasons": ["dev-season-7"],
+          "opensAt": "2026-11-19T09:00:00-05:00",
+          "closesAt": "2026-11-19T21:00:00-05:00",
+          "early": {
+            "kind": "early_entry",
+            "opensAt": "2026-11-19T08:30:00-05:00",
+            "closesAt": "2026-11-19T09:00:00-05:00"
+          },
+          "headlinerWait": 65
+        },
+        "disneys-hollywood-studios": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "moderate",
+          "basis": "forecast",
+          "seasons": ["dev-season-21"],
+          "opensAt": "2026-11-19T09:00:00-05:00",
+          "closesAt": "2026-11-19T21:00:00-05:00",
+          "early": {
+            "kind": "early_entry",
+            "opensAt": "2026-11-19T08:30:00-05:00",
+            "closesAt": "2026-11-19T09:00:00-05:00"
+          },
+          "headlinerWait": 65
+        },
+        "disneys-animal-kingdom-theme-park": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "low",
+          "basis": "forecast",
+          "seasons": ["dev-season-25"],
+          "opensAt": "2026-11-19T08:00:00-05:00",
+          "closesAt": "2026-11-19T18:00:00-05:00",
+          "early": {
+            "kind": "early_entry",
+            "opensAt": "2026-11-19T07:30:00-05:00",
+            "closesAt": "2026-11-19T08:00:00-05:00"
+          },
+          "headlinerWait": 45
+        },
+        "disneys-typhoon-lagoon-water-park": {
+          "status": "CLOSED",
+          "hoursPublished": false,
+          "crowdLevel": "closed",
+          "basis": "none",
+          "seasons": ["dev-season-26"],
+          "closedBy": "dev-season-26"
+        },
+        "disneys-blizzard-beach-water-park": {
+          "status": "UNKNOWN",
+          "hoursPublished": false,
+          "crowdLevel": "unknown",
+          "basis": "none"
+        },
+        "universal-studios-florida": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "moderate",
+          "basis": "forecast",
+          "seasons": ["dev-season-28"],
+          "opensAt": "2026-11-19T10:00:00-05:00",
+          "closesAt": "2026-11-19T19:00:00-05:00",
+          "headlinerWait": 45
+        },
+        "universal-islands-of-adventure": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "low",
+          "basis": "forecast",
+          "seasons": ["dev-season-29"],
+          "opensAt": "2026-11-19T09:00:00-05:00",
+          "closesAt": "2026-11-19T19:00:00-05:00",
+          "early": {
+            "kind": "early_park_admission",
+            "opensAt": "2026-11-19T08:00:00-05:00",
+            "closesAt": "2026-11-19T09:00:00-05:00"
+          },
+          "headlinerWait": 40
+        },
+        "universal-epic-universe": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "low",
+          "basis": "forecast",
+          "seasons": ["dev-season-30"],
+          "opensAt": "2026-11-19T09:00:00-05:00",
+          "closesAt": "2026-11-19T18:00:00-05:00",
+          "early": {
+            "kind": "early_park_admission",
+            "opensAt": "2026-11-19T08:00:00-05:00",
+            "closesAt": "2026-11-19T09:00:00-05:00"
+          },
+          "headlinerWait": 45
+        },
+        "universal-volcano-bay": {
+          "status": "CLOSED",
+          "hoursPublished": false,
+          "crowdLevel": "closed",
+          "basis": "none",
+          "seasons": ["dev-season-34"],
+          "closedBy": "dev-season-34"
+        },
+        "seaworld-orlando": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "very_low",
+          "basis": "forecast",
+          "opensAt": "2026-11-19T10:00:00-05:00",
+          "closesAt": "2026-11-19T18:00:00-05:00",
+          "headlinerWait": 20
+        },
+        "aquatica-orlando": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "unknown",
+          "basis": "none",
+          "opensAt": "2026-11-19T10:30:00-05:00",
+          "closesAt": "2026-11-19T17:00:00-05:00"
+        },
+        "discovery-cove-orlando": {
+          "status": "UNKNOWN",
+          "hoursPublished": false,
+          "crowdLevel": "unknown",
+          "basis": "none"
+        },
+        "legoland-florida": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "very_low",
+          "basis": "forecast",
+          "opensAt": "2026-11-19T10:00:00-05:00",
+          "closesAt": "2026-11-19T17:00:00-05:00",
+          "headlinerWait": 15
+        },
+        "busch-gardens-tampa": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "very_low",
+          "basis": "forecast",
+          "opensAt": "2026-11-19T10:00:00-05:00",
+          "closesAt": "2026-11-19T20:00:00-05:00",
+          "headlinerWait": 10
+        },
+        "adventure-island-tampa": {
+          "status": "UNKNOWN",
+          "hoursPublished": false,
+          "crowdLevel": "unknown",
+          "basis": "none"
+        }
+      }
+    },
+    {
+      "date": "2026-11-20",
+      "isHoliday": false,
+      "isSchoolVacation": false,
+      "best": {
+        "walt-disney-world": "magic-kingdom-park",
+        "universal-orlando": "universal-islands-of-adventure",
+        "seaworld-orlando": "seaworld-orlando"
+      },
+      "parks": {
+        "magic-kingdom-park": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "low",
+          "basis": "forecast",
+          "seasons": ["dev-season-1", "dev-season-2"],
+          "opensAt": "2026-11-20T09:00:00-05:00",
+          "closesAt": "2026-11-20T18:00:00-05:00",
+          "evening": {
+            "kind": "ticketed_event",
+            "opensAt": "2026-11-20T19:00:00-05:00",
+            "closesAt": "2026-11-21T00:00:00-05:00"
+          },
+          "headlinerWait": 40
+        },
+        "epcot": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "moderate",
+          "basis": "forecast",
+          "seasons": ["dev-season-7"],
+          "opensAt": "2026-11-20T09:00:00-05:00",
+          "closesAt": "2026-11-20T21:00:00-05:00",
+          "early": {
+            "kind": "early_entry",
+            "opensAt": "2026-11-20T08:30:00-05:00",
+            "closesAt": "2026-11-20T09:00:00-05:00"
+          },
+          "headlinerWait": 65
+        },
+        "disneys-hollywood-studios": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "moderate",
+          "basis": "forecast",
+          "seasons": ["dev-season-21"],
+          "opensAt": "2026-11-20T09:00:00-05:00",
+          "closesAt": "2026-11-20T21:00:00-05:00",
+          "early": {
+            "kind": "early_entry",
+            "opensAt": "2026-11-20T08:30:00-05:00",
+            "closesAt": "2026-11-20T09:00:00-05:00"
+          },
+          "headlinerWait": 65
+        },
+        "disneys-animal-kingdom-theme-park": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "low",
+          "basis": "forecast",
+          "seasons": ["dev-season-25"],
+          "opensAt": "2026-11-20T08:00:00-05:00",
+          "closesAt": "2026-11-20T18:00:00-05:00",
+          "early": {
+            "kind": "early_entry",
+            "opensAt": "2026-11-20T07:30:00-05:00",
+            "closesAt": "2026-11-20T08:00:00-05:00"
+          },
+          "headlinerWait": 45
+        },
+        "disneys-typhoon-lagoon-water-park": {
+          "status": "CLOSED",
+          "hoursPublished": false,
+          "crowdLevel": "closed",
+          "basis": "none",
+          "seasons": ["dev-season-26"],
+          "closedBy": "dev-season-26"
+        },
+        "disneys-blizzard-beach-water-park": {
+          "status": "UNKNOWN",
+          "hoursPublished": false,
+          "crowdLevel": "unknown",
+          "basis": "none"
+        },
+        "universal-studios-florida": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "moderate",
+          "basis": "forecast",
+          "seasons": ["dev-season-28"],
+          "opensAt": "2026-11-20T10:00:00-05:00",
+          "closesAt": "2026-11-20T19:00:00-05:00",
+          "headlinerWait": 45
+        },
+        "universal-islands-of-adventure": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "low",
+          "basis": "forecast",
+          "seasons": ["dev-season-29"],
+          "opensAt": "2026-11-20T09:00:00-05:00",
+          "closesAt": "2026-11-20T18:00:00-05:00",
+          "early": {
+            "kind": "early_park_admission",
+            "opensAt": "2026-11-20T08:00:00-05:00",
+            "closesAt": "2026-11-20T09:00:00-05:00"
+          },
+          "headlinerWait": 40
+        },
+        "universal-epic-universe": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "low",
+          "basis": "forecast",
+          "seasons": ["dev-season-30", "dev-season-31"],
+          "opensAt": "2026-11-20T10:00:00-05:00",
+          "closesAt": "2026-11-20T20:00:00-05:00",
+          "early": {
+            "kind": "early_park_admission",
+            "opensAt": "2026-11-20T09:00:00-05:00",
+            "closesAt": "2026-11-20T10:00:00-05:00"
+          },
+          "evening": {
+            "kind": "ticketed_event",
+            "opensAt": "2026-11-20T21:00:00-05:00",
+            "closesAt": "2026-11-21T00:00:00-05:00",
+            "source": "season"
+          },
+          "headlinerWait": 55
+        },
+        "universal-volcano-bay": {
+          "status": "CLOSED",
+          "hoursPublished": false,
+          "crowdLevel": "closed",
+          "basis": "none",
+          "seasons": ["dev-season-34"],
+          "closedBy": "dev-season-34"
+        },
+        "seaworld-orlando": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "very_low",
+          "basis": "forecast",
+          "seasons": ["dev-season-40"],
+          "opensAt": "2026-11-20T10:00:00-05:00",
+          "closesAt": "2026-11-20T21:00:00-05:00",
+          "headlinerWait": 25
+        },
+        "aquatica-orlando": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "unknown",
+          "basis": "none",
+          "opensAt": "2026-11-20T10:30:00-05:00",
+          "closesAt": "2026-11-20T17:00:00-05:00"
+        },
+        "discovery-cove-orlando": {
+          "status": "UNKNOWN",
+          "hoursPublished": false,
+          "crowdLevel": "unknown",
+          "basis": "none"
+        },
+        "legoland-florida": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "low",
+          "basis": "forecast",
+          "opensAt": "2026-11-20T10:00:00-05:00",
+          "closesAt": "2026-11-20T17:00:00-05:00",
+          "headlinerWait": 20
+        },
+        "busch-gardens-tampa": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "very_low",
+          "basis": "forecast",
+          "opensAt": "2026-11-20T10:00:00-05:00",
+          "closesAt": "2026-11-20T21:00:00-05:00",
+          "headlinerWait": 15
+        },
+        "adventure-island-tampa": {
+          "status": "UNKNOWN",
+          "hoursPublished": false,
+          "crowdLevel": "unknown",
+          "basis": "none"
+        }
+      }
+    },
+    {
+      "date": "2026-11-21",
+      "isHoliday": false,
+      "isSchoolVacation": true,
+      "best": {
+        "walt-disney-world": "magic-kingdom-park",
+        "universal-orlando": "universal-islands-of-adventure",
+        "seaworld-orlando": "seaworld-orlando"
+      },
+      "parks": {
+        "magic-kingdom-park": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "low",
+          "basis": "forecast",
+          "seasons": ["dev-season-2"],
+          "opensAt": "2026-11-21T09:00:00-05:00",
+          "closesAt": "2026-11-21T23:00:00-05:00",
+          "early": {
+            "kind": "early_entry",
+            "opensAt": "2026-11-21T08:30:00-05:00",
+            "closesAt": "2026-11-21T09:00:00-05:00"
+          },
+          "headlinerWait": 45
+        },
+        "epcot": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "moderate",
+          "basis": "forecast",
+          "seasons": ["dev-season-7"],
+          "opensAt": "2026-11-21T09:00:00-05:00",
+          "closesAt": "2026-11-21T21:00:00-05:00",
+          "early": {
+            "kind": "early_entry",
+            "opensAt": "2026-11-21T08:30:00-05:00",
+            "closesAt": "2026-11-21T09:00:00-05:00"
+          },
+          "headlinerWait": 70
+        },
+        "disneys-hollywood-studios": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "moderate",
+          "basis": "forecast",
+          "seasons": ["dev-season-20", "dev-season-21"],
+          "opensAt": "2026-11-21T08:30:00-05:00",
+          "closesAt": "2026-11-21T19:00:00-05:00",
+          "evening": {
+            "kind": "ticketed_event",
+            "opensAt": "2026-11-21T19:30:00-05:00",
+            "closesAt": "2026-11-22T00:30:00-05:00"
+          },
+          "headlinerWait": 65
+        },
+        "disneys-animal-kingdom-theme-park": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "low",
+          "basis": "forecast",
+          "seasons": ["dev-season-25"],
+          "opensAt": "2026-11-21T08:00:00-05:00",
+          "closesAt": "2026-11-21T19:00:00-05:00",
+          "early": {
+            "kind": "early_entry",
+            "opensAt": "2026-11-21T07:30:00-05:00",
+            "closesAt": "2026-11-21T08:00:00-05:00"
+          },
+          "headlinerWait": 50
+        },
+        "disneys-typhoon-lagoon-water-park": {
+          "status": "CLOSED",
+          "hoursPublished": false,
+          "crowdLevel": "closed",
+          "basis": "none",
+          "seasons": ["dev-season-26"],
+          "closedBy": "dev-season-26"
+        },
+        "disneys-blizzard-beach-water-park": {
+          "status": "UNKNOWN",
+          "hoursPublished": false,
+          "crowdLevel": "unknown",
+          "basis": "none"
+        },
+        "universal-studios-florida": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "high",
+          "basis": "forecast",
+          "seasons": ["dev-season-28"],
+          "opensAt": "2026-11-21T10:00:00-05:00",
+          "closesAt": "2026-11-21T20:00:00-05:00",
+          "headlinerWait": 50
+        },
+        "universal-islands-of-adventure": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "low",
+          "basis": "forecast",
+          "seasons": ["dev-season-29"],
+          "opensAt": "2026-11-21T09:00:00-05:00",
+          "closesAt": "2026-11-21T19:00:00-05:00",
+          "early": {
+            "kind": "early_park_admission",
+            "opensAt": "2026-11-21T08:00:00-05:00",
+            "closesAt": "2026-11-21T09:00:00-05:00"
+          },
+          "headlinerWait": 45
+        },
+        "universal-epic-universe": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "low",
+          "basis": "forecast",
+          "seasons": ["dev-season-30"],
+          "opensAt": "2026-11-21T10:00:00-05:00",
+          "closesAt": "2026-11-21T21:00:00-05:00",
+          "early": {
+            "kind": "early_park_admission",
+            "opensAt": "2026-11-21T09:00:00-05:00",
+            "closesAt": "2026-11-21T10:00:00-05:00"
+          },
+          "headlinerWait": 65
+        },
+        "universal-volcano-bay": {
+          "status": "CLOSED",
+          "hoursPublished": false,
+          "crowdLevel": "closed",
+          "basis": "none",
+          "seasons": ["dev-season-34"],
+          "closedBy": "dev-season-34"
+        },
+        "seaworld-orlando": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "low",
+          "basis": "forecast",
+          "seasons": ["dev-season-40"],
+          "opensAt": "2026-11-21T09:00:00-05:00",
+          "closesAt": "2026-11-21T22:00:00-05:00",
+          "headlinerWait": 30
+        },
+        "aquatica-orlando": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "unknown",
+          "basis": "none",
+          "opensAt": "2026-11-21T10:30:00-05:00",
+          "closesAt": "2026-11-21T17:00:00-05:00"
+        },
+        "discovery-cove-orlando": {
+          "status": "UNKNOWN",
+          "hoursPublished": false,
+          "crowdLevel": "unknown",
+          "basis": "none"
+        },
+        "legoland-florida": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "high",
+          "basis": "forecast",
+          "opensAt": "2026-11-21T10:00:00-05:00",
+          "closesAt": "2026-11-21T19:00:00-05:00",
+          "headlinerWait": 30
+        },
+        "busch-gardens-tampa": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "very_low",
+          "basis": "forecast",
+          "opensAt": "2026-11-21T10:00:00-05:00",
+          "closesAt": "2026-11-21T21:00:00-05:00",
+          "headlinerWait": 20
+        },
+        "adventure-island-tampa": {
+          "status": "UNKNOWN",
+          "hoursPublished": false,
+          "crowdLevel": "unknown",
+          "basis": "none"
+        }
+      }
+    },
+    {
+      "date": "2026-11-22",
+      "isHoliday": false,
+      "isSchoolVacation": true,
+      "best": {
+        "walt-disney-world": "magic-kingdom-park",
+        "universal-orlando": "universal-islands-of-adventure",
+        "seaworld-orlando": "seaworld-orlando"
+      },
+      "parks": {
+        "magic-kingdom-park": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "low",
+          "basis": "forecast",
+          "seasons": ["dev-season-2"],
+          "opensAt": "2026-11-22T09:00:00-05:00",
+          "closesAt": "2026-11-22T23:00:00-05:00",
+          "early": {
+            "kind": "early_entry",
+            "opensAt": "2026-11-22T08:30:00-05:00",
+            "closesAt": "2026-11-22T09:00:00-05:00"
+          },
+          "headlinerWait": 40
+        },
+        "epcot": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "moderate",
+          "basis": "forecast",
+          "opensAt": "2026-11-22T09:00:00-05:00",
+          "closesAt": "2026-11-22T21:00:00-05:00",
+          "early": {
+            "kind": "early_entry",
+            "opensAt": "2026-11-22T08:30:00-05:00",
+            "closesAt": "2026-11-22T09:00:00-05:00"
+          },
+          "headlinerWait": 65
+        },
+        "disneys-hollywood-studios": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "moderate",
+          "basis": "forecast",
+          "seasons": ["dev-season-21"],
+          "opensAt": "2026-11-22T09:00:00-05:00",
+          "closesAt": "2026-11-22T21:00:00-05:00",
+          "early": {
+            "kind": "early_entry",
+            "opensAt": "2026-11-22T08:30:00-05:00",
+            "closesAt": "2026-11-22T09:00:00-05:00"
+          },
+          "headlinerWait": 60
+        },
+        "disneys-animal-kingdom-theme-park": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "low",
+          "basis": "forecast",
+          "seasons": ["dev-season-25"],
+          "opensAt": "2026-11-22T08:00:00-05:00",
+          "closesAt": "2026-11-22T19:00:00-05:00",
+          "early": {
+            "kind": "early_entry",
+            "opensAt": "2026-11-22T07:30:00-05:00",
+            "closesAt": "2026-11-22T08:00:00-05:00"
+          },
+          "headlinerWait": 40
+        },
+        "disneys-typhoon-lagoon-water-park": {
+          "status": "CLOSED",
+          "hoursPublished": false,
+          "crowdLevel": "closed",
+          "basis": "none",
+          "seasons": ["dev-season-26"],
+          "closedBy": "dev-season-26"
+        },
+        "disneys-blizzard-beach-water-park": {
+          "status": "UNKNOWN",
+          "hoursPublished": false,
+          "crowdLevel": "unknown",
+          "basis": "none"
+        },
+        "universal-studios-florida": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "high",
+          "basis": "forecast",
+          "seasons": ["dev-season-28"],
+          "opensAt": "2026-11-22T09:00:00-05:00",
+          "closesAt": "2026-11-22T20:00:00-05:00",
+          "headlinerWait": 45
+        },
+        "universal-islands-of-adventure": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "low",
+          "basis": "forecast",
+          "seasons": ["dev-season-29"],
+          "opensAt": "2026-11-22T09:00:00-05:00",
+          "closesAt": "2026-11-22T20:00:00-05:00",
+          "early": {
+            "kind": "early_park_admission",
+            "opensAt": "2026-11-22T08:00:00-05:00",
+            "closesAt": "2026-11-22T09:00:00-05:00"
+          },
+          "headlinerWait": 35
+        },
+        "universal-epic-universe": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "low",
+          "basis": "forecast",
+          "seasons": ["dev-season-30"],
+          "opensAt": "2026-11-22T09:00:00-05:00",
+          "closesAt": "2026-11-22T21:00:00-05:00",
+          "early": {
+            "kind": "early_park_admission",
+            "opensAt": "2026-11-22T08:00:00-05:00",
+            "closesAt": "2026-11-22T09:00:00-05:00"
+          },
+          "headlinerWait": 55
+        },
+        "universal-volcano-bay": {
+          "status": "CLOSED",
+          "hoursPublished": false,
+          "crowdLevel": "closed",
+          "basis": "none",
+          "seasons": ["dev-season-34"],
+          "closedBy": "dev-season-34"
+        },
+        "seaworld-orlando": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "very_low",
+          "basis": "forecast",
+          "seasons": ["dev-season-40"],
+          "opensAt": "2026-11-22T09:00:00-05:00",
+          "closesAt": "2026-11-22T21:00:00-05:00",
+          "headlinerWait": 25
+        },
+        "aquatica-orlando": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "unknown",
+          "basis": "none",
+          "opensAt": "2026-11-22T10:30:00-05:00",
+          "closesAt": "2026-11-22T17:00:00-05:00"
+        },
+        "discovery-cove-orlando": {
+          "status": "UNKNOWN",
+          "hoursPublished": false,
+          "crowdLevel": "unknown",
+          "basis": "none"
+        },
+        "legoland-florida": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "low",
+          "basis": "forecast",
+          "opensAt": "2026-11-22T10:00:00-05:00",
+          "closesAt": "2026-11-22T19:00:00-05:00",
+          "headlinerWait": 20
+        },
+        "busch-gardens-tampa": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "very_low",
+          "basis": "forecast",
+          "opensAt": "2026-11-22T10:00:00-05:00",
+          "closesAt": "2026-11-22T21:00:00-05:00",
+          "headlinerWait": 15
+        },
+        "adventure-island-tampa": {
+          "status": "UNKNOWN",
+          "hoursPublished": false,
+          "crowdLevel": "unknown",
+          "basis": "none"
+        }
+      }
+    },
+    {
+      "date": "2026-11-23",
+      "isHoliday": false,
+      "isSchoolVacation": true,
+      "holidays": ["Thanksgiving break (Orange County Public Schools)"],
+      "best": {
+        "walt-disney-world": "magic-kingdom-park",
+        "universal-orlando": "universal-islands-of-adventure",
+        "seaworld-orlando": "seaworld-orlando"
+      },
+      "parks": {
+        "magic-kingdom-park": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "low",
+          "basis": "forecast",
+          "seasons": ["dev-season-2"],
+          "opensAt": "2026-11-23T09:00:00-05:00",
+          "closesAt": "2026-11-23T23:00:00-05:00",
+          "early": {
+            "kind": "early_entry",
+            "opensAt": "2026-11-23T08:30:00-05:00",
+            "closesAt": "2026-11-23T09:00:00-05:00"
+          },
+          "headlinerWait": 45
+        },
+        "epcot": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "moderate",
+          "basis": "forecast",
+          "opensAt": "2026-11-23T09:00:00-05:00",
+          "closesAt": "2026-11-23T21:00:00-05:00",
+          "evening": {
+            "kind": "extended_evening",
+            "opensAt": "2026-11-23T21:00:00-05:00",
+            "closesAt": "2026-11-23T23:00:00-05:00"
+          },
+          "headlinerWait": 65
+        },
+        "disneys-hollywood-studios": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "moderate",
+          "basis": "forecast",
+          "seasons": ["dev-season-20", "dev-season-21"],
+          "opensAt": "2026-11-23T08:30:00-05:00",
+          "closesAt": "2026-11-23T19:00:00-05:00",
+          "evening": {
+            "kind": "ticketed_event",
+            "opensAt": "2026-11-23T19:30:00-05:00",
+            "closesAt": "2026-11-24T00:30:00-05:00"
+          },
+          "headlinerWait": 65
+        },
+        "disneys-animal-kingdom-theme-park": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "low",
+          "basis": "forecast",
+          "seasons": ["dev-season-25"],
+          "opensAt": "2026-11-23T08:00:00-05:00",
+          "closesAt": "2026-11-23T20:00:00-05:00",
+          "early": {
+            "kind": "early_entry",
+            "opensAt": "2026-11-23T07:30:00-05:00",
+            "closesAt": "2026-11-23T08:00:00-05:00"
+          },
+          "headlinerWait": 50
+        },
+        "disneys-typhoon-lagoon-water-park": {
+          "status": "CLOSED",
+          "hoursPublished": false,
+          "crowdLevel": "closed",
+          "basis": "none",
+          "seasons": ["dev-season-26"],
+          "closedBy": "dev-season-26"
+        },
+        "disneys-blizzard-beach-water-park": {
+          "status": "UNKNOWN",
+          "hoursPublished": false,
+          "crowdLevel": "unknown",
+          "basis": "none"
+        },
+        "universal-studios-florida": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "moderate",
+          "basis": "forecast",
+          "seasons": ["dev-season-28"],
+          "opensAt": "2026-11-23T09:00:00-05:00",
+          "closesAt": "2026-11-23T20:00:00-05:00",
+          "headlinerWait": 45
+        },
+        "universal-islands-of-adventure": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "low",
+          "basis": "forecast",
+          "seasons": ["dev-season-29"],
+          "opensAt": "2026-11-23T09:00:00-05:00",
+          "closesAt": "2026-11-23T20:00:00-05:00",
+          "early": {
+            "kind": "early_park_admission",
+            "opensAt": "2026-11-23T08:00:00-05:00",
+            "closesAt": "2026-11-23T09:00:00-05:00"
+          },
+          "headlinerWait": 45
+        },
+        "universal-epic-universe": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "low",
+          "basis": "forecast",
+          "seasons": ["dev-season-30"],
+          "opensAt": "2026-11-23T09:00:00-05:00",
+          "closesAt": "2026-11-23T21:00:00-05:00",
+          "early": {
+            "kind": "early_park_admission",
+            "opensAt": "2026-11-23T08:00:00-05:00",
+            "closesAt": "2026-11-23T09:00:00-05:00"
+          },
+          "headlinerWait": 60
+        },
+        "universal-volcano-bay": {
+          "status": "CLOSED",
+          "hoursPublished": false,
+          "crowdLevel": "closed",
+          "basis": "none",
+          "seasons": ["dev-season-34"],
+          "closedBy": "dev-season-34"
+        },
+        "seaworld-orlando": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "very_low",
+          "basis": "forecast",
+          "seasons": ["dev-season-40"],
+          "opensAt": "2026-11-23T09:00:00-05:00",
+          "closesAt": "2026-11-23T21:00:00-05:00",
+          "headlinerWait": 20
+        },
+        "aquatica-orlando": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "unknown",
+          "basis": "none",
+          "opensAt": "2026-11-23T10:30:00-05:00",
+          "closesAt": "2026-11-23T17:00:00-05:00"
+        },
+        "discovery-cove-orlando": {
+          "status": "UNKNOWN",
+          "hoursPublished": false,
+          "crowdLevel": "unknown",
+          "basis": "none"
+        },
+        "legoland-florida": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "very_low",
+          "basis": "forecast",
+          "opensAt": "2026-11-23T10:00:00-05:00",
+          "closesAt": "2026-11-23T18:00:00-05:00",
+          "headlinerWait": 15
+        },
+        "busch-gardens-tampa": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "very_low",
+          "basis": "forecast",
+          "opensAt": "2026-11-23T10:00:00-05:00",
+          "closesAt": "2026-11-23T21:00:00-05:00",
+          "headlinerWait": 15
+        },
+        "adventure-island-tampa": {
+          "status": "UNKNOWN",
+          "hoursPublished": false,
+          "crowdLevel": "unknown",
+          "basis": "none"
+        }
+      }
+    },
+    {
+      "date": "2026-11-24",
+      "isHoliday": false,
+      "isSchoolVacation": true,
+      "holidays": ["Thanksgiving break (Orange County Public Schools)"],
+      "best": {
+        "walt-disney-world": "magic-kingdom-park",
+        "universal-orlando": "universal-studios-florida",
+        "seaworld-orlando": "seaworld-orlando"
+      },
+      "parks": {
+        "magic-kingdom-park": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "low",
+          "basis": "forecast",
+          "seasons": ["dev-season-1", "dev-season-2"],
+          "opensAt": "2026-11-24T08:00:00-05:00",
+          "closesAt": "2026-11-24T18:00:00-05:00",
+          "early": {
+            "kind": "early_entry",
+            "opensAt": "2026-11-24T07:30:00-05:00",
+            "closesAt": "2026-11-24T08:00:00-05:00"
+          },
+          "evening": {
+            "kind": "ticketed_event",
+            "opensAt": "2026-11-24T19:00:00-05:00",
+            "closesAt": "2026-11-25T00:00:00-05:00",
+            "source": "season"
+          },
+          "headlinerWait": 40
+        },
+        "epcot": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "low",
+          "basis": "forecast",
+          "opensAt": "2026-11-24T09:00:00-05:00",
+          "closesAt": "2026-11-24T21:00:00-05:00",
+          "early": {
+            "kind": "early_entry",
+            "opensAt": "2026-11-24T08:30:00-05:00",
+            "closesAt": "2026-11-24T09:00:00-05:00"
+          },
+          "headlinerWait": 55
+        },
+        "disneys-hollywood-studios": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "low",
+          "basis": "forecast",
+          "seasons": ["dev-season-21"],
+          "opensAt": "2026-11-24T08:30:00-05:00",
+          "closesAt": "2026-11-24T21:00:00-05:00",
+          "early": {
+            "kind": "early_entry",
+            "opensAt": "2026-11-24T08:00:00-05:00",
+            "closesAt": "2026-11-24T08:30:00-05:00"
+          },
+          "headlinerWait": 55
+        },
+        "disneys-animal-kingdom-theme-park": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "low",
+          "basis": "forecast",
+          "seasons": ["dev-season-25"],
+          "opensAt": "2026-11-24T08:00:00-05:00",
+          "closesAt": "2026-11-24T20:00:00-05:00",
+          "early": {
+            "kind": "early_entry",
+            "opensAt": "2026-11-24T07:30:00-05:00",
+            "closesAt": "2026-11-24T08:00:00-05:00"
+          },
+          "headlinerWait": 45
+        },
+        "disneys-typhoon-lagoon-water-park": {
+          "status": "CLOSED",
+          "hoursPublished": false,
+          "crowdLevel": "closed",
+          "basis": "none",
+          "seasons": ["dev-season-26"],
+          "closedBy": "dev-season-26"
+        },
+        "disneys-blizzard-beach-water-park": {
+          "status": "UNKNOWN",
+          "hoursPublished": false,
+          "crowdLevel": "unknown",
+          "basis": "none"
+        },
+        "universal-studios-florida": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "low",
+          "basis": "forecast",
+          "seasons": ["dev-season-28"],
+          "opensAt": "2026-11-24T09:00:00-05:00",
+          "closesAt": "2026-11-24T20:00:00-05:00",
+          "headlinerWait": 35
+        },
+        "universal-islands-of-adventure": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "low",
+          "basis": "forecast",
+          "seasons": ["dev-season-29"],
+          "opensAt": "2026-11-24T09:00:00-05:00",
+          "closesAt": "2026-11-24T20:00:00-05:00",
+          "early": {
+            "kind": "early_park_admission",
+            "opensAt": "2026-11-24T08:00:00-05:00",
+            "closesAt": "2026-11-24T09:00:00-05:00"
+          },
+          "headlinerWait": 40
+        },
+        "universal-epic-universe": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "low",
+          "basis": "forecast",
+          "seasons": ["dev-season-30"],
+          "opensAt": "2026-11-24T09:00:00-05:00",
+          "closesAt": "2026-11-24T21:00:00-05:00",
+          "early": {
+            "kind": "early_park_admission",
+            "opensAt": "2026-11-24T08:00:00-05:00",
+            "closesAt": "2026-11-24T09:00:00-05:00"
+          },
+          "headlinerWait": 55
+        },
+        "universal-volcano-bay": {
+          "status": "CLOSED",
+          "hoursPublished": false,
+          "crowdLevel": "closed",
+          "basis": "none",
+          "seasons": ["dev-season-34"],
+          "closedBy": "dev-season-34"
+        },
+        "seaworld-orlando": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "very_low",
+          "basis": "forecast",
+          "seasons": ["dev-season-40"],
+          "opensAt": "2026-11-24T09:00:00-05:00",
+          "closesAt": "2026-11-24T21:00:00-05:00",
+          "headlinerWait": 15
+        },
+        "aquatica-orlando": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "unknown",
+          "basis": "none",
+          "opensAt": "2026-11-24T10:30:00-05:00",
+          "closesAt": "2026-11-24T17:00:00-05:00"
+        },
+        "discovery-cove-orlando": {
+          "status": "UNKNOWN",
+          "hoursPublished": false,
+          "crowdLevel": "unknown",
+          "basis": "none"
+        },
+        "legoland-florida": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "very_low",
+          "basis": "forecast",
+          "opensAt": "2026-11-24T10:00:00-05:00",
+          "closesAt": "2026-11-24T18:00:00-05:00",
+          "headlinerWait": 10
+        },
+        "busch-gardens-tampa": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "very_low",
+          "basis": "forecast",
+          "opensAt": "2026-11-24T10:00:00-05:00",
+          "closesAt": "2026-11-24T21:00:00-05:00",
+          "headlinerWait": 15
+        },
+        "adventure-island-tampa": {
+          "status": "UNKNOWN",
+          "hoursPublished": false,
+          "crowdLevel": "unknown",
+          "basis": "none"
+        }
+      }
+    },
+    {
+      "date": "2026-11-25",
+      "isHoliday": false,
+      "isSchoolVacation": true,
+      "holidays": ["Thanksgiving break (Orange County Public Schools)"],
+      "best": {
+        "walt-disney-world": "disneys-animal-kingdom-theme-park",
+        "universal-orlando": "universal-studios-florida",
+        "seaworld-orlando": "seaworld-orlando"
+      },
+      "parks": {
+        "magic-kingdom-park": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "low",
+          "basis": "forecast",
+          "seasons": ["dev-season-1", "dev-season-2"],
+          "opensAt": "2026-11-25T09:00:00-05:00",
+          "closesAt": "2026-11-25T18:00:00-05:00",
+          "early": {
+            "kind": "early_entry",
+            "opensAt": "2026-11-25T08:30:00-05:00",
+            "closesAt": "2026-11-25T09:00:00-05:00"
+          },
+          "evening": {
+            "kind": "ticketed_event",
+            "opensAt": "2026-11-25T19:00:00-05:00",
+            "closesAt": "2026-11-26T00:00:00-05:00",
+            "source": "season"
+          },
+          "headlinerWait": 40
+        },
+        "epcot": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "low",
+          "basis": "forecast",
+          "opensAt": "2026-11-25T09:00:00-05:00",
+          "closesAt": "2026-11-25T21:00:00-05:00",
+          "early": {
+            "kind": "early_entry",
+            "opensAt": "2026-11-25T08:30:00-05:00",
+            "closesAt": "2026-11-25T09:00:00-05:00"
+          },
+          "headlinerWait": 55
+        },
+        "disneys-hollywood-studios": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "moderate",
+          "basis": "forecast",
+          "seasons": ["dev-season-21"],
+          "opensAt": "2026-11-25T09:00:00-05:00",
+          "closesAt": "2026-11-25T21:00:00-05:00",
+          "early": {
+            "kind": "early_entry",
+            "opensAt": "2026-11-25T08:30:00-05:00",
+            "closesAt": "2026-11-25T09:00:00-05:00"
+          },
+          "headlinerWait": 60
+        },
+        "disneys-animal-kingdom-theme-park": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "low",
+          "basis": "forecast",
+          "seasons": ["dev-season-25"],
+          "opensAt": "2026-11-25T08:00:00-05:00",
+          "closesAt": "2026-11-25T18:00:00-05:00",
+          "evening": {
+            "kind": "extended_evening",
+            "opensAt": "2026-11-25T18:00:00-05:00",
+            "closesAt": "2026-11-25T20:00:00-05:00"
+          },
+          "headlinerWait": 40
+        },
+        "disneys-typhoon-lagoon-water-park": {
+          "status": "CLOSED",
+          "hoursPublished": false,
+          "crowdLevel": "closed",
+          "basis": "none",
+          "seasons": ["dev-season-26"],
+          "closedBy": "dev-season-26"
+        },
+        "disneys-blizzard-beach-water-park": {
+          "status": "UNKNOWN",
+          "hoursPublished": false,
+          "crowdLevel": "unknown",
+          "basis": "none"
+        },
+        "universal-studios-florida": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "low",
+          "basis": "forecast",
+          "seasons": ["dev-season-28"],
+          "opensAt": "2026-11-25T09:00:00-05:00",
+          "closesAt": "2026-11-25T20:00:00-05:00",
+          "headlinerWait": 35
+        },
+        "universal-islands-of-adventure": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "low",
+          "basis": "forecast",
+          "seasons": ["dev-season-29"],
+          "opensAt": "2026-11-25T09:00:00-05:00",
+          "closesAt": "2026-11-25T20:00:00-05:00",
+          "early": {
+            "kind": "early_park_admission",
+            "opensAt": "2026-11-25T08:00:00-05:00",
+            "closesAt": "2026-11-25T09:00:00-05:00"
+          },
+          "headlinerWait": 40
+        },
+        "universal-epic-universe": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "low",
+          "basis": "forecast",
+          "seasons": ["dev-season-30"],
+          "opensAt": "2026-11-25T09:00:00-05:00",
+          "closesAt": "2026-11-25T21:00:00-05:00",
+          "early": {
+            "kind": "early_park_admission",
+            "opensAt": "2026-11-25T08:00:00-05:00",
+            "closesAt": "2026-11-25T09:00:00-05:00"
+          },
+          "headlinerWait": 55
+        },
+        "universal-volcano-bay": {
+          "status": "CLOSED",
+          "hoursPublished": false,
+          "crowdLevel": "closed",
+          "basis": "none",
+          "seasons": ["dev-season-34"],
+          "closedBy": "dev-season-34"
+        },
+        "seaworld-orlando": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "very_low",
+          "basis": "forecast",
+          "seasons": ["dev-season-40"],
+          "opensAt": "2026-11-25T09:00:00-05:00",
+          "closesAt": "2026-11-25T21:00:00-05:00",
+          "headlinerWait": 15
+        },
+        "aquatica-orlando": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "unknown",
+          "basis": "none",
+          "opensAt": "2026-11-25T10:30:00-05:00",
+          "closesAt": "2026-11-25T17:00:00-05:00"
+        },
+        "discovery-cove-orlando": {
+          "status": "UNKNOWN",
+          "hoursPublished": false,
+          "crowdLevel": "unknown",
+          "basis": "none"
+        },
+        "legoland-florida": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "very_low",
+          "basis": "forecast",
+          "opensAt": "2026-11-25T10:00:00-05:00",
+          "closesAt": "2026-11-25T18:00:00-05:00",
+          "headlinerWait": 10
+        },
+        "busch-gardens-tampa": {
+          "status": "OPERATING",
+          "hoursPublished": true,
+          "crowdLevel": "very_low",
+          "basis": "forecast",
+          "opensAt": "2026-11-25T10:00:00-05:00",
+          "closesAt": "2026-11-25T21:00:00-05:00",
+          "headlinerWait": 15
+        },
+        "adventure-island-tampa": {
+          "status": "UNKNOWN",
+          "hoursPublished": false,
+          "crowdLevel": "unknown",
+          "basis": "none"
+        }
+      }
+    }
+  ],
+  "seasons": [
+    {
+      "id": "dev-season-1",
+      "kind": "christmas",
+      "name": "Mickey's Very Merry Christmas Party",
+      "startDate": "2026-11-08",
+      "endDate": "2026-12-22",
+      "dates": [
+        "2026-11-08",
+        "2026-11-09",
+        "2026-11-12",
+        "2026-11-13",
+        "2026-11-15",
+        "2026-11-17",
+        "2026-11-19",
+        "2026-11-20",
+        "2026-11-24",
+        "2026-11-25",
+        "2026-11-27",
+        "2026-11-29",
+        "2026-12-01",
+        "2026-12-03",
+        "2026-12-04",
+        "2026-12-06",
+        "2026-12-08",
+        "2026-12-10",
+        "2026-12-11",
+        "2026-12-13",
+        "2026-12-15",
+        "2026-12-17",
+        "2026-12-18",
+        "2026-12-20",
+        "2026-12-22"
+      ],
+      "status": "confirmed",
+      "separateTicket": true,
+      "priceFrom": "189.00",
+      "priceCurrency": "USD",
+      "opensAt": "19:00",
+      "closesAt": "24:00",
+      "url": "https://disneyworld.disney.go.com/events-tours/magic-kingdom/mickeys-very-merry-christmas-party/",
+      "sourceUrl": "https://disneyworld.disney.go.com/events-tours/magic-kingdom/mickeys-very-merry-christmas-party/",
+      "parkSlug": "magic-kingdom-park"
+    },
+    {
+      "id": "dev-season-2",
+      "kind": "christmas",
+      "name": "Holidays at Walt Disney World Resort",
+      "startDate": "2026-11-13",
+      "endDate": "2027-01-06",
+      "status": "confirmed",
+      "separateTicket": false,
+      "url": "https://disneyworld.disney.go.com/events-tours/holidays/",
+      "sourceUrl": "https://disneyworld.disney.go.com/events-tours/holidays/",
+      "parkSlug": "magic-kingdom-park"
+    },
+    {
+      "id": "dev-season-7",
+      "kind": "special_event",
+      "name": "EPCOT International Food & Wine Festival",
+      "startDate": "2026-08-27",
+      "endDate": "2026-11-21",
+      "status": "confirmed",
+      "separateTicket": false,
+      "url": "https://disneyworld.disney.go.com/events-tours/epcot/epcot-international-food-and-wine-festival/",
+      "sourceUrl": "https://disneyworld.disney.go.com/events-tours/epcot/epcot-international-food-and-wine-festival/",
+      "parkSlug": "epcot"
+    },
+    {
+      "id": "dev-season-20",
+      "kind": "christmas",
+      "name": "Disney Jollywood Nights",
+      "startDate": "2026-11-07",
+      "endDate": "2027-01-05",
+      "dates": [
+        "2026-11-07",
+        "2026-11-14",
+        "2026-11-16",
+        "2026-11-21",
+        "2026-11-23",
+        "2026-11-28",
+        "2026-12-05",
+        "2026-12-07",
+        "2026-12-12",
+        "2026-12-14",
+        "2026-12-19",
+        "2026-12-21",
+        "2026-12-23",
+        "2027-01-03",
+        "2027-01-05"
+      ],
+      "status": "confirmed",
+      "separateTicket": true,
+      "priceFrom": "169.00",
+      "priceCurrency": "USD",
+      "opensAt": "19:30",
+      "closesAt": "00:30",
+      "url": "https://disneyworld.disney.go.com/events-tours/hollywood-studios/jollywood-nights/",
+      "sourceUrl": "https://disneyworld.disney.go.com/events-tours/hollywood-studios/jollywood-nights/",
+      "parkSlug": "disneys-hollywood-studios"
+    },
+    {
+      "id": "dev-season-21",
+      "kind": "christmas",
+      "name": "Holidays at Walt Disney World Resort",
+      "startDate": "2026-11-13",
+      "endDate": "2027-01-06",
+      "status": "confirmed",
+      "separateTicket": false,
+      "url": "https://disneyworld.disney.go.com/events-tours/holidays/",
+      "sourceUrl": "https://disneyworld.disney.go.com/events-tours/holidays/",
+      "parkSlug": "disneys-hollywood-studios"
+    },
+    {
+      "id": "dev-season-25",
+      "kind": "christmas",
+      "name": "Holidays at Walt Disney World Resort",
+      "startDate": "2026-11-13",
+      "endDate": "2027-01-06",
+      "status": "confirmed",
+      "separateTicket": false,
+      "url": "https://disneyworld.disney.go.com/events-tours/holidays/",
+      "sourceUrl": "https://disneyworld.disney.go.com/events-tours/holidays/",
+      "parkSlug": "disneys-animal-kingdom-theme-park"
+    },
+    {
+      "id": "dev-season-26",
+      "kind": "closure",
+      "name": "Typhoon Lagoon seasonal refurbishment",
+      "startDate": "2026-09-09",
+      "endDate": "2027-01-26",
+      "status": "confirmed",
+      "separateTicket": false,
+      "url": "https://disneyworld.disney.go.com/destinations/typhoon-lagoon/",
+      "sourceUrl": "https://disneyworld.disney.go.com/destinations/typhoon-lagoon/",
+      "parkSlug": "disneys-typhoon-lagoon-water-park"
+    },
+    {
+      "id": "dev-season-28",
+      "kind": "christmas",
+      "name": "Holidays at Universal Orlando Resort",
+      "startDate": "2026-11-14",
+      "endDate": "2027-01-03",
+      "status": "confirmed",
+      "separateTicket": false,
+      "url": "https://www.universalorlando.com/web/en/us/things-to-do/events/holidays",
+      "sourceUrl": "https://media.universalparksusa.com/press-releases/universal-orlando-resort-kicks-off-its-destination-wide-holidaycelebration-111126/",
+      "parkSlug": "universal-studios-florida"
+    },
+    {
+      "id": "dev-season-29",
+      "kind": "christmas",
+      "name": "Holidays at Universal Orlando Resort",
+      "startDate": "2026-11-14",
+      "endDate": "2027-01-03",
+      "status": "confirmed",
+      "separateTicket": false,
+      "url": "https://www.universalorlando.com/web/en/us/things-to-do/events/holidays",
+      "sourceUrl": "https://media.universalparksusa.com/press-releases/universal-orlando-resort-kicks-off-its-destination-wide-holidaycelebration-111126/",
+      "parkSlug": "universal-islands-of-adventure"
+    },
+    {
+      "id": "dev-season-30",
+      "kind": "christmas",
+      "name": "Holidays at Universal Orlando Resort",
+      "startDate": "2026-11-14",
+      "endDate": "2027-01-03",
+      "status": "confirmed",
+      "separateTicket": false,
+      "url": "https://www.universalorlando.com/web/en/us/things-to-do/events/holidays",
+      "sourceUrl": "https://media.universalparksusa.com/press-releases/universal-orlando-resort-kicks-off-its-destination-wide-holidaycelebration-111126/",
+      "parkSlug": "universal-epic-universe"
+    },
+    {
+      "id": "dev-season-31",
+      "kind": "special_event",
+      "name": "Universal Nights",
+      "startDate": "2026-10-03",
+      "endDate": "2026-11-20",
+      "dates": ["2026-10-03", "2026-10-17", "2026-10-24", "2026-11-06", "2026-11-20"],
+      "status": "confirmed",
+      "separateTicket": true,
+      "priceFrom": "179.99",
+      "priceCurrency": "USD",
+      "opensAt": "21:00",
+      "closesAt": "24:00",
+      "url": "https://media.universalparksusa.com/press-releases/universal-orlando-resort-tickets-on-sale-afterhours-epic-universe-this-october-081326/",
+      "sourceUrl": "https://www.parkjourney.com/industry-news/universal-orlando-resort-adds-three-new-dates-for-universal-nights-the-exclusive-after-hours-event-debuting-this-october-at-universal-epic-universe",
+      "parkSlug": "universal-epic-universe"
+    },
+    {
+      "id": "dev-season-34",
+      "kind": "closure",
+      "name": "Volcano Bay extended refurbishment",
+      "startDate": "2026-10-26",
+      "endDate": "2027-03-23",
+      "status": "announced",
+      "separateTicket": false,
+      "url": "https://www.universalorlando.com/web/en/us/theme-parks/volcano-bay",
+      "sourceUrl": "https://attractionsmagazine.com/universal-volcano-bay-2026-2027-close-taputapu/",
+      "parkSlug": "universal-volcano-bay"
+    },
+    {
+      "id": "dev-season-40",
+      "kind": "christmas",
+      "name": "Christmas Celebration",
+      "startDate": "2026-11-06",
+      "endDate": "2027-01-04",
+      "dates": [
+        "2026-11-06",
+        "2026-11-07",
+        "2026-11-08",
+        "2026-11-13",
+        "2026-11-14",
+        "2026-11-15",
+        "2026-11-20",
+        "2026-11-21",
+        "2026-11-22",
+        "2026-11-23",
+        "2026-11-24",
+        "2026-11-25",
+        "2026-11-26",
+        "2026-11-27",
+        "2026-11-28",
+        "2026-11-29",
+        "2026-12-04",
+        "2026-12-05",
+        "2026-12-06",
+        "2026-12-11",
+        "2026-12-12",
+        "2026-12-13",
+        "2026-12-14",
+        "2026-12-15",
+        "2026-12-16",
+        "2026-12-17",
+        "2026-12-18",
+        "2026-12-19",
+        "2026-12-20",
+        "2026-12-21",
+        "2026-12-22",
+        "2026-12-23",
+        "2026-12-24",
+        "2026-12-25",
+        "2026-12-26",
+        "2026-12-27",
+        "2026-12-28",
+        "2026-12-29",
+        "2026-12-30",
+        "2026-12-31",
+        "2027-01-01",
+        "2027-01-02",
+        "2027-01-03",
+        "2027-01-04"
+      ],
+      "status": "confirmed",
+      "separateTicket": false,
+      "url": "https://seaworld.com/orlando/events/christmas-celebration/",
+      "sourceUrl": "https://seaworld.com/orlando/park-info/theme-park-hours/",
+      "parkSlug": "seaworld-orlando"
+    }
+  ]
+}

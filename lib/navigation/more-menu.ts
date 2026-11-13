@@ -9,6 +9,8 @@ import { getMediaImageBySrc, getParkBackground, getRideImage } from '@/lib/media
 import { focusToObjectPosition, variantFor, versioned } from '@/lib/media/focus';
 import type { MediaImage } from '@/lib/media/types';
 import { getGlossaryMenu, type GlossaryMenu } from '@/lib/navigation/glossary-menu';
+import { orlandoPath } from '@/lib/orlando/paths';
+import { tripRegion } from '@/lib/navigation/trip-regions';
 
 /**
  * Everything the header's "more" band draws, resolved on the server: three hubs side by side (the
@@ -45,6 +47,8 @@ export interface MoreMenu {
   bestTime: MoreMenuHub & { chapters: MoreMenuChapter[] };
   /** The forecasting model's page, drawn as a card under the best-time chapters. */
   fancast: MoreMenuHub;
+  /** The Orlando hub, drawn as the band's one wide tile. */
+  orlando: MoreMenuHub;
 }
 
 /**
@@ -57,10 +61,18 @@ const PHOTOS = {
   howto: () => getParkBackground('phantasialand'),
   bestTime: () => getParkBackground('efteling'),
   fancast: () => getMediaImageBySrc('/media/europa-park/voltron-nevera-powered-by-rimac.jpg'),
+  // The hub's photo is the region's, so this tile and the planner band's show one picture.
+  orlando: () => {
+    const src = tripRegion('orlando')?.photo;
+    return src ? getMediaImageBySrc(src) : null;
+  },
 } satisfies Record<string, () => MediaImage | null>;
 
-/** The pre-cut 16:9 crop where there is one — it was cut around the focal point already. */
-function photoOf(image: MediaImage | null): MoreMenuPhoto | null {
+/**
+ * A catalog photo as a header band draws it: the pre-cut 16:9 crop where there is one (it was cut
+ * around the focal point already), else the original and where its subject is.
+ */
+export function menuPhoto(image: MediaImage | null): MoreMenuPhoto | null {
   if (!image) return null;
   const path = variantFor(image, '16x9');
   return {
@@ -88,18 +100,19 @@ function staticPart(locale: Locale): StaticPart {
     const howtoPath = `/${HOWTO_SEGMENTS[locale]}`;
     const bestTimePath = `/${BEST_TIME_SEGMENTS[locale]}`;
     part = {
-      glossary: { href: `/${GLOSSARY_SEGMENTS[locale]}`, photo: photoOf(PHOTOS.glossary()) },
+      glossary: { href: `/${GLOSSARY_SEGMENTS[locale]}`, photo: menuPhoto(PHOTOS.glossary()) },
       howto: {
         href: howtoPath,
-        photo: photoOf(PHOTOS.howto()),
+        photo: menuPhoto(PHOTOS.howto()),
         chapters: chaptersOf(howtoPath, HOWTO_CHAPTERS[locale]),
       },
       bestTime: {
         href: bestTimePath,
-        photo: photoOf(PHOTOS.bestTime()),
+        photo: menuPhoto(PHOTOS.bestTime()),
         chapters: chaptersOf(bestTimePath, BEST_TIME_CHAPTERS[locale]),
       },
-      fancast: { href: '/fancast', photo: photoOf(PHOTOS.fancast()) },
+      fancast: { href: '/fancast', photo: menuPhoto(PHOTOS.fancast()) },
+      orlando: { href: orlandoPath(), photo: menuPhoto(PHOTOS.orlando()) },
     };
     STATIC_PART.set(locale, part);
   }

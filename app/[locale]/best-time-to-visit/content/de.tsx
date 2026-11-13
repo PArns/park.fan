@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from '@/i18n/navigation';
+import { orlandoBestTimePath } from '@/lib/orlando/paths';
 import { HOWTO_SEGMENTS } from '@/lib/howto/segments';
 import { PopularParksGrid } from '@/components/home/featured-parks-slot';
 import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
@@ -17,6 +18,7 @@ import {
   Sun,
 } from 'lucide-react';
 import {
+  A,
   Lead,
   P,
   PG,
@@ -295,6 +297,14 @@ export function ContentDE() {
         </SplitFigure>
         <P>Ein paar beliebte Parks zum direkten Ausprobieren:</P>
         <PopularParksGrid />
+        <P>
+          Du fährst nach Orlando?{' '}
+          <A href={orlandoBestTimePath('de')}>Beste Reisezeit für Orlando</A> zeigt die Reisen mit
+          den kürzesten Warteschlangen übers Jahr für Disney und Universal zusammen, dazu jeden
+          Monat einzeln. Für ein Resort allein:{' '}
+          <A href={orlandoBestTimePath('de', 'disney-world')}>Walt Disney World</A>,{' '}
+          <A href={orlandoBestTimePath('de', 'universal-orlando')}>Universal Orlando</A>.
+        </P>
       </SectionShell>
 
       <SectionShell

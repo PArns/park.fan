@@ -4,10 +4,8 @@ import { useCallback, useEffect, useId, useMemo, useRef, useState } from 'react'
 import { cn } from '@/lib/utils';
 import { ACT_MS, CLASS_ACTS, type ParkyCue } from '@/lib/assistant/parky/acts';
 import {
-  HUB,
   RIDE_MOTION,
   RIDES,
-  RIM,
   VIEW,
   rideKeyframe,
   type ParkyRide,
@@ -22,12 +20,14 @@ import {
   ParkyLookHands,
   ParkyLookHat,
   ParkyLookWear,
+  ParkyShades,
 } from './looks';
 import {
-  A_FRAME,
+  BUBBLE,
   CABINS,
   CABIN_COLOURS,
   CHECKLIST_ROWS,
+  CHEEKS,
   CONFETTI,
   EYES,
   FERRULE,
@@ -38,12 +38,15 @@ import {
   HAPPY_EYES,
   HEART,
   LENS,
+  MOON,
   NIGHT_STARS,
-  SPOKES,
+  SHUT_EYES,
+  SMILE,
   STAR,
+  ZED,
   blue,
+  blush,
   capBlue,
-  frame,
   green,
   heartRed,
   ink,
@@ -51,6 +54,8 @@ import {
 } from './drawing';
 import { DREAM_MS, ParkyDreamCloud } from './dreams';
 import { ParkyMoment, ParkyRideTrack, ParkySpotlight, ParkyVehicle } from './props';
+import { ParkyWheel } from './wheel';
+import { ParkyEyeWhite, ParkyPupil } from './eyes';
 import { useGaze } from './use-gaze';
 import { useIdleAct } from './use-idle-act';
 import { LENS_OUT_MS, PUZZLED_MS, useSearchAlong } from './use-search-along';
@@ -254,7 +259,7 @@ export function ParkyLogo({
       {act === 'lights' && (
         // Night over the top left: a crescent moon and two stars that twinkle.
         <g className="parky-night">
-          <path d="M6 -2a4 4 0 1 0 4.2 5.3 3.2 3.2 0 1 1-4.2-5.3Z" fill="oklch(0.9 0.1 95)" />
+          <path d={MOON} fill="oklch(0.9 0.1 95)" />
           <g fill="oklch(0.92 0.08 95)">
             {NIGHT_STARS.map((star) => (
               <g key={star.x} transform={`translate(${star.x} ${star.y})`}>
@@ -310,9 +315,9 @@ export function ParkyLogo({
           strokeLinecap="round"
           strokeLinejoin="round"
         >
-          <path d="M6.5 6.5h3.4l-3.4 3.8h3.4" />
-          <path d="M6.5 6.5h3.4l-3.4 3.8h3.4" />
-          <path d="M6.5 6.5h3.4l-3.4 3.8h3.4" />
+          <path d={ZED} />
+          <path d={ZED} />
+          <path d={ZED} />
         </g>
       )}
       {(act === 'whistle' || act === 'dance' || act === 'love') && (
@@ -357,7 +362,7 @@ export function ParkyLogo({
         {/* The hat: a Ferris wheel standing on Parky's head. */}
         <g ref={hat} className={cn('parky-hat', outfit.hat && 'parky-hat--dressed')}>
           {outfit.hat && <ParkyLookHat hat={outfit.hat} />}
-          <g
+          <ParkyWheel
             className={cn(
               'parky-wheel',
               (state === 'talking' ||
@@ -371,20 +376,8 @@ export function ParkyLogo({
                 searching) &&
                 'parky-wheel--turning'
             )}
-          >
-            {/* A light edge under the rim keeps the wheel legible on any page. */}
-            <circle
-              cx={HUB.x}
-              cy={HUB.y}
-              r={RIM}
-              fill="none"
-              stroke="white"
-              strokeOpacity=".8"
-              strokeWidth="2.6"
-            />
-            <circle cx={HUB.x} cy={HUB.y} r={RIM} fill="none" stroke={blue} strokeWidth="1.3" />
-            <path d={SPOKES} stroke={blue} strokeOpacity=".75" strokeWidth=".55" />
-            {act === 'lights' &&
+            glow={
+              act === 'lights' &&
               // Lit up for the night: a glow round every cabin, twinkling one after another.
               CABINS.map((cabin, i) => (
                 <circle
@@ -396,34 +389,18 @@ export function ParkyLogo({
                   fill="oklch(0.92 0.16 95)"
                   style={{ animationDelay: `${(-i * 0.15).toFixed(2)}s` }}
                 />
-              ))}
-            {CABINS.map((cabin, i) => (
-              <circle
-                key={`${cabin.x} ${cabin.y}`}
-                cx={cabin.x}
-                cy={cabin.y}
-                r="1.45"
-                fill={CABIN_COLOURS[i % CABIN_COLOURS.length]}
-                stroke="white"
-                strokeWidth=".5"
-              />
-            ))}
-          </g>
-          <path d={A_FRAME} stroke={frame} strokeWidth="1.5" strokeLinecap="round" />
-          <circle cx={HUB.x} cy={HUB.y} r="1.3" fill="white" stroke={frame} strokeWidth=".8" />
+              ))
+            }
+          />
         </g>
-        {/* The body: a round bubble with its tail at the lower left. */}
-        <path
-          d="M24 7c11 0 20 8.1 20 18.2S35 43.4 24 43.4c-2.5 0-4.9-.4-7.1-1.1L7.5 46l2.3-8C6.1 34.7 4 30.2 4 25.2 4 15.1 13 7 24 7Z"
-          fill={`url(#${ground})`}
-        />
+        <path d={BUBBLE} fill={`url(#${ground})`} />
         <ParkyLookWear outfit={outfit} ground={ground} />
         {eyesOpen && (
           // One group per eye, so a wink closes one and the gum makes them cross.
           <g className="parky-eyes">
             {EYES.map((x) => (
               <g key={x} className="parky-eye">
-                <ellipse cx={x} cy="22.5" rx="5.4" ry="6.2" fill="white" />
+                <ParkyEyeWhite x={x} />
                 {/* Properties, not the attribute, so the pupils ease to a new place and an act
                     that moves them itself can draw the gaze back to the middle. */}
                 <g
@@ -437,8 +414,7 @@ export function ParkyLogo({
                   }
                 >
                   <g className="parky-pupils">
-                    <circle cx={x} cy="23" r="3" fill={ink} />
-                    <circle cx={x + 1.1} cy="21.7" r="1.05" fill="white" />
+                    <ParkyPupil x={x} />
                   </g>
                 </g>
               </g>
@@ -449,7 +425,7 @@ export function ParkyLogo({
           // In a nap the shut eyes cross-fade with the open ones; asleep they are all there is.
           <path
             className="parky-shut"
-            d="M12.4 23.2q4.6 3.4 9.2 0M26.4 23.2q4.6 3.4 9.2 0"
+            d={SHUT_EYES}
             fill="none"
             stroke={ink}
             strokeWidth="1.8"
@@ -488,18 +464,7 @@ export function ParkyLogo({
         )}
         {act === 'shades' && (
           // Sunglasses, slid down from the hat onto the eyes.
-          <g className="parky-shades">
-            <path d="M10 17h28" stroke={ink} strokeWidth="1.6" strokeLinecap="round" />
-            <path d="M10.6 17H23v6.2c0 3.2-2.6 5.4-6.2 5.4s-6.2-2.2-6.2-5.4Z" fill={ink} />
-            <path d="M25 17h12.4v6.2c0 3.2-2.6 5.4-6.2 5.4S25 26.4 25 23.2Z" fill={ink} />
-            <path
-              d="M13 19.4h3.2M27.4 19.4h3.2"
-              stroke="white"
-              strokeOpacity=".55"
-              strokeWidth=".9"
-              strokeLinecap="round"
-            />
-          </g>
+          <ParkyShades className="parky-shades" />
         )}
         {act === 'nightcap' && (
           // A nightcap in place of the wheel: a white brim round the top of the head, the cap
@@ -530,8 +495,9 @@ export function ParkyLogo({
             <circle className="parky-bobble" cx="2.4" cy="5.4" r="2.6" fill="white" />
           </g>
         )}
-        <ellipse cx="10.8" cy="31" rx="2.4" ry="1.4" fill="oklch(0.78 0.12 15)" opacity=".7" />
-        <ellipse cx="37.2" cy="31" rx="2.4" ry="1.4" fill="oklch(0.78 0.12 15)" opacity=".7" />
+        {CHEEKS.map((x) => (
+          <ellipse key={x} cx={x} cy="31" rx="2.4" ry="1.4" fill={blush} opacity=".7" />
+        ))}
         {state === 'squashed' ? (
           // Teeth gritted: a wavy line across a wide mouth.
           <path
@@ -564,7 +530,7 @@ export function ParkyLogo({
         ) : (
           <path
             className="parky-smile"
-            d="M20.5 32.5q3.5 3.2 7 0"
+            d={SMILE}
             fill="none"
             stroke={ink}
             strokeWidth="1.8"

@@ -78,9 +78,20 @@ export type SearchSurface =
   | 'glossary'
   | 'post_end';
 
-/** What kind of result was opened from a search. */
+/**
+ * What kind of result was opened from a search. `trip_planner` is the row a query naming a trip
+ * region gets first, into the region's planner.
+ */
 export type SearchResultKind =
-  'park' | 'attraction' | 'show' | 'restaurant' | 'location' | 'glossary' | 'guide' | 'news';
+  | 'park'
+  | 'attraction'
+  | 'show'
+  | 'restaurant'
+  | 'location'
+  | 'glossary'
+  | 'guide'
+  | 'news'
+  | 'trip_planner';
 
 /** A 1-based result position, bucketed so a long list does not spread over fifty values. */
 export type SearchPosition = '1' | '2' | '3' | '4-5' | '6-10' | '11+';
@@ -89,10 +100,10 @@ export type SearchPosition = '1' | '2' | '3' | '4-5' | '6-10' | '11+';
 export type SearchQueryLength = '1-4' | '5-8' | '9-15' | '16+';
 
 /**
- * A menu of the header: the guides, news, parks, „Mehr" and favourites bands of the bar, and the
- * phone's sheet behind the burger.
+ * A menu of the header: the guides, news, parks, „Mehr", planner and favourites bands of the bar,
+ * and the phone's sheet behind the burger.
  */
-export type NavMenuId = 'guides' | 'news' | 'parks' | 'more' | 'favorites' | 'sheet';
+export type NavMenuId = 'guides' | 'news' | 'parks' | 'more' | 'planner' | 'favorites' | 'sheet';
 
 /** What was picked from a search surface's list before anything was typed. */
 export type SearchBrowseItem =
@@ -326,7 +337,110 @@ export interface SiteEventMap {
   faq_opened: { position: number };
   /** The „Mehr" flyout of a park's title card opened, with the park's outbound links. */
   park_links_opened: NoProps;
+  /** The trip planner started: the hub's hero, its own start button, or a link with a plan. */
+  trip_planner_started: TripEvent<{ source: 'hero' | 'button' | 'link' }>;
+  /** "Do you already have tickets?" answered; `skipped` is "Next: dates" without an answer. */
+  trip_tickets_answered: TripEvent<{ answer: 'not_yet' | 'yes' | 'skipped' }>;
+  /** A ticket chosen in the step, by its entry in the list, from the list or the Combo Ticket. */
+  trip_ticket_added: TripEvent<{ entry: string; resort: string; via: 'picker' | 'combo' }>;
+  /** A ticket taken out of the step. */
+  trip_ticket_removed: TripEvent<{ entry: string; resort: string }>;
+  /** A ticket's first day picked or left open. */
+  trip_ticket_start: TripEvent<{ entry: string; resort: string; start: 'set' | 'open' }>;
+  /**
+   * A plan or a search for dates asked for, once the controls are still: the mode, the trip's
+   * length as a bucket, how many parks (0: the headliners), owned tickets or none, how many of the
+   * region's resorts plan first gives a hopper (none, some, all), resort blocks and the rest rule.
+   * With the region that is eight, the limit.
+   */
+  trip_plan_requested: TripEvent<{
+    mode: 'dates' | 'when';
+    days: TripDaysBucket;
+    parks: number;
+    tickets: 'none' | 'owned';
+    hopper: 'none' | 'some' | 'all';
+    blocks: 'default' | 'on' | 'off';
+    rest: 'auto' | 'none' | 'max';
+  }>;
+  /**
+   * The answer to it on screen: `ok`, `relaxed` with the first rule it loosened, or `error` with
+   * the status (0: no answer); the parks it could not place, or the windows a search found.
+   */
+  trip_plan_shown: TripEvent<{
+    mode: 'dates' | 'when';
+    outcome: 'ok' | 'relaxed' | 'error';
+    relaxed?: 'blocks' | 'streak' | 'ticket_window';
+    status?: number;
+    unplaced?: number;
+    windows?: number;
+  }>;
+  /** "Plan these dates" on a window the search found, by its rank. */
+  trip_window_planned: TripEvent<{ rank: number }>;
+  /** "Ticket details" opened: in a sheet on a phone, in place at a desk. */
+  trip_ticket_details_opened: TripEvent<{ surface: 'sheet' | 'inline' }>;
+  /** "Show the plan with Park Hopper" for one resort, and its way back. */
+  trip_hopper_toggled: TripEvent<{ resort: string; on: boolean }>;
+  /** "Use these as your tickets": the suggestions became owned tickets. */
+  trip_tickets_adopted: TripEvent<{ count: number }>;
+  /** "Plan with these": the 14-day tickets sold outside the US for a long trip. */
+  trip_long_stay_used: TripEvent<{ count: number }>;
+  /** The result's view switched. */
+  trip_view_changed: TripEvent<{ view: 'agenda' | 'week' | 'month' }>;
+  /** A day's sheet opened, from the answer's list or a view. */
+  trip_day_opened: TripEvent<{
+    kind: 'arrival' | 'park' | 'hop' | 'rest' | 'departure';
+    view: 'list' | 'agenda' | 'week' | 'month';
+  }>;
+  /** A day pinned or released. */
+  trip_day_pinned: TripEvent<{ pinned: boolean }>;
+  /** Two days swapped. */
+  trip_day_swapped: TripEvent;
+  /** "Plan this day": a day handed to the day planner. */
+  trip_day_sent: TripEvent;
+  /** "Add all days to my planner", with how many park days went in. */
+  trip_days_saved: TripEvent<{ days: number }>;
+  /** The trip as an `.ics` file, with its park days. */
+  trip_ics_exported: TripEvent<{ days: number }>;
+  /** "Copy link" of the plan. */
+  trip_link_copied: TripEvent;
+  /** An evening venue's own page opened from a day's evening. */
+  trip_evening_link_clicked: TripEvent;
+  /** A day outside its ticket's window, and the way out the visitor chose. */
+  trip_outside_ticket_action: TripEvent<{ action: 'leave_out' | 'change_ticket' }>;
+  /**
+   * A purchase link of the trip planner's ticket catalog followed, middle click included: which
+   * product, at which seller and host, what kind of link, where in the shown list (1-based),
+   * whether it was ordered first for the visitor's locale or market, on which surface and with
+   * which tickets the plan was made. No entity: no single park is meant. Eight properties, the
+   * limit, so no `region`: the product's slug belongs to one region's catalog.
+   */
+  ticket_link_clicked: {
+    product: string;
+    seller: string;
+    host: string;
+    kind: TicketLinkKind;
+    position: number;
+    locale_match: boolean;
+    surface: TicketLinkSurface;
+    ticket_mode: TicketMode;
+  };
 }
+
+/**
+ * A trip planner event's properties: the region it plans, by slug (`orlando`), and its own. Every
+ * `trip_*` event carries the region, so one statistic can tell the regions apart.
+ */
+type TripEvent<Props extends object = object> = { region: string } & Props;
+
+/** A trip's length as a bucket, arrival and departure included. */
+export type TripDaysBucket = '1-4' | '5-7' | '8-10' | '11-14' | '15-21';
+
+/** What a ticket purchase link is: the operator's own shop, an affiliate one, or another seller. */
+export type TicketLinkKind = 'official' | 'sponsored' | 'plain';
+/** Where a ticket purchase link was: a suggestion's details, the 14-day alternatives, an owned ticket. */
+export type TicketLinkSurface = 'suggestion' | 'long_stay' | 'owned';
+/** Which tickets a trip plan was made with: none owned, all owned, or both. */
+export type TicketMode = 'plan_first' | 'owned' | 'mixed';
 
 /** The name of an event the API accepts. */
 export type SiteEventName = keyof SiteEventMap;
@@ -771,6 +885,16 @@ type TrackArguments<Name extends string> = Name extends SiteEventName
 export type SiteEventListener = (name: string, props: SiteEventProps | undefined) => void;
 
 const siteEventListeners = new Set<SiteEventListener>();
+
+/**
+ * A browser check's window onto the events, which are never sent off the production hosts: a page
+ * that starts with `window.__parkfanEventLog` as an array (only a test's init script makes one)
+ * gets every reported event appended to it. Nothing else reads it, and nothing leaves the page.
+ */
+if (typeof window !== 'undefined') {
+  const log = (window as Window & { __parkfanEventLog?: unknown }).__parkfanEventLog;
+  if (Array.isArray(log)) siteEventListeners.add((name, props) => log.push({ name, props }));
+}
 
 /**
  * Hears every event the page reports, counted or not (a visitor who opted out, a bot), for what

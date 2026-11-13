@@ -127,6 +127,7 @@ through the site's own paths:
 | `planner_mark_done`    | `setEntryDone` per id                                                                | Tagesplaner |
 | `planner_clear_day`    | `clearDay`, undoable through `planner_undo`                                          | Tagesplaner |
 | `planner_reserve_days` | `reserveDays` for the park, opens the first                                          | Tagesplaner |
+| `planner_reserve_trip` | `reserveDays` for a trip across parks in one write, opens the first                  | Tagesplaner |
 | `planner_undo`         | puts the day back as before Parky's last change, unless the visitor changed it since | Tagesplaner |
 | `planner_share`        | opens the panel and the bell's popover with the share link; never shares             | Tagesplaner |
 | `request_location`     | shows the share card under the answer                                                |             |
@@ -191,6 +192,15 @@ counter) go along as `ridden`: the ids from this browser's store, UUIDs only, th
 `RIDDEN_SNAPSHOT_MAX` (300, what the API takes), left out when none is marked
 (`assistantRiddenSnapshot`). Parky's ride lists mark them, so "which headliners haven't I done
 yet?" has an answer.
+
+A trip Parky planned for Orlando (the API's `plan_vacation`) goes into the planner as
+`planner_reserve_trip`: each day with its park, a hop day's two parks on one date, at most 16 (the
+visits a plan places), each park checked like every other planner action and each park and day
+once. Both reserve actions share one write (`reserve` in `useAssistantActions`), so every day it
+files is undoable on its own and a day that already holds a plan stays as it is. The Orlando hub is
+an ordinary `navigate`: `/orlando`, or `/orlando?from=…&to=…&parks=…#planner` with the plan in the
+`/plan` route's own parameter names, which `safeAssistantHref` and `localizedPath` keep; "orlando"
+is the same word in every locale.
 
 `plannerUi.requestOptimize` is held until the day's `PlannerOptimizeActions` is on screen with its
 data, which then presses its own button (`RunOnce`), fit assistant and undo included. On a phone
@@ -681,6 +691,7 @@ and the `?parky=` look switch.
 `pnpm test:assistant-context` covers what the browser tells Parky and lets him change: the plan
 snapshot (from today on, nearest first, the caps, the printed starts, nothing when empty), the
 reorder, Parky's undo (and that it leaves a day the visitor changed since), and the checks of every planner edit (ids that are no ids dropped, an
-optional field that fails left out, nothing riding along), the reminders' snapshot, the slugs they
+optional field that fails left out, nothing riding along) and of a reserved trip (each park
+checked, each park and day once, at most 16, filed in one write), the reminders' snapshot, the slugs they
 resolve to, their action checks and what a failed removal shows, the favourites' snapshot and checks, and Parky's break:
 its action check, the refusal code and length, and the end kept across a reload.

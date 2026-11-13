@@ -50,6 +50,7 @@ What Parky shows follows what the page shows, never against it:
 | queues over an hour                | grumpy, arms crossed, a small cloud of steam  |
 | the park is very full              | squashed                                      |
 | the park is closed today           | dozes, or reads up for the next visit         |
+| the park is on a break for weeks   | asleep: sled, leaves or tulips by the season  |
 | a ride goes down while you look    | startled, and points at the ride's bell       |
 | a queue drops sharply              | a hop and a whispered tip                     |
 | a show starts soon                 | applause under a spotlight                    |
@@ -58,6 +59,27 @@ What Parky shows follows what the page shows, never against it:
 | late evening, your time            | sleepy sooner                                 |
 | rain, snow, cold, heat at the park | the weather look and its acts                 |
 | the season                         | Halloween pumpkin, Christmas tree, snowman, … |
+
+## Pictures of him
+
+Outside the chat he appears in two still pictures, each built from the live drawing's pieces rather
+than drawn again, so he looks the same everywhere: the break panel's sleeping Parky
+(`break-scene.tsx`, [park break panel](park-break-panel.md#the-picture)) and Parky on holiday in
+Orlando (`components/assistant/parky/orlando-scene.tsx`), the trip-planner card in the header's
+planner band ([header navigation](header-navigation.md#the-planner-panel)).
+
+- **On holiday** he stands at a lake in Florida with his park map held low (`ParkyMap still`), a
+  suitcase beside him, a flamingo in the shallows, a coaster on the far shore and a launch from the
+  coast. By day (the light theme) he wears his sunglasses (`ParkyShades`, the `shades` act's) and
+  grins; in the evening (the dark theme) the glasses sit on his head and his eyes follow the
+  fireworks, where `LOOK_GAZE.fireworks` points the live Parky's. The bursts are the fireworks
+  act's `BURST`, three to four times the size.
+- **Motion plays once**: the launch's trail and the bursts each time the band shows
+  (`.parky-orlando-*` in `app/parky.css`), never in a loop, since the band is glass; under reduced
+  motion the picture stands finished. Both pictures are `aria-hidden` and take their colours from
+  Tailwind classes with `dark:` twins.
+- **A new region gets its own picture** of him on holiday there, the same way, as its entry's
+  `scene` in `TRIP_REGIONS`.
 
 ## His voice
 

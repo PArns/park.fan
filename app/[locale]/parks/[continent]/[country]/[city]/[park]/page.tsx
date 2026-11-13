@@ -42,8 +42,10 @@ import { ParkBlogPostsSection } from '@/components/parks/blog-posts-sections';
 import { ParkFAQSection } from '@/components/faq/park-faq-section';
 import type { Locale } from '@/i18n/config';
 import { ParkPageShell } from '@/components/parks/park-page-shell';
+import { TripPlannerBand } from '@/components/orlando/trip-planner-band';
 import { ParkTitleHeader } from '@/components/parks/park-title-header';
 import { ParkTodayPanel } from '@/components/parks/park-today-panel';
+import { ParkBreakPanel } from '@/components/parks/park-break-panel';
 import { ParkKidsLink } from '@/components/parks/park-kids-link';
 import { initialRiderHeightFromParam, kidsPageData } from '@/lib/parks/kids-page';
 import { ParkPurchasesCard } from '@/components/parks/park-purchases-card';
@@ -599,12 +601,25 @@ export default async function ParkPage({ params, searchParams }: ParkPageProps) 
           className="mb-4 sm:mb-8"
         />
 
+        {/* A winter break or a break of two weeks or more: the day the park opens again, before
+          anything that reads as a live day. Decided on the server from the park's own day, so
+          it is in the first HTML at its height. Renders nothing otherwise. */}
+        <ParkBreakPanel park={park} todayIso={todayIso} scope="park" className="mb-8" />
+
         {/* Parks that publish wait times only inside their own app (Hansa-Park). Server-rendered,
           not streamed: `liveWaitTimes` is day-stable, so it arrives with the structure fetch and
           the live merge carries it — and it has to be in the first paint, because it explains the
           empty ride list the visitor is already looking at. Renders nothing for the other 212
           parks. */}
         <NoLiveWaitTimesNotice reason={noLiveWaitTimesReason(park)} scope="park" className="mb-8" />
+
+        {/* A trip region's park: the way into the region's planner with this park chosen; nothing
+          for any other park. Inline, so whether it exists is settled before the first byte. */}
+        <TripPlannerBand
+          variant="park"
+          park={`/parks/${continent}/${country}/${city}/${parkSlug}`}
+          className="mb-4"
+        />
 
         {/* The header card ("Heute im Park" + the entry tiles) and the tab body under it, all with
           auto-refresh. The card is inside this tree rather than in the shell because it and the

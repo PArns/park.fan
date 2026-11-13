@@ -8,8 +8,8 @@ import { cn } from '@/lib/utils';
 
 /**
  * The rides the day is being decided over, in the order they are given up in. The checkbox says
- * whether a ride is wanted at all; the pin moves it up the order the engine reads as
- * `OptimizeInput.priority`. The list renders `fitOrder(...)`, never a sort of its own, so the
+ * whether a ride is wanted at all; the pin moves it up the order the engine reads as its
+ * priority. The list renders `fitOrder(...)`, never a sort of its own, so the
  * bottom of the screen is what the engine gives up first. The marks recompute on every change
  * against the engine that runs on the press.
  */

@@ -24,6 +24,10 @@ type Listener = () => void;
  * - `shared-link`: "Planer öffnen" on the shared-plan page, after taking a plan over.
  * - `home-hero`: "Heute planen" in the homepage hero (`HeroParkActions`).
  * - `kids-page`: a step of the height ladder on a park's "with kids" page (`KidsPlannerButton`).
+ * - `orlando-hub`: "Plan this day" for one park in the Orlando hub's day sheet (`OrlandoPlanDayButton`).
+ * - `menu-plan`: „Meinen Plan öffnen" in the header's planner band. Names no day, like `header`.
+ * - `menu-park`: a popular park in the header's planner band or its phone-sheet disclosure
+ *   (`quickStartClick`), which starts the wizard on that park.
  *
  * Not ways in: `AddToPlannerButton` files an entry without opening the panel, and
  * `PlannerInParkCta` is only drawn inside the open panel.
@@ -38,6 +42,9 @@ export type PlannerOpenedSource =
   | 'shared-link'
   | 'home-hero'
   | 'kids-page'
+  | 'orlando-hub'
+  | 'menu-plan'
+  | 'menu-park'
   | 'assistant';
 
 /**

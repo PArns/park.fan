@@ -133,6 +133,26 @@ export function useAssistantActions(closeWindow: () => void) {
         return true;
       };
 
+      /**
+       * Files empty reserved days in one store write, each day it changed kept for
+       * `planner_undo`, and opens the first; a date that already holds a plan stays as it is.
+       */
+      const reserve = (
+        days: ReadonlyArray<{ park: AssistantPlannerPark; date: string }>
+      ): AssistantActionChip | null => {
+        const before = plannerStore.getSnapshot();
+        plannerStore.update((state) => reserveDays(state, days));
+        const after = plannerStore.getSnapshot();
+        if (after === before) return null;
+        for (const { park, date } of days) {
+          if (after.parks[park.slug]?.days[date] !== before.parks[park.slug]?.days[date]) {
+            rememberParkyChange(before, after, park.slug, date);
+          }
+        }
+        showDay(days[0].park, days[0].date);
+        return 'planned';
+      };
+
       /** Today's `/plan/day` of the park, through the planner's own cache entry. */
       const today = (park: AssistantPlannerPark) =>
         queryClient
@@ -292,27 +312,10 @@ export function useAssistantActions(closeWindow: () => void) {
           if (chip) trackPlannerDayCleared(action.park.slug);
           return chip;
         }
-        case 'planner_reserve_days': {
-          const before = plannerStore.getSnapshot();
-          plannerStore.update((state) =>
-            reserveDays(
-              state,
-              action.dates.map((date) => ({ park: action.park, date }))
-            )
-          );
-          const after = plannerStore.getSnapshot();
-          if (after === before) return null;
-          for (const date of action.dates) {
-            if (
-              after.parks[action.park.slug]?.days[date] !==
-              before.parks[action.park.slug]?.days[date]
-            ) {
-              rememberParkyChange(before, after, action.park.slug, date);
-            }
-          }
-          showDay(action.park, action.dates[0]);
-          return 'planned';
-        }
+        case 'planner_reserve_days':
+          return reserve(action.dates.map((date) => ({ park: action.park, date })));
+        case 'planner_reserve_trip':
+          return reserve(action.days);
         case 'planner_undo': {
           let outcome: ParkyUndoOutcome = 'none';
           plannerStore.update((state) => {

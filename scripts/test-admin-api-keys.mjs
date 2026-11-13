@@ -1,14 +1,22 @@
-// The admin's data API key page: what the hourly-limit field accepts and how a key's usage reads.
+// The admin's data API key page: what the hourly-limit field accepts, how a key's usage reads, and
+// what a rotation offers and shows.
 import {
   createDataApiKeyBody,
+  dataApiKeyPath,
+  describeRotationGrace,
   formatAllowedParks,
   formatHourlyUsage,
   formatKeyExpiry,
+  formatKeyMoment,
   formatKeyUsage,
+  formatPreviousKeyStatus,
   formatUsageMonth,
   keyExpiryDay,
   keyExpiryFrom,
   parseRequestsPerHour,
+  previousKeyValidUntil,
+  ROTATION_GRACE_CHOICES,
+  DEFAULT_ROTATION_GRACE_HOURS,
   usedMonths,
 } from '../lib/admin/api-keys.ts';
 
@@ -180,6 +188,64 @@ const testCases = [
     name: 'a key without parks covers all of them',
     actual: () => formatAllowedParks({ allowedParkIds: null }),
     expected: 'alle Parks',
+  },
+  {
+    name: 'the rotate dialog offers no grace, an hour, a day and a week, a day by default',
+    actual: () => [
+      ROTATION_GRACE_CHOICES.map((choice) => choice.value),
+      DEFAULT_ROTATION_GRACE_HOURS,
+    ],
+    expected: [[0, 1, 24, 168], 24],
+  },
+  {
+    name: 'the grace choice says what happens to the old key',
+    actual: () => [describeRotationGrace(0), describeRotationGrace(168)],
+    expected: [
+      'Der alte Key wird sofort gesperrt: Wer ihn noch sendet, bekommt ab der nächsten Anfrage keine Prognosen mehr.',
+      'Der alte Key gilt noch 7 Tage neben dem neuen, damit der Inhaber umstellen kann, und wird dann gesperrt.',
+    ],
+  },
+  {
+    name: 'the old key counts while its grace runs, not past the key end date or a revocation',
+    actual: () => {
+      const until = (key) =>
+        previousKeyValidUntil({ expiresAt: null, revokedAt: null, ...key }, NOW);
+      return [
+        until({ previousExpiresAt: '2026-11-12T09:00:00Z' }),
+        until({ previousExpiresAt: '2026-11-12T09:00:00Z', expiresAt: '2026-11-11T12:00:00Z' }),
+        until({ previousExpiresAt: '2026-11-11T09:00:00Z' }),
+        until({ previousExpiresAt: '2026-11-12T09:00:00Z', revokedAt: '2026-11-11T08:00:00Z' }),
+        until({ previousExpiresAt: null }),
+        until({}),
+      ];
+    },
+    expected: ['2026-11-12T09:00:00Z', '2026-11-11T12:00:00Z', null, null, null, null],
+  },
+  {
+    name: 'the old key reads with its end in Berlin time and its last use',
+    actual: () => [
+      formatKeyMoment('2026-07-01T08:30:00Z'),
+      formatPreviousKeyStatus('2026-11-12T09:00:00Z', 'vor 5 Minuten'),
+      formatPreviousKeyStatus('2026-11-12T09:00:00Z', null),
+    ],
+    expected: [
+      '01.07.2026, 10:30',
+      'Alter Key gültig bis 12.11.2026, 10:00, zuletzt genutzt vor 5 Minuten',
+      'Alter Key gültig bis 12.11.2026, 10:00, nie genutzt',
+    ],
+  },
+  {
+    name: 'a key path encodes the id and names its rotation and its old secret',
+    actual: () => [
+      dataApiKeyPath('a/b'),
+      dataApiKeyPath('k1', 'rotate'),
+      dataApiKeyPath('k1', 'previous'),
+    ],
+    expected: [
+      '/api/admin/api-keys/a%2Fb',
+      '/api/admin/api-keys/k1/rotate',
+      '/api/admin/api-keys/k1/previous',
+    ],
   },
 ];
 

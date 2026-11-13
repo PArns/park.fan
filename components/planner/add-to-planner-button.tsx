@@ -7,9 +7,12 @@ import { CalendarPlus, Repeat } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { usePlanner, usePlannedCount } from '@/lib/planner/use-planner';
 import { plannerStore } from '@/lib/planner/store';
-import { dayClock, longDate, resolveTimeZone, todayInZone } from '@/lib/planner/park-time';
+import { longDate, todayInZone } from '@/lib/planner/park-time';
 import { planDayQuery } from '@/lib/hooks/use-plan-day';
-import type { FitChoice, FitInput } from '@/lib/planner/fit';
+import type { FitChoice } from '@/lib/planner/fit';
+import { fitChoiceAll } from '@/lib/planner/fit';
+import type { FitAnswer, FitQuestion } from '@/lib/planner/optimize-remote';
+import type { PlanDay } from '@/lib/api/types';
 import type { PlannerEntry, PlannerGeo } from '@/lib/planner/types';
 import {
   trackPlanOptimized,
@@ -54,8 +57,8 @@ interface AddToPlannerButtonProps {
  * store, so every copy of this button and the launcher's count update together.
  *
  * A day with no room for the ride opens the assistant instead: the press asks `noRoomForRide`
- * first and, where not every wish gets a slot before closing, opens `PlannerFitAssistant` and
- * writes nothing until the visitor confirms. See
+ * (the API's optimizer) first and, where not every wish gets a slot before closing, opens
+ * `PlannerFitAssistant` and writes nothing until the visitor confirms. See
  * docs/rules/a-day-that-does-not-fit-opens-an-assistant-not-a-footnote.md.
  */
 export function AddToPlannerButton({
@@ -90,9 +93,13 @@ export function AddToPlannerButton({
    */
   const [fit, setFit] = useState<{
     date: string;
-    input: FitInput;
+    question: FitQuestion;
+    /** The answer for everything ticked, drawn until the pinned one arrives. */
+    initial: { choice: FitChoice; answer: FitAnswer };
     /** What the dialog opens on: the pressed ride pinned. */
     choice: FitChoice;
+    /** The day's payload, for the rides' photos; `null` where it could not be read. */
+    day: PlanDay | null;
     nonce: number;
     Assistant: FitAssistant;
   } | null>(null);
@@ -130,36 +137,42 @@ export function AddToPlannerButton({
 
   /**
    * The conflict this press would cause, or `null` to file the ride as before. Every failure is
-   * `null` too, so an error never takes the button away. The payload comes through the flyout's own
-   * query.
+   * `null` too, so an error never takes the button away. The day is read before the request, so
+   * the question is about the day as it stands at the press.
    */
-  const probe = async (filingDate: string, now: number) => {
+  const probe = async (filingDate: string) => {
     try {
-      const [day, { noRoomForRide, requestedRideChoice }] = await Promise.all([
-        queryClient.fetchQuery(
-          planDayQuery({
-            continent: geo.continent,
-            country: geo.country,
-            city: geo.city,
-            parkSlug,
-            date: filingDate,
-          })
-        ),
-        import('@/lib/planner/add-ride-fit'),
-      ]);
-      // Read after the await, so a day edited meanwhile is the day asked about.
       const planned = plannerStore.getSnapshot().parks[parkSlug]?.days[filingDate];
-      const clock = dayClock(filingDate, resolveTimeZone(timezone), now);
-      const input = noRoomForRide({
-        day,
+      const { noRoomForRide, requestedRideChoice } = await import('@/lib/planner/add-ride-fit');
+      const conflict = await noRoomForRide({
+        target: { geo, parkSlug, date: filingDate, timezone },
         entries: planned?.entries ?? [],
         attractionSlug,
-        clock,
         earlyEntry: planned?.prefs?.earlyEntry,
       });
-      if (!input) return null;
-      const { PlannerFitAssistant } = await import('./planner-fit-assistant');
-      return { input, choice: requestedRideChoice(attractionSlug), Assistant: PlannerFitAssistant };
+      if (!conflict) return null;
+      // The payload only for the list's photos, through the flyout's own query and cache.
+      const [day, { PlannerFitAssistant }] = await Promise.all([
+        queryClient
+          .fetchQuery(
+            planDayQuery({
+              continent: geo.continent,
+              country: geo.country,
+              city: geo.city,
+              parkSlug,
+              date: filingDate,
+            })
+          )
+          .catch(() => null),
+        import('./planner-fit-assistant'),
+      ]);
+      return {
+        question: conflict.question,
+        initial: { choice: fitChoiceAll(), answer: conflict.answer },
+        choice: requestedRideChoice(attractionSlug),
+        day,
+        Assistant: PlannerFitAssistant,
+      };
     } catch {
       return null;
     }
@@ -179,7 +192,7 @@ export function AddToPlannerButton({
     // A new press is a new question; the last answer's undo would restore a day this press changes.
     setResult(null);
     try {
-      const conflict = await probe(filingDate, now);
+      const conflict = await probe(filingDate);
       if (conflict) {
         setFit((current) => ({
           date: filingDate,
@@ -199,23 +212,26 @@ export function AddToPlannerButton({
    * The visitor's answer, written as the optimise row writes it: `restoreDay` with the entries the
    * choice keeps, then `applyPlan`. Cancelling never reaches this.
    */
-  const confirm = async (input: FitInput, filingDate: string, choice: FitChoice) => {
+  const confirm = (
+    question: FitQuestion,
+    filingDate: string,
+    choice: FitChoice,
+    answer: FitAnswer
+  ) => {
     setFit(null);
-    const { evaluateFit } = await import('@/lib/planner/fit');
-    const outcome = evaluateFit(input, choice);
-    // The day as it was is kept for one „Rückgängig"; `input.entries` is that day, since the dialog
-    // is modal.
-    const left = outcome.missed.length + choice.dropped.size;
+    // The day as it was is kept for one „Rückgängig"; the question holds that day, since the
+    // dialog is modal.
+    const left = answer.missed.length + choice.dropped.size;
     setResult({
       date: filingDate,
-      before: input.entries.map((entry) => ({ ...entry })),
+      before: question.entries.map((entry) => ({ ...entry })),
       text: [
-        t('fit.applied', { count: outcome.fitted.length }),
+        t('fit.applied', { count: answer.fitted.length }),
         ...(left > 0 ? [t('fit.leftOut', { count: left })] : []),
       ].join(' · '),
       alert: left > 0,
     });
-    restoreDay(parkSlug, filingDate, outcome.entries);
+    restoreDay(parkSlug, filingDate, answer.entries);
     applyPlan(
       {
         parkSlug,
@@ -223,7 +239,7 @@ export function AddToPlannerButton({
         geo,
         timezone,
         date: filingDate,
-        stops: outcome.stops,
+        stops: answer.stops,
       },
       'add_button'
     );
@@ -319,10 +335,12 @@ export function AddToPlannerButton({
           }}
           parkName={parkName}
           dateLabel={longDate(fit.date, locale)}
-          input={fit.input}
+          question={fit.question}
+          day={fit.day}
           initialChoice={fit.choice}
+          initial={fit.initial}
           requested={attractionName}
-          onConfirm={(choice) => void confirm(fit.input, fit.date, choice)}
+          onConfirm={(choice, answer) => confirm(fit.question, fit.date, choice, answer)}
         />
       )}
     </span>

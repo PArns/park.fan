@@ -346,6 +346,14 @@ check(
   null,
   'never off site'
 );
+check(
+  readAssistantAction({
+    type: 'navigate',
+    path: '/orlando?from=2027-03-03&to=2027-03-10&parks=epcot:1#planner',
+  }),
+  { type: 'navigate', path: '/orlando?from=2027-03-03&to=2027-03-10&parks=epcot:1#planner' },
+  'the Orlando hub keeps its plan and the planner anchor'
+);
 check(readAssistantAction({ type: 'drop_database' }), null, 'unknown actions are dropped');
 check(
   readAssistantAction({

@@ -2607,6 +2607,34 @@ no(
   'Gewalt hat auf einem Halloween-Event nichts verloren, und bei park.fan nehmen wir klar Abstand davon.'
 );
 
+// 114 place-stands-tour
+yes(
+  'place-stands-tour',
+  'Unter den Tickets steht das Urteil zum Park Hopper. Daneben steht der Link zum Shop, dabei steht nur der Hogwarts Express als Grund.'
+);
+yes(
+  'place-stands-tour',
+  'Below the tickets sits the Park Hopper verdict. Next to it is the shop link. At the bottom of the card stands the Hogwarts Express note.',
+  'en'
+);
+no(
+  'place-stands-tour',
+  'Unter den Tickets steht das Urteil zum Park Hopper. Die Party steht im Kalender, und daneben steht der Link zum Shop.'
+);
+no(
+  'place-stands-tour',
+  lines('Unter den Tickets steht das Urteil.', 'Daneben steht der Link.', 'Dort steht der Grund.')
+);
+no(
+  'place-stands-tour',
+  'Die Party steht im Kalender. In der Woche, in der die Party steht, fährt der Express. Wenn im Plan der Park steht, gilt das Ticket.'
+);
+no(
+  'place-stands-tour',
+  'In March it is hot. In the week view each day sits on the hour axis. Under the new rules the hopper is worth it.',
+  'en'
+);
+
 // news-outlet-attribution (§5.0): a news post that relays outlets instead of telling the story
 const news = (...paragraphs) => `---\ncategory: news\n---\n\n${lines(...paragraphs)}`;
 const relayed = [

@@ -28,6 +28,14 @@ export function daysBetween(from: string, to: string): number {
   return Math.round((end - start) / 86_400_000);
 }
 
+/**
+ * Whole weeks to a moment `days` away, rounded up: „in 19 Wochen" in „Heute im Park" and on the
+ * break panel under it, which must not name two numbers for one date.
+ */
+export function weeksUntil(days: number): number {
+  return Math.ceil(days / 7);
+}
+
 /** A written day with month name and year, the default of {@link formatParkDay}. */
 const LONG_DAY: Intl.DateTimeFormatOptions = { day: 'numeric', month: 'long', year: 'numeric' };
 

@@ -2,6 +2,7 @@ import { getTranslations } from 'next-intl/server';
 import { MapPin, Activity } from 'lucide-react';
 import { BlogParkCardLive } from '@/components/blog/blog-park-card-live';
 import { BlogAttractionCardLive } from '@/components/blog/blog-attraction-card-live';
+import { TripPlannerBand } from '@/components/orlando/trip-planner-band';
 import {
   extractInlineRefs,
   resolveAttraction,
@@ -33,7 +34,8 @@ const CARD_ROWS_CLASS =
  * and the explicit `relatedParks` / `relatedAttractions` frontmatter entries — deduplicated, as the
  * live park and ride cards the post's own links open. A reader who got to the end is shown what
  * the park is doing now, the one thing a post cannot say. The cards share their live requests with
- * the inline links, so a park the text links costs nothing more here.
+ * the inline links, so a park the text links costs nothing more here. Last, where those parks
+ * belong to a trip region, the way into its planner with them chosen.
  */
 export async function BlogReferences({ post, className }: BlogReferencesProps) {
   const t = await getTranslations('blog');
@@ -153,6 +155,9 @@ export async function BlogReferences({ post, className }: BlogReferencesProps) {
           </div>
         </div>
       )}
+
+      {/* The post's parks of a trip region into its planner; nothing for any other post. */}
+      <TripPlannerBand variant="post" parks={parks.map((park) => park.id)} />
     </section>
   );
 }

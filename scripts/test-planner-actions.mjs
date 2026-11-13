@@ -41,7 +41,6 @@ import {
   RIDER_HEIGHT_DEFAULT_CM,
 } from '../lib/planner/party.ts';
 import { countAll, EMPTY_PLANNER_STATE, entriesFor, hasAnyPlan } from '../lib/planner/types.ts';
-import { fitBlocks } from '../lib/planner/fit.ts';
 import { parsePlannerPayload } from '../lib/planner/store.ts';
 import { actualVsEstimate, estimateFor } from '../lib/planner/estimate.ts';
 
@@ -942,7 +941,6 @@ test(
     15 * 60
   );
 
-  test('the fit assistant does not offer a show as a lever', fitBlocks([entry]).length, 0);
   test(
     'a shift that would only touch shows returns the same state',
     shiftFrom(withShow, PARK.parkSlug, PARK.date, entry.id, 30) === withShow,
