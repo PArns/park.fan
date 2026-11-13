@@ -24,6 +24,7 @@ import {
   strayTicketProblems,
   ticketBody,
   ticketCatalogPath,
+  ticketCheck,
   ticketClicks,
   ticketLinkProblems,
   ticketOrderAfterMove,
@@ -301,6 +302,23 @@ test('an edit sends the changed fields, and null for an emptied one', () => {
   const stored = product({ caps: [{ parks: ['epcot'], max: 1 }] });
   const draft = { ...draftFromProduct(stored), name: 'Disney ticket', caps: [], notes: '' };
   assert.deepEqual(ticketPatch(stored, draft), { name: 'Disney ticket', caps: null, notes: null });
+});
+
+test('a new product is checked whole, under its own slug', () => {
+  const draft = { ...emptyTicketDraft(), slug: 'legoland-1-day', name: 'LEGOLAND' };
+  const { path, body } = ticketCheck('orlando', null, draft);
+  assert.equal(path, '/api/admin/content/regions/orlando/tickets/validate');
+  assert.equal(body.slug, 'legoland-1-day');
+  assert.deepEqual(body.windowTable, [{ days: 1, window: 1 }]);
+});
+
+test('an edit is checked as its patch, against the stored product by slug', () => {
+  const stored = product({ caps: [{ parks: ['epcot'], max: 1 }] });
+  const draft = { ...draftFromProduct(stored), name: 'Disney ticket', caps: [] };
+  const { path, body } = ticketCheck('orlando', stored, draft);
+  assert.equal(path, '/api/admin/content/regions/orlando/tickets/validate?slug=wdw-date-based');
+  // The full body would leave `caps` out, and the merge would check the stored caps again.
+  assert.deepEqual(body, { name: 'Disney ticket', caps: null });
 });
 
 test('the slug is never in a patch', () => {

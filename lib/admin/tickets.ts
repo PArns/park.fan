@@ -553,8 +553,8 @@ export function ticketBody(draft: TicketDraft): TicketWriteBody {
 
 /**
  * The `PATCH` for an edit: the fields that differ from the stored product, and `null` for an
- * optional field the edit emptied, since leaving it out would keep the old value in the merge.
- * Never `slug`, which is fixed after create. Empty when nothing changed.
+ * optional field the edit emptied, which the API clears, where leaving it out would keep the
+ * stored value. Never `slug`, which is fixed after create. Empty when nothing changed.
  */
 export function ticketPatch(original: AdminTicketProduct, draft: TicketDraft): TicketWriteBody {
   const before = ticketBody(draftFromProduct(original));
@@ -566,6 +566,26 @@ export function ticketPatch(original: AdminTicketProduct, draft: TicketDraft): T
     else if (JSON.stringify(before[key]) !== JSON.stringify(after[key])) patch[key] = after[key];
   }
   return patch;
+}
+
+/**
+ * What the form's live check sends: a new product whole to `validate`, an edit as its `PATCH` to
+ * `validate?slug=`, which merges it onto the stored product as the save will and does not count
+ * the product's own slug as taken. The edit's full body would not do, since an emptied field left
+ * out of it is put back by the merge.
+ */
+export function ticketCheck(
+  region: string,
+  product: AdminTicketProduct | null,
+  draft: TicketDraft
+): { path: string; body: TicketWriteBody } {
+  const path = ticketCatalogPath(region, 'validate');
+  return product
+    ? {
+        path: `${path}?slug=${encodeURIComponent(product.slug)}`,
+        body: ticketPatch(product, draft),
+      }
+    : { path, body: ticketBody(draft) };
 }
 
 /* ------------------------------------------------------------------ the list's line */

@@ -407,7 +407,8 @@ The ticket catalog of a trip region as `/admin/tickets` edits it: every product 
 - `setTicketWindow` _function_: The table with the window of one length changed.
 - `setTicketDays` _function_: The draft with new days: a fixed length is its own range, and the window table follows the lengths. Switching to unlimited keeps the lengths and the table for a way back.
 - `ticketBody` _function_: The full product the draft stands for, with only the fields its choices use: no window table for unlimited days, no hop sets without hopping, no empty optional field.
-- `ticketPatch` _function_: The `PATCH` for an edit: the fields that differ from the stored product, and `null` for an optional field the edit emptied, since leaving it out would keep the old value in the merge. Never `slug`, which is fixed after create.
+- `ticketPatch` _function_: The `PATCH` for an edit: the fields that differ from the stored product, and `null` for an optional field the edit emptied, which the API clears, where leaving it out would keep the stored value. Never `slug`, which is fixed after create.
+- `ticketCheck` _function_: What the form's live check sends: a new product whole to `validate`, an edit as its `PATCH` to `validate?slug=`, which merges it onto the stored product as the save will and does not count the product's own slug as taken.
 - `formatTicketDays` _function_: A product's days and window in one line, as the list shows them: „4 Tage in 7“, „14 Tage am Stück“, „1–10 Tage in 1–14“, „Pass, beliebig viele Tage“. A window counted from the first visit says so.
 - `formatTicketSale` _function_: When a product is sold and how long a pass lasts, in one line: „Start 3.1.–22.5.2027“, „Start ab 3.9.2026 · gültig bis 31.12.2027“. Without either, the API knows no limit and the line says so.
 - `formatTicketLinks` _function_: How many links a product has and how many of them are partner links: „3 Links, 1 Partnerlink“.

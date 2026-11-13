@@ -487,9 +487,10 @@ within 15 minutes (`TICKET_PUBLISH_DELAY`). The pure half is `lib/admin/tickets.
   for it and stays off while the API refuses the draft. When `validate` cannot be asked, Save stays
   on and the save's own 400 lands at the fields the same way.
 - **An edit sends what changed** (`ticketPatch`): the changed fields, and `null` for an optional
-  field that was emptied, since leaving it out would keep the old value in the merge. An edit's
-  `validate` may count the product's own slug as taken; the form drops slug problems on an edit,
-  as no field could answer them.
+  field that was emptied, which the API clears; left out, it would keep the stored value. Its live
+  check sends the same body to `validate?slug=<slug>` (`ticketCheck`), which merges it onto the
+  stored product as the PATCH will and does not count the product's own slug as taken; a new
+  product is checked whole without `?slug=`. A new product goes last in its region.
 - **Links are in the order visitors see them**: the first stands in front, up and down move one.
   Exactly one is the operator's shop. „Partnerlink“ is `sponsored`: the site labels the link and
   links it `rel="sponsored"`. The links the catalog started with lead to the cheapest authorized
