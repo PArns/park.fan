@@ -190,13 +190,19 @@ The panel is only the look; the data and the click behaviour live in the modules
   (`PLANNER_SEGMENTS`, `/en/trip-planner` included).
 - **Trip planner by region.** `TRIP_REGIONS` (`lib/navigation/trip-regions.ts`, client-safe) is one
   entry per region: id, name and area (one string, or one per locale), the hub's planner anchor
-  (`/orlando#planner`) and crowd calendar, the hub's photo, its park count (16, the figure the hub's
-  opening gives), its longest trip (`MAX_TRIP_DAYS`) and its scene. A region is listed once its
+  (`/orlando#planner`) and crowd calendar, the hub's photo, its park count (16, the region route's
+  park list, which `pnpm test:planner-menu` checks against the route's snapshot), its longest trip
+  (`MAX_TRIP_DAYS`) and its scene. A region is listed once its
   planner exists, never as a teaser; the band, the phone sheet and `pnpm check:header-links` read
   the list. `getPlannerMenu` (`lib/navigation/planner-menu.ts`, server-only) resolves it per locale,
-  memoised per process like `getFeaturedParksMenu`, and the layout hands it to the header. Each
-  region is a card (`RegionCard`): the scene filling it, and over a fade into the band the area, the
-  name, one line, the two facts, „Reise planen" (stretched over the card) and „Besucherkalender".
+  memoised per process like `getFeaturedParksMenu`, and the layout hands it to the header. One
+  region is a large card (`RegionCard`) beside the day planner and the parks: the scene filling it,
+  and over a fade into the band the area, the name, one line, the two facts, „Reise planen"
+  (stretched over the card) and „Besucherkalender". From two on, the draft's four-region layout: a
+  row of tiles (`RegionTile`: scene, area, name, line, an arrow; the whole tile is the planner's
+  link) under „Reiseplaner" with the count, and the day planner and the parks side by side below.
+  No page shows that yet; `node scripts/shoot-planner-regions.mjs` renders the real panel with a
+  made-up second region (`scripts/fixtures/planner-menu/two-regions.tsx`) against a running site.
   „Mehr" reads its Orlando photo from the same entry and keeps its own Orlando tile for now.
 - **The region's picture** is `PlannerRegionArt`: the region's Parky scene, a `React.lazy` chunk
   fetched on the band's first opening (`useMenuBandOpen`), so neither the scene nor a photo it would
@@ -205,21 +211,27 @@ The panel is only the look; the data and the click behaviour live in the modules
   header has no error boundary. The scene's contract is `TripRegionSceneProps`; Orlando's is
   [Parky on holiday](parky-character.md#pictures-of-him).
 - **Day planner.** Without a plan, and always on the server: its title, one line, a drawn day
-  (`DrawnDay`, `aria-hidden`, hours in the reader's clock) and „Tag planen" into the planner page's
-  start (`#plan`). With a plan in this browser (`usePlanSummary`, the store's snapshot after
-  hydration; the band is hidden on the first paint, so the swap shifts nothing): „Dein Plan", the
-  park and day, the planned days, „Meinen Plan öffnen" on the open signal
+  (`DrawnDay` on `DayStrip`, `aria-hidden`, hours in the reader's clock, drawn from the first
+  opening) and „Tag planen" into the planner page's start (`#plan`). With a plan in this browser
+  (`usePlanSummary`: the store's snapshot and the browser's clock after hydration; the band is hidden
+  on the first paint, so the swap shifts nothing): „Dein Plan" with the next planned day from today
+  on (the active one where it is among them; `planSummary`, each park's today in its own zone), the
+  planned days ahead, „8 Bahnen · 10:00–17:40" and the day's blocks on the strip
+  (`PlanDayStrip`, from the planner's own `/plan/day` query once the band has opened; line and strip
+  hold their height until it answers), „Meinen Plan öffnen" on the open signal
   (`plannerUi.requestOpen('menu-plan')`, which the launcher treats like the phone's calendar button:
   a day that is over is asked about first) and „Neuer Tag" into the page's start. The draft's „Parks
   auf Tage verteilen" row is left out: the planner page's assistant for it (`PlannerTripAssistant`)
   only shows once a day is planned, so the row would send a newcomer to a page without it.
-- **Popular parks** („Einen Tag planen in", `PLANNER_MENU_PARKS` 6) are this locale's most opened
-  parks from the build's snapshot ([most read → popular parks](most-read.md#popular-parks)), without
-  those that had no published hours ahead when the build read the geo structure (`hasHoursAhead` on
-  the seed's parks: `todaySchedule` operating or a `nextSchedule`), topped up from
-  `FEATURED_PARK_SLUGS`. That drops an event whose run is over (Traumatica after Halloween) and a
-  park shut for the season with no dates out; the API has no event or park category to read
-  instead. Each row shows the park mark (`BlogCoverFallback`), not a photo, since most of these
+- **Popular parks** („Einen Tag planen im", the owner's wording, over a list labelled „Einen Tag
+  planen in einem dieser Parks"; `PLANNER_MENU_PARKS` 6) are this locale's most opened parks from the
+  build's snapshot ([most read → popular parks](most-read.md#popular-parks)), topped up from
+  `FEATURED_PARK_SLUGS` (`pickPlannerParks`). An event is never offered: the API has no kind or
+  category that marks one (its `parkType` is theme or water park, and not public), so
+  `EVENT_PARK_SLUGS` (`lib/parks/event-parks.ts`) names them, Traumatica for now, and
+  `pnpm test:planner-menu` fails if one gets through. A counted park that had no published hours
+  ahead when the build read the geo structure waits for its dates (`hasHoursAhead` on the seed's
+  parks: `todaySchedule` operating or a `nextSchedule`). Each row shows the park mark (`BlogCoverFallback`), not a photo, since most of these
   parks have none. Its link is the park's own page, so the band adds no crawl target the parks
   rail does not carry; a plain click (`isPlainPrimaryClick`, `lib/utils/plain-click.ts`) also names
   the park to the planner and asks for its wizard (`quickStartClick`, `lib/planner/quick-start.ts`,
@@ -228,6 +240,7 @@ The panel is only the look; the data and the click behaviour live in the modules
 - **Analytics** as for the other bands: `nav_menu_opened` with `menu=planner`, clicks as
   `internal_link_clicked` with `header` or `menu_sheet`, and `planner_opened` with `menu-plan` or
   `menu-park`.
+- **The buttons** are the site's (`buttonLinkProps`, `Button`), drawn round as in the draft.
 - **Cost**: about +1.0 KB brotli per page against the plain link it replaces (0.99 and 1.03 KB in
   two runs, 15.6 KB raw; median over the six locales on `/parks/europe/germany`, 1.04 KB on `/blog`
   and the homepage; production build,
@@ -298,8 +311,9 @@ duplicates the desktop nav; put nothing unique there. From the top:
   each of the three hubs, whose first row is the hub itself („Übersicht", `navigation.overview`) and
   then its categories or chapters with the band's numbers, in the band's order — and „Planen",
   whose first row is the day planner's page, then „Dein Plan: <park>, <day>" where this browser has
-  one (it closes the sheet and opens the plan, as the band's „Meinen Plan öffnen" does), the band's
-  first four parks under „Einen Tag planen in" with its quick start, and the regions under
+  a day planned from today on (`SheetPlanRow`, a leaf, so a plan edit re-renders it alone; it closes
+  the sheet and opens the plan, as the band's „Meinen Plan öffnen" does), the band's
+  first four parks under „Einen Tag planen im" with its quick start, and the regions under
   „Reiseplaner" (`SheetCaption` for both). The disclosure row is the toggle, not a link beside a
   chevron; after it the Orlando crowd calendar keeps its own row, like the „Mehr" tile;
 - the footer row (`MoreMenuLinks variant="sheet"`), **outside** the scrolling list on the sheet's

@@ -40,6 +40,8 @@ async function bundle() {
     logLevel: 'silent',
     tsconfig: path.join(ROOT, 'tsconfig.json'),
     define: { 'process.env.NODE_ENV': '"production"' },
+    // Modules the panel reaches read other `process.env` names; in the page they are all unset.
+    banner: { js: 'var process = { env: {} };' },
     plugins: [
       {
         name: 'fixture-stubs',

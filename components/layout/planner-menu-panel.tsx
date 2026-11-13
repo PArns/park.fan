@@ -46,6 +46,12 @@ const PILL_QUIET = `${PILL} border-border/60 bg-background/75 hover:border-prima
 const REGION_COLUMNS: Record<number, string> = { 2: 'grid-cols-2', 3: 'grid-cols-3' };
 
 /**
+ * A tile's height by how many share the row: a wider tile gets taller, so the scene (2 : 1, cut
+ * to fill) keeps Parky's wheel and the shore in view, as the four-region draft's tiles do.
+ */
+const TILE_HEIGHT: Record<number, string> = { 2: 'h-60', 3: 'h-52' };
+
+/**
  * The planner band: the trip planner per region, the day planner, and the locale's popular parks
  * as quick starts into the day planner. One region is a large card beside the day planner and the
  * parks; from two on, the regions are a row of smaller cards over the other two, as in the draft's
@@ -82,7 +88,11 @@ export const PlannerMenuPanel = memo(function PlannerMenuPanel({
           <MenuSectionHeading label={t('tripPlanner')} count={regions.length} />
           <div className={cn('grid gap-3', REGION_COLUMNS[regions.length] ?? 'grid-cols-4')}>
             {regions.map((region) => (
-              <RegionTile key={region.id} region={region} />
+              <RegionTile
+                key={region.id}
+                region={region}
+                height={TILE_HEIGHT[regions.length] ?? 'h-44'}
+              />
             ))}
           </div>
         </section>
@@ -234,13 +244,16 @@ function RegionCard({ region }: { region: PlannerMenuRegion }) {
  * fade at its foot where it is, its name, one line and an arrow. The whole tile is the trip
  * planner's link; the crowd calendar is the large card's and the hub's.
  */
-function RegionTile({ region }: { region: PlannerMenuRegion }) {
+function RegionTile({ region, height }: { region: PlannerMenuRegion; height: string }) {
   const t = useTranslations('navigation');
   return (
     <Link
       href={region.href as '/'}
       prefetch={false}
-      className="group bg-muted focus-visible:ring-ring relative isolate block h-44 overflow-hidden rounded-2xl ring-1 ring-black/10 focus-visible:ring-2 focus-visible:outline-none dark:ring-white/10"
+      className={cn(
+        'group bg-muted focus-visible:ring-ring relative isolate block overflow-hidden rounded-2xl ring-1 ring-black/10 focus-visible:ring-2 focus-visible:outline-none dark:ring-white/10',
+        height
+      )}
     >
       <span className="absolute inset-0 -z-10">
         <PlannerRegionArt regionId={region.id} photo={region.photo} />
