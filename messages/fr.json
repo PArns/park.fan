@@ -1175,6 +1175,13 @@
       "since": "depuis {month}"
     }
   },
+  "winterBreak": {
+    "label": "Fermeture hivernale",
+    "reopensPark": "Réouverture le <date>{day}</date>",
+    "reopensRide": "Le parc rouvre le <date>{day}</date>",
+    "park": "D’ici là, toutes les attractions restent fermées et Parky hiberne.",
+    "ride": "D’ici là, {ride} ne tourne pas non plus et Parky hiberne."
+  },
   "attractions": {
     "blogPosts": {
       "title": "{ride} sur le blog",

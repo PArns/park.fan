@@ -1175,6 +1175,13 @@
       "since": "since {month}"
     }
   },
+  "winterBreak": {
+    "label": "Winter break",
+    "reopensPark": "Reopens on <date>{day}</date>",
+    "reopensRide": "The park reopens on <date>{day}</date>",
+    "park": "Until then every attraction stays closed, and Parky is hibernating.",
+    "ride": "Until then {ride} stays closed too, and Parky is hibernating."
+  },
   "attractions": {
     "blogPosts": {
       "title": "{ride} on the blog",
