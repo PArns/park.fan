@@ -7,12 +7,14 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`api.ts`](../../lib/orlando/api.ts)
 
+- `getOrlandoTickets` _function_: The ticket catalog as the admin keeps it (`/tickets`): open, five minutes at the edge, and revalidated by tag on every edit. The region route's own `tickets` is the fallback while this route is missing or failing.
 - `getOrlandoRegion` _function_: The region: its parks, groups, hotel areas and travel legs. Open, curated in code.
 - `getOrlandoWhen` _function_: The best trip windows of a length in a range, planned for the headliner parks unless `parks` says otherwise (`/when`).
 - `getOrlandoCalendar` _function_: Every park's days side by side, with the seasons that run on them; at most 92 days.
 - `getOrlandoBestDays` _function_: Each park's quiet and busy days in a window, as sets, and each resort's best dates.
 - `getOrlandoSchoolBreaks` _function_: The school-holiday regions the holiday data knows in `countries` (`DE,NL,GB`), each with its breaks in the range and the day its data ends. Open: the data key stays home.
 - `TRIP_REGION_CACHE_TAG` _const_: The Data Cache tag on every trip-region read, for the API's revalidation webhook.
+- `TRIP_TICKETS_CACHE_TAG` _const_: The Data Cache tag of the ticket catalog, which the API revalidates after every admin edit.
 - Types: `TripWindow`
 
 ### [`best-time.ts`](../../lib/orlando/best-time.ts)
@@ -220,6 +222,9 @@ by hand: change the comment in the code and re-run the script. -->
 - `ticketDayOf` _function_: Where a plan day sits on its ticket, from `ticket` and `ticketDay` and the ticket the meta names; `null` for a day without a ticket and for a water-park visit on the allowance.
 - `ownedUse` _function_: An owned ticket's use, read the contract's way for its kind of product.
 - `plannedVisits` _function_: The planned visits of a park, for "Leave this visit out" on a day outside its ticket.
+- `visitorMarket` _function_: The visitor's market from the browser's languages: `us` or `uk` where the first one names the US, Great Britain or Ireland, `intl` for any other region, `null` without one.
+- `orderTicketLinks` _function_: A product's purchase links in the order a visitor sees them: those for the visitor's locale or market first, the rest after, each group in the admin's order, which is the display order. The official link keeps its place.
+- `ticketLinkAttributes` _function_: The attributes of a purchase link. Sellers have to see that a visitor came from park.fan, so no `noreferrer`, and `referrerPolicy="origin"` overrides the site's `same-origin` policy for this one link: the seller gets `https://park.fan/`, …
 - `TICKET_RESORTS` _const_: The four groups the step offers tickets for, always in this order.
 - `UNIVERSAL_UK_14` _const_: Universal's UK 14-day tickets, Three Park Adventure first: the one sold while Volcano Bay is shut.
 - `DISNEY_UK_14` _const_: Disney's UK 14-day ticket.
@@ -324,4 +329,4 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `ORLANDO_REGION` _const_: The one region the API curates.
 - `ORLANDO_TIMEZONE` _const_: Orlando's zone, which every park in the region runs on and every "today" is read in.
-- Types: `TripParkType`, `TripRegionGroup`, `TripRegionPark`, `TripPerk`, `TripHotelArea`, `TripTransportAlternative`, `TripLeg`, `TripTravel`, `TripVenue`, `TicketHopping`, `TicketProduct`, `TripRegion`, `TripDayStatus`, `TripBasis`, `TripCrowdLevel`, `TripSlot`, `TripEarlyKind`, `TripEveningKind`, `TripParkDay`, `TripBestWhy`, `TripCalendarDay`, `TripSeason`, `TripCalendarMeta`, `TripCalendar`, `TripBestDayReason`, `TripBestDay`, `TripParkBestDays`, `TripGroupBestDays`, `TripBestDays`, `TripWhenReason`, `TripWhenWarning`, `TripWhenWindow`, `TripWhenWeek`, `TripWhen`, `OrlandoMonth`, `TripMonthClimate`, `TripWhenMonth`, `TripWhenWithMonths`, `TripSchoolBreakRegion`, `TripSchoolBreaks`
+- Types: `TripParkType`, `TripRegionGroup`, `TripRegionPark`, `TripPerk`, `TripHotelArea`, `TripTransportAlternative`, `TripLeg`, `TripTravel`, `TripVenue`, `TicketHopping`, `TicketLink`, `TicketProduct`, `TripTicketCatalog`, `TripRegion`, `TripDayStatus`, `TripBasis`, `TripCrowdLevel`, `TripSlot`, `TripEarlyKind`, `TripEveningKind`, `TripParkDay`, `TripBestWhy`, `TripCalendarDay`, `TripSeason`, `TripCalendarMeta`, `TripCalendar`, `TripBestDayReason`, `TripBestDay`, `TripParkBestDays`, `TripGroupBestDays`, `TripBestDays`, `TripWhenReason`, `TripWhenWarning`, `TripWhenWindow`, `TripWhenWeek`, `TripWhen`, `OrlandoMonth`, `TripMonthClimate`, `TripWhenMonth`, `TripWhenWithMonths`, `TripSchoolBreakRegion`, `TripSchoolBreaks`

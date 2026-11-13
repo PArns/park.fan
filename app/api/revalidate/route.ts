@@ -16,7 +16,8 @@ import { bearerUnauthorized } from '@/lib/security/cron-auth';
  *
  * Tags in use (see lib/api/*): geo · parks · attractions · analytics · popular-parks · ml ·
  * weather · best-days:<park-slug> · park:<continent>/<country>/<city>/<park-slug> (one park's
- * structure fetch — see `parkCacheTag`). `paths` takes concrete URLs (e.g. /de, /en/parks) for
+ * structure fetch — see `parkCacheTag`) · trip-region:orlando · trip-tickets:orlando (the ticket
+ * catalog, after every admin edit). `paths` takes concrete URLs (e.g. /de, /en/parks) for
  * the page shells themselves.
  *
  * Callers: the backend's change-detection webhook (v4.api.park.fan) and manual ops. The

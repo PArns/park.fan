@@ -3835,7 +3835,6 @@
         "without": "Show the plan without {hopper}"
       },
       "hogwarts": "You need park-to-park for the Hogwarts Express between Universal Studios and Islands of Adventure.",
-      "shop": "Prices and tickets at {operator}",
       "newTab": "(opens in a new tab)",
       "adopt": "Use these as your tickets",
       "longStay": {
@@ -3851,7 +3850,8 @@
         "usedEvery": "used on {used} of its {window} days",
         "passDays": "{count, plural, =1 {1 day} other {# days}} in this plan",
         "allowance": "and {count, plural, =1 {1 water-park visit} other {# water-park visits}}",
-        "ifHopper": "If yours has {hopper}:"
+        "ifHopper": "If yours has {hopper}:",
+        "archived": "This ticket is no longer in our list. The plan still keeps to its rules."
       },
       "unused": {
         "parks_fewer_than_days": "{count, plural, =1 {1 day stays} other {# days stay}} unused: your parks need fewer.",
@@ -3904,6 +3904,14 @@
         "pass": "On your {resort} annual pass.",
         "suggested": "On the suggested {resort} ticket this is day {day}.",
         "outside": "This day lies outside your {resort} ticket."
+      },
+      "links": {
+        "title": "Prices and tickets",
+        "official": "{seller} (official shop)"
+      },
+      "partner": {
+        "label": "Partner link",
+        "note": "If you buy through this link, park.fan earns a commission. The price stays the same for you."
       }
     }
   },

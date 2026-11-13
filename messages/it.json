@@ -3835,7 +3835,6 @@
         "without": "Mostra il piano senza {hopper}"
       },
       "hogwarts": "Per l’Hogwarts Express fra Universal Studios e Islands of Adventure serve il park-to-park.",
-      "shop": "Prezzi e biglietti da {operator}",
       "newTab": "(si apre in una nuova scheda)",
       "adopt": "Usali come tuoi biglietti",
       "longStay": {
@@ -3851,7 +3850,8 @@
         "usedEvery": "usato {used} dei suoi {window} giorni",
         "passDays": "{count, plural, =1 {1 giorno} other {# giorni}} in questo piano",
         "allowance": "e {count, plural, =1 {1 visita a un parco acquatico} other {# visite a parchi acquatici}}",
-        "ifHopper": "Se il tuo ha {hopper}:"
+        "ifHopper": "Se il tuo ha {hopper}:",
+        "archived": "Questo biglietto non è più nella nostra lista. Il piano ne segue ancora le regole."
       },
       "unused": {
         "parks_fewer_than_days": "{count, plural, =1 {1 giorno resta} other {# giorni restano}} inutilizzati: ai tuoi parchi ne servono meno.",
@@ -3904,6 +3904,14 @@
         "pass": "Con il tuo abbonamento annuale {resort}.",
         "suggested": "Con il biglietto {resort} proposto è il giorno {day}.",
         "outside": "Questo giorno cade fuori dal tuo biglietto {resort}."
+      },
+      "links": {
+        "title": "Prezzi e biglietti",
+        "official": "{seller} (negozio ufficiale)"
+      },
+      "partner": {
+        "label": "Link di affiliazione",
+        "note": "Se compri tramite questo link, park.fan riceve una commissione. Il prezzo per te non cambia."
       }
     }
   },

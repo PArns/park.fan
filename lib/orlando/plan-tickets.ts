@@ -14,7 +14,7 @@ import type {
   PlanOwnedTicket,
   PlanTicketSuggestion,
 } from './plan';
-import type { TicketProduct } from './types';
+import type { TicketLink, TicketProduct } from './types';
 
 /**
  * Tickets in the Orlando planner: the region's catalog read for the step (which products a resort
@@ -50,6 +50,7 @@ export function leanTicketCatalog(products: readonly TicketProduct[]): TicketPro
   return products.map((product) => {
     const lean = { ...product } as TicketProduct & Record<string, unknown>;
     delete lean.notes;
+    delete lean.description;
     delete lean.hopSets;
     delete lean.caps;
     delete lean.confidence;
@@ -727,4 +728,58 @@ export function ownedUse(ticket: PlanOwnedTicket, catalog: TicketCatalog): Owned
 /** The planned visits of a park, for "Leave this visit out" on a day outside its ticket. */
 export function plannedVisits(days: readonly Pick<PlanDay, 'parks'>[], slug: string): number {
   return days.filter((d) => d.parks.some((p) => p.slug === slug)).length;
+}
+
+// ── Where to buy ──────────────────────────────────────────────────────────────
+
+/**
+ * The visitor's market from the browser's languages: `us` or `uk` where the first one names the
+ * US, Great Britain or Ireland, `intl` for any other region, `null` without one. Only the order of
+ * the purchase links follows it; nothing is hidden or claimed.
+ */
+export function visitorMarket(languages: readonly string[]): 'us' | 'uk' | 'intl' | null {
+  const region = languages[0]?.split('-')[1]?.toUpperCase();
+  if (!region) return null;
+  if (region === 'US') return 'us';
+  return region === 'GB' || region === 'IE' ? 'uk' : 'intl';
+}
+
+/**
+ * A product's purchase links in the order a visitor sees them: those for the visitor's locale or
+ * market first, the rest after, each group in the admin's order, which is the display order. The
+ * official link keeps its place. Without `links` (an older answer) the official `shopUrl` stands
+ * alone.
+ */
+export function orderTicketLinks(
+  source: { links?: readonly TicketLink[]; shopUrl?: string },
+  visitor: { locale: string; market: 'us' | 'uk' | 'intl' | null },
+  officialSeller: string
+): TicketLink[] {
+  const links: TicketLink[] = source.links?.length
+    ? [...source.links]
+    : source.shopUrl
+      ? [{ seller: officialSeller, url: source.shopUrl, official: true, sponsored: false }]
+      : [];
+  const forVisitor = (link: TicketLink) =>
+    Boolean(link.locales?.includes(visitor.locale)) ||
+    Boolean(visitor.market && link.markets?.includes(visitor.market));
+  return [...links.filter(forVisitor), ...links.filter((link) => !forVisitor(link))];
+}
+
+/**
+ * The attributes of a purchase link. Sellers have to see that a visitor came from park.fan, so no
+ * `noreferrer`, and `referrerPolicy="origin"` overrides the site's `same-origin` policy for this
+ * one link: the seller gets `https://park.fan/`, never the path with the trip in it. A sponsored
+ * link says so (`sponsored`, and `nofollow` with it).
+ */
+export function ticketLinkAttributes(link: Pick<TicketLink, 'sponsored'>): {
+  target: '_blank';
+  rel: string;
+  referrerPolicy: 'origin';
+} {
+  return {
+    target: '_blank',
+    rel: link.sponsored ? 'sponsored nofollow noopener' : 'noopener',
+    referrerPolicy: 'origin',
+  };
 }

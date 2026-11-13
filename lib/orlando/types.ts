@@ -112,8 +112,23 @@ export interface TripVenue {
 export type TicketHopping = 'none' | 'optional' | 'included';
 
 /**
+ * Where a ticket is bought: the operator's shop (`official`), or another seller. A `sponsored` link
+ * is an affiliate or paid one, which the page labels as such; `markets` and `locales` say whom it
+ * is for, absent for everyone.
+ */
+export interface TicketLink {
+  /** The seller's own name, never translated. */
+  seller: string;
+  url: string;
+  official?: boolean;
+  sponsored: boolean;
+  markets?: Array<'us' | 'uk' | 'intl'>;
+  locales?: string[];
+}
+
+/**
  * One product of the region's ticket catalog, as the planner reads it: the operator's rules for its
- * days, window and hopper. No price anywhere; `shopUrl` is the operator's shop.
+ * days, window and hopper, and where to buy it. No price anywhere; `shopUrl` is the operator's shop.
  */
 export interface TicketProduct {
   /** Stable, the contract's key: `wdw-uk-14-day-magic`. */
@@ -149,7 +164,18 @@ export interface TicketProduct {
   blockoutUrl?: string;
   /** Where passholders reserve their park. */
   reservationUrl?: string;
+  /** Where to buy, in the admin's order; the operator's own shop is one of them. */
+  links?: TicketLink[];
   shopUrl?: string;
+}
+
+/** `GET /v1/trip-regions/orlando/tickets`: the catalog the admin keeps, with its version. */
+export interface TripTicketCatalog {
+  region: string;
+  /** Changes with every edit; plans are cached by it. */
+  version: string;
+  updatedAt: string;
+  tickets: TicketProduct[];
 }
 
 /** `GET /v1/trip-regions/orlando`: open, a day at the edge. */
