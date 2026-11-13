@@ -5,7 +5,7 @@
     "en": "The week view for 5 to 11 December 2026, one block per park day on an hour axis, with \"Disney day 1 of 4\" to \"Disney day 4 of 4\" and \"Universal day 1 of 3\" above the columns."
   },
   "caption": {
-    "en": "Wednesday stays free: after three park days in a row, the plan puts the rest day on one of the busiest days of the trip."
+    "en": "Saturday stays free as the arrival day, which is the default. If you land early, \"Park on arrival day\" adds a park to it."
   },
   "credit": {
     "author": "park.fan",
