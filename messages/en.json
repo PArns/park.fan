@@ -298,7 +298,8 @@
     "legalLinks": "Legal",
     "disclaimer": "park.fan is a private hobby project. All information provided without warranty. The displayed wait times and status information are automatically provided and may differ from the actual situation on site.",
     "dataSources": "Data sources",
-    "weatherSource": "Weather"
+    "weatherSource": "Weather",
+    "tripPlanner": "Trip planner"
   },
   "explore": {
     "title": "Theme Park Wait Times in {location}",
@@ -645,8 +646,9 @@
       "varHours": "Opening hours"
     },
     "band": {
-      "title": "Several days in Orlando?",
-      "link": "Which park on which day"
+      "title": "Several days in {region}?",
+      "planPark": "Plan {park} into your {region} trip",
+      "open": "Open the trip planner"
     }
   },
   "theme": {
@@ -1988,7 +1990,11 @@
     },
     "avgWait": "{minutes} min avg",
     "avgWaitShort": "Ø {minutes} min",
-    "heroHint": "Start typing to search parks, attractions, shows and restaurants"
+    "heroHint": "Start typing to search parks, attractions, shows and restaurants",
+    "trip": {
+      "title": "{region} trip planner",
+      "hint": "Which park on which day of your trip"
+    }
   },
   "searchPage": {
     "types": {

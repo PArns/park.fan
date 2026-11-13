@@ -18,6 +18,7 @@ const LINK_BLOCKS = [
   'posts',
   'guide_band',
   'news_band',
+  'trip_band',
   'nav',
   'related',
   'most_read',

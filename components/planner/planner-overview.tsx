@@ -8,6 +8,7 @@ import { getDateTimeFormat } from '@/lib/utils/intl-format';
 import { addDays, nextPlannedDay, todayInZone } from '@/lib/planner/park-time';
 import { plannedParks, type PlannerState } from '@/lib/planner/types';
 import { ClearDayConfirm, type ClearDayTarget } from './planner-clear-day-confirm';
+import { PlannerTripRegionLink } from './planner-trip-region-link';
 
 interface PlannerOverviewProps {
   state: PlannerState;
@@ -20,12 +21,15 @@ interface PlannerOverviewProps {
   activeDate: string | null;
   onPick: (parkSlug: string, date: string) => void;
   onClearDay: (parkSlug: string, date: string) => void;
+  /** Runs when a link leaves the panel for another page (the trip planner). */
+  onLeave?: () => void;
 }
 
 /**
  * Every park and day in the plan, in one list, since the panel otherwise shows one day of one park.
  * Past days are kept and greyed rather than swept up: a finished day records what was actually
- * queued. Sorted by park name, then date, never by insertion.
+ * queued. Sorted by park name, then date, never by insertion. Under it, where the plan holds a day
+ * at a trip region's park, the one line into that region's trip planner.
  */
 export function PlannerOverview({
   state,
@@ -34,6 +38,7 @@ export function PlannerOverview({
   onPick,
   onClearDay,
   onNewDay,
+  onLeave,
 }: PlannerOverviewProps) {
   const t = useTranslations('planner');
   const locale = useLocale();
@@ -172,6 +177,8 @@ export function PlannerOverview({
           </section>
         ))}
       </div>
+
+      <PlannerTripRegionLink parks={parks} onNavigate={onLeave} className="mt-2 py-1" />
 
       <ClearDayConfirm
         pending={pendingClear}

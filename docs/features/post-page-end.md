@@ -12,6 +12,9 @@ and `/news/[slug]`. How each block's clicks are counted is in
 3. `#blog-progress-end`: the reading bar is full here, and `article_read` sends its 100.
 4. **The post's parks and rides** (`BlogReferences`): every park and ride the post links inline,
    embeds as a widget or names in `relatedParks` / `relatedAttractions`, deduplicated, as live cards.
+   Where some of those parks belong to a trip region, the section ends on `TripPlannerBand`'s `post`
+   variant: one park is „Magic Kingdom in deine Orlando-Reise einplanen", several are chosen under
+   „Reiseplaner öffnen". It comes from the post's own references, so a post never names it.
 5. **A search field** (`SearchCommand trigger="field"`, surface `post_end`), which opens the palette
    on the hero's list ([site search](site-search.md#under-a-post)).
 6. The preferred-source prompt.

@@ -78,9 +78,20 @@ export type SearchSurface =
   | 'glossary'
   | 'post_end';
 
-/** What kind of result was opened from a search. */
+/**
+ * What kind of result was opened from a search. `trip_planner` is the row a query naming a trip
+ * region gets first, into the region's planner.
+ */
 export type SearchResultKind =
-  'park' | 'attraction' | 'show' | 'restaurant' | 'location' | 'glossary' | 'guide' | 'news';
+  | 'park'
+  | 'attraction'
+  | 'show'
+  | 'restaurant'
+  | 'location'
+  | 'glossary'
+  | 'guide'
+  | 'news'
+  | 'trip_planner';
 
 /** A 1-based result position, bucketed so a long list does not spread over fifty values. */
 export type SearchPosition = '1' | '2' | '3' | '4-5' | '6-10' | '11+';

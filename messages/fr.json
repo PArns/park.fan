@@ -298,7 +298,8 @@
     "legalLinks": "Légal",
     "disclaimer": "park.fan est un projet amateur privé. Toutes les informations sont fournies sans garantie. Les temps d’attente et statuts affichés sont fournis automatiquement et peuvent différer de la situation réelle sur place.",
     "dataSources": "Sources des données",
-    "weatherSource": "Météo"
+    "weatherSource": "Météo",
+    "tripPlanner": "Planificateur de voyage"
   },
   "explore": {
     "title": "Temps d’attente des Parcs d’attractions à {location}",
@@ -645,8 +646,9 @@
       "varHours": "Horaires d’ouverture"
     },
     "band": {
-      "title": "Plusieurs jours à Orlando ?",
-      "link": "Quel parc quel jour"
+      "title": "Plusieurs jours à {region} ?",
+      "planPark": "Ajouter {park} à ton voyage à {region}",
+      "open": "Ouvrir le planificateur de voyage"
     }
   },
   "theme": {
@@ -1988,7 +1990,11 @@
     },
     "avgWait": "{minutes} min en moyenne",
     "avgWaitShort": "Ø {minutes} min",
-    "heroHint": "Tapez pour chercher des parcs, des attractions, des spectacles et des restaurants"
+    "heroHint": "Tapez pour chercher des parcs, des attractions, des spectacles et des restaurants",
+    "trip": {
+      "title": "Planificateur de voyage pour {region}",
+      "hint": "Quel parc quel jour de ton voyage"
+    }
   },
   "searchPage": {
     "types": {

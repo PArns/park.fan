@@ -1,8 +1,8 @@
 /**
  * Unit tests for the Orlando hub's pure logic (`lib/orlando/*`): the month window and its proxy
- * redirects, the relay's allow-list, the shortest-line pick with its early-close clause, the "today
- * or tomorrow" answer, the event lanes, the month summaries and the best-time helpers. Fixtures are
- * recorded answers of the API in `scripts/fixtures/orlando/`.
+ * redirects, the relay's allow-list and the region links' cache window, the shortest-line pick with
+ * its early-close clause, the "today or tomorrow" answer, the event lanes, the month summaries and
+ * the best-time helpers. Fixtures are recorded answers of the API in `scripts/fixtures/orlando/`.
  *
  * Run: `pnpm test:orlando-hub`
  */
@@ -34,7 +34,7 @@ import {
 } from '../lib/orlando/paths.ts';
 import { orlandoRedirect } from '../lib/orlando/redirects.ts';
 import { flatStretch } from '../lib/orlando/best-time.ts';
-import { tripRegionRelayTarget } from '../lib/orlando/relay.ts';
+import { TRIP_REGION_CACHE_CONTROL, tripRegionRelayTarget } from '../lib/orlando/relay.ts';
 
 const fixture = (name) =>
   JSON.parse(readFileSync(new URL(`./fixtures/orlando/${name}.json`, import.meta.url), 'utf8'));
@@ -127,6 +127,19 @@ test('the relay forwards each route its own query names and refuses anything els
     orlandoRelayUrl('calendar', { from: '2026-12-01', to: undefined }),
     '/api/trip-regions/orlando/calendar?from=2026-12-01'
   );
+});
+
+test('the browser reads the region links on the window next.config gives their path', () => {
+  const route = readFileSync(
+    new URL('../app/api/nav/trip-regions/route.ts', import.meta.url),
+    'utf8'
+  );
+  const config = readFileSync(new URL('../next.config.ts', import.meta.url), 'utf8');
+  assert.match(route, /cdnCacheHeaders\(TRIP_REGION_CACHE_CONTROL\)/);
+  const at = config.indexOf("source: '/api/nav/trip-regions'");
+  assert.ok(at > 0);
+  const rule = config.slice(at);
+  assert.equal(/sharedCache\('([^']+)'\)/.exec(rule)?.[1], TRIP_REGION_CACHE_CONTROL);
 });
 
 test('park and resort names drop what every visitor drops', () => {

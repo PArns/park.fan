@@ -430,6 +430,7 @@ export const RESULT_KIND_LABEL: Record<SearchResultKind, string> = {
   glossary: 'Glossar',
   guide: 'Guide',
   news: 'News',
+  trip_planner: 'Reiseplaner',
 };
 
 /** A result kind as it reads in a list; one the site sends later stays as sent. */
@@ -1001,6 +1002,7 @@ export const LINK_BLOCK_LABEL: Record<LinkBlock, string> = {
   posts: 'Beiträge zum Park oder Fahrgeschäft',
   guide_band: 'Guide-Band im Parkkopf',
   news_band: 'News-Band im Parkkopf',
+  trip_band: 'Reiseplaner-Band',
   nav: 'Vorheriger, nächster Beitrag',
   related: 'Weiterlesen',
   most_read: 'Meistgelesen',

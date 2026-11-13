@@ -3,7 +3,8 @@
  * link from Parky, "Copy link" and the best-time pages share, the edits (steppers, pins, swaps),
  * which codes become which sentence, the savings line, the `.ics` file, the Week and Month views'
  * geometry, the When mode's ranges and request, and tickets: `tickets=` read and written, the
- * catalog's windows, the step's drafts, and what the answer's ticket fields say.
+ * catalog's windows, the step's drafts, and what the answer's ticket fields say; and the links
+ * other pages build into the planner, with the search's match on a region's name.
  *
  * Run: pnpm test:orlando-plan
  */
@@ -62,11 +63,20 @@ import {
   percentBelowAverage,
   rankedLower,
   weekTiers,
+  monthSearchRange,
   whenPeriodOf,
   whenPeriods,
   whenRequestQuery,
   windowReasons,
 } from '../lib/orlando/plan-when.ts';
+import {
+  findTripRegion,
+  matchTripRegion,
+  regionParksOf,
+  tripPlannerHref,
+  tripRegionHubPath,
+  tripRegionLinks,
+} from '../lib/orlando/trip-links.ts';
 import { PlanRequestError, fetchTripPlan, retryPlanRequest } from '../lib/orlando/plan-fetch.ts';
 import {
   adoptSuggestions,
@@ -1680,6 +1690,150 @@ const keys = { parks: new Set(ORDER), areas: new Set(['disney', 'universal']) };
       { mode: 'dates', outcome: 'error', status: 400 },
       { mode: 'when', outcome: 'error', status: 0 },
     ]
+  );
+}
+
+// ── Links into the planner from other pages ─────────────────────────────────
+{
+  const REGION = {
+    slug: 'orlando',
+    name: 'Orlando',
+    groups: [
+      { key: 'walt-disney-world', name: 'Walt Disney World Resort', kind: 'resort' },
+      { key: 'universal-orlando', name: 'Universal Orlando Resort', kind: 'resort' },
+      { key: 'seaworld-orlando', name: 'SeaWorld Parks and Resorts Orlando', kind: 'resort' },
+      { key: 'day-trips', name: 'Day trips', kind: 'day_trip' },
+    ],
+    parks: [
+      {
+        id: 'id-mk',
+        slug: 'magic-kingdom-park',
+        name: 'Magic Kingdom Park',
+        path: '/parks/north-america/united-states/orlando/magic-kingdom-park',
+        group: 'walt-disney-world',
+        type: 'theme_park',
+        headliner: true,
+      },
+      {
+        id: 'id-epcot',
+        slug: 'epcot',
+        name: 'EPCOT',
+        path: '/parks/north-america/united-states/orlando/epcot',
+        group: 'walt-disney-world',
+        type: 'theme_park',
+        headliner: true,
+      },
+      {
+        id: 'id-bg',
+        slug: 'busch-gardens-tampa',
+        name: 'Busch Gardens Tampa Bay',
+        path: '/parks/north-america/united-states/tampa/busch-gardens-tampa',
+        group: 'day-trips',
+        type: 'theme_park',
+        headliner: false,
+      },
+    ],
+  };
+  const links = tripRegionLinks(REGION);
+  test('a region reduced to its links: the hub, its names, its parks', links, {
+    slug: 'orlando',
+    name: 'Orlando',
+    hubPath: '/orlando',
+    names: [
+      'Orlando',
+      'Walt Disney World',
+      'Universal Orlando',
+      'SeaWorld Parks and Resorts Orlando',
+    ],
+    parks: [
+      {
+        id: 'id-mk',
+        slug: 'magic-kingdom-park',
+        name: 'Magic Kingdom Park',
+        path: '/parks/north-america/united-states/orlando/magic-kingdom-park',
+      },
+      {
+        id: 'id-epcot',
+        slug: 'epcot',
+        name: 'EPCOT',
+        path: '/parks/north-america/united-states/orlando/epcot',
+      },
+      {
+        id: 'id-bg',
+        slug: 'busch-gardens-tampa',
+        name: 'Busch Gardens Tampa Bay',
+        path: '/parks/north-america/united-states/tampa/busch-gardens-tampa',
+      },
+    ],
+  });
+  test(
+    'a region without a hub has no links',
+    [tripRegionHubPath('paris'), tripRegionLinks({ ...REGION, slug: 'paris' })],
+    [null, null]
+  );
+  test(
+    'a page names its parks by id or by path; the region keeps its order',
+    regionParksOf(links, [
+      '/parks/north-america/united-states/orlando/epcot',
+      'id-mk',
+      '/parks/europe/germany/rust/europa-park',
+    ]).map((p) => p.slug),
+    ['magic-kingdom-park', 'epcot']
+  );
+  test(
+    'a page with no park of a region finds none',
+    [
+      findTripRegion([links], ['/parks/europe/germany/rust/europa-park']),
+      findTripRegion([links], ['id-bg'])?.parks.map((p) => p.slug),
+    ],
+    [null, ['busch-gardens-tampa']]
+  );
+  test(
+    'the planner on a park, on a month of a park calendar, and bare',
+    [
+      tripPlannerHref(links, { parks: ['magic-kingdom-park'] }),
+      tripPlannerHref(links, {
+        parks: ['epcot'],
+        when: monthSearchRange({ year: 2027, month: 3 }, '2026-11-13'),
+      }),
+      tripPlannerHref(links),
+    ],
+    [
+      '/orlando?parks=magic-kingdom-park#planner',
+      '/orlando?when=2027-03-01_2027-03-31&days=10&parks=epcot#planner',
+      '/orlando#planner',
+    ]
+  );
+  test(
+    'a month starts today, stops a year ahead, and needs room for the trip',
+    [
+      monthSearchRange({ year: 2026, month: 11 }, '2026-11-13'),
+      monthSearchRange({ year: 2027, month: 11 }, '2026-11-13'),
+      monthSearchRange({ year: 2026, month: 11 }, '2026-11-25'),
+      monthSearchRange({ year: 2026, month: 10 }, '2026-11-13'),
+    ],
+    [{ from: '2026-11-13', to: '2026-11-30' }, { from: '2027-11-01', to: '2027-11-13' }, null, null]
+  );
+  const match = (q) => matchTripRegion(q, [links])?.slug ?? null;
+  test(
+    'a query naming the region or a resort finds it',
+    [
+      'orlando',
+      'Orl',
+      'Walt Disney World',
+      'disney world',
+      'Universal Orlando',
+      'universal orl',
+      'SeaWorld Orlando',
+      'Disney World Orlando',
+      'walt-disney-world',
+    ].map(match),
+    Array(9).fill('orlando')
+  );
+  test(
+    'one word of a resort, a short query or another park finds nothing',
+    ['universal', 'disney', 'walt', 'or', 'epcot', 'world', 'europa-park', ''].map(match),
+    Array(8).fill(null)
   );
 }
 

@@ -42,7 +42,7 @@ import { ParkBlogPostsSection } from '@/components/parks/blog-posts-sections';
 import { ParkFAQSection } from '@/components/faq/park-faq-section';
 import type { Locale } from '@/i18n/config';
 import { ParkPageShell } from '@/components/parks/park-page-shell';
-import { OrlandoParkBand } from '@/components/orlando/orlando-park-band';
+import { TripPlannerBand } from '@/components/orlando/trip-planner-band';
 import { ParkTitleHeader } from '@/components/parks/park-title-header';
 import { ParkTodayPanel } from '@/components/parks/park-today-panel';
 import { ParkBreakPanel } from '@/components/parks/park-break-panel';
@@ -613,10 +613,11 @@ export default async function ParkPage({ params, searchParams }: ParkPageProps) 
           parks. */}
         <NoLiveWaitTimesNotice reason={noLiveWaitTimesReason(park)} scope="park" className="mb-8" />
 
-        {/* An Orlando park's way to the hub; nothing for any other park. Inline, so whether it
-          exists is settled before the first byte. */}
-        <OrlandoParkBand
-          parkPath={`/parks/${continent}/${country}/${city}/${parkSlug}`}
+        {/* A trip region's park: the way into the region's planner with this park chosen; nothing
+          for any other park. Inline, so whether it exists is settled before the first byte. */}
+        <TripPlannerBand
+          variant="park"
+          park={`/parks/${continent}/${country}/${city}/${parkSlug}`}
           className="mb-4"
         />
 

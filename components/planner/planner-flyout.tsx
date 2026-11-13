@@ -22,6 +22,7 @@ import { PlannerPanelPhoto } from './planner-panel-photo';
 import { PlannerDayFoot } from './planner-day-foot';
 import { PlannerDragCoach } from './planner-drag-coach';
 import { usePlanner } from '@/lib/planner/use-planner';
+import { plannerParkPath } from '@/lib/planner/park-url';
 import { usePlanDay } from '@/lib/hooks/use-plan-day';
 import { spansFor } from '@/lib/planner/estimate';
 import { useMediaQuery } from '@/lib/hooks/use-media-query';
@@ -493,9 +494,7 @@ export function PlannerFlyout({
       if (isPlannerPage) return;
       const target = state.parks[slug];
       if (!target) return;
-      router.push(
-        `/parks/${target.geo.continent}/${target.geo.country}/${target.geo.city}/${target.slug}` as '/europe/germany/rust/europa-park'
-      );
+      router.push(plannerParkPath(target) as '/europe/germany/rust/europa-park');
     },
     [pagePark?.slug, isPlannerPage, router, state.parks]
   );
@@ -1008,6 +1007,7 @@ export function PlannerFlyout({
                 }}
                 onClearDay={clearDay}
                 onNewDay={() => setWizardOpen(true)}
+                onLeave={isPhone ? () => handleOpenChange(false) : undefined}
               />
             </div>
           ) : (

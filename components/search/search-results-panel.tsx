@@ -38,6 +38,7 @@ import type { GlossarySearchItem } from '@/lib/hooks/use-search-results';
 import type { SearchSession } from '@/lib/analytics/search-session';
 import type { SearchResultItem } from '@/lib/api/types';
 import type { PostSearchEntry } from '@/lib/navigation/blog-menu';
+import type { TripRegionLinks } from '@/lib/orlando/trip-links';
 
 interface SearchResultsPanelProps {
   query: string;
@@ -47,6 +48,7 @@ interface SearchResultsPanelProps {
   onSelect: (result: SearchResultItem, position?: number) => void;
   onGlossarySelect: (item: GlossarySearchItem, position: number) => void;
   onPostSelect: (post: PostSearchEntry, position: number) => void;
+  onTripSelect: (region: TripRegionLinks) => void;
   onBrowseSelect: (item: NearbySearchItem, index: number) => void;
   /** Called before "all results" navigates — the palette closes itself on it. */
   onNavigate?: () => void;
@@ -112,6 +114,7 @@ export function SearchResultsPanel({
   onSelect,
   onGlossarySelect,
   onPostSelect,
+  onTripSelect,
   onBrowseSelect,
   onNavigate,
   browseLimit,
@@ -140,6 +143,8 @@ export function SearchResultsPanel({
     glossaryData,
     posts,
     postsPending,
+    tripRegion,
+    tripPending,
     browse,
     sortResultsByMatch,
   } = search;
@@ -154,15 +159,16 @@ export function SearchResultsPanel({
   // containing nothing but its footer hint and then pop the list in.
   const isPending =
     loading ||
-    (queryIsLive && (debouncedQuery.trim().length < 3 || postsPending)) ||
+    (queryIsLive && (debouncedQuery.trim().length < 3 || postsPending || tripPending)) ||
     (query.length < 3 && browse.isPending);
   const queryRan = !isPending && queryIsLive && debouncedQuery.length >= 3;
   const hasMainResults = Boolean(queryRan && results && results.results.length > 0);
   const hasGlossary = Boolean(glossaryData && glossaryData.results.length > 0);
   const hasPosts = Boolean(posts && posts.articles.total + posts.news.total > 0);
+  const trip = queryRan ? tripRegion : null;
   // `/search` lists the parks and rides and the posts, not the glossary.
   const showViewAll = queryRan && (hasMainResults || hasPosts);
-  const nothingFound = queryRan && !hasMainResults && !hasGlossary && !hasPosts;
+  const nothingFound = queryRan && !hasMainResults && !hasGlossary && !hasPosts && !trip;
   const browsing = query.length < 3;
   const heading = useBrowseHeading(browse);
   const rows = (browseItems ?? browse.items).slice(0, browseLimit);
@@ -204,10 +210,10 @@ export function SearchResultsPanel({
     listRef.current?.dispatchEvent(new KeyboardEvent('keydown', { key: 'Home', bubbles: true }));
   }, [listTab]);
 
-  const resultCount = groups.reduce((sum, group) => sum + group.count, 0);
+  const resultCount = groups.reduce((sum, group) => sum + group.count, trip ? 1 : 0);
   const announcement = nothingFound
     ? t('noResults')
-    : groups.length > 0
+    : resultCount > 0
       ? tSearch('resultsCount', { count: resultCount })
       : '';
 
@@ -230,13 +236,15 @@ export function SearchResultsPanel({
 
       {nothingFound && <CommandEmpty>{t('noResults')}</CommandEmpty>}
 
-      {groups.length > 0 && (
+      {(groups.length > 0 || trip) && (
         <SearchResultGroups
           groups={groups}
           tab={listTab}
+          trip={trip}
           onSelect={onSelect}
           onGlossarySelect={onGlossarySelect}
           onPostSelect={onPostSelect}
+          onTripSelect={onTripSelect}
         />
       )}
 

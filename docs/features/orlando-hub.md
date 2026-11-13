@@ -124,14 +124,39 @@ trips), and the minutes are the API's travel matrix without traffic, the Magic K
   warmup rebuilds every month at once, a stamp rather than an observed change
   ([a lastmod is observed](../rules/a-lastmod-is-observed-never-stamped.md)).
 - Internal links: hub → each park's crowd calendar ("<park> Crowd Calendar") and park page; park
-  pages and calendars → hub (the band); month ↔ month; hub → day planner and best-time pages.
+  pages and calendars → the planner (the band, `rel="nofollow"` since it carries a plan); every
+  page → `/orlando#planner` (the footer); month ↔ month; hub → day planner and best-time pages.
 
 ## Ways in
 
 - The More menu's wide tile and the phone sheet's link (`lib/navigation/more-menu.ts`,
   `components/layout/more-menu-panel.tsx`, `components/layout/header.tsx`).
-- `OrlandoParkBand` on every region park's page and crowd calendar. Which parks: the region route's
-  `parks[]`, read with a 1.5 s bound; no slug list here.
+- `TripPlannerBand` (`components/orlando/trip-planner-band.tsx`), from every page about the
+  region's parks into the planner. Which parks: the region route's `parks[]`, reduced by
+  `tripRegionLinks` (`lib/orlando/trip-links.ts`, which takes the hub from `TRIP_REGIONS`, so a
+  region the API curates before its planner exists gets no links) and read by `getTripRegionLinks` with a 1.5 s
+  bound, so a slow read costs the band and never the page; no slug list here. Its variants:
+
+  | Variant  | Where                                       | The link                                                                                 |
+  | -------- | ------------------------------------------- | ---------------------------------------------------------------------------------------- |
+  | `park`   | a region park's page and crowd calendar     | „Magic Kingdom in deine Orlando-Reise einplanen": `parks=<slug>`, on a month page `when` |
+  | `place`  | a city or country listing with region parks | „Reiseplaner öffnen": the bare chapter, the API's headliners                             |
+  | `post`   | the end of a post about region parks        | one park as `park`, several preselected under „Reiseplaner öffnen"                       |
+  | `search` | `/search` for a query that names the region | the bare chapter, as the palette's first row                                             |
+
+  A month page of a park calendar sends its month as the When mode's search (`monthSearchRange`:
+  from the park's today, at most a year ahead, nothing where the rest of the month is shorter than
+  the ten-day trip). A link that carries a plan is `rel="nofollow"` and not prefetched, as the hub's
+  own "Plan these dates" links are.
+
+- The footer's tools: „Reiseplaner" (en "Trip planner") beside „Tagesplaner" ("Day planner"), the
+  first region's `href` from `TRIP_REGIONS` (`lib/navigation/trip-regions.ts`), so the footer on
+  every page spends no region read.
+- The search palette's first row and the top of `/search`, for a query that names the region or a
+  resort ([site search](site-search.md#a-trip-regions-planner-comes-first)).
+- The day planner's plan list (its overview and the planner page), once the plan holds a day at a
+  region park: one line per plan with those parks chosen
+  ([trip planner](trip-planner/README.md#a-plan-in-a-trip-region-leads-to-the-trip-planner)).
 - `OrlandoHomeStop` on the homepage, data-free beyond the region's park list, because the homepage
   keeps a day at the edge.
 - Parky's `plan_vacation` links `/orlando?from=…&to=…&parks=…#planner`.
