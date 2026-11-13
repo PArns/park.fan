@@ -15,7 +15,7 @@ import {
   type PlanParkPick,
   type PlanSearchRange,
 } from './plan-query';
-import type { TripBasis, TripCrowdLevel, TripPerk, TripRegionPark } from './types';
+import type { TicketLink, TripBasis, TripCrowdLevel, TripPerk, TripRegionPark } from './types';
 
 export * from './plan-query';
 
@@ -135,7 +135,10 @@ export interface PlanOwnedTicket {
   /** An every-day ticket's window, which it has instead of days to count off. */
   windowDays?: number;
   allowanceVisits?: number;
+  /** `product_archived` among them when the product left the catalog. */
   warnings?: string[];
+  links?: TicketLink[];
+  shopUrl?: string;
 }
 
 /** A product another ticket could be, in a suggestion: a UK 14-day ticket, a promotion. */
@@ -161,6 +164,8 @@ export interface PlanTicketSuggestion {
   /** Products with an optional hopper: what it would add. */
   hopper?: PlanHopperVerdict;
   shopUrl?: string;
+  /** Where to buy it, in the admin's order. */
+  links?: TicketLink[];
   alternatives?: PlanTicketAlternative[];
   /** Owned tickets of the resort that do not cover these parks. */
   notCoveredBy?: string[];
@@ -252,6 +257,8 @@ export interface PlanMeta {
    * against keeping them in blocks (absent where `blocks` was written).
    */
   mixing?: { used: boolean; savedMinutesPerRide?: number };
+  /** The catalog version the plan was made with. */
+  ticketCatalog?: string;
 }
 
 /** `GET /v1/trip-regions/orlando/plan`: one entry per trip day, arrival and departure included. */

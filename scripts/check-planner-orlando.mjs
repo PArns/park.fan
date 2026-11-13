@@ -32,8 +32,8 @@ function orlandoToday() {
  */
 export async function checkOrlandoTickets({ browser, base, check }) {
   const errors = [];
-  const open = async (viewport, { answer, view, colorScheme = 'dark' } = {}) => {
-    const context = await browser.newContext({ viewport, colorScheme });
+  const open = async (viewport, { answer, view, colorScheme = 'dark', locale } = {}) => {
+    const context = await browser.newContext({ viewport, colorScheme, ...(locale && { locale }) });
     await context.addInitScript(
       ({ answer, view }) => {
         try {
@@ -299,7 +299,8 @@ export async function checkOrlandoTickets({ browser, base, check }) {
   const from = addDays(orlandoToday(), 21);
   const firstPath = `/en/orlando?from=${from}&to=${addDays(from, 8)}#planner`;
   {
-    const { context, page } = await open(PHONE, { answer: 'no' });
+    // A browser that names its languages, as a visitor's does: the purchase links read them.
+    const { context, page } = await open(PHONE, { answer: 'no', locale: 'en-GB' });
     await ready(page, firstPath);
     const card = page.locator('[data-plan-tickets-card="suggested"]');
     await card.waitFor({ timeout: PLAN_TIMEOUT });
@@ -362,6 +363,63 @@ export async function checkOrlandoTickets({ browser, base, check }) {
         )
       );
     }
+    await context.close();
+  }
+
+  // ── Where to buy: the links' attributes and the partner label ────────────────
+  {
+    // The seed carries no sponsored link, so one is added to the answer the browser receives.
+    const { context, page } = await open(DESK, { answer: 'no' });
+    await page.route('**/api/trip-regions/orlando/plan?*', async (route) => {
+      const response = await route.fetch();
+      const json = await response.json();
+      for (const s of json?.meta?.ticketSuggestion ?? []) {
+        s.links = [
+          {
+            seller: 'Partner Shop',
+            url: 'https://partner.example/tickets',
+            sponsored: true,
+          },
+          ...(s.links ?? []),
+        ];
+      }
+      await route.fulfill({ response, json });
+    });
+    await ready(page, firstPath);
+    const card = page.locator('[data-plan-tickets-card="suggested"]');
+    await card.waitFor({ timeout: PLAN_TIMEOUT });
+    await card.locator('[data-plan-ticket-details]').click();
+    const sponsored = card.locator('[data-ticket-link="sponsored"]').first();
+    const official = card.locator('[data-ticket-link="official"]').first();
+    const attrs = async (link) => ({
+      rel: await link.getAttribute('rel'),
+      referrer: await link.getAttribute('referrerpolicy'),
+      target: await link.getAttribute('target'),
+    });
+    const a = await attrs(sponsored);
+    const b = await attrs(official);
+    check(
+      'Orlando · ein Partnerlink ist rel="sponsored nofollow noopener" und nennt park.fan als Herkunft',
+      a.rel === 'sponsored nofollow noopener' && a.referrer === 'origin' && a.target === '_blank',
+      JSON.stringify(a)
+    );
+    check(
+      'Orlando · der offizielle Shop ist rel="noopener" ohne noreferrer, Herkunft park.fan',
+      b.rel === 'noopener' && b.referrer === 'origin',
+      JSON.stringify(b)
+    );
+    const label = sponsored.locator('xpath=following-sibling::*[@data-partner-label]');
+    await label.click();
+    const note = page.locator('[data-partner-note]');
+    await note.waitFor({ timeout: 5000 }).catch(() => {});
+    check(
+      'Orlando · neben dem Partnerlink steht „Partner link“ und erklärt sich auf Druck',
+      (await label.isVisible()) &&
+        (await label.innerText()).includes('Partner link') &&
+        (await note.isVisible()) &&
+        (await note.innerText()).includes('commission'),
+      await note.innerText().catch(() => 'keine Erklärung')
+    );
     await context.close();
   }
 

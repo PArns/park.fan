@@ -9,7 +9,7 @@ export function DatenschutzEN() {
   return (
     <>
       <h1 className="mb-2 text-4xl font-bold">Privacy Policy</h1>
-      <p className="text-muted-foreground mb-8 text-sm">Last updated: 10 November 2026</p>
+      <p className="text-muted-foreground mb-8 text-sm">Last updated: 13 November 2026</p>
 
       <div className="space-y-4 text-base leading-7">
         <LegalH2>1. Controller</LegalH2>
@@ -145,6 +145,16 @@ export function DatenschutzEN() {
           with no details about you. Anyone who has a shared link can open the plan. If you switch
           the notifications off, we delete the copy on the server. The legal basis is providing the
           feature you asked for (Art. 6(1)(b) GDPR).
+        </p>
+
+        <LegalH3>Ticket links in the Orlando planner</LegalH3>
+        <p>
+          The Orlando planner links to ticket sellers and to the parks&apos; own shops. When you
+          follow one of these links, your browser tells the seller that you came from park.fan: it
+          sends the address https://park.fan/, not the page with your trip. Some links are partner
+          links, labelled &quot;Partner link&quot;. If you buy a ticket through one, park.fan earns
+          a commission from the seller; the price is the same for you. What the seller processes
+          after the click is governed by its own privacy policy.
         </p>
 
         <LegalH3>Push notifications</LegalH3>

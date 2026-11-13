@@ -76,7 +76,10 @@ import {
   isEveryDayTicket,
   longStayTickets,
   needsHogwartsHop,
+  orderTicketLinks,
   ownedUse,
+  ticketLinkAttributes,
+  visitorMarket,
   setTickets,
   ticketCatalog,
   ticketDayOf,
@@ -1384,6 +1387,73 @@ const keys = { parks: new Set(ORDER), areas: new Set(['disney', 'universal']) };
     [
       { kind: 'counted', used: 7, days: 14, unused: 7, reason: 'rest_days_kept' },
       { kind: 'everyDay', used: 3, window: 14 },
+    ]
+  );
+}
+
+// ── Where to buy ─────────────────────────────────────────────────────────────
+{
+  // The seed's order: the cheapest authorized seller, Attraction Tickets, the official shop.
+  const links = [
+    { seller: 'Cheap Seller', url: 'https://cheap.example/', sponsored: false },
+    {
+      seller: 'Attraction Tickets',
+      url: 'https://www.attractiontickets.com/',
+      sponsored: true,
+      markets: ['uk'],
+      locales: ['en'],
+    },
+    { seller: 'Fan Shop DE', url: 'https://de.example/', sponsored: false, locales: ['de'] },
+    {
+      seller: 'Walt Disney World',
+      url: 'https://disneyworld.disney.go.com/',
+      official: true,
+      sponsored: false,
+    },
+  ];
+  const order = (locale, market) =>
+    orderTicketLinks({ links }, { locale, market }, 'Disney').map((l) => l.seller);
+  test(
+    'links keep the admin’s order unless one is for the visitor’s locale or market',
+    [order('fr', 'intl'), order('de', 'intl'), order('en', 'uk'), order('nl', 'uk')],
+    [
+      ['Cheap Seller', 'Attraction Tickets', 'Fan Shop DE', 'Walt Disney World'],
+      ['Fan Shop DE', 'Cheap Seller', 'Attraction Tickets', 'Walt Disney World'],
+      ['Attraction Tickets', 'Cheap Seller', 'Fan Shop DE', 'Walt Disney World'],
+      ['Attraction Tickets', 'Cheap Seller', 'Fan Shop DE', 'Walt Disney World'],
+    ]
+  );
+  test(
+    'the official link is never moved to the front, and an older answer’s shopUrl stands alone',
+    [
+      order('it', null).indexOf('Walt Disney World'),
+      orderTicketLinks(
+        { shopUrl: 'https://shop.example/' },
+        { locale: 'en', market: null },
+        'Disney'
+      ),
+      orderTicketLinks({}, { locale: 'en', market: null }, 'Disney'),
+    ],
+    [3, [{ seller: 'Disney', url: 'https://shop.example/', official: true, sponsored: false }], []]
+  );
+  test(
+    'the visitor’s market comes from the browser’s first language',
+    [
+      visitorMarket(['en-GB', 'en']),
+      visitorMarket(['en-IE']),
+      visitorMarket(['en-US']),
+      visitorMarket(['de-DE']),
+      visitorMarket(['de']),
+      visitorMarket([]),
+    ],
+    ['uk', 'uk', 'us', 'intl', null, null]
+  );
+  test(
+    'a ticket link tells the seller it came from park.fan, and a sponsored one says it is',
+    [ticketLinkAttributes({ sponsored: false }), ticketLinkAttributes({ sponsored: true })],
+    [
+      { target: '_blank', rel: 'noopener', referrerPolicy: 'origin' },
+      { target: '_blank', rel: 'sponsored nofollow noopener', referrerPolicy: 'origin' },
     ]
   );
 }

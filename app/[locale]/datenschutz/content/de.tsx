@@ -8,7 +8,7 @@ export function DatenschutzDE() {
   return (
     <>
       <h1 className="mb-2 text-4xl font-bold">Datenschutzerklärung</h1>
-      <p className="text-muted-foreground mb-8 text-sm">Stand: 10. November 2026</p>
+      <p className="text-muted-foreground mb-8 text-sm">Stand: 13. November 2026</p>
 
       <div className="space-y-4 text-base leading-7">
         <LegalH2>1. Verantwortlicher</LegalH2>
@@ -151,6 +151,16 @@ export function DatenschutzDE() {
           Wer einen geteilten Link kennt, kann den Plan öffnen. Schalten Sie die Benachrichtigungen
           aus, löschen wir die Kopie auf dem Server. Rechtsgrundlage ist die Bereitstellung der von
           Ihnen gewünschten Funktion (Art. 6 Abs. 1 lit. b DSGVO).
+        </p>
+
+        <LegalH3>Ticket-Links im Orlando-Planer</LegalH3>
+        <p>
+          Der Orlando-Planer verlinkt Ticketverkäufer und die Shops der Parks. Folgen Sie einem
+          dieser Links, teilt Ihr Browser dem Verkäufer mit, dass Sie von park.fan kommen: Er
+          schickt die Adresse https://park.fan/ mit, nicht die Seite mit Ihrer Reiseplanung. Einige
+          Links sind Partnerlinks und als „Partnerlink“ gekennzeichnet. Kaufen Sie darüber ein
+          Ticket, erhält park.fan vom Verkäufer eine Provision; der Preis ist für Sie derselbe. Was
+          der Verkäufer ab dem Klick verarbeitet, regeln seine eigenen Datenschutzbestimmungen.
         </p>
 
         <LegalH3>Push-Benachrichtigungen</LegalH3>

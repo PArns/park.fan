@@ -114,6 +114,13 @@ export function ImpressumEN({ story }: { story: ImpressumStory | null }) {
           apparent. Should the provider become aware of illegal content on the linked websites, the
           corresponding link will be removed immediately.
         </p>
+        <p className="mb-4">
+          <strong>Partner links.</strong> Some links to ticket sellers in the Orlando planner are
+          partner links, labelled &quot;Partner link&quot; beside the link. If you buy a ticket
+          through one, park.fan earns a commission from the seller; the price is the same for you.
+          When you follow a ticket link, the seller learns that you came from park.fan. After the
+          click, the seller&apos;s own privacy terms apply.
+        </p>
 
         <h2 className="border-border mt-12 mb-6 border-b pb-3 text-3xl font-bold">Data Sources</h2>
         <p className="mb-4">Wait times are provided by the following platforms:</p>

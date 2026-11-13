@@ -7,6 +7,7 @@ import {
   type TripBestDays,
   type TripCalendar,
   type TripRegion,
+  type TripTicketCatalog,
   type TripWhen,
   type TripSchoolBreaks,
 } from './types';
@@ -16,8 +17,9 @@ import {
  * the API only with the site's data key (docs/rules/a-forecast-leaves-only-with-a-key.md), and a
  * browser asks them through the relay instead (`orlandoRelayUrl`, `lib/orlando/paths.ts`).
  *
- * Every read goes through Next's Data Cache with the region's tag, so the many URLs of the hub
- * and its months cost one upstream call per window an hour, and `revalidateTag` can drop them all.
+ * Every read goes through Next's Data Cache with the region's tag (the ticket catalog with its own),
+ * so the many URLs of the hub and its months cost one upstream call per window an hour, and
+ * `revalidateTag` can drop them all.
  * A failed read throws; the page decides what an absent answer means.
  */
 
@@ -33,7 +35,8 @@ export interface TripWindow {
 async function readTripRegion<T>(
   path: string,
   revalidate: number,
-  query: Record<string, string | undefined> = {}
+  query: Record<string, string | undefined> = {},
+  tags: string[] = [TRIP_REGION_CACHE_TAG]
 ): Promise<T> {
   const params = new URLSearchParams();
   for (const [key, value] of Object.entries(query)) {
@@ -42,13 +45,27 @@ async function readTripRegion<T>(
   const qs = params.toString();
   const url = `${getApiBaseUrl()}/v1/trip-regions/${ORLANDO_REGION}${path}${qs ? `?${qs}` : ''}`;
   const response = await fetch(url, {
-    next: { revalidate, tags: [TRIP_REGION_CACHE_TAG] },
+    next: { revalidate, tags },
     headers: { 'Content-Type': 'application/json', ...getServerApiHeaders() },
   });
   if (!response.ok) {
     throw new Error(`Trip region ${path || '/'} ${response.status}: ${response.statusText}`);
   }
   return (await response.json()) as T;
+}
+
+/** The Data Cache tag of the ticket catalog, which the API revalidates after every admin edit. */
+export const TRIP_TICKETS_CACHE_TAG = `trip-tickets:${ORLANDO_REGION}`;
+
+/**
+ * The ticket catalog as the admin keeps it (`/tickets`): open, five minutes at the edge, and
+ * revalidated by tag on every edit. The region route's own `tickets` is the fallback while this
+ * route is missing or failing.
+ */
+export function getOrlandoTickets(): Promise<TripTicketCatalog> {
+  return readTripRegion<TripTicketCatalog>('/tickets', CACHE_TTL.tripTickets, {}, [
+    TRIP_TICKETS_CACHE_TAG,
+  ]);
 }
 
 /** The region: its parks, groups, hotel areas and travel legs. Open, curated in code. */
