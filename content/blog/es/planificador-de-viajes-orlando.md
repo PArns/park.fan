@@ -38,9 +38,9 @@ seo:
     - merece la pena el Park Hopper
 ---
 
-El 8 de diciembre de 2026 tendrás que salir de [Magic Kingdom](ref:magic-kingdom-park) a las 18:00 si tienes una entrada de día normal. A las 19:00 empieza Mickey's Very Merry Christmas Party, que pide una entrada aparte. El día anterior, el parque abre hasta las 22:00. En las grandes atracciones esperamos más o menos la misma gente los dos días, y por eso el 8 es traicionero: en un calendario de afluencia corriente parece tan bueno como el 7, solo que le faltan cuatro horas, y son las del espectáculo de fuegos artificiales.
+La culpa es de Mickey's Very Merry Christmas Party. Esa noche empieza a las 19:00 en [Magic Kingdom](ref:magic-kingdom-park) y pide una entrada aparte. El lunes anterior no hay fiesta, y el parque abre para todos hasta las 22:00.
 
-Para días así, [park.fan/orlando](/orlando) tiene ahora un planificador de viajes. Le dices cuándo estás en Orlando y qué parques quieres ver. Con diez días del 5 al 14 de diciembre, a Magic Kingdom le toca entonces el lunes 7, uno de los cinco días sin fiesta.
+Para días así, [park.fan/orlando](/orlando) tiene ahora un planificador de viajes. Le dices cuándo estás en Orlando y qué parques quieres ver. Con diez días del 5 al 14 de diciembre de 2026, a Magic Kingdom le toca entonces el lunes 7, uno de los cinco días sin fiesta.
 
 ## Todos los parques de Orlando en un calendario
 

@@ -38,9 +38,9 @@ seo:
     - is the Park Hopper worth it
 ---
 
-On 8 December 2026 you'll have to leave [Magic Kingdom](ref:magic-kingdom-park) at 6 pm if you hold an ordinary day ticket. Mickey's Very Merry Christmas Party starts at 7 pm, and it needs a ticket of its own. The day before, the park stays open until 10 pm. We expect about the same crowds at the big rides on both days, which is what makes the 8th a trap: in an ordinary crowd calendar it looks as good as the 7th, it just has four hours fewer, and they're the ones with the fireworks.
+The reason is Mickey's Very Merry Christmas Party. It starts at 7 pm that evening at [Magic Kingdom](ref:magic-kingdom-park), and it needs a ticket of its own. On the Monday before there's no party, and the park stays open to everyone until 10 pm.
 
-For days like that, [park.fan/orlando](/orlando) now has a trip planner. You say when you're in Orlando and which parks you want to see. For ten days from 5 to 14 December, Magic Kingdom then gets Monday the 7th, one of the five days without a party.
+For days like that, [park.fan/orlando](/orlando) now has a trip planner. You say when you're in Orlando and which parks you want to see. For ten days from 5 to 14 December 2026, Magic Kingdom then gets Monday the 7th, one of the five days without a party.
 
 ## Every Orlando park in one calendar
 

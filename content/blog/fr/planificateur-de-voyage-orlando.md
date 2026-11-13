@@ -38,9 +38,9 @@ seo:
     - le Park Hopper vaut-il le coup
 ---
 
-Le 8 décembre 2026, tu devras quitter [Magic Kingdom](ref:magic-kingdom-park) à 18 h si tu as un billet à la journée ordinaire. À 19 h commence Mickey's Very Merry Christmas Party, qui demande un billet à part. La veille, le parc reste ouvert jusqu’à 22 h. Aux grandes attractions, on attend à peu près autant de monde les deux jours, et c’est ce qui rend le 8 piégeux : dans un calendrier d’affluence ordinaire, il a l’air aussi bon que le 7, il lui manque juste quatre heures, celles du feu d’artifice.
+La faute à Mickey's Very Merry Christmas Party. Elle commence ce soir-là à 19 h à [Magic Kingdom](ref:magic-kingdom-park), et il faut un billet à part pour y entrer. Le lundi, la veille, il n’y a pas de soirée spéciale, et le parc reste ouvert à tout le monde jusqu’à 22 h.
 
-Pour ce genre de journée, [park.fan/orlando](/orlando) a maintenant un planificateur de voyage. Tu indiques quand tu es à Orlando et quels parcs tu veux voir. Pour dix jours du 5 au 14 décembre, Magic Kingdom reçoit alors le lundi 7, un des cinq jours sans soirée spéciale.
+Pour ce genre de journée, [park.fan/orlando](/orlando) a maintenant un planificateur de voyage. Tu indiques quand tu es à Orlando et quels parcs tu veux voir. Pour dix jours du 5 au 14 décembre 2026, Magic Kingdom reçoit alors le lundi 7, un des cinq jours sans soirée spéciale.
 
 ## Tous les parcs d’Orlando dans un seul calendrier
 

@@ -38,9 +38,9 @@ seo:
     - loont de Park Hopper
 ---
 
-Op 8 december 2026 moet je [Magic Kingdom](ref:magic-kingdom-park) om 18 uur verlaten als je een gewoon dagticket hebt. Om 19 uur begint Mickey's Very Merry Christmas Party, en daarvoor heb je een apart ticket nodig. De dag ervoor is het park tot 22 uur open. Bij de grote attracties verwachten we op allebei de dagen ongeveer even veel drukte, en precies daarom is de 8e verraderlijk: in een gewone druktekalender ziet hij er net zo goed uit als de 7e, hij heeft alleen vier uur minder, en dat zijn de uren met het vuurwerk.
+De reden is Mickey's Very Merry Christmas Party. Die begint die avond om 19 uur in [Magic Kingdom](ref:magic-kingdom-park), en daarvoor heb je een apart ticket nodig. Op de maandag ervoor is er geen feest, en dan is het park voor iedereen open tot 22 uur.
 
-Voor zulke dagen staat er op [park.fan/orlando](/orlando) nu een reisplanner. Je zegt wanneer je in Orlando bent en welke parken je wilt zien. Bij tien dagen van 5 tot en met 14 december krijgt Magic Kingdom dan maandag de 7e, een van de vijf dagen zonder feest.
+Voor zulke dagen staat er op [park.fan/orlando](/orlando) nu een reisplanner. Je zegt wanneer je in Orlando bent en welke parken je wilt zien. Bij tien dagen van 5 tot en met 14 december 2026 krijgt Magic Kingdom dan maandag de 7e, een van de vijf dagen zonder feest.
 
 ## Alle parken van Orlando in één kalender
 
