@@ -390,9 +390,60 @@ The path guard and the query of `/api/admin/[...path]`, pure so they can be test
 - `SEEN_SECTION_ORDER` _const_: The places in the order the page has them.
 - `NAV_MENU_LABEL` _const_: The header's menus in German.
 - `CROSSTAB_FIXED` _const_: The dimensions every event can be crossed by, besides its own properties.
+- `CROSSTAB_REST` _const_: What the API puts in the place of the values past the 30 biggest of a crosstab side. It is a value nothing real can be: `other` is a real page type.
 - `TRAFFIC_CROSSTAB_PRESETS` _const_: The pairs the traffic crosstab offers as shortcuts, each with the metric that has its dimensions.
 - `PLANNER_STAGE_LABEL` _const_: The planner funnel's stages in German, for its tiles and its series alike.
 - Types: `FilterDimension`, `TrafficFilter`, `DatacenterScope`, `TrafficQueryState`, `TrafficDelta`, `CrosstabMetric`, `SectionReachRow`, `SectionReach`
+
+### [`tickets.ts`](../../lib/admin/tickets.ts)
+
+The ticket catalog of a trip region as `/admin/tickets` edits it: every product the Orlando planner computes with, its rules, its purchase links and the research behind it.
+
+- `ticketCatalogPath` _function_: The proxy path of a region's catalog, or of one product and its actions below it.
+- `ticketCatalogKey` _function_: The query key of one region's catalog.
+- `emptyTicketDraft` _function_: A new product's draft: one day, one link that is the operator's shop, nothing suggested.
+- `draftFromProduct` _function_: The draft of a stored product, every optional field filled with its empty form value.
+- `windowTableFor` _function_: The window table for the lengths `min` to `max`: a length keeps the window it had, a new one starts at the window of the length before it and never under its own days, the two checks the API runs.
+- `setTicketWindow` _function_: The table with the window of one length changed.
+- `setTicketDays` _function_: The draft with new days: a fixed length is its own range, and the window table follows the lengths. Switching to unlimited keeps the lengths and the table for a way back.
+- `ticketBody` _function_: The full product the draft stands for, with only the fields its choices use: no window table for unlimited days, no hop sets without hopping, no empty optional field.
+- `ticketPatch` _function_: The `PATCH` for an edit: the fields that differ from the stored product, and `null` for an optional field the edit emptied, since leaving it out would keep the old value in the merge. Never `slug`, which is fixed after create.
+- `formatTicketDays` _function_: A product's days and window in one line, as the list shows them: „4 Tage in 7“, „14 Tage am Stück“, „1–10 Tage in 1–14“, „Pass, beliebig viele Tage“. A window counted from the first visit says so.
+- `formatTicketSale` _function_: When a product is sold and how long a pass lasts, in one line: „Start 3.1.–22.5.2027“, „Start ab 3.9.2026 · gültig bis 31.12.2027“. Without either, the API knows no limit and the line says so.
+- `formatTicketLinks` _function_: How many links a product has and how many of them are partner links: „3 Links, 1 Partnerlink“.
+- `ticketUrlProblem` _function_: What is wrong with a url the catalog stores, in German, or null: an absolute `https` address of at most 500 characters without user or password, the API's own check.
+- `ticketLinkProblems` _function_: The API's checks on a product's links, run in the form so a link shows its problem while it is typed: one to ten links, exactly one of them the operator's shop, a seller name and a valid url on each.
+- `setOfficialTicketLink` _function_: The links with the one at `index` as the operator's shop and no other.
+- `moveItem` _function_: The list with the item at `from` moved to `to`; out-of-range moves return it unchanged.
+- `ticketProblemsOf` _function_: The problem list of a refused write or a `validate` answer (`{ problems: [{ path, message }] }`), or an empty list when the payload carries none.
+- `ticketProblemField` _function_: The product field a problem's path is about: `windowTable[2].window` → `windowTable`.
+- `ticketProblemsAt` _function_: The messages of the problems at exactly `path`, for the field that owns it.
+- `ticketProblemsUnder` _function_: The problems at `path` and below it (`days`, `days.min`; `links[1]`, `links[1].url`), for a row or a field that shows its parts together. `links[1]` does not take `links[10]`.
+- `strayTicketProblems` _function_: The problems no field of the form shows: a path outside `fields`, the dry run's (`dryRun.owned`) or none at all. The form lists them on their own, so a check the API adds first is never lost.
+- `mergeTicketProblems` _function_: Two problem lists as one, each path and message once.
+- `sortTicketProducts` _function_: The products in the admin's order, `sortOrder` first and the API's order after that.
+- `ticketOrderAfterMove` _function_: The whole region's order after moving one product up (`-1`) or down (`1`) inside its resort, as `PUT …/order` takes it: it swaps places with the nearest product of the same resort, wherever the others sit. Null at the end of its resort.
+- `groupTicketsByResort` _function_: The products grouped by resort, the region's groups in the region's order and a resort the region does not know after them under its key, each group in the admin's order.
+- `ticketLinkHost` _function_: The host a click names its link by: lower case, without `www.`, or null for no url.
+- `ticketClicks` _function_: A product's clicks, from the event counted by product against host and, for links of one product that share a host, by product against seller.
+- `sharesTicketLinkHost` _function_: Whether a product has two links on one host, which only the seller tells apart.
+- `TICKET_MARKETS` _const_: The markets in the order the form lists them.
+- `TICKET_MARKET_LABELS` _const_: What each market is called in the admin.
+- `TICKET_LOCALES` _const_: The site languages a link can be limited to: the site's own six.
+- `TICKET_CONFIDENCE_LABELS` _const_: What each confidence is called in the admin.
+- `TICKET_ANCHOR_LABELS` _const_: What each anchor is called in the admin.
+- `TICKET_HOPPING_LABELS` _const_: What each hopping kind is called in the admin.
+- `MAX_TICKET_DAYS` _const_: The backend's limits, repeated where the form checks before it asks.
+- `MAX_TICKET_WINDOW` _const_: The longest window a length may have.
+- `MAX_TICKET_LINKS` _const_: Links per product.
+- `MAX_TICKET_URL_LENGTH` _const_: Characters of any url the catalog stores.
+- `MAX_TICKET_SELLER_LENGTH` _const_: Characters of a seller's name.
+- `TICKETS_QUERY_KEY` _const_: The query key every ticket read sits under, so one invalidation drops all of them.
+- `TICKET_LINK_EVENT` _const_: The event the planner sends for a click on a ticket link, with `product`, `seller`, `host`, `official`, `sponsored`, `position` and `surface`. Its words live in `SiteEventMap`; the admin only reads it.
+- `TICKET_CLICK_DAYS` _const_: The window the ticket admin counts clicks in, in UTC days with today.
+- `TICKET_CLICKS_HREF` _const_: The event's own page in the admin, opened on its days and on product against host, the table the figures here are read from.
+- `EMPTY_TICKET_CLICKS` _const_: A crosstab with nothing in it, for an event that has never been sent.
+- Types: `TicketMarket`, `TicketConfidence`, `TicketAnchor`, `TicketHopping`, `TicketDaysRange`, `TicketWindowRow`, `TicketHopSet`, `TicketCap`, `TicketAllowance`, `TicketLink`, `TicketSaleRange`, `TicketSource`, `AdminTicketProduct`, `AdminTicketCatalog`, `TicketProblem`, `TicketDryRunResult`, `TicketDryRun`, `TicketValidation`, `TicketDaysMode`, `TicketWindowDraftRow`, `TicketDaysDraft`, `TicketRuleDraft`, `TicketSaleDraft`, `TicketDraft`, `TicketWriteBody`, `TicketResortGroup`, `TicketClickTable`, `TicketClicks`
 
 ### [`totp.ts`](../../lib/admin/totp.ts)
 
