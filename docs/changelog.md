@@ -84,6 +84,8 @@ höchstens einmal pro Viertelstunde. Der Wizard plant den heutigen Tag jetzt ab 
 
 **Aufrufe pro Key.** Die API zählt jeden Aufruf eines Keys pro Tag (UTC, 30 Tage) und pro Monat (12 Monate), auch beim Key der Website, dazu die Aufrufe, die das Stundenlimit abgelehnt hat. In der Liste steht unter jedem Key eine Sparkline mit „heute … · 30 Tage …“; der Diagramm-Button öffnet den Verlauf pro Tag und die Summen pro Monat, ab dem ersten Monat mit Aufrufen (`formatKeyUsage`, `usedMonths`).
 
+**Keys rotieren.** `/admin/api-keys` hat pro aktivem Key einen Rotieren-Button. Der Dialog fragt nach der Übergangszeit (sofort sperren, 1 Stunde, 24 Stunden als Vorgabe oder 7 Tage) und sagt in einem Satz, was mit dem alten Key passiert; beim Key der Website erinnert er daran, den neuen Key in Vercel als `API_DATA_KEY` einzutragen. Die API (`POST /v1/admin/api-keys/:id/rotate`) gibt dem Key ein neues Geheimnis, Name, Nutzung, Limits, Parks und Statistik bleiben. Den neuen Key zeigt der Dialog einmal, mit Kopier-Button und der Warnung, ihn jetzt zu speichern, über dieselbe Anzeige wie beim Erstellen (`OneTimeKey`), die jetzt auch den Fokus auf den Kopier-Button legt. Solange die Übergangszeit läuft, steht in der Liste „Alter Key gültig bis …, zuletzt genutzt …“ (`formatPreviousKeyStatus`, `previousKeyValidUntil`) mit dem Button „Alten Key jetzt sperren“ hinter einer Rückfrage (`DELETE …/previous`); „zuletzt genutzt“ in der Zeile gilt nach einer Rotation dem neuen Key, dazu „rotiert vor …“. Die Pfade baut `dataApiKeyPath`. `pnpm test:admin-api-keys` prüft die Auswahl, die Sätze und die Statuszeile.
+
 ### Parkys Riesenrad-Hut ist beim Verbindungscheck wieder ganz zu sehen
 
 In `AssistantChallenge` lag das Parky-SVG mit `drop-shadow-lg` direkt über dem pulsierenden
