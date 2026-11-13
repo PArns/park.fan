@@ -34,6 +34,7 @@ import {
   strayTicketProblems,
   ticketBody,
   ticketCatalogPath,
+  ticketCheck,
   ticketClicks,
   ticketLinkProblems,
   ticketPatch,
@@ -194,19 +195,21 @@ export function TicketEditor({
     update((current) => ({ ...current, [key]: value }));
 
   const body = useMemo(() => ticketBody(draft), [draft]);
-  const bodyKey = useMemo(() => JSON.stringify(body), [body]);
   const initialKey = useMemo(() => JSON.stringify(ticketBody(initial)), [initial]);
   const patch = useMemo(() => (product ? ticketPatch(product, draft) : null), [product, draft]);
-  const dirty = patch ? Object.keys(patch).length > 0 : bodyKey !== initialKey;
+  const dirty = patch ? Object.keys(patch).length > 0 : JSON.stringify(body) !== initialKey;
 
-  const settledKey = useDebouncedValue(bodyKey, VALIDATE_DELAY_MS);
+  const check = useMemo(() => ticketCheck(region, product, draft), [region, product, draft]);
+  const checkKey = useMemo(() => JSON.stringify(check), [check]);
+  const settledKey = useDebouncedValue(checkKey, VALIDATE_DELAY_MS);
   const validation = useQuery<TicketValidation, AdminApiError>({
-    queryKey: ['admin', 'ticket-validate', region, settledKey],
+    queryKey: ['admin', 'ticket-validate', settledKey],
     queryFn: async ({ signal }) => {
+      const settled = JSON.parse(settledKey) as ReturnType<typeof ticketCheck>;
       try {
-        return await adminFetch<TicketValidation>(ticketCatalogPath(region, 'validate'), {
+        return await adminFetch<TicketValidation>(settled.path, {
           method: 'POST',
-          body: JSON.parse(settledKey) as object,
+          body: settled.body,
           signal,
         });
       } catch (err) {
@@ -222,13 +225,9 @@ export function TicketEditor({
     retry: false,
     placeholderData: keepPreviousData,
   });
-  const checking = canEdit && dirty && (settledKey !== bodyKey || validation.isFetching);
+  const checking = canEdit && dirty && (settledKey !== checkKey || validation.isFetching);
   const checked = !checking && dirty && validation.isSuccess ? validation.data : null;
-  // An edit checks the product under its own slug, which the API may count as taken; the slug is
-  // fixed after create, so no problem about it is one this form could answer.
-  const apiProblems = (dirty ? (validation.data?.problems ?? []) : []).filter(
-    (problem) => !product || ticketProblemField(problem.path) !== 'slug'
-  );
+  const apiProblems = dirty ? (validation.data?.problems ?? []) : [];
   const localProblems = useMemo(() => ticketLinkProblems(draft.links), [draft.links]);
   const problems = mergeTicketProblems(localProblems, apiProblems, saveProblems);
   const refused = checked !== null && !checked.ok;
