@@ -183,6 +183,20 @@ Without a catalog the step and the card are not drawn, plan first works as befor
   "Disney days and Universal days" offers three answers: mixed only where it saves time (the API's
   default), always together (`blocks=1`), mixed wherever the lines are shorter (`blocks=0`).
 
+## Analytics
+
+The planner's events go to our own statistic through `trackSiteEvent` and its gates
+([site analytics](site-analytics.md), [the inventory](../development/analytics.md)); the
+properties are built in `lib/orlando/plan-analytics.ts` and pinned by `pnpm test:orlando-plan`.
+
+- **`ticket_link_clicked`**: a purchase link followed, middle click included. `product` (the
+  catalog id), `seller`, `host`, `kind` (official, sponsored, plain), `position` in the list the
+  visitor saw (1-based), `locale_match` (ordered first for the visitor's locale or market), `surface`
+  (suggestion, long_stay, owned) and `ticket_mode` (plan_first, owned, mixed). Eight is the
+  statistic's limit, so the region (Orlando is the only one) and the resort (the product's) are left
+  out. No entity: no single park is meant. The admin's event page breaks it down by seller, product
+  and host.
+
 ## Editing a plan
 
 - **Pin** writes `slug@date` (or `rest@date`) to `lock=` and re-plans around it.

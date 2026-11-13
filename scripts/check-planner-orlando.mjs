@@ -370,6 +370,9 @@ export async function checkOrlandoTickets({ browser, base, check }) {
   {
     // The seed carries no sponsored link, so one is added to the answer the browser receives.
     const { context, page } = await open(DESK, { answer: 'no' });
+    await context.addInitScript(() => {
+      window.__parkfanEventLog = [];
+    });
     await page.route('**/api/trip-regions/orlando/plan?*', async (route) => {
       const response = await route.fetch();
       const json = await response.json();
@@ -407,6 +410,23 @@ export async function checkOrlandoTickets({ browser, base, check }) {
       'Orlando · der offizielle Shop ist rel="noopener" ohne noreferrer, Herkunft park.fan',
       b.rel === 'noopener' && b.referrer === 'origin',
       JSON.stringify(b)
+    );
+    // The click opens the seller in a new tab; the count is what matters here.
+    context.on('page', (opened) => opened.close().catch(() => {}));
+    await sponsored.click();
+    const counted = await page.evaluate(() =>
+      (window.__parkfanEventLog ?? []).filter((e) => e.name === 'ticket_link_clicked')
+    );
+    check(
+      'Orlando · ein Klick auf einen Ticket-Link zählt als ticket_link_clicked',
+      counted.length === 1 &&
+        counted[0].props.kind === 'sponsored' &&
+        counted[0].props.seller === 'Partner Shop' &&
+        counted[0].props.host === 'partner.example' &&
+        counted[0].props.position === 1 &&
+        counted[0].props.surface === 'suggestion' &&
+        counted[0].props.ticket_mode === 'plan_first',
+      JSON.stringify(counted[0]?.props ?? 'kein Ereignis')
     );
     const label = sponsored.locator('xpath=following-sibling::*[@data-partner-label]');
     await label.click();

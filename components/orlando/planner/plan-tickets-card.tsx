@@ -28,6 +28,12 @@ import {
   type HopperGain,
 } from '@/lib/orlando/plan-tickets';
 import type { TicketLink } from '@/lib/orlando/types';
+import { ticketLinkClickProps, ticketModeOf } from '@/lib/orlando/plan-analytics';
+import {
+  trackSiteEvent,
+  type TicketLinkSurface,
+  type TicketMode,
+} from '@/lib/analytics/site-analytics';
 import type { PlanHopperVerdict, PlanOwnedTicket, PlanTicketSuggestion } from '@/lib/orlando/plan';
 import { orlandoTicketAnswer } from '@/lib/orlando/ticket-answer';
 import { Badge } from '@/components/ui/badge';
@@ -480,6 +486,9 @@ function SuggestionDetails({
                 <PurchaseLinks
                   source={catalog.get(id) ?? {}}
                   resort={catalog.get(id)?.resort ?? ''}
+                  product={id}
+                  surface="long_stay"
+                  ticketMode={ticketModeOf(plan.meta.tickets?.length ?? 0, suggested.length)}
                 />
               </li>
             ))}
@@ -603,6 +612,9 @@ function SuggestionResort({
       <PurchaseLinks
         source={s.links?.length || s.shopUrl ? s : (product ?? {})}
         resort={s.resort}
+        product={s.product}
+        surface="suggestion"
+        ticketMode={ticketModeOf(plan.meta.tickets?.length ?? 0, suggested.length)}
         title
       />
     </section>
@@ -736,10 +748,16 @@ function ShopLink({
 function PurchaseLinks({
   source,
   resort,
+  product,
+  surface,
+  ticketMode,
   title = false,
 }: {
   source: { links?: readonly TicketLink[]; shopUrl?: string };
   resort: string;
+  product: string;
+  surface: TicketLinkSurface;
+  ticketMode: TicketMode;
   title?: boolean;
 }) {
   const t = useTranslations('orlandoPlanner.tickets');
@@ -751,21 +769,25 @@ function PurchaseLinks({
     () => navigator.languages?.[0] ?? '',
     () => ''
   );
-  const links = orderTicketLinks(
-    source,
-    { locale, market: visitorMarket(language ? [language] : []) },
-    resortWord(resort)
-  );
+  const visitor = { locale, market: visitorMarket(language ? [language] : []) };
+  const links = orderTicketLinks(source, visitor, resortWord(resort));
+  const count = (link: TicketLink, index: number) =>
+    trackSiteEvent(
+      'ticket_link_clicked',
+      ticketLinkClickProps({ product, link, index, visitor, surface, ticketMode })
+    );
   if (links.length === 0) return null;
   return (
     <div className="flex flex-col" data-plan-purchase-links="">
       {title && <p className="text-foreground/75 pt-1">{t('links.title')}</p>}
       <ul className="flex flex-col">
-        {links.map((link) => (
+        {links.map((link, index) => (
           <li key={link.url} className="flex flex-wrap items-center gap-x-2">
             <a
               href={link.url}
               {...ticketLinkAttributes(link)}
+              onClick={() => count(link, index)}
+              onAuxClick={(event) => event.button === 1 && count(link, index)}
               data-ticket-link={link.sponsored ? 'sponsored' : link.official ? 'official' : 'plain'}
               className={cn(
                 'text-primary-ink inline-flex min-h-11 items-center gap-1 py-2 font-medium underline-offset-4 hover:underline',

@@ -112,6 +112,13 @@ by hand: change the comment in the code and re-run the script. -->
 - `ORLANDO_MONTH_COUNT` _const_: How many months the hub serves: the current month (the hub itself) and the eleven after it, in Orlando time. Past `forecastUntil` a month reads last year's measured days with a banner.
 - Types: `OrlandoBestTimeResort`, `OrlandoRelayRoute`
 
+### [`plan-analytics.ts`](../../lib/orlando/plan-analytics.ts)
+
+- `sellerProp` _function_: A seller's name as a property value: the characters the statistic keeps, at most 60.
+- `hostProp` _function_: A link's host without `www.`, or `unknown` for a url that is none.
+- `ticketModeOf` _function_: Which tickets a plan was made with, from the plan's own tickets and suggestions.
+- `ticketLinkClickProps` _function_: `ticket_link_clicked` for one link of the list a visitor saw, `index` 0-based in that list.
+
 ### [`plan-copy.ts`](../../lib/orlando/plan-copy.ts)
 
 - `climateChips` _function_: The climate chips of a day's or a window's warnings, in order, the season folded into its peak.

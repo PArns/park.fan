@@ -828,6 +828,10 @@ export const EVENT_INFO: Record<SiteEventName, EventInfo> = {
     label: 'Fehlerseite gezeigt',
     when: 'Eine Fehlerseite wird angezeigt; ohne Text der Meldung.',
   },
+  ticket_link_clicked: {
+    label: 'Ticket-Link geklickt',
+    when: 'Ein Kauf-Link im Orlando-Planer; mit Produkt, Verkäufer, Host, Art (offiziell, Partner, andere), Platz in der Liste, Sprach- oder Markt-Treffer, Ort und Ticket-Modus.',
+  },
   share_clicked: {
     label: 'Teilen gedrückt',
     when: 'Ein Teilen-Knopf unter einem Beitrag, Park oder Fahrgeschäft oder der Link des Plans; mit dem Weg, nicht dem Inhalt.',
