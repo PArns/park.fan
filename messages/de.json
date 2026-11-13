@@ -363,7 +363,7 @@
     "plannedDays": "{count, plural, =1 {# geplanter Tag} other {# geplante Tage}}",
     "openMyPlan": "Meinen Plan öffnen",
     "newDay": "Neuer Tag",
-    "planDayIn": "Einen Tag planen in",
+    "planDayIn": "Einen Tag planen im",
     "glossary": "Wörterbuch",
     "glossaryHint": "Begriffe aus Warteschlange und Achterbahn, erklärt.",
     "blog": "Guides",
