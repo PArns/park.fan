@@ -7,7 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Sesame Place Philadelphia feiert vom 14. November bis zum 3. Januar 2027 A Very Furry Christmas. Neu ist unter anderem eine Nussknacker-Show mit Elmo und seinem Hund Tango. Das Weihnachtsprogramm ist im Parkeintritt enthalten.
+  Sesame Place Philadelphia feiert an 30 Tagen zwischen dem 14. November und dem 3. Januar 2027 A Very Furry Christmas. Neu ist unter anderem eine Nussknacker-Show mit Elmo und seinem Hund Tango. Das Weihnachtsprogramm ist im Parkeintritt enthalten.
 tags:
   - news
   - sesame-place
@@ -22,7 +22,7 @@ rideLinks: false
 seo:
   title: 'Wann hat Sesame Place zu Weihnachten 2026 geöffnet?'
   description: >-
-    A Very Furry Christmas im Sesame Place Philadelphia läuft vom 14.11.2026 bis 3.1.2027 ohne Aufpreis. Neu ist eine Nussknacker-Show mit Elmo.
+    A Very Furry Christmas im Sesame Place Philadelphia läuft an 30 Tagen vom 14.11.2026 bis 3.1.2027 ohne Aufpreis. Neu ist eine Nussknacker-Show mit Elmo.
   keywords:
     - Sesame Place Weihnachten
     - Sesame Place A Very Furry Christmas
@@ -35,23 +35,23 @@ seo:
     - The Nutcracker with Elmo & Tango
 ---
 
-[Sesame Place Philadelphia](ref:sesame-place-langhorne) in Langhorne startet am Samstag, 14. November, A Very Furry Christmas, und drei Programmpunkte sind in diesem Jahr neu: die Show The Nutcracker with Elmo & Tango, Elf Training with Big Bird & Snuffy und die Winter Warm-Up Lounge in Elmo's Pizza Kitchen. Das Weihnachtsevent läuft an ausgewählten Tagen bis zum 3. Januar 2027 und ist im Parkeintritt enthalten. Dazu gehören Millionen Lichter, eine Weihnachtsparade, ein Lichterbaum mit eigener Show und der Weihnachtsmann in seiner Werkstatt.
+[Sesame Place Philadelphia](ref:sesame-place-langhorne) in Langhorne startet am Samstag, 14. November, A Very Furry Christmas. Neu sind in diesem Jahr eine Nussknacker-Show mit Elmo und seinem Hund Tango, ein Elfen-Training mit Big Bird und Snuffy und eine Aufwärm-Lounge in Elmo's Pizza Kitchen. Das Weihnachtsevent läuft an 30 Tagen bis zum 3. Januar 2027 und ist im Parkeintritt enthalten, im Park hängen dazu Millionen Lichter.
 
 ## Was neu ist
 
-The Nutcracker with Elmo & Tango im Elmo's Studio Theater erzählt Tangos erstes Weihnachten in der Sesame Street nach. Tango ist Elmos Hund, und die beiden reisen im Traum durch das „Land of Sweets“, um Tangos Spielzeug-Nussknacker wiederzufinden. Wer einen Hund hat, kennt die Suche nach dem Lieblingsspielzeug, meist allerdings unter dem Sofa und nicht im Zuckerland. Feste Spielzeiten für die Show hat Sesame Place noch nicht veröffentlicht, das Tagesprogramm wird jeweils zur Parköffnung aktualisiert.
+The Nutcracker with Elmo & Tango im Elmo's Studio Theater erzählt Tangos erstes Weihnachten in der Sesame Street nach. Tango ist Elmos Hund, und die beiden reisen im Traum durch das „Land of Sweets“, um Tangos Spielzeug-Nussknacker wiederzufinden. Wer einen Hund hat, kennt die Suche nach dem Lieblingsspielzeug, meist allerdings unter dem Sofa und nicht im Zuckerland.
 
-Beim Elf Training with Big Bird & Snuffy im Birthday Party Room bringt der Elf Sparklewrap den beiden bei, was ein Elf in Santas Werkstatt zu tun hat. Die Kinder im Publikum dürfen mitmachen und mitsingen, am Ende gibt es ein Foto mit Big Bird und Snuffy.
+Beim Elf Training with Big Bird & Snuffy im Birthday Party Room bringt der Elf Sparklewrap den beiden bei, was ein Elf in Santas Werkstatt zu tun hat. Die Kinder im Publikum dürfen mitmachen und mitsingen, danach gibt es die Gelegenheit zu einem Foto mit Big Bird und Snuffy.
 
-Für die Winter Warm-Up Lounge wird Elmo's Pizza Kitchen umgebaut. Es gibt Musik, saisonale Snacks und warme Getränke wie heiße Schokolade, an Spielstationen stehen unter anderem Giant Jenga und Connect Four, und Figuren aus der Sesame Street kommen für Fotos vorbei. Im Obergeschoss passt ausgerechnet Cookie Monster auf die Kekse auf. Bei Cookies & Cocoa with Cookie Monster verzieren Kinder einen Lebkuchenkeks, trinken heiße Schokolade und lassen sich mit ihm fotografieren. Das kostet extra.
+Die Winter Warm-Up Lounge liegt in Elmo's Pizza Kitchen. Es gibt Musik, saisonale Snacks und warme Getränke wie heiße Schokolade, Kinder spielen an eigenen Spielstationen, die ganze Familie an Spielen wie Giant Jenga und Connect Four, und Figuren aus der Sesame Street kommen für Fotos vorbei. Im Obergeschoss der Lounge sitzt ausgerechnet Cookie Monster bei den Keksen: Bei Cookies & Cocoa with Cookie Monster verzieren Kinder einen Lebkuchenkeks, trinken heiße Schokolade und lassen sich mit ihm fotografieren.
 
-## Parade, Lichterbaum und Weihnachtsmann
+## Parade, Shows und Weihnachtsmann
 
-Die Sesame Street Christmas Parade zieht mit Festwagen und drei Showeinlagen durch den Park, mit Elmo, Cookie Monster, Abby Cadabby, Big Bird, Oscar, Bert, Ernie, Zoe und Telly. Gesungen werden unter anderem „Sleigh Ride“ und „Jingle Bells“, und Elmo rappt zu „Santa Claus Is Coming to Town“. Am Eröffnungstag startet die Parade um 18 Uhr.
+Die Sesame Street Christmas Parade zieht mit Festwagen und drei Showeinlagen durch den Park. Mit dabei sind neun Figuren, von Elmo und Big Bird bis Bert und Ernie. Gesungen werden unter anderem „Sleigh Ride“ und „Jingle Bells“, und Elmo rappt zu „Santa Claus Is Coming to Town“.
 
-An der Oscar's Wacky Taxi Stage steht der 1-2-3 Christmas Tree, gut neun Meter (30 Fuß) hoch. In seiner Lichtshow laufen Bilder und Lichter im Takt der Musik, am 14. November um 17:30 und 18:30 Uhr. Auf derselben Bühne läuft die Furry Friends Holiday Dance Party. Im Sesame Street Theater spielen Elmo, Cookie Monster, Grover, Zoe, Rosita und Murray Elmo's Christmas Wish, im Abby's Paradise Theater läuft A Very Merry Sesame Street Sing-Along.
+An der Oscar's Wacky Taxi Stage steht der 1-2-3 Christmas Tree, gut neun Meter (30 Fuß) hoch. In seiner Lichtshow laufen Bilder und Lichter im Takt der Musik, und auf derselben Bühne läuft die Furry Friends Holiday Dance Party. Im Sesame Street Theater spielen Elmo, Cookie Monster, Grover, Zoe, Rosita und Murray Elmo's Christmas Wish, im Abby's Paradise Theater läuft A Very Merry Sesame Street Sing-Along. Die Spielzeiten aller Shows stehen im Tagesprogramm, das der Park zur Parköffnung aktualisiert.
 
-Den Weihnachtsmann triffst du in Santa's Furry Workshop neben dem Sesame Street Theater. Neu ist dort eine virtuelle Warteschlange, der Weg zum Weihnachtsmann führt also übers Handy der Eltern. Du meldest dich am Tinsel Tent an, bekommst eine SMS, wenn du an der Reihe bist, und hast dann 20 Minuten, um hinzukommen. Briefe an den Weihnachtsmann schreiben Kinder bei Letters to Santa in Mr. Hooper's Gift Shop. Heiligabend ist der letzte Tag mit Santa, vom 26. Dezember bis zum 3. Januar sitzt in der Werkstatt Santa Cookie Monster.
+Den Weihnachtsmann triffst du in Santa's Furry Workshop neben dem Sesame Street Theater. Neu ist dort eine virtuelle Warteschlange: Du meldest dich am Tinsel Tent vor der Werkstatt an, bekommst eine SMS, wenn ihr an der Reihe seid, und hast dann 20 Minuten, um hinzukommen. Briefe an den Weihnachtsmann schreiben Kinder bei Letters to Santa in Mr. Hooper's Gift Shop. Heiligabend ist der letzte Tag mit Santa, die virtuelle Warteschlange schließt dann um 14 Uhr. Vom 26. Dezember bis zum 3. Januar sitzt in der Werkstatt Santa Cookie Monster.
 
 ## Öffnungstage und Öffnungszeiten
 
@@ -66,7 +66,7 @@ Der Park hat an 30 Tagen geöffnet, in der Regel freitags von 16 bis 20 Uhr, sam
 - Silvester: ab 13 Uhr
 - Neujahr: 13 bis 18 Uhr
 
-Alle neun Wasserattraktionen haben Saisonpause, die Badehose bleibt also zu Hause und die Mütze kommt mit. Nach dem 3. Januar bleibt Sesame Place mindestens bis Ende Januar geschlossen.
+Alle neun Wasserattraktionen haben Saisonpause, die Badehose bleibt also zu Hause und die Mütze kommt mit.
 
 ```best-days-widget slug=sesame-place-langhorne
 
@@ -74,15 +74,15 @@ Alle neun Wasserattraktionen haben Saisonpause, die Badehose bleibt also zu Haus
 
 ## Besondere Termine
 
-Am Eröffnungsabend schaltet Santa um 17 Uhr bei Santa's Grand Illumination am 1-2-3 Christmas Tree zum ersten Mal die Beleuchtung ein.
+Am Eröffnungsabend schaltet Santa um 17 Uhr bei Santa's Grand Illumination am 1-2-3 Christmas Tree zum ersten Mal die Beleuchtung ein. Die Lichtshow am Baum läuft an diesem Tag um 17:30 und 18:30 Uhr, die Parade startet um 18 Uhr.
 
-Die Hanukkah Celebration läuft vom 4. bis 12. Dezember, geöffnet ist in dieser Zeit am 4., 5., 6., 11. und 12. Dezember. Um 16:30 Uhr zündet ein Kantor zusammen mit Baby Bear im Abby's Paradise Theater die Menora an. Im Monster Clubhouse gibt es den ganzen Tag Dreidel und Basteln, und zur Hanukkah Storytime mit Baby Bear im Elmo's Studio Theater passen höchstens 120 Gäste.
+Die Hanukkah Celebration läuft an den Öffnungstagen vom 4. bis 12. Dezember. Um 16:30 Uhr zündet ein Kantor zusammen mit Baby Bear im Abby's Paradise Theater die Menora an. Im Monster Clubhouse gibt es den ganzen Tag Dreidel und Basteln, und zur Hanukkah Storytime mit Baby Bear im Elmo's Studio Theater passen höchstens 120 Gäste.
 
 An Heiligabend beginnt um 17 Uhr in der Sesame Street Neighborhood Santa's 'Twas the Night Before Christmas Celebration. Vom 26. Dezember bis Neujahr feiert der Park die Kwanzaa Celebration, bei der im Abby's Paradise Theater die Kinara angezündet wird, mit begrenzten Plätzen. An Silvester ist um 18 Uhr das Feuerwerk „C…is for Celebrate!“ mit Elmo, Abby Cadabby, Cookie Monster und Count von Count angesetzt, nur an diesem einen Abend, und die Uhrzeit kann sich noch ändern.
 
 ## Was extra kostet
 
-Shows, Parade, Lichtshow, Elf Training und die Lounge gehören zum Eintritt. Gegen Aufpreis gibt es:
+Gegen Aufpreis gibt es:
 
 - Cookies & Cocoa with Cookie Monster: 20 Dollar
 - reservierter Platz an der Paradestrecke: 24 Dollar pro Person
@@ -90,27 +90,30 @@ Shows, Parade, Lichtshow, Elf Training und die Lounge gehören zum Eintritt. Geg
 - Dine with Elmo & Friends als Weihnachtsbuffet, nach Weihnachten als The Count's Countdown to New Year's Celebration Dine: Kinder im Black-Friday-Vorverkauf ab 13,99 Dollar
 - New Year's Eve Sweet Treats mit Desserts und Count von Count: 25 Dollar, mit reserviertem Platz fürs Feuerwerk 35 Dollar
 - Abby's Magic Queue zum Vorbeigehen an der Warteschlange: einmal ab 19,99 Dollar, unbegrenzt ab 29,99 Dollar, je nach Tag
-- All-Day Dining Deal: 29,99 Dollar
+- All-Day Dining Deal: im Black-Friday-Vorverkauf 29,99 statt 49,99 Dollar
 
 ## Tickets und Season Pass
 
-Ein Tagesticket kostet online im Black-Friday-Vorverkauf 31,99 Dollar, an der Kasse 110,99 Dollar plus Steuer. Das Any Day Ticket für 73,99 Dollar gilt sechs Monate ab dem Kauf an einem beliebigen Tag, beim Two Day Ticket ab 31,99 Dollar ist der zweite Besuch gratis. Ob der Vorverkaufspreis an jedem Eventtag gilt, hat Sesame Place nicht bekannt gegeben. Kinder bis 23 Monate kommen umsonst hinein, ab zwei Jahren zahlen sie so viel wie Erwachsene. Ein Dreijähriger kostet hier also dasselbe wie seine Mutter, nur Großeltern ab 65 bekommen an der Kasse 30 Prozent Rabatt auf das Tagesticket.
+Ein Tagesticket kostet online im Black-Friday-Vorverkauf 31,99 Dollar, an der Kasse 110,99 Dollar plus Steuer. Das Any Day Ticket gilt sechs Monate ab dem Kauf an einem beliebigen Tag und kostet im selben Vorverkauf 73,99 Dollar, beim Two Day Ticket ab 31,99 Dollar ist der zweite Besuch gratis. Ob der Vorverkaufspreis an jedem Eventtag gilt, hat Sesame Place nicht bekannt gegeben. Kinder bis 23 Monate kommen umsonst hinein, ab zwei Jahren zahlen sie so viel wie Erwachsene, ein Dreijähriger also dasselbe wie seine Mutter. Wer 65 oder älter ist, bekommt an der Kasse 30 Prozent Rabatt auf das Tagesticket.
 
-Der Season Pass 2027 gilt ab dem Kauf, also schon für den Rest von 2026 und damit für A Very Furry Christmas. Im Vorverkauf kostet Bronze 103,50 Dollar und damit weniger als ein Tagesticket an der Kasse, hat aber vier Sperrtage, deren Daten Sesame Place nicht veröffentlicht hat. Silver kostet 153 Dollar, Gold 193,50 Dollar, beide auch in neun Raten. Der Transferable Pass für ebenfalls 193,50 Dollar schließt A Very Furry Christmas ausdrücklich ohne Sperrtage ein und gilt bis zum 2. Januar 2028. Mit Platinum für 247,50 Dollar kommst du in elf Parks, darunter die von SeaWorld und Busch Gardens.
+Der Season Pass 2027 gilt ab dem Kauf, also auch für A Very Furry Christmas. Im Vorverkauf kosten die Stufen:
 
-## Für kleine Kinder und mit Autismus-Zertifikat
+- Bronze: 103,50 Dollar, gesperrt am 16., 17., 23. und 24. Oktober 2027
+- Silver: 153 Dollar, auch in neun Raten
+- Gold: 193,50 Dollar, auch in neun Raten
+- Platinum: 247,50 Dollar, gilt in elf Parks, darunter die von SeaWorld und Busch Gardens
 
-Sesame Place ist für kleine Kinder gebaut. Als erster Freizeitpark der Welt hat er 2018 vom IBCCES die Zertifizierung als Certified Autism Center bekommen, 2024 wurden beide Sesame-Place-Parks neu zertifiziert. Zum Weihnachtsevent fahren unter anderem Oscar's Wacky Taxi, Captain Cookie's High C's Adventure, Flyin' Fish und Big Bird's Tour Bus. Für die Achterbahn Oscar's Wacky Taxi Coaster muss ein Kind mindestens 102 Zentimeter (40 Zoll) groß sein.
+Bronze kostet damit weniger als ein Tagesticket an der Kasse. Den Transferable Pass für 193,50 Dollar gibt es nur zusammen mit einem Season Pass: Er gilt bis zum 2. Januar 2028 für einen Besuch pro Tag, in Begleitung des Pass-Inhabers, und schließt A Very Furry Christmas ohne Sperrtage ein.
+
+## Fahrgeschäfte im Winter und Barrierefreiheit
+
+Zum Weihnachtsevent fahren unter anderem Oscar's Wacky Taxi, Captain Cookie's High C's Adventure, Flyin' Fish und Big Bird's Tour Bus. Für die Achterbahn Oscar's Wacky Taxi Coaster muss ein Kind mindestens 102 Zentimeter (40 Zoll) groß sein. Als erster Freizeitpark der Welt hat Sesame Place 2018 vom IBCCES die Zertifizierung als Certified Autism Center bekommen, 2024 wurden beide Sesame-Place-Parks neu zertifiziert.
 
 ## Anfahrt und Parken
 
 Die Adresse ist 100 Sesame Rd, Langhorne, PA 19047. Der Park liegt an der Interstate 95 in Bucks County, Pennsylvania. Aus Philadelphia fährst du rund 30 Minuten, aus Princeton etwa 20 Minuten und aus New York City etwa anderthalb Stunden. Parken kostet ab 36 Dollar plus Steuer, und Plätze der Kategorien General und Preferred lassen sich für jeden Öffnungstag online buchen. Ohne Auto kommst du mit den Stadtbussen von SEPTA hin.
 
-## Sesame Place und sein Schwesterpark
-
-Sesame Place hat 1980 nahe der Oxford Valley Mall eröffnet und 2026 seinen 46. Geburtstag gefeiert. Genau genommen steht er in Middletown Township, Langhorne ist die Postadresse, und das Gelände misst 5,7 Hektar (14 Acres). Betrieben wird er von United Parks & Resorts, früher SeaWorld Entertainment, mit einer Lizenz von Sesame Workshop.
-
-Der Schwesterpark Sesame Place San Diego feiert A Very Furry Christmas schon seit dem 7. November, an Wochenenden und ausgewählten Tagen bis zum 3. Januar. Neu ist dort eine Grand Illumination Show an einem gut sieben Meter (24 Fuß) hohen Baum, die an jedem Eventtag läuft, außerdem ein Christmas Tree Maze. Die Parade heißt in Kalifornien Sesame Street Christmas Cavalcade.
+Sesame Place hat 1980 nahe der Oxford Valley Mall eröffnet und gehört heute zu United Parks & Resorts, früher SeaWorld Entertainment, das ihn mit einer Lizenz von Sesame Workshop betreibt. Der Schwesterpark Sesame Place San Diego feiert A Very Furry Christmas schon seit dem 7. November.
 
 [Sesame Place Philadelphia](ref:sesame-place-langhorne?full)
 
