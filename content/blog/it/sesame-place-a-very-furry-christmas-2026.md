@@ -43,7 +43,7 @@ The Nutcracker with Elmo & Tango, all'Elmo's Studio Theater, racconta il primo N
 
 All'Elf Training with Big Bird & Snuffy, nella Birthday Party Room, l'elfo Sparklewrap spiega ai due che cosa fa un elfo nel laboratorio di Babbo Natale. I bambini in sala possono partecipare e cantare, e alla fine possono farsi fotografare con Big Bird e Snuffy.
 
-La Winter Warm-Up Lounge si trova dentro Elmo's Pizza Kitchen. Chi vuole scaldarsi tra uno spettacolo e l'altro ci trova musica, cioccolata calda e snack di stagione. I bambini hanno le loro postazioni di gioco, per tutta la famiglia ci sono Giant Jenga e Connect Four, e ogni tanto passa un personaggio di Sesame Street per le foto. Al piano di sopra, e non poteva essere altrimenti, Cookie Monster sta accanto ai biscotti: a Cookies & Cocoa with Cookie Monster i bambini decorano un biscotto di pan di zenzero, bevono una cioccolata calda e si fanno fotografare con lui.
+La Winter Warm-Up Lounge si trova dentro Elmo's Pizza Kitchen. Chi vuole scaldarsi tra uno spettacolo e l'altro ci trova musica, cioccolata calda e snack di stagione. I bambini hanno le loro postazioni di gioco, a Giant Jenga e Connect Four giocano anche i genitori, e ogni tanto passa un personaggio di Sesame Street per le foto. Al piano di sopra, e non poteva essere altrimenti, Cookie Monster sta accanto ai biscotti: a Cookies & Cocoa with Cookie Monster i bambini decorano un biscotto di pan di zenzero, bevono una cioccolata calda e si fanno fotografare con lui.
 
 ## Parata, spettacoli e Babbo Natale
 

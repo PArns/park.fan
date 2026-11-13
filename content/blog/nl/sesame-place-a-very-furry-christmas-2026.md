@@ -43,7 +43,7 @@ The Nutcracker with Elmo & Tango in het Elmo's Studio Theater vertelt over Tango
 
 Bij Elf Training with Big Bird & Snuffy in de Birthday Party Room leert de elf Sparklewrap de twee wat een elf in de werkplaats van de kerstman allemaal moet doen. Kinderen in het publiek mogen meedoen en meezingen, en na afloop kunnen ze met Big Bird en Snuffy op de foto.
 
-De Winter Warm-Up Lounge zit in Elmo's Pizza Kitchen. Wie tussen twee shows wil opwarmen, vindt er muziek, warme chocolademelk en seizoenssnacks. Kinderen hebben hun eigen speelhoeken, voor het hele gezin staan Giant Jenga en Connect Four klaar, en af en toe komt er een figuur uit Sesame Street langs voor foto's. Boven in de lounge hebben ze juist Cookie Monster bij de koekjes gezet: bij Cookies & Cocoa with Cookie Monster versieren kinderen een peperkoek, drinken ze warme chocolademelk en gaan ze met hem op de foto.
+De Winter Warm-Up Lounge zit in Elmo's Pizza Kitchen. Wie tussen twee shows wil opwarmen, vindt er muziek, warme chocolademelk en seizoenssnacks. Kinderen hebben hun eigen speelhoeken, met het hele gezin speel je Giant Jenga en Connect Four, en af en toe komt er een figuur uit Sesame Street langs voor foto's. Boven in de lounge hebben ze juist Cookie Monster bij de koekjes gezet: bij Cookies & Cocoa with Cookie Monster versieren kinderen een peperkoek, drinken ze warme chocolademelk en gaan ze met hem op de foto.
 
 ## Parade, shows en de kerstman
 
