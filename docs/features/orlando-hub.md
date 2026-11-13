@@ -105,10 +105,9 @@ The intro carries the window in sentences per resort (`HubMonthSummary`): quiete
 park, the busiest, the events. It is what makes one month's HTML differ from the next.
 
 On the hub alone, the lead and the intro's first paragraph (`orlando.lead`, `orlando.opening`) are the
-opening about Orlando itself. Each figure in them has a source: the nickname is Visit Orlando's
-("Theme Park Capital of the World®" on visitorlando.com), the park counts are the region route's
-`parks[]` (eight theme parks and four water parks in Orlando, Discovery Cove, three day trips), and
-the minutes are the API's travel matrix without traffic, the Magic Kingdom transfer from
+opening about Orlando itself. Each figure in them has a source: the park counts are the region
+route's `parks[]` (eight theme parks and four water parks in Orlando, Discovery Cove, three day
+trips), and the minutes are the API's travel matrix without traffic, the Magic Kingdom transfer from
 `regions.ts` included. A change to the region or a new matrix is a reason to re-read both strings.
 
 ## SEO
