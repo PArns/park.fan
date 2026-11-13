@@ -10,11 +10,15 @@ import { weekdayName, WEEKDAYS_MONDAY_FIRST } from '@/lib/utils/intl-format';
 import { formatMonthList, formatWeekdayList, WEEKEND } from '@/lib/utils/day-runs';
 import type { BestDaysTier, ParkBestDays } from '@/lib/parks/park-stats-derive';
 
-/** Day and month on one line, each kept whole, so a narrow column breaks between them and never inside one. */
+/**
+ * Day and month on one line, each kept whole, so a narrow column breaks between them and never
+ * inside one. No `min-w-0`: the column may not shrink below its longest part, or that part runs
+ * out of it.
+ */
 function EndColumn({ label, parts }: { label: string; parts: (string | null)[] }) {
   const shown = parts.filter((p): p is string => p != null);
   return (
-    <div className="min-w-0">
+    <div>
       <dt className="text-muted-foreground mb-1.5 text-xs">{label}</dt>
       <dd className="font-medium">
         {shown.map((part, i) => (
@@ -40,10 +44,10 @@ const TIER_CHIP_CLASS: Record<BestDaysTier, string> = {
 /**
  * The park header's answer to „when is it quiet": seven weekday cells tiered against the park's
  * own other days, Monday to Friday and the weekend as two bands, and from `sm` up the quietest and
- * busiest weekdays and months below them (beside them from `lg`, where both fit on one line), from
- * the two-year aggregate. On a phone the columns are hidden by CSS only, so the HTML still carries
- * them. Server-rendered and clock-free, so hydration has nothing to compare. Always renders; the
- * caller gates on `deriveParkBestDays` returning a value.
+ * busiest weekdays and months beside them where the column has room for both, below them where it
+ * has not, from the two-year aggregate. On a phone the columns are hidden by CSS only, so the HTML
+ * still carries them. Server-rendered and clock-free, so hydration has nothing to compare. Always
+ * renders; the caller gates on `deriveParkBestDays` returning a value.
  *
  * With `forecast`, each weekday cell opens the forecast for that weekday's next dates on hover or
  * tap (`WeekdayForecastHover`); the cells themselves stay this component's markup.
@@ -134,9 +138,12 @@ export async function ParkBestDaysSummary({
     },
   };
 
+  // A wrapping row, not a breakpoint: the title card's text column is as wide as the window beside
+  // it leaves, so the viewport cannot say whether the end columns fit beside the weekdays. They
+  // wrap below them once their narrowest form (`basis-[min-content]`) no longer fits.
   return (
-    <div data-park-best-days className={cn('mt-4 flex flex-col lg:flex-row lg:gap-10', className)}>
-      <div className="sm:w-96 sm:shrink-0">
+    <div data-park-best-days className={cn('mt-4 flex flex-wrap gap-x-10 gap-y-3', className)}>
+      <div className="w-full sm:w-96 sm:shrink-0">
         {/* Caption and key share one line, which is the phone's whole budget beside the chips; the
           window is left out of that line by CSS, not markup, so the HTML still states it. */}
         <div className="text-muted-foreground mb-1.5 flex flex-wrap items-center justify-between gap-x-3 text-xs">
@@ -170,7 +177,7 @@ export async function ParkBestDaysSummary({
         )}
       </div>
 
-      <dl className="hidden text-sm sm:mt-3 sm:flex sm:gap-10 lg:mt-0">
+      <dl className="hidden grow basis-[min-content] text-sm sm:flex sm:gap-10">
         {(quiet.days || quiet.months) && (
           <EndColumn label={t('quietest')} parts={[quiet.days, quiet.months]} />
         )}
