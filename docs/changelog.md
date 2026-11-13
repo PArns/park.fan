@@ -15,6 +15,32 @@ heading, and the same pull request writes the public entry in `content/changelog
 
 Geschnitten am 2026-11-13 aus 53 Fragmenten in `docs/changelog.d/`. Der öffentliche Eintrag ist `content/changelog/2.20.0.md`. Neueste Abschnitte zuerst.
 
+### Der Orlando-Planer liest den Ticketkatalog aus der Verwaltung, zeigt Kauflinks und zählt seine Schritte
+
+Der Planer holt den Katalog von `GET /v1/trip-regions/orlando/tickets` (Tag `trip-tickets:orlando`, 300 s, die API revalidiert ihn nach jeder Änderung in `/admin/tickets`); ohne Antwort nimmt er die `tickets` der Regions-Route und ohne beide bleibt der Ticket-Schritt weg ([Orlando-Planer](features/orlando-planner.md)). Unter „Details zu den Tickets“ und bei eigenen Tickets stehen die Kauflinks des Produkts in der Reihenfolge der Verwaltung, Links für die Sprache oder den Markt des Lesers zuerst. Jeder Link geht mit `referrerPolicy="origin"` und ohne `noreferrer` hinaus, damit der Verkäufer park.fan als Herkunft sieht, obwohl die Seite selbst `same-origin` sendet; ein Partnerlink trägt `rel="sponsored nofollow noopener"` und das Etikett „Partnerlink“ mit Erklärung. Ein archiviertes Produkt in einem geteilten Link zeigt `product_archived`. Das Combo-Ticket heißt wie bei Attraction Tickets „Disney and Universal Combo Ticket“, und Produkte ohne `us` als Markt tragen „Außerhalb der USA verkauft“ statt „Nur UK & Irland“.
+
+Die Statistik zählt jeden Klick auf einen Kauflink als `ticket_link_clicked` (Produkt, Verkäufer, Host, Art, Position, Sprachtreffer, Ort, Ticketmodus) und den Planer von `trip_planner_started` über `trip_tickets_answered`, `trip_plan_requested` und `trip_plan_shown` bis zu `trip_days_saved`, `trip_ics_exported` und `trip_link_copied`, ohne Daten, Text oder Entität ([Analytics](features/orlando-planner.md#analytics)). Impressum und Datenschutz sagen, dass Ticket-Links Partnerlinks sein können und der Verkäufer park.fan als Herkunft sieht; die Liste der Statistik-Ereignisse nennt den Orlando-Planer. Die zwei Antworten auf „Hast du schon Tickets?“ sind zwei gleich hohe Chips, und die Parks mit einem zweiten Tag stehen in einem Satz.
+
+### Der Ticketkatalog des Orlando-Planers wird in der Verwaltung gepflegt
+
+Neue Seite `/admin/tickets` unter „Kuratieren“ nach „Saisons“ ([Verwaltung: Ticketkatalog](features/admin.md#the-ticket-catalog-admintickets)): jedes Produkt, mit dem der Planer rechnet, mit Name, Beschreibung, Kauflinks, Verkaufszeitraum und allen Regeln, ohne Deploy. Die Liste ordnet nach Resort, verschiebt mit Pfeilen innerhalb eines Resorts (`PUT …/order`), archiviert nach Rückfrage mit Grund fürs Änderungsprotokoll und nimmt Archiviertes wieder auf. Jede Zeile sagt „4 Tage in 7“ oder „1–10 Tage in 1–14“, den Verkaufszeitraum, die Links mit ihren Partnerlinks, den Vorschlagsrang und die Klicks der letzten 30 Tage.
+
+Das Formular prüft 700 ms nach der letzten Änderung über `validate` der API und zeigt jedes Problem an dem Feld, das sein Pfad nennt (`windowTable[2].window` unter der dritten Zeile); darüber steht die Probereise, einmal als eigenes Ticket und einmal im Vorschlag ohne Tickets, und Speichern wartet darauf. Ein Bearbeiten schickt nur die geänderten Felder, ein geleertes als `null`. Die Reihenfolge der Links ist die auf der Website, der erste steht vorn; „Partnerlink“ ist `sponsored`. Die Klicks liest die Seite aus `ticket_link_clicked`, nach Produkt und Host (bei zwei Links auf einem Host nach Verkäufer); ein nie gesendetes Ereignis zählt 0, eine fehlgeschlagene Abfrage zeigt einen Strich. Lesen darf jede Rolle, schreiben `editor`. Neu im Baukasten: `ToggleChips`, `MoveButtons` und `UrlInput`, das Feld mit dem Öffnen-Knopf, das jetzt auch die kuratierten Felder nutzen. `pnpm test:admin-tickets` prüft Zusammenfassung, Fenstertabelle, PATCH, Probleme je Feld, Links, Reihenfolge und Klicks (44 Fälle); gegen eine nachgebaute API lief die Seite bei 390 px ohne seitliches Scrollen.
+
+### News bekommen ein wiederverwendetes Foto statt der Ersatzgrafik
+
+Die Regel „ein Titelbild nur auf einer News“ in
+[News is set apart from the articles](rules/news-is-set-apart-from-the-articles.md#a-news-post-reuses-a-photo-rather-than-going-without)
+ist ersetzt. Eine News über einen Park nimmt zuerst ein noch unbenutztes Motiv aus der Sammlung des
+Parks, dann eine passende Saison-Sammlung, dann ein Foto des Parks, das schon auf anderen Beiträgen
+steht, und zwar das, dessen letzte Nutzung in einer News am längsten zurückliegt. `BlogCoverFallback`
+gibt es nur noch für einen Park ohne ein einziges Foto in der Mediendatenbank. Ein wiederverwendetes
+Foto übernimmt `alt` aus dem Sidecar und bekommt eine eigene Bildunterschrift.
+
+Anlass: Für Disneyland Paris gibt es ein Foto, und die drei Paris-News nach der Halloween-News liefen
+deshalb mit der Ersatzgrafik. `docs/writing/5-posts-and-news.md` und
+`docs/features/blog-cover-fallback.md` verweisen auf die neue Regel.
+
 ### Parks in einer Pause zeigen ein gelbes Panel mit dem Tag der Wiedereröffnung und Parky in der Jahreszeit
 
 Park- und Ride-Seite zeigen für einen Park, der mindestens eine Woche zu ist, ein gelbes Glas-Panel
