@@ -26,7 +26,7 @@ export function DatenschutzEN() {
         <p>
           You can use park.fan without an account. Which data is processed depends on which features
           you use. The sections below list each one. We show no ads and do not pass on data for
-          advertising.
+          advertising. Ticket links in the Orlando planner can be partner links; see below.
         </p>
 
         <LegalH2>2. Hosting and delivery</LegalH2>
@@ -151,10 +151,10 @@ export function DatenschutzEN() {
         <p>
           The Orlando planner links to ticket sellers and to the parks&apos; own shops. When you
           follow one of these links, your browser tells the seller that you came from park.fan: it
-          sends the address https://park.fan/, not the page with your trip. Some links are partner
-          links, labelled &quot;Partner link&quot;. If you buy a ticket through one, park.fan earns
-          a commission from the seller; the price is the same for you. What the seller processes
-          after the click is governed by its own privacy policy.
+          sends the address https://park.fan/, not the page with your trip. Some of them can be
+          partner links; they are labelled &quot;Partner link&quot;. If you buy a ticket through
+          one, park.fan earns a commission from the seller; the price is the same for you. What the
+          seller processes after the click is governed by its own privacy policy.
         </p>
 
         <LegalH3>Push notifications</LegalH3>
@@ -295,19 +295,20 @@ export function DatenschutzEN() {
           program code. They are short words and numbers, never text you have written. Examples are
           which search field was opened and what kind of result you clicked, which tab you opened on
           a park page, whether you added or removed a favorite, which language you chose, whether
-          you set a wait-time alert or a show reminder, how you opened the day planner, that you
-          clicked a link to a park's website or ticket shop or shared a page, whether Parky appeared
-          and whether you clicked it or one of its lines, whether a question to Parky was a
-          suggestion or typed and how the answer ended, how you answered the question about
-          notifications, or that an error page was shown. If a post, a park or an attraction is in
-          the foreground for five seconds, that counts as a read. For posts we also note whether you
-          read a quarter, half, three quarters or all of it. If an event belongs to a park, an
-          attraction, a show or a restaurant, its ID is included, and for a post its name from the
-          address. What you type into a search field, your location and your input are not sent to
-          our counter. We do not measure loading times here. We do measure how long a page was
-          visible in the foreground of your browser: your browser counts the seconds and reports
-          them when you move to the next page or leave the tab. It sends no time of day with them,
-          and at most 30 minutes count for one page view.
+          you set a wait-time alert or a show reminder, how you opened the day planner, which steps
+          you used in the Orlando planner, whether you entered tickets there and which ticket link
+          you clicked (without your travel dates), that you clicked a link to a park's website or
+          ticket shop or shared a page, whether Parky appeared and whether you clicked it or one of
+          its lines, whether a question to Parky was a suggestion or typed and how the answer ended,
+          how you answered the question about notifications, or that an error page was shown. If a
+          post, a park or an attraction is in the foreground for five seconds, that counts as a
+          read. For posts we also note whether you read a quarter, half, three quarters or all of
+          it. If an event belongs to a park, an attraction, a show or a restaurant, its ID is
+          included, and for a post its name from the address. What you type into a search field,
+          your location and your input are not sent to our counter. We do not measure loading times
+          here. We do measure how long a page was visible in the foreground of your browser: your
+          browser counts the seconds and reports them when you move to the next page or leave the
+          tab. It sends no time of day with them, and at most 30 minutes count for one page view.
         </p>
         <p>
           As with every request, the server also receives your IP address, the details of your

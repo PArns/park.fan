@@ -26,7 +26,8 @@ export function DatenschutzDE() {
         <p>
           park.fan lässt sich ohne Konto nutzen. Welche Daten verarbeitet werden, hängt davon ab,
           welche Funktionen Sie verwenden. Die folgenden Abschnitte nennen jede einzeln. Wir zeigen
-          keine Werbung und geben keine Daten zu Werbezwecken weiter.
+          keine Werbung und geben keine Daten zu Werbezwecken weiter. Ticket-Links im Orlando-Planer
+          können Partnerlinks sein; mehr dazu unten.
         </p>
 
         <LegalH2>2. Hosting und Auslieferung</LegalH2>
@@ -157,10 +158,11 @@ export function DatenschutzDE() {
         <p>
           Der Orlando-Planer verlinkt Ticketverkäufer und die Shops der Parks. Folgen Sie einem
           dieser Links, teilt Ihr Browser dem Verkäufer mit, dass Sie von park.fan kommen: Er
-          schickt die Adresse https://park.fan/ mit, nicht die Seite mit Ihrer Reiseplanung. Einige
-          Links sind Partnerlinks und als „Partnerlink“ gekennzeichnet. Kaufen Sie darüber ein
-          Ticket, erhält park.fan vom Verkäufer eine Provision; der Preis ist für Sie derselbe. Was
-          der Verkäufer ab dem Klick verarbeitet, regeln seine eigenen Datenschutzbestimmungen.
+          schickt die Adresse https://park.fan/ mit, nicht die Seite mit Ihrer Reiseplanung.
+          Einzelne Links können Partnerlinks sein; sie sind als „Partnerlink“ gekennzeichnet. Kaufen
+          Sie darüber ein Ticket, erhält park.fan vom Verkäufer eine Provision; der Preis ist für
+          Sie derselbe. Was der Verkäufer ab dem Klick verarbeitet, regeln seine eigenen
+          Datenschutzbestimmungen.
         </p>
 
         <LegalH3>Push-Benachrichtigungen</LegalH3>
@@ -312,20 +314,22 @@ export function DatenschutzDE() {
           Art der Treffer war, den Sie angeklickt haben, welchen Reiter Sie auf einer Parkseite
           geöffnet haben, ob Sie einen Favoriten gesetzt oder entfernt haben, welche Sprache Sie
           gewählt haben, ob Sie einen Wartezeit-Alarm oder eine Show-Erinnerung gesetzt haben, wie
-          Sie den Tagesplaner geöffnet haben, dass Sie einen Link zur Website oder zum Ticketshop
-          eines Parks angeklickt oder eine Seite geteilt haben, ob Parky erschienen ist und ob Sie
-          ihn oder einen seiner Sprüche angeklickt haben, ob eine Frage an Parky ein Vorschlag war
-          oder getippt wurde und wie die Antwort ausging, wie Sie auf die Frage nach
-          Benachrichtigungen geantwortet haben oder dass eine Fehlerseite angezeigt wurde. Steht ein
-          Beitrag, ein Park oder eine Attraktion fünf Sekunden im Vordergrund, zählt das als Lesen.
-          Bei Beiträgen halten wir außerdem fest, ob Sie ein Viertel, die Hälfte, drei Viertel oder
-          alles gelesen haben. Gehört ein Ereignis zu einem Park, einer Attraktion, einer Show oder
-          einem Restaurant, steht deren Kennung dabei, bei einem Beitrag sein Name aus der Adresse.
-          An unseren Zähler sendet der Browser nicht, was Sie in ein Suchfeld tippen, Ihren Standort
-          und Ihre Eingaben. Ladezeiten messen wir hier nicht. Gemessen wird dagegen, wie lange eine
-          Seite im Vordergrund Ihres Browsers sichtbar war: Ihr Browser zählt die Sekunden und
-          meldet sie, wenn Sie zur nächsten Seite wechseln oder den Tab verlassen. Eine Uhrzeit
-          sendet er dabei nicht, und je Seitenaufruf zählen höchstens 30 Minuten.
+          Sie den Tagesplaner geöffnet haben, welche Schritte Sie im Orlando-Planer genutzt haben,
+          ob Sie dort Tickets angegeben und welchen Ticket-Link Sie angeklickt haben (ohne Ihre
+          Reisedaten), dass Sie einen Link zur Website oder zum Ticketshop eines Parks angeklickt
+          oder eine Seite geteilt haben, ob Parky erschienen ist und ob Sie ihn oder einen seiner
+          Sprüche angeklickt haben, ob eine Frage an Parky ein Vorschlag war oder getippt wurde und
+          wie die Antwort ausging, wie Sie auf die Frage nach Benachrichtigungen geantwortet haben
+          oder dass eine Fehlerseite angezeigt wurde. Steht ein Beitrag, ein Park oder eine
+          Attraktion fünf Sekunden im Vordergrund, zählt das als Lesen. Bei Beiträgen halten wir
+          außerdem fest, ob Sie ein Viertel, die Hälfte, drei Viertel oder alles gelesen haben.
+          Gehört ein Ereignis zu einem Park, einer Attraktion, einer Show oder einem Restaurant,
+          steht deren Kennung dabei, bei einem Beitrag sein Name aus der Adresse. An unseren Zähler
+          sendet der Browser nicht, was Sie in ein Suchfeld tippen, Ihren Standort und Ihre
+          Eingaben. Ladezeiten messen wir hier nicht. Gemessen wird dagegen, wie lange eine Seite im
+          Vordergrund Ihres Browsers sichtbar war: Ihr Browser zählt die Sekunden und meldet sie,
+          wenn Sie zur nächsten Seite wechseln oder den Tab verlassen. Eine Uhrzeit sendet er dabei
+          nicht, und je Seitenaufruf zählen höchstens 30 Minuten.
         </p>
         <p>
           Wie bei jeder Anfrage erhält der Server dabei Ihre IP-Adresse, die Angaben zu Browser und

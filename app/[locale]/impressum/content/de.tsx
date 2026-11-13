@@ -114,11 +114,11 @@ export function ImpressumDE({ story }: { story: ImpressumStory | null }) {
           erlangen, wird der entsprechende Link umgehend entfernt.
         </p>
         <p className="mb-4">
-          <strong>Partnerlinks.</strong> Einige Links zu Ticketverkäufern im Orlando-Planer sind
-          Partnerlinks und neben dem Link als „Partnerlink“ gekennzeichnet. Kaufen Sie über einen
-          solchen Link ein Ticket, erhält park.fan vom Verkäufer eine Provision; der Preis ist für
-          Sie derselbe. Folgen Sie einem Ticket-Link, erfährt der Verkäufer, dass Sie von park.fan
-          kommen. Ab dem Klick gelten die Datenschutzbestimmungen des Verkäufers.
+          <strong>Partnerlinks.</strong> Einzelne Links zu Ticketverkäufern im Orlando-Planer können
+          Partnerlinks sein; sie sind neben dem Link als „Partnerlink“ gekennzeichnet. Kaufen Sie
+          über einen solchen Link ein Ticket, erhält park.fan vom Verkäufer eine Provision; der
+          Preis ist für Sie derselbe. Folgen Sie einem Ticket-Link, erfährt der Verkäufer, dass Sie
+          von park.fan kommen. Ab dem Klick gelten die Datenschutzbestimmungen des Verkäufers.
         </p>
 
         <h2 className="border-border mt-12 mb-6 border-b pb-3 text-3xl font-bold">Datenquellen</h2>
