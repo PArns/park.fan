@@ -107,10 +107,13 @@ export async function TripPlannerBand(props: TripPlannerBandProps) {
       <Link
         href={href}
         {...(planLink ? { rel: 'nofollow', prefetch: false } : {})}
-        className="text-primary-ink inline-flex min-h-11 items-center gap-1 text-sm font-semibold underline-offset-4 hover:underline sm:min-h-0"
+        className="text-primary-ink inline-flex min-h-11 items-center text-sm font-semibold underline-offset-4 hover:underline sm:min-h-0"
       >
-        {one ? t('planPark', { park: one, region: region.name }) : t('open')}
-        <ArrowRight aria-hidden className="size-4 shrink-0" />
+        {/* One line box, so a label that wraps on a phone keeps the arrow after its last word. */}
+        <span>
+          {one ? t('planPark', { park: one, region: region.name }) : t('open')}
+          <ArrowRight aria-hidden className="ms-1 inline-block size-4 align-[-0.1875em]" />
+        </span>
       </Link>
     </aside>
   );
