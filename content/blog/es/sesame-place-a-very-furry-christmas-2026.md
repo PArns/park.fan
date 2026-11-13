@@ -35,7 +35,7 @@ seo:
     - The Nutcracker with Elmo & Tango
 ---
 
-[Sesame Place Philadelphia](ref:sesame-place-langhorne), en Langhorne, arranca el sábado 14 de noviembre A Very Furry Christmas. Este año estrena un espectáculo del Cascanueces con Elmo y su perro Tango, un entrenamiento de elfos con Big Bird y Snuffy y un salón para entrar en calor en Elmo's Pizza Kitchen. El evento navideño dura 30 días, hasta el 3 de enero de 2027, va incluido en la entrada del parque y llena el recinto con millones de luces.
+A Very Furry Christmas arranca el sábado 14 de noviembre en [Sesame Place Philadelphia](ref:sesame-place-langhorne), en Langhorne. Este año estrena un espectáculo del Cascanueces con Elmo y su perro Tango, un entrenamiento de elfos con Big Bird y Snuffy y un salón para entrar en calor en Elmo's Pizza Kitchen. El evento navideño se celebra en 30 días hasta el 3 de enero de 2027 y va incluido en la entrada del parque. Por todo el recinto cuelgan millones de luces.
 
 ## Qué hay de nuevo
 
@@ -76,9 +76,9 @@ Las nueve atracciones acuáticas están en pausa de temporada, así que el baña
 
 La noche de la inauguración, a las 17:00, Papá Noel enciende por primera vez las luces del 1-2-3 Christmas Tree en Santa's Grand Illumination. Ese día el espectáculo de luces del árbol se ve a las 17:30 y a las 18:30, y el desfile sale a las 18:00.
 
-La Hanukkah Celebration se celebra los días de apertura entre el 4 y el 12 de diciembre. A las 16:30, un cantor enciende la menorá junto a Baby Bear en el Abby's Paradise Theater. En el Monster Clubhouse hay dreidel y manualidades todo el día, y en la Hanukkah Storytime con Baby Bear, en el Elmo's Studio Theater, caben como mucho 120 personas.
+La Hanukkah Celebration tiene lugar los días de apertura entre el 4 y el 12 de diciembre. A las 16:30, un cantor enciende la menorá junto a Baby Bear en el Abby's Paradise Theater. En el Monster Clubhouse hay dreidel y manualidades todo el día, y en la Hanukkah Storytime con Baby Bear, en el Elmo's Studio Theater, caben como mucho 120 personas.
 
-En Nochebuena, a las 17:00, empieza en el Sesame Street Neighborhood la Santa's 'Twas the Night Before Christmas Celebration. Del 26 de diciembre a Año Nuevo el parque celebra la Kwanzaa Celebration, en la que se enciende la kinara en el Abby's Paradise Theater, con plazas limitadas. Para Nochevieja están previstos a las 18:00 los fuegos artificiales "C…is for Celebrate!" con Elmo, Abby Cadabby, Cookie Monster y Count von Count. Solo se lanzan esa noche, y la hora aún puede cambiar.
+La Santa's 'Twas the Night Before Christmas Celebration empieza en Nochebuena a las 17:00 en el Sesame Street Neighborhood. Del 26 de diciembre a Año Nuevo el parque celebra la Kwanzaa Celebration, en la que se enciende la kinara en el Abby's Paradise Theater, con plazas limitadas. Para Nochevieja están previstos a las 18:00 los fuegos artificiales "C…is for Celebrate!" con Elmo, Abby Cadabby, Cookie Monster y Count von Count. Solo se lanzan esa noche, y la hora aún puede cambiar.
 
 ## Lo que se paga aparte
 
@@ -94,7 +94,7 @@ Con coste adicional hay:
 
 ## Entradas y Season Pass
 
-La entrada de un día cuesta 31,99 dólares en línea en la preventa de Black Friday y 110,99 dólares más impuestos en taquilla. El Any Day Ticket vale para un día cualquiera durante seis meses desde la compra y cuesta 73,99 dólares en la misma preventa; con el Two Day Ticket, desde 31,99 dólares, la segunda visita sale gratis. Sesame Place no ha dado a conocer si el precio de preventa vale para todos los días del evento. Los niños de hasta 23 meses entran gratis, y a partir de los dos años pagan lo mismo que un adulto, de modo que un niño de tres años paga como su madre. Los mayores de 65 años tienen un 30 % de descuento en la entrada de un día en taquilla.
+La entrada de un día cuesta 31,99 dólares en línea en la preventa de Black Friday y 110,99 dólares más impuestos en taquilla. El Any Day Ticket vale para un día cualquiera durante seis meses desde la compra y cuesta 73,99 dólares en la misma preventa. Con el Two Day Ticket, desde 31,99 dólares, la segunda visita sale gratis. Sesame Place no ha dado a conocer si el precio de preventa vale para todos los días del evento. Los niños de hasta 23 meses entran gratis, y a partir de los dos años pagan lo mismo que un adulto, de modo que un niño de tres años paga como su madre. Quien tenga 65 años o más tiene un 30 % de descuento en la entrada de un día en taquilla.
 
 El Season Pass 2027 vale desde el momento de la compra, así que también cubre A Very Furry Christmas. En preventa, los niveles cuestan:
 
@@ -113,7 +113,7 @@ Durante el evento navideño funcionan, entre otras, Oscar's Wacky Taxi, Captain 
 
 La dirección es 100 Sesame Rd, Langhorne, PA 19047. El parque está junto a la Interstate 95, en el condado de Bucks, Pensilvania. Desde Filadelfia se tarda unos 30 minutos en coche, desde Princeton unos 20 minutos y desde Nueva York alrededor de hora y media. El aparcamiento cuesta desde 36 dólares más impuestos, y las plazas General y Preferred se pueden reservar en línea para cada día de apertura. Sin coche se llega con los autobuses urbanos de SEPTA.
 
-Sesame Place abrió en 1980 cerca del Oxford Valley Mall y hoy pertenece a United Parks & Resorts, antes SeaWorld Entertainment, que lo gestiona con una licencia de Sesame Workshop. Su parque hermano, Sesame Place San Diego, celebra A Very Furry Christmas desde el 7 de noviembre.
+Sesame Place abrió en 1980 cerca del Oxford Valley Mall. Hoy pertenece a United Parks & Resorts, antes SeaWorld Entertainment, que lo gestiona con una licencia de Sesame Workshop. Su parque hermano, Sesame Place San Diego, celebra A Very Furry Christmas desde el 7 de noviembre.
 
 [Sesame Place Philadelphia](ref:sesame-place-langhorne?full)
 

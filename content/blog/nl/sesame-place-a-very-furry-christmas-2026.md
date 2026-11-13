@@ -35,7 +35,7 @@ seo:
     - The Nutcracker with Elmo & Tango
 ---
 
-Op zaterdag 14 november begint in [Sesame Place Philadelphia](ref:sesame-place-langhorne) in Langhorne A Very Furry Christmas. Nieuw zijn dit jaar een notenkrakershow met Elmo en zijn hond Tango, een elfentraining met Big Bird en Snuffy en een lounge om op te warmen in Elmo's Pizza Kitchen. Het kerstevenement loopt op 30 dagen tot 3 januari 2027 en zit bij de entree inbegrepen. Daarbij hangen er miljoenen lichtjes in het park.
+A Very Furry Christmas begint op zaterdag 14 november in [Sesame Place Philadelphia](ref:sesame-place-langhorne) in Langhorne. Nieuw zijn dit jaar een notenkrakershow met Elmo en zijn hond Tango, een elfentraining met Big Bird en Snuffy en een lounge om op te warmen in Elmo's Pizza Kitchen. Het kerstevenement loopt op 30 dagen tot 3 januari 2027 en zit bij de entree inbegrepen. In het park hangen ook miljoenen lichtjes.
 
 ## Wat er nieuw is
 
@@ -51,7 +51,7 @@ De Sesame Street Christmas Parade trekt met praalwagens en drie optredens onderw
 
 Bij de Oscar's Wacky Taxi Stage staat de 1-2-3 Christmas Tree, ruim negen meter (30 voet) hoog. In de lichtshow bewegen beelden en lichtjes op de maat van de muziek, en op hetzelfde podium is de Furry Friends Holiday Dance Party. In het Sesame Street Theater spelen Elmo, Cookie Monster, Grover, Zoe, Rosita en Murray Elmo's Christmas Wish, en in het Abby's Paradise Theater is A Very Merry Sesame Street Sing-Along. Hoe laat de shows beginnen, staat in het dagprogramma dat het park bij de opening bijwerkt.
 
-De kerstman vind je in Santa's Furry Workshop naast het Sesame Street Theater. Nieuw is daar een virtuele wachtrij: je meldt je aan bij de Tinsel Tent voor de werkplaats, krijgt een sms als jullie aan de beurt zijn en hebt dan 20 minuten om er te komen. Brieven aan de kerstman schrijven kinderen bij Letters to Santa in Mr. Hooper's Gift Shop. Kerstavond is de laatste dag met de kerstman, en de virtuele wachtrij sluit dan om 14.00 uur. Van 26 december tot 3 januari zit Santa Cookie Monster in de werkplaats.
+De kerstman vind je in Santa's Furry Workshop naast het Sesame Street Theater. Nieuw is daar een virtuele wachtrij: je meldt je aan bij de Tinsel Tent voor de werkplaats, krijgt een sms als jullie aan de beurt zijn en hebt dan 20 minuten om er te komen. Kinderen schrijven brieven aan de kerstman bij Letters to Santa in Mr. Hooper's Gift Shop. Kerstavond is de laatste dag met de kerstman, en de virtuele wachtrij sluit dan om 14.00 uur. Van 26 december tot 3 januari zit Santa Cookie Monster in de werkplaats.
 
 ## Openingsdagen en openingstijden
 
@@ -78,7 +78,7 @@ Op de openingsavond doet de kerstman om 17.00 uur bij Santa's Grand Illumination
 
 De Hanukkah Celebration is er op de openingsdagen van 4 tot en met 12 december. Om 16.30 uur steekt een cantor samen met Baby Bear in het Abby's Paradise Theater de menora aan. In het Monster Clubhouse kun je de hele dag dreidelen en knutselen, en bij de Hanukkah Storytime met Baby Bear in het Elmo's Studio Theater kunnen hooguit 120 gasten zitten.
 
-Op kerstavond begint om 17.00 uur in de Sesame Street Neighborhood Santa's 'Twas the Night Before Christmas Celebration. Van 26 december tot nieuwjaarsdag viert het park de Kwanzaa Celebration, waarbij in het Abby's Paradise Theater de kinara wordt aangestoken; de plaatsen zijn beperkt. Op oudejaarsavond staat om 18.00 uur het vuurwerk “C…is for Celebrate!” gepland, met Elmo, Abby Cadabby, Cookie Monster en Count von Count. Het is er alleen die ene avond, en het tijdstip kan nog veranderen.
+Santa's 'Twas the Night Before Christmas Celebration begint op kerstavond om 17.00 uur in de Sesame Street Neighborhood. Van 26 december tot nieuwjaarsdag viert het park de Kwanzaa Celebration, waarbij in het Abby's Paradise Theater de kinara wordt aangestoken; de plaatsen zijn beperkt. Op oudejaarsavond staat om 18.00 uur het vuurwerk “C…is for Celebrate!” gepland, met Elmo, Abby Cadabby, Cookie Monster en Count von Count. Het is er alleen die ene avond, en het tijdstip kan nog veranderen.
 
 ## Wat extra kost
 

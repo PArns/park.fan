@@ -7,7 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Sesame Place Philadelphia celebrates A Very Furry Christmas on 30 days between November 14 and January 3, 2027. New this year is a Nutcracker show with Elmo and his dog Tango, and the Christmas program is included with park admission.
+  Sesame Place Philadelphia celebrates A Very Furry Christmas on 30 days between November 14 and January 3, 2027. One of this year's new shows is a Nutcracker story with Elmo and his dog Tango. The Christmas program is included with park admission.
 tags:
   - news
   - sesame-place
@@ -35,7 +35,7 @@ seo:
     - The Nutcracker with Elmo & Tango
 ---
 
-A Very Furry Christmas opens at [Sesame Place Philadelphia](ref:sesame-place-langhorne) in Langhorne on Saturday, November 14. This year's additions are a Nutcracker show with Elmo and his dog Tango, elf training with Big Bird and Snuffy, and a warm-up lounge in Elmo's Pizza Kitchen. The event runs on 30 days through January 3, 2027, it's included with park admission, and millions of lights go up around the park.
+A Very Furry Christmas opens at [Sesame Place Philadelphia](ref:sesame-place-langhorne) in Langhorne on Saturday, November 14. This year's additions are a Nutcracker show with Elmo and his dog Tango, elf training with Big Bird and Snuffy, and a warm-up lounge in Elmo's Pizza Kitchen. The event runs on 30 days through January 3, 2027, and it's included with park admission. Millions of lights go up around the park.
 
 ## What's new
 

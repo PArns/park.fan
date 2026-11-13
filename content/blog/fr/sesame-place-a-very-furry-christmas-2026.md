@@ -35,7 +35,7 @@ seo:
     - The Nutcracker with Elmo & Tango
 ---
 
-Le samedi 14 novembre, [Sesame Place Philadelphia](ref:sesame-place-langhorne), à Langhorne, lance A Very Furry Christmas. Trois nouveautés cette année : un spectacle Casse-Noisette avec Elmo et son chien Tango, un entraînement de lutins avec Big Bird et Snuffy, et un salon pour se réchauffer dans Elmo’s Pizza Kitchen. L’événement de Noël dure 30 jours, jusqu’au 3 janvier 2027, il est compris dans l’entrée du parc, et des millions de lumières décorent les allées.
+Le samedi 14 novembre, [Sesame Place Philadelphia](ref:sesame-place-langhorne), à Langhorne, lance A Very Furry Christmas. Cette année, le parc ajoute un spectacle Casse-Noisette avec Elmo et son chien Tango, un entraînement de lutins avec Big Bird et Snuffy et un salon pour se réchauffer dans Elmo’s Pizza Kitchen. L’événement de Noël se tient sur 30 jours jusqu’au 3 janvier 2027 et il est compris dans l’entrée du parc. Des millions de lumières décorent les allées.
 
 ## Les nouveautés
 
@@ -43,7 +43,7 @@ The Nutcracker with Elmo & Tango, à l’Elmo’s Studio Theater, raconte le pre
 
 Pour l’Elf Training with Big Bird & Snuffy, dans la Birthday Party Room, le lutin Sparklewrap leur apprend le métier de lutin dans l’atelier du Père Noël. Les enfants du public participent et chantent avec eux, puis peuvent se faire photographier avec Big Bird et Snuffy.
 
-La Winter Warm-Up Lounge s’installe dans Elmo’s Pizza Kitchen. On y trouve de la musique, des en-cas de saison et des boissons chaudes comme le chocolat chaud. Les enfants ont leurs propres stations de jeu, toute la famille peut jouer au Giant Jenga ou au Connect Four, et des personnages de Sesame Street passent pour les photos. À l’étage, c’est Cookie Monster en personne qu’on a placé à côté des biscuits : pendant Cookies & Cocoa with Cookie Monster, les enfants décorent un biscuit en pain d’épices, boivent un chocolat chaud et posent avec lui.
+La Winter Warm-Up Lounge s’installe dans Elmo’s Pizza Kitchen. On y trouve de la musique, des en-cas de saison et des boissons chaudes comme le chocolat chaud. Les enfants ont leurs propres stations de jeu, toute la famille peut jouer au Giant Jenga ou au Connect Four, et des personnages de Sesame Street passent pour les photos. À l’étage, comme par hasard, c’est Cookie Monster qu’on a placé à côté des biscuits : pendant Cookies & Cocoa with Cookie Monster, les enfants décorent un biscuit en pain d’épices, boivent un chocolat chaud et posent avec lui.
 
 ## Parade, spectacles et Père Noël
 
@@ -78,7 +78,7 @@ Le soir de l’ouverture, à 17 h, le Père Noël allume pour la première fois 
 
 La Hanukkah Celebration a lieu les jours d’ouverture du 4 au 12 décembre. À 16 h 30, un chantre allume la menorah avec Baby Bear à l’Abby’s Paradise Theater. Le Monster Clubhouse propose toute la journée des toupies dreidel et des activités manuelles, et la Hanukkah Storytime avec Baby Bear, à l’Elmo’s Studio Theater, accueille 120 personnes au maximum.
 
-Le 24 décembre à 17 h, Santa’s 'Twas the Night Before Christmas Celebration commence dans le Sesame Street Neighborhood. Du 26 décembre au jour de l’An, le parc fête la Kwanzaa Celebration, avec l’allumage de la kinara à l’Abby’s Paradise Theater, en places limitées. Le soir de la Saint-Sylvestre, le feu d’artifice « C…is for Celebrate! » avec Elmo, Abby Cadabby, Cookie Monster et Count von Count est prévu à 18 h, ce soir-là seulement, et l’horaire peut encore changer.
+Le 24 décembre à 17 h, Santa’s 'Twas the Night Before Christmas Celebration commence dans le Sesame Street Neighborhood. Du 26 décembre au jour de l’An, le parc fête la Kwanzaa Celebration, avec l’allumage de la kinara à l’Abby’s Paradise Theater, en places limitées. Le soir de la Saint-Sylvestre, le feu d’artifice « C…is for Celebrate! » avec Elmo, Abby Cadabby, Cookie Monster et Count von Count est prévu à 18 h. Il n’a lieu que ce soir-là, et l’horaire peut encore changer.
 
 ## Ce qui est payant
 
@@ -94,7 +94,7 @@ Moyennant un supplément, on trouve :
 
 ## Billets et Season Pass
 
-En ligne, pendant la prévente du Black Friday, le billet d’une journée coûte 31,99 $, contre 110,99 $ plus taxes à la caisse. L’Any Day Ticket, valable un jour au choix pendant six mois après l’achat, coûte 73,99 $ pendant cette même prévente, et avec le Two Day Ticket à partir de 31,99 $, la deuxième visite est offerte. Sesame Place n’a pas indiqué si le prix de prévente s’applique à chaque jour de l’événement. Les enfants de 23 mois et moins entrent gratuitement ; à partir de deux ans, ils paient le tarif adulte, si bien qu’un enfant de trois ans paie autant que sa mère. Les 65 ans et plus obtiennent 30 % de réduction sur le billet d’une journée à la caisse.
+En ligne, pendant la prévente du Black Friday, le billet d’une journée coûte 31,99 $, contre 110,99 $ plus taxes à la caisse. L’Any Day Ticket, valable un jour au choix pendant six mois après l’achat, coûte 73,99 $ pendant cette même prévente. Avec le Two Day Ticket à partir de 31,99 $, la deuxième visite est offerte. Sesame Place n’a pas indiqué si le prix de prévente s’applique à chaque jour de l’événement. Les enfants de 23 mois et moins entrent gratuitement. À partir de deux ans, ils paient le tarif adulte, si bien qu’un enfant de trois ans paie autant que sa mère. Les 65 ans et plus obtiennent 30 % de réduction sur le billet d’une journée à la caisse.
 
 Le Season Pass 2027 est valable dès l’achat, donc aussi pour A Very Furry Christmas. En prévente, les niveaux coûtent :
 
@@ -107,7 +107,7 @@ Le Bronze coûte donc moins cher qu’un billet d’une journée acheté à la c
 
 ## Attractions en hiver et accessibilité
 
-Pendant l’événement de Noël, Oscar’s Wacky Taxi, Captain Cookie’s High C’s Adventure, Flyin’ Fish et Big Bird’s Tour Bus, entre autres, fonctionnent. Pour les montagnes russes Oscar’s Wacky Taxi Coaster, un enfant doit mesurer au moins 102 centimètres (40 pouces). En 2018, Sesame Place est devenu le premier parc d’attractions au monde certifié Certified Autism Center par l’IBCCES, et en 2024, les deux parcs Sesame Place ont été certifiés à nouveau.
+Pendant l’événement de Noël, plusieurs manèges tournent, dont Oscar’s Wacky Taxi, Captain Cookie’s High C’s Adventure, Flyin’ Fish et Big Bird’s Tour Bus. Pour les montagnes russes Oscar’s Wacky Taxi Coaster, un enfant doit mesurer au moins 102 centimètres (40 pouces). En 2018, Sesame Place est devenu le premier parc d’attractions au monde certifié Certified Autism Center par l’IBCCES, et en 2024, les deux parcs Sesame Place ont été certifiés à nouveau.
 
 ## Accès et parking
 
