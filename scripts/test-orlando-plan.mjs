@@ -12,6 +12,7 @@ import {
   DEFAULT_PLAN_STATE,
   normalizePlanState,
   orlandoPlannerHref,
+  planRegionKeys,
   readPlanQuery,
   writePlanQuery,
 } from '../lib/orlando/plan-query.ts';
@@ -999,14 +1000,45 @@ const keys = { parks: new Set(ORDER), areas: new Set(['disney', 'universal']) };
       dropped: 3,
     }
   );
-  test(
-    'a region without a catalog drops tickets and hopper, which the API would refuse',
-    [
-      readPlanQuery(q('tickets=wdw-date-based.3&hopper=walt-disney-world'), keys).tickets,
-      readPlanQuery(q('tickets=wdw-date-based.3&hopper=walt-disney-world'), keys).hopper,
-    ],
-    [[], []]
-  );
+  {
+    // Cloudflare can serve the region from before the catalog for up to a day after a deploy. The
+    // step hides, plan first stays, and a shared link's tickets still reach the plan route.
+    const stale = planRegionKeys({
+      parks: ORDER.map((slug) => ({ slug })),
+      hotelAreas: [{ key: 'disney' }, { key: 'universal' }],
+      groups: [{ key: 'walt-disney-world', kind: 'resort' }],
+    });
+    const shared = readPlanQuery(
+      q(
+        'from=2027-02-06&to=2027-02-20&tickets=wdw-uk-14-day-magic@2027-02-07,nope.x,uor-date-based.3.h?@2027-02-09&hopper=walt-disney-world'
+      ),
+      stale
+    );
+    const none = ticketCatalog(undefined);
+    test(
+      'without a catalog a link’s tickets and hopper are kept by their syntax, for the plan route to check',
+      [shared.tickets, shared.hopper, stale.tickets],
+      [
+        [
+          { product: 'wdw-uk-14-day-magic', days: null, hopper: 'no', start: '2027-02-07' },
+          { product: 'uor-date-based', days: 3, hopper: 'unsure', start: '2027-02-09' },
+        ],
+        ['walt-disney-world'],
+        undefined,
+      ]
+    );
+    test(
+      'and the plan is asked with them, since no ticket problem can be told without the catalog',
+      [
+        none.size,
+        ticketProblem(shared, none),
+        planRequestQuery(shared, HEAD, ticketProblem(shared, none) !== null)?.tickets,
+        planRequestQuery({ ...DEFAULT_PLAN_STATE, from: '2027-02-06', to: '2027-02-10' }, HEAD)
+          ?.tickets,
+      ],
+      [0, null, 'wdw-uk-14-day-magic@2027-02-07,uor-date-based.3.h?@2027-02-09', undefined]
+    );
+  }
   test(
     'orlandoPlannerHref carries tickets for Parky and the other pages',
     orlandoPlannerHref({

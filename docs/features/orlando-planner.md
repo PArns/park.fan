@@ -44,8 +44,9 @@ planner builds the href with `orlandoPlannerHref`, the one serializer.
 - **A link is read leniently,** one parameter at a time, so one bad value costs only itself. Parky's
   older `parties=avoid|allow|prefer` reads as `fireworks=any` and is never written. `tickets` is
   read one item at a time against the region's catalog: an unknown product or a length it does not
-  sell drops that item, and the answer says one was left out. A region without a catalog drops
-  `tickets` and `hopper`, which that API would answer with a 400.
+  sell drops that item, and the answer says one was left out. A region answer without a catalog
+  (Cloudflare keeps the region up to a day after an API deploy) keeps them by their syntax alone, and
+  the plan route checks them.
 - **A park's count:** with "split my days for me" on, a park without a number shows "auto" and may
   get a second day; minus pins it to one, plus to two, minus from one removes it.
 - **Pins** (`lock=`) outside the trip or on a park not chosen are dropped before a request, since
@@ -128,7 +129,8 @@ night never makes a date look quiet (`dateFigure`).
 `/v1/trip-regions/orlando`, sent to the browser without the notes and the optimizer's rules). The
 contract: the API's
 [trip regions → tickets](https://github.com/PArns/v4.api.park.fan/blob/main/docs/frontend/trip-regions.md#tickets).
-Without a catalog the step and the card are not drawn.
+Without a catalog the step and the card are not drawn, plan first works as before, and a link's
+`tickets` still plans: the plan route validates them.
 
 - **The question.** "Not yet, just plan" answers in one press and moves on to Dates; "Next: dates"
   without an answer counts as the same. "Yes, I have tickets" opens the four resorts. The answer is

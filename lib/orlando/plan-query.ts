@@ -180,9 +180,9 @@ export interface PlanRegionKeys {
   parks: ReadonlySet<string>;
   areas: ReadonlySet<string>;
   /**
-   * The ticket catalog by id, and the resorts `hopper=` may name. Without them (an API that does
-   * not plan with tickets yet) a link's `tickets` and `hopper` are dropped, since the API would
-   * answer both with a 400.
+   * The ticket catalog by id, and the resorts `hopper=` may name. Without them (a region answer
+   * cached from before the catalog) a link's `tickets` and `hopper` are read by their syntax alone
+   * and passed on, and the plan route checks them.
    */
   tickets?: ReadonlyMap<string, TicketProduct>;
   resorts?: ReadonlySet<string>;
@@ -336,14 +336,11 @@ export function readPlanQuery(query: QueryReader, keys?: PlanRegionKeys): Orland
   state.blocks = flag(query.get('blocks'));
   state.hop = flag(query.get('hop')) ?? DEFAULT_PLAN_STATE.hop;
   if (query.get('ticket') === 'hopper') state.ticket = 'hopper';
-  // A region read without a catalog means an API that would answer both with a 400.
-  if (!keys || keys.tickets) {
-    state.tickets = readTickets(query.get('tickets'), keys?.tickets).tickets;
-    for (const resort of (query.get('hopper') ?? '').split(',')) {
-      if (!SLUG.test(resort) || state.hopper.includes(resort)) continue;
-      if (keys?.resorts && !keys.resorts.has(resort)) continue;
-      state.hopper.push(resort);
-    }
+  state.tickets = readTickets(query.get('tickets'), keys?.tickets).tickets;
+  for (const resort of (query.get('hopper') ?? '').split(',')) {
+    if (!SLUG.test(resort) || state.hopper.includes(resort)) continue;
+    if (keys?.resorts && !keys.resorts.has(resort)) continue;
+    state.hopper.push(resort);
   }
   state.evenings = flag(query.get('evenings')) ?? DEFAULT_PLAN_STATE.evenings;
 
