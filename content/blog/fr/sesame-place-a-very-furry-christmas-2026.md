@@ -2,7 +2,7 @@
 title: 'Sesame Place Philadelphia fête A Very Furry Christmas'
 translationKey: sesame-place-a-very-furry-christmas-2026
 date: '2026-11-13'
-time: '09:00'
+time: '08:10'
 author: patrick
 mode: published
 featured: false
@@ -35,15 +35,15 @@ seo:
     - The Nutcracker with Elmo & Tango
 ---
 
-Le samedi 14 novembre, [Sesame Place Philadelphia](ref:sesame-place-langhorne), à Langhorne, lance A Very Furry Christmas. Cette année, le parc ajoute un spectacle Casse-Noisette avec Elmo et son chien Tango, un entraînement de lutins avec Big Bird et Snuffy et un salon pour se réchauffer dans Elmo’s Pizza Kitchen. L’événement de Noël se tient sur 30 jours jusqu’au 3 janvier 2027 et il est compris dans l’entrée du parc. Le parc parle de « millions » de lumières, sans donner de chiffre plus précis.
+Le samedi 14 novembre, [Sesame Place Philadelphia](ref:sesame-place-langhorne), à Langhorne, lance A Very Furry Christmas. Cette année, le parc ajoute un spectacle Casse-Noisette avec Elmo et son chien Tango, un entraînement de lutins avec Big Bird et Snuffy et un salon pour se réchauffer dans Elmo’s Pizza Kitchen. L’événement de Noël se tient sur 30 jours jusqu’au 3 janvier 2027 et il est compris dans l’entrée du parc. Le parc annonce des millions de lumières pour l’occasion.
 
 ## Les nouveautés
 
-The Nutcracker with Elmo & Tango, à l’Elmo’s Studio Theater, raconte le premier Noël de Tango dans Sesame Street. En rêve, Elmo et Tango partent à travers le « Land of Sweets » pour retrouver le casse-noisette en jouet de Tango. Tous ceux qui ont un chien connaissent cette quête du jouet préféré, sauf qu’à la maison, on le retrouve en général sous le canapé plutôt qu’au pays des bonbons.
+The Nutcracker with Elmo & Tango, à l’Elmo’s Studio Theater, raconte le premier Noël de Tango dans Sesame Street. En rêve, Elmo et Tango partent à travers le « Land of Sweets » pour retrouver le casse-noisette en jouet de Tango, alors que n’importe quel maître aurait d’abord regardé sous le canapé.
 
 Pour l’Elf Training with Big Bird & Snuffy, dans la Birthday Party Room, le lutin Sparklewrap leur apprend le métier de lutin dans l’atelier du Père Noël. Les enfants du public participent et chantent avec eux, puis peuvent se faire photographier avec Big Bird et Snuffy.
 
-La Winter Warm-Up Lounge s’installe dans Elmo’s Pizza Kitchen. Pour se réchauffer entre deux spectacles, on y trouve de la musique, du chocolat chaud et des en-cas de saison. Les enfants ont leurs propres stations de jeu, un Giant Jenga et un Connect Four attendent toute la famille, et de temps en temps un personnage de Sesame Street passe pour les photos. À l’étage, comme par hasard, c’est Cookie Monster qu’on a placé à côté des biscuits : pendant Cookies & Cocoa with Cookie Monster, les enfants décorent un biscuit en pain d’épices, boivent un chocolat chaud et posent avec lui.
+La Winter Warm-Up Lounge s’installe dans Elmo’s Pizza Kitchen. Pour se réchauffer entre deux spectacles, on y trouve de la musique, du chocolat chaud et des en-cas de saison. Les enfants ont leurs propres stations de jeu, les familles un Giant Jenga et un Connect Four. De temps en temps, un personnage de Sesame Street passe pour les photos. À l’étage, comme par hasard, c’est Cookie Monster qu’on a placé à côté des biscuits : pendant Cookies & Cocoa with Cookie Monster, les enfants décorent un biscuit en pain d’épices, boivent un chocolat chaud et posent avec lui.
 
 ## Parade, spectacles et Père Noël
 
@@ -92,7 +92,7 @@ Le 24 décembre à 17 h, Santa’s 'Twas the Night Before Christmas Celebration 
 
 ## Billets et Season Pass
 
-En ligne, pendant la prévente du Black Friday, le billet d’une journée coûte 31,99 $, contre 110,99 $ plus taxes à la caisse. L’Any Day Ticket, valable un jour au choix pendant six mois après l’achat, coûte 73,99 $ pendant cette même prévente. Avec le Two Day Ticket à partir de 31,99 $, la deuxième visite est offerte. Sesame Place n’a pas indiqué si le prix de prévente s’applique à chaque jour de l’événement. Les enfants de 23 mois et moins entrent gratuitement. À partir de deux ans, ils paient le tarif adulte, si bien qu’un enfant de trois ans paie autant que sa mère. Les 65 ans et plus obtiennent 30 % de réduction sur le billet d’une journée à la caisse.
+En ligne, pendant la prévente du Black Friday, le billet d’une journée coûte 31,99 $, contre 110,99 $ plus taxes à la caisse. L’Any Day Ticket, valable un jour au choix pendant six mois après l’achat, coûte 73,99 $ pendant cette même prévente. Avec le Two Day Ticket à partir de 31,99 $, la deuxième visite est offerte. Sesame Place n’a pas indiqué si le prix de prévente s’applique à chaque jour de l’événement. Les enfants de 23 mois et moins entrent gratuitement. À partir de deux ans, ils paient le tarif adulte. Les 65 ans et plus obtiennent 30 % de réduction sur le billet d’une journée à la caisse.
 
 Le Season Pass 2027 est valable dès l’achat, donc aussi pour A Very Furry Christmas. En prévente, les niveaux coûtent :
 

@@ -2,7 +2,7 @@
 title: 'A Very Furry Christmas begint in Sesame Place Philadelphia'
 translationKey: sesame-place-a-very-furry-christmas-2026
 date: '2026-11-13'
-time: '09:00'
+time: '08:10'
 author: patrick
 mode: published
 featured: false
@@ -35,15 +35,15 @@ seo:
     - The Nutcracker with Elmo & Tango
 ---
 
-A Very Furry Christmas begint op zaterdag 14 november in [Sesame Place Philadelphia](ref:sesame-place-langhorne) in Langhorne. Nieuw zijn dit jaar een notenkrakershow met Elmo en zijn hond Tango, een elfentraining met Big Bird en Snuffy en een lounge om op te warmen in Elmo's Pizza Kitchen. Het kerstevenement loopt op 30 dagen tot 3 januari 2027 en zit bij de entree inbegrepen. Het park spreekt van “miljoenen” lichtjes, een preciezer aantal noemt het niet.
+A Very Furry Christmas begint op zaterdag 14 november in [Sesame Place Philadelphia](ref:sesame-place-langhorne) in Langhorne. Nieuw zijn dit jaar een notenkrakershow met Elmo en zijn hond Tango, een elfentraining met Big Bird en Snuffy en een lounge om op te warmen in Elmo's Pizza Kitchen. Het kerstevenement loopt op 30 dagen tot 3 januari 2027 en zit bij de entree inbegrepen. Volgens het park hangen er miljoenen lichtjes.
 
 ## Wat er nieuw is
 
-The Nutcracker with Elmo & Tango in het Elmo's Studio Theater vertelt over Tango's eerste kerst in Sesame Street. In een droom reizen Elmo en Tango door het “Land of Sweets” op zoek naar Tango's speelgoednotenkraker. Hondenbezitters kennen die zoektocht ook, alleen eindigt die thuis meestal onder de bank.
+The Nutcracker with Elmo & Tango in het Elmo's Studio Theater vertelt over Tango's eerste kerst in Sesame Street. In een droom reizen Elmo en Tango door het “Land of Sweets” op zoek naar Tango's speelgoednotenkraker, terwijl elke hondenbezitter eerst onder de bank had gekeken.
 
 Bij Elf Training with Big Bird & Snuffy in de Birthday Party Room leert de elf Sparklewrap de twee wat een elf in de werkplaats van de kerstman allemaal moet doen. Kinderen in het publiek mogen meedoen en meezingen, en na afloop kunnen ze met Big Bird en Snuffy op de foto.
 
-De Winter Warm-Up Lounge zit in Elmo's Pizza Kitchen. Wie tussen twee shows wil opwarmen, vindt er muziek, warme chocolademelk en seizoenssnacks. Kinderen hebben hun eigen speelhoeken, met het hele gezin speel je Giant Jenga en Connect Four, en af en toe komt er een figuur uit Sesame Street langs voor foto's. Boven in de lounge hebben ze juist Cookie Monster bij de koekjes gezet: bij Cookies & Cocoa with Cookie Monster versieren kinderen een peperkoek, drinken ze warme chocolademelk en gaan ze met hem op de foto.
+De Winter Warm-Up Lounge zit in Elmo's Pizza Kitchen. Wie tussen twee shows wil opwarmen, vindt er muziek, warme chocolademelk en seizoenssnacks. Kinderen hebben hun eigen speelhoeken, gezinnen spelen Giant Jenga en Connect Four. Af en toe komt er een figuur uit Sesame Street langs voor foto's. Boven in de lounge hebben ze juist Cookie Monster bij de koekjes gezet: bij Cookies & Cocoa with Cookie Monster versieren kinderen een peperkoek, drinken ze warme chocolademelk en gaan ze met hem op de foto.
 
 ## Parade, shows en de kerstman
 
@@ -92,7 +92,7 @@ Santa's 'Twas the Night Before Christmas Celebration begint op kerstavond om 17.
 
 ## Tickets en Season Pass
 
-Een dagticket kost online in de Black Friday-voorverkoop 31,99 dollar en aan de kassa 110,99 dollar plus belasting. Het Any Day Ticket geldt zes maanden na aankoop op een dag naar keuze en kost in dezelfde voorverkoop 73,99 dollar. Bij het Two Day Ticket, vanaf 31,99 dollar, is het tweede bezoek gratis. Of de voorverkoopprijs op elke evenementdag geldt, heeft Sesame Place niet bekendgemaakt. Kinderen tot en met 23 maanden mogen gratis naar binnen; vanaf twee jaar betalen ze de volwassenenprijs, dus een kleuter van drie betaalt evenveel als zijn moeder. Ben je 65 of ouder, dan krijg je aan de kassa 30 procent korting op het dagticket.
+Een dagticket kost online in de Black Friday-voorverkoop 31,99 dollar en aan de kassa 110,99 dollar plus belasting. Het Any Day Ticket geldt zes maanden na aankoop op een dag naar keuze en kost in dezelfde voorverkoop 73,99 dollar. Bij het Two Day Ticket, vanaf 31,99 dollar, is het tweede bezoek gratis. Of de voorverkoopprijs op elke evenementdag geldt, heeft Sesame Place niet bekendgemaakt. Kinderen tot en met 23 maanden mogen gratis naar binnen; vanaf twee jaar betalen ze de volwassenenprijs. Ben je 65 of ouder, dan krijg je aan de kassa 30 procent korting op het dagticket.
 
 De Season Pass 2027 geldt meteen vanaf de aankoop, dus ook voor A Very Furry Christmas. In de voorverkoop kosten de niveaus:
 

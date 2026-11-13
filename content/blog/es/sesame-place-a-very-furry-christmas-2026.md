@@ -2,7 +2,7 @@
 title: 'Sesame Place Philadelphia estrena A Very Furry Christmas'
 translationKey: sesame-place-a-very-furry-christmas-2026
 date: '2026-11-13'
-time: '09:00'
+time: '08:10'
 author: patrick
 mode: published
 featured: false
@@ -35,15 +35,15 @@ seo:
     - The Nutcracker with Elmo & Tango
 ---
 
-A Very Furry Christmas arranca el sábado 14 de noviembre en [Sesame Place Philadelphia](ref:sesame-place-langhorne), en Langhorne. Este año estrena un espectáculo del Cascanueces con Elmo y su perro Tango, un entrenamiento de elfos con Big Bird y Snuffy y un salón para entrar en calor en Elmo's Pizza Kitchen. El evento navideño se celebra en 30 días hasta el 3 de enero de 2027 y va incluido en la entrada del parque. El parque habla de "millones" de luces, sin dar una cifra más precisa.
+A Very Furry Christmas arranca el sábado 14 de noviembre en [Sesame Place Philadelphia](ref:sesame-place-langhorne), en Langhorne. Este año estrena un espectáculo del Cascanueces con Elmo y su perro Tango, un entrenamiento de elfos con Big Bird y Snuffy y un salón para entrar en calor en Elmo's Pizza Kitchen. El evento navideño se celebra en 30 días hasta el 3 de enero de 2027 y va incluido en la entrada del parque. Según el parque, se encienden millones de luces.
 
 ## Qué hay de nuevo
 
-The Nutcracker with Elmo & Tango, en el Elmo's Studio Theater, cuenta la primera Navidad de Tango en Sesame Street. En sueños, Elmo y Tango recorren el "Land of Sweets" para recuperar el cascanueces de juguete de Tango. Quien tiene perro conoce bien esa búsqueda del juguete favorito, solo que en casa suele terminar debajo del sofá y no en un reino de caramelo.
+The Nutcracker with Elmo & Tango, en el Elmo's Studio Theater, cuenta la primera Navidad de Tango en Sesame Street. En sueños, Elmo y Tango recorren el "Land of Sweets" para recuperar el cascanueces de juguete de Tango, aunque cualquier dueño de un perro habría mirado antes debajo del sofá.
 
 En el Elf Training with Big Bird & Snuffy, en el Birthday Party Room, el elfo Sparklewrap les enseña a los dos qué hace un elfo en el taller de Papá Noel. Los niños del público pueden participar y cantar, y al final pueden hacerse una foto con Big Bird y Snuffy.
 
-La Winter Warm-Up Lounge está en Elmo's Pizza Kitchen. Si quieres entrar en calor entre dos espectáculos, allí tienes música, chocolate caliente y aperitivos de temporada. Los niños tienen sus propias estaciones de juego, la familia entera puede jugar al Giant Jenga y al Connect Four, y de vez en cuando pasa algún personaje de Sesame Street para hacerse fotos. En la planta de arriba, a Cookie Monster le ha tocado nada menos que la mesa de las galletas: en Cookies & Cocoa with Cookie Monster los niños decoran una galleta de jengibre, toman chocolate caliente y se fotografían con él.
+La Winter Warm-Up Lounge está en Elmo's Pizza Kitchen. Si quieres entrar en calor entre dos espectáculos, allí tienes música, chocolate caliente y aperitivos de temporada. Los niños tienen sus propias estaciones de juego y las familias, Giant Jenga y Connect Four. De vez en cuando pasa algún personaje de Sesame Street para hacerse fotos. En la planta de arriba, a Cookie Monster le ha tocado nada menos que la mesa de las galletas: en Cookies & Cocoa with Cookie Monster los niños decoran una galleta de jengibre, toman chocolate caliente y se fotografían con él.
 
 ## Desfile, espectáculos y Papá Noel
 
@@ -92,7 +92,7 @@ La Santa's 'Twas the Night Before Christmas Celebration empieza en Nochebuena a 
 
 ## Entradas y Season Pass
 
-La entrada de un día cuesta 31,99 dólares en línea en la preventa de Black Friday y 110,99 dólares más impuestos en taquilla. El Any Day Ticket vale para un día cualquiera durante seis meses desde la compra y cuesta 73,99 dólares en la misma preventa. Con el Two Day Ticket, desde 31,99 dólares, la segunda visita sale gratis. Sesame Place no ha dado a conocer si el precio de preventa vale para todos los días del evento. Los niños de hasta 23 meses entran gratis, y a partir de los dos años pagan lo mismo que un adulto, de modo que un niño de tres años paga como su madre. Quien tenga 65 años o más tiene un 30 % de descuento en la entrada de un día en taquilla.
+La entrada de un día cuesta 31,99 dólares en línea en la preventa de Black Friday y 110,99 dólares más impuestos en taquilla. El Any Day Ticket vale para un día cualquiera durante seis meses desde la compra y cuesta 73,99 dólares en la misma preventa. Con el Two Day Ticket, desde 31,99 dólares, la segunda visita sale gratis. Sesame Place no ha dado a conocer si el precio de preventa vale para todos los días del evento. Los niños de hasta 23 meses entran gratis, y a partir de los dos años pagan lo mismo que un adulto. Quien tenga 65 años o más tiene un 30 % de descuento en la entrada de un día en taquilla.
 
 El Season Pass 2027 vale desde el momento de la compra, así que también cubre A Very Furry Christmas. En preventa, los niveles cuestan:
 

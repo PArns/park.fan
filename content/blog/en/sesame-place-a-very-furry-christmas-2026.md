@@ -2,7 +2,7 @@
 title: 'Sesame Place Philadelphia opens A Very Furry Christmas'
 translationKey: sesame-place-a-very-furry-christmas-2026
 date: '2026-11-13'
-time: '09:00'
+time: '08:10'
 author: patrick
 mode: published
 featured: false
@@ -35,15 +35,15 @@ seo:
     - The Nutcracker with Elmo & Tango
 ---
 
-A Very Furry Christmas opens at [Sesame Place Philadelphia](ref:sesame-place-langhorne) in Langhorne on Saturday, November 14. This year's additions are a Nutcracker show with Elmo and his dog Tango, elf training with Big Bird and Snuffy, and a warm-up lounge in Elmo's Pizza Kitchen. The event runs on 30 days through January 3, 2027, and it's included with park admission. The park advertises "millions" of lights but gives no closer count.
+A Very Furry Christmas opens at [Sesame Place Philadelphia](ref:sesame-place-langhorne) in Langhorne on Saturday, November 14. This year's additions are a Nutcracker show with Elmo and his dog Tango, elf training with Big Bird and Snuffy, and a warm-up lounge in Elmo's Pizza Kitchen. The event runs on 30 days through January 3, 2027, and it's included with park admission. The park says millions of lights go up for it.
 
 ## What's new
 
-The Nutcracker with Elmo & Tango at Elmo's Studio Theater tells the story of Tango's first Christmas on Sesame Street. In a dream, Elmo and Tango travel through the "Land of Sweets" to find Tango's toy nutcracker. Dog owners know the plot well, except that at home the missing toy usually turns up under the couch.
+The Nutcracker with Elmo & Tango at Elmo's Studio Theater tells the story of Tango's first Christmas on Sesame Street. In a dream, Elmo and Tango travel through the "Land of Sweets" to find Tango's toy nutcracker, though any dog owner would have checked under the couch first.
 
 At Elf Training with Big Bird & Snuffy in the Birthday Party Room, an elf named Sparklewrap teaches the pair what an elf does in Santa's workshop. Kids in the audience join in and sing along, and afterwards they can have their photo taken with Big Bird and Snuffy.
 
-The Winter Warm-Up Lounge is in Elmo's Pizza Kitchen. If you need to thaw out between two shows, you'll find music, hot chocolate and seasonal snacks there. Kids have their own play stations, Giant Jenga and Connect Four are set up for the whole family, and now and then a Sesame Street character drops by for photos. Upstairs, the park has put Cookie Monster, of all characters, next to the cookies: at Cookies & Cocoa with Cookie Monster, kids decorate a gingerbread cookie, drink hot chocolate and get a photo with him.
+The Winter Warm-Up Lounge is in Elmo's Pizza Kitchen. If you need to thaw out between two shows, you'll find music, hot chocolate and seasonal snacks there. Kids get their own play stations, families get Giant Jenga and Connect Four. Now and then a Sesame Street character drops by for photos. Upstairs, the park has put Cookie Monster, of all characters, next to the cookies: at Cookies & Cocoa with Cookie Monster, kids decorate a gingerbread cookie, drink hot chocolate and get a photo with him.
 
 ## Parade, shows and Santa
 
@@ -92,7 +92,7 @@ On Christmas Eve, Santa's 'Twas the Night Before Christmas Celebration starts at
 
 ## Tickets and Season Pass
 
-In the Black Friday sale, a day ticket costs $31.99 online, against $110.99 plus tax at the gate. The Any Day Ticket is good on any one day within six months of purchase and costs $73.99 in the same sale, and the Two Day Ticket from $31.99 throws in the second visit for free. Sesame Place hasn't announced whether the sale price applies on every event day. Kids up to 23 months get in free; from age two they pay the adult price, so a three-year-old costs as much as his mom. Guests 65 and older get 30 percent off a day ticket at the gate.
+In the Black Friday sale, a day ticket costs $31.99 online, against $110.99 plus tax at the gate. The Any Day Ticket is good on any one day within six months of purchase and costs $73.99 in the same sale, and the Two Day Ticket from $31.99 throws in the second visit for free. Sesame Place hasn't announced whether the sale price applies on every event day. Kids up to 23 months get in free; from age two they pay the adult price. Guests 65 and older get 30 percent off a day ticket at the gate.
 
 The 2027 Season Pass is valid from the day you buy it, so it covers A Very Furry Christmas. Sale prices for the tiers:
 
