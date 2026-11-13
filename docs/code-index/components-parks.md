@@ -866,6 +866,10 @@ Client on purpose: the demo windows are Date.now()-relative — evaluated in the
 
 - `WindCompass` _component_: Small SVG wind compass. The arrow sits at the bearing the wind comes FROM and points inward, the convention most people read as "wind out of the NW". Cardinal letters are localised; the arrow is hidden when direction is unknown.
 
+### [`winter-break-panel.tsx`](../../components/parks/winter-break-panel.tsx)
+
+- `WinterBreakPanel` _component_: The yellow glass panel for a park in its winter break: the day it opens again, how many weeks that is away, and Parky asleep in the snow beside it.
+
 ### [`works-period-badge.tsx`](../../components/parks/works-period-badge.tsx)
 
 - `WorksPeriodBadge` _component_: „Wartung": the word that separates a ride shut on purpose, for a day of maintenance or a winter's rebuild, from one that happens to be shut. Both read `CLOSED` and no feed tells them apart, so the window is curated.

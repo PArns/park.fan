@@ -125,9 +125,12 @@ night never makes a date look quiet (`dateFigure`).
 
 ## Tickets
 
-"Do you already have tickets?" is the first step, against the region's ticket catalog (`tickets` on
-`/v1/trip-regions/orlando`, sent to the browser without the notes and the optimizer's rules). The
-contract: the API's
+"Do you already have tickets?" is the first step, against the ticket catalog the admin keeps
+(`GET /v1/trip-regions/orlando/tickets`, read by `PlannerChapterSlot` through the Data Cache under
+the tag `trip-tickets:orlando`, which the API revalidates after every edit; five minutes otherwise,
+`CACHE_TTL.tripTickets`). While that route fails or is slower than 1.5 s, the region's own `tickets`
+stand in. The browser gets the catalog without the notes and the optimizer's rules. The contract:
+the API's
 [trip regions → tickets](https://github.com/PArns/v4.api.park.fan/blob/main/docs/frontend/trip-regions.md#tickets).
 Without a catalog the step and the card are not drawn, plan first works as before, and a link's
 `tickets` still plans: the plan route validates them.
@@ -159,10 +162,19 @@ Without a catalog the step and the card are not drawn, plan first works as befor
   both Universal parks are planned, "Show the plan with Park Hopper" (`hopper=<resort>`), the shop
   link and "Use these as your tickets" (written with `blocks=1`, so the days stay). On a trip of ten
   days or more, a line offers the 14-day tickets sold outside the US ("Plan with these").
+- **Where to buy.** A suggestion's details and the 14-day alternatives list the product's `links`
+  in the admin's order, those for the visitor's locale or market (from the browser's first
+  language) first (`orderTicketLinks`); the official shop keeps its place. Every link opens in a
+  new tab with `referrerPolicy="origin"` and no `noreferrer`, so the seller sees `https://park.fan/`
+  and never the trip's path (the site's own policy is `same-origin`); a sponsored link is
+  `rel="sponsored nofollow noopener"` and carries a visible "Partner link" label that explains the
+  commission on hover, focus or a tap (`ticketLinkAttributes`, `PartnerLabel`). The imprint and the
+  privacy page say the same.
 - **Owned** ("Your tickets"): each ticket's window, the days the plan uses ("8 of 14 days", or
   "used on 5 of its 14 days" for an every-day ticket), why days stay unused, whether Disney and
   Universal days mix (`meta.mixing`), a day outside the window with "Leave this visit out" and
-  "Change ticket", the pass warnings with the operator's blockout and reservation pages. Both owned
+  "Change ticket", the pass warnings with the operator's blockout and reservation pages, and
+  `product_archived` for a product that left the catalog (its rules still apply). Both owned
   and suggested tickets: "Tickets" with "Yours" and "To buy".
 - **The ticket day.** "Disney day 2 of 4" in the Week view's column header ("day 2 of 4" on a
   phone) and the day's sheet, after its hours; an every-day ticket counts the day of its window. The
@@ -170,6 +182,20 @@ Without a catalog the step and the card are not drawn, plan first works as befor
 - **Fine-tune** has no ticket question any more. With owned tickets for both Disney and Universal,
   "Disney days and Universal days" offers three answers: mixed only where it saves time (the API's
   default), always together (`blocks=1`), mixed wherever the lines are shorter (`blocks=0`).
+
+## Analytics
+
+The planner's events go to our own statistic through `trackSiteEvent` and its gates
+([site analytics](site-analytics.md), [the inventory](../development/analytics.md)); the
+properties are built in `lib/orlando/plan-analytics.ts` and pinned by `pnpm test:orlando-plan`.
+
+- **`ticket_link_clicked`**: a purchase link followed, middle click included. `product` (the
+  catalog id), `seller`, `host`, `kind` (official, sponsored, plain), `position` in the list the
+  visitor saw (1-based), `locale_match` (ordered first for the visitor's locale or market), `surface`
+  (suggestion, long_stay, owned) and `ticket_mode` (plan_first, owned, mixed). Eight is the
+  statistic's limit, so the region (Orlando is the only one) and the resort (the product's) are left
+  out. No entity: no single park is meant. The admin's event page breaks it down by seller, product
+  and host.
 
 ## Editing a plan
 

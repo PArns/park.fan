@@ -18,6 +18,11 @@ category: news
 parkLinks:
   - /parks/europe/france/paris/disneyland-park
   - disney-adventure-world
+coverImage:
+  src: /media/disneyland-park/background.jpg
+  alt: 'El castillo de la Bella Durmiente, rosa y azul, sobre su base de roca, con césped y árboles podados delante.'
+  caption: 'El castillo de la Bella Durmiente, en Disneyland Park. El Rainforest Café está fuera de los parques, en Disney Village, donde no hace falta entrada.'
+  credit: 'Patrick Arns'
 seo:
   title: 'El Rainforest Café de Disneyland Paris cierra en noviembre'
   description: >-

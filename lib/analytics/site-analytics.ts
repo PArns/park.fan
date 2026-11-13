@@ -326,7 +326,30 @@ export interface SiteEventMap {
   faq_opened: { position: number };
   /** The „Mehr" flyout of a park's title card opened, with the park's outbound links. */
   park_links_opened: NoProps;
+  /**
+   * A purchase link of the Orlando planner's ticket catalog followed, middle click included: which
+   * product, at which seller and host, what kind of link, where in the shown list (1-based),
+   * whether it was ordered first for the visitor's locale or market, on which surface and with
+   * which tickets the plan was made. No entity: no single park is meant.
+   */
+  ticket_link_clicked: {
+    product: string;
+    seller: string;
+    host: string;
+    kind: TicketLinkKind;
+    position: number;
+    locale_match: boolean;
+    surface: TicketLinkSurface;
+    ticket_mode: TicketMode;
+  };
 }
+
+/** What a ticket purchase link is: the operator's own shop, an affiliate one, or another seller. */
+export type TicketLinkKind = 'official' | 'sponsored' | 'plain';
+/** Where a ticket purchase link was: a suggestion's details, the 14-day alternatives, an owned ticket. */
+export type TicketLinkSurface = 'suggestion' | 'long_stay' | 'owned';
+/** Which tickets the Orlando plan was made with: none owned, all owned, or both. */
+export type TicketMode = 'plan_first' | 'owned' | 'mixed';
 
 /** The name of an event the API accepts. */
 export type SiteEventName = keyof SiteEventMap;
@@ -771,6 +794,16 @@ type TrackArguments<Name extends string> = Name extends SiteEventName
 export type SiteEventListener = (name: string, props: SiteEventProps | undefined) => void;
 
 const siteEventListeners = new Set<SiteEventListener>();
+
+/**
+ * A browser check's window onto the events, which are never sent off the production hosts: a page
+ * that starts with `window.__parkfanEventLog` as an array (only a test's init script makes one)
+ * gets every reported event appended to it. Nothing else reads it, and nothing leaves the page.
+ */
+if (typeof window !== 'undefined') {
+  const log = (window as Window & { __parkfanEventLog?: unknown }).__parkfanEventLog;
+  if (Array.isArray(log)) siteEventListeners.add((name, props) => log.push({ name, props }));
+}
 
 /**
  * Hears every event the page reports, counted or not (a visitor who opted out, a bot), for what

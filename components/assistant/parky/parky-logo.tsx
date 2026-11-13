@@ -25,9 +25,11 @@ import {
 } from './looks';
 import {
   A_FRAME,
+  BUBBLE,
   CABINS,
   CABIN_COLOURS,
   CHECKLIST_ROWS,
+  CHEEKS,
   CONFETTI,
   EYES,
   FERRULE,
@@ -38,10 +40,15 @@ import {
   HAPPY_EYES,
   HEART,
   LENS,
+  MOON,
   NIGHT_STARS,
+  SHUT_EYES,
+  SMILE,
   SPOKES,
   STAR,
+  ZED,
   blue,
+  blush,
   capBlue,
   frame,
   green,
@@ -254,7 +261,7 @@ export function ParkyLogo({
       {act === 'lights' && (
         // Night over the top left: a crescent moon and two stars that twinkle.
         <g className="parky-night">
-          <path d="M6 -2a4 4 0 1 0 4.2 5.3 3.2 3.2 0 1 1-4.2-5.3Z" fill="oklch(0.9 0.1 95)" />
+          <path d={MOON} fill="oklch(0.9 0.1 95)" />
           <g fill="oklch(0.92 0.08 95)">
             {NIGHT_STARS.map((star) => (
               <g key={star.x} transform={`translate(${star.x} ${star.y})`}>
@@ -310,9 +317,9 @@ export function ParkyLogo({
           strokeLinecap="round"
           strokeLinejoin="round"
         >
-          <path d="M6.5 6.5h3.4l-3.4 3.8h3.4" />
-          <path d="M6.5 6.5h3.4l-3.4 3.8h3.4" />
-          <path d="M6.5 6.5h3.4l-3.4 3.8h3.4" />
+          <path d={ZED} />
+          <path d={ZED} />
+          <path d={ZED} />
         </g>
       )}
       {(act === 'whistle' || act === 'dance' || act === 'love') && (
@@ -412,11 +419,7 @@ export function ParkyLogo({
           <path d={A_FRAME} stroke={frame} strokeWidth="1.5" strokeLinecap="round" />
           <circle cx={HUB.x} cy={HUB.y} r="1.3" fill="white" stroke={frame} strokeWidth=".8" />
         </g>
-        {/* The body: a round bubble with its tail at the lower left. */}
-        <path
-          d="M24 7c11 0 20 8.1 20 18.2S35 43.4 24 43.4c-2.5 0-4.9-.4-7.1-1.1L7.5 46l2.3-8C6.1 34.7 4 30.2 4 25.2 4 15.1 13 7 24 7Z"
-          fill={`url(#${ground})`}
-        />
+        <path d={BUBBLE} fill={`url(#${ground})`} />
         <ParkyLookWear outfit={outfit} ground={ground} />
         {eyesOpen && (
           // One group per eye, so a wink closes one and the gum makes them cross.
@@ -449,7 +452,7 @@ export function ParkyLogo({
           // In a nap the shut eyes cross-fade with the open ones; asleep they are all there is.
           <path
             className="parky-shut"
-            d="M12.4 23.2q4.6 3.4 9.2 0M26.4 23.2q4.6 3.4 9.2 0"
+            d={SHUT_EYES}
             fill="none"
             stroke={ink}
             strokeWidth="1.8"
@@ -530,8 +533,9 @@ export function ParkyLogo({
             <circle className="parky-bobble" cx="2.4" cy="5.4" r="2.6" fill="white" />
           </g>
         )}
-        <ellipse cx="10.8" cy="31" rx="2.4" ry="1.4" fill="oklch(0.78 0.12 15)" opacity=".7" />
-        <ellipse cx="37.2" cy="31" rx="2.4" ry="1.4" fill="oklch(0.78 0.12 15)" opacity=".7" />
+        {CHEEKS.map((x) => (
+          <ellipse key={x} cx={x} cy="31" rx="2.4" ry="1.4" fill={blush} opacity=".7" />
+        ))}
         {state === 'squashed' ? (
           // Teeth gritted: a wavy line across a wide mouth.
           <path
@@ -564,7 +568,7 @@ export function ParkyLogo({
         ) : (
           <path
             className="parky-smile"
-            d="M20.5 32.5q3.5 3.2 7 0"
+            d={SMILE}
             fill="none"
             stroke={ink}
             strokeWidth="1.8"

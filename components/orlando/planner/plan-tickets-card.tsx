@@ -1,6 +1,6 @@
 'use client';
 
-import { useId, useState, type ReactNode } from 'react';
+import { useId, useState, useSyncExternalStore, type ReactNode } from 'react';
 import { useTranslations } from 'next-intl';
 import { ChevronDown, CircleAlert, ExternalLink, Info, Ticket, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -15,18 +15,29 @@ import {
   hopperOn,
   longStayTickets,
   needsHogwartsHop,
+  orderTicketLinks,
   ownedUse,
+  ticketLinkAttributes,
   plannedVisits,
   setTickets,
   suggestionsByStart,
   ticketLength,
   toggleHopper,
   windowLength,
+  visitorMarket,
   type HopperGain,
 } from '@/lib/orlando/plan-tickets';
+import type { TicketLink } from '@/lib/orlando/types';
+import { ticketLinkClickProps, ticketModeOf } from '@/lib/orlando/plan-analytics';
+import {
+  trackSiteEvent,
+  type TicketLinkSurface,
+  type TicketMode,
+} from '@/lib/analytics/site-analytics';
 import type { PlanHopperVerdict, PlanOwnedTicket, PlanTicketSuggestion } from '@/lib/orlando/plan';
 import { orlandoTicketAnswer } from '@/lib/orlando/ticket-answer';
 import { Badge } from '@/components/ui/badge';
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetDescription, SheetTitle } from '@/components/ui/sheet';
 import { usePlanContext } from './plan-context';
@@ -282,6 +293,8 @@ function OwnedRow({
         );
       })}
 
+      {warnings.includes('product_archived') && <Fact icon={Info}>{t('owned.archived')}</Fact>}
+
       {hogwarts && <Fact icon={Info}>{t('hogwarts')}</Fact>}
 
       {ticket.hopper === 'unknown' && ticket.hopperVerdict && (
@@ -448,13 +461,13 @@ function SuggestionDetails({
   const t = useTranslations('orlandoPlanner.tickets');
   const { tickets: catalog, update } = usePlanContext();
   const owns = (plan.meta.tickets ?? []).length > 0;
-  const ukShops = new Map<string, string>();
-  for (const s of suggested) {
-    for (const alt of s.alternatives ?? []) {
-      const url = catalog.get(alt.product)?.shopUrl;
-      if (alt.reason === 'long_stay' && url) ukShops.set(alt.product, url);
-    }
-  }
+  const longStay = [
+    ...new Set(
+      suggested.flatMap((s) =>
+        (s.alternatives ?? []).filter((a) => a.reason === 'long_stay').map((a) => a.product)
+      )
+    ),
+  ].filter((id) => catalog.has(id));
 
   return (
     <div className="flex flex-col gap-4" data-plan-ticket-details-body="">
@@ -463,13 +476,20 @@ function SuggestionDetails({
           <SuggestionResort key={s.id} plan={plan} suggestion={s} suggested={suggested} />
         ))}
       </div>
-      {ukShops.size > 0 && (
-        <div className="flex flex-col gap-1 text-sm">
+      {longStay.length > 0 && (
+        <div className="flex flex-col gap-2 text-sm">
           <p>{t('longStay.detail')}</p>
-          <ul className="flex flex-col">
-            {[...ukShops].map(([id, url]) => (
-              <li key={id}>
-                <ShopLink href={url}>{productName(catalog, id)}</ShopLink>
+          <ul className="flex flex-col gap-2">
+            {longStay.map((id) => (
+              <li key={id} className="flex flex-col gap-0.5">
+                <span className="font-medium">{productName(catalog, id)}</span>
+                <PurchaseLinks
+                  source={catalog.get(id) ?? {}}
+                  resort={catalog.get(id)?.resort ?? ''}
+                  product={id}
+                  surface="long_stay"
+                  ticketMode={ticketModeOf(plan.meta.tickets?.length ?? 0, suggested.length)}
+                />
               </li>
             ))}
           </ul>
@@ -589,11 +609,14 @@ function SuggestionResort({
             {t('suggest.promotion', { name: productName(catalog, a.product) })}
           </p>
         ))}
-      {(s.shopUrl ?? product?.shopUrl) && (
-        <ShopLink href={(s.shopUrl ?? product?.shopUrl) as string}>
-          {t('shop', { operator: resortWord(s.resort) })}
-        </ShopLink>
-      )}
+      <PurchaseLinks
+        source={s.links?.length || s.shopUrl ? s : (product ?? {})}
+        resort={s.resort}
+        product={s.product}
+        surface="suggestion"
+        ticketMode={ticketModeOf(plan.meta.tickets?.length ?? 0, suggested.length)}
+        title
+      />
     </section>
   );
 }
@@ -714,5 +737,109 @@ function ShopLink({
       <ExternalLink className="size-3.5 shrink-0" aria-hidden="true" />
       <span className="sr-only">{t('newTab')}</span>
     </a>
+  );
+}
+
+/**
+ * Where to buy a ticket: the product's links in the visitor's order (`orderTicketLinks`), each in a
+ * new tab with park.fan as its referrer (`ticketLinkAttributes`), the operator's own shop marked,
+ * and a sponsored one with the "Partner link" label beside it, which says what that means.
+ */
+function PurchaseLinks({
+  source,
+  resort,
+  product,
+  surface,
+  ticketMode,
+  title = false,
+}: {
+  source: { links?: readonly TicketLink[]; shopUrl?: string };
+  resort: string;
+  product: string;
+  surface: TicketLinkSurface;
+  ticketMode: TicketMode;
+  title?: boolean;
+}) {
+  const t = useTranslations('orlandoPlanner.tickets');
+  const { locale } = usePlanContext();
+  const resortWord = useResortWord();
+  // A string, never `navigator.languages` itself: that is a new array on every read.
+  const language = useSyncExternalStore(
+    noSubscribe,
+    () => navigator.languages?.[0] ?? '',
+    () => ''
+  );
+  const visitor = { locale, market: visitorMarket(language ? [language] : []) };
+  const links = orderTicketLinks(source, visitor, resortWord(resort));
+  const count = (link: TicketLink, index: number) =>
+    trackSiteEvent(
+      'ticket_link_clicked',
+      ticketLinkClickProps({ product, link, index, visitor, surface, ticketMode })
+    );
+  if (links.length === 0) return null;
+  return (
+    <div className="flex flex-col" data-plan-purchase-links="">
+      {title && <p className="text-foreground/75 pt-1">{t('links.title')}</p>}
+      <ul className="flex flex-col">
+        {links.map((link, index) => (
+          <li key={link.url} className="flex flex-wrap items-center gap-x-2">
+            <a
+              href={link.url}
+              {...ticketLinkAttributes(link)}
+              onClick={() => count(link, index)}
+              onAuxClick={(event) => event.button === 1 && count(link, index)}
+              data-ticket-link={link.sponsored ? 'sponsored' : link.official ? 'official' : 'plain'}
+              className={cn(
+                'text-primary-ink inline-flex min-h-11 items-center gap-1 py-2 font-medium underline-offset-4 hover:underline',
+                PLAN_FOCUS
+              )}
+            >
+              {link.official ? t('links.official', { seller: link.seller }) : link.seller}
+              <ExternalLink className="size-3.5 shrink-0" aria-hidden="true" />
+              <span className="sr-only">
+                {link.sponsored ? `${t('partner.label')}. ` : ''}
+                {t('newTab')}
+              </span>
+            </a>
+            {link.sponsored && <PartnerLabel />}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+const noSubscribe = () => () => {};
+
+/**
+ * The visible "Partner link" label beside a sponsored link (a legal requirement, so never subtle):
+ * a pressable pill that says on hover, focus or a tap that park.fan earns a commission and the
+ * price stays the same.
+ */
+function PartnerLabel() {
+  const t = useTranslations('orlandoPlanner.tickets.partner');
+  const [open, setOpen] = useState(false);
+  return (
+    <Popover open={open} onOpenChange={setOpen}>
+      <PopoverTrigger asChild>
+        <button
+          type="button"
+          data-partner-label=""
+          onPointerEnter={(event) => event.pointerType === 'mouse' && setOpen(true)}
+          onPointerLeave={(event) => event.pointerType === 'mouse' && setOpen(false)}
+          className={cn(
+            'border-foreground/40 text-foreground inline-flex min-h-7 items-center gap-1 rounded-full border px-2 text-xs font-semibold',
+            PLAN_FOCUS
+          )}
+        >
+          <Info className="size-3.5" aria-hidden="true" />
+          {t('label')}
+        </button>
+      </PopoverTrigger>
+      {/* Above the phone's details sheet, which sits at z-[70]. */}
+      <PopoverContent align="start" className="z-[80] w-64 p-3 text-sm" data-partner-note="">
+        {t('note')}
+      </PopoverContent>
+    </Popover>
   );
 }

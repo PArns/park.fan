@@ -1432,6 +1432,13 @@
       "since": "sinds {month}"
     }
   },
+  "winterBreak": {
+    "label": "Winterpauze",
+    "reopensPark": "Weer open op <date>{day}</date>",
+    "reopensRide": "Het park gaat weer open op <date>{day}</date>",
+    "park": "Tot dan blijven alle attracties dicht en houdt Parky een winterslaap.",
+    "ride": "Tot dan blijft ook {ride} dicht en houdt Parky een winterslaap."
+  },
   "attractions": {
     "blogPosts": {
       "title": "{ride} op het blog",
@@ -3835,7 +3842,6 @@
         "without": "Plan zonder {hopper} tonen"
       },
       "hogwarts": "Voor de Hogwarts Express tussen Universal Studios en Islands of Adventure heb je park-to-park nodig.",
-      "shop": "Prijzen en tickets bij {operator}",
       "newTab": "(opent in een nieuw tabblad)",
       "adopt": "Als jouw tickets gebruiken",
       "longStay": {
@@ -3851,7 +3857,8 @@
         "usedEvery": "gebruikt op {used} van zijn {window} dagen",
         "passDays": "{count, plural, =1 {1 dag} other {# dagen}} in dit plan",
         "allowance": "en {count, plural, =1 {1 bezoek aan een waterpark} other {# bezoeken aan een waterpark}}",
-        "ifHopper": "Als het jouwe {hopper} heeft:"
+        "ifHopper": "Als het jouwe {hopper} heeft:",
+        "archived": "Dit ticket staat niet meer in onze lijst. Het plan houdt zich nog aan de regels ervan."
       },
       "unused": {
         "parks_fewer_than_days": "{count, plural, =1 {1 dag blijft} other {# dagen blijven}} ongebruikt: je parken hebben er minder nodig.",
@@ -3904,6 +3911,14 @@
         "pass": "Met je {resort}-jaarabonnement.",
         "suggested": "Met het voorgestelde {resort}-ticket is dit dag {day}.",
         "outside": "Deze dag valt buiten je {resort}-ticket."
+      },
+      "links": {
+        "title": "Prijzen en tickets",
+        "official": "{seller} (officiële winkel)"
+      },
+      "partner": {
+        "label": "Partnerlink",
+        "note": "Koop je via deze link, dan krijgt park.fan een commissie. De prijs blijft voor jou hetzelfde."
       }
     }
   },

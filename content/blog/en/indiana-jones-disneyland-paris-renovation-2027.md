@@ -20,6 +20,11 @@ parkLinks:
   - /parks/europe/france/paris/disneyland-park
 rideLinks:
   - /parks/europe/france/paris/disneyland-park/indiana-jones-and-the-temple-of-peril
+coverImage:
+  src: /media/disneyland-park/background.jpg
+  alt: 'The pink and blue Sleeping Beauty castle on its rock base, lawn and clipped trees in front.'
+  caption: 'Sleeping Beauty Castle in Disneyland Park. Over in Adventureland, the Indiana Jones coaster closes for several months from 4 January.'
+  credit: 'Patrick Arns'
 seo:
   title: 'Disneyland Paris renovates Indiana Jones from January 2027'
   description: >-

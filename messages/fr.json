@@ -1432,6 +1432,13 @@
       "since": "depuis {month}"
     }
   },
+  "winterBreak": {
+    "label": "Fermeture hivernale",
+    "reopensPark": "Réouverture le <date>{day}</date>",
+    "reopensRide": "Le parc rouvre le <date>{day}</date>",
+    "park": "D’ici là, toutes les attractions restent fermées et Parky hiberne.",
+    "ride": "D’ici là, {ride} ne tourne pas non plus et Parky hiberne."
+  },
   "attractions": {
     "blogPosts": {
       "title": "{ride} sur le blog",
@@ -3835,7 +3842,6 @@
         "without": "Voir le plan sans {hopper}"
       },
       "hogwarts": "Pour le Hogwarts Express entre Universal Studios et Islands of Adventure, il te faut le park-to-park.",
-      "shop": "Prix et billets chez {operator}",
       "newTab": "(s’ouvre dans un nouvel onglet)",
       "adopt": "Les utiliser comme tes billets",
       "longStay": {
@@ -3851,7 +3857,8 @@
         "usedEvery": "utilisé {used} jours sur ses {window}",
         "passDays": "{count, plural, =1 {1 jour} other {# jours}} dans ce plan",
         "allowance": "et {count, plural, =1 {1 visite de parc aquatique} other {# visites de parc aquatique}}",
-        "ifHopper": "Si le tien a {hopper} :"
+        "ifHopper": "Si le tien a {hopper} :",
+        "archived": "Ce billet n’est plus dans notre liste. Le plan suit toujours ses règles."
       },
       "unused": {
         "parks_fewer_than_days": "{count, plural, =1 {1 jour reste} other {# jours restent}} inutilisés : tes parcs en demandent moins.",
@@ -3904,6 +3911,14 @@
         "pass": "Avec ton pass annuel {resort}.",
         "suggested": "Avec le billet {resort} proposé, c’est le jour {day}.",
         "outside": "Ce jour tombe hors de ton billet {resort}."
+      },
+      "links": {
+        "title": "Prix et billets",
+        "official": "{seller} (boutique officielle)"
+      },
+      "partner": {
+        "label": "Lien partenaire",
+        "note": "Si tu achètes par ce lien, park.fan touche une commission. Le prix ne change pas pour toi."
       }
     }
   },

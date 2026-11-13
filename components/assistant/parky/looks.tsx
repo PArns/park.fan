@@ -12,7 +12,7 @@ import type { ParkyHat, ParkyOutfit, ParkyWeather } from '@/lib/assistant/parky/
 const coal = 'oklch(0.24 0.02 250)';
 const snow = 'white';
 /** An icy outline, so white snow still shows on a white page. */
-const ice = 'oklch(0.7 0.08 235)';
+export const ice = 'oklch(0.7 0.08 235)';
 const scarfRed = 'oklch(0.58 0.19 22)';
 const gold = 'oklch(0.85 0.15 88)';
 const pine = 'oklch(0.55 0.14 150)';
@@ -29,10 +29,13 @@ export const LOOK_GAZE: Partial<Record<string, { x: number; y: number }>> = {
 };
 
 /** A six-armed snowflake about four units across, round the origin. */
-const FLAKE = 'M0-2V2M-1.7-1L1.7 1M-1.7 1L1.7-1';
+export const FLAKE = 'M0-2V2M-1.7-1L1.7 1M-1.7 1L1.7-1';
 
-/** The season's hat, drawn in the Ferris wheel's place and, like it, behind the head. */
-export function ParkyLookHat({ hat }: { hat: ParkyHat }) {
+/**
+ * The season's hat, drawn in the Ferris wheel's place and, like it, behind the head. `still` keeps
+ * the pompom from bobbing, for a drawing inside a glass panel, which no endless animation may run in.
+ */
+export function ParkyLookHat({ hat, still = false }: { hat: ParkyHat; still?: boolean }) {
   return (
     <g className={cn('parky-look-hat', `parky-look-hat--${hat}`)}>
       {hat === 'pumpkin' && (
@@ -125,7 +128,7 @@ export function ParkyLookHat({ hat }: { hat: ParkyHat }) {
           <path d="M8.6 15C8.6 4.5 15.5-1 24-1s15.4 5.5 15.4 16Z" fill={scarfRed} />
           <path d="M11.4 7.6Q24 1.6 36.6 7.6" stroke="white" strokeWidth="1.6" fill="none" />
           <circle
-            className="parky-look-pompom"
+            className={still ? undefined : 'parky-look-pompom'}
             cx="24"
             cy="-2.4"
             r="3"
@@ -387,48 +390,32 @@ function Fireworks() {
 
 /**
  * The snowman Parky builds beside him: three snowballs stacked, coal eyes and buttons, the carrot
- * nose last and a tiny Ferris wheel for a hat, then he melts away.
+ * nose last and a tiny Ferris wheel for a hat, then he melts away. `still` draws him finished and
+ * keeps him, for a picture rather than an act.
  */
-function Snowman() {
+export function ParkySnowman({ still = false }: { still?: boolean }) {
+  const build = still ? undefined : 'parky-look-build';
   return (
-    <g className="parky-look-snowman">
+    <g className={still ? undefined : 'parky-look-snowman'}>
       <g fill={snow} stroke={ice} strokeWidth=".6">
-        <circle
-          className="parky-look-build"
-          cx="-7"
-          cy="43.4"
-          r="5"
-          style={{ animationDelay: '0s' }}
-        />
-        <circle
-          className="parky-look-build"
-          cx="-7"
-          cy="35.6"
-          r="3.8"
-          style={{ animationDelay: '.6s' }}
-        />
-        <circle
-          className="parky-look-build"
-          cx="-7"
-          cy="29.4"
-          r="2.9"
-          style={{ animationDelay: '1.2s' }}
-        />
+        <circle className={build} cx="-7" cy="43.4" r="5" style={{ animationDelay: '0s' }} />
+        <circle className={build} cx="-7" cy="35.6" r="3.8" style={{ animationDelay: '.6s' }} />
+        <circle className={build} cx="-7" cy="29.4" r="2.9" style={{ animationDelay: '1.2s' }} />
       </g>
-      <g className="parky-look-build" fill={coal} style={{ animationDelay: '1.8s' }}>
+      <g className={build} fill={coal} style={{ animationDelay: '1.8s' }}>
         <circle cx="-8.1" cy="28.8" r=".5" />
         <circle cx="-5.9" cy="28.8" r=".5" />
         <circle cx="-7" cy="34.6" r=".5" />
         <circle cx="-7" cy="36.8" r=".5" />
       </g>
       <path
-        className="parky-look-build"
+        className={build}
         d="M-6.8 29.6l3.2.7-3.2.7Z"
         fill="oklch(0.7 0.17 50)"
         style={{ animationDelay: '2.4s' }}
       />
       {/* Parky's own hat in miniature, a wink. */}
-      <g className="parky-look-build" style={{ animationDelay: '3s' }}>
+      <g className={build} style={{ animationDelay: '3s' }}>
         <circle cx="-7" cy="24.6" r="2" fill="none" stroke={ice} strokeWidth=".5" />
         <circle cx="-7" cy="22.6" r=".55" fill={gold} />
         <circle cx="-5" cy="24.6" r=".55" fill={scarfRed} />
@@ -448,7 +435,7 @@ export function ParkyLookBack({ outfit, act }: { outfit: ParkyOutfit; act: strin
       {outfit.sky && <Sky sky={outfit.sky} sheltered={outfit.umbrella} />}
       {act === 'ghost' && <Ghost />}
       {act === 'fireworks' && <Fireworks />}
-      {act === 'snowman' && <Snowman />}
+      {act === 'snowman' && <ParkySnowman />}
     </>
   );
 }

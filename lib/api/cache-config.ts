@@ -62,6 +62,10 @@ export const CACHE_TTL = {
   // `/v1/trip-regions/:region`, the parks, hotel areas and drive times of a region. Curated in the
   // API's code and moved only by its deploy; the API asks the edge for a day too.
   tripRegion: 86400,
+  // `/v1/trip-regions/:region/tickets`, the ticket catalog edited in the admin. The API keeps it five
+  // minutes at the edge and revalidates the tag `trip-tickets:<region>` after every edit, so this
+  // is the fallback for a missed webhook, not the way an edit arrives.
+  tripTickets: 300,
   // The region's `/calendar` and `/best-days`, which the API keeps an hour in Redis and rebuilds
   // from the calendar warmup twice a day. An hour is the API's own window, not a page's floor.
   tripRegionData: 3600,

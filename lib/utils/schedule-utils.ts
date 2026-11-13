@@ -7,6 +7,14 @@ import { daysBetween, parkDayOf } from '@/lib/utils/park-day';
 export type { ScheduleSummary };
 
 /**
+ * How far off a closed park's next opening has to be before it is between seasons rather than
+ * shut for a few days. Nearer, the next opening is a weekday to name (a park open only at
+ * weekends); this far or further, the park card says „Nebensaison", „Heute im Park" counts the
+ * weeks, and a winter break can show its panel.
+ */
+export const OFFSEASON_MIN_DAYS = 7;
+
+/**
  * „Öffnet am 15. März": a park's next opening, the day in the park's own zone, as the hero's park
  * block and the search lists print it. `opensOn` is the `parks.opensOn` string.
  */
@@ -238,7 +246,7 @@ export function getScheduleMessage(
               // No timezone: relative time only, rather than a wrong UTC clock time.
               return { message: remaining, icon: 'opening' };
             }
-          } else if (totalDays < 7) {
+          } else if (totalDays < OFFSEASON_MIN_DAYS) {
             const weekday = getDateTimeFormat(locale, {
               weekday: 'long',
               ...tzOptions,
