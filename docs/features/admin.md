@@ -341,11 +341,12 @@ The section „API-Zugriff / MCP“ (`account/mcp-access.tsx`) has the address w
 The keys that unlock park.fan's forecasts on api.park.fan for one consumer each
 ([a forecast leaves park.fan only with a key](../rules/a-forecast-leaves-only-with-a-key.md)).
 Owner only, in the nav and on the API (`/v1/admin/api-keys`, audited as `api-key.create`,
-`api-key.update` and `api-key.revoke`), because a key decides who uses the forecasts. Helpers in `lib/admin/api-keys.ts`.
+`api-key.update`, `api-key.revoke`, `api-key.rotate` and `api-key.previous.revoke`), because a key
+decides who uses the forecasts. Helpers in `lib/admin/api-keys.ts`, paths from `dataApiKeyPath`.
 
 - **The list** shows every key, active ones first: name, usage (nicht-kommerziell, or kommerziell
   for a holder with a written agreement), prefix, contact, created, last used, when it was
-  revoked, and for an active key its requests in the current clock hour and its hourly allowance
+  revoked or rotated, and for an active key its requests in the current clock hour and its hourly allowance
   (`formatHourlyUsage`), its end date (`formatKeyExpiry`) and its parks (`formatAllowedParks`,
   „alle Parks“ without a list), and its use: a sparkline of the last 30 days and „heute … · 30 Tage …“
   with the requests its allowance refused (`formatKeyUsage`). The chart button opens the use per
@@ -368,7 +369,22 @@ Owner only, in the nav and on the API (`/v1/admin/api-keys`, audited as `api-key
   optional note,
   and needs no password: a data key opens forecasts, never the admin. The key is in the answer once and lives in
   the dialog's state only, as a token does above; Escape and the overlay do not close the dialog
-  while it is shown. The dialog adds a `curl` line with the key in `X-API-Key`.
+  while it is shown. `OneTimeKey` shows it, for a create and a rotation alike: the warning to store
+  it now, the key and a `curl` line with it in `X-API-Key`, each with a copy button, and the focus
+  on the key's, since the button that asked for it is gone.
+- **Rotate** (the circular arrow on an active, unexpired key; the API refuses a revoked or expired
+  one with 409) gives the key a new secret and keeps everything else: name, usage, allowance,
+  parks, end date, statistics. The dialog asks for the grace period of the old secret
+  (`ROTATION_GRACE_CHOICES`: none, 1 hour, 24 hours as the default, 7 days) and says in one
+  sentence what that does (`describeRotationGrace`, read out when it changes); for the `internal`
+  key it reminds that the new one goes into Vercel as `API_DATA_KEY` first. Then the new key is
+  shown once, as on create, with the end of the grace above it. A rotation during a grace replaces
+  the old secret that grace kept.
+- **While a grace runs** the row says „Alter Key gültig bis 14.11.2026, 10:00, zuletzt genutzt vor
+  5 Minuten“ (`formatPreviousKeyStatus`; until `previousKeyValidUntil`, the end of the grace or the
+  key's own end date, whichever comes first) with „Alten Key jetzt sperren“ behind a
+  `ConfirmDialog` (`DELETE …/previous`). The row's „zuletzt genutzt“ is then the new secret's: the
+  API starts it over at the rotation, so the two lines show whether the holder has switched.
 
 ## Curated fields
 
