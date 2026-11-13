@@ -427,7 +427,7 @@ German states are in the
 Until the peak builds around ten to twelve,
 you get through the big rides with shorter waits. If you stay into the evening,
 you gain at Disneyland Paris, Parc Astérix, Europa-Park, Efteling and both
-Walibis, but hardly at Phantasialand and Heide Park. You can split the hours with the [trip planner](/blog/trip-planner).
+Walibis, but hardly at Phantasialand and Heide Park. You can split the hours with the [day planner](/blog/trip-planner).
 
 ```best-days-widget slug=europa-park
 

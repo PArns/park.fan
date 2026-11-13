@@ -249,7 +249,7 @@ classics. Main Street is at its fullest during the fireworks, so that's the
 time for one more of the big rides. The last hour before closing
 is for the Mine Train, if it didn't work out in the morning.
 
-In the [trip planner](/blog/trip-planner) you get an order for your rides based on the day's forecast wait times, and how long it all takes.
+In the [day planner](/blog/trip-planner) you get an order for your rides based on the day's forecast wait times, and how long it all takes.
 
 ## With small children
 

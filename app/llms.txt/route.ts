@@ -55,7 +55,7 @@ ${[
     'what the numbers mean and where they come from'
   ),
   line(
-    'Trip planner',
+    'Day planner',
     `${EN}/trip-planner`,
     'lay a day out against the forecast: rides on a timeline, transfers checked, no account'
   ),

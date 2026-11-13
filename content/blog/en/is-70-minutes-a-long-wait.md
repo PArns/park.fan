@@ -186,7 +186,7 @@ only get it on the spot, at Guest Services on Kaiserplatz, and supply is
 limited. When the posted wait is normal for that weekday anyway, it rarely pays
 off. I go into the Quick Pass Ultimate in the [Phantasialand guide](/blog/phantasialand-wait-times-tips).
 
-For a whole day there’s the [trip planner](/blog/trip-planner). You pick your
+For a whole day there’s the [day planner](/blog/trip-planner). You pick your
 rides and get them in an order based on the day’s forecast wait times. That way
 you know before you set off whether you’ll get to all of them before the park
 closes.
