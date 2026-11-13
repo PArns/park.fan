@@ -559,7 +559,7 @@
       "summary": "Cada cifra de esta página sale de los tiempos de espera que park.fan mide cada cinco minutos, de una previsión basada en ellos y de los horarios que publican los parques. Abre una pregunta para ver los detalles.",
       "sources": {
         "title": "¿De dónde salen las cifras?",
-        "body": "park.fan guarda cada cinco minutos la espera anunciada de cada atracción. Nuestros modelos de previsión aprenden de esas mediciones, de los horarios, de las vacaciones escolares y del tiempo. Los horarios, el Early Entry y los eventos nocturnos vienen de los calendarios de los parques; las temporadas y las fiestas se revisan a mano."
+        "body": "park.fan guarda cada cinco minutos la espera anunciada de cada atracción. Nuestros modelos de previsión aprenden de esas mediciones, de los horarios, de las vacaciones escolares y del tiempo. Los horarios, el Early Entry y los eventos nocturnos vienen de los calendarios de los parques. Las temporadas y las fiestas las revisamos a mano."
       },
       "minutes": {
         "title": "¿Qué significan los minutos?",
@@ -572,7 +572,7 @@
       },
       "error": {
         "title": "¿Cuánto acierta?",
-        "body": "Cuánto puede fallar una previsión depende de lo lejos que esté el día. Con un plan, el planificador lo indica junto a tus días: «Una previsión para una atracción en un día puede fallar en unos … min.» Las esperas se redondean a cinco minutos, así que aquí los días con menos de cinco minutos de diferencia cuentan como iguales, y los mejores días de un parque son un grupo, no una clasificación."
+        "body": "Cuánto puede fallar una previsión depende de lo lejos que esté el día. Cuando planificas un viaje, junto al resultado ves en cuántos minutos puede fallar la previsión para una atracción en un día. Las esperas se redondean a cinco minutos, así que aquí los días con menos de cinco minutos de diferencia cuentan como iguales, y los mejores días de un parque son un grupo, no una clasificación."
       },
       "travel": {
         "title": "¿Cómo se calculan los trayectos?",
@@ -591,11 +591,11 @@
       },
       "party": {
         "q": "¿Qué parque elegir una noche de fiesta en Magic Kingdom?",
-        "a": "En {count, plural, =1 {# noche} other {# noches}} de este periodo, Magic Kingdom cierra a los visitantes de día a las {time} por {name}. Esos días las colas son más cortas, unos {on} min frente a {off} min el resto de días, pero el día es más corto y los visitantes de día se pierden la noche. Para un día completo, elige ese día EPCOT, Hollywood Studios o Animal Kingdom, o ve con entrada para la fiesta."
+        "a": "En {count, plural, =1 {# noche} other {# noches}} de este periodo, Magic Kingdom cierra a los visitantes de día a las {time} por {name}. Esos días las colas son más cortas, unos {on} min frente a {off} min el resto de días, pero el día es más corto y los visitantes de día se pierden la noche. Para un día completo, elige esos días EPCOT, Hollywood Studios o Animal Kingdom, o ve con entrada para la fiesta."
       },
       "epic": {
         "q": "¿Hay más gente en Epic Universe los fines de semana?",
-        "a": "{verdict, select, busier {Sí.} same {No.} other {Solo un poco.}} En este periodo sus grandes atracciones rondan los {weekend} min a la hora de más gente los sábados y domingos, y los {weekday} min entre semana."
+        "a": "{verdict, select, busier {Sí.} same {No.} other {Solo un poco.}} En este periodo esperas unos {weekend} min en sus grandes atracciones a la hora de más gente los sábados y domingos, y unos {weekday} min entre semana."
       },
       "distance": {
         "q": "¿A qué distancia está Universal de Walt Disney World?",
@@ -603,7 +603,7 @@
       },
       "early": {
         "q": "¿Necesito Early Entry?",
-        "a": "No, pero ayuda los días de mucha gente. Los huéspedes de los hoteles propios de Disney entran en los parques temáticos de Disney {disney} minutos antes que nadie, y los de los hoteles de Universal {universal} minutos antes en los parques temáticos de Universal. El planificador lo tiene en cuenta si eliges un hotel así."
+        "a": "No, pero ayuda los días de mucha gente. Los huéspedes de los hoteles propios de Disney entran en los parques temáticos de Disney {disney} minutos antes que nadie, y los de los hoteles de Universal {universal} minutos antes en los parques temáticos de Universal. Si eliges un hotel así en el planificador, la apertura anticipada cuenta en tu plan."
       },
       "green": {
         "q": "¿Por qué un parque con colas más largas puede estar en verde?",

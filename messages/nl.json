@@ -559,7 +559,7 @@
       "summary": "Elk getal hier komt uit de wachttijden die park.fan elke vijf minuten meet, een voorspelling op basis daarvan en de openingstijden van de parken. Open een vraag voor de details.",
       "sources": {
         "title": "Waar komen de getallen vandaan?",
-        "body": "park.fan slaat elke vijf minuten de getoonde wachttijd van elke attractie op. Onze voorspellingsmodellen leren van die metingen, de openingstijden, de schoolvakanties en het weer. Openingstijden, Early Entry en avondevenementen komen uit de kalenders van de parken; seizoenen en feesten controleren we met de hand."
+        "body": "park.fan slaat elke vijf minuten de getoonde wachttijd van elke attractie op. Onze voorspellingsmodellen leren van die metingen, de openingstijden, de schoolvakanties en het weer. Openingstijden, Early Entry en avondevenementen komen uit de kalenders van de parken. Seizoenen en feesten controleren we met de hand."
       },
       "minutes": {
         "title": "Wat betekenen de minuten?",
@@ -572,7 +572,7 @@
       },
       "error": {
         "title": "Hoe nauwkeurig is het?",
-        "body": "Hoeveel een voorspelling ernaast kan zitten, hangt af van hoe ver de dag nog weg is. Met een plan zet de planner het naast je dagen: “Een voorspelling voor één attractie op één dag kan ongeveer … min. ernaast zitten.” Wachttijden zijn afgerond op vijf minuten, dus dagen binnen vijf minuten tellen hier als gelijk, en de beste dagen van een park zijn een groep, geen ranglijst."
+        "body": "Hoeveel een voorspelling ernaast kan zitten, hangt af van hoe ver de dag nog weg is. Zodra je een reis plant, staat bij het resultaat hoeveel minuten de voorspelling voor één attractie op één dag ernaast kan zitten. Wachttijden zijn afgerond op vijf minuten, dus dagen binnen vijf minuten tellen hier als gelijk, en de beste dagen van een park zijn een groep, geen ranglijst."
       },
       "travel": {
         "title": "Hoe worden de reistijden berekend?",
@@ -590,12 +590,12 @@
         "note": "De kalender hierboven toont elke dag, met het park met de kortste rijen in elk resort."
       },
       "party": {
-        "q": "Welk park op een feestavond in Magic Kingdom?",
-        "a": "Op {count, plural, =1 {# avond} other {# avonden}} in deze periode sluit Magic Kingdom voor dagbezoekers om {time} voor {name}. De rijen zijn die dagen korter, ongeveer {on} min tegen {off} min op de andere dagen, maar de dag is korter en dagbezoekers missen de avond. Kies voor een volle dag die dag EPCOT, Hollywood Studios of Animal Kingdom, of kom met een feestticket."
+        "q": "Welk park kies je op een feestavond in Magic Kingdom?",
+        "a": "Op {count, plural, =1 {# avond} other {# avonden}} in deze periode sluit Magic Kingdom voor dagbezoekers om {time} voor {name}. De rijen zijn die dagen korter, ongeveer {on} min tegenover {off} min op de andere dagen, maar de dag is korter en dagbezoekers missen de avond. Kies voor een volle dag op die dagen EPCOT, Hollywood Studios of Animal Kingdom, of kom met een feestticket."
       },
       "epic": {
         "q": "Is Epic Universe in het weekend drukker?",
-        "a": "{verdict, select, busier {Ja.} same {Nee.} other {Maar een beetje.}} In deze periode zitten de grote attracties op het drukste moment op zaterdag en zondag op ongeveer {weekend} min en doordeweeks op ongeveer {weekday} min."
+        "a": "{verdict, select, busier {Ja.} same {Nee.} other {Maar een beetje.}} In deze periode sta je op het drukste moment bij de grote attracties op zaterdag en zondag ongeveer {weekend} min in de rij, doordeweeks ongeveer {weekday} min."
       },
       "distance": {
         "q": "Hoe ver ligt Universal van Walt Disney World?",
@@ -603,7 +603,7 @@
       },
       "early": {
         "q": "Heb ik Early Entry nodig?",
-        "a": "Nee, maar op drukke dagen helpt het. Gasten van Disneys eigen hotels mogen {disney} minuten voor iedereen de Disney-themaparken in, gasten van de Universal-hotels {universal} minuten eerder in de themaparken van Universal. De reisplanner rekent dat mee als je zo'n hotel kiest."
+        "a": "Nee, maar op drukke dagen helpt het. Gasten van Disneys eigen hotels mogen {disney} minuten voor iedereen de Disney-themaparken in, gasten van de Universal-hotels {universal} minuten eerder in de themaparken van Universal. Kies je in de reisplanner zo’n hotel, dan telt de vroege opening mee."
       },
       "green": {
         "q": "Waarom kan een park met langere rijen groen zijn?",

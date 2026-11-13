@@ -559,7 +559,7 @@
       "summary": "Every figure here comes from wait times park.fan measures every five minutes, a forecast built on them, and the hours the parks publish. Open a question for the details.",
       "sources": {
         "title": "Where do the numbers come from?",
-        "body": "park.fan records the posted wait of every ride every five minutes. Our forecast models learn from those measurements, the parks' hours, school holidays and the weather. Opening hours, Early Entry and evening events come from the parks' own calendars; seasons and parties are checked by hand."
+        "body": "park.fan records the posted wait of every ride every five minutes. Our forecast models learn from those measurements, the parks' hours, school holidays and the weather. Opening hours, Early Entry and evening events come from the parks' own calendars. We check seasons and parties by hand."
       },
       "minutes": {
         "title": "What do the minutes mean?",
@@ -572,7 +572,7 @@
       },
       "error": {
         "title": "How close does it get?",
-        "body": "How far a forecast can be off depends on how far ahead the day is. With a plan, the planner says it beside your days: \"A forecast for one ride on one day can be off by about … min.\" Waits are rounded to five minutes, so days within five minutes count as equal here, and each park's best days are a set, not a ranking."
+        "body": "How far a forecast can be off depends on how far ahead the day is. Once you plan a trip, you'll find next to the result how many minutes the forecast for one ride on one day can be off. Waits are rounded to five minutes, so days within five minutes count as equal here, and each park's best days are a set, not a ranking."
       },
       "travel": {
         "title": "How are the drive times calculated?",
@@ -591,11 +591,11 @@
       },
       "party": {
         "q": "Which park should I visit on a Magic Kingdom party night?",
-        "a": "On {count, plural, =1 {# night} other {# nights}} in this period Magic Kingdom closes to day guests at {time} for {name}. The lines on those days are shorter, about {on} min against {off} min on its other days, but the day is shorter and day guests miss the evening. For a full day pick EPCOT, Hollywood Studios or Animal Kingdom that day, or come with a party ticket."
+        "a": "On {count, plural, =1 {# night} other {# nights}} in this period Magic Kingdom closes to day guests at {time} for {name}. The lines on those days are shorter, about {on} min compared with {off} min on its other days, but the day is shorter and day guests miss the evening. For a full day pick EPCOT, Hollywood Studios or Animal Kingdom on those days, or come with a party ticket."
       },
       "epic": {
         "q": "Is Epic Universe busier on weekends?",
-        "a": "{verdict, select, busier {Yes.} same {No.} other {Only a little.}} In this period its big rides average about {weekend} min at their busiest on Saturdays and Sundays and about {weekday} min on weekdays."
+        "a": "{verdict, select, busier {Yes.} same {No.} other {Only a little.}} In this period you wait about {weekend} min at its big rides at their busiest on Saturdays and Sundays, and about {weekday} min on weekdays."
       },
       "distance": {
         "q": "How far is Universal from Walt Disney World?",
@@ -603,7 +603,7 @@
       },
       "early": {
         "q": "Do I need Early Entry?",
-        "a": "No, but it helps on busy days. Guests of Disney's own hotels get into the Disney theme parks {disney} minutes before everybody else, and guests of Universal's hotels {universal} minutes early at Universal's theme parks. The trip planner counts it when you choose such a hotel."
+        "a": "No, but it helps on busy days. Guests of Disney's own hotels get into the Disney theme parks {disney} minutes before everybody else, and guests of Universal's hotels {universal} minutes early at Universal's theme parks. If you choose such a hotel in the trip planner, the early opening counts in your plan."
       },
       "green": {
         "q": "Why can a park with longer lines be green?",

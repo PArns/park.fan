@@ -559,7 +559,7 @@
       "summary": "Jede Zahl hier stammt aus den Wartezeiten, die park.fan alle fünf Minuten misst, aus einer Prognose auf dieser Grundlage und aus den Öffnungszeiten der Parks. Öffne eine Frage für die Einzelheiten.",
       "sources": {
         "title": "Woher kommen die Zahlen?",
-        "body": "park.fan speichert alle fünf Minuten die angezeigte Wartezeit jeder Attraktion. Unsere Prognosemodelle lernen aus diesen Messungen, den Öffnungszeiten, den Schulferien und dem Wetter. Öffnungszeiten, Early Entry und Abend-Events kommen aus den Kalendern der Parks; Saisons und Partys prüfen wir von Hand."
+        "body": "park.fan speichert alle fünf Minuten die angezeigte Wartezeit jeder Attraktion. Unsere Prognosemodelle lernen aus diesen Messungen, den Öffnungszeiten, den Schulferien und dem Wetter. Öffnungszeiten, Early Entry und Abend-Events kommen aus den Kalendern der Parks. Saisons und Partys prüfen wir von Hand."
       },
       "minutes": {
         "title": "Was bedeuten die Minuten?",
@@ -572,7 +572,7 @@
       },
       "error": {
         "title": "Wie genau ist sie?",
-        "body": "Wie weit eine Prognose danebenliegen kann, hängt davon ab, wie weit der Tag entfernt ist. Mit einem Plan steht es beim Planer neben deinen Tagen: „Die Prognose für eine Bahn an einem Tag kann um etwa … Min. danebenliegen.“ Wartezeiten sind auf fünf Minuten gerundet, deshalb gelten Tage innerhalb von fünf Minuten hier als gleich, und die besten Tage eines Parks sind eine Gruppe, keine Rangliste."
+        "body": "Wie weit eine Prognose danebenliegen kann, hängt davon ab, wie weit der Tag entfernt ist. Sobald du eine Reise planst, steht beim Ergebnis, um wie viele Minuten die Prognose für eine Bahn an einem Tag danebenliegen kann. Wartezeiten sind auf fünf Minuten gerundet, deshalb gelten Tage innerhalb von fünf Minuten hier als gleich, und die besten Tage eines Parks sind eine Gruppe, keine Rangliste."
       },
       "travel": {
         "title": "Wie werden die Fahrzeiten berechnet?",
@@ -585,17 +585,17 @@
       "quietest": {
         "q": "Wann ist es in Orlando in den nächsten Wochen am leersten?",
         "qMonth": "Wann ist es in Orlando im {month} am leersten?",
-        "resort": "In {resort} stehst du am kürzesten an am {days}.",
+        "resort": "In {resort} sind die Warteschlangen am kürzesten: {days}.",
         "day": "{date} im {park}, etwa {minutes} Min.",
         "note": "Der Kalender oben zeigt jeden Tag, mit dem Park, in dem du im jeweiligen Resort am kürzesten anstehst."
       },
       "party": {
-        "q": "Welcher Park an einem Party-Abend im Magic Kingdom?",
-        "a": "An {count, plural, =1 {# Abend} other {# Abenden}} in diesem Zeitraum schließt das Magic Kingdom für Tagesgäste um {time}, wegen {name}. An diesen Tagen sind die Warteschlangen kürzer, etwa {on} Min. gegen {off} Min. an den übrigen Tagen, aber der Tag ist kürzer und Tagesgäste verpassen den Abend. Für einen vollen Tag nimm an diesem Tag EPCOT, die Hollywood Studios oder Animal Kingdom, oder komm mit einem Party-Ticket."
+        "q": "Welcher Park passt an einem Party-Abend im Magic Kingdom?",
+        "a": "An {count, plural, =1 {# Abend} other {# Abenden}} in diesem Zeitraum schließt das Magic Kingdom für Tagesgäste um {time}, weil abends {name} läuft. An diesen Tagen sind die Warteschlangen kürzer, etwa {on} Min. gegenüber {off} Min. an den übrigen Tagen, aber der Tag ist kürzer und Tagesgäste verpassen den Abend. Für einen vollen Tag nimm an diesen Tagen EPCOT, die Hollywood Studios oder Animal Kingdom, oder komm mit einem Party-Ticket."
       },
       "epic": {
         "q": "Ist Epic Universe am Wochenende voller?",
-        "a": "{verdict, select, busier {Ja.} same {Nein.} other {Nur wenig.}} In diesem Zeitraum liegen seine großen Attraktionen zur vollsten Zeit samstags und sonntags bei etwa {weekend} Min. und montags bis freitags bei etwa {weekday} Min."
+        "a": "{verdict, select, busier {Ja.} same {Nein.} other {Nur wenig.}} In diesem Zeitraum stehst du an seinen großen Bahnen zur vollsten Zeit samstags und sonntags etwa {weekend} Min. an, montags bis freitags etwa {weekday} Min."
       },
       "distance": {
         "q": "Wie weit ist Universal von Walt Disney World entfernt?",
@@ -603,7 +603,7 @@
       },
       "early": {
         "q": "Brauche ich Early Entry?",
-        "a": "Nein, aber an vollen Tagen hilft es. Gäste der Disney-eigenen Hotels kommen {disney} Minuten vor allen anderen in die Disney-Themenparks, Gäste der Universal-Hotels {universal} Minuten früher in die Themenparks von Universal. Der Reiseplaner rechnet das ein, wenn du so ein Hotel wählst."
+        "a": "Nein, aber an vollen Tagen hilft es. Gäste der Disney-eigenen Hotels kommen {disney} Minuten vor allen anderen in die Disney-Themenparks, Gäste der Universal-Hotels {universal} Minuten früher in die Themenparks von Universal. Wenn du im Reiseplaner so ein Hotel wählst, zählt die frühere Öffnung mit."
       },
       "green": {
         "q": "Warum kann ein Park mit längeren Warteschlangen grün sein?",
