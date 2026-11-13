@@ -19,6 +19,7 @@ import {
 } from '@/lib/orlando/plan-when';
 import type { TripWhen, TripWhenWindow } from '@/lib/orlando/types';
 import { Button } from '@/components/ui/button';
+import { trackSiteEvent } from '@/lib/analytics/site-analytics';
 import { Sheet, SheetContent, SheetDescription, SheetTitle } from '@/components/ui/sheet';
 import { usePlanContext } from './plan-context';
 import { PLAN_FOCUS } from './plan-controls';
@@ -59,6 +60,7 @@ export function PlanWhenResult({
     });
 
   const plan = (window: TripWhenWindow) => {
+    trackSiteEvent('trip_window_planned', { rank: window.rank });
     setOpen(null);
     onPlan((state) => planWindow(state, { from: window.from, to: window.to }));
   };

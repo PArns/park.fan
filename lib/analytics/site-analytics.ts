@@ -326,6 +326,75 @@ export interface SiteEventMap {
   faq_opened: { position: number };
   /** The „Mehr" flyout of a park's title card opened, with the park's outbound links. */
   park_links_opened: NoProps;
+  /** The Orlando planner started: the hub's hero, its own start button, or a link with a plan. */
+  trip_planner_started: { source: 'hero' | 'button' | 'link' };
+  /** "Do you already have tickets?" answered; `skipped` is "Next: dates" without an answer. */
+  trip_tickets_answered: { answer: 'not_yet' | 'yes' | 'skipped' };
+  /** A ticket chosen in the step, by its entry in the list, from the list or the Combo Ticket. */
+  trip_ticket_added: { entry: string; resort: string; via: 'picker' | 'combo' };
+  /** A ticket taken out of the step. */
+  trip_ticket_removed: { entry: string; resort: string };
+  /** A ticket's first day picked or left open. */
+  trip_ticket_start: { entry: string; resort: string; start: 'set' | 'open' };
+  /**
+   * A plan or a search for dates asked for, once the controls are still: the mode, the trip's
+   * length as a bucket, how many parks (0: the headliners), owned tickets or none, plan first's
+   * hopper per resort, resort blocks and the rest rule.
+   */
+  trip_plan_requested: {
+    mode: 'dates' | 'when';
+    days: TripDaysBucket;
+    parks: number;
+    tickets: 'none' | 'owned';
+    hopper: 'none' | 'disney' | 'universal' | 'both';
+    blocks: 'default' | 'on' | 'off';
+    rest: 'auto' | 'none' | 'max';
+  };
+  /**
+   * The answer to it on screen: `ok`, `relaxed` with the first rule it loosened, or `error` with
+   * the status (0: no answer); the parks it could not place, or the windows a search found.
+   */
+  trip_plan_shown: {
+    mode: 'dates' | 'when';
+    outcome: 'ok' | 'relaxed' | 'error';
+    relaxed?: 'blocks' | 'streak' | 'ticket_window';
+    status?: number;
+    unplaced?: number;
+    windows?: number;
+  };
+  /** "Plan these dates" on a window the search found, by its rank. */
+  trip_window_planned: { rank: number };
+  /** "Ticket details" opened: in a sheet on a phone, in place at a desk. */
+  trip_ticket_details_opened: { surface: 'sheet' | 'inline' };
+  /** "Show the plan with Park Hopper" for one resort, and its way back. */
+  trip_hopper_toggled: { resort: string; on: boolean };
+  /** "Use these as your tickets": the suggestions became owned tickets. */
+  trip_tickets_adopted: { count: number };
+  /** "Plan with these": the 14-day tickets sold outside the US for a long trip. */
+  trip_long_stay_used: { count: number };
+  /** The result's view switched. */
+  trip_view_changed: { view: 'agenda' | 'week' | 'month' };
+  /** A day's sheet opened, from the answer's list or a view. */
+  trip_day_opened: {
+    kind: 'arrival' | 'park' | 'hop' | 'rest' | 'departure';
+    view: 'list' | 'agenda' | 'week' | 'month';
+  };
+  /** A day pinned or released. */
+  trip_day_pinned: { pinned: boolean };
+  /** Two days swapped. */
+  trip_day_swapped: NoProps;
+  /** "Plan this day": a day handed to the day planner. */
+  trip_day_sent: NoProps;
+  /** "Add all days to my planner", with how many park days went in. */
+  trip_days_saved: { days: number };
+  /** The trip as an `.ics` file, with its park days. */
+  trip_ics_exported: { days: number };
+  /** "Copy link" of the plan. */
+  trip_link_copied: NoProps;
+  /** An evening venue's own page opened from a day's evening. */
+  trip_evening_link_clicked: NoProps;
+  /** A day outside its ticket's window, and the way out the visitor chose. */
+  trip_outside_ticket_action: { action: 'leave_out' | 'change_ticket' };
   /**
    * A purchase link of the Orlando planner's ticket catalog followed, middle click included: which
    * product, at which seller and host, what kind of link, where in the shown list (1-based),
@@ -343,6 +412,9 @@ export interface SiteEventMap {
     ticket_mode: TicketMode;
   };
 }
+
+/** An Orlando trip's length as a bucket, arrival and departure included. */
+export type TripDaysBucket = '1-4' | '5-7' | '8-10' | '11-14' | '15-21';
 
 /** What a ticket purchase link is: the operator's own shop, an affiliate one, or another seller. */
 export type TicketLinkKind = 'official' | 'sponsored' | 'plain';

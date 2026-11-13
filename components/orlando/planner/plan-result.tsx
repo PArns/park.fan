@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useRef, useState, useSyncExternalStore, type Ref } from 'react';
+import { useCallback, useEffect, useRef, useState, useSyncExternalStore, type Ref } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import { CalendarDays, LayoutList, Rows3, Undo2 } from 'lucide-react';
@@ -16,6 +16,7 @@ import { Button } from '@/components/ui/button';
 import {
   MAX_PLAN_VISITS,
   MAX_TRIP_DAYS,
+  lockOn,
   planProblem,
   planRequestQuery,
   plannerParkOf,
@@ -56,6 +57,13 @@ import { PlanWeekView } from './plan-week-view';
 import { PlanWhenResult } from './plan-when-result';
 import { useTripCalendar, useTripPlan, useTripWhen, useUnpinnedPlan } from './use-trip-plan';
 import { PlanTicketsCard, type PlanEdit } from './plan-tickets-card';
+import { trackSiteEvent, type SiteEventMap } from '@/lib/analytics/site-analytics';
+import {
+  tripPlanFailedProps,
+  tripPlanRequestProps,
+  tripPlanShownProps,
+  tripWhenShownProps,
+} from '@/lib/orlando/plan-analytics';
 import { oneStop, useResortWord, useTicketName } from './plan-ticket-words';
 
 const VIEW_ICON = { agenda: LayoutList, week: Rows3, month: CalendarDays } as const;
@@ -99,6 +107,15 @@ function WhenAnswer() {
   const { state, update } = usePlanContext();
   const query = whenRequestQuery(state);
   const when = useTripWhen(query);
+  usePlanEvents(
+    when.asked,
+    'when',
+    when.data && !when.isPlaceholderData && !when.isFetching
+      ? tripWhenShownProps(when.data)
+      : when.isError && !when.isFetching
+        ? tripPlanFailedProps(statusOf(when.error), 'when')
+        : null
+  );
   if (!when.data) {
     return when.isError ? (
       <Failure error={when.error} onRetry={() => void when.refetch()} />
@@ -154,13 +171,29 @@ function PlanAnswerSection({ edit }: { edit: PlanEdit }) {
   const plan = useTripPlan(query);
   const unpinned = useUnpinnedPlan(query);
   const calendar = useTripCalendar(state.from, state.to);
+  usePlanEvents(
+    plan.asked,
+    'dates',
+    plan.data && plan.current && !plan.isFetching
+      ? tripPlanShownProps(plan.data)
+      : plan.isError && !plan.isFetching
+        ? tripPlanFailedProps(statusOf(plan.error), 'dates')
+        : null
+  );
 
   const [openDate, setOpenDate] = useState<string | null>(null);
   const opener = useRef<HTMLElement | null>(null);
-  const openDay = useCallback((date: string) => {
-    opener.current = document.activeElement instanceof HTMLElement ? document.activeElement : null;
-    setOpenDate(date);
-  }, []);
+  const days = plan.data?.days;
+  const openDay = useCallback(
+    (date: string, view: DayOpenedView) => {
+      opener.current =
+        document.activeElement instanceof HTMLElement ? document.activeElement : null;
+      setOpenDate(date);
+      const kind = days?.find((d) => d.date === date)?.kind;
+      if (kind) trackSiteEvent('trip_day_opened', { kind, view });
+    },
+    [days]
+  );
   const [history, setHistory] = useState<PlanLock[][]>([]);
   const [beacon, setBeacon] = useState<PlannerPagePark | null>(null);
 
@@ -205,6 +238,7 @@ function PlanAnswerSection({ edit }: { edit: PlanEdit }) {
     setBeacon(page);
     plannerPageDay.set({ parkSlug: slug, date });
     plannerUi.requestOpen('orlando-hub', 'page-park-wizard');
+    trackSiteEvent('trip_day_sent');
   };
 
   return (
@@ -243,8 +277,12 @@ function PlanAnswerSection({ edit }: { edit: PlanEdit }) {
         plan={data}
         calendar={calendar.data}
         onClose={() => setOpenDate(null)}
-        onToggleLock={(d) => withHistory((s) => toggleLock(s, d))}
+        onToggleLock={(d) => {
+          trackSiteEvent('trip_day_pinned', { pinned: lockOn(state, d.date) === null });
+          withHistory((s) => toggleLock(s, d));
+        }}
         onSwap={(a, b) => {
+          trackSiteEvent('trip_day_swapped');
           setOpenDate(null);
           withHistory((s) => {
             const locks = swapLocks(s, a, b);
@@ -271,7 +309,7 @@ function PlanAnswer({
 }: {
   plan: TripPlan;
   calendar: TripCalendar | undefined;
-  onOpenDay: (date: string) => void;
+  onOpenDay: (date: string, view: DayOpenedView) => void;
   edit: PlanEdit;
 }) {
   const t = useTranslations('orlandoPlanner');
@@ -399,7 +437,7 @@ function PlanAnswer({
           <li key={day.date}>
             <button
               type="button"
-              onClick={() => onOpenDay(day.date)}
+              onClick={() => onOpenDay(day.date, 'list')}
               className={cn(
                 'hover:bg-accent/40 flex min-h-11 w-full items-center gap-2 rounded-md px-2 py-1 text-left text-sm transition-colors',
                 PLAN_FOCUS
@@ -485,11 +523,11 @@ function EditBar({
 function PlanViews({
   plan,
   calendar,
-  onOpenDay,
+  onOpenDay: openDay,
 }: {
   plan: TripPlan;
   calendar: TripCalendar | undefined;
-  onOpenDay: (date: string) => void;
+  onOpenDay: (date: string, view: DayOpenedView) => void;
 }) {
   const t = useTranslations('orlandoPlanner.views');
   const wide = useMediaQuery(PLAN_WIDE_QUERY);
@@ -499,6 +537,7 @@ function PlanViews({
     orlandoPlanView.getServerSnapshot
   );
   const view: PlanView = chosen ?? (wide ? 'week' : 'agenda');
+  const onOpenDay = (date: string) => openDay(date, view);
 
   return (
     <section className="flex flex-col gap-3" aria-label={t('label')}>
@@ -515,7 +554,10 @@ function PlanViews({
               type="button"
               role="radio"
               aria-checked={view === key}
-              onClick={() => orlandoPlanView.set(key)}
+              onClick={() => {
+                if (key !== view) trackSiteEvent('trip_view_changed', { view: key });
+                orlandoPlanView.set(key);
+              }}
               className={cn(
                 'flex min-h-11 items-center gap-1.5 rounded-lg px-3 text-sm font-medium transition-colors lg:min-h-9',
                 view === key
@@ -590,4 +632,39 @@ function TicketProblemBox({ problem, edit }: { problem: TicketProblem; edit: Pla
       </div>
     </div>
   );
+}
+
+/** Where a day's sheet was opened from: the answer's list or one of the views. */
+type DayOpenedView = SiteEventMap['trip_day_opened']['view'];
+
+/** A failed request's status for the statistic, 0 where nothing answered. */
+function statusOf(error: unknown): number {
+  return error instanceof PlanRequestError ? error.status : 0;
+}
+
+/**
+ * Counts `trip_plan_requested` once per query asked, and `trip_plan_shown` once its answer, or its
+ * failure, is on screen. `shown` is `null` while the answer is on its way.
+ */
+function usePlanEvents(
+  asked: string | null,
+  mode: 'dates' | 'when',
+  shown: SiteEventMap['trip_plan_shown'] | null
+) {
+  const requested = useRef<string | null>(null);
+  const answered = useRef<string | null>(null);
+  useEffect(() => {
+    if (!asked || requested.current === asked) return;
+    requested.current = asked;
+    trackSiteEvent(
+      'trip_plan_requested',
+      tripPlanRequestProps(Object.fromEntries(new URLSearchParams(asked)), mode)
+    );
+  }, [asked, mode]);
+  const key = shown ? JSON.stringify(shown) : null;
+  useEffect(() => {
+    if (!asked || !key || answered.current === asked) return;
+    answered.current = asked;
+    trackSiteEvent('trip_plan_shown', JSON.parse(key) as SiteEventMap['trip_plan_shown']);
+  }, [asked, key]);
 }

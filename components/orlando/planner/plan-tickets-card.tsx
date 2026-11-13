@@ -271,7 +271,8 @@ function OwnedRow({
               <Button
                 variant="outline"
                 size="sm"
-                onClick={() =>
+                onClick={() => {
+                  trackSiteEvent('trip_outside_ticket_action', { action: 'leave_out' });
                   update((s) =>
                     setParkVisits(
                       s,
@@ -280,12 +281,19 @@ function OwnedRow({
                       regionOrder,
                       headliners
                     )
-                  )
-                }
+                  );
+                }}
               >
                 {t('outside.leaveOut')}
               </Button>
-              <Button variant="outline" size="sm" onClick={() => edit.tickets(index)}>
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => {
+                  trackSiteEvent('trip_outside_ticket_action', { action: 'change_ticket' });
+                  edit.tickets(index);
+                }}
+              >
                 {t('outside.changeTicket')}
               </Button>
             </div>
@@ -390,6 +398,7 @@ function SuggestedTickets({
           <span>{t('longStay.line')}</span>
           <InlineAction
             onClick={() => {
+              trackSiteEvent('trip_long_stay_used', { count: longStay.length });
               orlandoTicketAnswer.set('yes');
               update((s) => setTickets(s, [...state.tickets, ...longStay], catalog, today));
             }}
@@ -405,7 +414,11 @@ function SuggestedTickets({
           aria-expanded={wide ? open : undefined}
           aria-controls={wide ? detailsId : undefined}
           aria-haspopup={wide ? undefined : 'dialog'}
-          onClick={() => setOpen((o) => !o)}
+          onClick={() => {
+            if (!open)
+              trackSiteEvent('trip_ticket_details_opened', { surface: wide ? 'inline' : 'sheet' });
+            setOpen(!open);
+          }}
           data-plan-ticket-details=""
         >
           {t('details')}
@@ -499,6 +512,7 @@ function SuggestionDetails({
         <button
           type="button"
           onClick={() => {
+            trackSiteEvent('trip_tickets_adopted', { count: suggested.length });
             orlandoTicketAnswer.set('yes');
             update((s) => adoptSuggestions(s, suggested, catalog));
             edit.tickets();
@@ -592,7 +606,10 @@ function SuggestionResort({
               className="self-start"
               aria-pressed={on}
               data-plan-hopper-toggle={s.resort}
-              onClick={() => update((st) => toggleHopper(st, s.resort, optional))}
+              onClick={() => {
+                trackSiteEvent('trip_hopper_toggled', { resort: s.resort, on: !on });
+                update((st) => toggleHopper(st, s.resort, optional));
+              }}
             >
               {on ? t('hopper.without', { hopper }) : t('hopper.with', { hopper })}
             </Button>

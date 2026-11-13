@@ -30,6 +30,7 @@ import {
   type TicketResort,
 } from '@/lib/orlando/plan-tickets';
 import { orlandoTicketAnswer } from '@/lib/orlando/ticket-answer';
+import { trackSiteEvent } from '@/lib/analytics/site-analytics';
 import type { TicketProduct } from '@/lib/orlando/types';
 import { Badge } from '@/components/ui/badge';
 import { usePlanContext } from './plan-context';
@@ -64,7 +65,8 @@ export interface TicketStep {
   answer: TicketAnswer;
   drafts: TicketDraft[];
   answerYes: () => void;
-  answerNo: () => void;
+  /** "Not yet"; `skipped` when the walk moved on without an answer. */
+  answerNo: (skipped?: boolean) => void;
   add: (resort: TicketResort) => void;
   addCombo: () => void;
   change: (id: number, patch: Partial<TicketDraft>) => void;
@@ -128,10 +130,12 @@ export function useTicketStep(): TicketStep {
     answer,
     drafts,
     answerYes: () => {
+      if (answer !== 'yes') trackSiteEvent('trip_tickets_answered', { answer: 'yes' });
       orlandoTicketAnswer.set('yes');
       write(drafts, true);
     },
-    answerNo: () => {
+    answerNo: (skipped = false) => {
+      trackSiteEvent('trip_tickets_answered', { answer: skipped ? 'skipped' : 'not_yet' });
       orlandoTicketAnswer.set('no');
       write(drafts, false);
     },
@@ -148,6 +152,13 @@ export function useTicketStep(): TicketStep {
         { ...blank(id + 1, 'universal-orlando', 'uor-uk-14'), link: id },
       ];
       if (drafts.length + added.length > MAX_TICKETS) return;
+      for (const d of added) {
+        trackSiteEvent('trip_ticket_added', {
+          entry: d.entry ?? 'none',
+          resort: d.resort,
+          via: 'combo',
+        });
+      }
       write([...drafts, ...added], true);
       setFocus({ draft: id, field: 'start' });
     },
@@ -174,6 +185,9 @@ export function useTicketStep(): TicketStep {
     },
     remove: (id) => {
       const gone = drafts.find((d) => d.id === id);
+      if (gone) {
+        trackSiteEvent('trip_ticket_removed', { entry: gone.entry ?? 'none', resort: gone.resort });
+      }
       write(
         drafts.filter((d) => d.id !== id),
         true
@@ -435,6 +449,11 @@ function TicketCard({
               addon: false,
             });
             step.focusDraft(draft.id, 'fields');
+            trackSiteEvent('trip_ticket_added', {
+              entry: picked.key,
+              resort: draft.resort,
+              via: 'picker',
+            });
           }}
         />
       ) : (
@@ -802,6 +821,11 @@ function StartField({
     year: 'numeric',
   });
   const pick = (start: string | null) => {
+    trackSiteEvent('trip_ticket_start', {
+      entry: draft.entry ?? 'none',
+      resort: draft.resort,
+      start: start ? 'set' : 'open',
+    });
     step.change(draft.id, { start });
     setOpen(false);
     requestAnimationFrame(() => fieldRef.current?.focus());

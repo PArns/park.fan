@@ -186,16 +186,46 @@ Without a catalog the step and the card are not drawn, plan first works as befor
 ## Analytics
 
 The planner's events go to our own statistic through `trackSiteEvent` and its gates
-([site analytics](site-analytics.md), [the inventory](../development/analytics.md)); the
-properties are built in `lib/orlando/plan-analytics.ts` and pinned by `pnpm test:orlando-plan`.
+([site analytics](site-analytics.md), [the inventory](../development/analytics.md)). Each one is in
+`SiteEventMap` and has its line in the admin's `EVENT_INFO`. The properties that take more than a
+literal are built in `lib/orlando/plan-analytics.ts` and pinned by `pnpm test:orlando-plan`; the
+Orlando part of `pnpm check:planner` reads the key ones from the page (`window.__parkfanEventLog`).
 
-- **`ticket_link_clicked`**: a purchase link followed, middle click included. `product` (the
-  catalog id), `seller`, `host`, `kind` (official, sponsored, plain), `position` in the list the
-  visitor saw (1-based), `locale_match` (ordered first for the visitor's locale or market), `surface`
-  (suggestion, long_stay, owned) and `ticket_mode` (plan_first, owned, mixed). Eight is the
-  statistic's limit, so the region (Orlando is the only one) and the resort (the product's) are left
-  out. No entity: no single park is meant. The admin's event page breaks it down by seller, product
-  and host.
+Every name is snake_case in the past tense, every value is one of a few, and nothing a visitor typed
+or picked as a date goes out: a trip's length is a bucket, its parks a count. No event carries an
+entity, because none of them means one park.
+
+The funnel, in the order a visitor meets it:
+
+| Event                   | Properties                                                                                                     | Fires                                                                                                                   |
+| ----------------------- | -------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| `trip_planner_started`  | `source`: hero, button, link                                                                                   | the hub's hero, the planner's own button, or a link that carries a plan or a search (a shared one, Parky's)             |
+| `trip_tickets_answered` | `answer`: not_yet, yes, skipped                                                                                | the ticket question answered; `skipped` is "Next: dates" without an answer                                              |
+| `trip_plan_requested`   | `mode` (dates, when), `days` (1-4 … 15-21), `parks` (0: the headliners), `tickets`, `hopper`, `blocks`, `rest` | every distinct request once the controls are still, a pin or a swap included                                            |
+| `trip_plan_shown`       | `mode`, `outcome` (ok, relaxed, error), `relaxed`, `status`, `unplaced`, `windows`                             | the answer to that request on screen, once; `relaxed` names the loosened rule that weighs most, `status` 0 is no answer |
+
+And the decisions along the way:
+
+- **Tickets:** `trip_ticket_added` (`entry`, `resort`, `via` picker or combo; the Combo Ticket counts
+  both halves), `trip_ticket_removed` (`entry`, `resort`), `trip_ticket_start` (`entry`, `resort`,
+  `start` set or open).
+- **The ticket card:** `trip_ticket_details_opened` (`surface` sheet or inline),
+  `trip_hopper_toggled` (`resort`, `on`), `trip_tickets_adopted` (`count`), `trip_long_stay_used`
+  (`count`), `trip_outside_ticket_action` (`action` leave_out or change_ticket), and
+  `ticket_link_clicked` below.
+- **The answer:** `trip_window_planned` (`rank` of the window a search found),
+  `trip_view_changed` (`view`), `trip_day_opened` (`kind` of the day, `view` it was opened from:
+  list, agenda, week, month), `trip_day_pinned` (`pinned`), `trip_day_swapped`, `trip_day_sent`
+  ("Plan this day"), `trip_evening_link_clicked` (a venue's own page).
+- **Keeping it:** `trip_days_saved` (`days` that went into the day planner), `trip_ics_exported`
+  (`days` in the file), `trip_link_copied`.
+
+`ticket_link_clicked` is a purchase link followed, middle click included. `product` (the catalog
+id), `seller`, `host`, `kind` (official, sponsored, plain), `position` in the list the visitor saw
+(1-based), `locale_match` (ordered first for the visitor's locale or market), `surface` (suggestion,
+long_stay, owned) and `ticket_mode` (plan_first, owned, mixed). Eight is the statistic's limit, so
+the region (Orlando is the only one) and the resort (the product's) are left out. The admin's event
+page breaks it down by seller, product and host.
 
 ## Editing a plan
 

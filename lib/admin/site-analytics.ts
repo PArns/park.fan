@@ -828,6 +828,82 @@ export const EVENT_INFO: Record<SiteEventName, EventInfo> = {
     label: 'Fehlerseite gezeigt',
     when: 'Eine Fehlerseite wird angezeigt; ohne Text der Meldung.',
   },
+  trip_planner_started: {
+    label: 'Orlando-Planer gestartet',
+    when: 'Über den Knopf im Hub-Kopf, den Startknopf des Planers oder einen Link mit einem Plan.',
+  },
+  trip_tickets_answered: {
+    label: 'Ticket-Frage beantwortet',
+    when: '„Noch nicht“, „Ja“ oder übersprungen („Weiter zu den Reisedaten“ ohne Antwort).',
+  },
+  trip_ticket_added: {
+    label: 'Ticket eingetragen',
+    when: 'Ein Ticket im Schritt gewählt; mit Eintrag, Resort und Weg (Liste oder Combo Ticket).',
+  },
+  trip_ticket_removed: { label: 'Ticket entfernt', when: 'Ein Ticket aus dem Schritt genommen.' },
+  trip_ticket_start: {
+    label: 'Erster Ticket-Tag',
+    when: 'Der erste Tag eines Tickets gewählt oder offen gelassen.',
+  },
+  trip_plan_requested: {
+    label: 'Orlando-Plan angefragt',
+    when: 'Ein Plan oder eine Datumssuche, sobald die Eingaben ruhen; mit Modus, Reiselänge, Parks, Tickets, Hopper, Blöcken und Ruhetagen.',
+  },
+  trip_plan_shown: {
+    label: 'Orlando-Plan gezeigt',
+    when: 'Die Antwort ist da: ok, gelockert (mit der Regel) oder Fehler (mit Status).',
+  },
+  trip_window_planned: {
+    label: 'Reisezeitraum geplant',
+    when: '„Diese Daten planen“ auf einem gefundenen Zeitraum; mit seinem Rang.',
+  },
+  trip_ticket_details_opened: {
+    label: 'Ticket-Details geöffnet',
+    when: 'Die Details zu den vorgeschlagenen Tickets; als Sheet oder an Ort und Stelle.',
+  },
+  trip_hopper_toggled: {
+    label: 'Plan mit Park Hopper',
+    when: '„Plan mit Park Hopper zeigen“ für ein Resort, oder zurück.',
+  },
+  trip_tickets_adopted: {
+    label: 'Vorschläge übernommen',
+    when: '„Als deine Tickets übernehmen“; mit der Zahl der Tickets.',
+  },
+  trip_long_stay_used: {
+    label: '14-Tage-Tickets geplant',
+    when: '„Damit planen“ bei den 14-Tage-Tickets einer langen Reise.',
+  },
+  trip_view_changed: {
+    label: 'Ansicht gewechselt',
+    when: 'Liste, Woche oder Monat im Ergebnis des Orlando-Planers.',
+  },
+  trip_day_opened: {
+    label: 'Reisetag geöffnet',
+    when: 'Das Blatt eines Tages; mit der Art des Tages und der Ansicht, aus der es kam.',
+  },
+  trip_day_pinned: { label: 'Reisetag festgesteckt', when: 'Ein Tag festgesteckt oder gelöst.' },
+  trip_day_swapped: { label: 'Reisetage getauscht', when: 'Zwei Tage getauscht.' },
+  trip_day_sent: {
+    label: 'Tag an den Tagesplaner',
+    when: '„Diesen Tag planen“ im Blatt eines Reisetags.',
+  },
+  trip_days_saved: {
+    label: 'Reise in den Planer',
+    when: '„Alle Tage in meinen Planer“; mit der Zahl der Parktage.',
+  },
+  trip_ics_exported: {
+    label: 'Reise als Kalender',
+    when: 'Die .ics-Datei der Reise; mit der Zahl der Parktage.',
+  },
+  trip_link_copied: { label: 'Reise-Link kopiert', when: '„Link kopieren“ unter dem Plan.' },
+  trip_evening_link_clicked: {
+    label: 'Abend-Ort geöffnet',
+    when: 'Die offizielle Seite eines Abend-Orts aus dem Blatt eines Reisetags.',
+  },
+  trip_outside_ticket_action: {
+    label: 'Tag außerhalb des Tickets',
+    when: 'Ein Ausweg gewählt: den Besuch weglassen oder das Ticket ändern.',
+  },
   ticket_link_clicked: {
     label: 'Ticket-Link geklickt',
     when: 'Ein Kauf-Link im Orlando-Planer; mit Produkt, Verkäufer, Host, Art (offiziell, Partner, andere), Platz in der Liste, Sprach- oder Markt-Treffer, Ort und Ticket-Modus.',

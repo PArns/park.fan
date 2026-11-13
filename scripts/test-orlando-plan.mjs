@@ -97,6 +97,11 @@ import {
   sellerProp,
   ticketLinkClickProps,
   ticketModeOf,
+  tripDaysBucket,
+  tripPlanFailedProps,
+  tripPlanRequestProps,
+  tripPlanShownProps,
+  tripWhenShownProps,
 } from '../lib/orlando/plan-analytics.ts';
 
 const cases = [];
@@ -1529,6 +1534,95 @@ const keys = { parks: new Set(ORDER), areas: new Set(['disney', 'universal']) };
     'the ticket mode follows the plan’s own tickets',
     [ticketModeOf(0, 2), ticketModeOf(2, 0), ticketModeOf(1, 1)],
     ['plan_first', 'owned', 'mixed']
+  );
+}
+
+// ── The planner's events ─────────────────────────────────────────────────────
+{
+  test(
+    'a trip’s length lands in its bucket, arrival and departure included',
+    [1, 4, 5, 7, 8, 10, 11, 14, 15, 21].map(tripDaysBucket),
+    ['1-4', '1-4', '5-7', '5-7', '8-10', '8-10', '11-14', '11-14', '15-21', '15-21']
+  );
+  test(
+    'a plan request counts the decisions, never the dates or the parks themselves',
+    tripPlanRequestProps(
+      {
+        from: '2026-11-28',
+        to: '2026-12-06',
+        parks: 'magic-kingdom-park:2,epcot,universal-epic-universe',
+        tickets: 'wdw-date-based.4@2026-11-29',
+        hopper: 'universal-orlando',
+        blocks: '0',
+        rest: 'max:3',
+        lock: 'epcot@2026-12-01',
+      },
+      'dates'
+    ),
+    {
+      mode: 'dates',
+      days: '8-10',
+      parks: 3,
+      tickets: 'owned',
+      hopper: 'universal',
+      blocks: 'off',
+      rest: 'max',
+    }
+  );
+  test(
+    'without parks the request plans the headliners; ticket=hopper is the hopper at both resorts',
+    tripPlanRequestProps(
+      { from: '2026-11-28', to: '2026-12-01', ticket: 'hopper', blocks: '1', rest: 'none' },
+      'dates'
+    ),
+    {
+      mode: 'dates',
+      days: '1-4',
+      parks: 0,
+      tickets: 'none',
+      hopper: 'both',
+      blocks: 'on',
+      rest: 'none',
+    }
+  );
+  test(
+    'a search counts its length, or the default length when it names none',
+    [
+      tripPlanRequestProps({ from: '2026-11-01', to: '2027-02-28', days: '14' }, 'when').days,
+      tripPlanRequestProps({ from: '2026-11-01', to: '2027-02-28' }, 'when').days,
+      tripPlanRequestProps({ hopper: 'walt-disney-world' }, 'when').hopper,
+      tripPlanRequestProps({}, 'when').blocks,
+    ],
+    ['11-14', '8-10', 'disney', 'default']
+  );
+  test(
+    'a plan on screen names the rule it loosened that weighs most, and what it left out',
+    [
+      tripPlanShownProps({ meta: {}, unplaced: [] }),
+      tripPlanShownProps({
+        meta: { relaxed: ['streak_relaxed', 'ticket_window_relaxed', 'blocks_relaxed'] },
+        unplaced: [{ slug: 'epcot' }],
+      }),
+      tripPlanShownProps({ meta: { relaxed: ['streak_relaxed'] }, unplaced: [] }),
+    ],
+    [
+      { mode: 'dates', outcome: 'ok', unplaced: 0 },
+      { mode: 'dates', outcome: 'relaxed', relaxed: 'ticket_window', unplaced: 1 },
+      { mode: 'dates', outcome: 'relaxed', relaxed: 'streak', unplaced: 0 },
+    ]
+  );
+  test(
+    'a search on screen counts its windows; a failure keeps its status, 0 without an answer',
+    [
+      tripWhenShownProps({ windows: [{}, {}, {}] }),
+      tripPlanFailedProps(400, 'dates'),
+      tripPlanFailedProps(undefined, 'when'),
+    ],
+    [
+      { mode: 'when', outcome: 'ok', windows: 3 },
+      { mode: 'dates', outcome: 'error', status: 400 },
+      { mode: 'when', outcome: 'error', status: 0 },
+    ]
   );
 }
 

@@ -8,6 +8,7 @@ import { ORLANDO_PLANNER_ID } from '@/lib/orlando/paths';
 import { orlandoPlannerUi } from '@/lib/orlando/planner-ui';
 import { shortParkName } from '@/lib/orlando/hub-data';
 import { ticketCatalog } from '@/lib/orlando/plan-tickets';
+import { trackSiteEvent } from '@/lib/analytics/site-analytics';
 import { PLAN_WIDE_QUERY } from './plan-setup';
 import type { TripRegion } from '@/lib/orlando/types';
 import {
@@ -78,6 +79,9 @@ function LivePlanner(props: OrlandoPlannerProps) {
   // when the visitor is already on the page and only the query changed.
   const onExternal = useCallback(() => {
     if (window.location.hash !== `#${ORLANDO_PLANNER_ID}`) return;
+    // A link that carries a plan or a search (a shared one, Parky's, a best-time page's).
+    if (window.location.search.length > 1)
+      trackSiteEvent('trip_planner_started', { source: 'link' });
     const root = rootRef.current;
     if (!root) return;
     const target = document.getElementById(ORLANDO_PLANNER_ID) ?? root;
@@ -175,34 +179,38 @@ function PlannerBody({ defaultMonth }: { defaultMonth?: string }) {
   }, []);
 
   /** The walk's first step: Tickets while the question is open, else Dates. */
-  const start = useCallback(() => {
-    if (!window.matchMedia(PLAN_WIDE_QUERY).matches) {
-      openSheet(asks ? 'tickets' : 'dates', asks);
-      return;
-    }
-    if (asks) {
-      setTicketsOpen(true);
-      const panel = document.querySelector<HTMLElement>('[data-plan-disclosure="tickets"]');
+  const start = useCallback(
+    (source: 'hero' | 'button') => {
+      trackSiteEvent('trip_planner_started', { source });
+      if (!window.matchMedia(PLAN_WIDE_QUERY).matches) {
+        openSheet(asks ? 'tickets' : 'dates', asks);
+        return;
+      }
+      if (asks) {
+        setTicketsOpen(true);
+        const panel = document.querySelector<HTMLElement>('[data-plan-disclosure="tickets"]');
+        scrollTo(panel);
+        panel
+          ?.querySelector<HTMLElement>('[data-ticket-answer="no"]')
+          ?.focus({ preventScroll: true });
+        return;
+      }
+      const panel = document.querySelector<HTMLElement>('[data-plan-dates-panel]');
       scrollTo(panel);
       panel
-        ?.querySelector<HTMLElement>('[data-ticket-answer="no"]')
+        ?.querySelector<HTMLElement>(
+          '[role=radio][aria-checked=true], [data-plan-date][tabindex="0"]'
+        )
         ?.focus({ preventScroll: true });
-      return;
-    }
-    const panel = document.querySelector<HTMLElement>('[data-plan-dates-panel]');
-    scrollTo(panel);
-    panel
-      ?.querySelector<HTMLElement>(
-        '[role=radio][aria-checked=true], [data-plan-date][tabindex="0"]'
-      )
-      ?.focus({ preventScroll: true });
-  }, [asks, openSheet]);
+    },
+    [asks, openSheet]
+  );
 
   // The hub's hero asks through `orlandoPlannerUi`.
   useEffect(() => {
     if (!live) return;
     const answer = () => {
-      if (orlandoPlannerUi.take()) start();
+      if (orlandoPlannerUi.take()) start('hero');
     };
     answer();
     return orlandoPlannerUi.subscribe(answer);
@@ -275,7 +283,7 @@ function PlannerBody({ defaultMonth }: { defaultMonth?: string }) {
         onTicketsOpen={setTicketsOpen}
         fineTuneOpen={fineTuneOpen}
         onFineTuneOpen={setFineTuneOpen}
-        onStart={start}
+        onStart={() => start('button')}
       />
       <PlanResult ref={resultRef} edit={edit} />
     </>

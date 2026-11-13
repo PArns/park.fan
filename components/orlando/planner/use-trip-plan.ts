@@ -40,6 +40,8 @@ export function useTripPlan(query: Record<string, string> | null) {
   });
   return {
     ...result,
+    /** The query asked for, once the controls are still: `settled`, as the request carries it. */
+    asked: settled,
     /** The controls moved since the plan on screen was asked for, or the answer is on its way. */
     waiting: search !== null && (search !== settled || result.isFetching),
     /** The plan on screen answers the query asked last (and not a previous one, still shown). */
@@ -101,7 +103,12 @@ export function useTripWhen(query: Record<string, string> | null) {
     retry: retryPlanRequest,
     refetchOnWindowFocus: false,
   });
-  return { ...result, waiting: search !== null && (search !== settled || result.isFetching) };
+  return {
+    ...result,
+    /** The query asked for, once the controls are still. */
+    asked: settled,
+    waiting: search !== null && (search !== settled || result.isFetching),
+  };
 }
 
 /**

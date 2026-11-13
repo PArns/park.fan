@@ -42,6 +42,8 @@ export async function checkOrlandoTickets({ browser, base, check }) {
           // Parky's lines sit over the result's lower right on a phone; a closed one mutes them.
           sessionStorage.setItem('parkfan:assistant-muted', '1');
         } catch {}
+        // The statistic's test seam: every event the page reports lands here.
+        window.__parkfanEventLog = [];
       },
       { answer, view }
     );
@@ -64,6 +66,18 @@ export async function checkOrlandoTickets({ browser, base, check }) {
     );
   };
   const query = (page) => new URL(page.url()).searchParams;
+  /** The properties of every `name` event the page reported, once at least one is in. */
+  const events = async (page, name) => {
+    await page
+      .waitForFunction((n) => (window.__parkfanEventLog ?? []).some((e) => e.name === n), name, {
+        timeout: 5000,
+      })
+      .catch(() => {});
+    return page.evaluate(
+      (n) => (window.__parkfanEventLog ?? []).filter((e) => e.name === n).map((e) => e.props ?? {}),
+      name
+    );
+  };
   const asked = (page) =>
     page.evaluate(() => {
       try {
@@ -121,10 +135,22 @@ export async function checkOrlandoTickets({ browser, base, check }) {
       'Orlando · „Plan my Orlando trip“ öffnet zuerst Tickets',
       (await sheetTitle(page)) === 'Tickets'
     );
+    const started = await events(page, 'trip_planner_started');
+    check(
+      'Orlando · Ereignis trip_planner_started mit der Quelle des Starts',
+      started.length === 1 && started[0].source === 'button',
+      JSON.stringify(started)
+    );
     await page.getByRole('button', { name: 'Next: dates' }).click();
     await page.waitForFunction(
       (sel) => document.querySelector(sel)?.textContent?.startsWith('Dates'),
       `${SHEET} [data-slot="sheet-title"]`
+    );
+    const skipped = await events(page, 'trip_tickets_answered');
+    check(
+      'Orlando · Ereignis trip_tickets_answered: „Next: dates“ ohne Antwort ist skipped',
+      skipped.length === 1 && skipped[0].answer === 'skipped',
+      JSON.stringify(skipped)
     );
     check(
       'Orlando · „Next: dates“ ohne Antwort überspringt und merkt sich „Not yet“',
@@ -160,6 +186,12 @@ export async function checkOrlandoTickets({ browser, base, check }) {
       'Orlando · „Not yet, just plan“ antwortet und öffnet die Reisedaten mit einem Druck',
       (await asked(page)) === 'no'
     );
+    const answered = await events(page, 'trip_tickets_answered');
+    check(
+      'Orlando · Ereignis trip_tickets_answered: not_yet',
+      answered.length === 1 && answered[0].answer === 'not_yet',
+      JSON.stringify(answered)
+    );
     await context.close();
   }
 
@@ -190,6 +222,20 @@ export async function checkOrlandoTickets({ browser, base, check }) {
       'Orlando · beide Hälften des Combo Tickets beginnen am selben ersten Tag',
       shared.includes('Sun, Feb 7, 2027'),
       shared
+    );
+    const yesAnswer = await events(page, 'trip_tickets_answered');
+    const added = await events(page, 'trip_ticket_added');
+    const started2 = await events(page, 'trip_ticket_start');
+    check(
+      'Orlando · Ereignisse: yes, zwei Tickets über das Combo, ein erster Tag',
+      yesAnswer.length === 1 &&
+        yesAnswer[0].answer === 'yes' &&
+        added.length === 2 &&
+        added.every((e) => e.via === 'combo') &&
+        added.map((e) => e.resort).join() === 'walt-disney-world,universal-orlando' &&
+        started2.length === 1 &&
+        started2[0].start === 'set',
+      JSON.stringify({ yesAnswer, added, started2 })
     );
     const disney = await sheet.locator('[data-ticket-window]').nth(0).innerText();
     const universal = await sheet.locator('[data-ticket-window]').nth(1).innerText();
@@ -235,6 +281,19 @@ export async function checkOrlandoTickets({ browser, base, check }) {
       .evaluateAll((els) =>
         els.map((e) => `${e.getAttribute('data-plan-owned-use')}: ${e.textContent}`)
       );
+    const requested = (await events(page, 'trip_plan_requested')).at(-1);
+    const shown = (await events(page, 'trip_plan_shown')).at(-1);
+    check(
+      'Orlando · Ereignisse trip_plan_requested und trip_plan_shown zum Plan mit eigenen Tickets',
+      requested?.mode === 'dates' &&
+        requested.days === '15-21' &&
+        requested.tickets === 'owned' &&
+        requested.parks === 0 &&
+        !('from' in requested) &&
+        shown?.mode === 'dates' &&
+        (shown.outcome === 'ok' || shown.outcome === 'relaxed'),
+      JSON.stringify({ requested, shown })
+    );
     check(
       'Orlando · „Your tickets“: Disney zählt Tage, Universal gilt jeden Tag',
       (await card.getAttribute('data-plan-tickets-card')) === 'owned' &&
@@ -261,6 +320,12 @@ export async function checkOrlandoTickets({ browser, base, check }) {
         (await rowSays(page, 'Disney 14-Day Magic Ticket · Universal 14-day ticket')) ===
           'Disney 14-Day Magic Ticket · Universal 14-day ticket',
       await rowValue(page)
+    );
+    const fromLink = await events(page, 'trip_planner_started');
+    check(
+      'Orlando · Ereignis trip_planner_started: ein Link mit Plan ist source link',
+      fromLink.length === 1 && fromLink[0].source === 'link',
+      JSON.stringify(fromLink)
     );
     await context.close();
   }
@@ -318,6 +383,12 @@ export async function checkOrlandoTickets({ browser, base, check }) {
       'Orlando · auf dem Telefon öffnen die Details ein Sheet',
       (await page.locator(`${SHEET} [data-plan-suggestion]`).count()) >= 1
     );
+    const opened = await events(page, 'trip_ticket_details_opened');
+    check(
+      'Orlando · Ereignis trip_ticket_details_opened: sheet',
+      opened.length === 1 && opened[0].surface === 'sheet',
+      JSON.stringify(opened)
+    );
     await context.close();
   }
   {
@@ -331,6 +402,12 @@ export async function checkOrlandoTickets({ browser, base, check }) {
       'Orlando · am Schreibtisch klappen die Details an Ort und Stelle auf',
       (await details.getAttribute('aria-expanded')) === 'true' &&
         (await card.locator('[data-plan-ticket-details-body]').isVisible())
+    );
+    const inline = await events(page, 'trip_ticket_details_opened');
+    check(
+      'Orlando · Ereignis trip_ticket_details_opened: inline',
+      inline.length === 1 && inline[0].surface === 'inline',
+      JSON.stringify(inline)
     );
     const toggles = card.locator('[data-plan-hopper-toggle]');
     const count = await toggles.count();
@@ -353,6 +430,12 @@ export async function checkOrlandoTickets({ browser, base, check }) {
         query(page).get('hopper') === resort && !query(page).has('ticket'),
         page.url()
       );
+      const toggled = await events(page, 'trip_hopper_toggled');
+      check(
+        'Orlando · Ereignis trip_hopper_toggled mit Resort und Richtung',
+        toggled.length === 1 && toggled[0].resort === resort && toggled[0].on === true,
+        JSON.stringify(toggled)
+      );
       await page
         .locator(`[data-plan-hopper-toggle="${resort}"][aria-pressed="true"]`)
         .waitFor({ timeout: PLAN_TIMEOUT });
@@ -370,9 +453,6 @@ export async function checkOrlandoTickets({ browser, base, check }) {
   {
     // The seed carries no sponsored link, so one is added to the answer the browser receives.
     const { context, page } = await open(DESK, { answer: 'no' });
-    await context.addInitScript(() => {
-      window.__parkfanEventLog = [];
-    });
     await page.route('**/api/trip-regions/orlando/plan?*', async (route) => {
       const response = await route.fetch();
       const json = await response.json();
@@ -510,6 +590,12 @@ export async function checkOrlandoTickets({ browser, base, check }) {
       'Orlando · „Leave this visit out“ nimmt den Besuch aus den Parks',
       !(query(page).get('parks') ?? '').includes('magic-kingdom-park'),
       `${slug.slice(0, 60)} → parks=${query(page).get('parks')}`
+    );
+    const ways = await events(page, 'trip_outside_ticket_action');
+    check(
+      'Orlando · Ereignis trip_outside_ticket_action für beide Auswege',
+      ways.map((e) => e.action).join() === 'change_ticket,leave_out',
+      JSON.stringify(ways)
     );
     await context.close();
   }
