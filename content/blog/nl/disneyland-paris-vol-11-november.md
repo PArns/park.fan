@@ -7,7 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Op 11 november, een feestdag in Frankrijk, zaten beide parken van Disneyland Paris vol. Alleen wie al een ticket voor die dag of een reservering had, kwam nog binnen. Bij de attracties stond je volgens onze metingen ongeveer even lang in de rij als op de dagen van de Franse herfstvakantie eind oktober.
+  Op 11 november, een feestdag in Frankrijk, zaten beide parken van Disneyland Paris vol. Alleen wie al een ticket voor die dag of een reservering had, kwam nog binnen. Bij de attracties stond je volgens onze metingen ongeveer even lang in de rij als in de Franse herfstvakantie eind oktober.
 tags:
   - nieuws
   - disneyland-paris
@@ -41,21 +41,21 @@ Op woensdag 11 november zaten beide parken van Disneyland Paris vol, het [Disney
 
 Het kerstseizoen begon op zaterdag 7 november, en een vol park heeft DLP Report alleen voor de feestdag gemeld. In onze kalender staat het Disneyland Park in die eerste week op twee dagen op “Hoog”, op de openingszaterdag en op de feestdag. Op maandag en dinsdag daartussen stond het op “Laag”.
 
-“Hoog” betekent bij ons dat je bij de grote attracties merkbaar langer in de rij staat dan op een gewone dag in het park. Daarboven komen nog “Zeer hoog” en “Extreem”, en daar heeft het Disneyland Park dit jaar op geen enkele dag gestaan. Van januari tot en met 12 november komt het op 68 dagen met “Hoog”, waaronder de vijf dagen van 27 tot en met 31 oktober in de Franse herfstvakantie. Bij de attracties was de feestdag daarmee ongeveer even bijzonder als de woensdag in de herfstvakantie twee weken eerder. Disney Adventure World stond op de feestdag maar op “Normaal”, hoewel ook daar niemand zonder ticket en reservering meer binnenkwam.
+“Hoog” betekent bij ons dat je bij de grote attracties merkbaar langer in de rij staat dan op een gewone dag in het park. Daarboven komen nog “Zeer hoog” en “Extreem”, en daar heeft het Disneyland Park dit jaar op geen enkele dag gestaan. Van januari tot en met 12 november komt het op 68 dagen met “Hoog”, waaronder de vijf dagen van 27 tot en met 31 oktober in de Franse herfstvakantie. In de rijen was de feestdag daarmee ongeveer even bijzonder als de woensdag in de herfstvakantie twee weken eerder. Disney Adventure World zat net zo vol en stond op de feestdag toch maar op “Normaal”.
 
-Op zo’n dag zou ik me daarom minder zorgen maken om de rijen dan om mijn ticket. Met het verkeerde kwam je op 11 november niet eens in de buurt van de attracties.
+Voor de volgende feestdag zou ik daarom eerst nagaan of mijn ticket voor die dag geldt, en pas daarna aan de wachttijden denken.
 
 ## Met welk ticket je op een volle dag binnenkomt
 
 Zonder reservering kom je op een volle dag binnen met
 
-- een gedateerd ticket, waar de datum al op staat,
+- een gedateerd ticket voor precies die dag,
 - elk ticket als je in een Disney-hotel overnacht; je laat bij de ingang je Magic Pass zien, die ook op de dag van aankomst en vertrek geldt,
 - een pakket van hotel en ticket dat je rechtstreeks bij Disney hebt geboekt.
 
 Een ongedateerd ticket is een jaar geldig vanaf de aankoop, maar nooit op 14 juli, 31 oktober en 31 december. Je bezoekdag registreer je online, zolang er voor die dag nog plaats is. Tot 10.00 uur op de dag zelf kun je de reservering annuleren en een andere dag kiezen. Met de Disneyland Pass, het jaarabonnement, registreer je je bezoekdagen op dezelfde manier, tot drie tegelijk.
 
-De kassa’s bij de ingang verkopen alleen nog in uitzonderingsgevallen, tegen contant geld, Chèques-Vacances of cadeaukaarten, en alleen zolang het park niet vol is. Wie op 11 november pas bij de ingang een ticket wilde kopen, had vanaf het moment dat de parken vol zaten geen kans meer.
+De kassa’s bij de ingang verkopen alleen nog in uitzonderingsgevallen, tegen contant geld, Chèques-Vacances of cadeaukaarten, en alleen zolang het park niet vol is.
 
 ## Kerst en oud en nieuw
 

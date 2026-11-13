@@ -7,7 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  On 11 November, a public holiday in France, both Disneyland Paris parks were full. Only guests who already had a ticket for the day or a reservation got in. By our measurements, the waits at the rides were about as long as on the French autumn school holiday days at the end of October.
+  On 11 November, a public holiday in France, both Disneyland Paris parks were full. Only guests who already had a ticket for the day or a reservation got in. By our measurements, the waits at the rides were about as long as during the French autumn school holidays at the end of October.
 tags:
   - news
   - disneyland-paris
@@ -35,33 +35,33 @@ seo:
     - Disneyland Paris New Year's Eve ticket
 ---
 
-On Wednesday 11 November both Disneyland Paris parks were full, [Disneyland Park](ref:/parks/europe/france/paris/disneyland-park) and [Disney Adventure World](ref:disney-adventure-world). Armistice Day is a public holiday in France and in Belgium, so families from two countries had a day off in the middle of the week. At the entrance it said "Parcs complets – sauf avec billet et réservation" in French and English, so nobody got in without a ticket and a reservation. The fan site DLP Report posted a photo of it on X that day. Both parks were open until 10 pm, an hour longer than on the Tuesday and the Thursday. Disneyland Paris hasn't announced how many guests were turned away at the gate.
+On Wednesday 11 November both Disneyland Paris parks, [Disneyland Park](ref:/parks/europe/france/paris/disneyland-park) and [Disney Adventure World](ref:disney-adventure-world), were full. Armistice Day is a public holiday in France and in Belgium, so families from two countries had a day off in the middle of the week. At the entrance it said "Parcs complets – sauf avec billet et réservation" in French and English, so nobody got in without a ticket and a reservation. The fan site DLP Report posted a photo of it on X that day. Both parks were open until 10 pm, an hour longer than on the Tuesday and the Thursday. Disneyland Paris hasn't announced how many guests were turned away at the gate.
 
 ## How busy the first Christmas week was
 
 The Christmas season began on Saturday 7 November, and DLP Report only reported a full park for the holiday. In our calendar, Disneyland Park is on "High" on two days of that first week, the opening Saturday and the holiday. On the Monday and Tuesday in between it was on "Low".
 
-"High" means you queue noticeably longer at the big rides than on a typical day at the park. Above it come "Very High" and "Extreme", and Disneyland Park hasn't reached either on a single day this year. From January to 12 November it comes to 68 days on "High", including the five days from 27 to 31 October during the French autumn school holidays. At the rides, the holiday was about as special as the Wednesday of the autumn holidays two weeks earlier. Disney Adventure World was only on "Normal" that day, even though it also turned away everyone without a ticket and a reservation.
+"High" means you queue noticeably longer at the big rides than on a typical day at the park. Above it come "Very High" and "Extreme", and Disneyland Park hasn't reached either on a single day this year. Between January and 12 November it had 68 "High" days, including the five from 27 to 31 October during the French autumn school holidays. In the queues, the holiday was about as special as the Wednesday of the autumn holidays two weeks earlier. Disney Adventure World was just as full and still only made it to "Normal" that day.
 
-On a day like that I'd worry less about the queues than about my ticket. With the wrong one, you didn't get anywhere near the rides on 11 November.
+Before the next public holiday, I'd first check that my ticket is valid for the day and only then think about the waits.
 
 ## Which tickets get you in on a full day
 
 Without a reservation you get in on a full day with
 
-- a dated ticket, which already has the date on it,
+- a dated ticket for that exact day,
 - any ticket if you're staying at a Disney hotel; you show your Magic Pass at the gate, and it also works on the days you check in and out,
 - a hotel-and-ticket package booked directly with Disney.
 
-An undated ticket is valid for a year from purchase, but never on 14 July, 31 October or 31 December. You register your visit date online while there's still space on it. Until 10 am on the day you can cancel the reservation and pick another date. With the Disneyland Pass, the annual pass, you register visit dates the same way, up to three at a time.
+An undated ticket is valid for a year from purchase, but never on 14 July, 31 October or 31 December. You register your visit date online, as long as reservations for it haven't run out. Until 10 am on the day you can cancel the reservation and pick another date. With the Disneyland Pass, the annual pass, you register visit dates the same way, up to three at a time.
 
-The ticket desks at the entrance only sell in exceptional cases, for cash, Chèques-Vacances or gift cards, and only while the park isn't at capacity. Anyone who planned to buy a ticket at the entrance on 11 November was out of luck from the moment the parks were full.
+The ticket desks at the entrance only sell in exceptional cases, for cash, Chèques-Vacances or gift cards, and only while the park isn't at capacity.
 
 ## Christmas and New Year's Eve
 
 The Christmas season runs until 6 January. We cover the parade, the tree and the first Christmas in World of Frozen in our post on [Christmas and New Year's Eve in Paris and Orlando](/blog/christmas-new-year-orlando-paris-2026). The next public holidays in France are Friday 25 December and Friday 1 January. The French Christmas school holidays start on Saturday 19 December, and school goes back on Monday 4 January. On New Year's Eve both parks are open until 1 am, though not for a single minute on an undated ticket.
 
-With an undated ticket or the annual pass, I'd register the holiday date now, while there's still space. Without a ticket, your best bet for the holidays is a dated one, and getting in is settled the moment you pay.
+With an undated ticket or the annual pass, I'd register the holiday date now, while reservations are still available. Without a ticket, I'd buy a dated one for the holidays straight away.
 
 ```best-days-widget slug=/parks/europe/france/paris/disneyland-park
 

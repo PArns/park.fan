@@ -7,7 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  El 11 de noviembre, festivo en Francia, los dos parques de Disneyland Paris estaban llenos. Solo entraba quien ya tenía una entrada para ese día o una reserva. En las atracciones, según nuestras mediciones, se hizo más o menos la misma cola que en los días de las vacaciones escolares francesas de otoño, a finales de octubre.
+  El 11 de noviembre, festivo en Francia, los dos parques de Disneyland Paris estaban llenos. Solo entraba quien ya tenía una entrada para ese día o una reserva. En las atracciones, según nuestras mediciones, se hizo más o menos la misma cola que en las vacaciones escolares francesas de otoño, a finales de octubre.
 tags:
   - news
   - disneyland-paris
@@ -41,21 +41,21 @@ El miércoles 11 de noviembre los dos parques de Disneyland Paris estaban llenos
 
 La temporada de Navidad empezó el sábado 7 de noviembre, y DLP Report solo informó de un parque lleno el día festivo. En nuestro calendario, Disneyland Park está en «Alta» dos días de esa primera semana, el sábado de la inauguración y el festivo. El lunes y el martes entre medias estuvo en «Baja».
 
-«Alta» significa para nosotros que en las atracciones grandes haces bastante más cola que en un día normal del parque. Por encima quedan «Muy alta» y «Extrema», y Disneyland Park no ha llegado a ninguna de las dos ni un solo día este año. De enero al 12 de noviembre suma 68 días en «Alta», entre ellos los cinco días del 27 al 31 de octubre, en las vacaciones escolares francesas de otoño. En las atracciones, el festivo fue más o menos tan especial como el miércoles de esas vacaciones, dos semanas antes. Disney Adventure World solo estuvo en «Normal» ese día, aunque tampoco dejaba entrar a nadie sin entrada y reserva.
+«Alta» significa para nosotros que en las atracciones grandes haces bastante más cola que en un día normal del parque. Por encima quedan «Muy alta» y «Extrema», y Disneyland Park no ha llegado a ninguna de las dos ni un solo día este año. De enero al 12 de noviembre suma 68 días en «Alta», entre ellos los cinco días del 27 al 31 de octubre, en las vacaciones escolares francesas de otoño. En las colas, el festivo fue más o menos tan especial como el miércoles de esas vacaciones, dos semanas antes. Disney Adventure World estaba igual de lleno y aun así solo llegó a «Normal» ese día.
 
-Un día así, a mí me preocuparían menos las colas que la entrada. Con la equivocada, el 11 de noviembre no llegabas ni a ver las atracciones.
+Antes del próximo festivo, yo comprobaría primero que mi entrada vale para ese día y solo después pensaría en los tiempos de espera.
 
 ## Con qué entrada pasas un día lleno
 
 Sin reserva entras un día lleno con
 
-- una entrada con fecha, que ya lleva el día,
+- una entrada con fecha para ese mismo día,
 - cualquier entrada si duermes en un hotel Disney; en la entrada enseñas tu Magic Pass, que vale también el día de llegada y el de salida,
 - un paquete de hotel y entrada reservado directamente con Disney.
 
 Una entrada sin fecha vale un año desde la compra, pero nunca el 14 de julio, el 31 de octubre ni el 31 de diciembre. El día de la visita lo registras en línea, mientras quede sitio para ese día. Hasta las 10:00 del mismo día puedes cancelar la reserva y elegir otro. Con el Disneyland Pass, el pase anual, registras los días de visita de la misma forma, hasta tres a la vez.
 
-Las taquillas de la entrada solo venden en casos excepcionales, con efectivo, Chèques-Vacances o tarjetas regalo, y solo mientras el parque no esté lleno. Quien el 11 de noviembre pensaba comprar la entrada en la taquilla se quedó sin opciones desde el momento en que los parques se llenaron.
+Las taquillas de la entrada solo venden en casos excepcionales, con efectivo, Chèques-Vacances o tarjetas regalo, y solo mientras el parque no esté lleno.
 
 ## Navidad y Nochevieja
 

@@ -41,21 +41,21 @@ Am Mittwoch, dem 11. November, waren beide Parks von Disneyland Paris voll, der 
 
 Die Weihnachtssaison hat am Samstag, dem 7. November, begonnen, und einen vollen Park hat DLP Report nur für den Feiertag gemeldet. In unserem Kalender steht der Disneyland Park in dieser ersten Woche an zwei Tagen auf „Hoch“, am Eröffnungssamstag und am Feiertag. Am Montag und Dienstag dazwischen lag er auf „Niedrig“.
 
-„Hoch“ heißt bei uns, dass an den großen Bahnen spürbar länger angestanden wird als an einem typischen Tag des Parks. Darüber gibt es noch „Sehr hoch“ und „Extrem“, und dort stand der Disneyland Park in diesem Jahr an keinem einzigen Tag. Von Januar bis zum 12. November kommt er auf 68 Tage mit „Hoch“, darunter die fünf Tage vom 27. bis 31. Oktober in den französischen Herbstferien. An den Bahnen war der Feiertag damit ungefähr so besonders wie der Mittwoch in den Herbstferien zwei Wochen davor. Die Disney Adventure World lag am Feiertag nur auf „Normal“, obwohl auch sie niemanden ohne Ticket und Reservierung mehr hineinließ.
+„Hoch“ heißt bei uns, dass an den großen Bahnen spürbar länger angestanden wird als an einem typischen Tag des Parks. Darüber gibt es noch „Sehr hoch“ und „Extrem“, und dort stand der Disneyland Park in diesem Jahr an keinem einzigen Tag. Von Januar bis zum 12. November kommt er auf 68 Tage mit „Hoch“, darunter die fünf Tage vom 27. bis 31. Oktober in den französischen Herbstferien. An den Bahnen war der Feiertag damit ungefähr so besonders wie der Mittwoch in den Herbstferien zwei Wochen davor. Die Disney Adventure World war genauso voll und lag am Feiertag trotzdem nur auf „Normal“.
 
-An so einem Tag würde ich mir deshalb weniger Sorgen um die Warteschlangen machen als um das eigene Ticket. Mit dem falschen kam man am 11. November gar nicht erst bis zu den Bahnen.
+Vor dem nächsten Feiertag würde ich deshalb zuerst prüfen, ob mein Ticket für den Tag gilt, und mir erst danach Gedanken über die Wartezeiten machen.
 
 ## Mit welchem Ticket du an vollen Tagen hineinkommst
 
 Ohne Reservierung kommst du an einem vollen Tag hinein mit
 
-- einem datierten Ticket, auf dem das Datum schon steht,
+- einem datierten Ticket für genau diesen Tag,
 - jedem Ticket, wenn du in einem Disney-Hotel übernachtest; dann zeigst du am Eingang deinen Magic Pass, der auch am An- und Abreisetag gilt,
 - einem Paket aus Hotel und Ticket, das du direkt bei Disney gebucht hast.
 
 Ein undatiertes Ticket gilt ein Jahr ab Kauf, aber nie am 14. Juli, am 31. Oktober und am 31. Dezember. Den Besuchstag registrierst du online, solange es für ihn noch Plätze gibt. Bis 10 Uhr am Besuchstag kannst du die Reservierung stornieren und einen anderen Tag nehmen. Mit dem Disneyland Pass, der Jahreskarte, registrierst du deine Besuchstage genauso, bis zu drei gleichzeitig.
 
-An der Kasse am Eingang verkauft Disneyland Paris nur noch in Ausnahmen, gegen Bargeld, Chèques-Vacances oder Geschenkkarten, und nur, solange der Park nicht ausgelastet ist. Wer am 11. November erst am Eingang ein Ticket kaufen wollte, hatte ab dem Moment, in dem die Parks voll waren, keine Chance mehr.
+An der Kasse am Eingang verkauft Disneyland Paris nur noch in Ausnahmen, gegen Bargeld, Chèques-Vacances oder Geschenkkarten, und nur, solange der Park nicht ausgelastet ist.
 
 ## Weihnachten und Silvester
 
