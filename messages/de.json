@@ -627,8 +627,9 @@
       "varHours": "Öffnungszeiten"
     },
     "band": {
-      "title": "Mehrere Tage in Orlando?",
-      "link": "Welcher Park an welchem Tag"
+      "title": "Mehrere Tage in {region}?",
+      "planPark": "{park} in deine {region}-Reise einplanen",
+      "open": "Reiseplaner öffnen"
     }
   },
   "theme": {

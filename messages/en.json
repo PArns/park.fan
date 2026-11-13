@@ -627,8 +627,9 @@
       "varHours": "Opening hours"
     },
     "band": {
-      "title": "Several days in Orlando?",
-      "link": "Which park on which day"
+      "title": "Several days in {region}?",
+      "planPark": "Plan {park} into your {region} trip",
+      "open": "Open the trip planner"
     }
   },
   "theme": {

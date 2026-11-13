@@ -627,8 +627,9 @@
       "varHours": "Openingstijden"
     },
     "band": {
-      "title": "Meerdere dagen in Orlando?",
-      "link": "Welk park op welke dag"
+      "title": "Meerdere dagen in {region}?",
+      "planPark": "{park} in je reis naar {region} inplannen",
+      "open": "Reisplanner openen"
     }
   },
   "theme": {

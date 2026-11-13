@@ -627,8 +627,9 @@
       "varHours": "Horarios"
     },
     "band": {
-      "title": "¿Varios días en Orlando?",
-      "link": "Qué parque qué día"
+      "title": "¿Varios días en {region}?",
+      "planPark": "Añade {park} a tu viaje a {region}",
+      "open": "Abrir el planificador de viajes"
     }
   },
   "theme": {

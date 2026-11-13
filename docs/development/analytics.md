@@ -286,8 +286,10 @@ all from server-rendered markup and the same listeners as the outbound links:
   one place. A card's wrapper may carry `linkEntityAttributes(uuid)`, which sends its park or ride
   as the entity. A button inside a link (a favourite star) counts nothing, a link to another site is
   `outbound_link_clicked` or nothing. The blocks: the post's `body`, `tags`, `parks`, `rides`, `nav`,
-  `related`, `most_read`; the park page's `rides`, `posts` (the ride page's posts too), and its title card's `guide_band` (the guide's window) and `news_band` (the news rail); `nearby`,
-  `favorites`, `featured`; the chrome's `header`, `menu_sheet`, `footer`, `breadcrumbs`. Together
+  `related`, `most_read`; the park page's `rides`, `posts` (the ride page's posts too), and its title card's `guide_band` (the guide's window) and `news_band` (the news rail); `trip_band`, the way
+  into a trip region's planner from a park, a calendar, a city or country listing, a post, `/search` and
+  the day planner's plan list; `nearby`, `favorites`, `featured`; the chrome's `header`, `menu_sheet`,
+  `footer`, `breadcrumbs`. Together
   with the page type every hit carries, it is a one-step map of where readers go from where.
 - **`section_seen`.** `ParkPageShell` draws a zero-height `SectionMark` where each chapter begins,
   whether or not the park has it, and `SectionSeenTracker` sends each the first time it is on

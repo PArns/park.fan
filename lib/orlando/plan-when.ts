@@ -7,7 +7,8 @@ import {
   type OrlandoPlanState,
   type PlanSearchRange,
 } from './plan';
-import type { TripSchoolBreaks, TripWhenWeek, TripWhenWindow } from './types';
+import { orlandoMonthRange } from './paths';
+import type { OrlandoMonth, TripSchoolBreaks, TripWhenWeek, TripWhenWindow } from './types';
 
 /**
  * The When mode: which dates to go, for parks and a trip length the visitor knows, from the API's
@@ -37,11 +38,6 @@ export interface WhenPeriod {
 export function whenPeriods(today: string, days: number): WhenPeriod[] {
   const last = addDays(today, MAX_DAYS_AHEAD);
   const year = Number(today.slice(0, 4)) + 1;
-  const clip = (from: string, to: string): PlanSearchRange | null => {
-    const a = from < today ? today : from;
-    const b = to > last ? last : to;
-    return addDays(a, days - 1) <= b ? { from: a, to: b } : null;
-  };
   const candidates: Array<[WhenPeriod['key'], string, string]> = [
     ['next12', today, last],
     ['year', `${year}-01-01`, `${year}-12-31`],
@@ -50,9 +46,36 @@ export function whenPeriods(today: string, days: number): WhenPeriod[] {
     ['autumn', `${year}-09-01`, `${year}-11-30`],
   ];
   return candidates.flatMap(([key, from, to]) => {
-    const range = clip(from, to);
+    const range = clipSearchRange({ from, to }, today, days);
     return range ? [{ key, year, range }] : [];
   });
+}
+
+/**
+ * A search range cut to what the API searches, from `today` to a year ahead, or `null` where fewer
+ * than `days` days are left in it, which `/when` would answer with a 400.
+ */
+export function clipSearchRange(
+  range: PlanSearchRange,
+  today: string,
+  days: number
+): PlanSearchRange | null {
+  const last = addDays(today, MAX_DAYS_AHEAD);
+  const from = range.from < today ? today : range.from;
+  const to = range.to > last ? last : range.to;
+  return addDays(from, days - 1) <= to ? { from, to } : null;
+}
+
+/**
+ * A crowd-calendar month as the When mode's search: the trip of the default length found inside
+ * that month, from `today` on. `null` where the rest of the month is shorter than the trip.
+ */
+export function monthSearchRange(
+  month: OrlandoMonth,
+  today: string,
+  days: number = DEFAULT_FIND_DAYS
+): PlanSearchRange | null {
+  return clipSearchRange(orlandoMonthRange(month), today, days);
 }
 
 /** Which chip a search range is: one of {@link whenPeriods}, else `custom`. */

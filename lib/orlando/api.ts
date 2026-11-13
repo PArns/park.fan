@@ -1,7 +1,9 @@
 import 'server-only';
 
-import { getApiBaseUrl, getServerApiHeaders } from '@/lib/api/client';
+import { catchNonFatal, getApiBaseUrl, getServerApiHeaders } from '@/lib/api/client';
 import { CACHE_TTL } from '@/lib/api/cache-config';
+import { withSeedTimeout } from '@/lib/api/seed-timeout';
+import { tripRegionLinks, type TripRegionLinks } from './trip-links';
 import {
   ORLANDO_REGION,
   type TripBestDays,
@@ -71,6 +73,23 @@ export function getOrlandoTickets(): Promise<TripTicketCatalog> {
 /** The region: its parks, groups, hotel areas and travel legs. Open, curated in code. */
 export function getOrlandoRegion(): Promise<TripRegion> {
   return readTripRegion<TripRegion>('', CACHE_TTL.tripRegion);
+}
+
+/**
+ * How long a page waits for the region before it leaves its links into the planner out: the read
+ * is a day in the Data Cache, so only a cold cache after a deploy takes longer.
+ */
+const TRIP_LINKS_TIMEOUT_MS = 1500;
+
+/**
+ * The trip regions a page can link into, for the bands on park, calendar, city, country and post
+ * pages and `/search`. Empty while the region read fails or takes longer than
+ * {@link TRIP_LINKS_TIMEOUT_MS}, so a slow API costs the page its band and nothing else.
+ */
+export async function getTripRegionLinks(): Promise<TripRegionLinks[]> {
+  const region = await withSeedTimeout(catchNonFatal(getOrlandoRegion()), TRIP_LINKS_TIMEOUT_MS);
+  const links = region ? tripRegionLinks(region) : null;
+  return links ? [links] : [];
 }
 
 /**

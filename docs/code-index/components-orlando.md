@@ -90,10 +90,6 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `OrlandoHomeStop` _component_: The homepage's stop for the Orlando hub: what it is and its link, beside the region's parks by resort, from the open `/trip-regions/orlando` (a day in the Data Cache).
 
-### [`orlando-park-band.tsx`](../../components/orlando/orlando-park-band.tsx)
-
-- `OrlandoParkBand` _component_: The way from an Orlando park's page and its crowd calendar to the hub: "Several days in Orlando? Which park on which day".
-
 ### [`planner/orlando-planner.tsx`](../../components/orlando/planner/orlando-planner.tsx)
 
 - `OrlandoPlanner` _component_: Chapter 02 of the Orlando hub: which park on which day of a trip, from the API's `/plan`.
@@ -222,3 +218,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `useTripCalendar` _hook_: A window of the region calendar (at most 92 days) through the relay: the hours, slots, seasons and per-day figures the plan does not carry. `null` dates leave it idle.
 - `useTripWhen` _hook_: The When search for a request query, debounced like the plan; the previous answer stays on screen while the next is asked. The API keeps an answer six hours, the planner a quarter.
 - `useSchoolBreaks` _hook_: The school-holiday regions the When mode's picker offers, read once when the picker is shown. The data changes a few times a year; the relay keeps it a day.
+
+### [`trip-planner-band.tsx`](../../components/orlando/trip-planner-band.tsx)
+
+- `TripPlannerBand` _component_: The way from a page about one of a trip region's parks into the region's planner: "Several days in Orlando? Plan Magic Kingdom into your Orlando trip".
