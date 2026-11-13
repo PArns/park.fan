@@ -16,11 +16,16 @@
  * Run: pnpm test:planner-menu
  */
 
-import { existsSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { TRIP_REGIONS, tripRegion, tripRegionText } from '../lib/navigation/trip-regions.ts';
-import { PLANNER_MENU_PARKS, getPlannerMenu } from '../lib/navigation/planner-menu.ts';
+import {
+  PLANNER_MENU_PARKS,
+  getPlannerMenu,
+  pickPlannerParks,
+} from '../lib/navigation/planner-menu.ts';
+import { EVENT_PARK_SLUGS } from '../lib/parks/event-parks.ts';
 import { MOST_READ_SEED } from '../lib/blog/most-read-seed.generated.ts';
 import { plannerQuickStarts, quickStartClick, startPlannerAt } from '../lib/planner/quick-start.ts';
 import { plannerPagePark } from '../lib/planner/page-park.ts';
@@ -63,6 +68,15 @@ test(
   tripRegion('orlando')?.href,
   '/orlando#planner'
 );
+// The region route's park list, as the hub's tests snapshot it: the card's „16 Parks" is its length.
+const orlandoRegion = JSON.parse(
+  readFileSync(join(root, 'scripts/fixtures/orlando/region.json'), 'utf8')
+);
+test(
+  'Orlando counts the parks its region route lists',
+  tripRegion('orlando')?.parkCount,
+  orlandoRegion.parks.length
+);
 test('Orlando is Floride in French', tripRegionText(tripRegion('orlando').area, 'fr'), 'Floride');
 test('one name for every language', tripRegionText('Orlando', 'nl'), 'Orlando');
 const japan = { en: 'Japan', de: 'Japan', fr: 'Japon', it: 'Giappone', nl: 'Japan', es: 'Japón' };
@@ -92,11 +106,47 @@ for (const locale of locales) {
   );
   test(`${locale}: no park twice`, new Set(parks.map((p) => p.href)).size, parks.length);
   test(
+    `${locale}: no event`,
+    parks.filter((p) => EVENT_PARK_SLUGS.has(p.slug)).map((p) => p.slug),
+    []
+  );
+  test(
     `${locale}: nothing without hours ahead`,
     parks.filter((p) => ended.has(p.href)).map((p) => p.slug),
     []
   );
 }
+
+// ── Events stay out even with hours ahead ────────────────────────────────────
+// Traumatica publishes its hours every September; the hours check alone would offer it again.
+const counted = (slug, hasHoursAhead = true) => ({
+  slug,
+  name: slug,
+  href: `/parks/europe/germany/rust/${slug}`,
+  city: 'Rust',
+  countrySlug: 'germany',
+  hasHoursAhead,
+});
+for (const slug of EVENT_PARK_SLUGS) {
+  test(
+    `${slug} is never offered, hours or not`,
+    pickPlannerParks([counted(slug), counted('europa-park')], [counted(slug)]).map((p) => p.slug),
+    ['europa-park']
+  );
+}
+test(
+  'a park with no hours ahead waits for its dates',
+  pickPlannerParks([counted('heide-park', false), counted('europa-park')], []).map((p) => p.slug),
+  ['europa-park']
+);
+test(
+  'the curated list tops up, without doubles, to six',
+  pickPlannerParks(
+    [counted('europa-park')],
+    ['europa-park', 'a', 'b', 'c', 'd', 'e', 'f'].map((slug) => counted(slug))
+  ).map((p) => p.slug),
+  ['europa-park', 'a', 'b', 'c', 'd', 'e']
+);
 
 // ── The quick starts ─────────────────────────────────────────────────────────
 const card = (slug, href) => ({ slug, name: slug, href, city: 'City', countrySlug: 'germany' });

@@ -360,6 +360,7 @@
     "yourPlan": "Tu plan",
     "yourPlanAt": "Tu plan: {park}, {date}",
     "plannedDays": "{count, plural, =1 {# día planificado} other {# días planificados}}",
+    "planRides": "{count, plural, =1 {# atracción} other {# atracciones}}",
     "openMyPlan": "Abrir mi plan",
     "newDay": "Nuevo día",
     "planDayIn": "Planificar un día en",

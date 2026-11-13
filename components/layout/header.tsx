@@ -181,6 +181,36 @@ function SheetDisclosure({
   );
 }
 
+/**
+ * „Dein Plan: <park>, <day>" in the sheet's planner disclosure, where this browser has a plan
+ * ahead: it closes the sheet and opens the plan, as the band's „Meinen Plan öffnen" does. Its own
+ * component, so a plan edit re-renders this row rather than the whole header.
+ */
+function SheetPlanRow({ onOpen }: { onOpen: () => void }) {
+  const t = useTranslations('navigation');
+  const locale = useLocale();
+  const plan = usePlanSummary();
+  if (!plan) return null;
+  return (
+    <button
+      type="button"
+      onClick={() => {
+        onOpen();
+        plannerUi.requestOpen('menu-plan');
+      }}
+      className="text-muted-foreground hover:text-foreground flex cursor-pointer items-baseline gap-2 text-left text-sm transition-colors"
+    >
+      <span
+        aria-hidden="true"
+        className="bg-primary size-1.5 shrink-0 -translate-y-0.5 rounded-full"
+      />
+      <span className="min-w-0 flex-1 text-pretty">
+        {t('yourPlanAt', { park: plan.park, date: formatPlanDay(plan.date, locale) })}
+      </span>
+    </button>
+  );
+}
+
 /** A group's name inside a `SheetDisclosure`, where its rows would not say on their own. */
 function SheetCaption({ children }: { children: React.ReactNode }) {
   return (
@@ -253,7 +283,6 @@ export function Header({
   // The planner menu's label, a verb over both planners, its own key apart from the day planner's.
   const plannerMenuLabel = t('plannerMenu');
   const quickStarts = useMemo(() => plannerQuickStarts(plannerMenu.parks), [plannerMenu.parks]);
-  const plan = usePlanSummary(locale);
   // The footer's logo says the same, so the two links to the homepage have one name.
   const homeLabel = `park.fan: ${t('home')}`;
   const pathname = usePathname();
@@ -812,27 +841,7 @@ export function Header({
                       then the regions' trip planners. */}
                     <SheetDisclosure icon={CalendarPlus} label={plannerMenuLabel}>
                       <SheetSubLink href={plannerPath}>{t('planner')}</SheetSubLink>
-                      {plan && (
-                        <button
-                          type="button"
-                          onClick={() => {
-                            setMobileMenuOpen(false);
-                            plannerUi.requestOpen('menu-plan');
-                          }}
-                          className="text-muted-foreground hover:text-foreground flex cursor-pointer items-baseline gap-2 text-left text-sm transition-colors"
-                        >
-                          <span
-                            aria-hidden="true"
-                            className="bg-primary size-1.5 shrink-0 -translate-y-0.5 rounded-full"
-                          />
-                          <span className="min-w-0 flex-1 text-pretty">
-                            {t('yourPlanAt', {
-                              park: plan.park,
-                              date: formatPlanDay(plan.date, locale),
-                            })}
-                          </span>
-                        </button>
-                      )}
+                      <SheetPlanRow onOpen={() => setMobileMenuOpen(false)} />
                       {quickStarts.length > 0 && <SheetCaption>{t('planDayIn')}</SheetCaption>}
                       {quickStarts.slice(0, SHEET_QUICK_STARTS).map((park) => (
                         <SheetSubLink

@@ -48,6 +48,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`planner-menu.ts`](../../lib/navigation/planner-menu.ts)
 
+- `pickPlannerParks` _function_: The parks the band offers, from the locale's counted parks (most opened first) and a curated list to top up with: an event is never offered (`isEventPark`), nor a counted park that had no published hours ahead when the build read the geo …
 - `getPlannerMenu` _function_: The planner band for a locale, memoised per process like `getFeaturedParksMenu`: it reads only modules of this repo, and the layout asks on every page. Callers share the object and must not mutate it.
 - `PLANNER_MENU_PARKS` _const_: How many parks the band offers: two columns of three.
 - Types: `PlannerMenuRegion`, `PlannerMenuPark`, `PlannerMenu`

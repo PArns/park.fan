@@ -4,7 +4,8 @@ import { FEATURED_PARK_SLUGS } from '@/components/home/featured-parks-section';
 import { getMediaImageBySrc, getParkRefBySlug } from '@/lib/media';
 import { menuPhoto, type MoreMenuPhoto } from '@/lib/navigation/more-menu';
 import { TRIP_REGIONS, tripRegionText } from '@/lib/navigation/trip-regions';
-import { rankedFirst } from '@/lib/parks/viewed-parks';
+import { isEventPark } from '@/lib/parks/event-parks';
+import { rankedFirst, type ViewedPark } from '@/lib/parks/viewed-parks';
 import { viewedParksSeed } from '@/lib/parks/viewed-parks-seed';
 
 /**
@@ -50,16 +51,32 @@ export interface PlannerMenu {
 export const PLANNER_MENU_PARKS = 6;
 
 /**
- * The parks for a locale: the ones its readers opened most (the build's snapshot), without those
- * that had no published hours ahead when the build read the geo structure (`hasHoursAhead`: an
- * event whose run is over, a park shut for the season with no dates out), topped up from the
- * homepage's hand-picked `FEATURED_PARK_SLUGS`, which are parks by choice. The same ranking as the
- * parks menu's rail, before that rail's photo preference.
+ * The parks the band offers, from the locale's counted parks (most opened first) and a curated
+ * list to top up with: an event is never offered (`isEventPark`), nor a counted park that had no
+ * published hours ahead when the build read the geo structure (`hasHoursAhead`: a park shut for the
+ * season with no dates out). The curated parks are parks by choice and skip the hours check, which
+ * only the counted ones carry.
  */
-function plannerParks(locale: Locale): PlannerMenuPark[] {
-  const counted = viewedParksSeed(locale)
-    .filter((park) => park.hasHoursAhead !== false)
+export function pickPlannerParks(
+  counted: readonly Pick<
+    ViewedPark,
+    'slug' | 'name' | 'href' | 'city' | 'countrySlug' | 'hasHoursAhead'
+  >[],
+  curated: readonly PlannerMenuPark[]
+): PlannerMenuPark[] {
+  const offered = counted
+    .filter((park) => park.hasHoursAhead !== false && !isEventPark(park.slug))
     .map(({ slug, name, href, city, countrySlug }) => ({ slug, name, href, city, countrySlug }));
+  return rankedFirst(
+    offered,
+    curated.filter((park) => !isEventPark(park.slug)),
+    (park) => park.href,
+    PLANNER_MENU_PARKS
+  );
+}
+
+/** A locale's parks: its counted ones, topped up from the homepage's `FEATURED_PARK_SLUGS`. */
+function plannerParks(locale: Locale): PlannerMenuPark[] {
   const curated = (FEATURED_PARK_SLUGS[locale] ?? FEATURED_PARK_SLUGS.en ?? []).flatMap((slug) => {
     const ref = getParkRefBySlug(slug);
     return ref
@@ -74,7 +91,7 @@ function plannerParks(locale: Locale): PlannerMenuPark[] {
         ]
       : [];
   });
-  return rankedFirst(counted, curated, (park) => park.href, PLANNER_MENU_PARKS);
+  return pickPlannerParks(viewedParksSeed(locale), curated);
 }
 
 const PLANNER_MENU = new Map<Locale, PlannerMenu>();

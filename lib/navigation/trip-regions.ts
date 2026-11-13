@@ -42,7 +42,10 @@ export interface TripRegion {
   calendarHref: string;
   /** The hub's own photo, a source in the media catalog: the tile's picture until the scene loads. */
   photo: string;
-  /** How many parks the trip planner places, the figure the hub's own opening gives. */
+  /**
+   * How many parks the trip planner places: the length of the region route's park list, which the
+   * layout does not fetch, so `pnpm test:planner-menu` checks it against the route's snapshot.
+   */
   parkCount: number;
   /** The longest trip it plans, in days. */
   maxDays: number;
