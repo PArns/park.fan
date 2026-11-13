@@ -241,9 +241,9 @@ The panel is only the look; the data and the click behaviour live in the modules
   `internal_link_clicked` with `header` or `menu_sheet`, and `planner_opened` with `menu-plan` or
   `menu-park`.
 - **The buttons** are the site's (`buttonLinkProps`, `Button`), drawn round as in the draft.
-- **Cost**: about +1.0 KB brotli per page against the plain link it replaces (0.99 and 1.03 KB in
-  two runs, 15.6 KB raw; median over the six locales on `/parks/europe/germany`, 1.04 KB on `/blog`
-  and the homepage; production build,
+- **Cost**: about +1.0 KB brotli per page against the plain link it replaces (0.99 to 1.03 KB over
+  three runs, 16.7 KB raw with the site's button classes; median over the six locales on
+  `/parks/europe/germany`, 1.04 KB on `/blog` and the homepage; production build,
   the served document against the same document with the old entry, the band's props and its keys
   taken out). The scene is a 2.8 KB brotli chunk (10.3 KB raw) fetched on the first opening;
   inlined, its markup would add 3.3 KB brotli (19.3 KB raw) to every page. The drawn day renders
