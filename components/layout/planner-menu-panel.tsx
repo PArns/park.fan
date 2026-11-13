@@ -26,10 +26,14 @@ interface PlannerMenuPanelProps {
   parks: PlannerQuickStart[];
 }
 
-/** The band's two pill links, the filled one and the quiet one beside it. */
+/**
+ * The band's two pill links, the filled one and the quiet one beside it. The filled one is the
+ * blue as ink, not `bg-primary`: white on the brand blue is 3.4 : 1, under AA for 12 and 14 px
+ * labels, where `primary-ink` with the page's ground for text is 6.7 : 1 light and 8.7 : 1 dark.
+ */
 const PILL =
-  'focus-visible:ring-ring inline-flex shrink-0 items-center gap-1.5 rounded-full font-semibold transition-colors focus-visible:ring-2 focus-visible:outline-none';
-const PILL_PRIMARY = `${PILL} bg-primary text-primary-foreground hover:bg-primary/90 shadow-md`;
+  'focus-visible:ring-ring inline-flex shrink-0 items-center gap-1.5 rounded-full font-semibold transition-colors focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:outline-none';
+const PILL_PRIMARY = `${PILL} bg-primary-ink text-background hover:bg-primary-ink/90 shadow-md`;
 const PILL_QUIET = `${PILL} border-border/60 bg-background/75 text-foreground hover:border-primary border font-medium backdrop-blur-sm`;
 
 /**

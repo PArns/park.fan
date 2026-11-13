@@ -184,7 +184,7 @@ function SheetDisclosure({
 /** A group's name inside a `SheetDisclosure`, where its rows would not say on their own. */
 function SheetCaption({ children }: { children: React.ReactNode }) {
   return (
-    <p className="text-muted-foreground/70 mt-1 text-[11px] font-semibold tracking-wide uppercase">
+    <p className="text-muted-foreground mt-1 text-[11px] font-semibold tracking-wide uppercase">
       {children}
     </p>
   );
