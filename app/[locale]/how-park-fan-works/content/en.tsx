@@ -137,7 +137,7 @@ const SCALE_STEPS: WaitScaleStep[] = [
 const PARK_SECTIONS: AnatomyStep[] = [
   {
     title: 'Title card',
-    body: 'Name and location, how far away you are, the star for your favourites, a short text about the park, its links and the button for the trip planner. Where enough has been measured, it also shows which weekdays are usually quiet and which are busy.',
+    body: 'Name and location, how far away you are, the star for your favourites, a short text about the park, its links and the button for the day planner. Where enough has been measured, it also shows which weekdays are usually quiet and which are busy.',
   },
   {
     title: 'Skip-the-line prices',
@@ -648,7 +648,7 @@ export function ContentEN() {
         icon={CalendarClock}
       >
         <P>
-          In the trip planner you lay out the rides you want to do on a timeline. Each block is as
+          In the day planner you lay out the rides you want to do on a timeline. Each block is as
           tall as the wait predicted for its hour, and between two blocks you can see whether
           there’s enough time for the walk.
         </P>
@@ -661,7 +661,7 @@ export function ContentEN() {
         <DemoFrame
           label="A planned Saturday"
           href={planner}
-          hrefLabel="To the trip planner →"
+          hrefLabel="To the day planner →"
           className="mx-auto max-w-[560px]"
         >
           <PlannerDayFigure />
@@ -669,7 +669,7 @@ export function ContentEN() {
 
         <P>
           Everything else in the planner, such as marking rides by height requirement or sorting the
-          day at the press of a button, is described on the <A href={planner}>trip planner page</A>.
+          day at the press of a button, is described on the <A href={planner}>day planner page</A>.
         </P>
       </SectionShell>
 
@@ -869,7 +869,7 @@ export function ContentEN() {
             },
             {
               icon: CalendarClock,
-              title: 'Trip planner',
+              title: 'Day planner',
               body: (
                 <>
                   Opens from any page. The plan is kept in your browser, and chapter 05 has more on
@@ -942,7 +942,7 @@ export function ContentEN() {
           </P>
           <P>
             It shows parks and rides as cards with their numbers. If you ask it to, it takes you to
-            the right page and sets up a day in the trip planner, adds rides to it or sorts them. It
+            the right page and sets up a day in the day planner, adds rides to it or sorts them. It
             only sees your location if you press “Share location” in the chat, and it doesn’t keep
             it.
           </P>

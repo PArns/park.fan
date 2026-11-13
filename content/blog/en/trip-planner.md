@@ -8,7 +8,7 @@ featured: false
 excerpt: >-
   A wait-time feed gives you the length of the queue right now. Whether your
   list makes it to closing time you find out for yourself, usually around two in
-  the afternoon. That’s what the trip planner
+  the afternoon. That’s what the day planner
   is for: your rides on a timeline, every block as tall as the wait predicted
   for it, and the walk in between.
 tags:
@@ -62,7 +62,7 @@ since day one. “Is that a lot for a Tuesday” since
 [late August](/blog/is-70-minutes-a-long-wait). The third question was nowhere:
 do my eight rides fit in before the park closes?
 
-Since early September it’s there. In the [trip planner](/trip-planner) you lay
+Since early September it’s there. In the [day planner](/trip-planner) you lay
 your rides on a timeline, with the predicted waits and the walks in between, and
 see before you set off whether they fit into the day.
 
@@ -75,7 +75,7 @@ Between two blocks sits the transfer: how far it is and whether the time is
 enough. The walk out of the station and the ride itself live in that gap, because they
 belong to getting there.
 
-![The trip planner with a planned day at Magic Kingdom: ten blocks on a timeline from 8 in the morning, with transfers between them showing distance and walking time. | Ten rides on a Saturday in September, put in this order by the planner itself.](/media/tagesplaner/planer-tag-en.webp)
+![The day planner with a planned day at Magic Kingdom: ten blocks on a timeline from 8 in the morning, with transfers between them showing distance and walking time. | Ten rides on a Saturday in September, put in this order by the planner itself.](/media/tagesplaner/planer-tag-en.webp)
 
 Ten rides, from opening to four in the afternoon, and under the plan sits the
 total: five and a quarter hours of queueing. That’s the optimiser’s order. When you let

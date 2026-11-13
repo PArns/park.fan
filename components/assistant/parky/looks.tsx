@@ -1,5 +1,6 @@
 import { cn } from '@/lib/utils';
 import type { ParkyHat, ParkyOutfit, ParkyWeather } from '@/lib/assistant/parky/look';
+import { BURST, SHADES, ink } from './drawing';
 
 /**
  * Parky's outfits and the acts that come with them, drawn in the 48-unit space of
@@ -327,6 +328,27 @@ function Sky({ sky, sheltered }: { sky: ParkyWeather; sheltered: boolean }) {
   return null;
 }
 
+/**
+ * Sunglasses on Parky's eyes, the `shades` act's and the Orlando scene's. `transform` moves them
+ * elsewhere, pushed up onto his head.
+ */
+export function ParkyShades({ className, transform }: { className?: string; transform?: string }) {
+  return (
+    <g className={className} transform={transform}>
+      <path d={SHADES.bridge} stroke={ink} strokeWidth="1.6" strokeLinecap="round" />
+      <path d={SHADES.left} fill={ink} />
+      <path d={SHADES.right} fill={ink} />
+      <path
+        d={SHADES.glint}
+        stroke="white"
+        strokeOpacity=".55"
+        strokeWidth=".9"
+        strokeLinecap="round"
+      />
+    </g>
+  );
+}
+
 /** Fog drifting in front of Parky's lower half, below the mouth. */
 export function ParkyLookFog() {
   return (
@@ -379,7 +401,7 @@ function Fireworks() {
             strokeWidth=".9"
             style={{ animationDelay: `${i * 0.6}s` }}
           >
-            <path d="M0-2v-3M0 2v3M-2 0h-3M2 0h3M-1.4-1.4-3.5-3.5M1.4 1.4l2.1 2.1M-1.4 1.4-3.5 3.5M1.4-1.4l2.1-2.1" />
+            <path d={BURST} />
             <circle r=".9" fill={burst.colour} stroke="none" />
           </g>
         </g>

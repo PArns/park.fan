@@ -72,7 +72,7 @@ According to our stats in Umami, around 24,000 visitors opened park.fan in the
 last 30 days, 41 percent more than in the 30 days before, and a few hundred of
 them were in Japan. I’ll never meet most of them. For planning around the holidays, park.fan now has the
 [quietest days for every park](/best-time-to-visit), for the evening before the
-[trip planner](/trip-planner), and for the park itself the
+[day planner](/trip-planner), and for the park itself the
 [compass](/blog/in-park-compass), which shows which ride nearby has the shorter
 queue.
 

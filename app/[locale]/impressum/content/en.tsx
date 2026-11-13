@@ -229,9 +229,9 @@ export function ImpressumEN({ story }: { story: ImpressumStory | null }) {
         <p className="mb-4">
           Forecasts are everything park.fan predicts with its own models, including the crowd
           calendar, the expected crowds per day and per hour, predicted wait times, the best days to
-          visit, the yearly predictions and the plans of the trip planner. The API returns them only
-          with an API key. A key for non-commercial use is free; ask for one at{' '}
-          <ObfuscatedEmail local="hello" domain="park.fan" displayText="hello [at] park.fan" />.
+          visit, the yearly predictions and the plans of the day planner and the trip planner. The
+          API returns them only with an API key. A key for non-commercial use is free; ask for one
+          at <ObfuscatedEmail local="hello" domain="park.fan" displayText="hello [at] park.fan" />.
         </p>
 
         <h3 className="mt-8 mb-4 text-2xl font-semibold">Commercial use</h3>

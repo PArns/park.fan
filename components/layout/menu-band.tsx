@@ -1,6 +1,6 @@
 'use client';
 
-import { createContext, useContext, useEffect } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
 import {
   columnReachesEdgeTab,
   registerEdgeMenuBand,
@@ -16,6 +16,18 @@ const MenuBandOpenContext = createContext(false);
  */
 export function useMenuBandOpen(): boolean {
   return useContext(MenuBandOpenContext);
+}
+
+/**
+ * Whether the band this component sits in has been open at least once: for what only a reader of
+ * the open band sees (a picture, a drawing), which then stays rather than going on every close.
+ * Adjusted during render, so it turns true in the very render that opens the band.
+ */
+export function useMenuBandOpened(): boolean {
+  const open = useMenuBandOpen();
+  const [opened, setOpened] = useState(false);
+  if (open && !opened) setOpened(true);
+  return opened || open;
 }
 
 /**

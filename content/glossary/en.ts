@@ -3284,7 +3284,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'The moment a ride stops letting guests join its queue, usually at the park’s closing time.',
     definition:
-      'At queue closure a ride stops letting people join its line. At most parks that happens at the posted closing time, and whoever is in the queue by then still gets to ride, which can take another hour on a busy day. Some rides close their queue earlier when the line already holds more guests than the ride can carry before the end of the day.\n\nThe trip planner on park.fan works the same way. It plans a ride only if the visit to it, queue included, starts before the park closes, so the last ride of a planned day can end after closing time. Nothing in the plan starts after it.',
+      'At queue closure a ride stops letting people join its line. At most parks that happens at the posted closing time, and whoever is in the queue by then still gets to ride, which can take another hour on a busy day. Some rides close their queue earlier when the line already holds more guests than the ride can carry before the end of the day.\n\nThe day planner on park.fan works the same way. It plans a ride only if the visit to it, queue included, starts before the park closes, so the last ride of a planned day can end after closing time. Nothing in the plan starts after it.',
     relatedTermIds: ['opening-hours', 'touring-plan', 'wait-time', 'evening-ticket', 'rope-drop'],
     aliases: ['queue closures', 'queue closing time', 'line closure'],
   },

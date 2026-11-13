@@ -36,7 +36,7 @@ const TITLE = 'Changelog: versions and release dates | park.fan';
 const monthYear = () =>
   getDateTimeFormat('en-GB', { month: 'short', year: 'numeric', timeZone: 'UTC' });
 const DESCRIPTION =
-  'Every park.fan version since June 2025 with its release date, from the first dashboard to the trip planner and the in-park compass.';
+  'Every park.fan version since June 2025 with its release date, from the first dashboard to the day planner and the in-park compass.';
 
 export function generateStaticParams() {
   return [{ locale: 'en' }];

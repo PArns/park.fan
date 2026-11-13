@@ -368,6 +368,12 @@ When the nowcast says it is time to go under a roof: the trigger for the covered
 - `pickRandom` _function_: A random item of `list`, never `except` while there is another to take.
 - `pickSome` _function_: `count` different items of `list` in random order; all of them when it has fewer.
 
+### [`plain-click.ts`](../../lib/utils/plain-click.ts)
+
+The parts of a click event that say whether the browser would open a new tab or window.
+
+- `isPlainPrimaryClick` _function_: Whether a click on a link is the plain primary click a page may take over. A modified click asks for the link's own `href` in a tab or window of its own and is left alone, and the middle button fires `auxclick`, which never arrives here.
+
 ### [`quietest-day.ts`](../../lib/utils/quietest-day.ts)
 
 - `quietestOpenDay` _function_: The open day with the lowest forecast crowd level in the window `today … today + 13`, or `null`. `today` is the park's own date, like `CalendarDay.date`.
