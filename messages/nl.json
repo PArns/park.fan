@@ -298,7 +298,8 @@
     "legalLinks": "Juridisch",
     "disclaimer": "park.fan is een privé-hobbyproject. Alle informatie wordt verstrekt zonder garantie. De getoonde wachttijden en statusinformatie worden automatisch verstrekt en kunnen afwijken van de actuele situatie ter plaatse.",
     "dataSources": "Databronnen",
-    "weatherSource": "Weer"
+    "weatherSource": "Weer",
+    "tripPlanner": "Reisplanner"
   },
   "explore": {
     "title": "Attractiepark Wachttijden in {location}",
@@ -417,6 +418,7 @@
     "intro": "Elk vakje is één park op één dag. Het getal is de wachttijd die we bij de grote attracties van dat park op het drukste moment van de dag verwachten, en daarop vergelijk je de parken. Aan de kleur zie je hoe die dag zich verhoudt tot een gewone dag in hetzelfde park.",
     "opening": "Zonder verkeer rijd je van EPCOT naar Universal Studios in 25 minuten, en vanuit een hotel in Lake Buena Vista ligt elk van de acht themaparken binnen een halfuur, bij Magic Kingdom met de veerboot of monorail erbij. Naar LEGOLAND in Winter Haven is het bijna een uur, naar Busch Gardens en Adventure Island in Tampa zo’n anderhalf uur. Met die drie, Discovery Cove en de vier waterparken zijn het er zestien, en voor geen ervan hoef je van hotel te wisselen. In de kalender hieronder staan ze alle zestien, dag voor dag.",
     "nextDays": "Komende 30 dagen",
+    "dayTripsGroup": "Dagtrips",
     "lastYearBanner": "Onze voorspelling loopt tot {date}. De dagen daarna tonen dezelfde weekdag vorig jaar, zoals wij die gemeten hebben, met de vermelding “vorig jaar”.",
     "lastYearBannerNoDate": "Een deel van deze dagen ligt voorbij onze voorspelling. Ze tonen dezelfde weekdag vorig jaar, zoals wij die gemeten hebben, met de vermelding “vorig jaar”.",
     "monthIndexLabel": "Orlando per maand",
@@ -645,8 +647,9 @@
       "varHours": "Openingstijden"
     },
     "band": {
-      "title": "Meerdere dagen in Orlando?",
-      "link": "Welk park op welke dag"
+      "title": "Meerdere dagen in {region}?",
+      "planPark": "{park} in je reis naar {region} inplannen",
+      "open": "Reisplanner openen"
     }
   },
   "theme": {
@@ -1988,7 +1991,11 @@
     },
     "avgWait": "gem. {minutes} min",
     "avgWaitShort": "Ø {minutes} min",
-    "heroHint": "Begin te typen, we zoeken parken, attracties, shows en restaurants"
+    "heroHint": "Begin te typen, we zoeken parken, attracties, shows en restaurants",
+    "trip": {
+      "title": "Reisplanner voor {region}",
+      "hint": "Welk park op welke dag van je reis"
+    }
   },
   "searchPage": {
     "types": {

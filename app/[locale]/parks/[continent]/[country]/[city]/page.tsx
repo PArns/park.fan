@@ -17,6 +17,7 @@ import { findCityPageRedirect } from '@/lib/utils/redirect-utils';
 import type { Metadata } from 'next';
 import { RouteMessages } from '@/i18n/route-messages';
 import { CitySummarySection } from '@/components/parks/city-summary-section';
+import { TripPlannerBand } from '@/components/orlando/trip-planner-band';
 
 interface CityPageProps {
   params: Promise<{ locale: string; continent: string; country: string; city: string }>;
@@ -171,6 +172,14 @@ export default async function CityPage({ params }: CityPageProps) {
           cityName={city.name}
           parkNames={staticParks.map((park) => park.name)}
           locale={locale}
+        />
+
+        {/* A city whose parks belong to a trip region: the way into its planner. Nothing for
+          any other city, or while the region read is slower than its bound. */}
+        <TripPlannerBand
+          variant="place"
+          parks={staticParks.map((park) => park.id)}
+          className="mb-8"
         />
 
         {/* Status-free shell; live status is overlaid client-side. */}

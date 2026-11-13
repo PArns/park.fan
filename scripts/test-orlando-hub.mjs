@@ -1,8 +1,8 @@
 /**
  * Unit tests for the Orlando hub's pure logic (`lib/orlando/*`): the month window and its proxy
- * redirects, the relay's allow-list, the shortest-line pick with its early-close clause, the "today
- * or tomorrow" answer, the event lanes, the month summaries and the best-time helpers. Fixtures are
- * recorded answers of the API in `scripts/fixtures/orlando/`.
+ * redirects, the relay's allow-list and the region links' cache window, the shortest-line pick with
+ * its early-close clause, the "today or tomorrow" answer, the event lanes, the month summaries and
+ * the best-time helpers. Fixtures are recorded answers of the API in `scripts/fixtures/orlando/`.
  *
  * Run: `pnpm test:orlando-hub`
  */
@@ -22,6 +22,7 @@ import {
   shortGroupName,
   shortParkName,
   slimRegion,
+  withGroupNames,
 } from '../lib/orlando/hub-data.ts';
 import {
   isOrlandoMonthInRange,
@@ -34,7 +35,7 @@ import {
 } from '../lib/orlando/paths.ts';
 import { orlandoRedirect } from '../lib/orlando/redirects.ts';
 import { flatStretch } from '../lib/orlando/best-time.ts';
-import { tripRegionRelayTarget } from '../lib/orlando/relay.ts';
+import { TRIP_REGION_CACHE_CONTROL, tripRegionRelayTarget } from '../lib/orlando/relay.ts';
 
 const fixture = (name) =>
   JSON.parse(readFileSync(new URL(`./fixtures/orlando/${name}.json`, import.meta.url), 'utf8'));
@@ -129,6 +130,19 @@ test('the relay forwards each route its own query names and refuses anything els
   );
 });
 
+test('the browser reads the region links on the window next.config gives their path', () => {
+  const route = readFileSync(
+    new URL('../app/api/nav/trip-regions/route.ts', import.meta.url),
+    'utf8'
+  );
+  const config = readFileSync(new URL('../next.config.ts', import.meta.url), 'utf8');
+  assert.match(route, /cdnCacheHeaders\(TRIP_REGION_CACHE_CONTROL\)/);
+  const at = config.indexOf("source: '/api/nav/trip-regions'");
+  assert.ok(at > 0);
+  const rule = config.slice(at);
+  assert.equal(/sharedCache\('([^']+)'\)/.exec(rule)?.[1], TRIP_REGION_CACHE_CONTROL);
+});
+
 test('park and resort names drop what every visitor drops', () => {
   assert.equal(shortParkName("Disney's Animal Kingdom Theme Park"), 'Animal Kingdom');
   assert.equal(shortParkName('Magic Kingdom Park'), 'Magic Kingdom');
@@ -137,6 +151,16 @@ test('park and resort names drop what every visitor drops', () => {
   assert.equal(shortParkName('Busch Gardens Tampa Bay'), 'Busch Gardens');
   assert.equal(shortParkName('EPCOT'), 'EPCOT');
   assert.equal(shortGroupName('Walt Disney World Resort'), 'Walt Disney World');
+});
+
+test("the day trips take the reader's word, a resort keeps its own name", () => {
+  const named = withGroupNames(region, 'Tagesausflüge');
+  assert.equal(named.groups.find((g) => g.kind === 'day_trip')?.name, 'Tagesausflüge');
+  assert.equal(
+    named.groups.find((g) => g.key === 'walt-disney-world')?.name,
+    'Walt Disney World Resort'
+  );
+  assert.equal(region.groups.find((g) => g.kind === 'day_trip')?.name, 'Day trips');
 });
 
 test("the API's pick leads its resort, then the shortest waits", () => {

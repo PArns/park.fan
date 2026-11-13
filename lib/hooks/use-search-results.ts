@@ -8,7 +8,9 @@ import { useDebouncedValue } from '@/lib/hooks/use-debounced-value';
 import { useSiteSearch } from '@/lib/hooks/use-site-search';
 import { useHeroBrowseParks, type HeroBrowseParks } from '@/lib/hooks/use-hero-browse-parks';
 import { usePostSearchIndex } from '@/lib/hooks/use-post-search-index';
+import { useTripRegionLinks } from '@/lib/hooks/use-trip-region-links';
 import { searchPostsBySection, type PostSearchSection } from '@/lib/navigation/post-search';
+import { matchTripRegion, type TripRegionLinks } from '@/lib/orlando/trip-links';
 import { rankByMatch } from '@/lib/utils/search-ranking';
 import { SEARCH_SETTLE_MS } from '@/lib/analytics/search-session';
 
@@ -37,6 +39,10 @@ export interface UseSearchResultsReturn {
   posts: { articles: PostSearchSection; news: PostSearchSection } | null;
   /** The post list is still on its way for a query that will need it. */
   postsPending: boolean;
+  /** The trip region the debounced query names, whose planner the list offers first. */
+  tripRegion: TripRegionLinks | null;
+  /** The trip regions are still on their way for a query that will need them. */
+  tripPending: boolean;
   /** What to list before anything is typed (nearby parks, this park's rides, or popular parks). */
   browse: HeroBrowseParks;
   /** Sort results within a category by match score (exact matches first), then OPERATING first. */
@@ -45,8 +51,9 @@ export interface UseSearchResultsReturn {
 
 /**
  * Data layer for the search palette: debounces the query and runs the three live queries
- * (main search, glossary search, nearby parks), searches the guides and news in the browser, and
- * scores the matches used to order categories. Pure data — all rendering stays in <SearchDialog>.
+ * (main search, glossary search, nearby parks), searches the guides and news in the browser, finds
+ * a trip region the query names, and scores the matches used to order categories. Pure data — all
+ * rendering stays in <SearchDialog>.
  */
 export function useSearchResults(query: string): UseSearchResultsReturn {
   const locale = useLocale();
@@ -80,6 +87,17 @@ export function useSearchResults(query: string): UseSearchResultsReturn {
     [postIndexData, debouncedQuery]
   );
 
+  // The regions are asked for with the post list, at the first typed letter.
+  const tripRegions = useTripRegionLinks(query.trim().length > 0);
+  const tripRegionData = tripRegions.data;
+  const tripRegion = useMemo(
+    () =>
+      tripRegionData && debouncedQuery.trim().length >= 3
+        ? matchTripRegion(debouncedQuery, tripRegionData)
+        : null,
+    [tripRegionData, debouncedQuery]
+  );
+
   // Pre-query list (nearby parks / this park's rides / popular parks). Shared with the hero's
   // lists on both viewports, so every surface lists the same thing — and React Query dedupes them
   // all into one backend request.
@@ -94,6 +112,8 @@ export function useSearchResults(query: string): UseSearchResultsReturn {
     glossaryData,
     posts,
     postsPending: postIndex.isLoading,
+    tripRegion,
+    tripPending: tripRegions.isLoading,
     browse,
     sortResultsByMatch,
   };

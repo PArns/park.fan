@@ -172,7 +172,7 @@ export const ROUTE_MESSAGE_NAMESPACES = {
   '/parks/universal': ['nearby', 'parkCard'],
   '/parky': [],
   '/search': [],
-  '/trip-planner': ['parks.weather', 'parks.worksPeriod', 'planner'],
+  '/trip-planner': ['orlando.band', 'parks.weather', 'parks.worksPeriod', 'planner'],
   '/trip-planner/shared': ['planner'],
   '/ui': [
     'attractions',
@@ -199,6 +199,7 @@ export const LAZY_CHUNK_NAMESPACES = [
   'attractions.meta',
   'attractions.ropeDrop',
   'nearby',
+  'orlando.band',
   'parkBestDays.weekdays',
   'parkBestDays.weekend',
   'parkCard',

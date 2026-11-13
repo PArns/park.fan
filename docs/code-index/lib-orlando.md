@@ -9,6 +9,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `getOrlandoTickets` _function_: The ticket catalog as the admin keeps it (`/tickets`): open, five minutes at the edge, and revalidated by tag on every edit. The region route's own `tickets` is the fallback while this route is missing or failing.
 - `getOrlandoRegion` _function_: The region: its parks, groups, hotel areas and travel legs. Open, curated in code.
+- `getTripRegionLinks` _function_: The trip regions a page can link into, for the bands on park, calendar, city, country and post pages and `/search`.
 - `getOrlandoWhen` _function_: The best trip windows of a length in a range, planned for the headliner parks unless `parks` says otherwise (`/when`).
 - `getOrlandoCalendar` _function_: Every park's days side by side, with the seasons that run on them; at most 92 days.
 - `getOrlandoBestDays` _function_: Each park's quiet and busy days in a window, as sets, and each resort's best dates.
@@ -53,6 +54,7 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`hub-data.ts`](../../lib/orlando/hub-data.ts)
 
 - `regionGroups` _function_: The region's groups with their parks: the three resorts, then the day trips.
+- `withGroupNames` _function_: The region with its day-trip group named in the reader's language: the API names it in English, while a resort's name is the operator's own and stays as it is.
 - `regionResorts` _function_: The resorts alone: the groups a day's shortest line is named for.
 - `shortParkName` _function_: The words a park's name carries that every visitor drops: the operator's prefix, "Park", "Theme Park", the city.
 - `closesEarly` _function_: Whether a day closes early for the day guest: the API says so (`closesEarly`), or a separately ticketed evening follows, which sends the day guests out before it starts.
@@ -278,6 +280,8 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`plan-when.ts`](../../lib/orlando/plan-when.ts)
 
 - `whenPeriods` _function_: The ranges behind the period chips, in park time: the next twelve months, the next calendar year, and its spring (March–May), summer (June–August) and autumn (September–November).
+- `clipSearchRange` _function_: A search range cut to what the API searches, from `today` to a year ahead, or `null` where fewer than `days` days are left in it, which `/when` would answer with a 400.
+- `monthSearchRange` _function_: A crowd-calendar month as the When mode's search: the trip of the default length found inside that month, from `today` on. `null` where the rest of the month is shorter than the trip.
 - `whenPeriodOf` _function_: Which chip a search range is: one of `whenPeriods`, else `custom`.
 - `whenRequestQuery` _function_: The `/when` request's query: the search, the length, the holiday region, the three windows the cards show, and the trip options `/plan` takes, pins aside. `null` outside the When mode.
 - `windowReasons` _function_: A window's reasons this client can say, in order.
@@ -339,6 +343,16 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`ticket-answer.ts`](../../lib/orlando/ticket-answer.ts)
 
 - `orlandoTicketAnswer` _const_: Whether this browser answered "Do you already have tickets?", so the walk asks once and the Tickets row knows how to word itself. "Not yet" leaves no trace in the URL (no `tickets=`), so the answer itself lives here; the tickets do not.
+
+### [`trip-links.ts`](../../lib/orlando/trip-links.ts)
+
+- `tripRegionHubPath` _function_: The hub a region's planner lives on, from the list of regions with a planner (`TRIP_REGIONS`), or `null` for a region the API curates before its planner exists, whose links would lead nowhere.
+- `tripRegionLinks` _function_: A region answer reduced to its links, or `null` while the region has no hub.
+- `regionParksOf` _function_: The region's parks among `keys`, each a park's UUID or its locale-free path, in the region's order and each once.
+- `findTripRegion` _function_: The first region that holds one of `keys`, with the parks it holds, or `null`.
+- `tripPlannerHref` _function_: The locale-relative address of a region's planner on a state, for `Link` from `@/i18n/navigation`. Without a state it is the bare chapter (`/orlando#planner`).
+- `matchTripRegion` _function_: The region a search query names, or `null`. A query names a region when one of its words is the region's name ("orlando", or "orl" while typing), or when two words or more run along a resort's name ("disney world", "universal orlando").
+- Types: `TripRegionLinkPark`, `TripRegionLinks`
 
 ### [`types.ts`](../../lib/orlando/types.ts)
 

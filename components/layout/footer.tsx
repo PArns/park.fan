@@ -14,6 +14,7 @@ import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
 import { BEST_TIME_SEGMENTS } from '@/lib/best-time/segments';
 import { HOWTO_SEGMENTS } from '@/lib/howto/segments';
 import { PLANNER_SEGMENTS } from '@/lib/planner/segments';
+import { TRIP_REGIONS } from '@/lib/navigation/trip-regions';
 import { getCurrentYear } from '@/lib/utils/server-time';
 import { NEWS_INDEX_PATH } from '@/lib/blog/paths';
 import { CHANGELOG_PATH } from '@/lib/changelog/paths';
@@ -230,6 +231,11 @@ export async function Footer({ locale, showBlog = true, newsLabel }: FooterProps
         { key: 'bestTime', href: bestTimePath, label: t('bestTime') },
         { key: 'howto', href: howtoPath, label: t('howto') },
         { key: 'planner', href: plannerPath, label: t('planner') },
+        /*
+          The trip planner by its generic name, beside the day planner: the first region's
+          planner, from the code's list of regions, so no region read is spent on every page.
+        */
+        { key: 'tripPlanner', href: TRIP_REGIONS[0].href, label: t('tripPlanner') },
         /*
           `/favorites` and `/alerts` report this browser's own state; both are `noindex` and in no
           sitemap, so this list is what links them from every page.

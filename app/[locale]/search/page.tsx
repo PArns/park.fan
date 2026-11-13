@@ -18,6 +18,9 @@ import { getPostSearchIndex } from '@/lib/navigation/blog-menu';
 import { searchPostsBySection } from '@/lib/navigation/post-search';
 import { PostSearchResultList } from '@/components/blog/listing-search';
 import { SearchPageTracking } from '@/components/search/search-page-tracking';
+import { TripPlannerBand } from '@/components/orlando/trip-planner-band';
+import { getTripRegionLinks } from '@/lib/orlando/api';
+import { matchTripRegion } from '@/lib/orlando/trip-links';
 import { searchResultData } from '@/lib/analytics/search-session';
 import type { Metadata } from 'next';
 import type { Locale } from '@/i18n/config';
@@ -282,8 +285,12 @@ async function SearchBody({
 
   let results = null;
   let posts = null;
+  let tripRegion = null;
   if (query && query.length >= MIN_QUERY_LENGTH) {
-    results = await search(query).catch(() => null);
+    [results, tripRegion] = await Promise.all([
+      search(query).catch(() => null),
+      getTripRegionLinks().then((regions) => matchTripRegion(query, regions)),
+    ]);
     // Every match: this is where the palette's "all results" leads.
     const index = getPostSearchIndex(locale);
     posts = searchPostsBySection(index, query, index.length);
@@ -302,7 +309,7 @@ async function SearchBody({
   const timezoneOf = (result: SearchResultItem) =>
     timezones?.get(result.type === 'park' ? result.id : (result.parentPark?.id ?? ''));
 
-  const found = !results || results.results.length > 0 || hasPosts;
+  const found = !results || results.results.length > 0 || hasPosts || tripRegion !== null;
 
   return (
     <SearchPageTracking query={query ?? ''} found={found}>
@@ -320,6 +327,12 @@ async function SearchBody({
 
       {query && query.length >= MIN_QUERY_LENGTH && (
         <>
+          {/* A query that names a trip region: its planner first, as in the palette, and counted
+              as its first result. */}
+          <div {...searchResultData('trip_planner', 0)}>
+            <TripPlannerBand variant="search" query={query} className="mb-8" />
+          </div>
+
           {results ? (
             <>
               <div className="mb-6 flex flex-wrap gap-4">

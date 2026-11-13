@@ -298,7 +298,8 @@
     "legalLinks": "Legal",
     "disclaimer": "park.fan es un proyecto personal hecho por afición. Toda la información se proporciona sin garantía. Los tiempos de espera y estados mostrados se proporcionan automáticamente y pueden diferir de la situación real en el lugar.",
     "dataSources": "Fuentes de datos",
-    "weatherSource": "Tiempo"
+    "weatherSource": "Tiempo",
+    "tripPlanner": "Planificador de viajes"
   },
   "explore": {
     "title": "Tiempos de espera de Parques Temáticos en {location}",
@@ -417,6 +418,7 @@
     "intro": "Cada casilla es un parque en un día. El número es la espera que prevemos en las grandes atracciones de ese parque a la hora de más gente, y es con él con lo que comparas los parques. Por el color sabes cómo es ese día frente a un día normal del mismo parque.",
     "opening": "Sin tráfico, de EPCOT a Universal Studios se tarda 25 minutos en coche, y desde un hotel en Lake Buena Vista cualquiera de los ocho parques temáticos queda a menos de media hora, con el ferri o el monorraíl incluidos en el caso de Magic Kingdom. LEGOLAND, en Winter Haven, está a algo menos de una hora, y Busch Gardens y Adventure Island, en Tampa, están a una hora y media más o menos. Con esos tres, Discovery Cove y los cuatro parques acuáticos son dieciséis, y por ninguno tienes que cambiar de hotel. En el calendario de abajo están los dieciséis, día a día.",
     "nextDays": "Próximos 30 días",
+    "dayTripsGroup": "Excursiones",
     "lastYearBanner": "Nuestra previsión llega hasta el {date}. Los días siguientes muestran el mismo día de la semana del año pasado, tal como lo medimos, con la nota «año pasado».",
     "lastYearBannerNoDate": "Algunos de estos días quedan más allá de nuestra previsión. Muestran el mismo día de la semana del año pasado, tal como lo medimos, con la nota «año pasado».",
     "monthIndexLabel": "Orlando mes a mes",
@@ -645,8 +647,9 @@
       "varHours": "Horarios"
     },
     "band": {
-      "title": "¿Varios días en Orlando?",
-      "link": "Qué parque qué día"
+      "title": "¿Varios días en {region}?",
+      "planPark": "Añade {park} a tu viaje a {region}",
+      "open": "Abrir el planificador de viajes"
     }
   },
   "theme": {
@@ -1988,7 +1991,11 @@
     },
     "avgWait": "{minutes} min de media",
     "avgWaitShort": "Ø {minutes} min",
-    "heroHint": "Empieza a escribir: parques, atracciones, espectáculos y restaurantes"
+    "heroHint": "Empieza a escribir: parques, atracciones, espectáculos y restaurantes",
+    "trip": {
+      "title": "Planificador de viajes para {region}",
+      "hint": "Qué parque qué día de tu viaje"
+    }
   },
   "searchPage": {
     "types": {

@@ -1191,6 +1191,12 @@ const nextConfig: NextConfig = {
         headers: sharedCache('public, max-age=600, s-maxage=600, stale-while-revalidate=86400'),
       },
       {
+        // The trip regions' names and parks, for the search palette and the day planner. The
+        // relay's window for the region it is cut from (`TRIP_REGION_CACHE_CONTROL`).
+        source: '/api/nav/trip-regions',
+        headers: sharedCache('public, max-age=3600, s-maxage=86400, stale-while-revalidate=86400'),
+      },
+      {
         // The most-read articles and news of a locale, for the header menu, the homepage and the
         // foot of a post. An hour, the API's own window for the ranking under it.
         source: '/api/nav/most-read/:locale',

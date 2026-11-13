@@ -1,5 +1,10 @@
 import type { PlannerGeo } from './types';
 
+/** A planned park's own page, locale-free: `/parks/<continent>/<country>/<city>/<park>`. */
+export function plannerParkPath(park: { slug: string; geo: PlannerGeo }): string {
+  return `/parks/${park.geo.continent}/${park.geo.country}/${park.geo.city}/${park.slug}`;
+}
+
 /**
  * The four slugs a plan is filed under, read out of a park's URL. `/api/nearby`'s `in_park` park
  * has no URL and no geography, but each of its rides has an API URL with the same geography, so

@@ -25,6 +25,7 @@ import { PlannerPushToggle } from './planner-push-toggle';
 import { PlannerHelpSteps } from './planner-help';
 import { PlannerPolaroids, type PolaroidPhoto } from './planner-polaroids';
 import { PlannerTripAssistant } from './planner-trip-assistant';
+import { PlannerTripRegionLink } from './planner-trip-region-link';
 import { PlannerWizard, type WizardPark } from './planner-wizard';
 import { ClearDayConfirm, type ClearDayTarget } from './planner-clear-day-confirm';
 
@@ -194,6 +195,9 @@ export function PlannerPageBody({ photos = [] }: { photos?: readonly PolaroidPho
               </div>
             ))}
           </div>
+
+          {/* A plan with a day at a trip region's park: the one line into its trip planner. */}
+          <PlannerTripRegionLink parks={parks} className="mt-4" />
 
           {/* The notification switch lives with the plans, since it is about a plan existing. It
               renders nothing where push cannot work. */}
