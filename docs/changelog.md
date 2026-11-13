@@ -15,6 +15,16 @@ heading, and the same pull request writes the public entry in `content/changelog
 
 Geschnitten am 2026-11-13 aus 53 Fragmenten in `docs/changelog.d/`. Der öffentliche Eintrag ist `content/changelog/2.20.0.md`. Neueste Abschnitte zuerst.
 
+### Der Orlando-Reiseplaner kennt Tickets: ein Schritt fragt danach, ohne Tickets schlägt der Plan welche vor
+
+Der Planer fragt vor Reisedaten und Parks „Hast du schon Tickets?“ ([Orlando-Planer](features/orlando-planner.md)). „Noch nicht, einfach planen“ geht direkt zu den Reisedaten; „Ja“ öffnet je Resort (Disney, Universal, SeaWorld mit Busch Gardens, LEGOLAND) die Produkte des Katalogs der API unter ihrem offiziellen Namen, mit Tagen, Hopper (ja, nein, weiß nicht) und erstem Tag, darunter die Gültigkeit als Datum. Eine UK-Kombi füllt Disneys 14-Day Magic Ticket und Universals 14-Tage-Ticket in einem Schritt; die Reisedaten füllen sich aus den Fenstern der Tickets. Die Auswahl steht als `tickets=`, `hopper=` und dreiwertiges `blocks=` in der Adresse ([API: Tickets](https://github.com/PArns/v4.api.park.fan/blob/main/docs/frontend/trip-regions.md#tickets)) und danach als Zeile über dem Planer.
+
+Mit Tickets liegt jeder Besuch im Fenster seines Tickets; die Wochenansicht und das Tagesblatt sagen „Disney-Tag 2 von 4“, bei Tickets, die jeden Tag gelten, der Tag im Fenster. „Deine Tickets“ nennt die genutzten Tage und warum Tage frei bleiben; ein Tag außerhalb seines Tickets bietet „Diesen Besuch weglassen“ und „Ticket ändern“. Ohne Tickets nennt ein Satz, welche Tickets ab wann passen („6 Tage Disney ab So., 7. Feb., dann 4 Tage Universal ab Di., 16. Feb.“); „Details zu den Tickets“ zeigt je Resort, was ein Park Hopper bringt (mit Datum), den Hinweis zum Hogwarts Express, die Shops, „Plan mit Park Hopper zeigen“ je Resort und „Als meine Tickets übernehmen“. Fehlt der Katalog in einer veralteten Antwort der Regions-Route, bleibt der Schritt weg, und ein geteilter Link mit `tickets=` plant trotzdem. `pnpm check:planner --orlando` fährt Schritt, UK-Kombi, Vorschlag, Hopper je Resort, „Tag 2 von 4“ und einen Tag außerhalb des Fensters.
+
+### Orlando-Texte: der Hub beginnt mit seinen Parks und den Fahrten dazwischen
+
+Der Hub beginnt mit „Mit einem Hotelzimmer in Orlando hast du acht Themenparks und vier Wasserparks vor der Tür“ und einem Absatz mit den Fahrzeiten aus der Fahrzeitmatrix der API (EPCOT bis Universal Studios 25 Minuten ohne Verkehr, jeder Themenpark von Lake Buena Vista in unter einer halben Stunde, LEGOLAND knapp eine Stunde, Tampa rund anderthalb), in allen sechs Sprachen. Hub, Tagesblatt, FAQ, Methode, die Seiten zur besten Reisezeit und die Station auf der Startseite gingen durch den Review-Pass und einen Kritiker ([Schreibregeln §7.2](writing/7-review.md)): Volcano Bay erreicht man vom Parkhaus mit dem Shuttle, nicht mit Monorail oder Fähre; „Weniger, als viele denken“ zu Weihnachten und Silvester wurde „Nein.“, weil die Antwort auch unter dem Jahresschnitt gilt; der Hub sagt „große Bahnen“ wie der Planer; das Französische duzt durchgehend.
+
 ### Beste Reisezeit für Orlando, Disney World und Universal Orlando
 
 Drei neue Hub-Seiten unter `/orlando/<best-time-Segment>` (alle sieben Headliner-Parks) und
