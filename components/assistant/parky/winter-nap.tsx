@@ -20,16 +20,22 @@ import type { ParkyOutfit } from '@/lib/assistant/parky/look';
 const WINTER_OUTFIT: ParkyOutfit = { hat: 'beanie', scarf: true, umbrella: false, sky: null };
 
 /** Where Parky sits in the picture and how big: his 48-unit drawing, about 107 units tall here. */
-const PARKY_AT = 'translate(170 32) scale(2)';
+const PARKY_AT = 'translate(162 15) scale(2)';
 
-/** The snowman beside him, drawn at nearly his height rather than at an act's small scale. */
-const SNOWMAN_AT = 'translate(176 -16) scale(3)';
+/** The snowman beside the sled, drawn at most of Parky's height rather than at an act's scale. */
+const SNOWMAN_AT = 'translate(146 4) scale(2.6)';
+
+/** The sled's wood, its darker struts and edges, its red runners and its rope. */
+const wood = 'oklch(0.68 0.12 62)';
+const woodDark = 'oklch(0.5 0.1 50)';
+const runnerRed = 'oklch(0.52 0.17 25)';
+const rope = 'oklch(0.78 0.06 80)';
 
 /** The Zs over his right shoulder, growing as they rise, in the picture's units. */
 const ZEDS = [
-  { x: 262, y: 52, scale: 1.1 },
-  { x: 274, y: 38, scale: 1.4 },
-  { x: 288, y: 22, scale: 1.7 },
+  { x: 256, y: 48, scale: 1.1 },
+  { x: 269, y: 34, scale: 1.4 },
+  { x: 283, y: 18, scale: 1.7 },
 ];
 
 /** Snowflakes in the sky, clear of Parky's head and the Zs, with their size. */
@@ -37,13 +43,13 @@ const FLAKES = [
   [18, 20, 1.4],
   [44, 48, 1],
   [100, 12, 1.2],
-  [196, 10, 1.2],
-  [166, 14, 1],
+  [196, 8, 1.2],
+  [160, 14, 1],
   [12, 96, 1.2],
-  [134, 92, 1],
-  [114, 66, 1.3],
-  [300, 78, 1.2],
-  [284, 104, 1],
+  [158, 46, 1],
+  [112, 44, 1.3],
+  [296, 66, 1.2],
+  [286, 96, 1],
 ] as const;
 
 /** Stars, mostly seen against the dark theme's night sky. */
@@ -62,9 +68,43 @@ const WHEEL_CABINS = Array.from({ length: 8 }, (_, i) => ({
 }));
 
 /**
- * Parky's winter nap, the picture on the winter-break panel: he sleeps in the snow in his woolly
- * hat and scarf, the snowman he built beside him, the park's Ferris wheel snowed in behind the
- * hills under the moon. Drawn in a 320 × 160 space from the same pieces as the live Parky
+ * A wooden sled from the side, in the picture's units: the seat Parky sits on, three struts, the
+ * red runners curling up at the front, and the rope lying in the snow. Drawn after Parky, so the
+ * seat covers the bottom of his bubble and he sits in it.
+ */
+function Sled() {
+  return (
+    <g strokeLinecap="round" strokeLinejoin="round">
+      <path d="M164 114v15M204 114v15M244 114v15" stroke={woodDark} strokeWidth="3" />
+      <path
+        d="M144 129H254C270 129 277 115 269 105C265 100 258 103 261 107"
+        fill="none"
+        stroke={runnerRed}
+        strokeWidth="3"
+      />
+      <path d="M262 107C274 120 284 128 298 126" fill="none" stroke={rope} strokeWidth="1.2" />
+      <rect
+        x="148"
+        y="103"
+        width="112"
+        height="11"
+        rx="3"
+        fill={wood}
+        stroke={woodDark}
+        strokeWidth=".8"
+      />
+      <path d="M152 105H256" stroke="white" strokeOpacity=".3" strokeWidth=".9" />
+      <path d="M178 109h14M216 111h10" stroke={woodDark} strokeOpacity=".5" strokeWidth=".7" />
+      {/* A little snow on the seat's front end. */}
+      <path d="M236 103.4q6-3 12-1.4 6 1.4 10 1.4Z" fill="white" />
+    </g>
+  );
+}
+
+/**
+ * Parky's winter nap, the picture on the winter-break panel: he has nodded off in his sled in his
+ * bobble hat and scarf, the snowman he built beside it, the park's Ferris wheel snowed in behind
+ * the hills under the moon. Drawn in a 320 × 160 space from the same pieces as the live Parky
  * (`drawing.ts`, `looks.tsx`) and entirely still: it sits in a glass panel, where no endless
  * animation may run. Decorative; the panel's text says what it shows.
  *
@@ -150,7 +190,7 @@ export function ParkyWinterNap({ className }: { className?: string }) {
         strokeWidth=".8"
       />
       <path
-        d="M0 140C60 126 120 124 180 130S280 122 320 128V160H0Z"
+        d="M0 140C60 128 110 128 160 130S260 128 320 131V160H0Z"
         className="fill-white dark:fill-[oklch(0.9_0.02_240)]"
         stroke={ice}
         strokeOpacity=".6"
@@ -168,10 +208,10 @@ export function ParkyWinterNap({ className }: { className?: string }) {
         ))}
       </g>
 
-      {/* Blue shadows on the snow under the two of them. */}
+      {/* Blue shadows on the snow under the snowman and the sled. */}
       <g fill={ice} opacity=".3">
-        <ellipse cx="155" cy="129.5" rx="17" ry="2.6" />
-        <ellipse cx="218" cy="129" rx="38" ry="3.4" />
+        <ellipse cx="128" cy="130.5" rx="14" ry="2.4" />
+        <ellipse cx="204" cy="130" rx="64" ry="3.2" />
       </g>
 
       <g transform={SNOWMAN_AT}>
@@ -187,6 +227,7 @@ export function ParkyWinterNap({ className }: { className?: string }) {
         ))}
         <path d={SMILE} fill="none" stroke={ink} strokeWidth="1.8" strokeLinecap="round" />
       </g>
+      <Sled />
 
       <g
         fill="none"

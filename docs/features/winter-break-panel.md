@@ -1,7 +1,7 @@
 # Winter-break panel
 
 The yellow glass panel a park in its winter break shows on its park page and on every ride page:
-the day it opens again, how many weeks that is away, and Parky asleep in the snow. The panel is
+the day it opens again, how many weeks that is away, and Parky asleep in his sled. The panel is
 `WinterBreakPanel` (`components/parks/winter-break-panel.tsx`), the rule is `winterBreakOf`
 (`lib/utils/winter-break.ts`) and the picture is `ParkyWinterNap`
 (`components/assistant/parky/winter-nap.tsx`).
@@ -13,6 +13,10 @@ the day it opens again, how many weeks that is away, and Parky asleep in the sno
 
 - the park has an operating schedule and today's entry is not `OPERATING`;
 - `nextSchedule` names the next opening; its `date`, else the park-local day of its `openingTime`;
+- that opening is at least `OFFSEASON_MIN_DAYS` (7, `lib/utils/schedule-utils.ts`) away. It is the
+  line the park cards (`getScheduleMessage`) and „Heute im Park" (`useTodaySchedule`) draw between a
+  park shut for a few days, which they name the weekday of, and one between seasons, which they
+  call „Nebensaison". A park open only at weekends never gets the panel, not even in February;
 - at least `WINTER_BREAK_MIN_DAYS` (7) of the days from today to the reopening fall in January,
   February or March (July to September south of the equator);
 - the park lies outside the tropics (|latitude| ≥ 23.44°) and has a latitude at all.
@@ -44,9 +48,11 @@ rounding „Heute im Park" uses, so the two never name different week counts for
 
 ## The picture
 
-`ParkyWinterNap` draws a 320 × 160 scene from the live Parky's pieces: `BUBBLE`, `SHUT_EYES`,
-`SMILE`, `CHEEKS`, `ZED` and `MOON` from `drawing.ts`, the woolly hat, scarf and snowman from
-`looks.tsx`. It is entirely still, since it sits inside a `backdrop-filter`
+`ParkyWinterNap` draws a 320 × 160 scene: Parky asleep on a wooden sled with red runners, in his
+bobble hat and scarf, the snowman beside the sled and the park's Ferris wheel snowed in behind the
+hills. Parky is built from the live Parky's pieces: `BUBBLE`, `SHUT_EYES`, `SMILE`, `CHEEKS`, `ZED`
+and `MOON` from `drawing.ts`, the hat, scarf and snowman from `looks.tsx`. The sled is drawn after
+him, so its seat covers the bottom of his bubble and the scarf's fringe. It is entirely still, since it sits inside a `backdrop-filter`
 ([work nobody can see](../rules/work-nobody-can-see-is-still-work.md)): `ParkyLookHat` and
 `ParkySnowman` take `still`, which drops the pompom's bob and the snowman's build and melt. Sky,
 hills and wheel take their colours from Tailwind classes, so the scene follows the theme. It fills

@@ -129,7 +129,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`parky/winter-nap.tsx`](../../components/assistant/parky/winter-nap.tsx)
 
-- `ParkyWinterNap` _component_: Parky's winter nap, the picture on the winter-break panel: he sleeps in the snow in his woolly hat and scarf, the snowman he built beside him, the park's Ferris wheel snowed in behind the hills under the moon.
+- `ParkyWinterNap` _component_: Parky's winter nap, the picture on the winter-break panel: he has nodded off in his sled in his bobble hat and scarf, the snowman he built beside it, the park's Ferris wheel snowed in behind the hills under the moon.
 
 ### [`use-assistant-actions.ts`](../../components/assistant/use-assistant-actions.ts)
 

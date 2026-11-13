@@ -14,6 +14,7 @@ import type {
   ParkWithAttractions,
 } from '@/lib/api/types';
 import { parkDayOf, weeksUntil } from '@/lib/utils/park-day';
+import { OFFSEASON_MIN_DAYS } from '@/lib/utils/schedule-utils';
 
 export interface UseTodayScheduleParams {
   timezone: string;
@@ -189,7 +190,7 @@ export function useTodaySchedule({
       month: 'long',
       timeZone: timezone,
     }).format(nextOpening);
-    if (dayDiff >= 7) {
+    if (dayDiff >= OFFSEASON_MIN_DAYS) {
       const weeks = weeksUntil(dayDiff);
       return {
         dateFormatted,

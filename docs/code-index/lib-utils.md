@@ -439,6 +439,7 @@ Route guards for the `/[locale]/...` tree.
 - `formatParkOpening` _function_: `nextParkOpening` in words: „Öffnet um 09:00 Uhr" today, „Öffnet am 15. März" on a later day. `opensAt` is `parks.opensAt` with the clock time filled in, `opensOn` the `parks.opensOn` string.
 - `formatParkOpeningCountdown` _function_: How far off `nextParkOpening` is: „in 1:30 Stunden" for an opening today, „in 45 Minuten" inside the last hour, „morgen" (`inDays(1)`), the weekday („Samstag") within the coming week and „in 9 Tagen" beyond it.
 - `getScheduleMessage` _function_: The schedule line for a park card (opening soon, closing at, off season), drawn by `ParkCardScheduleFooter`.
+- `OFFSEASON_MIN_DAYS` _const_: How far off a closed park's next opening has to be before it is between seasons rather than shut for a few days.
 - Types: `ScheduleSummary`, `ParkOpening`, `ParkOpeningCountdownStrings`
 
 ### [`scroll-when-settled.ts`](../../lib/utils/scroll-when-settled.ts)
@@ -594,7 +595,7 @@ One day's hours as the park payload carries them (`schedule[]`, `nextSchedule`).
 ### [`winter-break.ts`](../../lib/utils/winter-break.ts)
 
 - `winterBreakOf` _function_: Whether the park is in its winter break on `todayIso`, and until when.
-- `WINTER_BREAK_MIN_DAYS` _const_: How many days of a closure have to fall in the park's winter before it counts as the winter break. A week keeps out the weekdays a park stays shut in a short season.
+- `WINTER_BREAK_MIN_DAYS` _const_: How many days of a closure have to fall in the park's winter before it counts as the winter break.
 - Types: `WinterBreak`, `WinterBreakFields`
 
 ### [`works-period.ts`](../../lib/utils/works-period.ts)

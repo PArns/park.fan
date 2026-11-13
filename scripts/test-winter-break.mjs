@@ -8,6 +8,7 @@
  */
 import assert from 'node:assert/strict';
 import { WINTER_BREAK_MIN_DAYS, winterBreakOf } from '../lib/utils/winter-break.ts';
+import { OFFSEASON_MIN_DAYS } from '../lib/utils/schedule-utils.ts';
 
 let passed = 0;
 function test(name, fn) {
@@ -66,6 +67,21 @@ test('the break after a Christmas season, from January, counts', () => {
     { date: '2027-01-10', scheduleType: 'CLOSED', openingTime: '', closingTime: '' },
   ];
   assert.ok(winterBreakOf(park('2027-03-27', { schedule }), '2027-01-10'));
+});
+
+test('a park open only at weekends is no break, even in February', () => {
+  const schedule = [
+    { date: '2027-02-08', scheduleType: 'CLOSED', openingTime: '', closingTime: '' },
+  ];
+  assert.equal(winterBreakOf(park('2027-02-13', { schedule }), '2027-02-08'), null);
+});
+
+test(`the park cards' offseason line holds: ${OFFSEASON_MIN_DAYS - 1} days to go is no break, ${OFFSEASON_MIN_DAYS} is`, () => {
+  const schedule = [
+    { date: '2027-02-01', scheduleType: 'CLOSED', openingTime: '', closingTime: '' },
+  ];
+  assert.equal(winterBreakOf(park('2027-02-07', { schedule }), '2027-02-01'), null);
+  assert.ok(winterBreakOf(park('2027-02-08', { schedule }), '2027-02-01'));
 });
 
 test('a few weekdays shut inside the winter season are no break', () => {

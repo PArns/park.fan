@@ -1,10 +1,8 @@
 import type { NextScheduleItem, ScheduleItem } from '@/lib/api/types';
 import { addDays, daysBetween, parkDayOf } from '@/lib/utils/park-day';
+import { OFFSEASON_MIN_DAYS } from '@/lib/utils/schedule-utils';
 
-/**
- * How many days of a closure have to fall in the park's winter before it counts as the winter
- * break. A week keeps out the weekdays a park stays shut in a short season.
- */
+/** How many days of a closure have to fall in the park's winter before it counts as the winter break. */
 export const WINTER_BREAK_MIN_DAYS = 7;
 
 /**
@@ -41,8 +39,10 @@ export interface WinterBreakFields {
 
 /**
  * Whether the park is in its winter break on `todayIso`, and until when. Null unless the park is
- * shut today, the schedule names its next opening day, and at least {@link WINTER_BREAK_MIN_DAYS}
- * of the days in between fall in the winter of the park's hemisphere.
+ * shut today, the schedule names its next opening day at least {@link OFFSEASON_MIN_DAYS} away
+ * (the line the park cards draw between a park open only at weekends and one between seasons),
+ * and at least {@link WINTER_BREAK_MIN_DAYS} of the days in between fall in the winter of the
+ * park's hemisphere.
  *
  * Decided from the schedule alone, never from the live status: a status reads `CLOSED` every
  * night. The reopening has to be known, because the panel that reads this exists to name it.
@@ -62,7 +62,7 @@ export function winterBreakOf(
   const reopensOn = nextOpeningDay(park.nextSchedule, park.timezone);
   if (!reopensOn) return null;
   const daysUntil = daysBetween(todayIso, reopensOn);
-  if (daysUntil < WINTER_BREAK_MIN_DAYS) return null;
+  if (daysUntil < OFFSEASON_MIN_DAYS) return null;
 
   const winter = park.latitude >= 0 ? WINTER_MONTHS_NORTH : WINTER_MONTHS_SOUTH;
   let winterDays = 0;
