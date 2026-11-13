@@ -3588,11 +3588,10 @@
     "tickets": {
       "title": "Entradas",
       "question": "¿Ya tienes entradas?",
+      "lead": "Sin entradas, el plan propone unas para cada resort.",
       "sheetHint": "Sin respuesta, el plan propone entradas para comprar. Puedes añadir las tuyas aquí cuando quieras.",
       "no": "Todavía no, solo planificar",
-      "noHint": "El plan propone una entrada por resort: cuántos días y desde cuándo.",
       "yes": "Sí, tengo entradas",
-      "yesHint": "Disney, Universal, SeaWorld o LEGOLAND, también pases anuales, o las que vas a comprar.",
       "nextDates": "Siguiente: fechas",
       "yours": "Tus entradas",
       "combo": {

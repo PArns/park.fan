@@ -3588,11 +3588,10 @@
     "tickets": {
       "title": "Tickets",
       "question": "Heb je al tickets?",
+      "lead": "Zonder tickets stelt het plan per resort tickets voor.",
       "sheetHint": "Zonder antwoord stelt het plan tickets voor om te kopen. Je eigen tickets kun je hier altijd invullen.",
       "no": "Nog niet, gewoon plannen",
-      "noHint": "Het plan stelt per resort een ticket voor: hoeveel dagen, en vanaf wanneer.",
       "yes": "Ja, ik heb tickets",
-      "yesHint": "Disney, Universal, SeaWorld of LEGOLAND, ook jaarabonnementen, of de tickets die je gaat kopen.",
       "nextDates": "Verder naar de reisdata",
       "yours": "Jouw tickets",
       "combo": {

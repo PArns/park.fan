@@ -1,7 +1,7 @@
 'use client';
 
 import { useId, type ReactNode } from 'react';
-import { Minus, Plus } from 'lucide-react';
+import { Check, Minus, Plus } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 /** The planner's focus ring, one string for every control it draws. */
@@ -149,8 +149,10 @@ export function PlanStepper({
 }
 
 /**
- * A pill to press, on or off (`aria-pressed`): the When mode's periods, a ticket's days, its hopper
- * and its variant. 44 px on a phone, 36 at a desk.
+ * A pill to press, on or off (`aria-pressed`, or `aria-expanded` for one that opens more): the When
+ * mode's periods, a ticket's days, its hopper and its variant, and the ticket question's two
+ * answers. 44 px on a phone, 36 at a desk. `check` adds a check that shows when it is chosen, its
+ * room kept either way, so choosing changes neither the size nor the border.
  */
 export function PlanChip({
   selected,
@@ -158,17 +160,28 @@ export function PlanChip({
   label,
   disabled = false,
   className,
+  check = false,
+  expanded,
+  controls,
+  ...data
 }: {
   selected: boolean;
   onClick: () => void;
   label: ReactNode;
   disabled?: boolean;
   className?: string;
+  check?: boolean;
+  /** For a chip that opens a section: `aria-expanded` instead of `aria-pressed`. */
+  expanded?: boolean;
+  controls?: string;
+  [key: `data-${string}`]: string | undefined;
 }) {
   return (
     <button
       type="button"
-      aria-pressed={selected}
+      aria-pressed={expanded === undefined ? selected : undefined}
+      aria-expanded={expanded}
+      aria-controls={controls}
       onClick={onClick}
       disabled={disabled}
       className={cn(
@@ -176,10 +189,18 @@ export function PlanChip({
         selected
           ? 'border-primary bg-primary/15 text-foreground font-semibold'
           : 'border-border/70 hover:bg-accent/60',
+        check && 'inline-flex items-center justify-center gap-1.5',
         PLAN_FOCUS,
         className
       )}
+      {...data}
     >
+      {check && (
+        <Check
+          className={cn('text-primary-ink size-4 shrink-0', !selected && 'invisible')}
+          aria-hidden="true"
+        />
+      )}
       {label}
     </button>
   );

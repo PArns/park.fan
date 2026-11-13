@@ -3588,11 +3588,10 @@
     "tickets": {
       "title": "Billets",
       "question": "Tu as déjà tes billets ?",
+      "lead": "Sans billets, le plan en propose pour chaque resort.",
       "sheetHint": "Sans réponse, le plan propose des billets à acheter. Tu peux saisir les tiens ici à tout moment.",
       "no": "Pas encore, juste planifier",
-      "noHint": "Le plan propose un billet par resort : combien de jours, et à partir de quand.",
       "yes": "Oui, j’ai des billets",
-      "yesHint": "Disney, Universal, SeaWorld ou LEGOLAND, pass annuels compris, ou ceux que tu vas acheter.",
       "nextDates": "Suite : les dates",
       "yours": "Tes billets",
       "combo": {

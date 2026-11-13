@@ -3588,11 +3588,10 @@
     "tickets": {
       "title": "Biglietti",
       "question": "Hai già i biglietti?",
+      "lead": "Senza biglietti, il piano ne propone per ogni resort.",
       "sheetHint": "Senza risposta il piano propone biglietti da comprare. Puoi inserire i tuoi qui in qualsiasi momento.",
       "no": "Non ancora, pianifica e basta",
-      "noHint": "Il piano propone un biglietto per resort: quanti giorni e da quando.",
       "yes": "Sì, ho i biglietti",
-      "yesHint": "Disney, Universal, SeaWorld o LEGOLAND, anche abbonamenti annuali, o quelli che comprerai.",
       "nextDates": "Avanti: le date",
       "yours": "I tuoi biglietti",
       "combo": {

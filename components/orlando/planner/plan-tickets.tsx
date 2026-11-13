@@ -37,6 +37,9 @@ import { PLAN_FOCUS, PlanCheckRow, PlanChip } from './plan-controls';
 import { PlanMonthGrid } from './plan-month-grid';
 import { oneStop, productName, useHopperWord, useResortWord } from './plan-ticket-words';
 
+/** The two answers: one line each, 48 px whatever is chosen, side by side where both fit. */
+const ANSWER_CHIP = 'h-12 w-full whitespace-nowrap lg:min-h-12';
+
 /** Whether the ticket question was answered, and how. */
 export type TicketAnswer = 'unasked' | 'yes' | 'no';
 
@@ -224,26 +227,29 @@ export function PlanTickets({
 
   return (
     <div ref={rootRef} className="flex flex-col gap-4" data-plan-tickets="">
-      <p className="text-base font-semibold">{t('question')}</p>
-      <div className={cn('grid gap-2', wide && 'lg:grid-cols-2')}>
-        <AnswerOption
-          chosen={answer === 'no'}
-          compact={answer !== 'unasked'}
-          title={t('no')}
-          hint={t('noHint')}
-          disabled={!live}
+      <div className="flex flex-col gap-1">
+        <p className="text-base font-semibold">{t('question')}</p>
+        <p className="text-muted-foreground text-sm">{t('lead')}</p>
+      </div>
+      <div className="grid gap-2 sm:grid-cols-2">
+        <PlanChip
+          selected={answer === 'no'}
           onClick={onNotYet}
+          disabled={!live}
+          label={t('no')}
+          check
+          className={ANSWER_CHIP}
           data-ticket-answer="no"
         />
-        <AnswerOption
-          chosen={answer === 'yes'}
-          compact={answer !== 'unasked'}
-          title={t('yes')}
-          hint={t('yesHint')}
-          disabled={!live}
+        <PlanChip
+          selected={answer === 'yes'}
           onClick={step.answerYes}
+          disabled={!live}
+          label={t('yes')}
+          check
           expanded={answer === 'yes'}
           controls={listId}
+          className={ANSWER_CHIP}
           data-ticket-answer="yes"
         />
       </div>
@@ -282,59 +288,6 @@ export function PlanTickets({
         {both && <p className="text-muted-foreground text-xs leading-snug">{t('mixNote')}</p>}
       </div>
     </div>
-  );
-}
-
-function AnswerOption({
-  chosen,
-  compact,
-  title,
-  hint,
-  disabled,
-  onClick,
-  expanded,
-  controls,
-  ...data
-}: {
-  chosen: boolean;
-  compact: boolean;
-  title: string;
-  hint: string;
-  disabled: boolean;
-  onClick: () => void;
-  expanded?: boolean;
-  controls?: string;
-  'data-ticket-answer': string;
-}) {
-  return (
-    <button
-      type="button"
-      onClick={onClick}
-      disabled={disabled}
-      aria-pressed={expanded === undefined ? chosen : undefined}
-      aria-expanded={expanded}
-      aria-controls={controls}
-      className={cn(
-        'flex min-h-14 items-start gap-3 rounded-xl border px-3 py-2.5 text-left transition-colors',
-        chosen ? 'border-primary bg-primary/10' : 'border-border/60 hover:bg-accent/40',
-        PLAN_FOCUS
-      )}
-      {...data}
-    >
-      <span
-        className={cn(
-          'mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-full border',
-          chosen ? 'border-primary bg-primary text-primary-foreground' : 'border-border'
-        )}
-        aria-hidden="true"
-      >
-        {chosen && <Check className="size-3.5" />}
-      </span>
-      <span className="flex min-w-0 flex-col gap-0.5">
-        <span className="text-sm font-semibold">{title}</span>
-        {!compact && <span className="text-muted-foreground text-xs leading-snug">{hint}</span>}
-      </span>
-    </button>
   );
 }
 
