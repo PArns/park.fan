@@ -23,6 +23,9 @@ export interface PlannerQuickStart {
   name: string;
   /** The park's page, locale-relative. */
   href: string;
+  city: string;
+  /** Country slug, localized through `geo.countries.<slug>` where it is drawn. */
+  countrySlug: string;
   geo: PlannerGeo;
   /** The park's photo where it has one, for the panel's wash until the day's own arrives. */
   image?: string;
@@ -50,6 +53,8 @@ export function plannerQuickStarts(
       slug: park.slug,
       name: park.name,
       href: park.href,
+      city: park.city,
+      countrySlug: park.countrySlug,
       geo,
       ...(park.image && { image: park.image, imagePosition: park.imagePosition }),
     });
