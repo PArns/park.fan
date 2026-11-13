@@ -77,6 +77,20 @@ export async function checkOrlandoTickets({ browser, base, check }) {
       .locator('[data-setup-row="tickets"]')
       .innerText()
       .then((t) => t.split('\n').at(-1));
+  /**
+   * The row's line once it says `text`, or what it says after 5 s. The answer is read from this
+   * browser's storage after hydration, so the first frame still asks the question.
+   */
+  const rowSays = async (page, text) => {
+    await page
+      .waitForFunction(
+        (t) => document.querySelector('[data-setup-row="tickets"]')?.textContent?.endsWith(t),
+        text,
+        { timeout: 5000 }
+      )
+      .catch(() => {});
+    return rowValue(page);
+  };
   const startTrip = (page) =>
     page.getByRole('button', { name: 'Plan my Orlando trip' }).last().click();
   const sheetTitle = (page) =>
@@ -99,7 +113,7 @@ export async function checkOrlandoTickets({ browser, base, check }) {
     await ready(page, '/en/orlando#planner');
     check(
       'Orlando · Tickets ist die erste Zeile und fragt, solange nicht geantwortet wurde',
-      (await rowValue(page)) === 'Already have tickets?'
+      (await rowSays(page, 'Already have tickets?')) === 'Already have tickets?'
     );
     await startTrip(page);
     await page.locator(`${SHEET} [data-plan-tickets]`).waitFor();
@@ -122,7 +136,8 @@ export async function checkOrlandoTickets({ browser, base, check }) {
     await ready(page, '/en/orlando#planner');
     check(
       'Orlando · danach heißt die Zeile „No tickets entered“',
-      (await rowValue(page)) === 'No tickets entered'
+      (await rowSays(page, 'No tickets entered')) === 'No tickets entered',
+      await rowValue(page)
     );
     await startTrip(page);
     await page.waitForFunction(
@@ -238,7 +253,8 @@ export async function checkOrlandoTickets({ browser, base, check }) {
     check(
       'Orlando · ein kopierter Link öffnet dieselben Tickets, ohne die Adresse umzuschreiben',
       page.url() === ownerLink &&
-        (await rowValue(page)) === 'Disney 14-Day Magic Ticket · Universal 14-day ticket',
+        (await rowSays(page, 'Disney 14-Day Magic Ticket · Universal 14-day ticket')) ===
+          'Disney 14-Day Magic Ticket · Universal 14-day ticket',
       await rowValue(page)
     );
     await context.close();
