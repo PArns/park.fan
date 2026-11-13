@@ -1432,12 +1432,20 @@
       "since": "seit {month}"
     }
   },
-  "winterBreak": {
-    "label": "Winterpause",
+  "parkBreak": {
+    "label": {
+      "winter": "Winterpause",
+      "season": "Saisonpause"
+    },
     "reopensPark": "Öffnet wieder am <date>{day}</date>",
     "reopensRide": "Der Park öffnet wieder am <date>{day}</date>",
-    "park": "Bis dahin bleiben alle Attraktionen geschlossen, und Parky hält Winterschlaf.",
-    "ride": "Bis dahin bleibt auch {ride} geschlossen, und Parky hält Winterschlaf."
+    "park": "Bis dahin bleiben alle Attraktionen geschlossen.",
+    "ride": "Bis dahin bleibt auch {ride} geschlossen.",
+    "parky": {
+      "winter": "Parky hält so lange Winterschlaf.",
+      "autumn": "Parky schläft so lange im Laub.",
+      "spring": "Parky döst so lange zwischen den Tulpen."
+    }
   },
   "attractions": {
     "blogPosts": {

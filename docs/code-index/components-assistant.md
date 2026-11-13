@@ -46,6 +46,10 @@ by hand: change the comment in the code and re-run the script. -->
 - `PARKY_LAYER` _const_: Parky's layer: button, speech bubble and window lie above everything else on the page, the header, the planner and the navigation bar's `z-[9999]` included. One class for all three.
 - `ASSISTANT_PHONE_QUERY` _const_: Below this width Parky's window takes the screen: the page behind it is locked, it stands in what the browser shows, and a step that leads elsewhere on the page closes it.
 
+### [`parky/break-scene.tsx`](../../components/assistant/parky/break-scene.tsx)
+
+- `ParkyBreakScene` _component_: Parky asleep through a park's break, the picture on its panel, in the season the break falls in: in winter in his sled, in bobble hat and scarf, the snowman beside it; in autumn in a heap of leaves under a tree turning red; in spring among …
+
 ### [`parky/drawing.ts`](../../components/assistant/parky/drawing.ts)
 
 - `ink` _const_: The ink of the pupils, the mouth and every outline drawn dark.
@@ -127,9 +131,9 @@ by hand: change the comment in the code and re-run the script. -->
 - `LENS_OUT_MS` _const_: How long the glass takes to go once the search has closed; the stylesheet reads `--parky-act`.
 - `PUZZLED_MS` _const_: How long a question mark hangs over Parky after a search found nothing.
 
-### [`parky/winter-nap.tsx`](../../components/assistant/parky/winter-nap.tsx)
+### [`parky/wheel.tsx`](../../components/assistant/parky/wheel.tsx)
 
-- `ParkyWinterNap` _component_: Parky's winter nap, the picture on the winter-break panel: he has nodded off in his sled in his bobble hat and scarf, the snowman he built beside it, the park's Ferris wheel snowed in behind the hills under the moon.
+- `ParkyWheel` _component_: Parky's hat: a Ferris wheel on an A-frame, set into his head. `className` goes on the part that turns (rim, spokes and cabins), and `glow` is drawn between the spokes and the cabins, for the lights at night.
 
 ### [`use-assistant-actions.ts`](../../components/assistant/use-assistant-actions.ts)
 

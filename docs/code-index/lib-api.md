@@ -118,6 +118,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `getBestDaysForApiKey` _function_: The best-days snapshot read with a caller's own data key and nothing of the server's, so the API applies that key's revocation, parks and hourly allowance to this read.
 - `getBestDaysCalendarSeed` _function_: Timeout-bounded `getBestDaysCalendar` for the park page's streamed SEO seed.
 - `getCalendarMonthSeed` _function_: Timeout-bounded month fetch for the calendar page's streamed summary, like `getBestDaysCalendarSeed`: a timeout drops only the summary card.
+- `getBreakLookbackSeed` _function_: A few past days of `/calendar`, for how long a park has been shut already (`parkBreakLookback`, `closedDaysBefore` in `lib/utils/park-break.ts`).
 - `BEST_DAYS_REVALIDATE` _const_: Data-cache window for the SSR best-days snapshot. Only the fallback cadence: the backend fires `revalidateTag('best-days:<slug>')` after every forecast warmup, and `analyzeBestDays` re-filters against a fresh „today" on every render.
 - `CALENDAR_MONTH_REVALIDATE` _const_: How long a month page's server-rendered summary may be reused: a day, since what it says (open days, quietest and busiest days, usual hours) does not change within one.
 - Types: `CalendarHourlyMode`, `BestDaysByDayOfWeek`, `BestDaysSnapshot`, `ApiKeyRefusal`

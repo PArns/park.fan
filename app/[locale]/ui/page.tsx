@@ -62,6 +62,7 @@ import { AttractionTypicalWaitsDemo } from '@/components/parks/attraction-typica
 import type { DayDataProps } from '@/components/parks/attraction-history-day';
 
 import { WeatherCardShowcase, ParkTimeInfoShowcase } from '@/components/parks/weather-card-demo';
+import { ParkBreakPanel } from '@/components/parks/park-break-panel';
 import { NowcastBannerDemo } from '@/components/parks/nowcast-banner-demo';
 import { WeatherWarningBannerDemo } from '@/components/parks/weather-warning-banner-demo';
 import { ParkCalendarDay } from '@/components/parks/park-calendar-day';
@@ -104,6 +105,33 @@ import type {
 } from '@/lib/api/types';
 import { assertServableRoute } from '@/lib/utils/route-guards';
 import { RouteMessages } from '@/i18n/route-messages';
+
+/** Closures that show each of the break panel's pictures: today and the reopening day. */
+const PARK_BREAK_DEMOS = [
+  { todayIso: '2026-11-13', reopensOn: '2027-03-25' },
+  { todayIso: '2026-11-13', reopensOn: '2026-11-27' },
+  { todayIso: '2027-03-10', reopensOn: '2027-03-28' },
+  { todayIso: '2027-05-03', reopensOn: '2027-05-21' },
+] as const;
+
+/** A northern park shut on `todayIso` that opens again on `reopensOn`, for the break panel. */
+function breakDemoPark(todayIso: string, reopensOn: string) {
+  return {
+    timezone: 'Europe/Berlin',
+    latitude: 50.8,
+    hasOperatingSchedule: true,
+    schedule: [],
+    nextSchedule: {
+      date: reopensOn,
+      openingTime: `${reopensOn}T09:00:00.000Z`,
+      closingTime: `${reopensOn}T17:00:00.000Z`,
+      scheduleType: 'OPERATING' as const,
+      description: null,
+      purchases: null,
+      holidayName: null,
+    },
+  };
+}
 
 function Section({
   title,
@@ -1878,6 +1906,26 @@ export default async function UiStyleGuidePage({ params }: UiPageProps) {
               <ComponentLabel name="ParkTimeInfo" file="components/parks/park-time-info.tsx" />
               <Sub title="ParkTimeInfo — with today schedule (live clock + opens/closes in countdown)">
                 <ParkTimeInfoShowcase />
+              </Sub>
+
+              <ComponentLabel name="ParkBreakPanel" file="components/parks/park-break-panel.tsx" />
+              <Sub title="ParkBreakPanel — winter break in November, season break in autumn, winter break in March, season break in May">
+                <div className="space-y-4">
+                  {PARK_BREAK_DEMOS.map(({ todayIso, reopensOn }) => (
+                    <ParkBreakPanel
+                      key={todayIso + reopensOn}
+                      park={breakDemoPark(todayIso, reopensOn)}
+                      todayIso={todayIso}
+                      geo={{
+                        continent: 'europe',
+                        country: 'germany',
+                        city: 'demo',
+                        parkSlug: 'demo',
+                      }}
+                      scope="park"
+                    />
+                  ))}
+                </div>
               </Sub>
             </Section>
 

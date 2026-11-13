@@ -1432,12 +1432,20 @@
       "since": "since {month}"
     }
   },
-  "winterBreak": {
-    "label": "Winter break",
+  "parkBreak": {
+    "label": {
+      "winter": "Winter break",
+      "season": "Season break"
+    },
     "reopensPark": "Reopens on <date>{day}</date>",
     "reopensRide": "The park reopens on <date>{day}</date>",
-    "park": "Until then every attraction stays closed, and Parky is hibernating.",
-    "ride": "Until then {ride} stays closed too, and Parky is hibernating."
+    "park": "Until then every attraction stays closed.",
+    "ride": "Until then {ride} stays closed too.",
+    "parky": {
+      "winter": "Parky is hibernating until then.",
+      "autumn": "Parky is sleeping in the leaves until then.",
+      "spring": "Parky is dozing among the tulips until then."
+    }
   },
   "attractions": {
     "blogPosts": {

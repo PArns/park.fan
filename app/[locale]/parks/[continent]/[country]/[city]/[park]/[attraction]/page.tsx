@@ -30,8 +30,7 @@ import { worksPeriodsOf } from '@/lib/utils/works-period';
 import { TransportSystemBadge } from '@/components/parks/transport-system-badge';
 import { HalloweenMazeBadge } from '@/components/parks/halloween-maze-badge';
 import { WorksPeriodNote } from '@/components/parks/works-period-note';
-import { WinterBreakPanel } from '@/components/parks/winter-break-panel';
-import { winterBreakOf } from '@/lib/utils/winter-break';
+import { ParkBreakPanel } from '@/components/parks/park-break-panel';
 import { FastPassBadge } from '@/components/parks/fast-pass-badge';
 import { SingleRiderBadge } from '@/components/parks/single-rider-badge';
 import { VirtualLineBadge } from '@/components/parks/virtual-line-badge';
@@ -810,10 +809,12 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
               }
             />
 
-            {/* The park's winter break, first among the notes: it is why every panel above is
+            {/* The park's break, first among the notes: it is why every panel above is
               empty, and the date in it is the one thing to plan around. */}
-            <WinterBreakPanel
-              winterBreak={winterBreakOf(park, todayIso)}
+            <ParkBreakPanel
+              park={park}
+              todayIso={todayIso}
+              geo={{ continent, country, city, parkSlug }}
               scope="ride"
               rideName={attractionName}
               className="mt-4 mb-8"
