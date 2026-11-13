@@ -65,6 +65,7 @@ export async function QuietestDaysByPark({ locale }: { locale: string }) {
       <ParkComparisonCard
         parks={parks}
         title={tStats('comparisonTitle')}
+        titleAs="p"
         labelPark={tStats('comparisonPark')}
         labelParkAverage={tStats('parkAverage')}
         labelLongest={tStats('longestQueue')}
