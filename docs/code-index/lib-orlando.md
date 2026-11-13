@@ -158,11 +158,14 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`plan-query.ts`](../../lib/orlando/plan-query.ts)
 
 - `isPlanDate` _function_: A real `YYYY-MM-DD` day, not `2026-02-31`.
-- `planRegionKeys` _function_: The slugs and hotel areas a link may name, from the region the page rendered.
+- `planRegionKeys` _function_: The slugs, hotel areas, tickets and resorts a link may name, from the region the page rendered.
+- `readTicketItem` _function_: One `tickets=` item, or `null` where it cannot be read.
+- `writeTicketItem` _function_: One ticket in its URL form, the flags in the contract's order.
+- `readTickets` _function_: A link's `tickets` read leniently, one item at a time, at most `MAX_TICKETS`; `dropped` counts the items that could not be read, so the planner can say one was left out.
 - `readPlanQuery` _function_: The state a URL describes. Lenient by design: a link from Parky, an old copy or a hand edit opens what can be read and drops the rest, one parameter at a time, so a single bad value never costs the visitor the whole plan.
 - `normalizePlanState` _function_: The state with what cannot hold dropped: a pin outside the trip, on a park not chosen (the API answers either with a 400), or the second pin of a day. Called after every change, so the URL and the request never carry one.
 - `planQueryEntries` _function_: The state as `/plan` query pairs, in `PLAN_QUERY_NAMES` order, with each value that is the API's default left out so a link stays short.
-- `writePlanQuery` _function_: The query string for the address bar, `''` for the untouched state. Commas, colons and `@` stay readable: `URLSearchParams` would encode them, and a link Parky prints should look like the one the page writes.
+- `writePlanQuery` _function_: The query string for the address bar, `''` for the untouched state. Commas, colons, `@` and the `?` of `.h?` stay readable: `URLSearchParams` would encode them, and a link Parky prints should look like the one the page writes.
 - `planHref` _function_: The address of this plan on `pathname` (the hub or a month page), opening on the planner, which "Copy link" shares and `history.replaceState` writes after each change.
 - `orlandoPlannerHref` _function_: The locale-relative address that opens the planner on a state, for `Link` from `@/i18n/navigation`: `/orlando?from=…&to=…&parks=…#planner`, or in the When mode `/orlando?when=<from>_<to>&days=10&within=DE-NW&parks=…#planner`.
 - `PLAN_HOTELS` _const_: The plan's `hotel=`: which resort's perks count.
@@ -173,9 +176,50 @@ by hand: change the comment in the code and re-run the script. -->
 - `MAX_DAYS_AHEAD` _const_: A plan reaches at most a year ahead.
 - `MIN_FIND_DAYS` _const_: The When mode's shortest trip.
 - `DEFAULT_FIND_DAYS` _const_: The When mode's trip length before the visitor sets one.
+- `MAX_TICKETS` _const_: A plan takes at most this many owned tickets.
 - `DEFAULT_PLAN_STATE` _const_: The state before the visitor has chosen anything: the API's defaults, no dates.
 - `PLAN_QUERY_NAMES` _const_: The query names in the order a URL is written in, the `/plan` route's own. `parties` is not one of them: it is read from older links (see `readPlanQuery`) and never written.
-- Types: `PlanHotel`, `PlanRest`, `PlanLock`, `PlanParkPick`, `PlanSearchRange`, `OrlandoPlanState`, `PlanRegionKeys`, `QueryReader`, `OrlandoPlannerHrefInput`
+- Types: `PlanHotel`, `PlanRest`, `PlanLock`, `PlanParkPick`, `PlanTicketHopper`, `PlanTicket`, `PlanSearchRange`, `OrlandoPlanState`, `PlanRegionKeys`, `QueryReader`, `OrlandoPlannerHrefInput`
+
+### [`plan-tickets.ts`](../../lib/orlando/plan-tickets.ts)
+
+- `ticketCatalog` _function_: The catalog keyed by id; empty without one.
+- `leanTicketCatalog` _function_: The catalog as the browser needs it: the operators' notes and the rules only the optimizer reads (`hopSets`, `caps`, `confidence`) stay on the server, which keeps the planner's payload small.
+- `ticketEntries` _function_: A resort's product list, keeping only the products the catalog has; an entry with none left goes, so a product the API drops leaves the list without a dead button.
+- `entryOfProduct` _function_: The entry a written ticket belongs to: the first that lists its product and is no "not sure".
+- `entryMarket` _function_: Who may buy an entry's ticket, as its tag: `uk` for UK and Ireland residents only, `intl` for a ticket sold only outside the US; nothing for one anybody can buy.
+- `soldLengths` _function_: The lengths a product sells, or `null` for a pass or a product with only a window.
+- `windowLength` _function_: The calendar days a ticket may be used in, from its start: the window of its length, or the product's own window; `null` for a pass.
+- `ticketLength` _function_: The days a ticket of this product has to count off, `null` for a pass or a window-only product.
+- `isEveryDayTicket` _function_: Whether a ticket is valid every day of its window, so it has no days to count off: a window as long as its days (Universal's UK 14-day tickets), or a window without a day count (SeaWorld's Four Parks).
+- `onSaleAt` _function_: Whether the product is sold for a ticket starting on `date`.
+- `ticketWindow` _function_: A ticket's window as dates, both ends included; `null` without a start or for a pass.
+- `universalUk14At` _function_: Universal's UK 14-day tickets sold for a start, Three Park Adventure first: one product in most weeks, both in the week their sales overlap (the step then asks about Volcano Bay), none outside.
+- `unsureLengths` _function_: The lengths "Not sure which" offers: every date-based length, and the UK ticket's 14.
+- `draftProduct` _function_: The product a draft stands for, or `null` while it cannot be told: the entry's chosen chip, its add-on, the UK 14-day ticket on sale at the start, or for "not sure" the strictest product of that length (a date-based ticket, or the UK …
+- `draftTicket` _function_: The draft as a `tickets=` item, or why not: `null` with no issue while a field is still empty. A start the product is not sold for is an issue, never written, since the API would refuse it.
+- `ticketDraft` _function_: A written ticket as a draft, so the step opens on what the link says.
+- `ticketWindows` _function_: Each ticket's window with its resort, in entry order, for the date grid's bars and key.
+- `tripFromTickets` _function_: The trip the tickets imply, for dates not chosen yet: the earliest first day to the latest window's end, at most `MAX_TRIP_DAYS` days. `null` while no ticket has a first day.
+- `setTickets` _function_: Set the tickets; where the trip has no dates yet, the tickets' windows give them.
+- `ticketProblem` _function_: The first ticket the trip cannot be planned with: one that starts after the trip, one whose window ends before it, or a start the product is not sold for. `null` while there are no dates.
+- `hopperTicketResorts` _function_: The resorts the visitor's owned tickets cover with a hopper (`.h`, or a product that always hops), for the "Park hopping" option, which only these and plan first's hopper make count.
+- `ticketsCoverBothResorts` _function_: Whether owned tickets cover Disney and Universal both, so the two may mix inside the windows.
+- `hopperOn` _function_: The plan-first resorts planned with the hopper: every one with `ticket=hopper`, else `hopper=`.
+- `toggleHopper` _function_: "Show the plan with Park Hopper" for one resort, and its way back. An older link's `ticket=hopper` (every resort) becomes the list of the others, so the press changes only this resort.
+- `suggestionsByStart` _function_: The suggestions in the order of their first day, for the one sentence that names them.
+- `adoptSuggestions` _function_: "Use these as your tickets": the suggestions written as owned tickets, each with its start and, where the plan was shown with it, the hopper.
+- `longStayTickets` _function_: "From the UK or Ireland? The 14-day tickets fit this trip": Disney's and Universal's UK 14-day tickets for the resorts a long trip's suggestions name, without a first day, so the plan picks it.
+- `hopperGains` _function_: What the hopper adds, from the fields the API sends: each evening at a second park and each day with two parks by date (more than two by count), the parks that fit only with it, and the minutes per ride. Empty when it adds nothing.
+- `needsHogwartsHop` _function_: Whether a set of planned parks rides the Hogwarts Express between its two stations.
+- `ticketDayOf` _function_: Where a plan day sits on its ticket, from `ticket` and `ticketDay` and the ticket the meta names; `null` for a day without a ticket and for a water-park visit on the allowance.
+- `ownedUse` _function_: An owned ticket's use, read the contract's way for its kind of product.
+- `plannedVisits` _function_: The planned visits of a park, for "Leave this visit out" on a day outside its ticket.
+- `TICKET_RESORTS` _const_: The four groups the step offers tickets for, always in this order.
+- `UNIVERSAL_UK_14` _const_: Universal's UK 14-day tickets, Three Park Adventure first: the one sold while Volcano Bay is shut.
+- `DISNEY_UK_14` _const_: Disney's UK 14-day ticket.
+- `HOGWARTS_PARKS` _const_: Universal Studios and Islands of Adventure: the Hogwarts Express runs between them.
+- Types: `TicketCatalog`, `TicketResort`, `TicketEntry`, `TicketDraft`, `DraftIssue`, `TicketProblem`, `HopperGain`, `TicketDayInfo`, `OwnedUse`
 
 ### [`plan-view.ts`](../../lib/orlando/plan-view.ts)
 
@@ -247,7 +291,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `findLeg` _function_: The leg between two points of the region (park slugs or `hotel:<key>`). The matrix stores each pair once, both directions averaged, so either order finds it.
 - `setFindMode` _function_: Switch between the two ways in: the visitor knows the dates, or the planner finds them. Finding starts on `range` with the length of the dates chosen so far (or `DEFAULT_FIND_DAYS`); knowing drops the search.
 - `planWindow` _function_: Level 3 of the When mode: plan a found window, which leaves the search for the plan itself.
-- Types: `PlanDayKind`, `PlanTravel`, `PlanParkVisit`, `PlanDay`, `PlanEveningHighlight`, `PlanEvening`, `PlanAlternative`, `PlanParkSummary`, `PlanTotals`, `PlanMeta`, `TripPlan`, `PlanProblem`, `PlanReservePark`
+- Types: `PlanDayKind`, `PlanTravel`, `PlanParkVisit`, `PlanDay`, `PlanHopperDay`, `PlanHopperVerdict`, `PlanOwnedTicket`, `PlanTicketAlternative`, `PlanTicketSuggestion`, `PlanEveningHighlight`, `PlanEvening`, `PlanAlternative`, `PlanParkSummary`, `PlanTotals`, `PlanMeta`, `TripPlan`, `PlanProblem`, `PlanReservePark`
 - Re-exports: `./plan-query`
 
 ### [`planner-ui.ts`](../../lib/orlando/planner-ui.ts)
@@ -271,4 +315,4 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `ORLANDO_REGION` _const_: The one region the API curates.
 - `ORLANDO_TIMEZONE` _const_: Orlando's zone, which every park in the region runs on and every "today" is read in.
-- Types: `TripParkType`, `TripRegionGroup`, `TripRegionPark`, `TripPerk`, `TripHotelArea`, `TripTransportAlternative`, `TripLeg`, `TripTravel`, `TripVenue`, `TripRegion`, `TripDayStatus`, `TripBasis`, `TripCrowdLevel`, `TripSlot`, `TripEarlyKind`, `TripEveningKind`, `TripParkDay`, `TripBestWhy`, `TripCalendarDay`, `TripSeason`, `TripCalendarMeta`, `TripCalendar`, `TripBestDayReason`, `TripBestDay`, `TripParkBestDays`, `TripGroupBestDays`, `TripBestDays`, `TripWhenReason`, `TripWhenWarning`, `TripWhenWindow`, `TripWhenWeek`, `TripWhen`, `OrlandoMonth`, `TripMonthClimate`, `TripWhenMonth`, `TripWhenWithMonths`, `TripSchoolBreakRegion`, `TripSchoolBreaks`
+- Types: `TripParkType`, `TripRegionGroup`, `TripRegionPark`, `TripPerk`, `TripHotelArea`, `TripTransportAlternative`, `TripLeg`, `TripTravel`, `TripVenue`, `TicketHopping`, `TicketProduct`, `TripRegion`, `TripDayStatus`, `TripBasis`, `TripCrowdLevel`, `TripSlot`, `TripEarlyKind`, `TripEveningKind`, `TripParkDay`, `TripBestWhy`, `TripCalendarDay`, `TripSeason`, `TripCalendarMeta`, `TripCalendar`, `TripBestDayReason`, `TripBestDay`, `TripParkBestDays`, `TripGroupBestDays`, `TripBestDays`, `TripWhenReason`, `TripWhenWarning`, `TripWhenWindow`, `TripWhenWeek`, `TripWhen`, `OrlandoMonth`, `TripMonthClimate`, `TripWhenMonth`, `TripWhenWithMonths`, `TripSchoolBreakRegion`, `TripSchoolBreaks`

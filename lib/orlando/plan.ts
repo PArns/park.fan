@@ -79,8 +79,91 @@ export interface PlanDay {
   dayGuestCloseAt?: string;
   /** An evening after the park, with `evenings=1` and a park that closes early. */
   evening?: PlanEvening;
+  /** The owned ticket's id (`t1`) or a suggestion's (`suggested:<resort>`) the day is on. */
+  ticket?: string;
+  /** The day's number on that ticket; on an every-day ticket the day of its window. */
+  ticketDay?: number;
+  /** A water-park visit on the ticket's allowance: no ticket day used. */
+  ticketAllowance?: boolean;
   reasons: string[];
   warnings: string[];
+}
+
+/** One day of a hopper comparison: the two parks of a hop day, or the day's park and the evening's. */
+export interface PlanHopperDay {
+  date: string;
+  parks: string[];
+}
+
+/**
+ * What the hopper option adds to a resort's days, from the plan made a second time with it. The API
+ * recommends it only for an evening hop, a park that fits only with it, or 3 minutes a ride.
+ */
+export interface PlanHopperVerdict {
+  recommended: boolean;
+  savedMinutes?: number;
+  savedMinutesPerRide?: number;
+  hopDays?: number;
+  eveningHops?: number;
+  fitsMoreParks?: number;
+  hopDayList?: PlanHopperDay[];
+  eveningHopList?: PlanHopperDay[];
+  /** The parks of the visits only the hopper places, a park once per visit. */
+  fitsOnlyWithHopper?: string[];
+  why: string[];
+}
+
+/** An owned ticket as the plan used it (`meta.tickets[]`), in the order of `tickets=`. */
+export interface PlanOwnedTicket {
+  /** `t1` … `t6`. */
+  id: string;
+  product: string;
+  /** Absent for a pass. */
+  days?: number;
+  /** `unknown` for `.h?`, planned without the hopper; `hopperVerdict` then says what it would add. */
+  hopper: boolean | 'unknown';
+  hopperVerdict?: PlanHopperVerdict;
+  start?: string;
+  /** The window's last day; absent for a pass. */
+  end?: string;
+  /** The plan picked the start, where the link gave none. */
+  startChosen?: boolean;
+  usedDays: number;
+  /** Days left over; absent when none, for a pass and for an every-day ticket. */
+  unusedDays?: number;
+  unusedReason?: string;
+  /** An every-day ticket's window, which it has instead of days to count off. */
+  windowDays?: number;
+  allowanceVisits?: number;
+  warnings?: string[];
+}
+
+/** A product another ticket could be, in a suggestion: a UK 14-day ticket, a promotion. */
+export interface PlanTicketAlternative {
+  product: string;
+  days?: number;
+  markets?: string[];
+  reason: string;
+}
+
+/** Plan first: the ticket a resort's planned days need (`meta.ticketSuggestion[]`). */
+export interface PlanTicketSuggestion {
+  /** `suggested:<resort>`, a second one `suggested:<resort>:2`. */
+  id: string;
+  resort: string;
+  product: string;
+  days: number;
+  start: string;
+  end: string;
+  /** How many days the ticket has beyond the park days, where rest days stretch the window. */
+  extraDays?: number;
+  parks: string[];
+  /** Products with an optional hopper: what it would add. */
+  hopper?: PlanHopperVerdict;
+  shopUrl?: string;
+  alternatives?: PlanTicketAlternative[];
+  /** Owned tickets of the resort that do not cover these parks. */
+  notCoveredBy?: string[];
 }
 
 /** A highlight of an evening, as the plan names it. */
@@ -152,8 +235,23 @@ export interface PlanMeta {
   objective: string;
   exact: boolean;
   relaxed?: string[];
-  /** The parks `split=auto` gave more than one visit, and how many. */
-  split?: Array<{ slug: string; visits: number; auto?: boolean }>;
+  /**
+   * The parks `split=auto` gave more than one visit, and how many; `ticket` names the owned ticket
+   * whose days the second visit uses.
+   */
+  split?: Array<{ slug: string; visits: number; auto?: boolean; ticket?: string }>;
+  warnings?: string[];
+  /** Plan first's option for the parks no owned ticket covers. */
+  ticket?: 'base' | 'hopper';
+  /** The plan-first resorts planned with the hopper. */
+  hopper?: string[];
+  tickets?: PlanOwnedTicket[];
+  ticketSuggestion?: PlanTicketSuggestion[];
+  /**
+   * With owned tickets: whether their resorts mix inside the windows, and what mixing saves per ride
+   * against keeping them in blocks (absent where `blocks` was written).
+   */
+  mixing?: { used: boolean; savedMinutesPerRide?: number };
 }
 
 /** `GET /v1/trip-regions/orlando/plan`: one entry per trip day, arrival and departure included. */
@@ -168,13 +266,15 @@ export interface TripPlan {
 
 /**
  * The `/plan` request's query, or `null` while the plan cannot be asked for: no dates yet, or a
- * problem {@link planProblem} names, which the API would answer with a 400.
+ * problem {@link planProblem} names, which the API would answer with a 400. With the catalog, a
+ * ticket the dates miss (`ticketProblem` in `plan-tickets.ts`) holds the request back as well.
  */
 export function planRequestQuery(
   state: OrlandoPlanState,
-  headliners: readonly string[]
+  headliners: readonly string[],
+  ticketBlocked = false
 ): Record<string, string> | null {
-  if (state.when || planProblem(state, headliners)) return null;
+  if (state.when || ticketBlocked || planProblem(state, headliners)) return null;
   return Object.fromEntries(planQueryEntries(state));
 }
 

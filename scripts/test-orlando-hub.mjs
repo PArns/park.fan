@@ -101,6 +101,19 @@ test('the relay forwards each route its own query names and refuses anything els
       ?.apiPath,
     '/v1/trip-regions/orlando/plan?from=2026-12-01&to=2026-12-08&parks=epcot%3A2'
   );
+  assert.equal(
+    tripRegionRelayTarget(
+      ['orlando', 'plan'],
+      q(
+        'from=2027-02-06&to=2027-02-20&tickets=wdw-date-based.4.h?@2027-02-07&hopper=universal-orlando&blocks=1'
+      )
+    )?.apiPath,
+    '/v1/trip-regions/orlando/plan?from=2027-02-06&to=2027-02-20&tickets=wdw-date-based.4.h%3F%402027-02-07&hopper=universal-orlando&blocks=1'
+  );
+  assert.equal(
+    tripRegionRelayTarget(['orlando', 'when'], q('tickets=wdw-uk-14-day-magic'))?.route,
+    'when'
+  );
   assert.equal(tripRegionRelayTarget(['orlando', 'plan'], q('foo=1')), null);
   assert.equal(tripRegionRelayTarget(['orlando', 'calendar'], q('parks=epcot')), null);
   assert.equal(

@@ -108,6 +108,50 @@ export interface TripVenue {
   notes?: string;
 }
 
+/** How a ticket hops between parks: never, as the `.h` option, or always. */
+export type TicketHopping = 'none' | 'optional' | 'included';
+
+/**
+ * One product of the region's ticket catalog, as the planner reads it: the operator's rules for its
+ * days, window and hopper. No price anywhere; `shopUrl` is the operator's shop.
+ */
+export interface TicketProduct {
+  /** Stable, the contract's key: `wdw-uk-14-day-magic`. */
+  id: string;
+  /** The operator's product name, never translated. */
+  name: string;
+  /** The {@link TripRegionGroup} key of the operator that sells it. */
+  resort: string;
+  /** `us`: sold to anyone; `intl`: by sellers abroad; `uk`: UK and Ireland residents only. */
+  markets: string[];
+  parks: string[];
+  /** The lengths on sale; `unlimited` for a pass and the products with only a window. */
+  days: { min: number; max: number } | 'unlimited';
+  /** Per length, the calendar days its use may spread over from the start (the start is day 1). */
+  windowTable?: Array<{ days: number; window: number }>;
+  /** The window of a product without a day count (SeaWorld's Four Parks: 14 days). */
+  windowDays?: number;
+  /** `start`: the date chosen at purchase; `first_use`: the first visit. */
+  anchor: 'start' | 'first_use';
+  hopping: TicketHopping;
+  /** Visits on a separate allowance that use no ticket day (the UK Magic Tickets' water parks). */
+  allowance?: { parks: string[]; visits: number | 'days' };
+  /** Parks used only on the start date: Discovery Cove's reserved day. */
+  reservedDayParks?: string[];
+  /** The start dates it is sold for; absent when no limit is known. */
+  onSale?: Array<{ from?: string; to?: string }>;
+  /** The last day a pass or Fun Card is valid. */
+  until?: string;
+  /** An annual pass or Fun Card: no day count, no window. */
+  pass?: boolean;
+  blockouts?: boolean;
+  /** The operator's page with the blockout calendar. */
+  blockoutUrl?: string;
+  /** Where passholders reserve their park. */
+  reservationUrl?: string;
+  shopUrl?: string;
+}
+
 /** `GET /v1/trip-regions/orlando`: open, a day at the edge. */
 export interface TripRegion {
   slug: string;
@@ -119,6 +163,8 @@ export interface TripRegion {
   travel: TripTravel;
   /** Evening places that are not parks; absent from an API that does not plan evenings yet. */
   venues?: TripVenue[];
+  /** The ticket catalog; absent from an API that does not plan with tickets yet. */
+  tickets?: TicketProduct[];
 }
 
 /** A park's status on a day. `UNKNOWN` past its published hours, never `CLOSED`. */

@@ -2,7 +2,8 @@
  * Unit tests for the Orlando trip planner's pure modules (`lib/orlando/plan*.ts`): the URL form a
  * link from Parky, "Copy link" and the best-time pages share, the edits (steppers, pins, swaps),
  * which codes become which sentence, the savings line, the `.ics` file, the Week and Month views'
- * geometry, and the When mode's ranges and request.
+ * geometry, the When mode's ranges and request, and tickets: `tickets=` read and written, the
+ * catalog's windows, the step's drafts, and what the answer's ticket fields say.
  *
  * Run: pnpm test:orlando-plan
  */
@@ -66,6 +67,27 @@ import {
   windowReasons,
 } from '../lib/orlando/plan-when.ts';
 import { PlanRequestError, fetchTripPlan, retryPlanRequest } from '../lib/orlando/plan-fetch.ts';
+import {
+  adoptSuggestions,
+  draftTicket,
+  entryMarket,
+  hopperGains,
+  isEveryDayTicket,
+  longStayTickets,
+  needsHogwartsHop,
+  ownedUse,
+  setTickets,
+  ticketCatalog,
+  ticketDayOf,
+  ticketDraft,
+  ticketEntries,
+  ticketProblem,
+  ticketWindow,
+  toggleHopper,
+  tripFromTickets,
+  universalUk14At,
+} from '../lib/orlando/plan-tickets.ts';
+import { readTickets, writeTicketItem } from '../lib/orlando/plan-query.ts';
 
 const cases = [];
 const test = (name, actual, expected) => cases.push({ name, actual, expected });
@@ -823,6 +845,514 @@ const keys = { parks: new Set(ORDER), areas: new Set(['disney', 'universal']) };
       rankedLower({ warnings: [] }),
     ],
     [['hurricane_peak', 'extreme_heat'], []]
+  );
+}
+
+// ── Tickets ──────────────────────────────────────────────────────────────────
+{
+  const CATALOG = ticketCatalog([
+    {
+      id: 'wdw-date-based',
+      name: 'Walt Disney World date-based theme park ticket',
+      resort: 'walt-disney-world',
+      markets: ['us', 'uk', 'intl'],
+      parks: ['magic-kingdom-park', 'epcot'],
+      days: { min: 1, max: 10 },
+      windowTable: [
+        { days: 1, window: 1 },
+        { days: 4, window: 7 },
+        { days: 10, window: 14 },
+      ],
+      anchor: 'start',
+      hopping: 'optional',
+    },
+    {
+      id: 'wdw-date-based-plus',
+      name: 'Plus',
+      resort: 'walt-disney-world',
+      markets: ['us'],
+      parks: ['magic-kingdom-park'],
+      days: { min: 2, max: 10 },
+      windowTable: [{ days: 4, window: 7 }],
+      anchor: 'start',
+      hopping: 'optional',
+    },
+    {
+      id: 'wdw-uk-14-day-magic',
+      name: 'Disney 14-Day Magic Ticket',
+      resort: 'walt-disney-world',
+      markets: ['uk'],
+      parks: ['magic-kingdom-park'],
+      days: { min: 14, max: 14 },
+      windowTable: [{ days: 14, window: 18 }],
+      anchor: 'start',
+      hopping: 'included',
+      onSale: [{ to: '2027-12-31' }],
+    },
+    {
+      id: 'wdw-annual-pass',
+      name: 'Walt Disney World Annual Pass',
+      resort: 'walt-disney-world',
+      markets: ['us'],
+      parks: ['magic-kingdom-park'],
+      days: 'unlimited',
+      anchor: 'first_use',
+      hopping: 'included',
+      pass: true,
+    },
+    {
+      id: 'uor-date-based',
+      name: 'Universal Orlando date-based ticket',
+      resort: 'universal-orlando',
+      markets: ['us', 'intl'],
+      parks: ['universal-studios-florida'],
+      days: { min: 1, max: 5 },
+      windowTable: [
+        { days: 3, window: 5 },
+        { days: 5, window: 7 },
+      ],
+      anchor: 'start',
+      hopping: 'optional',
+    },
+    {
+      id: 'uor-uk-all-parks',
+      name: 'Universal Orlando All Parks Ticket',
+      resort: 'universal-orlando',
+      markets: ['uk', 'intl'],
+      parks: ['universal-studios-florida'],
+      days: { min: 14, max: 14 },
+      windowTable: [{ days: 14, window: 14 }],
+      anchor: 'start',
+      hopping: 'included',
+      onSale: [{ to: '2026-10-19' }, { from: '2027-03-25', to: '2027-12-31' }],
+    },
+    {
+      id: 'uor-uk-three-park-adventure',
+      name: 'Universal Orlando Three Park Adventure Ticket',
+      resort: 'universal-orlando',
+      markets: ['uk', 'intl'],
+      parks: ['universal-studios-florida'],
+      days: { min: 14, max: 14 },
+      windowTable: [{ days: 14, window: 14 }],
+      anchor: 'start',
+      hopping: 'included',
+      onSale: [{ from: '2026-10-20', to: '2027-03-31' }],
+    },
+    {
+      id: 'seaworld-four-parks-14-day',
+      name: 'Four Parks',
+      resort: 'seaworld-orlando',
+      markets: ['us', 'intl'],
+      parks: ['seaworld-orlando'],
+      days: 'unlimited',
+      windowDays: 14,
+      anchor: 'first_use',
+      hopping: 'none',
+    },
+  ]);
+
+  // The URL form: the owner's case, a not-sure hopper, and lenient reading.
+  const owner = readPlanQuery(
+    q(
+      'from=2027-02-06&to=2027-02-20&tickets=wdw-uk-14-day-magic@2027-02-07,uor-uk-three-park-adventure@2027-02-07&hopper=walt-disney-world&blocks=1'
+    ),
+    { ...keys, tickets: CATALOG, resorts: new Set(['walt-disney-world', 'universal-orlando']) }
+  );
+  test(
+    'tickets=, hopper= and blocks=1 are read',
+    [owner.tickets, owner.hopper, owner.blocks],
+    [
+      [
+        { product: 'wdw-uk-14-day-magic', days: null, hopper: 'no', start: '2027-02-07' },
+        { product: 'uor-uk-three-park-adventure', days: null, hopper: 'no', start: '2027-02-07' },
+      ],
+      ['walt-disney-world'],
+      true,
+    ]
+  );
+  test(
+    'and written back as they came',
+    writePlanQuery(owner),
+    'from=2027-02-06&to=2027-02-20&blocks=1&hopper=walt-disney-world&tickets=wdw-uk-14-day-magic@2027-02-07,uor-uk-three-park-adventure@2027-02-07'
+  );
+  test(
+    'a not-sure hopper keeps its ? readable and round-trips',
+    writePlanQuery(
+      readPlanQuery(q('from=2027-02-06&to=2027-02-10&tickets=wdw-date-based.4.h?@2027-02-07'), {
+        ...keys,
+        tickets: CATALOG,
+      })
+    ),
+    'from=2027-02-06&to=2027-02-10&tickets=wdw-date-based.4.h?@2027-02-07'
+  );
+  test(
+    'an unknown product, a length not sold and a bad date each drop only their item',
+    readTickets(
+      'nope.3,wdw-date-based.12,wdw-date-based.3.h,uor-date-based@2027-02-31,wdw-annual-pass.4@2027-01-01',
+      CATALOG
+    ),
+    {
+      tickets: [
+        { product: 'wdw-date-based', days: 3, hopper: 'yes', start: null },
+        { product: 'wdw-annual-pass', days: null, hopper: 'no', start: null },
+      ],
+      dropped: 3,
+    }
+  );
+  test(
+    'a region without a catalog drops tickets and hopper, which the API would refuse',
+    [
+      readPlanQuery(q('tickets=wdw-date-based.3&hopper=walt-disney-world'), keys).tickets,
+      readPlanQuery(q('tickets=wdw-date-based.3&hopper=walt-disney-world'), keys).hopper,
+    ],
+    [[], []]
+  );
+  test(
+    'orlandoPlannerHref carries tickets for Parky and the other pages',
+    orlandoPlannerHref({
+      from: '2027-02-06',
+      to: '2027-02-20',
+      tickets: [{ product: 'uor-date-based', days: 3, hopper: 'unsure', start: '2027-02-09' }],
+    }),
+    '/orlando?from=2027-02-06&to=2027-02-20&tickets=uor-date-based.3.h?@2027-02-09#planner'
+  );
+  test(
+    'one item is written in the contract’s order',
+    writeTicketItem({ product: 'wdw-date-based', days: 4, hopper: 'yes', start: '2027-02-12' }),
+    'wdw-date-based.4.h@2027-02-12'
+  );
+
+  // Windows, every-day tickets and the UK Universal ticket by its start.
+  test(
+    'windows come from the window table, a window-only product and a pass',
+    [
+      ticketWindow(CATALOG.get('wdw-uk-14-day-magic'), { days: null, start: '2027-02-07' }),
+      ticketWindow(CATALOG.get('wdw-date-based'), { days: 4, start: '2027-02-12' }),
+      ticketWindow(CATALOG.get('seaworld-four-parks-14-day'), { days: null, start: '2027-02-07' }),
+      ticketWindow(CATALOG.get('wdw-annual-pass'), { days: null, start: '2027-02-07' }),
+    ],
+    [
+      { from: '2027-02-07', to: '2027-02-24' },
+      { from: '2027-02-12', to: '2027-02-18' },
+      { from: '2027-02-07', to: '2027-02-20' },
+      null,
+    ]
+  );
+  test(
+    'every-day tickets: Universal’s UK 14 and SeaWorld’s Four Parks, not Disney’s Magic',
+    [
+      isEveryDayTicket(CATALOG.get('uor-uk-three-park-adventure'), null),
+      isEveryDayTicket(CATALOG.get('seaworld-four-parks-14-day'), null),
+      isEveryDayTicket(CATALOG.get('wdw-uk-14-day-magic'), null),
+      isEveryDayTicket(CATALOG.get('wdw-annual-pass'), null),
+    ],
+    [true, true, false, false]
+  );
+  test(
+    'the UK Universal ticket is the one on sale at its start, both in the overlap week',
+    [
+      universalUk14At(CATALOG, '2027-02-07'),
+      universalUk14At(CATALOG, '2027-03-27'),
+      universalUk14At(CATALOG, '2027-05-01'),
+    ],
+    [
+      ['uor-uk-three-park-adventure'],
+      ['uor-uk-three-park-adventure', 'uor-uk-all-parks'],
+      ['uor-uk-all-parks'],
+    ]
+  );
+  test(
+    'the step’s tags: UK and Ireland only, sold outside the US, or none',
+    [
+      entryMarket(ticketEntries('walt-disney-world', CATALOG)[1], CATALOG),
+      entryMarket(ticketEntries('universal-orlando', CATALOG)[1], CATALOG),
+      entryMarket(ticketEntries('walt-disney-world', CATALOG)[0], CATALOG),
+    ],
+    ['uk', 'intl', null]
+  );
+  test(
+    'the lists keep only what the catalog has',
+    ticketEntries('walt-disney-world', CATALOG).map((e) => e.key),
+    ['wdw-dated', 'wdw-uk-14', 'wdw-pass', 'wdw-unsure']
+  );
+
+  // Drafts.
+  const draft = (patch) => ({
+    id: 1,
+    resort: 'universal-orlando',
+    entry: 'uor-uk-14',
+    product: null,
+    days: null,
+    hopper: null,
+    addon: false,
+    start: '2027-02-07',
+    ...patch,
+  });
+  test(
+    'the UK Universal draft resolves by its start; Volcano Bay picks All Parks in the overlap',
+    [
+      draftTicket(draft({}), CATALOG, null).ticket?.product,
+      draftTicket(draft({ start: '2027-03-27', addon: true }), CATALOG, null).ticket?.product,
+      draftTicket(draft({ start: '2028-01-05' }), CATALOG, null).issue?.kind,
+    ],
+    ['uor-uk-three-park-adventure', 'uor-uk-all-parks', 'not_on_sale']
+  );
+  test(
+    'a dated draft needs its days; an unanswered hopper plans as not sure',
+    [
+      draftTicket(draft({ resort: 'walt-disney-world', entry: 'wdw-dated' }), CATALOG, null).ticket,
+      draftTicket(
+        draft({ resort: 'walt-disney-world', entry: 'wdw-dated', days: 4 }),
+        CATALOG,
+        null
+      ).ticket,
+      draftTicket(
+        draft({ resort: 'walt-disney-world', entry: 'wdw-dated', days: 4, addon: true }),
+        CATALOG,
+        null
+      ).ticket?.product,
+    ],
+    [
+      null,
+      { product: 'wdw-date-based', days: 4, hopper: 'unsure', start: '2027-02-07' },
+      'wdw-date-based-plus',
+    ]
+  );
+  test(
+    '“Not sure which” plans the strictest product of its length',
+    [
+      draftTicket(
+        draft({ resort: 'walt-disney-world', entry: 'wdw-unsure', days: 5, hopper: 'no' }),
+        CATALOG,
+        null
+      ).ticket,
+      draftTicket(
+        draft({ resort: 'walt-disney-world', entry: 'wdw-unsure', days: 14 }),
+        CATALOG,
+        null
+      ).ticket?.product,
+      draftTicket(draft({ entry: 'uor-unsure', days: 14 }), CATALOG, null).ticket?.product,
+    ],
+    [
+      { product: 'wdw-date-based', days: 5, hopper: 'no', start: '2027-02-07' },
+      'wdw-uk-14-day-magic',
+      'uor-uk-three-park-adventure',
+    ]
+  );
+  test(
+    'a written ticket opens as its entry in the step',
+    ticketDraft(
+      { product: 'wdw-date-based-plus', days: 4, hopper: 'yes', start: null },
+      7,
+      CATALOG
+    ),
+    {
+      id: 7,
+      resort: 'walt-disney-world',
+      entry: 'wdw-dated',
+      product: 'wdw-date-based-plus',
+      days: 4,
+      hopper: 'yes',
+      addon: true,
+      start: null,
+    }
+  );
+
+  // The trip and the tickets.
+  const uk = [
+    { product: 'wdw-uk-14-day-magic', days: null, hopper: 'no', start: '2027-02-07' },
+    { product: 'uor-uk-three-park-adventure', days: null, hopper: 'no', start: '2027-02-07' },
+  ];
+  test(
+    'the tickets give the trip its dates: earliest first day to the latest window’s end',
+    [
+      tripFromTickets(uk, CATALOG),
+      tripFromTickets(
+        [{ product: 'wdw-date-based', days: 10, hopper: 'no', start: '2027-02-01' }, uk[0]],
+        CATALOG
+      ),
+    ],
+    [
+      { from: '2027-02-07', to: '2027-02-24' },
+      { from: '2027-02-01', to: '2027-02-21' },
+    ]
+  );
+  test(
+    'setTickets fills empty dates and leaves chosen ones',
+    [
+      [setTickets(DEFAULT_PLAN_STATE, uk, CATALOG, '2026-11-13')].map((s) => [s.from, s.to])[0],
+      [
+        setTickets(
+          { ...DEFAULT_PLAN_STATE, from: '2027-02-06', to: '2027-02-20' },
+          uk,
+          CATALOG,
+          '2026-11-13'
+        ),
+      ].map((s) => [s.from, s.to])[0],
+    ],
+    [
+      ['2027-02-07', '2027-02-24'],
+      ['2027-02-06', '2027-02-20'],
+    ]
+  );
+  test(
+    'a ticket the trip misses is caught before the request',
+    [
+      ticketProblem({ from: '2027-02-06', to: '2027-02-20', tickets: uk }, CATALOG),
+      ticketProblem({ from: '2027-01-10', to: '2027-01-20', tickets: [uk[0]] }, CATALOG),
+      ticketProblem(
+        {
+          from: '2027-03-10',
+          to: '2027-03-20',
+          tickets: [{ ...uk[1], start: '2027-02-01' }],
+        },
+        CATALOG
+      ),
+    ],
+    [
+      null,
+      { kind: 'after_trip', index: 0, product: 'wdw-uk-14-day-magic' },
+      { kind: 'before_trip', index: 0, product: 'uor-uk-three-park-adventure' },
+    ]
+  );
+
+  // Plan first.
+  const state = { ...DEFAULT_PLAN_STATE, from: '2027-02-08', to: '2027-02-17' };
+  test(
+    '“Show the plan with Park Hopper” switches one resort, also from an old ticket=hopper',
+    [
+      toggleHopper(state, 'walt-disney-world', ['walt-disney-world', 'universal-orlando']).hopper,
+      toggleHopper({ ...state, ticket: 'hopper' }, 'walt-disney-world', [
+        'walt-disney-world',
+        'universal-orlando',
+      ]),
+    ].map((s) => (Array.isArray(s) ? s : [s.ticket, s.hopper])),
+    [['walt-disney-world'], ['base', ['universal-orlando']]]
+  );
+  const suggestions = [
+    {
+      id: 'suggested:walt-disney-world',
+      resort: 'walt-disney-world',
+      product: 'wdw-date-based',
+      days: 4,
+      start: '2027-02-12',
+      end: '2027-02-18',
+      parks: ['magic-kingdom-park'],
+      alternatives: [{ product: 'wdw-uk-14-day-magic', reason: 'long_stay' }],
+    },
+    {
+      id: 'suggested:universal-orlando',
+      resort: 'universal-orlando',
+      product: 'uor-date-based',
+      days: 3,
+      start: '2027-02-09',
+      end: '2027-02-13',
+      parks: ['universal-studios-florida', 'universal-islands-of-adventure'],
+      alternatives: [{ product: 'uor-uk-three-park-adventure', reason: 'long_stay' }],
+    },
+  ];
+  const adopted = adoptSuggestions(
+    { ...state, hopper: ['walt-disney-world'] },
+    suggestions,
+    CATALOG
+  );
+  test(
+    '“Use these as your tickets” writes them by first day, the hopper where it was on, in blocks',
+    [writePlanQuery(adopted)],
+    [
+      'from=2027-02-08&to=2027-02-17&blocks=1&tickets=uor-date-based.3@2027-02-09,wdw-date-based.4.h@2027-02-12',
+    ]
+  );
+  test(
+    'the long stay’s 14-day tickets come without a first day',
+    longStayTickets(suggestions, CATALOG, '2027-02-08'),
+    [
+      { product: 'wdw-uk-14-day-magic', days: null, hopper: 'no', start: null },
+      { product: 'uor-uk-three-park-adventure', days: null, hopper: 'no', start: null },
+    ]
+  );
+  test(
+    'the verdict says what the hopper adds, by date, and per ride from 1 minute',
+    [
+      hopperGains({
+        recommended: true,
+        eveningHopList: [
+          { date: '2026-11-25', parks: ['disneys-animal-kingdom-theme-park', 'epcot'] },
+        ],
+        hopDayList: [{ date: '2026-11-27', parks: ['epcot', 'disneys-hollywood-studios'] }],
+        fitsOnlyWithHopper: ['epcot', 'epcot'],
+        savedMinutesPerRide: 0.4,
+        why: ['evening_hops'],
+      }),
+      hopperGains({ recommended: false, why: ['no_gain'] }),
+    ],
+    [
+      [
+        { kind: 'evening', date: '2026-11-25', park: 'epcot' },
+        { kind: 'fits', parks: ['epcot'] },
+        { kind: 'hopDay', date: '2026-11-27', parks: ['epcot', 'disneys-hollywood-studios'] },
+      ],
+      [],
+    ]
+  );
+  test(
+    'the Hogwarts Express needs both Universal parks planned',
+    [
+      needsHogwartsHop(['universal-studios-florida', 'universal-islands-of-adventure']),
+      needsHogwartsHop(['universal-studios-florida']),
+    ],
+    [true, false]
+  );
+
+  // The answer's ticket days and uses.
+  const meta = {
+    tickets: [
+      {
+        id: 't1',
+        product: 'wdw-uk-14-day-magic',
+        days: 14,
+        hopper: true,
+        start: '2027-02-07',
+        end: '2027-02-24',
+        usedDays: 7,
+        unusedDays: 7,
+        unusedReason: 'rest_days_kept',
+      },
+      {
+        id: 't2',
+        product: 'uor-uk-three-park-adventure',
+        days: 14,
+        hopper: true,
+        start: '2027-02-07',
+        end: '2027-02-20',
+        usedDays: 3,
+        windowDays: 14,
+      },
+    ],
+    ticketSuggestion: suggestions,
+  };
+  test(
+    'a day reads “Disney day 2 of 14”, an every-day ticket’s day by its window, a suggestion’s plainly',
+    [
+      ticketDayOf({ ticket: 't1', ticketDay: 2 }, meta, CATALOG),
+      ticketDayOf({ ticket: 't2', ticketDay: 10 }, meta, CATALOG),
+      ticketDayOf({ ticket: 'suggested:walt-disney-world', ticketDay: 2 }, meta, CATALOG),
+      ticketDayOf({ ticket: 't1', ticketAllowance: true }, meta, CATALOG),
+    ].map((d) => d && [d.kind, d.resort, d.day, d.of, d.everyDay]),
+    [
+      ['owned', 'walt-disney-world', 2, 14, false],
+      ['owned', 'universal-orlando', 10, 14, true],
+      ['suggested', 'walt-disney-world', 2, 4, false],
+      null,
+    ]
+  );
+  test(
+    'an owned ticket’s use: counted with its unused days, or every day of a window',
+    [ownedUse(meta.tickets[0], CATALOG), ownedUse(meta.tickets[1], CATALOG)],
+    [
+      { kind: 'counted', used: 7, days: 14, unused: 7, reason: 'rest_days_kept' },
+      { kind: 'everyDay', used: 3, window: 14 },
+    ]
   );
 }
 

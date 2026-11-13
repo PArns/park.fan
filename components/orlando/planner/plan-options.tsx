@@ -31,7 +31,7 @@ export function usePlanOptionsSummary(state: OrlandoPlanState): string {
   return [
     t(`hotelShort.${effectiveHotel(state)}`),
     area ? t('fromArea', { area: area.name }) : null,
-    state.blocks ? t('blocksOn') : t('blocksOff'),
+    state.blocks === false ? t('blocksOff') : t('blocksOn'),
     state.rest === 'none'
       ? t('restNone')
       : streak !== null
@@ -106,9 +106,9 @@ export function PlanOptions({ className }: { className?: string }) {
 
       <div className="flex flex-col">
         <PlanCheckRow
-          checked={state.blocks}
+          checked={state.blocks !== false}
           disabled={!live}
-          onChange={(blocks) => update((s) => ({ ...s, blocks }))}
+          onChange={(blocks) => update((s) => ({ ...s, blocks: blocks ? null : false }))}
           label={t('blocks')}
           hint={t('blocksHint')}
         />

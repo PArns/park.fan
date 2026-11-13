@@ -1,5 +1,5 @@
 import { orlandoPath, ORLANDO_PLANNER_ID } from './paths';
-import type { TripRegion } from './types';
+import type { TicketProduct, TripRegion } from './types';
 
 /**
  * The Orlando trip planner's state and its one URL form. The state lives in the address bar under
@@ -35,6 +35,19 @@ export interface PlanParkPick {
   visits: number | null;
 }
 
+/** Whether a ticket has the hopper option: `.h`, nothing, or `.h?` (the visitor does not know). */
+export type PlanTicketHopper = 'yes' | 'no' | 'unsure';
+
+/** One owned ticket, as `tickets=` writes it: `<product>[.<days>][.h|.h?][@<YYYY-MM-DD>]`. */
+export interface PlanTicket {
+  product: string;
+  /** The length, where the product sells several; `null` where it sells one, and for a pass. */
+  days: number | null;
+  hopper: PlanTicketHopper;
+  /** The start chosen at purchase (or the first visit); `null` leaves it to the plan. */
+  start: string | null;
+}
+
 /** A search range of the When mode, both ends included. */
 export interface PlanSearchRange {
   from: string;
@@ -61,12 +74,20 @@ export interface OrlandoPlanState {
   area: string | null;
   arrival: 'free' | 'park';
   departure: 'free' | 'park';
-  blocks: boolean;
+  /**
+   * `blocks=`: each resort's days together (`true`), mixed (`false`), or the API's default
+   * (`null`): together on plan first, and inside owned tickets' windows mixed only where it pays.
+   */
+  blocks: boolean | null;
   fireworks: 'want' | 'any';
   rest: PlanRest;
   hop: boolean;
-  /** `ticket=`: a Park Hopper (park-to-park) ticket, without which `hop` does nothing. */
+  /** `ticket=hopper`: every plan-first resort with its hopper, as older links and Parky ask. */
   ticket: 'base' | 'hopper';
+  /** `hopper=`: the plan-first resorts planned with the hopper option. */
+  hopper: string[];
+  /** `tickets=`: the tickets the visitor already has, in the order entered. */
+  tickets: PlanTicket[];
   /** `evenings=`: an evening at a second park or a venue after a park that closes early. */
   evenings: boolean;
   split: 'auto' | 'fixed';
@@ -87,6 +108,8 @@ export const MAX_DAYS_AHEAD = 365;
 export const MIN_FIND_DAYS = 3;
 /** The When mode's trip length before the visitor sets one. */
 export const DEFAULT_FIND_DAYS = 10;
+/** A plan takes at most this many owned tickets. */
+export const MAX_TICKETS = 6;
 
 /** The state before the visitor has chosen anything: the API's defaults, no dates. */
 export const DEFAULT_PLAN_STATE: OrlandoPlanState = {
@@ -100,11 +123,13 @@ export const DEFAULT_PLAN_STATE: OrlandoPlanState = {
   area: null,
   arrival: 'free',
   departure: 'free',
-  blocks: true,
+  blocks: null,
   fireworks: 'any',
   rest: 'auto',
   hop: false,
   ticket: 'base',
+  hopper: [],
+  tickets: [],
   evenings: true,
   split: 'auto',
   locks: [],
@@ -130,6 +155,8 @@ export const PLAN_QUERY_NAMES = [
   'rest',
   'hop',
   'ticket',
+  'hopper',
+  'tickets',
   'evenings',
   'split',
   'lock',
@@ -152,14 +179,93 @@ export function isPlanDate(value: string | null | undefined): value is string {
 export interface PlanRegionKeys {
   parks: ReadonlySet<string>;
   areas: ReadonlySet<string>;
+  /**
+   * The ticket catalog by id, and the resorts `hopper=` may name. Without them (an API that does
+   * not plan with tickets yet) a link's `tickets` and `hopper` are dropped, since the API would
+   * answer both with a 400.
+   */
+  tickets?: ReadonlyMap<string, TicketProduct>;
+  resorts?: ReadonlySet<string>;
 }
 
-/** The slugs and hotel areas a link may name, from the region the page rendered. */
-export function planRegionKeys(region: Pick<TripRegion, 'parks' | 'hotelAreas'>): PlanRegionKeys {
+/** The slugs, hotel areas, tickets and resorts a link may name, from the region the page rendered. */
+export function planRegionKeys(
+  region: Pick<TripRegion, 'parks' | 'hotelAreas' | 'groups' | 'tickets'>
+): PlanRegionKeys {
   return {
     parks: new Set(region.parks.map((p) => p.slug)),
     areas: new Set(region.hotelAreas.map((a) => a.key)),
+    ...(region.tickets && {
+      tickets: new Map(region.tickets.map((t) => [t.id, t])),
+      resorts: new Set(region.groups.filter((g) => g.kind === 'resort').map((g) => g.key)),
+    }),
   };
+}
+
+const TICKET_PRODUCT = /^[a-z0-9-]+$/;
+
+/**
+ * One `tickets=` item, or `null` where it cannot be read. With the product from the catalog the item
+ * is checked against it: an unknown product or a length it does not sell drops the item, a hopper
+ * flag the product cannot take is dropped from it, and a length or a date on a pass goes.
+ */
+export function readTicketItem(text: string, product?: TicketProduct | null): PlanTicket | null {
+  const [head, date, extra] = text.split('@');
+  if (extra !== undefined || (date !== undefined && !isPlanDate(date))) return null;
+  const [id, ...flags] = (head ?? '').split('.');
+  if (!id || !TICKET_PRODUCT.test(id) || product === null) return null;
+  let days: number | null = null;
+  let hopper: PlanTicketHopper = 'no';
+  for (const f of flags) {
+    if (/^[1-9]\d?$/.test(f) && days === null) days = Number(f);
+    else if (f === 'h' || f === 'h?') hopper = f === 'h' ? 'yes' : 'unsure';
+    else return null;
+  }
+  const item: PlanTicket = { product: id, days, hopper, start: date ?? null };
+  if (!product) return item;
+  if (product.days === 'unlimited' || product.pass) {
+    item.days = null;
+    if (product.pass) item.start = null;
+  } else if (product.days.min === product.days.max) {
+    if (days !== null && days !== product.days.min) return null;
+    item.days = null;
+  } else if (days === null || days < product.days.min || days > product.days.max) {
+    return null;
+  }
+  if (product.hopping !== 'optional') item.hopper = 'no';
+  return item;
+}
+
+/** One ticket in its URL form, the flags in the contract's order. */
+export function writeTicketItem(item: PlanTicket): string {
+  return [
+    item.product,
+    item.days !== null ? `.${item.days}` : '',
+    item.hopper === 'yes' ? '.h' : item.hopper === 'unsure' ? '.h?' : '',
+    item.start ? `@${item.start}` : '',
+  ].join('');
+}
+
+/**
+ * A link's `tickets` read leniently, one item at a time, at most {@link MAX_TICKETS}; `dropped`
+ * counts the items that could not be read, so the planner can say one was left out.
+ */
+export function readTickets(
+  value: string | null,
+  catalog?: ReadonlyMap<string, TicketProduct>
+): { tickets: PlanTicket[]; dropped: number } {
+  const tickets: PlanTicket[] = [];
+  let dropped = 0;
+  for (const part of (value ?? '').split(',')) {
+    if (!part) continue;
+    const item = readTicketItem(
+      part,
+      catalog ? (catalog.get(part.split(/[.@]/)[0]) ?? null) : undefined
+    );
+    if (item && tickets.length < MAX_TICKETS) tickets.push(item);
+    else dropped += 1;
+  }
+  return { tickets, dropped };
 }
 
 const flag = (value: string | null): boolean | null =>
@@ -178,7 +284,7 @@ export interface QueryReader {
  * `fireworks=any`.
  */
 export function readPlanQuery(query: QueryReader, keys?: PlanRegionKeys): OrlandoPlanState {
-  const state: OrlandoPlanState = { ...DEFAULT_PLAN_STATE, locks: [] };
+  const state: OrlandoPlanState = { ...DEFAULT_PLAN_STATE, hopper: [], tickets: [], locks: [] };
 
   const from = query.get('from');
   const to = query.get('to');
@@ -227,9 +333,18 @@ export function readPlanQuery(query: QueryReader, keys?: PlanRegionKeys): Orland
 
   if (query.get('arrival') === 'park') state.arrival = 'park';
   if (query.get('departure') === 'park') state.departure = 'park';
-  state.blocks = flag(query.get('blocks')) ?? DEFAULT_PLAN_STATE.blocks;
+  state.blocks = flag(query.get('blocks'));
   state.hop = flag(query.get('hop')) ?? DEFAULT_PLAN_STATE.hop;
   if (query.get('ticket') === 'hopper') state.ticket = 'hopper';
+  // A region read without a catalog means an API that would answer both with a 400.
+  if (!keys || keys.tickets) {
+    state.tickets = readTickets(query.get('tickets'), keys?.tickets).tickets;
+    for (const resort of (query.get('hopper') ?? '').split(',')) {
+      if (!SLUG.test(resort) || state.hopper.includes(resort)) continue;
+      if (keys?.resorts && !keys.resorts.has(resort)) continue;
+      state.hopper.push(resort);
+    }
+  }
   state.evenings = flag(query.get('evenings')) ?? DEFAULT_PLAN_STATE.evenings;
 
   const fireworks = query.get('fireworks');
@@ -300,12 +415,14 @@ export function planQueryEntries(state: OrlandoPlanState): Array<[string, string
   if (state.area) out.push(['area', state.area]);
   if (state.arrival === 'park') out.push(['arrival', 'park']);
   if (state.departure === 'park') out.push(['departure', 'park']);
-  if (!state.blocks) out.push(['blocks', '0']);
+  if (state.blocks !== null) out.push(['blocks', state.blocks ? '1' : '0']);
   if (state.fireworks === 'want') out.push(['fireworks', 'want']);
   const rest = restValue(state.rest);
   if (rest) out.push(['rest', rest]);
   if (state.hop) out.push(['hop', '1']);
   if (state.ticket === 'hopper') out.push(['ticket', 'hopper']);
+  if (state.hopper.length > 0) out.push(['hopper', state.hopper.join(',')]);
+  if (state.tickets.length > 0) out.push(['tickets', state.tickets.map(writeTicketItem).join(',')]);
   if (!state.evenings) out.push(['evenings', '0']);
   if (state.split === 'fixed') out.push(['split', 'fixed']);
   if (state.locks.length > 0 && !state.when) {
@@ -315,15 +432,19 @@ export function planQueryEntries(state: OrlandoPlanState): Array<[string, string
 }
 
 /**
- * The query string for the address bar, `''` for the untouched state. Commas, colons and `@` stay
- * readable: `URLSearchParams` would encode them, and a link Parky prints should look like the one
- * the page writes.
+ * The query string for the address bar, `''` for the untouched state. Commas, colons, `@` and the
+ * `?` of `.h?` stay readable: `URLSearchParams` would encode them, and a link Parky prints should
+ * look like the one the page writes.
  */
 export function writePlanQuery(state: OrlandoPlanState): string {
   return planQueryEntries(state)
     .map(
       ([k, v]) =>
-        `${k}=${encodeURIComponent(v).replace(/%2C/g, ',').replace(/%3A/g, ':').replace(/%40/g, '@')}`
+        `${k}=${encodeURIComponent(v)
+          .replace(/%2C/g, ',')
+          .replace(/%3A/g, ':')
+          .replace(/%40/g, '@')
+          .replace(/%3F/g, '?')}`
     )
     .join('&');
 }
@@ -365,6 +486,8 @@ export function orlandoPlannerHref(
     ...DEFAULT_PLAN_STATE,
     ...input,
     parks: parks && parks.length > 0 ? parks : null,
+    hopper: [...(input.hopper ?? [])],
+    tickets: (input.tickets ?? []).slice(0, MAX_TICKETS).map((t) => ({ ...t })),
     locks: [...(input.locks ?? [])],
   });
   return planHref(path, state, ORLANDO_PLANNER_ID);

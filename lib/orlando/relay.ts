@@ -25,6 +25,8 @@ const RELAY_QUERY: Record<string, readonly string[]> = {
     'rest',
     'hop',
     'ticket',
+    'hopper',
+    'tickets',
     'evenings',
     'split',
     'lock',
@@ -44,6 +46,8 @@ const RELAY_QUERY: Record<string, readonly string[]> = {
     'rest',
     'hop',
     'ticket',
+    'hopper',
+    'tickets',
     'evenings',
     'split',
     'within',
@@ -53,11 +57,11 @@ const RELAY_QUERY: Record<string, readonly string[]> = {
 };
 
 /**
- * A value the relay passes on: dates, slugs with `:n`, pins with `@`, `max:3`. Anything else is a
- * 400 here, before a percent-decoded character can reach the upstream URL. A `within` code is
- * a region code such as `DE-NW` or `NL-GR`, which the same characters cover.
+ * A value the relay passes on: dates, slugs with `:n`, pins with `@`, `max:3`, tickets with `.4.h?`.
+ * Anything else is a 400 here, before a percent-decoded character can reach the upstream URL. A
+ * `within` code is a region code such as `DE-NW` or `NL-GR`, which the same characters cover.
  */
-const RELAY_VALUE = /^[a-z0-9_:,@.-]{1,1000}$/i;
+const RELAY_VALUE = /^[a-z0-9_:,@.?-]{1,1000}$/i;
 
 /**
  * The region the open route is cached a day for, the API's own window, and an hour for the keyed
