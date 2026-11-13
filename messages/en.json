@@ -392,12 +392,12 @@
     "metaDescriptionPlain": "Which park on which day at Walt Disney World, Universal with Epic Universe and SeaWorld, and a planner that puts your parks on your dates.",
     "metaDescriptionMonth": "Quietest Orlando days in {month}: {verdict}. Every park day by day, Epic Universe included.",
     "metaDescriptionMonthPlain": "Orlando in {month}, day by day: the shortest lines at Disney World, Universal with Epic Universe, SeaWorld and the day trips.",
-    "lead": "Eight theme parks and four water parks, and EPCOT to Universal Studios is a 25-minute drive without traffic.",
+    "lead": "With one hotel room in Orlando, you've got eight theme parks and four water parks on your doorstep.",
     "leadMonth": "Which park has the shortest lines on which day of {month}, at Walt Disney World, Universal with Epic Universe, SeaWorld and the day trips.",
     "scroll": "To the calendar",
     "introLabel": "How to read the calendar",
     "intro": "Each square is one park on one day. The number is the wait we expect at that park's big rides at the busiest time of day, and it's what you compare parks by. The colour marks how that day compares with a typical day at the same park.",
-    "opening": "From a hotel in Lake Buena Vista, each of the eight theme parks is under half an hour away on clear roads, the ferry or monorail to Magic Kingdom included. LEGOLAND in Winter Haven is just under an hour's drive, Busch Gardens and Adventure Island in Tampa about an hour and a half. Add Discovery Cove and that's sixteen parks within reach of one hotel room, every one of them in the calendar day by day.",
+    "opening": "Without traffic, EPCOT to Universal Studios is a 25-minute drive, and from a hotel in Lake Buena Vista each of the eight theme parks is under half an hour away, Magic Kingdom's ferry or monorail included. LEGOLAND in Winter Haven is just under an hour, Busch Gardens and Adventure Island in Tampa about an hour and a half. Those three, Discovery Cove and the four water parks make sixteen, and you won't change hotels for any of them. The calendar below has all sixteen, day by day.",
     "nextDays": "Next 30 days",
     "lastYearBanner": "Our forecast reaches {date}. The days after it show the same weekday last year as we measured it, marked “last year”.",
     "lastYearBannerNoDate": "Some of these days are past our forecast. They show the same weekday last year as we measured it, marked “last year”.",
@@ -572,11 +572,11 @@
       },
       "error": {
         "title": "How close does it get?",
-        "body": "How far a forecast can be off depends on how far ahead the day is. Once you plan a trip, you'll find next to the result how many minutes the forecast for one ride on one day can be off. Waits are rounded to five minutes, so days within five minutes count as equal here, and each park's best days are a set, not a ranking."
+        "body": "The further ahead the day, the further off the forecast can be. Once you plan a trip, you'll find next to the result how many minutes the forecast for one ride on one day can be off. Waits are rounded to five minutes, so days within five minutes count as equal here, and each park's best days are a set, not a ranking."
       },
       "travel": {
         "title": "How are the drive times calculated?",
-        "body": "Each drive time is a drive without traffic to the car park. Magic Kingdom's car park is the Transportation and Ticket Center, and the monorail or the ferry takes about another 15 minutes to the gate. For Volcano Bay you park in Universal's garages and take the shuttle, about another 15 minutes. Map data: {attribution}."
+        "body": "Each drive time is by car without traffic, to the car park. Magic Kingdom's car park is the Transportation and Ticket Center, and the monorail or the ferry takes about another 15 minutes to the gate. For Volcano Bay you park in Universal's garages and take the shuttle, about another 15 minutes. Map data: {attribution}."
       },
       "links": "The model behind it: <fancast>Fancast</fancast>. Everything else: <howto>how park.fan works</howto>."
     },
@@ -2365,8 +2365,8 @@
     },
     "intro": {
       "lead": "Every figure here is the big rides' wait at their busiest: each headliner's peak of the day, averaged over the parks of the trip.",
-      "body": "We score a trip the way the trip planner does, with each park on its best day, and a day that closes early for day guests counts as a worse one. The forecast runs to {date}. After that the page shows the same weeks last year as we measured them, marked “last year”.",
-      "bodyForecast": "We score a trip the way the trip planner does, with each park on its best day, and a day that closes early for day guests counts as a worse one. Every figure on this page is our forecast."
+      "body": "We score a trip the way the trip planner does: each park on its best day, and a day that closes early for day guests counts as a worse one. The forecast runs to {date}. After that the page shows the same weeks last year as we measured them, marked “last year”.",
+      "bodyForecast": "We score a trip the way the trip planner does: each park on its best day, and a day that closes early for day guests counts as a worse one. Every figure on this page is our forecast."
     },
     "strip": {
       "title": "The year at a glance",
@@ -2445,13 +2445,13 @@
       },
       "quietA": "The {days}-day trip from {date} has the shortest lines: the big rides about {minutes} min at their busiest, {percent}% below the {year} average. Next come {others}.",
       "christmasQ": "Is Christmas busy?",
-      "christmasA": "{busy, select, yes {Yes.} other {Not much more than usual.}} Christmas week ({date}) runs at about {minutes} min at the big rides, against {average} min across {year}.",
-      "newYearA": "{busy, select, yes {Yes, as far as our figures go.} other {Not much more than usual, as far as our figures go.}} They start with the week around New Year ({date}) at about {minutes} min at the big rides, against {average} min across {year}. Christmas week itself comes before that.",
+      "christmasA": "{busy, select, yes {Yes.} other {No.}} Christmas week ({date}) runs at about {minutes} min at the big rides, against {average} min across {year}.",
+      "newYearA": "{busy, select, yes {Yes, as far as our figures go.} other {No, as far as our figures go.}} They start with the week around New Year ({date}) at about {minutes} min at the big rides, against {average} min across {year}. Christmas week itself comes before that.",
       "partyQ": "When are the party nights?",
       "partyA": "{list}. On those evenings the park closes early for day guests, which is why the trip planner keeps your full park days off them.",
       "partyItem": "{name} ({park}): {dates}, {status}",
       "hurricaneQ": "What about hurricane season?",
-      "hurricaneA": "It runs from 1 June to 30 November. Whether a storm hits your trip can only be told a few days ahead, once it has formed and been named. In a usual year the most rain falls in {months}, about {rain} mm a month (the average for {period}).",
+      "hurricaneA": "It runs from 1 June to 30 November. Whether a storm hits your trip you'll only know a few days ahead, once it has formed and been named. In a usual year the most rain falls in {months}, about {rain} mm a month (the average for {period}).",
       "firstQ": {
         "orlando": "Disney or Universal first?",
         "disney-world": "Which Disney park should come first?",

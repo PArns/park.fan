@@ -392,12 +392,12 @@
     "metaDescriptionPlain": "Quale parco in quale giorno a Walt Disney World, da Universal con Epic Universe e a SeaWorld, e un pianificatore che mette i tuoi parchi nelle tue date.",
     "metaDescriptionMonth": "I giorni più tranquilli a Orlando a {month}: {verdict}. Ogni parco giorno per giorno, con Epic Universe.",
     "metaDescriptionMonthPlain": "Orlando a {month}, giorno per giorno: dove le code sono più corte a Disney World, da Universal con Epic Universe, a SeaWorld e nelle gite.",
-    "lead": "Otto parchi a tema, quattro parchi acquatici e 25 minuti d’auto senza traffico tra EPCOT e Universal Studios.",
+    "lead": "Con una sola camera d’albergo a Orlando hai otto parchi a tema e quattro parchi acquatici a due passi.",
     "leadMonth": "Quale parco ha le code più corte in quale giorno di {month}: Walt Disney World, Universal con Epic Universe, SeaWorld e le gite in giornata.",
     "scroll": "Al calendario",
     "introLabel": "Come leggere il calendario",
     "intro": "Ogni casella è un parco in un giorno. Il numero è l’attesa che prevediamo alle grandi attrazioni di quel parco nell’ora di punta, ed è su questo che confronti i parchi. Dal colore capisci com’è quel giorno rispetto a un giorno normale dello stesso parco.",
-    "opening": "Da un hotel a Lake Buena Vista, a strada libera, raggiungi ognuno degli otto parchi a tema in meno di mezz’ora, traghetto o monorotaia per il Magic Kingdom compresi. LEGOLAND, a Winter Haven, è a poco meno di un’ora d’auto, Busch Gardens e Adventure Island, a Tampa, a un’ora e mezza circa. Con Discovery Cove fanno sedici parchi, tutti raggiungibili dalla stessa camera d’albergo e tutti nel calendario, giorno per giorno.",
+    "opening": "Senza traffico, da EPCOT a Universal Studios ci vogliono 25 minuti d’auto, e da un hotel a Lake Buena Vista ognuno degli otto parchi a tema è a meno di mezz’ora, per il Magic Kingdom traghetto o monorotaia compresi. LEGOLAND, a Winter Haven, è a poco meno di un’ora, e Busch Gardens e Adventure Island, a Tampa, sono a circa un’ora e mezza. Con questi tre, Discovery Cove e i quattro parchi acquatici fanno sedici, e per nessuno devi cambiare albergo. Nel calendario qui sotto ci sono tutti e sedici, giorno per giorno.",
     "nextDays": "Prossimi 30 giorni",
     "lastYearBanner": "La nostra previsione arriva fino al {date}. I giorni successivi mostrano lo stesso giorno della settimana dell’anno scorso, come l’abbiamo misurato, con la nota «anno scorso».",
     "lastYearBannerNoDate": "Alcuni di questi giorni vanno oltre la nostra previsione. Mostrano lo stesso giorno della settimana dell’anno scorso, come l’abbiamo misurato, con la nota «anno scorso».",
@@ -572,11 +572,11 @@
       },
       "error": {
         "title": "Quanto è precisa?",
-        "body": "Di quanto può sbagliare una previsione dipende da quanto è lontano il giorno. Quando pianifichi un viaggio, accanto al risultato trovi di quanti minuti può sbagliare la previsione per un’attrazione in un giorno. Le attese sono arrotondate a cinque minuti, quindi qui i giorni entro cinque minuti contano come uguali, e i giorni migliori di un parco sono un gruppo, non una classifica."
+        "body": "Più il giorno è lontano, più la previsione può sbagliare. Quando pianifichi un viaggio, accanto al risultato trovi di quanti minuti può sbagliare la previsione per un’attrazione in un giorno. Le attese sono arrotondate a cinque minuti, quindi qui i giorni entro cinque minuti contano come uguali, e i giorni migliori di un parco sono un gruppo, non una classifica."
       },
       "travel": {
         "title": "Come si calcolano i tempi di viaggio?",
-        "body": "Ogni tempo di viaggio è un tragitto in auto senza traffico fino al parcheggio. Il parcheggio del Magic Kingdom è il Transportation and Ticket Center, e da lì monorotaia o traghetto impiegano ancora circa 15 minuti fino all’ingresso. Per Volcano Bay parcheggi nei garage di Universal e prendi la navetta, circa 15 minuti in più. Dati cartografici: {attribution}."
+        "body": "Ogni tempo di viaggio vale per l’auto senza traffico, fino al parcheggio. Il parcheggio del Magic Kingdom è il Transportation and Ticket Center, e da lì monorotaia o traghetto impiegano ancora circa 15 minuti fino all’ingresso. Per Volcano Bay parcheggi nei garage di Universal e prendi la navetta, circa 15 minuti in più. Dati cartografici: {attribution}."
       },
       "links": "Il modello dietro: <fancast>Fancast</fancast>. Tutto il resto: <howto>come funziona park.fan</howto>."
     },
@@ -2365,8 +2365,8 @@
     },
     "intro": {
       "lead": "Ogni cifra qui è l’attesa delle grandi attrazioni nel momento di punta: il picco del giorno di ogni attrazione principale, in media sui parchi del viaggio.",
-      "body": "Valutiamo un viaggio come il pianificatore di viaggio, ogni parco nel suo giorno migliore, e un giorno in cui chi entra in giornata deve uscire prima conta come un giorno peggiore. La previsione arriva al {date}. Oltre, la pagina mostra le stesse settimane dell’anno scorso come le abbiamo misurate, segnate con «anno scorso».",
-      "bodyForecast": "Valutiamo un viaggio come il pianificatore di viaggio, ogni parco nel suo giorno migliore, e un giorno in cui chi entra in giornata deve uscire prima conta come un giorno peggiore. Ogni cifra di questa pagina è la nostra previsione."
+      "body": "Valutiamo un viaggio come il pianificatore di viaggio: ogni parco nel suo giorno migliore, e un giorno in cui chi entra in giornata deve uscire prima conta come un giorno peggiore. La previsione arriva al {date}. Oltre, la pagina mostra le stesse settimane dell’anno scorso come le abbiamo misurate, segnate con «anno scorso».",
+      "bodyForecast": "Valutiamo un viaggio come il pianificatore di viaggio: ogni parco nel suo giorno migliore, e un giorno in cui chi entra in giornata deve uscire prima conta come un giorno peggiore. Ogni cifra di questa pagina è la nostra previsione."
     },
     "strip": {
       "title": "L’anno a colpo d’occhio",
@@ -2445,8 +2445,8 @@
       },
       "quietA": "Il viaggio di {days} giorni dal {date} ha le code più corte: circa {minutes} min alle grandi attrazioni nel momento di punta, il {percent}% sotto la media del {year}. Seguono {others}.",
       "christmasQ": "A Natale c’è tanta gente?",
-      "christmasA": "{busy, select, yes {Sì.} other {Non molto più del solito.}} La settimana di Natale ({date}) sta intorno ai {minutes} min alle grandi attrazioni, contro una media di {average} min nel {year}.",
-      "newYearA": "{busy, select, yes {Sì, fin dove arrivano le nostre cifre.} other {Non molto più del solito, fin dove arrivano le nostre cifre.}} Cominciano con la settimana di Capodanno ({date}), intorno ai {minutes} min alle grandi attrazioni, contro una media di {average} min nel {year}. La settimana di Natale viene prima.",
+      "christmasA": "{busy, select, yes {Sì.} other {No.}} La settimana di Natale ({date}) sta intorno ai {minutes} min alle grandi attrazioni, contro una media di {average} min nel {year}.",
+      "newYearA": "{busy, select, yes {Sì, fin dove arrivano le nostre cifre.} other {No, fin dove arrivano le nostre cifre.}} Cominciano con la settimana di Capodanno ({date}), intorno ai {minutes} min alle grandi attrazioni, contro una media di {average} min nel {year}. La settimana di Natale viene prima.",
       "partyQ": "Quando sono le serate di festa?",
       "partyA": "{list}. In quelle sere il parco chiude prima per chi entra in giornata; per questo il pianificatore non ci mette le tue giornate intere al parco.",
       "partyItem": "{name} ({park}): {dates}, {status}",

@@ -392,12 +392,12 @@
     "metaDescriptionPlain": "Qué parque qué día en Walt Disney World, en Universal con Epic Universe y en SeaWorld, y un planificador que pone tus parques en tus fechas.",
     "metaDescriptionMonth": "Los días más tranquilos de Orlando en {month}: {verdict}. Cada parque día a día, con Epic Universe.",
     "metaDescriptionMonthPlain": "Orlando en {month}, día a día: dónde son más cortas las colas en Disney World, en Universal con Epic Universe, en SeaWorld y en las excursiones.",
-    "lead": "Ocho parques temáticos, cuatro acuáticos y 25 minutos en coche sin tráfico de EPCOT a Universal Studios.",
+    "lead": "Con una sola habitación de hotel en Orlando tienes ocho parques temáticos y cuatro acuáticos a la puerta.",
     "leadMonth": "Qué parque tiene las colas más cortas qué día de {month}: Walt Disney World, Universal con Epic Universe, SeaWorld y las excursiones.",
     "scroll": "Al calendario",
     "introLabel": "Cómo leer el calendario",
     "intro": "Cada casilla es un parque en un día. El número es la espera que prevemos en las grandes atracciones de ese parque a la hora de más gente, y es con él con lo que comparas los parques. Por el color sabes cómo es ese día frente a un día normal del mismo parque.",
-    "opening": "Desde un hotel en Lake Buena Vista, con la carretera despejada, llegas a cualquiera de los ocho parques temáticos en menos de media hora, contando el ferri o el monorraíl hasta Magic Kingdom. LEGOLAND, en Winter Haven, queda a algo menos de una hora en coche, y Busch Gardens y Adventure Island, en Tampa, a hora y media más o menos. Con Discovery Cove son dieciséis parques, todos al alcance desde la misma habitación de hotel y todos en el calendario, día a día.",
+    "opening": "Sin tráfico, de EPCOT a Universal Studios se tarda 25 minutos en coche, y desde un hotel en Lake Buena Vista cualquiera de los ocho parques temáticos queda a menos de media hora, con el ferri o el monorraíl incluidos en el caso de Magic Kingdom. LEGOLAND, en Winter Haven, está a algo menos de una hora, y Busch Gardens y Adventure Island, en Tampa, están a una hora y media más o menos. Con esos tres, Discovery Cove y los cuatro parques acuáticos son dieciséis, y por ninguno tienes que cambiar de hotel. En el calendario de abajo están los dieciséis, día a día.",
     "nextDays": "Próximos 30 días",
     "lastYearBanner": "Nuestra previsión llega hasta el {date}. Los días siguientes muestran el mismo día de la semana del año pasado, tal como lo medimos, con la nota «año pasado».",
     "lastYearBannerNoDate": "Algunos de estos días quedan más allá de nuestra previsión. Muestran el mismo día de la semana del año pasado, tal como lo medimos, con la nota «año pasado».",
@@ -572,11 +572,11 @@
       },
       "error": {
         "title": "¿Cuánto acierta?",
-        "body": "Cuánto puede fallar una previsión depende de lo lejos que esté el día. Cuando planificas un viaje, junto al resultado ves en cuántos minutos puede fallar la previsión para una atracción en un día. Las esperas se redondean a cinco minutos, así que aquí los días con menos de cinco minutos de diferencia cuentan como iguales, y los mejores días de un parque son un grupo, no una clasificación."
+        "body": "Cuanto más lejos está el día, más puede fallar la previsión. Cuando planificas un viaje, junto al resultado ves en cuántos minutos puede fallar la previsión para una atracción en un día. Las esperas se redondean a cinco minutos, así que aquí los días con menos de cinco minutos de diferencia cuentan como iguales, y los mejores días de un parque son un grupo, no una clasificación."
       },
       "travel": {
         "title": "¿Cómo se calculan los trayectos?",
-        "body": "Cada trayecto es un recorrido en coche sin tráfico hasta el aparcamiento. El aparcamiento de Magic Kingdom es el Transportation and Ticket Center, y desde allí el monorraíl o el ferri tardan unos 15 minutos más hasta la entrada. Para Volcano Bay aparcas en los aparcamientos de Universal y tomas la lanzadera, unos 15 minutos más. Datos del mapa: {attribution}."
+        "body": "Cada trayecto es en coche sin tráfico, hasta el aparcamiento. El aparcamiento de Magic Kingdom es el Transportation and Ticket Center, y desde allí el monorraíl o el ferri tardan unos 15 minutos más hasta la entrada. Para Volcano Bay aparcas en los aparcamientos de Universal y tomas la lanzadera, unos 15 minutos más. Datos del mapa: {attribution}."
       },
       "links": "El modelo que hay detrás: <fancast>Fancast</fancast>. Todo lo demás: <howto>cómo funciona park.fan</howto>."
     },
@@ -2365,8 +2365,8 @@
     },
     "intro": {
       "lead": "Cada cifra es la espera de las grandes atracciones en su momento de más gente: el pico del día de cada atracción estrella, en media sobre los parques del viaje.",
-      "body": "Valoramos un viaje como el planificador de viajes, cada parque en su mejor día, y un día en que los visitantes de día tienen que salir antes cuenta como un día peor. La previsión llega hasta el {date}. A partir de ahí la página muestra las mismas semanas del año pasado tal como las medimos, marcadas como «año pasado».",
-      "bodyForecast": "Valoramos un viaje como el planificador de viajes, cada parque en su mejor día, y un día en que los visitantes de día tienen que salir antes cuenta como un día peor. Todas las cifras de esta página son nuestra previsión."
+      "body": "Valoramos un viaje como el planificador de viajes: cada parque en su mejor día, y un día en que los visitantes de día tienen que salir antes cuenta como un día peor. La previsión llega hasta el {date}. A partir de ahí la página muestra las mismas semanas del año pasado tal como las medimos, marcadas como «año pasado».",
+      "bodyForecast": "Valoramos un viaje como el planificador de viajes: cada parque en su mejor día, y un día en que los visitantes de día tienen que salir antes cuenta como un día peor. Todas las cifras de esta página son nuestra previsión."
     },
     "strip": {
       "title": "El año de un vistazo",
@@ -2445,8 +2445,8 @@
       },
       "quietA": "El viaje de {days} días desde el {date} tiene las colas más cortas: unos {minutes} min en las grandes atracciones en su momento de más gente, un {percent} % por debajo de la media de {year}. Le siguen {others}.",
       "christmasQ": "¿Hay mucha gente en Navidad?",
-      "christmasA": "{busy, select, yes {Sí.} other {No mucho más que de costumbre.}} La semana de Navidad ({date}) ronda los {minutes} min en las grandes atracciones, frente a {average} min de media en {year}.",
-      "newYearA": "{busy, select, yes {Sí, hasta donde llegan nuestras cifras.} other {No mucho más que de costumbre, hasta donde llegan nuestras cifras.}} Empiezan con la semana de Año Nuevo ({date}), con unos {minutes} min en las grandes atracciones, frente a {average} min de media en {year}. La semana de Navidad cae antes.",
+      "christmasA": "{busy, select, yes {Sí.} other {No.}} La semana de Navidad ({date}) ronda los {minutes} min en las grandes atracciones, frente a {average} min de media en {year}.",
+      "newYearA": "{busy, select, yes {Sí, hasta donde llegan nuestras cifras.} other {No, hasta donde llegan nuestras cifras.}} Empiezan con la semana de Año Nuevo ({date}), con unos {minutes} min en las grandes atracciones, frente a {average} min de media en {year}. La semana de Navidad cae antes.",
       "partyQ": "¿Cuándo son las noches de fiesta?",
       "partyA": "{list}. Esas noches el parque cierra antes para los visitantes de día; por eso el planificador no pone tus días completos de parque en ellas.",
       "partyItem": "{name} ({park}): {dates}, {status}",

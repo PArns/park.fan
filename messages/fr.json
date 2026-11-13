@@ -392,12 +392,12 @@
     "metaDescriptionPlain": "Quel parc quel jour à Walt Disney World, chez Universal avec Epic Universe et à SeaWorld, et un planificateur qui place tes parcs sur tes dates.",
     "metaDescriptionMonth": "Les jours les plus calmes à Orlando en {month} : {verdict}. Chaque parc jour par jour, Epic Universe compris.",
     "metaDescriptionMonthPlain": "Orlando en {month}, jour par jour : où les files sont les plus courtes à Disney World, chez Universal avec Epic Universe, à SeaWorld et en excursion.",
-    "lead": "Huit parcs à thème, quatre parcs aquatiques, et 25 minutes de voiture sans trafic entre EPCOT et Universal Studios.",
+    "lead": "Avec une seule chambre d’hôtel à Orlando, tu as huit parcs à thème et quatre parcs aquatiques à ta porte.",
     "leadMonth": "Quel parc a les files les plus courtes quel jour de {month} : Walt Disney World, Universal avec Epic Universe, SeaWorld et les excursions.",
     "scroll": "Vers le calendrier",
     "introLabel": "Comment lire le calendrier",
     "intro": "Chaque case est un parc un jour donné. Le chiffre est l’attente que nous prévoyons aux grandes attractions de ce parc au moment le plus chargé de la journée, et c’est lui qui sert à comparer les parcs. La couleur indique comment ce jour se situe par rapport à un jour ordinaire du même parc.",
-    "opening": "Depuis un hôtel de Lake Buena Vista, tu rejoins chacun des huit parcs à thème en moins d’une demi-heure sur route dégagée, ferry ou monorail compris pour Magic Kingdom. LEGOLAND, à Winter Haven, est à un peu moins d’une heure de route, Busch Gardens et Adventure Island, à Tampa, à une heure et demie environ. Avec Discovery Cove, cela fait seize parcs, tous à portée de la même chambre d’hôtel et tous dans le calendrier, jour par jour.",
+    "opening": "Sans trafic, il faut 25 minutes de voiture d’EPCOT à Universal Studios, et depuis un hôtel de Lake Buena Vista, chacun des huit parcs à thème est à moins d’une demi-heure, ferry ou monorail compris pour Magic Kingdom. LEGOLAND, à Winter Haven, est à un peu moins d’une heure, et Busch Gardens et Adventure Island, à Tampa, sont à environ une heure et demie. Avec ces trois-là, Discovery Cove et les quatre parcs aquatiques, cela fait seize parcs, et aucun ne t’oblige à changer d’hôtel. Tous les seize figurent dans le calendrier ci-dessous, jour par jour.",
     "nextDays": "30 prochains jours",
     "lastYearBanner": "Notre prévision va jusqu’au {date}. Les jours suivants montrent le même jour de la semaine l’an dernier, tel que nous l’avons mesuré, avec la mention « l’an dernier ».",
     "lastYearBannerNoDate": "Certains de ces jours dépassent notre prévision. Ils montrent le même jour de la semaine l’an dernier, tel que nous l’avons mesuré, avec la mention « l’an dernier ».",
@@ -572,11 +572,11 @@
       },
       "error": {
         "title": "Quelle est sa précision ?",
-        "body": "L’écart possible d’une prévision dépend de l’éloignement du jour. Dès que tu planifies un voyage, tu trouves à côté du résultat de combien de minutes la prévision pour une attraction un jour donné peut se tromper. Comme les attentes sont arrondies à cinq minutes, des jours à moins de cinq minutes d’écart se valent ici, et les meilleurs jours d’un parc forment un groupe, pas un classement."
+        "body": "Plus le jour est lointain, plus la prévision peut se tromper. Dès que tu planifies un voyage, tu trouves à côté du résultat de combien de minutes la prévision pour une attraction un jour donné peut se tromper. Comme les attentes sont arrondies à cinq minutes, des jours à moins de cinq minutes d’écart se valent ici, et les meilleurs jours d’un parc forment un groupe, pas un classement."
       },
       "travel": {
         "title": "Comment les trajets sont-ils calculés ?",
-        "body": "Chaque trajet est un parcours en voiture sans trafic jusqu’au parking. Le parking du Magic Kingdom est le Transportation and Ticket Center, d’où le monorail ou le ferry met encore environ 15 minutes jusqu’à l’entrée. Pour Volcano Bay, tu te gares dans les parkings couverts d’Universal et tu prends la navette, environ 15 minutes de plus. Données cartographiques : {attribution}."
+        "body": "Chaque trajet s’entend en voiture sans trafic, jusqu’au parking. Le parking du Magic Kingdom est le Transportation and Ticket Center, d’où le monorail ou le ferry met encore environ 15 minutes jusqu’à l’entrée. Pour Volcano Bay, tu te gares dans les parkings couverts d’Universal et tu prends la navette, environ 15 minutes de plus. Données cartographiques : {attribution}."
       },
       "links": "Le modèle derrière : <fancast>Fancast</fancast>. Tout le reste : <howto>comment fonctionne park.fan</howto>."
     },
@@ -2365,8 +2365,8 @@
     },
     "intro": {
       "lead": "Chaque chiffre ici est l’attente des grandes attractions au moment le plus chargé : le pic du jour de chaque attraction phare, en moyenne sur les parcs du séjour.",
-      "body": "Nous évaluons un séjour comme le planificateur de voyage, chaque parc à son meilleur jour, et un jour où les visiteurs à la journée doivent partir plus tôt compte comme un jour moins bon. La prévision va jusqu’au {date}. Au-delà, la page montre les mêmes semaines de l’an dernier telles que nous les avons mesurées, marquées « l’an dernier ».",
-      "bodyForecast": "Nous évaluons un séjour comme le planificateur de voyage, chaque parc à son meilleur jour, et un jour où les visiteurs à la journée doivent partir plus tôt compte comme un jour moins bon. Chaque chiffre de cette page est notre prévision."
+      "body": "Nous évaluons un séjour comme le planificateur de voyage : chaque parc à son meilleur jour, et un jour où les visiteurs à la journée doivent partir plus tôt compte comme un jour moins bon. La prévision va jusqu’au {date}. Au-delà, la page montre les mêmes semaines de l’an dernier telles que nous les avons mesurées, marquées « l’an dernier ».",
+      "bodyForecast": "Nous évaluons un séjour comme le planificateur de voyage : chaque parc à son meilleur jour, et un jour où les visiteurs à la journée doivent partir plus tôt compte comme un jour moins bon. Chaque chiffre de cette page est notre prévision."
     },
     "strip": {
       "title": "L’année d’un coup d’œil",
@@ -2445,8 +2445,8 @@
       },
       "quietA": "Le séjour de {days} jours à partir du {date} a les files les plus courtes : environ {minutes} min aux grandes attractions au moment le plus chargé, {percent} % sous la moyenne de {year}. Viennent ensuite {others}.",
       "christmasQ": "Y a-t-il du monde à Noël ?",
-      "christmasA": "{busy, select, yes {Oui.} other {Pas beaucoup plus que d’habitude.}} La semaine de Noël ({date}) tourne autour de {minutes} min aux grandes attractions, contre {average} min en moyenne sur {year}.",
-      "newYearA": "{busy, select, yes {Oui, aussi loin que vont nos chiffres.} other {Pas beaucoup plus que d’habitude, aussi loin que vont nos chiffres.}} Ils commencent avec la semaine du Nouvel An ({date}), autour de {minutes} min aux grandes attractions, contre {average} min en moyenne sur {year}. La semaine de Noël elle-même tombe avant.",
+      "christmasA": "{busy, select, yes {Oui.} other {Non.}} La semaine de Noël ({date}) tourne autour de {minutes} min aux grandes attractions, contre {average} min en moyenne sur {year}.",
+      "newYearA": "{busy, select, yes {Oui, aussi loin que vont nos chiffres.} other {Non, aussi loin que vont nos chiffres.}} Ils commencent avec la semaine du Nouvel An ({date}), autour de {minutes} min aux grandes attractions, contre {average} min en moyenne sur {year}. La semaine de Noël elle-même tombe avant.",
       "partyQ": "Quand ont lieu les soirées spéciales ?",
       "partyA": "{list}. Ces soirs-là, le parc ferme plus tôt pour les visiteurs à la journée ; c’est pourquoi le planificateur n’y place pas tes journées complètes.",
       "partyItem": "{name} ({park}) : {dates}, {status}",

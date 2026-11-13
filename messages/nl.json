@@ -392,12 +392,12 @@
     "metaDescriptionPlain": "Welk park op welke dag in Walt Disney World, bij Universal met Epic Universe en in SeaWorld, en een planner die je parken op je reisdagen zet.",
     "metaDescriptionMonth": "De rustigste dagen in Orlando in {month}: {verdict}. Elk park dag voor dag, met Epic Universe.",
     "metaDescriptionMonthPlain": "Orlando in {month}, dag voor dag: waar je in Disney World, bij Universal met Epic Universe, in SeaWorld en op de dagtrips het kortst in de rij staat.",
-    "lead": "Acht themaparken en vier waterparken, en van EPCOT naar Universal Studios rijd je zonder verkeer 25 minuten.",
+    "lead": "Met één hotelkamer in Orlando heb je acht themaparken en vier waterparken om de hoek.",
     "leadMonth": "In welk park je op welke dag in {month} het kortst in de rij staat: Walt Disney World, Universal met Epic Universe, SeaWorld en de dagtrips.",
     "scroll": "Naar de kalender",
     "introLabel": "Zo lees je de kalender",
     "intro": "Elk vakje is één park op één dag. Het getal is de wachttijd die we bij de grote attracties van dat park op het drukste moment van de dag verwachten, en daarop vergelijk je de parken. Aan de kleur zie je hoe die dag zich verhoudt tot een gewone dag in hetzelfde park.",
-    "opening": "Vanuit een hotel in Lake Buena Vista ben je, als de weg vrij is, in minder dan een halfuur bij elk van de acht themaparken, de veerboot of monorail naar Magic Kingdom meegerekend. LEGOLAND in Winter Haven ligt op bijna een uur rijden, Busch Gardens en Adventure Island in Tampa op zo’n anderhalf uur. Met Discovery Cove erbij zijn het zestien parken, allemaal te bereiken vanuit één hotelkamer en allemaal dag voor dag in de kalender.",
+    "opening": "Zonder verkeer rijd je van EPCOT naar Universal Studios in 25 minuten, en vanuit een hotel in Lake Buena Vista ligt elk van de acht themaparken binnen een halfuur, bij Magic Kingdom met de veerboot of monorail erbij. Naar LEGOLAND in Winter Haven is het bijna een uur, naar Busch Gardens en Adventure Island in Tampa zo’n anderhalf uur. Met die drie, Discovery Cove en de vier waterparken zijn het er zestien, en voor geen ervan hoef je van hotel te wisselen. In de kalender hieronder staan ze alle zestien, dag voor dag.",
     "nextDays": "Komende 30 dagen",
     "lastYearBanner": "Onze voorspelling loopt tot {date}. De dagen daarna tonen dezelfde weekdag vorig jaar, zoals wij die gemeten hebben, met de vermelding “vorig jaar”.",
     "lastYearBannerNoDate": "Een deel van deze dagen ligt voorbij onze voorspelling. Ze tonen dezelfde weekdag vorig jaar, zoals wij die gemeten hebben, met de vermelding “vorig jaar”.",
@@ -572,11 +572,11 @@
       },
       "error": {
         "title": "Hoe nauwkeurig is het?",
-        "body": "Hoeveel een voorspelling ernaast kan zitten, hangt af van hoe ver de dag nog weg is. Zodra je een reis plant, staat bij het resultaat hoeveel minuten de voorspelling voor één attractie op één dag ernaast kan zitten. Wachttijden zijn afgerond op vijf minuten, dus dagen binnen vijf minuten tellen hier als gelijk, en de beste dagen van een park zijn een groep, geen ranglijst."
+        "body": "Hoe verder de dag weg is, hoe meer de voorspelling ernaast kan zitten. Zodra je een reis plant, staat bij het resultaat hoeveel minuten de voorspelling voor één attractie op één dag ernaast kan zitten. Wachttijden zijn afgerond op vijf minuten, dus dagen binnen vijf minuten tellen hier als gelijk, en de beste dagen van een park zijn een groep, geen ranglijst."
       },
       "travel": {
         "title": "Hoe worden de reistijden berekend?",
-        "body": "Elke reistijd is een autorit zonder verkeer tot de parkeerplaats. De parkeerplaats van Magic Kingdom is het Transportation and Ticket Center, en van daar ben je met de monorail of de veerboot nog ongeveer 15 minuten onderweg naar de ingang. Voor Volcano Bay parkeer je in de parkeergarages van Universal en neem je nog ongeveer 15 minuten de pendelbus. Kaartgegevens: {attribution}."
+        "body": "Elke reistijd geldt voor de auto zonder verkeer, tot de parkeerplaats. De parkeerplaats van Magic Kingdom is het Transportation and Ticket Center, en van daar ben je met de monorail of de veerboot nog ongeveer 15 minuten onderweg naar de ingang. Voor Volcano Bay parkeer je in de parkeergarages van Universal en neem je nog ongeveer 15 minuten de pendelbus. Kaartgegevens: {attribution}."
       },
       "links": "Het model erachter: <fancast>Fancast</fancast>. De rest: <howto>zo werkt park.fan</howto>."
     },
@@ -2365,8 +2365,8 @@
     },
     "intro": {
       "lead": "Elk cijfer hier is de wachttijd van de grote attracties op het drukste moment: de dagpiek van elke topattractie, gemiddeld over de parken van de reis.",
-      "body": "We rekenen een reis zoals de reisplanner dat doet, met elk park op zijn beste dag, en een dag waarop dagbezoekers eerder weg moeten telt als een slechtere dag. De voorspelling loopt tot {date}. Daarna toont de pagina dezelfde weken vorig jaar zoals wij ze gemeten hebben, gemarkeerd met ‘vorig jaar’.",
-      "bodyForecast": "We rekenen een reis zoals de reisplanner dat doet, met elk park op zijn beste dag, en een dag waarop dagbezoekers eerder weg moeten telt als een slechtere dag. Elk cijfer op deze pagina is onze voorspelling."
+      "body": "Een reis beoordelen we zoals de reisplanner: elk park op zijn beste dag, en een dag waarop dagbezoekers eerder weg moeten telt als een slechtere dag. De voorspelling loopt tot {date}. Daarna toont de pagina dezelfde weken vorig jaar zoals wij ze gemeten hebben, gemarkeerd met ‘vorig jaar’.",
+      "bodyForecast": "Een reis beoordelen we zoals de reisplanner: elk park op zijn beste dag, en een dag waarop dagbezoekers eerder weg moeten telt als een slechtere dag. Elk cijfer op deze pagina is onze voorspelling."
     },
     "strip": {
       "title": "Het jaar in één oogopslag",
@@ -2445,8 +2445,8 @@
       },
       "quietA": "De reis van {days} dagen vanaf {date} heeft de kortste rijen: de grote attracties ongeveer {minutes} min op het drukste moment, {percent}% onder het gemiddelde van {year}. Daarna volgen {others}.",
       "christmasQ": "Is het druk met kerst?",
-      "christmasA": "{busy, select, yes {Ja.} other {Niet veel drukker dan normaal.}} De kerstweek ({date}) zit op ongeveer {minutes} min bij de grote attracties, tegen gemiddeld {average} min in {year}.",
-      "newYearA": "{busy, select, yes {Ja, voor zover onze cijfers gaan.} other {Niet veel drukker dan normaal, voor zover onze cijfers gaan.}} Ze beginnen met de week rond Nieuwjaar ({date}) op ongeveer {minutes} min bij de grote attracties, tegen gemiddeld {average} min in {year}. De kerstweek zelf valt daarvoor.",
+      "christmasA": "{busy, select, yes {Ja.} other {Nee.}} De kerstweek ({date}) zit op ongeveer {minutes} min bij de grote attracties, tegen gemiddeld {average} min in {year}.",
+      "newYearA": "{busy, select, yes {Ja, voor zover onze cijfers gaan.} other {Nee, voor zover onze cijfers gaan.}} Ze beginnen met de week rond Nieuwjaar ({date}) op ongeveer {minutes} min bij de grote attracties, tegen gemiddeld {average} min in {year}. De kerstweek zelf valt daarvoor.",
       "partyQ": "Wanneer zijn de feestavonden?",
       "partyA": "{list}. Op die avonden sluit het park eerder voor dagbezoekers; daarom zet de reisplanner je volle parkdagen er niet op.",
       "partyItem": "{name} ({park}): {dates}, {status}",
