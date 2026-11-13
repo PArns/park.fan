@@ -6,12 +6,14 @@ import {
   ArrowLeftRight,
   CalendarPlus,
   Car,
+  CircleAlert,
   Clock3,
   CloudSun,
   Lock,
   LockOpen,
   PartyPopper,
   Sparkles,
+  Ticket,
   X,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -48,12 +50,14 @@ import {
   type TripPlan,
 } from '@/lib/orlando/plan';
 import { planTimeMinute } from '@/lib/orlando/plan-week';
+import { ticketDayOf } from '@/lib/orlando/plan-tickets';
 import { formatGridTime } from '@/lib/planner/park-time';
 import type { TripCalendar } from '@/lib/orlando/types';
 import { usePlanContext } from './plan-context';
 import { PLAN_FOCUS } from './plan-controls';
 import { ClimateChips, dayGuestClose, useDayParks } from './plan-day-bits';
 import { useSeasonName } from './use-day-facts';
+import { useHopperWord, useResortWord } from './plan-ticket-words';
 import { PLAN_WIDE_QUERY } from './plan-setup';
 
 /** How many of a park's headliners the sheet names: the five a day is usually judged by. */
@@ -174,8 +178,10 @@ function DayDetails({
 }) {
   const t = useTranslations('orlandoPlanner');
   const tSeasons = useTranslations('parks.seasons');
-  const { locale, timeZone, parkName, region, state } = usePlanContext();
+  const { locale, timeZone, parkName, region, state, tickets: catalog } = usePlanContext();
   const seasonName = useSeasonName();
+  const resortWord = useResortWord();
+  const hopperWord = useHopperWord();
   const [swapOpen, setSwapOpen] = useState(false);
   const swapId = useId();
 
@@ -324,6 +330,57 @@ function DayDetails({
       facts.push(
         <Fact key="between" icon={<ArrowLeftRight className="size-4" aria-hidden="true" />}>
           {t(`details.between.${day.between.mode}`, { minutes: day.between.minutes })}
+        </Fact>
+      );
+    }
+
+    // The ticket after the hours and the way there: on the day those matter more.
+    const ticket = ticketDayOf(day, plan.meta, catalog);
+    const owned = plan.meta.tickets?.find((o) => o.id === day.ticket);
+    const ownedResort = owned ? catalog.get(owned.product)?.resort : undefined;
+    const ticketFacts: string[] = [];
+    if (day.ticketAllowance && ownedResort) {
+      ticketFacts.push(t('tickets.sheet.allowance', { resort: resortWord(ownedResort) }));
+    } else if (ticket?.kind === 'owned' && ticket.pass) {
+      ticketFacts.push(t('tickets.sheet.pass', { resort: resortWord(ticket.resort) }));
+    } else if (ticket?.kind === 'owned' && ticket.of !== null) {
+      ticketFacts.push(
+        t(ticket.hopper ? 'tickets.sheet.dayHopper' : 'tickets.sheet.day', {
+          resort: resortWord(ticket.resort),
+          day: ticket.day,
+          of: ticket.of,
+          hopper: hopperWord(ticket.resort),
+        })
+      );
+      if (ticket.from && ticket.to) {
+        ticketFacts.push(
+          t('tickets.sheet.valid', { from: short(ticket.from), to: short(ticket.to) })
+        );
+      }
+      if (day.evening?.kind === 'hop' && day.evening.park) {
+        ticketFacts.push(t('tickets.sheet.hopEvening', { park: name(day.evening.park) }));
+      }
+    } else if (ticket?.kind === 'suggested') {
+      ticketFacts.push(
+        t('tickets.sheet.suggested', { resort: resortWord(ticket.resort), day: ticket.day })
+      );
+    }
+    if (ticketFacts.length > 0) {
+      facts.push(
+        <Fact key="ticket" icon={<Ticket className="size-4" aria-hidden="true" />}>
+          <span data-plan-sheet-ticket="">{ticketFacts.join(' ')}</span>
+        </Fact>
+      );
+    }
+    if (day.warnings.includes('outside_ticket_window')) {
+      facts.unshift(
+        <Fact
+          key="outside"
+          icon={<CircleAlert className="text-crowd-ink-high size-4" aria-hidden="true" />}
+        >
+          <span className="text-crowd-ink-high font-medium">
+            {t('tickets.sheet.outside', { resort: resortWord(ownedResort ?? '') })}
+          </span>
         </Fact>
       );
     }

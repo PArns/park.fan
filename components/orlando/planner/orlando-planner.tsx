@@ -7,11 +7,18 @@ import { DEFAULT_PLAN_STATE, type OrlandoPlanState } from '@/lib/orlando/plan';
 import { ORLANDO_PLANNER_ID } from '@/lib/orlando/paths';
 import { orlandoPlannerUi } from '@/lib/orlando/planner-ui';
 import { shortParkName } from '@/lib/orlando/hub-data';
+import { ticketCatalog } from '@/lib/orlando/plan-tickets';
 import { PLAN_WIDE_QUERY } from './plan-setup';
 import type { TripRegion } from '@/lib/orlando/types';
-import { PlanContextProvider, type PlanContextValue, type PlanParkPhoto } from './plan-context';
+import {
+  PlanContextProvider,
+  usePlanContext,
+  type PlanContextValue,
+  type PlanParkPhoto,
+} from './plan-context';
 import { PlanSetup, type PlanSheetStep } from './plan-setup';
 import { PlanResult } from './plan-result';
+import { useTicketStep } from './plan-tickets';
 import { usePlanState } from './use-plan-state';
 
 /** What the hub hands the planner. */
@@ -40,8 +47,8 @@ const noUpdate = () => undefined;
  *
  * Reading the query makes a prerendered page render this part in the browser, so it sits in a
  * Suspense boundary whose fallback is the same planner with nothing chosen and nothing to press:
- * the same boxes, so the swap after hydration moves nothing. Phone: Dates, Parks and an optional
- * Fine-tune as sheets; desktop: the same panels inline. The result goes from the answer (Level 0)
+ * the same boxes, so the swap after hydration moves nothing. Phone: Tickets, Dates, Parks and an
+ * optional Fine-tune as sheets; desktop: the same panels inline. The result goes from the answer (Level 0)
  * to the views (Level 1) to a day's details (Level 2) to the day planner (Level 3);
  * docs/features/orlando-planner.md.
  */
@@ -99,8 +106,6 @@ function PlannerFrame({
 }) {
   const now = useBrowserNow(live);
   const today = now ? parkToday(region.timezone, now.getTime()) : null;
-  const [sheet, setSheet] = useState<PlanSheetStep | null>(null);
-  const resultRef = useRef<HTMLDivElement>(null);
 
   const context = useMemo<PlanContextValue>(() => {
     const parkBySlug = new Map(region.parks.map((p) => [p.slug, p]));
@@ -118,6 +123,7 @@ function PlannerFrame({
       headliners: region.parks.filter((p) => p.headliner).map((p) => p.slug),
       regionOrder: region.parks.map((p) => p.slug),
       areaKeys: new Set(region.hotelAreas.map((a) => a.key)),
+      tickets: ticketCatalog(region.tickets),
       state,
       update,
       today,
@@ -125,41 +131,6 @@ function PlannerFrame({
       live,
     };
   }, [region, locale, state, update, today, photos, live]);
-
-  // The hub's hero asks through `orlandoPlannerUi`: a phone gets the Dates sheet, a desk the panel.
-  useEffect(() => {
-    if (!live) return;
-    const answer = () => {
-      if (!orlandoPlannerUi.take()) return;
-      if (!window.matchMedia(PLAN_WIDE_QUERY).matches) {
-        setSheet('dates');
-        return;
-      }
-      const panel = document.querySelector<HTMLElement>('[data-plan-dates-panel]');
-      const smooth = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      panel?.scrollIntoView({ block: 'start', behavior: smooth ? 'smooth' : 'auto' });
-      panel
-        ?.querySelector<HTMLElement>(
-          '[role=radio][aria-checked=true], [data-plan-date][tabindex="0"]'
-        )
-        ?.focus({ preventScroll: true });
-    };
-    answer();
-    return orlandoPlannerUi.subscribe(answer);
-  }, [live]);
-
-  // "Plan" on the last sheet: the answer, at the top of the screen, which on a phone is the first
-  // thing to read after the sheets.
-  const showResult = useCallback(() => {
-    setSheet(null);
-    requestAnimationFrame(() => {
-      const target = resultRef.current;
-      if (!target) return;
-      const smooth = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      target.scrollIntoView({ block: 'start', behavior: smooth ? 'smooth' : 'auto' });
-      target.focus({ preventScroll: true });
-    });
-  }, []);
 
   return (
     <PlanContextProvider value={context}>
@@ -169,14 +140,144 @@ function PlannerFrame({
         data-orlando-planner=""
         className="flex flex-col gap-6 outline-none"
       >
-        <PlanSetup
-          defaultMonth={defaultMonth}
-          sheet={sheet}
-          onSheet={setSheet}
-          onDone={showResult}
-        />
-        <PlanResult ref={resultRef} onChooseDates={() => setSheet('dates')} />
+        <PlannerBody defaultMonth={defaultMonth} />
       </div>
     </PlanContextProvider>
+  );
+}
+
+const SMOOTH = '(prefers-reduced-motion: reduce)';
+const scrollTo = (target: HTMLElement | null) => {
+  if (!target) return;
+  const smooth = !window.matchMedia(SMOOTH).matches;
+  target.scrollIntoView({ block: 'start', behavior: smooth ? 'smooth' : 'auto' });
+};
+
+/**
+ * The setup and the result, and what moves between them: the phone's sheets and their walk, the
+ * desk's two disclosures, the ticket step's drafts, and the hub hero's signal.
+ */
+function PlannerBody({ defaultMonth }: { defaultMonth?: string }) {
+  const { live, state, tickets: catalog } = usePlanContext();
+  const step = useTicketStep();
+  const [sheet, setSheet] = useState<PlanSheetStep | null>(null);
+  const [walk, setWalk] = useState(false);
+  const [ticketsChoice, setTicketsOpen] = useState<boolean | null>(null);
+  const [fineTuneOpen, setFineTuneOpen] = useState(false);
+  const resultRef = useRef<HTMLDivElement>(null);
+  // The question stands until answered; a desk shows its panel open until then.
+  const asks = catalog.size > 0 && step.answer === 'unasked' && state.tickets.length === 0;
+  const ticketsOpen = ticketsChoice ?? asks;
+
+  const openSheet = useCallback((next: PlanSheetStep | null, inWalk = false) => {
+    setWalk(inWalk);
+    setSheet(next);
+  }, []);
+
+  /** The walk's first step: Tickets while the question is open, else Dates. */
+  const start = useCallback(() => {
+    if (!window.matchMedia(PLAN_WIDE_QUERY).matches) {
+      openSheet(asks ? 'tickets' : 'dates', asks);
+      return;
+    }
+    if (asks) {
+      setTicketsOpen(true);
+      const panel = document.querySelector<HTMLElement>('[data-plan-disclosure="tickets"]');
+      scrollTo(panel);
+      panel
+        ?.querySelector<HTMLElement>('[data-ticket-answer="no"]')
+        ?.focus({ preventScroll: true });
+      return;
+    }
+    const panel = document.querySelector<HTMLElement>('[data-plan-dates-panel]');
+    scrollTo(panel);
+    panel
+      ?.querySelector<HTMLElement>(
+        '[role=radio][aria-checked=true], [data-plan-date][tabindex="0"]'
+      )
+      ?.focus({ preventScroll: true });
+  }, [asks, openSheet]);
+
+  // The hub's hero asks through `orlandoPlannerUi`.
+  useEffect(() => {
+    if (!live) return;
+    const answer = () => {
+      if (orlandoPlannerUi.take()) start();
+    };
+    answer();
+    return orlandoPlannerUi.subscribe(answer);
+  }, [live, start]);
+
+  // "Plan" on the last sheet: the answer, at the top of the screen, which on a phone is the first
+  // thing to read after the sheets.
+  const showResult = useCallback(() => {
+    setSheet(null);
+    requestAnimationFrame(() => {
+      const target = resultRef.current;
+      if (!target) return;
+      scrollTo(target);
+      target.focus({ preventScroll: true });
+    });
+  }, []);
+
+  /** The result's ways back into the setup: a ticket, the parks, Fine-tune. */
+  const edit = useMemo(
+    () => ({
+      tickets: (index?: number) => {
+        if (index !== undefined) step.focusTicket(index);
+        if (!window.matchMedia(PLAN_WIDE_QUERY).matches) {
+          openSheet('tickets');
+          return;
+        }
+        setTicketsOpen(true);
+        scrollTo(document.querySelector<HTMLElement>('[data-plan-disclosure="tickets"]'));
+      },
+      parks: () => {
+        if (!window.matchMedia(PLAN_WIDE_QUERY).matches) {
+          openSheet('parks');
+          return;
+        }
+        const panel = document.querySelector<HTMLElement>('[data-plan-parks-panel]');
+        scrollTo(panel);
+        panel?.focus({ preventScroll: true });
+      },
+      options: () => {
+        if (!window.matchMedia(PLAN_WIDE_QUERY).matches) {
+          openSheet('options');
+          return;
+        }
+        setFineTuneOpen(true);
+        scrollTo(document.querySelector<HTMLElement>('[data-plan-disclosure="options"]'));
+      },
+      dates: () => {
+        if (!window.matchMedia(PLAN_WIDE_QUERY).matches) {
+          openSheet('dates');
+          return;
+        }
+        const panel = document.querySelector<HTMLElement>('[data-plan-dates-panel]');
+        scrollTo(panel);
+        panel?.focus({ preventScroll: true });
+      },
+    }),
+    [step, openSheet]
+  );
+
+  return (
+    <>
+      <PlanSetup
+        defaultMonth={defaultMonth}
+        sheet={sheet}
+        onSheet={(next) => openSheet(next, next !== null && walk)}
+        walk={walk}
+        onDone={showResult}
+        step={step}
+        ticketsOpen={ticketsOpen}
+        onTicketsOpen={setTicketsOpen}
+        fineTuneOpen={fineTuneOpen}
+        onFineTuneOpen={setFineTuneOpen}
+        onStart={start}
+      />
+      <PlanResult ref={resultRef} edit={edit} />
+    </>
   );
 }

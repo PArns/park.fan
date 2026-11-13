@@ -1,14 +1,16 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { BedDouble, Clock3, History, MoonStar, Sunrise } from 'lucide-react';
+import { BedDouble, CircleAlert, Clock3, History, MoonStar, Sunrise } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { formatClockTime } from '@/lib/utils/intl-format';
 import { dayMarker, earlyPerk } from '@/lib/orlando/plan-copy';
 import { calendarCell } from '@/lib/orlando/plan-week';
-import type { PlanDay } from '@/lib/orlando/plan';
+import { ticketDayOf } from '@/lib/orlando/plan-tickets';
+import type { PlanDay, PlanMeta } from '@/lib/orlando/plan';
 import type { TripCalendar } from '@/lib/orlando/types';
 import { usePlanContext } from './plan-context';
+import { useResortWord } from './plan-ticket-words';
 
 /** The park or parks of a day, as one label ("Universal Studios Florida + Islands of Adventure"). */
 export function useDayParks(): (day: PlanDay) => string {
@@ -56,6 +58,7 @@ export function useDayMarkerText(): (
 }
 
 const MARKER_ICON = {
+  outside_ticket: CircleAlert,
   closes: Clock3,
   rest: BedDouble,
   early: Sunrise,
@@ -91,7 +94,9 @@ export function PlanDayMarker({
       title={compact ? text : undefined}
       className={cn(
         'inline-flex min-w-0 items-center gap-1 text-xs',
-        marker === 'closes' ? 'text-crowd-ink-high' : 'text-muted-foreground',
+        marker === 'closes' || marker === 'outside_ticket'
+          ? 'text-crowd-ink-high'
+          : 'text-muted-foreground',
         className
       )}
     >
@@ -134,4 +139,27 @@ export function ClimateChips({ codes }: { codes: readonly string[] }) {
       ))}
     </span>
   );
+}
+
+/**
+ * A day's place on its owned ticket, "Disney day 2 of 4", or with `short` "day 2 of 4" for the
+ * phone's narrow Week columns. An every-day ticket counts the day of its window. `null` for a
+ * suggested ticket (nothing is bought yet), a pass, a water-park visit on the allowance and a day
+ * without a ticket.
+ */
+export function useTicketDayLabel(): (
+  day: PlanDay,
+  meta: Pick<PlanMeta, 'tickets' | 'ticketSuggestion'>,
+  short?: boolean
+) => string | null {
+  const t = useTranslations('orlandoPlanner.tickets.day');
+  const { tickets: catalog } = usePlanContext();
+  const resortWord = useResortWord();
+  return (day, meta, short = false) => {
+    const info = ticketDayOf(day, meta, catalog);
+    if (!info || info.kind !== 'owned' || info.pass || info.of === null) return null;
+    return short
+      ? t('short', { day: info.day, of: info.of })
+      : t('long', { resort: resortWord(info.resort), day: info.day, of: info.of });
+  };
 }

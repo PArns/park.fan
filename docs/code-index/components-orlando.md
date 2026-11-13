@@ -55,7 +55,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`hub/hub-hero-action.tsx`](../../components/orlando/hub/hub-hero-action.tsx)
 
-- `HubHeroAction` _component_: The hub's one primary action, "Plan my Orlando trip": it asks the planner to open its dates (the Dates sheet on a phone, the focused dates panel at a desk), so a reader starts the plan with one tap.
+- `HubHeroAction` _component_: The hub's one primary action, "Plan my Orlando trip": it asks the planner to open its first step (the walk's first sheet on a phone, the focused panel at a desk), so a reader starts the plan with one tap.
 
 ### [`hub/hub-legend.tsx`](../../components/orlando/hub/hub-legend.tsx)
 
@@ -114,11 +114,12 @@ by hand: change the comment in the code and re-run the script. -->
 - `PlanCheckRow` _component_: A checkbox with its label and an optional line under it, the whole row the target: at least 44 px on a phone, as the planner's sheet requires of every target (docs/features/trip-planner/phone.md).
 - `PlanRadioGroup` _component_: One choice of several, as radio rows: a `fieldset` with its question as the legend, each option a 44 px row with an optional line under it.
 - `PlanStepper` _component_: − value +, with 44 px buttons on a phone and 32 px at a desk. The value is an `<output>`, so a screen reader hears the new count after a press.
+- `PlanChip` _component_: A pill to press, on or off (`aria-pressed`): the When mode's periods, a ticket's days, its hopper and its variant. 44 px on a phone, 36 at a desk.
 - `PLAN_FOCUS` _const_: The planner's focus ring, one string for every control it draws.
 
 ### [`planner/plan-dates.tsx`](../../components/orlando/planner/plan-dates.tsx)
 
-- `PlanDates` _component_: The trip's dates: a month at a time (`lib/planner/month-grid.ts`, the day planner's own grid), the first press the arrival and the second the departure, at most `MAX_TRIP_DAYS` days.
+- `PlanDates` _component_: The trip's dates: a month at a time (`PlanMonthGrid`), the first press the arrival and the second the departure, at most `MAX_TRIP_DAYS` days.
 
 ### [`planner/plan-day-bits.tsx`](../../components/orlando/planner/plan-day-bits.tsx)
 
@@ -127,6 +128,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `useDayParks` _hook_: The park or parks of a day, as one label ("Universal Studios Florida + Islands of Adventure").
 - `useDayMarkerText` _hook_: The words of a day's one overview marker (`dayMarker`): "closes 6 pm", rest day, the hotel's early slot, its extended evening, or "last year"; `null` for none. For a label that has to carry them where the marker is only an icon.
 - `useEveningName` _hook_: The name of a day's evening: the second park's (short) name or the venue's; `null` without an evening or for a venue the region does not list.
+- `useTicketDayLabel` _hook_: A day's place on its owned ticket, "Disney day 2 of 4", or with `short` "day 2 of 4" for the phone's narrow Week columns. An every-day ticket counts the day of its window.
 - `dayGuestClose` _function_: When the day guests leave a park day: the plan's own figure, else the calendar's close.
 
 ### [`planner/plan-day-sheet.tsx`](../../components/orlando/planner/plan-day-sheet.tsx)
@@ -143,13 +145,18 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `PlanKeep` _component_: Keeping the plan: every park day into the day planner as a reserved day in one write (the store's `reserveDays`, which Parky's trip action uses too; a day that already holds a plan stays as it is), the trip as an `.ics` file built here in …
 
+### [`planner/plan-month-grid.tsx`](../../components/orlando/planner/plan-month-grid.tsx)
+
+- `PlanMonthGrid` _component_: A month of dates to pick from, a month at a time (`lib/planner/month-grid.ts`): the trip's two dates in the Dates step, one date for a ticket's first day.
+- Types: `PlanGridDay`
+
 ### [`planner/plan-month-view.tsx`](../../components/orlando/planner/plan-month-view.tsx)
 
 - `PlanMonthView` _component_: The Month view: the trip in its calendar, whole weeks from Monday.
 
 ### [`planner/plan-options.tsx`](../../components/orlando/planner/plan-options.tsx)
 
-- `PlanOptions` _component_: Fine-tune: everything the plan can be told beyond dates and parks, each with the default the API plans with already chosen, so nothing here is required.
+- `PlanOptions` _component_: Fine-tune: everything the plan can be told beyond tickets, dates and parks, each with the default the API plans with already chosen, so nothing here is required.
 - `usePlanOptionsSummary` _hook_: The options' one-line summary ("Disney hotel · resorts together · rest days on busy days"), the defaults included, so the line under "Fine-tune" says what the plan assumes without opening it.
 
 ### [`planner/plan-parks.tsx`](../../components/orlando/planner/plan-parks.tsx)
@@ -162,9 +169,32 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`planner/plan-setup.tsx`](../../components/orlando/planner/plan-setup.tsx)
 
-- `PlanSetup` _component_: Dates, Parks and Fine-tune. On a phone, three summary rows that open one bottom sheet, walked Dates → Parks → Plan, with Fine-tune a row of its own nobody has to open.
+- `PlanSetup` _component_: Tickets, Dates, Parks and Fine-tune. On a phone, summary rows that open one bottom sheet, walked Tickets → Dates → Parks → Plan (Tickets only while its question is open), with Fine-tune a row of its own nobody has to open.
 - `PLAN_WIDE_QUERY` _const_: `lg`, where the setup is drawn inline; below it the same panels are sheets.
 - Types: `PlanSheetStep`
+
+### [`planner/plan-ticket-summary.tsx`](../../components/orlando/planner/plan-ticket-summary.tsx)
+
+- `useTicketSummary` _hook_: The Tickets row's line: "Already have tickets?" until answered, the tickets by name ("Disney 14-Day Magic Ticket · Universal 14-day ticket"), three or more counted by resort, the ticket the trip misses, or "No tickets entered" (with the …
+- Types: `TicketSummary`
+
+### [`planner/plan-ticket-words.tsx`](../../components/orlando/planner/plan-ticket-words.tsx)
+
+- `useResortWord` _hook_: A resort as copy names it in a sentence: "Disney", "Universal", "SeaWorld", "LEGOLAND".
+- `useHopperWord` _hook_: A resort's hopper by its operator's name: Disney's Park Hopper, Universal's park-to-park.
+- `useTicketName` _hook_: A ticket by what is on it: "Disney 4-day ticket with Park Hopper" for a date-based ticket, the operator's name for the rest. `short` drops the word "ticket" for the Tickets row: "Disney 4 days + Park Hopper".
+- `productName` _function_: The operator's product name without the versions in brackets the catalog lists.
+
+### [`planner/plan-tickets-card.tsx`](../../components/orlando/planner/plan-tickets-card.tsx)
+
+- `PlanTicketsCard` _component_: The tickets at Level 0, after the saving and before the day lines. Plan first, a compact block: the one sentence that names the tickets to buy and "Ticket details", which open in a sheet on a phone and in place at a desk.
+- Types: `PlanEdit`
+
+### [`planner/plan-tickets.tsx`](../../components/orlando/planner/plan-tickets.tsx)
+
+- `PlanTickets` _component_: "Do you already have tickets?": the step before Dates and Parks.
+- `useTicketStep` _hook_: The ticket step's state. The URL holds only the complete tickets (`tickets=`); a ticket still being filled in, and the tickets of a "Not yet" that may turn back into "Yes", live here until the page is left.
+- Types: `TicketAnswer`, `TicketStep`
 
 ### [`planner/plan-week-view.tsx`](../../components/orlando/planner/plan-week-view.tsx)
 

@@ -9,6 +9,7 @@ import {
   isColoredCrowdLevel,
 } from '@/lib/utils/crowd-level-styles';
 import { formatParkDay } from '@/lib/utils/park-day';
+import { dayMarker } from '@/lib/orlando/plan-copy';
 import type { TripPlan } from '@/lib/orlando/plan';
 import type { TripCalendar } from '@/lib/orlando/types';
 import { usePlanContext } from './plan-context';
@@ -123,7 +124,11 @@ export function PlanAgendaView({
               </span>
               {minutes && (
                 <span
-                  className="shrink-0 text-right text-sm font-semibold tabular-nums"
+                  className={cn(
+                    'shrink-0 text-right text-sm font-semibold tabular-nums',
+                    // A day the ticket does not cover leads with that, not with its wait.
+                    dayMarker(day) === 'outside_ticket' && 'text-muted-foreground font-normal'
+                  )}
                   aria-hidden="true"
                 >
                   {minutes}

@@ -1,44 +1,46 @@
 'use client';
 
-import { useMemo, useRef, useState, type KeyboardEvent } from 'react';
+import { useMemo, useState } from 'react';
 import { useTranslations } from 'next-intl';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import {
-  monthLabel,
-  monthMatrix,
-  monthOf,
-  shiftMonth,
-  weekdayLabels,
-} from '@/lib/planner/month-grid';
-import { getDateTimeFormat } from '@/lib/utils/intl-format';
+import { monthLabel, monthMatrix, monthOf } from '@/lib/planner/month-grid';
+import { getDateTimeFormat, getListFormat } from '@/lib/utils/intl-format';
 import { addDays, formatParkDayRange } from '@/lib/utils/park-day';
 import { MAX_DAYS_AHEAD, MAX_TRIP_DAYS, setTripDates, tripDates } from '@/lib/orlando/plan';
+import { ticketWindows } from '@/lib/orlando/plan-tickets';
 import { dateFigure } from '@/lib/orlando/plan-week';
 import { usePlanContext } from './plan-context';
 import { useTripCalendar } from './use-trip-plan';
 import { PlanCheckRow } from './plan-controls';
+import { PlanMonthGrid } from './plan-month-grid';
+import { useResortWord } from './plan-ticket-words';
+
+/** The bars a date grid draws per ticket, in entry order: the first in brand blue, the rest muted. */
+const BAR_ROWS = 3;
 
 /**
- * The trip's dates: a month at a time (`lib/planner/month-grid.ts`, the day planner's own grid),
- * the first press the arrival and the second the departure, at most {@link MAX_TRIP_DAYS} days.
- * Under each date the shortest big-ride wait of that day, so dates can be compared before anything
- * is planned; a last-year figure is set apart and the legend says so. One tab stop for the grid,
- * arrows move by day and week. Then whether the travel days hold a park.
+ * The trip's dates: a month at a time (`PlanMonthGrid`), the first press the arrival and the second
+ * the departure, at most {@link MAX_TRIP_DAYS} days. Under each date the shortest big-ride wait of
+ * that day, so dates can be compared before anything is planned; a last-year figure is set apart
+ * and the legend says so. The tickets' windows are thin bars along the dates, named in a key. Then
+ * whether the travel days hold a park.
  */
 export function PlanDates({ defaultMonth }: { defaultMonth?: string }) {
   const t = useTranslations('orlandoPlanner');
-  const { state, update, today, locale, headliners, live } = usePlanContext();
+  const { state, update, today, locale, headliners, live, tickets: catalog } = usePlanContext();
+  const resortWord = useResortWord();
 
   const [pendingFrom, setPendingFrom] = useState<string | null>(null);
   const [month, setMonth] = useState<string | null>(null);
+  const windows = useMemo(() => ticketWindows(state.tickets, catalog), [state.tickets, catalog]);
   const shown =
-    month ?? monthOf(state.from ?? (defaultMonth ? `${defaultMonth}-01` : (today ?? '')));
+    month ??
+    monthOf(
+      state.from ?? windows[0]?.from ?? (defaultMonth ? `${defaultMonth}-01` : (today ?? ''))
+    );
   const last = today ? addDays(today, MAX_DAYS_AHEAD) : null;
 
   const cells = useMemo(() => (shown ? monthMatrix(shown) : []), [shown]);
-  const headers = useMemo(() => weekdayLabels(locale), [locale]);
-
   const windowFrom = cells.length && today ? (cells[0].date < today ? today : cells[0].date) : null;
   const windowTo =
     cells.length && last ? (cells.at(-1)!.date > last ? last : cells.at(-1)!.date) : null;
@@ -68,135 +70,90 @@ export function PlanDates({ defaultMonth }: { defaultMonth?: string }) {
     update((s) => setTripDates(s, pendingFrom, date));
   };
 
-  const [focusDate, setFocusDate] = useState<string | null>(null);
-  const gridRef = useRef<HTMLDivElement>(null);
-  const tabDate =
-    (focusDate && cells.some((c) => c.date === focusDate) && focusDate) ||
-    (start && cells.some((c) => c.date === start) && start) ||
-    cells.find((c) => c.inMonth && selectable(c.date))?.date ||
-    cells.find((c) => c.inMonth)?.date;
-
-  const onKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
-    const steps: Record<string, number> = {
-      ArrowLeft: -1,
-      ArrowRight: 1,
-      ArrowUp: -7,
-      ArrowDown: 7,
-    };
-    const step = steps[event.key];
-    if (!step || !tabDate) return;
-    event.preventDefault();
-    const next = addDays(tabDate, step);
-    if (monthOf(next) !== shown) setMonth(monthOf(next));
-    setFocusDate(next);
-    requestAnimationFrame(() =>
-      gridRef.current?.querySelector<HTMLButtonElement>(`[data-plan-date="${next}"]`)?.focus()
-    );
-  };
-
   const dayLabel = getDateTimeFormat(locale, { weekday: 'long', day: 'numeric', month: 'long' });
+  const list = getListFormat(locale, { style: 'long', type: 'conjunction' });
   const length = tripDates(state).length;
   const anyLastYear = (calendar.data?.days ?? []).some((d) =>
     headliners.some((s) => d.parks[s]?.basis === 'last_year')
   );
+  const shortRange = (from: string, to: string) =>
+    formatParkDayRange(locale, from, to, { day: 'numeric', month: 'short' });
 
   return (
     <div className="flex flex-col gap-3">
-      <div className="flex items-center justify-between gap-1">
-        <button
-          type="button"
-          onClick={() => shown && setMonth(shiftMonth(shown, -1))}
-          disabled={!live || !today || !shown || shown <= monthOf(today)}
-          aria-label={t('dates.prevMonth')}
-          className="hover:bg-accent focus-visible:ring-ring flex size-11 items-center justify-center rounded-md transition focus-visible:ring-2 focus-visible:outline-none disabled:opacity-30 lg:size-9"
-        >
-          <ChevronLeft className="size-4" aria-hidden="true" />
-        </button>
-        <span
-          aria-live="polite"
-          className="min-w-0 flex-1 truncate text-center text-sm font-semibold"
-        >
-          {shown && today ? monthLabel(shown, locale) : '\u00a0'}
-        </span>
-        <button
-          type="button"
-          onClick={() => shown && setMonth(shiftMonth(shown, 1))}
-          disabled={!live || !last || !shown || shown >= monthOf(last)}
-          aria-label={t('dates.nextMonth')}
-          className="hover:bg-accent focus-visible:ring-ring flex size-11 items-center justify-center rounded-md transition focus-visible:ring-2 focus-visible:outline-none disabled:opacity-30 lg:size-9"
-        >
-          <ChevronRight className="size-4" aria-hidden="true" />
-        </button>
-      </div>
-
-      <div
-        className="text-muted-foreground grid grid-cols-7 gap-0.5 text-center text-[11px]"
-        aria-hidden="true"
-      >
-        {headers.map((header, index) => (
-          <span key={index}>{header}</span>
-        ))}
-      </div>
-
-      <div
-        ref={gridRef}
-        role="group"
-        aria-label={t('dates.gridLabel')}
-        onKeyDown={onKeyDown}
-        // Six rows whatever the month, so the panel keeps its height from month to month.
-        className="grid min-h-[17.5rem] grid-cols-7 gap-0.5"
-      >
-        {cells.map((cell) => {
-          const enabled = live && cell.inMonth && selectable(cell.date);
-          const day = byDate.get(cell.date);
+      <PlanMonthGrid
+        month={shown}
+        onMonth={setMonth}
+        title={shown && today ? monthLabel(shown, locale) : '\u00a0'}
+        locale={locale}
+        canPrev={Boolean(today && shown && shown > monthOf(today))}
+        canNext={Boolean(last && shown && shown < monthOf(last))}
+        prevLabel={t('dates.prevMonth')}
+        nextLabel={t('dates.nextMonth')}
+        gridLabel={t('dates.gridLabel')}
+        preferred={start}
+        live={live}
+        onPick={choose}
+        day={(date) => {
+          const day = byDate.get(date);
           const wait = dateFigure(day, headliners);
           const lastYear = headliners.some((s) => day?.parks[s]?.basis === 'last_year');
-          const isStart = cell.date === start;
-          const isEnd = cell.date === end;
-          const inRange = Boolean(start && end && cell.date > start && cell.date < end);
-          const label = [
-            today ? dayLabel.format(new Date(`${cell.date}T12:00:00Z`)) : cell.date,
-            wait !== null
-              ? t(lastYear ? 'dates.waitLastYear' : 'dates.wait', { minutes: wait })
-              : null,
-          ]
-            .filter(Boolean)
-            .join(', ');
-          return (
-            <button
-              key={cell.date}
-              type="button"
-              data-plan-date={cell.date}
-              disabled={!enabled}
-              tabIndex={cell.date === tabDate ? 0 : -1}
-              aria-label={label}
-              aria-pressed={isStart || isEnd || inRange}
-              onClick={() => choose(cell.date)}
-              onFocus={() => setFocusDate(cell.date)}
-              className={cn(
-                'focus-visible:ring-ring flex h-11 flex-col items-center justify-center rounded-md text-sm tabular-nums transition-colors focus-visible:ring-2 focus-visible:outline-none',
-                !cell.inMonth && 'invisible',
-                !enabled && 'text-muted-foreground/40',
-                enabled && !isStart && !isEnd && 'hover:bg-accent',
-                inRange && 'bg-primary/15',
-                (isStart || isEnd) && 'bg-primary text-primary-foreground font-semibold'
-              )}
-            >
-              <span className="leading-4">{cell.day}</span>
+          const isEdge = date === start || date === end;
+          const inRange = Boolean(start && end && date > start && date < end);
+          const held = windows.filter((w) => date >= w.from && date <= w.to);
+          const resorts = [...new Set(held.map((w) => resortWord(w.resort)))];
+          return {
+            enabled: selectable(date),
+            mark: isEdge ? 'edge' : inRange ? 'range' : null,
+            figure: wait !== null ? String(wait) : null,
+            italic: lastYear,
+            bars: windows
+              .slice(0, BAR_ROWS)
+              .map((w, row) =>
+                date >= w.from && date <= w.to ? (row === 0 ? 'primary' : 'muted') : null
+              )
+              .filter((b): b is 'primary' | 'muted' => b !== null),
+            label: [
+              today ? dayLabel.format(new Date(`${date}T12:00:00Z`)) : date,
+              wait !== null
+                ? t(lastYear ? 'dates.waitLastYear' : 'dates.wait', { minutes: wait })
+                : null,
+              resorts.length > 0
+                ? t('tickets.dates.inTicket', {
+                    resorts: list.format(resorts),
+                    count: resorts.length,
+                  })
+                : null,
+            ]
+              .filter(Boolean)
+              .join(', '),
+          };
+        }}
+      />
+
+      {windows.length > 0 && (
+        <ul className="flex flex-col gap-1 text-xs" data-plan-ticket-key="">
+          {windows.slice(0, BAR_ROWS).map((w, row) => (
+            <li key={w.index} className="flex items-center gap-2">
               <span
-                className={cn(
-                  'h-3.5 text-[10px] leading-3.5',
-                  isStart || isEnd ? 'text-primary-foreground/85' : 'text-muted-foreground',
-                  lastYear && 'italic'
-                )}
                 aria-hidden="true"
-              >
-                {enabled && wait !== null ? wait : ''}
+                className={cn(
+                  'h-[3px] w-5 shrink-0 rounded-full',
+                  row === 0 ? 'bg-primary' : 'bg-foreground/55'
+                )}
+              />
+              <span>
+                {today
+                  ? t('tickets.dates.key', {
+                      resort: resortWord(w.resort),
+                      range: shortRange(w.from, w.to),
+                    })
+                  : '\u00a0'}
               </span>
-            </button>
-          );
-        })}
-      </div>
+            </li>
+          ))}
+        </ul>
+      )}
 
       <p className="text-muted-foreground text-xs leading-snug">
         {t('dates.legend')}

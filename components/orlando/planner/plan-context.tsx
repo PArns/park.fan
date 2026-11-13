@@ -2,6 +2,7 @@
 
 import { createContext, useContext } from 'react';
 import type { OrlandoPlanState } from '@/lib/orlando/plan';
+import type { TicketCatalog } from '@/lib/orlando/plan-tickets';
 import type { TripRegion, TripRegionGroup, TripRegionPark, TripVenue } from '@/lib/orlando/types';
 
 /** A park's photo for the blocks of the Week view, resolved on the server (`plan-photos.ts`). */
@@ -27,6 +28,8 @@ export interface PlanContextValue {
   /** Every park slug in the region's order, which lists and the URL keep. */
   regionOrder: readonly string[];
   areaKeys: ReadonlySet<string>;
+  /** The ticket catalog by id; empty where the API has none, which hides the ticket step. */
+  tickets: TicketCatalog;
   state: OrlandoPlanState;
   update: (recipe: (state: OrlandoPlanState) => OrlandoPlanState) => void;
   /** Orlando's today, `null` until the browser has read its clock. */

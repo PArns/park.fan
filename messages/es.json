@@ -3321,14 +3321,14 @@
       "hop": "Park hopping",
       "hopHint": "Dos parques del mismo resort en un día, cuando el viaje tiene menos días que visitas.",
       "hopOn": "park hopping",
-      "ticket": "¿Tienes una entrada Park Hopper (de parque a parque)?",
-      "ticketHopper": "Sí, Park Hopper",
-      "ticketHopperHint": "Solo con ella un día puede tener dos parques, o una noche en un segundo parque.",
-      "ticketBase": "No, un parque al día",
-      "ticketShort": "Park Hopper",
       "evenings": "Planificar las noches",
       "eveningsHint": "Si un parque cierra antes, el plan propone para la noche un segundo parque o Disney Springs y CityWalk.",
-      "eveningsOff": "sin noches"
+      "eveningsOff": "sin noches",
+      "blocksTickets": "Días de Disney y días de Universal",
+      "blocksAuto": "Mezclados solo si ahorra tiempo",
+      "blocksAutoHint": "Dentro de las fechas de tus entradas, mezclados donde ahorra al menos 3 min por atracción.",
+      "blocksAlways": "Siempre juntos",
+      "blocksFree": "Mezclados donde las esperas sean más cortas"
     },
     "result": {
       "label": "Tu plan",
@@ -3374,7 +3374,8 @@
       "earlyPark": "Early Park Admission",
       "rest": "Día de descanso",
       "evening": "Extended Evening Hours",
-      "last_year": "año pasado"
+      "last_year": "año pasado",
+      "outside_ticket": "fuera de tu entrada"
     },
     "views": {
       "label": "Vista",
@@ -3582,6 +3583,328 @@
       "extreme_heat": "calor",
       "hurricane_season": "temporada de huracanes",
       "hurricane_peak": "pico de la temporada de huracanes"
+    },
+    "tickets": {
+      "title": "Entradas",
+      "question": "¿Ya tienes entradas?",
+      "sheetHint": "Sin respuesta, el plan propone entradas para comprar. Puedes añadir las tuyas aquí cuando quieras.",
+      "no": "Todavía no, solo planificar",
+      "noHint": "El plan propone una entrada por resort: cuántos días y desde cuándo.",
+      "yes": "Sí, tengo entradas",
+      "yesHint": "Disney, Universal, SeaWorld o LEGOLAND, también pases anuales, o las que vas a comprar.",
+      "nextDates": "Siguiente: fechas",
+      "yours": "Tus entradas",
+      "combo": {
+        "title": "Combinada Disney y Universal, 14 días cada una",
+        "hint": "Disney & Universal Combo u Orlando Freedom Ticket de un turoperador británico: rellena las dos entradas."
+      },
+      "resort": {
+        "walt-disney-world": "Walt Disney World",
+        "universal-orlando": "Universal Orlando",
+        "seaworld-orlando": "SeaWorld, Aquatica, Busch Gardens",
+        "day-trips": "LEGOLAND Florida"
+      },
+      "resortShort": {
+        "walt-disney-world": "Disney",
+        "universal-orlando": "Universal",
+        "seaworld-orlando": "SeaWorld",
+        "day-trips": "LEGOLAND"
+      },
+      "hopperName": {
+        "disney": "Park Hopper",
+        "universal": "park-to-park"
+      },
+      "add": "Añadir entrada",
+      "addLabel": "Añadir una entrada de {resort}",
+      "addAnother": "Añadir otra entrada de {resort}",
+      "remove": "Quitar",
+      "removeLabel": "Quitar la entrada de {resort}",
+      "which": "¿Qué entrada de {resort}?",
+      "change": "Cambiar",
+      "changeLabel": "Cambiar: {name}",
+      "close": "Cerrar",
+      "max": "Como máximo {count} entradas.",
+      "mixNote": "Cada entrada conserva sus fechas. Donde valen las dos, el plan mezcla días de Disney y de Universal solo si así ahorras al menos 3 min por atracción.",
+      "market": {
+        "uk": "Solo Reino Unido e Irlanda",
+        "intl": "Se vende fuera de EE. UU."
+      },
+      "entry": {
+        "wdw-dated": {
+          "title": "Entrada con fecha, de 1 a 10 días",
+          "hint": "De la web de Disney en EE. UU., de un paquete con hotel Disney o de la mayoría de vendedores. Con o sin Park Hopper."
+        },
+        "wdw-uk-14": {
+          "title": "14-Day Magic Ticket",
+          "hint": "14 días de parque en 18 días. Park hopping y parques acuáticos incluidos."
+        },
+        "wdw-uk-7": {
+          "title": "7-Day Magic Ticket",
+          "hint": "7 días de parque en 15 días. Park hopping y parques acuáticos incluidos."
+        },
+        "wdw-4-park": {
+          "title": "4-Park Magic Ticket",
+          "hint": "Un día en cada parque temático en 6 días, sin hopping. Primer día en el periodo {range}."
+        },
+        "wdw-pass": {
+          "title": "Pase anual",
+          "hint": "Incredi-Pass, Sorcerer, Pirate o Pixie Dust Pass."
+        },
+        "wdw-unsure": {
+          "title": "No sé cuál",
+          "hint": "Dinos cuántos días tiene y si incluye Park Hopper."
+        },
+        "uor-dated": {
+          "title": "Entrada con fecha, de 1 a 5 días",
+          "hint": "De la web de Universal en EE. UU. o de la mayoría de vendedores. Base o park-to-park, Epic Universe desde 3 días."
+        },
+        "uor-uk-14": {
+          "title": "Entrada de 14 días",
+          "hint": "All Parks o Three Park Adventure Ticket: todos los días durante 14 días seguidos, park-to-park, Epic Universe incluido."
+        },
+        "uor-epic": {
+          "title": "Con un día en Epic Universe",
+          "hint": "1-Day + 1-Day Epic Universe, o la oferta 2-Day Park-to-Park + 1 Day Epic Universe."
+        },
+        "uor-1-day": {
+          "title": "Entrada de 1 día para Epic Universe o Volcano Bay",
+          "hint": "Un parque en un día."
+        },
+        "uor-pass": {
+          "title": "Pase anual",
+          "hint": "Seasonal, Power, Preferred o Premier. Epic Universe no está en ninguno."
+        },
+        "uor-unsure": {
+          "title": "No sé cuál",
+          "hint": "Dinos cuántos días tiene y si incluye park-to-park."
+        },
+        "sw-1-day": {
+          "title": "Entrada de un día",
+          "hint": "Una visita a SeaWorld Orlando o a Busch Gardens Tampa Bay."
+        },
+        "sw-two-park": {
+          "title": "Two Park Ticket",
+          "hint": "SeaWorld y Aquatica, o SeaWorld y Busch Gardens, una visita a cada uno en 14 días."
+        },
+        "sw-three-park": {
+          "title": "Three-Day, Three Park Ticket",
+          "hint": "3 visitas a SeaWorld, Aquatica, Busch Gardens o Adventure Island en los 14 días desde la primera."
+        },
+        "sw-four-parks": {
+          "title": "Four Parks Ticket",
+          "hint": "SeaWorld, Aquatica, Busch Gardens y Adventure Island, tantas veces como quieras durante 14 días desde la primera visita."
+        },
+        "sw-uk-3-visit": {
+          "title": "3-Visit Ticket + Eat Free",
+          "hint": "3 visitas a SeaWorld, Aquatica o Busch Gardens en los 14 días desde la primera."
+        },
+        "sw-uk-ultimate": {
+          "title": "Ultimate Ticket",
+          "hint": "SeaWorld, Aquatica y Busch Gardens, tantas veces como quieras durante 14 días desde la primera visita."
+        },
+        "sw-discovery-cove": {
+          "title": "Día en Discovery Cove",
+          "hint": "Tu día reservado en Discovery Cove, solo o con 14 días de SeaWorld y sus parques hermanos alrededor."
+        },
+        "sw-fun-card": {
+          "title": "Fun Card",
+          "hint": "SeaWorld (con o sin Aquatica) o Busch Gardens, tantas veces como quieras hasta finales de 2027, salvo días bloqueados."
+        },
+        "sw-pass": {
+          "title": "Pase anual",
+          "hint": "SeaWorld Orlando, o los cuatro parques de Florida."
+        },
+        "lego-day": {
+          "title": "Entrada de 1 o 2 días",
+          "hint": "LEGOLAND Florida."
+        },
+        "lego-7": {
+          "title": "7 Florida Attractions Ticket",
+          "hint": "Una visita a LEGOLAND en 14 días, dentro de la entrada de Merlin para siete atracciones."
+        },
+        "lego-pass": {
+          "title": "Pase anual",
+          "hint": "LEGOLAND Florida."
+        }
+      },
+      "variant": {
+        "uor-1-day-plus-epic": "1-Day + 1-Day Epic Universe",
+        "uor-2-day-p2p-plus-epic": "2-Day Park-to-Park + 1 Day Epic Universe",
+        "uor-epic-1-day": "Epic Universe",
+        "uor-volcano-bay-1-day": "Volcano Bay",
+        "seaworld-1-day": "SeaWorld Orlando",
+        "busch-gardens-1-day": "Busch Gardens Tampa Bay",
+        "discovery-cove": "Solo Discovery Cove",
+        "discovery-cove-plus-2": "+ SeaWorld y Aquatica",
+        "discovery-cove-plus-3": "+ SeaWorld, Aquatica y Busch Gardens",
+        "seaworld-fun-card": "SeaWorld",
+        "seaworld-fun-card-aquatica": "SeaWorld y Aquatica",
+        "busch-gardens-fun-card": "Busch Gardens",
+        "seaworld-annual-pass": "SeaWorld Orlando",
+        "seaworld-annual-pass-florida": "Cuatro parques de Florida",
+        "legoland-1-day": "1 día",
+        "legoland-2-day": "2 días"
+      },
+      "fields": {
+        "which": "¿Cuál?",
+        "days": "Días de parque",
+        "hopper": "¿Con {hopper}?",
+        "hopperAnswer": {
+          "yes": "Sí",
+          "no": "No",
+          "unsure": "No lo sé"
+        },
+        "hopperUnsure": "Planificamos sin {hopper} y te decimos qué aportaría.",
+        "waterParks": "Parques acuáticos incluidos (Water Park and Sports o Park Hopper Plus)",
+        "volcanoBay": "Volcano Bay incluido",
+        "start": "Primer día de la entrada",
+        "startFirstUse": "Primera visita",
+        "startReserved": "Tu día en Discovery Cove",
+        "startOpen": "Sin fijar todavía",
+        "startOpenHint": "El plan elige el mejor primer día.",
+        "startHint": "La fecha de tu reserva.",
+        "startClear": "Dejar abierto",
+        "notOnSale": "La {name} solo se vende con primer día {ranges}.",
+        "saleRange": "del {from} al {to}",
+        "saleUntil": "hasta el {date}",
+        "saleFrom": "desde el {date}"
+      },
+      "window": {
+        "any": "Válida del {from} al {to}: {days} días cualesquiera de estos {window}.",
+        "every": "Válida todos los días del {from} al {to}.",
+        "anyOpen": "{days} días cualesquiera de {window} desde el primer día.",
+        "everyOpen": "Válida todos los días durante {window} días desde el primero.",
+        "unsure": "Planificamos con la validez más corta que puede tener una entrada de esta duración.",
+        "ukUniversal": "Con este primer día es la {name}."
+      },
+      "row": {
+        "ask": "¿Ya tienes entradas?",
+        "none": "Sin entradas",
+        "noneHopper": "Sin entradas · planificado con {hopper}",
+        "count": "{count} entradas: {resorts}",
+        "startOpen": "{ticket}, primer día sin fijar",
+        "after_trip": "{ticket} empieza después de tu viaje",
+        "before_trip": "{ticket} termina antes de tu viaje",
+        "not_on_sale": "{ticket}: no se vende para este primer día"
+      },
+      "named": {
+        "dated": "Entrada {resort} de {days} días",
+        "datedShort": "{resort} {days} días",
+        "short": "{resort} {name}",
+        "withHopper": "{name} con {hopper}",
+        "withHopperShort": "{name} + {hopper}"
+      },
+      "find": {
+        "fixed": "Los primeros días de tus entradas fijan las fechas. Para buscar, déjalos abiertos."
+      },
+      "dates": {
+        "key": "Entrada de {resort}, {range}",
+        "inTicket": "en tu {count, plural, =1 {entrada} other {entradas}} de {resorts}"
+      },
+      "card": {
+        "suggested": "Entradas para este plan",
+        "owned": "Tus entradas",
+        "both": "Entradas",
+        "yours": "Tuyas",
+        "toBuy": "Por comprar"
+      },
+      "details": "Detalles de las entradas",
+      "suggest": {
+        "part": "{days, plural, =1 {1 día} other {# días}} en {resort} desde el {date}",
+        "partExtra": "{parkDays, plural, =1 {1 día} other {# días}} en {resort} desde el {date} con una entrada de {days} días",
+        "then": ", luego ",
+        "shape": "{name}, válida del {from} al {to}",
+        "dated": "Entrada de {days} días",
+        "extraDays": "Una entrada de {parkDays} días terminaría antes de tu último día en {resort}; por eso esta tiene {days} días.",
+        "window": "Una entrada de {resort} de {days} días vale {days} días cualesquiera de los {window} desde el primero.",
+        "second": "{resort}, segunda entrada",
+        "notCovered": "Tu {name} no cubre {parks}.",
+        "promotion": "La {name} también encaja en estos días."
+      },
+      "hopper": {
+        "worth": "Recomendado: {hopper}",
+        "adds": "Con {hopper}:",
+        "nothing": "{hopper} no añade nada a estos días.",
+        "evening": "una tarde en {park} el {date}",
+        "evenings": "{count} tardes en un segundo parque",
+        "hopDay": "{parks} el mismo día, {date}",
+        "hopDays": "{count} días con dos parques",
+        "fits": "{parks} solo {count, plural, =1 {cabe} other {caben}} con él",
+        "minutes": "unos {minutes} min menos por atracción",
+        "with": "Ver el plan con {hopper}",
+        "without": "Ver el plan sin {hopper}"
+      },
+      "hogwarts": "Para el Hogwarts Express entre Universal Studios e Islands of Adventure necesitas park-to-park.",
+      "shop": "Precios y entradas en {operator}",
+      "newTab": "(se abre en una pestaña nueva)",
+      "adopt": "Usar estas como tus entradas",
+      "longStay": {
+        "line": "Si vives en Reino Unido o Irlanda, puedes comprar entradas de 14 días en su lugar.",
+        "plan": "Planificar con ellas",
+        "detail": "Las entradas de 14 días en las tiendas británicas de los parques:"
+      },
+      "owned": {
+        "valid": "Válida del {from} al {to}",
+        "startChosen": "Mejor primer día para este plan: {start}. Válida hasta el {end}.",
+        "noLimit": "Sin límite de días",
+        "used": "{used} de {days} días",
+        "usedEvery": "usada {used} de sus {window} días",
+        "passDays": "{count, plural, =1 {1 día} other {# días}} en este plan",
+        "allowance": "y {count, plural, =1 {1 visita a un parque acuático} other {# visitas a parques acuáticos}}",
+        "ifHopper": "Si la tuya tiene {hopper}:"
+      },
+      "unused": {
+        "parks_fewer_than_days": "{count, plural, =1 {1 día queda} other {# días quedan}} sin usar: tus parques necesitan menos.",
+        "rest_days_kept": "En esta entrada {count, plural, =1 {cabría 1 día de parque más} other {cabrían # días de parque más}}. El plan deja días de descanso en su lugar.",
+        "restLink": "Cambiar días de descanso",
+        "window_outside_trip": "{count, plural, =1 {1 día queda} other {# días quedan}} sin usar: parte de su validez cae fuera de tu viaje.",
+        "no_open_day": "{count, plural, =1 {1 día queda} other {# días quedan}} sin usar: sus parques cierran los días que quedan.",
+        "other": "{count, plural, =1 {1 día queda sin usar} other {# días quedan sin usar}}."
+      },
+      "outside": {
+        "after": "{park} el {date} queda fuera de esta entrada, que termina el {edge}.",
+        "before": "{park} el {date} queda fuera de esta entrada, que empieza el {edge}.",
+        "leaveOut": "Quitar esta visita",
+        "changeTicket": "Cambiar entrada"
+      },
+      "mixing": {
+        "used": "Donde valen las dos entradas, el plan mezcla días de Disney y de Universal: unos {minutes} min menos por atracción que por separado.",
+        "forced": "Donde valen las dos entradas, el plan mezcla días de Disney y de Universal.",
+        "kept": "Los días de Disney y de Universal siguen juntos: mezclarlos ahorraría menos de 3 min por atracción."
+      },
+      "pass": {
+        "blockouts": "No sabemos qué días bloquea tu pase. Revisa tus {count, plural, =1 {1 día en {resort}} other {# días en {resort}}} antes de viajar.",
+        "blockoutLink": "Calendario de días bloqueados",
+        "reservation": "Con un pase necesitas reservar el parque la mayoría de los días.",
+        "reservationLink": "Reservas de parque"
+      },
+      "noPlannedPark": "Ningún parque de {resort} en este plan.",
+      "noPlannedParkAction": "Elegir parques de {resort}",
+      "problem": {
+        "after_trip": "Tu {ticket} empieza el {start}, después de que acabe tu viaje el {to}.",
+        "before_trip": "Tu {ticket} termina el {end}, antes de que empiece tu viaje el {from}.",
+        "not_on_sale": "Tu {ticket} no se vende con primer día el {start}. Revisa la fecha de tu reserva.",
+        "changeDates": "Cambiar fechas",
+        "changeTicket": "Cambiar entrada"
+      },
+      "split": "{visits, plural, =2 {Hemos añadido un segundo día en {park} para aprovechar los días de tu entrada.} other {Hemos dado # días a {park} para aprovechar los días de tu entrada.}}",
+      "unplaced": "{park} no ha cabido: a tu entrada de {resort} no le queda ningún día.",
+      "linkDropped": "{count, plural, =1 {Una entrada de este enlace no la conocemos; se ha quitado.} other {# entradas de este enlace no las conocemos; se han quitado.}}",
+      "hopNeedsHopper": "El park hopping solo cuenta con Park Hopper o park-to-park. Añade tu entrada en Entradas.",
+      "day": {
+        "long": "Día {day} de {of} en {resort}",
+        "short": "día {day} de {of}"
+      },
+      "sheet": {
+        "day": "Día {day} de {of} de tu entrada de {resort}.",
+        "dayHopper": "Día {day} de {of} de tu entrada de {resort}, {hopper} incluido.",
+        "valid": "Tu entrada vale del {from} al {to}.",
+        "hopEvening": "La tarde en {park} cuenta como el mismo día de entrada.",
+        "allowance": "Entrada de {resort}: una visita a un parque acuático, sin gastar día de parque.",
+        "pass": "Con tu pase anual de {resort}.",
+        "suggested": "Con la entrada de {resort} propuesta, este es el día {day}.",
+        "outside": "Este día queda fuera de tu entrada de {resort}."
+      }
     }
   },
   "news": {

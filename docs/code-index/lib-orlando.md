@@ -86,6 +86,11 @@ by hand: change the comment in the code and re-run the script. -->
 - `HUB_WINDOW_DAYS` _const_: How far the hub's calendar reaches past today: the API's default window.
 - Types: `RegionGroup`, `RankedPark`, `ShortestLine`, `HubBasis`, `EventLane`, `ResortMonthSummary`
 
+### [`local-choice.ts`](../../lib/orlando/local-choice.ts)
+
+- `localChoice` _function_: A `LocalChoice` under `key`, holding one of `values`.
+- Types: `LocalChoice`
+
 ### [`paths.ts`](../../lib/orlando/paths.ts)
 
 - `orlandoBestTimePath` _function_: The locale-relative path of Orlando's "best time to visit" pages: Disney and Universal together (`/orlando/beste-reisezeit`), or one resort (`/orlando/best-time-to-visit/disney-world`).
@@ -224,7 +229,7 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`plan-view.ts`](../../lib/orlando/plan-view.ts)
 
 - `PLAN_VIEWS` _const_: The result's three views.
-- `orlandoPlanView` _const_: The chosen view as an external store.
+- `orlandoPlanView` _const_: The chosen view as an external store (`parkfan_orlando_view`).
 - Types: `PlanView`
 
 ### [`plan-week.ts`](../../lib/orlando/plan-week.ts)
@@ -296,7 +301,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`planner-ui.ts`](../../lib/orlando/planner-ui.ts)
 
-"Open the planner's dates", as a signal from outside the planner: the hub's hero action asks, the mounted `OrlandoPlanner` answers (a phone opens the Dates sheet, a desk scrolls to the dates panel and focuses it).
+"Start the planner", as a signal from outside the planner: the hub's hero action asks, the mounted `OrlandoPlanner` answers.
 
 - `orlandoPlannerUi` _const_: The Orlando planner's open signal.
 
@@ -310,6 +315,10 @@ by hand: change the comment in the code and re-run the script. -->
 - `TRIP_REGION_CACHE_CONTROL` _const_: The region the open route is cached a day for, the API's own window, and an hour for the keyed ones, which the API keeps an hour in Redis. Repeated in `next.config.ts`, where the two must agree.
 - `TRIP_REGION_DATA_CACHE_CONTROL` _const_: The keyed routes' window at the edge and in the browser: the API's hour.
 - Types: `TripRegionRelayTarget`
+
+### [`ticket-answer.ts`](../../lib/orlando/ticket-answer.ts)
+
+- `orlandoTicketAnswer` _const_: Whether this browser answered "Do you already have tickets?", so the walk asks once and the Tickets row knows how to word itself. "Not yet" leaves no trace in the URL (no `tickets=`), so the answer itself lives here; the tickets do not.
 
 ### [`types.ts`](../../lib/orlando/types.ts)
 

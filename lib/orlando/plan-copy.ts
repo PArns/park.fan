@@ -107,10 +107,11 @@ export function dayWarnings(day: Pick<PlanDay, 'warnings'>): PlanWarningCode[] {
 
 /**
  * The one marker a day may wear in the overview (Level 1): the fact that changes what the visitor
- * does that day, in this order. An early close comes first (owner's decision: an earlier closing
- * time always counts), a rest day is a day off, an early slot is a reason to get up.
+ * does that day, in this order. A day outside its ticket comes first (it can cost the entry at the
+ * gate), then an early close (owner's decision: an earlier closing time always counts); a rest day
+ * is a day off, an early slot is a reason to get up.
  */
-export type DayMarker = 'closes' | 'rest' | 'early' | 'evening' | 'last_year';
+export type DayMarker = 'outside_ticket' | 'closes' | 'rest' | 'early' | 'evening' | 'last_year';
 
 /** Whether the day guests leave early that day: the API's flag, or one of its two codes. */
 export function closesEarly(day: Pick<PlanDay, 'closesEarly' | 'warnings' | 'reasons'>): boolean {
@@ -128,6 +129,7 @@ export function dayMarker(
 ): DayMarker | null {
   if (day.kind === 'rest') return 'rest';
   if (day.kind !== 'park' && day.kind !== 'hop') return null;
+  if (day.warnings.includes('outside_ticket_window')) return 'outside_ticket';
   if (closesEarly(day)) return 'closes';
   const perks = day.perks ?? [];
   if (perks.includes('early_entry') || perks.includes('early_park_admission')) return 'early';
@@ -146,9 +148,9 @@ export function relaxedRules(
 /** A park the plan could not place, with a reason this client can say. */
 export function unplacedParks(
   plan: Pick<TripPlan, 'unplaced'>
-): Array<{ slug: string; reason: 'no_open_day' | 'no_day_left' }> {
+): Array<{ slug: string; reason: 'no_open_day' | 'no_day_left' | 'no_ticket_day' }> {
   return plan.unplaced.flatMap((u) =>
-    u.reason === 'no_open_day' || u.reason === 'no_day_left'
+    u.reason === 'no_open_day' || u.reason === 'no_day_left' || u.reason === 'no_ticket_day'
       ? [{ slug: u.slug, reason: u.reason }]
       : []
   );
@@ -259,11 +261,19 @@ export function editCost(
  * Magic Kingdom Park". Only entries the API marks `auto` with more than one visit; anything else
  * in `meta.split` is ignored.
  */
-export function autoSplit(meta: Pick<PlanMeta, 'split'>): Array<{ slug: string; visits: number }> {
+export function autoSplit(
+  meta: Pick<PlanMeta, 'split'>
+): Array<{ slug: string; visits: number; ticket?: string }> {
   if (!Array.isArray(meta.split)) return [];
   return meta.split.flatMap((e) =>
     e && e.auto === true && typeof e.slug === 'string' && Number.isInteger(e.visits) && e.visits > 1
-      ? [{ slug: e.slug, visits: e.visits }]
+      ? [
+          {
+            slug: e.slug,
+            visits: e.visits,
+            ...(typeof e.ticket === 'string' && { ticket: e.ticket }),
+          },
+        ]
       : []
   );
 }

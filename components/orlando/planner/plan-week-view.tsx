@@ -2,7 +2,14 @@
 
 import { useMemo, useRef, useState } from 'react';
 import { useTranslations } from 'next-intl';
-import { BedDouble, ChevronLeft, ChevronRight, PlaneLanding, PlaneTakeoff } from 'lucide-react';
+import {
+  BedDouble,
+  ChevronLeft,
+  ChevronRight,
+  PlaneLanding,
+  PlaneTakeoff,
+  Ticket,
+} from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useMediaQuery } from '@/lib/hooks/use-media-query';
 import { formatGridTime } from '@/lib/planner/park-time';
@@ -35,7 +42,7 @@ import { PlannerBlockBar, PlannerBlockPhoto } from '@/components/planner/planner
 import { usePlanContext } from './plan-context';
 import { PLAN_FOCUS } from './plan-controls';
 import { usePartyName } from './use-day-facts';
-import { useEveningName } from './plan-day-bits';
+import { useEveningName, useTicketDayLabel } from './plan-day-bits';
 
 /** A canvas for a trip whose calendar has no hours yet: a plain day, only so rest days have a column. */
 const FALLBACK_CANVAS: TripCanvas = { startMin: 8 * 60, endMin: 22 * 60 };
@@ -79,6 +86,8 @@ export function PlanWeekView({
   const hours: number[] = [];
   for (let h = Math.ceil(canvas.startMin / 60); h * 60 <= canvas.endMin; h++) hours.push(h);
   const axis = shown[0] ? tripColumnGrid(shown[0], canvas, pxPerMin) : null;
+  // Owned tickets add a line under each column's date, the header grows by it on every column.
+  const ticketLine = (plan.meta.tickets ?? []).length > 0;
 
   const touch = useRef<number | null>(null);
   const go = (delta: number) => setPage(Math.max(0, Math.min(pages.length - 1, current + delta)));
@@ -133,7 +142,7 @@ export function PlanWeekView({
         }}
       >
         {/* The planner's hour gutter. */}
-        <div className="w-10 shrink-0 pt-12" aria-hidden="true">
+        <div className={cn('w-10 shrink-0', ticketLine ? 'pt-16' : 'pt-12')} aria-hidden="true">
           <div className="relative" style={{ height }}>
             {axis &&
               hours.map((hour) => (
@@ -157,6 +166,8 @@ export function PlanWeekView({
               key={span.date}
               span={span}
               day={dayBy.get(span.date)}
+              meta={ticketLine ? plan.meta : null}
+              phone={phone}
               canvas={canvas}
               pxPerMin={pxPerMin}
               calendar={calendar}
@@ -172,6 +183,8 @@ export function PlanWeekView({
 function WeekColumn({
   span,
   day,
+  meta,
+  phone,
   canvas,
   pxPerMin,
   calendar,
@@ -179,6 +192,9 @@ function WeekColumn({
 }: {
   span: TripDaySpan;
   day: PlanDay | undefined;
+  /** The plan's meta where it has owned tickets, whose day each column names. */
+  meta: TripPlan['meta'] | null;
+  phone: boolean;
   canvas: TripCanvas;
   pxPerMin: number;
   calendar: TripCalendar | undefined;
@@ -192,6 +208,8 @@ function WeekColumn({
   const eveningName = day ? eveningOf(day) : null;
   const weekday = formatParkDay(locale, span.date, { weekday: 'short' });
   const date = formatParkDay(locale, span.date, { day: 'numeric', month: 'short' });
+  const ticketLabel = useTicketDayLabel();
+  const ticketDay = meta && day ? ticketLabel(day, meta, phone) : null;
 
   const isPark = span.kind === 'park' || span.kind === 'hop';
   const fullDay = (label: string, icon: React.ReactNode, tone: 'rest' | 'travel') => (
@@ -214,9 +232,27 @@ function WeekColumn({
 
   return (
     <li className="flex min-w-0 flex-col">
-      <div className="flex h-12 flex-col items-center justify-center text-center leading-tight">
+      <div
+        className={cn(
+          'flex flex-col items-center justify-center text-center leading-tight',
+          meta ? 'h-16' : 'h-12'
+        )}
+      >
         <span className="text-muted-foreground text-[11px] uppercase">{weekday}</span>
         <span className="text-sm font-semibold tabular-nums">{date}</span>
+        {meta && (
+          <span
+            className="text-foreground/75 mt-0.5 flex min-h-4 items-center gap-1 text-[11px] tabular-nums"
+            data-plan-ticket-day={ticketDay ?? undefined}
+          >
+            {ticketDay && (
+              <>
+                <Ticket className="size-3 shrink-0" aria-hidden="true" />
+                {ticketDay}
+              </>
+            )}
+          </span>
+        )}
       </div>
       <div
         className="bg-muted/10 relative overflow-hidden rounded-md"
@@ -284,7 +320,7 @@ function WeekColumn({
               type="button"
               onClick={onOpen}
               data-plan-block={block.slug}
-              aria-label={`${weekday} ${date}: ${name}, ${minutes}`}
+              aria-label={`${weekday} ${date}: ${[name, ticketDay, minutes].filter(Boolean).join(', ')}`}
               className={cn('absolute inset-x-0.5 rounded-md text-left', PLAN_FOCUS)}
               style={{ top, height: blockHeight }}
             >

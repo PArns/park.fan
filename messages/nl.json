@@ -3321,14 +3321,14 @@
       "hop": "Parkhoppen",
       "hopHint": "Twee parken van één resort op één dag, als de reis minder dagen dan parkbezoeken heeft.",
       "hopOn": "parkhoppen",
-      "ticket": "Heb je een Park Hopper-ticket (park naar park)?",
-      "ticketHopper": "Ja, Park Hopper",
-      "ticketHopperHint": "Alleen daarmee kan een dag twee parken bevatten, of een avond in een tweede park.",
-      "ticketBase": "Nee, één park per dag",
-      "ticketShort": "Park Hopper",
       "evenings": "Avonden plannen",
       "eveningsHint": "Sluit een park vroeg, dan stelt het plan voor de avond een tweede park of Disney Springs en CityWalk voor.",
-      "eveningsOff": "geen avonden"
+      "eveningsOff": "geen avonden",
+      "blocksTickets": "Disney-dagen en Universal-dagen",
+      "blocksAuto": "Alleen gemengd als het tijd scheelt",
+      "blocksAutoHint": "Binnen de data van je tickets gemengd als dat minstens 3 min per attractie scheelt.",
+      "blocksAlways": "Altijd bij elkaar",
+      "blocksFree": "Gemengd waar de wachttijden korter zijn"
     },
     "result": {
       "label": "Je plan",
@@ -3374,7 +3374,8 @@
       "earlyPark": "Early Park Admission",
       "rest": "Rustdag",
       "evening": "Extended Evening Hours",
-      "last_year": "vorig jaar"
+      "last_year": "vorig jaar",
+      "outside_ticket": "buiten je ticket"
     },
     "views": {
       "label": "Weergave",
@@ -3582,6 +3583,328 @@
       "extreme_heat": "heet",
       "hurricane_season": "orkaanseizoen",
       "hurricane_peak": "piek van het orkaanseizoen"
+    },
+    "tickets": {
+      "title": "Tickets",
+      "question": "Heb je al tickets?",
+      "sheetHint": "Zonder antwoord stelt het plan tickets voor om te kopen. Je eigen tickets kun je hier altijd invullen.",
+      "no": "Nog niet, gewoon plannen",
+      "noHint": "Het plan stelt per resort een ticket voor: hoeveel dagen, en vanaf wanneer.",
+      "yes": "Ja, ik heb tickets",
+      "yesHint": "Disney, Universal, SeaWorld of LEGOLAND, ook jaarabonnementen, of de tickets die je gaat kopen.",
+      "nextDates": "Verder naar de reisdata",
+      "yours": "Jouw tickets",
+      "combo": {
+        "title": "Combiticket Disney en Universal, elk 14 dagen",
+        "hint": "Disney & Universal Combo of Orlando Freedom Ticket van een Britse reisorganisatie: vult beide tickets in."
+      },
+      "resort": {
+        "walt-disney-world": "Walt Disney World",
+        "universal-orlando": "Universal Orlando",
+        "seaworld-orlando": "SeaWorld, Aquatica, Busch Gardens",
+        "day-trips": "LEGOLAND Florida"
+      },
+      "resortShort": {
+        "walt-disney-world": "Disney",
+        "universal-orlando": "Universal",
+        "seaworld-orlando": "SeaWorld",
+        "day-trips": "LEGOLAND"
+      },
+      "hopperName": {
+        "disney": "Park Hopper",
+        "universal": "park-to-park"
+      },
+      "add": "Ticket toevoegen",
+      "addLabel": "Een {resort}-ticket toevoegen",
+      "addAnother": "Nog een {resort}-ticket toevoegen",
+      "remove": "Verwijderen",
+      "removeLabel": "Het {resort}-ticket verwijderen",
+      "which": "Welk {resort}-ticket?",
+      "change": "Wijzigen",
+      "changeLabel": "{name} wijzigen",
+      "close": "Sluiten",
+      "max": "Hoogstens {count} tickets.",
+      "mixNote": "Elk ticket houdt zijn eigen data. Waar beide geldig zijn, mengt het plan Disney- en Universal-dagen alleen als dat minstens 3 min per attractie scheelt.",
+      "market": {
+        "uk": "Alleen VK & Ierland",
+        "intl": "Verkocht buiten de VS"
+      },
+      "entry": {
+        "wdw-dated": {
+          "title": "Ticket met datum, 1 tot 10 dagen",
+          "hint": "Van Disneys Amerikaanse site, uit een Disney-hotelpakket of van de meeste verkopers. Met of zonder Park Hopper."
+        },
+        "wdw-uk-14": {
+          "title": "14-Day Magic Ticket",
+          "hint": "14 parkdagen binnen 18 dagen. Parkhoppen en waterparken inbegrepen."
+        },
+        "wdw-uk-7": {
+          "title": "7-Day Magic Ticket",
+          "hint": "7 parkdagen binnen 15 dagen. Parkhoppen en waterparken inbegrepen."
+        },
+        "wdw-4-park": {
+          "title": "4-Park Magic Ticket",
+          "hint": "Eén dag in elk themapark binnen 6 dagen, zonder hoppen. Eerste dag in de periode {range}."
+        },
+        "wdw-pass": {
+          "title": "Jaarabonnement",
+          "hint": "Incredi-Pass, Sorcerer, Pirate of Pixie Dust Pass."
+        },
+        "wdw-unsure": {
+          "title": "Weet ik niet precies",
+          "hint": "Zeg ons hoeveel dagen het heeft en of Park Hopper erbij zit."
+        },
+        "uor-dated": {
+          "title": "Ticket met datum, 1 tot 5 dagen",
+          "hint": "Van Universals Amerikaanse site of de meeste verkopers. Base of park-to-park, Epic Universe vanaf 3 dagen."
+        },
+        "uor-uk-14": {
+          "title": "Ticket voor 14 dagen",
+          "hint": "All Parks of Three Park Adventure Ticket: 14 dagen achter elkaar elke dag, park-to-park, Epic Universe inbegrepen."
+        },
+        "uor-epic": {
+          "title": "Met één dag Epic Universe",
+          "hint": "1-Day + 1-Day Epic Universe, of de aanbieding 2-Day Park-to-Park + 1 Day Epic Universe."
+        },
+        "uor-1-day": {
+          "title": "Dagticket voor Epic Universe of Volcano Bay",
+          "hint": "Eén park op één dag."
+        },
+        "uor-pass": {
+          "title": "Jaarabonnement",
+          "hint": "Seasonal, Power, Preferred of Premier. Epic Universe zit in geen enkel abonnement."
+        },
+        "uor-unsure": {
+          "title": "Weet ik niet precies",
+          "hint": "Zeg ons hoeveel dagen het heeft en of park-to-park erbij zit."
+        },
+        "sw-1-day": {
+          "title": "Dagticket",
+          "hint": "Eén bezoek aan SeaWorld Orlando of Busch Gardens Tampa Bay."
+        },
+        "sw-two-park": {
+          "title": "Two Park Ticket",
+          "hint": "SeaWorld en Aquatica, of SeaWorld en Busch Gardens, elk één bezoek binnen 14 dagen."
+        },
+        "sw-three-park": {
+          "title": "Three-Day, Three Park Ticket",
+          "hint": "3 bezoeken aan SeaWorld, Aquatica, Busch Gardens of Adventure Island binnen 14 dagen na het eerste."
+        },
+        "sw-four-parks": {
+          "title": "Four Parks Ticket",
+          "hint": "SeaWorld, Aquatica, Busch Gardens en Adventure Island, zo vaak je wilt, 14 dagen vanaf het eerste bezoek."
+        },
+        "sw-uk-3-visit": {
+          "title": "3-Visit Ticket + Eat Free",
+          "hint": "3 bezoeken aan SeaWorld, Aquatica of Busch Gardens binnen 14 dagen na het eerste."
+        },
+        "sw-uk-ultimate": {
+          "title": "Ultimate Ticket",
+          "hint": "SeaWorld, Aquatica en Busch Gardens, zo vaak je wilt, 14 dagen vanaf het eerste bezoek."
+        },
+        "sw-discovery-cove": {
+          "title": "Dag in Discovery Cove",
+          "hint": "Je gereserveerde dag in Discovery Cove, los of met 14 dagen SeaWorld en zusterparken eromheen."
+        },
+        "sw-fun-card": {
+          "title": "Fun Card",
+          "hint": "SeaWorld (met of zonder Aquatica) of Busch Gardens, zo vaak je wilt tot eind 2027, behalve op blokkadedagen."
+        },
+        "sw-pass": {
+          "title": "Jaarabonnement",
+          "hint": "SeaWorld Orlando, of de vier parken in Florida."
+        },
+        "lego-day": {
+          "title": "Ticket voor 1 of 2 dagen",
+          "hint": "LEGOLAND Florida."
+        },
+        "lego-7": {
+          "title": "7 Florida Attractions Ticket",
+          "hint": "Eén bezoek aan LEGOLAND binnen 14 dagen, onderdeel van Merlins ticket voor zeven attracties."
+        },
+        "lego-pass": {
+          "title": "Jaarabonnement",
+          "hint": "LEGOLAND Florida."
+        }
+      },
+      "variant": {
+        "uor-1-day-plus-epic": "1-Day + 1-Day Epic Universe",
+        "uor-2-day-p2p-plus-epic": "2-Day Park-to-Park + 1 Day Epic Universe",
+        "uor-epic-1-day": "Epic Universe",
+        "uor-volcano-bay-1-day": "Volcano Bay",
+        "seaworld-1-day": "SeaWorld Orlando",
+        "busch-gardens-1-day": "Busch Gardens Tampa Bay",
+        "discovery-cove": "Alleen Discovery Cove",
+        "discovery-cove-plus-2": "+ SeaWorld en Aquatica",
+        "discovery-cove-plus-3": "+ SeaWorld, Aquatica en Busch Gardens",
+        "seaworld-fun-card": "SeaWorld",
+        "seaworld-fun-card-aquatica": "SeaWorld en Aquatica",
+        "busch-gardens-fun-card": "Busch Gardens",
+        "seaworld-annual-pass": "SeaWorld Orlando",
+        "seaworld-annual-pass-florida": "Vier parken in Florida",
+        "legoland-1-day": "1 dag",
+        "legoland-2-day": "2 dagen"
+      },
+      "fields": {
+        "which": "Welke?",
+        "days": "Parkdagen",
+        "hopper": "Met {hopper}?",
+        "hopperAnswer": {
+          "yes": "Ja",
+          "no": "Nee",
+          "unsure": "Weet ik niet"
+        },
+        "hopperUnsure": "We plannen zonder {hopper} en zeggen wat het zou opleveren.",
+        "waterParks": "Waterparken inbegrepen (Water Park and Sports of Park Hopper Plus)",
+        "volcanoBay": "Volcano Bay inbegrepen",
+        "start": "Eerste dag van het ticket",
+        "startFirstUse": "Eerste bezoek",
+        "startReserved": "Je dag in Discovery Cove",
+        "startOpen": "Nog niet vastgelegd",
+        "startOpenHint": "Het plan kiest de beste eerste dag.",
+        "startHint": "De datum uit je boeking.",
+        "startClear": "Openlaten",
+        "notOnSale": "Het {name} wordt alleen verkocht met een eerste dag {ranges}.",
+        "saleRange": "van {from} tot {to}",
+        "saleUntil": "tot {date}",
+        "saleFrom": "vanaf {date}"
+      },
+      "window": {
+        "any": "Geldig van {from} tot {to}: op {days} willekeurige van deze {window} dagen.",
+        "every": "Elke dag geldig van {from} tot {to}.",
+        "anyOpen": "Op {days} willekeurige van {window} dagen vanaf de eerste dag.",
+        "everyOpen": "Elke dag geldig, {window} dagen vanaf de eerste.",
+        "unsure": "We plannen met de kortste geldigheid die een ticket van deze lengte kan hebben.",
+        "ukUniversal": "Met deze eerste dag is het het {name}."
+      },
+      "row": {
+        "ask": "Heb je al tickets?",
+        "none": "Geen tickets ingevuld",
+        "noneHopper": "Geen tickets ingevuld · gepland met {hopper}",
+        "count": "{count} tickets: {resorts}",
+        "startOpen": "{ticket}, eerste dag open",
+        "after_trip": "{ticket} begint na je reis",
+        "before_trip": "{ticket} eindigt voor je reis",
+        "not_on_sale": "{ticket}: niet verkocht voor deze eerste dag"
+      },
+      "named": {
+        "dated": "{resort}-ticket voor {days} dagen",
+        "datedShort": "{resort} {days} dagen",
+        "short": "{resort} {name}",
+        "withHopper": "{name} met {hopper}",
+        "withHopperShort": "{name} + {hopper}"
+      },
+      "find": {
+        "fixed": "De eerste dagen van je tickets leggen de data vast. Laat ze open om te zoeken."
+      },
+      "dates": {
+        "key": "{resort}-ticket, {range}",
+        "inTicket": "in je {resorts}-{count, plural, =1 {ticket} other {tickets}}"
+      },
+      "card": {
+        "suggested": "Tickets voor dit plan",
+        "owned": "Jouw tickets",
+        "both": "Tickets",
+        "yours": "Van jou",
+        "toBuy": "Te kopen"
+      },
+      "details": "Details van de tickets",
+      "suggest": {
+        "part": "{days, plural, =1 {1 dag} other {# dagen}} {resort} vanaf {date}",
+        "partExtra": "{parkDays, plural, =1 {1 dag} other {# dagen}} {resort} vanaf {date} met een ticket voor {days} dagen",
+        "then": ", daarna ",
+        "shape": "{name}, geldig van {from} tot {to}",
+        "dated": "Ticket voor {days} dagen",
+        "extraDays": "Een ticket voor {parkDays} dagen zou eindigen voor je laatste {resort}-dag, daarom heeft dit {days} dagen.",
+        "window": "Een {resort}-ticket voor {days} dagen geldt op {days} willekeurige van de {window} dagen vanaf de eerste dag.",
+        "second": "{resort}, tweede ticket",
+        "notCovered": "Je {name} dekt {parks} niet.",
+        "promotion": "Het {name} past ook bij deze dagen."
+      },
+      "hopper": {
+        "worth": "Aanbevolen: {hopper}",
+        "adds": "Met {hopper}:",
+        "nothing": "{hopper} voegt op deze dagen niets toe.",
+        "evening": "een avond in {park} op {date}",
+        "evenings": "{count} avonden in een tweede park",
+        "hopDay": "{parks} op één dag, {date}",
+        "hopDays": "{count} dagen met twee parken",
+        "fits": "{parks} {count, plural, =1 {past} other {passen}} er alleen hiermee in",
+        "minutes": "ongeveer {minutes} min minder per attractie",
+        "with": "Plan met {hopper} tonen",
+        "without": "Plan zonder {hopper} tonen"
+      },
+      "hogwarts": "Voor de Hogwarts Express tussen Universal Studios en Islands of Adventure heb je park-to-park nodig.",
+      "shop": "Prijzen en tickets bij {operator}",
+      "newTab": "(opent in een nieuw tabblad)",
+      "adopt": "Als jouw tickets gebruiken",
+      "longStay": {
+        "line": "Wie in het VK of Ierland woont, kan in plaats daarvan tickets voor 14 dagen kopen.",
+        "plan": "Daarmee plannen",
+        "detail": "De tickets voor 14 dagen in de Britse winkels van de parken:"
+      },
+      "owned": {
+        "valid": "Geldig van {from} tot {to}",
+        "startChosen": "Beste eerste dag voor dit plan: {start}. Geldig tot {end}.",
+        "noLimit": "Geen daglimiet",
+        "used": "{used} van {days} dagen",
+        "usedEvery": "gebruikt op {used} van zijn {window} dagen",
+        "passDays": "{count, plural, =1 {1 dag} other {# dagen}} in dit plan",
+        "allowance": "en {count, plural, =1 {1 bezoek aan een waterpark} other {# bezoeken aan een waterpark}}",
+        "ifHopper": "Als het jouwe {hopper} heeft:"
+      },
+      "unused": {
+        "parks_fewer_than_days": "{count, plural, =1 {1 dag blijft} other {# dagen blijven}} ongebruikt: je parken hebben er minder nodig.",
+        "rest_days_kept": "Op dit ticket {count, plural, =1 {zou nog 1 parkdag passen} other {zouden nog # parkdagen passen}}. Het plan houdt in plaats daarvan rustdagen.",
+        "restLink": "Rustdagen wijzigen",
+        "window_outside_trip": "{count, plural, =1 {1 dag blijft} other {# dagen blijven}} ongebruikt: een deel van de geldigheid valt buiten je reis.",
+        "no_open_day": "{count, plural, =1 {1 dag blijft} other {# dagen blijven}} ongebruikt: op de overige dagen zijn de parken dicht.",
+        "other": "{count, plural, =1 {1 dag blijft} other {# dagen blijven}} ongebruikt."
+      },
+      "outside": {
+        "after": "{park} op {date} valt buiten dit ticket, dat op {edge} eindigt.",
+        "before": "{park} op {date} valt buiten dit ticket, dat op {edge} begint.",
+        "leaveOut": "Dit bezoek weglaten",
+        "changeTicket": "Ticket wijzigen"
+      },
+      "mixing": {
+        "used": "Waar beide tickets geldig zijn, mengt het plan Disney- en Universal-dagen: ongeveer {minutes} min minder per attractie dan apart.",
+        "forced": "Waar beide tickets geldig zijn, mengt het plan Disney- en Universal-dagen.",
+        "kept": "Disney-dagen en Universal-dagen blijven bij elkaar: mengen zou minder dan 3 min per attractie schelen."
+      },
+      "pass": {
+        "blockouts": "Op welke dagen je abonnement niet geldt, weten we niet. Controleer je {count, plural, =1 {1 {resort}-dag} other {# {resort}-dagen}} voor vertrek.",
+        "blockoutLink": "Kalender met blokkadedagen",
+        "reservation": "Met een abonnement heb je op de meeste dagen een parkreservering nodig.",
+        "reservationLink": "Parkreserveringen"
+      },
+      "noPlannedPark": "Geen {resort}-park in dit plan.",
+      "noPlannedParkAction": "{resort}-parken kiezen",
+      "problem": {
+        "after_trip": "Je {ticket} begint op {start}, nadat je reis op {to} eindigt.",
+        "before_trip": "Je {ticket} eindigt op {end}, voordat je reis op {from} begint.",
+        "not_on_sale": "Je {ticket} wordt niet verkocht met eerste dag {start}. Controleer de datum in je boeking.",
+        "changeDates": "Reisdata wijzigen",
+        "changeTicket": "Ticket wijzigen"
+      },
+      "split": "{visits, plural, =2 {We hebben {park} een tweede dag gegeven, zodat de dagen van je ticket gebruikt worden.} other {We hebben {park} # dagen gegeven, zodat de dagen van je ticket gebruikt worden.}}",
+      "unplaced": "{park} paste niet: op je {resort}-ticket was geen dag meer vrij.",
+      "linkDropped": "{count, plural, =1 {Eén ticket in deze link kennen we niet; het is weggelaten.} other {# tickets in deze link kennen we niet; ze zijn weggelaten.}}",
+      "hopNeedsHopper": "Parkhoppen telt alleen met Park Hopper of park-to-park. Vul je ticket in onder Tickets.",
+      "day": {
+        "long": "{resort}-dag {day} van {of}",
+        "short": "dag {day} van {of}"
+      },
+      "sheet": {
+        "day": "{resort}-dag {day} van {of}.",
+        "dayHopper": "{resort}-dag {day} van {of}, {hopper} inbegrepen.",
+        "valid": "Je ticket is geldig van {from} tot {to}.",
+        "hopEvening": "De avond in {park} valt op dezelfde ticketdag.",
+        "allowance": "{resort}-ticket: een bezoek aan een waterpark, geen parkdag.",
+        "pass": "Met je {resort}-jaarabonnement.",
+        "suggested": "Met het voorgestelde {resort}-ticket is dit dag {day}.",
+        "outside": "Deze dag valt buiten je {resort}-ticket."
+      }
     }
   },
   "news": {

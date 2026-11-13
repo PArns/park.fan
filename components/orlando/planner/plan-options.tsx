@@ -11,6 +11,7 @@ import {
   type PlanHotel,
   type PlanRest,
 } from '@/lib/orlando/plan';
+import { hopperTicketResorts, ticketsCoverBothResorts } from '@/lib/orlando/plan-tickets';
 import { usePlanContext } from './plan-context';
 import { PlanCheckRow, PlanRadioGroup, PlanStepper } from './plan-controls';
 
@@ -25,20 +26,24 @@ const DEFAULT_STREAK = 3;
  */
 export function usePlanOptionsSummary(state: OrlandoPlanState): string {
   const t = useTranslations('orlandoPlanner.options');
-  const { region } = usePlanContext();
+  const { region, tickets: catalog } = usePlanContext();
   const area = region.hotelAreas.find((a) => a.key === state.area);
+  const mixable = ticketsCoverBothResorts(state.tickets, catalog);
   const streak = restStreak(state.rest);
   return [
     t(`hotelShort.${effectiveHotel(state)}`),
     area ? t('fromArea', { area: area.name }) : null,
-    state.blocks === false ? t('blocksOff') : t('blocksOn'),
+    state.blocks === false
+      ? t('blocksOff')
+      : state.blocks === null && mixable
+        ? null
+        : t('blocksOn'),
     state.rest === 'none'
       ? t('restNone')
       : streak !== null
         ? t('restMaxShort', { n: streak })
         : t('restAuto'),
     state.fireworks === 'want' ? t('fireworksWantShort') : null,
-    state.ticket === 'hopper' ? t('ticketShort') : null,
     state.hop ? t('hopOn') : null,
     state.evenings ? null : t('eveningsOff'),
   ]
@@ -47,15 +52,23 @@ export function usePlanOptionsSummary(state: OrlandoPlanState): string {
 }
 
 /**
- * Fine-tune: everything the plan can be told beyond dates and parks, each with the default the API
- * plans with already chosen, so nothing here is required. Where you sleep (Universal Premier
- * includes Express at Universal Studios and Islands of Adventure), where the drive times start,
- * the fireworks question, resort blocks, rest days and park hopping.
+ * Fine-tune: everything the plan can be told beyond tickets, dates and parks, each with the default
+ * the API plans with already chosen, so nothing here is required. Where you sleep (Universal
+ * Premier includes Express at Universal Studios and Islands of Adventure), where the drive times
+ * start, the fireworks question, resort blocks, rest days and park hopping, which only a hopper
+ * makes count (owned, or plan first's).
  */
 export function PlanOptions({ className }: { className?: string }) {
   const t = useTranslations('orlandoPlanner.options');
-  const { region, state, update, areaKeys, live } = usePlanContext();
+  const { region, state, update, areaKeys, live, tickets: catalog } = usePlanContext();
   const streak = restStreak(state.rest);
+  const hopper =
+    state.ticket === 'hopper' ||
+    state.hopper.length > 0 ||
+    hopperTicketResorts(state.tickets, catalog).length > 0;
+  // Two owned windows decide where Disney and Universal days go; the API mixes them only where it
+  // pays, unless told to keep them together or to mix.
+  const mixable = ticketsCoverBothResorts(state.tickets, catalog);
 
   return (
     <div className={cn('flex flex-col gap-5', className)}>
@@ -93,26 +106,33 @@ export function PlanOptions({ className }: { className?: string }) {
         ]}
       />
 
-      <PlanRadioGroup<OrlandoPlanState['ticket']>
-        legend={t('ticket')}
-        value={state.ticket}
-        disabled={!live}
-        onChange={(ticket) => update((s) => ({ ...s, ticket, hop: ticket === 'hopper' && s.hop }))}
-        options={[
-          { value: 'hopper', label: t('ticketHopper'), hint: t('ticketHopperHint') },
-          { value: 'base', label: t('ticketBase') },
-        ]}
-      />
+      {mixable && (
+        <PlanRadioGroup<'auto' | 'on' | 'off'>
+          legend={t('blocksTickets')}
+          value={state.blocks === null ? 'auto' : state.blocks ? 'on' : 'off'}
+          disabled={!live}
+          onChange={(mode) =>
+            update((s) => ({ ...s, blocks: mode === 'auto' ? null : mode === 'on' }))
+          }
+          options={[
+            { value: 'auto', label: t('blocksAuto'), hint: t('blocksAutoHint') },
+            { value: 'on', label: t('blocksAlways') },
+            { value: 'off', label: t('blocksFree') },
+          ]}
+        />
+      )}
 
       <div className="flex flex-col">
-        <PlanCheckRow
-          checked={state.blocks !== false}
-          disabled={!live}
-          onChange={(blocks) => update((s) => ({ ...s, blocks: blocks ? null : false }))}
-          label={t('blocks')}
-          hint={t('blocksHint')}
-        />
-        {state.ticket === 'hopper' && (
+        {!mixable && (
+          <PlanCheckRow
+            checked={state.blocks !== false}
+            disabled={!live}
+            onChange={(blocks) => update((s) => ({ ...s, blocks: blocks ? null : false }))}
+            label={t('blocks')}
+            hint={t('blocksHint')}
+          />
+        )}
+        {hopper && (
           <PlanCheckRow
             checked={state.hop}
             disabled={!live}

@@ -12,7 +12,7 @@ import type { TripPlan } from '@/lib/orlando/plan';
 import type { TripCalendar } from '@/lib/orlando/types';
 import { usePlanContext } from './plan-context';
 import { PLAN_FOCUS } from './plan-controls';
-import { PlanDayMarker, useDayMarkerText, useDayParks } from './plan-day-bits';
+import { PlanDayMarker, useDayMarkerText, useDayParks, useTicketDayLabel } from './plan-day-bits';
 
 /**
  * The Month view: the trip in its calendar, whole weeks from Monday. A trip day holds the park's
@@ -32,6 +32,7 @@ export function PlanMonthView({
   const { locale, parkBySlug } = usePlanContext();
   const parksOf = useDayParks();
   const markerText = useDayMarkerText();
+  const ticketLabel = useTicketDayLabel();
   const weeks = useMemo(
     () => tripMonthWeeks(plan.meta.from, plan.meta.to),
     [plan.meta.from, plan.meta.to]
@@ -77,12 +78,13 @@ export function PlanMonthView({
             ? `${parksOf(day)}${day.headlinerWait != null ? `, ${t('week.minutes', { minutes: day.headlinerWait })}` : ''}`
             : t(`day.${day.kind}`);
           const marker = isPark ? markerText(day, calendar) : null;
+          const ticketDay = isPark ? ticketLabel(day, plan.meta) : null;
           return (
             <li key={cell.date} className="min-w-0">
               <button
                 type="button"
                 onClick={() => onOpenDay(cell.date)}
-                aria-label={`${full}: ${what}${marker ? `, ${marker}` : ''}`}
+                aria-label={`${full}: ${[what, ticketDay, marker].filter(Boolean).join(', ')}`}
                 className={cn(
                   'border-border/60 bg-muted/20 hover:bg-muted/40 flex min-h-16 w-full flex-col items-start gap-1 rounded-md border p-1 text-left transition-colors',
                   PLAN_FOCUS

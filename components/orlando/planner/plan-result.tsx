@@ -1,6 +1,7 @@
 'use client';
 
 import { useCallback, useRef, useState, useSyncExternalStore, type Ref } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import { CalendarDays, LayoutList, Rows3, Undo2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -33,6 +34,13 @@ import {
 } from '@/lib/orlando/plan-copy';
 import { PlanRequestError } from '@/lib/orlando/plan-fetch';
 import { whenRequestQuery } from '@/lib/orlando/plan-when';
+import { readTickets } from '@/lib/orlando/plan-query';
+import {
+  hopperTicketResorts,
+  ticketProblem,
+  ticketWindow,
+  type TicketProblem,
+} from '@/lib/orlando/plan-tickets';
 import { orlandoPlanView, PLAN_VIEWS, type PlanView } from '@/lib/orlando/plan-view';
 import type { TripCalendar } from '@/lib/orlando/types';
 import { usePlanContext } from './plan-context';
@@ -46,6 +54,8 @@ import { PLAN_WIDE_QUERY } from './plan-setup';
 import { PlanWeekView } from './plan-week-view';
 import { PlanWhenResult } from './plan-when-result';
 import { useTripCalendar, useTripPlan, useTripWhen, useUnpinnedPlan } from './use-trip-plan';
+import { PlanTicketsCard, type PlanEdit } from './plan-tickets-card';
+import { useResortWord, useTicketName } from './plan-ticket-words';
 
 const VIEW_ICON = { agenda: LayoutList, week: Rows3, month: CalendarDays } as const;
 
@@ -56,13 +66,7 @@ const VIEW_ICON = { agenda: LayoutList, week: Rows3, month: CalendarDays } as co
  * plan stays on screen, dimmed, while a change is asked for. In the When mode it is the search's
  * answer instead (`PlanWhenResult`).
  */
-export function PlanResult({
-  ref,
-  onChooseDates,
-}: {
-  ref?: Ref<HTMLDivElement>;
-  onChooseDates: () => void;
-}) {
+export function PlanResult({ ref, edit }: { ref?: Ref<HTMLDivElement>; edit: PlanEdit }) {
   const t = useTranslations('orlandoPlanner');
   const { state, headliners } = usePlanContext();
 
@@ -78,12 +82,12 @@ export function PlanResult({
       ) : planProblem(state, headliners) === 'no_dates' ? (
         <div className="border-border/60 flex min-h-40 flex-col items-start justify-center gap-3 rounded-2xl border border-dashed p-5">
           <p className="text-sm">{t('result.empty')}</p>
-          <Button variant="outline" onClick={onChooseDates} className="lg:hidden">
+          <Button variant="outline" onClick={edit.dates} className="lg:hidden">
             {t('result.chooseDates')}
           </Button>
         </div>
       ) : (
-        <PlanAnswerSection />
+        <PlanAnswerSection edit={edit} />
       )}
     </section>
   );
@@ -140,11 +144,12 @@ function Failure({ error, onRetry }: { error: unknown; onRetry: () => void }) {
   );
 }
 
-function PlanAnswerSection() {
+function PlanAnswerSection({ edit }: { edit: PlanEdit }) {
   const t = useTranslations('orlandoPlanner');
-  const { state, update, headliners, parkBySlug } = usePlanContext();
+  const { state, update, headliners, parkBySlug, tickets: catalog } = usePlanContext();
   const problem = planProblem(state, headliners);
-  const query = planRequestQuery(state, headliners);
+  const missed = ticketProblem(state, catalog);
+  const query = planRequestQuery(state, headliners, missed !== null);
   const plan = useTripPlan(query);
   const unpinned = useUnpinnedPlan(query);
   const calendar = useTripCalendar(state.from, state.to);
@@ -175,6 +180,7 @@ function PlanAnswerSection() {
       </div>
     );
   }
+  if (missed) return <TicketProblemBox problem={missed} edit={edit} />;
   if (!plan.data) {
     return plan.isError ? (
       <Failure error={plan.error} onRetry={() => void plan.refetch()} />
@@ -211,7 +217,7 @@ function PlanAnswerSection() {
       {beacon && <PlannerPageParkBeacon {...beacon} />}
       {plan.isError && <Failure error={plan.error} onRetry={() => void plan.refetch()} />}
 
-      <PlanAnswer plan={data} calendar={calendar.data} onOpenDay={openDay} />
+      <PlanAnswer plan={data} calendar={calendar.data} onOpenDay={openDay} edit={edit} />
 
       {state.locks.length > 0 && (
         <EditBar
@@ -260,27 +266,44 @@ function PlanAnswer({
   plan,
   calendar,
   onOpenDay,
+  edit,
 }: {
   plan: TripPlan;
   calendar: TripCalendar | undefined;
   onOpenDay: (date: string) => void;
+  edit: PlanEdit;
 }) {
   const t = useTranslations('orlandoPlanner');
-  const { locale, today, parkName, state } = usePlanContext();
+  const { locale, today, parkName, parkBySlug, state, tickets: catalog } = usePlanContext();
+  const resortWord = useResortWord();
+  const dropped = useDroppedTickets();
   const parksOf = useDayParks();
   const eveningOf = useEveningName();
   const savings = planSavings(plan.totals);
   const reach = today ? lastYearReach(plan.days, calendar?.meta.forecastUntil, today) : null;
   const added = autoSplit(plan.meta).map((e) =>
-    t('answer.split', { park: parkName(e.slug), visits: e.visits })
+    t(e.ticket ? 'tickets.split' : 'answer.split', { park: parkName(e.slug), visits: e.visits })
   );
+  const anyHopper =
+    state.ticket === 'hopper' ||
+    state.hopper.length > 0 ||
+    hopperTicketResorts(state.tickets, catalog).length > 0;
   const hopWithoutHopper =
-    (state.hop && state.ticket !== 'hopper') ||
-    plan.days.some((d) => d.warnings.includes('hop_needs_hopper'));
+    (state.hop && !anyHopper) ||
+    plan.days.some((d) => d.warnings.includes('hop_needs_hopper')) ||
+    (plan.meta.warnings ?? []).includes('hop_needs_hopper');
   const notes = [
-    ...(hopWithoutHopper ? [t('answer.hopNeedsHopper')] : []),
+    ...(dropped > 0 ? [t('tickets.linkDropped', { count: dropped })] : []),
+    ...(hopWithoutHopper
+      ? [t(catalog.size > 0 ? 'tickets.hopNeedsHopper' : 'answer.hopNeedsHopper')]
+      : []),
     ...relaxedRules(plan.meta).map((r) => t(`relaxed.${r}`)),
-    ...unplacedParks(plan).map((u) => t(`unplaced.${u.reason}`, { park: parkName(u.slug) })),
+    ...unplacedParks(plan).map((u) =>
+      t(u.reason === 'no_ticket_day' ? 'tickets.unplaced' : `unplaced.${u.reason}`, {
+        park: parkName(u.slug),
+        resort: resortWord(parkBySlug.get(u.slug)?.group ?? ''),
+      })
+    ),
     ...ignoredLocks(plan).map((l) =>
       t(`ignoredLock.${l.reason}`, {
         what: l.target === 'rest' ? t('day.rest') : parkName(l.target),
@@ -322,6 +345,8 @@ function PlanAnswer({
           </p>
         </div>
       )}
+
+      <PlanTicketsCard plan={plan} edit={edit} />
 
       {reach && (
         <p
@@ -492,5 +517,56 @@ function PlanViews({
         <PlanAgendaView plan={plan} calendar={calendar} onOpenDay={onOpenDay} />
       )}
     </section>
+  );
+}
+
+/**
+ * How many items of the address's `tickets` could not be read, for "One ticket in this link isn't
+ * one we know". Once the planner writes the address again the item is gone, and so is the line.
+ */
+function useDroppedTickets(): number {
+  const params = useSearchParams();
+  const { tickets: catalog } = usePlanContext();
+  if (catalog.size === 0) return 0;
+  return readTickets(params.get('tickets'), catalog).dropped;
+}
+
+/**
+ * A ticket the trip's dates miss, said before any request (the API would answer it with a 400),
+ * with the two ways out: other dates, or another ticket.
+ */
+function TicketProblemBox({ problem, edit }: { problem: TicketProblem; edit: PlanEdit }) {
+  const t = useTranslations('orlandoPlanner');
+  const { state, locale, tickets: catalog } = usePlanContext();
+  const name = useTicketName();
+  const ticket = state.tickets[problem.index];
+  const product = catalog.get(problem.product);
+  const window = product && ticket ? ticketWindow(product, ticket) : null;
+  const day = (d: string) =>
+    formatParkDay(locale, d, { weekday: 'short', day: 'numeric', month: 'short' });
+  return (
+    <div
+      className="border-crowd-high/40 flex flex-col items-start gap-3 rounded-2xl border p-5"
+      role="alert"
+      data-plan-ticket-problem={problem.kind}
+    >
+      <p className="text-sm">
+        {t(`tickets.problem.${problem.kind}`, {
+          ticket: ticket ? name(ticket) : problem.product,
+          start: ticket?.start ? day(ticket.start) : '',
+          end: window ? day(window.to) : '',
+          from: state.from ? day(state.from) : '',
+          to: state.to ? day(state.to) : '',
+        })}
+      </p>
+      <div className="flex flex-wrap gap-2">
+        <Button variant="outline" onClick={edit.dates}>
+          {t('tickets.problem.changeDates')}
+        </Button>
+        <Button variant="outline" onClick={() => edit.tickets(problem.index)}>
+          {t('tickets.problem.changeTicket')}
+        </Button>
+      </div>
+    </div>
   );
 }

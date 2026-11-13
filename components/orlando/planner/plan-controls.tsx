@@ -147,3 +147,40 @@ export function PlanStepper({
     </span>
   );
 }
+
+/**
+ * A pill to press, on or off (`aria-pressed`): the When mode's periods, a ticket's days, its hopper
+ * and its variant. 44 px on a phone, 36 at a desk.
+ */
+export function PlanChip({
+  selected,
+  onClick,
+  label,
+  disabled = false,
+  className,
+}: {
+  selected: boolean;
+  onClick: () => void;
+  label: ReactNode;
+  disabled?: boolean;
+  className?: string;
+}) {
+  return (
+    <button
+      type="button"
+      aria-pressed={selected}
+      onClick={onClick}
+      disabled={disabled}
+      className={cn(
+        'min-h-11 rounded-full border px-3.5 text-sm transition-colors disabled:opacity-40 lg:min-h-9',
+        selected
+          ? 'border-primary bg-primary/15 text-foreground font-semibold'
+          : 'border-border/70 hover:bg-accent/60',
+        PLAN_FOCUS,
+        className
+      )}
+    >
+      {label}
+    </button>
+  );
+}

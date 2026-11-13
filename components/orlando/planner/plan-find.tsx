@@ -18,7 +18,7 @@ import {
   type WhenPeriodKey,
 } from '@/lib/orlando/plan-when';
 import { usePlanContext } from './plan-context';
-import { PLAN_FOCUS, PlanCheckRow, PlanStepper } from './plan-controls';
+import { PLAN_FOCUS, PlanCheckRow, PlanChip, PlanStepper } from './plan-controls';
 import { PlanDates } from './plan-dates';
 import { useSchoolBreaks } from './use-trip-plan';
 
@@ -34,37 +34,49 @@ export function defaultSearchRange(today: string): PlanSearchRange {
  */
 export function PlanDatesStep({ defaultMonth }: { defaultMonth?: string }) {
   const t = useTranslations('orlandoPlanner.find');
+  const tTickets = useTranslations('orlandoPlanner.tickets');
   const { state, update, today, live } = usePlanContext();
   const find = state.when !== null;
+  // `/when` searches a ticket's start; a first day fixed at purchase leaves nothing to search.
+  const fixed = state.tickets.some((ticket) => ticket.start !== null);
+  const fixedId = useId();
   const choose = (next: boolean) =>
     today && update((s) => setFindMode(s, next, defaultSearchRange(today)));
 
   return (
     <div className="flex flex-col gap-4">
-      <div
-        role="radiogroup"
-        aria-label={t('modeLabel')}
-        className="bg-muted/50 grid grid-cols-2 gap-1 rounded-xl p-1"
-      >
-        {([false, true] as const).map((value) => (
-          <button
-            key={String(value)}
-            type="button"
-            role="radio"
-            aria-checked={find === value}
-            disabled={!live || !today}
-            onClick={() => choose(value)}
-            className={cn(
-              'min-h-11 rounded-lg px-2 text-sm font-medium transition-colors',
-              find === value
-                ? 'bg-background shadow-sm'
-                : 'text-muted-foreground hover:text-foreground',
-              PLAN_FOCUS
-            )}
-          >
-            {value ? t('modeFind') : t('modeKnown')}
-          </button>
-        ))}
+      <div className="flex flex-col gap-1.5">
+        <div
+          role="radiogroup"
+          aria-label={t('modeLabel')}
+          className="bg-muted/50 grid grid-cols-2 gap-1 rounded-xl p-1"
+        >
+          {([false, true] as const).map((value) => (
+            <button
+              key={String(value)}
+              type="button"
+              role="radio"
+              aria-checked={find === value}
+              aria-describedby={value && fixed && !find ? fixedId : undefined}
+              disabled={!live || !today || (value && fixed && !find)}
+              onClick={() => choose(value)}
+              className={cn(
+                'min-h-11 rounded-lg px-2 text-sm font-medium transition disabled:opacity-50',
+                find === value
+                  ? 'bg-background shadow-sm'
+                  : 'text-muted-foreground hover:text-foreground',
+                PLAN_FOCUS
+              )}
+            >
+              {value ? t('modeFind') : t('modeKnown')}
+            </button>
+          ))}
+        </div>
+        {fixed && !find && (
+          <p id={fixedId} className="text-muted-foreground text-xs">
+            {tTickets('find.fixed')}
+          </p>
+        )}
       </div>
       {find ? <PlanFind /> : <PlanDates defaultMonth={defaultMonth} />}
     </div>
@@ -108,7 +120,7 @@ export function PlanFind() {
         <legend className="mb-1 text-sm font-semibold">{t('period')}</legend>
         <div className="flex flex-wrap gap-2">
           {periods.map((period) => (
-            <PeriodChip
+            <PlanChip
               key={period.key}
               selected={chosen === period.key}
               onClick={() => {
@@ -118,7 +130,7 @@ export function PlanFind() {
               label={t(`periods.${period.key}`, { year: period.year })}
             />
           ))}
-          <PeriodChip
+          <PlanChip
             selected={chosen === 'custom'}
             onClick={() => setCustom(true)}
             label={t('periods.custom')}
@@ -257,32 +269,5 @@ export function PlanFind() {
         )}
       </div>
     </div>
-  );
-}
-
-function PeriodChip({
-  selected,
-  onClick,
-  label,
-}: {
-  selected: boolean;
-  onClick: () => void;
-  label: string;
-}) {
-  return (
-    <button
-      type="button"
-      aria-pressed={selected}
-      onClick={onClick}
-      className={cn(
-        'min-h-11 rounded-full border px-3.5 text-sm transition-colors lg:min-h-9',
-        selected
-          ? 'border-primary bg-primary/15 text-foreground font-semibold'
-          : 'border-border/70 hover:bg-accent/60',
-        PLAN_FOCUS
-      )}
-    >
-      {label}
-    </button>
   );
 }
