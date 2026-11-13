@@ -16,14 +16,7 @@ import { plannerUi } from '@/lib/planner/ui-store';
 import { cn } from '@/lib/utils';
 import type { PlannerMenuRegion } from '@/lib/navigation/planner-menu';
 
-/**
- * The planner band: the trip planner per region, the day planner, and the locale's popular parks
- * as quick starts into the day planner. Everything here is in every page's HTML (`hidden`, NavMenu
- * rule 1); the region scenes alone load on the first opening. The data and the click behaviour
- * live elsewhere (`lib/navigation/trip-regions.ts`, `lib/navigation/planner-menu.ts`,
- * `lib/planner/quick-start.ts`), so this file is only the look. See
- * docs/features/header-navigation.md.
- */
+/** What the planner band draws; the header resolves all three. */
 interface PlannerMenuPanelProps {
   /** The day planner's page, locale-relative; the header derives it for the bar and the sheet. */
   dayPlannerHref: string;
@@ -35,7 +28,14 @@ interface PlannerMenuPanelProps {
 const ROW =
   'text-muted-foreground hover:text-foreground hover:bg-muted/60 -mx-2 flex items-center gap-2.5 rounded-md px-2 py-1 text-sm transition-colors';
 
-/** Memoised for the same reason as `ParksMenuPanel`. */
+/**
+ * The planner band: the trip planner per region, the day planner, and the locale's popular parks
+ * as quick starts into the day planner. Everything here is in every page's HTML (`hidden`, NavMenu
+ * rule 1); the region scenes alone load on the first opening. The data and the click behaviour
+ * live elsewhere (`lib/navigation/trip-regions.ts`, `lib/navigation/planner-menu.ts`,
+ * `lib/planner/quick-start.ts`), so this file is only the look. Memoised for the same reason as
+ * `ParksMenuPanel`. See docs/features/header-navigation.md.
+ */
 export const PlannerMenuPanel = memo(function PlannerMenuPanel({
   dayPlannerHref,
   regions,

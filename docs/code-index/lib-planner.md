@@ -322,6 +322,14 @@ Which kinds of notification this browser wants: a narrowing of the deploy's own 
 - `resolvePushTopics` _function_: The topics to subscribe with: the deploy's list, intersected with the visitor's narrowing, so a stored id the API has retired cannot come back. With no narrowing, everything the deploy offers.
 - `plannerPushTopics` _const_: The visitor's topic narrowing as an external store.
 
+### [`quick-start.ts`](../../lib/planner/quick-start.ts)
+
+- `plannerQuickStarts` _function_: The quick starts for a locale: the parks menu's rail (the parks this locale's readers opened most, topped up from the curated list), in its order. A card whose link carries no geography is dropped, since the planner files a day under it.
+- `startPlannerAt` _function_: Names the park to the planner and asks for its wizard on it.
+- `quickStartClick` _function_: The `onClick` of a quick-start link: a plain primary click starts the planner on the park and lets the navigation to the park's page go on; any other click is the browser's.
+- `QUICK_START_LIMIT` _const_: How many parks the band offers, at most.
+- Types: `PlannerQuickStart`
+
 ### [`ride-drag.ts`](../../lib/planner/ride-drag.ts)
 
 - `rideFromPath` _function_: The park and ride a frontend ride URL names, read by the `parks` segment rather than by position, because five of six locales carry a locale prefix.

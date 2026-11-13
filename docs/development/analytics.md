@@ -183,7 +183,7 @@ the rule is on the call site, and `trackSiteEvent` says it too.
 | `share_clicked`              | a share row button (share sheet on a touch screen, WhatsApp, Facebook, X, copy link) or the planner's share link                     | `target` (native, whatsapp, facebook, x, link, trip_plan)                                                                                                                        |                       |
 | `internal_link_clicked`      | a click, middle click included, on a link to another page of the site inside a marked block                                          | `block`, `dest` (the page type it leads to), `position`                                                                                                                          | a card's park or ride |
 | `section_seen`               | a marked place of a park page comes on screen, once per page view and place                                                          | `section` (main_end, blog, nearby, stats, outlook, faq, end)                                                                                                                     |                       |
-| `nav_menu_opened`            | a header band opens (hover after 90 ms included) or the phone sheet does, once per opening                                           | `menu` (guides, news, parks, more, favorites, sheet)                                                                                                                             |                       |
+| `nav_menu_opened`            | a header band opens (hover after 90 ms included) or the phone sheet does, once per opening                                           | `menu` (guides, news, parks, more, planner, favorites, sheet)                                                                                                                    |                       |
 | `faq_opened`                 | a question of an FAQ (`FaqAccordion`) opens                                                                                          | `position` (1-based)                                                                                                                                                             |                       |
 | `park_links_opened`          | the „Mehr" flyout of a park's title card opens; what is clicked inside is the outbound tracking                                      | none                                                                                                                                                                             | the park              |
 
@@ -222,8 +222,8 @@ move. The wizard's steps, what goes in and out of a plan, the fit assistant, sha
   second calendar day pressed while the panel is up and when the wizard finishes inside it; the
   launcher watches its own `open` state instead. `source` is the closed union
   `PlannerOpenedSource` (`lib/planner/ui-store.ts`: tab, header, park-header, calendar-day,
-  wizard, plan-list, shared-link, home-hero, kids-page), because which way in earns its place is
-  the decision the event answers.
+  wizard, plan-list, shared-link, home-hero, kids-page, orlando-hub, menu-plan, menu-park,
+  assistant), because which way in earns its place is the decision the event answers.
 - **`plan_day_started` fires on the empty → not-empty transition** of a park and date, however the
   block got there, so a plan being filled in counts once, not once per ride. Not on finishing the
   wizard (an intention, not a plan), and no `date`.

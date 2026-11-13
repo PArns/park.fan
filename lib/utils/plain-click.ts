@@ -1,3 +1,8 @@
+/**
+ * Whether a click on a link is the browser's to handle or the page's. Its own module, because the
+ * planner links on park pages and the header's planner band ask the same question.
+ */
+
 /** The parts of a click event that say whether the browser would open a new tab or window. */
 interface ClickLike {
   defaultPrevented: boolean;

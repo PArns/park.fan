@@ -8,7 +8,8 @@ server HTML is decided by the link graph:
    and never `next/dynamic`, so the destinations stay in every page's HTML. The „Mehr" entry (best
    time, dictionary, guide; `NavMenu.href` is optional for it) and the hub chapter lists
    (`lib/howto/chapters.ts`, `lib/best-time/chapters.ts`, fragments on their hub, so no new crawl
-   targets) follow the same rule.
+   targets) follow the same rule, and so does the planner band: the day planner's page, each
+   region's trip planner (a fragment on its hub) and the parks rail's six again.
 2. **Detail fetched per opened country.** Cities and parks come from
    `/api/nav/geo/[continent]/[country]`: they are already reachable from the hubs and the sitemap,
    and in the template they would spread the same weight over several hundred more targets. Blog tags stay out

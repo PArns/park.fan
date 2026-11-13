@@ -74,6 +74,11 @@ by hand: change the comment in the code and re-run the script. -->
 - `HeroRotationProvider` _component_: Owns the in-park hero rotation in one place so the background images and the image attribution stay perfectly in sync (a single interval, a single index).
 - `useHeroRotation` _hook_: Returns the in-park hero rotation from `HeroRotationProvider`: the park's images, the active index and its image (empty outside a park).
 
+### [`hub-banner.tsx`](../../components/layout/hub-banner.tsx)
+
+- `HubBannerPhoto` _component_: A hub's photo filling a banner. A fixed size rather than `fill`, for the reason the news panel gives: the bands ship `hidden` on every page, and `fill` lists every configured width in its srcset. 480 is the widest a band's column gets (a …
+- `HubBanner` _component_: The head of a column in a header band: the hub's picture with its name, mark and one line on it, all of it the hub's link.
+
 ### [`language-banner.tsx`](../../components/layout/language-banner.tsx)
 
 - `LanguageBanner` _component_: Banner offering to switch to the browser's language when it differs from the page's, worded in that language. Dismissal is remembered per language pair in localStorage.
@@ -124,6 +129,14 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`parks-menu-panel.tsx`](../../components/layout/parks-menu-panel.tsx)
 
 - `ParksMenuPanel` _component_: Memoised: the header renders every mega-menu panel on each of its own renders (a burger tap, the hero bar solidifying, a resize) — below the 1024 px bar, where the nav is hidden, all of it for nothing.
+
+### [`planner-menu-panel.tsx`](../../components/layout/planner-menu-panel.tsx)
+
+- `PlannerMenuPanel` _component_: The planner band: the trip planner per region, the day planner, and the locale's popular parks as quick starts into the day planner.
+
+### [`planner-region-art.tsx`](../../components/layout/planner-region-art.tsx)
+
+- `PlannerRegionArt` _component_: The picture of a region's tile in the planner band: its Parky scene where `TRIP_REGIONS` gives it one, else the hub's photo.
 
 ### [`scroll-lock-gutter.tsx`](../../components/layout/scroll-lock-gutter.tsx)
 
