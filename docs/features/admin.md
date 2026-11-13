@@ -29,6 +29,7 @@ app/admin/
   _overview/                the overview's parts: status hero, problems, figures, area table
   parks/ attractions/       the editors
   seasons/ retirement/ duplicates/ history/   cross-cutting curation views
+  tickets/                  the Orlando planner's ticket catalog (below)
   data-quality/             detectors with an answer button per card
   capture/                  the field screen (below)
   media/ blog-editor/ contributions/          content tools
@@ -40,7 +41,9 @@ app/admin/
 
 The kit's surfaces are in `_ui/primitives.tsx`, its form controls in `_ui/controls.tsx`. A section
 of a page is a `Panel` with a `PanelHeader` and a `PanelBody`. A box inside a panel or a dialog is a
-`Tile`, a single big figure a `StatTile`, a label over a value `Meta`. Every pill is a `Chip` in one
+`Tile`, a single big figure a `StatTile`, a label over a value `Meta`. Several values picked from a
+short list are `ToggleChips`, the arrows of an ordered list `MoveButtons`, and a url field is
+`UrlInput`, which carries the button that opens the address. Every pill is a `Chip` in one
 of five tones: `severityTone` and `statusTone` map the monitoring words onto them, and
 `crowdChipClass` takes the public site's crowd palette, so `moderate` is the same green "Normal"
 here as there. Charts (a line chart with a hover readout, sparkline, bar list, shaded matrix) are in
@@ -80,7 +83,7 @@ inset's margin and border); a page that fills the viewport subtracts it, as the 
 | Group        | Entries                                                                             |
 | ------------ | ----------------------------------------------------------------------------------- |
 | (top)        | Übersicht                                                                           |
-| Kuratieren   | Parks, Saisons, Datenqualität, Duplikate, Stilllegungen, Änderungen                 |
+| Kuratieren   | Parks, Saisons, Tickets, Datenqualität, Duplikate, Stilllegungen, Änderungen        |
 | Inhalte      | Blog, Medien, Vor Ort, Einsendungen                                                 |
 | Publikum     | Traffic (Live, SEO, Suche, Wege, Tagesplaner, Beliebtheit), Parky (3 pages)         |
 | Betrieb      | System, Queues, ML-Zentrale (Modellvergleich), Parks live, Wartung                  |
@@ -446,6 +449,63 @@ serves no price above 0 without one), and that 0 means free, not unknown.
 outer bound and an optional list of dates underneath picks the days. `dates` is `null` or a
 non-empty list, never `[]` (the API rejects it). Semantics and the Walibi Holland example are in
 the backend's curation doc.
+
+## The ticket catalog: `/admin/tickets`
+
+The products the Orlando planner computes with, edited without a deploy: names, descriptions,
+purchase links, sale ranges, the rules of each ticket, and which products plan first suggests. The
+API owns them (`ticket_products`, `/v1/admin/content/regions/:region/tickets`; contract and checks
+in its [editing the catalog](https://github.com/PArns/v4.api.park.fan/blob/main/docs/frontend/trip-regions.md#editing-the-catalog)).
+Any role reads, `editor` writes, and every write leaves an audit row (`ticket_product.create`,
+`.update`, `.archive`, `.reorder`). Plans take an edit within 30 seconds, the site's ticket list
+within 15 minutes (`TICKET_PUBLISH_DELAY`). The pure half is `lib/admin/tickets.ts`, pinned by
+`pnpm test:admin-tickets`; the page is `app/admin/tickets/`.
+
+- **The list** groups the products by resort, in the region's order, and keeps the admin's order
+  inside each group. Up and down swap a product with its neighbour of the same resort and send the
+  whole region's order (`PUT …/order`, `ticketOrderAfterMove`); the list moves at once and the
+  answer sets it right. A row says „4 Tage in 7“, „14 Tage am Stück“ or „1–10 Tage in 1–14“
+  (`formatTicketDays`), the start dates on sale (`formatTicketSale`), the links with their partner
+  links, the suggestion rank, „Regeln unsicher“ for `confidence: low`, and the clicks of 30 days.
+  Archive asks first, with a reason for the audit log (`POST …/archive`); an archived product stays
+  in the list, dimmed, with a button that takes it back (`PATCH { active: true }`).
+- **The parks and resorts** come from the open region route through the site's relay
+  (`/api/trip-regions/orlando`), since the admin catalog names them by key only. The list waits
+  for it as for the catalog, and the form cannot open without it.
+- **The form** has five parts: basics, rules, sale, links, sources and notes. The days are a fixed
+  number, a range or unlimited; the window table has a row per length, and a new length starts at
+  the window before it (`windowTableFor`), so widening a range does not invent a short window. A
+  choice keeps what it hides (the table while the days are unlimited) and `ticketBody` sends only
+  what the choices use. The slug is fixed after create; a new product starts without a resort, so
+  nobody files a LEGOLAND ticket under Disney by not looking.
+- **The API checks, the form shows.** 700 ms after the last change the form posts the draft to
+  `validate`; every problem sits at the field its path names (`windowTable[2].window` under the
+  third row), a path the form has no field for is listed above the buttons, so a check the API adds
+  first is never lost. The messages are the API's own, in English. Links are checked in the form
+  too, with the API's paths, so a link shows its problem while it is typed. The footer shows the
+  sample trip, planned once with the product as an owned ticket and once in plan first; Save waits
+  for it and stays off while the API refuses the draft. When `validate` cannot be asked, Save stays
+  on and the save's own 400 lands at the fields the same way.
+- **An edit sends what changed** (`ticketPatch`): the changed fields, and `null` for an optional
+  field that was emptied, since leaving it out would keep the old value in the merge. An edit's
+  `validate` may count the product's own slug as taken; the form drops slug problems on an edit,
+  as no field could answer them.
+- **Links are in the order visitors see them**: the first stands in front, up and down move one.
+  Exactly one is the operator's shop. „Partnerlink“ is `sponsored`: the site labels the link and
+  links it `rel="sponsored"`. The links the catalog started with lead to the cheapest authorized
+  seller and the official shop and are never partner links; the switch is for the ones added
+  later. Markets and languages limit a link; none means everyone.
+- **Clicks** are the planner's `ticket_link_clicked` event (`TICKET_LINK_EVENT`), read as the event
+  crosstab of the last 30 days, product against host, and against seller where two links of a
+  product share a host (`useTicketClicks`, `ticketClicks`). A figure leads to the event's page,
+  opened on the same table. An event nobody has sent is 0; a read that failed, or a product the
+  table folded into „Übrige“ (30 values per side), is a dash, never 0. The admin's analytics reads
+  cannot filter an event by a property, so the figures depend on the 30-value cut.
+- **On a phone** the form is one column in `SCROLLING_DIALOG` with a sticky footer, whose height
+  is the dialog's scroll padding, so a focused field scrolls above it. A row's buttons take a line
+  of their own below the details. Unsaved edits survive a tap beside the dialog and Escape; only
+  „Verwerfen“ and the close button leave them. Below `editor` the form is read-only (a disabled
+  `fieldset`) and asks nothing of `validate`.
 
 ## Two write models
 
