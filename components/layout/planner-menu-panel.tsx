@@ -73,14 +73,14 @@ export const PlannerMenuPanel = memo(function PlannerMenuPanel({
         )}
       >
         <div data-menu-stagger>
-          <MenuSectionHeading label={t('dayPlanner')} />
+          <MenuSectionHeading label={t('planner')} />
           <DayPlannerCard href={dayPlannerHref} />
         </div>
 
         {parks.length > 0 && (
           <div data-menu-stagger>
             <MenuSectionHeading label={t('planDayIn')} />
-            <ul aria-label={t('planDayIn')} className="grid grid-cols-2 gap-x-5 gap-y-0.5">
+            <ul aria-label={t('planDayInList')} className="grid grid-cols-2 gap-x-5 gap-y-0.5">
               {parks.map((park) => (
                 <li key={park.href} className="min-w-0">
                   <Link

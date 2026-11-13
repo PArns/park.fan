@@ -811,7 +811,7 @@ export function Header({
                       opens its disclosure, this browser's plan where there is one, the quick starts,
                       then the regions' trip planners. */}
                     <SheetDisclosure icon={CalendarPlus} label={plannerMenuLabel}>
-                      <SheetSubLink href={plannerPath}>{t('dayPlanner')}</SheetSubLink>
+                      <SheetSubLink href={plannerPath}>{t('planner')}</SheetSubLink>
                       {plan && (
                         <button
                           type="button"

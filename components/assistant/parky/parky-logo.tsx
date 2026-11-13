@@ -55,6 +55,7 @@ import {
 import { DREAM_MS, ParkyDreamCloud } from './dreams';
 import { ParkyMoment, ParkyRideTrack, ParkySpotlight, ParkyVehicle } from './props';
 import { ParkyWheel } from './wheel';
+import { ParkyEyeWhite, ParkyPupil } from './eyes';
 import { useGaze } from './use-gaze';
 import { useIdleAct } from './use-idle-act';
 import { LENS_OUT_MS, PUZZLED_MS, useSearchAlong } from './use-search-along';
@@ -399,7 +400,7 @@ export function ParkyLogo({
           <g className="parky-eyes">
             {EYES.map((x) => (
               <g key={x} className="parky-eye">
-                <ellipse cx={x} cy="22.5" rx="5.4" ry="6.2" fill="white" />
+                <ParkyEyeWhite x={x} />
                 {/* Properties, not the attribute, so the pupils ease to a new place and an act
                     that moves them itself can draw the gaze back to the middle. */}
                 <g
@@ -413,8 +414,7 @@ export function ParkyLogo({
                   }
                 >
                   <g className="parky-pupils">
-                    <circle cx={x} cy="23" r="3" fill={ink} />
-                    <circle cx={x + 1.1} cy="21.7" r="1.05" fill="white" />
+                    <ParkyPupil x={x} />
                   </g>
                 </g>
               </g>

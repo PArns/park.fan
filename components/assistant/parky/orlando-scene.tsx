@@ -18,6 +18,7 @@ import {
 import { LOOK_GAZE, ParkyShades } from './looks';
 import { ParkyMap } from './props';
 import { ParkyWheel } from './wheel';
+import { ParkyEyeWhite, ParkyPupil } from './eyes';
 
 /**
  * Parky on holiday in Orlando, the planner band's picture of the region: a lake with a coaster on
@@ -213,9 +214,8 @@ function Parky({ evening }: { evening: boolean }) {
         <>
           {EYES.map((x) => (
             <g key={x}>
-              <ellipse cx={x} cy="22.5" rx="5.4" ry="6.2" fill="white" />
-              <circle cx={x + gaze.x} cy={23 + gaze.y} r="3" fill={ink} />
-              <circle cx={x + 1.1 + gaze.x} cy={21.7 + gaze.y} r="1.05" fill="white" />
+              <ParkyEyeWhite x={x} />
+              <ParkyPupil x={x} dx={gaze.x} dy={gaze.y} />
             </g>
           ))}
           <ParkyShades transform="translate(4.8 -9.6) scale(.8)" />

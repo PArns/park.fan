@@ -95,6 +95,11 @@ by hand: change the comment in the code and re-run the script. -->
 - `DREAM_MS` _const_: How long a dream lasts; the stylesheet reads it as `--parky-dream`.
 - Types: `ParkyDream`
 
+### [`parky/eyes.tsx`](../../components/assistant/parky/eyes.tsx)
+
+- `ParkyEyeWhite` _component_: One of Parky's open eyes, the white of it, round its centre on the x axis (`EYES`). The live Parky and his pictures draw the same eye, so a picture of him never looks like somebody else.
+- `ParkyPupil` _component_: The pupil of the eye at `x` with its glint, `dx` and `dy` off the middle: where a picture points his gaze (`LOOK_GAZE`), while the live Parky moves the group round it instead.
+
 ### [`parky/looks.tsx`](../../components/assistant/parky/looks.tsx)
 
 - `ParkyLookHat` _component_: The season's hat, drawn in the Ferris wheel's place and, like it, behind the head. `still` keeps the pompom from bobbing, for a drawing inside a glass panel, which no endless animation may run in.

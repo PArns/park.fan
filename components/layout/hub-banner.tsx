@@ -29,8 +29,6 @@ export function HubBannerPhoto({ photo }: { photo: MoreMenuPhoto | null }) {
  * all of it the hub's link. The scrim is weighted to the lower half because the name sits mid-photo
  * and white text needs 4.5 : 1 over the lightest photos. `h-32` at every width, so a narrow column
  * does not push the list down for sky. A missing photo leaves a dark tile under the same scrim.
- * `art` replaces the photo and its credit (the planner band's region scenes, which draw their own
- * fallback).
  */
 export function HubBanner({
   href,
@@ -39,7 +37,6 @@ export function HubBanner({
   hint,
   count,
   photo,
-  art,
 }: {
   href: string;
   icon: LucideIcon;
@@ -47,7 +44,6 @@ export function HubBanner({
   hint: string;
   count?: number;
   photo: MoreMenuPhoto | null;
-  art?: React.ReactNode;
 }) {
   return (
     <Link
@@ -55,12 +51,12 @@ export function HubBanner({
       prefetch={false}
       className="group focus-visible:ring-ring relative block h-32 overflow-hidden rounded-xl bg-neutral-800 focus-visible:ring-2 focus-visible:outline-none"
     >
-      {art ?? <HubBannerPhoto photo={photo} />}
+      <HubBannerPhoto photo={photo} />
       <span
         aria-hidden="true"
         className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/65 via-45% to-black/0"
       />
-      <PhotoCredit src={art ? undefined : photo?.src} className={TILE_CREDIT_POSITION} />
+      <PhotoCredit src={photo?.src} className={TILE_CREDIT_POSITION} />
       <span className="absolute inset-x-3.5 bottom-3 flex flex-col gap-1">
         <span className="flex items-center gap-2 text-white">
           <Icon className="size-4 shrink-0" aria-hidden="true" />

@@ -40,6 +40,7 @@ export interface PlannerMenuPark {
   countrySlug: string;
 }
 
+/** The planner band's server-side half: its regions and its quick starts, for one locale. */
 export interface PlannerMenu {
   regions: PlannerMenuRegion[];
   parks: PlannerMenuPark[];
