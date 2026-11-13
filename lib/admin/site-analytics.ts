@@ -829,8 +829,8 @@ export const EVENT_INFO: Record<SiteEventName, EventInfo> = {
     when: 'Eine Fehlerseite wird angezeigt; ohne Text der Meldung.',
   },
   trip_planner_started: {
-    label: 'Orlando-Planer gestartet',
-    when: 'Über den Knopf im Hub-Kopf, den Startknopf des Planers oder einen Link mit einem Plan.',
+    label: 'Reiseplaner gestartet',
+    when: 'Über den Knopf im Hub-Kopf, den Startknopf des Planers oder einen Link mit einem Plan; wie jedes Ereignis des Reiseplaners mit der Region („orlando“).',
   },
   trip_tickets_answered: {
     label: 'Ticket-Frage beantwortet',
@@ -846,11 +846,11 @@ export const EVENT_INFO: Record<SiteEventName, EventInfo> = {
     when: 'Der erste Tag eines Tickets gewählt oder offen gelassen.',
   },
   trip_plan_requested: {
-    label: 'Orlando-Plan angefragt',
+    label: 'Reiseplan angefragt',
     when: 'Ein Plan oder eine Datumssuche, sobald die Eingaben ruhen; mit Modus, Reiselänge, Parks, Tickets, Hopper, Blöcken und Ruhetagen.',
   },
   trip_plan_shown: {
-    label: 'Orlando-Plan gezeigt',
+    label: 'Reiseplan gezeigt',
     when: 'Die Antwort ist da: ok, gelockert (mit der Regel) oder Fehler (mit Status).',
   },
   trip_window_planned: {
@@ -875,7 +875,7 @@ export const EVENT_INFO: Record<SiteEventName, EventInfo> = {
   },
   trip_view_changed: {
     label: 'Ansicht gewechselt',
-    when: 'Liste, Woche oder Monat im Ergebnis des Orlando-Planers.',
+    when: 'Liste, Woche oder Monat im Ergebnis des Reiseplaners.',
   },
   trip_day_opened: {
     label: 'Reisetag geöffnet',
@@ -906,7 +906,7 @@ export const EVENT_INFO: Record<SiteEventName, EventInfo> = {
   },
   ticket_link_clicked: {
     label: 'Ticket-Link geklickt',
-    when: 'Ein Kauf-Link im Orlando-Planer; mit Produkt, Verkäufer, Host, Art (offiziell, Partner, andere), Platz in der Liste, Sprach- oder Markt-Treffer, Ort und Ticket-Modus.',
+    when: 'Ein Kauf-Link im Reiseplaner; mit Produkt, Verkäufer, Host, Art (offiziell, Partner, andere), Platz in der Liste, Sprach- oder Markt-Treffer, Ort und Ticket-Modus. Ohne Region: Das Produkt gehört zum Katalog genau einer Region, und mehr als acht Werte nimmt die Statistik nicht.',
   },
   share_clicked: {
     label: 'Teilen gedrückt',

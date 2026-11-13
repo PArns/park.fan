@@ -24,7 +24,6 @@ import { formatParkDay } from '@/lib/utils/park-day';
 import { Temp } from '@/components/common/unit-display';
 import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
 import { Button } from '@/components/ui/button';
-import { trackSiteEvent } from '@/lib/analytics/site-analytics';
 import { Sheet, SheetContent, SheetDescription, SheetTitle } from '@/components/ui/sheet';
 import { parkGeoFromUrl } from '@/lib/planner/park-url';
 import {
@@ -54,7 +53,7 @@ import { planTimeMinute } from '@/lib/orlando/plan-week';
 import { ticketDayOf } from '@/lib/orlando/plan-tickets';
 import { formatGridTime } from '@/lib/planner/park-time';
 import type { TripCalendar } from '@/lib/orlando/types';
-import { usePlanContext } from './plan-context';
+import { usePlanContext, useTripEvents } from './plan-context';
 import { PLAN_FOCUS } from './plan-controls';
 import { ClimateChips, dayGuestClose, useDayParks } from './plan-day-bits';
 import { useSeasonName } from './use-day-facts';
@@ -593,6 +592,7 @@ function DayRides({ slug, date }: { slug: string; date: string }) {
 function EveningSection({ evening, date }: { evening: PlanEvening; date: string }) {
   const t = useTranslations('orlandoPlanner.evening');
   const { parkName, venueByKey, timeZone } = usePlanContext();
+  const track = useTripEvents();
   const venue = evening.venue ? venueByKey.get(evening.venue) : undefined;
   const name = evening.kind === 'hop' && evening.park ? parkName(evening.park) : venue?.name;
   const clock = (value: string) => {
@@ -633,8 +633,8 @@ function EveningSection({ evening, date }: { evening: PlanEvening; date: string 
           href={venue.url}
           target="_blank"
           rel="noopener noreferrer"
-          onClick={() => trackSiteEvent('trip_evening_link_clicked')}
-          onAuxClick={(event) => event.button === 1 && trackSiteEvent('trip_evening_link_clicked')}
+          onClick={() => track('trip_evening_link_clicked')}
+          onAuxClick={(event) => event.button === 1 && track('trip_evening_link_clicked')}
           className="text-primary-ink min-h-11 self-start py-2 font-medium underline-offset-4 hover:underline"
         >
           {t('officialSite', { name: venue.name })}

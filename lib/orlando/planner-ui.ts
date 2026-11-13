@@ -13,7 +13,7 @@ let requests = 0;
 let handled = 0;
 const listeners = new Set<Listener>();
 
-/** The Orlando planner's open signal. */
+/** The trip planner's open signal. */
 export const orlandoPlannerUi = {
   /** Ask the planner to open its first step: a sheet on a phone, the panel at a desk. */
   openStart(): void {

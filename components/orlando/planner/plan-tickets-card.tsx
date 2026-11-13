@@ -40,7 +40,7 @@ import { Badge } from '@/components/ui/badge';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetDescription, SheetTitle } from '@/components/ui/sheet';
-import { usePlanContext } from './plan-context';
+import { usePlanContext, useTripEvents } from './plan-context';
 import { PLAN_FOCUS } from './plan-controls';
 import { PLAN_WIDE_QUERY } from './plan-setup';
 import {
@@ -185,6 +185,7 @@ function OwnedRow({
 }) {
   const t = useTranslations('orlandoPlanner.tickets');
   const { tickets: catalog, update, parkName, regionOrder, headliners } = usePlanContext();
+  const track = useTripEvents();
   const name = useTicketName();
   const resortWord = useResortWord();
   const hopperWord = useHopperWord();
@@ -272,7 +273,7 @@ function OwnedRow({
                 variant="outline"
                 size="sm"
                 onClick={() => {
-                  trackSiteEvent('trip_outside_ticket_action', { action: 'leave_out' });
+                  track('trip_outside_ticket_action', { action: 'leave_out' });
                   update((s) =>
                     setParkVisits(
                       s,
@@ -290,7 +291,7 @@ function OwnedRow({
                 variant="outline"
                 size="sm"
                 onClick={() => {
-                  trackSiteEvent('trip_outside_ticket_action', { action: 'change_ticket' });
+                  track('trip_outside_ticket_action', { action: 'change_ticket' });
                   edit.tickets(index);
                 }}
               >
@@ -367,6 +368,7 @@ function SuggestedTickets({
 }) {
   const t = useTranslations('orlandoPlanner.tickets');
   const { tickets: catalog, update, today, state } = usePlanContext();
+  const track = useTripEvents();
   const resortWord = useResortWord();
   const day = useShortDay();
   const wide = useMediaQuery(PLAN_WIDE_QUERY);
@@ -398,7 +400,7 @@ function SuggestedTickets({
           <span>{t('longStay.line')}</span>
           <InlineAction
             onClick={() => {
-              trackSiteEvent('trip_long_stay_used', { count: longStay.length });
+              track('trip_long_stay_used', { count: longStay.length });
               orlandoTicketAnswer.set('yes');
               update((s) => setTickets(s, [...state.tickets, ...longStay], catalog, today));
             }}
@@ -415,8 +417,7 @@ function SuggestedTickets({
           aria-controls={wide ? detailsId : undefined}
           aria-haspopup={wide ? undefined : 'dialog'}
           onClick={() => {
-            if (!open)
-              trackSiteEvent('trip_ticket_details_opened', { surface: wide ? 'inline' : 'sheet' });
+            if (!open) track('trip_ticket_details_opened', { surface: wide ? 'inline' : 'sheet' });
             setOpen(!open);
           }}
           data-plan-ticket-details=""
@@ -473,6 +474,7 @@ function SuggestionDetails({
 }) {
   const t = useTranslations('orlandoPlanner.tickets');
   const { tickets: catalog, update } = usePlanContext();
+  const track = useTripEvents();
   const owns = (plan.meta.tickets ?? []).length > 0;
   const longStay = [
     ...new Set(
@@ -512,7 +514,7 @@ function SuggestionDetails({
         <button
           type="button"
           onClick={() => {
-            trackSiteEvent('trip_tickets_adopted', { count: suggested.length });
+            track('trip_tickets_adopted', { count: suggested.length });
             orlandoTicketAnswer.set('yes');
             update((s) => adoptSuggestions(s, suggested, catalog));
             edit.tickets();
@@ -542,6 +544,7 @@ function SuggestionResort({
 }) {
   const t = useTranslations('orlandoPlanner.tickets');
   const { tickets: catalog, state, update, parkName } = usePlanContext();
+  const track = useTripEvents();
   const resortWord = useResortWord();
   const hopperWord = useHopperWord();
   const day = useShortDay();
@@ -607,7 +610,7 @@ function SuggestionResort({
               aria-pressed={on}
               data-plan-hopper-toggle={s.resort}
               onClick={() => {
-                trackSiteEvent('trip_hopper_toggled', { resort: s.resort, on: !on });
+                track('trip_hopper_toggled', { resort: s.resort, on: !on });
                 update((st) => toggleHopper(st, s.resort, optional));
               }}
             >

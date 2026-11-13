@@ -107,7 +107,7 @@ const NAV_GROUPS: NavGroup[] = [
         href: '/admin/tickets',
         label: 'Tickets',
         icon: Ticket,
-        description: 'Ticketkatalog des Orlando-Planers: Produkte, Regeln, Links',
+        description: 'Ticketkatalog des Reiseplaners: Produkte, Regeln, Links',
         keywords: ['orlando', 'planer', 'katalog', 'disney', 'universal', 'partnerlink', 'shop'],
       },
       {

@@ -32,7 +32,7 @@
  *
  *     pnpm check:planner
  *     BASE=http://localhost:3000 pnpm check:planner
- *     pnpm check:planner --orlando   # the Orlando trip planner's tickets alone
+ *     pnpm check:planner --orlando   # the multi-day trip planner's tickets alone, on Orlando
  */
 
 import { existsSync, readdirSync, readFileSync } from 'node:fs';
@@ -942,7 +942,7 @@ async function tapBlock(page, locator, name, options = {}) {
   );
 }
 
-// ── `--orlando`: the Orlando trip planner's tickets alone ────────────────────
+// ── `--orlando`: the multi-day trip planner's tickets alone ──────────────────
 // The rest of this file is the day planner's; the Orlando part needs the trip-region API (the
 // API's `pnpm trip-regions:dev`) and none of `/plan/day`, so it can run without it.
 if (process.argv.includes('--orlando')) {
@@ -9394,7 +9394,7 @@ check(
   consoleErrors.slice(0, 3).join(' | ')
 );
 
-// ── The Orlando trip planner's tickets ───────────────────────────────────────
+// ── The multi-day trip planner's tickets, on Orlando ─────────────────────────
 await checkOrlandoTickets({ browser, base: BASE, check });
 
 await browser.close();

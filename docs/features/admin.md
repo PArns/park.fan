@@ -29,7 +29,7 @@ app/admin/
   _overview/                the overview's parts: status hero, problems, figures, area table
   parks/ attractions/       the editors
   seasons/ retirement/ duplicates/ history/   cross-cutting curation views
-  tickets/                  the Orlando planner's ticket catalog (below)
+  tickets/                  the trip planner's ticket catalog (below)
   data-quality/             detectors with an answer button per card
   capture/                  the field screen (below)
   media/ blog-editor/ contributions/          content tools
@@ -452,9 +452,9 @@ the backend's curation doc.
 
 ## The ticket catalog: `/admin/tickets`
 
-The products the Orlando planner computes with, edited without a deploy: names, descriptions,
-purchase links, sale ranges, the rules of each ticket, and which products plan first suggests. The
-API owns them (`ticket_products`, `/v1/admin/content/regions/:region/tickets`; contract and checks
+The products the trip planner computes with, region by region (Orlando so far), edited without a
+deploy: names, descriptions, purchase links, sale ranges, the rules of each ticket, and which
+products plan first suggests. The API owns them (`ticket_products`, `/v1/admin/content/regions/:region/tickets`; contract and checks
 in its [editing the catalog](https://github.com/PArns/v4.api.park.fan/blob/main/docs/frontend/trip-regions.md#editing-the-catalog)).
 Any role reads, `editor` writes, and every write leaves an audit row (`ticket_product.create`,
 `.update`, `.archive`, `.reorder`). Plans take an edit within 30 seconds, the site's ticket list

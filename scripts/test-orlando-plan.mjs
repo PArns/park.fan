@@ -1,5 +1,5 @@
 /**
- * Unit tests for the Orlando trip planner's pure modules (`lib/orlando/plan*.ts`): the URL form a
+ * Unit tests for the trip planner's pure modules (`lib/orlando/plan*.ts`): the URL form a
  * link from Parky, "Copy link" and the best-time pages share, the edits (steppers, pins, swaps),
  * which codes become which sentence, the savings line, the `.ics` file, the Week and Month views'
  * geometry, the When mode's ranges and request, and tickets: `tickets=` read and written, the
@@ -97,12 +97,14 @@ import {
   sellerProp,
   ticketLinkClickProps,
   ticketModeOf,
+  trackTripEvent,
   tripDaysBucket,
   tripPlanFailedProps,
   tripPlanRequestProps,
   tripPlanShownProps,
   tripWhenShownProps,
 } from '../lib/orlando/plan-analytics.ts';
+import { onSiteEvent } from '../lib/analytics/site-analytics.ts';
 
 const cases = [];
 const test = (name, actual, expected) => cases.push({ name, actual, expected });
@@ -1611,6 +1613,33 @@ const keys = { parks: new Set(ORDER), areas: new Set(['disney', 'universal']) };
       { mode: 'dates', outcome: 'relaxed', relaxed: 'streak', unplaced: 0 },
     ]
   );
+  {
+    const heard = [];
+    const stop = onSiteEvent((name, props) => heard.push({ name, props }));
+    const requested = tripPlanRequestProps(
+      {
+        from: '2026-11-28',
+        to: '2026-12-06',
+        parks: 'epcot',
+        tickets: 'wdw-date-based.4@2026-11-29',
+        hopper: 'universal-orlando',
+        blocks: '1',
+        rest: 'max:2',
+      },
+      'dates'
+    );
+    trackTripEvent('orlando', 'trip_plan_requested', requested);
+    trackTripEvent('orlando', 'trip_day_swapped');
+    stop();
+    test(
+      'every trip event names its region; the request then holds eight, the statistic’s limit',
+      heard.map((e) => [e.name, e.props.region, Object.keys(e.props).length]),
+      [
+        ['trip_plan_requested', 'orlando', 8],
+        ['trip_day_swapped', 'orlando', 1],
+      ]
+    );
+  }
   test(
     'a search on screen counts its windows; a failure keeps its status, 0 without an answer',
     [

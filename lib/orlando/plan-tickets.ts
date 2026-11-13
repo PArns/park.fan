@@ -17,7 +17,7 @@ import type {
 import type { TicketLink, TicketProduct } from './types';
 
 /**
- * Tickets in the Orlando planner: the region's catalog read for the step (which products a resort
+ * Tickets in the trip planner: the region's catalog read for the step (which products a resort
  * offers, their days, windows and hopper), the rules the API would answer with a 400 checked before
  * a request, and the answer's ticket fields turned into what the result says. Pure, and free of
  * React; `scripts/test-orlando-plan.mjs` checks it. The contract: the API's

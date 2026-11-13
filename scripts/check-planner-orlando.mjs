@@ -1,5 +1,5 @@
 /**
- * The Orlando trip planner's tickets in a browser (PAR-1298), as part of `pnpm check:planner`;
+ * The trip planner's tickets in a browser on Orlando (PAR-1298), as part of `pnpm check:planner`;
  * `pnpm check:planner --orlando` runs this part alone.
  *
  * It needs the trip-region routes, so the site has to point at an API that has them: the API
@@ -137,8 +137,8 @@ export async function checkOrlandoTickets({ browser, base, check }) {
     );
     const started = await events(page, 'trip_planner_started');
     check(
-      'Orlando · Ereignis trip_planner_started mit der Quelle des Starts',
-      started.length === 1 && started[0].source === 'button',
+      'Orlando · Ereignis trip_planner_started mit Region und Quelle des Starts',
+      started.length === 1 && started[0].source === 'button' && started[0].region === 'orlando',
       JSON.stringify(started)
     );
     await page.getByRole('button', { name: 'Next: dates' }).click();
@@ -149,7 +149,7 @@ export async function checkOrlandoTickets({ browser, base, check }) {
     const skipped = await events(page, 'trip_tickets_answered');
     check(
       'Orlando · Ereignis trip_tickets_answered: „Next: dates“ ohne Antwort ist skipped',
-      skipped.length === 1 && skipped[0].answer === 'skipped',
+      skipped.length === 1 && skipped[0].answer === 'skipped' && skipped[0].region === 'orlando',
       JSON.stringify(skipped)
     );
     check(
@@ -189,7 +189,7 @@ export async function checkOrlandoTickets({ browser, base, check }) {
     const answered = await events(page, 'trip_tickets_answered');
     check(
       'Orlando · Ereignis trip_tickets_answered: not_yet',
-      answered.length === 1 && answered[0].answer === 'not_yet',
+      answered.length === 1 && answered[0].answer === 'not_yet' && answered[0].region === 'orlando',
       JSON.stringify(answered)
     );
     await context.close();
@@ -231,7 +231,7 @@ export async function checkOrlandoTickets({ browser, base, check }) {
       yesAnswer.length === 1 &&
         yesAnswer[0].answer === 'yes' &&
         added.length === 2 &&
-        added.every((e) => e.via === 'combo') &&
+        added.every((e) => e.via === 'combo' && e.region === 'orlando') &&
         added.map((e) => e.resort).join() === 'walt-disney-world,universal-orlando' &&
         started2.length === 1 &&
         started2[0].start === 'set',
@@ -285,7 +285,8 @@ export async function checkOrlandoTickets({ browser, base, check }) {
     const shown = (await events(page, 'trip_plan_shown')).at(-1);
     check(
       'Orlando · Ereignisse trip_plan_requested und trip_plan_shown zum Plan mit eigenen Tickets',
-      requested?.mode === 'dates' &&
+      requested?.region === 'orlando' &&
+        requested.mode === 'dates' &&
         requested.days === '15-21' &&
         requested.tickets === 'owned' &&
         requested.parks === 0 &&
@@ -324,7 +325,7 @@ export async function checkOrlandoTickets({ browser, base, check }) {
     const fromLink = await events(page, 'trip_planner_started');
     check(
       'Orlando · Ereignis trip_planner_started: ein Link mit Plan ist source link',
-      fromLink.length === 1 && fromLink[0].source === 'link',
+      fromLink.length === 1 && fromLink[0].source === 'link' && fromLink[0].region === 'orlando',
       JSON.stringify(fromLink)
     );
     await context.close();
@@ -386,7 +387,7 @@ export async function checkOrlandoTickets({ browser, base, check }) {
     const opened = await events(page, 'trip_ticket_details_opened');
     check(
       'Orlando · Ereignis trip_ticket_details_opened: sheet',
-      opened.length === 1 && opened[0].surface === 'sheet',
+      opened.length === 1 && opened[0].surface === 'sheet' && opened[0].region === 'orlando',
       JSON.stringify(opened)
     );
     await context.close();
@@ -594,7 +595,8 @@ export async function checkOrlandoTickets({ browser, base, check }) {
     const ways = await events(page, 'trip_outside_ticket_action');
     check(
       'Orlando · Ereignis trip_outside_ticket_action für beide Auswege',
-      ways.map((e) => e.action).join() === 'change_ticket,leave_out',
+      ways.map((e) => `${e.region}:${e.action}`).join() ===
+        'orlando:change_ticket,orlando:leave_out',
       JSON.stringify(ways)
     );
     await context.close();
