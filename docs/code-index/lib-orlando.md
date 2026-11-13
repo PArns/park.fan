@@ -210,7 +210,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `ticketProblem` _function_: The first ticket the trip cannot be planned with: one that starts after the trip, one whose window ends before it, or a start the product is not sold for. `null` while there are no dates.
 - `hopperTicketResorts` _function_: The resorts the visitor's owned tickets cover with a hopper (`.h`, or a product that always hops), for the "Park hopping" option, which only these and plan first's hopper make count.
 - `ticketsCoverBothResorts` _function_: Whether owned tickets cover Disney and Universal both, so the two may mix inside the windows.
-- `hopperOn` _function_: The plan-first resorts planned with the hopper: every one with `ticket=hopper`, else `hopper=`.
+- `hopperOn` _function_: Whether a plan-first resort is planned with its hopper: all are with `ticket=hopper`, else `hopper=` names it.
 - `toggleHopper` _function_: "Show the plan with Park Hopper" for one resort, and its way back. An older link's `ticket=hopper` (every resort) becomes the list of the others, so the press changes only this resort.
 - `suggestionsByStart` _function_: The suggestions in the order of their first day, for the one sentence that names them.
 - `adoptSuggestions` _function_: "Use these as your tickets": the suggestions written as owned tickets, each with its start and, where the plan was shown with it, the hopper.

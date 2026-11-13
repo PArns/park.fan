@@ -9,25 +9,27 @@ in the browser; the search now runs in the API
 
 ## Where it lives
 
-| Piece                                                                   | File                                                                                           |
-| ----------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
-| The component the hub mounts                                            | `components/orlando/planner/orlando-planner.tsx` (`OrlandoPlanner`)                            |
-| The state and its URL form                                              | `lib/orlando/plan-query.ts` (`readPlanQuery`, `writePlanQuery`, `orlandoPlannerHref`)          |
-| The `/plan` answer, trip arithmetic, edits, filing into the day planner | `lib/orlando/plan.ts`                                                                          |
-| Codes to sentences, the saving, the last-year date                      | `lib/orlando/plan-copy.ts`                                                                     |
-| Week and Month geometry, short days, swap previews                      | `lib/orlando/plan-week.ts`                                                                     |
-| The When mode                                                           | `lib/orlando/plan-when.ts`, `components/orlando/planner/plan-find.tsx`, `plan-when-result.tsx` |
-| The `.ics` file                                                         | `lib/orlando/plan-ics.ts`                                                                      |
-| Requests through the relay                                              | `lib/orlando/plan-fetch.ts`, hooks in `components/orlando/planner/use-trip-plan.ts`            |
-| The chosen view                                                         | `lib/orlando/plan-view.ts` (`parkfan_orlando_view` in localStorage)                            |
-| Park photos for the Week view                                           | `lib/orlando/plan-photos.ts` (server only, passed as `photos`)                                 |
+| Piece                                                                   | File                                                                                                  |
+| ----------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| The component the hub mounts                                            | `components/orlando/planner/orlando-planner.tsx` (`OrlandoPlanner`)                                   |
+| The state and its URL form                                              | `lib/orlando/plan-query.ts` (`readPlanQuery`, `writePlanQuery`, `orlandoPlannerHref`)                 |
+| The `/plan` answer, trip arithmetic, edits, filing into the day planner | `lib/orlando/plan.ts`                                                                                 |
+| Tickets: the catalog, the step's drafts, what the answer's fields say   | `lib/orlando/plan-tickets.ts`, `components/orlando/planner/plan-tickets.tsx`, `plan-tickets-card.tsx` |
+| Codes to sentences, the saving, the last-year date                      | `lib/orlando/plan-copy.ts`                                                                            |
+| Week and Month geometry, short days, swap previews                      | `lib/orlando/plan-week.ts`                                                                            |
+| The When mode                                                           | `lib/orlando/plan-when.ts`, `components/orlando/planner/plan-find.tsx`, `plan-when-result.tsx`        |
+| The `.ics` file                                                         | `lib/orlando/plan-ics.ts`                                                                             |
+| Requests through the relay                                              | `lib/orlando/plan-fetch.ts`, hooks in `components/orlando/planner/use-trip-plan.ts`                   |
+| The chosen view                                                         | `lib/orlando/plan-view.ts` (`parkfan_orlando_view` in localStorage)                                   |
+| Park photos for the Week view                                           | `lib/orlando/plan-photos.ts` (server only, passed as `photos`)                                        |
 
 `pnpm test:orlando-plan` covers every pure module.
 
 ## The state is the address
 
 The planner keeps no state of its own: what the visitor chose is the query string, in the `/plan`
-route's own names (`from,to,parks,hotel,area,arrival,departure,blocks,fireworks,rest,hop,split,lock`)
+route's own names
+(`from,to,parks,hotel,area,arrival,departure,blocks,fireworks,rest,hop,ticket,hopper,tickets,split,lock`)
 plus `#planner`, and in the When mode `when=<from>_<to>&days=<n>[&within=<region>]` instead of
 `from`/`to`. A change is written with `history.replaceState`, which Next's router follows, so
 `useSearchParams` sees it and the page does not remount; a query the planner did not write (Parky's
@@ -35,11 +37,15 @@ plus `#planner`, and in the When mode `when=<from>_<to>&days=<n>[&within=<region
 and moves the focus into it. "Copy link" copies the address. Every other page that links into the
 planner builds the href with `orlandoPlannerHref`, the one serializer.
 
-- **Defaults stay out of the URL:** `blocks=1`, `fireworks=any`, `split=auto`, `rest=auto`,
-  `hop=0`, `arrival`/`departure=free`. `parks` is written once the visitor touches it; until then
+- **Defaults stay out of the URL:** `fireworks=any`, `split=auto`, `rest=auto`, `hop=0`,
+  `arrival`/`departure=free`, and `blocks` until the visitor sets it (absent, the API keeps resorts
+  together on plan first and mixes owned tickets' resorts only where that saves 3 min a ride). `parks` is written once the visitor touches it; until then
   the API's default, the headliners, is asked for.
 - **A link is read leniently,** one parameter at a time, so one bad value costs only itself. Parky's
-  older `parties=avoid|allow|prefer` reads as `fireworks=any` and is never written.
+  older `parties=avoid|allow|prefer` reads as `fireworks=any` and is never written. `tickets` is
+  read one item at a time against the region's catalog: an unknown product or a length it does not
+  sell drops that item, and the answer says one was left out. A region without a catalog drops
+  `tickets` and `hopper`, which that API would answer with a 400.
 - **A park's count:** with "split my days for me" on, a park without a number shows "auto" and may
   get a second day; minus pins it to one, plus to two, minus from one removes it.
 - **Pins** (`lock=`) outside the trip or on a park not chosen are dropped before a request, since
@@ -53,19 +59,21 @@ range with different spaces, which cost the planner its hydration once.
 ## From simple to detailed
 
 The owner's rule for the whole chapter: a visitor is never buried in numbers. The hub's hero action
-calls `orlandoPlannerUi.openDates()` (`lib/orlando/planner-ui.ts`): the Dates sheet on a phone, the
-dates panel scrolled to and focused at a desk.
+calls `orlandoPlannerUi.openStart()` (`lib/orlando/planner-ui.ts`): the walk's first sheet on a
+phone (Tickets while its question is open in this browser, else Dates), that panel scrolled to and
+focused at a desk.
 
 The figure under each date in the picker is the lower of the day's picks per resort (`best`, early
 closings counted), else the lowest headliner that is open and does not close early, so a party
 night never makes a date look quiet (`dateFigure`).
 
-- **Setup.** Dates and parks are the only steps. Hotel (Universal Premier includes Express at
+- **Setup.** Tickets, dates and parks are the steps. Hotel (Universal Premier includes Express at
   Universal Studios and Islands of Adventure), hotel area, "Do you want to see Magic Kingdom's
   fireworks?", resort blocks, rest days and park hopping sit under "Fine-tune", with the API's
   defaults chosen and summed up in one line. On a phone the steps are one bottom sheet walked
-  Dates → Parks → Plan, with Fine-tune a row of its own; at `lg` the same panels sit inline. Both are
-  in the markup and CSS picks one.
+  Tickets → Dates → Parks → Plan (Tickets only while its question is open), each a `SetupRow`, with
+  Fine-tune a row of its own; at `lg` Tickets and Fine-tune are disclosures and dates and parks sit
+  inline. Both are in the markup and CSS picks one.
 - **Level 0, the answer.** The saving in minutes per ride ("Big rides on your days: about 41 min a
   ride. The same parks on an average day of your trip: 47 min."), the forecast's error where the API
   names it, or "the order barely matters" when `orderMatters` is false; no hours total. Then the
@@ -100,9 +108,9 @@ night never makes a date look quiet (`dateFigure`).
 
 ## Evenings, tickets and the season
 
-- **Tickets.** "Do you have a Park Hopper (park-to-park) ticket?" is `ticket=hopper`. Park hopping
-  (`hop`) is offered only with it, and a link that asks for hopping without one gets a sentence
-  saying it does not count (the API's `hop_needs_hopper`).
+- **Tickets** ([below](#tickets)). Park hopping (`hop`) is offered only with a hopper: an owned
+  ticket with one, or plan first's per resort (`hopper=`, and older links' `ticket=hopper`). A link
+  that asks for hopping without one gets a sentence saying it does not count (`hop_needs_hopper`).
 - **Evenings** (`evenings=1`, the default): after a park that closes early the plan may add an
   evening at a second park or a venue (`region.venues`: Disney Springs, CityWalk). It is "+ evening:
   EPCOT" in the answer and the Agenda, a block after the park block in the Week view (a second park
@@ -113,6 +121,49 @@ night never makes a date look quiet (`dateFigure`).
   season") in the day's sheet and on the When mode's cards. A card whose ranking the season's terms
   pushed down says "ranked lower: hurricane season" beside its unchanged minutes.
 - **School breaks** are named for whose they are: "No US school holidays", "US school holidays".
+
+## Tickets
+
+"Do you already have tickets?" is the first step, against the region's ticket catalog (`tickets` on
+`/v1/trip-regions/orlando`, sent to the browser without the notes and the optimizer's rules). The
+contract: the API's
+[trip regions → tickets](https://github.com/PArns/v4.api.park.fan/blob/main/docs/frontend/trip-regions.md#tickets).
+Without a catalog the step and the card are not drawn.
+
+- **The question.** "Not yet, just plan" answers in one press and moves on to Dates; "Next: dates"
+  without an answer counts as the same. "Yes, I have tickets" opens the four resorts. The answer is
+  this browser's (`parkfan_orlando_tickets_asked`, `lib/orlando/ticket-answer.ts`); "Not yet" leaves
+  no `tickets` in the URL, and tickets entered before it stay in the step until the page is left.
+- **The products.** Each resort lists the operators' tickets by name, with their rule in one line
+  and a tag where only some may buy them ("UK & Ireland only", "Sold outside the US"); fields appear
+  only where a product varies (days, the hopper as Yes / No / Not sure, water parks or Volcano Bay,
+  the first day). Universal's two UK 14-day tickets are one entry that the first day resolves
+  (`onSale`); "Not sure which" plans the strictest product of its length; the UK combo fills in
+  Disney's and Universal's 14-day tickets at once. Under the fields, the window in dates. Only a
+  complete ticket is written to `tickets=`; a first day the product is not sold for is said in the
+  field and never written.
+- **The trip.** Tickets with first days give empty trip dates their range (earliest first day to
+  the latest window's end, at most 21 days); the Dates grid draws each window as a bar with a key.
+  "Find the best dates" is off while a first day is fixed. A ticket the dates miss holds the
+  request back and says so, with "Change dates" and "Change ticket".
+- **Plan first** (no owned ticket for a resort): at Level 0 one sentence ("3 days Universal from
+  Tue, Feb 9, then 4 days Disney from Fri, Feb 12.") and "Ticket details", a sheet on a phone and in
+  place at a desk: per resort its ticket and window, what the hopper adds (by date, from the
+  verdict's lists; "Worth adding" only where the API recommends it), the Hogwarts Express line where
+  both Universal parks are planned, "Show the plan with Park Hopper" (`hopper=<resort>`), the shop
+  link and "Use these as your tickets" (written with `blocks=1`, so the days stay). On a trip of ten
+  days or more, a line offers the UK 14-day tickets ("Plan with these").
+- **Owned** ("Your tickets"): each ticket's window, the days the plan uses ("8 of 14 days", or
+  "used on 5 of its 14 days" for an every-day ticket), why days stay unused, whether Disney and
+  Universal days mix (`meta.mixing`), a day outside the window with "Leave this visit out" and
+  "Change ticket", the pass warnings with the operator's blockout and reservation pages. Both owned
+  and suggested tickets: "Tickets" with "Yours" and "To buy".
+- **The ticket day.** "Disney day 2 of 4" in the Week view's column header ("day 2 of 4" on a
+  phone) and the day's sheet, after its hours; an every-day ticket counts the day of its window. The
+  Agenda cards keep their three facts and mark only a day outside its ticket.
+- **Fine-tune** has no ticket question any more. With owned tickets for both Disney and Universal,
+  "Disney days and Universal days" offers three answers: mixed only where it saves time (the API's
+  default), always together (`blocks=1`), mixed wherever the lines are shorter (`blocks=0`).
 
 ## Editing a plan
 
@@ -168,4 +219,7 @@ keeps the last plan on screen, dimmed, with a retry.
 
 `pnpm test:orlando-plan`; keyboard path, focus return to the pressed day after a sheet closes,
 44 px targets in every sheet and view on a phone, and no horizontal scroll at 320 and 390 px were
-checked with Playwright against the API's dev shim.
+checked with Playwright against the API's dev shim. The tickets run in `pnpm check:planner`
+(alone: `pnpm check:planner --orlando`, `scripts/check-planner-orlando.mjs`) against a production
+build pointed at the shim (`NEXT_PUBLIC_API_URL=http://localhost:3001`, the API's
+`pnpm trip-regions:dev`).

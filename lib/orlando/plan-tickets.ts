@@ -484,7 +484,7 @@ export function ticketsCoverBothResorts(
 
 // ── Plan first ────────────────────────────────────────────────────────────────
 
-/** The plan-first resorts planned with the hopper: every one with `ticket=hopper`, else `hopper=`. */
+/** Whether a plan-first resort is planned with its hopper: all are with `ticket=hopper`, else `hopper=` names it. */
 export function hopperOn(
   state: Pick<OrlandoPlanState, 'ticket' | 'hopper'>,
   resort: string
