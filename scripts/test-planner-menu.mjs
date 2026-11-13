@@ -121,11 +121,11 @@ test('an empty rail starts nothing', plannerQuickStarts([]), []);
 
 // ── The open signal ──────────────────────────────────────────────────────────
 const before = plannerUi.getWizardSnapshot();
-startPlannerAt(starts[0], 'planner-menu');
+startPlannerAt(starts[0], 'menu-park');
 test('the park is named to the planner', plannerPagePark.getSnapshot()?.slug, 'phantasialand');
 test('its photo goes along', plannerPagePark.getSnapshot()?.backgroundImage, starts[0].image);
 test('the wizard is asked for', plannerUi.getWizardSnapshot(), before + 1);
-test('the way in is the planner menu', plannerUi.getOpenSource(), 'planner-menu');
+test('the way in is the menu\u2019s park', plannerUi.getOpenSource(), 'menu-park');
 
 const click = (over = {}) => ({
   defaultPrevented: false,
@@ -148,10 +148,10 @@ test(
 );
 
 const wizard = plannerUi.getWizardSnapshot();
-quickStartClick(starts[1], 'planner-menu')(click({ metaKey: true }));
+quickStartClick(starts[1], 'menu-park')(click({ metaKey: true }));
 test('a new-tab click starts nothing', plannerUi.getWizardSnapshot(), wizard);
 test('… and names no park', plannerPagePark.getSnapshot()?.slug, 'phantasialand');
-quickStartClick(starts[1], 'planner-menu')(click());
+quickStartClick(starts[1], 'menu-park')(click());
 test(
   'a plain click starts the planner on its park',
   plannerPagePark.getSnapshot()?.slug,

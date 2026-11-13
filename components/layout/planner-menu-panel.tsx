@@ -79,7 +79,7 @@ export const PlannerMenuPanel = memo(function PlannerMenuPanel({
           variant="outline"
           size="sm"
           className="mt-3 self-start"
-          onClick={() => plannerUi.requestOpen('planner-menu')}
+          onClick={() => plannerUi.requestOpen('menu-plan')}
         >
           <CalendarPlus aria-hidden="true" />
           {t('openMyPlan')}
@@ -100,7 +100,7 @@ export const PlannerMenuPanel = memo(function PlannerMenuPanel({
                   href={park.href as '/'}
                   prefetch={false}
                   aria-describedby={quickStartHintId}
-                  onClick={quickStartClick(park, 'planner-menu')}
+                  onClick={quickStartClick(park, 'menu-park')}
                   className={ROW}
                 >
                   <span className="relative block size-8 shrink-0 overflow-hidden rounded-md">

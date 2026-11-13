@@ -818,7 +818,7 @@ export function Header({
                         <SheetSubLink
                           key={park.href}
                           href={park.href}
-                          onClick={quickStartClick(park, 'planner-menu')}
+                          onClick={quickStartClick(park, 'menu-park')}
                         >
                           {park.name}
                         </SheetSubLink>

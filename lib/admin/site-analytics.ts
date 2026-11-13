@@ -1058,7 +1058,8 @@ const PLANNER_OPENED_SOURCE_LABEL: Record<PlannerOpenedSource | 'none', string> 
   'home-hero': '„Heute planen“ auf der Startseite',
   'kids-page': 'Seite „Mit Kindern“',
   'orlando-hub': 'Orlando-Hub, „Diesen Tag planen“',
-  'planner-menu': 'Planer-Menü im Header, Park oder „Meinen Plan öffnen“',
+  'menu-plan': 'Planer-Menü im Header, „Meinen Plan öffnen“',
+  'menu-park': 'Planer-Menü im Header, ein beliebter Park',
   assistant: 'Parky, der Chat-Assistent',
   none: 'Planer zu',
 };
