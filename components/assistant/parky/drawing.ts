@@ -26,6 +26,28 @@ export const gold = 'oklch(0.86 0.15 90)';
 /** The Ferris wheel's cabins in turn, and confetti in the same colours. */
 export const CABIN_COLOURS = ['oklch(0.72 0.17 355)', gold, green, 'oklch(0.76 0.16 55)'];
 
+/** Parky's body: a round speech bubble with its tail at the lower left. */
+export const BUBBLE =
+  'M24 7c11 0 20 8.1 20 18.2S35 43.4 24 43.4c-2.5 0-4.9-.4-7.1-1.1L7.5 46l2.3-8C6.1 34.7 4 30.2 4 25.2 4 15.1 13 7 24 7Z';
+
+/** Both eyes shut, two arcs bowed down: asleep, or in a nap. */
+export const SHUT_EYES = 'M12.4 23.2q4.6 3.4 9.2 0M26.4 23.2q4.6 3.4 9.2 0';
+
+/** The smile Parky wears whenever nothing else takes the mouth. */
+export const SMILE = 'M20.5 32.5q3.5 3.2 7 0';
+
+/** One Z of his sleep, over the bubble's top left. */
+export const ZED = 'M6.5 6.5h3.4l-3.4 3.8h3.4';
+
+/** The rosy cheeks' centres on the x axis; both sit at y 31. */
+export const CHEEKS = [10.8, 37.2] as const;
+
+/** The cheeks' blush. */
+export const blush = 'oklch(0.78 0.12 15)';
+
+/** A crescent moon about 9 units across, over the top left: the lights at night, a winter's nap. */
+export const MOON = 'M6 -2a4 4 0 1 0 4.2 5.3 3.2 3.2 0 1 1-4.2-5.3Z';
+
 /** A four-pointed star at the centre of the orbit dizzy stars run round, above the left eye. */
 export const STAR = 'M17 .2l.8 2 2 .8-2 .8-.8 2-.8-2-2-.8 2-.8Z';
 

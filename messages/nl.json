@@ -1432,6 +1432,13 @@
       "since": "sinds {month}"
     }
   },
+  "winterBreak": {
+    "label": "Winterpauze",
+    "reopensPark": "Weer open op <date>{day}</date>",
+    "reopensRide": "Het park gaat weer open op <date>{day}</date>",
+    "park": "Tot dan blijven alle attracties dicht en houdt Parky een winterslaap.",
+    "ride": "Tot dan blijft ook {ride} dicht en houdt Parky een winterslaap."
+  },
   "attractions": {
     "blogPosts": {
       "title": "{ride} op het blog",

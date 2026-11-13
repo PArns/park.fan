@@ -20,6 +20,11 @@ parkLinks:
   - /parks/europe/france/paris/disneyland-park
 rideLinks:
   - /parks/europe/france/paris/disneyland-park/indiana-jones-and-the-temple-of-peril
+coverImage:
+  src: /media/disneyland-park/background.jpg
+  alt: 'Het roze-blauwe Doornroosjekasteel op een rotssokkel, met gras en gesnoeide bomen ervoor.'
+  caption: 'Het Doornroosjekasteel in het Disneyland Park. De achtbaan Indiana Jones in Adventureland gaat vanaf 4 januari enkele maanden dicht.'
+  credit: 'Patrick Arns'
 seo:
   title: 'Disneyland Paris renoveert Indiana Jones vanaf januari 2027'
   description: >-

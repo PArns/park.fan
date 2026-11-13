@@ -18,6 +18,11 @@ category: news
 parkLinks:
   - /parks/europe/france/paris/disneyland-park
   - disney-adventure-world
+coverImage:
+  src: /media/disneyland-park/background.jpg
+  alt: 'The pink and blue Sleeping Beauty castle on its rock base, lawn and clipped trees in front.'
+  caption: 'Sleeping Beauty Castle in Disneyland Park. The Rainforest Café is outside the parks, in Disney Village, which needs no park ticket.'
+  credit: 'Patrick Arns'
 seo:
   title: 'Rainforest Café at Disneyland Paris closes on 15 November 2026'
   description: >-

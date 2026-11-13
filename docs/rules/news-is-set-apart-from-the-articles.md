@@ -67,14 +67,24 @@ computed in the browser because the homepage is cached for a day and the header 
 server-side "heute" would still say "heute" tomorrow; the absolute date stays in the first HTML on
 the same line, so the late half moves nothing.
 
-## A news cover image is used once
+## A news post reuses a photo rather than going without
 
-No `coverImage.src` appears twice among the news posts; the same image twice is worse than none.
-Check with
-`grep -rh -A1 '^coverImage:' content/blog/de/*.md | grep src | sort | uniq -c` before writing. If the
-image is taken, use another motif from the park's collection or `public/media/halloween-2026/`; if
-there is none, the post runs without a cover and the site draws the brand fallback
-([`BlogCoverFallback`](../features/blog-cover-fallback.md)), a different hue per slug.
+A news post about a park carries a photo of that park. Pick the cover in this order:
+
+1. a motif from the park's collection (`public/media/<park>/`) that no news post uses yet;
+2. a photo from a seasonal collection that fits the story (`public/media/halloween-2026/`);
+3. a photo of the park that other posts already use, the one whose last news use is oldest.
+
+Only a post with no photo in the media database for its park runs without a cover; then the site
+draws the brand fallback ([`BlogCoverFallback`](../features/blog-cover-fallback.md)), a different hue
+per slug. A reused photo takes its `alt` from the sidecar and gets a caption of its own, written for
+this post. The covers in use and how often:
+`grep -rh -A1 '^coverImage:' content/blog/de/*.md | grep src | sort | uniq -c`.
+
+Until November 2026 a photo could stand on one news post only. Disneyland Paris has one photo in
+the media database, so the three Paris news items after the Halloween one (the castle bridge,
+Indiana Jones, the Rainforest Café) ran on the brand fallback, which shows nothing of the park. Patrick decided that the castle on a second post beats no picture
+([#1211](https://github.com/PArns/park.fan/pull/1211)).
 
 ## Why
 

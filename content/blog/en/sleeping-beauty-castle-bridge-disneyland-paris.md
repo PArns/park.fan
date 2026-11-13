@@ -19,6 +19,11 @@ parkLinks:
   - /parks/europe/france/paris/disneyland-park
 rideLinks:
   - /parks/europe/france/paris/disneyland-park/*
+coverImage:
+  src: /media/disneyland-park/background.jpg
+  alt: 'The pink and blue Sleeping Beauty castle on its rock base, lawn and clipped trees in front.'
+  caption: 'Sleeping Beauty Castle in Disneyland Park. The compass rose on the bridge in front of it is set in the colours of the three good fairies.'
+  credit: 'Patrick Arns'
 seo:
   title: 'New bridge at Sleeping Beauty Castle in Disneyland Paris'
   description: >-

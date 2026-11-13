@@ -13,7 +13,8 @@ import type {
   InfluencingHoliday,
   ParkWithAttractions,
 } from '@/lib/api/types';
-import { parkDayOf } from '@/lib/utils/park-day';
+import { parkDayOf, weeksUntil } from '@/lib/utils/park-day';
+import { OFFSEASON_MIN_DAYS } from '@/lib/utils/schedule-utils';
 
 export interface UseTodayScheduleParams {
   timezone: string;
@@ -184,14 +185,13 @@ export function useTodaySchedule({
     if (!currentTime) return null;
     const now = currentTime;
     const dayDiff = Math.ceil((nextOpening.getTime() - now.getTime()) / (1000 * 60 * 60 * 24));
-    const totalWeeks = dayDiff / 7;
     const dateFormatted = getDateTimeFormat(locale, {
       day: 'numeric',
       month: 'long',
       timeZone: timezone,
     }).format(nextOpening);
-    if (totalWeeks >= 1) {
-      const weeks = Math.ceil(totalWeeks);
+    if (dayDiff >= OFFSEASON_MIN_DAYS) {
+      const weeks = weeksUntil(dayDiff);
       return {
         dateFormatted,
         weeks,
