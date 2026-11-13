@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button';
 import { ConfirmDialog } from '@/components/ui/confirm-dialog';
 import {
   TICKETS_QUERY_KEY,
+  TICKET_PUBLISH_DELAY,
   formatTicketDays,
   formatTicketLinks,
   formatTicketSale,
@@ -149,7 +150,7 @@ export default function TicketsPage() {
           title="Tickets für Orlando"
           hint={
             catalog.data
-              ? `${products.filter((product) => product.active).length} im Katalog, ${products.filter((product) => !product.active).length} archiviert. Der Planer rechnet sofort mit einer Änderung, die Website zeigt sie nach spätestens 15 Minuten.`
+              ? `${products.filter((product) => product.active).length} im Katalog, ${products.filter((product) => !product.active).length} archiviert. ${TICKET_PUBLISH_DELAY}`
               : 'Was der Urlaubsplaner über Tickets weiß: Produkte, Regeln und wo man sie kauft.'
           }
           action={
@@ -167,7 +168,7 @@ export default function TicketsPage() {
         />
         {catalog.isError ? (
           <ErrorState message={catalog.error.message} onRetry={() => void catalog.refetch()} />
-        ) : catalog.isLoading ? (
+        ) : catalog.isLoading || tripRegion.isLoading ? (
           <SkeletonRows rows={6} />
         ) : products.length === 0 ? (
           <EmptyState

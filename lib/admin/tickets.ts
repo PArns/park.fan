@@ -226,6 +226,14 @@ export function ticketCatalogPath(region: string, ...segments: string[]): string
   ].join('/');
 }
 
+/**
+ * How soon a saved edit is seen, as the API publishes it: plans drop the old catalog within 30
+ * seconds (every instance lets go of its copy by then), the open catalog route and the site's
+ * ticket list within 15 minutes, its edge window.
+ */
+export const TICKET_PUBLISH_DELAY =
+  'Pläne rechnen nach spätestens 30 Sekunden damit, die Ticketliste der Website folgt nach spätestens 15 Minuten.';
+
 /** The query key every ticket read sits under, so one invalidation drops all of them. */
 export const TICKETS_QUERY_KEY = ['admin', 'tickets'] as const;
 
@@ -301,13 +309,16 @@ export interface TicketDraft {
   suggestRank: number | null;
 }
 
-/** A new product's draft: one day, one link that is the operator's shop, nothing suggested. */
-export function emptyTicketDraft(resort = ''): TicketDraft {
+/**
+ * A new product's draft: one day, one link that is the operator's shop, nothing suggested, and no
+ * resort until one is picked.
+ */
+export function emptyTicketDraft(): TicketDraft {
   return {
     slug: '',
     name: '',
     description: '',
-    resort,
+    resort: '',
     parks: [],
     markets: ['us'],
     daysMode: 'fixed',

@@ -401,7 +401,7 @@ The ticket catalog of a trip region as `/admin/tickets` edits it: every product 
 
 - `ticketCatalogPath` _function_: The proxy path of a region's catalog, or of one product and its actions below it.
 - `ticketCatalogKey` _function_: The query key of one region's catalog.
-- `emptyTicketDraft` _function_: A new product's draft: one day, one link that is the operator's shop, nothing suggested.
+- `emptyTicketDraft` _function_: A new product's draft: one day, one link that is the operator's shop, nothing suggested, and no resort until one is picked.
 - `draftFromProduct` _function_: The draft of a stored product, every optional field filled with its empty form value.
 - `windowTableFor` _function_: The window table for the lengths `min` to `max`: a length keeps the window it had, a new one starts at the window of the length before it and never under its own days, the two checks the API runs.
 - `setTicketWindow` _function_: The table with the window of one length changed.
@@ -440,6 +440,7 @@ The ticket catalog of a trip region as `/admin/tickets` edits it: every product 
 - `MAX_TICKET_LINKS` _const_: Links per product.
 - `MAX_TICKET_URL_LENGTH` _const_: Characters of any url the catalog stores.
 - `MAX_TICKET_SELLER_LENGTH` _const_: Characters of a seller's name.
+- `TICKET_PUBLISH_DELAY` _const_: How soon a saved edit is seen, as the API publishes it: plans drop the old catalog within 30 seconds (every instance lets go of its copy by then), the open catalog route and the site's ticket list within 15 minutes, its edge window.
 - `TICKETS_QUERY_KEY` _const_: The query key every ticket read sits under, so one invalidation drops all of them.
 - `TICKET_LINK_EVENT` _const_: The event the planner sends for a click on a ticket link, with `product`, `seller`, `host`, `official`, `sponsored`, `position` and `surface`. Its words live in `SiteEventMap`; the admin only reads it.
 - `TICKET_CLICK_DAYS` _const_: The window the ticket admin counts clicks in, in UTC days with today.

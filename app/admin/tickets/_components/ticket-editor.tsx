@@ -15,6 +15,7 @@ import {
   MAX_TICKET_DAYS,
   MAX_TICKET_LINKS,
   MAX_TICKET_WINDOW,
+  TICKET_PUBLISH_DELAY,
   TICKET_ANCHOR_LABELS,
   TICKET_CONFIDENCE_LABELS,
   TICKET_DRY_RUN_LABELS,
@@ -162,9 +163,9 @@ export function TicketEditor({
 }) {
   const toast = useToast();
   const invalidate = useInvalidateAdmin();
-  const [initial] = useState(() =>
-    product ? draftFromProduct(product) : emptyTicketDraft(groups[0]?.key ?? '')
-  );
+  // A new product names no resort until the editor picks one: a default would file a LEGOLAND
+  // ticket under Disney without anyone choosing it.
+  const [initial] = useState(() => (product ? draftFromProduct(product) : emptyTicketDraft()));
   const [draft, setDraft] = useState(initial);
   const [saveProblems, setSaveProblems] = useState<TicketProblem[]>([]);
   const [error, setError] = useState<string | null>(null);
@@ -283,8 +284,7 @@ export function TicketEditor({
       invalidate(TICKETS_QUERY_KEY);
       toast.push({
         title: product ? 'Ticket gespeichert' : 'Ticket angelegt',
-        description:
-          'Der Planer rechnet sofort damit, die Website zeigt es nach spätestens 15 Minuten.',
+        description: TICKET_PUBLISH_DELAY,
         tone: 'success',
       });
       onClose();
@@ -311,7 +311,9 @@ export function TicketEditor({
   return (
     <Dialog open onOpenChange={(open) => !open && !busy && onClose()}>
       <DialogContent
-        className={`${SCROLLING_DIALOG} gap-0 p-0 sm:max-w-3xl`}
+        // The scroll padding is the sticky footer's height, so a field that takes the focus is
+        // scrolled above it rather than under it.
+        className={`${SCROLLING_DIALOG} scroll-pb-48 gap-0 p-0 sm:max-w-3xl sm:scroll-pb-36`}
         onInteractOutside={(event) => keep && event.preventDefault()}
         onEscapeKeyDown={(event) => keep && event.preventDefault()}
       >
