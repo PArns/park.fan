@@ -238,7 +238,7 @@
     "orlando": {
       "kicker": "Orlando",
       "title": "Orlando: which park on which day",
-      "lead": "Sixteen parks around Orlando in one calendar, with the shortest lines at Disney World and Universal for every day, and a planner for your trip.",
+      "lead": "Sixteen parks around Orlando in one calendar: for every day you see where the lines are shortest at Disney World and Universal, and the planner puts your parks on your dates.",
       "link": "Orlando Crowd Calendar"
     }
   },
@@ -392,11 +392,12 @@
     "metaDescriptionPlain": "Which park on which day at Walt Disney World, Universal with Epic Universe and SeaWorld, and a planner that puts your parks on your dates.",
     "metaDescriptionMonth": "Quietest Orlando days in {month}: {verdict}. Every park day by day, Epic Universe included.",
     "metaDescriptionMonthPlain": "Orlando in {month}, day by day: the shortest lines at Disney World, Universal with Epic Universe, SeaWorld and the day trips.",
-    "lead": "Walt Disney World, Universal with Epic Universe, SeaWorld and the day trips, day by day, and a planner that puts your parks on your dates.",
+    "lead": "With one hotel room in Orlando, you've got eight theme parks and four water parks on your doorstep.",
     "leadMonth": "Which park has the shortest lines on which day of {month}, at Walt Disney World, Universal with Epic Universe, SeaWorld and the day trips.",
     "scroll": "To the calendar",
     "introLabel": "How to read the calendar",
-    "intro": "Each square is one park on one day. The number is the typical wait at that park's big rides at the busiest time of day, and it is what you compare parks by. The colour says how that day compares with the same park's typical day.",
+    "intro": "Each square is one park on one day. The number is the wait we expect at that park's big rides at the busiest time of day, and it's what you compare parks by. The colour marks how that day compares with a typical day at the same park.",
+    "opening": "Without traffic, EPCOT to Universal Studios is a 25-minute drive, and from a hotel in Lake Buena Vista each of the eight theme parks is under half an hour away, Magic Kingdom's ferry or monorail included. LEGOLAND in Winter Haven is just under an hour, Busch Gardens and Adventure Island in Tampa about an hour and a half. Those three, Discovery Cove and the four water parks make sixteen, and you won't change hotels for any of them. The calendar below has all sixteen, day by day.",
     "nextDays": "Next 30 days",
     "lastYearBanner": "Our forecast reaches {date}. The days after it show the same weekday last year as we measured it, marked “last year”.",
     "lastYearBannerNoDate": "Some of these days are past our forecast. They show the same weekday last year as we measured it, marked “last year”.",
@@ -421,7 +422,7 @@
       "unknown": "No hours yet",
       "lastYear": "Last year",
       "howTo": "How to read this",
-      "minutesLong": "The number in a square is the wait we expect at that park's big rides, each at its busiest time of day, averaged over those rides. It is not the wait at every hour: in the morning and the evening the lines are shorter. Compare parks by this number.",
+      "minutesLong": "The number in a square is the wait we expect at that park's big rides, each at its busiest time of day, averaged over those rides. It isn't the wait at every hour: in the morning and the evening the lines are shorter.",
       "colourLong": "The colour compares a day with the same park's typical day. That is why a green Magic Kingdom at 40 minutes and a green EPCOT at 60 are both good days, each for its own park. The ring marks the park with the shortest lines at each resort that day. A park that closes early for day guests can lose the ring to a full day with a similar wait.",
       "horizonLong": "The forecast covers the next 60 days. After that our outlook runs to {date}, with a wider error. Days past it show the same weekday last year, as we measured it.",
       "horizonLongNoDate": "The forecast covers the next 60 days. After that our outlook runs on with a wider error, and days past it show the same weekday last year, as we measured it.",
@@ -433,7 +434,7 @@
       "title": "Which park on which day",
       "hint": "Tap a day for hours, events, travel times and the big rides.",
       "unavailable": "The calendar could not be loaded. Try again in a few minutes.",
-      "sources": "Waits and levels: park.fan forecast of {date}. Hours as the parks publish them. Drive times: {attribution}, without traffic.",
+      "sources": "Waits and levels: park.fan forecast of {date}. Hours as the parks publish them. Drive times without traffic, map data: {attribution}.",
       "dayPlanner": "Plan one park day in the day planner",
       "caption": "Orlando's parks, {from} to {to}: the big rides' wait at their busiest, in minutes",
       "parkColumn": "Park",
@@ -472,7 +473,7 @@
     },
     "sheet": {
       "kicker": "Orlando · one day",
-      "intro": "Best day first at each resort: shortest lines, early closings counted. Minutes: the big rides at their busiest.",
+      "intro": "At each resort the best park comes first: shortest lines, early closings counted. Minutes: the big rides at their busiest.",
       "stayingAt": "Staying at",
       "minutes": "{minutes} min",
       "noForecast": "open, no forecast",
@@ -488,7 +489,7 @@
       "extendedEvening": "Extended Evening Hours until {time} for deluxe hotel guests",
       "expected": "dates expected",
       "travel": "From {area}: about {minutes} min by car, without traffic",
-      "travelTransfer": "From {area}: about {minutes} min by car to the car park, then about {transfer} min by monorail or ferry, {total} min in all, without traffic",
+      "travelTransfer": "From {area}: about {minutes} min by car to the car park, then about {transfer} min {via, select, ttc {by monorail or ferry} other {by shuttle}}, {total} min in all, without traffic",
       "bigRides": "The big rides",
       "ridesLoading": "Loading the rides …",
       "ridesNone": "No ride figures for this day.",
@@ -558,7 +559,7 @@
       "summary": "Every figure here comes from wait times park.fan measures every five minutes, a forecast built on them, and the hours the parks publish. Open a question for the details.",
       "sources": {
         "title": "Where do the numbers come from?",
-        "body": "park.fan records the posted wait of every ride every five minutes. Our forecast models learn from those measurements, the parks' hours, school holidays and the weather. Opening hours, Early Entry and evening events come from the parks' own calendars; seasons and parties are checked by hand."
+        "body": "park.fan records the posted wait of every ride every five minutes. Our forecast models learn from those measurements, the parks' hours, school holidays and the weather. Opening hours, Early Entry and evening events come from the parks' own calendars. We check seasons and parties by hand."
       },
       "minutes": {
         "title": "What do the minutes mean?",
@@ -571,11 +572,11 @@
       },
       "error": {
         "title": "How close does it get?",
-        "body": "How far a forecast can be off depends on how far ahead the day is. With a plan, the planner says it beside your days: \"A forecast for one ride on one day can be off by about … min.\" Waits are rounded to five minutes, so days within five minutes count as equal here, and each park's best days are a set, not a ranking."
+        "body": "The further ahead the day, the further off the forecast can be. Once you plan a trip, you'll find next to the result how many minutes the forecast for one ride on one day can be off. Waits are rounded to five minutes, so days within five minutes count as equal here, and each park's best days are a set, not a ranking."
       },
       "travel": {
-        "title": "How are the drive times measured?",
-        "body": "Drive times are a drive without traffic from {attribution}, to the car park. Magic Kingdom's car park is the Transportation and Ticket Center; the monorail or the ferry takes about another 15 minutes to the gate."
+        "title": "How are the drive times calculated?",
+        "body": "Each drive time is by car without traffic, to the car park. Magic Kingdom's car park is the Transportation and Ticket Center, and the monorail or the ferry takes about another 15 minutes to the gate. For Volcano Bay you park in Universal's garages and take the shuttle, about another 15 minutes. Map data: {attribution}."
       },
       "links": "The model behind it: <fancast>Fancast</fancast>. Everything else: <howto>how park.fan works</howto>."
     },
@@ -590,19 +591,19 @@
       },
       "party": {
         "q": "Which park should I visit on a Magic Kingdom party night?",
-        "a": "On {count, plural, =1 {# night} other {# nights}} in this period Magic Kingdom closes to day guests at {time} for {name}. The lines on those days are shorter, about {on} min against {off} min on its other days, but the day is shorter and day guests miss the evening. For a full day pick EPCOT, Hollywood Studios or Animal Kingdom that day, or come with a party ticket."
+        "a": "On {count, plural, =1 {# night} other {# nights}} in this period Magic Kingdom closes to day guests at {time} for {name}. The lines on those days are shorter, about {on} min compared with {off} min on its other days, but the day is shorter and day guests miss the evening. For a full day pick EPCOT, Hollywood Studios or Animal Kingdom on those days, or come with a party ticket."
       },
       "epic": {
         "q": "Is Epic Universe busier on weekends?",
-        "a": "{verdict, select, busier {Yes.} same {No.} other {Only a little.}} In this period its big rides average about {weekend} min at their busiest on Saturdays and Sundays and about {weekday} min on weekdays."
+        "a": "{verdict, select, busier {Yes.} same {No.} other {Only a little.}} In this period you wait about {weekend} min at its big rides at their busiest on Saturdays and Sundays, and about {weekday} min on weekdays."
       },
       "distance": {
         "q": "How far is Universal from Walt Disney World?",
-        "a": "By car and without traffic, about {epcot} min from Universal Studios to EPCOT, and about {magic} min to Magic Kingdom's car park, plus about {transfer} min by monorail or ferry to the gate ({total} min in all). Drive times: {attribution}."
+        "a": "Universal Studios to EPCOT is about {epcot} minutes by car without traffic, and to Magic Kingdom's car park about {magic}. From there the monorail or the ferry takes about {transfer} minutes to the gate, {total} minutes in all. Map data: {attribution}."
       },
       "early": {
         "q": "Do I need Early Entry?",
-        "a": "No, but it helps on busy days. Guests of Disney's own hotels get into the Disney theme parks {disney} minutes before everybody else, and guests of Universal's hotels {universal} minutes early at Universal's theme parks. The trip planner counts it when you choose such a hotel."
+        "a": "No, but it helps on busy days. Guests of Disney's own hotels get into the Disney theme parks {disney} minutes before everybody else, and guests of Universal's hotels {universal} minutes early at Universal's theme parks. If you choose such a hotel in the trip planner, the early opening counts in your plan."
       },
       "green": {
         "q": "Why can a park with longer lines be green?",
@@ -2364,8 +2365,8 @@
     },
     "intro": {
       "lead": "Every figure here is the big rides' wait at their busiest: each headliner's peak of the day, averaged over the parks of the trip.",
-      "body": "A trip is priced the way the trip planner prices it, with each park on its best day, and a day that closes early for day guests counts as a worse one. The forecast runs to {date}; after that the page shows the same weeks last year as we measured them, marked “last year”.",
-      "bodyForecast": "A trip is priced the way the trip planner prices it, with each park on its best day, and a day that closes early for day guests counts as a worse one. Every figure on this page is our forecast."
+      "body": "We score a trip the way the trip planner does: each park on its best day, and a day that closes early for day guests counts as a worse one. The forecast runs to {date}. After that the page shows the same weeks last year as we measured them, marked “last year”.",
+      "bodyForecast": "We score a trip the way the trip planner does: each park on its best day, and a day that closes early for day guests counts as a worse one. Every figure on this page is our forecast."
     },
     "strip": {
       "title": "The year at a glance",
@@ -2432,7 +2433,7 @@
       "title": "Travelling in school holidays?",
       "lead": "If school decides when you travel, the planner searches only inside your region's holidays and picks the quietest {days} days there. Choose your region and the break.",
       "note": "Only breaks of {days} days or more are listed, weekends included.",
-      "through": "The school calendars run to {date}. A later break is not in the data yet.",
+      "through": "The school calendars run to {date}. Later breaks aren't in yet.",
       "none": "No break of {days} days or more in {year}."
     },
     "faq": {
@@ -2444,13 +2445,13 @@
       },
       "quietA": "The {days}-day trip from {date} has the shortest lines: the big rides about {minutes} min at their busiest, {percent}% below the {year} average. Next come {others}.",
       "christmasQ": "Is Christmas busy?",
-      "christmasA": "{busy, select, yes {Yes.} other {Less than you might expect.}} Christmas week ({date}) runs at about {minutes} min at the big rides, against {average} min across {year}.",
-      "newYearA": "{busy, select, yes {Yes, as far as our figures go.} other {Less than you might expect, as far as our figures go.}} They start with the week around New Year ({date}) at about {minutes} min at the big rides, against {average} min across {year}. Christmas week itself comes before that.",
+      "christmasA": "{busy, select, yes {Yes.} other {No.}} Christmas week ({date}) runs at about {minutes} min at the big rides, against {average} min across {year}.",
+      "newYearA": "{busy, select, yes {Yes, as far as our figures go.} other {No, as far as our figures go.}} They start with the week around New Year ({date}) at about {minutes} min at the big rides, against {average} min across {year}. Christmas week itself comes before that.",
       "partyQ": "When are the party nights?",
       "partyA": "{list}. On those evenings the park closes early for day guests, which is why the trip planner keeps your full park days off them.",
       "partyItem": "{name} ({park}): {dates}, {status}",
       "hurricaneQ": "What about hurricane season?",
-      "hurricaneA": "It runs from 1 June to 30 November. That is a fact about the season, not a forecast: a storm gets named days ahead, not months. In a usual year the most rain falls in {months}, about {rain} mm a month (the average for {period}).",
+      "hurricaneA": "It runs from 1 June to 30 November. Whether a storm hits your trip you'll only know a few days ahead, once it has formed and been named. In a usual year the most rain falls in {months}, about {rain} mm a month (the average for {period}).",
       "firstQ": {
         "orlando": "Disney or Universal first?",
         "disney-world": "Which Disney park should come first?",
