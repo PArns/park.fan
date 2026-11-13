@@ -29,6 +29,7 @@ import {
   hubWindow,
   orlandoToday,
   shortGroupName,
+  withGroupNames,
 } from '@/lib/orlando/hub-data';
 import { bestTimeRange, bestTimeWhenQuery } from '@/lib/orlando/best-time';
 import {
@@ -172,8 +173,9 @@ export default async function OrlandoPage({ params }: OrlandoPageProps) {
   if (!resolved) notFound();
   const { nowMs, todayIso, current, month, window } = resolved;
 
+  const t = await getTranslations('orlando');
   const [region, calendar, bestDays] = await Promise.all([
-    getOrlandoRegion(),
+    getOrlandoRegion().then((r) => withGroupNames(r, t('dayTripsGroup'))),
     catchNonFatal(getOrlandoCalendar(window)),
     catchNonFatal(getOrlandoBestDays(window)),
   ]);
@@ -182,7 +184,6 @@ export default async function OrlandoPage({ params }: OrlandoPageProps) {
     getOrlandoWhen(bestTimeWhenQuery(region, 'orlando', bestTimeRange(todayIso)))
   );
 
-  const t = await getTranslations('orlando');
   const tNav = await getTranslations('navigation');
   const monthLabel = month ? formatHubMonth(month.year, month.month, locale) : null;
   const canonicalPath = orlandoPath(canonicalMonth(month, current));

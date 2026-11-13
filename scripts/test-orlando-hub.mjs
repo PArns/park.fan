@@ -22,6 +22,7 @@ import {
   shortGroupName,
   shortParkName,
   slimRegion,
+  withGroupNames,
 } from '../lib/orlando/hub-data.ts';
 import {
   isOrlandoMonthInRange,
@@ -150,6 +151,16 @@ test('park and resort names drop what every visitor drops', () => {
   assert.equal(shortParkName('Busch Gardens Tampa Bay'), 'Busch Gardens');
   assert.equal(shortParkName('EPCOT'), 'EPCOT');
   assert.equal(shortGroupName('Walt Disney World Resort'), 'Walt Disney World');
+});
+
+test("the day trips take the reader's word, a resort keeps its own name", () => {
+  const named = withGroupNames(region, 'Tagesausflüge');
+  assert.equal(named.groups.find((g) => g.kind === 'day_trip')?.name, 'Tagesausflüge');
+  assert.equal(
+    named.groups.find((g) => g.key === 'walt-disney-world')?.name,
+    'Walt Disney World Resort'
+  );
+  assert.equal(region.groups.find((g) => g.kind === 'day_trip')?.name, 'Day trips');
 });
 
 test("the API's pick leads its resort, then the shortest waits", () => {

@@ -40,6 +40,19 @@ export function regionGroups(region: TripRegion): RegionGroup[] {
     .filter((group) => group.parks.length > 0);
 }
 
+/**
+ * The region with its day-trip group named in the reader's language: the API names it in English,
+ * while a resort's name is the operator's own and stays as it is.
+ */
+export function withGroupNames(region: TripRegion, dayTrips: string): TripRegion {
+  return {
+    ...region,
+    groups: region.groups.map((group) =>
+      group.kind === 'day_trip' ? { ...group, name: dayTrips } : group
+    ),
+  };
+}
+
 /** The resorts alone: the groups a day's shortest line is named for. */
 export function regionResorts(region: TripRegion): RegionGroup[] {
   return regionGroups(region).filter((group) => group.kind === 'resort');

@@ -418,6 +418,7 @@
     "intro": "Cada casilla es un parque en un día. El número es la espera que prevemos en las grandes atracciones de ese parque a la hora de más gente, y es con él con lo que comparas los parques. Por el color sabes cómo es ese día frente a un día normal del mismo parque.",
     "opening": "Sin tráfico, de EPCOT a Universal Studios se tarda 25 minutos en coche, y desde un hotel en Lake Buena Vista cualquiera de los ocho parques temáticos queda a menos de media hora, con el ferri o el monorraíl incluidos en el caso de Magic Kingdom. LEGOLAND, en Winter Haven, está a algo menos de una hora, y Busch Gardens y Adventure Island, en Tampa, están a una hora y media más o menos. Con esos tres, Discovery Cove y los cuatro parques acuáticos son dieciséis, y por ninguno tienes que cambiar de hotel. En el calendario de abajo están los dieciséis, día a día.",
     "nextDays": "Próximos 30 días",
+    "dayTripsGroup": "Excursiones",
     "lastYearBanner": "Nuestra previsión llega hasta el {date}. Los días siguientes muestran el mismo día de la semana del año pasado, tal como lo medimos, con la nota «año pasado».",
     "lastYearBannerNoDate": "Algunos de estos días quedan más allá de nuestra previsión. Muestran el mismo día de la semana del año pasado, tal como lo medimos, con la nota «año pasado».",
     "monthIndexLabel": "Orlando mes a mes",

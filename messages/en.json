@@ -418,6 +418,7 @@
     "intro": "Each square is one park on one day. The number is the wait we expect at that park's big rides at the busiest time of day, and it's what you compare parks by. The colour marks how that day compares with a typical day at the same park.",
     "opening": "Without traffic, EPCOT to Universal Studios is a 25-minute drive, and from a hotel in Lake Buena Vista each of the eight theme parks is under half an hour away, Magic Kingdom's ferry or monorail included. LEGOLAND in Winter Haven is just under an hour, Busch Gardens and Adventure Island in Tampa about an hour and a half. Those three, Discovery Cove and the four water parks make sixteen, and you won't change hotels for any of them. The calendar below has all sixteen, day by day.",
     "nextDays": "Next 30 days",
+    "dayTripsGroup": "Day trips",
     "lastYearBanner": "Our forecast reaches {date}. The days after it show the same weekday last year as we measured it, marked “last year”.",
     "lastYearBannerNoDate": "Some of these days are past our forecast. They show the same weekday last year as we measured it, marked “last year”.",
     "monthIndexLabel": "Orlando by month",

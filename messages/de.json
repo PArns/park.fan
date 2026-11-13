@@ -418,6 +418,7 @@
     "intro": "Jedes Kästchen ist ein Park an einem Tag. Die Zahl ist die Wartezeit, die wir an den großen Bahnen dieses Parks zur vollsten Tageszeit erwarten, und an ihr vergleichst du die Parks. An der Farbe siehst du, wie der Tag im Vergleich zu einem normalen Tag desselben Parks ausfällt.",
     "opening": "Ohne Verkehr fährst du von EPCOT zu den Universal Studios 25 Minuten, und von einem Hotel in Lake Buena Vista ist jeder der acht Themenparks keine halbe Stunde entfernt, beim Magic Kingdom samt Fähre oder Monorail. Bis LEGOLAND in Winter Haven ist es knapp eine Stunde, bis Busch Gardens und Adventure Island in Tampa rund anderthalb. Mit diesen dreien, Discovery Cove und den vier Wasserparks sind es sechzehn Parks, und für keinen musst du das Hotel wechseln. Im Kalender unten stehen alle sechzehn, Tag für Tag.",
     "nextDays": "Nächste 30 Tage",
+    "dayTripsGroup": "Tagesausflüge",
     "lastYearBanner": "Unsere Prognose reicht bis {date}. Die Tage danach zeigen denselben Wochentag im Vorjahr, so wie wir ihn gemessen haben, und tragen den Hinweis „Vorjahr“.",
     "lastYearBannerNoDate": "Einige dieser Tage liegen hinter unserer Prognose. Sie zeigen denselben Wochentag im Vorjahr, so wie wir ihn gemessen haben, und tragen den Hinweis „Vorjahr“.",
     "monthIndexLabel": "Orlando nach Monaten",

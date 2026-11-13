@@ -54,6 +54,7 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`hub-data.ts`](../../lib/orlando/hub-data.ts)
 
 - `regionGroups` _function_: The region's groups with their parks: the three resorts, then the day trips.
+- `withGroupNames` _function_: The region with its day-trip group named in the reader's language: the API names it in English, while a resort's name is the operator's own and stays as it is.
 - `regionResorts` _function_: The resorts alone: the groups a day's shortest line is named for.
 - `shortParkName` _function_: The words a park's name carries that every visitor drops: the operator's prefix, "Park", "Theme Park", the city.
 - `closesEarly` _function_: Whether a day closes early for the day guest: the API says so (`closesEarly`), or a separately ticketed evening follows, which sends the day guests out before it starts.
