@@ -27,8 +27,7 @@ coverImage:
 seo:
   title: 'Planificateur de voyage Orlando : quel parc, quel jour ?'
   description: >-
-    Chaque parc d’Orlando le jour de ton séjour où les files sont les plus courtes, avec les soirées
-    privées, les avantages des hôtels, tes billets et le Park Hopper.
+    Chaque parc d’Orlando le jour de ton séjour où les files sont les plus courtes, avec soirées privées, avantages des hôtels, tes billets et Park Hopper.
   keywords:
     - planificateur de voyage Orlando
     - quel parc d’Orlando quel jour

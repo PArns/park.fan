@@ -27,8 +27,7 @@ coverImage:
 seo:
   title: 'Pianificatore di viaggio Orlando: quale parco in quale giorno?'
   description: >-
-    Ogni parco di Orlando nel giorno del tuo viaggio con le code più corte, con le serate a
-    pagamento, i vantaggi degli hotel, i tuoi biglietti e il Park Hopper.
+    Ogni parco di Orlando nel giorno del viaggio con le code più corte, con serate a pagamento, vantaggi degli hotel, i tuoi biglietti e il Park Hopper.
   keywords:
     - pianificatore di viaggio Orlando
     - quale parco di Orlando in quale giorno
