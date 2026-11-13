@@ -129,7 +129,7 @@ Unter „Einen Tag planen im“ stehen sechs Parks, die auf park.fan in deiner S
 
 ## Parky plant mit
 
-[Parky, unser Chat-Assistent](/blog/parky-chat-assistent), plant Orlando-Reisen jetzt auch im Chat: welcher Park an welchem Tag, die besten Daten für eine Reise bestimmter Länge, Events und Partynächte und die Fahrt von deinem Hotel zu einem Park. Frag ihn etwa, welcher Park wann dran ist, wenn du vom 5. bis zum 14. Dezember in Orlando bist, und bitte ihn danach, die Reise in deinen Tagesplaner einzutragen.
+[Parky, unser Chat-Assistent](/blog/parky-chat-assistent), plant Orlando-Reisen jetzt auch im Chat: welcher Park an welchem Tag, die besten Daten für eine Reise bestimmter Länge, Events und Partynächte und die Fahrt von deinem Hotel zu einem Park. Frag ihn etwa, welcher Park an welchem der zehn Dezembertage dran ist, und bitte ihn danach, die Reise in deinen Tagesplaner einzutragen.
 
 Dann steht jeder Tag dort, an einem Hopping-Tag mit zwei Parks, und jeden Tag kannst du einzeln wieder herausnehmen. Auf Wunsch öffnet Parky die Reise auch auf der Orlando-Seite, mit deinen Daten und Parks schon eingetragen, und dort geht es mit Tickets und Feinabstimmung weiter.
 

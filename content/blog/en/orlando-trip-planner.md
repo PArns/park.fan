@@ -128,7 +128,7 @@ Under "Plan a day at" there are six parks, the ones opened most often on park.fa
 
 ## Parky plans along
 
-[Parky, our chat assistant](/blog/parky-chat-assistant), now plans Orlando trips in the chat as well: which park on which day, the best dates for a trip of a given length, events and party nights, and the drive from your hotel to a park. Ask him which park to do when if you're in Orlando from 5 to 14 December, then ask him to put the trip in your day planner.
+[Parky, our chat assistant](/blog/parky-chat-assistant), now plans Orlando trips in the chat as well: which park on which day, the best dates for a trip of a given length, events and party nights, and the drive from your hotel to a park. Ask him which park to do when on those ten days in December, then ask him to put the trip in your day planner.
 
 Every day then lands there, with two parks on a park-hopping day, and you can take each day back out on its own. If you like, Parky also opens the trip on the Orlando page with your dates and parks filled in, and you carry on from there with tickets and fine-tuning.
 
