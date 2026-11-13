@@ -251,7 +251,7 @@ word for; it’s on the [Fancast page](/fancast).
 
 On top of that: wait times, crowd levels, weather at the park entrance, opening
 hours and attraction histories, in six languages. Since September there’s also
-the [trip planner](/blog/trip-planner), which lays your rides out on a timeline
+the [day planner](/blog/trip-planner), which lays your rides out on a timeline
 against the forecast, and if you like, a push notification tells you when the
 queue at a ride drops below a mark you set. park.fan has no paywall and no ads,
 and the man who builds it queues up himself.

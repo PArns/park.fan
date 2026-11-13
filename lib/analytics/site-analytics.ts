@@ -100,10 +100,10 @@ export type SearchPosition = '1' | '2' | '3' | '4-5' | '6-10' | '11+';
 export type SearchQueryLength = '1-4' | '5-8' | '9-15' | '16+';
 
 /**
- * A menu of the header: the guides, news, parks, „Mehr" and favourites bands of the bar, and the
- * phone's sheet behind the burger.
+ * A menu of the header: the guides, news, parks, „Mehr", planner and favourites bands of the bar,
+ * and the phone's sheet behind the burger.
  */
-export type NavMenuId = 'guides' | 'news' | 'parks' | 'more' | 'favorites' | 'sheet';
+export type NavMenuId = 'guides' | 'news' | 'parks' | 'more' | 'planner' | 'favorites' | 'sheet';
 
 /** What was picked from a search surface's list before anything was typed. */
 export type SearchBrowseItem =

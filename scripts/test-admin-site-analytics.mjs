@@ -829,12 +829,13 @@ test('the ways through the site read in German, a value this build does not know
   assert.equal(Object.keys(LINK_BLOCK_LABEL).length, 18);
   assert.equal(propValueLabel('block', 'trip_band'), 'Reiseplaner-Band');
   assert.equal(Object.keys(SECTION_LABEL).length, 7);
-  assert.equal(Object.keys(NAV_MENU_LABEL).length, 6);
+  assert.equal(Object.keys(NAV_MENU_LABEL).length, 7);
   assert.equal(propValueLabel('block', 'parks'), 'Parks im Beitrag');
   assert.equal(propValueLabel('block', 'sidebar'), 'sidebar');
   assert.equal(propValueLabel('dest', 'park_calendar'), 'Park, Kalender');
   assert.equal(propValueLabel('section', 'faq'), 'FAQ');
   assert.equal(propValueLabel('menu', 'sheet'), 'Handy-Menü');
+  assert.equal(propValueLabel('menu', 'planner'), 'Planen');
   assert.equal(propValueLabel('position', '3'), 'Platz 3');
 });
 

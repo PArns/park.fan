@@ -1036,6 +1036,7 @@ export const NAV_MENU_LABEL: Record<NavMenuId, string> = {
   parks: 'Parks entdecken',
   more: 'Mehr',
   favorites: 'Favoriten',
+  planner: 'Planen',
   sheet: 'Handy-Menü',
 };
 
@@ -1059,6 +1060,8 @@ const PLANNER_OPENED_SOURCE_LABEL: Record<PlannerOpenedSource | 'none', string> 
   'home-hero': '„Heute planen“ auf der Startseite',
   'kids-page': 'Seite „Mit Kindern“',
   'orlando-hub': 'Orlando-Hub, „Diesen Tag planen“',
+  'menu-plan': 'Planer-Menü im Header, „Meinen Plan öffnen“',
+  'menu-park': 'Planer-Menü im Header, ein beliebter Park',
   assistant: 'Parky, der Chat-Assistent',
   none: 'Planer zu',
 };

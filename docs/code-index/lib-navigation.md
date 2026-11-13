@@ -37,6 +37,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`more-menu.ts`](../../lib/navigation/more-menu.ts)
 
+- `menuPhoto` _function_: A catalog photo as a header band draws it: the pre-cut 16:9 crop where there is one (it was cut around the focal point already), else the original and where its subject is.
 - `getMoreMenu` _function_: Builds the header's "more" band for a locale: the glossary, guide and best-time hubs with their photos and chapters, plus the Fancast card.
 - Types: `MoreMenuPhoto`, `MoreMenuChapter`, `MoreMenuHub`, `MoreMenu`
 
@@ -44,6 +45,13 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `getNewsMenu` _function_: The header's news panel for a locale, memoised per process: the manifest is fixed for the deployment, and the layout and the homepage hero both ask for it.
 - Types: `NewsMenuItem`, `NewsMenu`
+
+### [`planner-menu.ts`](../../lib/navigation/planner-menu.ts)
+
+- `pickPlannerParks` _function_: The parks the band offers, from the locale's counted parks (most opened first) and a curated list to top up with: an event is never offered (`isEventPark`), nor a counted park that had no published hours ahead when the build read the geo …
+- `getPlannerMenu` _function_: The planner band for a locale, memoised per process like `getFeaturedParksMenu`: it reads only modules of this repo, and the layout asks on every page. Callers share the object and must not mutate it.
+- `PLANNER_MENU_PARKS` _const_: How many parks the band offers: two columns of three.
+- Types: `PlannerMenuRegion`, `PlannerMenuPark`, `PlannerMenu`
 
 ### [`post-search.ts`](../../lib/navigation/post-search.ts)
 
@@ -54,3 +62,10 @@ by hand: change the comment in the code and re-run the script. -->
 - `searchPostsBySection` _function_: `searchPosts` split into the articles and the news, each best first and cut to `limit`, with how many match in all: the search palette and `/search` list the two as groups of their own.
 - `BLOG_MENU_SEARCH_LIMIT` _const_: Rows the guides panel shows for a query: its two columns of four, as tall as the newest posts.
 - Types: `PostSearchSection`
+
+### [`trip-regions.ts`](../../lib/navigation/trip-regions.ts)
+
+- `tripRegionText` _function_: A region's name or place in a locale, English where a per-locale text lacks one.
+- `tripRegion` _function_: A region by its id.
+- `TRIP_REGIONS` _const_: Every region with a trip planner, one entry each.
+- Types: `TripRegionSceneProps`, `TripRegionSceneLoader`, `TripRegionText`, `TripRegion`

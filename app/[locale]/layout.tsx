@@ -24,6 +24,7 @@ import { getBlogMenu } from '@/lib/navigation/blog-menu';
 import { getNewsMenu } from '@/lib/navigation/news-menu';
 import { getMoreMenu } from '@/lib/navigation/more-menu';
 import { getFeaturedParksMenu } from '@/lib/navigation/featured-parks-menu';
+import { getPlannerMenu } from '@/lib/navigation/planner-menu';
 import { LanguageBanner } from '@/components/layout/language-banner';
 import { SitePageviewBeacon } from '@/components/analytics/site-pageview-beacon';
 import { MarkupEventTracker } from '@/components/analytics/markup-event-tracker';
@@ -171,6 +172,9 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
   // hub, and a photo for each. No I/O either — terms, chapters and the media catalog are modules
   // in this repo; the await is only `getTranslations` reaching for the category labels.
   const moreMenu = await getMoreMenu(locale as Locale);
+  // The planner menu's trip-planner regions, with their photos; its popular parks are
+  // `featuredParks`. Modules of this repo only, memoised per process.
+  const plannerMenu = getPlannerMenu(locale as Locale);
   // The targets of the main navigation, in this list's own order, plus the continent hubs the
   // parks menu opens onto. Kept to twelve at most: this is a hint about the primary navigation,
   // and the country links are already in the rendered <nav>.
@@ -314,6 +318,7 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
                   newsMenu={newsMenu}
                   featuredParks={featuredParks}
                   moreMenu={moreMenu}
+                  plannerMenu={plannerMenu}
                 />
                 <main id={MAIN_CONTENT_ID} className="flex-1">
                   {children}

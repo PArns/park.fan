@@ -71,6 +71,8 @@ by hand: change the comment in the code and re-run the script. -->
 - `MOON` _const_: A crescent moon about 9 units across, over the top left: the lights at night, a winter's nap.
 - `STAR` _const_: A four-pointed star at the centre of the orbit dizzy stars run round, above the left eye.
 - `HEART` _const_: A heart about 10 units wide round the origin, for heart eyes and the ones floating up.
+- `BURST` _const_: A firework's burst round the origin: eight rays, five units out, with a gap at the centre.
+- `SHADES` _const_: Sunglasses over the eyes: the bridge, the two lenses and a glint on each.
 - `GRIN` _const_: The open grin of a ride or a cheer, in place of the smile.
 - `HAPPY_EYES` _const_: A happy squint: both eyes turned up into arcs.
 - `EYES` _const_: The eyes' centres on the x axis, left and right.
@@ -93,10 +95,16 @@ by hand: change the comment in the code and re-run the script. -->
 - `DREAM_MS` _const_: How long a dream lasts; the stylesheet reads it as `--parky-dream`.
 - Types: `ParkyDream`
 
+### [`parky/eyes.tsx`](../../components/assistant/parky/eyes.tsx)
+
+- `ParkyEyeWhite` _component_: One of Parky's open eyes, the white of it, round its centre on the x axis (`EYES`). The live Parky and his pictures draw the same eye, so a picture of him never looks like somebody else.
+- `ParkyPupil` _component_: The pupil of the eye at `x` with its glint, `dx` and `dy` off the middle: where a picture points his gaze (`LOOK_GAZE`), while the live Parky moves the group round it instead.
+
 ### [`parky/looks.tsx`](../../components/assistant/parky/looks.tsx)
 
 - `ParkyLookHat` _component_: The season's hat, drawn in the Ferris wheel's place and, like it, behind the head. `still` keeps the pompom from bobbing, for a drawing inside a glass panel, which no endless animation may run in.
 - `ParkyLookWear` _component_: The pieces Parky wears under his face, drawn right after the bubble: the scarf, the woolly hat's brim, the umbrella, the sweat of a hot day.
+- `ParkyShades` _component_: Sunglasses on Parky's eyes, the `shades` act's and the Orlando scene's. `transform` moves them elsewhere, pushed up onto his head.
 - `ParkyLookFog` _component_: Fog drifting in front of Parky's lower half, below the mouth.
 - `ParkySnowman` _component_: The snowman Parky builds beside him: three snowballs stacked, coal eyes and buttons, the carrot nose last and a tiny Ferris wheel for a hat, then he melts away. `still` draws him finished and keeps him, for a picture rather than an act.
 - `ParkyLookBack` _component_: What stands behind Parky: the weather round him and the scenes of the acts that go beyond him (the ghost, the fireworks, the snowman). Drawn first, so every act and mood paints over it.
@@ -104,6 +112,10 @@ by hand: change the comment in the code and re-run the script. -->
 - `ice` _const_: An icy outline, so white snow still shows on a white page.
 - `LOOK_GAZE` _const_: Where the pupils go during a scene: at the ghost, the fireworks, the snowman, the globe.
 - `FLAKE` _const_: A six-armed snowflake about four units across, round the origin.
+
+### [`parky/orlando-scene.tsx`](../../components/assistant/parky/orlando-scene.tsx)
+
+- `ParkyOrlandoScene` _component_: The Orlando scene, filling its box from the right edge (`xMaxYMid slice`).
 
 ### [`parky/parky-logo.tsx`](../../components/assistant/parky/parky-logo.tsx)
 
@@ -115,6 +127,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `ParkyRideTrack` _component_: The rails a ride runs on, drawn behind Parky so they stand while he moves: the loop's two rails with ties between them, the tower's mast, the flume's water channel with its splash, the teacups' turntable, or the track a ride's geometry …
 - `ParkyVehicle` _component_: What Parky rides in, its foot on the rail at the resting point: the red car, the flume's log boat or a pink teacup.
 - `ParkySpotlight` _component_: The stage a show puts behind Parky for `applause`: a spotlight cone from above with its pool of light at his feet, a red curtain's edge on either side and a few sparkles. Drawn behind the body, so he stands in the light.
+- `ParkyMap` _component_: A park map held low in front of Parky: three panels, the middle one with a lake and a dot where he is. In the `map` moment the side panels unfold and the dot pulses; `still` draws it unfolded and quiet, for a picture rather than an act.
 - `ParkyMoment` _component_: What Parky holds or wears for a moment of a park day, drawn over his face; `null` for an act without one. The motion is the stylesheet's (`.parky-act-<act>`); under reduced motion the prop simply shows for the act.
 
 ### [`parky/use-gaze.ts`](../../components/assistant/parky/use-gaze.ts)
