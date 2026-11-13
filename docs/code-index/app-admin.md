@@ -189,6 +189,9 @@ by hand: change the comment in the code and re-run the script. -->
 - `Field` _component_: A labelled field row: label and optional `aside`, the control, then an error or a hint.
 - `TextInput` _component_: Text `<input>` in the admin field style: 44 px high, 16 px text on phones, `h-9` from `sm`.
 - `OtpInput` _component_: The field for the six-digit code of a second factor: one numeric input that keeps digits only, with `autocomplete="one-time-code"` so iOS, Android and password managers fill it.
+- `UrlInput` _component_: A url field with a button that opens the address in a new tab, for the one check a form cannot do: whether the address is the right one. A link nobody opened is how a page ends up pointing at a parked domain.
+- `ToggleChips` _component_: Several values picked from a short list, each a chip that is pressed or not: a product's parks, its markets, a link's languages.
+- `MoveButtons` _component_: Up and down for one entry of an ordered list, each named after the entry for a screen reader. A disabled direction stays in place, so the buttons of the next row line up.
 - `TextArea` _component_: `<textarea>` in the admin field style, at least `min-h-20` tall.
 - `NumberInput` _component_: A number input that tells empty from zero: on a curated height, 0 means "no minimum at all" and empty means "no correction, accept upstream".
 - `TriSwitch` _component_: A three-state switch (true, false, "nothing said"), because a curated boolean must be able to say `false` and to withdraw the correction without that becoming `false`.
@@ -901,6 +904,26 @@ Route `/admin/seasons` (page).
 Route `/admin/system` (page).
 
 - `default (SystemPage)` _component_
+
+### [`tickets/_components/click-figure.tsx`](../../app/admin/tickets/_components/click-figure.tsx)
+
+- `ClickFigure` _component_: „Klicks (30 T.): 12“ for a product or one of its links, leading to the event's own page.
+
+### [`tickets/_components/ticket-editor.tsx`](../../app/admin/tickets/_components/ticket-editor.tsx)
+
+- `TicketEditor` _component_: The form of one ticket product, or of a new one: basics, rules, sale, links, sources.
+- Types: `TicketClickState`
+
+### [`tickets/_lib/use-ticket-data.ts`](../../app/admin/tickets/_lib/use-ticket-data.ts)
+
+- `useTripRegion` _hook_: The region's resorts and parks, which the ticket form picks from. The admin catalog names them by key only, so they come from the open region route through the site's relay, the answer the planner reads.
+- `useTicketClicks` _hook_: The ticket-link clicks of the last 30 days, by product against host, and by product against seller once a product has two links on one host.
+
+### [`tickets/page.tsx`](../../app/admin/tickets/page.tsx)
+
+Route `/admin/tickets` (page).
+
+- `default (TicketsPage)` _component_: The ticket catalog of the Orlando planner: every product with the rules the plan computes with and where it is bought, kept here instead of in a deploy.
 
 ### [`traffic/_components/block-event-button.tsx`](../../app/admin/traffic/_components/block-event-button.tsx)
 

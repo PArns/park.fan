@@ -1302,7 +1302,7 @@ export function defaultCrosstab(detail: Pick<EventDetailResponse, 'props'>): {
  * What the API puts in the place of the values past the 30 biggest of a crosstab side. It is a
  * value nothing real can be: `other` is a real page type.
  */
-const CROSSTAB_REST = '__rest__';
+export const CROSSTAB_REST = '__rest__';
 
 /** What the API puts where a crosstab dimension has no value. */
 const CROSSTAB_NONE = '(none)';
