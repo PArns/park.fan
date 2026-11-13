@@ -38,6 +38,7 @@ import { PlanRequestError } from '@/lib/orlando/plan-fetch';
 import { whenRequestQuery } from '@/lib/orlando/plan-when';
 import { readTickets } from '@/lib/orlando/plan-query';
 import {
+  hopperResorts,
   hopperTicketResorts,
   ticketProblem,
   ticketWindow,
@@ -45,7 +46,7 @@ import {
 } from '@/lib/orlando/plan-tickets';
 import { orlandoPlanView, PLAN_VIEWS, type PlanView } from '@/lib/orlando/plan-view';
 import type { TripCalendar } from '@/lib/orlando/types';
-import { usePlanContext } from './plan-context';
+import { usePlanContext, useTripEvents } from './plan-context';
 import { PLAN_FOCUS } from './plan-controls';
 import { PlanAgendaView } from './plan-agenda-view';
 import { PlanDaySheet } from './plan-day-sheet';
@@ -57,12 +58,13 @@ import { PlanWeekView } from './plan-week-view';
 import { PlanWhenResult } from './plan-when-result';
 import { useTripCalendar, useTripPlan, useTripWhen, useUnpinnedPlan } from './use-trip-plan';
 import { PlanTicketsCard, type PlanEdit } from './plan-tickets-card';
-import { trackSiteEvent, type SiteEventMap } from '@/lib/analytics/site-analytics';
+import type { SiteEventMap } from '@/lib/analytics/site-analytics';
 import {
   tripPlanFailedProps,
   tripPlanRequestProps,
   tripPlanShownProps,
   tripWhenShownProps,
+  type TripEventProps,
 } from '@/lib/orlando/plan-analytics';
 import { oneStop, useResortWord, useTicketName } from './plan-ticket-words';
 
@@ -165,6 +167,7 @@ function Failure({ error, onRetry }: { error: unknown; onRetry: () => void }) {
 function PlanAnswerSection({ edit }: { edit: PlanEdit }) {
   const t = useTranslations('orlandoPlanner');
   const { state, update, headliners, parkBySlug, tickets: catalog } = usePlanContext();
+  const track = useTripEvents();
   const problem = planProblem(state, headliners);
   const missed = ticketProblem(state, catalog);
   const query = planRequestQuery(state, headliners, missed !== null);
@@ -190,9 +193,9 @@ function PlanAnswerSection({ edit }: { edit: PlanEdit }) {
         document.activeElement instanceof HTMLElement ? document.activeElement : null;
       setOpenDate(date);
       const kind = days?.find((d) => d.date === date)?.kind;
-      if (kind) trackSiteEvent('trip_day_opened', { kind, view });
+      if (kind) track('trip_day_opened', { kind, view });
     },
-    [days]
+    [days, track]
   );
   const [history, setHistory] = useState<PlanLock[][]>([]);
   const [beacon, setBeacon] = useState<PlannerPagePark | null>(null);
@@ -238,7 +241,7 @@ function PlanAnswerSection({ edit }: { edit: PlanEdit }) {
     setBeacon(page);
     plannerPageDay.set({ parkSlug: slug, date });
     plannerUi.requestOpen('orlando-hub', 'page-park-wizard');
-    trackSiteEvent('trip_day_sent');
+    track('trip_day_sent');
   };
 
   return (
@@ -278,11 +281,11 @@ function PlanAnswerSection({ edit }: { edit: PlanEdit }) {
         calendar={calendar.data}
         onClose={() => setOpenDate(null)}
         onToggleLock={(d) => {
-          trackSiteEvent('trip_day_pinned', { pinned: lockOn(state, d.date) === null });
+          track('trip_day_pinned', { pinned: lockOn(state, d.date) === null });
           withHistory((s) => toggleLock(s, d));
         }}
         onSwap={(a, b) => {
-          trackSiteEvent('trip_day_swapped');
+          track('trip_day_swapped');
           setOpenDate(null);
           withHistory((s) => {
             const locks = swapLocks(s, a, b);
@@ -530,6 +533,7 @@ function PlanViews({
   onOpenDay: (date: string, view: DayOpenedView) => void;
 }) {
   const t = useTranslations('orlandoPlanner.views');
+  const track = useTripEvents();
   const wide = useMediaQuery(PLAN_WIDE_QUERY);
   const chosen = useSyncExternalStore(
     orlandoPlanView.subscribe,
@@ -555,7 +559,7 @@ function PlanViews({
               role="radio"
               aria-checked={view === key}
               onClick={() => {
-                if (key !== view) trackSiteEvent('trip_view_changed', { view: key });
+                if (key !== view) track('trip_view_changed', { view: key });
                 orlandoPlanView.set(key);
               }}
               className={cn(
@@ -649,22 +653,28 @@ function statusOf(error: unknown): number {
 function usePlanEvents(
   asked: string | null,
   mode: 'dates' | 'when',
-  shown: SiteEventMap['trip_plan_shown'] | null
+  shown: TripEventProps<'trip_plan_shown'> | null
 ) {
   const requested = useRef<string | null>(null);
   const answered = useRef<string | null>(null);
+  const track = useTripEvents();
+  const { tickets: catalog } = usePlanContext();
   useEffect(() => {
     if (!asked || requested.current === asked) return;
     requested.current = asked;
-    trackSiteEvent(
+    track(
       'trip_plan_requested',
-      tripPlanRequestProps(Object.fromEntries(new URLSearchParams(asked)), mode)
+      tripPlanRequestProps(
+        Object.fromEntries(new URLSearchParams(asked)),
+        mode,
+        hopperResorts(catalog)
+      )
     );
-  }, [asked, mode]);
+  }, [asked, mode, track, catalog]);
   const key = shown ? JSON.stringify(shown) : null;
   useEffect(() => {
     if (!asked || !key || answered.current === asked) return;
     answered.current = asked;
-    trackSiteEvent('trip_plan_shown', JSON.parse(key) as SiteEventMap['trip_plan_shown']);
-  }, [asked, key]);
+    track('trip_plan_shown', JSON.parse(key) as TripEventProps<'trip_plan_shown'>);
+  }, [asked, key, track]);
 }

@@ -397,7 +397,7 @@ The path guard and the query of `/api/admin/[...path]`, pure so they can be test
 
 ### [`tickets.ts`](../../lib/admin/tickets.ts)
 
-The ticket catalog of a trip region as `/admin/tickets` edits it: every product the Orlando planner computes with, its rules, its purchase links and the research behind it.
+The ticket catalog of a trip region as `/admin/tickets` edits it: every product the trip planner computes with, its rules, its purchase links and the research behind it.
 
 - `ticketCatalogPath` _function_: The proxy path of a region's catalog, or of one product and its actions below it.
 - `ticketCatalogKey` _function_: The query key of one region's catalog.

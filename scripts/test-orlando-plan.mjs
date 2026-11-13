@@ -1,5 +1,5 @@
 /**
- * Unit tests for the Orlando trip planner's pure modules (`lib/orlando/plan*.ts`): the URL form a
+ * Unit tests for the trip planner's pure modules (`lib/orlando/plan*.ts`): the URL form a
  * link from Parky, "Copy link" and the best-time pages share, the edits (steppers, pins, swaps),
  * which codes become which sentence, the savings line, the `.ics` file, the Week and Month views'
  * geometry, the When mode's ranges and request, and tickets: `tickets=` read and written, the
@@ -73,6 +73,7 @@ import {
   draftTicket,
   entryMarket,
   hopperGains,
+  hopperResorts,
   isEveryDayTicket,
   longStayTickets,
   needsHogwartsHop,
@@ -97,12 +98,14 @@ import {
   sellerProp,
   ticketLinkClickProps,
   ticketModeOf,
+  trackTripEvent,
   tripDaysBucket,
   tripPlanFailedProps,
   tripPlanRequestProps,
   tripPlanShownProps,
   tripWhenShownProps,
 } from '../lib/orlando/plan-analytics.ts';
+import { onSiteEvent } from '../lib/analytics/site-analytics.ts';
 
 const cases = [];
 const test = (name, actual, expected) => cases.push({ name, actual, expected });
@@ -1539,6 +1542,8 @@ const keys = { parks: new Set(ORDER), areas: new Set(['disney', 'universal']) };
 
 // ── The planner's events ─────────────────────────────────────────────────────
 {
+  // Orlando's resorts that sell a hopper as an option.
+  const HOPPER_RESORTS = ['walt-disney-world', 'universal-orlando'];
   test(
     'a trip’s length lands in its bucket, arrival and departure included',
     [1, 4, 5, 7, 8, 10, 11, 14, 15, 21].map(tripDaysBucket),
@@ -1557,30 +1562,32 @@ const keys = { parks: new Set(ORDER), areas: new Set(['disney', 'universal']) };
         rest: 'max:3',
         lock: 'epcot@2026-12-01',
       },
-      'dates'
+      'dates',
+      HOPPER_RESORTS
     ),
     {
       mode: 'dates',
       days: '8-10',
       parks: 3,
       tickets: 'owned',
-      hopper: 'universal',
+      hopper: 'some',
       blocks: 'off',
       rest: 'max',
     }
   );
   test(
-    'without parks the request plans the headliners; ticket=hopper is the hopper at both resorts',
+    'without parks the request plans the headliners; ticket=hopper is the hopper at every resort',
     tripPlanRequestProps(
       { from: '2026-11-28', to: '2026-12-01', ticket: 'hopper', blocks: '1', rest: 'none' },
-      'dates'
+      'dates',
+      HOPPER_RESORTS
     ),
     {
       mode: 'dates',
       days: '1-4',
       parks: 0,
       tickets: 'none',
-      hopper: 'both',
+      hopper: 'all',
       blocks: 'on',
       rest: 'none',
     }
@@ -1588,12 +1595,34 @@ const keys = { parks: new Set(ORDER), areas: new Set(['disney', 'universal']) };
   test(
     'a search counts its length, or the default length when it names none',
     [
-      tripPlanRequestProps({ from: '2026-11-01', to: '2027-02-28', days: '14' }, 'when').days,
-      tripPlanRequestProps({ from: '2026-11-01', to: '2027-02-28' }, 'when').days,
-      tripPlanRequestProps({ hopper: 'walt-disney-world' }, 'when').hopper,
-      tripPlanRequestProps({}, 'when').blocks,
+      tripPlanRequestProps({ from: '2026-11-01', to: '2027-02-28', days: '14' }, 'when', []).days,
+      tripPlanRequestProps({ from: '2026-11-01', to: '2027-02-28' }, 'when', []).days,
+      tripPlanRequestProps({}, 'when', []).blocks,
     ],
-    ['11-14', '8-10', 'disney', 'default']
+    ['11-14', '8-10', 'default']
+  );
+  test(
+    'the hopper counts the region’s hopper resorts planned with one: none, some or all, by no name',
+    [
+      tripPlanRequestProps({}, 'dates', HOPPER_RESORTS).hopper,
+      tripPlanRequestProps({ hopper: 'walt-disney-world' }, 'when', HOPPER_RESORTS).hopper,
+      tripPlanRequestProps(
+        { hopper: 'universal-orlando,walt-disney-world' },
+        'dates',
+        HOPPER_RESORTS
+      ).hopper,
+      tripPlanRequestProps({ hopper: 'walt-disney-world' }, 'dates', []).hopper,
+      hopperResorts(
+        ticketCatalog([
+          { id: 'a', resort: 'walt-disney-world', hopping: 'optional' },
+          { id: 'b', resort: 'walt-disney-world', hopping: 'optional' },
+          { id: 'c', resort: 'universal-orlando', hopping: 'optional' },
+          { id: 'd', resort: 'seaworld-orlando', hopping: 'none' },
+          { id: 'e', resort: 'universal-orlando', hopping: 'included' },
+        ])
+      ),
+    ],
+    ['none', 'some', 'all', 'some', ['walt-disney-world', 'universal-orlando']]
   );
   test(
     'a plan on screen names the rule it loosened that weighs most, and what it left out',
@@ -1611,6 +1640,34 @@ const keys = { parks: new Set(ORDER), areas: new Set(['disney', 'universal']) };
       { mode: 'dates', outcome: 'relaxed', relaxed: 'streak', unplaced: 0 },
     ]
   );
+  {
+    const heard = [];
+    const stop = onSiteEvent((name, props) => heard.push({ name, props }));
+    const requested = tripPlanRequestProps(
+      {
+        from: '2026-11-28',
+        to: '2026-12-06',
+        parks: 'epcot',
+        tickets: 'wdw-date-based.4@2026-11-29',
+        hopper: 'universal-orlando',
+        blocks: '1',
+        rest: 'max:2',
+      },
+      'dates',
+      HOPPER_RESORTS
+    );
+    trackTripEvent('orlando', 'trip_plan_requested', requested);
+    trackTripEvent('orlando', 'trip_day_swapped');
+    stop();
+    test(
+      'every trip event names its region; the request then holds eight, the statistic’s limit',
+      heard.map((e) => [e.name, e.props.region, Object.keys(e.props).length]),
+      [
+        ['trip_plan_requested', 'orlando', 8],
+        ['trip_day_swapped', 'orlando', 1],
+      ]
+    );
+  }
   test(
     'a search on screen counts its windows; a failure keeps its status, 0 without an answer',
     [

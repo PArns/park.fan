@@ -26,7 +26,7 @@ export function DatenschutzDE() {
         <p>
           park.fan lässt sich ohne Konto nutzen. Welche Daten verarbeitet werden, hängt davon ab,
           welche Funktionen Sie verwenden. Die folgenden Abschnitte nennen jede einzeln. Wir zeigen
-          keine Werbung und geben keine Daten zu Werbezwecken weiter. Ticket-Links im Orlando-Planer
+          keine Werbung und geben keine Daten zu Werbezwecken weiter. Ticket-Links im Reiseplaner
           können Partnerlinks sein; mehr dazu unten.
         </p>
 
@@ -154,15 +154,14 @@ export function DatenschutzDE() {
           Ihnen gewünschten Funktion (Art. 6 Abs. 1 lit. b DSGVO).
         </p>
 
-        <LegalH3>Ticket-Links im Orlando-Planer</LegalH3>
+        <LegalH3>Ticket-Links im Reiseplaner</LegalH3>
         <p>
-          Der Orlando-Planer verlinkt Ticketverkäufer und die Shops der Parks. Folgen Sie einem
-          dieser Links, teilt Ihr Browser dem Verkäufer mit, dass Sie von park.fan kommen: Er
-          schickt die Adresse https://park.fan/ mit, nicht die Seite mit Ihrer Reiseplanung.
-          Einzelne Links können Partnerlinks sein; sie sind als „Partnerlink“ gekennzeichnet. Kaufen
-          Sie darüber ein Ticket, erhält park.fan vom Verkäufer eine Provision; der Preis ist für
-          Sie derselbe. Was der Verkäufer ab dem Klick verarbeitet, regeln seine eigenen
-          Datenschutzbestimmungen.
+          Der Reiseplaner verlinkt Ticketverkäufer und die Shops der Parks. Folgen Sie einem dieser
+          Links, teilt Ihr Browser dem Verkäufer mit, dass Sie von park.fan kommen: Er schickt die
+          Adresse https://park.fan/ mit, nicht die Seite mit Ihrer Reiseplanung. Einzelne Links
+          können Partnerlinks sein; sie sind als „Partnerlink“ gekennzeichnet. Kaufen Sie darüber
+          ein Ticket, erhält park.fan vom Verkäufer eine Provision; der Preis ist für Sie derselbe.
+          Was der Verkäufer ab dem Klick verarbeitet, regeln seine eigenen Datenschutzbestimmungen.
         </p>
 
         <LegalH3>Push-Benachrichtigungen</LegalH3>
@@ -314,8 +313,8 @@ export function DatenschutzDE() {
           Art der Treffer war, den Sie angeklickt haben, welchen Reiter Sie auf einer Parkseite
           geöffnet haben, ob Sie einen Favoriten gesetzt oder entfernt haben, welche Sprache Sie
           gewählt haben, ob Sie einen Wartezeit-Alarm oder eine Show-Erinnerung gesetzt haben, wie
-          Sie den Tagesplaner geöffnet haben, welche Schritte Sie im Orlando-Planer genutzt haben,
-          ob Sie dort Tickets angegeben und welchen Ticket-Link Sie angeklickt haben (ohne Ihre
+          Sie den Tagesplaner geöffnet haben, welche Schritte Sie im Reiseplaner genutzt haben, ob
+          Sie dort Tickets angegeben und welchen Ticket-Link Sie angeklickt haben (ohne Ihre
           Reisedaten), dass Sie einen Link zur Website oder zum Ticketshop eines Parks angeklickt
           oder eine Seite geteilt haben, ob Parky erschienen ist und ob Sie ihn oder einen seiner
           Sprüche angeklickt haben, ob eine Frage an Parky ein Vorschlag war oder getippt wurde und

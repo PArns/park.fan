@@ -114,7 +114,7 @@ export function ImpressumDE({ story }: { story: ImpressumStory | null }) {
           erlangen, wird der entsprechende Link umgehend entfernt.
         </p>
         <p className="mb-4">
-          <strong>Partnerlinks.</strong> Einzelne Links zu Ticketverkäufern im Orlando-Planer können
+          <strong>Partnerlinks.</strong> Einzelne Links zu Ticketverkäufern im Reiseplaner können
           Partnerlinks sein; sie sind neben dem Link als „Partnerlink“ gekennzeichnet. Kaufen Sie
           über einen solchen Link ein Ticket, erhält park.fan vom Verkäufer eine Provision; der
           Preis ist für Sie derselbe. Folgen Sie einem Ticket-Link, erfährt der Verkäufer, dass Sie

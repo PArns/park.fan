@@ -1,8 +1,9 @@
 'use client';
 
-import { createContext, useContext } from 'react';
+import { createContext, useCallback, useContext } from 'react';
 import type { OrlandoPlanState } from '@/lib/orlando/plan';
 import type { TicketCatalog } from '@/lib/orlando/plan-tickets';
+import { trackTripEvent, type TrackTripEvent } from '@/lib/orlando/plan-analytics';
 import type { TripRegion, TripRegionGroup, TripRegionPark, TripVenue } from '@/lib/orlando/types';
 
 /** A park's photo for the blocks of the Week view, resolved on the server (`plan-photos.ts`). */
@@ -49,4 +50,13 @@ export function usePlanContext(): PlanContextValue {
   const value = useContext(PlanContext);
   if (!value) throw new Error('usePlanContext outside OrlandoPlanner');
   return value;
+}
+
+/** The statistic's trip events for this planner's region (`trackTripEvent` with its slug). */
+export function useTripEvents(): TrackTripEvent {
+  const slug = usePlanContext().region.slug;
+  return useCallback<TrackTripEvent>(
+    (name, ...args) => trackTripEvent(slug, name, ...args),
+    [slug]
+  );
 }

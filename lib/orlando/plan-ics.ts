@@ -128,7 +128,7 @@ export function buildTripIcs(
   const lines: string[] = [
     'BEGIN:VCALENDAR',
     'VERSION:2.0',
-    'PRODID:-//park.fan//Orlando trip planner//EN',
+    'PRODID:-//park.fan//Trip planner//EN',
     'CALSCALE:GREGORIAN',
     'METHOD:PUBLISH',
     `X-WR-CALNAME:${icsEscape(calendarName)}`,

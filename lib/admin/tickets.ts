@@ -1,6 +1,6 @@
 /**
- * The ticket catalog of a trip region as `/admin/tickets` edits it: every product the Orlando
- * planner computes with, its rules, its purchase links and the research behind it. The backend
+ * The ticket catalog of a trip region as `/admin/tickets` edits it: every product the trip planner
+ * computes with, its rules, its purchase links and the research behind it. The backend
  * owns it (`/v1/admin/content/regions/:region/tickets`, the API's
  * docs/frontend/trip-regions.md#editing-the-catalog); this module holds what the page and its form
  * share, pure so `pnpm test:admin-tickets` can pin it.

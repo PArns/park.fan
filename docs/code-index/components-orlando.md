@@ -106,6 +106,7 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`planner/plan-context.tsx`](../../components/orlando/planner/plan-context.tsx)
 
 - `usePlanContext` _hook_: The planner's shared values; only inside `OrlandoPlanner`.
+- `useTripEvents` _hook_: The statistic's trip events for this planner's region (`trackTripEvent` with its slug).
 - `PlanContextProvider` _const_: Provides `PlanContextValue` to the planner's parts.
 - Types: `PlanParkPhoto`, `PlanContextValue`
 

@@ -66,7 +66,7 @@ The frontend side of each API surface; the contract itself is linked from each p
 - [new-posts-toast](features/new-posts-toast.md) — New-posts toast for returning visitors: when it asks, what counts as new, labels, layout, manual testing
 - [orlando-best-time](features/orlando-best-time.md) — Orlando's best-time pages (all, Disney, Universal): URLs, the `/when` and `/school-breaks` reads, the levels, the month rows, SEO
 - [orlando-hub](features/orlando-hub.md) — The Orlando hub and month pages: URLs and redirects, data and relay, the four levels, chapters, SEO, ways in
-- [orlando-planner](features/orlando-planner.md) — The Orlando trip planner: the URL as its state, setup, the four levels and three views, pins and swaps, the When mode, .ics
+- [orlando-planner](features/orlando-planner.md) — The trip planner, Orlando its first region: the URL as its state, setup, the four levels and three views, pins and swaps, the When mode, .ics
 - [og-images](features/og-images.md) — OG image route: which card a path gets, og-assets/, JPEG re-encode, cache windows, pnpm og:preview
 - [park-compass](features/park-compass.md) — In-park compass (homepage, park page): when it may appear, dial, bar, list, heading, pocket return, data
 - [park-map](features/park-map.md) — The Leaflet park map: map tab and blog widget mounting, markers, #map-show deep link, following the visitor

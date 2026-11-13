@@ -42,9 +42,10 @@ import { TicketEditor, type TicketClickState } from './_components/ticket-editor
 import { useTicketClicks, useTripRegion } from './_lib/use-ticket-data';
 
 /**
- * The ticket catalog of the Orlando planner: every product with the rules the plan computes with
- * and where it is bought, kept here instead of in a deploy. Reading needs any role, every write
- * `editor`; the API checks each write whole and plans a sample trip with it before it saves.
+ * A region's ticket catalog for the trip planner, Orlando's for now: every product with the rules
+ * the plan computes with and where it is bought, kept here instead of in a deploy. Reading needs any
+ * role, every write `editor`; the API checks each write whole and plans a sample trip with it before
+ * it saves.
  */
 export default function TicketsPage() {
   const region = ORLANDO_REGION;
@@ -151,7 +152,7 @@ export default function TicketsPage() {
           hint={
             catalog.data
               ? `${products.filter((product) => product.active).length} im Katalog, ${products.filter((product) => !product.active).length} archiviert. ${TICKET_PUBLISH_DELAY}`
-              : 'Was der Urlaubsplaner über Tickets weiß: Produkte, Regeln und wo man sie kauft.'
+              : 'Was der Reiseplaner über Tickets weiß: Produkte, Regeln und wo man sie kauft.'
           }
           action={
             canEdit ? (

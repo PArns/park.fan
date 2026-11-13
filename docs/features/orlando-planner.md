@@ -1,9 +1,14 @@
-# The Orlando trip planner
+# The trip planner
 
-Chapter 03 of the [Orlando hub](orlando-hub.md): which park on which day of a trip of up to 21
-days, from the API's `/plan`, or which dates to travel at all, from `/when`. It replaces the planner
-page's "Parks auf Tage verteilen" (`lib/planner/assign.ts`) for Orlando, which ranked crowd levels
-in the browser; the search now runs in the API
+Which park on which day of a trip of up to 21 days in one region, from the API's `/plan`, or which
+dates to travel at all, from `/when`. Orlando is its first region, as chapter 03 of the
+[Orlando hub](orlando-hub.md); Paris, Japan and Anaheim follow, and the files keep their `orlando`
+names until that work moves them. In German it is the Reiseplaner, in English the trip planner,
+though the English navigation still calls the one-park planner "Trip planner" as well; these docs
+call that one the day planner ([its docs](trip-planner/README.md)).
+
+It replaces the planner page's "Parks auf Tage verteilen" (`lib/planner/assign.ts`) for Orlando,
+which ranked crowd levels in the browser; the search now runs in the API
 ([trip regions](https://github.com/PArns/v4.api.park.fan/blob/main/docs/frontend/trip-regions.md),
 [when to go](https://github.com/PArns/v4.api.park.fan/blob/main/docs/frontend/trip-regions-when.md)).
 
@@ -186,23 +191,27 @@ Without a catalog the step and the card are not drawn, plan first works as befor
 ## Analytics
 
 The planner's events go to our own statistic through `trackSiteEvent` and its gates
-([site analytics](site-analytics.md), [the inventory](../development/analytics.md)). Each one is in
-`SiteEventMap` and has its line in the admin's `EVENT_INFO`. The properties that take more than a
+([site analytics](site-analytics.md), [the inventory](../development/analytics.md)), the `trip_*`
+ones through `trackTripEvent` (`useTripEvents()` in the planner's context), which adds `region`: the
+region's slug, `orlando` for now. Each one is in `SiteEventMap` and has its line in the admin's
+`EVENT_INFO`. The properties that take more than a
 literal are built in `lib/orlando/plan-analytics.ts` and pinned by `pnpm test:orlando-plan`; the
 Orlando part of `pnpm check:planner` reads the key ones from the page (`window.__parkfanEventLog`).
 
 Every name is snake_case in the past tense, every value is one of a few, and nothing a visitor typed
 or picked as a date goes out: a trip's length is a bucket, its parks a count. No event carries an
-entity, because none of them means one park.
+entity, because none of them means one park. Every `trip_*` event carries `region` besides the
+properties below; `trip_plan_requested` then has eight, the statistic's limit, and the others have
+room to spare.
 
 The funnel, in the order a visitor meets it:
 
-| Event                   | Properties                                                                                                     | Fires                                                                                                                   |
-| ----------------------- | -------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
-| `trip_planner_started`  | `source`: hero, button, link                                                                                   | the hub's hero, the planner's own button, or a link that carries a plan or a search (a shared one, Parky's)             |
-| `trip_tickets_answered` | `answer`: not_yet, yes, skipped                                                                                | the ticket question answered; `skipped` is "Next: dates" without an answer                                              |
-| `trip_plan_requested`   | `mode` (dates, when), `days` (1-4 … 15-21), `parks` (0: the headliners), `tickets`, `hopper`, `blocks`, `rest` | every distinct request once the controls are still, a pin or a swap included                                            |
-| `trip_plan_shown`       | `mode`, `outcome` (ok, relaxed, error), `relaxed`, `status`, `unplaced`, `windows`                             | the answer to that request on screen, once; `relaxed` names the loosened rule that weighs most, `status` 0 is no answer |
+| Event                   | Properties                                                                                                                                                        | Fires                                                                                                                   |
+| ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| `trip_planner_started`  | `source`: hero, button, link                                                                                                                                      | the hub's hero, the planner's own button, or a link that carries a plan or a search (a shared one, Parky's)             |
+| `trip_tickets_answered` | `answer`: not_yet, yes, skipped                                                                                                                                   | the ticket question answered; `skipped` is "Next: dates" without an answer                                              |
+| `trip_plan_requested`   | `mode` (dates, when), `days` (1-4 … 15-21), `parks` (0: the headliners), `tickets`, `hopper` (none, some or all of the region's hopper resorts), `blocks`, `rest` | every distinct request once the controls are still, a pin or a swap included                                            |
+| `trip_plan_shown`       | `mode`, `outcome` (ok, relaxed, error), `relaxed`, `status`, `unplaced`, `windows`                                                                                | the answer to that request on screen, once; `relaxed` names the loosened rule that weighs most, `status` 0 is no answer |
 
 And the decisions along the way:
 
@@ -224,7 +233,8 @@ And the decisions along the way:
 id), `seller`, `host`, `kind` (official, sponsored, plain), `position` in the list the visitor saw
 (1-based), `locale_match` (ordered first for the visitor's locale or market), `surface` (suggestion,
 long_stay, owned) and `ticket_mode` (plan_first, owned, mixed). Eight is the statistic's limit, so
-the region (Orlando is the only one) and the resort (the product's) are left out. The admin's event
+the region and the resort are left out: the product's slug belongs to one region's catalog and one
+resort. The admin's event
 page breaks it down by seller, product and host.
 
 ## Editing a plan

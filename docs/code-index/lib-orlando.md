@@ -114,6 +114,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`plan-analytics.ts`](../../lib/orlando/plan-analytics.ts)
 
+- `trackTripEvent` _function_: Report a trip planner event for the region it plans, by its slug (`orlando`).
 - `sellerProp` _function_: A seller's name as a property value: the characters the statistic keeps, at most 60.
 - `hostProp` _function_: A link's host without `www.`, or `unknown` for a url that is none.
 - `ticketModeOf` _function_: Which tickets a plan was made with, from the plan's own tickets and suggestions.
@@ -123,6 +124,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `tripPlanShownProps` _function_: `trip_plan_shown` for a plan on screen: ok, or relaxed with the rule, and what it left out.
 - `tripWhenShownProps` _function_: `trip_plan_shown` for a search's answer, with the windows it found.
 - `tripPlanFailedProps` _function_: `trip_plan_shown` for a request that failed, with its status (0: no answer at all).
+- Types: `TripEventName`, `TripEventProps`, `TripEventArgs`, `TrackTripEvent`
 
 ### [`plan-copy.ts`](../../lib/orlando/plan-copy.ts)
 
@@ -202,6 +204,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`plan-tickets.ts`](../../lib/orlando/plan-tickets.ts)
 
+- `hopperResorts` _function_: The resorts whose catalog sells a hopper as an option: where plan first's `hopper=` can name one.
 - `ticketCatalog` _function_: The catalog keyed by id; empty without one.
 - `leanTicketCatalog` _function_: The catalog as the browser needs it: the operators' notes and the rules only the optimizer reads (`hopSets`, `caps`, `confidence`) stay on the server, which keeps the planner's payload small.
 - `ticketEntries` _function_: A resort's product list, keeping only the products the catalog has; an entry with none left goes, so a product the API drops leaves the list without a dead button.
@@ -320,7 +323,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 "Start the planner", as a signal from outside the planner: the hub's hero action asks, the mounted `OrlandoPlanner` answers.
 
-- `orlandoPlannerUi` _const_: The Orlando planner's open signal.
+- `orlandoPlannerUi` _const_: The trip planner's open signal.
 
 ### [`redirects.ts`](../../lib/orlando/redirects.ts)
 

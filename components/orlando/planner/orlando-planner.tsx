@@ -8,12 +8,13 @@ import { ORLANDO_PLANNER_ID } from '@/lib/orlando/paths';
 import { orlandoPlannerUi } from '@/lib/orlando/planner-ui';
 import { shortParkName } from '@/lib/orlando/hub-data';
 import { ticketCatalog } from '@/lib/orlando/plan-tickets';
-import { trackSiteEvent } from '@/lib/analytics/site-analytics';
+import { trackTripEvent } from '@/lib/orlando/plan-analytics';
 import { PLAN_WIDE_QUERY } from './plan-setup';
 import type { TripRegion } from '@/lib/orlando/types';
 import {
   PlanContextProvider,
   usePlanContext,
+  useTripEvents,
   type PlanContextValue,
   type PlanParkPhoto,
 } from './plan-context';
@@ -77,18 +78,20 @@ function LivePlanner(props: OrlandoPlannerProps) {
   const rootRef = useRef<HTMLDivElement>(null);
   // A link that names the planner (Parky's, a copied one) lands on it with the focus in it, also
   // when the visitor is already on the page and only the query changed.
+  const slug = props.region.slug;
   const onExternal = useCallback(() => {
     if (window.location.hash !== `#${ORLANDO_PLANNER_ID}`) return;
     // A link that carries a plan or a search (a shared one, Parky's, a best-time page's).
-    if (window.location.search.length > 1)
-      trackSiteEvent('trip_planner_started', { source: 'link' });
+    if (window.location.search.length > 1) {
+      trackTripEvent(slug, 'trip_planner_started', { source: 'link' });
+    }
     const root = rootRef.current;
     if (!root) return;
     const target = document.getElementById(ORLANDO_PLANNER_ID) ?? root;
     const smooth = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     target.scrollIntoView({ block: 'start', behavior: smooth ? 'smooth' : 'auto' });
     root.focus({ preventScroll: true });
-  }, []);
+  }, [slug]);
   const { state, update } = usePlanState(props.region, onExternal);
   return <PlannerFrame {...props} state={state} update={update} live rootRef={rootRef} />;
 }
@@ -163,6 +166,7 @@ const scrollTo = (target: HTMLElement | null) => {
  */
 function PlannerBody({ defaultMonth }: { defaultMonth?: string }) {
   const { live, state, tickets: catalog } = usePlanContext();
+  const track = useTripEvents();
   const step = useTicketStep();
   const [sheet, setSheet] = useState<PlanSheetStep | null>(null);
   const [walk, setWalk] = useState(false);
@@ -181,7 +185,7 @@ function PlannerBody({ defaultMonth }: { defaultMonth?: string }) {
   /** The walk's first step: Tickets while the question is open, else Dates. */
   const start = useCallback(
     (source: 'hero' | 'button') => {
-      trackSiteEvent('trip_planner_started', { source });
+      track('trip_planner_started', { source });
       if (!window.matchMedia(PLAN_WIDE_QUERY).matches) {
         openSheet(asks ? 'tickets' : 'dates', asks);
         return;
@@ -203,7 +207,7 @@ function PlannerBody({ defaultMonth }: { defaultMonth?: string }) {
         )
         ?.focus({ preventScroll: true });
     },
-    [asks, openSheet]
+    [asks, openSheet, track]
   );
 
   // The hub's hero asks through `orlandoPlannerUi`.

@@ -2,7 +2,7 @@ import { orlandoPath, ORLANDO_PLANNER_ID } from './paths';
 import type { TicketProduct, TripRegion } from './types';
 
 /**
- * The Orlando trip planner's state and its one URL form. The state lives in the address bar under
+ * The trip planner's state and its one URL form. The state lives in the address bar under
  * the API's own `/plan` names (and, for the When mode, `when=<from>_<to>&days&within`), so the
  * page, "Copy link", the best-time pages and Parky's `plan_vacation` and `find_trip_dates` links
  * all open the same plan: whatever builds a URL builds it here, and whatever reads one reads it

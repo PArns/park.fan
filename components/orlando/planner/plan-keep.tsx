@@ -4,7 +4,6 @@ import { useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { CalendarArrowDown, CalendarPlus, Check, Link2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { trackSiteEvent } from '@/lib/analytics/site-analytics';
 import { plannerStore } from '@/lib/planner/store';
 import { reserveDays } from '@/lib/planner/actions';
 import { plannerUi } from '@/lib/planner/ui-store';
@@ -15,7 +14,7 @@ import { buildTripIcs, type TripIcsEvent } from '@/lib/orlando/plan-ics';
 import { calendarCell } from '@/lib/orlando/plan-week';
 import { ORLANDO_PLANNER_ID } from '@/lib/orlando/paths';
 import type { TripCalendar } from '@/lib/orlando/types';
-import { usePlanContext } from './plan-context';
+import { usePlanContext, useTripEvents } from './plan-context';
 import { dayGuestClose, useDayParks } from './plan-day-bits';
 
 /**
@@ -33,6 +32,7 @@ export function PlanKeep({
 }) {
   const t = useTranslations('orlandoPlanner');
   const { region, state, locale, parkName } = usePlanContext();
+  const track = useTripEvents();
   const parksOf = useDayParks();
   const [added, setAdded] = useState<number | null>(null);
   const [link, setLink] = useState<'idle' | 'copied' | { manual: string }>('idle');
@@ -41,7 +41,7 @@ export function PlanKeep({
     const days = reserveTripDays(plan, region.parks);
     if (days.length === 0) return;
     plannerStore.update((s) => reserveDays(s, days));
-    trackSiteEvent('trip_days_saved', { days: days.length });
+    track('trip_days_saved', { days: days.length });
     setAdded(days.length);
   };
 
@@ -74,7 +74,7 @@ export function PlanKeep({
           url,
         };
       });
-    trackSiteEvent('trip_ics_exported', { days: events.length });
+    track('trip_ics_exported', { days: events.length });
     const file = buildTripIcs(events, {
       now: Date.now(),
       calendarName: t('ics.calendarName', {
@@ -85,7 +85,7 @@ export function PlanKeep({
     const href = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = href;
-    a.download = `orlando-${plan.meta.from}.ics`;
+    a.download = `${region.slug}-${plan.meta.from}.ics`;
     document.body.appendChild(a);
     a.click();
     a.remove();
@@ -94,7 +94,7 @@ export function PlanKeep({
 
   const copy = async () => {
     const url = shareUrl();
-    trackSiteEvent('trip_link_copied');
+    track('trip_link_copied');
     try {
       await navigator.clipboard.writeText(url);
       setLink('copied');

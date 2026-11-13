@@ -30,10 +30,9 @@ import {
   type TicketResort,
 } from '@/lib/orlando/plan-tickets';
 import { orlandoTicketAnswer } from '@/lib/orlando/ticket-answer';
-import { trackSiteEvent } from '@/lib/analytics/site-analytics';
 import type { TicketProduct } from '@/lib/orlando/types';
 import { Badge } from '@/components/ui/badge';
-import { usePlanContext } from './plan-context';
+import { usePlanContext, useTripEvents } from './plan-context';
 import { PLAN_FOCUS, PlanCheckRow, PlanChip } from './plan-controls';
 import { PlanMonthGrid } from './plan-month-grid';
 import { oneStop, productName, useHopperWord, useResortWord } from './plan-ticket-words';
@@ -87,6 +86,7 @@ export interface TicketStep {
  */
 export function useTicketStep(): TicketStep {
   const { state, update, tickets: catalog, today } = usePlanContext();
+  const track = useTripEvents();
   const stored = useSyncExternalStore(
     orlandoTicketAnswer.subscribe,
     orlandoTicketAnswer.getSnapshot,
@@ -130,12 +130,12 @@ export function useTicketStep(): TicketStep {
     answer,
     drafts,
     answerYes: () => {
-      if (answer !== 'yes') trackSiteEvent('trip_tickets_answered', { answer: 'yes' });
+      if (answer !== 'yes') track('trip_tickets_answered', { answer: 'yes' });
       orlandoTicketAnswer.set('yes');
       write(drafts, true);
     },
     answerNo: (skipped = false) => {
-      trackSiteEvent('trip_tickets_answered', { answer: skipped ? 'skipped' : 'not_yet' });
+      track('trip_tickets_answered', { answer: skipped ? 'skipped' : 'not_yet' });
       orlandoTicketAnswer.set('no');
       write(drafts, false);
     },
@@ -153,7 +153,7 @@ export function useTicketStep(): TicketStep {
       ];
       if (drafts.length + added.length > MAX_TICKETS) return;
       for (const d of added) {
-        trackSiteEvent('trip_ticket_added', {
+        track('trip_ticket_added', {
           entry: d.entry ?? 'none',
           resort: d.resort,
           via: 'combo',
@@ -186,7 +186,7 @@ export function useTicketStep(): TicketStep {
     remove: (id) => {
       const gone = drafts.find((d) => d.id === id);
       if (gone) {
-        trackSiteEvent('trip_ticket_removed', { entry: gone.entry ?? 'none', resort: gone.resort });
+        track('trip_ticket_removed', { entry: gone.entry ?? 'none', resort: gone.resort });
       }
       write(
         drafts.filter((d) => d.id !== id),
@@ -407,6 +407,7 @@ function TicketCard({
 }) {
   const t = useTranslations('orlandoPlanner.tickets');
   const { live, tickets: catalog } = usePlanContext();
+  const track = useTripEvents();
   const resortWord = useResortWord();
   const headingId = useId();
   const entries = ticketEntries(draft.resort, catalog);
@@ -449,7 +450,7 @@ function TicketCard({
               addon: false,
             });
             step.focusDraft(draft.id, 'fields');
-            trackSiteEvent('trip_ticket_added', {
+            track('trip_ticket_added', {
               entry: picked.key,
               resort: draft.resort,
               via: 'picker',
@@ -799,6 +800,7 @@ function StartField({
   const t = useTranslations('orlandoPlanner.tickets');
   const tDates = useTranslations('orlandoPlanner.dates');
   const { live, locale, state, today } = usePlanContext();
+  const track = useTripEvents();
   const [open, setOpen] = useState(false);
   const [month, setMonth] = useState<string | null>(null);
   const gridId = useId();
@@ -821,7 +823,7 @@ function StartField({
     year: 'numeric',
   });
   const pick = (start: string | null) => {
-    trackSiteEvent('trip_ticket_start', {
+    track('trip_ticket_start', {
       entry: draft.entry ?? 'none',
       resort: draft.resort,
       start: start ? 'set' : 'open',
