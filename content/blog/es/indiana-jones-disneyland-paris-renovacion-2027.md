@@ -20,6 +20,11 @@ parkLinks:
   - /parks/europe/france/paris/disneyland-park
 rideLinks:
   - /parks/europe/france/paris/disneyland-park/indiana-jones-and-the-temple-of-peril
+coverImage:
+  src: /media/disneyland-park/background.jpg
+  alt: 'El castillo de la Bella Durmiente, rosa y azul, sobre su base de roca, con césped y árboles podados delante.'
+  caption: 'El castillo de la Bella Durmiente, en Disneyland Park. La montaña rusa Indiana Jones, en Adventureland, cierra varios meses a partir del 4 de enero.'
+  credit: 'Patrick Arns'
 seo:
   title: 'Disneyland Paris renueva Indiana Jones desde enero de 2027'
   description: >-

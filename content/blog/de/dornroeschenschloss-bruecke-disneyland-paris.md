@@ -19,6 +19,11 @@ parkLinks:
   - /parks/europe/france/paris/disneyland-park
 rideLinks:
   - /parks/europe/france/paris/disneyland-park/*
+coverImage:
+  src: /media/disneyland-park/background.jpg
+  alt: 'Das rosa-blaue Dornröschenschloss auf einem Felssockel, davor Wiese und beschnittene Bäume.'
+  caption: 'Das Dornröschenschloss im Disneyland Park. Die Kompassrose auf der Brücke davor trägt die Farben der drei guten Feen.'
+  credit: 'Patrick Arns'
 seo:
   title: 'Neue Brücke am Dornröschenschloss im Disneyland Paris'
   description: >-

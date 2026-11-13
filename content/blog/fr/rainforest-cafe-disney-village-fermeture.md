@@ -18,6 +18,11 @@ category: news
 parkLinks:
   - /parks/europe/france/paris/disneyland-park
   - disney-adventure-world
+coverImage:
+  src: /media/disneyland-park/background.jpg
+  alt: 'Le château de la Belle au bois dormant, rose et bleu, sur son socle rocheux, pelouse et arbres taillés devant.'
+  caption: 'Le château de la Belle au bois dormant, au Parc Disneyland. Le Rainforest Café se trouve hors des parcs, au Disney Village, accessible sans billet.'
+  credit: 'Patrick Arns'
 seo:
   title: 'Le Rainforest Café de Disneyland Paris ferme le 15 novembre'
   description: >-

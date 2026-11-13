@@ -19,6 +19,11 @@ parkLinks:
   - /parks/europe/france/paris/disneyland-park
 rideLinks:
   - /parks/europe/france/paris/disneyland-park/*
+coverImage:
+  src: /media/disneyland-park/background.jpg
+  alt: 'Het roze-blauwe Doornroosjekasteel op een rotssokkel, met gras en gesnoeide bomen ervoor.'
+  caption: 'Het Doornroosjekasteel in het Disneyland Park. De windroos op de brug ervoor heeft de kleuren van de drie goede feeën.'
+  credit: 'Patrick Arns'
 seo:
   title: 'Nieuwe brug bij het Doornroosjekasteel in Disneyland Paris'
   description: >-

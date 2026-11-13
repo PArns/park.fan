@@ -18,6 +18,11 @@ category: news
 parkLinks:
   - /parks/europe/france/paris/disneyland-park
   - disney-adventure-world
+coverImage:
+  src: /media/disneyland-park/background.jpg
+  alt: 'Das rosa-blaue Dornröschenschloss auf einem Felssockel, davor Wiese und beschnittene Bäume.'
+  caption: 'Das Dornröschenschloss im Disneyland Park. Das Rainforest Café steht außerhalb der Parks, im Disney Village, für das du kein Parkticket brauchst.'
+  credit: 'Patrick Arns'
 seo:
   title: 'Rainforest Café Disneyland Paris schließt am 15. November 2026'
   description: >-
