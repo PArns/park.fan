@@ -37,6 +37,8 @@ export function PlanMonthView({
   onOpenDay: (date: string) => void;
 }) {
   const t = useTranslations('tripPlanner');
+  const tCrowd = useTranslations('parks.crowdLevels');
+  const tCommon = useTranslations('common');
   const { locale, parkBySlug } = usePlanContext();
   const parksOf = useDayParks();
   const markerText = useDayMarkerText();
@@ -121,19 +123,40 @@ export function PlanMonthView({
                   {label}
                 </span>
                 {isPark ? (
-                  <span
-                    className={cn('flex min-w-0 flex-wrap items-baseline gap-x-1 text-[11px]', ink)}
-                    aria-hidden="true"
-                  >
-                    <span className="font-bold">
-                      {day.parks
-                        .map((p) => parkInitials(parkBySlug.get(p.slug)?.name ?? p.slug))
-                        .join(' + ')}
+                  <>
+                    <span
+                      className={cn(
+                        'flex min-w-0 flex-wrap items-baseline gap-x-1 text-[11px] lg:text-[13px]',
+                        ink
+                      )}
+                      aria-hidden="true"
+                    >
+                      <span className="font-bold">
+                        {day.parks
+                          .map((p) => parkInitials(parkBySlug.get(p.slug)?.name ?? p.slug))
+                          .join(' + ')}
+                      </span>
+                      {day.headlinerWait != null && (
+                        <span className="font-semibold whitespace-nowrap tabular-nums">
+                          {day.headlinerWait}
+                          <span className="hidden lg:inline"> {tCommon('min')}</span>
+                        </span>
+                      )}
                     </span>
-                    {day.headlinerWait != null && (
-                      <span className="font-semibold tabular-nums">{day.headlinerWait}</span>
+                    {/* The tier in words, as a park's crowd calendar writes it; a phone's
+                        seventh of the width leaves room for the tint alone. */}
+                    {level && (
+                      <span
+                        className={cn(
+                          'hidden truncate text-[10px] font-bold tracking-wider uppercase lg:block',
+                          ink
+                        )}
+                        aria-hidden="true"
+                      >
+                        {tCrowd(level)}
+                      </span>
                     )}
-                  </span>
+                  </>
                 ) : day.kind === 'rest' ? (
                   <BedDouble className="text-muted-foreground size-4" aria-hidden="true" />
                 ) : day.kind === 'arrival' ? (
