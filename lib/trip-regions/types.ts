@@ -179,9 +179,21 @@ export interface TripVenue {
 export type TicketHopping = 'none' | 'optional' | 'included';
 
 /**
+ * The country store a purchase link leads to, for a seller with one store per country (Attraction
+ * Tickets' UK, Irish, Dutch, German and US stores), each with its own prices.
+ */
+export interface TicketStore {
+  /** ISO 3166-1 alpha-2, upper case: `GB`, `IE`. */
+  country: string;
+  /** ISO 4217, the currency the store sells in: `GBP`, `EUR`. */
+  currency: string;
+}
+
+/**
  * Where a ticket is bought: the operator's shop (`official`), or another seller. A `sponsored` link
  * is an affiliate or paid one, which the page labels as such; `markets` and `locales` say where it
- * sells and in which language, which orders and labels it; absent for everyone.
+ * sells and in which language, which orders and labels it; absent for everyone. `store` names the
+ * seller's country store, which the link is named by.
  */
 export interface TicketLink {
   /** The seller's own name, never translated. */
@@ -192,6 +204,7 @@ export interface TicketLink {
   /** Codes of the region's `ticketMarkets`. */
   markets?: string[];
   locales?: string[];
+  store?: TicketStore;
 }
 
 /**

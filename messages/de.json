@@ -3716,7 +3716,9 @@
       },
       "links": {
         "title": "Preise und Tickets",
-        "official": "{seller} (offizieller Shop)"
+        "official": "{seller} (offizieller Shop)",
+        "store": "{seller} · {country} ({currency})",
+        "compare": "Die Preise unterscheiden sich je nach Land des Shops. Vergleich sie alle, bevor du kaufst."
       },
       "market": {
         "uk": "UK-Shop",

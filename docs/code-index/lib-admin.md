@@ -414,6 +414,7 @@ The ticket catalog of a trip region as `/admin/tickets` edits it: every product 
 - `formatTicketLinks` _function_: How many links a product has and how many of them are partner links: „3 Links, 1 Partnerlink“.
 - `ticketUrlProblem` _function_: What is wrong with a url the catalog stores, in German, or null: an absolute `https` address of at most 500 characters without user or password, the API's own check.
 - `ticketLinkProblems` _function_: The API's checks on a product's links, run in the form so a link shows its problem while it is typed: one to ten links, exactly one of them the operator's shop, a seller name and a valid url on each.
+- `withTicketLinkStore` _function_: A link with one part of its country store changed; it has no store once both parts are empty.
 - `setOfficialTicketLink` _function_: The links with the one at `index` as the operator's shop and no other.
 - `moveItem` _function_: The list with the item at `from` moved to `to`; out-of-range moves return it unchanged.
 - `ticketProblemsOf` _function_: The problem list of a refused write or a `validate` answer (`{ problems: [{ path, message }] }`), or an empty list when the payload carries none.

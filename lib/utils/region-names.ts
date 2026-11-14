@@ -89,13 +89,21 @@ export const SUBDIVISION_NAMES: Record<string, string> = {
 
 const regionDisplayNames = new Map<string, Intl.DisplayNames>();
 
-/** Localised country name for a 2-letter ISO code via `Intl.DisplayNames`, else the raw code. */
-export function getCountryName(countryCode: string, locale: string): string {
+/**
+ * Localised country name for a 2-letter ISO code via `Intl.DisplayNames`, else the raw code.
+ * `short` takes the short form where the language has one („UK", „USA").
+ */
+export function getCountryName(
+  countryCode: string,
+  locale: string,
+  style: 'long' | 'short' = 'long'
+): string {
   try {
-    let names = regionDisplayNames.get(locale);
+    const key = `${locale}|${style}`;
+    let names = regionDisplayNames.get(key);
     if (!names) {
-      names = new Intl.DisplayNames([locale], { type: 'region' });
-      regionDisplayNames.set(locale, names);
+      names = new Intl.DisplayNames([locale], { type: 'region', style });
+      regionDisplayNames.set(key, names);
     }
     return names.of(countryCode) ?? countryCode;
   } catch {

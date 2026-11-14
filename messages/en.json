@@ -3716,7 +3716,9 @@
       },
       "links": {
         "title": "Prices and tickets",
-        "official": "{seller} (official shop)"
+        "official": "{seller} (official shop)",
+        "store": "{seller} · {country} ({currency})",
+        "compare": "Prices differ with the shop’s country. Compare them all before you buy."
       },
       "market": {
         "uk": "UK shop",
