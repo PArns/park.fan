@@ -476,7 +476,9 @@ the backend's curation doc, the routes and checks in its
 
 One form edits a season wherever it is opened (`SeasonEditor`,
 `seasons/_components/season-editor.tsx`): from a park's „Saisons“ tab and from `/admin/seasons`.
-The pure half is `_lib/seasons.ts`, pinned by `pnpm test:admin-seasons`.
+The pure half is `_lib/seasons.ts`, pinned by `pnpm test:admin-seasons`. A row draws its kind and
+status as the park page does (`SeasonKindIcon`, `SEASON_STATUS_TONE` in `components/parks/`), and
+the kinds and statuses are the site's types (`lib/api/types.ts`).
 
 - **`/admin/seasons`** lists every park's seasons by kind, filtered by year (the current one
   unless the address says `year=all`), kind, status, trip region, park and „Läuft heute“. The

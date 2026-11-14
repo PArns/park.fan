@@ -1,3 +1,5 @@
+import type { ParkSeasonKind, ParkSeasonStatus } from '@/lib/api/types';
+
 /**
  * The shapes the admin API answers with, hand-written and narrow: they describe what the admin
  * renders, so adding a field is a decision rather than a side effect of a backend change.
@@ -191,17 +193,8 @@ export interface AdminAttractionDetail {
   updatedAt: string;
 }
 
-export type ParkSeasonKind =
-  | 'halloween'
-  | 'christmas'
-  | 'winter'
-  | 'summer_nights'
-  | 'special_event'
-  | 'opening'
-  | 'closure'
-  | 'maintenance';
-
-export type ParkSeasonStatus = 'confirmed' | 'announced' | 'expected' | 'cancelled';
+// One spelling of the kinds and statuses for the site and the admin: a kind added there is one here.
+export type { ParkSeasonKind, ParkSeasonStatus } from '@/lib/api/types';
 
 export interface ParkSeason {
   id: string;

@@ -7,18 +7,13 @@ import {
   CalendarDays,
   CalendarRange,
   Eye,
-  Ghost,
   Loader2,
   MapPin,
   Pencil,
   Plus,
-  Snowflake,
-  Sparkles,
   Ticket,
   Trash2,
   TriangleAlert,
-  Wrench,
-  type LucideIcon,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
@@ -28,7 +23,8 @@ import {
   DialogHeader,
   DialogTitle,
 } from '@/components/ui/dialog';
-import { cn } from '@/lib/utils';
+import { SEASON_STATUS_TONE } from '@/components/parks/season-headline';
+import { SeasonKindIcon } from '@/components/parks/season-kind-icon';
 import { adminFetch, adminKeys, useAdminQuery, useInvalidateAdmin } from '../../_lib/api';
 import { formatAgo } from '../../_lib/format';
 import {
@@ -72,7 +68,7 @@ import {
   useFieldId,
 } from '../../_ui/controls';
 import { DayCalendar } from '../../_ui/day-calendar';
-import { Chip, EmptyState, SCROLLING_DIALOG, Tile, type ChipTone } from '../../_ui/primitives';
+import { Chip, EmptyState, SCROLLING_DIALOG, Tile } from '../../_ui/primitives';
 import { useToast } from '../../_ui/toast';
 
 /**
@@ -80,26 +76,6 @@ import { useToast } from '../../_ui/toast';
  * event like Fright Nights runs on weekends inside its range, not every day. The row, the park's
  * list and the form are shared by the park's „Saisons“ tab and `/admin/seasons`.
  */
-
-const SPECIAL_EVENT = { icon: Sparkles, tone: 'text-violet-400' };
-
-// Partial, so a kind without an entry (one the API added first) draws the special event's icon.
-const KIND_META: Partial<Record<ParkSeasonKind, { icon: LucideIcon; tone: string }>> = {
-  halloween: { icon: Ghost, tone: 'text-orange-400' },
-  christmas: { icon: Snowflake, tone: 'text-sky-400' },
-  summer_nights: { icon: Sparkles, tone: 'text-amber-400' },
-  special_event: SPECIAL_EVENT,
-  opening: { icon: CalendarRange, tone: 'text-emerald-400' },
-  closure: { icon: Snowflake, tone: 'text-zinc-400' },
-  maintenance: { icon: Wrench, tone: 'text-amber-400' },
-};
-
-const STATUS_TONES: Record<ParkSeasonStatus, ChipTone> = {
-  confirmed: 'success',
-  announced: 'primary',
-  expected: 'muted',
-  cancelled: 'danger',
-};
 
 function seasonTitle(season: Pick<ParkSeason, 'name' | 'kind'>): string {
   return season.name || SEASON_KIND_LABELS[season.kind] || season.kind;
@@ -121,20 +97,13 @@ export function SeasonRow({
   canEdit: boolean;
   onOpen: () => void;
 }) {
-  const kind = KIND_META[season.kind] ?? SPECIAL_EVENT;
-  const Icon = kind.icon;
   const title = seasonTitle(season);
   const iconButton = 'text-muted-foreground hover:text-foreground rounded p-1.5 max-sm:p-3';
 
   return (
     <li className="border-border/60 bg-card/40 flex items-start gap-3 rounded-lg border p-3">
-      <span
-        className={cn(
-          'bg-muted/50 mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg',
-          kind.tone
-        )}
-      >
-        <Icon className="h-4 w-4" aria-hidden />
+      <span className="bg-muted/50 mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg">
+        <SeasonKindIcon kind={season.kind} className="size-4" />
       </span>
 
       <div className="min-w-0 flex-1 space-y-1">
@@ -147,7 +116,7 @@ export function SeasonRow({
             {showPark ? (season.park?.name ?? 'Unbekannter Park') : title}
           </button>
           {showPark && <span className="text-muted-foreground min-w-0 text-xs">{title}</span>}
-          <Chip tone={STATUS_TONES[season.status] ?? 'muted'}>
+          <Chip className={SEASON_STATUS_TONE[season.status]}>
             {SEASON_STATUS_LABELS[season.status] ?? season.status}
           </Chip>
           {season.separateTicket && (
