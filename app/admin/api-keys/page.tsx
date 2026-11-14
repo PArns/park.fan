@@ -140,33 +140,25 @@ function KeyList({ items }: { items: DataApiKey[] }) {
   const [editing, setEditing] = useState<DataApiKey | null>(null);
   const [viewing, setViewing] = useState<DataApiKey | null>(null);
   const [rotating, setRotating] = useState<DataApiKey | null>(null);
-  // Kept after the dialog closes, like `pending`.
+  // Kept after their dialogs close, like `pending`.
   const [ending, setEnding] = useState<DataApiKey | null>(null);
+  const [deleting, setDeleting] = useState<DataApiKey | null>(null);
   const [confirmingEnd, setConfirmingEnd] = useState(false);
+  const [confirmingDelete, setConfirmingDelete] = useState(false);
   const now = useMinuteNow();
 
-  async function revoke(key: DataApiKey) {
+  async function act(
+    path: string,
+    method: 'DELETE' | 'POST',
+    toasts: { done: string; failed: string }
+  ) {
     try {
-      await adminFetch(dataApiKeyPath(key.id), { method: 'DELETE' });
+      await adminFetch(path, { method });
       invalidate(DATA_API_KEYS_QUERY_KEY);
-      toast.push({ title: 'Key widerrufen', tone: 'success' });
+      toast.push({ title: toasts.done, tone: 'success' });
     } catch (err) {
       toast.push({
-        title: 'Widerruf fehlgeschlagen',
-        description: err instanceof Error ? err.message : undefined,
-        tone: 'error',
-      });
-    }
-  }
-
-  async function endGrace(key: DataApiKey) {
-    try {
-      await adminFetch(dataApiKeyPath(key.id, 'previous'), { method: 'DELETE' });
-      invalidate(DATA_API_KEYS_QUERY_KEY);
-      toast.push({ title: 'Alter Key gesperrt', tone: 'success' });
-    } catch (err) {
-      toast.push({
-        title: 'Sperren fehlgeschlagen',
+        title: toasts.failed,
         description: err instanceof Error ? err.message : undefined,
         tone: 'error',
       });
@@ -202,6 +194,10 @@ function KeyList({ items }: { items: DataApiKey[] }) {
               setPending(key);
               setConfirming(true);
             }}
+            onDelete={() => {
+              setDeleting(key);
+              setConfirmingDelete(true);
+            }}
           />
         ))}
       </ul>
@@ -219,7 +215,13 @@ function KeyList({ items }: { items: DataApiKey[] }) {
         }
         confirmLabel="Widerrufen"
         cancelLabel="Abbrechen"
-        onConfirm={() => pending && void revoke(pending)}
+        onConfirm={() =>
+          pending &&
+          void act(dataApiKeyPath(pending.id), 'DELETE', {
+            done: 'Key widerrufen',
+            failed: 'Widerruf fehlgeschlagen',
+          })
+        }
       />
 
       <ConfirmDialog
@@ -235,7 +237,31 @@ function KeyList({ items }: { items: DataApiKey[] }) {
         }
         confirmLabel="Alten Key sperren"
         cancelLabel="Abbrechen"
-        onConfirm={() => ending && void endGrace(ending)}
+        onConfirm={() =>
+          ending &&
+          void act(dataApiKeyPath(ending.id, 'previous'), 'DELETE', {
+            done: 'Alter Key gesperrt',
+            failed: 'Sperren fehlgeschlagen',
+          })
+        }
+      />
+
+      <ConfirmDialog
+        open={confirmingDelete}
+        onOpenChange={setConfirmingDelete}
+        icon={Trash2}
+        tone="destructive"
+        title={`Key „${deleting?.name ?? ''}“ endgültig löschen?`}
+        description="Der widerrufene Key verschwindet aus der Liste, mit seiner Statistik; unter „Änderungen“ bleibt er verzeichnet. Das lässt sich nicht rückgängig machen."
+        confirmLabel="Löschen"
+        cancelLabel="Abbrechen"
+        onConfirm={() =>
+          deleting &&
+          void act(dataApiKeyPath(deleting.id, 'delete'), 'POST', {
+            done: 'Key gelöscht',
+            failed: 'Löschen fehlgeschlagen',
+          })
+        }
       />
 
       {editing && <EditKeyDialog apiKey={editing} onClose={() => setEditing(null)} />}
@@ -253,6 +279,7 @@ function KeyRow({
   onRotate,
   onEndGrace,
   onRevoke,
+  onDelete,
 }: {
   apiKey: DataApiKey;
   /** Null until the clock is known, so the server and the first render agree. */
@@ -262,6 +289,7 @@ function KeyRow({
   onRotate: () => void;
   onEndGrace: () => void;
   onRevoke: () => void;
+  onDelete: () => void;
 }) {
   const revoked = apiKey.revokedAt !== null;
   const expired = !revoked && now !== null && hasPassed(apiKey.expiresAt, now);
@@ -321,16 +349,14 @@ function KeyRow({
               <RotateCw className="h-3.5 w-3.5" />
             </button>
           )}
-          {!revoked && (
-            <button
-              type="button"
-              onClick={onRevoke}
-              aria-label={`${apiKey.name} widerrufen`}
-              className="text-muted-foreground hover:text-destructive rounded p-1.5 max-sm:p-3"
-            >
-              <Trash2 className="h-3.5 w-3.5" />
-            </button>
-          )}
+          <button
+            type="button"
+            onClick={revoked ? onDelete : onRevoke}
+            aria-label={`${apiKey.name} ${revoked ? 'löschen' : 'widerrufen'}`}
+            className="text-muted-foreground hover:text-destructive rounded p-1.5 max-sm:p-3"
+          >
+            <Trash2 className="h-3.5 w-3.5" />
+          </button>
         </div>
       </div>
       <div className={`text-muted-foreground mt-1 space-y-1 text-xs sm:pl-7 ${dimmed}`}>
