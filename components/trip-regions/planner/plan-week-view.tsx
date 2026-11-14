@@ -9,6 +9,8 @@ import {
   Lock,
   PlaneLanding,
   PlaneTakeoff,
+  Plus,
+  Sun,
   Ticket,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -33,11 +35,15 @@ import {
   shownWaitOn,
   tripDaySpans,
   TRIP_FALLBACK_CANVAS,
+  weekColumns,
   weekPages,
+  weekTemplate,
   WEEK_COLUMNS_PHONE,
   WEEK_COLUMNS_WIDE,
+  type SpareSuggestion,
   type TripCanvas,
   type TripDaySpan,
+  type WeekColumn as WeekColumnGroup,
 } from '@/lib/trip-regions/plan-week';
 import type { PlanDay, TripPlan } from '@/lib/trip-regions/plan';
 import { dayStayBase, planStays } from '@/lib/trip-regions/plan-stays';
@@ -50,6 +56,7 @@ import { usePartyName } from './use-day-facts';
 import { useEveningName, useTicketDayLabel } from './plan-day-bits';
 import { MOVE_INK, MoveIcon, PlanStayBand, useMoveWords } from './plan-stay-band';
 import { useBaseName } from './plan-place-words';
+import { PlanSpareRun } from './plan-spare-run';
 
 /** The gap between two day columns, which the stay band above them keeps to. */
 const COLUMN_GAP_PX = 4;
@@ -61,16 +68,20 @@ const COLUMN_GAP_PX = 4;
  * early slot, the hour rules) and its blocks use the planner's ink. A park day is one block from
  * opening to the day guests' close with the park and its minutes and nothing else; a party night
  * is hatched after it with its name, Early Entry and Extended Evening Hours thin stripes where the
- * hotel gets them, a hop day two blocks with the leg chip between them. A press opens the day.
+ * hotel gets them, a hop day two blocks with the leg chip between them. A free day gets no hour
+ * grid: alone it is a narrow column with its sun, and a run of them is one panel with the parks it
+ * could take (`weekColumns`, `PlanSpareRun`). A press opens the day.
  */
 export function PlanWeekView({
   plan,
   calendar,
   onOpenDay,
+  onFill,
 }: {
   plan: TripPlan;
   calendar: TripCalendar | undefined;
   onOpenDay: (date: string) => void;
+  onFill: (suggestion: SpareSuggestion) => void;
 }) {
   const t = useTranslations('tripPlanner');
   const { timeZone, locale } = usePlanContext();
@@ -88,6 +99,9 @@ export function PlanWeekView({
   const current = Math.min(page, pages.length - 1);
   const shown = pages[current] ?? [];
   const dayBy = useMemo(() => new Map(plan.days.map((d) => [d.date, d])), [plan.days]);
+  const spanBy = useMemo(() => new Map(spans.map((s) => [s.date, s])), [spans]);
+  const columns = weekColumns(shown.flatMap((span) => dayBy.get(span.date) ?? []));
+  const empty = perPage - shown.length;
   const stays = useMemo(() => planStays(plan), [plan]);
   const baseName = useBaseName();
   const stayCity = (day: PlanDay | undefined) => {
@@ -147,12 +161,7 @@ export function PlanWeekView({
         <div className="flex">
           <div className="w-10 shrink-0" />
           <div className="min-w-0 flex-1">
-            <PlanStayBand
-              days={shown.flatMap((span) => dayBy.get(span.date) ?? [])}
-              stays={stays}
-              columns={perPage}
-              gapPx={COLUMN_GAP_PX}
-            />
+            <PlanStayBand columns={columns} stays={stays} empty={empty} gapPx={COLUMN_GAP_PX} />
           </div>
         </div>
       )}
@@ -186,28 +195,123 @@ export function PlanWeekView({
 
         <ol
           className="grid min-w-0 flex-1"
-          style={{
-            gridTemplateColumns: `repeat(${perPage}, minmax(0, 1fr))`,
-            columnGap: COLUMN_GAP_PX,
-          }}
+          style={{ gridTemplateColumns: weekTemplate(columns, empty), columnGap: COLUMN_GAP_PX }}
         >
-          {shown.map((span) => (
-            <WeekColumn
-              key={span.date}
-              span={span}
-              day={dayBy.get(span.date)}
-              meta={ticketLine ? plan.meta : null}
-              phone={phone}
-              canvas={canvas}
-              pxPerMin={pxPerMin}
-              calendar={calendar}
-              city={stayCity(dayBy.get(span.date))}
-              onOpen={() => onOpenDay(span.date)}
-            />
-          ))}
+          {columns.map((column) => {
+            const date = column.days[0].date;
+            const span = spanBy.get(date);
+            return column.width === 'day' && span ? (
+              <WeekColumn
+                key={date}
+                span={span}
+                day={column.days[0]}
+                meta={ticketLine ? plan.meta : null}
+                phone={phone}
+                canvas={canvas}
+                pxPerMin={pxPerMin}
+                calendar={calendar}
+                city={stayCity(column.days[0])}
+                onOpen={() => onOpenDay(date)}
+              />
+            ) : (
+              <SpareColumn
+                key={date}
+                column={column}
+                tall={ticketLine}
+                height={height}
+                plan={plan}
+                calendar={calendar}
+                onOpenDay={onOpenDay}
+                onFill={onFill}
+              />
+            );
+          })}
         </ol>
       </div>
     </div>
+  );
+}
+
+/**
+ * Free days in the Week view, with no hour grid: one alone is a narrow column with its sun,
+ * „freier Tag · Ideen“ and a plus, which opens the day's sheet with what it could take; a run of
+ * them is one panel holding the free-day card (`PlanSpareRun`).
+ */
+function SpareColumn({
+  column,
+  tall,
+  height,
+  plan,
+  calendar,
+  onOpenDay,
+  onFill,
+}: {
+  column: WeekColumnGroup<PlanDay>;
+  /** The header carries a ticket line, as every other column's does. */
+  tall: boolean;
+  height: number;
+  plan: TripPlan;
+  calendar: TripCalendar | undefined;
+  onOpenDay: (date: string) => void;
+  onFill: (suggestion: SpareSuggestion) => void;
+}) {
+  const t = useTranslations('tripPlanner');
+  const { locale } = usePlanContext();
+  const first = column.days[0];
+  const last = column.days.at(-1) ?? first;
+  const narrow = column.width === 'narrow';
+  return (
+    <li className="flex min-w-0 flex-col" data-plan-spare-column={column.width}>
+      <div
+        className={cn(
+          'flex flex-col items-center justify-center text-center leading-tight',
+          tall ? 'h-16' : 'h-12'
+        )}
+      >
+        <span className="text-muted-foreground text-[11px] uppercase">
+          {narrow ? formatParkDay(locale, first.date, { weekday: 'short' }) : t('spare.day')}
+        </span>
+        <span className="text-sm font-semibold tabular-nums">
+          {narrow
+            ? formatParkDay(locale, first.date, { day: 'numeric' })
+            : formatParkDayRange(locale, first.date, last.date, { day: 'numeric', month: 'short' })}
+        </span>
+      </div>
+      <div
+        className="border-border/60 bg-muted/20 relative overflow-hidden rounded-md border border-dashed"
+        style={{ height }}
+      >
+        {narrow ? (
+          <button
+            type="button"
+            onClick={() => onOpenDay(first.date)}
+            aria-label={`${formatParkDay(locale, first.date, { weekday: 'short', day: 'numeric', month: 'short' })}: ${t('spare.day')}, ${t('spare.ideas')}`}
+            className={cn(
+              'hover:bg-muted/50 absolute inset-0 flex flex-col items-center justify-center gap-2 transition-colors',
+              PLAN_FOCUS
+            )}
+          >
+            <Sun className="text-muted-foreground size-4" aria-hidden="true" />
+            <span
+              aria-hidden="true"
+              className="text-muted-foreground text-xs [writing-mode:vertical-rl]"
+            >
+              {t('spare.day')} · {t('spare.ideas')}
+            </span>
+            <Plus className="text-primary-ink size-4" aria-hidden="true" />
+          </button>
+        ) : (
+          <PlanSpareRun
+            days={column.days}
+            plan={plan}
+            calendar={calendar}
+            onOpenDay={onOpenDay}
+            onFill={onFill}
+            compact
+          />
+        )}
+      </div>
+    </li>
   );
 }
 

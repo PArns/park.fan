@@ -592,6 +592,8 @@ export interface SiteEventMap {
   trip_day_pinned: TripEvent<{ pinned: boolean }>;
   /** Two days swapped. */
   trip_day_swapped: TripEvent;
+  /** A park put on a free day with „Dazu“: from the Days view's card or the Week view's panel. */
+  trip_spare_filled: TripEvent<{ from: 'card' | 'week' | 'idea' | 'chat' }>;
   /** "Plan this day": a day handed to the day planner. */
   trip_day_sent: TripEvent;
   /** "Add all days to my planner", with how many park days went in. */

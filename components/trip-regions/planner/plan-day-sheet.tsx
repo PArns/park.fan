@@ -31,20 +31,22 @@ import {
   dayWarnings,
   earlyPerk,
   primaryReason,
-  runnerUp,
 } from '@/lib/trip-regions/plan-copy';
 import {
   calendarCell,
+  dayRunnerUp,
   daySeasons,
   hoursLessThanUsual,
   partySeason,
   planTimeMinute,
   shownDayWait,
-  shownWaitOn,
+  spareSuggestions,
   swapPreview,
+  type SpareSuggestion,
 } from '@/lib/trip-regions/plan-week';
 import {
   dayLockTarget,
+  isSpareDay,
   lockOn,
   type PlanDay,
   type PlanEvening,
@@ -63,8 +65,9 @@ import { useHopperWord, useResortWord } from './plan-ticket-words';
 import { PlanSheetContent } from './plan-sheet';
 import { regionOrShared } from '@/lib/trip-regions/region-words';
 import { useAreaName, useBaseName } from './plan-place-words';
-import { MOVE_INK, MoveIcon, useMoveWords } from './plan-stay-band';
+import { MOVE_INK, MoveIcon, useMoveNotes, useMoveWords } from './plan-stay-band';
 import { baseLeg } from '@/lib/trip-regions/plan-stays';
+import { PlanSpareSuggestions } from './plan-spare-run';
 
 /** How many of a park's headliners the sheet names: the five a day is usually judged by. */
 const BIG_RIDES = 5;
@@ -86,12 +89,15 @@ export function PlanDaySheet({
   onToggleLock,
   onSwap,
   onPlanDay,
+  onFill,
   returnFocus,
 }: {
   day: PlanDay | null;
   plan: TripPlan;
   calendar: TripCalendar | undefined;
   onClose: () => void;
+  /** „Dazu“ on a free day: the park its sheet suggests, on that date. */
+  onFill: (suggestion: SpareSuggestion) => void;
   onToggleLock: (day: PlanDay) => void;
   onSwap: (day: PlanDay, other: PlanDay) => void;
   onPlanDay: (slug: string, date: string) => void;
@@ -111,7 +117,13 @@ export function PlanDaySheet({
             day: 'numeric',
             month: 'long',
           })}
-          title={day.kind === 'park' || day.kind === 'hop' ? parksOf(day) : t(`day.${day.kind}`)}
+          title={
+            day.kind === 'park' || day.kind === 'hop'
+              ? parksOf(day)
+              : isSpareDay(day)
+                ? t('spare.day')
+                : t(`day.${day.kind}`)
+          }
           onClose={onClose}
           returnFocus={returnFocus}
         >
@@ -123,6 +135,7 @@ export function PlanDaySheet({
             onToggleLock={onToggleLock}
             onSwap={onSwap}
             onPlanDay={onPlanDay}
+            onFill={onFill}
           />
         </PlanSheetContent>
       )}
@@ -146,6 +159,7 @@ function DayDetails({
   onToggleLock,
   onSwap,
   onPlanDay,
+  onFill,
 }: {
   day: PlanDay;
   plan: TripPlan;
@@ -153,6 +167,7 @@ function DayDetails({
   onToggleLock: (day: PlanDay) => void;
   onSwap: (day: PlanDay, other: PlanDay) => void;
   onPlanDay: (slug: string, date: string) => void;
+  onFill: (suggestion: SpareSuggestion) => void;
 }) {
   const t = useTranslations('tripPlanner');
   const tRegion = useTranslations('tripRegion.planner');
@@ -186,20 +201,7 @@ function DayDetails({
   };
   const first = day.parks[0];
   const wait = shownDayWait(day, calendar);
-  const summary = first ? plan.parks.find((p) => p.slug === first.slug) : undefined;
-  // Both days in the figure the sheet shows, so the difference is the one the reader can check.
-  const runner =
-    isPark && day.kind === 'park' && first && summary
-      ? runnerUp(
-          {
-            alternatives: summary.alternatives.map((alt) => ({
-              ...alt,
-              headlinerWait: shownWaitOn(calendar, first.slug, alt.date, alt.headlinerWait),
-            })),
-          },
-          wait
-        )
-      : null;
+  const runner = dayRunnerUp(day, plan, calendar);
   // The runner-up line says the same as `runner_up_close`, with its numbers; one of the two.
   const reason = primaryReason(
     runner ? { ...day, reasons: day.reasons.filter((r) => r !== 'runner_up_close') } : day
@@ -419,6 +421,16 @@ function DayDetails({
         </div>
       )}
 
+      {isSpareDay(day) && (
+        <div className="flex flex-col gap-2" data-plan-spare-sheet="">
+          <PlanSpareSuggestions
+            days={[day]}
+            suggestions={spareSuggestions([day], plan, calendar, region.bases)}
+            onFill={onFill}
+          />
+        </div>
+      )}
+
       {reasonText && <p className="text-sm font-medium">{reasonText}</p>}
       {runner && (
         <p className="text-sm">
@@ -561,14 +573,7 @@ function MoveSection({
   const forward = leg && leg.from === move.from;
   const fromStop = leg ? (forward ? leg.fromStop : leg.toStop) : undefined;
   const toStop = leg ? (forward ? leg.toStop : leg.fromStop) : undefined;
-  const tRegion = useTranslations('tripRegion.planner');
-  const note = (code: string) =>
-    tRegion.has(`moveNote.${code}`)
-      ? tRegion(`moveNote.${code}`)
-      : t.has(`note.${code}`)
-        ? t(`note.${code}`)
-        : null;
-  const notes = (leg?.notes ?? []).flatMap((n) => note(n) ?? []);
+  const notes = useMoveNotes()(move);
   return (
     <section
       className={cn('flex flex-col gap-2 rounded-xl border p-3', MOVE_INK)}

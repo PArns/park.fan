@@ -146,13 +146,13 @@ export interface PlanDay {
   move?: PlanMove;
   /** After a morning move: when the guest gets into the park, park-local ISO. */
   startAt?: string;
-  /**
-   * A rest day nobody asked for: no pin, and no rest rule needs it (API 2.21.1). A free day, not a
-   * rest day, to the visitor.
-   */
-  spare?: boolean;
   reasons: string[];
   warnings: string[];
+  /**
+   * A rest day nobody asked for (API 2.21.1): not pinned, and a park on it would still keep the
+   * rest rule. `kind` stays `rest`; the planner calls it a free day, never a rest day.
+   */
+  spare?: boolean;
 }
 
 /** One day of a hopper comparison: the two parks of a hop day, or the day's park and the evening's. */
@@ -294,7 +294,7 @@ export interface PlanTotals {
   penalties?: { heat?: number; hurricane?: number; typhoon?: number };
   parkDays: number;
   restDays: number;
-  /** Of `restDays`, those with `spare` (API 2.21.1). */
+  /** Of `restDays`, those with `spare`; absent from an API before 2.21.1. */
   spareDays?: number;
   visits: number;
   /** In a region with bases: the hotel changes, and the days that are only the move. */
@@ -352,10 +352,17 @@ export interface TripPlan {
   parksLeftOut?: Array<{ park: string; reason: string }>;
   ignoredLocks?: Array<{ lock: string; reason: string }>;
   /**
-   * The region's parks the visitor did not choose that are open on a free day (`spare`), each with
-   * its three cheapest such days, in the region's order (API 2.21.1); absent when there is none.
+   * The region's parks the visitor did not choose that are open on a spare day and reachable from
+   * that day's base, in the region's order, each with its three cheapest spare days at most; absent
+   * when there is none, and from an API before 2.21.1.
    */
-  spareDayParks?: Array<{ park: string; days: PlanAlternative[] }>;
+  spareDayParks?: PlanSpareDayPark[];
+}
+
+/** A park the trip's spare days could take, with its cheapest spare days (`spareDayParks`). */
+export interface PlanSpareDayPark {
+  park: string;
+  days: PlanAlternative[];
 }
 
 /**
@@ -671,6 +678,57 @@ export function swapLocks(state: TripPlanState, a: PlanDay, b: PlanDay): PlanLoc
   return [...rest, { target: ta, date: b.date }, { target: tb, date: a.date }].sort((x, y) =>
     x.date.localeCompare(y.date)
   );
+}
+
+// ── Free days ────────────────────────────────────────────────────────────────
+
+/**
+ * Whether a day is free: a rest day the API marks `spare`, which nobody asked for. A rest day the
+ * visitor's rest rule set or pinned stays a rest day.
+ */
+export function isSpareDay(day: Pick<PlanDay, 'kind' | 'spare'>): boolean {
+  return day.kind === 'rest' && day.spare === true;
+}
+
+/** One entry of the Days view: a day, or a run of consecutive free days as one card. */
+export type PlanDayEntry<D extends Pick<PlanDay, 'date' | 'kind' | 'spare'> = PlanDay> =
+  { type: 'day'; day: D } | { type: 'spare'; days: D[] };
+
+/**
+ * A list of days with each run of consecutive free days folded into one entry, in date order. The
+ * days are one stay's, so a run never crosses a hotel change.
+ */
+export function withSpareRuns<D extends Pick<PlanDay, 'date' | 'kind' | 'spare'>>(
+  days: readonly D[]
+): Array<PlanDayEntry<D>> {
+  const out: Array<PlanDayEntry<D>> = [];
+  for (const day of days) {
+    const last = out.at(-1);
+    if (!isSpareDay(day)) out.push({ type: 'day', day });
+    else if (last?.type === 'spare' && addDays(last.days.at(-1)!.date, 1) === day.date)
+      last.days.push(day);
+    else out.push({ type: 'spare', days: [day] });
+  }
+  return out;
+}
+
+/**
+ * Put a park on a free day: the park joins `parks` with one visit more than the plan gives it now
+ * (`planned`, 0 for a park not chosen), and is pinned to `date`, so the re-plan keeps it there and
+ * moves only the rest. `null` where the park already has its most visits.
+ */
+export function addParkOnDate(
+  state: TripPlanState,
+  slug: string,
+  date: string,
+  planned: number,
+  regionOrder: readonly string[],
+  headliners: readonly string[]
+): TripPlanState | null {
+  if (planned >= MAX_VISITS_PER_PARK) return null;
+  const withPark = setParkVisits(state, slug, planned + 1, regionOrder, headliners);
+  const locks = withPark.locks.filter((l) => l.date !== date);
+  return normalizePlanState({ ...withPark, locks: [...locks, { target: slug, date }] });
 }
 
 // ── Into the day planner ─────────────────────────────────────────────────────

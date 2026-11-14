@@ -3270,7 +3270,69 @@
       "failed": "Non è stato possibile caricare il piano.",
       "retry": "Riprova",
       "editParks": "Cambia parchi",
-      "editRoute": "Cambia percorso"
+      "editRoute": "Cambia percorso",
+      "head": {
+        "days": "{count, plural, =1 {1 giorno} other {# giorni}}",
+        "parkDays": "{count, plural, =1 {1 giorno al parco} other {# giorni al parco}}",
+        "freeDays": "{count, plural, =1 {1 giorno libero} other {# giorni liberi}}",
+        "restDays": "{count, plural, =1 {1 giorno di riposo} other {# giorni di riposo}}",
+        "cities": "{count, plural, =1 {1 città} other {# città}}",
+        "routeLabel": "Percorso: {stays}"
+      },
+      "peak": {
+        "title": "Attesa di picco nei tuoi giorni",
+        "saved": "<strong>{saved} min in meno</strong> rispetto alla media dei tuoi giorni di viaggio",
+        "flat": "I tuoi giorni di viaggio sono più o meno ugualmente affollati, l’ordine cambia poco.",
+        "plan": "Il tuo piano",
+        "average": "Media",
+        "error": "± {minutes} min per attrazione e giorno",
+        "unit": "min",
+        "bars": "Il tuo piano {planned} min, media dei tuoi giorni di viaggio {average} min"
+      },
+      "card": {
+        "peak": "Picco <strong>circa {minutes} min</strong>",
+        "fromHotel": "{duration} dall’hotel",
+        "fromHotelTransfer": "{duration} + {transfer} fino all’ingresso",
+        "visit": "Giorno {count}",
+        "runnerMore": "Il {date} sarebbero circa {delta} min in più.",
+        "runnerLess": "Il {date} sarebbero circa {delta} min in meno, ma questo giorno si adatta meglio al resto del piano.",
+        "runnerSame": "Il {date} sarebbe più o meno ugualmente affollato.",
+        "runnerClose": "Il {date} sarebbe più o meno ugualmente affollato. Questo giorno si adatta meglio al resto del piano.",
+        "early": "{name}, ingresso {minutes} min prima",
+        "evening": "Sera: {name} dalle {time}",
+        "streak": "{count}° giorno al parco di fila",
+        "dayTrip": "Gita lunga: {mode} circa {duration} a tratta",
+        "repeat": "Due giorni di fila qui",
+        "noForecast": "Nessuna previsione",
+        "added": "nuovo",
+        "details": "Dettagli",
+        "moveMorning": "Prima il cambio d’hotel, al parco dalle {time}"
+      },
+      "move": {
+        "ride": "{service}, circa {duration}."
+      },
+      "stay": {
+        "hotel": "Hotel: {area}"
+      },
+      "arrivalIn": "Arrivo a {city}",
+      "departureFrom": "Partenza da {city}"
+    },
+    "spare": {
+      "day": "giorno libero",
+      "title": "{date} · giorno libero",
+      "titleIn": "{date} · giorno libero a {city}",
+      "runTitle": "{range} · {count} giorni liberi",
+      "runTitleIn": "{range} · {count} giorni liberi a {city}",
+      "lead": "Qui il piano non ha bisogno di un parco. {count, plural, =1 {Lascialo libero o aggiungine uno:} other {Lasciali liberi o aggiungine uno:}}",
+      "leadNone": "Qui il piano non ha bisogno di un parco.",
+      "more": "{park}, un giorno in più",
+      "at": "{date}: circa {minutes} min",
+      "way": "{mode} {duration}",
+      "walk": "{duration} a piedi",
+      "add": "Aggiungi",
+      "addLabel": "Aggiungi {park} il {date}",
+      "ideas": "idee",
+      "added": "{park} il {date} è ora nel piano."
     },
     "problem": {
       "no_dates": "Scegli le tue date.",
@@ -3324,7 +3386,7 @@
     },
     "views": {
       "label": "Vista",
-      "agenda": "Elenco",
+      "agenda": "Giorni",
       "week": "Settimana",
       "month": "Mese"
     },

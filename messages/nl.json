@@ -3270,7 +3270,69 @@
       "failed": "Het plan kon niet worden geladen.",
       "retry": "Opnieuw proberen",
       "editParks": "Parken wijzigen",
-      "editRoute": "Route wijzigen"
+      "editRoute": "Route wijzigen",
+      "head": {
+        "days": "{count, plural, =1 {1 dag} other {# dagen}}",
+        "parkDays": "{count, plural, =1 {1 parkdag} other {# parkdagen}}",
+        "freeDays": "{count, plural, =1 {1 dag vrij} other {# dagen vrij}}",
+        "restDays": "{count, plural, =1 {1 rustdag} other {# rustdagen}}",
+        "cities": "{count, plural, =1 {1 stad} other {# steden}}",
+        "routeLabel": "Route: {stays}"
+      },
+      "peak": {
+        "title": "Piekwachttijd op je dagen",
+        "saved": "<strong>{saved} min. minder</strong> dan gemiddeld over je reisdagen",
+        "flat": "Je reisdagen zijn ongeveer even druk, de volgorde maakt weinig uit.",
+        "plan": "Je plan",
+        "average": "Gemiddeld",
+        "error": "± {minutes} min. per attractie en dag",
+        "unit": "min.",
+        "bars": "Je plan {planned} min., gemiddelde van je reisdagen {average} min."
+      },
+      "card": {
+        "peak": "Piek <strong>ongeveer {minutes} min.</strong>",
+        "fromHotel": "{duration} vanaf het hotel",
+        "fromHotelTransfer": "{duration} + {transfer} tot de ingang",
+        "visit": "Dag {count}",
+        "runnerMore": "Op {date} zou het ongeveer {delta} min. meer zijn.",
+        "runnerLess": "Op {date} zou het ongeveer {delta} min. minder zijn, maar deze dag past beter bij de rest van het plan.",
+        "runnerSame": "Op {date} zou het ongeveer even druk zijn.",
+        "runnerClose": "Op {date} zou het ongeveer even druk zijn. Deze dag past beter bij de rest van het plan.",
+        "early": "{name}, {minutes} min. eerder naar binnen",
+        "evening": "Avond: {name} vanaf {time}",
+        "streak": "{count}e parkdag op rij",
+        "dayTrip": "Lange dagtocht: {mode} ongeveer {duration} per richting",
+        "repeat": "Twee dagen achter elkaar hier",
+        "noForecast": "Geen voorspelling",
+        "added": "nieuw",
+        "details": "Details",
+        "moveMorning": "Eerst van hotel wisselen, in het park vanaf {time}"
+      },
+      "move": {
+        "ride": "{service}, ongeveer {duration}."
+      },
+      "stay": {
+        "hotel": "Hotel: {area}"
+      },
+      "arrivalIn": "Aankomst in {city}",
+      "departureFrom": "Vertrek uit {city}"
+    },
+    "spare": {
+      "day": "vrije dag",
+      "title": "{date} · vrije dag",
+      "titleIn": "{date} · vrije dag in {city}",
+      "runTitle": "{range} · {count} vrije dagen",
+      "runTitleIn": "{range} · {count} vrije dagen in {city}",
+      "lead": "Hier heeft het plan geen park nodig. {count, plural, =1 {Laat hem vrij of neem er een bij:} other {Laat ze vrij of neem er een bij:}}",
+      "leadNone": "Hier heeft het plan geen park nodig.",
+      "more": "{park}, nog een dag",
+      "at": "{date}: ongeveer {minutes} min.",
+      "way": "{mode} {duration}",
+      "walk": "{duration} lopen",
+      "add": "Erbij",
+      "addLabel": "{park} op {date} erbij nemen",
+      "ideas": "ideeën",
+      "added": "{park} op {date} staat nu in het plan."
     },
     "problem": {
       "no_dates": "Kies je reisdata.",
@@ -3324,7 +3386,7 @@
     },
     "views": {
       "label": "Weergave",
-      "agenda": "Lijst",
+      "agenda": "Dagen",
       "week": "Week",
       "month": "Maand"
     },

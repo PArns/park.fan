@@ -4,6 +4,9 @@ import { useId, type ReactNode } from 'react';
 import { Check, Minus, Plus, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
+/** `lg`, where the planner's panels are drawn inline and the result has its two columns; below it, sheets. */
+export const PLAN_WIDE_QUERY = '(min-width: 64rem)';
+
 /** The planner's focus ring, one string for every control it draws. */
 export const PLAN_FOCUS =
   'focus-visible:ring-ring focus-visible:ring-2 focus-visible:ring-offset-1 focus-visible:outline-none';

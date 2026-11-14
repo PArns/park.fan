@@ -1,5 +1,4 @@
-import { legMinutes } from './hub-data';
-import { findLeg } from './plan';
+import { findLeg, legMinutes } from './hub-data';
 import type { TripBase, TripCalendarDay, TripLeg, TripRegion } from './types';
 
 /**

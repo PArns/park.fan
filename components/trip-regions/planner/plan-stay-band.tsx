@@ -7,15 +7,17 @@ import { formatShortDuration } from '@/lib/utils/duration';
 import { formatClockTime } from '@/lib/utils/intl-format';
 import { formatParkDay, formatParkDayRange } from '@/lib/utils/park-day';
 import {
+  baseLeg,
   moveMinutes,
   stayBandRuns,
   stayHalves,
   type PlanStayRun,
 } from '@/lib/trip-regions/plan-stays';
-import type { PlanDay, PlanMove } from '@/lib/trip-regions/plan';
+import { setBaseNights, tripDates, type PlanDay, type PlanMove } from '@/lib/trip-regions/plan';
+import { weekHalfTracks, type WeekColumn } from '@/lib/trip-regions/plan-week';
 import { usePlanContext } from './plan-context';
-import { PLAN_FOCUS } from './plan-controls';
-import { useBaseName } from './plan-place-words';
+import { PlanStepper } from './plan-controls';
+import { useAreaName, useBaseName } from './plan-place-words';
 
 /**
  * A trip across cities as the views draw it: a stay is a numbered marker and its city on a band in
@@ -90,32 +92,51 @@ export function useMoveWords() {
 }
 
 /**
- * The list view's header of a stay: its marker, its city, its nights and its dates, a hairline to
- * the right.
+ * The Days view's head of a stay: its marker, its city, its dates and the hotel area, the region's
+ * stay note, and its nights as the Route's stepper, so a city gets a night more or less where its
+ * days are read.
  */
 export function PlanStayHeader({ stay }: { stay: PlanStayRun }) {
-  const t = useTranslations('tripPlanner.route');
+  const t = useTranslations('tripPlanner');
   const tRegion = useTranslations('tripRegion.planner');
-  const { locale } = usePlanContext();
+  const { locale, state, update, region, live } = usePlanContext();
   const baseName = useBaseName();
+  const areaName = useAreaName();
+  const city = baseName(stay.base);
   const note = tRegion.has(`stayNote.${stay.base}`) ? tRegion(`stayNote.${stay.base}`) : null;
+  const order = (region.bases ?? []).map((b) => b.key);
+  const nights = Math.max(0, tripDates(state).length - 1);
+  const set = (count: number) =>
+    update((s) => setBaseNights(s, stay.base, Math.max(0, Math.min(nights, count)), order));
   return (
-    <div className="flex flex-col pt-3 pb-1">
-      <div className="flex items-center gap-2" data-plan-stay={stay.base}>
-        <StayMarker number={stay.number} />
-        <span className="text-base font-semibold">{baseName(stay.base)}</span>
-        <span className="text-muted-foreground text-sm">
-          {t('nights', { count: stay.nights })} ·{' '}
-          {formatParkDayRange(locale, stay.from, stay.to, {
-            weekday: 'short',
-            day: 'numeric',
-            month: 'short',
-          })}
-        </span>
-        <span aria-hidden="true" className="bg-border/70 h-px min-w-4 flex-1" />
+    <div className="flex flex-col gap-1 pt-2" data-plan-stay={stay.base}>
+      <div className="flex items-center gap-3">
+        <StayMarker number={stay.number} className="size-7 text-sm" />
+        <div className="flex min-w-0 flex-1 flex-col">
+          <h4 className="text-lg leading-tight font-semibold">{city}</h4>
+          <p className="text-muted-foreground text-xs">
+            {[
+              formatParkDayRange(locale, stay.from, stay.to, { day: 'numeric', month: 'short' }),
+              stay.area ? t('result.stay.hotel', { area: areaName(stay.area) }) : null,
+            ]
+              .filter(Boolean)
+              .join(' · ')}
+          </p>
+        </div>
+        <PlanStepper
+          value={t('route.nights', { count: stay.nights })}
+          valueClassName="w-20"
+          disabled={!live}
+          canDecrement={stay.nights > 0}
+          canIncrement={stay.nights < nights}
+          onDecrement={() => set(stay.nights - 1)}
+          onIncrement={() => set(stay.nights + 1)}
+          decrementLabel={t('route.fewer', { city })}
+          incrementLabel={t('route.more', { city })}
+        />
       </div>
       {note && (
-        <p className="text-muted-foreground flex items-start gap-1.5 pt-0.5 pl-7 text-xs">
+        <p className="text-muted-foreground flex items-start gap-1.5 pl-10 text-xs">
           <BedDouble className="mt-px size-3.5 shrink-0" aria-hidden="true" />
           {note}
         </p>
@@ -125,103 +146,66 @@ export function PlanStayHeader({ stay }: { stay: PlanStayRun }) {
 }
 
 /**
- * The list view's row of a move: the leg's dashed rail where a day's date stands, the mode and its
- * length as a chip, the route and the typical times. It opens the day it belongs to.
+ * The notes of the leg a move takes, in words: the region's own (`moveNote.<code>`) first, else
+ * the shared ones; a note this client has no words for is left out.
  */
-export function PlanMoveRow({
-  day,
-  onOpenDay,
-}: {
-  day: PlanDay;
-  onOpenDay: (date: string) => void;
-}) {
-  const words = useMoveWords();
-  const move = day.move;
-  if (!move) return null;
-  return (
-    <li>
-      <button
-        type="button"
-        onClick={() => onOpenDay(day.date)}
-        aria-label={words.label(day, move)}
-        data-plan-move={move.when}
-        className={cn(
-          'hover:bg-accent/40 flex min-h-11 w-full items-center gap-2 rounded-md py-1 pr-2 text-left text-sm transition-colors',
-          PLAN_FOCUS
-        )}
-      >
-        <span
-          aria-hidden="true"
-          className="border-primary/45 h-9 w-1 shrink-0 border-l-2 border-dashed"
-        />
-        <span
-          aria-hidden="true"
-          className={cn(
-            'inline-flex shrink-0 items-center gap-1 rounded-full border px-2 py-0.5 text-xs tabular-nums',
-            MOVE_INK
-          )}
-        >
-          <MoveIcon mode={move.mode} className="text-primary-ink size-3.5" />
-          {words.mode(move.mode)} · {words.duration(move)}
-        </span>
-        <span aria-hidden="true" className="flex min-w-0 flex-1 flex-col leading-tight">
-          <span className="truncate font-medium">{words.route(move)}</span>
-          <span className="text-muted-foreground truncate text-xs tabular-nums">
-            {words.time(move.departAt)} → {words.time(move.arriveAt)}
-          </span>
-        </span>
-      </button>
-    </li>
-  );
+export function useMoveNotes(): (move: Pick<PlanMove, 'from' | 'to'>) => string[] {
+  const t = useTranslations('tripPlanner.move');
+  const tRegion = useTranslations('tripRegion.planner');
+  const { region } = usePlanContext();
+  return (move) =>
+    (baseLeg(region.baseLegs, move.from, move.to)?.notes ?? []).flatMap((code) =>
+      tRegion.has(`moveNote.${code}`)
+        ? [tRegion(`moveNote.${code}`)]
+        : t.has(`note.${code}`)
+          ? [t(`note.${code}`)]
+          : []
+    );
 }
 
 /**
- * The Week view's stay band, over the day headers and aligned to the columns: two halves a day,
- * the first the city the day starts in, the second the city it ends in, so a stay runs from the
- * second half of its arrival day to the first half of its departure day. Consecutive halves of one
- * city are one rounded run with its marker and city; a run of one half shows the marker alone. It
- * is decoration (`aria-hidden`): each day's label names its city.
+ * The Week view's stay band, over the day headers and on the columns' own grid
+ * (`weekHalfTracks`): two halves a day, the first the city the day starts in, the second the city
+ * it ends in, so a stay runs from the second half of its arrival day to the first half of its
+ * departure day, whatever width a free day's column has. Consecutive halves of one city are one
+ * rounded run with its marker and city; a run of one half shows the marker alone. It is decoration
+ * (`aria-hidden`): each day's label names its city.
  */
 export function PlanStayBand({
-  days,
-  stays,
   columns,
+  stays,
+  empty,
   gapPx,
 }: {
-  /** The page's days, in order. */
-  days: readonly PlanDay[];
+  /** The page's columns, in order. */
+  columns: readonly WeekColumn<PlanDay>[];
   stays: readonly PlanStayRun[];
-  /** The page's columns, which a short last page may not fill. */
-  columns: number;
+  /** Day slots a short last page leaves empty. */
+  empty: number;
   /** The gap between the day columns, in px. */
   gapPx: number;
 }) {
   const baseName = useBaseName();
-  const runs = stayBandRuns(stayHalves(days));
+  const runs = stayBandRuns(stayHalves(columns.flatMap((c) => c.days)));
+  const grid = weekHalfTracks(columns, gapPx, empty);
   const number = (base: string) => stays.find((s) => s.base === base)?.number ?? 0;
-  // A half's left edge on the column grid: whole columns with their gaps, plus half a column.
-  const edge = (half: number) => {
-    const day = Math.floor(half / 2);
-    const col = `((100% - ${(columns - 1) * gapPx}px) / ${columns})`;
-    return `calc(${day} * (${col} + ${gapPx}px) + ${half % 2} * ${col} / 2)`;
-  };
-  const right = (half: number) => {
-    const day = Math.floor((half - 1) / 2);
-    const col = `((100% - ${(columns - 1) * gapPx}px) / ${columns})`;
-    return `calc(${day} * (${col} + ${gapPx}px) + ${((half - 1) % 2) + 1} * ${col} / 2)`;
-  };
   return (
-    <div aria-hidden="true" className="relative h-6" data-plan-stay-band="">
+    <div
+      aria-hidden="true"
+      className="grid h-6"
+      style={{ gridTemplateColumns: grid.template }}
+      data-plan-stay-band=""
+    >
       {runs.map((run) => {
         const n = number(run.base);
         return (
           <span
             key={`${run.base}-${run.start}`}
             className={cn(
-              'absolute inset-y-0 flex min-w-0 items-center gap-1 overflow-hidden rounded-full px-1',
+              'row-start-1 flex min-w-0 items-center gap-1 overflow-hidden rounded-full px-1',
               stayTint(n)
             )}
-            style={{ left: edge(run.start), width: `calc(${right(run.end)} - ${edge(run.start)})` }}
+            style={{ gridColumn: `${grid.starts[run.start]} / ${grid.ends[run.end - 1]}` }}
           >
             <StayMarker number={n} className="size-4 text-[10px]" />
             {run.end - run.start > 1 && (

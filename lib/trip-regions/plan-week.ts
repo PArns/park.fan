@@ -14,10 +14,19 @@ import {
 import type { DaySignal } from '@/lib/utils/day-signal-styles';
 import { getDateTimeFormat } from '@/lib/utils/intl-format';
 import { addDays, daysBetween } from '@/lib/utils/park-day';
-import { earlyPerk } from './plan-copy';
-import type { PlanDay, PlanDayKind, PlanTotals, TripPlan } from './plan';
+import { earlyPerk, runnerUp } from './plan-copy';
+import {
+  withSpareRuns,
+  type PlanDay,
+  type PlanDayKind,
+  type PlanTotals,
+  type TripPlan,
+} from './plan';
+import { MAX_VISITS_PER_PARK } from './plan-query';
 import type {
+  TripBase,
   TripCalendar,
+  TripCrowdLevel,
   TripCalendarDay,
   TripEveningKind,
   TripParkDay,
@@ -646,4 +655,152 @@ export function dateLevel(
     .map((level) => CROWD_LEVEL_ORDER.indexOf(level))
     .sort((a, b) => a - b);
   return ranks.length > 0 ? CROWD_LEVEL_ORDER[ranks[Math.floor((ranks.length - 1) / 2)]] : null;
+}
+
+/**
+ * The runner-up of a park day, both days in the figure the screen shows (`shownWaitOn`), so the
+ * difference is one the reader can check: the day card's second sentence and the sheet's line.
+ * `null` for a hop day and a park without an alternative with a figure.
+ */
+export function dayRunnerUp(
+  day: Pick<PlanDay, 'date' | 'kind' | 'parks' | 'headlinerWait'>,
+  plan: Pick<TripPlan, 'parks'>,
+  calendar: TripCalendar | undefined
+): { date: string; wait: number; delta: number } | null {
+  const first = day.kind === 'park' ? day.parks[0] : undefined;
+  const summary = first ? plan.parks.find((p) => p.slug === first.slug) : undefined;
+  if (!first || !summary) return null;
+  return runnerUp(
+    {
+      alternatives: summary.alternatives.map((alt) => ({
+        ...alt,
+        headlinerWait: shownWaitOn(calendar, first.slug, alt.date, alt.headlinerWait),
+      })),
+    },
+    shownDayWait(day, calendar)
+  );
+}
+
+/** A park a run of free days could take: on which of its days, at what wait, and how often it is planned now. */
+export interface SpareSuggestion {
+  slug: string;
+  date: string;
+  wait: number | undefined;
+  crowdLevel?: TripCrowdLevel;
+  /** The park's visits in the plan now: 0 for a park not chosen, else "one day more". */
+  planned: number;
+}
+
+/**
+ * What a run of free days could take, at most `limit`: first the parks the visitor did not choose
+ * (`spareDayParks`, the API's, reached from the run's base and priced with the way there), on their
+ * cheapest day in the run; then one more day of a planned park the run's base reaches, on its
+ * quietest open day of the run by the calendar, quietest first. A park with its most visits is left
+ * out.
+ */
+export function spareSuggestions(
+  run: readonly Pick<PlanDay, 'date' | 'base'>[],
+  plan: Pick<TripPlan, 'parks' | 'spareDayParks'>,
+  calendar: TripCalendar | undefined,
+  bases: readonly Pick<TripBase, 'key' | 'parks'>[] | undefined,
+  limit = 3
+): SpareSuggestion[] {
+  const dates = new Set(run.map((d) => d.date));
+  const base = bases?.find((b) => b.key === run[0]?.base);
+  const reached = (slug: string) => !base || base.parks.some((p) => p.slug === slug);
+  const fresh = (plan.spareDayParks ?? []).flatMap((sp): SpareSuggestion[] => {
+    const day = sp.days.find((d) => dates.has(d.date));
+    return day
+      ? [
+          {
+            slug: sp.park,
+            date: day.date,
+            wait: shownWaitOn(calendar, sp.park, day.date, day.headlinerWait),
+            crowdLevel: day.crowdLevel,
+            planned: 0,
+          },
+        ]
+      : [];
+  });
+  const more = plan.parks.flatMap((summary): SpareSuggestion[] => {
+    const planned = summary.dates.length;
+    if (planned === 0 || planned >= MAX_VISITS_PER_PARK || !reached(summary.slug)) return [];
+    let best: SpareSuggestion | null = null;
+    for (const date of dates) {
+      const cell = calendarCell(calendar, summary.slug, date);
+      const wait = cell && cell.status !== 'CLOSED' ? shownWait(cell) : undefined;
+      if (wait == null || (best?.wait != null && best.wait <= wait)) continue;
+      best = { slug: summary.slug, date, wait, crowdLevel: cell?.crowdLevel, planned };
+    }
+    return best ? [best] : [];
+  });
+  more.sort((a, b) => (a.wait ?? Infinity) - (b.wait ?? Infinity));
+  return [...fresh, ...more].slice(0, limit);
+}
+
+/** A free day alone in the Week view: a narrow column, no hour grid. */
+export const SPARE_COLUMN_PX = 56;
+/** A run of free days in the Week view: one panel, as wide as one and a half park days. */
+export const SPARE_RUN_SHARE = 1.5;
+
+/** A column of a Week view page: one day, a free day alone (`narrow`) or a run of free days (`run`). */
+export interface WeekColumn<D> {
+  days: D[];
+  width: 'day' | 'narrow' | 'run';
+}
+
+/** A page's days as the Week view's columns: free days lose the hour grid, a run of them is one panel. */
+export function weekColumns<D extends Pick<PlanDay, 'date' | 'kind' | 'spare'>>(
+  days: readonly D[]
+): Array<WeekColumn<D>> {
+  return withSpareRuns(days).map((entry) =>
+    entry.type === 'day'
+      ? { days: [entry.day], width: 'day' }
+      : { days: entry.days, width: entry.days.length > 1 ? 'run' : 'narrow' }
+  );
+}
+
+const fr = (share: number) => `minmax(0,${Math.round(share * 10000) / 10000}fr)`;
+const track = (width: WeekColumn<unknown>['width']) =>
+  width === 'narrow' ? `${SPARE_COLUMN_PX}px` : fr(width === 'run' ? SPARE_RUN_SHARE : 1);
+
+/**
+ * The page's `grid-template-columns`: a park day one share, a free day {@link SPARE_COLUMN_PX}, a
+ * run {@link SPARE_RUN_SHARE} shares, and `empty` day shares after them, so a short last page keeps
+ * the columns of a full one.
+ */
+export function weekTemplate(columns: readonly WeekColumn<unknown>[], empty = 0): string {
+  return [...columns.map((c) => track(c.width)), ...Array(Math.max(0, empty)).fill(fr(1))].join(
+    ' '
+  );
+}
+
+/**
+ * The stay band's grid over the same page: two tracks a day (the halves the band runs on), the
+ * column gaps as tracks of their own, and where each half starts and ends as grid lines, so a stay
+ * runs exactly over its columns whatever their widths.
+ */
+export function weekHalfTracks(
+  columns: readonly WeekColumn<unknown>[],
+  gapPx: number,
+  empty = 0
+): { template: string; starts: number[]; ends: number[] } {
+  const tracks: string[] = [];
+  const starts: number[] = [];
+  const ends: number[] = [];
+  columns.forEach((column, i) => {
+    if (i > 0) tracks.push(`${gapPx}px`);
+    const n = column.days.length;
+    const half =
+      column.width === 'narrow'
+        ? `${SPARE_COLUMN_PX / 2}px`
+        : fr((column.width === 'run' ? SPARE_RUN_SHARE : 1) / n / 2);
+    for (let h = 0; h < n * 2; h++) {
+      tracks.push(half);
+      starts.push(tracks.length);
+      ends.push(tracks.length + 1);
+    }
+  });
+  for (let i = 0; i < empty; i++) tracks.push(`${gapPx}px`, fr(1));
+  return { template: tracks.join(' '), starts, ends };
 }

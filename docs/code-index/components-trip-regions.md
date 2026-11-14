@@ -87,8 +87,8 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`planner/plan-agenda-view.tsx`](../../components/trip-regions/planner/plan-agenda-view.tsx)
 
-- `PlanAgendaView` _component_: The list view, the days once: one row per day with three facts at most, the park, its minutes and one marker (an early close, the hotel's early slot, its evening), and a thin bar in the day's crowd tint.
-- `PlanListRow` _component_: One day of the list view.
+- `PlanAgendaView` _component_: The Days view: each park day as a `PlanDayCard`, each run of free days as one `PlanSpareRun` that offers parks to add, a day that is only a move as a `PlanMoveCard`, and the travel days and rest days the visitor's rule set as one quiet row …
+- Types: `PlanDaySlots`
 
 ### [`planner/plan-calendar-keys.tsx`](../../components/trip-regions/planner/plan-calendar-keys.tsx)
 
@@ -105,14 +105,13 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`planner/plan-controls.tsx`](../../components/trip-regions/planner/plan-controls.tsx)
 
-- `PlanSheetClose` _component_: The × in the head of one of the planner's sheets, a 44 px target.
 - `PlanCheckRow` _component_: A checkbox with its label and an optional line under it, the whole row the target: at least 44 px on a phone, as the planner's sheet requires of every target (docs/features/trip-planner/phone.md).
 - `PlanRadioGroup` _component_: One choice of several, as radio rows: a `fieldset` with its question as the legend, each option a 44 px row with an optional line under it.
 - `PlanSegmented` _component_: A few short choices side by side, one pressed: the planner's segmented control, as the Dates step's „Ich kenne meine Reisedaten | Beste Reisedaten finden“ draws it, 44 px tall on a phone.
 - `PlanStepper` _component_: − value +, with 44 px buttons on a phone and 32 px at a desk. The value is an `<output>`, so a screen reader hears the new count after a press.
 - `PlanChip` _component_: A pill to press, on or off (`aria-pressed`, or `aria-expanded` for one that opens more): the When mode's periods, a ticket's days, its hopper and its variant, and the ticket question's two answers. 44 px on a phone, 36 at a desk.
+- `PLAN_WIDE_QUERY` _const_: `lg`, where the planner's panels are drawn inline and the result has its two columns; below it, sheets.
 - `PLAN_FOCUS` _const_: The planner's focus ring, one string for every control it draws.
-- `PLAN_FIELD` _const_: A select or date field in the planner's panels, 44 px tall like every target in them.
 
 ### [`planner/plan-dates.tsx`](../../components/trip-regions/planner/plan-dates.tsx)
 
@@ -127,6 +126,10 @@ by hand: change the comment in the code and re-run the script. -->
 - `useEveningName` _hook_: The name of a day's evening: the second park's (short) name or the venue's; `null` without an evening or for a venue the region does not list.
 - `useTicketDayLabel` _hook_: A day's place on its owned ticket, "Disney day 2 of 4", or with `short` "day 2 of 4" for the phone's narrow Week columns. An every-day ticket counts the day of its window.
 - `dayGuestClose` _function_: When the day guests leave a park day: the plan's own figure, else the calendar's close.
+
+### [`planner/plan-day-card.tsx`](../../components/trip-regions/planner/plan-day-card.tsx)
+
+- `PlanDayCard` _component_: A park day as a card, the Days view's unit in every region: the park's photo with the date, its crowd level (`CrowdLevelBadge`) and, for a repeat, which visit it is; under it the peak wait, the way from the hotel, two sentences on why this …
 
 ### [`planner/plan-day-sheet.tsx`](../../components/trip-regions/planner/plan-day-sheet.tsx)
 
@@ -144,7 +147,6 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`planner/plan-month-grid.tsx`](../../components/trip-regions/planner/plan-month-grid.tsx)
 
-- `PlanWeekdayHead` _component_: The weekday names over the planner's month grids, Monday first, in the grid's columns.
 - `PlanMonthGrid` _component_: A month of dates to pick from, a month at a time (`lib/planner/month-grid.ts`): the trip's two dates in the Dates step, one date for a ticket's first day.
 - Types: `PlanGridPick`, `PlanGridDay`
 
@@ -152,16 +154,32 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `PlanMonthView` _component_: The Month view: the trip in its calendar, whole weeks from Monday, drawn as a park's crowd calendar (`ParkCalendarDay`, `ParkCalendarLegend`).
 
+### [`planner/plan-move-card.tsx`](../../components/trip-regions/planner/plan-move-card.tsx)
+
+- `PlanMoveCard` _component_: A day that is only the move to the next city (`travel`), as the Days view's card in the move's dashed primary ink: the date and „Reisetag“ with the typical times, the two cities on the line with the mode between them, the service and its …
+
 ### [`planner/plan-options.tsx`](../../components/trip-regions/planner/plan-options.tsx)
 
 - `PlanOptions` _component_: More options: everything the plan can be told beyond dates and parks, each with the default the API plans with already chosen, so nothing here is required.
 - `usePlanOptionsSummary` _hook_: The options' one-line summary ("Disney hotel · resorts together · rest days on busy days"), the defaults included, so the line under "More options" says what the plan assumes without opening it.
+
+### [`planner/plan-parks.tsx`](../../components/trip-regions/planner/plan-parks.tsx)
+
+- `PlanParks` _component_: Which parks: one checkbox each, the headliners by resort and the water parks, SeaWorld's parks and the day trips behind "More parks" with the drive from the hotel area and what their days hold.
+
+### [`planner/plan-peak-card.tsx`](../../components/trip-regions/planner/plan-peak-card.tsx)
+
+- `PlanPeakCard` _component_: The peak wait on the planned days as a card: the figure large, how much less it is than the average of the trip's days (or that the order barely matters), the two as bars in primary blue (never crowd colours, which mean something else), …
 
 ### [`planner/plan-place-words.tsx`](../../components/trip-regions/planner/plan-place-words.tsx)
 
 - `useAreaName` _hook_: A hotel area's name: "Universal-Hotels" in German, where the API says "Universal Orlando hotels".
 - `useBaseName` _hook_: A base's name: "Tokio" in German.
 - `useGatewayName` _hook_: A gateway's short name: "Haneda", "Charles de Gaulle".
+
+### [`planner/plan-result-head.tsx`](../../components/trip-regions/planner/plan-result-head.tsx)
+
+- `PlanResultHead` _component_: The trip's head: its dates as the heading, its figures in one line („17 Tage · 6 Parktage · 8 Tage frei · 2 Städte“; a rest day the visitor's rule set is counted apart from the free ones), and on a trip across cities the route strip: the …
 
 ### [`planner/plan-result.tsx`](../../components/trip-regions/planner/plan-result.tsx)
 
@@ -174,22 +192,24 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`planner/plan-setup.tsx`](../../components/trip-regions/planner/plan-setup.tsx)
 
-- `PLAN_WIDE_QUERY` _const_: `lg`, where the planner's result draws its panels inline; below it the same panels are sheets. The questions themselves are the assistant's (`TripWizard`) at every width.
-- Types: `PlanSetupRoute`
+- `PlanSetup` _component_: Dates and Parks first, the only two things a plan needs, and the parks start chosen: the region's headliners.
+- `PLAN_WIDE_QUERY` _const_
+- Types: `PlanSheetStep`, `PlanSetupRoute`
 
-### [`planner/plan-sheet.tsx`](../../components/trip-regions/planner/plan-sheet.tsx)
+### [`planner/plan-spare-run.tsx`](../../components/trip-regions/planner/plan-spare-run.tsx)
 
-- `PlanSheetContent` _component_: The sheet a press in the answer opens, a day's or a window's: from the right at a desk and from the bottom on a phone, a small line over the title, the planner's own ×, a body that scrolls and an optional foot.
+- `PlanSpareRun` _component_: A run of free days (`spare`, consecutive, in one city) as one card: the dates and how many, the days as small tiles, „Hier braucht der Plan keinen Park“ and up to three parks to add (`spareSuggestions`): a park the visitor did not choose …
+- `PlanSpareSuggestions` _component_: What free days could take, as a list: „Hier braucht der Plan keinen Park“, then each suggestion with the park's photo, its day, its minutes, the way from the city and „Dazu“. The free day's sheet shows the same list for its one date.
 
 ### [`planner/plan-stay-band.tsx`](../../components/trip-regions/planner/plan-stay-band.tsx)
 
 - `StayMarker` _component_: A stay's numbered marker: its place on the route, so colour never carries the stay alone.
 - `MoveIcon` _component_: The icon of a move's mode: a bus, a car, on foot, else a train (the Shinkansen, a line).
-- `PlanStayHeader` _component_: The list view's header of a stay: its marker, its city, its nights and its dates, a hairline to the right.
-- `PlanMoveRow` _component_: The list view's row of a move: the leg's dashed rail where a day's date stands, the mode and its length as a chip, the route and the typical times. It opens the day it belongs to.
-- `PlanStayBand` _component_: The Week view's stay band, over the day headers and aligned to the columns: two halves a day, the first the city the day starts in, the second the city it ends in, so a stay runs from the second half of its arrival day to the first half of …
+- `PlanStayHeader` _component_: The Days view's head of a stay: its marker, its city, its dates and the hotel area, the region's stay note, and its nights as the Route's stepper, so a city gets a night more or less where its days are read.
+- `PlanStayBand` _component_: The Week view's stay band, over the day headers and on the columns' own grid (`weekHalfTracks`): two halves a day, the first the city the day starts in, the second the city it ends in, so a stay runs from the second half of its arrival day …
 - `PlanMonthStayBand` _component_: The Month view's stay band for one date's cell, built here for the Month view to place along the cell's foot: the city slept in, its marker and name where a stay begins (`first`), and on a move day the cell split, the city left on the …
 - `useMoveWords` _hook_: How a move reads: its mode, its length, its times, its route, and the label a reader hears.
+- `useMoveNotes` _hook_: The notes of the leg a move takes, in words: the region's own (`moveNote.<code>`) first, else the shared ones; a note this client has no words for is left out.
 - `stayTint` _function_: A stay's band tint by its number on the route.
 - `MOVE_INK` _const_: A move's ink, the leg chip's: dashed primary border, faint primary ground.
 
@@ -260,49 +280,3 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`trip-region-home-stop.tsx`](../../components/trip-regions/trip-region-home-stop.tsx)
 
 - `TripRegionHomeStop` _component_: The homepage's stop for a trip region's hub: what it is and its link, in the region's own words (`tripRegions.<slug>.homeStory`), beside the region's parks by resort, from the open `/trip-regions/:region` (a day in the Data Cache).
-
-### [`wizard/plan-ribbon.tsx`](../../components/trip-regions/wizard/plan-ribbon.tsx)
-
-- `PlanRibbon` _component_: The plan in one row while the assistant asks: a field per trip day, a park day in its crowd colour with the park's code, a free day empty, a travel day dashed, and under it the plan's park days, free days and peak wait.
-
-### [`wizard/steps/dates-step.tsx`](../../components/trip-regions/wizard/steps/dates-step.tsx)
-
-- `DatesStep` _component_: Step 1, the dates, the one answer the plan needs: the planner's date grid with month chips over it, and "No dates yet? Find the best time" under it.
-
-### [`wizard/steps/finale-step.tsx`](../../components/trip-regions/wizard/steps/finale-step.tsx)
-
-- `FinaleStep` _component_: The finale after the last step, "Your plan is ready": the planned parks as polaroids, the trip in one line (days, park days, cities), the peak wait against the trip's average in the result's own words (`planSavings`), the plan as a ribbon …
-
-### [`wizard/steps/index.tsx`](../../components/trip-regions/wizard/steps/index.tsx)
-
-- `WIZARD_STEP_BODIES` _const_: Each step's body by its key. A step the list has and this registry lacks is left out of the assistant, so a region never shows an empty screen; a new step is a body here and its key in `TRIP_WIZARD_STEPS`.
-
-### [`wizard/steps/parks-step.tsx`](../../components/trip-regions/wizard/steps/parks-step.tsx)
-
-- `ParksStep` _component_: Step 2, the parks: a card per park with its photo, by resort, the headliners chosen to start with.
-
-### [`wizard/steps/spare-days-question.tsx`](../../components/trip-regions/wizard/steps/spare-days-question.tsx)
-
-- `SpareDaysQuestion` _component_: "8 days without a park": asked in the Parks step once a trip has more free days than park days, or more than three in a row (`spareQuestion`), with four answers, each with its effect on the right: more parks (the API's `spareDayParks`), …
-
-### [`wizard/steps/tickets-step.tsx`](../../components/trip-regions/wizard/steps/tickets-step.tsx)
-
-- `TicketsStep` _component_: The last step, "Do you have tickets yet?": two big answers.
-
-### [`wizard/trip-wizard.tsx`](../../components/trip-regions/wizard/trip-wizard.tsx)
-
-- `TripWizard` _component_: The trip planner's assistant: one question a screen, asked by Parky from the region's scene (`WizardGuideBand`), the step rail, the step's cards, and a footer with the plan as a ribbon (`PlanRibbon`) once the trip has dates.
-- `useWizardSteps` _hook_: The assistant's steps for the planner's region and trip (`tripWizardSteps`), only those with a body in `WIZARD_STEP_BODIES`. The list follows the trip's nights, so a Paris weekend's hotel goes into the Route once its dates are chosen.
-- Types: `TripWizardScreen`, `TripWizardAt`
-
-### [`wizard/wizard-guide-band.tsx`](../../components/trip-regions/wizard/wizard-guide-band.tsx)
-
-- `WizardGuideBand` _component_: The assistant's band: the region's Parky scene on the right, always at its own 2 : 1 and fading into the card's ground on its left, so Parky is never cropped at any width; on the left the line over the question (region, dates or step) and …
-
-### [`wizard/wizard-step.tsx`](../../components/trip-regions/wizard/wizard-step.tsx)
-
-- `useWizardAsk` _hook_: Parky's question in the bubble, where a step words it from what it knows: "And when do you fly back?" once the arrival is picked, the cities of the Hotels step, a conflict in Parks.
-- `useWizardFrame` _hook_: The assistant's shared values; only inside `TripWizard`.
-- `WizardAskContext` _const_: The frame's side of `useWizardAsk`: sets the line Parky asks, `null` for the step's own.
-- `WizardFrameContext` _const_: Provides `WizardFrameValue` to the step bodies.
-- Types: `WizardStepProps`, `WizardStepBody`, `WizardFrameValue`, `WizardStepBodies`

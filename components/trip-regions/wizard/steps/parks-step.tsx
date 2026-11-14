@@ -9,7 +9,6 @@ import { addDays, formatParkDay } from '@/lib/utils/park-day';
 import { getListFormat } from '@/lib/utils/intl-format';
 import {
   effectiveParks,
-  findLeg,
   MAX_TRIP_DAYS,
   minimumVisits,
   parkDaysAvailable,
@@ -19,6 +18,7 @@ import {
   tripDates,
   visitSteps,
 } from '@/lib/trip-regions/plan';
+import { findLeg, legMinutes } from '@/lib/trip-regions/hub-data';
 import { parksLeftOut } from '@/lib/trip-regions/plan-copy';
 import { parkCode } from '@/lib/trip-regions/plan-week';
 import { leftOutBucket } from '@/lib/trip-regions/plan-analytics';
@@ -281,7 +281,7 @@ function useParkNote(): (slug: string) => { line: string | null; closed: boolean
     if (status?.kind === 'no_hours') return { closed: false, line: t('parks.noHours') };
     const leg = state.area ? findLeg(region.travel.legs, `hotel:${state.area}`, slug) : null;
     if (leg) {
-      return { closed: false, line: way(leg.mode, leg.minutes + (leg.transferMinutes ?? 0)) };
+      return { closed: false, line: way(leg.mode, legMinutes(leg)) };
     }
     const nearest = (region.bases ?? [])
       .flatMap((base) =>

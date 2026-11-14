@@ -5,8 +5,7 @@ import { useTranslations } from 'next-intl';
 import { cn } from '@/lib/utils';
 import { useMediaQuery } from '@/lib/hooks/use-media-query';
 import { SheetContent, SheetDescription, SheetTitle } from '@/components/ui/sheet';
-import { PlanSheetClose } from './plan-controls';
-import { PLAN_WIDE_QUERY } from './plan-setup';
+import { PLAN_WIDE_QUERY, PlanSheetClose } from './plan-controls';
 
 /**
  * The sheet a press in the answer opens, a day's or a window's: from the right at a desk and from

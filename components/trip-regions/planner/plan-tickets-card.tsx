@@ -52,8 +52,7 @@ import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetDescription, SheetTitle } from '@/components/ui/sheet';
 import { usePlanContext, useTripEvents } from './plan-context';
-import { PLAN_FOCUS } from './plan-controls';
-import { PLAN_WIDE_QUERY } from './plan-setup';
+import { PLAN_FOCUS, PLAN_WIDE_QUERY } from './plan-controls';
 import {
   productName,
   TicketMarketTag,

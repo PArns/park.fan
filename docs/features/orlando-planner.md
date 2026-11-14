@@ -85,45 +85,82 @@ night never makes a date look quiet (`dateFigure`).
   screen, asked by Parky, the dates the only required one, the plan as a ribbon in its footer from
   the departure date on, and a finale. Which steps a region gets, the step bodies, the free-days
   question and the conflict cards: [the trip planner's
-  assistant](trip-planner/wizard.md#the-trip-planners-assistant). Until the Hotel, Tempo and
-  Evenings steps have their own bodies, the interim Tempo step holds the hotel and its area, a park
-  on the travel days, rest days, second park days (the split), evenings, park hopping, Magic
-  Kingdom's fireworks and resort blocks (`PlanOptions`), each with the API's default chosen. The
+  assistant](trip-planner/wizard.md#the-trip-planners-assistant). The
   phone's Back button closes the assistant (`useSheetHistory`), and the address keeps what was
   chosen in it.
 - **Parks** are cards in the assistant's second step, each a checkbox with a stepper that reads
   "1–2" until the visitor sets a number (`visitSteps`: 1 → 1–2 → 2 → 3).
-- **Level 0, the answer.** The dates and what they hold, the parks the trip has no day for (one
-  sentence with three buttons: a park on the travel days, other parks, a longer trip), then the
-  days in the chosen view, and under them one line: the peak wait on the planned days against the
-  average of the trip's days ("Peak wait on your days about 41 min, 6 min less than the average of
-  your trip days."), or that the order barely matters; "How accurate is this?" holds the average
-  and the forecast's measured error. The figure is the peak wait everywhere (Spitzenwartezeit,
-  piekwachttijd, attente de pointe, espera punta, attesa di picco). Then the parks `split=auto`
-  gave a second day, the rules the plan had to loosen, "Change parks" and "More options", and the
-  tickets. On a phone this is the first thing after the dates.
-- **Level 1, the views,** behind Agenda | Week | Month. The choice is the browser's; before one,
-  the Week at `lg` and the Agenda below. At most three facts per element: the park, its minutes and
-  one marker (an early close first, then a rest day, the hotel's early slot, its evening). Last
-  year's figures are no marker and no dashed tile: after the forecast's 60 days every day has
-  them, so the answer says once from which date (`lastYearStart`).
-  - **Week:** up to seven columns a page (three on a phone, by the arrows or a swipe) on one hour
-    axis. Each column is the day planner's own `DayGrid` for that day's hours on the shared canvas,
-    so `PlannerGridGround` draws its band, early slot and hour rules; blocks use the day planner's
-    ink (`planner-block-ink.tsx`). A block runs from opening to the day guests' close, so a short
-    day is visible at once; a party night is hatched after it with its name and "separate ticket".
-    Early Entry is a stripe above the block and Extended Evening Hours one below, only where the
-    chosen hotel gets them. A hop day is two blocks with the leg chip between them; a rest day one
-    calm block. The scale is half the day planner's (`TRIP_WEEK_PX_PER_MIN`).
+- **Level 0, the answer** (`plan-result.tsx`). On a phone, top to bottom: the visitor's answers
+  (the `answers` slot the assistant fills; until it does, „Parks ändern“, „Route ändern“ and „Mehr
+  Optionen“ stand in), the head (`PlanResultHead`: the dates, „17 Tage · 6 Parktage · 8 Tage frei ·
+  2 Städte“, and across cities the route strip with each stay's number, city and nights and the
+  mode of each move), the peak card (`PlanPeakCard`: the peak wait on the planned days large, how
+  much less it is than the average of the trip's days or that the order barely matters, the two as
+  bars in primary blue, never in crowd colours, the forecast's error per ride and day and „Wie
+  genau ist das?“; the figures stay `shownTotals` and `planSavings`), the parks the trip has no day
+  for with their three ways out, the stay suggestion, last year's line once, then the days in the
+  chosen view, the parks the split gave a second day and the notes, the tickets and Keep. At `lg`
+  the answers, the peak card, the tickets and Keep are a sticky column of 340 px on the left and
+  the head and the days take the rest. The figure is the peak wait everywhere (Spitzenwartezeit,
+  piekwachttijd, attente de pointe, espera punta, attesa di picco). The edit bar sits above the
+  answer.
+- **Level 1, the views,** behind Tage | Woche | Monat. The choice is the browser's; before one,
+  the Week at `lg` and the Days below. Last year's figures are no marker and no dashed tile: after
+  the forecast's 60 days every day has them, so the answer says once from which date
+  (`lastYearStart`).
+  - **Days** (the `agenda` view, the default on a phone, `plan-agenda-view.tsx`): a park day is a
+    `PlanDayCard`, one component for every region. Its head is the park's photo (`photos`, else a
+    tinted field with the park's code) with the date, the crowd level (`CrowdLevelBadge`), the park
+    and, for a repeat, „2. Tag“; „fest“ with the lock for a pinned day, „neu“ for a park just put on
+    a free day. Under it the peak wait, the way from the hotel („24 Min. ab Hotel“, the transfer
+    to the gate added), and two sentences on why this day (`dayWhy`): the API's most telling reason
+    (`primaryReason`, `tripPlanner.reason`), then the runner-up day in the card's own figure
+    (`dayRunnerUp`, the sheet's too): „Am So., 13. Dez. wären es etwa 5 Min. mehr.“, or with
+    `runner_up_close` the one sentence „Am Di., 8. Dez. wäre es etwa gleich voll. Dieser Tag passt
+    besser zum Rest des Plans.“ Chips for what changes the day (`cardWarnings`): the hotel's early
+    slot with its minutes, the evening with its start, and in the crowd ink an early close, a day
+    outside its ticket, „5. Parktag am Stück“ (`parkStreakAt`), a long day trip with its mode and
+    length, a back-to-back repeat, no hours, no forecast. A press on the photo or the text opens
+    the sheet. A morning move's park day says „Erst Hotelwechsel, im Park ab 12:15“ on top.
+  - **Free days.** `days[].spare` (API 2.21.1) is a rest day nobody asked for: the planner calls it
+    a free day („freier Tag“, sun), never a rest day; „Ruhetag“ with the bed is only a day the
+    visitor's rest rule set or a pinned one (`isSpareDay`). A run of free days in one city is one
+    `PlanSpareRun` (`withSpareRuns`): „23.–25. Jan. · 3 freie Tage in Tokio“, the days as tiles that
+    open their sheet, „Hier braucht der Plan keinen Park“ and up to three parks to add
+    (`spareSuggestions`): the API's `spareDayParks` first, on their cheapest day of the run, then
+    one more day of a planned park the stay's base reaches, on its quietest open day by the
+    calendar. Each names its day, minutes and the way from the city. „Dazu“ puts the park in
+    `parks` with one visit more than the plan gives it and pins it to that date (`addParkOnDate`),
+    then re-plans; the card turns into a day card with „neu“, the edit bar says „Fuji-Q Highland am
+    Mo., 25. Jan. ist jetzt im Plan.“, and Undo takes back the parks with the pins. The head counts
+    `totals.spareDays` apart from the rule's rest days (`tripCounts`).
+  - **Across cities** a section per stay: its head (`PlanStayHeader`) with the number, city, dates,
+    hotel area, the region's stay note and a nights stepper (`setBaseNights`, the Route's), and a
+    day that is only the move as a `PlanMoveCard` in the move's dashed ink: the typical times,
+    „Osaka ── Zug ── Tokio“, the service, its length, the hotel change's buffer and the leg's notes
+    as chips (`useMoveNotes`, the sheet's too). Arrival, departure and the rule's rest days are one
+    quiet row each. Without bases the cards stand two to a row at a desk.
+  - **Week:** up to seven days a page (three on a phone, by the arrows or a swipe) on one hour
+    axis. Each park column is the day planner's own `DayGrid` for that day's hours on the shared
+    canvas, so `PlannerGridGround` draws its band, early slot and hour rules; blocks use the day
+    planner's ink (`planner-block-ink.tsx`). A block runs from opening to the day guests' close, so
+    a short day is visible at once; a party night is hatched after it with its name and „separate
+    ticket“. Early Entry is a stripe above the block and Extended Evening Hours one below, only
+    where the chosen hotel gets them. A hop day is two blocks with the leg chip between them; a
+    rest day one calm block with its bed. A free day gets no hour grid (`weekColumns`,
+    `weekTemplate`): alone it is a column of 56 px with its sun, „freier Tag · Ideen“ and a plus
+    that opens its sheet; a run is one panel as wide as one and a half park days holding the
+    free-day card. The stay band runs on the same columns (`weekHalfTracks`). The scale is half the
+    day planner's (`TRIP_WEEK_PX_PER_MIN`).
   - **Month:** the trip in its calendar weeks; a day holds the park's two letters in its crowd tint
-    and the minutes, or a bed for a rest day.
-  - **List** (the `agenda` view, the default on a phone): the days once, one row each with the
-    park, its minutes and one marker; a rest day says so once, and a pinned day carries a lock.
+    and the minutes, a sun for a free day, a bed for a rest day.
 - **Level 2, a day's sheet** (bottom sheet on a phone, right panel at a desk): the one-line reason,
   the runner-up day and what it costs, hours with the hotel's perks, why a short day is short and
   how many hours it loses against the park's usual day in the window, the day's events with their
   status, the drive from the hotel area ("without traffic", the OSRM attribution, the TTC leg to
   Magic Kingdom), the weather where a forecast reaches, and the big rides of that day by name.
+  A free day's sheet is titled „freier Tag“ and lists what it could take, with „Dazu“
+  (`PlanSpareSuggestions`).
   The rides come from the day planner's `/plan/day`, asked only when the sheet opens; their minutes
   are left out, because they come from another model than the day's figure and two numbers for
   one wait on one sheet read as one of them wrong. Then Pin, Swap and "Plan this day".
@@ -326,6 +363,7 @@ Each carries `region` besides these. A value is one of the listed, never free te
 | `trip_day_opened`                                                                     | `kind` (arrival, park, hop, rest, departure, travel), `view` (list, agenda, week, month)                                                                                                                                           |
 | `trip_day_pinned`                                                                     | `pinned`                                                                                                                                                                                                                           |
 | `trip_day_swapped`, `trip_day_sent`, `trip_evening_link_clicked`, `trip_link_copied`  | none                                                                                                                                                                                                                               |
+| `trip_spare_filled`                                                                  | `from`: card (the Days view and a free day's sheet), week (the Week view's panel); idea and chat once Parky offers parks                                                                                                           |
 | `trip_days_saved`, `trip_ics_exported`                                                | `days`                                                                                                                                                                                                                             |
 | `trip_ticket_added`                                                                   | `entry`, `resort`, `via` (picker, combo)                                                                                                                                                                                           |
 | `trip_ticket_removed`                                                                 | `entry`, `resort`                                                                                                                                                                                                                  |

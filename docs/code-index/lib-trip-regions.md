@@ -190,11 +190,16 @@ by hand: change the comment in the code and re-run the script. -->
 - `earlyPerk` _function_: The early slot a day's hotel gets, if any, by the region's own name for it.
 - `editCost` _function_: The edit bar's figure: what the visitor's pins cost against the best order the plan had before them, per ride, in whole minutes. `null` without both means; 0 reads as "no cost".
 - `autoSplit` _function_: The parks the split gave a second (or third) day, for the answer's "we added a second day at Magic Kingdom Park". Only entries the API marks `auto` with more than one visit; anything else in `meta.split` is ignored.
+- `dayWhy` _function_: `DayWhy` of a day, from its codes and its runner-up (`runnerUp`, in the shown figure).
+- `cardWarnings` _function_: A day card's warning chips: an early close and a day outside its ticket first (the overview's marker), then the warnings that change the day. Last year's figures, the long range and the move are said elsewhere once.
+- `parkStreakAt` _function_: How many park days in a row end on `date`, that day included: "5th park day in a row".
+- `tripCounts` _function_: The trip's head in figures: its days, its park days, the free days (`spare`) and the rest days the visitor's rule set apart from them. An API before 2.21.1 sends no `spare`: every rest day is then a rest day.
 - `PLAN_REASON_ORDER` _const_: The reasons a park day can carry, most telling first: the one-line reason is the first present.
 - `REST_REASON_ORDER` _const_: A rest day's reasons, most telling first.
 - `PLAN_WARNING_ORDER` _const_: The warnings, most consequential first. `repeat_back_to_back` and `adjacent_repeat` say the same thing (two visits of one park on consecutive days, because nothing else fitted); the API names it either way depending on its version, so both …
 - `EVENING_REASON_ORDER` _const_: Why an evening after the park is worth it, most telling first; the sheet says the first.
-- Types: `PlanReasonCode`, `RestReasonCode`, `ClimateChip`, `EveningReasonCode`, `PlanWarningCode`, `DayMarker`, `UnplacedPark`, `PlanSavings`
+- `RUNNER_UP_CLOSE_MINUTES` _const_: Within this many minutes the runner-up day reads as just as full: the API's `runner_up_close`.
+- Types: `PlanReasonCode`, `RestReasonCode`, `ClimateChip`, `EveningReasonCode`, `PlanWarningCode`, `DayMarker`, `UnplacedPark`, `PlanSavings`, `DayWhy`
 
 ### [`plan-fetch.ts`](../../lib/trip-regions/plan-fetch.ts)
 
@@ -341,13 +346,20 @@ by hand: change the comment in the code and re-run the script. -->
 - `hoursLessThanUsual` _function_: How many hours shorter a park's day is for a day guest than the park's usual day in the calendar window (its median), rounded to whole hours: the figure "about 4 hours less than a usual day here" says.
 - `swapPreview` _function_: The change in big-ride minutes if the park of day `a` traded places with day `b`'s park (or day off): the two parks' shown waits (`shownWait`) on their new days less those on their old ones, so the difference is the one the days on screen …
 - `dateLevel` _function_: A date's tint in the date grid: how busy the region's headliner parks are that day, the median of the crowd levels of those that are open and have one (the lower middle for an even count).
+- `dayRunnerUp` _function_: The runner-up of a park day, both days in the figure the screen shows (`shownWaitOn`), so the difference is one the reader can check: the day card's second sentence and the sheet's line.
+- `spareSuggestions` _function_: What a run of free days could take, at most `limit`: first the parks the visitor did not choose (`spareDayParks`, the API's, reached from the run's base and priced with the way there), on their cheapest day in the run; then one more day of …
+- `weekColumns` _function_: A page's days as the Week view's columns: free days lose the hour grid, a run of them is one panel.
+- `weekTemplate` _function_: The page's `grid-template-columns`: a park day one share, a free day `SPARE_COLUMN_PX`, a run `SPARE_RUN_SHARE` shares, and `empty` day shares after them, so a short last page keeps the columns of a full one.
+- `weekHalfTracks` _function_: The stay band's grid over the same page: two tracks a day (the halves the band runs on), the column gaps as tracks of their own, and where each half starts and ends as grid lines, so a stay runs exactly over its columns whatever their …
 - `TRIP_WEEK_PX_PER_MIN` _const_: The trip overview's scale: half the day planner's, on a phone and off it, so a whole park day fits a screen while a phone keeps the planner's larger step.
 - `TRIP_WEEK_PX_PER_MIN_COARSE` _const_: `TRIP_WEEK_PX_PER_MIN` on a phone.
 - `WEEK_COLUMNS_WIDE` _const_: Days per page of the Week view: a week on a wide screen, three on a phone.
 - `WEEK_COLUMNS_PHONE` _const_: `WEEK_COLUMNS_WIDE` on a phone.
 - `TRIP_FALLBACK_CANVAS` _const_: A canvas for a trip whose calendar has no hours yet: a plain day, so rest days still have room.
 - `TRIP_DAY_SIGNALS` _const_: The signals a trip region's calendar knows: its own school breaks and holidays. It carries no bridge days or neighbouring regions, so the planner's grids key only these two.
-- Types: `TripBlockSpan`, `TripDaySpan`, `TripCanvas`, `DayBandPiece`, `TripMonthCell`, `ParkCodeEntry`, `SwapPreview`
+- `SPARE_COLUMN_PX` _const_: A free day alone in the Week view: a narrow column, no hour grid.
+- `SPARE_RUN_SHARE` _const_: A run of free days in the Week view: one panel, as wide as one and a half park days.
+- Types: `TripBlockSpan`, `TripDaySpan`, `TripCanvas`, `DayBandPiece`, `TripMonthCell`, `ParkCodeEntry`, `SwapPreview`, `SpareSuggestion`, `WeekColumn`
 
 ### [`plan-when.ts`](../../lib/trip-regions/plan-when.ts)
 
@@ -397,11 +409,14 @@ by hand: change the comment in the code and re-run the script. -->
 - `toggleLock` _function_: Pin a day to what it holds now (a park or a rest day), or release its pin.
 - `dayLockTarget` _function_: What a pin of this day names: its park, `rest`, or nothing for a travel or hop day.
 - `swapLocks` _function_: The pins after trading two days' contents: what was on `a` goes to `b` and the other way round, both pinned, so the re-plan keeps the trade and moves only the rest. Pins elsewhere stay.
+- `isSpareDay` _function_: Whether a day is free: a rest day the API marks `spare`, which nobody asked for. A rest day the visitor's rest rule set or pinned stays a rest day.
+- `withSpareRuns` _function_: A list of days with each run of consecutive free days folded into one entry, in date order. The days are one stay's, so a run never crosses a hotel change.
+- `addParkOnDate` _function_: Put a park on a free day: the park joins `parks` with one visit more than the plan gives it now (`planned`, 0 for a park not chosen), and is pinned to `date`, so the re-plan keeps it there and moves only the rest.
 - `plannerParkOf` _function_: The region park as the day planner stores it, or `null` where its path names no geography. It goes in by the name the trip planner calls it ("Islands of Adventure"), so the day planner's list of a trip's days reads as the plan did.
 - `reserveTripDays` _function_: Every park day of the plan as `reserveDays` takes it, a hop day's two parks on one date, each park and date once, in trip order.
 - `setFindMode` _function_: Switch between the two ways in: the visitor knows the dates, or the planner finds them. Finding starts on `range` with the length of the dates chosen so far (or `DEFAULT_FIND_DAYS`); knowing drops the search.
 - `planWindow` _function_: Level 3 of the When mode: plan a found window, which leaves the search for the plan itself.
-- Types: `PlanDayKind`, `PlanMove`, `PlanStay`, `PlanStaySuggestion`, `PlanTravel`, `PlanParkVisit`, `PlanDay`, `PlanHopperDay`, `PlanHopperVerdict`, `PlanOwnedTicket`, `PlanTicketAlternative`, `PlanTicketSuggestion`, `PlanEveningHighlight`, `PlanEvening`, `PlanAlternative`, `PlanParkSummary`, `PlanTotals`, `PlanMeta`, `TripPlan`, `PlanProblem`, `PlanReservePark`
+- Types: `PlanDayKind`, `PlanMove`, `PlanStay`, `PlanStaySuggestion`, `PlanTravel`, `PlanParkVisit`, `PlanDay`, `PlanHopperDay`, `PlanHopperVerdict`, `PlanOwnedTicket`, `PlanTicketAlternative`, `PlanTicketSuggestion`, `PlanEveningHighlight`, `PlanEvening`, `PlanAlternative`, `PlanParkSummary`, `PlanTotals`, `PlanMeta`, `TripPlan`, `PlanSpareDayPark`, `PlanProblem`, `PlanDayEntry`, `PlanReservePark`
 - Re-exports: `./plan-query`
 
 ### [`planner-bridge.ts`](../../lib/trip-regions/planner-bridge.ts)
