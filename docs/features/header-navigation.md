@@ -327,8 +327,10 @@ The sheet's `<nav>` (named by `navigation.mobileNavigation`) and `useSheetReveal
 footer, so the footer's links are in the landmark and slide in with the rows. **The list never
 scrolls sideways**: `overflow-y: auto` makes `overflow-x` auto too and a favorites row bleeds 8 px
 (`-mx-2`), so the list is `-mx-2 px-2 overflow-x-hidden` (verified at 320/360/390 px with three
-parks saved). A tap on a link to the page already showing closes the sheet (`closeOnSamePageTap`);
-a locale switch keeps it open and a modifier click opens a tab without closing it.
+parks saved). A plain tap on one of the sheet's links closes the sheet at once (`closeOnLinkTap`),
+not when the new `pathname` arrives: the Orlando hub renders per request and takes seconds, and the
+open sheet covered the navigation progress bar, so the tap looked dead. A link into another locale
+keeps it open, like the language switch, and a modifier click opens a tab without closing it.
 
 ## Related
 

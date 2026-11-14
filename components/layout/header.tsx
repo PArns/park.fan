@@ -338,15 +338,23 @@ export function Header({
   const latestNews = latestNewsFrom(newsMenu, { excerpt: true });
 
   /*
-   * A tap on a link to the page already showing changes no `pathname`, so that case closes the
-   * sheet here: a plain click on a link in the sheet's own DOM whose path is the current one. A
-   * locale switch keeps it open, and a modifier click still opens a tab.
+   * A plain tap on one of the sheet's own links closes it at once instead of waiting for the new
+   * `pathname`. A server-rendered page such as the Orlando hub takes seconds to arrive, and until
+   * then the open sheet covered the navigation progress bar, so the tap looked dead; a tap on the
+   * page already showing changes no `pathname` at all. A link into another locale keeps the sheet
+   * open, as the language switch does, and a modifier click still opens a tab.
    */
-  const closeOnSamePageTap = (event: React.MouseEvent<HTMLElement>) => {
+  const closeOnLinkTap = (event: React.MouseEvent<HTMLElement>) => {
     const link = (event.target as HTMLElement).closest('a');
     if (!link || !event.currentTarget.contains(link) || link.target === '_blank') return;
-    if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey) return;
-    if (new URL(link.href).pathname === window.location.pathname) setMobileMenuOpen(false);
+    if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) {
+      return;
+    }
+    const url = new URL(link.href);
+    if (url.origin !== window.location.origin) return;
+    const localeOf = (path: string) => path.split('/')[1];
+    if (localeOf(url.pathname) !== localeOf(window.location.pathname)) return;
+    setMobileMenuOpen(false);
   };
 
   useEffect(() => {
@@ -714,7 +722,7 @@ export function Header({
                   ref={sheetRef}
                   className="flex min-h-0 flex-1 flex-col"
                   aria-label={t('mobileNavigation')}
-                  onClick={closeOnSamePageTap}
+                  onClick={closeOnLinkTap}
                   {...linkBlockAttributes('menu_sheet')}
                 >
                   <div
