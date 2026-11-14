@@ -188,6 +188,8 @@ by hand: change the comment in the code and re-run the script. -->
 - `DayHint` _component_: The idea about one day, under its card: Parky's face, the line and the button that applies it.
 - `useShownIdeas` _hook_: Parky's ideas for the plan on screen, as the planner shows them: the API's best single edits (`usePlanIdeas`) less those that would overrule an answer the visitor gave in the assistant (`shownIdeas`).
 - `useIdeaWords` _hook_: An idea in words: its line („DisneySea am Mo., 25. Jan. statt am Fr., 22. Jan.“) and its figure.
+- `useIdeaCard` _hook_: An idea as the chat's card shows it (`AssistantTripIdeaCard`), in the planner's words: its line, its figure and its buttons.
+- `useIdeaCardBridge` _hook_: Lends the chat the planner's words for the ideas Parky offers on his own while this planner is on screen (`tripPlannerBridge.ideaCard`).
 
 ### [`planner/plan-keep.tsx`](../../components/trip-regions/planner/plan-keep.tsx)
 

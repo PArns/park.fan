@@ -60,7 +60,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`assistant-trip-idea.tsx`](../../components/assistant/assistant-trip-idea.tsx)
 
-- `AssistantTripIdeaCard` _component_: The trip plan idea the visitor asked Parky about, under his answer: the idea in one line, what it does in minutes, and its button, which applies it to the planner on screen through the planner's bridge, as the strip over the plan does.
+- `AssistantTripIdeaCard` _component_: A trip plan idea under Parky's answer, the one the visitor asked about or one he offered on his own: the idea in one line, what it does in minutes, and its button, which applies it to the planner on screen through the planner's bridge, as …
 
 ### [`parky-day-interview-button.tsx`](../../components/assistant/parky-day-interview-button.tsx)
 

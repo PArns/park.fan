@@ -474,6 +474,7 @@ Whether a region's hub shows a plan: the hub has two states (docs/features/orlan
 
 - `connectPlannerBridge` _function_: Publish the planner's state and how to set it; returns the disconnect. Called on every change of the state, which also remembers the trip once it holds dates or a search.
 - `connectPlannerSwap` _function_: Connect the result's swap mode for `region`, which the chat's idea card opens through `tripPlannerBridge.openSwap`; returns the disconnect.
+- `connectIdeaCards` _function_: Connect the planner's words for the chat's idea cards for `region`, which `tripPlannerBridge.ideaCard` reads; returns the disconnect.
 - `tripPlannerBridge` _const_: The planner on screen, and how Parky changes it.
 - Types: `PlannerEdits`
 
