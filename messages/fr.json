@@ -464,7 +464,6 @@
       "stayingAt": "Hôtel",
       "minutes": "{minutes} min",
       "noForecast": "ouvert, pas de prévision",
-      "noHours": "Pas encore d’horaires",
       "closedFor": "Fermé : {name}",
       "lastYear": "Valeur de l’an dernier : le même jour de la semaine, tel que nous l’avons mesuré.",
       "outlook": "Tendance : une marge d’erreur plus large que la prévision.",
@@ -472,7 +471,6 @@
       "eveningEvent": "Soirée spéciale",
       "shorterDay": "Journée plus courte : les visiteurs du jour partent à {leave}",
       "extendedEvening": "Extended Evening Hours jusqu’à {time} pour les clients des hôtels deluxe",
-      "expected": "dates attendues",
       "travel": "Depuis {area} : environ {minutes} min {mode, select, drive {en voiture, sans trafic} walk {à pied} train {en train} rail {en train} shinkansen {en shinkansen} metro {en métro} bus {en bus} highway_bus {en car} shuttle {en navette} monorail {en monorail} skyliner {en Skyliner} boat {en bateau} other {}}",
       "bigRides": "Les grandes attractions",
       "ridesLoading": "Chargement des attractions …",
@@ -3217,7 +3215,6 @@
       "until": "jusqu’au {date}",
       "since": "à partir du {date}",
       "wholeMonth": "tout le mois",
-      "expected": "dates attendues",
       "modeLabel": "Meilleur parc",
       "modeAll": "Global",
       "picksLegendAll": "Sous chaque date, le parc à l’attente de pointe la plus courte.",
@@ -3417,7 +3414,6 @@
       "travel": "Jour de trajet"
     },
     "marker": {
-      "closesAt": "ferme à {time}",
       "closesEarly": "ferme plus tôt",
       "early": {
         "early_entry": "Early Entry",

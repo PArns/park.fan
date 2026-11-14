@@ -464,7 +464,6 @@
       "stayingAt": "Hotel",
       "minutes": "{minutes} min",
       "noForecast": "open, no forecast",
-      "noHours": "No hours published yet",
       "closedFor": "Closed: {name}",
       "lastYear": "Last year’s figure: the same weekday, as we measured it.",
       "outlook": "Outlook: a wider error than the forecast.",
@@ -472,7 +471,6 @@
       "eveningEvent": "Evening event",
       "shorterDay": "Shorter day: day guests leave at {leave}",
       "extendedEvening": "Extended Evening Hours until {time} for deluxe hotel guests",
-      "expected": "dates expected",
       "travel": "From {area}: about {minutes} min {mode, select, drive {by car, without traffic} walk {on foot} train {by train} rail {by train} shinkansen {by Shinkansen} metro {by metro} bus {by bus} highway_bus {by coach} shuttle {by shuttle} monorail {by monorail} skyliner {by Skyliner} boat {by boat} other {}}",
       "bigRides": "The big rides",
       "ridesLoading": "Loading the rides …",
@@ -3217,7 +3215,6 @@
       "until": "until {date}",
       "since": "from {date}",
       "wholeMonth": "all month",
-      "expected": "dates expected",
       "modeLabel": "Best park",
       "modeAll": "Overall",
       "picksLegendAll": "Under each date, the park with the shortest peak wait.",
@@ -3417,7 +3414,6 @@
       "travel": "Travel day"
     },
     "marker": {
-      "closesAt": "closes {time}",
       "closesEarly": "closes early",
       "early": {
         "early_entry": "Early Entry",

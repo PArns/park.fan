@@ -40,6 +40,8 @@ export function useDayMarkerText(): (
   calendar: TripCalendar | undefined
 ) => string | null {
   const t = useTranslations('tripPlanner.marker');
+  // „schließt 18:00“ in the hub calendar's words, the same early close on the same day.
+  const tCalendar = useTranslations('tripHub.calendar');
   const { locale, timeZone } = usePlanContext();
   return (day, calendar) => {
     const marker = dayMarker(day);
@@ -47,7 +49,7 @@ export function useDayMarkerText(): (
     if (marker === 'closes') {
       const close = dayGuestClose(day, calendar);
       return close
-        ? t('closesAt', { time: formatClockTime(close, locale, timeZone) })
+        ? tCalendar('cellEarly', { time: formatClockTime(close, locale, timeZone) })
         : t('closesEarly');
     }
     if (marker === 'early') {
