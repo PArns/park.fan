@@ -446,3 +446,67 @@ export interface LiveTraffic {
   /** The fifteen most frequent events of the last 30 minutes. */
   events: { name: string; count: number }[];
 }
+
+/** One entry of a trip planner list: the event's property values and how often they came. */
+export type TripReportRow = Record<string, string | number | null> & { count: number | null };
+
+/** A step of the trip planner's funnel; a rate is null without a base or for a hidden count. */
+export interface TripFunnelStep {
+  step: 'started' | 'requested' | 'shown' | 'changed' | 'tickets' | 'kept';
+  count: number | null;
+  ofStarted: number | null;
+  /** Requested, shown and kept: against the step before. */
+  fromPrevious?: number | null;
+  /** Changed and tickets, which a plan that suits needs neither of: a share of the plans shown. */
+  ofShown?: number | null;
+}
+
+/** One region's planner counts. */
+export interface TripRegionCounts {
+  region: string;
+  started: number | null;
+  requested: number | null;
+  shown: number | null;
+  errors: number | null;
+  kept: number | null;
+  ticketLinks: number | null;
+}
+
+/**
+ * `GET /v1/admin/analytics/trip-planner`: the multi-day trip planner and the region hubs, as the
+ * MCP tool `trip_planner_report` answers it with every count as counted. `head` holds the funnel
+ * and totals, `lists` the breakdowns. Narrow: what the admin page renders.
+ */
+export interface TripPlannerReport {
+  head: AnalyticsWindow & {
+    region: string | null;
+    funnel: TripFunnelStep[];
+    requests: {
+      planRequested: number | null;
+      datesKnown: number | null;
+      datesSearched: number | null;
+    };
+    findDates: {
+      searched: number | null;
+      shown: number | null;
+      windowsPlanned: number | null;
+      plannedPerShown: number | null;
+    };
+    tickets: { removed: number | null; adopted: number | null; longStayUsed: number | null };
+    ticketLinks: { clicks: number | null };
+  };
+  lists: {
+    regions: TripRegionCounts[];
+    started: { sources: TripReportRow[]; via: TripReportRow[] };
+    requests: { mode: TripReportRow[]; days: TripReportRow[]; tickets: TripReportRow[] };
+    answers: { stays: TripReportRow[] };
+    findDates: {
+      periods: TripReportRow[];
+      windowsFound: TripReportRow[];
+      windowRanks: TripReportRow[];
+    };
+    changes: { staySuggestion: TripReportRow[] };
+    tickets: { opened: TripReportRow[]; added: TripReportRow[] };
+    ticketLinks: { bySeller: TripReportRow[]; byProduct: TripReportRow[] };
+  };
+}
