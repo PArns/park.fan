@@ -826,7 +826,8 @@ test('a way into the planner reads in German, and so does a day begun with it sh
 });
 
 test('the ways through the site read in German, a value this build does not know as sent', () => {
-  assert.equal(Object.keys(LINK_BLOCK_LABEL).length, 18);
+  assert.equal(Object.keys(LINK_BLOCK_LABEL).length, 20);
+  assert.equal(propValueLabel('block', 'trip_answer'), 'Antwort im Hub-Kopf');
   assert.equal(propValueLabel('block', 'trip_band'), 'Reiseplaner-Band');
   assert.equal(Object.keys(SECTION_LABEL).length, 7);
   assert.equal(Object.keys(NAV_MENU_LABEL).length, 7);

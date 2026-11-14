@@ -41,6 +41,9 @@ export function tripRegionGuidePath(
 /** The anchor of chapter 01, the calendar, for the park bands and the homepage teaser. */
 export const TRIP_CALENDAR_ID = 'calendar';
 
+/** The anchor of the hub's question on how far and how well the forecast reaches. */
+export const TRIP_ACCURACY_ID = 'faq-accuracy';
+
 /**
  * How many months a hub serves: the current month (the hub itself) and the eleven after it, in the
  * region's time. Past `forecastUntil` a month reads last year's measured days with a banner.

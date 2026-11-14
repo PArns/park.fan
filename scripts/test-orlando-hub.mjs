@@ -35,6 +35,13 @@ import {
 } from '../lib/trip-regions/paths.ts';
 import { tripRegionRedirect } from '../lib/trip-regions/redirects.ts';
 import { flatStretch } from '../lib/trip-regions/best-time.ts';
+import {
+  breakFacts,
+  factDays,
+  isoWeekday,
+  usualHours,
+  weekdayFacts,
+} from '../lib/trip-regions/hub-facts.ts';
 import { TRIP_REGION_CACHE_CONTROL, tripRegionRelayTarget } from '../lib/trip-regions/relay.ts';
 
 const fixture = (name) =>
@@ -316,6 +323,98 @@ test('a flat year is said, a real low is not', () => {
       '2027-01-11'
     ),
     null
+  );
+});
+
+test('a weekday answer needs two days behind each of five weekdays', () => {
+  // The fixture's 14 days give every weekday two days.
+  const facts = weekdayFacts(calendar, region);
+  assert.ok(facts);
+  assert.equal(facts.lastYear, false);
+  assert.ok(facts.quiet.every((w) => w.minutes === facts.quiet[0].minutes));
+  assert.ok(facts.busy[0].minutes >= facts.quiet[0].minutes);
+  assert.equal(facts.flat, facts.busy[0].minutes === facts.quiet[0].minutes);
+  assert.ok(facts.quiet.every((w) => w.minutes % 5 === 0));
+  const week = { ...calendar, days: calendar.days.slice(0, 7) };
+  assert.equal(weekdayFacts(week, region), null);
+  assert.equal(isoWeekday('2026-11-15'), 7);
+  assert.equal(isoWeekday('2026-11-16'), 1);
+});
+
+test('a month past the forecast answers from last year, and says so', () => {
+  const lastYear = {
+    ...calendar,
+    days: calendar.days.map((d) => ({
+      ...d,
+      parks: Object.fromEntries(
+        Object.entries(d.parks).map(([slug, p]) => [
+          slug,
+          { ...p, basis: p.basis === 'none' ? 'none' : 'last_year' },
+        ])
+      ),
+    })),
+  };
+  assert.equal(factDays(lastYear).lastYear, true);
+  assert.equal(factDays(lastYear).days.length, calendar.days.length);
+  assert.equal(factDays(calendar).lastYear, false);
+  assert.equal(weekdayFacts(lastYear, region)?.lastYear, true);
+});
+
+test("each headliner park's usual hours are its most common day guests' hours", () => {
+  const hours = usualHours(calendar, region);
+  const mk = hours.find((h) => h.park.slug === 'magic-kingdom-park');
+  assert.ok(mk);
+  assert.ok(mk.days <= mk.of && mk.days > 0);
+  assert.ok(hours.every((h) => h.park.headliner));
+  const counts = new Map();
+  for (const day of calendar.days) {
+    const own = day.parks['magic-kingdom-park'];
+    if (own?.status !== 'OPERATING' || !own.hoursPublished) continue;
+    const key = `${own.opensAt.slice(11, 16)}-${own.closesAt.slice(11, 16)}`;
+    counts.set(key, (counts.get(key) ?? 0) + 1);
+  }
+  assert.equal(mk.days, Math.max(...counts.values()));
+});
+
+test('school breaks run as named stretches, holidays by name, with the waits on them', () => {
+  const facts = breakFacts(calendar, region);
+  assert.ok(facts);
+  assert.ok(facts.breaks.length > 0);
+  assert.ok(facts.breaks.every((run) => run.name && run.from <= run.to));
+  const none = {
+    ...calendar,
+    days: calendar.days.map((d) => ({ ...d, isSchoolVacation: false, isHoliday: false })),
+  };
+  assert.equal(breakFacts(none, region), null);
+  const holiday = {
+    ...none,
+    days: none.days.map((d, i) =>
+      i === 3 ? { ...d, isHoliday: true, holidays: ['Thanksgiving Day'] } : d
+    ),
+  };
+  assert.deepEqual(breakFacts(holiday, region)?.holidays, [
+    { name: 'Thanksgiving Day', dates: [calendar.days[3].date] },
+  ]);
+  // On a break day the break comes first and the holiday after it.
+  const both = {
+    ...none,
+    days: none.days.map((d, i) =>
+      i >= 2 && i <= 4
+        ? {
+            ...d,
+            isSchoolVacation: true,
+            isHoliday: i === 2,
+            holidays:
+              i === 2 ? ['Winter break (District)', 'New Year’s Day'] : ['Winter break (District)'],
+          }
+        : d
+    ),
+  };
+  const facts2 = breakFacts(both, region);
+  assert.equal(facts2?.breaks[0].name, 'Winter break');
+  assert.deepEqual(
+    facts2?.holidays.map((h) => h.name),
+    ['New Year’s Day']
   );
 });
 

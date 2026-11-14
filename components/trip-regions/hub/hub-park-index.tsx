@@ -1,6 +1,7 @@
 import { getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
 import { cn } from '@/lib/utils';
+import { linkBlockAttributes, linkEntityAttributes } from '@/lib/analytics/internal-link';
 import { parkCalendarHref, regionGroups, shortParkName } from '@/lib/trip-regions/hub-data';
 import type { TripBestDays, TripRegion } from '@/lib/trip-regions/types';
 
@@ -35,7 +36,7 @@ export async function HubParkIndex({
     .filter((park) => (shown ? shown.has(park.slug) : park.headliner));
   if (parks.length === 0) return null;
   return (
-    <nav aria-label={t('label')} className={cn(className)}>
+    <nav aria-label={t('label')} className={cn(className)} {...linkBlockAttributes('trip_parks')}>
       <p className="text-muted-foreground mb-2 text-xs font-medium tracking-wide uppercase">
         {t('label')}
       </p>
@@ -45,6 +46,7 @@ export async function HubParkIndex({
             <Link
               href={parkCalendarHref(park, locale)}
               prefetch={false}
+              {...linkEntityAttributes(park.id)}
               className="text-primary-ink inline-flex min-h-11 items-center font-medium underline-offset-4 hover:underline sm:min-h-8"
             >
               {t('link', { park: shortParkName(park.name) })}

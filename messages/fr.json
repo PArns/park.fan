@@ -516,30 +516,79 @@
       "links": "Le modèle derrière : <fancast>Fancast</fancast>. Tout le reste : <howto>comment fonctionne park.fan</howto>.",
       "title": "Questions fréquentes",
       "quietestOnly": "{resort} : jours les plus calmes {days}.",
+      "lastYearNote": "Pas encore de prévision pour {month}. Les chiffres sont les jours que nous avons mesurés le même mois l’an dernier.",
+      "events": {
+        "q": "Quels événements ont lieu dans les semaines à venir ?",
+        "qMonth": "Quels événements ont lieu en {month} ?",
+        "a": "Dans les semaines à venir : {list}.",
+        "aMonth": "En {month} : {list}.",
+        "party": "{name} ({parks}, {count, plural, =1 {# soirée} other {# soirées}}, billet à part)",
+        "festival": "{name} ({parks}, {dates})",
+        "expected": "{name} ({parks}, dates pas encore confirmées)",
+        "partyNote": "Un soir à billet séparé, le parc ferme plus tôt pour les visiteurs à la journée ; dans le calendrier, ce jour porte un coin."
+      },
+      "weekdays": {
+        "q": "Quel jour de la semaine est le plus calme dans les semaines à venir ?",
+        "qMonth": "Quel jour de la semaine est le plus calme en {month} ?",
+        "a": "{quietCount, plural, =1 {Le plus calme est le {quiet}} other {Les plus calmes sont le {quiet}}}, avec environ {low} min d’attente de pointe, et le plus chargé le {busy}, avec environ {high} min. En moyenne sur {days} jours et {parks, plural, =1 {le grand parc} other {les # grands parcs}}.",
+        "flat": "Aucun jour ne se distingue : chaque jour, l’attente de pointe tourne autour de {minutes} min, en moyenne sur {days} jours et {parks, plural, =1 {le grand parc} other {les # grands parcs}}.",
+        "busyOnly": "{busyCount, plural, =1 {Le plus chargé est le {busy}} other {Les plus chargés sont le {busy}}}, avec environ {high} min d’attente de pointe ; les autres jours sont en dessous, jusqu’à environ {low} min. En moyenne sur {days} jours et {parks, plural, =1 {le grand parc} other {les # grands parcs}}.",
+        "quietOnly": "{quietCount, plural, =1 {Le plus calme est le {quiet}} other {Les plus calmes sont le {quiet}}}, avec environ {low} min d’attente de pointe ; les autres jours sont au-dessus, jusqu’à environ {high} min. En moyenne sur {days} jours et {parks, plural, =1 {le grand parc} other {les # grands parcs}}."
+      },
+      "breaks": {
+        "q": "Y a-t-il des vacances scolaires ou des jours fériés dans les semaines à venir ?",
+        "qMonth": "Y a-t-il des vacances scolaires ou des jours fériés en {month} ?",
+        "holiday": "Jour férié : {name}, {dates}.",
+        "effect": "Pendant les vacances et les jours fériés, l’attente de pointe des grands parcs tourne autour de {on} min, les autres jours autour de {off} min.",
+        "effectSame": "Pendant les vacances et les jours fériés, l’attente de pointe des grands parcs n’est pas plus longue que les autres jours, environ {minutes} min."
+      },
+      "hours": {
+        "q": "Combien de temps les parcs sont-ils ouverts dans les semaines à venir ?",
+        "qMonth": "Combien de temps les parcs sont-ils ouverts en {month} ?",
+        "a": "Les horaires les plus fréquents des grands parcs : {parks}.",
+        "park": "{park} {hours}",
+        "early": "Au moins un grand parc ferme plus tôt que d’habitude pour les visiteurs à la journée {count, plural, =1 {un jour} other {# jours}} sur la période ; dans le calendrier, ce jour porte un coin."
+      },
       "peak": {
         "q": "Qu’est-ce que l’attente de pointe ?",
-        "a": "La plus longue attente de la journée à chaque grande attraction d’un parc, en moyenne sur ces attractions. C’est sur elle que tu compares les parcs. Le matin et le soir, tu attends moins."
+        "a": "Pour chaque grande attraction d’un parc, nous prenons la plus longue attente de la journée et en faisons la moyenne sur ces attractions, arrondie à cinq minutes. C’est sur ce chiffre que tu compares les parcs dans le calendrier, dans la réponse en haut et dans le planificateur. Il vaut pour le moment le plus chargé : juste après l’ouverture et le soir, l’attente est en général plus courte."
       },
       "green": {
         "q": "Pourquoi un parc à l’attente de pointe plus longue peut-il être vert ?",
-        "a": "La couleur compare un jour à un jour ordinaire du même parc. 60 minutes peuvent être calmes pour un parc et 50 chargées pour un autre. Pour comparer deux parcs, lis les minutes."
+        "a": "La couleur compare un jour à un jour ordinaire du même parc, pas aux autres parcs. Le jour ordinaire est le jour d’ouverture médian des dix-huit derniers mois. 60 minutes peuvent être un jour calme pour un grand parc et 50 un jour chargé pour un plus petit. Compare donc deux parcs avec les minutes, et un jour avec son parc avec la couleur."
       },
       "sources": {
         "q": "D’où viennent les chiffres ?",
-        "a": "park.fan enregistre toutes les cinq minutes l’attente affichée de chaque attraction. La prévision apprend de ces mesures, des horaires, des vacances scolaires et de la météo ; les saisons et les fêtes, nous les vérifions à la main."
-      },
-      "horizon": {
-        "q": "Jusqu’où va la prévision, et que veut dire « l’an dernier » ?",
-        "a": "60 jours, puis une tendance avec une erreur plus large jusqu’au {date}. Au-delà, un jour montre le même jour de la semaine l’an dernier, tel que nous l’avons mesuré.",
-        "aNoDate": "60 jours, puis une tendance avec une erreur plus large. Au-delà, un jour montre le même jour de la semaine l’an dernier, tel que nous l’avons mesuré."
+        "a": "park.fan enregistre toutes les cinq minutes l’attente affichée de chaque attraction. La prévision apprend de ces mesures, avec les horaires, les vacances scolaires, les jours fériés et la météo. Les horaires, l’accès anticipé des clients des hôtels et les soirées viennent des calendriers des parcs ; les saisons, les fêtes et les fermetures, nous les vérifions à la main."
       },
       "accuracy": {
-        "q": "Quelle est la précision de la prévision ?",
-        "a": "Plus le jour est lointain, plus l’erreur est grande. Le planificateur l’indique en minutes à chaque plan. Des jours à moins de cinq minutes d’écart se valent."
+        "q": "Jusqu’où va la prévision, et quelle est sa précision ?",
+        "horizon": "La prévision va jusqu’à 60 jours, puis une tendance avec une erreur plus large court jusqu’au {date}. Au-delà, un jour montre le même jour de la semaine l’an dernier, tel que nous l’avons mesuré, avec la mention « l’an dernier ».",
+        "horizonNoDate": "La prévision va jusqu’à 60 jours, puis une tendance avec une erreur plus large prend le relais. Au-delà, un jour montre le même jour de la semaine l’an dernier, tel que nous l’avons mesuré, avec la mention « l’an dernier ».",
+        "figure": "Sur les {days} derniers jours, notre prévision de l’attente de pointe, faite {lead, plural, =1 {un jour} =7 {une semaine} other {# jours}} à l’avance, s’est trompée de {minutes} min en moyenne, mesurée dans {parks} parcs.",
+        "planner": "Plus le jour est lointain, plus l’erreur est grande. C’est la même mesure que « Quelle précision ? » dans le planificateur, qui l’indique pour chaque plan.",
+        "plannerNoFigure": "Plus le jour est lointain, plus l’erreur est grande ; le planificateur l’indique en minutes pour chaque plan, sous « Quelle précision ? ».",
+        "rounding": "Des jours à moins de cinq minutes d’écart se valent."
+      },
+      "parks": {
+        "q": "Quel parc est le plus calme dans les semaines à venir ?",
+        "qMonth": "Quel parc est le plus calme en {month} ?",
+        "a": "En moyenne sur {days} jours : {list}.",
+        "park": "{park} environ {minutes} min"
+      },
+      "closures": {
+        "q": "Des parcs sont-ils fermés dans les semaines à venir ?",
+        "qMonth": "Des parcs sont-ils fermés en {month} ?",
+        "a": "Fermés : {list}.",
+        "run": "{park} ({dates})",
+        "days": "{park} ({count, plural, =1 {# jour} other {# jours}})"
       }
     },
     "question": "Quel parc, quel jour ?",
-    "plan": "Planifier mon voyage"
+    "plan": "Planifier mon voyage",
+    "accuracy": {
+      "line": "Notre prévision de l’attente de pointe, faite {lead, plural, =1 {un jour} =7 {une semaine} other {# jours}} à l’avance, <link>s’est trompée de {minutes} min en moyenne</link> sur les {days} derniers jours."
+    }
   },
   "theme": {
     "light": "Clair",
@@ -4141,7 +4190,8 @@
             "q": "Quand la Californie du Sud est-elle la plus calme dans les semaines à venir ?",
             "qMonth": "Quand la Californie du Sud est-elle la plus calme en {month} ?",
             "resort": "{resort} a son attente de pointe la plus basse le {days}.",
-            "day": "{date} ({park}, environ {minutes} min)"
+            "day": "{date} ({park}, environ {minutes} min)",
+            "dayAlone": "{date} (environ {minutes} min)"
           },
           "party": {
             "q": "Quel parc un soir de fête à California Adventure ?",
@@ -4750,7 +4800,8 @@
             "q": "Quand Disneyland Paris et le Parc Astérix sont-ils les plus calmes dans les semaines à venir ?",
             "qMonth": "Quand Disneyland Paris et le Parc Astérix sont-ils les plus calmes en {month} ?",
             "resort": "{resort} : jours les plus calmes {days}, jours les plus chargés {busy}.",
-            "day": "{date} ({park}, environ {minutes} min)"
+            "day": "{date} ({park}, environ {minutes} min)",
+            "dayAlone": "{date} (environ {minutes} min)"
           },
           "epic": {
             "q": "Le Parc Disneyland est-il plus chargé le week-end ?",

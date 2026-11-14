@@ -2,6 +2,7 @@ import { getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
 import { formatClockTime } from '@/lib/utils/intl-format';
 import { cn } from '@/lib/utils';
+import { linkBlockAttributes, linkEntityAttributes } from '@/lib/analytics/internal-link';
 import {
   closesEarly,
   dayGuestClose,
@@ -69,7 +70,11 @@ export async function HubGlance({
     <span className="tabular-nums">{t('minutes', { minutes: value })}</span>
   );
   return (
-    <dl className={cn(GLANCE_BOX, 'space-y-2 text-base')} data-trip-glance="">
+    <dl
+      className={cn(GLANCE_BOX, 'space-y-2 text-base')}
+      data-trip-glance=""
+      {...linkBlockAttributes('trip_answer')}
+    >
       <div className={ROW}>
         <dt className="text-muted-foreground pt-0.5 text-sm">
           {t.rich('best', {
@@ -86,6 +91,7 @@ export async function HubGlance({
                 prefetch={false}
                 className="text-foreground font-semibold underline-offset-4 hover:underline"
                 aria-label={`${shortGroupName(group.name)}: ${shortParkName(park.name)}`}
+                {...linkEntityAttributes(park.id)}
               >
                 {shortParkName(park.name)}
               </Link>{' '}

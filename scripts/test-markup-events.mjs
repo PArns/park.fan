@@ -13,7 +13,7 @@ globalThis.Element = Object;
 
 const { internalLinkClickOf, linkBlockAttributes, linkEntityAttributes } =
   await import('../lib/analytics/internal-link.ts');
-const { faqOpenedPositionOf, faqPositionAttributes } = await import('../lib/analytics/faq-open.ts');
+const { faqOpenedOf, faqPositionAttributes } = await import('../lib/analytics/faq-open.ts');
 
 const ORIGIN = 'https://park.fan';
 const PARK = '313CA334-C04F-4855-BFD9-C8BEB7A00D98';
@@ -139,11 +139,16 @@ test('only a UUID is an entity', () => {
 
 test('an FAQ row that opens reports its place; a closing row and other details report nothing', () => {
   const row = { ...element('details', faqPositionAttributes(2)), open: true };
-  assert.equal(faqOpenedPositionOf(row), 3);
-  assert.equal(faqOpenedPositionOf({ ...row, open: false }), null);
+  assert.deepEqual(faqOpenedOf(row), { position: 3 });
+  assert.equal(faqOpenedOf({ ...row, open: false }), null);
   const other = { ...element('details'), open: true };
-  assert.equal(faqOpenedPositionOf(other), null);
-  assert.equal(faqOpenedPositionOf(null), null);
+  assert.equal(faqOpenedOf(other), null);
+  assert.equal(faqOpenedOf(null), null);
+});
+
+test('a hub question reports its key beside its place, which moves with the data', () => {
+  const row = { ...element('details', faqPositionAttributes(0, 'accuracy')), open: true };
+  assert.deepEqual(faqOpenedOf(row), { position: 1, key: 'accuracy' });
 });
 
 console.log(`\n${passed} cases passed.`);

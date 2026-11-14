@@ -858,6 +858,18 @@ export const EVENT_INFO: Record<SiteEventName, EventInfo> = {
     label: 'Reiseplaner gestartet',
     when: 'Über den Knopf im Hub-Kopf, den Startknopf des Planers oder einen Link mit einem Plan; wie jedes Ereignis des Reiseplaners mit der Region („orlando“).',
   },
+  trip_hub_action: {
+    label: 'Weg im Hub-Kopf',
+    when: '„Reise planen“ oder „Zum Kalender“ im Kopf eines Hubs oder einer Monatsseite; mit der Seite.',
+  },
+  trip_hub_filter: {
+    label: 'Hub-Kalender gefiltert',
+    when: 'Ein Resort-Chip über dem Hub-Kalender, nur wenn er die Auswahl ändert; mit dem Resort oder „all“.',
+  },
+  trip_accuracy_opened: {
+    label: 'Genauigkeit geöffnet',
+    when: '„Wie genau ist das?“ im Plan oder die Genauigkeitszeile unter dem Hub-Kalender.',
+  },
   trip_tickets_answered: {
     label: 'Ticket-Schritt geöffnet',
     when: '„Schon Tickets? Eintragen“ unter dem Plan, einmal je Browser („Ja“); „Noch nicht“ und übersprungen nur aus der Zeit, als die Tickets der erste Schritt waren.',
@@ -952,7 +964,7 @@ export const EVENT_INFO: Record<SiteEventName, EventInfo> = {
   },
   faq_opened: {
     label: 'FAQ-Frage geöffnet',
-    when: 'Eine Frage eines FAQ wird aufgeklappt; mit ihrem Platz in der Liste, nie mit ihrem Text.',
+    when: 'Eine Frage eines FAQ wird aufgeklappt; mit ihrem Platz in der Liste, im Hub einer Reiseregion auch mit dem Schlüssel der Frage („quietest“, „accuracy“), nie mit ihrem Text.',
   },
   park_links_opened: {
     label: 'Park-Links aufgeklappt',
@@ -1028,6 +1040,8 @@ export const LINK_BLOCK_LABEL: Record<LinkBlock, string> = {
   guide_band: 'Guide-Band im Parkkopf',
   news_band: 'News-Band im Parkkopf',
   trip_band: 'Reiseplaner-Band',
+  trip_answer: 'Antwort im Hub-Kopf',
+  trip_parks: 'Andrang-Kalender je Park im Hub',
   nav: 'Vorheriger, nächster Beitrag',
   related: 'Weiterlesen',
   most_read: 'Meistgelesen',

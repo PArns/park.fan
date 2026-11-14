@@ -678,14 +678,23 @@ export function TouchpointGrid({
  * from the same array it renders, so the markup cannot drift from the page. Not wrapped in a
  * `ChapterPanel`: on these photo-less pages the section band is the chapter's box.
  */
-export function FaqList({ items }: { items: ReadonlyArray<{ question: string; answer: string }> }) {
+export function FaqList({
+  items,
+}: {
+  items: ReadonlyArray<{ question: string; answer: string; id?: string; key?: string }>;
+}) {
   return (
     <>
       <FaqStructuredData items={items} />
       {/* `data-faq-list` is what `pnpm check:landing-pages` looks for beside a `FAQPage`. */}
       <div data-faq-list="">
         <FaqAccordion
-          items={items.map((item) => ({ question: item.question, answer: item.answer }))}
+          items={items.map((item) => ({
+            question: item.question,
+            answer: item.answer,
+            id: item.id,
+            key: item.key,
+          }))}
           padding="flush"
         />
       </div>

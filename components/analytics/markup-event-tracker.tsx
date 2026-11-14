@@ -8,7 +8,7 @@ import {
   OUTBOUND_ENTITY_ATTRIBUTE,
 } from '@/lib/analytics/outbound-link';
 import { internalLinkClickOf } from '@/lib/analytics/internal-link';
-import { faqOpenedPositionOf } from '@/lib/analytics/faq-open';
+import { faqOpenedOf } from '@/lib/analytics/faq-open';
 
 /**
  * Counts what server-rendered markup says about itself, with listeners on the document instead of
@@ -39,8 +39,8 @@ export function MarkupEventTracker() {
     };
     // `toggle` does not bubble, so it is caught on its way down.
     const onToggle = (event: Event) => {
-      const position = faqOpenedPositionOf(event.target);
-      if (position !== null) trackSiteEvent('faq_opened', { position });
+      const opened = faqOpenedOf(event.target);
+      if (opened) trackSiteEvent('faq_opened', opened);
     };
     document.addEventListener('click', onActivate);
     document.addEventListener('auxclick', onActivate);

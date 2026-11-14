@@ -608,6 +608,23 @@ export interface TripWhen {
   seasons: TripSeason[];
 }
 
+/**
+ * How far the region's forecast of the peak wait was off, measured over the last `days` days for
+ * forecasts made `leadDays` ahead (`GET /v1/trip-regions/:region/accuracy`, open). The planner's
+ * „Wie genau ist das?“ uses the same measure.
+ */
+export interface TripForecastAccuracy {
+  days: number;
+  /** The measured days, region-local `YYYY-MM-DD`. */
+  from: string;
+  to: string;
+  leadDays: number;
+  /** The mean absolute error of the peak wait, minutes, unrounded. */
+  maeMinutes: number;
+  parks: number;
+  sampleDays: number;
+}
+
 /** A month of a hub, 1-based, the way the month URLs spell it (`/orlando/2026/12`). */
 export interface TripMonth {
   year: number;

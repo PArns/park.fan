@@ -4,6 +4,7 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { generateAlternateLanguages, isValidLocale, SITE_URL } from '@/i18n/config';
 import { RouteMessages } from '@/i18n/route-messages';
 import { catchNonFatal } from '@/lib/api/client';
+import { withSeedTimeout } from '@/lib/api/seed-timeout';
 import {
   buildOpenGraphMetadata,
   fitWithin,
@@ -20,6 +21,7 @@ import {
 import { TripRegionHubPage } from '@/components/trip-regions/hub/trip-region-hub-page';
 import {
   getTripRegion,
+  getTripRegionAccuracy,
   getTripRegionBestDays,
   getTripRegionCalendar,
   getTripRegionWhen,
@@ -104,6 +106,12 @@ function verdict(
   return getListFormat(locale, { type: 'conjunction' }).format(parts);
 }
 
+/**
+ * How long the hub's accuracy line waits for its figure: an hour in the Data Cache, so only a cold
+ * cache waits at all, and then the line is left out.
+ */
+const ACCURACY_TIMEOUT_MS = 1500;
+
 export async function generateMetadata({
   params,
   searchParams,
@@ -181,6 +189,10 @@ export default async function TripRegionRoute({ params }: TripRegionRouteProps) 
   if (!resolved) notFound();
   const { nowMs, todayIso, current, month, window } = resolved;
 
+  // Started first and read only inside the hub's `<Suspense>`: the calendar never waits for it.
+  const accuracy = month
+    ? Promise.resolve(null)
+    : withSeedTimeout(catchNonFatal(getTripRegionAccuracy(slug)), ACCURACY_TIMEOUT_MS);
   const [t, tRegion] = await Promise.all([
     getTranslations('tripHub'),
     getRegionTranslations(slug, 'hub'),
@@ -242,6 +254,7 @@ export default async function TripRegionRoute({ params }: TripRegionRouteProps) 
         when={when}
         todayIso={todayIso}
         nowMs={nowMs}
+        accuracy={accuracy}
       />
     </RouteMessages>
   );

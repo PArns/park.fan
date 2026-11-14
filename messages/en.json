@@ -516,30 +516,79 @@
       "links": "The model behind it: <fancast>Fancast</fancast>. Everything else: <howto>how park.fan works</howto>.",
       "title": "Frequently asked questions",
       "quietestOnly": "{resort}: quietest {days}.",
+      "lastYearNote": "There is no forecast for {month} yet. The figures are the days we measured in the same month last year.",
+      "events": {
+        "q": "Which events are on in the coming weeks?",
+        "qMonth": "Which events are on in {month}?",
+        "a": "On in the coming weeks: {list}.",
+        "aMonth": "On in {month}: {list}.",
+        "party": "{name} ({parks}, {count, plural, =1 {# night} other {# nights}}, separate ticket)",
+        "festival": "{name} ({parks}, {dates})",
+        "expected": "{name} ({parks}, dates not confirmed yet)",
+        "partyNote": "On a separately ticketed night the park closes early for day guests; in the calendar such a day has a corner."
+      },
+      "weekdays": {
+        "q": "Which weekday is quietest in the coming weeks?",
+        "qMonth": "Which weekday is quietest in {month}?",
+        "a": "{quietCount, plural, =1 {{quiet} is the quietest day} other {{quiet} are the quietest days}}, at about {low} min peak wait, and {busy} the busiest, at about {high} min. Averaged over {days} days and {parks, plural, =1 {the big park} other {the # big parks}}.",
+        "flat": "No weekday stands out: each has a peak wait of about {minutes} min, averaged over {days} days and {parks, plural, =1 {the big park} other {the # big parks}}.",
+        "busyOnly": "{busy} {busyCount, plural, =1 {is the busiest day} other {are the busiest days}}, at about {high} min peak wait; the other days are lower, down to about {low} min. Averaged over {days} days and {parks, plural, =1 {the big park} other {the # big parks}}.",
+        "quietOnly": "{quiet} {quietCount, plural, =1 {is the quietest day} other {are the quietest days}}, at about {low} min peak wait; the other days are higher, up to about {high} min. Averaged over {days} days and {parks, plural, =1 {the big park} other {the # big parks}}."
+      },
+      "breaks": {
+        "q": "Are there school or public holidays in the coming weeks?",
+        "qMonth": "Are there school or public holidays in {month}?",
+        "holiday": "Public holiday: {name}, {dates}.",
+        "effect": "On holiday days the big parks’ peak wait is about {on} min, on the other days about {off} min.",
+        "effectSame": "On holiday days the big parks’ peak wait is no longer than on the other days, about {minutes} min."
+      },
+      "hours": {
+        "q": "How long are the parks open in the coming weeks?",
+        "qMonth": "How long are the parks open in {month}?",
+        "a": "The big parks’ most common hours: {parks}.",
+        "park": "{park} {hours}",
+        "early": "On {count, plural, =1 {# day} other {# days}} at least one big park closes earlier than usual for day guests; in the calendar such a day has a corner."
+      },
       "peak": {
         "q": "What is the peak wait?",
-        "a": "Each big ride’s highest wait of the day, averaged over the park’s big rides. It is the figure you compare parks by. Mornings and evenings are shorter."
+        "a": "For each big ride in a park we take the day’s highest wait and average it over those rides, rounded to five minutes. That one figure is how you compare parks in the calendar, in the answer at the top and in the trip planner. It holds for the busiest time of day: just after opening and in the evening the lines are usually shorter."
       },
       "green": {
         "q": "Why can a park with a longer peak wait be green?",
-        "a": "The colour compares a day with a normal day at the same park. 60 minutes can be quiet for one park and 50 busy for another. To compare two parks, read the minutes."
+        "a": "The colour compares a day with a normal day at the same park, not with other parks. Normal is the park’s median open day over the last 18 months. 60 minutes can be a quiet day for a big park and 50 a busy one for a smaller park. So compare two parks by the minutes, and a day with its own park by the colour."
       },
       "sources": {
         "q": "Where do the figures come from?",
-        "a": "park.fan records every ride’s posted wait every five minutes. The forecast learns from those records, the opening hours, school holidays and the weather; seasons and parties we check by hand."
-      },
-      "horizon": {
-        "q": "How far ahead does the forecast reach, and what does “last year” mean?",
-        "a": "60 days, then an outlook with a wider error to {date}. Past it a day shows the same weekday last year, as we measured it.",
-        "aNoDate": "60 days, then an outlook with a wider error. Past it a day shows the same weekday last year, as we measured it."
+        "a": "park.fan records every ride’s posted wait every five minutes. The forecast learns from those records together with the opening hours, school holidays, public holidays and the weather. Opening hours, early entry for hotel guests and evening events come from the parks’ own calendars; seasons, parties and closures we check by hand."
       },
       "accuracy": {
-        "q": "How accurate is the forecast?",
-        "a": "The further away the day, the larger the error. The trip planner states it in minutes with every plan. Days less than five minutes apart count as equal."
+        "q": "How far ahead does the forecast reach, and how accurate is it?",
+        "horizon": "The forecast reaches 60 days ahead, then an outlook with a wider error runs to {date}. Past that, a day shows the same weekday last year as we measured it, marked “last year”.",
+        "horizonNoDate": "The forecast reaches 60 days ahead, then an outlook with a wider error takes over. Past that, a day shows the same weekday last year as we measured it, marked “last year”.",
+        "figure": "Over the last {days} days our forecast of the peak wait, made {lead, plural, =1 {a day} =7 {a week} other {# days}} ahead, was off by {minutes} min on average, measured across {parks} parks.",
+        "planner": "The further away the day, the larger the error. It is the same measure as “How accurate is this?” in the trip planner, which states it with every plan.",
+        "plannerNoFigure": "The further away the day, the larger the error; the trip planner states it in minutes with every plan, under “How accurate is this?”.",
+        "rounding": "Days less than five minutes apart count as equal."
+      },
+      "parks": {
+        "q": "Which park is quietest in the coming weeks?",
+        "qMonth": "Which park is quietest in {month}?",
+        "a": "Averaged over {days} days: {list}.",
+        "park": "{park} about {minutes} min"
+      },
+      "closures": {
+        "q": "Are any parks closed in the coming weeks?",
+        "qMonth": "Are any parks closed in {month}?",
+        "a": "Closed: {list}.",
+        "run": "{park} ({dates})",
+        "days": "{park} ({count, plural, =1 {# day} other {# days}})"
       }
     },
     "question": "Which park on which day?",
-    "plan": "Plan my trip"
+    "plan": "Plan my trip",
+    "accuracy": {
+      "line": "Our forecast of the peak wait, made {lead, plural, =1 {a day} =7 {a week} other {# days}} ahead, was <link>off by {minutes} min on average</link> over the last {days} days."
+    }
   },
   "theme": {
     "light": "Light",
@@ -4141,7 +4190,8 @@
             "q": "When is Southern California least crowded in the next few weeks?",
             "qMonth": "When is Southern California least crowded in {month}?",
             "resort": "{resort} has its lowest peak wait on {days}.",
-            "day": "{date} ({park}, about {minutes} min)"
+            "day": "{date} ({park}, about {minutes} min)",
+            "dayAlone": "{date} (about {minutes} min)"
           },
           "party": {
             "q": "Which park on a California Adventure party night?",
@@ -4750,7 +4800,8 @@
             "q": "When are Disneyland Paris and Parc Astérix quietest in the next few weeks?",
             "qMonth": "When are Disneyland Paris and Parc Astérix quietest in {month}?",
             "resort": "{resort}: quietest {days}, busiest {busy}.",
-            "day": "{date} ({park}, about {minutes} min)"
+            "day": "{date} ({park}, about {minutes} min)",
+            "dayAlone": "{date} (about {minutes} min)"
           },
           "epic": {
             "q": "Is Disneyland Park busier at weekends?",

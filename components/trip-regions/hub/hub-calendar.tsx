@@ -32,6 +32,7 @@ import {
   type EventLane,
   type RegionGroup,
 } from '@/lib/trip-regions/hub-data';
+import { trackTripEvent } from '@/lib/trip-regions/plan-analytics';
 import { tripRegionRelayUrl } from '@/lib/trip-regions/paths';
 import { requireTripRegion } from '@/lib/trip-regions/registry';
 import type {
@@ -197,6 +198,12 @@ export function HubCalendar({
     [groups, deferredOnly]
   );
   const listDays = expanded ? calendar.days : calendar.days.slice(0, HUB_FIRST_DAYS);
+  // A chip that changes the selection counts; pressing the one already chosen does not.
+  const filter = (next: string | null) => {
+    if (next === only) return;
+    setOnly(next);
+    trackTripEvent(region.slug, 'trip_hub_filter', { resort: next ?? 'all' });
+  };
   const sheetDay = calendar.days.find((d) => d.date === openDate) ?? null;
 
   return (
@@ -207,14 +214,14 @@ export function HubCalendar({
         aria-label={t('filterLabel')}
         className="-mr-4 flex [scrollbar-width:none] items-center gap-2 overflow-x-auto pr-4 sm:mr-0 sm:flex-wrap sm:overflow-visible sm:pr-0"
       >
-        <FilterChip pressed={only === null} onClick={() => setOnly(null)}>
+        <FilterChip pressed={only === null} onClick={() => filter(null)}>
           {t('filterAll')}
         </FilterChip>
         {groups.map((group) => (
           <FilterChip
             key={group.key}
             pressed={only === group.key}
-            onClick={() => setOnly(only === group.key ? null : group.key)}
+            onClick={() => filter(only === group.key ? null : group.key)}
           >
             {shortGroupName(group.name)}
           </FilterChip>

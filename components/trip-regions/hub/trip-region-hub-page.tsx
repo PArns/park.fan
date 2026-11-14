@@ -1,9 +1,7 @@
+import { Suspense } from 'react';
 import { getTranslations } from 'next-intl/server';
-import { CalendarDays, CalendarPlus, HelpCircle, Sun } from 'lucide-react';
-import { Link } from '@/i18n/navigation';
-import type { Locale } from '@/i18n/config';
+import { CalendarDays, CalendarPlus, Sun } from 'lucide-react';
 import { ChapterHeading } from '@/components/common/chapter-heading';
-import { buttonLinkProps } from '@/components/ui/button';
 import {
   HERO_FLOW_INTO_PULL,
   LandingHero,
@@ -12,7 +10,6 @@ import {
 import { getMediaImageBySrc } from '@/lib/media';
 import { getMediaAlt } from '@/lib/media/text';
 import { versionedSrc } from '@/lib/media/focus';
-import { HOWTO_SEGMENTS } from '@/lib/howto/segments';
 import { cn } from '@/lib/utils';
 import {
   dayBasis,
@@ -39,9 +36,11 @@ import type {
   TripMonth,
   TripBestDays,
   TripCalendar,
+  TripForecastAccuracy,
   TripRegion,
   TripWhen,
 } from '@/lib/trip-regions/types';
+import { HubAccuracy } from './hub-accuracy';
 import { HubCalendar } from './hub-calendar';
 import { HubFaq } from './hub-faq';
 import { HubGlance, MonthGlance } from './hub-glance';
@@ -50,7 +49,7 @@ import { HubMonthIndex } from './hub-month-index';
 import { HubParkIndex } from './hub-park-index';
 import { PlannerChapterSlot } from './planner-chapter-slot';
 import { HubWhen } from './hub-when';
-import { HubHeroAction } from './hub-hero-action';
+import { HubCalendarAction, HubHeroAction } from './hub-hero-action';
 
 /**
  * The hero photo: the first of the region's `hub.heroPhotos` the media database still has, with
@@ -82,6 +81,11 @@ export interface TripRegionHubPageProps {
   /** The region's today and the render's clock, for the first answer. */
   todayIso: string;
   nowMs: number;
+  /**
+   * The forecast's measured error, a read the route started and bounded; the hub awaits it only
+   * inside `<Suspense>`. A month page passes `null`: the figure is the region's, not the month's.
+   */
+  accuracy: Promise<TripForecastAccuracy | null>;
 }
 
 /**
@@ -104,6 +108,7 @@ export async function TripRegionHubPage({
   when,
   todayIso,
   nowMs,
+  accuracy,
 }: TripRegionHubPageProps) {
   const t = await getTranslations('tripHub');
   const tRegion = await getRegionTranslations(region.slug, 'hub');
@@ -146,21 +151,23 @@ export async function TripRegionHubPage({
   );
   // The two ways in, the same size: plan a trip, or read the calendar. Only the first is the
   // head's one primary action (`data-landing-action`).
+  const page = month ? 'month' : 'hub';
   const actions = (
     <div className="flex flex-col gap-3 sm:flex-row">
-      <HubHeroAction href={planHref} label={t('plan')} className="max-sm:w-full" />
-      <Link
+      <HubHeroAction
+        href={planHref}
+        label={t('plan')}
+        region={region.slug}
+        page={page}
+        className="max-sm:w-full"
+      />
+      <HubCalendarAction
         href={`${pagePath}#${TRIP_CALENDAR_ID}`}
-        {...buttonLinkProps({
-          variant: 'outline',
-          size: 'lg',
-          withIcon: true,
-          className: 'max-sm:w-full',
-        })}
-      >
-        <CalendarDays aria-hidden />
-        {t('toCalendar')}
-      </Link>
+        label={t('toCalendar')}
+        region={region.slug}
+        page={page}
+        className="max-sm:w-full"
+      />
     </div>
   );
 
@@ -259,6 +266,9 @@ export async function TripRegionHubPage({
             {sources && (
               <p className="text-muted-foreground mt-4 text-xs leading-relaxed">{sources}</p>
             )}
+            <Suspense fallback={null}>
+              <HubAccuracy region={region.slug} accuracy={accuracy} />
+            </Suspense>
             <HubMonthIndex
               region={region.slug}
               current={current}
@@ -290,38 +300,19 @@ export async function TripRegionHubPage({
             </section>
           )}
 
-          <section className="scroll-mt-24" id="faq">
-            <ChapterHeading
-              index={whenTitle ? '04' : '03'}
-              icon={HelpCircle}
-              title={ownWords(tRegion, 'faq.title') ?? t('faq.title')}
-            />
+          {/* The questions wait for the measured error, bounded; the page above never does. */}
+          <Suspense fallback={null}>
             <HubFaq
+              index={whenTitle ? '04' : '03'}
               region={region}
               calendar={calendar}
               summaries={summaries}
               monthLabel={monthLabel}
               forecastUntil={forecastUntil}
+              accuracy={accuracy}
               locale={locale}
             />
-            <p className="mt-6 text-sm">
-              {t.rich('faq.links', {
-                fancast: (chunks) => (
-                  <Link href="/fancast" className="text-primary-ink underline underline-offset-4">
-                    {chunks}
-                  </Link>
-                ),
-                howto: (chunks) => (
-                  <Link
-                    href={`/${HOWTO_SEGMENTS[locale as Locale] ?? HOWTO_SEGMENTS.en}`}
-                    className="text-primary-ink underline underline-offset-4"
-                  >
-                    {chunks}
-                  </Link>
-                ),
-              })}
-            </p>
-          </section>
+          </Suspense>
         </div>
       </div>
 

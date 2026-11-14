@@ -392,12 +392,21 @@ export interface SiteEventMap {
   section_seen: { section: SeenSection };
   /** A header menu band or the phone menu opened, hover included; once per opening. */
   nav_menu_opened: { menu: NavMenuId };
-  /** A question of an FAQ opened; `position` is its 1-based place in the list. */
-  faq_opened: { position: number };
+  /**
+   * A question of an FAQ opened; `position` is its 1-based place in the list, and `key`, where the
+   * list's questions depend on the data (a trip region's hub), the question's message key.
+   */
+  faq_opened: { position: number; key?: string };
   /** The „Mehr" flyout of a park's title card opened, with the park's outbound links. */
   park_links_opened: NoProps;
   /** The trip planner started: the hub's hero, its own start button, or a link with a plan. */
   trip_planner_started: TripEvent<{ source: 'hero' | 'button' | 'link' }>;
+  /** One of the hub head's two ways in pressed: plan the trip, or go to the calendar. */
+  trip_hub_action: TripEvent<{ action: 'plan' | 'calendar'; page: 'hub' | 'month' }>;
+  /** The hub calendar narrowed to one resort (its group key) or back to all; on a change only. */
+  trip_hub_filter: TripEvent<{ resort: string }>;
+  /** The forecast's accuracy opened: the plan's „Wie genau ist das?“ or the hub's line. */
+  trip_accuracy_opened: TripEvent<{ surface: 'plan' | 'hub' }>;
   /** "Do you already have tickets?" answered; `skipped` is "Next: dates" without an answer. */
   trip_tickets_answered: TripEvent<{ answer: 'not_yet' | 'yes' | 'skipped' }>;
   /** A ticket chosen in the step, by its entry in the list, from the list or the Combo Ticket. */
