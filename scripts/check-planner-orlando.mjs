@@ -84,8 +84,17 @@ export async function checkOrlandoTickets({ browser, base, check }) {
       name
     );
   };
-  const startTrip = (page) =>
-    page.locator('[data-trip-planner] > button', { hasText: 'Plan my trip' }).click();
+  /**
+   * „Plan my trip“ in the hub's head: the planner's own button is hidden while the hub shows
+   * chapter 01. Pressed before the head has hydrated it only follows its `#planner`, so again.
+   */
+  const startTrip = async (page) => {
+    const wizard = page.locator(WIZARD);
+    for (let i = 0; i < 4 && !(await wizard.count()); i++) {
+      await page.locator('a[data-landing-action]', { hasText: 'Plan my trip' }).first().click();
+      await wizard.waitFor({ timeout: 5000 }).catch(() => {});
+    }
+  };
   /** The assistant's „Step 2 of 6“, which its dialog is described by. */
   const wizardStep = (page) =>
     page.locator(`${WIZARD} [data-slot="dialog-description"]`).innerText();
@@ -130,7 +139,7 @@ export async function checkOrlandoTickets({ browser, base, check }) {
     const started = await events(page, 'trip_planner_started');
     check(
       'Orlando · Ereignis trip_planner_started mit Region und Quelle des Starts',
-      started.length === 1 && started[0].source === 'button' && started[0].region === 'orlando',
+      started.length === 1 && started[0].source === 'hero' && started[0].region === 'orlando',
       JSON.stringify(started)
     );
     await page.keyboard.press('Escape');
