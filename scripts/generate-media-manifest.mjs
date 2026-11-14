@@ -306,6 +306,9 @@ async function build() {
       order: sidecar.order,
       gps: sidecar.gps ?? gps,
       focus: sidecar.focus,
+      // Left out when unset, like `collections`. Not part of the content version either: it
+      // moves a CSS `object-position` in the page and cuts no crop, so no cached file goes stale.
+      ...(sidecar.bannerFocus ? { bannerFocus: sidecar.bannerFocus } : {}),
       // Not part of the content version: clearing the flag changes nothing about
       // the pixels or the framing, so a review pass must not invalidate every
       // cached rendition of the photo it signs off.

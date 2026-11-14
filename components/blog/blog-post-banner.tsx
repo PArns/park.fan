@@ -5,17 +5,18 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Link } from '@/i18n/navigation';
 import { BLOG_TOP_ID } from '@/lib/blog/toc';
 import { resolveAuthor } from '@/lib/blog/authors';
-import { objectPositionForSrc, versionedPath } from '@/lib/media/focus';
+import { versionedPath } from '@/lib/media/focus';
 import { isOwnPhotoAuthor } from '@/lib/media/credit';
 import { PhotoCredit } from '@/components/media/photo-credit';
 import { BlogCoverFallback } from '@/components/blog/blog-cover-fallback';
-import { HERO_CREDIT_POSITION } from '@/components/marketing/editorial-ui';
+import { HERO_CREDIT_POSITION, heroPhotoFraming } from '@/components/marketing/editorial-ui';
 import { HeadKicker } from '@/components/common/head-kicker';
 import { MostReadBadge } from '@/components/blog/most-read-badge';
 import { isNewsCategory } from '@/lib/blog/paths';
 import type { Locale } from '@/i18n/config';
 import type { BlogPost } from '@/lib/blog/types';
 import { avatarUrl } from '@/lib/utils/image-loader';
+import { cn } from '@/lib/utils';
 
 interface BlogPostBannerProps {
   post: BlogPost;
@@ -41,6 +42,7 @@ export function BlogPostBanner({ post, currentLocale, kicker }: BlogPostBannerPr
     frontmatter.coverImage?.src && !/\.svg(\?|$)/i.test(frontmatter.coverImage.src)
       ? versionedPath(frontmatter.coverImage.src)
       : null;
+  const framing = cover ? heroPhotoFraming(cover) : null;
   const coverAlt = frontmatter.coverImage?.alt ?? frontmatter.title;
   // The frontmatter credit is free text, so it is checked against the same own names
   // `needsAttribution()` uses. Without one, `PhotoCredit` falls back to the cover's sidecar.
@@ -70,7 +72,7 @@ export function BlogPostBanner({ post, currentLocale, kicker }: BlogPostBannerPr
     <header className="relative isolate -mt-12 flex min-h-[58vh] items-start overflow-hidden sm:min-h-[66vh] sm:items-end">
       {/* `quality={60}` on the cover: it is the LCP element, full-bleed under a tint and a
           headline, as in `LandingHero` (components/marketing/editorial-ui.tsx). */}
-      {cover ? (
+      {cover && framing ? (
         <Image
           src={cover}
           alt={coverAlt}
@@ -78,8 +80,8 @@ export function BlogPostBanner({ post, currentLocale, kicker }: BlogPostBannerPr
           priority
           quality={60}
           sizes="100vw"
-          className="object-cover"
-          style={{ objectPosition: objectPositionForSrc(cover, '50% 50%') }}
+          className={cn('object-cover', framing.className)}
+          style={framing.style}
         />
       ) : (
         <BlogCoverFallback slug={post.slug} mark="side" />

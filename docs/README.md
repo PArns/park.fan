@@ -125,7 +125,7 @@ The frontend side of each API surface; the contract itself is linked from each p
 
 - [writing/](writing/README.md) — Writing rules start page: §0 strong vs weak tells, §0.1 humour and length floors, chapters per task, map
 - [content/blog/README](../content/blog/README.md) — Blog authoring: files and slugs, frontmatter, ref: links, tags, widget fences, embeds, callouts, quotes
-- [public/media/README](../public/media/README.md) — Media authoring contract: file layout, sidecar fields, roles, alsoRides, focus, credit, review, tags
+- [public/media/README](../public/media/README.md) — Media authoring contract: file layout, sidecar fields, roles, alsoRides, focus, bannerFocus, credit, review, tags
 - [BRAND](../BRAND.md) — Brand context for the blog skills: audience, positioning, competitors, scope; links into the writing rules
 - [VOICE](../VOICE.md) — Voice settings for the blog skills: pronouns, headlines, fingerprint, readability; links into the rules
 

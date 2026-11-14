@@ -5,7 +5,8 @@ galleries, diagrams. This page covers the read side: the modules that query it, 
 generates, how it is cached, the HTTP API and the export for the native app. Open it before
 importing from `@/lib/media*` or touching `scripts/generate-media-manifest.mjs`.
 
-- Authoring contract (sidecar fields, roles, tags, focus, `alsoRides`, `review`, naming):
+- Authoring contract (sidecar fields, roles, tags, focus, `bannerFocus`, `alsoRides`, `review`,
+  naming):
   [`public/media/README.md`](../../public/media/README.md)
 - How the admin, the capture screen, contributions and the blog editor write to it, and the GitHub
   token saving needs: [writing to the media database](media-database-writes.md)
@@ -97,6 +98,14 @@ client-rendered grids (`/api/parks/[...path]`, `/api/nearby`,
 ```sh
 grep -l "avatar-flight-of-passage/01-hoehlen" .next/static/chunks/*.js   # must be empty
 ```
+
+The two full-bleed heads with text over the photo, `LandingHero` and `BlogPostBanner`, take their
+framing from `heroPhotoFraming(src)` (`components/marketing/editorial-ui.tsx`), which reads
+`bannerObjectPositions(src)`: the sidecar's `bannerFocus` below `sm`, `focus` from `sm` up. Both
+positions are custom properties on the image's `style` (`--focus-narrow`, `--focus-wide`) and a
+`max-sm:` class picks one, so the server's HTML is already framed for every width and nothing
+re-renders on the client. Only the full manifest carries `bannerFocus`, and only on the rows that
+set it; the client-safe slices do not, since neither head runs on the client.
 
 A **pre-cut crop** (`…-16x9.jpg`) answers as the image it was cut from (same credit, same content
 version) but gets `50% 50%`, not the focal point: the crop was already cut around that point, and

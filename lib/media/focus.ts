@@ -32,6 +32,24 @@ export function objectPositionForSrc(
   return image?.focus ? focusToObjectPosition(image.focus) : fallback;
 }
 
+/**
+ * The two `object-position`s of a full-bleed head with its headline, excerpt and byline over the
+ * photo: `narrow` below `sm`, where that text covers most of the picture, and `wide` from `sm` up,
+ * where it keeps to the left. `narrow` is the sidecar's `bannerFocus` (an image whose subject would
+ * sit under the text there), else the same as `wide`. A pre-cut crop has no `bannerFocus`: it was
+ * cut around `focus`, so a point on the source would land somewhere else in it.
+ *
+ * Server-side only, like {@link objectPositionForSrc}.
+ */
+export function bannerObjectPositions(
+  src: string | null | undefined,
+  fallback: string = '50% 50%'
+): { narrow: string; wide: string } {
+  const wide = objectPositionForSrc(src, fallback);
+  const banner = src ? getMediaImageBySrc(src)?.bannerFocus : undefined;
+  return { narrow: banner ? focusToObjectPosition(banner) : wide, wide };
+}
+
 /** `…-16x9.jpg` / `-4x3` / `-1x1` — a build-time rendition, not a source image. */
 const PRE_CUT_CROP = /-(?:16x9|4x3|1x1)\.[a-z0-9]+$/i;
 
