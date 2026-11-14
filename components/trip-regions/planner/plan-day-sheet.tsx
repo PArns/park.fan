@@ -40,6 +40,9 @@ import {
   daySeasons,
   hoursLessThanUsual,
   partySeason,
+  planTimeMinute,
+  shownDayWait,
+  shownWaitOn,
   swapPreview,
 } from '@/lib/trip-regions/plan-week';
 import {
@@ -50,7 +53,6 @@ import {
   type PlanMove,
   type TripPlan,
 } from '@/lib/trip-regions/plan';
-import { planTimeMinute } from '@/lib/trip-regions/plan-week';
 import { ticketDayOf } from '@/lib/trip-regions/plan-tickets';
 import { formatGridTime } from '@/lib/planner/park-time';
 import type { TripCalendar } from '@/lib/trip-regions/types';
@@ -212,11 +214,19 @@ function DayDetails({
     );
   };
   const first = day.parks[0];
+  const wait = shownDayWait(day, calendar);
+  const summary = first ? plan.parks.find((p) => p.slug === first.slug) : undefined;
+  // Both days in the figure the sheet shows, so the difference is the one the reader can check.
   const runner =
-    isPark && day.kind === 'park' && first
+    isPark && day.kind === 'park' && first && summary
       ? runnerUp(
-          plan.parks.find((p) => p.slug === first.slug),
-          day.headlinerWait
+          {
+            alternatives: summary.alternatives.map((alt) => ({
+              ...alt,
+              headlinerWait: shownWaitOn(calendar, first.slug, alt.date, alt.headlinerWait),
+            })),
+          },
+          wait
         )
       : null;
   // The runner-up line says the same as `runner_up_close`, with its numbers; one of the two.
@@ -407,9 +417,11 @@ function DayDetails({
   }
 
   const chips = climateChips(day.warnings);
+  // Last year's figure is said with the figure, calmly: after the forecast's days every day has it.
   const warnings = dayWarnings(day).filter(
-    (w) => w !== 'party_night_short_hours' && w !== 'closes_early'
+    (w) => w !== 'party_night_short_hours' && w !== 'closes_early' && w !== 'estimate_last_year'
   );
+  const lastYear = dayWarnings(day).includes('estimate_last_year');
 
   const candidates = plan.days.filter(
     (other) =>
@@ -422,15 +434,16 @@ function DayDetails({
     <div className="flex flex-col gap-4">
       {isPark && (
         <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
-          {day.headlinerWait != null && (
+          {wait != null && (
             <span className="text-2xl font-semibold tabular-nums">
-              {t('week.minutes', { minutes: day.headlinerWait })}
+              {t('week.minutes', { minutes: wait })}
             </span>
           )}
           <CrowdLevelBadge level={day.crowdLevel ?? null} />
           <ClimateChips codes={chips} />
           <span className="text-muted-foreground w-full text-xs">
             {t('details.minutesCaption')}
+            {lastYear && ` ${t('warning.estimate_last_year')}`}
           </span>
         </div>
       )}

@@ -26,6 +26,7 @@ import {
   dayBandPieces,
   parkCodeKey,
   parkLabel,
+  shownDayWait,
   TRIP_DAY_SIGNALS,
   TRIP_FALLBACK_CANVAS,
   tripCanvas,
@@ -290,7 +291,8 @@ export function PlanMonthView({
           const evening = eveningName(day);
           const ticketDay = ticketLabel(day, plan.meta);
           const line = evening ? t('evening.plus', { name: evening }) : ticketDay;
-          const what = `${parksOf(day)}${day.headlinerWait != null ? `, ${t('peakWait', { minutes: day.headlinerWait })}` : ''}`;
+          const wait = shownDayWait(day, calendar);
+          const what = `${parksOf(day)}${wait != null ? `, ${t('peakWait', { minutes: wait })}` : ''}`;
           const spoken =
             first && lastBlock
               ? `${formatGridTime(first.startMin)}–${formatGridTime(lastBlock.endMin, true)}`
@@ -305,7 +307,6 @@ export function PlanMonthView({
                 className={cn(
                   'relative flex h-full min-h-[4.5rem] w-full flex-col items-start gap-1 overflow-hidden rounded-md border p-1 text-left transition hover:shadow-sm lg:min-h-28 lg:gap-1.5 lg:p-1.5',
                   level ? CROWD_TILE_CLASS[level] : 'bg-muted/25 border-border/60',
-                  day.basis === 'last_year' && 'border-dashed',
                   PLAN_FOCUS
                 )}
               >

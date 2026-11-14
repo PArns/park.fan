@@ -29,11 +29,11 @@ import {
   resortHasChoice,
   shortGroupName,
   shortParkName,
-  shownWait,
   tintLevel,
   type EventLane,
   type RegionGroup,
 } from '@/lib/trip-regions/hub-data';
+import { shownWait } from '@/lib/trip-regions/plan-week';
 import { stormCodeOn, stormSignal, type StormCode } from '@/lib/trip-regions/date-facts';
 import { trackTripEvent } from '@/lib/trip-regions/plan-analytics';
 import { tripRegionRelayUrl } from '@/lib/trip-regions/paths';
@@ -99,7 +99,7 @@ function cellLook(day: TripParkDay | undefined, best: boolean): CellLook {
   }
   const level = tintLevel(day.crowdLevel);
   return {
-    text: String(shownWait(day)),
+    text: String(shownWait(day)!),
     className: cn(
       level ? cn(CROWD_TILE_CLASS[level], CROWD_TEXT_CLASS[level]) : 'bg-muted/40 border-border/60',
       best && HUB_CELL_BEST
@@ -340,7 +340,7 @@ function useCellLabel(locale: string, timezone: string) {
         t('cell', {
           park: parkName,
           date: when,
-          minutes: shownWait(day),
+          minutes: shownWait(day)!,
           level: level ? tLevel(level) : tLevel('unknown'),
         }),
       ];

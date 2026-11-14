@@ -53,8 +53,6 @@ export interface PlanGridDay {
   mark: 'start' | 'end' | 'edge' | 'range' | null;
   /** Where the date sits in a chosen range: the light band behind the tiles runs from start to end. */
   band?: 'start' | 'middle' | 'end';
-  /** The tint is last year's measured day, not a forecast: the tile's border is dashed. */
-  lastYear?: boolean;
   /** Up to three thin bars along the cell's foot: the tickets whose window holds the date. */
   bars?: ReadonlyArray<'primary' | 'muted'>;
   /** The date's crowd level, which tints the cell as a park's crowd calendar does. */
@@ -256,8 +254,7 @@ export function PlanMonthGrid({
                     aria-hidden="true"
                     className={cn(
                       'absolute inset-0 rounded-md border',
-                      level ? CROWD_TILE_CLASS[level] : 'bg-muted/25 border-border/60',
-                      d?.lastYear && 'border-dashed'
+                      level ? CROWD_TILE_CLASS[level] : 'bg-muted/25 border-border/60'
                     )}
                   />
                 )}

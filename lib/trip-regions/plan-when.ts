@@ -123,13 +123,15 @@ export const WHEN_REASON_ORDER = [
 /** A window reason this client can say. */
 export type WhenReasonCode = (typeof WHEN_REASON_ORDER)[number];
 
-/** The warnings a window can carry, most consequential first. */
+/**
+ * The warnings a window can carry, most consequential first. `estimate_last_year` is none: after
+ * the forecast's days nearly every window has it, and the answer says once from when.
+ */
 export const WHEN_WARNING_ORDER = [
   'party_nights',
   'school_break',
   'water_park_closed',
   'hours_not_published',
-  'estimate_last_year',
 ] as const;
 /** A window warning this client can say. */
 export type WhenWarningCode = (typeof WHEN_WARNING_ORDER)[number];

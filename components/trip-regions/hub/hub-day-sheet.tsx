@@ -26,9 +26,9 @@ import {
   regionGroups,
   shortestLines,
   shortParkName,
-  shownWait,
   tintLevel,
 } from '@/lib/trip-regions/hub-data';
+import { shownWait } from '@/lib/trip-regions/plan-week';
 import { requireTripRegion } from '@/lib/trip-regions/registry';
 import { cleanBreakName } from '@/lib/trip-regions/best-time';
 import { translateHolidayName } from '@/lib/utils/holiday-names';
@@ -256,7 +256,7 @@ function SheetPark({
             {isRankable(parkDay) ? (
               <span className="flex items-center gap-2">
                 <span className="font-semibold tabular-nums">
-                  {t('minutes', { minutes: shownWait(parkDay) })}
+                  {t('minutes', { minutes: shownWait(parkDay)! })}
                 </span>
                 <CrowdLevelBadge level={level} />
               </span>

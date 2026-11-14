@@ -3147,8 +3147,9 @@
       "gridLabel": "Giorno di arrivo e di partenza",
       "level": "Affluenza: {level}",
       "levelLastYear": "Affluenza l’anno scorso: {level}",
+      "lastYearFrom": "Dal {date} affluenza e attese sono quelle dell’anno scorso, misurate nello stesso giorno della settimana.",
+      "lastYearAll": "Questo mese affluenza e attese sono quelle dell’anno scorso, misurate nello stesso giorno della settimana.",
       "legend": "Una data senza consiglio ha il colore dell’affluenza media dei grandi parchi.",
-      "legendLastYear": "Le date con il bordo tratteggiato mostrano l’affluenza misurata l’anno scorso.",
       "pickArrival": "Tocca il giorno di arrivo.",
       "pickDeparture": "Ora il giorno di partenza.",
       "dayCount": "{count, plural, =1 {1 giorno} other {# giorni}}",
@@ -3296,7 +3297,8 @@
       "counts": "{parkDays, plural, =1 {1 giorno al parco} other {# giorni al parco}}, {restDays, plural, =0 {nessun giorno di riposo} =1 {1 giorno di riposo} other {# giorni di riposo}}",
       "averageDay": "In media nei tuoi giorni di viaggio, l’attesa di picco di questi parchi è di {minutes} min.",
       "error": "Una previsione per un’attrazione in un giorno può sbagliare di circa {minutes} min.",
-      "lastYear": "Pianifichiamo queste date con l’affluenza misurata l’anno scorso. La previsione le raggiungerà verso il {date}.",
+      "lastYear": "Dal {date} il piano usa le attese misurate l’anno scorso nello stesso giorno della settimana. Così in anticipo la previsione distingue appena un giorno dall’altro.",
+      "lastYearAll": "Il piano usa le attese misurate l’anno scorso nello stesso giorno della settimana. Così in anticipo la previsione distingue appena un giorno dall’altro.",
       "about": "circa {minutes} min",
       "split": "{parks} {count, plural, =1 {ha} other {hanno}} {visits, plural, =2 {un secondo giorno} other {# giorni}}.",
       "hopNeedsHopper": "Il park hopping conta solo con un biglietto Park Hopper; sceglilo in «Regolazioni».",
@@ -3329,7 +3331,6 @@
       },
       "rest": "Giorno di riposo",
       "evening": "Extended Evening Hours",
-      "last_year": "anno scorso",
       "outside_ticket": "fuori dal tuo biglietto",
       "pinned": "fissato"
     },
@@ -3493,6 +3494,8 @@
       "none": "In questo periodo non c’è posto per un viaggio di {days} giorni. Scegli un periodo più lungo o un viaggio più corto.",
       "noneWithin": "Nessuna vacanza scolastica di {region} in questo periodo dura abbastanza per {days} giorni.",
       "bestTitle": "Le date migliori per i tuoi parchi",
+      "lastYearFrom": "Dalla settimana del {date} le cifre sono le attese misurate l’anno scorso nello stesso giorno della settimana. Così in anticipo la previsione distingue appena un giorno dall’altro.",
+      "lastYearAll": "Tutte le cifre sono le attese misurate l’anno scorso nello stesso giorno della settimana. Così in anticipo la previsione distingue appena un giorno dall’altro.",
       "rank": "Proposta {rank}",
       "wait": "Attesa di picco circa {minutes} min",
       "below": "{percent}% sotto la media del periodo",
@@ -3509,8 +3512,7 @@
         "party_nights": "{count, plural, =1 {1 serata di festa} other {# serate di festa}}: i visitatori giornalieri devono uscire prima.",
         "water_park_closed": "Un parco acquatico scelto è chiuso per la stagione.",
         "hurricane_season": "Stagione degli uragani (da giugno a novembre).",
-        "hours_not_published": "Non tutti gli orari sono ancora pubblicati.",
-        "estimate_last_year": "Calcolato in parte con l’affluenza dell’anno scorso."
+        "hours_not_published": "Non tutti gli orari sono ancora pubblicati."
       },
       "basis": {
         "mixed": "Calcolato in parte con l’affluenza dell’anno scorso",
@@ -3522,7 +3524,8 @@
       "stripWindow": "proposta {rank}",
       "stripLegend": "Altezza: l’attesa di picco dei tuoi parchi quella settimana. I segni sotto indicano le tue proposte.",
       "sketch": "Giorno per giorno",
-      "rankedLower": "classificato più in basso: {reasons}"
+      "rankedLower": "classificato più in basso: {reasons}",
+      "stormPeak": "{season}: classificato più in basso per il rischio di tempeste, anche con attese brevi."
     },
     "evening": {
       "plus": "+ serata: {name}",
@@ -3876,7 +3879,7 @@
         },
         "intro": {
           "lead": "Ogni cifra è l’attesa di picco, l’attesa più lunga del giorno a ogni grande attrazione, in media sui parchi del viaggio.",
-          "body": "Valutiamo un viaggio come il pianificatore di viaggio: ogni parco nel suo giorno migliore, e un giorno in cui chi entra in giornata deve uscire prima conta come un giorno peggiore. La previsione arriva al {date}. Oltre, la pagina mostra le stesse settimane dell’anno scorso come le abbiamo misurate, segnate con «anno scorso».",
+          "body": "Valutiamo un viaggio come il pianificatore di viaggio: ogni parco nel suo giorno migliore, e un giorno in cui chi entra in giornata deve uscire prima conta come un giorno peggiore. Fino al {date} usiamo la nostra previsione, poi le stesse settimane dell’anno scorso come le abbiamo misurate; la barra delle settimane segna quel punto con «anno scorso».",
           "bodyForecast": "Valutiamo un viaggio come il pianificatore di viaggio: ogni parco nel suo giorno migliore, e un giorno in cui chi entra in giornata deve uscire prima conta come un giorno peggiore. Ogni cifra di questa pagina è la nostra previsione."
         },
         "months": {
@@ -4237,7 +4240,7 @@
         },
         "intro": {
           "lead": "Ogni cifra qui è l’attesa di picco: l’attesa più alta del giorno di ogni grande attrazione, in media su Disneyland, California Adventure e Universal.",
-          "body": "Valutiamo un viaggio come il pianificatore di viaggio: ogni parco nel suo giorno migliore, e un giorno in cui i visitatori giornalieri devono uscire prima conta come un giorno peggiore. La previsione arriva al {date}. Oltre, la pagina mostra le stesse settimane dell’anno scorso come le abbiamo misurate, segnate con «anno scorso».",
+          "body": "Valutiamo un viaggio come il pianificatore di viaggio: ogni parco nel suo giorno migliore, e un giorno in cui i visitatori giornalieri devono uscire prima conta come un giorno peggiore. Fino al {date} usiamo la nostra previsione, poi le stesse settimane dell’anno scorso come le abbiamo misurate; la barra delle settimane segna quel punto con «anno scorso».",
           "bodyForecast": "Valutiamo un viaggio come il pianificatore di viaggio: ogni parco nel suo giorno migliore, e un giorno in cui i visitatori giornalieri devono uscire prima conta come un giorno peggiore. Tutto viene dalla nostra previsione."
         },
         "months": {
@@ -4528,7 +4531,7 @@
         },
         "intro": {
           "lead": "Ogni cifra qui è l’attesa di picco: l’attesa più lunga del giorno a ogni grande attrazione, in media sui parchi del viaggio.",
-          "body": "Valutiamo un viaggio come il pianificatore di viaggio: ogni parco nel suo giorno migliore, i trasferimenti tra le città compresi, e un giorno in cui un parco chiude prima conta come un giorno peggiore. La previsione arriva fino al {date}. Dopo, la pagina mostra le stesse settimane dell’anno scorso, come le abbiamo misurate, con la nota «anno scorso».",
+          "body": "Valutiamo un viaggio come il pianificatore di viaggio: ogni parco nel suo giorno migliore, i trasferimenti tra le città compresi, e un giorno in cui un parco chiude prima conta come un giorno peggiore. Fino al {date} usiamo la nostra previsione, poi le stesse settimane dell’anno scorso come le abbiamo misurate; la barra delle settimane segna quel punto con «anno scorso».",
           "bodyForecast": "Valutiamo un viaggio come il pianificatore di viaggio: ogni parco nel suo giorno migliore, i trasferimenti tra le città compresi, e un giorno in cui un parco chiude prima conta come un giorno peggiore. Ogni cifra di questa pagina è la nostra previsione."
         },
         "months": {
@@ -4844,7 +4847,7 @@
         },
         "intro": {
           "lead": "I minuti sono l’attesa di picco, l’attesa più lunga della giornata a ogni grande attrazione, in media sui parchi del viaggio.",
-          "body": "Pianifichiamo ogni viaggio come il pianificatore: ogni parco nel suo giorno migliore, e un giorno in cui i visitatori giornalieri devono uscire prima conta come un giorno peggiore. Fino al {date} usiamo la nostra previsione, per le settimane successive l’affluenza misurata l’anno scorso, con la dicitura «anno scorso».",
+          "body": "Pianifichiamo ogni viaggio come il pianificatore: ogni parco nel suo giorno migliore, e un giorno in cui i visitatori giornalieri devono uscire prima conta come un giorno peggiore. Fino al {date} usiamo la nostra previsione, poi le stesse settimane dell’anno scorso come le abbiamo misurate; la barra delle settimane segna quel punto con «anno scorso».",
           "bodyForecast": "Pianifichiamo ogni viaggio come il pianificatore: ogni parco nel suo giorno migliore, e un giorno in cui i visitatori giornalieri devono uscire prima conta come un giorno peggiore. Tutti i numeri sono la nostra previsione."
         },
         "months": {
@@ -5389,7 +5392,9 @@
         "rest": "Viaggio: giorni di riposo modificati",
         "tickets": "Viaggio: biglietti aggiunti",
         "hotel": "Viaggio: hotel aggiunto",
-        "pace": "Viaggio: ritmo modificato"
+        "pace": "Viaggio: ritmo modificato",
+        "route": "Viaggio: percorso modificato",
+        "buffer": "Viaggio: tempo per i cambi d’hotel impostato"
       },
       "day": "Nel tuo planner: {park}, {date}",
       "undo": "Annulla",

@@ -166,6 +166,13 @@ type NoProps = Record<string, never>;
  */
 export type AssistantQuestionKind = 'suggestion' | 'typed' | 'chip' | 'interview';
 
+/**
+ * The greeting a chat opened with: one about the visitor's own plans (`YOURS_GREETINGS`), or one
+ * of the five general ones.
+ */
+export type AssistantGreetingKind =
+  'today' | 'yesterday' | 'tomorrow' | 'soon' | 'trip' | 'back' | 'plain';
+
 /** A trip or a park day, as Parky's interview and his changes name a planner. */
 export type AssistantPlannerKind = 'trip' | 'day';
 
@@ -195,6 +202,8 @@ export type AssistantPlanChange =
   | 'tickets'
   | 'hotel'
   | 'pace'
+  | 'route'
+  | 'buffer'
   | 'file'
   | 'add'
   | 'move'
@@ -299,8 +308,16 @@ export interface SiteEventMap {
   assistant_line_closed: { line: AssistantLineKind };
   /** Parky's window closed again, with how many questions were asked while it was open. */
   assistant_closed: { questions: number };
-  /** A question to Parky: a suggested one or typed; never its text. */
-  assistant_question: { kind: AssistantQuestionKind };
+  /**
+   * A question to Parky: a suggested one, typed, a reply chip or the interview's kickoff; never its
+   * text. `first` for a chat's first question, `position` the chip's place (1 the likeliest).
+   */
+  assistant_question: { kind: AssistantQuestionKind; first: boolean; position?: number };
+  /**
+   * A chat opened with its greeting: about the visitor's own plans (`yours.ts`), or `plain`. Once
+   * per chat, when the window shows it; never the park or the date.
+   */
+  assistant_greeting: { kind: AssistantGreetingKind };
   /** How Parky's answer ended; `lookups` is the number of data lookups it made. */
   assistant_answer: { result: AssistantAnswerResult; lookups: number };
   /** Thumbs up or down for one answer. */
@@ -309,22 +326,52 @@ export interface SiteEventMap {
   assistant_feedback_sent: { email: boolean };
   /** The challenge in front of Parky failed in this browser. */
   assistant_challenge_failed: NoProps;
-  /** Reply chips were drawn under an answer; how many, never their text. */
-  assistant_replies_shown: { count: number };
-  /** Parky's interview began, from the planner's button or in the chat. */
-  assistant_interview_started: { kind: AssistantPlannerKind; source: 'planner' | 'chat' };
-  /** A step of the interview was answered or passed. */
-  assistant_interview_step: { kind: AssistantPlannerKind; step: AssistantInterviewStepName };
-  /** The interview ended: done, or left; with the steps answered. */
+  /**
+   * Reply chips were drawn under an answer; how many, never their text, and after what: an
+   * interview's question, a change to a plan, or any other answer.
+   */
+  assistant_replies_shown: { count: number; context: 'interview' | 'plan_change' | 'answer' };
+  /**
+   * Parky's interview began, from the planner's button or in the chat. `region` a live trip
+   * region's slug, `none` for a park day or a trip whose region is not settled yet.
+   */
+  assistant_interview_started: {
+    kind: AssistantPlannerKind;
+    source: 'planner' | 'chat';
+    region: string;
+  };
+  /** A step of the interview was answered, or passed. */
+  assistant_interview_step: {
+    kind: AssistantPlannerKind;
+    step: AssistantInterviewStepName;
+    outcome: 'answered' | 'skipped';
+    region: string;
+  };
+  /**
+   * The interview ended: done, or left; with the steps answered, and whether its plan stood (the
+   * core steps all answered or passed).
+   */
   assistant_interview_ended: {
     kind: AssistantPlannerKind;
     outcome: 'done' | 'left';
     steps: number;
+    plan: boolean;
+    region: string;
   };
-  /** A change of Parky's reached a planner; what kind of change, never what it holds. */
+  /**
+   * A change of Parky's reached a planner; what kind of change, never what it holds. One event
+   * per kind: a change of dates and parks counts both.
+   */
   assistant_plan_changed: { planner: AssistantPlannerKind; change: AssistantPlanChange };
-  /** Parky's change was taken back, or found changed by the visitor since. */
-  assistant_change_undone: { planner: AssistantPlannerKind; outcome: 'undone' | 'changed' };
+  /**
+   * Parky's change was taken back, or found changed by the visitor since: by the receipt's undo
+   * under the answer, or by asking Parky in the chat.
+   */
+  assistant_change_undone: {
+    planner: AssistantPlannerKind;
+    outcome: 'undone' | 'changed';
+    via: 'receipt' | 'chat';
+  };
   /**
    * A park and date got their first block; `source` is the way into the opening it happened in,
    * `none` with the panel shut. The park's UUID as entity where a page named it.

@@ -2,6 +2,7 @@ import { addDays } from '@/lib/utils/park-day';
 import { getDateTimeFormat } from '@/lib/utils/intl-format';
 import { parkCalendarPath } from '@/lib/parks/calendar-segments';
 import { roundWaitTo5 } from '@/lib/utils/wait-time';
+import { shownWait, shownWaitOn } from './plan-week';
 import { PARK_NAME_SUFFIXES, requireTripRegion } from './registry';
 import type {
   TripBasis,
@@ -115,21 +116,6 @@ export function closesEarly(day: TripParkDay | undefined): boolean {
 /** When the day guests leave: the API's `dayGuestCloseAt`, else the day's own close. */
 export function dayGuestClose(day: TripParkDay | undefined): string | undefined {
   return day?.dayGuestCloseAt ?? day?.closesAt;
-}
-
-/**
- * The figure a park's day prints: within 60 days the park calendar's own forecast
- * (`forecastWait`), so the hub and the park page never show two numbers for one day; past them,
- * and from an API without it, `headlinerWait`, last year's measured day. Every ranking stays on
- * `headlinerWait`, the API's figure.
- */
-export function shownWait(day: TripParkDay & { headlinerWait: number }): number;
-export function shownWait(day: TripParkDay | undefined): number | undefined;
-export function shownWait(day: TripParkDay | undefined): number | undefined {
-  if (!day) return undefined;
-  return day.basis === 'forecast' && day.forecastWait != null
-    ? day.forecastWait
-    : day.headlinerWait;
 }
 
 /**
@@ -344,6 +330,26 @@ export function dayBasis(day: TripCalendarDay): HubBasis {
   return best;
 }
 
+/** The days a fact is read from, and whether they are last year's measured days. */
+export interface FactDays {
+  days: TripCalendarDay[];
+  lastYear: boolean;
+}
+
+/**
+ * The forecast's days of a calendar; a month past day 60 reads last year's measured days instead,
+ * and says so. Never both at once: a mean over both would set an unscaled forecast beside a
+ * measured day.
+ */
+export function factDays(calendar: TripCalendar): FactDays {
+  const forecast = calendar.days.filter((d) => {
+    const basis = dayBasis(d);
+    return basis === 'forecast' || basis === 'long_range';
+  });
+  if (forecast.length > 0) return { days: forecast, lastYear: false };
+  return { days: calendar.days.filter((d) => dayBasis(d) === 'last_year'), lastYear: true };
+}
+
 /** One lane under the matrix: a season or a run of school-break days. */
 export interface EventLane {
   id: string;
@@ -450,9 +456,9 @@ export function weekendAgainstWeekday(
 ): { weekend: number; weekday: number } | null {
   const weekend: number[] = [];
   const weekday: number[] = [];
-  for (const day of calendar.days) {
+  for (const day of factDays(calendar).days) {
     const park = day.parks[slug];
-    if (!isRankable(park) || park.basis === 'last_year') continue;
+    if (!isRankable(park)) continue;
     (isWeekend(day.date) ? weekend : weekday).push(shownWait(park)!);
   }
   const a = meanWait(weekend);
@@ -473,9 +479,9 @@ export function ticketedEvenings(
   const on: number[] = [];
   const off: number[] = [];
   let closesAt: string | null = null;
-  for (const day of calendar.days) {
+  for (const day of factDays(calendar).days) {
     const park = day.parks[slug];
-    if (!isRankable(park) || park.basis === 'last_year') continue;
+    if (!isRankable(park)) continue;
     if (closesEarly(park)) {
       on.push(shownWait(park)!);
       closesAt ??= dayGuestClose(park) ?? null;
@@ -510,7 +516,7 @@ export function resortMonthSummaries(
     calendar.days.find((d) => d.date === date)?.parks[slug]?.basis ?? 'none';
   // The minutes a date prints are the calendar's, so the answer and the cell say one number.
   const shownOn = (date: string, slug: string, ranked: number | undefined) =>
-    shownWait(calendar.days.find((d) => d.date === date)?.parks[slug]) ?? ranked ?? null;
+    shownWaitOn(calendar, slug, date, ranked) ?? null;
   return summaryGroups(region)
     .map((group) => {
       const quiet = (bestDays?.groups.find((g) => g.key === group.key)?.quiet ?? [])
@@ -526,8 +532,7 @@ export function resortMonthSummaries(
             : null;
         })
         .filter((entry): entry is NonNullable<typeof entry> => entry !== null);
-      // A month past the forecast has no picks (`best` stays off last year's days), so it names
-      // each headliner park's quietest day of last year instead, as a record and labelled so.
+      // Where `/best-days` names no resort pick, each headliner park's own quietest day stands in.
       const recorded =
         quiet.length > 0 || !bestDays
           ? quiet

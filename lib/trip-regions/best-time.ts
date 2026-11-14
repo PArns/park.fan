@@ -388,8 +388,9 @@ export function weekFacts(
 }
 
 /**
- * The week from which `/when` reads last year's measured days, by the weeks' own basis: past 60
- * days every ranking reads last year on purpose, however far the forecast reaches.
+ * The week from which `/when` reads last year's measured days: the strip's first week that does,
+ * in part or whole. `forecastUntil` is no turn: the forecast runs on for months, but the API ranks
+ * every day after its first 60 on last year.
  */
 export function lastYearFrom(when: Pick<TripWhen, 'weeks'>): string | null {
   const turn = when.weeks.find((w) => w.basis === 'last_year' || w.basis === 'mixed');

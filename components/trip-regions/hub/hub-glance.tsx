@@ -12,9 +12,9 @@ import {
   parkCalendarHref,
   shortGroupName,
   shortParkName,
-  shownWait,
   type ResortMonthSummary,
 } from '@/lib/trip-regions/hub-data';
+import { shownWait } from '@/lib/trip-regions/plan-week';
 import { getRegionTranslations } from '@/lib/trip-regions/region-messages';
 import { ownWords } from '@/lib/trip-regions/region-words';
 import { requireTripRegion } from '@/lib/trip-regions/registry';

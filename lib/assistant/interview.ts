@@ -67,6 +67,33 @@ export function interviewRefinements(kind: InterviewKind): readonly InterviewSte
   return kind === 'trip' ? TRIP_INTERVIEW_REFINE : DAY_INTERVIEW_REFINE;
 }
 
+/**
+ * The interview's region as the statistic counts it: a trip's live region, `none` for a park day
+ * or a trip whose region is not settled yet. Live slugs only, a closed set: the API takes no other.
+ */
+export function interviewRegion(interview: Pick<AssistantInterview, 'kind' | 'region'>): string {
+  return interview.kind === 'trip' && interview.region ? interview.region : 'none';
+}
+
+/** Whether the interview's plan stands: every core step answered or passed. */
+export function interviewPlanStood(
+  interview: Pick<AssistantInterview, 'kind' | 'answered' | 'skipped'>
+): boolean {
+  const settled = new Set([...interview.answered, ...interview.skipped]);
+  return interviewCore(interview.kind).every((step) => settled.has(step));
+}
+
+/** What `assistant_interview_ended` carries for an interview that ends now. */
+export function interviewEnded(interview: AssistantInterview, outcome: 'done' | 'left') {
+  return {
+    kind: interview.kind,
+    outcome,
+    steps: interview.answered.length,
+    plan: interviewPlanStood(interview),
+    region: interviewRegion(interview),
+  };
+}
+
 /** Whether a step belongs to this kind of interview: its core, its refinements or `refine`. */
 function stepOf(kind: InterviewKind, step: InterviewStep): boolean {
   return (

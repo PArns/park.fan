@@ -2,7 +2,8 @@ import { addDays } from '@/lib/utils/park-day';
 import { roundWaitTo5 } from '@/lib/utils/wait-time';
 import { breakRuns, type BreakRun } from './best-time';
 import { stormCodeOn, type StormCode } from './date-facts';
-import { dayBasis, isRankable, meanWait, shownWait } from './hub-data';
+import { factDays, isRankable, meanWait } from './hub-data';
+import { shownWait } from './plan-week';
 import type {
   TripCalendar,
   TripCalendarDay,
@@ -17,25 +18,6 @@ import type {
  * they do to the waits. Free of React, so `scripts/test-orlando-hub.mjs` checks them on a fixture.
  * Every figure is the big rides' wait at their busiest, meaned over the region's headliner parks.
  */
-
-/** The days a fact is read from, and whether they are last year's measured days. */
-export interface FactDays {
-  days: TripCalendarDay[];
-  lastYear: boolean;
-}
-
-/**
- * The forecast's days of a calendar; a month past the forecast reads last year's measured days
- * instead, and says so. Never both at once: a mix would compare a forecast with a record.
- */
-export function factDays(calendar: TripCalendar): FactDays {
-  const forecast = calendar.days.filter((d) => {
-    const basis = dayBasis(d);
-    return basis === 'forecast' || basis === 'long_range';
-  });
-  if (forecast.length > 0) return { days: forecast, lastYear: false };
-  return { days: calendar.days.filter((d) => dayBasis(d) === 'last_year'), lastYear: true };
-}
 
 /** A day's mean over the region's headliner parks that have a figure; `null` without one. */
 function headlinerMean(day: TripCalendarDay, headliners: readonly TripRegionPark[]): number | null {

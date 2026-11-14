@@ -54,7 +54,8 @@ import {
   autoSplit,
   editCost,
   ignoredLocks,
-  lastYearReach,
+  lastYearStart,
+  planDayLastYear,
   parksLeftOut,
   planSavings,
   relaxedRules,
@@ -416,7 +417,6 @@ function PlanAnswer({
   const tRegion = useTranslations('tripRegion.planner');
   const {
     locale,
-    today,
     parkName,
     parkBySlug,
     state,
@@ -426,7 +426,10 @@ function PlanAnswer({
   } = usePlanContext();
   const resortWord = useResortWord();
   const dropped = useDroppedTickets();
-  const reach = today ? lastYearReach(plan.days, calendar?.meta.forecastUntil, today) : null;
+  const lastYear = lastYearStart(
+    plan.days.filter((d) => d.kind === 'park' || d.kind === 'hop'),
+    planDayLastYear
+  );
   // One sentence per kind of split, the parks as a list: "EPCOT, Magic Kingdom and Epic Universe
   // get a second day." A split an owned ticket asked for says why.
   const splitGroups = new Map<string, { visits: number; ticket: boolean; parks: string[] }>();
@@ -499,14 +502,16 @@ function PlanAnswer({
       <LeftOut plan={plan} edit={edit} />
       <StaySuggestion plan={plan} />
 
-      {reach && (
+      {lastYear && (
         <p
           className="border-border/60 rounded-xl border border-dashed px-4 py-3 text-sm"
           role="note"
         >
-          {t('answer.lastYear', {
-            date: formatParkDay(locale, reach.reach, { day: 'numeric', month: 'long' }),
-          })}
+          {lastYear.all
+            ? t('answer.lastYearAll')
+            : t('answer.lastYear', {
+                date: formatParkDay(locale, lastYear.from, { day: 'numeric', month: 'long' }),
+              })}
         </p>
       )}
 

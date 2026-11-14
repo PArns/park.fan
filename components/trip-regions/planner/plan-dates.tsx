@@ -7,10 +7,17 @@ import { cn } from '@/lib/utils';
 import { monthLabel, monthMatrix, monthOf } from '@/lib/planner/month-grid';
 import { formatClockTime, getDateTimeFormat, getListFormat } from '@/lib/utils/intl-format';
 import { CROWD_TEXT_CLASS, isColoredCrowdLevel } from '@/lib/utils/crowd-level-styles';
-import { addDays, formatParkDayRange } from '@/lib/utils/park-day';
+import { addDays, formatParkDay, formatParkDayRange } from '@/lib/utils/park-day';
 import { MAX_DAYS_AHEAD, MAX_TRIP_DAYS, setTripDates, tripDates } from '@/lib/trip-regions/plan';
 import { ticketWindows } from '@/lib/trip-regions/plan-tickets';
-import { dateLevel, parkCodeKey, parkLabel, TRIP_DAY_SIGNALS } from '@/lib/trip-regions/plan-week';
+import {
+  dateLevel,
+  parkCodeKey,
+  parkLabel,
+  shownWait,
+  TRIP_DAY_SIGNALS,
+} from '@/lib/trip-regions/plan-week';
+import { lastYearStart } from '@/lib/trip-regions/plan-copy';
 import {
   calendarResorts,
   dateParties,
@@ -99,7 +106,8 @@ function createShownDate() {
  * peak, which the best-time search ranks lower (`stormCodeOn`, from the API's `weather.storm`).
  * Pointing at a date or pressing it explains its pick in a line under the grid, with the storm
  * season and Japan's rainy season; the codes, the month's events and the colours are keyed below.
- * A last-year tint has a dashed border. Arrival and departure carry their plane and a light band
+ * From which date the figures are last year's is said once under the grid, never per tile: after
+ * the forecast's days nearly every tile is. Arrival and departure carry their plane and a light band
  * joins the days between. The tickets' windows are thin bars along the dates, named in a key.
  * Whether the travel days hold a park is asked under More options (`PlanOptions`), not here.
  */
@@ -269,8 +277,11 @@ export function PlanDates({ defaultMonth }: { defaultMonth?: string }) {
     [locale, timeZone]
   );
   const length = tripDates(state).length;
-  const anyLastYear = (calendar.data?.days ?? []).some((d) =>
-    headliners.some((s) => d.parks[s]?.basis === 'last_year')
+  const lastYear = lastYearStart(
+    (calendar.data?.days ?? []).filter((d) =>
+      headliners.some((s) => (d.parks[s]?.basis ?? 'none') !== 'none')
+    ),
+    (d) => headliners.some((s) => d.parks[s]?.basis === 'last_year')
   );
   const shortRange = (from: string, to: string) =>
     formatParkDayRange(locale, from, to, { day: 'numeric', month: 'short' });
@@ -282,21 +293,23 @@ export function PlanDates({ defaultMonth }: { defaultMonth?: string }) {
   const pickText = useCallback(
     (pick: DatePick, overall = false) => {
       const level = isColoredCrowdLevel(pick.day.crowdLevel) ? pick.day.crowdLevel : null;
+      const wait = shownWait(pick.day);
       const rival = pick.earlyElsewhere;
       const rivalLeaves = rival ? dayGuestClose(rival.day) : undefined;
+      const rivalWait = rival ? shownWait(rival.day) : undefined;
       const parts = [
         overall
           ? t('dates.overall', { park: parkName(pick.park.slug) })
           : `${shortGroupName(pick.group.name)}: ${parkName(pick.park.slug)}`,
-        pick.day.headlinerWait != null ? t('peakWait', { minutes: pick.day.headlinerWait }) : null,
+        wait != null ? t('peakWait', { minutes: wait }) : null,
         level ? t('dates.level', { level: tCrowd(level) }) : null,
         pick.hoursUnpublished ? t('dates.unpublished') : null,
       ];
       const ahead =
-        rival && rivalLeaves && rival.day.headlinerWait != null
+        rival && rivalLeaves && rivalWait != null
           ? t('dates.ahead', {
               park: parkName(rival.park.slug),
-              minutes: rival.day.headlinerWait,
+              minutes: rivalWait,
               time: clock(rivalLeaves),
             })
           : null;
@@ -360,7 +373,7 @@ export function PlanDates({ defaultMonth }: { defaultMonth?: string }) {
           // The pick carries the colour where there is one: a region tint behind it would be a
           // second, flatter answer to the same question.
           const level = pick ? null : dateLevel(day, headliners);
-          const lastYear = headliners.some((s) => day?.parks[s]?.basis === 'last_year');
+          const lastYearDay = headliners.some((s) => day?.parks[s]?.basis === 'last_year');
           const isStart = date === start;
           const isEnd = !isStart && date === end;
           const inRange = Boolean(start && end && date > start && date < end);
@@ -398,7 +411,6 @@ export function PlanDates({ defaultMonth }: { defaultMonth?: string }) {
                       ? 'middle'
                       : undefined
                 : undefined,
-            lastYear,
             level,
             signals: holidaySignals(day ?? null),
             storm: storm ? stormSignal(storm) : null,
@@ -416,7 +428,7 @@ export function PlanDates({ defaultMonth }: { defaultMonth?: string }) {
               fact?.nye ? t('dates.nye') : null,
               storm ? tClimate(storm) : null,
               level
-                ? t(lastYear ? 'dates.levelLastYear' : 'dates.level', { level: tCrowd(level) })
+                ? t(lastYearDay ? 'dates.levelLastYear' : 'dates.level', { level: tCrowd(level) })
                 : null,
               pick ? pickText(pick, gridMode === 'all') : null,
               ...(view?.parties ?? []).map(partyText),
@@ -499,9 +511,18 @@ export function PlanDates({ defaultMonth }: { defaultMonth?: string }) {
           </li>
         )}
         {anyUnpublished && <li>{t('dates.unpublishedKey')}</li>}
-        {(anyTint || anyLastYear) && (
+        {(anyTint || lastYear) && (
           <li>
-            {[anyTint ? t('dates.legend') : null, anyLastYear ? t('dates.legendLastYear') : null]
+            {[
+              anyTint ? t('dates.legend') : null,
+              lastYear?.all
+                ? t('dates.lastYearAll')
+                : lastYear
+                  ? t('dates.lastYearFrom', {
+                      date: formatParkDay(locale, lastYear.from, { day: 'numeric', month: 'long' }),
+                    })
+                  : null,
+            ]
               .filter(Boolean)
               .join(' ')}
           </li>

@@ -41,7 +41,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `monthBreakDays` _function_: A month's school-break days: `localSchoolBreakDays`, which every region gets, else the US regions' older `usSchoolBreakDays`, so the page reads either side of the API's rename.
 - `quietWeekInStorm` _function_: The year's quietest week where no trip above covers it and its month is in the region's storm season: the trips are ranked with the storm risk counted, so that week stays out of them, and the page says why.
 - `weekFacts` _function_: A week's school breaks (from the months' break days) and the seasons running in it.
-- `lastYearFrom` _function_: The week from which `/when` reads last year's measured days, by the weeks' own basis: past 60 days every ranking reads last year on purpose, however far the forecast reaches.
+- `lastYearFrom` _function_: The week from which `/when` reads last year's measured days: the strip's first week that does, in part or whole. `forecastUntil` is no turn: the forecast runs on for months, but the API ranks every day after its first 60 on last year.
 - `holidayWeek` _function_: The week the page answers "Is Christmas busy?" with: Christmas week where the range holds it, else New Year's, else none.
 - `meanWeekWait` _function_: The mean of the weeks' figures: the year's average a week is compared with.
 - `partySeasons` _function_: The party nights a page's parks hold: separately ticketed Halloween and Christmas evenings.
@@ -79,7 +79,6 @@ by hand: change the comment in the code and re-run the script. -->
 - `shortParkName` _function_: The words a park's name carries that every visitor drops: the operator's prefix, "Park", "Theme Park", the place (a region's `parkNameSuffixes`).
 - `closesEarly` _function_: Whether a day closes early for the day guest: the API says so (`closesEarly`), or a separately ticketed evening follows, which sends the day guests out before it starts.
 - `dayGuestClose` _function_: When the day guests leave: the API's `dayGuestCloseAt`, else the day's own close.
-- `shownWait` _function_: The figure a park's day prints: within 60 days the park calendar's own forecast (`forecastWait`), so the hub and the park page never show two numbers for one day; past them, and from an API without it, `headlinerWait`, last year's measured …
 - `isRankable` _function_: Whether a park can be ranked on a day: not closed, with a figure.
 - `hoursUnpublished` _function_: Whether a day has a figure but no published hours yet: drawn with its mark, said in words.
 - `rankGroupParks` _function_: A group's parks on a day: the API's pick first where the group has one (its cost weighs the day guest's hours, so it can be a full day over a slightly shorter wait that closes early), then the open parks with a figure by `headlinerWait`, …
@@ -92,6 +91,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `formatHubDate` _function_: A plain date as the hub prints it, anchored at noon UTC so no zone moves it: `short` "Thu 12 Nov", `long` "Thursday, 12 November", `day` "12", `weekday` "Thu".
 - `formatHubMonth` _function_: A month's name with its year, "December 2026", in the reader's language.
 - `dayBasis` _function_: The basis most of a day's parks share, so a column can say "last year" once.
+- `factDays` _function_: The forecast's days of a calendar; a month past day 60 reads last year's measured days instead, and says so. Never both at once: a mean over both would set an unscaled forecast beside a measured day.
 - `eventLanes` _function_: The lanes under the matrix: each curated season that runs on a day of the window (party nights, festivals, Universal's holidays as `expected`), one lane per name even where several parks run it, then the school breaks as runs of days.
 - `findLeg` _function_: The legs between two places, in either direction (`hotel:<key>` or a park slug).
 - `legMinutes` _function_: The door-to-door minutes of a drive: to the car park, then the curated rest of the way.
@@ -112,11 +112,10 @@ by hand: change the comment in the code and re-run the script. -->
 - `formatWindow` _function_: A trip window's dates as one short range (`formatDateRange`).
 - `HUB_FIRST_DAYS` _const_: How many days the first answer covers: the server-rendered week.
 - `HUB_WINDOW_DAYS` _const_: How far the hub's calendar reaches past today: the API's default window.
-- Types: `RegionGroup`, `RankedPark`, `ShortestLine`, `HubBasis`, `EventLane`, `ResortMonthSummary`
+- Types: `RegionGroup`, `RankedPark`, `ShortestLine`, `HubBasis`, `FactDays`, `EventLane`, `ResortMonthSummary`
 
 ### [`hub-facts.ts`](../../lib/trip-regions/hub-facts.ts)
 
-- `factDays` _function_: The forecast's days of a calendar; a month past the forecast reads last year's measured days instead, and says so. Never both at once: a mix would compare a forecast with a record.
 - `isoWeekday` _function_: The ISO weekday of a plain date.
 - `weekdayFacts` _function_: Each weekday's mean over the headliner parks, rounded to five like every wait the site prints, with the lowest and the highest. `null` with fewer than five weekdays of two days each.
 - `usualHours` _function_: Each headliner park's most common opening hours over the days with published hours, the day guests' close (a party night counts with its early close). A park without published hours is left out.
@@ -125,7 +124,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `parkClosures` _function_: The parks that are closed on some days of the calendar, in the region's order, by their own `CLOSED` status: a day no source reports is `UNKNOWN` and never counts as closed.
 - `countWords` _function_: Words as a reader counts them: "Disney’s", "EPCOT-Festival" and "15." each one.
 - `stormCodeIn` _function_: The storm code a span of days carries, for a week of the best-time strip or a month of its table: the peak where any day is in it, else the season where any day is, by the planner's own `stormCodeOn`, so every calendar marks the same days.
-- Types: `FactDays`, `WeekdayWait`, `WeekdayFacts`, `UsualHours`, `BreakFacts`, `ParkMean`, `ParkClosures`
+- Types: `WeekdayWait`, `WeekdayFacts`, `UsualHours`, `BreakFacts`, `ParkMean`, `ParkClosures`
 
 ### [`local-choice.ts`](../../lib/trip-regions/local-choice.ts)
 
@@ -184,7 +183,8 @@ by hand: change the comment in the code and re-run the script. -->
 - `unplacedParks` _function_: A park the plan could not place, with a reason this client can say. A park `parksLeftOut` names is said there; a park with a day that lost a repeat visit reads `no_second_day`.
 - `ignoredLocks` _function_: Pins the plan could not keep, with a reason this client can say.
 - `planSavings` _function_: The savings sentence's figures, or `null` where the totals carry none.
-- `lastYearReach` _function_: When the forecast should reach the trip's first `last_year` day: the horizon (today to `forecastUntil`) moves forward a day a day, so it reaches that day as many days before it as the horizon is long. Never before tomorrow.
+- `lastYearStart` _function_: From which date a run of days, in date order, reads last year's measured day: the first that does, and `all` when that is the first of them.
+- `planDayLastYear` _function_: Whether a plan day is figured on last year's measured day, the whole day or one of its parks.
 - `runnerUp` _function_: The runner-up of a park's visit on `date`: the best alternative day, with how many minutes more (or fewer) its headliners wait. `null` without one or without both figures.
 - `earlyPerk` _function_: The early slot a day's hotel gets, if any, by the region's own name for it.
 - `editCost` _function_: The edit bar's figure: what the visitor's pins cost against the best order the plan had before them, per ride, in whole minutes. `null` without both means; 0 reads as "no cost".
@@ -316,6 +316,9 @@ by hand: change the comment in the code and re-run the script. -->
 - `parkMinuteOf` _function_: Minutes since the trip day's midnight in `timeZone`, for a park-local ISO instant: past midnight runs on (25:00 is 01:00 the next morning), so a close after midnight stays below the opening.
 - `planTimeMinute` _function_: Minutes since the trip day's midnight for a time the plan gives as park-local ISO or as `HH:MM`; an `HH:MM` before 05:00 is after midnight.
 - `calendarCell` _function_: The calendar cell of a park on a date, if the calendar has it.
+- `shownWait` _function_: The wait a park's day shows. Within the forecast's days the forecast as the park's own calendar shows it (`forecastWait`), so a day never reads two numbers on two pages; after them last year's measured day.
+- `shownWaitOn` _function_: `shownWait` of a park on a plan's date, read off the trip's calendar; the plan's own figure where the calendar has none.
+- `shownDayWait` _function_: `shownWaitOn` for a plan day's own figure: a park day's park; a hop day has none.
 - `tripDaySpans` _function_: Each trip day's pieces, read off the plan and the calendar. A park day whose hours the calendar does not carry gets no block: the honest answer is the day planner's, no axis rather than an invented one.
 - `tripCanvas` _function_: The shared canvas, from the earliest piece of any day to the latest, on whole hours and padded by the planner's own `PRE_PAD_MIN` and `POST_PAD_MIN`. `null` when no day has hours.
 - `tripColumnGrid` _function_: A column's axis: the day planner's `DayGrid` for that day's hours, stretched onto the shared canvas. Real minutes, not the API's rounded hours, so there is no closing slack to hatch.
@@ -356,7 +359,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `rankedLower` _function_: Why a window ranks lower than its plain minutes say: the season terms `/when` added (`penalties`, minutes per park day). "ranked lower: hurricane season" beside an unchanged figure.
 - `WHEN_LIMIT` _const_: Windows the result asks for: the three cards of Level 0.
 - `WHEN_REASON_ORDER` _const_: The reasons a window can carry, most telling first; the card shows the first.
-- `WHEN_WARNING_ORDER` _const_: The warnings a window can carry, most consequential first.
+- `WHEN_WARNING_ORDER` _const_: The warnings a window can carry, most consequential first. `estimate_last_year` is none: after the forecast's days nearly every window has it, and the answer says once from when.
 - `WHEN_HOLIDAY_COUNTRIES` _const_: The countries the picker asks the holiday data for: where park.fan's visitors live, one per locale.
 - Types: `WhenPeriodKey`, `WhenPeriod`, `WhenReasonCode`, `WhenWarningCode`, `WhenHolidayCountry`
 

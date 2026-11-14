@@ -10,6 +10,7 @@ import { isUuid } from '@/lib/utils';
 import { MAX_BREAK_MINUTES } from './chat-end';
 import { readInterview, type AssistantInterview } from './interview';
 import { cleanParty, type TripParty } from '@/lib/trip-regions/remembered-trip';
+import { liveTripRegion } from '@/lib/trip-regions/registry';
 
 /** The park as the API names it for the planner. */
 export interface AssistantPlannerPark {
@@ -242,8 +243,11 @@ export type AssistantAction =
     }
   /** The trip planner of `region` set to the hub's own query, through the planner's state. */
   | { type: 'trip_set'; region: string; query: string; change: TripChangeKind[] }
-  /** Back to the trip before Parky's last change, unless the visitor changed it since. */
-  | { type: 'trip_undo'; region: string }
+  /**
+   * Back to the trip before Parky's last change, unless the visitor changed it since. `via`
+   * `receipt` when the receipt's own undo asked, never from the API.
+   */
+  | { type: 'trip_undo'; region: string; via?: 'receipt' }
   /** Replies the visitor can tap under the answer, each sent as their message. */
   | { type: 'replies'; replies: string[] }
   /** The interview's new state, or null once it is over; a trip's party goes with its trip. */
@@ -254,7 +258,7 @@ export type AssistantAction =
       region?: string;
       party?: TripParty;
     }
-  | { type: 'planner_undo'; park: AssistantPlannerPark; date: string }
+  | { type: 'planner_undo'; park: AssistantPlannerPark; date: string; via?: 'receipt' }
   | { type: 'planner_share' }
   | {
       type: 'alert_ride_set';
@@ -301,6 +305,8 @@ export const TRIP_CHANGE_KINDS = [
   'tickets',
   'hotel',
   'pace',
+  'route',
+  'buffer',
 ] as const;
 /** One of {@link TRIP_CHANGE_KINDS}. */
 export type TripChangeKind = (typeof TRIP_CHANGE_KINDS)[number];
@@ -650,10 +656,13 @@ function readTrip(value: unknown): AssistantAction | null {
     : null;
 }
 
-/** A trip change: a known region's slug, the query in the planner's alphabet, its kinds. */
+/**
+ * A trip change: a live region's slug (a coming region has no hub to open), the query in the
+ * planner's alphabet, its kinds.
+ */
 function readTripSet(action: Record<string, unknown>): AssistantAction | null {
   const { region, query } = action;
-  if (typeof region !== 'string' || !SLUG.test(region)) return null;
+  if (typeof region !== 'string' || !SLUG.test(region) || !liveTripRegion(region)) return null;
   if (typeof query !== 'string' || !TRIP_QUERY.test(query)) return null;
   const change = (Array.isArray(action.change) ? action.change : []).filter(
     (kind): kind is TripChangeKind => typeof kind === 'string' && TRIP_CHANGES.has(kind)
@@ -667,7 +676,9 @@ function readInterviewState(action: Record<string, unknown>): AssistantAction | 
   if (action.interview !== null && !interview) return null;
   const party = cleanParty(action.party);
   const region =
-    typeof action.region === 'string' && SLUG.test(action.region) ? action.region : undefined;
+    typeof action.region === 'string' && SLUG.test(action.region) && liveTripRegion(action.region)
+      ? action.region
+      : undefined;
   return {
     type: 'interview_state',
     interview,
@@ -900,7 +911,9 @@ export function readAssistantAction(raw: unknown): AssistantAction | null {
     case 'trip_set':
       return readTripSet(action as unknown as Record<string, unknown>);
     case 'trip_undo':
-      return typeof action.region === 'string' && SLUG.test(action.region)
+      return typeof action.region === 'string' &&
+        SLUG.test(action.region) &&
+        liveTripRegion(action.region)
         ? { type: 'trip_undo', region: action.region }
         : null;
     case 'replies': {

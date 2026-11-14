@@ -3147,8 +3147,9 @@
       "gridLabel": "Arrival and departure day",
       "level": "Crowds: {level}",
       "levelLastYear": "Crowds last year: {level}",
+      "lastYearFrom": "From {date}, crowds and waits are last year’s, measured on the same weekday.",
+      "lastYearAll": "This month’s crowds and waits are last year’s, measured on the same weekday.",
       "legend": "A date without a tip is coloured by the big parks’ average crowd level.",
-      "legendLastYear": "Dates with a dashed border show last year’s measured crowds.",
       "pickArrival": "Tap your arrival day.",
       "pickDeparture": "Now your departure day.",
       "dayCount": "{count, plural, =1 {1 day} other {# days}}",
@@ -3296,7 +3297,8 @@
       "counts": "{parkDays, plural, =1 {1 park day} other {# park days}}, {restDays, plural, =0 {no rest day} =1 {1 rest day} other {# rest days}}",
       "averageDay": "Across your trip days, these parks average a peak wait of {minutes} min.",
       "error": "A forecast for one ride on one day can be off by about {minutes} min.",
-      "lastYear": "We plan these dates on last year’s measured crowds. The forecast reaches them around {date}.",
+      "lastYear": "From {date}, the plan uses last year’s measured waits on the same weekday. That far ahead, the forecast barely tells one day from another.",
+      "lastYearAll": "The plan uses last year’s measured waits on the same weekday. That far ahead, the forecast barely tells one day from another.",
       "about": "about {minutes} min",
       "split": "{count, plural, =1 {{parks} gets} other {{parks} get}} {visits, plural, =2 {a second day} other {# days}}.",
       "hopNeedsHopper": "Park hopping only counts with a Park Hopper ticket; choose it under “Fine-tune”.",
@@ -3329,7 +3331,6 @@
       },
       "rest": "Rest day",
       "evening": "Extended Evening Hours",
-      "last_year": "last year",
       "outside_ticket": "outside your ticket",
       "pinned": "pinned"
     },
@@ -3493,6 +3494,8 @@
       "none": "No {days}-day trip fits this period. Choose a longer period or a shorter trip.",
       "noneWithin": "No school holidays in {region} during this period are long enough for {days} days.",
       "bestTitle": "The best dates for your parks",
+      "lastYearFrom": "From the week of {date}, the figures are last year’s measured waits on the same weekday. That far ahead, the forecast barely tells one day from another.",
+      "lastYearAll": "All figures are last year’s measured waits on the same weekday. That far ahead, the forecast barely tells one day from another.",
       "rank": "Option {rank}",
       "wait": "Peak wait about {minutes} min",
       "below": "{percent}% below the period’s average",
@@ -3509,8 +3512,7 @@
         "party_nights": "{count, plural, =1 {1 party night} other {# party nights}}: day guests have to leave early then.",
         "water_park_closed": "A water park you chose is closed for its season.",
         "hurricane_season": "Hurricane season (June to November).",
-        "hours_not_published": "Not all hours are published yet.",
-        "estimate_last_year": "Partly worked out from last year’s crowds."
+        "hours_not_published": "Not all hours are published yet."
       },
       "basis": {
         "mixed": "Partly based on last year’s crowds",
@@ -3522,7 +3524,8 @@
       "stripWindow": "option {rank}",
       "stripLegend": "Height: your parks’ peak wait that week. The marks underneath show your options.",
       "sketch": "Day by day",
-      "rankedLower": "ranked lower: {reasons}"
+      "rankedLower": "ranked lower: {reasons}",
+      "stormPeak": "{season}: ranked lower for the storm risk, even with short waits."
     },
     "evening": {
       "plus": "+ evening: {name}",
@@ -3876,7 +3879,7 @@
         },
         "intro": {
           "lead": "Every figure is the peak wait, each big ride’s highest wait of the day, averaged over the trip’s parks.",
-          "body": "We score a trip the way the trip planner does: each park on its best day, and a day that closes early for day guests counts as a worse one. The forecast runs to {date}. After that the page shows the same weeks last year as we measured them, marked “last year”.",
+          "body": "We score a trip the way the trip planner does: each park on its best day, and a day that closes early for day guests counts as a worse one. Up to {date} we use our forecast, after it the same weeks last year as we measured them; the week strip marks the turn “last year”.",
           "bodyForecast": "We score a trip the way the trip planner does: each park on its best day, and a day that closes early for day guests counts as a worse one. Every figure on this page is our forecast."
         },
         "months": {
@@ -4237,7 +4240,7 @@
         },
         "intro": {
           "lead": "Every figure here is the peak wait: each big ride’s highest wait of the day, averaged over Disneyland, California Adventure and Universal.",
-          "body": "We score a trip the way the trip planner does: each park on its best day, and a day that closes early for day guests counts as a worse one. The forecast runs to {date}. After that the page shows the same weeks last year as we measured them, marked “last year”.",
+          "body": "We score a trip the way the trip planner does: each park on its best day, and a day that closes early for day guests counts as a worse one. Up to {date} we use our forecast, after it the same weeks last year as we measured them; the week strip marks the turn “last year”.",
           "bodyForecast": "We score a trip the way the trip planner does: each park on its best day, and a day that closes early for day guests counts as a worse one. All of it comes from our forecast."
         },
         "months": {
@@ -4528,7 +4531,7 @@
         },
         "intro": {
           "lead": "Every figure here is the peak wait: each big ride's highest wait of the day, averaged over the trip's parks.",
-          "body": "We score a trip the way the trip planner does: each park on its best day, the moves between cities counted, and a day on which a park closes early counts as a worse one. The forecast runs to {date}. After that the page shows the same weeks last year as we measured them, marked “last year”.",
+          "body": "We score a trip the way the trip planner does: each park on its best day, the moves between cities counted, and a day on which a park closes early counts as a worse one. Up to {date} we use our forecast, after it the same weeks last year as we measured them; the week strip marks the turn “last year”.",
           "bodyForecast": "We score a trip the way the trip planner does: each park on its best day, the moves between cities counted, and a day on which a park closes early counts as a worse one. Every figure on this page is our forecast."
         },
         "months": {
@@ -4844,7 +4847,7 @@
         },
         "intro": {
           "lead": "The minutes are the peak wait, each big ride's highest wait of the day, averaged over the trip's parks.",
-          "body": "We plan each trip the way the trip planner does: every park on its best day, and a day when day guests have to leave early counts as a worse day. Up to {date} we use our forecast, and for the weeks after it the crowds we measured last year, marked “last year”.",
+          "body": "We plan each trip the way the trip planner does: every park on its best day, and a day when day guests have to leave early counts as a worse day. Up to {date} we use our forecast, after it the same weeks last year as we measured them; the week strip marks the turn “last year”.",
           "bodyForecast": "We plan each trip the way the trip planner does: every park on its best day, and a day when day guests have to leave early counts as a worse day. Every figure is our forecast."
         },
         "months": {
@@ -5389,7 +5392,9 @@
         "rest": "Trip planner: rest days changed",
         "tickets": "Trip planner: tickets added",
         "hotel": "Trip planner: hotel added",
-        "pace": "Trip planner: pace changed"
+        "pace": "Trip planner: pace changed",
+        "route": "Trip planner: route changed",
+        "buffer": "Trip planner: time for hotel moves set"
       },
       "day": "Day planner: {park}, {date}",
       "undo": "Undo",

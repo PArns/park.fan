@@ -6,6 +6,7 @@
 
 import assert from 'node:assert/strict';
 import { readAssistantAction } from '@/lib/assistant/actions.ts';
+import { interviewEnded, interviewPlanStood, interviewRegion } from '@/lib/assistant/interview.ts';
 import {
   assistantPlannerSnapshot,
   rememberParkyChange,
@@ -851,6 +852,50 @@ check(
   null,
   'an undo names a region slug'
 );
+// Only a region the site has live: a coming one has no hub to open or undo in.
+check(
+  readAssistantAction({
+    type: 'trip_set',
+    region: 'japan',
+    query: 'from=2027-04-01&to=2027-04-10',
+    change: ['route'],
+  }),
+  null,
+  'a trip change for a region not live is refused'
+);
+check(readAssistantAction({ type: 'trip_undo', region: 'japan' }), null, 'and so is its undo');
+check(
+  readAssistantAction({
+    type: 'trip_set',
+    region: 'orlando',
+    query: 'from=2027-10-14&to=2027-10-21',
+    change: ['dates', 'parks', 'route', 'buffer'],
+  }).change,
+  ['dates', 'parks', 'route', 'buffer'],
+  'every kind of a change, the route and the buffer among them'
+);
+
+// The interview as the statistic counts it: its region, whether its plan stood.
+{
+  const trip = {
+    kind: 'trip',
+    region: 'orlando',
+    step: 'refine',
+    answered: ['region', 'dates', 'tickets'],
+    skipped: ['parks'],
+    mustDoRides: [],
+    source: 'chat',
+  };
+  check(interviewRegion(trip), 'orlando', "a trip's region");
+  check(interviewRegion({ ...trip, region: undefined }), 'none', 'none before the region step');
+  check(interviewRegion({ kind: 'day', region: 'orlando' }), 'none', 'a park day has none');
+  check(interviewPlanStood(trip), true, 'the core answered or passed: the plan stood');
+  check(
+    interviewEnded({ ...trip, skipped: [] }, 'left'),
+    { kind: 'trip', outcome: 'left', steps: 3, plan: false, region: 'orlando' },
+    'left before the parks: no plan'
+  );
+}
 check(
   readAssistantAction({
     type: 'replies',

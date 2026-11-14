@@ -23,6 +23,7 @@ import {
   shortParkName,
   slimRegion,
   withGroupNames,
+  factDays,
 } from '../lib/trip-regions/hub-data.ts';
 import {
   isTripRegionMonthInRange,
@@ -35,13 +36,7 @@ import {
 } from '../lib/trip-regions/paths.ts';
 import { tripRegionRedirect } from '../lib/trip-regions/redirects.ts';
 import { flatStretch } from '../lib/trip-regions/best-time.ts';
-import {
-  breakFacts,
-  factDays,
-  isoWeekday,
-  usualHours,
-  weekdayFacts,
-} from '../lib/trip-regions/hub-facts.ts';
+import { breakFacts, isoWeekday, usualHours, weekdayFacts } from '../lib/trip-regions/hub-facts.ts';
 import { TRIP_REGION_CACHE_CONTROL, tripRegionRelayTarget } from '../lib/trip-regions/relay.ts';
 
 const fixture = (name) =>

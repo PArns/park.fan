@@ -3147,8 +3147,9 @@
       "gridLabel": "An- und Abreisetag",
       "level": "Andrang: {level}",
       "levelLastYear": "Andrang im letzten Jahr: {level}",
+      "lastYearFrom": "Ab dem {date} zeigen Andrang und Wartezeiten das letzte Jahr, gemessen am gleichen Wochentag.",
+      "lastYearAll": "Andrang und Wartezeiten zeigen in diesem Monat das letzte Jahr, gemessen am gleichen Wochentag.",
       "legend": "Ein Datum ohne Tipp ist nach dem mittleren Andrang der großen Parks gefärbt.",
-      "legendLastYear": "Gestrichelt umrandete Daten zeigen den gemessenen Andrang des letzten Jahres.",
       "pickArrival": "Tippe auf deinen Anreisetag.",
       "pickDeparture": "Jetzt den Abreisetag.",
       "dayCount": "{count, plural, =1 {1 Tag} other {# Tage}}",
@@ -3296,7 +3297,8 @@
       "counts": "{parkDays, plural, =1 {1 Parktag} other {# Parktage}}, {restDays, plural, =0 {kein Ruhetag} =1 {1 Ruhetag} other {# Ruhetage}}",
       "averageDay": "Im Schnitt deiner Reisetage liegt die Spitzenwartezeit dieser Parks bei {minutes} Min.",
       "error": "Die Prognose für eine Bahn an einem Tag kann um etwa {minutes} Min. danebenliegen.",
-      "lastYear": "Diese Tage planen wir mit den gemessenen Wartezeiten des letzten Jahres. Die Prognose erreicht sie etwa am {date}.",
+      "lastYear": "Ab dem {date} rechnet der Plan mit den gemessenen Wartezeiten des letzten Jahres am gleichen Wochentag. So weit voraus unterscheidet die Prognose die Tage kaum.",
+      "lastYearAll": "Der Plan rechnet mit den gemessenen Wartezeiten des letzten Jahres am gleichen Wochentag. So weit voraus unterscheidet die Prognose die Tage kaum.",
       "about": "etwa {minutes} Min.",
       "split": "{parks} {count, plural, =1 {bekommt} other {bekommen}} {visits, plural, =2 {einen zweiten Tag} other {# Tage}}.",
       "hopNeedsHopper": "Park-Hopping zählt nur mit einem Park-Hopper-Ticket; wähle es unter „Feinabstimmung“.",
@@ -3329,7 +3331,6 @@
       },
       "rest": "Ruhetag",
       "evening": "Extended Evening Hours",
-      "last_year": "letztes Jahr",
       "outside_ticket": "außerhalb deines Tickets",
       "pinned": "fest"
     },
@@ -3493,6 +3494,8 @@
       "none": "In diesem Zeitraum passt keine Reise mit {days} Tagen. Wähle einen längeren Zeitraum oder eine kürzere Reise.",
       "noneWithin": "Keine Schulferien in {region} sind in diesem Zeitraum lang genug für {days} Tage.",
       "bestTitle": "Die besten Reisedaten für deine Parks",
+      "lastYearFrom": "Ab der Woche vom {date} sind die Zahlen die gemessenen Wartezeiten des letzten Jahres am gleichen Wochentag. So weit voraus unterscheidet die Prognose die Tage kaum.",
+      "lastYearAll": "Alle Zahlen sind die gemessenen Wartezeiten des letzten Jahres am gleichen Wochentag. So weit voraus unterscheidet die Prognose die Tage kaum.",
       "rank": "Vorschlag {rank}",
       "wait": "Spitzenwartezeit etwa {minutes} Min.",
       "below": "{percent} % unter dem Durchschnitt des Zeitraums",
@@ -3509,8 +3512,7 @@
         "party_nights": "{count, plural, =1 {1 Party-Abend} other {# Party-Abende}}: Tagesgäste müssen dann früher gehen.",
         "water_park_closed": "Ein gewählter Wasserpark hat in dieser Zeit geschlossen.",
         "hurricane_season": "Hurrikansaison (Juni bis November).",
-        "hours_not_published": "Noch nicht alle Öffnungszeiten sind veröffentlicht.",
-        "estimate_last_year": "Teils mit den gemessenen Wartezeiten des letzten Jahres gerechnet."
+        "hours_not_published": "Noch nicht alle Öffnungszeiten sind veröffentlicht."
       },
       "basis": {
         "mixed": "Teils mit den gemessenen Wartezeiten des letzten Jahres gerechnet",
@@ -3522,7 +3524,8 @@
       "stripWindow": "Vorschlag {rank}",
       "stripLegend": "Höhe: die Spitzenwartezeit deiner Parks in dieser Woche. Die Marken darunter zeigen deine Vorschläge.",
       "sketch": "Tag für Tag",
-      "rankedLower": "weiter hinten eingeordnet: {reasons}"
+      "rankedLower": "weiter hinten eingeordnet: {reasons}",
+      "stormPeak": "{season}: wegen der Sturmgefahr weiter hinten eingeordnet, auch bei kurzen Wartezeiten."
     },
     "evening": {
       "plus": "+ Abend: {name}",
@@ -3876,7 +3879,7 @@
         },
         "intro": {
           "lead": "Jede Zahl ist die Spitzenwartezeit, der Tageshöchstwert jeder großen Bahn, gemittelt über die Parks der Reise.",
-          "body": "Eine Reise bewerten wir wie der Reiseplaner: jeder Park an seinem besten Tag, und ein Tag, an dem Tagesgäste früher gehen müssen, zählt als schlechterer Tag. Die Prognose reicht bis {date}. Danach zeigt die Seite dieselben Wochen im Vorjahr, wie wir sie gemessen haben, markiert mit „Vorjahr“.",
+          "body": "Eine Reise bewerten wir wie der Reiseplaner: jeder Park an seinem besten Tag, und ein Tag, an dem Tagesgäste früher gehen müssen, zählt als schlechterer Tag. Bis {date} rechnen wir mit unserer Prognose, danach mit denselben Wochen im Vorjahr, so wie wir sie gemessen haben; in der Wochenleiste steht dort „Vorjahr“.",
           "bodyForecast": "Eine Reise bewerten wir wie der Reiseplaner: jeder Park an seinem besten Tag, und ein Tag, an dem Tagesgäste früher gehen müssen, zählt als schlechterer Tag. Jede Zahl auf dieser Seite ist unsere Prognose."
         },
         "months": {
@@ -4237,7 +4240,7 @@
         },
         "intro": {
           "lead": "Jede Zahl hier ist die Spitzenwartezeit: der höchste Wert jeder großen Bahn am Tag, gemittelt über Disneyland, California Adventure und Universal.",
-          "body": "Eine Reise bewerten wir wie der Reiseplaner: jeder Park an seinem besten Tag, und ein Tag, an dem Tagesgäste früher gehen müssen, zählt als schlechterer Tag. Die Prognose reicht bis {date}. Danach stehen hier dieselben Wochen im Vorjahr, so wie wir sie gemessen haben, mit dem Hinweis „Vorjahr“.",
+          "body": "Eine Reise bewerten wir wie der Reiseplaner: jeder Park an seinem besten Tag, und ein Tag, an dem Tagesgäste früher gehen müssen, zählt als schlechterer Tag. Bis {date} rechnen wir mit unserer Prognose, danach mit denselben Wochen im Vorjahr, so wie wir sie gemessen haben; in der Wochenleiste steht dort „Vorjahr“.",
           "bodyForecast": "Eine Reise bewerten wir wie der Reiseplaner: jeder Park an seinem besten Tag, und ein Tag, an dem Tagesgäste früher gehen müssen, zählt als schlechterer Tag. Alle Werte stammen aus unserer Prognose."
         },
         "months": {
@@ -4528,7 +4531,7 @@
         },
         "intro": {
           "lead": "Jede Zahl hier ist die Spitzenwartezeit: der Tageshöchstwert jeder großen Bahn, gemittelt über die Parks der Reise.",
-          "body": "Eine Reise bewerten wir wie der Reiseplaner: jeder Park an seinem besten Tag, die Fahrten zwischen den Städten eingerechnet, und ein Tag, an dem ein Park früher schließt, zählt als schlechterer Tag. Die Prognose reicht bis {date}. Danach zeigt die Seite dieselben Wochen im Vorjahr, wie wir sie gemessen haben, markiert mit „Vorjahr“.",
+          "body": "Eine Reise bewerten wir wie der Reiseplaner: jeder Park an seinem besten Tag, die Fahrten zwischen den Städten eingerechnet, und ein Tag, an dem ein Park früher schließt, zählt als schlechterer Tag. Bis {date} rechnen wir mit unserer Prognose, danach mit denselben Wochen im Vorjahr, so wie wir sie gemessen haben; in der Wochenleiste steht dort „Vorjahr“.",
           "bodyForecast": "Eine Reise bewerten wir wie der Reiseplaner: jeder Park an seinem besten Tag, die Fahrten zwischen den Städten eingerechnet, und ein Tag, an dem ein Park früher schließt, zählt als schlechterer Tag. Jede Zahl auf dieser Seite ist unsere Prognose."
         },
         "months": {
@@ -4844,7 +4847,7 @@
         },
         "intro": {
           "lead": "Die Minuten sind die Spitzenwartezeit, der Tageshöchstwert jeder großen Bahn, gemittelt über die Parks der Reise.",
-          "body": "Wir planen jede Reise wie der Reiseplaner: jeder Park an seinem besten Tag, und ein Tag, an dem Tagesgäste früher gehen müssen, zählt als schlechterer Tag. Bis {date} rechnen wir mit unserer Prognose, für die Wochen danach mit dem gemessenen Andrang des Vorjahres, markiert mit „Vorjahr“.",
+          "body": "Wir planen jede Reise wie der Reiseplaner: jeder Park an seinem besten Tag, und ein Tag, an dem Tagesgäste früher gehen müssen, zählt als schlechterer Tag. Bis {date} rechnen wir mit unserer Prognose, danach mit denselben Wochen im Vorjahr, so wie wir sie gemessen haben; in der Wochenleiste steht dort „Vorjahr“.",
           "bodyForecast": "Wir planen jede Reise wie der Reiseplaner: jeder Park an seinem besten Tag, und ein Tag, an dem Tagesgäste früher gehen müssen, zählt als schlechterer Tag. Alle Zahlen sind unsere Prognose."
         },
         "months": {
@@ -5389,7 +5392,9 @@
         "rest": "Reiseplaner: Ruhetage geändert",
         "tickets": "Reiseplaner: Tickets eingetragen",
         "hotel": "Reiseplaner: Hotel eingetragen",
-        "pace": "Reiseplaner: Tempo geändert"
+        "pace": "Reiseplaner: Tempo geändert",
+        "route": "Reiseplaner: Route geändert",
+        "buffer": "Reiseplaner: Zeit für Hotelwechsel eingestellt"
       },
       "day": "Tagesplaner: {park}, {date}",
       "undo": "Rückgängig",

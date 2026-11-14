@@ -25,11 +25,11 @@ import {
   ticketedEvenings,
   weekendAgainstWeekday,
   type ResortMonthSummary,
+  factDays,
 } from '@/lib/trip-regions/hub-data';
 import {
   breakFacts,
   countWords,
-  factDays,
   parkClosures,
   parkMeans,
   usualHours,

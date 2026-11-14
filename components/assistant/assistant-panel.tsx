@@ -41,7 +41,13 @@ import {
   type AssistantLookup,
 } from '@/lib/assistant/use-assistant-chat';
 import { useAssistantSession } from '@/lib/assistant/use-assistant-session';
-import { drawOpener, greetingKeyOf, sessionOpener, suggestionKeysOf } from '@/lib/assistant/opener';
+import {
+  drawOpener,
+  greetingKeyOf,
+  sessionOpener,
+  suggestionKeysOf,
+  type AssistantOpener,
+} from '@/lib/assistant/opener';
 import { yoursValues } from '@/lib/assistant/parky/yours';
 import { yoursHere } from '@/lib/assistant/parky/yours-here';
 import { AssistantSubtitle } from './assistant-subtitle';
@@ -217,8 +223,8 @@ export function AssistantPanel({
   const undo = async (messageId: string, receipt: AssistantReceipt) => {
     const outcome = await act(
       receipt.planner === 'trip'
-        ? { type: 'trip_undo', region: receipt.region }
-        : { type: 'planner_undo', park: receipt.park, date: receipt.date }
+        ? { type: 'trip_undo', region: receipt.region, via: 'receipt' }
+        : { type: 'planner_undo', park: receipt.park, date: receipt.date, via: 'receipt' }
     );
     chat.settleReceipt(
       messageId,
@@ -237,6 +243,14 @@ export function AssistantPanel({
   useEffect(() => {
     askedNow.current = asked;
   }, [asked]);
+  // Which greeting a new chat showed, once per chat: whether a personal one raises first questions.
+  const greeted = useRef<AssistantOpener | null>(null);
+  const greetingShown = open && session.state === 'ready' && chat.messages.length === 0;
+  useEffect(() => {
+    if (!greetingShown || greeted.current === opener) return;
+    greeted.current = opener;
+    trackSiteEvent('assistant_greeting', { kind: opener.yours?.kind ?? 'plain' });
+  }, [greetingShown, opener]);
   useEffect(() => {
     if (!open) return;
     askedAtOpen.current = askedNow.current;
@@ -553,7 +567,9 @@ export function AssistantPanel({
                         <AssistantReplies
                           replies={message.replies}
                           disabled={chat.phase !== 'idle'}
-                          onPick={(reply) => void chat.send(reply, 'chip')}
+                          onPick={(reply, position) =>
+                            void chat.send(reply, 'chip', undefined, position)
+                          }
                         />
                       </div>
                     )}

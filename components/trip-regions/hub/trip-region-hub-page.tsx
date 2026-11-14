@@ -23,6 +23,7 @@ import {
   slimRegion,
 } from '@/lib/trip-regions/hub-data';
 import { bestTimeYear } from '@/lib/trip-regions/best-time';
+import { lastYearStart } from '@/lib/trip-regions/plan-copy';
 import {
   TRIP_CALENDAR_ID,
   TRIP_PLANNER_ID,
@@ -122,6 +123,9 @@ export async function TripRegionHubPage({
   const week = calendar ? firstDays(calendar, firstFrom) : [];
   const lastYearDays = calendar?.days.filter((d) => dayBasis(d) === 'last_year') ?? [];
   const lastYear = !!calendar && lastYearDays.length > calendar.days.length / 2;
+  const lastYearFrom = calendar
+    ? lastYearStart(calendar.days, (d) => dayBasis(d) === 'last_year')
+    : null;
   const pagePath = tripRegionPath(region.slug, locale, month);
   const bestTimePath = tripRegionBestTimePath(region.slug, locale);
   const planHref = `${pagePath}#${TRIP_PLANNER_ID}`;
@@ -236,14 +240,12 @@ export async function TripRegionHubPage({
               }
             />
             {/* Past 60 days a day reads last year's measured figure: said once, not on each square. */}
-            {lastYearDays.length > 0 && (
+            {lastYearFrom && (
               <p
                 role="note"
                 className="border-border/60 bg-muted/40 mb-4 max-w-3xl rounded-xl border px-4 py-3 text-sm leading-relaxed"
               >
-                {t('lastYearFrom', {
-                  date: formatHubDate(lastYearDays[0].date, locale, 'dayMonth'),
-                })}
+                {t('lastYearFrom', { date: formatHubDate(lastYearFrom.from, locale, 'dayMonth') })}
               </p>
             )}
             {calendar && week.length > 0 ? (
