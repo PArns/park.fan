@@ -1,5 +1,5 @@
 ---
-title: 'Orlando: the trip planner gives each of your parks its quietest day of the trip'
+title: 'Plan your Orlando trip without getting kicked out of Magic Kingdom at 6 pm'
 translationKey: orlando-trip-planner
 date: '2026-11-13'
 author: patrick

@@ -1,5 +1,5 @@
 ---
-title: 'Orlando: Mit dem Reiseplaner kommt jeder deiner Parks an seinen ruhigsten Reisetag'
+title: 'Orlando planen, ohne um 18 Uhr aus dem Magic Kingdom zu fliegen'
 translationKey: orlando-trip-planner
 date: '2026-11-13'
 author: patrick

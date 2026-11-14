@@ -1,5 +1,5 @@
 ---
-title: 'Orlando: met de reisplanner komt elk van je parken op zijn rustigste reisdag'
+title: 'Orlando plannen zonder om 18 uur uit Magic Kingdom te vliegen'
 translationKey: orlando-trip-planner
 date: '2026-11-13'
 author: patrick

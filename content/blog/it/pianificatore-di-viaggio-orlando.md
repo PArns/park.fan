@@ -1,5 +1,5 @@
 ---
-title: 'Orlando: con il pianificatore di viaggio ogni tuo parco finisce nel suo giorno più tranquillo'
+title: 'Pianificare Orlando senza farti cacciare da Magic Kingdom alle 18'
 translationKey: orlando-trip-planner
 date: '2026-11-13'
 author: patrick
