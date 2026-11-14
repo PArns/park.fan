@@ -165,13 +165,7 @@ export type AssistantQuestionKind = 'suggestion' | 'typed' | 'chip' | 'interview
  * of the five general ones.
  */
 export type AssistantGreetingKind =
-  | 'today'
-  | 'yesterday'
-  | 'tomorrow'
-  | 'soon'
-  | 'trip'
-  | 'back'
-  | 'plain';
+  'today' | 'yesterday' | 'tomorrow' | 'soon' | 'trip' | 'back' | 'plain';
 
 /** A trip or a park day, as Parky's interview and his changes name a planner. */
 export type AssistantPlannerKind = 'trip' | 'day';

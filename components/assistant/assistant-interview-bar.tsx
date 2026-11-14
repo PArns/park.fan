@@ -33,7 +33,10 @@ export function AssistantInterviewBar() {
 
   const end = (current: AssistantInterview) => {
     interviewStore.set(null);
-    trackSiteEvent('assistant_interview_ended', interviewEnded(current, refining ? 'done' : 'left'));
+    trackSiteEvent(
+      'assistant_interview_ended',
+      interviewEnded(current, refining ? 'done' : 'left')
+    );
   };
 
   return (
