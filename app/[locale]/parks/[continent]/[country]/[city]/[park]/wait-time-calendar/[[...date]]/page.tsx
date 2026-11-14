@@ -16,7 +16,11 @@ import { getBestDaysCalendarSeed, getCalendarMonthSeed } from '@/lib/api/integra
 import { hasParkStatsPage } from '@/lib/api/stats';
 import type { BestDaysSnapshot } from '@/lib/api/integrated-calendar';
 import { summarizeCalendarMonth } from '@/lib/parks/calendar-month-summary';
-import { seasonDaysOfMonth, seasonsNeedDayStatus } from '@/lib/parks/park-season-days';
+import {
+  eventSeasonsNearToday,
+  seasonDaysOfMonth,
+  seasonsNeedDayStatus,
+} from '@/lib/parks/park-season-days';
 import type { IntegratedCalendarResponse, ParkWithAttractions } from '@/lib/api/types';
 import {
   cityHasOwnPage,
@@ -503,6 +507,7 @@ export default async function ParkCalendarPage({ params }: ParkCalendarPageProps
               city={city}
               parkSlug={parkSlug}
               parkPath={parkPath}
+              seasons={eventSeasonsNearToday(seasons, todayIso)}
             />
           }
           tiles={

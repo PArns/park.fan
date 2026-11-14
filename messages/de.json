@@ -1415,6 +1415,8 @@
       "reasonWeather": "Niederschlag",
       "reasonHoliday": "Feiertage und Ferien",
       "reasonPrice": "Tagesticket",
+      "reasonSeason": "Saison",
+      "noSeason": "Reguläre Saison",
       "unitMm": "{value} mm",
       "unitFlags": "{value, plural, =0 {keine} one {# Merkmal} other {# Merkmale}}",
       "unitSteps": "{value, plural, one {# Stufe} other {# Stufen}}",
