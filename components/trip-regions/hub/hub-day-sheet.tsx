@@ -275,11 +275,9 @@ function SheetPark({
             <p className="text-muted-foreground text-xs">{t('outlook')}</p>
           )}
           <ul className="mt-1.5 space-y-0.5 text-sm">
-            {parkDay?.early && (
+            {parkDay?.early && tRegion.has(`early.${parkDay.early.kind}`) && (
               <li>
-                {tRegion(parkDay.early.kind === 'early_entry' ? 'earlyEntry' : 'earlyAdmission', {
-                  time: clock(parkDay.early.opensAt),
-                })}
+                {tRegion(`early.${parkDay.early.kind}`, { time: clock(parkDay.early.opensAt) })}
               </li>
             )}
             {closesEarly(parkDay) && dayGuestClose(parkDay) && (
