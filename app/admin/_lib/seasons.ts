@@ -2,7 +2,7 @@ import { format, parseISO } from 'date-fns';
 import { de } from 'date-fns/locale';
 import { isHttpUrl } from '@/lib/admin/provenance';
 import { isIsoDate } from '@/lib/utils/calendar-utils';
-import { addDays, daysBetween } from '@/lib/utils/park-day';
+import { addDays } from '@/lib/utils/park-day';
 import type { ParkSeason, ParkSeasonKind, ParkSeasonStatus } from './types';
 
 /**
@@ -161,28 +161,6 @@ export function parseSeasonDates(text: string): { dates: string[]; unreadable: s
 }
 
 /**
- * Picked days as a person scans them, one month per group: „Okt. 3, 4, 10, 11 · Nov. 1“, with the
- * year where the days span two.
- */
-export function formatSeasonDates(dates: readonly string[]): string {
-  const sorted = uniqueDays(dates.filter(isRealDay));
-  const years = new Set(sorted.map((date) => date.slice(0, 4)));
-  const months = new Map<string, number[]>();
-  for (const date of sorted) {
-    const key = date.slice(0, 7);
-    months.set(key, [...(months.get(key) ?? []), Number(date.slice(8))]);
-  }
-  return [...months.entries()]
-    .map(([month, days]) => {
-      const label = format(parseISO(`${month}-01`), years.size > 1 ? 'MMM yyyy' : 'MMM', {
-        locale: de,
-      });
-      return `${label} ${days.join(', ')}`;
-    })
-    .join(' · ');
-}
-
-/**
  * A range as a person would write it, or the raw values while it is not one yet: a cleared
  * `<input type="date">` reports `''`.
  */
@@ -197,10 +175,12 @@ export function formatSeasonRange(start: string, end: string): string {
   return `${format(from, 'd. MMM yyyy', { locale: de })} – ${format(to, 'd. MMM yyyy', { locale: de })}`;
 }
 
-/** Days in a range, both ends counted; 0 while it is not one. */
-export function rangeLength(start: string, end: string): number {
-  if (!isRealDay(start) || !isRealDay(end) || end < start) return 0;
-  return daysBetween(start, end) + 1;
+/** Every day of a range of real days, both ends included; none while it is not one. */
+export function rangeDays(start: string, end: string): string[] {
+  if (!isRealDay(start) || !isRealDay(end)) return [];
+  const days: string[] = [];
+  for (let day = start; day <= end; day = addDays(day, 1)) days.push(day);
+  return days;
 }
 
 /* ------------------------------------------------------------------ the draft */

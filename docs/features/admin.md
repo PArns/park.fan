@@ -476,7 +476,9 @@ the backend's curation doc, the routes and checks in its
 
 One form edits a season wherever it is opened (`SeasonEditor`,
 `seasons/_components/season-editor.tsx`): from a park's „Saisons“ tab and from `/admin/seasons`.
-The pure half is `_lib/seasons.ts`, pinned by `pnpm test:admin-seasons`.
+The pure half is `_lib/seasons.ts`, pinned by `pnpm test:admin-seasons`. A row draws its kind and
+status as the park page does (`SeasonKindIcon`, `SEASON_STATUS_TONE` in `components/parks/`), and
+the kinds and statuses are the site's types (`lib/api/types.ts`).
 
 - **`/admin/seasons`** lists every park's seasons by kind, filtered by year (the current one
   unless the address says `year=all`), kind, status, trip region, park and „Läuft heute“. The
@@ -488,11 +490,16 @@ The pure half is `_lib/seasons.ts`, pinned by `pnpm test:admin-seasons`.
   own ticket, price and currency, the rides it concerns (`MultiSearchSelect` over the park's rides,
   retired ones too, so a season that names one still shows its name), the park's page, the source,
   when the source was last checked (`confirmedAt`, with „Jetzt“) and a note.
-- **The picked days** come from the calendar (two months, limited to the range), from whole
-  weekdays of the range (`weekdayDates`: a click on „Sa“ picks every Saturday, another takes them
-  off), or from a pasted list in `2026-10-03` or `3.10.2026` (`parseSeasonDates`); days outside
-  the range and text it cannot read are named, not added. Under the switch the days stand as text
-  per month (`formatSeasonDates`), and a range moved past picked days offers to remove them.
+- **The picked days** are shown in `DayCalendar` (`_ui/day-calendar.tsx`): every month of the
+  range at once, up to three side by side as the dialog's width allows, small cells, a picked day
+  a filled `primary/20` pill, the padding days of a month blank, so no day shows twice. The grids
+  are the planner's (`monthMatrix`, `weekdayLabels` in `lib/planner/month-grid.ts`), Monday first.
+  A click toggles a day, Shift-click every day since the last click, the month's name the whole
+  month; one tab stop, arrows move by day and week. Above it „Alle“, „Keine“, „Wochenenden“ and
+  „Fr–So“ replace the pick, the weekday chips add or take off every such day of the range
+  (`weekdayDates`). A pasted list in `2026-10-03` or `3.10.2026` (`parseSeasonDates`) adds its
+  days; days outside the range and text it cannot read are named, not added. A range moved past
+  picked days offers to remove them. Read-only, the calendar stays as the record of the days.
 - **The API's checks run in the form** (`seasonProblems`, at each field): real days, end not before
   start, at most 200 characters of name and 4,000 of note, at most 366 days inside the range, a
   price of 0 or more with a three-letter currency, `HH:MM`, http(s) addresses up to 2,000
