@@ -13,6 +13,16 @@ heading, and the same pull request writes the public entry in `content/changelog
 
 ## 2.21.1 (2026-11-14) – Saisons im Kalender und im Admin, alle Ticket-Shops, MCP schreibt, Planer-Feinschliff
 
+### „Wartezeiten heute“ zeigt den Tag auch bei Parks, die um Mitternacht schließen
+
+Six Flags Qiddiya City öffnet um 16:00 und schließt um 00:00 (Asia/Riyadh). Der Tages-Chart einer
+Attraktion nahm die Schließzeit als letzten Slot, also `00:00`, und verwarf damit jeden Wert nach
+der Öffnung: übrig blieb ein Balken bei 00h, ohne KI-Prognose. Das Fenster rechnet jetzt
+`dailyChartWindow` (`lib/parks/daily-chart-window.ts`); schließt ein Park um oder nach Mitternacht
+oder hat 24 Stunden offen, endet der Chart bei 23:45. `pnpm test:daily-chart-window` deckt
+Schließzeiten um 00:00, 01:00 und 02:00 und den 24-Stunden-Tag ab. Die API korrigiert dieselbe
+Grenze in Verlauf und Spitzenzeit (PAR-1324).
+
 Geschnitten am 2026-11-14 aus 13 Fragmenten in `docs/changelog.d/`. Der öffentliche Eintrag ist `content/changelog/2.21.1.md`. Neueste Abschnitte zuerst.
 
 ### Der Admin zeigt den Reiseplaner und die Regionen-Hubs unter Traffic
