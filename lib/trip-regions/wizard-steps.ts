@@ -98,7 +98,8 @@ export function wizardQuestions(
 ): Array<{ key: TripWizardStepKey; questions: TripWizardQuestion[] }> {
   const pick = (entries: Array<[TripWizardQuestion, boolean]>) =>
     entries.filter(([, asked]) => asked).map(([question]) => question);
-  const move = facts.moveBuffers && (facts.nights === null || facts.nights >= MIN_NIGHTS_FOR_A_MOVE);
+  const move =
+    facts.moveBuffers && (facts.nights === null || facts.nights >= MIN_NIGHTS_FOR_A_MOVE);
   const all: Array<{ key: TripWizardStepKey; questions: TripWizardQuestion[] }> = [
     { key: 'dates', questions: ['dates'] },
     { key: 'parks', questions: ['parks'] },
@@ -206,10 +207,39 @@ export function tripWizardFacts(
   };
 }
 
-/** Where a step sits in the list: its own index, or the index of the step it went into. */
-export function wizardStepIndex(
-  steps: readonly TripWizardStep[],
-  key: TripWizardStepKey
-): number {
-  return steps.findIndex((step) => step.key === key || step.merged.includes(key));
+/** The step each question belongs to, wherever it is drawn. */
+export const QUESTION_STEP: Readonly<Record<TripWizardQuestion, TripWizardStepKey>> = {
+  dates: 'dates',
+  parks: 'parks',
+  hotel: 'hotel',
+  area: 'hotel',
+  gateways: 'route',
+  cities: 'route',
+  city_areas: 'hotels',
+  move_buffer: 'hotels',
+  rest: 'pace',
+  second_days: 'pace',
+  travel_days: 'pace',
+  evenings: 'evenings',
+  fireworks: 'evenings',
+  blocks: 'evenings',
+  hop: 'evenings',
+  tickets: 'tickets',
+};
+
+/** The questions of one step's body inside a drawn step: the host's own, or a merged step's. */
+export function stepQuestions(step: TripWizardStep, key: TripWizardStepKey): TripWizardQuestion[] {
+  return step.questions.filter((question) => QUESTION_STEP[question] === key);
+}
+
+/**
+ * Where a step sits in the list: its own index, the index of the step it went into, or where the
+ * region has no such step, the first step after it (`hotel` in Japan opens the Route). `-1` only
+ * past the last.
+ */
+export function wizardStepIndex(steps: readonly TripWizardStep[], key: TripWizardStepKey): number {
+  const at = steps.findIndex((step) => step.key === key || step.merged.includes(key));
+  if (at !== -1) return at;
+  const order = TRIP_WIZARD_STEPS.indexOf(key);
+  return steps.findIndex((step) => TRIP_WIZARD_STEPS.indexOf(step.key) > order);
 }

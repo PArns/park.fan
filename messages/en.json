@@ -3787,7 +3787,45 @@
     },
     "codeKey": "Parks",
     "crowdColour": "Colour: how busy the park is that day, compared with a normal day there.",
-    "peakWait": "peak wait about {minutes} min"
+    "peakWait": "peak wait about {minutes} min",
+    "wizard": {
+      "progress": "Progress",
+      "stepOf": "Step {step} of {total}",
+      "jump": "Step {step}, {label}",
+      "finished": "Done",
+      "back": "Back",
+      "skip": "Skip",
+      "next": "Next",
+      "finish": "Done, see the plan",
+      "showPlan": "See the plan",
+      "steps": {
+        "dates": "Dates",
+        "parks": "Parks",
+        "hotel": "Hotel",
+        "route": "Route",
+        "hotels": "Hotels",
+        "pace": "Pace",
+        "evenings": "Evenings",
+        "tickets": "Tickets"
+      },
+      "ask": {
+        "dates": "When are you {inRegion}?",
+        "parks": "Which parks do you want to see?",
+        "hotel": "Where are you staying?",
+        "route": "Where do you land, and where next?",
+        "hotels": "Which area are you staying in?",
+        "pace": "How full should the trip be?",
+        "evenings": "And in the evenings?",
+        "tickets": "Do you have tickets yet?",
+        "finale": "Your plan is ready."
+      },
+      "ribbon": {
+        "parkDays": "{count, plural, =1 {1 park day} other {# park days}}",
+        "free": "{count} free",
+        "peak": "peak about {minutes} min",
+        "show": "Show the plan now"
+      }
+    }
   },
   "tripRegions": {
     "orlando": {

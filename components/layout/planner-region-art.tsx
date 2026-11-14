@@ -89,14 +89,11 @@ export function PlannerRegionArt({
   return <SceneFade Scene={Scene} fallback={photoArt} />;
 }
 
-/** A loaded scene filling its box, faded in over the card's ground rather than cut in. */
-function SceneFade({
-  Scene,
-  fallback,
-}: {
-  Scene: RegionScene;
-  fallback: React.ReactNode;
-}) {
+/**
+ * A loaded scene filling its box, faded in over the card's ground rather than cut in; the scene
+ * comes from {@link useRegionScene}.
+ */
+export function SceneFade({ Scene, fallback }: { Scene: RegionScene; fallback: React.ReactNode }) {
   return (
     <Suspense fallback={null}>
       <span
@@ -141,11 +138,7 @@ export function RegionSceneCut({ regionId }: { regionId: string }) {
       aria-hidden="true"
       className="bg-muted relative block h-9 w-14 shrink-0 overflow-hidden rounded-md ring-1 ring-black/10 dark:ring-white/10"
     >
-      {Scene && (
-        <Suspense fallback={null}>
-          <Scene className="h-full w-full" fallback={null} />
-        </Suspense>
-      )}
+      {Scene && <SceneFade Scene={Scene} fallback={null} />}
     </span>
   );
 }

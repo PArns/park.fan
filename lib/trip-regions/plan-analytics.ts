@@ -39,26 +39,13 @@ export type TrackTripEvent = <Name extends TripEventName>(
   ...args: TripEventArgs<Name>
 ) => void;
 
-/** The regions whose planner started in this page load, so picked dates start it only once. */
-const startedRegions = new Set<string>();
-
 /** Report a trip planner event for the region it plans, by its slug (`orlando`). */
 export function trackTripEvent<Name extends TripEventName>(
   region: string,
   name: Name,
   ...[props]: TripEventArgs<Name>
 ): void {
-  if (name === 'trip_planner_started') startedRegions.add(region);
   trackSiteEvent<string>(name, { region, ...props } as Record<string, string | number | boolean>);
-}
-
-/**
- * The desk's way in: the first dates picked in a page load where nothing else started the planner
- * (the hero, its button, a link) count as its start, `source: dates`.
- */
-export function trackDatesStart(region: string): void {
-  if (!startedRegions.has(region))
-    trackTripEvent(region, 'trip_planner_started', { source: 'dates' });
 }
 
 /** How many parks a plan left out, as `trip_left_out_fix` buckets it. */

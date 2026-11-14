@@ -258,3 +258,45 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`trip-region-home-stop.tsx`](../../components/trip-regions/trip-region-home-stop.tsx)
 
 - `TripRegionHomeStop` _component_: The homepage's stop for a trip region's hub: what it is and its link, in the region's own words (`tripRegions.<slug>.homeStory`), beside the region's parks by resort, from the open `/trip-regions/:region` (a day in the Data Cache).
+
+### [`wizard/plan-ribbon.tsx`](../../components/trip-regions/wizard/plan-ribbon.tsx)
+
+- `PlanRibbon` _component_: The plan in one row while the assistant asks: a field per trip day, a park day in its crowd colour with the park's code, a free day empty, a travel day dashed, and under it the plan's park days, free days and peak wait.
+
+### [`wizard/steps/dates-step.tsx`](../../components/trip-regions/wizard/steps/dates-step.tsx)
+
+- `DatesStep` _component_: Step 1, the dates: the planner's date grid, the one answer the plan needs.
+
+### [`wizard/steps/finale-step.tsx`](../../components/trip-regions/wizard/steps/finale-step.tsx)
+
+- `FinaleStep` _component_: The finale after the last step: the plan as a ribbon from the first day to the last.
+
+### [`wizard/steps/index.tsx`](../../components/trip-regions/wizard/steps/index.tsx)
+
+- `WIZARD_STEP_BODIES` _const_: Each step's body by its key. A step the list has and this registry lacks is left out of the assistant, so a region never shows an empty screen; a new step is a body here and its key in `TRIP_WIZARD_STEPS`.
+
+### [`wizard/steps/parks-step.tsx`](../../components/trip-regions/wizard/steps/parks-step.tsx)
+
+- `ParksStep` _component_: Step 2, the parks: which parks, and how many days each.
+
+### [`wizard/steps/tickets-step.tsx`](../../components/trip-regions/wizard/steps/tickets-step.tsx)
+
+- `TicketsStep` _component_: The last step, the tickets: the planner's ticket step.
+
+### [`wizard/trip-wizard.tsx`](../../components/trip-regions/wizard/trip-wizard.tsx)
+
+- `TripWizard` _component_: The trip planner's assistant: one question a screen, asked by Parky from the region's scene (`WizardGuideBand`), the step rail, the step's cards, and a footer with the plan as a ribbon (`PlanRibbon`) once the trip has dates.
+- `useWizardSteps` _hook_: The assistant's steps for the planner's region and trip (`tripWizardSteps`), only those with a body in `WIZARD_STEP_BODIES`. The list follows the trip's nights, so a Paris weekend's hotel goes into the Route once its dates are chosen.
+- Types: `TripWizardScreen`, `TripWizardAt`
+
+### [`wizard/wizard-guide-band.tsx`](../../components/trip-regions/wizard/wizard-guide-band.tsx)
+
+- `WizardGuideBand` _component_: The assistant's band: the region's Parky scene on the right, always at its own 2 : 1 and fading into the card's ground on its left, so Parky is never cropped at any width; on the left the line over the question (region, dates or step) and …
+
+### [`wizard/wizard-step.tsx`](../../components/trip-regions/wizard/wizard-step.tsx)
+
+- `useWizardAsk` _hook_: Parky's question in the bubble, where a step words it from what it knows: "And when do you fly back?" once the arrival is picked, the cities of the Hotels step, a conflict in Parks.
+- `useWizardFrame` _hook_: The assistant's shared values; only inside `TripWizard`.
+- `WizardAskContext` _const_: The frame's side of `useWizardAsk`: sets the line Parky asks, `null` for the step's own.
+- `WizardFrameContext` _const_: Provides `WizardFrameValue` to the step bodies.
+- Types: `WizardStepProps`, `WizardStepBody`, `WizardFrameValue`, `WizardStepBodies`

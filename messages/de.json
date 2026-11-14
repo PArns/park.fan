@@ -3787,7 +3787,45 @@
     },
     "codeKey": "Parks",
     "crowdColour": "Farbe: wie voll der Park an dem Tag ist, verglichen mit einem normalen Tag dort.",
-    "peakWait": "Spitzenwartezeit etwa {minutes} Min."
+    "peakWait": "Spitzenwartezeit etwa {minutes} Min.",
+    "wizard": {
+      "progress": "Fortschritt",
+      "stepOf": "Schritt {step} von {total}",
+      "jump": "Schritt {step}, {label}",
+      "finished": "Fertig",
+      "back": "Zurück",
+      "skip": "Überspringen",
+      "next": "Weiter",
+      "finish": "Fertig, Plan ansehen",
+      "showPlan": "Plan ansehen",
+      "steps": {
+        "dates": "Daten",
+        "parks": "Parks",
+        "hotel": "Hotel",
+        "route": "Route",
+        "hotels": "Hotels",
+        "pace": "Tempo",
+        "evenings": "Abende",
+        "tickets": "Tickets"
+      },
+      "ask": {
+        "dates": "Wann bist du {inRegion}?",
+        "parks": "Welche Parks willst du sehen?",
+        "hotel": "Wo schläfst du?",
+        "route": "Wo landest du, und wo geht es weiter?",
+        "hotels": "In welcher Gegend schläfst du?",
+        "pace": "Wie dicht soll die Reise sein?",
+        "evenings": "Und abends?",
+        "tickets": "Hast du schon Tickets?",
+        "finale": "Dein Plan steht."
+      },
+      "ribbon": {
+        "parkDays": "{count, plural, =1 {1 Parktag} other {# Parktage}}",
+        "free": "{count} frei",
+        "peak": "Spitze etwa {minutes} Min.",
+        "show": "Plan jetzt zeigen"
+      }
+    }
   },
   "tripRegions": {
     "orlando": {

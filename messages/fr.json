@@ -3787,7 +3787,45 @@
     },
     "codeKey": "Parcs",
     "crowdColour": "Couleur : l’affluence du parc ce jour-là, comparée à un jour normal chez lui.",
-    "peakWait": "attente de pointe d’environ {minutes} min"
+    "peakWait": "attente de pointe d’environ {minutes} min",
+    "wizard": {
+      "progress": "Progression",
+      "stepOf": "Étape {step} sur {total}",
+      "jump": "Étape {step}, {label}",
+      "finished": "Terminé",
+      "back": "Retour",
+      "skip": "Passer",
+      "next": "Suivant",
+      "finish": "Terminé, voir le plan",
+      "showPlan": "Voir le plan",
+      "steps": {
+        "dates": "Dates",
+        "parks": "Parcs",
+        "hotel": "Hôtel",
+        "route": "Itinéraire",
+        "hotels": "Hôtels",
+        "pace": "Rythme",
+        "evenings": "Soirées",
+        "tickets": "Billets"
+      },
+      "ask": {
+        "dates": "Quand es-tu {inRegion} ?",
+        "parks": "Quels parcs veux-tu voir ?",
+        "hotel": "Où dors-tu ?",
+        "route": "Où atterris-tu, et où vas-tu ensuite ?",
+        "hotels": "Dans quel quartier dors-tu ?",
+        "pace": "À quel point le voyage doit-il être chargé ?",
+        "evenings": "Et le soir ?",
+        "tickets": "As-tu déjà des billets ?",
+        "finale": "Ton plan est prêt."
+      },
+      "ribbon": {
+        "parkDays": "{count, plural, =1 {1 jour de parc} other {# jours de parc}}",
+        "free": "{count, plural, =1 {1 libre} other {# libres}}",
+        "peak": "pointe d’environ {minutes} min",
+        "show": "Voir le plan maintenant"
+      }
+    }
   },
   "tripRegions": {
     "orlando": {
