@@ -11,6 +11,8 @@ import { useLoadLast } from '@/lib/hooks/use-load-last';
 import { useParkBestDaysCalendar } from '@/lib/hooks/use-park-best-days-calendar';
 import { useTodaySchedule } from '@/lib/hooks/use-today-schedule';
 import { ParkStatusBadge } from './park-status-badge';
+import { SeasonKindIcon } from './season-kind-icon';
+import { useSeasonLabel } from './season-headline';
 import { ParkCalendarDayDetail } from './park-calendar-day-detail';
 import { CrowdLevelBadge } from './crowd-level-badge';
 import { ParkHolidayBand } from './park-holiday-row';
@@ -35,6 +37,7 @@ import { forecastCrowdLevel } from '@/lib/utils/calendar-utils';
 import { coveredOfferReady, rankCoveredRides } from '@/lib/utils/covered-rides';
 import { isParkDayOver } from '@/lib/utils/park-day-over';
 import { parkDayOf } from '@/lib/utils/park-day';
+import { eventSeasonsOn, type SeasonsNearToday } from '@/lib/parks/park-season-days';
 import { PANEL_CELL, PanelGrid, PanelMetric } from '@/components/parks/park-panel-cell';
 import { RideAlertsEntryButton } from '@/components/push/ride-alerts-entry-button';
 import { rideAlertAttractionsFor } from '@/components/push/ride-alert-park-context';
@@ -66,6 +69,11 @@ interface ParkTodayPanelProps {
    * park's day is over ({@link isParkDayOver}); without it the panel draws its rows at every width.
    */
   renderedAtMs?: number;
+  /**
+   * The park's event seasons around the server's today (`eventSeasonsNearToday`). The status cell
+   * names the one running today under the hours: Wintertraum is what kind of day the park has.
+   */
+  seasons?: SeasonsNearToday;
 }
 
 /**
@@ -94,10 +102,12 @@ export function ParkTodayPanel({
   parkSlug,
   parkPath,
   renderedAtMs,
+  seasons,
 }: ParkTodayPanelProps) {
   const t = useTranslations('parks');
   const tCommon = useTranslations('common');
   const tWeather = useTranslations('parks.weather');
+  const seasonLabel = useSeasonLabel();
   const locale = useLocale();
   const timezone = initialData.timezone ?? 'UTC';
 
@@ -163,6 +173,18 @@ export function ParkTodayPanel({
     () => (browserNow ? parkDayOf(browserNow, timezone) : null),
     [browserNow, timezone]
   );
+
+  // The season running today. Before mount the server's day, so it is in the first HTML; then the
+  // browser's, the clock the hours use. A season without single dates does not run on a day the
+  // park is shut, as in the calendar.
+  const seasonsToday = useMemo(() => {
+    if (!seasons || seasons.seasons.length === 0) return [];
+    return eventSeasonsOn(
+      seasons.seasons,
+      todayStr ?? seasons.today,
+      !sched.isOperatingToday && !sched.isUnknown
+    );
+  }, [seasons, todayStr, sched.isOperatingToday, sched.isUnknown]);
 
   // „Prognose heute" is the ML forecast for today (predicted peak), and a closed day has none.
   const predictedToday = useMemo(() => {
@@ -563,6 +585,18 @@ export function ParkTodayPanel({
                 <span className="text-muted-foreground text-sm">{t('status.CLOSED')}</span>
               )}
             </div>
+            {/* Under the hours because it is the same kind of fact: what the park is running today.
+                Below the reserved block, not in it: the countdown lands in that block after mount
+                and would push this line down. Wraps rather than truncates, since below `sm` the
+                cell is half a phone. */}
+            {seasonsToday.length > 0 && (
+              <p className="flex items-center gap-1.5 text-xs font-medium sm:text-sm">
+                {[...new Set(seasonsToday.map((season) => season.kind))].map((kind) => (
+                  <SeasonKindIcon key={kind} kind={kind} className="size-3.5" />
+                ))}
+                <span>{seasonsToday.map((season) => seasonLabel(season, true)).join(', ')}</span>
+              </p>
+            )}
             {stats && (
               <p className="text-muted-foreground mt-auto flex items-center gap-1.5 text-xs">
                 <Users className="h-3 w-3 shrink-0" aria-hidden="true" />

@@ -284,8 +284,8 @@ export function ParkCalendarGrid({
    * otherwise. The tile is memoised and takes one `onSelect(date)`, so the decision is made here
    * instead of in a closure per cell.
    *
-   * The whole `CalendarDay` goes into the store, because after a month step `calendarMap` no longer
-   * holds it.
+   * The whole `CalendarDay` goes into the store with its seasons, because after a month step
+   * neither `calendarMap` nor `seasonDays` holds them.
    */
   const handleDayPress = useCallback(
     (date: string) => {
@@ -295,9 +295,9 @@ export function ParkCalendarGrid({
         return;
       }
       const day = calendarMap.get(date);
-      if (day) dayComparisonStore.toggle(parkSlug, day);
+      if (day) dayComparisonStore.toggle(parkSlug, day, seasonDays?.[date]);
     },
-    [comparing, calendarMap, parkSlug, park.id]
+    [comparing, calendarMap, seasonDays, parkSlug, park.id]
   );
 
   /**
@@ -520,6 +520,7 @@ export function ParkCalendarGrid({
       <ParkCalendarComparison
         a={selection.days[0] ?? null}
         b={selection.days[1] ?? null}
+        seasons={selection.seasons}
         parkTimezone={parkTimezone}
         todayIso={todayStr}
         open={comparisonOpen}

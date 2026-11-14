@@ -1415,6 +1415,8 @@
       "reasonWeather": "Neerslag",
       "reasonHoliday": "Feestdagen en vakanties",
       "reasonPrice": "Dagticket",
+      "reasonSeason": "Seizoen",
+      "noSeason": "Regulier seizoen",
       "unitMm": "{value} mm",
       "unitFlags": "{value, plural, =0 {geen} one {# kenmerk} other {# kenmerken}}",
       "unitSteps": "{value, plural, one {# niveau} other {# niveaus}}",
