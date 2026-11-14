@@ -2,14 +2,14 @@
   "title": "Orlando-Andrang-Kalender (es)",
   "tags": ["diagram"],
   "alt": {
-    "es": "El calendario de afluencia de Orlando con 16 filas para los parques de Disney, Universal y SeaWorld y las excursiones, una casilla por día con los minutos esperados."
+    "es": "El calendario de afluencia de Orlando con 16 filas para los parques de Disney, Universal y SeaWorld y las excursiones, con la leyenda encima y una casilla por día con la espera punta."
   },
   "caption": {
-    "es": "El 13 de noviembre el recuadro es para Animal Kingdom y no para Magic Kingdom, que tiene el número más bajo, porque esa tarde Magic Kingdom cierra a las 18:00 por la fiesta."
+    "es": "El 20 de noviembre el recuadro es para Animal Kingdom, con 45, y no para Magic Kingdom, con 40, porque esa tarde Magic Kingdom cierra a las 18:00 por la fiesta."
   },
   "credit": {
     "author": "park.fan",
     "license": "all-rights-reserved"
   },
-  "shotAt": "2026-11-13"
+  "shotAt": "2026-11-14"
 }

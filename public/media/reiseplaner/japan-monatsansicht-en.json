@@ -1,0 +1,15 @@
+{
+  "title": "Trip planner Japan, month view with stays (en)",
+  "tags": ["diagram"],
+  "alt": {
+    "en": "The month view of a Japan trip from 1 to 10 December 2026: for each day the park, the crowd level and the opening hours as a bar, and under each date the band of the city, Tokyo first, then Osaka from the travel day on the 6th."
+  },
+  "caption": {
+    "en": "The number in the band is the stay, the arrow on 6 December the hotel change. A line under the grid explains the band before the crowd colours."
+  },
+  "credit": {
+    "author": "park.fan",
+    "license": "all-rights-reserved"
+  },
+  "shotAt": "2026-11-14"
+}

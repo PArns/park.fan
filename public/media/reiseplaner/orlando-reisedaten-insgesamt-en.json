@@ -1,0 +1,15 @@
+{
+  "title": "Trip planner, dates with \"Overall\" (en)",
+  "tags": ["diagram"],
+  "alt": {
+    "en": "The \"Dates\" panel with the \"Overall · Disney · Universal\" switch and December 2026, each date showing the code of the park with the shortest peak wait, 5 to 14 December marked as the trip."
+  },
+  "caption": {
+    "en": "\"Overall\" compares every park you picked. Under the month: the park codes, December’s events and the crowd colours."
+  },
+  "credit": {
+    "author": "park.fan",
+    "license": "all-rights-reserved"
+  },
+  "shotAt": "2026-11-14"
+}
