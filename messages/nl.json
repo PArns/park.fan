@@ -3117,7 +3117,24 @@
       "arrivalParkHint": "Bij een vroege vlucht; anders blijft de dag vrij.",
       "departurePark": "Park op de vertrekdag",
       "departureParkHint": "Bij een avondvlucht.",
-      "maxLength": "Een reis duurt hoogstens {days} dagen."
+      "maxLength": "Een reis duurt hoogstens {days} dagen.",
+      "picksLegend": "Onder elke datum staat per resort het park met de kortste wachtrijen. De kleur zegt hoe druk het is voor dat park.",
+      "partyKey": "Feestavond met eigen ticket: dagbezoekers vertrekken eerder",
+      "nyeKey": "Oudejaarsavond",
+      "unpublishedKey": "Gestippeld onderstreept: openingstijden nog niet gepubliceerd",
+      "infoHint": "Wijs een datum aan of tik erop, dan staat hier welk park die dag het beste is en waarom.",
+      "ahead": "voor {park}, waar dagbezoekers om {time} vertrekken",
+      "party": "{park}: {name} vanaf {time}, dagbezoekers vertrekken om {leave}",
+      "partyUnnamed": "{park}: avondevenement vanaf {time}, dagbezoekers vertrekken om {leave}",
+      "unpublished": "Openingstijden nog niet gepubliceerd",
+      "nye": "Oudejaarsavond",
+      "noPick": "Voor deze datum is er nog geen parktip.",
+      "eventsTitle": "In {month}",
+      "nights": "{count, plural, =1 {# avond} other {# avonden}}",
+      "until": "tot {date}",
+      "since": "vanaf {date}",
+      "wholeMonth": "de hele maand",
+      "expected": "data verwacht"
     },
     "find": {
       "modeLabel": "Hoe je je reisdata kiest",
@@ -3264,7 +3281,11 @@
       }
     },
     "month": {
-      "legend": "Elke parkdag is gekleurd naar hoe druk hij voor dat park is, met de twee letters van het park."
+      "legend": "Elke parkdag is gekleurd naar hoe druk hij voor dat park is, met de twee letters van het park.",
+      "bandPark": "Open voor dagbezoekers, gekleurd naar drukte",
+      "bandHop": "’s Avonds een tweede park",
+      "bandVenue": "’s Avonds buiten de parken",
+      "bandAxis": "Balk van {from} tot {to} uur"
     },
     "details": {
       "minutesCaption": "De wachttijd bij de grote attracties op het drukste moment; daarmee vergelijkt het plan de dagen. De kleur vergelijkt de dag met een gewone dag in dit park.",
@@ -3609,7 +3630,8 @@
         "label": "Partnerlink",
         "note": "Koop je via deze link, dan krijgt park.fan een commissie. De prijs blijft voor jou hetzelfde."
       }
-    }
+    },
+    "codeKey": "Parken"
   },
   "tripRegions": {
     "orlando": {

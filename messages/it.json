@@ -3117,7 +3117,24 @@
       "arrivalParkHint": "Con un volo di primo mattino; altrimenti il giorno resta libero.",
       "departurePark": "Parco il giorno di partenza",
       "departureParkHint": "Con un volo serale.",
-      "maxLength": "Un viaggio dura al massimo {days} giorni."
+      "maxLength": "Un viaggio dura al massimo {days} giorni.",
+      "picksLegend": "Sotto ogni data, per ogni resort il parco con le code più corte. Il colore dice quanto è affollato rispetto ai suoi giorni normali.",
+      "partyKey": "Serata di festa con biglietto a parte: i visitatori giornalieri escono prima",
+      "nyeKey": "San Silvestro",
+      "unpublishedKey": "Sottolineato a puntini: orari non ancora pubblicati",
+      "infoHint": "Indica una data o toccala: qui vedi quale parco conviene quel giorno, e perché.",
+      "ahead": "davanti a {park}, dove i visitatori giornalieri escono alle {time}",
+      "party": "{park}: {name} dalle {time}, i visitatori giornalieri escono alle {leave}",
+      "partyUnnamed": "{park}: evento serale dalle {time}, i visitatori giornalieri escono alle {leave}",
+      "unpublished": "Orari non ancora pubblicati",
+      "nye": "San Silvestro",
+      "noPick": "Per questa data non c’è ancora un consiglio sul parco.",
+      "eventsTitle": "A {month}",
+      "nights": "{count, plural, =1 {# serata} other {# serate}}",
+      "until": "fino al {date}",
+      "since": "dal {date}",
+      "wholeMonth": "tutto il mese",
+      "expected": "date previste"
     },
     "find": {
       "modeLabel": "Come scegli le date",
@@ -3264,7 +3281,11 @@
       }
     },
     "month": {
-      "legend": "Ogni giorno di parco ha il colore di quanto è affollato il suo parco, con le due lettere del parco."
+      "legend": "Ogni giorno di parco ha il colore di quanto è affollato il suo parco, con le due lettere del parco.",
+      "bandPark": "Aperto ai visitatori giornalieri, colorato secondo l’affluenza",
+      "bandHop": "La sera un secondo parco",
+      "bandVenue": "La sera fuori dai parchi",
+      "bandAxis": "Barra dalle {from} alle {to}"
     },
     "details": {
       "minutesCaption": "L’attesa alle grandi attrazioni nel momento più affollato, la cifra con cui il piano confronta i giorni. Il colore confronta il giorno con un giorno tipico di questo parco.",
@@ -3609,7 +3630,8 @@
         "label": "Link di affiliazione",
         "note": "Se compri tramite questo link, park.fan riceve una commissione. Il prezzo per te non cambia."
       }
-    }
+    },
+    "codeKey": "Parchi"
   },
   "tripRegions": {
     "orlando": {

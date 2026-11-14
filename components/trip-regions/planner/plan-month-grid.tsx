@@ -1,7 +1,14 @@
 'use client';
 
 import { useMemo, useRef, useState, type KeyboardEvent } from 'react';
-import { ChevronLeft, ChevronRight, PlaneLanding, PlaneTakeoff } from 'lucide-react';
+import {
+  ChevronLeft,
+  ChevronRight,
+  PlaneLanding,
+  PlaneTakeoff,
+  Sparkles,
+  Ticket,
+} from 'lucide-react';
 import { cn } from '@/lib/utils';
 import {
   CROWD_TEXT_CLASS,
@@ -11,6 +18,18 @@ import {
 import { DAY_SIGNAL_CLASS, type DaySignal } from '@/lib/utils/day-signal-styles';
 import { monthMatrix, monthOf, shiftMonth, weekdayLabels } from '@/lib/planner/month-grid';
 import { addDays } from '@/lib/utils/park-day';
+
+/** One resort's pick under a date of {@link PlanMonthGrid}: the park's code in its crowd ink. */
+export interface PlanGridPick {
+  /** The park's `parkCode`; its name is the code's tooltip and part of the date's label. */
+  code: string;
+  name: string;
+  level: ColoredCrowdLevel | null;
+  /** The park has not published its hours for the date: the code is underlined dotted. */
+  unpublished: boolean;
+  /** The resort's park whose day guests leave early for a party that night: a ticket on the row. */
+  party: { code: string; name: string } | null;
+}
 
 /** How one date of {@link PlanMonthGrid} is drawn and named. */
 export interface PlanGridDay {
@@ -32,6 +51,10 @@ export interface PlanGridDay {
   level?: ColoredCrowdLevel | null;
   /** The holidays and school breaks the date falls in, as the calendar's bar along the top. */
   signals?: readonly DaySignal[];
+  /** Per resort the park with the shortest lines, a row of the cell each. */
+  picks?: readonly PlanGridPick[];
+  /** New Year's Eve, marked beside the date. */
+  nye?: boolean;
 }
 
 const NAV_BUTTON =
@@ -42,8 +65,10 @@ const NAV_BUTTON =
  * dates in the Dates step, one date for a ticket's first day. One tab stop for the grid, the arrows
  * move by day and week and turn the month at its edge, so the grid works the same in both places.
  * A date with a crowd level is the crowd calendar's tile (`ParkCalendarDay`): tinted, the day in
- * the level's ink, holidays as the bar along the top. Arrival and departure are a ring with their
- * plane, so the tint stays readable, and a light band behind the tiles joins the dates between.
+ * the level's ink, holidays as the bar along the top. `rich` makes room under the date for each
+ * resort's pick, a code per row with a ticket where the resort has a party night. Arrival and
+ * departure are a ring with their plane on its corner, so the rows stay free, and a light band
+ * behind the tiles joins the dates between. `onShow` hears every date pointed at, focused or picked.
  */
 export function PlanMonthGrid({
   month,
@@ -58,6 +83,8 @@ export function PlanMonthGrid({
   preferred,
   day,
   onPick,
+  onShow,
+  rich = false,
   live,
 }: {
   /** `YYYY-MM`. */
@@ -75,6 +102,9 @@ export function PlanMonthGrid({
   preferred: string | null;
   day: (date: string) => PlanGridDay;
   onPick: (date: string) => void;
+  onShow?: (date: string) => void;
+  /** Taller cells with each resort's pick under the date. */
+  rich?: boolean;
   live: boolean;
 }) {
   const cells = useMemo(() => monthMatrix(month), [month]);
@@ -150,7 +180,10 @@ export function PlanMonthGrid({
         aria-label={gridLabel}
         onKeyDown={onKeyDown}
         // Six rows whatever the month, so the panel keeps its height from month to month.
-        className="grid min-h-[19.25rem] grid-cols-7 gap-1"
+        className={cn(
+          'grid grid-cols-7 gap-1',
+          rich ? 'min-h-[22.25rem] lg:min-h-[25.25rem]' : 'min-h-[19.25rem]'
+        )}
       >
         {cells.map((cell) => {
           const d = days.get(cell.date);
@@ -159,10 +192,14 @@ export function PlanMonthGrid({
           const level = enabled ? (d?.level ?? null) : null;
           const Plane =
             d?.mark === 'start' ? PlaneLanding : d?.mark === 'end' ? PlaneTakeoff : null;
+          const picks = enabled ? (d?.picks ?? []) : [];
           return (
             // The tiles are opaque so the range's band shows only around them, in the gaps, and
             // never mixes with a crowd tint.
-            <div key={cell.date} className={cn('relative', !cell.inMonth && 'invisible')}>
+            <div
+              key={cell.date}
+              className={cn('@container relative', !cell.inMonth && 'invisible')}
+            >
               {cell.inMonth && d?.band && (
                 <span
                   aria-hidden="true"
@@ -184,10 +221,20 @@ export function PlanMonthGrid({
                 tabIndex={cell.date === tabDate ? 0 : -1}
                 aria-label={d?.label ?? cell.date}
                 aria-pressed={d?.mark != null}
-                onClick={() => onPick(cell.date)}
-                onFocus={() => setFocusDate(cell.date)}
+                onClick={() => {
+                  onPick(cell.date);
+                  onShow?.(cell.date);
+                }}
+                onPointerEnter={onShow && enabled ? () => onShow(cell.date) : undefined}
+                onFocus={() => {
+                  setFocusDate(cell.date);
+                  if (enabled) onShow?.(cell.date);
+                }}
                 className={cn(
-                  'focus-visible:ring-ring relative flex h-12 w-full flex-col items-center justify-center overflow-hidden rounded-md text-sm tabular-nums transition focus-visible:ring-2 focus-visible:outline-none',
+                  'focus-visible:ring-ring relative flex w-full flex-col items-center overflow-hidden rounded-md text-sm tabular-nums transition focus-visible:ring-2 focus-visible:outline-none',
+                  rich
+                    ? 'h-14 justify-start gap-0.5 pt-1.5 lg:h-16 lg:pt-2'
+                    : 'h-12 justify-center',
                   enabled ? 'bg-background hover:shadow-sm' : 'text-muted-foreground/40',
                   ring && 'ring-primary ring-offset-background z-10 ring-2 ring-offset-1'
                 )}
@@ -214,16 +261,48 @@ export function PlanMonthGrid({
                 )}
                 <span
                   className={cn(
-                    'relative leading-4',
-                    (ring || level) && 'font-bold',
+                    'relative flex items-center gap-0.5 leading-4',
+                    (ring || level || picks.length > 0) && 'font-bold',
                     level && CROWD_TEXT_CLASS[level]
                   )}
                 >
                   {cell.day}
+                  {enabled && d?.nye && (
+                    <Sparkles className="text-primary-ink size-3" aria-hidden="true" />
+                  )}
                 </span>
-                <span className="relative flex h-3.5 items-center" aria-hidden="true">
-                  {enabled && Plane && <Plane className="text-primary size-3.5" />}
-                </span>
+                {picks.length > 0 && (
+                  <span
+                    className="relative flex flex-col items-center text-[11px] leading-[13px] font-bold tracking-wide lg:text-xs lg:leading-4"
+                    aria-hidden="true"
+                  >
+                    {picks.map((pick) => (
+                      <span key={pick.code} className="flex items-center gap-px">
+                        <span
+                          title={pick.name}
+                          data-plan-pick={pick.code}
+                          className={cn(
+                            pick.level ? CROWD_TEXT_CLASS[pick.level] : 'text-muted-foreground',
+                            pick.unpublished && 'underline decoration-dotted underline-offset-2'
+                          )}
+                        >
+                          {pick.code}
+                        </span>
+                        {pick.party && (
+                          <span
+                            title={pick.party.name}
+                            className="text-crowd-ink-high flex items-center gap-px"
+                          >
+                            <Ticket className="size-2.5 shrink-0" />
+                            <span className="hidden text-[10px] @min-[4.5rem]:inline">
+                              {pick.party.code}
+                            </span>
+                          </span>
+                        )}
+                      </span>
+                    ))}
+                  </span>
+                )}
                 {d?.bars?.map((tone, row) => (
                   <span
                     key={row}
@@ -237,6 +316,14 @@ export function PlanMonthGrid({
                   />
                 ))}
               </button>
+              {enabled && Plane && (
+                <span
+                  aria-hidden="true"
+                  className="bg-primary text-primary-foreground ring-background absolute -top-1.5 -right-1.5 z-20 flex size-4 items-center justify-center rounded-full ring-2"
+                >
+                  <Plane className="size-2.5" />
+                </span>
+              )}
             </div>
           );
         })}

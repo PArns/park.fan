@@ -3117,7 +3117,24 @@
       "arrivalParkHint": "Bei einem frühen Flug; sonst bleibt der Tag frei.",
       "departurePark": "Park am Abreisetag",
       "departureParkHint": "Bei einem Abendflug.",
-      "maxLength": "Eine Reise darf bis zu {days} Tage lang sein."
+      "maxLength": "Eine Reise darf bis zu {days} Tage lang sein.",
+      "picksLegend": "Unter jedem Datum steht je Resort der Park mit den kürzesten Wartezeiten. Seine Farbe sagt, wie voll er für seine Verhältnisse ist.",
+      "partyKey": "Party-Abend mit eigenem Ticket: Tagesgäste gehen früher",
+      "nyeKey": "Silvester",
+      "unpublishedKey": "Gepunktet unterstrichen: Öffnungszeiten noch nicht veröffentlicht",
+      "infoHint": "Zeig auf ein Datum oder tippe darauf, dann steht hier, welcher Park an dem Tag am besten ist und warum.",
+      "ahead": "vor {park}, wo Tagesgäste um {time} gehen",
+      "party": "{park}: {name} ab {time}, Tagesgäste gehen um {leave}",
+      "partyUnnamed": "{park}: Abend-Event ab {time}, Tagesgäste gehen um {leave}",
+      "unpublished": "Öffnungszeiten noch nicht veröffentlicht",
+      "nye": "Silvester",
+      "noPick": "Für dieses Datum gibt es noch keinen Parktipp.",
+      "eventsTitle": "Im {month}",
+      "nights": "{count, plural, =1 {# Abend} other {# Abende}}",
+      "until": "bis {date}",
+      "since": "ab {date}",
+      "wholeMonth": "den ganzen Monat",
+      "expected": "Termine erwartet"
     },
     "find": {
       "modeLabel": "Wie du die Reisedaten wählst",
@@ -3264,7 +3281,11 @@
       }
     },
     "month": {
-      "legend": "Jeder Parktag ist danach gefärbt, wie voll er für seinen Park ist, mit den zwei Buchstaben des Parks."
+      "legend": "Jeder Parktag ist danach gefärbt, wie voll er für seinen Park ist, mit den zwei Buchstaben des Parks.",
+      "bandPark": "Offen für Tagesgäste, gefärbt nach Andrang",
+      "bandHop": "Abends ein zweiter Park",
+      "bandVenue": "Abends außerhalb der Parks",
+      "bandAxis": "Leiste von {from} bis {to} Uhr"
     },
     "details": {
       "minutesCaption": "Die Wartezeit der großen Bahnen zur vollsten Zeit; danach vergleicht der Plan die Tage. Die Farbe vergleicht den Tag mit einem typischen Tag dieses Parks.",
@@ -3609,7 +3630,8 @@
         "label": "Partnerlink",
         "note": "Kaufst du über diesen Link, bekommt park.fan eine Provision. Der Preis ändert sich für dich nicht."
       }
-    }
+    },
+    "codeKey": "Parks"
   },
   "tripRegions": {
     "orlando": {

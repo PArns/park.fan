@@ -216,6 +216,9 @@ export interface TripCanvas {
   endMin: number;
 }
 
+/** A canvas for a trip whose calendar has no hours yet: a plain day, so rest days still have room. */
+export const TRIP_FALLBACK_CANVAS: TripCanvas = { startMin: 8 * 60, endMin: 22 * 60 };
+
 /**
  * The shared canvas, from the earliest piece of any day to the latest, on whole hours and padded
  * by the planner's own {@link PRE_PAD_MIN} and {@link POST_PAD_MIN}. `null` when no day has hours.

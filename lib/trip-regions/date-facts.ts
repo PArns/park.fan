@@ -121,6 +121,10 @@ export interface MonthEvent {
   expected: boolean;
   /** Its dates in the month, sorted. */
   dates: string[];
+  /** It runs from the first date of the month the calendar covers. */
+  fromStart: boolean;
+  /** It runs to the last date of the month the calendar covers. */
+  toEnd: boolean;
   /** It runs on every date of the month the calendar covers. */
   wholeMonth: boolean;
 }
@@ -148,18 +152,25 @@ export function monthEvents(
     parkSlugs: [],
     expected: false,
     dates: [],
+    fromStart: false,
+    toEnd: false,
     wholeMonth: false,
   };
-  const toRow = (lane: EventLane, dates: string[], parks: string[]): MonthEvent => ({
-    kind: lane.kind,
-    id: lane.id,
-    name: lane.name,
-    parkSlugs: parks,
-    expected: lane.status === 'expected',
-    dates,
-    wholeMonth:
-      dates[0] === first && dates[dates.length - 1] === last && dates.length === covered.length,
-  });
+  const toRow = (lane: EventLane, dates: string[], parks: string[]): MonthEvent => {
+    const fromStart = dates[0] === first;
+    const toEnd = dates[dates.length - 1] === last;
+    return {
+      kind: lane.kind,
+      id: lane.id,
+      name: lane.name,
+      parkSlugs: parks,
+      expected: lane.status === 'expected',
+      dates,
+      fromStart,
+      toEnd,
+      wholeMonth: fromStart && toEnd && dates.length === covered.length,
+    };
+  };
   for (const lane of eventLanes(calendar, parkSlugs)) {
     const dates = lane.dates.filter((date) => date.startsWith(month));
     if (dates.length === 0) continue;

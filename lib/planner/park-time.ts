@@ -52,9 +52,11 @@ export function parkMinuteNow(timeZone: string, now: number = Date.now()): numbe
 
 /**
  * Minutes since park-local midnight as `10:30`. Takes minutes, never a `Date`, so the reader's zone
- * cannot enter. Past midnight folds back: 25:00 labels as `01:00`.
+ * cannot enter. Past midnight folds back: 25:00 labels as `01:00`. A `closing` time at midnight is
+ * `24:00`, the end of the day rather than its start.
  */
-export function formatGridTime(minute: number): string {
+export function formatGridTime(minute: number, closing = false): string {
+  if (closing && Math.round(minute) > 0 && Math.round(minute) % 1440 === 0) return '24:00';
   const wrapped = ((Math.round(minute) % 1440) + 1440) % 1440;
   const hour = Math.floor(wrapped / 60);
   const rest = wrapped % 60;
@@ -67,9 +69,8 @@ export function formatGridTime(minute: number): string {
  * range of dates.
  */
 export function formatGridHours(startMinute: number, endMinute: number): string {
-  const short = (minute: number, end: boolean) => {
-    if (end && Math.round(minute) % 1440 === 0) return '24';
-    const time = formatGridTime(minute);
+  const short = (minute: number, closing: boolean) => {
+    const time = formatGridTime(minute, closing);
     return time.endsWith(':00') ? time.slice(0, 2) : time;
   };
   return `${short(startMinute, false)}–${short(endMinute, true)}`;
