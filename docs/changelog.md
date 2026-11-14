@@ -11,6 +11,207 @@ heading, and the same pull request writes the public entry in `content/changelog
 
 ---
 
+## 2.21.1 (2026-11-14) – Saisons im Kalender und im Admin, alle Ticket-Shops, MCP schreibt, Planer-Feinschliff
+
+Geschnitten am 2026-11-14 aus 13 Fragmenten in `docs/changelog.d/`. Der öffentliche Eintrag ist `content/changelog/2.21.1.md`. Neueste Abschnitte zuerst.
+
+### Der Admin zeigt den Reiseplaner und die Regionen-Hubs unter Traffic
+
+Neben „Tagesplaner“ steht unter Traffic „Reiseplaner“ (`/admin/traffic/trip-planner`,
+`TripPlannerView`): die Aufrufe der Hubs, Monatsseiten und besten Reisezeit je Region, aus drei
+`breakdown`-Abfragen nach Seitentyp, die Region aus dem Pfad gelesen (`tripRegionBySegment`); der
+Ablauf von „Begonnen“ bis „Behalten“ mit seinen Quoten, die Regionen nebeneinander, die Anfragen,
+die „Wann“-Suchen, Tickets und Kauf-Links und die Hotels, umschaltbar auf eine Region. Die Zahlen
+kommen aus der neuen API-Route `GET /v1/admin/analytics/trip-planner`, die dasselbe antwortet wie das
+MCP-Werkzeug `trip_planner_report`, nur ohne die zusammengefassten kleinen Werte. Die Palette findet
+die Seite unter „reiseplaner“, „hub“, „wann“ und den Regionen
+([Site-Statistik](features/site-analytics.md)).
+
+### Der Wartezeiten-Kalender zeigt die Saisons eines Parks
+
+Ein Tag, an dem eine kuratierte Saison des Parks läuft, trägt neben dem Status-Wort das Symbol ihrer
+Art: Halloween einen Geist, Weihnachten eine Tanne, eine Wintersaison eine Schneeflocke,
+Sommernächte einen Mond, eine Sonderveranstaltung Funken. `opening`, `closure` und `maintenance`
+markieren keinen Tag, denn das zeigen schon die offenen und geschlossenen Tage und der Wartungs-Chip.
+Eine Saison mit einzelnen `dates` steht nur an diesen Tagen, eine ohne nur an Tagen, die der
+Kalender nicht als geschlossen zeigt, eine abgesagte an keinem. Dafür wartet die Seite auf den
+Monats-Seed der Zusammenfassung, aber nur in einem Monat mit einer solchen Saison. Läuft eine
+Saison mehr als den halben Monat oder ist sie nur `expected`, steht das Symbol ohne Chip in der
+Farbe der Zeile, damit ein Monat Wintertraum die Andrangsfarben nicht überdeckt. Die Seite liest die
+Saisons des gezeigten Monats mit dem Monat als Fenster, weil die Liste des Parks erst heute beginnt,
+und rechnet `seasonDaysOfMonth` (`lib/parks/park-season-days.ts`) einmal auf dem Server: Kachel,
+Tagesdialog und Legende lesen denselben Datensatz, und die Legende nennt nur die Symbole des Monats.
+Der Tagesdialog nennt die Saison mit Namen, Status, wenn er nicht `confirmed` ist, eigenem Ticket
+und Uhrzeiten, in derselben Zeile wie die Saison-Karte des Parks (`SeasonHeadline`).
+`SEASON_KIND_ICON` (`components/parks/season-kind-icon.tsx`) ist die eine Zuordnung von Art zu
+Symbol; die neue Art `winter` hat ihr Label in sechs Sprachen. Die Event-Bahnen der Hub-Seiten lesen
+dieselbe Regel (`isSeasonEvent`), und `get_park_best_days` nennt je Tag die Saisons
+([Wartezeiten-Kalender](features/crowd-calendar.md)).
+
+### Reiseplaner, Hub und Parky: jede Kopie an einer Stelle
+
+Eine Durchsicht des Reiseplaners, der Hubs, der Best-Time-Seiten und von Parkys Szenen nach
+[einer Stelle für jede Logik](rules/dry-one-place-for-each-piece-of-logic.md). Was zweimal
+geschrieben stand, hat jetzt eine Stelle; an Bild und Verhalten ändert sich nichts.
+
+- **Tagesblatt und Zeitraumblatt** des Planers (`PlanDaySheet`, das Blatt eines Zeitraums in
+  `plan-when-result.tsx`) teilen sich `PlanSheetContent` (`plan-sheet.tsx`): Seite je Breite, Kopf,
+  ×, scrollender Körper. Das × des Planers ist `PlanSheetClose`, die Klasse seiner Auswahl- und
+  Datumsfelder `PLAN_FIELD` (sieben Kopien in `plan-find.tsx` und `plan-route.tsx`), die
+  Wochentagszeile der beiden Monatsraster `PlanWeekdayHead`, die Leiste über der Antwort
+  `ACTION_BAND` (dreimal in `plan-result.tsx`). Plan, Kalender und Zeitraumsuche teilen ihre
+  Cache-Regeln und ihr Entprellen (`use-trip-plan.ts`).
+- **`findLeg`** stand in `hub-data.ts` und in `plan.ts`; es bleibt die in `hub-data.ts`, neben
+  `legMinutes`, das `plan-parks.tsx` jetzt statt einer eigenen Summe nutzt.
+- **Datumsrechnung:** der Tag davor auf der Best-Time-Seite und der Tag danach in der `.ics` sind
+  `addDays`, Monatsanfang und -ende `tripMonthRange` (`monthKey` liegt jetzt in `paths.ts`),
+  `formatHubDate`, Parkys Datumszeilen (`yours.ts`) und `formatPlanDay` im Planer-Menü laufen über
+  `formatParkDay`.
+- **Links und Metadaten:** „Diese Reise planen“ im Hub baut sein Ziel mit `plannerHrefOn`, die Seiten
+  `/trip-planner` und `/parky` ihre Open-Graph-Daten mit `buildOpenGraphMetadata`.
+- **Parky:** Kabinen und Speichen eines Riesenrads rechnen `cabinsOnRim` und `wheelSpokes` in
+  `drawing.ts` (Hut, Traumrad, Pier-Rad), Orlando- und Pausenszene stehen im Rahmen von
+  `HolidaySceneSvg`. `useAssistantActions` sucht eine Vorstellung an einer Stelle (`showLineAt`).
+
+36 Dateien, 485 Zeilen gelöscht, 403 geschrieben.
+
+#### Vier Kopien, die schon auseinandergelaufen waren
+
+Hier ändert die eine Stelle ein Detail, weil eine Kopie vom Original abgewichen war:
+
+- **Italienische Zeiträume** (`formatDateRange` in `hub-data.ts`, im Hub, im Planer und auf den
+  Best-Time-Seiten) schrieben „01–07 gen“; die Funktion läuft jetzt über `formatParkDayRange`, das
+  die Null schon entfernt: „1–7 gen“. Über ein Jahr verglichen ändern sich 316 von 732 italienischen
+  Zeiträumen, in den anderen fünf Sprachen keiner.
+- **„Reise planen“ im Kopf des Hubs** (`HubHeroAction`) fragt `isPlainPrimaryClick` wie jeder andere
+  Link, der den Planer öffnet: Ein Klick mit Alt gehört jetzt dem Browser.
+- **`longDate`** (`lib/planner/park-time.ts`) formatierte ohne `timeZone: 'UTC'` und hätte in UTC+13
+  und +14 den Folgetag genannt; es läuft jetzt über `formatParkDay`.
+- **Das Rad der Pausenszene** rundete seine Kabinen auf eine Stelle statt auf zwei; es nutzt jetzt
+  `cabinsOnRim` und `wheelSpokes`, die Kabinen rücken um höchstens 0,04 SVG-Einheiten.
+
+### Saisons lassen sich im Admin anlegen und bearbeiten, und eine App darf auf Wunsch schreiben
+
+`/admin/seasons` war eine Liste, deren Zeilen in den Park führten. Jetzt filtert sie nach Jahr, Art,
+Status, Reiseregion, Park und „Läuft heute“, die Filter stehen in der Adresse, und „Neue Saison“
+legt eine Saison an, auch ohne vorher den Park zu öffnen. Eine Zeile öffnet dasselbe Formular wie
+der Tab „Saisons“ im Park (`SeasonEditor`, nach `app/admin/seasons/_components/` umgezogen): jetzt
+mit den betroffenen Fahrgeschäften, „Zuletzt an der Quelle geprüft“ und Uhrzeitfeldern. Die Termine stehen als Raster aller Monate des Zeitraums, bis zu drei nebeneinander, ein gewählter
+Tag als ruhige Pille (`DayCalendar` in `app/admin/_ui/day-calendar.tsx`, auf den Monatsrastern des
+Planers); „Alle“, „Keine“, „Wochenenden“, „Fr–So“, ganze Wochentage, Umschalt-Klick und eine
+eingefügte Liste (`2026-10-03` oder `3.10.2026`) ersparen die Einzelklicks. Kind-Icons und
+Status-Farben sind die der Parkseite (`SeasonKindIcon`, `SEASON_STATUS_TONE`). Das Formular prüft vor dem Speichern, was die API prüft
+(`seasonProblems` in `app/admin/_lib/seasons.ts`), schickt beim Bearbeiten nur die geänderten Felder
+und `null` für geleerte (`seasonPatch`) und zeigt eine 400 der API über den Knöpfen. Wer nur lesen
+darf, sieht das Formular gesperrt. Die Art „Winter“ (`winter`) steht neben „Weihnachten“ zur Wahl.
+
+Saisons und Tickets stehen in der Seitenleiste unter „Reiseplaner“, nicht mehr unter
+„Kuratieren“. Park-Auswahl und Mehrfachauswahl teilen sich `useParkCatalog` und
+`MultiSearchSelect` mit den API-Keys und den Weiterleitungen.
+
+Die Freigabeseite für MCP-Apps bietet der Redaktion „Schreiben erlauben“ (`admin:write`) und dem
+Inhaber zusätzlich „Inhaber-Rechte“ (`admin:owner`, mit Warnung: zusammenführen, stilllegen,
+API-Keys), voreingestellt auf das, worum die App bittet, gedeckelt durch die eigene Rolle. Überschrift,
+Rollenzeile und „Ändern kann die App …“ folgen der Wahl, die als `scope` im Approve-Body geht. Der
+Token-Dialog unter „Mein Konto“ hat dieselbe Wahl, die Token-Liste markiert schreibende Tokens
+(`grantableScopes`, `describeScopeRole` in `lib/admin/mcp.ts`)
+([Admin](features/admin.md#seasons), [Freigabeseite](features/admin.md#the-consent-page-adminoauthconsentrequestid)).
+
+### Jeder Kauf-Link nennt seinen Länder-Shop und dessen Währung
+
+Attraction Tickets verkauft dasselbe Ticket in einem britischen, irischen, niederländischen,
+deutschen und US-Shop, jeweils zu eigenen Preisen. Im Reiseplaner hießen alle diese Links nur
+„Attraction Tickets“, sodass niemand sah, welcher Shop dahinter steckt. Die API liefert jetzt an jedem
+solchen Link `store` (`{ country, currency }`), und der Link heißt „Attraction Tickets · UK (£)“,
+„· Irland (€)“, „· Niederlande (€)“, „· Deutschland (€)“ oder „· USA ($)“ (`ticketStoreName` in
+`lib/trip-regions/plan-tickets.ts`: Kurzname des Landes und Währungssymbol aus `Intl`, in allen sechs
+Sprachen ohne neue Texte pro Land). Der Shop aus dem Land des Besuchers steht vorn (`visitorCountry`,
+`orderTicketLinks`), danach die für seine Sprache; der offizielle Link behält seinen Namen, und ein
+Länder-Shop braucht keinen „UK-Shop“-Tag mehr (`linkMarket`). Unter zwei oder mehr Links sagt eine
+Zeile, dass die Preise je nach Land des Shops verschieden sind und sich der Vergleich lohnt
+(`tripPlanner.tickets.links.compare`). Im Admin hat jeder Link ein Feld „Länder-Shop“ mit Land und
+Währung, das beim Speichern erhalten bleibt
+([Trip planner](features/orlando-planner.md#tickets)).
+
+### Der Ticketmarkt ist ein Hinweis, kein Filter mehr
+
+Ob ein Ticket in den USA oder in einem UK-Shop verkauft wird, entscheidet nicht mehr, was der
+Reiseplaner anbietet: Kaufen darf man es in jedem Shop. Der Ticket-Schritt hängte an Tickets, die die
+Betreiber nicht selbst in den USA verkaufen, „Außerhalb der USA verkauft“ an, die Zeile für lange
+Reisen begann mit „Außerhalb der USA gibt es 14-Tage-Tickets“. Jetzt sagt ein Tag, wo es das Ticket
+gibt, „UK-Shop“ oder „Internationaler Shop“ (`marketLabel` in `lib/trip-regions/plan-tickets.ts`,
+`TicketMarketTag`), am Eintrag, am Combo Ticket und an jedem Kauf-Link, dessen Händler woanders
+verkauft (`linkMarket`, am offiziellen Link der Markt des Produkts). Die API schlägt seitdem auch die
+UK-Tickets selbst vor, wo sie besser zum Plan passen; die Kauf-Links zeigen dann „UK-Shop“ daneben.
+Die regionseigenen Texte `market.intl` für Orlando, Kalifornien und Japan sind durch
+`tripPlanner.tickets.market` in sechs Sprachen ersetzt. Im Admin heißen die Märkte „US-Shops“,
+„UK-Shops“ und „Händler im Ausland“, und der Hinweis am Feld sagt nicht mehr, dass der Vorschlag nur
+US-Produkte nimmt ([Trip planner](features/orlando-planner.md#tickets)).
+
+### `/` öffnet die Suche auch, wenn ein Link oder Chip den Fokus hat
+
+Die Suche öffnete sich auf `/` nur, wenn nichts den Fokus hatte. Nach einem Klick auf einen Filter-Chip
+im Hub oder auf einen Link im Header-Menü behielt dieser den Fokus, und `/` tat nichts, bis man in
+die Seite klickte. `isSearchShortcut` (`lib/utils/page-focus.ts`) nimmt `/` jetzt auch auf einem
+fokussierten Link, Knopf, Chip oder einer Kalenderzelle, die alle nichts mit `/` anfangen; in einem
+Feld, einem bearbeitbaren Element, einem Dialog, einem Menü oder einer Listbox wartet es weiter
+([Regel](rules/a-keyboard-shortcut-waits-for-an-unfocused-page.md)).
+
+### Widerrufene API-Keys lassen sich im Admin löschen
+
+Ein widerrufener Daten-Key blieb für immer in der Liste unter `/admin/api-keys`, mit nichts als
+seinem Statistik-Knopf. Jetzt trägt seine Zeile den Papierkorb, wo bei einem aktiven Key der
+Widerruf sitzt („… löschen“), hinter einem `ConfirmDialog`; `POST /v1/admin/api-keys/:id/delete`
+entfernt den Key mit seiner Statistik, die Zeile verschwindet mit dem nächsten Laden der Liste. Die
+API lehnt einen aktiven Key mit 409 ab, ein Key wird also immer erst widerrufen; unter „Änderungen“
+bleibt er verzeichnet (`api-key.delete`). Die drei Zeilenaktionen teilen sich in
+`app/admin/api-keys/page.tsx` einen Aufruf mit Toast statt drei Kopien
+([Admin](features/admin.md#data-api-keys-adminapi-keys)).
+
+### Festgehaltene Tage tragen ein Schloss, und „Tauschen“ sagt, was der Tausch bewirkt
+
+Einen festgehaltenen Tag zeigte nur die Liste mit einem Schloss. Woche und Monat zeigten nichts,
+erst das Tagesblatt sagte „Diesen Tag hast du festgehalten“. Jetzt steht das Schloss in der Woche
+neben dem Datum und vor dem Park, im Monat neben der Tageszahl, und der zugängliche Name des Tages
+nennt es (`marker.pinned`).
+
+Die Liste unter „Tauschen“ nannte, was auf dem anderen Tag liegt: „Do., 26. Nov. · Ruhetag · +1 Min.
+im Schnitt“ las sich, als koste ein Ruhetag eine Minute. Jetzt sagt sie, was passiert: „Disney
+Adventure World auf diesen Tag, der Mo., 23. Nov. wird Ruhetag“, „Tausch mit Disneyland“
+(`swap.moveThere`, `swap.takeOver`, `swap.trade` in allen sechs Sprachen).
+
+### Die Regionen im Planen-Menü öffnen den Hub oben
+
+Eine Region im Planen-Band des Headers und im Handy-Menü führte auf `/<region>#planner` und scrollte
+damit an Frage, Antwort und Kalender vorbei zum Planer. Sie führt jetzt auf den Hub selbst
+(`getPlannerMenu` in `lib/navigation/planner-menu.ts`), der oben beginnt. Der Footer behält `#planner`.
+
+### Der Datumskalender des Reiseplaners springt zu Daten, die Parky setzt
+
+Legte Parky die Reise auf den 14. bis 30. Januar, blieb der Kalender unter „Reisedaten“ auf dem
+Monat, in dem der Besucher zuletzt geblättert hatte, etwa Dezember. `PlanDates` merkt sich die
+Ankunft, die es zuletzt gesehen hat (`seenFrom`): Kommen neue Daten von außen (Parky, ein geteilter
+Link, „Rückgängig“) und liegt die Ankunft nicht im gezeigten Monat, zeigt der Kalender ihren Monat.
+Ein Zeitraum, der im Kalender selbst über zwei Monate gewählt wird, lässt ihn beim Abreisemonat.
+
+### Die Sturmsaison steht im Hub oben auf der Zeitleiste
+
+Die Taifun- und Hurrikansaison war die letzte Spur unter dem Kalender, unter „Events“, und damit
+unter allen Parks, weit weg von den Daten, die man auswählt. Jetzt liegt sie auf der Zeitleiste
+selbst: eine Leiste unter jedem Datum der Matrix und jedes Tags der Handy-Liste (gestrichelt die
+Saison, voll die Hochphase, `STORM_SIGNAL_CLASS`), ihr Name in der ersten Spalte der Matrix und über
+der Liste (`StormKey` in `components/trip-regions/hub/hub-calendar.tsx`), und der zugängliche Name
+eines Datums nennt sie mit. Die Spur unter dem Kalender entfällt
+([Hub](features/orlando-hub.md)).
+
+### Parkys Gesicht im Chat-Kasten der Planer, der Text größer
+
+Der Kasten „Plane mit Parky deine perfekte Reise“ im Reiseplaner und „… deinen perfekten Parktag“ im
+Tagesplaner war eine Zeile in `text-xs` neben dem Knopf und las sich wie eine weitere Formularzeile.
+`ParkyInterviewStart` zeigt jetzt Parkys Gesicht aus dem Launcher daneben (`ParkyLogo`, `idle calm`:
+blinkt und schaut dem Zeiger nach, keine Faxen; 48 px, ab 36rem Kastenbreite 56 px), der Text steht in
+`text-sm`, ab 36rem in `text-base`, und in der Vordergrundfarbe statt gedämpft.
+
 ## 2.21.0 (2026-11-14) – Reiseplaner für Südkalifornien, Japan und Paris
 
 Geschnitten am 2026-11-14 aus 19 Fragmenten in `docs/changelog.d/`. Der öffentliche Eintrag ist `content/changelog/2.21.0.md`. Neueste Abschnitte zuerst.
