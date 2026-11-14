@@ -70,6 +70,9 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`hub-data.ts`](../../lib/trip-regions/hub-data.ts)
 
+- `hubWeeks` _function_: The window in pages of seven days from its first day (the region's today on the hub), so the first page is the week ahead, „Sa., 14. – Fr., 20. Nov.", and not a calendar week half over.
+- `hubWeekFragment` _function_: The fragment that names a page by its first date, `calendar-2026-11-21`.
+- `hubWeekFromFragment` _function_: The page a fragment names: the one that holds its date, so a link shared a day later, when the pages start a day later, still shows that date. `null` for another fragment or a date outside the window.
 - `regionGroups` _function_: The region's groups with their parks: the three resorts, then the day trips.
 - `withGroupNames` _function_: The region with its day-trip group named in the reader's language: the API names it in English, while a resort's name is the operator's own and stays as it is.
 - `regionResorts` _function_: The resorts alone: the groups a day's shortest line is named for.
@@ -81,16 +84,18 @@ by hand: change the comment in the code and re-run the script. -->
 - `isRankable` _function_: Whether a park can be ranked on a day: not closed, with a figure.
 - `hoursUnpublished` _function_: Whether a day has a figure but no published hours yet: drawn with its mark, said in words.
 - `rankGroupParks` _function_: A group's parks on a day: the API's pick first where the group has one (its cost weighs the day guest's hours, so it can be a full day over a slightly shorter wait that closes early), then the open parks with a figure by `headlinerWait`, …
+- `quietestDay` _function_: A park's quietest day among some days, the star on its tile: the lowest `headlinerWait`, a tie to the longer day for the day guest.
+- `dayPick` _function_: The park a day's column names above the tiles: with one group shown, that group's first park (`rankGroupParks`, the API's pick first); else the shortest line among the picks the first answer names (`glanceLines`), by `headlinerWait`, a tie …
 - `resortHasChoice` _function_: Whether a resort has a pick worth naming on a day: more than one of its parks has a figure. A resort with one (SeaWorld beside two parks nobody queues at) has nothing to choose between.
 - `shortestLines` _function_: Each resort's shortest line on a day, from the API's `best` map. A resort without an entry (a last-year day, no figure) is left out rather than guessed, and so is a pick the region does not know.
 - `earlyCloseBehind` _function_: The park with the same or a shorter wait that a resort's pick beat because it closes early for day guests, when the API says that is why (`bestWhy: closes_early_elsewhere`). The phone list and the first answer name it with its closing time.
 - `glanceDay` _function_: The day the first answer is about: today in the region, or tomorrow once every resort's pick has closed to day guests, since nobody plans the rest of a day that is over. A day without picks counts as open.
-- `firstDays` _function_: The first `count` days of the calendar from `fromIso` on.
 - `isWeekend` _function_: `true` when a date is a weekend (Saturday or Sunday); the date is already the region's.
 - `formatHubDate` _function_: A plain date as the hub prints it (`formatParkDay`, so no zone moves it): `short` "Thu 12 Nov", `long` "Thursday, 12 November", `day` "12", `weekday` "Thu", `dayMonth` "12 Nov".
 - `formatHubMonth` _function_: A month's name with its year, "December 2026", in the reader's language.
 - `dayBasis` _function_: The basis most of a day's parks share, so a column can say "last year" once.
 - `factDays` _function_: The forecast's days of a calendar; a month past day 60 reads last year's measured days instead, and says so. Never both at once: a mean over both would set an unscaled forecast beside a measured day.
+- `quietSeasons` _function_: The seasons a tile draws quietly, bare and faded: one that runs on more than half of the window's days, where an icon on every tile would drown the crowd colours, or one only `expected`.
 - `eventLanes` _function_: The lanes under the matrix: each curated season that runs on a day of the window (party nights, festivals, Universal's holidays as `expected`), one lane per name even where several parks run it, then the school breaks as runs of days.
 - `findLeg` _function_: The leg between two points of the region (park slugs or `hotel:<key>`). The matrix stores each pair once, both directions averaged, so either order finds it.
 - `legMinutes` _function_: The door-to-door minutes of a drive: to the car park, then the curated rest of the way.
@@ -107,11 +112,11 @@ by hand: change the comment in the code and re-run the script. -->
 - `parkCalendarHref` _function_: A park's crowd calendar, with "Crowd Calendar" in the anchor: the query that page ranks for.
 - `sliceCalendar` _function_: The calendar trimmed to a window of its days, with the seasons that run in it.
 - `slimRegion` _function_: The region as the hub's client part needs it: the parks, groups and hotel areas, and only the legs from a hotel area to a park, which the day sheet's travel line reads.
-- `formatDateRange` _function_: Two dates as one short range in the reader's language ("Jan 12 – 21", "12.–21. Jan.", "27 Apr – 6 May"): `formatParkDayRange` with short months.
+- `formatDateRange` _function_: Two dates as one short range in the reader's language ("Jan 12 – 21", "12.–21. Jan.", "27 Apr – 6 May"): `formatParkDayRange` with short months; `weekday` names the two days too ("Sa., 14. – Fr., 20. Nov.").
 - `formatWindow` _function_: A trip window's dates as one short range (`formatDateRange`).
-- `HUB_FIRST_DAYS` _const_: How many days the first answer covers: the server-rendered week.
 - `HUB_WINDOW_DAYS` _const_: How far the hub's calendar reaches past today: the API's default window.
-- Types: `RegionGroup`, `RankedPark`, `ShortestLine`, `HubBasis`, `FactDays`, `EventLane`, `ResortMonthSummary`
+- `HUB_WEEK_DAYS` _const_: How many days a page of the hub's calendar shows.
+- Types: `HubWeek`, `RegionGroup`, `RankedPark`, `ShortestLine`, `HubBasis`, `FactDays`, `EventLane`, `ResortMonthSummary`
 
 ### [`hub-facts.ts`](../../lib/trip-regions/hub-facts.ts)
 

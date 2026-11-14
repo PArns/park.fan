@@ -77,6 +77,11 @@ by hand: change the comment in the code and re-run the script. -->
 - `brandPageMetadata` _function_: A brand page's metadata: the title names the park count and falls back to a count-less one when the geo tree cannot be read; canonical and hreflang for six locales plus `x-default`.
 - Types: `BrandPageProps`
 
+### [`calendar-day-tile.tsx`](../../components/parks/calendar-day-tile.tsx)
+
+- `CalendarDayTile` _component_: The crowd calendar's day tile, drawn from what it shows rather than from an API day, so the park calendar and the trip hub's week share one object: tinted by the level, the peak wait in the level's ink, the star, the season icons and the …
+- Types: `TileSeasonMark`, `CalendarDayTileProps`
+
 ### [`calendar-hash-redirect.tsx`](../../components/parks/calendar-hash-redirect.tsx)
 
 - `CalendarHashRedirect` _component_: Forwards an old `#calendar` / `#calendar-YYYY-MM` deep link to the calendar PAGE before the park page hydrates.
