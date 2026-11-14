@@ -24,6 +24,7 @@ import {
   type DayComparisonReason,
   type DayComparisonSide,
 } from '@/lib/parks/day-comparison';
+import { isClosedCalendarDay } from '@/lib/utils/calendar-utils';
 import { CROWD_TEXT_CLASS, type ColoredCrowdLevel } from '@/lib/utils/crowd-level-styles';
 import { roundWaitTo5 } from '@/lib/utils/wait-time';
 import { getNumberFormat } from '@/lib/utils/intl-format';
@@ -188,7 +189,7 @@ export function ParkCalendarComparison({
         // The bucket INDEX is `rankOf`'s input, not something to print: what the reader knows is
         // the level's name, which is the same word the tile they clicked wears.
         const day = side === 'a' ? a : b;
-        if (day.status === 'CLOSED' || day.crowdLevel === 'closed') return tCommon('closed');
+        if (isClosedCalendarDay(day)) return tCommon('closed');
         const level = day.crowdLevel;
         return level && level !== 'unknown'
           ? t(`crowdLevels.${level as ColoredCrowdLevel}`)
@@ -260,7 +261,7 @@ export function ParkCalendarComparison({
     const wins = comparison.better === side && comparison.confidence !== 'tie';
     // The same three-way read as `park-calendar-day.tsx`: `status` and `crowdLevel` can disagree,
     // and "open or closed" alone labelled an open day with no forecast „Geschlossen".
-    const isClosed = day.status === 'CLOSED' || day.crowdLevel === 'closed';
+    const isClosed = isClosedCalendarDay(day);
     const level = day.crowdLevel;
     const colored: ColoredCrowdLevel | null =
       !isClosed && level && level !== 'closed' && level !== 'unknown'
