@@ -1,0 +1,32 @@
+{
+  "title": "Disneyland Hotel",
+  "park": "disneyland-park",
+  "parkPath": "europe/france/paris/disneyland-park",
+  "tags": ["day", "entrance", "outdoor", "photo", "theming"],
+  "alt": {
+    "de": "Die rosa viktorianische Fassade des Disneyland Hotel mit einer Uhr im Mittelturm, davor Fontänen und ein Micky-Blumenbeet.",
+    "en": "The pink Victorian front of the Disneyland Hotel with a clock in its central tower, fountains and a Mickey flower bed in front.",
+    "es": "La fachada victoriana rosa del Disneyland Hotel con un reloj en la torre central, fuentes y un parterre de Mickey delante.",
+    "fr": "La façade victorienne rose du Disneyland Hotel, une horloge dans la tour centrale, des jets d’eau et un massif Mickey devant.",
+    "it": "La facciata vittoriana rosa del Disneyland Hotel con un orologio nella torre centrale, fontane e un’aiuola di Topolino davanti.",
+    "nl": "De roze Victoriaanse gevel van het Disneyland Hotel met een klok in de middentoren, met fonteinen en een Mickey-bloembed ervoor."
+  },
+  "caption": {
+    "de": "Der Weg in den Disneyland Park führt durch den Torbogen unter dem Hotel.",
+    "en": "Guests walk into Disneyland Park through the archway under the hotel.",
+    "es": "Para entrar en Disneyland Park se pasa por el arco que hay bajo el hotel.",
+    "fr": "On entre dans le Parc Disneyland en passant sous l’hôtel, par l’arche centrale.",
+    "it": "Per entrare a Disneyland Park si passa sotto l’hotel, attraverso l’arco centrale.",
+    "nl": "Wie Disneyland Park in wil, loopt onder het hotel door, via de poort in het midden."
+  },
+  "credit": {
+    "author": "Aurora Song",
+    "license": "unsplash",
+    "source": "unsplash",
+    "sourceUrl": "https://unsplash.com/photos/grand-pink-castle-like-hotel-with-fountains-and-people-7xWXDgxaZ_Q"
+  },
+  "focus": {
+    "x": 0.5,
+    "y": 0.55
+  }
+}

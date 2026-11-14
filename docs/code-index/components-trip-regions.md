@@ -91,6 +91,11 @@ by hand: change the comment in the code and re-run the script. -->
 - `PlanAgendaView` _component_: The list view, the days once: one row per day with three facts at most, the park, its minutes and one marker (an early close, the hotel's early slot, its evening), and a thin bar in the day's crowd tint.
 - `PlanListRow` _component_: One day of the list view.
 
+### [`planner/plan-calendar-keys.tsx`](../../components/trip-regions/planner/plan-calendar-keys.tsx)
+
+- `PlanCodeKey` _component_: What the park codes under the dates and in the Month view stand for, „MK Magic Kingdom · AK Animal Kingdom“, in the legend's own look. Only the codes the view shows (`parkCodeKey`), wrapped on a phone rather than folded away.
+- `PlanMonthEvents` _component_: The month's events under the date grid (`monthEvents`): party nights counted, festivals, school breaks and holidays with their dates in the month, New Year's Eve once.
+
 ### [`planner/plan-context.tsx`](../../components/trip-regions/planner/plan-context.tsx)
 
 - `usePlanContext` _hook_: The planner's shared values; only inside `TripRegionPlanner`.
@@ -102,6 +107,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `PlanCheckRow` _component_: A checkbox with its label and an optional line under it, the whole row the target: at least 44 px on a phone, as the planner's sheet requires of every target (docs/features/trip-planner/phone.md).
 - `PlanRadioGroup` _component_: One choice of several, as radio rows: a `fieldset` with its question as the legend, each option a 44 px row with an optional line under it.
+- `PlanSegmented` _component_: A few short choices side by side, one pressed: the planner's segmented control, as the Dates step's „Ich kenne meine Reisedaten | Beste Reisedaten finden“ draws it, 44 px tall on a phone.
 - `PlanStepper` _component_: − value +, with 44 px buttons on a phone and 32 px at a desk. The value is an `<output>`, so a screen reader hears the new count after a press.
 - `PlanChip` _component_: A pill to press, on or off (`aria-pressed`, or `aria-expanded` for one that opens more): the When mode's periods, a ticket's days, its hopper and its variant, and the ticket question's two answers. 44 px on a phone, 36 at a desk.
 - `PLAN_FOCUS` _const_: The planner's focus ring, one string for every control it draws.
@@ -137,11 +143,11 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`planner/plan-month-grid.tsx`](../../components/trip-regions/planner/plan-month-grid.tsx)
 
 - `PlanMonthGrid` _component_: A month of dates to pick from, a month at a time (`lib/planner/month-grid.ts`): the trip's two dates in the Dates step, one date for a ticket's first day.
-- Types: `PlanGridDay`
+- Types: `PlanGridPick`, `PlanGridDay`
 
 ### [`planner/plan-month-view.tsx`](../../components/trip-regions/planner/plan-month-view.tsx)
 
-- `PlanMonthView` _component_: The Month view: the trip in its calendar, whole weeks from Monday.
+- `PlanMonthView` _component_: The Month view: the trip in its calendar, whole weeks from Monday, drawn as a park's crowd calendar (`ParkCalendarDay`, `ParkCalendarLegend`).
 
 ### [`planner/plan-options.tsx`](../../components/trip-regions/planner/plan-options.tsx)
 

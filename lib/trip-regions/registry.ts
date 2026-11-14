@@ -140,6 +140,11 @@ export interface TripRegionConfig {
   bestTime: readonly TripBestTimePage[];
   /** Place words a park's name ends in that a visitor drops: "SeaWorld Orlando" reads "SeaWorld". */
   parkNameSuffixes: readonly string[];
+  /**
+   * How visitors shorten a park where its two letters say too little („Epic“, „IoA“, „Studios“),
+   * by slug; `parkLabel` uses one where the cell has room for it.
+   */
+  parkShortNames?: Readonly<Record<string, string>>;
   /** A resort as a search snippet names it ("Disney"), by API group key; else its short name. */
   resortWords: Readonly<Record<string, string>>;
   /**

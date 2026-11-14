@@ -31,11 +31,14 @@ export interface TripRegionPark {
   type: TripParkType;
   /** One of the region's headliner parks, the plan's default pick. */
   headliner: boolean;
+  /**
+   * A short code for tight views, curated where initials would clash (Tokyo Disneyland `DL`, Tokyo
+   * DisneySea `DS`); absent, the client derives one (`parkCode`).
+   */
+  code?: string;
   latitude: number;
   longitude: number;
   timezone: string;
-  /** A short curated code for tight views (Tokyo Disneyland `DL`); absent, the client derives one. */
-  code?: string;
 }
 
 /**

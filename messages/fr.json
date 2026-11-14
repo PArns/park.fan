@@ -3109,10 +3109,10 @@
       "prevMonth": "Mois précédent",
       "nextMonth": "Mois suivant",
       "gridLabel": "Jour d’arrivée et de départ",
-      "wait": "attente la plus courte aux grandes attractions environ {minutes} min",
-      "waitLastYear": "l’an dernier environ {minutes} min aux grandes attractions",
-      "legend": "Sous chaque date : l’attente la plus courte aux grandes attractions ce jour-là, en minutes, dans le parc où les files sont les plus courtes. Les parcs qui ferment tôt ne comptent pas.",
-      "legendLastYear": "Les chiffres en italique sont des journées mesurées l’an dernier.",
+      "level": "Affluence : {level}",
+      "levelLastYear": "Affluence l’an dernier : {level}",
+      "legend": "Une date sans conseil suit l’affluence moyenne des grands parcs.",
+      "legendLastYear": "Les dates au contour en pointillé montrent l’affluence mesurée l’an dernier.",
       "pickArrival": "Touche ton jour d’arrivée.",
       "pickDeparture": "Puis ton jour de départ.",
       "dayCount": "{count, plural, =1 {1 jour} other {# jours}}",
@@ -3120,7 +3120,28 @@
       "arrivalParkHint": "Pour un vol tôt le matin ; sinon la journée reste libre.",
       "departurePark": "Parc le jour du départ",
       "departureParkHint": "Pour un vol le soir.",
-      "maxLength": "Un voyage dure au plus {days} jours."
+      "maxLength": "Un voyage dure au plus {days} jours.",
+      "partyKey": "Soirée de fête à billet séparé : les visiteurs du jour partent plus tôt",
+      "nyeKey": "Saint-Sylvestre",
+      "unpublishedKey": "Souligné en pointillé : horaires pas encore publiés",
+      "infoHint": "Pointe une date ou touche-la : tu vois quel parc vaut le mieux ce jour-là, et pourquoi.",
+      "ahead": "Devant {park} à {minutes} min : là-bas, les visiteurs du jour doivent partir à {time}.",
+      "party": "{park} : {name} dès {time}, les visiteurs du jour partent à {leave}",
+      "partyUnnamed": "{park} : soirée spéciale dès {time}, les visiteurs du jour partent à {leave}",
+      "unpublished": "Horaires pas encore publiés",
+      "nye": "Saint-Sylvestre",
+      "noPick": "Pas encore de conseil de parc pour cette date.",
+      "eventsTitle": "En {month}",
+      "nights": "{count, plural, =1 {# soirée} other {# soirées}}",
+      "until": "jusqu’au {date}",
+      "since": "à partir du {date}",
+      "wholeMonth": "tout le mois",
+      "expected": "dates attendues",
+      "modeLabel": "Meilleur parc",
+      "modeAll": "Global",
+      "picksLegendAll": "Sous chaque date, le parc à l’attente de pointe la plus courte.",
+      "picksLegendResort": "Sous chaque date, le parc {resort} à l’attente de pointe la plus courte.",
+      "overall": "Global : {park}"
     },
     "find": {
       "modeKnown": "Je connais mes dates",
@@ -3301,8 +3322,11 @@
       "legOther": "{minutes} min"
     },
     "month": {
-      "legend": "Deux lettres par parc, colorées selon l’affluence du jour pour ce parc ; le nombre est l’attente aux grandes attractions en minutes.",
-      "stayKey": "La bande sous chaque date est la ville où tu dors ; une flèche marque un changement d’hôtel."
+      "stayKey": "La bande sous chaque date est la ville où tu dors ; une flèche marque un changement d’hôtel.",
+      "bandPark": "Ouvert aux visiteurs du jour, coloré selon l’affluence",
+      "bandHop": "Un second parc le soir",
+      "bandVenue": "Soirée hors des parcs",
+      "bandAxis": "Barre de {from} à {to}"
     },
     "details": {
       "minutesCaption": "L’attente de pointe : l’attente aux grandes attractions au moment le plus chargé, le chiffre avec lequel le plan compare les jours. La couleur compare le jour avec un jour habituel de ce parc.",
@@ -3709,7 +3733,10 @@
     "parky": {
       "button": "Prépare avec Parky ton voyage idéal",
       "line": "Quelques questions dans le chat, et chaque réponse arrive tout de suite ici, dans le planificateur."
-    }
+    },
+    "codeKey": "Parcs",
+    "crowdColour": "Couleur : l’affluence du parc ce jour-là, comparée à un jour normal chez lui.",
+    "peakWait": "attente de pointe d’environ {minutes} min"
   },
   "tripRegions": {
     "orlando": {
@@ -4470,11 +4497,11 @@
           },
           "luggage": {
             "q": "Que faire des bagages quand je change de ville ?",
-            "a": "La plupart des voyageurs envoient leurs valises à l’hôtel suivant par un service de bagages (takkyubin). Dans le Shinkansen, un bagage de 161 à 250 cm au total exige une place réservée avec espace pour gros bagages, et un plus grand n’a pas le droit de monter (JR Central). Avec des bagages envoyés à l’avance, le planificateur compte 30 minutes par changement d’hôtel ; si tu les portes toi-même, c’est plutôt 60. Tu peux choisir 30, 60, 90 ou 120 minutes."
+            "a": "Le planificateur part du principe que tu envoies tes valises à l’hôtel suivant par un service de bagages (takkyubin). Chez Yamato Transport, tu les déposes sans réservation à la réception de l’hôtel, et elles arrivent au plus tôt le lendemain. Dans le Shinkansen, un bagage de 161 à 250 cm au total exige une place réservée avec espace pour gros bagages, et un plus grand n’a pas le droit de monter (JR Central). Avec des bagages envoyés à l’avance, le planificateur compte 30 minutes par changement d’hôtel ; si tu les portes toi-même, c’est plutôt 60. Tu peux choisir 30, 60, 90 ou 120 minutes."
           },
           "happyEntry": {
             "q": "Un hôtel Disney me fait-il entrer plus tôt ?",
-            "a": "Oui, avec Happy Entry. Les clients des hôtels Disney entrent à Tokyo Disneyland 15 minutes avant tout le monde, ceux de l’Hotel MiraCosta et du Fantasy Springs Hotel entrent aussi plus tôt à Tokyo DisneySea. L’avantage vaut à partir du matin qui suit l’arrivée, et le planificateur le compte ainsi ; certains hôtels ont quelques jours sans. Les hôtels officiels d’Universal Studios Japan n’offrent pas d’entrée anticipée."
+            "a": "Oui, avec Happy Entry. Les clients des hôtels Disney entrent à Tokyo Disneyland 15 minutes avant tout le monde, ceux de l’Hotel MiraCosta et du Fantasy Springs Hotel entrent aussi plus tôt à Tokyo DisneySea. L’avantage vaut à partir du matin qui suit l’arrivée, et le planificateur le compte ainsi ; certains hôtels ont quelques jours sans."
           }
         },
         "next": {
@@ -4558,8 +4585,8 @@
           "hotelHint": {
             "disney": "Happy Entry à Tokyo Disneyland, 15 minutes plus tôt, pas le jour de l’arrivée",
             "disney_deluxe": "Happy Entry dans les deux parcs Disney, pas le jour de l’arrivée",
-            "universal": "À quelques minutes à pied de l’entrée, pas d’entrée anticipée",
-            "park_hotel": "Highland Resort : entrée anticipée à Fuji-Q. LEGOLAND Japan Hotel : l’entrée à pied",
+            "universal": "À quelques minutes à pied de l’entrée",
+            "park_hotel": "Highland Resort près de Fuji-Q ou LEGOLAND Japan Hotel à l’entrée ; l’entrée anticipée, Fuji-Q la vend lui-même, avec le One Day Pass avec Priority Admission",
             "offsite": "Pas d’entrée anticipée"
           },
           "hotelShort": {
@@ -4874,7 +4901,8 @@
             "parc_asterix": "hôtel du Parc Astérix",
             "offsite": "hôtel ailleurs"
           },
-          "eveningsHint": "Si un parc ferme plus tôt, la soirée passe à l’autre parc Disney ou à Disney Village."
+          "eveningsHint": "Si un parc ferme plus tôt, la soirée passe à l’autre parc Disney ou à Disney Village.",
+          "moveBufferHint": "Avec tes valises jusqu’à l’hôtel suivant, 60 minutes sont réalistes."
         },
         "details": {
           "earlyOthers": {
@@ -4898,24 +4926,29 @@
             "party_nights": "{count, plural, =1 {1 soirée} other {# soirées}} à billet séparé : les visiteurs à la journée doivent partir plus tôt."
           }
         },
-        "bases": {
-          "disneyland-paris": {
-            "name": "Disneyland Paris",
-            "note": "Les hôtels Disney du lac Disney sont à quelques minutes à pied des entrées et donnent droit à l’Extra Magic Time. Les hôtels partenaires de Val d’Europe et de Val de France ont une navette gratuite."
-          },
-          "parc-asterix": {
-            "name": "Parc Astérix",
-            "note": "Les hôtels du parc sont à quelques minutes à pied de l’entrée, et leurs clients accèdent à certaines attractions 30 minutes plus tôt."
-          },
-          "paris": {
-            "name": "Paris",
-            "note": "De Châtelet–Les Halles, le RER A va à Disneyland Paris et le RER B à la navette du Parc Astérix, à l’aéroport."
-          }
+        "base": {
+          "disneyland-paris": "Disneyland Paris",
+          "parc-asterix": "Parc Astérix",
+          "paris": "Paris centre"
         },
-        "gateways": {
-          "XED": "Gare de Marne-la-Vallée–Chessy",
-          "CDG": "Aéroport Paris-Charles-de-Gaulle",
-          "ORY": "Aéroport Paris-Orly"
+        "stayNote": {
+          "disneyland-paris": "Les hôtels Disney du lac Disney sont à quelques minutes à pied des entrées et donnent droit à l’Extra Magic Time. Les hôtels partenaires de Val d’Europe et de Val de France ont une navette gratuite.",
+          "parc-asterix": "Les hôtels du parc sont à quelques minutes à pied de l’entrée, et leurs clients accèdent à certaines attractions 30 minutes plus tôt.",
+          "paris": "De Châtelet–Les Halles, le RER A va à Disneyland Paris et le RER B à la navette du Parc Astérix, à l’aéroport."
+        },
+        "gateway": {
+          "XED": "Marne-la-Vallée–Chessy",
+          "CDG": "Charles de Gaulle",
+          "ORY": "Orly"
+        },
+        "area": {
+          "disney_lake": "Hôtels Disney du lac Disney",
+          "disney_cheyenne_santa_fe": "Disney Hotel Cheyenne et Santa Fe",
+          "disney_davy_crockett": "Disney Davy Crockett Ranch",
+          "val_d_europe": "Val d’Europe",
+          "val_de_france": "Val de France, Magny-le-Hongre",
+          "paris_center": "Paris centre",
+          "parc_asterix": "Hôtels du Parc Astérix"
         },
         "tickets": {
           "resort": {

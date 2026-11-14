@@ -3109,10 +3109,10 @@
       "prevMonth": "Vorige maand",
       "nextMonth": "Volgende maand",
       "gridLabel": "Aankomst- en vertrekdag",
-      "wait": "kortste wachttijd bij de grote attracties ongeveer {minutes} min.",
-      "waitLastYear": "vorig jaar ongeveer {minutes} min. bij de grote attracties",
-      "legend": "Onder elke datum staat de kortste wachttijd bij de grote attracties, in minuten, in het park met de kortste rijen. Parken die vroeg sluiten tellen niet mee.",
-      "legendLastYear": "Cijfers in cursief zijn gemeten dagen van vorig jaar.",
+      "level": "Drukte: {level}",
+      "levelLastYear": "Drukte vorig jaar: {level}",
+      "legend": "Een datum zonder tip is gekleurd naar de gemiddelde drukte in de grote parken.",
+      "legendLastYear": "Datums met een gestippelde rand tonen de gemeten drukte van vorig jaar.",
       "pickArrival": "Tik op je aankomstdag.",
       "pickDeparture": "Nu je vertrekdag.",
       "dayCount": "{count, plural, =1 {1 dag} other {# dagen}}",
@@ -3120,7 +3120,28 @@
       "arrivalParkHint": "Bij een vroege vlucht; anders blijft de dag vrij.",
       "departurePark": "Park op de vertrekdag",
       "departureParkHint": "Bij een avondvlucht.",
-      "maxLength": "Een reis duurt hoogstens {days} dagen."
+      "maxLength": "Een reis duurt hoogstens {days} dagen.",
+      "partyKey": "Feestavond met eigen ticket: dagbezoekers vertrekken eerder",
+      "nyeKey": "Oudejaarsavond",
+      "unpublishedKey": "Gestippeld onderstreept: openingstijden nog niet gepubliceerd",
+      "infoHint": "Wijs een datum aan of tik erop, dan zie je welk park die dag het beste is en waarom.",
+      "ahead": "Voor {park} met {minutes} min: daar moeten dagbezoekers om {time} vertrekken.",
+      "party": "{park}: {name} vanaf {time}, dagbezoekers vertrekken om {leave}",
+      "partyUnnamed": "{park}: avondevenement vanaf {time}, dagbezoekers vertrekken om {leave}",
+      "unpublished": "Openingstijden nog niet gepubliceerd",
+      "nye": "Oudejaarsavond",
+      "noPick": "Voor deze datum is er nog geen parktip.",
+      "eventsTitle": "In {month}",
+      "nights": "{count, plural, =1 {# avond} other {# avonden}}",
+      "until": "tot {date}",
+      "since": "vanaf {date}",
+      "wholeMonth": "de hele maand",
+      "expected": "data verwacht",
+      "modeLabel": "Beste park",
+      "modeAll": "Totaal",
+      "picksLegendAll": "Onder elke datum staat het park met de kortste piekwachttijd.",
+      "picksLegendResort": "Onder elke datum staat het park van {resort} met de kortste piekwachttijd.",
+      "overall": "Totaal: {park}"
     },
     "find": {
       "modeKnown": "Ik weet mijn data",
@@ -3301,8 +3322,11 @@
       "legOther": "{minutes} min."
     },
     "month": {
-      "legend": "Twee letters per park, gekleurd naar hoe druk de dag voor dat park is; het getal is de wachttijd bij de grote attracties in minuten.",
-      "stayKey": "De band onder elke datum is de stad waar je slaapt; een pijl markeert een hotelwissel."
+      "stayKey": "De band onder elke datum is de stad waar je slaapt; een pijl markeert een hotelwissel.",
+      "bandPark": "Open voor dagbezoekers, gekleurd naar drukte",
+      "bandHop": "’s Avonds een tweede park",
+      "bandVenue": "’s Avonds buiten de parken",
+      "bandAxis": "Balk van {from} tot {to} uur"
     },
     "details": {
       "minutesCaption": "De piekwachttijd: de wachttijd bij de grote attracties op het drukste moment, waarmee het plan de dagen vergelijkt. De kleur vergelijkt de dag met een gewone dag in dit park.",
@@ -3709,7 +3733,10 @@
     "parky": {
       "button": "Plan met Parky je perfecte reis",
       "line": "Een paar vragen in de chat, en elk antwoord komt meteen hier in de planner."
-    }
+    },
+    "codeKey": "Parken",
+    "crowdColour": "Kleur: hoe druk het park die dag is, vergeleken met een normale dag daar.",
+    "peakWait": "piekwachttijd ongeveer {minutes} min"
   },
   "tripRegions": {
     "orlando": {
@@ -4470,11 +4497,11 @@
           },
           "luggage": {
             "q": "Wat doe ik met mijn bagage als ik van stad wissel?",
-            "a": "De meeste reizigers sturen hun koffers met een bagagedienst (takkyubin) vooruit naar het volgende hotel. In de Shinkansen heeft een stuk bagage van 161 tot 250 cm in totaal een gereserveerde zitplaats met bagageruimte nodig, en groter mag helemaal niet mee (JR Central). Met vooruitgestuurde bagage trekt de reisplanner 30 minuten uit voor elke hotelwissel; draag je alles zelf, dan is het eerder 60. Je kunt kiezen uit 30, 60, 90 of 120 minuten."
+            "a": "De reisplanner gaat ervan uit dat je je koffers met een bagagedienst (takkyubin) vooruitstuurt naar het volgende hotel. Bij Yamato Transport geef je ze zonder reservering af bij de receptie van je hotel, en ze komen op zijn vroegst de volgende dag aan. In de Shinkansen heeft een stuk bagage van 161 tot 250 cm in totaal een gereserveerde zitplaats met bagageruimte nodig, en groter mag helemaal niet mee (JR Central). Met vooruitgestuurde bagage trekt de reisplanner 30 minuten uit voor elke hotelwissel; draag je alles zelf, dan is het eerder 60. Je kunt kiezen uit 30, 60, 90 of 120 minuten."
           },
           "happyEntry": {
             "q": "Kom ik met een Disney-hotel eerder het park in?",
-            "a": "Ja, met Happy Entry. Gasten van de Disney-hotels mogen 15 minuten voor iedereen Tokyo Disneyland in, gasten van Hotel MiraCosta en het Fantasy Springs Hotel ook eerder Tokyo DisneySea in. Het geldt vanaf de ochtend na het inchecken, en zo rekent de reisplanner het ook; sommige hotels hebben losse dagen zonder. De officiële hotels van Universal Studios Japan hebben geen eerdere toegang."
+            "a": "Ja, met Happy Entry. Gasten van de Disney-hotels mogen 15 minuten voor iedereen Tokyo Disneyland in, gasten van Hotel MiraCosta en het Fantasy Springs Hotel ook eerder Tokyo DisneySea in. Het geldt vanaf de ochtend na het inchecken, en zo rekent de reisplanner het ook; sommige hotels hebben losse dagen zonder."
           }
         },
         "next": {
@@ -4558,8 +4585,8 @@
           "hotelHint": {
             "disney": "Happy Entry in Tokyo Disneyland, 15 minuten eerder, niet op de dag van inchecken",
             "disney_deluxe": "Happy Entry in beide Disney-parken, niet op de dag van inchecken",
-            "universal": "Een paar minuten lopen naar de ingang, geen eerdere toegang",
-            "park_hotel": "Highland Resort: eerder naar binnen bij Fuji-Q. LEGOLAND Japan Hotel: lopend naar de ingang",
+            "universal": "Een paar minuten lopen naar de ingang",
+            "park_hotel": "Highland Resort bij Fuji-Q of LEGOLAND Japan Hotel bij de ingang; eerder naar binnen verkoopt Fuji-Q zelf, als One Day Pass met Priority Admission",
             "offsite": "Geen vroege toegang"
           },
           "hotelShort": {
@@ -4874,7 +4901,8 @@
             "parc_asterix": "hotel Parc Astérix",
             "offsite": "hotel elders"
           },
-          "eveningsHint": "Sluit een park eerder, dan gaat de avond naar het andere Disney-park of naar Disney Village."
+          "eveningsHint": "Sluit een park eerder, dan gaat de avond naar het andere Disney-park of naar Disney Village.",
+          "moveBufferHint": "Met je koffers naar het volgende hotel is 60 minuten realistisch."
         },
         "details": {
           "earlyOthers": {
@@ -4898,24 +4926,29 @@
             "party_nights": "{count, plural, =1 {1 avond} other {# avonden}} met een eigen ticket: dagbezoekers moeten dan eerder weg."
           }
         },
-        "bases": {
-          "disneyland-paris": {
-            "name": "Disneyland Paris",
-            "note": "De Disney-hotels aan Lake Disney liggen op loopafstand van de parken en hebben Extra Magic Time. Vanaf de partnerhotels in Val d'Europe en Val de France rijdt een gratis shuttle."
-          },
-          "parc-asterix": {
-            "name": "Parc Astérix",
-            "note": "De hotels van het park liggen op loopafstand van de ingang, en hun gasten mogen bij een paar attracties 30 minuten eerder in."
-          },
-          "paris": {
-            "name": "Parijs",
-            "note": "Vanaf Châtelet–Les Halles rijdt de RER A naar Disneyland Paris en de RER B naar de shuttle van Parc Astérix op de luchthaven."
-          }
+        "base": {
+          "disneyland-paris": "Disneyland Paris",
+          "parc-asterix": "Parc Astérix",
+          "paris": "Centrum van Parijs"
         },
-        "gateways": {
-          "XED": "Station Marne-la-Vallée–Chessy",
-          "CDG": "Luchthaven Parijs-Charles de Gaulle",
-          "ORY": "Luchthaven Parijs-Orly"
+        "stayNote": {
+          "disneyland-paris": "De Disney-hotels aan Lake Disney liggen op loopafstand van de parken en hebben Extra Magic Time. Vanaf de partnerhotels in Val d'Europe en Val de France rijdt een gratis shuttle.",
+          "parc-asterix": "De hotels van het park liggen op loopafstand van de ingang, en hun gasten mogen bij een paar attracties 30 minuten eerder in.",
+          "paris": "Vanaf Châtelet–Les Halles rijdt de RER A naar Disneyland Paris en de RER B naar de shuttle van Parc Astérix op de luchthaven."
+        },
+        "gateway": {
+          "XED": "Marne-la-Vallée–Chessy",
+          "CDG": "Charles de Gaulle",
+          "ORY": "Orly"
+        },
+        "area": {
+          "disney_lake": "Disney-hotels aan Lake Disney",
+          "disney_cheyenne_santa_fe": "Disney Hotel Cheyenne en Santa Fe",
+          "disney_davy_crockett": "Disney Davy Crockett Ranch",
+          "val_d_europe": "Val d'Europe",
+          "val_de_france": "Val de France, Magny-le-Hongre",
+          "paris_center": "Centrum van Parijs",
+          "parc_asterix": "Hotels bij Parc Astérix"
         },
         "tickets": {
           "resort": {

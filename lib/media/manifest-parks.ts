@@ -6,6 +6,34 @@ import type { MediaParkRef } from './types';
 
 /** Park reference data for every park the media database has images of, by path. */
 export const MEDIA_PARKS: Record<string, MediaParkRef> = {
+  "asia/japan/fujikawaguchiko/fuji-q-highland": {
+    "slug": "fuji-q-highland",
+    "name": "Fuji-Q Highland",
+    "city": "Fujikawaguchiko",
+    "countrySlug": "japan",
+    "path": "asia/japan/fujikawaguchiko/fuji-q-highland"
+  },
+  "asia/japan/osaka/universal-studios-japan": {
+    "slug": "universal-studios-japan",
+    "name": "Universal Studios Japan",
+    "city": "Osaka",
+    "countrySlug": "japan",
+    "path": "asia/japan/osaka/universal-studios-japan"
+  },
+  "asia/japan/tokyo/tokyo-disneyland": {
+    "slug": "tokyo-disneyland",
+    "name": "Tokyo Disneyland",
+    "city": "Tokyo",
+    "countrySlug": "japan",
+    "path": "asia/japan/tokyo/tokyo-disneyland"
+  },
+  "asia/japan/tokyo/tokyo-disneysea": {
+    "slug": "tokyo-disneysea",
+    "name": "Tokyo DisneySea",
+    "city": "Tokyo",
+    "countrySlug": "japan",
+    "path": "asia/japan/tokyo/tokyo-disneysea"
+  },
   "asia/singapore/singapore/universal-studios-singapore": {
     "slug": "universal-studios-singapore",
     "name": "Universal Studios Singapore",
@@ -26,6 +54,13 @@ export const MEDIA_PARKS: Record<string, MediaParkRef> = {
     "city": "Wavre",
     "countrySlug": "belgium",
     "path": "europe/belgium/wavre/walibi-belgium"
+  },
+  "europe/france/paris/disney-adventure-world": {
+    "slug": "disney-adventure-world",
+    "name": "Disney Adventure World",
+    "city": "Paris",
+    "countrySlug": "france",
+    "path": "europe/france/paris/disney-adventure-world"
   },
   "europe/france/paris/disneyland-park": {
     "slug": "disneyland-park",
@@ -104,12 +139,33 @@ export const MEDIA_PARKS: Record<string, MediaParkRef> = {
     "countrySlug": "united-kingdom",
     "path": "europe/united-kingdom/farley/alton-towers"
   },
+  "north-america/united-states/anaheim/disney-california-adventure-park": {
+    "slug": "disney-california-adventure-park",
+    "name": "Disney California Adventure Park",
+    "city": "Anaheim",
+    "countrySlug": "united-states",
+    "path": "north-america/united-states/anaheim/disney-california-adventure-park"
+  },
   "north-america/united-states/anaheim/disneyland-park": {
     "slug": "disneyland-park",
     "name": "Disneyland Park",
     "city": "Anaheim",
     "countrySlug": "united-states",
     "path": "north-america/united-states/anaheim/disneyland-park"
+  },
+  "north-america/united-states/buena-park/knotts-berry-farm": {
+    "slug": "knotts-berry-farm",
+    "name": "Knott's Berry Farm",
+    "city": "Buena Park",
+    "countrySlug": "united-states",
+    "path": "north-america/united-states/buena-park/knotts-berry-farm"
+  },
+  "north-america/united-states/carlsbad/legoland-california": {
+    "slug": "legoland-california",
+    "name": "LEGOLAND California",
+    "city": "Carlsbad",
+    "countrySlug": "united-states",
+    "path": "north-america/united-states/carlsbad/legoland-california"
   },
   "north-america/united-states/los-angeles/universal-studios-hollywood": {
     "slug": "universal-studios-hollywood",
@@ -152,6 +208,13 @@ export const MEDIA_PARKS: Record<string, MediaParkRef> = {
     "city": "Orlando",
     "countrySlug": "united-states",
     "path": "north-america/united-states/orlando/universal-islands-of-adventure"
+  },
+  "north-america/united-states/san-diego/seaworld-san-diego": {
+    "slug": "seaworld-san-diego",
+    "name": "SeaWorld San Diego",
+    "city": "San Diego",
+    "countrySlug": "united-states",
+    "path": "north-america/united-states/san-diego/seaworld-san-diego"
   }
 };
 
@@ -161,9 +224,14 @@ export const MEDIA_PARKS: Record<string, MediaParkRef> = {
  * an explicit `parkPath` and never rely on this.
  */
 export const MEDIA_PARK_PATH_BY_SLUG: Record<string, string> = {
+  "fuji-q-highland": "asia/japan/fujikawaguchiko/fuji-q-highland",
+  "universal-studios-japan": "asia/japan/osaka/universal-studios-japan",
+  "tokyo-disneyland": "asia/japan/tokyo/tokyo-disneyland",
+  "tokyo-disneysea": "asia/japan/tokyo/tokyo-disneysea",
   "universal-studios-singapore": "asia/singapore/singapore/universal-studios-singapore",
   "bobbejaanland": "europe/belgium/kasterlee/bobbejaanland",
   "walibi-belgium": "europe/belgium/wavre/walibi-belgium",
+  "disney-adventure-world": "europe/france/paris/disney-adventure-world",
   "disneyland-park": "europe/france/paris/disneyland-park",
   "movie-park-germany": "europe/germany/bottrop/movie-park-germany",
   "phantasialand": "europe/germany/bruehl/phantasialand",
@@ -175,10 +243,14 @@ export const MEDIA_PARK_PATH_BY_SLUG: Record<string, string> = {
   "efteling": "europe/netherlands/kaatsheuvel/efteling",
   "attractiepark-toverland": "europe/netherlands/sevenum/attractiepark-toverland",
   "alton-towers": "europe/united-kingdom/farley/alton-towers",
+  "disney-california-adventure-park": "north-america/united-states/anaheim/disney-california-adventure-park",
+  "knotts-berry-farm": "north-america/united-states/buena-park/knotts-berry-farm",
+  "legoland-california": "north-america/united-states/carlsbad/legoland-california",
   "universal-studios-hollywood": "north-america/united-states/los-angeles/universal-studios-hollywood",
   "disneys-animal-kingdom-theme-park": "north-america/united-states/orlando/disneys-animal-kingdom-theme-park",
   "disneys-hollywood-studios": "north-america/united-states/orlando/disneys-hollywood-studios",
   "epcot": "north-america/united-states/orlando/epcot",
   "magic-kingdom-park": "north-america/united-states/orlando/magic-kingdom-park",
-  "universal-islands-of-adventure": "north-america/united-states/orlando/universal-islands-of-adventure"
+  "universal-islands-of-adventure": "north-america/united-states/orlando/universal-islands-of-adventure",
+  "seaworld-san-diego": "north-america/united-states/san-diego/seaworld-san-diego"
 };

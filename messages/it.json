@@ -3109,10 +3109,10 @@
       "prevMonth": "Mese precedente",
       "nextMonth": "Mese successivo",
       "gridLabel": "Giorno di arrivo e di partenza",
-      "wait": "attesa più breve alle grandi attrazioni circa {minutes} min",
-      "waitLastYear": "l’anno scorso circa {minutes} min alle grandi attrazioni",
-      "legend": "Sotto ogni data: l’attesa più breve alle grandi attrazioni quel giorno, in minuti, nel parco con le code più corte. I parchi che chiudono prima non contano.",
-      "legendLastYear": "Le cifre in corsivo sono giorni misurati l’anno scorso.",
+      "level": "Affluenza: {level}",
+      "levelLastYear": "Affluenza l’anno scorso: {level}",
+      "legend": "Una data senza consiglio ha il colore dell’affluenza media dei grandi parchi.",
+      "legendLastYear": "Le date con il bordo tratteggiato mostrano l’affluenza misurata l’anno scorso.",
       "pickArrival": "Tocca il giorno di arrivo.",
       "pickDeparture": "Ora il giorno di partenza.",
       "dayCount": "{count, plural, =1 {1 giorno} other {# giorni}}",
@@ -3120,7 +3120,28 @@
       "arrivalParkHint": "Con un volo di primo mattino; altrimenti il giorno resta libero.",
       "departurePark": "Parco il giorno di partenza",
       "departureParkHint": "Con un volo serale.",
-      "maxLength": "Un viaggio dura al massimo {days} giorni."
+      "maxLength": "Un viaggio dura al massimo {days} giorni.",
+      "partyKey": "Serata di festa con biglietto a parte: i visitatori giornalieri escono prima",
+      "nyeKey": "San Silvestro",
+      "unpublishedKey": "Sottolineato a puntini: orari non ancora pubblicati",
+      "infoHint": "Indica una data o toccala: vedi quale parco conviene quel giorno, e perché.",
+      "ahead": "Davanti a {park}, con {minutes} min: lì i visitatori giornalieri devono uscire alle {time}.",
+      "party": "{park}: {name} dalle {time}, i visitatori giornalieri escono alle {leave}",
+      "partyUnnamed": "{park}: evento serale dalle {time}, i visitatori giornalieri escono alle {leave}",
+      "unpublished": "Orari non ancora pubblicati",
+      "nye": "San Silvestro",
+      "noPick": "Per questa data non c’è ancora un consiglio sul parco.",
+      "eventsTitle": "A {month}",
+      "nights": "{count, plural, =1 {# serata} other {# serate}}",
+      "until": "fino al {date}",
+      "since": "dal {date}",
+      "wholeMonth": "tutto il mese",
+      "expected": "date previste",
+      "modeLabel": "Parco migliore",
+      "modeAll": "Generale",
+      "picksLegendAll": "Sotto ogni data, il parco con l’attesa di picco più breve.",
+      "picksLegendResort": "Sotto ogni data, il parco {resort} con l’attesa di picco più breve.",
+      "overall": "Generale: {park}"
     },
     "find": {
       "modeKnown": "Conosco le mie date",
@@ -3301,8 +3322,11 @@
       "legOther": "{minutes} min"
     },
     "month": {
-      "legend": "Due lettere per parco, colorate secondo quanto è affollato il giorno per quel parco; il numero è l’attesa alle grandi attrazioni in minuti.",
-      "stayKey": "La fascia sotto ogni data è la città in cui dormi; una freccia segna un cambio d’hotel."
+      "stayKey": "La fascia sotto ogni data è la città in cui dormi; una freccia segna un cambio d’hotel.",
+      "bandPark": "Aperto ai visitatori giornalieri, colorato secondo l’affluenza",
+      "bandHop": "La sera un secondo parco",
+      "bandVenue": "La sera fuori dai parchi",
+      "bandAxis": "Barra dalle {from} alle {to}"
     },
     "details": {
       "minutesCaption": "L’attesa di picco: l’attesa alle grandi attrazioni nel momento più affollato, la cifra con cui il piano confronta i giorni. Il colore confronta il giorno con un giorno tipico di questo parco.",
@@ -3709,7 +3733,10 @@
     "parky": {
       "button": "Pianifica con Parky il tuo viaggio perfetto",
       "line": "Qualche domanda in chat, e ogni risposta arriva subito qui nel pianificatore."
-    }
+    },
+    "codeKey": "Parchi",
+    "crowdColour": "Colore: quanto è affollato il parco quel giorno, rispetto a un suo giorno normale.",
+    "peakWait": "attesa di picco di circa {minutes} min"
   },
   "tripRegions": {
     "orlando": {
@@ -4148,7 +4175,7 @@
         "leadMonth": "Gli otto parchi intorno a Los Angeles e San Diego a {month}, giorno per giorno, e un pianificatore per i tuoi giorni di viaggio.",
         "monthIndexLabel": "La California del Sud mese per mese",
         "calendar": {
-          "caption": "I parchi della California del Sud dal {from} al {to}: attesa di punta in minuti"
+          "caption": "I parchi della California del Sud dal {from} al {to}: attesa di picco in minuti"
         },
         "lanes": {
           "break": "Vacanze scolastiche di Los Angeles: {name}, {dates}",
@@ -4174,16 +4201,16 @@
           "quietest": {
             "q": "Quando c’è meno gente nella California del Sud nelle prossime settimane?",
             "qMonth": "Quando c’è meno gente nella California del Sud a {month}?",
-            "resort": "{resort} ha l’attesa di punta più bassa il {days}.",
+            "resort": "{resort} ha l’attesa di picco più bassa il {days}.",
             "day": "{date} ({park}, circa {minutes} min)"
           },
           "party": {
             "q": "Quale parco in una serata di festa a California Adventure?",
-            "a": "In {count, plural, =1 {# serata} other {# serate}} di questo periodo California Adventure chiude ai visitatori giornalieri alle {time} per {name}. In quei giorni l’attesa di punta è di circa {on} min, contro {off} min negli altri giorni. La giornata è più corta e perdi la serata. Per una giornata intera scegli in quei giorni Disneyland, oppure vai con il biglietto della festa."
+            "a": "In {count, plural, =1 {# serata} other {# serate}} di questo periodo California Adventure chiude ai visitatori giornalieri alle {time} per {name}. In quei giorni l’attesa di picco è di circa {on} min, contro {off} min negli altri giorni. La giornata è più corta e perdi la serata. Per una giornata intera scegli in quei giorni Disneyland, oppure vai con il biglietto della festa."
           },
           "epic": {
             "q": "Disneyland è più affollato nel fine settimana?",
-            "a": "{verdict, select, busier {Sì.} same {No.} other {Solo un po’.}} In questo periodo l’attesa di punta a Disneyland è di circa {weekend} min il sabato e la domenica, e di circa {weekday} min dal lunedì al venerdì."
+            "a": "{verdict, select, busier {Sì.} same {No.} other {Solo un po’.}} In questo periodo l’attesa di picco a Disneyland è di circa {weekend} min il sabato e la domenica, e di circa {weekday} min dal lunedì al venerdì."
           },
           "distance": {
             "q": "Quanto dista Universal da Disneyland?",
@@ -4195,7 +4222,7 @@
         },
         "dataset": {
           "name": "Calendario affluenza dei parchi della California del Sud, {period}",
-          "description": "Per parco e giorno al Disneyland Resort, a Universal Studios Hollywood e nei parchi da gita: l’attesa di punta prevista, l’affluenza rispetto a un giorno normale del parco e gli orari, {period}."
+          "description": "Per parco e giorno al Disneyland Resort, a Universal Studios Hollywood e nei parchi da gita: l’attesa di picco prevista, l’affluenza rispetto a un giorno normale del parco e gli orari, {period}."
         },
         "glance": {
           "zone": "ora della California"
@@ -4212,7 +4239,7 @@
           "region": "Disneyland e Universal"
         },
         "intro": {
-          "lead": "Ogni cifra qui è l’attesa di punta: l’attesa più alta del giorno di ogni grande attrazione, in media su Disneyland, California Adventure e Universal.",
+          "lead": "Ogni cifra qui è l’attesa di picco: l’attesa più alta del giorno di ogni grande attrazione, in media su Disneyland, California Adventure e Universal.",
           "body": "Valutiamo un viaggio come il pianificatore di viaggio: ogni parco nel suo giorno migliore, e un giorno in cui i visitatori giornalieri devono uscire prima conta come un giorno peggiore. La previsione arriva al {date}. Oltre, la pagina mostra le stesse settimane dell’anno scorso come le abbiamo misurate, segnate con «anno scorso».",
           "bodyForecast": "Valutiamo un viaggio come il pianificatore di viaggio: ogni parco nel suo giorno migliore, e un giorno in cui i visitatori giornalieri devono uscire prima conta come un giorno peggiore. Tutto viene dalla nostra previsione."
         },
@@ -4229,17 +4256,17 @@
           "quietQ": {
             "region": "Quando c’è meno gente nella California del Sud nel {year}?"
           },
-          "quietA": "Il viaggio di {days} giorni dal {date} ha l’attesa di punta più bassa: circa {minutes} min, il {percent}% sotto la media del {year}. Seguono {others}.",
+          "quietA": "Il viaggio di {days} giorni dal {date} ha l’attesa di picco più bassa: circa {minutes} min, il {percent}% sotto la media del {year}. Seguono {others}.",
           "christmasQ": "A Natale c’è molta gente?",
-          "christmasA": "{busy, select, yes {Sì.} other {No.}} La settimana di Natale ({date}) sta intorno ai {minutes} min di attesa di punta, contro una media di {average} min nel {year}.",
-          "newYearA": "{busy, select, yes {Sì, fin dove arrivano le nostre cifre.} other {No, fin dove arrivano le nostre cifre.}} Cominciano con la settimana di Capodanno ({date}), intorno ai {minutes} min di attesa di punta, contro una media di {average} min nel {year}. La settimana di Natale viene prima.",
+          "christmasA": "{busy, select, yes {Sì.} other {No.}} La settimana di Natale ({date}) sta intorno ai {minutes} min di attesa di picco, contro una media di {average} min nel {year}.",
+          "newYearA": "{busy, select, yes {Sì, fin dove arrivano le nostre cifre.} other {No, fin dove arrivano le nostre cifre.}} Cominciano con la settimana di Capodanno ({date}), intorno ai {minutes} min di attesa di picco, contro una media di {average} min nel {year}. La settimana di Natale viene prima.",
           "partyQ": "Quando sono le serate di festa?",
           "partyA": "{list}. In quelle serate i visitatori giornalieri devono uscire prima, perciò il pianificatore conta quel giorno come una giornata al parco più corta.",
           "partyItem": "{name} ({park}): {dates}, {status}",
           "firstQ": {
             "region": "Prima Disneyland o prima Universal?"
           },
-          "firstA": "Ogni parco va nel giorno del tuo viaggio con la sua attesa di punta più bassa. Per il viaggio dal {date} significa {order}.",
+          "firstA": "Ogni parco va nel giorno del tuo viaggio con la sua attesa di picco più bassa. Per il viaggio dal {date} significa {order}.",
           "firstItem": "{park} il {date}"
         }
       },
@@ -4264,7 +4291,7 @@
           },
           "fireworks": "Spettacoli serali",
           "fireworksWantHint": "I tuoi giorni al parco evitano le serate di festa, quando i visitatori giornalieri devono uscire prima.",
-          "fireworksAnyHint": "Una serata di festa può diventare un giorno al parco se l’attesa di punta più bassa compensa la giornata più corta.",
+          "fireworksAnyHint": "Una serata di festa può diventare un giorno al parco se l’attesa di picco più bassa compensa la giornata più corta.",
           "fireworksWantShort": "Spettacoli serali",
           "eveningsHint": "Se un parco chiude prima, il piano propone una serata: l’altro parco Disney, Downtown Disney o Universal CityWalk."
         },
@@ -4412,7 +4439,7 @@
         "metaDescription": "Quale parco del Giappone in quale giorno, da Tokyo Disney a Universal Studios Japan. Il più tranquillo nei prossimi 30 giorni: {verdict}.",
         "metaDescriptionPlain": "Tokyo Disneyland, Tokyo DisneySea, Fuji-Q Highland, LEGOLAND Japan e Universal Studios Japan giorno per giorno, e un pianificatore che distribuisce città, notti e parchi sulle tue date.",
         "metaDescriptionMonth": "I giorni più tranquilli nei parchi del Giappone a {month}: {verdict}. Tutti e cinque i parchi giorno per giorno.",
-        "metaDescriptionMonthPlain": "Il Giappone a {month}, giorno per giorno: l’attesa di punta a Tokyo Disneyland, Tokyo DisneySea, Fuji-Q Highland, LEGOLAND Japan e Universal Studios Japan.",
+        "metaDescriptionMonthPlain": "Il Giappone a {month}, giorno per giorno: l’attesa di picco a Tokyo Disneyland, Tokyo DisneySea, Fuji-Q Highland, LEGOLAND Japan e Universal Studios Japan.",
         "lead": "Un calendario per cinque parchi tra Tokyo e Osaka, e un pianificatore che mette in ordine le tue città e distribuisce le notti.",
         "leadMonth": "Tutti e cinque i parchi tra Tokyo e Osaka a {month}, giorno per giorno, e un pianificatore che mette in ordine le tue città e distribuisce le notti.",
         "monthIndexLabel": "Il Giappone mese per mese",
@@ -4420,7 +4447,7 @@
           "zone": "ora del Giappone"
         },
         "calendar": {
-          "caption": "I parchi del Giappone, dal {from} al {to}: attesa di punta alle grandi attrazioni, in minuti"
+          "caption": "I parchi del Giappone, dal {from} al {to}: attesa di picco alle grandi attrazioni, in minuti"
         },
         "lanes": {
           "break": "Vacanze scolastiche giapponesi: {name}, {dates}",
@@ -4455,7 +4482,7 @@
           },
           "epic": {
             "q": "Tokyo DisneySea è più affollato nel fine settimana?",
-            "a": "{verdict, select, busier {Sì.} same {No.} other {Solo un po’.}} In questo periodo l’attesa di punta è di circa {weekend} min il sabato e la domenica e di circa {weekday} min dal lunedì al venerdì."
+            "a": "{verdict, select, busier {Sì.} same {No.} other {Solo un po’.}} In questo periodo l’attesa di picco è di circa {weekend} min il sabato e la domenica e di circa {weekday} min dal lunedì al venerdì."
           },
           "distance": {
             "q": "Quanto ci vuole tra una città e l’altra?",
@@ -4470,11 +4497,11 @@
           },
           "luggage": {
             "q": "Che faccio con i bagagli quando cambio città?",
-            "a": "La maggior parte dei viaggiatori spedisce le valigie all’hotel successivo con un servizio bagagli (takkyubin). Sullo Shinkansen un bagaglio da 161 a 250 cm in totale richiede un posto prenotato con spazio per bagagli grandi, e uno più grande non può salire (JR Central). Con i bagagli spediti, il pianificatore prevede 30 minuti per ogni cambio d’hotel; se li porti tu, sono più vicini a 60. Puoi scegliere 30, 60, 90 o 120 minuti."
+            "a": "Il pianificatore dà per scontato che tu spedisca le valigie all’hotel successivo con un servizio bagagli (takkyubin). Con Yamato Transport le lasci senza prenotazione alla reception dell’hotel, e arrivano al più presto il giorno dopo. Sullo Shinkansen un bagaglio da 161 a 250 cm in totale richiede un posto prenotato con spazio per bagagli grandi, e uno più grande non può salire (JR Central). Con i bagagli spediti, il pianificatore prevede 30 minuti per ogni cambio d’hotel; se li porti tu, sono più vicini a 60. Puoi scegliere 30, 60, 90 o 120 minuti."
           },
           "happyEntry": {
             "q": "Con un hotel Disney entro prima nel parco?",
-            "a": "Sì, con Happy Entry. Gli ospiti degli hotel Disney entrano a Tokyo Disneyland 15 minuti prima di tutti gli altri, quelli dell’Hotel MiraCosta e del Fantasy Springs Hotel entrano prima anche a Tokyo DisneySea. Vale dalla mattina dopo il check-in, e il pianificatore lo conta così; alcuni hotel hanno singoli giorni senza. Gli hotel ufficiali di Universal Studios Japan non hanno l’ingresso anticipato."
+            "a": "Sì, con Happy Entry. Gli ospiti degli hotel Disney entrano a Tokyo Disneyland 15 minuti prima di tutti gli altri, quelli dell’Hotel MiraCosta e del Fantasy Springs Hotel entrano prima anche a Tokyo DisneySea. Vale dalla mattina dopo il check-in, e il pianificatore lo conta così; alcuni hotel hanno singoli giorni senza."
           }
         },
         "next": {
@@ -4482,7 +4509,7 @@
         },
         "dataset": {
           "name": "Calendario affluenza dei parchi del Giappone, {period}",
-          "description": "Per parco e giorno a Tokyo Disneyland, Tokyo DisneySea, Fuji-Q Highland, LEGOLAND Japan e Universal Studios Japan: l’attesa di punta prevista, l’affluenza rispetto a un giorno normale del parco e gli orari, {period}."
+          "description": "Per parco e giorno a Tokyo Disneyland, Tokyo DisneySea, Fuji-Q Highland, LEGOLAND Japan e Universal Studios Japan: l’attesa di picco prevista, l’affluenza rispetto a un giorno normale del parco e gli orari, {period}."
         }
       },
       "bestTime": {
@@ -4502,7 +4529,7 @@
           "universal-studios-japan": "Universal Studios Japan"
         },
         "intro": {
-          "lead": "Ogni cifra qui è l’attesa di punta: l’attesa più lunga del giorno a ogni grande attrazione, in media sui parchi del viaggio.",
+          "lead": "Ogni cifra qui è l’attesa di picco: l’attesa più lunga del giorno a ogni grande attrazione, in media sui parchi del viaggio.",
           "body": "Valutiamo un viaggio come il pianificatore di viaggio: ogni parco nel suo giorno migliore, i trasferimenti tra le città compresi, e un giorno in cui un parco chiude prima conta come un giorno peggiore. La previsione arriva fino al {date}. Dopo, la pagina mostra le stesse settimane dell’anno scorso, come le abbiamo misurate, con la nota «anno scorso».",
           "bodyForecast": "Valutiamo un viaggio come il pianificatore di viaggio: ogni parco nel suo giorno migliore, i trasferimenti tra le città compresi, e un giorno in cui un parco chiude prima conta come un giorno peggiore. Ogni cifra di questa pagina è la nostra previsione."
         },
@@ -4523,10 +4550,10 @@
             "tokyo-disney": "Quando c’è meno gente a Tokyo Disney nel {year}?",
             "universal-studios-japan": "Quando c’è meno gente a Universal Studios Japan nel {year}?"
           },
-          "quietA": "Il viaggio di {days} giorni dal {date} ha l’attesa di punta più breve: circa {minutes} min, il {percent}% sotto la media del {year}. Seguono {others}.",
+          "quietA": "Il viaggio di {days} giorni dal {date} ha l’attesa di picco più breve: circa {minutes} min, il {percent}% sotto la media del {year}. Seguono {others}.",
           "christmasQ": "A Natale c’è tanta gente?",
-          "christmasA": "{busy, select, yes {Sì.} other {No.}} La settimana di Natale ({date}) sta intorno ai {minutes} min di attesa di punta, contro una media di {average} min nel {year}.",
-          "newYearA": "{busy, select, yes {Sì, fin dove arrivano le nostre cifre.} other {No, fin dove arrivano le nostre cifre.}} Cominciano con la settimana di Capodanno ({date}), intorno ai {minutes} min di attesa di punta, contro una media di {average} min nel {year}. La settimana di Natale viene prima.",
+          "christmasA": "{busy, select, yes {Sì.} other {No.}} La settimana di Natale ({date}) sta intorno ai {minutes} min di attesa di picco, contro una media di {average} min nel {year}.",
+          "newYearA": "{busy, select, yes {Sì, fin dove arrivano le nostre cifre.} other {No, fin dove arrivano le nostre cifre.}} Cominciano con la settimana di Capodanno ({date}), intorno ai {minutes} min di attesa di picco, contro una media di {average} min nel {year}. La settimana di Natale viene prima.",
           "partyQ": "Quando sono le serate con biglietto a parte?",
           "partyA": "{list}. Ognuna di queste serate richiede un biglietto proprio.",
           "partyItem": "{name} ({park}): {dates}, {status}",
@@ -4558,8 +4585,8 @@
           "hotelHint": {
             "disney": "Happy Entry a Tokyo Disneyland, 15 minuti prima, non il giorno del check-in",
             "disney_deluxe": "Happy Entry in entrambi i parchi Disney, non il giorno del check-in",
-            "universal": "A pochi minuti a piedi dall’ingresso, senza ingresso anticipato",
-            "park_hotel": "Highland Resort: ingresso anticipato a Fuji-Q. LEGOLAND Japan Hotel: ingresso a piedi",
+            "universal": "A pochi minuti a piedi dall’ingresso",
+            "park_hotel": "Highland Resort vicino a Fuji-Q o LEGOLAND Japan Hotel all’ingresso; l’ingresso anticipato lo vende Fuji-Q stesso, come One Day Pass con Priority Admission",
             "offsite": "Nessun ingresso anticipato"
           },
           "hotelShort": {
@@ -4744,9 +4771,9 @@
         "metaTitleMonth": "Affluenza Disneyland Paris e Parc Astérix, {month}",
         "metaTitleMonthShort": "Affluenza Disneyland Paris, {month}",
         "metaDescription": "Disneyland Paris e Parc Astérix giorno per giorno. I più tranquilli nei prossimi 30 giorni: {verdict}.",
-        "metaDescriptionPlain": "Attesa di punta e affluenza al Parco Disneyland, a Disney Adventure World e al Parc Astérix, giorno per giorno, con un pianificatore di viaggio.",
+        "metaDescriptionPlain": "Attesa di picco e affluenza al Parco Disneyland, a Disney Adventure World e al Parc Astérix, giorno per giorno, con un pianificatore di viaggio.",
         "metaDescriptionMonth": "I giorni più tranquilli di {month} a Disneyland Paris e al Parc Astérix: {verdict}. I tre parchi giorno per giorno.",
-        "metaDescriptionMonthPlain": "Disneyland Paris e Parc Astérix a {month}, giorno per giorno: attesa di punta, affluenza e orari dei tre parchi.",
+        "metaDescriptionMonthPlain": "Disneyland Paris e Parc Astérix a {month}, giorno per giorno: attesa di picco, affluenza e orari dei tre parchi.",
         "lead": "Un calendario per Disneyland Paris e il Parc Astérix, ognuno con i suoi hotel, e un pianificatore che ti dice dove dormire.",
         "leadMonth": "Disneyland Paris e il Parc Astérix a {month}, giorno per giorno, e un pianificatore che ti dice dove dormire.",
         "monthIndexLabel": "Calendario affluenza per mese",
@@ -4754,7 +4781,7 @@
           "zone": "ora di Parigi"
         },
         "calendar": {
-          "caption": "Disneyland Paris e Parc Astérix dal {from} al {to}: attesa di punta alle grandi attrazioni, in minuti"
+          "caption": "Disneyland Paris e Parc Astérix dal {from} al {to}: attesa di picco alle grandi attrazioni, in minuti"
         },
         "lanes": {
           "break": "Vacanze scolastiche di Parigi (zona C): {name}, {dates}",
@@ -4789,7 +4816,7 @@
           },
           "epic": {
             "q": "Il Parco Disneyland è più affollato nel fine settimana?",
-            "a": "{verdict, select, busier {Sì.} same {No.} other {Solo un po’.}} In questo periodo la sua attesa di punta è di circa {weekend} min il sabato e la domenica e di circa {weekday} min dal lunedì al venerdì."
+            "a": "{verdict, select, busier {Sì.} same {No.} other {Solo un po’.}} In questo periodo la sua attesa di picco è di circa {weekend} min il sabato e la domenica e di circa {weekday} min dal lunedì al venerdì."
           },
           "distance": {
             "q": "Quanto dista il Parc Astérix da Disneyland Paris?",
@@ -4801,7 +4828,7 @@
         },
         "dataset": {
           "name": "Calendario affluenza Disneyland Paris e Parc Astérix, {period}",
-          "description": "Per parco e per giorno al Parco Disneyland, a Disney Adventure World e al Parc Astérix: l’attesa di punta prevista alle grandi attrazioni, l’affluenza rispetto a un giorno normale in quel parco e gli orari, {period}."
+          "description": "Per parco e per giorno al Parco Disneyland, a Disney Adventure World e al Parc Astérix: l’attesa di picco prevista alle grandi attrazioni, l’affluenza rispetto a un giorno normale in quel parco e gli orari, {period}."
         }
       },
       "bestTime": {
@@ -4818,7 +4845,7 @@
           "disneyland-paris": "Disneyland Paris"
         },
         "intro": {
-          "lead": "I minuti sono l’attesa di punta, l’attesa più lunga della giornata a ogni grande attrazione, in media sui parchi del viaggio.",
+          "lead": "I minuti sono l’attesa di picco, l’attesa più lunga della giornata a ogni grande attrazione, in media sui parchi del viaggio.",
           "body": "Pianifichiamo ogni viaggio come il pianificatore: ogni parco nel suo giorno migliore, e un giorno in cui i visitatori giornalieri devono uscire prima conta come un giorno peggiore. Fino al {date} usiamo la nostra previsione, per le settimane successive l’affluenza misurata l’anno scorso, con la dicitura «anno scorso».",
           "bodyForecast": "Pianifichiamo ogni viaggio come il pianificatore: ogni parco nel suo giorno migliore, e un giorno in cui i visitatori giornalieri devono uscire prima conta come un giorno peggiore. Tutti i numeri sono la nostra previsione."
         },
@@ -4836,10 +4863,10 @@
             "region": "Quando c’è meno gente a Disneyland Paris e al Parc Astérix nel {year}?",
             "disneyland-paris": "Quando c’è meno gente a Disneyland Paris nel {year}?"
           },
-          "quietA": "Il viaggio di {days} giorni più tranquillo parte il {date}: un’attesa di punta di circa {minutes} min, il {percent}% sotto la media del {year}. Seguono {others}.",
+          "quietA": "Il viaggio di {days} giorni più tranquillo parte il {date}: un’attesa di picco di circa {minutes} min, il {percent}% sotto la media del {year}. Seguono {others}.",
           "christmasQ": "C’è molta gente a Natale?",
-          "christmasA": "{busy, select, yes {Sì.} other {No.}} Nella settimana di Natale ({date}) l’attesa di punta è di circa {minutes} min, contro una media di {average} min nel {year}.",
-          "newYearA": "{busy, select, yes {Sì, fin dove arrivano i nostri dati.} other {No, fin dove arrivano i nostri dati.}} Partono dalla settimana di Capodanno ({date}), con un’attesa di punta di circa {minutes} min, contro una media di {average} min nel {year}. La settimana di Natale vera e propria viene prima.",
+          "christmasA": "{busy, select, yes {Sì.} other {No.}} Nella settimana di Natale ({date}) l’attesa di picco è di circa {minutes} min, contro una media di {average} min nel {year}.",
+          "newYearA": "{busy, select, yes {Sì, fin dove arrivano i nostri dati.} other {No, fin dove arrivano i nostri dati.}} Partono dalla settimana di Capodanno ({date}), con un’attesa di picco di circa {minutes} min, contro una media di {average} min nel {year}. La settimana di Natale vera e propria viene prima.",
           "partyQ": "Quando ci sono le serate con biglietto a parte?",
           "partyA": "{list}. In quelle sere i visitatori giornalieri devono uscire prima, quindi il pianificatore non ci mette una giornata intera di parco.",
           "partyItem": "{name} ({park}): {dates}, {status}",
@@ -4874,7 +4901,8 @@
             "parc_asterix": "hotel del Parc Astérix",
             "offsite": "hotel altrove"
           },
-          "eveningsHint": "Se un parco chiude prima, la sera passa all’altro parco Disney o a Disney Village."
+          "eveningsHint": "Se un parco chiude prima, la sera passa all’altro parco Disney o a Disney Village.",
+          "moveBufferHint": "Con le valigie al seguito fino all’hotel successivo, 60 minuti sono realistici."
         },
         "details": {
           "earlyOthers": {
@@ -4898,24 +4926,29 @@
             "party_nights": "{count, plural, =1 {1 serata} other {# serate}} con biglietto a parte: i visitatori giornalieri devono uscire prima."
           }
         },
-        "bases": {
-          "disneyland-paris": {
-            "name": "Disneyland Paris",
-            "note": "Gli hotel Disney sul lago Disney sono a pochi passi dagli ingressi e hanno l’Extra Magic Time. Dagli hotel partner di Val d’Europe e Val de France parte una navetta gratuita."
-          },
-          "parc-asterix": {
-            "name": "Parc Astérix",
-            "note": "Gli hotel del parco sono a pochi passi dall’ingresso, e i loro ospiti accedono ad alcune attrazioni 30 minuti prima."
-          },
-          "paris": {
-            "name": "Parigi",
-            "note": "Da Châtelet–Les Halles la RER A va a Disneyland Paris e la RER B alla navetta del Parc Astérix in aeroporto."
-          }
+        "base": {
+          "disneyland-paris": "Disneyland Paris",
+          "parc-asterix": "Parc Astérix",
+          "paris": "Centro di Parigi"
         },
-        "gateways": {
-          "XED": "Stazione di Marne-la-Vallée–Chessy",
-          "CDG": "Aeroporto di Parigi-Charles de Gaulle",
-          "ORY": "Aeroporto di Parigi-Orly"
+        "stayNote": {
+          "disneyland-paris": "Gli hotel Disney sul lago Disney sono a pochi passi dagli ingressi e hanno l’Extra Magic Time. Dagli hotel partner di Val d’Europe e Val de France parte una navetta gratuita.",
+          "parc-asterix": "Gli hotel del parco sono a pochi passi dall’ingresso, e i loro ospiti accedono ad alcune attrazioni 30 minuti prima.",
+          "paris": "Da Châtelet–Les Halles la RER A va a Disneyland Paris e la RER B alla navetta del Parc Astérix in aeroporto."
+        },
+        "gateway": {
+          "XED": "Marne-la-Vallée–Chessy",
+          "CDG": "Charles de Gaulle",
+          "ORY": "Orly"
+        },
+        "area": {
+          "disney_lake": "Hotel Disney sul lago Disney",
+          "disney_cheyenne_santa_fe": "Disney Hotel Cheyenne e Santa Fe",
+          "disney_davy_crockett": "Disney Davy Crockett Ranch",
+          "val_d_europe": "Val d’Europe",
+          "val_de_france": "Val de France, Magny-le-Hongre",
+          "paris_center": "Centro di Parigi",
+          "parc_asterix": "Hotel del Parc Astérix"
         },
         "tickets": {
           "resort": {
@@ -4972,7 +5005,7 @@
       "homeStory": {
         "kicker": "Parigi",
         "title": "Disneyland Paris e Parc Astérix: quale parco in quale giorno",
-        "lead": "Disneyland Paris ha due parchi, il Parc Astérix uno, e ognuno ha i suoi hotel. Nel calendario trovi i tre parchi giorno per giorno con la loro attesa di punta, e nel pianificatore vedi dove dormire per ogni parco.",
+        "lead": "Disneyland Paris ha due parchi, il Parc Astérix uno, e ognuno ha i suoi hotel. Nel calendario trovi i tre parchi giorno per giorno con la loro attesa di picco, e nel pianificatore vedi dove dormire per ogni parco.",
         "link": "Calendario affluenza Disneyland Paris e Parc Astérix"
       }
     }

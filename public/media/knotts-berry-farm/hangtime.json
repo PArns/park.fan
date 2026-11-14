@@ -1,0 +1,33 @@
+{
+  "title": "HangTime",
+  "park": "knotts-berry-farm",
+  "ride": "hangtime",
+  "roles": ["ride-card", "park-background"],
+  "tags": ["coaster", "day", "outdoor", "photo", "ride", "sunny"],
+  "alt": {
+    "de": "Türkise Achterbahnschienen in Schleifen vor blauem Himmel, daneben ein senkrechter Liftturm, unten Palmen und Lichterketten.",
+    "en": "Teal coaster track looping against a blue sky beside a vertical lift tower, palm trees and string lights below.",
+    "es": "Vías turquesa en bucle contra un cielo azul junto a una torre de subida vertical, con palmeras y guirnaldas abajo.",
+    "fr": "Des rails turquoise qui bouclent dans un ciel bleu, à côté d’une tour de levage verticale, avec palmiers et guirlandes en bas.",
+    "it": "Binari turchesi ad anello contro il cielo azzurro accanto a una torre di risalita verticale, sotto palme e luci a festone.",
+    "nl": "Turquoise achtbaanrails in lussen tegen een blauwe lucht naast een verticale lifttoren, onderaan palmen en lichtsnoeren."
+  },
+  "caption": {
+    "de": "HangTime zieht den Zug senkrecht nach oben und hält ihn dort über der Kante, bevor er fällt.",
+    "en": "HangTime lifts its train straight up, then holds it at the top, tipped over the edge, before the drop.",
+    "es": "HangTime sube el tren en vertical y lo detiene arriba, asomado al vacío, antes de la caída.",
+    "fr": "HangTime hisse le train à la verticale, puis le retient au sommet, penché dans le vide, avant la chute.",
+    "it": "HangTime porta il treno su in verticale e lo trattiene in cima, sporto sul vuoto, prima della discesa.",
+    "nl": "HangTime trekt de trein recht omhoog en houdt hem bovenaan over de rand vast, vlak voor de afdaling."
+  },
+  "credit": {
+    "author": "Alejandro Ortega Grillo",
+    "license": "unsplash",
+    "source": "unsplash",
+    "sourceUrl": "https://unsplash.com/photos/roller-coaster-track-against-blue-sky-a5Msbqk5PcM"
+  },
+  "focus": {
+    "x": 0.62,
+    "y": 0.45
+  }
+}
