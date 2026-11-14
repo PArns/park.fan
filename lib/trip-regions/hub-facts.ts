@@ -1,7 +1,15 @@
+import { addDays } from '@/lib/utils/park-day';
 import { roundWaitTo5 } from '@/lib/utils/wait-time';
 import { breakRuns, type BreakRun } from './best-time';
-import { dayBasis, isRankable, meanWait } from './hub-data';
-import type { TripCalendar, TripCalendarDay, TripRegion, TripRegionPark } from './types';
+import { stormCodeOn, type StormCode } from './date-facts';
+import { dayBasis, isRankable, meanWait, shownWait } from './hub-data';
+import type {
+  TripCalendar,
+  TripCalendarDay,
+  TripRegion,
+  TripRegionPark,
+  TripWeather,
+} from './types';
 
 /**
  * The facts the hub's questions read from a calendar, the hub's 30 days or a month page's month:
@@ -34,7 +42,7 @@ function headlinerMean(day: TripCalendarDay, headliners: readonly TripRegionPark
   const waits = headliners
     .map((p) => day.parks[p.slug])
     .filter(isRankable)
-    .map((p) => p.headlinerWait);
+    .map((p) => shownWait(p)!);
   return waits.length === 0 ? null : waits.reduce((a, b) => a + b, 0) / waits.length;
 }
 
@@ -199,7 +207,7 @@ export function parkMeans(calendar: TripCalendar, region: TripRegion): ParkMean[
     .flatMap((park) => {
       const waits = days.map((d) => d.parks[park.slug]).filter(isRankable);
       return waits.length >= 3
-        ? [{ park, minutes: meanWait(waits.map((w) => w.headlinerWait))! }]
+        ? [{ park, minutes: meanWait(waits.map((w) => shownWait(w)!))! }]
         : [];
     })
     .sort((a, b) => a.minutes - b.minutes);
@@ -239,4 +247,23 @@ export function parkClosures(calendar: TripCalendar, region: TripRegion): ParkCl
 /** Words as a reader counts them: "Disney’s", "EPCOT-Festival" and "15." each one. */
 export function countWords(text: string): number {
   return (text.match(/[\p{L}\p{N}]+(?:[’'\-.][\p{L}\p{N}]+)*/gu) ?? []).length;
+}
+
+/**
+ * The storm code a span of days carries, for a week of the best-time strip or a month of its table:
+ * the peak where any day is in it, else the season where any day is, by the planner's own
+ * `stormCodeOn`, so every calendar marks the same days.
+ */
+export function stormCodeIn(
+  from: string,
+  to: string,
+  weather: TripWeather | undefined
+): StormCode | null {
+  let code: StormCode | null = null;
+  for (let date = from; date <= to; date = addDays(date, 1)) {
+    const on = stormCodeOn(date, weather);
+    if (on?.endsWith('_peak')) return on;
+    code ??= on;
+  }
+  return code;
 }

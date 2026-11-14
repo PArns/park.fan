@@ -105,7 +105,6 @@ export async function HubFaq({
   calendar,
   summaries,
   monthLabel,
-  forecastUntil,
   accuracy,
   locale,
 }: {
@@ -116,8 +115,6 @@ export async function HubFaq({
   summaries: ResortMonthSummary[];
   /** "December 2026" on a month page; `null` on the hub. */
   monthLabel: string | null;
-  /** The last day the forecast covers, when the API has said. */
-  forecastUntil?: string;
   /** The measured error the route started reading, bounded; `null` without one. */
   accuracy: Promise<TripForecastAccuracy | null>;
   locale: string;
@@ -407,9 +404,7 @@ export async function HubFaq({
 
   const onTheFigure = async (): Promise<Item[]> => {
     const figure = await accuracy;
-    const horizon = forecastUntil
-      ? shared('accuracy.horizon', { date: formatHubDate(forecastUntil, locale, 'long') })
-      : shared('accuracy.horizonNoDate');
+    const horizon = shared('accuracy.horizon');
     const measured = figure
       ? `${shared('accuracy.figure', {
           lead: figure.leadDays,

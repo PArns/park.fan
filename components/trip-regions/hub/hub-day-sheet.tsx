@@ -26,6 +26,7 @@ import {
   regionGroups,
   shortestLines,
   shortParkName,
+  shownWait,
   tintLevel,
 } from '@/lib/trip-regions/hub-data';
 import { requireTripRegion } from '@/lib/trip-regions/registry';
@@ -255,7 +256,7 @@ function SheetPark({
             {isRankable(parkDay) ? (
               <span className="flex items-center gap-2">
                 <span className="font-semibold tabular-nums">
-                  {t('minutes', { minutes: parkDay.headlinerWait })}
+                  {t('minutes', { minutes: shownWait(parkDay) })}
                 </span>
                 <CrowdLevelBadge level={level} />
               </span>

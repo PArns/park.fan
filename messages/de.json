@@ -395,8 +395,6 @@
   "tripHub": {
     "nextDays": "Nächste 30 Tage",
     "dayTripsGroup": "Tagesausflüge",
-    "lastYearBanner": "Die Prognose reicht bis {date}. Danach zeigt jeder Tag denselben Wochentag im Vorjahr, mit „Vorjahr“ markiert.",
-    "lastYearBannerNoDate": "Einige dieser Tage liegen hinter der Prognose. Sie zeigen denselben Wochentag im Vorjahr, mit „Vorjahr“ markiert.",
     "glance": {
       "minutes": "{minutes} Min.",
       "closesEarly": "schließt um {time} für ein Abend-Event",
@@ -415,7 +413,6 @@
       "ring": "bester Park im Resort",
       "early": "schließt früher für Tagesgäste",
       "closed": "geschlossen",
-      "lastYear": "Vorjahr: ein gemessener Tag, die Prognose reicht noch nicht so weit",
       "howTo": "So liest du den Kalender",
       "noHours": "Punkt oder leer: noch keine Öffnungszeiten",
       "colour": "Farbe: der Tag im Vergleich zu einem normalen Tag dieses Parks"
@@ -465,7 +462,7 @@
       "noForecast": "geöffnet, keine Prognose",
       "noHours": "Noch keine Öffnungszeiten",
       "closedFor": "Geschlossen: {name}",
-      "lastYear": "Gemessener Tag aus dem Vorjahr; die Prognose reicht noch nicht bis hierher.",
+      "lastYear": "Wert aus dem Vorjahr: derselbe Wochentag, so wie wir ihn gemessen haben.",
       "outlook": "Vorschau: mit größerem Fehler als die Prognose.",
       "ticketedEvening": "{name} ab {time}: Tagesgäste gehen um {leave}",
       "eveningEvent": "Abend-Event",
@@ -483,7 +480,7 @@
     },
     "when": {
       "none": "Die ruhigsten Reisen des Jahres konnten nicht geladen werden.",
-      "lastYearNote": "Termine hinter unserer Prognose sind mit dem gemessenen Andrang des Vorjahres geplant.",
+      "lastYearNote": "Termine mehr als 60 Tage voraus sind mit dem gemessenen Vorjahr gerechnet.",
       "rank": "Nr. {rank}",
       "figure": "Spitzenwartezeit: etwa {minutes} Min.",
       "basisLastYear": "Gemessener Andrang des Vorjahres",
@@ -521,10 +518,9 @@
         "planner": "Je weiter der Tag weg ist, desto größer der Fehler. Es ist dasselbe Maß wie unter „Wie genau ist das?“ im Reiseplaner, der es für jeden Plan nennt.",
         "plannerNoFigure": "Je weiter der Tag weg ist, desto größer der Fehler; der Reiseplaner nennt ihn für jeden Plan in Minuten, unter „Wie genau ist das?“.",
         "q": "Wie weit reicht die Prognose, und wie genau ist sie?",
-        "horizon": "Die Prognose reicht 60 Tage weit, danach läuft bis {date} eine Vorschau mit größerem Fehler. Dahinter zeigt ein Tag denselben Wochentag im Vorjahr, so wie wir ihn gemessen haben, mit dem Hinweis „Vorjahr“.",
+        "horizon": "Die Prognose reicht 60 Tage weit. Weiter voraus zeigt ein Tag denselben Wochentag im Vorjahr, so wie wir ihn gemessen haben, und auch der Reiseplaner rechnet dort mit dem Vorjahr: Die Langfrist-Prognose lag für diese Tage deutlich zu niedrig und fast flach, das gemessene Vorjahr trifft sie besser.",
         "figure": "In den letzten {days} Tagen lag unsere Prognose der Spitzenwartezeit, {lead, plural, =1 {einen Tag} =7 {eine Woche} other {# Tage}} im Voraus gemacht, im Schnitt {minutes} Min. daneben, gemessen in {parks} Parks.",
-        "rounding": "Tage, die weniger als fünf Minuten auseinanderliegen, zählen als gleich.",
-        "horizonNoDate": "Die Prognose reicht 60 Tage weit, danach läuft eine Vorschau mit größerem Fehler. Dahinter zeigt ein Tag denselben Wochentag im Vorjahr, so wie wir ihn gemessen haben, mit dem Hinweis „Vorjahr“."
+        "rounding": "Tage, die weniger als fünf Minuten auseinanderliegen, zählen als gleich."
       },
       "breaks": {
         "q": "Gibt es in den nächsten Wochen Ferien oder Feiertage?",
@@ -559,7 +555,7 @@
         "busyOnly": "{busyCount, plural, =1 {Am vollsten ist der {busy}} other {Am vollsten sind {busy}}} mit etwa {high} Min. Spitzenwartezeit; die übrigen Tage liegen darunter, am niedrigsten bei etwa {low} Min. Gemittelt über {days} Tage und {parks, plural, =1 {den großen Park} other {die # großen Parks}}.",
         "a": "{quietCount, plural, =1 {Am leersten ist der {quiet}} other {Am leersten sind {quiet}}} mit etwa {low} Min. Spitzenwartezeit, am vollsten {busyCount, plural, =1 {der {busy}} other {{busy}}} mit etwa {high} Min. Gemittelt über {days} Tage und {parks, plural, =1 {den großen Park} other {die # großen Parks}}."
       },
-      "lastYearNote": "Für {month} gibt es noch keine Prognose. Die Zahlen sind die Tage, die wir im selben Monat des Vorjahres gemessen haben.",
+      "lastYearNote": "Für {month} rechnen wir mit dem Vorjahr: Die Zahlen sind die Tage, die wir im selben Monat ein Jahr zuvor gemessen haben.",
       "quietestOnly": "{resort}: am leersten {days}.",
       "green": {
         "q": "Warum kann ein Park mit längerer Spitzenwartezeit grün sein?",
@@ -592,7 +588,8 @@
       "line": "Unsere Prognose der Spitzenwartezeit, {lead, plural, =1 {einen Tag} =7 {eine Woche} other {# Tage}} im Voraus, lag in den letzten {days} Tagen <link>im Schnitt {minutes} Min. daneben</link>."
     },
     "question": "Welcher Park an welchem Tag?",
-    "nextTitle": "Reiseplaner für {region}"
+    "nextTitle": "Reiseplaner für {region}",
+    "lastYearFrom": "Ab dem {date}: Werte aus dem Vorjahr, jeweils derselbe Wochentag, so wie wir ihn gemessen haben."
   },
   "theme": {
     "light": "Hell",
@@ -3885,8 +3882,7 @@
         "months": {
           "label": {
             "usBreaks": "US-Schulferien (Orlando)"
-          },
-          "hurricane": "Hurrikansaison"
+          }
         },
         "weeks": {
           "noBreak": "Keine US-Schulferien in Orlando."
@@ -4539,7 +4535,6 @@
           "label": {
             "usBreaks": "Feiertage und Ferien in Japan"
           },
-          "typhoon": "Taifunsaison",
           "rainySeason": "Regenzeit"
         },
         "weeks": {

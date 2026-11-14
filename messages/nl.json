@@ -395,8 +395,6 @@
   "tripHub": {
     "nextDays": "Komende 30 dagen",
     "dayTripsGroup": "Dagtrips",
-    "lastYearBanner": "De voorspelling loopt tot {date}. Daarna toont elke dag dezelfde weekdag vorig jaar, gemarkeerd met “vorig jaar”.",
-    "lastYearBannerNoDate": "Een deel van deze dagen ligt voorbij de voorspelling. Ze tonen dezelfde weekdag vorig jaar, gemarkeerd met “vorig jaar”.",
     "glance": {
       "minutes": "{minutes} min",
       "closesEarly": "sluit om {time} voor een avondevenement",
@@ -415,7 +413,6 @@
       "ring": "beste park in het resort",
       "early": "sluit eerder voor dagbezoekers",
       "closed": "gesloten",
-      "lastYear": "Vorig jaar: een gemeten dag, de voorspelling reikt nog niet zo ver",
       "howTo": "Zo lees je dit",
       "noHours": "Stip of leeg: nog geen openingstijden",
       "colour": "Kleur: de dag vergeleken met een gewone dag in dat park"
@@ -465,7 +462,7 @@
       "noForecast": "open, geen voorspelling",
       "noHours": "Nog geen openingstijden",
       "closedFor": "Gesloten: {name}",
-      "lastYear": "Gemeten dag van vorig jaar; de voorspelling reikt nog niet tot deze datum.",
+      "lastYear": "Cijfer van vorig jaar: dezelfde weekdag, zoals wij die gemeten hebben.",
       "outlook": "Vooruitblik: een grotere afwijking dan de voorspelling.",
       "ticketedEvening": "{name} vanaf {time}: dagbezoekers vertrekken om {leave}",
       "eveningEvent": "Avondevenement",
@@ -483,7 +480,7 @@
     },
     "when": {
       "none": "De rustigste reizen van het jaar konden niet worden geladen.",
-      "lastYearNote": "Data voorbij onze voorspelling zijn gepland met de gemeten drukte van vorig jaar.",
+      "lastYearNote": "Data meer dan 60 dagen vooruit zijn gerekend met de gemeten dagen van vorig jaar.",
       "rank": "Nr. {rank}",
       "figure": "Piekwachttijd: ongeveer {minutes} min",
       "basisLastYear": "Gemeten drukte van vorig jaar",
@@ -521,10 +518,9 @@
         "planner": "Hoe verder de dag weg is, hoe groter de afwijking. Het is dezelfde maat als bij “Hoe nauwkeurig is dit?” in de reisplanner, die hem bij elk plan noemt.",
         "plannerNoFigure": "Hoe verder de dag weg is, hoe groter de afwijking; de reisplanner noemt die bij elk plan in minuten, onder “Hoe nauwkeurig is dit?”.",
         "q": "Hoe ver reikt de voorspelling, en hoe nauwkeurig is die?",
-        "horizon": "De voorspelling reikt 60 dagen vooruit, daarna loopt tot {date} een vooruitblik met een grotere afwijking. Verder toont een dag dezelfde weekdag vorig jaar, zoals wij die gemeten hebben, met de aanduiding “vorig jaar”.",
+        "horizon": "De voorspelling reikt 60 dagen vooruit. Verder toont een dag dezelfde weekdag vorig jaar, zoals wij die gemeten hebben, en ook de reisplanner rekent daar met vorig jaar: de langetermijnvoorspelling lag voor die dagen duidelijk te laag en bijna vlak, de gemeten dagen van vorig jaar zitten er dichter bij.",
         "figure": "De afgelopen {days} dagen zat onze voorspelling van de piekwachttijd, {lead, plural, =1 {een dag} =7 {een week} other {# dagen}} vooruit gemaakt, gemiddeld {minutes} min ernaast, gemeten in {parks} parken.",
-        "rounding": "Dagen die minder dan vijf minuten verschillen, tellen als gelijk.",
-        "horizonNoDate": "De voorspelling reikt 60 dagen vooruit, daarna loopt een vooruitblik met een grotere afwijking. Verder toont een dag dezelfde weekdag vorig jaar, zoals wij die gemeten hebben, met de aanduiding “vorig jaar”."
+        "rounding": "Dagen die minder dan vijf minuten verschillen, tellen als gelijk."
       },
       "breaks": {
         "q": "Zijn er de komende weken schoolvakanties of feestdagen?",
@@ -559,7 +555,7 @@
         "busyOnly": "{busy} {busyCount, plural, =1 {is de drukste dag} other {zijn de drukste dagen}}, met ongeveer {high} min piekwachttijd; de andere dagen liggen lager, tot ongeveer {low} min. Gemiddeld over {days} dagen en {parks, plural, =1 {het grote park} other {de # grote parken}}.",
         "a": "{quietCount, plural, =1 {{quiet} is de rustigste dag} other {{quiet} zijn de rustigste dagen}}, met ongeveer {low} min piekwachttijd, en {busy} de drukste, met ongeveer {high} min. Gemiddeld over {days} dagen en {parks, plural, =1 {het grote park} other {de # grote parken}}."
       },
-      "lastYearNote": "Voor {month} is er nog geen voorspelling. De getallen zijn de dagen die we in dezelfde maand vorig jaar hebben gemeten.",
+      "lastYearNote": "Voor {month} rekenen we met vorig jaar: de getallen zijn de dagen die we een jaar eerder in dezelfde maand hebben gemeten.",
       "quietestOnly": "{resort}: rustigste dagen {days}.",
       "green": {
         "q": "Waarom kan een park met een langere piekwachttijd groen zijn?",
@@ -592,7 +588,8 @@
       "line": "Onze voorspelling van de piekwachttijd, {lead, plural, =1 {een dag} =7 {een week} other {# dagen}} vooruit, zat de afgelopen {days} dagen <link>gemiddeld {minutes} min ernaast</link>."
     },
     "question": "Welk park op welke dag?",
-    "nextTitle": "Reisplanner voor {region}"
+    "nextTitle": "Reisplanner voor {region}",
+    "lastYearFrom": "Vanaf {date}: cijfers van vorig jaar, telkens dezelfde weekdag zoals wij die gemeten hebben."
   },
   "theme": {
     "light": "Licht",
@@ -3885,8 +3882,7 @@
         "months": {
           "label": {
             "usBreaks": "Amerikaanse schoolvakanties (Orlando)"
-          },
-          "hurricane": "Orkaanseizoen"
+          }
         },
         "weeks": {
           "noBreak": "Geen Amerikaanse schoolvakantie in Orlando."
@@ -4539,7 +4535,6 @@
           "label": {
             "usBreaks": "Feestdagen en vakanties in Japan"
           },
-          "typhoon": "Tyfoonseizoen",
           "rainySeason": "Regenseizoen"
         },
         "weeks": {

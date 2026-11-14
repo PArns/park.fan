@@ -387,9 +387,11 @@ export function weekFacts(
   };
 }
 
-/** The first day `/when` reads last year's crowds: its `forecastUntil` + 1, else the strip's turn. */
-export function lastYearFrom(when: Pick<TripWhen, 'meta' | 'weeks'>): string | null {
-  if (when.meta.forecastUntil) return addDays(when.meta.forecastUntil, 1);
+/**
+ * The week from which `/when` reads last year's measured days, by the weeks' own basis: past 60
+ * days every ranking reads last year on purpose, however far the forecast reaches.
+ */
+export function lastYearFrom(when: Pick<TripWhen, 'weeks'>): string | null {
   const turn = when.weeks.find((w) => w.basis === 'last_year' || w.basis === 'mixed');
   return turn ? turn.start : null;
 }

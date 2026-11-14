@@ -12,6 +12,7 @@ import {
   parkCalendarHref,
   shortGroupName,
   shortParkName,
+  shownWait,
   type ResortMonthSummary,
 } from '@/lib/trip-regions/hub-data';
 import { getRegionTranslations } from '@/lib/trip-regions/region-messages';
@@ -95,7 +96,7 @@ export async function HubGlance({
               >
                 {shortParkName(park.name)}
               </Link>{' '}
-              {minutes(parkDay.headlinerWait)}
+              {minutes(shownWait(parkDay)!)}
               {closesEarly(parkDay) && dayGuestClose(parkDay) && (
                 <span className="text-muted-foreground text-sm">
                   {' '}

@@ -62,8 +62,12 @@ import {
   climatePeriod,
 } from './best-time-chapters';
 
-/** A week counts as busy when it runs this much above the year's mean. */
-const BUSY_RATIO = 1.1;
+/**
+ * A week counts as busy when it runs this much above the year's mean: about the busiest tenth of
+ * the year's weeks. Last year's measured weeks spread far wider than the forecast did, so a tenth
+ * above the mean no longer sets a week apart.
+ */
+const BUSY_RATIO = 1.2;
 
 /** What the route read and resolved, handed to the page body. */
 export interface BestTimePageProps {
@@ -233,6 +237,7 @@ export async function BestTimePage(props: BestTimePageProps) {
           <YearStrip
             when={when}
             windows={windows}
+            weather={region.weather}
             caption={t('strip.caption', { parks: resortName, year })}
             locale={locale}
           />
@@ -241,6 +246,7 @@ export async function BestTimePage(props: BestTimePageProps) {
         <SectionShell id="months" index="02" title={t('months.title')} icon={CalendarDays}>
           <MonthRows
             regionSlug={region.slug}
+            weather={region.weather}
             rows={rows}
             when={when}
             regions={regions}

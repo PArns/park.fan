@@ -122,7 +122,6 @@ export async function TripRegionHubPage({
   const week = calendar ? firstDays(calendar, firstFrom) : [];
   const lastYearDays = calendar?.days.filter((d) => dayBasis(d) === 'last_year') ?? [];
   const lastYear = !!calendar && lastYearDays.length > calendar.days.length / 2;
-  const forecastUntil = calendar?.meta.forecastUntil ?? bestDays?.meta.forecastUntil;
   const pagePath = tripRegionPath(region.slug, locale, month);
   const bestTimePath = tripRegionBestTimePath(region.slug, locale);
   const planHref = `${pagePath}#${TRIP_PLANNER_ID}`;
@@ -236,14 +235,13 @@ export async function TripRegionHubPage({
                   : t('calendar.title', { days: HUB_WINDOW_DAYS })
               }
             />
+            {/* Past 60 days a day reads last year's measured figure: said once, not on each square. */}
             {lastYearDays.length > 0 && (
               <p
                 role="note"
                 className="border-border/60 bg-muted/40 mb-4 max-w-3xl rounded-xl border px-4 py-3 text-sm leading-relaxed"
               >
-                {forecastUntil
-                  ? t('lastYearBanner', { date: formatHubDate(forecastUntil, locale, 'long') })
-                  : t('lastYearBannerNoDate')}
+                {t('lastYearFrom', { date: formatHubDate(lastYearDays[0].date, locale, 'dayMonth') })}
               </p>
             )}
             {calendar && week.length > 0 ? (
@@ -308,7 +306,6 @@ export async function TripRegionHubPage({
               calendar={calendar}
               summaries={summaries}
               monthLabel={monthLabel}
-              forecastUntil={forecastUntil}
               accuracy={accuracy}
               locale={locale}
             />

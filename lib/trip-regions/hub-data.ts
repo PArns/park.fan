@@ -118,6 +118,19 @@ export function dayGuestClose(day: TripParkDay | undefined): string | undefined 
 }
 
 /**
+ * The figure a park's day prints: within 60 days the park calendar's own forecast
+ * (`forecastWait`), so the hub and the park page never show two numbers for one day; past them,
+ * and from an API without it, `headlinerWait`, last year's measured day. Every ranking stays on
+ * `headlinerWait`, the API's figure.
+ */
+export function shownWait(day: TripParkDay & { headlinerWait: number }): number;
+export function shownWait(day: TripParkDay | undefined): number | undefined;
+export function shownWait(day: TripParkDay | undefined): number | undefined {
+  if (!day) return undefined;
+  return day.basis === 'forecast' && day.forecastWait != null ? day.forecastWait : day.headlinerWait;
+}
+
+/**
  * Whether a park can be ranked on a day: not closed, with a figure. A day whose hours are not
  * published yet is `UNKNOWN` but still carries the forecast or last year's figure, and that figure
  * counts; only a closed day or one without a figure drops out.
@@ -438,7 +451,7 @@ export function weekendAgainstWeekday(
   for (const day of calendar.days) {
     const park = day.parks[slug];
     if (!isRankable(park) || park.basis === 'last_year') continue;
-    (isWeekend(day.date) ? weekend : weekday).push(park.headlinerWait);
+    (isWeekend(day.date) ? weekend : weekday).push(shownWait(park)!);
   }
   const a = meanWait(weekend);
   const b = meanWait(weekday);
@@ -462,10 +475,10 @@ export function ticketedEvenings(
     const park = day.parks[slug];
     if (!isRankable(park) || park.basis === 'last_year') continue;
     if (closesEarly(park)) {
-      on.push(park.headlinerWait);
+      on.push(shownWait(park)!);
       closesAt ??= dayGuestClose(park) ?? null;
     } else {
-      off.push(park.headlinerWait);
+      off.push(shownWait(park)!);
     }
   }
   return { count: on.length, closesAt, waitOnThem: meanWait(on), waitOtherwise: meanWait(off) };
@@ -493,6 +506,9 @@ export function resortMonthSummaries(
 ): ResortMonthSummary[] {
   const basisOf = (date: string, slug: string): TripBasis =>
     calendar.days.find((d) => d.date === date)?.parks[slug]?.basis ?? 'none';
+  // The minutes a date prints are the calendar's, so the answer and the cell say one number.
+  const shownOn = (date: string, slug: string, ranked: number | undefined) =>
+    shownWait(calendar.days.find((d) => d.date === date)?.parks[slug]) ?? ranked ?? null;
   return summaryGroups(region)
     .map((group) => {
       const quiet = (bestDays?.groups.find((g) => g.key === group.key)?.quiet ?? [])
@@ -502,7 +518,7 @@ export function resortMonthSummaries(
             ? {
                 date: entry.date,
                 park,
-                wait: entry.headlinerWait ?? null,
+                wait: shownOn(entry.date, entry.slug, entry.headlinerWait),
                 basis: basisOf(entry.date, entry.slug),
               }
             : null;
@@ -521,7 +537,7 @@ export function resortMonthSummaries(
                   .map((q) => ({
                     date: q.date,
                     park,
-                    wait: q.headlinerWait ?? null,
+                    wait: shownOn(q.date, park.slug, q.headlinerWait),
                     basis: q.basis,
                   }))
               )
@@ -533,7 +549,7 @@ export function resortMonthSummaries(
       const means = calendar.days
         .map((day) => {
           const ranked = group.parks.map((p) => day.parks[p.slug]).filter(isRankable);
-          const wait = meanWait(ranked.map((d) => d.headlinerWait));
+          const wait = meanWait(ranked.map((d) => shownWait(d)!));
           return wait === null
             ? null
             : {

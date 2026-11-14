@@ -395,8 +395,6 @@
   "tripHub": {
     "nextDays": "Next 30 days",
     "dayTripsGroup": "Day trips",
-    "lastYearBanner": "The forecast reaches {date}. After that each day shows the same weekday last year, marked “last year”.",
-    "lastYearBannerNoDate": "Some of these days are past the forecast. They show the same weekday last year, marked “last year”.",
     "glance": {
       "minutes": "{minutes} min",
       "closesEarly": "closes at {time} for an evening event",
@@ -415,7 +413,6 @@
       "ring": "best park in its resort",
       "early": "closes early for day guests",
       "closed": "closed",
-      "lastYear": "Last year: a measured day, the forecast doesn’t reach it yet",
       "howTo": "How to read this",
       "noHours": "Dot or empty: no hours yet",
       "colour": "Colour: the day against a normal day at that park"
@@ -465,7 +462,7 @@
       "noForecast": "open, no forecast",
       "noHours": "No hours published yet",
       "closedFor": "Closed: {name}",
-      "lastYear": "Last year's measured day; the forecast does not reach this date yet.",
+      "lastYear": "Last year’s figure: the same weekday, as we measured it.",
       "outlook": "Outlook: a wider error than the forecast.",
       "ticketedEvening": "{name} from {time}: day guests leave at {leave}",
       "eveningEvent": "Evening event",
@@ -483,7 +480,7 @@
     },
     "when": {
       "none": "The quietest trips of the year could not be loaded.",
-      "lastYearNote": "Dates past our forecast are planned on last year's measured crowds.",
+      "lastYearNote": "Dates more than 60 days ahead are ranked on last year’s measured days.",
       "rank": "No. {rank}",
       "figure": "Peak wait: about {minutes} min",
       "basisLastYear": "Last year's measured crowds",
@@ -521,10 +518,9 @@
         "planner": "The further away the day, the larger the error. It is the same measure as “How accurate is this?” in the trip planner, which states it with every plan.",
         "plannerNoFigure": "The further away the day, the larger the error; the trip planner states it in minutes with every plan, under “How accurate is this?”.",
         "q": "How far ahead does the forecast reach, and how accurate is it?",
-        "horizon": "The forecast reaches 60 days ahead, then an outlook with a wider error runs to {date}. Past that, a day shows the same weekday last year as we measured it, marked “last year”.",
+        "horizon": "The forecast reaches 60 days ahead. Further out a day shows the same weekday last year as we measured it, and the trip planner ranks those days on last year too: the long-range forecast ran well too low and almost flat for them, and last year’s measured days come closer.",
         "figure": "Over the last {days} days our forecast of the peak wait, made {lead, plural, =1 {a day} =7 {a week} other {# days}} ahead, was off by {minutes} min on average, measured across {parks} parks.",
-        "rounding": "Days less than five minutes apart count as equal.",
-        "horizonNoDate": "The forecast reaches 60 days ahead, then an outlook with a wider error takes over. Past that, a day shows the same weekday last year as we measured it, marked “last year”."
+        "rounding": "Days less than five minutes apart count as equal."
       },
       "breaks": {
         "q": "Are there school or public holidays in the coming weeks?",
@@ -559,7 +555,7 @@
         "busyOnly": "{busy} {busyCount, plural, =1 {is the busiest day} other {are the busiest days}}, at about {high} min peak wait; the other days are lower, down to about {low} min. Averaged over {days} days and {parks, plural, =1 {the big park} other {the # big parks}}.",
         "a": "{quietCount, plural, =1 {{quiet} is the quietest day} other {{quiet} are the quietest days}}, at about {low} min peak wait, and {busy} the busiest, at about {high} min. Averaged over {days} days and {parks, plural, =1 {the big park} other {the # big parks}}."
       },
-      "lastYearNote": "There is no forecast for {month} yet. The figures are the days we measured in the same month last year.",
+      "lastYearNote": "For {month} we go by last year: the figures are the days we measured in the same month a year earlier.",
       "quietestOnly": "{resort}: quietest {days}.",
       "green": {
         "q": "Why can a park with a longer peak wait be green?",
@@ -592,7 +588,8 @@
       "line": "Our forecast of the peak wait, made {lead, plural, =1 {a day} =7 {a week} other {# days}} ahead, was <link>off by {minutes} min on average</link> over the last {days} days."
     },
     "question": "Which park on which day?",
-    "nextTitle": "{region} trip planner"
+    "nextTitle": "{region} trip planner",
+    "lastYearFrom": "From {date}: last year’s figures, each the same weekday as we measured it."
   },
   "theme": {
     "light": "Light",
@@ -3885,8 +3882,7 @@
         "months": {
           "label": {
             "usBreaks": "US school holidays (Orlando)"
-          },
-          "hurricane": "Hurricane season"
+          }
         },
         "weeks": {
           "noBreak": "No US school holidays in Orlando."
@@ -4539,7 +4535,6 @@
           "label": {
             "usBreaks": "Holidays in Japan"
           },
-          "typhoon": "Typhoon season",
           "rainySeason": "Rainy season"
         },
         "weeks": {

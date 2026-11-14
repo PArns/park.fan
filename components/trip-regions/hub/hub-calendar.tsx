@@ -8,6 +8,7 @@ import { cn } from '@/lib/utils';
 import { useMediaQuery } from '@/lib/hooks/use-media-query';
 import { CROWD_TEXT_CLASS, CROWD_TILE_CLASS } from '@/lib/utils/crowd-level-styles';
 import { UNUSABLE_HATCH_IMAGE } from '@/lib/utils/hatch';
+import { STORM_SIGNAL_CLASS } from '@/lib/utils/day-signal-styles';
 import { formatClockTime } from '@/lib/utils/intl-format';
 import { addDays } from '@/lib/utils/park-day';
 import { translateHolidayName } from '@/lib/utils/holiday-names';
@@ -28,10 +29,12 @@ import {
   resortHasChoice,
   shortGroupName,
   shortParkName,
+  shownWait,
   tintLevel,
   type EventLane,
   type RegionGroup,
 } from '@/lib/trip-regions/hub-data';
+import { stormCodeOn, stormSignal, type StormCode } from '@/lib/trip-regions/date-facts';
 import { trackTripEvent } from '@/lib/trip-regions/plan-analytics';
 import { tripRegionRelayUrl } from '@/lib/trip-regions/paths';
 import { requireTripRegion } from '@/lib/trip-regions/registry';
@@ -41,13 +44,7 @@ import type {
   TripParkDay,
   TripRegion,
 } from '@/lib/trip-regions/types';
-import {
-  EARLY_CLOSE_CORNER,
-  HUB_CELL,
-  HUB_CELL_BEST,
-  HUB_CELL_LAST_YEAR,
-  NO_HOURS_DOT,
-} from './hub-cell-styles';
+import { EARLY_CLOSE_CORNER, HUB_CELL, HUB_CELL_BEST, NO_HOURS_DOT } from './hub-cell-styles';
 import { clearTripPagePark, HubDaySheet } from './hub-day-sheet';
 
 /** How long a window stays fresh in the browser: the API's hour. */
@@ -68,9 +65,10 @@ interface CellLook {
 
 /**
  * The square for a park on a day: the minutes in the level's tint, hatching for closed, a muted
- * box for no figure, a dash for open without a forecast, a dashed edge for last year, and a small
- * dot where the figure stands without published hours. Nothing else: hours, events and icons are
- * the day sheet's.
+ * box for no figure, a dash for open without a forecast, and a small dot where the figure stands
+ * without published hours. Last year's days look like the rest: past 60 days nearly every day is
+ * one, so the page says it once above the calendar instead of marking each square. Nothing else:
+ * hours, events and icons are the day sheet's.
  */
 function cellLook(day: TripParkDay | undefined, best: boolean): CellLook {
   if (day?.status === 'CLOSED') {
@@ -101,10 +99,9 @@ function cellLook(day: TripParkDay | undefined, best: boolean): CellLook {
   }
   const level = tintLevel(day.crowdLevel);
   return {
-    text: String(day.headlinerWait),
+    text: String(shownWait(day)),
     className: cn(
       level ? cn(CROWD_TILE_CLASS[level], CROWD_TEXT_CLASS[level]) : 'bg-muted/40 border-border/60',
-      day.basis === 'last_year' && HUB_CELL_LAST_YEAR,
       best && HUB_CELL_BEST
     ),
     hatch: false,
@@ -343,7 +340,7 @@ function useCellLabel(locale: string, timezone: string) {
         t('cell', {
           park: parkName,
           date: when,
-          minutes: day.headlinerWait,
+          minutes: shownWait(day),
           level: level ? tLevel(level) : tLevel('unknown'),
         }),
       ];
@@ -409,10 +406,8 @@ function DayList({
                 <time dateTime={day.date} className="text-xl font-bold tabular-nums">
                   {formatHubDate(day.date, locale, 'day')}
                 </time>
-                {(basis === 'last_year' || basis === 'long_range') && (
-                  <span className="text-muted-foreground text-[10px]">
-                    {basis === 'last_year' ? t('lastYear') : t('outlook')}
-                  </span>
+                {basis === 'long_range' && (
+                  <span className="text-muted-foreground text-[10px]">{t('outlook')}</span>
                 )}
               </span>
               <span className="min-w-0 flex-1 space-y-1.5">
@@ -590,11 +585,7 @@ function Matrix({
                       {formatHubDate(day.date, locale, 'day')}
                     </time>
                     <span className="text-muted-foreground h-3 text-[9px]">
-                      {basis === 'last_year'
-                        ? t('lastYear')
-                        : basis === 'long_range'
-                          ? t('outlook')
-                          : ''}
+                      {basis === 'long_range' ? t('outlook') : ''}
                     </span>
                   </button>
                 </th>
@@ -704,27 +695,58 @@ function EventLanes({
   // A school-holiday lane says whose holidays they are in the region's own words; a region that
   // has not written them gets no such lane rather than a key path.
   const breaksNamed = tRegion.has('break') && tRegion.has('unnamedBreak');
-  const lanes = useMemo(
-    () =>
-      eventLanes(
+  const tClimate = useTranslations('tripPlanner.climate');
+  // The storm season by the planner's own rule (`stormCodeOn`), so the hub and the date grid mark
+  // the same days: its own lane, last, in the signal violet, never a crowd tint.
+  const storm = useMemo(() => {
+    const codes = calendar.days.map((d) => ({
+      date: d.date,
+      code: stormCodeOn(d.date, region.weather),
+    }));
+    const days = codes.filter((c): c is { date: string; code: StormCode } => c.code !== null);
+    return days.length > 0 ? new Map(days.map((d) => [d.date, d.code])) : null;
+  }, [calendar, region]);
+  const lanes = useMemo<HubLane[]>(
+    () => [
+      ...eventLanes(
         calendar,
         region.parks.map((p) => p.slug)
       ).filter((lane) => lane.kind !== 'break' || breaksNamed),
-    [calendar, region, breaksNamed]
+      ...(storm
+        ? [
+            {
+              id: 'storm',
+              kind: 'storm' as const,
+              name: null,
+              parkSlugs: [],
+              status: 'none' as const,
+              dates: [...storm.keys()],
+            },
+          ]
+        : []),
+    ],
+    [calendar, region, breaksNamed, storm]
   );
-  const nameOf = (lane: EventLane) =>
-    lane.kind === 'break'
-      ? lane.name
-        ? translateHolidayName(cleanBreakName(lane.name), locale)
-        : tRegion('unnamedBreak')
-      : (lane.name ?? '');
-  const parkNames = (lane: EventLane) =>
+  const stormCodes = storm ? [...new Set(storm.values())] : [];
+  const nameOf = (lane: HubLane) =>
+    lane.kind === 'storm'
+      ? stormCodes
+          .filter((c) => c.endsWith('_season'))
+          .concat(stormCodes.filter((c) => c.endsWith('_peak')))
+          .map((c) => tClimate(c))
+          .join(', ')
+      : lane.kind === 'break'
+        ? lane.name
+          ? translateHolidayName(cleanBreakName(lane.name), locale)
+          : tRegion('unnamedBreak')
+        : (lane.name ?? '');
+  const parkNames = (lane: HubLane) =>
     lane.parkSlugs
       .map((slug) => region.parks.find((p) => p.slug === slug))
       .filter((p) => p !== undefined)
       .map((p) => shortParkName(p.name))
       .join(', ');
-  const summary = (lane: EventLane) =>
+  const summary = (lane: HubLane) =>
     lane.kind === 'party'
       ? t('nights', { name: nameOf(lane), count: lane.dates.length })
       : lane.kind === 'break'
@@ -777,13 +799,15 @@ function EventLanes({
                     key={day.date}
                     className={cn(
                       'flex-1',
-                      lane.dates.includes(day.date)
-                        ? lane.kind === 'break'
-                          ? 'bg-amber-500/70'
-                          : lane.status === 'expected'
-                            ? 'bg-primary/30'
-                            : 'bg-primary/70'
-                        : 'bg-muted/40'
+                      lane.kind === 'storm' && storm?.has(day.date)
+                        ? STORM_SIGNAL_CLASS[stormSignal(storm.get(day.date)!)]
+                        : lane.dates.includes(day.date)
+                          ? lane.kind === 'break'
+                            ? 'bg-amber-500/70'
+                            : lane.status === 'expected'
+                              ? 'bg-primary/30'
+                              : 'bg-primary/70'
+                          : 'bg-muted/40'
                     )}
                   />
                 ))}
@@ -802,6 +826,9 @@ function EventLanes({
     </details>
   );
 }
+
+/** A lane under the calendar: an event or a break, or the region's storm season. */
+type HubLane = Omit<EventLane, 'kind'> & { kind: EventLane['kind'] | 'storm' };
 
 /** Dates as runs, "Nov 12 – 14, Nov 17, Nov 19 – 21", for a lane's line of text. */
 function summarizeDates(dates: string[], locale: string): string {

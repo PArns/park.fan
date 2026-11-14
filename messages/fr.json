@@ -395,8 +395,6 @@
   "tripHub": {
     "nextDays": "30 prochains jours",
     "dayTripsGroup": "Excursions",
-    "lastYearBanner": "La prévision va jusqu’au {date}. Ensuite, chaque jour montre le même jour de la semaine l’an dernier, marqué « l’an dernier ».",
-    "lastYearBannerNoDate": "Certains de ces jours dépassent la prévision. Ils montrent le même jour de la semaine l’an dernier, marqué « l’an dernier ».",
     "glance": {
       "minutes": "{minutes} min",
       "closesEarly": "ferme à {time} pour une soirée spéciale",
@@ -415,7 +413,6 @@
       "ring": "meilleur parc du resort",
       "early": "ferme plus tôt pour les visiteurs du jour",
       "closed": "fermé",
-      "lastYear": "L’an dernier : un jour mesuré, la prévision n’y arrive pas encore",
       "howTo": "Comment lire ceci",
       "noHours": "Point ou vide : pas encore d’horaires",
       "colour": "Couleur : le jour comparé à un jour ordinaire de ce parc"
@@ -465,7 +462,7 @@
       "noForecast": "ouvert, pas de prévision",
       "noHours": "Pas encore d’horaires",
       "closedFor": "Fermé : {name}",
-      "lastYear": "Journée mesurée l’an dernier ; la prévision n’atteint pas encore cette date.",
+      "lastYear": "Valeur de l’an dernier : le même jour de la semaine, tel que nous l’avons mesuré.",
       "outlook": "Tendance : une marge d’erreur plus large que la prévision.",
       "ticketedEvening": "{name} dès {time} : les visiteurs du jour partent à {leave}",
       "eveningEvent": "Soirée spéciale",
@@ -483,7 +480,7 @@
     },
     "when": {
       "none": "Les voyages les plus calmes de l’année n’ont pas pu être chargés.",
-      "lastYearNote": "Les dates au-delà de notre prévision sont planifiées sur l’affluence mesurée l’an dernier.",
+      "lastYearNote": "Les dates à plus de 60 jours sont classées sur les jours mesurés l’an dernier.",
       "rank": "N° {rank}",
       "figure": "Attente de pointe : environ {minutes} min",
       "basisLastYear": "Affluence mesurée l’an dernier",
@@ -521,10 +518,9 @@
         "planner": "Plus le jour est lointain, plus l’erreur est grande. C’est la même mesure que « Quelle précision ? » dans le planificateur, qui l’indique pour chaque plan.",
         "plannerNoFigure": "Plus le jour est lointain, plus l’erreur est grande ; le planificateur l’indique en minutes pour chaque plan, sous « Quelle précision ? ».",
         "q": "Jusqu’où va la prévision, et quelle est sa précision ?",
-        "horizon": "La prévision va jusqu’à 60 jours, puis une tendance avec une erreur plus large court jusqu’au {date}. Au-delà, un jour montre le même jour de la semaine l’an dernier, tel que nous l’avons mesuré, avec la mention « l’an dernier ».",
+        "horizon": "La prévision va jusqu’à 60 jours. Au-delà, un jour montre le même jour de la semaine l’an dernier, tel que nous l’avons mesuré, et le planificateur classe aussi ces jours sur l’an dernier : la prévision à long terme était nettement trop basse et presque plate pour eux, les jours mesurés de l’an dernier s’en approchent mieux.",
         "figure": "Sur les {days} derniers jours, notre prévision de l’attente de pointe, faite {lead, plural, =1 {un jour} =7 {une semaine} other {# jours}} à l’avance, s’est trompée de {minutes} min en moyenne, mesurée dans {parks} parcs.",
-        "rounding": "Des jours à moins de cinq minutes d’écart se valent.",
-        "horizonNoDate": "La prévision va jusqu’à 60 jours, puis une tendance avec une erreur plus large prend le relais. Au-delà, un jour montre le même jour de la semaine l’an dernier, tel que nous l’avons mesuré, avec la mention « l’an dernier »."
+        "rounding": "Des jours à moins de cinq minutes d’écart se valent."
       },
       "breaks": {
         "q": "Y a-t-il des vacances scolaires ou des jours fériés dans les semaines à venir ?",
@@ -559,7 +555,7 @@
         "busyOnly": "{busyCount, plural, =1 {Le plus chargé est le {busy}} other {Les plus chargés sont le {busy}}}, avec environ {high} min d’attente de pointe ; les autres jours sont en dessous, jusqu’à environ {low} min. En moyenne sur {days} jours et {parks, plural, =1 {le grand parc} other {les # grands parcs}}.",
         "a": "{quietCount, plural, =1 {Le plus calme est le {quiet}} other {Les plus calmes sont le {quiet}}}, avec environ {low} min d’attente de pointe, et le plus chargé le {busy}, avec environ {high} min. En moyenne sur {days} jours et {parks, plural, =1 {le grand parc} other {les # grands parcs}}."
       },
-      "lastYearNote": "Pas encore de prévision pour {month}. Les chiffres sont les jours que nous avons mesurés le même mois l’an dernier.",
+      "lastYearNote": "Pour {month}, nous comptons avec l’an dernier : les chiffres sont les jours mesurés le même mois un an plus tôt.",
       "quietestOnly": "{resort} : jours les plus calmes {days}.",
       "green": {
         "q": "Pourquoi un parc à l’attente de pointe plus longue peut-il être vert ?",
@@ -592,7 +588,8 @@
       "line": "Notre prévision de l’attente de pointe, faite {lead, plural, =1 {un jour} =7 {une semaine} other {# jours}} à l’avance, <link>s’est trompée de {minutes} min en moyenne</link> sur les {days} derniers jours."
     },
     "question": "Quel parc, quel jour ?",
-    "nextTitle": "Planificateur de voyage {region}"
+    "nextTitle": "Planificateur de voyage {region}",
+    "lastYearFrom": "À partir du {date} : valeurs de l’an dernier, chaque fois le même jour de la semaine, tel que nous l’avons mesuré."
   },
   "theme": {
     "light": "Clair",
@@ -3885,8 +3882,7 @@
         "months": {
           "label": {
             "usBreaks": "Vacances scolaires américaines (Orlando)"
-          },
-          "hurricane": "Saison des ouragans"
+          }
         },
         "weeks": {
           "noBreak": "Pas de vacances scolaires américaines à Orlando."
@@ -4539,7 +4535,6 @@
           "label": {
             "usBreaks": "Jours fériés et vacances au Japon"
           },
-          "typhoon": "Saison des typhons",
           "rainySeason": "Saison des pluies"
         },
         "weeks": {

@@ -388,9 +388,17 @@ export interface TripParkDay {
   crowdLevel: TripCrowdLevel;
   /**
    * The big rides' wait at their busiest: each headliner's day peak, meaned over the park's
-   * headliners, rounded to five minutes. The one figure parks are compared by. Absent when unknown.
+   * headliners, rounded to five minutes. The one figure parks are ranked by: within 60 days the
+   * forecast times its lead factor, past them last year's measured day. Absent when unknown.
    */
   headlinerWait?: number;
+  /**
+   * The served forecast, unscaled, as the park's own calendar shows it; what a day prints within
+   * 60 days (`shownWait`), never what ranks. Absent from an older API.
+   */
+  forecastWait?: number;
+  /** The same weekday a year back, as measured. */
+  lastYearWait?: number;
   basis: TripBasis;
   /** Ids into {@link TripCalendar.seasons}. */
   seasons?: string[];

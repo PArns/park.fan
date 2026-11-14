@@ -7,7 +7,6 @@ import {
   EARLY_CLOSE_CORNER,
   HUB_CELL,
   HUB_CELL_BEST,
-  HUB_CELL_LAST_YEAR,
   NO_HOURS_DOT,
 } from './hub-cell-styles';
 
@@ -100,19 +99,6 @@ export async function HubLegend() {
               <span aria-hidden className={NO_HOURS_DOT} />
             </span>
             <span className={cn(HUB_CELL, SWATCH, 'bg-muted/20')} />
-          </Key>
-          <Key label={t('lastYear')}>
-            <span
-              className={cn(
-                HUB_CELL,
-                SWATCH,
-                HUB_CELL_LAST_YEAR,
-                CROWD_TILE_CLASS.moderate,
-                CROWD_TEXT_CLASS.moderate
-              )}
-            >
-              45
-            </span>
           </Key>
         </ul>
       </details>
