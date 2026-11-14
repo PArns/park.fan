@@ -244,13 +244,18 @@ function polaroidPhotos(locale: string): PolaroidPhoto[] {
   // Every park the media database has a background for, more than the fan's `SLOTS`, so it
   // stays full if one picture is retired. Slugs are the API's, which is why two of them do
   // not look like their labels.
-  const picks: Array<{ slug: string; label: string }> = [
+  const picks: Array<{ slug: string; label: string; url?: string }> = [
     { slug: 'phantasialand', label: 'Phantasialand' },
     { slug: 'europa-park', label: 'Europa-Park' },
     { slug: 'attractiepark-toverland', label: 'Toverland' },
     { slug: 'efteling', label: 'Efteling' },
     { slug: 'walibi-holland', label: 'Walibi Holland' },
-    { slug: 'disneyland-park', label: 'Disneyland Paris' },
+    // Anaheim's park has the same slug.
+    {
+      slug: 'disneyland-park',
+      label: 'Disneyland Paris',
+      url: 'europe/france/paris/disneyland-park',
+    },
     { slug: 'bobbejaanland', label: 'Bobbejaanland' },
     { slug: 'walibi-belgium', label: 'Walibi Belgium' },
     { slug: 'movie-park-germany', label: 'Movie Park Germany' },
@@ -261,7 +266,7 @@ function polaroidPhotos(locale: string): PolaroidPhoto[] {
     // The hero's own park sits this one out: the same picture twice in one screen reads as a
     // mistake rather than a motif.
     if (pick.slug === HERO_PARK_SLUG) continue;
-    const image = getParkBackground(pick.slug);
+    const image = getParkBackground(pick);
     if (!image) continue;
     out.push({
       src: versionedSrc(image),

@@ -37,7 +37,7 @@ export async function GET(req: NextRequest) {
       avgWaitTime: park.avgWaitTime ?? null,
       operatingAttractions: park.operatingAttractions ?? null,
       totalAttractions: park.totalAttractions ?? null,
-      backgroundImage: getParkBackgroundImage(park.slug),
+      backgroundImage: getParkBackgroundImage({ slug: park.slug, url: park.href }),
     });
   }
 
@@ -63,6 +63,9 @@ export async function GET(req: NextRequest) {
     waitTime: attraction.currentWaitTime ?? null,
     crowdLevel: attraction.crowdLevel ?? null,
     // Ride photo only, as on the published card.
-    backgroundImage: getAttractionBackgroundImage(parkSlug, attractionSlug),
+    backgroundImage: getAttractionBackgroundImage(
+      { slug: park.slug, url: park.href },
+      attractionSlug
+    ),
   });
 }

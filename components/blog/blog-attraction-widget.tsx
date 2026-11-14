@@ -61,11 +61,14 @@ export async function BlogAttractionWidget({
         park={park}
         attraction={attraction}
         attractionBackgroundImage={getAttractionBackgroundImage(
-          park.slug,
+          { slug: park.slug, url: park.href },
           attraction.attractionSlug
         )}
-        parkBackgroundImage={getParkBackgroundImage(park.slug)}
-        objectPosition={getCardObjectPosition(park.slug, attraction.attractionSlug)}
+        parkBackgroundImage={getParkBackgroundImage({ slug: park.slug, url: park.href })}
+        objectPosition={getCardObjectPosition(
+          { slug: park.slug, url: park.href },
+          attraction.attractionSlug
+        )}
         className="grid h-full [grid-template-rows:auto_2rem_auto] sm:[grid-template-rows:auto_minmax(220px,1fr)_auto]"
       />
     </div>

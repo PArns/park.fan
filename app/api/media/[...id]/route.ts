@@ -56,7 +56,10 @@ export async function GET(request: NextRequest, context: { params: Promise<{ id:
       // Sibling photos of the same ride, so a client showing one can offer the
       // rest without a second round trip. Ids only — the client already knows how
       // to fetch a full record, and inlining them would multiply the payload.
-      alsoOfThisRide: getRideImages(image.park, image.ride)
+      alsoOfThisRide: getRideImages(
+        image.park ? { slug: image.park, url: image.parkPath } : null,
+        image.ride
+      )
         .filter((other) => other.id !== image.id)
         .map((other) => other.id),
     },

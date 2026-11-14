@@ -495,7 +495,7 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
 
   // The ride's own photo or nothing (`ParkBackground` renders null): the park's photo would make
   // a photo-less ride look like it had one, and the wrong one.
-  const backgroundImage = getAttractionBackgroundImage(parkSlug, attractionSlug);
+  const backgroundImage = getAttractionBackgroundImage(park, attractionSlug);
 
   // The title card's window: the post about this ride, else the park's visit guide, else the
   // ride's photo sharp; none of the three, and the card keeps one column.
@@ -588,8 +588,8 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
           name={stripNewPrefix(park.name)}
           geo={{ continent, country, city }}
           timezone={park.timezone}
-          backgroundImage={getParkBackgroundImage(park.slug)}
-          backgroundPosition={getCardObjectPosition(park.slug)}
+          backgroundImage={getParkBackgroundImage(park)}
+          backgroundPosition={getCardObjectPosition(park)}
         />
         <AttractionStructuredData
           attraction={attraction}

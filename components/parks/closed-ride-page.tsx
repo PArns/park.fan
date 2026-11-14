@@ -99,7 +99,7 @@ export async function ClosedRidePage({
   const land =
     typeof rawLand === 'string' ? rawLand : ((rawLand as { name?: string } | null)?.name ?? null);
 
-  const backgroundImage = getAttractionBackgroundImage(parkSlug, attractionSlug);
+  const backgroundImage = getAttractionBackgroundImage(park, attractionSlug);
   const rcdbBadge =
     ride.rcdbId != null ? <RcdbBadge rcdbId={ride.rcdbId} attractionName={attractionName} /> : null;
 
@@ -113,8 +113,8 @@ export async function ClosedRidePage({
         name={parkName}
         geo={{ continent, country, city }}
         timezone={park.timezone}
-        backgroundImage={getParkBackgroundImage(park.slug)}
-        backgroundPosition={getCardObjectPosition(park.slug)}
+        backgroundImage={getParkBackgroundImage(park)}
+        backgroundPosition={getCardObjectPosition(park)}
       />
       <AttractionStructuredData
         attraction={{ name: ride.name, slug: attractionSlug }}

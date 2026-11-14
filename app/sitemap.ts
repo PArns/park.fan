@@ -288,7 +288,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
           const parkLastModified = lastModified(parkPath);
           // Image sitemap extension, so Google can pick the park's hero photo as the result
           // thumbnail.
-          const parkImageSet = getParkImageSet(park.slug);
+          const parkImageSet = getParkImageSet({ slug: park.slug, url: parkPath });
           const parkImages = parkImageSet.length
             ? parkImageSet.map((src) => `${BASE_URL}${src}`)
             : undefined;
