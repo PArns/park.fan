@@ -1,7 +1,12 @@
 import { Ticket } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { Badge } from '@/components/ui/badge';
-import { SeasonKindIcon, knownSeasonKind } from '@/components/parks/season-kind-icon';
+import {
+  SEASON_ICON_QUIET_CLASS,
+  SeasonKindIcon,
+  knownSeasonKind,
+} from '@/components/parks/season-kind-icon';
+import { seasonMarks, type SeasonOnDay } from '@/lib/parks/park-season-days';
 import { cn } from '@/lib/utils';
 import type { ParkSeason, ParkSeasonStatus } from '@/lib/api/types';
 
@@ -71,5 +76,45 @@ export function SeasonHeadline({
         </span>
       )}
     </div>
+  );
+}
+
+/**
+ * A month's seasons as a few small icons, one per kind (`seasonMarks`), named together for a screen
+ * reader and on hover. `quiet` draws them all in the surrounding colour; otherwise only a quiet
+ * season (most of the month, or only `expected`) is.
+ */
+export function SeasonMonthMarks({
+  seasons,
+  max = 3,
+  quiet = false,
+  className,
+}: {
+  /** The month's seasons, each once (`seasonsInMonth`). */
+  seasons: readonly SeasonOnDay[];
+  max?: number;
+  quiet?: boolean;
+  className?: string;
+}) {
+  const label = useSeasonLabel();
+  if (seasons.length === 0) return null;
+  const names = seasons.map((season) => label(season, true)).join(', ');
+  return (
+    <span
+      role="img"
+      aria-label={names}
+      title={names}
+      className={cn('inline-flex shrink-0 items-center gap-0.5', className)}
+    >
+      {seasonMarks(seasons)
+        .slice(0, max)
+        .map((mark) => (
+          <SeasonKindIcon
+            key={mark.kind}
+            kind={mark.kind}
+            className={quiet || mark.quiet ? SEASON_ICON_QUIET_CLASS : undefined}
+          />
+        ))}
+    </span>
   );
 }

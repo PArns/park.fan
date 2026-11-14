@@ -3,13 +3,14 @@ import { getTranslations } from 'next-intl/server';
 import { cn } from '@/lib/utils';
 import { getDateTimeFormat } from '@/lib/utils/intl-format';
 import { ParkCalendarMonthIndexChip } from '@/components/parks/park-calendar-month-index-chip';
+import { SeasonMonthMarks } from '@/components/parks/season-headline';
 import {
-  parkCalendarMonthsBack,
   parkCalendarMonthHref,
-  parkCalendarMonthsForward,
-  shiftParkCalendarMonth,
+  parkCalendarMonthsShown,
   type ParkCalendarMonth,
 } from '@/lib/parks/calendar-segments';
+import { seasonDaysOfMonth, seasonsInMonth, type SeasonDays } from '@/lib/parks/park-season-days';
+import type { ParkSeason } from '@/lib/api/types';
 
 /**
  * Every month the route serves, as links, on every calendar page. The stepper links only the
@@ -18,6 +19,9 @@ import {
  *
  * Navigation, not a chapter: a labelled `<nav>` and no `<h2>`, so the outline keeps the page's own
  * chapters. See docs/rules/a-chapter-opens-the-same-way-everywhere.md.
+ *
+ * A chip carries its month's season icons, quiet and at most three, by the grid's own rule
+ * (`seasonDaysOfMonth`); the shown month takes the grid's record, which also knows its closed days.
  */
 export async function ParkCalendarMonthIndex({
   locale,
@@ -28,6 +32,8 @@ export async function ParkCalendarMonthIndex({
   currentMonth,
   activeMonth,
   coverageTo,
+  seasons,
+  activeSeasonDays,
   className,
 }: {
   locale: string;
@@ -44,21 +50,15 @@ export async function ParkCalendarMonthIndex({
    * null keeps the fixed forward span, as for a park with no published schedule.
    */
   coverageTo?: string | null;
+  /** The park's seasons over the whole index, one list for every chip. */
+  seasons?: readonly ParkSeason[];
+  /** The shown month's seasons per day, as its grid draws them (`seasonDaysOfMonth`). */
+  activeSeasonDays?: SeasonDays;
   className?: string;
 }) {
   const t = await getTranslations('parks.calendarPage');
 
-  // Built by shifting from the current month rather than by looping over years: the window is
-  // defined in months (`PARK_CALENDAR_MONTH_SPAN`) and December → January has to wrap the year
-  // exactly the way the route's own range check does, or the index links at a 404.
-  const months: ParkCalendarMonth[] = [];
-  for (
-    let offset = -parkCalendarMonthsBack(currentMonth);
-    offset <= parkCalendarMonthsForward(currentMonth, coverageTo);
-    offset++
-  ) {
-    months.push(shiftParkCalendarMonth(currentMonth, offset));
-  }
+  const months = parkCalendarMonthsShown(currentMonth, coverageTo);
 
   const byYear = new Map<number, ParkCalendarMonth[]>();
   for (const m of months) {
@@ -92,6 +92,9 @@ export async function ParkCalendarMonthIndex({
             </span>
             {entries.map((m) => {
               const active = isActive(m);
+              const monthSeasons = seasonsInMonth(
+                active && activeSeasonDays ? activeSeasonDays : seasonDaysOfMonth(seasons ?? [], m)
+              );
               const href = parkCalendarMonthHref(
                 locale,
                 continent,
@@ -108,6 +111,7 @@ export async function ParkCalendarMonthIndex({
                   active={active}
                 >
                   {shortLabel(m)}
+                  <SeasonMonthMarks seasons={monthSeasons} quiet className="ml-1.5" />
                 </ParkCalendarMonthIndexChip>
               );
             })}
