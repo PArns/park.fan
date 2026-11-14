@@ -1003,6 +1003,7 @@
       "kind": {
         "halloween": "Halloween",
         "christmas": "Periodo natalizio",
+        "winter": "Stagione invernale",
         "summer_nights": "Notti d’estate",
         "special_event": "Evento speciale",
         "opening": "Apertura stagione",

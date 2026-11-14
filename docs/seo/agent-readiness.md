@@ -161,6 +161,10 @@ data:
   so an agent hears „closed for maintenance until 4 December" rather than a bare `CLOSED`.
   `pnpm check:agent-ready` asserts the window's shape against Efteling's payload, never that one
   exists.
+- **A park's season** reaches `get_park_best_days` per day (`seasons`: kind, name, and the status
+  where it is not `confirmed`) by the calendar tile's own rule, `eventSeasonsOn()`
+  (`lib/parks/park-season-days.ts`): a season with single dates only on those, a cancelled one
+  never.
 
 ## Checking it
 

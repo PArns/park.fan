@@ -2,6 +2,7 @@ import { getApiBaseUrl, getServerApiHeaders } from './client';
 import { parkCacheTag } from './park-live-projection';
 import { withSeedTimeout } from './seed-timeout';
 import type { IntegratedCalendarResponse } from '@/lib/api/types';
+import { parkCalendarMonthRange, type ParkCalendarMonth } from '@/lib/parks/calendar-segments';
 
 /**
  * Which days of a calendar range carry an hourly crowd curve (`CalendarDay.hourly`). The backend
@@ -258,20 +259,16 @@ async function fetchCalendarMonth(
 
 /**
  * Timeout-bounded month fetch for the calendar page's streamed summary, like
- * {@link getBestDaysCalendarSeed}: a timeout drops only the summary card. `year`/`month` are
- * 1-based; the range is built with `Date.UTC` so a midnight DST jump cannot drop a day.
+ * {@link getBestDaysCalendarSeed}: a timeout drops only the summary card.
  */
 export async function getCalendarMonthSeed(
   continent: string,
   country: string,
   city: string,
   parkSlug: string,
-  { year, month }: { year: number; month: number }
+  month: ParkCalendarMonth
 ): Promise<IntegratedCalendarResponse | null> {
-  const pad = (n: number) => String(n).padStart(2, '0');
-  const lastDay = new Date(Date.UTC(year, month, 0)).getUTCDate();
-  const from = `${year}-${pad(month)}-01`;
-  const to = `${year}-${pad(month)}-${pad(lastDay)}`;
+  const { from, to } = parkCalendarMonthRange(month);
 
   return withSeedTimeout(
     fetchCalendarMonth(continent, country, city, parkSlug, from, to).catch(() => null),

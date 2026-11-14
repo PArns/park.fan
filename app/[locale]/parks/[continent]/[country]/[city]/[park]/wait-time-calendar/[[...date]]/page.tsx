@@ -16,6 +16,7 @@ import { getBestDaysCalendarSeed, getCalendarMonthSeed } from '@/lib/api/integra
 import { hasParkStatsPage } from '@/lib/api/stats';
 import type { BestDaysSnapshot } from '@/lib/api/integrated-calendar';
 import { summarizeCalendarMonth } from '@/lib/parks/calendar-month-summary';
+import { seasonDaysOfMonth } from '@/lib/parks/park-season-days';
 import type { IntegratedCalendarResponse, ParkWithAttractions } from '@/lib/api/types';
 import {
   cityHasOwnPage,
@@ -26,6 +27,7 @@ import {
 import {
   currentParkCalendarMonth,
   isParkCalendarMonthInRange,
+  parkCalendarMonthRange,
   parkCalendarPath,
   parseParkCalendarMonth,
   parseParkCalendarMonthSpelling,
@@ -270,9 +272,22 @@ export default async function ParkCalendarPage({ params }: ParkCalendarPageProps
   // upstream call.
   const summaryMonth = month ?? nowMonth;
   const monthSeedPromise = getCalendarMonthSeed(continent, country, city, parkSlug, summaryMonth);
+  // The seasons the grid marks: the month's own window, because the list above starts today and a
+  // past day's Halloween has ended by then.
+  const monthSeasonsPromise = getParkSeasons(
+    continent,
+    country,
+    city,
+    parkSlug,
+    parkCalendarMonthRange(summaryMonth)
+  );
 
   const park = parkForClock;
-  const [seasons, statsAvailable] = await Promise.all([seasonsPromise, statsAvailablePromise]);
+  const [seasons, monthSeasons, statsAvailable] = await Promise.all([
+    seasonsPromise,
+    monthSeasonsPromise,
+    statsAvailablePromise,
+  ]);
   if (!park) {
     const relocated = await findRelocatedParkRedirect(continent, country, city, parkSlug);
     if (relocated) {
@@ -543,6 +558,8 @@ export default async function ParkCalendarPage({ params }: ParkCalendarPageProps
           currentMonth={nowMonth}
           prevMonth={prevMonth}
           nextMonth={nextMonth}
+          // Per day, so the grid and the legend read one computation and the client gets no list.
+          seasonDays={seasonDaysOfMonth(monthSeasons, shownMonth)}
           className="mt-8"
           // Every month of the window, one hop from here. The stepper inside the card links two.
           monthIndex={
@@ -647,15 +664,8 @@ async function SeededBestDays({
   );
 }
 
-/**
- * ISO-8601 interval for one month, e.g. `2026-11-01/2026-11-30`, for `Dataset.temporalCoverage`.
- *
- * `Date.UTC(year, month, 0)` is the last day of `month` — the zeroth day of the NEXT one — which
- * gets February and a leap year right without a table. UTC throughout so a server in a zone with
- * a midnight DST jump cannot land the interval a day short.
- */
-function monthTemporalCoverage({ year, month }: ParkCalendarMonth): string {
-  const pad = (n: number) => String(n).padStart(2, '0');
-  const lastDay = new Date(Date.UTC(year, month, 0)).getUTCDate();
-  return `${year}-${pad(month)}-01/${year}-${pad(month)}-${pad(lastDay)}`;
+/** ISO-8601 interval for one month, e.g. `2026-11-01/2026-11-30`, for `Dataset.temporalCoverage`. */
+function monthTemporalCoverage(month: ParkCalendarMonth): string {
+  const { from, to } = parkCalendarMonthRange(month);
+  return `${from}/${to}`;
 }
