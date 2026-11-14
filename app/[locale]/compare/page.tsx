@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { Scale } from 'lucide-react';
-import { generateAlternateLanguages, SITE_URL } from '@/i18n/config';
-import { buildOpenGraphMetadata } from '@/lib/utils/metadata';
+import { SITE_URL } from '@/i18n/config';
+import { buildOpenGraphMetadata, buildAlternates } from '@/lib/utils/metadata';
 import { getOgImageUrl } from '@/lib/utils/og-image';
 import { routing } from '@/i18n/routing';
 import { RouteMessages } from '@/i18n/route-messages';
@@ -41,13 +41,7 @@ export async function generateMetadata({ params }: ComparePageProps): Promise<Me
       url: `${SITE_URL}/${locale}/compare`,
       ogImageUrl: getOgImageUrl([locale, 'compare']),
     }),
-    alternates: {
-      canonical: `${SITE_URL}/${locale}/compare`,
-      languages: {
-        ...generateAlternateLanguages((l) => `/${l}/compare`),
-        'x-default': `${SITE_URL}/en/compare`,
-      },
-    },
+    alternates: buildAlternates(locale, () => '/compare'),
   };
 }
 

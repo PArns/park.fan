@@ -1,8 +1,13 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { getGlossaryTerms } from '@/lib/glossary/translations';
 import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
-import { locales, generateAlternateLanguages, SITE_URL } from '@/i18n/config';
-import { buildOpenGraphMetadata, fitWithin, MAX_DESCRIPTION_LENGTH } from '@/lib/utils/metadata';
+import { locales, SITE_URL } from '@/i18n/config';
+import {
+  buildOpenGraphMetadata,
+  fitWithin,
+  MAX_DESCRIPTION_LENGTH,
+  buildAlternates,
+} from '@/lib/utils/metadata';
 import { getOgImageUrl } from '@/lib/utils/og-image';
 import { PageContainer } from '@/components/common/page-container';
 import { GlossaryOverviewClient } from '@/components/glossary/glossary-overview-client';
@@ -54,13 +59,7 @@ export async function generateMetadata({ params }: GlossaryPageProps): Promise<M
       url,
       ogImageUrl: getOgImageUrl([locale, segment]),
     }),
-    alternates: {
-      canonical: url,
-      languages: {
-        ...generateAlternateLanguages((l) => `/${l}/${GLOSSARY_SEGMENTS[l]}`),
-        'x-default': `${SITE_URL}/en/glossary`,
-      },
-    },
+    alternates: buildAlternates(locale, (l) => `/${GLOSSARY_SEGMENTS[l]}`),
   };
 }
 

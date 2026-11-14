@@ -42,6 +42,7 @@ import {
   removePark,
   swapChange,
   addedByEdit,
+  editGlowDays,
 } from '../lib/trip-regions/plan.ts';
 import { findLeg } from '../lib/trip-regions/hub-data.ts';
 import {
@@ -510,6 +511,30 @@ const keys = { parks: new Set(ORDER), areas: new Set(['disney', 'universal']) };
       }),
     ],
     [{ slug: 'epcot', date: '2026-11-30' }, { slug: 'epcot', date: '2026-11-30' }, null]
+  );
+  test(
+    'an edit glows on the days it put something else on, a pin and a change from the chat on none',
+    [
+      editGlowDays(swapChange(a, b)),
+      editGlowDays({ kind: 'move', slug: 'epcot', from: '2026-11-29', to: '2026-12-01' }),
+      editGlowDays({ kind: 'free', slug: 'epcot', date: '2026-11-30' }),
+      editGlowDays({
+        kind: 'idea',
+        idea: { kind: 'add', query: '', park: 'epcot', to: '2026-11-30' },
+      }),
+      editGlowDays({ kind: 'pin', target: 'epcot', date: '2026-11-30', pinned: true }),
+      editGlowDays({ kind: 'parky', changes: ['dates'] }),
+      editGlowDays(null),
+    ],
+    [
+      ['2026-11-30', '2026-11-29'],
+      ['2026-11-29', '2026-12-01'],
+      ['2026-11-30'],
+      ['2026-11-30'],
+      [],
+      [],
+      [],
+    ]
   );
   test(
     'a leg is found either way',

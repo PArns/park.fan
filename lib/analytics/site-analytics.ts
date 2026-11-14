@@ -670,7 +670,8 @@ export type TripEditPanel = 'dates' | 'parks' | 'route' | 'options';
 export type TripEditFrom = 'left_out' | 'ticket_problem' | 'ticket_card';
 
 /** An edit of the plan from the result, as `trip_undo` names it (`PlanEditChange`'s kinds). */
-export type TripEditKind = 'pin' | 'swap' | 'move' | 'free' | 'remove' | 'add' | 'release' | 'idea';
+export type TripEditKind =
+  'pin' | 'swap' | 'move' | 'free' | 'remove' | 'add' | 'release' | 'idea' | 'parky';
 
 /** What one of Parky's ideas changes: the API's `kind`. */
 export type TripIdeaKind = 'move' | 'swap' | 'add' | 'travel_day' | 'hopper' | 'avoid_party';

@@ -188,9 +188,11 @@ with `onScreen`, then each region's remembered trip, at most 4, left out without
 the trip on screen before the answer and lists it a line a day, which is where Parky's unasked hints
 come from.
 
-`trip_set` goes through the planner's own `update` with the query read as a link is read
-(`readPlanQuery`), the path a press takes: written to the address bar, re-planned on screen. Where
-the hub is not on screen the widget opens it with the query (`tripRegionPath`, `#planner`). Parky's
+`trip_set` goes through the planner's own `edit` with the query read as a link is read
+(`readPlanQuery`), the path a press takes: written to the address bar, re-planned on screen, and
+named in the result's status band („Parky hat die Reisedaten geändert.“) with its „Rückgängig“,
+which takes it back like a manual edit (`tripPlannerBridge.applyChange`). Where the hub is not on
+screen the widget opens it with the query (`tripRegionPath`, `#planner`). Parky's
 change is kept per region (`rememberTripChange`): the query before it and, once the planner has
 written it back, the query after it in the planner's own spelling. `trip_undo` (Parky's tool, or the
 receipt's button) puts the trip back only while it still says what Parky left (`sameTripQuery`,

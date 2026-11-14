@@ -35,7 +35,8 @@ import {
   type RainRun,
 } from '@/lib/utils/weather-chart-axis';
 import type { ScheduleItem, WeatherHourlyPoint, WeatherNowcast } from '@/lib/api/types';
-import { formatTime, getDateTimeFormat } from '@/lib/utils/intl-format';
+import { formatTime } from '@/lib/utils/intl-format';
+import { parkLocalIso } from '@/lib/utils/park-day';
 import { formatTempWithUnit } from '@/lib/utils/temperature';
 
 interface WeatherHourlyChartProps {
@@ -121,21 +122,6 @@ function tempColorAt(t: number): string {
   return s[0][1];
 }
 
-/** Format an instant (ms) as a naive park-local ISO ("YYYY-MM-DDTHH:MM"). */
-function toLocalIso(ms: number, timezone: string): string {
-  return getDateTimeFormat('sv-SE', {
-    timeZone: timezone,
-    year: 'numeric',
-    month: '2-digit',
-    day: '2-digit',
-    hour: '2-digit',
-    minute: '2-digit',
-    hour12: false,
-  })
-    .format(ms)
-    .replace(' ', 'T');
-}
-
 /** Minutes since midnight of a naive park-local ISO. */
 const localMinutes = (iso: string) =>
   parseInt(iso.slice(11, 13), 10) * 60 + parseInt(iso.slice(14, 16), 10);
@@ -196,8 +182,8 @@ function resolveDayWindow(
   );
   if (!entry) return null;
 
-  const openLocal = toLocalIso(Date.parse(entry.openingTime!), timezone);
-  const closeLocal = toLocalIso(Date.parse(entry.closingTime!), timezone);
+  const openLocal = parkLocalIso(Date.parse(entry.openingTime!), timezone);
+  const closeLocal = parkLocalIso(Date.parse(entry.closingTime!), timezone);
   if (openLocal.slice(0, 10) !== dayKey) return null;
 
   const n = points.length;
@@ -438,7 +424,7 @@ function WeatherHourlyChartBody({
   const { ref: rootRef, active } = useActiveOnScreen();
   const nowMs = useMinuteNow(active) ?? seedMs;
 
-  const nowLocal = toLocalIso(nowMs, timezone);
+  const nowLocal = parkLocalIso(nowMs, timezone);
   const todayKey = nowLocal.slice(0, 10);
   const nowMinutes = localMinutes(nowLocal);
   // The columns and the axis only ever change on the hour, so they are memoized on
@@ -694,8 +680,8 @@ function WeatherHourlyChartBody({
     ];
     for (const [kind, startsAt, endsAt] of events) {
       if (!startsAt) continue;
-      const startLocal = toLocalIso(Date.parse(startsAt), timezone);
-      const endLocal = endsAt ? toLocalIso(Date.parse(endsAt), timezone) : null;
+      const startLocal = parkLocalIso(Date.parse(startsAt), timezone);
+      const endLocal = endsAt ? parkLocalIso(Date.parse(endsAt), timezone) : null;
       if (startLocal.slice(0, 10) > todayKey) continue; // starts on a later day
       if (endLocal && endLocal.slice(0, 10) < todayKey) continue; // ended on an earlier day
       const fromPct =

@@ -1,12 +1,8 @@
 import type { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { ImageUp } from 'lucide-react';
-import {
-  locales,
-  generateAlternateLanguages,
-  localeToOpenGraphLocale,
-  SITE_URL,
-} from '@/i18n/config';
+import { SITE_URL } from '@/i18n/config';
+import { buildAlternates, buildOpenGraphMetadata } from '@/lib/utils/metadata';
 import { routing } from '@/i18n/routing';
 import { getOgImageUrl } from '@/lib/utils/og-image';
 import { ContributeForm } from '@/components/contribute/contribute-form';
@@ -43,29 +39,14 @@ export async function generateMetadata({
     title: t('title'),
     description: t('description'),
     ...(isPrefilled && { robots: { index: false, follow: true } }),
-    openGraph: {
+    ...buildOpenGraphMetadata({
+      locale,
       title: t('title'),
       description: t('description'),
-      locale: localeToOpenGraphLocale[locale as keyof typeof localeToOpenGraphLocale],
-      alternateLocale: locales.filter((l) => l !== locale).map((l) => localeToOpenGraphLocale[l]),
       url: `${SITE_URL}/${locale}/contribute`,
-      siteName: 'park.fan',
-      type: 'website',
-      images: [{ url: ogImageUrl, width: 1200, height: 630, alt: t('title') }],
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: t('title'),
-      description: t('description'),
-      images: [ogImageUrl],
-    },
-    alternates: {
-      canonical: `${SITE_URL}/${locale}/contribute`,
-      languages: {
-        ...generateAlternateLanguages((l) => `/${l}/contribute`),
-        'x-default': `${SITE_URL}/en/contribute`,
-      },
-    },
+      ogImageUrl,
+    }),
+    alternates: buildAlternates(locale, () => '/contribute'),
   };
 }
 

@@ -19,6 +19,12 @@ export interface AssistantTripIdea {
   /** The line once it is applied, „Im Plan: …“. */
   applied: string;
   undo: string;
+  /**
+   * „Anderen Tag“: the button that opens the planner's swap mode for the idea's park instead
+   * (`tripPlannerBridge.openSwap(region, idea.park, idea.from)`). Optional because the chat keeps
+   * its cards in the tab's session storage, and a card stored by an earlier build has none.
+   */
+  otherDay?: string;
 }
 
 const ASK_KEY = 'parkfan:assistant-trip-idea';

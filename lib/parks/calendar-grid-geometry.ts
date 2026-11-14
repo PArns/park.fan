@@ -1,4 +1,5 @@
 import type { ParkCalendarMonth } from '@/lib/parks/calendar-segments';
+import { monthLength } from '@/lib/utils/park-day';
 
 /**
  * How tall the month grid will be, worked out before it exists. `ParkCalendarGrid` is a client-only
@@ -17,7 +18,7 @@ export function weekRowsInMonth({ year, month }: ParkCalendarMonth): number {
   // `Date.UTC` throughout: a local `new Date(y, m, 1)` in a zone with a DST jump at midnight can
   // land on the previous day and shift the first weekday.
   const first = new Date(Date.UTC(year, month - 1, 1));
-  const daysInMonth = new Date(Date.UTC(year, month, 0)).getUTCDate();
+  const daysInMonth = monthLength(year, month);
   // Monday-first: Monday → 0, Sunday → 6.
   const leadingBlanks = (first.getUTCDay() + 6) % 7;
   return Math.ceil((leadingBlanks + daysInMonth) / 7);
@@ -25,7 +26,7 @@ export function weekRowsInMonth({ year, month }: ParkCalendarMonth): number {
 
 /** Rows the below-`lg` two-column day list needs. */
 export function listRowsInMonth({ year, month }: ParkCalendarMonth): number {
-  const daysInMonth = new Date(Date.UTC(year, month, 0)).getUTCDate();
+  const daysInMonth = monthLength(year, month);
   return Math.ceil(daysInMonth / 2);
 }
 

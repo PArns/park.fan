@@ -464,7 +464,6 @@
       "stayingAt": "Hotel",
       "minutes": "{minutes} min",
       "noForecast": "open, geen voorspelling",
-      "noHours": "Nog geen openingstijden",
       "closedFor": "Gesloten: {name}",
       "lastYear": "Cijfer van vorig jaar: dezelfde weekdag, zoals wij die gemeten hebben.",
       "outlook": "Vooruitblik: een grotere afwijking dan de voorspelling.",
@@ -472,7 +471,6 @@
       "eveningEvent": "Avondevenement",
       "shorterDay": "Kortere dag: dagbezoekers vertrekken om {leave}",
       "extendedEvening": "Extended Evening Hours tot {time} voor gasten van de deluxe hotels",
-      "expected": "data verwacht",
       "travel": "Vanaf {area}: ongeveer {minutes} min {mode, select, drive {met de auto, zonder verkeer} walk {te voet} train {met de trein} rail {met de trein} shinkansen {met de shinkansen} metro {met de metro} bus {met de bus} highway_bus {met de touringcar} shuttle {met de shuttle} monorail {met de monorail} skyliner {met de Skyliner} boat {met de boot} other {}}",
       "bigRides": "De grote attracties",
       "ridesLoading": "De attracties worden geladen …",
@@ -765,6 +763,7 @@
       "summerOnly": "Alleen in de zomer",
       "offSeason": "Buiten seizoen",
       "onlyDuring": "Alleen tijdens {season}",
+      "pausedDuring": "Gepauzeerd tijdens {season}",
       "winter": "Winter",
       "summer": "Zomer"
     },
@@ -3217,7 +3216,6 @@
       "until": "tot {date}",
       "since": "vanaf {date}",
       "wholeMonth": "de hele maand",
-      "expected": "data verwacht",
       "modeLabel": "Beste park",
       "modeAll": "Totaal",
       "picksLegendAll": "Onder elke datum staat het park met de kortste piekwachttijd.",
@@ -3417,7 +3415,6 @@
       "travel": "Reisdag"
     },
     "marker": {
-      "closesAt": "sluit {time}",
       "closesEarly": "sluit vroeger",
       "early": {
         "early_entry": "Early Entry",
@@ -3575,6 +3572,7 @@
       "removed": "{park} hoort niet meer bij de reis.",
       "released": "Er staat geen dag meer vast. Het plan kiest de volgorde weer zelf.",
       "undone": "De laatste wijziging is teruggedraaid.",
+      "byParky": "{change, select, dates {Parky heeft de reisdata aangepast.} parks {Parky heeft de parken aangepast.} pin {Parky heeft een dag vastgezet.} swap {Parky heeft twee dagen gewisseld.} rest {Parky heeft de rustdagen aangepast.} tickets {Parky heeft je tickets ingevuld.} hotel {Parky heeft je hotel ingevuld.} pace {Parky heeft het tempo aangepast.} route {Parky heeft de route aangepast.} buffer {Parky heeft de tijd voor de hotelwissel ingesteld.} other {Parky heeft het plan aangepast.}}",
       "peakNow": "Piek op je dagen nu ongeveer {minutes} min.",
       "sheet": {
         "swap": "Met een andere dag ruilen",
@@ -4066,7 +4064,8 @@
       "chat": "In de chat",
       "ask": "Wat vind je van dit idee voor mijn plan: {idea}?",
       "applied": "In het plan: {idea}.",
-      "inPlan": "In het plan"
+      "inPlan": "In het plan",
+      "otherDay": "Andere dag"
     }
   },
   "tripRegions": {
@@ -4904,13 +4903,6 @@
             "park_hotel": "Parkhotel bij Fuji-Q of LEGOLAND",
             "offsite": "Ergens anders"
           },
-          "hotelHint": {
-            "disney": "Happy Entry in Tokyo Disneyland, 15 minuten eerder, niet op de dag van inchecken",
-            "disney_deluxe": "Happy Entry in beide Disney-parken, niet op de dag van inchecken",
-            "universal": "Een paar minuten lopen naar de ingang",
-            "park_hotel": "Highland Resort bij Fuji-Q of LEGOLAND Japan Hotel bij de ingang; eerder naar binnen verkoopt Fuji-Q zelf, als One Day Pass met Priority Admission",
-            "offsite": "Geen vroege toegang"
-          },
           "eveningsHint": "Sluit een park eerder, dan stelt het plan voor de avond IKSPIARI bij de Disney-parken of Universal CityWalk Osaka voor.",
           "moveBufferHint": "Met vooruitgestuurde bagage (takkyubin) is 30 minuten meestal genoeg."
         },
@@ -5214,11 +5206,6 @@
             "disney": "Disney-hotel",
             "parc_asterix": "Hotel van Parc Astérix",
             "offsite": "Ander hotel"
-          },
-          "hotelHint": {
-            "disney": "Extra Magic Time, meestal een uur voor de opening in beide Disney-parken; ook in Davy Crockett Ranch",
-            "parc_asterix": "Early Entry: een paar attracties 30 minuten eerder",
-            "offsite": "Ook partnerhotels en Parijs; geen vroegere toegang"
           },
           "eveningsHint": "Sluit een park eerder, dan gaat de avond naar het andere Disney-park of naar Disney Village.",
           "moveBufferHint": "Met je koffers naar het volgende hotel is 60 minuten realistisch."

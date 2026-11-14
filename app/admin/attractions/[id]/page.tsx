@@ -20,6 +20,7 @@ import { HistoryList } from '../../_ui/history-list';
 import { useCan } from '../../_app/session';
 import { RideProfileEditor } from '../_components/ride-profile-editor';
 import { AttractionStatus } from '../_components/attraction-status';
+import { SeasonBindings } from '../_components/season-bindings';
 import { EntityMediaPanel } from '../../_ui/entity-media';
 import { EntityPostsPanel } from '../../_ui/entity-posts';
 
@@ -164,6 +165,20 @@ export default function AttractionDetailPage({ params }: { params: Promise<{ id:
           undoInvalidateKeys={[adminKeys.attraction(data.id), ['admin', 'history']]}
           emptyHint="Nichts korrigiert. Alles kommt so vom Sync."
           canEdit={canEdit}
+          groupExtras={
+            data.park
+              ? {
+                  Saison: (
+                    <SeasonBindings
+                      attractionId={data.id}
+                      park={data.park}
+                      fields={data.fields}
+                      canEdit={canEdit}
+                    />
+                  ),
+                }
+              : undefined
+          }
         />
       )}
       {tab === 'profile' && (

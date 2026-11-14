@@ -4,12 +4,8 @@ import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { routing, type Locale } from '@/i18n/routing';
-import {
-  generateAlternateLanguages,
-  locales,
-  localeToOpenGraphLocale,
-  SITE_URL,
-} from '@/i18n/config';
+import { SITE_URL } from '@/i18n/config';
+import { buildAlternates, buildOpenGraphMetadata } from '@/lib/utils/metadata';
 import { pickMessages } from '@/i18n/client-messages';
 import { LAYOUT_MESSAGE_NAMESPACES } from '@/i18n/route-namespaces.generated';
 import { Providers } from '@/lib/providers';
@@ -99,36 +95,14 @@ export async function generateMetadata({ params }: LocaleLayoutProps): Promise<M
     keywords: t('keywords'),
     // No `icons` here: a segment that declares them replaces the inherited object. See the note
     // in app/layout.tsx.
-    alternates: {
-      canonical: `${siteUrl}/${locale}`,
-      languages: {
-        ...generateAlternateLanguages((l) => `/${l}`),
-        'x-default': `${SITE_URL}/en`,
-      },
-    },
-    openGraph: {
-      type: 'website',
-      siteName: 'park.fan',
+    alternates: buildAlternates(locale, () => ''),
+    ...buildOpenGraphMetadata({
+      locale,
+      title: t('title'),
+      description: t('description'),
       url: `${siteUrl}/${locale}`,
-      locale: localeToOpenGraphLocale[locale as Locale] || 'en_US',
-      alternateLocale: locales.filter((l) => l !== locale).map((l) => localeToOpenGraphLocale[l]),
-      title: t('title'),
-      description: t('description'),
-      images: [
-        {
-          url: getOgImageUrl([locale]),
-          width: 1200,
-          height: 630,
-          alt: t('title'),
-        },
-      ],
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: t('title'),
-      description: t('description'),
-      images: [getOgImageUrl([locale])],
-    },
+      ogImageUrl: getOgImageUrl([locale]),
+    }),
     robots: {
       index: true,
       follow: true,

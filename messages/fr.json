@@ -464,7 +464,6 @@
       "stayingAt": "Hôtel",
       "minutes": "{minutes} min",
       "noForecast": "ouvert, pas de prévision",
-      "noHours": "Pas encore d’horaires",
       "closedFor": "Fermé : {name}",
       "lastYear": "Valeur de l’an dernier : le même jour de la semaine, tel que nous l’avons mesuré.",
       "outlook": "Tendance : une marge d’erreur plus large que la prévision.",
@@ -472,7 +471,6 @@
       "eveningEvent": "Soirée spéciale",
       "shorterDay": "Journée plus courte : les visiteurs du jour partent à {leave}",
       "extendedEvening": "Extended Evening Hours jusqu’à {time} pour les clients des hôtels deluxe",
-      "expected": "dates attendues",
       "travel": "Depuis {area} : environ {minutes} min {mode, select, drive {en voiture, sans trafic} walk {à pied} train {en train} rail {en train} shinkansen {en shinkansen} metro {en métro} bus {en bus} highway_bus {en car} shuttle {en navette} monorail {en monorail} skyliner {en Skyliner} boat {en bateau} other {}}",
       "bigRides": "Les grandes attractions",
       "ridesLoading": "Chargement des attractions …",
@@ -765,6 +763,7 @@
       "summerOnly": "Été uniquement",
       "offSeason": "Hors saison",
       "onlyDuring": "Uniquement pendant {season}",
+      "pausedDuring": "En pause pendant {season}",
       "winter": "Hiver",
       "summer": "Été"
     },
@@ -3217,7 +3216,6 @@
       "until": "jusqu’au {date}",
       "since": "à partir du {date}",
       "wholeMonth": "tout le mois",
-      "expected": "dates attendues",
       "modeLabel": "Meilleur parc",
       "modeAll": "Global",
       "picksLegendAll": "Sous chaque date, le parc à l’attente de pointe la plus courte.",
@@ -3417,7 +3415,6 @@
       "travel": "Jour de trajet"
     },
     "marker": {
-      "closesAt": "ferme à {time}",
       "closesEarly": "ferme plus tôt",
       "early": {
         "early_entry": "Early Entry",
@@ -3575,6 +3572,7 @@
       "removed": "{park} ne fait plus partie du voyage.",
       "released": "Aucun jour n’est plus fixé. Le plan choisit de nouveau l’ordre.",
       "undone": "La dernière modification est annulée.",
+      "byParky": "{change, select, dates {Parky a changé les dates du voyage.} parks {Parky a modifié les parcs.} pin {Parky a fixé un jour.} swap {Parky a échangé deux jours.} rest {Parky a modifié les jours de repos.} tickets {Parky a ajouté tes billets.} hotel {Parky a ajouté ton hôtel.} pace {Parky a modifié le rythme.} route {Parky a modifié l’itinéraire.} buffer {Parky a réglé le temps du changement d’hôtel.} other {Parky a modifié le plan.}}",
       "peakNow": "Pic sur tes jours maintenant environ {minutes} min.",
       "sheet": {
         "swap": "Échanger avec un autre jour",
@@ -4066,7 +4064,8 @@
       "chat": "Dans le chat",
       "ask": "Que penses-tu de cette idée pour mon plan : {idea} ?",
       "applied": "Dans le plan : {idea}.",
-      "inPlan": "Ajouter au plan"
+      "inPlan": "Ajouter au plan",
+      "otherDay": "Un autre jour"
     }
   },
   "tripRegions": {
@@ -4904,13 +4903,6 @@
             "park_hotel": "Hôtel de parc à Fuji-Q ou LEGOLAND",
             "offsite": "Ailleurs"
           },
-          "hotelHint": {
-            "disney": "Happy Entry à Tokyo Disneyland, 15 minutes plus tôt, pas le jour de l’arrivée",
-            "disney_deluxe": "Happy Entry dans les deux parcs Disney, pas le jour de l’arrivée",
-            "universal": "À quelques minutes à pied de l’entrée",
-            "park_hotel": "Highland Resort près de Fuji-Q ou LEGOLAND Japan Hotel à l’entrée ; l’entrée anticipée, Fuji-Q la vend lui-même, avec le One Day Pass avec Priority Admission",
-            "offsite": "Pas d’entrée anticipée"
-          },
           "eveningsHint": "Si un parc ferme plus tôt, le plan propose pour la soirée IKSPIARI près des parcs Disney ou Universal CityWalk Osaka.",
           "moveBufferHint": "Avec des bagages envoyés à l’avance (takkyubin), 30 minutes suffisent en général."
         },
@@ -5214,11 +5206,6 @@
             "disney": "Hôtel Disney",
             "parc_asterix": "Hôtel du Parc Astérix",
             "offsite": "Autre hôtel"
-          },
-          "hotelHint": {
-            "disney": "Extra Magic Time, en général une heure avant l’ouverture dans les deux parcs Disney, Davy Crockett Ranch compris",
-            "parc_asterix": "Early Entry : certaines attractions 30 minutes plus tôt",
-            "offsite": "Hôtels partenaires et Paris compris, sans accès anticipé"
           },
           "eveningsHint": "Si un parc ferme plus tôt, la soirée passe à l’autre parc Disney ou à Disney Village.",
           "moveBufferHint": "Avec tes valises jusqu’à l’hôtel suivant, 60 minutes sont réalistes."

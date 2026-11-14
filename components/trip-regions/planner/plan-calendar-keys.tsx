@@ -85,6 +85,8 @@ export function PlanMonthEvents({
   locale: string;
 }) {
   const t = useTranslations('tripPlanner.dates');
+  // „Termine erwartet“ in the hub's lanes' words, which name the same season state.
+  const tLanes = useTranslations('tripHub.lanes');
   if (events.length === 0) return null;
   const monthName = formatParkDay(locale, `${month}-15`, { month: 'long' });
   const day = (date: string) => formatDateRange(date, date, locale);
@@ -134,7 +136,9 @@ export function PlanMonthEvents({
                 </span>
               )}
               {name(event)}
-              {event.expected && <span className="text-muted-foreground"> · {t('expected')}</span>}
+              {event.expected && (
+                <span className="text-muted-foreground"> · {tLanes('expected')}</span>
+              )}
             </span>
             <span className="text-muted-foreground shrink-0 tabular-nums">{when(event)}</span>
           </li>

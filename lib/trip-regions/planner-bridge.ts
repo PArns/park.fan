@@ -1,3 +1,4 @@
+import type { TripChangeKind } from '@/lib/assistant/actions';
 import type { PlanEditChange } from './plan';
 import { applyIdea, type PlanIdea } from './plan-ideas';
 import {
@@ -16,7 +17,9 @@ import { rememberTrip } from './remembered-trip';
  * remembers its query per region here (`remembered-trip.ts`).
  *
  * One of Parky's ideas is applied here too, from the strip over the plan, a day's card and the chat
- * alike: as an edit the planner's status band names and its Undo takes back.
+ * alike: as an edit the planner's status band names and its Undo takes back. So is a change Parky
+ * makes with `change_trip` while the planner is on screen, and the chat's idea card opens the
+ * result's swap mode for its park here (`openSwap`, which the result connects).
  */
 
 /** Who applied an idea: the visitor's press on the planner, or the chat's card. */
@@ -36,11 +39,16 @@ interface Connected {
   region: string;
   query: string;
   apply: (query: string) => void;
+  applyChange: (query: string, changes: readonly TripChangeKind[]) => void;
   applyIdea: (idea: PlanIdea, by: IdeaBy) => void;
   undo: () => boolean;
 }
 
+/** The result's swap mode: opens it for a park's day, false where the plan has none for it. */
+type OpenSwap = (park: string, from?: string) => boolean;
+
 let connected: Connected | null = null;
+let swap: { region: string; open: OpenSwap } | null = null;
 const listeners = new Set<() => void>();
 const notify = () => listeners.forEach((listener) => listener());
 
@@ -58,6 +66,24 @@ export const tripPlannerBridge = {
     if (connected?.region !== region) return false;
     connected.apply(query);
     return true;
+  },
+  /**
+   * Set the planner of `region` to `query` as Parky's edit (`change_trip`, by the kinds the API
+   * names for it): said in the status band and taken back by its Undo, like a press of its own.
+   * False when that planner is not on screen.
+   */
+  applyChange(region: string, query: string, changes: readonly TripChangeKind[]): boolean {
+    if (connected?.region !== region) return false;
+    connected.applyChange(query, changes);
+    return true;
+  },
+  /**
+   * Open the swap mode of the planner of `region` for `park`: on its day `from` where the plan has
+   * the park there, else on its first day. False when that planner's result is not on screen or
+   * the plan has no day for the park.
+   */
+  openSwap(region: string, park: string, from?: string): boolean {
+    return swap?.region === region && swap.open(park, from);
   },
   /**
    * Apply one of Parky's ideas to the planner of `region` as an edit: its query part set over the
@@ -97,6 +123,12 @@ export function connectPlannerBridge(
     region,
     query,
     apply: (next) => update(() => readPlanQuery(new URLSearchParams(next), keys)),
+    applyChange: (next, changes) =>
+      edits.edit(
+        () => readPlanQuery(new URLSearchParams(next), keys),
+        { kind: 'parky', changes },
+        'parky'
+      ),
     applyIdea: (idea, by) =>
       edits.edit((s) => applyIdea(s, idea, keys), { kind: 'idea', idea }, by),
     undo: edits.undo,
@@ -107,5 +139,17 @@ export function connectPlannerBridge(
     if (connected !== own) return;
     connected = null;
     notify();
+  };
+}
+
+/**
+ * Connect the result's swap mode for `region`, which the chat's idea card opens through
+ * `tripPlannerBridge.openSwap`; returns the disconnect.
+ */
+export function connectPlannerSwap(region: string, open: OpenSwap): () => void {
+  const own = { region, open };
+  swap = own;
+  return () => {
+    if (swap === own) swap = null;
   };
 }

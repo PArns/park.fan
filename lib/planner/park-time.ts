@@ -1,5 +1,4 @@
-import { getDateTimeFormat } from '@/lib/utils/intl-format';
-import { daysBetween, formatParkDay, parkDayOf } from '@/lib/utils/park-day';
+import { daysBetween, formatParkDay, parkDayOf, parkWallClock } from '@/lib/utils/park-day';
 import { isPlannedDay, type PlannerState } from './types';
 
 /**
@@ -33,20 +32,9 @@ export function resolveTimeZone(timeZone: string | undefined): string {
   return timeZone ?? Intl.DateTimeFormat().resolvedOptions().timeZone ?? 'UTC';
 }
 
-/**
- * Park-local minutes since midnight, through the cached formatter since the now line ticks.
- * `hourCycle: 'h23'`, not `hour12: false`, which yields `24` for midnight in some runtimes.
- */
+/** Park-local minutes since midnight, off the park's wall clock (`parkWallClock`). */
 export function parkMinuteNow(timeZone: string, now: number = Date.now()): number {
-  const parts = getDateTimeFormat('en-GB', {
-    timeZone,
-    hour: '2-digit',
-    minute: '2-digit',
-    hourCycle: 'h23',
-  }).formatToParts(new Date(now));
-
-  const hour = Number(parts.find((p) => p.type === 'hour')?.value ?? '0');
-  const minute = Number(parts.find((p) => p.type === 'minute')?.value ?? '0');
+  const { hour, minute } = parkWallClock(now, timeZone);
   return hour * 60 + minute;
 }
 

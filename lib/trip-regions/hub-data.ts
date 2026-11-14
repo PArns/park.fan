@@ -1,4 +1,4 @@
-import { addDays, formatParkDay, formatParkDayRange } from '@/lib/utils/park-day';
+import { addDays, formatParkDay, formatParkDayRange, parkDayOf } from '@/lib/utils/park-day';
 import { getDateTimeFormat } from '@/lib/utils/intl-format';
 import { parkCalendarPath } from '@/lib/parks/calendar-segments';
 import { isSeasonEvent } from '@/lib/parks/park-season-days';
@@ -692,7 +692,7 @@ export function hubWindow(todayIso: string, range?: { from: string; to: string }
 
 /** A region's today, in its own zone, never the server's or the browser's. */
 export function tripRegionToday(region: string, nowMs: number): string {
-  return getDateTimeFormat('en-CA', { timeZone: requireTripRegion(region).timezone }).format(nowMs);
+  return parkDayOf(nowMs, requireTripRegion(region).timezone);
 }
 
 /** A resort's name without "Resort": "Walt Disney World", "Universal Orlando". */

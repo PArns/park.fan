@@ -2,8 +2,13 @@ import { getTranslations } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { MapPin } from 'lucide-react';
 import type { Metadata } from 'next';
-import { generateAlternateLanguages, SITE_URL } from '@/i18n/config';
-import { buildOpenGraphMetadata, fitWithin, MAX_TITLE_LENGTH } from '@/lib/utils/metadata';
+import { SITE_URL } from '@/i18n/config';
+import {
+  buildOpenGraphMetadata,
+  fitWithin,
+  MAX_TITLE_LENGTH,
+  buildAlternates,
+} from '@/lib/utils/metadata';
 import { isServableRoute } from '@/lib/utils/route-guards';
 import { translateCountry } from '@/lib/i18n/helpers';
 import { getGeoStructure } from '@/lib/api/discovery';
@@ -62,13 +67,7 @@ export async function brandPageMetadata(
       url: `${SITE_URL}/${locale}${path}`,
       ogImageUrl: getOgImageUrl([locale, 'parks']),
     }),
-    alternates: {
-      canonical: `${SITE_URL}/${locale}${path}`,
-      languages: {
-        ...generateAlternateLanguages((l) => `/${l}${path}`),
-        'x-default': `${SITE_URL}/en${path}`,
-      },
-    },
+    alternates: buildAlternates(locale, () => path),
   };
 }
 

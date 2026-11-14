@@ -269,7 +269,7 @@ How wide the desktop panel is, as an external store rather than component state:
 - `parkToday` _function_: `YYYY-MM-DD` in the park's own reading. `en-CA` formats exactly that way; an ISO string would give UTC's date.
 - `todayInZone` _function_: Today in the park's reckoning where the zone is known, in the reader's where it is not, because the zone reaches the plan late. The reader's zone is a better wrong answer than UTC.
 - `resolveTimeZone` _function_: The park's zone where known, the reader's otherwise, for callers that need a zone string, such as the now line and the grid's clock.
-- `parkMinuteNow` _function_: Park-local minutes since midnight, through the cached formatter since the now line ticks. `hourCycle: 'h23'`, not `hour12: false`, which yields `24` for midnight in some runtimes.
+- `parkMinuteNow` _function_: Park-local minutes since midnight, off the park's wall clock (`parkWallClock`).
 - `formatGridTime` _function_: Minutes since park-local midnight as `10:30`. Takes minutes, never a `Date`, so the reader's zone cannot enter. Past midnight folds back: 25:00 labels as `01:00`.
 - `formatGridHours` _function_: A day's hours as short as a phone cell needs, on the same 24-hour clock as `formatGridTime`: `09–21`, `08:30–18`, with midnight as `24` rather than `00`. Two digits, so it does not read as a range of dates.
 - `longDate` _function_: `Donnerstag, 17. September`: the day a plan is filed under, in the reader's language, through `formatParkDay`, so no zone moves it. Shared, so the wizard and the fit assistant cannot name different days.

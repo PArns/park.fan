@@ -263,7 +263,9 @@ Cached `Intl` formatter factories. Constructing a formatter costs far more than 
 - `oneFullStop` _function_: A date that ends a sentence on its abbreviation („16. Nov.“, „7–16 sept.“) prints two full stops with the sentence's own; one stays. Run it on each candidate before `fitWithin`, so the length is the printed one.
 - `fitWithin` _function_: Picks the first candidate that fits, else the shortest; never truncates mid-word. Pass candidates richest-first. When even the shortest overruns, it still wins: a clipped bare name costs less than a clipped template.
 - `fitSentences` _function_: A description of at most `limit` characters cut from running text: as many whole sentences as fit, else the first sentence cut at a word boundary with an ellipsis, so a snippet never ends mid-clause.
-- `buildOpenGraphMetadata` _function_: Builds the openGraph and twitter metadata that are the same on every page.
+- `buildOpenGraphMetadata` _function_: Builds the openGraph and twitter metadata that are the same on every page. `type` is the page's Open Graph type; a post adds its `article` facts.
+- `alternateLanguages` _function_: The hreflang set of a page: the absolute URL in every locale `pathFor` names a path for (the path after the locale, `''` for the locale's home), in the order of `locales`, then `x-default` on the English one.
+- `buildAlternates` _function_: `alternates` of a page that exists in every locale: its canonical in `locale` and the hreflang set (`alternateLanguages`), both from one `pathFor`, so the two cannot disagree.
 - `MAX_TITLE_LENGTH` _const_: Google truncates the SERP title around 60 characters, and a keyword past that disappears behind an ellipsis. Templates fit typical names; a long name pushes them over on its own.
 - `MAX_DESCRIPTION_LENGTH` _const_: Google's snippet length, past which the description is cut.
 
@@ -351,11 +353,15 @@ When the nowcast says it is time to go under a roof: the trigger for the covered
 ### [`park-day.ts`](../../lib/utils/park-day.ts)
 
 - `parkDayOf` _function_: The calendar day an instant falls on in the park's zone, as `YYYY-MM-DD` (what `ScheduleItem.date` and `CalendarDay.date` carry, and what compares correctly as a string).
+- `parkWallClock` _function_: An instant on the wall clock of `timeZone`, read once through the cached `en-CA` formatter: every place that needs a park's local day and time (the planner's now line, the Week view's blocks, the calendar file, the nowcast and the charts) …
+- `parkLocalIso` _function_: An instant as a naive park-local ISO, `YYYY-MM-DDTHH:MM`: the shape of the API's weather step times, which the nowcast and the hourly chart compare against as strings.
+- `monthLength` _function_: The days of a month (`month` 1–12), leap years included: day 0 of the next one is its last.
 - `addDays` _function_: `YYYY-MM-DD` plus `days`, calendar-safe: noon UTC on a plain date, so no zone or DST moves it.
 - `daysBetween` _function_: Whole calendar days from `from` to `to`, negative where `to` is earlier: a count of nights, from noon UTC on both sides, so the difference is whole by construction.
 - `weeksUntil` _function_: Whole weeks to a moment `days` away, rounded up: „in 19 Wochen" in „Heute im Park" and on the break panel under it, which must not name two numbers for one date.
 - `formatParkDay` _function_: A park-local `YYYY-MM-DD` as a written date in `locale`. Anchored at noon UTC and formatted in UTC, so no zone moves the day; long month and year unless `options` says otherwise.
 - `formatParkDayRange` _function_: Two park-local days as one range in `locale`'s own shape: „16.–27. November 2026", „4. Januar – 25. März 2027", one date where both are the same day.
+- Types: `ParkWallClock`
 
 ### [`park-utils.ts`](../../lib/utils/park-utils.ts)
 

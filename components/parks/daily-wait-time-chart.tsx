@@ -9,6 +9,7 @@ import { GlossaryTermLink } from '@/components/glossary/glossary-term-link';
 import { Tooltip, TooltipTrigger, TooltipContent } from '@/components/ui/tooltip';
 import { cn } from '@/lib/utils';
 import { getDateTimeFormat } from '@/lib/utils/intl-format';
+import { parkWallClock } from '@/lib/utils/park-day';
 import { CROWD_DOT_CLASS, waitTimeCrowdTier } from '@/lib/utils/crowd-level-styles';
 
 type SlotType = 'past' | 'current' | 'forecast';
@@ -82,17 +83,9 @@ function formatSlotTime(hhmm: string, locale: string, timeSuffix: string): strin
 }
 
 function getCurrentTimeSlotInTimezone(timezone: string): string {
-  const parts = getDateTimeFormat('en', {
-    hour: 'numeric',
-    minute: 'numeric',
-    hour12: false,
-    hourCycle: 'h23',
-    timeZone: timezone,
-  }).formatToParts(new Date());
-  const hour = parts.find((p) => p.type === 'hour')?.value || '00';
-  const minute = parts.find((p) => p.type === 'minute')?.value || '00';
-  const roundedMinute = Math.floor(parseInt(minute, 10) / 15) * 15;
-  return `${hour.padStart(2, '0')}:${roundedMinute.toString().padStart(2, '0')}`;
+  const { hour, minute } = parkWallClock(Date.now(), timezone);
+  const roundedMinute = Math.floor(minute / 15) * 15;
+  return `${String(hour).padStart(2, '0')}:${String(roundedMinute).padStart(2, '0')}`;
 }
 
 /**

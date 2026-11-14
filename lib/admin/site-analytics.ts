@@ -994,7 +994,7 @@ export const EVENT_INFO: Record<SiteEventName, EventInfo> = {
   },
   trip_undo: {
     label: 'Änderung zurückgenommen',
-    when: '„Rückgängig“ im Statusband über dem Plan oder an Parkys Karte im Chat; mit der Art der Änderung (Pin, Tausch, Verschieben, freier Tag, Park entfernt, Park dazu, alle gelöst, Idee).',
+    when: '„Rückgängig“ im Statusband über dem Plan oder an Parkys Karte im Chat; mit der Art der Änderung (Pin, Tausch, Verschieben, freier Tag, Park entfernt, Park dazu, alle gelöst, Idee, Parkys Änderung im Chat).',
   },
   trip_idea_shown: {
     label: 'Parkys Idee gezeigt',

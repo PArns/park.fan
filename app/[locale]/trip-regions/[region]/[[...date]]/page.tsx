@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import { generateAlternateLanguages, isValidLocale, SITE_URL } from '@/i18n/config';
+import { isValidLocale, SITE_URL } from '@/i18n/config';
 import { RouteMessages } from '@/i18n/route-messages';
 import { catchNonFatal } from '@/lib/api/client';
 import { withSeedTimeout } from '@/lib/api/seed-timeout';
@@ -11,6 +11,7 @@ import {
   MAX_DESCRIPTION_LENGTH,
   MAX_TITLE_LENGTH,
   oneFullStop,
+  buildAlternates,
 } from '@/lib/utils/metadata';
 import { getOgImageUrl } from '@/lib/utils/og-image';
 import { getListFormat } from '@/lib/utils/intl-format';
@@ -155,13 +156,7 @@ export async function generateMetadata({
     title,
     description,
     ...(hasQuery ? { robots: { index: false, follow: true } } : {}),
-    alternates: {
-      canonical,
-      languages: {
-        ...generateAlternateLanguages((l) => `/${l}${pathIn(l)}`),
-        'x-default': `${SITE_URL}/en${pathIn('en')}`,
-      },
-    },
+    alternates: buildAlternates(locale, pathIn),
     ...buildOpenGraphMetadata({
       title,
       description,

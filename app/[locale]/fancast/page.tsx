@@ -1,10 +1,6 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import {
-  locales,
-  generateAlternateLanguages,
-  localeToOpenGraphLocale,
-  SITE_URL,
-} from '@/i18n/config';
+import { SITE_URL } from '@/i18n/config';
+import { buildAlternates, buildOpenGraphMetadata } from '@/lib/utils/metadata';
 import { routing, type Locale } from '@/i18n/routing';
 import type { Metadata } from 'next';
 import { getOgImageUrl } from '@/lib/utils/og-image';
@@ -111,36 +107,15 @@ export async function generateMetadata({ params }: FancastPageProps): Promise<Me
   return {
     title: { absolute: fullTitle },
     description: t('description'),
-    openGraph: {
+    ...buildOpenGraphMetadata({
+      locale,
       title: fullTitle,
       description: t('description'),
-      locale: localeToOpenGraphLocale[locale as keyof typeof localeToOpenGraphLocale],
-      alternateLocale: locales.filter((l) => l !== locale).map((l) => localeToOpenGraphLocale[l]),
       url: `${SITE_URL}/${locale}/fancast`,
-      siteName: 'park.fan',
+      ogImageUrl,
       type: 'article',
-      images: [
-        {
-          url: ogImageUrl,
-          width: 1200,
-          height: 630,
-          alt: fullTitle,
-        },
-      ],
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: fullTitle,
-      description: t('description'),
-      images: [ogImageUrl],
-    },
-    alternates: {
-      canonical: `${SITE_URL}/${locale}/fancast`,
-      languages: {
-        ...generateAlternateLanguages((l) => `/${l}/fancast`),
-        'x-default': `${SITE_URL}/en/fancast`,
-      },
-    },
+    }),
+    alternates: buildAlternates(locale, () => '/fancast'),
     robots: {
       index: true,
       follow: true,

@@ -17,8 +17,9 @@ import { useIdeaWords } from './plan-ideas';
  * The band over the answer after an edit (`role="status"`, so it is read out): what changed, in
  * words („Tokyo DisneySea liegt jetzt am Mi., 20. Jan.“), that the pinned days stay, and the peak
  * wait now, or what the pins cost against the best order without them. „Rückgängig“ takes back
- * every edit in turn (`usePlanState`), „Alle lösen“ releases every pin as one more edit. With pins
- * from a link and no edit yet it says what the pins cost.
+ * every edit in turn (`usePlanState`), „Alle lösen“ releases every pin as one more edit. A change
+ * Parky made in the chat is one of them („Parky hat die Reisedaten geändert.“). With pins from a
+ * link and no edit yet it says what the pins cost.
  */
 export function PlanEditStatus({
   plan,
@@ -75,6 +76,8 @@ export function PlanEditStatus({
         return t('edit.released');
       case 'idea':
         return t('ideas.applied', { idea: idea.title(c.idea) });
+      case 'parky':
+        return t('edit.byParky', { change: c.changes[0] ?? 'other' });
     }
   };
 

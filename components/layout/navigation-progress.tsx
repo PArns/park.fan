@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { usePathname, useSearchParams } from 'next/navigation';
 import { onHistoryNavigation } from '@/lib/navigation/history-navigation';
+import { isPlainPrimaryClick } from '@/lib/utils/plain-click';
 
 /**
  * Thin top-of-viewport progress bar for client-side navigations, so a click feels acknowledged
@@ -72,16 +73,7 @@ export function NavigationProgress() {
   // START — same-origin link clicks + programmatic navigations (router.push patches pushState).
   useEffect(() => {
     const onClick = (e: MouseEvent) => {
-      if (
-        e.defaultPrevented ||
-        e.button !== 0 ||
-        e.metaKey ||
-        e.ctrlKey ||
-        e.shiftKey ||
-        e.altKey
-      ) {
-        return;
-      }
+      if (!isPlainPrimaryClick(e)) return;
       const anchor = (e.target as HTMLElement | null)?.closest('a');
       if (!anchor) return;
       const target = anchor.getAttribute('target');

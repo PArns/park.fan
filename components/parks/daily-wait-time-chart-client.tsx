@@ -3,8 +3,7 @@
 import { useMemo } from 'react';
 import { useMounted } from '@/lib/hooks/use-mounted';
 import { useRideDayCurve } from '@/lib/hooks/use-ride-day-curve';
-import { getDateTimeFormat } from '@/lib/utils/intl-format';
-import { parkDayOf } from '@/lib/utils/park-day';
+import { parkDayOf, parkWallClock } from '@/lib/utils/park-day';
 import { dailyChartWindow } from '@/lib/parks/daily-chart-window';
 import type {
   AttractionHistoryDay,
@@ -52,17 +51,7 @@ interface DailyWaitTimeChartClientProps {
 
 /** The `HH:mm` of an ISO time in the given IANA timezone. */
 function getTimeSlotInTimezone(isoStr: string, timezone: string): string {
-  const date = new Date(isoStr);
-  const parts = getDateTimeFormat('en', {
-    hour: 'numeric',
-    minute: 'numeric',
-    hour12: false,
-    hourCycle: 'h23',
-    timeZone: timezone,
-  }).formatToParts(date);
-  const hour = parts.find((p) => p.type === 'hour')?.value || '00';
-  const minute = parts.find((p) => p.type === 'minute')?.value || '00';
-  return `${hour.padStart(2, '0')}:${minute.padStart(2, '0')}`;
+  return parkWallClock(isoStr, timezone).time;
 }
 
 /**

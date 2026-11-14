@@ -464,7 +464,6 @@
       "stayingAt": "Hotel",
       "minutes": "{minutes} min",
       "noForecast": "open, no forecast",
-      "noHours": "No hours published yet",
       "closedFor": "Closed: {name}",
       "lastYear": "Last year’s figure: the same weekday, as we measured it.",
       "outlook": "Outlook: a wider error than the forecast.",
@@ -472,7 +471,6 @@
       "eveningEvent": "Evening event",
       "shorterDay": "Shorter day: day guests leave at {leave}",
       "extendedEvening": "Extended Evening Hours until {time} for deluxe hotel guests",
-      "expected": "dates expected",
       "travel": "From {area}: about {minutes} min {mode, select, drive {by car, without traffic} walk {on foot} train {by train} rail {by train} shinkansen {by Shinkansen} metro {by metro} bus {by bus} highway_bus {by coach} shuttle {by shuttle} monorail {by monorail} skyliner {by Skyliner} boat {by boat} other {}}",
       "bigRides": "The big rides",
       "ridesLoading": "Loading the rides …",
@@ -765,6 +763,7 @@
       "summerOnly": "Summer only",
       "offSeason": "Off-season",
       "onlyDuring": "Only during {season}",
+      "pausedDuring": "Paused during {season}",
       "winter": "Winter",
       "summer": "Summer"
     },
@@ -3217,7 +3216,6 @@
       "until": "until {date}",
       "since": "from {date}",
       "wholeMonth": "all month",
-      "expected": "dates expected",
       "modeLabel": "Best park",
       "modeAll": "Overall",
       "picksLegendAll": "Under each date, the park with the shortest peak wait.",
@@ -3417,7 +3415,6 @@
       "travel": "Travel day"
     },
     "marker": {
-      "closesAt": "closes {time}",
       "closesEarly": "closes early",
       "early": {
         "early_entry": "Early Entry",
@@ -3575,6 +3572,7 @@
       "removed": "{park} is no longer part of the trip.",
       "released": "No day is pinned any more. The plan picks the order again.",
       "undone": "The last change is undone.",
+      "byParky": "{change, select, dates {Parky changed the trip dates.} parks {Parky changed the parks.} pin {Parky pinned a day.} swap {Parky swapped two days.} rest {Parky changed the rest days.} tickets {Parky added your tickets.} hotel {Parky added your hotel.} pace {Parky changed the pace.} route {Parky changed the route.} buffer {Parky set the time for the hotel move.} other {Parky changed the plan.}}",
       "peakNow": "Peak wait on your days now about {minutes} min.",
       "sheet": {
         "swap": "Swap with another day",
@@ -4066,7 +4064,8 @@
       "chat": "In the chat",
       "ask": "What do you think of this idea for my plan: {idea}?",
       "applied": "In the plan: {idea}.",
-      "inPlan": "Add to the plan"
+      "inPlan": "Add to the plan",
+      "otherDay": "Another day"
     }
   },
   "tripRegions": {
@@ -4904,13 +4903,6 @@
             "park_hotel": "Park hotel at Fuji-Q or LEGOLAND",
             "offsite": "Somewhere else"
           },
-          "hotelHint": {
-            "disney": "Happy Entry at Tokyo Disneyland, 15 minutes early, not on the day you check in",
-            "disney_deluxe": "Happy Entry at both Disney parks, not on the day you check in",
-            "universal": "A few minutes' walk to the gate",
-            "park_hotel": "Highland Resort by Fuji-Q or LEGOLAND Japan Hotel by the gate; Fuji-Q sells early entry itself, as the One Day Pass with Priority Admission",
-            "offsite": "No early entry"
-          },
           "eveningsHint": "Where a park closes early, the plan suggests IKSPIARI by the Disney parks or Universal CityWalk Osaka for the evening.",
           "moveBufferHint": "With your bags sent ahead (takkyubin), 30 minutes is usually enough."
         },
@@ -5214,11 +5206,6 @@
             "disney": "Disney hotel",
             "parc_asterix": "Parc Astérix hotel",
             "offsite": "Another hotel"
-          },
-          "hotelHint": {
-            "disney": "Extra Magic Time, usually an hour before opening at both Disney parks; Davy Crockett Ranch included",
-            "parc_asterix": "Early Entry: some rides 30 minutes early",
-            "offsite": "Partner hotels and central Paris included; no early entry"
           },
           "eveningsHint": "When a park closes early, the evening goes to the other Disney park or to Disney Village.",
           "moveBufferHint": "With your suitcases in tow, 60 minutes is realistic."

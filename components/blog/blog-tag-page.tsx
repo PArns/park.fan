@@ -3,7 +3,8 @@ import { notFound, permanentRedirect } from 'next/navigation';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { Tag } from 'lucide-react';
 import { routing, type Locale } from '@/i18n/routing';
-import { localeToOpenGraphLocale, SITE_URL } from '@/i18n/config';
+import { SITE_URL } from '@/i18n/config';
+import { buildOpenGraphMetadata } from '@/lib/utils/metadata';
 import { listArticles, hasPublishedPosts } from '@/lib/blog/listing';
 import {
   buildTagAlternates,
@@ -61,16 +62,14 @@ export async function buildTagMetadata(
             googleBot: { index: false, follow: true },
           },
         }),
-    openGraph: {
+    ...buildOpenGraphMetadata({
+      locale,
       title: fullTitle,
       description,
-      locale: localeToOpenGraphLocale[locale as Locale],
       url,
-      siteName: 'park.fan',
-      type: 'website',
-      images: [{ url: ogImageUrl, width: 1200, height: 630, alt: fullTitle }],
-    },
-    twitter: { card: 'summary_large_image', title: fullTitle, description, images: [ogImageUrl] },
+      ogImageUrl,
+      alternateLocale: false,
+    }),
     alternates: {
       canonical: url,
       // Tag slugs are translated ("wartezeiten" / "wait-times"), so buildTagAlternates resolves

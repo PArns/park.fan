@@ -22,6 +22,7 @@ import {
   resolveTimeZone,
   todayInZone,
 } from '../lib/planner/park-time.ts';
+import { parkLocalIso, parkWallClock } from '../lib/utils/park-day.ts';
 
 const cases = [];
 const test = (name, actual, expected) => cases.push({ name, actual, expected });
@@ -53,6 +54,27 @@ test(
   'midnight is zero, not 1440',
   parkMinuteNow('Europe/Berlin', Date.parse('2026-09-01T22:00:00Z')),
   0
+);
+
+// ── The wall clock every reader shares (`parkWallClock`, `parkLocalIso`) ─────
+test(
+  'midnight in Orlando is the new day at 00:00, never 24:00 of the old one',
+  JSON.stringify(parkWallClock(Date.parse('2026-09-03T04:00:00Z'), 'America/New_York')),
+  JSON.stringify({
+    date: '2026-09-03',
+    time: '00:00',
+    year: 2026,
+    month: 9,
+    day: 3,
+    hour: 0,
+    minute: 0,
+    second: 0,
+  })
+);
+test(
+  'a naive park-local ISO, the shape of the weather steps',
+  parkLocalIso('2026-09-02T16:05:09Z', 'Asia/Tokyo'),
+  '2026-09-03T01:05'
 );
 
 // ── DST ──────────────────────────────────────────────────────────────────────

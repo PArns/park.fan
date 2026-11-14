@@ -457,6 +457,7 @@ Whether a region's hub shows a plan: the hub has two states (docs/features/orlan
 - `moveVisit` _function_: Put the park of `day` on `date` instead: pinned there, so the re-plan keeps it and moves only the rest. A pin on its old day goes with it, and one on `date` gives way. `null` for a day without a park, or the same date.
 - `freeDay` _function_: Make a park day free: `rest` pinned on it, so the re-plan finds the park another day if it has one to give, and leaves this one empty. `null` for a day without a park.
 - `removePark` _function_: Take a park out of the trip: out of `parks` (the untouched default becoming a list), its pins with it, so its days go back to the plan. `null` where it is the last park the trip has.
+- `editGlowDays` _function_: The days an edit put something else on, which glow once on screen (`PlanDayGlow`): both days of a swap, the day a park left and the one it went to, a day made free, a park put on a free day, and the days an idea changes.
 - `swapChange` _function_: The swap of two days as an edit: what was on `a` is now on `b`'s date, and the other way round.
 - `addedByEdit` _function_: The park and day an edit just put into the plan, whose card reads „neu“: a park put on a free day, or an idea that places a park.
 - `isSpareDay` _function_: Whether a day is free: a rest day the API marks `spare`, which nobody asked for. A rest day the visitor's rest rule set or pinned stays a rest day.
@@ -472,6 +473,7 @@ Whether a region's hub shows a plan: the hub has two states (docs/features/orlan
 ### [`planner-bridge.ts`](../../lib/trip-regions/planner-bridge.ts)
 
 - `connectPlannerBridge` _function_: Publish the planner's state and how to set it; returns the disconnect. Called on every change of the state, which also remembers the trip once it holds dates or a search.
+- `connectPlannerSwap` _function_: Connect the result's swap mode for `region`, which the chat's idea card opens through `tripPlannerBridge.openSwap`; returns the disconnect.
 - `tripPlannerBridge` _const_: The planner on screen, and how Parky changes it.
 - Types: `PlannerEdits`
 

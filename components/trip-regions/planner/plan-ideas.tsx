@@ -118,6 +118,7 @@ function useIdea(idea: PlanIdea, place: TripIdeaPlace) {
               apply: t('ideas.inPlan'),
               applied: oneFullStop(t('ideas.applied', { idea: title })),
               undo: t('edit.undo'),
+              otherDay: t('ideas.otherDay'),
             });
           }
         : null,

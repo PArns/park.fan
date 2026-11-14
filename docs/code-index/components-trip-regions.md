@@ -161,6 +161,12 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `PlanDayCard` _component_: A park day as a card, the Days view's unit in every region: the park's photo with the date, its crowd level (`CrowdLevelBadge`) and, for a repeat, which visit it is; under it the peak wait, the way from the hotel, two sentences on why this …
 
+### [`planner/plan-day-glow.tsx`](../../components/trip-regions/planner/plan-day-glow.tsx)
+
+- `PlanDayGlow` _component_: A brief ring over a day the last edit moved or an idea changed (`.plan-day-glow`): it rises and fades, or only fades under reduced motion. The parent is `relative` and keeps its rounding; the ring takes no press.
+- `usePlanGlow` _hook_: The glow of the last edit or undo (`editGlowDays`), once the plan it asked for is on screen: while the result waits for the new plan the old days would glow, so nothing does.
+- `PlanGlowProvider` _const_: Provides the result's `usePlanGlow` to the days of every view.
+
 ### [`planner/plan-day-sheet.tsx`](../../components/trip-regions/planner/plan-day-sheet.tsx)
 
 - `PlanDaySheet` _component_: Level 2: everything about one day, on a press in any view. A bottom sheet on a phone, a panel at the right edge at a desk.

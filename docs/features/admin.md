@@ -488,8 +488,10 @@ the kinds and statuses are the site's types (`lib/api/types.ts`).
 - **The form has every field the API takes**: park (new seasons only; a season keeps its park),
   kind, status, name, range, hours (`type="time"`, a midnight close is 00:00), the picked days, an
   own ticket, price and currency, the rides it concerns (`MultiSearchSelect` over the park's rides,
-  retired ones too, so a season that names one still shows its name), the park's page, the source,
-  when the source was last checked (`confirmedAt`, with „Jetzt“) and a note.
+  retired ones too, so a season that names one still shows its name), for a kind that binds rides
+  also „Pausiert während der Saison“ (`pausedAttractionIds`, the same picker), the park's page,
+  the source, when the source was last checked (`confirmedAt`, with „Jetzt“) and a note. A ride in
+  both lists is named at the second one before the API refuses it (`ridesInBothLists`).
 - **The picked days** are shown in `DayCalendar` (`_ui/day-calendar.tsx`): every month of the
   range at once, up to three side by side as the dialog's width allows, small cells, a picked day
   a filled `primary/20` pill, the padding days of a month blank, so no day shows twice. The grids
@@ -510,6 +512,16 @@ the kinds and statuses are the site's types (`lib/api/types.ts`).
 - **Delete** asks a second time in the form, naming what goes, since no undo covers it (the audit
   row keeps the whole season). Below `editor` the form is read-only (a disabled `fieldset`, no
   buttons) and the days stand as text.
+- **A ride's own page binds it** (`SeasonBindings`, under the „Saison“ tab of its curated fields,
+  through `CuratedFieldsPanel`'s `groupExtras`): the running and coming seasons of its park that
+  bind (`bindableSeasons`: the event kinds, not cancelled), each with `SeasonSummary`, its status
+  and „—“, „Nur während“ or „Nicht während“. A choice sends `PATCH seasons/:id` with the list it
+  changes (`seasonRidePatch`): the ride in `attractionIds` or `pausedAttractionIds` and out of the
+  other, the same lists the form's pickers edit. The season's name opens the form. A ride's curated
+  months or curated „Nein“ outrank every season (the API's `resolveCuratedFacts`), so a bound ride
+  with either says so in a notice with the button that clears it. Below `editor` the choice is
+  shown, not offered. The park's ride list names a ride's `boundSeason` and `pausedBySeason` under
+  its facts with the same `SeasonSummary`, once the list's endpoint sends them.
 
 ## The ticket catalog: `/admin/tickets`
 

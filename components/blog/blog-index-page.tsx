@@ -2,9 +2,10 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { routing, type Locale } from '@/i18n/routing';
-import { locales, localeToOpenGraphLocale, SITE_URL } from '@/i18n/config';
+import { SITE_URL } from '@/i18n/config';
+import { buildOpenGraphMetadata, alternateLanguages } from '@/lib/utils/metadata';
 import { listArticles, hasPublishedPosts } from '@/lib/blog/listing';
-import { hasPage, listingAlternates, paginate, pagedPath, pagedTitle } from '@/lib/blog/pagination';
+import { hasPage, paginate, pagedPath, pagedTitle } from '@/lib/blog/pagination';
 import { BlogCategoryPills, BlogPostStream } from '@/components/blog/blog-post-stream';
 import { ListingPagination } from '@/components/blog/listing-pagination';
 import { ListingSearch } from '@/components/blog/listing-search';
@@ -56,25 +57,16 @@ export async function buildBlogIndexMetadata(locale: string, page: number): Prom
   return {
     title: { absolute: fullTitle },
     description: t('description'),
-    openGraph: {
+    ...buildOpenGraphMetadata({
+      locale,
       title: fullTitle,
       description: t('description'),
-      locale: localeToOpenGraphLocale[locale as Locale],
-      alternateLocale: locales.filter((l) => l !== locale).map((l) => localeToOpenGraphLocale[l]),
       url,
-      siteName: 'park.fan',
-      type: 'website',
-      images: [{ url: ogImageUrl, width: 1200, height: 630, alt: fullTitle }],
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: fullTitle,
-      description: t('description'),
-      images: [ogImageUrl],
-    },
+      ogImageUrl,
+    }),
     alternates: {
       canonical: url,
-      languages: listingAlternates((l) =>
+      languages: alternateLanguages((l) =>
         hasPage(listArticles(l).length, page) ? pagedPath(BLOG_INDEX_PATH, page) : null
       ),
       types: blogFeedAlternates(locale as Locale),

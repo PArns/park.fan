@@ -3,6 +3,7 @@ import { de } from 'date-fns/locale';
 import { isHttpUrl } from '@/lib/admin/provenance';
 import { isIsoDate } from '@/lib/utils/calendar-utils';
 import { addDays } from '@/lib/utils/park-day';
+import { isSeasonEvent } from '@/lib/parks/park-season-days';
 import type { ParkSeason, ParkSeasonKind, ParkSeasonStatus } from './types';
 
 /**
@@ -25,6 +26,11 @@ export const SEASON_KIND_LABELS: Record<ParkSeasonKind, string> = {
   closure: 'Schließzeit',
   maintenance: 'Wartung',
 };
+
+/** What a season is called on screen: its own name, else its kind's. */
+export function seasonTitle(season: Pick<ParkSeason, 'name' | 'kind'>): string {
+  return season.name || SEASON_KIND_LABELS[season.kind] || season.kind;
+}
 
 /** What each status is called on screen; `announced` is the API's default. */
 export const SEASON_STATUS_LABELS: Record<ParkSeasonStatus, string> = {
@@ -183,6 +189,82 @@ export function rangeDays(start: string, end: string): string[] {
   return days;
 }
 
+/* ------------------------------------------------------------------ the rides it binds */
+
+/**
+ * How a season holds a ride: not at all, only during it (`attractionIds`, a ride that exists only
+ * then: an ice rink, a maze) or paused during it (`pausedAttractionIds`, a ride that runs the rest
+ * of the year and closes for it). A ride is never in both lists of one season; the API refuses it.
+ */
+export type SeasonRideMode = 'none' | 'only' | 'paused';
+
+/** The list a write of each mode puts the ride into. */
+const RIDE_LISTS = { only: 'attractionIds', paused: 'pausedAttractionIds' } as const;
+
+/**
+ * A season's ride list as a write sends it: null for none, which the API stores as no list. The
+ * season form's two ride pickers and the ride page's switch all write through here.
+ */
+export function seasonRides(ids: readonly string[]): string[] | null {
+  return ids.length > 0 ? [...ids] : null;
+}
+
+/** Whether a list names a ride. The API stores the ids in lower case and compares them so. */
+function namesRide(ids: readonly string[] | null | undefined, rideId: string): boolean {
+  const id = rideId.toLowerCase();
+  return (ids ?? []).some((entry) => entry.toLowerCase() === id);
+}
+
+/** How a season holds a ride ({@link SeasonRideMode}). */
+export function seasonRideMode(
+  season: Pick<ParkSeason, 'attractionIds' | 'pausedAttractionIds'>,
+  rideId: string
+): SeasonRideMode {
+  if (namesRide(season.attractionIds, rideId)) return 'only';
+  if (namesRide(season.pausedAttractionIds, rideId)) return 'paused';
+  return 'none';
+}
+
+/**
+ * The `PATCH seasons/:id` body that sets how a season holds a ride: the ride in the list of `mode`
+ * and out of the other. Only a list that changes is sent, since the API replaces a list whole.
+ */
+export function seasonRidePatch(
+  season: Pick<ParkSeason, 'attractionIds' | 'pausedAttractionIds'>,
+  rideId: string,
+  mode: SeasonRideMode
+): SeasonWriteBody {
+  const id = rideId.toLowerCase();
+  const body: SeasonWriteBody = {};
+  for (const listMode of ['only', 'paused'] as const) {
+    const key = RIDE_LISTS[listMode];
+    const before = season[key] ?? [];
+    const wanted = mode === listMode;
+    if (namesRide(before, rideId) === wanted) continue;
+    const others = before.filter((entry) => entry.toLowerCase() !== id);
+    body[key] = seasonRides(wanted ? [...others, rideId] : others);
+  }
+  return body;
+}
+
+/** The rides one season names in both lists, which the API refuses. */
+export function ridesInBothLists(
+  draft: Pick<SeasonDraft, 'attractionIds' | 'pausedAttractionIds'>
+): string[] {
+  return draft.pausedAttractionIds.filter((id) => namesRide(draft.attractionIds, id));
+}
+
+/**
+ * The seasons of a park a ride can be bound to on the ride's page: those that bind at all (the
+ * event kinds, not cancelled: `isSeasonEvent`, the API's `seasonBindsAttraction`) and are running
+ * or still to come on `today`, the first to start first.
+ */
+export function bindableSeasons(seasons: readonly ParkSeason[], today: string): ParkSeason[] {
+  return seasons
+    .filter((season) => isSeasonEvent(season) && season.endDate >= today)
+    .sort((a, b) => a.startDate.localeCompare(b.startDate));
+}
+
 /* ------------------------------------------------------------------ the draft */
 
 /** One season as the form edits it: every field as typed, the texts as strings. */
@@ -203,6 +285,8 @@ export interface SeasonDraft {
   opensAt: string;
   closesAt: string;
   attractionIds: string[];
+  /** The rides that run the rest of the year and close for the season. */
+  pausedAttractionIds: string[];
   url: string;
   sourceUrl: string;
   /** ISO 8601, or empty. */
@@ -228,6 +312,7 @@ export function seasonDraft(season: ParkSeason | null, today: string): SeasonDra
     opensAt: season?.opensAt ?? '',
     closesAt: season?.closesAt ?? '',
     attractionIds: [...(season?.attractionIds ?? [])],
+    pausedAttractionIds: [...(season?.pausedAttractionIds ?? [])],
     url: season?.url ?? '',
     sourceUrl: season?.sourceUrl ?? '',
     confirmedAt: season?.confirmedAt ?? '',
@@ -269,7 +354,12 @@ export function seasonBody(draft: SeasonDraft): SeasonWriteBody {
     priceCurrency: price === null ? null : text(draft.priceCurrency.toUpperCase()),
     opensAt: text(draft.opensAt),
     closesAt: text(draft.closesAt),
-    attractionIds: draft.attractionIds.length > 0 ? draft.attractionIds : null,
+    attractionIds: seasonRides(draft.attractionIds),
+    // Only with rides in it, so a season without any saves against an API that does not know the
+    // list yet; `seasonPatch` sends the null that clears one.
+    ...(draft.pausedAttractionIds.length > 0 && {
+      pausedAttractionIds: seasonRides(draft.pausedAttractionIds),
+    }),
     url: text(draft.url),
     sourceUrl: text(draft.sourceUrl),
     confirmedAt: text(draft.confirmedAt),
@@ -285,8 +375,9 @@ export function seasonPatch(season: ParkSeason, draft: SeasonDraft): SeasonWrite
   const before = seasonBody(seasonDraft(season, season.startDate));
   const after = seasonBody(draft);
   const patch: SeasonWriteBody = {};
-  for (const key of Object.keys(after)) {
-    if (JSON.stringify(before[key]) !== JSON.stringify(after[key])) patch[key] = after[key];
+  for (const key of new Set([...Object.keys(before), ...Object.keys(after)])) {
+    const value = after[key] ?? null;
+    if (JSON.stringify(before[key] ?? null) !== JSON.stringify(value)) patch[key] = value;
   }
   return patch;
 }
@@ -354,6 +445,16 @@ export function seasonProblems(draft: SeasonDraft): Partial<Record<SeasonField, 
 
   set('url', urlProblem(draft.url));
   set('sourceUrl', urlProblem(draft.sourceUrl));
+
+  const both = ridesInBothLists(draft).length;
+  if (both > 0) {
+    set(
+      'pausedAttractionIds',
+      both === 1
+        ? 'Eine Bahn steht auch unter „Betrifft“: sie kann nicht nur während der Saison laufen und zugleich in ihr pausieren.'
+        : `${both} Bahnen stehen auch unter „Betrifft“: keine kann nur während der Saison laufen und zugleich in ihr pausieren.`
+    );
+  }
 
   if (draft.confirmedAt && Number.isNaN(Date.parse(draft.confirmedAt))) {
     set('confirmedAt', 'Kein Zeitpunkt.');

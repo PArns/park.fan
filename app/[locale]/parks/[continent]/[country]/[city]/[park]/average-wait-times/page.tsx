@@ -3,7 +3,7 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound, permanentRedirect } from 'next/navigation';
 import { CalendarDays, Clock, Zap } from 'lucide-react';
 
-import { generateAlternateLanguages, SITE_URL } from '@/i18n/config';
+import { SITE_URL } from '@/i18n/config';
 import type { Locale } from '@/i18n/config';
 import { LandingNextSteps } from '@/components/marketing/editorial-ui';
 import { RouteMessages } from '@/i18n/route-messages';
@@ -36,6 +36,7 @@ import {
   fitWithin,
   MAX_TITLE_LENGTH,
   MAX_DESCRIPTION_LENGTH,
+  buildAlternates,
 } from '@/lib/utils/metadata';
 import { getOgImageUrl } from '@/lib/utils/og-image';
 import { parkArgs } from '@/lib/i18n/park-phrase';
@@ -126,17 +127,10 @@ export async function generateMetadata({ params }: ParkStatsPageProps): Promise<
   return {
     title,
     description,
-    alternates: {
-      canonical,
-      // Each locale gets its OWN segment (`/de/…/durchschnittliche-wartezeiten`), not the
-      // canonical English folder — the localized URL is what the rewrite serves and what a reader
-      // sees. Same shape `app/sitemap.ts` writes for these URLs; a page and the sitemap
-      // disagreeing about x-default is an hreflang conflict.
-      languages: {
-        ...generateAlternateLanguages((l) => `/${l}${path(l)}`),
-        'x-default': `${SITE_URL}/en${path('en')}`,
-      },
-    },
+    // Each locale gets its OWN segment (`/de/…/durchschnittliche-wartezeiten`), not the
+    // canonical English folder — the localized URL is what the rewrite serves and what a reader
+    // sees.
+    alternates: buildAlternates(locale, path),
     ...buildOpenGraphMetadata({
       title,
       description,
