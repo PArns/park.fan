@@ -159,6 +159,14 @@ export function rankGroupParks(
     .map(({ park, day: d }) => ({ park, day: d }));
 }
 
+/**
+ * Whether a resort has a pick worth naming on a day: more than one of its parks has a figure. A
+ * resort with one (SeaWorld beside two parks nobody queues at) has nothing to choose between.
+ */
+export function resortHasChoice(day: TripCalendarDay, group: RegionGroup): boolean {
+  return group.parks.filter((p) => isRankable(day.parks[p.slug])).length > 1;
+}
+
 /** A resort's pick on a day, as the hub names it. */
 export interface ShortestLine {
   group: RegionGroup;

@@ -3109,10 +3109,10 @@
       "prevMonth": "Mese precedente",
       "nextMonth": "Mese successivo",
       "gridLabel": "Giorno di arrivo e di partenza",
-      "wait": "attesa più breve alle grandi attrazioni circa {minutes} min",
-      "waitLastYear": "l’anno scorso circa {minutes} min alle grandi attrazioni",
-      "legend": "Sotto ogni data: l’attesa più breve alle grandi attrazioni quel giorno, in minuti, nel parco con le code più corte. I parchi che chiudono prima non contano.",
-      "legendLastYear": "Le cifre in corsivo sono giorni misurati l’anno scorso.",
+      "level": "Affluenza: {level}",
+      "levelLastYear": "Affluenza l’anno scorso: {level}",
+      "legend": "Una data senza consiglio ha il colore dell’affluenza media dei grandi parchi.",
+      "legendLastYear": "Le date con il bordo tratteggiato mostrano l’affluenza misurata l’anno scorso.",
       "pickArrival": "Tocca il giorno di arrivo.",
       "pickDeparture": "Ora il giorno di partenza.",
       "dayCount": "{count, plural, =1 {1 giorno} other {# giorni}}",
@@ -3120,7 +3120,28 @@
       "arrivalParkHint": "Con un volo di primo mattino; altrimenti il giorno resta libero.",
       "departurePark": "Parco il giorno di partenza",
       "departureParkHint": "Con un volo serale.",
-      "maxLength": "Un viaggio dura al massimo {days} giorni."
+      "maxLength": "Un viaggio dura al massimo {days} giorni.",
+      "partyKey": "Serata di festa con biglietto a parte: i visitatori giornalieri escono prima",
+      "nyeKey": "San Silvestro",
+      "unpublishedKey": "Sottolineato a puntini: orari non ancora pubblicati",
+      "infoHint": "Indica una data o toccala: vedi quale parco conviene quel giorno, e perché.",
+      "ahead": "Davanti a {park}, con {minutes} min: lì i visitatori giornalieri devono uscire alle {time}.",
+      "party": "{park}: {name} dalle {time}, i visitatori giornalieri escono alle {leave}",
+      "partyUnnamed": "{park}: evento serale dalle {time}, i visitatori giornalieri escono alle {leave}",
+      "unpublished": "Orari non ancora pubblicati",
+      "nye": "San Silvestro",
+      "noPick": "Per questa data non c’è ancora un consiglio sul parco.",
+      "eventsTitle": "A {month}",
+      "nights": "{count, plural, =1 {# serata} other {# serate}}",
+      "until": "fino al {date}",
+      "since": "dal {date}",
+      "wholeMonth": "tutto il mese",
+      "expected": "date previste",
+      "modeLabel": "Parco migliore",
+      "modeAll": "Generale",
+      "picksLegendAll": "Sotto ogni data, il parco con l’attesa di picco più breve.",
+      "picksLegendResort": "Sotto ogni data, il parco {resort} con l’attesa di picco più breve.",
+      "overall": "Generale: {park}"
     },
     "find": {
       "modeLabel": "Come scegli le date",
@@ -3267,7 +3288,10 @@
       }
     },
     "month": {
-      "legend": "Due lettere per parco, colorate secondo quanto è affollato il giorno per quel parco; il numero è l’attesa alle grandi attrazioni in minuti."
+      "bandPark": "Aperto ai visitatori giornalieri, colorato secondo l’affluenza",
+      "bandHop": "La sera un secondo parco",
+      "bandVenue": "La sera fuori dai parchi",
+      "bandAxis": "Barra dalle {from} alle {to}"
     },
     "details": {
       "minutesCaption": "L’attesa alle grandi attrazioni nel momento più affollato, la cifra con cui il piano confronta i giorni. Il colore confronta il giorno con un giorno tipico di questo parco.",
@@ -3616,7 +3640,10 @@
     "parky": {
       "button": "Pianifica con Parky il tuo viaggio perfetto",
       "line": "Qualche domanda in chat, e ogni risposta arriva subito qui nel pianificatore."
-    }
+    },
+    "codeKey": "Parchi",
+    "crowdColour": "Colore: quanto è affollato il parco quel giorno, rispetto a un suo giorno normale.",
+    "peakWait": "attesa di picco di circa {minutes} min"
   },
   "tripRegions": {
     "orlando": {

@@ -3109,10 +3109,10 @@
       "prevMonth": "Mes anterior",
       "nextMonth": "Mes siguiente",
       "gridLabel": "Día de llegada y de salida",
-      "wait": "espera más corta en las grandes atracciones unos {minutes} min",
-      "waitLastYear": "el año pasado unos {minutes} min en las grandes atracciones",
-      "legend": "Debajo de cada fecha: la espera más corta en las grandes atracciones ese día, en minutos, en el parque con las colas más cortas. Los parques que cierran antes no cuentan.",
-      "legendLastYear": "Las cifras en cursiva son días medidos el año pasado.",
+      "level": "Afluencia: {level}",
+      "levelLastYear": "Afluencia el año pasado: {level}",
+      "legend": "Una fecha sin recomendación lleva el color de la afluencia media de los grandes parques.",
+      "legendLastYear": "Las fechas con borde discontinuo muestran la afluencia medida el año pasado.",
       "pickArrival": "Toca tu día de llegada.",
       "pickDeparture": "Ahora tu día de salida.",
       "dayCount": "{count, plural, =1 {1 día} other {# días}}",
@@ -3120,7 +3120,28 @@
       "arrivalParkHint": "Con un vuelo temprano; si no, el día queda libre.",
       "departurePark": "Parque el día de salida",
       "departureParkHint": "Con un vuelo de noche.",
-      "maxLength": "Un viaje dura como mucho {days} días."
+      "maxLength": "Un viaje dura como mucho {days} días.",
+      "partyKey": "Noche de fiesta con entrada aparte: los visitantes de día salen antes",
+      "nyeKey": "Nochevieja",
+      "unpublishedKey": "Subrayado de puntos: horario aún no publicado",
+      "infoHint": "Señala una fecha o tócala y verás qué parque conviene ese día y por qué.",
+      "ahead": "Por delante de {park}, con {minutes} min: allí los visitantes de día tienen que salir a las {time}.",
+      "party": "{park}: {name} desde las {time}, los visitantes de día salen a las {leave}",
+      "partyUnnamed": "{park}: evento nocturno desde las {time}, los visitantes de día salen a las {leave}",
+      "unpublished": "Horario aún no publicado",
+      "nye": "Nochevieja",
+      "noPick": "Todavía no hay recomendación de parque para esta fecha.",
+      "eventsTitle": "En {month}",
+      "nights": "{count, plural, =1 {# noche} other {# noches}}",
+      "until": "hasta el {date}",
+      "since": "desde el {date}",
+      "wholeMonth": "todo el mes",
+      "expected": "fechas previstas",
+      "modeLabel": "Mejor parque",
+      "modeAll": "General",
+      "picksLegendAll": "Bajo cada fecha, el parque con la espera punta más corta.",
+      "picksLegendResort": "Bajo cada fecha, el parque de {resort} con la espera punta más corta.",
+      "overall": "General: {park}"
     },
     "find": {
       "modeLabel": "Cómo eliges tus fechas",
@@ -3267,7 +3288,10 @@
       }
     },
     "month": {
-      "legend": "Dos letras por parque, coloreadas según lo lleno que esté el día para ese parque; el número es la espera en las grandes atracciones en minutos."
+      "bandPark": "Abierto a visitantes de día, con el color de la afluencia",
+      "bandHop": "Un segundo parque por la noche",
+      "bandVenue": "Noche fuera de los parques",
+      "bandAxis": "Barra de {from} a {to}"
     },
     "details": {
       "minutesCaption": "La espera en las grandes atracciones en su momento más lleno, la cifra con la que el plan compara los días. El color compara el día con un día normal de este parque.",
@@ -3616,7 +3640,10 @@
     "parky": {
       "button": "Planea con Parky tu viaje perfecto",
       "line": "Unas preguntas en el chat, y cada respuesta llega al momento aquí, al planificador."
-    }
+    },
+    "codeKey": "Parques",
+    "crowdColour": "Color: lo lleno que está el parque ese día, comparado con un día normal allí.",
+    "peakWait": "espera punta de unos {minutes} min"
   },
   "tripRegions": {
     "orlando": {

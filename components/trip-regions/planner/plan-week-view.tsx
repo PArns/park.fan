@@ -29,6 +29,7 @@ import {
   tripCanvas,
   tripColumnGrid,
   tripDaySpans,
+  TRIP_FALLBACK_CANVAS,
   weekPages,
   WEEK_COLUMNS_PHONE,
   WEEK_COLUMNS_WIDE,
@@ -43,9 +44,6 @@ import { usePlanContext } from './plan-context';
 import { PLAN_FOCUS } from './plan-controls';
 import { usePartyName } from './use-day-facts';
 import { useEveningName, useTicketDayLabel } from './plan-day-bits';
-
-/** A canvas for a trip whose calendar has no hours yet: a plain day, only so rest days have a column. */
-const FALLBACK_CANVAS: TripCanvas = { startMin: 8 * 60, endMin: 22 * 60 };
 
 /**
  * The Week view, the Outlook view of the trip: one column per day, up to a week a page (three on a
@@ -75,7 +73,7 @@ export function PlanWeekView({
     () => tripDaySpans(plan.days, calendar, timeZone),
     [plan.days, calendar, timeZone]
   );
-  const canvas = useMemo(() => tripCanvas(spans) ?? FALLBACK_CANVAS, [spans]);
+  const canvas = useMemo(() => tripCanvas(spans) ?? TRIP_FALLBACK_CANVAS, [spans]);
   const pages = useMemo(() => weekPages(spans, perPage), [spans, perPage]);
   const [page, setPage] = useState(0);
   const current = Math.min(page, pages.length - 1);
@@ -320,7 +318,7 @@ function WeekColumn({
               type="button"
               onClick={onOpen}
               data-plan-block={block.slug}
-              aria-label={`${weekday} ${date}: ${[name, ticketDay, minutes].filter(Boolean).join(', ')}`}
+              aria-label={`${weekday} ${date}: ${[name, ticketDay, wait != null ? t('peakWait', { minutes: wait }) : minutes].filter(Boolean).join(', ')}`}
               className={cn('absolute inset-x-0.5 rounded-md text-left', PLAN_FOCUS)}
               style={{ top, height: blockHeight }}
             >

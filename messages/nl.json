@@ -3109,10 +3109,10 @@
       "prevMonth": "Vorige maand",
       "nextMonth": "Volgende maand",
       "gridLabel": "Aankomst- en vertrekdag",
-      "wait": "kortste wachttijd bij de grote attracties ongeveer {minutes} min.",
-      "waitLastYear": "vorig jaar ongeveer {minutes} min. bij de grote attracties",
-      "legend": "Onder elke datum staat de kortste wachttijd bij de grote attracties, in minuten, in het park met de kortste rijen. Parken die vroeg sluiten tellen niet mee.",
-      "legendLastYear": "Cijfers in cursief zijn gemeten dagen van vorig jaar.",
+      "level": "Drukte: {level}",
+      "levelLastYear": "Drukte vorig jaar: {level}",
+      "legend": "Een datum zonder tip is gekleurd naar de gemiddelde drukte in de grote parken.",
+      "legendLastYear": "Datums met een gestippelde rand tonen de gemeten drukte van vorig jaar.",
       "pickArrival": "Tik op je aankomstdag.",
       "pickDeparture": "Nu je vertrekdag.",
       "dayCount": "{count, plural, =1 {1 dag} other {# dagen}}",
@@ -3120,7 +3120,28 @@
       "arrivalParkHint": "Bij een vroege vlucht; anders blijft de dag vrij.",
       "departurePark": "Park op de vertrekdag",
       "departureParkHint": "Bij een avondvlucht.",
-      "maxLength": "Een reis duurt hoogstens {days} dagen."
+      "maxLength": "Een reis duurt hoogstens {days} dagen.",
+      "partyKey": "Feestavond met eigen ticket: dagbezoekers vertrekken eerder",
+      "nyeKey": "Oudejaarsavond",
+      "unpublishedKey": "Gestippeld onderstreept: openingstijden nog niet gepubliceerd",
+      "infoHint": "Wijs een datum aan of tik erop, dan zie je welk park die dag het beste is en waarom.",
+      "ahead": "Voor {park} met {minutes} min: daar moeten dagbezoekers om {time} vertrekken.",
+      "party": "{park}: {name} vanaf {time}, dagbezoekers vertrekken om {leave}",
+      "partyUnnamed": "{park}: avondevenement vanaf {time}, dagbezoekers vertrekken om {leave}",
+      "unpublished": "Openingstijden nog niet gepubliceerd",
+      "nye": "Oudejaarsavond",
+      "noPick": "Voor deze datum is er nog geen parktip.",
+      "eventsTitle": "In {month}",
+      "nights": "{count, plural, =1 {# avond} other {# avonden}}",
+      "until": "tot {date}",
+      "since": "vanaf {date}",
+      "wholeMonth": "de hele maand",
+      "expected": "data verwacht",
+      "modeLabel": "Beste park",
+      "modeAll": "Totaal",
+      "picksLegendAll": "Onder elke datum staat het park met de kortste piekwachttijd.",
+      "picksLegendResort": "Onder elke datum staat het park van {resort} met de kortste piekwachttijd.",
+      "overall": "Totaal: {park}"
     },
     "find": {
       "modeLabel": "Hoe je je reisdata kiest",
@@ -3267,7 +3288,10 @@
       }
     },
     "month": {
-      "legend": "Twee letters per park, gekleurd naar hoe druk de dag voor dat park is; het getal is de wachttijd bij de grote attracties in minuten."
+      "bandPark": "Open voor dagbezoekers, gekleurd naar drukte",
+      "bandHop": "’s Avonds een tweede park",
+      "bandVenue": "’s Avonds buiten de parken",
+      "bandAxis": "Balk van {from} tot {to} uur"
     },
     "details": {
       "minutesCaption": "De wachttijd bij de grote attracties op het drukste moment; daarmee vergelijkt het plan de dagen. De kleur vergelijkt de dag met een gewone dag in dit park.",
@@ -3616,7 +3640,10 @@
     "parky": {
       "button": "Plan met Parky je perfecte reis",
       "line": "Een paar vragen in de chat, en elk antwoord komt meteen hier in de planner."
-    }
+    },
+    "codeKey": "Parken",
+    "crowdColour": "Kleur: hoe druk het park die dag is, vergeleken met een normale dag daar.",
+    "peakWait": "piekwachttijd ongeveer {minutes} min"
   },
   "tripRegions": {
     "orlando": {

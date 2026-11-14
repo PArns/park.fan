@@ -3109,10 +3109,10 @@
       "prevMonth": "Previous month",
       "nextMonth": "Next month",
       "gridLabel": "Arrival and departure day",
-      "wait": "shortest big-ride wait about {minutes} min",
-      "waitLastYear": "last year about {minutes} min at the big rides",
-      "legend": "Under each date: the shortest wait at the big rides that day, in minutes, at the park with the shortest lines. Parks that close early don’t count.",
-      "legendLastYear": "Figures in italics are last year’s measured days.",
+      "level": "Crowds: {level}",
+      "levelLastYear": "Crowds last year: {level}",
+      "legend": "A date without a tip is coloured by the big parks’ average crowd level.",
+      "legendLastYear": "Dates with a dashed border show last year’s measured crowds.",
       "pickArrival": "Tap your arrival day.",
       "pickDeparture": "Now your departure day.",
       "dayCount": "{count, plural, =1 {1 day} other {# days}}",
@@ -3120,7 +3120,28 @@
       "arrivalParkHint": "For an early flight; otherwise the day stays free.",
       "departurePark": "Park on departure day",
       "departureParkHint": "For an evening flight.",
-      "maxLength": "A trip can be up to {days} days long."
+      "maxLength": "A trip can be up to {days} days long.",
+      "partyKey": "Party night with its own ticket: day guests leave early",
+      "nyeKey": "New Year’s Eve",
+      "unpublishedKey": "Dotted underline: hours not published yet",
+      "infoHint": "Point at a date or tap it to see which park is best that day, and why.",
+      "ahead": "Ahead of {park} at {minutes} min: day guests there have to leave at {time}.",
+      "party": "{park}: {name} from {time}, day guests leave at {leave}",
+      "partyUnnamed": "{park}: evening event from {time}, day guests leave at {leave}",
+      "unpublished": "Hours not published yet",
+      "nye": "New Year’s Eve",
+      "noPick": "No park tip for this date yet.",
+      "eventsTitle": "In {month}",
+      "nights": "{count, plural, =1 {# night} other {# nights}}",
+      "until": "until {date}",
+      "since": "from {date}",
+      "wholeMonth": "all month",
+      "expected": "dates expected",
+      "modeLabel": "Best park",
+      "modeAll": "Overall",
+      "picksLegendAll": "Under each date, the park with the shortest peak wait.",
+      "picksLegendResort": "Under each date, the {resort} park with the shortest peak wait.",
+      "overall": "Overall: {park}"
     },
     "find": {
       "modeLabel": "How you choose your dates",
@@ -3267,7 +3288,10 @@
       }
     },
     "month": {
-      "legend": "Two letters per park, coloured by how busy the day is for that park; the number is the big rides’ wait in minutes."
+      "bandPark": "Open to day guests, coloured by crowds",
+      "bandHop": "A second park in the evening",
+      "bandVenue": "Evening outside the parks",
+      "bandAxis": "Bar from {from} to {to}"
     },
     "details": {
       "minutesCaption": "The big rides’ wait at their busiest, the figure the plan compares days by. The colour compares the day with this park’s typical day.",
@@ -3616,7 +3640,10 @@
     "parky": {
       "button": "Plan your perfect trip with Parky",
       "line": "A few questions in the chat, and each answer goes straight into this planner."
-    }
+    },
+    "codeKey": "Parks",
+    "crowdColour": "Colour: how busy the park is that day, compared with a normal day there.",
+    "peakWait": "peak wait about {minutes} min"
   },
   "tripRegions": {
     "orlando": {

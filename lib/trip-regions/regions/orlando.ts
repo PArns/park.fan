@@ -151,6 +151,12 @@ export const ORLANDO: TripRegionConfig = {
     },
   ],
   parkNameSuffixes: ['Orlando', 'Tampa Bay', 'Florida'],
+  parkShortNames: {
+    epcot: 'EPCOT',
+    'universal-studios-florida': 'Studios',
+    'universal-islands-of-adventure': 'IoA',
+    'universal-epic-universe': 'Epic',
+  },
   resortWords: { 'walt-disney-world': 'Disney', 'universal-orlando': 'Universal' },
   hotels: [
     { key: 'disney', area: 'disney' },

@@ -3109,10 +3109,10 @@
       "prevMonth": "Vorheriger Monat",
       "nextMonth": "Nächster Monat",
       "gridLabel": "An- und Abreisetag",
-      "wait": "kürzeste Wartezeit an den großen Bahnen etwa {minutes} Min.",
-      "waitLastYear": "im letzten Jahr etwa {minutes} Min. an den großen Bahnen",
-      "legend": "Unter jedem Datum steht die kürzeste Wartezeit an den großen Bahnen, in Minuten, im Park mit den kürzesten Warteschlangen. Früh schließende Parks zählen nicht.",
-      "legendLastYear": "Kursive Zahlen sind gemessene Tage aus dem letzten Jahr.",
+      "level": "Andrang: {level}",
+      "levelLastYear": "Andrang im letzten Jahr: {level}",
+      "legend": "Ein Datum ohne Tipp ist nach dem mittleren Andrang der großen Parks gefärbt.",
+      "legendLastYear": "Gestrichelt umrandete Daten zeigen den gemessenen Andrang des letzten Jahres.",
       "pickArrival": "Tippe auf deinen Anreisetag.",
       "pickDeparture": "Jetzt den Abreisetag.",
       "dayCount": "{count, plural, =1 {1 Tag} other {# Tage}}",
@@ -3120,7 +3120,28 @@
       "arrivalParkHint": "Bei einem frühen Flug; sonst bleibt der Tag frei.",
       "departurePark": "Park am Abreisetag",
       "departureParkHint": "Bei einem Abendflug.",
-      "maxLength": "Eine Reise darf bis zu {days} Tage lang sein."
+      "maxLength": "Eine Reise darf bis zu {days} Tage lang sein.",
+      "partyKey": "Party-Abend mit eigenem Ticket: Tagesgäste gehen früher",
+      "nyeKey": "Silvester",
+      "unpublishedKey": "Gepunktet unterstrichen: Öffnungszeiten noch nicht veröffentlicht",
+      "infoHint": "Zeig auf ein Datum oder tippe darauf, dann erfährst du, welcher Park an dem Tag am besten ist und warum.",
+      "ahead": "Vor {park} mit {minutes} Min.: Dort müssen Tagesgäste um {time} raus.",
+      "party": "{park}: {name} ab {time}, Tagesgäste gehen um {leave}",
+      "partyUnnamed": "{park}: Abend-Event ab {time}, Tagesgäste gehen um {leave}",
+      "unpublished": "Öffnungszeiten noch nicht veröffentlicht",
+      "nye": "Silvester",
+      "noPick": "Für dieses Datum gibt es noch keinen Parktipp.",
+      "eventsTitle": "Im {month}",
+      "nights": "{count, plural, =1 {# Abend} other {# Abende}}",
+      "until": "bis {date}",
+      "since": "ab {date}",
+      "wholeMonth": "den ganzen Monat",
+      "expected": "Termine erwartet",
+      "modeLabel": "Bester Park",
+      "modeAll": "Insgesamt",
+      "picksLegendAll": "Unter jedem Datum steht der Park mit der kürzesten Spitzenwartezeit.",
+      "picksLegendResort": "Unter jedem Datum steht der Park von {resort} mit der kürzesten Spitzenwartezeit.",
+      "overall": "Insgesamt: {park}"
     },
     "find": {
       "modeLabel": "Wie du die Reisedaten wählst",
@@ -3267,7 +3288,10 @@
       }
     },
     "month": {
-      "legend": "Zwei Buchstaben pro Park, gefärbt danach, wie voll der Tag für diesen Park ist; die Zahl ist die Wartezeit an den großen Bahnen in Minuten."
+      "bandPark": "Offen für Tagesgäste, gefärbt nach Andrang",
+      "bandHop": "Abends ein zweiter Park",
+      "bandVenue": "Abends außerhalb der Parks",
+      "bandAxis": "Leiste von {from} bis {to} Uhr"
     },
     "details": {
       "minutesCaption": "Die Wartezeit der großen Bahnen zur vollsten Zeit; danach vergleicht der Plan die Tage. Die Farbe vergleicht den Tag mit einem typischen Tag dieses Parks.",
@@ -3616,7 +3640,10 @@
     "parky": {
       "button": "Plane mit Parky deine perfekte Reise",
       "line": "Ein paar Fragen im Chat, und jede Antwort landet sofort hier im Planer."
-    }
+    },
+    "codeKey": "Parks",
+    "crowdColour": "Farbe: wie voll der Park an dem Tag ist, verglichen mit einem normalen Tag dort.",
+    "peakWait": "Spitzenwartezeit etwa {minutes} Min."
   },
   "tripRegions": {
     "orlando": {
