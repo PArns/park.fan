@@ -9,6 +9,11 @@ import { Button, buttonLinkProps } from '@/components/ui/button';
 import { useMenuBandOpened } from '@/components/layout/menu-band';
 import { MenuSectionHeading } from '@/components/layout/menu-section-heading';
 import { PlannerRegionArt } from '@/components/layout/planner-region-art';
+import {
+  REGION_CARD,
+  REGION_KICKER,
+  REGION_PILL as PILL,
+} from '@/components/trip-regions/region-card-classes';
 import { useBrowserNow } from '@/lib/hooks/use-mounted';
 import { usePlanDay } from '@/lib/hooks/use-plan-day';
 import { translateCountry } from '@/lib/i18n/helpers';
@@ -37,19 +42,30 @@ interface PlannerMenuPanelProps {
   parks: PlannerQuickStart[];
 }
 
-/** The band's buttons are the site's (`buttonVariants`), drawn as pills as in the draft. */
-const PILL = 'rounded-full font-semibold';
 /** The quiet pill over a picture: the outline button on a frosted ground. */
 const PILL_QUIET = `${PILL} border-border/60 bg-background/75 hover:border-primary backdrop-blur-sm dark:bg-background/75`;
 
-/** Columns of the region row from two regions on: one each up to four, then rows of four. */
-const REGION_COLUMNS: Record<number, string> = { 2: 'grid-cols-2', 3: 'grid-cols-3' };
+/**
+ * Columns of the region row from two regions on: one each up to four, then rows of four, on the
+ * header's own width (`@container`). The band opens from a 1024 px bar; narrower, as the fixture
+ * draws it (`scripts/shoot-planner-regions.mjs`), the row keeps two to a line rather than squeeze
+ * three or four names into a third of a phone.
+ */
+const REGION_COLUMNS: Record<number, string> = {
+  2: 'grid-cols-2',
+  3: 'grid-cols-2 @min-[1024px]:grid-cols-3',
+};
+const REGION_COLUMNS_MANY = 'grid-cols-2 @min-[1024px]:grid-cols-4';
 
 /**
  * A tile's height by how many share the row: a wider tile gets taller, so the scene (2 : 1, cut
  * to fill) keeps Parky's wheel and the shore in view, as the four-region draft's tiles do.
  */
-const TILE_HEIGHT: Record<number, string> = { 2: 'h-60', 3: 'h-52' };
+const TILE_HEIGHT: Record<number, string> = {
+  2: 'h-44 @min-[768px]:h-60',
+  3: 'h-44 @min-[1024px]:h-52',
+};
+const TILE_HEIGHT_MANY = 'h-44';
 
 /**
  * The planner band: the trip planner per region, the day planner, and the locale's popular parks
@@ -57,7 +73,7 @@ const TILE_HEIGHT: Record<number, string> = { 2: 'h-60', 3: 'h-52' };
  * parks; from two on, the regions are a row of smaller cards over the other two, as in the draft's
  * four-region layout. Everything here is in every page's HTML (`hidden`, NavMenu rule 1); a
  * region's scene, the drawn day and the plan's own day render from the first opening. The data and
- * the click behaviour live elsewhere (`lib/navigation/trip-regions.ts`,
+ * the click behaviour live elsewhere (`lib/trip-regions/registry.ts`,
  * `lib/navigation/planner-menu.ts`, `lib/planner/quick-start.ts`). Memoised for the same reason as
  * `ParksMenuPanel`. See docs/features/header-navigation.md.
  */
@@ -74,31 +90,40 @@ export const PlannerMenuPanel = memo(function PlannerMenuPanel({
       <DayPlannerCard href={dayPlannerHref} />
     </div>
   );
-  const quickStarts = parks.length > 0 && (
-    <div data-menu-stagger className="min-w-0">
-      <MenuSectionHeading label={t('planDayIn')} />
-      <QuickStartList parks={parks} />
-    </div>
-  );
+  const quickStarts = (layout: QuickStartLayout) =>
+    parks.length > 0 && (
+      <div data-menu-stagger className="min-w-0">
+        <MenuSectionHeading label={t('planDayIn')} />
+        <QuickStartList parks={parks} layout={layout} />
+      </div>
+    );
 
   if (regions.length > 1) {
     return (
       <div className="flex flex-col gap-5">
         <section data-menu-stagger>
-          <MenuSectionHeading label={t('tripPlanner')} count={regions.length} />
-          <div className={cn('grid gap-3', REGION_COLUMNS[regions.length] ?? 'grid-cols-4')}>
+          <MenuSectionHeading
+            label={t('tripPlanner')}
+            count={regions.length}
+            aside={
+              <span className="text-muted-foreground min-w-0 truncate text-xs">
+                {t('tripPlannerHint')}
+              </span>
+            }
+          />
+          <div className={cn('grid gap-3', REGION_COLUMNS[regions.length] ?? REGION_COLUMNS_MANY)}>
             {regions.map((region) => (
               <RegionTile
                 key={region.id}
                 region={region}
-                height={TILE_HEIGHT[regions.length] ?? 'h-44'}
+                height={TILE_HEIGHT[regions.length] ?? TILE_HEIGHT_MANY}
               />
             ))}
           </div>
         </section>
-        <div className="grid grid-cols-12 gap-x-8">
-          <div className="col-span-7 min-w-0">{dayPlanner}</div>
-          <div className="col-span-5 min-w-0">{quickStarts}</div>
+        <div className="grid grid-cols-1 gap-y-5 @min-[768px]:grid-cols-12 @min-[768px]:gap-x-8">
+          <div className="min-w-0 @min-[768px]:col-span-7">{dayPlanner}</div>
+          <div className="min-w-0 @min-[768px]:col-span-5">{quickStarts('narrow')}</div>
         </div>
       </div>
     );
@@ -119,21 +144,48 @@ export const PlannerMenuPanel = memo(function PlannerMenuPanel({
         )}
       >
         {dayPlanner}
-        {quickStarts}
+        {quickStarts('pairs')}
       </section>
     </div>
   );
 });
 
-/** The quick starts, two columns: each the park's page, a plain click starting the planner on it. */
-function QuickStartList({ parks }: { parks: PlannerQuickStart[] }) {
+/**
+ * How the quick starts sit: two columns of six (`pairs`, beside the one region's card), or under a
+ * row of regions one column of four below a 1280 px bar and two of six from there (`narrow`), so a
+ * name like „LEGOLAND Deutschland" is not cut in the narrower column.
+ */
+type QuickStartLayout = 'pairs' | 'narrow';
+
+/** The parks a one-column list shows; the rest wait for the two columns from a 1280 px bar. */
+const NARROW_QUICK_STARTS = 4;
+
+/** The quick starts: each the park's page, a plain click starting the planner on it. */
+function QuickStartList({
+  parks,
+  layout,
+}: {
+  parks: PlannerQuickStart[];
+  layout: QuickStartLayout;
+}) {
   const t = useTranslations('navigation');
   const tGeo = useTranslations('geo');
   const locale = useLocale();
+  const narrow = layout === 'narrow';
   return (
-    <ul aria-label={t('planDayInList')} className="grid grid-cols-2 gap-x-5 gap-y-0.5">
-      {parks.map((park) => (
-        <li key={park.href} className="min-w-0">
+    <ul
+      aria-label={t('planDayInList')}
+      className={
+        narrow
+          ? 'grid grid-cols-1 gap-x-5 gap-y-0.5 @min-[1280px]:grid-cols-2'
+          : 'grid grid-cols-2 gap-x-5 gap-y-0.5'
+      }
+    >
+      {parks.map((park, i) => (
+        <li
+          key={park.href}
+          className={cn('min-w-0', narrow && i >= NARROW_QUICK_STARTS && '@max-[1280px]:hidden')}
+        >
           <Link
             href={park.href as '/'}
             prefetch={false}
@@ -166,10 +218,16 @@ function QuickStartList({ parks }: { parks: PlannerQuickStart[] }) {
   );
 }
 
-/** A region's two facts, the chips under its name. */
+/**
+ * A region's facts, the chips under its name: how many parks it plans, where the API has said, and
+ * the longest trip.
+ */
 function useRegionFacts(region: PlannerMenuRegion): string[] {
   const t = useTranslations('navigation');
-  return [t('tripParks', { count: region.parkCount }), t('tripMaxDays', { days: region.maxDays })];
+  return [
+    ...(region.parkCount !== null ? [t('tripParks', { count: region.parkCount })] : []),
+    t('tripMaxDays', { days: region.maxDays }),
+  ];
 }
 
 /**
@@ -182,7 +240,7 @@ function RegionCard({ region }: { region: PlannerMenuRegion }) {
   const t = useTranslations('navigation');
   const facts = useRegionFacts(region);
   return (
-    <div className="group bg-muted relative isolate h-[21rem] overflow-hidden rounded-2xl shadow-lg ring-1 ring-black/10 dark:ring-white/10">
+    <div className={cn(REGION_CARD, 'h-[21rem] shadow-lg')}>
       <div className="absolute inset-0 -z-10">
         <PlannerRegionArt regionId={region.id} photo={region.photo} />
       </div>
@@ -191,10 +249,7 @@ function RegionCard({ region }: { region: PlannerMenuRegion }) {
         className="from-background/95 via-background/70 absolute inset-y-0 left-0 -z-10 w-[64%] bg-gradient-to-r via-55% to-transparent"
       />
       <div className="ml-6 flex h-full w-[48%] flex-col justify-center gap-1.5">
-        {/* `primary-ink`, not `primary`: the brand blue misses AA as 11 px text on the light fade. */}
-        <span className="text-primary-ink text-[11px] font-semibold tracking-widest uppercase">
-          {region.area}
-        </span>
+        <span className={REGION_KICKER}>{region.area}</span>
         <span className="text-foreground text-4xl leading-none font-bold tracking-tight">
           {region.name}
         </span>
@@ -240,18 +295,21 @@ function RegionCard({ region }: { region: PlannerMenuRegion }) {
 }
 
 /**
- * A region as one of several, from the draft's four-region layout: the scene above, and over a
- * fade at its foot where it is, its name, one line and an arrow. The whole tile is the trip
- * planner's link; the crowd calendar is the large card's and the hub's.
+ * A region as one of several, from the four-region design: the scene above, and over a fade at its
+ * foot where it is, its name and an arrow; the line every region shares („Welcher Park an welchem
+ * Tag") stands once on the row's heading. A long name takes two balanced lines rather than being
+ * cut: at a 1024 px bar a tile has 173 px beside the arrow, and "Southern California" needs 190.
+ * The fade covers half the tile, so a scene's props under the text stay texture. The whole tile is
+ * the trip planner's link; the crowd calendar is the large card's and the hub's.
  */
 function RegionTile({ region, height }: { region: PlannerMenuRegion; height: string }) {
-  const t = useTranslations('navigation');
   return (
     <Link
       href={region.href as '/'}
       prefetch={false}
       className={cn(
-        'group bg-muted focus-visible:ring-ring relative isolate block overflow-hidden rounded-2xl ring-1 ring-black/10 focus-visible:ring-2 focus-visible:outline-none dark:ring-white/10',
+        REGION_CARD,
+        'focus-visible:ring-ring block focus-visible:ring-2 focus-visible:outline-none',
         height
       )}
     >
@@ -260,17 +318,14 @@ function RegionTile({ region, height }: { region: PlannerMenuRegion; height: str
       </span>
       <span
         aria-hidden="true"
-        className="from-background/90 via-background/40 absolute inset-x-0 bottom-0 -z-10 h-3/5 bg-gradient-to-t to-transparent"
+        className="from-background/95 via-background/70 absolute inset-x-0 bottom-0 -z-10 h-1/2 bg-gradient-to-t via-45% to-transparent"
       />
       <span className="absolute right-3 bottom-3 left-3.5 flex items-end justify-between gap-2">
         <span className="min-w-0">
-          <span className="text-primary-ink block text-[10px] font-semibold tracking-widest uppercase">
-            {region.area}
-          </span>
-          <span className="text-foreground block text-xl leading-tight font-bold">
+          <span className={cn(REGION_KICKER, 'block text-[10px]')}>{region.area}</span>
+          <span className="text-foreground block text-xl leading-[1.1] font-bold text-balance break-words hyphens-auto">
             {region.name}
           </span>
-          <span className="text-foreground/75 block truncate text-xs">{t('tripPlannerHint')}</span>
         </span>
         <span
           aria-hidden="true"

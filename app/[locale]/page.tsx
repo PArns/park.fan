@@ -36,7 +36,8 @@ import { FaqSection } from '@/components/home/faq-section';
 import { ParkyStop } from '@/components/home/parky-stop';
 import { FavoritesIntro } from '@/components/home/favorites-intro';
 import { HomeStop, StopLink } from '@/components/home/home-stop';
-import { OrlandoHomeStop } from '@/components/orlando/orlando-home-stop';
+import { TripRegionHomeStop } from '@/components/trip-regions/trip-region-home-stop';
+import { LIVE_TRIP_REGIONS } from '@/lib/trip-regions/registry';
 import { ChapterHeading } from '@/components/common/chapter-heading';
 import { FavoritesEmptyState } from '@/components/parks/favorites-empty-state';
 
@@ -246,8 +247,10 @@ export default async function HomePage({ params }: HomePageProps) {
         {/* For a visitor without favourites: how to star a park and where the favourites show. */}
         <FavoritesIntro locale={locale as Locale} />
 
-        {/* Orlando: sixteen parks and the hub that puts them on a trip's days. */}
-        <OrlandoHomeStop />
+        {/* Each live trip region (Orlando: sixteen parks) and the hub that puts them on a trip's days. */}
+        {LIVE_TRIP_REGIONS.map((region) => (
+          <TripRegionHomeStop key={region.slug} region={region.slug} locale={locale} />
+        ))}
 
         {/* Popular parks per locale: the cards (SSR seed + client live data) beside the heading,
           and under the heading a link to each one's waits and calendar, which needs no API. */}

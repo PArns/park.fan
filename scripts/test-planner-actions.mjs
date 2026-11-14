@@ -40,7 +40,13 @@ import {
   RIDER_HEIGHT_CHOICES,
   RIDER_HEIGHT_DEFAULT_CM,
 } from '../lib/planner/party.ts';
-import { countAll, EMPTY_PLANNER_STATE, entriesFor, hasAnyPlan } from '../lib/planner/types.ts';
+import {
+  countAll,
+  EMPTY_PLANNER_STATE,
+  entriesFor,
+  hasAnyPlan,
+  plannedDayRows,
+} from '../lib/planner/types.ts';
 import { parsePlannerPayload } from '../lib/planner/store.ts';
 import { actualVsEstimate, estimateFor } from '../lib/planner/estimate.ts';
 
@@ -1022,6 +1028,32 @@ test(
 }
 
 let failed = 0;
+// ── The park chooser lists the planned days in date order ───────────────────
+{
+  const geo = { continent: 'north-america', country: 'united-states', city: 'orlando' };
+  const day = (date, reserved = true) => ({ date, entries: [], reserved });
+  const parks = [
+    { slug: 'epcot', name: 'EPCOT', geo, days: { '2026-12-08': day('2026-12-08') } },
+    {
+      slug: 'ioa',
+      name: 'Islands of Adventure',
+      geo,
+      days: { '2026-12-10': day('2026-12-10'), '2026-12-06': day('2026-12-06') },
+    },
+    { slug: 'kk', name: 'Kennywood', geo, days: { '2026-12-01': day('2026-12-01', false) } },
+  ];
+  test(
+    'the chooser lists every planned day in date order, then the parks without one',
+    plannedDayRows(parks, 'en').map((r) => `${r.date ?? '-'} ${r.name}`),
+    [
+      '2026-12-06 Islands of Adventure',
+      '2026-12-08 EPCOT',
+      '2026-12-10 Islands of Adventure',
+      '- Kennywood',
+    ]
+  );
+}
+
 for (const testCase of testCases) {
   if (JSON.stringify(testCase.actual) === JSON.stringify(testCase.expected)) {
     console.log(`✅ PASS: ${testCase.name}`);

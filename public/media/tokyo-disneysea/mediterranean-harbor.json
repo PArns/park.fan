@@ -1,0 +1,33 @@
+{
+  "title": "Mediterranean Harbor",
+  "park": "tokyo-disneysea",
+  "area": "Mediterranean Harbor",
+  "roles": ["park-background"],
+  "tags": ["background", "day", "outdoor", "park", "photo", "sunny", "theming"],
+  "alt": {
+    "de": "Eine Häuserzeile im italienischen Stil in Ocker und Rosa an einem Hafenbecken, am Kai liegen Boote.",
+    "en": "A row of Italian-style buildings in ochre and pink along a harbour basin, boats moored at the quay.",
+    "es": "Una hilera de edificios de estilo italiano, ocres y rosados, junto a una dársena con barcas amarradas.",
+    "fr": "Une rangée de façades à l’italienne, ocre et roses, au bord d’un bassin où des barques sont amarrées.",
+    "it": "Una fila di palazzi in stile italiano, ocra e rosa, lungo un bacino portuale con barche ormeggiate.",
+    "nl": "Een rij gebouwen in Italiaanse stijl, oker en roze, langs een havenbekken met boten aan de kade."
+  },
+  "caption": {
+    "de": "Das Hotel MiraCosta ist in diese Hafenfront gebaut, manche Zimmer blicken direkt in den Park.",
+    "en": "Hotel MiraCosta is built into this waterfront, so some of its rooms look straight onto the park.",
+    "es": "El Hotel MiraCosta forma parte de este frente portuario, y algunas habitaciones dan directamente al parque.",
+    "fr": "L’Hotel MiraCosta est intégré à ce front de port, et certaines chambres donnent directement sur le parc.",
+    "it": "L’Hotel MiraCosta è costruito dentro questo fronte del porto, e alcune camere guardano direttamente sul parco.",
+    "nl": "Hotel MiraCosta is in deze havenfront gebouwd, en sommige kamers kijken zo het park in."
+  },
+  "credit": {
+    "author": "Joshua Tsu",
+    "license": "unsplash",
+    "source": "unsplash",
+    "sourceUrl": "https://unsplash.com/photos/a-body-of-water-with-a-bunch-of-buildings-in-the-background-SjmemrdzDAQ"
+  },
+  "focus": {
+    "x": 0.48,
+    "y": 0.66
+  }
+}

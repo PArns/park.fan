@@ -8,13 +8,15 @@ import {
   OUTBOUND_ENTITY_ATTRIBUTE,
 } from '@/lib/analytics/outbound-link';
 import { internalLinkClickOf } from '@/lib/analytics/internal-link';
-import { faqOpenedPositionOf } from '@/lib/analytics/faq-open';
+import { faqOpenedOf } from '@/lib/analytics/faq-open';
+import { tripTileClickOf } from '@/lib/analytics/trip-tile';
 
 /**
  * Counts what server-rendered markup says about itself, with listeners on the document instead of
  * a client island per element: a click on a link marked with `outboundLinkAttributes` as
  * `outbound_link_clicked`, one on a link of this site inside a block marked with
- * `linkBlockAttributes` as `internal_link_clicked`, and an FAQ question opened as `faq_opened`. A
+ * `linkBlockAttributes` as `internal_link_clicked` (and on a link of the planner tile as
+ * `trip_tile_clicked` too), and an FAQ question opened as `faq_opened`. A
  * middle click counts as a click, because it opens the link in a tab just the same. Mounted once in
  * the locale layout. Renders nothing.
  */
@@ -36,11 +38,13 @@ export function MarkupEventTracker() {
       }
       const internal = internalLinkClickOf(event.target, window.location.origin);
       if (internal) trackSiteEvent('internal_link_clicked', internal.props, internal.entity);
+      const tile = tripTileClickOf(event.target);
+      if (tile) trackSiteEvent('trip_tile_clicked', tile.props, tile.entity);
     };
     // `toggle` does not bubble, so it is caught on its way down.
     const onToggle = (event: Event) => {
-      const position = faqOpenedPositionOf(event.target);
-      if (position !== null) trackSiteEvent('faq_opened', { position });
+      const opened = faqOpenedOf(event.target);
+      if (opened) trackSiteEvent('faq_opened', opened);
     };
     document.addEventListener('click', onActivate);
     document.addEventListener('auxclick', onActivate);

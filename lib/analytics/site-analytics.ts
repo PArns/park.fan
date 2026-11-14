@@ -7,6 +7,9 @@ import { analyticsOptedOut, isAnalyticsHost } from '@/lib/analytics/opt-out';
 import { locales, type Locale } from '@/i18n/config';
 import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
 import { PLANNER_SEGMENTS } from '@/lib/planner/segments';
+import { BEST_TIME_SEGMENTS } from '@/lib/best-time/segments';
+import { LIVE_TRIP_REGIONS } from '@/lib/trip-regions/registry';
+import type { WhenPeriodKey } from '@/lib/trip-regions/plan-when';
 import { PARK_CALENDAR_SEGMENTS } from '@/lib/parks/calendar-segments';
 import { PARK_STATS_SEGMENTS } from '@/lib/parks/stats-segments';
 import { PARK_KIDS_SEGMENTS } from '@/lib/parks/kids-segments';
@@ -54,6 +57,9 @@ export type SitePageType =
   | 'search'
   | 'planner'
   | 'favorites'
+  | 'trip_hub'
+  | 'trip_month'
+  | 'trip_best_time'
   | 'not_found'
   | 'other';
 
@@ -154,15 +160,66 @@ export type SharedPlanResult = 'ready' | 'empty' | 'missing' | 'failed';
 
 type NoProps = Record<string, never>;
 
-/** How a question reached Parky: a suggestion chip or typed. */
-export type AssistantQuestionKind = 'suggestion' | 'typed';
+/**
+ * How a question reached Parky: an opener suggestion, typed, a reply chip under his answer, or the
+ * planner's interview button.
+ */
+export type AssistantQuestionKind = 'suggestion' | 'typed' | 'chip' | 'interview';
+
+/**
+ * The greeting a chat opened with: one about the visitor's own plans (`YOURS_GREETINGS`), or one
+ * of the five general ones.
+ */
+export type AssistantGreetingKind =
+  'today' | 'yesterday' | 'tomorrow' | 'soon' | 'trip' | 'back' | 'plain';
+
+/** A trip or a park day, as Parky's interview and his changes name a planner. */
+export type AssistantPlannerKind = 'trip' | 'day';
+
+/** An interview step as the statistic counts it; `refine` is the offer once the plan stands. */
+export type AssistantInterviewStepName =
+  | 'region'
+  | 'dates'
+  | 'parks'
+  | 'party'
+  | 'tickets'
+  | 'hotel'
+  | 'pace'
+  | 'file'
+  | 'day'
+  | 'mustdo'
+  | 'heights'
+  | 'shows'
+  | 'arrival';
+
+/** What a change of Parky's did to a planner: a trip's kinds, then a day's. */
+export type AssistantPlanChange =
+  | 'dates'
+  | 'parks'
+  | 'pin'
+  | 'swap'
+  | 'rest'
+  | 'tickets'
+  | 'hotel'
+  | 'pace'
+  | 'route'
+  | 'buffer'
+  | 'file'
+  | 'add'
+  | 'move'
+  | 'remove'
+  | 'show'
+  | 'party'
+  | 'done'
+  | 'block'
+  | 'clear';
 
 /**
  * What made Parky's window open: the round button, a line in its bubble, Parky's own page, Parky in
  * the homepage hero, or Parky himself, reopening it on the page he just switched to another
  * language.
  */
-export type AssistantOpenSource = 'button' | 'line' | 'page' | 'hero' | 'language';
+export type AssistantOpenSource = 'button' | 'line' | 'page' | 'hero' | 'language' | 'interview';
 
 /**
  * A line in Parky's speech bubble: an invitation, after an entrance, bored, woken, a holiday's, a
@@ -190,7 +247,8 @@ export type AssistantLineKind =
   | 'rough'
   | 'weather'
   | 'live'
-  | 'clock';
+  | 'clock'
+  | 'yours';
 
 /** How one of Parky's answers ended. */
 export type AssistantAnswerResult =
@@ -250,8 +308,16 @@ export interface SiteEventMap {
   assistant_line_closed: { line: AssistantLineKind };
   /** Parky's window closed again, with how many questions were asked while it was open. */
   assistant_closed: { questions: number };
-  /** A question to Parky: a suggested one or typed; never its text. */
-  assistant_question: { kind: AssistantQuestionKind };
+  /**
+   * A question to Parky: a suggested one, typed, a reply chip or the interview's kickoff; never its
+   * text. `first` for a chat's first question, `position` the chip's place (1 the likeliest).
+   */
+  assistant_question: { kind: AssistantQuestionKind; first: boolean; position?: number };
+  /**
+   * A chat opened with its greeting: about the visitor's own plans (`yours.ts`), or `plain`. Once
+   * per chat, when the window shows it; never the park or the date.
+   */
+  assistant_greeting: { kind: AssistantGreetingKind };
   /** How Parky's answer ended; `lookups` is the number of data lookups it made. */
   assistant_answer: { result: AssistantAnswerResult; lookups: number };
   /** Thumbs up or down for one answer. */
@@ -260,6 +326,52 @@ export interface SiteEventMap {
   assistant_feedback_sent: { email: boolean };
   /** The challenge in front of Parky failed in this browser. */
   assistant_challenge_failed: NoProps;
+  /**
+   * Reply chips were drawn under an answer; how many, never their text, and after what: an
+   * interview's question, a change to a plan, or any other answer.
+   */
+  assistant_replies_shown: { count: number; context: 'interview' | 'plan_change' | 'answer' };
+  /**
+   * Parky's interview began, from the planner's button or in the chat. `region` a live trip
+   * region's slug, `none` for a park day or a trip whose region is not settled yet.
+   */
+  assistant_interview_started: {
+    kind: AssistantPlannerKind;
+    source: 'planner' | 'chat';
+    region: string;
+  };
+  /** A step of the interview was answered, or passed. */
+  assistant_interview_step: {
+    kind: AssistantPlannerKind;
+    step: AssistantInterviewStepName;
+    outcome: 'answered' | 'skipped';
+    region: string;
+  };
+  /**
+   * The interview ended: done, or left; with the steps answered, and whether its plan stood (the
+   * core steps all answered or passed).
+   */
+  assistant_interview_ended: {
+    kind: AssistantPlannerKind;
+    outcome: 'done' | 'left';
+    steps: number;
+    plan: boolean;
+    region: string;
+  };
+  /**
+   * A change of Parky's reached a planner; what kind of change, never what it holds. One event
+   * per kind: a change of dates and parks counts both.
+   */
+  assistant_plan_changed: { planner: AssistantPlannerKind; change: AssistantPlanChange };
+  /**
+   * Parky's change was taken back, or found changed by the visitor since: by the receipt's undo
+   * under the answer, or by asking Parky in the chat.
+   */
+  assistant_change_undone: {
+    planner: AssistantPlannerKind;
+    outcome: 'undone' | 'changed';
+    via: 'receipt' | 'chat';
+  };
   /**
    * A park and date got their first block; `source` is the way into the opening it happened in,
    * `none` with the panel shut. The park's UUID as entity where a page named it.
@@ -329,18 +441,81 @@ export interface SiteEventMap {
    * park's or ride's UUID as entity where a card names it.
    */
   internal_link_clicked: { block: LinkBlock; dest: SitePageType; position: SearchPosition };
-  /** A marked place on a park page came on screen, once per page view and place. */
+  /**
+   * A marked place on a park page came on screen, once per page view and place; the planner tile
+   * and the planner band count their views the same way.
+   */
   section_seen: { section: SeenSection };
   /** A header menu band or the phone menu opened, hover included; once per opening. */
   nav_menu_opened: { menu: NavMenuId };
-  /** A question of an FAQ opened; `position` is its 1-based place in the list. */
-  faq_opened: { position: number };
+  /**
+   * A question of an FAQ opened; `position` is its 1-based place in the list, and `key`, where the
+   * list's questions depend on the data (a trip region's hub), the question's message key.
+   */
+  faq_opened: { position: number; key?: string };
   /** The „Mehr" flyout of a park's title card opened, with the park's outbound links. */
   park_links_opened: NoProps;
-  /** The trip planner started: the hub's hero, its own start button, or a link with a plan. */
-  trip_planner_started: TripEvent<{ source: 'hero' | 'button' | 'link' }>;
-  /** "Do you already have tickets?" answered; `skipped` is "Next: dates" without an answer. */
+  /**
+   * A link of the planner tile on a park's pages followed, middle click included: the plan with the
+   * park chosen, or the region's crowd calendar. The park as entity. `internal_link_clicked` counts
+   * the same click under the block `trip_tile`, where both links are one place (one page).
+   */
+  trip_tile_clicked: TripEvent<{ link: TripTileLink }>;
+  /**
+   * The trip planner started: the hub's hero, its own start button, a link with a plan, or (`dates`)
+   * the first dates picked in a page load where nothing else started it, the desk's usual way in.
+   */
+  trip_planner_started: TripEvent<{ source: 'hero' | 'button' | 'link' | 'dates' }>;
+  /** One of the hub head's two ways in pressed: plan the trip, or go to the calendar. */
+  trip_hub_action: TripEvent<{ action: 'plan' | 'calendar'; page: 'hub' | 'month' }>;
+  /** The hub calendar narrowed to one resort (its group key) or back to all; on a change only. */
+  trip_hub_filter: TripEvent<{ resort: string }>;
+  /**
+   * The ticket question before PAR-1309: no longer sent, kept for the history it counted. Its
+   * successor is `trip_tickets_opened`.
+   */
   trip_tickets_answered: TripEvent<{ answer: 'not_yet' | 'yes' | 'skipped' }>;
+  /**
+   * The ticket step opened, every time: from "Already have tickets?" (`ask`), the card's "Change"
+   * (`card`), a ticket problem or a day outside a ticket; `first` the first time in this browser.
+   */
+  trip_tickets_opened: TripEvent<{ from: TripTicketsFrom; first: boolean }>;
+  /**
+   * A change opened from where the visitor stood: Dates, Parks, the Route or More options, from the
+   * answer's buttons, the setup's rows and disclosures, the parks left out or a ticket problem.
+   */
+  trip_edit_opened: TripEvent<{ panel: TripEditPanel; from: TripEditFrom }>;
+  /**
+   * One option of the plan changed, by the visitor or by Parky (who also counts his own change as
+   * `assistant_plan_changed`). `value` only where the set is small and closed: a buffer's minutes,
+   * the rest rule, on/off, a hotel kind, set/open for a gateway, added/removed for the parks.
+   */
+  trip_option_changed: TripEvent<{
+    option: TripOption;
+    value?: string;
+    by: 'visitor' | 'parky';
+  }>;
+  /** One of the three ways out when parks did not fit, with how many were left out. */
+  trip_left_out_fix: TripEvent<{
+    fix: 'travel_days' | 'parks' | 'longer';
+    left_out: '1' | '2' | '3+';
+  }>;
+  /** "No dates yet? Find the best time" and its way back. */
+  trip_find_toggled: TripEvent<{ to: 'find' | 'known' }>;
+  /**
+   * The search's period chosen, and whether it keeps to school holidays. Never which holidays:
+   * a holiday region says where the visitor lives.
+   */
+  trip_find_period: TripEvent<{ period: WhenPeriodKey; school_breaks: boolean }>;
+  /** The date grid's resort switch, on a change; `from_default` when it left the default view. */
+  trip_calendar_mode: TripEvent<{ mode: string; from_default: boolean }>;
+  /** The forecast's accuracy opened: the plan's „Wie genau ist das?“ or the hub calendar's line. */
+  trip_accuracy_opened: TripEvent<{ surface: 'plan' | 'hub' }>;
+  /**
+   * The API's suggestion for the nights (`staySuggestion`): on screen, once per suggestion, and
+   * taken with "Plan it this way".
+   */
+  trip_stay_suggestion: TripEvent<{ action: 'shown' | 'applied' }>;
   /** A ticket chosen in the step, by its entry in the list, from the list or the Combo Ticket. */
   trip_ticket_added: TripEvent<{ entry: string; resort: string; via: 'picker' | 'combo' }>;
   /** A ticket taken out of the step. */
@@ -372,6 +547,10 @@ export interface SiteEventMap {
     relaxed?: 'blocks' | 'streak' | 'ticket_window';
     status?: number;
     unplaced?: number;
+    /** The chosen parks with no day at all (`parksLeftOut`), apart from dropped second visits. */
+    left_out?: number;
+    /** The cities a plan across cities sleeps in; absent in a region without bases. */
+    stays?: number;
     windows?: number;
   }>;
   /** "Plan these dates" on a window the search found, by its rank. */
@@ -388,7 +567,7 @@ export interface SiteEventMap {
   trip_view_changed: TripEvent<{ view: 'agenda' | 'week' | 'month' }>;
   /** A day's sheet opened, from the answer's list or a view. */
   trip_day_opened: TripEvent<{
-    kind: 'arrival' | 'park' | 'hop' | 'rest' | 'departure';
+    kind: 'arrival' | 'park' | 'hop' | 'rest' | 'departure' | 'travel';
     view: 'list' | 'agenda' | 'week' | 'month';
   }>;
   /** A day pinned or released. */
@@ -431,6 +610,42 @@ export interface SiteEventMap {
  * `trip_*` event carries the region, so one statistic can tell the regions apart.
  */
 type TripEvent<Props extends object = object> = { region: string } & Props;
+
+/** Which of the planner tile's two links: into the planner, or to the region's crowd calendar. */
+export type TripTileLink = 'plan' | 'calendar';
+
+/** Where the ticket step was opened from. */
+export type TripTicketsFrom = 'ask' | 'card' | 'adopt' | 'ticket_problem' | 'outside_ticket';
+
+/** A panel of the planner's setup a change opens. */
+export type TripEditPanel = 'dates' | 'parks' | 'route' | 'options';
+
+/**
+ * Where a change was opened from: the answer's buttons, the setup, the parks left out, a ticket
+ * problem, or the ticket card (a ticket that covers none of the planned parks).
+ */
+export type TripEditFrom = 'answer' | 'setup' | 'left_out' | 'ticket_problem' | 'ticket_card';
+
+/** An option of the plan `trip_option_changed` names: the query's own fields, grouped. */
+export type TripOption =
+  | 'hotel'
+  | 'area'
+  | 'arrival'
+  | 'departure'
+  | 'rest'
+  | 'split'
+  | 'evenings'
+  | 'hop'
+  | 'blocks'
+  | 'fireworks'
+  | 'parks'
+  | 'visits'
+  | 'cities'
+  | 'nights'
+  | 'stay_area'
+  | 'start_base'
+  | 'end_base'
+  | 'move_buffer';
 
 /** A trip's length as a bucket, arrival and departure included. */
 export type TripDaysBucket = '1-4' | '5-7' | '8-10' | '11-14' | '15-21';
@@ -539,6 +754,13 @@ const PARK_CHAPTER_SEGMENTS = new Set([
 ]);
 const GLOSSARY_SEGMENT_SET = spellings(GLOSSARY_SEGMENTS);
 const PLANNER_SEGMENT_SET = spellings(PLANNER_SEGMENTS);
+/** The live trip regions' hub segments in every locale (`/de/orlando`, `/fr/japon`). */
+const TRIP_REGION_SEGMENT_SET = new Set(
+  LIVE_TRIP_REGIONS.flatMap((region) => Object.values(region.segments))
+);
+const BEST_TIME_SEGMENT_SET = spellings(BEST_TIME_SEGMENTS);
+/** A region's month page: `/de/orlando/2026/12`. */
+const TRIP_MONTH_YEAR = /^\d{4}$/;
 /** The blog's own listing paths: `/blog/page/2`, `/blog/category/…`, `/blog/tag/…`, `/blog/authors/…`. */
 const BLOG_LISTING_SEGMENTS = new Set(['page', 'category', 'tag', 'authors']);
 
@@ -562,7 +784,9 @@ let notFoundPath: string | undefined;
  * The page type of a locale-prefixed path such as `/de/parks/europe/germany/bruehl/phantasialand`.
  * A park is five segments under `/parks`; one more is a ride unless it names a park sub-page, and
  * those, like the glossary and the planner, are written in the reader's language
- * (`/de/parks/…/phantasialand/wartezeiten-kalender`, `/de/tagesplaner`).
+ * (`/de/parks/…/phantasialand/wartezeiten-kalender`, `/de/tagesplaner`). A live trip region's hub
+ * is its segment (`/de/orlando`, `trip_hub`), its months follow with a year (`trip_month`) and its
+ * best-time pages with the best-time segment (`trip_best_time`).
  */
 export function sitePageTypeOf(pathname: string): SitePageType {
   const [, ...segments] = pathname.toLowerCase().split('/').filter(Boolean);
@@ -583,6 +807,11 @@ export function sitePageTypeOf(pathname: string): SitePageType {
   if (first === 'search') return 'search';
   if (PLANNER_SEGMENT_SET.has(first)) return 'planner';
   if (first === 'favorites') return 'favorites';
+  if (TRIP_REGION_SEGMENT_SET.has(first)) {
+    if (!second) return 'trip_hub';
+    if (BEST_TIME_SEGMENT_SET.has(second)) return 'trip_best_time';
+    if (TRIP_MONTH_YEAR.test(second)) return 'trip_month';
+  }
   return 'other';
 }
 

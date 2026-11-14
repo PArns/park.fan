@@ -115,6 +115,14 @@ export interface MediaSidecar {
    */
   focus?: MediaFocus | string | null;
   /**
+   * The focal point of a full-bleed head with its headline, excerpt and byline over the picture,
+   * on a narrow screen (below `sm`), where that text covers most of it. For an image whose subject
+   * would end up under the text there, so the head shows another part and the cards keep `focus`.
+   * Same form as `focus`; absent, the head uses `focus`. Centre stays a point, because absent means
+   * `focus`, not centre. It changes no pixels, so it is not part of `MediaImage.version`.
+   */
+  bannerFocus?: MediaFocus | string | null;
+  /**
    * Somebody still has to look at this one: set by the field-capture route (`/admin/capture`),
    * cleared from the media browser's detail panel. It separates "not written yet" from "needs
    * none", which a missing alt text alone cannot. Only `true` is ever written.
@@ -190,6 +198,8 @@ export interface MediaImage {
    * offset the build-time crops are cut at (see `MediaFocus`).
    */
   focus: MediaFocus | null;
+  /** A narrow full-bleed head's focal point — see `MediaSidecar.bannerFocus`. Omitted when none. */
+  bannerFocus?: MediaFocus;
   /** Still awaiting a proper pass — see `MediaSidecar.review`. */
   review: boolean;
   /**
@@ -220,6 +230,14 @@ export interface ResolvedMediaImage extends MediaImage {
   /** Ready-to-render attribution line, e.g. `© 2025 Patrick Arns`. */
   creditLine: string | null;
 }
+
+/**
+ * A park as the media lookups take it: its slug, or its slug with anything that names its path in
+ * `url` (the API's `/v1/parks/…`, a page path, or the bare `continent/country/city/slug`). A
+ * `ParkBase` from the API is one as it stands. Only the path tells the two `disneyland-park`s
+ * apart; a bare slug finds the catalog's first park of that slug (`lib/media/park-path.mjs`).
+ */
+export type ParkLookup = string | { slug: string; url?: string | null };
 
 /** Park reference data, generated from the API catalog into `manifest-parks.ts`. */
 export interface MediaParkRef {

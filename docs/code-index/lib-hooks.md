@@ -158,7 +158,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`use-menu-trigger.ts`](../../lib/hooks/use-menu-trigger.ts)
 
-- `useMenuTrigger` _hook_: Open state and trigger handlers for one header mega-menu entry: hover opens after 90 ms and closes after 180 ms, click toggles, and navigating closes the panel. Each opening sends `nav_menu_opened` with `menu`.
+- `useMenuTrigger` _hook_: Open state and trigger handlers for one header mega-menu entry: hover opens after 90 ms and closes after 180 ms, click toggles (the first click on a band the hover opened keeps it open), and navigating closes the panel.
 
 ### [`use-minute-now.ts`](../../lib/hooks/use-minute-now.ts)
 
@@ -330,7 +330,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`use-trip-region-links.ts`](../../lib/hooks/use-trip-region-links.ts)
 
-- `useTripRegionLinks` _hook_: The trip regions' names and parks from `/api/nav/trip-regions`, once `enabled`: what the search palette matches a query against and the day planner checks its parks against.
+- `useTripRegionLinks` _hook_: The trip regions' names and parks from `/api/nav/trip-regions`, once `enabled`, each with its words in the reader's language: what the search palette matches a query against and the day planner checks its parks against.
 
 ### [`use-wait-in-tab-title.ts`](../../lib/hooks/use-wait-in-tab-title.ts)
 

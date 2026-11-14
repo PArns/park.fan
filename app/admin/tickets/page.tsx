@@ -1,6 +1,7 @@
 'use client';
 
 import { useMemo, useState } from 'react';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { useQueryClient } from '@tanstack/react-query';
 import { Archive, ArchiveRestore, Eye, Pencil, Plus, Ticket } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -20,12 +21,12 @@ import {
   type AdminTicketCatalog,
   type AdminTicketProduct,
 } from '@/lib/admin/tickets';
-import { ORLANDO_REGION } from '@/lib/orlando/types';
+import { TRIP_REGIONS, tripRegionConfig, tripRegionTitle } from '@/lib/trip-regions/registry';
 import { cn } from '@/lib/utils';
 import { adminFetch, useAdminQuery, useInvalidateAdmin } from '../_lib/api';
 import { useCan } from '../_app/session';
 import { SYSTEM_MONO } from '../_ui/code-block';
-import { MoveButtons, TextInput } from '../_ui/controls';
+import { MoveButtons, Segmented, TextInput } from '../_ui/controls';
 import {
   AdminPage,
   Chip,
@@ -42,13 +43,17 @@ import { TicketEditor, type TicketClickState } from './_components/ticket-editor
 import { useTicketClicks, useTripRegion } from './_lib/use-ticket-data';
 
 /**
- * A region's ticket catalog for the trip planner, Orlando's for now: every product with the rules
- * the plan computes with and where it is bought, kept here instead of in a deploy. Reading needs any
- * role, every write `editor`; the API checks each write whole and plans a sample trip with it before
- * it saves.
+ * A region's ticket catalog for the trip planner: every product with the rules the plan computes
+ * with and where it is bought, kept here instead of in a deploy. The switch lists every region of
+ * the registry, a coming one too, so its catalog can be filled before its pages go live; the
+ * choice is the address (`?region=`), the first region without one. Reading needs any role, every
+ * write `editor`; the API checks each write whole and plans a sample trip with it before it saves.
  */
 export default function TicketsPage() {
-  const region = ORLANDO_REGION;
+  const params = useSearchParams();
+  const router = useRouter();
+  const pathname = usePathname();
+  const region = tripRegionConfig(params.get('region') ?? '')?.slug ?? TRIP_REGIONS[0].slug;
   const canEdit = useCan('editor');
   const toast = useToast();
   const invalidate = useInvalidateAdmin();
@@ -68,6 +73,10 @@ export default function TicketsPage() {
     [products, tripRegion.data?.groups]
   );
   const [editing, setEditing] = useState<AdminTicketProduct | 'new' | null>(null);
+  const chooseRegion = (next: string) => {
+    setEditing(null);
+    router.replace(next === TRIP_REGIONS[0].slug ? pathname : `${pathname}?region=${next}`);
+  };
   // Kept after the dialog closes, so its text does not change while it fades out.
   const [archiving, setArchiving] = useState<AdminTicketProduct | null>(null);
   const [confirming, setConfirming] = useState(false);
@@ -148,23 +157,37 @@ export default function TicketsPage() {
       <Panel>
         <PanelHeader
           icon={Ticket}
-          title="Tickets für Orlando"
+          title={`Tickets für ${tripRegionTitle(region)}`}
           hint={
             catalog.data
               ? `${products.filter((product) => product.active).length} im Katalog, ${products.filter((product) => !product.active).length} archiviert. ${TICKET_PUBLISH_DELAY}`
               : 'Was der Reiseplaner über Tickets weiß: Produkte, Regeln und wo man sie kauft.'
           }
           action={
-            canEdit ? (
-              <Button
-                size="sm"
-                variant="outline"
-                disabled={!regionReady}
-                onClick={() => setEditing('new')}
-              >
-                <Plus className="h-4 w-4" /> Neues Ticket
-              </Button>
-            ) : null
+            <div className="flex flex-wrap items-center justify-end gap-2">
+              <Segmented
+                label="Region"
+                value={region}
+                onChange={chooseRegion}
+                options={TRIP_REGIONS.map((r) => ({
+                  value: r.slug,
+                  label: tripRegionTitle(r.slug),
+                  title: r.live
+                    ? undefined
+                    : 'Noch nicht live: der Katalog lässt sich vorbereiten.',
+                }))}
+              />
+              {canEdit ? (
+                <Button
+                  size="sm"
+                  variant="outline"
+                  disabled={!regionReady}
+                  onClick={() => setEditing('new')}
+                >
+                  <Plus className="h-4 w-4" /> Neues Ticket
+                </Button>
+              ) : null}
+            </div>
           }
         />
         {catalog.isError ? (

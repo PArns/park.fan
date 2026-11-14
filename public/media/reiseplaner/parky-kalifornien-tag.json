@@ -1,0 +1,25 @@
+{
+  "title": "Parky-Szene Südkalifornien, Tag",
+  "tags": ["diagram", "day"],
+  "alt": {
+    "de": "Parky mit Muschelkette und Surfbrett am Strand des Pazifiks, dahinter Palmen, ein Rettungsschwimmerturm und ein Pier mit kleinem Riesenrad.",
+    "en": "Parky with a shell necklace and a surfboard on a Pacific beach, behind him palms, a lifeguard tower and a pier with a small Ferris wheel.",
+    "nl": "Parky met een schelpenketting en een surfplank op een strand aan de Stille Oceaan, met daarachter palmen, een strandwachtpost en een pier met een klein reuzenrad.",
+    "fr": "Parky avec un collier de coquillages et une planche de surf sur une plage du Pacifique, derrière lui des palmiers, une tour de sauveteurs et une jetée avec une petite grande roue.",
+    "es": "Parky con un collar de conchas y una tabla de surf en una playa del Pacífico, detrás palmeras, una torre de socorrista y un muelle con una pequeña noria.",
+    "it": "Parky con una collana di conchiglie e una tavola da surf su una spiaggia del Pacifico, dietro palme, una torretta del bagnino e un pontile con una piccola ruota panoramica."
+  },
+  "credit": {
+    "author": "park.fan",
+    "license": "all-rights-reserved"
+  },
+  "focus": {
+    "x": 0.89,
+    "y": 0.55
+  },
+  "bannerFocus": {
+    "x": 0.42,
+    "y": 0.55
+  },
+  "shotAt": "2026-11-14"
+}

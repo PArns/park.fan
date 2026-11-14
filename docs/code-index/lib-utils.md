@@ -27,6 +27,8 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`calendar-utils.ts`](../../lib/utils/calendar-utils.ts)
 
 - `isIsoDate` _function_: Whether `value` has the shape `YYYY-MM-DD`; it does not check that the day exists.
+- `isClosedCalendarDay` _function_: Whether the park is shut on a calendar day. Both fields are read, because a day the park has since closed can still carry the crowd level it was forecast with.
+- `forecastCrowdLevel` _function_: The forecast crowd level a day is rated on: `predictedCrowdLevel`, with `crowdLevel` for older API builds and unratable days, and `'closed'` on a day the park is shut.
 - `hourlyPredictionInstants` _function_: Turn a day's `HourlyPrediction` series into UTC instants, so each bar can be shown on the park's clock and the past ones told apart.
 - `upcomingHourlyPredictions` _function_: The entries of a day's hourly curve a reader can still act on, each with its bar's instant.
 - `isServableCalendarRange` _function_: Whether the calendar route may answer for `from`–`to`: two real days, in order, at most `MAX_CALENDAR_RANGE_DAYS` apart counting both ends.
@@ -117,7 +119,8 @@ Covered rides: where a visitor can go when the nowcast says rain is coming. The 
 
 - `holidaySignals` _function_: The signals a day's own holidays light, in the calendar cell's order. Neighbouring regions are not among them: only the calendar carries those.
 - `DAY_SIGNAL_CLASS` _const_: Segment colour per day signal, so the calendar cells, the day dialog and the legend agree.
-- Types: `DaySignal`
+- `STORM_SIGNAL_CLASS` _const_: The storm season's segment, in its own violet (`--signal-storm`): dashed for the season, solid for the peak, so the peak reads stronger without a second colour.
+- Types: `DaySignal`, `StormSignal`
 
 ### [`distance-utils.ts`](../../lib/utils/distance-utils.ts)
 
@@ -257,6 +260,7 @@ Cached `Intl` formatter factories. Constructing a formatter costs far more than 
 
 ### [`metadata.ts`](../../lib/utils/metadata.ts)
 
+- `oneFullStop` _function_: A date that ends a sentence on its abbreviation („16. Nov.“, „7–16 sept.“) prints two full stops with the sentence's own; one stays. Run it on each candidate before `fitWithin`, so the length is the printed one.
 - `fitWithin` _function_: Picks the first candidate that fits, else the shortest; never truncates mid-word. Pass candidates richest-first. When even the shortest overruns, it still wins: a clipped bare name costs less than a clipped template.
 - `fitSentences` _function_: A description of at most `limit` characters cut from running text: as many whole sentences as fit, else the first sentence cut at a word boundary with an ellipsis, so a snippet never ends mid-clause.
 - `buildOpenGraphMetadata` _function_: Builds the openGraph and twitter metadata that are the same on every page.
@@ -329,7 +333,7 @@ When the nowcast says it is time to go under a roof: the trigger for the covered
 - `getAttractionBackgroundImage` _function_: Public path of a ride's photo, or `null` when the ride has none. Falls back to any image showing the ride when none is marked `ride-card`; a park-background fallback is the caller's decision.
 - `getParkImageSet` _function_: Full aspect-ratio image set for a park's hero photo, for structured-data `image`. Prefers the 16:9 / 4:3 / 1:1 crops, falls back to the single source, else `[]`.
 - `getAttractionImageSet` _function_: Full aspect-ratio image set for a ride's photo, `[]` when the ride has none. No park fallback: this feeds JSON-LD `image`, and the park's carousel as a picture of a dark ride is worse than nothing.
-- `getCardImageMap` _function_: Every card photo, by park slug and by ride, as the manifest-free lookup `/api/card-images` serves. The enrich functions below read the same map, so a card's photo is decided in one place whether the server or the browser attaches it.
+- `getCardImageMap` _function_: Every card photo, by park geo path and by ride, as the manifest-free lookup `/api/card-images` serves, with the path each photographed slug means when a card names no path.
 - `enrichParksWithImages` _function_: Adds `backgroundImage` **and** `backgroundPosition` to each park. The focal point travels with the path because the cards are Client Components, and looking it up there would ship the whole manifest to every visitor.
 - `enrichAttractionsWithImages` _function_: Same for attractions, with only the ride's own photo (see `withRideCardImage`).
 - `getCardObjectPosition` _function_: `object-position` for a park or ride card photo, resolved server-side from the same image the card paints, so the ride branch stops at the ride just as the photo does.
@@ -478,6 +482,10 @@ Route guards for the `/[locale]/...` tree.
 ### [`season.ts`](../../lib/utils/season.ts)
 
 - `isInSeason` _function_: Whether a seasonal entity counts as running right now. `isCurrentlyInSeason` has three values: `false` is known closed, `null` is „seasonal, nothing else known" and must not hide the ride, and `undefined` is an older payload.
+
+### [`sentence-case.ts`](../../lib/utils/sentence-case.ts)
+
+- `sentenceCase` _function_: A phrase with a capital first letter, for a word that opens a sentence or stands alone as a label ("hurricane season" as a legend key). Every locale here is Latin script, so upper-casing the first character is the whole job.
 
 ### [`servable-route.ts`](../../lib/utils/servable-route.ts)
 

@@ -30,14 +30,21 @@ export async function GET(
         slug: city.slug,
         name: city.name,
         parkCount: city.parkCount,
-        parks: (city.parks ?? []).map((park) => ({
-          slug: park.slug,
-          name: park.name,
-          // Resolved on the server: the menu is a Client Component, and `@/lib/media` there would
-          // ship the media catalog to the browser. `null` for most parks, so the row needs none.
-          image: getParkBackgroundImage(park.slug),
-          imagePosition: getCardObjectPosition(park.slug),
-        })),
+        parks: (city.parks ?? []).map((park) => {
+          const lookup = {
+            slug: park.slug,
+            url: `${continent}/${country}/${city.slug}/${park.slug}`,
+          };
+          return {
+            slug: park.slug,
+            name: park.name,
+            // Resolved on the server: the menu is a Client Component, and `@/lib/media` there
+            // would ship the media catalog to the browser. `null` for most parks, so the row needs
+            // none.
+            image: getParkBackgroundImage(lookup),
+            imagePosition: getCardObjectPosition(lookup),
+          };
+        }),
       }))
       .filter((city) => city.parks.length > 0)
       .sort((a, b) => b.parkCount - a.parkCount || a.name.localeCompare(b.name));

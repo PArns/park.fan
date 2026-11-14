@@ -13,7 +13,7 @@ import type { SearchResultItem } from '@/lib/api/types';
 import type { GlossarySearchItem } from '@/lib/hooks/use-search-results';
 import type { PostSearchEntry } from '@/lib/navigation/blog-menu';
 import type { NearbySearchExtras } from '@/lib/hooks/use-hero-browse-parks';
-import type { TripRegionLinks } from '@/lib/orlando/trip-links';
+import type { TripRegionLinks } from '@/lib/trip-regions/trip-links';
 
 interface SearchResultRowProps {
   result: SearchResultItem & NearbySearchExtras;
@@ -86,7 +86,10 @@ export function TripPlannerResultItem({ region, onSelect }: TripPlannerResultIte
       </div>
       <div className="flex min-w-0 flex-1 flex-col gap-1 sm:gap-1.5">
         <span className="truncate text-sm leading-none font-semibold sm:text-[15px]">
-          {t('title', { region: region.name })}
+          {t('title', {
+            region: region.words?.name ?? region.name,
+            inRegion: region.words?.inRegion ?? region.name,
+          })}
         </span>
         <span className={cn(SEARCH_SECONDARY_TEXT_CLASS, 'truncate text-xs')}>{t('hint')}</span>
       </div>

@@ -80,20 +80,20 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Ein Maß dafür, wie voll ein Freizeitpark an einem bestimmten Tag ist, von „sehr niedrig“ bis „extrem“.',
     definition:
-      'Die Besucherdichte beschreibt, wie voll ein Park an einem bestimmten Tag oder zu einer bestimmten Stunde ist. park.fan misst jeden Park an sich selbst: 100 % sind die Wartezeiten der großen Attraktionen an einem typischen Tag in diesem Park, und die aktuellen Wartezeiten werden als Anteil davon angegeben. Bis 60 % heißt „Sehr niedrig“, 61 bis 89 % „Niedrig“, 90 bis 110 % „Normal“, 111 bis 150 % „Hoch“, 151 bis 200 % „Sehr hoch“, alles darüber „Extrem“. Die Prognosetage im Besucherkalender nutzen dieselbe Skala.\n\nWeil jeder Park sein eigener Maßstab ist, steht „Extrem“ in einem kleinen Familienpark und im Disneyland Paris für unterschiedlich viele Minuten, aber für dieselbe Lage: Die Warteschlangen sind doppelt so lang wie üblich oder länger. Bewegt wird die Stufe von Schulferien, Feiertagen, Sonderveranstaltungen wie Halloween-Nächten oder Feuerwerken und vom Wetter.',
+      'Die Besucherdichte beschreibt, wie voll ein Park an einem bestimmten Tag oder zu einer bestimmten Stunde ist. park.fan misst jeden Park an sich selbst: 100 % sind die Wartezeiten der großen Attraktionen an einem typischen Tag in diesem Park, und die aktuellen Wartezeiten werden als Anteil davon angegeben. Bis 60 % heißt „Sehr niedrig“, 61 bis 89 % „Niedrig“, 90 bis 110 % „Normal“, 111 bis 150 % „Hoch“, 151 bis 200 % „Sehr hoch“, alles darüber „Extrem“. Die Prognosetage im Andrang-Kalender nutzen dieselbe Skala.\n\nWeil jeder Park sein eigener Maßstab ist, steht „Extrem“ in einem kleinen Familienpark und im Disneyland Paris für unterschiedlich viele Minuten, aber für dieselbe Lage: Die Warteschlangen sind doppelt so lang wie üblich oder länger. Bewegt wird die Stufe von Schulferien, Feiertagen, Sonderveranstaltungen wie Halloween-Nächten oder Feuerwerken und vom Wetter.',
     relatedTermIds: ['crowd-calendar', 'peak-day', 'wait-time'],
     aliases: ['Besucherdichten', 'Besucherandrang', 'Crowd Level'],
     alternateNames: ['Crowd Level', 'Crowd Levels', 'Besucherandrang'],
   },
   {
     id: 'crowd-calendar',
-    name: 'Besucherkalender',
+    name: 'Andrang-Kalender',
     shortDefinition:
       'Eine Vorschau der erwarteten Besucherdichte, Tag für Tag, zum Planen eines Besuchs.',
     definition:
-      'Ein Besucherkalender zeigt die kommenden Monate eines Parks als Raster aus Tagen, jeder in der Farbe der erwarteten Besucherdichte. Bei park.fan kommt die Farbe von Fancast, dem Prognosemodell, das park.fan selbst trainiert. Es rechnet für jede Attraktion und jede Stunde eines Tages eine erwartete Wartezeit aus und fasst sie zu einer Besucherdichte für den Tag zusammen, auf derselben Skala von „Sehr niedrig“ bis „Extrem“, die auch die Live-Anzeige nutzt.\n\nDas Modell lernt aus den Wartezeiten, die park.fan in dem Park gemessen hat. Dazu fließen der Wetterbericht, Schulferien, Feiertage und Brückentage in den Ländern, in denen die Parks stehen, in die Prognose ein, außerdem das Programm des Parks, etwa eine Halloween-Saison oder die ersten Tage des Jahres. Jeden Morgen um 06:00 UTC wird es mit den Wartezeiten des Vortags neu trainiert, deshalb kann sich die Farbe eines Datums ändern, je näher es rückt.\n\nDer Kalender reicht so weit wie der Zeitplan des Parks. Ein ganzjährig geöffneter Park bekommt eine Stufe für Tage, die fast ein Jahr entfernt sind, ein Saisonpark zeigt nach seinem veröffentlichten letzten Öffnungstag „Geschlossen“.',
+      'Ein Andrang-Kalender zeigt die kommenden Monate eines Parks als Raster aus Tagen, jeder in der Farbe der erwarteten Besucherdichte. Bei park.fan kommt die Farbe von Fancast, dem Prognosemodell, das park.fan selbst trainiert. Es rechnet für jede Attraktion und jede Stunde eines Tages eine erwartete Wartezeit aus und fasst sie zu einer Besucherdichte für den Tag zusammen, auf derselben Skala von „Sehr niedrig“ bis „Extrem“, die auch die Live-Anzeige nutzt.\n\nDas Modell lernt aus den Wartezeiten, die park.fan in dem Park gemessen hat. Dazu fließen der Wetterbericht, Schulferien, Feiertage und Brückentage in den Ländern, in denen die Parks stehen, in die Prognose ein, außerdem das Programm des Parks, etwa eine Halloween-Saison oder die ersten Tage des Jahres. Jeden Morgen um 06:00 UTC wird es mit den Wartezeiten des Vortags neu trainiert, deshalb kann sich die Farbe eines Datums ändern, je näher es rückt.\n\nDer Kalender reicht so weit wie der Zeitplan des Parks. Ein ganzjährig geöffneter Park bekommt eine Stufe für Tage, die fast ein Jahr entfernt sind, ein Saisonpark zeigt nach seinem veröffentlichten letzten Öffnungstag „Geschlossen“.',
     relatedTermIds: ['crowd-level', 'peak-day', 'rope-drop'],
-    aliases: ['Besucherkalender', 'Crowd-Kalender', 'Crowd-Kalendar'],
+    aliases: ['Besucherkalender', 'Andrangskalender', 'Crowd-Kalender', 'Crowd-Kalendar'],
   },
   {
     id: 'peak-day',
@@ -101,7 +101,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Ein Tag mit maximalen Besucherzahlen, typischerweise während Feiertagen oder Sonderveranstaltungen.',
     definition:
-      'Ein Spitzentag ist ein Tag, an dem ein Park an oder nahe seiner Kapazitätsgrenze läuft. Typisch sind große Feiertage wie Ostern und die Tage um Weihnachten, Sonderveranstaltungen wie Halloween-Nächte oder das Silvesterfeuerwerk und die Wochen der Schulferien. An solchen Tagen stehen die großen Attraktionen im Disneyland Paris oder im Europa-Park regelmäßig bei 90 bis 120 Minuten, und vor den Restaurants bilden sich schon vor Mittag Warteschlangen. Im Besucherkalender von park.fan erscheinen solche Tage mit der Stufe „Sehr hoch“ oder „Extrem“.',
+      'Ein Spitzentag ist ein Tag, an dem ein Park an oder nahe seiner Kapazitätsgrenze läuft. Typisch sind große Feiertage wie Ostern und die Tage um Weihnachten, Sonderveranstaltungen wie Halloween-Nächte oder das Silvesterfeuerwerk und die Wochen der Schulferien. An solchen Tagen stehen die großen Attraktionen im Disneyland Paris oder im Europa-Park regelmäßig bei 90 bis 120 Minuten, und vor den Restaurants bilden sich schon vor Mittag Warteschlangen. Im Andrang-Kalender von park.fan erscheinen solche Tage mit der Stufe „Sehr hoch“ oder „Extrem“.',
     aliases: ['Spitzentage'],
     alternateNames: ['Stoßzeiten', 'Hochbetrieb'],
 
@@ -237,7 +237,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Disneys kostenpflichtiges Vorrangwarteschlangen-System als Nachfolger des früheren FastPass+-Programms.',
     definition:
-      'Lightning Lane ist Disneys Bezeichnung für sein Priority-Queue-System, das 2021 als Nachfolger des kostenlosen FastPass+-Programms eingeführt wurde. Seit Juli 2024 verkauft Walt Disney World Lightning Lane Single Pass (bis dahin Individual Lightning Lane, ILL) für die gefragtesten Attraktionen, die einzeln gekauft werden muss, und Lightning Lane Multi Pass (LLMP), ein Tageszusatz, mit dem man Rückkehrzeiten für eine Auswahl an Attraktionen buchen kann. Beide lassen sich schon Tage vor dem Besuch buchen. Der teurere Lightning Lane Premier Pass gilt für je einen Eintritt an jeder teilnehmenden Attraktion. Was vorher kostenlos war, kostet seitdem Geld. Im Besucherkalender von park.fan steht, an welchen Tagen mit langen Standby-Warteschlangen zu rechnen ist.',
+      'Lightning Lane ist Disneys Bezeichnung für sein Priority-Queue-System, das 2021 als Nachfolger des kostenlosen FastPass+-Programms eingeführt wurde. Seit Juli 2024 verkauft Walt Disney World Lightning Lane Single Pass (bis dahin Individual Lightning Lane, ILL) für die gefragtesten Attraktionen, die einzeln gekauft werden muss, und Lightning Lane Multi Pass (LLMP), ein Tageszusatz, mit dem man Rückkehrzeiten für eine Auswahl an Attraktionen buchen kann. Beide lassen sich schon Tage vor dem Besuch buchen. Der teurere Lightning Lane Premier Pass gilt für je einen Eintritt an jeder teilnehmenden Attraktion. Was vorher kostenlos war, kostet seitdem Geld. Im Andrang-Kalender von park.fan steht, an welchen Tagen mit langen Standby-Warteschlangen zu rechnen ist.',
     alternateNames: [
       'Lightning Lane Multi Pass',
       'Lightning Lane Single Pass',
@@ -284,7 +284,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Zeiträume mit geringerer Besucherauslastung, kürzeren Wartezeiten und günstigeren Preisen.',
     definition:
-      'Nebensaison sind die ruhigeren Wochen im Jahr, in denen Schule ist und keine großen Feiertage liegen, typischerweise Januar bis Anfang Februar, Mitte September bis Oktober (außerhalb von Halloween-Events) und die ersten Novemberwochen. In der Nebensaison sind die Wartezeiten an gefragten Attraktionen oft deutlich kürzer und die Ticketpreise häufig am niedrigsten. Wer den Termin frei wählen kann, fährt in der Nebensaison. Der Besucherkalender von park.fan markiert die Nebensaison-Fenster eines Parks.',
+      'Nebensaison sind die ruhigeren Wochen im Jahr, in denen Schule ist und keine großen Feiertage liegen, typischerweise Januar bis Anfang Februar, Mitte September bis Oktober (außerhalb von Halloween-Events) und die ersten Novemberwochen. In der Nebensaison sind die Wartezeiten an gefragten Attraktionen oft deutlich kürzer und die Ticketpreise häufig am niedrigsten. Wer den Termin frei wählen kann, fährt in der Nebensaison. Der Andrang-Kalender von park.fan markiert die Nebensaison-Fenster eines Parks.',
     alternateNames: ['Ruhige Zeiten', 'Schwache Saison', 'Off-Peak', 'Quieter Season'],
 
     relatedTermIds: ['crowd-calendar', 'crowd-level', 'peak-day'],
@@ -295,7 +295,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Die Zeit, in der ein Park für Wartungsarbeiten, Umbauten oder die Winterpause ganz geschlossen ist.',
     definition:
-      'Die OffSeason ist der Teil des Jahres, in dem ein Park ganz geschlossen ist, ohne Fahrbetrieb, Restaurants oder Shows. In der Nebensaison ist ein Park dagegen geöffnet, nur leerer. Viele Parks mit Freiluftsaison schließen zwischen November und März oder April, manche mit einer Wintersaison oder ein paar Weihnachtswochenenden dazwischen. Parks in warmem Klima oder mit den meisten Attraktionen in Hallen haben oft gar keine.\n\nDie geschlossenen Monate gehören der Arbeit, die mit Besuchern im Park nicht geht: den jährlichen Prüfungen, der Wartung von Strecken und Zügen, größeren Umbauten und dem Bau neuer Attraktionen.\n\nZeigt park.fan für einen Park OffSeason an, gibt es für den aktuellen Zeitraum keinen Öffnungsplan, und der nächste bestätigte Öffnungstag ist noch einige Wochen entfernt. Der Besucherkalender markiert die geschlossenen Tage als „Geschlossen“, und das Datum der Wiedereröffnung erscheint, sobald der Park es veröffentlicht.',
+      'Die OffSeason ist der Teil des Jahres, in dem ein Park ganz geschlossen ist, ohne Fahrbetrieb, Restaurants oder Shows. In der Nebensaison ist ein Park dagegen geöffnet, nur leerer. Viele Parks mit Freiluftsaison schließen zwischen November und März oder April, manche mit einer Wintersaison oder ein paar Weihnachtswochenenden dazwischen. Parks in warmem Klima oder mit den meisten Attraktionen in Hallen haben oft gar keine.\n\nDie geschlossenen Monate gehören der Arbeit, die mit Besuchern im Park nicht geht: den jährlichen Prüfungen, der Wartung von Strecken und Zügen, größeren Umbauten und dem Bau neuer Attraktionen.\n\nZeigt park.fan für einen Park OffSeason an, gibt es für den aktuellen Zeitraum keinen Öffnungsplan, und der nächste bestätigte Öffnungstag ist noch einige Wochen entfernt. Der Andrang-Kalender markiert die geschlossenen Tage als „Geschlossen“, und das Datum der Wiedereröffnung erscheint, sobald der Park es veröffentlicht.',
     alternateNames: ['Saisonpause', 'Geschlossene Saison', 'Off Season'],
 
     relatedTermIds: ['crowd-calendar', 'refurbishment', 'soft-opening'],
@@ -349,7 +349,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Ein Kalendertag, an dem bestimmte Jahrespass-Stufen nicht für den Parkeintritt gültig sind, meist ein Spitzentag.',
     definition:
-      'Ein Sperrtag (englisch: Blockout Date oder Blackout Date) ist ein bestimmter Kalendertag, an dem Jahrespässe niedrigerer Stufen nicht eingelöst werden können. Parks setzen Sperrtage ein, um die Besucherzahlen an den stärksten Tagen zu steuern. Teure Pässe haben wenige oder keine Sperrtage, günstige Einsteigerpässe können an 30–60 Tagen pro Jahr gesperrt sein. Wer einen Pass mit Sperrtagen hat, sieht vor dem Besuch im Sperrtagkalender des Parks nach. Der Besucherkalender von park.fan markiert die typischen Spitzentage.',
+      'Ein Sperrtag (englisch: Blockout Date oder Blackout Date) ist ein bestimmter Kalendertag, an dem Jahrespässe niedrigerer Stufen nicht eingelöst werden können. Parks setzen Sperrtage ein, um die Besucherzahlen an den stärksten Tagen zu steuern. Teure Pässe haben wenige oder keine Sperrtage, günstige Einsteigerpässe können an 30–60 Tagen pro Jahr gesperrt sein. Wer einen Pass mit Sperrtagen hat, sieht vor dem Besuch im Sperrtagkalender des Parks nach. Der Andrang-Kalender von park.fan markiert die typischen Spitzentage.',
     aliases: ['Sperrtage'],
     alternateNames: ['Blackout-Tage', 'Blackout-Datum', 'Blockout Date'],
 
@@ -979,7 +979,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Ein Besuchsplan, der die Attraktionen so ordnet, dass man möglichst wenig wartet und möglichst viel fährt.',
     definition:
-      'Ein Touringplan legt vorab fest, in welcher Reihenfolge man Attraktionen besucht, wann man isst und welchen Weg man durch den Park nimmt, damit die Wartezeit über den Tag möglichst kurz bleibt. Wer einen guten Touringplan aufstellt, plant ein, welche Bereiche sich zuerst füllen, wie viele Fahrgäste eine Attraktion pro Stunde schafft, wie sich die Warteschlangen entwickeln, wann Shows sind und wie das Wetter wird. Seiten wie TouringPlans.com veröffentlichen ausführliche Pläne für große Parks. Mit den Live-Wartezeiten von park.fan lässt sich ein Plan unterwegs anpassen, im Besucherkalender sucht man vorher den Tag aus.',
+      'Ein Touringplan legt vorab fest, in welcher Reihenfolge man Attraktionen besucht, wann man isst und welchen Weg man durch den Park nimmt, damit die Wartezeit über den Tag möglichst kurz bleibt. Wer einen guten Touringplan aufstellt, plant ein, welche Bereiche sich zuerst füllen, wie viele Fahrgäste eine Attraktion pro Stunde schafft, wie sich die Warteschlangen entwickeln, wann Shows sind und wie das Wetter wird. Seiten wie TouringPlans.com veröffentlichen ausführliche Pläne für große Parks. Mit den Live-Wartezeiten von park.fan lässt sich ein Plan unterwegs anpassen, im Andrang-Kalender sucht man vorher den Tag aus.',
     aliases: ['Touringpläne'],
     alternateNames: ['Touring Plan', 'Besuchsplan', 'Parkplan', 'Besuchsstrategie'],
 
@@ -3344,7 +3344,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Ein gesetzlich freier Tag, an dem Schulen und die meisten Betriebe zu sind und die Parks sich füllen.',
     definition:
-      'Ein Feiertag ist ein gesetzlich freier Tag, bundesweit oder nur in einem Bundesland oder einer Region. Ostermontag, Christi Himmelfahrt und Pfingstmontag sind in Deutschland bundesweite Feiertage. Fronleichnam ist nur in einigen Ländern frei, darunter Baden-Württemberg und Nordrhein-Westfalen, wo der Europa-Park und das Phantasialand stehen. Ein Park nahe der Grenze bekommt auch die Feiertage der Nachbarn zu spüren: Christi Himmelfahrt ist auch in Frankreich, den Niederlanden, Belgien und der Schweiz frei.\n\nDie Prognose von park.fan berücksichtigt die Feiertage der Länder, in denen die Parks stehen. Der Besucherkalender markiert sie, unterscheidet bundesweite und regionale Feiertage, und seine Legende vermerkt, dass solche Tage meist deutlich voller sind.',
+      'Ein Feiertag ist ein gesetzlich freier Tag, bundesweit oder nur in einem Bundesland oder einer Region. Ostermontag, Christi Himmelfahrt und Pfingstmontag sind in Deutschland bundesweite Feiertage. Fronleichnam ist nur in einigen Ländern frei, darunter Baden-Württemberg und Nordrhein-Westfalen, wo der Europa-Park und das Phantasialand stehen. Ein Park nahe der Grenze bekommt auch die Feiertage der Nachbarn zu spüren: Christi Himmelfahrt ist auch in Frankreich, den Niederlanden, Belgien und der Schweiz frei.\n\nDie Prognose von park.fan berücksichtigt die Feiertage der Länder, in denen die Parks stehen. Der Andrang-Kalender markiert sie, unterscheidet bundesweite und regionale Feiertage, und seine Legende vermerkt, dass solche Tage meist deutlich voller sind.',
     relatedTermIds: [
       'bridge-day',
       'school-holiday',
@@ -3366,7 +3366,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Ein Arbeitstag zwischen einem Feiertag und dem Wochenende, den viele freinehmen.',
     definition:
-      'Ein Brückentag ist ein Arbeitstag, der zwischen einem Feiertag und einem Wochenende eingeklemmt ist: ein Freitag nach einem Feiertag am Donnerstag oder ein Montag vor einem am Dienstag. Mit einem Urlaubstag werden daraus vier freie Tage. In Deutschland ist der bekannteste der Freitag nach Christi Himmelfahrt, in den Ländern mit Fronleichnam kommt der Freitag danach hinzu. In Frankreich heißt das Freinehmen faire le pont, in den Niederlanden spricht man von einer brugdag.\n\nFür einen Park verhält sich ein Brückentag wie ein Teil eines langen Wochenendes. Die Prognose von park.fan rechnet Brückentage als eigenen Faktor ein, und der Besucherkalender wie auch der Wartezeitverlauf einer Bahn kennzeichnen sie als Brückentag.',
+      'Ein Brückentag ist ein Arbeitstag, der zwischen einem Feiertag und einem Wochenende eingeklemmt ist: ein Freitag nach einem Feiertag am Donnerstag oder ein Montag vor einem am Dienstag. Mit einem Urlaubstag werden daraus vier freie Tage. In Deutschland ist der bekannteste der Freitag nach Christi Himmelfahrt, in den Ländern mit Fronleichnam kommt der Freitag danach hinzu. In Frankreich heißt das Freinehmen faire le pont, in den Niederlanden spricht man von einer brugdag.\n\nFür einen Park verhält sich ein Brückentag wie ein Teil eines langen Wochenendes. Die Prognose von park.fan rechnet Brückentage als eigenen Faktor ein, und der Andrang-Kalender wie auch der Wartezeitverlauf einer Bahn kennzeichnen sie als Brückentag.',
     relatedTermIds: ['public-holiday', 'school-holiday', 'crowd-calendar', 'crowd-forecast'],
     aliases: ['Brückentage', 'Brückentagen'],
     alternateNames: ['Bridge Day'],
@@ -3430,7 +3430,7 @@ const translations: GlossaryTermTranslation[] = [
     name: 'Saisonstart',
     shortDefinition: 'Der erste Tag der Hauptsaison eines Parks nach der Winterpause.',
     definition:
-      'Der Saisonstart ist der erste Tag der Hauptsaison eines Parks nach den geschlossenen Monaten. Die meisten Parks in Mitteleuropa öffnen zwischen Ende März und Mitte April wieder, oft passend zu den Osterferien, und viele eröffnen an diesem Tag eine neue Bahn oder einen neuen Bereich. Parks mit Wintersaison haben Ende November einen zweiten Start.\n\nZu den Eröffnungswochenenden kommen die Jahreskarteninhaber in großer Zahl zurück, und die ersten warmen Frühlingswochenenden bringen noch Tagesgäste dazu.\n\nDie Prognose von park.fan behandelt den Saisonstart als eigenes Ereignis. Solange ein Park geschlossen ist, zeigt der Besucherkalender die Tage als „Geschlossen“, und das Eröffnungsdatum erscheint dort, sobald der Park es veröffentlicht.',
+      'Der Saisonstart ist der erste Tag der Hauptsaison eines Parks nach den geschlossenen Monaten. Die meisten Parks in Mitteleuropa öffnen zwischen Ende März und Mitte April wieder, oft passend zu den Osterferien, und viele eröffnen an diesem Tag eine neue Bahn oder einen neuen Bereich. Parks mit Wintersaison haben Ende November einen zweiten Start.\n\nZu den Eröffnungswochenenden kommen die Jahreskarteninhaber in großer Zahl zurück, und die ersten warmen Frühlingswochenenden bringen noch Tagesgäste dazu.\n\nDie Prognose von park.fan behandelt den Saisonstart als eigenes Ereignis. Solange ein Park geschlossen ist, zeigt der Andrang-Kalender die Tage als „Geschlossen“, und das Eröffnungsdatum erscheint dort, sobald der Park es veröffentlicht.',
     relatedTermIds: ['offseason', 'opening-day', 'soft-opening', 'winter-season', 'crowd-forecast'],
     aliases: [
       'Saisoneröffnung',

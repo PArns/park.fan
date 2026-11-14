@@ -7,8 +7,9 @@ import type {
   SiteEventName,
 } from '@/lib/analytics/site-analytics';
 import type { LinkBlock } from '@/lib/analytics/internal-link';
-import type { SeenSection } from '@/lib/analytics/section-seen';
+import { BLOCK_SEEN_SECTIONS, type SeenSection } from '@/lib/analytics/section-seen';
 import type { PlannerOpenedSource } from '@/lib/planner/ui-store';
+import { tripRegionConfig, tripRegionTitle } from '@/lib/trip-regions/registry';
 import type {
   AnalyticsTotals,
   BreakdownDimension,
@@ -371,6 +372,9 @@ export const PAGE_TYPE_LABEL: Record<string, string> = {
   search: 'Suchseite',
   planner: 'Tagesplaner',
   favorites: 'Favoriten',
+  trip_hub: 'Reiseregion, Hub',
+  trip_month: 'Reiseregion, Monat',
+  trip_best_time: 'Reiseregion, beste Reisezeit',
   not_found: '404, nicht gefunden',
   other: 'Sonstige',
 };
@@ -696,7 +700,7 @@ export const EVENT_INFO: Record<SiteEventName, EventInfo> = {
   },
   assistant_question: {
     label: 'Frage an Parky',
-    when: 'Eine Frage wird abgeschickt; ob Vorschlag oder getippt, nie ihr Text.',
+    when: 'Eine Frage wird abgeschickt; ob Vorschlag, getippt, Antwortvorschlag (mit Platz) oder Interview-Knopf, ob die erste des Chats, nie ihr Text.',
   },
   assistant_answer: {
     label: 'Antwort von Parky',
@@ -713,6 +717,34 @@ export const EVENT_INFO: Record<SiteEventName, EventInfo> = {
   assistant_challenge_failed: {
     label: 'Parky-Check gescheitert',
     when: 'Der Turnstile-Check vor Parky ist in diesem Browser fehlgeschlagen.',
+  },
+  assistant_replies_shown: {
+    label: 'Parky-Antwortvorschläge',
+    when: 'Unter einer Antwort stehen antippbare Vorschläge; mit ihrer Zahl, nie ihr Text, und wonach: einer Interviewfrage, einer Planänderung oder einer anderen Antwort.',
+  },
+  assistant_greeting: {
+    label: 'Parky-Begrüßung',
+    when: 'Ein neuer Chat zeigt seine Begrüßung: eine zu den eigenen Plänen (heute, gestern, morgen, bald, eine Reise, der letzte Park) oder eine allgemeine; nie Park oder Datum.',
+  },
+  assistant_interview_started: {
+    label: 'Parky-Interview begonnen',
+    when: 'Parky fragt eine Reise oder einen Parktag Schritt für Schritt ab; mit der Art, der Region („none“ beim Parktag) und ob der Knopf im Planer oder der Chat es begann.',
+  },
+  assistant_interview_step: {
+    label: 'Parky-Interview: Schritt',
+    when: 'Ein Schritt des Interviews ist beantwortet oder übersprungen; mit Art, Schritt, Ergebnis und Region.',
+  },
+  assistant_interview_ended: {
+    label: 'Parky-Interview beendet',
+    when: 'Das Interview ist fertig oder wurde verlassen; mit der Zahl der beantworteten Schritte, ob der Plan stand, und der Region.',
+  },
+  assistant_plan_changed: {
+    label: 'Parky ändert einen Plan',
+    when: 'Eine Änderung von Parky kommt im Reise- oder Tagesplaner an; ein Ereignis je Art der Änderung (Daten und Parks zählen beide), nie ihr Inhalt.',
+  },
+  assistant_change_undone: {
+    label: 'Parky-Änderung zurückgenommen',
+    when: 'Parkys letzte Änderung wird rückgängig gemacht, oder der Plan wurde seither geändert und bleibt; über den Knopf unter der Antwort oder im Chat.',
   },
   planner_opened: {
     label: 'Planer geöffnet',
@@ -829,13 +861,61 @@ export const EVENT_INFO: Record<SiteEventName, EventInfo> = {
     label: 'Fehlerseite gezeigt',
     when: 'Eine Fehlerseite wird angezeigt; ohne Text der Meldung.',
   },
+  trip_tile_clicked: {
+    label: 'Reiseplaner-Kachel geklickt',
+    when: 'Ein Link der Reiseplaner-Kachel auf der Seite eines Parks oder in seinem Kalender: in den Planer mit dem Park oder zum Kalender der Region (dem Hub); mit Region, Link und dem Park.',
+  },
   trip_planner_started: {
     label: 'Reiseplaner gestartet',
-    when: 'Über den Knopf im Hub-Kopf, den Startknopf des Planers oder einen Link mit einem Plan; wie jedes Ereignis des Reiseplaners mit der Region („orlando“).',
+    when: 'Über den Knopf im Hub-Kopf, den Startknopf des Planers, einen Link mit einem Plan oder (dates) die ersten gewählten Daten eines Seitenaufrufs ohne anderen Start; wie jedes Ereignis des Reiseplaners mit der Region („orlando“).',
+  },
+  trip_tickets_opened: {
+    label: 'Ticket-Schritt geöffnet',
+    when: 'Jedes Öffnen: „Schon Tickets? Eintragen“ (ask), „Ändern“ an der Ticketkarte (card), ein Ticketproblem oder ein Tag außerhalb des Tickets; first beim ersten Mal in diesem Browser.',
+  },
+  trip_edit_opened: {
+    label: 'Änderung geöffnet',
+    when: 'Daten, Parks, Route oder Mehr Optionen geöffnet: von den Knöpfen unter dem Plan, aus dem Setup, bei nicht passenden Parks oder einem Ticketproblem.',
+  },
+  trip_option_changed: {
+    label: 'Option geändert',
+    when: 'Eine Option des Plans geändert, je Option ein Ereignis, vom Besucher oder von Parky; ein Wert nur bei kleinen festen Mengen (Puffer in Minuten, Ruhetage, an/aus, Hotelart).',
+  },
+  trip_left_out_fix: {
+    label: 'Nicht passende Parks gelöst',
+    when: 'Einer der drei Auswege, wenn Parks nicht in die Reise passen: Park an Reisetagen, Parks ändern, Tage länger; mit der Zahl der Parks.',
+  },
+  trip_find_toggled: {
+    label: 'Beste Reisezeit umgeschaltet',
+    when: '„Noch keine Daten? Beste Reisezeit finden“ und zurück zu den eigenen Daten.',
+  },
+  trip_find_period: {
+    label: 'Zeitraum der Suche gewählt',
+    when: 'Der Zeitraum der Suche nach den besten Reisedaten, und ob sie in Schulferien bleibt; nie welche Ferien.',
+  },
+  trip_calendar_mode: {
+    label: 'Kalender-Resort gewählt',
+    when: 'Der Schalter über dem Datumsraster (Insgesamt oder ein Resort), bei einer Änderung; from_default, wenn er die Voreinstellung verließ.',
+  },
+  trip_stay_suggestion: {
+    label: 'Nächte-Vorschlag',
+    when: 'Der Vorschlag der API zu den Nächten je Stadt: shown, einmal je Vorschlag auf dem Schirm; applied mit „So planen“.',
+  },
+  trip_hub_action: {
+    label: 'Weg im Hub-Kopf',
+    when: '„Reise planen“ oder „Zum Kalender“ im Kopf eines Hubs oder einer Monatsseite; mit der Seite.',
+  },
+  trip_hub_filter: {
+    label: 'Hub-Kalender gefiltert',
+    when: 'Ein Resort-Chip über dem Hub-Kalender, nur wenn er die Auswahl ändert; mit dem Resort oder „all“.',
+  },
+  trip_accuracy_opened: {
+    label: 'Genauigkeit geöffnet',
+    when: '„Wie genau ist das?“ im Plan oder die Genauigkeitszeile unter dem Hub-Kalender.',
   },
   trip_tickets_answered: {
-    label: 'Ticket-Frage beantwortet',
-    when: '„Noch nicht“, „Ja“ oder übersprungen („Weiter zu den Reisedaten“ ohne Antwort).',
+    label: 'Ticket-Frage beantwortet (bis 2.21.0)',
+    when: 'Nicht mehr gesendet: die Frage vor dem Plan gab es bis 2.21.0. Danach zählt trip_tickets_opened.',
   },
   trip_ticket_added: {
     label: 'Ticket eingetragen',
@@ -919,7 +999,7 @@ export const EVENT_INFO: Record<SiteEventName, EventInfo> = {
   },
   section_seen: {
     label: 'Stelle der Parkseite erreicht',
-    when: 'Eine markierte Stelle einer Parkseite kommt ins Bild, einmal je Seitenaufruf; zählt auch, wo der Park das Kapitel nicht hat.',
+    when: 'Eine markierte Stelle einer Parkseite kommt ins Bild, einmal je Seitenaufruf; zählt auch, wo der Park das Kapitel nicht hat. Die Reiseplaner-Kachel und das Reiseplaner-Band zählen so, wie oft sie im Bild waren.',
   },
   nav_menu_opened: {
     label: 'Menü geöffnet',
@@ -927,7 +1007,7 @@ export const EVENT_INFO: Record<SiteEventName, EventInfo> = {
   },
   faq_opened: {
     label: 'FAQ-Frage geöffnet',
-    when: 'Eine Frage eines FAQ wird aufgeklappt; mit ihrem Platz in der Liste, nie mit ihrem Text.',
+    when: 'Eine Frage eines FAQ wird aufgeklappt; mit ihrem Platz in der Liste, im Hub einer Reiseregion auch mit dem Schlüssel der Frage („quietest“, „accuracy“), nie mit ihrem Text.',
   },
   park_links_opened: {
     label: 'Park-Links aufgeklappt',
@@ -981,12 +1061,18 @@ const PROP_LABEL: Record<string, string> = {
   mode: 'Weg',
   lever: 'Hebel',
   outcome: 'Ergebnis',
+  first: 'Erste Frage des Chats',
+  context: 'Wonach',
+  via: 'Über',
+  plan: 'Plan stand',
+  region: 'Region',
   block: 'Block',
   dest: 'Führt zu',
   section: 'Stelle',
   menu: 'Menü',
   entrance: 'Auftritt',
   line: 'Spruch',
+  link: 'Link',
   length: 'Länge der Eingabe',
 };
 
@@ -1003,6 +1089,9 @@ export const LINK_BLOCK_LABEL: Record<LinkBlock, string> = {
   guide_band: 'Guide-Band im Parkkopf',
   news_band: 'News-Band im Parkkopf',
   trip_band: 'Reiseplaner-Band',
+  trip_tile: 'Reiseplaner-Kachel',
+  trip_answer: 'Antwort im Hub-Kopf',
+  trip_parks: 'Andrang-Kalender je Park im Hub',
   nav: 'Vorheriger, nächster Beitrag',
   related: 'Weiterlesen',
   most_read: 'Meistgelesen',
@@ -1017,6 +1106,7 @@ export const LINK_BLOCK_LABEL: Record<LinkBlock, string> = {
 
 /** The marked places of a park page, top to bottom, in German. */
 export const SECTION_LABEL: Record<SeenSection, string> = {
+  trip_tile: 'Reiseplaner-Kachel',
   main_end: 'Ende der Fahrgeschäfte bzw. des Kalenders',
   blog: 'Beiträge',
   nearby: 'Parks in deiner Nähe',
@@ -1024,10 +1114,19 @@ export const SECTION_LABEL: Record<SeenSection, string> = {
   outlook: 'Jahresausblick',
   faq: 'FAQ',
   end: 'Seitenende',
+  trip_band: 'Reiseplaner-Band',
 };
 
 /** The places in the order the page has them. */
 export const SEEN_SECTION_ORDER = Object.keys(SECTION_LABEL) as SeenSection[];
+
+/**
+ * The places that say how far down a park page was read, every one listed in the reach table; a
+ * block's own mark (the planner tile) is a row there only once it was seen.
+ */
+const DEPTH_SECTION_ORDER = SEEN_SECTION_ORDER.filter(
+  (section) => !BLOCK_SEEN_SECTIONS.includes(section)
+);
 
 /** The header's menus in German. */
 export const NAV_MENU_LABEL: Record<NavMenuId, string> = {
@@ -1059,14 +1158,20 @@ const PLANNER_OPENED_SOURCE_LABEL: Record<PlannerOpenedSource | 'none', string> 
   'shared-link': 'Geteilter Plan',
   'home-hero': '„Heute planen“ auf der Startseite',
   'kids-page': 'Seite „Mit Kindern“',
-  'orlando-hub': 'Orlando-Hub, „Diesen Tag planen“',
   'menu-plan': 'Planer-Menü im Header, „Meinen Plan öffnen“',
   'menu-park': 'Planer-Menü im Header, ein beliebter Park',
-  assistant: 'Parky, der Chat-Assistent',
+  assistant: 'Parky, der KI-Chat',
   none: 'Planer zu',
 };
 
 /** The planner's property values in German, keyed by property, then value. */
+/** The region sources of `planner_opened`: the hub's day sheet, the trip's day sheet, the first filed day. */
+const TRIP_OPEN_SOURCES: ReadonlyArray<readonly [string, string]> = [
+  ['-hub', 'Hub, „Diesen Tag planen“'],
+  ['-trip-day', 'Reiseplan, „Im Tagesplaner öffnen“'],
+  ['-trip-first', 'Reiseplan, „Ersten Tag öffnen“'],
+];
+
 const PLANNER_VALUE_LABEL: Record<string, Record<string, string>> = {
   step: { park: 'Park', date: 'Tag', setup: 'Wer kommt mit', headliners: 'Headliner' },
   kind: { ride: 'Fahrgeschäft', show: 'Show', block: 'Eigener Block' },
@@ -1091,6 +1196,7 @@ const PLANNER_VALUE_LABEL: Record<string, Record<string, string>> = {
     weather: 'Wetter im Park',
     live: 'Wartezeiten im Park',
     clock: 'Parkuhr (Öffnung, Schluss)',
+    yours: 'Eigene Pläne (nächster Parktag, Reise, letzter Park)',
   },
   entrance: {
     scurry: 'Huschen',
@@ -1128,6 +1234,7 @@ const PLANNER_VALUE_LABEL: Record<string, Record<string, string>> = {
   },
   outcome: { ready: 'Plan', empty: 'Leer', missing: 'Nicht gefunden', failed: 'Fehler' },
   headliners: { true: 'Ja', false: 'Nein' },
+  link: { plan: 'In den Planer mit dem Park', calendar: 'Kalender der Region' },
 };
 
 /** The name of an event property in German; an unknown one stays as sent. */
@@ -1148,6 +1255,11 @@ export function propValueLabel(prop: string, value: string): string {
   if (prop === 'dest') return pageTypeLabel(value);
   if (prop === 'section') return labelFrom(SECTION_LABEL, value);
   if (prop === 'menu') return labelFrom(NAV_MENU_LABEL, value);
+  for (const [suffix, words] of TRIP_OPEN_SOURCES) {
+    if (prop !== 'source' || !value.endsWith(suffix)) continue;
+    const region = tripRegionConfig(value.slice(0, -suffix.length));
+    if (region) return `${tripRegionTitle(region.slug)}, ${words}`;
+  }
   return PLANNER_VALUE_LABEL[prop]?.[value] ?? value;
 }
 
@@ -1525,7 +1637,7 @@ export function sectionReach(
   return {
     pageTypes,
     views,
-    rows: orderKeys(SEEN_SECTION_ORDER, seen, true).map((section) => ({
+    rows: orderKeys(DEPTH_SECTION_ORDER, seen, true).map((section) => ({
       section,
       cells: pageTypes.map((type, index) => {
         const reached = lookup(section, type);

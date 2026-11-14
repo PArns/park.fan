@@ -1,4 +1,5 @@
 import { fromZonedTime } from 'date-fns-tz';
+import type { CalendarDay, CrowdLevel } from '@/lib/api/types';
 
 const HOUR_MS = 60 * 60 * 1000;
 const DAY_MS = 24 * HOUR_MS;
@@ -8,6 +9,26 @@ const ISO_DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
 /** Whether `value` has the shape `YYYY-MM-DD`; it does not check that the day exists. */
 export function isIsoDate(value: string): boolean {
   return ISO_DATE_RE.test(value);
+}
+
+/**
+ * Whether the park is shut on a calendar day. Both fields are read, because a day the park has
+ * since closed can still carry the crowd level it was forecast with.
+ */
+export function isClosedCalendarDay(day: Pick<CalendarDay, 'status' | 'crowdLevel'>): boolean {
+  return day.status === 'CLOSED' || day.crowdLevel === 'closed';
+}
+
+/**
+ * The forecast crowd level a day is rated on: `predictedCrowdLevel`, with `crowdLevel` for older
+ * API builds and unratable days, and `'closed'` on a day the park is shut. The API sends a
+ * prediction for closed days too, and a level for a day nobody can visit is neither busy nor quiet.
+ */
+export function forecastCrowdLevel(
+  day: Pick<CalendarDay, 'status' | 'crowdLevel' | 'predictedCrowdLevel'>
+): CrowdLevel | 'closed' {
+  if (isClosedCalendarDay(day)) return 'closed';
+  return day.predictedCrowdLevel ?? day.crowdLevel;
 }
 
 /**

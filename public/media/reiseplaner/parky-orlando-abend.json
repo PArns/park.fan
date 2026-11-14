@@ -1,0 +1,25 @@
+{
+  "title": "Parky-Szene Orlando, Abend",
+  "tags": ["diagram", "night"],
+  "alt": {
+    "de": "Parky mit hochgeschobener Sonnenbrille am See in der Dämmerung, er schaut zum Feuerwerk über der Achterbahn am anderen Ufer, neben ihm der Flamingo, der Koffer und die Reisekarte.",
+    "en": "Parky with his sunglasses pushed up by the lake at dusk, watching fireworks over the coaster on the far shore, the flamingo, the suitcase and the travel map beside him.",
+    "nl": "Parky met zijn zonnebril omhoog bij het meer in de schemering, kijkend naar vuurwerk boven de achtbaan aan de overkant, met de flamingo, de koffer en de reiskaart naast hem.",
+    "fr": "Parky, les lunettes de soleil relevées, au bord du lac au crépuscule, regarde un feu d’artifice au-dessus des montagnes russes sur l’autre rive, à côté de lui le flamant rose, la valise et la carte.",
+    "es": "Parky con las gafas de sol subidas junto al lago al anochecer, mirando los fuegos artificiales sobre la montaña rusa de la otra orilla, con el flamenco, la maleta y el mapa al lado.",
+    "it": "Parky con gli occhiali da sole alzati in riva al lago al tramonto guarda i fuochi d’artificio sopra l’ottovolante sull’altra sponda, accanto il fenicottero, la valigia e la mappa."
+  },
+  "credit": {
+    "author": "park.fan",
+    "license": "all-rights-reserved"
+  },
+  "focus": {
+    "x": 0.89,
+    "y": 0.55
+  },
+  "bannerFocus": {
+    "x": 0.25,
+    "y": 0.55
+  },
+  "shotAt": "2026-11-14"
+}

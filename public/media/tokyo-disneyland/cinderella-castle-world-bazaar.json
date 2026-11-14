@@ -1,0 +1,33 @@
+{
+  "title": "Cinderella Castle from World Bazaar",
+  "park": "tokyo-disneyland",
+  "area": "World Bazaar",
+  "roles": ["park-background"],
+  "tags": ["background", "crowd", "dusk", "outdoor", "park", "photo", "theming"],
+  "alt": {
+    "de": "Das Cinderella-Schloss im Abendlicht, gesehen durch die Eisenbögen unter dem Glasdach des World Bazaar.",
+    "en": "Cinderella Castle at sunset, seen through the iron arches under the glass roof of World Bazaar.",
+    "es": "El castillo de Cenicienta al atardecer, visto entre los arcos de hierro bajo el techo de cristal de World Bazaar.",
+    "fr": "Le château de Cendrillon au coucher du soleil, vu à travers les arches en fer sous la verrière de World Bazaar.",
+    "it": "Il castello di Cenerentola al tramonto, visto tra gli archi in ferro sotto il tetto di vetro di World Bazaar.",
+    "nl": "Het kasteel van Assepoester bij zonsondergang, gezien door de ijzeren bogen onder het glazen dak van World Bazaar."
+  },
+  "caption": {
+    "de": "World Bazaar ist die Main Street von Tokyo Disneyland, mit einem festen Dach gegen das Wetter.",
+    "en": "World Bazaar is Tokyo Disneyland’s Main Street, under a permanent canopy against the weather.",
+    "es": "World Bazaar es la Main Street de Tokyo Disneyland, bajo una cubierta fija que protege del tiempo.",
+    "fr": "World Bazaar, c’est la Main Street de Tokyo Disneyland, sous une couverture permanente qui protège des intempéries.",
+    "it": "World Bazaar è la Main Street di Tokyo Disneyland, sotto una copertura fissa che ripara dal maltempo.",
+    "nl": "World Bazaar is de Main Street van Tokyo Disneyland, onder een vaste overkapping tegen het weer."
+  },
+  "credit": {
+    "author": "Colton Jones",
+    "license": "unsplash",
+    "source": "unsplash",
+    "sourceUrl": "https://unsplash.com/photos/white-and-blue-castle-u58-NAyaa9c"
+  },
+  "focus": {
+    "x": 0.48,
+    "y": 0.62
+  }
+}

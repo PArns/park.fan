@@ -120,14 +120,18 @@ through the site's own paths:
 | `planner_add_block`    | `addCustom(…, 'assistant')`, then opens the day                                      | Tagesplaner |
 | `planner_optimize`     | opens the day and `plannerUi.requestOptimize`: the day's optimise row runs           | sortiert    |
 | `planner_remove`       | `removeEntry` per id, then opens the day                                             | Tagesplaner |
-| `planner_move`         | `moveEntryToIndex`: the day's start minutes taken in the new order                   | Tagesplaner |
+| `planner_move`         | `moveEntryToIndex`, or `moveEntry` to a time; a show to another performance          | Tagesplaner |
 | `planner_update_block` | `setCustomBlock`, and `moveEntry` for a new start; free blocks only                  | Tagesplaner |
 | `planner_add_show`     | `addShow(…, 'assistant')` for a showtime the day's `/plan/day` lists                 | Tagesplaner |
 | `planner_set_prefs`    | `setDayPrefs` (height, water rides, early entry)                                     | Tagesplaner |
 | `planner_mark_done`    | `setEntryDone` per id                                                                | Tagesplaner |
 | `planner_clear_day`    | `clearDay`, undoable through `planner_undo`                                          | Tagesplaner |
-| `planner_reserve_days` | `reserveDays` for the park, opens the first                                          | Tagesplaner |
+| `planner_reserve_days` | `reserveDays` for the park, opens the first; `prefs` on the days it filed            | Tagesplaner |
 | `planner_reserve_trip` | `reserveDays` for a trip across parks in one write, opens the first                  | Tagesplaner |
+| `trip_set`             | the trip planner's own `update` through the bridge, else the hub with the query      | Reiseplaner |
+| `trip_undo`            | the trip before Parky's last change, unless the visitor changed it since             | Rückgängig  |
+| `replies`              | the reply chips under the newest answer (`AssistantReplies`)                         |             |
+| `interview_state`      | the interview's state in session storage; a trip's party with its remembered trip    |             |
 | `planner_undo`         | puts the day back as before Parky's last change, unless the visitor changed it since | Tagesplaner |
 | `planner_share`        | opens the panel and the bell's popover with the share link; never shares             | Tagesplaner |
 | `request_location`     | shows the share card under the answer                                                |             |
@@ -146,6 +150,12 @@ links it with the site's prefix and drops a post in another language than the pa
 a title or name, or with a link off the site, refuses the card; a cover from another host is
 dropped, not the post.
 
+A change to a day or a trip shows a receipt under the answer (`AssistantReceipts`): what changed
+(„Reiseplaner: Tage getauscht", „Tagesplaner: Phantasialand, 21. Nov.") and „Rückgängig", which
+runs Parky's own undo below and then reads „Zurückgenommen", „Seither geändert, bleibt so" or
+„Nicht mehr rückgängig zu machen" (a reload forgets Parky's undo). On a phone during an interview
+the window stays open after a change and the receipt offers „Ansehen", which closes it for a look.
+
 Every planner change keeps the day as it was before and as it was right after
 (`rememberParkyChange`, `lib/assistant/planner-context.ts`), one level per park and day for the
 tab. `planner_undo` puts the day back with `restoreDay`, preferences and reservation included, and
@@ -157,11 +167,51 @@ nothing shows no chip and keeps the earlier undo. A show is added only at a time
 show picker would list (`showLinesFor` over the day's `/plan/day`).
 
 Parky sees the plan through the `planner` field every question carries
-(`assistantPlannerSnapshot`): the planned days (`isPlannedDay`) from today on in each park's own
-date, nearest first, at most 6, each with at most 40 entries in plan order, the start the planner
-prints on the block (`formatGridTime`), a block's or show's length and the tick; the day's
-preferences, and the active park and day. With nothing planned the field is left out. The API
+(`assistantPlannerSnapshot`): every planned day (`isPlannedDay`) from today on in each park's own
+date, nearest first; the day open in the planner and the nearest in full, at most 8, each with at
+most 40 entries in plan order, the start the planner prints on the block (`formatGridTime`) and the
+entry's own minute (past 1440 after midnight), a show's slug, a block's or show's length and the
+tick; the day's preferences, and the active park and day. The other planned days, at most 60, go as
+`more`, by park and date with their counts. With nothing planned the field is left out. The API
 answers with the next turn, so Parky reads what its last action did from that plan.
+
+### The trip planner
+
+The trip planner keeps no state of its own; its state is the hub's query. The mounted planner
+publishes it through a bridge (`tripPlannerBridge`, `lib/trip-regions/planner-bridge.ts`, one
+effect in `use-plan-state.ts`, independent of the order of the planner's steps), and remembers the
+last trip per region in this browser (`parkfan_trip_<slug>`, `lib/trip-regions/remembered-trip.ts`:
+the query once it holds dates or a search, and the party Parky's interview asked about; a bare hub
+visit never erases it; the hub does not reopen it by itself, Parky does on request). Every question
+carries `trips` (`assistantTripsSnapshot`, `lib/assistant/trip-context.ts`): the trip on screen
+with `onScreen`, then each region's remembered trip, at most 4, left out without any. The API plans
+the trip on screen before the answer and lists it a line a day, which is where Parky's unasked hints
+come from.
+
+`trip_set` goes through the planner's own `update` with the query read as a link is read
+(`readPlanQuery`), the path a press takes: written to the address bar, re-planned on screen. Where
+the hub is not on screen the widget opens it with the query (`tripRegionPath`, `#planner`). Parky's
+change is kept per region (`rememberTripChange`): the query before it and, once the planner has
+written it back, the query after it in the planner's own spelling. `trip_undo` (Parky's tool, or the
+receipt's button) puts the trip back only while it still says what Parky left (`sameTripQuery`,
+parameter order aside); the visitor's own change since is never undone.
+
+A hub link Parky writes is `/trip-regions/<slug>…` (the API does not know the segments); the site
+redirects it, and the widget resolves it from the registry first (`regionHubPath`,
+`lib/assistant/links.ts`), so a press lands on `/de/orlando` without the hop.
+
+**Live regions.** The registry's `live` flag (`lib/trip-regions/registry.ts`) is the one switch a
+region flips at go-live: it opens the hub's routes, and every question sends the same list as
+`liveRegions` (`LIVE_TRIP_REGIONS`), so Parky plans, changes and links those regions only and says a
+coming one opens later. The snapshot of trips takes live regions only, and the widget refuses a
+`trip_set`, a `trip_undo` or an interview region for a region not live (`readAssistantAction`), so
+nothing ever opens a hub that answers 404. The API's side is its `docs/frontend/assistant.md#live-regions`.
+
+**The route.** In a region with bases (Japan, Paris) Parky's `change_trip` sets the stays
+(`bases`), the city an airport serves (`startBase`, `endBase`), the hotel-change buffer and the
+plan's stay suggestion; the widget applies the query like any other, and the receipt says
+„Reiseplaner: Route geändert“ (kind `route`) or „Zeit für Hotelwechsel eingestellt“ (`buffer`).
+A date search arrives as `when=…&days=…`, which the planner opens in its finder.
 
 Reminders (`lib/assistant/alerts-context.ts`, `alert-writes.ts`) carry the ids the push endpoints
 take: `alert_ride_set` the ride's UUID as `rideId`, a `kind` (`wait_below` with
@@ -209,6 +259,44 @@ Parky's window closes after a page change or a planner action, so the result is 
 The position is never read without a press: the share card calls the site's own geolocation
 (`useGeolocation().refresh()`), so the same yes also brings the in-park markers and the compass on
 the park's page. It goes to the API once, with the next question, and Parky keeps it nowhere.
+
+## Reply chips
+
+The API ends an answer the visitor is likely to answer with up to four replies the model wrote
+(`suggest_replies`, sent as the `replies` action, checked again by `readReplies`: plain lines, each
+once, no link or Markdown, at most 40 characters). `AssistantReplies` draws them under the newest
+answer only, on the visitor's side of the chat, as the site's outline `Button` in the primary ink
+(32 px at a desk, 44 px on a phone); they go once anything is sent. A press sends the text as the
+visitor's message (`assistant_question` kind `chip`). They are a labelled group (`repliesLabel`),
+read once by the chat's live region when they arrive; Tab reaches them after the answer, Enter or
+Space sends.
+
+## The interview
+
+Parky can plan a trip or a park day with the visitor from simple to detailed: a short core (a
+trip's region, dates and parks; a day's park, date and must-dos), a plan at once, then refinements
+he offers as replies (party and heights, tickets, hotel, pace, the day planner; a day's heights,
+shows and arrival). The order is a guide: what a visitor says early is taken at once. The API's
+`docs/frontend/assistant.md#the-interview` holds the steps and the tool.
+
+- **Ways in:** the trip planner's „Plane mit Parky deine perfekte Reise" (above the setup) and the
+  day planner's „Plane mit Parky deinen perfekten Parktag" (on an empty day),
+  `parky-trip-interview-button.tsx` and `parky-day-interview-button.tsx` on one
+  `ParkyInterviewStart`, in separate files so each route ships only its own planner's two strings,
+  drawn only where Parky shows for this visitor (`assistantGate`). The card lays itself out by its
+  own width (`@container`, side by side from `@xl`, 36rem), not the window's: the day planner's
+  panel is about 400 px wide on the widest screen, the trip planner's card wide on a tablet. A
+  press sets the interview on its first step (`startInterview`) and opens the window
+  (`openParky('interview')`), which sends „Plan meine Reise mit mir, Frage für Frage." as the
+  visitor's message once its session is ready (`takeInterviewKickoff`, `assistant_question` kind
+  `interview`). In the chat: asking for it, or the opener's `suggestInterview` and
+  `suggestInterviewHere`.
+- **The state** (`interviewStore`, `lib/assistant/interview.ts`, session storage beside the chat)
+  goes with every question as `interview` and changes only by the API's `interview_state` action
+  and the bar's button. Every answer is in the planners already, so leaving keeps everything.
+- **The bar** (`AssistantInterviewBar`) over the messages: the interview's name, „Schritt 2 von 3:
+  Reisedaten" with a dot per core step, then „Dein Plan steht. Feinschliff nach Wunsch"; „Beenden",
+  or „Fertig" once the plan stands.
 
 ## Language
 
@@ -496,7 +584,7 @@ spins in the air, drops from above and lands in a puff of dust, rolls in and wob
 peeks in from the edge at a tilt before hopping in, or pops up out of nothing in a burst of
 sparkles. After a client navigation (the button stays), a closed window or under reduced motion
 it only fades in. Only the session's first line is an entrance's own; later loads arrive without
-one.
+one, and only when the visitor's own plans have no line for it.
 `ENTRANCE_MS` holds each length, which the stylesheet reads as `--parky-enter`; the launcher waits
 that long before Parky has landed and speaks, by a timer, because `animationend` never reached
 React's handler on the home page.
@@ -510,24 +598,47 @@ drawn from eight on any page (`SUGGESTION_KEYS.site`) and seven about "here" on 
 window shows the chat as it was; "new chat" draws again, never with the same greeting twice in a
 row.
 
+Where this browser holds the visitor's plans, the chat opens with them instead (`yours.ts` below):
+a planned day today (`greetingToday`), yesterday (`greetingAfter`), in the next 14 days
+(`greetingSoon`, „Hey, am Donnerstag ist Parktag: Efteling 🎡 Deinen Plan hab ich dabei.“), three
+or more within 30 days (`greetingTrip`), or, on a later visit within 30 days, the park the last
+chat was about (`greetingBack`). Its own questions come first (`YOURS_CHIPS`, `suggestMy*`, whole
+questions about „mein Parktag“, so they read right without the greeting) and the drawn ones fill
+up to three. The greeting the window shows goes with the chat's first question as `opener`, so
+Parky reads „ja“ or „super!“ as the answer to it.
+
+Under Parky's name the window shows a status line (`AssistantSubtitle`): the next planned day
+(`subtitleNext`, „Als Nächstes: Efteling, Do., 19. Nov.“), else who he is („Dein Park-Buddy“).
+How he talks about himself everywhere is [Buddy, not assistant](parky-character.md#buddy-not-assistant).
+
 `AssistantTeaser` draws a speech bubble beside the closed button, its tail on Parky's mouth: the
 bubble's right edge and bottom are reckoned from the button's size (56 px, 64 px from `sm`) and
 its corner offset. These lines go in it, from the `assistant` namespace:
 
-- **The session's two slots**: 8 s after the button shows and again 90 s after that
-  (`TEASER_SCHEDULE_MS`), two lines a session at most. Which line fills a slot is one list,
+- **The visit's one line**: 8 s after the button shows (`TEASER_SCHEDULE_MS`), one line a
+  session that nobody asked for. The bubble covers part of the page, so once is enough: a bored or
+  woken line, the weather's and the live waits' spend the same one (`countReaction`). Which line
+  fills the slot is one list,
   `lineSources` in `lib/assistant/parky/lines.ts`, best first; the first source with a line for
   the page speaks, so a park whose statistics are too thin for a fact falls through to the next:
 
-  | Source       | When                                                                  | Lines                                                                                           |
-  | ------------ | --------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
-  | `entrance`   | first slot, after an entrance, a beat after landing                   | `entranceScurry`, `entranceDrop`, `entranceRoll`, `entrancePeek`, `entrancePop`                 |
-  | `live`       | a park's page, once a park a session, level with the weather          | `liveWalkOn1`–`3`, `liveQueue1`–`3`, `liveFull1`–`3`, `liveClosed1`–`3`, `liveShow1`–`3`        |
-  | `clock`      | a park's page, once a park a session, in the clock's windows          | `clockRopeDrop1`–`3`, `clockClosing1`–`3`                                                       |
-  | `holiday`    | first slot, on one of Parky's holidays                                | `holidayHalloween`, `holidayChristmas`, `holidayNewYear`                                        |
-  | `fact`       | last slot, on a park's page or the homepage (`?parky=fact`: any slot) | `factLongest1`–`3`, `factGap1`–`2`, `factQuietest1`–`3`, `factBusiest1`–`3`, `factAverage1`–`3` |
-  | `park`       | a park's page, on `PARK_EGG_CHANCE` (40 %) or `?parky=egg`            | `parkLine1`–`6`, `parkQueue1`–`3`, `parkRopeDrop1`–`2`, `parkClosing1`–`2`, `parkFood1`–`2`     |
-  | `invitation` | always                                                                | `teaser1`–`teaser13`                                                                            |
+  | Source       | When                                                                  | Lines                                                                                                           |
+  | ------------ | --------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
+  | `yours`      | first slot, the visitor's own plans in this browser (`?parky=yours`)  | `yoursToday`, `yoursAfter`, `yoursTomorrow`, `yoursSoon`, `yoursTrip`, `yoursRidden`, `yoursBack`, `yoursAlert` |
+  | `entrance`   | first slot, after an entrance, a beat after landing                   | `entranceScurry`, `entranceDrop`, `entranceRoll`, `entrancePeek`, `entrancePop`                                 |
+  | `live`       | a park's page, once a park a session, level with the weather          | `liveWalkOn1`–`3`, `liveQueue1`–`3`, `liveFull1`–`3`, `liveClosed1`–`3`, `liveShow1`–`3`                        |
+  | `clock`      | a park's page, once a park a session, in the clock's windows          | `clockRopeDrop1`–`3`, `clockClosing1`–`3`                                                                       |
+  | `holiday`    | first slot, on one of Parky's holidays                                | `holidayHalloween`, `holidayChristmas`, `holidayNewYear`                                                        |
+  | `fact`       | last slot, on a park's page or the homepage (`?parky=fact`: any slot) | `factLongest1`–`3`, `factGap1`–`2`, `factQuietest1`–`3`, `factBusiest1`–`3`, `factAverage1`–`3`                 |
+  | `park`       | a park's page, on `PARK_EGG_CHANCE` (40 %) or `?parky=egg`            | `parkLine1`–`6`, `parkQueue1`–`3`, `parkRopeDrop1`–`2`, `parkClosing1`–`2`, `parkFood1`–`2`                     |
+  | `invitation` | always                                                                | `teaser1`–`teaser13`                                                                                            |
+
+  `yours` reads what the browser keeps (`yoursMoments`, `lib/assistant/parky/yours.ts`), best
+  first: a planned day today, yesterday, tomorrow, in 2 to 14 days, three or more planned days
+  within 30 days, a count of rides ticked off that stands on 10, 25, 50 or 100, the last chat's park
+  on a later visit within 30 days (`lib/assistant/last-park.ts`, `parkfan_parky_last_park` in local
+  storage), a ride alert. Each planned day is measured against its park's own today. German lines
+  name the park without an article, as the planner keeps none.
 
   A new kind of scheduled line goes into that list at its rank. One that falls due over another
   line, while Parky sleeps or while a search is open tries again 5 s later. `?parky=live`,
@@ -586,8 +697,8 @@ its corner offset. These lines go in it, from the `assistant` namespace:
   CDN-cached `/stats` request when the slot falls due. The fact list is open for hand-written facts
   from the API, merged in as further `{ key, values }`. Parky reads (`read`) after a fact.
 - **Reactions**, read from the same `parkyBoredom`: a bored line (`teaserBored1`–`4`) after the
-  first yawn, a woken line (`teaserWoke1`–`3`) once somebody wakes Parky. At most
-  `REACTIONS_PER_SESSION` (3).
+  first yawn, a woken line (`teaserWoke1`–`3`) once somebody wakes Parky, while the visit's one
+  unasked line is still unspent (`REACTIONS_PER_SESSION`, 1).
 - **Easter eggs** (`lib/assistant/parky/easter-eggs.ts`): on Halloween, at Christmas and at New Year
   the first invitation is the day's own line (`holidayHalloween`, `holidayChristmas`,
   `holidayNewYear`, by the browser's calendar). On a park's own page, when its slot draws it, Parky
@@ -604,7 +715,7 @@ its corner offset. These lines go in it, from the `assistant` namespace:
   another line, Parky plays the weather's act (`WEATHER_ACT`) and says a `weather` line
   (`weatherRain1`–`3`, `weatherStorm1`–`2`, `weatherSnow1`–`3`, `weatherCold1`–`3`,
   `weatherWindy1`–`2`, `weatherFog1`–`2`, `weatherHot1`–`3`, with `{park}` and `{temp}` in the
-  visitor's unit). It counts against `REACTIONS_PER_SESSION` and stays away once lines are muted.
+  visitor's unit). It spends the visit's one unasked line and stays away once lines are muted.
   With a fine pointer, the pointer resting on Parky's nose (between and just under the eyes) makes
   it squint at it, both pupils turned in; circling it fast, two turns inside 1.5 s, makes it dizzy
   (`useGaze`, `components/assistant/parky/use-gaze.ts`, the `dizzy` act through its own cue).
@@ -630,8 +741,16 @@ Every line stays 7 s, or until a search or a modal dialog opens (`usePageLocked`
 `data-scroll-locked` on `<body>`): the bubble would cover the palette's list, the field's results
 or the dialog's buttons (on a phone, the planner wizard's Back and Next). An answer that falls due then
 waits and is said once they close, unless that takes longer than 15 s. Opening Parky ends the invitations and reactions for the session
-(`stopTeasers`, `lib/assistant/teaser-store.ts`); closing a line by its ✕ ends every line,
-easter eggs included (`muteLines`).
+(`stopTeasers`, `lib/assistant/teaser-store.ts`); closing a line by its ✕ („Sprechblasen
+ausblenden“) ends every line, easter eggs included (`muteLines`).
+
+The bubble also keeps out of the visitor's way (`lib/assistant/parky/bubble-room.ts`). While a
+planner is at work, the day planner's panel open (`data-planner-open`) or the trip planner on
+screen (`data-trip-planner`), the visit's line waits and an answer to what the visitor did plays
+its act without its line. And it never stands over a control: each line is first laid out in an
+unseen twin of the bubble, and if any of nine points across it, 8 px around included, lies over a
+button, a tab, a field or a link styled as a button (`coversControl`), the line is not said; the
+scheduled one tries again 5 s later.
 
 ## Parky's page
 
@@ -659,12 +778,22 @@ the dark theme. Run it again after the widget changes visibly.
 
 Our own statistic (`trackSiteEvent`, labels in `lib/admin/site-analytics.ts`): `assistant_shown`
 (the button on screen, once per page view, with the entrance it made or `none`),
-`assistant_opened` (with `source`: the button, a line, Parky's page, or `language` after his
-language switch), `assistant_line_shown`,
+`assistant_opened` (with `source`: the button, a line, Parky's page, `language` after his
+language switch, or `interview` from a planner's button), `assistant_line_shown`,
 `assistant_line_clicked` and `assistant_line_closed` (each with the line's kind as `line`: invitation,
 entrance, bored, woke, holiday, park, fact, secret, weather, live, clock, or the answer's planner, plan, favourite, alert, theme
-or install), `assistant_closed` (questions while open), `assistant_question` (suggestion or typed, never the
-text), `assistant_answer` (result and number of lookups), `assistant_rated`,
+or install), `assistant_closed` (questions while open), `assistant_question` (suggestion, typed, a reply chip
+or the interview button, never the text; `first` for a chat's first, `position` for a chip, 1 the
+model's likeliest), `assistant_greeting` (once per chat, the greeting's kind: today, yesterday,
+tomorrow, soon, trip, back or plain), `assistant_replies_shown` (how many chips, and after what:
+`interview`, `plan_change` or `answer`), `assistant_interview_started` (trip or day, from the
+planner or the chat, its `region`, `none` for a park day or a region not settled yet),
+`assistant_interview_step` (each step with `outcome` answered or skipped, and the region),
+`assistant_interview_ended` (done or left, the steps answered, `plan` whether the core stood, the
+region; the helpers are `interviewRegion`, `interviewPlanStood`, `interviewEnded`),
+`assistant_plan_changed` (trip or day, one event per kind of change, the route and the buffer among
+them, never its content), `assistant_change_undone` (undone, or changed since; `via` the receipt's
+button or the chat), `assistant_answer` (result and number of lookups), `assistant_rated`,
 `assistant_feedback_sent` (whether with an e-mail, never the e-mail) and
 `assistant_challenge_failed`. Planner writes count as `plan_item_added` with source `assistant`,
 the planner opening as `planner_opened` with source `assistant`.
@@ -689,7 +818,12 @@ their order, what each kind of act puts aside, the showy pool only growing, wher
 and the `?parky=` look switch.
 
 `pnpm test:assistant-context` covers what the browser tells Parky and lets him change: the plan
-snapshot (from today on, nearest first, the caps, the printed starts, nothing when empty), the
+snapshot (from today on, nearest first, the caps, the printed starts and own minutes, the day open
+in the planner always in full, the other days by park and date, nothing when empty), the trip
+planner's bridge and remembered trip (a bare hub never erases it, a bad record costs itself), the
+trips snapshot, Parky's trip undo (and that it leaves a trip the visitor changed since), the new
+action checks (a trip change, replies, a move to a time, a filed trip's height, the interview's
+state), the interview store and the button's first question, the hub link resolved, the
 reorder, Parky's undo (and that it leaves a day the visitor changed since), and the checks of every planner edit (ids that are no ids dropped, an
 optional field that fails left out, nothing riding along) and of a reserved trip (each park
 checked, each park and day once, at most 16, filed in one write), the reminders' snapshot, the slugs they

@@ -18,9 +18,9 @@ import { getPostSearchIndex } from '@/lib/navigation/blog-menu';
 import { searchPostsBySection } from '@/lib/navigation/post-search';
 import { PostSearchResultList } from '@/components/blog/listing-search';
 import { SearchPageTracking } from '@/components/search/search-page-tracking';
-import { TripPlannerBand } from '@/components/orlando/trip-planner-band';
-import { getTripRegionLinks } from '@/lib/orlando/api';
-import { matchTripRegion } from '@/lib/orlando/trip-links';
+import { TripPlannerBand } from '@/components/trip-regions/trip-planner-band';
+import { getTripRegionLinks } from '@/lib/trip-regions/api';
+import { matchTripRegion } from '@/lib/trip-regions/trip-links';
 import { searchResultData } from '@/lib/analytics/search-session';
 import type { Metadata } from 'next';
 import type { Locale } from '@/i18n/config';
@@ -125,7 +125,7 @@ function SearchResultCard({
   // The palette and the hero route a picked result through the same resolver.
   const href = searchResultHref(result, locale);
 
-  const backgroundImage = result.type === 'park' ? getParkBackgroundImage(result.slug) : null;
+  const backgroundImage = result.type === 'park' ? getParkBackgroundImage(result) : null;
 
   const card = (
     <Card className="hover:border-primary/50 relative h-full overflow-hidden transition-all hover:shadow-md">

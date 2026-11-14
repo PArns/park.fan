@@ -21,6 +21,10 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `AssistantFeedbackForm` _component_: Feedback about the site, sent with the page it was written on and, when one is open, the chat, so the admin can read both together. The e-mail is only for those who want an answer.
 
+### [`assistant-interview-bar.tsx`](../../components/assistant/assistant-interview-bar.tsx)
+
+- `AssistantInterviewBar` _component_: Parky's interview while it runs, over the chat: which interview, where it stands (a dot per core step, then "your plan stands" once the refinements are on offer) and a button to stop.
+
 ### [`assistant-launcher.tsx`](../../components/assistant/assistant-launcher.tsx)
 
 - `AssistantLauncher` _component_: Parky, bottom right: only the round icon until it is pressed, then a small chat window above it.
@@ -37,14 +41,39 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `AssistantPanel` _component_: The window Parky opens in: the chat and, on its second tab, the feedback form. Mounted once the launcher was first pressed and kept, so a closed and reopened chat is where it was.
 
+### [`assistant-receipt.tsx`](../../components/assistant/assistant-receipt.tsx)
+
+- `AssistantReceipts` _component_: A change Parky made to a planner, under the answer that made it: what changed, and an undo that goes through Parky's own undo, so it puts the plan back only while it is still as he left it.
+- `ASSISTANT_DONE_CHIP_CLASS` _const_: What an answer did, as a small green pill under it: its chips and its receipts.
+
+### [`assistant-replies.tsx`](../../components/assistant/assistant-replies.tsx)
+
+- `AssistantReplies` _component_: Replies the visitor can tap under Parky's newest answer, as the model wrote them (`suggest_replies`). Each is a button that sends its text as the visitor's message; they sit on the visitor's side of the chat, where the reply will appear.
+
+### [`assistant-subtitle.tsx`](../../components/assistant/assistant-subtitle.tsx)
+
+- `AssistantSubtitle` _component_: The line under Parky's name in the window, where a messenger shows a status: the visitor's next planned day („Als Nächstes: Efteling, Do., 19. Nov.“), else who he is to them („Dein Park-Buddy“).
+
 ### [`assistant-teaser.tsx`](../../components/assistant/assistant-teaser.tsx)
 
 - `AssistantTeaser` _component_: A short line beside the closed Parky button ("Hey, ich bin Parky – klick mich an!"), at most twice a session and never once Parky was opened or a line was closed. A press on the line opens Parky.
+
+### [`parky-day-interview-button.tsx`](../../components/assistant/parky-day-interview-button.tsx)
+
+- `ParkyDayInterviewButton` _component_: The day planner's „Plane mit Parky deinen perfekten Parktag" (`planner.parky`), for its day.
+
+### [`parky-interview-start.tsx`](../../components/assistant/parky-interview-start.tsx)
+
+- `ParkyInterviewStart` _component_: The planners' way into Parky's interview: a button that sets the interview on its first step and opens the chat, which asks the first question once its session is ready.
 
 ### [`parky-layer.ts`](../../components/assistant/parky-layer.ts)
 
 - `PARKY_LAYER` _const_: Parky's layer: button, speech bubble and window lie above everything else on the page, the header, the planner and the navigation bar's `z-[9999]` included. One class for all three.
 - `ASSISTANT_PHONE_QUERY` _const_: Below this width Parky's window takes the screen: the page behind it is locked, it stands in what the browser shows, and a step that leads elsewhere on the page closes it.
+
+### [`parky-trip-interview-button.tsx`](../../components/assistant/parky-trip-interview-button.tsx)
+
+- `ParkyTripInterviewButton` _component_: The trip planner's „Plane mit Parky deine perfekte Reise", in its own words (`tripPlanner.parky`).
 
 ### [`parky/break-scene.tsx`](../../components/assistant/parky/break-scene.tsx)
 
@@ -100,6 +129,20 @@ by hand: change the comment in the code and re-run the script. -->
 - `ParkyEyeWhite` _component_: One of Parky's open eyes, the white of it, round its centre on the x axis (`EYES`). The live Parky and his pictures draw the same eye, so a picture of him never looks like somebody else.
 - `ParkyPupil` _component_: The pupil of the eye at `x` with its glint, `dx` and `dy` off the middle: where a picture points his gaze (`LOOK_GAZE`), while the live Parky moves the group round it instead.
 
+### [`parky/holiday-parky.tsx`](../../components/assistant/parky/holiday-parky.tsx)
+
+- `HolidayParky` _component_: Parky in his 48-unit space, standing on the scene's ground: `behind` is drawn before him (a board he leans on), `wear` right over his body (a necklace, a scarf, a sprig), `hands` last (what he holds in front).
+- `HolidayMitten` _component_: One of his hands: a round mitten in his own colours, as the umbrella's in `looks.tsx`.
+- `HolidayGround` _component_: His body's gradient, blue to green, under the id a scene gives it.
+- `HolidaySceneSvg` _component_: A region scene's root: the 320 × 160 frame of `ParkyBreakScene` and the Orlando scene, filling its box from the right edge (`xMaxYMid slice`), where Parky stands, and leaving the left to the card's text.
+- `motionOnce` _function_: A scene's stylesheet from its moves: they play once each time the band shows and only where the reader allows motion, since the band is glass and nothing may run on under a `backdrop-filter`.
+- `cabinsOnRim` _function_: The centres of `count` cabins round a wheel's rim, the first at the top, as `CABINS` are.
+- Types: `HolidayEyes`, `HolidayMouth`
+
+### [`parky/japan-scene.tsx`](../../components/assistant/parky/japan-scene.tsx)
+
+- `ParkyJapanScene` _component_: The Japan scene, filling its box from the right edge (`xMaxYMid slice`).
+
 ### [`parky/looks.tsx`](../../components/assistant/parky/looks.tsx)
 
 - `ParkyLookHat` _component_: The season's hat, drawn in the Ferris wheel's place and, like it, behind the head. `still` keeps the pompom from bobbing, for a drawing inside a glass panel, which no endless animation may run in.
@@ -117,6 +160,10 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `ParkyOrlandoScene` _component_: The Orlando scene, filling its box from the right edge (`xMaxYMid slice`).
 
+### [`parky/paris-scene.tsx`](../../components/assistant/parky/paris-scene.tsx)
+
+- `ParkyParisScene` _component_: The Paris scene, filling its box from the right edge (`xMaxYMid slice`).
+
 ### [`parky/parky-logo.tsx`](../../components/assistant/parky/parky-logo.tsx)
 
 - `ParkyLogo` _component_: Parky's face: a speech bubble in the brand's blue to green with big eyes that follow the mouse, rosy cheeks and a smile, and for a hat a Ferris wheel with coloured cabins on an A-frame.
@@ -129,6 +176,10 @@ by hand: change the comment in the code and re-run the script. -->
 - `ParkySpotlight` _component_: The stage a show puts behind Parky for `applause`: a spotlight cone from above with its pool of light at his feet, a red curtain's edge on either side and a few sparkles. Drawn behind the body, so he stands in the light.
 - `ParkyMap` _component_: A park map held low in front of Parky: three panels, the middle one with a lake and a dot where he is. In the `map` moment the side panels unfold and the dot pulses; `still` draws it unfolded and quiet, for a picture rather than an act.
 - `ParkyMoment` _component_: What Parky holds or wears for a moment of a park day, drawn over his face; `null` for an act without one. The motion is the stylesheet's (`.parky-act-<act>`); under reduced motion the prop simply shows for the act.
+
+### [`parky/southern-california-scene.tsx`](../../components/assistant/parky/southern-california-scene.tsx)
+
+- `ParkySouthernCaliforniaScene` _component_: The Southern California scene, filling its box from the right edge (`xMaxYMid slice`).
 
 ### [`parky/use-gaze.ts`](../../components/assistant/parky/use-gaze.ts)
 

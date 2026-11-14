@@ -9,8 +9,10 @@ import { getMediaImageBySrc, getParkBackground, getRideImage } from '@/lib/media
 import { focusToObjectPosition, variantFor, versioned } from '@/lib/media/focus';
 import type { MediaImage } from '@/lib/media/types';
 import { getGlossaryMenu, type GlossaryMenu } from '@/lib/navigation/glossary-menu';
-import { orlandoPath } from '@/lib/orlando/paths';
-import { tripRegion } from '@/lib/navigation/trip-regions';
+import { getTranslations } from 'next-intl/server';
+import { regionMessagesPath } from '@/i18n/client-messages';
+import { tripRegionPath } from '@/lib/trip-regions/paths';
+import { LIVE_TRIP_REGIONS } from '@/lib/trip-regions/registry';
 
 /**
  * Everything the header's "more" band draws, resolved on the server: three hubs side by side (the
@@ -41,14 +43,22 @@ export interface MoreMenuHub {
   photo: MoreMenuPhoto | null;
 }
 
+/** A live trip region's hub, as a wide tile: its crowd calendar's name and one line on its photo. */
+export interface MoreMenuRegion extends MoreMenuHub {
+  slug: string;
+  /** "Orlando Crowd Calendar", the region's own words (`tripRegions.<slug>.nav.calendar`). */
+  name: string;
+  hint: string;
+}
+
 export interface MoreMenu {
   glossary: MoreMenuHub & GlossaryMenu;
   howto: MoreMenuHub & { chapters: MoreMenuChapter[] };
   bestTime: MoreMenuHub & { chapters: MoreMenuChapter[] };
   /** The forecasting model's page, drawn as a card under the best-time chapters. */
   fancast: MoreMenuHub;
-  /** The Orlando hub, drawn as the band's one wide tile. */
-  orlando: MoreMenuHub;
+  /** The live trip regions' hubs, each drawn as a wide tile under the three columns. */
+  regions: MoreMenuRegion[];
 }
 
 /**
@@ -61,11 +71,6 @@ const PHOTOS = {
   howto: () => getParkBackground('phantasialand'),
   bestTime: () => getParkBackground('efteling'),
   fancast: () => getMediaImageBySrc('/media/europa-park/voltron-nevera-powered-by-rimac.jpg'),
-  // The hub's photo is the region's, so this tile and the planner band's show one picture.
-  orlando: () => {
-    const src = tripRegion('orlando')?.photo;
-    return src ? getMediaImageBySrc(src) : null;
-  },
 } satisfies Record<string, () => MediaImage | null>;
 
 /**
@@ -85,7 +90,10 @@ function chaptersOf(hubPath: string, chapters: Chapter[]): MoreMenuChapter[] {
   return chapters.map(({ id, index, label }) => ({ index, label, href: `${hubPath}#${id}` }));
 }
 
-type StaticPart = Omit<MoreMenu, 'glossary'> & { glossary: MoreMenuHub };
+type StaticPart = Omit<MoreMenu, 'glossary' | 'regions'> & {
+  glossary: MoreMenuHub;
+  regions: Omit<MoreMenuRegion, 'name' | 'hint'>[];
+};
 
 const STATIC_PART = new Map<Locale, StaticPart>();
 
@@ -112,7 +120,12 @@ function staticPart(locale: Locale): StaticPart {
         chapters: chaptersOf(bestTimePath, BEST_TIME_CHAPTERS[locale]),
       },
       fancast: { href: '/fancast', photo: menuPhoto(PHOTOS.fancast()) },
-      orlando: { href: orlandoPath(), photo: menuPhoto(PHOTOS.orlando()) },
+      // A hub's photo is its region's, so this tile and the planner band's show one picture.
+      regions: LIVE_TRIP_REGIONS.map((region) => ({
+        slug: region.slug,
+        href: tripRegionPath(region.slug, locale),
+        photo: menuPhoto(region.photo ? getMediaImageBySrc(region.photo) : null),
+      })),
     };
     STATIC_PART.set(locale, part);
   }
@@ -121,10 +134,21 @@ function staticPart(locale: Locale): StaticPart {
 
 /**
  * Builds the header's "more" band for a locale: the glossary, guide and best-time hubs with their
- * photos and chapters, plus the Fancast card.
+ * photos and chapters, the Fancast card and a tile per live trip region.
  */
 export async function getMoreMenu(locale: Locale): Promise<MoreMenu> {
   const part = staticPart(locale);
-  const glossary = await getGlossaryMenu(locale);
-  return { ...part, glossary: { ...part.glossary, ...glossary } };
+  const [glossary, regions] = await Promise.all([
+    getGlossaryMenu(locale),
+    Promise.all(
+      part.regions.map(async (region) => {
+        const t = await getTranslations({
+          locale,
+          namespace: `${regionMessagesPath(region.slug)}.nav`,
+        });
+        return { ...region, name: t('calendar'), hint: t('calendarHint') };
+      })
+    ),
+  ]);
+  return { ...part, glossary: { ...part.glossary, ...glossary }, regions };
 }

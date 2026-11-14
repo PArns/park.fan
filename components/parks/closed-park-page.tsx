@@ -52,7 +52,7 @@ export async function ClosedParkPage({
   const parkName = stripNewPrefix(park.name);
   const post = closedRidePost(park.retiredReason, locale);
   const source = post ? null : closedRideSource(park.retiredReason);
-  const backgroundImage = getParkBackgroundImage(park.slug);
+  const backgroundImage = getParkBackgroundImage(park);
   const parkPath = `/parks/${geoPath}/${park.slug}`;
 
   const linkClass =
@@ -75,7 +75,7 @@ export async function ClosedParkPage({
       <ParkBackground
         imageSrc={backgroundImage}
         alt={getMediaAltBySrc(backgroundImage, locale) ?? parkName}
-        objectPosition={getCardObjectPosition(park.slug)}
+        objectPosition={getCardObjectPosition(park)}
       />
       <PageContainer>
         <BreadcrumbNav

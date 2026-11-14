@@ -922,39 +922,33 @@ export function ContentEN() {
         />
       </SectionShell>
 
-      <SectionShell
-        id="parky"
-        index="10"
-        kicker="The assistant"
-        title="Ask Parky"
-        icon={MessageCircle}
-      >
+      <SectionShell id="parky" index="10" kicker="AI chat" title="Ask Parky" icon={MessageCircle}>
         <ParkyShot locale="en">
           <P>
-            Parky is park.fan’s chat assistant and lives in the round button at the bottom right. On
-            the homepage, on a wide screen, it stands right under the headline and only hops down to
-            its corner once you scroll.
+            Parky is park.fan’s AI buddy and lives in the round button at the bottom right. On the
+            homepage, on a wide screen, he stands right under the headline and only hops down to his
+            corner once you scroll.
           </P>
           <P>
-            Ask it how long the queues are right now, what’s forecast for today or the next few
+            Ask him how long the queues are right now, what’s forecast for today or the next few
             weeks, on which days the queues at a park are short, how tall and fast a coaster is, or
-            what’s in our posts. For every answer it looks in the same data you see on the pages.
+            what’s in our posts. For every answer he looks in the same data you see on the pages.
           </P>
           <P>
-            It shows parks and rides as cards with their numbers. If you ask it to, it takes you to
-            the right page and sets up a day in the day planner, adds rides to it or sorts them. It
-            only sees your location if you press “Share location” in the chat, and it doesn’t keep
+            He shows parks and rides as cards with their numbers. If you ask him to, he takes you to
+            the right page and sets up a day in the day planner, adds rides to it or sorts them. He
+            only sees your location if you press “Share location” in the chat, and he doesn’t keep
             it.
           </P>
           <P>
             A language model writes the answers, and it gets things wrong now and then. The numbers
             on the cards in the chat come straight from park.fan; if in doubt, check what Parky says
-            about them on the ride’s page. It sticks to parks and rides, doesn’t search the web, and
-            after three questions in 30 seconds it needs a short break.
+            about them on the ride’s page. He sticks to parks and rides, doesn’t search the web, and
+            after three questions in 30 seconds he needs a short break.
           </P>
           <P>
             We store your questions without an IP address and delete them after 7 days. There’s more
-            about Parky, with example questions, on <A href="/parky">its own page</A>.
+            about Parky, with example questions, on <A href="/parky">his own page</A>.
           </P>
         </ParkyShot>
       </SectionShell>

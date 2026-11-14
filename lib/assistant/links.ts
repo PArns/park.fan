@@ -1,4 +1,6 @@
 import { SITE_URL } from '@/i18n/config';
+import { liveTripRegion } from '@/lib/trip-regions/registry';
+import { tripRegionPath } from '@/lib/trip-regions/paths';
 
 const SITE = new URL(SITE_URL);
 const ORIGINS = new Set([SITE.origin, `${SITE.protocol}//www.${SITE.host}`]);
@@ -31,4 +33,17 @@ export function safeAssistantHref(href: string | undefined): string | null {
   } catch {
     return null;
   }
+}
+
+const REGION_FOLDER = /^\/trip-regions\/([a-z0-9-]+)(?=$|[?#])/;
+
+/**
+ * A hub link as Parky writes it, `/trip-regions/<slug>…` (the API does not know the segments), as
+ * the region's own segment in `locale` (`/kalifornien…`), so a press lands without the site's
+ * redirect. Any other path, and a region the registry does not know, stays as it is.
+ */
+export function regionHubPath(path: string, locale: string): string {
+  const match = REGION_FOLDER.exec(path);
+  if (!match || !liveTripRegion(match[1])) return path;
+  return `${tripRegionPath(match[1], locale)}${path.slice(match[0].length)}`;
 }

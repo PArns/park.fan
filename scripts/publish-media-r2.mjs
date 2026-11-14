@@ -19,6 +19,7 @@ import sharp from 'sharp';
 import { getCreditLine, needsAttribution } from '../lib/media/credit.ts';
 import { MEDIA_IMAGES, getParkBackground, getRideImage } from '../lib/media/index.ts';
 import { MEDIA_PARK_PATH_BY_SLUG } from '../lib/media/manifest-parks.ts';
+import { imageParkKey, parkGeoPath } from '../lib/media/park-path.mjs';
 
 const WIDTHS = [400, 828, 1200, 1600];
 const QUALITY = 78;
@@ -29,25 +30,22 @@ const INDEX_CACHE = 'public, max-age=300';
 const outArg = process.argv.indexOf('--out');
 const outDir = outArg > 0 ? process.argv[outArg + 1] : null;
 
-/** Park key: the API's geo path, unambiguous where two parks share a slug (`disneyland-park`). */
-function parkKey(image) {
-  return image.parkPath ?? MEDIA_PARK_PATH_BY_SLUG[image.park] ?? null;
-}
-
 const chosen = new Map(); // id → image
 const parks = {};
 const rides = {};
 for (const image of MEDIA_IMAGES) {
-  if (!image.park) continue;
-  const path = parkKey(image);
-  if (!path) continue;
-  const background = getParkBackground(image.park);
+  // The API's geo path, unambiguous where two parks share a slug (`disneyland-park`). The photo is
+  // looked up by the same path it is keyed under, or Anaheim would get the Paris castle.
+  const path = parkGeoPath(imageParkKey(image, MEDIA_PARK_PATH_BY_SLUG));
+  if (!image.park || !path) continue;
+  const park = { slug: image.park, url: path };
+  const background = getParkBackground(park);
   if (background && background.credit.license !== 'unknown') {
     parks[path] = background.id;
     chosen.set(background.id, background);
   }
   for (const rideSlug of image.ride ? [image.ride, ...image.alsoRides] : image.alsoRides) {
-    const ride = getRideImage(image.park, rideSlug);
+    const ride = getRideImage(park, rideSlug);
     // Rights not established: the website still shows it, the app leaves it out until they are.
     if (!ride || ride.credit.license === 'unknown') continue;
     rides[`${path}/${rideSlug}`] = ride.id;

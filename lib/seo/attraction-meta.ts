@@ -8,6 +8,7 @@ import {
   formatTrackLength,
 } from '@/lib/utils/temperature';
 import { roundWaitTo5 } from '@/lib/utils/wait-time';
+import { sentenceCase } from '@/lib/utils/sentence-case';
 import type { ParkAttraction } from '@/lib/api/types';
 
 /** The subset of next-intl's `t` these builders need. */
@@ -124,6 +125,7 @@ export function buildAttractionDescription(
     t('metaDescriptionTemplateFacts', {
       attraction: attractionName,
       ...park,
+      // The clause list opens a sentence here, or the snippet reads ". built by Bolliger & …".
       facts: sentenceCase(list),
     })
   );
@@ -200,13 +202,4 @@ export function buildClosedRideDescription(
  */
 function endOfSentence(text: string): string {
   return text.endsWith('.') ? text.slice(0, -1) : text;
-}
-
-/**
- * The clause list opens a sentence of its own, so it starts with a capital —
- * otherwise the snippet reads ". built by Bolliger & Mabillard". Every locale
- * here is Latin script, so upper-casing the first character is the whole job.
- */
-function sentenceCase(text: string): string {
-  return text ? text.charAt(0).toUpperCase() + text.slice(1) : text;
 }

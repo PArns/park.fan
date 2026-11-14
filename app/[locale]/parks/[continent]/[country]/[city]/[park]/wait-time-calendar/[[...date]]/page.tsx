@@ -59,7 +59,7 @@ import {
 } from '@/components/parks/park-calendar-month-summary';
 import { ParkCalendarMonthIndex } from '@/components/parks/park-calendar-month-index';
 import { ParkPageShell } from '@/components/parks/park-page-shell';
-import { TripPlannerBand } from '@/components/orlando/trip-planner-band';
+import { TripPlannerTile } from '@/components/trip-regions/trip-planner-tile';
 import { ParkYearlyOutlookSection } from '@/components/parks/park-yearly-outlook-section';
 import { ParkYearlyOutlookSkeleton } from '@/components/parks/park-yearly-outlook-skeleton';
 import { parkDayOf } from '@/lib/utils/park-day';
@@ -355,8 +355,8 @@ export default async function ParkCalendarPage({ params }: ParkCalendarPageProps
         name={parkName}
         geo={{ continent, country, city }}
         timezone={park.timezone}
-        backgroundImage={getParkBackgroundImage(park.slug)}
-        backgroundPosition={getCardObjectPosition(park.slug)}
+        backgroundImage={getParkBackgroundImage(park)}
+        backgroundPosition={getCardObjectPosition(park)}
       />
       <ParkPageShell
         park={park}
@@ -498,14 +498,9 @@ export default async function ParkCalendarPage({ params }: ParkCalendarPageProps
         />
 
         {/* A trip region's park: into the region's planner with this park chosen, and on a month
-          page that month as the dates to search. */}
-        <TripPlannerBand
-          variant="park"
-          park={parkPath}
-          month={month}
-          today={todayIso}
-          className="mb-4"
-        />
+          page that month as the dates to search. Right under the header card: a reader of a
+          crowd calendar is choosing days, which is what the planner does for a whole trip. */}
+        <TripPlannerTile park={parkPath} month={month} today={todayIso} className="mb-8" />
 
         {/* One chapter, one stream: „Beste Reisezeit" and the month's own sentences answer the
           same question at two grains, so they arrive as one box behind one boundary. */}

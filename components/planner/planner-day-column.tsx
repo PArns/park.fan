@@ -41,6 +41,7 @@ import { showDayHours, showLinesFor } from '@/lib/planner/shows';
 import { plannerShowsVisible } from '@/lib/planner/shows-visible';
 import { PLANNER_RIDE_MIME, parseRideDrag } from '@/lib/planner/ride-drag';
 import { cn } from '@/lib/utils';
+import { ParkyDayInterviewButton } from '@/components/assistant/parky-day-interview-button';
 
 /**
  * What a press has to land outside for it to count as "show me this park": controls, form fields
@@ -69,6 +70,8 @@ interface PlannerDayColumnProps {
   open: boolean;
   onPickPark: (parkSlug: string) => void;
   onPickDate: (date: string) => void;
+  /** A planned day from the park chooser: its park and date in one step. */
+  onPickDay: (parkSlug: string, date: string) => void;
   onNewPark: () => void;
   /** Absent on the primary column: the plan's active day cannot be closed away. */
   onClose?: () => void;
@@ -122,6 +125,7 @@ export function PlannerDayColumn({
   open,
   onPickPark,
   onPickDate,
+  onPickDay,
   onNewPark,
   onClose,
   unplannedPagePark = null,
@@ -440,6 +444,7 @@ export function PlannerDayColumn({
             date={date}
             onPickPark={onPickPark}
             onPickDate={onPickDate}
+            onPickDay={onPickDay}
             onNewPark={onNewPark}
             onClose={onClose}
             plannedDates={plannedDates}
@@ -630,6 +635,11 @@ export function PlannerDayColumn({
                       </button>
                     )
                   )}
+                  <ParkyDayInterviewButton
+                    park={park?.slug}
+                    date={date ?? undefined}
+                    className="mt-3"
+                  />
                 </div>
                 <PlannerHelpSteps layout="list" />
               </div>

@@ -21,6 +21,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `SplitFigure` _component_: Image beside text on an editorial page: a 4:3 photo and a kicker, title, paragraph and optional badge, side by side from 768 px of page width; `reverse` puts the photo on the right.
 - `TouchpointGrid` _component_: Grid of icon cards for an editorial page. `title` is a node, so a card can carry a glossary link on the term it is named after.
 - `FaqList` _component_: The editorial pages' FAQ: the shared `FaqAccordion` rows plus its own `FAQPage`, emitted from the same array it renders, so the markup cannot drift from the page.
+- `heroPhotoFraming` _function_: `className` and `style` for the photo of a full-bleed head with text over it (`LandingHero`, `BlogPostBanner`): the sidecar's `bannerFocus` below `sm`, its `focus` from `sm` up (`bannerObjectPositions`).
 - `HERO_FLOW_INTO_PULL` _const_: What the section after a `flowInto` hero must carry, so it overlaps the lower part of the photo on a phone and sits normally from `sm` up.
 - `HERO_CREDIT_POSITION` _const_: Where an on-image `<PhotoCredit>` sits in a `flowInto` hero: the 2 px above the pulled-up section on a phone (11rem = the `-mt-44` of `HERO_FLOW_INTO_PULL`), the usual corner from `sm` up.
 - Types: `LandingAction`, `LandingDestination`, `CrowdLevel`

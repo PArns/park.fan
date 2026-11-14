@@ -4,7 +4,9 @@ import { lazy, Suspense, type ComponentType, type LazyExoticComponent } from 're
 import { HubBannerPhoto } from '@/components/layout/hub-banner';
 import { useMenuBandOpened } from '@/components/layout/menu-band';
 import { PhotoCredit, TILE_CREDIT_POSITION } from '@/components/media/photo-credit';
-import { TRIP_REGIONS } from '@/lib/navigation/trip-regions';
+import { LazyMount } from '@/components/parks/lazy-mount';
+import { useAfterLoad } from '@/lib/hooks/use-after-load';
+import { TRIP_REGIONS } from '@/lib/trip-regions/registry';
 import type { MoreMenuPhoto } from '@/lib/navigation/more-menu';
 
 /** What the lazily loaded art receives: the scene's box, and what to draw if it never arrives. */
@@ -20,7 +22,7 @@ interface ArtProps {
  */
 const SCENES: Partial<Record<string, LazyExoticComponent<ComponentType<ArtProps>>>> =
   Object.fromEntries(
-    TRIP_REGIONS.flatMap(({ id, scene: load }) =>
+    TRIP_REGIONS.flatMap(({ slug: id, scene: load }) =>
       load
         ? [
             [
@@ -71,14 +73,66 @@ export function PlannerRegionArt({
   if (!Scene) return photoArt;
   if (!armed) return null;
 
+  return <SceneFade Scene={Scene} fallback={photoArt} />;
+}
+
+/** A loaded scene filling its box, faded in over the card's ground rather than cut in. */
+function SceneFade({
+  Scene,
+  fallback,
+}: {
+  Scene: LazyExoticComponent<ComponentType<ArtProps>>;
+  fallback: React.ReactNode;
+}) {
   return (
     <Suspense fallback={null}>
       <span
         aria-hidden="true"
         className="absolute inset-0 transition-opacity duration-300 starting:opacity-0"
       >
-        <Scene className="h-full w-full" fallback={photoArt} />
+        <Scene className="h-full w-full" fallback={fallback} />
       </span>
     </Suspense>
+  );
+}
+
+/**
+ * A region's scene in a card on a page, the planner tile on a park's pages: fetched once the page
+ * has loaded and the card nears the screen (`LazyMount`), and kept from then on, so the chunk
+ * costs the first load nothing and a card below the fold costs a reader who never scrolls there
+ * nothing at all. It fills the box its parent reserves, which is what keeps it from shifting the
+ * page. Until it arrives, for a region without a scene and where the chunk fails, the box shows
+ * the card's ground.
+ */
+export function RegionSceneInView({ regionId }: { regionId: string }) {
+  const loaded = useAfterLoad();
+  const Scene = SCENES[regionId];
+  if (!Scene || !loaded) return null;
+  return (
+    <LazyMount className="absolute inset-0">
+      <SceneFade Scene={Scene} fallback={null} />
+    </LazyMount>
+  );
+}
+
+/**
+ * A region's scene cut to a 56 × 36 box, for its row in the phone sheet where several regions are
+ * listed. The sheet's content is mounted only while the sheet is open, so the chunk loads on its
+ * first opening and no page carries the markup; until then, and for a region without a scene, the
+ * box is the muted ground.
+ */
+export function RegionSceneCut({ regionId }: { regionId: string }) {
+  const Scene = SCENES[regionId];
+  return (
+    <span
+      aria-hidden="true"
+      className="bg-muted relative block h-9 w-14 shrink-0 overflow-hidden rounded-md ring-1 ring-black/10 dark:ring-white/10"
+    >
+      {Scene && (
+        <Suspense fallback={null}>
+          <Scene className="h-full w-full" fallback={null} />
+        </Suspense>
+      )}
+    </span>
   );
 }

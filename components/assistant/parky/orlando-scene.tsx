@@ -1,5 +1,5 @@
 import { cn } from '@/lib/utils';
-import type { TripRegionSceneProps } from '@/lib/navigation/trip-regions';
+import type { TripRegionSceneProps } from '@/lib/trip-regions/registry';
 import {
   BUBBLE,
   BURST,

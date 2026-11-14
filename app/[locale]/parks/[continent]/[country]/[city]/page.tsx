@@ -17,7 +17,7 @@ import { findCityPageRedirect } from '@/lib/utils/redirect-utils';
 import type { Metadata } from 'next';
 import { RouteMessages } from '@/i18n/route-messages';
 import { CitySummarySection } from '@/components/parks/city-summary-section';
-import { TripPlannerBand } from '@/components/orlando/trip-planner-band';
+import { TripPlannerBand } from '@/components/trip-regions/trip-planner-band';
 
 interface CityPageProps {
   params: Promise<{ locale: string; continent: string; country: string; city: string }>;

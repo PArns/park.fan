@@ -30,7 +30,7 @@ const CONTENT_LOADERS: Record<Locale, () => Promise<ComponentType>> = {
  * to the build clock would move on every unrelated deploy and stop meaning
  * anything. Bump it when a chapter is rewritten, not when a typo is fixed.
  */
-const CONTENT_UPDATED_AT = '2026-11-04';
+const CONTENT_UPDATED_AT = '2026-11-14';
 
 interface PageHeader {
   title: string;

@@ -15,6 +15,9 @@ import { trackSiteEvent, type NavMenuId } from '@/lib/analytics/site-analytics';
  * 2. Hover has hysteresis: opening waits so a pointer crossing the bar does not flash panels,
  *    closing waits so the diagonal into the panel does not fall through the gap. Keyboard and
  *    touch open on click instead.
+ * 3. A mouse visitor who hovers and then clicks the trigger means "open" twice. The hover has
+ *    opened the band by the time the click lands, so a plain toggle would shut it under the click.
+ *    The first click on a band the hover opened keeps it open; the next one closes it.
  */
 
 const OPEN_DELAY_MS = 90;
@@ -22,8 +25,8 @@ const CLOSE_DELAY_MS = 180;
 
 /**
  * Open state and trigger handlers for one header mega-menu entry: hover opens after 90 ms and
- * closes after 180 ms, click toggles, and navigating closes the panel. Each opening sends
- * `nav_menu_opened` with `menu`.
+ * closes after 180 ms, click toggles (the first click on a band the hover opened keeps it open),
+ * and navigating closes the panel. Each opening sends `nav_menu_opened` with `menu`.
  */
 export function useMenuTrigger(menu: NavMenuId) {
   const pathname = usePathname();
@@ -32,6 +35,7 @@ export function useMenuTrigger(menu: NavMenuId) {
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   /** Set while Escape moves the focus back into the wrapper, so `onFocus` does not undo the close. */
   const closingRef = useRef(false);
+  const openedByHoverRef = useRef(false);
 
   const open = openedOn === pathname;
 
@@ -50,6 +54,7 @@ export function useMenuTrigger(menu: NavMenuId) {
     clearTimer();
     timerRef.current = setTimeout(() => {
       timerRef.current = null;
+      openedByHoverRef.current = next;
       setRequested(next);
     }, delay);
   };
@@ -129,6 +134,9 @@ export function useMenuTrigger(menu: NavMenuId) {
     /** For the chevron button: toggles without waiting for the hover timers. */
     toggle: () => {
       clearTimer();
+      const hoverOpened = openedByHoverRef.current;
+      openedByHoverRef.current = false;
+      if (open && hoverOpened) return;
       setRequested(!open);
     },
     /**

@@ -1,6 +1,14 @@
 'use client';
 
-import { useCallback, useEffect, useLayoutEffect, useRef, useState, type FormEvent } from 'react';
+import {
+  useCallback,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+  useSyncExternalStore,
+  type FormEvent,
+} from 'react';
 import { useMediaQuery } from '@/lib/hooks/use-media-query';
 import { useSheetViewport } from '@/lib/hooks/use-sheet-viewport';
 import { useLocale, useTranslations } from 'next-intl';
@@ -22,6 +30,7 @@ import {
   Sparkles,
   ThumbsDown,
   ThumbsUp,
+  Undo2,
   X,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -32,7 +41,16 @@ import {
   type AssistantLookup,
 } from '@/lib/assistant/use-assistant-chat';
 import { useAssistantSession } from '@/lib/assistant/use-assistant-session';
-import { drawOpener, sessionOpener } from '@/lib/assistant/opener';
+import {
+  drawOpener,
+  greetingKeyOf,
+  sessionOpener,
+  suggestionKeysOf,
+  type AssistantOpener,
+} from '@/lib/assistant/opener';
+import { yoursValues } from '@/lib/assistant/parky/yours';
+import { yoursHere } from '@/lib/assistant/parky/yours-here';
+import { AssistantSubtitle } from './assistant-subtitle';
 import { parkPathOf } from '@/lib/assistant/parky/easter-eggs';
 import { trackSiteEvent, type AssistantOpenSource } from '@/lib/analytics/site-analytics';
 import { ParkyLogo } from './parky/parky-logo';
@@ -46,7 +64,11 @@ import { AssistantAlertAsk } from './assistant-alert-ask';
 import { usePushErrorMessage } from '@/components/push/use-push-error-message';
 import { AssistantCardView } from './assistant-card';
 import { useAssistantActions } from './use-assistant-actions';
-import type { AssistantActionChip } from '@/lib/assistant/actions';
+import type { AssistantActionChip, AssistantReceipt } from '@/lib/assistant/actions';
+import { AssistantReplies } from './assistant-replies';
+import { AssistantReceipts, ASSISTANT_DONE_CHIP_CLASS } from './assistant-receipt';
+import { AssistantInterviewBar } from './assistant-interview-bar';
+import { interviewStore, takeInterviewKickoff } from '@/lib/assistant/interview';
 import type { ParkyReactionAct } from '@/lib/assistant/parky/reactions';
 
 const LOOKUP_KEY: Record<AssistantLookup, string> = {
@@ -86,6 +108,7 @@ const CHIP: Record<AssistantActionChip, { key: string; icon: typeof ExternalLink
   favorite: { key: 'chipFavorite', icon: Heart },
   unfavorite: { key: 'chipUnfavorite', icon: HeartOff },
   undoStale: { key: 'chipUndoStale', icon: CalendarX2 },
+  undone: { key: 'chipUndone', icon: Undo2 },
 };
 
 /** Three bouncing dots: Parky is thinking or looking something up. */
@@ -166,18 +189,49 @@ export function AssistantPanel({
       onAct?.('nightcap');
     }, GOODBYE_MS);
   }, [onClose, onAct]);
-  const chat = useAssistantChat(locale, session, act, ended);
+  // One greeting and set of suggestions per chat, kept for the session; a new chat draws again.
+  // Where the visitor has plans in this browser, the greeting picks them up (`yours.ts`).
+  const [opener, setOpener] = useState(() => sessionOpener(yoursHere));
+  const openerValues = opener.yours ? yoursValues(opener.yours, locale, t) : undefined;
+  const greeting = t(greetingKeyOf(opener), openerValues);
+  const chat = useAssistantChat(locale, session, act, ended, greeting);
   const pushErrorMessage = usePushErrorMessage();
   const [tab, setTab] = useState<'chat' | 'feedback'>('chat');
   const [draft, setDraft] = useState('');
-  // One greeting and set of suggestions per chat, kept for the session; a new chat draws again.
-  const [opener, setOpener] = useState(sessionOpener);
   const input = useRef<HTMLTextAreaElement>(null);
   const scroller = useRef<HTMLDivElement>(null);
   const frame = useRef<HTMLDivElement>(null);
   const phone = useMediaQuery(ASSISTANT_PHONE_QUERY);
   const face = useRef<HTMLDivElement>(null);
   const parkPage = parkPathOf(usePathname()) !== null;
+  const interview = useSyncExternalStore(
+    interviewStore.subscribe,
+    interviewStore.getSnapshot,
+    interviewStore.getServerSnapshot
+  );
+
+  // The planner's interview button: its first question goes out once the window can send it.
+  const { send, phase } = chat;
+  useEffect(() => {
+    if (!open || session.state !== 'ready' || phase !== 'idle') return;
+    const kind = takeInterviewKickoff();
+    if (kind)
+      void send(t(kind === 'trip' ? 'interview.kickoffTrip' : 'interview.kickoffDay'), 'interview');
+  }, [open, session.state, phase, send, t]);
+
+  /** A receipt's undo goes through Parky's own, which leaves a plan the visitor changed since. */
+  const undo = async (messageId: string, receipt: AssistantReceipt) => {
+    const outcome = await act(
+      receipt.planner === 'trip'
+        ? { type: 'trip_undo', region: receipt.region, via: 'receipt' }
+        : { type: 'planner_undo', park: receipt.park, date: receipt.date, via: 'receipt' }
+    );
+    chat.settleReceipt(
+      messageId,
+      receipt.id,
+      outcome === 'undoStale' ? 'stale' : outcome ? 'undone' : 'gone'
+    );
+  };
 
   /**
    * One `assistant_opened` per closed to open edge and one `assistant_closed` with the questions
@@ -189,6 +243,14 @@ export function AssistantPanel({
   useEffect(() => {
     askedNow.current = asked;
   }, [asked]);
+  // Which greeting a new chat showed, once per chat: whether a personal one raises first questions.
+  const greeted = useRef<AssistantOpener | null>(null);
+  const greetingShown = open && session.state === 'ready' && chat.messages.length === 0;
+  useEffect(() => {
+    if (!greetingShown || greeted.current === opener) return;
+    greeted.current = opener;
+    trackSiteEvent('assistant_greeting', { kind: opener.yours?.kind ?? 'plain' });
+  }, [greetingShown, opener]);
   useEffect(() => {
     if (!open) return;
     askedAtOpen.current = askedNow.current;
@@ -296,7 +358,7 @@ export function AssistantPanel({
     return () => jump?.cancel();
   }, [open]);
 
-  const suggestions = (parkPage ? opener.park : opener.site).map((key) => t(key));
+  const suggestions = suggestionKeysOf(opener, parkPage).map((key) => t(key, openerValues));
 
   return (
     // The window's place; the window fades in it, and Parky's face, beside it rather than in it,
@@ -338,13 +400,14 @@ export function AssistantPanel({
         <header className="border-border/60 from-primary/15 to-status-operating/10 relative flex touch-none items-center gap-3 rounded-t-2xl border-b bg-gradient-to-r py-1 pr-2 pl-[4.75rem] sm:py-2 sm:pr-3 sm:pl-24">
           <div className="min-w-0 flex-1">
             <h2 className="text-sm leading-tight font-semibold">{t('title')}</h2>
+            <AssistantSubtitle />
           </div>
           {tab === 'chat' && chat.messages.length > 0 && (
             <button
               type="button"
               onClick={() => {
                 chat.reset();
-                setOpener(drawOpener(opener));
+                setOpener(drawOpener(opener, yoursHere()));
               }}
               className="text-muted-foreground hover:text-foreground hover:bg-muted rounded-full p-1.5"
               aria-label={t('newChat')}
@@ -386,6 +449,8 @@ export function AssistantPanel({
           ))}
         </div>
 
+        {session.state === 'ready' && tab === 'chat' && <AssistantInterviewBar />}
+
         {session.state !== 'ready' ? (
           <AssistantChallenge
             state={session.state}
@@ -408,7 +473,7 @@ export function AssistantPanel({
               aria-live="polite"
             >
               <div className="bg-muted/60 w-fit max-w-[92%] rounded-2xl rounded-tl-sm px-3 py-2">
-                {t(opener.greeting)}
+                {greeting}
               </div>
               {chat.messages.length === 0 && (
                 <div className="flex flex-wrap gap-2 pt-1">
@@ -454,16 +519,21 @@ export function AssistantPanel({
                         {message.chips.map((chip, index) => {
                           const { key, icon: Icon } = CHIP[chip];
                           return (
-                            <span
-                              key={`${chip}-${index}`}
-                              className="bg-status-operating/15 text-status-operating inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[11px] font-medium"
-                            >
+                            <span key={`${chip}-${index}`} className={ASSISTANT_DONE_CHIP_CLASS}>
                               <Icon className="size-3" />
                               {t(key)}
                             </span>
                           );
                         })}
                       </div>
+                    )}
+                    {message.receipts && message.receipts.length > 0 && (
+                      <AssistantReceipts
+                        receipts={message.receipts}
+                        onUndo={(receipt) => void undo(message.id, receipt)}
+                        // In an interview on a phone the window stays; this is the look behind it.
+                        onShow={interview && phone ? onClose : undefined}
+                      />
                     )}
                     {message.failures && message.failures.length > 0 && (
                       <div className="mt-1.5 flex flex-wrap gap-1.5 pl-1" role="alert">
@@ -491,6 +561,17 @@ export function AssistantPanel({
                           chat.shareLocation(message.id, t('locationShared'), position)
                         }
                       />
+                    )}
+                    {message === last && message.replies && message.replies.length > 0 && (
+                      <div className="mt-2">
+                        <AssistantReplies
+                          replies={message.replies}
+                          disabled={chat.phase !== 'idle'}
+                          onPick={(reply, position) =>
+                            void chat.send(reply, 'chip', undefined, position)
+                          }
+                        />
+                      </div>
                     )}
                     {message.messageId && (
                       <div className="text-muted-foreground mt-1 flex items-center gap-1 pl-1 text-xs">

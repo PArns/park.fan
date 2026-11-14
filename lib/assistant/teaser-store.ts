@@ -1,13 +1,16 @@
 const SHOWN_KEY = 'parkfan:assistant-teasers';
-const REACTIONS_KEY = 'parkfan:assistant-reactions';
 const MUTED_KEY = 'parkfan:assistant-muted';
 const ANSWERED_KEY = 'parkfan:assistant-answered';
 
-/** Two lines a session at most: one after a short look around, one a good while later. */
-export const TEASER_SCHEDULE_MS = [8_000, 90_000] as const;
+/**
+ * One line a visit that nobody asked for, after a short look around: the bubble covers part of the
+ * page, so once is enough. The entrance's, the weather's, the live waits' and a bored or woken line
+ * spend the same one (`countReaction`).
+ */
+export const TEASER_SCHEDULE_MS = [8_000] as const;
 
-/** Lines Parky says when it gets bored or is woken up, at most this many a session. */
-export const REACTIONS_PER_SESSION = 3;
+/** Lines Parky says unasked besides the scheduled one: they share its one a visit. */
+export const REACTIONS_PER_SESSION = 1;
 
 function readCount(key: string, blocked: number): number {
   try {
@@ -35,20 +38,19 @@ export function setTeasersShown(count: number): void {
   writeCount(SHOWN_KEY, count);
 }
 
-/** How many bored or woken lines this session has shown; "all of them" where storage is blocked. */
+/** Whether the visit's unasked line is spent: 1 once it is, 0 before; spent where storage is blocked. */
 export function reactionsShown(): number {
-  return readCount(REACTIONS_KEY, REACTIONS_PER_SESSION);
+  return teasersShown() >= TEASER_SCHEDULE_MS.length ? REACTIONS_PER_SESSION : 0;
 }
 
-/** Records one more bored or woken line. */
+/** A bored, woken, weather or live line was said: it spent the visit's unasked line. */
 export function countReaction(): void {
-  writeCount(REACTIONS_KEY, reactionsShown() + 1);
+  setTeasersShown(TEASER_SCHEDULE_MS.length);
 }
 
-/** No more invitations or reactions this session: Parky was opened, or a line was closed. */
+/** No more unasked lines this session: Parky was opened, or a line was closed. */
 export function stopTeasers(): void {
   setTeasersShown(TEASER_SCHEDULE_MS.length);
-  writeCount(REACTIONS_KEY, REACTIONS_PER_SESSION);
 }
 
 /**

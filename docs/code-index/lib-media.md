@@ -19,6 +19,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `loadCardImageMap` _function_: The map from `/api/card-images`, fetched once per page. A failure resolves to an empty map and is not kept, so a card loses its photo rather than its data and the next caller asks again.
 - `rideCardImageKey` _function_: The `CardImageMap` key of a ride: slugs are unique only within their park.
+- `cardParkPath` _function_: The geo path a card's park is filed under in the map: from `url` (the park's, or a ride's, which contains it), else from the slug through `map.paths`. `undefined` when neither names one.
 - `withParkCardImage` _function_: A park with its card photo attached, `null` and the fallback crop when it has none.
 - `withRideCardImage` _function_: A ride with **its own** card photo attached, never the park's: the park's photo on a ride card says „this is what the ride looks like", which is false, and repeats on every card without one.
 - `CARD_FALLBACK_POSITION` _const_: Where a card crops from when the image has no focal point: the top, as these photos have always been framed. Setting a focal point opts an image out.
@@ -34,6 +35,7 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`focus.ts`](../../lib/media/focus.ts)
 
 - `objectPositionForSrc` _function_: CSS `object-position` for a public path — what the cards have to work with.
+- `bannerObjectPositions` _function_: The two `object-position`s of a full-bleed head with its headline, excerpt and byline over the photo: `narrow` below `sm`, where that text covers most of the picture, and `wide` from `sm` up, where it keeps to the left.
 - `versionedPath` _function_: Any media path with its content version attached — including a pre-cut crop.
 - `focusToObjectPosition` _function_: CSS `object-position` for a focal point, defaulting to centre.
 - `focusStyle` _function_: Style object for any element painting a media image with `object-fit: cover`.
@@ -89,7 +91,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `getImagesByRole` _function_: Images carrying a role, optionally within one park.
 - `searchMedia` _function_: Filter the database. Every field is optional and ANDed together; `q` searches id, slugs, area, tags, credit and all localized alt/caption text at once, so "arachnophobia" finds the photo through its German caption even though nothing else …
 - `listTags` _function_: Every distinct tag in the database with its usage count, most-used first.
-- `listParks` _function_: Every park slug that has at least one image, with its image count.
+- `listParks` _function_: Every park slug that has at least one image, with its image count. By slug, as the admin and the facets filter: Paris and Anaheim are one row here.
 - `mediaStats` _function_: Counters the admin browser and the build report both show.
 - Re-exports: `./types`, `./manifest-parks`, `./manifest`, `./manifest-search`
 
@@ -130,4 +132,4 @@ What the open media session already holds for one park, read off its diff.
 
 - `MEDIA_ROLES` _const_
 - `MEDIA_LICENSES` _const_
-- Types: `MediaRole`, `MediaLicense`, `LocalizedText`, `MediaCredit`, `MediaSidecar`, `MediaFocus`, `MediaGps`, `MediaImage`, `MediaText`, `ResolvedMediaImage`, `MediaParkRef`, `MediaQuery`
+- Types: `MediaRole`, `MediaLicense`, `LocalizedText`, `MediaCredit`, `MediaSidecar`, `MediaFocus`, `MediaGps`, `MediaImage`, `MediaText`, `ResolvedMediaImage`, `ParkLookup`, `MediaParkRef`, `MediaQuery`

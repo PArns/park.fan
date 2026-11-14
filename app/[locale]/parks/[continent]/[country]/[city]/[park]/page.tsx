@@ -42,7 +42,7 @@ import { ParkBlogPostsSection } from '@/components/parks/blog-posts-sections';
 import { ParkFAQSection } from '@/components/faq/park-faq-section';
 import type { Locale } from '@/i18n/config';
 import { ParkPageShell } from '@/components/parks/park-page-shell';
-import { TripPlannerBand } from '@/components/orlando/trip-planner-band';
+import { TripPlannerTile } from '@/components/trip-regions/trip-planner-tile';
 import { ParkTitleHeader } from '@/components/parks/park-title-header';
 import { ParkTodayPanel } from '@/components/parks/park-today-panel';
 import { ParkBreakPanel } from '@/components/parks/park-break-panel';
@@ -478,8 +478,8 @@ export default async function ParkPage({ params, searchParams }: ParkPageProps) 
         name={stripNewPrefix(park.name)}
         geo={{ continent, country, city }}
         timezone={park.timezone}
-        backgroundImage={getParkBackgroundImage(park.slug)}
-        backgroundPosition={getCardObjectPosition(park.slug)}
+        backgroundImage={getParkBackgroundImage(park)}
+        backgroundPosition={getCardObjectPosition(park)}
       />
       <ParkPageShell
         park={park}
@@ -586,7 +586,7 @@ export default async function ParkPage({ params, searchParams }: ParkPageProps) 
               ...parkArgs(locale as Locale, parkName, park.nameArticleDe),
               city: cityName,
             })}
-            windowPane={{ guide: headerGuide, photo: getParkBackgroundImage(parkSlug) }}
+            windowPane={{ guide: headerGuide, photo: getParkBackgroundImage(park) }}
             note={
               headerNews ? <ParkNewsBand locale={locale as Locale} news={headerNews} /> : undefined
             }
@@ -613,11 +613,13 @@ export default async function ParkPage({ params, searchParams }: ParkPageProps) 
           parks. */}
         <NoLiveWaitTimesNotice reason={noLiveWaitTimesReason(park)} scope="park" className="mb-8" />
 
-        {/* A trip region's park: the way into the region's planner with this park chosen; nothing
-          for any other park. Inline, so whether it exists is settled before the first byte. */}
-        <TripPlannerBand
-          variant="park"
+        {/* A trip region's park: its planner with this park chosen, above „Heute im Park" so most
+          readers pass it. On a phone it is the compact row, a third of the banner's height, so it
+          pushes „Heute im Park" down as little as it can. Inline, so whether it exists is settled
+          before the first byte; nothing for any other park. */}
+        <TripPlannerTile
           park={`/parks/${continent}/${country}/${city}/${parkSlug}`}
+          phone="row"
           className="mb-4"
         />
 

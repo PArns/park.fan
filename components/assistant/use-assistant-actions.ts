@@ -43,7 +43,7 @@ import { listRideAlertsLocal, listShowFollowsLocal } from '@/lib/push/push-follo
 import { removeRideAlert, unfollowShow } from '@/lib/push/push-follows';
 import { trackSiteEvent } from '@/lib/analytics/site-analytics';
 import { isFavorite, toggleFavorite } from '@/lib/utils/favorites';
-import { safeAssistantHref } from '@/lib/assistant/links';
+import { regionHubPath, safeAssistantHref } from '@/lib/assistant/links';
 import { localizedPath } from '@/lib/i18n/localized-path';
 import { hreflangPath } from '@/lib/i18n/hreflang';
 import { useRouter as useLocaleRouter } from '@/i18n/navigation';
@@ -51,11 +51,79 @@ import { localeSwitchPath } from '@/lib/assistant/switch-locale';
 import { reopenAfterSwitch } from '@/lib/assistant/open';
 import {
   type AssistantAction,
-  type AssistantActionChip,
   type AssistantPlannerPark,
+  type TripChangeKind,
 } from '@/lib/assistant/actions';
+import {
+  interviewEnded,
+  interviewRegion,
+  interviewStore,
+  type AssistantInterview,
+} from '@/lib/assistant/interview';
+import {
+  currentTripQuery,
+  rememberTripChange,
+  sameTripQuery,
+  takeTripUndo,
+} from '@/lib/assistant/trip-context';
+import { tripPlannerBridge } from '@/lib/trip-regions/planner-bridge';
+import { rememberParty } from '@/lib/trip-regions/remembered-trip';
+import { tripRegionPath, TRIP_PLANNER_ID } from '@/lib/trip-regions/paths';
+import type { AssistantPlanChange } from '@/lib/analytics/site-analytics';
 
 let promptIds = 0;
+let receiptIds = 0;
+
+/** What each day action is, as `assistant_plan_changed` counts it. */
+const DAY_CHANGE: Partial<Record<AssistantAction['type'], AssistantPlanChange>> = {
+  planner_add_rides: 'add',
+  planner_add_block: 'block',
+  planner_add_show: 'show',
+  planner_remove: 'remove',
+  planner_move: 'move',
+  planner_update_block: 'block',
+  planner_set_prefs: 'party',
+  planner_mark_done: 'done',
+  planner_clear_day: 'clear',
+  planner_reserve_days: 'file',
+  planner_reserve_trip: 'file',
+};
+
+/**
+ * Counts an interview's moves from one state to the next: its start, each step answered or
+ * passed, and its end with how many steps were answered.
+ */
+function trackInterview(
+  before: AssistantInterview | null,
+  after: AssistantInterview | null,
+  outcome?: 'done' | 'left'
+): void {
+  const kind = after?.kind ?? before?.kind;
+  if (!kind) return;
+  if (!before && after) {
+    trackSiteEvent('assistant_interview_started', {
+      kind,
+      source: after.source,
+      region: interviewRegion(after),
+    });
+  }
+  if (after) {
+    const known = new Set([...(before?.answered ?? []), ...(before?.skipped ?? [])]);
+    const region = interviewRegion(after);
+    for (const [list, outcome] of [
+      [after.answered, 'answered'],
+      [after.skipped, 'skipped'],
+    ] as const) {
+      for (const step of list) {
+        if (!known.has(step) && step !== 'refine') {
+          trackSiteEvent('assistant_interview_step', { kind, step, outcome, region });
+        }
+      }
+    }
+  } else if (before) {
+    trackSiteEvent('assistant_interview_ended', interviewEnded(before, outcome ?? 'left'));
+  }
+}
 
 /** `HH:MM` as park-local minutes; the action check has already read the shape. */
 const minuteOf = (clock: string) => Number(clock.slice(0, 2)) * 60 + Number(clock.slice(3));
@@ -91,8 +159,28 @@ export function useAssistantActions(closeWindow: () => void) {
 
   return useCallback(
     async (action: AssistantAction): Promise<AssistantActionOutcome> => {
+      // During an interview the window stays: each receipt has its "Show" to peek.
       const stepAside = () => {
+        if (interviewStore.getSnapshot()) return;
         if (window.matchMedia(ASSISTANT_PHONE_QUERY).matches) closeWindow();
+      };
+      /** The receipt of a change to a day, counted by the action's kind. */
+      const dayReceipt = (park: AssistantPlannerPark, date: string): AssistantActionOutcome => {
+        const change = DAY_CHANGE[action.type];
+        if (change) trackSiteEvent('assistant_plan_changed', { planner: 'day', change });
+        return { receipt: { id: `receipt-${++receiptIds}`, planner: 'day', park, date } };
+      };
+      /** The region's hub with a trip in its query, at the planner, in the reader's language. */
+      const hubWith = (region: string, query: string) =>
+        localizedPath(
+          `${tripRegionPath(region, locale)}${query ? `?${query}` : ''}#${TRIP_PLANNER_ID}`,
+          locale
+        );
+      /** A trip set through the planner on screen, else by opening the hub with it. */
+      const setTrip = (region: string, query: string) => {
+        if (tripPlannerBridge.apply(region, query)) return;
+        router.push(hubWith(region, query));
+        stepAside();
       };
       const showDay = (park: AssistantPlannerPark, date: string) => {
         plannerStore.update((state) => openDay(state, park, date));
@@ -115,10 +203,10 @@ export function useAssistantActions(closeWindow: () => void) {
         park: AssistantPlannerPark,
         date: string,
         recipe: (state: PlannerState) => PlannerState
-      ): AssistantActionChip | null => {
+      ): AssistantActionOutcome => {
         const changed = withUndo(park, date, () => plannerStore.update(recipe));
         showDay(park, date);
-        return changed ? 'planned' : null;
+        return changed ? dayReceipt(park, date) : null;
       };
       /**
        * Runs writes to one day and keeps the day before and after them for `planner_undo`; writes
@@ -138,10 +226,22 @@ export function useAssistantActions(closeWindow: () => void) {
        * `planner_undo`, and opens the first; a date that already holds a plan stays as it is.
        */
       const reserve = (
-        days: ReadonlyArray<{ park: AssistantPlannerPark; date: string }>
-      ): AssistantActionChip | null => {
+        days: ReadonlyArray<{ park: AssistantPlannerPark; date: string }>,
+        prefs?: { riderHeightCm: number }
+      ): AssistantActionOutcome => {
         const before = plannerStore.getSnapshot();
-        plannerStore.update((state) => reserveDays(state, days));
+        plannerStore.update((state) => {
+          const filed = reserveDays(state, days);
+          if (!prefs) return filed;
+          // The party's smallest rider goes on the days this filing made, not on planned ones.
+          return days.reduce(
+            (s, { park, date }) =>
+              s.parks[park.slug]?.days[date] !== state.parks[park.slug]?.days[date]
+                ? setDayPrefs(s, park.slug, date, prefs)
+                : s,
+            filed
+          );
+        });
         const after = plannerStore.getSnapshot();
         if (after === before) return null;
         for (const { park, date } of days) {
@@ -150,7 +250,7 @@ export function useAssistantActions(closeWindow: () => void) {
           }
         }
         showDay(days[0].park, days[0].date);
-        return 'planned';
+        return dayReceipt(days[0].park, days[0].date);
       };
 
       /** Today's `/plan/day` of the park, through the planner's own cache entry. */
@@ -176,7 +276,7 @@ export function useAssistantActions(closeWindow: () => void) {
         case 'navigate': {
           const path = safeAssistantHref(action.path);
           if (!path) return null;
-          router.push(localizedPath(path, locale));
+          router.push(localizedPath(regionHubPath(path, locale), locale));
           stepAside();
           return 'navigated';
         }
@@ -206,7 +306,7 @@ export function useAssistantActions(closeWindow: () => void) {
             }
           });
           showDay(action.park, action.date);
-          return 'planned';
+          return dayReceipt(action.park, action.date);
         }
         case 'planner_add_block':
           withUndo(action.park, action.date, () => {
@@ -223,7 +323,7 @@ export function useAssistantActions(closeWindow: () => void) {
             );
           });
           showDay(action.park, action.date);
-          return 'planned';
+          return dayReceipt(action.park, action.date);
         // The optimise row keeps its own undo; the sorted day is written later, there.
         case 'planner_optimize':
           showDay(action.park, action.date);
@@ -236,10 +336,48 @@ export function useAssistantActions(closeWindow: () => void) {
               state
             )
           );
-        case 'planner_move':
-          return edit(action.park, action.date, (state) =>
-            moveEntryToIndex(state, action.park.slug, action.date, action.entryId, action.toIndex)
+        case 'planner_move': {
+          const { park, date, entryId, toIndex, start } = action;
+          if (toIndex !== undefined) {
+            return edit(park, date, (state) =>
+              moveEntryToIndex(state, park.slug, date, entryId, toIndex)
+            );
+          }
+          if (start === undefined) return null;
+          const entry = entriesFor(plannerStore.getSnapshot(), park.slug, date).find(
+            (e) => e.id === entryId
           );
+          if (!entry?.showSlug) {
+            return edit(park, date, (state) =>
+              moveEntry(state, park.slug, date, entryId, minuteOf(start))
+            );
+          }
+          // A show keeps the performance's time: it moves to another performance that day.
+          const day = await queryClient
+            .fetchQuery(planDayQuery({ ...park.geo, parkSlug: park.slug, date }))
+            .catch(() => null);
+          const line = day
+            ? showLinesFor(
+                day.shows,
+                showDayHours(day.context.openHour, day.context.closeHour)
+              ).find((l) => l.slug === entry.showSlug && formatGridTime(l.minute) === start)
+            : undefined;
+          if (!line || line.minute === entry.startMinute) return null;
+          withUndo(park, date, () => {
+            plannerStore.update((state) => removeEntry(state, park.slug, date, entryId));
+            addShow(
+              {
+                ...base(park, date),
+                showSlug: line.slug,
+                showName: line.name,
+                startMinute: line.minute,
+              },
+              'assistant'
+            );
+          });
+          showDay(park, date);
+          return dayReceipt(park, date);
+        }
         case 'planner_update_block': {
           const { park, date, entryId, label, start, durationMinutes } = action;
           return edit(park, date, (state) => {
@@ -285,7 +423,7 @@ export function useAssistantActions(closeWindow: () => void) {
             )
           );
           showDay(park, date);
-          return 'planned';
+          return dayReceipt(park, date);
         }
         case 'planner_set_prefs':
           return edit(action.park, action.date, (state) => {
@@ -313,9 +451,12 @@ export function useAssistantActions(closeWindow: () => void) {
           return chip;
         }
         case 'planner_reserve_days':
-          return reserve(action.dates.map((date) => ({ park: action.park, date })));
+          return reserve(
+            action.dates.map((date) => ({ park: action.park, date })),
+            action.prefs
+          );
         case 'planner_reserve_trip':
-          return reserve(action.days);
+          return reserve(action.days, action.prefs);
         case 'planner_undo': {
           let outcome: ParkyUndoOutcome = 'none';
           plannerStore.update((state) => {
@@ -325,8 +466,51 @@ export function useAssistantActions(closeWindow: () => void) {
           });
           if (outcome === 'none') return null;
           showDay(action.park, action.date);
+          trackSiteEvent('assistant_change_undone', {
+            planner: 'day',
+            outcome,
+            via: action.via ?? 'chat',
+          });
           // The visitor changed the day since: it stays as they left it, and Parky can say so.
           return outcome === 'undone' ? 'planned' : 'undoStale';
+        }
+        case 'trip_set': {
+          const before = currentTripQuery(action.region);
+          if (sameTripQuery(before, action.query)) return null;
+          rememberTripChange(action.region, before, action.query);
+          setTrip(action.region, action.query);
+          const kinds: TripChangeKind[] = action.change.length > 0 ? action.change : ['dates'];
+          for (const kind of kinds) {
+            trackSiteEvent('assistant_plan_changed', { planner: 'trip', change: kind });
+          }
+          const change = kinds[0];
+          return {
+            receipt: {
+              id: `receipt-${++receiptIds}`,
+              planner: 'trip',
+              region: action.region,
+              change,
+            },
+          };
+        }
+        case 'trip_undo': {
+          const undo = takeTripUndo(action.region);
+          if (undo === 'none') return null;
+          trackSiteEvent('assistant_change_undone', {
+            planner: 'trip',
+            outcome: undo === 'changed' ? 'changed' : 'undone',
+            via: action.via ?? 'chat',
+          });
+          if (undo === 'changed') return 'undoStale';
+          setTrip(action.region, undo.query);
+          return 'undone';
+        }
+        case 'interview_state': {
+          const before = interviewStore.getSnapshot();
+          interviewStore.set(action.interview);
+          if (action.party && action.region) rememberParty(action.region, action.party);
+          trackInterview(before, action.interview, action.outcome);
+          return null;
         }
         case 'planner_share': {
           const state = plannerStore.getSnapshot();

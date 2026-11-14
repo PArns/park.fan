@@ -18,6 +18,10 @@ by hand: change the comment in the code and re-run the script. -->
 - `FaqAccordion` _component_: One list of questions, for every FAQ on the site. The whole summary is the click target, the chevron turns 180°, and the answer sits under a hairline. The icon is optional: the editorial FAQ arrays carry none.
 - Types: `FaqRow`
 
+### [`faq-link.tsx`](../../components/faq/faq-link.tsx)
+
+- `FaqLink` _component_: A link to one question of a FAQ on the same page (`FaqRow.id`). It opens the question on the way, since a fragment that lands on a closed `<details>` shows only its summary.
+
 ### [`park-faq-section.tsx`](../../components/faq/park-faq-section.tsx)
 
 - `ParkFAQSection` _component_: FAQ chapter on a park page: hours, location, tickets and more from `buildParkFaqItems`, the least crowded days from the best-days calendar, and the crowd calendar question the `FAQPage` JSON-LD also carries.

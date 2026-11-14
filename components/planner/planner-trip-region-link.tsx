@@ -1,13 +1,13 @@
 'use client';
 
 import { useMemo } from 'react';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { ArrowRight, CalendarDays } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import { cn } from '@/lib/utils';
 import { linkBlockAttributes } from '@/lib/analytics/internal-link';
 import { useTripRegionLinks } from '@/lib/hooks/use-trip-region-links';
-import { findTripRegion, tripPlannerHref } from '@/lib/orlando/trip-links';
+import { findTripRegion, tripPlannerHref } from '@/lib/trip-regions/trip-links';
 import { plannerParkPath } from '@/lib/planner/park-url';
 import { isPlainPrimaryClick } from '@/lib/utils/plain-click';
 import type { PlannerGeo } from '@/lib/planner/types';
@@ -24,22 +24,25 @@ interface PlannerTripRegionLinkProps {
 }
 
 /**
- * One quiet line under a plan that holds a day at a trip region's park: "Several days in Orlando?
+ * One quiet line under a plan that holds a day at a trip region's park: "Several days in Orlando ·
  * Open the trip planner", with the plan's parks of that region chosen. One per plan, under the
- * list of its days, never per day; the band's own words (`orlando.band`), so the two cannot
- * drift. The regions are asked for only once such a plan exists; until they answer, and for a
- * plan elsewhere, it renders nothing.
+ * list of its days, never per day; the band's own words (`tripHub.band`), so the two cannot
+ * drift, and the region's name in the reader's language from the links' `words`. The regions are
+ * asked for only once such a plan exists; until they answer, and for a plan elsewhere, it renders
+ * nothing.
  */
 export function PlannerTripRegionLink({
   parks,
   onNavigate,
   className,
 }: PlannerTripRegionLinkProps) {
-  const t = useTranslations('orlando.band');
+  const t = useTranslations('tripHub.band');
+  const locale = useLocale();
   const paths = useMemo(() => parks.map(plannerParkPath), [parks]);
   const { data: regions } = useTripRegionLinks(paths.length > 0);
   const found = regions ? findTripRegion(regions, paths) : null;
-  if (!found) return null;
+  const words = found?.region.words;
+  if (!found || !words) return null;
 
   return (
     <p
@@ -51,9 +54,11 @@ export function PlannerTripRegionLink({
       )}
     >
       <CalendarDays aria-hidden className="text-primary size-3.5 shrink-0" />
-      <span>{t('title', { region: found.region.name })}</span>
+      <span>{t('title', { inRegion: words.inRegion })}</span>
       <Link
-        href={tripPlannerHref(found.region, { parks: found.parks.map((park) => park.slug) })}
+        href={tripPlannerHref(found.region.slug, locale, {
+          parks: found.parks.map((park) => park.slug),
+        })}
         rel="nofollow"
         prefetch={false}
         onClick={(event) => {

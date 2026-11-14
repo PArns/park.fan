@@ -38,11 +38,24 @@ import {
 } from '@/lib/assistant/parky/boredom.ts';
 import {
   drawOpener,
+  greetingKeyOf,
   GREETING_KEYS,
   sessionOpener,
+  suggestionKeysOf,
   SUGGESTION_KEYS,
   SUGGESTIONS_SHOWN,
 } from '@/lib/assistant/opener.ts';
+import {
+  dayOfMonth,
+  nextUp,
+  shortDay,
+  whenOf,
+  YOURS_GREETINGS,
+  YOURS_LINES,
+  yoursMoments,
+  yoursValues,
+} from '@/lib/assistant/parky/yours.ts';
+import { lastParkBack, readLastPark, rememberLastPark } from '@/lib/assistant/last-park.ts';
 import { pickRandom, pickSome } from '@/lib/utils/pick-random.ts';
 import {
   holidayOn,
@@ -77,8 +90,12 @@ import {
 import {
   answeredWithLine,
   countAnswer,
+  countReaction,
   linesMuted,
   muteLines,
+  reactionsShown,
+  REACTIONS_PER_SESSION,
+  TEASER_SCHEDULE_MS,
 } from '@/lib/assistant/teaser-store.ts';
 import { isReactionAct, REACTION_ACTS, reactionTo } from '@/lib/assistant/parky/reactions.ts';
 import { onSiteEvent, trackSiteEvent } from '@/lib/analytics/site-analytics.ts';
@@ -712,6 +729,240 @@ check(pickSome([1, 2], 5).length, 2, 'never more than there are');
   check(GREETING_KEYS.includes(sessionOpener().greeting), true, 'a stale opener draws afresh');
   delete globalThis.window;
 }
+// The visitor's own plans, as the bubble, the greeting and the subtitle read them.
+{
+  // 14 November 2026, 10:00 in Kaatsheuvel.
+  const now = Date.parse('2026-11-14T09:00:00Z');
+  const day = (entries = 1) => ({
+    entries: Array.from({ length: entries }, (_, i) => ({ id: `e${i}`, startMinute: 600 })),
+  });
+  const park = (slug, name, dates, timezone = 'Europe/Amsterdam') => ({
+    slug,
+    name,
+    timezone,
+    geo: { continent: 'europe', country: 'netherlands', city: 'x' },
+    days: Object.fromEntries(dates.map((date) => [date, { date, ...day() }])),
+  });
+  const plan = (...parks) => ({
+    parks: Object.fromEntries(parks.map((p) => [p.slug, p])),
+    activeParkSlug: null,
+    activeDate: null,
+    version: 1,
+  });
+  const moments = (planner, extra = {}) =>
+    yoursMoments({ planner, ridden: 0, alerts: [], lastPark: null, now, ...extra });
+  const efteling = plan(park('efteling', 'Efteling', ['2026-11-19']));
+  check(
+    moments(efteling),
+    [{ kind: 'soon', park: 'Efteling', date: '2026-11-19', days: 5 }],
+    'five days to Efteling'
+  );
+  check(moments(plan()), [], 'nothing planned, nothing to say');
+  check(
+    moments(
+      plan(
+        park('efteling', 'Efteling', ['2026-11-14', '2026-11-13', '2026-11-15']),
+        park('toverland', 'Toverland', ['2026-11-20'])
+      )
+    ).map((m) => m.kind),
+    ['today', 'yesterday', 'tomorrow', 'soon', 'trip'],
+    'today, yesterday, tomorrow, soon, then the trip'
+  );
+  check(
+    moments(plan(park('efteling', 'Efteling', ['2026-11-14', '2026-11-14']))).map((m) => m.kind),
+    ['today'],
+    'a day counted once'
+  );
+  const far = plan(
+    park('a', 'Magic Kingdom', ['2026-12-01', '2026-12-02'], 'America/New_York'),
+    park('b', 'Epic Universe', ['2026-12-03'], 'America/New_York')
+  );
+  check(
+    moments(far),
+    [{ kind: 'trip', count: 3, date: '2026-12-01' }],
+    'three days within a month are a trip, from its first'
+  );
+  check(moments(plan(park('a', 'A', ['2026-12-20']))), [], 'further than two weeks: no countdown');
+  check(
+    moments(plan(), { ridden: 25 }),
+    [{ kind: 'ridden', count: 25 }],
+    'a milestone of rides ticked off'
+  );
+  check(moments(plan(), { ridden: 26 }), [], 'past the milestone, quiet again');
+  check(
+    moments(efteling, { lastPark: { name: 'Toverland' }, alerts: ['Baron 1898'] }).map(
+      (m) => m.kind
+    ),
+    ['soon', 'back', 'alert'],
+    'the last park and an alert come after the plan'
+  );
+  check(
+    moments(plan(park('a', 'A', ['2026-11-14'], 'Pacific/Pago_Pago'))).map((m) => m.kind),
+    ['tomorrow'],
+    "each park's own today: at Pago Pago it is still the 13th"
+  );
+  const empty = {
+    ...efteling.parks.efteling,
+    days: { '2026-11-19': { date: '2026-11-19', entries: [] } },
+  };
+  check(moments(plan(empty)), [], 'an empty day the planner only opened is no plan');
+  check(nextUp(efteling, now), { park: 'Efteling', date: '2026-11-19' }, 'next up: Efteling');
+  check(nextUp(plan(), now), null, 'nothing next');
+
+  check(dayOfMonth('2026-03-03', 'de'), '3. März', 'a German day of the month');
+  check(dayOfMonth('2026-03-03', 'en'), 'March 3', 'an English one');
+  check(shortDay('2026-11-19', 'de'), 'Do., 19. Nov.', "the subtitle's short date");
+  check(
+    whenOf({ kind: 'tomorrow', park: 'A', date: '2026-11-15' }, 'de'),
+    { key: 'whenTomorrow' },
+    'tomorrow is tomorrow'
+  );
+  check(
+    whenOf({ kind: 'soon', park: 'A', date: '2026-11-19', days: 5 }, 'de'),
+    { key: 'whenWeekday', weekday: 'Donnerstag' },
+    'within a week, the weekday'
+  );
+  check(
+    whenOf({ kind: 'soon', park: 'A', date: '2026-11-25', days: 11 }, 'de'),
+    { key: 'whenDate', date: '25. November' },
+    'further out, the date'
+  );
+  const t = (key, values = {}) =>
+    `${key}(${Object.entries(values)
+      .map(([k, v]) => `${k}=${v}`)
+      .join(',')})`;
+  check(
+    yoursValues({ kind: 'soon', park: 'Efteling', date: '2026-11-19', days: 5 }, 'de', t),
+    { park: 'Efteling', when: 'whenWeekday(weekday=Donnerstag)', days: 5 },
+    'a countdown fills its park, when and days'
+  );
+
+  // Every line and greeting exists in all six languages, with the arguments it is given.
+  for (const locale of ['de', 'en', 'nl', 'fr', 'es', 'it']) {
+    const messages = JSON.parse(readFileSync(`messages/${locale}.json`, 'utf8')).assistant;
+    for (const key of [
+      ...Object.values(YOURS_LINES),
+      ...Object.values(YOURS_GREETINGS),
+      'subtitle',
+      'subtitleNext',
+      'muteLines',
+      'whenTomorrow',
+      'whenWeekday',
+      'whenDate',
+      'suggestMyDay',
+      'suggestMyNext',
+      'suggestMyWeather',
+      'suggestMyMissing',
+      'suggestMyTrip',
+      'suggestMyBack',
+    ]) {
+      check(typeof messages[key], 'string', `${locale} has ${key}`);
+    }
+    check(messages.yoursSoon.includes('{days}'), true, `${locale} counts the days down`);
+    check(messages.greetingSoon.includes('{when}'), true, `${locale} says when`);
+  }
+}
+
+// A personal greeting replaces the drawn one, and its own questions come first.
+{
+  const store = new Map();
+  globalThis.window = {
+    sessionStorage: {
+      getItem: (key) => store.get(key) ?? null,
+      setItem: (key, value) => store.set(key, value),
+    },
+  };
+  const soon = { kind: 'soon', park: 'Efteling', date: '2026-11-19', days: 5 };
+  const opener = sessionOpener(() => [soon, { kind: 'alert', ride: 'Baron 1898' }]);
+  check(opener.yours, soon, 'the chat opens with the next planned day');
+  check(greetingKeyOf(opener), 'greetingSoon', 'with its own greeting');
+  const keys = suggestionKeysOf(opener, false);
+  check(keys.slice(0, 2), ['suggestMyDay', 'suggestMyWeather'], 'its questions first');
+  check(keys.length, SUGGESTIONS_SHOWN, 'still three questions');
+  check(
+    sessionOpener(() => []),
+    opener,
+    'a reload keeps the personal greeting'
+  );
+  const plain = drawOpener(opener, [{ kind: 'ridden', count: 25 }]);
+  check(plain.yours, undefined, 'a milestone has no greeting of its own');
+  check(greetingKeyOf(plain), plain.greeting, 'so the drawn one greets');
+  check(suggestionKeysOf(plain, true), plain.park, 'and the page questions stay');
+  store.set(
+    'parkfan:assistant-opener',
+    JSON.stringify({ ...opener, yours: { kind: 'soon', park: 'Efteling' } })
+  );
+  check(sessionOpener(() => []).yours, undefined, 'a moment that does not hold is drawn afresh');
+  delete globalThis.window;
+}
+
+// The last chat's park: kept in local storage, brought up only on a later visit within 30 days.
+{
+  const local = new Map();
+  let session = new Map();
+  const stand = (map) => ({
+    getItem: (key) => map.get(key) ?? null,
+    setItem: (key, value) => map.set(key, value),
+  });
+  globalThis.window = {
+    localStorage: stand(local),
+    get sessionStorage() {
+      return stand(session);
+    },
+  };
+  const day = 86_400_000;
+  const start = Date.parse('2026-11-01T10:00:00Z');
+  check(lastParkBack(start), null, 'nothing kept yet');
+  rememberLastPark('Toverland', 'toverland', start + 60_000);
+  check(lastParkBack(start + 120_000), null, 'not on the visit it was kept in');
+  session = new Map();
+  check(
+    lastParkBack(start + 2 * day),
+    { name: 'Toverland', slug: 'toverland', at: start + 60_000 },
+    'a later visit picks it up'
+  );
+  session = new Map();
+  check(lastParkBack(start + 31 * day), null, 'a month on, it is too old to bring up');
+  check(readLastPark('{"name":"  ","at":1}'), null, 'a blank name is no record');
+  check(
+    readLastPark('{"name":"A","slug":"../x","at":1}'),
+    { name: 'A', slug: null, at: 1 },
+    'an odd slug is dropped'
+  );
+  check(readLastPark('not json'), null, 'junk is no record');
+  globalThis.window = {
+    get localStorage() {
+      throw new Error('blocked');
+    },
+    get sessionStorage() {
+      throw new Error('blocked');
+    },
+  };
+  rememberLastPark('Efteling', 'efteling');
+  check(lastParkBack(), null, 'blocked storage: nothing brought up, nothing thrown');
+  delete globalThis.window;
+}
+
+// One unasked line a visit: a reaction spends the scheduled line's slot, and the other way round.
+{
+  const store = new Map();
+  globalThis.window = {
+    sessionStorage: {
+      getItem: (key) => store.get(key) ?? null,
+      setItem: (key, value) => store.set(key, value),
+    },
+  };
+  check(reactionsShown(), 0, 'a fresh visit has its line');
+  countReaction();
+  check(reactionsShown(), REACTIONS_PER_SESSION, 'a bored line spends it');
+  check(
+    store.get('parkfan:assistant-teasers'),
+    String(TEASER_SCHEDULE_MS.length),
+    'the schedule too'
+  );
+  delete globalThis.window;
+}
+
 check(
   parkPathOf('/de/parks/europe/germany/bruehl/phantasialand'),
   'europe/germany/bruehl/phantasialand',
@@ -807,16 +1058,21 @@ check(topCoaster([]), null, 'no ranking, no ride');
     parkNews: false,
     forced: null,
   };
-  check(lineSources(slot), ['invitation'], 'an ordinary page invites');
+  check(lineSources(slot), ['yours', 'invitation'], 'an ordinary page invites');
   check(
     lineSources({ ...slot, arrival: true, holiday: true }),
-    ['entrance', 'holiday', 'invitation'],
-    'the entrance first, then the holiday'
+    ['yours', 'entrance', 'holiday', 'invitation'],
+    "the visitor's own plans first, then the entrance, then the holiday"
   );
   check(
     lineSources({ ...slot, slot: 1, arrival: true, holiday: true }),
     ['invitation'],
-    'entrance and holiday only in the first slot'
+    'own plans, entrance and holiday only in the first slot'
+  );
+  check(
+    lineSources({ ...slot, slot: 1, forced: 'yours' }),
+    ['yours', 'invitation'],
+    '?parky=yours in any slot'
   );
   check(
     lineSources({ ...slot, slot: 1, page: 'park', parkLuck: true }),
@@ -825,47 +1081,58 @@ check(topCoaster([]), null, 'no ranking, no ride');
   );
   check(
     lineSources({ ...slot, page: 'park', arrival: true, holiday: true }),
-    ['entrance', 'live', 'clock', 'holiday', 'invitation'],
+    ['yours', 'entrance', 'live', 'clock', 'holiday', 'invitation'],
     'the entrance before the live waits, the live waits before the clock'
   );
   check(
     lineSources({ ...slot, page: 'park' }),
-    ['live', 'clock', 'invitation'],
+    ['yours', 'live', 'clock', 'invitation'],
     'the park line only on its draw'
   );
   check(
     lineSources({ ...slot, page: 'park', parkNews: true }),
-    ['clock', 'invitation'],
+    ['yours', 'clock', 'invitation'],
     'live is level with the weather: once the park had its news, no live line'
   );
   check(
     lineSources({ ...slot, page: 'park', parkNews: true, forced: 'live' }),
-    ['live', 'clock', 'invitation'],
+    ['live', 'yours', 'clock', 'invitation'],
     '?parky=live past the news already said'
   );
   check(
     lineSources({ ...slot, page: 'park', parkNews: true, forced: 'show' }),
-    ['live', 'clock', 'invitation'],
+    ['live', 'yours', 'clock', 'invitation'],
     '?parky=show puts the live line first, past the news already said'
   );
   check(lineSources({ ...slot, slot: 1, page: 'home' }), ['fact', 'invitation'], 'home: a fact');
   check(lineSources({ ...slot, slot: 1 }), ['invitation'], 'no fact on other pages');
   check(
     lineSources({ ...slot, page: 'park', forced: 'fact' }),
-    ['fact', 'live', 'clock', 'invitation'],
+    ['fact', 'yours', 'live', 'clock', 'invitation'],
     '?parky=fact in any slot, first'
   );
   check(
     lineSources({ ...slot, page: 'park', arrival: true, forced: 'clock' }),
-    ['clock', 'entrance', 'live', 'invitation'],
-    '?parky=clock first, even over an entrance'
+    ['clock', 'yours', 'entrance', 'live', 'invitation'],
+    "?parky=clock first, even over the visitor's plans"
   );
   check(
     lineSources({ ...slot, page: 'park', forced: 'egg' }),
-    ['live', 'clock', 'park', 'invitation'],
+    ['yours', 'live', 'clock', 'park', 'invitation'],
     '?parky=egg'
   );
-  check(lineSources({ ...slot, forced: 'live' }), ['invitation'], 'live only on a park page');
+  check(
+    lineSources({ ...slot, forced: 'live' }),
+    ['yours', 'invitation'],
+    'live only on a park page'
+  );
+  // One unasked line a visit: the schedule has one slot, which is also the last.
+  check(TEASER_SCHEDULE_MS.length, 1, 'one scheduled line a visit');
+  check(
+    lineSources({ ...slot, lastSlot: 0, page: 'home' }),
+    ['yours', 'fact', 'invitation'],
+    "with one slot, home gets the visitor's plans, else a fact"
+  );
   check(parkNewsKey('europe/a/b/c'), 'news:europe/a/b/c', 'one news key per park');
 }
 

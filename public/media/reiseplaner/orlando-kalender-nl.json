@@ -1,15 +1,15 @@
 {
-  "title": "Orlando-Besucherkalender (nl)",
+  "title": "Orlando-Andrang-Kalender (nl)",
   "tags": ["diagram"],
   "alt": {
-    "nl": "De drukte-kalender van Orlando met 16 regels voor de parken van Disney, Universal en SeaWorld en de dagtrips, per dag een vakje met de verwachte minuten."
+    "nl": "De drukte-kalender van Orlando met 16 regels voor de parken van Disney, Universal en SeaWorld en de dagtrips, met de legenda erboven en per dag een vakje met de piekwachttijd."
   },
   "caption": {
-    "nl": "Op 13 november heeft Animal Kingdom het kader en niet Magic Kingdom met het kleinere getal, omdat Magic Kingdom die avond om 18 uur sluit voor het feest."
+    "nl": "Op 20 november heeft Animal Kingdom met 45 het kader en niet Magic Kingdom met 40, omdat Magic Kingdom die avond om 18 uur sluit voor het feest."
   },
   "credit": {
     "author": "park.fan",
     "license": "all-rights-reserved"
   },
-  "shotAt": "2026-11-13"
+  "shotAt": "2026-11-14"
 }

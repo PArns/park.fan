@@ -5,7 +5,8 @@ galleries, diagrams. This page covers the read side: the modules that query it, 
 generates, how it is cached, the HTTP API and the export for the native app. Open it before
 importing from `@/lib/media*` or touching `scripts/generate-media-manifest.mjs`.
 
-- Authoring contract (sidecar fields, roles, tags, focus, `alsoRides`, `review`, naming):
+- Authoring contract (sidecar fields, roles, tags, focus, `bannerFocus`, `alsoRides`, `review`,
+  naming):
   [`public/media/README.md`](../../public/media/README.md)
 - How the admin, the capture screen, contributions and the blog editor write to it, and the GitHub
   token saving needs: [writing to the media database](media-database-writes.md)
@@ -35,8 +36,18 @@ getRideImages('toverland', 'troy'); // all photos of that ride, any collection, 
 getParkImages('toverland'); // every photo assigned to the park
 getParkOnlyImages('walibi-holland'); // park-level tier: park set, no ride
 getHeroImages('toverland'); // hero rotation, optionally per park
+getParkBackground(park); // a ParkBase as it stands: its url names the park's path
 searchMedia({ q: 'arach', tags: ['night'] });
 ```
+
+**A park is found by its path, not its slug.** `disneyland-park` is Paris and Anaheim. An image is
+filed under its park's geo path (`continent/country/city/slug`): the sidecar's `parkPath`, else the
+catalog's path for the slug (`MEDIA_PARK_PATH_BY_SLUG`). Every park lookup takes the park as a slug
+or as `{ slug, url }`, where `url` is the API's `/v1/parks/…`, a page path or the bare path, so a
+`ParkBase` passes as it stands. A bare slug finds the catalog's first park of that slug, which for
+`disneyland-park` is Paris; a caller that knows the park's path passes it. The keys come from one
+module, `lib/media/park-path.mjs`, which the generator's role audit, the admin's unique-role
+hand-over, the card map and the app export import as well. `pnpm test:media-park-path`.
 
 ### `@/lib/media/text`: localized alt and caption
 
@@ -77,7 +88,9 @@ own photo or focal point; both are handed in. `enrichParksWithImages` / `enrichA
 (`lib/utils/park-assets.ts`) attach `backgroundImage` and `backgroundPosition` together,
 `getCardObjectPosition` serves direct server call sites, `getCardImageMap()` is served as
 `/api/card-images` for the browser's direct API calls (`loadCardImageMap`, `lib/media/card-images.ts`),
-and the relays behind client-rendered grids (`/api/parks/[...path]`, `/api/nearby`,
+keyed by geo path with a `paths` table for a park that arrives with a slug and no `url` (its
+fetch URL changes with its keys, because the browser keeps the map a day), and the relays behind
+client-rendered grids (`/api/parks/[...path]`, `/api/nearby`,
 `/api/favorites`) enrich on the way out. `ParkCard`, `AttractionCard`, `CardPhotoFrame` and
 `ParkBackground` import nothing from `lib/media` except `@/lib/media/attribution` through
 `PhotoCredit`. The cheap check after a build:
@@ -85,6 +98,14 @@ and the relays behind client-rendered grids (`/api/parks/[...path]`, `/api/nearb
 ```sh
 grep -l "avatar-flight-of-passage/01-hoehlen" .next/static/chunks/*.js   # must be empty
 ```
+
+The two full-bleed heads with text over the photo, `LandingHero` and `BlogPostBanner`, take their
+framing from `heroPhotoFraming(src)` (`components/marketing/editorial-ui.tsx`), which reads
+`bannerObjectPositions(src)`: the sidecar's `bannerFocus` below `sm`, `focus` from `sm` up. Both
+positions are custom properties on the image's `style` (`--focus-narrow`, `--focus-wide`) and a
+`max-sm:` class picks one, so the server's HTML is already framed for every width and nothing
+re-renders on the client. Only the full manifest carries `bannerFocus`, and only on the rows that
+set it; the client-safe slices do not, since neither head runs on the client.
 
 A **pre-cut crop** (`…-16x9.jpg`) answers as the image it was cut from (same credit, same content
 version) but gets `50% 50%`, not the focal point: the crop was already cut around that point, and
@@ -215,7 +236,8 @@ It reads `https://media.park.fan`, an R2 bucket (`media-park-fan`, EU jurisdicti
 - **`index.json`** (`max-age=300`), written last so it never names a missing file:
   `{schema, generatedAt, base, pattern, parks: {<geo path>: id}, rides: {<geo path>/<ride>: id},
 images: {id: {v, w, h, widths, focus, credit, attribution}}}`. Parks are keyed by the API's geo
-  path, because `disneyland-park` and `universal-islands-of-adventure` each exist twice. `credit` is
+  path, because `disneyland-park` and `universal-islands-of-adventure` each exist twice, and the photo
+  is looked up by that path too. `credit` is
   `getCreditLine()`, `attribution` is `needsAttribution()`; the app shows the line on the photo when
   it is true, as the cards do. Files are scaled, never cropped, so the app applies `focus` itself.
 - **When:** `.github/workflows/publish-media.yml` on every push to `main` touching `public/media/**`,

@@ -215,6 +215,7 @@
   --color-crowd-ink-high: var(--crowd-ink-high);
   --color-crowd-ink-very-high: var(--crowd-ink-very-high);
   --color-crowd-ink-extreme: var(--crowd-ink-extreme);
+  --color-signal-storm: var(--signal-storm);
   --color-element-launch: var(--element-launch);
   --color-element-airtime: var(--element-airtime);
   --color-element-inversion: var(--element-inversion);
@@ -700,10 +701,12 @@
 }
 
 :root {
-  /* Crowd Level Colors – green band: teal → emerald → green; then orange → rose → red */
+  /* Crowd Level Colors – green band: teal → emerald → yellow-green; then orange → rose → red.
+     Moderate sits at hue 130, not the emerald's 145, so Niedrig and Normal tell apart: every
+     neighbouring pair is at least 0.094 apart in OKLab (docs/design/tokens.md#crowd-levels). */
   --crowd-very-low: oklch(0.58 0.13 192);
   --crowd-low: oklch(0.6 0.18 162);
-  --crowd-moderate: oklch(0.58 0.2 145);
+  --crowd-moderate: oklch(0.59 0.2 130);
   --crowd-high: oklch(0.62 0.2 78);
   --crowd-very-high: oklch(0.58 0.22 52);
   --crowd-extreme: oklch(0.55 0.24 25);
@@ -713,7 +716,7 @@
      because `CROWD_SCALE_CLASS` sets near-black text on them. */
   --crowd-ink-very-low: oklch(0.47 0.13 192);
   --crowd-ink-low: oklch(0.46 0.18 162);
-  --crowd-ink-moderate: oklch(0.47 0.2 145);
+  --crowd-ink-moderate: oklch(0.47 0.2 130);
   --crowd-ink-high: oklch(0.5 0.2 78);
   --crowd-ink-very-high: oklch(0.52 0.22 52);
   --crowd-ink-extreme: oklch(0.5 0.24 25);
@@ -726,6 +729,11 @@
   --element-inversion: oklch(0.55 0.2 315);
   --element-turn: oklch(0.6 0.13 195);
   --element-brake: oklch(0.55 0.02 240);
+
+  /* A region's storm season in a calendar's signal bar (`STORM_SIGNAL_CLASS`): a violet no crowd
+     tier, holiday signal or the brand blue uses, at 3:1 or more on every tile
+     (docs/design/tokens.md#storm-season). */
+  --signal-storm: oklch(0.54 0.25 295);
 
   /* 0.53, not 0.55: at 0.55 this green is 4.39:1 on white and small text in it misses AA; 0.53
      is 4.74:1 and visually the same green. */
@@ -743,7 +751,7 @@
   --badge-status-refurbishment: oklch(0.48 0.16 259);
   --badge-crowd-very-low: oklch(0.42 0.14 192);
   --badge-crowd-low: oklch(0.48 0.19 162);
-  --badge-crowd-moderate: oklch(0.48 0.2 145);
+  --badge-crowd-moderate: oklch(0.48 0.2 130);
   --badge-crowd-high: oklch(0.5 0.2 78);
   --badge-crowd-very-high: oklch(0.46 0.22 52);
   --badge-crowd-extreme: oklch(0.42 0.23 25);
@@ -799,7 +807,7 @@
   /* Crowd Level Colors – same hues, vivid for dark backgrounds */
   --crowd-very-low: oklch(0.8 0.14 192);
   --crowd-low: oklch(0.84 0.18 162);
-  --crowd-moderate: oklch(0.84 0.2 145);
+  --crowd-moderate: oklch(0.85 0.2 130);
   --crowd-high: oklch(0.86 0.18 78);
   --crowd-very-high: oklch(0.8 0.2 52);
   --crowd-extreme: oklch(0.74 0.22 25);
@@ -819,6 +827,8 @@
   --element-turn: oklch(0.78 0.12 195);
   --element-brake: oklch(0.7 0.02 240);
 
+  --signal-storm: oklch(0.72 0.17 295);
+
   /* Status Colors - Brighter for dark mode */
   --status-operating: oklch(0.792 0.209 151.711);
   --status-down: oklch(0.78 0.188 56.113);
@@ -832,12 +842,6 @@
   --badge-status-down: oklch(0.5 0.18 47);
   --badge-status-closed: oklch(0.46 0.22 27);
   --badge-status-refurbishment: oklch(0.48 0.16 259);
-  --badge-crowd-very-low: oklch(0.42 0.14 192);
-  --badge-crowd-low: oklch(0.48 0.19 162);
-  --badge-crowd-moderate: oklch(0.48 0.2 145);
-  --badge-crowd-high: oklch(0.5 0.2 78);
-  --badge-crowd-very-high: oklch(0.46 0.22 52);
-  --badge-crowd-extreme: oklch(0.42 0.23 25);
   --badge-primary: oklch(0.46 0.13 241);
   --badge-muted: oklch(0.46 0.02 238);
   --badge-trend-up: oklch(0.46 0.22 27);

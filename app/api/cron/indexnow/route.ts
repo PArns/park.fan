@@ -3,6 +3,8 @@ import { submitUrlsToIndexNow } from '@/lib/indexnow';
 import { locales, SITE_URL } from '@/i18n/config';
 import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
 import { HOWTO_SEGMENTS } from '@/lib/howto/segments';
+import { tripRegionLandingPaths } from '@/lib/trip-regions/paths';
+import { LIVE_TRIP_REGIONS } from '@/lib/trip-regions/registry';
 import { getParkPaths, getAttractionPaths, localizedUrls } from '@/lib/content-urls';
 import { getContentLastmodIndex } from '@/lib/seo/content-changes/store';
 import { cronUnauthorized } from '@/lib/security/cron-auth';
@@ -34,11 +36,16 @@ export async function GET(request: Request) {
   const urls: string[] = [];
   const now = new Date();
 
-  // Static pages, the sitemap's priority ≥ 0.7.
+  // Static pages, the sitemap's priority ≥ 0.7, and each live trip region's hub and best-time pages.
   for (const locale of locales) {
     urls.push(`${BASE_URL}/${locale}`);
     urls.push(`${BASE_URL}/${locale}/${HOWTO_SEGMENTS[locale]}`);
     urls.push(`${BASE_URL}/${locale}/${GLOSSARY_SEGMENTS[locale]}`);
+    for (const region of LIVE_TRIP_REGIONS) {
+      for (const path of tripRegionLandingPaths(region.slug, locale)) {
+        urls.push(`${BASE_URL}/${locale}${path}`);
+      }
+    }
   }
 
   // Park and attraction pages whose content moved, per the crawl that ran half an hour earlier.

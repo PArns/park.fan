@@ -1,0 +1,25 @@
+{
+  "title": "Parky-Szene Orlando, Tag",
+  "tags": ["diagram", "day"],
+  "alt": {
+    "de": "Parky mit Sonnenbrille und Reisekarte am Strand eines Sees, dahinter ein Flamingo, ein Koffer, eine Achterbahn mit Looping und eine startende Rakete.",
+    "en": "Parky in sunglasses with a travel map on the shore of a lake, behind him a flamingo, a suitcase, a looping coaster and a rocket taking off.",
+    "nl": "Parky met zonnebril en een reiskaart op het strand van een meer, met daarachter een flamingo, een koffer, een achtbaan met looping en een opstijgende raket.",
+    "fr": "Parky en lunettes de soleil avec une carte de voyage au bord d’un lac, derrière lui un flamant rose, une valise, des montagnes russes avec un looping et une fusée qui décolle.",
+    "es": "Parky con gafas de sol y un mapa de viaje a la orilla de un lago, detrás un flamenco, una maleta, una montaña rusa con looping y un cohete despegando.",
+    "it": "Parky con gli occhiali da sole e una mappa di viaggio sulla riva di un lago, dietro un fenicottero, una valigia, un ottovolante con il giro della morte e un razzo al decollo."
+  },
+  "credit": {
+    "author": "park.fan",
+    "license": "all-rights-reserved"
+  },
+  "focus": {
+    "x": 0.89,
+    "y": 0.55
+  },
+  "bannerFocus": {
+    "x": 0.25,
+    "y": 0.55
+  },
+  "shotAt": "2026-11-14"
+}

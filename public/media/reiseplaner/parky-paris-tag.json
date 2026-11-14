@@ -1,0 +1,25 @@
+{
+  "title": "Parky-Szene Paris, Tag",
+  "tags": ["diagram", "day"],
+  "alt": {
+    "de": "Parky mit Seidentuch und einem Café crème auf einer Caféterrasse an der Seine, dahinter ein Ausflugsboot, Häuser mit Zinkdächern und der Eiffelturm.",
+    "en": "Parky in a silk scarf with a café crème on a café terrace by the Seine, behind him a tour boat, zinc-roofed buildings and the Eiffel Tower.",
+    "nl": "Parky met een zijden sjaal en een café crème op een terras aan de Seine, met daarachter een rondvaartboot, huizen met zinken daken en de Eiffeltoren.",
+    "fr": "Parky, un foulard de soie au cou et un café crème à la main, en terrasse au bord de la Seine, derrière lui un bateau-mouche, des toits en zinc et la tour Eiffel.",
+    "es": "Parky con un pañuelo de seda y un café crème en una terraza junto al Sena, detrás un barco turístico, edificios con tejados de zinc y la torre Eiffel.",
+    "it": "Parky con un foulard di seta e un café crème sulla terrazza di un caffè lungo la Senna, dietro un battello turistico, case con i tetti di zinco e la Torre Eiffel."
+  },
+  "credit": {
+    "author": "park.fan",
+    "license": "all-rights-reserved"
+  },
+  "focus": {
+    "x": 0.89,
+    "y": 0.55
+  },
+  "bannerFocus": {
+    "x": 0.47,
+    "y": 0.55
+  },
+  "shotAt": "2026-11-14"
+}

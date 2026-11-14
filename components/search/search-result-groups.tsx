@@ -9,7 +9,7 @@ import {
   TripPlannerResultItem,
 } from '@/components/search/search-result-items';
 import type { SearchResult, SearchResultItem } from '@/lib/api/types';
-import type { TripRegionLinks } from '@/lib/orlando/trip-links';
+import type { TripRegionLinks } from '@/lib/trip-regions/trip-links';
 import type { GlossarySearchItem, UseSearchResultsReturn } from '@/lib/hooks/use-search-results';
 import type { PostSearchEntry } from '@/lib/navigation/blog-menu';
 

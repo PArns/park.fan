@@ -2,14 +2,14 @@
   "title": "Reiseplaner, Wochenansicht (nl)",
   "tags": ["diagram"],
   "alt": {
-    "nl": "De weekweergave van 5 tot 11 december 2026 met een blok per parkdag op een urenas, boven de kolommen “Disney-dag 1 van 4” tot “Disney-dag 4 van 4” en “Universal-dag 1 van 3”."
+    "nl": "De weekweergave van 5 tot 11 december 2026 met een blok per parkdag op een urenas, boven de kolommen “Universal-dag 1 van 3” tot “Universal-dag 3 van 3”, “Disney-dag 1 van 4” en “Disney-dag 2 van 4”."
   },
   "caption": {
-    "nl": "Zaterdag blijft als aankomstdag vrij, zo staat het standaard ingesteld. Land je vroeg, dan zet je met “Park op de aankomstdag” er een park bij."
+    "nl": "Zaterdag blijft als aankomstdag vrij, zo staat het standaard ingesteld. Land je vroeg, dan zet je onder “Meer opties” met “Park op de aankomstdag” er een park bij."
   },
   "credit": {
     "author": "park.fan",
     "license": "all-rights-reserved"
   },
-  "shotAt": "2026-11-13"
+  "shotAt": "2026-11-14"
 }

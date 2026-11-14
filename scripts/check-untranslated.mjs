@@ -62,10 +62,13 @@ const LONG_ENOUGH = 5;
 /** Keys whose value is legitimately the German one and trips the rule anyway. */
 const ALLOWED = new Set([
   // The operators' product names, which the planner never translates (docs/features/orlando-planner.md).
-  'orlandoPlanner.tickets.entry.sw-three-park.title',
-  'orlandoPlanner.tickets.variant.uor-2-day-p2p-plus-epic',
+  'tripRegions.orlando.planner.tickets.entry.sw-three-park.title',
+  'tripRegions.orlando.planner.tickets.variant.uor-2-day-p2p-plus-epic',
   // The seller's product name (attractiontickets.com), never translated.
-  'orlandoPlanner.tickets.combo.title',
+  'tripRegions.orlando.planner.tickets.combo.title',
+  // Hotel areas named by place names alone, the same in every language.
+  'tripRegions.japan.planner.area.kinjo_futo',
+  'tripRegions.paris.planner.area.val_de_france',
 ]);
 
 function flatten(value, prefix = '', out = new Map()) {

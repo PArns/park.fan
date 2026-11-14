@@ -31,7 +31,7 @@ export function withNearbyCardImages(map: CardImageMap, answer: NearbyResponse):
   if (answer.type === 'in_park') {
     const data = answer.data as NearbyAttractionsData;
     if (!data?.park) return answer;
-    const park = { slug: data.park.slug };
+    const park = { slug: data.park.slug, url: data.park.url };
     return {
       ...answer,
       data: {

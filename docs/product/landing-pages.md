@@ -51,9 +51,15 @@ that apply. The details (one `<h1>`, one primary action, `ChapterHeading`, no ba
 | Kicker          | `park.fan · <topic>` from `landing.<page>.kicker` in the messages, set by `HeadKicker` | same                                                                   |
 | Left text edge  | the `container` edge, the same on all three kinds                                      | same; a narrower content column starts at that edge, it is not centred |
 | Vertical rhythm | `space-y-16 sm:space-y-24` between chapters                                            | same                                                                   |
-| Hero height     | `min-h-[78vh]`, under the 48 px header with `-mt-12`                                   | compact head: content height only                                      |
+| Hero height     | `min-h-[78vh]`, under the 48 px header with `-mt-12`; `short` for the trip hubs        | compact head: content height only                                      |
 
-The H1 sizes are `TITLE_CLASS` in `editorial-ui.tsx`. On the hubs that let content flow into the
+The H1 sizes are `TITLE_CLASS` in `editorial-ui.tsx`. A hub whose visitors arrive with one question
+asks it: `LandingHero question` makes the question the head's big line and keeps the page's search
+term inside the `<h1>` as its small first line, in the kicker's place („Orlando Andrang-Kalender“
+over „Welcher Park an welchem Tag?“). The trip hubs also pass `short`, so the head ends after its
+content and the calendar starts in the first screen, and leave out the scroll cue, since their
+second button („Zum Kalender“) leads there. A hub without a photo in the media database gets the
+brand gradient, never a picture that does not load. On the hubs that let content flow into the
 hero on a phone, `HERO_FLOW_INTO_PULL` must stay below the hero's mobile `pb-48`
 ([a blog card is a row on phones](../rules/a-blog-card-is-a-row-on-phones.md)), and
 `pnpm check:header-reach` covers the hero pages
@@ -68,7 +74,7 @@ once in its head (`LandingHero action`) and again as the first entry of `Landing
 | --------------------- | ----------------------------------------------- | ---------------------------------------- |
 | best time to visit    | P1, P2, P4, P5 (scenario S-A)                   | the trip planner                         |
 | trip planner          | P1 (S-B)                                        | start a plan (the tool on the same page) |
-| Orlando hub           | P1, P2, P4, P6                                  | plan my Orlando trip (chapter 03)        |
+| Orlando hub           | P1, P2, P4, P6                                  | plan my trip (chapter 02)                |
 | Orlando best time     | P1, P4, P5                                      | the planner on the quietest window       |
 | how park.fan works    | P4                                              | open a park                              |
 | Fancast               | P2                                              | a park's crowd calendar                  |

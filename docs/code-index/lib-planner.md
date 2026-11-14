@@ -271,6 +271,7 @@ How wide the desktop panel is, as an external store rather than component state:
 - `resolveTimeZone` _function_: The park's zone where known, the reader's otherwise, for callers that need a zone string, such as the now line and the grid's clock.
 - `parkMinuteNow` _function_: Park-local minutes since midnight, through the cached formatter since the now line ticks. `hourCycle: 'h23'`, not `hour12: false`, which yields `24` for midnight in some runtimes.
 - `formatGridTime` _function_: Minutes since park-local midnight as `10:30`. Takes minutes, never a `Date`, so the reader's zone cannot enter. Past midnight folds back: 25:00 labels as `01:00`.
+- `formatGridHours` _function_: A day's hours as short as a phone cell needs, on the same 24-hour clock as `formatGridTime`: `09–21`, `08:30–18`, with midnight as `24` rather than `00`. Two digits, so it does not read as a range of dates.
 - `longDate` _function_: `Donnerstag, 17. September`: the day a plan is filed under, in the reader's language. Formatted from noon UTC, which no offset can push across a date boundary. Shared, so the wizard and the fit assistant cannot name different days.
 - `dayClock` _function_: The clock for one planned date, read in the park's zone. `now` is a parameter so a test can set the time.
 - `nextPlannedDay` _function_: Which planned day comes next, across every park in the plan. Each park's days are measured against that park's own today, and the nights between are compared, since two parks can be on different dates at once.
@@ -419,6 +420,7 @@ The link that hands a stored plan to somebody else, and how it is read back.
 - `isPlannedDay` _function_: A day the lists, the countdown, the share link and the sync show: it holds entries or was reserved.
 - `hasAnyPlan` _function_: True when there is anything at all worth opening the flyout for.
 - `plannedParks` _function_: The parks that hold a planned day, by name in the reader's language, each with those days in date order.
+- `plannedDayRows` _function_: The rows of a column's park chooser: every planned day of every park in date order, a trip's days one after the other ("Sun, Dec 6 · Islands of Adventure"), then the parks that hold no planned day yet, by name, without a date.
 - `entriesFor` _function_: Entries for one park and date, in plan order. Never `undefined`.
 - `countAll` _function_: Total across all parks — what the trigger badge shows.
 - `PLANNER_BLOCK_ICONS` _const_: The icons a free block may carry. A closed set, so a plan never stores a class name.

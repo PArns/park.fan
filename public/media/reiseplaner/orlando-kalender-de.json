@@ -1,15 +1,15 @@
 {
-  "title": "Orlando-Besucherkalender (de)",
+  "title": "Orlando-Andrang-Kalender (de)",
   "tags": ["diagram"],
   "alt": {
-    "de": "Der Orlando-Besucherkalender mit 16 Zeilen für die Parks von Disney, Universal und SeaWorld und die Tagesausflüge, für jeden Tag ein Kästchen mit den erwarteten Minuten."
+    "de": "Der Orlando-Andrang-Kalender mit 16 Zeilen für die Parks von Disney, Universal und SeaWorld und die Tagesausflüge, darüber die Legende, für jeden Tag ein Kästchen mit der Spitzenwartezeit."
   },
   "caption": {
-    "de": "Am 13. November ist das Animal Kingdom umrahmt und nicht das Magic Kingdom mit der kleineren Zahl, weil das Magic Kingdom an diesem Abend um 18 Uhr für die Party schließt."
+    "de": "Am 20. November ist das Animal Kingdom mit 45 umrahmt und nicht das Magic Kingdom mit 40, weil das Magic Kingdom an diesem Abend um 18 Uhr für die Party schließt."
   },
   "credit": {
     "author": "park.fan",
     "license": "all-rights-reserved"
   },
-  "shotAt": "2026-11-13"
+  "shotAt": "2026-11-14"
 }

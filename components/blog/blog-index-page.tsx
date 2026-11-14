@@ -12,16 +12,31 @@ import { PageBottomSections } from '@/components/common/page-bottom-sections';
 import { BlogStructuredData } from '@/components/seo/blog-structured-data';
 import { LandingHero, HERO_FLOW_INTO_PULL } from '@/components/marketing/editorial-ui';
 import { getOgImageUrl } from '@/lib/utils/og-image';
-import { getParkBackgroundImage } from '@/lib/utils/park-assets';
+import { getMediaAltBySrc } from '@/lib/media/text';
+import { versionedPath } from '@/lib/media/focus';
 import { blogFeedAlternates } from '@/lib/blog/feed';
 import { cn } from '@/lib/utils';
 
 /**
- * The blog hero's photo, asked of the media database so the path carries its content version and
- * the park can change which photo it is.
+ * Parky's region scenes, the covers of the trip posts, so the blog's head is the same Parky a
+ * reader meets on the planner tile and on those posts.
  */
-const BLOG_HERO_IMAGE =
-  getParkBackgroundImage('europa-park') ?? '/media/europa-park/background.jpg';
+const BLOG_HERO_SCENES = [
+  '/media/reiseplaner/parky-orlando-tag.webp',
+  '/media/reiseplaner/parky-kalifornien-tag.webp',
+  '/media/reiseplaner/parky-japan-tag.webp',
+  '/media/reiseplaner/parky-paris-tag.webp',
+] as const;
+
+/**
+ * The scene of the day (UTC), so a week shows every region; the path carries its content version.
+ * The page renders once a day for it (`revalidate` in app/[locale]/blog/page.tsx), and it is
+ * picked on the server, so the first HTML already holds the picture and nothing swaps.
+ */
+function blogHeroImage(): string {
+  const day = Math.floor(Date.now() / 86_400_000);
+  return versionedPath(BLOG_HERO_SCENES[day % BLOG_HERO_SCENES.length]);
+}
 
 /** Locale-relative path of the blog index, page 1. */
 const BLOG_INDEX_PATH = '/blog';
@@ -92,6 +107,8 @@ export async function BlogIndexPageBody({ locale, page }: { locale: string; page
   const [t, tLanding] = await Promise.all([getTranslations('blog'), getTranslations('landing')]);
   const allPosts = listArticles(locale as Locale);
 
+  const heroImage = blogHeroImage();
+
   if (allPosts.length === 0) {
     return (
       <div className="container mx-auto px-4 py-16 text-center">
@@ -129,8 +146,8 @@ export async function BlogIndexPageBody({ locale, page }: { locale: string; page
             kicker={tLanding('blog.kicker')}
             title={t('heroTitle')}
             tagline={t('intro')}
-            imageSrc={BLOG_HERO_IMAGE}
-            imageAlt={t('heroTitle')}
+            imageSrc={heroImage}
+            imageAlt={getMediaAltBySrc(heroImage, locale) ?? t('heroTitle')}
             scrollLabel={tLanding('scroll')}
             flowInto
           />

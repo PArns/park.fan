@@ -1,0 +1,32 @@
+{
+  "title": "Mount Fuji behind Fuji-Q Highland",
+  "park": "fuji-q-highland",
+  "roles": ["park-background"],
+  "tags": ["background", "coaster", "day", "outdoor", "overcast", "park", "photo"],
+  "alt": {
+    "de": "Der verschneite Fuji über einem Wolkenband, davor die Stahlhügel einer Achterbahn und ein Strommast.",
+    "en": "Snow-capped Mount Fuji above a band of cloud, with the steel hills of a roller coaster and a power pylon in front.",
+    "es": "El monte Fuji nevado sobre una franja de nubes, con las colinas de acero de una montaña rusa y una torre eléctrica delante.",
+    "fr": "Le mont Fuji enneigé au-dessus d’une bande de nuages, devant lui les bosses d’acier d’un grand huit et un pylône.",
+    "it": "Il monte Fuji innevato sopra una fascia di nuvole, davanti le gobbe d’acciaio di un ottovolante e un traliccio.",
+    "nl": "De besneeuwde Fuji boven een wolkenband, ervoor de stalen heuvels van een achtbaan en een hoogspanningsmast."
+  },
+  "caption": {
+    "de": "Fuji-Q Highland liegt in Fujiyoshida, nahe am Fuß des Fuji.",
+    "en": "Fuji-Q Highland is in Fujiyoshida, near the foot of Mount Fuji.",
+    "es": "Fuji-Q Highland está en Fujiyoshida, cerca de la base del monte Fuji.",
+    "fr": "Fuji-Q Highland se trouve à Fujiyoshida, près du pied du mont Fuji.",
+    "it": "Fuji-Q Highland si trova a Fujiyoshida, vicino ai piedi del monte Fuji.",
+    "nl": "Fuji-Q Highland ligt in Fujiyoshida, vlak bij de voet van de Fuji."
+  },
+  "credit": {
+    "author": "Hong Ki Tang",
+    "license": "unsplash",
+    "source": "unsplash",
+    "sourceUrl": "https://unsplash.com/photos/a-roller-coaster-with-a-mountain-in-the-background-W-graT3u32g"
+  },
+  "focus": {
+    "x": 0.5,
+    "y": 0.55
+  }
+}

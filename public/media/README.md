@@ -85,6 +85,7 @@ normalizes and validates it through `lib/media/sidecar.mjs`; the types are `Medi
   "shotAt": "2024-10-26", // defaults to EXIF DateTimeOriginal
   "gps": { "lat": 51.4, "lon": 6.2 }, // defaults to the EXIF GPS tag
   "focus": { "x": 0.62, "y": 0.38 }, // or "top" / "center" / "bottom-right" / …
+  "bannerFocus": { "x": 0.3, "y": 0.55 }, // a full-bleed head on a phone, see below
   "order": 3, // position in the collection; else file-name order
   "review": true, // set by /admin/capture, see below
 }
@@ -135,11 +136,28 @@ in `/admin/media`, which previews the real card components. Leave it out when th
 centred; "unset" and "centred" are stored differently so the admin can list what still needs a
 look. How the crop is computed: [media database](../../docs/features/media-database.md#libmediafocus-one-crop-rule-for-every-surface).
 
+### `bannerFocus` — a head with text over the picture, on a phone
+
+The blog post banner and the blog index hero (`LandingHero`) put their headline, excerpt and byline
+over the photo. From `sm` up the text keeps to the left; below `sm` it covers most of the picture,
+so whatever sits at `focus` ends up under it. For an image whose subject would, `bannerFocus` is a
+second point, in the same form as `focus`, that those heads frame at below `sm`: Parky's region
+scenes put the scenery there (the Eiffel Tower, Fuji) and keep Parky for the cards, the crops and
+the phone rows, which still use `focus`. Leave it out everywhere else; absent, the heads use
+`focus`. Centre is a point here, not "unset", because absent already means `focus`.
+
+It changes no pixels and cuts no crop, so it is not part of the content version, and the admin
+browser has no control for it: a save there keeps what the sidecar holds. Check a value at 390 px
+wide in both heads; the head grows with its text, so the post banner shows a narrower slice than
+the index.
+
 ### `parkPath` — for the slugs that are not unique
 
 `disneyland-park` is both Anaheim and Paris. For an image of a park whose slug the catalog lists
 more than once, add the full `continent/country/city/slug` path; the generator warns when it is
-missing.
+missing. The lookups file the image under that path, so each park keeps its own
+`park-background`; without it the image counts as the catalog's first park of the slug, Paris for
+`disneyland-park` ([media database](../../docs/features/media-database.md#libmedia-structure-lookup-search)).
 
 ### `credit` — never invent one
 
