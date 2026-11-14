@@ -1,4 +1,5 @@
 import type { CalendarDay } from '@/lib/api/types';
+import { forecastCrowdLevel } from '@/lib/utils/calendar-utils';
 import { isColoredCrowdLevel } from '@/lib/utils/crowd-level-styles';
 import type { OutlookDay, OutlookHoliday } from '@/lib/utils/yearly-outlook';
 
@@ -18,8 +19,7 @@ export const WEEKDAY_FORECAST_DATES = 6;
  * carries neither a wait nor a recommendation, and no holiday names.
  */
 function forecastDay(day: CalendarDay): { day: OutlookDay; holiday: OutlookHoliday | null } {
-  const level = day.predictedCrowdLevel ?? day.crowdLevel;
-  const closed = day.status === 'CLOSED' || level === 'closed';
+  const level = forecastCrowdLevel(day);
 
   const holiday: OutlookHoliday = {};
   if (day.isHoliday) holiday.isHoliday = true;
@@ -27,7 +27,7 @@ function forecastDay(day: CalendarDay): { day: OutlookDay; holiday: OutlookHolid
   if (day.isBridgeDay) holiday.isBridgeDay = true;
 
   return {
-    day: { level: closed ? 'closed' : isColoredCrowdLevel(level) ? level : 'unknown' },
+    day: { level: level === 'closed' ? 'closed' : isColoredCrowdLevel(level) ? level : 'unknown' },
     holiday: Object.keys(holiday).length > 0 ? holiday : null,
   };
 }

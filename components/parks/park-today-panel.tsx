@@ -31,6 +31,7 @@ import { getAttractionDisplayStatus, getStandbyWait } from '@/lib/utils/park-uti
 import { getWeatherConfig } from '@/lib/utils/weather-utils';
 import { hasReadableWaitTimes } from '@/lib/utils/live-wait-times';
 import { isInSeason } from '@/lib/utils/season';
+import { forecastCrowdLevel } from '@/lib/utils/calendar-utils';
 import { coveredOfferReady, rankCoveredRides } from '@/lib/utils/covered-rides';
 import { isParkDayOver } from '@/lib/utils/park-day-over';
 import { parkDayOf } from '@/lib/utils/park-day';
@@ -147,6 +148,14 @@ export function ParkTodayPanel({
   const avgWait = stats?.avgWaitTime ?? 0;
   const currentCrowd = stats?.crowdLevel ?? park.currentLoad?.crowdLevel ?? null;
   const isOpenish = sched.badgeStatus === 'OPERATING' || sched.isUnknown;
+  // A measured peak hour happened. An estimated one is a forecast for today, and the API sends it
+  // for a day the park does not open as well.
+  const peakHour =
+    stats?.peakHour &&
+    stats.peakHourSource &&
+    (stats.peakHourSource === 'observed_today' || sched.isOperatingToday || sched.isUnknown)
+      ? { at: stats.peakHour, estimated: stats.peakHourSource !== 'observed_today' }
+      : null;
 
   const browserNow = useMinuteNowDate();
   const { data: calendar } = useParkBestDaysCalendar({ continent, country, city, parkSlug });
@@ -155,13 +164,11 @@ export function ParkTodayPanel({
     [browserNow, timezone]
   );
 
-  // „Prognose heute" is the ML forecast for today (predicted peak). `predictedCrowdLevel` and
-  // `crowdLevel` agree on today, so the fallback carries older API builds and unratable days. Never
-  // surface a "closed" sentinel as a forecast.
+  // „Prognose heute" is the ML forecast for today (predicted peak), and a closed day has none.
   const predictedToday = useMemo(() => {
     if (!calendar || !todayStr) return null;
     const today = calendar.days.find((d) => d.date === todayStr);
-    const level = today?.predictedCrowdLevel ?? today?.crowdLevel ?? null;
+    const level = today ? forecastCrowdLevel(today) : null;
     return level === 'closed' ? null : level;
   }, [calendar, todayStr]);
 
@@ -668,7 +675,7 @@ export function ParkTodayPanel({
               )}
               {/* Peak wait and peak hour sit beside the occupancy bar, not in the headliner column:
                   both are park-wide readings about today, not about one queue. */}
-              {stats && (peakWait > 0 || (stats.peakHour && stats.peakHourSource)) && (
+              {stats && (peakWait > 0 || peakHour) && (
                 <p className="text-muted-foreground text-xs">
                   {peakWait > 0 && (
                     <>
@@ -679,16 +686,16 @@ export function ParkTodayPanel({
                       {tCommon('minutes')}
                     </>
                   )}
-                  {peakWait > 0 && stats.peakHour && stats.peakHourSource && ' · '}
+                  {peakWait > 0 && peakHour && ' · '}
                   {/* `peakHour` is an ISO timestamp, not an hour, so it is formatted, with `≈` for
                       a predicted value; without `peakHourSource` there is nothing to qualify it
                       with. */}
-                  {stats.peakHour && stats.peakHourSource && (
+                  {peakHour && (
                     <>
                       {t('peakHour')}{' '}
                       <strong className="text-foreground font-semibold tabular-nums">
-                        {stats.peakHourSource !== 'observed_today' && '≈ '}
-                        <LocalTime time={stats.peakHour} timeZone={timezone} />
+                        {peakHour.estimated && '≈ '}
+                        <LocalTime time={peakHour.at} timeZone={timezone} />
                       </strong>
                     </>
                   )}
