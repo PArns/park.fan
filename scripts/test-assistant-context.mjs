@@ -718,14 +718,12 @@ globalThis.window = {
     };
   })(),
 };
-const { connectPlannerBridge, tripPlannerBridge } = await import(
-  '@/lib/trip-regions/planner-bridge.ts'
-);
+const { connectPlannerBridge, tripPlannerBridge } =
+  await import('@/lib/trip-regions/planner-bridge.ts');
 const { cleanParty, forgetTrip, holdsTrip, rememberParty, rememberTrip, rememberedTrip } =
   await import('@/lib/trip-regions/remembered-trip.ts');
-const { assistantTripsSnapshot, rememberTripChange, sameTripQuery, takeTripUndo } = await import(
-  '@/lib/assistant/trip-context.ts'
-);
+const { assistantTripsSnapshot, rememberTripChange, sameTripQuery, takeTripUndo } =
+  await import('@/lib/assistant/trip-context.ts');
 const { readPlanQuery } = await import('@/lib/trip-regions/plan-query.ts');
 
 check(holdsTrip(''), false, 'an untouched planner holds no trip');
@@ -783,7 +781,11 @@ check(
   ],
   'the trip on screen, with the party kept for it, once'
 );
-check(tripPlannerBridge.apply('japan', 'from=2027-04-01&to=2027-04-10'), false, 'another region is not on screen');
+check(
+  tripPlannerBridge.apply('japan', 'from=2027-04-01&to=2027-04-10'),
+  false,
+  'another region is not on screen'
+);
 
 // Parky changes the trip on screen through the planner's own update.
 const before = tripPlannerBridge.current().query;
@@ -793,9 +795,18 @@ check(
   true,
   'the change goes through the planner on screen'
 );
-check(writes.at(-1).locks, [{ target: 'epcot', date: '2027-10-15' }], 'read back as the planner reads a link');
+check(
+  writes.at(-1).locks,
+  [{ target: 'epcot', date: '2027-10-15' }],
+  'read back as the planner reads a link'
+);
 disconnect();
-disconnect = connectPlannerBridge('orlando', tripState, (recipe) => (tripState = recipe(tripState)), undefined);
+disconnect = connectPlannerBridge(
+  'orlando',
+  tripState,
+  (recipe) => (tripState = recipe(tripState)),
+  undefined
+);
 check(
   takeTripUndo('orlando'),
   { query: 'from=2027-10-14&to=2027-10-21' },
@@ -843,7 +854,16 @@ check(
 check(
   readAssistantAction({
     type: 'replies',
-    replies: ['Next summer', 'next summer', '**bold**', 'see https://x.y', 'a'.repeat(41), 'Find the best dates', 'More', 'Even more'],
+    replies: [
+      'Next summer',
+      'next summer',
+      '**bold**',
+      'see https://x.y',
+      'a'.repeat(41),
+      'Find the best dates',
+      'More',
+      'Even more',
+    ],
   }),
   { type: 'replies', replies: ['Next summer', 'Find the best dates', 'More', 'Even more'] },
   'replies: plain lines, each once, no link or Markdown, at most four'
@@ -878,7 +898,11 @@ check(
     days: [{ park, date: '2026-11-07' }],
     prefs: { riderHeightCm: 105, avoidWet: true },
   }),
-  { type: 'planner_reserve_trip', days: [{ park, date: '2026-11-07' }], prefs: { riderHeightCm: 105 } },
+  {
+    type: 'planner_reserve_trip',
+    days: [{ park, date: '2026-11-07' }],
+    prefs: { riderHeightCm: 105 },
+  },
   "a filed trip carries the smallest rider's height, nothing else"
 );
 check(
@@ -924,9 +948,8 @@ check(
 );
 
 // --- The interview's store and the planner button's first question ---
-const { interviewStore, startInterview, takeInterviewKickoff } = await import(
-  '@/lib/assistant/interview.ts'
-);
+const { interviewStore, startInterview, takeInterviewKickoff } =
+  await import('@/lib/assistant/interview.ts');
 startInterview({ kind: 'day', park: 'phantasialand', date: '2026-11-07' });
 check(
   interviewStore.getSnapshot(),
@@ -955,7 +978,11 @@ check(
   '/orlando?from=2027-10-14#planner',
   "the route folder becomes the region's segment"
 );
-check(regionHubPath('/trip-regions/atlantis', 'de'), '/trip-regions/atlantis', 'an unknown region stays');
+check(
+  regionHubPath('/trip-regions/atlantis', 'de'),
+  '/trip-regions/atlantis',
+  'an unknown region stays'
+);
 check(regionHubPath('/parks/europe', 'de'), '/parks/europe', 'any other path stays');
 
 console.log(`assistant context: ${passed} checks passed`);

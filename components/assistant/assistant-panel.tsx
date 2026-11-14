@@ -203,7 +203,8 @@ export function AssistantPanel({
   useEffect(() => {
     if (!open || session.state !== 'ready' || phase !== 'idle') return;
     const kind = takeInterviewKickoff();
-    if (kind) void send(t(kind === 'trip' ? 'interview.kickoffTrip' : 'interview.kickoffDay'), 'interview');
+    if (kind)
+      void send(t(kind === 'trip' ? 'interview.kickoffTrip' : 'interview.kickoffDay'), 'interview');
   }, [open, session.state, phase, send, t]);
 
   /** A receipt's undo goes through Parky's own, which leaves a plan the visitor changed since. */

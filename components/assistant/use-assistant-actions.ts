@@ -355,7 +355,12 @@ export function useAssistantActions(closeWindow: () => void) {
           withUndo(park, date, () => {
             plannerStore.update((state) => removeEntry(state, park.slug, date, entryId));
             addShow(
-              { ...base(park, date), showSlug: line.slug, showName: line.name, startMinute: line.minute },
+              {
+                ...base(park, date),
+                showSlug: line.slug,
+                showName: line.name,
+                startMinute: line.minute,
+              },
               'assistant'
             );
           });

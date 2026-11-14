@@ -96,7 +96,8 @@ export function rememberTripChange(region: string, before: string, sent: string)
   tripChanges.set(region, {
     before,
     sent,
-    after: onScreen?.region === region && sameTripQuery(onScreen.query, sent) ? onScreen.query : null,
+    after:
+      onScreen?.region === region && sameTripQuery(onScreen.query, sent) ? onScreen.query : null,
   });
 }
 

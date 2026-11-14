@@ -229,18 +229,18 @@ export function DatenschutzDE() {
           die Sie im Reiseplaner gerade vor sich haben, und die zuletzt geplante Reise je Region
           (Reisedaten, Parks, Hotel, Tickets und festgelegte Tage, dazu was Sie Parky über Ihre
           Gruppe gesagt haben, etwa wie viele Sie sind und wie groß die Kinder), während eines
-          Interviews mit Parky, bei welcher Frage es steht, welche Erinnerungen Sie gesetzt haben und
-          die Kennungen Ihrer Favoriten. Diese Angaben liegen sonst nur in Ihrem Browser; Parky
-          braucht sie, um Ihre Pläne, Ihre Erinnerungen und Favoriten zu lesen und auf Ihren Wunsch zu
-          ändern. Ihren Standort sendet er nur, wenn Sie
-          ihn im Chat ausdrücklich teilen. Der Server rundet ihn auf etwa einen Kilometer, nutzt ihn
-          für die Antwort und speichert ihn nicht. Fragen Sie ohne geteilten Standort nach Parks in
-          der Nähe, schätzt der Server Ihre ungefähre Lage aus Ihrer IP-Adresse.
+          Interviews mit Parky, bei welcher Frage es steht, welche Erinnerungen Sie gesetzt haben
+          und die Kennungen Ihrer Favoriten. Diese Angaben liegen sonst nur in Ihrem Browser; Parky
+          braucht sie, um Ihre Pläne, Ihre Erinnerungen und Favoriten zu lesen und auf Ihren Wunsch
+          zu ändern. Ihren Standort sendet er nur, wenn Sie ihn im Chat ausdrücklich teilen. Der
+          Server rundet ihn auf etwa einen Kilometer, nutzt ihn für die Antwort und speichert ihn
+          nicht. Fragen Sie ohne geteilten Standort nach Parks in der Nähe, schätzt der Server Ihre
+          ungefähre Lage aus Ihrer IP-Adresse.
         </p>
         <p>
           Für die Antwort übergibt unser Server Ihre Frage, die letzten Nachrichten des Chats, Ihre
-          Pläne und Ihre Erinnerungen wie oben beschrieben und die dafür abgefragten Parkdaten an das
-          Sprachmodell Claude der Anthropic PBC, 548 Market Street, PMB 90375, San Francisco, CA
+          Pläne und Ihre Erinnerungen wie oben beschrieben und die dafür abgefragten Parkdaten an
+          das Sprachmodell Claude der Anthropic PBC, 548 Market Street, PMB 90375, San Francisco, CA
           94104, USA. Ihre IP-Adresse erhält Anthropic nicht. Anthropic verarbeitet die Daten in
           unserem Auftrag, um die Antwort zu erzeugen, und nutzt sie nach seinen Bedingungen für
           Geschäftskunden nicht zum Training seiner Modelle. Die Übermittlung in die USA stützt sich
@@ -249,16 +249,15 @@ export function DatenschutzDE() {
         </p>
         <p>
           Auf unserem API-Server speichern wir den Chat, also Ihre Fragen und Parkys Antworten samt
-          der Abfragen, die er dafür gestellt hat, und Ihre Bewertung einer Antwort. Ihre Pläne selbst
-          speichern wir nicht; in den Abfragen steht nur, was Parky dafür braucht, etwa Reisedaten
-          und Parks. So kann Parky
-          im selben Gespräch an Früheres anknüpfen, und wir finden falsche Antworten. Eine
-          IP-Adresse steht dabei nicht, nur eine Prüfsumme aus der Adresse, dem Tag und einem
-          geheimen Schlüssel. Sie zeigt allein, welche Chats eines Tages von derselben Adresse
-          kamen, und lässt sich nicht auf die Adresse zurückrechnen. Nach 7 Tagen löschen wir die
-          Chats automatisch. Damit niemand den Dienst überlastet, zählt der Server die Fragen je
-          Sitzungsschlüssel und die neuen Sitzungen je IP-Adresse, beides nur als Prüfsumme, die
-          spätestens nach einem Tag verfällt.
+          der Abfragen, die er dafür gestellt hat, und Ihre Bewertung einer Antwort. Ihre Pläne
+          selbst speichern wir nicht; in den Abfragen steht nur, was Parky dafür braucht, etwa
+          Reisedaten und Parks. So kann Parky im selben Gespräch an Früheres anknüpfen, und wir
+          finden falsche Antworten. Eine IP-Adresse steht dabei nicht, nur eine Prüfsumme aus der
+          Adresse, dem Tag und einem geheimen Schlüssel. Sie zeigt allein, welche Chats eines Tages
+          von derselben Adresse kamen, und lässt sich nicht auf die Adresse zurückrechnen. Nach 7
+          Tagen löschen wir die Chats automatisch. Damit niemand den Dienst überlastet, zählt der
+          Server die Fragen je Sitzungsschlüssel und die neuen Sitzungen je IP-Adresse, beides nur
+          als Prüfsumme, die spätestens nach einem Tag verfällt.
         </p>
         <p>
           Schicken Sie uns über Parky eine Rückmeldung, speichern wir Ihren Text mit der Kennung des
@@ -267,9 +266,9 @@ export function DatenschutzDE() {
         </p>
         <p>
           Im Sitzungsspeicher (Session Storage) Ihres Browsers liegen für die Dauer der Sitzung eine
-          Kopie des Chats, der Sitzungsschlüssel, ob Parky eingeschaltet ist, welche Sprüche er schon
-          gesagt hat und, während eines Interviews, wie weit es ist. Mit dem Schließen des Tabs ist
-          das gelöscht.
+          Kopie des Chats, der Sitzungsschlüssel, ob Parky eingeschaltet ist, welche Sprüche er
+          schon gesagt hat und, während eines Interviews, wie weit es ist. Mit dem Schließen des
+          Tabs ist das gelöscht.
         </p>
         <p>
           Rechtsgrundlage für den Chat ist die Bereitstellung der von Ihnen gewünschten Funktion

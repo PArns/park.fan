@@ -631,7 +631,11 @@ export function PlannerDayColumn({
                       </button>
                     )
                   )}
-                  <ParkyDayInterviewButton park={park?.slug} date={date ?? undefined} className="mt-3" />
+                  <ParkyDayInterviewButton
+                    park={park?.slug}
+                    date={date ?? undefined}
+                    className="mt-3"
+                  />
                 </div>
                 <PlannerHelpSteps layout="list" />
               </div>

@@ -1,4 +1,9 @@
-import { readPlanQuery, writePlanQuery, type PlanRegionKeys, type TripPlanState } from './plan-query';
+import {
+  readPlanQuery,
+  writePlanQuery,
+  type PlanRegionKeys,
+  type TripPlanState,
+} from './plan-query';
 import { rememberTrip } from './remembered-trip';
 
 /**

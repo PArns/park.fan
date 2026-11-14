@@ -48,9 +48,7 @@ export function cleanParty(value: unknown): TripParty | undefined {
       ? (raw.size as number)
       : undefined;
   const heightsCm = (Array.isArray(raw.heightsCm) ? raw.heightsCm : [])
-    .filter(
-      (h): h is number => Number.isInteger(h) && h >= MIN_HEIGHT_CM && h <= MAX_HEIGHT_CM
-    )
+    .filter((h): h is number => Number.isInteger(h) && h >= MIN_HEIGHT_CM && h <= MAX_HEIGHT_CM)
     .slice(0, MAX_HEIGHTS);
   if (size === undefined && heightsCm.length === 0) return undefined;
   return { ...(size !== undefined && { size }), heightsCm };

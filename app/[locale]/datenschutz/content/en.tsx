@@ -219,16 +219,16 @@ export function DatenschutzEN() {
           planner and the trip you last planned for each region (travel dates, parks, hotel, tickets
           and fixed days, plus what you told Parky about your group, such as how many of you there
           are and how tall the children are), during an interview with Parky which question it has
-          reached, the reminders you have set and the IDs of your favourites. These otherwise stay in
-          your browser; Parky needs them to read your plans, reminders and favourites and to change
-          them when you ask. It sends your location
-          only if you share it in the chat yourself. The server rounds it to about one kilometre,
-          uses it for the answer and does not store it. If you ask about nearby parks without
-          sharing your location, the server estimates your rough position from your IP address.
+          reached, the reminders you have set and the IDs of your favourites. These otherwise stay
+          in your browser; Parky needs them to read your plans, reminders and favourites and to
+          change them when you ask. It sends your location only if you share it in the chat
+          yourself. The server rounds it to about one kilometre, uses it for the answer and does not
+          store it. If you ask about nearby parks without sharing your location, the server
+          estimates your rough position from your IP address.
         </p>
         <p>
-          To answer, our server passes your question, the latest messages of the chat, your plans and
-          reminders as described above, and the park data looked up for it to the language model
+          To answer, our server passes your question, the latest messages of the chat, your plans
+          and reminders as described above, and the park data looked up for it to the language model
           Claude by Anthropic PBC, 548 Market Street, PMB 90375, San Francisco, CA 94104, USA.
           Anthropic does not receive your IP address. Anthropic processes the data on our behalf to
           produce the answer and, under its terms for business customers, does not use it to train
@@ -240,13 +240,13 @@ export function DatenschutzEN() {
           Our API server stores the chat, that is your questions and Parky's answers together with
           the lookups it made for them, and your rating of an answer. We do not store your plans
           themselves; the lookups hold only what Parky needs for them, such as travel dates and
-          parks. This lets Parky refer back to
-          earlier messages in the same conversation and lets us find wrong answers. No IP address is
-          stored with it, only a checksum made from the address, the day and a secret key. It shows
-          nothing but which chats of one day came from the same address and cannot be turned back
-          into the address. We delete chats automatically after 7 days. So that nobody can overload
-          the service, the server counts questions per session key and new sessions per IP address,
-          both only as a checksum that expires after one day at the latest.
+          parks. This lets Parky refer back to earlier messages in the same conversation and lets us
+          find wrong answers. No IP address is stored with it, only a checksum made from the
+          address, the day and a secret key. It shows nothing but which chats of one day came from
+          the same address and cannot be turned back into the address. We delete chats automatically
+          after 7 days. So that nobody can overload the service, the server counts questions per
+          session key and new sessions per IP address, both only as a checksum that expires after
+          one day at the latest.
         </p>
         <p>
           If you send us feedback through Parky, we store your text with the chat's ID and, if you
@@ -308,16 +308,16 @@ export function DatenschutzEN() {
           shop or shared a page, whether Parky appeared and whether you clicked it or one of its
           lines, whether a question to Parky was a suggestion, typed or a suggested reply you tapped
           and how the answer ended, whether you started and ended Parky's interview, whether Parky
-          changed one of your plans (what kind of change, never its content), how
-          you answered the question about notifications, or that an error page was shown. If a post,
-          a park or an attraction is in the foreground for five seconds, that counts as a read. For
-          posts we also note whether you read a quarter, half, three quarters or all of it. If an
-          event belongs to a park, an attraction, a show or a restaurant, its ID is included, and
-          for a post its name from the address. What you type into a search field, your location and
-          your input are not sent to our counter. We do not measure loading times here. We do
-          measure how long a page was visible in the foreground of your browser: your browser counts
-          the seconds and reports them when you move to the next page or leave the tab. It sends no
-          time of day with them, and at most 30 minutes count for one page view.
+          changed one of your plans (what kind of change, never its content), how you answered the
+          question about notifications, or that an error page was shown. If a post, a park or an
+          attraction is in the foreground for five seconds, that counts as a read. For posts we also
+          note whether you read a quarter, half, three quarters or all of it. If an event belongs to
+          a park, an attraction, a show or a restaurant, its ID is included, and for a post its name
+          from the address. What you type into a search field, your location and your input are not
+          sent to our counter. We do not measure loading times here. We do measure how long a page
+          was visible in the foreground of your browser: your browser counts the seconds and reports
+          them when you move to the next page or leave the tab. It sends no time of day with them,
+          and at most 30 minutes count for one page view.
         </p>
         <p>
           As with every request, the server also receives your IP address, the details of your
