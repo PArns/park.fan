@@ -705,18 +705,6 @@ export function reserveTripDays(
 }
 
 /**
- * The leg between two points of the region (park slugs or `hotel:<key>`). The matrix stores each
- * pair once, both directions averaged, so either order finds it.
- */
-export function findLeg<L extends { from: string; to: string }>(
-  legs: readonly L[],
-  a: string,
-  b: string
-): L | null {
-  return legs.find((l) => (l.from === a && l.to === b) || (l.from === b && l.to === a)) ?? null;
-}
-
-/**
  * Switch between the two ways in: the visitor knows the dates, or the planner finds them. Finding
  * starts on `range` with the length of the dates chosen so far (or {@link DEFAULT_FIND_DAYS});
  * knowing drops the search. Pins belong to given dates and go either way.

@@ -1,4 +1,5 @@
 import { getDateTimeFormat } from '@/lib/utils/intl-format';
+import { addDays } from '@/lib/utils/park-day';
 
 /**
  * The trip as an iCalendar file (RFC 5545), built in the browser: one event per park day, timed in
@@ -151,13 +152,6 @@ function icsUtc(at: number): string {
 
 const compactDate = (date: string) => date.replace(/-/g, '');
 
-/** The day after a `YYYY-MM-DD`, compact: an all-day event ends on the next day, exclusive. */
-function nextDay(date: string): string {
-  const d = new Date(`${date}T12:00:00Z`);
-  d.setUTCDate(d.getUTCDate() + 1);
-  return compactDate(d.toISOString().slice(0, 10));
-}
-
 /**
  * The calendar file for a trip, timed in the region's zone. `now` stamps every event (`DTSTAMP`);
  * it is a parameter so the file is a function of its input. CRLF line ends, as the format
@@ -188,7 +182,8 @@ export function buildTripIcs(
     } else {
       lines.push(
         `DTSTART;VALUE=DATE:${compactDate(event.date)}`,
-        `DTEND;VALUE=DATE:${nextDay(event.date)}`
+        // An all-day event ends on the next day, exclusive.
+        `DTEND;VALUE=DATE:${compactDate(addDays(event.date, 1))}`
       );
     }
     lines.push(`SUMMARY:${icsEscape(event.summary)}`);

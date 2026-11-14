@@ -22,7 +22,7 @@ import { regionOrShared } from '@/lib/trip-regions/region-words';
 import type { TripBase } from '@/lib/trip-regions/types';
 import type { PlanSetupRoute } from './plan-setup';
 import { usePlanContext } from './plan-context';
-import { PLAN_FOCUS, PlanRadioGroup, PlanStepper } from './plan-controls';
+import { PLAN_FIELD, PLAN_FOCUS, PlanRadioGroup, PlanStepper } from './plan-controls';
 import { useAreaName, useBaseName, useGatewayName } from './plan-place-words';
 import { StayMarker } from './plan-stay-band';
 import { useStatePlan } from './use-trip-plan';
@@ -227,10 +227,7 @@ export function PlanRoute({ plan }: { plan: TripPlan | undefined }) {
                 const key = e.currentTarget.value;
                 if (key) update((s) => addBase(s, key, order));
               }}
-              className={cn(
-                'border-border bg-background h-11 rounded-md border px-2 text-sm font-normal',
-                PLAN_FOCUS
-              )}
+              className={cn(PLAN_FIELD, 'font-normal')}
             >
               <option value="">{t('addPick')}</option>
               {addable.map((b) => (
@@ -335,10 +332,7 @@ function GatewaySelect({
         value={value}
         disabled={disabled}
         onChange={(e) => onChange(e.currentTarget.value)}
-        className={cn(
-          'border-border bg-background h-11 rounded-md border px-2 text-sm font-normal',
-          PLAN_FOCUS
-        )}
+        className={cn(PLAN_FIELD, 'font-normal')}
       >
         {options.map((o) => (
           <option key={o.value} value={o.value}>
@@ -434,10 +428,7 @@ function AreaSelect({
         id={id}
         value={value}
         onChange={(e) => onChange(e.currentTarget.value)}
-        className={cn(
-          'border-border bg-background h-11 rounded-md border px-2 text-sm',
-          PLAN_FOCUS
-        )}
+        className={PLAN_FIELD}
       >
         {options.map((o) => (
           <option key={o.value} value={o.value}>

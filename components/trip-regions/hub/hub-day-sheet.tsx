@@ -222,7 +222,7 @@ function SheetPark({
   const closure = parkDay?.closedBy
     ? calendar.seasons.find((s) => s.id === parkDay.closedBy)
     : undefined;
-  const leg = findLeg(region, `hotel:${area}`, park.slug);
+  const leg = findLeg(region.travel.legs, `hotel:${area}`, park.slug);
   const level = tintLevel(parkDay?.crowdLevel);
 
   const status =

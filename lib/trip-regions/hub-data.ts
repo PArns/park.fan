@@ -1,4 +1,4 @@
-import { addDays } from '@/lib/utils/park-day';
+import { addDays, formatParkDay } from '@/lib/utils/park-day';
 import { getDateTimeFormat } from '@/lib/utils/intl-format';
 import { parkCalendarPath } from '@/lib/parks/calendar-segments';
 import { roundWaitTo5 } from '@/lib/utils/wait-time';
@@ -280,26 +280,25 @@ export function isWeekend(date: string): boolean {
   return dow === 0 || dow === 6;
 }
 
+/** The fields each of {@link formatHubDate}'s styles prints. */
+const HUB_DATE_STYLES = {
+  short: { weekday: 'short', day: 'numeric', month: 'short' },
+  long: { weekday: 'long', day: 'numeric', month: 'long' },
+  day: { day: 'numeric' },
+  weekday: { weekday: 'short' },
+  dayMonth: { day: 'numeric', month: 'short' },
+} satisfies Record<string, Intl.DateTimeFormatOptions>;
+
 /**
- * A plain date as the hub prints it, anchored at noon UTC so no zone moves it: `short` "Thu 12
- * Nov", `long` "Thursday, 12 November", `day` "12", `weekday` "Thu".
+ * A plain date as the hub prints it (`formatParkDay`, so no zone moves it): `short` "Thu 12 Nov",
+ * `long` "Thursday, 12 November", `day` "12", `weekday` "Thu", `dayMonth` "12 Nov".
  */
 export function formatHubDate(
   date: string,
   locale: string,
-  style: 'short' | 'long' | 'day' | 'weekday' | 'dayMonth' = 'short'
+  style: keyof typeof HUB_DATE_STYLES = 'short'
 ): string {
-  const options: Intl.DateTimeFormatOptions =
-    style === 'long'
-      ? { weekday: 'long', day: 'numeric', month: 'long', timeZone: 'UTC' }
-      : style === 'day'
-        ? { day: 'numeric', timeZone: 'UTC' }
-        : style === 'weekday'
-          ? { weekday: 'short', timeZone: 'UTC' }
-          : style === 'dayMonth'
-            ? { day: 'numeric', month: 'short', timeZone: 'UTC' }
-            : { weekday: 'short', day: 'numeric', month: 'short', timeZone: 'UTC' };
-  return getDateTimeFormat(locale, options).format(new Date(`${date}T12:00:00Z`));
+  return formatParkDay(locale, date, HUB_DATE_STYLES[style]);
 }
 
 /** A month's name with its year, "December 2026", in the reader's language. */
@@ -431,11 +430,16 @@ export function eventLanes(calendar: TripCalendar, parkOrder: readonly string[] 
   return [...seasons, ...breakLanes];
 }
 
-/** The legs between two places, in either direction (`hotel:<key>` or a park slug). */
-export function findLeg(region: TripRegion, a: string, b: string): TripLeg | undefined {
-  return region.travel.legs.find(
-    (leg) => (leg.from === a && leg.to === b) || (leg.from === b && leg.to === a)
-  );
+/**
+ * The leg between two points of the region (park slugs or `hotel:<key>`). The matrix stores each
+ * pair once, both directions averaged, so either order finds it.
+ */
+export function findLeg<L extends { from: string; to: string }>(
+  legs: readonly L[],
+  a: string,
+  b: string
+): L | null {
+  return legs.find((l) => (l.from === a && l.to === b) || (l.from === b && l.to === a)) ?? null;
 }
 
 /** The door-to-door minutes of a drive: to the car park, then the curated rest of the way. */

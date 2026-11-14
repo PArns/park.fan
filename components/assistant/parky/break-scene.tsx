@@ -1,4 +1,3 @@
-import { cn } from '@/lib/utils';
 import type { ParkyOutfit } from '@/lib/assistant/parky/look';
 import type { ParkBreakScene } from '@/lib/utils/park-break';
 import {
@@ -17,6 +16,7 @@ import {
 } from './drawing';
 import { FLAKE, ParkyLookHat, ParkyLookWear, ParkySnowman, ice } from './looks';
 import { ParkyWheel } from './wheel';
+import { HolidaySceneSvg } from './holiday-parky';
 
 /** What Parky wears in each picture: the bobble hat in winter, the scarf until spring. */
 const OUTFIT: Record<ParkBreakScene, ParkyOutfit> = {
@@ -355,13 +355,7 @@ export function ParkyBreakScene({
 }) {
   const winter = scene === 'winter';
   return (
-    <svg
-      viewBox="0 0 320 160"
-      preserveAspectRatio="xMaxYMid slice"
-      className={cn('block', className)}
-      aria-hidden="true"
-      focusable="false"
-    >
+    <HolidaySceneSvg className={className}>
       <defs>
         <linearGradient id="parky-break-sky" x1="0" y1="0" x2="0" y2="1">
           <stop offset="0" className={SKY[scene][0]} />
@@ -489,6 +483,6 @@ export function ParkyBreakScene({
           />
         ))}
       </g>
-    </svg>
+    </HolidaySceneSvg>
   );
 }
