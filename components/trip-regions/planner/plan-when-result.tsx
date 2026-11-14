@@ -136,7 +136,7 @@ function WindowCard({
   const below = percentBelowAverage(window);
   const reason = windowReasons(window)[0];
   const tClimate = useTranslations('tripPlanner.climate');
-  const lower = rankedLower(window);
+  const lower = rankedLower(window).filter((code) => tClimate.has(code));
   return (
     <li className="border-border/60 bg-muted/30 flex flex-col gap-2 rounded-2xl border p-4">
       <span className="text-muted-foreground text-xs font-semibold">

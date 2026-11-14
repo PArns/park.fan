@@ -36,9 +36,50 @@ export interface TripRegionPark {
   timezone: string;
 }
 
+/**
+ * A resort's slot before the day guests' opening that some hotel guests get, by the region's own
+ * name: Orlando's `early_entry` (also Disneyland Resort's) and `early_park_admission`, Tokyo Disney
+ * Resort's `happy_entry`, Disneyland Paris' `extra_magic_time`. A code this client has no words
+ * for is shown as nothing, as the contract asks.
+ */
+export type TripEarlyKind =
+  | 'early_entry'
+  | 'early_park_admission'
+  | 'happy_entry'
+  | 'extra_magic_time';
+
 /** A hotel perk, as the plan's `perks` and `reasons` name it. */
-export type TripPerk =
-  'early_entry' | 'early_park_admission' | 'extended_evening' | 'express_included';
+export type TripPerk = TripEarlyKind | 'extended_evening' | 'express_included';
+
+/** A `hotel=` value of the region with the perks a stay there carries (`hotels` on the region). */
+export interface TripHotel {
+  key: string;
+  perks: TripPerk[];
+}
+
+/** The market codes a region's tickets and links name; `home` is sold to anyone at the operator's. */
+export interface TripTicketMarkets {
+  home: string;
+  codes: string[];
+}
+
+/** A storm season of the region: Orlando's hurricanes, Japan's typhoons. */
+export interface TripStormSeason {
+  kind: 'hurricane' | 'typhoon';
+  /** `MM-DD`. */
+  from: string;
+  to: string;
+  peak?: { from: string; to: string };
+}
+
+/** What a region's days are priced and warned with. */
+export interface TripWeather {
+  storm?: TripStormSeason;
+  /** Seasons the answers name but do not price: Japan's `rainy_season`. */
+  notes?: Array<{ kind: 'rainy_season' | (string & {}); from: string; to: string }>;
+  /** The park whose climate normals stand for the region's months. */
+  climatePark?: string;
+}
 
 /** Where a visitor sleeps, for drive times and the perks a stay there usually means. */
 export interface TripHotelArea {
@@ -50,9 +91,27 @@ export interface TripHotelArea {
   perks: TripPerk[];
 }
 
+/**
+ * A way between two places other than a drive: a resort's own transport, or in a region that travels
+ * by train (Japan) the lines between cities. `rail` is a regional or commuter line, `highway_bus` a
+ * coach between cities, `shuttle` a hotel's or a park's own.
+ */
+export type TripTransportMode =
+  | 'monorail'
+  | 'skyliner'
+  | 'boat'
+  | 'bus'
+  | 'walk'
+  | 'train'
+  | 'shinkansen'
+  | 'rail'
+  | 'metro'
+  | 'highway_bus'
+  | 'shuttle';
+
 /** The resort's own transport beside a drive: curated estimates, waiting included. */
 export interface TripTransportAlternative {
-  mode: 'monorail' | 'skyliner' | 'boat' | 'bus' | 'walk' | 'train';
+  mode: TripTransportMode;
   /** Absent for the buses, whose waits vary too much to name one. */
   minutes?: number;
   via?: string;
@@ -70,19 +129,27 @@ export interface TripLeg {
   to: string;
   km?: number;
   minutes: number;
-  mode: 'drive' | 'walk' | 'bus';
+  mode: 'drive' | TripTransportMode;
   via?: 'ttc' | 'garage_shuttle' | string;
   transferMinutes?: number;
+  /** `curated` where the leg is not the region's own source (a walk inside an OSRM region). */
+  source?: 'curated';
+  /** A rail leg's line ("Keiyo Line"). */
+  name?: string;
   alternatives?: TripTransportAlternative[];
 }
 
-/** The travel matrix: a drive without traffic, read from OpenStreetMap through OSRM. */
+/**
+ * The travel matrix: a drive without traffic read from OpenStreetMap through OSRM (`osrm`,
+ * `free_flow`), or in a region that travels by train legs curated from timetables (`curated`,
+ * `timetable`, no attribution).
+ */
 export interface TripTravel {
-  source: 'osrm';
+  source: 'osrm' | 'curated';
   computedOn: string;
-  /** "© OpenStreetMap contributors"; shown wherever a drive time is. */
+  /** "© OpenStreetMap contributors"; shown wherever a drive time is, where there is one. */
   attribution: string;
-  basis: 'free_flow';
+  basis: 'free_flow' | 'timetable';
   legs: TripLeg[];
 }
 
@@ -132,7 +199,10 @@ export interface TicketProduct {
   name: string;
   /** The {@link TripRegionGroup} key of the operator that sells it. */
   resort: string;
-  /** `us`: sold to anyone; `intl`: by sellers abroad; `uk`: UK and Ireland residents only. */
+  /**
+   * Codes of the region's `ticketMarkets`, whose `home` is sold to anyone (`us` in Orlando); in
+   * Orlando `intl` is sold by sellers abroad and `uk` to UK and Ireland residents only.
+   */
   markets: string[];
   parks: string[];
   /** The lengths on sale; `unlimited` for a pass and the products with only a window. */
@@ -154,6 +224,10 @@ export interface TicketProduct {
   until?: string;
   /** An annual pass or Fun Card: no day count, no window. */
   pass?: boolean;
+  /** An evening ticket admits from this park-local time (`15:00`); plan first never suggests one. */
+  entryFrom?: string;
+  /** The kinds of day an evening ticket is used on; absent: every day. */
+  validDays?: Array<'weekday' | 'weekend' | 'holiday'>;
   blockouts?: boolean;
   /** The operator's page with the blockout calendar. */
   blockoutUrl?: string;
@@ -186,6 +260,18 @@ export interface TripRegion {
   venues?: TripVenue[];
   /** The ticket catalog; absent from an API that does not plan with tickets yet. */
   tickets?: TicketProduct[];
+  /** The `hotel=` values the plan takes, `offsite` among them; absent from an older API. */
+  hotels?: TripHotel[];
+  /** The market codes its tickets name; absent from an older API, which meant Orlando's (`us`). */
+  ticketMarkets?: TripTicketMarkets;
+  /** Its storm season, the seasons it names and its climate park; absent from an older API. */
+  weather?: TripWeather;
+  /**
+   * The cities a trip stays in, Japan only, with the legs between them. The planner does not read
+   * them yet; their shape is the API's `docs/frontend/trip-regions.md#bases-a-trip-across-several-cities`.
+   */
+  bases?: unknown[];
+  baseLegs?: unknown[];
 }
 
 /** A park's status on a day. `UNKNOWN` past its published hours, never `CLOSED`. */
@@ -215,7 +301,6 @@ export interface TripSlot<K extends string = string> {
 }
 
 /** The early slot only some hotels' guests get. */
-export type TripEarlyKind = 'early_entry' | 'early_park_admission';
 /** The evening after the day guests' close: an extension, or a separately ticketed event. */
 export type TripEveningKind = 'extended_evening' | 'ticketed_event';
 
@@ -390,6 +475,10 @@ export type TripWhenReason =
 export type TripWhenWarning =
   | 'school_break'
   | 'hurricane_season'
+  | 'hurricane_peak'
+  | 'typhoon_season'
+  | 'typhoon_peak'
+  | 'rainy_season'
   | 'party_nights'
   | 'hours_not_published'
   | 'estimate_last_year'
@@ -491,7 +580,11 @@ export interface TripWhenMonth {
   /** Mean day-guest hours over the open days of the chosen parks, one decimal; absent unpublished. */
   dayGuestHours?: number;
   /** June to November: a fact about the season, not a forecast. */
-  hurricaneSeason: boolean;
+  hurricaneSeason?: boolean;
+  /** Japan's storm season, as `hurricaneSeason` is Orlando's. */
+  typhoonSeason?: boolean;
+  /** The month touches Japan's rainy season, a fact the ranking does not price. */
+  rainySeason?: boolean;
 }
 
 /** `/when` with its month rows; `TripWhen.seasons` holds every season a window or a month names. */

@@ -126,10 +126,12 @@ export function useEveningName(): (day: PlanDay) => string | null {
  */
 export function ClimateChips({ codes }: { codes: readonly string[] }) {
   const t = useTranslations('tripPlanner.climate');
-  if (codes.length === 0) return null;
+  // A season this client has no words for yet (a new region's) is not drawn.
+  const said = codes.filter((code) => t.has(code));
+  if (said.length === 0) return null;
   return (
     <span className="flex flex-wrap gap-1">
-      {codes.map((code) => (
+      {said.map((code) => (
         <span
           key={code}
           className="border-crowd-high/40 text-crowd-ink-high rounded-full border px-2 py-0.5 text-xs"
