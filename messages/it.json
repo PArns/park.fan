@@ -4040,7 +4040,7 @@
       "add": "{park} il {date}, giorno libero",
       "move": "{park} il {to} invece del {from}",
       "swap": "{park} il {to}, {with} il {from} in cambio",
-      "travel_day": "{end, select, arrival {Giorno di arrivo al parco} departure {Giorno di partenza al parco} other {Arrivo e partenza come giorni al parco}}: {park} il {to}",
+      "travel_day": "{end, select, arrival {Giorno di arrivo ({day}) al parco} departure {Giorno di partenza ({day}) al parco} other {Arrivo e partenza come giorni al parco}}: {park} il {to}",
       "hopper": "{park} ci sta con {hopper}: il {to}",
       "avoid_party": "{park} il {to} invece della serata evento del {from}",
       "figure": "circa {after} min",

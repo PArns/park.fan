@@ -4040,7 +4040,7 @@
       "add": "{park} op de vrije {date}",
       "move": "{park} op {to} in plaats van {from}",
       "swap": "{park} op {to}, {with} in ruil op {from}",
-      "travel_day": "{end, select, arrival {Aankomstdag als parkdag} departure {Vertrekdag als parkdag} other {Aankomst en vertrek als parkdagen}}: {park} op {to}",
+      "travel_day": "{end, select, arrival {Aankomstdag ({day}) als parkdag} departure {Vertrekdag ({day}) als parkdag} other {Aankomst en vertrek als parkdagen}}: {park} op {to}",
       "hopper": "{park} past erbij met {hopper}: op {to}",
       "avoid_party": "{park} op {to} in plaats van de feestavond op {from}",
       "figure": "ongeveer {after} min",

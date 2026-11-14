@@ -127,6 +127,17 @@ export function ideaTravelEnd(query: string): 'arrival' | 'departure' | 'both' {
   return set.has('departure') ? 'departure' : 'arrival';
 }
 
+/**
+ * The day a travel-day idea makes a park day: the trip's first or last day; `null` where it makes
+ * both. Its sentence names it beside the park's own day (`to`), because the park the free day lets
+ * in often lands on another day once the plan moves the rest around.
+ */
+export function ideaTravelDay(query: string, trip: { from: string; to: string }): string | null {
+  const end = ideaTravelEnd(query);
+  if (end === 'both') return null;
+  return end === 'arrival' ? trip.from : trip.to;
+}
+
 /** Which verb applies an idea: Dazunehmen for a park it adds, Tauschen for a day it moves. */
 export function ideaVerb(kind: PlanIdeaKind): 'add' | 'swap' | 'plan' {
   if (kind === 'add') return 'add';

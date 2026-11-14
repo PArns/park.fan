@@ -4040,7 +4040,7 @@
       "add": "{park} on the free {date}",
       "move": "{park} on {to} instead of {from}",
       "swap": "{park} on {to}, {with} on {from} instead",
-      "travel_day": "{end, select, arrival {Arrival day as a park day} departure {Departure day as a park day} other {Arrival and departure as park days}}: {park} on {to}",
+      "travel_day": "{end, select, arrival {Arrival day ({day}) as a park day} departure {Departure day ({day}) as a park day} other {Arrival and departure as park days}}: {park} on {to}",
       "hopper": "{park} fits in with {hopper}: on {to}",
       "avoid_party": "{park} on {to} instead of the party night on {from}",
       "figure": "about {after} min",

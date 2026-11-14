@@ -12,6 +12,7 @@ import {
   ideaDay,
   ideaFigure,
   ideaOnDay,
+  ideaTravelDay,
   ideaTravelEnd,
   ideaVerb,
   shownIdeas,
@@ -126,6 +127,16 @@ test(
   'a travel-day idea names the end it makes a park day',
   ['arrival=park', 'departure=park', 'arrival=park&departure=park'].map(ideaTravelEnd),
   ['arrival', 'departure', 'both']
+);
+// The Paris weekend: opening the departure day lets Disney Adventure World in on the Friday, so the
+// sentence names Sunday as the travel day beside the park's own day.
+const weekend = { from: '2027-05-06', to: '2027-05-09' };
+test(
+  'a travel-day idea names the day it opens, not the park’s day',
+  ['departure=park', 'arrival=park', 'arrival=park&departure=park'].map((q) =>
+    ideaTravelDay(q, weekend)
+  ),
+  ['2027-05-09', '2027-05-06', null]
 );
 
 // ── Report ───────────────────────────────────────────────────────────────────

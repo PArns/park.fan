@@ -13,6 +13,7 @@ import { askParkyAboutIdea } from '@/lib/assistant/trip-idea';
 import {
   ideaFigure,
   ideaKey,
+  ideaTravelDay,
   ideaTravelEnd,
   ideaVerb,
   shownIdeas,
@@ -44,7 +45,8 @@ export function useShownIdeas(): PlanIdea[] {
 /** An idea in words: its line („DisneySea am Mo., 25. Jan. statt am Fr., 22. Jan.“) and its figure. */
 export function useIdeaWords() {
   const t = useTranslations('tripPlanner.ideas');
-  const { locale, parkName } = usePlanContext();
+  const { locale, parkName, state } = usePlanContext();
+  const trip = state.from && state.to ? { from: state.from, to: state.to } : null;
   const hopperWord = useHopperWord();
   const day = (date: string | undefined) =>
     date ? formatParkDay(locale, date, { weekday: 'short', day: 'numeric', month: 'short' }) : '';
@@ -58,6 +60,7 @@ export function useIdeaWords() {
         date: day(idea.to),
         hopper: hopperWord(new URLSearchParams(idea.query).get('hopper')?.split(',').at(-1) ?? ''),
         end: ideaTravelEnd(idea.query),
+        day: day((trip && ideaTravelDay(idea.query, trip)) ?? undefined),
       }),
     figure: (idea: PlanIdea) => {
       const figure = ideaFigure(idea);
