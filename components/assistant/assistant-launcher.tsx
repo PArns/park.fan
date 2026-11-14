@@ -193,8 +193,9 @@ function LauncherButton({
       }
       aria-expanded={open}
       inert={dodging || away}
-      aria-label={open ? t('assistantClose') : t('assistantOpen')}
-      title={open ? undefined : t('assistantOpen')}
+      // Drawn only while the window is closed: the window has its own ✕.
+      aria-label={t('assistantOpen')}
+      title={t('assistantOpen')}
       className={cn(
         'group fixed right-4 bottom-[max(1rem,env(safe-area-inset-bottom))] grid size-14 cursor-pointer place-items-center rounded-full sm:size-16',
         PARKY_LAYER,

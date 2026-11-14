@@ -198,9 +198,9 @@
     },
     "parky": {
       "kicker": "Parky",
-      "title": "Can’t find what you’re looking for? Ask Parky",
+      "title": "Parky, your buddy for every park question",
       "lead": "Parky is a theme park nerd. He knows how long the line for Taron is right now, which Saturday in June Europa-Park is emptiest and what airtime actually is.",
-      "link": "Ask Parky"
+      "link": "Chat with Parky"
     },
     "reading": {
       "title": "Theme park news and guides",
@@ -390,8 +390,7 @@
     "updatedOn": "Updated {date}",
     "nearby": "Near you",
     "preferences": "Settings",
-    "assistantOpen": "Ask Parky",
-    "assistantClose": "Close Parky"
+    "assistantOpen": "Chat with Parky"
   },
   "tripHub": {
     "scroll": "To the calendar",
@@ -4123,8 +4122,8 @@
       "kicker": "park.fan · Blog"
     },
     "parky": {
-      "kicker": "park.fan · Chat assistant",
-      "action": "Ask Parky"
+      "kicker": "park.fan · AI chat",
+      "action": "Chat with Parky"
     }
   },
   "compare": {
@@ -4164,15 +4163,15 @@
     "forecastCaption": "Forecast"
   },
   "assistant": {
-    "close": "Close Parky",
+    "close": "Close chat",
     "title": "Parky",
-    "tabChat": "Ask",
+    "tabChat": "Chat",
     "tabFeedback": "Feedback",
-    "greeting1": "Hi, I am Parky 🎡 Your theme park buddy with a slight coaster habit. Ask me about wait times, the quietest days, opening hours or what “airtime” really is. I can plan your day while we are at it.",
-    "greeting2": "Where to next? 🎢 I am Parky. Name a park and I will tell you how long the queues are right now and which day is the quietest there.",
-    "greeting3": "Hello, Parky here 🎡 I can check where the queues are short right now, when a park is at its quietest and what the weather will be like there. What would you like to know?",
-    "greeting4": "Hey, I am Parky 🎡 My hat is a Ferris wheel and my hobby is wait times. Ask me when a park is at its quietest or which rides are down right now.",
-    "greeting5": "Hi there! Parky here 🎢 Ask me about opening hours, the weather in the park or the latest from park.fan. If you like, I will plan your whole day.",
+    "greeting1": "Hi, I’m Parky 🎡 Your theme park buddy with a slight coaster habit. Ask me about wait times, the quietest days, opening hours or what “airtime” really is. And if you like, we’ll plan your day together.",
+    "greeting2": "Where to next? 🎢 I’m Parky. Name a park and I’ll tell you how long the queues are right now and which day is the quietest there.",
+    "greeting3": "Hello, Parky here 🎡 I know where the queues are short right now, when a park is at its quietest and whether you’ll need an umbrella. Where are we headed?",
+    "greeting4": "Hey, I’m Parky 🎡 My hat is a Ferris wheel and my hobby is wait times. Ask me when a park is at its quietest or which rides are down right now.",
+    "greeting5": "Hi there, Parky here 🎢 Ask me about opening hours, the weather in the park or the latest from park.fan. And if you like, we’ll plan the whole day together.",
     "suggestWaits": "Where are the waits short right now?",
     "suggestBestDay": "When is Europa-Park quietest?",
     "suggestNews": "What’s new?",
@@ -4190,7 +4189,7 @@
     "suggestHoursHere": "When does the park close today?",
     "suggestInterview": "Plan my trip with me, one question at a time.",
     "suggestInterviewHere": "Plan a day here with me, one question at a time.",
-    "placeholder": "Ask Parky something …",
+    "placeholder": "Message Parky …",
     "send": "Send",
     "newChat": "New chat",
     "typing": "Parky is typing",
@@ -4203,10 +4202,10 @@
     "errorOff": "Parky is on a break right now. Come back a bit later.",
     "errorUpstream": "Something went wrong there. Please try again.",
     "errorNetwork": "No connection. Check your network and try again.",
-    "rateUp": "Helpful",
-    "rateDown": "Not helpful",
+    "rateUp": "Good answer",
+    "rateDown": "Not quite",
     "rated": "Thanks.",
-    "disclaimer": "Parky is an AI assistant. Its answers may contain errors and are provided without warranty.",
+    "disclaimer": "Parky is an AI and can get things wrong. His answers come without warranty.",
     "privacy": "Privacy",
     "feedbackIntro": "Something missing, broken or that you really like? Tell us, we read everything.",
     "feedbackLabel": "Your feedback",
@@ -4219,7 +4218,7 @@
     "feedbackError": "That didn’t work. Please try again in a moment.",
     "challengeChecking": "Parky is checking the connection …",
     "challengeInteract": "Confirm once and off we go",
-    "challengeFailed": "The check did not work",
+    "challengeFailed": "The check didn’t work",
     "challengeRetry": "Try again",
     "challengeWhy": "So Parky is there for people, not for bots.",
     "errorSession": "Your session has expired. Parky checks again quickly, then just ask once more.",
@@ -4254,30 +4253,30 @@
     "locationShared": "Here is my location.",
     "cardWait": "{minutes} min",
     "lookupGlossary": "Parky is checking the glossary …",
-    "teaser1": "Hey, I am Parky – click me!",
-    "teaser2": "Click me and I will help!",
+    "teaser1": "Hey, I’m Parky, your park buddy. Click me.",
+    "teaser2": "Click me and we’ll plan your park day together.",
     "teaser3": "Where is the queue short right now? Ask me!",
     "teaser4": "Psst … I know the quietest days.",
-    "teaser5": "Fancy some airtime? I will plan your day.",
+    "teaser5": "Fancy some airtime? Then let’s plan the day.",
     "teaser6": "Waits, weather, opening hours: just ask me!",
-    "teaser7": "Which ride has the shortest queue right now? I will check.",
-    "teaser8": "I will plan your park day, ride by ride.",
+    "teaser7": "Which ride has the shortest queue right now? I’ll check.",
+    "teaser8": "Let’s plan your park day, ride by ride.",
     "teaser9": "Is the park open later tomorrow? Just ask me.",
     "teaser10": "Which park are we doing today? I know where the queues are short.",
     "teaser11": "Front row or back row? Either way, I have the waits.",
     "teaser12": "Ask me when your favourite park is at its quietest.",
     "teaser13": "Which parks are open today? I check, you pack the churros.",
     "teaserBored1": "Yaaawn … ask me something!",
-    "teaserBored2": "I am bored. Got a question for me?",
+    "teaserBored2": "I’m bored. Got a question for me?",
     "teaserBored3": "I just counted the spokes on my hat. There are eight.",
-    "teaserBored4": "Planned your next park visit yet? I can help.",
-    "teaserWoke1": "Whoa! I was not asleep, not at all!",
-    "teaserWoke2": "Oh, you are back! I was only resting my eyes.",
-    "teaserWoke3": "Did I miss anything? I am wide awake again!",
-    "entranceScurry": "Zoom, here I am! I am Parky – ask me something.",
-    "entranceDrop": "Ouch! All good, I have landed. Ask me something!",
-    "entranceRoll": "Phew, I am all dizzy … Hi, I am Parky!",
-    "entrancePeek": "Psst … may I come in? I am Parky.",
+    "teaserBored4": "Planned your next park visit yet? Count me in.",
+    "teaserWoke1": "Whoa! I wasn’t asleep, not at all!",
+    "teaserWoke2": "Oh, you’re back! I was only resting my eyes.",
+    "teaserWoke3": "Did I miss anything? I’m wide awake again!",
+    "entranceScurry": "Zoom, here I am! I’m Parky – ask me something.",
+    "entranceDrop": "Ouch! All good, I’ve landed. Ask me something!",
+    "entranceRoll": "Phew, I’m all dizzy … Hi, I’m Parky!",
+    "entrancePeek": "Psst … may I come in? I’m Parky.",
     "entrancePop": "Pop! Here I am. Where are we off to today?",
     "holidayHalloween": "Boo! Did I scare you? Happy Halloween!",
     "holidayChristmas": "Merry Christmas! May all your rides be queue-free.",
@@ -4435,27 +4434,52 @@
         "dates": "Dates",
         "parks": "Parks",
         "day": "Park and day",
-        "mustdo": "Must-dos"
+        "mustdo": "Rides you want"
       },
       "kickoffTrip": "Plan my trip with me, one question at a time.",
       "kickoffDay": "Plan my park day with me, one question at a time."
-    }
+    },
+    "muteLines": "Hide speech bubbles",
+    "subtitle": "Your park buddy",
+    "subtitleNext": "Next up: {park}, {date}",
+    "yoursToday": "{park} today. Where do we start?",
+    "yoursTomorrow": "{park} tomorrow. I’m excited already.",
+    "yoursSoon": "{days} more days till {park}. I’m counting.",
+    "yoursTrip": "{count} park days from {date}. I’m coming along.",
+    "yoursAfter": "How was park day yesterday? Tell me everything.",
+    "yoursRidden": "{count} rides ticked off. Nice going.",
+    "yoursAlert": "The bell for {ride} is on. I’ll let you know.",
+    "yoursBack": "Last time we talked about {park}. Pick up there?",
+    "greetingToday": "{park} today 🎢 I’ve got your plan with me. Where do we start?",
+    "greetingSoon": "Hey, {when} is park day: {park} 🎡 I’ve got your plan here. Shall we see how busy it’ll get?",
+    "greetingTrip": "Hey, {count} park days from {date} 🎢 Count me in. What’s still missing?",
+    "greetingAfter": "So, how was park day yesterday? 🎢 Which ride won?",
+    "greetingBack": "There you are 🎡 Last time we talked about {park}. Carry on there, or somewhere new?",
+    "whenTomorrow": "tomorrow",
+    "whenWeekday": "{weekday}",
+    "whenDate": "{date}",
+    "suggestMyDay": "How busy will my park day be?",
+    "suggestMyNext": "What’s next on my plan?",
+    "suggestMyWeather": "What’s the weather for my park day?",
+    "suggestMyMissing": "Which big rides haven’t I done yet?",
+    "suggestMyTrip": "What’s missing from my trip?",
+    "suggestMyBack": "Back to {park}"
   },
   "parkyPage": {
-    "metaTitle": "Parky, the park.fan chat assistant",
-    "metaDescription": "Ask Parky about wait times, forecasts and the quietest day to visit. It looks things up in park.fan’s live data and puts rides straight into your day plan.",
-    "title": "Parky, your companion for a day at the park",
-    "lead": "Ask it about wait times, forecasts and the quietest day. Parky looks things up in park.fan’s live data and helps you plan your day.",
-    "intro": "Parky lives at the bottom right of park.fan, in the round speech bubble with a Ferris wheel on its head. Tap it and write to it like you would to a friend who knows their theme parks.",
-    "ask": "Ask Parky now",
+    "metaTitle": "Parky: wait times and day plans in an AI chat",
+    "metaDescription": "Parky knows the waits right now and the quietest days, and he plans your park day with you. park.fan’s AI chat, free and without an account.",
+    "title": "Parky’s coming to the park with you",
+    "lead": "He knows the waits right now and the quietest days, and he plans your park day with you.",
+    "intro": "Parky lives at the bottom right of park.fan, in the round speech bubble with a Ferris wheel on his head. Tap him and write to him like you would to a friend who knows their theme parks. Whatever you’ve set up in the day planner, he already knows.",
+    "ask": "Chat with Parky",
     "off": "Parky is taking a break right now. Check back later.",
     "examplesLabel": "For example",
     "chapters": {
       "ask": {
         "kicker": "Just ask",
         "title": "Wait times, forecasts, opening hours",
-        "body": "For every answer, Parky looks in the same data you see on park.fan: the wait times right now, the forecast for the next hours and days, opening hours and the weather. It shows you the ride or the park as a card you can tap straight through.",
-        "alt": "Parky in the chat on a phone: it gives the wait time for Taron and the shortest queues at Phantasialand.",
+        "body": "For every answer, Parky looks in the same data you see on park.fan: the wait times right now, the forecast for the next hours and days, opening hours and the weather. He shows you the ride or the park as a card you can tap straight through.",
+        "alt": "Parky in the chat on a phone: he gives the wait time for Taron and the shortest queues at Phantasialand.",
         "examples": [
           "How busy will Phantasialand be on Saturday?",
           "Which ride at Europa-Park has the shortest wait right now?",
@@ -4463,9 +4487,9 @@
         ]
       },
       "plan": {
-        "kicker": "Lends a hand",
-        "title": "Parky helps plan your day",
-        "body": "Tell Parky which park you want to visit and when, and what matters to you. It puts the rides into your day plan and tells you where best to start. Afterwards you move and share the plan as usual.",
+        "kicker": "Planning together",
+        "title": "Parky plans your day with you",
+        "body": "Tell Parky which park you want to visit and when, and what matters to you. He puts the rides into your day plan and tells you where best to start. Afterwards you move and share the plan as usual.",
         "alt": "Parky has added Silver Star, Blue Fire, Voltron Nevera and Wodan to the day plan for Europa-Park.",
         "examples": [
           "Plan me a day at Europa-Park with kids.",
@@ -4475,18 +4499,18 @@
       "search": {
         "kicker": "Searches along",
         "title": "Magnifying glass at the ready",
-        "body": "When you open the search, Parky gets out its magnifying glass and searches along. With every key you press it leans in a little, and if the search finds nothing, a question mark pops up above it.",
-        "alt": "The search for Taron on park.fan, with Parky looking through its magnifying glass at the bottom right."
+        "body": "When you open the search, Parky gets out his magnifying glass and searches along. With every key you press he leans in a little, and if the search finds nothing, a question mark pops up above him.",
+        "alt": "The search for Taron on park.fan, with Parky looking through his magnifying glass at the bottom right."
       },
       "character": {
         "kicker": "With character",
         "title": "More than a chat window",
-        "body": "Parky rides roller coasters, yawns when nothing happens and has plenty more up its sleeve. It shows you a few of its tricks here; the rest you will come across as you browse."
+        "body": "Parky rides roller coasters, yawns when nothing happens and has plenty more up his sleeve. He shows you a few of his tricks here; the rest you’ll come across as you browse."
       },
       "data": {
         "kicker": "Your data",
         "title": "What happens to your questions",
-        "body": "Parky answers with the language model Claude by Anthropic. We store your questions without an IP address and delete them after 7 days. Parky only sees your location if you share it in the chat.",
+        "body": "Parky answers with the language model Claude by Anthropic. Your browser sends your day and trip plans, reminders, favourites and ridden rides along with each question; otherwise they stay with you. We store your questions without an IP address and delete them after 7 days. Parky only sees your location if you share it in the chat.",
         "link": "Everything else is in the privacy policy."
       }
     },
@@ -4525,29 +4549,33 @@
         },
         {
           "question": "Where do Parky’s answers come from?",
-          "answer": "From park.fan’s live data: wait times, opening hours, forecasts, weather and our posts. It looks things up again for every question instead of remembering them."
+          "answer": "From park.fan’s live data: wait times, opening hours, forecasts, weather and our posts. He looks things up fresh for every question instead of relying on old numbers."
+        },
+        {
+          "question": "Does Parky remember what I tell him?",
+          "answer": "Within a chat, yes, until you close the tab. He knows your day and trip plans, favourites and ridden rides because they’re kept in your browser and go along with each question. Your browser also keeps the park your last chat was about, so Parky can pick up there on your next visit. He doesn’t know your earlier chats, and we delete them from our server after 7 days."
         },
         {
           "question": "Can Parky get things wrong?",
-          "answer": "Yes. A language model writes the answers, and it slips up now and then. The numbers on the cards in the chat come straight from park.fan. If an answer looks odd, give it a thumbs down and we will take a look."
+          "answer": "Yes. A language model writes the answers, and it slips up now and then. The numbers on the cards in the chat come straight from park.fan. If an answer looks odd, give it a thumbs down and we’ll take a look."
         },
         {
           "question": "Why don’t I see Parky everywhere?",
-          "answer": "Parky is not switched on for every visitor yet. The button on this page brings it along for your visit."
+          "answer": "Parky isn’t switched on for every visitor yet. The button on this page brings him along for your visit."
         },
         {
           "question": "Which languages does Parky speak?",
-          "answer": "All of park.fan’s languages: German, English, Dutch, French, Spanish and Italian. It answers in the language of the page you are on."
+          "answer": "All of park.fan’s languages: German, English, Dutch, French, Spanish and Italian. He answers in the language of the page you’re on."
         },
         {
           "question": "Can I make Parky quieter?",
-          "answer": "Yes. Tap the ✕ in one of its speech bubbles and it stays quiet until the end of your visit. If “reduce motion” is on in your system, its animations stay off."
+          "answer": "Yes. Tap the ✕ in one of his speech bubbles and he stays quiet until the end of your visit. If “reduce motion” is on in your system, his animations stay off."
         }
       ]
     },
     "next": {
       "title": "What next?",
-      "ask": "Ask Parky",
+      "ask": "Chat with Parky",
       "askDescription": "At the bottom right, right here on this page.",
       "planner": "Go to the day planner",
       "plannerDescription": "Plan your park day yourself, ride by ride.",
