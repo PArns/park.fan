@@ -5,9 +5,15 @@ import { useTranslations } from 'next-intl';
 import { BedDouble, PlaneLanding, PlaneTakeoff } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { weekdayLabels } from '@/lib/planner/month-grid';
-import { CROWD_CHIP_CLASS, isColoredCrowdLevel } from '@/lib/utils/crowd-level-styles';
+import {
+  CROWD_TEXT_CLASS,
+  CROWD_TILE_CLASS,
+  isColoredCrowdLevel,
+} from '@/lib/utils/crowd-level-styles';
+import { DAY_SIGNAL_CLASS, holidaySignals } from '@/lib/utils/day-signal-styles';
+import { ParkCalendarLegend } from '@/components/parks/park-calendar-legend';
 import { formatParkDay } from '@/lib/utils/park-day';
-import { parkInitials, tripMonthWeeks } from '@/lib/trip-regions/plan-week';
+import { parkInitials, TRIP_DAY_SIGNALS, tripMonthWeeks } from '@/lib/trip-regions/plan-week';
 import type { TripPlan } from '@/lib/trip-regions/plan';
 import type { TripCalendar } from '@/lib/trip-regions/types';
 import { usePlanContext } from './plan-context';
@@ -15,9 +21,11 @@ import { PLAN_FOCUS } from './plan-controls';
 import { PlanDayMarker, useDayMarkerText, useDayParks, useTicketDayLabel } from './plan-day-bits';
 
 /**
- * The Month view: the trip in its calendar, whole weeks from Monday. A trip day holds the park's
- * two letters in its crowd tint and the minutes, or a bed for a rest day, and the one marker a day
- * may wear as an icon; the park's full name is in the cell's label. A press opens the day.
+ * The Month view: the trip in its calendar, whole weeks from Monday, drawn as a park's crowd
+ * calendar (`ParkCalendarDay`, `ParkCalendarLegend`): a park day is a tile in its crowd tint with
+ * the park's two letters and the minutes, a rest or travel day a plain tile with its icon, and the
+ * date's holidays the bar along the top. The one marker a day may wear is an icon; the park's full
+ * name is in the cell's label. A press opens the day.
  */
 export function PlanMonthView({
   plan,
@@ -38,6 +46,10 @@ export function PlanMonthView({
     [plan.meta.from, plan.meta.to]
   );
   const dayBy = useMemo(() => new Map(plan.days.map((d) => [d.date, d])), [plan.days]);
+  const calendarBy = useMemo(
+    () => new Map((calendar?.days ?? []).map((d) => [d.date, d])),
+    [calendar?.days]
+  );
   const headers = useMemo(() => weekdayLabels(locale), [locale]);
 
   return (
@@ -79,6 +91,10 @@ export function PlanMonthView({
             : t(`day.${day.kind}`);
           const marker = isPark ? markerText(day, calendar) : null;
           const ticketDay = isPark ? ticketLabel(day, plan.meta) : null;
+          const rawLevel = isPark ? (day.crowdLevel ?? day.parks[0]?.crowdLevel) : undefined;
+          const level = rawLevel && isColoredCrowdLevel(rawLevel) ? rawLevel : null;
+          const ink = level ? CROWD_TEXT_CLASS[level] : 'text-muted-foreground';
+          const signals = holidaySignals(calendarBy.get(cell.date) ?? null);
           return (
             <li key={cell.date} className="min-w-0">
               <button
@@ -86,33 +102,36 @@ export function PlanMonthView({
                 onClick={() => onOpenDay(cell.date)}
                 aria-label={`${full}: ${[what, ticketDay, marker].filter(Boolean).join(', ')}`}
                 className={cn(
-                  'border-border/60 bg-muted/20 hover:bg-muted/40 flex min-h-16 w-full flex-col items-start gap-1 rounded-md border p-1 text-left transition-colors',
+                  'relative flex min-h-16 w-full flex-col items-start gap-1 overflow-hidden rounded-md border p-1 text-left transition hover:shadow-sm lg:min-h-20 lg:p-1.5',
+                  level ? CROWD_TILE_CLASS[level] : 'bg-muted/25 border-border/60',
                   PLAN_FOCUS
                 )}
               >
-                <span className="text-[11px] font-semibold tabular-nums">{label}</span>
+                {signals.length > 0 && (
+                  <span aria-hidden="true" className="absolute inset-x-0 top-0 flex h-[3px]">
+                    {signals.map((signal) => (
+                      <span
+                        key={signal}
+                        className={cn('h-full flex-1', DAY_SIGNAL_CLASS[signal])}
+                      />
+                    ))}
+                  </span>
+                )}
+                <span className={cn('text-[13px] leading-none font-bold tabular-nums', ink)}>
+                  {label}
+                </span>
                 {isPark ? (
-                  <span className="flex min-w-0 flex-wrap items-center gap-1">
-                    {day.parks.map((p) => {
-                      const level = p.crowdLevel ?? day.crowdLevel;
-                      const tone = level && isColoredCrowdLevel(level) ? level : null;
-                      return (
-                        <span
-                          key={p.slug}
-                          aria-hidden="true"
-                          className={cn(
-                            'rounded px-1 text-[11px] leading-4 font-bold',
-                            tone ? CROWD_CHIP_CLASS[tone] : 'border-border/60 border border-dashed'
-                          )}
-                        >
-                          {parkInitials(parkBySlug.get(p.slug)?.name ?? p.slug)}
-                        </span>
-                      );
-                    })}
+                  <span
+                    className={cn('flex min-w-0 flex-wrap items-baseline gap-x-1 text-[11px]', ink)}
+                    aria-hidden="true"
+                  >
+                    <span className="font-bold">
+                      {day.parks
+                        .map((p) => parkInitials(parkBySlug.get(p.slug)?.name ?? p.slug))
+                        .join(' + ')}
+                    </span>
                     {day.headlinerWait != null && (
-                      <span className="text-[11px] tabular-nums" aria-hidden="true">
-                        {day.headlinerWait}
-                      </span>
+                      <span className="font-semibold tabular-nums">{day.headlinerWait}</span>
                     )}
                   </span>
                 ) : day.kind === 'rest' ? (
@@ -128,6 +147,7 @@ export function PlanMonthView({
           );
         })}
       </ol>
+      <ParkCalendarLegend signals={TRIP_DAY_SIGNALS} className="mt-2" />
       <p className="text-muted-foreground text-xs">{t('month.legend')}</p>
     </div>
   );

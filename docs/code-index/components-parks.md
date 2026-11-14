@@ -379,7 +379,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`park-calendar-legend.tsx`](../../components/parks/park-calendar-legend.tsx)
 
-- `ParkCalendarLegend` _component_: What the colours in the month grid mean: the crowd scale, then the signal bar. The scale is one strip of butted chips because it is a ruler; the four signal keys are independent facts and keep their gaps.
+- `ParkCalendarLegend` _component_: What the colours in the month grid mean: the crowd scale, then the signal bar. The scale is one strip of butted chips because it is a ruler; the signal keys are independent facts and keep their gaps.
 
 ### [`park-calendar-month-index-chip.tsx`](../../components/parks/park-calendar-month-index-chip.tsx)
 

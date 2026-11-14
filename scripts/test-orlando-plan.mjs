@@ -53,6 +53,7 @@ import {
 } from '../lib/trip-regions/plan-ics.ts';
 import {
   dateFigure,
+  dateLevel,
   hoursLessThanUsual,
   parkInitials,
   parkMinuteOf,
@@ -720,6 +721,21 @@ const keys = { parks: new Set(ORDER), areas: new Set(['disney', 'universal']) };
     dateFigure(d19, ['magic-kingdom-park', 'disneys-animal-kingdom-theme-park']),
     45
   );
+  test(
+    'a date takes the crowd level of the park day behind its figure',
+    dateLevel(
+      {
+        ...d19,
+        best: {
+          'walt-disney-world': 'disneys-animal-kingdom-theme-park',
+          'universal-orlando': 'universal-islands-of-adventure',
+        },
+      },
+      []
+    ),
+    'low'
+  );
+  test('a date without a figure has no tint', dateLevel(undefined, []), null);
   test('two letters per park', Object.keys(names).map(parkInitials), Object.values(names));
 }
 

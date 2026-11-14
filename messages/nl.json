@@ -3108,7 +3108,7 @@
       "gridLabel": "Aankomst- en vertrekdag",
       "wait": "kortste wachttijd bij de grote attracties ongeveer {minutes} min.",
       "waitLastYear": "vorig jaar ongeveer {minutes} min. bij de grote attracties",
-      "legend": "Onder elke datum staat de kortste wachttijd bij de grote attracties, in minuten, in het park met de kortste rijen. Parken die vroeg sluiten tellen niet mee.",
+      "legend": "Onder elke datum staat de kortste wachttijd bij de grote attracties, in minuten, in het park met de kortste rijen, gekleurd naar hoe druk dat park die dag is. Parken die vroeg sluiten tellen niet mee.",
       "legendLastYear": "Cijfers in cursief zijn gemeten dagen van vorig jaar.",
       "pickArrival": "Tik op je aankomstdag.",
       "pickDeparture": "Nu je vertrekdag.",
@@ -3262,7 +3262,7 @@
       }
     },
     "month": {
-      "legend": "Twee letters per park, gekleurd naar hoe druk de dag voor dat park is; het getal is de wachttijd bij de grote attracties in minuten."
+      "legend": "Elke parkdag is gekleurd naar hoe druk hij voor dat park is, met de twee letters van het park en de wachttijd bij de grote attracties in minuten."
     },
     "details": {
       "minutesCaption": "De wachttijd bij de grote attracties op het drukste moment; daarmee vergelijkt het plan de dagen. De kleur vergelijkt de dag met een gewone dag in dit park.",

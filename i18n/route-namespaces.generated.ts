@@ -167,7 +167,11 @@ export const ROUTE_MESSAGE_NAMESPACES = {
   '/trip-planner': ['parks.weather', 'parks.worksPeriod', 'planner', 'tripHub.band'],
   '/trip-planner/shared': ['planner'],
   '/trip-regions/[region]/[[...date]]': [
+    'attractions.historyLegend',
+    'parks.calendarLegendGroups',
+    'parks.holidayContext',
     'parks.seasons',
+    'parks.worksPeriod',
     'tripHub.calendar',
     'tripHub.lanes',
     'tripHub.sheet',

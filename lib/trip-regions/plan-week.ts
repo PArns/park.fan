@@ -6,6 +6,8 @@ import {
   PX_PER_MIN_COARSE,
   type DayGrid,
 } from '@/lib/planner/day-grid';
+import { isColoredCrowdLevel, type ColoredCrowdLevel } from '@/lib/utils/crowd-level-styles';
+import type { DaySignal } from '@/lib/utils/day-signal-styles';
 import { getDateTimeFormat } from '@/lib/utils/intl-format';
 import { addDays, daysBetween } from '@/lib/utils/park-day';
 import { earlyPerk } from './plan-copy';
@@ -432,24 +434,51 @@ export function swapPreview(
 }
 
 /**
- * The figure under a date: the lower of the day's picks per resort (`best`, the API's shortest
- * lines with early closings counted), so a party night that closes at 6 pm never makes a date look
- * quiet. Where the API names no pick (a last-year day, no hours yet), the lowest headliner that is
- * open, has a figure and does not close early. `null` where none has one.
+ * The signals a trip region's calendar knows: its own school breaks and holidays. It carries no
+ * bridge days or neighbouring regions, so the planner's grids key only these two.
  */
-export function dateFigure(
+export const TRIP_DAY_SIGNALS: readonly DaySignal[] = ['school', 'holiday'];
+
+/**
+ * The park day behind a date's figure: the lowest of the day's picks per resort (`best`, the API's
+ * shortest lines with early closings counted), so a party night that closes at 6 pm never makes a
+ * date look quiet. Where the API names no pick (a last-year day, no hours yet), the lowest headliner
+ * that is open, has a figure and does not close early. `null` where none has one.
+ */
+export function datePick(
   day: TripCalendarDay | undefined,
   headliners: readonly string[]
-): number | null {
+): TripParkDay | null {
   if (!day) return null;
   const picks = Object.values(day.best ?? {});
   const candidates = picks.length > 0 ? picks : headliners;
-  let best: number | null = null;
+  let best: TripParkDay | null = null;
   for (const slug of candidates) {
     const cell = day.parks[slug];
     if (!cell || cell.status === 'CLOSED' || cell.headlinerWait == null) continue;
     if (picks.length === 0 && closesEarly(cell)) continue;
-    if (best === null || cell.headlinerWait < best) best = cell.headlinerWait;
+    if (best === null || cell.headlinerWait < best.headlinerWait!) best = cell;
   }
   return best;
+}
+
+/** The figure under a date: the big-ride wait of {@link datePick}, `null` where there is none. */
+export function dateFigure(
+  day: TripCalendarDay | undefined,
+  headliners: readonly string[]
+): number | null {
+  return datePick(day, headliners)?.headlinerWait ?? null;
+}
+
+/**
+ * A date's tint in the date grid: the crowd level of the same park day as its figure, so number and
+ * colour tell one story, as on a park's crowd calendar. `null` for a date without a figure or a
+ * level.
+ */
+export function dateLevel(
+  day: TripCalendarDay | undefined,
+  headliners: readonly string[]
+): ColoredCrowdLevel | null {
+  const level = datePick(day, headliners)?.crowdLevel;
+  return level && isColoredCrowdLevel(level) ? level : null;
 }

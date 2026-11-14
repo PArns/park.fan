@@ -3108,7 +3108,7 @@
       "gridLabel": "Día de llegada y de salida",
       "wait": "espera más corta en las grandes atracciones unos {minutes} min",
       "waitLastYear": "el año pasado unos {minutes} min en las grandes atracciones",
-      "legend": "Debajo de cada fecha: la espera más corta en las grandes atracciones ese día, en minutos, en el parque con las colas más cortas. Los parques que cierran antes no cuentan.",
+      "legend": "Debajo de cada fecha: la espera más corta en las grandes atracciones ese día, en minutos, en el parque con las colas más cortas, en el color de lo lleno que está ese parque ese día. Los parques que cierran antes no cuentan.",
       "legendLastYear": "Las cifras en cursiva son días medidos el año pasado.",
       "pickArrival": "Toca tu día de llegada.",
       "pickDeparture": "Ahora tu día de salida.",
@@ -3262,7 +3262,7 @@
       }
     },
     "month": {
-      "legend": "Dos letras por parque, coloreadas según lo lleno que esté el día para ese parque; el número es la espera en las grandes atracciones en minutos."
+      "legend": "Cada día de parque lleva el color de lo lleno que está su parque, con las dos letras del parque y la espera en las grandes atracciones en minutos."
     },
     "details": {
       "minutesCaption": "La espera en las grandes atracciones en su momento más lleno, la cifra con la que el plan compara los días. El color compara el día con un día normal de este parque.",

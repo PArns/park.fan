@@ -3,6 +3,12 @@
 import { useMemo, useRef, useState, type KeyboardEvent } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import {
+  CROWD_TEXT_CLASS,
+  CROWD_TILE_CLASS,
+  type ColoredCrowdLevel,
+} from '@/lib/utils/crowd-level-styles';
+import { DAY_SIGNAL_CLASS, type DaySignal } from '@/lib/utils/day-signal-styles';
 import { monthMatrix, monthOf, shiftMonth, weekdayLabels } from '@/lib/planner/month-grid';
 import { addDays } from '@/lib/utils/park-day';
 
@@ -19,6 +25,10 @@ export interface PlanGridDay {
   italic?: boolean;
   /** Up to three thin bars along the cell's foot: the tickets whose window holds the date. */
   bars?: ReadonlyArray<'primary' | 'muted'>;
+  /** The date's crowd level, which tints the cell as a park's crowd calendar does. */
+  level?: ColoredCrowdLevel | null;
+  /** The holidays and school breaks the date falls in, as the calendar's bar along the top. */
+  signals?: readonly DaySignal[];
 }
 
 const NAV_BUTTON =
@@ -28,6 +38,9 @@ const NAV_BUTTON =
  * A month of dates to pick from, a month at a time (`lib/planner/month-grid.ts`): the trip's two
  * dates in the Dates step, one date for a ticket's first day. One tab stop for the grid, the arrows
  * move by day and week and turn the month at its edge, so the grid works the same in both places.
+ * A date with a crowd level is the crowd calendar's tile (`ParkCalendarDay`): tinted, the day and
+ * its figure in the level's ink, holidays as the bar along the top. A chosen end is a ring, so the
+ * tint stays readable under it.
  */
 export function PlanMonthGrid({
   month,
@@ -120,7 +133,7 @@ export function PlanMonthGrid({
       </div>
 
       <div
-        className="text-muted-foreground grid grid-cols-7 gap-0.5 text-center text-[11px]"
+        className="text-muted-foreground grid grid-cols-7 gap-1 text-center text-[11px]"
         aria-hidden="true"
       >
         {headers.map((header, index) => (
@@ -134,12 +147,14 @@ export function PlanMonthGrid({
         aria-label={gridLabel}
         onKeyDown={onKeyDown}
         // Six rows whatever the month, so the panel keeps its height from month to month.
-        className="grid min-h-[17.5rem] grid-cols-7 gap-0.5"
+        className="grid min-h-[19.25rem] grid-cols-7 gap-1"
       >
         {cells.map((cell) => {
           const d = days.get(cell.date);
           const enabled = live && Boolean(d?.enabled);
           const edge = d?.mark === 'edge';
+          const level = enabled ? (d?.level ?? null) : null;
+          const ink = level ? CROWD_TEXT_CLASS[level] : null;
           return (
             <button
               key={cell.date}
@@ -152,19 +167,29 @@ export function PlanMonthGrid({
               onClick={() => onPick(cell.date)}
               onFocus={() => setFocusDate(cell.date)}
               className={cn(
-                'focus-visible:ring-ring relative flex h-11 flex-col items-center justify-center rounded-md text-sm tabular-nums transition-colors focus-visible:ring-2 focus-visible:outline-none',
+                'focus-visible:ring-ring relative flex h-12 flex-col items-center justify-center overflow-hidden rounded-md border text-sm tabular-nums transition focus-visible:ring-2 focus-visible:outline-none',
                 !cell.inMonth && 'invisible',
-                !enabled && 'text-muted-foreground/40',
-                enabled && !edge && 'hover:bg-accent',
-                d?.mark === 'range' && 'bg-primary/15',
-                edge && 'bg-primary text-primary-foreground font-semibold'
+                !enabled && 'text-muted-foreground/40 border-transparent',
+                enabled && (level ? CROWD_TILE_CLASS[level] : 'bg-muted/25 border-border/60'),
+                enabled && !edge && 'hover:shadow-sm',
+                d?.mark === 'range' && 'ring-primary/60 ring-1 ring-inset',
+                edge && 'ring-primary ring-offset-background z-10 ring-2 ring-offset-1'
               )}
             >
-              <span className="leading-4">{cell.day}</span>
+              {enabled && d?.signals && d.signals.length > 0 && (
+                <span aria-hidden="true" className="absolute inset-x-0 top-0 flex h-[3px]">
+                  {d.signals.map((signal) => (
+                    <span key={signal} className={cn('h-full flex-1', DAY_SIGNAL_CLASS[signal])} />
+                  ))}
+                </span>
+              )}
+              <span className={cn('leading-4', (edge || level) && 'font-bold', ink)}>
+                {cell.day}
+              </span>
               <span
                 className={cn(
                   'h-3.5 text-[10px] leading-3.5',
-                  edge ? 'text-primary-foreground/85' : 'text-muted-foreground',
+                  ink ? cn('font-semibold', ink) : 'text-muted-foreground',
                   d?.italic && 'italic'
                 )}
                 aria-hidden="true"
@@ -178,14 +203,7 @@ export function PlanMonthGrid({
                   data-plan-ticket-bar={row}
                   className={cn(
                     'absolute inset-x-1 h-[3px] rounded-full',
-                    edge
-                      ? 'bg-primary-foreground/85'
-                      : tone === 'primary'
-                        ? // The range's tint lowers the bar's contrast; the ink keeps it at 3:1.
-                          d.mark === 'range'
-                          ? 'bg-primary-ink'
-                          : 'bg-primary'
-                        : 'bg-foreground/55'
+                    tone === 'primary' ? 'bg-primary' : 'bg-foreground/55'
                   )}
                   style={{ bottom: 1 + row * 4 }}
                 />

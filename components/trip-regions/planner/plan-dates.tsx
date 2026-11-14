@@ -8,7 +8,9 @@ import { getDateTimeFormat, getListFormat } from '@/lib/utils/intl-format';
 import { addDays, formatParkDayRange } from '@/lib/utils/park-day';
 import { MAX_DAYS_AHEAD, MAX_TRIP_DAYS, setTripDates, tripDates } from '@/lib/trip-regions/plan';
 import { ticketWindows } from '@/lib/trip-regions/plan-tickets';
-import { dateFigure } from '@/lib/trip-regions/plan-week';
+import { dateFigure, dateLevel, TRIP_DAY_SIGNALS } from '@/lib/trip-regions/plan-week';
+import { holidaySignals } from '@/lib/utils/day-signal-styles';
+import { ParkCalendarLegend } from '@/components/parks/park-calendar-legend';
 import { usePlanContext } from './plan-context';
 import { useTripCalendar } from './use-trip-plan';
 import { PlanCheckRow } from './plan-controls';
@@ -21,9 +23,10 @@ const BAR_ROWS = 3;
 /**
  * The trip's dates: a month at a time (`PlanMonthGrid`), the first press the arrival and the second
  * the departure, at most {@link MAX_TRIP_DAYS} days. Under each date the shortest big-ride wait of
- * that day, so dates can be compared before anything is planned; a last-year figure is set apart
- * and the legend says so. The tickets' windows are thin bars along the dates, named in a key. Then
- * whether the travel days hold a park.
+ * that day in the crowd tint of the same park day, as on a park's crowd calendar, so dates can be
+ * compared before anything is planned; a last-year figure is set apart and the legend says so. The
+ * tickets' windows are thin bars along the dates, named in a key. Then whether the travel days hold
+ * a park.
  */
 export function PlanDates({ defaultMonth }: { defaultMonth?: string }) {
   const t = useTranslations('tripPlanner');
@@ -107,6 +110,8 @@ export function PlanDates({ defaultMonth }: { defaultMonth?: string }) {
             mark: isEdge ? 'edge' : inRange ? 'range' : null,
             figure: wait !== null ? String(wait) : null,
             italic: lastYear,
+            level: dateLevel(day, headliners),
+            signals: holidaySignals(day ?? null),
             bars: windows
               .slice(0, BAR_ROWS)
               .map((w, row) =>
@@ -154,6 +159,8 @@ export function PlanDates({ defaultMonth }: { defaultMonth?: string }) {
           ))}
         </ul>
       )}
+
+      <ParkCalendarLegend signals={TRIP_DAY_SIGNALS} />
 
       <p className="text-muted-foreground text-xs leading-snug">
         {t('dates.legend')}

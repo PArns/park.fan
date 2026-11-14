@@ -3108,7 +3108,7 @@
       "gridLabel": "Arrival and departure day",
       "wait": "shortest big-ride wait about {minutes} min",
       "waitLastYear": "last year about {minutes} min at the big rides",
-      "legend": "Under each date: the shortest wait at the big rides that day, in minutes, at the park with the shortest lines. Parks that close early don’t count.",
+      "legend": "Under each date: the shortest wait at the big rides that day, in minutes, at the park with the shortest lines, coloured by how busy that park is that day. Parks that close early don’t count.",
       "legendLastYear": "Figures in italics are last year’s measured days.",
       "pickArrival": "Tap your arrival day.",
       "pickDeparture": "Now your departure day.",
@@ -3262,7 +3262,7 @@
       }
     },
     "month": {
-      "legend": "Two letters per park, coloured by how busy the day is for that park; the number is the big rides’ wait in minutes."
+      "legend": "Each park day is coloured by how busy it is for its park, with the park’s two letters and the big rides’ wait in minutes."
     },
     "details": {
       "minutesCaption": "The big rides’ wait at their busiest, the figure the plan compares days by. The colour compares the day with this park’s typical day.",
