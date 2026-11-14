@@ -168,6 +168,22 @@ test("the day trips take the reader's word, a resort keeps its own name", () => 
   assert.equal(region.groups.find((g) => g.kind === 'day_trip')?.name, 'Day trips');
 });
 
+test('a day trip of one park keeps its own name, so two never share a filter label', () => {
+  const lone = {
+    ...region,
+    groups: [
+      ...region.groups,
+      { key: 'legoland-only', name: 'LEGOLAND Florida', kind: 'day_trip' },
+    ],
+    parks: region.parks.map((p) =>
+      p.slug === 'legoland-florida' ? { ...p, group: 'legoland-only' } : p
+    ),
+  };
+  const named = withGroupNames(lone, 'Tagesausflüge');
+  assert.equal(named.groups.find((g) => g.key === 'legoland-only')?.name, 'LEGOLAND Florida');
+  assert.equal(named.groups.find((g) => g.key === 'day-trips')?.name, 'Tagesausflüge');
+});
+
 test("the API's pick leads its resort, then the shortest waits", () => {
   const day = calendar.days[0];
   const disney = regionResorts(region).find((g) => g.key === 'walt-disney-world');
@@ -189,9 +205,29 @@ test('the first answer names a shorter wait that lost to an early close', () => 
   assert.equal(closesEarly(mk), true);
 });
 
-test('a resort with one park that has a figure stays out of the first answer', () => {
+test('the first answer names each group with a headliner park, and no other', () => {
   const keys = glanceLines(calendar.days[0], region).map((l) => l.group.key);
-  assert.ok(!keys.includes('seaworld-orlando'));
+  assert.ok(keys.includes('walt-disney-world') && keys.includes('universal-orlando'));
+  assert.ok(!keys.includes('seaworld-orlando'), 'SeaWorld Orlando has no headliner');
+  assert.ok(!keys.includes('day-trips'));
+});
+
+test('a headliner group of one park is answered by that park', () => {
+  const day = structuredClone(calendar.days[0]);
+  const lone = {
+    ...region,
+    groups: [
+      ...region.groups,
+      { key: 'lone', name: 'Universal Studios Hollywood', kind: 'day_trip' },
+    ],
+    parks: region.parks.map((p) =>
+      p.slug === 'busch-gardens-tampa' ? { ...p, group: 'lone', headliner: true } : p
+    ),
+  };
+  Object.assign(day.parks['busch-gardens-tampa'], { status: 'OPERATING', headlinerWait: 25 });
+  const line = glanceLines(day, lone).find((l) => l.group.key === 'lone');
+  assert.equal(line?.park.slug, 'busch-gardens-tampa');
+  assert.equal(line?.day.headlinerWait, 25);
 });
 
 test('after every pick has closed, the answer is about tomorrow', () => {
