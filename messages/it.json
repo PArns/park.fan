@@ -4893,13 +4893,6 @@
             "park_hotel": "Hotel del parco a Fuji-Q o LEGOLAND",
             "offsite": "Altrove"
           },
-          "hotelHint": {
-            "disney": "Happy Entry a Tokyo Disneyland, 15 minuti prima, non il giorno del check-in",
-            "disney_deluxe": "Happy Entry in entrambi i parchi Disney, non il giorno del check-in",
-            "universal": "A pochi minuti a piedi dall’ingresso",
-            "park_hotel": "Highland Resort vicino a Fuji-Q o LEGOLAND Japan Hotel all’ingresso; l’ingresso anticipato lo vende Fuji-Q stesso, come One Day Pass con Priority Admission",
-            "offsite": "Nessun ingresso anticipato"
-          },
           "eveningsHint": "Se un parco chiude prima, il piano propone per la sera IKSPIARI vicino ai parchi Disney o Universal CityWalk Osaka.",
           "moveBufferHint": "Con i bagagli spediti in anticipo (takkyubin), di solito bastano 30 minuti."
         },
@@ -5203,11 +5196,6 @@
             "disney": "Hotel Disney",
             "parc_asterix": "Hotel del Parc Astérix",
             "offsite": "Altro hotel"
-          },
-          "hotelHint": {
-            "disney": "Extra Magic Time, di solito un’ora prima dell’apertura in entrambi i parchi Disney; Davy Crockett Ranch compreso",
-            "parc_asterix": "Early Entry: alcune attrazioni 30 minuti prima",
-            "offsite": "Hotel partner e Parigi compresi; nessun ingresso anticipato"
           },
           "eveningsHint": "Se un parco chiude prima, la sera passa all’altro parco Disney o a Disney Village.",
           "moveBufferHint": "Con le valigie al seguito fino all’hotel successivo, 60 minuti sono realistici."

@@ -4893,13 +4893,6 @@
             "park_hotel": "Parkhotel bij Fuji-Q of LEGOLAND",
             "offsite": "Ergens anders"
           },
-          "hotelHint": {
-            "disney": "Happy Entry in Tokyo Disneyland, 15 minuten eerder, niet op de dag van inchecken",
-            "disney_deluxe": "Happy Entry in beide Disney-parken, niet op de dag van inchecken",
-            "universal": "Een paar minuten lopen naar de ingang",
-            "park_hotel": "Highland Resort bij Fuji-Q of LEGOLAND Japan Hotel bij de ingang; eerder naar binnen verkoopt Fuji-Q zelf, als One Day Pass met Priority Admission",
-            "offsite": "Geen vroege toegang"
-          },
           "eveningsHint": "Sluit een park eerder, dan stelt het plan voor de avond IKSPIARI bij de Disney-parken of Universal CityWalk Osaka voor.",
           "moveBufferHint": "Met vooruitgestuurde bagage (takkyubin) is 30 minuten meestal genoeg."
         },
@@ -5203,11 +5196,6 @@
             "disney": "Disney-hotel",
             "parc_asterix": "Hotel van Parc Astérix",
             "offsite": "Ander hotel"
-          },
-          "hotelHint": {
-            "disney": "Extra Magic Time, meestal een uur voor de opening in beide Disney-parken; ook in Davy Crockett Ranch",
-            "parc_asterix": "Early Entry: een paar attracties 30 minuten eerder",
-            "offsite": "Ook partnerhotels en Parijs; geen vroegere toegang"
           },
           "eveningsHint": "Sluit een park eerder, dan gaat de avond naar het andere Disney-park of naar Disney Village.",
           "moveBufferHint": "Met je koffers naar het volgende hotel is 60 minuten realistisch."
