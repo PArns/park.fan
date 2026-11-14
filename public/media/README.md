@@ -139,7 +139,9 @@ look. How the crop is computed: [media database](../../docs/features/media-datab
 
 `disneyland-park` is both Anaheim and Paris. For an image of a park whose slug the catalog lists
 more than once, add the full `continent/country/city/slug` path; the generator warns when it is
-missing.
+missing. The lookups file the image under that path, so each park keeps its own
+`park-background`; without it the image counts as the catalog's first park of the slug, Paris for
+`disneyland-park` ([media database](../../docs/features/media-database.md#libmedia-structure-lookup-search)).
 
 ### `credit` — never invent one
 

@@ -1,0 +1,33 @@
+{
+  "title": "HangTime",
+  "park": "knotts-berry-farm",
+  "ride": "hangtime",
+  "roles": ["ride-card", "park-background"],
+  "tags": ["coaster", "day", "outdoor", "photo", "ride", "sunny"],
+  "alt": {
+    "de": "Türkise Achterbahnschienen in Schleifen vor blauem Himmel, daneben ein senkrechter Liftturm, unten Palmen und Lichterketten.",
+    "en": "Teal coaster track looping against a blue sky beside a vertical lift tower, palm trees and string lights below.",
+    "es": "Vías turquesa en bucle contra un cielo azul junto a una torre de subida vertical, con palmeras y guirnaldas abajo.",
+    "fr": "Des rails turquoise qui bouclent dans un ciel bleu, à côté d’une tour de levage verticale, avec palmiers et guirlandes en bas.",
+    "it": "Binari turchesi ad anello contro il cielo azzurro accanto a una torre di risalita verticale, sotto palme e luci a festone.",
+    "nl": "Turquoise achtbaanrails in lussen tegen een blauwe lucht naast een verticale lifttoren, onderaan palmen en lichtsnoeren."
+  },
+  "caption": {
+    "de": "Oben hält HangTime den Zug fünf Sekunden lang fest, dann stürzt er mit 96 Grad hinab.",
+    "en": "At the top, HangTime holds its train for five seconds, then drops it at 96 degrees.",
+    "es": "Arriba, HangTime retiene el tren cinco segundos y luego lo deja caer a 96 grados.",
+    "fr": "Au sommet, HangTime retient le train cinq secondes, puis le lâche dans une chute à 96 degrés.",
+    "it": "In cima HangTime trattiene il treno per cinque secondi, poi lo lascia cadere a 96 gradi.",
+    "nl": "Bovenaan houdt HangTime de trein vijf seconden vast, daarna valt hij onder 96 graden."
+  },
+  "credit": {
+    "author": "Alejandro Ortega Grillo",
+    "license": "unsplash",
+    "source": "unsplash",
+    "sourceUrl": "https://unsplash.com/photos/roller-coaster-track-against-blue-sky-a5Msbqk5PcM"
+  },
+  "focus": {
+    "x": 0.62,
+    "y": 0.45
+  }
+}

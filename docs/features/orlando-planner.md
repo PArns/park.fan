@@ -157,8 +157,11 @@ sleeps in more than one place. The visitor gives the ends, the plan gives the mi
   it is spent (`staySections`). The Week view has the stay band over the columns
   (`PlanStayBand`: two halves a day, two primary tints by the stay's number, never crowd colours),
   the move on the hour axis, the park hours a morning move takes hatched, and a travel day as one
-  dashed block. The Month view's band is `PlanMonthStayBand` with `monthStayCells`, for the
-  calendar to place. The day's sheet has the move's route, typical times and stops, the buffer and
+  dashed block. The Month view ends each date's cell in the stay band (`PlanMonthStayBand` with
+  `monthStayCells`): the city named where its stay begins and at the start of each week row, the
+  cell split with an arrow on a hotel change; under the grid the numbered stays with their cities
+  and `tripPlanner.month.stayKey`. The
+  day's sheet has the move's route, typical times and stops, the buffer and
   the leg's notes (`moveNote.<code>` of the region first).
 - **Names** come from the region's words (`base.<key>`, `gateway.<code>`, `area.<key>`,
   `stayNote.<key>`), else the API's English ones (`plan-place-words.tsx`).

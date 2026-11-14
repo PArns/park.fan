@@ -31,15 +31,16 @@ export function toStaticPark(
   },
   place: ParkPlace
 ): StaticPark {
+  const href = `/parks/${place.continent}/${place.country}/${place.citySlug}/${park.slug}`;
   return {
     id: park.id,
     name: stripNewPrefix(park.name),
     slug: park.slug,
     city: place.cityName,
     countryName: place.countryName,
-    href: `/parks/${place.continent}/${place.country}/${place.citySlug}/${park.slug}`,
-    backgroundImage: getParkBackgroundImage(park.slug),
-    backgroundPosition: getCardObjectPosition(park.slug),
+    href,
+    backgroundImage: getParkBackgroundImage({ slug: park.slug, url: href }),
+    backgroundPosition: getCardObjectPosition({ slug: park.slug, url: href }),
     // The distance to the visitor is computed in the browser from these.
     latitude: park.latitude,
     longitude: park.longitude,
@@ -48,5 +49,9 @@ export function toStaticPark(
 
 /** A park card as an entry of a hub's `ItemList`: its shown name, its URL in `locale`, its image. */
 export function parkListItem(locale: string, park: StaticPark) {
-  return { name: park.name, url: `/${locale}${park.href}`, image: getParkImageSet(park.slug)[0] };
+  return {
+    name: park.name,
+    url: `/${locale}${park.href}`,
+    image: getParkImageSet({ slug: park.slug, url: park.href })[0],
+  };
 }

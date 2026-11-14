@@ -3152,9 +3152,7 @@
       "pickDeparture": "Nu je vertrekdag.",
       "dayCount": "{count, plural, =1 {1 dag} other {# dagen}}",
       "arrivalPark": "Park op de aankomstdag",
-      "arrivalParkHint": "Bij een vroege vlucht; anders blijft de dag vrij.",
       "departurePark": "Park op de vertrekdag",
-      "departureParkHint": "Bij een avondvlucht.",
       "maxLength": "Een reis duurt hoogstens {days} dagen.",
       "partyKey": "Feestavond met eigen ticket: dagbezoekers vertrekken eerder",
       "nyeKey": "Oudejaarsavond",
@@ -3629,7 +3627,9 @@
         "window": "Een {resort}-ticket voor {days} dagen geldt op {days} willekeurige van de {window} dagen vanaf de eerste dag.",
         "second": "{resort}, tweede ticket",
         "notCovered": "Je {name} dekt {parks} niet.",
-        "promotion": "Het {name} past ook bij deze dagen."
+        "promotion": "Het {name} past ook bij deze dagen.",
+        "group": "{resort}: {count} × {days, plural, =1 {dagticket} other {ticket voor # dagen}}, {dates}",
+        "groupSep": "; "
       },
       "hopper": {
         "worth": "Aanbevolen: {hopper}",

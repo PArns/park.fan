@@ -50,6 +50,7 @@ import {
 import { fitQuestion, wishesWithRides } from '@/lib/planner/optimize-remote';
 import { leverViewOf, useFitAnswer } from '@/lib/planner/use-optimize-remote';
 import type { CalendarDay, PlanDay } from '@/lib/api/types';
+import { isClosedCalendarDay } from '@/lib/utils/calendar-utils';
 import { isPlannedDay, type PlannerDayPrefs } from '@/lib/planner/types';
 import { PlannerParkSearch, type PlannerParkPick } from './planner-park-search';
 import { PlannerMonthCalendar } from './planner-month-calendar';
@@ -913,8 +914,7 @@ function WizardDayCard({
     );
   }
 
-  const closed = day.crowdLevel === 'closed' || day.status === 'CLOSED';
-  if (closed) {
+  if (isClosedCalendarDay(day)) {
     return <p className={cn(frame, 'text-muted-foreground')}>{t('day.closed')}</p>;
   }
 

@@ -51,8 +51,8 @@ export async function BlogParkWidget({ park, slug, inRow = false }: BlogParkWidg
       */}
       <BlogParkCardLive
         park={park}
-        backgroundImage={getParkBackgroundImage(park.slug)}
-        objectPosition={getCardObjectPosition(park.slug)}
+        backgroundImage={getParkBackgroundImage({ slug: park.slug, url: park.href })}
+        objectPosition={getCardObjectPosition({ slug: park.slug, url: park.href })}
         className="grid h-full [grid-template-rows:auto_2rem_auto] sm:[grid-template-rows:auto_minmax(220px,1fr)_auto]"
       />
     </div>

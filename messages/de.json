@@ -3152,9 +3152,7 @@
       "pickDeparture": "Jetzt den Abreisetag.",
       "dayCount": "{count, plural, =1 {1 Tag} other {# Tage}}",
       "arrivalPark": "Park am Anreisetag",
-      "arrivalParkHint": "Bei einem frühen Flug; sonst bleibt der Tag frei.",
       "departurePark": "Park am Abreisetag",
-      "departureParkHint": "Bei einem Abendflug.",
       "maxLength": "Eine Reise darf bis zu {days} Tage lang sein.",
       "partyKey": "Party-Abend mit eigenem Ticket: Tagesgäste gehen früher",
       "nyeKey": "Silvester",
@@ -3629,7 +3627,9 @@
         "window": "Ein {resort}-Ticket für {days} Tage gilt an {days} beliebigen der {window} Tage ab dem ersten Tag.",
         "second": "{resort}, zweites Ticket",
         "notCovered": "Dein {name} deckt {parks} nicht ab.",
-        "promotion": "Auch das {name} passt zu diesen Tagen."
+        "promotion": "Auch das {name} passt zu diesen Tagen.",
+        "group": "{resort}: {count} × {days, plural, =1 {Tagesticket} other {Ticket für # Tage}}, {dates}",
+        "groupSep": "; "
       },
       "hopper": {
         "worth": "Empfohlen: {hopper}",

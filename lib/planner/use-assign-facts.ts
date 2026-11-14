@@ -3,6 +3,7 @@
 import { useMemo } from 'react';
 import { useQueries } from '@tanstack/react-query';
 import { parkBestDaysQueryOptions } from '@/lib/hooks/use-park-best-days-calendar';
+import { forecastCrowdLevel } from '@/lib/utils/calendar-utils';
 import type { AssignCrowd } from './assign';
 import type { PlannerGeo } from './types';
 
@@ -50,7 +51,7 @@ export function useParksBestDays(
       if (!result.data && !result.isError) pending = true;
       const levels = new Map<string, AssignCrowd>();
       for (const day of result.data?.days ?? []) {
-        levels.set(day.date, day.predictedCrowdLevel ?? day.crowdLevel);
+        levels.set(day.date, forecastCrowdLevel(day));
       }
       const zone = result.data?.meta?.timezone;
       facts.set(park.slug, { levels, timezone: typeof zone === 'string' ? zone : null });

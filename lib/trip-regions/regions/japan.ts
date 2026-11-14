@@ -60,38 +60,40 @@ export const JAPAN: TripRegionConfig = {
   timezone: 'Asia/Tokyo',
   // Tokyo Disney Resort. The region spans several cities, and its trips several bases.
   centre: { latitude: 35.63, longitude: 139.88 },
+  photo: '/media/tokyo-disneysea/mermaid-lagoon.jpg',
   scene: () =>
     import('../../../components/assistant/parky/japan-scene').then((m) => ({
       default: m.ParkyJapanScene,
     })),
   hub: {
-    // The media database has no photo of a Japanese park yet, so the hero is the compact one.
-    heroPhotos: [],
+    // Mermaid Lagoon at Tokyo DisneySea, then Cinderella Castle seen from World Bazaar.
+    heroPhotos: [
+      '/media/tokyo-disneysea/mermaid-lagoon.jpg',
+      '/media/tokyo-disneyland/cinderella-castle-world-bazaar.jpg',
+    ],
     // Between the two Disney parks, where most trips start.
     defaultArea: 'maihama',
     // Three questions a trip across cities raises, answered in the region's words.
     faq: { weekendPark: 'tokyo-disneysea', questions: ['cities', 'luggage', 'happyEntry'] },
   },
-  // The photos are ids the media database does not hold yet; they are named where each page wants
-  // one, so adding the files is all the pages need.
   bestTime: [
     {
       id: 'region',
       groups: ['tokyo-disney-resort', 'universal-studios-japan'],
-      photo: 'tokyo-disneysea/cover',
+      photo: 'tokyo-disneysea/mediterranean-harbor',
     },
     {
       id: 'tokyo-disney',
       segment: 'tokyo-disney',
       groups: ['tokyo-disney-resort'],
-      photo: 'tokyo-disneyland/cover',
+      photo: 'tokyo-disneyland/cinderella-castle-world-bazaar',
       calendarPark: 'tokyo-disneysea',
     },
     {
       id: 'universal-studios-japan',
       segment: 'universal-studios-japan',
       groups: ['universal-studios-japan'],
-      photo: 'universal-studios-japan/cover',
+      photo: 'universal-studios-japan/entrance-gate',
       calendarPark: 'universal-studios-japan',
     },
   ],

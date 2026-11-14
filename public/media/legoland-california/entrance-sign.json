@@ -1,0 +1,32 @@
+{
+  "title": "LEGOLAND California sign",
+  "park": "legoland-california",
+  "roles": ["park-background"],
+  "tags": ["entrance", "outdoor", "photo", "signage"],
+  "alt": {
+    "de": "Der Schriftzug LEGOLAND California mit rotem LEGO-Logo und einer Sonne aus gelben Steinen, im Gegenlicht.",
+    "en": "The LEGOLAND California lettering with the red LEGO logo and a sun made of yellow bricks, lit from behind.",
+    "es": "El rótulo de LEGOLAND California con el logo rojo de LEGO y un sol de piezas amarillas, a contraluz.",
+    "fr": "Le lettrage LEGOLAND California avec le logo LEGO rouge et un soleil en briques jaunes, à contre-jour.",
+    "it": "La scritta LEGOLAND California con il logo rosso LEGO e un sole di mattoncini gialli, in controluce.",
+    "nl": "De letters LEGOLAND California met het rode LEGO-logo en een zon van gele stenen, in tegenlicht."
+  },
+  "caption": {
+    "de": "1999 in Carlsbad eröffnet, als erstes LEGOLAND außerhalb Europas.",
+    "en": "Opened in Carlsbad in 1999, the first LEGOLAND outside Europe.",
+    "es": "Abrió en Carlsbad en 1999 y fue el primer LEGOLAND fuera de Europa.",
+    "fr": "Ouvert à Carlsbad en 1999, c’est le premier LEGOLAND hors d’Europe.",
+    "it": "Aperto a Carlsbad nel 1999, è stato il primo LEGOLAND fuori dall’Europa.",
+    "nl": "In 1999 in Carlsbad geopend, als eerste LEGOLAND buiten Europa."
+  },
+  "credit": {
+    "author": "Nils Huenerfuerst",
+    "license": "unsplash",
+    "source": "unsplash",
+    "sourceUrl": "https://unsplash.com/photos/fpQt--IIijs"
+  },
+  "focus": {
+    "x": 0.5,
+    "y": 0.95
+  }
+}

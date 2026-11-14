@@ -1,12 +1,13 @@
 'use client';
 
 import { useState } from 'react';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { Check, ChevronDown, LayoutList, MapPin, Plus, X } from 'lucide-react';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { cn } from '@/lib/utils';
 import { PHONE_TARGET_32 } from '@/lib/planner/touch-target';
-import type { PlannerPark } from '@/lib/planner/types';
+import { plannedDayRows, type PlannerPark } from '@/lib/planner/types';
+import { formatParkDay } from '@/lib/utils/park-day';
 import { PlannerDayPicker } from './planner-day-picker';
 import type { CalendarDay } from '@/lib/api/types';
 
@@ -17,6 +18,8 @@ interface PlannerColumnHeadProps {
   date: string | null;
   onPickPark: (parkSlug: string) => void;
   onPickDate: (date: string) => void;
+  /** A planned day from the chooser's list: its park and its date in one step. */
+  onPickDay: (parkSlug: string, date: string) => void;
   /** Starts a park this plan does not have yet — the wizard asks all three questions. */
   onNewPark: () => void;
   /**
@@ -52,6 +55,7 @@ export function PlannerColumnHead({
   date,
   onPickPark,
   onPickDate,
+  onPickDay,
   onNewPark,
   onShowOverview,
   onClose,
@@ -62,8 +66,10 @@ export function PlannerColumnHead({
   className,
 }: PlannerColumnHeadProps) {
   const t = useTranslations('planner');
+  const locale = useLocale();
   const [open, setOpen] = useState(false);
   const park = parks.find((entry) => entry.slug === parkSlug) ?? null;
+  const rows = plannedDayRows(parks, locale);
 
   return (
     <div
@@ -96,33 +102,48 @@ export function PlannerColumnHead({
         {/* Aligned to the column's own edge, so with two columns the list opens under its own.
             `z-[80]` above the sheet's `z-[70]`, or the portalled list sits behind the panel and no
             row can be tapped; `check:planner` clicks a row to catch that. */}
-        <PopoverContent align="start" className="z-[80] w-56 p-1">
+        <PopoverContent align="start" className="z-[80] w-72 max-w-[calc(100vw-2rem)] p-1">
           <ul className="max-h-64 overflow-y-auto">
-            {parks.map((entry) => (
-              <li key={entry.slug}>
-                <button
-                  type="button"
-                  onClick={() => {
-                    onPickPark(entry.slug);
-                    setOpen(false);
-                  }}
-                  className={cn(
-                    // A list a 44 px button opens has 44 px rows on a phone too.
-                    'hover:bg-accent planner-phone:min-h-11 flex w-full items-center gap-2 rounded-md px-2 py-1.5 text-left text-xs transition-colors',
-                    entry.slug === parkSlug && 'bg-accent/60'
-                  )}
-                >
-                  <MapPin
-                    className="text-muted-foreground/70 size-3.5 shrink-0"
-                    aria-hidden="true"
-                  />
-                  <span className="min-w-0 flex-1 truncate">{entry.name}</span>
-                  {entry.slug === parkSlug && (
-                    <Check className="size-3.5 shrink-0" aria-hidden="true" />
-                  )}
-                </button>
-              </li>
-            ))}
+            {rows.map((row) => {
+              const current = row.slug === parkSlug && (row.date === null || row.date === date);
+              return (
+                <li key={`${row.slug}@${row.date ?? ''}`}>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      if (row.date) onPickDay(row.slug, row.date);
+                      else onPickPark(row.slug);
+                      setOpen(false);
+                    }}
+                    data-planner-day-row={row.date ?? undefined}
+                    className={cn(
+                      // A list a 44 px button opens has 44 px rows on a phone too.
+                      'hover:bg-accent planner-phone:min-h-11 flex w-full items-center gap-2 rounded-md px-2 py-1.5 text-left text-xs transition-colors',
+                      current && 'bg-accent/60'
+                    )}
+                  >
+                    <MapPin
+                      className="text-muted-foreground/70 size-3.5 shrink-0"
+                      aria-hidden="true"
+                    />
+                    <span className="min-w-0 flex-1 truncate">
+                      {row.date && (
+                        <span className="tabular-nums">
+                          {formatParkDay(locale, row.date, {
+                            weekday: 'short',
+                            day: 'numeric',
+                            month: 'short',
+                          })}
+                          {' · '}
+                        </span>
+                      )}
+                      {row.name}
+                    </span>
+                    {current && <Check className="size-3.5 shrink-0" aria-hidden="true" />}
+                  </button>
+                </li>
+              );
+            })}
           </ul>
           {/* The foot of the list, a pair: this row goes to the days that exist, the one below
               starts a park that does not. The border sits on the first, so they read as one

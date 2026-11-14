@@ -33,7 +33,8 @@ const snapshot = [
   day('2026-10-24', { isSchoolVacation: true }),
   day('2026-10-25'),
   day('2026-10-31', { predictedCrowdLevel: 'high', crowdLevel: 'high' }),
-  day('2026-11-07', { status: 'CLOSED', crowdLevel: 'closed', predictedCrowdLevel: undefined }),
+  // The API predicts a closed day as well, so the fixture carries a level the panel must ignore.
+  day('2026-11-07', { status: 'CLOSED', crowdLevel: 'closed', predictedCrowdLevel: 'very_high' }),
 ];
 
 console.log('upcomingWeekdayForecast');

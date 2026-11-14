@@ -113,8 +113,8 @@ export async function BlogReferences({ post, className }: BlogReferencesProps) {
               <div key={park.slug} className="grid" {...linkEntityAttributes(park.id)}>
                 <BlogParkCardLive
                   park={park}
-                  backgroundImage={getParkBackgroundImage(park.slug)}
-                  objectPosition={getCardObjectPosition(park.slug)}
+                  backgroundImage={getParkBackgroundImage({ slug: park.slug, url: park.href })}
+                  objectPosition={getCardObjectPosition({ slug: park.slug, url: park.href })}
                   className={CARD_ROWS_CLASS}
                 />
               </div>
@@ -144,10 +144,13 @@ export async function BlogReferences({ post, className }: BlogReferencesProps) {
                   // No park fallback: a ride without its own photo shows none, rather
                   // than the park's picture captioned with the ride's name.
                   attractionBackgroundImage={getAttractionBackgroundImage(
-                    park.slug,
+                    { slug: park.slug, url: park.href },
                     attraction.attractionSlug
                   )}
-                  objectPosition={getCardObjectPosition(park.slug, attraction.attractionSlug)}
+                  objectPosition={getCardObjectPosition(
+                    { slug: park.slug, url: park.href },
+                    attraction.attractionSlug
+                  )}
                   className={CARD_ROWS_CLASS}
                 />
               </div>

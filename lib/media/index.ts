@@ -1,8 +1,9 @@
 import { MEDIA_IMAGES } from './manifest';
 import { MEDIA_PARK_PATH_BY_SLUG, MEDIA_PARKS } from './manifest-parks';
 import { MEDIA_POSTINGS, MEDIA_SEARCH, MEDIA_VOCABULARY } from './manifest-search';
+import { imageParkKey, parkLookupKeys } from './park-path.mjs';
 import { foldText, lowerBound, tokenize } from './tokenize.mjs';
-import type { MediaImage, MediaParkRef, MediaQuery, MediaRole } from './types';
+import type { MediaImage, MediaParkRef, MediaQuery, MediaRole, ParkLookup } from './types';
 
 export type {
   LocalizedText,
@@ -14,6 +15,7 @@ export type {
   MediaQuery,
   MediaRole,
   MediaText,
+  ParkLookup,
   ResolvedMediaImage,
 } from './types';
 export { MEDIA_PARKS } from './manifest-parks';
@@ -61,10 +63,12 @@ function indexes() {
       // reserves an inline image's box from it), and a crop resolving to its source
       // would swap a 16:9 file for a 4:3 one and reserve the wrong box.
       for (const variant of image.variants) byVariant.set(variant, image);
-      if (image.park) {
-        const list = byPark.get(image.park);
+      // By the park's path, not its slug: Paris and Anaheim are both `disneyland-park`.
+      const parkKey = imageParkKey(image, MEDIA_PARK_PATH_BY_SLUG);
+      if (parkKey) {
+        const list = byPark.get(parkKey);
         if (list) list.push(image);
-        else byPark.set(image.park, [image]);
+        else byPark.set(parkKey, [image]);
       }
     }
     byCollection = groupByCollection(MEDIA_IMAGES);
@@ -145,10 +149,18 @@ export function getMediaImageForPath(src: string): MediaImage | null {
   return bySrc.get(clean) ?? byVariant.get(clean) ?? null;
 }
 
-/** Every image assigned to a park, in collection + gallery order. */
-export function getParkImages(parkSlug: string | null | undefined): MediaImage[] {
-  if (!parkSlug) return [];
-  return indexes().byPark.get(parkSlug) ?? [];
+/**
+ * Every image assigned to a park, in collection + gallery order. Pass the park with its path
+ * (`{ slug, url }`, a `ParkBase` as it stands) wherever the caller has one: a bare slug finds the
+ * catalog's first park of that slug, which for `disneyland-park` is Paris.
+ */
+export function getParkImages(park: ParkLookup | null | undefined): MediaImage[] {
+  const { byPark } = indexes();
+  for (const key of parkLookupKeys(park, MEDIA_PARK_PATH_BY_SLUG)) {
+    const images = byPark.get(key);
+    if (images) return images;
+  }
+  return [];
 }
 
 /** Every image in a collection, in gallery order. */
@@ -208,8 +220,8 @@ export function collectionNodes(
  * pointing at the right park.
  */
 export function getParkRef(image: MediaImage): MediaParkRef | null {
-  const path = image.parkPath ?? (image.park ? MEDIA_PARK_PATH_BY_SLUG[image.park] : null);
-  return path ? (MEDIA_PARKS[path] ?? null) : null;
+  const path = imageParkKey(image, MEDIA_PARK_PATH_BY_SLUG);
+  return path && Object.hasOwn(MEDIA_PARKS, path) ? MEDIA_PARKS[path] : null;
 }
 
 /** Park reference by slug, for callers that only have one. */
@@ -230,8 +242,8 @@ export function getParkPagePath(image: MediaImage): string | null {
  * card. `null` when the park has none, which callers treat as "fall back to the
  * generic background".
  */
-export function getParkBackground(parkSlug: string | null | undefined): MediaImage | null {
-  return getParkImages(parkSlug).find((i) => i.roles.includes('park-background')) ?? null;
+export function getParkBackground(park: ParkLookup | null | undefined): MediaImage | null {
+  return getParkImages(park).find((i) => i.roles.includes('park-background')) ?? null;
 }
 
 /**
@@ -240,10 +252,10 @@ export function getParkBackground(parkSlug: string | null | undefined): MediaIma
  * snapshots of a coaster but no dedicated portrait still shows something.
  */
 export function getRideImage(
-  parkSlug: string | null | undefined,
+  park: ParkLookup | null | undefined,
   rideSlug: string | null | undefined
 ): MediaImage | null {
-  const candidates = getRideImages(parkSlug, rideSlug);
+  const candidates = getRideImages(park, rideSlug);
   return candidates.find((i) => i.roles.includes('ride-card')) ?? candidates[0] ?? null;
 }
 
@@ -256,8 +268,8 @@ export function getRideImage(
  * nothing narrower, so forcing a ride onto them would be a lie that then shows up
  * on that ride's page. Park pages and park galleries draw from here.
  */
-export function getParkOnlyImages(parkSlug: string | null | undefined): MediaImage[] {
-  return getParkImages(parkSlug).filter((i) => !i.ride);
+export function getParkOnlyImages(park: ParkLookup | null | undefined): MediaImage[] {
+  return getParkImages(park).filter((i) => !i.ride);
 }
 
 /**
@@ -268,11 +280,11 @@ export function getParkOnlyImages(parkSlug: string | null | undefined): MediaIma
  * of the file (see `MediaSidecar.alsoRides`).
  */
 export function getRideImages(
-  parkSlug: string | null | undefined,
+  park: ParkLookup | null | undefined,
   rideSlug: string | null | undefined
 ): MediaImage[] {
-  if (!parkSlug || !rideSlug) return [];
-  return getParkImages(parkSlug).filter((i) => showsRide(i, rideSlug));
+  if (!park || !rideSlug) return [];
+  return getParkImages(park).filter((i) => showsRide(i, rideSlug));
 }
 
 /** Whether an image is indexed for a ride, as its primary ride or via `alsoRides`. */
@@ -283,17 +295,17 @@ export function showsRide(image: MediaImage, rideSlug: string): boolean {
 /**
  * The homepage hero rotation pool: images explicitly marked `hero`.
  *
- * Passing a park slug narrows it to that park — used when the visitor is
+ * Passing a park narrows it to that park — used when the visitor is
  * detected inside a park, so the hero shows where they actually are.
  */
-export function getHeroImages(parkSlug?: string | null): MediaImage[] {
-  const pool = parkSlug ? getParkImages(parkSlug) : MEDIA_IMAGES;
+export function getHeroImages(park?: ParkLookup | null): MediaImage[] {
+  const pool = park ? getParkImages(park) : MEDIA_IMAGES;
   return pool.filter((i) => i.roles.includes('hero'));
 }
 
 /** Images carrying a role, optionally within one park. */
-export function getImagesByRole(role: MediaRole, parkSlug?: string | null): MediaImage[] {
-  const pool = parkSlug ? getParkImages(parkSlug) : MEDIA_IMAGES;
+export function getImagesByRole(role: MediaRole, park?: ParkLookup | null): MediaImage[] {
+  const pool = park ? getParkImages(park) : MEDIA_IMAGES;
   return pool.filter((i) => i.roles.includes(role));
 }
 
@@ -419,10 +431,17 @@ export function listTags(): { tag: string; count: number }[] {
     .sort((a, b) => b.count - a.count || a.tag.localeCompare(b.tag));
 }
 
-/** Every park slug that has at least one image, with its image count. */
+/**
+ * Every park slug that has at least one image, with its image count. By slug, as the admin and the
+ * facets filter: Paris and Anaheim are one row here.
+ */
 export function listParks(): { park: string; count: number }[] {
-  return [...indexes().byPark.entries()]
-    .map(([park, images]) => ({ park, count: images.length }))
+  const counts = new Map<string, number>();
+  for (const image of MEDIA_IMAGES) {
+    if (image.park) counts.set(image.park, (counts.get(image.park) ?? 0) + 1);
+  }
+  return [...counts.entries()]
+    .map(([park, count]) => ({ park, count }))
     .sort((a, b) => b.count - a.count || a.park.localeCompare(b.park));
 }
 

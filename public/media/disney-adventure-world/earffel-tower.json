@@ -1,0 +1,31 @@
+{
+  "title": "Earffel Tower",
+  "park": "disney-adventure-world",
+  "tags": ["dusk", "outdoor", "park", "photo", "signage", "theming"],
+  "alt": {
+    "de": "Ein weißer Wasserturm mit Mickyohren und dem Logo von Disney Adventure World über Palmen und einer Studiohalle, in der Dämmerung.",
+    "en": "A white water tower with Mickey ears and the Disney Adventure World logo above palms and a studio building at dusk.",
+    "es": "Un depósito de agua blanco con orejas de Mickey y el logo de Disney Adventure World sobre palmeras y un estudio, al anochecer.",
+    "fr": "Un château d’eau blanc à oreilles de Mickey, au logo de Disney Adventure World, au-dessus de palmiers et d’un studio, au crépuscule.",
+    "it": "Una torre dell’acqua bianca con orecchie di Topolino e il logo di Disney Adventure World sopra palme e un capannone, al crepuscolo.",
+    "nl": "Een witte watertoren met Mickey-oren en het logo van Disney Adventure World boven palmen en een studiohal, in de schemering."
+  },
+  "caption": {
+    "de": "Der Wasserturm ist seit 2002 das Wahrzeichen des Parks.",
+    "en": "The water tower has been the park’s landmark since 2002.",
+    "es": "El depósito de agua es el emblema del parque desde 2002.",
+    "fr": "Le château d’eau est l’emblème du parc depuis 2002.",
+    "it": "La torre dell’acqua è il simbolo del parco dal 2002.",
+    "nl": "De watertoren is sinds 2002 het herkenningspunt van het park."
+  },
+  "credit": {
+    "author": "Serjan Midili",
+    "license": "unsplash",
+    "source": "unsplash",
+    "sourceUrl": "https://unsplash.com/photos/disney-adventure-world-water-tower-plaza-EckfFPQqSus"
+  },
+  "focus": {
+    "x": 0.5,
+    "y": 0.26
+  }
+}

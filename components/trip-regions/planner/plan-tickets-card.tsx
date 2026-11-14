@@ -20,6 +20,7 @@ import {
   ticketLinkAttributes,
   plannedVisits,
   setTickets,
+  suggestionGroups,
   suggestionsByStart,
   ticketLength,
   toggleHopper,
@@ -407,7 +408,7 @@ function SuggestedTickets({
 }) {
   const t = useTranslations('tripPlanner.tickets');
   const tRegion = useTranslations('tripRegion.planner.tickets');
-  const { region, tickets: catalog, ticketStep, update, today, state } = usePlanContext();
+  const { region, tickets: catalog, ticketStep, update, today, state, locale } = usePlanContext();
   const track = useTripEvents();
   const resortWord = useResortWord();
   const day = useShortDay();
@@ -417,17 +418,33 @@ function SuggestedTickets({
   const longStay = longStayTickets(ticketStep, suggested, catalog, plan.meta.from);
   const owns = (plan.meta.tickets ?? []).length > 0;
 
-  const parts = suggested.map((s) =>
-    s.extraDays
-      ? t('suggest.partExtra', {
-          days: s.days,
-          resort: resortWord(s.resort),
-          date: day(s.start),
-          parkDays: s.days - s.extraDays,
-        })
-      : t('suggest.part', { days: s.days, resort: resortWord(s.resort), date: day(s.start) })
+  // Where a resort sells only day tickets (Tokyo Disney Resort), the plan needs several of one
+  // kind: said once per resort with the count and the dates, not one clause per day.
+  const groups = suggestionGroups(suggested);
+  const list = getListFormat(locale, { style: 'long', type: 'conjunction' });
+  const parts =
+    groups.length < suggested.length
+      ? groups.map((g) =>
+          t('suggest.group', {
+            resort: resortWord(g.resort),
+            count: g.items.length,
+            days: g.days,
+            dates: list.format(g.items.map((s) => day(s.start))),
+          })
+        )
+      : suggested.map((s) =>
+          s.extraDays
+            ? t('suggest.partExtra', {
+                days: s.days,
+                resort: resortWord(s.resort),
+                date: day(s.start),
+                parkDays: s.days - s.extraDays,
+              })
+            : t('suggest.part', { days: s.days, resort: resortWord(s.resort), date: day(s.start) })
+        );
+  const sentence = oneStop(
+    `${parts.join(groups.length < suggested.length ? t('suggest.groupSep') : t('suggest.then'))}.`
   );
-  const sentence = oneStop(`${parts.join(t('suggest.then'))}.`);
   const details = <SuggestionDetails plan={plan} suggested={suggested} edit={edit} />;
 
   return (
