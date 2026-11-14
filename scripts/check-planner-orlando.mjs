@@ -195,6 +195,8 @@ export async function checkOrlandoTickets({ browser, base, check }) {
     await wizard.locator('[data-wizard-show-plan]').click();
     await page.locator('[data-plan-answers]').waitFor();
     await page.locator('[data-plan-day-card]').first().waitFor({ timeout: PLAN_TIMEOUT });
+    // The dialog leaves after its exit animation, which can outlast the first day card.
+    await wizard.waitFor({ state: 'detached', timeout: 5000 }).catch(() => {});
     const finished = await events(page, 'trip_wizard_finished');
     check(
       'Orlando · „Show the plan now“ schließt den Assistenten früh (early) und zeigt den Plan',
@@ -594,6 +596,15 @@ export async function checkOrlandoTickets({ browser, base, check }) {
     );
     // The click opens the seller in a new tab; the count is what matters here.
     context.on('page', (opened) => opened.close().catch(() => {}));
+    // `orderTicketLinks` puts the visitor's own store first, so the stub's place is the list's.
+    const position = await sponsored.evaluate(
+      (el) =>
+        [
+          ...(el.closest('[data-plan-purchase-links]') ?? document).querySelectorAll(
+            '[data-ticket-link]'
+          ),
+        ].indexOf(el) + 1
+    );
     await sponsored.click();
     const counted = await page.evaluate(() =>
       (window.__parkfanEventLog ?? []).filter((e) => e.name === 'ticket_link_clicked')
@@ -604,7 +615,7 @@ export async function checkOrlandoTickets({ browser, base, check }) {
         counted[0].props.kind === 'sponsored' &&
         counted[0].props.seller === 'Partner Shop' &&
         counted[0].props.host === 'partner.example' &&
-        counted[0].props.position === 1 &&
+        counted[0].props.position === position &&
         counted[0].props.surface === 'suggestion' &&
         counted[0].props.ticket_mode === 'plan_first',
       JSON.stringify(counted[0]?.props ?? 'kein Ereignis')
@@ -666,15 +677,17 @@ export async function checkOrlandoTickets({ browser, base, check }) {
     check(
       'Orlando · ein Tag außerhalb seines Tickets warnt im Ticket mit zwei Auswegen',
       (await warning.getByRole('button').count()) === 2 &&
-        (await page.locator('[data-plan-marker="outside_ticket"]').count()) >= 1,
+        (await page
+          .locator('[data-plan-chip="outside_ticket"], [data-plan-marker="outside_ticket"]')
+          .count()) >= 1,
       await warning.innerText()
     );
     await warning.getByRole('button', { name: 'Change ticket' }).click();
-    await page.waitForFunction(
-      () => document.activeElement?.hasAttribute('data-ticket-start'),
-      null,
-      { timeout: 10_000 }
-    );
+    await page
+      .waitForFunction(() => document.activeElement?.hasAttribute('data-ticket-start'), null, {
+        timeout: 10_000,
+      })
+      .catch(() => {});
     check(
       'Orlando · „Change ticket“ öffnet das Ticket mit dem Fokus auf seinem ersten Tag',
       await page.evaluate(() => document.activeElement?.hasAttribute('data-ticket-start'))

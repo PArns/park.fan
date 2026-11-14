@@ -11,6 +11,9 @@
     "author": "park.fan",
     "license": "all-rights-reserved"
   },
-  "focus": "top",
+  "focus": {
+    "x": 0.5,
+    "y": 0
+  },
   "shotAt": "2026-11-14"
 }
