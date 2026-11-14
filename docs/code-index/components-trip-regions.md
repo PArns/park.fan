@@ -122,7 +122,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `PlanDayMarker` _component_: The one marker a day wears in the overview: an icon with words, never colour alone. `compact` keeps the icon and moves the words into a tooltip, for the Month view's cells, whose own label carries them.
 - `ClimateChips` _component_: The season's facts as short chips ("hot", "hurricane season", "peak hurricane season"), shared by the day sheet and the When mode's cards.
 - `useDayParks` _hook_: The park or parks of a day, as one label ("Universal Studios Florida + Islands of Adventure").
-- `useDayMarkerText` _hook_: The words of a day's one overview marker (`dayMarker`): "closes 6 pm", rest day, the hotel's early slot, its extended evening, or "last year"; `null` for none. For a label that has to carry them where the marker is only an icon.
+- `useDayMarkerText` _hook_: The words of a day's one overview marker (`dayMarker`): "closes 6 pm", rest day, the hotel's early slot or its extended evening; `null` for none. For a label that has to carry them where the marker is only an icon.
 - `useEveningName` _hook_: The name of a day's evening: the second park's (short) name or the venue's; `null` without an evening or for a venue the region does not list.
 - `useTicketDayLabel` _hook_: A day's place on its owned ticket, "Disney day 2 of 4", or with `short` "day 2 of 4" for the phone's narrow Week columns. An every-day ticket counts the day of its window.
 - `dayGuestClose` _function_: When the day guests leave a park day: the plan's own figure, else the calendar's close.
@@ -217,7 +217,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`planner/plan-when-result.tsx`](../../components/trip-regions/planner/plan-when-result.tsx)
 
-- `PlanWhenResult` _component_: The When mode's answer, simple first. Level 0: the three best windows as cards, each with its dates, the big rides' wait, how far below the period's average it lies and one reason; a window on last year's days says so.
+- `PlanWhenResult` _component_: The When mode's answer, simple first. Level 0: the three best windows as cards, each with its dates, the big rides' wait, how far below the period's average it lies and one reason; one line under the title says from which week the figures …
 
 ### [`planner/trip-region-planner.tsx`](../../components/trip-regions/planner/trip-region-planner.tsx)
 

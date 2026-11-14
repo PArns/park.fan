@@ -349,8 +349,9 @@ export interface TripRegion {
 export type TripDayStatus = 'OPERATING' | 'CLOSED' | 'UNKNOWN';
 
 /**
- * Where a day's figures come from: the forecast (about 60 days), the long-range outlook (to
- * `forecastUntil`, a wider error), the same weekday a year earlier, or nothing.
+ * Where a day's figures come from: the forecast (the next 60 days), the same weekday a year earlier
+ * as measured (every day after them, and a gap in the forecast), the long-range outlook (after them
+ * where nothing was measured a year back), or nothing.
  */
 export type TripBasis = 'forecast' | 'long_range' | 'last_year' | 'none';
 
@@ -388,10 +389,16 @@ export interface TripParkDay {
   crowdLevel: TripCrowdLevel;
   /**
    * The big rides' wait at their busiest: each headliner's day peak, meaned over the park's
-   * headliners, rounded to five minutes. The one figure parks are compared by. Absent when unknown.
+   * headliners, rounded to five minutes, on the measured scale (the forecast times its lead factor,
+   * or last year's measured day). The one figure every trip surface ranks by; a day shows
+   * `shownWait`. Absent when unknown.
    */
   headlinerWait?: number;
   basis: TripBasis;
+  /** The forecast unscaled, as the park's own calendar shows it; shown, never ranked. */
+  forecastWait?: number;
+  /** The same weekday a year back as measured; shown, never ranked. */
+  lastYearWait?: number;
   /** Ids into {@link TripCalendar.seasons}. */
   seasons?: string[];
   /** The curated closure season behind a `CLOSED` day. */
@@ -565,6 +572,11 @@ export interface TripWhenWindow {
   headlinerWait: number;
   /** The same parks' plan averaged over every window in the range. */
   rangeAverageWait: number;
+  /**
+   * What the ranking added for heat and the storm season, in minutes per park day; the storm's peak
+   * adds its own term there. Absent when nothing.
+   */
+  penalties?: { heat?: number; hurricane?: number; typhoon?: number };
   /** `last_year` when every park day is last year's measured day, `mixed` when some are. */
   basis: 'forecast' | 'mixed' | 'last_year';
   reasons: string[];

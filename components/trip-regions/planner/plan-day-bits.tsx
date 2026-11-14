@@ -1,7 +1,7 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { BedDouble, CircleAlert, Clock3, History, MoonStar, Sunrise } from 'lucide-react';
+import { BedDouble, CircleAlert, Clock3, MoonStar, Sunrise } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { formatClockTime } from '@/lib/utils/intl-format';
 import { dayMarker, earlyPerk } from '@/lib/trip-regions/plan-copy';
@@ -32,7 +32,7 @@ export function dayGuestClose(day: PlanDay, calendar: TripCalendar | undefined):
 
 /**
  * The words of a day's one overview marker (`dayMarker`): "closes 6 pm", rest day, the hotel's
- * early slot, its extended evening, or "last year"; `null` for none. For a label that has to carry
+ * early slot or its extended evening; `null` for none. For a label that has to carry
  * them where the marker is only an icon.
  */
 export function useDayMarkerText(): (
@@ -65,7 +65,6 @@ const MARKER_ICON = {
   rest: BedDouble,
   early: Sunrise,
   evening: MoonStar,
-  last_year: History,
 } as const;
 
 /**

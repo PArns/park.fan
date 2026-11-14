@@ -44,7 +44,8 @@ import {
   dayMarker,
   dayWarnings,
   editCost,
-  lastYearReach,
+  lastYearStart,
+  planDayLastYear,
   planSavings,
   primaryReason,
   runnerUp,
@@ -66,6 +67,9 @@ import {
   parkInitials,
   parkLabel,
   parkMinuteOf,
+  shownDayWait,
+  shownWait,
+  shownWaitOn,
   swapPreview,
   tripCanvas,
   tripColumnGrid,
@@ -530,10 +534,58 @@ const keys = { parks: new Set(ORDER), areas: new Set(['disney', 'universal']) };
   );
   test('no saving without figures', planSavings({ parkDays: 0, restDays: 0, visits: 0 }), null);
   test(
-    'the forecast reaches a last-year day as far ahead as its horizon',
-    lastYearReach([day({ date: '2027-06-10', basis: 'last_year' })], '2027-05-12', '2026-11-12'),
-    { first: '2027-06-10', reach: '2026-12-11' }
+    'a plan says once from which day it reads last year',
+    lastYearStart(
+      [
+        day({ date: '2027-01-11', basis: 'forecast' }),
+        day({ date: '2027-01-12', basis: 'last_year' }),
+        day({ date: '2027-01-13', basis: 'last_year' }),
+      ],
+      planDayLastYear
+    ),
+    { from: '2027-01-12', all: false }
   );
+  test(
+    'a plan wholly after the forecast’s days is all last year',
+    lastYearStart([day({ date: '2027-06-10', basis: 'last_year' })], planDayLastYear),
+    { from: '2027-06-10', all: true }
+  );
+  test(
+    'a forecast plan says nothing about last year',
+    lastYearStart([day({ date: '2026-12-01', basis: 'forecast' })], planDayLastYear),
+    null
+  );
+  test('a last-year day is no overview marker', dayMarker(day({ basis: 'last_year' })), null);
+  {
+    const cell = { basis: 'forecast', headlinerWait: 55, forecastWait: 45, lastYearWait: 60 };
+    test('a forecast day shows the forecast the park page shows', shownWait(cell), 45);
+    test(
+      'a last-year day shows the measured day it is ranked by',
+      shownWait({ basis: 'last_year', headlinerWait: 60, forecastWait: 40 }),
+      60
+    );
+    test(
+      'without the unscaled forecast the ranked figure stands',
+      shownWait({ basis: 'forecast', headlinerWait: 55 }),
+      55
+    );
+    const calendar = {
+      days: [{ date: '2026-12-02', parks: { epcot: { status: 'OPERATING', ...cell } } }],
+    };
+    test(
+      'a plan day reads its figure off the trip’s calendar',
+      shownDayWait(
+        { date: '2026-12-02', kind: 'park', parks: [{ slug: 'epcot' }], headlinerWait: 55 },
+        calendar
+      ),
+      45
+    );
+    test(
+      'a day the calendar does not hold keeps the plan’s figure',
+      shownWaitOn(calendar, 'epcot', '2026-12-03', 50),
+      50
+    );
+  }
   test(
     'runner-up and its cost',
     runnerUp(

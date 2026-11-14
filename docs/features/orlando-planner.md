@@ -108,7 +108,9 @@ night never makes a date look quiet (`dateFigure`).
   tickets. On a phone this is the first thing after the dates.
 - **Level 1, the views,** behind Agenda | Week | Month. The choice is the browser's; before one,
   the Week at `lg` and the Agenda below. At most three facts per element: the park, its minutes and
-  one marker (an early close first, then a rest day, the hotel's early slot, its evening).
+  one marker (an early close first, then a rest day, the hotel's early slot, its evening). Last
+  year's figures are no marker and no dashed tile: after the forecast's 60 days every day has
+  them, so the answer says once from which date (`lastYearStart`).
   - **Week:** up to seven columns a page (three on a phone, by the arrows or a swipe) on one hour
     axis. Each column is the day planner's own `DayGrid` for that day's hours on the shared canvas,
     so `PlannerGridGround` draws its band, early slot and hour rules; blocks use the day planner's
@@ -370,11 +372,15 @@ first; nothing is hard-coded, and the picker says how far the stored holidays re
 data runs to 3 Jul 2027"). Parks and Fine-tune stay as they are.
 
 - **Level 0:** the three best windows as cards: the dates, "Peak wait about 38 min", how far below
-  the period's average, one reason, the parks the window has no day for, and "based on last
-  year's crowds" where that is what it is.
+  the period's average, one reason, and the parks the window has no day for. A window in the storm
+  season's peak says why it ranks lower ("Peak hurricane season: ranked lower for the storm risk,
+  even with short waits"): the API adds 10 minutes per visit to a window that touches the peak.
+  Heat and the season outside its peak stay a short "ranked lower" list. One line under the title
+  says from which week the figures are last year's, never each card.
 - **Level 1:** the year strip, a bar per week, its height the minutes, in primary ink with the
   windows' weeks full (a comparison inside the period, so never the crowd tints, which mean a
-  day against its park's normal day), the windows marked under it. A screen reader reads it as a list of weeks.
+  day against its park's normal day), the windows marked under it, and no week faded for being
+  last year's. A screen reader reads it as a list of weeks.
 - **Level 2:** a window's reasons, warnings (party nights with their count, school breaks, hurricane
   season, a water park closed), events and its day-by-day sketch.
 - **Level 3:** "Plan these dates" sets `from`/`to`, drops the search and shows the plan.
@@ -396,8 +402,20 @@ Nothing is planned until dates are chosen; the empty chapter says so and is neve
 too short for the chosen parks is planned with what fits, and the parks left out are named
 (`parksLeftOut`). A problem the API would answer with a 400 (repeat visits the visitor pinned that
 outnumber the days, a trip over 21 days, more fixed nights than the trip has) is caught before the
-request and said in a sentence with the way out. A trip past the forecast is planned on
-last year's measured days with a banner naming when the forecast should reach it. A failed request
+request and said in a sentence with the way out. The API ranks every day after the
+forecast's 60 days on the same weekday a year back as measured, so the answer says once from which
+date the plan does ("From 12 January, the plan uses last year's measured waits on the same
+weekday"), or that all of it does, with the reason: that far ahead the long-range forecast barely
+tells the days apart. The date grid and the finder say the same once each, the grid from its first
+such date, the finder from the strip's first such week (`lastYearFrom`).
+
+**Which number a day shows.** Within the forecast's days a day shows `forecastWait`, the forecast
+as the park's own calendar shows it, so a day never reads one number in the planner and another on
+the park page; after them it shows last year's measured day (`shownWait`, `shownWaitOn`,
+`shownDayWait` in `lib/trip-regions/plan-week.ts`). What ranks stays the API's `headlinerWait`, the
+forecast times its lead factor: the picks, the plan, the swap costs and the totals under the plan.
+The day sheet's runner-up reads both days in the shown figure, so the difference adds up. A
+failed request
 keeps the last plan on screen, dimmed, with a retry.
 
 ## Checks

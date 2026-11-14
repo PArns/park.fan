@@ -38,7 +38,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `bestAndWorstWeeks` _function_: The quietest and busiest whole weeks, `count` each, quietest and busiest first.
 - `seasonsOn` _function_: The seasons that run on a day range, one per name, cancelled and closures left out.
 - `weekFacts` _function_: A week's school breaks (from the months' break days) and the seasons running in it.
-- `lastYearFrom` _function_: The first day `/when` reads last year's crowds: its `forecastUntil` + 1, else the strip's turn.
+- `lastYearFrom` _function_: The week from which `/when` reads last year's measured days: the strip's first week that does, in part or whole. `forecastUntil` is no turn: the forecast runs on for months, but the API ranks every day after its first 60 on last year.
 - `holidayWeek` _function_: The week the page answers "Is Christmas busy?" with: Christmas week where the range holds it, else New Year's, else none.
 - `meanWeekWait` _function_: The mean of the weeks' figures: the year's average a week is compared with.
 - `partySeasons` _function_: The party nights a page's parks hold: separately ticketed Halloween and Christmas evenings.
@@ -161,7 +161,8 @@ by hand: change the comment in the code and re-run the script. -->
 - `unplacedParks` _function_: A park the plan could not place, with a reason this client can say. A park `parksLeftOut` names is said there; a park with a day that lost a repeat visit reads `no_second_day`.
 - `ignoredLocks` _function_: Pins the plan could not keep, with a reason this client can say.
 - `planSavings` _function_: The savings sentence's figures, or `null` where the totals carry none.
-- `lastYearReach` _function_: When the forecast should reach the trip's first `last_year` day: the horizon (today to `forecastUntil`) moves forward a day a day, so it reaches that day as many days before it as the horizon is long. Never before tomorrow.
+- `lastYearStart` _function_: From which date a run of days, in date order, reads last year's measured day: the first that does, and `all` when that is the first of them.
+- `planDayLastYear` _function_: Whether a plan day is figured on last year's measured day, the whole day or one of its parks.
 - `runnerUp` _function_: The runner-up of a park's visit on `date`: the best alternative day, with how many minutes more (or fewer) its headliners wait. `null` without one or without both figures.
 - `earlyPerk` _function_: The early slot a day's hotel gets, if any, by the region's own name for it.
 - `editCost` _function_: The edit bar's figure: what the visitor's pins cost against the best order the plan had before them, per ride, in whole minutes. `null` without both means; 0 reads as "no cost".
@@ -293,6 +294,9 @@ by hand: change the comment in the code and re-run the script. -->
 - `parkMinuteOf` _function_: Minutes since the trip day's midnight in `timeZone`, for a park-local ISO instant: past midnight runs on (25:00 is 01:00 the next morning), so a close after midnight stays below the opening.
 - `planTimeMinute` _function_: Minutes since the trip day's midnight for a time the plan gives as park-local ISO or as `HH:MM`; an `HH:MM` before 05:00 is after midnight.
 - `calendarCell` _function_: The calendar cell of a park on a date, if the calendar has it.
+- `shownWait` _function_: The wait a park's day shows. Within the forecast's days the forecast as the park's own calendar shows it (`forecastWait`), so a day never reads two numbers on two pages; after them last year's measured day.
+- `shownWaitOn` _function_: `shownWait` of a park on a plan's date, read off the trip's calendar; the plan's own figure where the calendar has none.
+- `shownDayWait` _function_: `shownWaitOn` for a plan day's own figure: a park day's park; a hop day has none.
 - `tripDaySpans` _function_: Each trip day's pieces, read off the plan and the calendar. A park day whose hours the calendar does not carry gets no block: the honest answer is the day planner's, no axis rather than an invented one.
 - `tripCanvas` _function_: The shared canvas, from the earliest piece of any day to the latest, on whole hours and padded by the planner's own `PRE_PAD_MIN` and `POST_PAD_MIN`. `null` when no day has hours.
 - `tripColumnGrid` _function_: A column's axis: the day planner's `DayGrid` for that day's hours, stretched onto the shared canvas. Real minutes, not the API's rounded hours, so there is no closing slack to hatch.
@@ -333,7 +337,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `rankedLower` _function_: Why a window ranks lower than its plain minutes say: the season terms `/when` added (`penalties`, minutes per park day). "ranked lower: hurricane season" beside an unchanged figure.
 - `WHEN_LIMIT` _const_: Windows the result asks for: the three cards of Level 0.
 - `WHEN_REASON_ORDER` _const_: The reasons a window can carry, most telling first; the card shows the first.
-- `WHEN_WARNING_ORDER` _const_: The warnings a window can carry, most consequential first.
+- `WHEN_WARNING_ORDER` _const_: The warnings a window can carry, most consequential first. `estimate_last_year` is none: after the forecast's days nearly every window has it, and the answer says once from when.
 - `WHEN_HOLIDAY_COUNTRIES` _const_: The countries the picker asks the holiday data for: where park.fan's visitors live, one per locale.
 - Types: `WhenPeriodKey`, `WhenPeriod`, `WhenReasonCode`, `WhenWarningCode`, `WhenHolidayCountry`
 

@@ -11,7 +11,7 @@ import { formatParkDay } from '@/lib/utils/park-day';
 import { planHref, reserveTripDays, type TripPlan } from '@/lib/trip-regions/plan';
 import { primaryReason } from '@/lib/trip-regions/plan-copy';
 import { buildTripIcs, type TripIcsEvent } from '@/lib/trip-regions/plan-ics';
-import { calendarCell } from '@/lib/trip-regions/plan-week';
+import { calendarCell, shownDayWait } from '@/lib/trip-regions/plan-week';
 import { TRIP_PLANNER_ID } from '@/lib/trip-regions/paths';
 import type { TripCalendar } from '@/lib/trip-regions/types';
 import { usePlanContext, useTripEvents } from './plan-context';
@@ -60,12 +60,13 @@ export function PlanKeep({
         const cell = first ? calendarCell(calendar, first.slug, day.date) : undefined;
         const close = dayGuestClose(day, calendar);
         const reason = primaryReason(day);
+        const wait = shownDayWait(day, calendar);
         return {
           date: day.date,
           uid: `${day.date}-${day.parks.map((p) => p.slug).join('+')}@park.fan`,
           summary: parksOf(day),
           description: [
-            day.headlinerWait != null ? t('ics.wait', { minutes: day.headlinerWait }) : null,
+            wait != null ? t('ics.wait', { minutes: wait }) : null,
             reason
               ? regionOrShared(tRegion, t, `reason.${reason}`, {
                   park: first ? parkName(first.slug) : '',

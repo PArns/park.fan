@@ -9,6 +9,7 @@ import { formatParkDay } from '@/lib/utils/park-day';
 import { dayMarker } from '@/lib/trip-regions/plan-copy';
 import type { PlanDay, TripPlan } from '@/lib/trip-regions/plan';
 import { staySections } from '@/lib/trip-regions/plan-stays';
+import { shownDayWait } from '@/lib/trip-regions/plan-week';
 import type { TripCalendar } from '@/lib/trip-regions/types';
 import { usePlanContext } from './plan-context';
 import { PLAN_FOCUS } from './plan-controls';
@@ -86,8 +87,8 @@ export function PlanListRow({
       : isPark && day.move?.when === 'evening'
         ? t('move.then', { city: baseName(day.move.to), time: moveWords.time(day.move.departAt) })
         : null;
-  const minutes =
-    day.headlinerWait != null ? t('answer.about', { minutes: day.headlinerWait }) : null;
+  const wait = shownDayWait(day, calendar);
+  const minutes = wait != null ? t('answer.about', { minutes: wait }) : null;
   // A rest day is said by its name; its marker would say it a second time.
   const marker = day.kind === 'rest' || moveLine ? null : markerText(day, calendar);
   const evening = eveningOf(day);

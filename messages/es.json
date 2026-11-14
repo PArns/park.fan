@@ -3114,8 +3114,9 @@
       "gridLabel": "Día de llegada y de salida",
       "level": "Afluencia: {level}",
       "levelLastYear": "Afluencia el año pasado: {level}",
+      "lastYearFrom": "Desde el {date}, la afluencia y las esperas son las del año pasado, medidas el mismo día de la semana.",
+      "lastYearAll": "Este mes, la afluencia y las esperas son las del año pasado, medidas el mismo día de la semana.",
       "legend": "Una fecha sin recomendación lleva el color de la afluencia media de los grandes parques.",
-      "legendLastYear": "Las fechas con borde discontinuo muestran la afluencia medida el año pasado.",
       "pickArrival": "Toca tu día de llegada.",
       "pickDeparture": "Ahora tu día de salida.",
       "dayCount": "{count, plural, =1 {1 día} other {# días}}",
@@ -3263,7 +3264,8 @@
       "counts": "{parkDays, plural, =1 {1 día de parque} other {# días de parque}}, {restDays, plural, =0 {ningún día de descanso} =1 {1 día de descanso} other {# días de descanso}}",
       "averageDay": "De media en tus días de viaje, la espera punta de estos parques es de {minutes} min.",
       "error": "Una previsión para una atracción en un día puede fallar en unos {minutes} min.",
-      "lastYear": "Planificamos estas fechas con la afluencia medida el año pasado. La previsión llegará a ellas hacia el {date}.",
+      "lastYear": "Desde el {date}, el plan usa las esperas medidas el año pasado el mismo día de la semana. Con tanta antelación, la previsión apenas distingue unos días de otros.",
+      "lastYearAll": "El plan usa las esperas medidas el año pasado el mismo día de la semana. Con tanta antelación, la previsión apenas distingue unos días de otros.",
       "about": "unos {minutes} min",
       "split": "{parks} {count, plural, =1 {tiene} other {tienen}} {visits, plural, =2 {un segundo día} other {# días}}.",
       "hopNeedsHopper": "El park hopping solo cuenta con una entrada Park Hopper; elígela en «Ajustes».",
@@ -3296,7 +3298,6 @@
       },
       "rest": "Día de descanso",
       "evening": "Extended Evening Hours",
-      "last_year": "año pasado",
       "outside_ticket": "fuera de tu entrada",
       "pinned": "fijado"
     },
@@ -3460,6 +3461,8 @@
       "none": "En este periodo no cabe ningún viaje de {days} días. Elige un periodo más largo o un viaje más corto.",
       "noneWithin": "Ningunas vacaciones escolares de {region} en este periodo duran lo bastante para {days} días.",
       "bestTitle": "Las mejores fechas para tus parques",
+      "lastYearFrom": "Desde la semana del {date}, las cifras son las esperas medidas el año pasado el mismo día de la semana. Con tanta antelación, la previsión apenas distingue unos días de otros.",
+      "lastYearAll": "Todas las cifras son las esperas medidas el año pasado el mismo día de la semana. Con tanta antelación, la previsión apenas distingue unos días de otros.",
       "rank": "Propuesta {rank}",
       "wait": "Espera punta unos {minutes} min",
       "below": "{percent} % por debajo de la media del periodo",
@@ -3476,8 +3479,7 @@
         "party_nights": "{count, plural, =1 {1 noche de fiesta} other {# noches de fiesta}}: los visitantes de día tienen que salir antes.",
         "water_park_closed": "Un parque acuático elegido está cerrado por temporada.",
         "hurricane_season": "Temporada de huracanes (de junio a noviembre).",
-        "hours_not_published": "Aún no están publicados todos los horarios.",
-        "estimate_last_year": "Calculado en parte con la afluencia del año pasado."
+        "hours_not_published": "Aún no están publicados todos los horarios."
       },
       "basis": {
         "mixed": "Calculado en parte con la afluencia del año pasado",
@@ -3489,7 +3491,8 @@
       "stripWindow": "propuesta {rank}",
       "stripLegend": "Altura: la espera punta de tus parques esa semana. Las marcas de debajo muestran tus propuestas.",
       "sketch": "Día a día",
-      "rankedLower": "peor clasificado: {reasons}"
+      "rankedLower": "peor clasificado: {reasons}",
+      "stormPeak": "{season}: peor clasificado por el riesgo de tormentas, incluso con esperas cortas."
     },
     "evening": {
       "plus": "+ noche: {name}",

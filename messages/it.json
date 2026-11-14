@@ -3114,8 +3114,9 @@
       "gridLabel": "Giorno di arrivo e di partenza",
       "level": "Affluenza: {level}",
       "levelLastYear": "Affluenza l’anno scorso: {level}",
+      "lastYearFrom": "Dal {date} affluenza e attese sono quelle dell’anno scorso, misurate nello stesso giorno della settimana.",
+      "lastYearAll": "Questo mese affluenza e attese sono quelle dell’anno scorso, misurate nello stesso giorno della settimana.",
       "legend": "Una data senza consiglio ha il colore dell’affluenza media dei grandi parchi.",
-      "legendLastYear": "Le date con il bordo tratteggiato mostrano l’affluenza misurata l’anno scorso.",
       "pickArrival": "Tocca il giorno di arrivo.",
       "pickDeparture": "Ora il giorno di partenza.",
       "dayCount": "{count, plural, =1 {1 giorno} other {# giorni}}",
@@ -3263,7 +3264,8 @@
       "counts": "{parkDays, plural, =1 {1 giorno al parco} other {# giorni al parco}}, {restDays, plural, =0 {nessun giorno di riposo} =1 {1 giorno di riposo} other {# giorni di riposo}}",
       "averageDay": "In media nei tuoi giorni di viaggio, l’attesa di picco di questi parchi è di {minutes} min.",
       "error": "Una previsione per un’attrazione in un giorno può sbagliare di circa {minutes} min.",
-      "lastYear": "Pianifichiamo queste date con l’affluenza misurata l’anno scorso. La previsione le raggiungerà verso il {date}.",
+      "lastYear": "Dal {date} il piano usa le attese misurate l’anno scorso nello stesso giorno della settimana. Così in anticipo la previsione distingue appena un giorno dall’altro.",
+      "lastYearAll": "Il piano usa le attese misurate l’anno scorso nello stesso giorno della settimana. Così in anticipo la previsione distingue appena un giorno dall’altro.",
       "about": "circa {minutes} min",
       "split": "{parks} {count, plural, =1 {ha} other {hanno}} {visits, plural, =2 {un secondo giorno} other {# giorni}}.",
       "hopNeedsHopper": "Il park hopping conta solo con un biglietto Park Hopper; sceglilo in «Regolazioni».",
@@ -3296,7 +3298,6 @@
       },
       "rest": "Giorno di riposo",
       "evening": "Extended Evening Hours",
-      "last_year": "anno scorso",
       "outside_ticket": "fuori dal tuo biglietto",
       "pinned": "fissato"
     },
@@ -3460,6 +3461,8 @@
       "none": "In questo periodo non c’è posto per un viaggio di {days} giorni. Scegli un periodo più lungo o un viaggio più corto.",
       "noneWithin": "Nessuna vacanza scolastica di {region} in questo periodo dura abbastanza per {days} giorni.",
       "bestTitle": "Le date migliori per i tuoi parchi",
+      "lastYearFrom": "Dalla settimana del {date} le cifre sono le attese misurate l’anno scorso nello stesso giorno della settimana. Così in anticipo la previsione distingue appena un giorno dall’altro.",
+      "lastYearAll": "Tutte le cifre sono le attese misurate l’anno scorso nello stesso giorno della settimana. Così in anticipo la previsione distingue appena un giorno dall’altro.",
       "rank": "Proposta {rank}",
       "wait": "Attesa di picco circa {minutes} min",
       "below": "{percent}% sotto la media del periodo",
@@ -3476,8 +3479,7 @@
         "party_nights": "{count, plural, =1 {1 serata di festa} other {# serate di festa}}: i visitatori giornalieri devono uscire prima.",
         "water_park_closed": "Un parco acquatico scelto è chiuso per la stagione.",
         "hurricane_season": "Stagione degli uragani (da giugno a novembre).",
-        "hours_not_published": "Non tutti gli orari sono ancora pubblicati.",
-        "estimate_last_year": "Calcolato in parte con l’affluenza dell’anno scorso."
+        "hours_not_published": "Non tutti gli orari sono ancora pubblicati."
       },
       "basis": {
         "mixed": "Calcolato in parte con l’affluenza dell’anno scorso",
@@ -3489,7 +3491,8 @@
       "stripWindow": "proposta {rank}",
       "stripLegend": "Altezza: l’attesa di picco dei tuoi parchi quella settimana. I segni sotto indicano le tue proposte.",
       "sketch": "Giorno per giorno",
-      "rankedLower": "classificato più in basso: {reasons}"
+      "rankedLower": "classificato più in basso: {reasons}",
+      "stormPeak": "{season}: classificato più in basso per il rischio di tempeste, anche con attese brevi."
     },
     "evening": {
       "plus": "+ serata: {name}",
