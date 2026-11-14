@@ -70,16 +70,16 @@ export const CROWD_BADGE_CLASS: Record<ColoredCrowdLevel, string> = {
 
 /**
  * An opaque fill per level with white text, for a wait read at a glance in daylight: the in-park
- * compass's markers and wait pills. `badge-crowd-*` is translucent and fails contrast over the
- * compass face, so these are the dark theme's `--badge-crowd-*` tones, solid, in both themes.
+ * compass's markers and wait pills. `badge-crowd-*` is translucent in the dark theme and fails
+ * contrast over the compass face, so these are the `--badge-crowd-*` tones, solid, in both themes.
  */
 export const CROWD_SOLID_CLASS: Record<ColoredCrowdLevel, string> = {
-  very_low: 'bg-[oklch(0.42_0.14_192)] text-white',
-  low: 'bg-[oklch(0.48_0.19_162)] text-white',
-  moderate: 'bg-[oklch(0.48_0.2_145)] text-white',
-  high: 'bg-[oklch(0.5_0.2_78)] text-white',
-  very_high: 'bg-[oklch(0.46_0.22_52)] text-white',
-  extreme: 'bg-[oklch(0.42_0.23_25)] text-white',
+  very_low: 'bg-badge-crowd-very-low text-white',
+  low: 'bg-badge-crowd-low text-white',
+  moderate: 'bg-badge-crowd-moderate text-white',
+  high: 'bg-badge-crowd-high text-white',
+  very_high: 'bg-badge-crowd-very-high text-white',
+  extreme: 'bg-badge-crowd-extreme text-white',
 };
 
 /** Outlined chip (tinted border + text) per level (live ticker, …). */
