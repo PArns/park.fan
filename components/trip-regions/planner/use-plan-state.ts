@@ -12,6 +12,7 @@ import {
 } from '@/lib/trip-regions/plan';
 import { TRIP_PLANNER_ID } from '@/lib/trip-regions/paths';
 import { connectPlannerBridge } from '@/lib/trip-regions/planner-bridge';
+import { trackTripEvent, tripOptionChanges } from '@/lib/trip-regions/plan-analytics';
 import type { TripRegion } from '@/lib/trip-regions/types';
 
 /**
@@ -46,29 +47,48 @@ export function usePlanState(region: TripRegion, onExternal?: () => void) {
   // Every query this planner wrote or wrote over: Back from a sheet lands on one of them for a
   // frame before the latest is put back, and that is no link from outside.
   const known = useRef(new Set<string>());
-  const update = useCallback((recipe: (state: TripPlanState) => TripPlanState) => {
-    const before = latest.current;
-    const next = normalizePlanState(recipe(before));
-    if (next === before) return;
-    latest.current = next;
-    // In `URLSearchParams` spelling, which is what `useSearchParams` reports it back in.
-    const written = new URLSearchParams(writePlanQuery(next)).toString();
-    const base = new URLSearchParams(window.location.search).toString();
-    known.current.add(written).add(base);
-    setOwn({ base, written, state: next });
-    window.history.replaceState(
-      null,
-      '',
-      planHref(window.location.pathname, next, TRIP_PLANNER_ID)
-    );
-  }, []);
-
-  // Parky reads the plan on screen and changes it through `update`, as a press would.
-  useEffect(
-    () => connectPlannerBridge(region.slug, state, update, keys),
-    [region.slug, state, update, keys]
+  const slug = region.slug;
+  const headliners = useMemo(
+    () => region.parks.filter((p) => p.headliner).map((p) => p.slug),
+    [region.parks]
+  );
+  const apply = useCallback(
+    (recipe: (state: TripPlanState) => TripPlanState, by: 'visitor' | 'parky') => {
+      const before = latest.current;
+      const next = normalizePlanState(recipe(before));
+      if (next === before) return;
+      latest.current = next;
+      for (const change of tripOptionChanges(before, next, headliners)) {
+        trackTripEvent(slug, 'trip_option_changed', { ...change, by });
+      }
+      // In `URLSearchParams` spelling, which is what `useSearchParams` reports it back in.
+      const written = new URLSearchParams(writePlanQuery(next)).toString();
+      const base = new URLSearchParams(window.location.search).toString();
+      known.current.add(written).add(base);
+      setOwn({ base, written, state: next });
+      window.history.replaceState(
+        null,
+        '',
+        planHref(window.location.pathname, next, TRIP_PLANNER_ID)
+      );
+    },
+    [slug, headliners]
+  );
+  const update = useCallback(
+    (recipe: (state: TripPlanState) => TripPlanState) => apply(recipe, 'visitor'),
+    [apply]
+  );
+  const updateByParky = useCallback(
+    (recipe: (state: TripPlanState) => TripPlanState) => apply(recipe, 'parky'),
+    [apply]
   );
 
+  // Parky reads the plan on screen and changes it through `update`, as a press would; his changes
+  // are counted as his.
+  useEffect(
+    () => connectPlannerBridge(region.slug, state, updateByParky, keys),
+    [region.slug, state, updateByParky, keys]
+  );
   // Only a query the planner did not write is news; the first one counts, since a link opened it.
   const reported = useRef<string | null>(null);
   const isOwn = own !== null && (search === own.written || search === own.base);

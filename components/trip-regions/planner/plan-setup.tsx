@@ -25,6 +25,7 @@ import { PlanDatesStep } from './plan-find';
 import { PlanParks } from './plan-parks';
 import { PlanOptions, usePlanOptionsSummary } from './plan-options';
 import { PlanTickets, type TicketStep } from './plan-tickets';
+import type { TripEditPanel } from '@/lib/analytics/site-analytics';
 
 /**
  * The phone's sheets: Dates and Parks, the Route where the region has bases, More options, and
@@ -63,6 +64,7 @@ export function PlanSetup({
   onDone,
   onSheetClosed,
   onDatesPicked,
+  onSetupOpened,
   step: ticketStep,
   fineTuneOpen,
   onFineTuneOpen,
@@ -80,6 +82,8 @@ export function PlanSetup({
   onSheetClosed: () => boolean;
   /** The visitor picked the trip's dates in the Dates step: the plan is there to see. */
   onDatesPicked: () => void;
+  /** A phone's setup row opened a panel: a change from the setup, for the statistic. */
+  onSetupOpened: (panel: TripEditPanel) => void;
   step: TicketStep;
   fineTuneOpen: boolean;
   onFineTuneOpen: (open: boolean) => void;
@@ -101,6 +105,7 @@ export function PlanSetup({
       opener.current =
         document.activeElement instanceof HTMLElement ? document.activeElement : null;
     }
+    if (step !== 'tickets') onSetupOpened(step);
     onSheet(step);
   };
   const summary = usePlanOptionsSummary(state);

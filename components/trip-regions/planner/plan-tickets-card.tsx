@@ -34,6 +34,8 @@ import {
   trackSiteEvent,
   type TicketLinkSurface,
   type TicketMode,
+  type TripEditFrom,
+  type TripTicketsFrom,
 } from '@/lib/analytics/site-analytics';
 import type {
   PlanHopperVerdict,
@@ -56,15 +58,15 @@ import {
   useTicketName,
 } from './plan-ticket-words';
 
-/** The result's ways back into the setup. */
+/** The result's ways back into the setup, each told where it was pressed (for the statistic). */
 export interface PlanEdit {
   /** The Tickets step, with the focus on the first day of `tickets=`'s item `index`. */
-  tickets: (index?: number) => void;
-  parks: () => void;
+  tickets: (from: TripTicketsFrom, index?: number) => void;
+  parks: (from: TripEditFrom) => void;
   /** The Route of a region with bases. */
-  route?: () => void;
-  options: () => void;
-  dates: () => void;
+  route?: (from: TripEditFrom) => void;
+  options: (from: TripEditFrom) => void;
+  dates: (from: TripEditFrom) => void;
 }
 
 /**
@@ -107,7 +109,7 @@ export function PlanTicketsCard({
         {owned.length > 0 && (
           <button
             type="button"
-            onClick={() => edit.tickets()}
+            onClick={() => edit.tickets('card')}
             className={cn(
               'text-primary-ink hover:bg-primary/10 -my-2 min-h-11 rounded-md px-2 text-sm font-medium transition-colors',
               PLAN_FOCUS
@@ -337,7 +339,7 @@ function OwnedRow({
                 size="sm"
                 onClick={() => {
                   track('trip_outside_ticket_action', { action: 'change_ticket' });
-                  edit.tickets(index);
+                  edit.tickets('outside_ticket', index);
                 }}
               >
                 {t('outside.changeTicket')}
@@ -384,7 +386,7 @@ function OwnedRow({
       {warnings.includes('covers_no_planned_park') && (
         <Fact icon={Info}>
           {t('noPlannedPark', { resort: resortWord(resort) })}{' '}
-          <InlineAction onClick={edit.parks}>
+          <InlineAction onClick={() => edit.parks('ticket_card')}>
             {t('noPlannedParkAction', { resort: resortWord(resort) })}
           </InlineAction>
         </Fact>
@@ -575,7 +577,7 @@ function SuggestionDetails({
             track('trip_tickets_adopted', { count: suggested.length });
             tripTicketAnswer(region.slug).set('yes');
             update((s) => adoptSuggestions(s, suggested, catalog));
-            edit.tickets();
+            edit.tickets('adopt');
           }}
           data-plan-ticket-adopt=""
           className={cn(

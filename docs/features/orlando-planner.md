@@ -272,30 +272,67 @@ entity, because none of them means one park. Every `trip_*` event carries `regio
 properties below; `trip_plan_requested` then has eight, the statistic's limit, and the others have
 room to spare.
 
-The funnel, in the order a visitor meets it:
+### The funnel
 
-| Event                   | Properties                                                                                                                                                        | Fires                                                                                                                   |
-| ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
-| `trip_planner_started`  | `source`: hero, button, link                                                                                                                                      | the hub's hero, the planner's own button, or a link that carries a plan or a search (a shared one, Parky's)             |
-| `trip_tickets_answered` | `answer`: yes                                                                                                                                                     | the ticket step opened from the answer, once per browser                                                                |
-| `trip_plan_requested`   | `mode` (dates, when), `days` (1-4 … 15-21), `parks` (0: the headliners), `tickets`, `hopper` (none, some or all of the region's hopper resorts), `blocks`, `rest` | every distinct request once the controls are still, a pin or a swap included                                            |
-| `trip_plan_shown`       | `mode`, `outcome` (ok, relaxed, error), `relaxed`, `status`, `unplaced`, `windows`                                                                                | the answer to that request on screen, once; `relaxed` names the loosened rule that weighs most, `status` 0 is no answer |
+Six steps, each an event the flow really fires, in the order a visitor meets them (PAR-1309; the
+admin MCP's `trip_planner_report` reads exactly these names):
 
-And the decisions along the way:
+| Step         | Event(s)                                                     | Fires                                                                                                                                                                |
+| ------------ | ------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1. started   | `trip_planner_started`                                       | the hub's hero, the planner's own button, a link with a plan or a search, or (`dates`) the first dates picked in a page load nothing else started: the desk's way in |
+| 2. requested | `trip_plan_requested`                                        | every distinct request once the controls are still, a pin or a swap included                                                                                         |
+| 3. shown     | `trip_plan_shown`                                            | the answer to that request on screen, once                                                                                                                           |
+| 4. changed   | `trip_edit_opened`, `trip_option_changed` with `by: visitor` | a change opened (a button under the plan, a setup row or disclosure, the parks left out, a ticket problem), or an option of the plan changed                         |
+| 5. tickets   | `trip_tickets_opened`                                        | the ticket step opened, every time, from wherever it was pressed                                                                                                     |
+| 6. kept      | `trip_days_saved`, `trip_ics_exported`, `trip_link_copied`   | the days copied to the day planner, the `.ics` file, the link                                                                                                        |
 
-- **Tickets:** `trip_ticket_added` (`entry`, `resort`, `via` picker or combo; the Combo Ticket counts
-  both halves), `trip_ticket_removed` (`entry`, `resort`), `trip_ticket_start` (`entry`, `resort`,
-  `start` set or open).
-- **The ticket card:** `trip_ticket_details_opened` (`surface` sheet or inline),
-  `trip_hopper_toggled` (`resort`, `on`), `trip_tickets_adopted` (`count`), `trip_long_stay_used`
-  (`count`), `trip_outside_ticket_action` (`action` leave_out or change_ticket), and
-  `ticket_link_clicked` below.
-- **The answer:** `trip_window_planned` (`rank` of the window a search found),
-  `trip_view_changed` (`view`), `trip_day_opened` (`kind` of the day, `view` it was opened from:
-  list, agenda, week, month), `trip_day_pinned` (`pinned`), `trip_day_swapped`, `trip_day_sent`
-  ("Plan this day"), `trip_evening_link_clicked` (a venue's own page).
-- **Keeping it:** `trip_days_saved` (`days` that went into the day planner), `trip_ics_exported`
-  (`days` in the file), `trip_link_copied`.
+Steps 4 and 5 are optional: a plan that suits needs neither, so the report reads them as shares of
+step 3, not as a drop-off. `trip_tickets_answered` (the question before the plan) is no longer sent.
+
+### Every `trip_*` event and its properties
+
+Each carries `region` besides these. A value is one of the listed, never free text, a date or an id.
+
+| Event                                                                                | Properties                                                                                                                                                                                                                         |
+| ------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `trip_planner_started`                                                               | `source`: hero, button, link, dates                                                                                                                                                                                                |
+| `trip_plan_requested`                                                                | `mode` (dates, when), `days` (1-4, 5-7, 8-10, 11-14, 15-21), `parks` (a count; 0 the headliners), `tickets` (none, owned), `hopper` (none, some, all), `blocks` (default, on, off), `rest` (auto, none, max)                       |
+| `trip_plan_shown`                                                                    | `mode`, `outcome` (ok, relaxed, error), `relaxed` (blocks, streak, ticket_window), `status` (0: no answer), `unplaced` (count), `left_out` (count of `parksLeftOut`), `stays` (cities, across cities only), `windows` (a search's) |
+| `trip_edit_opened`                                                                   | `panel`: dates, parks, route, options; `from`: answer, setup, left_out, ticket_problem, ticket_card                                                                                                                                |
+| `trip_option_changed`                                                                | `option`: hotel, area, arrival, departure, rest, split, evenings, hop, blocks, fireworks, parks, visits, cities, nights, stay_area, start_base, end_base, move_buffer; `value` (below); `by`: visitor, parky                       |
+| `trip_left_out_fix`                                                                  | `fix`: travel_days, parks, longer; `left_out`: 1, 2, 3+                                                                                                                                                                            |
+| `trip_tickets_opened`                                                                | `from`: ask, card, adopt, ticket_problem, outside_ticket; `first` (true the first time in this browser)                                                                                                                            |
+| `trip_find_toggled`                                                                  | `to`: find, known                                                                                                                                                                                                                  |
+| `trip_find_period`                                                                   | `period`: next12, year, spring, summer, autumn, custom; `school_breaks` (true, false). Never which holidays                                                                                                                        |
+| `trip_calendar_mode`                                                                 | `mode`: all or a resort key of the region; `from_default` (true when it left the default view)                                                                                                                                     |
+| `trip_view_changed`                                                                  | `view`: agenda (the list), week, month                                                                                                                                                                                             |
+| `trip_accuracy_opened`                                                               | `surface`: plan                                                                                                                                                                                                                    |
+| `trip_stay_suggestion`                                                               | `action`: shown (once per suggestion on screen), applied                                                                                                                                                                           |
+| `trip_window_planned`                                                                | `rank` of the window a search found                                                                                                                                                                                                |
+| `trip_day_opened`                                                                    | `kind` (arrival, park, hop, rest, departure, travel), `view` (list, agenda, week, month)                                                                                                                                           |
+| `trip_day_pinned`                                                                    | `pinned`                                                                                                                                                                                                                           |
+| `trip_day_swapped`, `trip_day_sent`, `trip_evening_link_clicked`, `trip_link_copied` | none                                                                                                                                                                                                                               |
+| `trip_days_saved`, `trip_ics_exported`                                               | `days`                                                                                                                                                                                                                             |
+| `trip_ticket_added`                                                                  | `entry`, `resort`, `via` (picker, combo)                                                                                                                                                                                           |
+| `trip_ticket_removed`                                                                | `entry`, `resort`                                                                                                                                                                                                                  |
+| `trip_ticket_start`                                                                  | `entry`, `resort`, `start` (set, open)                                                                                                                                                                                             |
+| `trip_ticket_details_opened`                                                         | `surface` (sheet, inline)                                                                                                                                                                                                          |
+| `trip_hopper_toggled`                                                                | `resort`, `on`                                                                                                                                                                                                                     |
+| `trip_tickets_adopted`, `trip_long_stay_used`                                        | `count`                                                                                                                                                                                                                            |
+| `trip_outside_ticket_action`                                                         | `action` (leave_out, change_ticket)                                                                                                                                                                                                |
+
+`trip_option_changed` is built from a diff of the state before and after each change
+(`tripOptionChanges` in `lib/trip-regions/plan-analytics.ts`), one event per option, in
+`usePlanState`; Parky's changes through the planner bridge count as `by: parky` (his own count stays
+`assistant_plan_changed`). Dates, pins, tickets and the hopper are not options: their own events
+count them. `value` only from small closed sets: `move_buffer` 30, 60, 90, 120 or default; `rest`
+auto, none, max; on or off for arrival, departure, split, evenings, hop, fireworks; blocks on, off
+or default; `hotel` the region's hotel kind; `parks` added or removed; `start_base` and `end_base`
+set or open. No base key, no city count, no date.
+
+`planner_opened` names where the day planner was opened from the trip planner: `<region>-trip-day`
+("Open in the day planner" in a day's sheet), `<region>-trip-first` ("Open the first day" after
+copying the days); `<region>-hub` stays the hub's day sheet.
 
 `ticket_link_clicked` is a purchase link followed, middle click included. `product` (the catalog
 id), `seller`, `host`, `kind` (official, sponsored, plain), `position` in the list the visitor saw

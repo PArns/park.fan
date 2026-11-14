@@ -103,7 +103,15 @@ await test('page types of the real routes, in every locale', () => {
       '/de/trip-planner/shared',
     ],
     favorites: ['/de/favorites'],
+    trip_hub: ['/de/orlando', '/en/orlando', '/fr/orlando'],
+    trip_month: ['/de/orlando/2026/12', '/en/orlando/2027/1'],
+    trip_best_time: [
+      '/de/orlando/beste-reisezeit',
+      '/en/orlando/best-time-to-visit',
+      '/de/orlando/beste-reisezeit/walt-disney-world',
+    ],
     other: [
+      '/de/orlando/irgendwas',
       '/de/impressum',
       '/en/datenschutz',
       '/de/so-funktioniert-park-fan',

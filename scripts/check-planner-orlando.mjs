@@ -141,6 +141,50 @@ export async function checkOrlandoTickets({ browser, base, check }) {
     await context.close();
   }
 
+  // ── The desk: dates picked in the panel start the planner; a change is counted ───
+  {
+    const { context, page } = await open(DESK);
+    await ready(page, '/en/orlando#planner');
+    const panel = page.locator('[data-plan-dates-panel]');
+    const first = addDays(orlandoToday(), 21);
+    const last = addDays(first, 6);
+    for (const date of [first, last]) {
+      for (let i = 0; i < 3; i++) {
+        if (await panel.locator(`[data-plan-date="${date}"]:not([disabled])`).count()) break;
+        await panel.getByRole('button', { name: 'Next month' }).click();
+      }
+      await panel.locator(`[data-plan-date="${date}"]`).click();
+    }
+    await page.locator('[data-plan-changes]').waitFor({ timeout: PLAN_TIMEOUT });
+    const started = await events(page, 'trip_planner_started');
+    check(
+      'Orlando · am Desktop starten die gewählten Daten den Planer (source dates), einmal',
+      started.length === 1 && started[0].source === 'dates' && started[0].region === 'orlando',
+      JSON.stringify(started)
+    );
+    await page.locator('[data-plan-changes]').getByRole('button', { name: 'More options' }).click();
+    const edited = await events(page, 'trip_edit_opened');
+    check(
+      'Orlando · „More options“ unter dem Plan zählt als Änderung von der Antwort aus',
+      edited.length === 1 && edited[0].panel === 'options' && edited[0].from === 'answer',
+      JSON.stringify(edited)
+    );
+    await page
+      .locator('[data-plan-disclosure="options"]')
+      .getByRole('checkbox', { name: 'Evenings' })
+      .click();
+    const changed = await events(page, 'trip_option_changed');
+    check(
+      'Orlando · eine Option zählt mit ihrem Wert und wer sie geändert hat',
+      changed.length === 1 &&
+        changed[0].option === 'evenings' &&
+        changed[0].value === 'off' &&
+        changed[0].by === 'visitor',
+      JSON.stringify(changed)
+    );
+    await context.close();
+  }
+
   // ── "Yes": the owner's case, the UK combo, the dates it gives the trip ─────────
   let ownerLink = null;
   {
@@ -169,19 +213,20 @@ export async function checkOrlandoTickets({ browser, base, check }) {
       shared.includes('Sun, Feb 7, 2027'),
       shared
     );
-    const yesAnswer = await events(page, 'trip_tickets_answered');
+    const opened = await events(page, 'trip_tickets_opened');
     const added = await events(page, 'trip_ticket_added');
     const started2 = await events(page, 'trip_ticket_start');
     check(
-      'Orlando · Ereignisse: yes, zwei Tickets über das Combo, ein erster Tag',
-      yesAnswer.length === 1 &&
-        yesAnswer[0].answer === 'yes' &&
+      'Orlando · Ereignisse: Tickets geöffnet (ask, erstes Mal), zwei Tickets über das Combo, ein erster Tag',
+      opened.length === 1 &&
+        opened[0].from === 'ask' &&
+        opened[0].first === true &&
         added.length === 2 &&
         added.every((e) => e.via === 'combo' && e.region === 'orlando') &&
         added.map((e) => e.resort).join() === 'walt-disney-world,universal-orlando' &&
         started2.length === 1 &&
         started2[0].start === 'set',
-      JSON.stringify({ yesAnswer, added, started2 })
+      JSON.stringify({ opened, added, started2 })
     );
     const disney = await sheet.locator('[data-ticket-window]').nth(0).innerText();
     const universal = await sheet.locator('[data-ticket-window]').nth(1).innerText();

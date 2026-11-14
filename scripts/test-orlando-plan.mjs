@@ -153,6 +153,8 @@ import {
   tripPlanFailedProps,
   tripPlanRequestProps,
   tripPlanShownProps,
+  tripOptionChanges,
+  leftOutBucket,
   tripWhenShownProps,
 } from '../lib/trip-regions/plan-analytics.ts';
 import { onSiteEvent } from '../lib/analytics/site-analytics.ts';
@@ -2141,19 +2143,74 @@ const keys = { parks: new Set(ORDER), areas: new Set(['disney', 'universal']) };
   test(
     'a plan on screen names the rule it loosened that weighs most, and what it left out',
     [
-      tripPlanShownProps({ meta: {}, unplaced: [] }),
+      tripPlanShownProps({ meta: {}, unplaced: [], days: [] }),
       tripPlanShownProps({
         meta: { relaxed: ['streak_relaxed', 'ticket_window_relaxed', 'blocks_relaxed'] },
-        unplaced: [{ slug: 'epcot' }],
+        unplaced: [{ slug: 'epcot', reason: 'no_day_left' }],
+        days: [],
       }),
-      tripPlanShownProps({ meta: { relaxed: ['streak_relaxed'] }, unplaced: [] }),
+      tripPlanShownProps({
+        meta: { relaxed: ['streak_relaxed'], stays: [{}, {}] },
+        unplaced: [],
+        parksLeftOut: [],
+        days: [],
+      }),
     ],
     [
-      { mode: 'dates', outcome: 'ok', unplaced: 0 },
-      { mode: 'dates', outcome: 'relaxed', relaxed: 'ticket_window', unplaced: 1 },
-      { mode: 'dates', outcome: 'relaxed', relaxed: 'streak', unplaced: 0 },
+      { mode: 'dates', outcome: 'ok', unplaced: 0, left_out: 0 },
+      { mode: 'dates', outcome: 'relaxed', relaxed: 'ticket_window', unplaced: 1, left_out: 1 },
+      { mode: 'dates', outcome: 'relaxed', relaxed: 'streak', unplaced: 0, left_out: 0, stays: 2 },
     ]
   );
+  {
+    const base = { ...DEFAULT_PLAN_STATE, from: '2026-12-05', to: '2026-12-12' };
+    const HEADS = ['magic-kingdom-park', 'epcot'];
+    test(
+      'one option event per option changed, values from small sets only',
+      [
+        tripOptionChanges(base, { ...base, moveBuffer: 90, arrival: 'park', rest: 'max:3' }, HEADS),
+        tripOptionChanges(
+          base,
+          { ...base, parks: [{ slug: 'magic-kingdom-park', visits: null }] },
+          HEADS
+        ),
+        tripOptionChanges(
+          base,
+          {
+            ...base,
+            parks: [
+              { slug: 'magic-kingdom-park', visits: 2 },
+              { slug: 'epcot', visits: null },
+            ],
+          },
+          HEADS
+        ),
+        tripOptionChanges(
+          base,
+          { ...base, bases: [{ key: 'tokyo', nights: 4, area: null }], startBase: 'tokyo' },
+          HEADS
+        ),
+        tripOptionChanges(base, { ...base, from: '2027-01-01', locks: [], tickets: [] }, HEADS),
+      ],
+      [
+        [
+          { option: 'arrival', value: 'on' },
+          { option: 'rest', value: 'max' },
+          { option: 'move_buffer', value: '90' },
+        ],
+        [{ option: 'parks', value: 'removed' }],
+        [{ option: 'visits' }],
+        [{ option: 'cities' }, { option: 'start_base', value: 'set' }],
+        [],
+      ]
+    );
+    test('left-out parks in three buckets', [1, 2, 3, 7].map(leftOutBucket), [
+      '1',
+      '2',
+      '3+',
+      '3+',
+    ]);
+  }
   {
     const heard = [];
     const stop = onSiteEvent((name, props) => heard.push({ name, props }));

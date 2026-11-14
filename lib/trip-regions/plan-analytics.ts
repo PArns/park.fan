@@ -1,5 +1,6 @@
 import {
   trackSiteEvent,
+  type TripOption,
   type TicketLinkKind,
   type TicketLinkSurface,
   type TicketMode,
@@ -7,8 +8,9 @@ import {
   type SiteEventMap,
 } from '@/lib/analytics/site-analytics';
 import { daysBetween } from '@/lib/utils/park-day';
-import { DEFAULT_FIND_DAYS } from './plan-query';
-import type { TripPlan } from './plan';
+import { DEFAULT_FIND_DAYS, type TripPlanState } from './plan-query';
+import { effectiveParks, type TripPlan } from './plan';
+import { parksLeftOut } from './plan-copy';
 import type { TicketLink, TripWhen } from './types';
 
 /**
@@ -37,13 +39,91 @@ export type TrackTripEvent = <Name extends TripEventName>(
   ...args: TripEventArgs<Name>
 ) => void;
 
+/** The regions whose planner started in this page load, so picked dates start it only once. */
+const startedRegions = new Set<string>();
+
 /** Report a trip planner event for the region it plans, by its slug (`orlando`). */
 export function trackTripEvent<Name extends TripEventName>(
   region: string,
   name: Name,
   ...[props]: TripEventArgs<Name>
 ): void {
+  if (name === 'trip_planner_started') startedRegions.add(region);
   trackSiteEvent<string>(name, { region, ...props } as Record<string, string | number | boolean>);
+}
+
+/**
+ * The desk's way in: the first dates picked in a page load where nothing else started the planner
+ * (the hero, its button, a link) count as its start, `source: dates`.
+ */
+export function trackDatesStart(region: string): void {
+  if (!startedRegions.has(region))
+    trackTripEvent(region, 'trip_planner_started', { source: 'dates' });
+}
+
+/** How many parks a plan left out, as `trip_left_out_fix` buckets it. */
+export function leftOutBucket(count: number): '1' | '2' | '3+' {
+  return count <= 1 ? '1' : count === 2 ? '2' : '3+';
+}
+
+/** A flag as `trip_option_changed` says it. */
+const onOff = (on: boolean) => (on ? 'on' : 'off');
+
+/**
+ * `trip_option_changed` for one change of the planner's state, one entry per option it touched, in
+ * the order the options are listed. Dates, pins, tickets and the hopper are not options: their own
+ * events count them. Values only from small closed sets, never a date or a count of cities.
+ */
+export function tripOptionChanges(
+  before: TripPlanState,
+  after: TripPlanState,
+  headliners: readonly string[]
+): Array<Omit<TripEventProps<'trip_option_changed'>, 'by'>> {
+  const out: Array<Omit<TripEventProps<'trip_option_changed'>, 'by'>> = [];
+  const add = (option: TripOption, value?: string) =>
+    out.push(value === undefined ? { option } : { option, value });
+  if (before.hotel !== after.hotel) add('hotel', after.hotel ?? 'default');
+  if (before.area !== after.area) add('area');
+  if (before.arrival !== after.arrival) add('arrival', onOff(after.arrival === 'park'));
+  if (before.departure !== after.departure) add('departure', onOff(after.departure === 'park'));
+  if (before.rest !== after.rest) add('rest', after.rest.startsWith('max:') ? 'max' : after.rest);
+  if (before.split !== after.split) add('split', onOff(after.split === 'auto'));
+  if (before.evenings !== after.evenings) add('evenings', onOff(after.evenings));
+  if (before.hop !== after.hop) add('hop', onOff(after.hop));
+  if (before.blocks !== after.blocks) {
+    add('blocks', after.blocks === null ? 'default' : onOff(after.blocks));
+  }
+  if (before.fireworks !== after.fireworks) add('fireworks', onOff(after.fireworks === 'want'));
+  // The untouched choice is the headliners, so a first edit compares against them.
+  const parks = (state: TripPlanState) => effectiveParks(state, headliners).map((p) => p.slug);
+  const [was, now] = [parks(before), parks(after)];
+  if (before.parks !== after.parks) {
+    if (now.some((slug) => !was.includes(slug))) add('parks', 'added');
+    if (was.some((slug) => !now.includes(slug))) add('parks', 'removed');
+    const visits = (state: TripPlanState) =>
+      effectiveParks(state, headliners)
+        .map((p) => `${p.slug}:${p.visits ?? ''}`)
+        .join(',');
+    if (
+      now.length === was.length &&
+      now.every((slug) => was.includes(slug)) &&
+      visits(before) !== visits(after)
+    ) {
+      add('visits');
+    }
+  }
+  const keys = (state: TripPlanState) => state.bases.map((b) => b.key).join(',');
+  const nights = (state: TripPlanState) => state.bases.map((b) => `${b.key}:${b.nights}`).join(',');
+  const areas = (state: TripPlanState) => state.bases.map((b) => `${b.key}@${b.area}`).join(',');
+  if (keys(before) !== keys(after)) add('cities');
+  else if (nights(before) !== nights(after)) add('nights');
+  else if (areas(before) !== areas(after)) add('stay_area');
+  if (before.startBase !== after.startBase) add('start_base', after.startBase ? 'set' : 'open');
+  if (before.endBase !== after.endBase) add('end_base', after.endBase ? 'set' : 'open');
+  if (before.moveBuffer !== after.moveBuffer) {
+    add('move_buffer', after.moveBuffer === null ? 'default' : String(after.moveBuffer));
+  }
+  return out;
 }
 
 /** A seller's name as a property value: the characters the statistic keeps, at most 60. */
@@ -143,9 +223,12 @@ const RELAXED: ReadonlyArray<[string, 'ticket_window' | 'blocks' | 'streak']> = 
   ['streak_relaxed', 'streak'],
 ];
 
-/** `trip_plan_shown` for a plan on screen: ok, or relaxed with the rule, and what it left out. */
+/**
+ * `trip_plan_shown` for a plan on screen: ok, or relaxed with the rule; what it could not place, the
+ * parks it left out altogether, and the cities a plan across cities sleeps in.
+ */
 export function tripPlanShownProps(
-  plan: Pick<TripPlan, 'meta' | 'unplaced'>
+  plan: Pick<TripPlan, 'meta' | 'unplaced' | 'parksLeftOut' | 'days'>
 ): TripEventProps<'trip_plan_shown'> {
   const relaxed = RELAXED.find(([code]) => plan.meta.relaxed?.includes(code))?.[1];
   return {
@@ -153,6 +236,8 @@ export function tripPlanShownProps(
     outcome: relaxed ? 'relaxed' : 'ok',
     ...(relaxed && { relaxed }),
     unplaced: plan.unplaced.length,
+    left_out: parksLeftOut(plan).length,
+    ...(plan.meta.stays && { stays: plan.meta.stays.length }),
   };
 }
 
