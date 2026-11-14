@@ -123,7 +123,8 @@ export function PlanResult({
   defaultMonth?: string;
 }) {
   const t = useTranslations('tripPlanner');
-  const { state, headliners } = usePlanContext();
+  const { state, headliners, ticketStep, tickets: catalog } = usePlanContext();
+  const ticketsAsked = ticketStep.resorts.length > 0 && catalog.size > 0;
 
   return (
     <section
@@ -140,6 +141,17 @@ export function PlanResult({
           <Button variant="outline" onClick={edit.dates} className="lg:hidden">
             {t('result.chooseDates')}
           </Button>
+          {/* A ticket bought for fixed days gives the trip its dates, so it may come first. */}
+          {ticketsAsked && <TicketsAsk edit={edit} />}
+          {ticketsOpen && (
+            <div className="self-stretch">
+              <DeskTickets
+                step={step}
+                defaultMonth={defaultMonth}
+                onClose={() => onTicketsOpen(false)}
+              />
+            </div>
+          )}
         </div>
       ) : (
         <PlanAnswerSection
