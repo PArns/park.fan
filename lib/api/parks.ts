@@ -238,16 +238,21 @@ export function leanParkForParkShell(park: ParkWithAttractions): ParkWithAttract
  *
  * Returns an empty list for a park with none on file, which today is most of
  * them — the caller renders nothing rather than an empty heading.
+ *
+ * Without a `window` the API answers the seasons from the park's today to a year ahead; a calendar
+ * month passes its own, since a past month's seasons have ended before today.
  */
 export async function getParkSeasons(
   continent: string,
   country: string,
   city: string,
-  parkSlug: string
+  parkSlug: string,
+  window?: { from: string; to: string }
 ): Promise<ParkSeason[]> {
+  const query = window ? `?from=${window.from}&to=${window.to}` : '';
   try {
     const result = await api.get<{ seasons: ParkSeason[] }>(
-      `/v1/parks/${continent}/${country}/${city}/${parkSlug}/seasons`,
+      `/v1/parks/${continent}/${country}/${city}/${parkSlug}/seasons${query}`,
       { next: { revalidate: PARK_REVALIDATE, tags: ['parks'] } }
     );
     return result.seasons ?? [];

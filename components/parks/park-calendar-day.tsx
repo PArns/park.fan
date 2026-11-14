@@ -4,7 +4,10 @@ import { createElement, memo } from 'react';
 import { Info, Star } from 'lucide-react';
 import type { CalendarDay } from '@/lib/api/types';
 import type { RideInWorks } from '@/lib/utils/works-period';
+import { seasonMarks, type SeasonOnDay } from '@/lib/parks/park-season-days';
 import { WORKS_TONE_CLASS, WorksPeriodList, WorksIcon } from './works-period-list';
+import { SeasonKindIcon } from './season-kind-icon';
+import { useSeasonLabel } from './season-headline';
 import { Card } from '@/components/ui/card';
 import { useTranslations, useLocale } from 'next-intl';
 import { translateHolidayName } from '@/lib/utils/holiday-names';
@@ -48,6 +51,11 @@ export interface ParkCalendarDayProps {
    * One array per day from the grid's month memo, so the `memo` holds.
    */
   worksRides?: readonly RideInWorks[];
+  /**
+   * The event seasons running on this day (`seasonDaysOfMonth`), or undefined for none. One array
+   * per day from the page, so the `memo` holds.
+   */
+  seasons?: readonly SeasonOnDay[];
 }
 
 /**
@@ -93,11 +101,13 @@ function ParkCalendarDayComponent({
   selectable = false,
   selectionIndex = null,
   worksRides,
+  seasons,
 }: ParkCalendarDayProps) {
   const t = useTranslations('parks');
   const tWorks = useTranslations('parks.worksPeriod');
   const tCommon = useTranslations('common');
   const tLegend = useTranslations('attractions.historyLegend');
+  const seasonLabel = useSeasonLabel();
   const locale = useLocale();
 
   const dateLocale = dateFnsLocale(locale);
@@ -124,6 +134,8 @@ function ParkCalendarDayComponent({
   const worksHint = works
     ? `${tWorks('closedRidesTitle')}: ${works.map((ride) => ride.name).join(', ')}`
     : null;
+  const marks = seasons ? seasonMarks(seasons) : [];
+  const seasonHint = seasons?.length ? seasons.map((s) => seasonLabel(s, true)).join(', ') : null;
   const signals = daySignals(day, locale);
   const clickable = !!onSelect;
 
@@ -177,7 +189,7 @@ function ParkCalendarDayComponent({
             ...(selectable ? { 'aria-pressed': selectionIndex !== null } : {}),
             'aria-label': `${dayOfWeek} ${dayOfMonth}. ${month} — ${statusLabel}${
               signalHint ? ` · ${signalHint}` : ''
-            }${worksHint ? ` · ${worksHint}` : ''}${
+            }${seasonHint ? ` · ${seasonHint}` : ''}${worksHint ? ` · ${worksHint}` : ''}${
               selectable ? ` · ${t('dayComparison.pickDay')}` : ''
             }`,
             onClick: () => onSelect?.(day.date),
@@ -265,6 +277,31 @@ function ParkCalendarDayComponent({
             </TooltipContent>
           </Tooltip>
         )}
+        {/* The season's kind, beside the star: a chip on the page's own surface like the works one,
+            or, for a season most of the month runs in or one only expected, the bare icon in the
+            row's colour, so a month of Wintertraum does not drown the crowd colours. Named on
+            hover; the day's dialog says the rest. */}
+        {marks.map((mark) => {
+          const names = mark.seasons.map((s) => seasonLabel(s, true)).join(', ');
+          return (
+            <span
+              key={mark.kind}
+              role="img"
+              aria-label={names}
+              title={names}
+              data-calendar-season={mark.kind}
+              className={cn(
+                'inline-flex shrink-0 items-center',
+                !mark.quiet && 'bg-background/70 rounded-full px-1 py-px'
+              )}
+            >
+              <SeasonKindIcon
+                kind={mark.kind}
+                className={mark.quiet ? 'text-current opacity-60 dark:text-current' : undefined}
+              />
+            </span>
+          );
+        })}
         {/* Beside the star and like it a hover: a tap opens the day, whose detail lists the same
             rides. A chip on the page's own surface, so it stands out on an orange „Hoch" tile as
             on a green one, with the count because a winter month can shut several rides at once. */}

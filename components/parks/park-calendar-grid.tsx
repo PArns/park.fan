@@ -31,6 +31,7 @@ import {
 import type { IntegratedCalendarResponse, ParkWithAttractions } from '@/lib/api/types';
 import { ParkCalendarGridPlaceholder } from '@/components/parks/park-calendar-grid-placeholder';
 import { dayComparisonStore } from '@/lib/parks/day-comparison-store';
+import type { SeasonDays } from '@/lib/parks/park-season-days';
 import { trackSiteEvent } from '@/lib/analytics/site-analytics';
 import { ParkCalendarComparison } from './park-calendar-comparison';
 import { ParkCalendarDay } from './park-calendar-day';
@@ -55,6 +56,8 @@ interface ParkCalendarGridProps {
   /** Neighbouring months, already range-checked by the page — `null` means the stepper stops. */
   prevMonth: ParkCalendarMonth | null;
   nextMonth: ParkCalendarMonth | null;
+  /** The month's event seasons per day (`seasonDaysOfMonth`); one array per day, so the tile memo holds. */
+  seasonDays?: SeasonDays;
 }
 
 /**
@@ -72,6 +75,7 @@ export function ParkCalendarGrid({
   month,
   prevMonth,
   nextMonth,
+  seasonDays,
 }: ParkCalendarGridProps) {
   const locale = useLocale();
   const parkTimezone = park.timezone ?? 'UTC';
@@ -438,6 +442,7 @@ export function ParkCalendarGrid({
                         selectable={comparing}
                         selectionIndex={selectionIndexOf(pickedDates, dateStr)}
                         worksRides={worksByDate.get(dateStr)}
+                        seasons={seasonDays?.[dateStr]}
                       />
                     );
                   })}
@@ -472,6 +477,7 @@ export function ParkCalendarGrid({
                             selectable={comparing}
                             selectionIndex={selectionIndexOf(pickedDates, dateStr)}
                             worksRides={worksByDate.get(dateStr)}
+                            seasons={seasonDays?.[dateStr]}
                           />
                         );
                       })}
@@ -506,6 +512,7 @@ export function ParkCalendarGrid({
         onNavigate={handleDayNavigate}
         planner={{ parkSlug, parkName: park.name, geo: { continent, country, city } }}
         worksRides={openDate ? worksByDate.get(openDate) : undefined}
+        seasons={openDate ? seasonDays?.[openDate] : undefined}
       />
 
       {/* Opens on the second pick and closes to the grid with both days still lit, so the reader

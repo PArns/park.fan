@@ -102,6 +102,7 @@
     "test:ride-figures": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-ride-figures.mjs",
     "test:rider-height": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-rider-height.mjs",
     "test:works-period": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-works-period.mjs",
+    "test:park-season-days": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-park-season-days.mjs",
     "test:park-break": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-park-break.mjs",
     "test:opening-hours-schema": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-opening-hours-schema.mjs",
     "test:coordinates": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-coordinates.mjs",

@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useSyncExternalStore } from 'react';
+import { useCallback, useMemo, useSyncExternalStore } from 'react';
 import dynamic from 'next/dynamic';
 import { useLocale, useTranslations } from 'next-intl';
 import { useLinkStatus } from 'next/link';
@@ -25,6 +25,7 @@ import { parkCalendarPath, type ParkCalendarMonth } from '@/lib/parks/calendar-s
 import { calendarGridReservation } from '@/lib/parks/calendar-grid-geometry';
 import { ParkCalendarLegend } from '@/components/parks/park-calendar-legend';
 import { dayComparisonStore } from '@/lib/parks/day-comparison-store';
+import { seasonKindsIn, type SeasonDays } from '@/lib/parks/park-season-days';
 import type { ParkWithAttractions } from '@/lib/api/types';
 import { parkArgs } from '@/lib/i18n/park-phrase';
 import { worksPeriodsOf } from '@/lib/utils/works-period';
@@ -63,6 +64,7 @@ export function ParkCalendarPanel({
   prevMonth,
   nextMonth,
   monthIndex,
+  seasonDays,
   className,
 }: {
   park: ParkWithAttractions;
@@ -85,12 +87,15 @@ export function ParkCalendarPanel({
    * stepper, showing every month at once.
    */
   monthIndex?: React.ReactNode;
+  /** The month's event seasons per day (`seasonDaysOfMonth`), which the tiles mark and the legend keys. */
+  seasonDays?: SeasonDays;
   className?: string;
 }) {
   const t = useTranslations('parks.calendarPage');
   const locale = useLocale();
   // The month the grid will draw — on the hub that is today's, which is what it opens on.
   const reservation = calendarGridReservation(month ?? currentMonth);
+  const seasonKinds = useMemo(() => (seasonDays ? seasonKindsIn(seasonDays) : []), [seasonDays]);
   /**
    * The URL for a month, and the hub's URL for the current month: `/wartezeiten-kalender` and
    * `/wartezeiten-kalender/2026/8` render the same grid in August, and the app should not mint the
@@ -199,10 +204,12 @@ export function ParkCalendarPanel({
           'border-border/50 relative flex flex-col gap-4 rounded-b-xl border border-t-0 p-4 md:p-6'
         )}
       >
-        {/* The colour key, server-rendered on its own line above the grid: it needs no data, and
-            inside the grid it made the two loading states differ by its own height. */}
+        {/* The colour key, server-rendered on its own line above the grid: inside the grid it made
+            the two loading states differ by its own height. Its season keys are the month's, from
+            the server, so they are in the first HTML too. */}
         <ParkCalendarLegend
           showWorks={(park.attractions ?? []).some((ride) => worksPeriodsOf(ride).length > 0)}
+          seasonKinds={seasonKinds}
         />
 
         {/* The reservation travels as three custom properties, not classes, because Tailwind cannot
@@ -226,6 +233,7 @@ export function ParkCalendarPanel({
             month={month}
             prevMonth={prevMonth}
             nextMonth={nextMonth}
+            seasonDays={seasonDays}
           />
         </div>
 
