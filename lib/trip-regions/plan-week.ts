@@ -17,6 +17,7 @@ import { addDays, daysBetween } from '@/lib/utils/park-day';
 import { earlyPerk, runnerUp } from './plan-copy';
 import {
   withSpareRuns,
+  type PlanAlternative,
   type PlanDay,
   type PlanDayKind,
   type PlanTotals,
@@ -657,25 +658,52 @@ export function dateLevel(
   return ranks.length > 0 ? CROWD_LEVEL_ORDER[ranks[Math.floor((ranks.length - 1) / 2)]] : null;
 }
 
+/** The kinds of plan day that hold no park: a free arrival or departure day, a day that is only the move. */
+const PARKLESS_DAYS: ReadonlySet<PlanDayKind> = new Set(['arrival', 'departure', 'travel']);
+
 /**
- * The runner-up of a park day, both days in the figure the screen shows (`shownWaitOn`), so the
- * difference is one the reader can check: the day card's second sentence and the sheet's line.
- * `null` for a hop day and a park without an alternative with a figure.
+ * The alternatives of a park the plan could have used: on a day of the trip that may hold a park,
+ * in a city whose base reaches the park. The API ranks a park's days over the whole trip, so across
+ * cities it can name a day spent in another city, and it can name a free arrival or departure day.
+ */
+export function usableAlternatives<A extends Pick<PlanAlternative, 'date'>>(
+  alternatives: readonly A[],
+  slug: string,
+  days: readonly Pick<PlanDay, 'date' | 'kind' | 'base'>[],
+  bases: readonly Pick<TripBase, 'key' | 'parks'>[] | undefined
+): A[] {
+  const byDate = new Map(days.map((d) => [d.date, d]));
+  return alternatives.filter((alt) => {
+    const day = byDate.get(alt.date);
+    if (!day || PARKLESS_DAYS.has(day.kind)) return false;
+    const base = day.base ? bases?.find((b) => b.key === day.base) : undefined;
+    return !base || base.parks.some((p) => p.slug === slug);
+  });
+}
+
+/**
+ * The runner-up of a park day among the days the plan could use (`usableAlternatives`), both days
+ * in the figure the screen shows (`shownWaitOn`), so the difference is one the reader can check: the
+ * day card's second sentence and the sheet's line. `null` for a hop day and a park without a usable
+ * alternative with a figure.
  */
 export function dayRunnerUp(
   day: Pick<PlanDay, 'date' | 'kind' | 'parks' | 'headlinerWait'>,
-  plan: Pick<TripPlan, 'parks'>,
-  calendar: TripCalendar | undefined
+  plan: Pick<TripPlan, 'parks' | 'days'>,
+  calendar: TripCalendar | undefined,
+  bases: readonly Pick<TripBase, 'key' | 'parks'>[] | undefined
 ): { date: string; wait: number; delta: number } | null {
   const first = day.kind === 'park' ? day.parks[0] : undefined;
   const summary = first ? plan.parks.find((p) => p.slug === first.slug) : undefined;
   if (!first || !summary) return null;
   return runnerUp(
     {
-      alternatives: summary.alternatives.map((alt) => ({
-        ...alt,
-        headlinerWait: shownWaitOn(calendar, first.slug, alt.date, alt.headlinerWait),
-      })),
+      alternatives: usableAlternatives(summary.alternatives, first.slug, plan.days, bases).map(
+        (alt) => ({
+          ...alt,
+          headlinerWait: shownWaitOn(calendar, first.slug, alt.date, alt.headlinerWait),
+        })
+      ),
     },
     shownDayWait(day, calendar)
   );

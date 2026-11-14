@@ -84,6 +84,7 @@ import {
   tripMonthWeeks,
   weekPages,
   spareSuggestions,
+  usableAlternatives,
   weekColumns,
   weekHalfTracks,
   weekTemplate,
@@ -3111,6 +3112,41 @@ const keys = { parks: new Set(ORDER), areas: new Set(['disney', 'universal']) };
       ['tokyo-disneyland', '2027-01-24', 60, 2],
       ['tokyo-disneysea', '2027-01-24', 130, 2],
     ]
+  );
+}
+
+{
+  const days = [
+    { date: '2027-01-14', kind: 'arrival', base: 'osaka' },
+    { date: '2027-01-15', kind: 'park', base: 'osaka' },
+    { date: '2027-01-16', kind: 'park', base: 'osaka' },
+    { date: '2027-01-17', kind: 'travel', base: 'tokyo' },
+    { date: '2027-01-18', kind: 'park', base: 'tokyo' },
+    { date: '2027-01-19', kind: 'rest', base: 'tokyo' },
+    { date: '2027-01-20', kind: 'departure', base: 'tokyo' },
+  ];
+  const bases = [
+    { key: 'tokyo', parks: [{ slug: 'tokyo-disneyland' }] },
+    { key: 'osaka', parks: [{ slug: 'universal-studios-japan' }] },
+  ];
+  const alternatives = [
+    '2027-01-14',
+    '2027-01-16',
+    '2027-01-17',
+    '2027-01-18',
+    '2027-01-19',
+    '2027-01-20',
+    '2027-01-30',
+  ].map((date) => ({ date, headlinerWait: 40 }));
+  test(
+    'a runner-up is a day the plan could use: in a city that reaches the park, never a travel day',
+    usableAlternatives(alternatives, 'tokyo-disneyland', days, bases).map((a) => a.date),
+    ['2027-01-18', '2027-01-19']
+  );
+  test(
+    'without bases only the travel days drop out',
+    usableAlternatives(alternatives, 'tokyo-disneyland', days, undefined).map((a) => a.date),
+    ['2027-01-16', '2027-01-18', '2027-01-19']
   );
 }
 

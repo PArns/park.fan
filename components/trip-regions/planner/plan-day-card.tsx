@@ -71,7 +71,7 @@ export function PlanDayCard({
   const t = useTranslations('tripPlanner');
   const tRegion = useTranslations('tripRegion.planner');
   const tLevel = useTranslations('parks.crowdLevels');
-  const { locale, timeZone, state, photos, parkBySlug, parkName } = usePlanContext();
+  const { locale, timeZone, state, photos, parkBySlug, parkName, region } = usePlanContext();
   const parksOf = useDayParks();
   const markerText = useDayMarkerText();
   const eveningOf = useEveningName();
@@ -95,7 +95,7 @@ export function PlanDayCard({
   const short = (d: string) =>
     formatParkDay(locale, d, { weekday: 'short', day: 'numeric', month: 'short' });
 
-  const why = dayWhy(day, dayRunnerUp(day, plan, calendar));
+  const why = dayWhy(day, dayRunnerUp(day, plan, calendar, region.bases));
   const reason = why.reason
     ? regionOrShared(tRegion, t, `reason.${why.reason}`, {
         park: first ? parkName(first.slug) : '',

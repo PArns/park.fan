@@ -201,7 +201,7 @@ function DayDetails({
   };
   const first = day.parks[0];
   const wait = shownDayWait(day, calendar);
-  const runner = dayRunnerUp(day, plan, calendar);
+  const runner = dayRunnerUp(day, plan, calendar, region.bases);
   // The runner-up line says the same as `runner_up_close`, with its numbers; one of the two.
   const reason = primaryReason(
     runner ? { ...day, reasons: day.reasons.filter((r) => r !== 'runner_up_close') } : day
