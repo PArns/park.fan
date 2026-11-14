@@ -156,8 +156,8 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`plan-analytics.ts`](../../lib/trip-regions/plan-analytics.ts)
 
 - `trackTripEvent` _function_: Report a trip planner event for the region it plans, by its slug (`orlando`).
-- `trackDatesStart` _function_: The desk's way in: the first dates picked in a page load where nothing else started the planner (the hero, its button, a link) count as its start, `source: dates`.
 - `leftOutBucket` _function_: How many parks a plan left out, as `trip_left_out_fix` buckets it.
+- `skippedBucket` _function_: How many steps of the assistant were skipped, as `trip_wizard_finished` buckets it.
 - `tripOptionChanges` _function_: `trip_option_changed` for one change of the planner's state, one entry per option it touched, in the order the options are listed. Dates, pins, tickets and the hopper are not options: their own events count them.
 - `sellerProp` _function_: A seller's name as a property value: the characters the statistic keeps, at most 60.
 - `hostProp` _function_: A link's host without `www.`, or `unknown` for a url that is none.
@@ -411,9 +411,8 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`planner-ui.ts`](../../lib/trip-regions/planner-ui.ts)
 
-"Start the planner", as a signal from outside the planner: the hub's hero action asks, the mounted `TripRegionPlanner` answers.
-
 - `tripPlannerUi` _const_: The trip planner's open signal.
+- Types: `TripPlannerStartSource`, `TripPlannerRequest`
 
 ### [`redirects.ts`](../../lib/trip-regions/redirects.ts)
 
@@ -489,6 +488,15 @@ by hand: change the comment in the code and re-run the script. -->
 - `TRIP_MONTH_WINDOW` _const_: Twelve hours fresh: a month page's forecast is rebuilt twice a day.
 - Types: `TripRegionRedirect`, `TripRegionRewrite`, `TripRegionWindow`
 
+### [`spare-days.ts`](../../lib/trip-regions/spare-days.ts)
+
+- `isFreeDay` _function_: A free day: one the API marks `spare`; from an API that does not mark them yet, every rest day the visitor did not pin.
+- `longestFreeRun` _function_: The longest run of free days in a row.
+- `spareQuestion` _function_: The question for a plan, or `null` where the trip does not need it: asked once the free days outnumber the park days, or more than `LONG_FREE_RUN` of them fall in a row.
+- `answerSpare` _function_: The state an answer leads to, from the state the question was asked for.
+- `LONG_FREE_RUN` _const_: More free days than this in a row are worth a question even where the park days outnumber them.
+- Types: `SpareChoice`, `SpareQuestion`
+
 ### [`ticket-answer.ts`](../../lib/trip-regions/ticket-answer.ts)
 
 - `tripTicketAnswer` _function_: Whether this browser answered "Do you already have tickets?", so the walk asks once and the Tickets row knows how to word itself.
@@ -507,3 +515,15 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`types.ts`](../../lib/trip-regions/types.ts)
 
 - Types: `TripParkType`, `TripRegionGroup`, `TripRegionPark`, `TripEarlyKind`, `TripPerk`, `TripHotel`, `TripTicketMarkets`, `TripStormSeason`, `TripWeather`, `TripHotelArea`, `TripTransportMode`, `TripTransportAlternative`, `TripLeg`, `TripTravel`, `TripVenue`, `TicketHopping`, `TicketStore`, `TicketLink`, `TicketProduct`, `TripTicketCatalog`, `TripGateway`, `TripBasePark`, `TripBase`, `TripBaseLegNote`, `TripBaseLeg`, `TripStayRules`, `TripRegion`, `TripDayStatus`, `TripBasis`, `TripCrowdLevel`, `TripSlot`, `TripEveningKind`, `TripParkDay`, `TripBestWhy`, `TripCalendarDay`, `TripSeason`, `TripCalendarMeta`, `TripCalendar`, `TripBestDayReason`, `TripBestDay`, `TripParkBestDays`, `TripGroupBestDays`, `TripBestDays`, `TripWhenReason`, `TripWhenWarning`, `TripWhenWindow`, `TripWhenWeek`, `TripWhen`, `TripForecastAccuracy`, `TripMonth`, `TripMonthClimate`, `TripWhenMonth`, `TripWhenWithMonths`, `TripSchoolBreakRegion`, `TripSchoolBreaks`
+
+### [`wizard-steps.ts`](../../lib/trip-regions/wizard-steps.ts)
+
+- `wizardQuestions` _function_: The questions of every step for a region, before any merging, in the order of the steps.
+- `tripWizardSteps` _function_: The assistant's steps for a region: a step with one question goes into its neighbour, the option step before it, else the one after (Japan's evening question sits in Tempo, Paris' hotel for a weekend in the Route).
+- `tripWizardFacts` _function_: The facts of a region and a trip, as `tripWizardSteps` reads them: the API's region, the registry's entry, the ticket catalog and the trip's dates.
+- `stepQuestions` _function_: The questions of one step's body inside a drawn step: the host's own, or a merged step's.
+- `wizardStepIndex` _function_: Where a step sits in the list: its own index, the index of the step it went into, or where the region has no such step, the first step after it (`hotel` in Japan opens the Route). `-1` only past the last.
+- `TRIP_WIZARD_STEPS` _const_: A step of the assistant, in the order it is asked. The finale is no step: it follows the last.
+- `MIN_NIGHTS_FOR_A_MOVE` _const_: A hotel change needs a night on each side and a night to change on: with fewer the trip sleeps in one city, so the change's buffer is not asked.
+- `QUESTION_STEP` _const_: The step each question belongs to, wherever it is drawn.
+- Types: `TripWizardStepKey`, `TripWizardQuestion`, `TripWizardFacts`, `TripWizardStep`

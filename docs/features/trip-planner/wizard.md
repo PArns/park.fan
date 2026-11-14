@@ -2,7 +2,8 @@
 
 `PlannerWizard` (`components/planner/planner-wizard.tsx`) is the way into a new day: four questions
 in the order somebody answers them, then the park's own page with the panel open. Open this when
-changing a step, the dialog's frame or the day card.
+changing a step, the dialog's frame or the day card. The trip planner's assistant, which shares its
+cards and its rail, is [further down](#the-trip-planners-assistant).
 
 ## The steps
 
@@ -80,3 +81,131 @@ It asks whether the **day on screen** is already this park's, not whether the st
 of the park: `openDay` registers a park with no entry and `removeEntry` leaves an empty day behind,
 so a stored husk used to silence the offer for good. On Toverland's page with a Phantasialand day
 open, the offer is Toverland.
+
+## The parts both assistants share
+
+- **`WizardToggle`** (`components/planner/wizard-toggle.tsx`): one yes/no question as a card, the
+  whole card a `button aria-pressed`, with an icon tile, a title, a sentence and the round check.
+  The day planner's setup step and the trip planner's assistant use it.
+- **`WizardOptionCard`** and **`WizardOptionGroup`** (`components/planner/wizard-option-card.tsx`):
+  one answer of several as a card, an icon or a photo, a title, a sentence, the check, and on the
+  right the answer's effect (`aside`, „+2 Parktage“). It is the one option card of the planners:
+  hotels, gateways, ticket answers and the free-days question all draw it, and a new option card is
+  a prop here, not a second component. The group is `role="radiogroup"`, named by the question
+  (`labelledBy`), and owns the arrow keys with a roving tabindex as `PlanSegmented` does. `dashed`
+  draws an answer that leaves the choice to the plan, `size="tile"` two big cards side by side.
+- **`PlannerStepRail`** takes `reachable`: the last step a press may jump to. The day planner leaves
+  it at the current step; the trip planner raises it to the last step once the dates are chosen,
+  because every step after them is optional. `jumpLabel` names each step's button („Schritt 4,
+  Hotels“).
+- **`ENTER_BELONGS_TO`** and **`STEP_MOTION`** live beside the rail: Enter means Next only where the
+  focused element does not own the key, and a step slides in by CSS under `motion-safe`.
+
+## The trip planner's assistant
+
+`TripWizard` (`components/trip-regions/wizard/trip-wizard.tsx`) asks the hub's trip planner one
+question a screen. It is a dialog: the whole height of a phone, a stage of at most 768 px in the
+middle of a desk. „Reise planen“ in the planner chapter and the hub (`tripPlannerUi.openStart`)
+open it on the dates; the result's ways back in (`PlanEdit`, and the answer chips through
+`tripPlannerUi.openStep`) open it on their step. The phone's Back button closes it, as it closed the
+sheets before. Every answer writes the planner's state, the address, through `usePlanContext`, so
+the assistant is a view on the plan: shared links, Parky and „Copy link“ keep working, and leaving
+in the middle keeps every answer given.
+
+### The steps
+
+`lib/trip-regions/wizard-steps.ts` works the steps out of the region's data, never per region by
+hand: dates, parks, hotel (a region without bases) or route and hotels per city (Japan, Paris),
+tempo, evenings, tickets, then the finale. Each step lists its questions (`TripWizardQuestion`); a
+step with one question goes into the option step before it, else the one after. Dates, parks and
+tickets never merge. So Japan's evening question, the only one there since Tokyo Disney sells no
+hopper, sits in Tempo, and a Paris trip of two nights or fewer has no hotel change, so its hotel per
+city sits in the Route (`MIN_NIGHTS_FOR_A_MOVE`). A region without a ticket catalog has no ticket
+step. `pnpm test:wizard-steps` pins the four regions' lists.
+
+A step body is a component under `components/trip-regions/wizard/steps/`, registered in
+`WIZARD_STEP_BODIES` (`steps/index.tsx`); a step without a body is left out. It receives
+`WizardStepProps` (`wizard-step.tsx`): its `questions`, `merged` when it is drawn inside another
+step, and `askId`, the id of Parky's question for a radiogroup's name. It draws only those
+questions and owns no title, footer or focus. `useWizardAsk` words Parky's question from data where
+the step's default (`tripPlanner.wizard.ask.<step>`) is not enough; `useWizardFrame` hands over the
+ticket step, the month a month page opens on, the planner's `PlanEdit` and „Plan jetzt zeigen“.
+
+### The band
+
+`WizardGuideBand`: the region's Parky scene (`useRegionScene`, the registry's loader) right-aligned
+at its own 2 : 1 and faded into the card's ground on its left (`mask-l-from-65%`), so Parky is
+never cropped at 360, 390 or 1280 px. The band is 128 px tall on a phone and 160 px at a desk. On
+the left the line over the question (region and step, then region and dates, then „Fertig“) and
+the speech bubble, whose tail points at Parky. The bubble stands on the card's ground, not on the
+scene, is the dialog's title and takes the focus on every new step, so a screen reader reads the
+question first. The evenings step gives the scene's container `dark`, its night version in either
+theme.
+
+### The frame
+
+- **Rail:** the step's labels („Daten, Parks, Route, Hotels, Tempo, Tickets“), walked steps as
+  buttons, and once the dates are chosen every step.
+- **Footer:** the plan ribbon once the trip has dates, then Back, Skip and Next. The first step has
+  neither Back nor Skip, and Next waits for the departure; in the When mode it reads „Reisedaten
+  suchen“ and leaves for the search's answer. The last step's Next is „Fertig, Plan ansehen“, which
+  leads to the finale; a phone hides its Skip there, which would do the same and leaves the label
+  no room.
+- **Enter** runs the footer's primary control, with `ENTER_BELONGS_TO` as the guard.
+- **Leaving for the plan** closes the dialog and puts the answer at the top of the screen with the
+  focus in it.
+
+`PlanRibbon` (`plan-ribbon.tsx`) is the plan as one row: a field per day, a park day in its crowd
+colour with the park's code (`parkLabel`), a free day empty, a travel day dashed. The row is
+`aria-hidden`; the line under it („6 Parktage, 8 frei · Spitze etwa 78 Min.“, the peak from
+`planSavings` and `shownTotals` as the result's) is `aria-live` and changes once the API has
+answered, not on each press.
+
+### Dates and parks
+
+The dates step is the planner's date grid (`PlanDatesStep`) with a row of month chips over it
+(`monthChips`): a trip three months out is one press, not three. Once the arrival is pressed, Parky
+asks „Und wann fliegst du zurück?“ (`onPending`).
+
+The parks step draws a card per park, by resort: the photo (`tripPlannerPhotos`) or a tinted field
+with the park's code, the card itself a checkbox, and a chosen card's stepper („Tage − 2 +“, the
+`visitSteps` of the setup). A park not chosen is paler and names the way there, from the hotel area
+or from the nearest city of a region with bases („Etwa 110 Min. mit dem Fernbus ab Tokio“); a park
+closed on every day of the trip says so before anyone chooses it. More than four parks outside the
+headliners fold behind one row.
+
+Where the plan left chosen parks out (`parksLeftOut`, until the API names the conflict with a code),
+Parky says which, and up to three cards make room, each counted as `trip_left_out_fix`: a park on
+the travel days, only the parks left out (where they are most of the choice, a Paris weekend's two
+Disney parks against Parc Astérix), and a longer trip.
+
+### Days without a park
+
+`SpareDaysQuestion`, from `lib/trip-regions/spare-days.ts`: once the free days outnumber the park
+days, or more than three fall in a row (`LONG_FREE_RUN`), the parks step asks what should happen on
+them. A free day is one the API marks `spare` (2.21.1), from an older API any rest day nobody
+pinned. Four answers, each with its effect on the right: more parks (the API's `spareDayParks`, else
+the region's other parks), one more day in each chosen park, free days spread over the trip (what
+the plan does already, so chosen to start with), and a shorter trip, last because it changes the
+dates. An answer writes the state at once; another answer starts again from the state the question
+was asked for, and the figures stay those of that plan while the step is open.
+
+### Tickets and the finale
+
+The tickets step has two big answers: „Noch nicht“, with the plan's ticket card under it
+(`PlanTicketsCard`, the result's), and „Ja, schon gekauft“, which opens the planner's ticket step
+(`PlanTickets`, counted as `trip_tickets_opened` with `from: wizard`). Back to „Noch nicht“ takes the
+tickets entered there out of the plan.
+
+The finale („Dein Plan steht.“) shows the planned parks as `PlannerPolaroids`, the trip in one line
+(days, park days, cities), the peak wait against the trip's average in the result's words, the
+ribbon from the first day to the last, and short lines from the plan: the cities and their nights,
+the parks it had no day for, and that the day planner asks who comes along for each park day.
+
+### What it counts
+
+`trip_wizard_step` (`step`, `via`: next, skip, back, jump, answers) when a step comes on screen;
+the first screen of a start is `trip_planner_started`. `trip_wizard_finished` (`skipped` 0, 1, 2,
+3+; `early` for „Plan jetzt zeigen“ before the last step), `trip_wizard_closed` (`step`) for an
+assistant closed without the plan, `trip_spare_choice` (`choice`). The inventory:
+[analytics](../../development/analytics.md#our-own-events).

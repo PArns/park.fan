@@ -180,6 +180,7 @@ export const ROUTE_MESSAGE_NAMESPACES = {
     'tripRegion.hub.calendar',
     'tripRegion.hub.lanes',
     'tripRegion.hub.sheet',
+    'tripRegion.nav',
     'tripRegion.planner',
   ],
   '/trip-regions/[region]/best-time-to-visit/[[...resort]]': [],

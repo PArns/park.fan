@@ -3788,7 +3788,89 @@
     },
     "codeKey": "Parcs",
     "crowdColour": "Couleur : l’affluence du parc ce jour-là, comparée à un jour normal chez lui.",
-    "peakWait": "attente de pointe d’environ {minutes} min"
+    "peakWait": "attente de pointe d’environ {minutes} min",
+    "wizard": {
+      "progress": "Progression",
+      "stepOf": "Étape {step} sur {total}",
+      "jump": "Étape {step}, {label}",
+      "finished": "Terminé",
+      "back": "Retour",
+      "skip": "Passer",
+      "next": "Suivant",
+      "finish": "Terminé, voir le plan",
+      "showPlan": "Voir le plan",
+      "steps": {
+        "dates": "Dates",
+        "parks": "Parcs",
+        "hotel": "Hôtel",
+        "route": "Itinéraire",
+        "hotels": "Hôtels",
+        "pace": "Rythme",
+        "evenings": "Soirées",
+        "tickets": "Billets"
+      },
+      "ask": {
+        "dates": "Quand es-tu {inRegion} ?",
+        "parks": "Quels parcs veux-tu voir ?",
+        "hotel": "Où dors-tu ?",
+        "route": "Où atterris-tu, et où vas-tu ensuite ?",
+        "hotels": "Dans quel quartier dors-tu ?",
+        "pace": "À quel point le voyage doit-il être chargé ?",
+        "evenings": "Et le soir ?",
+        "tickets": "As-tu déjà des billets ?",
+        "finale": "Ton plan est prêt.",
+        "departure": "Et quand prends-tu l’avion du retour ?"
+      },
+      "ribbon": {
+        "parkDays": "{count, plural, =1 {1 jour de parc} other {# jours de parc}}",
+        "free": "{count, plural, =1 {1 libre} other {# libres}}",
+        "peak": "pointe d’environ {minutes} min",
+        "show": "Voir le plan maintenant"
+      },
+      "dates": {
+        "months": "Mois"
+      },
+      "parks": {
+        "lead": "Les grands parcs sont déjà choisis. Touche une photo pour ajouter un parc ou le retirer.",
+        "daysLabel": "Jours",
+        "moreCount": "{count, plural, =1 {1 parc} other {# parcs}}",
+        "wayFrom": "{way} depuis {city}",
+        "conflict": {
+          "travelDays": "Le voyage compte alors {count, plural, =1 {1 jour de parc} other {# jours de parc}}.",
+          "only": "Seulement {parks}",
+          "onlyHint": "{parks} {count, plural, =1 {sort} other {sortent}} du plan.",
+          "longer": "Le voyage se termine alors le {date}."
+        }
+      },
+      "spare": {
+        "title": "{count, plural, =1 {1 jour sans parc} other {# jours sans parc}}",
+        "need": "{parks, plural, =1 {Ton parc prend} other {Tes # parcs prennent}} {parkDays} des {days} jours.",
+        "planned": "{count, plural, =1 {1 autre est déjà prévu} other {# autres sont déjà prévus}}.",
+        "ask": "Que faire des {free} qui restent ?",
+        "moreParks": "Ajouter d’autres parcs",
+        "moreParksHint": "{parks} {count, plural, =1 {s’ajoute} other {s’ajoutent}} au voyage.",
+        "moreDays": "Plus de temps dans tes parcs",
+        "moreDaysHint": "Un jour de plus pour {parks}.",
+        "free": "Des jours libres, répartis sur le voyage",
+        "freeHint": "Le plan les place entre les jours de parc, pour la ville ou pour se reposer.",
+        "shorter": "Voyager moins longtemps",
+        "shorterHint": "{days} jours suffisent pour {parks, plural, =1 {1 parc} other {# parcs}}.",
+        "parkDays": "+{count, plural, =1 {1 jour de parc} other {# jours de parc}}",
+        "days": "{count} jours"
+      },
+      "tickets": {
+        "notYet": "Pas encore",
+        "notYetHint": "Le plan te dit lesquels il te faut.",
+        "owned": "Oui, déjà achetés",
+        "ownedHint": "Saisis-les, et le plan suit leurs dates."
+      },
+      "finale": {
+        "days": "{count, plural, =1 {1 jour} other {# jours}}",
+        "cities": "{count, plural, =1 {1 ville} other {# villes}}",
+        "stays": "D’abord {first}, puis {rest}.",
+        "dayPlanner": "Le planificateur de journée demande pour chaque jour de parc qui vient et la taille des plus petits."
+      }
+    }
   },
   "tripRegions": {
     "orlando": {

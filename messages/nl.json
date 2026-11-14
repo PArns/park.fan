@@ -3788,7 +3788,89 @@
     },
     "codeKey": "Parken",
     "crowdColour": "Kleur: hoe druk het park die dag is, vergeleken met een normale dag daar.",
-    "peakWait": "piekwachttijd ongeveer {minutes} min"
+    "peakWait": "piekwachttijd ongeveer {minutes} min",
+    "wizard": {
+      "progress": "Voortgang",
+      "stepOf": "Stap {step} van {total}",
+      "jump": "Stap {step}, {label}",
+      "finished": "Klaar",
+      "back": "Terug",
+      "skip": "Overslaan",
+      "next": "Verder",
+      "finish": "Klaar, plan bekijken",
+      "showPlan": "Plan bekijken",
+      "steps": {
+        "dates": "Data",
+        "parks": "Parken",
+        "hotel": "Hotel",
+        "route": "Route",
+        "hotels": "Hotels",
+        "pace": "Tempo",
+        "evenings": "Avonden",
+        "tickets": "Tickets"
+      },
+      "ask": {
+        "dates": "Wanneer ben je {inRegion}?",
+        "parks": "Welke parken wil je zien?",
+        "hotel": "Waar slaap je?",
+        "route": "Waar land je, en waar ga je daarna heen?",
+        "hotels": "In welke buurt slaap je?",
+        "pace": "Hoe vol moet de reis zijn?",
+        "evenings": "En 's avonds?",
+        "tickets": "Heb je al tickets?",
+        "finale": "Je plan staat.",
+        "departure": "En wanneer vlieg je terug?"
+      },
+      "ribbon": {
+        "parkDays": "{count, plural, =1 {1 parkdag} other {# parkdagen}}",
+        "free": "{count} vrij",
+        "peak": "piek ongeveer {minutes} min",
+        "show": "Plan nu tonen"
+      },
+      "dates": {
+        "months": "Maand"
+      },
+      "parks": {
+        "lead": "De grote parken zijn al gekozen. Tik op een foto om een park toe te voegen of weg te halen.",
+        "daysLabel": "Dagen",
+        "moreCount": "{count, plural, =1 {1 park} other {# parken}}",
+        "wayFrom": "{way} vanaf {city}",
+        "conflict": {
+          "travelDays": "Dan heeft de reis {count, plural, =1 {1 parkdag} other {# parkdagen}}.",
+          "only": "Alleen {parks}",
+          "onlyHint": "{parks} {count, plural, =1 {valt} other {vallen}} daarvoor af.",
+          "longer": "De reis eindigt dan op {date}."
+        }
+      },
+      "spare": {
+        "title": "{count, plural, =1 {1 dag zonder park} other {# dagen zonder park}}",
+        "need": "{parks, plural, =1 {Je park heeft} other {Je # parken hebben}} {parkDays} van de {days} dagen nodig.",
+        "planned": "{count, plural, =1 {Nog 1 dag ligt al vast} other {Nog # dagen liggen al vast}}.",
+        "ask": "Wat moet er op de andere {free} gebeuren?",
+        "moreParks": "Meer parken toevoegen",
+        "moreParksHint": "{parks} {count, plural, =1 {komt} other {komen}} erbij.",
+        "moreDays": "Meer tijd in je parken",
+        "moreDaysHint": "{parks} elk een dag extra.",
+        "free": "Vrije dagen, verspreid over de reis",
+        "freeHint": "Het plan zet ze tussen de parkdagen, voor de stad of om uit te rusten.",
+        "shorter": "Korter reizen",
+        "shorterHint": "Voor {parks, plural, =1 {1 park} other {# parken}} zijn {days} dagen genoeg.",
+        "parkDays": "+{count, plural, =1 {1 parkdag} other {# parkdagen}}",
+        "days": "{count} dagen"
+      },
+      "tickets": {
+        "notYet": "Nog niet",
+        "notYetHint": "Het plan zegt je welke je nodig hebt.",
+        "owned": "Ja, al gekocht",
+        "ownedHint": "Vul ze in, dan houdt het plan zich aan hun data."
+      },
+      "finale": {
+        "days": "{count, plural, =1 {1 dag} other {# dagen}}",
+        "cities": "{count, plural, =1 {1 stad} other {# steden}}",
+        "stays": "Eerst {first}, dan {rest}.",
+        "dayPlanner": "Wie er meegaat en hoe groot de kleinsten zijn, vraagt de dagplanner per parkdag."
+      }
+    }
   },
   "tripRegions": {
     "orlando": {

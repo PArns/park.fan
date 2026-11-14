@@ -157,10 +157,6 @@ by hand: change the comment in the code and re-run the script. -->
 - `PlanOptions` _component_: More options: everything the plan can be told beyond dates and parks, each with the default the API plans with already chosen, so nothing here is required.
 - `usePlanOptionsSummary` _hook_: The options' one-line summary ("Disney hotel · resorts together · rest days on busy days"), the defaults included, so the line under "More options" says what the plan assumes without opening it.
 
-### [`planner/plan-parks.tsx`](../../components/trip-regions/planner/plan-parks.tsx)
-
-- `PlanParks` _component_: Which parks: one checkbox each, the headliners by resort and the water parks, SeaWorld's parks and the day trips behind "More parks" with the drive from the hotel area and what their days hold.
-
 ### [`planner/plan-place-words.tsx`](../../components/trip-regions/planner/plan-place-words.tsx)
 
 - `useAreaName` _hook_: A hotel area's name: "Universal-Hotels" in German, where the API says "Universal Orlando hotels".
@@ -178,9 +174,8 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`planner/plan-setup.tsx`](../../components/trip-regions/planner/plan-setup.tsx)
 
-- `PlanSetup` _component_: Dates and Parks first, the only two things a plan needs, and the parks start chosen: the region's headliners.
-- `PLAN_WIDE_QUERY` _const_: `lg`, where the setup is drawn inline; below it the same panels are sheets.
-- Types: `PlanSheetStep`, `PlanSetupRoute`
+- `PLAN_WIDE_QUERY` _const_: `lg`, where the planner's result draws its panels inline; below it the same panels are sheets. The questions themselves are the assistant's (`TripWizard`) at every width.
+- Types: `PlanSetupRoute`
 
 ### [`planner/plan-sheet.tsx`](../../components/trip-regions/planner/plan-sheet.tsx)
 
@@ -265,3 +260,49 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`trip-region-home-stop.tsx`](../../components/trip-regions/trip-region-home-stop.tsx)
 
 - `TripRegionHomeStop` _component_: The homepage's stop for a trip region's hub: what it is and its link, in the region's own words (`tripRegions.<slug>.homeStory`), beside the region's parks by resort, from the open `/trip-regions/:region` (a day in the Data Cache).
+
+### [`wizard/plan-ribbon.tsx`](../../components/trip-regions/wizard/plan-ribbon.tsx)
+
+- `PlanRibbon` _component_: The plan in one row while the assistant asks: a field per trip day, a park day in its crowd colour with the park's code, a free day empty, a travel day dashed, and under it the plan's park days, free days and peak wait.
+
+### [`wizard/steps/dates-step.tsx`](../../components/trip-regions/wizard/steps/dates-step.tsx)
+
+- `DatesStep` _component_: Step 1, the dates, the one answer the plan needs: the planner's date grid with month chips over it, and "No dates yet? Find the best time" under it.
+
+### [`wizard/steps/finale-step.tsx`](../../components/trip-regions/wizard/steps/finale-step.tsx)
+
+- `FinaleStep` _component_: The finale after the last step, "Your plan is ready": the planned parks as polaroids, the trip in one line (days, park days, cities), the peak wait against the trip's average in the result's own words (`planSavings`), the plan as a ribbon …
+
+### [`wizard/steps/index.tsx`](../../components/trip-regions/wizard/steps/index.tsx)
+
+- `WIZARD_STEP_BODIES` _const_: Each step's body by its key. A step the list has and this registry lacks is left out of the assistant, so a region never shows an empty screen; a new step is a body here and its key in `TRIP_WIZARD_STEPS`.
+
+### [`wizard/steps/parks-step.tsx`](../../components/trip-regions/wizard/steps/parks-step.tsx)
+
+- `ParksStep` _component_: Step 2, the parks: a card per park with its photo, by resort, the headliners chosen to start with.
+
+### [`wizard/steps/spare-days-question.tsx`](../../components/trip-regions/wizard/steps/spare-days-question.tsx)
+
+- `SpareDaysQuestion` _component_: "8 days without a park": asked in the Parks step once a trip has more free days than park days, or more than three in a row (`spareQuestion`), with four answers, each with its effect on the right: more parks (the API's `spareDayParks`), …
+
+### [`wizard/steps/tickets-step.tsx`](../../components/trip-regions/wizard/steps/tickets-step.tsx)
+
+- `TicketsStep` _component_: The last step, "Do you have tickets yet?": two big answers.
+
+### [`wizard/trip-wizard.tsx`](../../components/trip-regions/wizard/trip-wizard.tsx)
+
+- `TripWizard` _component_: The trip planner's assistant: one question a screen, asked by Parky from the region's scene (`WizardGuideBand`), the step rail, the step's cards, and a footer with the plan as a ribbon (`PlanRibbon`) once the trip has dates.
+- `useWizardSteps` _hook_: The assistant's steps for the planner's region and trip (`tripWizardSteps`), only those with a body in `WIZARD_STEP_BODIES`. The list follows the trip's nights, so a Paris weekend's hotel goes into the Route once its dates are chosen.
+- Types: `TripWizardScreen`, `TripWizardAt`
+
+### [`wizard/wizard-guide-band.tsx`](../../components/trip-regions/wizard/wizard-guide-band.tsx)
+
+- `WizardGuideBand` _component_: The assistant's band: the region's Parky scene on the right, always at its own 2 : 1 and fading into the card's ground on its left, so Parky is never cropped at any width; on the left the line over the question (region, dates or step) and …
+
+### [`wizard/wizard-step.tsx`](../../components/trip-regions/wizard/wizard-step.tsx)
+
+- `useWizardAsk` _hook_: Parky's question in the bubble, where a step words it from what it knows: "And when do you fly back?" once the arrival is picked, the cities of the Hotels step, a conflict in Parks.
+- `useWizardFrame` _hook_: The assistant's shared values; only inside `TripWizard`.
+- `WizardAskContext` _const_: The frame's side of `useWizardAsk`: sets the line Parky asks, `null` for the step's own.
+- `WizardFrameContext` _const_: Provides `WizardFrameValue` to the step bodies.
+- Types: `WizardStepProps`, `WizardStepBody`, `WizardFrameValue`, `WizardStepBodies`

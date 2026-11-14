@@ -3788,7 +3788,89 @@
     },
     "codeKey": "Parks",
     "crowdColour": "Colour: how busy the park is that day, compared with a normal day there.",
-    "peakWait": "peak wait about {minutes} min"
+    "peakWait": "peak wait about {minutes} min",
+    "wizard": {
+      "progress": "Progress",
+      "stepOf": "Step {step} of {total}",
+      "jump": "Step {step}, {label}",
+      "finished": "Done",
+      "back": "Back",
+      "skip": "Skip",
+      "next": "Next",
+      "finish": "Done, see the plan",
+      "showPlan": "See the plan",
+      "steps": {
+        "dates": "Dates",
+        "parks": "Parks",
+        "hotel": "Hotel",
+        "route": "Route",
+        "hotels": "Hotels",
+        "pace": "Pace",
+        "evenings": "Evenings",
+        "tickets": "Tickets"
+      },
+      "ask": {
+        "dates": "When are you {inRegion}?",
+        "parks": "Which parks do you want to see?",
+        "hotel": "Where are you staying?",
+        "route": "Where do you land, and where next?",
+        "hotels": "Which area are you staying in?",
+        "pace": "How full should the trip be?",
+        "evenings": "And in the evenings?",
+        "tickets": "Do you have tickets yet?",
+        "finale": "Your plan is ready.",
+        "departure": "And when do you fly home?"
+      },
+      "ribbon": {
+        "parkDays": "{count, plural, =1 {1 park day} other {# park days}}",
+        "free": "{count} free",
+        "peak": "peak about {minutes} min",
+        "show": "Show the plan now"
+      },
+      "dates": {
+        "months": "Month"
+      },
+      "parks": {
+        "lead": "The big ones are chosen already. Tap a picture to add a park or take it out.",
+        "daysLabel": "Days",
+        "moreCount": "{count, plural, =1 {1 park} other {# parks}}",
+        "wayFrom": "{way} from {city}",
+        "conflict": {
+          "travelDays": "The trip then has {count, plural, =1 {1 park day} other {# park days}}.",
+          "only": "Only {parks}",
+          "onlyHint": "{parks} {count, plural, =1 {is} other {are}} left out instead.",
+          "longer": "The trip then ends on {date}."
+        }
+      },
+      "spare": {
+        "title": "{count, plural, =1 {1 day without a park} other {# days without a park}}",
+        "need": "{parks, plural, =1 {Your park needs} other {Your # parks need}} {parkDays} of the {days} days.",
+        "planned": "{count, plural, =1 {1 more is already taken} other {# more are already taken}}.",
+        "ask": "What should happen on the other {free}?",
+        "moreParks": "Add more parks",
+        "moreParksHint": "{parks} {count, plural, =1 {joins} other {join}} the trip.",
+        "moreDays": "More time in your parks",
+        "moreDaysHint": "One more day each at {parks}.",
+        "free": "Free days, spread over the trip",
+        "freeHint": "The plan puts them between the park days, for the city or for a rest.",
+        "shorter": "A shorter trip",
+        "shorterHint": "{days} days are enough for {parks, plural, =1 {1 park} other {# parks}}.",
+        "parkDays": "+{count, plural, =1 {1 park day} other {# park days}}",
+        "days": "{count} days"
+      },
+      "tickets": {
+        "notYet": "Not yet",
+        "notYetHint": "The plan tells you which ones you need.",
+        "owned": "Yes, bought already",
+        "ownedHint": "Enter them, and the plan keeps to their dates."
+      },
+      "finale": {
+        "days": "{count, plural, =1 {1 day} other {# days}}",
+        "cities": "{count, plural, =1 {1 city} other {# cities}}",
+        "stays": "First {first}, then {rest}.",
+        "dayPlanner": "The day planner asks for each park day who comes along and how tall the smallest are."
+      }
+    }
   },
   "tripRegions": {
     "orlando": {

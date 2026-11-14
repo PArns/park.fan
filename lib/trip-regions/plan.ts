@@ -146,6 +146,11 @@ export interface PlanDay {
   move?: PlanMove;
   /** After a morning move: when the guest gets into the park, park-local ISO. */
   startAt?: string;
+  /**
+   * A rest day nobody asked for: no pin, and no rest rule needs it (API 2.21.1). A free day, not a
+   * rest day, to the visitor.
+   */
+  spare?: boolean;
   reasons: string[];
   warnings: string[];
 }
@@ -289,6 +294,8 @@ export interface PlanTotals {
   penalties?: { heat?: number; hurricane?: number; typhoon?: number };
   parkDays: number;
   restDays: number;
+  /** Of `restDays`, those with `spare` (API 2.21.1). */
+  spareDays?: number;
   visits: number;
   /** In a region with bases: the hotel changes, and the days that are only the move. */
   moves?: number;
@@ -344,6 +351,11 @@ export interface TripPlan {
    */
   parksLeftOut?: Array<{ park: string; reason: string }>;
   ignoredLocks?: Array<{ lock: string; reason: string }>;
+  /**
+   * The region's parks the visitor did not choose that are open on a free day (`spare`), each with
+   * its three cheapest such days, in the region's order (API 2.21.1); absent when there is none.
+   */
+  spareDayParks?: Array<{ park: string; days: PlanAlternative[] }>;
 }
 
 /**
