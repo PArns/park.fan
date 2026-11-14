@@ -194,6 +194,7 @@ export interface AdminAttractionDetail {
 export type ParkSeasonKind =
   | 'halloween'
   | 'christmas'
+  | 'winter'
   | 'summer_nights'
   | 'special_event'
   | 'opening'

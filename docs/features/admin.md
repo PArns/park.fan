@@ -28,7 +28,8 @@ app/admin/
   _lib/                     fetch layer (adminFetch, useAdminQuery), types, formatters, hooks
   _overview/                the overview's parts: status hero, problems, figures, area table
   parks/ attractions/       the editors
-  seasons/ retirement/ duplicates/ history/   cross-cutting curation views
+  seasons/                  every park's seasons, and the season form the park page shares (below)
+  retirement/ duplicates/ history/   cross-cutting curation views
   tickets/                  the trip planner's ticket catalog (below)
   data-quality/             detectors with an answer button per card
   capture/                  the field screen (below)
@@ -42,7 +43,7 @@ app/admin/
 The kit's surfaces are in `_ui/primitives.tsx`, its form controls in `_ui/controls.tsx`. A section
 of a page is a `Panel` with a `PanelHeader` and a `PanelBody`. A box inside a panel or a dialog is a
 `Tile`, a single big figure a `StatTile`, a label over a value `Meta`. Several values picked from a
-short list are `ToggleChips`, the arrows of an ordered list `MoveButtons`, and a url field is
+short list are `ToggleChips`, from a long one (parks, a park's rides) `MultiSearchSelect`, the arrows of an ordered list `MoveButtons`, and a url field is
 `UrlInput`, which carries the button that opens the address. Every pill is a `Chip` in one
 of five tones: `severityTone` and `statusTone` map the monitoring words onto them, and
 `crowdChipClass` takes the public site's crowd palette, so `moderate` is the same green "Normal"
@@ -83,13 +84,16 @@ inset's margin and border); a page that fills the viewport subtracts it, as the 
 | Group        | Entries                                                                             |
 | ------------ | ----------------------------------------------------------------------------------- |
 | (top)        | Übersicht                                                                           |
-| Kuratieren   | Parks, Saisons, Tickets, Datenqualität, Duplikate, Stilllegungen, Änderungen        |
+| Kuratieren   | Parks, Datenqualität, Duplikate, Stilllegungen, Änderungen                          |
+| Reiseplaner  | Saisons, Tickets                                                                    |
 | Inhalte      | Blog, Medien, Vor Ort, Einsendungen                                                 |
 | Publikum     | Traffic (Live, SEO, Suche, Wege, Tagesplaner, Beliebtheit), Parky (3 pages)         |
 | Betrieb      | System, Queues, ML-Zentrale (Modellvergleich), Parks live, Wartung                  |
 | Konto (foot) | Mein Konto, Konten, API-Keys: in the account menu at the sidebar's foot, and in `/` |
 
 Datenqualität sits with the editors because its cards ask curation questions (season or gone?).
+Saisons and Tickets are what the trip planner plans with, so they have a group of their own; the
+Tagesplaner under Traffic is the day planner's statistic, not an editor, and stays there.
 `NavGroup.placement` puts a group on top without a heading (`top`) or behind the account button
 (`footer`). A group folds under its heading, per group in localStorage; a folded group still shows
 the entry of the current page. The rail (collapsed sidebar) shows icons only.
@@ -223,7 +227,8 @@ lighter than, and `Panel` adds a drop shadow, an inset ring and a one-pixel top 
 
 ## API access for Claude: the consent page and the tokens
 
-The API serves an admin MCP server (`https://api.park.fan/v1/mcp`, read-only tools) and is its own
+The API serves an admin MCP server (`https://api.park.fan/v1/mcp`: read tools, and write tools for
+a grant or token that may write) and is its own
 OAuth 2.1 authorization server. This app owns the two screens a person sees: the page where an app
 asks to connect, and the list of what is connected. It has nothing to do with `/api/mcp`, the public
 wait-time server ([agent surface](../rules/nothing-here-has-a-reader-inside-the-site.md)). The
@@ -236,8 +241,10 @@ page; everything below is what the admin does with them.
 `GET /v1/oauth/authorize` validates the app's request, keeps it in Redis for ten minutes and answers
 302 to this page with the request's id. The page reads it through the proxy
 (`GET /api/admin/oauth/requests/:id`), shows it, and on a click posts `approve` or `deny` to the same
-path. `approve` carries the password again (and the code when the account has a second factor) as `{ password, totpCode? }`, with the same refusals as creating a token. Both answer `{ redirectTo }`, and the page then navigates the whole window there. It works for
-every role: a viewer may connect an app too, and the app never gets more than `viewer`.
+path. `approve` carries the password again (and the code when the account has a second factor) and
+the chosen scope as `{ password, totpCode?, scope }`, with the same refusals as creating a token.
+Both answer `{ redirectTo }`, and the page then navigates the whole window there. It works for
+every role: a viewer may connect an app too, and its app only reads.
 
 What the page shows, in the order it is read:
 
@@ -251,9 +258,18 @@ What the page shows, in the order it is read:
    code goes. A loopback host reads „Programm auf diesem Rechner“, which is how Claude Code connects;
    a label starting with `xn--` is flagged, since that is how look-alike domains are written
    (`describeRedirectHost`).
-3. **What the app gets**: one line per known scope (`describeScopes`), the role cap, and who it reads
-   as. A scope the page does not know is listed raw in amber instead of being left out, so a scope
-   the API adds first is never approved unseen.
+3. **What the app gets**: the scope, the role it acts with, and who it acts as. The scopes are
+   `admin:read` (role `viewer`), `admin:write` (up to `editor`) and `admin:owner` (up to `owner`),
+   in `ADMIN_SCOPE_CAPS` (`lib/admin/mcp.ts`). An editor chooses between „Nur lesen“ and „Schreiben
+   erlauben“, an owner also „Inhaber-Rechte“, a viewer or author sees no choice
+   (`grantableScopes`). The page opens on what the app asked for, capped by the role
+   (`widestScope`, `cappedScope`), and says what was asked; whatever is chosen goes as `scope` in
+   the approve body, which is what the grant gets. The heading, the role line
+   (`describeScopeRole`: „Höchstens die Rolle Redaktion“) and the line on changes (`SCOPE_CHANGES`:
+   „Ändern kann die App nichts“ for reading) follow the choice, and „Inhaber-Rechte“ adds a warning
+   that the app can then merge, retire and manage API keys (`OWNER_SCOPE_WARNING`). A scope the page
+   does not know is listed raw in amber instead of the line on changes, so a scope the API adds
+   first is never approved unseen.
 4. **When it was started**, from the request's `createdAt` (`describeRequestAge`): „vor 2 Minuten
    gestartet“ in the footer, and above five minutes an amber notice above the buttons. Somebody who
    has just pressed „connect“ in the app arrives within seconds, so an older request was started
@@ -314,11 +330,14 @@ The section „API-Zugriff / MCP“ (`account/mcp-access.tsx`) has the address w
 (`MCP_URL` follows `NEXT_PUBLIC_API_URL`, so a preview deployment names its own API).
 
 - **The list** (`_ui/api-token-list.tsx`, `GET /api/admin/auth/tokens`) holds personal tokens and
-  OAuth grants together: a name or the app's name, the prefix, created, last used, expiry. Every row
+  OAuth grants together: a name or the app's name, the prefix, created, last used, expiry, and
+  „schreibt“ or „Inhaber-Rechte“ on one that may write. Every row
   has its revoke button behind a `ConfirmDialog` ([a list without an action](../rules/an-admin-list-without-an-action-is-unfinished.md)),
   `DELETE /api/admin/auth/tokens/:id`, and the list refetches. An expired token that is still listed
   says so.
-- **Create** takes a name, a lifetime (30, 90, 365 days, or none) and the account's password, and
+- **Create** takes a name, a lifetime (30, 90, 365 days, or none), for an editor or owner the
+  rights (the consent page's choice, „Nur lesen“ by default; the API answers 403 to a scope the
+  account cannot hold) and the account's password, and
   the six-digit code when the account has a second factor (`identity.totpEnabled`). A token
   outlives the session that issued it, so a stolen session must not be able to mint one without the
   password. The body is `createTokenBody`: `totpCode` is sent only as a full code. The dialog
@@ -452,7 +471,38 @@ serves no price above 0 without one), and that 0 means free, not unknown.
 `park_seasons` is edited on two levels because a season is often not a range: the range is the
 outer bound and an optional list of dates underneath picks the days. `dates` is `null` or a
 non-empty list, never `[]` (the API rejects it). Semantics and the Walibi Holland example are in
-the backend's curation doc.
+the backend's curation doc, the routes and checks in its
+[curation → seasons](https://github.com/PArns/v4.api.park.fan/blob/main/docs/admin/curation.md#seasons).
+
+One form edits a season wherever it is opened (`SeasonEditor`,
+`seasons/_components/season-editor.tsx`): from a park's „Saisons“ tab and from `/admin/seasons`.
+The pure half is `_lib/seasons.ts`, pinned by `pnpm test:admin-seasons`.
+
+- **`/admin/seasons`** lists every park's seasons by kind, filtered by year (the current one
+  unless the address says `year=all`), kind, status, trip region, park and „Läuft heute“. The
+  filters are the address (`seasonFiltersFrom`, `seasonFilterQuery`), so a reload or a link opens
+  the same list. „Neue Saison“ asks for the park unless the park filter names one. A row opens the
+  form, its pin opens the park.
+- **The form has every field the API takes**: park (new seasons only; a season keeps its park),
+  kind, status, name, range, hours (`type="time"`, a midnight close is 00:00), the picked days, an
+  own ticket, price and currency, the rides it concerns (`MultiSearchSelect` over the park's rides,
+  retired ones too, so a season that names one still shows its name), the park's page, the source,
+  when the source was last checked (`confirmedAt`, with „Jetzt“) and a note.
+- **The picked days** come from the calendar (two months, limited to the range), from whole
+  weekdays of the range (`weekdayDates`: a click on „Sa“ picks every Saturday, another takes them
+  off), or from a pasted list in `2026-10-03` or `3.10.2026` (`parseSeasonDates`); days outside
+  the range and text it cannot read are named, not added. Under the switch the days stand as text
+  per month (`formatSeasonDates`), and a range moved past picked days offers to remove them.
+- **The API's checks run in the form** (`seasonProblems`, at each field): real days, end not before
+  start, at most 200 characters of name and 4,000 of note, at most 366 days inside the range, a
+  price of 0 or more with a three-letter currency, `HH:MM`, http(s) addresses up to 2,000
+  characters, a readable `confirmedAt`. Save stays off until they pass; a 400 the API still sends
+  is shown above the buttons as it came.
+- **An edit sends what changed** (`seasonPatch`), and null for a field that was emptied, which the
+  API clears; the API checks the merged row whole. A new season is sent whole (`seasonBody`).
+- **Delete** asks a second time in the form, naming what goes, since no undo covers it (the audit
+  row keeps the whole season). Below `editor` the form is read-only (a disabled `fieldset`, no
+  buttons) and the days stand as text.
 
 ## The ticket catalog: `/admin/tickets`
 
