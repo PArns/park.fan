@@ -4,7 +4,7 @@ import { FEATURED_PARK_SLUGS } from '@/components/home/featured-parks-section';
 import { getMediaImageBySrc, getParkRefBySlug } from '@/lib/media';
 import { menuPhoto, type MoreMenuPhoto } from '@/lib/navigation/more-menu';
 import { getTripRegionNavFacts } from '@/lib/trip-regions/api';
-import { TRIP_PLANNER_ID, tripRegionPath } from '@/lib/trip-regions/paths';
+import { tripRegionPath } from '@/lib/trip-regions/paths';
 import { MAX_TRIP_DAYS } from '@/lib/trip-regions/plan-query';
 import { getTripRegionWords } from '@/lib/trip-regions/region-messages';
 import { LIVE_TRIP_REGIONS } from '@/lib/trip-regions/registry';
@@ -133,7 +133,8 @@ export async function getPlannerMenu(locale: Locale): Promise<PlannerMenu> {
           id: region.slug,
           name: words.name,
           area: words.area,
-          href: `${calendarHref}#${TRIP_PLANNER_ID}`,
+          // The hub from its head, where the question and the answer are, not scrolled to chapter 02.
+          href: calendarHref,
           calendarHref,
           calendarLabel: words.calendar,
           photo: menuPhoto(region.photo ? getMediaImageBySrc(region.photo) : null),
