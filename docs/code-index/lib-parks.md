@@ -67,6 +67,10 @@ by hand: change the comment in the code and re-run the script. -->
 - `closedRidesForSearch` _function_: The park's closed rides as its ride search takes them: name, slug, themed area and the month it closed as finished text, so the client tree formats nothing. `undefined` for a park without one, so the prop is simply absent from the payload.
 - Types: `ClosedRide`
 
+### [`daily-chart-window.ts`](../../lib/parks/daily-chart-window.ts)
+
+- `dailyChartWindow` _function_: The first and last 15-minute `HH:mm` slot of a day's chart from its opening and closing time.
+
 ### [`day-comparison-store.ts`](../../lib/parks/day-comparison-store.ts)
 
 Which two days of a park's calendar are being compared, across a change of month. The month is a path segment, so stepping to the next month remounts `ParkCalendarGrid` and component state cannot hold the picks.
