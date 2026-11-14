@@ -3149,7 +3149,6 @@
       "more": "{park}: un giorno in più",
       "moreParks": "Altri parchi",
       "moreChosen": "{count, plural, =1 {1 scelto} other {# scelti}}",
-      "drive": "Circa {minutes} min in auto",
       "closed": "Chiuso nelle tue date",
       "closedSeason": "Chiuso nelle tue date ({season})",
       "noHours": "Ancora nessun orario per le tue date",
@@ -3157,7 +3156,19 @@
       "days": "{count, plural, =1 {1 giorno} other {# giorni}}",
       "budgetFits": "{parks, plural, =1 {1 parco} other {# parchi}}, {days, plural, =1 {1 giorno libero} other {# giorni liberi}}: ci sta",
       "budgetOver": "{parks, plural, =1 {1 parco} other {# parchi}}, {days, plural, =1 {1 giorno libero} other {# giorni liberi}}: {over, plural, =1 {1 giorno di parco non entra} other {# giorni di parco non entrano}}",
-      "moreHint": "Altri parchi della regione"
+      "moreHint": "Altri parchi della regione",
+      "way": {
+        "drive": "Circa {minutes} min in auto",
+        "walk": "Circa {minutes} min a piedi",
+        "bus": "Circa {minutes} min in navetta",
+        "shuttle": "Circa {minutes} min in navetta",
+        "monorail": "Circa {minutes} min in monorotaia",
+        "rail": "Circa {minutes} min in treno",
+        "train": "Circa {minutes} min in treno",
+        "shinkansen": "Circa {minutes} min in Shinkansen",
+        "highway_bus": "Circa {minutes} min in pullman",
+        "other": "Circa {minutes} min di tragitto"
+      }
     },
     "options": {
       "hotel": "Hotel",
@@ -3252,12 +3263,15 @@
       "closesEarly": "chiude prima",
       "early": {
         "early_entry": "Early Entry",
-        "early_park_admission": "Early Park Admission"
+        "early_park_admission": "Early Park Admission",
+        "happy_entry": "Happy Entry",
+        "extra_magic_time": "Extra Magic Time"
       },
       "rest": "Giorno di riposo",
       "evening": "Extended Evening Hours",
       "last_year": "anno scorso",
-      "outside_ticket": "fuori dal tuo biglietto"
+      "outside_ticket": "fuori dal tuo biglietto",
+      "pinned": "fissato"
     },
     "views": {
       "label": "Vista",
@@ -3284,15 +3298,18 @@
       "legOther": "{minutes} min"
     },
     "month": {
-      "legend": "Due lettere per parco, colorate secondo quanto è affollato il giorno per quel parco; il numero è l’attesa alle grandi attrazioni in minuti."
+      "legend": "Due lettere per parco, colorate secondo quanto è affollato il giorno per quel parco; il numero è l’attesa alle grandi attrazioni in minuti.",
+      "stayKey": "La fascia sotto ogni data è la città in cui dormi; una freccia segna un cambio d’hotel."
     },
     "details": {
-      "minutesCaption": "L’attesa alle grandi attrazioni nel momento più affollato, la cifra con cui il piano confronta i giorni. Il colore confronta il giorno con un giorno tipico di questo parco.",
+      "minutesCaption": "L’attesa di picco: l’attesa alle grandi attrazioni nel momento più affollato, la cifra con cui il piano confronta i giorni. Il colore confronta il giorno con un giorno tipico di questo parco.",
       "hours": "Aperto {range}",
       "noHours": "Per questo giorno non sono ancora stati pubblicati gli orari.",
       "earlyYours": {
         "early_entry": "Early Entry per te dalle {time}",
-        "early_park_admission": "Early Park Admission per te dalle {time}"
+        "early_park_admission": "Early Park Admission per te dalle {time}",
+        "happy_entry": "Happy Entry per te dalle {time}",
+        "extra_magic_time": "Extra Magic Time per te dalle {time}"
       },
       "eveningYours": "Extended Evening Hours per te fino alle {time}",
       "partyTicket": "{name}, con biglietto a parte",
@@ -3311,7 +3328,9 @@
         "rail": "Circa {minutes} min in treno da {area}.",
         "shinkansen": "Circa {minutes} min in Shinkansen da {area}.",
         "highway_bus": "Circa {minutes} min in pullman da {area}.",
-        "other": "Circa {minutes} min da {area}."
+        "other": "Circa {minutes} min da {area}.",
+        "shuttle": "Circa {minutes} min in navetta da {area}.",
+        "train": "Circa {minutes} min in treno da {area}."
       },
       "transfer": "Poi circa {minutes} min dal parcheggio all’ingresso.",
       "between": {
@@ -3322,8 +3341,8 @@
       "pin": "Fissa questo giorno",
       "unpin": "Sblocca",
       "swap": "Scambia",
-      "planDay": "Pianifica questo giorno",
-      "planPark": "Pianifica {park}",
+      "planDay": "Apri nel pianificatore della giornata",
+      "planPark": "Apri {park} nel pianificatore della giornata",
       "loading": "Caricamento del giorno …",
       "rain": "{mm} mm di pioggia",
       "noWeather": "Per questa data non c’è ancora una previsione meteo; arriva a circa due settimane.",
@@ -3342,7 +3361,9 @@
       "water_park_weather": "Caldo e asciutto, un giorno da parco acquatico.",
       "weekday": "Un giorno da lunedì a venerdì.",
       "busiest_day_spared": "Il giorno più affollato del viaggio, quindi il giorno libero.",
-      "rest_after_streak": "Una pausa dopo diversi giorni al parco di fila."
+      "rest_after_streak": "Una pausa dopo diversi giorni al parco di fila.",
+      "happy_entry": "Il tuo hotel ha l’Happy Entry quel giorno.",
+      "extra_magic_time": "Il tuo hotel ha l’Extra Magic Time quel giorno."
     },
     "warning": {
       "party_night_short_hours": "Serata di festa: i visitatori giornalieri devono uscire prima.",
@@ -3353,7 +3374,9 @@
       "long_range": "Una prospettiva così lontana; si precisa man mano che la data si avvicina.",
       "repeat_back_to_back": "Il tuo secondo giorno qui segue subito, perché nessun altro ordine andava bene.",
       "adjacent_repeat": "Il tuo secondo giorno qui segue subito, perché nessun altro ordine andava bene.",
-      "long_streak": "Più giorni al parco di fila di quanti ne consenta la regola del riposo; la tua scelta di parchi non lasciava spazio a una pausa."
+      "long_streak": "Più giorni al parco di fila di quanti ne consenta la regola del riposo; la tua scelta di parchi non lasciava spazio a una pausa.",
+      "move_day": "Quella mattina cambi hotel, quindi il parco inizia più tardi.",
+      "long_day_trip": "Una gita lunga: andata e ritorno tolgono tempo al parco."
     },
     "relaxed": {
       "streak_relaxed": "I tuoi parchi richiedono più giorni di fila di quanti ne consenta la regola del riposo."
@@ -3367,35 +3390,38 @@
       "outside_trip": "{what} il {date}: quel giorno non fa parte del tuo viaggio.",
       "closed": "{what} il {date}: il parco è chiuso quel giorno.",
       "day_taken": "{what} il {date}: quel giorno è già fissato.",
-      "no_visit_left": "{what} il {date}: più giorni fissati che giorni per questo parco."
+      "no_visit_left": "{what} il {date}: più giorni fissati che giorni per questo parco.",
+      "base_unreachable": "{what} il {date}: nessuna città del viaggio arriva al parco quel giorno."
     },
     "edit": {
       "pinned": "I tuoi giorni fissati restano dove sono.",
-      "cost": "I tuoi giorni fissati costano circa {delta} min per attrazione: {current} min contro {best} nell’ordine migliore.",
+      "cost": "I tuoi giorni fissati costano circa {delta} min di attesa di picco: {current} invece di {best} min.",
       "noCost": "I tuoi giorni fissati non costano nulla: il piano è veloce quanto l’ordine migliore.",
       "undo": "Annulla",
-      "release": "Sblocca tutti"
+      "release": "Sblocca tutti",
+      "swapped": "Scambiato: {first} il {firstDay}, {second} il {secondDay}.",
+      "swappedCost": "Circa {current} invece di {best} min di attesa di picco."
     },
     "swap": {
-      "hint": "Scambia questo giorno con un altro. La cifra è la variazione dell’attesa alle grandi attrazioni dei due parchi; anche il resto del piano può spostarsi.",
+      "hint": "La cifra è quanto cambia l’attesa di picco media del piano; il resto del piano può spostarsi.",
       "closed": "{park} è chiuso quel giorno",
       "noFigure": "nessuna cifra",
-      "same": "stessa attesa",
-      "more": "+{minutes} min",
-      "less": "−{minutes} min",
+      "same": "stessa attesa di picco",
+      "more": "+{minutes} min in media",
+      "less": "−{minutes} min in media",
       "short": "{park} in un giorno corto, circa {hours, plural, =1 {un’ora} other {# ore}} in meno"
     },
     "keep": {
-      "addAll": "Tutti i giorni nel mio pianificatore",
+      "addAll": "Copia nel pianificatore della giornata",
       "ics": "Aggiungi al calendario (.ics)",
       "copy": "Copia link",
       "copied": "Link copiato",
-      "added": "{count, plural, =1 {1 giorno è} other {# giorni sono}} ora nel tuo pianificatore.",
-      "openPlanner": "Apri il pianificatore",
+      "added": "{count, plural, =1 {1 giorno di parco è} other {# giorni di parco sono}} nel pianificatore della giornata, prima {park} il {date}.",
+      "openPlanner": "Apri il primo giorno",
       "manual": "Copia il link a mano:"
     },
     "ics": {
-      "wait": "Grandi attrazioni circa {minutes} min",
+      "wait": "Attesa di picco circa {minutes} min",
       "link": "Piano: {url}",
       "calendarName": "Viaggio a {region} {range}"
     },
@@ -3405,11 +3431,11 @@
       "noneWithin": "Nessuna vacanza scolastica di {region} in questo periodo dura abbastanza per {days} giorni.",
       "bestTitle": "Le date migliori per i tuoi parchi",
       "rank": "Proposta {rank}",
-      "wait": "Grandi attrazioni circa {minutes} min",
+      "wait": "Attesa di picco circa {minutes} min",
       "below": "{percent}% sotto la media del periodo",
       "average": "Media del periodo: {minutes} min",
       "details": "Dettagli",
-      "plan": "Pianifica queste date",
+      "plan": "Pianifica il viaggio in queste date",
       "reason": {
         "after_holidays": "Subito dopo le feste.",
         "festival": "In quei giorni c’è un festival.",
@@ -3431,7 +3457,7 @@
       "stripWeek": "Settimana del {date}: circa {minutes} min",
       "stripWeekNone": "Settimana del {date}: nessuna cifra",
       "stripWindow": "proposta {rank}",
-      "stripLegend": "Altezza: l’attesa alle grandi attrazioni dei tuoi parchi quella settimana. Colore: come si colloca la settimana rispetto al resto del periodo. I segni sotto indicano le tue proposte.",
+      "stripLegend": "Altezza: l’attesa di picco dei tuoi parchi quella settimana. I segni sotto indicano le tue proposte.",
       "sketch": "Giorno per giorno",
       "rankedLower": "classificato più in basso: {reasons}"
     },
@@ -3461,11 +3487,14 @@
     "climate": {
       "extreme_heat": "caldo",
       "hurricane_season": "stagione degli uragani",
-      "hurricane_peak": "picco della stagione degli uragani"
+      "hurricane_peak": "picco della stagione degli uragani",
+      "typhoon_season": "stagione dei tifoni",
+      "typhoon_peak": "picco della stagione dei tifoni",
+      "rainy_season": "stagione delle piogge"
     },
     "tickets": {
       "title": "Biglietti",
-      "lead": "Il piano segue poi i loro giorni e parchi.",
+      "lead": "Con i tuoi biglietti il piano segue i loro giorni e parchi.",
       "yours": "I tuoi biglietti",
       "add": "Aggiungi biglietto",
       "addLabel": "Aggiungi un biglietto {resort}",
@@ -3507,8 +3536,8 @@
         "ukUniversal": "Con questo primo giorno è il {name}."
       },
       "named": {
-        "dated": "Biglietto {resort} da {days} giorni",
-        "datedShort": "{resort} {days} giorni",
+        "dated": "Biglietto {resort} da {days, plural, =1 {1 giorno} other {# giorni}}",
+        "datedShort": "{resort} {days, plural, =1 {1 giorno} other {# giorni}}",
         "short": "{resort} {name}",
         "withHopper": "{name} con {hopper}",
         "withHopperShort": "{name} + {hopper}"
@@ -3533,7 +3562,7 @@
         "partExtra": "{parkDays, plural, =1 {1 giorno} other {# giorni}} {resort} dal {date} con un biglietto da {days} giorni",
         "then": ", poi ",
         "shape": "{name}, valido dal {from} al {to}",
-        "dated": "Biglietto da {days} giorni",
+        "dated": "Biglietto da {days, plural, =1 {1 giorno} other {# giorni}}",
         "extraDays": "Un biglietto da {parkDays} giorni finirebbe prima del tuo ultimo giorno {resort}, perciò questo ne ha {days}.",
         "window": "Un biglietto {resort} da {days} giorni vale {days} giorni a scelta fra i {window} dal primo.",
         "second": "{resort}, secondo biglietto",
@@ -3568,11 +3597,11 @@
       },
       "unused": {
         "parks_fewer_than_days": "{count, plural, =1 {1 giorno resta} other {# giorni restano}} inutilizzati: ai tuoi parchi ne servono meno.",
-        "rest_days_kept": "Su questo biglietto {count, plural, =1 {starebbe ancora 1 giorno di parco} other {starebbero ancora # giorni di parco}}. Il piano tiene invece giorni di riposo.",
-        "restLink": "Cambia i giorni di riposo",
         "window_outside_trip": "{count, plural, =1 {1 giorno resta} other {# giorni restano}} inutilizzati: parte della validità cade fuori dal tuo viaggio.",
         "no_open_day": "{count, plural, =1 {1 giorno resta} other {# giorni restano}} inutilizzati: nei giorni rimasti i suoi parchi sono chiusi.",
-        "other": "{count, plural, =1 {1 giorno resta inutilizzato} other {# giorni restano inutilizzati}}."
+        "other": "{count, plural, =1 {1 giorno resta inutilizzato} other {# giorni restano inutilizzati}}.",
+        "restDays": "Il tuo biglietto vale anche per {count, plural, =1 {il giorno di riposo} other {i tuoi giorni di riposo}}, {dates}.",
+        "makeParkDay": "{count, plural, =1 {Rendilo un giorno di parco} other {Rendili giorni di parco}}"
       },
       "outside": {
         "after": "{park} il {date} cade fuori da questo biglietto, che finisce il {edge}.",
@@ -4089,52 +4118,6 @@
         "title": "Orlando: quale parco in quale giorno",
         "lead": "Sedici parchi intorno a Orlando in un solo calendario: per ogni giorno vedi dove le code sono più corte a Disney World e da Universal, e il pianificatore mette i tuoi parchi nelle tue date.",
         "link": "Calendario affluenza Orlando"
-      }
-    },
-    "japan": {
-      "planner": {
-        "options": {
-          "moveBufferHint": "Con il servizio bagagli (takkyubin) la valigia viaggia avanti e bastano 30 minuti."
-        },
-        "base": {
-          "tokyo": "Tokyo"
-        },
-        "gateway": {
-          "HND": "Haneda",
-          "NRT": "Narita",
-          "NGO": "Chubu Centrair",
-          "KIX": "Kansai",
-          "ITM": "Itami"
-        },
-        "area": {
-          "maihama": "Maihama (hotel Disney)",
-          "disneysea_hotels": "Hotel di Tokyo DisneySea",
-          "bayside": "Maihama Bayside (hotel ufficiali)",
-          "shin_urayasu": "Shin-Urayasu (hotel partner)",
-          "tokyo_station": "Stazione di Tokyo",
-          "nagoya_station": "Stazione di Nagoya",
-          "universal_city": "Universal City (hotel ufficiali)",
-          "umeda": "Umeda (stazione di Osaka)",
-          "kyoto_station": "Stazione di Kyoto"
-        }
-      }
-    },
-    "paris": {
-      "planner": {
-        "base": {
-          "paris": "Parigi centro"
-        },
-        "gateway": {
-          "XED": "Marne-la-Vallée–Chessy",
-          "CDG": "Charles de Gaulle",
-          "ORY": "Orly"
-        },
-        "area": {
-          "disney_lake": "Hotel Disney sul Lake Disney",
-          "disney_cheyenne_santa_fe": "Disney Hotel Cheyenne e Santa Fe",
-          "paris_center": "Parigi centro",
-          "parc_asterix": "Hotel del Parc Astérix"
-        }
       }
     }
   },

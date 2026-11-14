@@ -570,7 +570,11 @@ export interface TripWhenWindow {
   seasons: string[];
   /** Park days of the plan that close early for day guests. */
   closesEarlyDays: number;
-  plan?: { days: Array<{ date: string; kind: string; parks: string[] }> };
+  plan?: {
+    days: Array<{ date: string; kind: string; parks: string[] }>;
+    /** The chosen parks this window has no day for; present only when it leaves one out. */
+    parksLeftOut?: Array<{ park: string; reason: string }>;
+  };
 }
 
 /** One ISO week of the year strip: the chosen parks' mean best-park cost. */
@@ -667,8 +671,11 @@ export interface TripSchoolBreakRegion {
   name: string;
   /** ISO 3166 alpha-2. */
   country: string;
-  /** The last day the stored school calendar covers: a later break is unknown, not absent. */
-  through: string;
+  /**
+   * The last day the stored school calendar covers: a later break is unknown, not absent. Absent
+   * where the data does not say (Spain's provinces).
+   */
+  through?: string;
   /** Each break with the weekends around it. */
   periods: Array<{ from: string; to: string; name: string }>;
 }

@@ -193,8 +193,11 @@ export const PLAN_QUERY_NAMES = [
 const DATE = /^\d{4}-\d{2}-\d{2}$/;
 const SLUG = /^[a-z0-9-]+$/;
 const AREA = /^[a-z_]+$/;
-/** A school-holiday region as the holiday data spells it: `DE-NW`, `GB-ENG`, `NL-north`. */
-const WITHIN = /^[A-Z]{2}-[A-Za-z]{1,10}$/;
+/**
+ * A school-holiday region as the holiday data spells it: `DE-NW`, `GB-ENG`, `NL-north`, `FR-ZA`,
+ * and a Spanish province under its community, `ES-AN-AL`.
+ */
+const WITHIN = /^[A-Z]{2}(?:-[A-Za-z]{1,10}){1,2}$/;
 
 /** A real `YYYY-MM-DD` day, not `2026-02-31`. */
 export function isPlanDate(value: string | null | undefined): value is string {

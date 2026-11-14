@@ -5,7 +5,7 @@ import { useTranslations } from 'next-intl';
 import { CalendarArrowDown, CalendarPlus, Check, Link2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { plannerStore } from '@/lib/planner/store';
-import { reserveDays } from '@/lib/planner/actions';
+import { reserveDays, setActive } from '@/lib/planner/actions';
 import { plannerUi } from '@/lib/planner/ui-store';
 import { formatParkDay } from '@/lib/utils/park-day';
 import { planHref, reserveTripDays, type TripPlan } from '@/lib/trip-regions/plan';
@@ -36,7 +36,7 @@ export function PlanKeep({
   const { region, config, state, locale, parkName } = usePlanContext();
   const track = useTripEvents();
   const parksOf = useDayParks();
-  const [added, setAdded] = useState<number | null>(null);
+  const [added, setAdded] = useState<{ count: number; park: string; date: string } | null>(null);
   const [link, setLink] = useState<'idle' | 'copied' | { manual: string }>('idle');
 
   const addAll = () => {
@@ -44,7 +44,7 @@ export function PlanKeep({
     if (days.length === 0) return;
     plannerStore.update((s) => reserveDays(s, days));
     track('trip_days_saved', { days: days.length });
-    setAdded(days.length);
+    setAdded({ count: days.length, park: days[0].park.slug, date: days[0].date });
   };
 
   const shareUrl = () =>
@@ -127,10 +127,22 @@ export function PlanKeep({
       </div>
       {added !== null && (
         <p className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm" aria-live="polite">
-          {t('keep.added', { count: added })}
+          {t('keep.added', {
+            count: added.count,
+            park: parkName(added.park),
+            date: formatParkDay(locale, added.date, {
+              weekday: 'short',
+              day: 'numeric',
+              month: 'short',
+            }),
+          })}
           <button
             type="button"
-            onClick={() => plannerUi.requestOpen(`${region.slug}-hub`)}
+            onClick={() => {
+              // The day planner opens on the trip's first filed day, not on the last one it showed.
+              plannerStore.update((s) => setActive(s, added.park, added.date));
+              plannerUi.requestOpen(`${region.slug}-hub`);
+            }}
             className="text-primary-ink min-h-11 font-medium underline-offset-4 hover:underline"
           >
             {t('keep.openPlanner')}

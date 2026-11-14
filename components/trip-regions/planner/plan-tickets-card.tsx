@@ -73,14 +73,23 @@ export interface PlanEdit {
  * plan uses, and what the visitor can do about a day outside it. Both, "Tickets" with the two
  * halves. Nothing without a catalog or without either.
  */
-export function PlanTicketsCard({ plan, edit }: { plan: TripPlan; edit: PlanEdit }) {
+export function PlanTicketsCard({
+  plan,
+  edit,
+  ask,
+}: {
+  plan: TripPlan;
+  edit: PlanEdit;
+  /** "Already have tickets?", at the card's foot, or alone where there is no card. */
+  ask?: ReactNode;
+}) {
   const t = useTranslations('tripPlanner.tickets');
   const { tickets: catalog } = usePlanContext();
   const owned = [...(plan.meta.tickets ?? [])].sort((a, b) =>
     (a.start ?? '9').localeCompare(b.start ?? '9')
   );
   const suggested = suggestionsByStart(plan.meta.ticketSuggestion);
-  if (catalog.size === 0 || (owned.length === 0 && suggested.length === 0)) return null;
+  if (catalog.size === 0 || (owned.length === 0 && suggested.length === 0)) return ask ?? null;
   const both = owned.length > 0 && suggested.length > 0;
 
   return (
@@ -117,6 +126,7 @@ export function PlanTicketsCard({ plan, edit }: { plan: TripPlan; edit: PlanEdit
           <SuggestedTickets plan={plan} suggested={suggested} edit={edit} />
         </Half>
       )}
+      {ask}
     </section>
   );
 }
@@ -199,6 +209,7 @@ function OwnedRow({
     parkName,
     regionOrder,
     headliners,
+    locale,
   } = usePlanContext();
   const track = useTripEvents();
   const name = useTicketName();
@@ -211,6 +222,15 @@ function OwnedRow({
   const index = Number(ticket.id.slice(1)) - 1;
   const outside = plan.days.filter(
     (d) => d.ticket === ticket.id && d.warnings.includes('outside_ticket_window')
+  );
+  // Only the rest days the trip has inside the ticket's window are days it could still use.
+  const restDays = plan.days.filter(
+    (d) =>
+      d.kind === 'rest' &&
+      ticket.start !== undefined &&
+      ticket.end !== undefined &&
+      d.date >= ticket.start &&
+      d.date <= ticket.end
   );
   const plannedParks = plan.days
     .filter((d) => d.ticket === ticket.id)
@@ -255,19 +275,28 @@ function OwnedRow({
         </span>
       </div>
 
-      {use.kind === 'counted' && use.unused > 0 && (
-        <p className="text-foreground/75 text-sm">
-          {t(`unused.${KNOWN_UNUSED.has(use.reason ?? '') ? use.reason : 'other'}`, {
-            count: use.unused,
-          })}
-          {use.reason === 'rest_days_kept' && (
-            <>
-              {' '}
-              <InlineAction onClick={edit.options}>{t('unused.restLink')}</InlineAction>
-            </>
+      {use.kind === 'counted' && use.unused > 0 && use.reason === 'rest_days_kept'
+        ? restDays.length > 0 && (
+            <p className="text-foreground/75 text-sm" data-plan-owned-rest="">
+              {t('unused.restDays', {
+                count: restDays.length,
+                dates: getListFormat(locale, { style: 'long', type: 'conjunction' }).format(
+                  restDays.map((d) => day(d.date))
+                ),
+              })}{' '}
+              <InlineAction onClick={() => update((s) => ({ ...s, rest: 'none' }))}>
+                {t('unused.makeParkDay', { count: restDays.length })}
+              </InlineAction>
+            </p>
+          )
+        : use.kind === 'counted' &&
+          use.unused > 0 && (
+            <p className="text-foreground/75 text-sm">
+              {t(`unused.${KNOWN_UNUSED.has(use.reason ?? '') ? use.reason : 'other'}`, {
+                count: use.unused,
+              })}
+            </p>
           )}
-        </p>
-      )}
 
       {outside.map((d) => {
         const slug = d.parks[0]?.slug ?? '';
@@ -363,12 +392,7 @@ function OwnedRow({
   );
 }
 
-const KNOWN_UNUSED = new Set([
-  'parks_fewer_than_days',
-  'rest_days_kept',
-  'window_outside_trip',
-  'no_open_day',
-]);
+const KNOWN_UNUSED = new Set(['parks_fewer_than_days', 'window_outside_trip', 'no_open_day']);
 
 // ── Plan first ────────────────────────────────────────────────────────────────
 

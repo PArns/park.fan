@@ -643,7 +643,7 @@ export async function SchoolHolidayLinks({
       {countries.map((country) => {
         const own = regions.filter((r) => r.country === country);
         if (own.length === 0) return null;
-        const through = own.map((r) => r.through).sort()[0];
+        const through = own.flatMap((r) => r.through ?? []).sort()[0];
         return (
           <details
             key={country}
@@ -691,9 +691,11 @@ export async function SchoolHolidayLinks({
                 );
               })}
             </ul>
-            <p className="text-muted-foreground mt-2 text-xs">
-              {t('through', { date: formatParkDay(locale, through) })}
-            </p>
+            {through && (
+              <p className="text-muted-foreground mt-2 text-xs">
+                {t('through', { date: formatParkDay(locale, through) })}
+              </p>
+            )}
           </details>
         );
       })}

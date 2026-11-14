@@ -246,7 +246,7 @@ export function PlanFind() {
                   ))}
               </select>
             </label>
-            {withinRegion && today && (
+            {withinRegion?.through && today && (
               <p className="text-muted-foreground col-span-2 text-xs">
                 {t('through', {
                   date: formatParkDay(locale, withinRegion.through, {

@@ -2,7 +2,7 @@
 
 import { Fragment } from 'react';
 import { useTranslations } from 'next-intl';
-import { ChevronRight } from 'lucide-react';
+import { ChevronRight, Lock } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { CROWD_DOT_CLASS, isColoredCrowdLevel } from '@/lib/utils/crowd-level-styles';
 import { formatParkDay } from '@/lib/utils/park-day';
@@ -40,7 +40,7 @@ export function PlanAgendaView({
         <Fragment key={section.stay?.base ?? 'trip'}>
           {section.arrival && <PlanMoveRow day={section.arrival} onOpenDay={onOpenDay} />}
           {section.stay && (
-            <li className="bg-background sticky top-12 z-[1]">
+            <li>
               <PlanStayHeader stay={section.stay} />
             </li>
           )}
@@ -65,7 +65,8 @@ export function PlanListRow({
 }) {
   const t = useTranslations('tripPlanner');
   const tLevel = useTranslations('parks.crowdLevels');
-  const { locale } = usePlanContext();
+  const { locale, state } = usePlanContext();
+  const pinned = state.locks.some((l) => l.date === day.date);
   const parksOf = useDayParks();
   const markerText = useDayMarkerText();
   const eveningOf = useEveningName();
@@ -97,6 +98,7 @@ export function PlanListRow({
     tone ? tLevel(tone) : null,
     marker ?? moveLine,
     evening ? t('evening.plus', { name: evening }) : null,
+    pinned ? t('marker.pinned') : null,
   ]
     .filter(Boolean)
     .join(', ');
@@ -147,6 +149,13 @@ export function PlanListRow({
             <MoveIcon mode={day.move.mode} className="size-3.5 shrink-0" />
             <span className="truncate">{moveLine}</span>
           </span>
+        )}
+        {pinned && (
+          <Lock
+            className="text-primary-ink size-3.5 shrink-0"
+            aria-hidden="true"
+            data-plan-pinned=""
+          />
         )}
         {minutes && (
           <span

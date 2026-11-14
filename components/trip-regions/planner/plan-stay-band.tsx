@@ -1,7 +1,7 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { ArrowRight, Bus, Car, Footprints, TrainFront } from 'lucide-react';
+import { ArrowRight, BedDouble, Bus, Car, Footprints, TrainFront } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { formatShortDuration } from '@/lib/utils/duration';
 import { formatClockTime } from '@/lib/utils/intl-format';
@@ -95,21 +95,31 @@ export function useMoveWords() {
  */
 export function PlanStayHeader({ stay }: { stay: PlanStayRun }) {
   const t = useTranslations('tripPlanner.route');
+  const tRegion = useTranslations('tripRegion.planner');
   const { locale } = usePlanContext();
   const baseName = useBaseName();
+  const note = tRegion.has(`stayNote.${stay.base}`) ? tRegion(`stayNote.${stay.base}`) : null;
   return (
-    <div className="flex items-center gap-2 pt-3 pb-1" data-plan-stay={stay.base}>
-      <StayMarker number={stay.number} />
-      <span className="text-base font-semibold">{baseName(stay.base)}</span>
-      <span className="text-muted-foreground text-sm">
-        {t('nights', { count: stay.nights })} ·{' '}
-        {formatParkDayRange(locale, stay.from, stay.to, {
-          weekday: 'short',
-          day: 'numeric',
-          month: 'short',
-        })}
-      </span>
-      <span aria-hidden="true" className="bg-border/70 h-px min-w-4 flex-1" />
+    <div className="flex flex-col pt-3 pb-1">
+      <div className="flex items-center gap-2" data-plan-stay={stay.base}>
+        <StayMarker number={stay.number} />
+        <span className="text-base font-semibold">{baseName(stay.base)}</span>
+        <span className="text-muted-foreground text-sm">
+          {t('nights', { count: stay.nights })} ·{' '}
+          {formatParkDayRange(locale, stay.from, stay.to, {
+            weekday: 'short',
+            day: 'numeric',
+            month: 'short',
+          })}
+        </span>
+        <span aria-hidden="true" className="bg-border/70 h-px min-w-4 flex-1" />
+      </div>
+      {note && (
+        <p className="text-muted-foreground flex items-start gap-1.5 pt-0.5 pl-7 text-xs">
+          <BedDouble className="mt-px size-3.5 shrink-0" aria-hidden="true" />
+          {note}
+        </p>
+      )}
     </div>
   );
 }

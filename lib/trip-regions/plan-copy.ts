@@ -1,6 +1,6 @@
 import { addDays, daysBetween } from '@/lib/utils/park-day';
 import type { PlanDay, PlanMeta, PlanParkSummary, PlanTotals, TripPlan } from './plan';
-import type { TripEarlyKind, TripPerk } from './types';
+import type { TripEarlyKind, TripPerk, TripWhenWindow } from './types';
 
 /**
  * Which sentence a plan's codes become. Pure: the codes are the API's (`docs/frontend/trip-regions.md`),
@@ -19,6 +19,8 @@ export const PLAN_REASON_ORDER = [
   'extended_evening',
   'early_park_admission',
   'early_entry',
+  'happy_entry',
+  'extra_magic_time',
   'holiday_ends',
   'water_park_weather',
   'weekday',
@@ -46,6 +48,8 @@ export const PLAN_WARNING_ORDER = [
   'repeat_back_to_back',
   'adjacent_repeat',
   'long_streak',
+  'move_day',
+  'long_day_trip',
 ] as const;
 
 /**
@@ -138,7 +142,7 @@ export function dayMarker(
   if (day.warnings.includes('outside_ticket_window')) return 'outside_ticket';
   if (closesEarly(day)) return 'closes';
   const perks = day.perks ?? [];
-  if (perks.includes('early_entry') || perks.includes('early_park_admission')) return 'early';
+  if (earlyPerk(perks) !== null) return 'early';
   if (perks.includes('extended_evening')) return 'evening';
   if (day.basis === 'last_year') return 'last_year';
   return null;
@@ -168,6 +172,24 @@ export function parksLeftOut(plan: Pick<TripPlan, 'parksLeftOut' | 'unplaced' | 
         .map((u) => u.slug)
     ),
   ];
+}
+
+/**
+ * The chosen parks a found window has no day for, and its park days, for the same sentence the plan
+ * says: the API's `parksLeftOut` where it sends it, else the chosen parks its day-by-day sketch
+ * does not name.
+ */
+export function windowParksLeftOut(
+  plan: TripWhenWindow['plan'],
+  chosen: readonly string[]
+): { parks: string[]; days: number } | null {
+  if (!plan) return null;
+  const days = plan.days.filter((d) => d.kind === 'park' || d.kind === 'hop').length;
+  const planned = new Set(plan.days.flatMap((d) => d.parks));
+  const parks = plan.parksLeftOut
+    ? plan.parksLeftOut.filter((p) => p.reason === 'no_day_left').map((p) => p.park)
+    : chosen.filter((slug) => !planned.has(slug));
+  return parks.length > 0 ? { parks, days } : null;
 }
 
 /** A park the plan could not give every visit, with a reason this client can say. */
@@ -202,9 +224,15 @@ export function unplacedParks(
 export function ignoredLocks(plan: Pick<TripPlan, 'ignoredLocks'>): Array<{
   target: string;
   date: string;
-  reason: 'outside_trip' | 'closed' | 'day_taken' | 'no_visit_left';
+  reason: 'outside_trip' | 'closed' | 'day_taken' | 'no_visit_left' | 'base_unreachable';
 }> {
-  const reasons = ['outside_trip', 'closed', 'day_taken', 'no_visit_left'] as const;
+  const reasons = [
+    'outside_trip',
+    'closed',
+    'day_taken',
+    'no_visit_left',
+    'base_unreachable',
+  ] as const;
   return (plan.ignoredLocks ?? []).flatMap((l) => {
     const reason = reasons.find((r) => r === l.reason);
     const [target, date] = l.lock.split('@');

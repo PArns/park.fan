@@ -139,6 +139,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `dayMarker` _function_: The one marker of a day in the overview, or `null`.
 - `relaxedRules` _function_: Rules the plan loosened, as `tripPlanner.relaxed.*` (or the region's own) keys; unknown ones are dropped.
 - `parksLeftOut` _function_: The chosen parks that got no day at all because the trip has too few park days, in the region's order: the API's `parksLeftOut` where it sends it, else the parks `unplaced` names with no visit on any day.
+- `windowParksLeftOut` _function_: The chosen parks a found window has no day for, and its park days, for the same sentence the plan says: the API's `parksLeftOut` where it sends it, else the chosen parks its day-by-day sketch does not name.
 - `unplacedParks` _function_: A park the plan could not place, with a reason this client can say. A park `parksLeftOut` names is said there; a park with a day that lost a repeat visit reads `no_second_day`.
 - `ignoredLocks` _function_: Pins the plan could not keep, with a reason this client can say.
 - `planSavings` _function_: The savings sentence's figures, or `null` where the totals carry none.
@@ -308,7 +309,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `WHEN_LIMIT` _const_: Windows the result asks for: the three cards of Level 0.
 - `WHEN_REASON_ORDER` _const_: The reasons a window can carry, most telling first; the card shows the first.
 - `WHEN_WARNING_ORDER` _const_: The warnings a window can carry, most consequential first.
-- `WHEN_HOLIDAY_COUNTRIES` _const_: The countries the picker asks the holiday data for: where most of park.fan's visitors live.
+- `WHEN_HOLIDAY_COUNTRIES` _const_: The countries the picker asks the holiday data for: where park.fan's visitors live, one per locale.
 - Types: `WhenPeriodKey`, `WhenPeriod`, `WhenReasonCode`, `WhenWarningCode`, `WhenHolidayCountry`
 
 ### [`plan.ts`](../../lib/trip-regions/plan.ts)

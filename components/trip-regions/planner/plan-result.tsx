@@ -7,6 +7,7 @@ import {
   useRef,
   useState,
   useSyncExternalStore,
+  type ReactNode,
   type Ref,
 } from 'react';
 import { useSearchParams } from 'next/navigation';
@@ -34,6 +35,7 @@ import { Button } from '@/components/ui/button';
 import {
   MAX_PLAN_VISITS,
   MAX_TRIP_DAYS,
+  fixedNights,
   lockOn,
   parkDaysAvailable,
   planProblem,
@@ -44,6 +46,7 @@ import {
   swapLocks,
   toggleLock,
   tripDates,
+  type PlanDay,
   type PlanLock,
   type TripPlan,
 } from '@/lib/trip-regions/plan';
@@ -139,10 +142,18 @@ export function PlanResult({
           </Button>
         </div>
       ) : (
-        <PlanAnswerSection edit={edit} />
-      )}
-      {!state.when && ticketsOpen && (
-        <DeskTickets step={step} defaultMonth={defaultMonth} onClose={() => onTicketsOpen(false)} />
+        <PlanAnswerSection
+          edit={edit}
+          tickets={
+            ticketsOpen ? (
+              <DeskTickets
+                step={step}
+                defaultMonth={defaultMonth}
+                onClose={() => onTicketsOpen(false)}
+              />
+            ) : null
+          }
+        />
       )}
     </section>
   );
@@ -208,7 +219,14 @@ function Failure({ error, onRetry }: { error: unknown; onRetry: () => void }) {
   );
 }
 
-function PlanAnswerSection({ edit }: { edit: PlanEdit }) {
+function PlanAnswerSection({
+  edit,
+  tickets,
+}: {
+  edit: PlanEdit;
+  /** The ticket step in place at a desk, under the tickets or under what holds the plan back. */
+  tickets: ReactNode;
+}) {
   const t = useTranslations('tripPlanner');
   const { region, state, update, headliners, parkBySlug, tickets: catalog } = usePlanContext();
   const track = useTripEvents();
@@ -242,6 +260,8 @@ function PlanAnswerSection({ edit }: { edit: PlanEdit }) {
     [days, track]
   );
   const [history, setHistory] = useState<PlanLock[][]>([]);
+  // The last edit, when it was a swap: the edit bar says what moved where, not "pinned".
+  const [swapped, setSwapped] = useState<{ a: PlanDay; b: PlanDay } | null>(null);
   const [beacon, setBeacon] = useState<PlannerPagePark | null>(null);
 
   const withHistory = useCallback(
@@ -256,12 +276,24 @@ function PlanAnswerSection({ edit }: { edit: PlanEdit }) {
     return (
       <div className="border-border/60 flex flex-col gap-2 rounded-2xl border p-5" role="status">
         <p className="text-sm">
-          {t(`problem.${problem}`, { days: MAX_TRIP_DAYS, max: MAX_PLAN_VISITS })}
+          {t(`problem.${problem}`, {
+            days: MAX_TRIP_DAYS,
+            max: MAX_PLAN_VISITS,
+            fixed: fixedNights(state),
+            nights: Math.max(0, tripDates(state).length - 1),
+          })}
         </p>
       </div>
     );
   }
-  if (missed) return <TicketProblemBox problem={missed} edit={edit} />;
+  if (missed) {
+    return (
+      <>
+        <TicketProblemBox problem={missed} edit={edit} />
+        {tickets}
+      </>
+    );
+  }
   if (!plan.data) {
     return plan.isError ? (
       <Failure error={plan.error} onRetry={() => void plan.refetch()} />
@@ -300,18 +332,24 @@ function PlanAnswerSection({ edit }: { edit: PlanEdit }) {
       {plan.isError && <Failure error={plan.error} onRetry={() => void plan.refetch()} />}
 
       <PlanAnswer plan={data} calendar={calendar.data} onOpenDay={openDay} edit={edit} />
+      {tickets}
 
       {state.locks.length > 0 && (
         <EditBar
           plan={data}
           best={unpinned.data ?? null}
+          swapped={swapped}
           canUndo={history.length > 0}
           onUndo={() => {
             const previous = history.at(-1);
             setHistory((h) => h.slice(0, -1));
+            setSwapped(null);
             if (previous) update((s) => ({ ...s, locks: previous }));
           }}
-          onRelease={() => withHistory((s) => ({ ...s, locks: [] }))}
+          onRelease={() => {
+            setSwapped(null);
+            withHistory((s) => ({ ...s, locks: [] }));
+          }}
         />
       )}
 
@@ -324,11 +362,13 @@ function PlanAnswerSection({ edit }: { edit: PlanEdit }) {
         onClose={() => setOpenDate(null)}
         onToggleLock={(d) => {
           track('trip_day_pinned', { pinned: lockOn(state, d.date) === null });
+          setSwapped(null);
           withHistory((s) => toggleLock(s, d));
         }}
         onSwap={(a, b) => {
           track('trip_day_swapped');
           setOpenDate(null);
+          setSwapped({ a, b });
           withHistory((s) => {
             const locks = swapLocks(s, a, b);
             return locks ? { ...s, locks } : s;
@@ -495,22 +535,11 @@ function PlanAnswer({
         </Button>
       </div>
 
-      <PlanTicketsCard plan={plan} edit={edit} />
-      {ticketsAsked && state.tickets.length === 0 && (
-        <p className="flex flex-wrap items-center gap-x-2 text-sm" data-plan-tickets-ask="">
-          {t('tickets.later')}
-          <button
-            type="button"
-            onClick={() => edit.tickets()}
-            className={cn(
-              'text-primary-ink hover:bg-primary/10 -my-2 min-h-11 rounded-md px-2 font-medium transition-colors',
-              PLAN_FOCUS
-            )}
-          >
-            {t('tickets.enter')}
-          </button>
-        </p>
-      )}
+      <PlanTicketsCard
+        plan={plan}
+        edit={edit}
+        ask={ticketsAsked && state.tickets.length === 0 ? <TicketsAsk edit={edit} /> : null}
+      />
     </div>
   );
 }
@@ -554,6 +583,26 @@ function PeakLine({ plan }: { plan: TripPlan }) {
         {savings.expectedError !== null && ` ${t('error', { minutes: savings.expectedError })}`}
       </p>
     </div>
+  );
+}
+
+/** "Already have tickets? Add them": the way to the ticket step once there is a plan. */
+function TicketsAsk({ edit }: { edit: PlanEdit }) {
+  const t = useTranslations('tripPlanner.tickets');
+  return (
+    <p className="flex flex-wrap items-center gap-x-2 text-sm" data-plan-tickets-ask="">
+      {t('later')}
+      <button
+        type="button"
+        onClick={() => edit.tickets()}
+        className={cn(
+          'text-primary-ink hover:bg-primary/10 -my-2 min-h-11 rounded-md px-2 font-medium transition-colors',
+          PLAN_FOCUS
+        )}
+      >
+        {t('enter')}
+      </button>
+    </p>
   );
 }
 
@@ -702,18 +751,49 @@ function StaySuggestion({ plan }: { plan: TripPlan }) {
 function EditBar({
   plan,
   best,
+  swapped,
   canUndo,
   onUndo,
   onRelease,
 }: {
   plan: TripPlan;
   best: TripPlan | null;
+  /** The swap that was the last edit, said as one: what is on which day now. */
+  swapped: { a: PlanDay; b: PlanDay } | null;
   canUndo: boolean;
   onUndo: () => void;
   onRelease: () => void;
 }) {
   const t = useTranslations('tripPlanner.edit');
+  const tDay = useTranslations('tripPlanner.day');
+  const { locale, parkName } = usePlanContext();
   const cost = editCost(best?.totals ?? null, plan.totals);
+  const what = (d: PlanDay) =>
+    d.kind === 'rest' ? tDay('rest') : parkName(d.parks[0]?.slug ?? '');
+  const short = (date: string) => formatParkDay(locale, date, { weekday: 'short' });
+  if (swapped) {
+    return (
+      <div
+        className="border-primary/40 bg-primary/5 flex flex-wrap items-center gap-x-4 gap-y-2 rounded-2xl border px-4 py-3"
+        role="status"
+        data-plan-swapped=""
+      >
+        <p className="min-w-0 flex-1 text-sm">
+          {t('swapped', {
+            first: what(swapped.a),
+            firstDay: short(swapped.b.date),
+            second: what(swapped.b),
+            secondDay: short(swapped.a.date),
+          })}
+          {cost && ` ${t('swappedCost', { current: cost.current, best: cost.best })}`}
+        </p>
+        <Button variant="outline" size="sm" onClick={onUndo} disabled={!canUndo}>
+          <Undo2 aria-hidden="true" />
+          {t('undo')}
+        </Button>
+      </div>
+    );
+  }
   return (
     <div
       className="border-primary/40 bg-primary/5 flex flex-wrap items-center gap-x-4 gap-y-2 rounded-2xl border px-4 py-3"

@@ -87,7 +87,11 @@ export function PlanParks() {
       extra && state.area ? findLeg(region.travel.legs, `hotel:${state.area}`, park.slug) : null;
     const status = extra ? tripState(calendar.data, park.slug, dates) : null;
     const line = [
-      leg ? t('parks.drive', { minutes: leg.minutes + (leg.transferMinutes ?? 0) }) : null,
+      leg
+        ? t(t.has(`parks.way.${leg.mode}`) ? `parks.way.${leg.mode}` : 'parks.way.other', {
+            minutes: leg.minutes + (leg.transferMinutes ?? 0),
+          })
+        : null,
       status?.kind === 'closed'
         ? status.season
           ? t('parks.closedSeason', { season: status.season })
@@ -163,49 +167,51 @@ export function PlanParks() {
         </section>
       ))}
 
-      <div className="border-border/60 rounded-xl border">
-        <button
-          type="button"
-          aria-expanded={moreOpen}
-          aria-controls={moreId}
-          onClick={() => setMoreOpen((open) => !open)}
-          className={cn(
-            'hover:bg-accent/60 flex min-h-11 w-full items-center gap-2 rounded-xl px-3 py-2 text-left transition-colors',
-            PLAN_FOCUS
-          )}
-        >
-          <span className="flex min-w-0 flex-1 flex-col">
-            <span className="text-sm font-medium">{t('parks.moreParks')}</span>
-            <span className="text-muted-foreground text-xs">
-              {moreChosen > 0
-                ? t('parks.moreChosen', { count: moreChosen })
-                : regionOrShared(tRegion, t, 'parks.moreHint')}
-            </span>
-          </span>
-          <ChevronDown
+      {more.length > 0 && (
+        <div className="border-border/60 rounded-xl border">
+          <button
+            type="button"
+            aria-expanded={moreOpen}
+            aria-controls={moreId}
+            onClick={() => setMoreOpen((open) => !open)}
             className={cn(
-              'size-4 shrink-0 transition-transform duration-200',
-              moreOpen && 'rotate-180'
+              'hover:bg-accent/60 flex min-h-11 w-full items-center gap-2 rounded-xl px-3 py-2 text-left transition-colors',
+              PLAN_FOCUS
             )}
-            aria-hidden="true"
-          />
-        </button>
-        <div id={moreId} hidden={!moreOpen} className="px-3 pb-2">
-          {more.map(({ group, parks }) => (
-            <section key={group.key} aria-label={group.name} className="pt-2">
-              <h4 className="text-muted-foreground text-xs font-semibold tracking-wide uppercase">
-                {group.name}
-              </h4>
-              <ul className="divide-border/60 divide-y">{parks.map((p) => row(p, true))}</ul>
-            </section>
-          ))}
-          {state.area && (
-            <p className="text-muted-foreground pt-2 text-xs">
-              {t('parks.driveSource', { source: region.travel.attribution })}
-            </p>
-          )}
+          >
+            <span className="flex min-w-0 flex-1 flex-col">
+              <span className="text-sm font-medium">{t('parks.moreParks')}</span>
+              <span className="text-muted-foreground text-xs">
+                {moreChosen > 0
+                  ? t('parks.moreChosen', { count: moreChosen })
+                  : regionOrShared(tRegion, t, 'parks.moreHint')}
+              </span>
+            </span>
+            <ChevronDown
+              className={cn(
+                'size-4 shrink-0 transition-transform duration-200',
+                moreOpen && 'rotate-180'
+              )}
+              aria-hidden="true"
+            />
+          </button>
+          <div id={moreId} hidden={!moreOpen} className="px-3 pb-2">
+            {more.map(({ group, parks }) => (
+              <section key={group.key} aria-label={group.name} className="pt-2">
+                <h4 className="text-muted-foreground text-xs font-semibold tracking-wide uppercase">
+                  {group.name}
+                </h4>
+                <ul className="divide-border/60 divide-y">{parks.map((p) => row(p, true))}</ul>
+              </section>
+            ))}
+            {state.area && (
+              <p className="text-muted-foreground pt-2 text-xs">
+                {t('parks.driveSource', { source: region.travel.attribution })}
+              </p>
+            )}
+          </div>
         </div>
-      </div>
+      )}
 
       {dates.length > 0 && (
         <p

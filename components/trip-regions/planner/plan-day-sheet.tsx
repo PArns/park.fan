@@ -194,6 +194,9 @@ function DayDetails({
 
   const isPark = day.kind === 'park' || day.kind === 'hop';
   const name = parkName;
+  // A swap changes two parks' days; the plan's figure is the mean over its visits, so the swap is
+  // said in that unit.
+  const perRide = (delta: number) => Math.round(delta / Math.max(1, plan.totals.visits));
   const short = (date: string) =>
     formatParkDay(locale, date, { weekday: 'short', day: 'numeric', month: 'short' });
   const time = (iso: string) => formatClockTime(iso, locale, timeZone);
@@ -496,11 +499,11 @@ function DayDetails({
                   ? t('swap.closed', { park: name(preview.slug) })
                   : preview.kind === 'no_figure'
                     ? t('swap.noFigure')
-                    : preview.delta === 0
+                    : perRide(preview.delta) === 0
                       ? t('swap.same')
                       : preview.delta > 0
-                        ? t('swap.more', { minutes: preview.delta })
-                        : t('swap.less', { minutes: -preview.delta });
+                        ? t('swap.more', { minutes: perRide(preview.delta) })
+                        : t('swap.less', { minutes: -perRide(preview.delta) });
               return (
                 <li key={other.date}>
                   <button
@@ -565,7 +568,14 @@ function MoveSection({
   const forward = leg && leg.from === move.from;
   const fromStop = leg ? (forward ? leg.fromStop : leg.toStop) : undefined;
   const toStop = leg ? (forward ? leg.toStop : leg.fromStop) : undefined;
-  const notes = (leg?.notes ?? []).filter((n) => t.has(`note.${n}`));
+  const tRegion = useTranslations('tripRegion.planner');
+  const note = (code: string) =>
+    tRegion.has(`moveNote.${code}`)
+      ? tRegion(`moveNote.${code}`)
+      : t.has(`note.${code}`)
+        ? t(`note.${code}`)
+        : null;
+  const notes = (leg?.notes ?? []).flatMap((n) => note(n) ?? []);
   return (
     <section
       className={cn('flex flex-col gap-2 rounded-xl border p-3', MOVE_INK)}
@@ -590,7 +600,7 @@ function MoveSection({
       {notes.length > 0 && (
         <ul className="flex list-disc flex-col gap-0.5 pl-5 text-sm">
           {notes.map((n) => (
-            <li key={n}>{t(`note.${n}`)}</li>
+            <li key={n}>{n}</li>
           ))}
         </ul>
       )}
